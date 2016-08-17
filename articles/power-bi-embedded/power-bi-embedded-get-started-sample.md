@@ -100,7 +100,7 @@ Bei dem Beispiel für **Microsoft Power BI Embedded** handelt es sich um ein Bei
 
 Der Beispielcode für **Microsoft Power BI Embedded** ist wie folgt unterteilt: Jeder Abschnitt enthält den Dateinamen in der Projektmappe „PowerBI-embedded.sln“, damit Sie den Code im Beispiel leicht finden können.
 
-> [AZURE.NOTE] Dieser Abschnitt ist eine Zusammenfassung des Beispielcodes, die zeigt, wie der Code geschrieben wurde. Die Beschreibung des Beispiels wird erweitert, bis wir es demnächst allgemein verfügbar machen. Laden Sie die Projektmappe „PowerBI-embedded.sln“ in Visual Studio, um das vollständige Beispiel anzuzeigen.
+> [AZURE.NOTE] Dieser Abschnitt ist eine Zusammenfassung des Beispielcodes, die zeigt, wie der Code geschrieben wurde. Laden Sie die Projektmappe „PowerBI-embedded.sln“ in Visual Studio, um das vollständige Beispiel anzuzeigen.
 
 ### Modell
 Das Beispiel umfasst ein **ReportsViewModel** und ein **ReportViewModel**.
@@ -121,8 +121,17 @@ Das Beispiel umfasst ein **ReportsViewModel** und ein **ReportViewModel**.
         public string AccessToken { get; set; }
     }
 
-### Sicht
-In der **Sicht** wird die Anzeige von Power BI-**Berichten** und eines einzelnen Power BI-**Berichts** verwaltet.
+### Verbindungszeichenfolge
+Die Verbindungszeichenfolge muss folgendes Format aufweisen:
+
+```
+Data Source=tcp:MyServer.database.windows.net,1433;Initial Catalog=MyDatabase
+```
+
+Die Verwendung allgemeiner Server- und Datenbankattribute ist nicht möglich. Zum Beispiel: Server=tcp:MyServer.database.windows.net,1433;Database=MyDatabase,
+
+### Ansicht
+In der **Ansicht** wird die Anzeige von Power BI-**Berichten** und eines einzelnen Power BI-**Berichts** verwaltet.
 
 **Reports.cshtml**: Durchlaufen Sie **Model.Reports**, um einen **ActionLink** zu erstellen. Der **ActionLink** setzt sich wie folgt zusammen:
 
@@ -158,7 +167,7 @@ In der **Sicht** wird die Anzeige von Power BI-**Berichten** und eines einzelnen
 
 ### Controller
 
-**DashboardController.cs**: Erstellt einen PowerBIClient, der ein **App-Token** übergibt. Ein JSON Web Token (JWT) wird auf der Grundlage des Signaturschlüssels generiert, um die **Anmeldeinformationen** zu erhalten. Die **Anmeldeinformationen** dienen zum Erstellen einer Instanz von **PowerBIClient**. Sobald Sie über eine Instanz von **PowerBIClient** verfügen, können Sie GetReports() und GetReportsAsync() aufrufen.
+**DashboardController.cs**: Erstellt einen PowerBIClient, der ein **App-Token** übergibt. Ein JSON Web Token (JWT) wird auf der Grundlage des **Signaturschlüssels** generiert, um die **Anmeldeinformationen** zu erhalten. Die **Anmeldeinformationen** werden zum Erstellen einer Instanz von **PowerBIClient** verwendet. Sobald Sie über eine Instanz von **PowerBIClient** verfügen, können Sie GetReports() und GetReportsAsync() aufrufen.
 
 CreatePowerBIClient()
 
@@ -220,7 +229,7 @@ Sobald Sie über einen **Bericht** verfügen, können Sie den Power BI-**Bericht
 
 ## Filtern von in die Anwendung eingebetteten Berichten
 
-Sie können einen eingebetteten Bericht mit einer URL-Syntax filtern. Fügen Sie hierfür der iFrame-SRC-URL mit dem angegebenem Filter den Abfragezeichenfolgen-Parameter **$filter** mit dem Operator **eq** hinzu. Dies ist die Syntax der Filterabfrage:
+Sie können einen eingebetteten Bericht mit einer URL-Syntax filtern. Fügen Sie hierfür der iFrame-SRC-URL mit dem angegebenen Filter den Abfragezeichenfolgen-Parameter **$filter** mit dem Operator **eq** hinzu. Dies ist die Syntax der Filterabfrage:
 
 ```
 https://app.powerbi.com/reportEmbed
@@ -236,4 +245,4 @@ $filter={tableName/fieldName}%20eq%20'{fieldValue}'
 - [Häufige Microsoft Power BI Embedded-Szenarios](power-bi-embedded-scenarios.md)
 - [Authentifizieren und Autorisieren in Power BI Embedded](power-bi-embedded-app-token-flow.md)
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0803_2016-->

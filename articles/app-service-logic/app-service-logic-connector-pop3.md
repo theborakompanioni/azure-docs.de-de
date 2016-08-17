@@ -1,7 +1,7 @@
 <properties
    pageTitle="Verwendung des POP3-Connectors in Logik-Apps | Microsoft Azure App Service"
    description="Erstellen und Konfigurieren des POP3-Connectors oder einer API-App und Verwenden in einer Logik-App in Azure App Service"
-   services="app-service\logic"
+   services="logic-apps"
    documentationCenter=".net,nodejs,java"
    authors="anuragdalmia"
    manager="erikre"
@@ -87,4 +87,4 @@ Sie können auch Leistungsstatistiken überprüfen und die Sicherheit zum Connec
 [5]: ./media/app-service-logic-connector-pop3/img5.PNG
 [6]: ./media/app-service-logic-connector-pop3/img6.PNG
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

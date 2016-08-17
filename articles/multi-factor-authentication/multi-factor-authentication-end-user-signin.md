@@ -28,12 +28,12 @@ Der Anmeldevorgang hängt davon ab, wie Sie sich anmelden und Multi-Factor Authe
 
 Vorgehensweise|Beschreibung
 :------------- | :------------- | 
-[Anmeldung mit Mobil- oder Bürotelefon](#anmeldung-mit-mobil--oder-brotelefon) | Beschreibt die Anmeldung mit einem Mobil- oder Bürotelefon.
-[Anmelden mit der mobilen App über eine Benachrichtigung](#anmelden-mit-der-mobilen-app-ber-eine-benachrichtigung) | Beschreibt die Anmeldung bei der mobilen App mit einer Benachrichtigung.
-[Anmelden mit der mobilen App über einen Überprüfungscode](#anmelden-mit-der-mobilen-app-ber-einen-berprfungscode)|Beschreibt die Anmeldung bei der mobilen App mit einem Überprüfungscode.
-[Anmelden mit einer alternativen Methode](#anmelden-mit-einer-alternativen-methode)|Hier erfahren Sie, was Sie erwartet, wenn Sie eine alternative Methode verwenden möchten.
+<a href="#1">Anmeldung mit Mobil- oder Bürotelefon</a> | Beschreibt die Anmeldung mit einem Mobil- oder Bürotelefon.
+<a href="#2">Anmelden mit der mobilen App über eine Benachrichtigung</a> | Beschreibt die Anmeldung bei der mobilen App mit einer Benachrichtigung.
+<a href="#3">Anmelden mit der mobilen App über einen Überprüfungscode</a> |Beschreibt die Anmeldung bei der mobilen App mit einem Überprüfungscode.
+<a href="#4">Anmelden mit einer alternativen Methode</a> |Hier erfahren Sie, was Sie erwartet, wenn Sie eine alternative Methode verwenden möchten.
 
-## Anmeldung mit Mobil- oder Bürotelefon
+<h2 id="1">Anmeldung mit Mobil- oder Bürotelefon</h2>
 
 Im Folgenden wird der Vorgang für Multi-Factor Authentication mit dem Büro- oder Mobiltelefon beschrieben.
 
@@ -50,7 +50,7 @@ Im Folgenden wird der Vorgang für Multi-Factor Authentication mit dem Büro- od
 
 - Sie sollten jetzt angemeldet sein.</li>
 
-## Anmelden mit der mobilen App über eine Benachrichtigung
+<h2 id="2">Anmelden mit der mobilen App über eine Benachrichtigung</h2>
 
 Die folgenden Informationen beschreiben die Verwendung von Multi-Factor Authentication mit der mobilen App, wenn Sie eine Benachrichtigung erhalten.
 
@@ -70,7 +70,7 @@ Die folgenden Informationen beschreiben die Verwendung von Multi-Factor Authenti
 - Sie sollten jetzt angemeldet sein.
 
 
-## Anmelden mit der mobilen App über einen Überprüfungscode
+<h2 id="3">Anmelden mit der mobilen App über einen Überprüfungscode</h2>
 
 Im Folgenden wird der Vorgang für Multi-Factor Authentication mit der mobilen App beschrieben, wenn Sie sie mit einem Bestätigungscode verwenden.
 
@@ -88,7 +88,7 @@ Im Folgenden wird der Vorgang für Multi-Factor Authentication mit der mobilen A
 - Sie sollten jetzt angemeldet sein.
 
 
-## Anmelden mit einer alternativen Methode
+<h2 id="4">Anmelden mit einer alternativen Methode</h2>
 
 
 Im folgenden Abschnitt erfahren Sie, wie Sie sich über eine alternative Methode anmelden, wenn die primäre Methode nicht verfügbar ist.

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/21/2016"
+   ms.date="07/29/2016"
    ms.author="terrylan"/>
 
 # Aktivieren von Netzwerksicherheitsgruppen in Azure Security Center
@@ -63,4 +63,4 @@ Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:
 [3]: ./media/security-center-enable-nsg/configure-nsg-for-vm.png
 [4]: ./media/security-center-enable-nsg/choose-nsg.png
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

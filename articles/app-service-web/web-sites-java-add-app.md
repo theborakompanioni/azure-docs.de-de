@@ -25,7 +25,7 @@ iiDer Navigationspfad zum Ordner **webapps** hängt davon ab, wie Sie Ihre Web-A
 - Wenn Sie Ihre Web-App mithilfe von Azure Marketplace einrichten, hat der Pfad zum Ordner **webapps** das Format **d:\\home\\site\\wwwroot\\bin\\application\_server\\webapps**, wobei **application\_server** für den Namen des Anwendungsservers steht, der für Ihre Web-Apps-Instanz verwendet wird.
 - Wenn Sie Ihre Web-App über die Azure-Konfigurationsbenutzeroberfläche einrichten, hat der Pfad zum Ordner **webapps** das Format **d:\\home\\site\\wwwroot\\webapps**.
 
-Beachten Sie, dass Sie die Quellcodeverwaltung zum Hochladen Ihrer Anwendung oder Webseiten verwenden können, auch in Szenarien mit fortlaufender Integration. Anweisungen zur Verwendung der Quellcodeverwaltung mit Ihrer Web-App finden Sie unter [Fortlaufende Bereitstellung mit GIT in Azure App Service](web-sites-publish-source-control.md). FTP stellt ebenfalls eine Möglichkeit zum Hochladen Ihrer Anwendung oder Webseiten dar.
+Beachten Sie, dass Sie die Quellcodeverwaltung zum Hochladen Ihrer Anwendung oder Webseiten verwenden können, auch in [Szenarien mit fortlaufender Integration](app-service-continuous-deployment.md). FTP stellt ebenfalls eine Möglichkeit zum Hochladen Ihrer Anwendung oder Webseiten dar.
 
 Hinweis für Tomcat-Web-Apps: Nachdem Sie Ihre WAR-Datei in den Ordner **webapps** hochgeladen haben, erkennt der Tomcat-Anwendungsserver die neu hinzugefügte Datei und lädt diese automatisch. Beachten Sie, dass Sie beim Kopieren von Dateien in das ROOT-Verzeichnis den Anwendungsserver neu starten müssen, damit diese Dateien verwendet werden. Dies gilt nicht für WAR-Dateien. Die Funktion für automatisches Laden für in Azure ausgeführte Tomcat-Java-Web-Apps basiert auf einer neuen, hinzugefügten WAR-Datei oder neuen Dateien oder Verzeichnissen, die dem Ordner **webapps** hinzugefügt wurden.
 
@@ -40,4 +40,4 @@ Weitere Informationen finden Sie im [Java Developer Center](/develop/java/).
 <!-- External Links -->
 [Azure App Service]: http://go.microsoft.com/fwlink/?LinkId=529714
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0803_2016-->

@@ -1,7 +1,7 @@
 <properties
 pageTitle="GitHub | Microsoft Azure"
 description="Erstellen Sie Logik-Apps mit Azure App Service. GitHub ist ein webbasierter Hostingdienst für Git-Repositorys. Er bietet alle Funktionen von Git zur Kontrolle von verteilten Überarbeitungen und zur Quellcodeverwaltung sowie eigene Features."
-services="app-servicelogic"	
+services="logic-apps"	
 documentationCenter=".net,nodejs,java" 	
 authors="msftman"	
 manager="erikre"	
@@ -179,4 +179,4 @@ Es gibt keine Parameter für diesen Aufruf
 ## Nächste Schritte
 [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

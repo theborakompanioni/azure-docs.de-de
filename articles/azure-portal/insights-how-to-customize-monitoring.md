@@ -1,14 +1,14 @@
 <properties
-	pageTitle="Überwachen von Dienstmetriken"
+	pageTitle="Überwachen von Dienstmetriken in Microsoft Azure | Microsoft Azure"
 	description="Erfahren Sie, wie Sie Überwachungsdiagramme in Azure anpassen."
 	authors="stepsic-microsoft-com"
 	manager="ronmart"
 	editor=""
-	services="azure-portal"
-documentationCenter=""/>
+	services="monitoring"
+    documentationCenter="monitoring"/>
 
 <tags
-	ms.service="azure-portal"
+	ms.service="monitoring"
 	ms.workload="na"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
@@ -28,11 +28,9 @@ Sie können für beliebige Metriken und einen gewählten Zeitraum ein Diagramm e
 
 1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) auf **Durchsuchen** und anschließend auf eine Ressource, die Sie überwachen möchten.
 
-2. Der Bereich **Überwachen** enthält die wichtigsten Metriken zu jeder Azure-Ressource. Für eine Web-App ist dies beispielsweise **Anforderungen und Fehler**, während für einen virtuellen Computer **CPU-Prozentsatz** und **Lese- und Schreibvorgänge auf dem Datenträger** angezeigt wird:
-![Überwachungsfokus](./media/insights-how-to-customize-monitoring/Insights_MonitoringChart.png)
+2. Der Bereich **Überwachen** enthält die wichtigsten Metriken zu jeder Azure-Ressource. Für eine Web-App ist dies beispielsweise **Anforderungen und Fehler**, während für einen virtuellen Computer **CPU-Prozentsatz** und **Lese- und Schreibvorgänge auf dem Datenträger** angezeigt wird: ![Überwachungsfokus](./media/insights-how-to-customize-monitoring/Insights_MonitoringChart.png)
 
-3. Wenn Sie auf eines dieser Diagramme klicken, wird das Blatt **Metrik** geöffnet. Auf diesem Blatt wird neben dem Diagramm eine Tabelle angezeigt, die Aggregationen der Metriken enthält (z. B. Durchschnitt, Mindest- und Maximalwert für den gewählten Zeitraum). Darunter werden die Warnregeln für die Ressource angezeigt.
-![Fenster mit Metriken](./media/insights-how-to-customize-monitoring/Insights_MetricBlade.png)
+3. Wenn Sie auf eines dieser Diagramme klicken, wird das Blatt **Metrik** geöffnet. Auf diesem Blatt wird neben dem Diagramm eine Tabelle angezeigt, die Aggregationen der Metriken enthält (z. B. Durchschnitt, Mindest- und Maximalwert für den gewählten Zeitraum). Darunter werden die Warnregeln für die Ressource angezeigt. ![Fenster mit Metriken](./media/insights-how-to-customize-monitoring/Insights_MetricBlade.png)
 
 4. Zum Anpassen der angezeigten Zeilen klicken Sie auf die Schaltfläche **Bearbeiten** im Diagramm, oder klicken Sie auf den Befehl **Bearbeiten** auf dem Blatt "Metrik".
 
@@ -41,8 +39,7 @@ Sie können für beliebige Metriken und einen gewählten Zeitraum ein Diagramm e
     - Wechseln zwischen der Darstellung "Balken" und "Linie"
     - Auswählen anderer Metriken ![Abfrage bearbeiten](./media/insights-how-to-customize-monitoring/Insights_EditQuery.png)
 
-6. Die Änderung des Zeitbereichs ist denkbar einfach: Sie wählen einen anderen Bereich aus (beispielsweise **Letzte Stunde**) und klicken unten im Fenster auf **Speichern**. Mit der Einstellung **Benutzerdefiniert** können Sie einen beliebigen Zeitraum in den letzten zwei Wochen auswählen. Beispielsweise können Sie die gesamten letzten zwei Wochen oder lediglich eine Stunde gestern anzeigen. Geben Sie in das Textfeld eine andere Uhrzeit ein.
-![Benutzerdefinierter Zeitbereich](./media/insights-how-to-customize-monitoring/Insights_CustomTime.png)
+6. Die Änderung des Zeitbereichs ist denkbar einfach: Sie wählen einen anderen Bereich aus (beispielsweise **Letzte Stunde**) und klicken unten im Fenster auf **Speichern**. Mit der Einstellung **Benutzerdefiniert** können Sie einen beliebigen Zeitraum in den letzten zwei Wochen auswählen. Beispielsweise können Sie die gesamten letzten zwei Wochen oder lediglich eine Stunde gestern anzeigen. Geben Sie in das Textfeld eine andere Uhrzeit ein. ![Benutzerdefinierter Zeitbereich](./media/insights-how-to-customize-monitoring/Insights_CustomTime.png)
 
 7. Unterhalb des Zeitbereichs können Sie beliebig viele Metriken auswählen, die in dem Diagramm angezeigt werden sollen.
 
@@ -52,11 +49,9 @@ Sie können für beliebige Metriken und einen gewählten Zeitraum ein Diagramm e
 
 Dank der umfangreichen Anpassungsmöglichkeiten im Portal können Sie so viele Diagramme hinzufügen, wie Sie möchten.
 
-1. Klicken Sie im oberen Bereich des Blatts im Menü **...** auf **Kacheln hinzufügen**:
-![Menü "Hinzufügen"  
+1. Klicken Sie im oberen Bereich des Blatts im Menü **...** auf **Kacheln hinzufügen**: ![Menü "Hinzufügen"  
 ](./media/insights-how-to-customize-monitoring/Insights_AddMenu.png)
-2. Anschließend können Sie ein Diagramm aus dem **Katalog** auf der rechten Bildschirmseite auswählen:
-![Katalog](./media/insights-how-to-customize-monitoring/Insights_Gallery.png)
+2. Anschließend können Sie ein Diagramm aus dem **Katalog** auf der rechten Bildschirmseite auswählen: ![Katalog](./media/insights-how-to-customize-monitoring/Insights_Gallery.png)
 3. Wenn die gewünschte Metrik nicht angezeigt wird, können Sie einfach eine der voreingestellten Metriken hinzufügen und durch **Bearbeiten** des Diagramms die Metrik anzeigen, die Sie benötigen.
 
 ## Überwachen mithilfe von Kontingenten
@@ -78,4 +73,4 @@ Wie bei den Metriken können Sie mithilfe von [REST-API](https://msdn.microsoft.
 * Verwenden von [Application Insights für JavaScript-Apps und Webseiten](../application-insights/app-insights-web-track-usage.md), um eine Clientanalyse über die Browser zu erhalten, mit denen auf eine Webseite zugegriffen wird.
 * [Überwachen der Verfügbarkeit und Reaktionsfähigkeit einer beliebigen Webseite](../application-insights/app-insights-monitor-web-app-availability.md) mit Application Insights, um zu ermitteln, ob eine Seite offline ist.
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0803_2016-->

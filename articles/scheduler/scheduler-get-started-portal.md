@@ -12,7 +12,7 @@
  ms.tgt_pltfrm="na"
  ms.devlang="dotnet"
  ms.topic="hero-article"
- ms.date="06/30/2016"
+ ms.date="08/10/2016"
  ms.author="krisragh"/>
 
 # Erste Schritte mit Azure Scheduler im Azure-Portal
@@ -25,7 +25,7 @@ Das Erstellen geplanter Aufträge in Azure Scheduler ist einfach. In diesem Tuto
 
 2.  Klicken Sie auf **+ Neu** > geben Sie im Suchfeld _Scheduler_ ein > wählen Sie in den Ergebnissen **Scheduler** > klicken Sie auf **Erstellen**.
 
-   ![][marketplace-create]
+     ![][marketplace-create]
 
 3.  In diesem Beispiel erstellen wir einen einfachen Auftrag mit einer GET-Anforderung für „http://www.microsoft.com/“. Geben Sie auf dem Bildschirm **Scheduler-Auftrag** die folgenden Informationen ein:
 
@@ -33,7 +33,7 @@ Das Erstellen geplanter Aufträge in Azure Scheduler ist einfach. In diesem Tuto
 
     2.  **Abonnement:** Ihr Azure-Abonnement
 
-    3.  **Auftragssammlung:** Wählen Sie eine vorhandene Auftragssammlung aus, oder klicken Sie auf **Neu erstellen** > geben Sie einen Namen ein.
+    3.  **Auftragssammlung:** Wählen Sie eine vorhandene Auftragssammlung aus, oder klicken Sie auf **Neu erstellen**, und geben Sie einen Namen ein.
 
 4.  Definieren Sie dann unter **Aktionseinstellungen** die folgenden Werte:
 
@@ -43,19 +43,19 @@ Das Erstellen geplanter Aufträge in Azure Scheduler ist einfach. In diesem Tuto
 
     3.  **URL:** ` http://www.microsoft.com`
 
-   ![][action-settings]
+      ![][action-settings]
 
 5.  Jetzt definieren wir einen Zeitplan. Der Auftrag kann natürlich auch als einmaliger Auftrag definiert werden, in diesem Beispiel verwenden wir aber einen Wiederholungszeitplan.
 
     1. **Wiederholung**: `Recurring`
 
-    2. **Start**: Das heutige Datum
+    2. **Start**: Heutiges Datum
 
     3. **Wiederholen alle:** `12 Hours`
 
     4. **Endet am**: Zwei Tage nach dem heutigen Datum
 
-   ![][recurrence-schedule]
+      ![][recurrence-schedule]
 
 6.  Klicken Sie auf **Erstellen**.
 
@@ -73,7 +73,7 @@ Sobald ein Auftrag erstellt wurde, wird er im Azure-Hauptdashboard angezeigt. We
 
 5.  Benutzer
 
-   ![][job-overview]
+    ![][job-overview]
 
 ### Eigenschaften
 
@@ -96,7 +96,7 @@ Für Service Bus-Aktionstypen können Sie den Namespace, den Thema-/Warteschlang
 
    ![][job-action-settings]
 
-### Zeitplan
+### Schedule
 
 Damit können Sie den Zeitplan neu konfigurieren, wenn Sie den im Schnellerstellungs-Assistenten erstellten Zeitplan ändern möchten.
 
@@ -131,10 +131,10 @@ Klicken Sie auf eine Ausführung, um die **Verlaufsdetails** anzuzeigen, einschl
 
 ### Benutzer
 
-Die rollenbasierte Access Control in Azure (RBAC) ermöglicht eine präzise Zugriffsverwaltung für Azure Scheduler. Informationen zur Verwendung der Registerkarte „Benutzer“ finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure](../active-directory/role-based-access-control-configure.md)
+Die rollenbasierte Access Control in Azure (RBAC) ermöglicht eine präzise Zugriffsverwaltung für Azure Scheduler. Informationen zur Verwendung der Registerkarte „Benutzer“ finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure](../active-directory/role-based-access-control-configure.md).
 
 
-## Weitere Informationen
+## Siehe auch
 
  [Was ist Azure Scheduler?](scheduler-intro.md)
 
@@ -182,4 +182,4 @@ Die rollenbasierte Access Control in Azure (RBAC) ermöglicht eine präzise Zugr
 [14]: ./media/scheduler-get-started-portal/scheduler-get-started-portal014.png
 [15]: ./media/scheduler-get-started-portal/scheduler-get-started-portal015.png
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0810_2016-->

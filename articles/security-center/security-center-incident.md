@@ -13,7 +13,7 @@
    ms.devlang="na"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/20/2016"
+   ms.date="08/03/2016"
    ms.author="yurid"/>
 
 # Behandeln von Sicherheitswarnungen in Azure Security Center 
@@ -52,15 +52,15 @@ Die Informationen auf diesem Blatt variieren je nach Warnung. Weitere Informatio
 - Die gleiche Warnung kann als Teil eines Vorfalls vorhanden sein (falls zutreffend) und als eigenständige Warnung angezeigt werden.
 - Wenn ein Vorfall verworfen wird, werden die dazugehörigen Warnungen nicht verworfen.
 
-## Weitere Informationen
+## Siehe auch
 
 In diesem Dokument haben Sie erfahren, wie Sie die Sicherheitsvorfallfunktion in Security Center verwenden. Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:
 
+- [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center](security-center-managing-and-responding-alerts.md)
+- [Azure Security Center-Erkennungsfunktionen](security-center-detection-capabilities.md)
 - [Planungs- und Betriebshandbuch für Azure Security Center](security-center-planning-and-operations-guide.md)
 - [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center](security-center-managing-and-responding-alerts.md)
-- [Überwachen der Sicherheitsintegrität in Azure Security Center](security-center-monitoring.md): Erfahren Sie, wie Sie die Integrität Ihrer Azure-Ressourcen überwachen.
-- [Überwachen von Partnerlösungen mit Azure Security Center](security-center-partner-solutions.md): Hier erfahren Sie, wie Sie den Integritätsstatus Ihrer Partnerlösungen überwachen.
 - [Azure Security Center – Häufig gestellte Fragen](security-center-faq.md): Hier finden Sie häufig gestellte Fragen zur Verwendung des Diensts.
 - [Azure Security Blog](http://blogs.msdn.com/b/azuresecurity/) (Blog zur Azure-Sicherheit): Hier finden Sie Blogbeiträge zur Sicherheit und Compliance von Azure.
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0810_2016-->

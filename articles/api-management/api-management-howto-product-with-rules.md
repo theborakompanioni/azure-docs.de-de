@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="05/25/2016"
+	ms.date="08/09/2016"
 	ms.author="sdanie"/>
 
 # Schützen Ihrer API mithilfe von Aufruflimits in Azure API Management
@@ -143,7 +143,7 @@ Für das Produkt Kostenloser Test gilt ein Kontingent von 200 Aufrufen pro Woche
 	<quota calls="200" renewal-period="604800">
 	</quota>
 
->Die Richtlinienintervalle werden in Sekunden angegeben. Um die Intervalle für eine Woche zu berechnen, multiplizieren Sie die Anzahl der Tage (7) mit der Anzahl der Stunden pro Tag (24), der Anzahl der Minuten pro Stunde (60) und der Anzahl von Sekunden pro Minute (60): 7 x 24 x 60 x 60 = 604800.
+>Die Richtlinienintervalle werden in Sekunden angegeben. Um die Intervalle für eine Woche zu berechnen, multiplizieren Sie die Anzahl von Tagen (7) mit der Anzahl von Stunden pro Tag (24), der Anzahl von Minuten pro Stunde (60) und der Anzahl von Sekunden pro Minute (60): 7 · 24 · 60 · 60 = 604.800.
 
 Konfigurieren Sie die Richtlinie, sodass diese dem folgenden Beispiel entspricht.
 
@@ -293,4 +293,4 @@ Wenn das Aufruflimit von 10 Aufrufen pro Minute aktiv ist, werden nachfolgende A
 [Limit call rate]: https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRate
 [Set usage quota]: https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuota
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0810_2016-->

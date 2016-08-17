@@ -37,6 +37,7 @@ Installationsschritte und Code in dieser exemplarischen Vorgehensweise beziehen 
 
 ![](./media/machine-learning-data-science-spark-overview/spark-cluster-on-portal.png)
 
+> [AZURE.NOTE] Ein Thema, das die Verwendung von Scala statt Python zur Ausführung von Aufgaben für einen End-to-End-Data Science-Process veranschaulicht, ist [Data Science using Scala with Spark on Azure](machine-learning-data-science-process-scala-walkthrough.md) (Data Science mit Scala und Spark in Azure).
 
 >[AZURE.INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
@@ -103,11 +104,11 @@ Wir haben eine Stichprobe von 0,1 % dieser Dateien entnommen und diese in einem 
 
 ## Ausführen von Code über ein Jupyter-Notebook auf dem Spark-Cluster 
 
-Sie können das Jupyter-Notebook über das Azure-Portal starten. Suchen Sie Ihren Spark-Cluster auf dem Dashboard, und klicken Sie darauf, um zur Verwaltungsseite für Ihren Cluster zu gelangen. Klicken Sie dann auf **Cluster-Dashboards** -> **Jupyter-Notebook**, um das dem Spark-Cluster zugeordnete Notebook zu öffnen.
+Sie können das Jupyter-Notebook über das Azure-Portal starten. Suchen Sie Ihren Spark-Cluster auf dem Dashboard, und klicken Sie darauf, um zur Verwaltungsseite für Ihren Cluster zu gelangen. Klicken Sie dann auf **Cluster-Dashboards** > **Jupyter-Notebook**, um das dem Spark-Cluster zugeordnete Notebook zu öffnen.
 
 ![](./media/machine-learning-data-science-spark-overview/spark-jupyter-on-portal.png)
 
-Sie können auch zu ****https://CLUSTERNAME.azurehdinsight.net/jupyter*** navigieren, um auf die Jupyter-Notebooks zuzugreifen. Ersetzen Sie einfach das Element „CLUSTERNAME“ in dieser URL durch den Namen Ihres eigenen Clusters. Sie benötigen das Kennwort für Ihr Administratorkonto, um auf die Notebooks zuzugreifen.
+Sie können auch zu ***https://CLUSTERNAME.azurehdinsight.net/jupyter*** navigieren, um auf die Jupyter-Notebooks zuzugreifen. Ersetzen Sie einfach das Element „CLUSTERNAME“ in dieser URL durch den Namen Ihres eigenen Clusters. Sie benötigen das Kennwort für Ihr Administratorkonto, um auf die Notebooks zuzugreifen.
 
 ![](./media/machine-learning-data-science-spark-overview/spark-jupyter-notebook.png)
 
@@ -122,16 +123,16 @@ Sie können die Notebooks direkt von Github auf den Jupyter-Notebook-Server in I
 
 Sie sehen den Dateinamen in der Jupyter-Dateiliste, wieder mit einer Schaltfläche **Hochladen**. Klicken Sie auf diese Schaltfläche **Hochladen**. Sie haben nun das Notebook importiert. Wiederholen Sie diese Schritte, um die folgenden Notebooks dieser exemplarischen Vorgehensweise hochzuladen.
 
-> [AZURE.TIP] \(Hinweis: Sie können mit der rechten Maustaste auf die Links unten in Ihrem Browser klicken und **Link kopieren** auswählen, um die GitHub-URL für den unformatierten Inhalt abzurufen, die Sie in das Dialogfeld des Jupyter-Datei-Explorers zum Hochladen einfügen können.)
+> [AZURE.TIP] Sie können mit der rechten Maustaste auf die Links unten in Ihrem Browser klicken und **Link kopieren** auswählen, um die GitHub-URL für den unformatierten Inhalt abzurufen, die Sie in das Dialogfeld des Jupyter-Datei-Explorers zum Hochladen einfügen können.
 
 Sie können jetzt:
 
 - Auf das Notebook klicken, um den Code zu sehen
-- Jede Zelle über **UMSCHALT+EINGABETASTE** ausführen
-- Das gesamte Notebook ausführen, indem Sie auf **Zelle** -> **Ausführen** klicken
+- Jede Zelle über **UMSCHALT+EINGABE-Taste** ausführen
+- Das gesamte Notebook ausführen, indem Sie auf **Cell** > **Run** klicken
 - Die automatische Visualisierung von Abfragen verwenden
 
-> [AZURE.TIP] Der PySpark-Kernel visualisiert automatisch die Ausgabe der SQL-Abfragen (HiveQL). Sie haben die Möglichkeit, verschiedene Arten von Visualisierungen auszuwählen (Tabelle, Kreis, Linie, Fläche oder Balken), indem Sie im Notebook die Menüschaltflächen unter **Typ** verwenden.
+> [AZURE.TIP] Der PySpark-Kernel visualisiert automatisch die Ausgabe der SQL-Abfragen (HiveQL). Sie haben die Möglichkeit, verschiedene Arten von Visualisierungen auszuwählen (Tabelle, Kreis, Linie, Fläche oder Balken), indem Sie im Notebook die Menüschaltflächen unter **Typ** verwenden:
 
 ![ROC-Kurve der logistischen Regression für die allgemeine Methode](./media/machine-learning-data-science-spark-overview/pyspark-jupyter-autovisualization.png)
 
@@ -139,10 +140,10 @@ Sie können jetzt:
 
 Nachdem Sie einen HDInsight Spark-Cluster eingerichtet und die Jupyter-Notebooks hochgeladen haben, können Sie nun die Themen für diese drei PySpark-Notebooks durcharbeiten. Darin erfahren Sie, wie Sie Ihre Daten durchsuchen sowie Modelle erstellen und verwenden. Das Notebook zum erweiterten Durchsuchen von Daten und Modellieren dringt tiefer in übergreifende Validierung, Hyper-Parameter-Sweeping und Auswertung von Modellen ein.
 
-**Durchsuchen von Daten und Modellieren mit Spark:** Durchsuchen Sie das Dataset, und erstellen Sie die hier zu bewertenden und evaluierenden Modelle für maschinelles Lernen. Arbeiten Sie dazu das Thema [Erstellen von binären Klassifizierungs- und Regressionsmodellen für Daten mit dem Spark MLib-Toolkit](machine-learning-data-science-spark-data-exploration-modeling.md) durch.
+**Durchsuchen von Daten und Modellieren mit Spark:** Durchsuchen Sie das Dataset, und erstellen Sie die hier zu bewertenden und evaluierenden Machine Learning-Modelle. Arbeiten Sie dazu das Thema [Erstellen von binären Klassifizierungs- und Regressionsmodellen für Daten mit dem Spark MLib-Toolkit](machine-learning-data-science-spark-data-exploration-modeling.md) durch.
 
-**Modellnutzung:** Informationen zum Bewerten der in diesem Thema erstellten Klassifizierungs- und Regressionsmodelle finden Sie unter [Bewerten mit Spark erstellter Modelle für maschinelles Lernen](machine-learning-data-science-spark-model-consumption.md).
+**Modellnutzung:** Informationen zum Bewerten der in diesem Thema erstellten Klassifizierungs- und Regressionsmodelle finden Sie unter [Bewerten von Machine Learning-Modellen, die mit Spark erstellt wurden](machine-learning-data-science-spark-model-consumption.md).
 
-**Übergreifende Validierung und Hyper-Parameter-Sweeping:** Unter [Erweitertes Durchsuchen und Modellieren von Daten mit Spark](machine-learning-data-science-spark-advanced-data-exploration-modeling.md) erfahren Sie, wie Modelle mit übergreifender Validierung und Hyper-Parameter-Sweeping trainiert werden können.
+**Übergreifende Validierung und Hyperparameter-Sweeping:** Unter [Erweiterte Datendurchsuchung und Modellierung mit Spark](machine-learning-data-science-spark-advanced-data-exploration-modeling.md) erfahren Sie, wie Modelle mit Kreuzvalidierung und Hyperparameter-Sweeping trainiert werden können.
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0803_2016-->

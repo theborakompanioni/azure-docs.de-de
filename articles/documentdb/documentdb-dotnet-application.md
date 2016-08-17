@@ -4,7 +4,7 @@
 	keywords="asp.net mvc tutorial, web application development, mvc web application, asp net mvc tutorial step by step"
 	services="documentdb" 
 	documentationCenter=".net" 
-	authors="aliuy" 
+	authors="AndrewHoh" 
 	manager="jhubbard" 
 	editor="cgronlun"/>
 
@@ -16,7 +16,7 @@
 	ms.devlang="dotnet" 
 	ms.topic="hero-article" 
 	ms.date="08/01/2016" 
-	ms.author="andrl"/>
+	ms.author="anhoh"/>
 
 #<a name="_Toc395809351"></a>ASP.NET MVC-Tutorial: Erstellen einer Webanwendung mit DocumentDB
 
@@ -42,7 +42,7 @@ Bevor Sie diesen Artikel durcharbeiten, sollten Sie sicherstellen, dass Folgende
 - [Visual Studio 2015](http://www.visualstudio.com/) oder Visual Studio 2013 Update 4 oder höher. Wenn Sie Visual Studio 2013 verwenden, müssen Sie das [Microsoft.Net.Compilers-NuGet-Paket](https://www.nuget.org/packages/Microsoft.Net.Compilers/) installieren, um die Unterstützung für C# 6.0 hinzuzufügen.
 - Azure SDK für .NET Version 2.5.1 oder höher, verfügbar über [Microsoft-Webplattform-Installer][].
 
-Alle Screenshots in diesem Artikel wurden unter Verwendung von Visual Studio 2013 mit Update 4 und Azure SDK für .NET Version 2.5.1 aufgenommen. Wenn Ihr System mit anderen Versionen konfiguriert ist, weichen Ihre Bildschirme und Optionen möglicherweise ab. Wenn Sie jedoch die oben aufgeführten Voraussetzungen erfüllen, sollte diese Lösung funktionieren.
+Alle Screenshots in diesem Artikel wurden unter Verwendung von Visual Studio 2013 mit Update 4 und Azure SDK für .NET Version 2.5.1 aufgenommen. Wenn Ihr System mit anderen Versionen konfiguriert ist, weichen Ihre Bildschirme und Optionen möglicherweise ab. Wenn Sie jedoch die oben aufgeführten Voraussetzungen erfüllen, sollte diese Lösung funktionieren.
 
 ## <a name="_Toc395637761"></a>Schritt 1: Erstellen eines DocumentDB-Datenbankkontos
 
@@ -591,4 +591,4 @@ Wenn Sie Ihrer Anwendung zusätzliche Funktionen hinzufügen möchten, können S
 [Grundlegende CRUD-Vorgänge in ASP.NET MVC]: http://go.microsoft.com/fwlink/?LinkId=317598
 [GitHub]: https://github.com/Azure-Samples/documentdb-net-todo-app
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0810_2016-->

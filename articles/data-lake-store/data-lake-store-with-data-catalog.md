@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="05/17/2016"
+   ms.date="08/02/2016"
    ms.author="nitinme"/>
 
 # Registrieren von Daten aus dem Data Lake-Speicher in Azure Data Catalog
@@ -94,4 +94,4 @@ Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
 * [Hinzufügen von Dokumenten zu Datenquellen in Data Catalog](../data-catalog/data-catalog-how-to-documentation.md)
 * [Integrieren des Data Lake-Speichers in andere Azure-Dienste](data-lake-store-integrate-with-other-services.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0803_2016-->

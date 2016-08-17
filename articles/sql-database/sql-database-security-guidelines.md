@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-management"
-   ms.date="05/13/2016"
+   ms.date="08/02/2016"
    ms.author="rickbyh"/>
 
 # Sicherheitsrichtlinien und Einschränkungen von Azure SQL-Datenbank
@@ -23,12 +23,12 @@ In diesem Thema werden die Richtlinien und Einschränkungen von Microsoft Azure 
 
 ## Zugriff auf die virtuelle Masterdatenbank
 
-In der Regel benötigen nur Administratoren Zugriff auf die Masterdatenbank. Der routinemäßige Zugriff auf jede Benutzerdatenbank sollte über Benutzer für eigenständige Datenbanken geschehen, die in jeder Datenbank erstellt werden und nicht über Administratorrechte verfügen. Bei der Verwendung von Benutzern für eine eigenständige Datenbank müssen Sie keine Anmeldungen für die Masterdatenbank erstellen. Weitere Informationen finden Sie unter [Eigenständige Datenbankbenutzer – machen Sie Ihre Datenbank portabel](https://msdn.microsoft.com/library/ff929188.aspx).
+In der Regel benötigen nur Administratoren Zugriff auf die Masterdatenbank. Der routinemäßige Zugriff auf jede Benutzerdatenbank muss über Benutzer für eigenständige Datenbanken geschehen, die in jeder Datenbank erstellt werden und nicht über Administratorrechte verfügen. Bei der Verwendung von Benutzern für eine eigenständige Datenbank müssen Sie keine Anmeldungen für die Masterdatenbank erstellen. Weitere Informationen finden Sie unter [Eigenständige Datenbankbenutzer – machen Sie Ihre Datenbank portabel](https://msdn.microsoft.com/library/ff929188.aspx).
 
 
 ## Firewall
 
-Die SQL Server-Firewall, die auf den gesamten Azure SQL Server ausgelegt ist, wird normalerweise über das Portal konfiguriert und sollte nur die von Administratoren verwendeten IP-Adressen zulassen. Stellen Sie eine Verbindung zu einer Benutzerdatenbank her, und verwenden Sie anschließend die Transact-SQL-Anweisung [sp\_set\_database\_firewall\_rule](https://msdn.microsoft.com/library/dn270010.aspx), um eine datenbankweite Firewallregel zu erstellen, die den notwendigen Bereich von IP-Adressen für jede Datenbank öffnet.
+Die SQL Server-Firewall, die auf den gesamten Azure SQL Server ausgelegt ist, wird normalerweise über das Portal konfiguriert und darf nur die von Administratoren verwendeten IP-Adressen zulassen. Stellen Sie eine Verbindung zu einer Benutzerdatenbank her, und verwenden Sie anschließend die Transact-SQL-Anweisung [sp\_set\_database\_firewall\_rule](https://msdn.microsoft.com/library/dn270010.aspx), um eine datenbankweite Firewallregel zu erstellen, die den notwendigen Bereich von IP-Adressen für jede Datenbank öffnet.
 
 Der Azure SQL-Datenbank-Dienst ist nur über TCP-Port 1433 verfügbar. Wenn Sie von Ihrem Computer auf eine SQL-Datenbank zugreifen möchten, sollten Sie sicherstellen, dass die Firewall Ihres Clientcomputers die ausgehende TCP-Kommunikation über TCP-Port 1433 zulässt. Sofern nicht für andere Anwendungen benötigt, blockieren Sie eingehende Verbindungen über TCP-Port 1433.
 
@@ -50,7 +50,7 @@ Ständig aktive Verbindungen mit SQL-Datenbank erfordern mindestens alle 10 Stu
 Für die Verwaltung von Anmeldungen und Benutzern in SQL-Datenbank gelten Einschränkungen.
 
 
-- Sie müssen mit der Masterdatenbank (der Datenbank namens **master**) verbunden sein, wenn Sie die ``CREATE/ALTER/DROP DATABASE``-Anweisungen ausführen. – Der Datenbankbenutzer in der Masterdatenbank, der dem Anmeldeprinzipal auf Serverebene entspricht, kann nicht geändert oder verworfen werden. 
+- Sie müssen mit der Masterdatenbank (der Datenbank namens **master**) verbunden sein, wenn Sie die ``CREATE/ALTER/DROP DATABASE``-Anweisungen ausführen. – Der Datenbankbenutzer in der Masterdatenbank, der dem Anmeldeprinzipal auf Serverebene entspricht, kann nicht geändert oder verworfen werden.
 - US-Englisch ist die Standardsprache des Anmeldeprinzipals auf Serverebene.
 - Für das Zugreifen auf die Datenbank **master** muss jede Anmeldung einem Benutzerkonto in der Datenbank **master** zugeordnet sein. Die Datenbank **master** unterstützt keine Benutzer für eigenständige Datenbanken.
 - Nur die Serverebenenprinzipal-Anmeldung und die Mitglieder der Datenbankrolle **dbmanager** in der Datenbank **master** verfügen über die Berechtigung zum Ausführen der Anweisungen ``CREATE DATABASE`` und ``DROP DATABASE``.
@@ -71,7 +71,7 @@ GO
 - Beim Ausführen der Anweisung ``CREATE USER`` mit der Option ``FOR/FROM LOGIN`` muss sie die einzige Anweisung in einem Transact-SQL-Batch sein.
 - Beim Ausführen der Anweisung ``ALTER USER`` mit der Option ``WITH LOGIN`` muss sie die einzige Anweisung in einem Transact-SQL-Batch sein.
 - Für ``CREATE/ALTER/DROP`` benötigt ein Benutzer die Berechtigung ``ALTER ANY USER`` für die Datenbank.
-- Wenn der Besitzer einer Datenbankrolle versucht, einen anderen Datenbankbenutzer dieser Datenbankrolle hinzuzufügen oder ihn daraus zu entfernen, tritt ggf. ein Fehler der folgenden Art auf: **Benutzer oder Rolle "Name" ist in dieser Datenbank nicht vorhanden.** Dieser Fehler tritt auf, da der Benutzer für den Besitzer nicht sichtbar ist. Gewähren Sie dem Rollenbesitzer die Berechtigung ``VIEW DEFINITION`` für den Benutzer, um dieses Problem zu beheben. 
+- Wenn der Besitzer einer Datenbankrolle versucht, einen anderen Datenbankbenutzer dieser Datenbankrolle hinzuzufügen oder ihn daraus zu entfernen, tritt ggf. ein Fehler der folgenden Art auf: **Benutzer oder Rolle "Name" ist in dieser Datenbank nicht vorhanden.** Dieser Fehler tritt auf, da der Benutzer für den Besitzer nicht sichtbar ist. Gewähren Sie dem Rollenbesitzer die Berechtigung ``VIEW DEFINITION`` für den Benutzer, um dieses Problem zu beheben.
 
 Weitere Informationen zu Anmeldungen und Benutzern finden Sie unter [Verwalten von Datenbanken und Anmeldungen in der Azure SQL-Datenbank](sql-database-manage-logins.md).
 
@@ -86,4 +86,4 @@ Weitere Informationen zu Anmeldungen und Benutzern finden Sie unter [Verwalten v
 
 [Sicherheitscenter für SQL Server-Datenbankmodul und Azure SQL-Datenbank](https://msdn.microsoft.com/library/bb510589)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0803_2016-->

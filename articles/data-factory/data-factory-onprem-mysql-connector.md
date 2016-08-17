@@ -29,7 +29,7 @@ Data Factory unterstützt derzeit nur das Verschieben von Daten aus MySQL in and
 ## Installation 
 Damit sich das Datenverwaltungsgateway mit der MySQL-Datenbank verbindet, müssen Sie den [MySQL Connector/Net 6.6.5 für Microsoft Windows](http://go.microsoft.com/fwlink/?LinkId=278885) auf dem System mit dem Datenverwaltungsgateway installieren.
 
-> [AZURE.NOTE] Unter [Problembehandlung bei Gateways](data-factory-move-data-between-onprem-and-cloud.md#gateway-troubleshooting) finden Sie Tipps zur Behandlung von Verbindungs- bzw. Gatewayproblemen.
+> [AZURE.NOTE] Unter [Problembehandlung bei Gateways](data-factory-data-management-gateway.md#troubleshoot-gateway-issues) finden Sie Tipps zur Behandlung von Verbindungs- bzw. Gatewayproblemen.
 
 ## Beispiel: Kopieren von Daten aus MySQL in Azure-Blob
 In diesem Beispiel wird gezeigt, wie Sie Daten aus einer lokalen MySQL-Datenbank in einen Azure-BLOB-Speicher kopieren. Daten können jedoch mithilfe der Kopieraktivität in Azure Data Factory **direkt** in die [hier](data-factory-data-movement-activities.md#supported-data-stores) aufgeführten Senken kopiert werden.
@@ -316,4 +316,4 @@ Beim Verschieben von Daten in MySQL werden die folgenden Zuordnungen zwischen My
 ## Leistung und Optimierung  
 Der Artikel [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-factory-copy-activity-performance.md) beschreibt wichtige Faktoren, die sich auf die Leistung der Datenverschiebung (Kopieraktivität) in Azure Data Factory auswirken, sowie verschiedene Möglichkeiten zur Leistungsoptimierung.
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

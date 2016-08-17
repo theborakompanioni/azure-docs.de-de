@@ -1,7 +1,7 @@
 <properties
    pageTitle="Verwenden des DB2-Connectors in Microsoft Azure App Service | Microsoft Azure"
    description="Erfahren Sie, wie Sie den DB2-Connector mit Triggern und Aktionen für Logik-Apps verwenden."
-   services="app-service\logic"
+   services="logic-apps"
    documentationCenter=".net,nodejs,java"
    authors="gplarsen"
    manager="erikre"
@@ -52,7 +52,7 @@ Sie können einen Connector in einer Logik-App oder über den Azure Marketplace 
 	Name | Erforderlich | Beschreibung
 --- | --- | ---
 ConnectionString | Ja | DB2-Clientverbindungszeichenfolge (z. B. „Network Address=servername;Network Port=50000;User ID=username;Password=password;Initial Catalog=SAMPLE;Package Collection=NWIND;Default Schema=NWIND“).
-Tabellen | Ja | Durch Kommas getrennte Liste von Tabellen-, Sicht- und Aliasnamen, die für OData-Vorgänge und zum Generieren der Swagger-Dokumentation mit Beispielen erforderlich sind (z. B. „*NEWORDERS*“).
+Tabellen | Ja | Durch Kommas getrennte Liste von Tabellen-, Sicht- und Aliasnamen, die für OData-Vorgänge und zum Generieren der Swagger-Dokumentation mit Beispielen erforderlich sind (z. B. „ *NEWORDERS* “).
 Prozeduren | Ja | Durch Kommas getrennte Liste mit Prozedur- und Funktionsnamen (z. B. „SPORDERID“).
 OnPremise | Nein | Lokale Bereitstellung mit Azure Service Bus Relay
 ServiceBusConnectionString | Nein | Azure Service Bus Relay-Verbindungszeichenfolge
@@ -271,4 +271,4 @@ Sie können auch Leistungsstatistiken überprüfen und die Sicherheit zum Connec
 [13]: ./media/app-service-logic-connector-db2/LogicApp_RemoveOrdersDb2_TriggersActions.png
 [14]: ./media/app-service-logic-connector-db2/LogicApp_RemoveOrdersDb2_Outputs.png
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

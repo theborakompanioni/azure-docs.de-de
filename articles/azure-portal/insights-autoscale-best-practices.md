@@ -4,11 +4,11 @@
 	authors="kamathashwin"
 	manager=""
 	editor=""
-	services="azure-portal"
-	documentationCenter="na"/>
+	services="monitoring"
+	documentationCenter="monitoring"/>
 
 <tags
-	ms.service="azure-portal"
+	ms.service="monitoring"
 	ms.workload="na"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
@@ -126,4 +126,4 @@ Die automatische Skalierung benachrichtigt die Administratoren und die Mitwirken
 - Für den Autoskalierungsdienst stehen keine Metriken zur Verfügung, auf deren Grundlage eine Skalierungsentscheidung getroffen werden kann.
 - Metriken stehen wieder zur Verfügung (Wiederherstellung), um eine Skalierungsentscheidung zu treffen. Zusätzlich zu den oben aufgeführten Bedingungen, können Sie E-Mail- oder Webhook-Benachrichtigungen konfigurieren, um bei erfolgreichen Skalierungsaktionen informiert zu werden.
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0803_2016-->

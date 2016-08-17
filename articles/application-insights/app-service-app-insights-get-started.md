@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/25/2015" 
+	ms.date="03/31/2016" 
 	ms.author="awills"/>
  
 # Visual Studio Application Insights
@@ -25,7 +25,7 @@ Er funktioniert mit Web-Apps und eigenständigen Apps auf einer Vielzahl von Pla
 
 Application Insights ist für das Entwicklungsteam konzipiert. Damit können Sie folgende Aktionen ausführen:
 
-* [Analysieren von Verwendungsmustern][knowUsers], um Ihre Benutzer besser zu verstehen und Ihre App kontinuierlich zu verbessern. 
+* [Analysieren von Verwendungsmustern][knowUsers], um Ihre Benutzer besser zu verstehen und Ihre App kontinuierlich zu verbessern.
  * Zähler für Seitenansichten, neue und wiederkehrende Benutzer, Geolocation, Plattformen und andere zentrale Nutzungsanalysen.
  * Ablaufverfolgung für Nutzungspfade, um den Erfolg der einzelnen Features zu bewerten.
 * [Erkennen, Selektieren und Diagnostizieren][detect] Sie Leistungsprobleme, und korrigieren Sie sie, bevor die meisten Benutzer sie bemerken.
@@ -112,7 +112,7 @@ Wenn Sie Visual Studio nicht verwenden oder die Optionen für das Projekt nicht 
 * Fehler:
  * [Kontakt](https://connect.microsoft.com/VisualStudio/Feedback/LoadSubmitFeedbackForm?FormID=6076)
 * Vorschläge:
- * [Aussagen von Benutzern](http://visualstudio.uservoice.com/forums/121579-visual-studio/category/77108-application-insights)
+ * [UserVoice](https://visualstudio.uservoice.com/forums/357324)
 
 
 ## Videos
@@ -144,4 +144,4 @@ Wenn Sie Visual Studio nicht verwenden oder die Optionen für das Projekt nicht 
 
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0810_2016-->

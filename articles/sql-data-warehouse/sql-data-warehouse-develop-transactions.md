@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="07/11/2016"
+   ms.date="07/31/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
 # Transaktionen in SQL Data Warehouse
@@ -56,19 +56,21 @@ Informationen zum Optimieren und Reduzieren der Datenmenge, die in das Protokoll
 ## Transaktionsstatus
 SQL Data Warehouse verwendet die XACT\_STATE()-Funktion, um eine fehlgeschlagene Transaktion mit dem Wert "-2" zu melden. Dies bedeutet, dass die Transaktion fehlgeschlagen und nur für den Rollback markiert ist.
 
-> [AZURE.NOTE] Die Verwendung von "-2" in der XACT\_STATE-Funktion zum Kennzeichnen einer fehlgeschlagenen Transaktion stellt für SQL Server unterschiedliche Verhalten dar. SQL Server verwendet den Wert "-1" für eine Transaktion, für die kein Commit durchgeführt werden kann. SQL Server kann einige Fehler innerhalb einer Transaktion tolerieren, ohne als nicht commitfähig gekennzeichnet zu werden. SELECT 1/0 würde beispielsweise einen Fehler verursachen, jedoch keinen Transaktionszustand erzwingen, der keinen Commit zulässt. SQL Server lässt auch Lesevorgänge in der Transaktion zu, für die kein Commit möglich ist. Dies ist allerdings in SQLDW nicht der Fall. Bei einem Fehler innerhalb einer SQLDW-Transaktion wird automatisch der Zustand "-2" festgelegt, einschließlich SELECT 1/0-Fehlern. Es ist daher wichtig, zu überprüfen, ob in Ihrem Anwendungscode XACT\_STATE() verwendet wird.
+> [AZURE.NOTE] Die Verwendung von "-2" in der XACT\_STATE-Funktion zum Kennzeichnen einer fehlgeschlagenen Transaktion stellt für SQL Server unterschiedliche Verhalten dar. SQL Server verwendet den Wert "-1" für eine Transaktion, für die kein Commit durchgeführt werden kann. SQL Server kann einige Fehler innerhalb einer Transaktion tolerieren, ohne als nicht commitfähig gekennzeichnet zu werden. `SELECT 1/0` würde beispielsweise einen Fehler verursachen, aber keinen Transaktionszustand erzwingen, der keinen Commit zulässt. SQL Server lässt auch Lesevorgänge in der Transaktion zu, für die kein Commit möglich ist. SQL Data Warehouse dagegen lässt dies nicht zu. Wenn in einer SQL Data Warehouse-Transaktion ein Fehler auftritt, wird die Transaktion sofort in den Zustand „-2“ versetzt, und Sie können erst dann weitere SELECT-Anweisungen ausführen, wenn ein Rollback für die ursprüngliche Anweisung durchgeführt wurde. Es ist daher wichtig, zu überprüfen, ob in Ihrem Anwendungscode XACT\_STATE() verwendet wird, da Sie den Code möglicherweise ändern müssen.
 
-In SQL Server kann ein Codefragment angezeigt werden, das wie folgt aussieht:
+In SQL Server kann z.B. eine Transaktion wie die folgende angezeigt werden:
 
 ```sql
+SET NOCOUNT ON;
+DECLARE @xact_state smallint = 0;
+
 BEGIN TRAN
     BEGIN TRY
         DECLARE @i INT;
-        SET     @i = CONVERT(int,'ABC');
+        SET     @i = CONVERT(INT,'ABC');
     END TRY
     BEGIN CATCH
-
-        DECLARE @xact smallint = XACT_STATE();
+        SET @xact_state = XACT_STATE();
 
         SELECT  ERROR_NUMBER()    AS ErrNumber
         ,       ERROR_SEVERITY()  AS ErrSeverity
@@ -76,27 +78,49 @@ BEGIN TRAN
         ,       ERROR_PROCEDURE() AS ErrProcedure
         ,       ERROR_MESSAGE()   AS ErrMessage
         ;
-
-        ROLLBACK TRAN;
+        
+        IF @@TRANCOUNT > 0
+        BEGIN
+            PRINT 'ROLLBACK';
+            ROLLBACK TRAN;
+        END
 
     END CATCH;
+
+IF @@TRANCOUNT >0
+BEGIN
+    PRINT 'COMMIT';
+    COMMIT TRAN;
+END
+
+SELECT @xact_state AS TransactionState;
 ```
 
-Beachten Sie, dass die `SELECT`-Anweisung vor der `ROLLBACK`-Anweisung auftritt. Beachten Sie auch, dass die Einstellung der `@xact`-Variable DECLARE verwendet und nicht `SELECT`.
+Wenn Sie den Code unverändert lassen, erhalten Sie folgende Fehlermeldung:
 
-In SQL Data Warehouse müsste der Code wie folgt aussehen:
+Meldung 111233, Ebene 16, Status 1, Zeile 1 111233;Die aktuelle Transaktion wurde abgebrochen, und alle ausstehenden Änderungen wurden zurückgesetzt. Ursache: Eine Transaktion in einem Nur-Rollback-Status wurde vor einer DDL-, DML- oder SELECT-Anweisung nicht explizit zurückgesetzt.
+
+Sie erhalten auch keine Ausgabe der ERROR\_*-Funktionen.
+
+In SQL Data Warehouse muss der Code leicht geändert werden:
 
 ```sql
+SET NOCOUNT ON;
+DECLARE @xact_state smallint = 0;
+
 BEGIN TRAN
     BEGIN TRY
         DECLARE @i INT;
-        SET     @i = CONVERT(int,'ABC');
+        SET     @i = CONVERT(INT,'ABC');
     END TRY
     BEGIN CATCH
-
-        ROLLBACK TRAN;
-
-        DECLARE @xact smallint = XACT_STATE();
+        SET @xact_state = XACT_STATE();
+        
+        IF @@TRANCOUNT > 0
+        BEGIN
+            PRINT 'ROLLBACK';
+            ROLLBACK TRAN;
+        END
 
         SELECT  ERROR_NUMBER()    AS ErrNumber
         ,       ERROR_SEVERITY()  AS ErrSeverity
@@ -106,10 +130,18 @@ BEGIN TRAN
         ;
     END CATCH;
 
-SELECT @xact;
+IF @@TRANCOUNT >0
+BEGIN
+    PRINT 'COMMIT';
+    COMMIT TRAN;
+END
+
+SELECT @xact_state AS TransactionState;
 ```
 
-Beachten Sie, dass das Rollback der Transaktion vor dem Lesen der Fehlerinformationen im `CATCH`-Block erfolgen muss.
+Jetzt werden Sie das erwartete Verhalten feststellen. Der Fehler in der Transaktion wird verwaltet, und die ERROR\_*-Funktionen geben wie erwartet Werte zurück.
+
+Die einzige Änderung besteht darin, dass die `ROLLBACK`-Ausführung für die Transaktion vor dem Lesen der Fehlerinformationen im `CATCH`-Block erfolgen muss.
 
 ## Error\_Line()-Funktion
 Es ist auch erwähnenswert, dass SQL Data Warehouse die ERROR\_LINE()-Funktion nicht implementiert oder unterstützt. Wenn diese in Ihrem Code enthalten ist, müssen Sie sie entfernen, um die Kompatibilität mit SQL Data Warehouse zu gewährleisten. Verwenden Sie stattdessen Abfragebezeichnungen in Ihrem Code, um entsprechende Funktionalität zu implementieren. Weitere Informationen zu dieser Funktion finden Sie im Artikel [LABEL][].
@@ -129,6 +161,8 @@ Dies sind:
 - Keine verteilten Transaktionen
 - Keine geschachtelten Transaktionen zulässig
 - Keine Speicherpunkte zulässig
+- Keine benannten Transaktionen
+- Keine markierten Transaktionen
 - Keine Unterstützung für DDL, z.B. `CREATE TABLE` innerhalb von benutzerdefinierten Transaktionen
 
 ## Nächste Schritte
@@ -147,4 +181,4 @@ Weitere Informationen zum Optimieren von Transaktionen finden Sie unter [Bewähr
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0803_2016-->

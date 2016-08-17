@@ -1,8 +1,8 @@
 <properties
-	pageTitle="CDN – Problembehandlung bei CDN-Endpunkten mit Status 404"
-	description="Problembehandlung beim Statuscode 404 bei CDN-Endpunkten"
+	pageTitle="Problembehandlung bei Azure CDN-Endpunkten mit Status 404 | Microsoft Azure"
+	description="Problembehandlung beim Statuscode 404 bei Azure CDN-Endpunkten."
 	services="cdn"
-	documentationCenter=".NET"
+	documentationCenter=""
 	authors="camsoper"
 	manager="erikre"
 	editor=""/>
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/11/2016"
+	ms.date="07/28/2016"
 	ms.author="casoper"/>
     
 # Problembehandlung bei CDN-Endpunkten mit Status 404
@@ -67,7 +67,7 @@ Prüfen Sie als Nächstes Ihre **HTTP-** und **HTTPS-Ports**. Die Einstellungen 
 
 Wir nehmen nun an, die URL für die zuvor getestete Ursprungsdatei sei `http://www.contoso.com:8080/file.txt`. Am Ende des Hostnamensegments sehen Sie `:8080`. Dies weist den Browser an, Port `8080` für die Verbindung mit dem Webserver unter `www.contoso.com` zu verwenden. Geben Sie daher im Feld **HTTP-Port** „8080“ ein. Beachten Sie, dass sich diese Porteinstellungen nur darauf auswirken, welchen Port der Endpunkt zum Abrufen von Informationen vom Ursprung verwendet.
 
-> [AZURE.NOTE] **Azure CDN von Akamai**-Endpunkte lassen nicht den vollständigen TCP-Portbereich für Ursprünge zu. Eine Liste der nicht zulässigen Ursprungsports finden Sie unter [Azure CDN from Akamai Behavior Details](cdn-akamai-behavior-details.md) (Verhaltensdetails von Azure CDN von Akamai).
+> [AZURE.NOTE] **Azure CDN von Akamai**-Endpunkte lassen nicht den vollständigen TCP-Portbereich für Ursprünge zu. Eine Liste der nicht zulässigen Ursprungsports finden Sie unter [Azure CDN from Akamai Allowed Origin Ports](https://msdn.microsoft.com/library/mt757337.aspx) (Azure CDN von Akamai – Zulässige Ursprungsports).
   
 ### Überprüfen der Endpunkteinstellungen
 
@@ -97,4 +97,4 @@ In unserem Endpunkt sollen beispielsweise alle Ressourcen im Speicherkonto verf�
 
 Aber wie gehe ich vor, wenn das CDN nicht für jeden Ursprungspfad verwendet werden soll? Nehmen wir an, ich möchte nur den Pfad `publicblob` bereitstellen. Durch Eingabe von */publicblob* im Feld **Ursprungspfad** fügt der Endpunkt vor jeder Anforderung an den Ursprung */publicblob* ein. Dann wird `/publicblob` bei jeder Anforderung an `https://cdndocdemo.azureedge.net/publicblob/lorem.txt` vor dem Anforderungsteil der URL (`/publicblob/lorem.txt`) eingefügt. Somit wird eine Anforderung für `/publicblob/publicblob/lorem.txt` vom Ursprung erstellt. Wenn dieser Pfad zu keiner Datei führt, gibt der Ursprung den Status 404 zurück. Die richtige URL zum Abruf von „lorem.txt“ wäre in diesem Beispiel `https://cdndocdemo.azureedge.net/lorem.txt`. Wie Sie sehen, ist der Pfad */publicblob* hier nicht angegeben, da der Anforderungsteil der URL `/lorem.txt` lautet und der Endpunkt `/publicblob` hinzufügt, sodass `/publicblob/lorem.txt` als Anforderung an den Ursprung weitergegeben wird.
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0803_2016-->

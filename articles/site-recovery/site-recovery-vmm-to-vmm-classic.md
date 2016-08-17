@@ -104,10 +104,13 @@ Generieren Sie einen Registrierungsschlüssel im Tresor. Nachdem Sie den Azure S
 6. Klicken Sie nach der Installation des Anbieters auf **Registrieren**, um den Server im Tresor zu registrieren.
 
 	![InstallComplete](./media/site-recovery-vmm-to-vmm-classic/install-complete.png)
+9. Prüfen Sie unter **Tresorname** den Namen des Tresors, in dem der Server registriert wird. Klicken Sie auf *Weiter*.
+
+	![Serverregistrierung](./media/site-recovery-vmm-to-vmm-classic/vaultcred.PNG)
 
 7. Geben Sie auf der Seite **Internetverbindung** an, wie sich der Anbieter auf dem VMM-Server mit dem Internet verbinden soll. Wählen Sie **Mit vorhandenen Proxyeinstellungen verbinden** aus, um die Standard-Internetverbindungseinstellungen auf dem Server zu verwenden.
 
-	![Interneteinstellungen](./media/site-recovery-vmm-to-vmm-classic/proxy-details.png)
+	![Interneteinstellungen](./media/site-recovery-vmm-to-vmm-classic/proxydetails.PNG)
 
 	- Wenn Sie einen benutzerdefinierten Proxy verwenden möchten, sollten Sie diesen vor der Installation des Anbieters einrichten. Wenn Sie benutzerdefinierte Proxyeinstellungen konfigurieren, wird ein Test ausgeführt, um die Proxyverbindung zu überprüfen.
 	- Wenn Sie einen benutzerdefinierten Proxy verwenden oder Ihr Standardproxy eine Authentifizierung verlangt, müssen Sie die Proxydetails einschließlich der Proxyadresse und des Ports eingeben.
@@ -120,22 +123,18 @@ Generieren Sie einen Registrierungsschlüssel im Tresor. Nachdem Sie den Azure S
 	- Lassen Sie die unter [IP-Bereiche des Azure-Rechenzentrums](https://www.microsoft.com/download/confirmation.aspx?id=41653) angegebenen IP-Adressen sowie das HTTPS-Protokoll (443) zu. Fügen Sie die IP-Adressbereiche der zu verwendenden Azure-Region sowie die IP-Adressbereiche der westlichen USA einer Positivliste hinzu.
 	- Wenn Sie einen benutzerdefinierten Proxy verwenden, wird ein ausführendes VMM-Konto (DRAProxyAccount) automatisch mit den angegebenen Proxyanmeldeinformationen erstellt. Konfigurieren Sie den Proxyserver so, dass dieses Konto erfolgreich authentifiziert werden kann. In der VMM-Konsole können die Einstellungen des ausführenden VMM-Kontos geändert werden. Zu diesem Zweck öffnen Sie den Arbeitsbereich **Einstellungen**, erweitern Sie **Sicherheit**, klicken Sie auf **Ausführende Konten**, und ändern Sie das Kennwort für DRAProxyAccount. Sie müssen den VMM-Dienst neu starten, damit diese Einstellung wirksam wird.
 
-8. Wählen Sie unter **Registrierungsschlüssel** den Schlüssel aus, den Sie von Azure Site Recovery heruntergeladen und auf den VMM-Server kopiert haben.
-9. Prüfen Sie unter **Tresorname** den Namen des Tresors, in dem der Server registriert wird. Klicken Sie auf *Weiter*.
 
-	![Serverregistrierung](./media/site-recovery-vmm-to-vmm-classic/vault-creds.png)
+8. Wählen Sie unter **Registrierungsschlüssel** den Schlüssel aus, den Sie von Azure Site Recovery heruntergeladen und auf den VMM-Server kopiert haben.
+
 
 10.  Die Verschlüsselungseinstellung wird nur verwendet, wenn Sie Hyper-V-VMs in VMM-Clouds in Azure replizieren. Bei der Replikation an einem sekundären Standort wird sie nicht verwendet.
-
-	![Serverregistrierung](./media/site-recovery-vmm-to-vmm-classic/encrypt.png)
 
 11.  Geben Sie unter **Servername** einen Anzeigenamen ein, um den VMM-Server im Tresor zu identifizieren. Geben Sie in einer Clusterkonfiguration den Rollennamen des VMM-Clusters an.
 12.  Wählen Sie unter **Cloudmetadaten synchronisieren** aus, ob Sie Metadaten für alle Clouds auf dem VMM-Server mit dem Tresor synchronisieren möchten. Diese Aktion muss für jeden VMM-Server nur einmal ausgeführt werden. Wenn Sie nicht alle Clouds synchronisieren möchten, können Sie diese Einstellung deaktiviert lassen und in den Cloudeigenschaften in der VMM-Konsole jede Cloud einzeln synchronisieren.
 
-	![Serverregistrierung](./media/site-recovery-vmm-to-vmm-classic/friendly-name.png)
-
 13.  Klicken Sie auf **Weiter**, um den Prozess abzuschließen. Nach der Registrierung werden die Metadaten vom VMM-Server von Azure Site Recovery abgerufen. Der Server wird im Tresor auf der Registerkarte **VMM-Server** der Seite **Server** angezeigt.
-
+ 	
+	![Lastpage](./media/site-recovery-vmm-to-vmm-classic/provider13.PNG)
 
 ### Installation über die Befehlszeile
 
@@ -143,7 +142,7 @@ Der Azure Site Recovery-Anbieter kann auch über die Befehlszeile installiert we
 
 1. Laden Sie die Installationsdatei und den Registrierungsschlüssel des Anbieters in einen Ordner herunter. Beispiel: C:\\ASR.
 2. Beenden Sie den System Center Virtual Machine Manager-Dienst.
-3. Extrahieren Sie das Installationsprogramm für den Anbieter, indem Sie folgende Befehle über eine Eingabeaufforderung mit **Administratorrechten** ausführen:
+3. Extrahieren Sie das Installationsprogramm für den Anbieter, indem Sie über eine Eingabeaufforderung mit **Administratorrechten** folgende Befehle ausführen:
 
     	C:\Windows\System32> CD C:\ASR
     	C:\ASR> AzureSiteRecoveryProvider.exe /x:. /q
@@ -380,6 +379,6 @@ Der Anbieter auf dem VMM-Server wird vom Dienst über das Ereignis benachrichtig
  
 ## Nächste Schritte
 
-Nachdem Sie ein Testfailover ausgeführt haben, um die richtige Funktionsweise der Umgebung zu überprüfen, lesen Sie sich die [Informationen](site-recovery-failover.md) zu den unterschiedlichen Failoverarten durch.
+Nachdem Sie ein Testfailover ausgeführt haben, um die richtige Funktionsweise der Umgebung zu überprüfen, [informieren](site-recovery-failover.md) Sie sich über die unterschiedlichen Failoverarten.
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

@@ -3,8 +3,8 @@
 	description="Erfahren Sie, wie Sie Azure Backup für Data Protection Manager (DPM) mithilfe von PowerShell bereitstellen und verwalten."
 	services="backup"
 	documentationCenter=""
-	authors="AnuragMehrotra"
-	manager="jwhit"
+	authors="Nkolli1"
+	manager="shreeshd"
 	editor=""/>
 
 <tags
@@ -14,7 +14,7 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="07/01/2016"
-	ms.author="jimpark; aashishr; anuragm"/>
+	ms.author="jimpark; trinadhk; anuragm; markgal"/>
 
 
 # Bereitstellen und Verwalten der Sicherung in Azure für Data Protection Manager (DPM)-Server mit PowerShell
@@ -102,15 +102,15 @@ Die verfügbaren Optionen umfassen:
 
 | Option | Details | Standard |
 | ---- | ----- | ----- |
-| /q | Unbeaufsichtigte Installation | - |
+| /q | Unbeaufsichtigte Installation | - | 
 | /p: "location" | Der Pfad zum Installationsordner für den Azure Backup-Agent. | C:\\Program Files\\Microsoft Azure Recovery Services Agent |
 | /s: "Location" | Der Pfad zum Cacheordner für den Azure Backup-Agent. | C:\\Program Files\\Microsoft Azure Recovery Services Agent\\Scratch |
-| /m | Microsoft Update abonnieren | - |
-| /nu | Nach Abschluss der Installation nicht nach Updates suchen | - |
-| /d | Microsoft Azure Recovery Services Agent wird deinstalliert | - |
-| /ph | Proxyhostadresse | - |
-| /po | Proxyhost-Portnummer | - |
-| /pu | Proxyhost-Benutzername | - |
+| /m | Microsoft Update abonnieren | - | 
+| /nu | Nach Abschluss der Installation nicht nach Updates suchen | - | 
+| /d | Microsoft Azure Recovery Services Agent wird deinstalliert | - | 
+| /ph | Proxyhostadresse | - | 
+| /po | Proxyhost-Portnummer | - | 
+| /pu | Proxyhost-Benutzername | - | 
 | /pw | Proxykennwort | - |
 
 ### Registrieren beim Azure Backup-Dienst
@@ -340,4 +340,4 @@ Die Befehle können mühelos für beliebige Datenquellentypen erweitert werden.
 
 - Weitere Informationen zu Azure Backup für DPM finden Sie unter [Einführung in DPM Backup](backup-azure-dpm-introduction.md)
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0803_2016-->

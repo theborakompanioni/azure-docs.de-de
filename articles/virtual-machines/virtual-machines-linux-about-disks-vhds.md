@@ -25,10 +25,13 @@ Virtuelle Computer in Azure verwenden wie alle anderen Computer auch einen Daten
 
 [AZURE.INCLUDE [virtual-machines-common-about-disks-vhds](../../includes/virtual-machines-common-about-disks-vhds.md)]
 
+## Problembehandlung
+[AZURE.INCLUDE [virtual-machines-linux-lunzero](../../includes/virtual-machines-linux-lunzero.md)]
+
 ## Nächste Schritte
 
 -  [Anfügen eines Datenträgers](virtual-machines-linux-attach-disk-portal.md), um zusätzlichen Speicherplatz für den virtuellen Computer hinzuzufügen
 -  [Konfigurieren von Software-RAID](virtual-machines-linux-configure-raid.md) für Redundanz
 -  [Erfassen eines virtuellen Linux-Computers](virtual-machines-linux-classic-capture-image.md) für die schnelle Bereitstellung zusätzlicher virtueller Computer
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0803_2016-->

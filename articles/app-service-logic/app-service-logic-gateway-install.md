@@ -1,7 +1,7 @@
 <properties
    pageTitle="Logik-Apps installieren lokales Datengateway | Microsoft Azure"
    description="Informationen zum Installieren des lokalen Datengateways für die Verwendung in einer Logik-App."
-   services="app-service\logic"
+   services="logic-apps"
    documentationCenter=".net,nodejs,java"
    authors="jeffhollan"
    manager="erikre"
@@ -221,4 +221,4 @@ Datenverwaltungsgateway- und PowerBIGateway-Protokoll befinden sich unter **Anwe
 - [Unternehmensintegrationsfeatures](app-service-logic-enterprise-integration-overview.md)
 - [Logik-Apps-Connectors](../connectors/apis-list.md)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

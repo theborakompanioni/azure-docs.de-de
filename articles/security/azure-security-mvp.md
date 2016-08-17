@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/17/2016"
+   ms.date="08/02/2016"
    ms.author="yurid"/>
 
 # Azure-Sicherheits-MVP-Programm
@@ -28,4 +28,4 @@ Wenngleich es nicht unbedingt ein bestimmtes Kriterium gibt, das erfüllt sein m
 
 Sind Sie Experte für Azure-Sicherheit? Kennen Sie eine Person, auf die dies zutrifft? Dann [nominieren Sie sich selbst oder eine andere Person](https://mvp.microsoft.com/Nomination/nominate-an-mvp) heute als Azure-Sicherheits-MVP!
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0803_2016-->

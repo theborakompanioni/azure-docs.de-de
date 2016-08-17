@@ -1,7 +1,7 @@
 <properties
    pageTitle="Schleifen, Bereiche und Auflösen von Batches in Logik-Apps | Microsoft Azure"
    description="Die Konzepte Schleifen und Bereiche sowie das Auflösen von Batches in Logik-Apps."
-   services="app-service\logic"
+   services="logic-apps"
    documentationCenter=".net,nodejs,java"
    authors="jeffhollan"
    manager="dwrede"
@@ -141,4 +141,4 @@ Es ist möglich, eine Reihe von Aktionen zusammen in einem Bereich zu gruppieren
 }
 ```
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

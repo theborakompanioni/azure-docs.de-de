@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="07/23/2016"   
+	ms.date="07/27/2016"   
 	ms.author="juliako"/>
 
 # Azure Media Services-Telemetrie mit .NET
@@ -21,18 +21,24 @@
 
 Die Media Services-Telemetrie/-Überwachung ermöglicht Media Services-Kunden den Zugriff auf Metrikdaten für die entsprechenden Dienste. Die aktuelle Version unterstützt Telemetriedaten für die Entitäten „Channel“ und „StreamingEndpoint“. Die Telemetrie kann auf Komponentenebene konfiguriert werden. Dabei stehen zwei Detailstufen zur Verfügung: „Normal“ und „Ausführlich“. Die aktuelle Version unterstützt nur „Normal“.
 
-Die Telemetrie wird in ein vom Kunden angegebenes Azure-Speicherkonto geschrieben. (Ein Speicherkonto muss mit dem Media Services-Konto verknüpft sein.) Die Telemetrie wird in eine Azure Storage-Tabelle unter dem angegebenen Speicherkonto geschrieben. Das Telemetriesystem erstellt für jeden neuen Tag (Grundlage: 00:00 UTC) eine separate Tabelle. Beispiel: „TelemetryMetrics20160321“, wobei „20160321“ das Erstellungsdatum der Tabelle ist. Für jeden Tag wird eine separate Tabelle erstellt.
+Die Telemetrie wird in eine vom Kunden angegebene Speichertabelle im Azure-Speicherkonto geschrieben (Das Speicherkonto muss mit dem Media Services-Konto verknüpft sein.). Das Telemetriesystem erstellt für jeden neuen Tag (Grundlage: 00:00 UTC) eine separate Tabelle. Beispiel: „TelemetryMetrics20160321“, wobei „20160321“ das Erstellungsdatum der Tabelle ist. Für jeden Tag wird eine separate Tabelle erstellt.
 
-Das Telemetriesystem bietet weder eine Datenaufbewahrung noch eine automatische Löschung alter Datensätze. Aus diesem Grund müssen Sie die Verwaltung und das Löschen alter Datensätze selbst übernehmen. Die separaten Tabellen für die einzelnen Tage vereinfachen das Löschen alter Datensätze. Sie müssen einfach nur alte Tabellen löschen.
+Beachten Sie, dass das Telemetriesystem keine Beibehaltung der Daten verwaltet. Sie können die alten Telemetriedaten durch Löschen der Speichertabellen entfernen.
 
-In diesem Thema erfahren Sie, wie Sie die Telemetrie für die angegebenen AMS-Dienste aktivieren und die Metriken mithilfe von .NET abfragen.
+Sie können Telemetriedaten in einer der folgenden Arten verwenden:
+
+- Lesen Sie Daten direkt aus dem Azure-Tabellenspeicher (z.B. mithilfe des Speicher-SDK). Die Beschreibung der Telemetriespeichertabellen finden Sie unter **Verwenden von Telemetriedaten** in [diesem](https://msdn.microsoft.com/library/mt742089.aspx) Thema.
+
+Oder
+
+- Verwenden Sie die Unterstützung für das Lesen von Speicherdaten im .NET SDK der Media Services. In diesem Thema erfahren Sie, wie Sie die Telemetrie für das angegebene AMS-Konto aktivieren und die Metriken mithilfe des .NET SDK der Azure Media Services abfragen.
 
 ## Konfigurieren der Telemetrie für ein Media Services-Konto
 
 Zum Aktivieren der Telemetrie sind folgende Schritte erforderlich:
 
 - Ermitteln Sie die Anmeldeinformationen des mit dem Media Services-Konto verknüpften Speicherkontos.
-- Erstellen Sie einen Benachrichtigungsendpunkt, bei dem **EndPointType** auf **AzureTable** festgelegt ist und endPointAddress auf die Speichertabelle verweist.
+- Erstellen Sie einen Benachrichtigungsendpunkt, bei dem **EndPointType** auf **AzureTable** festgelegt ist, und endPointAddress auf die Speichertabelle verweist.
 
 	    INotificationEndPoint notificationEndPoint = 
 	                  _context.NotificationEndPoints.Create("monitoring", 
@@ -52,7 +58,7 @@ Zum Aktivieren der Telemetrie sind folgende Schritte erforderlich:
 
 Telemetriedaten werden in eine Azure-Speichertabelle in dem Speicherkonto geschrieben, das bei der Konfiguration der Telemetrie für das Media Services-Konto angegeben wurde. Das Telemetriesystem erstellt für jeden neuen Tag (Grundlage: 00:00 UTC) eine separate Tabelle. Beispiel: „TelemetryMetrics20160321“, wobei „20160321“ das Erstellungsdatum der Tabelle ist. Für jeden Tag wird eine separate Tabelle erstellt.
 
-Sie können die Tabellen nach den folgenden Metrikinformationen abfragen.
+Sie können Telemetrietabellen nach den folgenden Metrikinformationen abfragen. Das Beispiel weiter unten in diesem Thema veranschaulicht, wie das .NET SDK der Media Services zum Abfragen von Metriken verwendet wird.
 
 ### StreamingEndpoint-Protokoll
 
@@ -94,8 +100,10 @@ Eigenschaft|Beschreibung|Beispielwert
 **DiscontinuityCount**|Ruft die Anzahl von Unterbrechungen ab.|0
 **LastTimestamp**|Ruft den letzten Zeitstempel ab.|1800488800
  
-## StreamingEndpoint-Metrikbeispiel
-		
+## Beispiel  
+	
+Im folgenden Thema erfahren Sie, wie Sie die Telemetrie für das angegebene AMS-Konto aktivieren und die Metriken mithilfe des .NET SDK der Azure Media Services abfragen.
+
 	using System;
 	using System.Collections.Generic;
 	using System.Configuration;
@@ -246,4 +254,4 @@ Unter den Azure Media Services-Lernpfaden finden Sie Informationen zu weiteren A
 
 [AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

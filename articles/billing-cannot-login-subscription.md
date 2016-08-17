@@ -1,11 +1,11 @@
 <properties
 	pageTitle="Ich kann mich nicht anmelden, um mein Azure-Abonnement zu verwalten | Microsoft Azure"
 	description="Informationen zur Problembehandlung bei einigen häufig auftretenden Anmeldeproblemen bei Azure-Abonnements"
-	services="billing"
+	services=""
 	documentationCenter=""
 	authors="genlin"
 	manager="msmbaldwin"
-	editor="na"
+	editor=""
 	tags="billing"
 	/>
 
@@ -54,4 +54,4 @@ Nachdem es jetzt möglich ist, sich bei Azure mit einem Organisationskonto anzum
 
 Versuchen Sie, den Cache und Cookies zu löschen, den Internet Explorer-Modus „InPrivate-Browsen“ zu verwenden und einen anderen Browser zu nutzen.
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0803_2016-->

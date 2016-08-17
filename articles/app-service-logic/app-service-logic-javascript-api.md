@@ -1,7 +1,7 @@
 <properties
    pageTitle="Verwenden der JavaScript-API-App in einer Logik-App | Microsoft Azure"
    description="JavaScript-API-App oder -Connector"
-   services="app-service\logic"
+   services="logic-apps"
    documentationCenter=".net,nodejs,java"
    authors="stepsic-microsoft-com"
    manager="dwrede"
@@ -23,7 +23,7 @@
 Die JavaScript-API-App bietet Ihnen eine gute Möglichkeit, einfache JavaScript-Ausdrücke auszuführen, *während Ihre Logik-App ausgeführt wird*.
 
 ## Wann sollten Sie diese API-App verwenden?
-Das Hauptszenario für diese API-App ist, wenn der Lebenszyklus des Codes, den Sie schreiben, mit der Logik-App identisch sein soll und der Code in *keinem*anderen Szenario aufgerufen werden soll.
+Das Hauptszenario für diese API-App ist, wenn der Lebenszyklus des Codes, den Sie schreiben, mit der Logik-App identisch sein soll und der Code in *keinem* anderen Szenario aufgerufen werden soll.
 
 Wenn Sie jedoch einen wiederverwendbaren Codeausschnitt erstellen möchten, der einen von der Logik-App unabhängigen Lebenszyklus aufweist, sollten Sie die WebJobs-API-App verwenden, um einfache Codeausdrücke zu schreiben und über Ihre Logik-App aufzurufen.
 
@@ -99,4 +99,4 @@ Nachdem der Connector nun erstellt ist, können Sie ihn mit einer Logik-App in e
 <!--Links -->
 [Creating a Logic app]: app-service-logic-create-a-logic-app.md
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

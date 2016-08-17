@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/05/2016"
-   ms.author="patw;jroth;aglick"/>
+   ms.date="08/01/2016"
+   ms.author="aglick"/>
 
 #Technischer Leitfaden zur Resilienz in Azure – Wiederherstellung nach lokalen Ausfällen in Azure
 
@@ -223,4 +223,4 @@ Die mit Azure HDInsight verknüpften Daten werden standardmäßig in Azure Blob 
 
 Dieser Artikel gehört zu einer Reihe von Artikeln, die als [Technischer Leitfaden zur Resilienz in Azure](./resiliency-technical-guidance.md) dienen. Der nächste Artikel dieser Reihe ist [Wiederherstellung nach einer regionsweiten Dienstunterbrechung](./resiliency-technical-guidance-recovery-loss-azure-region.md).
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

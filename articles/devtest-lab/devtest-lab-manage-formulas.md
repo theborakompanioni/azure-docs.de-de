@@ -64,12 +64,12 @@ Die folgenden Schritte führen Sie durch den Prozess der Erstellung einer neuen 
 
 	- **Formelname**: Geben Sie einen Namen für die Formel ein. Dieser Wert wird in der Liste der Basisimages angezeigt, wenn Sie einen virtuellen Computer erstellen. Der Name wird während der Eingabe überprüft. Falls er nicht gültig ist, werden Sie in einer Meldung über die Anforderungen für einen gültigen Namen informiert.
 	- **Beschreibung**: Geben Sie eine aussagekräftige Beschreibung für Ihre Formel ein. Dieser Wert steht über das Kontextmenü der Formel zur Verfügung, wenn Sie einen virtuellen Computer erstellen.
-	- **Image**: Dieses Feld zeigt den Namen des Basisimage an, das Sie auf dem vorherigen Blatt ausgewählt haben. 
+	- **Image**: Dieses Feld zeigt den Namen des Basisimage an, das Sie auf dem vorherigen Blatt ausgewählt haben.
 	- **VM-Größe**: Wählen Sie eines der vordefinierten Elemente aus, mit denen die Prozessorkerne, die RAM-Größe und die Größe der Festplatte des zu erstellenden virtuellen Computers angegeben werden.
 	- **Virtuelles Netzwerk**: Wählen Sie diese Option und das gewünschte virtuelle Netzwerk aus.
 	- **Subnetz**: Wählen Sie diese Option und das gewünschte Subnetz aus.
 	- **Öffentliche IP-Adresse**: Wenn die Labrichtlinie öffentliche IP-Adressen für das ausgewählte Subnetz zulässt, geben Sie durch Auswahl von **Ja** oder **Nein** an, ob die IP-Adresse öffentlich sein soll. Andernfalls ist diese Option deaktiviert und als **Nein** festgelegt.
-	- **Artefakte**: Wählen Sie diese Option und – aus der Liste der Artefakte – die Artefakte aus, die Sie dem Basisimage hinzufügen möchten, und konfigurieren Sie sie. Beachten Sie, dass Artefaktparameter, bei denen es sich um sichere Zeichenfolgen handelt, nicht angezeigt werden, da die Formel keine sicheren Zeichenfolgenwerte speichert. 
+	- **Artefakte**: Wählen Sie diese Option und – aus der Liste der Artefakte – die Artefakte aus, die Sie dem Basisimage hinzufügen möchten, und konfigurieren Sie sie. Beachten Sie, dass Artefaktparameter, bei denen es sich um sichere Zeichenfolgen handelt, nicht angezeigt werden, da die Formel keine sicheren Zeichenfolgenwerte speichert.
 
     	![Formel erstellen](./media/devtest-lab-manage-formulas/create-formula.png)
 
@@ -142,7 +142,11 @@ Um eine Formel zu löschen, gehen Sie folgendermaßen vor:
 
     ![Kontextmenü „Formel“](./media/devtest-lab-manage-formulas/formula-delete-confirmation.png)
 
+## Verwandte Blogbeiträge
+
+- [Custom images or formulas?](https://blogs.msdn.microsoft.com/devtestlab/2016/04/06/custom-images-or-formulas/) (Benutzerdefinierte Images oder Formeln?)
+
 ## Nächste Schritte
 Nachdem Sie eine Formel erstellt haben, die zum Erstellen virtueller Computer verwendet werden soll, besteht der nächste Schritt darin, [Ihrem Lab einen virtuellen Computer hinzuzufügen](./devtest-lab-add-vm-with-artifacts.md).
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0803_2016-->

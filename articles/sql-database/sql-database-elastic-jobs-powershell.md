@@ -434,7 +434,7 @@ Ausführungsrichtlinien lassen aktuell die folgenden Definitionen zu:
 * Auftragstimeout: Gesamtzeit bis zum Abbruch eines Auftrags durch die Aufträge für die elastische Datenbank.
 * Anfängliches Wiederholungsintervall: Wartezeit vor dem ersten Wiederholungsversuch.
 * Maximales Wiederholungsintervall: Höchstmenge der zu durchlaufenden Wiederholungsintervalle.
-* Backoffkoeffizient des Wiederholungsintervalls: Koeffizient zur Berechnung des nächsten Intervalls zwischen Wiederholungsversuchen. Dazu wird diese Formel verwendet: (Anfängliches Wiederholungsintervall) * Math.pow((Intervallbackoffkoeffizient), (Anzahl der Wiederholungsversuche) - 2). 
+* Backoffkoeffizient des Wiederholungsintervalls: Koeffizient zur Berechnung des nächsten Intervalls zwischen Wiederholungsversuchen. Dazu wird diese Formel verwendet: (Anfängliches Wiederholungsintervall) * Math.pow((Intervallbackoffkoeffizient), (Anzahl der Wiederholungsversuche) - 2).
 * Versuche maximal: Die Höchstzahl der im Rahmen eines Auftrags auszuführenden Wiederholungsversuche.
 
 Für die standardmäßige Ausführungsrichtlinie werden diese Werte verwendet:
@@ -521,7 +521,7 @@ Legen Sie die folgenden Variablen fest, um die gewünschte Konfiguration für da
 
 Verwenden Sie das Cmdlet [**Add-AzureSqlJobChildTarget**](https://msdn.microsoft.comlibrary/mt346064.aspx), um eine Datenbank zu einer bestimmten benutzerdefinierten Sammlung hinzuzufügen.
 
-	$serverName = "{Database Server Name}"
+	$databaseServerName = "{Database Server Name}"
 	$databaseName = "{Database Name}"
 	$customCollectionName = "{Custom Database Collection Name}"
 	Add-AzureSqlJobChildTarget -CustomCollectionName $customCollectionName -DatabaseName $databaseName -ServerName $databaseServerName 
@@ -680,4 +680,4 @@ Nach der Erstellung eines DACPACs in Aufträge für die elastische Datenbank kan
 [2]: ./media/sql-database-elastic-jobs-powershell/portal.png
 <!--anchors-->
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0803_2016-->

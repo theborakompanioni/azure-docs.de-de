@@ -1,7 +1,7 @@
 <properties 
 	pageTitle="Erstellen einer Logik-App mit Azure-Ressourcen-Manager-Vorlagen in Azure App Service | Microsoft Azure" 
 	description="Verwenden Sie eine Azure-Ressourcen-Manager-Vorlage, um eine leere Logik-App zum Definieren von Workflows bereitzustellen." 
-	services="app-service\logic" 
+	services="logic-apps" 
 	documentationCenter="" 
 	authors="MSFTMan" 
 	manager="erikre" 
@@ -116,4 +116,4 @@ Diese spezifische Definition wird einmal pro Stunde ausgeführt und pingt den im
 
  
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

@@ -1,7 +1,7 @@
 <properties
 pageTitle="Wunderlist | Microsoft Azure"
 description="Erstellen Sie Logik-Apps mit Azure App Service. Wunderlist ist gleichzeitig eine Aufgabenliste und ein Aufgabenmanager und erleichtert es Menschen, ihren Alltag zu meistern. Ob Sie eine Einkaufsliste mit Ihrem Partner teilen, an einem Projekt arbeiten oder Ihren Urlaub planen – Wunderlist hilft Ihnen dabei, Ihre Aufgaben zu notieren, sie zu teilen und zu erledigen. Dabei übernimmt Wunderlist die Synchronisierung zwischen Telefon, Tablet und Computer – die Aufgaben sind auf allen Geräten sofort zur Hand."
-services="app-servicelogic"	
+services="logic-apps"	
 documentationCenter=".net,nodejs,java" 	
 authors="msftman"	
 manager="erikre"	
@@ -904,4 +904,4 @@ Erinnerung löschen: Löscht eine bestimmte Erinnerung.
 ## Nächste Schritte
 [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

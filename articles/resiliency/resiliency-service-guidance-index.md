@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/10/2016"
+   ms.date="08/01/2016"
    ms.author="aglick"/>
 
 # Leitfaden zur Resilienz von Diensten in Microsoft Azure
@@ -38,4 +38,4 @@ Die Entwurfsleitfäden bieten Anleitungen zu Design und Architektur und stellen 
 ##Nächste Schritte
 Wenn Sie allgemeinere Informationen zu Systemen und Lösungen suchen, lesen Sie den Artikel [Notfallwiederherstellung und hohe Verfügbarkeit für in Microsoft Azure erstellte Anwendungen](https://aka.ms/drtechguide).
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0803_2016-->

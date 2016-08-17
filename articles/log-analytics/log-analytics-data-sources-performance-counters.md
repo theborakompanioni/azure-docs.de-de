@@ -87,7 +87,7 @@ Die folgende Tabelle zeigt verschiedene Beispiele für Protokollsuchvorgänge, d
 | Type=Perf Computer="MyComputer" | Alle Leistungsdaten eines bestimmten Computers. |
 | Type=Perf CounterName="Aktuelle Warteschlangenlänge" | Alle Leistungsdaten eines bestimmten Leistungsindikators. |
 | Type=Perf (ObjectName=Processor) CounterName="% Prozessorzeit" InstanceName=\_Total &#124; measure Avg(Average) as AVGCPU by Computer | Durchschnittliche CPU-Nutzung aller Computer. |
-| Type=Perf (CounterName="% Prozessorzeit") | measure max(Max) by Computer &#124; Maximale CPU-Nutzung aller Computer. |
+| Type=Perf (CounterName="% Prozessorzeit") &#124; measure max(Max) by Computer &#124; Maximale CPU-Nutzung aller Computer. |
 | Type=Perf ObjectName=LogicalDisk CounterName="Aktuelle Warteschlangenlänge" Computer="MyComputerName" &#124; measure Avg(Average) by InstanceName | Durchschnittliche aktuelle Länge der Datenträgerwarteschlangen aller Instanzen eines bestimmten Computers. |
 | Type=Perf CounterName="Übertragungen/s" &#124; measure percentile95(Average) by Computer | 95\. Perzentil der Datenträgerübertragungen pro Sekunde auf allen Computern. |
 | Type=Perf CounterName="% Prozessorzeit" InstanceName="\_Total" &#124; measure avg(CounterValue) by Computer Interval 1HOUR | Durchschnittliche CPU-Nutzung pro Stunde auf allen Computern. |

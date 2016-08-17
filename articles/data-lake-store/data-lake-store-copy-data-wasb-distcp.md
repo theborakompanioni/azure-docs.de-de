@@ -13,12 +13,17 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="05/11/2016"
+   ms.date="08/02/2016"
    ms.author="nitinme"/>
 
 # Kopieren von Daten zwischen Azure Storage-Blobs und Data Lake-Speicher mithilfe von Distcp
 
-Nachdem Sie einen HDInsight-Cluster erstellt haben, der Zugriff auf ein Data Lake-Speicherkonto besitzt, können Sie Hadoop-Ökosystemtools wie Distcp zum Kopieren von Daten aus einem HDInsight-Clusterspeicher (WASB) in ein Data Lake-Speicherkonto (und umgekehrt) verwenden. Dieser Artikel enthält Anweisungen zur Vorgehensweise.
+> [AZURE.SELECTOR]
+- [Verwenden von DistCp](data-lake-store-copy-data-wasb-distcp.md)
+- [Verwenden von AdlCopy](data-lake-store-copy-data-azure-storage-blob.md)
+
+
+Nachdem Sie einen HDInsight-Cluster erstellt haben, der Zugriff auf ein Data Lake Store-Konto besitzt, können Sie Hadoop-Ökosystemtools wie Distcp zum Kopieren von Daten aus einem HDInsight-Clusterspeicher (WASB) in ein Data Lake Store-Konto (und umgekehrt) verwenden. Dieser Artikel enthält Anweisungen zur Vorgehensweise.
 
 ##Voraussetzungen
 
@@ -26,11 +31,11 @@ Bevor Sie mit diesem Artikel beginnen können, benötigen Sie Folgendes:
 
 - **Ein Azure-Abonnement**. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
 - **Aktiviertes Azure-Abonnement** für die öffentliche Vorschauversion des Data Lake-Speichers. Weitere Informationen finden Sie in den [Anweisungen](data-lake-store-get-started-portal.md#signup).
-- **HDInsight-Cluster** mit Zugriff auf ein Data Lake-Speicherkonto. Informationen finden Sie unter [Erstellen eines HDInsight-Clusters mit Data Lake-Speicher](data-lake-store-hdinsight-hadoop-use-portal.md). Stellen Sie sicher, dass Remotedesktop für den Cluster aktiviert ist.
+- **Azure HDInsight-Cluster** mit Zugriff auf ein Data Lake Store-Konto. Informationen finden Sie unter [Erstellen eines HDInsight-Clusters mit Data Lake Store](data-lake-store-hdinsight-hadoop-use-portal.md). Stellen Sie sicher, dass Remotedesktop für den Cluster aktiviert ist.
 
 ## Lernen Sie schnell mithilfe von Videos?
 
-[Sehen Sie sich dieses Video](https://mix.office.com/watch/1liuojvdx6sie) zum Kopieren von Daten zwischen Azure Storage-Blobs und Data Lake-Speicher mithilfe von DistCp an.
+Sehen Sie sich [dieses Video](https://mix.office.com/watch/1liuojvdx6sie) zum Kopieren von Daten zwischen Azure Storage-Blobs und Data Lake Store mithilfe von DistCp an.
 
 ## Verwenden von Distcp über Remotedesktop (Windows-Cluster) oder SSH (Linux-Cluster)
 
@@ -56,13 +61,13 @@ Ein HDInsight-Cluster enthält das Distcp-Dienstprogramm, das zum Kopieren von D
 
 		hadoop distcp wasb://<container_name>@<storage_account_name>.blob.core.windows.net/example/data/gutenberg adl://<data_lake_store_account>.azuredatalakestore.net:443/myfolder
 
-	Dadurch wird der Inhalt des Ordners **/example/data/gutenberg/** in WASB in den Ordner **/myfolder** im Data Lake-Speicherkonto kopiert.
+	Dadurch wird der Inhalt des Ordners **/example/data/gutenberg/** in WASB in den Ordner **/myfolder** im Data Lake Store-Konto kopiert.
 
 6. Verwenden Sie Distcp ebenso zum Kopieren von Daten aus einem Data Lake-Speicherkonto in WASB.
 
 		hadoop distcp adl://<data_lake_store_account>.azuredatalakestore.net:443/myfolder wasb://<container_name>@<storage_account_name>.blob.core.windows.net/example/data/gutenberg
 
-	Dadurch wird der Inhalt des Ordners **/myfolder** im Data Lake-Speicherkonto in den Ordner **/example/data/gutenberg/** in WASB kopiert.
+	Dadurch wird der Inhalt des Ordners **/myfolder** im Data Lake Store-Konto in den Ordner **/example/data/gutenberg/** in WASB kopiert.
 
 ## Weitere Informationen
 
@@ -71,4 +76,4 @@ Ein HDInsight-Cluster enthält das Distcp-Dienstprogramm, das zum Kopieren von D
 - [Verwenden von Azure Data Lake Analytics mit Data Lake-Speicher](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 - [Verwenden von Azure HDInsight mit Data Lake-Speicher](data-lake-store-hdinsight-hadoop-use-portal.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0803_2016-->

@@ -1,8 +1,8 @@
 <properties
-	pageTitle="CDN – Überschreiben des HTTP-Standardverhaltens mithilfe des Regelmoduls"
-	description="Mit dem Regelmodul können Sie anpassen, wie HTTP-Anforderungen behandelt werden, z. B. Sperren der Übermittlung bestimmter Inhaltstypen, Definieren einer Zwischenspeicherungsrichtlinie oder Ändern von HTTP-Headern."
+	pageTitle="Überschreiben des HTTP-Standardverhaltens in Azure CDN mithilfe des Regelmoduls | Microsoft Azure"
+	description="Mit dem Regelmodul können Sie anpassen, wie HTTP-Anforderungen von Azure CDN behandelt werden, z.B. Sperren der Übermittlung bestimmter Inhaltstypen, Definieren einer Zwischenspeicherungsrichtlinie oder Ändern von HTTP-Headern."
 	services="cdn"
-	documentationCenter=".NET"
+	documentationCenter=""
 	authors="camsoper"
 	manager="erikre"
 	editor=""/>
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/11/2016"
+	ms.date="07/28/2016"
 	ms.author="casoper"/>
 
 # Überschreiben des HTTP-Standardverhaltens mithilfe des Regelmoduls
@@ -28,7 +28,7 @@ Mit dem Regelmodul können Sie anpassen, wie HTTP-Anforderungen behandelt werden
 
 1. Klicken Sie auf dem Blatt „CDN-Profil“ auf die Schaltfläche **Verwalten**.
 
-	![Schaltfläche „Verwalten“ auf dem CDN-Profilblatt](./media/cdn-rules-engine/cdn-rules-manage-btn.png)
+	![Schaltfläche „Verwalten“ auf dem CDN-Profilblatt](./media/cdn-rules-engine/cdn-manage-btn.png)
 
 	Das CDN-Verwaltungsportal wird geöffnet.
 
@@ -48,7 +48,7 @@ Mit dem Regelmodul können Sie anpassen, wie HTTP-Anforderungen behandelt werden
 
 	>[AZURE.TIP] In der Dropdownliste sind viele Typen von Übereinstimmungsbedingungen verfügbar. Durch Klicken auf das blaue Informationssymbol links neben der Übereinstimmungsbedingung wird die derzeit ausgewählte Bedingung ausführlicher erläutert.
 	>
-	>Eine vollständige Liste der Übereinstimmungsbedingungen finden Sie unter [CDN-Regelmodul – Übereinstimmungsbedingungen und Featuredetails](cdn-rules-engine-details.md#match-conditions).
+	>Eine vollständige Liste der Übereinstimmungsbedingungen finden Sie unter [CDN-Regelmodul – Übereinstimmungsbedingungen und Featuredetails](https://msdn.microsoft.com/library/mt757336.aspx#Anchor_0).
 
 5.  Klicken Sie auf die Schaltfläche **+** neben **Features**, um ein neues Feature hinzuzufügen. Wählen Sie in der Dropdownliste auf der linken Seite **Force Internal Max-Age** aus. Geben Sie **300** in das angezeigte Textfeld ein. Belassen Sie die übrigen Werte in ihrer Standardeinstellung.
 
@@ -56,7 +56,7 @@ Mit dem Regelmodul können Sie anpassen, wie HTTP-Anforderungen behandelt werden
 
 	>[AZURE.NOTE] Wie bei den Übereinstimmungsbedingungen können Sie durch Klicken auf das blaue Informationssymbol links neben dem neuen Feature Informationen zu diesem anzeigen lassen. Im Fall von **Force Internal Max-Age** überschreiben wir die Header **Cache-Control** und **Expires** des Assets, um zu steuern, wann der CDN-Edgeknoten das Asset aus dem Ursprung aktualisiert. Unser Beispiel von 300 Sekunden gibt an, dass der CDN-Edgeknoten das Asset für 5 Minuten zwischenspeichert, bevor es aus seinem Ursprung aktualisiert wird.
 	>
-	>Eine vollständige Liste der Features finden Sie unter [CDN-Regelmodul – Übereinstimmungsbedingungen und Featuredetails](cdn-rules-engine-details.md#features).
+	>Eine vollständige Liste der Features finden Sie unter [CDN-Regelmodul – Übereinstimmungsbedingungen und Featuredetails](https://msdn.microsoft.com/library/mt757336.aspx#Anchor_1).
 
 6.  Klicken Sie auf die Schaltfläche **Hinzufügen**, um die neue Regel zu speichern. Die neue Regel wartet jetzt auf ihre Genehmigung. Sobald sie genehmigt wurde, wird der Status von **Pending XML** in **Active XML** geändert.
 
@@ -64,6 +64,6 @@ Mit dem Regelmodul können Sie anpassen, wie HTTP-Anforderungen behandelt werden
 
 ## Weitere Informationen
 * [Azure Friday: Azure CDN's powerful new Premium Features](https://azure.microsoft.com/documentation/videos/azure-cdns-powerful-new-premium-features/) (Die leistungsstarken neuen Premium-Features von Azure CDN) (Video)
-* [Regelmodul – Übereinstimmungsbedingungen und Featuredetails](cdn-rules-engine-details.md)
+* [Regelmodul – Übereinstimmungsbedingungen und Featuredetails](https://msdn.microsoft.com/library/mt757336.aspx)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0803_2016-->

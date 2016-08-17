@@ -3,7 +3,7 @@
    description="Weitere Informationen zu virtuellen Netzwerken (VNets) in Azure"
    services="virtual-network"
    documentationCenter="na"
-   authors="telmosampaio"
+   authors="jimdial"
    manager="carmonm"
    editor="tysonn" />
 <tags
@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="03/15/2016"
-   ms.author="telmos" />
+   ms.author="jdial" />
 
 # Virtuelle Netzwerke im Überblick
 
@@ -27,7 +27,7 @@ Die obige Abbildung zeigt ein lokales Netzwerk, das über einen Router mit dem �
 
 Das gleiche Netzwerk kann wie in der folgenden Abbildung dargestellt in Azure gehostet werden.
 
-![Azure Virtual Network](./media/virtual-networks-overview/figure02.png)
+![Virtuelles Azure-Netzwerk](./media/virtual-networks-overview/figure02.png)
 
 Die Azure-Infrastruktur übernimmt die Rolle des Routers und lässt ohne jeglichen Konfigurationsbedarf den Zugriff auf Ihr VNet über das öffentliche Internet zu. Firewalls können durch Netzwerksicherheitsgruppen ersetzt werden, die auf jedes einzelne Subnetz angewendet werden. Physische Load Balancer werden durch Load Balancer mit Internetzugriff und interne Load Balancer in Azure ersetzt.
 
@@ -95,4 +95,4 @@ Für die Verwendung virtueller Netzwerke in Azure fallen keine Zusatzkosten an. 
 - Weitere Informationen zu [Netzwerksicherheitsgruppen](virtual-networks-nsg.md)
 - Weitere Informationen zu [benutzerdefinierten Routen und IP-Weiterleitung](virtual-networks-udr-overview.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0810_2016-->

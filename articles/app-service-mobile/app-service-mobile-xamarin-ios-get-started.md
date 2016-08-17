@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-xamarin-ios"
 	ms.devlang="dotnet"
 	ms.topic="hero-article"
-	ms.date="06/28/2016"
+	ms.date="08/04/2016"
 	ms.author="normesta"/>
 
 
@@ -29,7 +29,7 @@ Das Absolvieren dieses Lernprogramms ist Voraussetzung für alle anderen Xamarin
 
 ##Voraussetzungen
 
-Für dieses Lernprogramm benötigen Sie Folgendes:
+Für dieses Tutorial benötigen Sie Folgendes:
 
 * Ein aktives Azure-Konto. Falls Sie kein Konto besitzen, können Sie sich für eine Azure-Testversion registrieren. So erhalten Sie bis zu 10 kostenlose mobile Apps, die Sie auch nach Ablauf der Testversion weiter nutzen können. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
 
@@ -53,15 +53,6 @@ Befolgen Sie die nachstehenden Anweisungen zum Konfigurieren des Serverprojekts 
 
 [AZURE.INCLUDE [app-service-mobile-configure-new-backend](../../includes/app-service-mobile-configure-new-backend.md)]
 
-
-## (Optional) Lokales Testen Ihres Back-End-Projekts
-
-Wenn Sie zuvor eine .NET-Back-End-Konfiguration gewählt haben, können Sie das Back-End optional lokal testen.
-
-[AZURE.INCLUDE [app-service-mobile-dotnet-backend-test-local-service](../../includes/app-service-mobile-dotnet-backend-test-local-service.md)]
-
-
-
 ## Herunterladen und Ausführen der Xamarin.iOS-App
 
 1. Öffnen Sie das [Azure-Portal] in einem Browserfenster.
@@ -82,7 +73,7 @@ Wenn Sie zuvor eine .NET-Back-End-Konfiguration gewählt haben, können Sie das 
 
 	![][10]
 
-	Dadurch wird eine POST-Anforderung an das neue in Azure gehostete mobile App-Back-End gesendet. Daten von der Anforderung werden in die TodoItem-Tabelle eingefügt. In der Tabelle gespeicherte Einträge werden von dem mobilen App-Back-End zurückgegeben, und die Daten werden in der Liste angezeigt.
+	Dadurch wird eine POST-Anforderung an das neue in Azure gehostete mobile App-Back-End gesendet. Daten von der Anforderung werden in die TodoItem-Tabelle eingefügt. In der Tabelle gespeicherte Einträge werden vom mobilen App-Back-End zurückgegeben, und die Daten werden in der Liste angezeigt.
 
 >[AZURE.NOTE]Sie können den Code überprüfen, der auf das mobile App-Back-End zum Abfragen und Einfügen von Daten zugreift. Sie finden ihn in der C#-Datei "QSTodoService.cs C#".
 
@@ -108,4 +99,4 @@ Wenn Sie zuvor eine .NET-Back-End-Konfiguration gewählt haben, können Sie das 
 <!-- URLs. -->
 [Azure-Portal]: https://portal.azure.com/
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0810_2016-->

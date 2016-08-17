@@ -20,7 +20,7 @@
 
 # Verwalten des Zugriffs auf Ressourcen mit Azure Active Directory-Gruppen
 
-Azure Active Directory (Azure AD) ist eine umfassende Lösung für die Identitäts- und Zugriffsverwaltung, die einen robusten Satz von Funktionen zur Verwaltung des Zugriffs auf lokale und Cloudanwendungen und -ressourcen bereitstellt, einschließlich Microsoft-Onlinediensten wie Office 365 und zahlreicher Microsoft-SaaS-Anwendungen. Dieser Artikel bietet eine allgemeine Übersicht. Wenn Sie jedoch direkt mit der Verwendung von Azure AD-Gruppen beginnen möchten, befolgen Sie die Anweisungen unter [Verwalten von Sicherheitsgruppen in Azure AD](active-directory-accessmanagement-manage-groups.md).
+Azure Active Directory (Azure AD) ist eine umfassende Lösung für die Identitäts- und Zugriffsverwaltung, die einen robusten Satz von Funktionen zur Verwaltung des Zugriffs auf lokale und Cloudanwendungen und -ressourcen bereitstellt, einschließlich Microsoft-Onlinediensten wie Office 365 und zahlreicher Microsoft-SaaS-Anwendungen. Dieser Artikel bietet eine allgemeine Übersicht. Wenn Sie jedoch direkt mit der Verwendung von Azure AD-Gruppen beginnen möchten, befolgen Sie die Anweisungen unter [Verwalten von Sicherheitsgruppen in Azure AD](active-directory-accessmanagement-manage-groups.md). Weitere Informationen zum Verwalten von Gruppen in Azure Active Directory mithilfe von PowerShell finden Sie unter [Azure Active Directory-Vorschau-Cmdlets für die Gruppenverwaltung](active-directory-accessmanagement-groups-settings-v2-cmdlets.md).
 
 
 > [AZURE.NOTE] Um Azure Active Directory verwenden zu können, benötigen Sie ein Azure-Konto. Wenn Sie nicht über ein Azure-Konto verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/pricing/free-trial/).
@@ -91,4 +91,4 @@ Da Sie nun die Grundlagen der Zugriffsverwaltung kennen, können Sie sich jetzt 
 
 * [Azure Active Directory-Cmdlets zum Konfigurieren von Gruppeneinstellungen](active-directory-accessmanagement-groups-settings-cmdlets.md)
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0803_2016-->

@@ -172,9 +172,7 @@ ReceiveMessage: E-Mail empfangen
 | Eigenschaftenname | Datentyp | Beschreibung |
 |---|---|---|
 |Aus|string|Aus|
-|To  
-|string|To  
-|
+|To|string|To|
 |Betreff|string|Betreff|
 |Body|string|Body|
 |Priorität|string|Priorität|
@@ -260,8 +258,7 @@ Dieser Vorgang löst einen Ablauf aus, wenn eine neue E-Mail eingeht.
 |Eigenschaftenname| Anzeigename|Beschreibung|
 | ---|---|---|
 |folderPath|Ordnerpfad|Abzurufender E-Mail-Ordner (Standard: Posteingang)|
-|to|To  
-|E-Mail-Adressen der Empfänger|
+|to|To|E-Mail-Adressen der Empfänger|
 |from|Aus|Absenderadresse|
 |importance|Priorität|Wichtigkeit der E-Mail (High, Normal, Low) (Standard: Normal)|
 |fetchOnlyWithAttachment|Has Attachments (Mit Anlagen)|Nur E-Mail-Nachrichten mit einer Anlage abrufen|

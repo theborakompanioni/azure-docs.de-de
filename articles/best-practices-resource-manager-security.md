@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/16/2016"
+	ms.date="08/01/2016"
 	ms.author="georgem;tomfitz"/>
 
 
@@ -35,7 +35,7 @@ Azure Virtual Machines, Azure-Ressourcen-Manager und Azure Key Vault sind vollst
       - die Vorlagen zum Bereitstellen der Schlüssel
       - die Vorlagen zum Bereitstellen eines virtuellen Computers mit Verweisen auf die Schlüssel
       - die tatsächlichen Schlüsseldaten im Tresor Jede Vorlage (und Aktion) kann für eine vollständige Trennung von Aufgaben verschiedenen Rollen für die rollenbasierte Zugriffssteuerung unterliegen.
-- Das Laden der geheimen Schlüssel in einen virtuellen Computer zum Zeitpunkt der Bereitstellung erfolgt über einen direkten Kanal zwischen Azure Fabric und dem Schlüsseltresor innerhalb der Grenzen des Microsoft-Datencenters. Sobald sich die Schlüssel im Schlüsseltresor befinden, sehen sie nie wieder das "Tageslicht" über einen nicht vertrauenswürdigen Kanal außerhalb des Datencenters.  
+- Das Laden der geheimen Schlüssel in einen virtuellen Computer zum Zeitpunkt der Bereitstellung erfolgt über einen direkten Kanal zwischen Azure Fabric und dem Schlüsseltresor innerhalb der Grenzen des Microsoft-Datencenters. Sobald sich die Schlüssel im Schlüsseltresor befinden, sehen sie nie wieder das "Tageslicht" über einen nicht vertrauenswürdigen Kanal außerhalb des Datencenters.
 - Da Schlüsseltresore stets regional sind, sind die geheimen Schlüssel in den VMs stets ortsbezogen. Es sind keine globalen Schlüsseltresore.
 
 ### Trennung der Schlüssel von Bereitstellungen
@@ -339,4 +339,4 @@ Dieser virtuelle Computer muss eingehenden Datenverkehr empfangen können, der n
 - Informationen zum Konfigurieren des Routings und der IP-Weiterleitung finden Sie unter [Erstellen von benutzerdefinierten Routen (UDR) in Resource Manager mit einer Vorlage](./virtual-network/virtual-network-create-udr-arm-template.md).
 - Eine Übersicht über die rollenbasierte Zugriffssteuerung finden Sie unter [Rollenbasierte Zugriffssteuerung über das Microsoft Azure-Portal](./active-directory/role-based-access-control-configure.md).
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0803_2016-->

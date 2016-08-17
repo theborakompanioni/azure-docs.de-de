@@ -1,14 +1,14 @@
 <properties
 	pageTitle="Azure Insights: Verwenden von Überwachungsprotokollen zum Senden von E-Mail- und Webhook-Warnbenachrichtigungen in Azure Insights | Microsoft Azure"
-	description="Erfahren Sie, wie Sie in Azure Insights Einträge im Dienstüberwachungsprotokoll dazu nutzen können, um Web-URLs aufzurufen oder E-Mail-Benachrichtigungen zu senden."
+	description="Erfahren Sie, wie Sie in Azure Insights Einträge im Dienstüberwachungsprotokoll dazu nutzen können, um Web-URLs aufzurufen oder E-Mail-Benachrichtigungen zu senden. "
 	authors="kamathashwin"
 	manager=""
 	editor=""
-	services="azure-portal"
-	documentationCenter="na"/>
+	services="monitoring"
+	documentationCenter="monitoring"/>
 
 <tags
-	ms.service="azure-portal"
+	ms.service="monitoring"
 	ms.workload="na"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
@@ -102,7 +102,7 @@ Wenn ein neues Ereignis verfügbar ist, führt das Feature „Warnung bei Überw
 |timestamp|	Zeitstempel der Ereignisgenerierung durch den Azure-Dienst, der die zum Ereignis gehörende Anforderung verarbeitet hat|
 |Ressourcen-ID |URI der Ressourcen-ID, der die Ressource eindeutig identifiziert|
 |ResourceGroupName|Ressourcengruppenname der betroffenen Ressource|
-|Eigenschaften |Eine Gruppe von <Key  Value>-Paaren (d. h. Wörterbuch <String  String>), die Details zum Ereignis enthalten|
+|Eigenschaften |Eine Reihe von Schlüssel-Wert-Paaren (d.h. Wörterbuch<Zeichenfolge, Zeichenfolge>), die Details zum Ereignis enthalten|
 |event|Element, das Metadaten zum Ereignis enthält|
 |authorization|Erfasst die RBAC-Eigenschaften des Ereignisses. Hierzu zählen üblicherweise „action“, „role“ und „scope“.|
 |category | Kategorie des Ereignisses. Unterstützte Werte: Administrative, Alert, Security, ServiceHealth, Recommendation|
@@ -119,4 +119,4 @@ Wenn ein neues Ereignis verfügbar ist, führt das Feature „Warnung bei Überw
 |status|Zeichenfolge, die den Status des Vorgangs beschreibt. Gängige Werte sind: Started, In Progress, Succeeded, Failed, Active, Resolved|
 |subStatus|	Enthält üblicherweise den HTTP-Statuscode des zugehörigen REST-Aufrufs. Es können auch weitere Zeichenfolgen enthalten sein, die einen Unterstatus beschreiben. Gängige Werte für den Unterstatus sind z. B.: OK (HTTP-Statuscode: 200), Erstellt (HTTP-Statuscode: 201), Akzeptiert (HTTP-Statuscode: 202), Kein Inhalt (HTTP-Statuscode: 204), Ungültige Anforderung (HTTP-Statuscode: 400), Nicht gefunden (HTTP-Statuscode: 404), Konflikt (HTTP-Statuscode: 409), Interner Serverfehler (HTTP-Statuscode: 500), Dienst nicht verfügbar (HTTP-Statuscode: 503), Gatewaytimeout (HTTP-Statuscode: 504)|
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0803_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/22/2016"
+	ms.date="07/27/2016"
 	ms.author="adegeo"/>
 
 
@@ -86,4 +86,4 @@ Während der Konfigurationsupdates kann Azure nur dann eine Dienstverfügbarkeit
 * [Aktivieren einer Remotedesktopverbindung für eine Rolle in Azure Cloud Services](cloud-services-role-enable-remote-desktop.md)
 * Konfigurieren von [SSL-Zertifikaten](cloud-services-configure-ssl-certificate.md)
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0803_2016-->

@@ -1,11 +1,11 @@
 <properties
 	pageTitle="Erstellen eines Supporttickets bei Problemen mit Azure-Abrechnungen und -Abonnements | Microsoft Azure"
 	description="Informationen zum Erstellen eines Supporttickets bei Problemen mit Azure-Abrechnungen und -Abonnements"
-	services="billing"
+	services=""
 	documentationCenter=""
 	authors="genlin"
 	manager="mbaldwin"
-	editor="na"
+	editor=""
 	tags="billing"
 	/>
 
@@ -22,7 +22,7 @@
 
 Dieser Artikel bietet die Informationen, die Sie benötigen, um ein Ticket beim Azure-Support zu öffnen.
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an. Wählen Sie **Hilfe und Support** > **Neue Supportanforderung**.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an. Wählen Sie **Hilfe und Support** > **Neue Supportanforderung**.
 
 	![helpandsupportbutton](./media/billing-how-to-create-billing-support-ticket/helpandsupport.png)
 2. Wählen Sie auf dem Blatt **Grundlagen** den Problemtyp, das Abonnement und den Supportplan aus.
@@ -44,4 +44,4 @@ Sie können auch über die Azure Support-Website oder das Azure-Kontocenter eine
 
  >[AZURE.NOTE]Nur der Azure-Kontoadministrator verfügt über eine Zugriffsberechtigung für das Kontocenter. Wie Sie herausfinden, wer der Kontoadministrator des Abonnements ist, erfahren Sie unter [Häufig gestellte Fragen (FAQ)](billing-subscription-transfer.md#faq).
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

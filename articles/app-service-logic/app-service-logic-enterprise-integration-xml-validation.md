@@ -1,7 +1,7 @@
 <properties 
 	pageTitle="Übersicht über die XML-Überprüfung im Enterprise Integration Pack | Microsoft Azure App Service | Microsoft Azure" 
 	description="Erfahren Sie, wie die Überprüfung im Enterprise Integration Pack und in Logik-Apps erfolgt" 
-	services="app-service\logic" 
+	services="logic-apps" 
 	documentationCenter=".net,nodejs,java"
 	authors="msftman" 
 	manager="erikre" 
@@ -40,4 +40,4 @@ Sie können jetzt Ihre Überprüfungsaktion testen, indem Sie eine Anforderung a
 
 [Weitere Informationen zum Enterprise Integration Pack](./app-service-logic-enterprise-integration-overview.md "Informationen zum Enterprise Integration Pack")
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

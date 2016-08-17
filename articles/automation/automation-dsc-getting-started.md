@@ -211,6 +211,7 @@ Immer wenn Azure Automation DSC eine Konsistenzprüfung auf einem verwalteten Kn
     ![Screenshot des Blatts „Bericht“](./media/automation-dsc-getting-started/NodeReport.png)
 
 Auf dem Blatt einen einzelnen Berichts können Sie die folgenden Statusinformationen für die zugehörige Konsistenzprüfung finden:
+
 - Berichtstatus: Gibt an, ob der Knoten kompatibel, die Konfiguration fehlerhaft oder der Knoten nicht kompatibel (Knoten befindet sich im Modus **applyandmonitor** und Computer nicht im gewünschten Zustand) ist.
 - Startzeit der Konsistenzprüfung.
 - Gesamtdauer der Konsistenzprüfung.
@@ -266,4 +267,4 @@ Wenn ein Knoten nicht mehr von Azure Automation DSC verwaltet werden soll, könn
 * [Azure Automation DSC-Cmdlets](https://msdn.microsoft.com/library/mt244122.aspx)
 * [Azure Automation DSC – Preise](https://azure.microsoft.com/pricing/details/automation/)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

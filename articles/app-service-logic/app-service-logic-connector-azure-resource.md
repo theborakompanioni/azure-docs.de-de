@@ -1,7 +1,7 @@
 <properties
    pageTitle="Verwendung des Azure-Ressourcen-Connectors in Logik-Apps | Microsoft Azure App Service"
    description="Erstellen und Konfigurieren des Azure-Ressourcen-Connectors oder einer API-App und Verwenden in einer Logik-App in Azure App Service"
-   services="app-service\logic"
+   services="logic-apps"
    documentationCenter=".net,nodejs,java"
    authors="stepsic-microsoft-com"
    manager="erikre"
@@ -98,4 +98,4 @@ Anzeigen der Swagger-REST-API-Referenz unter [Referenz zu Connectors und API-App
 <!--Links -->
 [Creating a Logic app]: app-service-logic-create-a-logic-app.md
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

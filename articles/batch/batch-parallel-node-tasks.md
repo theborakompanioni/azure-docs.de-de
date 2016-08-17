@@ -32,7 +32,7 @@ In manchen Szenarien profitieren Sie davon, dass alle Ressourcen eines Knotens e
 
 ## Beispielszenario
 
-Um die Vorteile der parallelen Aufgabenausführung zu veranschaulichen, nehmen wir an, dass für Ihre Aufgabenanwendung CPU- und Speicheranforderungen vorliegen, sodass die Knotengröße Standard\_D1 geeignet ist. Um den Auftrag in der geforderten Zeit abzuschließen, sind jedoch 1.000 dieser Knoten nötig.
+Um die Vorteile der parallelen Aufgabenausführung zu veranschaulichen, nehmen wir an, dass für Ihre Aufgabenanwendung CPU- und Speicheranforderungen vorliegen, sodass die Knotengröße [Standard\_D1](../cloud-services/cloud-services-sizes-specs.md#general-purpose-d) geeignet ist. Um den Auftrag in der geforderten Zeit abzuschließen, sind jedoch 1.000 dieser Knoten nötig.
 
 Statt Standard\_D1-Knoten mit 1 CPU-Kern zu verwenden, können Sie [Standard\_D14](../cloud-services/cloud-services-sizes-specs.md#memory-intensive-d)-Knoten mit je 16 Kernen verwenden und so die parallele Ausführung von Aufgaben ermöglichen. Daher könnte *etwa ein Sechzehntel der Knoten* verwendet werden – statt 1.000 Knoten wären nur 63 erforderlich. Wenn große Anwendungsdateien oder Verweisdaten für jeden Knoten erforderlich sind, werden Auftragsdauer und Effizienz erneut verbessert, da die Daten auf nur 16 Knoten kopiert werden.
 

@@ -54,9 +54,9 @@ Beim Abschätzen der Anzahl von Anforderungseinheiten, die für Ihre DocumentDB-
 - **Skriptnutzung**. Wie bei Abfragen beanspruchen gespeicherte Prozeduren und Trigger Anforderungseinheiten basierend auf der Komplexität des ausgeführten Vorgangs. Untersuchen Sie während der Entwicklung Ihrer Anwendung den "x-ms-request-charge"-Header, um herauszufinden, wie viel Anforderungseinheiten die einzelnen Vorgänge verbrauchen.
 
 ##Schätzen der Durchsatzanforderungen
-Eine Anforderungseinheit ist eine normalisierte Kennzahl für die Anforderungsverarbeitungskosten. Eine einzelne Anforderungseinheit stellt die Verarbeitungskapazität dar, die erforderlich ist, um ein einzelnes, aus 10 eindeutigen Eigenschaftswerten (außer Systemeigenschaften) bestehendes JSON-Dokument von 1 KB zu lesen (per „self link“ oder ID). Eine Anforderung zum Erstellen (Einfügen), Ersetzen oder Löschen des gleichen Dokuments verbraucht mehr Verarbeitungsleistung des Diensts und daher mehr Anforderungseinheiten.
+Eine Anforderungseinheit ist eine normalisierte Kennzahl für die Anforderungsverarbeitungskosten. Eine einzelne Anforderungseinheit stellt die Verarbeitungskapazität dar, die erforderlich ist, um ein einzelnes, aus 10 eindeutigen Eigenschaftswerten (außer Systemeigenschaften) bestehendes JSON-Dokument von 1 KB zu lesen (per „self link“ oder ID). Eine Anforderung zum Erstellen (Einfügen), Ersetzen oder Löschen des gleichen Dokuments verbraucht mehr Verarbeitungsleistung des Diensts und daher mehr Anforderungseinheiten.
 
-> [AZURE.NOTE] Die Baseline einer Anforderungseinheit für ein Dokument von 1 KB entspricht einem einfachen GET-Vorgang per „self link“ oder ID des Dokuments.
+> [AZURE.NOTE] Die Baseline einer Anforderungseinheit für ein Dokument von 1 KB entspricht einem einfachen GET-Vorgang per „self link“ oder ID des Dokuments.
 
 ###Verwenden des Rechners für Anforderungseinheiten
 Damit Kunden ihre Durchsatzschätzungen optimieren können, gibt es einen webbasierten [Rechner für Anforderungseinheiten](https://www.documentdb.com/capacityplanner), um den Bedarf an Anforderungseinheiten für normale Vorgänge zu schätzen, einschließlich:
@@ -189,7 +189,7 @@ Nach Nahrungsmittelgruppe auswählen|10|700
 
 In diesem Fall erwarten wir einen durchschnittlichen Durchsatzbedarf von 1,275 RU/s. Wir runden auf den nächsten Hunderter auf und würden für die Sammlung dieser Anwendung 1.300 RU/s bereitstellen.
 
-##Überschreiten von Grenzwerten für den reservierten Durchsatz
+##<a id="RequestRateTooLarge"></a> Überschreiten von Grenzwerten für den reservierten Durchsatz
 Der Verbrauch von Anforderungseinheiten wird als Rate pro Sekunde bemessen. Für Anwendungen, die die bereitgestellte Anforderungseinheitsrate für eine Sammlung überschreiten, werden Anforderungen an die Sammlung gedrosselt, bis die Rate unter das reservierte Niveau fällt. Bei einer Drosselung beendet der Server die Anforderung präemptiv mit „RequestRateTooLargeException“ (HTTP-Statuscode 429) und gibt den x-ms-retry-after-ms-Header zurück. Darin ist die Zeitspanne in Millisekunden angegeben, die der Benutzer abwarten muss, bevor ein neuer Anforderungsversuch unternommen werden kann.
 
 	HTTP Status 429
@@ -220,4 +220,4 @@ Im Artikel [Leistungs- und Skalierungstests mit Azure DocumentDB](documentdb-per
 [4]: ./media/documentdb-request-units/RUEstimatorResults.png
 [5]: ./media/documentdb-request-units/RUCalculator2.png
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0803_2016-->

@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/13/2016"
-   ms.author="patw;jroth;aglick"/>
+   ms.date="08/01/2016"
+   ms.author="aglick"/>
 
 #Technischer Leitfaden zur Resilienz in Azure – Wiederherstellung nach Datenbeschädigung oder versehentlichem Löschen
 
@@ -91,4 +91,4 @@ Weitere Informationen zu den Sicherungs- und Wiederherstellungsfeatures in Azure
 
 Dieser Artikel ist Teil einer Serie mit dem Schwerpunkt [Technischer Leitfaden zur Resilienz in Azure](./resiliency-technical-guidance.md). Weitere Ressourcen zu Resilienz, Notfallwiederherstellung und hoher Verfügbarkeit finden Sie im technischen Leitfaden zur Resilienz in Azure unter [Weitere Ressourcen](./resiliency-technical-guidance.md#additional-resources).
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0803_2016-->

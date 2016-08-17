@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/04/2016"
+   ms.date="08/04/2016"
    ms.author="navale;tomfitz"/>
    
 # Resource Manager-Vorlage – Exemplarische Vorgehensweise
@@ -53,7 +53,7 @@ Wir beginnen mit der einfachsten Vorlage:
 
 Speichern Sie diese Datei unter dem Namen **azuredeploy.json**. (Die Vorlage kann einen beliebigen Namen besitzen, es muss sich nur um eine JSON-Datei handeln.)
 
-## Speicherkonto erstellen
+## Erstellen Sie ein Speicherkonto.
 Fügen Sie im Abschnitt **resources** ein Objekt hinzu, mit dem das Speicherkonto wie unten gezeigt definiert wird.
 
 ```json
@@ -246,7 +246,7 @@ Erstellen Sie ein virtuelles Netzwerk mit einem Subnetz. Die festzulegenden Eige
 }
 ```
 
-## Lastenausgleichsmodul
+## Load Balancer
 Sie erstellen jetzt ein extern ausgerichtetes Lastenausgleichsmodul (Load Balancer). Da für dieses Load Balancer die öffentliche IP-Adresse verwendet wird, müssen Sie im Abschnitt **dependsOn** eine Abhängigkeit von der öffentlichen IP-Adresse deklarieren. Dies bedeutet, dass der Lastenausgleich erst bereitgestellt wird, nachdem die Bereitstellung der öffentlichen IP-Adresse abgeschlossen ist. Wenn Sie diese Abhängigkeit nicht definieren, erhalten Sie einen Fehler. Resource Manager versucht dann, die Ressourcen parallel bereitzustellen und das Lastenausgleichsmodul auf eine öffentliche IP-Adresse festzulegen, die noch nicht vorhanden ist.
 
 Außerdem erstellen Sie einen Back-End-Adresspool, einige eingehende NAT-Regeln für RDP von VMs und eine Lastenausgleichsregel mit einer TCP-Überprüfung an Port 80 in dieser Ressourcendefinition. Alle Eigenschaften sind unter [Erstellen oder Aktualisieren eines Lastenausgleichs](https://msdn.microsoft.com/library/azure/mt163574.aspx) angegeben.
@@ -579,4 +579,4 @@ Sie können die Vorlage mithilfe der Befehle, die Sie auch zum Bereitstellen des
 - Weitere Informationen zur Struktur einer Vorlage finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](resource-group-authoring-templates.md).
 - Informationen zum Bereitstellen einer Vorlage finden Sie unter [Bereitstellen einer Ressourcengruppe mit einer Azure Resource Manager-Vorlage](resource-group-template-deploy.md).
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0810_2016-->

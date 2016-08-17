@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Integrieren eines Clouddiensts in Azure CDN"
+	pageTitle="Integrieren eines Clouddiensts in Azure CDN | Microsoft Azure"
 	description="Ein Lernprogramm, in dem Sie erfahren, wie Sie einen Clouddienst bereitstellen, der Inhalte von einem integrierten Azure CDN-Endpunkt zur Verfügung stellt."
 	services="cdn, cloud-services"
 	documentationCenter=".net"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="05/11/2016"
+	ms.date="07/28/2016"
 	ms.author="casoper"/>
 
 
@@ -140,7 +140,7 @@ Ein CDN-Profil ist eine Sammlung von CDN-Endpunkten. Jedes Profil enthält minde
 
 ## Testen des CDN-Endpunkts
 
-Wenn der Veröffentlichungsstatus **Abgeschlossen** lautet, öffnen Sie ein Browserfenster, und navigieren Sie zu **http://<cdnName>*.azureedge.net/Content/bootstrap.css**. In meinem Setup lautet diese URL:
+Wenn der Veröffentlichungsstatus **Abgeschlossen** lautet, öffnen Sie ein Browserfenster, und navigieren Sie zu **http://<CDN-Name>*.azureedge.net/Content/bootstrap.css**. In meinem Setup lautet diese URL:
 
 	http://camservice.azureedge.net/Content/bootstrap.css
 
@@ -159,7 +159,7 @@ Auf die gleiche Weise können Sie direkt von Ihrem CDN-Endpunkt aus auf jede öf
 -	Jede Controlleraktion
 -	Sofern die Abfragezeichenfolge für den CDN-Endpunkt aktiviert ist, jede URL mit Abfragezeichenfolgen
 
-Tatsächlich können Sie mit der vorstehenden Konfiguration den gesamten Clouddienst von **http://*&lt;cdnName>*.azureedge.net/** aus hosten. Wenn man zu **http://camservice.azureedge.net/** navigiert, erhält man das Aktionsergebnis von "Startseite/Index".
+Tatsächlich können Sie mit der vorstehenden Konfiguration den gesamten Clouddienst von **http://*&lt;cdnName>*.azureedge.net/** aus hosten. Wenn man zu **http://camservice.azureedge.net/** navigiert, erhält man das Aktionsergebnis von „Startseite/Index“.
 
 ![](media/cdn-cloud-service-with-cdn/cdn-2-home-page.PNG)
 
@@ -213,7 +213,7 @@ Sie verfügen über eine einfache `Index`-Aktion, mit der die Kunden die Superla
 
 Führen Sie die vorstehenden Schritte aus, um diese Controlleraktion einzurichten:
 
-1. Erstellen Sie im Ordner *\\Controllers* eine neue CS-Datei namens *MemeGeneratorController.cs*, und ersetzen Sie den Inhalt durch den folgenden Code. Achten Sie darauf, den hervorgehobenen Teil durch den Namen Ihres CDN zu ersetzen.  
+1. Erstellen Sie im Ordner *\\Controllers* eine neue CS-Datei namens *MemeGeneratorController.cs*, und ersetzen Sie den Inhalt durch den folgenden Code. Achten Sie darauf, den hervorgehobenen Teil durch den Namen Ihres CDN zu ersetzen.
 
 		using System;
 		using System.Collections.Generic;
@@ -407,7 +407,7 @@ So können Sie den JavaScript-Code in Ihrer Entwicklungsumgebung debuggen und in
 
 Führen Sie die folgenden Schritte aus, um ASP.NET-Bündelung und -Minimierung in Ihren CDN-Endpunkt zu integrieren.
 
-1. Ändern Sie in der Datei *App\_Start\\BundleConfig.cs* die `bundles.Add()`-Methoden so ab, dass sie einen anderen [Bundle-Konstruktor](http://msdn.microsoft.com/library/jj646464.aspx) verwenden, und zwar einen, der eine CDN-Adresse angibt. Ersetzen Sie hierzu die `RegisterBundles`-Methodendefinition durch den folgenden Code:  
+1. Ändern Sie in der Datei *App\_Start\\BundleConfig.cs* die `bundles.Add()`-Methoden so ab, dass sie einen anderen [Bundle-Konstruktor](http://msdn.microsoft.com/library/jj646464.aspx) verwenden, und zwar einen, der eine CDN-Adresse angibt. Ersetzen Sie hierzu die `RegisterBundles`-Methodendefinition durch den folgenden Code:
 
 		public static void RegisterBundles(BundleCollection bundles)
 		{
@@ -450,7 +450,7 @@ Führen Sie die folgenden Schritte aus, um ASP.NET-Bündelung und -Minimierung i
 
 	-	Der Ursprung dieser CDN-URL ist `http://<yourCloudService>.cloudapp.net/bundles/jquery?v=<W.X.Y.Z>`. Hierbei handelt es sich um das virtuelle Verzeichnis des Skriptbundles in Ihrem Clouddienst.
 	-	Da Sie einen CDN-Konstruktor verwenden, enthält das CDN-Skripttag für das Bündel nicht länger die automatisch generierte Versionszeichenfolge in der gerenderten URL. Sie müssen bei jeder Änderung des Skriptbundles manuell eine eindeutige Versionszeichenfolge generieren, um einen Cachefehler im Azure CDN zu erzwingen. Gleichzeitig muss diese eindeutige Versionszeichenfolge während der gesamten Lebensdauer der Bereitstellung konstant bleiben, um Cachetreffer im Azure CDN zu minimieren, nachdem das Bündel bereitgestellt wurde.
-	-	Die Abfragezeichenfolge v=<W.X.Y.Z> überträgt mithilfe von Pull aus *Properties\\AssemblyInfo.cs* in Ihrem Webrollenprojekt. Sie können den Bereitstellungsworkflow so konfigurieren, dass die Assemblyversion bei jeder Veröffentlichung in Azure schrittweise erhöht wird. Alternativ können Sie einfach *Properties\\AssemblyInfo.cs* in Ihrem Projekt so ändern, dass die Versionszeichenfolge bei jeder Erstellung automatisch schrittweise erhöht wird, indem Sie das Platzhalterzeichen "*" verwenden. Beispiel:
+	-	Die Abfragezeichenfolge „v=<W.X.Y.Z>“ überträgt mithilfe von Pull aus *Properties\\AssemblyInfo.cs* in Ihrem Webrollenprojekt. Sie können den Bereitstellungsworkflow so konfigurieren, dass die Assemblyversion bei jeder Veröffentlichung in Azure schrittweise erhöht wird. Alternativ können Sie einfach *Properties\\AssemblyInfo.cs* in Ihrem Projekt so ändern, dass die Versionszeichenfolge bei jeder Erstellung automatisch schrittweise erhöht wird, indem Sie das Platzhalterzeichen "*" verwenden. Beispiel:
 
 			[assembly: AssemblyVersion("1.0.0.*")]
 
@@ -501,7 +501,7 @@ Bei einem Fehler des Azure CDN-Endpunkts (gleich welcher Ursache) soll Ihre Webs
 
 Die [Bundle](http://msdn.microsoft.com/library/system.web.optimization.bundle.aspx)-Klasse enthält eine Eigenschaft namens [CdnFallbackExpression](http://msdn.microsoft.com/library/system.web.optimization.bundle.cdnfallbackexpression.aspx), mit der Sie den Fallbackmechanismus für CDN-Fehler konfigurieren können. Zur Verwendung dieser Eigenschaft führen Sie die folgenden Schritte aus:
 
-1. Öffnen Sie in Ihrem Webrollenprojekt die Datei *App\_Start\\BundleConfig.cs*, in der Sie jedem [Bundlekonstruktor](http://msdn.microsoft.com/library/jj646464.aspx) eine CDN-URL hinzugefügt haben, und nehmen Sie die folgenden hervorgehobenen Änderungen vor, um den Standardbundles einen Fallbackmechanismus hinzuzufügen:  
+1. Öffnen Sie in Ihrem Webrollenprojekt die Datei *App\_Start\\BundleConfig.cs*, in der Sie jedem [Bundlekonstruktor](http://msdn.microsoft.com/library/jj646464.aspx) eine CDN-URL hinzugefügt haben, und nehmen Sie die folgenden hervorgehobenen Änderungen vor, um den Standardbundles einen Fallbackmechanismus hinzuzufügen:
 
 		public static void RegisterBundles(BundleCollection bundles)
 		{
@@ -619,4 +619,4 @@ Die [Bundle](http://msdn.microsoft.com/library/system.web.optimization.bundle.as
 [cdn-add-endpoint]: ./media/cdn-cloud-service-with-cdn/cdn-add-endpoint.png
 [cdn-endpoint-success]: ./media/cdn-cloud-service-with-cdn/cdn-endpoint-success.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0803_2016-->

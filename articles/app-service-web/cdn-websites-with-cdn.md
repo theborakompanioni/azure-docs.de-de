@@ -23,7 +23,7 @@
 
 Die Integration von Web-Apps in Azure CDN bietet folgende Vorteile:
 
-- Integration der Inhaltsbereitstellung (Bilder, Skripts und Stylesheets) als Teil des [kontinuierlichen Bereitstellungsprozesses](web-sites-publish-source-control.md) Ihrer Web-App
+- Integration der Inhaltsbereitstellung (Bilder, Skripts und Stylesheets) als Teil des [kontinuierlichen Bereitstellungsprozesses](app-service-continuous-deployment.md) Ihrer Web-App
 - Einfaches Durchführen von Upgrades für die NuGet-Pakete in Ihrer Web-App in Azure App Service, wie z. B. jQuery- oder Bootstrap-Versionen
 - Verwalten der Webanwendung und des vom CDN verarbeiteten Inhalts über dieselbe Visual Studio-Oberfläche
 - Integrieren von ASP.NET-Bündelung und -Minimierung in Azure CDN
@@ -571,4 +571,4 @@ Die [Bundle](http://msdn.microsoft.com/library/system.web.optimization.bundle.as
 - [Integrieren eines Clouddiensts in Azure CDN](../cdn/cdn-cloud-service-with-cdn.md)
 - [ASP.NET-Bündelung und -Minimierung](http://www.asp.net/mvc/tutorials/mvc-4/bundling-and-minification)
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0803_2016-->

@@ -4,7 +4,7 @@
 	authors="stepsic-microsoft-com" 
 	manager="dwrede" 
 	editor="" 
-	services="app-service\logic" 
+	services="logic-apps" 
 	documentationCenter=""/>
 
 <tags
@@ -464,4 +464,4 @@ Da wir bald weitere Inhaltstypen hinzufügen, wurde die Funktion `parse()` in `j
 ## In Kürze verfügbar: Enterprise Integration-APIs
 Zu diesem Zeitpunkt sind noch keine verwalteten Versionen der Enterprise Integration-APIs verfügbar (z. B. AS2). Wie in der [Roadmap](http://www.zdnet.com/article/microsoft-outlines-its-cloud-and-server-integration-roadmap-for-2016/) beschrieben, stehen diese in Kürze zur Verfügung. In der Zwischenzeit können Sie Ihre vorhandenen bereitgestellten BizTalk-APIs über die HTTP-Aktion verwenden. Die Vorgehensweise wird weiter oben unter „Verwenden der bereits bereitgestellten API-Apps“ beschrieben.
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

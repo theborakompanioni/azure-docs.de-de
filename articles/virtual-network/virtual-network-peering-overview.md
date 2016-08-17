@@ -1,5 +1,6 @@
+
 <properties
-   pageTitle="Azure Virtual Network-Peering | Microsoft Azure"
+   pageTitle="Peering in virtuellen Azure-Netzwerken | Microsoft Azure"
    description="Enthält Informationen zum VNet-Peering in Azure."
    services="virtual-network"
    documentationCenter="na"
@@ -17,56 +18,74 @@
 
 # VNet-Peering
 
-VNet-Peering ist ein Mechanismus zum Verbinden von zwei Virtual Networks in derselben Region über das Azure-Backbonenetzwerk. Nach dem Peering werden die beiden Virtual Networks für alle Verbindungszwecke als ein Element angezeigt. Sie werden weiterhin als separate Ressourcen verwaltet, aber virtuelle Computer in diesen VNets können über die private IP-Adresse direkt miteinander kommunizieren. Der Datenverkehr zwischen virtuellen Computern in den VNets, die per Peering verknüpft sind, wird über die Azure-Infrastruktur geleitet, also ähnlich wie Datenverkehr zwischen VMs in demselben VNet. Einige Vorteile der Verwendung von VNet-Peering:
+VNet-Peering ist ein Mechanismus, mit dem zwei virtuelle Netzwerke in der gleichen Region über das Azure-Backbonenetzwerk miteinander verbunden werden können. Nach dem Peering werden die beiden virtuellen Netzwerke für alle Verbindungszwecke als einzelnes Element angezeigt. Sie werden zwar weiterhin als separate Ressourcen verwaltet, virtuelle Computer in diesen virtuellen Netzwerken können aber über private IP-Adressen direkt miteinander kommunizieren.
 
-- Niedrige Latenz, Verbindung mit hoher Bandbreite zwischen Ressourcen in unterschiedlichen VNets
-- Möglichkeit zur Verwendung von Ressourcen, z.B. virtuelle Netzwerkgeräte und VPN Gateways in per Peering verknüpften VNets (Transit)
-- Verbinden von Resource Manager-VNet mit einem klassischen VNet und Aktivieren der vollständigen Konnektivität zwischen Ressourcen in diesen VNets
+Der Datenverkehr zwischen virtuellen Computern in den virtuellen Netzwerken, die mittels Peering verknüpft sind, wird ähnlich wie der Datenverkehr zwischen virtuellen Computern im gleichen Netzwerk über die Azure-Infrastruktur geleitet. Die Verwendung von VNet-Peering bietet unter anderem folgende Vorteile:
 
-Anforderungen und wichtige Aspekte des VNet-Peerings:
+- Niedrige Latenz, Verbindung mit hoher Bandbreite zwischen Ressourcen in unterschiedlichen virtuellen Netzwerken
+- Möglichkeit zur Verwendung von Ressourcen wie virtuellen Netzwerkgeräten und VPN-Gateways als Transitpunkte in einem per Peering verknüpften VNet
+- Möglichkeit zur Verknüpfung eines virtuellen Netzwerks, das auf dem Azure Resource Manager basiert, mit einem virtuellen Netzwerk, das auf dem klassischen Bereitstellungsmodell basiert, und Nutzung der uneingeschränkten Konnektivität zwischen Ressourcen in diesen virtuellen Netzwerken
 
-- Die beiden Virtual Networks, die per Peering verknüpft werden, müssen sich in derselben Azure-Region befinden.
-- Die per Peering verknüpften VNets müssen über sich nicht überlappende IP-Adressräume verfügen.
-- VNet-Peering erfolgt zwischen zwei virtuellen Netzwerken, und es ist keine abgeleitete transitive Beziehung vorhanden. Wenn VNet A per Peering mit VNet B verknüpft ist und VNet B per Peering mit VNet C verknüpft ist, bedeutet dies nicht, dass VNet A mit VNet C verknüpft ist.
-- Das Peering kann zwischen virtuellen Netzwerken in zwei verschiedenen Abonnements hergestellt werden, sofern der privilegierte Benutzer der jeweiligen Abonnements das Peering autorisiert.
-- Ein Resource Manager-VNet kann per Peering mit einem anderen Resource Manager-VNet oder klassischen VNet verknüpft werden, aber für zwei klassische VNets ist dies nicht möglich.
-- Obwohl für die Kommunikation zwischen virtuellen Computern in per Peering verknüpften VNets keine weiteren Bandbreiteneinschränkungen bestehen, gilt die auf der VM-Größe basierende Bandbreitenobergrenze.
+Anforderungen und zentrale Aspekte des VNet-Peerings:
+
+- Die beiden mittels Peering verknüpften virtuellen Netzwerke müssen sich in der gleichen Azure-Region befinden.
+- Die mittels Peering verknüpften virtuellen Netzwerke müssen über IP-Adressräume ohne Überschneidungen verfügen.
+- VNet-Peering erfolgt zwischen zwei virtuellen Netzwerken, und es besteht keine abgeleitete transitive Beziehung. Wenn also beispielsweise das virtuelle Netzwerk A mittels Peering mit dem virtuellen Netzwerk B und das virtuelle Netzwerk B mittels Peering mit dem virtuellen Netzwerk C verknüpft ist, ergibt sich daraus keine Verknüpfung zwischen dem virtuellen Netzwerk A und dem virtuellen Netzwerk C.
+- Das Peering kann zwischen virtuellen Netzwerken in zwei verschiedenen Abonnements hergestellt werden, sofern ein privilegierter Benutzer beider Abonnements das Peering autorisiert.
+- Ein virtuelles Netzwerk, das auf dem Resource Manager-Bereitstellungsmodell basiert, kann mittels Peering mit einem anderen virtuellen Netzwerk verknüpft werden, das ebenfalls auf diesem Modell oder aber auf dem klassischen Bereitstellungsmodell basiert. Virtuelle Netzwerke, die auf dem klassischen Bereitstellungsmodell basieren, können hingegen nicht untereinander mittels Peering verknüpft werden.
+- Für die Kommunikation zwischen virtuellen Computern in mittels Peering verknüpften virtuellen Netzwerken bestehen zwar keine weiteren Bandbreiteneinschränkungen, es gilt jedoch die auf der VM-Größe basierende Bandbreitenobergrenze.
 
 
-![VNet-Peering – Einfach](./media/virtual-networks-peering-overview/figure01.png)
+![Einfaches VNet-Peering](./media/virtual-networks-peering-overview/figure01.png)
 
-## Konnektivität 
-Wenn zwei VNets per Peering verknüpft wurden, kann ein virtueller Computer (Web-/Workerrolle) im VNet eine direkte Verbindung mit anderen virtuellen Computern im verknüpften VNet herstellen. Hierbei besteht vollständige Konnektivität auf IP-Ebene. Die Netzwerklatenz für den Roundtrip zwischen zwei virtuellen Computern in per Peering verknüpften VNets entspricht der Netzwerklatenz im lokalen VNet. Der Netzwerkdurchsatz basiert auf der Bandbreite, die für den virtuellen Computer proportional zu seiner Größe zulässig ist. Es besteht keine weitere Einschränkung in Bezug auf die zulässige Bandbreite. Der Datenverkehr zwischen den virtuellen Computern in per Peering verknüpften VNets wird direkt über die Back-End-Infrastruktur von Azure weitergeleitet, und nicht über ein Gateway.
+## Konnektivität
+Nachdem zwei virtuelle Netzwerke mittels Peering verknüpft wurden, kann ein virtueller Computer (Web-/Workerrolle) im virtuellen Netzwerk eine direkte Verbindung mit anderen virtuellen Computern des mittels Peering verknüpften virtuellen Netzwerks herstellen. Diese beiden Netzwerke verfügen über uneingeschränkte Konnektivität auf IP-Ebene.
 
-Virtuelle Computer in einem VNet können auf Endpunkte mit internem Lastenausgleich (Internal Load Balancer, ILB) im per Peering verknüpften VNet zugreifen. Netzwerksicherheitsgruppen können in beiden VNets angewendet werden, um den Zugriff auf das jeweils andere VNet oder Subnetz bei Bedarf zu blockieren. Wenn Benutzer das Peering konfigurieren, können sie die Netzwerksicherheitsgruppen-Regeln zwischen den VNets öffnen oder schließen. Wenn sich Benutzer für das Öffnen der vollständigen Konnektivität zwischen den per Peering verknüpften VNets entscheiden (Standardoption), können sie NSGs dann in bestimmten Subnetzen oder auf virtuellen Computern verwenden, um den Zugriff jeweils zu blockieren oder zu verweigern.
+Die Netzwerklatenz für einen Roundtrip zwischen zwei virtuellen Computern in mittels Peering verknüpften virtuellen Netzwerken unterscheidet sich nicht von der Latenz für einen Roundtrip innerhalb eines lokalen virtuellen Netzwerks. Der Netzwerkdurchsatz basiert auf der Bandbreite, die für den virtuellen Computer proportional zu seiner Größe zulässig ist. Weitere Bandbreiteneinschränkungen bestehen nicht.
 
-Die von Azure bereitgestellte interne DNS-Namensauflösung für virtuelle Computer funktioniert in per Peering verknüpften VNets nicht. Virtuelle Computer verfügen über interne DNS-Namen, die nur im lokalen Virtual Network aufgelöst werden können. Benutzer können virtuelle Computer, die in verknüpften VNets ausgeführt werden, aber als DNS-Server für ein Virtual Network konfigurieren.
+Der Datenverkehr zwischen den virtuellen Computern in mittels Peering verknüpften virtuellen Netzwerken wird nicht über ein Gateway, sondern direkt über die Back-End-Infrastruktur von Azure geleitet.
+
+Virtuelle Computer in einem virtuellen Netzwerk können im mittels Peering verknüpften virtuellen Netzwerk auf die Endpunkte mit internem Lastenausgleich (Internal Load Balancing, ILB) zugreifen. Netzwerksicherheitsgruppen (NSGs) können bei Bedarf in beiden virtuellen Netzwerken angewendet werden, um den Zugriff auf andere virtuelle Netzwerke oder Subnetze zu blockieren.
+
+Beim Konfigurieren von Peering können die Benutzer die NSG-Regeln zwischen den virtuellen Netzwerken öffnen oder schließen. Wenn sich der Benutzer für das Öffnen der vollständigen Konnektivität zwischen den mittels Peering verknüpften virtuellen Netzwerken entscheidet (Standardoption), können NSGs in bestimmten Subnetzen oder auf virtuellen Computern verwendet werden, um den Zugriff jeweils spezifisch zu blockieren oder zu verweigern.
+
+In mittels Peering verknüpften virtuellen Netzwerken funktioniert die von Azure bereitgestellte interne DNS-Namensauflösung für virtuelle Computer nicht. Virtuelle Computer besitzen interne DNS-Namen, die nur im lokalen virtuellen Netzwerk aufgelöst werden können. Benutzer können virtuelle Computer, die in mittels Peering verknüpften virtuellen Netzwerken ausgeführt werden, aber als DNS-Server für ein virtuelles Netzwerk konfigurieren.
 
 ## Dienstverkettung
-Benutzer können benutzerdefinierte Routingtabellen konfigurieren, die auf virtuelle Computer in per Peering verknüpften VNets als nächsten Hop zeigen (wie im Diagramm unten dargestellt). So können Benutzer eine Dienstverkettung erzielen, mit der sie Datenverkehr über benutzerdefinierte Routingtabellen aus einem VNet an ein virtuelles Gerät leiten können, das in einem per Peering verknüpften VNet ausgeführt wird. Benutzer können auch auf effektive Weise Umgebungen vom Typ „Hub-and-Spoke“ erstellen, wobei der Hub Infrastrukturkomponenten hosten kann, z.B. ein virtuelles Netzwerkgerät. Alle Spoke-VNets können per Peering damit verknüpft werden und eine Teilmenge des Datenverkehrs an Geräte leiten, die im Hub-VNet ausgeführt werden. Kurz gesagt: Beim VNet-Peering kann die IP-Adresse für den nächsten Hop in der „benutzerdefinierten Routingtabelle“ die IP-Adresse eines virtuellen Computers im per Peering verknüpften VNet sein.
+Benutzer können benutzerdefinierte Routingtabellen konfigurieren, die auf virtuelle Computer, welche sich in mittels Peering verknüpften virtuellen Netzwerken befinden, als IP-Adresse für den nächsten Hop verweisen (siehe Diagramm weiter unten in diesem Artikel). So können Benutzer eine Dienstverkettung erzielen, durch die sie Datenverkehr über benutzerdefinierte Routingtabellen aus einem virtuellen Netzwerk an ein virtuelles Gerät leiten können, das in einem mittels Peering verknüpften virtuellen Netzwerk ausgeführt wird.
+
+Benutzer können auch Hub-and-Spoke-Umgebungen erstellen, in denen der Hub Infrastrukturkomponenten wie etwa ein virtuelles Netzwerk-Gerät hosten kann. Alle virtuellen Spoke-Netzwerke können mittels Peering mit dem Hub verknüpft werden. Gleiches gilt für eine Teilmenge des Datenverkehrs an Geräte, die im virtuellen Hub-Netzwerk ausgeführt werden. Kurz gesagt: Beim VNet-Peering kann die IP-Adresse für den nächsten Hop in der benutzerdefinierten Routingtabelle die IP-Adresse eines virtuellen Computers im mittels Peering verknüpften virtuellen Netzwerk sein.
 
 ## Gateways und lokale Konnektivität
-Jedes Virtual Network – ob per Peering mit einem anderen VNet verknüpft oder nicht – kann weiterhin über ein eigenes Gateway verfügen und dieses zum Herstellen einer Verbindung mit der lokalen Umgebung verwenden. Benutzer können die VNet-zu-VNet-Verbindung (Link angeben) auch dann mit Gateways konfigurieren, wenn die VNets per Peering miteinander verknüpft sind. Wenn beide Optionen für die Verbindungen zwischen VNets konfiguriert sind, fließt der Datenverkehr zwischen den VNets über die Peeringkonfiguration (also über den Azure-Backbone).
+Jedes virtuelle Netzwerk kann unabhängig davon, ob eine mittels Peering hergestellte Verknüpfung mit einem anderen virtuellen Netzwerk besteht, weiterhin über ein eigenes Gateway verfügen und dieses zum Herstellen einer Verbindung mit der lokalen Umgebung verwenden. Benutzer können auch dann [VNet-zu-VNet-Verbindungen](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md) unter Verwendung von Gateways konfigurieren, wenn die virtuellen Netzwerke mittels Peering miteinander verknüpft sind.
 
-Wenn VNets per Peering verknüpft sind, können die Benutzer auch konfigurieren, dass das Gateway im verknüpften VNet als Transitpunkt zur lokalen Umgebung verwendet wird. In diesem Fall kann das VNet, für das ein Remotegateway verwendet wird, nicht über ein eigenes Gateway verfügen. Ein VNet kann also nur jeweils ein Gateway haben, und zwar entweder ein lokales Gateway oder ein Remotegateway (im verknüpften VNet). Dies ist in der Abbildung unten dargestellt. Der Gatewaytransit zwischen einem Resource Manager-VNet und einem klassischen VNet wird nicht unterstützt. Beide VNets der Peeringbeziehung sollten Resource Manager-VNets sein, damit der Gatewaytransit funktioniert. Wenn die VNets, die eine einzelne ER-Verbindung gemeinsam nutzen, per Peering verknüpft sind, fließt der Datenverkehr dazwischen über die Peeringbeziehung (also über das Azure-Backbonenetzwerk). Benutzer können weiterhin lokale Gateways in jedem VNet verwenden, um eine Verbindung mit der lokalen Verbindung herzustellen, oder ein gemeinsames Gateway nutzen und den Transit für die lokale Konnektivität konfigurieren.
+Wenn beide Optionen für Verbindungen zwischen virtuellen Netzwerken konfiguriert sind, fließt der Datenverkehr zwischen den virtuellen Netzwerken über die Peeringkonfiguration (also über den Azure-Backbone).
+
+Wenn virtuelle Netzwerke mittels Peering verknüpft sind, können die Benutzer auch das Gateway im mittels Peering verknüpften virtuellen Netzwerk als Transitpunkt für die lokale Umgebung konfigurieren. In diesem Fall kann das virtuelle Netzwerk, das ein Remotegateway verwendet, kein eigenes Gateway besitzen. Ein virtuelles Netzwerk kann immer nur ein einzelnes Gateway besitzen. Dabei kann es sich entweder um ein lokales Gateway oder um ein Remotegateway (im mittels Peering verknüpften virtuellen Netzwerk) handeln, wie im folgenden Bild zu sehen.
+
+Gatewaytransit wird in der Peeringbeziehung zwischen virtuellen Netzwerken, die auf dem Resource Manager-Modell basieren, und virtuellen Netzwerken, die auf dem klassischen Bereitstellungsmodell basieren, nicht unterstützt. Beide virtuellen Netzwerke in der Peeringbeziehung müssen auf dem Resource Manager-Bereitstellungsmodell basieren, um den Gatewaytransit verwenden zu können.
+
+Wenn die virtuellen Netzwerke, die gemeinsam eine einzelne ExpressRoute-Verbindung nutzen, mittels Peering verknüpft sind, fließt der Datenverkehr zwischen ihnen über die Peeringbeziehung (also über das Azure-Backbonenetzwerk). Benutzer können in den einzelnen virtuellen Netzwerken weiterhin lokale Gateways verwenden, um eine Verbindung mit der lokalen Umgebung herzustellen. Alternativ können sie ein gemeinsam genutztes Gateway verwenden und den Transit für lokale Konnektivität konfigurieren.
 
 ![VNet-Peering – Transit](./media/virtual-networks-peering-overview/figure02.png)
 
 ## Bereitstellung
-Das VNet-Peering ist ein privilegierter Vorgang. Es ist eine separate Funktion unter dem Virtual Network-Namespace. Einem Benutzer können bestimmte Rechte für die Autorisierung des Peerings erteilt werden. Ein Benutzer, der im VNet über Lese-/Schreibzugriff verfügt, erbt diese Rechte automatisch. Ein Benutzer, der entweder ein Administrator oder ein privilegierter Benutzer der Peeringfunktion ist, kann einen Peeringvorgang mit einem anderen VNet initiieren. Falls eine übereinstimmende Anforderung für das Peering auf der anderen Seite vorhanden ist und weitere Anforderungen erfüllt sind, wird das Peering eingerichtet.
+VNet-Peering ist ein privilegierter Vorgang. Es ist eine separate Funktion des VirtualNetworks-Namespace. Einem Benutzer können bestimmte Rechte für die Autorisierung des Peerings erteilt werden. Ein Benutzer mit Lese-/Schreibzugriff auf das virtuelle Netzwerk erbt diese Rechte automatisch.
 
-Lesen Sie sich die Gewusst-wie-Artikel durch, um weitere Informationen zum Einrichten des VNet-Peerings zwischen zwei Virtual Networks zu erhalten.
+Ein Administrator oder privilegierter Benutzer der Peeringfunktion kann einen Peeringvorgang für ein anderes virtuelles Netzwerk initiieren. Falls eine übereinstimmende Anforderung für das Peering auf der anderen Seite vorhanden ist und weitere Anforderungen erfüllt sind, kommt das Peering zustande.
+
+Informationen zum Einrichten des VNet-Peerings zwischen zwei virtuellen Netzwerken finden Sie in den Artikeln aus dem Abschnitt „Nächste Schritte“.
 
 ## Grenzen
-Die Anzahl von zulässigen Peerings in einem Virtual Network ist beschränkt. Weitere Informationen finden Sie unter [Azure-Netzwerkbeschränkungen](../azure-subscription-service-limits.md#networking-limits).
+Pro virtuellem Netzwerk ist nur eine begrenzte Anzahl von Peerings zulässig. Weitere Informationen finden in den [netzwerkspezifischen Grenzwerten](../azure-subscription-service-limits.md#networking-limits).
 
 ## Preise
-Während des Vorschauzeitraums werden für das VNet-Peering keine Gebühren berechnet. Nach der Veröffentlichung für die allgemeine Verfügbarkeit fällt eine geringe Gebühr für eingehenden und ausgehenden Datenverkehr an, für den das Peering verwendet wird. Weitere Informationen finden Sie in der [Preisübersicht](https://azure.microsoft.com/pricing/details/virtual-network).
+Während der Beurteilungsphase fallen für das VNet-Peering keine Kosten an. Nach der Veröffentlichung fällt eine geringe Gebühr für eingehenden und ausgehenden Datenverkehr an, für den das Peering verwendet wird. Weitere Informationen finden Sie unter [Preise](https://azure.microsoft.com/pricing/details/virtual-network).
 
 
 ## Nächste Schritte
-- [Einrichten von Peering zwischen Virtual Networks](virtual-networks-create-vnetpeering-arm-portal.md)
+- [Einrichten des Peerings zwischen virtuellen Netzwerken](virtual-networks-create-vnetpeering-arm-portal.md)
 - Weitere Informationen zu [Netzwerksicherheitsgruppen](virtual-networks-nsg.md)
 - Weitere Informationen zu [benutzerdefinierten Routen und IP-Weiterleitung](virtual-networks-udr-overview.md)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0810_2016-->

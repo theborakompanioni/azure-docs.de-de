@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="07/18/2016"
+   ms.date="08/02/2016"
    ms.author="nitinme"/>
 
 # Sicherheit im Azure Data Lake-Speicher
@@ -68,7 +68,7 @@ Eine Anleitung finden Sie unter [Zuweisen von Benutzern oder Sicherheitsgruppen 
 
 ### Verwenden von ACLs für Vorgänge in Dateisystemen
 
-Azure Data Lake Store ist ein hierarchisches Dateisystem wie HDFS und unterstützt [POSIX-ACLs](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html#ACLs_Access_Control_Lists). Es werden Besitzern, besitzenden Gruppen und anderen Benutzern/Gruppen die Zugriffsrechte „Lesen“ (r), „Schreiben“ (w) und „Ausführen“ (x) für Ressourcen gewährt. In der öffentlichen Vorschauversion des Data Lake-Speichers (aktuelle Version) werden ACLs nur im Stammordner aktiviert. Dies bedeutet, dass die ACLs, die Sie auf den Stammordner anwenden, auch für alle untergeordneten Ordner und Dateien gelten. In zukünftigen Versionen können Sie ACLs für jede Datei bzw. jeden Ordner festlegen.
+Azure Data Lake Store ist ein hierarchisches Dateisystem wie HDFS und unterstützt [POSIX-ACLs](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html#ACLs_Access_Control_Lists). Es werden Besitzern, besitzenden Gruppen und anderen Benutzern/Gruppen die Zugriffsrechte „Lesen“ (r), „Schreiben“ (w) und „Ausführen“ (x) für Ressourcen gewährt. In der öffentlichen Vorschau von Data Lake Store (aktuelle Version) können ACLs im Stammordner, in Unterordnern und in einzelnen Dateien aktiviert werden. Die ACLs, die Sie auf den Stammordner anwenden, gelten auch für alle untergeordneten Ordner bzw. Dateien.
 
 Es wird empfohlen, ACLs für viele Benutzer auf einmal mithilfe von [Sicherheitsgruppen](../active-directory/active-directory-accessmanagement-manage-groups.md) zu definieren. Gruppieren Sie die Benutzer in einer Sicherheitsgruppe, und weisen Sie die ACLs für die Datei und den Ordner dann dieser Sicherheitsgruppe zu. Dies ist bei der Bereitstellung von benutzerdefiniertem Zugriff nützlich, da Sie im Rahmen eines benutzerdefinierten Zugriffs nur maximal neun Einträge hinzufügen können. Weitere Informationen zum Schützen von Daten, die im Azure Data Lake Store gespeichert sind, mithilfe von AAD-Sicherheitsgruppen finden Sie unter [Zuweisen von Benutzern oder Sicherheitsgruppen als Zugriffssteuerungslisten zum Azure Data Lake Store-Dateisystem](data-lake-store-secure-data.md#filepermissions).
 
@@ -109,11 +109,13 @@ Sie können die Überwachungspfade für den Datenzugriff über das Azure-Portal 
 
 Nachdem Sie die Diagnoseeinstellungen aktiviert haben, können Sie die Protokolle auf der Registerkarte **Diagnoseprotokolle** verfolgen.
 
+Weitere Informationen zum Arbeiten mit Diagnoseprotokollen in Azure Data Lake Store finden Sie unter [Zugreifen auf Diagnoseprotokolle für Azure Data Lake Store](data-lake-store-diagnostic-logs.md).
+
 ## Zusammenfassung
 
 Unternehmenskunden wünschen sich eine Cloudplattform für die Datenanalyse, die sicher und einfach zu verwenden ist. Azure Data Lake-Speicher wurde für die Erfüllung dieser Anforderungen konzipiert und verfügt über Identitätsverwaltung und Authentifizierung per Azure Active Direction-Integration, ACL-basierte Autorisierung, Netzwerkisolation, Verschlüsselung von Daten während der Übertragung und im ruhenden Zustand (in zukünftigen Versionen verfügbar) sowie Überwachung.
 
-Wenn Sie neue Features für den Data Lake Store wünschen, senden Sie uns Ihr Feedback im [UserVoice-Forum](https://feedback.azure.com/forums/327234-data-lake).
+Wenn Sie neue Features für Data Lake Store wünschen, senden Sie uns Ihr Feedback im [UserVoice-Forum](https://feedback.azure.com/forums/327234-data-lake).
 
 ## Weitere Informationen
 
@@ -121,4 +123,4 @@ Wenn Sie neue Features für den Data Lake Store wünschen, senden Sie uns Ihr Fe
 - [Erste Schritte mit dem Data Lake-Speicher](data-lake-store-get-started-portal.md)
 - [Sichern von Daten in Data Lake-Speicher](data-lake-store-secure-data.md)
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0803_2016-->

@@ -23,12 +23,7 @@
 * [Videoreihe zu Azure WebJobs auf Channel 9](http://channel9.msdn.com/Tags/azurefridaywebjobs)
 * [Einführung in WebJobs-Tools für Visual Studio](http://channel9.msdn.com/Shows/Web+Camps+TV/Introducing-WebJobs-Tooling-for-Visual-Studio-with-Brady-Gaster)
 * [WebJobs-Tools und Remotedebuggen](http://channel9.msdn.com/Shows/Web+Camps+TV/WebJobs-GA-Series-Episode-1-WebJobs-Tooling-with-Brady-Gaster)
-* [Einführung in WebJobs-Tools für Visual Studio](http://channel9.msdn.com/Shows/Web+Camps+TV/Introducing-WebJobs-Tooling-for-Visual-Studio-with-Brady-Gaster)
-* [WebJobs-Tools und Remotedebuggen](http://channel9.msdn.com/Shows/Web+Camps+TV/WebJobs-GA-Series-Episode-1-WebJobs-Tooling-with-Brady-Gaster)
-* [WebJobs-Tools und Remotedebuggen](http://channel9.msdn.com/Shows/Web+Camps+TV/WebJobs-GA-Series-Episode-1-WebJobs-Tooling-with-Brady-Gaster)
 * [Horizontales Skalieren von WebJobs](http://channel9.msdn.com/Shows/Azure-Friday/Azure-WebJobs-105-Scaling-out-Web-Jobs)
 * [Videos zu Azure WebJobs von Magnus Mårtensson](https://www.youtube.com/playlist?list=PLqp1ZOYYUSd81yEzMYLTw8cz91wx_LU9r)
-* [Videoreihe zu Azure WebJobs auf Channel 9](http://channel9.msdn.com/Tags/azurefridaywebjobs)
-* [Videoreihe zu Azure WebJobs auf Channel 9](http://channel9.msdn.com/Tags/azurefridaywebjobs)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0803_2016-->

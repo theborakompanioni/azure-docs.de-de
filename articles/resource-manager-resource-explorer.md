@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/16/2016"
+   ms.date="08/01/2016"
    ms.author="stuartle;tomfitz"/>
 
 # Verwenden des Azure-Ressourcen-Explorer zum Anzeigen und Ändern von Ressourcen
@@ -34,7 +34,7 @@ Wenn Sie in einer Ressourcengruppe einen Drilldown ausführen, sehen Sie die Anb
 
 Dort können Sie beginnen, den Drilldown in die Ressourceninstanzen auszuführen. Im folgenden Screenshot sehen Sie die SQL Server-Instanz `sltest` in der Strukturansicht. Auf der rechten Seite sehen Sie Informationen über die REST-API-Anforderungen, die Sie für diese Ressource verwenden können. Wenn Sie zum Knoten einer Ressource navigieren, erstellt der Ressourcen-Explorer automatisch die GET-Anforderung, um Informationen über die Ressource abzurufen. In dem großen Textbereich unterhalb der URL sehen Sie die Antwort der API.
 
-Wenn Sie mit den ARM-Vorlagen vertraut werden, wird Ihnen auch der Textinhalt vertraut! Der Abschnitt **properties** der Antwort entspricht den Werten, die Sie im Abschnitt **properties** Ihrer Vorlage angeben können.
+Wenn Sie mit den Resource Manager-Vorlagen vertraut werden, wird Ihnen auch der Textinhalt vertraut! Der Abschnitt **properties** der Antwort entspricht den Werten, die Sie im Abschnitt **properties** Ihrer Vorlage angeben können.
 
 ![SQL Server](./media/resource-manager-resource-explorer/are-03-sqlserver-with-response.png)
 
@@ -70,8 +70,8 @@ Auf der PowerShell-Registerkarte im Ressourcen-Explorer werden die Cmdlets für 
 Weitere Informationen zu Azure PowerShell-Cmdlets finden Sie unter [Verwenden von Azure PowerShell mit Azure Resource Manager](powershell-azure-resource-manager.md).
 
 ## Zusammenfassung
-Bei der Arbeit mit ARM kann der Ressourcen-Explorer ein äußerst nützliches Tool sein. Er ist eine hervorragende Möglichkeit, Verfahren zur Verwendung von PowerShell zum Abfragen und Ausführen von Änderungen zu entdecken. Wenn Sie mit der REST-API arbeiten, ist er eine hervorragende Möglichkeit für Sie, die ersten Schritte zu gehen und API-Aufrufe schnell zu testen, bevor Sie mit dem Schreiben von Code beginnen. Und wenn Sie ARM-Vorlagen schreiben, kann er eine hervorragende Möglichkeit sein, die Ressourcenhierarchie kennenzulernen und herauszufinden, wo Konfiguration eingebracht werden kann – Sie können eine Änderung im Portal vornehmen und dann die entsprechenden Einträge im Ressourcen-Explorer finden!
+Bei der Arbeit mit Resource Manager kann der Ressourcen-Explorer ein äußerst nützliches Tool sein. Er ist eine hervorragende Möglichkeit, Verfahren zur Verwendung von PowerShell zum Abfragen und Ausführen von Änderungen zu entdecken. Wenn Sie mit der REST-API arbeiten, ist er eine hervorragende Möglichkeit für Sie, die ersten Schritte zu gehen und API-Aufrufe schnell zu testen, bevor Sie mit dem Schreiben von Code beginnen. Und wenn Sie Vorlagen schreiben, kann er eine hervorragende Möglichkeit sein, die Ressourcenhierarchie kennenzulernen und herauszufinden, wo Konfiguration eingebracht werden kann – Sie können eine Änderung im Portal vornehmen und dann die entsprechenden Einträge im Ressourcen-Explorer finden.
 
 Weitere Informationen bietet Ihnen das [Channel 9-Video mit Scott Hanselman und David Ebbo](https://channel9.msdn.com/Shows/Azure-Friday/Azure-Resource-Manager-Explorer-with-David-Ebbo).
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0803_2016-->

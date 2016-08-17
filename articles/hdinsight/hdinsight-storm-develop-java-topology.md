@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="07/27/2016"
+   ms.date="08/01/2016"
    ms.author="larryfr"/>
 
 #Entwickeln von Java-basierten Topologien für eine einfache Anwendung zum Zählen von Wörtern mit Apache Storm und Maven auf HDInsight
@@ -82,7 +82,7 @@ Da dies eine Storm-Topologie ist, müssen Sie eine Abhängigkeit für Storm-Komp
 	  <artifactId>storm-core</artifactId>
       <!-- Storm 0.10.0 is for HDInsight 3.3 and 3.4.
            To find the version information for earlier HDInsight cluster
-           versions, see https://azure.microsoft.com/de-DE/documentation/articles/hdinsight-component-versioning/ -->
+           versions, see https://azure.microsoft.com/documentation/articles/hdinsight-component-versioning/ -->
 	  <version>0.10.0</version>
 	  <!-- keep storm out of the jar-with-dependencies -->
 	  <scope>provided</scope>
@@ -169,13 +169,13 @@ Eine Java-basierte Storm-Topologie besteht aus drei Komponenten, die Sie als Abh
 
 ###Erstellen des Spouts
 
-Um die Anforderungen für das Einrichten von externen Datenquellen zu verringern, gibt der folgende Spout willkürliche Sätze aus. Es handelt sich um eine modifizierte Version eines Spouts, der mit den (<a href="https://github.com/apache/storm/blob/master/examples/storm-starter/" target="_blank">Storm-Startbeispielen</a>) bereitgestellt wird.
+Um die Anforderungen für das Einrichten von externen Datenquellen zu verringern, gibt der folgende Spout willkürliche Sätze aus. Es handelt sich um eine modifizierte Version eines Spouts, der mit den ([Storm-Startbeispielen](https://github.com/apache/storm/blob/0.10.x-branch/examples/storm-starter/src/jvm/storm/starter)) bereitgestellt wird.
 
 > [AZURE.NOTE] Ein Beispiel zu einem Spout, der aus einer externen Datenquelle liest, finden Sie in den folgenden Beispielen:
 >
-> * <a href="https://github.com/apache/storm/blob/master/examples/storm-starter/src/jvm/storm/starter/spout/TwitterSampleSpout.java" target="_blank">TwitterSampleSpout:</a> ein Beispiel-Spout, der Daten aus Twitter liest
+> * [TwitterSampleSpout](https://github.com/apache/storm/blob/0.10.x-branch/examples/storm-starter/src/jvm/storm/starter/spout/TwitterSampleSpout.java): ein Beispiel-Spout, der Daten aus Twitter liest
 >
-> * <a href="https://github.com/apache/storm/tree/master/external/storm-kafka" target="_blank">Storm-Kafka:</a> ein Spout, der Dateien aus Kafka liest
+> * [Storm-Kafka:](https://github.com/apache/storm/tree/0.10.x-branch/external/storm-kafka) ein Spout, der Dateien aus Kafka liest
 
 Erstellen Sie für den Spout eine neue Datei namens **RandomSentenceSpout.java** im Verzeichnis **src\\main\\java\\com\\microsoft\\example**, und verwenden Sie Folgendes als Inhalt:
 
@@ -526,4 +526,4 @@ Sie haben erfahren, wie Sie eine Storm-Topologie mit Java erstellen. Nun lernen 
 
 Weitere Beispiel-Storm-Topologien finden Sie unter [Beispieltopologien für Storm auf HDInsight](hdinsight-storm-example-topology.md).
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

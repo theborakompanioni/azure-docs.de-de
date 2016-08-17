@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="07/18/2016"
+   ms.date="08/01/2016"
    ms.author="sonyama;barbkess"/>
 
 
@@ -25,14 +25,7 @@
 - [Treiber](sql-data-warehouse-connection-strings.md)
 
 
-Sie können eine Verbindung mit SQL Data Warehouse herstellen, indem Sie eines der folgenden Anwendungsprotokolle verwenden:
-
-- [ADO.NET][]
-- [ODBC][]
-- [PHP][]
-- [JDBC][]
-
-Im Folgenden sind einige Beispiele für Verbindungszeichenfolgen für die einzelnen Protokolle aufgeführt. Sie können auch das Azure-Portal zum Einrichten Ihrer Verbindungszeichenfolge verwenden. Navigieren Sie einfach im Azure-Portal zu Ihrer Datenbank. Klicken Sie unter *Essentials* auf *Datenbank-Verbindungszeichenfolgen anzeigen*.
+Sie können über verschiedene Anwendungsprotokolle eine Verbindung mit SQL Data Warehouse herstellen, z.B. über [ADO.NET][], [ODBC][], [PHP][] und [JDBC][]. Im Folgenden sind einige Beispiele für Verbindungszeichenfolgen für die einzelnen Protokolle aufgeführt. Sie können auch das Azure-Portal zum Einrichten Ihrer Verbindungszeichenfolge verwenden. Um die Verbindungszeichenfolge über das Azure-Portal zu erstellen, navigieren Sie zum Blatt Ihrer Datenbank, und klicken Sie unter *Zusammenfassung* auf *Datenbank-Verbindungszeichenfolgen anzeigen*.
 
 ## Beispiel-Verbindungszeichenfolge für ADO.NET
 
@@ -58,6 +51,8 @@ Server: {your_server}.database.windows.net,1433 \r\nSQL Database: {your_database
 jdbc:sqlserver://yourserver.database.windows.net:1433;database=yourdatabase;user={your_user_name};password={your_password_here};encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;
 ```
 
+> [AZURE.NOTE] Sie sollten das Verbindungstimeout möglicherweise auf 300 Sekunden festlegen, sodass die Verbindung kurze Ausfälle übersteht.
+
 ## Nächste Schritte
 
 Informationen zum Abfragen Ihres Data Warehouse mit Visual Studio und anderen Anwendungen finden Sie unter [Abfragen mit Visual Studio][].
@@ -75,4 +70,4 @@ Informationen zum Abfragen Ihres Data Warehouse mit Visual Studio und anderen An
 
 <!--Other references-->
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0803_2016-->

@@ -226,7 +226,7 @@ Rechte | „Eingeschränkt“ oder „Erhöht“ | Beliebiges Benutzer- oder Com
 Sequenzierung | „Einfach“, „Hintergrund“, „Vordergrund“ | Die Ausführung der Startaufgabe muss erfolgreich sein, bevor der Dienst gestartet wird.
 
 ### Cloud Services
-Bei Cloud Services wird pro Rolle in „ServiceDefintion.csdef“ ein Einstiegspunkt für den Start konfiguriert.
+Bei Cloud Services wird in „ServiceDefinition.csdef“ pro Rolle ein Einstiegspunkt für den Start konfiguriert.
 
 ```xml
 
@@ -277,4 +277,4 @@ Lesen Sie die weiteren Informationen zu Service Fabric Reliable Services und den
 [3]: ./media/service-fabric-cloud-services-migration-worker-role-stateless-service/service-fabric-cloud-service-projects.png
 [4]: ./media/service-fabric-cloud-services-migration-worker-role-stateless-service/worker-role-to-stateless-service.png
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0803_2016-->

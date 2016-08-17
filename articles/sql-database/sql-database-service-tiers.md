@@ -14,7 +14,7 @@
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="na"
 	ms.workload="data-management"
-	ms.date="07/05/2016"
+	ms.date="08/10/2016"
 	ms.author="carlrab"/>
 
 # SQL-Datenbankoptionen und -leistung: Grundlegendes zum Angebot in den einzelnen Tarifen
@@ -22,7 +22,7 @@
 [Azure SQL-Datenbank](sql-database-technical-overview.md) umfasst mehrere Dienstebenen für unterschiedliche Workloads. Sie können jederzeit [Dienstebenen ändern](sql-database-scale-up.md) und die Ausfallzeiten für Ihre Anwendung dabei gering halten (im Durchschnitt meist unter vier Sekunden). Sie haben auch die Möglichkeit zum [Erstellen einer Einzeldatenbank](sql-database-get-started.md) mit definierten Merkmalen und Preisen. Oder Sie können mehrere Datenbanken verwalten, indem Sie einen [Pool für elastische Datenbanken erstellen](sql-database-elastic-pool-create-portal.md). In beiden Fällen sind die Dienstebenen **Basic**, **Standard** und **Premium** verfügbar. Die Datenbankoptionen dieser Ebenen sind bei Einzeldatenbanken und elastischen Pools ähnlich, bei elastischen Pools sind jedoch weitere Aspekte zu beachten. Dieser Artikel enthält ausführliche Informationen zu den Dienstebenen für Einzeldatenbanken und elastische Datenbanken.
 
 ## Tarife und Datenbankoptionen
-Die Dienstebenen "Basic", "Standard" und "Premium" haben alle eine Betriebszeit-SLA von 99,99 % und bieten vorhersagbare Leistung, flexible Optionen für Geschäftskontinuität, Sicherheitsfeatures und stündliche Abrechnung. In der folgenden Tabelle sind Beispiele für Dienstebenen aufgeführt, die sich für unterschiedliche Anwendungsworkloads am besten eignen.
+Die Dienstebenen "Basic", "Standard" und "Premium" haben alle eine Betriebszeit-SLA von 99,99 % und bieten vorhersagbare Leistung, flexible Optionen für Geschäftskontinuität, Sicherheitsfeatures und stündliche Abrechnung. In der folgenden Tabelle sind Beispiele für Dienstebenen aufgeführt, die sich für unterschiedliche Anwendungsworkloads am besten eignen.
 
 | Dienstebene | Zielworkloads |
 |---|---|
@@ -92,4 +92,4 @@ Nachdem Sie die Dienstebene für Ihren Pool ermittelt haben, können Sie die Lei
 
 Informationen zu gängigen Datenarchitekturmustern von mehrinstanzenfähigen SaaS-Datenbankanwendungen (Software-as-a-Service) finden Sie unter [Entwurfsmuster für mehrinstanzenfähige SaaS-Anwendungen und Azure SQL-Datenbank](sql-database-design-patterns-multi-tenancy-saas-applications.md).
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0810_2016-->

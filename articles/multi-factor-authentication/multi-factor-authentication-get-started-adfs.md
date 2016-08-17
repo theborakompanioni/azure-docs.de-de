@@ -12,7 +12,7 @@
 	ms.workload="identity" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" ms.topic="get-started-article" 
-	ms.date="05/12/2016" 
+	ms.date="08/04/2016" 
 	ms.author="billmath"/>
 
 # Erste Schritte mit Azure Multi-Factor Authentication und Active Directory-Verbunddiensten
@@ -23,8 +23,8 @@
 
 Wenn Ihre Organisation über einen Verbund Ihres lokalen Active Directory mit Azure Active Directory über AD FS verfügt, sind die beiden folgenden Optionen für die Verwendung von Multi-Factor Authentication verfügbar.
 
-- Sichern von Cloud-Ressourcen mit Azure Multi-Factor Authentication oder Active Directory-Verbunddiensten 
-- Sichern von Cloud- und lokalen Ressourcen mithilfe von Azure Multi-Factor Authentication-Server 
+- Sichern von Cloud-Ressourcen mit Azure Multi-Factor Authentication oder Active Directory-Verbunddiensten
+- Sichern von Cloud- und lokalen Ressourcen mithilfe von Azure Multi-Factor Authentication-Server
 
 In der folgenden Tabelle sind die Authentifizierungsverfahren beim Sichern von Ressourcen mit Azure Multi-Factor Authentication und AD FS zusammengefasst.
 
@@ -54,4 +54,4 @@ Informationen zum Einrichten von Azure Multi-Factor Authentication oder Azure Mu
 
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0810_2016-->

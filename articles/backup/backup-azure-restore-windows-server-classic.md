@@ -3,8 +3,8 @@
    description="Erfahren Sie, wie Daten auf einem Windows Server- oder Windows-Clientcomputer wiederhergestellt werden."
    services="backup"
    documentationCenter=""
-   authors="Jim-Parker"
-   manager="jwhit"
+   authors="saurabhsensharma"
+   manager="shivamg"
    editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	 ms.tgt_pltfrm="na"
 	 ms.devlang="na"
 	 ms.topic="article"
-	 ms.date="05/09/2016"
+	 ms.date="08/02/2016"
 	 ms.author="trinadhk; jimpark; markgal;"/>
 
 # Wiederherstellen von Dateien auf einem Windows-Server- oder Windows-Clientcomputer mit dem klassischen Bereitstellungsmodell
@@ -123,4 +123,4 @@ In diesen Schritten wird folgende Terminologie verwendet:
 - [Sichern von virtuellen Azure-Computern](backup-azure-vms-introduction.md)
 - [Sichern von Microsoft-Workloads](backup-azure-dpm-introduction.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0803_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="07/11/2016"
+   ms.date="08/01/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
 # Verteilen von Tabellen in SQL Data Warehouse
@@ -187,7 +187,7 @@ from dbo.vTableSizes
 where two_part_name in 
     (
     select two_part_name
-    from dbo.vDistributionSkew 
+    from dbo.vTableSizes
     where row_count > 0
     group by two_part_name
     having min(row_count * 1.000)/max(row_count * 1.000) > .10
@@ -286,7 +286,9 @@ RENAME OBJECT [dbo].[FactInternetSales_ROUND_ROBIN] TO [FactInternetSales];
 
 ## Nächste Schritte
 
-Weitere Informationen zum Tabellendesign finden Sie in den Artikeln [Verteilen][], [Indizieren][], [Partitionieren][], [Datentypen][], [Statistiken][] und [Temporäre Tabellen][Temporary]. Eine Übersicht über bewährte Methoden finden Sie unter [Bewährte Methoden für SQL Data Warehouse][].
+Weitere Informationen zum Tabellendesign finden Sie in den Artikeln [Verteilen][], [Indizieren][], [Partitionieren][], [Datentypen][], [Statistiken][] und [Temporäre Tabellen][Temporary].
+
+Eine Übersicht über bewährte Methoden finden Sie unter [Bewährte Methoden für SQL Data Warehouse][].
 
 
 <!--Image references-->
@@ -312,4 +314,4 @@ Weitere Informationen zum Tabellendesign finden Sie in den Artikeln [Verteilen][
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0803_2016-->

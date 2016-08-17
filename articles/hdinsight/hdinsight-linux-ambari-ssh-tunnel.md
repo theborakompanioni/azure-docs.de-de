@@ -144,14 +144,14 @@ Wenn Sie FoxyProxy Standard installiert haben, konfigurieren Sie es folgenderma�
 
 	* **Name des Musters**: **Clusterknoten** – Dies ist lediglich ein Anzeigename für das Muster.
 
-	* **URL-Muster** – ***internal.cloudapp.net*** – Dies definiert ein Muster, das mit dem internen vollständig qualifizierten Domänennamen der Clusterknoten übereinstimmt.
+	* **URL-Muster** – **\*internal.cloudapp.net\*** – Dies definiert ein Muster, das mit dem internen vollständig qualifizierten Domänennamen der Clusterknoten übereinstimmt.
 
 	![FoxyProxy-Muster](./media/hdinsight-linux-ambari-ssh-tunnel/foxypattern.png)
 
     Fügen Sie ein weiteres Muster mit den folgenden Informationen für die Einstellungen hinzu:
 
     * __Name des Musters__: Hauptknoten
-    * __URL-Muster__: *Hauptknotenhost*
+    * __URL-Muster__: \*Hauptknotenhost\*
 
     Wählen Sie „OK“, um dieses Muster zu speichern.
 

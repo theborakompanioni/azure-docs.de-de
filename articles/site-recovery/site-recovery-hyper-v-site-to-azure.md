@@ -77,7 +77,7 @@ In Azure benötigen Sie für die Bereitstellung dieses Szenarios Folgendes:
 
 **Voraussetzung** | **Details**
 --- | ---
-**Azure-Konto**| Sie benötigen ein [Microsoft Azure](http://azure.microsoft.com/)-Konto. Für den Einstieg steht eine [kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/) zur Verfügung. Erfahren Sie mehr über die [Preise für Site Recovery](https://azure.microsoft.com/pricing/details/site-recovery/). 
+**Azure-Konto**| Sie benötigen ein [Microsoft Azure](http://azure.microsoft.com/)-Konto. Für den Einstieg steht eine [kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/) zur Verfügung. Erfahren Sie mehr über die [Preise für Site Recovery](https://azure.microsoft.com/pricing/details/site-recovery/). 
 **Azure-Speicher** | Sie benötigen ein Standardspeicherkonto. Hierfür können Sie ein LRS- oder GRS-Speicherkonto verwenden. Wir empfehlen Ihnen die Verwendung von GRS, damit Resilienz für die Daten besteht, wenn es zu einem regionalen Ausfall kommt oder wenn die primäre Region nicht wiederhergestellt werden kann. [Weitere Informationen](../storage/storage-redundancy.md). Das Konto muss sich in derselben Region wie der Recovery Services-Tresor befinden.<br/><br/> Storage Premium wird nicht unterstützt.<br/><br/> Replizierte Daten werden in Azure Storage gespeichert, und virtuelle Azure-Computer werden erstellt, wenn ein Failover durchgeführt wird.<br/><br/> [Erfahren Sie mehr](../storage/storage-introduction.md) über Azure Storage.
 **Azure-Netzwerk** | Sie benötigen ein virtuelles Azure-Netzwerk, mit dem die virtuellen Azure-Computer eine Verbindung herstellen, wenn ein Failover stattfindet. Das virtuelle Azure-Netzwerk muss sich in derselben Region wie der Recovery Services-Tresor befinden. 
 
@@ -190,30 +190,28 @@ Richten Sie den Hyper-V-Standort ein, installieren Sie den Azure Site Recovery-A
 1. Führen Sie die Setupdatei für den Anbieter aus.
 2. Unter **Microsoft Update** können Sie Updates aktivieren, damit Updates für den Anbieter gemäß Ihrer Microsoft Update-Richtlinie installiert werden.
 3. Akzeptieren oder ändern Sie unter **Installation** den Standardspeicherort der Anbieterinstallation, und klicken Sie auf **Installieren**.
-3. Klicken Sie nach Abschluss der Installation auf **Registrieren**, um den Server im Tresor zu registrieren.
-
-	![Installationspfad](./media/site-recovery-hyper-v-site-to-azure/provider2.png)
-
-4. Geben Sie unter **Proxyeinstellungen** an, wie der Anbieter, der auf dem Server installiert wird, eine Internetverbindung mit Azure Site Recovery herstellt.
-
-	- Wenn der Anbieter eine direkte Verbindung herstellen soll, wählen Sie **Connect directly without a proxy** (Ohne Proxy direkt verbinden) aus.
-	- Wenn die Verbindung über einen derzeit auf dem Server eingerichteten Proxy hergestellt werden soll, wählen Sie **Connect with existing proxy settings** (Mit vorhandenen Proxyeinstellungen verbinden) aus.
-	- Wenn für den vorhandenen Proxy eine Authentifizierung erforderlich ist oder Sie für die Anbieterverbindung einen benutzerdefinierten Proxy verwenden möchten, wählen Sie **Connect with custom proxy settings** (Mit benutzerdefinierten Proxyeinstellungen verbinden) aus.
-	- Bei einem benutzerdefinierten Proxy müssen Sie die Adresse, den Port und Anmeldeinformationen eingeben.
-	- Stellen Sie sicher, dass die in den [Voraussetzungen](#on-premises-prerequisites) beschriebenen URLs vom Proxy zugelassen werden, falls Sie einen verwenden.
-
-	![Internet](./media/site-recovery-hyper-v-site-to-azure/provider5.png)
-
 5. Klicken Sie auf der Seite **Tresoreinstellungen** auf **Durchsuchen**, um die Tresorschlüsseldatei auszuwählen, die Sie heruntergeladen haben. Geben Sie das Azure Site Recovery-Abonnement, den Tresornamen und den Hyper-V-Standort an, zu dem der Hyper-V-Server gehört.
 
 	![Serverregistrierung](./media/site-recovery-hyper-v-site-to-azure/provider3.png)
 
-6. Nach der Registrierung ruft Azure Site Recovery Metadaten vom Hyper-V-Server ab, und der Server wird auf dem Blatt **Einstellungen** > **Site Recovery-Infrastruktur** > **Hyper-V-Hosts** angezeigt.
+4\. Geben Sie unter **Proxyeinstellungen** an, wie der Anbieter, der auf dem Server installiert wird, eine Internetverbindung mit Azure Site Recovery herstellt.
+
+- Wenn der Anbieter eine direkte Verbindung herstellen soll, wählen Sie **Connect directly without a proxy** (Ohne Proxy direkt verbinden) aus.
+- Wenn die Verbindung über einen derzeit auf dem Server eingerichteten Proxy hergestellt werden soll, wählen Sie **Connect with existing proxy settings** (Mit vorhandenen Proxyeinstellungen verbinden) aus.
+- Wenn für den vorhandenen Proxy eine Authentifizierung erforderlich ist oder Sie für die Anbieterverbindung einen benutzerdefinierten Proxy verwenden möchten, wählen Sie **Connect with custom proxy settings** (Mit benutzerdefinierten Proxyeinstellungen verbinden) aus.
+- Bei einem benutzerdefinierten Proxy müssen Sie die Adresse, den Port und Anmeldeinformationen eingeben.
+- Stellen Sie sicher, dass die in den [Voraussetzungen](#on-premises-prerequisites) beschriebenen URLs vom Proxy zugelassen werden, falls Sie einen verwenden.
+
+	![Internet](./media/site-recovery-hyper-v-site-to-azure/provider7.PNG)
+
+5\. Klicken Sie nach Abschluss der Installation auf **Registrieren**, um den Server im Tresor zu registrieren. ![Installationspfad](./media/site-recovery-hyper-v-site-to-azure/provider2.png)
+
+6\. Nach der Registrierung ruft Azure Site Recovery Metadaten vom Hyper-V-Server ab, und der Server wird auf dem Blatt **Einstellungen** > **Site Recovery-Infrastruktur** > **Hyper-V-Hosts** angezeigt.
 
 
 ### Installation über die Befehlszeile
 
-Der Azure Site Recovery-Anbieter und der Azure Site Recovery-Agent können auch mithilfe der folgenden Befehlszeile installiert werden. Mit dieser Methode kann der Anbieter in Server Core für Windows Server 2012 R2 installiert werden.
+Der Azure Site Recovery-Anbieter und der Azure Site Recovery-Agent können auch mithilfe der folgenden Befehlszeile installiert werden. Mit dieser Methode kann der Anbieter in Server Core für Windows Server 2012 R2 installiert werden.
 
 1. Laden Sie die Installationsdatei und den Registrierungsschlüssel des Anbieters in einen Ordner herunter. Beispiel: C:\\ASR.
 2. Extrahieren Sie über eine Eingabeaufforderung mit erhöhten Rechten das Installationsprogramm des Anbieters, indem Sie diese Befehle ausführen:
@@ -227,7 +225,7 @@ Der Azure Site Recovery-Anbieter und der Azure Site Recovery-Agent können auch 
 4. Führen Sie anschließend diese Befehle aus, um den Server im Tresor zu registrieren: CD C:\\Programme\\Microsoft Azure Site Recovery Provider\\ C:\\Programme\\Microsoft Azure Site Recovery Provider> DRConfigurator.exe /r /Friendlyname <Anzeigename des Servers> /Credentials <Pfad der Anmeldeinformationendatei>, wobei:
 
 - **/Credentials**: erforderlicher Parameter zum Angeben des Speicherorts der Registrierungsschlüsseldatei.
-- **/FriendlyName**: erforderlicher Parameter für den Namen des Hyper-V-Hostservers, der im Azure Site Recovery-Portal angezeigt wird.
+- **/FriendlyName**: erforderlicher Parameter für den Namen des Hyper-V-Hostservers, der im Azure Site Recovery-Portal angezeigt wird.
 - **/proxyAddress**: optionaler Parameter, der die Adresse des Proxyservers angibt.
 - **/proxyport**: optionaler Parameter, der den Port des Proxyservers angibt.
 - **/proxyUsername**: optionaler Parameter, der den Proxybenutzernamen angibt (sofern der Proxy eine Authentifizierung erfordert).
@@ -238,7 +236,7 @@ Der Azure Site Recovery-Anbieter und der Azure Site Recovery-Agent können auch 
 
 Geben Sie das Azure-Speicherkonto, das für die Replikation verwendet werden soll, und das Azure-Netzwerk an, mit dem Azure-VMs nach dem Failover eine Verbindung herstellen.
 
-1.	Klicken Sie auf **Prepare infrastructure** (Infrastruktur vorbereiten) > **Ziel**, und wählen Sie das gewünschte Azure-Abonnement aus.
+1.	Klicken Sie auf **Infrastruktur vorbereiten** > **Ziel**, und wählen Sie das gewünschte Azure-Abonnement aus.
 2.	Geben Sie das Bereitstellungsmodell an, das Sie nach einem Failover für VMs verwenden möchten.
 3.	Site Recovery prüft, ob Sie über ein oder mehrere kompatible Azure-Speicherkonten und -Netzwerke verfügen.
 
@@ -259,14 +257,14 @@ Geben Sie das Azure-Speicherkonto, das für die Replikation verwendet werden sol
 
 ## Schritt 4: Einrichten der Replikationseinstellungen
 
-1. Klicken Sie zum Erstellen einer neuen Replikationsrichtlinie auf **Prepare infrastructure** (Infrastruktur vorbereiten) > **Replikationseinstellungen** > **+Create and associate** (+Erstellen und zuordnen).
+1. Klicken Sie zum Erstellen einer neuen Replikationsrichtlinie auf **Infrastruktur vorbereiten** > **Replikationseinstellungen** > **+Erstellen und zuordnen**.
 
 	![Netzwerk](./media/site-recovery-hyper-v-site-to-azure/gs-replication.png)
 
-2. Geben Sie unter **Create and associate policy** (Richtlinie erstellen und zuordnen) einen Richtliniennamen an.
+2. Geben Sie unter **Richtlinie erstellen und zuordnen** einen Richtliniennamen an.
 3. Geben Sie unter **Kopierhäufigkeit** an, wie oft Sie Deltadaten nach der ersten Replikation replizieren möchten (alle 30 Sekunden, nach 5 Minuten oder nach 15 Minuten).
-4. Geben Sie unter **Aufbewahrungszeitraum des Wiederherstellungspunkts** den Zeitraum des Aufbewahrungsfensters für jeden Wiederherstellungspunkt in Stunden an. Geschützte Computer können innerhalb eines Zeitfensters an einem beliebigen Punkt wiederhergestellt werden.
-6. Geben Sie unter **Anwendungskonsistente Momentaufnahmehäufigkeit** an, wie oft Wiederherstellungspunkte erstellt werden (1 bis 12 Stunden), die anwendungskonsistente Momentaufnahmen enthalten. Hyper-V verwendet zwei Momentaufnahmen: eine Standard-Momentaufnahme, die eine inkrementelle Momentaufnahme des gesamten virtuellen Computers bereitstellt, und eine anwendungskonsistente Momentaufnahme, die eine Zeitpunkt-Momentaufnahme der Anwendungsdaten innerhalb des virtuellen Computers erfasst. Anwendungskonsistente Momentaufnahmen verwenden den Volumeschattenkopie-Dienst (Volume Shadow Copy Service, VSS), um sicherzustellen, dass Anwendungen sich bei der Erstellung der Momentaufnahme in einem konsistenten Zustand befinden. Beachten Sie, dass die Leistung von Anwendungen auf virtuellen Quellcomputern durch die Aktivierung anwendungskonsistenter Momentaufnahmen beeinträchtigt wird. Stellen Sie sicher, dass der festgelegte Wert kleiner als die konfigurierte Anzahl der zusätzlichen Wiederherstellungspunkte ist.
+4. Geben Sie unter **Aufbewahrungszeitraum des Wiederherstellungspunkts** das Aufbewahrungszeitfenster für die einzelnen Wiederherstellungspunkte in Stunden an. Geschützte Computer können innerhalb eines Zeitfensters an einem beliebigen Punkt wiederhergestellt werden.
+6. Geben Sie unter **App-konsistente Momentaufnahmehäufigkeit** an, wie häufig (1 bis 12 Stunden) Wiederherstellungspunkte erstellt werden sollen, die anwendungskonsistente Momentaufnahmen enthalten. Hyper-V verwendet zwei Momentaufnahmen: eine Standard-Momentaufnahme, die eine inkrementelle Momentaufnahme des gesamten virtuellen Computers bereitstellt, und eine anwendungskonsistente Momentaufnahme, die eine Zeitpunkt-Momentaufnahme der Anwendungsdaten innerhalb des virtuellen Computers erfasst. Anwendungskonsistente Momentaufnahmen verwenden den Volumeschattenkopie-Dienst (Volume Shadow Copy Service, VSS), um sicherzustellen, dass Anwendungen sich bei der Erstellung der Momentaufnahme in einem konsistenten Zustand befinden. Beachten Sie, dass die Leistung von Anwendungen auf virtuellen Quellcomputern durch die Aktivierung anwendungskonsistenter Momentaufnahmen beeinträchtigt wird. Stellen Sie sicher, dass der festgelegte Wert kleiner als die konfigurierte Anzahl der zusätzlichen Wiederherstellungspunkte ist.
 3. Geben Sie unter **Startzeit der ersten Replikation** an, wann die erste Replikation starten soll. Da die Replikation über Ihre Internetbandbreite durchgeführt wird, ist es ratsam, sie außerhalb der Zeiten mit der höchsten Arbeitsbelastung einzuplanen. Klicken Sie dann auf **OK**.
 
 	![Replikationsrichtlinie](./media/site-recovery-hyper-v-site-to-azure/gs-replication2.png)
@@ -280,10 +278,10 @@ Nachdem Sie nun Ihre grundlegende Infrastruktur eingerichtet haben, können Sie 
 Site Recovery verfügt über einen Capacity Planner, der Sie dabei unterstützt, die richtigen Ressourcen für Ihre Quellumgebung, die Site Recovery-Komponenten, das Netzwerk und den Speicher zuzuordnen. Sie können den Planer im Schnellmodus für Schätzungen ausführen, die auf einer durchschnittlichen Anzahl von VMs, Datenträgern und Speicher basieren, oder im ausführlichen Modus, in dem Sie Zahlen auf Workloadebene eingeben. Führen Sie Folgendes aus, bevor Sie beginnen:
 
 - Sammeln Sie Informationen zu Ihrer Replikationsumgebung, z.B. VMs, Datenträger pro VM und Speicher pro Datenträger.
-- Schätzen Sie die tägliche Änderungsrate für replizierte Daten. Als Hilfe können Sie den [Capacity Planner für Hyper-V-Replikat](https://www.microsoft.com/download/details.aspx?id=39057) verwenden.
+- Schätzen Sie die tägliche Änderungsrate für replizierte Daten. Zur Unterstützung können Sie den [Capacity Planner für Hyper-V-Replikat](https://www.microsoft.com/download/details.aspx?id=39057) verwenden.
 
-1.	Klicken Sie auf **Herunterladen**, um das Tool herunterzuladen, und führen Sie es aus. [Lesen Sie sich den Artikel durch](site-recovery-capacity-planner.md), der zum Tool gehört.
-2.	Wählen Sie anschließend unter **Have you run the Capacity Planner?** (Haben Sie den Capacity Planner ausgeführt?) die Option **Ja** aus.
+1.	Klicken Sie auf **Herunterladen**, um das Tool herunterzuladen, und führen Sie es anschließend aus. Lesen Sie sich den [entsprechenden Artikel](site-recovery-capacity-planner.md) durch.
+2.	Wählen Sie anschließend unter **Haben Sie den Capacity Planner ausgeführt?** die Option **Ja** aus.
 
 	![Kapazitätsplanung](./media/site-recovery-hyper-v-site-to-azure/gs-capacity-planning.png)
 
@@ -291,14 +289,14 @@ Site Recovery verfügt über einen Capacity Planner, der Sie dabei unterstützt,
 
 Sie können den Capacity Planner verwenden, um die Bandbreite zu berechnen, die Sie für die Replikation benötigen (erste Replikation und dann Deltareplikation). Sie haben verschiedene Möglichkeiten, um die verwendete Bandbreite für die Replikation zu steuern:
 
-- **Bandbreite einschränken**: Hyper-V-Datenverkehr, der nach Azure repliziert wird, verläuft über einen speziellen Hyper-V-Host. Sie können die Bandbreite auf dem Hostserver drosseln.
+- **Bandbreite drosseln**: Hyper-V-Datenverkehr, der nach Azure repliziert wird, wird über einen speziellen Hyper-V-Host geleitet. Sie können die Bandbreite auf dem Hostserver drosseln.
 - **Bandbreite optimieren**: Sie können beeinflussen, wie viel Bandbreite für die Replikation verwendet wird, indem Sie einige Registrierungsschlüssel nutzen.
 
 #### Bandbreite einschränken
 
 1. Öffnen Sie das Microsoft Azure Backup-MMC-Snap-In auf dem Hyper-V-Hostserver. Standardmäßig ist auf dem Desktop oder unter „C:\\Programme\\Microsoft Azure Recovery Services Agent\\bin\\wabadmin“ eine Verknüpfung für Microsoft Azure Backup verfügbar.
 2. Klicken Sie im Snap-In auf **Eigenschaften ändern**.
-3. Wählen Sie auf der Registerkarte **Drosselung** die Option **Enable internet bandwidth usage throttling for backup operations** (Internet-Bandbreiteneinschränkung für Sicherungsvorgänge aktivieren), und legen Sie die Grenzwerte für Geschäftszeiten und arbeitsfreie Zeiten fest. Der gültige Bereich reicht von 512 KBit/s bis 102 MBit/s.
+3. Wählen Sie auf der Registerkarte **Drosselung** die Option **Internet-Bandbreiteneinschränkung für Sicherungsvorgänge aktivieren**, und legen Sie die Grenzwerte für Geschäftszeiten und arbeitsfreie Zeiten fest. Der gültige Bereich reicht von 512 KBit/s bis 102 MBit/s.
 
 	![Bandbreite einschränken](./media/site-recovery-hyper-v-site-to-azure/throttle2.png)
 
@@ -314,22 +312,22 @@ Sie können auch das Cmdlet [Set-OBMachineSetting](https://technet.microsoft.com
 #### Netzwerkbandbreite beeinflussen
 
 1. Navigieren Sie in der Registrierung zu **HKEY\_LOCAL\_MACHINE\\SOFTWARE\\Microsoft\\Windows Azure Backup\\Replication**.
-	- Ändern Sie den Wert für **UploadThreadsPerVM**, oder erstellen Sie den Schlüssel, falls dieser nicht vorhanden ist, um den Bandbreiten-Datenverkehr auf einem replizierten Datenträger zu beeinflussen.
-	- Ändern Sie den Wert für **DownloadThreadsPerVM**, um die Bandbreite für den Failbackdatenverkehr von Azure zu beeinflussen.
+	- Um die Bandbreite für den Datenverkehr auf einem replizierenden Datenträger zu beeinflussen, ändern Sie den Wert für **UploadThreadsPerVM**, oder erstellen Sie den Schlüssel, falls dieser nicht vorhanden ist.
+	- Um die Bandbreite für den Failbackdatenverkehr von Azure zu beeinflussen, ändern Sie den Wert für **DownloadThreadsPerVM**.
 2. Der Standardwert ist 4. In einem absichtlich mit großen Reserven ausgestatteten Netzwerk müssen die Standardwerte dieser Registrierungsschlüssel geändert werden. Der maximale Wert beträgt 32. Überwachen Sie den Datenverkehr, um den Wert zu optimieren.
 
 ## Schritt 6: Aktivieren der Replikation
 
 Aktivieren Sie die Replikation jetzt wie folgt:
 
-1. Klicken Sie auf **Step 2: Replicate application** (Schritt 2: Anwendung replizieren) > **Quelle**. Klicken Sie nach dem ersten Aktivieren der Replikation im Tresor auf **+Replizieren**, um die Replikation für weitere Computer zu aktivieren.
+1. Klicken Sie auf **Schritt 2: Anwendung replizieren** > **Quelle**. Klicken Sie nach der erstmaligen Aktivierung der Replikation im Tresor auf **+Replizieren**, um die Replikation für weitere Computer zu aktivieren.
 
 	![Replikation aktivieren](./media/site-recovery-hyper-v-site-to-azure/enable-replication.png)
 
 2. Wählen Sie auf dem Blatt **Quelle** den Hyper-V-Standort aus. Klicken Sie dann auf **OK**.
 3. Wählen Sie unter **Ziel** das Tresorabonnement und das Failovermodell aus, das Sie in Azure (klassisches oder Resource Manager-Modell) nach einem Failover verwenden möchten.
-4. Wählen Sie das Speicherkonto aus, das Sie verwenden möchten. Wenn Sie ein anderes Speicherkonto als die vorhandenen Speicherkonten verwenden möchten, können Sie ein [Speicherkonto erstellen](#set-up-an-azure-storage-account). Klicken Sie zum Erstellen eines Speicherkontos mit dem ARM-Modell auf **Neu erstellen**. Wenn Sie ein Speicherkonto mit dem klassischen Modell erstellen möchten, verwenden Sie hierfür das [Azure-Portal](../storage/storage-create-storage-account-classic-portal.md). Klicken Sie dann auf **OK**.
-5.  Wählen Sie das Azure-Netzwerk und das Subnetz aus, mit dem Azure-VMs eine Verbindung herstellen, wenn sie nach einem Failover erstellt werden. Wählen Sie die Option **Configure now for selected machines** (Jetzt für ausgewählte Computer konfigurieren) aus, um die Netzwerkeinstellung auf alle Computer anzuwenden, die geschützt werden sollen. Wählen Sie **Später konfigurieren** aus, um das Azure-Netzwerk pro Computer auszuwählen. Wenn Sie kein vorhandenes Netzwerk verwenden möchten, sondern ein anderes, können Sie [ein Netzwerk erstellen](#set-up-an-azure-network). Klicken Sie zum Erstellen eines Netzwerks mit dem ARM-Modell auf **Neu erstellen**. Wenn Sie ein Netzwerk mit dem klassischen Modell erstellen möchten, verwenden Sie das [Azure-Portal](../virtual-network/virtual-networks-create-vnet-classic-pportal.md). Wählen Sie, falls zutreffend, ein Subnetz aus. Klicken Sie dann auf **OK**.
+4. Wählen Sie das Speicherkonto aus, das Sie verwenden möchten. Wenn Sie ein anderes Speicherkonto als Ihre bereits vorhandenen Speicherkonten verwenden möchten, können Sie ein [Speicherkonto erstellen](#set-up-an-azure-storage-account). Klicken Sie zum Erstellen eines Speicherkontos mit dem ARM-Modell auf **Neu erstellen**. Wenn Sie ein Speicherkonto mit dem klassischen Modell erstellen möchten, verwenden Sie hierfür das [Azure-Portal](../storage/storage-create-storage-account-classic-portal.md). Klicken Sie dann auf **OK**.
+5.  Wählen Sie das Azure-Netzwerk und das Subnetz aus, mit dem Azure-VMs eine Verbindung herstellen, wenn sie nach einem Failover erstellt werden. Wählen Sie die Option **Jetzt für die ausgewählten Computer konfigurieren** aus, um die Netzwerkeinstellung auf alle Computer anzuwenden, die geschützt werden sollen. Wählen Sie **Später konfigurieren** aus, um das Azure-Netzwerk pro Computer auszuwählen. Wenn Sie ein anderes Netzwerk als Ihre bereits vorhandenen Netzwerke verwenden möchten, können Sie [ein Netzwerk erstellen](#set-up-an-azure-network). Klicken Sie zum Erstellen eines Netzwerks mit dem ARM-Modell auf **Neu erstellen**. Wenn Sie ein Netzwerk mit dem klassischen Modell erstellen möchten, verwenden Sie das [Azure-Portal](../virtual-network/virtual-networks-create-vnet-classic-pportal.md). Wählen Sie, falls zutreffend, ein Subnetz aus. Klicken Sie dann auf **OK**.
 
 	![Replikation aktivieren](./media/site-recovery-hyper-v-site-to-azure/enable-replication11.png)
 
@@ -337,7 +335,7 @@ Aktivieren Sie die Replikation jetzt wie folgt:
 
 	![Replikation aktivieren](./media/site-recovery-hyper-v-site-to-azure/enable-replication5.png)
 
-11. Wählen Sie unter **Eigenschaften** > **Eigenschaften konfigurieren** das Betriebssystem für die ausgewählten VMs und den Betriebssystem-Datenträger aus. Stellen Sie sicher, dass der Name des virtuellen Azure-Computers (Zielname) den [Anforderungen für virtuelle Azure-Maschinen](site-recovery-best-practices.md#azure-virtual-machine-requirements) entspricht, und ändern Sie diesen bei Bedarf. Klicken Sie dann auf **OK**. Sie können später weitere Eigenschaften festlegen.
+11. Wählen Sie unter **Eigenschaften** > **Eigenschaften konfigurieren** das Betriebssystem für die ausgewählten VMs und den Betriebssystem-Datenträger aus. Stellen Sie sicher, dass der Name des virtuellen Azure-Computers (Zielname) den [Anforderungen für virtuelle Azure-Computer](site-recovery-best-practices.md#azure-virtual-machine-requirements) entspricht, und ändern Sie diesen bei Bedarf. Klicken Sie dann auf **OK**. Sie können später weitere Eigenschaften festlegen.
 
 	![Replikation aktivieren](./media/site-recovery-hyper-v-site-to-azure/enable-replication6.png)
 
@@ -345,7 +343,7 @@ Aktivieren Sie die Replikation jetzt wie folgt:
 
 	![Replikation aktivieren](./media/site-recovery-hyper-v-site-to-azure/enable-replication7.png)
 
-Sie können den Status des Auftrags **Schutz aktivieren** unter **Einstellungen** > **Aufträge** > **Site Recovery-Aufträge** verfolgen. Nachdem der Auftrag zum **Fertigstellen des Schutzes** ausgeführt wurde, ist der Computer bereit für das Failover.
+Sie können den Fortschritt des Auftrags **Schutz aktivieren** unter **Einstellungen** > **Aufträge** > **Site Recovery-Aufträge** verfolgen. Nachdem der Auftrag **Schutz abschließen** ausgeführt wurde, ist der Computer bereit für das Failover.
 
 ### Anzeigen und Verwalten von VM-Eigenschaften
 
@@ -355,11 +353,11 @@ Es wird empfohlen, dass Sie die Eigenschaften des Quellcomputers überprüfen.
 
 	![Replikation aktivieren](./media/site-recovery-hyper-v-site-to-azure/test-failover1.png)
 
-2. Unter **Eigenschaften** können Sie für die VM die Informationen zur Replikation und zum Failover anzeigen.
+2. Unter **Eigenschaften** können Sie die Informationen zur Replikation und zum Failover für den virtuellen Computer anzeigen.
 
 	![Replikation aktivieren](./media/site-recovery-hyper-v-site-to-azure/test-failover2.png)
 
-3. Unter **Compute und Netzwerk** > **Compute-Eigenschaften** können Sie den Azure-VM-Namen und die Zielgröße angeben. Ändern Sie ggf. den Namen, damit er die Azure-Anforderungen erfüllt. Sie können auch Informationen zum Zielnetzwerk, zum Subnetz sowie zur IP-Adresse anzeigen und ändern, die der Azure-VM zugewiesen wird. Beachten Sie Folgendes:
+3. Unter **Compute und Netzwerk** > **Compute-Eigenschaften** können Sie den Namen und die Zielgröße des virtuellen Azure-Computers angeben. Ändern Sie ggf. den Namen, damit er die Azure-Anforderungen erfüllt. Sie können auch Informationen zum Zielnetzwerk, zum Subnetz sowie zur IP-Adresse anzeigen und ändern, die der Azure-VM zugewiesen wird. Beachten Sie Folgendes:
 
 	- Sie können die Ziel-IP-Adresse festlegen. Wenn Sie keine Adresse angeben, wird für den Computer, für den das Failover durchgeführt wurde, DHCP verwendet. Wenn Sie eine Adresse festlegen, die beim Failover nicht verfügbar ist, tritt beim Failover ein Fehler auf. Dieselbe Ziel-IP-Adresse kann für das Testfailover verwendet werden, wenn die Adresse im Testfailover-Netzwerk verfügbar ist.
 	- Die Anzahl der Netzwerkkarten hängt von der Größe ab, die Sie für den virtuellen Zielcomputer angeben. Hierbei gilt Folgendes:
@@ -371,7 +369,7 @@ Es wird empfohlen, dass Sie die Eigenschaften des Quellcomputers überprüfen.
 
 	![Replikation aktivieren](./media/site-recovery-hyper-v-site-to-azure/test-failover4.png)
 
-5.	Unter **Datenträger** werden das Betriebssystem und die Datenträger auf der VM angezeigt, die repliziert werden.
+5.	Unter **Datenträger** werden das Betriebssystem und die Datenträger auf der VM angezeigt, die repliziert wird.
 
 
 ## Schritt 7: Testen der Bereitstellung
@@ -381,7 +379,7 @@ Zum Testen der Bereitstellung können Sie ein Testfailover für einen einzelnen 
 
 ### Vorbereiten des Testfailovers
 
-- Zum Ausführen eines Testfailovers empfehlen wir Folgendes: Erstellen Sie ein neues Azure-Zielnetzwerk, das von Ihrem Azure-Produktionsnetzwerk isoliert ist (Standardverhalten bei der Erstellung eines neuen Netzwerks in Azure). [Erfahren Sie mehr](site-recovery-failover.md#run-a-test-failover) über die Ausführung von Testfailovern.
+- Zum Ausführen eines Testfailovers empfehlen wir Folgendes: Erstellen Sie ein neues Azure-Zielnetzwerk, das von Ihrem Azure-Produktionsnetzwerk isoliert ist (Standardverhalten bei der Erstellung eines neuen Netzwerks in Azure). [Erfahren Sie mehr](site-recovery-failover.md#run-a-test-failover) über die Ausführung von Testfailovervorgängen.
 - Installieren Sie den Azure-Agent auf dem geschützten Computer, um für das Failover zu Azure die beste Leistung zu erzielen. Hierdurch wird der Startvorgang beschleunigt und die Problembehandlung vereinfacht. Installieren Sie den Agent für [Linux](https://github.com/Azure/WALinuxAgent) oder [Windows](http://go.microsoft.com/fwlink/?LinkID=394789).
 - Zum vollständigen Testen der Bereitstellung benötigen Sie eine entsprechende Infrastruktur, damit der replizierte Computer wie erwartet funktioniert. Wenn Sie Active Directory und DNS testen möchten, können Sie einen virtuellen Computer als Domänencontroller mit DNS erstellen und per Azure Site Recovery zu Azure replizieren. Weitere Informationen finden Sie unter [Überlegungen zum Testfailover für Active Directory](site-recovery-active-directory.md#considerations-for-test-failover).
 - Beachten Sie Folgendes, wenn Sie anstelle eines Testfailovers ein ungeplantes Failover durchführen möchten:
@@ -424,17 +422,17 @@ Gehen Sie wie folgt vor, wenn Sie nach dem Failover auf eine Azure-VM mit Linux 
 
 Gehen Sie wie folgt vor, um das Testfailover durchzuführen:
 
-1. Klicken Sie zum Durchführen des Failovers für eine einzelne VM unter **Einstellungen** > **Replizierte Elemente** auf die VM und dann auf **+Testfailover**.
+1. Klicken Sie zum Durchführen eines Failovers für einen einzelnen virtuellen Computer unter **Einstellungen** > **Replizierte Elemente** auf den virtuellen Computer und dann auf **+Testfailover**.
 
 	![Testfailover](./media/site-recovery-hyper-v-site-to-azure/run-failover1.png)
 
-2. Klicken Sie zum Durchführen des Failovers für einen Wiederherstellungsplan unter **Einstellungen** > **Wiederherstellungspläne** mit der rechten Maustaste auf den Plan und anschließend auf **Testfailover**. [Befolgen Sie diese Anweisungen](site-recovery-create-recovery-plans.md) zum Erstellen eines Wiederherstellungsplans.
+2. Klicken Sie zum Durchführen eines Failovers für einen Wiederherstellungsplan unter **Einstellungen** > **Wiederherstellungspläne** mit der rechten Maustaste auf den Plan, und klicken Sie dann auf **Testfailover**. [Befolgen Sie diese Anweisungen](site-recovery-create-recovery-plans.md) zum Erstellen eines Wiederherstellungsplans.
 
 3. Wählen Sie unter **Testfailover** das Azure-Netzwerk aus, mit dem Azure-VMs nach dem Failover verbunden werden.
 
 	![Testfailover](./media/site-recovery-hyper-v-site-to-azure/run-failover2.png)
 
-4. Klicken Sie auf **OK**, um den Failovervorgang zu starten. Sie können den Status verfolgen, indem Sie auf die VM klicken, um die Eigenschaften zu öffnen. Alternativ dazu können Sie auf den Auftrag **Testfailover** unter **Einstellungen** > **Site Recovery-Aufträge** klicken.
+4. Klicken Sie auf **OK**, um den Failovervorgang zu starten. Sie können den Fortschritt verfolgen, indem Sie auf den virtuellen Computer klicken, um die Eigenschaften zu öffnen. Alternativ dazu können Sie unter **Einstellungen** > **Site Recovery-Aufträge** auf den Auftrag **Testfailover** klicken.
 5. Gehen Sie wie folgt vor, wenn das Failover die Phase **Test abschließen** erreicht hat:
 	1. Zeigen Sie den virtuellen Replikatcomputer im Azure-Portal an. Prüfen Sie, ob der virtuelle Computer erfolgreich startet.
 	2. Wenn Sie den Zugriff auf virtuelle Computer aus Ihrem lokalen Netzwerk eingerichtet haben, können Sie eine Remotedesktopverbindung mit dem virtuellen Computer herstellen.
@@ -453,11 +451,11 @@ Gehen Sie wie folgt vor, um das Testfailover durchzuführen:
 
 Hier wird beschrieben, wie Sie die Konfigurationseinstellungen, den Status und die Integrität für die Site Recovery-Bereitstellung überwachen können:
 
-1. Klicken Sie auf den Tresornamen, um auf das Dashboard **Essentials** (Zusammenfassung) zuzugreifen. In diesem Dashboard werden Site Recovery-Aufträge, Replikationsstatus, Wiederherstellungspläne, Serverzustand und Ereignisse angezeigt. Sie können die Zusammenfassung so anpassen, dass die nützlichsten Kacheln und Layouts angezeigt werden, z.B. auch der Status anderer Site Recovery- und Backup-Tresore.
+1. Klicken Sie auf den Tresornamen, um auf das Dashboard **Zusammenfassung** zuzugreifen. In diesem Dashboard werden Site Recovery-Aufträge, Replikationsstatus, Wiederherstellungspläne, Serverzustand und Ereignisse angezeigt. Sie können die Zusammenfassung so anpassen, dass die nützlichsten Kacheln und Layouts angezeigt werden, z.B. auch der Status anderer Site Recovery- und Backup-Tresore.
 
 	![Zusammenfassung](./media/site-recovery-hyper-v-site-to-azure/essentials.png)
 
-2. Auf der Kachel **Integrität** können Sie Standortserver, für die Probleme auftreten, und die von Site Recovery in den letzten 24 Stunden ausgelösten Ereignisse überwachen.
+2. Auf der Kachel **Integrität** können Sie Standortserver, bei denen Probleme auftreten, sowie die von Site Recovery in den letzten 24 Stunden ausgelösten Ereignisse überwachen.
 3. Sie können die Replikation über die Kacheln **Replizierte Elemente**, **Wiederherstellungspläne** und **Site Recovery-Aufträge** verwalten und überwachen. Genauere Details zu Aufträgen können Sie unter **Einstellungen** > **Aufträge** > **Site Recovery-Aufträge** anzeigen.
 
 
@@ -466,6 +464,6 @@ Hier wird beschrieben, wie Sie die Konfigurationseinstellungen, den Status und d
 
 ## Nächste Schritte
 
-Nachdem die Bereitstellung eingerichtet wurde und ausgeführt wird, können Sie sich über unterschiedliche Arten von Failovern [informieren](site-recovery-failover.md).
+Nachdem die Bereitstellung eingerichtet wurde und ausgeführt wird, [informieren](site-recovery-failover.md) Sie sich über die unterschiedlichen Failoverarten.
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0803_2016-->

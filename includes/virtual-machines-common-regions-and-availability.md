@@ -1,102 +1,104 @@
-# Regions and availability overview
-Azure operates in multiple datacenters around the world. These datacenters are grouped in to geographic regions, giving you flexibility in choosing where to build your applications. You can also build high availability in to your apps by leveraging the redundancy and availability features within the Azure platform such as storage replication and availability sets.
+# Regionen und Verfügbarkeit – Übersicht
+Azure wird in mehreren Rechenzentren weltweit betrieben. Dieser Rechenzentren sind in geografische Regionen unterteilt, sodass Sie auswählen können, wo Sie Ihre Anwendungen erstellen möchten. Sie können auch hohe Verfügbarkeit für Ihre Apps ermöglichen, indem Sie die Funktionen für Redundanz und Verfügbarkeit innerhalb von Azure Platform wie z.B. Speicherreplikation und Verfügbarkeitsgruppen nutzen.
 
-## What are Azure regions?
-Azure allows you to create resources, such as VMs, in defined geographic regions like 'West US', 'North Europe', or 'Southeast Asia'. There are currently 26 Azure regions around the world. You can review the [list of regions and their locations](https://azure.microsoft.com/regions/). Within each region, multiple datacenters exist in order to provide for redundancy and availability. This gives you flexibility when building your applications to create virtual machines (VMs) closest to your users and to meet any legal, compliance, or tax purposes.
+## Was sind Azure-Regionen?
+Mit Azure können Sie Ressourcen wie virtuelle Computer in definierten geografischen Regionen wie „USA, Westen“, „Europa, Norden“ oder „Asien, Südosten“ erstellen. Es gibt derzeit weltweit 26 Azure-Regionen. Sie können die [Liste der Regionen und Standorte](https://azure.microsoft.com/regions/) überprüfen. Innerhalb jeder Region sind mehrere Rechenzentren vorhanden, um Redundanz und Verfügbarkeit bereitzustellen. Dies gibt Ihnen beim Erstellen von Anwendungen die Flexibilität, virtuelle Computer (VMs) möglichst nah an Ihren Benutzern zu erstellen, um rechtliche oder steuerliche Anforderungen zu erfüllen und Compliance zu wahren.
 
-## Special Azure regions
-There are some special Azure regions for compliance or legal purposes which you may wish to use when building out your applications.
+## Spezielle Azure-Regionen
+Für Compliance oder rechtliche Zwecke gibt es einige spezielle Azure-Regionen, die Sie verwenden könnten, wenn Sie Ihre Anwendung erstellen.
 
-Existing special regions include:
+Vorhandene spezielle Regionen:
 
-- **US Gov Virginia** and **US Gov Iowa**
-    - A physical and logical network-isolated instance of Azure for US government agencies and partners, operated by screened US persons. Includes additional compliance certifications such as [FedRAMP](https://www.microsoft.com/en-us/TrustCenter/Compliance/FedRAMP) and [DISA](https://www.microsoft.com/en-us/TrustCenter/Compliance/DISA). Read more about [Azure Government](https://azure.microsoft.com/features/gov/).
-- **Australia East** and **Australia Southeast**
-    - These regions are available to customers with a business presence in Australia or New Zealand.
-- **Central India**, **South India**, and **West India**
-    - These regions are currently available to volume licensing customers and partners with a local enrollment in India and access will open to direct online subscriptions throughout 2016.
-- **China East** and **China North**
-    - These regions are available through a unique partnership between Microsoft and 21Vianet, whereby Microsoft does not directly maintain the datacenters. See more about [Microsoft Azure in China](http://www.windowsazure.cn/).
+- **USA Gov Virginia** und **USA Gov Iowa**
+    - Eine physische und logische vom Netzwerk isolierte Instanz von Azure für US-Regierungsbehörden und Partner, die von überprüften Personen aus den USA betreiben wird. Sie umfasst zusätzliche Compliancezertifizierungen wie z.B. [FedRAMP](https://www.microsoft.com/de-DE/TrustCenter/Compliance/FedRAMP) und [DISA](https://www.microsoft.com/de-DE/TrustCenter/Compliance/DISA). Erfahren Sie mehr über [Azure Government](https://azure.microsoft.com/features/gov/).
+- **Australien, Osten** und **Australien, Südosten**
+    - Diese Regionen sind für Kunden mit Geschäftspräsenz in Australien oder Neuseeland verfügbar.
+- **Indien, Mitte**, **Indien, Süden** und **Indien, Westen**
+    - Diese Regionen sind derzeit für Volumenlizenzkunden und Partner mit einer lokalen Registrierung in Indien verfügbar. Der Zugriff wird 2016 für direkte Onlineabonnements geöffnet.
+- **China, Osten** und **China, Norden**
+    - Diese Regionen sind über eine einzigartige Partnerschaft zwischen Microsoft und 21Vianet verfügbar, wobei Microsoft die Rechenzentren nicht direkt betreut. Weitere Informationen finden Sie unter [Microsoft Azure in China](http://www.windowsazure.cn/).
 
-Announced special regions include:
+Angekündigte spezielle Regionen:
 
-- **Germany Central** and **Germany Northeast**
-    - Azure will be available via a new data trustee model whereby customer data remains in Germany under control of T-Systems, a Deutsche Telekom company, acting as the German data trustee.
+- **Deutschland, Mitte** und **Deutschland, Nordosten**
+    - Azure wird über ein neues Treuhändermodell für Daten bereitgestellt, bei dem Kundendaten in Deutschland verbleiben und von T-Systems als Treuhänder für deutsche Daten kontrolliert werden. (T-Systems ist ein Deutsche Telekom-Unternehmen.)
 
-## Region pairs
-Each Azure region is paired with another region within the same geography (such as US, Europe, or Asia). This allows for the replication of resources, such as VM storage, across a geography that should reduce the likelihood of natural disasters, civil unrest, power outages, or physical network outages affecting both regions at once. Additional advantages of region pairs include:
+## Regionspaare
+Jede Azure-Region ist mit einer anderen Region innerhalb desselben Gebiets (z.B. USA, Europa oder Asien) kombiniert. Dies ermöglicht die Replikation von Ressourcen wie VM-Speicher innerhalb eines Gebiets. Dadurch sollte die Wahrscheinlichkeit verringert werden, dass Naturkatastrophen, Unruhen, Stromausfälle oder physische Netzwerkausfälle beide Regionen gleichzeitig betreffen. Weitere Vorteile von Regionspaaren:
 
-- In the event of a wider Azure outage, one region is prioritized out of every pair to help reduce the time to restore for applications. 
-- Planned Azure updates are rolled out to paired regions one at a time to minimize downtime and risk of application outage.
-- Data will continue to reside within the same geography as its pair (with the exception of Brazil South) for tax and law enforcement jurisdiction purposes.
+- Bei einem größeren Azure-Ausfall erhält eine Region in jedem Paar Priorität, um die Zeit für die Wiederherstellung von Anwendungen zu verkürzen.
+- Geplante Azure-Updates werden nacheinander in den Regionen eines Paars eingeführt, um Ausfallzeiten und das Risiko von Anwendungsausfällen zu minimieren.
+- Daten befinden sich immer innerhalb desselben Gebiets wie ihr Paar (mit Ausnahme von Brasilien, Süden), um steuerliche und rechtliche Anforderungen zu erfüllen.
 
-Examples of region pairs include:
+Beispiele für Regionspaare:
 
-| Primary        | Secondary   |
+| Primär | Sekundär |
 |:---------------|:------------|
-| West US        | East US     |
-| North Europe   | West Europe |
-| Southeast Asia | East Asia   |
+| USA (Westen) | USA (Ost) |
+| Nordeuropa | Westeuropa |
+| Südostasien | Asien (Osten) |
 
-You can see the full [list of regional pairs here](../articles/best-practices-availability-paired-regions.md#what-are-paired-regions).
+Sie können die vollständige [Liste von Regionspaaren hier](../articles/best-practices-availability-paired-regions.md#what-are-paired-regions) anzeigen.
 
-## Feature availability
-Some services or VM features are only available in certain regions, such as specific VM sizes or storage types. There are also some global Azure services that do not require you to select a particular region, such as [Azure Active Directory](../articles/active-directory/active-directory-whatis.md), [Traffic Manager](../articles/traffic-manager/traffic-manager-overview.md), or [Azure DNS](../articles/dns/dns-overview.md). To assist you in designing your application environment, you can check the [availability of Azure services across each region](https://azure.microsoft.com/regions/#services). 
+## Verfügbarkeit von Funktionen
+Einige Dienste oder VM-Funktionen stehen nur in bestimmten Regionen zur Verfügung, z.B. bestimmte VM-Größen oder Speichertypen. Es gibt auch einige globale Azure-Dienste, für die Sie keine bestimmte Region auswählen müssen, beispielsweise [Azure Active Directory](../articles/active-directory/active-directory-whatis.md), [Traffic Manager](../articles/traffic-manager/traffic-manager-overview.md) oder [Azure DNS](../articles/dns/dns-overview.md). Als Hilfe beim Entwerfen Ihrer Anwendungsumgebung können Sie die [Verfügbarkeit von Azure-Diensten in jeder Region](https://azure.microsoft.com/regions/#services) überprüfen.
 
 
-## Storage availability
-Understanding Azure regions and geographies becomes important when you consider the available Azure Storage replication options. When you create a storage account, you must select one of the following replication options:
+## Speicherverfügbarkeit
+Es ist wichtig, Azure-Regionen und -Gebiete zu verstehen, wenn Sie die verfügbaren Optionen für die Azure-Speicherreplikation betrachten. Wenn Sie ein Speicherkonto erstellen, müssen Sie eine der folgenden Replikationsoptionen auswählen:
 
-- Locally redundant storage (LRS)
-    - Replicates your data three times within the region in which you created your storage account.
-- Zone redundant storage (ZRS)
-    - Replicates your data three times across two to three facilities, either within a single region or across two regions.
-- Geo-redundant storage (GRS)
-    - Replicates your data to a secondary region that is hundreds of miles away from the primary region.
-- Read-access geo-redundant storage (RA-GRS)
-    - Replicates your data to a secondary region, as with GRS, but also then provides read-only access to the data in the secondary location.
+- Lokal redundanter Speicher (LRS)
+    - Repliziert Ihre Daten dreimal innerhalb der Region, in der Sie das Speicherkonto erstellt haben.
+- Zonenredundanter Speicher (ZRS)
+    - Repliziert Ihre Daten dreimal über zwei oder drei Standorte hinweg, entweder innerhalb einer einzelnen Region oder über zwei Regionen hinweg.
+- Georedundanter Speicher (GRS)
+    - Repliziert Ihre Daten in eine sekundäre Region, die Hunderte von Kilometern von der primären Region entfernt ist.
+- Georedundanter Speicher mit Lesezugriff (RA-GRS)
+    - Repliziert die Daten in eine sekundäre Region (wie bei GRS), bietet dann aber auch schreibgeschützten Zugriff auf die Daten am sekundären Standort.
 
-The following table provides a quick overview of the differences between the storage replication types:
+Die folgende Tabelle bietet einen schnellen Überblick über die Unterschiede zwischen Speicherreplikationstypen:
 
-| Replication strategy                                                               | LRS | ZRS | GRS | RA-GRS |
+| Replikationsstrategie | LRS | ZRS | GRS | RA-GRS |
 |:-----------------------------------------------------------------------------------|:----|:----|:----|:-------|
-| Data is replicated across multiple facilities.                                     | No  | Yes | Yes | Yes    |
-| Data can be read from the secondary location as well as from the primary location. | No  | No  | No  | Yes    |
-| Number of copies of data maintained on separate nodes.                             | 3   | 3   | 6   | 6      |
+| Daten werden in mehreren Datencentern repliziert. | Nein | Ja | Ja | Ja |
+| Daten können vom sekundären Standort sowie vom primären Standort aus gelesen werden. | Nein | Nein | Nein | Ja |
+| Anzahl von Datenkopien, die auf separaten Knoten aufbewahrt werden. | 3 | 3 | 6 | 6 |
 
-You can read more about [Azure Storage replication options here](../articles/storage/storage-redundancy.md).
+Sie erhalten weitere Informationen über [Azure Storage-Replikationsoptionen hier](../articles/storage/storage-redundancy.md).
 
-### Storage costs
-Prices vary depending on the storage type and availability that you select. 
+### Speicherkosten
+Die Preise hängen vom gewählten Speichertyp und der gewünschten Verfügbarkeit ab.
 
-- Standard storage is backed by regular spinning disks and is charged based on the in-use capacity and desired storage availability.
-    - For RA-GRS, there is an additional Geo-Replication Data Transfer charge for the bandwidth of replicating that data to another Azure region.
-- Premium storage is backed by Solid State Drives (SSDs) and is charged based on the capacity of the disk.
+- Standardspeicher wird durch reguläre rotierende Festplatten gesichert und wird basierend auf der verwendeten Kapazität und der gewünschten Speicherverfügbarkeit berechnet.
+    - Für RA-GRS fallen zusätzliche Gebühren für Datenübertragungen zur Georeplikation für die Bandbreite für die Replikation dieser Daten in eine andere Azure-Region an.
+- Storage Premium wird durch Solid State Drives (SSDs) gesichert und wird basierend auf der Kapazität des Datenträgers berechnet.
 
-See [Azure Storage Pricing](https://azure.microsoft.com/pricing/details/storage/) for pricing information on the different storage types and availability options.
-
-
-## Azure images
-In Azure, VMs are created from an image. Typically this will be an image created from the [Azure Marketplace](https://azure.microsoft.com/marketplace/) where partners can provide pre-configured complete OS or application images.
-
-When you create a VM from an image in the Azure Marketplace, you are actually working with templates. Azure Resource Manager templates are declarative JavaScript Object Notation (JSON) files that can be used to create complex application environments comprising VMs, storage, virtual networking, etc. You can read more about using [Azure Resource Manager templates](../articles/resource-group-overview.md), including how to [build your own templates](../articles/resource-group-authoring-templates.md).
-
-You can also create your own custom images and upload them using [Azure CLI](../articles/virtual-machines/virtual-machines-linux-upload-vhd.md) or [Azure PowerShell](../articles/virtual-machines/virtual-machines-windows-upload-image.md) to quickly create custom VMs to your specific build requirements. When using custom images, VMs need to be stored in the same storage account as the image itself. You cannot upload an image to a single region and then create VMs from it across other Azure regions.
+Informationen zu den Preisen für die verschiedenen Speichertypen und Verfügbarkeitsoptionen finden Sie unter [Preise für Azure Storage](https://azure.microsoft.com/pricing/details/storage/).
 
 
-## Availability sets
-An availability set is a logical grouping of VMs that allows Azure to understand how your application is built in order to provide for redundancy and availability. It is recommended that two or more VMs are created within an availability set in order to provide for a highly-available application and to meet the [99.95% Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/). The availability set is compromised of two additional groupings that protect against hardware failures and allow updates to safely be applied - fault domains (FDs) and update domains (UDs).
+## Azure-Images
+In Azure werden virtuelle Computer aus einem Image erstellt. Dies ist normalerweise ein Image, das über den [Azure Marketplace](https://azure.microsoft.com/marketplace/) erstellt wurde, wo Partner vorkonfigurierte vollständige Betriebssystem- oder Anwendungsimages anbieten können.
 
-![Conceptual drawing of the update domain and fault domain configuration](./media/virtual-machines-common-regions-and-availability/ud-fd-configuration.png)
+Wenn Sie einen virtuellen Computer aus einem Image im Azure Marketplace erstellen, arbeiten Sie tatsächlich mit Vorlagen. Azure Resource Manager-Vorlagen sind deklarative JSON-Dateien (JavaScript Object Notation), die zum Erstellen von komplexen Anwendungsumgebungen mit virtuellen Computern, Speicher, virtuellen Netzwerken usw. verwendet werden können. Erfahren Sie mehr über die Verwendung von [Azure Resource Manager-Vorlagen](../articles/resource-group-overview.md) und das [Erstellen Ihrer eigenen Vorlagen](../articles/resource-group-authoring-templates.md).
 
-You can read more about how to manage the availability of [Linux VMs](../articles/virtual-machines/virtual-machines-linux-manage-availability.md) or [Windows VMs](../articles/virtual-machines/virtual-machines-linux-manage-availability.md).
-
-### Fault domains
-A fault domain is a logical group of underlying hardware that share a common power source and network switch, similar to a rack within an on-premises datacenter. As you create VMs within an availability set, the Azure platform automatically distributes your VMs across these fault domains to limit the impact of potential physical hardware failures, network outages, or power interruptions.
-
-### Update domains
-An update domain is a logical group of underlying hardware that can undergo maintenance or be rebooted at the same time. As you create VMs within an availability set, the Azure platform automatically distributes your VMs across these update domains to ensure that at least one instance of your application always remains running as the Azure platform undergoes periodic maintenance. Note that the order of update domains being rebooted may not proceed sequentially during planned maintenance, but only one update domain will be reboot at a time.
+Sie können auch eigene benutzerdefinierte Images erstellen und mit der [Azure-Befehlszeilenschnittstelle](../articles/virtual-machines/virtual-machines-linux-upload-vhd.md) oder [Azure PowerShell](../articles/virtual-machines/virtual-machines-windows-upload-image.md) hochladen, um schnell benutzerdefinierte virtuelle Computer für Ihre speziellen Anforderungen zu erstellen. Wenn Sie benutzerdefinierte Images verwenden, müssen die virtuellen Computer im gleichen Speicherkonto wie das Image gespeichert werden. Sie können ein Image nicht in eine einzelne Region hochladen und dann daraus virtuelle Computer in anderen Azure-Regionen erstellen.
 
 
-## Next steps
-You can read more specific details about [Azure availability best practices](../articles/best-practices-availability-checklist.md).
+## Verfügbarkeitsgruppen
+Eine Verfügbarkeitsgruppe ist eine logische Gruppierung von virtuellen Computern, die es Azure ermöglicht zu verstehen, wie Ihre Anwendung erstellt ist, um Redundanz und Verfügbarkeit zu bieten. Es wird empfohlen, dass zwei oder mehr virtuelle Computer in einer Verfügbarkeitsgruppe erstellt werden, um eine Anwendung mit hoher Verfügbarkeit bereitzustellen und um die [Azure-SLA von 99,95 %](https://azure.microsoft.com/support/legal/sla/virtual-machines/) zu erfüllen. Die Verfügbarkeitsgruppe besteht aus zwei zusätzlichen Gruppierungen, die vor Hardwareausfällen schützen und die sichere Anwendung von Updates ermöglichen: Fehlerdomänen (FDs) und Updatedomänen (UDs).
+
+![Schematische Darstellung der Konfiguration mit Updatedomäne und Fehlerdomäne](./media/virtual-machines-common-regions-and-availability/ud-fd-configuration.png)
+
+Erfahren Sie mehr über das Verwalten der Verfügbarkeit von [virtuellen Linux-Computern](../articles/virtual-machines/virtual-machines-linux-manage-availability.md) oder [virtuellen Windows-Computern](../articles/virtual-machines/virtual-machines-linux-manage-availability.md).
+
+### Fehlerdomänen
+Eine Fehlerdomäne ist eine logische Gruppe von zugrunde liegender Hardware mit einer gemeinsamen Stromquelle und einem Netzwerkswitch, ähnlich einem Rack in einem lokalen Rechenzentrum. Beim Erstellen von virtuellen Computern innerhalb einer Verfügbarkeitsgruppe verteilt Azure Platform automatisch Ihre virtuellen Computer auf diese Fehlerdomänen, um die Auswirkungen von potenziellen physischen Hardwareausfällen, Netzwerkausfällen oder Stromunterbrechungen zu beschränken.
+
+### Updatedomänen
+Eine Updatedomäne ist eine logische Gruppe von zugrunde liegender Hardware, die zur gleichen Zeit gewartet oder neu gestartet werden kann. Beim Erstellen von virtuellen Computern innerhalb einer Verfügbarkeitsgruppe verteilt Azure Platform Ihre virtuellen Computer automatisch auf diese Updatedomänen, um sicherzustellen, dass mindestens eine Instanz Ihrer Anwendung immer ausgeführt wird, wenn Azure Platform einer regelmäßigen Wartung unterzogen wird. Beachten Sie, dass während einer geplanten Wartung die Updatedomänen unter Umständen nicht der Reihe nach neu gestartet werden, sondern es wird jeweils nur eine Updatedomäne neu gestartet.
+
+
+## Nächste Schritte
+Informieren Sie sich über [bewährte Methoden für die Azure-Verfügbarkeit](../articles/best-practices-availability-checklist.md).
+
+<!---HONumber=AcomDC_0803_2016-->

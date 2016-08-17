@@ -3,8 +3,8 @@
    description="Diese Seite enthält ausführliche Anforderungen für das Konfigurieren und Verwalten des Routings für ExpressRoute-Verbindungen."
    documentationCenter="na"
    services="expressroute"
-   authors="cherylmc"
-   manager="carmonm"
+   authors="ganesr"
+   manager="rossort"
    editor=""/>
 <tags
    ms.service="expressroute"
@@ -12,8 +12,8 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="06/01/2016"
-   ms.author="cherylmc"/>
+   ms.date="08/10/2016"
+   ms.author="ganesr"/>
 
 
 # ExpressRoute-Routinganforderungen  
@@ -35,10 +35,10 @@ Sie können entweder private IP-Adressen oder öffentliche IP-Adressen verwenden
  - Sie müssen ein /29-Subnetz oder zwei /30-Subnetze für Routingschnittstellen reservieren.
  - Die für das Routing verwendeten Subnetze können entweder private IP-Adressen oder öffentliche IP-Adressen sein.
  - Die Subnetze dürfen nicht mit dem Bereich in Konflikt stehen, der vom Kunden für die Nutzung in der Microsoft Cloud reserviert ist.
- - Wenn ein /29-Subnetz verwendet wird, wird es in zwei /30-Subnetze unterteilt. 
+ - Wenn ein /29-Subnetz verwendet wird, wird es in zwei /30-Subnetze unterteilt.
 	 - Das erste /30-Subnetz wird für die primäre Verknüpfung verwendet, und das zweite /30-Subnetz wird für die sekundäre Verknüpfung verwendet.
 	 - Für jedes /30-Subnetz müssen Sie zuerst die IP-Adresse des /30-Subnetzes auf dem Router verwenden. Microsoft verwendet die zweite IP-Adresse des /30-Subnetzes zum Einrichten einer BGP-Sitzung.
-	 - Sie müssen beide BGP-Sitzungen einrichten, damit unsere [Vereinbarungen zum Servicelevel](https://azure.microsoft.com/support/legal/sla/) gültig sind.  
+	 - Sie müssen beide BGP-Sitzungen einrichten, damit unsere [Vereinbarungen zum Servicelevel](https://azure.microsoft.com/support/legal/sla/) gültig sind.
 
 #### Beispiel für privates Peering
 
@@ -55,8 +55,8 @@ Betrachten wir den Fall, in dem Sie 192.168.100.128/29 zum Einrichten des privat
 
 Sie müssen eigene öffentliche IP-Adressen zum Einrichten der BGP-Sitzungen verwenden. Microsoft muss in der Lage sein, die Eigentümerschaft der IP-Adressen über Routing Internet Registries (RIR) und Internet Routing Registries (IRR) zu überprüfen.
 
-- Sie müssen ein eindeutiges /29-Subnetz oder zwei /30-Subnetze verwenden, um das BGP-Peering für jedes Peering pro ExpressRoute-Verbindung einzurichten (falls Sie über mehr als ein Peering verfügen). 
-- Wenn ein /29-Subnetz verwendet wird, wird es in zwei /30-Subnetze unterteilt. 
+- Sie müssen ein eindeutiges /29-Subnetz oder zwei /30-Subnetze verwenden, um das BGP-Peering für jedes Peering pro ExpressRoute-Verbindung einzurichten (falls Sie über mehr als ein Peering verfügen).
+- Wenn ein /29-Subnetz verwendet wird, wird es in zwei /30-Subnetze unterteilt.
 	- Das erste /30-Subnetz wird für die primäre Verknüpfung verwendet, und das zweite /30-Subnetz wird für die sekundäre Verknüpfung verwendet.
 	- Für jedes /30-Subnetz müssen Sie zuerst die IP-Adresse des /30-Subnetzes auf dem Router verwenden. Microsoft verwendet die zweite IP-Adresse des /30-Subnetzes zum Einrichten einer BGP-Sitzung.
 	- Sie müssen beide BGP-Sitzungen einrichten, damit unsere [Vereinbarungen zum Servicelevel](https://azure.microsoft.com/support/legal/sla/) gültig sind.
@@ -124,8 +124,10 @@ Microsoft kennzeichnet Präfixe, die über das öffentliche Peering und Microsof
 | | USA (Ost) | 12076:51004 |
 | | USA (Ost) 2 | 12076:51005 |
 | | USA (West) | 12076:51006 |
+| | USA, Westen 2 | 12076:51022 |
+| | USA, Westen-Mitte | 12076:51023 |
 | | USA (Mitte/Norden) | 12076:51007 |
-| | USA (Mitte/Süden) | 12076:51008 |
+| | USA Süd Mitte | 12076:51008 |
 | | USA (Mitte) | 12076:51009 |
 | | Kanada, Mitte | 12076:51020 |
 | | Kanada, Osten | 12076:51021 |
@@ -141,8 +143,8 @@ Microsoft kennzeichnet Präfixe, die über das öffentliche Peering und Microsof
 | | Japan Ost | 12076:51012 |
 | | Japan (Westen) | 12076:51013 |
 | **Australien** | | | 
-| | Australien (Ost) | 12076:51015 |
-| | Australien (Südost) | 12076:51016 |
+| | Australien (Osten) | 12076:51015 |
+| | Australien (Südosten) | 12076:51016 |
 | **Indien** | | |
 | | Indien, Süden | 12076:51019 |
 | | Indien, Westen | 12076:51018 |
@@ -173,4 +175,4 @@ Zusätzlich zu den obigen Kennzeichnungen versieht Microsoft Präfixe auch basie
 	- [Konfigurieren des Routings für das klassische Bereitstellungsmodell](expressroute-howto-routing-classic.md) oder [Konfigurieren des Routings für das Resource Manager-Bereitstellungsmodell](expressroute-howto-routing-arm.md)
 	- [Verknüpfen eines klassischen VNET mit einer ExpressRoute-Verbindung](expressroute-howto-linkvnet-classic.md) oder [Verknüpfen eines Resource Manager-VNET mit einer ExpressRoute-Verbindung](expressroute-howto-linkvnet-arm.md)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0810_2016-->

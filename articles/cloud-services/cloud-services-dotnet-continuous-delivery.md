@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="05/08/2016"
+	ms.date="07/30/2016"
 	ms.author="tarcher"/>
 
 # Kontinuierliche Zustellung für Cloud Services in Azure
@@ -44,7 +44,7 @@ In diesem Abschnitt wird erläutert, wie ein MSBuild-Befehl konstruiert wird, de
 
 1.  Wenn Visual Studio auf dem Buildserver installiert ist, suchen Sie unter Windows im Ordner **Visual Studio Tools** nach **Visual Studio-Eingabeaufforderung**, und wählen Sie diese Option aus.
 
-    Wenn Visual Studio auf dem Buildserver nicht installiert ist, öffnen Sie eine Eingabeaufforderung, und stellen Sie sicher, dass MSBuild.exe im Pfad verfügbar ist. MSBuild wird mit .NET Framework unter "%WINDIR%\\Microsoft.NET\\Framework\\*Version*" installiert. Um z. B. MSBuild.exe der Umgebungsvariable PATH hinzuzufügen, wenn .NET Framework 4 installiert ist, geben Sie an der Eingabeaufforderung den folgenden Befehl ein:
+    Wenn Visual Studio auf dem Buildserver nicht installiert ist, öffnen Sie eine Eingabeaufforderung, und stellen Sie sicher, dass MSBuild.exe im Pfad verfügbar ist. MSBuild wird mit .NET Framework unter "%WINDIR%\\Microsoft.NET\\Framework\\Version*" installiert. Um z. B. MSBuild.exe der Umgebungsvariable PATH hinzuzufügen, wenn .NET Framework 4 installiert ist, geben Sie an der Eingabeaufforderung den folgenden Befehl ein:
 
         set PATH=%PATH%;"C:\Windows\Microsoft.NET\Framework\v4.0.30319"
 
@@ -69,7 +69,7 @@ In diesem Abschnitt wird erläutert, wie ein MSBuild-Befehl konstruiert wird, de
 
         MSBuild /t:Publish /p:TargetProfile=Cloud
 
-6.  Geben Sie den Speicherort der Ausgabe an. Legen Sie den Pfad mit der Option "/p:PublishDir=*Verzeichnis*\" fest, und geben Sie dabei wie im folgenden Beispiel auch den abschließenden umgekehrten Schrägstrich an:
+6.  Geben Sie den Speicherort der Ausgabe an. Legen Sie den Pfad mit der Option „/p:PublishDir=*Verzeichnis*\\“ fest, und geben Sie dabei wie im folgenden Beispiel auch den abschließenden umgekehrten Schrägstrich an:
 
         MSBuild /target:Publish /p:PublishDir=\\myserver\drops\
 
@@ -83,7 +83,7 @@ Um TFS zum Erstellen von Azure-Paketen zu konfigurieren, führen Sie die folgend
 
 1.  Wählen Sie in Visual Studio auf dem Entwicklungscomputer im Menü "Ansicht" die Option **Team Explorer** aus, oder wählen Sie STRG + \\, STRG + M. Erweitern Sie in Team Explorer-Fenster den Knoten **Builds**, oder wählen Sie die Seite **Builds** und anschließend **Neue Builddefinition** aus.
 
-    ![][0]
+    ![Option „Neue Builddefinition“][0]
 
 2.  Wählen Sie die Registerkarte **Trigger** aus, und geben Sie die gewünschten Bedingungen für die Erstellung des Pakets an. Geben Sie z. B. **Fortlaufende Integration** an, um das Paket zu erstellen, sobald ein Einchecken von Quellcode erfolgt.
 
@@ -95,7 +95,7 @@ Um TFS zum Erstellen von Azure-Paketen zu konfigurieren, führen Sie die folgend
 
 6.  Wählen Sie **MSBuild-Argumente**, und legen Sie die entsprechenden MSBuild-Befehlszeilenargumente wie in Schritt 2 oben erläutert fest. Geben Sie z. B. **/t:Publish /p:PublishDir=\\\myserver\\drops\** ein, um ein Paket zu erstellen und die Paketdateien in das Verzeichnis "\\\myserver\\drops\" zu kopieren:
 
-    ![][2]
+    ![MSBuild-Argumente][2]
 
     **Hinweis:** Wenn Sie die Dateien in eine öffentliche Freigabe kopieren, lassen sich die Pakete einfacher manuell über Ihren Entwicklungscomputer bereitstellen.
 
@@ -145,7 +145,7 @@ In diesem Abschnitt wird erläutert, wie ein Windows PowerShell-Skript erstellt 
 
         PowerShell c:\scripts\windowsazure\PublishCloudService.ps1 -environment Staging -serviceName mycloudservice -storageAccountName mystoragesaccount -packageLocation c:\drops\app.publish\ContactManager.Azure.cspkg -cloudConfigLocation c:\drops\app.publish\ServiceConfiguration.Cloud.cscfg -subscriptionDataFile c:\scripts\default.publishsettings
 
-    In der Regel folgen danach eine Testlaufverifizierung und ein VIP-Swap. Der VIP-Swap kann über das [klassische Azure-Portal](http://go.microsoft.com/fwlink/?LinkID=213885) oder mit dem Cmdlet Move-Deployment ausgeführt werden.
+    In der Regel folgen danach eine Testlaufverifizierung und ein VIP-Swap. Der VIP-Swap kann über das [klassische Azure-Portal](http://go.microsoft.com/fwlink/?LinkID=213885) oder mit dem Cmdlet „Move-Deployment“ ausgeführt werden.
 
     **Beispielszenario 2:** kontinuierliche Bereitstellung in der Produktionsumgebung eines dedizierten Testdiensts
 
@@ -204,7 +204,7 @@ Mit diesem optionalen Schritt wird TFS Team Build in das in Schritt 4 erstellte
         PublishScriptLocation
         ServiceName
 
-    ![][3]
+    ![Liste der Argumente][3]
 
     Die entsprechende XAML-Datei sieht folgendermaßen aus:
 
@@ -256,7 +256,7 @@ Mit diesem optionalen Schritt wird TFS Team Build in das in Schritt 4 erstellte
 
         -   PublishScriptFilePath, Typ String (Zeichenfolge)
 
-            ![][4]
+            ![Neue Variablen][4]
 
     4.  Wenn Sie TFS 2012 oder früher verwenden, fügen Sie eine ConvertWorkspaceItem-Aktivität am Anfang der neuen Sequenz hinzu. Wenn Sie TFS 2013 oder höher verwenden, fügen Sie eine GetLocalPath-Aktivität am Anfang der neuen Sequenz hinzu. Legen Sie für ein ConvertWorkspaceItem die Eigenschaften folgendermaßen fest: Direction=ServerToLocal, DisplayName='Convert publish script filename', Input=' PublishScriptLocation', Result='PublishScriptFilePath', Workspace='Workspace'. Legen Sie für eine GetLocalPath-Aktivität die Eigenschaft "IncomingPath" auf 'PublishScriptLocation' und "Result" auf 'PublishScriptFilePath' fest. Mit dieser Aktivität wird der Pfad zum Veröffentlichungsskript von TFS-Serverspeicherorten (falls zutreffend) in einen standardmäßigen Pfad auf dem lokalen Datenträger konvertiert.
 
@@ -284,7 +284,7 @@ Mit diesem optionalen Schritt wird TFS Team Build in das in Schritt 4 erstellte
 
     Das Endergebnis der Aktivitäten zum Veröffentlichen des Workflows sieht im Designer folgendermaßen aus:
 
-    ![][5]
+    ![Workflowaktivitäten][5]
 
     Das Endergebnis der Aktivitäten zum Veröffentlichen des Workflows sieht in der XAML-Datei folgendermaßen aus:
 
@@ -343,7 +343,7 @@ Mit diesem optionalen Schritt wird TFS Team Build in das in Schritt 4 erstellte
 
     8.  SubscriptionName = 'default'
 
-    ![][6]
+    ![Parametereigenschaftenwerte][6]
 
 10. Speichern Sie die Änderungen in der Builddefinition.
 
@@ -573,4 +573,4 @@ Informationen zum Aktivieren des Remotedebuggens bei Verwendung der kontinuierli
   [5]: ./media/cloud-services-dotnet-continuous-delivery/common-task-tfs-05.png
   [6]: ./media/cloud-services-dotnet-continuous-delivery/common-task-tfs-06.png
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0803_2016-->

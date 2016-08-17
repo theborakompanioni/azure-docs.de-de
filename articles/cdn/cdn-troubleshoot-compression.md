@@ -1,6 +1,6 @@
 <properties
-	pageTitle="CDN – Problembehandlung bei der Dateikomprimierung"
-	description="Behandeln Sie Probleme mit der CDN-Dateikomprimierung."
+	pageTitle="Problembehandlung bei der CDN-Dateikomprimierung | Microsoft Azure"
+	description="Behandeln Sie Probleme mit der Azure CDN-Dateikomprimierung."
 	services="cdn"
 	documentationCenter=""
 	authors="camsoper"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/14/2016"
+	ms.date="07/28/2016"
 	ms.author="casoper"/>
     
 # Problembehandlung bei der CDN-Dateikomprimierung
@@ -99,4 +99,4 @@ Der **Über**-HTTP-Header informiert den Webserver darüber, dass die Anforderun
 - **IIS 6**: [Legen Sie in den IIS-Metabasiseigenschaften „HcNoCompressionForProxies="FALSE"“ fest](https://msdn.microsoft.com/library/ms525390.aspx).
 - **IIS 7 und höher**: [Legen Sie in der Serverkonfiguration sowohl für **noCompressionForHttp10** als auch für **noCompressionForProxies** die Option „False“ fest.](http://www.iis.net/configreference/system.webserver/httpcompression)
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0803_2016-->

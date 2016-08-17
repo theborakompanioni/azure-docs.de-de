@@ -183,23 +183,26 @@ Erstellen Sie als Nächstes die Site-to-Site-VPN-Verbindung zwischen dem Gateway
 
 Die Verbindung wird nach kurzer Zeit hergestellt.
 
-## 9\. Überprüfen einer VPN-Verbindung
+## <a name="toverify"></a>So überprüfen Sie eine VPN-Verbindung
 
 Es gibt mehrere Möglichkeiten, wie Sie Ihre VPN-Verbindung überprüfen können. Unten wird beschrieben, wie Sie eine einfache Überprüfung durchführen, indem Sie das Azure-Portal und PowerShell verwenden.
 
 [AZURE.INCLUDE [vpn-gateway-verify-connection-rm](../../includes/vpn-gateway-verify-connection-rm-include.md)]
 
-## <a name="modify"></a>So ändern Sie die IP-Adresspräfixe für ein Gateway für das lokale Netzwerk
+## <a name="modify"></a>So ändern Sie die IP-Adresspräfixe für ein lokales Netzwerkgateway
 
-Verwenden Sie die unten angegebene Anleitung, wenn Sie die Präfixe für Ihr Gateway für das lokale Netzwerk ändern müssen. Es sind zwei Anleitungen vorhanden. Welche Anleitung für Sie geeignet ist, hängt davon ab, ob Sie die VPN Gateway-Verbindung bereits erstellt haben.
+Verwenden Sie die unten angegebene Anleitung, wenn Sie die Präfixe für Ihr Gateway für das lokale Netzwerk ändern müssen. Es sind zwei Anleitungen vorhanden. Welche Anleitung für Sie geeignet ist, hängt davon ab, ob Sie die Gatewayverbindung bereits erstellt haben.
 
 [AZURE.INCLUDE [vpn-gateway-modify-ip-prefix-rm](../../includes/vpn-gateway-modify-ip-prefix-rm-include.md)]
 
+## <a name="modifygwipaddress"></a>So ändern Sie die Gateway-IP-Adresse für ein lokales Netzwerkgateway
+
+[AZURE.INCLUDE [vpn-gateway-modify-lng-gateway-ip-rm](../../includes/vpn-gateway-modify-lng-gateway-ip-rm-include.md)]
 
 ## Nächste Schritte
 
 - Sie können Ihren virtuellen Netzwerken virtuelle Computer hinzufügen. Für diese Schritte finden Sie Informationen unter [Erstellen eines virtuellen Computers](../virtual-machines/virtual-machines-windows-hero-tutorial.md).
 
-- Informationen zu BGP finden Sie in der [Übersicht über BGP](vpn-gateway-bgp-overview.md) und unter [How to configure BGP](vpn-gateway-bgp-resource-manager-ps.md) (Gewusst wie: Konfiguration von BGP).
+- Informationen zu BGP finden Sie in der [Übersicht über BGP](vpn-gateway-bgp-overview.md) und unter [Konfigurieren von BGP](vpn-gateway-bgp-resource-manager-ps.md).
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0810_2016-->

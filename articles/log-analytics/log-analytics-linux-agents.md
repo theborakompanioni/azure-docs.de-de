@@ -146,7 +146,7 @@ Sie können für Windows-Leistungsindikatoren eine bestimmte Instanz für jeden 
 | --- | --- |
 | \_Total | Gesamtsumme aller Instanzen |
 | * | Alle Instanzen |
-| (/|/var) | Stimmt mit den Instanzen mit den Namen „/“ oder „/var“ überein. |
+| (/&#124;/var) | Stimmt mit den Instanzen mit den Namen „/“ oder „/var“ überein. |
 
 
 Ebenso gilt das Beispielintervall, das Sie für einen übergeordneten Indikator auswählen, für alle untergeordneten Indikatoren. Anders ausgedrückt: Alle untergeordneten Indikatorbeispielintervalle und -instanzen sind miteinander verbunden.

@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="06/20/2016"
-   ms.author="hanuk;jroth;aglick"/>
+   ms.date="08/01/2016"
+   ms.author="aglick"/>
 
 #Notfallwiederherstellung und hohe Verfügbarkeit für in Microsoft Azure erstellte Anwendungen
 
@@ -131,4 +131,4 @@ Berücksichtigen Sie die geschäftlichen Konsequenzen eines Anwendungsausfalls, 
 
 Dieser Artikel ist Teil einer Reihe von Artikeln mit Fokus auf Notfallwiederherstellung und hohe Verfügbarkeit für Azure-Anwendungen. Der nächste Artikel in dieser Reihe ist [Hohe Verfügbarkeit für in Microsoft Azure erstellte Anwendungen](resiliency-high-availability-azure-applications.md).
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0803_2016-->

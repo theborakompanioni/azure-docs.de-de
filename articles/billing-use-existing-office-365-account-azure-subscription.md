@@ -1,12 +1,12 @@
 <properties
 	pageTitle="Office 365- und Azure-Abonnements übergreifendes Freigeben eines einzelnen Azure AD-Mandanten | Microsoft Azure"
 	description="Erfahren Sie, wie Sie Ihren Office 365-Azure AD-Mandanten und seine Benutzer mit Ihrem Azure-Abonnement freigeben – oder umgekehrt."
-	services="billing"
+	services=""
 	documentationCenter=""
 	authors="jiangchen79"
 	manager="mbaldwin"
 	editor=""
-	tags="top-support-issue"/>
+	tags="billing,top-support-issue"/>
 
 <tags
 	ms.service="billing"
@@ -147,4 +147,4 @@ Weitere Informationen finden Sie unter [Beziehung zwischen Azure-Abonnements und
 ##Nächste Schritte
 Es gibt ein ähnliches Szenario, in dem Sie das Azure-Abonnement und das Office 365-Abonnement in der Vergangenheit separat erworben haben und aus dem Azure-Abonnement auf den Office 365-Mandanten zugreifen möchten. Informationen hierzu finden Sie unter [Associate an Office 365 tenant with an Azure subscription](billing-add-office-365-tenant-to-azure-subscription.md) (Zuordnen eines Office 365-Mandanten zu einem Azure-Abonnement).
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0803_2016-->

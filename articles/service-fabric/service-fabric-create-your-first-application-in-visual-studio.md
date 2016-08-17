@@ -13,7 +13,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="06/09/2016"
+   ms.date="06/10/2016"
    ms.author="ryanwi"/>
 
 # Erstellen Ihrer ersten Azure Service Fabric-Anwendung in Visual Studio
@@ -42,7 +42,7 @@ Eine Service Fabric-Anwendung kann einen oder mehrere Dienste enthalten, die jew
 
 	![Dialogfeld „Neues Projekt“ in Visual Studio][1]
 
-4. Auf der nächsten Seite werden Sie aufgefordert, den ersten Diensttyp auszuwählen, den Sie in Ihre Anwendung einbinden möchten. Für dieses Tutorial wählen wir als Diensttyp **Zustandsbehaftet** aus. Geben Sie ihm einen Namen, und klicken Sie auf **OK**.
+4. Wählen Sie auf der nächsten Seite die Option **Zustandsbehaftet** als ersten Diensttyp zur Einbindung in die Anwendung aus. Geben Sie ihm einen Namen, und klicken Sie auf **OK**.
 
 	![Dialogfeld „Neuer Dienst“ in Visual Studio][2]
 
@@ -56,19 +56,19 @@ Eine Service Fabric-Anwendung kann einen oder mehrere Dienste enthalten, die jew
 
 	- **Veröffentlichungsprofile**: Werden zum Verwalten von Tooleinstellungen für unterschiedliche Umgebungen verwendet.
 
-	- **Skripts**: Umfasst ein PowerShell-Skript für Bereitstellung/Upgrade der Anwendung. Dieses Skript wird von Visual Studio im Hintergrund verwendet und kann direkt an der Befehlszeile aufgerufen werden.
+	- **Skripts**: Umfasst ein PowerShell-Skript für Bereitstellung/Upgrade der Anwendung. Das Skript wird von Visual Studio im Hintergrund verwendet. Es kann auch direkt an der Befehlszeile aufgerufen werden.
 
-	- **Anwendungsdefinition**: Enthält das Anwendungsmanifest unter *ApplicationPackageRoot* und zugehörige Anwendungsparameterdateien unter *ApplicationParameters*, die die Anwendung definieren und Ihnen ermöglichen, sie speziell für eine bestimmte Umgebung zu konfigurieren.
+	- **Anwendungsdefinition**: Enthält das Anwendungsmanifest unter *ApplicationPackageRoot*. Die zugehörigen Anwendungsparameterdateien befinden sich unter *ApplicationParameters*. Sie definieren die Anwendung und ermöglichen es Ihnen, diese speziell für eine bestimmte Umgebung zu konfigurieren.
 
     Eine Übersicht über den Inhalt des Dienstprojekts finden Sie unter [Erste Schritte mit Reliable Services](service-fabric-reliable-services-quick-start.md).
 
 ## Bereitstellen und Debuggen der Anwendung
 
-Jetzt ist eine Anwendung vorhanden, die Sie ausführen können.
+Da jetzt eine Anwendung vorhanden ist, können Sie versuchen, sie auszuführen.
 
 1. Drücken Sie in Visual Studio F5, um die Anwendung für das Debuggen bereitzustellen.
 
-	>[AZURE.NOTE] Dies dauert beim ersten Mal eine Weile, da Visual Studio einen lokalen Cluster für die Entwicklung erstellt. Ein lokaler Cluster führt den gleichen Plattformcode aus, den Sie in einem Cluster mit mehreren Computern erstellen, aber auf einem einzelnen Computer. Der Status der Clustererstellung wird im Ausgabefenster von Visual Studio angezeigt.
+	>[AZURE.NOTE] Die Bereitstellung dauert beim ersten Mal eine Weile, da Visual Studio einen lokalen Cluster für die Entwicklung erstellt. Ein lokaler Cluster führt den gleichen Plattformcode aus, den Sie in einem Cluster mit mehreren Computern erstellen, aber auf einem einzelnen Computer. Der Status der Clustererstellung wird im Ausgabefenster von Visual Studio angezeigt.
 
 	Wenn der Cluster bereit ist, erhalten Sie eine Benachrichtigung von der Taskleistenanwendung Local Cluster Manager, die im SDK enthalten ist.
 
@@ -78,9 +78,9 @@ Jetzt ist eine Anwendung vorhanden, die Sie ausführen können.
 
 	![Diagnoseereignisanzeige][5]
 
-	Bei der Vorlage für einen zustandsbehafteten Dienst zeigen die Meldungen einfach den Zählerwert an, der in der `RunAsync`-Methode von „MyStatefulService.cs“ erhöht wird.
+	Bei der Vorlage für einen zustandsbehafteten Dienst zeigen die Meldungen einfach die Erhöhung des Zählerwerts in der `RunAsync`-Methode von „MyStatefulService.cs“ an.
 
-3. Erweitern Sie eines der Ereignisse, um weitere Details anzuzeigen, einschließlich des Knotens, in dem der Code ausgeführt wird. In diesem Fall ist es „\_Node\_2“, das kann jedoch auf Ihrem Computer abweichen.
+3. Erweitern Sie eines der Ereignisse, um weitere Details anzuzeigen, einschließlich des Knotens, in dem der Code ausgeführt wird. In diesem Fall ist es „_Node_2“, aber dies kann auf Ihrem Computer abweichen.
 
 	![Detail der Diagnoseereignisanzeige][6]
 
@@ -92,17 +92,17 @@ Jetzt ist eine Anwendung vorhanden, die Sie ausführen können.
 
 	![Haltepunkt in der RunAsync-Methode des zustandsbehafteten Diensts][7]
 
-5. Klicken Sie mit der rechten Maustaste auf die Taskleisten-App Local Cluster Manager, und wählen Sie die Option zum **Verwalten des lokalen Clusters** aus, um den Service Fabric-Explorer zu starten.
+5. Klicken Sie mit der rechten Maustaste auf die Taskleisten-App Local Cluster Manager, und wählen Sie die Option zum **Verwalten des lokalen Clusters** aus, um den Service Fabric Explorer zu starten.
 
-    ![Starten des Service Fabric-Explorers über den Manager für den lokalen Cluster][systray-launch-sfx]
+    ![Starten des Service Fabric Explorers über den Manager für den lokalen Cluster][systray-launch-sfx]
 
-    Der Service Fabric-Explorer bietet eine visuelle Darstellung eines Clusters, einschließlich der darin bereitgestellten Anwendungen und der physischen Knoten, aus denen er besteht. Weitere Informationen zu Service Fabric Explorer finden Sie unter [Visualisieren des Clusters](service-fabric-visualizing-your-cluster.md).
+    Der Service Fabric Explorer bietet eine visuelle Darstellung eines Clusters, einschließlich der darin bereitgestellten Anwendungen und der physischen Knoten, aus denen er besteht. Weitere Informationen zu Service Fabric Explorer finden Sie unter [Visualisieren des Clusters](service-fabric-visualizing-your-cluster.md).
 
 6. Erweitern Sie im linken Bereich **Cluster > Knoten**, und suchen Sie den Knoten, auf dem der Code ausgeführt wird.
 
-7. Klicken Sie auf **Aktionen > Deaktivieren (Neustarten)**, um einen Neustart des Computers zu simulieren. (Hinweis: Dieser Schritt kann auch im Kontextmenü in der Knotenlistenansicht im linken Bereich ausgeführt werden. Klicken Sie dazu auf die drei Punkte.)
+7. Klicken Sie auf **Aktionen > Deaktivieren (Neustarten)**, um einen Neustart des Computers zu simulieren. (Beachten Sie, dass Sie das Deaktivieren auch über das Kontextmenü in der Listenansicht eines Knotens im linken Bereich durchführen können.)
 
-	![Beenden eines Knotens im Service Fabric-Explorer][sfx-stop-node]
+	![Beenden eines Knotens im Service Fabric Explorer][sfx-stop-node]
 
 	Sofort sollten Sie den Haltepunkt in Visual Studio sehen, während die Berechnung, die Sie auf einem Knoten durchgeführt haben, nahtlos auf einem anderen fortgeführt wird.
 
@@ -112,11 +112,11 @@ Jetzt ist eine Anwendung vorhanden, die Sie ausführen können.
 
 ## Bereinigen
 
-  Bevor Sie Ihre Arbeit abschließen, sollten Sie bedenken, dass der lokale Cluster sehr real ist. Wenn Sie den Debugger beenden, wird Ihre Anwendungsinstanz entfernt, und die Registrierung des Anwendungstyps wird aufgehoben. Der Cluster wird im Hintergrund aber weiter ausgeführt. Sie haben mehrere Möglichkeiten, hier steuernd einzugreifen:
+  Bevor Sie Ihre Arbeit abschließen, sollten Sie bedenken, dass der lokale Cluster sehr real ist. Wenn Sie den Debugger beenden, wird Ihre Anwendungsinstanz entfernt, und die Registrierung des Anwendungstyps wird aufgehoben. Der Cluster wird im Hintergrund aber weiter ausgeführt. Sie haben mehrere Möglichkeiten, den Cluster zu verwalten:
 
   1. Zum Beenden des Clusters bei Beibehaltung der Anwendungsdaten und Ablaufverfolgungen klicken Sie in der Infobereichs-App auf **Lokalen Cluster beenden**.
 
-  2. Zum vollständigen Entfernen des Clusters klicken Sie in der Infobereichs-App auf **Lokalen Cluster entfernen**. Beachten Sie, dass diese Option zu einer weiteren langsamen Bereitstellung führt, wenn Sie das nächste Mal in Visual Studio F5 drücken. Verwenden Sie diese nur, wenn Sie nicht beabsichtigen, den lokalen Cluster einige Zeit zu verwende,n oder wenn Sie Ressourcen freigeben müssen.
+  2. Zum vollständigen Entfernen des Clusters klicken Sie in der Infobereichs-App auf **Lokalen Cluster entfernen**. Beachten Sie, dass diese Option zu einer weiteren langsamen Bereitstellung führt, wenn Sie das nächste Mal in Visual Studio F5 drücken. Löschen Sie den Cluster nur, wenn Sie nicht beabsichtigen, den lokalen Cluster einige Zeit zu verwenden, oder wenn Sie Ressourcen freigeben müssen.
 
 ## Nächste Schritte
 
@@ -138,4 +138,4 @@ Jetzt ist eine Anwendung vorhanden, die Sie ausführen können.
 [diagnostic-events-viewer-detail-post-failover]: ./media/service-fabric-create-your-first-application-in-visual-studio/diagnostic-events-viewer-detail-post-failover.png
 [sfe-delete-application]: ./media/service-fabric-create-your-first-application-in-visual-studio/sfe-delete-application.png
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0810_2016-->

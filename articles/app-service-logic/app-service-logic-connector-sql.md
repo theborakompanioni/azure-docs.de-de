@@ -1,7 +1,7 @@
 <properties
    pageTitle="Verwendung des SQL-Connectors in Logik-Apps | Microsoft Azure App Service"
    description="Erstellen und Konfigurieren des SQL-Connectors oder einer API-App und Verwenden in einer Logik-App in Azure App Service"
-   services="app-service\logic"
+   services="logic-apps"
    documentationCenter=".net,nodejs,java"
    authors="anuragdalmia"
    manager="erikre"
@@ -18,7 +18,7 @@
 
 
 # Erste Schritte mit dem Microsoft SQL-Connector und das Hinzufügen zur Logik-App
->[AZURE.NOTE] Diese Version des Artikels gilt für die Logik-Apps-Schemaversion 2014-12-01-preview. Um die Schemaversion 2015-08-01-preview aufzurufen, klicken Sie auf [SQL Azure-API](../connectors/connectors-create-api-sqlazure.md).
+>[AZURE.NOTE] Diese Version des Artikels gilt für die Logik-Apps-Schemaversion 2014-12-01-preview. Um die Schemaversion 2015-08-01-preview aufzurufen, klicken Sie auf [SQL Azure-API](../connectors/create-api-sqlazure.md).
 
 Stellen Sie eine Verbindung mit einem lokalen SQL Server oder einer Azure SQL-Datenbank her, um Informationen oder Daten zu erstellen oder zu ändern. Connectors können in Logik-Apps als Teil eines "Workflows" verwendet werden, um Daten abzurufen, zu verarbeiten oder per Pushvorgang zu übermitteln. Wenn Sie den SQL-Connector im Workflow verwenden, können Sie eine Vielzahl von Szenarios umsetzen. Dazu zählen z. B.:
 
@@ -97,24 +97,24 @@ Der **Abruf der Datenabfrage** wird nur ausgeführt, wenn die Datenabfrage nach 
 2. Wählen Sie den Trigger **Poll Data (JSON)** aus, geben Sie die Häufigkeit an, und klicken Sie auf ✓: ![][6]
 
 3. Der Trigger wird jetzt in der Logik-App als konfiguriert angezeigt. Die Ausgaben des Triggers werden angezeigt und können in nachfolgenden Aktionen als Eingabe verwendet werden:
-![][7]
+ ![][7]
 
 ## Verwenden des Connectors als Aktion
 Mithilfe unseres einfachen Logik-App-Szenarios, das Daten aus einer SQL-Tabelle abruft, die Daten dann einer anderen Tabelle hinzufügt und anschließend aktualisiert.
 
 Für die Verwendung des SQL-Connectors als Aktion geben Sie den Namen der Tabellen und/oder gespeicherte Prozeduren ein, die Sie schon bei der Erstellung des SQL-Connectors eingegeben haben:
 
-1. Fügen Sie nach dem Trigger (oder wählen Sie "Diese Logik manuell ausführen") den aus dem Katalog erstellten SQL-Connector hinzu. Wählen Sie eine der Einfügeaktionen aus, z. B. *Insert Into TempEmployeeDetails (JSON)*:
-![][8]
+1. Fügen Sie nach dem Trigger (oder wählen Sie "Diese Logik manuell ausführen") den aus dem Katalog erstellten SQL-Connector hinzu. Wählen Sie eine der Einfügeaktionen aus, z. B. *Insert Into TempEmployeeDetails (JSON)*:
+ ![][8]
 
 2. Geben Sie die einzufügenden Eingabewerte des Datensatzes ein, und klicken Sie auf ✓:
-![][9]
+ ![][9]
 
-3. Wählen Sie aus dem Katalog denselben SQL-Connector aus, den Sie erstellt haben. Wählen Sie als Aktion die Updateaktion für die gleiche Tabelle aus, z. B. *Update EmployeeDetails*:
-![][11]
+3. Wählen Sie aus dem Katalog denselben SQL-Connector aus, den Sie erstellt haben. Wählen Sie als Aktion die Updateaktion für die gleiche Tabelle aus, z. B. *Update EmployeeDetails*:
+ ![][11]
 
 4. Geben Sie die Eingabewerte für die Updateaktion ein, und klicken Sie auf ✓:
-![][12]
+ ![][12]
 
 Sie können die Logik-App testen, indem Sie in der abgefragten Tabelle einen neuen Datensatz hinzufügen.
 
@@ -161,4 +161,4 @@ Sie können auch Leistungsstatistiken überprüfen und die Sicherheit zum Connec
 [11]: ./media/app-service-logic-connector-sql/LogicApp7.png
 [12]: ./media/app-service-logic-connector-sql/LogicApp8.png
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

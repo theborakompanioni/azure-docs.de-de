@@ -119,11 +119,11 @@ Die folgende Tabelle enthält Beispiele für Protokollsuchen für Warnungsdatens
 |:--|:--|
 | Type=Alert SourceSystem=OpsManager AlertSeverity=error TimeRaised>NOW-24HOUR | Kritische Warnungen, die innerhalb der letzten 24 Stunden ausgelöst wurden |
 | Type=Alert AlertSeverity=warning TimeRaised>NOW-24HOUR | Warnungen vom Typ „Warnung“, die innerhalb der letzten 24 Stunden ausgelöst wurden |
-| Type=Alert SourceSystem=OpsManager AlertState!=Closed TimeRaised>NOW-24HOUR | measure count() as Count by SourceDisplayName | Quellen mit aktiven Warnungen, die während der letzten 24 Stunden ausgelöst wurden |
+| Type=Alert SourceSystem=OpsManager AlertState!=Closed TimeRaised>NOW-24HOUR &#124; measure count() as Count by SourceDisplayName | Quellen mit aktiven Warnungen, die während der letzten 24 Stunden ausgelöst wurden |
 | Type=Alert SourceSystem=OpsManager AlertSeverity=error TimeRaised>NOW-24HOUR AlertState!=Closed | Kritische Warnungen, die während der letzten 24 Stunden ausgelöst wurden und noch aktiv sind |
 | Type=Alert SourceSystem=OpsManager TimeRaised>NOW-24HOUR AlertState=Closed | Warnungen, die während der letzten 24 Stunden ausgelöst wurden und jetzt geschlossen wurden |
-| Type=Alert SourceSystem=OpsManager TimeRaised>NOW-1DAY | measure count() as Count by AlertSeverity | Warnungen, die während des letzten Tages ausgelöst wurden, gruppiert nach Schweregrad |
-| Type=Alert SourceSystem=OpsManager TimeRaised>NOW-1DAY | sort RepeatCount desc | Warnungen, die während des letzten Tages ausgelöst wurden, sortiert nach dem Wert der Wiederholungsanzahl |
+| Type=Alert SourceSystem=OpsManager TimeRaised>NOW-1DAY &#124; measure count() as Count by AlertSeverity | Warnungen, die während des letzten Tages ausgelöst wurden, gruppiert nach Schweregrad |
+| Type=Alert SourceSystem=OpsManager TimeRaised>NOW-1DAY &#124; sort RepeatCount desc | Warnungen, die während des letzten Tages ausgelöst wurden, sortiert nach dem Wert der Wiederholungsanzahl |
 
 ## Nächste Schritte
 

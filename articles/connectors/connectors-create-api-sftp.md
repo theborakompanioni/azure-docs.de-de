@@ -1,7 +1,7 @@
 <properties
 pageTitle="So wird's gemacht: Verwenden des SFTP-Connectors in Ihren Logik-Apps | Microsoft Azure"
 description="Erstellen Sie Logik-Apps mit Azure App Service. Stellen Sie eine Verbindung mit der SFTP-API her, um Dateien zu senden und zu empfangen. Sie können verschiedene Vorgänge ausführen und beispielsweise Dateien erstellen, aktualisieren, abrufen oder löschen."
-services="app-servicelogic"	
+services="logic-apps"	
 documentationCenter=".net,nodejs,java" 	
 authors="msftman"	
 manager="erikre"	
@@ -93,7 +93,7 @@ Im Anschluss finden Sie ausführliche Informationen zu den Aktionen und Triggern
 Dieser Vorgang ruft Dateimetadaten unter Verwendung der Datei-ID ab.
 
 
-|Eigenschaftenname| Anzeigename|Beschreibung|
+|Eigenschaftenname| Display Name|Beschreibung|
 | ---|---|---|
 |id*|File|Angeben der Datei|
 
@@ -124,7 +124,7 @@ BlobMetadata
 Dieser Vorgang aktualisiert Dateiinhalte.
 
 
-|Eigenschaftenname| Anzeigename|Beschreibung|
+|Eigenschaftenname| Display Name|Beschreibung|
 | ---|---|---|
 |id*|File|Angeben der Datei|
 |body*|Dateiinhalte|Inhalte der zu aktualisierenden Datei|
@@ -156,7 +156,7 @@ BlobMetadata
 Dieser Vorgang löscht eine Datei.
 
 
-|Eigenschaftenname| Anzeigename|Beschreibung|
+|Eigenschaftenname| Display Name|Beschreibung|
 | ---|---|---|
 |id*|File|Angeben der Datei|
 
@@ -169,7 +169,7 @@ Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
 Dieser Vorgang ruft Dateimetadaten unter Verwendung des Dateipfads ab.
 
 
-|Eigenschaftenname| Anzeigename|Beschreibung|
+|Eigenschaftenname| Display Name|Beschreibung|
 | ---|---|---|
 |path*|Dateipfad|Eindeutiger Pfad der Datei|
 
@@ -200,7 +200,7 @@ BlobMetadata
 Dieser Vorgang ruft Dateiinhalte unter Verwendung des Dateipfads ab.
 
 
-|Eigenschaftenname| Anzeigename|Beschreibung|
+|Eigenschaftenname| Display Name|Beschreibung|
 | ---|---|---|
 |path*|Dateipfad|Eindeutiger Pfad der Datei|
 
@@ -213,7 +213,7 @@ Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
 Dieser Vorgang ruft Dateiinhalte unter Verwendung der Datei-ID ab.
 
 
-|Eigenschaftenname| Anzeigename|Beschreibung|
+|Eigenschaftenname| Display Name|Beschreibung|
 | ---|---|---|
 |id*|File|Angeben der Datei|
 
@@ -226,7 +226,7 @@ Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
 Dieser Vorgang lädt eine Datei an einen SFTP-Server hoch.
 
 
-|Eigenschaftenname| Anzeigename|Beschreibung|
+|Eigenschaftenname| Display Name|Beschreibung|
 | ---|---|---|
 |folderPath*|Ordnerpfad|Eindeutiger Pfad des Ordners|
 |name*|Dateiname|Name der Datei|
@@ -259,7 +259,7 @@ BlobMetadata
 Dieser Vorgang kopiert eine Datei auf einen SFTP-Server.
 
 
-|Eigenschaftenname| Anzeigename|Beschreibung|
+|Eigenschaftenname| Display Name|Beschreibung|
 | ---|---|---|
 |source*|Quelldateipfad|Pfad zur Quelldatei|
 |destination*|Zieldateipfad|Pfad zur Zieldatei, einschließlich des Dateinamens|
@@ -292,7 +292,7 @@ BlobMetadata
 Dieser Vorgang löst einen Ablauf aus, wenn einem Ordner eine Datei hinzugefügt oder in einem Ordner eine Datei geändert wird.
 
 
-|Eigenschaftenname| Anzeigename|Beschreibung|
+|Eigenschaftenname| Display Name|Beschreibung|
 | ---|---|---|
 |folderId*|Ordner|Angeben eines Ordners|
 
@@ -305,7 +305,7 @@ Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
 Dieser Vorgang ruft in einem Ordner enthaltene Dateien ab.
 
 
-|Eigenschaftenname| Anzeigename|Beschreibung|
+|Eigenschaftenname| Display Name|Beschreibung|
 | ---|---|---|
 |id*|Ordner|Angeben des Ordners|
 
@@ -365,7 +365,7 @@ BlobMetadata
 Dieser Vorgang extrahiert eine Archivdatei (beispielsweise eine ZIP-Datei) in einen Ordner.
 
 
-|Eigenschaftenname| Anzeigename|Beschreibung|
+|Eigenschaftenname| Display Name|Beschreibung|
 | ---|---|---|
 |source*|Quellarchiv-Dateipfad|Pfad zur Archivdatei|
 |destination*|Zielordnerpfad|Pfad zum Zielordner|
@@ -419,4 +419,4 @@ Von den oben angegebenen Aktionen und Triggern können folgende HTTP-Statuscodes
 ## Nächste Schritte
 [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

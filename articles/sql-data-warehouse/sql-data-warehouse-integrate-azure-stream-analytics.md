@@ -3,7 +3,7 @@
    description="Tipps für die Verwendung von Azure Stream Analytics mit Azure SQL Data Warehouse für die Entwicklung von Lösungen."
    services="sql-data-warehouse"
    documentationCenter="NA"
-   authors="shivaniguptamsft"
+   authors="kevinvngo"
    manager="barbkess"
    editor=""/>
 
@@ -96,4 +96,4 @@ Weitere Hinweise zur Entwicklung finden Sie in der [SQL Data Warehouse-Entwicklu
 <!--Other Web references-->
 [Azure Stream Analytics documentation]: http://azure.microsoft.com/documentation/services/stream-analytics/
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0803_2016-->

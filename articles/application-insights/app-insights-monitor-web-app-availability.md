@@ -12,15 +12,12 @@
 	ms.tgt_pltfrm="ibiza"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="06/21/2016"
+	ms.date="08/10/2016"
 	ms.author="awills"/>
 
 # Überwachen der Verfügbarkeit und Reaktionsfähigkeit von Websites
 
-
-[AZURE.INCLUDE [app-insights-selector-get-started-dotnet](../../includes/app-insights-selector-get-started-dotnet.md)]
-
-Nachdem Sie die Webanwendung bereitgestellt haben, können Sie Webtests einrichten, um die Verfügbarkeit und Reaktionszeit zu überwachen. Application Insights sendet regelmäßig Webanforderungen von verschiedenen Punkten rund um die Welt und benachrichtigt Sie, wenn Ihre Anwendung langsam oder gar nicht reagiert.
+Nachdem Sie die Webanwendung für einen beliebigen Host bereitgestellt haben, können Sie Webtests einrichten, um die Verfügbarkeit und Reaktionsfähigkeit zu überwachen. [Visual Studio Application Insights](app-insights-overview.md) sendet regelmäßig Webanforderungen von verschiedenen Punkten rund um die Welt und benachrichtigt Sie, wenn Ihre Anwendung langsam oder gar nicht reagiert.
 
 ![Beispiel für Webtest](./media/app-insights-monitor-web-app-availability/appinsights-10webtestresult.png)
 
@@ -40,11 +37,11 @@ Sie können bis zu zehn Webtests pro Anwendungsressource erstellen.
 
 Überspringen Sie diesen Schritt, wenn Sie bereit eine [Application Insights-Ressource][start] für diese Anwendung eingerichtet haben und die Verfügbarkeitsdaten am gleichen Ort angezeigt werden sollen.
 
-Melden Sie sich bei [Microsoft Azure](http://azure.com) an, wechseln Sie zum [Azure-Portal](https://portal.azure.com), und erstellen Sie eine neue Application Insights-Ressource.
+Melden Sie sich bei [Microsoft Azure](http://azure.com) an, wechseln Sie zum [Azure-Portal](https://portal.azure.com), und erstellen Sie eine Application Insights-Ressource.
 
 ![Neu > Application Insights](./media/app-insights-monitor-web-app-availability/11-new-app.png)
 
-Das Blatt "Übersicht" für die neue Ressource wird geöffnet. Dieses Blatt können Sie jederzeit im [Azure-Portal](https://portal.azure.com) suchen, indem Sie auf **Durchsuchen** klicken.
+Das Blatt „Übersicht“ für die neue Ressource wird geöffnet. Dieses Blatt können Sie jederzeit im [Azure-Portal](https://portal.azure.com) suchen, indem Sie auf **Durchsuchen** klicken.
 
 ### <a name="setup"></a>2. Erstellen eines Webtests
 
@@ -55,16 +52,16 @@ Suchen Sie in der Application Insights-Ressource nach der Kachel "Verfügbarkeit
 - **Die URL** muss vom öffentlichen Internet aus sichtbar sein. Sie kann auch eine Abfragezeichenfolge enthalten, sodass Sie beispielsweise Ihre Datenbank abfragen können. Wenn die URL in eine Umleitung aufgelöst wird, folgen wir ihr bis zu 10 Umleitungen.
 - **Abhängige Anforderungen analysieren**: Bilder, Skripts, Styledateien und andere Ressourcen der Seite werden als Teil des Tests angefordert. Der Test schlägt fehl, wenn alle diese Ressourcen innerhalb des Zeitlimits für den gesamten Test nicht erfolgreich heruntergeladen werden können.
 - **Wiederholungen aktivieren**: Wenn der Test fehlschlägt, wird er nach kurzer Zeit wiederholt. Nur wenn drei aufeinander folgende Versuche scheitern, wird ein Fehler gemeldet. Nachfolgende Tests werden dann in der üblichen Häufigkeit ausgeführt. Die Wiederholung wird bis zum nächsten Erfolg vorübergehend eingestellt. Diese Regel wird an jedem Teststandort unabhängig angewendet. (Diese Einstellung wird empfohlen. Im Durchschnitt verschwinden ca. 80 % der Fehler bei einer Wiederholung.)
-- **Testhäufigkeit**: Legt fest, wie oft der Test von jedem Teststandort aus ausgeführt wird. Mit einer Frequenz von 5 Minuten und fünf Teststandorten wird Ihre Website im Durchschnitt jede Minute getestet.
+- **Testhäufigkeit**: Legt fest, wie oft der Test von jedem Teststandort aus ausgeführt wird. Mit einer Frequenz von fünf Minuten und fünf Teststandorten wird Ihre Website im Durchschnitt jede Minute getestet.
 - **Teststandorte** sind die Orte, von denen aus unsere Server Webanforderungen an Ihre URL senden. Wählen Sie mehrere aus, damit Sie Probleme mit der Website von Netzwerkproblemen unterscheiden können. Sie können bis zu 16 Standorte auswählen.
 
 - **Erfolgskriterien**:
 
-    **Timeout für Tests**: Reduzieren Sie diesen Wert, um über langsame Antworten benachrichtigt zu werden. Der Test wird als ein Fehler gezählt, wenn die Antworten von Ihrer Website nicht innerhalb dieses Zeitraums empfangen wurden. Bei Auswahl von **Abhängige Anforderungen analysieren** müssen alle Bilder, Styledateien, Skripts und andere abhängigen Ressourcen innerhalb dieses Zeitraums empfangen werden.
+    **Timeout für Tests**: Reduzieren Sie diesen Wert, um über langsame Antworten benachrichtigt zu werden. Der Test wird als ein Fehler gezählt, wenn die Antworten von Ihrer Website nicht innerhalb dieses Zeitraums empfangen wurden. Bei Auswahl von **Abhängige Anforderungen analysieren** müssen alle Bilder, Styledateien, Skripts und anderen abhängigen Ressourcen innerhalb dieses Zeitraums empfangen werden.
 
     **HTTP-Antwort**: Der zurückgegebene Statuscode, der als Erfolg gezählt wird. 200 ist der Code, der angibt, dass eine normale Webseite zurückgegeben wurde.
 
-    **Inhaltsübereinstimmung**: Eine Zeichenfolge, zum Beispiel "Willkommen!" Wir testen, dass sie in jeder Antwort auftritt. Dies muss eine Zeichenfolge in Klartext, ohne Platzhalter sein. Vergessen Sie nicht, diese zu aktualisieren, wenn sich der Seiteninhalt ändert.
+    **Inhaltsübereinstimmung**: Eine Zeichenfolge, zum Beispiel "Willkommen!" Wir testen, ob sie in jeder Antwort auftritt. Dies muss eine Zeichenfolge in Klartext, ohne Platzhalter sein. Vergessen Sie nicht, diese zu aktualisieren, wenn sich der Seiteninhalt ändert.
 
 
 - **Warnungen** werden standardmäßig an Sie gesendet, wenn innerhalb von fünf Minuten an drei Standorten Fehler auftreten. Bei einem Fehler an einem Standort handelt es sich wahrscheinlich um ein Netzwerkproblem und nicht um ein Problem mit Ihrer Website. Sie können den Schwellenwert auf eine engere oder weitere Überwachung einstellen oder den Empfänger der E-Mails ändern.
@@ -82,13 +79,13 @@ Klicken Sie nach 1 bis 2 Minuten auf dem Blatt "Verfügbarkeit/Webtests" auf **A
 
 ![Ergebnisübersicht im Startblatt](./media/app-insights-monitor-web-app-availability/14-availSummary.png)
 
-Klicken Sie auf einen beliebigen Balken im Übersichtsdiagramm oben, um eine detailliertere Ansicht des Zeitraums zu erhalten.
+Klicken Sie auf einen beliebigen Balken im Übersichtsdiagramm, um eine detailliertere Ansicht des Zeitraums zu erhalten.
 
 In diesen Diagrammen werden die Ergebnisse für alle Webtests dieser Anwendung kombiniert.
 
 #### Komponenten Ihrer Webseite
 
-Bilder, Stylesheets und Skripts sowie andere statische Komponenten der Webseite, die Sie testen, werden als Teil des Tests angefordert.
+Bilder, Stylesheets, Skripts und andere statische Komponenten der Webseite, die Sie testen, werden als Teil des Tests angefordert.
 
 Die aufgezeichnete Reaktionszeit ist der Zeitaufwand für das vollständige Laden aller Komponenten.
 
@@ -104,7 +101,7 @@ Oder führen Sie einen Bildlauf nach unten durch, und klicken Sie auf einen Test
 
 ![Auf bestimmten Webtest klicken](./media/app-insights-monitor-web-app-availability/15-webTestList.png)
 
-Die Ergebnisse für diesen Test werden angezeigt.
+Die Ergebnisse dieses Tests werden geöffnet.
 
 ![Auf bestimmten Webtest klicken](./media/app-insights-monitor-web-app-availability/16-1test.png)
 
@@ -123,7 +120,7 @@ Klicken Sie auf das Ergebnis, um es im Portal auszuwerten und die Fehlerursache 
 Alternativ dazu können Sie die Ergebnisdatei herunterladen und in Visual Studio überprüfen.
 
 
-*Sieht gut aus, wird jedoch als fehlerhaft gemeldet?* Überprüfen Sie alle Bilder, Skripts, Stylesheets und andere Dateien, die von der Seite geladen werden. Wenn eines dieser Elemente einen Fehler verursacht, wird der Test auch dann als fehlerhaft gemeldet, wenn die Haupt-HTML-Seite problemlos geladen wird.
+*Sieht gut aus, wird jedoch als fehlerhaft gemeldet?* Überprüfen Sie alle Bilder, Skripts, Stylesheets und andere Dateien, die von der Seite geladen werden. Wenn eines dieser Elemente einen Fehler verursacht, wird der Test auch dann als fehlerhaft gemeldet, wenn die HTML-Hauptseite problemlos geladen wird.
 
 
 
@@ -131,7 +128,7 @@ Alternativ dazu können Sie die Ergebnisdatei herunterladen und in Visual Studio
 
 Sie können ein Szenario überwachen, das eine Sequenz mit mehreren URLs umfasst. Wenn Sie zum Beispiel eine Verkaufswebsite überwachen, können Sie testen, ob das Hinzufügen von Artikeln zum Einkaufswagen ordnungsgemäß funktioniert.
 
-Um einen mehrstufigen Ttest zu erstellen, zeichnen das Szenario mit Visual Studio auf. Laden Sie dann die Aufzeichnung in Application Insights hoch. Application Insights wiederholt das Szenario in bestimmten Abständen und überprüft die Antworten.
+Um einen mehrstufigen Test zu erstellen, zeichnen das Szenario mit Visual Studio auf. Laden Sie dann die Aufzeichnung in Application Insights hoch. Application Insights wiederholt das Szenario in bestimmten Abständen und überprüft die Antworten.
 
 Beachten Sie, dass Sie keine codierten Funktionen in den Tests verwenden können: Die Szenarioschritte müssen als Skript in der Webtest-Datei enthalten sein.
 
@@ -141,7 +138,7 @@ Verwenden Sie Visual Studio Enterprise oder Ultimate, um eine Websitzung aufzuze
 
 1. Erstellen Sie ein Webleistungstest-Projekt.
 
-    ![Erstellen Sie in Visual Studio ein neues Projekt aus der Vorlage für Webleistungs- und Auslastungstests.](./media/app-insights-monitor-web-app-availability/appinsights-71webtest-multi-vs-create.png)
+    ![Erstellen Sie in Visual Studio ein Projekt aus der Vorlage für Webleistungs- und Auslastungstests.](./media/app-insights-monitor-web-app-availability/appinsights-71webtest-multi-vs-create.png)
 
 2. Öffnen Sie die .webtest-Datei und starten Sie die Aufzeichnung.
 
@@ -195,13 +192,13 @@ Angenommen, Sie testen ein Tool, das zeitabhängige Daten, wie z. B. Bestände, 
 
 Wenn Sie den Test ausführen, sollte "EndTime" immer die aktuelle Uhrzeit widerspiegeln, und "StartTime" sollte der Uhrzeit vor 15 Minuten entsprechen.
 
-Webtest-Plug-Ins bieten dazu die entsprechende Möglichkeit.
+Webtest-Plug-Ins sind eine Möglichkeit zum Parametrisieren von Zeiten.
 
 1. Fügen Sie ein Webtest-Plug-In für jeden gewünschten Variablenparameterwert hinzu. Wählen Sie in der Webtest-Symbolleiste **Webtest-Plug-In hinzufügen** aus.
 
     ![Wählen Sie "Webtest-Plug-In hinzufügen", und wählen Sie einen Typ aus.](./media/app-insights-monitor-web-app-availability/appinsights-72webtest-plugins.png)
 
-    In diesem Beispiel verwenden wir zwei Instanzen des Datums-/Uhrzeit-Plug-Ins. Eine Instanz ist für "vor 15 Minuten" und eine weitere für "jetzt".
+    In diesem Beispiel verwenden wir zwei Instanzen des Datums-/Uhrzeit-Plug-Ins. Eine Instanz gilt für „vor 15 Minuten“ und eine weitere für „jetzt“.
 
 2. Öffnen Sie die Eigenschaften der einzelnen Plug-Ins. Geben Sie einen Namen ein, und legen Sie es so fest, dass die aktuelle Uhrzeit verwendet wird. Legen Sie für eines der Plug-Ins "Add Minutes = -15" fest.
 
@@ -215,19 +212,19 @@ Laden Sie nun den Test in das Portal hoch. Bei jeder Ausführung des Tests werde
 
 ## Umgang mit der Anmeldung
 
-Wenn sich Benutzer bei Ihrer App anmelden, stehen Ihnen eine Reihe von Optionen für die Anmeldungssimulation zur Verfügung, damit Sie Seiten testen können, die auf die Anmeldung folgen. Der verwendete Ansatz hängt vom Typ der von der App bereitgestellten Sicherheit ab.
+Wenn sich Benutzer bei Ihrer App anmelden, stehen Ihnen verschiedene Optionen für die Anmeldungssimulation zur Verfügung, damit Sie Seiten testen können, die auf die Anmeldung folgen. Der verwendete Ansatz hängt vom Typ der von der App bereitgestellten Sicherheit ab.
 
 In allen Fällen sollten Sie ein Konto erstellen, das nur Testzwecken dient. Schränken Sie die Berechtigungen des Kontos möglichst so ein, dass es schreibgeschützt ist.
 
-* Einfacher Benutzername und einfaches Kennwort: Zeichnen Sie einfach einen Webtest auf die übliche Weise auf. Löschen Sie zuerst Cookies.
-* SAML-Authentifizierung Dazu können Sie das für Webtests verfügbare SAML-Plug-In verwenden.
-* Geheimer Clientschlüssel: Wenn die Anmelderoute Ihrer App einen geheimen Clientschlüssel umfasst, verwenden Sie diesen. Azure Active Directory Premium stellt diese Funktion bereit.
+* Einfacher Benutzername und einfaches Kennwort: Zeichnen Sie einen Webtest auf die übliche Weise auf. Löschen Sie zuerst Cookies.
+* SAML-Authentifizierung Verwenden Sie für Webtests das verfügbare SAML-Plug-In.
+* Geheimer Clientschlüssel: Wenn die Anmelderoute Ihrer App einen geheimen Clientschlüssel umfasst, verwenden Sie diese Route. Azure Active Directory stellt eine Anmeldung mit geheimem Clientschlüssel bereit.
 * Offene Authentifizierung – z. B. Anmeldung mit Ihrem Microsoft- oder Google-Konto Viele Apps, die OAuth verwenden, stellen die Alternative mit dem geheimen Clientschlüssel bereit; die erste Taktik besteht also darin, dies zu untersuchen. Ist bei Ihrem Test die Anmeldung mit OAuth erforderlich, ist die allgemeine Vorgehensweise wie folgt:
  * Verwenden Sie ein Tool wie Fiddler, um den Datenverkehr zwischen Ihrem Webbrowser, der Authentifizierungswebsite und Ihrer App zu untersuchen.
  * Führen Sie mindestens zwei Anmeldungen auf verschiedenen Computern bzw. in verschiedenen Browsern oder mit großen zeitlichen Abständen durch (damit Token ablaufen können).
  * Vergleichen Sie verschiedene Sitzungen, um das von der authentifizierenden Website zurückgegebene Token zu identifizieren, das nach der Anmeldung dann an Ihren App-Server übergeben wird.
  * Zeichnen Sie einen Webtests mit Visual Studio auf.
- * Parametrisieren Sie die Token, indem Sie den Parameter festlegen, wenn das Token vom Authentifikator zurückgegeben wird, und ihn in der Abfrage an die Website verwenden. (Visual Studio versucht, den Test zu parametrisieren, die Token werden jedoch nicht ordnungsgemäß parametrisiert.)
+ * Parametrisieren Sie die Token, indem Sie den Parameter festlegen, wenn das Token vom Authentifikator zurückgegeben wird, und ihn in der Abfrage an die Website verwenden. (Visual Studio versucht, den Test zu parametrisieren, aber die Token werden nicht richtig parametrisiert.)
 
 
 ## <a name="edit"></a> Bearbeiten oder Deaktivieren eines Tests
@@ -242,7 +239,7 @@ Sie können Webtests beispielsweise deaktivieren, während Sie Wartungsarbeiten 
 
 Sie können für Ihre Website einen Auslastungstest durchführen. Wie beim Verfügbarkeitstest auch, können Sie entweder einfache Anforderungen oder Anforderungen mit mehreren Schritten von unseren weltweit vorhandenen Punkten senden. Im Gegensatz zu einem Verfügbarkeitstest werden viele Anforderungen gesendet, um mehrere gleichzeitige Benutzer zu simulieren.
 
-Öffnen Sie im Blatt „Übersicht“ die Option **Einstellungen** > **Leistungstests**. Wenn Sie einen Test erstellen, können Sie eine Verbindung mit einem Visual Studio Team Services-Konto herstellen bzw. ein Konto erstellen.
+Öffnen Sie auf dem Blatt „Übersicht“ die Option **Einstellungen** > **Leistungstests**. Wenn Sie einen Test erstellen, können Sie eine Verbindung mit einem Visual Studio Team Services-Konto herstellen bzw. ein Konto erstellen.
 
 Nach Abschluss des Tests werden die Antwortzeiten und Erfolgsraten angezeigt.
 
@@ -260,7 +257,7 @@ Nach Abschluss des Tests werden die Antwortzeiten und Erfolgsraten angezeigt.
 
 * *Wird HTTPS unterstützt?*
 
-    Derzeit werden SSL 3.0 und TLS 1.0 unterstützt.
+    Wir unterstützen TLS 1.1 und TLS 1.2.
 
 * *Gibt es einen Unterschied zwischen „Webtests“ und „Verfügbarkeitstests“?*
 
@@ -312,4 +309,4 @@ Nach Abschluss des Tests werden die Antwortzeiten und Erfolgsraten angezeigt.
 [qna]: app-insights-troubleshoot-faq.md
 [start]: app-insights-overview.md
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0810_2016-->

@@ -14,7 +14,7 @@
  ms.topic="get-started-article"
  ms.tgt_pltfrm="na"
  ms.workload="na"
- ms.date="05/25/2016"
+ ms.date="08/09/2016"
  ms.author="dobett"/>
 
 # Was sind vorkonfigurierte Azure IoT Suite-Lösungen?
@@ -34,7 +34,7 @@ In der folgenden Tabelle wird gezeigt, welchen IoT-Features die Lösungen zugeor
 
 | Lösung | Datenerfassung | Geräteidentität | Befehl und Steuerung | Regeln und Aktionen | Predictive Analytics |
 |------------------------|-----|-----|-----|-----|-----|
-| [Remoteüberwachung][lnk-getstarted-preconfigured] | Ja | Ja | Ja | Ja | – | 
+| [Remoteüberwachung][lnk-getstarted-preconfigured] | Ja | Ja | Ja | Ja | – |
 | [Vorbeugende Wartung][lnk-predictive-maintenance] | Ja | Ja | Ja | Ja | Ja |
 
 - *Datenerfassung:* Skalierbarer Dateneingang in der Cloud
@@ -111,11 +111,11 @@ Das Lösungsportal ist eine webbasierte Benutzeroberfläche, die in der Cloud al
 - Senden von Befehlen an bestimmte Geräte
 - Verwalten von Regeln und Aktionen
 
-Bei dieser vorkonfigurierten Lösung bildet das Lösungsportal einen Teil des **IoT-Lösungs-Back-Ends** und einen Teil der **Verarbeitungsverbindung und Business Connectivity** in einer typischen [IoT-Lösungsarchitektur][lnk-what-is-azure-iot].
+Bei dieser vorkonfigurierten Lösung bildet das Lösungsportal einen Teil des **IoT-Lösungs-Back-Ends** und einen Teil der **Verarbeitungsverbindung und Business Connectivity** in der typischen [IoT-Lösungsarchitektur][lnk-what-is-azure-iot].
 
 ## Nächste Schritte
 
-Weitere Informationen zu den IoT-Lösungsarchitekturen finden Sie unter [Microsoft Azure IoT services: Reference Architecture][lnk-refarch] \(Microsoft Azure IoT-Dienste: Referenzarchitektur).
+Weitere Informationen zu den IoT-Lösungsarchitekturen finden Sie unter [Microsoft Azure IoT services: Reference Architecture][lnk-refarch] (Microsoft Azure IoT-Dienste: Referenzarchitektur).
 
 Sie wissen nun, worum es sich bei einer vorkonfigurierten Lösung handelt, und können beginnen, indem Sie die vorkonfigurierte Lösung für die *Remoteüberwachung* bereitstellen: [Erste Schritte mit den vorkonfigurierten Lösungen][lnk-getstarted-preconfigured].
 
@@ -131,4 +131,4 @@ Sie wissen nun, worum es sich bei einer vorkonfigurierten Lösung handelt, und k
 [lnk-refarch]: http://download.microsoft.com/download/A/4/D/A4DAD253-BC21-41D3-B9D9-87D2AE6F0719/Microsoft_Azure_IoT_Reference_Architecture.pdf
 [lnk-getstarted-preconfigured]: iot-suite-getstarted-preconfigured-solutions.md
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0810_2016-->

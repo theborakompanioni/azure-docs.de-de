@@ -45,7 +45,7 @@ Falls Python 2.7 oder 3.4 (32 Bit) noch nicht installiert ist, empfehlen wir die
 
 Für Git empfehlen wir [Git für Windows] oder [GitHub für Windows]. Wenn Sie Visual Studio verwenden, können Sie die integrierte Unterstützung für Git nutzen.
 
-Wir empfehlen auch die Installation von [Python Tools 2.2 für Visual Studio]. Dies ist optional, aber wenn Sie über [Visual Studio] einschließlich des kostenlosen Visual Studio Community 2013 oder Visual Studio Express 2013 für Web verfügen, erhalten Sie eine leistungsfähige Python-IDE.
+Wir empfehlen auch die Installation von [Python Tools 2.2 für Visual Studio]. Dies ist optional, aber wenn Sie über [Visual Studio] einschließlich des kostenlosen Visual Studio Community 2013 oder Visual Studio Express 2013 für Web verfügen, erhalten Sie eine leistungsfähige Python-IDE.
 
 ### Mac/Linux
 
@@ -58,7 +58,7 @@ Der erste Schritt beim Erstellen einer App ist das Erstellen der Web-App über d
 
 1. Klicken Sie im Azure-Portal in der unteren linken Ecke auf **NEU**.
 3. Geben Sie im Suchfeld "python" ein.
-4. Wählen Sie in den Suchergebnissen **Django** aus, und klicken Sie dann auf **Erstellen**.
+4. Wählen Sie in den Suchergebnissen **Django** (veröffentlicht von PTVS) aus, und klicken Sie dann auf **Erstellen**.
 5. Konfigurieren Sie die neue Django-App, indem Sie beispielsweise einen neuen App Service-Plan und eine neue Ressourcengruppe dafür erstellen. Klicken Sie dann auf **Erstellen**.
 6. Konfigurieren Sie die Git-Veröffentlichung für Ihre neu erstellte Web-App anhand der Anleitung unter [Lokale Git-Bereitstellung in Azure App Service](app-service-deploy-local-git.md).
 
@@ -517,4 +517,4 @@ Weitere Informationen finden Sie im [Python Developer Center](/develop/python/).
 [Python Tools für Visual Studio – Dokumentation]: http://aka.ms/ptvsdocs
 [Dokumentation zu Django]: https://www.djangoproject.com/
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0810_2016-->

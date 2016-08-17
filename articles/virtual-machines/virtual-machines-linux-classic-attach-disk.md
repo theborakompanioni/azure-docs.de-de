@@ -19,7 +19,7 @@
 
 # Gewusst wie: Anfügen eines Datenträgers an einen virtuellen Linux-Computer
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]. So fügen Sie [einen Datenträger mithilfe des Resource Manager-Bereitstellungsmodell an](virtual-machines-linux-add-disk.md).
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] So fügen Sie [einen Datenträger mithilfe des Resource Manager-Bereitstellungsmodell an](virtual-machines-linux-add-disk.md).
 
 Sie können sowohl leere Datenträger, als auch Datenträger mit Daten an Ihre virtuellen Azure-Computer anfügen. Beide Arten von Datenträgern sind VHD-Dateien, die sich in einem Azure Storage-Konto befinden. Wie bei jedem Hinzufügen von Datenträgern an einen Linux-Computer, müssen Sie nach dem Anfügen des Datenträgers diesen initialisieren und formatieren, damit er verwendet werden kann. In diesem Artikel wird beschrieben, wie Sie sowohl leere Datenträger als auch Datenträger mit Daten an Ihre VMs anfügen, und wie Sie daraufhin einen neuen Datenträger initialisieren und formatieren.
 
@@ -181,6 +181,9 @@ Es gibt zwei Methoden, TRIM-Unterstützung auf Ihrem virtuellen Linux-Computer z
 		# sudo yum install util-linux
 		# sudo fstrim /datadrive
 
+## Problembehandlung
+[AZURE.INCLUDE [virtual-machines-linux-lunzero](../../includes/virtual-machines-linux-lunzero.md)]
+
 
 ## Nächste Schritte
 Informieren Sie sich in den folgenden Artikeln ausführlicher über das Verwenden von virtuellen Linux-Computern:
@@ -195,4 +198,4 @@ Informieren Sie sich in den folgenden Artikeln ausführlicher über das Verwende
 [Agent]: virtual-machines-linux-agent-user-guide.md
 [Logon]: virtual-machines-linux-classic-log-on.md
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0803_2016-->

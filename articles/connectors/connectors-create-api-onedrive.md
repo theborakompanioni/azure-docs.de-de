@@ -1,7 +1,7 @@
 <properties
 	pageTitle="Hinzufügen des OneDrive-Connectors zu Ihren Logik-Apps | Microsoft Azure"
 	description="Übersicht über den OneDrive-Connector mit REST-API-Parametern"
-	services="app-servicelogic"    
+	services="logic-apps"    
 	documentationCenter=""     
 	authors="MandiOhlinger"    
 	manager="erikre"    
@@ -125,7 +125,7 @@ Dieser Abschnitt enthält spezifische Details zu den einzelnen Aktionen. Hierzu 
 #### Dateimetadaten abrufen
 Dieser Vorgang ruft die Metadaten für eine Datei ab.
 
-|Eigenschaftenname| Anzeigename|Beschreibung|
+|Eigenschaftenname| Display Name|Beschreibung|
 | ---|---|---|
 |id*|File|Datei auswählen|
 
@@ -151,7 +151,7 @@ BlobMetadata
 #### Datei aktualisieren
 Dieser Vorgang aktualisiert eine Datei.
 
-|Eigenschaftenname| Anzeigename|Beschreibung|
+|Eigenschaftenname| Display Name|Beschreibung|
 | ---|---|---|
 |id*|File|Datei auswählen|
 |body*|Dateiinhalte|Inhalt der Datei|
@@ -178,7 +178,7 @@ BlobMetadata
 #### Datei löschen
 Dieser Vorgang löscht eine Datei.
 
-|Eigenschaftenname| Anzeigename|Beschreibung|
+|Eigenschaftenname| Display Name|Beschreibung|
 | ---|---|---|
 |id*|File|Datei auswählen|
 
@@ -190,7 +190,7 @@ Keine.
 #### Dateimetadaten anhand des Pfads abrufen
 Dieser Vorgang ruft die Metadaten einer Datei unter Verwendung des Pfads ab.
 
-|Eigenschaftenname| Anzeigename|Beschreibung|
+|Eigenschaftenname| Display Name|Beschreibung|
 | ---|---|---|
 |path*|Dateipfad|Datei auswählen|
 
@@ -216,7 +216,7 @@ BlobMetadata
 #### Dateiinhalt anhand des Pfads abrufen
 Dieser Vorgang ruft den Inhalt einer Datei unter Verwendung des Pfads ab.
 
-|Eigenschaftenname| Anzeigename|Beschreibung|
+|Eigenschaftenname| Display Name|Beschreibung|
 | ---|---|---|
 |path*|Dateipfad|Datei auswählen|
 
@@ -229,7 +229,7 @@ Keine.
 #### Dateiinhalte abrufen
 Dieser Vorgang ruft den Inhalt einer Datei ab.
 
-|Eigenschaftenname| Anzeigename|Beschreibung|
+|Eigenschaftenname| Display Name|Beschreibung|
 | ---|---|---|
 |id*|File|Datei auswählen|
 
@@ -241,7 +241,7 @@ Keine.
 #### Datei erstellen
 Dieser Vorgang erstellt eine Datei.
 
-|Eigenschaftenname| Anzeigename|Beschreibung|
+|Eigenschaftenname| Display Name|Beschreibung|
 | ---|---|---|
 |folderPath*|Ordnerpfad|Ordner auswählen|
 |name*|Dateiname|Name der Datei|
@@ -269,7 +269,7 @@ BlobMetadata
 #### Datei kopieren
 Dieser Vorgang kopiert eine Datei in OneDrive.
 
-|Eigenschaftenname| Anzeigename|Beschreibung|
+|Eigenschaftenname| Display Name|Beschreibung|
 | ---|---|---|
 |source*|Quell-URL|URL zur Quelldatei|
 |destination*|Zieldateipfad|Zieldateipfad einschließlich Zieldateiname|
@@ -297,7 +297,7 @@ BlobMetadata
 #### Wenn eine Datei erstellt wird
 Dieser Vorgang löst einen Fluss aus, wenn in einem Ordner eine neue Datei erstellt wird.
 
-|Eigenschaftenname| Anzeigename|Beschreibung|
+|Eigenschaftenname| Display Name|Beschreibung|
 | ---|---|---|
 |folderId*|Ordner|Ordner auswählen|
 
@@ -309,7 +309,7 @@ Keine.
 #### Wenn eine Datei geändert wird
 Dieser Vorgang löst einen Fluss aus, wenn in einem Ordner eine Datei geändert wird.
 
-|Eigenschaftenname| Anzeigename|Beschreibung|
+|Eigenschaftenname| Display Name|Beschreibung|
 | ---|---|---|
 |folderId*|Ordner|Ordner auswählen|
 
@@ -321,7 +321,7 @@ Keine.
 #### Dateien im Ordner aufführen
 Dieser Vorgang ruft die Liste mit den in einem Ordner enthaltenen Dateien und Unterordnern ab.
 
-|Eigenschaftenname| Anzeigename|Beschreibung|
+|Eigenschaftenname| Display Name|Beschreibung|
 | ---|---|---|
 |id*|Ordner|Ordner auswählen|
 
@@ -369,7 +369,7 @@ BlobMetadata
 #### Archiv in Ordner extrahieren
 Dieser Vorgang extrahiert eine Archivdatei (beispielsweise eine ZIP-Datei) in einen Ordner.
 
-|Eigenschaftenname| Anzeigename|Beschreibung|
+|Eigenschaftenname| Display Name|Beschreibung|
 | ---|---|---|
 |source*|Quellarchiv-Dateipfad|Pfad zur Archivdatei|
 |destination*|Zielordnerpfad|Pfad, an dem der Archivinhalt extrahiert werden soll|
@@ -414,4 +414,4 @@ In der folgenden Tabelle werden die Antworten auf die Aktionen und Trigger aufge
 
 [Erstellen Sie eine Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md). Informieren Sie sich in unserer [API-Liste](apis-list.md) über die anderen verfügbaren Connectors für Logic Apps.
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

@@ -92,13 +92,15 @@ Große Datenmengen können in vorhandenen Hadoop-Clustern oder lokal auf Compute
 
 ### Sehr große Datasets
 
-Das Hochladen von Datasets im Bereich mehrerer Terabyte kann mithilfe der oben beschriebenen Methoden manchmal langsam und kostspielig sein. In solchen Fällen können Sie die folgenden Optionen verwenden.
+Das Hochladen von Datasets im Bereich mehrerer Terabyte kann mithilfe der oben beschriebenen Methoden manchmal langsam und kostspielig sein. In solchen Fällen können Sie die folgenden Optionen verwenden:
 
-* **Offline-Datenupload**. Über den [Azure Import/Export-Dienst](../storage/storage-import-export-service.md) können Sie Festplatten mit Ihren Daten an ein Azure-Rechenzentrum senden, wo die Daten dann in ein Azure Storage-Blob hochgeladen werden. Anschließend können Sie mit [Azure Data Factory](../data-factory/data-factory-azure-datalake-connector.md#sample-copy-data-from-azure-blob-to-azure-data-lake-store) oder dem [AdlCopy-Tool](data-lake-store-copy-data-azure-storage-blob.md) Daten aus Azure Storage-Blobs in den Data Lake-Speicher verschieben.
+* **Verwenden Sie Azure ExpressRoute.** Azure ExpressRoute ermöglicht Ihnen, private Verbindungen zwischen Azure-Rechenzentren und Ihrer lokalen Infrastruktur zu erstellen. Dies ist eine zuverlässige Option zur Übertragung großer Datenmengen. Weitere Informationen finden Sie in der [Dokumentation zu ExpressRoute ](../expressroute/expressroute-introduction.md).
+
+
+* **Offline-Datenupload.** Wenn Azure ExpressRoute aus irgendeinem Grund nicht verwendet werden kann, können Sie über den [Azure Import/Export-Dienst](../storage/storage-import-export-service.md) Festplatten mit Ihren Daten an ein Azure-Rechenzentrum senden. Ihre Daten werden zunächst in Azure Storage-Blobs hochgeladen. Anschließend können Sie mit [Azure Data Factory](../data-factory/data-factory-azure-datalake-connector.md#sample-copy-data-from-azure-blob-to-azure-data-lake-store) oder dem [AdlCopy-Tool](data-lake-store-copy-data-azure-storage-blob.md) Daten aus Azure Storage-Blobs in Data Lake Store kopieren.
 
 	>[AZURE.NOTE] Wenn Sie den Import-/Export-Dienst verwenden, sollte die Größe der Dateien auf den Datenträgern, die Sie an das Azure-Rechenzentrum senden, nicht größer als 200 GB sein.
 
-* **Verwenden Sie Azure ExpressRoute**. Azure ExpressRoute ermöglicht Ihnen, private Verbindungen zwischen Azure-Rechenzentren und Ihrer lokalen Infrastruktur zu erstellen. Dies ist eine zuverlässige Option zur Übertragung großer Datenmengen. Weitere Informationen finden Sie in der [technischen Übersicht zu Azure ExpressRoute](../expressroute/expressroute-introduction.md).
 
 ## Verarbeiten von Daten, die im Data Lake-Speicher gespeichert sind
 
@@ -143,4 +145,4 @@ Sie können eine Kombination von Diensten verwenden, um visuelle Darstellungen d
 * Sie können beginnen, indem Sie [Daten mithilfe von Azure Data Factory aus dem Data Lake-Speicher in Azure SQL Data Warehouse verschieben](../data-factory/data-factory-data-movement-activities.md#supported-data-stores).
 * Danach können Sie [Power BI in Azure SQL Data Warehouse integrieren](../sql-data-warehouse/sql-data-warehouse-integrate-power-bi.md), um eine visuelle Darstellung der Daten zu erstellen.
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0803_2016-->

@@ -1,7 +1,7 @@
 <properties 
 	pageTitle="Erstellen von B2B-Lösungen mit dem Enterprise Integration Pack | Microsoft Azure App Service | Microsoft Azure" 
 	description="Informationen zum Empfangen von Daten mithilfe der B2B-Features des Enterprise Integration Packs" 
-	services="app-service\logic" 
+	services="logic-apps" 
 	documentationCenter=".net,nodejs,java"
 	authors="msftman" 
 	manager="erikre" 
@@ -75,4 +75,4 @@ An diesem Punkt ist das Einrichten der B2B-Logik-App abgeschlossen. In einer rea
 
 [Weitere Informationen zum Enterprise Integration Pack](./app-service-logic-enterprise-integration-overview.md)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

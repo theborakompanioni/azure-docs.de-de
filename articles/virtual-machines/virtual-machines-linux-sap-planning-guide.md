@@ -14,7 +14,7 @@
    ms.topic="campaign-page"
    ms.tgt_pltfrm="vm-linux"
    ms.workload="na"
-   ms.date="05/17/2016"
+   ms.date="08/02/2016"
    ms.author="sedusch"/>
 
 # SAP NetWeaver auf virtuellen Azure-Computern – Planungs- und Implementierungshandbuch
@@ -425,7 +425,7 @@ Es ist wichtig, zu beachten, dass die virtuellen Computer in jeder Gruppe parall
  
 ![VPN mit Site-to-Site-Konnektivität (standortübergreifende)][planning-guide-figure-300]
 
-Dieses Szenario ist ein standortübergreifendes Szenario mit zahlreichen möglichen Bereitstellungsmustern. Es kann einfach als das Ausführen einiger Teile der SAP-Landschaft lokal und anderer Teile der SAP-Landschaft in Azure beschrieben werden. Alle Aspekte der Tatsache, dass ein Teil der SAP-Komponenten in Azure ausgeführt wird, sollten für Endbenutzer ersichtlich sein. Daher funktionieren SAP Transport Correction System (STMS), RFC-Kommunikation, Drucken, Sicherheit (wie SSO) usw. problemlos für SAP-Systeme, die unter Windows Azure ausgeführt werden. Das standortübergreifende Szenario beschreibt aber auch ein Szenario, in dem die vollständige SAP-Landschaft in Azure ausgeführt wird, wobei die Domäne und der DNS-Dienst des Kunden in Azure erweitert werden.
+Dieses Szenario ist ein standortübergreifendes Szenario mit zahlreichen möglichen Bereitstellungsmustern. Es kann einfach als das Ausführen einiger Teile der SAP-Landschaft lokal und anderer Teile der SAP-Landschaft in Azure beschrieben werden. Alle Aspekte der Tatsache, dass ein Teil der SAP-Komponenten in Azure ausgeführt wird, sollten für Endbenutzer ersichtlich sein. Daher funktionieren SAP Transport Correction System (STMS), RFC-Kommunikation, Drucken, Sicherheit (wie SSO) usw. problemlos für SAP-Systeme, die unter Microsoft Azure ausgeführt werden. Das standortübergreifende Szenario beschreibt aber auch ein Szenario, in dem die vollständige SAP-Landschaft in Azure ausgeführt wird, wobei die Domäne und der DNS-Dienst des Kunden in Azure erweitert werden.
 
 > [AZURE.NOTE] Dies ist das Bereitstellungsszenario, das für die Ausführung produktiver SAP-Systeme unterstützt wird.
 
@@ -641,7 +641,7 @@ Da Netzwerk und Namensauflösung wesentliche Teile der Datenbankbereitstellung f
 
 Durch das Einrichten eines virtuellen Azure-Netzwerk können Sie den Adressbereich der privaten IP-Adressen definieren, die durch die Azure-DHCP-Funktionen zugeordnet werden. In standortübergreifenden Szenarios wird der definierte IP-Adressbereich weiterhin mithilfe von DHCP von Azure zugeordnet. Allerdings erfolgt die Auflösung von Domänennamen lokal (vorausgesetzt, dass die virtuellen Computer einer lokalen Domäne angehören). Darum können auch Adressen außerhalb der verschiedenen Azure-Clouddienste aufgelöst werden.
 
-[comment]: <> (MSSedusch still needed? TODO Ursprünglich wurde ein virtuelles Azure-Netzwerk an eine Affinitätsgruppe gebunden. Damit war ein virtuelles Netzwerk in Azure auf die Azure-Skalierungseinheit beschränkt, die der Affinitätsgruppe zugewiesen wurde. Das bedeutete im Endeffekt, dass das virtuelle Netzwerk auf die Ressourcen beschränkt war, die in der Azure-Skalierungseinheit verfügbar waren. Dies wurde seitdem geändert, und jetzt können sich virtuelle Azure-Netzwerke über mehrere Azure-Skalierungseinheiten erstrecken. Das erfordert jedoch, dass virtuelle Azure-Netzwerke bei der Erstellung **KEINEN** Affinitätsgruppen mehr zugeordnet werden. Wie bereits erwähnt, sollten Sie entgegen den Empfehlungen von vor einem Jahr **KEINE Azure-Affinitätsgruppen mehr nutzen**. Weitere Informationen finden Sie unter <https://azure.microsoft.com/blog/regional-virtual-networks/>.
+[comment]: <> (MSSedusch still needed? TODO Ursprünglich wurde ein virtuelles Azure-Netzwerk an eine Affinitätsgruppe gebunden. Damit war ein virtuelles Netzwerk in Azure auf die Azure-Skalierungseinheit beschränkt, die der Affinitätsgruppe zugewiesen wurde. Das bedeutete im Endeffekt, dass das virtuelle Netzwerk auf die Ressourcen beschränkt war, die in der Azure-Skalierungseinheit verfügbar waren. Dies wurde seitdem geändert, und jetzt können sich virtuelle Azure-Netzwerke über mehrere Azure-Skalierungseinheiten erstrecken. Das erfordert jedoch, dass virtuelle Azure-Netzwerke bei der Erstellung **KEINEN** Affinitätsgruppen mehr zugeordnet werden. Wie bereits erwähnt, sollten Sie entgegen den Empfehlungen von vor einem Jahr **KEINE Azure-Affinitätsgruppen mehr nutzen**. Weitere Informationen finden Sie unter <https://azure.microsoft.com/blog/regional-virtual-networks/>)
 
 Alle virtuellen Computer in Azure müssen mit einem virtuellen Netzwerk verbunden sein.
 
@@ -686,8 +686,8 @@ Punkt-zu-Standort-VPN erfordert, dass jeder Clientcomputer eine Verbindung mit d
 #### VPN mit mehreren Standorten
 Azure bietet heutzutage auch die Möglichkeit zum Erstellen von VPN-Konnektivität mit mehreren Standorten für ein Azure-Abonnement. Zuvor war ein einzelnes Abonnement auf eine Standort-zu-Standort-VPN-Verbindung beschränkt. Diese Einschränkung wurde mit VPN-Verbindungen mit mehreren Standorten für ein einzelnes Abonnement aufgehoben. Dadurch können mehrere Azure-Regionen für ein bestimmtes Abonnement über standortübergreifende Konfigurationen genutzt werden.
 
-Weitere Dokumentationen finden Sie in [diesem Artikel][vpn-gateway-create-site-to-site-rm-powershell].
- [comment]: <> (MShermannd TODO found no ARM docu link)
+Weitere Dokumentationen finden Sie in [diesem Artikel][vpn-gateway-create-site-to-site-rm-powershell]
+[comment]: <> (MShermannd TODO found no ARM docu link)
 
 #### VNet-zu-VNet-Verbindung
 Bei Verwendung von VPN mit mehreren Standorten müssen Sie ein separates virtuelles Azure-Netzwerk in jeder einzelnen Region konfigurieren. Jedoch besteht sehr häufig die Anforderung, dass die Komponenten in den verschiedenen Regionen miteinander kommunizieren sollen. Im Idealfall sollte diese Kommunikation nicht von einer Azure-Region zu lokalen Standorten und von dort aus in die andere Azure-Region weitergeleitet werden. Azure bietet zur Vereinfachung die Möglichkeit, eine Verbindung von einem virtuellen Azure-Netzwerk in einer Region mit einem anderen virtuellen Azure-Netzwerk, das in einer anderen Region gehostet wird, zu konfigurieren. Diese Funktionalität wird als VNet-zu-VNet-Verbindung bezeichnet. Weitere Informationen zu dieser Funktionalität finden Sie hier: <https://azure.microsoft.com/documentation/articles/vpn-gateway-vnet-vnet-rm-ps/>.
@@ -781,8 +781,7 @@ Ausführlichere Schritte zum Installieren, Aktualisieren und Konfigurieren der A
 
 Bisherige Erfahrungen der Kunden zeigen PowerShell (PS) mit Sicherheit als das leistungsstärkere Tool für die Bereitstellung von VMs und die Erstellung benutzerdefinierter Schritte innerhalb der Bereitstellung von VMs. Alle Kunden, die SAP-Instanzen in Azure ausführen, verwenden PS-Cmdlets zur Ergänzung Ihrer Verwaltungsaufgaben im Azure-Portal bzw. sogar ausschließlich zur Verwaltung ihrer Bereitstellungen in Azure. Da für die Azure-spezifischen Cmdlets dieselben Namenskonventionen gelten wie für die mehr als 2000 Windows-spezifischen Cmdlets, fällt Windows-Administratoren die Übernahme dieser Cmdlets nicht schwer.
 
-Einige Beispiele finden Sie hier:
- <http://blogs.technet.com/b/keithmayer/archive/2015/07/07/18-steps-for-end-to-end-iaas-provisioning-in-the-cloud-with-azure-resource-manager-arm-powershell-and-desired-state-configuration-dsc.aspx>
+Einige Beispiele finden Sie hier: <http://blogs.technet.com/b/keithmayer/archive/2015/07/07/18-steps-for-end-to-end-iaas-provisioning-in-the-cloud-with-azure-resource-manager-arm-powershell-and-desired-state-configuration-dsc.aspx>
 
 [comment]: <> (MShermannd TODO describe new CLI command when tested) 
 Die Bereitstellung der Azure Monitoring Extension for SAP (siehe Kapitel [Azure-Überwachungslösung für SAP][planning-guide-9.1] in diesem Dokument) ist nur über PowerShell oder die Befehlszeilenschnittstelle möglich. Daher muss PowerShell oder die Befehlszeilenschnittstelle bei der Bereitstellung oder Verwaltung eines SAP NetWeaver-Systems in Azure installiert und konfiguriert werden.
@@ -819,10 +818,10 @@ ___
 
 > ![Windows][Logo_Windows] Windows
 >
-> Die Windows-Einstellungen (wie die Windows-SID und der Hostname) müssen auf der lokalen VM mit dem folgenden sysprep-Befehl abstrahiert/generalisiert werden. 
-[comment]: <> (MSSedusch > See more details here :) 
-[comment]: <> (MShermannd TODO first link is about classic model. Didn't find an Azure docu article) 
-[comment]: <> (MSSedusch > <https://azure.microsoft.com/documentation/articles/virtual-machines-create-upload-vhd-windows-server/>) 
+> Die Windows-Einstellungen (wie die Windows-SID und der Hostname) müssen auf der lokalen VM mit dem folgenden sysprep-Befehl abstrahiert/generalisiert werden.
+[comment]: <> (MSSedusch > See more details here :)
+[comment]: <> (MShermannd TODO first link is about classic model. Didn't find an Azure docu article)
+[comment]: <> (MSSedusch > <https://azure.microsoft.com/documentation/articles/virtual-machines-create-upload-vhd-windows-server/>)
 [comment]: <> (MSSedusch > <http://blogs.technet.com/b/blainbar/archive/2014/09/12/modernizing-your-infrastructure-with-hybrid-cloud-using-custom-vm-images-and-resource-groups-in-microsoft-azure-part-21-blain-barton.aspx>)
 >
 > ![Linux][Logo_Linux] Linux
@@ -844,7 +843,7 @@ Eine gängige Bereitstellungsmethode ist das Verschieben einer vorhandenen VM mi
 
 Für die Vorbereitung Ihres eigenen Azure-VM-Datenträgers gelten folgende Anforderungen:
 
-* Bislang war die VHD mit dem Betriebssystem auf eine Größe von maximal 127 GB beschränkt. Diese Einschränkung gilt seit Ende März 2015 nicht mehr. Die VHD mit dem Betriebssystem kann nun wie jede andere im Azure-Speicher bereitgestellte VHD bis zu 1 TB groß sein kann. 
+* Bislang war die VHD mit dem Betriebssystem auf eine Größe von maximal 127 GB beschränkt. Diese Einschränkung gilt seit Ende März 2015 nicht mehr. Die VHD mit dem Betriebssystem kann nun wie jede andere im Azure-Speicher bereitgestellte VHD bis zu 1 TB groß sein kann.  
 [comment]: <> (MShermannd TODO have to check if CLI also converts to static )
 * Das VHD-Format muss jedoch statisch sein. Dynamische VHDs oder VHDs im VHDx-Format werden von Azure noch nicht unterstützt. Dynamische VHDs werden beim Hochladen mit PowerShell-Cmdlets bzw. der Befehlszeilenschnittstelle in statische VHDs konvertiert.
 * Auch auf der VM bereitgestellte VHDs, die in Azure weiterhin bereitgestellt werden sollen, müssen ein statisches VHD-Format aufweisen. Die Größeneinschränkung für Betriebssystem-Datenträger gilt auch für Datenträger mit ganz normalen Daten. Die Größe von VHDs ist auf 1 TB beschränkt. Dynamische VHDs werden beim Hochladen mit PowerShell-Cmdlets bzw. der Befehlszeilenschnittstelle in statische VHDs konvertiert.
@@ -1728,7 +1727,7 @@ Derzeit gibt es auf Azure Virtual Machines keinen SLA für einen einzelnen virtu
 
 Als Grundlage für die Berechnung werden 30 Tage pro Monat bzw. 43200 Minuten verwendet. Eine Ausfallzeit von 0,05 % entspricht somit 21,6 Minuten. Wie üblich multipliziert sich die Verfügbarkeit der verschiedenen Diensten auf folgende Weise:
 
-(Verfügbarkeitsdienst 1/100) * (Verfügbarkeitsdienst 2/100) * (Verfügbarkeitsdienst 3/100) * ...
+(Verfügbarkeitsdienst 1/100) * (Verfügbarkeitsdienst 2/100) * (Verfügbarkeitsdienst 3/100) \* ...
 
 Beispiel:
 
@@ -1809,7 +1808,7 @@ Die SIOS DataKeeper-Lösung bietet eine freigegebene Cluster-Datenträgerressour
 * Die Konfiguration der SIOS DataKeeper Cluster Edition in einer Weise, die synchron den Inhalt des zusätzlich angehängten VHD-Volumes von virtuellen Quellcomputern im zusätzlich angehängten VHD-Volume des virtuellen Zielcomputers widerspiegelt.
 * SIOS DataKeeper abstrahiert die lokalen Quell- und Zielvolumes und präsentiert diese dem Windows-Failovercluster als einen einzelnen freigegebenen Datenträger.
  
-Alle Details zum Installieren eines Windows-Failoverclusters mit SIOS DataKeeper und SAP finden Sie im Whitepaper [Clustering SAP ASCS Instance using Windows Server Failover Cluster on Azure with SIOS DataKeeper][ha-guide-classic] (Clustering der SAP-ASCS-Instanz mithilfe des Windows Server-Failoverclusters in Azure mit SIOS DataKeeper).
+Alle Details zum Installieren eines Windows-Failoverclusters mit SIOS DataKeeper und SAP finden Sie im Whitepaper [Clustering SAP ASCS Instance using Windows Server Failover Cluster on Azure with SIOS DataKeeper][ha-guide-classic] \(Clustering der SAP-ASCS-Instanz mithilfe des Windows Server-Failoverclusters in Azure mit SIOS DataKeeper).
 
 #### Hohe Verfügbarkeit für die SAP-(A)SCS-Instanz unter Linux
  
@@ -1932,4 +1931,4 @@ Hier die wichtigsten Punkte der hohen Verfügbarkeit für SAP-Systeme in Azure:
 * Das Sichern von SAP-Dialoginstanzen ist nicht sinnvoll, da es bei einfachen Dialoginstanzen in der Regel schneller geht, sie erneut bereitzustellen.
 * Es ist empfehlenswert, den virtuellen Computer, der das globale Verzeichnis des SAP-Systems enthält, einschließlich aller Profile der unterschiedlichen Instanzen zu sichern. Dies sollte beispielsweise mit der Windows-Sicherung oder unter Linux mit "tar" durchgeführt werden. Aufgrund von Unterschieden zwischen Windows Server 2008 (R2) und Windows Server 2012 (R2) ist die Sicherung mit den neueren Windows Server-Versionen einfacher. Es wird daher empfohlen, Windows Server 2012 (R2) als Windows-Gastbetriebssystem ausgeführt.
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

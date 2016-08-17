@@ -13,16 +13,26 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/17/2016" 
+	ms.date="07/17/2016" 
 	ms.author="spelluru"/>
 
 # Versionshinweise für Datenverwaltungsgateway
 
 Eine Herausforderung für die moderne Datenintegration ist das nahtlose Verschieben von Daten zwischen lokalen Speicherorten und der Cloud. Dank Data Factory verläuft diese Integration mit dem Datenverwaltungsgateway nahtlos. Es handelt sich um einen Agent, den Sie lokal installieren können, um die Hybriddatenverschiebung zu ermöglichen.
 
-Weitere Informationen finden Sie unter [Verschieben von Daten zwischen lokalen Quellen und der Cloud mit Azure Data Factory](data-factory-move-data-between-onprem-and-cloud.md).
+Weitere Informationen finden Sie in den Artikeln [Verschieben von Daten zwischen lokalen Quellen und der Cloud mit Azure Data Factory](data-factory-move-data-between-onprem-and-cloud.md) und [Datenverwaltungsgateway](data-factory-data-management-gateway.md).
 
-## AKTUELLE VERSION (2.0.6013.1)
+## AKTUELLE VERSION (2.1.6040.1)
+
+- Der DB2-Treiber ist jetzt im Gatewayinstallationspaket enthalten. Sie müssen ihn nicht separat installieren.
+- Der DB2-Treiber unterstützt nun z/OS und DB2 für i (AS/400) sowie die bereits unterstützten Plattformen (Linux, Unix und Windows).
+- Unterstützt die Verwendung von DocumentDB als Quelle oder Ziel für lokale Datenspeicher.
+- Unterstützt das Kopieren von Daten in kalte bzw. heiße Blobspeicher (und umgekehrt) sowie das bereits unterstützte allgemeine Speicherkonto.
+- Ermöglicht die Verbindung mit einer lokalen SQL Server-Instanz über ein Gateway mit Remoteanmeldeberechtigungen.
+
+## Frühere Versionen
+
+## 2\.0.6013.1
 
 - Sie können die Sprache/Kultur auswählen, die von einem Gateway während der manuellen Installation verwendet werden soll.
 - Wenn das Gateway nicht wie erwartet funktioniert, können Sie Gatewayprotokolle der letzten 7 Tage an Microsoft senden, um die Behebung des Problems zu erleichtern. Wenn das Gateway nicht mit dem Clouddienst verbunden ist, können Sie Gatewayprotokolle speichern und archivieren.
@@ -35,7 +45,6 @@ Weitere Informationen finden Sie unter [Verschieben von Daten zwischen lokalen Q
 	- Verbessern der Leistung beim Anzeigen des Schemas bzw. einer Vorschau im Vergleich zu SQL Server im in der Vorschauphase befindlichen codelosen Kopiertool.
 
 
-## Frühere Versionen
 
 ## 1\.12.5953.1
 - Fehlerbehebungen
@@ -161,4 +170,4 @@ Weitere Informationen finden Sie unter [Verschieben von Daten zwischen lokalen Q
 ### Warum versucht der Datenquellen-Manager, eine Verbindung mit dem Gateway herzustellen?
 Dies ist ein Sicherheitsdesign, bei dem Sie nur lokale Datenquellen für den Cloudzugriff in Ihrem Unternehmensnetzwerk konfigurieren können. Ihre Anmeldeinformationen gelangen nicht an Orte außerhalb Ihrer Unternehmensfirewall. Stellen Sie sicher, dass Ihr Computer den Computer erreichen kann, auf dem das Gateway installiert ist.
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0803_2016-->

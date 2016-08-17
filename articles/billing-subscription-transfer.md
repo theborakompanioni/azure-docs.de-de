@@ -5,7 +5,7 @@
    documentationCenter=""
    authors="genlin"
    manager="stevenpo"
-   editor="n/a"
+   editor=""
    tags="billing,top-support-issue"/>
 
 <tags
@@ -131,4 +131,4 @@ Sie können dies jetzt problemlos für die nutzungsbasierte Bezahlung sowie für
 4. Aktualisieren Sie die Abrechnungswarnungen für dieses Abonnement im [Azure Account Center](https://account.windowsazure.com/Subscriptions) ([weitere Informationen](http://go.microsoft.com/fwlink/?LinkID=533292)).
 5. 	Wenn Sie mit einem Partner arbeiten, sollten Sie die Partner-ID für dieses Abonnement aktualisieren. Sie können diese im [Azure Account Center](https://account.windowsazure.com/Subscriptions) durchführen.
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

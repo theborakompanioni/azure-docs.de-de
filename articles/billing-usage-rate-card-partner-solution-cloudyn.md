@@ -1,11 +1,12 @@
 <properties
    pageTitle="Nutzungs- und RateCard-APIs von Microsoft Azure ermöglichen Cloudyn die ITFM-Bereitstellung für Kunden | Microsoft Azure"
    description="Enthält eine einzigartige Sicht auf den Microsoft Azure-Abrechnungspartner Cloudyn und dessen Umgebungen mit Integration der Azure-Abrechnungs-APIs in das Produkt. Dies ist besonders für Azure- und Cloudyn-Kunden hilfreich, die daran interessiert sind, Cloudyn für Azure-Dienste zu verwenden oder auszuprobieren."
-   services="billing"
+   services=""
    documentationCenter=""
    authors="BryanLa"
    manager="mbaldwin"
-   editor=""/>
+   editor=""
+   tags="billing"/>
 
 <tags
    ms.service="billing"
@@ -29,7 +30,7 @@ Mit der so genannten „Multiplikation“ der Daten aus der Nutzungs-API mit den
 Der Einsatz dieser APIs liefert wichtige Informationen zur Nutzung und zu den Kosten der Kunden. So kann Cloudyn Kundenkonten auf einfache und programmgesteuerte Weise analysieren und verschiedene ITFM-Aufgaben für seine Kunden durchführen.
 
 ## Integrieren von Cloudyn in die RateCard- und Nutzungs-APIs
-Die RateCard-API erfordert mehrere Eingabeparameter – z. B. Regionsinformationen, Währung und Gebietsschema –, aber der wichtigste Parameter ist OfferDurableID. Hiermit wird der Typ des Azure-Angebots angegeben, für den der Kunde bezahlt (Nutzungsbasierte Bezahlung, ältere 6- und 12-monatige Tarife mit verbindlicher Zusage bzw. Vertrag, MSDN-Angebote, MPN-Angebote, Werbeangebote usw.). Die OfferDurableID finden Sie im [Azure-Nutzungs- und Abrechnungsportal](https://account.windowsazure.com/Subscriptions) unter der „Angebots-ID“ für das jeweilige Abonnement.
+Die RateCard-API erfordert mehrere Eingabeparameter – z. B. Regionsinformationen, Währung und Gebietsschema –, aber der wichtigste Parameter ist OfferDurableID. Hiermit wird der Typ des Azure-Angebots angegeben, für den der Kunde bezahlt (Nutzungsbasierte Bezahlung, ältere 6- und 12-monatige Tarife mit verbindlicher Zusage bzw. Vertrag, MSDN-Angebote, MPN-Angebote, Werbeangebote usw.). Die OfferDurableID finden Sie im [Azure-Nutzungs- und Abrechnungsportal](https://account.windowsazure.com/Subscriptions) unter der „Angebots-ID“ für das jeweilige Abonnement.
 
 Bei der Registrierung für [Cloudyn für Azure](https://www.cloudyn.com/microsoft-azure/)-Diensten können Kunden ihren OfferDurableID-Code hinzufügen. Hiermit kann Cloudyn ihre relevanten Preisinformationen über die RateCard-API abrufen. Informationen zu den verschiedenen Angebotstypen finden Sie auf der Seite [Microsoft Azure-Angebotsdetails](https://azure.microsoft.com/support/legal/offer-details/).
 
@@ -44,11 +45,11 @@ Zu den häufigen Cloudyn-ITFM-Anwendungsfällen, die mit Nutzungs- und RateCard-
 
 ![Kreisdiagramm zur Kostenanalyse][3]
 
-+ **Kostenzuweisung 360:** Ermöglicht Finanz- und IT-Managern Zugang zur tatsächlichen Kostenaufschlüsselung und den Einflussfaktoren und Trends ihrer Cloudbereitstellung. Außerdem können Manager Bereitstellungsausgaben leicht Unternehmenseinheiten, Abteilungen, Regionen usw. zuordnen, völlig neue Einblicke in Cloudkosten erlangen und Chargebacks und Showbacks für das Unternehmen realisieren. Die Azure-Nutzungs- und -RateCard-APIs dienen als Eingabe in das Kostenzuordnungsmodul von Cloudyn. Hiermit werden die APIs vervollständigt, indem Methoden und Geschäftslogik zum Zuordnen von nicht markierten oder nicht markierbaren Ressourcen definiert werden.
++ **Kostenzuweisung 360:** Ermöglicht Finanz- und IT-Managern Zugang zur tatsächlichen Kostenaufschlüsselung und den Einflussfaktoren und Trends ihrer Cloudbereitstellung. Außerdem können Manager Bereitstellungsausgaben leicht Unternehmenseinheiten, Abteilungen, Regionen usw. zuordnen, völlig neue Einblicke in Cloudkosten erlangen und Chargebacks und Showbacks für das Unternehmen realisieren. Die Azure-Nutzungs- und -RateCard-APIs dienen als Eingabe in das Kostenzuordnungsmodul von Cloudyn. Hiermit werden die APIs vervollständigt, indem Methoden und Geschäftslogik zum Zuordnen von nicht markierten oder nicht markierbaren Ressourcen definiert werden.
 
-![Diagramm „Kostenzuteilung 360“][4]
+![Diagramm „Kostenzuteilung 360“][4]
 
-+ **Kostengünstige Größenanpassung:** Hierbei werden Empfehlungen zur richtigen Größenanpassung für virtuelle Computer mit zu geringer Auslastung bereitgestellt, um die Ausgaben der Kunden für zu groß ausgelegte oder in zu großer Zahl bereitgestellte Computer zu reduzieren. Hierfür werden die CPU- und RAM-Metriken (mit der Performance-API), die Laufzeitstunden (mit der Nutzungs-API) und die Kosten (mit der RateCard-API) von virtuellen Computern untersucht. Anschließend stellt Cloudyn Empfehlungen zur richtigen Größenanpassung basierend auf CPU- oder RAM-Ressourcen mit zu geringer Auslastung bereit (Performance) und berechnet das geschätzte Einsparpotenzial, indem der Preisunterschied (RateCard) für die virtuellen Computer mit der tatsächlichen Auslastung (Nutzung) des nicht ausgelasteten Computers multipliziert wird. 
++ **Kostengünstige Größenanpassung:** Hierbei werden Empfehlungen zur richtigen Größenanpassung für virtuelle Computer mit zu geringer Auslastung bereitgestellt, um die Ausgaben der Kunden für zu groß ausgelegte oder in zu großer Zahl bereitgestellte Computer zu reduzieren. Hierfür werden die CPU- und RAM-Metriken (mit der Performance-API), die Laufzeitstunden (mit der Nutzungs-API) und die Kosten (mit der RateCard-API) von virtuellen Computern untersucht. Anschließend stellt Cloudyn Empfehlungen zur richtigen Größenanpassung basierend auf CPU- oder RAM-Ressourcen mit zu geringer Auslastung bereit (Performance) und berechnet das geschätzte Einsparpotenzial, indem der Preisunterschied (RateCard) für die virtuellen Computer mit der tatsächlichen Auslastung (Nutzung) des nicht ausgelasteten Computers multipliziert wird.
 
 ![Kostengünstige Größenanpassung][5]
 
@@ -72,7 +73,7 @@ In diesem kurzen Video wird gezeigt, wie Azure-Kunden Cloudyn für Azure und die
 ## Nächste Schritte
 
 + Bei einem kostenlosen Test von [Cloudyn für Azure](https://www.cloudyn.com/microsoft-azure/) können Sie ausprobieren, wie Sie mit der angepassten Berichterstellung und den Analysefunktionen für Ihre Microsoft Azure-Cloudbereitstellung Kostentransparenz schaffen können.
-+ Eine Übersicht über die Azure-APIs zur Ressourcennutzung und Gebührenkarte (Resource Usage und RateCard) finden Sie unter [Gewinnen von Einblicken in den Ressourcenverbrauch unter Microsoft Azure](billing-usage-rate-card-overview.md). 
++ Eine Übersicht über die Azure-APIs zur Ressourcennutzung und Gebührenkarte (Resource Usage und RateCard) finden Sie unter [Gewinnen von Einblicken in den Ressourcenverbrauch unter Microsoft Azure](billing-usage-rate-card-overview.md).
 + Ausführlichere Informationen zu beiden APIs finden Sie unter [Azure-Abrechnungs-REST-API – Referenz](https://msdn.microsoft.com/library/azure/1ea5b323-54bb-423d-916f-190de96c6a3c). Sie sind Teil der APIs, die vom Azure-Ressourcen-Manager bereitgestellt werden.
 + Wenn Sie sich weiter mit Beispielcode beschäftigen möchten, sehen Sie sich die Codebeispiele für die Microsoft Azure-Abrechnungs-API unter [Azure-Codebeispiele](https://azure.microsoft.com/documentation/samples/?term=billing) an.
 
@@ -90,4 +91,4 @@ In diesem kurzen Video wird gezeigt, wie Azure-Kunden Cloudyn für Azure und die
 [6]: ./media/billing-usage-rate-card-partner-solution-cloudyn/Cloudyn-Performance-Reports.png
 [7]: ./media/billing-usage-rate-card-partner-solution-cloudyn/Cloudyn-Category-Manager.png
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0803_2016-->

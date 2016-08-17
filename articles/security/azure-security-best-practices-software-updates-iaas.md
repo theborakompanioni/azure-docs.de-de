@@ -13,18 +13,22 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/18/2016"
+   ms.date="08/02/2016"
    ms.author="yurid"/>
 
-#Best Practices für Softwareupdates in Microsoft Azure IaaS
+# Best Practices für Softwareupdates in Microsoft Azure IaaS
 
-Bevor wir hier näher auf die bewährten Methoden für eine Azure [IaaS](https://azure.microsoft.com/overview/what-is-iaas/)-Umgebung eingehen, soll zunächst erläutert werden, welche Szenarien für die Verwaltung von Softwareupdates es gibt. Unterstützung hierbei bietet das nachstehende Diagramm:
+Bevor wir näher auf die bewährten Methoden für eine Azure [IaaS](https://azure.microsoft.com/overview/what-is-iaas/)-Umgebung eingehen, soll zunächst erläutert werden, welche Szenarien für die Verwaltung von Softwareupdates und welche Zuständigkeiten es gibt. Das folgende Diagramm veranschaulicht diese Zusammenhänge:
 
-![Cloudmodelle und Verantwortlichkeiten](./media/azure-security-best-practices-software-updates-iaas/sec-cloudstack.png)
+![Cloudmodelle und Verantwortlichkeiten](./media/azure-security-best-practices-software-updates-iaas/sec-cloudstack-new.png)
 
-Im traditionellen Datencentermodell ist die gesamte Infrastruktur lokal aufgebaut, und die Verantwortung für die Verwaltung von Updates für Betriebssysteme, Anwendungen, Netzwerkgeräte (Router, Switches usw.) und Hardware (Firmware) liegt vollständig bei Ihnen. In einem IaaS-Szenario müssen Sie weiterhin die Updates für Betriebssysteme und Anwendungen verwalten. Die gesamte zugrunde liegende Infrastruktur für Betriebssysteme und Anwendungen jedoch wird von Microsoft verwaltet. In allen Modellen ist der Kunde weiterhin der Besitzer seiner Daten und verantwortlich für deren Schutz auf Endpunktebene.
+In der linken Spalte finden Sie sieben Zuständigkeitsbereiche (diese werden in den folgenden Abschnitten näher definiert), die Organisationen berücksichtigen sollten. All diese Bereiche tragen zur Sicherheit und zum Datenschutz in einer Computerumgebung bei.
+ 
+Datenklassifizierung und -verantwortlichkeit sowie Schutz von Client und Endpunkt fallen ausschließlich in den Zuständigkeitsbereich des Kunden. In PaaS- und SaaS-Modellen ist der Clouddienstanbieter für die physischen Komponenten, die Hosts und das Netzwerk verantwortlich.
 
-In einem PaaS-Szenario haben Sie sogar noch weniger Verantwortung für Softwareupdates, da die Updateverwaltung für das Betriebssystem in der Verantwortung von Microsoft liegt. In einem IaaS-Szenario liegt die Verantwortung für Softwareupdates für den gesamten Stack bei Microsoft.
+Die verbleibenden Zuständigkeiten werden zwischen Kunde und Clouddienstanbieter aufgeteilt. Einige Zuständigkeiten erfordern eine Zusammenarbeit zwischen Clouddienstanbieter und Kunde, darunter die Überwachung ihrer Domänen. Betrachten wir beispielsweise die Identitäts- und Zugriffsverwaltung bei Verwendung von Azure Active Directory-Diensten: Während die Konfiguration von Diensten wie der Multi-Factor Authentication durch den Kunden erfolgt, ist Microsoft Azure dafür verantwortlich, die effektive Funktionalität zu gewährleisten.
+
+> [AZURE.NOTE] Weitere Informationen zur gemeinsamen Zuständigkeit in der Cloud finden Sie unter [Shared Responsibilities for Cloud Computing](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91/file/153019/1/Shared%20responsibilities%20for%20cloud%20computing.pdf) (Gemeinsame Zuständigkeiten für Cloud Computing).
 
 Dieselben Prinzipien gelten in einem Hybridszenario, bei der Ihr Unternehmen Azure IaaS-VMs verwendet, die mit lokalen Ressourcen kommunizieren (siehe nachstehendes Diagramm).
 
@@ -118,4 +122,4 @@ Zusätzlich zu den allgemeinen Überlegungen, die in diesem Artikel vorgestellt 
 
 Verwenden Sie die in diesem Artikel beschriebenen Richtlinien, um die optimalen Optionen für Softwareupdates für virtuelle Computer in Azure IaaS zu ermitteln. Es gibt viele Ähnlichkeiten zwischen den Best Practices für Softwareupdates in einem traditionellen Datencenter und in Azure IaaS. Deshalb wird empfohlen, dass Sie Azure-VMs in Ihre aktuellen Richtlinien für Softwareupdates einbeziehen und die relevanten Best Practices aus diesem Artikel in Ihren allgemeinen Softwareupdateprozess einbinden.
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

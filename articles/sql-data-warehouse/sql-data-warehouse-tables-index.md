@@ -86,11 +86,14 @@ CREATE TABLE myTable
 WITH ( CLUSTERED INDEX (id) );
 ```
 
-Geben Sie zum Hinzufügen eines nicht gruppierten Index zu einer Tabelle in der WITH-Klausel einfach CLUSTERED INDEX an:
+Um einer Tabelle einen nicht gruppierten Index hinzuzufügen, verwenden Sie einfach die folgende Syntax:
 
 ```SQL
 CREATE INDEX zipCodeIndex ON t1 (zipCode);
 ```
+
+> [AZURE.NOTE] Bei Verwendung von CREATE INDEX wird standardmäßig ein nicht gruppierter Index erstellt. Darüber hinaus ist ein nicht gruppierter Index nur in einer Zeilenspeichertabelle (HEAP oder CLUSTERED INDEX) zulässig. Nicht gruppierte Indizes zusätzlich zu einem CLUSTERED COLUMNSTORE INDEX sind zurzeit nicht zulässig.
+
 
 ## Optimieren von gruppierten Columnstore-Indizes
 
@@ -209,7 +212,7 @@ Als Batch ausgeführte Aktualisierungs- und Einfügevorgänge, die den Massensch
 
 Kleine Ladevorgänge in SQL Data Warehouse werden manchmal auch als langsame Ladevorgänge bezeichnet. Sie stellen in der Regel einen annähernd konstanten Datenstrom dar, der vom System erfasst wird. Dieser Datenstrom ist zwar fast kontinuierlich, die Anzahl der Zeilen ist jedoch nicht besonders groß. In den meisten Fällen liegt die Datenmenge deutlich unter dem Schwellenwert, der für ein direktes Laden in das Columnstore-Format erforderlich ist.
 
-In diesen Situationen ist es oft besser, die Daten zunächst in den Azure-Blobspeicher zu laden, damit sie sich vor dem Laden ansammeln können. Diese Technik wird auch als *Verarbeitung von Mikro-Batches* bezeichnet.
+In diesen Situationen ist es oft besser, die Daten zunächst in den Azure-Blobspeicher zu laden, damit sie sich vor dem Laden ansammeln können. Diese Technik wird auch als *Verarbeitung von Mikrobatches* bezeichnet.
 
 ### Zu viele Partitionen
 
@@ -232,7 +235,7 @@ EXEC sp_addrolemember 'xlargerc', 'LoadUser'
 ### Schritt 2: Neuerstellen von gruppierten Columnstore-Indizes mit einem Benutzer mit einer höheren Ressourcenklasse
 Melden Sie sich als der Benutzer aus Schritt 1 an (z.B. LoadUser), für den jetzt eine höhere Ressourcenklasse verwendet wird, und führen Sie die ALTER INDEX-Anweisungen aus. Stellen Sie sicher, dass dieser Benutzer über die ALTER-Berechtigung für die Tabellen verfügt, in denen der Index neu erstellt wird. Diese Beispiele zeigen, wie Sie den gesamten Columnstore-Index bzw. eine einzelne Partition neu erstellen. Bei großen Tabellen ist es praktischer, die Indizes Partition für Partition neu zu erstellen.
 
-Anstatt den Index neu zu erstellen, können Sie alternativ dazu die Tabelle per [CTAS][] in eine neue Tabelle kopieren. Welche Methode ist am besten geeignet? Für große Datenmengen ist [CTAS][] in der Regel schneller als [ALTER INDEX][]. Für kleinere Datenmengen ist [ALTER INDEX][] einfacher zu verwenden, und das Austauschen der Tabelle ist nicht erforderlich. Weitere Details zur Neuerstellung von Indizes per CTAS finden Sie unten im Abschnitt **Neuerstellen von Indizes per CTAS und Partitionswechsel**.
+Anstatt den Index neu zu erstellen, können Sie alternativ dazu die Tabelle per [CTAS][] in eine neue Tabelle kopieren. Welche Methode ist am besten geeignet? Für große Datenmengen ist [CTAS][] in der Regel schneller als [ALTER INDEX][]. Für kleinere Datenmengen ist [ALTER INDEX][] einfacher zu verwenden, und das Auslagern der Tabelle ist nicht erforderlich. Weitere Details zur Neuerstellung von Indizes per CTAS finden Sie unten im Abschnitt **Neuerstellen von Indizes per CTAS und Partitionswechsel**.
 
 ```sql
 -- Rebuild the entire clustered index
@@ -254,7 +257,7 @@ ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_CO
 ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_COMPRESSION = COLUMNSTORE)
 ```
 
-Die Neuerstellung eines Index in SQL Data Warehouse ist ein Offlinevorgang. Weitere Informationen zur Neuerstellung von Indizes finden Sie im Abschnitt zu ALTER INDEX REBUILD in [Columnstore Indexes Defragmentation][] (Columnstore-Indexdefragmentierung) und im Syntaxthema [ALTER INDEX][].
+Die Neuerstellung eines Index in SQL Data Warehouse ist ein Offlinevorgang. Weitere Informationen zur Neuerstellung von Indizes finden Sie im Abschnitt zu ALTER INDEX REBUILD in [Columnstore Indexes Defragmentation][] \(Columnstore-Indexdefragmentierung) und im Syntaxthema [ALTER INDEX][].
  
 ### Schritt 3: Sicherstellen, dass sich die Qualität gruppierter Columnstore-Segmente verbessert hat
 Führen Sie die Abfrage, mit der die Tabelle mit schlechter Segmentqualität identifiziert wurde, erneut aus, und vergewissern Sie sich, dass sich die Segmentqualität verbessert hat. Falls sich die Segmentqualität nicht verbessert hat, kann dies daran liegen, dass die Zeilen in der Tabelle besonders breit sind. Erwägen Sie, beim Neuerstellen der Indizes eine höhere Ressourcenklasse oder DWU-Anzahl zu verwenden. Wenn mehr Arbeitsspeicher benötigt wird,
@@ -302,11 +305,11 @@ ALTER TABLE [dbo].[FactInternetSales] SWITCH PARTITION 2 TO  [dbo].[FactInternet
 ALTER TABLE [dbo].[FactInternetSales_20000101_20010101] SWITCH PARTITION 2 TO  [dbo].[FactInternetSales] PARTITION 2;
 ```
 
-Weitere Informationen zum Neuerstellen von Partitionen mit `CTAS` finden Sie im Artikel [Partitioning tables in SQL Data Warehouse][] (Partitionieren von Tabellen in SQL Data Warehouse).
+Weitere Informationen zum Neuerstellen von Partitionen mit `CTAS` finden Sie im Artikel [Partitionieren][].
 
 ## Nächste Schritte
 
-Weitere Informationen finden Sie in den Artikeln [Übersicht über Tabellen][Overview], [Tabellendatentypen][Data Types], [Verteilen einer Tabelle][Distribute], [Partitionieren einer Tabelle][Partition], [Managing statistics on tables in SQL Data Warehouse][Statistics] (Verwalten von Statistiken für Tabellen in SQL Data Warehouse) und [Temporäre Tabellen][Temporary]. Weitere Informationen zu bewährten Methoden finden Sie unter [Bewährte Methoden für SQL Data Warehouse][].
+Weitere Informationen finden Sie in den Artikeln [Übersicht über Tabellen][Overview], [Tabellendatentypen][Data Types], [Verteilen einer Tabelle][Distribute], [Partitionieren einer Tabelle][Partition], [Verwalten von Tabellenstatistiken][Statistics] und [Temporäre Tabellen][Temporary]. Weitere Informationen zu bewährten Methoden finden Sie unter [Bewährte Methoden für SQL Data Warehouse][].
 
 <!--Image references-->
 
@@ -319,7 +322,7 @@ Weitere Informationen finden Sie in den Artikeln [Übersicht über Tabellen][Ove
 [Verteilen]: ./sql-data-warehouse-tables-distribute.md
 [Index]: ./sql-data-warehouse-tables-index.md
 [Partition]: ./sql-data-warehouse-tables-partition.md
-[Partitioning tables in SQL Data Warehouse]: ./sql-data-warehouse-tables-partition.md
+[Partitionieren]: ./sql-data-warehouse-tables-partition.md
 [Statistics]: ./sql-data-warehouse-tables-statistics.md
 [Statistiken]: ./sql-data-warehouse-tables-statistics.md
 [Temporary]: ./sql-data-warehouse-tables-temporary.md
@@ -338,4 +341,4 @@ Weitere Informationen finden Sie in den Artikeln [Übersicht über Tabellen][Ove
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0803_2016-->
