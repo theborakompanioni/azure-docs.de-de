@@ -22,8 +22,8 @@
 
 In dieser exemplarischen Vorgehensweise wird HDInsight Spark für das Durchsuchen von Daten und Trainieren von Modellen für die binäre Klassifizierung und Regression verwendet. Hierbei werden die Kreuzvalidierung und Hyperparameteroptimierung für eine Stichprobe des Datasets der NYC-Taxifahrten und Fahrpreise von 2013 genutzt. Sie werden schrittweise unter Verwendung eines HDInsight Spark-Clusters für die Verarbeitung und von Azure-Blobs zum Speichern der Daten und Modelle durch den gesamten [Data Science-Prozess](http://aka.ms/datascienceprocess) geführt. In diesem Prozess werden Daten aus einem Azure Storage-Blob untersucht sowie visualisiert und anschließend für das Erstellen von Vorhersagemodellen vorbereitet. Python wurde verwendet, um die Lösung zu codieren und die entsprechenden Diagramme anzuzeigen. Diese Modelle werden mithilfe des Spark MLlib-Toolkits erstellt, um Aufgaben zur binären Klassifizierung und Regressionsmodellierung ausführen.
 
-- Die Aufgabe zur **binären Klassifizierung** besteht darin, vorherzusagen, ob ein Trinkgeld für eine Fahrt bezahlt wird. 
-- Die Aufgabe zur **Regression** besteht darin, die Höhe des Trinkgelds basierend auf anderen Trinkgeldfunktionen vorherzusagen. 
+- Die Aufgabe zur **binären Klassifizierung** besteht darin, vorherzusagen, ob ein Trinkgeld für eine Fahrt bezahlt wird.
+- Die Aufgabe zur **Regression** besteht darin, die Höhe des Trinkgelds basierend auf anderen Trinkgeldfunktionen vorherzusagen.
 
 Die Modellierungsschritte enthalten auch Code zum Trainieren, Evaluieren und Speichern jedes Modelltyps. Das Thema überschneidet sich teilweise mit [Data exploration and modeling with Spark](machine-learning-data-science-spark-data-exploration-modeling.md) (Durchsuchen von Daten und Modellierung mit Spark), umfasst jedoch auch die Kreuzvalidierung in Verbindung mit Hyperparameter-Sweeping zum Trainieren optimal präziser Klassifizierungs- und Regressionsmodelle verwendet.
 
@@ -35,7 +35,7 @@ Eine hier häufig verwendete Methode für die Hyperparameteroptimierung besteht 
 
 Die Modelle, die wir verwenden, umfassen logistische und lineare Regression, zufällige Gesamtstrukturen und Gradient-Boosted-Strukturen:
 
-- [Lineare Regression mit SGD](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.regression.LinearRegressionWithSGD) ist ein lineares Regressionsmodell, das eine SGD-Methode (Stochastic Gradient Descent, stochastisches Gradientenverfahren) zur Optimierung und Featureskalierung verwendet, um die gezahlten Trinkgeldbeträge vorherzusagen. 
+- [Lineare Regression mit SGD](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.regression.LinearRegressionWithSGD) ist ein lineares Regressionsmodell, das eine SGD-Methode (Stochastic Gradient Descent, stochastisches Gradientenverfahren) zur Optimierung und Featureskalierung verwendet, um die gezahlten Trinkgeldbeträge vorherzusagen.
 - [Logistische Regression mit LBFGS](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.classification.LogisticRegressionWithLBFGS) oder „Logit“-Regression ist ein Regressionsmodell, das verwendet werden kann, wenn die abhängige Variable zur Datenklassifizierung kategorisch ist. LBFGS ist ein quasi-Newtonscher Optimierungsalgorithmus, der sich dem Broyden-Fletcher-Goldfarb-Shanno-Algorithmus (BFGS) unter Verwendung einer begrenzten Menge an Arbeitsspeicher annähert und häufig im Machine Learning verwendet wird.
 - [Zufällige Gesamtstrukturen](http://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests) sind Ensembles von Entscheidungsstrukturen. In ihnen sind viele Entscheidungsstrukturen kombiniert, um das Risiko der Überanpassung zu verringern. Zufällige Gesamtstrukturen werden für die Regression und Klassifizierung verwendet und können kategorische Features behandeln, auf die Mehrklassenklassifizierung ausgedehnt werden, erfordern keine Featureskalierung und können Nichtlinearitäten und Featureinteraktionen erfassen. Zufällige Gesamtstrukturen zählen zu den erfolgreichsten Machine Learning-Modelle für Klassifizierung und Regression.
 - [Gradient-Boosted-Strukturen](http://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBTs) sind Ensembles von Entscheidungsstrukturen. GBTs trainieren Entscheidungsstrukturen iterativ, um einen Funktionsverlust zu minimieren. GBTs werden für die Regression und Klassifizierung verwendet und können kategorische Features behandeln, erfordern keine Featureskalierung und können Nichtlinearitäten und Featureinteraktionen erfassen. Sie können auch in einer Mehrklassenklassifizierung verwendet werden.
@@ -108,16 +108,16 @@ Importieren Sie die erforderlichen Bibliotheken mit dem unten angegebenen Code.
 
 Die PySpark-Kernel, die mit Jupyter Notebooks bereitgestellt werden, verfügen über einen vorab festgelegten Kontext. Sie müssen die Spark- oder Hive-Kontexte also nicht mehr explizit festlegen, um mit der Anwendung, die Sie entwickeln, arbeiten zu können. Diese Kontexte stehen standardmäßig zur Verfügung. Diese Kontexte sind:
 
-- sc – für Spark 
+- sc – für Spark
 - sqlContext – für Hive
 
 Der PySpark-Kernel bietet einige so genannte „Magic-Befehle“, die vordefiniert sind. Dies sind spezielle Befehle, die Sie mit %% aufrufen können. Es gibt zwei Befehle dieser Art, die in den Codebeispielen verwendet werden.
 
 - **%%local** Gibt an, dass der Code in den nachfolgenden Zeilen lokal ausgeführt wird. Der Code muss gültiger Python-Code sein.
-- **%%sql -o <variable name>** Führt eine Hive-Abfrage für sqlContext aus. Wenn der Parameter -o übergeben wird, wird das Ergebnis der Abfrage im %%local-Python-Kontext als Pandas-Dataframe beibehalten.
+- **%%sql -o <Variablenname>** führt eine Hive-Abfrage für den sqlContext aus. Wenn der Parameter -o übergeben wird, wird das Ergebnis der Abfrage im %%local-Python-Kontext als Pandas-Dataframe beibehalten.
  
 
-Weitere Informationen zu den Kerneln für Jupyter Notebooks und dazugehörigen vordefinierten „Magic-Befehle“, die mit %% aufgerufen werden (z.B. %%local), finden Sie unter [Verfügbare Kernels für Jupyter Notebooks mit HDInsight Spark-Linux-Clustern in HDInsight](../hdinsight/hdinsight-apache-spark-jupyter-notebook-kernels.md).
+Weitere Informationen zu den Kernels für Jupyter-Notebooks und den zugehörigen vordefinierten „Magics“, die mit %% aufgerufen werden (z.B. „%%local“), finden Sie unter [Verfügbare Kernels für Jupyter-Notebooks mit HDInsight Spark-Linux-Clustern in HDInsight](../hdinsight/hdinsight-apache-spark-jupyter-notebook-kernels.md).
 
 
 ## Datenerfassung über das öffentliche Blob: 
@@ -204,8 +204,8 @@ Nachdem die Daten in Spark eingegeben wurden, besteht der nächste Schritt im Da
 
 In diesem Code und den nachfolgenden Codeausschnitten werden SQL-Magic-Befehle verwendet, um das Beispiel abzufragen, und lokale Magic-Befehle, um die Daten in einem Diagramm darzustellen.
 
-- **SQL-Magic-Befehl (`%%sql`)** Der HDInsight PySpark-Kernel unterstützt einfache HiveQL-Inlineabfragen für sqlContext. Mit dem Argument (-o VARIABLE\_NAME) wird die Ausgabe der SQL-Abfrage als Pandas-Dataframe auf dem Jupyter-Server beibehalten. Das bedeutet, dass die Daten im lokalen Modus verfügbar sind.
-- Der **Magic-Befehl `%%local`** wird genutzt, um Code lokal auf dem Jupyter-Server auszuführen. Dies ist der Hauptknoten des HDInsight-Clusters. Normalerweise verwenden Sie den Magic-Befehl `%%local` zusammen mit dem Magic-Befehl `%%sql` mit dem Parameter -o. Mit dem Parameter -o wird die Ausgabe der SQL-Abfrage lokal beibehalten. Anschließend löst der Magic-Befehl %%local die nächste Gruppe von Codeausschnitten aus, damit diese lokal für die Ausgabe der lokal gespeicherten SQL-Abfragen ausgeführt werden können.
+- **SQL-Magic (`%%sql`)** Der HDInsight PySpark-Kernel unterstützt einfache HiveQL-Inlineabfragen für den sqlContext. Mit dem Argument (-o VARIABLE\_NAME) wird die Ausgabe der SQL-Abfrage als Pandas-Dataframe auf dem Jupyter-Server beibehalten. Das bedeutet, dass die Daten im lokalen Modus verfügbar sind.
+- Der **Magic-Befehl `%%local`** wird genutzt, um Code lokal auf dem Jupyter-Server auszuführen. Dieser ist der Hauptknoten des HDInsight-Clusters. Normalerweise verwenden Sie den Magic-Befehl `%%local` zusammen mit dem Magic-Befehl `%%sql` mit dem Parameter -o. Mit dem Parameter -o wird die Ausgabe der SQL-Abfrage lokal beibehalten. Anschließend löst der Magic-Befehl %%local die nächste Gruppe von Codeausschnitten aus, damit diese lokal für die Ausgabe der lokal gespeicherten SQL-Abfragen ausgeführt werden können.
 
 Die Ausgabe wird automatisch visualisiert, nachdem Sie den Code ausgeführt haben.
 
@@ -218,7 +218,7 @@ Mit dieser Abfrage werden die Fahrten nach der Fahrgastanzahl abgerufen.
 	SELECT passenger_count, COUNT(*) as trip_counts FROM taxi_train WHERE passenger_count > 0 and passenger_count < 7 GROUP BY passenger_count
 
 
-Mit dem Code wird aus der Ausgabe der Abfrage ein lokaler Dataframe erstellt, und die Daten werden in einem Diagramm dargestellt („geplottet“). Der Magic-Befehl `%%local` erstellt den lokalen Dataframe `sqlResults`, der für das Plotten mit matplotlib verwendet werden kann.
+Mit dem Code wird aus der Ausgabe der Abfrage ein lokaler Dataframe erstellt, und die Daten werden in einem Diagramm dargestellt („geplottet“). Der Magic-Befehl `%%local` erstellt einen lokalen Dataframe `sqlResults`, der für das Plotten mit matplotlib verwendet werden kann.
 
 >[AZURE.NOTE] Dieser PySpark-Magic-Befehl wird in dieser exemplarischen Vorgehensweise mehrfach genutzt. Bei einer großen Datenmenge sollten Sie Stichproben verwenden, um einen Dataframe zu erstellen, der nicht zu groß für den lokalen Arbeitsspeicher ist.
 
@@ -250,7 +250,7 @@ Hier ist der Code zum Plotten der Fahrten nach der Fahrgastanzahl angegeben:
 
 ![Fahrtenhäufigkeit nach Anzahl der Fahrgäste](./media/machine-learning-data-science-spark-advanced-data-exploration-modeling/frequency-of-trips-by-passenger-count.png)
 
-Sie können unter verschiedenen Arten von Visualisierungen wählen (Tabelle, Kreis, Linie, Fläche oder Balken), indem Sie im Notebook die Menüschaltflächen unter **Typ** verwenden. Hier ist das Balkendiagramm dargestellt.
+Sie können zwischen verschiedenen Arten von Visualisierungen auswählen (Tabelle, Kreis, Linie, Fläche oder Balken), indem Sie im Notebook die Menüschaltflächen unter **Typ** verwenden. Hier ist das Balkendiagramm dargestellt.
 
 
 ### Zeichnen eines Histogramms des Trinkgeldbetrags und der Variation des Trinkgeldbetrags nach Anzahl der Fahrgäste und Höhe des Fahrpreises
@@ -354,7 +354,7 @@ Dieser Code zeigt, wie Sie ein neues Feature durch Diskretisieren von Stunden in
 
 Dieser Abschnitt beschreibt das Indizieren oder Codieren von kategorischen Features für die Eingabe in die Modellierungsfunktionen. Die Modellierungs- und Vorhersagefunktionen von MLlib erfordern, dass Features mit kategorischen Eingabedaten vor der Verwendung indiziert oder codiert werden.
 
-Je nach Modell müssen Sie sie auf unterschiedliche Weise indizieren oder codieren. Logistische und lineare Regressionsmodelle erfordern beispielsweise One-Hot-Codierung, wobei z.B. ein Feature mit 3 Kategorien auf 3 Featurespalten erweitert werden kann, wobei jede abhängig von der Kategorie einer Beobachtung 0 oder 1 enthalten kann. MLlib bietet die Funktion [OneHotEncoder](http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) für die One-Hot-Codierung. Dieser Encoder ordnet eine Spalte mit Bezeichnungsindizes einer Spalte mit binären Vektoren mit höchstens einem einzigen Wert zu. Diese Codierung ermöglicht die Anwendung von Algorithmen, die Nummernwertfeatures erwarten, z.B. logistische Regression, auf kategorische Features.
+Je nach Modell müssen Sie sie auf unterschiedliche Weise indizieren oder codieren. Logistische und lineare Regressionsmodelle erfordern beispielsweise One-Hot-Codierung, wobei z.B. ein Feature mit 3 Kategorien auf 3 Featurespalten erweitert werden kann, wobei jede abhängig von der Kategorie einer Beobachtung 0 oder 1 enthalten kann. MLlib bietet die Funktion [OneHotEncoder](http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) zur One-Hot-Codierung. Dieser Encoder ordnet eine Spalte mit Bezeichnungsindizes einer Spalte mit binären Vektoren mit höchstens einem einzigen Wert zu. Diese Codierung ermöglicht die Anwendung von Algorithmen, die Nummernwertfeatures erwarten, z.B. logistische Regression, auf kategorische Features.
 
 Hier ist der Code zum Indizieren und Codieren von kategorischen Features:
 
@@ -503,11 +503,11 @@ Time taken to execute above cell: 0.31 seconds
 
 ### Featureskalierung
 
-Featureskalierung, auch bekannt als Datennormalisierung, stellt sicher, dass Features mit weit verteilten Werten keine übermäßige Gewichtung in der Zielfunktion erhalten. Im Code für die Featureskalierung wird [StandardScaler](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.feature.StandardScaler) zum Skalieren der Features auf Einheitenvarianz verwendet. Er wird von MLlib für die Verwendung bei der linearen Regression mit dem stochastischen Gradientenverfahren (SGD), einem beliebten Algorithmus für das Training einer Vielzahl anderer Machine Learning-Modelle, z. B. normalisierter Regressionen oder Support Vector Machines (SVM), bereitgestellt.
+Featureskalierung, auch bekannt als Datennormalisierung, stellt sicher, dass Features mit weit verteilten Werten keine übermäßige Gewichtung in der Zielfunktion erhalten. Der Code für die Featureskalierung verwendet [StandardScaler](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.feature.StandardScaler) zum Skalieren der Features auf Einheitenvarianz. Er wird von MLlib für die Verwendung bei der linearen Regression mit dem stochastischen Gradientenverfahren (SGD), einem beliebten Algorithmus für das Training einer Vielzahl anderer Machine Learning-Modelle, z. B. normalisierter Regressionen oder Support Vector Machines (SVM), bereitgestellt.
 
 >[AZURE.TIP] Wir haben festgestellt, dass der LinearRegressionWithSGD-Algorithmus für die Featureskalierung zu empfindlich ist.
 
-Im Folgenden finden Sie den Code zum Skalieren von Variablen für die Verwendung mit dem regularisierten linearen SGD-Algorithmus.
+Im Folgenden finden Sie den Code zum Skalieren von Variablen für die Verwendung mit dem normalisierten linearen SGD-Algorithmus.
 
 	# RECORD START TIME
 	timestart = datetime.datetime.now()
@@ -578,7 +578,7 @@ Time taken to execute above cell: 0.13 seconds
 
 Dieser Abschnitt beschreibt die Verwendung von drei Modellen für die Aufgabe der binären Klassifizierung der Vorhersage, ob für eine Taxifahrt ein Trinkgeld bezahlt wird. Die präsentierten Modelle sind:
 
-- Logistische Regression 
+- Logistische Regression
 - Zufällige Gesamtstruktur
 - Gradient-Boosted-Strukturen
 
@@ -590,8 +590,8 @@ Jeder Codeabschnitt zur Modellerstellung ist in Schritte unterteilt:
 
 Die Kreuzvalidierung mit Parameter-Sweeping kann auf zweierlei Weise ausgeführt werden:
 
-1. Mithilfe von **allgemeinem** benutzerdefiniertem Code, der auf jeden Algorithmus in MLlib und auf alle Parametersätze in einem Algorithmus angewendet werden kann. 
-1. Mithilfe der **PySpark CrossValidator-Pipelinefunktion**. CrossValidator ist zwar praktisch, weist erfahrungsgemäß aber auch einige Beschränkungen für Spark 1.5.0 auf: 
+1. Mithilfe von **allgemeinem** benutzerdefiniertem Code, der auf jeden Algorithmus in MLlib und auf alle Parametersätze in einem Algorithmus angewendet werden kann.
+1. Mithilfe der **PySpark CrossValidator-Pipelinefunktion**. CrossValidator ist zwar praktisch, weist erfahrungsgemäß aber auch einige Beschränkungen für Spark 1.5.0 auf:
 
 	- Pipelinemodelle können für die zukünftige Verwendung nicht gespeichert/beibehalten werden.
 	- Kann nicht für jeden Parameter in einem Modell verwendet werden.
@@ -600,7 +600,7 @@ Die Kreuzvalidierung mit Parameter-Sweeping kann auf zweierlei Weise ausgeführt
 
 ### Allgemeine Kreuzvalidierung und Hyperparameter-Sweeping mit dem logistischen Regressionsalgorithmus für die binäre Klassifizierung
 
-Der Code in diesem Abschnitt zeigt, wie ein logistisches Regressionsmodell, das im NYC-Taxifahrten- und Fahrpreisedataset vorhersagt, ob ein Trinkgeld für eine Fahrt gezahlt wird, mit [LBFGS](https://en.wikipedia.org/wiki/Broyden%E2%80%93Fletcher%E2%80%93Goldfarb%E2%80%93Shanno_algorithm) trainiert, evaluiert und gespeichert werden kann. Das Modell wird mithilfe der Kreuzvalidierung und des Hyperparameter-Sweeping trainiert. Dies wurde mit benutzerdefiniertem Code implementiert, der auf alle Lernalgorithmen in MLlib angewandt werden kann.
+Der Code in diesem Abschnitt zeigt, wie ein logistisches Regressionsmodell, das im Dataset der Taxifahrten und Fahrpreise in NYC vorhersagt, ob ein Trinkgeld für eine Fahrt gezahlt wird, mit [LBFGS](https://en.wikipedia.org/wiki/Broyden%E2%80%93Fletcher%E2%80%93Goldfarb%E2%80%93Shanno_algorithm) trainiert, evaluiert und gespeichert werden kann. Das Modell wird mithilfe der Kreuzvalidierung und des Hyperparameter-Sweeping trainiert. Dies wurde mit benutzerdefiniertem Code implementiert, der auf alle Lernalgorithmen in MLlib angewandt werden kann.
 
 >[AZURE.NOTE] Die Ausführung dieser benutzerdefinierten Kreuzvalidierung kann einige Minuten in Anspruch nehmen.
 
@@ -830,7 +830,7 @@ Time taken to execute above cell: 34.57 seconds
 
 ### Verwenden der CrossValidator-Pipeline-Funktion von MLlib mit dem logistischen Regressionsmodell (elastische Regression)
 
-Der Code in diesem Abschnitt zeigt, wie ein logistisches Regressionsmodell, das im NYC-Taxifahrten- und Fahrpreisedataset vorhersagt, ob ein Trinkgeld für eine Fahrt gezahlt wird, mit [LBFGS](https://en.wikipedia.org/wiki/Broyden%E2%80%93Fletcher%E2%80%93Goldfarb%E2%80%93Shanno_algorithm) trainiert, evaluiert und gespeichert werden kann. Das Modell wird mithilfe der Kreuzvalidierung und des Hyperparameter-Sweeping trainiert. Dies wurde mit der MLlib CrossValidator-Pipeline-Funktion für die Kreuzvalidierung mit Hyperparameter-Sweeping implementiert.
+Der Code in diesem Abschnitt zeigt, wie ein logistisches Regressionsmodell, das im Dataset der Taxifahrten und Fahrpreise in NYC vorhersagt, ob ein Trinkgeld für eine Fahrt gezahlt wird, mit [LBFGS](https://en.wikipedia.org/wiki/Broyden%E2%80%93Fletcher%E2%80%93Goldfarb%E2%80%93Shanno_algorithm) trainiert, evaluiert und gespeichert werden kann. Das Modell wird mithilfe der Kreuzvalidierung und des Hyperparameter-Sweeping trainiert. Dies wurde mit der MLlib CrossValidator-Pipeline-Funktion für die Kreuzvalidierung mit Hyperparameter-Sweeping implementiert.
 
 
 >[AZURE.NOTE] Die Ausführung dieses MLlib-Kreuzvalidierungscode kann einige Minuten in Anspruch nehmen.
@@ -1037,7 +1037,7 @@ Diese Modelle wurden in der Einführung beschrieben. Jeder Codeabschnitt zur Mod
 
 1. **Modelltrainingsdaten** mit einem Parametersatz
 2. **Modellevaluierung** an einem Testdataset mit Metriken
-3. **Speichern des Modells** im Blob für die zukünftige Nutzung   
+3. **Speichern des Modells** im Blob für die zukünftige Nutzung
 
 
 >AZURE-HINWEIS: Die Kreuzvalidierung wird für die drei Regressionsmodelle in diesem Abschnitt nicht verwendet, da dies für die logistischen Regressionsmodelle ausführlich gezeigt wurde. Ein Beispiel dazu, wie die Kreuzvalidierung mit Elastic Net für die lineare Regression verwendet wird, finden Sie im Anhang zu diesem Thema.
@@ -1164,7 +1164,7 @@ Time taken to execute above cell: 25.98 seconds
 
 Der Code in diesem Abschnitt zeigt, wie ein Gradient-Boosted-Strukturmodell, das den Trinkgeldbetrag für die NYC-Taxifahrtendaten vorhersagt, trainiert, evaluiert und gespeichert werden kann.
 
-**** Trainieren und bewerten**
+**Trainieren und bewerten**
 
 	#PREDICT TIP AMOUNTS USING GRADIENT BOOSTING TREES
 
@@ -1464,7 +1464,7 @@ Löschen Sie mit `unpersist()` zwischengespeicherte Objekte aus dem Arbeitsspeic
 PythonRDD[122] at RDD at PythonRDD.scala:43
 
 
-**Drucken Sie den Pfad zu den Modelldateien für die Verwendung im Consumption Notebook.** Um für ein unabhängiges Dataset den Verbrauch und die Bewertung zu erhalten, müssen Sie diese Dateinamen kopieren und in das „Consumption Notebook“ einfügen.
+**Drucken Sie den Pfad zu den Modelldateien zur Verwendung im „Consumption Notebook“.** Um Nutzung und Bewertung für ein unabhängiges Dataset zu erhalten, müssen Sie diese Dateinamen kopieren und in das „Consumption Notebook“ einfügen.
 
 
 	# PRINT MODEL FILE LOCATIONS FOR CONSUMPTION
@@ -1478,22 +1478,22 @@ PythonRDD[122] at RDD at PythonRDD.scala:43
 
 **AUSGABE**
 
-logisticRegFileLoc = modelDir + "LogisticRegressionWithLBFGS\_2016-05-0316\_47\_30.096528"
+logisticRegFileLoc = modelDir + "LogisticRegressionWithLBFGS_2016-05-0316_47\_30.096528"
 
-linearRegFileLoc = modelDir + "LinearRegressionWithSGD\_2016-05-0316\_51\_28.433670"
+linearRegFileLoc = modelDir + "LinearRegressionWithSGD_2016-05-0316_51\_28.433670"
 
-randomForestClassificationFileLoc = modelDir + "RandomForestClassification\_2016-05-0316\_50\_17.454440"
+randomForestClassificationFileLoc = modelDir + "RandomForestClassification_2016-05-0316_50\_17.454440"
 
-randomForestRegFileLoc = modelDir + "RandomForestRegression\_2016-05-0316\_51\_57.331730"
+randomForestRegFileLoc = modelDir + "RandomForestRegression_2016-05-0316_51\_57.331730"
 
-BoostedTreeClassificationFileLoc = modelDir + "GradientBoostingTreeClassification\_2016-05-0316\_50\_40.138809"
+BoostedTreeClassificationFileLoc = modelDir + "GradientBoostingTreeClassification_2016-05-0316_50\_40.138809"
 
-BoostedTreeRegressionFileLoc = modelDir + "GradientBoostingTreeRegression\_2016-05-0316\_52\_18.827237"
+BoostedTreeRegressionFileLoc = modelDir + "GradientBoostingTreeRegression_2016-05-0316_52\_18.827237"
 
 ## Wie geht es weiter?
 
 Da Sie nun Regressions- und Klassifizierungsmodelle mit der Spark MlLib erstellt haben, können Sie jetzt lernen, wie diese Modelle bewertet und evaluiert werden.
 
-**Modellnutzung**: Informationen zum Bewerten und Evaluieren der in diesem Thema erstellten Klassifizierungs- und Regressionsmodelle finden Sie unter [Bewerten und Evaluieren von Machine Learning-Modellen, die mit Spark erstellt wurden](machine-learning-data-science-spark-model-consumption.md).
+**Modellnutzung:** Informationen zum Bewerten und Evaluieren der in diesem Thema erstellten Klassifizierungs- und Regressionsmodelle finden Sie unter [Bewerten von Machine Learning-Modellen, die mit Spark erstellt wurden](machine-learning-data-science-spark-model-consumption.md).
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0803_2016-->

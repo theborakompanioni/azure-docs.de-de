@@ -1,14 +1,14 @@
 <properties
-	pageTitle="Konfigurieren von Azure-Warnungen zum Senden an andere Systeme"
+	pageTitle="Konfigurieren von Azure-Warnungen zum Senden an andere Systeme | Microsoft Azure"
 	description="Umleiten von Azure-Warnungen an andere Azure-fremde Systeme."
 	authors="kamathashwin"
 	manager=""
 	editor=""
-	services="azure-portal"
-	documentationCenter="na"/>
+	services="monitoring"
+	documentationCenter="monitoring"/>
 
 <tags
-	ms.service="azure-portal"
+	ms.service="monitoring"
 	ms.workload="na"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
@@ -33,8 +33,8 @@ Im Bildschirm "Benachrichtigungen erstellen" oder "Benachrichtigungen bearbeiten
 
 Zwei Authentifizierungstypen sind möglich:
 
-1. **Tokenbasierte Authentifizierung**: In diesem Fall wird der Webhook-URI mit einer Token-ID gespeichert, z. B. **https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue*.
-2.	**Standardauthentifizierung** mit Benutzer-ID und Kennwort: In diesem Fall wird der Webhook-URI als **https://userid:password@mysamplealert/webcallback?someparamater=somevalue&foo=bar* gespeichert.
+1. **Tokenbasierte Authentifizierung**: In diesem Fall wird der Webhook-URI mit einer Token-ID gespeichert, z. B. *https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue*.
+2.	**Standardauthentifizierung** mit Benutzer-ID und Kennwort: In diesem Fall wird der Webhook-URI als *https://userid:password@mysamplealert/webcallback?someparamater=somevalue&foo=bar* gespeichert.
 
 ## Nutzlast und Schema
 
@@ -100,7 +100,7 @@ Der POST-Vorgang enthält die folgende JSON-Nutzlast und das folgende JSON-Schem
 |Ressourcen-ID |J | |URI der Ressourcen-ID, der die Ressource eindeutig identifiziert|
 |resourceRegion |J | |Region/Speicherort der betroffenen Ressource|
 |portalLink |J | |Direkter Link vom Azure-Portal zur Zusammenfassungsseite der Ressource|
-|Eigenschaften |N |Optional |Eine Gruppe von <Key  Value> Paaren (d. h. Wörterbuch<String  String>), die Details zum Ereignis enthält. Das Feld "properties" ist optional. In einer angepassten Benutzeroberfläche oder einem auf Logik-Apps basierenden Workflow können Benutzer Schlüssel und Werte eingeben, die über die Nutzlast übergeben werden können. Alternativ können benutzerdefinierte Eigenschaften direkt über den Webhook-URI an den Webhook zurückgegeben werden (als Abfrageparameter).|
+|Eigenschaften |N |Optional |Hierbei handelt es sich um eine Reihe von Schlüssel-Wert-Paaren (d.h. Wörterbuch<Zeichenfolge, Zeichenfolge>), die Details zum Ereignis enthalten. Das Feld "properties" ist optional. In einer angepassten Benutzeroberfläche oder einem auf Logik-Apps basierenden Workflow können Benutzer Schlüssel und Werte eingeben, die über die Nutzlast übergeben werden können. Alternativ können benutzerdefinierte Eigenschaften direkt über den Webhook-URI an den Webhook zurückgegeben werden (als Abfrageparameter).|
 
 
 >[AZURE.NOTE] Das Feld "properties" kann nicht über das Portal verwendet werden. In der nächsten Version des Insights SDK können Sie die Eigenschaften über die Warnung-API festlegen.
@@ -123,4 +123,4 @@ Verwenden Sie Azure-Warnungen zum Senden von Nachrichten an andere Dienste. Zum 
 
 [Use Logic App to send messages to an Azure Queue (in englischer Sprache)](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-queue-with-logic-app)
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0803_2016-->

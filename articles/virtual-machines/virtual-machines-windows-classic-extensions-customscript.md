@@ -19,12 +19,13 @@
 
 # Benutzerdefinierte Skripterweiterung für virtuelle Windows-Computer
 
-Der vorliegende Artikel bietet einen Überblick über die Verwendung der benutzerdefinierten Skripterweiterung auf virtuellen Windows-Computern mithilfe von Azure Powershell-Cmdlets.
+Der vorliegende Artikel bietet einen Überblick über die Verwendung der benutzerdefinierten Skripterweiterung auf virtuellen Windows-Computern mithilfe von Azure PowerShell-Cmdlets mit Azure-Dienstverwaltungs-APIs.
 
 Mit den Erweiterungen virtueller Computer, die von Microsoft und vertrauenswürdigen Drittanbietern entwickelt werden, wird die Funktionalität des virtuellen Computers erweitert. Eine Übersicht über die Erweiterungen virtueller Computer finden Sie unter [Erweiterungen virtueller Azure-Computer und Features](virtual-machines-windows-extensions-features.md).
 
 Link:
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] Erfahren Sie, wie Sie [diese Schritte mit dem Resource Manager-Modell ausführen](virtual-machines-windows-classic-extensions-customscript.md).
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] 
+[Resource Manager model](virtual-machines-extensions-customscript.md).
 
 
 ## Übersicht über benutzerdefinierte Skripterweiterungen
@@ -87,9 +88,9 @@ Die CustomScript-Erweiterung kann mithilfe des folgenden Befehls vom virtuellen 
 
 ### Verwenden der benutzerdefinierten Skripterweiterung mit Vorlagen
 
-Informationen zum Verwenden der benutzerdefinierten Skripterweiterung mit Azure-Ressourcen-Manager-Vorlagen finden Sie in [dieser](virtual-machines-windows-classic-extensions-customscript.md) Dokumentation.
+Informationen zum Verwenden der benutzerdefinierten Skripterweiterung mit Azure-Ressourcen-Manager-Vorlagen finden Sie in [dieser](virtual-machines-windows-extensions-customscript.md) Dokumentation.
 
 <!--Image references-->
 [5]: ./media/virtual-machines-windows-classic-extensions-customscript/addcse.png
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0803_2016-->

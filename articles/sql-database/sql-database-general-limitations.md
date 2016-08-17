@@ -3,7 +3,7 @@
    description="Auf dieser Seite werden einige allgemeine Einschränkungen von Azure SQL-Datenbank sowie Aspekte der Interoperabilität und Unterstützung beschrieben."
    services="sql-database"
    documentationCenter="na"
-   authors="carlrabeler"
+   authors="CarlRabeler"
    manager="jhubbard"
    editor="monicar" />
 <tags
@@ -63,4 +63,4 @@ Darüber hinaus dürfen Anmelde- und Benutzernamen nicht das Zeichen „\\“ en
 
 - Informationen zur Verfügbarkeit von Treibern und Unterstützung für SQL-Datenbank finden Sie unter [Verbindungsbibliotheken für SQL-Datenbank und SQL Server](sql-database-libraries.md).
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0803_2016-->

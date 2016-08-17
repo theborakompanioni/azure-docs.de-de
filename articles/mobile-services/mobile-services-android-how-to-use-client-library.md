@@ -304,7 +304,7 @@ Wenn eine Anwendung einen Id-Wert übergibt, speichert der mobile Dienst diesen 
 Der `id`-Wert muss eindeutig sein und darf keine Zeichen aus den folgenden Sätzen enthalten:
 
 + Steuerzeichen: [0x0000-0x001F] und [0x007F-0x009F]. Weitere Informationen finden Sie unter [ASCII-Steuerzeichen C0 und C1].
-+  Druckbare Zeichen: **"**(0 x 0022), **+** (0x002B), **/** (0x002F), **?** (0x003F), **\** (0x005C), **`** (0x0060)
++  Druckbare Zeichen: **"**(0 x 0022), **\+** (0x002B), **/** (0x002F), **?** (0x003F), **\\** (0x005C), **`** (0x0060)
 +  Die IDs "." und ".."
 
 Alternativ können Sie auch ganzzahlige Ids für Ihre Tabellen verwenden. Um ganzzahlige Ids zu verwenden, müssen Sie bei der Tabellenerstellung für den `mobile table create`-Befehl die Option `--integerId` verwenden. Dieser Befehl wird in der Befehlszeilenschnittstelle (CLI) für Azure verwendet. Weitere Informationen zur CLI finden Sie unter "CLI zum Verwalten von Mobile Services-Tabellen".
@@ -584,9 +584,9 @@ Das *listitem*-Attribut im obigen Code definiert die id des Layouts für eine be
 
 ### <a name="adapter"></a>Definieren des Adapters
 
-Da die Datenquelle in unserer Ansicht ein *ToDoItem* ist, leiten wir unseren Adapter von der *ArrayAdapter&lt;ToDoItem&gt;*-Klasse ab. Diese Unterklasse produziert eine Ansicht für jedes *ToDoItem* und verwendet dabei das *row\_list\_to\_do*-Layout.
+Da die Datenquelle in unserer Ansicht ein *ToDoItem* ist, leiten wir unseren Adapter von der *ArrayAdapter&lt;ToDoItem&gt;* -Klasse ab. Diese Unterklasse produziert eine Ansicht für jedes *ToDoItem* und verwendet dabei das *row\_list\_to\_do*-Layout.
 
-In unserem Code definieren wir die folgende Klasse als Erweiterung der *ArrayAdapter&lt;E&gt;*-Klasse:
+In unserem Code definieren wir die folgende Klasse als Erweiterung der *ArrayAdapter&lt;E&gt;* -Klasse:
 
 	public class ToDoItemAdapter extends ArrayAdapter<ToDoItem> {
 
@@ -939,3 +939,4 @@ Sie können diese allgemeine Methode immer dann verwenden, wenn Sie mit komplexe
 [ASCII-Steuerzeichen C0 und C1]: http://en.wikipedia.org/wiki/Data_link_escape_character#C1_set
 
 <!---HONumber=AcomDC_0727_2016-->
+

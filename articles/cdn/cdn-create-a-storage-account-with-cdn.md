@@ -1,8 +1,8 @@
 <properties
-	pageTitle="Verwenden von CDN | Microsoft Azure"
-	description="Erfahren Sie, wie das Azure Content Delivery Network (CDN) für die Übermittlung breitbandiger Inhalte eingesetzt wird, indem Blobs und statische Inhalte zwischengespeichert werden."
+	pageTitle="Integrieren eines Speicherkontos in CDN | Microsoft Azure"
+	description="Erfahren Sie, wie Azure Content Delivery Network (CDN) für die Übermittlung breitbandiger Inhalte eingesetzt wird, indem Blobs aus Azure Storage zwischengespeichert werden."
 	services="cdn"
-	documentationCenter=".net"
+	documentationCenter=""
 	authors="camsoper"
 	manager="erikre"
 	editor=""/>
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/11/2016"
+	ms.date="07/28/2016"
 	ms.author="casoper"/>
 
 
@@ -33,13 +33,13 @@ Um ein Speicherkonto zu erstellen, müssen Sie entweder der Dienstadministrator 
 **So erstellen Sie ein Speicherkonto für ein Azure-Abonnement**
 
 1.  Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2.  Klicken Sie unten links auf **Neu**. Wählen Sie im Dialogfeld **Neu** die Option **Daten und Speicher** aus, und klicken Sie dann auf **Speicherkonto**. Belassen Sie das **klassische** Bereitstellungsmodell aktiviert, und klicken Sie dann auf **Erstellen**.
+2.  Klicken Sie unten links auf **Neu**. Wählen Sie im Dialogfeld **Neu** die Option **Daten und Speicher** aus, und klicken Sie dann auf **Speicherkonto**.
 
-    Das Blatt **Speicherkonto** wird angezeigt.
+    Das Blatt **Speicherkonto erstellen** wird angezeigt.
 
     ![Speicherkonto erstellen][create-new-storage-account]
 
-4. Geben Sie in das Feld **Speicher** den Namen einer Unterdomäne ein. Dieser Eintrag kann 3 bis 24 Kleinbuchstaben und Zahlen enthalten.
+4. Geben Sie in das Feld **Name** den Namen einer Unterdomäne ein. Dieser Eintrag kann 3 bis 24 Kleinbuchstaben und Zahlen enthalten.
 
     Dieser Wert wird der Hostname im URI, der zum Adressieren von Blob-, Warteschlangen- oder Tabellenspeicherressourcen für das Abonnement verwendet wird. Zum Adressieren einer Containerressource im Blobdienst verwenden Sie einen URI im folgenden Format; dabei bezieht sich *&lt;Speicherkontobezeichnung&gt;* auf den Wert, den Sie in **URL eingeben** eingegeben haben:
 
@@ -49,15 +49,15 @@ Um ein Speicherkonto zu erstellen, müssen Sie entweder der Dienstadministrator 
 
 	Dieser Wert wird auch als Name für dieses Speicherkonto im Portal verwendet oder beim programmatischen Zugriff auf dieses Konto.
 
-5.  Wählen Sie einen **Tarif** aus, oder verwenden Sie den Standardtarif. Weitere Informationen zu den Tarifen finden Sie unter [Preise für Azure Storage](https://azure.microsoft.com/pricing/details/storage/).
+5. Behalten Sie die Standardwerte für **Bereitstellungsmodell**, **Kontoart**, **Leistung** und **Replikation** bei.
 
-6.  Wählen Sie eine **Ressourcengruppe** aus, oder erstellen Sie eine. Weitere Informationen zu Ressourcengruppen finden Sie unter [Übersicht über den Azure-Ressourcen-Manager](resource-group-overview.md#resource-groups).
+6. Wählen Sie das **Abonnement** aus, das für das Speicherkonto verwendet werden soll.
 
-7. Wählen Sie das **Abonnement** aus, das für das Speicherkonto verwendet werden soll.
+7. Wählen Sie eine **Ressourcengruppe** aus, oder erstellen Sie eine. Weitere Informationen zu Ressourcengruppen finden Sie unter [Übersicht über den Azure-Ressourcen-Manager](resource-group-overview.md#resource-groups).
 
-8.  Klicken Sie auf **Erstellen**. Das Erstellen des Speicherkontos kann einige Minuten dauern.
+8. Wählen Sie einen Standort für Ihr Speicherkonto aus.
 
-9.  Um zu überprüfen, ob das Speicherkonto erstellt wurde, prüfen Sie, ob das Konto in den unter **Storage** aufgeführten Elementen mit dem Status **Online** angezeigt wird.
+8. Klicken Sie auf **Erstellen**. Das Erstellen des Speicherkontos kann einige Minuten dauern.
 
 
 ## Schritt 2: Erstellen eines neuen CDN-Profils
@@ -135,4 +135,4 @@ Ein bereits im CDN zwischengespeichertes Objekt bleibt zwischengespeichert, bis 
 [cdn-add-endpoint]: ./media/cdn-create-a-storage-account-with-cdn/cdn-add-endpoint.png
 [cdn-endpoint-success]: ./media/cdn-create-a-storage-account-with-cdn/cdn-endpoint-success.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0803_2016-->

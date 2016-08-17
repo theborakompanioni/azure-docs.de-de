@@ -72,7 +72,7 @@ In diesem Abschnitt erstellen Sie eine neue Node-Anwendung und fügen Modulpaket
 
 ### Installieren von Express und Generieren des Gerüsts
 
-1. Erstellen Sie über die Befehlszeile ein neues Verzeichnis namens **tasklist**, und wechseln Sie zu diesem Verzeichnis.  
+1. Erstellen Sie über die Befehlszeile ein neues Verzeichnis namens **tasklist**, und wechseln Sie zu diesem Verzeichnis.
 
 2. Geben Sie den folgenden Befehl ein, um das Express-Modul zu installieren.
 
@@ -601,7 +601,6 @@ Die Schritte in diesem Artikel beschreiben zwar die Verwendung des Tabellendiens
 <!-- URLs -->
 
 [Erstellen und Bereitstellen einer Node.js-Web-App in Azure App Service]: web-sites-nodejs-develop-deploy-mac.md
-[Continuous deployment using GIT in Azure App Service]: web-sites-publish-source-control.md
 [Azure Developer Center]: /develop/nodejs/
 
 [node]: http://nodejs.org
@@ -614,7 +613,6 @@ Die Schritte in diesem Artikel beschreiben zwar die Verwendung des Tabellendiens
 [Azure-Befehlszeilenschnittstelle]: ../xplat-cli-install.md
 [Azure-CLI]: ../xplat-cli-install.md
 
-[Continuous deployment using GIT in Azure App Service]: web-sites-publish-source-control.md
 [azure]: https://github.com/Azure/azure-sdk-for-node
 [node-uuid]: https://www.npmjs.com/package/node-uuid
 [nconf]: https://www.npmjs.com/package/nconf
@@ -638,4 +636,4 @@ Die Schritte in diesem Artikel beschreiben zwar die Verwendung des Tabellendiens
 [app-settings-save]: ./media/storage-nodejs-use-table-storage-web-site/savebutton.png
 [app-settings]: ./media/storage-nodejs-use-table-storage-web-site/storage-tasks-appsettings.png
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0803_2016-->

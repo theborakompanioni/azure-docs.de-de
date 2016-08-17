@@ -408,7 +408,7 @@ Nachdem der Cachedatenträger aufgefüllt wurde, fahren Sie mit den nachstehende
 
 Nachstehend sehen Sie Screenshots der Iometer-Testergebnisse für kombinierte IOPS- und Durchsatz-Szenarien
 
-*Kombiniert Lese- und Schreibvorgänge – Maximale IOPS *  
+*Kombiniert Lese- und Schreibvorgänge – Maximale IOPS*  
 ![](media/storage-premium-storage-performance/image9.png)
 
 *Kombiniert Lese- und Schreibvorgänge – Maximaler Durchsatz*  

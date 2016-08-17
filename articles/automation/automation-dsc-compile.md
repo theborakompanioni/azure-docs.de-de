@@ -1,6 +1,6 @@
 <properties 
    pageTitle="Kompilieren von Konfigurationen in Azure Automation DSC | Microsoft Azure" 
-   description="Übersicht über die beiden Arten der Kompilierung von DSC-Konfigurationen (Desired State Configuration, Konfiguration des gewünschten Zustands): im Azure-Portal und mit Windows PowerShell." 
+   description="Übersicht über die beiden Arten der Kompilierung von DSC-Konfigurationen (Desired State Configuration, Konfiguration des gewünschten Zustands): im Azure-Portal und mit Windows PowerShell. " 
    services="automation" 
    documentationCenter="na" 
    authors="coreyp-at-msft" 
@@ -42,7 +42,7 @@ Wenn Sie sich für eine Kompilierungsmethode entschieden haben, folgen Sie dem j
 1.  Klicken Sie in Ihrem Automation-Konto auf **Konfigurationen**.
 2.  Klicken Sie auf eine Konfiguration, um das zugehörige Blatt zu öffnen.
 3.  Klicken Sie auf **Kompilieren**.
-4.  Wenn die Konfiguration keine Parameter enthält, werden Sie dazu aufgefordert, zu bestätigen, dass Sie die Konfiguration kompilieren möchten. Wenn die Konfiguration Parameter enthält, wird das Blatt **Konfiguration kompilieren** geöffnet, auf dem Sie Parameterwerte angeben können. Weitere Informationen zu Parametern finden Sie im Abschnitt <a href="#basic-parameters">Grundlegende Parameter</a> weiter unten.
+4.  Wenn die Konfiguration keine Parameter enthält, werden Sie dazu aufgefordert, zu bestätigen, dass Sie die Konfiguration kompilieren möchten. Wenn die Konfiguration Parameter enthält, wird das Blatt **Konfiguration kompilieren** geöffnet, auf dem Sie Parameterwerte angeben können. Weitere Informationen zu Parametern finden Sie im Abschnitt <a href="#basic-parameters">**Grundlegende Parameter**</a> weiter unten.
 5.  Das Blatt **Kompilierungsauftrag** wird geöffnet, auf dem Sie den Status des Kompilierungsauftrags sowie die Knotenkonfigurationen (MOF-Konfigurationsdokumente) nachverfolgen können, die durch den Auftrag auf dem Azure Automation DSC-Pullserver platziert werden.
 
 ##Kompilieren einer DSC-Konfiguration mit Windows PowerShell##
@@ -185,7 +185,7 @@ Objektverweise in Azure Automation DSC-Konfigurationen und -Runbooks sind gleich
 - [Variablen](automation-variables.md)
 
 ###Anmeldeinformationen###
-DSC-Konfigurationen in Azure Automation können mithilfe von **Get-AutomationPSCredential** auf Anmeldeinformationen verweisen. Diese Informationen können aber bei Bedarf auch über Parameter übergeben werden. Wenn in einer Konfiguration ein Parameter des Typs **PSCredential** vorhanden ist, müssen Sie den Zeichenfolgennamen eines Anmeldeinformationsobjekts von Azure Automation als Wert dieses Parameters übergeben, keine PSCredential-Objekt. Im Hintergrund wird das Azure Automation-Anmeldeinformationsobjekt mit diesem Namen abgerufen und an die Konfiguration übergeben.
+DSC-Konfigurationen in Azure Automation können mithilfe von **Get-AutomationPSCredential** auf Anmeldeinformationen verweisen. Diese Informationen können aber bei Bedarf auch über Parameter übergeben werden. Wenn in einer Konfiguration ein Parameter des Typs **PSCredential** vorhanden ist, müssen Sie den Zeichenfolgennamen eines Anmeldeinformationsobjekts von Azure Automation als Wert dieses Parameters und nicht als PSCredential-Objekt übergeben. Im Hintergrund wird das Azure Automation-Anmeldeinformationsobjekt mit diesem Namen abgerufen und an die Konfiguration übergeben.
 
 Um die Sicherheit von Anmeldeinformationen in Knotenkonfigurationen (MOF-Konfigurationsdokumente) zu gewährleisten, müssen diese Informationen in der MOF-Datei der Knotenkonfiguration verschlüsselt werden. Azure Automation geht sogar noch einen Schritt weiter und verschlüsselt die gesamte MOF-Datei. Zurzeit müssen Sie PowerShell DSC jedoch noch darüber informieren, dass die Anmeldeinformationen während der Generierung der Knotenkonfiguration-MOF-Datei im Klartext übergeben werden. PowerShell DSC hat keinerlei Informationen darüber, dass Azure Automation die gesamte MOF-Datei nach dem Generieren über einen Kompilierungsauftrag verschlüsselt.
 
@@ -228,4 +228,4 @@ Sie können die obige DSC-Konfiguration über PowerShell kompilieren. Hierbei we
     
     Start-AzureRmAutomationDscCompilationJob -ResourceGroupName "MyResourceGroup" -AutomationAccountName "MyAutomationAccount" -ConfigurationName "CredentialSample" -ConfigurationData $ConfigData
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0803_2016-->

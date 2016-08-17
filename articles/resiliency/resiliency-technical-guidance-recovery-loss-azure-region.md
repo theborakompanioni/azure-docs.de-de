@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/13/2016"
-   ms.author="patw;jroth;aglick"/>
+   ms.date="08/01/2016"
+   ms.author="aglick"/>
 
 #Technischer Leitfaden zur Resilienz in Azure: Wiederherstellung nach einer regionsweiten Dienstunterbrechung
 
@@ -106,7 +106,7 @@ Die [Geowiederherstellung](../sql-database/sql-database-recovery-using-backups.m
 
 ####Aktive Georeplikation
 
-Die [aktive Georeplikation](../sql-database/sql-database-geo-replication-overview.md) ist für alle Datenbanktarife verfügbar. Sie ist für Anwendungen vorgesehen, für die umfangreichere Wiederherstellungsanforderungen erforderlich sind, als die Geowiederherstellung bieten kann. Bei der aktiven Georeplikation können Sie bis zu vier lesbare sekundäre Replikate auf Servern in verschiedenen Regionen erstellen. Sie können ein Failover auf ein beliebiges sekundäres Replikat initiieren. Darüber hinaus kann die aktive Georeplikation verwendet werden, um Anwendungsupgrades oder die räumliche Verlegung von Anwendungen zu unterstützen, sowie als Lastenausgleich für schreibgeschützte Arbeitsauslastungen. Weitere Informationen finden Sie unter [Konfigurieren der Georeplikation](../sql-database/sql-database-geo-replication-portal.md) und [Failover zur sekundären Datenbank](../sql-database/sql-database-geo-replication-failover-portal.md). Einzelheiten zum Entwerfen und Implementieren von Anwendungen und Anwendungsupgrades ohne Ausfallzeiten finden Sie unter [Entwerfen einer Anwendung für die cloudbasierte Notfallwiederherstellung mithilfe der aktiven Georeplikation in SQL-Datenbank](../sql-database/sql-database-designing-cloud-solutions-for-disaster-recovery.md) und [Anwendungsupgrades ohne Ausfallzeiten](../sql-database/sql-database-business-continuity-application-upgrade.md).
+Die [aktive Georeplikation](../sql-database/sql-database-geo-replication-overview.md) ist für alle Datenbanktarife verfügbar. Sie ist für Anwendungen vorgesehen, für die umfangreichere Wiederherstellungsanforderungen erforderlich sind, als die Geowiederherstellung bieten kann. Bei der aktiven Georeplikation können Sie bis zu vier lesbare sekundäre Replikate auf Servern in verschiedenen Regionen erstellen. Sie können ein Failover auf ein beliebiges sekundäres Replikat initiieren. Darüber hinaus kann die aktive Georeplikation verwendet werden, um Anwendungsupgrades oder die räumliche Verlegung von Anwendungen zu unterstützen, sowie als Lastenausgleich für schreibgeschützte Arbeitsauslastungen. Weitere Informationen finden Sie unter [Konfigurieren der Georeplikation](../sql-database/sql-database-geo-replication-portal.md) und [Failover zur sekundären Datenbank](../sql-database/sql-database-geo-replication-failover-portal.md). Einzelheiten zum Entwerfen und Implementieren von Anwendungen und Anwendungsupgrades ohne Ausfallzeiten finden Sie unter [Entwerfen einer Anwendung für die cloudbasierte Notfallwiederherstellung mithilfe der aktiven Georeplikation in SQL-Datenbank](../sql-database/sql-database-designing-cloud-solutions-for-disaster-recovery.md) und [Anwendungsupgrades ohne Ausfallzeiten](../sql-database/sql-database-manage-application-rolling-upgrade.md).
 
 ###SQL Server auf virtuellen Computern
 
@@ -214,4 +214,4 @@ Konfigurationsdateien stellen die schnellste Methode zum Einrichten eines virtue
 
 Dieser Artikel gehört zu einer Reihe von Artikeln, die als [Technischer Leitfaden zur Resilienz in Azure](./resiliency-technical-guidance.md) dienen. Im nächsten Artikel dieser Reihe geht es um die [Wiederherstellung eines lokalen Rechenzentrums in Azure](./resiliency-technical-guidance-recovery-on-premises-azure.md).
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0803_2016-->

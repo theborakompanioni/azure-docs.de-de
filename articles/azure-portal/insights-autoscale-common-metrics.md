@@ -4,16 +4,16 @@
 	authors="kamathashwin"
 	manager=""
 	editor=""
-	services="azure-portal"
-	documentationCenter="na"/>
+	services="monitoring"
+	documentationCenter="monitoring"/>
 
 <tags
-	ms.service="azure-portal"
+	ms.service="monitoring"
 	ms.workload="na"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/30/2016"
+	ms.date="08/02/2016"
 	ms.author="ashwink"/>
 
 # Allgemeine Metriken für die automatische Skalierung in Azure Insights
@@ -51,33 +51,33 @@ Sie können eine Warnung für die folgenden Metriken erstellen.
 
 |Metrikname|	Unit|
 |---|---|
-|\\Prozessor(\_Gesamt)\\Prozessorzeit (%) | Prozent|
-|\\Prozessor(\_Gesamt)\\Privilegierte Zeit (%) | Prozent|
-|\\Prozessor(\_Gesamt)\\Benutzerzeit (%) | Prozent|
-|\\Prozessorinformationen(\_Gesamt)\\Prozessorfrequenz | Anzahl|
-|\\System\\Prozesse | Anzahl|
-|\\Prozess(\_Gesamt)\\Threadanzahl | Anzahl|
-|\\Prozess(\_Gesamt)\\Handleanzahl | Anzahl|
-|\\Speicher\\Zugesicherte verwendete Bytes(%) | Prozent|
-|\\Speicher\\Verfügbare Bytes | Byte|
-|\\Speicher\\Zugesicherte Bytes | Byte|
-|\\Speicher\\Zusicherungslimit | Byte|
-|\\Speicher\\Auslagerungsseiten (Bytes)| Byte|
-|\\Speicher\\Nichtauslagerungsseiten (Bytes) | Byte|
-|\\Physischer Datenträger(\_Gesamt)\\Zeit (%) | Prozent|
-|\\Physischer Datenträger(\_Gesamt)\\Lesezeit (%)| Prozent|
-|\\Physischer Datenträger(\_Gesamt)\\Schreibzeit (%) | Prozent|
-|\\Physischer Datenträger(\_Gesamt)\\Übertragungen/s | Anzahl pro Sekunde|
-|\\Physischer Datenträger(\_Gesamt)\\Lesevorgänge/s | Anzahl pro Sekunde|
-|\\Physischer Datenträger(\_Gesamt)\\Schreibvorgänge/s | Anzahl pro Sekunde|
-|\\Physischer Datenträger(\_Gesamt)\\Bytes/s | Bytes pro Sekunde|
-|\\Physischer Datenträger(\_Gesamt)\\Bytes gelesen/s | Bytes pro Sekunde|
-|\\Physischer Datenträger(\_Gesamt)\\Bytes geschrieben/s | Bytes pro Sekunde|
-|\\Physischer Datenträger(\_Gesamt)\\Durchschnittl. Warteschlangenlänge des Datenträgers| Anzahl|
-|\\Physischer Datenträger(\_Gesamt)\\Durchschnittl. Warteschlangenlänge der Datenträger-Lesevorgänge| Anzahl|
-|\\Physischer Datenträger(\_Gesamt)\\Durchschnittl. Warteschlangenlänge der Datenträger-Schreibvorgänge| Anzahl|
-|\\Logischer Datenträger(\_Gesamt)\\Freier Speicherplatz (%)| Prozent|
-|\\Logischer Datenträger(\_Gesamt)\\MB frei| Anzahl|
+|\\Prozessor(\_Total)\\Prozessorzeit (%) |Prozent|
+|\\Processor(\_Total)\\Privilegierte Zeit (%) |Prozent|
+|\\Processor(\_Total)\\Benutzerzeit (%) |Prozent|
+|\\Processor Informationen(\_Total)\\Prozessorfrequenz |Count|
+|\\System\\Prozesse|	Count|
+|\\Process(\_Total)\\Threadanzahl|	Count|
+|\\Process(\_Total)\\Handleanzahl |Count|
+|\\Memory\\Zugesicherte verwendete Bytes (%) |Prozent|
+|\\Memory\\Verfügbare Bytes|	Byte|
+|\\Memory\\Zugesicherte Bytes |Byte|
+|\\Memory\\Zusagegrenze|	Byte|
+|\\Memory\\Auslagerungsseiten (Bytes)|	Byte|
+|\\Memory\\Nicht-Auslagerungsseiten (Bytes)|	Byte|
+|\\PhysicalDisk(\_Total)\\Zeit (%)|	Prozent|
+|\\PhysicalDisk(\_Total)\\Lesezeit (%)|	Prozent|
+|\\PhysicalDisk(\_Total)\\Schreibzeit (%)|	Prozent|
+|\\Physikalischer Datenträger(\_Total)\\Übertragungen/s |Anzahl pro Sekunde|
+|\\PhysicalDisk(\_Total)\\Lesevorgänge/s |Anzahl pro Sekunde|
+|\\PhysicalDisk(\_Total)\\Schreibvorgänge/s |Anzahl pro Sekunde|
+|\\PhysicalDisk(\_Total)\\Bytes/s |Bytes pro Sekunde|
+|\\PhysicalDisk(\_Total)\\Byte gelesen/s|	Bytes pro Sekunde|
+|\\PhysicalDisk(\_Total)\\Byte geschrieben/s |Bytes pro Sekunde|
+|\\PhysicalDisk(\_Total)\\Durchschnittl. Warteschlangenlänge des Datenträgers|	Count|
+|\\PhysicalDisk(\_Total)\\Durchschnittl. Warteschlangenlänge der Datenträger-Lesevorgänge|	Count|
+|\\PhysicalDisk(\_Total)\\Durchschnittl. Warteschlangenlänge der Datenträger-Schreibvorgänge |Count|
+|\\LogicalDisk(\_Total)\\Freier Speicherplatz (%)|	Prozent|
+|\\LogicalDisk(\_Total)\\MB frei|	Count|
 
 
 
@@ -171,13 +171,13 @@ Sie können dies im Azure-Portal auf dem Blatt **Einstellungen** konfigurieren. 
 "metricName": "ApproximateMessageCount",
  "metricNamespace": "",
  "metricResourceUri": "/subscriptions/s1/resourceGroups/rg1/providers/Microsoft.ClassicStorage/storageAccounts/mystorage/services/queue/queues/mystoragequeue"
-```
+ ```
 
 ## Häufig verwendete Service Bus-Metriken
 
 Sie können nach Service Bus-Warteschlangenlänge skalieren, wobei es sich um die Anzahl der Nachrichten in der Service Bus-Warteschlange handelt. Die Service Bus-Warteschlangenlänge ist eine spezielle Metrik, und der angewendete Schwellenwert ist die Anzahl der Nachrichten pro Instanz. Dies bedeutet bei zwei Instanzen und bei einem Schwellenwert von 100 kommt es zu einer Skalierung, wenn die Gesamtanzahl der Nachrichten in der Warteschlange 200 beträgt. Beispiel: 100 Nachrichten pro Instanz.
 
-Für VM-Skalierungsgruppen können Sie die Einstellung für die automatische Skalierung in der ARM-Vorlage aktualisieren, sodass *metricName* als *ApproximateMessageCount* verwendet und die ID der Speicherwarteschlange als *metricResourceUri* übergeben wird.
+Für VM-Skalierungsgruppen können Sie die Einstellung für die automatische Skalierung in der ARM-Vorlage aktualisieren, sodass *metricName* als *ApproximateMessageCount* verwendet wird und die ID der Speicherwarteschlange als *metricResourceUri* übergeben wird.
 
 ```
 "metricName": "MessageCount",
@@ -187,4 +187,4 @@ Für VM-Skalierungsgruppen können Sie die Einstellung für die automatische Ska
 
 >[AZURE.NOTE] Für Service Bus gibt es das Konzept einer Ressourcengruppe nicht, Azure Resource Manager erstellt jedoch eine Standardressourcengruppe pro Region. Die Ressourcengruppe hat in der Regel das Format „Default-ServiceBus-[Region]“. Beispiel: „Default-ServiceBus-EastUS“, „Default-ServiceBus-WestUS“, „Default-ServiceBus-AustraliaEast“ usw.
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0803_2016-->

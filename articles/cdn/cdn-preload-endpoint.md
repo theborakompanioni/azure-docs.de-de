@@ -1,8 +1,8 @@
 <properties
-	pageTitle="Vorabladen von Assets auf einen Azure CDN-Endpunkt"
+	pageTitle="Vorabladen von Assets auf einen Azure CDN-Endpunkt | Microsoft Azure"
 	description="Erfahren Sie, wie zwischengespeicherten Inhalt auf einen CDN-Endpunkt vorab laden."
 	services="cdn"
-	documentationCenter=".NET"
+	documentationCenter=""
 	authors="camsoper"
 	manager="erikre"
 	editor=""/>
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/11/2016"
+	ms.date="07/28/2016"
 	ms.author="casoper"/>
 
 # Vorabladen von Assets auf einen Azure CDN-Endpunkt
@@ -60,4 +60,4 @@ In diesem Tutorial wird Schritt für Schritt erläutert, wie Sie zwischengespeic
 - [Löschen eines Azure CDN-Endpunkts](cdn-purge-endpoint.md)
 - [Azure CDN-REST-API-Referenz – Löschen oder Vorabladen eines Endpunkts](https://msdn.microsoft.com/library/mt634451.aspx)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0803_2016-->

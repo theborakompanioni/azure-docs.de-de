@@ -1,11 +1,12 @@
 <properties
 	pageTitle="Neue Microsoft Azure-Supportanfrage – Richtlinien zur Verwendung des Dateiupload-Dienstprogramms | Microsoft Azure"
 	description="Beschreibt die Richtlinien zur Verwendung des Dateiupload-Dienstprogramms für eine neue Microsoft Azure-Supportanfrage. "
-	services="billing"
+	services=""
 	documentationCenter=""
 	authors="genlin"
 	manager="mbaldwin"
-	editor="v-jesits"
+	editor=""
+	tags="billing"
 	/>
 
 <tags
@@ -63,4 +64,4 @@ Befolgen Sie diese Richtlinien, wenn Sie das Dateiupload-Dienstprogramm verwende
 | | | | | | | .zix |
 | | | | | | | .zzz |
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0803_2016-->

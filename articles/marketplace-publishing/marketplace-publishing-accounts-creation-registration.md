@@ -13,36 +13,35 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="06/27/2016"
+   ms.date="08/01/2016"
    ms.author="hascipio"/>
 
 # Erstellen eines Microsoft-Entwicklerkontos
 In diesem Artikel werden die Schritte zur Erstellung und Registrierung eines Kontos erläutert, die notwendig sind, um anerkannter Microsoft-Entwickler im Azure Marketplace zu werden.
 
 ## 1\. Erstellen eines Microsoft-Kontos
-> [AZURE.WARNING] Zum Starten des Veröffentlichungsprozesses müssen Sie ein Microsoft-Konto erstellen. Dieses Konto wird verwendet, um sich für das **Microsoft Developer Center** und das **Azure-Veröffentlichungsportal** zu registrieren und die Anmeldung dafür durchzuführen. Sie sollten für Ihre Azure Marketplace-Angebote nur ein Microsoft-Konto verwenden. Verwenden Sie keine unterschiedlichen Konten für verschiedene Dienste oder Angebote.
+Zum Starten des Veröffentlichungsprozesses müssen Sie ein Microsoft-Konto erstellen. Dieses Konto wird zur Registrierung für das **Microsoft Developer Center** und das **Azure-Veröffentlichungsportal** verwendet. Sie sollten für Ihre Azure Marketplace-Angebote nur ein Microsoft-Konto verwenden. Verwenden Sie keine unterschiedlichen Konten für verschiedene Dienste oder Angebote.
 
-Die Adresse, die für den Benutzernamen maßgeblich ist, sollte sich in Ihrer Domäne befinden und von Ihrem IT-Team gesteuert werden (z.B. publishing@example.com). Informationen zu Bezahlung, Steuern und Berichterstellung werden an dieses Konto gesendet.
+Die Adresse, die für den Benutzernamen maßgeblich ist, sollte sich in Ihrer Domäne befinden und von Ihrem IT-Team gesteuert werden. Alle auf die Veröffentlichung bezogenen Aktivitäten sollten über dieses Konto durchgeführt werden.
 
-  > [AZURE.WARNING] Wörter wie „Azure“ und „Microsoft“ werden bei der Registrierung eines Microsoft-Kontos nicht unterstützt. Vermeiden Sie diese Wörter, um den Prozess der Kontoerstellung und -registrierung abzuschließen.
+  >[AZURE.WARNING] Wörter wie **„Azure“** und **„Microsoft“** werden bei der Registrierung eines Microsoft-Kontos nicht unterstützt. Vermeiden Sie diese Wörter, um den Prozess der Kontoerstellung und -registrierung abzuschließen.
 
 ### Anleitung
 
-1. Erstellen Sie eine Verteilerliste (Distribution List, DL) oder Sicherheitsgruppe (Security Group, SG) in der Domäne Ihres Unternehmens.
-  - Fügen Sie Ihr Onboardingteam zur Verteilerliste hinzu.
-  - Die Verteilerliste muss live geschaltet sein, um eine Bestätigungs-E-Mail zu empfangen.
-  - Verwenden Sie marketplace@example.com als E-Mail-Adresse für die Verteilerliste.
-  - Diese Einrichtung muss in Ihren internen Systemen erfolgen.
-2. Öffnen Sie eine neue Chrome-Inkognito- oder Internet Explorer-InPrivate-Browsersitzung, um sicherzustellen, dass Sie nicht bei einem vorhandenen Konto angemeldet sind.
-3. Registrieren Sie sich mithilfe der E-Mail-Adresse der Verteilerliste für ein Microsoft-Konto.
- - Sie können sich unter [https://signup.live.com/signup.aspx](https://signup.live.com/signup.aspx) für ein Microsoft-Konto registrieren.
- - Verwenden Sie marketplace@example.com als E-Mail-Adresse.
- - Die ID Ihres Microsoft-Kontos ist jetzt marketplace@example.com.
-4. Geben Sie bei der Registrierung eine gültige Telefonnummer an. Falls notwendig, erhalten Sie einen Prüfcode per SMS oder einen automatischen Telefonanruf zur Überprüfung Ihrer Identität.
-5. Verifizieren Sie die an die Verteilerliste gesendete E-Mail-Adresse.
-6. Sie können das neue Microsoft-Konto jetzt im Microsoft Developer Center verwenden.
+1. Erstellen Sie eine Verteilerliste (Distribution List, DL) oder Sicherheitsgruppe (Security Group, SG) in der Domäne Ihres Unternehmens. Durch Verwendung einer DL können mehrere Personen E-Mail-Benachrichtigungen mit wichtigen Zahlungsinformationen empfangen. Gleichzeitig ist sichergestellt, dass das Eigentum am Microsoft-Konto übertragen werden kann und nicht an eine Einzelperson geknüpft ist. Befolgen Sie die nachstehenden Anweisungen:
 
-> [AZURE.TIP] Durch Verwendung einer Verteilerliste können mehrere Personen E-Mail-Benachrichtigungen mit wichtigen Zahlungsinformationen empfangen. Gleichzeitig ist sichergestellt, dass das Eigentum am Microsoft-Konto übertragen werden kann und nicht an eine Einzelperson geknüpft ist.
+    1. Fügen Sie Ihr Onboardingteam zur Verteilerliste hinzu.
+    2. Stellen Sie sicher, dass die DL/SG eine aktive E-Mail-Adresse ist und E-Mail-Nachrichten empfangen kann, da Zahlung, Steuerinformationen und Berichte über dieses Konto geleitet werden.
+    3. Die E-Mail-Adresse für DL/SG sollte etwa wie marketplace@partnercompany.com aussehen.
+
+2. Öffnen Sie eine neue Chrome-Inkognito- oder Internet Explorer-InPrivate-Browsersitzung, um sicherzustellen, dass Sie nicht bei einem vorhandenen Konto angemeldet sind.
+3. Registrieren Sie die in Schritt 1 erstellte DL über den Link [https://signup.live.com/signup.aspx](https://signup.live.com/signup.aspx) als Microsoft-Konto. Befolgen Sie die nachstehenden Anweisungen.
+
+    1. Bei der Registrierung Ihres Kontos als Microsoft-Konto müssen Sie eine gültige Telefonnummer für das System angeben, damit Sie einen Kontoüberprüfungscode als SMS oder automatisierten Anruf empfangen können.
+    2. Bei der Registrierung Ihres Kontos als Microsoft-Konto müssen Sie eine gültige E-Mail-ID angeben, damit Sie eine automatisierte E-Mail zur Kontoüberprüfung empfangen können.
+
+4. Verifizieren Sie die an die Verteilerliste gesendete E-Mail-Adresse.
+5. Sie können das neue Microsoft-Konto jetzt im Microsoft Developer Center verwenden.
 
 ## 2\. Erstellen des Microsoft Developer Center-Kontos
 Das Microsoft Developer Center wird für die einmalige Registrierung der Unternehmensinformationen verwendet. Die Person, die das Konto registriert, muss ein offizieller Vertreter des Unternehmens sein und ihre persönlichen Informationen zum Zweck der Identitätsüberprüfung bereitstellen. Diese Person muss ein Microsoft-Konto verwenden, das für das Unternehmen freigegeben ist. **Das gleiche Konto muss im Azure-Veröffentlichungsportal verwendet werden.** Sie sollten überprüfen, ob Ihr Unternehmen nicht bereits über ein Microsoft Developer Center-Konto verfügt, bevor Sie ein Konto erstellen. Während des Prozesses erfassen wir Informationen zu Unternehmensadresse, Bankdaten und Steuer. Diese Informationen erhalten Sie üblicherweise über Bank- oder Geschäftskontakte.
@@ -63,45 +62,55 @@ Das Microsoft Developer Center wird für die einmalige Registrierung der Unterne
 ### Registrieren Ihres Unternehmenskontos
 1. Öffnen Sie eine neue Internet Explorer-InPrivate- oder Chrome-Inkognito-Browsersitzung, um sicherzustellen, dass Sie nicht bei einem persönlichen Konto angemeldet sind.
 
-2. Wechseln Sie zu [http://dev.windows.com/registration?accountprogram=azure](http://dev.windows.com/registration?accountprogram=azure).
+2. Wechseln Sie zu [http://dev.windows.com/registration?accountprogram=azure](http://dev.windows.com/registration?accountprogram=azure), um sich im Developer Center als Verkäufer zu registrieren. Bitte lesen Sie den folgenden wichtigen Hinweis, bevor Sie fortfahren.
 
-3. Melden Sie sich mit dem Microsoft-Konto an, das Sie für Ihr Unternehmen registriert haben (z.B. marketplace@example.com).
+    >[AZURE.IMPORTANT] Stellen Sie sicher, dass die E-Mail-ID oder Verteilerliste (eine Verteilerliste wird empfohlen, um die Abhängigkeit von einzelnen Personen aufzuheben), die Sie für die Registrierung im Developer Center verwenden werden, zunächst als Microsoft-Konto registriert wird. Falls nicht, dann registrieren Sie sich bitte über diesen [Link](https://signup.live.com/signup?uaid=e479342fe2824efeb0c3d92c8f961fd3&lic=1). Darüber hinaus kann für die Developer Center-Registrierung **keine E-Mail-ID unter der Microsoft-Unternehmensdomäne, d.h. „@microsoft.com“, verwendet werden** .
 
     ![Abbildung][img-signin]
 
-4. Führen Sie den Assistenten "Unterstützen Sie uns beim Schutz Ihres Kontos" vollständig durch. Damit wird Ihre Identität anhand einer Telefonnummer oder E-Mail-Adresse überprüft.
+3. Führen Sie den Assistenten "Unterstützen Sie uns beim Schutz Ihres Kontos" vollständig durch. Damit wird Ihre Identität anhand einer Telefonnummer oder E-Mail-Adresse überprüft.
 
     ![Abbildung][img-verify]
 
-5. Wählen Sie im Abschnitt „Registrierungskontoinformationen“ im Dropdownmenü **Land/Region des Kontos** die für Sie zutreffende Option aus.
+4. Wählen Sie im Abschnitt „Registrierungskontoinformationen“ im Dropdownmenü **Land/Region des Kontos** die für Sie zutreffende Option aus.
+
+    ![Abbildung](media/marketplace-publishing-accounts-creation-registration/imgRegisterCo_04.png)
 
     > [AZURE.WARNING] **Verkäuferländer:** Um Ihre Dienste im Azure Marketplace verkaufen zu können, muss die registrierte Organisation in einem der obigen genehmigten Verkäuferländer ansässig sein. Diese Einschränkung hat auszahlungstechnische und steuerliche Gründe. Die Länderliste wird in Kürze erweitert, prüfen Sie sie also regelmäßig. Weitere Informationen finden Sie in den [Marketplace-Teilnahmerichtlinien](http://go.microsoft.com/fwlink/?LinkID=526833).
 
-6. Wählen Sie Ihren „Kontotyp“ oder die Option **Einzelperson** oder **Unternehmen** aus.
+5. Wählen Sie als „Kontotyp“ **Unternehmen**, und klicken Sie dann auf die Schaltfläche **Weiter**.
 
-    > [AZURE.IMPORTANT] Sehen Sie sich die Seite [Kontotypen, Standorte und Gebühren](https://msdn.microsoft.com/library/windows/apps/jj863494.aspx) an, um mehr Informationen zu Kontotypen zu erhalten und die bestmögliche Wahl treffen zu können.
+    > [AZURE.IMPORTANT] Lesen Sie die Seite [Kontotypen, Standorte und Gebühren](https://msdn.microsoft.com/library/windows/apps/jj863494.aspx) an, um mehr Informationen zu Kontotypen zu erhalten und die bestmögliche Wahl treffen zu können.
 
-7. Geben Sie den **Anzeigenamen des Herausgebers** ein. Dies ist normalerweise der Name Ihres Unternehmens.
+    ![Abbildung](media/marketplace-publishing-accounts-creation-registration/imgRegisterCo_05.png)
 
-    > [AZURE.TIP] Derzeit wird im Azure-Veröffentlichungsportal kein Anzeigename des Herausgebers verwendet. Sie müssen dieses Feld aber ausfüllen, um den Registrierungsprozess abzuschließen.
+6. Geben Sie den **Anzeigenamen des Herausgebers** ein. Dies ist normalerweise der Name Ihres Unternehmens.
 
-8. Geben Sie die Kontaktinformationen für das Konto ein.
+    > [AZURE.TIP] Der im Developer Center eingegebene Anzeigename des Herausgebers wird im Azure Marketplace nicht angezeigt, sobald Ihr Angebot aufgeführt wird. Sie müssen dieses Feld aber ausfüllen, um den Registrierungsprozess abzuschließen.
+
+7. Geben Sie die **Kontaktinformationen** für die Kontoüberprüfung ein.
 
     > [AZURE.IMPORTANT] Es ist erforderlich, dass Sie genaue Kontaktinformationen angeben. Sie werden in unserem Überprüfungsprozess für Ihr Unternehmen und seine Genehmigung im Developer Center verwendet.
 
-9. Für ein Unternehmenskonto müssen Sie auch Kontaktinformationen für den **Genehmiger des Unternehmens** angeben. Dies ist die Person, die bestätigen kann, dass Sie zum Erstellen des Kontos im Namen Ihres Unternehmens berechtigt sind. Klicken Sie nach Abschluss dieses Vorgangs auf **Weiter**, um mit dem Abschnitt **Zahlung** fortzufahren.
+8. Geben Sie die Kontaktinformationen für den **Genehmiger des Unternehmens** ein. Der Genehmiger des Unternehmens ist die Person, die gewährleisten kann, dass Sie berechtigt sind, im Developer Center im Auftrag Ihres Unternehmens ein Konto zu erstellen. Klicken Sie nach Abschluss dieses Vorgangs auf **Weiter**, um mit dem Abschnitt **Zahlung** fortzufahren.
 
-10. Geben Sie Ihre Zahlungsinformationen für Ihr Konto ein. Wenn Sie einen Aktionscode haben, der die Kosten der Registrierung abdeckt, können Sie ihn hier eingeben. Geben Sie andernfalls Ihre Kreditkartendaten an (oder PayPal-Daten, wenn dies für Ihren Markt unterstützt wird). Klicken Sie nach Abschluss dieses Vorgangs auf **Weiter**, um mit dem Bildschirm **Überprüfen** fortzufahren.
+    ![Abbildung](media/marketplace-publishing-accounts-creation-registration/imgRegisterCo_08.png)
 
-11. Überprüfen Sie Ihre Kontoinformationen, und bestätigen Sie, dass alles korrekt ist. Lesen und akzeptieren Sie dann die Nutzungsbedingungen des [Microsoft Azure Marketplace-Herausgebervertrags](http://go.microsoft.com/fwlink/?LinkID=699560). Aktivieren Sie das Kontrollkästchen, um anzugeben, dass Sie die Bedingungen gelesen und akzeptiert haben.
+9. Geben Sie Ihre Zahlungsinformationen für Ihr Konto ein. Wenn Sie einen Aktionscode haben, der die Kosten der Registrierung abdeckt, können Sie ihn hier eingeben. Geben Sie andernfalls Ihre Kreditkartendaten an (oder PayPal-Daten, wenn dies für Ihren Markt unterstützt wird). Klicken Sie nach Abschluss dieses Vorgangs auf **Weiter**, um mit dem Bildschirm **Überprüfen** fortzufahren.
 
-12. Klicken Sie auf **Fertig stellen**, um die Registrierung zu bestätigen. Wir senden Ihnen eine Bestätigungsnachricht an Ihre Entwickler-E-Mail-Adresse.
+    ![Abbildung](media/marketplace-publishing-accounts-creation-registration/imgRegisterCo_09.png)
 
-13. Wenn Sie planen, nur kostenlose Angebote zu veröffentlichen, klicken Sie auf **Zum Azure Marketplace-Veröffentlichungsportal wechseln**. Sie können außerdem Abschnitt 3 dieses Dokuments überspringen ([Registrieren Ihres Kontos im Veröffentlichungsportal](#3-register-your-account-in-the-publishing-portal)).
+10. Überprüfen Sie Ihre Kontoinformationen, und bestätigen Sie, dass alles korrekt ist. Lesen und akzeptieren Sie dann die Nutzungsbedingungen des [Microsoft Azure Marketplace-Herausgebervertrags](http://go.microsoft.com/fwlink/?LinkID=699560). Aktivieren Sie das Kontrollkästchen, um anzugeben, dass Sie die Bedingungen gelesen und akzeptiert haben.
 
-14. Wenn Sie die Veröffentlichung von kommerziellen Angeboten planen, klicken Sie auf **Kontoinformationen aktualisieren**. Unter dieser Option müssen Sie die Steuer- und Bankdaten für Ihr Developer Center-Konto angeben.
+11. Klicken Sie auf **Fertig stellen**, um die Registrierung zu bestätigen. Wir senden eine Bestätigungsnachricht an Ihre E-Mail-Adresse.
 
-> [AZURE.IMPORTANT] Ohne vollständige Angabe der Steuer- und Bankdaten können Sie Ihre Angebote in der Stagingumgebung nicht ordnungsgemäß testen, und Sie können Ihre Angebote nicht in die Produktionsumgebung überführen.
+12. Wenn Sie planen, nur kostenlose Angebote zu veröffentlichen, klicken Sie auf **Zum Azure Marketplace-Veröffentlichungsportal wechseln**. Sie können außerdem Abschnitt 3 dieses Dokuments überspringen ([Registrieren Ihres Kontos im Veröffentlichungsportal](#3-register-your-account-in-the-publishing-portal)).
+
+Wenn Sie die Veröffentlichung von kommerziellen Angeboten planen (z.B. VM-Angebote mit stündlichem Abrechnungsmodell), klicken Sie auf **Kontoinformationen aktualisieren**. Unter dieser Option müssen Sie die Steuer- und Bankdaten für Ihr Developer Center-Konto angeben.
+
+Wenn Sie Ihre Steuer- und Bankdaten später aktualisieren möchten, können Sie mit dem nächsten Abschnitt fortfahren, d.h. Abschnitt 3 dieses Dokuments, [Registrieren Ihres Kontos im Veröffentlichungsportal](#3-register-your-account-in-the-publishing-portal), und später über die Links im Azure-Veröffentlichungsportal zurückkehren.
+
+> [AZURE.IMPORTANT] Kommerzielle Angebote können Sie nicht ohne Angabe der Steuer- und Bankdaten in die Produktionsumgebung überführen.
 
 Wenn Sie Ihre Steuer- und Bankdaten später aktualisieren möchten, können Sie mit Abschnitt 3, [Registrieren Ihres Kontos im Veröffentlichungsportal](#3-register-your-account-in-the-publishing-portal), fortfahren und später über die Links im Azure-Veröffentlichungsportal zurückkehren.
 
@@ -134,29 +143,47 @@ Wenn Sie Ihre Steuer- und Bankdaten später aktualisieren möchten, können Sie 
 
 > [AZURE.WARNING] Ohne vollständige Angabe der Steuer- und Bankinformationen in Ihrem Microsoft Developer Center-Konto können Sie Ihre kommerziellen Angebote nicht in die Produktionsumgebung überführen.
 
+Wenn beim Abschließen der Developer Center-Registrierung Probleme auftreten, öffnen Sie wie nachfolgend beschrieben ein Supportticket:
+
+1. Klicken Sie auf den Supportlink [https://developer.microsoft.com/windows/support](https://developer.microsoft.com/windows/support).
+2. Klicken Sie im Abschnitt **Kontakt** auf die Schaltfläche **Vorfall übermitteln** (wie im folgenden Screenshot gezeigt).
+
+    ![Abbildung](media/marketplace-publishing-accounts-creation-registration/imgAddTax_02.png)
+
+3. Wählen Sie „Hilfe zu Developer Center“ als **Problemtyp** und „Veröffentlichen und Verwalten von Apps“ als **Kategorie**. Klicken Sie anschließend auf die Schaltfläche „E-Mail starten“.
+
+    ![Abbildung](media/marketplace-publishing-accounts-creation-registration/imgAddTax_03.png)
+
+4. Ihnen wird eine Anmeldeseite zur Verfügung gestellt. Verwenden Sie eine beliebige Microsoft-Kontenanmeldung. Wenn Sie kein Microsoft-Konto besitzen, erstellen Sie eins mit diesem [Link](https://signup.live.com/signup?uaid=0089f09ccae94043a0f07c2aaf928831&lic=1).
+5. Tragen Sie die Details des Problems ein, und übermitteln Sie das Ticket durch Klicken auf die Schaltfläche **Übermitteln** .
+
+    ![Abbildung](media/marketplace-publishing-accounts-creation-registration/imgAddTax_05.png)
+
 ## 3\. Registrieren Ihres Kontos im Veröffentlichungsportal
-Das Azure-Veröffentlichungsportal dient zum Veröffentlichen und Verwalten Ihrer Angebote. Das Portal bietet einige nützliche Informationen, die Sie durch den Prozess der Angebotserstellung führen.
+Das [Veröffentlichungsportal](http://publish.windowsazure.com) dient zum Veröffentlichen und Verwalten Ihrer Angebote.
 
-> [AZURE.WARNING] Sie müssen hier das gleiche Microsoft-Konto verwenden, das zur Registrierung beim Microsoft Developer Center verwendet wurde. Nachdem das Masterkonto für die Veröffentlichung erstellt wurde, können diesem Konto weitere Benutzer hinzugefügt werden.
+1. Öffnen Sie eine neue Chrome-Inkognito- oder Internet Explorer-InPrivate-Browsersitzung, um sicherzustellen, dass Sie nicht bei einem persönlichen Konto angemeldet sind.
 
-1.	Öffnen Sie eine neue Chrome-Inkognito- oder Internet Explorer-InPrivate-Browsersitzung, um sicherzustellen, dass Sie nicht bei einem persönlichen Konto angemeldet sind.
+2. Wechseln Sie zu [http://publish.windowsazure.com](http://publish.windowsazure.com).
 
-2.	Wechseln Sie zu [http://publish.windowsazure.com](http://publish.windowsazure.com).
+3. Wenn Sie sich als neuer Benutzer zum ersten Mal beim Veröffentlichungsportal anmelden, müssen Sie sich mit der gleichen E-Mail-ID anmelden, unter der Ihr Developer Center-Konto registriert ist. Auf diese Weise werden Ihr Developer Center-Konto und das Veröffentlichungsportal miteinander verknüpft. Sie können später als Co-Admin die anderen Mitglieder des Unternehmens, die an der Anwendung arbeiten, mit den folgenden Schritten dem Veröffentlichungsportal hinzufügen.
 
-3.	Melden Sie sich mit dem Microsoft-Konto an, das Sie für Ihr Unternehmen registriert haben (also marketplace@example.com), und fügen Sie nach Bedarf Co-Admins hinzu.
+Wenn Sie als Co-Admin dem Veröffentlichungsportal hinzugefügt werden, können Sie sich mit Ihrem Co-Admin-Konto anmelden.
 
   > [AZURE.TIP] Die Teilnahmerichtlinien werden auf der [Azure-Website](https://azure.microsoft.com/support/legal/marketplace/participation-policies/) beschrieben.
 
-  > Wenn beim Abschließen der Developer Center-Registrierung Probleme auftreten, öffnen Sie wie nachfolgend beschrieben ein Supportticket:
-  1. Wenden Sie sich an den [Support](https://support.microsoft.com/getsupport?wf=0&tenant=ClassicCommercial&oaspworkflow=start_1.0.0.0&supportregion=de-DE&pesid=15635&ccsid=635847950577064286).
-  2. Wählen Sie **Developer Center** aus.
-  3. Wählen Sie **Profil**.
-  4. Wählen Sie die Methode für die Kontaktaufnahme aus.
+## Schritte zum Hinzufügen eines Co-Admins im Veröffentlichungsportal
+**Wenn Sie Administrator sind**, können Sie mit den folgenden Schritten einen Co-Admin hinzufügen.
 
+>[AZURE.NOTE] **Für die neuen Benutzer:** Bevor Sie einen Co-Admin im Veröffentlichungsportal hinzufügen, stellen Sie, dass Sie mindestens eine Anwendung im Veröffentlichungsportal erstellt haben. Dies ist erforderlich, da die Registerkarte **HERAUSGEBER** nur nach der Erstellung mindestens einer Anwendung im Veröffentlichungsportal angezeigt wird.
 
+1. Stellen Sie sicher, dass die Co-Admin-E-Mail-ID ein Microsoft-Konto (MSA) ist. Falls nicht, registrieren Sie sie mit diesem [Link](https://signup.live.com/signup?uaid=0089f09ccae94043a0f07c2aaf928831&lic=1) als MSA.
+2. Stellen Sie sicher, dass mindestens eine Anwendung unter dem Administratorkonto vorhanden ist, bevor Sie versuchen, einen Co-Admin hinzuzufügen.
+3. Nachdem Sie die obigen Schritte ausgeführt haben, melden Sie sich mit der Co-Admin-E-Mail-ID beim Veröffentlichungsportal an und dann wieder ab.
+4. Melden Sie sich jetzt mit der Admin-E-Mail-ID beim Veröffentlichungsportal an.
+5. Navigieren Sie zu „Herausgeber“ > wählen Sie Ihr Konto > „Administratoren“ > fügen Sie den Co-Admin hinzu (siehe Screenshot unten)
 
-
-
+  ![Abbildung](media/marketplace-publishing-accounts-creation-registration/imgAddAdmin_05.png)
 
 ## Nächste Schritte
 Nach der Erstellung und Registrierung Ihres Kontos sollten Sie nun sicherstellen, dass Sie alle nicht technischen Voraussetzungen für die Veröffentlichung Ihres Angebots erfüllen. Lesen Sie sich hierzu [Nicht technische Voraussetzungen](marketplace-publishing-pre-requisites.md) durch.
@@ -191,4 +218,4 @@ Nach der Erstellung und Registrierung Ihres Kontos sollten Sie nun sicherstellen
 [link-devsvc-prereq]: marketplace-publishing-dev-service-creation-prerequisites.md
 [link-pushstaging]: marketplace-publishing-push-to-staging.md
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0803_2016-->

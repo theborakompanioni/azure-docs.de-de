@@ -21,7 +21,7 @@
 
 In diesem Tutorial erfahren Sie, wie Sie umfangreiche komplexe Anwendungen mit [Azure App Service](/services/app-service/) auf eine Weise erstellen, die die [agile Softwareentwicklung](https://en.wikipedia.org/wiki/Agile_software_development) unterstützt. Es wird davon ausgegangen, dass Sie bereits wissen, wie Sie [komplexe Anwendungen in Azure vorhersehbar bereitstellen](app-service-deploy-complex-application-predictably.md).
 
-Einschränkungen bei den technischen Prozessen stehen einer erfolgreichen Umsetzung agiler Methoden mitunter im Weg. Azure App Service kann mit Features wie [kontinuierliche Veröffentlichung](web-sites-publish-source-control.md), [Stagingumgebungen](web-sites-staged-publishing.md) (Slots) und [Überwachung](web-sites-monitor.md) und bei überlegter Kombination mit der Orchestrierung und Verwaltung der Bereitstellung im [Azure-Ressourcen-Manager](../resource-group-overview.md) Teil einer überzeugenden Lösung für Entwickler sein, die die agile Softwareentwicklung bevorzugen.
+Einschränkungen bei den technischen Prozessen stehen einer erfolgreichen Umsetzung agiler Methoden mitunter im Weg. Azure App Service kann mit Features wie [kontinuierliche Veröffentlichung](app-service-continuous-deployment.md), [Stagingumgebungen](web-sites-staged-publishing.md) (Slots) und [Überwachung](web-sites-monitor.md) und bei überlegter Kombination mit der Orchestrierung und Verwaltung der Bereitstellung im [Azure-Ressourcen-Manager](../resource-group-overview.md) Teil einer überzeugenden Lösung für Entwickler sein, die die agile Softwareentwicklung bevorzugen.
 
 Die folgende Tabelle enthält eine kurze Liste der Anforderungen an die agile Entwicklung und wie Azure-Dienste zu deren Erfüllung beitragen.
 
@@ -77,7 +77,7 @@ Sie verwenden auch die übliche Verzweigungsstrategie, bei der Code aus der Entw
 
 >[AZURE.NOTE] Das Skript in diesem Tutorial konfiguriert automatisch die kontinuierliche Veröffentlichung aus Ihrem GitHub-Repository. Dies erfordert, dass Ihre Anmeldeinformationen für GitHub bereits in Azure gespeichert sind. Andernfalls misslingt die skriptgesteuerte Bereitstellung, wenn versucht wird, Quellcodeverwaltungseinstellungen für die Web-Apps zu konfigurieren.
 >
->Um Ihre GitHub-Anmeldeinformationen in Azure zu speichern, erstellen Sie eine Web-App im [Azure-Portal](https://portal.azure.com/) und [konfigurieren die GitHub-Bereitstellung](web-sites-publish-source-control.md#Step7). Dies ist nur einmalig erforderlich.
+>Um Ihre GitHub-Anmeldeinformationen in Azure zu speichern, erstellen Sie eine Web-App im [Azure-Portal](https://portal.azure.com/) und [konfigurieren die GitHub-Bereitstellung](app-service-continuous-deployment.md). Dies ist nur einmalig erforderlich.
 
 In einem typischen DevOps-Szenario verfügen Sie über eine Anwendung, die aktiv in Azure ausgeführt wird und an der Sie über die fortlaufende Veröffentlichung Änderungen vornehmen möchten. In diesem Szenario haben Sie eine Vorlage, die Sie entwickelt, getestet und zum Bereitstellen der Produktionsumgebung verwendet haben. Diese Vorlage werden Sie in diesem Abschnitt einrichten.
 
@@ -282,4 +282,4 @@ Eine agile Softwareentwicklung ist für viele Unternehmen unverzichtbar, die Azu
 -	[Erstellen oder Bearbeiten von Benutzern in Azure AD](https://msdn.microsoft.com/library/azure/hh967632.aspx#BKMK_1)
 -	[Wiki zum Kudu-Projekt](https://github.com/projectkudu/kudu/wiki)
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0803_2016-->

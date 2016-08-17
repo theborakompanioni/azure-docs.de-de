@@ -1,7 +1,7 @@
 <properties 
 	pageTitle="App Service – API-App-Trigger | Microsoft Azure" 
 	description="Hier wird erläutert, wie Trigger in einer API-App in Azure App Service implementiert werden." 
-	services="app-service\logic" 
+	services="logic-apps" 
 	documentationCenter=".net" 
 	authors="guangyang"
 	manager="wpickett" 
@@ -342,4 +342,4 @@ Im Folgenden finden Sie ein Beispiel dafür, wie diese Klasse implementiert werd
     }
  
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

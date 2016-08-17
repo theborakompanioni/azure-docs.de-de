@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="05/25/2016"
+	ms.date="08/09/2016"
 	ms.author="sdanie"/>
 
 # Verwalten Ihrer ersten API in Azure API Management
@@ -59,7 +59,7 @@ Das System setzt sich aus den folgenden Komponenten zusammen:
 
 ## <a name="create-service-instance"> </a>Erstellen einer API Management-Instanz
 
->[AZURE.NOTE] Um dieses Lernprogramm abzuschließen, benötigen Sie ein Azure-Konto. Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Konto erstellen. Einzelheiten finden Sie unter [Kostenlose Azure-Testversion][].
+>[AZURE.NOTE] Sie benötigen ein Azure-Konto, um dieses Lernprogramm auszuführen. Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Konto erstellen. Einzelheiten finden Sie unter [Kostenlose Azure-Testversion][].
 
 Der erste Schritt bei der Arbeit mit API Management ist die Erstellung einer Dienstinstanz. Melden Sie sich beim [klassischen Azure-Portal][] an, und klicken Sie auf **Neu**, **App Services**, **API Management** und **Erstellen**.
 
@@ -105,7 +105,7 @@ Klicken Sie zum Importieren der Rechner-API im Menü **API Management** auf der 
 
 Führen Sie die folgenden Schritte aus, um die Rechner-API zu konfigurieren:
 
-1. Klicken Sie auf **Aus URL**, geben Sie **http://calcapi.cloudapp.net/calcapi.json** in das Textfeld **URL für Spezifikationsdokument** ein, und aktivieren Sie das Optionsfeld **Swagger**.
+1. Klicken Sie auf **Aus URL**, geben Sie **http://calcapi.cloudapp.net/calcapi.json** in das in das Textfeld **URL für Spezifikationsdokument** ein, und aktivieren Sie das Optionsfeld **Swagger**.
 2. Geben Sie in das Textfeld **URL-Suffix für Web-API** den Wert **calc** ein.
 3. Klicken Sie auf das Feld **Produkte (optional)**, und wählen Sie **Starter**.
 4. Klicken Sie auf **Speichern**, um die API zu importieren.
@@ -245,4 +245,4 @@ Der Abschnitt **Analyse** enthält die folgenden vier Registerkarten:
 [api-management-]: ./media/api-management-get-started/api-management-.png
 [api-management-]: ./media/api-management-get-started/api-management-.png
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0810_2016-->

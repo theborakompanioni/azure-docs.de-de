@@ -14,7 +14,7 @@
 	ms.topic="hero-article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="07/27/2016"
+	ms.date="08/04/2016"
 	ms.author="jeffstok"
 />
 
@@ -29,7 +29,7 @@ In diesem Tutorial erfahren Sie, wie Sie Datenstrom-Verarbeitungslogik erstellen
 
 ## Szenario
 
-Contoso ist ein Fertigungsunternehmen im Bereich der industriellen Automation, das seinen Fertigungsprozess vollständig automatisiert hat. Die Maschinen im Werk verfügen über Sensoren, die in Echtzeit Datenströme ausgeben. In diesem Szenario möchte ein Production Floor Manager in Echtzeit Einblick in die Sensordaten erhalten, um darin nach Mustern zu suchen und entsprechend darauf zu reagieren. Wir verwenden die Stream Analytics Query Language (SAQL) für die Sensordaten, um für den eingehenden Datenstrom interessante Muster zu ermitteln.
+Contoso ist ein Unternehmen im Bereich der industriellen Automation, das seinen Fertigungsprozess vollständig automatisiert hat. Die Maschinen im Werk verfügen über Sensoren, die Datenströme in Echtzeit ausgeben können. In diesem Szenario möchte ein Production Floor Manager in Echtzeit Einblick in die Sensordaten erhalten, um darin nach Mustern zu suchen und entsprechend darauf zu reagieren. Wir verwenden die Stream Analytics Query Language (SAQL) für die Sensordaten, um für den eingehenden Datenstrom interessante Muster zu ermitteln.
 
 In diesem Fall werden die Daten von einem Texas Instruments SensorTag-Gerät generiert.
 
@@ -45,78 +45,78 @@ Die Nutzlast der Daten liegt im JSON-Format vor und sieht wie folgt aus:
 	    "hmdt": 34  
 	}  
     
-In einem echten Fall generieren Hunderte dieser Sensoren Ereignisse als Datenstrom. Idealerweise ist dann ein Gatewaygerät vorhanden, auf dem Code ausgeführt wird, um diese Ereignisse an [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) zu übertragen. Ihr Stream Analytics-Auftrag würde diese Ereignisse von den Event Hubs nutzen und Echtzeitanalysen ausführen, die als Abfragen ausgedrückt werden, und die Ergebnisse an die gewünschten Ausgaben senden.
+In der Praxis können Hunderte dieser Sensoren einen Datenstrom mit Ereignissen generieren. Idealerweise ist dann ein Gatewaygerät vorhanden, auf dem Code ausgeführt wird, um diese Ereignisse mittels Push an [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) oder [Azure IoT Hubs](https://azure.microsoft.com/services/iot-hub/) zu übertragen. Ihr Stream Analytics-Auftrag erfasst diese Ereignisse über Event Hubs und führt in Echtzeit Analyseabfragen für die Datenströme aus. Die Ergebnisse können dann an eine der [unterstützten Ausgaben](stream-analytics-define-outputs.md) gesendet werden.
 
-In dieser Anleitung für die ersten Schritte stellen wir Ihnen eine Beispieldatendatei bereit, deren Daten von echten SensorTag-Geräten erfasst wurden. Sie können hierfür verschiedene Abfragen ausführen und die Ergebnisse anzeigen. In den nachfolgenden Tutorials erfahren Sie, wie Sie Ihren Auftrag mit Eingaben und Ausgaben verbinden und für den Azure-Dienst bereitstellen.
+In dieser Einstiegsanleitung wird der Einfachheit halber eine Beispieldatendatei mit Daten von echten SensorTag-Geräten bereitgestellt, für die Sie verschiedene Abfragen ausführen und Ergebnisse anzeigen können. In den nachfolgenden Tutorials erfahren Sie, wie Sie Ihren Auftrag mit Eingaben und Ausgaben verbinden und für den Azure-Dienst bereitstellen.
 
 ## Erstellen eines Stream Analytics-Auftrags
 
-Öffnen Sie Stream Analytics im [Azure-Portal](http://manage.windowsazure.com), und klicken Sie in der unteren linken Ecke der Seite auf **Neu**, um einen neuen Analytics-Auftrag zu erstellen.
+Wählen Sie im [Azure-Portal](http://manage.windowsazure.com) die Option „Stream Analytics“ aus, und klicken Sie links unten auf der Seite auf **Neu**, um einen neuen Analytics-Auftrag zu erstellen.
 
-![](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-02.png)
+![Neuen Stream Analytics-Auftrag erstellen](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-02.png)
 
 Klicken Sie auf **Schnellerfassung**.
 
-Wählen Sie **Neues Speicherkonto erstellen** für die Einstellung **Regionales Überwachungskonto für Speicher**, und geben Sie diesem einen eindeutigen Namen. Azure Stream Analytics verwendet dieses Konto, um Überwachungsinformationen für alle Ihre zukünftigen Aufträge zu speichern.
+Wählen Sie für die Einstellung **Speicherkonto für regionale Überwachung** die Option **Neues Speicherkonto erstellen** aus, und versehen Sie das Konto mit einem eindeutigen Namen. Azure Stream Analytics verwendet dieses Konto, um Überwachungsinformationen für alle Ihre zukünftigen Aufträge zu speichern.
 
 > [AZURE.NOTE] Sie sollten dieses Speicherkonto nur einmal pro Region erstellen. Dieser Speicher wird dann für alle Stream Analytics-Aufträge freigegeben, die in dieser Region erstellt werden.
 
-Klicken Sie am unteren Ende der Seite auf **Stream Analytics-Auftrag erstellen**.
+Klicken Sie am Ende der Seite auf **Stream Analytics-Auftrag erstellen**.
 
-![](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-03.jpg)
+![Speicherkontokonfiguration](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-03.jpg)
 
 ## Azure Stream Analytics-Abfrage
 
-Klicken Sie auf die Registerkarte „Abfrage“, um zum Abfrage-Editor zu wechseln. Die Registerkarte „Abfrage“ enthält eine SQL-Abfrage, die die Transformation der eingehenden Daten ausführt.
+Klicken Sie auf die Registerkarte „Abfrage“, um zum Abfrage-Editor zu wechseln. Die Registerkarte „Abfrage“ enthält eine T-SQL-Abfrage, die die Transformation der eingehenden Ereignisdaten ausführt.
 
 ## Archivieren von Rohdaten
 
 Die einfachste Form einer Abfrage ist ein Passthrough-Vorgang, bei dem alle Eingabedaten unter dem angegebenen Ausgabeort archiviert werden.
 
-![](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-04.png)
+![Auftragsabfrage archivieren](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-04.png)
 
-Laden Sie jetzt die Beispieldatendatei von [GitHub](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/GettingStarted) an einen Speicherort auf Ihrem Computer herunter. Kopieren Sie die Abfrage aus der Datei **PassThrough.txt**, und fügen Sie sie ein. Klicken Sie unten auf die Schaltfläche „Test“, und wählen Sie die Datendatei mit dem Namen **HelloWorldASA-InputStream.json** an Ihrem Downloadspeicherort aus.
+Laden Sie nun die Beispieldatendatei von [GitHub](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/GettingStarted) an einen Speicherort auf Ihrem Computer herunter. Kopieren Sie die Abfrage aus der Datei **PassThrough.txt**, und fügen Sie sie ein. Klicken Sie weiter unten auf die Schaltfläche „Test“, und wählen Sie an Ihrem Downloadspeicherort die Datendatei mit dem Namen **HelloWorldASA-InputStream.json** aus.
 
-![](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-05.png)
+![Schaltfläche „Test“ in Stream Analytics](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-05.png)
 
-![](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-06.png)
+![Eingabedatenstrom testen](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-06.png)
 
-Die Ergebnisse der Abfrage sind im unten dargestellten Browser zu sehen.
+Die Ergebnisse der Abfrage werden im Browser angezeigt:
 
-![](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-07.png)
+![Testergebnisse](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-07.png)
 
-## Bereinigen der Daten anhand einer Bedingung
+## Filtern der Daten auf der Grundlage einer Bedingung
 
 Wir versuchen nun, die Ergebnisse anhand einer Bedingung zu filtern. Wir möchten nur Ergebnisse für die Ereignisse anzeigen, die von „SensorA“ stammen. Die Abfrage befindet sich in der Datei **Filtering.txt**.
 
-![](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-08.png)
+![Datenstrom filtern](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-08.png)
 
 Beachten Sie Folgendes: Wir vergleichen hier einen Zeichenfolgenwert, und die Groß-/Kleinschreibung wird berücksichtigt. Klicken Sie auf die Schaltfläche **Erneut ausführen**, um die Abfrage auszuführen. Mit der Abfrage sollten nur 389 Zeilen für 1.860 Ereignisse zurückgegeben werden.
 
-![](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-09.png)
+![Zweite Ausgabeergebnisse des Abfragetests](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-09.png)
 
 ## Anzeigen von Warnungen zum Auslösen des Geschäftsworkflows
 
-Wir gestalten die Abfrage jetzt etwas interessanter. Wenn wir für jeden Typ von Sensor die Durchschnittstemperatur für ein Zeitfenster von 30 Sekunden überwachen und Ergebnisse nur anzeigen möchten, wenn die Durchschnittstemperatur mehr als 100 Grad beträgt, schreiben wir die unten angegebene Abfrage und klicken dann auf „Erneut ausführen“, um die Ergebnisse anzuzeigen. Die Abfrage befindet sich in der Datei **ThresholdAlerting.txt**.
+Im nächsten Schritt fügen wir unserer Abfrage weitere Details hinzu. Wenn wir für jede Art von Sensor die Durchschnittstemperatur für ein Zeitfenster von 30 Sekunden überwachen und Ergebnisse nur anzeigen möchten, wenn die Durchschnittstemperatur mehr als 100 Grad beträgt, schreiben wir die unten angegebene Abfrage und klicken dann auf **Erneut ausführen**, um die Ergebnisse anzuzeigen. Die Abfrage befindet sich in der Datei **ThresholdAlerting.txt**.
 
-![](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-10.png)
+![Filterabfrage (30 Sekunden)](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-10.png)
 
-Sie sehen, dass die Ergebnisse jetzt nur 245 Zeilen mit den Sensoren enthalten, bei denen die Durchschnittstemperatur höher als 100 ist. In dieser Abfrage haben wir den Datenstrom mit den Ereignissen nach „dspl“ gruppiert. Dies ist der Sensorname. Es wird ein **rollierendes Fenster** von 30 Sekunden verwendet. Bei Zeitabfragen dieser Art ist es wichtig anzugeben, wie der Zeitablauf erfolgen soll. Mit der **TIMESTAMP BY**-Klausel haben wir die Spalte „time“ als Grundlage für den zeitlichen Ablauf aller Zeitberechnungen angegeben. Ausführliche Informationen finden Sie in den MSDN-Themen zum [Zeitmanagement](https://msdn.microsoft.com/library/azure/mt582045.aspx) und [„Windowing“](https://msdn.microsoft.com/library/azure/dn835019.aspx).
+Die Ergebnisse umfassen nun nur noch 245 Zeilen, und es werden die Sensoren aufgeführt, bei denen die Durchschnittstemperatur höher als 100 ist. In dieser Abfrage haben wir den Datenstrom mit den Ereignissen nach **dspl** (Sensorname) gruppiert, und es wird ein **rollierendes Fenster** von 30 Sekunden verwendet. Bei Zeitabfragen dieser Art muss unbedingt der gewünschte zeitliche Ablauf angegeben werden. Mit der **TIMESTAMP BY**-Klausel haben wir die Spalte „time“ als Grundlage für den zeitlichen Ablauf aller Zeitberechnungen angegeben. Ausführliche Informationen finden Sie in den MSDN-Themen zu den Funktionen [Time Management](https://msdn.microsoft.com/library/azure/mt582045.aspx) (Zeitverwaltung) und [Windowing](https://msdn.microsoft.com/library/azure/dn835019.aspx).
 
-![](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-11.png)
+![Temperatur über 100 Grad](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-11.png)
 
-## Ermitteln von fehlenden Mustern
+## Erkennen der Abwesenheit von Ereignissen
 
-Wie kann ich eine Abfrage schreiben, um fehlende Muster zu ermitteln? Wir können beispielsweise ermitteln, wann ein Sensor zum letzten Mal Daten gesendet und danach eine Minute lang keine weiteren Ereignisse gesendet hat. Die Abfrage befindet sich in der Datei **AbsenseOfEvent.txt**.
+Wie können wir eine Abfrage schreiben, die einen Mangel an Eingabeereignissen findet? Das ist eigentlich ganz einfach. Ermitteln wir doch einmal, wann ein Sensor zum letzten Mal Daten gesendet und danach eine Minute lang keine weiteren Ereignisse gesendet hat. Die Abfrage befindet sich in der Datei **AbsenseOfEvent.txt**.
 
-![](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-12.png)
+![Abwesenheit von Ereignissen erkennen](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-12.png)
 
-Hier verwenden wir **LEFT OUTER JOIN** für denselben Datenstrom (Selbstverknüpfung). Für eine innere Verknüpfung wird nur dann ein Ergebnis zurückgegeben, wenn eine Übereinstimmung gefunden wird. Wenn ein Ereignis von der linken Seite der Verknüpfung keine Übereinstimmung aufweist, wird für eine **LEFT OUTER**-Verknüpfung aber eine Zeile mit NULL für alle Spalten der rechten Zeile zurückgegeben. Dieses Verfahren ist sehr nützlich, um das Nichtvorhandensein von Ereignissen zu ermitteln. Weitere Informationen zu [JOIN](https://msdn.microsoft.com/library/azure/dn835026.aspx) finden Sie in der MSDN-Dokumentation.
+Hier verwenden wir **LEFT OUTER JOIN** für den gleichen Datenstrom (Selbstverknüpfung). Für eine innere Verknüpfung wird nur dann ein Ergebnis zurückgegeben, wenn eine Übereinstimmung gefunden wird. Wenn jedoch ein Ereignis von der linken Seite der Verknüpfung keine Übereinstimmung besitzt, wird bei **LEFT OUTER JOIN** für alle Spalten der rechten Zeile eine Zeile mit NULL zurückgegeben. Dieses Verfahren ist äußerst hilfreich, um die Abwesenheit von Ereignissen zu ermitteln. Weitere Informationen zu [JOIN](https://msdn.microsoft.com/library/azure/dn835026.aspx) finden Sie in der MSDN-Dokumentation.
 
-![](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-13.png)
+![JOIN-Ergebnisse](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-13.png)
 
 ## Zusammenfassung
 
-In diesem Tutorial werden die Grundlagen dazu vermittelt, wie Sie verschiedene SAQL-Abfragen schreiben und die Ergebnisse im Browser in unterschiedlichen Mustern für die Daten anzeigen können. Dies ist aber erst der Anfang. Sie haben mit Stream Analytics noch viele weitere Möglichkeiten. Als Nächstes erfahren Sie, wie Sie den Stream Analytics-Auftrag mit Eingaben und Ausgaben verbinden und ihn unter Azure bereitstellen. Sie können sich weiter über Stream Analytics informieren, indem Sie den [Lernpfad](https://azure.microsoft.com/documentation/learning-paths/stream-analytics/) verwenden. Weitere Informationen zum Schreiben von Abfragen erhalten Sie im Artikel [Gängige Abfragemuster](./stream-analytics-stream-analytics-query-patterns.md#query-example-detect-the-absence-of-events).
+In diesem Tutorial erfahren Sie, wie Sie verschiedene Abfragen in der Stream Analytics-Abfragesprache schreiben und die Ergebnisse im Browser anzeigen. Dies ist aber erst der Anfang. Sie haben mit Stream Analytics noch viele weitere Möglichkeiten. Stream Analytics unterstützt verschiedenste Ein- und Ausgaben und kann sogar Funktionen in Azure Machine Learning nutzen. Das macht Stream Analytics zu einem zuverlässigen Tool für die Datenstromanalyse. Über den [Lernpfad](https://azure.microsoft.com/documentation/learning-paths/stream-analytics/) können Sie sich ausführlicher mit Stream Analytics vertraut machen. Weitere Informationen zum Schreiben von Abfragen finden Sie im Artikel [Gängige Abfragemuster](./stream-analytics-stream-analytics-query-patterns.md).
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0810_2016-->

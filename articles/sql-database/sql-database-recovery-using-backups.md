@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="07/09/2016"
+   ms.date="08/01/2016"
    ms.author="sstein"/>
 
 # Wiederherstellen einer Azure SQL-Datenbank mit automatisierten Datenbanksicherungen
@@ -65,7 +65,7 @@ Mit dem Verfahren zum Wiederherstellen einer gelöschten Datenbank können Sie e
 
 > [AZURE.IMPORTANT] Wenn Sie eine Azure SQL-Datenbankserverinstanz löschen, werden auch alle dazugehörigen Datenbanken gelöscht und können nicht wiederhergestellt werden. Derzeit wird das Wiederherstellen gelöschter Server nicht unterstützt.
 
-Für die wiederhergestellte Datenbank können Sie den gleichen oder einen neuen Namen verwenden. Sie können dazu das [Azure-Portal](sql-database-restore-deleted-database-portal.md), [PowerShell](sql-database-restore-deleted-database-powershell.md) oder die [REST-API](https://msdn.microsoft.com/library/azure/mt163685.aspx) verwenden.
+Für die wiederhergestellte Datenbank können Sie den gleichen oder einen neuen Namen verwenden. Sie können dazu das [Azure-Portal](sql-database-restore-deleted-database-portal.md), [PowerShell](sql-database-restore-deleted-database-powershell.md) oder [REST (createMode=Restore)](https://msdn.microsoft.com/library/azure/mt163685.aspx) verwenden.
 
 > [AZURE.SELECTOR]
 - [Wiederherstellen einer gelöschten Datenbank: im Azure-Portal](sql-database-restore-deleted-database-portal.md)
@@ -73,7 +73,7 @@ Für die wiederhergestellte Datenbank können Sie den gleichen oder einen neuen 
 
 ## Geowiederherstellung
 
-Mit der Geowiederherstellung können Sie eine SQL-Datenbank auf einem beliebigen Server in einer beliebigen Azure-Region aus der letzten georeplizierten [automatisierten täglichen Sicherung](sql-database-automated-backups.md) wiederherstellen. Die Geowiederherstellung verwendet eine georedundante Sicherung als Quelle und kann selbst dann zum Wiederherstellen einer Datenbank verwendet werden, wenn die Datenbank oder das Rechenzentrum aufgrund eines Ausfalls nicht mehr verfügbar ist. Sie können dazu das [Azure-Portal](sql-database-geo-restore-portal.md), [PowerShell](sql-database-geo-restore-powershell.md) oder [REST (createMode=Restore)](https://msdn.microsoft.com/library/azure/mt163685.aspx) verwenden.
+Mit der Geowiederherstellung können Sie eine SQL-Datenbank auf einem beliebigen Server in einer beliebigen Azure-Region aus der letzten georeplizierten [automatisierten täglichen Sicherung](sql-database-automated-backups.md) wiederherstellen. Die Geowiederherstellung verwendet eine georedundante Sicherung als Quelle und kann selbst dann zum Wiederherstellen einer Datenbank verwendet werden, wenn die Datenbank oder das Rechenzentrum aufgrund eines Ausfalls nicht mehr verfügbar ist. Sie können dazu das [Azure-Portal](sql-database-geo-restore-portal.md), [PowerShell](sql-database-geo-restore-powershell.md) oder [REST (createMode=Recovery)](https://msdn.microsoft.com/library/azure/mt163685.aspx) verwenden.
 
 > [AZURE.SELECTOR]
 - [Geowiederherstellung: im Azure-Portal](sql-database-geo-restore-portal.md)
@@ -105,7 +105,7 @@ Wie bereits zuvor erwähnt, kann die Datenbankwiederherstellung nicht nur über 
 
 |API|Beschreibung|
 |---|-----------|
-|[REST (createMode=Restore)](https://msdn.microsoft.com/library/azure/mt163685.aspx)|Stellt eine Datenbank wieder her.|
+|[REST (createMode=Recovery)](https://msdn.microsoft.com/library/azure/mt163685.aspx)|Stellt eine Datenbank wieder her.|
 |[Get Create or Update Database Status](https://msdn.microsoft.com/library/azure/mt643934.aspx)|Ruft den Status während eines Wiederherstellungsvorgangs ab.|
 ||||
 
@@ -122,4 +122,4 @@ Automatische Sicherungen schützen Ihre Datenbanken vor Benutzer- und Anwendungs
 - Informationen über schnellere Wiederherstellungsoptionen finden Sie unter [Aktive Georeplikation](sql-database-geo-replication-overview.md).
 - Informationen zum Verwenden automatisierter Sicherungen für die Archivierung finden Sie unter [Datenbankkopie](sql-database-copy.md).
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

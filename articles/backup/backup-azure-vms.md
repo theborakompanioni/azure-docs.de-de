@@ -21,14 +21,14 @@
 # Sichern von virtuellen Azure-Computern
 
 > [AZURE.SELECTOR]
-- [Sichern von ARM-VMs in Azure](backup-azure-arm-vms.md)
+- [Sichern virtueller Azure Resource Manager-Computer (ARM)](backup-azure-arm-vms.md)
 - [Sichern von virtuellen Azure-Computern](backup-azure-vms.md)
 
-In diesem Artikel werden die Verfahren zum Sichern Ihrer virtuellen Azure-Computer (VMs) erläutert.
-
-Bevor Sie einen virtuellen Azure-Computer sichern können, müssen Sie zunächst einige Dinge erledigen. Falls noch nicht erfolgt, erfüllen Sie die [Voraussetzungen](backup-azure-vms-prepare.md) zur Vorbereitung Ihrer Umgebung auf das Sichern Ihrer VMs.
+In diesem Artikel werden die Verfahren zum Sichern klassisch bereitgestellter virtueller Azure-Computer in einem Sicherungstresor erläutert. Bevor Sie einen virtuellen Azure-Computer sichern können, müssen Sie einige Aufgaben ausführen. Falls noch nicht erfolgt, erfüllen Sie die [Voraussetzungen](backup-azure-vms-prepare.md) zur Vorbereitung Ihrer Umgebung auf das Sichern Ihrer VMs.
 
 Weitere Informationen finden Sie in den Artikeln [Planen der Sicherungsinfrastruktur für virtuelle Computer in Azure](backup-azure-vms-introduction.md) und [Dokumentation zu Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/).
+
+>[AZURE.NOTE] Azure verfügt über zwei Bereitstellungsmodelle zum Erstellen und Verwenden von Ressourcen: [Resource Manager-Modell und klassisches Modell](../resource-manager-deployment-model.md). Mit einem Sicherungstresor können nur klassisch bereitgestellte virtuelle Computer geschützt werden. Mit Resource Manager bereitgestellte virtuelle Computer können nicht mit einem Sicherungstresor geschützt werden. Ausführliche Informationen zur Verwendung von Recovery Services-Tresoren finden Sie unter [Sichern virtueller Azure Resource Manager-Computer (ARM)](backup-azure-arm-vms.md).
 
 Zur Sicherung virtueller Azure-Computer gehören drei Hauptschritte:
 
@@ -145,7 +145,7 @@ Azure-Sicherungstresore, die nach Mai 2015 erstellt wurden, enthalten eine im T
 
     Ein Auftrag wird erstellt, um die Schutzrichtlinie zu konfigurieren und die virtuellen Computer, die Sie ausgewählt haben, dieser Richtlinie zuzuordnen.
 
-6. Um die Liste der **Schutz konfigurieren**-Aufträge anzuzeigen, klicken Sie im Menü der Tresore auf **Aufträge**, und wählen Sie unter **Vorgänge** den Filter **Schutz konfigurieren** aus.
+6. Um die Liste der Aufträge vom Typ **Schutz konfigurieren** anzuzeigen, klicken Sie im Menü der Tresore auf **Aufträge**, und wählen Sie unter **Vorgänge** den Filter **Schutz konfigurieren** aus.
 
     ![Schutzauftrag konfigurieren](./media/backup-azure-vms/protect-configureprotection.png)
 
@@ -183,4 +183,4 @@ Wenn beim Sichern des virtuellen Computers Probleme auftreten, finden Sie Hilfe 
 - [Verwalten und Überwachen Ihrer virtuellen Computer](backup-azure-manage-vms.md)
 - [Wiederherstellen virtueller Computer](backup-azure-restore-vms.md)
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0803_2016-->

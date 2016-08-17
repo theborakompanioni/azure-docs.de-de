@@ -1,12 +1,12 @@
 <properties
 	pageTitle="Behandeln von Problemen bei der Registrierung bei Azure | Microsoft Azure"
 	description="Informationen, wie Sie die Ursachen gängiger Probleme bei der Registrierung bei Azure beheben."
-	services="billing"
+	services=""
 	documentationCenter=""
 	authors="jiangchen79"
 	manager="felixwu"
 	editor=""
-	tags="top-support-issue"/>
+	tags="billing,top-support-issue"/>
 
 <tags
 	ms.service="billing"
@@ -81,4 +81,4 @@ Haben Sie in der Vergangenheit bereits ein Azure-Abonnement verwendet? Die Verei
 Vorschläge:
 - Wenn Sie in der Vergangenheit bereits ein Azure-Abonnement aktiviert haben und bei der Aktivierung der kostenlosen Testversion ein Fehler auftritt, erwägen Sie den Kauf eines Abonnements mit nutzungsbasierter Bezahlung. Sie sind ggf. auch für ein Vorteilsangebot berechtigt. Weitere Informationen (abgesehen vom Plan „Kostenlose Azure-Testversion“) finden Sie auf der [Seite mit den Microsoft Azure-Angebotsdetails](https://azure.microsoft.com/support/legal/offer-details/). Beachten Sie, dass für Vorteilspläne bestimmte Voraussetzungen erfüllt sein müssen.
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

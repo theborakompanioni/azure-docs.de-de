@@ -1,7 +1,7 @@
 <properties
 pageTitle="So wird's gemacht: Verwenden des FTP-Connectors in Logik-Apps | Microsoft Azure"
 description="Erstellen Sie Logik-Apps mit Azure App Service. Stellen Sie eine Verbindung mit einem FTP-Server her, um Dateien zu verwalten. Sie können verschiedene Aktionen ausführen und beispielsweise Dateien hochladen, aktualisieren, abrufen und vom FTP-Server löschen."
-services="app-servicelogic"	
+services="logic-apps"	
 documentationCenter=".net,nodejs,java" 	
 authors="msftman"	
 manager="erikre"	
@@ -112,7 +112,7 @@ Im Anschluss finden Sie ausführliche Informationen zu den Aktionen und Triggern
 Dieser Vorgang ruft die Metadaten für eine Datei ab.
 
 
-|Eigenschaftenname| Anzeigename|Beschreibung|
+|Eigenschaftenname| Display Name|Beschreibung|
 | ---|---|---|
 |id*|File|Datei auswählen|
 
@@ -143,7 +143,7 @@ BlobMetadata
 Dieser Vorgang aktualisiert eine Datei.
 
 
-|Eigenschaftenname| Anzeigename|Beschreibung|
+|Eigenschaftenname| Display Name|Beschreibung|
 | ---|---|---|
 |id*|File|Datei auswählen|
 |body*|Dateiinhalte|Inhalt der Datei|
@@ -175,7 +175,7 @@ BlobMetadata
 Dieser Vorgang löscht eine Datei.
 
 
-|Eigenschaftenname| Anzeigename|Beschreibung|
+|Eigenschaftenname| Display Name|Beschreibung|
 | ---|---|---|
 |id*|File|Datei auswählen|
 
@@ -188,7 +188,7 @@ Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
 Dieser Vorgang ruft die Metadaten einer Datei unter Verwendung des Pfads ab.
 
 
-|Eigenschaftenname| Anzeigename|Beschreibung|
+|Eigenschaftenname| Display Name|Beschreibung|
 | ---|---|---|
 |path*|Dateipfad|Datei auswählen|
 
@@ -219,7 +219,7 @@ BlobMetadata
 Dieser Vorgang ruft den Inhalt einer Datei unter Verwendung des Pfads ab.
 
 
-|Eigenschaftenname| Anzeigename|Beschreibung|
+|Eigenschaftenname| Display Name|Beschreibung|
 | ---|---|---|
 |path*|Dateipfad|Datei auswählen|
 
@@ -232,7 +232,7 @@ Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
 Dieser Vorgang ruft den Inhalt einer Datei ab.
 
 
-|Eigenschaftenname| Anzeigename|Beschreibung|
+|Eigenschaftenname| Display Name|Beschreibung|
 | ---|---|---|
 |id*|File|Datei auswählen|
 
@@ -245,7 +245,7 @@ Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
 Dieser Vorgang erstellt eine Datei.
 
 
-|Eigenschaftenname| Anzeigename|Beschreibung|
+|Eigenschaftenname| Display Name|Beschreibung|
 | ---|---|---|
 |folderPath*|Ordnerpfad|Ordner auswählen|
 |name*|Dateiname|Name der Datei|
@@ -278,7 +278,7 @@ BlobMetadata
 Dieser Vorgang kopiert eine Datei auf einen FTP-Server.
 
 
-|Eigenschaftenname| Anzeigename|Beschreibung|
+|Eigenschaftenname| Display Name|Beschreibung|
 | ---|---|---|
 |source*|Quell-URL|URL zur Quelldatei|
 |destination*|Zieldateipfad|Zieldateipfad einschließlich Zieldateiname|
@@ -311,7 +311,7 @@ BlobMetadata
 Dieser Vorgang löst einen Ablauf aus, wenn einem Ordner eine Datei hinzugefügt oder in einem Ordner eine Datei geändert wird.
 
 
-|Eigenschaftenname| Anzeigename|Beschreibung|
+|Eigenschaftenname| Display Name|Beschreibung|
 | ---|---|---|
 |folderId*|Ordner|Ordner auswählen|
 
@@ -324,7 +324,7 @@ Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
 Dieser Vorgang ruft die Liste mit den in einem Ordner enthaltenen Dateien und Unterordnern ab.
 
 
-|Eigenschaftenname| Anzeigename|Beschreibung|
+|Eigenschaftenname| Display Name|Beschreibung|
 | ---|---|---|
 |id*|Ordner|Ordner auswählen|
 
@@ -384,7 +384,7 @@ BlobMetadata
 Dieser Vorgang extrahiert eine Archivdatei (beispielsweise eine ZIP-Datei) in einen Ordner.
 
 
-|Eigenschaftenname| Anzeigename|Beschreibung|
+|Eigenschaftenname| Display Name|Beschreibung|
 | ---|---|---|
 |source*|Quellarchiv-Dateipfad|Pfad zur Archivdatei|
 |destination*|Zielordnerpfad|Pfad zum Zielordner|
@@ -438,4 +438,4 @@ Von den oben angegebenen Aktionen und Triggern können folgende HTTP-Statuscodes
 ## Nächste Schritte
 [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!----HONumber=AcomDC_0803_2016-->

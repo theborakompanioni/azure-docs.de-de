@@ -56,7 +56,7 @@ http(s)://<Cluster FQDN | internal IP>:Port/<ServiceInstanceName>/<Suffix path>?
 ```
 
  - **HTTP(S):** Der Reverseproxy kann zum Akzeptieren von HTTP- oder HTTPS-Datenverkehr konfiguriert werden. Bei HTTPS-Datenverkehr erfolgt die SSL-Beendigung im Reverseproxy. Anforderungen, die vom Reverseproxy an Dienste im Cluster weitergeleitet werden, erfolgen über HTTP.
- - FQDN des Gateways| internal IP:** For external clients, the reverse proxy can be configured so that it is reachable through the cluster domain (e.g., mycluster.eastus.cloudapp.azure.com). By default the reverse proxy runs on every node, so for internal traffic it can be reached on localhost or on any internal node IP (e.g., 10.0.0.1).
+ - **FQDN des Gateways | interne IP:** Für externe Clients kann der Reverseproxy so konfiguriert werden, dass er über die Clusterdomäne erreichbar ist (Beispiel: mycluster.eastus.cloudapp.azure.com). Der Reverseproxy wird standardmäßig auf jedem Knoten ausgeführt. Bei internen Datenverkehr ist er daher unter „localhost“ oder einer beliebigen internen Knoten-IP (z.B. 10.0.0.1) erreichbar.
  - **Port:** Den Port, der für den Reverseproxy angegeben wurde. Beispiel: 19008.
  - **ServiceInstanceName:** Der vollqualifizierte Name der bereitgestellten Dienstinstanz des Dienst, die Sie erreichen möchten, ohne das Schema „fabric:/“. Um beispielsweise den Dienst *fabric:/myapp/myservice/* zu erreichen, müssen Sie *myapp/myservice* verwenden.
  - **Suffixpfad:** Der tatsächliche URL-Pfad des Diensts, mit dem Sie eine Verbindung herstellen möchten. Beispiel: *myapi/values/add/3*.

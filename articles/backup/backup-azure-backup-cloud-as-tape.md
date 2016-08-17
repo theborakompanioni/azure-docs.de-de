@@ -3,8 +3,8 @@
    description="Hier erfahren Sie, wie Azure Backup eine Semantik ähnlich wie bei Bändern bereitstellt, damit Sie Ihre Daten in Azure sichern und wiederherstellen können."
    services="backup"
    documentationCenter=""
-   authors="Jim-Parker"
-   manager="jwhit"
+   authors="trinadhk"
+   manager="vijayts"
    editor=""/>
 <tags
    ms.service="backup"
@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="storage-backup-recovery"
    ms.date="06/08/2016"
-   ms.author="jimpark;"/>
+   ms.author="jimpark;trinadhk;markgal"/>
 
 # Verwenden von Azure Backup als Ersatz für Ihre Bandinfrastruktur
 Kunden von Azure Backup und System Center Data Protection Manager haben folgende Möglichkeiten:
@@ -45,7 +45,7 @@ Die Gesamtanzahl der in dieser Richtlinie angegebenen "Aufbewahrungspunkte" ist 
 ![Beispielbildschirm](./media/backup-azure-backup-cloud-as-tape/samplescreen.png)
 
 1. **Tägliche Aufbewahrungsrichtlinie**: Täglich erstellte Sicherungen werden sieben Tage lang gespeichert.
-2. **Wöchentliche Aufbewahrungsrichtlinie**: Sicherungen, die jeden Tag um Mitternacht und jeden Samstag um 18 Uhr erstellt werden, werden vier Wochen lang aufbewahrt.
+2. **Wöchentliche Aufbewahrungsrichtlinie**: Sicherungen, die jeden Tag um Mitternacht und jeden Samstag um 18 Uhr erstellt werden, werden vier Wochen lang aufbewahrt.
 3. **Monatliche Aufbewahrungsrichtlinie**: Sicherungen, die am letzten Samstag im Monat um Mitternacht und um 18:00 Uhr erstellt werden, werden zwölf Monate lang aufbewahrt.
 4. **Jährliche Aufbewahrungsrichtlinie**: Sicherungen, die am letzten Samstag im März um Mitternacht erstellt werden, werden zehn Jahre lang aufbewahrt.
 
@@ -71,4 +71,4 @@ Weitere Informationen zu Azure Backup finden Sie unter
 - [Einführung in Azure Backup](backup-introduction-to-azure-backup.md)
 - [Azure Backup testen](backup-try-azure-backup-in-10-mins.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0803_2016-->

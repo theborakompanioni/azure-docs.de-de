@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure CDN-POP-Standorte"
+	pageTitle="Azure CDN-POP-Standorte | Microsoft Azure"
 	description="In diesem Thema sind die Azure CDN-POP-Standorte aufgelistet."
 	services="cdn"
 	documentationCenter=""
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/14/2016"
+	ms.date="07/29/2016"
 	ms.author="casoper"/>
 
 
@@ -27,7 +27,7 @@ Dieses Thema enthält die aktuellen POP-Standorte für **Azure CDN von Verizon**
  
 | Region | Verizon | Akamai |
 |--------|---------|--------|
-| Nordamerika | Atlanta, GA<br />Philadelphia, PA<br />New York, NY<br />Miami, FL<br />Washington DC<br />Boston, MA<br />Chicago, IL<br />Denver, CO<br />Dallas, TX<br />Los Angeles, CA<br />San Jose, CA<br />Seattle, WA | **&#x2713;*** |
+| Nordamerika | Atlanta, GA<br />Philadelphia, PA<br />New York, NY<br />Miami, FL<br />Washington DC<br />Boston, MA<br />Denver, CO<br />Chicago, IL<br />Dallas, TX<br />Los Angeles, CA<br />San Jose, CA<br />Seattle, WA | **&#x2713;*** |
 | Südamerika | São Paulo, Brasilien<br />Rio de Janeiro, Brasilien<br />Quito, Ecuador<br />Barranquilla, Kolumbien<br />Medellín, Kolumbien<br/>Buenos Aires, Argentinien| **&#x2713;*** | 
 | Nord- und Osteuropa| Kopenhagen, Dänemark<br />Helsinki, Finnland<br />London, Großbritannien<br />Stockholm, Schweden<br />Warschau, Polen | **&#x2713;*** |
 | Westeuropa | Amsterdam, Niederlande<br />Frankfurt, Deutschland<br />Paris, Frankreich<br />Wien, Österreich | **&#x2713;*** |
@@ -41,4 +41,4 @@ Dieses Thema enthält die aktuellen POP-Standorte für **Azure CDN von Verizon**
 ## Siehe auch
 * [IP-Adressbereiche von Verizon Edge Server für Azure CDN](https://msdn.microsoft.com/library/mt757330.aspx)
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0803_2016-->

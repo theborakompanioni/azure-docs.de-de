@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="Verwalten von Azure SQL-Datenbanken mit PowerShell" 
-	description="Verwalten von Azure SQL-Datenbank mit PowerShell." 
-	services="sql-database" 
-	documentationCenter="" 
-	authors="stevestein" 
-	manager="jhubbard" 
+<properties
+	pageTitle="Verwalten von Azure SQL-Datenbanken mit PowerShell | Microsoft Azure"
+	description="Verwalten von Azure SQL-Datenbank mit PowerShell."
+	services="sql-database"
+	documentationCenter=""
+	authors="stevestein"
+	manager="jhubbard"
 	editor="monicar"/>
 
-<tags 
-	ms.service="sql-database" 
-	ms.workload="data-management" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/07/2016" 
+<tags
+	ms.service="sql-database"
+	ms.workload="data-management"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/07/2016"
 	ms.author="sstein"/>
 
 # Verwalten von Azure SQL-Datenbanken mit PowerShell
@@ -33,27 +33,27 @@ In diesem Thema werden PowerShell-Befehle vorgestellt, mit denen viele Azure SQL
 
 Erstellen Sie die Ressourcengruppe, die den Server enthalten soll. Sie können den nächsten Befehl für einen beliebigen gültigen Standort anpassen.
 
-Eine Liste der gültigen Standorte für Azure SQL-Datenbankserver erhalten Sie durch Ausführen des folgenden Cmdlets:
+Um eine Liste der gültigen Standorte für SQL-Datenbankserver abzurufen, führen Sie das folgende Cmdlet aus:
 
 	$AzureSQLLocations = (Get-AzureRmResourceProvider -ListAvailable | Where-Object {$_.ProviderNamespace -eq 'Microsoft.Sql'}).Locations
 
-Wenn Sie bereits über eine Ressourcengruppe verfügen, können Sie mit dem Erstellen eines Servers fortfahren, oder Sie führen nach Anpassung den folgenden Befehl zum Erstellen einer neuen Ressourcengruppe aus:
+Wenn Sie bereits über eine Ressourcengruppe verfügen, können Sie mit dem nächsten Abschnitt („Erstellen eines Servers“) fortfahren, oder Sie können den folgenden Befehl bearbeiten und ausführen, um eine neue Ressourcengruppe zu erstellen:
 
 	New-AzureRmResourceGroup -Name "resourcegroupJapanWest" -Location "Japan West"
 
-## Erstellen eines Servers 
+## Erstellen eines Servers
 
-Um einen neuen V12-Server zu erstellen, verwenden Sie das Cmdlet [New-AzureRmSqlServer](https://msdn.microsoft.com/library/azure/mt603715.aspx). Ersetzen Sie "server12" durch den Namen Ihres Servers. Der muss für Azure SQL-Server eindeutig sein. Wenn der Servername bereits vergeben ist, wird ein Fehler ausgeben. Sie sollten auch berücksichtigen, dass dieser Befehl mehrere Minuten in Anspruch nehmen kann. Die Serverdetails und PowerShell-Eingabeaufforderung werden angezeigt, nachdem der Server erfolgreich erstellt wurde. Sie können den Befehl für einen beliebigen gültigen Speicherort anpassen.
+Um einen neuen Server der Version 12 zu erstellen, verwenden Sie das Cmdlet [New-AzureRmSqlServer](https://msdn.microsoft.com/library/azure/mt603715.aspx). Ersetzen Sie *server12* durch den Namen Ihres Servers. Es wird eine Fehlermeldung angezeigt, wenn der Servername bereits vergeben ist. Sie sollten auch berücksichtigen, dass dieser Befehl mehrere Minuten in Anspruch nehmen kann. Die Serverdetails und die PowerShell-Eingabeaufforderung werden angezeigt, nachdem der Server erfolgreich erstellt wurde. Sie können den Befehl für einen beliebigen gültigen Speicherort anpassen.
 
 	New-AzureRmSqlServer -ResourceGroupName "resourcegroupJapanWest" -ServerName "server12" -Location "Japan West" -ServerVersion "12.0"
 
-Beim Ausführen dieses Befehls wird ein Fenster zur Eingabe von **Benutzername** und **Kennwort** geöffnet. Dabei handelt es sich nicht um Ihre Azure-Anmeldeinformationen. Geben Sie den Benutzernamen und das Kennwort ein, die Sie als Anmeldeinformationen für das Administratorkonto des neuen Servers erstellen möchten.
+Wenn Sie diesen Befehl ausführen, werden Sie zum Eingeben des Benutzernamens und Kennworts aufgefordert. Geben Sie Ihre Azure-Anmeldeinformationen hier nicht ein. Geben Sie stattdessen die Kombination aus Benutzername und Kennwort ein, die Sie als Anmeldeinformationen für das Administratorkonto des neuen Servers erstellen möchten.
 
 ## Erstellen einer Server-Firewallregel
 
-Um eine Firewallregel für den Zugriff auf den Server zu erstellen, verwenden Sie den Befehl [New-AzureRmSqlServerFirewallRule](https://msdn.microsoft.com/library/azure/mt603860.aspx). Führen Sie den folgenden Befehl aus, wobei Sie die Start- und End-IP-Adressen durch gültige Werte für Ihren Client ersetzen.
+Um eine Firewallregel für den Zugriff auf den Server zu erstellen, verwenden Sie den Befehl [New-AzureRmSqlServerFirewallRule](https://msdn.microsoft.com/library/azure/mt603860.aspx). Führen Sie den folgenden Befehl aus, wobei Sie die Start- und End-IP-Adresse durch gültige Werte für Ihren Client ersetzen.
 
-Wenn Ihr Server Zugriff auf andere Azure-Dienste ermöglichen muss, fügen Sie den Schalter **-AllowAllAzureIPs** hinzu, durch den eine spezielle Firewallregel hinzugefügt und alle Zugriffe für Azure-Datenverkehr auf den Server ermöglicht werden.
+Wenn Ihr Server den Zugriff auf andere Azure-Dienste zulassen muss, fügen Sie den Schalter **-AllowAllAzureIPs** hinzu. Damit wird eine spezielle Firewallregel hinzugefügt und dem gesamten Azure-Datenverkehr wird der Zugriff auf den Server gestattet.
 
 	New-AzureRmSqlServerFirewallRule -ResourceGroupName "resourcegroupJapanWest" -ServerName "server12" -FirewallRuleName "clientFirewallRule1" -StartIpAddress "192.168.0.198" -EndIpAddress "192.168.0.199"
 
@@ -84,7 +84,7 @@ Sie können eine SQL-Datenbank mit dem Befehl [Remove-AzureRmSqlDatabase](https:
 Sie können auch einen Server mit dem Befehl [Remove-AzureRmSqlServer](https://msdn.microsoft.com/library/azure/mt603488.aspx) löschen. Im folgenden Beispiel wird ein Server mit dem Namen "server12" gelöscht.
 
 
->[AZURE.NOTE]  Der Löschvorgang ist asynchron und dauert unter Umständen eine Weile. Vergewissern Sie sich daher, dass der Vorgang abgeschlossen ist, bevor Sie weitere Vorgänge ausführen, für die der Server vollständig gelöscht sein muss – beispielsweise, wenn Sie einen neuen Server mit dem gleichen Namen erstellen möchten.
+>[AZURE.NOTE]  Der Löschvorgang ist asynchron und kann einige Zeit dauern. Vergewissern Sie sich, dass der Vorgang abgeschlossen ist, bevor Sie weitere Vorgänge ausführen, für die der Server vollständig gelöscht sein muss – beispielsweise, wenn Sie einen neuen Server mit dem gleichen Namen erstellen möchten.
 
 
 	Remove-AzureRmSqlServer -ResourceGroupName "resourcegroupJapanWest" -ServerName "server12"
@@ -94,7 +94,7 @@ Sie können auch einen Server mit dem Befehl [Remove-AzureRmSqlServer](https://m
 
 ## Nächste Schritte
 
-Kombinieren und Automatisieren von Befehlen. Ersetzen Sie beispielsweise alles innerhalb der Anführungszeichen, einschließlich der Zeichen „<“ und „>“, durch Ihre Werte, um einen Server, die Firewallregel und die Datenbank zu erstellen:
+Kombinieren und Automatisieren von Befehlen. Um beispielsweise einen Server, eine Firewallregel und eine Datenbank zu erstellen, ersetzen Sie den gesamten Text innerhalb der Anführungszeichen, einschließlich der Zeichen „<“ und „>“, durch Ihre Werte:
 
 
     New-AzureRmResourceGroup -Name "<resourceGroupName>" -Location "<Location>"
@@ -106,4 +106,4 @@ Kombinieren und Automatisieren von Befehlen. Ersetzen Sie beispielsweise alles i
 
 - [Azure SQL-Datenbank-Cmdlets](https://msdn.microsoft.com/library/azure/mt574084.aspx)
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0803_2016-->

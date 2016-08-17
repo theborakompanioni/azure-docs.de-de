@@ -101,6 +101,8 @@ Option 2: Geben Sie einen Namen, eine Größe und einen Verfügbarkeitsgruppenn
 
 Die InstanceSize-Werte für virtuelle Computer der D-, DS- oder G-Serie finden Sie unter [Größen virtueller Computer und Clouddienste für Azure](https://msdn.microsoft.com/library/azure/dn197896.aspx).
 
+>[AZURE.NOTE] Wenn Sie über ein Enterprise Agreement mit Software Assurance verfügen und den [Vorteil bei Hybridnutzung](https://azure.microsoft.com/pricing/hybrid-use-benefit/) für Windows Server nutzen möchten, fügen Sie den Parameter **-LicenseType** zum Cmdlet **New-AzureVMConfig** hinzu, und übergeben Sie den Wert **Windows\_Server** für den normalen Anwendungsfall. Achten Sie darauf, dass Sie ein Image verwenden, das Sie hochgeladen haben. Sie können kein Standardimage aus dem Katalog mit dem Vorteil bei Hybridnutzung verwenden.
+
 Geben Sie optional für einen eigenständigen Windows-Computer das lokale Administratorkonto und Kennwort an.
 
 	$cred=Get-Credential -Message "Type the name and password of the local administrator account."
@@ -260,4 +262,4 @@ Hier finden Sie den entsprechenden Azure PowerShell-Befehlssatz zum Erstellen di
 
 Wenn Sie einen Betriebssystem-Datenträger mit mindestens 127 GB benötigen, können Sie das [Betriebssystemlaufwerk erweitern](virtual-machines-windows-expand-os-disk.md).
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0803_2016-->

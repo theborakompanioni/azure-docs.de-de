@@ -1,8 +1,8 @@
 <properties
-	pageTitle="Verwendung von Azure CDN mit CORS"
+	pageTitle="Verwenden von Azure CDN mit CORS | Microsoft Azure"
 	description="Erfahren Sie, wie Sie das Azure Content Delivery Network (CDN), mit Cross-Origin Resource Sharing (Ressourcenfreigabe zwischen verschiedenen Ursprüngen; CORS) verwendet wird."
 	services="cdn"
-	documentationCenter=".net"
+	documentationCenter=""
 	authors="camsoper"
 	manager="erikre"
 	editor=""/>
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/19/2016"
+	ms.date="07/28/2016"
 	ms.author="casoper"/>
     
 # Verwendung von Azure CDN mit CORS     
@@ -23,7 +23,7 @@
 CORS (Cross Origin Resource Sharing; Ressourcenfreigabe zwischen verschiedenen Ursprüngen) ist eine HTTP-Funktion, die einer Webanwendung, die in einer Domäne ausgeführt wird, den Zugriff auf Ressourcen in einer anderen Domäne ermöglicht. Alle modernen Webbrowser eine Sicherheitseinschränkung, die als [Same Origin Policy](http://www.w3.org/Security/wiki/Same_Origin_Policy) bekannt ist, um die Möglichkeiten für Cross-Site Scripting-Angriffe zu verringern. Dies hindert eine Website daran, APIs in einer anderen Domäne aufzurufen. CORS bietet eine sichere Methode, um einer Domäne (der Ursprungsdomäne) den Aufruf von APIs in einer anderen Domäne zu erlauben.
  
 ## So funktioniert's
-1.	Der Browser sendet die OPTIONS-Anforderung mit einem **Ursprung**-HTTP-Header. Der Wert dieses Headers ist die Domäne, die der übergeordnete Seite dient. Wenn eine Seite aus https://www.contoso.com versucht, auf die Benutzerdaten in der fabrikam.com-Domäne zuzugreifen, würde der folgende Anforderungsheader an fabrikam.com gesendet: 
+1.	Der Browser sendet die OPTIONS-Anforderung mit einem **Ursprung**-HTTP-Header. Der Wert dieses Headers ist die Domäne, die der übergeordnete Seite dient. Wenn eine Seite aus https://www.contoso.com versucht, auf die Benutzerdaten in der fabrikam.com-Domäne zuzugreifen, würde der folgende Anforderungsheader an fabrikam.com gesendet:
     
     `Origin: https://www.contoso.com`
  
@@ -81,4 +81,4 @@ Statt reguläre Ausdrücke können Sie stattdessen eine separate Regel für jede
 
 Auf Azure CDN-Standardprofilen ist der einzige Mechanismus, um mehrere Ursprünge ohne Verwendung des Platzhalterursprungs zuzulassen, die Verwendung der [Zwischenspeicherung von Abfragezeichenfolgen](cdn-query-string.md). Sie müssen Abfragezeichenfolgen für den CDN-Endpunkt aktivieren und anschließend eine eindeutige Abfragezeichenfolge für Anforderungen von jeder zulässigen Domäne verwenden. Dadurch speichert das CDN ein separates Objekt für jede eindeutige Abfragezeichenfolge zwischen. Dieser Ansatz ist jedoch nicht ideal, da so mehrere Kopien derselben Datei im CDN zwischengespeichert werden.
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0803_2016-->

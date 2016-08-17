@@ -1,7 +1,7 @@
 <properties 
 	pageTitle="Informationen zum Erstellen einer AS2-Vereinbarung für das Enterprise Integration Pack" 
 	description="Informationen zum Erstellen einer AS2-Vereinbarung für das Enterprise Integration Pack | Microsoft Azure App Service" 
-	services="app-service\logic" 
+	services="logic-apps" 
 	documentationCenter=".net,nodejs,java"
 	authors="msftman" 
 	manager="erikre" 
@@ -97,4 +97,4 @@ In der nachstehenden Tabelle erfahren Sie, was die Sendeeinstellungen ermöglich
 Wir sind fast fertig!
 9. Wählen Sie auf dem Blatt „Integrationskonto“ die Kachel **Vereinbarungen** aus, auf dem die neu hinzugefügte Vereinbarung aufgeführt ist. ![](./media/app-service-logic-enterprise-integration-agreements/agreement-6.png)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

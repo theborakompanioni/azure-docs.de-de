@@ -1,7 +1,7 @@
 <properties 
 	pageTitle="Übersicht zu Zuordnungen unter Enterprise Integration Pack | Microsoft Azure App Service | Microsoft Azure" 
 	description="Erfahren Sie, wie Sie Zuordnungen mit dem Enterprise Integration Pack und Logik-Apps verwenden" 
-	services="app-service\logic" 
+	services="logic-apps" 
 	documentationCenter=".net,nodejs,java"
 	authors="msftman" 
 	manager="erikre" 
@@ -22,7 +22,7 @@
 Für die Unternehmensintegration werden Zuordnungen verwendet, um XML-Daten von einem Format in an anderes zu transformieren.
 
 ## Was ist eine Zuordnung?
-Eine Zuordnung ist ein XML-Dokument, das definiert, welche Daten in einem Dokument in ein anderes Format transformiert werden soll.
+Eine Zuordnung ist ein XML-Dokument, das definiert, welche Daten in einem Dokument in ein anderes Format transformiert werden sollen.
 
 ## Gründe für Zuordnungen
 Angenommen, Sie erhalten regelmäßig B2B-Aufträge oder -Rechnungen von einem Kunden, der das Format JJMMTT für Datumsangaben verwendet. In Ihrer Organisation wird das Datum allerdings im Format TTMMJJJJ gespeichert. Mithilfe einer Zuordnung können das Datumsformat JJMMTT in das Format TTMMJJJJ *transformieren*, ehe die Auftrags- oder Rechnungsdetails in Ihrer Kundendatenbank gespeichert werden.
@@ -58,4 +58,4 @@ Gehen Sie wie folgt vor, um eine neue Zuordnung hochzuladen, die eine vorhandene
 - [Weitere Informationen zu Vereinbarungen](./app-service-logic-enterprise-integration-agreements.md "Informationen zu Vereinbarungen zur Unternehmensintegration")
 - [Weitere Informationen zu Transformationen](./app-service-logic-enterprise-integration-transform.md "Informationen zu Unternehmensintegrationstransformationen")
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

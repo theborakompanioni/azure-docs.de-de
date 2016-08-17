@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="Anzeigen von Ereignis- und Überwachungsprotokollen" 
-	description="Erfahren Sie, wie Sie sämtliche Ereignisse anzeigen, die in Ihrem Azure-Abonnement auftreten." 
-	authors="HaniKN-MSFT" 
-	manager="kamrani" 
-	editor="" 
-	services="azure-portal" 
-	documentationCenter="na"/>
+<properties
+	pageTitle="Anzeigen von Ereignis- und Überwachungsprotokollen"
+	description="Erfahren Sie, wie Sie sämtliche Ereignisse anzeigen, die in Ihrem Azure-Abonnement auftreten."
+	authors="HaniKN-MSFT"
+	manager="kamrani"
+	editor=""
+	services="monitoring"
+	documentationCenter="monitoring"/>
 
-<tags 
-	ms.service="azure-portal" 
-	ms.workload="na" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="04/28/2015" 
+<tags
+	ms.service="monitoring"
+	ms.workload="na"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="04/28/2015"
 	ms.author="hanikn"/>
 
 # Anzeigen von Ereignis- und Überwachungsprotokollen
@@ -26,17 +26,17 @@ Alle Vorgänge für Azure-Ressourcen – von der Erstellung und Löschung bis hi
 2. Klicken Sie auf **Durchsuchen**, und wählen Sie **Überwachungsprotokolle** aus. ![Hub durchsuchen](./media/insights-debugging-with-events/Insights_Browse.png)
 3. Es wird ein Blatt geöffnet, das alle Ereignisse der letzten 7 Tage anzeigt, die sich auf eines Ihrer Abonnements ausgewirkt hat. Ganz oben sehen Sie ein Diagramm mit Daten nach Schweregrad, darunter wird eine vollständige Liste der Protokolle angezeigt: ![Alle Ereignisse](./media/insights-debugging-with-events/Insights_AllEvents.png)
 
->[AZURE.NOTE]Sie können nur die letzten 500 Ereignisse für ein Abonnement im Azure-Portal anzeigen.
+>[AZURE.NOTE] Sie können nur die letzten 500 Ereignisse für ein Abonnement im Azure-Portal anzeigen.
 
 4. Sie können auf einen beliebigen Protokolleintrag klicken, um die zugehörigen Ereignisse anzuzeigen. Wenn Sie beispielsweise ein Element in einer Ressourcengruppe bereitstellen, werden möglicherweise zahlreiche Ressourcen erstellt oder geändert. Für jeden Eintrag werden die folgenden Informationen angezeigt:
-    * Die **Stufe** des Ereignisses – beispielsweise kann es sich lediglich um einen Hinweis (**Information**) handeln, oder die Informationen weisen auf einen fehlerhaften Vorgang hin, über den Sie informiert werden müssen (**Fehler**). 
+    * Die **Stufe** des Ereignisses – beispielsweise kann es sich lediglich um einen Hinweis (**Information**) handeln, oder die Informationen weisen auf einen fehlerhaften Vorgang hin, über den Sie informiert werden müssen (**Fehler**).
     * Der **Status** – der abschließende Status lautet im Allgemeinen **Erfolgreich** oder **Fehler**, kann aber für Vorgänge mit langer Ausführungszeit auch **Akzeptiert** lauten.
     * Informationen dazu, *wann* das Ereignis aufgetreten ist.
     * Informationen dazu, *wer* den Vorgang ausgeführt hat (sofern anwendbar). Nicht alle Vorgänge werden von Benutzern ausgeführt, einige Vorgänge werden von Back-End-Diensten initiiert, sodass sie keinen **Aufrufer** haben.
     * Die **Korrelations-ID** des Ereignisses – dies ist der eindeutige Bezeichner für diesen Satz an Vorgängen.
 
 5. Von hier aus können Sie zum Blatt mit Details wechseln, um ausführliche Informationen zum Ereignis anzuzeigen.
-   
+
     ![Ressourcengruppen](./media/insights-debugging-with-events/Insights_EventDetails.png)
 
     Bei Ereignissen mit dem Status **Fehler** enthält diese Seite in der Regel einen **Unterstatus** und einen Abschnitt **Eigenschaften** mit nützlichen Details, die für Debuggingzwecke verwendet werden können.
@@ -70,6 +70,6 @@ Nachdem Sie ausgewählt haben, was Sie anzeigen möchten, klicken Sie unten auf 
 
 * [Empfangen von Warnbenachrichtigungen](insights-receive-alert-notifications.md) immer dann, wenn ein Ereignis auftritt.
 * [Überwachen von Dienstmetriken](insights-how-to-customize-monitoring.md), um sicherzustellen, dass Ihr Dienst verfügbar und reaktionsfähig ist.
-* [Nachverfolgen der Dienstintegrität](insights-service-health.md), um den Zeitpunkt von Leistungsabfällen oder Dienstunterbrechungen zu ermitteln, die in Azure aufgetreten sind.  
+* [Nachverfolgen der Dienstintegrität](insights-service-health.md), um den Zeitpunkt von Leistungsabfällen oder Dienstunterbrechungen zu ermitteln, die in Azure aufgetreten sind.
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0803_2016-->

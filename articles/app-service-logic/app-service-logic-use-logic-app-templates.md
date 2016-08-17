@@ -4,7 +4,7 @@
  authors="kevinlam1"
  manager="dwrede"
  editor=""
- services="app-service\logic"
+ services="logic-apps"
  documentationCenter=""/>
 
 <tags
@@ -46,4 +46,4 @@ Einfache Vorlagen für die Integration in soziale Netzwerkdienste, wie z. B. Tw
 Nachdem Sie eine der Vorlagen ausgewählt haben, führen Sie die Bereitstellungsschritte wie beim Erstellen Ihrer eigenen Logik-App aus. Die einzelnen Schritte werden unter [Erstellen einer Logik-App zum Verbinden von SaaS-Diensten](app-service-logic-create-a-logic-app.md) beschrieben.
  
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

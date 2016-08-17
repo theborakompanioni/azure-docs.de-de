@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="get-started-article" 
-	ms.date="05/12/2016" 
+	ms.date="08/04/2016" 
 	ms.author="billmath"/>
 
 # Durchführen eines Upgrades vom PhoneFactor-Agent auf den Azure Multi-Factor Authentication-Server
@@ -69,4 +69,4 @@ Für das Upgrade von Version 5.x oder früher des PhoneFactor-Agents auf den Azu
 
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0810_2016-->

@@ -37,7 +37,7 @@ Service Fabric ist eine Anwendungsplattformschicht, die unter Windows oder Linux
 
  - Kurze Bereitstellungszeit –  Die Erstellung von VM-Instanzen kann zeitaufwendig sein. In Service Fabric werden VMs nur einmal bereitgestellt, um einen Cluster zu bilden, der die Service Fabric-Anwendungsplattform hostet. Ab diesem Zeitpunkt können Anwendungspakte sehr schnell zum Cluster bereitgestellt werden.
  - Hohe Hostingdichte –  In Cloud Services hostet eine Workerrollen-VM eine Workload. In Service Fabric sind die Anwendungen von den VMs, die sie ausführen, getrennt. Das bedeutet, dass Sie eine hohe Anzahl an Anwendungen in einer geringen Anzahl VMs bereitstellen können, was die Gesamtkosten für große Bereitstellungen verringern kann.
- - Die Service Fabric-Plattform kann an jedem Ort ausgeführt werden, an dem es Windows Server oder Linux Computer gibt, sowohl in Azure als auch lokal. Die Plattform bietet eine Abstraktionsschicht über der zugrunde liegenden Infrastruktur; daher kann Ihre Anwendung in verschiedenen Umgebungen laufen.
+ - Die Service Fabric-Plattform kann in jeder Umgebung ausgeführt werden, in der Windows Server- oder Linux-Computer vorhanden sind, unabhängig davon, ob es sich um eine Azure-Umgebung oder eine lokale Umgebung handelt. Die Plattform bietet eine Abstraktionsschicht über der zugrunde liegenden Infrastruktur; daher kann Ihre Anwendung in verschiedenen Umgebungen laufen.
  - Verwaltung von verteilten Anwendungen –  Service Fabric ist eine Plattform, die nicht nur verteilte Anwendungen hostet, sondern auch hilft, deren Lebenszyklus unabhängig von dem Lebenszyklus der hostenden VM oder des Computers zu verwalten.
 
 ## Anwendungsarchitektur
@@ -105,4 +105,4 @@ Der einfachste Migrationspfad von Cloud Services zu Service Fabric besteht darin
 [10]: ./media/service-fabric-cloud-services-migration-differences/service-fabric-architecture-simple.png
 [11]: ./media/service-fabric-cloud-services-migration-differences/service-fabric-architecture-full.png
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0803_2016-->

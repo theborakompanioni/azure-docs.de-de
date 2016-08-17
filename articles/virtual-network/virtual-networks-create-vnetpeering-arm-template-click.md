@@ -14,8 +14,8 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="03/15/2016"
-   ms.author="telmos"/>
+   ms.date="08/02/2016"
+   ms.author="narayanannamalai"/>
 
 # Erstellen des VNet-Peerings mit Resource Manager-Vorlagen
 
@@ -29,9 +29,9 @@ Führen Sie die folgenden Schritte aus, um ein VNet-Peering mit Resource Manager
 
 1. Wenn Sie Azure PowerShell zuvor noch nicht verwendet haben, lesen Sie [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md), und befolgen Sie die komplette Anleitung, um sich bei Azure anzumelden und Ihr Abonnement auszuwählen.
 
-Hinweis: Das PowerShell-Cmdlet zum Verwalten des VNet-Peerings ist in [Azure PowerShell 1.6.](http://www.powershellgallery.com/packages/Azure/1.6.0) enthalten.
+    Hinweis: Das PowerShell-Cmdlet zum Verwalten des VNet-Peerings ist in [Azure PowerShell 1.6.](http://www.powershellgallery.com/packages/Azure/1.6.0) enthalten.
 
-2. Im Abschnitt unten wird die Definition des VNet-Peeringlinks von VNet1 zu VNet2 basierend auf dem obigen Szenario beschrieben. Kopieren Sie die hier angegebenen Daten in eine Datei, und speichern Sie sie als „VNetPeeringVNet1.json“.
+2. Im Text weiter unten finden Sie die Definition eines VNet-Peeringlinks für „VNet1 zu VNet2“ (auf der Grundlage des obigen Szenarios). Kopieren Sie den Inhalt weiter unten, und speichern Sie ihn in einer Datei namens „VNetPeeringVNet1.json“.
 
         {
         "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -59,8 +59,7 @@ Hinweis: Das PowerShell-Cmdlet zum Verwalten des VNet-Peerings ist in [Azure Pow
         ]
         }
     
-
-3. Im Abschnitt unten wird die Definition des VNet-Peeringlinks von VNet2 zu VNet1 basierend auf dem obigen Szenario beschrieben. Kopieren Sie die hier angegebenen Daten in eine Datei, und speichern Sie sie als „VNetPeeringVNet2.json“.
+3. Der Abschnitt weiter unten enthält die Definition eines VNet-Peeringlinks für „VNet2 zu VNet1“ (auf der Grundlage des obigen Szenarios). Kopieren Sie den Inhalt weiter unten, und speichern Sie ihn in einer Datei namens „VNetPeeringVNet2.json“.
 
         {
         "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -88,29 +87,29 @@ Hinweis: Das PowerShell-Cmdlet zum Verwalten des VNet-Peerings ist in [Azure Pow
         ]
         }
 
-Wie in der obigen Vorlage dargestellt, können für das VNet-Peering einige Eigenschaften konfiguriert werden:
+    Wie in der obigen Vorlage zu sehen, können für das VNet-Peering einige Eigenschaften konfiguriert werden:
 
-|Option|Beschreibung|Standard|
-|:-----|:----------|:------|
-|AllowVirtualNetworkAccess|Gibt an, ob der Adressraum des per Peering verknüpften VNet als Teil des Virtual\_network-Tags einbezogen wird.|Ja|
-|AllowForwardedTraffic|Ermöglicht, dass Datenverkehr, der nicht aus dem per Peering verknüpften VNet stammt, akzeptiert oder verworfen wird.|Nein|
-|AllowGatewayTransit|Ermöglicht dem per Peering verknüpften VNet die Verwendung des VNet-Gateways.|Nein|
-|UseRemoteGateways|Gibt an, dass das VNet-Gateway des per Peering verknüpften VNet verwendet wird. Für das verknüpfte VNet muss ein Gateway konfiguriert sein, und „AllowGatewayTransit“ muss ausgewählt sein. Sie können diese Option nicht verwenden, wenn Sie ein Gateway konfiguriert haben.|Nein|
+    |Option|Beschreibung|Standard|
+    |:-----|:----------|:------|
+    |AllowVirtualNetworkAccess|Gibt an, ob der Adressraum eines mittels Peering verknüpften VNets als Teil des Tags „virtual\_network“ einbezogen wird.|Ja|
+    |AllowForwardedTraffic|Gibt an, ob Datenverkehr, der nicht aus dem mittels Peering verknüpften VNet stammt, akzeptiert oder verworfen wird.|Nein|
+    |AllowGatewayTransit|Ermöglicht dem mittels Peering verknüpften VNet die Verwendung des VNet-Gateways.|Nein|
+    |UseRemoteGateways|Gibt an, dass das VNet-Gateway des per Peering verknüpften VNet verwendet wird. Für das verknüpfte VNet muss ein Gateway konfiguriert sein, und „AllowGatewayTransit“ muss ausgewählt sein. Diese Option kann nicht verwendet werden, wenn Sie ein Gateway konfiguriert haben.|Nein|
 
-Jeder Link in einem VNet-Peering verfügt über die obigen Eigenschaften. Beispielsweise können Sie für den VNet-Peeringlink von VNet1 zu VNet2 die Eigenschaft „AllowVirtualNetworkAccess“ auf „True“ und für den VNet-Peeringlink der anderen Richtung auf „False“ festlegen.
+    Jeder Link in einem VNet-Peering verfügt über die oben angegebenen Eigenschaften. So können Sie beispielsweise die Eigenschaft „AllowVirtualNetworkAccess“ beim VNet-Peeringlink für „VNet1 zu VNet2“ auf „true“ und beim VNet-Peeringlink für die Gegenrichtung auf „false“ festlegen.
 
 
-4. Zum Bereitstellen der Vorlagendatei können Sie das Cmdlet New-AzureRmResourceGroupDeployment ausführen, um die Bereitstellung zu erstellen oder zu aktualisieren. Weitere Informationen zur Verwendung der Resource Manager-Vorlage finden Sie in [diesem Artikel](../resource-group-template-deploy.md).
+4. Zum Bereitstellen der Vorlagendatei können Sie das Cmdlet „New-AzureRmResourceGroupDeployment“ ausführen und die Bereitstellung erstellen oder aktualisieren. Weitere Informationen zur Verwendung von Resource Manager-Vorlagen finden Sie in [diesem Artikel](../resource-group-template-deploy.md).
 
         New-AzureRmResourceGroupDeployment -ResourceGroupName <resource group name> -TemplateFile <template file path> -DeploymentDebugLogLevel all
 
-> [AZURE.NOTE] Ersetzen Sie den Ressourcengruppennamen und die Vorlagendatei gemäß Ihren Anforderungen.
+    > [AZURE.NOTE] Ersetzen Sie den Ressourcengruppennamen und die Vorlagendatei gemäß Ihren Anforderungen.
 
-Unten ist ein Beispiel angegeben, das auf dem obigen Szenario basiert:
+    Unten ist ein Beispiel angegeben, das auf dem obigen Szenario basiert:
 
         New-AzureRmResourceGroupDeployment -ResourceGroupName VNet101 -TemplateFile .\VNetPeeringVNet1.json -DeploymentDebugLogLevel all
 
-Ausgabe:
+    Ausgabe:
 
         DeploymentName		: VNetPeeringVNet1
         ResourceGroupName	: VNet101
@@ -124,7 +123,7 @@ Ausgabe:
 
         New-AzureRmResourceGroupDeployment -ResourceGroupName VNet101 -TemplateFile .\VNetPeeringVNet2.json -DeploymentDebugLogLevel all
 
-Ausgabe:
+    Ausgabe:
 
         DeploymentName		: VNetPeeringVNet2
         ResourceGroupName	: VNet101
@@ -158,23 +157,23 @@ Ausgabe:
         RemoteGateways                   : null
         RemoteVirtualNetworkAddressSpace : null
 
-Nachdem das Peering in diesem Szenario eingerichtet wurde, können Sie die Verbindungen von jedem virtuellen Computer mit jedem virtuellen Computer in beiden VNets initiieren. Standardmäßig ist „AllowVirtualNetworkAccess“ auf „True“ festgelegt, und das VNet-Peering stellt die richtigen ACLs bereit, um die Kommunikation zwischen VNets zu ermöglichen. Sie können die NSG-Regeln aber trotzdem anwenden, um die Konnektivität beispielsweise zwischen bestimmten Subnetzen oder virtuellen Computern zu blockieren und so eine Feinsteuerung des Zugriffs zwischen den beiden virtuellen Netzwerken zu erzielen. Weitere Informationen zum Erstellen von NSG-Regeln finden Sie in [diesem Artikel](virtual-networks-create-nsg-arm-ps.md).
+	Nachdem das Peering in diesem Szenario eingerichtet wurde, können Sie die Verbindung zwischen beliebigen virtuellen Computern in beiden VNets initiieren. Standardmäßig ist „AllowVirtualNetworkAccess“ auf „true“ festgelegt, und das VNet-Peering stellt die passenden ACLs bereit, um die Kommunikation zwischen VNets zu ermöglichen. Sie können aber trotzdem Netzwerksicherheitsgruppen-Regeln (NSG-Regeln) anwenden, um die Konnektivität zwischen bestimmten Subnetzen oder virtuellen Computern zu blockieren und so eine Feinsteuerung des Zugriffs zwischen den beiden virtuellen Netzwerken zu erreichen. Weitere Informationen zum Erstellen von NSG-Regeln finden Sie in [diesem Artikel](virtual-networks-create-nsg-arm-ps.md).
 
 [AZURE.INCLUDE [virtual-networks-create-vnet-scenario-crosssub-include](../../includes/virtual-networks-create-vnetpeering-scenario-crosssub-include.md)]
 
-Führen Sie die folgenden Schritte aus, um das VNet-Peering abonnementübergreifend zu erstellen:
+Führen Sie die folgenden Schritte aus, um ein abonnementübergreifendes VNet-Peering zu erstellen:
 
-1. Melden Sie sich an Azure mit dem privilegierten UserA für Abonnement A an, und führen Sie das Cmdlet aus:
+1. Melden Sie sich bei Azure unter dem Abonnement A mit einem privilegierten Benutzerkonto für Benutzer A an, und führen Sie das folgende Cmdlet aus:
 
         New-AzureRmRoleAssignment -SignInName <UserB ID> -RoleDefinitionName "Network Contributor" -Scope /subscriptions/<Subscription-A-ID>/resourceGroups/<ResourceGroupName>/providers/Microsoft.Network/VirtualNetwork/VNet5
 
-Dies ist nicht zwingend erforderlich. Das Peering kann auch dann eingerichtet werden, wenn Benutzer individuell Peeringanforderungen für ihre jeweiligen VNets auslösen, solange die Anforderungen übereinstimmen. Das Hinzufügen von privilegierten Benutzern des anderen VNet als Benutzer im lokalen VNet vereinfacht das Setup.
+	Dies ist nicht zwingend erforderlich. Das Peering kann auch dann eingerichtet werden, wenn Benutzer individuell Peeringanforderungen für ihre jeweiligen VNets auslösen, solange die Anforderungen übereinstimmen. Das Hinzufügen von privilegierten Benutzern des anderen VNets als Benutzer im lokalen VNet vereinfacht aber die Einrichtung.
 
-2. Melden Sie sich an Azure mit dem privilegierten UserB für Abonnement B an, und führen Sie das Cmdlet aus:
+2. Melden Sie sich bei Azure unter dem Abonnement B mit einem privilegierten Benutzerkonto für Benutzer B an, und führen Sie das folgende Cmdlet aus:
 
         New-AzureRmRoleAssignment -SignInName <UserA ID> -RoleDefinitionName "Network Contributor" -Scope /subscriptions/<Subscription-B-ID>/resourceGroups/<ResourceGroupName>/providers/Microsoft.Network/VirtualNetwork/VNet3
 
-3. Führen Sie in der Anmeldesitzung von UserA dann das Cmdlet aus.
+3. Führen Sie in der Anmeldesitzung von Benutzer A das folgende Cmdlet aus:
 
         New-AzureRmResourceGroupDeployment -ResourceGroupName VNet101 -TemplateFile .\VNetPeeringVNet3.json -DeploymentDebugLogLevel all
 
@@ -206,11 +205,11 @@ Dies ist nicht zwingend erforderlich. Das Peering kann auch dann eingerichtet we
         ]
         }
    
-4. Führen Sie in der Anmeldesitzung von UserB dann das Cmdlet aus.
+4. Führen Sie in der Anmeldesitzung von Benutzer B das folgende Cmdlet aus:
 
         New-AzureRmResourceGroupDeployment -ResourceGroupName VNet101 -TemplateFile .\VNetPeeringVNet5.json -DeploymentDebugLogLevel all
    
-   Hier ist angegeben, wie die JSON-Datei definiert wird:
+	Hier ist angegeben, wie die JSON-Datei definiert wird:
 
         {
         "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -238,11 +237,13 @@ Dies ist nicht zwingend erforderlich. Das Peering kann auch dann eingerichtet we
         ]
         }
  
- Nachdem das Peering in diesem Szenario eingerichtet wurde, können Sie die Verbindungen von jedem virtuellen Computer mit jedem virtuellen Computer in beiden VNets über verschiedene Abonnements hinweg initiieren.
+ 	Nachdem das Peering in diesem Szenario eingerichtet wurde, können Sie die Verbindungen von jedem virtuellen Computer mit jedem virtuellen Computer in beiden VNets über verschiedene Abonnements hinweg initiieren.
 
 [AZURE.INCLUDE [virtual-networks-create-vnet-scenario-transit-include](../../includes/virtual-networks-create-vnetpeering-scenario-transit-include.md)]
 
-1. In diesem Szenario können Sie die unten angegebene Beispielvorlage bereitstellen, um das VNet-Peering einzurichten. Sie müssen vor allem die AllowForwardedTraffic-Eigenschaft auf „True“ festlegen, damit das virtuelle Netzwerkgerät im per Peering verknüpften VNet Datenverkehr senden und empfangen kann. Hier ist die Vorlage zum Erstellen des VNet-Peerings von HubVNet zu VNet1 angegeben. Beachten Sie, dass „AllowForwardedTraffic“ auf „False“ festgelegt ist.
+1. In diesem Szenario können Sie die weiter unten angegebene Beispielvorlage bereitstellen, um das VNet-Peering einzurichten. Die AllowForwardedTraffic-Eigenschaft muss auf „true“ festgelegt werden, damit das virtuelle Netzwerkgerät im mittels Peering verknüpften VNet Datenverkehr senden und empfangen kann.
+
+	Im Anschluss finden Sie die Vorlage zum Erstellen eines VNet-Peerings für „HubVNet zu VNet1“. Beachten Sie, dass „AllowForwardedTraffic“ auf „false“ festgelegt ist.
 
         {
         "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -271,7 +272,7 @@ Dies ist nicht zwingend erforderlich. Das Peering kann auch dann eingerichtet we
         ]
         }
 
-2. Hier ist die Vorlage zum Erstellen des VNet-Peerings von VNet1 zu HubVnet angegeben. Beachten Sie, dass „AllowForwardedTraffic“ auf „True“ festgelegt ist.
+2. Im Anschluss finden Sie die Vorlage zum Erstellen eines VNet-Peerings für „VNet1 zu HubVNet“. Beachten Sie, dass „AllowForwardedTraffic“ auf „true“ festgelegt ist.
 
         {
         "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -300,6 +301,6 @@ Dies ist nicht zwingend erforderlich. Das Peering kann auch dann eingerichtet we
         }
 
 
-3. Nachdem das Peering eingerichtet wurde, können Sie diesen [Artikel](virtual-network-create-udr-arm-ps.md) lesen und eine benutzerdefinierte Route (User-Defined Route, UDR) festlegen, um VNet1-Datenverkehr über ein virtuelles Gerät zu leiten und dessen Funktionen zu nutzen. Wenn Sie die Adresse des nächsten Hops der Route angeben, können Sie diese auf die IP-Adresse des virtuellen Geräts im per Peering verknüpften VNet (HubVNet) festlegen.
+3. Nachdem das Peering eingerichtet wurde, können Sie [diesen Artikel](virtual-network-create-udr-arm-ps.md) lesen und eine benutzerdefinierte Route (User-Defined Route, UDR) festlegen, um VNet1-Datenverkehr über ein virtuelles Gerät zu leiten und dessen Funktionen zu nutzen. Wenn Sie die Adresse des nächsten Hops der Route angeben, können Sie diese auf die IP-Adresse des virtuellen Geräts im mittels Peering verknüpften VNet (HubVNet) festlegen.
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0810_2016-->

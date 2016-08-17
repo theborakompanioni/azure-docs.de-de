@@ -1,9 +1,9 @@
 <properties
-   pageTitle="Erstellen, Starten oder Löschen eines Application Gateways | Microsoft Azure"
-   description="Diese Seite enthält Anweisungen zum Erstellen, Konfigurieren, Starten und Löschen eines Azure Application Gateways."
+   pageTitle="Erstellen, Starten oder Löschen eines Anwendungsgateways | Microsoft Azure"
+   description="Diese Seite enthält Anweisungen zum Erstellen, Konfigurieren, Starten und Löschen eines Azure-Anwendungsgateways."
    documentationCenter="na"
    services="application-gateway"
-   authors="joaoma"
+   authors="georgewallace"
    manager="jdial"
    editor="tysonn"/>
 <tags
@@ -12,62 +12,63 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="04/05/2016"
-   ms.author="joaoma"/>
+   ms.date="08/09/2016"
+   ms.author="gwallace"/>
 
-# Erstellen, Starten oder Löschen eines Application Gateways
+# Erstellen, Starten oder Löschen eines Anwendungsgateways
 
-Für das Azure Application Gateway wird ein Load Balancer auf Schicht 7 (Anwendungsschicht) verwendet. Das Application Gateway ermöglicht ein Failover sowie schnelles Routing von HTTP-Anforderungen zwischen verschiedenen Servern in der Cloud und der lokalen Umgebung. Application Gateways weisen folgende Anwendungsbereitstellungsfunktionen auf: HTTP-Lastenausgleich, cookiebasierte Sitzungsaffinität und Secure Sockets Layer-Auslagerung (SSL).
+Das Azure-Anwendungsgateway verwendet einen Load Balancer auf der Schicht 7 (Anwendungsschicht). Das Anwendungsgateway ermöglicht ein Failover sowie schnelles Routing von HTTP-Anforderungen zwischen verschiedenen Servern in der Cloud und der lokalen Umgebung. Anwendungsgateways weisen folgende Anwendungsbereitstellungsfunktionen auf: HTTP-Lastenausgleich, cookiebasierte Sitzungsaffinität und Secure Sockets Layer-Auslagerung (SSL).
 
 > [AZURE.SELECTOR]
-- [Klassische Azure PowerShell](application-gateway-create-gateway.md)
+- [Azure-Portal](application-gateway-create-gateway-portal.md)
 - [Azure Resource Manager PowerShell](application-gateway-create-gateway-arm.md)
+- [Klassische Azure PowerShell](application-gateway-create-gateway.md)
 - [Azure Resource Manager-Vorlage](application-gateway-create-gateway-arm-template.md)
 
 
 <BR>
 
-In diesem Artikel werden Sie durch die Schritte zum Erstellen, Konfigurieren, Starten und Löschen eines Application Gateways geführt.
+In diesem Artikel werden Sie durch die Schritte zum Erstellen, Konfigurieren, Starten und Löschen eines Anwendungsgateways geführt.
 
 
 ## Voraussetzungen
 
-1. Installieren Sie mit dem Webplattform-Installer die aktuelle Version der Azure PowerShell-Cmdlets. Sie können die neueste Version aus dem Abschnitt **Windows PowerShell** der [Downloadseite](https://azure.microsoft.com/downloads/) herunterladen und installieren.
-2. Wenn Sie über ein vorhandenes Gateway verfügen, können Sie entweder ein vorhandenes leeres Subnetz auswählen oder im vorhandenen virtuellen Netzwerk ein neues Netzwerk erstellen, das ausschließlich vom Application Gateway verwendet wird. Sie können das Application Gateway nicht in einem anderen virtuellen Netzwerk als dem Netzwerk mit den Ressourcen bereitstellen, die Sie hinter dem Application Gateway bereitstellen möchten.
-3. Stellen Sie sicher, dass Sie über ein funktionierendes virtuelles Netzwerk mit einem gültigen Subnetz verfügen. Stellen Sie sicher, dass keine virtuellen Maschinen oder Cloudbereitstellungen das Subnetz verwenden. Das Application Gateway muss sich allein im Subnetz eines virtuellen Netzwerks befinden.
-3. Die Server, die Sie für die Verwendung des Application Gateways konfigurieren, müssen vorhanden sein oder Endpunkte aufweisen, die im virtuellen Netzwerk erstellt wurden oder denen eine öffentliche IP-Adresse/VIP zugewiesen wurde.
+1. Installieren Sie mit dem Webplattform-Installer die aktuelle Version der Azure PowerShell-Cmdlets. Sie können die neueste Version über den Abschnitt **Windows PowerShell** der [Downloadseite](https://azure.microsoft.com/downloads/) herunterladen und installieren.
+2. Wenn Sie über ein vorhandenes Gateway verfügen, können Sie entweder ein vorhandenes leeres Subnetz auswählen oder im vorhandenen virtuellen Netzwerk ein neues Netzwerk erstellen, das ausschließlich vom Anwendungsgateway verwendet wird. Sie können das Anwendungsgateway nicht in einem anderen virtuellen Netzwerk als dem Netzwerk mit den Ressourcen bereitstellen, die Sie hinter dem Anwendungsgateway bereitstellen möchten.
+3. Stellen Sie sicher, dass Sie über ein funktionierendes virtuelles Netzwerk mit einem gültigen Subnetz verfügen. Stellen Sie sicher, dass keine virtuellen Maschinen oder Cloudbereitstellungen das Subnetz verwenden. Das Anwendungsgateway muss sich allein im Subnetz eines virtuellen Netzwerks befinden.
+3. Die Server, die Sie für die Verwendung des Anwendungsgateways konfigurieren, müssen vorhanden sein oder Endpunkte aufweisen, die im virtuellen Netzwerk erstellt wurden oder denen eine öffentliche IP-Adresse/VIP zugewiesen wurde.
 
-## Was ist zum Erstellen eines Application Gateways erforderlich?
+## Was ist zum Erstellen eines Anwendungsgateways erforderlich?
 
 
-Wenn Sie den Befehl **New-AzureApplicationGateway** zum Erstellen des Application Gateways verwenden, wird zu diesem Zeitpunkt keine Konfiguration festgelegt, und die neu erstellte Ressource muss entweder per XML oder mit einem Konfigurationsobjekt konfiguriert werden.
+Wenn Sie den Befehl **New-AzureApplicationGateway** zum Erstellen des Anwendungsgateways verwenden, wird zu diesem Zeitpunkt keine Konfiguration festgelegt, und die neu erstellte Ressource muss entweder per XML oder mit einem Konfigurationsobjekt konfiguriert werden.
 
 
 Die Werte sind:
 
 - **Back-End-Serverpool:** Die Liste der IP-Adressen der Back-End-Server. Die aufgelisteten IP-Adressen sollten entweder dem Subnetz des virtuellen Netzwerks angehören oder eine öffentliche IP-Adresse/VIP sein.
 - **Einstellungen für den Back-End-Serverpool:** Jeder Pool weist Einstellungen wie Port, Protokoll und cookiebasierte Affinität auf. Diese Einstellungen sind an einen Pool gebunden und gelten für alle Server innerhalb des Pools.
-- **Front-End-Port:** Dieser Port ist der öffentliche Port, der im Application Gateway geöffnet ist. Datenverkehr erreicht diesen Port und wird dann an einen der Back-End-Server umgeleitet.
-- **Listener:** Der Listener verfügt über einen Front-End-Port, ein Protokoll (Http oder Https, jeweils mit Beachtung der Groß-/Kleinschreibung) und dem Namen des SSL-Zertifikats (falls SSL-Auslagerung konfiguriert wird).
-- **Regel:** Mit der Regel werden der Listener und der Back-End-Serverpool gebunden, und es wird definiert, an welchen Back-End-Serverpool der Datenverkehr gesendet werden soll, wenn er einen bestimmten Listener erreicht.
+- **Front-End-Port:** Dieser Port ist der öffentliche Port, der im Anwendungsgateway geöffnet ist. Datenverkehr erreicht diesen Port und wird dann an einen der Back-End-Server umgeleitet.
+- **Listener:** Der Listener verfügt über einen Front-End-Port, ein Protokoll (Http oder Https, jeweils mit Beachtung der Groß-/Kleinschreibung) und den Namen des SSL-Zertifikats (falls SSL-Auslagerung konfiguriert wird).
+- **Regel**: Mit der Regel werden der Listener und der Back-End-Serverpool gebunden, und es wird definiert, an welchen Back-End-Serverpool der Datenverkehr gesendet werden soll, wenn er einen bestimmten Listener erreicht.
 
 
 ## Erstellen eines neuen Anwendungsgateways
 
-So erstellen Sie ein Application Gateway
+So erstellen Sie ein Anwendungsgateway
 
-1. Erstellen Sie eine neue Application Gateway-Ressource.
+1. Erstellen Sie eine neue Anwendungsgatewayressource.
 2. Erstellen Sie eine XML-Konfigurationsdatei oder ein Konfigurationsobjekt.
-3. Ordnen Sie die Konfiguration der neu erstellten Application Gateway-Ressource zu.
+3. Ordnen Sie die Konfiguration der neu erstellten Anwendungsgatewayressource zu.
 
->[AZURE.NOTE] Falls Sie einen benutzerdefinierten Test für Ihr Application Gateway konfigurieren müssen, helfen Ihnen die entsprechenden Informationen unter [Erstellen eines Application Gateways mit benutzerdefinierten Tests mithilfe von PowerShell](application-gateway-create-probe-classic-ps.md) weiter. Weitere Informationen finden Sie unter [Benutzerdefinierte Tests und Systemüberwachung](application-gateway-probe-overview.md).
+>[AZURE.NOTE] Falls Sie einen benutzerdefinierten Test für Ihr Anwendungsgateway konfigurieren müssen, helfen Ihnen die entsprechenden Informationen unter [Erstellen eines benutzerdefinierten Tests für Azure Application Gateway mithilfe von PowerShell für Azure-Ressourcen-Manager](application-gateway-create-probe-classic-ps.md) weiter. Weitere Informationen finden Sie unter [Systemüberwachung des Application Gateways – Übersicht](application-gateway-probe-overview.md).
 
 
-### Erstellen einer Application Gateway-Ressource
+### Erstellen einer Anwendungsgatewayressource
 
 Verwenden Sie zum Erstellen des Gateways das **New-AzureApplicationGateway**-Cmdlet, und ersetzen Sie die Werte durch Ihre eigenen Werte. Beachten Sie, dass die Abrechnung für das Gateway jetzt noch nicht gestartet wird. Die Abrechnung beginnt in einem späteren Schritt, wenn das Gateway erfolgreich gestartet wurde.
 
-Mit dem folgenden Beispiel wird ein neues Application Gateway über ein virtuelles Netzwerk mit dem Namen „testvnet1“ und ein Subnetz mit dem Namen „subnet-1“ erstellt.
+Mit dem folgenden Beispiel wird ein neues Anwendungsgateway über ein virtuelles Netzwerk mit dem Namen „testvnet1“ und ein Subnetz mit dem Namen „subnet-1“ erstellt.
 
 
 	New-AzureApplicationGateway -Name AppGwTest -VnetName testvnet1 -Subnets @("Subnet-1")
@@ -103,13 +104,13 @@ Sie können das **Get-AzureApplicationGateway**-Cmdlet verwenden, um zu überpr�
 
  *VirtualIPs* und *DnsName* werden leer angezeigt, da das Gateway noch nicht gestartet wurde. Die Werte werden erstellt, sobald das Gateway ausgeführt wird.
 
-## Konfigurieren des Application Gateways
+## Konfigurieren des Anwendungsgateways
 
-Sie können das Application Gateway per XML oder mit einem Konfigurationsobjekt konfigurieren.
+Sie können das Anwendungsgateway per XML oder mit einem Konfigurationsobjekt konfigurieren.
 
-## Konfigurieren des Application Gateways per XML
+## Konfigurieren des Anwendungsgateways per XML
 
-Im folgenden Beispiel verwenden Sie eine XML-Datei, um alle Einstellungen des Application Gateways zu konfigurieren und auf die Application Gateway-Ressource zu übertragen.
+Im folgenden Beispiel verwenden Sie eine XML-Datei, um alle Einstellungen des Anwendungsgateways zu konfigurieren und auf die Anwendungsgatewayressource zu übertragen.
 
 ### Schritt 1  
 
@@ -162,7 +163,7 @@ Bearbeiten Sie die Werte zwischen den Klammern für die Konfigurationselemente. 
 
 >[AZURE.IMPORTANT] Für die Protokollelemente Http oder Https muss die Groß-/Kleinschreibung beachtet werden.
 
-Das folgende Beispiel zeigt, wie Sie mithilfe einer Konfigurationsdatei das Application Gateway für den Lastenausgleich von HTTP-Datenverkehr am öffentlichen Port 80 und zum Senden des Netzwerkdatenverkehrs an den Back-End-Port 80 zwischen zwei IP-Adressen einrichten:
+Das folgende Beispiel zeigt, wie Sie mithilfe einer Konfigurationsdatei das Anwendungsgateway für den Lastenausgleich von HTTP-Datenverkehr am öffentlichen Port 80 und zum Senden des Netzwerkdatenverkehrs an den Back-End-Port 80 zwischen zwei IP-Adressen einrichten:
 
 	<?xml version="1.0" encoding="utf-8"?>
 	<ApplicationGatewayConfiguration xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/windowsazure">
@@ -210,7 +211,7 @@ Das folgende Beispiel zeigt, wie Sie mithilfe einer Konfigurationsdatei das Appl
 
 ### Schritt 2
 
-Legen Sie anschließend das Application Gateway fest. Verwenden Sie das **Set-AzureApplicationGatewayConfig**-Cmdlet mit einer XML-Konfigurationsdatei.
+Legen Sie anschließend das Anwendungsgateway fest. Verwenden Sie das **Set-AzureApplicationGatewayConfig**-Cmdlet mit einer XML-Konfigurationsdatei.
 
 
 	Set-AzureApplicationGatewayConfig -Name AppGwTest -ConfigFile "D:\config.xml"
@@ -221,9 +222,9 @@ Legen Sie anschließend das Application Gateway fest. Verwenden Sie das **Set-Az
 	----       ----------------     ------------                             ----
 	Successful OK                   9b995a09-66fe-2944-8b67-9bb04fcccb9d
 
-## Konfigurieren des Application Gateways mit einem Konfigurationsobjekt
+## Konfigurieren des Anwendungsgateways mit einem Konfigurationsobjekt
 
-Das folgende Beispiel zeigt, wie Sie das Application Gateway mithilfe von Konfigurationsobjekten konfigurieren. Alle Konfigurationselemente müssen einzeln konfiguriert und anschließend einem Konfigurationsobjekt für das Application Gateway hinzugefügt werden. Nach dem Erstellen des Konfigurationsobjekts verwenden Sie den Befehl **Set-AzureApplicationGateway**, um die Konfiguration der zuvor erstellten Application Gateway-Ressource zuzuordnen.
+Das folgende Beispiel zeigt, wie Sie das Anwendungsgateway mithilfe von Konfigurationsobjekten konfigurieren. Alle Konfigurationselemente müssen einzeln konfiguriert und anschließend einem Konfigurationsobjekt für das Anwendungsgateway hinzugefügt werden. Nach dem Erstellen des Konfigurationsobjekts verwenden Sie den Befehl **Set-AzureApplicationGateway**, um die Konfiguration der zuvor erstellten Anwendungsgatewayressource zuzuordnen.
 
 >[AZURE.NOTE] Bevor Sie dem Konfigurationsobjekt einen Wert zuweisen, müssen Sie deklarieren, welcher Objekttyp in PowerShell zum Speichern verwendet wird. Die erste Zeile zum Erstellen der einzelnen Elemente definiert, welches Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model(Objektname) verwendet wird.
 
@@ -287,7 +288,7 @@ Erstellen Sie die Regel.
 
 ### Schritt 2
 
-Weisen Sie die einzelnen Konfigurationselemente einem Konfigurationsobjekt für das Application Gateway ($appgwconfig) zu.
+Weisen Sie die einzelnen Konfigurationselemente einem Konfigurationsobjekt für das Anwendungsgateway ($appgwconfig) zu.
 
 Fügen Sie die Front-End-IP der Konfiguration hinzu.
 
@@ -322,13 +323,13 @@ Fügen Sie die Regel der Konfiguration hinzu.
 
 ### Schritt 3
 
-Ordnen Sie das Konfigurationsobjekt mit **Set AzureApplicationGatewayConfig** der Application Gateway-Ressource zu.
+Ordnen Sie das Konfigurationsobjekt mit **Set AzureApplicationGatewayConfig** der Anwendungsgatewayressource zu.
 
 	Set-AzureApplicationGatewayConfig -Name AppGwTest -Config $appgwconfig
 
 ## Starten des Gateways
 
-Verwenden Sie nach dem Konfigurieren des Gateways das **Start-AzureApplicationGateway**-Cmdlet, um das Gateway zu starten. Die Abrechnung für ein Application Gateway beginnt, nachdem das Gateway erfolgreich gestartet wurde.
+Verwenden Sie nach dem Konfigurieren des Gateways das **Start-AzureApplicationGateway**-Cmdlet, um das Gateway zu starten. Die Abrechnung für ein Anwendungsgateway beginnt, nachdem das Gateway erfolgreich gestartet wurde.
 
 
 > [AZURE.NOTE] Es kann 15 bis 20 Minuten dauern, bis der Vorgang für das **Start-AzureApplicationGateway**-Cmdlet abgeschlossen ist.
@@ -347,7 +348,7 @@ Verwenden Sie nach dem Konfigurieren des Gateways das **Start-AzureApplicationGa
 
 Verwenden Sie das **Get-AzureApplicationGateway**-Cmdlet, um den Status des Gateways zu überprüfen. Wenn **Start-AzureApplicationGateway** im vorherigen Schritt erfolgreich ausgeführt wurde, sollte der *Status* „Running“ lauten, und *Vip* und *DnsName* sollten gültige Einträge aufweisen.
 
-Dieses Beispiel zeigt ein Application Gateway, das ausgeführt wird und Datenverkehr verarbeiten kann, der für `http://<generated-dns-name>.cloudapp.net` vorgesehen ist.
+Dieses Beispiel zeigt ein Anwendungsgateway, das ausgeführt wird und Datenverkehr verarbeiten kann, der für `http://<generated-dns-name>.cloudapp.net` vorgesehen ist.
 
 	Get-AzureApplicationGateway AppGwTest
 
@@ -364,13 +365,13 @@ Dieses Beispiel zeigt ein Application Gateway, das ausgeführt wird und Datenver
 	DnsName       : appgw-1b8402e8-3e0d-428d-b661-289c16c82101.cloudapp.net
 
 
-## Löschen eines Application Gateways
+## Löschen eines Anwendungsgateways
 
-So löschen Sie ein Application Gateway
+So löschen Sie ein Anwendungsgateway
 
 1. Verwenden Sie das **Stop-AzureApplicationGateway**-Cmdlet, um das Gateway zu beenden.
 2. Verwenden Sie das **Remove-AzureApplicationGateway**-Cmdlet, um das Gateway zu entfernen.
-3. Stellen Sie mit dem **Get-AzureApplicationGateway**-Cmdlet sicher, dass das Gateway entfernt wurde.
+3. Stellen Sie sicher, dass das Gateway entfernt wurde, indem Sie das **Get-AzureApplicationGateway**-Cmdlet verwenden.
 
 Im folgenden Beispiel ist das **Stop-AzureApplicationGateway**-Cmdlet in der ersten Zeile dargestellt, gefolgt von der Ausgabe.
 
@@ -382,7 +383,7 @@ Im folgenden Beispiel ist das **Stop-AzureApplicationGateway**-Cmdlet in der ers
 	----       ----------------     ------------                             ----
 	Successful OK                   ce6c6c95-77b4-2118-9d65-e29defadffb8
 
-Verwenden Sie das **Remove-AzureApplicationGateway**-Cmdlet, um den Dienst zu entfernen, sobald das Application Gateway beendet wurde.
+Verwenden Sie das **Remove-AzureApplicationGateway**-Cmdlet, um den Dienst zu entfernen, sobald das Anwendungsgateway beendet wurde.
 
 
 	Remove-AzureApplicationGateway AppGwTest
@@ -405,13 +406,13 @@ Um sicherzustellen, dass der Dienst entfernt wurde, können Sie das **Get-AzureA
 
 ## Nächste Schritte
 
-Wenn Sie die SSL-Auslagerung konfigurieren möchten, finden Sie weitere Informationen im Abschnitt [Konfigurieren eines Application Gateways für SSL-Auslagerung](application-gateway-ssl.md).
+Wenn Sie die SSL-Auslagerung konfigurieren möchten, helfen Ihnen die Informationen im Abschnitt [Konfigurieren eines Anwendungsgateways für die SSL-Auslagerung](application-gateway-ssl.md) weiter.
 
-Wenn Sie ein Application Gateway für die Verwendung mit einem internen Load Balancer konfigurieren möchten, ist es ratsam, den Abschnitt [Erstellen eines Application Gateways mit einem internen Lastenausgleich (ILB)](application-gateway-ilb.md) zu lesen.
+Wenn Sie ein Anwendungsgateway für die Verwendung mit einem internen Load Balancer konfigurieren möchten, ist es ratsam, den Abschnitt [Erstellen eines Application Gateways mit einem internen Lastenausgleich (ILB)](application-gateway-ilb.md) zu lesen.
 
 Weitere Informationen zu Lastenausgleichsoptionen im Allgemeinen finden Sie unter:
 
 - [Azure-Lastenausgleich](https://azure.microsoft.com/documentation/services/load-balancer/)
 - [Azure Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0810_2016-->

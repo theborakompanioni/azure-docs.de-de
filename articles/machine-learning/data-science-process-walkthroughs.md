@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/23/2016" 
+	ms.date="08/03/2016" 
 	ms.author="bradsev" />
 
 
@@ -36,12 +36,15 @@ In der exemplarischen Vorgehensweise [Cortana-Analyseprozess (CAP) in Aktion: Ve
 In dem umfassenden Szenario der exemplarischen Vorgehensweise [Cortana-Analyseprozess in Aktion – Verwenden von Azure HDInsight Hadoop-Clustern in einem 1-TB-DataSet](machine-learning-data-science-process-hive-criteo-walkthrough.md) wird zum Speichern, Untersuchen und Komprimieren von Daten aus einem der öffentlich zugänglichen [Criteo](http://labs.criteo.com/downloads/download-terabyte-click-logs/)-Datasets sowie zum Entwickeln entsprechender Features ein [Azure HDInsight Hadoop-Cluster](https://azure.microsoft.com/services/hdinsight/) verwendet.
 
 
-## Spark in Azure HDInsight
+## Data Science unter Verwendung von Python mit Spark in Azure
 In der exemplarischen Vorgehensweise [Übersicht über Data Science mit Spark in Azure HDInsight](machine-learning-data-science-spark-overview.md) wird der Team Data Science-Prozess in einem umfassenden Szenario mit einem [Azure HDInsight Spark-Cluster](https://azure.microsoft.com/services/hdinsight/) verwendet, um Daten aus dem öffentlich zugänglichen Dataset mit Taxifahrten und Fahrpreisen für New York zu speichern, zu untersuchen und bei der Entwicklung von Features zu nutzen.
+
+## Data Science unter Verwendung von Scala mit Spark in Azure
+Die exemplarische Vorgehensweise [Data Science unter Verwendung von Scala mit Spark in Azure](machine-learning-data-science-process-scala-walkthrough.md) zeigt die Verwendung von Scala für überwachte Machine Learning-Aufgaben mit der skalierbaren Machine Learning-Bibliothek (MLlib) von Spark und Spark ML-Paketen auf einem Azure HDInsight Spark-Cluster. Sie führt Sie durch die Aufgaben, aus denen der [Data Science-Prozess](http://aka.ms/datascienceprocess) besteht: Erfassen und Durchsuchen von Daten, Visualisierung, Featureentwicklung, Modellierung und Modellnutzung. Die erstellten Modelle umfassen logistische und lineare Regression, zufällige Gesamtstrukturen und Gradient-Boosted-Strukturen.
 
 
 ## Azure Data Lake-Speicher und Analytics
-Die exemplarische Vorgehensweise [Skalierbare Data Science in Azure Data Lake: lückenlose exemplarische Vorgehensweise](machine-learning-data-science-process-data-lake-walkthrough.md) veranschaulicht, wie Sie Azure Data Lake auf der Grundlage des Datasets mit Taxifahrten und Fahrpreisen für New York zur Untersuchung von Daten sowie für binären Klassifizierungsaufgaben nutzen, um vorherzusagen, ob neben dem Fahrpreis ein Trinkgeld bezahlt wird.
+Unter [Skalierbare Data Science in Azure Data Lake: lückenlose exemplarische Vorgehensweise](machine-learning-data-science-process-data-lake-walkthrough.md) wird veranschaulicht, wie Sie Azure Data Lake auf der Grundlage des Datasets mit Taxifahrten und Fahrpreisen für New York zur Untersuchung von Daten sowie für binäre Klassifizierungsaufgaben nutzen, um vorherzusagen, ob neben dem Fahrpreis ein Trinkgeld bezahlt wird.
 
 ## R mit SQL Server R-Diensten
 Die exemplarische Vorgehensweise [Data Science End-to-End Walkthrough using SQL Server R Services](https://msdn.microsoft.com/library/mt612857.aspx) (Lückenlose exemplarische Vorgehensweise für Data Science mit SQL Server R-Diensten) bietet Data Scientists eine Kombination aus R-Code, SQL Server-Daten und benutzerdefinierten SQL-Funktionen für die Erstellung und Bereitstellung eines R-Modells für SQL Server.
@@ -49,4 +52,8 @@ Die exemplarische Vorgehensweise [Data Science End-to-End Walkthrough using SQL 
 ## T-SQL mit SQL Server R-Diensten
 In der exemplarischen Vorgehensweise [In-Database Advanced Analytics for SQL Developers](https://msdn.microsoft.com/library/mt683480.aspx) (Datenbankinterne erweiterte Analysen für SQL-Entwickler) können SQL-Programmierer praktische Erfahrungen mit der Erstellung einer erweiterten Analyselösung mit Transact-SQL unter Verwendung von SQL Server R-Diensten sammeln, um eine R-Lösung zu operationalisieren.
 
-<!---HONumber=AcomDC_0629_2016-->
+## Wie geht es weiter?
+
+Eine Übersicht zu Themen, die Sie durch die Aufgaben führen, die den Data Science-Prozess in Azure umfassen, finden Sie unter [Data Science-Prozess](http://aka.ms/datascienceprocess).
+
+<!---HONumber=AcomDC_0803_2016-->

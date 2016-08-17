@@ -26,7 +26,7 @@ Mit dem Feature für Datenverkehrsrouting in [Azure App Service](http://go.micro
 
 - Ermitteln von Bugs in Funktionen oder Leistungsengpässen in Ihren Updates vor der Bereitstellung in der gesamten Website
 - Durchführen von „kontrollierten Test-Flights“ Ihrer Änderungen durch Messen von Nutzungsmetriken in der Beta-App
-- Sukzessives Einführen eines Updates und problemloses Zurücksetzen auf die derzeitige Version, falls ein Fehler auftritt 
+- Sukzessives Einführen eines Updates und problemloses Zurücksetzen auf die derzeitige Version, falls ein Fehler auftritt
 - Optimieren der Geschäftsergebnisse Ihrer App durch Ausführen von [A/B-Tests](https://en.wikipedia.org/wiki/A/B_testing) oder [multivariaten Tests](https://en.wikipedia.org/wiki/Multivariate_testing_in_marketing) in mehreren Bereitstellungsslots
 
 ### Anforderungen für die Verwendung des Datenverkehrsroutings in Web-Apps
@@ -39,7 +39,7 @@ Mit dem Feature für Datenverkehrsrouting in [Azure App Service](http://go.micro
 
 Auf der Basisebene in jedem TiP-Szenario leiten Sie einen vorab definierten Prozentsatz des Livedatenverkehrs an einen nicht produktiven Bereitstellungsslot weiter. Führen Sie dazu die folgenden Schritte aus:
 
->[AZURE.NOTE] Bei den folgenden Schritten wird davon ausgegangen, dass Sie bereits über einen [nicht produktiven Bereitstellungsslot](web-sites-staged-publishing.md) verfügen und die gewünschten Web-App-Inhalte in diesem Slot [bereitgestellt](web-sites-publish-source-control.md) wurden.
+>[AZURE.NOTE] Bei den folgenden Schritten wird davon ausgegangen, dass Sie bereits über einen [nicht produktiven Bereitstellungsslot](web-sites-staged-publishing.md) verfügen und die gewünschten Web-App-Inhalte in diesem Slot [bereitgestellt](web-sites-deploy.md) wurden.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 2. Klicken Sie auf dem Blatt der Web-App auf **Einstellungen** > **Datenverkehrsrouting**. ![](./media/app-service-web-test-in-production/01-traffic-routing.png)
@@ -86,4 +86,4 @@ Damit Benutzer Ihre Beta-App nutzen können, legen Sie den gleichen Abfrageparam
 -   [Agile Softwareentwicklung mit Azure App Service](app-service-agile-software-development.md)
 -	[Effektive Verwendung der DevOps-Umgebungen für Ihre Web-Apps](app-service-web-staged-publishing-realworld-scenarios.md)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0803_2016-->

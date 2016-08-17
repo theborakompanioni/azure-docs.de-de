@@ -1,10 +1,10 @@
 <properties
-	pageTitle="Sichern virtueller Azure Resource Manager-Computer | Microsoft Azure"
-	description="Ermitteln, registrieren und sichern Sie Ihre virtuellen ARM-Computer mithilfe dieser Verfahren für das Sichern virtueller Azure-Computer in einem Recovery Services-Tresor."
+	pageTitle="Sichern von virtuellen Azure-Computern in einem Recovery Services-Tresor | Microsoft Azure"
+	description="Ermitteln, registrieren und sichern Sie Ihre virtuellen Azure-Computer mithilfe dieser Verfahren für das Sichern virtueller Azure-Computer in einem Recovery Services-Tresor."
 	services="backup"
 	documentationCenter=""
 	authors="markgalioto"
-	manager="jwhit"
+	manager="cfreeman"
 	editor=""
 	keywords="Sicherung virtueller Computer; Sichern virtueller Computer; Sicherung und Notfallwiederherstellung; ARM-VM-Sicherung"/>
 
@@ -14,19 +14,19 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/04/2016"
+	ms.date="07/29/2016"
 	ms.author="trinadhk; jimpark; markgal;"/>
 
 
-# Sichern virtueller Azure Resource Manager-Computer (ARM)
+# Sichern von virtuellen Azure-Computern in einem Recovery Services-Tresor
 
 > [AZURE.SELECTOR]
-- [Sichern von ARM-VMs in Azure](backup-azure-arm-vms.md)
+- [Sichern virtueller Azure Resource Manager-Computer (ARM)](backup-azure-arm-vms.md)
 - [Sichern von virtuellen Azure-Computern](backup-azure-vms.md)
 
-Dieser Artikel beschreibt das Verfahren zum Sichern virtueller Azure Resource Manager-Computer (ARM-VMs) in einem Recovery Services-Tresor. Der größte Teil des Arbeitsaufwands zum Sichern einer ARM-VM entfällt auf die Vorbereitung. Bevor Sie einen virtuellen Azure-Computer sichern oder schützen können, müssen Sie die [Voraussetzungen](backup-azure-arm-vms-prepare.md) zum Vorbereiten der Umgebung auf den Schutz Ihrer VMs schaffen. Wenn Sie die Voraussetzungen geschaffen haben, können Sie den Sicherungsvorgang starten, um Momentaufnahmen Ihres virtuellen Computers zu erstellen.
+Dieser Artikel beschreibt das Verfahren zum Sichern virtueller (mit Resource Manager oder dem klassischen Modell bereitgestellten) Azure-Computer in einem Recovery Services-Tresor. Der größte Teil des Arbeitsaufwands zum Sichern virtueller Computer entfällt auf die Vorbereitung. Bevor Sie einen virtuellen Computer sichern oder schützen können, müssen Sie die [Voraussetzungen](backup-azure-arm-vms-prepare.md) zum Vorbereiten der Umgebung auf den Schutz Ihrer VMs schaffen. Wenn Sie die Voraussetzungen geschaffen haben, können Sie den Sicherungsvorgang starten, um Momentaufnahmen Ihres virtuellen Computers zu erstellen.
 
->[AZURE.NOTE] Azure verfügt über zwei Bereitstellungsmodelle zum Erstellen und Verwenden von Ressourcen: [Resource Manager-Modell und klassisches Modell](../resource-manager-deployment-model.md). Dieser Artikel ist für die Verwendung mit Resource Manager und ARM-basierten VMs bestimmt. Unter [Sichern von virtuellen Azure-Computern](backup-azure-vms.md) finden Sie ausführliche Informationen zum Arbeiten mit VMs, die mit dem klassischen Bereitstellungsmodell bereitgestellt wurden.
+>[AZURE.NOTE] Azure verfügt über zwei Bereitstellungsmodelle zum Erstellen und Verwenden von Ressourcen: [Resource Manager-Modell und klassisches Modell](../resource-manager-deployment-model.md). Sie können mit Resource Manager bereitgestellte und klassische virtuelle Computer mit Recovery Services-Tresoren schützen. Unter [Sichern von virtuellen Azure-Computern](backup-azure-vms.md) finden Sie ausführliche Informationen zum Arbeiten mit VMs, die mit dem klassischen Bereitstellungsmodell bereitgestellt wurden.
 
 Weitere Informationen finden Sie in den Artikeln [Planen der Sicherungsinfrastruktur für virtuelle Computer in Azure](backup-azure-vms-introduction.md) und [Dokumentation zu Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/).
 
@@ -77,4 +77,4 @@ Da Sie nun Ihren virtuellen Computer geschützt haben, informieren Sie sich in d
 - [Verwalten und Überwachen Ihrer virtuellen Computer](backup-azure-manage-vms.md)
 - [Wiederherstellen virtueller Computer](backup-azure-arm-restore-vms.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0803_2016-->

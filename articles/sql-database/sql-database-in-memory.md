@@ -107,7 +107,7 @@ Sie können im [Azure-Portal](https://portal.azure.com/) die Beispieldatenbank �
 
 2. Stellen Sie eine Verbindung mit der Datenbank mit SQL Server Management Studio [(SSMS.exe)](http://msdn.microsoft.com/library/mt238290.aspx) her.
 
-3. Kopieren Sie das [In-Memory OLTP Transact-SQL-Skript](https://raw.githubusercontent.com/Azure/azure-sql-database-samples/master/t-sql/In-Memory/sql_in-memory_oltp_sample.sql) in die Zwischenablage.
+3. Kopieren Sie das [In-Memory OLTP Transact-SQL-Skript](https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/features/in-memory/t-sql-scripts/sql_in-memory_oltp_sample.sql) in die Zwischenablage.
  - Das T-SQL-Skript erstellt die erforderlichen In-Memory-Objekte in der in Schritt 1 erstellten Beispieldatenbank „AdventureWorksLT“.
 
 4. Fügen Sie das T-SQL-Skript in SSMS ein, und führen Sie es aus.
@@ -233,7 +233,7 @@ end
 ```
 
 
-Um die „\_ondisk“-Version des vorherigen T-SQL-Skripts für „ostress.exe“ zu erstellen, müssen Sie beide Vorkommen der Teilzeichenfolge „ *\_inmem* “ durch „ *\_ondisk* “ ersetzen. Diese Austauschvorgänge wirken sich auf die Namen von Tabellen und gespeicherten Prozeduren aus.
+Um die \_ondisk-Version des vorherigen T-SQL-Skripts für ostress.exe zu erstellen, müssen Sie beide Vorkommen der Teilzeichenfolge *\_inmem* durch *\_ondisk* ersetzen. Diese Austauschvorgänge wirken sich auf die Namen von Tabellen und gespeicherten Prozeduren aus.
 
 
 ### Installieren von RML-Hilfsprogrammen und ostress
@@ -286,7 +286,7 @@ EXECUTE Demo.usp_DemoReset;
 
 2. Kopieren Sie den Text der vorhergehenden „ostress.exe“-Befehlszeile in die Zwischenablage.
 
-3. Ersetzen Sie <placeholders> für die Parameter „-S“, „-U“, „-P“ und „-d“ durch die ordnungsgemäßen tatsächlichen Werte.
+3. Ersetzen Sie die <Platzhalter> für die Parameter „-S“, „-U“, „-P“ und „-d“ durch die tatsächlichen Werte.
 
 4. Führen Sie die bearbeitete Befehlszeile in einem RML-Befehlsfenster aus.
 
@@ -310,7 +310,7 @@ Sobald Sie über das Ergebnis der Ausführung von „\_inmem“ verfügen, führ
 EXECUTE Demo.usp_DemoReset;
 ```
 
-2. Bearbeiten Sie die „ostress.exe“-Befehlszeile so, dass alle Vorkommen von „ *\_inmem* “ durch „ *\_ondisk* “ ersetzt werden.
+2. Bearbeiten Sie die ostress.exe-Befehlszeile so, dass alle Vorkommen von *\_inmem* durch *\_ondisk* ersetzt werden.
 
 3. Führen Sie „ostress.exe“ ein zweites Mal aus, und erfassen Sie die Dauer.
 
@@ -319,7 +319,7 @@ EXECUTE Demo.usp_DemoReset;
 
 #### Erwartete Vergleichsergebnisse
 
-Unsere In-Memory-Tests haben für diese einfache Workload eine **9-mal** höhere Leistung ergeben, wenn ostress auf einem virtuellen Azure-Computer ausgeführt wird, der sich in derselben Azure-Region wie die Datenbank befindet.
+Unsere In-Memory-Tests haben für diese einfache Workload eine **9-mal** höhere Leistung ergeben, wenn „ostress“ auf einem virtuellen Azure-Computer ausgeführt wird, der sich in derselben Azure-Region wie die Datenbank befindet.
 
 
 
@@ -348,7 +348,7 @@ Für Echtzeitanalysen einer OLTP-Workload empfiehlt es sich häufig, einen nicht
  - Verwenden Sie denselben Namen.
  - Wählen Sie den Tarif „Premium“.
 
-2. Kopieren Sie [sql\_in-memory\_analytics\_sample](https://raw.githubusercontent.com/Azure/azure-sql-database-samples/master/t-sql/In-Memory/sql_in-memory_analytics_sample.sql) in die Zwischenablage.
+2. Kopieren Sie [sql\_in-memory\_analytics\_sample](https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/features/in-memory/t-sql-scripts/sql_in-memory_analytics_sample.sql) in die Zwischenablage.
  - Das T-SQL-Skript erstellt die erforderlichen In-Memory-Objekte in der in Schritt 1 erstellten Beispieldatenbank „AdventureWorksLT“.
  - Das Skript erstellt die Dimensionstabelle und zwei Faktentabellen. Beide Faktentabellen werden mit 3,5 Mio. Zeilen aufgefüllt.
  - Die Ausführung des Skripts kann 15 dauern.
@@ -371,7 +371,7 @@ Für Echtzeitanalysen einer OLTP-Workload empfiehlt es sich häufig, einen nicht
 #### Wichtige Abfragen zum Vergleichen des Columnstore-Indexes
 
 
-[Hier](https://raw.githubusercontent.com/Azure/azure-sql-database-samples/master/t-sql/In-Memory/clustered_columnstore_sample_queries.sql) folgen mehrere T-SQL-Abfragetypen, die Sie ausführen können, um Leistungssteigerungen zu erkennen. Schritt 2 im T-SQL-Skript enthält verschiedene Abfragen von unmittelbarem Interesse. Die beiden Abfragen unterscheiden sich nur in einer Zeile:
+[Hier](https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/features/in-memory/t-sql-scripts/clustered_columnstore_sample_queries.sql) folgen mehrere T-SQL-Abfragetypen, die Sie ausführen können, um Leistungssteigerungen zu erkennen. Schritt 2 im T-SQL-Skript enthält verschiedene Abfragen von unmittelbarem Interesse. Die beiden Abfragen unterscheiden sich nur in einer Zeile:
 
 
 - `FROM FactResellerSalesXL_PageCompressed a`
@@ -537,4 +537,4 @@ Wenn eine Datenbank eine der folgenden Arten von In-Memory OLTP-Objekten oder -T
 
 - [Überwachen von In-Memory-Speicher](sql-database-in-memory-oltp-monitoring.md) für In-Memory OLTP
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0803_2016-->

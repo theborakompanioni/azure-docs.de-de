@@ -1,11 +1,11 @@
 <properties
 	pageTitle="Herunterladen von Azure-Rechnungen und täglichen Nutzungsdaten | Microsoft Azure"
 	description="Hier erfahren Sie, wie Sie Azure-Rechnungen und tägliche Nutzungsdaten herunterladen."
-	services="billing"
+	services=""
 	documentationCenter=""
 	authors="genlin"
 	manager="mbaldwin"
-	editor="meerak"
+	editor=""
 	tags="billing"
 	/>
 
@@ -33,4 +33,4 @@ Als Azure-Kontoadministrator können Sie die aktuelle Rechnung im Azure-Kontocen
 6. Wählen Sie **Rechnung herunterladen**, um eine Kopie Ihrer letzten Rechnung anzuzeigen. </br>![DLInvoice](./media/billing-download-azure-invoice-daily-usage-date/DLInvoice1.png)
 7. Wählen Sie **Nutzung herunterladen**, um die täglichen Nutzungsdaten als CSV-Datei herunterzuladen.</br>![DLusage](./media/billing-download-azure-invoice-daily-usage-date/DLusage.png)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

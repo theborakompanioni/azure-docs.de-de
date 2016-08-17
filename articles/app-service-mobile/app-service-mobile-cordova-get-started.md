@@ -30,7 +30,7 @@ Das Absolvieren dieses Tutorials ist Voraussetzung für alle anderen Apache Cord
 
 ## Voraussetzungen
 
-Für dieses Lernprogramm benötigen Sie Folgendes:
+Für dieses Tutorial benötigen Sie Folgendes:
 
 * Einen PC mit [Visual Studio Community 2015] oder höher.
 * [Visual Studio-Tools für Apache Cordova].
@@ -41,6 +41,8 @@ Sie können auch Visual Studio umgehen und direkt die Apache Cordova-Befehlszeil
 ## Erstellen eines neuen mobilen Azure-App-Back-Ends
 
 [AZURE.INCLUDE [app-service-mobile-dotnet-backend-create-new-service](../../includes/app-service-mobile-dotnet-backend-create-new-service.md)]
+
+[Ansehen eines Videos mit ähnlichen Schritten](https://channel9.msdn.com/series/Azure-connected-services-with-Cordova/Azure-connected-services-task-1-Create-an-Azure-Mobile-App)
 
 ## Konfigurieren des Serverprojekts
 
@@ -54,8 +56,8 @@ Sie können auch Visual Studio umgehen und direkt die Apache Cordova-Befehlszeil
 
 Nachdem Sie dieses Schnellstarttutorial abgeschlossen haben, fahren Sie mit einem der folgenden Tutorials fort:
 
-* [Hinzufügen von Authentifizierung] zu Ihrer Apache Cordova-App.
-* [Hinzufügen von Pushbenachrichtigungen] zu Ihrer Apache Cordova-App.
+* [Hinzufügen von Authentifizierung] zu Ihrer Apache Cordova-App
+* [Hinzufügen von Pushbenachrichtigungen] zu Ihrer Apache Cordova-App
 
 Erfahren Sie mehr über die Schlüsselkonzepte von Azure App Service.
 
@@ -82,4 +84,4 @@ Erfahren Sie, wie Sie die SDKs nutzen,
 [ASP.NET Server-SDK]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
 [Node.js Server-SDK]: app-service-mobile-node-backend-how-to-use-server-sdk.md
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0810_2016-->

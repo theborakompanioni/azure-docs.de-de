@@ -48,7 +48,9 @@ In diesem Tutorial lernen Sie, wie Sie folgende Szenarien kombinieren, um Ihre A
 	-	[Git](http://git-scm.com/documentation)
 	-	[PowerShell](https://technet.microsoft.com/library/bb978526.aspx)
 
-> [AZURE.NOTE] Sie benötigen ein Azure-Konto, um dieses Lernprogramm abzuschließen: Sie können [kostenlos ein Azure-Konto erstellen](/pricing/free-trial/). Sie erhalten ein Guthaben, das Sie zum Ausprobieren der kostenpflichtigen Azure-Dienste nutzen können. Sie können das Konto behalten und weiterhin kostenlose Azure-Dienste wie z. B. Web-Apps nutzen, wenn das Guthaben aufgebraucht ist. Sie können von [Vorteilen für Visual Studio-Abonnenten](/pricing/member-offers/msdn-benefits-details/) profitieren. Über Ihr Visual Studio-Abonnement erhalten Sie jeden Monat Gutschriften, die Sie für kostenpflichtige Azure-Dienste einsetzen können.
+> [AZURE.NOTE] Sie benötigen ein Microsoft Azure-Konto, um dieses Tutorial durchführen zu können:
+> + Sie können ein [Azure-Konto kostenlos erstellen](/pricing/free-trial/): Sie erhalten ein Guthaben, das Sie zum Ausprobieren der zahlungspflichtigen Azure-Dienste nutzen können, und Sie können das Konto selbst dann behalten und kostenlose Azure-Dienste wie etwa Web-Apps nutzen, wenn das Guthaben aufgebraucht ist.
+> + Sie können Ihre [Vorteile für Visual Studio-Abonnenten aktivieren](/pricing/member-offers/msdn-benefits-details/): Ihr Visual Studio-Abonnement schließt ein monatliches Guthaben ein, das Sie für kostenpflichtige Azure-Dienste nutzen können.
 >
 > Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie unter [App Service testen](http://go.microsoft.com/fwlink/?LinkId=523751) sofort kostenlos eine kurzlebige Starter-Web-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
 
@@ -56,7 +58,7 @@ In diesem Tutorial lernen Sie, wie Sie folgende Szenarien kombinieren, um Ihre A
 
 >[AZURE.NOTE] Das Skript in diesem Tutorial konfiguriert automatisch die kontinuierliche Veröffentlichung aus Ihrem GitHub-Repository. Dies erfordert, dass Ihre Anmeldeinformationen für GitHub bereits in Azure gespeichert sind. Andernfalls misslingt die skriptgesteuerte Bereitstellung, wenn versucht wird, Quellcodeverwaltungseinstellungen für die Web-Apps zu konfigurieren.
 >
->Um Ihre GitHub-Anmeldeinformationen in Azure zu speichern, erstellen Sie eine Web-App im [Azure-Portal](https://portal.azure.com/) und [konfigurieren die GitHub-Bereitstellung](web-sites-publish-source-control.md#Step7). Dies ist nur einmalig erforderlich.
+>Um Ihre GitHub-Anmeldeinformationen in Azure zu speichern, erstellen Sie eine Web-App im [Azure-Portal](https://portal.azure.com/) und [konfigurieren die GitHub-Bereitstellung](app-service-continuous-deployment.md#Step7). Dies ist nur einmalig erforderlich.
 
 In einem typischen DevOps-Szenario verfügen Sie über eine Anwendung, die aktiv in Azure ausgeführt wird und an der Sie über die fortlaufende Veröffentlichung Änderungen vornehmen möchten. In diesem Szenario stellen Sie eine Vorlage in der Produktionsumgebung bereit, die Sie entwickelt und getestet haben.
 
@@ -96,7 +98,7 @@ Sie haben die Produktions-App eingerichtet. Angenommen, Sie erhalten Rückmeldun
 
 5. Öffnen Sie *&lt;Repositorystammverzeichnis>*\\src\\MultiChannelToDo.sln in Visual Studio.
 6. Stellen Sie alle NuGet-Pakete wieder her, indem Sie mit der rechten Maustaste auf die Projektmappe > **NuGet-Pakete für Projektmappe verwalten** > **Wiederherstellen** klicken.
-6. Klicken Sie mit der rechten Maustaste auf **MultiChannelToDo.Web** > **Application Insights-Telemetrie hinzufügen** > **Einstellungen konfigurieren** > Ressourcengruppe ändern zu ToDoApp*&lt;Ihr\_suffix>* > **Application Insights zu Projekt hinzufügen**.
+6. Klicken Sie mit der rechten Maustaste auf **MultiChannelToDo.Web** > **Application Insights-Telemetrie hinzufügen** > **Einstellungen konfigurieren** > Ressourcengruppe ändern zu „ToDoApp*&lt;Ihr\_Suffix>*“ > **Application Insights zu Projekt hinzufügen**.
 7. Öffnen Sie im Azure-Portal das Blatt für die Application Insight-Ressource **MultiChannelToDo.Web**. Klicken Sie dann im Detail **Anwendungsintegrität** auf **Erfahren Sie, wie Sie Daten zu Seitenladezeiten im Browser erfassen** > Code kopieren.
 7. Fügen Sie den kopierten JS-Instrumentationscode zu *&lt;Repositorystammverzeichnis>*\\src\\MultiChannelToDo.Web\\app\\Index.cshtml hinzu, direkt vor das schließende `<heading>`-Tag. Der Code sollte den eindeutigen Instrumentationsschlüssel Ihrer Application Insight-Ressource enthalten.
 
@@ -157,7 +159,7 @@ Dieses Beispiel ist möglicherweise nicht sehr realitätsnah. Es ging nur darum,
 ### Instrumentieren Ihrer Server-App für Überwachung/Metriken
 Dies weicht ein wenig vom Thema ab, da es in dem hier vorgestellten Szenario nur um die Client-App geht. Der Vollständigkeit halber richten Sie jetzt jedoch auch die serverseitige App ein.
 
-6. Klicken Sie mit der rechten Maustaste auf **MultiChannelToDo** > **Application Insights-Telemetrie hinzufügen** > **Einstellungen konfigurieren** > Ressourcengruppe ändern zu ToDoApp*&lt;Ihr\_Suffix>* > **Application Insights zu Projekt hinzufügen**.
+6. Klicken Sie mit der rechten Maustaste auf **MultiChannelToDo** > **Application Insights-Telemetrie hinzufügen** > **Einstellungen konfigurieren** > Ressourcengruppe ändern zu „ToDoApp*&lt;Ihr\_Suffix>*“ > **Application Insights zu Projekt hinzufügen**.
 12. Führen Sie für Ihre Änderungen in Git-Shell ein Commit aus, und pushen Sie die Änderungen in Ihre Verzweigung in GitHub. Warten Sie, bis die Browser auf den Clients aktualisiert werden.
 
         git add -A :/
@@ -255,7 +257,7 @@ Der Vollständigkeit halber richten Sie jetzt auch die serverseitige App ein. Im
 
 ## Update: Einrichten der Betaverzweigung
 
-2. Öffnen Sie *&lt;Repositorystammverzeichnis>*\\ARMTemplates\\ProdAndStagetest.json, und suchen Sie die `appsettings`-Ressourcen (suchen Sie nach `"name": "appsettings"`). Es gibt vier Ressourcen, eine für jeden Slot. 
+2. Öffnen Sie *&lt;Repositorystammverzeichnis>*\\ARMTemplates\\ProdAndStagetest.json, und suchen Sie die `appsettings`-Ressourcen (suchen Sie nach `"name": "appsettings"`). Es gibt vier Ressourcen, eine für jeden Slot.
 
 2. Fügen Sie für jede `appsettings`-Ressource eine `"environment": "[parameters('slotName')]"`-App-Einstellung am Ende des `properties`-Arrays ein. Denken Sie daran, die vorherige Zeile mit einem Komma zu beenden.
 
@@ -375,4 +377,4 @@ Mit Azure App Service können kleine und mittelgroße Unternehmen ihre kundenori
 -	[Azure PowerShell](../powershell-install-configure.md)
 -	[Wiki zum Kudu-Projekt](https://github.com/projectkudu/kudu/wiki)
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0803_2016-->

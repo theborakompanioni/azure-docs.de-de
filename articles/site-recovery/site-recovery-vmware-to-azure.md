@@ -69,7 +69,7 @@ Die Grafik zeigt, wie diese Komponenten zusammenwirken.
 
 ![Architektur](./media/site-recovery-vmware-to-azure/v2a-architecture-henry.png)
 
-**Abbildung 1: VMware/physisch zu Azure** (erstellt von Henry Robalino)
+**Abbildung 1: VMware/physisch zu Azure**
 
 ## Voraussetzungen für Azure
 
@@ -77,8 +77,8 @@ In Azure benötigen Sie für die Bereitstellung dieses Szenarios Folgendes:
 
 **Voraussetzung** | **Details**
 --- | ---
-**Azure-Konto**| Sie benötigen ein [Microsoft Azure](http://azure.microsoft.com/)-Konto. Für den Einstieg steht eine [kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/) zur Verfügung. Erfahren Sie mehr über die [Preise für Site Recovery](https://azure.microsoft.com/pricing/details/site-recovery/).
-**Azure-Speicher** | Replizierte Daten werden im Azure-Speicher gespeichert, und virtuelle Azure-Computer werden erstellt, wenn ein Failover durchgeführt wird. <br/><br/>Zum Speichern von Daten benötigen Sie ein Standard- oder Premium-Speicherkonto in derselben Region wie der Recovery Services-Tresor.<br/><br/>Sie können ein LRS- oder GRS-Speicherkonto verwenden. Wir empfehlen Ihnen die Verwendung von GRS, damit Resilienz für die Daten besteht, wenn es zu einem regionalen Ausfall kommt oder wenn die primäre Region nicht wiederhergestellt werden kann. [Weitere Informationen](../storage/storage-redundancy.md).<br/><br/> [Storage Premium](../storage/storage-premium-storage.md) wird normalerweise für virtuelle Computer verwendet, die eine konsistent hohe E/A-Leistung und geringe Wartezeit zum Hosten von E/A-intensiven Workloads erfordern.<br/><br/> Wenn Sie ein Premium-Konto zum Speichern replizierter Daten verwenden möchten, benötigen Sie außerdem ein Standardspeicherkonto zum Speichern von Replikationsprotokollen, in denen laufende Änderungen lokaler Daten erfasst werden.<br/><br/> Beachten Sie, dass im Azure-Portal erstellte Speicherkonten nicht über Ressourcengruppen hinweg verschoben werden können.<br/><br/> [Erfahren Sie mehr](../storage/storage-introduction.md) über Azure Storage.
+**Azure-Konto**| Sie benötigen ein [Microsoft Azure](http://azure.microsoft.com/)-Konto. Für den Einstieg steht eine [kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/) zur Verfügung. Erfahren Sie mehr über die [Preise für Site Recovery](https://azure.microsoft.com/pricing/details/site-recovery/).
+**Azure-Speicher** | Replizierte Daten werden im Azure-Speicher gespeichert, und virtuelle Azure-Computer werden erstellt, wenn ein Failover durchgeführt wird. <br/><br/>Zum Speichern von Daten benötigen Sie ein Standard- oder Premium-Speicherkonto in derselben Region wie der Recovery Services-Tresor.<br/><br/>Sie können ein LRS- oder GRS-Speicherkonto verwenden. Wir empfehlen Ihnen die Verwendung von GRS, damit Resilienz für die Daten besteht, wenn es zu einem regionalen Ausfall kommt oder wenn die primäre Region nicht wiederhergestellt werden kann. [Weitere Informationen](../storage/storage-redundancy.md).<br/><br/> [Storage Premium](../storage/storage-premium-storage.md) wird normalerweise für virtuelle Computer verwendet, die eine konsistent hohe E/A-Leistung und geringe Wartezeit zum Hosten von E/A-intensiven Workloads erfordern.<br/><br/> Wenn Sie ein Premium-Konto zum Speichern replizierter Daten verwenden möchten, benötigen Sie außerdem ein Standardspeicherkonto zum Speichern von Replikationsprotokollen, in denen laufende Änderungen lokaler Daten erfasst werden.<br/><br/> Beachten Sie, dass im Azure-Portal erstellte Speicherkonten nicht über Ressourcengruppen hinweg verschoben werden können. Auch der Schutz von Premium-Speicherkonten in den Regionen „Indien, Mitte“ und „Indien, Süden“ wird zurzeit nicht unterstützt.<br/><br/> [Erfahren Sie mehr](../storage/storage-introduction.md) über Azure Storage.
 **Azure-Netzwerk** | Sie benötigen ein virtuelles Azure-Netzwerk, mit dem die virtuellen Azure-Computer eine Verbindung herstellen, wenn ein Failover stattfindet. Das virtuelle Azure-Netzwerk muss sich in derselben Region wie der Recovery Services-Tresor befinden.
 **Failback von Azure** | Sie benötigen einen temporären Prozessserver, der als virtueller Azure-Computer eingerichtet ist. Sie können diesen erstellen, wenn Sie bereit für das Failback sind, und ihn nach Abschluss des Failbacks wieder löschen.<br/><br/> Für das Failback benötigen Sie außerdem eine VPN-Verbindung (oder Azure ExpressRoute) zwischen dem Azure-Netzwerk und dem lokalen Standort.
 
@@ -103,7 +103,7 @@ Sie richten einen lokalen Computer als Konfigurationsserver ein.
 
 **Voraussetzung** | **Details**
 --- | ---
-**Lokale VMware-VMs** | Auf virtuellen VMware-Computern, die Sie schützen möchten, müssen VMware-Tools installiert sein und ausgeführt werden.<br/><br/> Computer, die Sie schützen möchten, müssen die [Azure-Voraussetzungen](site-recovery-best-practices.md#azure-virtual-machine-requirements) für das Erstellen von Azure-VMs erfüllen.<br/><br/>Die Kapazität der einzelnen Datenträger auf geschützten Computern darf maximal 1.023 GB betragen. Ein virtueller Computer kann bis zu 64 Datenträger haben (also bis zu 64 TB). <br/><br/>Gastcluster mit freigegebenen Datenträgern werden nicht unterstützt.<br/><br/>Startvorgänge mit Unified Extensible Firmware Interface (UEFI)/Extensible Firmware Interface (EFI) werden nicht unterstützt.<br/><br/>Computernamen dürfen 1 bis 63 Zeichen enthalten (Buchstaben, Zahlen und Bindestriche). Der Name muss mit einem Buchstaben oder einer Zahl beginnen und mit einem Buchstaben oder einer Zahl enden. Nachdem Sie die Replikation für einen Computer aktiviert haben, können Sie den Azure-Namen ändern.<br/><br/>Verfügt der virtuelle Quellcomputer über einen NIC-Teamvorgang, wird dieser nach dem Failover auf Azure in eine einzelne NIC konvertiert.<br/><br/>Wenn geschützte VMs über einen iSCSI-Datenträger verfügen, konvertiert Site Recovery den iSCSI-Datenträger des geschützten virtuellen Computers in eine VHD-Datei, wenn für den virtuellen Computer ein Failover auf Azure ausgeführt wird. Wenn das iSCSI-Ziel vom virtuellen Azure-Computer erreicht werden kann, stellt dieser eine Verbindung mit diesem Ziel her. Dadurch sind für ihn effektiv zwei Datenträger sichtbar – der VHD-Datenträger auf dem virtuellen Azure-Computer und der iSCSI-Quelldatenträger. In diesem Fall müssen Sie die Verbindung mit dem iSCSI-Ziel trennen, das auf der Azure-VM erscheint.
+**Lokale VMware-VMs** | Auf virtuellen VMware-Computern, die Sie schützen möchten, müssen VMware-Tools installiert sein und ausgeführt werden.<br/><br/> Computer, die Sie schützen möchten, müssen die [Azure-Voraussetzungen](site-recovery-best-practices.md#azure-virtual-machine-requirements) für das Erstellen von Azure-VMs erfüllen.<br/><br/>Die Kapazität der einzelnen Datenträger auf geschützten Computern darf maximal 1.023 GB betragen. Ein virtueller Computer kann bis zu 64 Datenträger haben (also bis zu 64 TB). <br/><br/>Gastcluster mit freigegebenen Datenträgern werden nicht unterstützt.<br/><br/>Startvorgänge mit Unified Extensible Firmware Interface (UEFI)/Extensible Firmware Interface (EFI) werden nicht unterstützt.<br/><br/>Computernamen dürfen 1 bis 63 Zeichen enthalten (Buchstaben, Zahlen und Bindestriche). Der Name muss mit einem Buchstaben oder einer Zahl beginnen und mit einem Buchstaben oder einer Zahl enden. Nachdem Sie die Replikation für einen Computer aktiviert haben, können Sie den Azure-Namen ändern.<br/><br/>Verfügt der virtuelle Quellcomputer über einen NIC-Teamvorgang, wird dieser nach dem Failover auf Azure in eine einzelne NIC konvertiert.<br/><br/>Wenn geschützte VMs über einen iSCSI-Datenträger verfügen, konvertiert Site Recovery den iSCSI-Datenträger des geschützten virtuellen Computers in eine VHD-Datei, wenn für den virtuellen Computer ein Failover auf Azure ausgeführt wird. Wenn das iSCSI-Ziel vom virtuellen Azure-Computer erreicht werden kann, stellt dieser eine Verbindung mit diesem Ziel her. Dadurch sind für ihn effektiv zwei Datenträger sichtbar – der VHD-Datenträger auf dem virtuellen Azure-Computer und der iSCSI-Quelldatenträger. In diesem Fall müssen Sie die Verbindung mit dem iSCSI-Ziel trennen, das auf der Azure-VM erscheint.
 **Windows-Computer (physische oder VMware)** | Auf dem Computer muss ein unterstütztes 64-Bit-Betriebssystem ausgeführt werden: Windows Server 2012 R2, Windows Server 2012 oder Windows Server 2008 R2 mit SP1 oder höher.<br/><br/> Das Betriebssystem sollte auf dem Laufwerk C:\\ installiert werden. Bei dem Betriebssystem-Datenträger sollte es sich um einen Windows-Basisdatenträger anstelle eines dynamischen Datenträgers handeln. Der Datenträger kann dynamisch sein.<br/><br/>Site Recovery unterstützt VMs mit einem RDM-Datenträger. Beim Failback wird der RDM-Datenträger von Site Recovery wiederverwendet, sofern die ursprüngliche Quell-VM und der RDM-Datenträger verfügbar sind. Wenn sie nicht verfügbar sind, erstellt Site Recovery während des Failbacks eine neue VMDK-Datei für jeden Datenträger.
 **Linux-Computer** | Sie benötigen ein unterstütztes 64-Bit-Betriebssystem: Red Hat Enterprise Linux 6.7; CentOS 6.5, 6.6, 6.7; Oracle Enterprise Linux 6.4, 6.5 (entweder mit dem Red Hat-kompatiblen Kernel oder mit UEK3 [Unbreakable Enterprise Kernel Release 3]), SUSE Linux Enterprise Server 11 SP3.<br/><br/>Dateien unter „/etc/hosts“ auf geschützten Computern müssen Einträge enthalten, die den Namen des lokalen Hosts jeweils IP-Adressen zuordnen, die allen Netzwerkkarten zugeordnet sind.<br/><br/>Wenn Sie nach einem Failover eine Verbindung mit einem virtuellen Azure-Computer unter Linux über einen Secure Shell-Client (SSH) herstellen möchten, stellen Sie sicher, dass der Secure Shell-Dienst auf dem geschützten Computer beim Systemstart automatisch gestartet wird und dass die Firewallregeln eine SSH-Verbindung mit ihm zulassen.<br/><br/>Der Hostname, die Bereitstellungspunkte, Gerätenamen und Linux-Systempfade und -Dateinamen (etwa „./etc/“ oder „/usr“) dürfen nur in englischer Sprache angegeben werden.<br/><br/>Der Schutz kann für Linux-Computer nur mit dem folgenden Speicher aktiviert werden: Dateisystem (EXT3, ETX4, ReiserFS, XFS); Multipath-Softwaregeräte-Mapper (multipath); Volume-Manager: (LVM2). Physische Server mit HP CCISS-Controllerspeicher werden nicht unterstützt. Das ReiserFS-Dateisystem wird nur unter SUSE Linux Enterprise Server 11 SP3 unterstützt.<br/><br/>Site Recovery unterstützt virtuelle Computer mit einem RDM-Datenträger. Beim Failback für Linux wird der RDM-Datenträger nicht wiederverwendet. Stattdessen wird eine neue VMDK-Datei für jeden entsprechenden RDM-Datenträger erstellt.<br/><br/>Achten Sie darauf, die Einstellung „disk.enableUUID=true“ in den Konfigurationsparametern für die VM in VMware festzulegen. Erstellen Sie den Eintrag, wenn er nicht vorhanden ist. Er ist erforderlich, um der VMDK-Datei eine konsistente UUID bereitzustellen, damit sie ordnungsgemäß bereitgestellt wird. Durch das Hinzufügen dieser Einstellung wird außerdem sichergestellt, dass während des Failbacks nur Deltaänderungen zurück an den lokalen Standort übertragen werden, und keine vollständige Replikation.
 **Mobilitätsdienst** | **Windows**: Für eine automatische Übertragung des Mobilitätsdiensts mittels Push auf virtuelle Windows-Computer müssen Sie ein Administratorkonto (lokaler Administrator auf dem Windows-Computer) angeben, damit der Prozessserver eine Pushinstallation durchführen kann.<br/><br/> **Linux**: Für eine automatische Übertragung des Mobilitätsdiensts mittels Push auf virtuelle Linux-Computer müssen Sie ein Konto erstellen, das vom Prozessserver zum Durchführen einer Pushinstallation verwendet werden kann.<br/><br/> Standardmäßig werden alle Datenträger auf einem Computer repliziert. Der Mobilitätsdienst muss vor der Aktivierung der Replikation manuell auf dem Computer installiert werden, um [einen Datenträger von der Replikation auszuschließen](#exclude-disks-from-replication).
@@ -216,42 +216,44 @@ Richten Sie den Konfigurationsserver ein, und registrieren Sie ihn im Recovery S
 
 3. Klicken Sie unter **Third-Party Software License** (Drittanbietersoftware-Lizenz) auf **I Accept** (Ich stimme zu), um MySQL herunterzuladen und zu installieren.
 
-	![Drittanbietersoftware](./media/site-recovery-vmware-to-azure/combined-wiz2.png)
+	![Drittanbietersoftware](./media/site-recovery-vmware-to-azure/combined-wiz105.PNG)
 
-4. Geben Sie unter **Interneteinstellungen** an, wie der auf dem Konfigurationsserver ausgeführte Anbieter eine Internetverbindung mit Azure Site Recovery herstellen soll.
+4. Navigieren Sie unter **Registrierung** zu dem Registrierungsschlüssel, den Sie aus dem Tresor heruntergeladen haben, und wählen Sie ihn aus.
 
-	- Wenn die Verbindung über einen derzeit auf dem Computer eingerichteten Proxy hergestellt werden soll, wählen Sie **Connect with existing proxy settings** (Mit vorhandenen Proxyeinstellungen verbinden) aus.
-	- Wenn der Anbieter eine direkte Verbindung herstellen soll, wählen Sie **Connect directly without a proxy** (Ohne Proxy direkt verbinden) aus.
-	- Falls für den vorhandenen Proxy eine Authentifizierung erforderlich ist, oder Sie für die Anbieterverbindung einen benutzerdefinierten Proxy verwenden möchten, wählen Sie **Connect with custom proxy settings** (Mit benutzerdefinierten Proxyeinstellungen verbinden) aus.
+	![Registrierung](./media/site-recovery-vmware-to-azure/combined-wiz3.png)
+
+5. Geben Sie unter **Interneteinstellungen** an, wie der auf dem Konfigurationsserver ausgeführte Anbieter eine Internetverbindung mit Azure Site Recovery herstellen soll.
+
+	- Wenn die Verbindung über den derzeit auf dem Computer eingerichteten Proxy hergestellt werden soll, wählen Sie **Mit vorhandenen Proxyeinstellungen verbinden** aus.
+	- Wenn der Anbieter eine direkte Verbindung herstellen soll, wählen Sie **Ohne Proxy direkt verbinden** aus.
+	- Falls für den vorhandenen Proxy eine Authentifizierung erforderlich ist oder Sie für die Anbieterverbindung einen benutzerdefinierten Proxy verwenden möchten, wählen Sie **Mit benutzerdefinierten Proxyeinstellungen verbinden** aus.
 		- Bei einem benutzerdefinierten Proxy müssen Sie die Adresse, den Port und Anmeldeinformationen eingeben.
 		- Bei Verwendung eines Proxys sollten Sie die unter [Voraussetzungen](#configuration-server-prerequisites) beschriebenen URLs bereits zugelassen haben.
 
-	![Firewall](./media/site-recovery-vmware-to-azure/combined-wiz3.png)
+	![Firewall](./media/site-recovery-vmware-to-azure/combined-wiz4.png)
 
-5. Unter **Voraussetzungsüberprüfung** führt das Setup eine Überprüfung durch, um sicherzustellen, dass die Installation ausgeführt werden kann. Falls beim **Überprüfen der Synchronisierung der globalen Zeit** eine Warnung erscheint, stellen Sie sicher, dass die Zeit der Systemuhr (Einstellungen für **Datum und Uhrzeit**) mit der Zeitzone übereinstimmt.
+6. Bei der **Voraussetzungsüberprüfung** führt das Setup eine Überprüfung durch, um sicherzustellen, dass die Installation ausgeführt werden kann. Falls beim **Überprüfen der Synchronisierung der globalen Zeit** eine Warnung angezeigt wird, stellen Sie sicher, dass die Zeit der Systemuhr (Einstellungen für **Datum und Uhrzeit**) mit der Zeitzone übereinstimmt.
 
-	![Voraussetzungen](./media/site-recovery-vmware-to-azure/combined-wiz4.png)
+	![Voraussetzungen](./media/site-recovery-vmware-to-azure/combined-wiz5.png)
 
-6. Erstellen Sie unter **MySQL-Konfiguration** Anmeldeinformationen, um sich bei der MySQL-Serverinstanz anzumelden, die installiert wird.
-
-	![MySQL](./media/site-recovery-vmware-to-azure/combined-wiz5.png)
-
-7. Wählen Sie unter **Umgebungsdetails** aus, ob Sie virtuelle VMware-Computer replizieren möchten. Wenn dies der Fall ist, überprüft das Setup, ob PowerCLI 6.0 installiert ist.
+7. Erstellen Sie unter **MySQL-Konfiguration** Anmeldeinformationen, um sich bei der MySQL-Serverinstanz anzumelden, die installiert wird.
 
 	![MySQL](./media/site-recovery-vmware-to-azure/combined-wiz6.png)
 
-8. Wählen Sie unter **Installationsspeicherort** aus, wo die Binärdateien installiert werden sollen, und wo der Cache gespeichert werden soll. Sie können ein Laufwerk auswählen, auf dem mindestens 5 GB Speicherplatz verfügbar ist, wir raten Ihnen jedoch zu einem Cachelaufwerk mit mindestens 600 GB freiem Speicherplatz.
+8. Wählen Sie unter **Umgebungsdetails** aus, ob Sie virtuelle VMware-Computer replizieren möchten. Wenn dies der Fall ist, überprüft das Setup, ob PowerCLI 6.0 installiert ist.
 
-	![Installationspfad](./media/site-recovery-vmware-to-azure/combined-wiz7.png)
+	![MySQL](./media/site-recovery-vmware-to-azure/combined-wiz7.png)
 
-9. Geben Sie unter **Netzwerkauswahl** den Listener (Netzwerkkarte und SSL-Port) an, über den der Konfigurationsserver Replikationsdaten sendet und empfängt. Sie können den Standardport (9443) ändern. Neben diesem Port wird auch der Port 443 geöffnet, um Informationen zur Replikationsorchestrierung zu senden und zu empfangen. 443 sollte nicht zum Empfangen von Replikationsdatenverkehr verwendet werden.
+9. Wählen Sie unter **Installationsspeicherort** aus, wo die Binärdateien installiert werden sollen und wo der Cache gespeichert werden soll. Sie können ein Laufwerk auswählen, auf dem mindestens 5 GB Speicherplatz verfügbar ist, wir raten Ihnen jedoch zu einem Cachelaufwerk mit mindestens 600 GB freiem Speicherplatz.
+
+	![Installationspfad](./media/site-recovery-vmware-to-azure/combined-wiz8.png)
+
+10. Geben Sie unter **Netzwerkauswahl** den Listener (Netzwerkkarte und SSL-Port) an, über den der Konfigurationsserver Replikationsdaten sendet und empfängt. Sie können den Standardport (9443) ändern. Zusätzlich zu diesem Port wird Port 443 von einem Webserver verwendet, der Replikationsvorgänge orchestriert. 443 sollte nicht zum Empfangen von Replikationsdatenverkehr verwendet werden.
 
 
-	![Netzwerkauswahl](./media/site-recovery-vmware-to-azure/combined-wiz8.png)
+	![Netzwerkauswahl](./media/site-recovery-vmware-to-azure/combined-wiz9.png)
 
-10. Navigieren Sie unter **Registrierung** zu dem Registrierungsschlüssel, den Sie aus dem Tresor heruntergeladen haben, und wählen Sie ihn aus.
 
-	![Registrierung](./media/site-recovery-vmware-to-azure/combined-wiz9.png)
 
 11.  Lesen Sie unter **Zusammenfassung** die angezeigten Informationen, und klicken Sie auf **Installieren**. Nach Abschluss der Installation wird eine Passphrase generiert. Diese benötigen Sie bei der Aktivierung der Replikation, kopieren Sie sie daher und bewahren Sie sie an einem sicheren Ort auf.
 
@@ -310,7 +312,7 @@ Parameter:
 
 	![Konto hinzufügen](./media/site-recovery-vmware-to-azure/credentials1.png)
 
-3. Fügen Sie unter **Kontodetails** das Konto hinzu, das für die automatische Ermittlung verwendet werden soll. Beachten Sie, dass es 15 Minuten oder länger dauern kann, bis der Kontoname im Portal angezeigt wird. Klicken Sie zur sofortigen Aktualisierung auf **Konfigurationsserver** > „Servername“ > **Server aktualisieren**.
+3. Fügen Sie unter **Kontodetails** das Konto hinzu, das für die automatische Ermittlung verwendet werden soll. Beachten Sie, dass es 15 Minuten oder länger dauern kann, bis der Kontoname im Portal angezeigt wird. Klicken Sie zur sofortigen Aktualisierung auf **Konfigurationsserver** > <Servername> > **Server aktualisieren**.
 
 	![Details](./media/site-recovery-vmware-to-azure/credentials2.png)
 
@@ -346,6 +348,8 @@ Stellen Sie sicher, dass Sie über ein Speicherkonto für die Replikation und ü
 
 	- Wenn Sie ein Speicherkonto mit dem klassischen Modell erstellen möchten, verwenden Sie hierfür das Azure-Portal. [Weitere Informationen](../storage/storage-create-storage-account-classic-portal.md)
 	- Wenn Sie ein Storage Premium-Konto für replizierte Daten verwenden, müssen Sie ein weiteres Standardspeicherkonto zum Speichern von Replikationsprotokollen einrichten, mit denen laufende Änderungen lokaler Daten erfasst werden.
+	
+	> [AZURE.NOTE] Der Schutz von Premium-Speicherkonten in den Regionen „Indien, Mitte“ und „Indien, Süden“ wird zurzeit nicht unterstützt.
 
 4.	Wählen Sie ein Azure-Netzwerk aus. Wenn Sie noch kein Netzwerk erstellt haben und dies per ARM nachholen möchten, klicken Sie auf **+Netzwerk**, um diesen Vorgang direkt durchzuführen. Geben Sie auf dem Blatt **Virtuelles Netzwerk erstellen** einen Netzwerknamen, einen Adressbereich, Subnetzdetails, ein Abonnement und einen Standort an. Das Netzwerk sollte sich an demselben Standort wie der Recovery Services-Tresor befinden.
 
@@ -357,10 +361,10 @@ Stellen Sie sicher, dass Sie über ein Speicherkonto für die Replikation und ü
 
 1. Klicken Sie zum Erstellen einer neuen Replikationsrichtlinie auf **Infrastruktur vorbereiten** > **Replikationseinstellungen** > **+Erstellen und zuordnen**.
 2. Geben Sie unter **Richtlinie erstellen und zuordnen** einen Richtliniennamen an.
-3. Geben Sie unter **RPO-Schwellenwert** die RPO-Begrenzung an. Warnungen werden generiert, wenn die fortlaufende Replikation diesen Grenzwert überschreitet.
+3. Geben Sie unter **RPO-Schwellenwert** den RPO-Grenzwert an. Warnungen werden generiert, wenn die fortlaufende Replikation diesen Grenzwert überschreitet.
 5. Geben Sie unter **Aufbewahrungszeitraum des Wiederherstellungspunkts** das Aufbewahrungszeitfenster für die einzelnen Wiederherstellungspunkte in Stunden an. Geschützte Computer können innerhalb eines Zeitfensters an einem beliebigen Punkt wiederhergestellt werden. Für nach Storage Premium replizierte Computer wird eine Aufbewahrungsdauer von bis zu 24 Stunden unterstützt.
-6. Geben Sie unter **Anwendungskonsistente Momentaufnahmehäufigkeit** an, wie oft (in Minuten) Wiederherstellungspunkte erstellt werden, die anwendungskonsistente Momentaufnahmen enthalten.
-7. Wenn Sie eine Replikationsrichtlinie erstellen, wird für das Failback standardmäßig eine passende Richtlinie automatisch erstellt. Bei Verwendung der Replikationsrichtlinie **rep-policy** ist die Failbackrichtlinie beispielsweise **rep-policy-failback**. Diese Richtlinie wird erst verwendet, wenn Sie ein Failback initiieren.
+6. Geben Sie unter **App-konsistente Momentaufnahmehäufigkeit** an, wie häufig (in Minuten) Wiederherstellungspunkte erstellt werden sollen, die anwendungskonsistente Momentaufnahmen enthalten.
+7. Wenn Sie eine Replikationsrichtlinie erstellen, wird für das Failback standardmäßig eine passende Richtlinie automatisch erstellt. Bei Verwendung der Replikationsrichtlinie **rep-policy** lautet die Failbackrichtlinie beispielsweise **rep-policy-failback**. Diese Richtlinie wird erst verwendet, wenn Sie ein Failback initiieren.
 8. Klicken Sie auf **OK**, um die Richtlinie zu erstellen.
 
 	![Replikationsrichtlinie](./media/site-recovery-vmware-to-azure/gs-replication2.png)
@@ -389,23 +393,23 @@ In der folgenden Tabelle wird eine Reihe von Punkten erfasst, die Ihnen bei der 
 
 **Komponente** | **Details**
 --- | --- | ---
-**Replikation** | **Maximale tägliche Änderungsrate**: Ein geschützter Computer kann nur einen einzelnen Prozessserver verwenden, und ein einzelner Prozessserver kann eine tägliche Änderungsrate von bis zu 2 TB bewältigen. Daher beträgt die maximale Datenänderungsrate pro Tag, die für einen geschützten Computer unterstützt wird, 2 TB.<br/><br/> **Maximaler Durchsatz**: Ein replizierter Computer kann zu einem einzigen Speicherkonto in Azure gehören. Ein Standardspeicherkonto kann maximal 20.000 Anforderungen pro Sekunde verarbeiten, und es wird empfohlen, dass Sie die Anzahl von IOPS über einen Quellcomputer hinweg bei 20.000 halten. Wenn Ihr Quellcomputer z. B. 5 Datenträger hat und jeder Datenträger 120 IOPS (mit einer Größe von 8 KB) für die Quelle generiert, wird das Azure-Limit von 500 IOPS pro Datenträger eingehalten. Erforderliche Anzahl von Speicherkonten = Quell-IOPS insgesamt/20000.
-**Konfigurationsserver** | Der Konfigurationsserver muss in der Lage sein, die tägliche Änderungsrate für alle auf geschützten Computern ausgeführten Workloads zu bewältigen, und er muss über genügend Bandbreite für eine kontinuierliche Replizierung der Daten in Azure Storage verfügen.<br/><br/> Als bewährte Methode wird empfohlen, den Konfigurationsserver im selben Netzwerk und LAN-Segment unterzubringen, in dem sich auch die zu schützenden Computer befinden. Er kann in einem anderen Netzwerk untergebracht werden, aber die zu schützenden Computer sollten für ihn über L3-Netzwerksichtbarkeit verfügen.<br/><br/> Die empfohlenen Größen für den Konfigurationsserver werden in der nachstehenden Tabelle zusammengefasst.
-**Prozessserver** | Der erste Prozessserver wird standardmäßig auf dem Konfigurationsserver installiert. Sie können zusätzliche Prozessserver bereitstellen, um Ihre Umgebung zu skalieren. Beachten Sie Folgendes:<br/><br/> Der Prozessserver empfängt Replikationsdaten von geschützten Computern und optimiert sie durch Zwischenspeicherung, Komprimierung und Verschlüsselung, bevor er sie an Azure sendet. Dazu muss der Prozessservercomputer über genügend Ressourcen verfügen.<br/><br/> Der Prozessserver verwendet einen datenträgerbasierten Cache. Wir empfehlen die Verwendung eines separaten Cachedatenträgers mit einer Größe von mindestens 600 GB, um Datenänderungen bei einem Netzwerkengpass oder -ausfall zwischenspeichern und verarbeiten zu können.
+**Replikation** | **Maximale tägliche Änderungsrate**: Ein geschützter Computer kann nur einen einzigen Prozessserver verwenden, und ein einzelner Prozessserver kann eine tägliche Änderungsrate von bis zu 2 TB verarbeiten. Daher beträgt die maximale Datenänderungsrate pro Tag, die für einen geschützten Computer unterstützt wird, 2 TB.<br/><br/> **Maximaler Durchsatz**: Ein replizierter Computer kann zu einem einzigen Speicherkonto in Azure gehören. Ein Standardspeicherkonto kann maximal 20.000 Anforderungen pro Sekunde verarbeiten, und es wird empfohlen, dass Sie die Anzahl von IOPS über einen Quellcomputer hinweg bei 20.000 halten. Wenn Ihr Quellcomputer z. B. 5 Datenträger hat und jeder Datenträger 120 IOPS (mit einer Größe von 8 KB) für die Quelle generiert, wird das Azure-Limit von 500 IOPS pro Datenträger eingehalten. Erforderliche Anzahl von Speicherkonten = Quell-IOPS insgesamt/20000.
+**Konfigurationsserver** | Der Konfigurationsserver muss in der Lage sein, die tägliche Änderungsrate für alle auf geschützten Computern ausgeführten Workloads zu bewältigen, und er muss über genügend Bandbreite verfügen, um Daten kontinuierlich in den Azure-Speicher zu replizieren.<br/><br/> Als bewährte Methode wird empfohlen, den Konfigurationsserver im selben Netzwerk und LAN-Segment unterzubringen, in dem sich auch die zu schützenden Computer befinden. Er kann sich in einem anderen Netzwerk befinden, die zu schützenden Computer müssen ihm gegenüber aber über L3-Netzwerksichtbarkeit verfügen.<br/><br/> Die empfohlenen Größen für den Konfigurationsserver werden in der nachstehenden Tabelle zusammengefasst.
+**Prozessserver** | Der erste Prozessserver wird standardmäßig auf dem Konfigurationsserver installiert. Sie können zusätzliche Prozessserver bereitstellen, um Ihre Umgebung zu skalieren. Beachten Sie Folgendes:<br/><br/> Der Prozessserver empfängt Replikationsdaten von geschützten Computern und optimiert sie durch Zwischenspeicherung, Komprimierung und Verschlüsselung, bevor er sie an Azure sendet. Der Prozessservercomputer muss über genügend Ressourcen zum Ausführen dieser Aufgaben verfügen.<br/><br/> Der Prozessserver verwendet einen datenträgerbasierten Cache. Wir empfehlen die Verwendung eines separaten Cachedatenträgers mit einer Größe von mindestens 600 GB, um Datenänderungen bei einem Netzwerkengpass oder -ausfall zwischenspeichern und verarbeiten zu können.
 
 ### Empfohlene Größen für den Konfigurationsserver
 
 **CPU** | **Arbeitsspeicher** | **Größe des Cachedatenträgers** | **Datenänderungsrate** | **Geschützte Computer**
 --- | --- | --- | --- | ---
-8 vCPUs (2 Sockets * 4 Kerne mit 2,5 GHz) | 16 GB | 300 GB | 500 GB oder weniger | Weniger als 100 Computer replizieren.
-12 vCPUs (2 Sockets * 6 Kerne mit 2,5 GHz) | 18 GB | 600 GB | 500 GB bis 1 TB | Zwischen 100 und 150 Computer replizieren.
-16 vCPUs (2 Sockets * 8 Kerne mit 2,5 GHz) | 32 GB | 1 TB | 1 TB bis 2 TB | Zwischen 150 und 200 Computer replizieren.
-Bereitstellen eines weiteren Prozessservers | | | > 2 TB | Stellen Sie zusätzliche Prozessserver bereit, wenn Sie mehr als 200 Computer replizieren oder wenn die tägliche Änderungsrate 2 TB überschreitet.
+8 vCPUs (2 Sockets * 4 Kerne mit 2,5 GHz) | 16 GB | 300 GB | 500 GB oder weniger | Weniger als 100 Computer replizieren.
+12 vCPUs (2 Sockets * 6 Kerne mit 2,5 GHz) | 18 GB | 600 GB | 500 GB bis 1 TB | Zwischen 100 und 150 Computer replizieren.
+16 vCPUs (2 Sockets * 8 Kerne mit 2,5 GHz) | 32 GB | 1 TB | 1 TB bis 2 TB | Zwischen 150 und 200 Computer replizieren.
+Bereitstellen eines weiteren Prozessservers | | | > 2 TB | Stellen Sie zusätzliche Prozessserver bereit, wenn Sie mehr als 200 Computer replizieren oder wenn die tägliche Änderungsrate 2 TB überschreitet.
 
 Hierbei gilt:
 
-- Jeder Quellcomputer ist mit 3 Datenträgern von jeweils 100 GB konfiguriert.
-- Bei den Benchmarkingmessungen für den Cachedatenträger wurde ein Speicher aus 8 SAS-Laufwerken mit 10.000 U/min und RAID 10 verwendet.
+- Jeder Quellcomputer ist mit 3 Datenträgern von jeweils 100 GB konfiguriert.
+- Bei den Benchmarkingmessungen für den Cachedatenträger wurde ein Speicher aus 8 SAS-Laufwerken mit 10.000 U/min und RAID 10 verwendet.
 
 ### Empfohlene Größen für den Prozessserver
 
@@ -419,13 +423,13 @@ Die folgende Tabelle beschreibt dieses Szenario:
 - Sie planen nicht, den Konfigurationsserver als Prozessserver zu verwenden.
 - Sie haben einen zusätzlichen Prozessserver eingerichtet.
 - Sie haben geschützte virtuelle Computer so konfiguriert, dass sie den zusätzlichen Prozessserver verwenden.
-- Jeder geschützte Quellcomputer ist mit drei Datenträgern von jeweils 100 GB konfiguriert.
+- Jeder geschützte Quellcomputer ist mit drei Datenträgern von jeweils 100 GB konfiguriert.
 
 **Konfigurationsserver** | **Zusätzlicher Prozessserver**| **Größe des Cachedatenträgers** | **Datenänderungsrate** | **Geschützte Computer**
 --- | --- | --- | --- | ---
-8 vCPUs (2 Sockets * 4 Kerne mit 2,5 GHz), 16 GB Speicher | 4 vCPUs (2 Sockets * 2 Kerne mit 2,5 GHz), 8 GB Speicher | 300 GB | 250 GB oder weniger | Bis zu 85 Computer replizieren.
-8 vCPUs (2 Sockets * 4 Kerne mit 2,5 GHz), 16 GB Speicher | 8 vCPUs (2 Sockets * 4 Kerne mit 2,5 GHz), 12 GB Speicher | 600 GB | 250 GB bis 1 TB | Zwischen 85 und 150 Computer replizieren.
-12 vCPUs (2 Sockets * 6 Kerne mit 2,5 GHz), 18 GB Speicher | 12 vCPUs (2 Sockets * 6 Kerne mit 2,5 GHz), 24 GB Speicher | 1 TB | 1 TB bis 2 TB | Zwischen 150 und 225 Computer replizieren.
+8 vCPUs (2 Sockets * 4 Kerne mit 2,5 GHz), 16 GB Speicher | 4 vCPUs (2 Sockets * 2 Kerne mit 2,5 GHz), 8 GB Speicher | 300 GB | 250 GB oder weniger | Bis zu 85 Computer replizieren.
+8 vCPUs (2 Sockets * 4 Kerne mit 2,5 GHz), 16 GB Speicher | 8 vCPUs (2 Sockets * 4 Kerne mit 2,5 GHz), 12 GB Speicher | 600 GB | 250 GB bis 1 TB | Zwischen 85 und 150 Computer replizieren.
+12 vCPUs (2 Sockets * 6 Kerne mit 2,5 GHz), 18 GB Speicher | 12 vCPUs (2 Sockets * 6 Kerne mit 2,5 GHz), 24 GB Speicher | 1 TB | 1 TB bis 2 TB | Zwischen 150 und 225 Computer replizieren.
 
 
 Wie Sie Ihre Server skalieren, hängt davon ab, ob Sie das zentrale Hochskalieren oder das horizontale Hochskalieren als Modell bevorzugen. Beim zentralen Hochskalieren stellen Sie wenige besonders leistungsstarke Konfigurations- und Prozessserver bereit. Beim horizontalen Hochskalieren stellen Sie mehr Server mit geringeren Ressourcen bereit. Ein Beispiel: Wenn Sie 220 Computer schützen müssen, können Sie sich für eine der beiden folgenden Optionen entscheiden:
@@ -439,7 +443,7 @@ Wie Sie Ihre Server skalieren, hängt davon ab, ob Sie das zentrale Hochskaliere
 
 Sie können den Capacity Planner verwenden, um die Bandbreite zu berechnen, die Sie für die Replikation benötigen (erste Replikation und dann Deltareplikation). Sie haben verschiedene Möglichkeiten, um die verwendete Bandbreite für die Replikation zu steuern:
 
-- **Bandbreite einschränken**: VMware-Datenverkehr, der nach Azure repliziert wird, wird über einen speziellen Prozessserver abgewickelt. Sie können die Bandbreite auf den Computern, die als Prozessserver ausgeführt werden, einschränken.
+- **Bandbreite drosseln**: VMware-Datenverkehr, der nach Azure repliziert wird, wird über einen speziellen Prozessserver geleitet. Sie können die Bandbreite auf den Computern, die als Prozessserver ausgeführt werden, einschränken.
 - **Bandbreite beeinflussen**: Die für die Replikation genutzte Bandbreite lässt sich mithilfe einiger Registrierungsschlüssel beeinflussen:
 	- Der Registrierungswert **HKEY\_LOCAL\_MACHINE\\SOFTWARE\\Microsoft\\Windows Azure Backup\\UploadThreadsPerVM** gibt die Anzahl von Threads an, die für die Datenübertragung (erste Replikation oder Deltareplikation) eines Datenträgers verwendet werden. Bei einem höheren Wert wird die Netzwerkbandbreite für die Replikation erhöht.
 	- Der Registrierungswert **HKEY\_LOCAL\_MACHINE\\SOFTWARE\\Microsoft\\Windows Azure Backup\\DownloadThreadsPerVM** gibt die Anzahl von Threads an, die für die Datenübertragung während eines Failbacks verwendet werden.
@@ -467,8 +471,8 @@ Sie können auch das Cmdlet [Set-OBMachineSetting](https://technet.microsoft.com
 #### Netzwerkbandbreite beeinflussen
 
 1. Navigieren Sie in der Registrierung zu **HKEY\_LOCAL\_MACHINE\\SOFTWARE\\Microsoft\\Windows Azure Backup\\Replication**.
-	- Ändern Sie den Wert für **UploadThreadsPerVM**, oder erstellen Sie den Schlüssel, falls dieser nicht vorhanden ist, um den Bandbreiten-Datenverkehr auf einem replizierten Datenträger zu beeinflussen.
-	- Ändern Sie den Wert für **DownloadThreadsPerVM**, um die Bandbreite für den Failback-Datenverkehr von Azure zu beeinflussen.
+	- Um die Bandbreite für den Datenverkehr auf einem replizierenden Datenträger zu beeinflussen, ändern Sie den Wert für **UploadThreadsPerVM**, oder erstellen Sie den Schlüssel, falls dieser nicht vorhanden ist.
+	- Um die Bandbreite für den Failbackdatenverkehr von Azure zu beeinflussen, ändern Sie den Wert für **DownloadThreadsPerVM**.
 2. Der Standardwert ist 4. In einem absichtlich mit großen Reserven ausgestatteten Netzwerk müssen die Standardwerte dieser Registrierungsschlüssel geändert werden. Der maximale Wert beträgt 32. Überwachen Sie den Datenverkehr, um den Wert zu optimieren.
 
 ## Schritt 6: Replizieren von Anwendungen
@@ -479,8 +483,8 @@ Stellen Sie sicher, dass Computer, die Sie replizieren möchten, für die Instal
 
 Der erste Schritt beim Aktivieren des Schutzes für virtuelle Computer und physische Server besteht im Installieren des Mobilitätsdiensts. Dazu haben Sie mehrere Möglichkeiten:
 
-- **Serverpushvorgänge verarbeiten**: Wenn Sie die Replikation auf einem Computer aktivieren, übertragen Sie die Mobilitätsdienstkomponente vom Prozessserver aus mittels Push, und installieren Sie sie. Beachten Sie, dass die Pushinstallation nicht auftritt, wenn auf den Computern bereits eine aktuelle Version der Komponente ausgeführt wird.
-- **Pushvorgang in Ihrem Unternehmen**: Installieren Sie die Komponente automatisch mithilfe des in Ihrem Unternehmen verwendeten Pushprozesses (etwa WSUS oder System Center Configuration Manager). Richten Sie zuvor den Konfigurationsserver ein.
+- **Serverpushvorgänge verarbeiten**: Wenn Sie die Replikation auf einem Computer aktivieren, übertragen Sie die Mobilitätsdienstkomponente mittels Push vom Prozessserver, und installieren Sie sie. Beachten Sie, dass die Pushinstallation nicht auftritt, wenn auf den Computern bereits eine aktuelle Version der Komponente ausgeführt wird.
+- **Pushvorgang in Ihrem Unternehmen**: Installieren Sie die Komponente automatisch mithilfe des in Ihrem Unternehmen verwendeten Pushprozesses, z.B. WSUS (Windows Server Update Services) oder System Center Configuration Manager. Richten Sie zuvor den Konfigurationsserver ein.
 - **Manuelle Installation**: Installieren Sie die Komponente manuell auf jedem Computer, den Sie replizieren möchten. Richten Sie zuvor den Konfigurationsserver ein.
 
 
@@ -490,7 +494,7 @@ Im Folgenden wird beschrieben, wie Sie Windows-Computer vorbereiten, damit der P
 
 1.  Erstellen Sie ein Konto, mit dem der Prozessserver auf den Computer zugreifen kann. Das Konto muss über Administratorrechte (lokal oder für die Domäne) verfügen, und es wird nur für die Pushinstallation verwendet.
 
-	>[AZURE.NOTE] Wenn Sie kein Domänenkonto verwenden, müssen Sie die Remote-Benutzerzugriffssteuerung auf dem lokalen Computer deaktivieren. Zu diesem Zweck fügen Sie in der Registrierung unter „HKEY\_LOCAL\_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System“ den DWORD-Eintrag „LocalAccountTokenFilterPolicy“ mit dem Wert 1 hinzu. Geben Sie **`REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1`** ein, um den Registrierungseintrag über eine Befehlszeilenschnittstelle hinzuzufügen.
+	>[AZURE.NOTE] Wenn Sie kein Domänenkonto verwenden, müssen Sie die Remote-Benutzerzugriffssteuerung auf dem lokalen Computer deaktivieren. Zu diesem Zweck fügen Sie in der Registrierung unter „HKEY\_LOCAL\_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System“ den DWORD-Eintrag „LocalAccountTokenFilterPolicy“ mit dem Wert 1 hinzu. Um den Registrierungseintrag von einer Befehlszeilenschnittstelle aus hinzuzufügen, geben Sie **`REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1`** ein.
 
 2.  Wählen Sie in der Windows-Firewall des Computers, den Sie schützen möchten, **Eine App oder ein Feature durch die Windows-Firewall zulassen** aus. Aktivieren Sie **Datei- und Druckerfreigabe** und **Windows-Verwaltungsinstrumentation**. Für Computer, die einer Domäne angehören, können Sie die Firewalleinstellungen mit einem Gruppenrichtlinienobjekt konfigurieren.
 
@@ -542,7 +546,7 @@ Oracle Enterprise Linux 6.4, 6.5 (nur 64 Bit) | Microsoft-ASR\_UA\_9.*.0.0\_OL6-
 
 
 1. Laden Sie das entsprechende Installationsprogramm herunter, und führen Sie es aus.
-2. Wählen Sie unter **Vorbereitung** die Option **Mobility Service** aus.
+2. Wählen Sie unter **Vorbereitung** die Option **Mobilitätsdienst** aus.
 
 	![Mobilitätsdienst](./media/site-recovery-vmware-to-azure/mobility3.png)
 
@@ -595,7 +599,7 @@ Wenn Sie VMware-VMs replizieren, beachten Sie Folgendes:
 
 - Virtuelle VMware-Computer werden alle 15 Minuten ermittelt, und es kann 15 Minuten oder länger dauern, bis sie nach der Ermittlung im Portal angezeigt werden. Ebenso kann Ermittlung 15 Minuten oder länger dauern, wenn Sie einen neuen vCenter-Server oder vSphere-Host hinzufügen.
 - Es kann auch 15 Minuten oder länger dauern, bis Umgebungsänderungen auf dem virtuellen Computer (z.B. die Installation von VMware-Tools) im Portal aktualisiert werden.
-- Den Zeitpunkt der letzten Ermittlung für die virtuellen VMware-Computer können Sie auf dem Blatt **Konfigurationsserver** im Feld **Letzter Kontakt um** für den vCenter-Server oder den vSphere-Host überprüfen.
+- Sie können den Zeitpunkt der letzten Ermittlung für die virtuellen VMware-Computer Sie auf dem Blatt **Konfigurationsserver** im Feld **Letzter Kontakt um** für den vCenter-Server oder den vSphere-Host überprüfen.
 - Wenn Sie Computer für die Replikation hinzufügen möchten, ohne auf die planmäßige Ermittlung zu warten, markieren Sie den Konfigurationsserver (klicken Sie nicht darauf), und klicken Sie auf die Schaltfläche **Aktualisieren**.
 - Wenn Sie die Replikation aktivieren, installiert der Prozessserver den Mobilitätsdienst automatisch auf dem Computer, falls dieser vorbereitet ist.
 
@@ -611,7 +615,7 @@ Wenn Sie die Replikation aktivieren, werden standardmäßig alle Datenträger au
 
 **Aktivieren Sie die Replikation jetzt wie folgt**:
 
-1. Klicken Sie auf **Step 2: Replicate application** (Schritt 2: Anwendung replizieren) > **Quelle**. Klicken Sie nach der erstmaligen Aktivierung der Replikation im Tresor auf **+Replizieren**, um die Replikation für weitere Computer zu aktivieren.
+1. Klicken Sie auf **Schritt 2: Anwendung replizieren** > **Quelle**. Klicken Sie nach der erstmaligen Aktivierung der Replikation im Tresor auf **+Replizieren**, um die Replikation für weitere Computer zu aktivieren.
 2. Wählen Sie auf dem Blatt **Quelle** > **Quelle** den Konfigurationsserver aus.
 3. Wählen Sie unter **Computertyp** die Option **Virtuelle Computer** oder **Physische Computer** aus.
 4. Wählen Sie unter **vCenter/vSphere-Hypervisor** den vCenter-Server aus, der den vSphere-Host verwaltet, oder wählen Sie den Host aus. Wenn Sie physische Computer replizieren, ist diese Einstellung nicht relevant.
@@ -623,9 +627,9 @@ Wenn Sie die Replikation aktivieren, werden standardmäßig alle Datenträger au
 7. Wählen Sie das Azure-Speicherkonto aus, das Sie für die Replikation von Daten verwenden. Beachten Sie Folgendes:
 
 	- Sie können ein Premium- oder Standardspeicherkonto auswählen. Wenn Sie ein Premium-Konto auswählen, müssen Sie für fortlaufende Replikationsprotokolle ein zusätzliches Standardspeicherkonto angeben. Die Konten müssen sich in derselben Region wie der Recovery Services-Tresor befinden.
-	- Falls Sie keines der vorhandenen Speicherkonten verwenden möchten, können Sie ein [Speicherkonto erstellen](#set-up-an-azure-storage-account). Wenn Sie ein Speicherkonto mit dem ARM-Modell erstellen möchten, klicken Sie auf **Neu erstellen**. Wenn Sie ein Speicherkonto mit dem klassischen Modell erstellen möchten, verwenden Sie hierfür [das Azure-Portal](../storage/storage-create-storage-account-classic-portal.md).
+	- Wenn Sie ein anderes Speicherkonto als Ihre bereits vorhandenen Speicherkonten verwenden möchten, können Sie ein [Speicherkonto erstellen](#set-up-an-azure-storage-account). Klicken Sie zum Erstellen eines Speicherkontos mit dem ARM-Modell auf **Neu erstellen**. Wenn Sie ein Speicherkonto mit dem klassischen Modell erstellen möchten, verwenden Sie hierfür das [Azure-Portal](../storage/storage-create-storage-account-classic-portal.md).
 
-8. Wählen Sie das Azure-Netzwerk und das Subnetz aus, mit dem Azure-VMs eine Verbindung herstellen, wenn sie nach einem Failover erstellt werden. Das Netzwerk muss sich in derselben Region wie der Recovery Services-Tresor befinden. Wählen Sie die Option **Jetzt für ausgewählte Computer konfigurieren** aus, um die Netzwerkeinstellung auf alle zu schützenden Computer anzuwenden. Wählen Sie **Später konfigurieren** aus, um das Azure-Netzwerk pro Computer auszuwählen. Wenn Sie über kein Netzwerk verfügen, müssen Sie [ein Netzwerk erstellen](#set-up-an-azure-network). Wenn Sie ein Netzwerk mit dem ARM-Modell erstellen möchten, klicken Sie auf **Neu erstellen**. Wenn Sie ein Netzwerk mit dem klassischen Modell erstellen möchten, verwenden Sie das [Azure-Portal](../virtual-network/virtual-networks-create-vnet-classic-pportal.md). Wählen Sie, falls zutreffend, ein Subnetz aus. Klicken Sie dann auf **OK**.
+8. Wählen Sie das Azure-Netzwerk und das Subnetz aus, mit dem Azure-VMs eine Verbindung herstellen, wenn sie nach einem Failover erstellt werden. Das Netzwerk muss sich in derselben Region wie der Recovery Services-Tresor befinden. Wählen Sie die Option **Jetzt für die ausgewählten Computer konfigurieren** aus, um die Netzwerkeinstellung auf alle Computer anzuwenden, die geschützt werden sollen. Wählen Sie **Später konfigurieren** aus, um das Azure-Netzwerk pro Computer auszuwählen. Wenn Sie über kein Netzwerk verfügen, müssen Sie [ein Netzwerk erstellen](#set-up-an-azure-network). Klicken Sie zum Erstellen eines Netzwerks mit dem ARM-Modell auf **Neu erstellen**. Wenn Sie ein Netzwerk mit dem klassischen Modell erstellen möchten, verwenden Sie das [Azure-Portal](../virtual-network/virtual-networks-create-vnet-classic-pportal.md). Wählen Sie, falls zutreffend, ein Subnetz aus. Klicken Sie dann auf **OK**.
 
 	![Replikation aktivieren](./media/site-recovery-vmware-to-azure/enable-replication3.png)
 
@@ -646,7 +650,7 @@ Wenn Sie die Replikation aktivieren, werden standardmäßig alle Datenträger au
 
 	![Replikation aktivieren](./media/site-recovery-vmware-to-azure/enable-replication7.png)
 
-13. Klicken Sie auf **Replikation aktivieren**. Den Status des Auftrags **Schutz aktivieren** können Sie unter **Einstellungen** > **Aufträge** > **Site Recovery-Aufträge** verfolgen. Nach Ausführung des Auftrags **Schutz abschließen** ist der Computer bereit für das Failover.
+13. Klicken Sie auf **Replikation aktivieren**. Sie können den Fortschritt des Auftrags **Schutz aktivieren** unter **Einstellungen** > **Aufträge** > **Site Recovery-Aufträge** verfolgen. Nachdem der Auftrag **Schutz abschließen** ausgeführt wurde, ist der Computer bereit für das Failover.
 
 > [AZURE.NOTE] Wenn der Computer für die Pushinstallation vorbereitet ist, wird die Mobilitätsdienstkomponente installiert, wenn der Schutz aktiviert wird. Nachdem die Komponente auf dem Computer installiert wurde, wird ein Schutzauftrag gestartet. Er führt zu einem Fehler. Nach dem Fehler müssen Sie jeden Computer manuell neu starten. Nach dem Neustart wird der Schutzauftrag erneut gestartet, und die erste Replikation wird ausgeführt.
 
@@ -656,11 +660,11 @@ Es wird empfohlen, dass Sie die Eigenschaften des Quellcomputers überprüfen. B
 
 1. Klicken Sie auf **Einstellungen** > **Replizierte Elemente**, und wählen Sie den Computer aus. Das Blatt **Zusammenfassung** enthält Informationen zu den Einstellungen und zum Status der Computer.
 
-2. Unter **Eigenschaften** können Sie für den virtuellen Computer die Informationen zur Replikation und zum Failover anzeigen.
+2. Unter **Eigenschaften** können Sie die Informationen zur Replikation und zum Failover für den virtuellen Computer anzeigen.
 
 	![Replikation aktivieren](./media/site-recovery-vmware-to-azure/test-failover2.png)
 
-3. Unter **Compute und Netzwerk** > **Compute-Eigenschaften** können Sie den Namen des virtuellen Azure-Computers und die Zielgröße angeben. Ändern Sie ggf. den Namen, damit er die Azure-Anforderungen erfüllt. Sie können auch Informationen zum Zielnetzwerk, zum Subnetz sowie zu der IP-Adresse anzeigen und hinzufügen, die der Azure-VM zugewiesen wird. Beachten Sie Folgendes:
+3. Unter **Compute und Netzwerk** > **Compute-Eigenschaften** können Sie den Namen und die Zielgröße des virtuellen Azure-Computers angeben. Ändern Sie ggf. den Namen, damit er die Azure-Anforderungen erfüllt. Sie können auch Informationen zum Zielnetzwerk, zum Subnetz sowie zu der IP-Adresse anzeigen und hinzufügen, die der Azure-VM zugewiesen wird. Beachten Sie Folgendes:
 
 	- Sie können die Ziel-IP-Adresse festlegen. Wenn Sie keine Adresse angeben, wird für den Computer, für den das Failover durchgeführt wurde, DHCP verwendet. Wenn Sie eine Adresse festlegen, die beim Failover nicht verfügbar ist, funktioniert das Failover nicht. Dieselbe Ziel-IP-Adresse kann für das Testfailover verwendet werden, wenn die Adresse im Testfailover-Netzwerk verfügbar ist.
 	- Die Anzahl der Netzwerkkarten hängt von der Größe ab, die Sie für den virtuellen Zielcomputer angeben. Hierbei gilt Folgendes:
@@ -672,7 +676,7 @@ Es wird empfohlen, dass Sie die Eigenschaften des Quellcomputers überprüfen. B
 
 	![Replikation aktivieren](./media/site-recovery-vmware-to-azure/test-failover4.png)
 
-4. Unter **Datenträger** werden das Betriebssystem und die Datenträger auf dem virtuellen Computer angezeigt, der repliziert wird.
+4. Unter **Datenträger** werden das Betriebssystem und die Datenträger auf der VM angezeigt, die repliziert wird.
 
 
 ## Schritt 7: Testen der Bereitstellung
@@ -682,9 +686,9 @@ Zum Testen der Bereitstellung können Sie ein Test-Failover für einen einzelnen
 
 ### Vorbereiten des Failovers
 
-- Zum Ausführen eines Testfailovers empfehlen wir Folgendes: Erstellen Sie ein neues Azure-Zielnetzwerk, das von Ihrem Azure-Produktionsnetzwerk isoliert ist (Standardverhalten bei der Erstellung eines neuen Netzwerks in Azure). [Informieren Sie sich](site-recovery-failover.md#run-a-test-failover) über das Ausführen von Testfailovern.
+- Zum Ausführen eines Testfailovers empfehlen wir Folgendes: Erstellen Sie ein neues Azure-Zielnetzwerk, das von Ihrem Azure-Produktionsnetzwerk isoliert ist (Standardverhalten bei der Erstellung eines neuen Netzwerks in Azure). [Erfahren Sie mehr](site-recovery-failover.md#run-a-test-failover) über die Ausführung von Testfailovervorgängen.
 - Installieren Sie den Azure-Agent auf dem geschützten Computer, um für das Failover zu Azure die beste Leistung zu erzielen. Hierdurch wird der Startvorgang beschleunigt und die Problembehandlung vereinfacht. Installieren Sie den Agent für [Linux](https://github.com/Azure/WALinuxAgent) oder [Windows](http://go.microsoft.com/fwlink/?LinkID=394789).
-- Zum vollständigen Testen der Bereitstellung benötigen Sie eine entsprechende Infrastruktur, damit der replizierte Computer wie erwartet funktioniert. Wenn Sie Active Directory und DNS testen möchten, können Sie einen virtuellen Computer als Domänencontroller mit DNS erstellen und per Azure Site Recovery zu Azure replizieren. Weitere Informationen finden Sie unter [Überlegungen zum Testfailover](site-recovery-active-directory.md#considerations-for-test-failover).
+- Zum vollständigen Testen der Bereitstellung benötigen Sie eine entsprechende Infrastruktur, damit der replizierte Computer wie erwartet funktioniert. Wenn Sie Active Directory und DNS testen möchten, können Sie einen virtuellen Computer als Domänencontroller mit DNS erstellen und per Azure Site Recovery zu Azure replizieren. Weitere Informationen finden Sie unter [Überlegungen zum Testfailover für Active Directory](site-recovery-active-directory.md#considerations-for-test-failover).
 - Stellen Sie sicher, dass der Konfigurationsserver ausgeführt wird. Andernfalls schlägt das Failover fehl.
 - Wenn Sie Datenträger von der Replikation ausgeschlossen haben, müssen Sie diese Datenträger nach einem Failover in Azure möglicherweise manuell erstellen, damit die Anwendung wie erwartet ausgeführt wird.
 - Beachten Sie Folgendes, wenn Sie anstelle eines Testfailovers ein ungeplantes Failover durchführen möchten:
@@ -698,14 +702,14 @@ Gehen Sie wie folgt vor, wenn Sie die Verbindung mit Azure-VMs nach dem Failover
 
 **Auf dem lokalen Computer vor dem Failover**:
 
-- Für Zugriff über das Internet: Aktivieren Sie RDP, stellen Sie sicher, dass TCP- und UDP-Regeln für **Öffentlich** hinzugefügt werden, und vergewissern Sie sich unter **Windows-Firewall** > **Zugelassene Apps und Features**, dass RDP für alle Profile zugelassen ist.
-- Für Zugriff über eine Standort-zu-Standort-Verbindung: Aktivieren Sie RDP auf dem Computer, und vergewissern Sie sich unter **Windows-Firewall** > **Zugelassene Apps und Features**, dass RDP für die Netzwerke vom Typ **Domäne** und **Privat** zugelassen ist.
+- Aktivieren Sie für den Zugriff über das Internet RDP. Stellen Sie sicher, dass TCP- und UDP-Regeln für **Öffentlich** hinzugefügt werden, und stellen Sie sicher, dass RDP unter **Windows-Firewall** > **Zugelassene Apps und Features** für alle Profile zugelassen ist.
+- Aktivieren Sie für den Zugriff über eine Standort-zu-Standort-Verbindung RDP auf dem Computer, und stellen Sie sicher, dass RDP unter **Windows-Firewall** > **Zugelassene Apps und Features** für die Netzwerke vom Typ **Domäne** und **Privat** zugelassen ist.
 - Installieren Sie den [Azure-VM-Agent](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) auf dem lokalen Computer.
 - [Installieren Sie den Mobilitätsdienst manuell](#install-the-mobility-service-manually) auf Computern, anstatt den Prozessserver zur automatischen Pushinstallation des Diensts zu verwenden. Der Grund dafür ist, dass die Pushinstallation nur durchgeführt wird, nachdem der Computer für die Replikation aktiviert wurde.
 - Achten Sie darauf, dass die SAN-Richtlinie des Betriebssystems auf OnlineAll festgelegt ist. [Weitere Informationen](https://support.microsoft.com/kb/3031135)
 - Deaktivieren Sie den IPSec-Dienst, bevor Sie das Failover durchführen.
 
-**Auf dem virtuellen Azure-Computer nach dem Failover**:
+**Auf der Azure-VM nach einem Failover**:
 
 - Fügen Sie einen öffentlichen Endpunkt für das RDP-Protokoll (Port 3389) hinzu, und geben Sie die Anmeldeinformationen für die Anmeldung an.
 - Stellen Sie sicher, dass keine Domänenrichtlinien vorhanden sind, die das Verbinden mit einem virtuellen Computer über eine öffentliche Adresse verhindern.
@@ -719,13 +723,13 @@ Gehen Sie wie folgt vor, wenn Sie nach dem Failover auf eine Azure-VM mit Linux 
 - Stellen Sie sicher, dass der Secure Shell-Dienst auf der Azure-VM so festgelegt ist, dass er beim Systemstart automatisch gestartet wird.
 - Überprüfen Sie, ob die Firewallregeln eine SSH-Verbindung damit zulassen.
 
-**Auf dem virtuellen Azure-Computer nach dem Failover**:
+**Auf der Azure-VM nach einem Failover**:
 
 - In den Netzwerksicherheitsgruppen-Regeln auf der VM nach dem Failover und für das Azure-Subnetz, mit dem die VM verbunden ist, müssen eingehende Verbindungen zum SSH-Port zulässig sein.
 - Es sollte ein öffentlicher Endpunkt erstellt werden, um eingehende Verbindungen für den SSH-Port (standardmäßig TCP-Port 22) zuzulassen.
 - Wenn auf die VM über eine VPN-Verbindung (Express Route- oder Site-to-Site-VPN-Verbindung) zugegriffen wird, kann der Client verwendet werden, um per SSH eine direkte Verbindung mit der VM herzustellen.
 
-**Auf dem virtuellen Azure-Computer mit Windows/Linux nach dem Failover**:
+**Auf dem virtuellen Azure-Computer mit Windows/Linux nach einem Failover**:
 
 Wenn dem virtuellen Computer oder dem Subnetz, dem der Computer angehört, eine Netzwerksicherheitsgruppe zugeordnet ist, vergewissern Sie sich, dass die Netzwerksicherheitsgruppe über eine ausgehende Regel verfügt, die HTTP/HTTPS zulässt. Vergewissern Sie sich außerdem, dass das DNS des Netzwerks, das als Ziel für das Failover des virtuellen Computers fungiert, korrekt konfiguriert ist. Andernfalls kann ein Failover-Timeout mit dem Fehler „PreFailoverWorkflow task WaitForScriptExecutionTask timed out“ (Timeout bei der PreFailoverWorkflow-Aufgabe „WaitForScriptExecutionTask“) auftreten. Ausführlichere Informationen finden Sie im [Leitfaden zur Überwachung und Problembehandlung](site-recovery-monitoring-and-troubleshooting.md#recovery) im Abschnitt „Wiederherstellen“.
 
@@ -735,10 +739,10 @@ Wenn dem virtuellen Computer oder dem Subnetz, dem der Computer angehört, eine 
 
 	![Testfailover](./media/site-recovery-vmware-to-azure/test-failover1.png)
 
-2. Klicken Sie zum Durchführen eines Failovers für einen Wiederherstellungsplan unter **Einstellungen** > **Wiederherstellungspläne** mit der rechten Maustaste auf den Plan und anschließend auf **Testfailover**. Eine Anleitung zum Erstellen eines Wiederherstellungsplans finden Sie [hier](site-recovery-create-recovery-plans.md).
+2. Klicken Sie zum Durchführen eines Failovers für einen Wiederherstellungsplan unter **Einstellungen** > **Wiederherstellungspläne** mit der rechten Maustaste auf den Plan, und klicken Sie dann auf **Testfailover**. [Befolgen Sie diese Anweisungen](site-recovery-create-recovery-plans.md) zum Erstellen eines Wiederherstellungsplans.
 
-3. Wählen Sie unter **Testfailover** das Azure-Netzwerk aus, mit dem virtuelle Azure-Computer nach dem Failover verbunden werden sollen.
-4. Klicken Sie auf **OK**, um den Failovervorgang zu starten. Den Status können Sie verfolgen, indem Sie auf den virtuellen Computer klicken, um die Eigenschaften zu öffnen. Alternativ können Sie unter „<Tresorname>“ > **Einstellungen** > **Aufträge** > **Site Recovery-Aufträge** auf den Auftrag **Testfailover** klicken.
+3. Wählen Sie unter **Testfailover** das Azure-Netzwerk aus, mit dem Azure-VMs nach dem Failover verbunden werden.
+4. Klicken Sie auf **OK**, um den Failovervorgang zu starten. Sie können den Fortschritt verfolgen, indem Sie auf den virtuellen Computer klicken, um die Eigenschaften zu öffnen. Alternativ können Sie unter „Tresorname“ > **Einstellungen** > **Aufträge** > **Site Recovery-Aufträge** auf den Auftrag **Testfailover** klicken.
 5. Gehen Sie wie folgt vor, wenn das Failover den Status **Test abschließen** erreicht hat:
 
 	1. Zeigen Sie den virtuellen Replikatcomputer im Azure-Portal an. Prüfen Sie, ob der virtuelle Computer erfolgreich startet.
@@ -756,7 +760,7 @@ Wenn dem virtuellen Computer oder dem Subnetz, dem der Computer angehört, eine 
 
 
 6. Nach Abschluss des Failovers sollte der Azure-Replikatcomputer im Azure-Portal unter **Virtuelle Computer** angezeigt werden. Stellen Sie sicher, dass die VM die richtige Größe hat, mit dem richtigen Netzwerk verbunden ist und ausgeführt wird.
-7. Wenn Sie die [Vorbereitung für Verbindungen nach dem Failover](#prepare-to-connect-to-azure-vms-after-failover) durchgeführt haben, können Sie eine Verbindung mit dem virtuellen Azure-Computer herstellen.
+7. Wenn Sie die [Vorbereitung für Verbindungen nach dem Failover](#prepare-to-connect-to-azure-vms-after-failover) durchgeführt haben, sollten Sie die Verbindung mit der Azure-VM herstellen können.
 
 ## Überwachen der Bereitstellung
 
@@ -766,7 +770,7 @@ Hier wird beschrieben, wie Sie die Konfigurationseinstellungen, den Status und d
 
 ![Zusammenfassung](./media/site-recovery-vmware-to-azure/essentials.png)
 
-2. Auf der Kachel **Integrität** können Sie Standortserver (VMM- oder Konfigurationsserver) mit Problemen sowie die von Site Recovery ausgelösten Ereignisse der letzten 24 Stunden überwachen.
+2. Auf der Kachel **Integrität** können Sie Standortserver (VMM- oder Konfigurationsserver), bei denen Probleme auftreten, sowie die von Site Recovery in den letzten 24 Stunden ausgelösten Ereignisse überwachen.
 3. Sie können die Replikation über die Kacheln **Replizierte Elemente**, **Wiederherstellungspläne** und **Site Recovery-Aufträge** verwalten und überwachen. Detailinformationen zu Aufträgen können Sie unter **Einstellungen** > **Aufträge** > **Site Recovery-Aufträge** anzeigen.
 
 
@@ -810,7 +814,7 @@ Wenn Sie Ihre Bereitstellung über 200 Quellcomputer oder eine gesamte tägliche
 
 ## VMware-Kontoberechtigungen
 
-Der Prozessserver kann virtuelle Computer auf einem vCenter-Server automatisch ermitteln. Zum Ausführen der automatischen Ermittlung müssen Sie [eine Rolle namens „Azure\_Site\_Recovery“ definieren](#prepare-an-account-for-automatic-discovery), um Site Recovery den Zugriff auf den VMware-Server zu ermöglichen. Beachten Sie: Wenn Sie VMware-Computer nur zu Azure migrieren müssen und kein Failback von Azure auszuführen brauchen, können Sie eine nur zum Lesezugriff berechtigende schreibgeschützte Rolle definieren – dies ist ausreichend. Die erforderlichen Rollenberechtigungen werden in der folgenden Tabelle zusammengefasst.
+Der Prozessserver kann virtuelle Computer auf einem vCenter-Server automatisch ermitteln. Zum Ausführen der automatischen Ermittlung müssen Sie [eine Rolle definieren (Azure\_Site\_Recovery)](#prepare-an-account-for-automatic-discovery), um Site Recovery den Zugriff auf den VMware-Server zu ermöglichen. Beachten Sie: Wenn Sie VMware-Computer nur zu Azure migrieren müssen und kein Failback von Azure auszuführen brauchen, können Sie eine nur zum Lesezugriff berechtigende schreibgeschützte Rolle definieren – dies ist ausreichend. Die erforderlichen Rollenberechtigungen werden in der folgenden Tabelle zusammengefasst.
 
 **Rolle** | **Details** | **Berechtigungen**
 --- | --- | ---
@@ -819,8 +823,8 @@ vCenter-Benutzerrolle | Ermittlung von virtuellen VMware-Computern/Failover ohne
 vCenter-Benutzerrolle | Failover und Failback | Weisen Sie die folgenden Berechtigungen für den vCenter-Server zu:<br/><br/>Datacenter object – Propagate to child object, role=Azure\_Site\_Recovery<br/><br/>Der Benutzer wird auf Rechenzentrumsebene zugewiesen und hat daher Zugriff auf alle Objekte im Rechenzentrum. Wenn Sie den Zugriff einschränken möchten, weisen Sie den untergeordneten Objekten (vSphere-Hosts, Datenspeicher, virtuelle Computer und Netzwerke) die Rolle **No access** mit **Propagate to child object** zu.  
 ## Nächste Schritte
 
-- [Informieren Sie sich](site-recovery-failover.md) über verschiedene Arten von Failovern.
-- [Informieren Sie sich über das Failback](site-recovery-failback-azure-to-vmware.md) von unter Azure ausgeführten Computern zur lokalen Umgebung.
+- [Informieren](site-recovery-failover.md) Sie sich über die unterschiedlichen Failoverarten.
+- [Erfahren Sie mehr zum Failback](site-recovery-failback-azure-to-vmware.md) von unter Azure ausgeführten Computern auf die lokale Umgebung.
 
 ## Hinweise und Informationen zu Drittanbietersoftware
 
@@ -834,4 +838,4 @@ The information in Section B is regarding Third Party Code components that are b
 
 The complete file may be found on the [Microsoft Download Center](http://go.microsoft.com/fwlink/?LinkId=529428). Microsoft reserves all rights not expressly granted herein, whether by implication, estoppel or otherwise.
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0803_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="Azure"
    ms.workload="na"
-   ms.date="06/29/2016"
+   ms.date="08/01/2016"
    ms.author="hascipio"/>
 
 # Abschließen der Angebotserstellung mit Marketinginhalten
@@ -28,14 +28,18 @@ In diesem Schritt des Veröffentlichungsprozesses müssen Sie bestimmte Marketin
 
   > [AZURE.IMPORTANT] Alle Felder müssen ausgefüllt sein, einschließlich der Abbildungen, um das Angebot in die Stagingumgebung zu überführen.
 
-### Details
-1. Geben Sie den Angebotstitel (max. 50 Zeichen), eine kurze Angebotsübersicht (max. 100 Zeichen), eine ausführliche Angebotsübersicht (max. 256 Zeichen), eine Angebotsbeschreibung (max. 1300 Zeichen) sowie Logos auf der Registerkarte **Details** ein.
-2. Geben Sie den SKU-Titel (max. 50 Zeichen), eine SKU-Übersicht (max. 100 Zeichen) und eine SKU-Beschreibung (max. 2000 Zeichen) auf der Registerkarte **Pläne** ein.
-3. Geben Sie für die Beschreibung des Angebots und der SKU nicht den gleichen Text ein.
-4. Geben Sie für den SKU-Titel und die ausführliche Angebotsübersicht nicht den gleichen Text ein.
-5. Geben Sie für den SKU-Titel und die Angebotsübersicht nicht den gleichen Text ein.
-6. Laden Sie Abbildungen gemäß den erforderlichen Spezifikationen (wie im Veröffentlichungsportal erläutert) im PNG-Format hoch. Laden Sie für jede gewünschte Größe ein Bild hoch.
-7. Stellen Sie sicher, dass die Logos die unten beschriebenen Azure Marketplace-Richtlinien für Logos erfüllen.
+### Details und Pläne
+1.	Geben Sie den Angebotstitel (max. 50 Zeichen), eine kurze Angebotsübersicht (max. 100 Zeichen), eine ausführliche Angebotsübersicht (max. 256 Zeichen), eine Angebotsbeschreibung (max. 1300 Zeichen) sowie Logos auf der Registerkarte **Details** ein.
+2.	Geben Sie den Plantitel (max. 50 Zeichen), eine Planübersicht (max. 100 Zeichen) und eine Planbeschreibung (max. 2.000 Zeichen) auf der Registerkarte **Pläne** ein.
+
+    >[AZURE.NOTE] Sie können die Übersicht, die ausführliche Übersicht und die Beschreibung von Angebot und Plänen mit den folgenden HTML-Tags formatieren. Die zulässigen HTML-Tags sind h1, h2, h3, h4, h5, p, ol, ul, li, a[Ziel|HREF], strong, em, b, i.
+
+3.	Geben Sie für die Beschreibung des Angebots und des Plans nicht den gleichen Text ein.
+4.	Geben Sie für den Plantitel und die ausführliche Angebotsübersicht nicht den gleichen Text ein.
+5.	Geben Sie für den Plantitel und die Angebotsübersicht nicht den gleichen Text ein.
+6.  Geben Sie für ein Angebot mit mehreren Plänen keine identischen Plantitel ein.
+7.	Laden Sie Abbildungen gemäß den erforderlichen Spezifikationen (wie im Veröffentlichungsportal erläutert) im PNG-Format hoch. Laden Sie für jede gewünschte Größe ein Bild hoch.
+8.	Stellen Sie sicher, dass die Logos die unten beschriebenen Azure Marketplace-Richtlinien für Logos erfüllen.
 
   ![Abbildung](media/marketplace-publishing-push-to-staging/pubportal-marketingcontent-details-02.png)
 
@@ -43,11 +47,10 @@ In diesem Schritt des Veröffentlichungsprozesses müssen Sie bestimmte Marketin
 
 Alle in das Veröffentlichungsportal hochgeladen Logos müssen folgende Richtlinien erfüllen:
 
-- Die Farbpalette des Azure-Designs ist einfach und geradlinig. Bitte verwenden Sie auf den Logos möglichst wenige Primär- und Sekundärfarben.
-- Logos sollten nicht auf einem weißen Hintergrund platziert werden. Wir empfehlen, einfache Primärfarben oder transparente Hintergründe zu verwenden.
+- Die Farbpalette des Azure-Designs ist einfach und geradlinig. Verwenden Sie auf Ihrem Logo möglichst wenige Primär- und Sekundärfarben.
+- Die Designfarben des Azure-Portals sind Weiß und Schwarz. Daher verwenden Sie diese Farben nicht als Hintergrundfarbe für Ihre Logos. Verwenden Sie Farben, die Ihre Logos im Azure-Portal markant hervorstechen lassen. Sie sollten einfache Primärfarben verwenden. **Wenn Sie transparenten Hintergrund verwenden, stellen Sie sicher, dass Logos/Text nicht weiß oder schwarz sind.**
 - Verwenden Sie im Logo keinen Hintergrund mit Farbverlauf.
-- Platzieren Sie nach Möglichkeit keinen Text auf dem Logo, auch nicht Ihren Firmen- oder Markennamen.
-- Das Erscheinungsbild Ihres Logos sollte klar und direkt und frei von Farbverläufen sein.
+- Platzieren Sie nach Möglichkeit keinen Text auf dem Logo, auch nicht Ihren Firmen- oder Markennamen. Das Erscheinungsbild Ihres Logos sollte klar und direkt und frei von Farbverläufen sein.
 - Das Logo sollte nicht gestreckt sein.
 - Ein kleines Logo sollte 40 x 40 px groß sein.
 - Ein mittleres Logo sollte 90 x 90 px groß sein.
@@ -55,14 +58,15 @@ Alle in das Veröffentlichungsportal hochgeladen Logos müssen folgende Richtlin
 - Ein breites Logo sollte 255 x 115 px groß sein.
 - Ein Herologo sollte 815 x 290 px groß sein.
 
+>[AZURE.NOTE] Ein Herologo ist optional. Der Herausgeber muss kein Herologo hochladen. Ist das Herosymbol jedoch einmal hochgeladen, dann kann es nicht mehr aus dem Veröffentlichungsportal gelöscht werden. Zu diesem Zeitpunkt muss der Partner die Azure Marketplace-Richtlinien für Herosymbole einhalten.
+
   ![Abbildung](media/marketplace-publishing-push-to-staging/pubportal-marketingcontent-details-03.png)
 
-**Zusätzliche Richtlinien für Herologobanner:**
+**Zusätzliche Richtlinien für das Herologosymbol (optional)**
 
-- Ein Herologo ist optional. Sie müssen kein Herologo hochladen.
-- Der Anzeigename des Herausgebers, der SKU-Titel, die ausführliche Angebotsübersicht und die Erstellen-Schaltfläche werden automatisch in das Herologo eingebettet, wenn das Angebot live geschaltet wird. Sie müssen diese Informationen also beim Entwerfen des Herologos nicht eingeben.
-- Da der Anzeigename des Herausgebers, der SKU-Titel und die ausführliche Angebotsübersicht in weißer Schriftfarbe angezeigt werden, sollten Sie den Hintergrund des Herologos nicht weiß oder in einer anderen hellen Farbe gestalten.
-- Lassen Sie im oberen Bereich des Herologos genügend Platz für die oben genannten Texte. Für den Text stehen 415 x 100 px zur Verfügung, der Abstand zum linken Rand beträgt 370 px.
+- Ein Herologo ist optional. Der Herausgeber muss kein Herologo hochladen. **Ist das Herosymbol jedoch einmal hochgeladen, dann kann es nicht mehr aus dem Veröffentlichungsportal gelöscht werden. Zu diesem Zeitpunkt muss der Partner die Azure Marketplace-Richtlinien für Herosymbole einhalten, sonst wird das Angebot nicht zur Produktion genehmigt.**
+- Anzeigename des Herausgebers, Plantitel und ausführliche Angebotsübersicht werden in weißer Schrift angezeigt. Daher sollten Sie helle Farben im Hintergrund des Herosymbols vermeiden. Schwarzer, weißer und transparenter Hintergrund ist für Herosymbole nicht zulässig.
+- Der Anzeigename des Herausgebers, der Plantitel, die ausführliche Angebotsübersicht und die Erstellen-Schaltfläche werden programmgesteuert in das Herologo eingebettet, wenn das Angebot live geschaltet wird. Sie sollten beim Entwerfen des Herologos keinen Text eingeben. Lassen Sie einfach Leerraum auf der rechten Seite, da der Text (d.h. Anzeigename des Herausgebers, Plantitel, ausführliche Angebotsübersicht) programmgesteuert von uns dort berücksichtigt werden. Der Leerraum für den Text sollte 415 x 100 auf der rechten Seite betragen (und ist 370 Pixel von links versetzt).
 
   ![Abbildung](media/marketplace-publishing-push-to-staging/pubportal-herobanner.png)
 
@@ -72,7 +76,7 @@ Geben Sie auf der Registerkarte **Links** auf der linken Seite Links mit Informa
 ![Abbildung](media/marketplace-publishing-push-to-staging/pubportal-marketingcontent-link-01.png)
 
 ### Beispielbilder (optional)
-> [AZURE.NOTE] Das Hinzufügen von Beispielbildern ist ein optionaler Schritt. Sie können auch nur die Marketinginhalte angeben, um die Voraussetzungen für die Überführung in die Stagingumgebung zu erfüllen.
+> [AZURE.NOTE] Das Hinzufügen von Beispielbildern ist ein optionaler Schritt. Sie können zwar mehrere Beispielbilder im Veröffentlichungsportal hochladen, es wird jedoch nur ein (nach dem Zufallsprinzip vom System ausgewähltes) Bild im Azure-Portal angezeigt. Aus diesem Grund sollten Sie nur ein einziges Beispielbild hochladen.
 
 Laden Sie auf der Registerkarte **Beispielbilder** im Menü auf der linken Seite ein neues Bild hoch, indem Sie auf **Neues Bild hochladen** klicken. Wenn Sie ein vorhandenes Bild austauschen möchten, klicken Sie auf **Bild ersetzen**.
 
@@ -83,7 +87,23 @@ Geben Sie auf der Registerkarte **Rechtliche Hinweise** einen Link zu Ihren Rich
 
 ![Abbildung](media/marketplace-publishing-push-to-staging/pubportal-marketingcontent-legal-01.png)
 
-> [AZURE.NOTE] Bei virtuellen Computern können folgende Angaben nach dem Staging oder der Liveschaltung einer SKU nicht mehr geändert werden: **Angebots-ID**, **Herausgeber-ID** und **SKU-ID**.
+**Hinweis:** Für VM-Angebote gilt: Sobald ein Angebot/eine SKU im Azure-Portal bereitgestellt wird, können Sie die unten angegebenen Felder nicht ändern:
+
+- **Angebotsbezeichner:** [Veröffentlichungsportal > „Virtuelle Computer“ > wählen Sie Ihr Angebot > Registerkarte „VM-Images“ > „Angebotsbezeichner“]
+- **SKU-Bezeichner:** [Veröffentlichungsportal > „Virtuelle Computer“ > wählen Sie Ihr Angebot > Registerkarte „SKUs“ > „SKU hinzufügen“]
+- **Herausgebernamespace:** [Veröffentlichungsportal > „Virtuelle Computer“ > Registerkarte „Vorgehensweise“ > „Informationen zu Ihrem Unternehmen“ (unter „Schritt 2: Registrieren Sie Ihr Unternehmen“) > „Herausgebernamespace“ > „Namespace“]
+
+Für VM-Angebote gilt: Sobald ein Angebot/eine SKU im Azure Marketplace aufgeführt wird, können Sie die unten angegebenen Felder nicht ändern:
+
+- **Angebotsbezeichner:** [Veröffentlichungsportal > „Virtuelle Computer“ > wählen Sie Ihr Angebot > „VM-Images“ > „Angebotsbezeichner“]
+- **SKU-Bezeichner:** [Veröffentlichungsportal > „Virtuelle Computer“ > wählen Sie Ihr Angebot > Registerkarte „SKUs“ > „SKU hinzufügen“]
+- **Herausgebernamespace:** [Veröffentlichungsportal > „Virtuelle Computer“ > Registerkarte „Vorgehensweise“ > „Informationen zu Ihrem Unternehmen“ (unter „Schritt 2: Registrieren“) > „Herausgebernamespace“ > „Namespace“]
+- **Ports:** [Veröffentlichungsportal > „Virtuelle Computer“ > wählen Sie Ihr Angebot > Registerkarte „VM-Images“ > „Offene Ports “]
+- **Preisänderung bei aufgelisteten SKUs**
+- **Abrechnungsmodelländerung bei aufgelisteten SKUs**
+- **Entfernen von Abrechnungsregionen bei aufgelisteten SKUs**
+- **Ändern der Anzahl der Datenträger bei aufgelisteten SKUs**
+
 
 ## Schritt 2: Festlegen der Preise
 ### Preismodelle
@@ -106,19 +126,85 @@ Geben Sie auf der Registerkarte **Rechtliche Hinweise** einen Link zu Ihren Rich
 | Datendienst | Ja | Nein | Nein |
 
 ### 2\.1. Festlegen der VM-Preise
-> [AZURE.NOTE] BYOL (Bring Your Own License, Verwendung eigener Lizenzen) wird nur für virtuelle Computer unterstützt.
+Derzeit gibt es für virtuelle Maschinen die folgenden **3 Typen von Abrechnungsmodellen:**
 
-1.	Auf der Registerkarte **Preise** sind alle unterstützten Märkte aufgeführt. Wählen Sie den entsprechenden Markt aus, um zu den Feldern für die Preisgestaltung zu gelangen.
-2.	Der bereitgestellte Link im Veröffentlichungsportal enthält Preisinformationen, mit denen Sie die Preise für Ihre eigene(n) SKU(s) festlegen können.
-3.	Wenn Ihre SKU BYOL unterstützt, aktivieren Sie das Kontrollkästchen für die Verfügbarkeit extern per BYOL lizenzierter SKUs.
-4.	Wenn Ihre SKU auf Stundenbasis abgerechnet wird, geben Sie die Preise für Ihre Software ein. SKUs ohne Preis stehen nicht zum Kauf oder zur Verwendung zur Verfügung.
+- **Stündlich:** Die Abrechnung für den Kunden erfolgt auf Stundenbasis gemäß der Gebühren, die von den Herausgebern für die VM-Größen festgelegt sind. Beim **stündlichen Abrechnungmodell** für die SKUs ergibt sich der Gesamtpreis aus der Summe der vom Herausgeber in Rechnung gestellten Softwarekosten plus der von Microsoft in Rechnung gestellten Infrastrukturkosten. Diese Gesamtkosten werden dem Kunden als stündlicher und monatlicher Preis angezeigt, wenn er den Kauf erwägt (siehe Screenshot unten). **Der Herausgeber erhält 80% der in Rechnung gestellten Softwarekosten.** Bitte berücksichtigen Sie dies bei der Berechnung der Preise, die Sie für die SKUs festlegen.
 
-  > [AZURE.NOTE] Wenn Sie sowohl über BYOL-SKUs als auch über auf Stundenbasis abgerechnete SKUs verfügen, stellen Sie sicher, dass beide Optionen angegeben sind.
+    ![Abbildung](media/marketplace-publishing-push-to-staging/img2.1-01.png)
 
-5.	Es wird ein Assistent zur Preisgestaltung geöffnet, mit dem Sie Ihre Preise festlegen können. Hier können Sie auch Preise für andere Länder angeben, falls Sie Käufe in anderen Märkten als dem von Ihnen angegebenen Markt zulassen möchten.
-6.	Einige Länder sind ISV-Abführungsländer. Um in einem ISV-Abführungsland Produkte verkaufen zu können, müssen Sie sowohl Steuern für Ihre SKUs berechnen und einziehen als auch Steuern abrechnen und an die Behörden in diesem Land zahlen können. Microsoft kann keine rechtliche oder steuerliche Beratung anbieten. Weitere Informationen finden Sie im Abschnitt zu Käuferländern des Angebots in der Einführung zu diesem Dokument.
+- **Kostenlose Testversion:** Dies ist ein anderer Typ des stündlichen Abrechnungsmodells. Hier werden dem Kunde für die ersten 30 Tage nach der Bereitstellung des virtuellen Computers keine Softwarekosten in Rechnung gestellt. Nach 30 Tagen erfolgt die Abrechnung für den Kunden auf Stundenbasis gemäß der Gebühren, die von den Herausgebern im stündlichen Abrechnungsmodell festgelegt sind.
+- **Bring-Your-Own-License (BYOL):** Die Herausgeber verwalten die Lizenzierung der auf dem virtuellen Computer ausgeführten Software.
 
-  > [AZURE.NOTE] Bei virtuellen Computern können folgende Änderungen nach der Liveschaltung einer SKU nicht mehr vorgenommen werden, da sich dies auf die Abrechnung für vorhandene Kunden auswirkt: **Tarifänderungen**, **Änderungen von Abrechnungsmodellen** und **Entfernen von Abrechnungsregionen**.
+**Wichtig:** Sobald ein Angebot/eine SKU im Azure Marketplace aufgeführt wird, können Sie die unten angegebenen Felder nicht ändern:
+
+- **Preisänderung bei aufgelisteten SKUs**
+- **Abrechnungsmodelländerung bei aufgelisteten SKUs**
+- **Entfernen von Abrechnungsregionen bei aufgelisteten SKUs**
+- **Ändern der Anzahl der Datenträger bei aufgelisteten SKUs**
+- **Angebotsbezeichner:** [Veröffentlichungsportal > „Virtuelle Computer“ > wählen Sie Ihr Angebot > „VM-Images“ > „Angebotsbezeichner“]
+- **SKU-Bezeichner:** [Veröffentlichungsportal > „Virtuelle Computer“ > wählen Sie Ihr Angebot > Registerkarte „SKUs“ > „SKU hinzufügen“]
+- **Herausgebernamespace:** [Veröffentlichungsportal > „Virtuelle Computer“ > Registerkarte „Vorgehensweise“ > „Informationen zu Ihrem Unternehmen“ (unter „Schritt 2: Registrieren“) > „Herausgebernamespace“ > „Namespace“]
+- **Ports:** [Veröffentlichungsportal > „Virtuelle Computer“ > wählen Sie Ihr Angebot > Registerkarte „VM-Images“ > „Offene Ports “]
+
+### „Sell-to“-Länder der SKU
+Sie müssen sorgfältig überlegen, wo Sie die SKUs zur Verfügung stellen. Manche Länder sind klassifiziert als „Überweisung durch Microsoft“ und andere klassifiziert als „Überweisung durch ISV“.
+
+- In „Überweisung durch Microsoft“-Ländern nimmt Microsoft die Steuern von den Kunden ein und zahlt (überweist) die Steuern an den Staat.
+- In „Überweisung durch ISV“-Ländern sind die Partner für die Einnahme der Steuern bei den Kunden und die Steuerzahlung an den Staat verantwortlich. Wenn Sie sich für den Verkauf in „Überweisung durch ISV“-Ländern entscheiden, müssen Sie über die Möglichkeit verfügen, die Steuern für die Länder Ihrer Wahl zu berechnen und zu zahlen.
+
+>[AZURE.NOTE] Ihre SKUs werden erst dann in den Ländern verfügbar sein, wenn Sie ihre Preise im [Veröffentlichungsportal](https://publish.windowsazure.com) festlegen. Anleitungen zum Festlegen der Preise für SKUs gemäß stündlicher Abrechnung und BYOL finden Sie im Folgenden.
+
+### 2\.1.1 Einrichten des stündlichen Abrechnungsmodells für eine SKU
+Bitte führen Sie die folgenden Schritte aus, um ein stündliches Abrechnungsmodell für eine SKU einzurichten:
+
+1.	Melden Sie sich beim [Veröffentlichungsportal](https://publish.windowsazure.com) an.
+2.	Navigieren Sie zur Registerkarte **VIRTUELLE COMPUTER**, und wählen Sie Ihr Angebot aus.
+3.	Klicken Sie im Menü auf der linken Seite auf die Registerkarte **SKUs**.
+4.	Stellen Sie sicher, dass die SKU als „Stündliches Abrechnungsmodell“ gekennzeichnet ist. Falls nicht, klicken Sie auf die Schaltfläche **BEARBEITEN**, um das Abrechnungsmodell zurückzusetzen. Daraufhin wird ein Fenster geöffnet. Deaktivieren Sie das Kontrollkästchen „Abrechnung und Lizenzierung erfolgt extern durch Azure (auch bekannt als Bring-Your-Own-License)“, und speichern Sie die Änderungen.
+5.	Wenn Sie den kostenlosen Test für die ersten 30 Tage der SKU-Bereitstellung aktivieren möchten, wählen Sie die Option „Ein Monat“ auf die Frage: „Ist ein kostenloser Test verfügbar?“ Wählen Sie andernfalls die Option „Kein Test“. Führen Sie jetzt die folgenden Schritte aus.
+6.	Klicken Sie im Menü auf der linken Seite auf die Registerkarte **PREISE**.
+7.	Wählen Sie Ihre Basisregion.
+
+    ![Abbildung](media/marketplace-publishing-push-to-staging/img2.1.1_07.png)
+
+8. Legen Sie die Preise für alle Kerne fest. **Sie müssen die Preise aller Kerne einer SKU angeben, auch wenn die SKU dies nicht unterstützt.**
+
+    ![Abbildung](media/marketplace-publishing-push-to-staging/img2.1.1_08.png)
+
+9.	Legen Sie die Preise für die anderen Regionen manuell fest, oder legen Sie die Preise für andere Regionen mit dem AUTOPRICE-Assistenten für automatische Preisfestlegung gemäß der Basisregion fest. Um den AUTOPRICE-Assistenten für automatische Preisfestlegung zu verwenden, klicken Sie auf die Schaltfläche **AUTOPRICE OTHER MARKETS BASED ON PRICES IN UNITED STATES** (Preise für andere Märkte basierend auf Preisen in den USA automatisch festlegen). **Hinweis:** Die Beschriftung der Schaltfläche kann je nach der von Ihnen ausgewählten Region unterschiedlich sein. Da wir während der Erstellung dieses Dokuments die USA ausgewählt haben, trägt die Schaltfläche im Screenshot unten die Beschriftung „Auto price other markets based on prices in United States“.
+
+    ![Abbildung](media/marketplace-publishing-push-to-staging/img2.1.1_09.png)
+
+10.	Der Assistent für automatische Preisfestlegung wird geöffnet. Die erste Seite zeigt die Auswahl für den Basismarkt an. Treffen Sie Ihre Wahl, und gehen Sie durch Klicken auf die Schaltfläche „->“ zur nächsten Seite.
+
+    ![Abbildung](media/marketplace-publishing-push-to-staging/img2.1.1_10.png)
+
+11.	Die Option zum Auswählen der Kerne und Pläne wird auf Seite 2 angezeigt. Wählen Sie die gewünschten Pläne aus, und klicken Sie auf die Schaltfläche „->“. Klicken Sie auf die Schaltfläche **Alle umschalten**, um alle **Servicepläne** und **Messgeräte** auszuwählen, oder aktivieren Sie die Kontrollkästchen manuell. **Sie müssen die Preise aller Kerne einer SKU angeben, auch wenn die SKU dies nicht unterstützt.** So stellen Sie sicher, dass jede Kerngröße ausgewählt wird.
+
+    ![Abbildung](media/marketplace-publishing-push-to-staging/img2.1.1_11.png)
+
+12.	Seite 3 zeigt die Märkte bzw. Regionen an. Klicken Sie auf die Schaltfläche **Alle umschalten**, um alle Regionen auszuwählen, oder aktivieren Sie die Kontrollkästchen für die Regionen manuell. Klicken Sie auf die Schaltfläche „->“, um zur nächsten Seite zu wechseln. **Hinweis:** Länder, in denen die Steuerüberweisung durch Microsoft erfolgt, sind durch ein hausähnliches Symbol gekennzeichnet. Weitere Informationen finden Sie im Abschnitt „‚Sell-to‘- Länder der SKU“ auf dieser Seite.
+
+    ![Abbildung](media/marketplace-publishing-push-to-staging/img2.1.1_12.png)
+
+13.	Seite 4 zeigt die Wechselkurse an. Klicken Sie auf die Schaltfläche „Fertig stellen“, um die Schritte auszuführen.
+
+### 2\.1.2 Einrichten des BYOL-Abrechnungsmodells für eine SKU
+Bitte führen Sie die folgenden Schritte aus, um ein BYOL-Abrechnungsmodell für eine SKU einzurichten:
+
+1.	Melden Sie sich beim [Veröffentlichungsportal](https://publish.windowsazure.com) an.
+2.	Navigieren Sie zur Registerkarte **VIRTUELLE COMPUTER**, und wählen Sie Ihr Angebot aus.
+3.	Klicken Sie im Menü auf der linken Seite auf die Registerkarte **SKUs**.
+4.	Stellen Sie sicher, dass die SKU als „Bring-Your-Own-License-SKU“ gekennzeichnet ist. Falls nicht, klicken Sie auf die Schaltfläche BEARBEITEN, um das Abrechnungsmodell zurückzusetzen. Daraufhin wird ein Fenster geöffnet. Aktivieren Sie das Kontrollkästchen „Abrechnung und Lizenzierung erfolgt extern durch Azure (auch bekannt als Bring-Your-Own-License)“, und speichern Sie die Änderungen.
+
+    ![Abbildung](media/marketplace-publishing-push-to-staging/img2.1.2_04.png)
+
+5.	Klicken Sie im Menü auf der linken Seite auf die Registerkarte **PREISE**.
+6.	Wählen Sie Ihre Basisregion, und stellen Sie die SKU durch Aktivieren des Kontrollkästchens für die SKU unter dem Abschnitt EXTERNALLY-LICENSED (BYOL) SKU AVAILABILITY (Extern lizenzierte SKU-Verfügbarkeit [BYOL]) in der Region zur Verfügung siehe (siehe Screenshot unten).
+
+    ![Abbildung](media/marketplace-publishing-push-to-staging/img2.1.2_06.png)
+
+7.	Machen Sie die SKU manuell oder mithilfe des AUTOPRICE-Assistenten für automatische Preisfestlegung in anderen Regionen verfügbar. Beachten Sie die Punkte 9 bis 13 (welche die Verwendung des AUTOPRICE-Assistenten für automatische Preisfestlegung erläutern) im Abschnitt **2.1.1 Einrichten des stündlichen Abrechnungsmodells für eine SKU** dieser Seite.
 
 ### 2\.2. Festlegen der Preise für Entwicklerdienste
 Pläne können aus einer beliebigen Kombination aus Basis- und Verbrauchskonzepten bestehen. „Basis“ ist eine Monatspauschale, „Überschreitung“ ein nutzungsbasierter Preis. (Weitere Informationen siehe unten.)
@@ -162,7 +248,7 @@ Im Folgenden finden Sie eine ausführliche Übersicht darüber, wie die Marketin
 
 ![Abbildung](media/marketplace-publishing-push-to-staging/acom-listing-details-02.png)
 
-* Preisübersicht zu den Angeboten auf der Azure Marketplace-Website*
+*Preisübersicht zu den Angeboten auf der Azure Marketplace-Website*
 
 ### Azure-Portal
 ![Abbildung](media/marketplace-publishing-push-to-staging/azureportal-galleryblade-01.png)
@@ -175,10 +261,12 @@ Im Folgenden finden Sie eine ausführliche Übersicht darüber, wie die Marketin
 
 ## Nächste Schritte
 Nachdem nun Ihre Marketplace-Inhalte geladen wurden, geht es weiter mit dem Testen des Angebots in der Stagingumgebung. Da die Schritte jedoch je nach Angebotstyp unterschiedlich sind, müssen Sie den entsprechenden Angebotstyp in der Liste unten auswählen.
+
 - [Testen des VM-Angebots in der Stagingphase](marketplace-publishing-vm-image-test-in-staging.md)
 - [Testen Ihres Angebots einer Lösungsvorlage in der Stagingumgebung](marketplace-publishing-solution-template-test-in-staging.md)
 
 ## Weitere Informationen
+
 - [Erste Schritte: Veröffentlichen eines Angebots im Azure Marketplace](marketplace-publishing-getting-started.md)
 
 [img-map-acom]: media/marketplace-publishing-push-to-staging/pubportal-mapping-acom.jpg
@@ -190,4 +278,4 @@ Nachdem nun Ihre Marketplace-Inhalte geladen wurden, geht es weiter mit dem Test
 [link-pubportal]: https://publish.windowsazure.com
 [link-push-to-production]: marketplace-publishing-push-to-production.md
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0803_2016-->

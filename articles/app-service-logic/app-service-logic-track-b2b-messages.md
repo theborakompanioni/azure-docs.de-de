@@ -1,7 +1,7 @@
 <properties 
    pageTitle="Nachverfolgen von B2B-Nachrichten in Ihren Logik-Apps in Azure App Service | Microsoft Azure" 
    description="In diesem Thema wird die Nachverfolgung der B2B-Verarbeitung behandelt." 
-   services="app-service\logic" 
+   services="logic-apps" 
    documentationCenter=".net,nodejs,java" 
    authors="rajram" 
    manager="erikre" 
@@ -47,4 +47,4 @@ Wenn Batches als Teil der X12-Vereinbarungen in der zugehörigen Trading Partner
 [1]: ./media/app-service-logic-track-b2b-messages/AS2Tracking.png
 [2]: ./media/app-service-logic-track-b2b-messages/EDIFACTTracking.png
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

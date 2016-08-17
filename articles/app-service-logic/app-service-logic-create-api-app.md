@@ -4,7 +4,7 @@
 	authors="jeffhollan" 
 	manager="dwrede" 
 	editor="" 
-	services="app-service\logic" 
+	services="logic-apps" 
 	documentationCenter=""/>
 
 <tags
@@ -91,4 +91,4 @@ Derzeit wird das Ermitteln eines Webhooktriggers über Swagger nicht vom Logik-A
 
 Ein Beispiel für einen Webhooktrigger finden Sie [hier](https://github.com/jeffhollan/LogicAppTriggersExample/tree/master/LogicAppTriggers) in GitHub.
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

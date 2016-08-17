@@ -1,8 +1,8 @@
 <properties
-	pageTitle="CDN – Verbessern der Leistung durch Komprimieren von Dateien"
-	description="Sie können die Geschwindigkeit von Dateiübertragungen erhöhen und die Leistung beim Laden von Seiten verbessern, indem Sie Ihre Dateien komprimieren."
+	pageTitle="Verbessern der Leistung durch Komprimieren von Dateien in Azure CDN | Microsoft Azure"
+	description="Erfahren Sie, wie Sie die Geschwindigkeit von Dateiübertragungen erhöhen und die Leistung beim Laden von Seiten verbessern, indem Sie Ihre Dateien in Azure CDN komprimieren."
 	services="cdn"
-	documentationCenter=".NET"
+	documentationCenter=""
 	authors="camsoper"
 	manager="erikre"
 	editor=""/>
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/06/2016"
+	ms.date="07/28/2016"
 	ms.author="casoper"/>
 
 # Verbessern der Leistung durch Komprimieren von Dateien
@@ -126,4 +126,4 @@ Für Media Services CDN-aktivierte Streamingendpunkte ist die Komprimierung für
 ## Weitere Informationen
 - [Problembehandlung bei der CDN-Dateikomprimierung](cdn-troubleshoot-compression.md)
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0803_2016-->

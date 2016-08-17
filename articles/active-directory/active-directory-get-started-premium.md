@@ -19,11 +19,11 @@
 # Erste Schritte mit Azure Active Directory Premium
 
 
-Es gibt mehrere Möglichkeiten, wie Sie sich für Active Directory Premium registrieren können:
+Es gibt mehrere Möglichkeiten, sich für Active Directory Premium zu registrieren:
 
 **Azure oder Office 365**: Als Abonnent von Azure oder Office 365 können Sie Active Directory Premium online erwerben. Ausführliche Schritte finden Sie unter [How to Purchase Azure Active Directory Premium - Existing Customers](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/How-to-Purchase-Azure-Active-Directory-Premium-Existing-Customer) (Erwerben von Azure Active Directory Premium – Bestandskunden) oder [How to Purchase Azure Active Directory Premium - New Customers](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/How-to-Purchase-Azure-Active-Directory-Premium-New-Customers) (Erwerben von Azure Active Directory Premium – Neukunden).
 
-**Enterprise Mobility Suite**: Enterprise Mobility Suite ist eine kostengünstige Lösung für Unternehmen, die die folgenden Dienste zusammen unter einem Lizenzplan verwenden möchten: Active Directory Premium, Azure Rights Management und Microsoft Intune. Weitere Informationen finden Sie auf der Website [Enterprise Mobility Suite](https://www.microsoft.com/de-DE/server-cloud/enterprise-mobility/overview.aspx). Klicken Sie [hier](https://portal.office.com/Signup/Signup.aspx?OfferId=2E63A04D-BE0B-4A0F-A8CF-407C1C299221&dl=EMS&ali=1#0), um eine kostenlose Testversion für 30 Tage zu erhalten.
+**Enterprise Mobility + Security**: Enterprise Mobility + Security (früher „Enterprise Mobility Suite“) ist eine kostengünstige Lösung für Unternehmen, die die folgenden Dienste zusammen unter einem Lizenzplan verwenden möchten: Active Directory Premium, Azure Rights Management und Microsoft Intune. Weitere Informationen finden Sie auf der Website [Enterprise Mobility + Security](https://www.microsoft.com/de-DE/server-cloud/enterprise-mobility/overview.aspx). Klicken Sie [hier](https://portal.office.com/Signup/Signup.aspx?OfferId=2E63A04D-BE0B-4A0F-A8CF-407C1C299221&dl=EMS&ali=1#0), um eine kostenlose Testversion für 30 Tage zu erhalten.
 
 
 **Microsoft-Volumenlizenzierung**: Azure Active Directory Premium ist per [Microsoft Enterprise Agreement](https://www.microsoft.com/de-DE/licensing/licensing-programs/enterprise.aspx) (250 Lizenzen oder mehr) oder das [Open Volume License](https://www.microsoft.com/de-DE/licensing/licensing-programs/open-license.aspx)-Programm (5 bis 250 Lizenzen) erhältlich.
@@ -32,7 +32,7 @@ Es gibt mehrere Möglichkeiten, wie Sie sich für Active Directory Premium regis
 In diesem Thema werden die ersten Schritte mit der Anwendung Azure Active Directory Premium beschrieben, die Sie im Rahmen des Volumenlizenzprogramms erworben haben. Falls Sie mit den verschiedenen Editionen von Azure Active Directory noch nicht vertraut sind, helfen Ihnen die Informationen unter [Azure Active Directory-Editionen](active-directory-editions.md) weiter.
 
 > [AZURE.NOTE]
-Die Azure Active Directory Premium und Basic Editions stehen für Kunden in China zur Verfügung, die mit der weltweit verfügbaren Instanz von Azure Active Directory arbeiten. Allerdings werden die Azure Active Directory-Editionen Premium und Basic derzeit durch den in China von 21Vianet betriebenen Microsoft Azure-Dienst nicht unterstützt. Wenn Sie weitere Informationen benötigen, kontaktieren Sie uns im [Azure Active Directory-Forum](https://feedback.azure.com/forums/169401-azure-active-directory/).
+Die Azure Active Directory-Editionen Premium und Basic stehen für Kunden in China zur Verfügung, die mit der weltweit verfügbaren Instanz von Azure Active Directory arbeiten. Allerdings werden die Azure Active Directory-Editionen Premium und Basic derzeit durch den in China von 21Vianet betriebenen Microsoft Azure-Dienst nicht unterstützt. Wenn Sie weitere Informationen benötigen, kontaktieren Sie uns im [Azure Active Directory-Forum](https://feedback.azure.com/forums/169401-azure-active-directory/).
 
 
 
@@ -80,7 +80,7 @@ Wenn Sie versuchen, den Zugriff auf Azure Active Directory zu aktivieren, bevor 
 
 ![Zugriff nicht verfügbar][9]
 
-Versuchen Sie die Aktivierung in diesem Fall erneut wenige Minuten nach Erhalt der E-Mail.
+Wiederholen Sie den Aktivierungsversuch in diesem Fall in wenigen Minuten, wenn Sie die E-Mail erhalten haben.
 
 Neue Administratoren innerhalb Ihres Abonnements können ihren Zugriff auf das klassische Azure-Portal ebenfalls über diesen Link aktivieren.
 
@@ -91,17 +91,17 @@ Neue Administratoren innerhalb Ihres Abonnements können ihren Zugriff auf das k
 
 **Führen Sie die folgenden Schritte aus, um den Azure Active Directory-Zugriff zu aktivieren:**
 
-1. Klicken Sie in der **Willkommens-E-Mail** auf **Anmelden**. 
+1. Klicken Sie in der **Willkommens-E-Mail** auf **Anmelden**.
     
     ![Willkommens-E-Mail][4]
 
 2. Nach der Anmeldung müssen Sie eine zweistufige Authentifizierung in Form einer mobilen Verifizierung durchführen:
 
-    ![Mobile Überprüfung][5]
+    ![Mobile Verifizierung][5]
 
 Die Aktivierung kann einige Minuten dauern. Nachdem der Zugriff aktiviert wurde, wird die braune Leiste ausgeblendet, und Sie können auf **Portal** klicken.
 
-![Auf Abschluss der Einrichtung warten][6]
+![Bitte warten Sie, bis die Einrichtung abgeschlossen ist][6]
 
 In diesem Fall ist Ihr Azure-Zugriff auf Azure Active Directory beschränkt.
 
@@ -160,4 +160,4 @@ Die Verfügbarkeit der Dienste und Features eines Microsoft Clouddiensts variier
 [11]: ./media/active-directory-get-started-premium/Assignlicensespicker.png
 [12]: ./media/active-directory-get-started-premium/Usagelocation.png
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0810_2016-->

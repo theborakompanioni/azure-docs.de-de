@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/10/2016" 
+	ms.date="08/03/2016" 
 	ms.author="tomfitz"/>
 
 
@@ -29,79 +29,101 @@
 - [Python](https://azure.microsoft.com/documentation/samples/resource-manager-python-resources-and-groups/)
 - [Ruby](https://azure.microsoft.com/documentation/samples/resource-manager-ruby-resources-and-groups/)
 
-In diesem Thema wird veranschaulicht, wie Sie das [Azure-Portal](https://portal.azure.com) mit [Azure Resource Manager](../resource-group-overview.md) verwenden, um Ihre Azure-Ressourcen zu verwalten. Informationen zum Bereitstellen von Ressourcen über das Portal finden Sie unter [Bereitstellen von Ressourcen mit Resource Manager-Vorlagen und Azure-Portal](../resource-group-template-deploy-portal.md).
-
-Das Portal und der Ressourcen-Manager werden derzeit nicht von allen Diensten unterstützt. Verwenden Sie für diese Dienste das [klassische Portal](https://manage.windowsazure.com). Den Status der einzelnen Dienste finden Sie im [Verfügbarkeitsdiagramm für das Azure-Portal](https://azure.microsoft.com/features/azure-portal/availability/).
-
-<a id="access-control-for-azure-dashboards" />
-## Anpassen des Dashboards zum Überwachen von Ressourcen
-
-Das Portal bietet ein Dashboard, das Sie zur Überwachung und Verwaltung Ihrer Ressourcen verwenden können. Das Dashboard ist vollständig anpassbar. Sie können zudem mehrere Dashboards erstellen, um mehrere Sichten auf das Abonnement zu ermöglichen.
-
-![Dashboard](./media/resource-group-portal/dashboard.png)
-
-> [AZURE.TIP] Die beste Möglichkeit, sich mit dem Arbeiten mit Dashboards vertraut zu machen, bietet das Video zum [Erstellen benutzerdefinierter Dashboards im Microsoft Azure-Portal](https://channel9.msdn.com/Blogs/trevor-cloud/azure-portal-dashboards).
-
-### Freigeben von Azure-Dashboards und Zugriffssteuerung
-Nach der Konfiguration eines Dashboards können Sie es veröffentlichen und für andere Benutzer in Ihrer Organisation freigeben. Der Zugriff auf die Informationen, die auf Kacheln im Portal angezeigt werden, wird in Azure über die [rollenbasierte Zugriffssteuerung](../active-directory/role-based-access-control-configure.md) geregelt. Alle veröffentlichten Dashboards werden als Azure-Ressourcen implementiert. Aus Sicht der Zugriffssteuerung unterscheiden sich Dashboards nicht von einem virtuellen Computer oder Speicherkonto.
-
-Beispiel: Angenommen, Sie verfügen über ein Azure-Abonnement, und verschiedenen Mitgliedern Ihres Teams wurden die Rollen **Besitzer**, **Mitwirkender** oder**Leser** für das Abonnement zugewiesen. Benutzer, die Besitzer oder Mitwirkende sind, können Dashboards im Abonnement auflisten, anzeigen, erstellen, ändern oder löschen. Benutzer, die als Leser festgelegt wurden, können Dashboards auflisten und anzeigen, aber sie können diese nicht ändern oder löschen. Benutzer mit Lesezugriff können lokale Änderungen an einem veröffentlichten Dashboard vornehmen (z.B. beim Behandeln eines Problems), haben aber nicht die Möglichkeit, diese Änderungen zur Veröffentlichung zurück an den Server zu übergeben. Diese Benutzer können eine private Kopie des Dashboards zur eigenen Nutzung erstellen.
-
-Einzelne Kacheln im Dashboard erzwingen basierend auf den von ihnen gezeigten Ressourcen eigene Anforderungen an die Zugriffssteuerung. Sie können deshalb ein Dashboard entwerfen, das umfassend freigegeben werden kann, während die Daten auf den einzelnen Kacheln trotzdem geschützt sind.
+In diesem Thema wird veranschaulicht, wie Sie das [Azure-Portal](https://portal.azure.com) mit [Azure Resource Manager](../resource-group-overview.md) verwenden, um Ihre Azure-Ressourcen zu verwalten. Das Portal und der Ressourcen-Manager werden derzeit nicht von allen Diensten unterstützt. Verwenden Sie für diese Dienste das [klassische Portal](https://manage.windowsazure.com). Den Status der einzelnen Dienste finden Sie im [Verfügbarkeitsdiagramm für das Azure-Portal](https://azure.microsoft.com/features/azure-portal/availability/).
 
 ## Verwalten von Ressourcengruppen
 
-1. Wählen Sie zum Anzeigen aller Ressourcengruppen in Ihrem Abonnement **Ressourcengruppen** aus.
+1. Wählen Sie zum Anzeigen aller Ressourcengruppen in Ihrem Abonnement die Option **Ressourcengruppen**.
 
     ![Ressourcengruppen durchsuchen](./media/resource-group-portal/browse-groups.png)
 
-2. Wählen Sie die Ressourcengruppe aus, die Sie verwalten möchten. Es wird das Blatt „Ressourcengruppe“ mit Informationen zur jeweiligen Ressourcengruppe einschließlich aller Ressourcen in der Gruppe angezeigt.
+1. Wählen Sie zum Erstellen einer leeren Ressourcengruppe die Option **Hinzufügen**.
 
-    ![Zusammenfassung der Ressourcengruppe](./media/resource-group-portal/group-summary.png)
+    ![Ressourcengruppe hinzufügen](./media/resource-group-portal/add-resource-group.png)
 
-    Wenn Sie eine der Ressourcen auswählen, werden Details dazu angezeigt.
+1. Geben Sie einen Namen und Speicherort für die neue Ressourcengruppe an. Klicken Sie auf **Erstellen**.
 
-3. Auf dem Blatt einer Ressource können Sie weitere Graphen und Tabellen hinzufügen, indem Sie unter der Zusammenfassung **Abschnitt hinzufügen** auswählen.
+    ![Ressourcengruppe erstellen](./media/resource-group-portal/create-empty-group.png)
 
-    ![Abschnitt hinzufügen](./media/resource-group-portal/add-section.png)
+1. Unter Umständen müssen Sie **Aktualisieren** wählen, damit die zuletzt erstellte Ressourcengruppe angezeigt wird.
 
-4. In einem Kachelkatalog können Sie die Informationen auswählen, die in das Blatt eingebunden werden sollen. Die Typen der angezeigten Kacheln werden je nach Ressourcentyp gefiltert. Wenn Sie eine andere Ressource auswählen, ändern sich die verfügbaren Kacheln.
+    ![Ressourcengruppe aktualisieren](./media/resource-group-portal/refresh-resource-groups.png)
 
-    ![Abschnitt hinzufügen](./media/resource-group-portal/tile-gallery.png)
+1. Wählen Sie zum Anpassen der für die Ressourcengruppe angezeigten Informationen die Option **Spalten**.
 
-5. Ziehen Sie die gewünschte Kachel jeweils an eine der verfügbaren Positionen.
+    ![Spalten anpassen](./media/resource-group-portal/select-columns.png)
 
-    ![Kachel ziehen](./media/resource-group-portal/drag-tile.png)
+1. Wählen Sie die hinzuzufügenden Spalten und dann die Option **Aktualisieren** aus.
 
-6. Nachdem Sie oben im Portal **Fertig** ausgewählt haben, ist die neue Ansicht Teil des Blatts.
+    ![Spalten hinzufügen](./media/resource-group-portal/add-columns.png)
 
-    ![Kachel anzeigen](./media/resource-group-portal/show-lens.png)
+1. Informationen zum Bereitstellen von Ressourcen für die neue Ressourcengruppe finden Sie unter [Bereitstellen von Ressourcen mit Resource Manager-Vorlagen und Azure-Portal](../resource-group-template-deploy-portal.md).
 
-7. Um den schnellen Zugriff auf eine Ressourcengruppe zu ermöglichen, können Sie das Blatt in Ihrem Dashboard anheften.
+1. Um den schnellen Zugriff auf eine Ressourcengruppe zu ermöglichen, können Sie das Blatt in Ihrem Dashboard anheften.
 
     ![Ressourcengruppe anheften](./media/resource-group-portal/pin-group.png)
 
-    Sie können auch einen Abschnitt des Blatts an das Dashboard anheften, indem Sie auf die Auslassungspunkte (...) oberhalb des Abschnitts klicken. Außerdem können Sie die Größe des Abschnitts im Blatt anpassen oder ihn vollständig entfernen. Die folgende Abbildung veranschaulicht, wie Sie den Abschnitt „CPU und Arbeitsspeicher“ anheften, anpassen oder entfernen.
+1. Im Dashboard wird die Ressourcengruppe mit den zugehörigen Ressourcen angezeigt. Sie können entweder die Ressourcengruppen oder eine der Ressourcen auswählen, um zum jeweiligen Element zu navigieren.
 
-    ![Abschnitt anheften](./media/resource-group-portal/pin-cpu-section.png)
-
-8. Nach dem Anheften des Abschnitts im Dashboard wird die Zusammenfassung im Dashboard angezeigt.
-
-    ![Dashboard anzeigen](./media/resource-group-portal/view-startboard.png)
-
-Wenn Sie diese auswählen, werden sofort weitere Details zu den Daten eingeblendet.
+    ![Ressourcengruppe anheften](./media/resource-group-portal/show-resource-group-dashboard.png)
 
 ## Markieren von Ressourcen
 
-Sie können Ressourcengruppen und Ressourcen Tags zuordnen, um sie logisch zu organisieren. Informationen zur Verwendung von Tags über das Portal finden Sie unter [Verwenden von Tags zum Organisieren von Azure-Ressourcen](../resource-group-using-tags.md).
+Sie können Ressourcengruppen und Ressourcen Tags zuordnen, um sie logisch zu organisieren. Informationen zur Verwendung von Tags finden Sie unter [Verwenden von Tags zum Organisieren von Azure-Ressourcen](../resource-group-using-tags.md).
+
+[AZURE.INCLUDE [resource-manager-tag-resource](../../includes/resource-manager-tag-resources.md)]
+
+## Überwachen von Ressourcen
+
+Wenn Sie eine Ressource auswählen, werden auf dem Ressourcenblatt Standarddiagramme und -tabellen zur Überwachung des Ressourcentyps angezeigt. Sie können anpassen, wie Sie die Ressource überwachen, indem Sie die angezeigten Diagramme und Tabellen ändern.
+
+1. Fügen Sie auf dem Blatt einer Ressource weitere Diagramme und Tabellen hinzu, indem Sie unter der Zusammenfassung **Abschnitt hinzufügen** auswählen.
+
+    ![Abschnitt hinzufügen](./media/resource-group-portal/add-section.png)
+
+1. Wählen Sie im Kachelkatalog die Informationen aus, die auf dem Blatt angezeigt werden sollen. Der Editor filtert die Kacheln nach dem Ressourcentyp. Wenn Sie eine andere Ressource auswählen, ändern sich die verfügbaren Kacheln.
+
+    ![Abschnitt hinzufügen](./media/resource-group-portal/tile-gallery.png)
+
+1. Ziehen Sie die gewünschte Kachel jeweils an eine der verfügbaren Positionen.
+
+    ![Kachel ziehen](./media/resource-group-portal/drag-tile.png)
+
+1. Nachdem Sie oben im Portal **Fertig** ausgewählt haben, ist die neue Ansicht Teil des Blatts.
+
+    ![Kachel anzeigen](./media/resource-group-portal/show-lens.png)
+
+1. Sie können einen Abschnitt des Blatts an das Dashboard anheften, indem Sie auf die Auslassungspunkte (...) oberhalb des Abschnitts klicken. Außerdem können Sie die Größe des Abschnitts im Blatt anpassen oder ihn vollständig entfernen. Die folgende Abbildung veranschaulicht, wie Sie den Abschnitt „CPU und Arbeitsspeicher“ anheften, anpassen oder entfernen.
+
+    ![Abschnitt anheften](./media/resource-group-portal/pin-cpu-section.png)
+
+1. Nach dem Anheften des Abschnitts im Dashboard wird die Zusammenfassung im Dashboard angezeigt. Wenn Sie diese auswählen, werden sofort weitere Details zu den Daten eingeblendet.
+
+    ![Dashboard anzeigen](./media/resource-group-portal/view-startboard.png)
+
+1. Außerdem können Sie mehrere Dashboards zum Überwachen und Verwalten Ihrer Ressourcen erstellen und diese Dashboards für andere Benutzer in Ihrer Organisation freigeben. Wählen Sie **Neues Dashboard**.
+
+    ![Dashboard](./media/resource-group-portal/dashboard.png)
+
+     Sie können sich mit der Verwendung von Dashboards vertraut machen, indem Sie sich das Video zum [Erstellen benutzerdefinierter Dashboards im Microsoft Azure-Portal](https://channel9.msdn.com/Blogs/trevor-cloud/azure-portal-dashboards) ansehen. Informationen zum Freigeben des Zugriffs auf ein veröffentlichtes Dashboard finden Sie unter [Sharing Azure dashboards](azure-portal-dashboard-share-access.md) (Freigeben von Azure-Dashboards).
+
+## Verschieben von Ressourcen
+
+Wenn Sie Ressourcen in eine andere Ressourcengruppe oder ein anderes Abonnement verschieben möchten, helfen Ihnen die Informationen unter [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](../resource-group-move-resources.md) weiter.
+
+## Sperren von Ressourcen
+
+Sie können ein Abonnement, eine Ressourcengruppe oder eine Ressource sperren, um zu verhindern, dass andere Benutzer in Ihrer Organisation versehentlich wichtige Ressourcen löschen oder ändern. Weitere Informationen finden Sie unter [Sperren von Ressourcen mit dem Azure-Ressourcen-Manager](../resource-group-lock-resources.md).
+
+[AZURE.INCLUDE [resource-manager-lock-resources](../../includes/resource-manager-lock-resources.md)]
 
 ## Anzeigen Ihres Abonnements und der Kosten
 
-Sie können Informationen zu Ihrem Abonnement und die zusammengefassten Kosten für alle Ihre Ressourcen anzeigen. Wählen Sie **Abonnements** und das Abonnement aus, das Sie anzeigen möchten. Möglicherweise steht nur ein Abonnement zur Auswahl.
+Sie können Informationen zu Ihrem Abonnement und die zusammengefassten Kosten für Ihre gesamten Ressourcen anzeigen. Wählen Sie **Abonnements** und dann das Abonnement aus, das Sie anzeigen möchten. Möglicherweise steht nur ein Abonnement zur Auswahl.
 
 ![Abonnement](./media/resource-group-portal/select-subscription.png)
 
-Im Blatt „Abonnement“ wird eine Verbrauchsrate angezeigt.
+Auf dem Blatt „Abonnement“ wird eine Verbrauchsrate angezeigt.
 
 ![Verbrauchsrate](./media/resource-group-portal/burn-rate.png)
 
@@ -113,7 +135,7 @@ Eine Aufschlüsselung der Kosten nach Ressourcentyp wird ebenfalls angezeigt.
 
 Nach dem Einrichten der Ressourcengruppe kann es sein, dass Sie die Resource Manager-Vorlage für die Ressourcengruppe anzeigen möchten. Das Exportieren der Vorlage hat zwei Vorteile:
 
-1. Sie können zukünftige Bereitstellungen der Lösung leicht automatisieren, da die gesamte Infrastruktur in der Vorlage definiert ist.
+1. Sie können zukünftige Bereitstellungen der Lösung leicht automatisieren, da die Vorlage die gesamte Infrastruktur enthält.
 
 2. Sie können sich mit der Vorlagensyntax vertraut machen, indem Sie sich die JavaScript Object Notation (JSON) zu Ihrer Lösung ansehen.
 
@@ -121,15 +143,15 @@ Eine detaillierte Anleitung finden Sie unter [Exportieren einer Azure Resource M
 
 ## Löschen von Ressourcen oder Ressourcengruppen
 
-Beim Löschen einer Ressourcengruppe werden alle darin enthaltenen Ressourcen gelöscht. Sie können auch einzelne Ressourcen in einer Ressourcengruppe löschen. Gehen Sie beim Löschen einer Ressourcengruppe mit Bedacht vor, da Ressourcen in anderen Ressourcengruppen damit verknüpft sein können. Die verknüpften Ressourcen werden nicht gelöscht, aber sie funktionieren unter Umständen nicht wie erwartet.
+Beim Löschen einer Ressourcengruppe werden alle darin enthaltenen Ressourcen gelöscht. Sie können auch einzelne Ressourcen in einer Ressourcengruppe löschen. Gehen Sie beim Löschen einer Ressourcengruppe mit Bedacht vor, da Ressourcen in anderen Ressourcengruppen damit verknüpft sein können. Resource Manager löscht verknüpfte Ressourcen nicht, aber ohne die erwarteten Ressourcen funktionieren sie unter Umständen nicht richtig.
 
 ![Gruppe löschen](./media/resource-group-portal/delete-group.png)
-
 
 ## Nächste Schritte
 
 - Informationen zum Anzeigen von Überwachungsprotokollen finden Sie unter [Überwachen von Vorgängen mit Resource Manager](../resource-group-audit.md).
 - Informationen zur Behebung von Bereitstellungsfehlern finden Sie unter [Problembehandlung beim Bereitstellen von Ressourcengruppen mit dem Azure-Portal](../resource-manager-troubleshoot-deployments-portal.md).
 - Informationen zum Bereitstellen von Ressourcen über das Portal finden Sie unter [Bereitstellen von Ressourcen mit Resource Manager-Vorlagen und Azure-Portal](../resource-group-template-deploy-portal.md).
+- Informationen zum Verwalten des Zugriffs auf Ressourcen finden Sie unter [Verwenden von Rollenzuweisungen zum Verwalten Ihrer Azure-Abonnementressourcen](../active-directory/role-based-access-control-configure.md).
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0803_2016-->

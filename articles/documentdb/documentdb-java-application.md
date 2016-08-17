@@ -4,7 +4,7 @@
 	keywords="Anwendungsentwicklung, Datenbanktutorial, Java-Anwendung, Java-Webanwendungstutorial, DocumentDB, Azure, Microsoft Azure"
 	services="documentdb"
 	documentationCenter="java"
-	authors="aliuy"
+	authors="AndrewHoh"
 	manager="jhubbard"
 	editor="mimig"/>
 
@@ -15,7 +15,7 @@
 	ms.tgt_pltfrm="NA"
 	ms.workload="data-services"
 	ms.date="03/10/2016"
-	ms.author="andrl"/>
+	ms.author="anhoh"/>
 
 # Erstellen einer Java-Webanwendung mithilfe von DocumentDB
 
@@ -39,7 +39,7 @@ In diesem Java-Anwendungslernprogramm erfahren Sie, wie Sie eine webbasierte Auf
 ##<a id="Prerequisites"></a>Voraussetzungen für dieses Java-Webanwendungstutorial
 Bevor Sie mit diesem Lernprogramm zur Anwendungsentwicklung beginnen, benötigen Sie Folgendes:
 
-- Ein aktives Azure-Konto. Wenn Sie noch kein Konto haben, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
+- Ein aktives Azure-Konto. Wenn Sie noch kein Konto haben, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Ausführliche Informationen finden Sie unter [Einen Monat kostenlos testen](https://azure.microsoft.com/pricing/free-trial/).
 - [Java Development Kit (JDK) 7+](http://www.oracle.com/technetwork/java/javase/downloads/index.html).
 - [Eclipse IDE für Java EE-Entwickler.](http://www.eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/lunasr1)
 - [Eine Azure-Website mit aktivierter Java-Laufzeitumgebung (z. B. Tomcat oder Jetty).](../app-service-web/web-sites-java-get-started.md)
@@ -77,7 +77,7 @@ So erstellen Sie eine JSP-Anwendung
 	    </body>
 
 8. Speichern Sie die Datei „index.jsp“.
-9. Wenn Sie in Schritt 2 eine Ziellaufzeitversion festgelegt haben, können Sie auf **Projekt** und dann auf **Ausführen** klicken, um die JSP-Anwendung lokal auszuführen:
+9. Wenn Sie in Schritt 2 eine Ziellaufzeitversion festgelegt haben, können Sie auf **Projekt** und dann auf **Ausführen** klicken, um die JSP-Anwendung lokal auszuführen:
 
 	![Hello World – Java-Anwendungslernprogramm](./media/documentdb-java-application/image12.png)
 
@@ -784,4 +784,4 @@ Alle Beispiele in diesem Tutorial befinden sich im Projekt [todo](https://github
 
 [1]: media/documentdb-java-application/keys.png
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0810_2016-->

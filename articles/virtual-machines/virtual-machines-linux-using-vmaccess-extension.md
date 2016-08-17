@@ -97,7 +97,7 @@ Um den Datenträger zu überprüfen und zu reparieren, verwenden Sie dieses VMAc
 Führen Sie das VMAccess-Skript aus mit:
 
 ```bash
-azure vm extension set exampleResourceGruop exampleVM \
+azure vm extension set exampleResourceGroup exampleVM \
 VMAccessForLinux Microsoft.OSTCExtensions * \
 --private-config-path disk_check_repair.json
 ```
@@ -120,7 +120,7 @@ Verwenden Sie zum Zurücksetzen des Stammkennworts dieses VMAccess-Skript:
 Führen Sie das VMAccess-Skript aus mit:
 
 ```bash
-azure vm extension set exampleResourceGruop exampleVM \
+azure vm extension set exampleResourceGroup exampleVM \
 VMAccessForLinux Microsoft.OSTCExtensions * \
 --private-config-path reset_root_password.json
 ```
@@ -139,7 +139,7 @@ Verwenden Sie zum Zurücksetzen des SSH-Schlüssels eines Nichtstammbenutzers di
 Führen Sie das VMAccess-Skript aus mit:
 
 ```bash
-azure vm extension set exampleResourceGruop exampleVM \
+azure vm extension set exampleResourceGroup exampleVM \
 VMAccessForLinux Microsoft.OSTCExtensions * \
 --private-config-path reset_ssh_key.json
 ```
@@ -163,7 +163,7 @@ Verwenden Sie zum Erstellen eines neuen Benutzers dieses VMAccess-Skript:
 Führen Sie das VMAccess-Skript aus mit:
 
 ```bash
-azure vm extension set exampleResourceGruop exampleVM \
+azure vm extension set exampleResourceGroup exampleVM \
 VMAccessForLinux Microsoft.OSTCExtensions * \
 --private-config-path create_new_user.json
 ```
@@ -181,7 +181,7 @@ Verwenden Sie zum Erstellen eines neuen Benutzers dieses VMAccess-Skript:
 Führen Sie das VMAccess-Skript aus mit:
 
 ```bash
-azure vm extension set exampleResourceGruop exampleVM \
+azure vm extension set exampleResourceGroup exampleVM \
 VMAccessForLinux Microsoft.OSTCExtensions * \
 --private-config-path remove_user.json
 ```
@@ -203,9 +203,9 @@ Verwenden Sie zum Zurücksetzen der SSHD-Konfiguration dieses VMAccess-Skript:
 Führen Sie das VMAccess-Skript aus mit:
 
 ```bash
-azure vm extension set exampleResourceGruop exampleVM \
+azure vm extension set exampleResourceGroup exampleVM \
 VMAccessForLinux Microsoft.OSTCExtensions * \
 --private-config-path reset_sshd.json
 ```
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0803_2016-->

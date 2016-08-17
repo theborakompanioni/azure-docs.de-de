@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/07/2016"
+	ms.date="07/21/2016"
 	ms.author="femila"/>
 
 # Roaming von Einstellungen und Daten – Häufig gestellte Fragen
@@ -74,12 +74,13 @@ Wenn sich mehrere Azure AD-Konten von unterschiedlichen Azure AD-Mandanten auf d
 Roaming kann nur für universelle Windows-Apps verwendet werden. Das Roaming für eine bereits vorhandene Windows-Desktopanwendung kann auf zwei Arten aktiviert werden:
 
 - Mithilfe der [Desktop-Brücke](http://aka.ms/desktopbridge) lassen sich bereits vorhandene Windows-Desktop-Apps problemlos zur universellen Windows-Plattform migrieren. Anschließend sind nur minimale Codeänderungen erforderlich, um das Roaming von Azure AD-App-Daten zu nutzen. Die Desktop-Brücke versieht Ihre Apps mit einer App-Identität. Diese wird benötigt, um das App-Datenroaming für bereits vorhandene Desktop-Apps zu ermöglichen.
-- Mithilfe der [User Experience Virtualization (UE-V)](https://technet.microsoft.com/library/dn458947.aspx) können Sie eine benutzerdefinierte Einstellungsvorlage für bereits vorhandene Windows-Desktop-Apps erstellen und das Roaming lediglich für Win32-Apps ermöglichen. Bei dieser Option sind keinerlei Änderungen am App-Code erforderlich. UE-V ist auf lokales Active Directory-Roaming für Kunden beschränkt, die das Microsoft Desktop Optimization Package erworben haben. 
+- Mithilfe von [User Experience Virtualization (UE-V)](https://technet.microsoft.com/library/dn458947.aspx) können Sie eine benutzerdefinierte Einstellungsvorlage für bereits vorhandene Windows-Desktop-Apps erstellen und das Roaming lediglich für Win32-Apps ermöglichen. Bei dieser Option sind keinerlei Änderungen am App-Code erforderlich. UE-V ist auf lokales Active Directory-Roaming für Kunden beschränkt, die das Microsoft Desktop Optimization Package erworben haben.
 
-Der Administrator kann UEV so konfigurieren, dass das Roaming nur für Daten von Windows-Desktop-Apps stattfindet. Hierzu kann er mithilfe von [UE-V-Gruppenrichtlinien](https://technet.microsoft.com/itpro/mdop/uev-v2/configuring-ue-v-2x-with-group-policy-objects-both-uevv2) das Roaming von Windows-Betriebssystemeinstellungen und universellen App-Daten deaktivieren.
+Der Administrator kann UE-V so konfigurieren, dass das Roaming nur für Daten von Windows-Desktop-Apps stattfindet. Hierzu kann er mithilfe von [UE-V-Gruppenrichtlinien](https://technet.microsoft.com/itpro/mdop/uev-v2/configuring-ue-v-2x-with-group-policy-objects-both-uevv2) das Roaming von Windows-Betriebssystemeinstellungen und universellen App-Daten deaktivieren.
 
 - Deaktivieren Sie die Gruppenrichtlinie „Roam Windows settings“ (Roaming von Windows-Einstellungen).
 - Aktivieren Sie die Gruppenrichtlinie „Do not synchronize Windows Apps“ (Windows-Apps nicht synchronisieren).
+- Deaktivieren Sie im Anwendungsabschnitt das Roaming für IE.
 
 Es ist möglich, dass Microsoft in Zukunft nach Wegen suchen wird, wie UE-V fest in Windows integriert und erweitert werden kann, um das Roaming von Einstellungen über die Azure AD-Cloud zu ermöglichen.
 
@@ -103,8 +104,8 @@ Microsoft bietet verschiedene Lösungen für das Roaming von Einstellungen. Hier
 
 Bei der parallelen Nutzung der Synchronisierung von Unternehmenseinstellungen von Enterprise State Roaming und UE-V gelten folgende Regeln:
 
-- Enterprise State Roaming ist der primäre Roaming-Agent auf dem Gerät. UE-V wird zum Schließen der „Win32-Lücke“ verwendet. 
-- Das UE-V-Roaming für Windows-Einstellungen und moderne UWP-App-Daten muss mithilfe der UE-V-Gruppenrichtlinien deaktiviert werden, da diese Aufgaben bereits durch das Enterprise State Roaming abgedeckt werden. 
+- Enterprise State Roaming ist der primäre Roaming-Agent auf dem Gerät. UE-V wird zum Schließen der „Win32-Lücke“ verwendet.
+- Das UE-V-Roaming für Windows-Einstellungen und moderne UWP-App-Daten muss mithilfe der UE-V-Gruppenrichtlinien deaktiviert werden, da diese Aufgaben bereits durch das Enterprise State Roaming abgedeckt werden.
 
 ##Wie unterstützt Enterprise State Roaming die virtuelle Desktopinfrastruktur (Virtual Desktop Infrastructure, VDI)?
 Enterprise State Roaming wird nur für Windows 10-Client-SKUs und nicht für Server-SKUs unterstützt. Wenn ein virtueller Clientcomputer auf einem Hypervisorcomputer gehostet wird und ein Endbenutzer remote auf den virtuellen Computer zugreift, wird das Roaming für die Benutzerdaten durchgeführt. Wenn mehrere Benutzer das gleiche Betriebssystem verwenden und remote auf einen Server zugreifen, um uneingeschränkte Desktopfeatures zu nutzen, ist nicht sicher, ob das Roaming stattfindet. Das letztere sitzungsbasierte Szenario wird offiziell nicht unterstützt.
@@ -116,11 +117,12 @@ Falls Ihr Unternehmen das Roaming unter Windows 10 bereits über das eingeschrä
 ## Bekannte Probleme
 
 - Das Anmelden per Smartcard oder virtueller Smartcard an Windows führt dazu, dass die Synchronisierung von Einstellungen nicht mehr funktioniert. Wenn Sie versuchen, sich mit einer Smartcard oder einer virtuellen Smartcard an Ihrem Gerät anzumelden, funktioniert die Synchronisierung nicht mehr. Dieses Problem wird im Rahmen von zukünftigen Updates für Windows 10 voraussichtlich behoben.
-- Internet Explorer-Favoriten werden bei älteren Versionen des Windows 10-Builds nicht synchronisiert. Sie benötigen das kumulative Mai-Update für Windows 10 (Build 10.0.10586.318 oder höher), damit die Synchronisierung von Internet Explorer-Favoriten funktioniert.
-- In bestimmten Fällen werden Daten von Enterprise State Roaming unter Umständen nicht synchronisiert, wenn die Multi-Factor Authentication (MFA) konfiguriert ist. 
-    - Wenn für den Benutzer die [Azure MFA](multi-factor-authentication.md) für das Azure AD-Portal konfiguriert ist, ist die Synchronisierung von Einstellungen unter Umständen nicht erfolgreich, während er sich mit einem Kennwort bei einem Windows-10-Gerät anmeldet. Diese Art der MFA-Konfiguration dient dem Schutz eines Azure-Administratorkontos. Administratoren können die Synchronisierung ggf. trotzdem durchführen, indem sie sich bei ihrem Windows 10-Gerät mithilfe der PIN vom Typ [Microsoft Passport for Work](active-directory-azureadjoin-passport.md) anmelden oder alternativ die Multi-Factor Authentication durchführen, während sie auf andere Azure-Dienste wie Office 365 zugreifen. 
+- Internet Explorer-Favoriten werden bei älteren Versionen des Windows 10-Builds nicht synchronisiert. Sie benötigen das kumulative Juli-Update für Windows 10 (Build 10586.494 oder höher), damit die Synchronisierung von Internet Explorer-Favoriten funktioniert.
+- In bestimmten Fällen werden Daten von Enterprise State Roaming unter Umständen nicht synchronisiert, wenn die Multi-Factor Authentication (MFA) konfiguriert ist.
+    - Wenn für den Benutzer die [Azure MFA](multi-factor-authentication.md) für das Azure AD-Portal konfiguriert ist, ist die Synchronisierung von Einstellungen unter Umständen nicht erfolgreich, während er sich mit einem Kennwort bei einem Windows-10-Gerät anmeldet. Diese Art der MFA-Konfiguration dient dem Schutz eines Azure-Administratorkontos. Administratoren können die Synchronisierung ggf. trotzdem durchführen, indem sie sich bei ihrem Windows 10-Gerät mithilfe der PIN vom Typ [Microsoft Passport for Work](active-directory-azureadjoin-passport.md) anmelden oder alternativ die Multi-Factor Authentication durchführen, während sie auf andere Azure-Dienste wie Office 365 zugreifen.
     - Die Synchronisierung ist unter Umständen nicht erfolgreich, wenn der Administrator die AD FS MFA-Richtlinie für bedingten Zugriff konfiguriert und das Zugriffstoken auf dem Gerät abläuft. Melden Sie sich ab und mit der PIN vom Typ [Microsoft Passport for Work](active-directory-azureadjoin-passport.md) an, oder führen Sie die Multi-Factor Authentication durch, während sie auf andere Azure-Dienste wie Office 365 zugreifen.
-
+   
+- Wenn ein Computer mit automatischer Registrierung bei Azure AD-Geräten in die Domäne eingebunden ist, treten unter Umständen Synchronisierungsfehler auf, wenn sich der Computer längere Zeit an einem externen Standort befindet, und die Domänenauthentifizierung kann nicht ausgeführt werden. Stellen Sie zum Beheben dieses Problems eine Verbindung zwischen dem Computer und einem Unternehmensnetzwerk her, sodass die Synchronisierung fortgesetzt werden kann.
 
 
 ## Verwandte Themen
@@ -129,4 +131,4 @@ Falls Ihr Unternehmen das Roaming unter Windows 10 bereits über das eingeschrä
 - [Gruppenrichtlinien- und MDM-Einstellungen für Einstellungssynchronisierung](active-directory-windows-enterprise-state-roaming-group-policy-settings.md)
 - [Windows 10-Roamingeinstellungen – Referenz](active-directory-windows-enterprise-state-roaming-windows-settings-reference.md)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0803_2016-->

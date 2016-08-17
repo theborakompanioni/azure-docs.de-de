@@ -3,7 +3,7 @@
    description="Microsoft Azure SQL-Datenbank, Datenbankmigration, SQL-Datenbankkompatibilität, SqlPackage"
    services="sql-database"
    documentationCenter=""
-   authors="carlrabeler"
+   authors="CarlRabeler"
    manager="jhubbard"
    editor=""/>
 
@@ -32,17 +32,17 @@ In diesem Artikel erfahren Sie, wie Sie ermitteln können, ob eine SQL Server-D
 1. Öffnen Sie ein Eingabeaufforderungsfenster, und wechseln Sie in ein Verzeichnis mit der neuesten Version von „sqlpackage.exe“. Dieses Hilfsprogramm wird mit Visual Studio und SQL Server bereitgestellt. Laden Sie die [neueste Version von SQL Server Data Tools für Visual Studio](https://msdn.microsoft.com/library/mt204009.aspx) herunter, um die neueste Version des SqlPackage-Hilfsprogramms zu erhalten.
 2. Führen Sie den folgenden SqlPackage-Befehl mit den unten angegebenen Argumenten für Ihre Umgebung aus:
 
-	'sqlpackage.exe /Action:Export /ssn:< server_name > /sdn:< database_name > /tf:< target_file > /p:TableData=< schema_name.table_name > > < output_file > 2>&1'
+	'sqlpackage.exe /Action:Export /ssn:< Servername > /sdn:< Datenbankname > /tf:< Zieldatei > /p:TableData=< Schemaname.Tabellenname > > < Ausgabedatei > 2>&1'
 
 	| Argument | Beschreibung |
 	|---|---|
-	| < server_name > | Name des Quellservers |
-	| < database_name > | Name der Quelldatenbank |
-	| < target_file > | Dateiname und Speicherort für die BACPAC-Datei |
-	| < schema_name.table_name > | Tabellen, für die Daten in die Zieldatei ausgegeben werden |
-	| < output_file > | Dateiname und Speicherort für die Ausgabedatei mit Fehlern, falls vorhanden |
+	| < Servername > | Name des Quellservers |
+	| < Datenbankname > | Name der Quelldatenbank |
+	| < Zieldatei > | Dateiname und Speicherort für die BACPAC-Datei |
+	| < Schemaname.Tabellenname > | Tabellen, für die Daten in die Zieldatei ausgegeben werden |
+	| < Ausgabedatei > | Dateiname und Speicherort für die Ausgabedatei mit Fehlern, falls vorhanden |
 
-	Der Grund für das Argument „/p:TableName“ ist, dass wir nur die Datenbankkompatibilität in Bezug auf das Exportieren nach Azure SQL-Datenbank V12 testen möchten und nicht die Daten aus allen Tabellen exportieren möchten. Leider unterstützt das export-Argument für „sqlpackage.exe“ das Extrahieren von 0 Tabellen nicht. Sie müssen also eine kleine Tabelle angeben. < output_file > enthält den Bericht zu etwaigen Fehlern. Mit der Zeichenfolge „> 2>&1“ werden sowohl die Standardausgabe als auch der Standardfehler, die bzw. der sich aus der Befehlsausführung ergibt, an die angegebene Ausgabedatei geleitet.
+	Der Grund für das Argument „/p:TableName“ ist, dass wir nur die Datenbankkompatibilität in Bezug auf das Exportieren nach Azure SQL-Datenbank V12 testen möchten und nicht die Daten aus allen Tabellen exportieren möchten. Leider unterstützt das export-Argument für „sqlpackage.exe“ das Extrahieren von 0 Tabellen nicht. Sie müssen also eine kleine Tabelle angeben. Die < Ausgabedatei > enthält den Bericht zu etwaigen Fehlern. Mit der Zeichenfolge „> 2>&1“ werden sowohl die Standardausgabe als auch der Standardfehler, die bzw. der sich aus der Befehlsausführung ergibt, an die angegebene Ausgabedatei geleitet.
 
 	![Exportieren von Datenebenenanwendungen im Menü "Aufgaben"](./media/sql-database-cloud-migrate/TestForCompatibilityUsingSQLPackage01.png)
 
@@ -62,4 +62,4 @@ In diesem Artikel erfahren Sie, wie Sie ermitteln können, ob eine SQL Server-D
 - [Teilweise oder vollständig unterstützte Transact-SQL-Funktionen](sql-database-transact-sql-information.md)
 - [Migrate non-SQL Server databases using SQL Server Migration Assistant (Migrieren von Nicht-SQL Server-Datenbanken mithilfe des SQL Server-Migrations-Assistenten)](http://blogs.msdn.com/b/ssma/)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0803_2016-->

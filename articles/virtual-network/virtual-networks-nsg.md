@@ -3,7 +3,7 @@
    description="Erfahren Sie mehr zur verteilten Firewall in Azure mit Netzwerksicherheitsgruppen (NSGs) und zur Verwendung von NSGs zum Isolieren und Steuern von Datenverkehr in Ihren virtuellen Netzwerken (VNets)."
    services="virtual-network"
    documentationCenter="na"
-   authors="telmosampaio"
+   authors="jimdial"
    manager="carmonm"
    editor="tysonn" />
 <tags 
@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="02/11/2016"
-   ms.author="telmos" />
+   ms.author="jdial" />
 
 # Was ist eine Netzwerksicherheitsgruppe (NSG)?
 
@@ -40,8 +40,8 @@ NSG-Regeln haben die folgenden Eigenschaften:
 |---|---|---|---|
 |**Name**|Name der Regel|Muss innerhalb der Region eindeutig sein.<br/>Kann Buchstaben, Zahlen, Unterstriche, Punkte und Bindestriche enthalten.<br/>Muss mit einem Buchstaben oder einer Zahl beginnen.<br/>Muss mit einem Buchstaben, einer Zahl oder einem Unterstrich enden.<br/>Kann bis zu 80 Zeichen enthalten.|Da eine NSG mehrere Regeln enthalten kann, sollten Sie durch Ihre Namenskonvention sicherstellen, dass sich die Funktion der Regel leicht am Namen erkennen lässt.|
 |**Protokoll**|Protokoll entsprechend der Regel|TCP, UDP oder *|Wenn Sie das Protokoll mit * angeben, schließt dies ICMP (nur Ost-West-Datenverkehr) sowie UDP und TCP ein. Auf diese Weise können Sie u. U. die Anzahl der benötigten Regeln reduzieren.<br/>Gleichzeitig kann die Angabe von * zu allgemein sein. Verwenden Sie diesen Ansatz deshalb nur, wenn er wirklich nötig ist.|
-|**Quellportbereich**|Quellportbereich entsprechend der Regel|Eine einzelne Portnummer von 1 bis 65535, ein Portbereich (z.B. 1-65635) oder * (für alle Ports)|Quellports könnte kurzlebig sein. Sofern Ihr Clientprogramm keinen bestimmten Port nutzt, verwenden Sie in den meisten Fällen „*“.<br/>Versuchen Sie, weitestgehend mit Portbereichen zu arbeiten, um die Anzahl von notwendigen Regeln zu reduzieren.<br/>Mehrere Ports oder Portbereiche können nicht mit Kommas gruppiert werden. 
-|**Zielportbereich**|Zielportbereich entsprechend der Regel|Eine einzelne Portnummer von 1 bis 65535, ein Portbereich (z.B. 1-65535) oder * (für alle Ports)|Versuchen Sie, weitestgehend mit Portbereichen zu arbeiten, um die Anzahl von notwendigen Regeln zu reduzieren.<br/>Mehrere Ports oder Portbereiche können nicht mit Kommas gruppiert werden
+|**Quellportbereich**|Quellportbereich entsprechend der Regel|Eine einzelne Portnummer von 1 bis 65535, ein Portbereich (z.B. 1-65635) oder * (für alle Ports)|Quellports könnte kurzlebig sein. Sofern Ihr Clientprogramm keinen bestimmten Port nutzt, verwenden Sie in den meisten Fällen „*“.<br/>Versuchen Sie, weitestgehend mit Portbereichen zu arbeiten, um die Anzahl von notwendigen Regeln zu reduzieren.<br/>Mehrere Ports oder Portbereiche können nicht mit Kommas gruppiert werden.
+|**Zielportbereich**|Zielportbereich entsprechend der Regel|Eine einzelne Portnummer von 1 bis 65535, ein Portbereich (z.B. 1-65535) oder * (für alle Ports)|Versuchen Sie, weitestgehend mit Portbereichen zu arbeiten, um die Anzahl von notwendigen Regeln zu reduzieren.<br/>Mehrere Ports oder Portbereiche können nicht mit Kommas gruppiert werden.
 |**Quelladresspräfix**|Quelladresspräfix oder -tag entsprechend der Regel|Eine einzelne IP-Adresse (z. B. 10.10.10.10), ein IP-Subnetz (z. B. 192.168.1.0/24), ein [Standardtag](#Default-Tags) oder * (für alle Adressen)|Verwenden Sie nach Möglichkeit Bereiche, Standard-Tags und *, um die Anzahl von Regeln zu reduzieren.|
 |**Zieladresspräfix**|Zieladresspräfix oder -tag entsprechend der Regel|Eine einzelne IP-Adresse (z. B. 10.10.10.10), ein IP-Subnetz (z. B. 192.168.1.0/24), ein [Standardtag](#Default-Tags) oder * (für alle Adressen)|Verwenden Sie nach Möglichkeit Bereiche, Standard-Tags und *, um die Anzahl von Regeln zu reduzieren.|
 |**Richtung**|Richtung des Datenverkehrs entsprechend der Regel|Eingehend oder ausgehend|Die Regeln für eingehenden und ausgehenden Datenverkehr werden getrennt verarbeitet, abhängig von der Richtung.|
@@ -72,7 +72,7 @@ Wie in den folgenden Standardregeln zu sehen, wird Datenverkehr aus einem bzw. i
 
 **Eingehende Standardregeln**
 
-| Name | Priorität | Quell-IP | Quellport | Ziel-IP | Zielport | Protokoll | Access |
+| Name | Priority | Quell-IP | Quellport | Ziel-IP | Zielport | Protocol | Access |
 |-----------------------------------|----------|--------------------|-------------|-----------------|------------------|----------|--------|
 | ALLOW VNET INBOUND | 65000 | VIRTUAL\_NETWORK | * | VIRTUAL\_NETWORK | * | * | ZULASSEN |
 | ALLOW AZURE LOAD BALANCER INBOUND | 65001 | AZURE\_LOADBALANCER | * | * | * | * | ZULASSEN |
@@ -80,7 +80,7 @@ Wie in den folgenden Standardregeln zu sehen, wird Datenverkehr aus einem bzw. i
 
 **Ausgehende Standardregeln**
 
-| Name | Priorität | Quell-IP | Quellport | Ziel-IP | Zielport | Protokoll | Access |
+| Name | Priority | Quell-IP | Quellport | Ziel-IP | Zielport | Protocol | Access |
 |-------------------------|----------|-----------------|-------------|-----------------|------------------|----------|--------|
 | ALLOW VNET OUTBOUND | 65000 | VIRTUAL\_NETWORK | * | VIRTUAL\_NETWORK | * | * | ZULASSEN |
 | ALLOW INTERNET OUTBOUND | 65001 | * | * | INTERNET | * | * | ZULASSEN |
@@ -92,7 +92,7 @@ Je nach verwendetem Bereitstellungsmodell können Sie eine NSG einem virtuellen 
 
 [AZURE.INCLUDE [learn-about-deployment-models-both-include.md](../../includes/learn-about-deployment-models-both-include.md)]
  
-- **Zuordnen einer NSG zu einem virtuellen Computer (nur klassische Bereitstellungen).** Wenn Sie eine NSG einem virtuellen Computer zuordnen, werden die Netzwerkzugriffsregeln in der NSG auf jeglichen Datenverkehr angewendet, der für den virtuellen Computer bestimmt ist oder diesen verlässt. 
+- **Zuordnen einer NSG zu einem virtuellen Computer (nur klassische Bereitstellungen).** Wenn Sie eine NSG einem virtuellen Computer zuordnen, werden die Netzwerkzugriffsregeln in der NSG auf jeglichen Datenverkehr angewendet, der für den virtuellen Computer bestimmt ist oder diesen verlässt.
 
 - **Zuordnen einer NSG zu einer Netzwerkkarte (nur Ressourcen-Manager-Bereitstellungen).** Wenn Sie eine NSG zu einer Netzwerkkarte zuordnen, werden die Netzwerkzugriffsregeln in der NSG nur auf diese Netzwerkkarte angewendet. Für einen virtuellen Computer mit mehreren Netzwerkkarten bedeutet dies, dass sich eine NSG, die auf eine einzelne Netzwerkkarte angewendet wird, nicht auf die anderen Netzwerkkarten auswirkt.
 
@@ -101,21 +101,21 @@ Je nach verwendetem Bereitstellungsmodell können Sie eine NSG einem virtuellen 
 Sie können verschiedene NSGs einem virtuellen Computer (oder einer Netzwerkkarte, abhängig vom Bereitstellungsmodell) und dem Subnetz zuordnen, an das eine Netzwerkkarte oder ein virtueller Computer gebunden ist. In diesem Fall werden alle Netzwerkzugriffsregeln in der Reihenfolge Ihrer Priorität in der NSG auf den Datenverkehr angewendet:
 
 - **Eingehender Datenverkehr**
-	1. Auf das Subnetz angewendete NSG 
+	1. Auf das Subnetz angewendete NSG
 	
-        Wenn eine Subnetz-NSG über eine Abgleichsregel zum Verweigern von Datenverkehr verfügt, wird das Paket hier abgelegt.
-	2. Auf die Netzwerkkarte angewendete NSG (Ressourcen-Manager) oder auf den virtuellen Computer angewendete NSG (klassisch) 
+           Wenn eine Subnetz-NSG über eine Abgleichsregel zum Verweigern von Datenverkehr verfügt, wird das Paket hier abgelegt.
+	2. Auf die Netzwerkkarte angewendete NSG (Ressourcen-Manager) oder auf den virtuellen Computer angewendete NSG (klassisch)
 	   
-        Wenn die NSG für den virtuelle Computer/die Netzwerkkarte über eine Abgleichsregel zum Verweigern von Datenverkehr verfügt, wird das Paket auf dem virtuellen Computer/der Netzwerkkarte abgelegt, auch wenn die Subnetz-NSG über eine Abgleichsregel zum Zulassen von Datenverkehr verfügt.
+           Wenn die NSG für den virtuelle Computer/die Netzwerkkarte über eine Abgleichsregel zum Verweigern von Datenverkehr verfügt, wird das Paket auf dem virtuellen Computer/der Netzwerkkarte abgelegt, auch wenn die Subnetz-NSG über eine Abgleichsregel zum Zulassen von Datenverkehr verfügt.
 - **Ausgehender Datenverkehr**
-	1. Auf die Netzwerkkarte angewendete NSG (Ressourcen-Manager) oder auf den virtuellen Computer angewendete NSG (klassisch) 
+	1. Auf die Netzwerkkarte angewendete NSG (Ressourcen-Manager) oder auf den virtuellen Computer angewendete NSG (klassisch)
 	  
-        Wenn eine NSG für den virtuelle Computer/die Netzwerkkarte über eine Abgleichsregel zum Verweigern von Datenverkehr verfügt, wird das Paket hier abgelegt.
+           Wenn eine NSG für den virtuelle Computer/die Netzwerkkarte über eine Abgleichsregel zum Verweigern von Datenverkehr verfügt, wird das Paket hier abgelegt.
 	2. Auf das Subnetz angewendete NSG
 	   
            Wenn eine Subnetz-NSG über eine Abgleichsregel zum Verweigern von Datenverkehr verfügt, wird das Paket hier abgelegt, auch wenn die NSG für den virtuelle Computer/die Netzwerkkarte über eine Abgleichsregel zum Zulassen von Datenverkehr verfügt.
 
-![NSG-ACLs](./media/virtual-network-nsg-overview/figure2.png)
+	![NSG-ACLs](./media/virtual-network-nsg-overview/figure2.png)
 
 >[AZURE.NOTE] Sie können einem Subnetz, einem virtuellen Computer oder einer Netzwerkkarte zwar nur eine einzelne NSG zuordnen, Sie können eine solche NSG aber beliebig vielen Ressourcen zuordnen.
 
@@ -125,12 +125,12 @@ Sie können NSGs mit den verschiedenen unten aufgeführten Tools im klassischen 
 |Bereitstellungstool|Klassisch|Ressourcen-Manager|
 |---|---|---|
 |Klassisches Portal|![Nein][red]|![Nein][red]|
-|Azure-Portal|![Ja][green]|<a href="https://azure.microsoft.com/documentation/articles/virtual-networks-create-nsg-arm-pportal">![Ja][green]</a>|
-|PowerShell|<a href="https://azure.microsoft.com/documentation/articles/virtual-networks-create-nsg-classic-ps">![Ja][green]</a>|<a href="https://azure.microsoft.com/documentation/articles/virtual-networks-create-nsg-arm-ps">![Ja][green]</a>|
-|Azure-Befehlszeilenschnittstelle|<a href="https://azure.microsoft.com/documentation/articles/virtual-networks-create-nsg-classic-cli">![Ja][green]</a>|<a href="https://azure.microsoft.com/documentation/articles/virtual-networks-create-nsg-arm-cli">![Ja][green]</a>|
-|ARM-Vorlage|![Nein][red]|<a href="https://azure.microsoft.com/documentation/articles/virtual-networks-create-nsg-arm-template">![Ja][green]</a>|
+|Azure-Portal|![Ja][green]|[](virtual-networks-create-nsg-arm-pportal.md)![Ja][green]|
+|PowerShell|[](virtual-networks-create-nsg-classic-ps.md)![Ja][green]|[](virtual-networks-create-nsg-arm-ps.md)![Ja][green]|
+|Azure-Befehlszeilenschnittstelle|[](virtual-networks-create-nsg-classic-cli.md)![Ja][green]|[](virtual-networks-create-nsg-arm-cli.md)![Ja][green]|
+|ARM-Vorlage|![Nein][red]|[](virtual-networks-create-nsg-arm-template.md)![Ja][green]|
 
-|**Schlüssel**|![Ja][green] Unterstützt Klicken Sie, um den Artikel aufzurufen.|![Nein][red] Nicht unterstützt|
+|**Schlüssel**|![Ja][green] Unterstützt. Klicken Sie, um den Artikel aufzurufen.|![Nein][red] Nicht unterstützt.|
 |---|---|---|
 
 ## Planung
@@ -177,7 +177,7 @@ In NSG-Regeln kann derzeit als Protokoll nur *TCP* oder *UDP* angegeben werden. 
 
 ### Subnetze
 
-- Bedenken Sie die Anzahl der Ebenen, die für Ihre Workload erforderlich sind. Jede Ebene kann mithilfe eines Subnetzes isoliert werden, auf das eine NSG angewendet wird. 
+- Bedenken Sie die Anzahl der Ebenen, die für Ihre Workload erforderlich sind. Jede Ebene kann mithilfe eines Subnetzes isoliert werden, auf das eine NSG angewendet wird.
 - Wenn Sie ein Subnetz für ein VPN-Gateway oder eine ExpressRoute-Verbindung implementieren müssen, dürfen Sie auf dieses Subnetz **KEINE** NSG anwenden. Wenn Sie dies dennoch tun, funktionieren die Verbindungen zwischen VNETs oder zwischen Standorten nicht.
 - Wenn Sie ein virtuelles Gerät implementieren müssen, müssen Sie das virtuelle Gerät in seinem eigenen Subnetz bereitstellen, damit die benutzerdefinierten Routen (UDRs, User Defined Routes) ordnungsgemäß funktionieren. Sie können eine NSG auf Subnetzebene implementieren, um den bei diesem Subnetz eingehenden und ausgehenden Datenverkehr zu filtern. Informieren Sie sich ausführlicher über das [Steuern des Datenverkehrsflusses und das Verwenden virtueller Geräte](virtual-networks-udr-overview.md).
 
@@ -218,7 +218,7 @@ Die Anforderungen 1–6 (außer 3) beschränken sich alle auf Subnetzräume. Die
 
 **Regeln für eingehenden Datenverkehr**
 
-|Regel|Access|Priority|Quelladressbereich|Quellport|Zieladressbereich|Zielport|Protokoll|
+|Regel|Access|Priority|Quelladressbereich|Quellport|Zieladressbereich|Zielport|Protocol|
 |---|---|---|---|---|---|---|---|
 |HTTP zulassen|Zulassen|100|INTERNET|*|*|80|TCP|
 |RDP von FrontEnd zulassen|Zulassen|200|192\.168.1.0/24|*|*|3389|TCP|
@@ -226,7 +226,7 @@ Die Anforderungen 1–6 (außer 3) beschränken sich alle auf Subnetzräume. Die
 
 **Regeln für ausgehenden Datenverkehr**
 
-|Regel|Access|Priority|Quelladressbereich|Quellport|Zieladressbereich|Zielport|Protokoll|
+|Regel|Access|Priority|Quelladressbereich|Quellport|Zieladressbereich|Zielport|Protocol|
 |---|---|---|---|---|---|---|---|
 |Internet verweigern|Verweigern|100|*|*|INTERNET|*|*|
 
@@ -234,13 +234,13 @@ Die Anforderungen 1–6 (außer 3) beschränken sich alle auf Subnetzräume. Die
 
 **Regeln für eingehenden Datenverkehr**
 
-|Regel|Access|Priority|Quelladressbereich|Quellport|Zieladressbereich|Zielport|Protokoll|
+|Regel|Access|Priority|Quelladressbereich|Quellport|Zieladressbereich|Zielport|Protocol|
 |---|---|---|---|---|---|---|---|
 |Internet verweigern|Verweigern|100|INTERNET|*|*|*|*|
 
 **Regeln für ausgehenden Datenverkehr**
 
-|Regel|Access|Priority|Quelladressbereich|Quellport|Zieladressbereich|Zielport|Protokoll|
+|Regel|Access|Priority|Quelladressbereich|Quellport|Zieladressbereich|Zielport|Protocol|
 |---|---|---|---|---|---|---|---|
 |Internet verweigern|Verweigern|100|*|*|INTERNET|*|*|
 
@@ -248,7 +248,7 @@ Die Anforderungen 1–6 (außer 3) beschränken sich alle auf Subnetzräume. Die
 
 **Regeln für eingehenden Datenverkehr**
 
-|Regel|Access|Priority|Quelladressbereich|Quellport|Zieladressbereich|Zielport|Protokoll|
+|Regel|Access|Priority|Quelladressbereich|Quellport|Zieladressbereich|Zielport|Protocol|
 |---|---|---|---|---|---|---|---|
 |RDP aus dem Internet zulassen|Zulassen|100|INTERNET|*|\*|3389|TCP|
 
@@ -258,7 +258,7 @@ Die Anforderungen 1–6 (außer 3) beschränken sich alle auf Subnetzräume. Die
 
 **Regeln für eingehenden Datenverkehr**
 
-|Regel|Access|Priority|Quelladressbereich|Quellport|Zieladressbereich|Zielport|Protokoll|
+|Regel|Access|Priority|Quelladressbereich|Quellport|Zieladressbereich|Zielport|Protocol|
 |---|---|---|---|---|---|---|---|
 |RDP von FrontEnd zulassen|Zulassen|100|192\.168.1.0/24|*|\*|3389|TCP|
 
@@ -266,7 +266,7 @@ Die Anforderungen 1–6 (außer 3) beschränken sich alle auf Subnetzräume. Die
 
 **Regeln für eingehenden Datenverkehr**
 
-|Regel|Access|Priority|Quelladressbereich|Quellport|Zieladressbereich|Zielport|Protokoll|
+|Regel|Access|Priority|Quelladressbereich|Quellport|Zieladressbereich|Zielport|Protocol|
 |---|---|---|---|---|---|---|---|
 |SQL von FrontEnd zulassen|Zulassen|100|192\.168.1.0/24|*|\*|1433|TCP|
 
@@ -282,4 +282,4 @@ Da einige der oben aufgeführten NSGs einzelnen Netzwerkkarten zugeordnet werden
 [yellow]: ./media/virtual-network-nsg-overview/yellow.png
 [red]: ./media/virtual-network-nsg-overview/red.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0810_2016-->

@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza"
 	ms.devlang="multiple"
 	ms.topic="article" 
-	ms.date="06/14/2016"
+	ms.date="07/30/2016"
 	ms.author="awills"/>
 
 # Navigation und Dashboards im Application Insights-Portal
@@ -56,18 +56,24 @@ Legen Sie fest, was in der Übersicht angezeigt werden soll. Unter „Anpassen�
 Nachdem Sie sich beim [Microsoft Azure-Portal](https://portal.azure.com) angemeldet haben, wird Ihnen als Erstes ein Dashboard angezeigt. Hier können Sie für all Ihre Azure-Ressourcen die Diagramme zusammenstellen, die für Sie am wichtigsten sind, einschließlich Telemetriedaten aus [Visual Studio Application Insights](app-insights-overview.md).
  
 
-![Ein angepasstes Dashboard.](./media/app-insights-dashboards/30.png)
+![Ein angepasstes Dashboard.](./media/app-insights-dashboards/31.png)
 
-1. Sie können jederzeit oben auf die Ecke klicken, um wieder zum Dashboard zu gelangen.
-2. Klicken Sie auf ein Diagramm oder eine Kachel auf dem Dashboard, um weitere Details zu den zugehörigen Daten anzuzeigen.
-3. Verwenden Sie die Navigationsleiste, um einen vollständigen Überblick über all Ihre Ressourcen zu erhalten.
-4. Sie können Dashboards über die Dashboardsymbolleiste erstellen, bearbeiten und freigeben.
+
+1. Sie können Dashboards über die Dashboardsymbolleiste erstellen, bearbeiten und freigeben.
+2. Kehren Sie zum aktuellen Dashboard zurück, oder wechseln Sie zu anderen kürzlich verwendeten Ansichten.
+3. Wechseln Sie die Dashboards.
+4. Sie können Dashboards erstellen, bearbeiten und freigeben.
+5. Zeigen Sie auf eine Kachel, und verwenden Sie die obere Leiste, um sie zu verschieben, anzupassen oder zu entfernen.
 
 ## Hinzufügen zu einem Dashboard
 
 Wenn Sie ein Blatt oder Diagramm anzeigen, das Sie besonders interessiert, können Sie eine Kopie des Blatts oder Diagramms an das Dashboard anheften. Es wird dann angezeigt, wenn Sie das nächste Mal zum Dashboard wechseln.
 
 ![Um ein Diagramm anzuheften, zeigen Sie darauf, und klicken Sie dann in der Kopfzeile auf „...“.](./media/app-insights-dashboards/33.png)
+
+1. Heften Sie ein Diagramm an ein Dashboard an. Eine Kopie des Diagramms wird auf dem Dashboard angezeigt.
+2. Heften Sie das ganze Blatt an das Dashboard an. Es wird auf dem Dashboard als Kachel angezeigt, mit der Sie interagieren können.
+3. Klicken Sie in die obere linke Ecke, um zurück zum aktuellen Dashboard zu wechseln. Über das Dropdownmenü können Sie zur aktuellen Ansicht zurückkehren.
 
 Beachten Sie, dass Diagramme auf Kacheln gruppiert sind: eine Kachel kann mehr als ein Diagramm enthalten. Sie heften die gesamte Kachel an das Dashboard an.
 
@@ -77,7 +83,7 @@ Sobald ein Kachel sich auf dem Dashboard befindet, können Sie sie anpassen.
 
 ![Bewegen Sie den Mauszeiger über ein Diagramm, um es zu bearbeiten.](./media/app-insights-dashboards/36.png)
 
-1. Fügen Sie der Kachel ein Diagramm hinzu. 
+1. Fügen Sie der Kachel ein Diagramm hinzu.
 2. Legen Sie die Metrik, die Gruppierungsdimension und den Stil (Tabelle, Graph) eines Diagramms fest.
 3. Legen Sie die Zeitraum- und Filtereigenschaften für die Diagramme auf der Kachel fest. Sie können den Zeitraum des Diagramms direkt angeben oder festlegen, dass er aus dem Zeitraum des Dashboards geerbt wird.
 4. Legen Sie den Titel für die Kachel fest.
@@ -118,7 +124,7 @@ Erfahren Sie mehr über [Rollen und Zugriffssteuerung](app-insights-resources-ro
 * [Neue Supportanforderung](app-insights-get-dev-support.md): Hilfeoptionen für alle Aspekte von Azure. Für Application Insights können Sie auch Hilfe erhalten, indem Sie auf die Smiley-Schaltfläche in der oberen rechten Ecke des Fensters klicken.
 * [Anwendungszuordnung](app-insights-dependencies.md#application-map): Aktive Zuordnung, die die Komponenten Ihrer Anwendung anzeigt, abgeleitet aus den Abhängigkeitsinformationen.
 * [Live Metrics Stream](app-insights-metrics-explorer.md#live-metrics-stream): Wichtige Metriken mit einer Latenz von etwa 1 Sekunde, zur Überwachung einer neuen Version.
-* **Fehler**: Anforderungen, Abhängigkeitsaufrufe und Ausnahmen mit Fehlern. [Blatt mit bearbeitbaren Metriken](app-insights-metrics-explorer.md).
+* **Fehler**: Anforderungen und Abhängigkeitsaufrufe mit Fehlern sowie Ausnahmen. [Blatt mit bearbeitbaren Metriken](app-insights-metrics-explorer.md).
 * **Leistung**: Reaktionszeit, Reaktionszeiten von Abhängigkeiten. [Blatt mit bearbeitbaren Metriken](app-insights-metrics-explorer.md).
 * [Server](app-insights-web-monitor-performance.md): Leistungsindikatoren. Verfügbar, wenn Sie den [Statusmonitor installieren](app-insights-monitor-performance-live-website-now.md).
 * **Browser**: Leistung von Seitenansichten und AJAX. Verfügbar, wenn Sie [Ihre Webseiten instrumentieren](app-insights-javascript.md).
@@ -146,4 +152,4 @@ Erfahren Sie mehr über [Rollen und Zugriffssteuerung](app-insights-resources-ro
 |[Diagnosesuche](app-insights-diagnostic-search.md)<br/>Suchen und Untersuchen von Ereignissen bzw. zugehörigen Ereignissen und Erstellen von Fehlern |![Suchbeispiel](./media/app-insights-dashboards/61.png)
 |[Analytics](app-insights-analytics.md)<br/>Leistungsfähige Abfragesprache| ![Suchbeispiel](./media/app-insights-dashboards/63.png)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0803_2016-->

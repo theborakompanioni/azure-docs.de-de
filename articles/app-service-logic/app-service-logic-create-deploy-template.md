@@ -1,7 +1,7 @@
 <properties
    pageTitle="Erstellen einer Bereitstellungsvorlage für Logik-Apps | Microsoft Azure"
    description="Erfahren Sie, wie Sie eine Bereitstellungsvorlage für Logik-Apps erstellen und für die Versionsverwaltung verwenden."
-   services="app-service\logic"
+   services="logic-apps"
    documentationCenter=".net,nodejs,java"
    authors="jeffhollan"
    manager="erikre"
@@ -85,4 +85,4 @@ Ein häufiges Szenario für die Bereitstellung und Verwaltung einer Umgebung ist
 <!-- Image References -->
 [1]: ./media/app-service-logic-create-deploy-template/emptyReleaseDefinition.PNG
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

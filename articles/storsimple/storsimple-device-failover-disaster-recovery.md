@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/25/2016"
+   ms.date="08/03/2016"
    ms.author="alkohli" />
 
 # Ausführen eines Failovers und einer Notfallwiederherstellung für das StorSimple-Gerät
@@ -47,6 +47,9 @@ Bedenken Sie bei jedem Gerätefailover Folgendes:
 - Die verfügbaren Zielgeräte für die Notfallwiederherstellung sind Geräte, die über ausreichenden Speicherplatz zur Aufnahme der ausgewählten Volumecontainer verfügen.
 - Geräte, die mit dem Dienst verbunden sind, aber das Speicherplatzkriterium nicht erfüllen, stehen als Zielgeräte nicht zur Verfügung.
 - Nach einer Notfallwiederherstellung kann für eine bestimmte Dauer die Datenzugriffsleistung erheblich beeinträchtigt sein, da das Gerät auf die Daten aus der Cloud zugreifen und sie lokal speichern muss.
+- Wenn nach einer Notfallwiederherstellung ein Failover zwischen Geräten durchgeführt wird, werden die Momentaufnahmen für die Wiederherstellung der Daten folgendermaßen ausgewählt:
+	1.  	Ermitteln Sie die Sicherungsrichtlinie mit der größten Anzahl von Volumes.
+	2.  	Wählen Sie die letzte als funktionierend bekannte Cloudmomentaufnahme für diese Sicherungsrichtlinie aus, und verwenden Sie diese, um die Daten auf dem Wiederherstellungsgerät wiederherzustellen.
 
 #### Gerätefailover in allen Softwareversionen
 
@@ -177,4 +180,4 @@ Wenn StorSimple-Geräte direkt vor einem Notfall registriert wurden, müssen die
 - Weitere Informationen zum Verwenden des StorSimple Manager-Diensts finden Sie unter [Verwalten Ihres StorSimple-Geräts mithilfe des StorSimple Manager-Diensts](storsimple-manager-service-administration.md).
  
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

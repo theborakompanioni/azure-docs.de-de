@@ -68,7 +68,7 @@ Die Web-App muss im **Standard**- oder **Premium**-Modus ausgeführt werden, dam
 
 5. Klicken Sie auf der Seite des Slots auf die App-URL. Beachten Sie, dass der Bereitstellungsslot über einen eigenen Hostnamen verfügt und eine Live-App ist. Weitere Informationen darüber, wie Sie den öffentlichen Zugriff auf den Bereitstellungsslot beschränken, finden Sie unter [App Service-Web-App – Blockieren des Webzugangs auf Nicht-Produktionsslots](http://ruslany.net/2014/04/azure-web-sites-block-web-access-to-non-production-deployment-slots/).
 
-Nach der Erstellung des Bereitstellungsslots ist kein Inhalt vorhanden. Sie können die Bereitstellung im Slot von einem anderen Repositoryzweig oder einem ganz anderen Repository vornehmen. Darüber hinaus können Sie die Konfiguration des Slots ändern. Verwenden Sie für Aktualisierungen des Inhalts das Veröffentlichungsprofil oder die Bereitstellungsanmeldeinformationen, die dem Bereitstellungsslot zugeordnet sind. Beispiel: [Für die Veröffentlichung in diesem Slot können Sie Git verwenden](web-sites-publish-source-control.md).
+Nach der Erstellung des Bereitstellungsslots ist kein Inhalt vorhanden. Sie können die Bereitstellung im Slot von einem anderen Repositoryzweig oder einem ganz anderen Repository vornehmen. Darüber hinaus können Sie die Konfiguration des Slots ändern. Verwenden Sie für Aktualisierungen des Inhalts das Veröffentlichungsprofil oder die Bereitstellungsanmeldeinformationen, die dem Bereitstellungsslot zugeordnet sind. Beispiel: [Für die Veröffentlichung in diesem Slot können Sie Git verwenden](app-service-deploy-local-git.md).
 
 <a name="AboutConfiguration"></a>
 ## Konfiguration für Bereitstellungsslots ##
@@ -76,7 +76,7 @@ Wenn Sie die Konfiguration von einem anderen Bereitstellungsslot klonen, kann di
 
 **Einstellungen, die ausgetauscht werden**:
 
-- Allgemeine Einstellungen – z. B. Framework-Version, 32/64-Bit-Angabe, WebSockets
+- Allgemeine Einstellungen – z. B. Framework-Version, 32/64-Bit-Angabe, WebSockets
 - App-Einstellungen (können so konfiguriert werden, dass sie beim Slot verbleiben)
 - Verbindungszeichenfolgen (können so konfiguriert werden, dass sie beim Slot verbleiben)
 - Handlerzuordnungen
@@ -100,7 +100,7 @@ Um eine App-Einstellung oder einen Verbindungszeichenfolge so zu konfigurieren, 
 
 >[AZURE.IMPORTANT] Bevor Sie eine Web-App aus einem Bereitstellungsslot in die Produktion überführen, stellen Sie sicher, dass alle nicht Slot-spezifischen Einstellungen im Austauschziel genau wie gewünscht konfiguriert sind.
 
-1. Um Bereitstellungsslots auszutauschen, klicken Sie in der Befehlsleiste der Web-App oder der Befehlsleiste eines Bereitstellungsslots auf die Schaltfläche **Austauschen**. Stellen Sie sicher, dass die Austauschquelle und das Austauschziel ordnungsgemäß festgelegt wurden. Normalerweise ist das Austauschziel ein Produktionsslot.  
+1. Um Bereitstellungsslots auszutauschen, klicken Sie in der Befehlsleiste der Web-App oder der Befehlsleiste eines Bereitstellungsslots auf die Schaltfläche **Austauschen**. Stellen Sie sicher, dass die Austauschquelle und das Austauschziel ordnungsgemäß festgelegt wurden. Normalerweise ist das Austauschziel ein Produktionsslot.
 
 	![Schaltfläche Swap][SwapButtonBar]
 
@@ -114,7 +114,7 @@ Auto Swap rationalisiert DevOps-Szenarios, bei denen Ihre Web-App ständig ohne 
 
 Das Konfigurieren von Auto Swap für einen Slot ist einfach. Führen Sie die folgenden Schritte aus:
 
-1. Wählen Sie auf dem Blatt **Bereitstellungsslots** einen Nicht-Produktionsslot aus, und klicken Sie für das Blatt dieses Slots auf **Alle Einstellungen**.  
+1. Wählen Sie auf dem Blatt **Bereitstellungsslots** einen Nicht-Produktionsslot aus, und klicken Sie für das Blatt dieses Slots auf **Alle Einstellungen**.
 
 	![][Autoswap1]
 
@@ -162,7 +162,7 @@ Klicken Sie auf dem Blatt für den Bereitstellungsslot in der Befehlsleiste auf 
 
 Azure PowerShell ist ein Modul, das Cmdlets für die Verwaltung von Azure über Windows PowerShell bietet, einschließlich Unterstützung bei der Verwaltung von Web-App-Bereitstellungsslots für Azure App Service.
 
-- Informationen zum Installieren und Konfigurieren von Azure PowerShell sowie zur Authentifizierung von Azure PowerShell mit Ihrem Azure-Abonnement finden Sie unter [Installieren und Konfigurieren von Microsoft Azure PowerShell](../powershell-install-configure.md).  
+- Informationen zum Installieren und Konfigurieren von Azure PowerShell sowie zur Authentifizierung von Azure PowerShell mit Ihrem Azure-Abonnement finden Sie unter [Installieren und Konfigurieren von Microsoft Azure PowerShell](../powershell-install-configure.md).
 
 ----------
 
@@ -283,4 +283,4 @@ Um einen nicht mehr benötigten Bereitstellungsslot zu löschen, verwenden Sie w
 [SlotSettings]: ./media/web-sites-staged-publishing/SlotSetting.png
  
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0803_2016-->

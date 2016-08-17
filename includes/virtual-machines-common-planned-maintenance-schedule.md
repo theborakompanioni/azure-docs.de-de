@@ -16,7 +16,7 @@ Sie können den Zeitraum auswählen, zu dem die geplante Wartung Ihre VMs beeinf
 
 3.	Sie können die VM im klassischen Portal aus ihrer Verfügbarkeitsgruppe entfernen.
    
-    1.	Klicken Sie im klassischen Portal auf den virtuellen Computer, und wählen Sie dann „Konfigurieren“ aus. 
+    1.	Klicken Sie im klassischen Portal auf den virtuellen Computer, und wählen Sie dann „Konfigurieren“ aus.
 
     2.	Unter „Einstellungen“ können Sie sehen, in welcher Verfügbarkeitsgruppe sich der virtuelle Computer befindet.
 
@@ -43,7 +43,7 @@ Sie können den Zeitraum auswählen, zu dem die geplante Wartung Ihre VMs in ein
 
 Schrittweise Anleitung
 
-1.	Sieben Kalendertage vor der geplanten Wartung Ihrer VMs in einer Einzelinstanzkonfiguration erhalten Sie eine E-Mail. Die Abonnement-IDs und Namen der betroffenen Einzelinstanz-VMs werden im Text der E-Mail erwähnt. 
+1.	Sieben Kalendertage vor der geplanten Wartung Ihrer VMs in einer Einzelinstanzkonfiguration erhalten Sie eine E-Mail. Die Abonnement-IDs und Namen der betroffenen Einzelinstanz-VMs werden im Text der E-Mail erwähnt.
 
 2.	Während dieser 7 Tage können Sie den Zeitraum auswählen, in dem Ihre Instanz neu startet, indem Sie Ihre Einzelinstanz-VMs in eine Verfügbarkeitsgruppe verschieben, die sich in der gleichen Region befindet. Diese Änderung in der Konfiguration führt zu einem Neustart, da der virtuelle Computer von einem physischen Host, dem Ziel der Wartung, auf einen anderen physischen Host verschoben wird, der kein Wartungsziel ist.
 
@@ -64,3 +64,5 @@ Dies kann auch mit Azure PowerShell erreicht werden:
 <!--Link references-->
 [Virtual Machines Manage Availability]: virtual-machines-windows-tutorial.md
 [Understand planned versus unplanned maintenance]: virtual-machines-manage-availability.md#Understand-planned-versus-unplanned-maintenance/
+
+<!---HONumber=AcomDC_0803_2016-->

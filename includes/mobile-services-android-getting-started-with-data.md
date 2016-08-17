@@ -8,7 +8,7 @@ Ihr mobiler Dienst ist nun bereit, und Sie können die App aktualisieren, sodass
 	    compile 'com.microsoft.azure:azure-mobile-services-android-sdk:2.0.2+'
 
 
-2. Jetzt erstellen Sie das Projekt neu, indem Sie auf** Sync Project with Gradle Files** klicken.
+2. Jetzt erstellen Sie das Projekt neu, indem Sie auf **Sync Project with Gradle Files** klicken.
 
 3. Öffnen Sie die AndroidManifest.xml-Datei und fügen Sie die folgende Zeile hinzu, um der App den Zugriff auf mobile Dienste in Azure zu ermöglichen.
 
@@ -49,7 +49,7 @@ Ihr mobiler Dienst ist nun bereit, und Sie können die App aktualisieren, sodass
 		private MobileServiceClient mClient;
 		private private MobileServiceTable<ToDoItem> mToDoTable;
 
-9. Suchen Sie die* ProgressFilter*-Klasse am Ende der Datei und entfernen Sie die Kommentarzeichen. Diese Klasse zeigt einen Hinweis an, wenn der *MobileServiceClient* Netzwerkvorgänge ausführt.
+9. Suchen Sie die *ProgressFilter* - Klasse am Ende der Datei und entfernen Sie die Kommentarzeichen. Diese Klasse zeigt einen Hinweis an, wenn der *MobileServiceClient* Netzwerkvorgänge ausführt.
 
 
 10. Klicken Sie im klassischen Azure-Portal auf **Mobile Services** und anschließend auf den mobilen Dienst, den Sie gerade erstellt haben.

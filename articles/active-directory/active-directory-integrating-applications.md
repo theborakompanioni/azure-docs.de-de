@@ -166,7 +166,7 @@ Wie bereits zuvor erwähnt, können Sie zusätzlich zum Verfügbarmachen von/Zug
 
 Eine vollständige Erläuterung zu Zugriffsbereichen, die durch Folgendes verfügbar gemacht werden:
 
-- Graph-API von Azure AD, finden Sie im Artikel [Berechtigungsbereiche | Graph-API-Konzepte(https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes)].
+- Graph-API von Azure AD, finden Sie im Artikel [Berechtigungsbereiche | Graph-API-Konzepte](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes).
 - Office 365-APIs, finden Sie im Artikel [Authentifizierung und Autorisierung mit dem allgemeinen Consent Framework](https://msdn.microsoft.com/office/office365/howto/application-manifest). Unter [Einrichten der Office 365-Entwicklungsumgebung](https://msdn.microsoft.com/office/office365/HowTo/setup-development-environment) finden Sie eine umfangreiche Erörterung zum Erstellen einer Client-App, die in Office 365-APIs integriert wird.
 
 >[AZURE.NOTE] Aufgrund einer aktuellen Einschränkung können systemeigene Clientanwendungen die Azure AD Graph-API nur aufrufen, wenn sie die Berechtigung „Zugriff auf das Verzeichnis Ihrer Organisation“ verwenden. Diese Einschränkung gilt nicht für Webanwendungen.

@@ -76,7 +76,7 @@ Die einfachste Möglichkeit zur Verwendung einer Vorlage besteht darin, entweder
 
     ![Variablen hinzufügen](./media/resource-manager-vs-code/add-variables.png)
 
-5. Außerdem kann Intellisense verfügbare Werte oder Funktionen vorschlagen. Um eine Eigenschaft auf einen Parameterwert festzulegen, erstellen Sie einen Ausdruck mit **""** und drücken **STRG+LEERTASTE**. Sie können mit der Eingabe des Namens einer Funktion beginnen. Wählen Sie die **TAB-TASTE**, wenn Sie die gewünschte Funktion gefunden haben.
+5. Außerdem kann IntelliSense verfügbare Werte oder Funktionen vorschlagen. Um eine Eigenschaft auf einen Parameterwert festzulegen, erstellen Sie einen Ausdruck mit **""** und drücken **STRG+LEERTASTE**. Sie können mit der Eingabe des Namens einer Funktion beginnen. Wählen Sie die **TAB-TASTE**, wenn Sie die gewünschte Funktion gefunden haben.
 
     ![Parameter hinzufügen](./media/resource-manager-vs-code/select-parameters.png)
 
@@ -136,4 +136,4 @@ Wenn die Vorlage fertig ist, können Sie die neuen Ressourcen wie unten beschrie
 - Informationen zu den Vorlagenfunktionen finden Sie unter [Vorlagenfunktionen im Azure-Ressourcen-Manager](resource-group-template-functions.md).
 - Weitere Beispiele zur Verwendung von Visual Studio Code finden Sie unter [Build cloud apps with Visual Studio Code](https://github.com/Microsoft/HealthClinic.biz/wiki/Build-cloud-apps-with-Visual-Studio-Code) (Erstellen von Cloud-Apps mit Visual Studio Code) in der [HealthClinic.biz](https://github.com/Microsoft/HealthClinic.biz) 2015 Connect-[Demo](https://blogs.msdn.microsoft.com/visualstudio/2015/12/08/connectdemos-2015-healthclinic-biz/). Weitere Schnellstarts aus der HealthClinic.biz-Demo finden Sie unter [Azure Developer Tools Quickstarts](https://github.com/Microsoft/HealthClinic.biz/wiki/Azure-Developer-Tools-Quickstarts) (Schnellstarts zu Azure-Entwicklungstools).
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0810_2016-->

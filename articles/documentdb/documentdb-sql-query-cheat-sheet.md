@@ -14,10 +14,10 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/13/2016" 
+	ms.date="07/29/2016" 
 	ms.author="mimig"/>
 
-# SQL-Abfragespickzettel-PDF-Datei für DocumentDB
+# PDF-Datei mit dem SQL-Abfragespickzettel für DocumentDB
 
 Mit dem **SQL-Abfragespickzettel für DocumentDB** können Sie schnell Abfragen für DocumentDB-Daten schreiben, da dort allgemeine Datenbankabfragen, Schlüsselwörter, integrierte Funktionen und Operatoren auf einem leicht zu druckenden PDF-Referenzblatt dargestellt werden.
 
@@ -31,7 +31,7 @@ Schreiben Sie Ihre Abfragen schneller, indem Sie den SQL-Abfragespickzettel heru
 
 ![SQL-Abfragespickzettel für DocumentDB: PDF-Datei mit einer Kurzübersicht über die von DocumentDB unterstützte SQL-Syntax – SQL-Spickzettel, SQL-Spickzettel (PDF), SQL-Kurzreferenz][cheat-sheet]
 
-[cheat-sheet]: ./media/documentdb-sql-query-cheat-sheet/microsoft-documentdb-sql-query-cheat-sheet-v2.png
+[cheat-sheet]: ./media/documentdb-sql-query-cheat-sheet/microsoft-documentdb-sql-query-cheat-sheet-v4.png
 
 
 ## Weitere Hilfe beim Schreiben von SQL-Abfragen
@@ -39,4 +39,8 @@ Schreiben Sie Ihre Abfragen schneller, indem Sie den SQL-Abfragespickzettel heru
 - Eine exemplarische Vorgehensweise der Abfrageoptionen, die in DocumentDB verfügbar sind, finden Sie unter [Abfragen von DocumentDB](documentdb-sql-query.md).
 - Die zugehörige Referenzdokumentation finden Sie unter [SQL-Abfragesprache von DocumentDB](https://msdn.microsoft.com/library/azure/dn782250.aspx).
 
-<!---HONumber=AcomDC_0720_2016-->
+## Versionshinweise
+
+Aktualisiert am 29.7.2016, um „TOP“ hinzuzufügen.
+
+<!---HONumber=AcomDC_0803_2016-->

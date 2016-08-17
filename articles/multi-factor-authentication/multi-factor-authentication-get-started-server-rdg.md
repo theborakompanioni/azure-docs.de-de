@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="get-started-article" 
-	ms.date="05/12/2016" 
+	ms.date="08/04/2016" 
 	ms.author="billmath"/>
 
 # Remotedesktop-Gateway und Azure Multi-Factor Authentication-Server mithilfe von RADIUS
@@ -55,8 +55,8 @@ Der Azure Multi-Factor Authentication-Server wird als RADIUS-Proxy zwischen dem 
 1. Öffnen Sie den Azure Multi-Factor Authentication-Server, und klicken Sie auf das Symbol "RADIUS-Authentifizierung". Aktivieren Sie das Kontrollkästchen für die RADIUS-Authentifizierung.
 2. Stellen Sie auf der Registerkarte "Clients" sicher, dass die Ports mit der Konfiguration in NPS übereinstimmen, und klicken Sie auf die Schaltfläche "Hinzufügen". Fügen Sie die IP-Adresse des RD-Gateway-Servers, den Anwendungsnamen (optional) und einen gemeinsamen geheimen Schlüssel hinzu. Der gemeinsame geheime Schlüssel muss auf dem Azure Multi-Factor Authentication-Server und dem RD-Gateway identisch sein.
 3. Klicken Sie auf die Registerkarte "Ziel", und wählen Sie das Optionsfeld für den/die RADIUS-Server.
-4. Klicken Sie auf die Schaltfläche "Hinzufügen". Geben Sie die IP-Adresse, den gemeinsamen geheimen Schlüssel und die Ports des NPS-Servers ein. Sofern Sie keinen zentralen NPS nutzen, sind der RADIUS-Client und das RADIUS-Ziel identisch. Der gemeinsame geheime Schlüssel muss mit der Einrichtung im Bereich "RADIUS-Client" des NPS-Servers übereinstimmen. 
+4. Klicken Sie auf die Schaltfläche "Hinzufügen". Geben Sie die IP-Adresse, den gemeinsamen geheimen Schlüssel und die Ports des NPS-Servers ein. Sofern Sie keinen zentralen NPS nutzen, sind der RADIUS-Client und das RADIUS-Ziel identisch. Der gemeinsame geheime Schlüssel muss mit der Einrichtung im Bereich "RADIUS-Client" des NPS-Servers übereinstimmen.
 
 ![RADIUS-Authentifizierung](./media/multi-factor-authentication-get-started-server-rdg/radius.png)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0810_2016-->

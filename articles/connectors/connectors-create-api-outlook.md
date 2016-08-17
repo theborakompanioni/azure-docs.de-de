@@ -1,7 +1,7 @@
 <properties
 pageTitle="Outlook.com | Microsoft Azure"
 description="Erstellen Sie Logik-Apps mit Azure App Service. Über den Outlook.com-Connector können Sie Ihre E-Mail und Ihre Kalender und Kontakte verwalten. Sie können verschiedene Aktionen ausführen, z.B. E-Mails senden, Besprechungen planen, Kontakte hinzufügen usw."
-services="app-servicelogic"	
+services="logic-apps"	
 documentationCenter=".net,nodejs,java" 	
 authors="msftman"	
 manager="erikre"	
@@ -914,4 +914,4 @@ Kontakt aktualisieren: Aktualisiert einen Kontakt teilweise.
 ## Nächste Schritte
 [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

@@ -1,8 +1,8 @@
 <properties
-	pageTitle="CDN – Steuern des Zwischenspeicherverhaltens von Anforderungen mit Abfragezeichenfolgen"
-	description="Das Zwischenspeichern von CDN-Abfragezeichenfolgen steuert, wie Dateien zwischengespeichert werden, wenn diese Abfragezeichenfolgen enthalten."
+	pageTitle="Steuern des Azure CDN-Zwischenspeicherverhaltens von Anforderungen mit Abfragezeichenfolgen | Microsoft Azure"
+	description="Das Zwischenspeichern von Azure CDN-Abfragezeichenfolgen steuert, wie Dateien zwischengespeichert werden, wenn diese Abfragezeichenfolgen enthalten."
 	services="cdn"
-	documentationCenter=".NET"
+	documentationCenter=""
 	authors="camsoper"
 	manager="erikre"
 	editor=""/>
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/11/2016"
+	ms.date="07/28/2016"
 	ms.author="casoper"/>
 
 #Steuern des Zwischenspeicherverhaltens von CDN-Anforderungen mit Abfragezeichenfolgen
@@ -56,4 +56,4 @@ Die folgenden drei Modi sind verfügbar:
 
 > [AZURE.IMPORTANT] Diese Einstellungsänderungen sind vielleicht nicht sofort sichtbar, da die Verteilung der Registrierung über das CDN eine Weile dauern kann. Bei <b>Azure CDN von Akamai</b>-Profilen ist die Weitergabe in der Regel innerhalb einer Minute abgeschlossen. Bei <b>Azure CDN von Verizon</b>-Profilen ist die Weitergabe in der Regel in 90 Minuten abgeschlossen, in manchen Fällen kann es aber länger dauern.
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0803_2016-->

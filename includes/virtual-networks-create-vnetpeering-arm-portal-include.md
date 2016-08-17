@@ -1,40 +1,40 @@
-## How to create VNet Peering in Azure portal
+## Erstellen von VNet-Peering im Azure-Portal
 
-To create a VNet peering based on the scenario above by using the Azure portal, follow the steps below.
+Gehen Sie wie folgt vor, um mit dem Azure-Portal ein VNet-Peering basierend auf dem oben beschriebenen Szenario zu erstellen.
 
-1. From a browser, navigate to http://portal.azure.com and, if necessary, sign in with your Azure account.
-2. To establish VNET peering, you need to create two links, one for each direction, between two VNets. You can create VNET peering link for VNET1 to VNET2 first. On the portal, 
-Click **Browse** > **choose Virtual Networks** 
+1. Navigieren Sie in einem Browser zu http://portal.azure.com, und melden Sie sich, falls erforderlich, mit Ihrem Azure-Konto an.
+2. Zum Einrichten des VNet-Peerings müssen Sie zwischen zwei VNets zwei Links erstellen, also einen für jede Richtung. Sie können den VNet-Peeringlink zuerst für VNet1 zu VNet2 erstellen. Klicken Sie im Portal auf **Durchsuchen** > **Virtuelle Netzwerke**.
 
-	![Create VNet peering in Azure portal](./media/virtual-networks-create-vnetpeering-arm-pportal-include/figure01.png)
+	![VNet-Peering im Azure-Portal erstellen](./media/virtual-networks-create-vnetpeering-arm-pportal-include/figure01.png)
 
-3. In Virtual Networks blade, choose VNET1, click Peerings, then click Add
+3. Wählen Sie auf dem Blatt „Virtuelle Netzwerke“ die Option „VNet1“ aus, und klicken Sie auf „Peerings“ und dann auf „Hinzufügen“.
 
-	![Choose peering](./media/virtual-networks-create-vnetpeering-arm-pportal-include/figure02.png)
+	![Peering auswählen](./media/virtual-networks-create-vnetpeering-arm-pportal-include/figure02.png)
 
-4. In the Add Peering blade, give a peering link name LinkToVnet2, choose the subscription and the peer Virtual Network VNET2, click OK.
+4. Vergeben Sie auf dem Blatt „Peering hinzufügen“ für das Peering den Linknamen „LinkToVnet2“, wählen Sie das Abonnement und das zu verknüpfende virtuelle Netzwerk „VNet2“ aus, und klicken Sie auf „OK“.
 
-	![Link to VNet](./media/virtual-networks-create-vnetpeering-arm-pportal-include/figure03.png)
+	![Link zu VNet](./media/virtual-networks-create-vnetpeering-arm-pportal-include/figure03.png)
 
-5. Once this VNET peering link is created. You can see the link state as following:
+5. Gehen Sie nach der Erstellung dieses VNet-Peeringlinks wie unten angegeben vor. Der Linkstatus wird wie folgt angezeigt:
 
-	![Link State](./media/virtual-networks-create-vnetpeering-arm-pportal-include/figure04.png)
+	![Linkstatus](./media/virtual-networks-create-vnetpeering-arm-pportal-include/figure04.png)
 
-6. Next create the VNET peering link for VNET2 to VNET1. In Virtual Networks blade, choose VNET2, click Peerings, then click Add 
+6. Erstellen Sie als Nächstes den VNet-Peeringlink für VNet2 zu VNet1. Wählen Sie auf dem Blatt „Virtuelle Netzwerke“ die Option „VNet2“ aus, und klicken Sie auf „Peerings“ und dann auf „Hinzufügen“.
 
-	![Peer from other VNet](./media/virtual-networks-create-vnetpeering-arm-pportal-include/figure05.png)
+	![Peer aus anderem VNet](./media/virtual-networks-create-vnetpeering-arm-pportal-include/figure05.png)
 
-7. In the Add Peering blade, give a peering link name LinkToVnet1, choose the subscription and the peer Virtual Network, Click OK.
+7. Vergeben Sie auf dem Blatt „Peering hinzufügen“ für das Peering den Linknamen „LinkToVnet1“, wählen Sie das Abonnement und das zu verknüpfende virtuelle Netzwerk aus, und klicken Sie auf „OK“.
 
-	![Creating virtual network tile](./media/virtual-networks-create-vnetpeering-arm-pportal-include/figure06.png)
+	![Kachel "Erstellen eines virtuellen Netzwerks"](./media/virtual-networks-create-vnetpeering-arm-pportal-include/figure06.png)
 
-8. Once this VNET peering link is created. You can see the link state as following:
+8. Gehen Sie nach der Erstellung dieses VNet-Peeringlinks wie unten angegeben vor. Der Linkstatus wird wie folgt angezeigt:
 
-	![Final link state](./media/virtual-networks-create-vnetpeering-arm-pportal-include/figure07.png)
+	![Endgültiger Linkstatus](./media/virtual-networks-create-vnetpeering-arm-pportal-include/figure07.png)
 
-9. Check the state for LinkToVnet2 and it now changes to Connected as well.  
+9. Überprüfen Sie den Status von „LinkToVnet2“, der sich jetzt auch in „Verbunden“ ändert.
 
-	![Final link state 2](./media/virtual-networks-create-vnetpeering-arm-pportal-include/figure08.png)
+	![Endgültiger Linkstatus 2](./media/virtual-networks-create-vnetpeering-arm-pportal-include/figure08.png)
 
-10. NOTE: VNET peering is only established if both links are connected. 
+10. HINWEIS: Das VNet-Peering wird nur eingerichtet, wenn beide Links verbunden sind.
 
+<!---HONumber=AcomDC_0803_2016-->

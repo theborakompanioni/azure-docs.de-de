@@ -13,14 +13,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="05/17/2016"
+   ms.date="08/02/2016"
    ms.author="larryfr"/>
 
 # Verarbeitung von Ereignissen von Azure-Event-Hubs mit Storm auf HDInsight (C#)
 
 Azure Event Hubs ermöglichen Ihnen die Verarbeitung sehr großer Datenmengen aus Websites, Apps und Geräten. Der Event Hubs-Spout vereinfacht die Verwendung von Apache Storm in HDInsight, um diese Daten in Echtzeit zu analysieren. Sie können auch Daten aus Storm mithilfe des Event Hubs-Bolts in Event Hub schreiben.
 
-In diesem Tutorial erfahren Sie, wie Sie die Visual Studio-Vorlagen verwenden, die mit HDInsight-Tools für Visual Studio installiert werden, um zwei Topologien zu erstellen, die mir Azure Event Hubs funktionieren.
+In diesem Tutorial erfahren Sie, wie Sie die Visual Studio-Vorlagen verwenden, die mit HDInsight-Tools für Visual Studio installiert werden, um zwei Topologien zu erstellen, die mit Azure Event Hubs funktionieren.
 
 * **EventHubWriter:** generiert Daten nach dem Zufallsprinzip und schreibt sie in Event Hubs
 
@@ -54,7 +54,7 @@ Der Spout und der Bolt werden als einzelne Java-Archivdatei (.jar) mit dem Namen
 
 Die neueste Version der Datei **eventhubs-storm-spout-0.9-jar-with-dependencies.jar** ist im Projekt [HDInsight Storm examples](https://github.com/hdinsight/hdinsight-storm-examples) im Ordner **lib** enthalten. Laden Sie die Datei mithilfe einer der folgenden Methoden herunter.
 
-> [AZURE.NOTE] Spout und Bolt wurden zur Verwendung im Apache Storm-Projekt übermittelt. Weitere Informationen finden Sie bei GitHub unter [STORM-583: Initiali check-in for storm-eventhubs](https://github.com/apache/storm/pull/336/files) (in englischer Sprache).
+> [AZURE.NOTE] Spout und Bolt wurden zur Verwendung im Apache Storm-Projekt übermittelt. Weitere Informationen finden Sie bei GitHub unter [STORM-583: Initiali check-in for storm-eventhubs](https://github.com/apache/storm/pull/336/files).
 
 * **Herunterladen einer ZIP-Datei**: Wählen Sie auf der Website für [HDInsight Storm examples](https://github.com/hdinsight/hdinsight-storm-examples) die Schaltfläche **Download ZIP**, um eine ZIP-Datei mit dem Projekt herunterzuladen.
 
@@ -70,7 +70,7 @@ Die neueste Version der Datei **eventhubs-storm-spout-0.9-jar-with-dependencies.
 
 Event Hubs ist die Datenquelle für dieses Beispiel. Führen Sie die folgenden Schritte aus, um einen neuen Event Hub zu erstellen.
 
-1. Wählen Sie im [klassischen Azure-Portal](https://manage.windowsazure.com) die Optionen **NEU** > __APP SERVICES__ > **SERVICE BUS** > **EVENT HUB** > **CUSTOM CREATE** aus.
+1. Wählen Sie im [klassischen Azure-Portal](https://manage.windowsazure.com) die Optionen **Neu** > __App Services__ > **Service Bus** > **Event Hub** > **Benutzerdefiniert erstellen** aus.
 
 2. Geben Sie im Bildschirm **Neuen Event Hub hinzufügen** einen Wert für **Event Hub-Name** ein, wählen Sie die **Region** aus, in der der Hub erstellt werden soll, und erstellen Sie einen neuen Namespace, oder wählen Sie einen vorhandenen Namespace aus. Klicken Sie auf den **Pfeil**, um fortzufahren.
 
@@ -115,7 +115,7 @@ Im Tabellenspeicher werden aus Event Hub abgerufene Werte gespeichert, und Sie k
 
     ![Cloud-Explorer](./media/hdinsight-storm-develop-csharp-event-hub-topology/createtablestorage.png)
 
-5. Klicken Sie mit der rechten Maustaste für Ihr Speicherkonto auf __Tabellen__, und wählen Sie dann __Tabelle erstellen__ aus. Wenn Sie dazu aufgefordert werden, geben Sie ein **Ereignis** als Namen der Tabelle ein. Merken Sie sich den Namen, da Sie ihn später benötigen werden.
+5. Klicken Sie mit der rechten Maustaste für Ihr Speicherkonto auf __Tabellen__, und wählen Sie dann __Tabelle erstellen__ aus. Wenn Sie dazu aufgefordert werden, geben Sie **Ereignisse** als Namen der Tabelle ein. Merken Sie sich den Namen, da Sie ihn später benötigen werden.
 
 ## Erstellen von EventHubWriter
 
@@ -232,7 +232,7 @@ In diesem Abschnitt erstellen Sie eine Topologie, die Daten mithilfe des Event H
 
 An dieser Stelle ist die Arbeit mit **Program.cs** abgeschlossen. Die Topologie wurde definiert, nun müssen Sie **Spout.cs** so ändern, dass Daten in einem Format erzeugt werden, das der Event Hubs-Bolt verwenden kann.
 
-> [AZURE.NOTE] Bei dieser Topologie wird standardmäßig nur ein Arbeitsprozess erstellt, was für Beispielzwecke ausreicht. Wenn Sie dieses Beispiel für einen Produktionscluster anpassen, sollten Sie Folgendes zum Ändern der Anzahl der Workerthreads hinzufügen:
+> [AZURE.NOTE] Bei dieser Topologie wird standardmäßig nur ein Arbeitsprozess erstellt, was für Beispielzwecke ausreicht. Wenn Sie dieses Beispiel für einen Produktionscluster anpassen, sollten Sie Folgendes zum Ändern der Anzahl der Worker hinzufügen:
 
     StormConfig config = new StormConfig();
     config.setNumWorkers(1);
@@ -572,4 +572,4 @@ In diesem Dokument haben Sie erfahren, wie Sie den Java-Spout und den -Bolt für
 * [Beispiele für Storm-Topologien für Storm in HDInsight](hdinsight-storm-example-topology.md)
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0803_2016-->

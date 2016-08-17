@@ -1,39 +1,38 @@
 <properties
-	pageTitle="Azure AD v2.0: native .NET-App | Microsoft Azure"
-	description="Vorgehensweise beim Erstellen einer systemeigenen .NET-App, bei der sich Benutzer sowohl mit ihrem persönlichen Microsoft-Konto als auch ihrem Geschäfts- oder Schulkonto anmelden können."
-	services="active-directory"
-	documentationCenter=""
-	authors="dstrockis"
-	manager="mbaldwin"
-	editor=""/>
+pageTitle="Azure Active Directory v2.0: native .NET-App | Microsoft Azure"
+description="Vorgehensweise beim Erstellen einer systemeigenen .NET-App, bei der sich Benutzer sowohl mit ihrem persönlichen Microsoft-Konto als auch ihrem Geschäfts- oder Schulkonto anmelden können."
+services="active-directory"
+documentationCenter=""
+authors="dstrockis"
+manager="mbaldwin"
+editor=""/>
 
 <tags
-	ms.service="active-directory"
-	ms.workload="identity"
-  ms.tgt_pltfrm="na"
-	ms.devlang="dotnet"
-	ms.topic="article"
-	ms.date="05/31/2016"
-	ms.author="dastrock"/>
+ms.service="active-directory"
+ms.workload="identity"
+ms.tgt_pltfrm="na"
+ms.devlang="dotnet"
+ms.topic="article"
+ms.date="07/30/2016"
+ms.author="dastrock; vittorib"/>
 
 # Hinzufügen der Anmeldung zu einer Windows-Desktop-App
 
 Mit dem v2.0-Endpunkt können Sie schnell eine Authentifizierung zu Ihren Desktop-Apps hinzufügen, die sowohl persönliche Microsoft-Konten als auch Geschäfts-, Schul- oder Unikonten unterstützt. Dadurch kann Ihre App außerdem sicher mit einer Back-End-Web-API sowie mit [Microsoft Graph](https://graph.microsoft.io) und einigen [Office 365-Unified-APIs](https://www.msdn.com/office/office365/howto/authenticate-Office-365-APIs-using-v2) kommunizieren.
 
-> [AZURE.NOTE]
-	Nicht alle Szenarios und Funktionen von Azure Active Directory werden vom v2.0-Endpunkt unterstützt. Lesen Sie die Informationen zu den [Einschränkungen des v2.0-Endpunkts](active-directory-v2-limitations.md), um zu bestimmen, ob Sie den v2.0-Endpunkt verwenden sollten.
+> [AZURE.NOTE] Nicht alle Szenarios und Funktionen von Azure Active Directory (AD) werden vom v2.0-Endpunkt unterstützt. Lesen Sie die Informationen zu den [Einschränkungen des v2.0-Endpunkts](active-directory-v2-limitations.md), um zu bestimmen, ob Sie den v2.0-Endpunkt verwenden sollten.
 
 Für [systemeigene .NET- Apps, die auf einem Gerät ausgeführt werden](active-directory-v2-flows.md#mobile-and-native-apps), bietet Azure AD die Microsoft Identity Authentication Library (MSAL). Die einzige Aufgabe von MSAL besteht darin, Ihrer Anwendung das Abrufen von Token für den Aufruf von Webdiensten zu erleichtern. Um Ihnen zu zeigen, wie einfach das geht, wollen wir nun eine .NET-WPF-App mit einer Aufgabenliste entwickeln, die folgende Aktionen ausführt:
 
--	Anmelden von Benutzern und Abrufen von Zugriffstoken mit dem [OAuth 2.0-Authentifizierungsprotokoll](active-directory-v2-protocols.md#oauth2-authorization-code-flow).
--	Sicheres Aufrufen eines Back-End-ToDoList-Webdienstes, der ebenfalls durch OAuth 2.0 gesichert ist.
--	Abmelden von Benutzern
+- Anmelden von Benutzern und Abrufen von Zugriffstoken mit dem [OAuth 2.0-Authentifizierungsprotokoll](active-directory-v2-protocols.md#oauth2-authorization-code-flow).
+- Sicheres Aufrufen eines Back-End-ToDoList-Webdienstes, der ebenfalls durch OAuth 2.0 gesichert ist.
+- Meldet den Benutzer ab.
 
 ## Beispielcode herunterladen
 
 Der Code für dieses Tutorial wird [auf GitHub](https://github.com/AzureADQuickStarts/AppModelv2-NativeClient-DotNet) verwaltet. Um folgen zu können, können Sie [das App-Gerüst als ZIP-Datei herunterladen](https://github.com/AzureADQuickStarts/AppModelv2-NativeClient-DotNet/archive/skeleton.zip) oder das Gerüst klonen:
 
-```git clone --branch skeleton https://github.com/AzureADQuickStarts/AppModelv2-NativeClient-DotNet.git```
+    git clone --branch skeleton https://github.com/AzureADQuickStarts/AppModelv2-NativeClient-DotNet.git
 
 Die fertige App wird außerdem am Ende dieses Lernprogramms bereitgestellt.
 
@@ -61,7 +60,7 @@ PM> Install-Package Microsoft.Identity.Client -ProjectName TodoListClient -Inclu
 ## Verwenden von MSAL zum Abrufen von Token
 Das Grundprinzip von MSAL ist wie folgt: Wann immer Ihre Anwendung ein Zugriffstoken benötigt, rufen Sie einfach `app.AcquireToken(...)` auf, und MSAL erledigt alles Weitere.
 
--	Öffnen Sie im Projekt `TodoListClient` die Datei `MainWindow.xaml.cs`, und suchen Sie die Methode `OnInitialized(...)`. Der erste Schritt ist die Initialisierung des `PublicClientApplication` Ihrer Anwendung – der primären Klasse von MSAL, die systemeigene Anwendungen darstellt. Dort übergeben Sie MSAL die zur Kommunikation mit Azure AD notwendigen Koordinaten und weisen es an, wie Token zwischengespeichert werden sollen.
+-	Öffnen Sie im Projekt `TodoListClient` die Datei `MainWindow.xaml.cs`, und suchen Sie die Methode `OnInitialized(...)`. Der erste Schritt besteht in der Initialisierung des `PublicClientApplication`-Elements Ihrer Anwendung – der primären Klasse von MSAL, die native Anwendungen darstellt. Dort übergeben Sie MSAL die zur Kommunikation mit Azure AD notwendigen Koordinaten und weisen es an, wie Token zwischengespeichert werden sollen.
 
 ```C#
 protected override async void OnInitialized(EventArgs e)
@@ -247,9 +246,10 @@ Als Referenz stellen wir das vollständige Beispiel (ohne Ihre Konfigurationswer
 
 Sie können nun mit den Themen für fortgeschrittenere Benutzer fortfahren. Wie wäre es zum Beispiel mit Folgendem:
 
-- [Sichern der TodoListService-Web-API mit dem v2.0-Endpunkt >>](active-directory-v2-devquickstarts-dotnet-api.md)
+- [Sichern der TodoListService-Web-API mit dem v2.0-Endpunkt](active-directory-v2-devquickstarts-dotnet-api.md)
 
 Weitere Ressourcen:
+
 - [Das v2.0-Entwicklerhandbuch >>](active-directory-appmodel-v2-overview.md)
 - [StackOverflow-Tag „msal“ >>](http://stackoverflow.com/questions/tagged/msal)
 
@@ -257,4 +257,4 @@ Weitere Ressourcen:
 
 Wir empfehlen Ihnen, den Erhalt von Benachrichtigungen zu Sicherheitsvorfällen einzurichten. Rufen Sie dazu [diese Seite](https://technet.microsoft.com/security/dd252948) auf, und abonnieren Sie Sicherheitsempfehlungen.
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

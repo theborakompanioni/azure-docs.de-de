@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Erstellen und Hochladen eines Windows Server-Image mit PowerShell | Microsoft Azure"
+	pageTitle="Erstellen und Hochladen eines VM-Images mit PowerShell | Microsoft Azure"
 	description="Hier finden Sie Informationen Sie zum Erstellen und Hochladen eines generalisierten Windows Server-Image (VHD) mit dem klassischen Bereitstellungsmodell und Azure PowerShell."
 	services="virtual-machines-windows"
 	documentationCenter=""
@@ -104,4 +104,4 @@ Fügen Sie das Image mit dem Cmdlet [Add-AzureVMImage](https://msdn.microsoft.co
 
 Sie können nun mit dem Image, das Sie hochgeladen haben, [einen benutzerdefinierten virtuellen Computer erstellen](virtual-machines-windows-classic-createportal.md).
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

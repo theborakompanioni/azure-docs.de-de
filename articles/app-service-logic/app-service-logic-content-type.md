@@ -1,7 +1,7 @@
 <properties
    pageTitle="Behandeln des Inhaltstyps von Logik-Apps | Microsoft Azure"
    description="Erfahren Sie, wie Logik-Apps zur Entwurfs- und Laufzeit mit Inhaltstypen umgehen."
-   services="app-service\logic"
+   services="logic-apps"
    documentationCenter=".net,nodejs,java"
    authors="jeffhollan"
    manager="dwrede"
@@ -93,4 +93,4 @@ Da dies weder Nur-Text noch JSON ist, erfolgt die Speicherung in der Aktion als:
 
 Dabei ist `$content` die Nutzlast, die als Base64-Zeichenfolge codiert ist, um alle Daten zu erhalten. Obwohl es derzeit keine native Funktion für Formulardaten gibt, können Sie diese Daten innerhalb eines Workflows verwenden. Greifen Sie dazu manuell mit einer Funktion wie `@string(body('formdataAction'))` auf die Daten zu. Wenn die ausgehende Anforderung auch den Inhaltstypheader `application/x-www-url-formencoded` haben soll, können Sie ihn einfach im Aktionstext hinzufügen, ohne eine Umwandlung wie `@body('formdataAction')` durchzuführen. Dies funktioniert jedoch nur, wenn der Text der einzige Parameter der `body`-Eingabe ist. Wenn Sie versuchen, `@body('formdataAction')` in einer `application/json`-Anforderung auszuführen, erhalten Sie einen Laufzeitfehler, da die Übermittlung als codierter Text erfolgt.
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

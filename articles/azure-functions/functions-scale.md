@@ -3,7 +3,7 @@
    description="Erfahren Sie, wie sich Azure Functions skalieren lässt, um die Anforderungen Ihrer ereignisgesteuerten Workloads zu erfüllen."
    services="functions"
    documentationCenter="na"
-   authors="eduardolaureano"
+   authors="dariagrigoriu"
    manager="erikre"
    editor=""
    tags=""
@@ -15,8 +15,8 @@
    ms.topic="reference"
    ms.tgt_pltfrm="multiple"
    ms.workload="na"
-   ms.date="03/09/2016"
-   ms.author="edlaure"/>
+   ms.date="08/03/2016"
+   ms.author="dariagrigoriu"/>
 
 # Skalieren von Azure Functions
 
@@ -47,4 +47,4 @@ Beim Erstellen von Funktionen können Sie zwischen der Ausführung nach einem dy
 
 [AZURE.INCLUDE [Dynamischer Serviceplan](../../includes/functions-dynamic-service-plan.md)]
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0803_2016-->

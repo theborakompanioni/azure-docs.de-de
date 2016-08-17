@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/06/2016"
+	ms.date="08/01/2016"
 	ms.author="douglasl"/>
 
 # Wiederherstellen von Stretch-fähigen Datenbanken
@@ -28,8 +28,7 @@ Weitere Informationen zur Datensicherung finden Sie unter [Sichern von Stretch-f
 Nach einem Hardwarefehler oder einer Beschädigung können Sie die Stretch-fähige SQL Server-Datenbank aus einer Sicherungskopie wiederherstellen. Zum Wiederherstellen können Sie weiterhin die bereits verwendeten SQL Server-Methoden nutzen.  
 Weitere Informationen finden Sie unter [Übersicht über Wiederherstellungsvorgänge](https://msdn.microsoft.com/library/ms191253.aspx).
 
-Nach der Wiederherstellung der SQL Server-Datenbank müssen Sie die gespeicherte Prozedur **sys.sp\_rda\_reauthorize\_db** ausführen, um erneut die Verbindung zwischen der Stretch-fähigen SQL Server-Datenbank und der Azure-Remotedatenbank herzustellen. Weitere Informationen finden Sie unter [Wiederherstellen der Verbindung zwischen SQL Server-Datenbank und Azure-Remotedatenbank](#Restore-the-connection-between-the-SQL-Server-database-and-the-remote-Azure-database).
-<!-- Fix Comment: The structure and the reference seeem to be incorrect. Could you check if they are okay? -->
+Nach der Wiederherstellung der SQL Server-Datenbank müssen Sie die gespeicherte Prozedur **sys.sp\_rda\_reauthorize\_db** ausführen, um erneut die Verbindung zwischen der Stretch-fähigen SQL Server-Datenbank und der Azure-Remotedatenbank herzustellen. Weitere Informationen finden Sie unter [Wiederherstellen der Verbindung zwischen SQL Server-Datenbank und der Azure-Remotedatenbank](#restore-the-connection-between-the-sql-server-database-and-the-remote-azure-database).
 
 ## Wiederherstellen von Azure-Remotedaten
 
@@ -85,4 +84,4 @@ Gehen Sie folgendermaßen vor, um mit dem Azure-Portal eine Azure-Datenbank auf 
 
 [Sichern und Wiederherstellen von SQL Server-Datenbanken](https://msdn.microsoft.com/library/ms187048.aspx)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

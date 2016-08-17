@@ -71,9 +71,9 @@ Die folgende Tabelle zeigt verschiedene Beispiele für Protokollabfragen, die II
 |:--|:--|
 | Type=IISLog | Alle IIS-Protokolldatensätze. |
 | Type=IISLog EventLevelName=error | Alle Windows-Ereignisse mit dem Schweregrad „error“. |
-| Type=W3CIISLog | Measure count() by cIP | Anzahl der IIS-Protokolleinträge nach Client-IP-Adresse. |
-| Type=W3CIISLog csHost="www.contoso.com" | Measure count() by csUriStem | Anzahl der IIS-Protokolleinträge nach URL für den Host www.contoso.com. |
-| Type=W3CIISLog | Measure Sum(csBytes) by Computer | top 500000| Gesamtzahl an Bytes, die von jedem IIS-Computer empfangen wurden. |
+| Type=W3CIISLog &#124; Measure count() by cIP | Anzahl der IIS-Protokolleinträge nach Client-IP-Adresse. |
+| Type=W3CIISLog csHost="www.contoso.com" &#124; Measure count() by csUriStem | Anzahl der IIS-Protokolleinträge nach URL für den Host www.contoso.com. |
+| Type=W3CIISLog &#124; Measure Sum(csBytes) by Computer &#124; top 500000| Gesamtzahl an Bytes, die von jedem IIS-Computer empfangen wurden. |
 
 ## Nächste Schritte
 

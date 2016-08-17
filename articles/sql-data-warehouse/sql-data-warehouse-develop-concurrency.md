@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="07/15/2016"
+   ms.date="08/02/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
 # Parallelitäts- und Workloadverwaltung in SQL Data Warehouse
@@ -24,27 +24,37 @@ Mit SQL Data Warehouse können Benutzer die Parallelitätsebenen und Ressourcenz
 
 In SQL Data Warehouse sind bis zu 1.024 gleichzeitige Verbindungen zulässig. Alle 1.024 Verbindungen können gleichzeitig Abfragen übermitteln. Um den Durchsatz zu optimieren, reiht SQL Data Warehouse einige Abfragen unter Umständen in die Warteschlange ein, um sicherzustellen, dass für jede Abfrage ein Mindestmaß an Arbeitsspeicher gewährt wird. Queuing erfolgt während der Abfrageausführung. Durch das Einreihen von Abfragen in die Warteschlange beim Erreichen von Parellelitätslimits kann SQL Data Warehouse den Gesamtdurchsatz erhöhen, indem sichergestellt wird, dass aktive Abfragen Zugriff auf dringend benötigte Arbeitsspeicherressourcen erhalten.
 
-Für Parallelitätslimits gelten zwei Konzepte: **gleichzeitige Abfragen** und **Parallelitätsslots**. Damit eine Abfrage ausgeführt wird, muss dies sowohl unter Einhaltung des Abfrageparallelitätslimits als auch der Parallelitätsslotzuordnung erfolgen.
+Für Parallelitätslimits gelten zwei Konzepte: **gleichzeitige Abfragen** und **Parallelitätsslots**. Damit eine Abfrage ausgeführt wird, muss dies sowohl innerhalb des Abfrageparallelitätslimits als auch innerhalb der Parallelitätsslotzuordnung erfolgen.
 
-- Bei **gleichzeitigen Abfragen** geht es einfach um die Anzahl von gleichzeitig ausgeführten Abfragen. SQL Data Warehouse unterstützt bis zu 32 **gleichzeitige Abfragen** für höhere DW-Größen wie DW1000 und darüber. Da die Anzahl von gleichzeitigen Abfragen je nach der Anzahl von DWUs variiert, ist unten eine Tabelle mit den Beschränkungen nach DWU angegeben.
-- Bei **Parallelitätsslots** geht es um ein dynamischeres Konzept. Jede Abfrage kann mindestens einen Parallelitätsslot nutzen. Die genaue Anzahl von Slots, die von einer Abfrage verbraucht werden, richtet sich nach der Größe Ihrer SQL Data Warehouse-Instanz und der [Ressourcenklasse](#resource-classes) der Abfrage.
+- Bei **gleichzeitigen Abfragen** geht es einfach um die Anzahl von gleichzeitig ausgeführten Abfragen. SQL Data Warehouse unterstützt bis zu 32 gleichzeitige Abfragen.
+- **Parallelitätsslots** werden basierend auf DWUs zugeordnet. Für jeweils 100 DWUs werden vier Parallelitätsslots bereitgestellt. DW100 beispielsweise ordnet vier Parallelitätsslots zu, DW1000 dagegen 40. Jede Abfrage nutzt mindestens einen Parallelitätsslot in der [Ressourcenklasse](#resource-classes) der Abfrage. Abfragen, die in der Ressourcenklasse „smallrc“ ausgeführt werden, nutzen einen Parallelitätsslot. Abfragen, die in einer höheren Ressourcenklasse ausgeführt werden, benötigen mehr Parallelitätsslots.
 
-In der folgenden Tabelle sind die Limits für gleichzeitige Abfragen und Parallelitätsslots beschrieben.
+In der folgenden Tabelle sind die Limits für gleichzeitige Abfragen und Parallelitätsslots der verschiedenen DWU-Größen beschrieben.
 
 ### Parallelitätslimits
 
-| | DW100 | DW200 | DW300 | DW400 | DW500 | DW600 | DW1000 | DW1200 | DW1500 | DW2000 | DW3000 | DW6000 |
-| :--------------------------- | ----: | ----: | ----: | ----: | ----: | ----: | -----: | -----: | -----: | -----: | -----: | -----: |
-| Max. Anzahl gleichzeitiger Abfragen | 32 | 32 | 32 | 32 | 32 | 32 | 32 | 32 | 32 | 32 | 32 | 32 |
-| Max. Parallelitätsslots | 4 | 8 | 12 | 16 | 20 | 24 | 40 | 48 | 60 | 80 | 120 | 240 |
+| DWU | Max. Anzahl gleichzeitiger Abfragen | Zugeordnete Parallelitätsslots |
+| :----  | :---------------------: | :-------------------------: |
+| DW100 | 32 | 4 |
+| DW200 | 32 | 8 |
+| DW300 | 32 | 12 |
+| DW400 | 32 | 16 |
+| DW500 | 32 | 20 |
+| DW600 | 32 | 24 |
+| DW1000 | 32 | 40 |
+| DW1200 | 32 | 48 |
+| DW1500 | 32 | 60 |
+| DW2000 | 32 | 80 |
+| DW3000 | 32 | 120 |
+| DW6000 | 32 | 240 |
 
 Wenn einer dieser beiden Schwellenwerte erreicht wird, werden neue Abfragen in die Warteschlange eingereiht. In der Warteschlange befindliche Abfragen werden nach dem Prinzip „First in, First out“ ausgeführt, wenn andere Abfragen abgeschlossen werden und die Anzahl von Abfragen und Slots unter die Limits fällt.
 
-> [AZURE.NOTE]  SELECT-Abfragen, die exklusiv in dynamischen Verwaltungssichten (DMVs) oder Katalogsichten ausgeführt werden, werden **nicht** von Parallelitätslimits gesteuert. So können Benutzer das System unabhängig von der Anzahl der Abfragen überwachen, die auf dem System ausgeführt werden.
+> [AZURE.NOTE]  SELECT-Abfragen, die exklusiv in dynamischen Verwaltungssichten (DMVs) oder Katalogsichten ausgeführt werden, werden **nicht** von den Parallelitätslimits gesteuert. So können Benutzer das System unabhängig von der Anzahl der Abfragen überwachen, die auf dem System ausgeführt werden.
 
 ## Ressourcenklassen
 
-Ressourcenklassen sind ein wesentlicher Bestandteil der SQL Data Warehouse-Workloadverwaltung. Sie ermöglichen es, dass Abfragen, die von einem Benutzer durchgeführt werden, mehr Arbeitsspeicheranteile bzw. CPU-Zyklen zugeordnet werden. Es gibt vier Ressourcenklassen, die einem Benutzer in Form einer **Datenbankrolle** zugewiesen werden können. Diese vier Ressourcenklassen sind **smallrc, mediumrc, largerc und xlargerc**. Benutzer in „smallrc“ erhalten eine geringere Menge an Arbeitsspeicher, sodass eine höhere Parallelität ermöglicht wird. Im Gegensatz dazu werden Benutzern, die „xlargerc“ zugewiesen sind, mehr Arbeitsspeicheranteile gewährt. Dies bedeutet, dass ein geringerer Anteil dieser Abfragen gleichzeitig ausgeführt werden kann.
+Mithilfe von Ressourcenklassen steuern Sie die Speicherzuweisung und die zugewiesenen CPU-Zyklen einer Abfrage. Es gibt vier Ressourcenklassen, die einem Benutzer in Form einer **Datenbankrolle** zugewiesen werden können. Diese vier Ressourcenklassen sind **smallrc, mediumrc, largerc und xlargerc**. Benutzer in „smallrc“ erhalten eine geringere Menge an Arbeitsspeicher, sodass eine höhere Parallelität ermöglicht wird. Im Gegensatz dazu werden Benutzern, die „xlargerc“ zugewiesen sind, mehr Arbeitsspeicheranteile gewährt. Dies bedeutet, dass ein geringerer Anteil dieser Abfragen gleichzeitig ausgeführt werden kann.
 
 Standardmäßig ist jeder Benutzer Mitglied der kleinen Ressourcenklasse (smallrc). Die Prozedur `sp_addrolemember` wird verwendet, um die Ressourcenklasse heraufzusetzen, und `sp_droprolemember` wird verwendet, um die Ressourcenklasse herabzusetzen. Mit dem folgenden Befehl wird die Ressourcenklasse beispielsweise von „loaduser“ auf „largerc“ heraufgesetzt:
 
@@ -54,7 +64,7 @@ EXEC sp_addrolemember 'largerc', 'loaduser'
 
 Eine gute Vorgehensweise besteht darin, Benutzer zu erstellen, die einer Ressourcenklasse dauerhaft zugewiesen sind, anstatt die Ressourcenklasse eines Benutzers zu ändern. Für Ladevorgänge in gruppierte Columnstore-Tabellen werden beispielsweise Indizes von höherer Qualität erstellt, wenn mehr Arbeitsspeicher zugeordnet wird. Erstellen Sie einen Benutzer speziell für das Laden von Daten, und weisen Sie diesen Benutzer dauerhaft einer höheren Ressourcenklasse zu, um sicherzustellen, dass bei Ladevorgängen Zugriff auf eine höhere Arbeitsspeicherebene besteht.
 
-Es gibt einige Arten von Abfragen, die nicht von einer höheren Arbeitsspeicherzuordnung profitieren. Das System ignoriert ihre Ressourcenklassenzuordnung und führt diese Abfragen stattdessen immer in der kleinen Ressourcenklasse aus. Indem erzwungen wird, dass diese Abfragen immer in der kleinen Ressourcenklasse ausgeführt werden, wird Folgendes ermöglicht: Diese Abfragen können ausgeführt werden, wenn der Druck für die Parallelitätsslots hoch ist, und es wird verhindert, dass diese Abfragen mehr Slots als erforderlich belegen. Diese [Ressourcenklassenausnahmen](#resource-class-exceptions) werden später in diesem Artikel behandelt.
+Es gibt einige Arten von Abfragen, die nicht von einer höheren Arbeitsspeicherzuordnung profitieren. Das System ignoriert ihre Ressourcenklassenzuordnung und führt diese Abfragen stattdessen immer in der kleinen Ressourcenklasse aus. Indem erzwungen wird, dass diese Abfragen immer in der kleinen Ressourcenklasse ausgeführt werden, wird Folgendes ermöglicht: Diese Abfragen können ausgeführt werden, wenn der Druck für die Parallelitätsslots hoch ist, und es wird verhindert, dass diese Abfragen mehr Slots als erforderlich belegen. Diese [Ressourcenklassenausnahmen](#query-exceptions-to-concurrency-limits) werden später in diesem Artikel behandelt.
 
 Weitere Details zu Ressourcenklassen:
 
@@ -62,62 +72,85 @@ Weitere Details zu Ressourcenklassen:
 - Ein Benutzer kann zwar einer oder mehreren höheren Ressourcenklassen hinzugefügt werden, aber Benutzer nutzen die Attribute der höchsten Ressourcenklasse, der sie zugewiesen sind. Dies bedeutet Folgendes: Wenn ein Benutzer sowohl „mediumrc“ als auch „largerc“ zugewiesen ist, wird die höhere Ressourcenklasse (largerc) verwendet.
 - Die Ressourcenklasse des Systemadministratorbenutzers kann nicht geändert werden.
  
-Weitere Informationen und Beispiele für das Erstellen von Benutzern und das Zuweisen zu Ressourcenklassen finden Sie im Abschnitt [Verwalten von Benutzern](#Managing-users) am Ende dieses Artikels.
+Ein ausführliches Beispiel finden Sie unter [Beispiel: Ändern der Ressourcenklasse eines Benutzers](#changing-user-resource-class-example) am Ende dieses Artikels.
 
 ## Speicherzuweisung
 
-Das Erhöhen der Ressourcenklasse eines Benutzers hat Vor- und Nachteile. Einerseits kann das Erhöhen einer Ressourcenklasse für einen Benutzer bedeuten, dass für seine Abfragen mehr Arbeitsspeicher zugänglich ist und dass sie schneller ausgeführt werden. Andererseits verringert eine höhere Ressourcenklasse aber auch die Anzahl gleichzeitig ausführbarer Abfragen. Dies ist der Kompromiss zwischen dem Zuordnen großer Mengen von Arbeitsspeicher für eine einzelne Abfrage und dem Zulassen der Ausführung von anderen gleichzeitigen Abfragen, für die ebenfalls Arbeitsspeicher zugeordnet werden muss. Wenn ein Benutzer hohe Arbeitsspeicherzuordnungen für eine Abfrage erhält, haben andere Benutzer nicht Zugriff auf den gleichen Speicher zum Ausführen einer Abfrage.
+Das Erhöhen der Ressourcenklasse eines Benutzers hat Vor- und Nachteile. Einerseits kann das Erhöhen einer Ressourcenklasse für einen Benutzer bedeuten, dass für seine Abfragen mehr Arbeitsspeicher zugänglich ist und dass sie schneller ausgeführt werden. Andererseits verringert eine höhere Ressourcenklasse aber auch die Anzahl gleichzeitig ausführbarer Abfragen. Dies ist der Kompromiss zwischen dem Zuweisen großer Mengen von Arbeitsspeicher für eine einzelne Abfrage und dem Zulassen der gleichzeitigen Ausführung anderer Abfragen, denen ebenfalls Arbeitsspeicher zugewiesen werden muss. Wenn ein Benutzer hohe Arbeitsspeicherzuordnungen für eine Abfrage erhält, haben andere Benutzer nicht Zugriff auf den gleichen Speicher zum Ausführen einer Abfrage.
 
-In der folgenden Tabelle ist der Arbeitsspeicher angegeben, der jeder Verteilung nach DWU und Ressourcenklasse zugeordnet wird. In SQL Data Warehouse gibt es 60 Verteilungen pro Datenbank. Beispielsweise hat eine Abfrage, die unter DW2000 in der Ressourcenklasse „xlarge“ ausgeführt wird, in allen 60 verteilten Datenbanken jeweils Zugriff auf 6.400 MB.
+In der folgenden Tabelle ist der Arbeitsspeicher angegeben, der jeder Verteilung nach DWU und Ressourcenklasse zugeordnet wird. In SQL Data Warehouse gibt es 60 Verteilungen. Beispielsweise hat eine Abfrage, die in einem DW2000 in der Ressourcenklasse „xlargerc“ ausgeführt wird, jeweils Zugriff auf 6.400 MB Arbeitsspeicher in jeder der 60 verteilten Datenbanken.
 
 ### Speicherbelegungen pro Verteilung (MB)
 
-| | DW100 | DW200 | DW300 | DW400 | DW500 | DW600 | DW1000 | DW1200 | DW1500 | DW2000 | DW3000 | DW6000 |
-| :------------- | ----: | ----: | ----: | ----: | ----: | ----: | -----: | -----: | -----: | -----: | -----: | -----: |
-| smallrc | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 |
-| mediumrc | 100 | 200 | 200 | 400 | 400 | 400 | 800 | 800 | 800 | 1\.600 | 1\.600 | 3\.200 |
-| largerc | 200 | 400 | 400 | 800 | 800 | 800 | 1\.600 | 1\.600 | 1\.600 | 3\.200 | 3\.200 | 6\.400 |
-| xlargerc | 400 | 800 | 800 | 1\.600 | 1\.600 | 1\.600 | 3\.200 | 3\.200 | 3\.200 | 6\.400 | 6\.400 | 12\.800 |
+| DWU | smallrc | mediumrc | largerc | xlargerc |
+| :----- | :-----: | :------: | :-----: | :------: |
+| DW100 | 100 | 100 | 200 | 400 |
+| DW200 | 100 | 200 | 400 | 800 |
+| DW300 | 100 | 200 | 400 | 800 |
+| DW400 | 100 | 400 | 800 | 1\.600 |
+| DW500 | 100 | 400 | 800 | 1\.600 |
+| DW600 | 100 | 400 | 800 | 1\.600 |
+| DW1000 | 100 | 800 | 1\.600 | 3\.200 |
+| DW1200 | 100 | 800 | 1\.600 | 3\.200 |
+| DW1500 | 100 | 800 | 1\.600 | 3\.200 |
+| DW2000 | 100 | 1\.600 | 3\.200 | 6\.400 |
+| DW3000 | 100 | 1\.600 | 3\.200 | 6\.400 |
+| DW6000 | 100 | 3\.200 | 6\.400 | 12\.800 |
 
-
-Für das obige Beispiel gilt Folgendes: Einer Abfrage, die unter DW2000 in der Ressourcenklasse „xlarge“ ausgeführt wird, werden systemweit insgesamt 375 GB Arbeitsspeicher zugeordnet (6.400 MB * 60 Verteilungen / 1.024 für die Umrechnung in GB).
+Für das obige Beispiel gilt Folgendes: Einer Abfrage, die in einem DW2000 in der Ressourcenklasse „xlargerc“ ausgeführt wird, werden im gesamten SQL Data Warehouse insgesamt 375 GB Arbeitsspeicher zugewiesen (6.400 MB * 60 Verteilungen / 1.024 zur Umrechnung in GB).
 
 ### Systemweite Speicherbelegungen (GB)
 
-| | DW100 | DW200 | DW300 | DW400 | DW500 | DW600 | DW1000 | DW1200 | DW1500 | DW2000 | DW3000 | DW6000 |
-| :------------- | ----: | ----: | ----: | ----: | ----: | ----: | -----: | -----: | -----: | -----: | -----: | -----: |
-|smallrc | 6 | 6 | 6 | 6 | 6 | 6 | 6 | 6 | 6 | 6 | 6 | 6 |
-|mediumrc | 6 | 12 | 12 | 23 | 23 | 23 | 47 | 47 | 47 | 94 | 94 | 188 |
-|largerc | 12 | 23 | 23 | 47 | 47 | 47 | 94 | 94 | 94 | 188 | 188 | 375 |
-|xlargerc | 23 | 47 | 47 | 94 | 94 | 94 | 188 | 188 | 188 | 375 | 375 | 750 |
+| DWU | smallrc | mediumrc | largerc | xlargerc |
+| :----- | :-----: | :------: | :-----: | :------: |
+| DW100 | 6 | 6 | 12 | 23 |
+| DW200 | 6 | 12 | 23 | 47 |
+| DW300 | 6 | 12 | 23 | 47 |
+| DW400 | 6 | 23 | 47 | 94 |
+| DW500 | 6 | 23 | 47 | 94 |
+| DW600 | 6 | 23 | 47 | 94 |
+| DW1000 | 6 | 47 | 94 | 188 |
+| DW1200 | 6 | 47 | 94 | 188 |
+| DW1500 | 6 | 47 | 94 | 188 |
+| DW2000 | 6 | 94 | 188 | 375 |
+| DW3000 | 6 | 94 | 188 | 375 |
+| DW6000 | 6 | 188 | 375 | 750 |
+
 
 ## Verbrauch von Parallelitätsslots
 
-Es wurde bereits erwähnt, dass umso mehr Arbeitsspeicher gewährt wird, je höher die Ressourcenklasse ist. Da Arbeitsspeicher eine feststehende Ressource ist, kann umso weniger Parallelität unterstützt werden, je mehr Arbeitsspeicher pro Abfrage zugeordnet ist. Die folgende Tabelle gibt in einer einzigen Ansicht alle obigen Konzepte wieder – sowohl die Anzahl verfügbarer Parallelitätsslots pro DWU als auch die Slots, die von den einzelnen Ressourcenklassen verbraucht werden.
+Abfragen in höheren Ressourcenklassen wird mehr Arbeitsspeicher zugewiesen. Da Arbeitsspeicher eine feststehende Ressource ist, kann umso weniger Parallelität unterstützt werden, je mehr Arbeitsspeicher pro Abfrage zugeordnet ist. Die folgende Tabelle gibt in einer einzigen Ansicht alle obigen Konzepte wieder – sowohl die Anzahl verfügbarer Parallelitätsslots pro DWU als auch die Slots, die von den einzelnen Ressourcenklassen verbraucht werden.
 
 ### Zuordnung und Verbrauch von Parallelitätsslots
 
-| | DW100 | DW200 | DW300 | DW400 | DW500 | DW600 | DW1000 | DW1200 | DW1500 | DW2000 | DW3000 | DW6000 |
-| :---------------------- | ----: | ----: | ----: | ----: | ----: | ----: | -----: | -----: | -----: | -----: | -----: | -----: |
-| **Zuordnung** | | | | | | | | | | | | |
-| Max. Anzahl gleichzeitiger Abfragen | 32 | 32 | 32 | 32 | 32 | 32 | 32 | 32 | 32 | 32 | 32 | 32 |
-| Max. Parallelitätsslots | 4 | 8 | 12 | 16 | 20 | 24 | 40 | 48 | 60 | 80 | 120 | 240 |
-| **Slotverbrauch** | | | | | | | | | | | | |
-| smallrc | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 |
-| mediumrc | 1 | 2 | 2 | 4 | 4 | 4 | 8 | 8 | 8 | 16 | 16 | 32 |
-| largerc | 2 | 4 | 4 | 8 | 8 | 8 | 16 | 16 | 16 | 32 | 32 | 64 |
-| xlargerc | 4 | 8 | 8 | 16 | 16 | 16 | 32 | 32 | 32 | 64 | 64 | 128 |
+| DWU | Max. Anzahl gleichzeitiger Abfragen | Zugeordnete Parallelitätsslots | Durch „smallrc“ verwendete Slots | Durch „mediumrc“ verwendete Slots | Durch „largerc“ verwendete Slots | Durch „xlargerc“ verwendete Slots |
+| :----  | :---------------------: | :-------------------------: | :-----: | :------: | :-----: | :------: |
+| DW100 | 32 | 4 | 1 | 1 | 2 | 4 |
+| DW200 | 32 | 8 | 1 | 2 | 4 | 8 |
+| DW300 | 32 | 12 | 1 | 2 | 4 | 8 |
+| DW400 | 32 | 16 | 1 | 4 | 8 | 16 |
+| DW500 | 32 | 20 | 1 | 4 | 8 | 16 |
+| DW600 | 32 | 24 | 1 | 4 | 8 | 16 |
+| DW1000 | 32 | 40 | 1 | 8 | 16 | 32 |
+| DW1200 | 32 | 48 | 1 | 8 | 16 | 32 |
+| DW1500 | 32 | 60 | 1 | 8 | 16 | 32 |
+| DW2000 | 32 | 80 | 1 | 16 | 32 | 64 |
+| DW3000 | 32 | 120 | 1 | 16 | 32 | 64 |
+| DW6000 | 32 | 240 | 1 | 32 | 64 | 128 |
 
-In dieser Tabelle sehen Sie, dass ein als DW1000 ausgeführtes SQL Data Warehouse insgesamt 40 Parallelitätsslots für maximal 32 gleichzeitige Abfragen bietet. Wenn alle Benutzer in der kleinen Ressourcenklasse ausführen, sind 32 gleichzeitige Abfragen zulässig, da jede Abfrage 1 Parallelitätsslot belegt. Wenn alle Benutzer in der mittleren Ressourcenklasse ausführen, werden jedem Benutzer 800 MB pro Verteilung für eine Gesamtzuweisung an Arbeitsspeicher von 47 GB zugewiesen, und die Parallelität würde für alle Benutzer dieser mittleren Ressourcenklasse auf 8 Benutzer beschränkt sein.
+
+In dieser Tabelle sehen Sie, dass ein als DW1000 ausgeführtes SQL Data Warehouse maximal 32 gleichzeitige Abfragen und insgesamt 40 Parallelitätsslots zuordnet. Wenn alle Benutzer Abfragen in der kleinen Ressourcenklasse ausführen, sind 32 gleichzeitige Abfragen zulässig, da jede Abfrage 1 Parallelitätsslot belegt. Wenn alle Benutzer in einem DW1000 Abfragen in der mittleren Ressourcenklasse ausführen, werden jeder Abfrage 800 MB pro Verteilung zugewiesen, was eine Gesamtzuweisung an Arbeitsspeicher von 47 GB ergibt. Die Parallelität ist in diesem Fall auf 5 Benutzer begrenzt (40 Parallelitätsslots / 8 Slots pro mediumrc-Benutzer).
 
 ## Wichtigkeit von Abfragen
 
-Im Hintergrund sind insgesamt acht Workloadgruppen vorhanden, die das Verhalten der Ressourcenklassen steuern. Für eine DWU werden aber nur jeweils vier der acht Workloadgruppen genutzt. Dies ergibt Sinn, da jede Workloadgruppe entweder „smallrc“, „mediumrc“, „largerc“ oder „xlargerc“ zugewiesen ist. Sie müssen diese im Hintergrund befindlichen Workloadgruppen verstehen, da für einige dieser Workloadgruppen eine höhere **WICHTIGKEIT** festgelegt ist. Die Wichtigkeit wird für die CPU-Zeitplanung verwendet. Abfragen, die mit hoher Wichtigkeit ausgeführt werden, erhalten dreimal mehr CPU-Zyklen als Abfragen mit mittlerer Wichtigkeit. Daher wird anhand von Parallelitätsslotzuordnungen auch die CPU-Wichtigkeit bestimmt. Wenn für eine Abfrage 16 oder mehr Slots verwendet werden, ist die Wichtigkeit hoch.
+Hinter den Kulissen werden Ressourcenklassen mithilfe von Workloadgruppen implementiert. Es gibt insgesamt acht Workloadgruppen vorhanden, die das Verhalten der Ressourcenklassen über die verschiedenen DWU-Größen hinweg steuern. Für jede DWU werden nur jeweils vier der acht Workloadgruppen genutzt. Dies ergibt Sinn, da jede Workloadgruppe einer der vier Ressourcenklassen „smallrc“, „mediumrc“, „largerc“ oder „xlargerc“ zugewiesen ist. Sie müssen diese Workloadgruppen verstehen, da für einige dieser Workloadgruppen eine höhere **WICHTIGKEIT** festgelegt ist. Die Wichtigkeit wird für die CPU-Zeitplanung verwendet. Abfragen, die mit **hoher** Wichtigkeit ausgeführt werden, erhalten dreimal mehr CPU-Zyklen als Abfragen mit **mittlerer** Wichtigkeit. Daher wird anhand von Parallelitätsslotzuordnungen auch die CPU-Priorität bestimmt. Wenn für eine Abfrage 16 oder mehr Slots verwendet werden, ist die Wichtigkeit hoch.
 
 Unten sind die Wichtigkeitszuordnungen für die einzelnen Workloadgruppen angegeben.
 
+### Zuordnungen von Workloadgruppen zu Parallelitätsslots und Wichtigkeit
+
 | Workloadgruppen | Zuordnung von Parallelitätsslots | Wichtigkeitszuordnung |
-| :------------------  | :----------------------: | :----------------- |
+| :-------------- | :----------------------: | :----------------- |
 | SloDWGroupC00 | 1 | Mittel |
 | SloDWGroupC01 | 2 | Mittel |
 | SloDWGroupC02 | 4 | Mittel |
@@ -127,10 +160,12 @@ Unten sind die Wichtigkeitszuordnungen für die einzelnen Workloadgruppen angege
 | SloDWGroupC06 | 64 | Hoch |
 | SloDWGroupC07 | 128 | Hoch |
 
-Für eine SQL Data Warehouse-Instanz mit DW500 werden die aktiven Workloadgruppen den Ressourcenklassen beispielsweise wie folgt zugeordnet:
+In der Tabelle **Zuordnung und Verbrauch von Parallelitätsslots** sehen Sie, dass ein DW500 jeweils 1, 4, 8 bzw. 16 Parallelitätsslots für smallrc-, mediumrc-, largerc- und xlargerc-Ressourcenklassen verwendet. Sie können diese Werte in der oben stehenden Tabelle nachschlagen, um Informationen zur Wichtigkeit jeder Ressourcenklasse zu erhalten.
+
+### DW500-Zuordnung zwischen Ressourcenklassen und Wichtigkeit
 
 | Ressourcenklasse | Workloadgruppe | Verwendete Parallelitätsslots | Priorität |
-| :--------------- | :------------- | :--------------------:   | :--------- |
+| :------------- | :------------- | :--------------------: | :--------- |
 | smallrc | SloDWGroupC00 | 1 | Mittel |
 | mediumrc | SloDWGroupC02 | 4 | Mittel |
 | largerc | SloDWGroupC03 | 8 | Mittel |
@@ -185,9 +220,28 @@ ORDER BY
 ;
 ```
 
-## Ressourcenklassenausnahmen
+## Abfragen mit Berücksichtigung von Parallelitätslimits
 
-Bei den meisten Abfragen werden die Ressourcenklassen beachtet, aber es gibt auch einige Ausnahmen. Dies ist in der Regel der Fall, wenn die zum Ausführen der Aktion erforderlichen Ressourcen gering sind. Bei den Ausnahmen handelt es sich meist um Fälle, in denen eine Abfrage die höhere Arbeitsspeicherebene, die von höheren Ressourcenklassen zugeordnet wird, niemals nutzt. Es wird dann immer die Standardressourcenklasse oder kleine Ressourcenklasse (smallrc) verwendet. Dies gilt unabhängig von der Ressourcenklasse, die dem Benutzer zugewiesen ist. Beispielsweise wird `CREATE LOGIN` immer in „smallrc“ ausgeführt. Die zum Ausführen dieses Vorgangs erforderlichen Ressourcen sind sehr gering, und daher wäre es nicht sinnvoll, die Abfrage in das Parallelitätsslot-Modell aufzunehmen. Es wäre ineffizient, vorab große Mengen an Arbeitsspeicher für diese Aktion zuzuweisen. Durch Ausschließen von `CREATE LOGIN` aus dem Parallelitätsslot-Modell kann SQL Data Warehouse sehr viel effizienter arbeiten.
+Die meisten Abfragen werden über Ressourcenklassen gesteuert. Diese Abfragen müssen die Schwellenwerte sowohl für gleichzeitige Abfragen als auch für Parallelität einhalten. Ein Endbenutzer kann eine Abfrage nicht aus dem Parallelitätsslotmodell ausschließen.
+
+Um es noch einmal zu wiederholen: Die folgenden Anweisungen **berücksichtigen** Ressourcenklassen:
+
+- INSERT-SELECT
+- UPDATE
+- DELETE
+- SELECT (wenn Benutzertabellen abgefragt werden)
+- ALTER INDEX REBUILD
+- ALTER INDEX REORGANIZE
+- ALTER TABLE REBUILD
+- CREATE INDEX
+- CREATE CLUSTERED COLUMNSTORE INDEX
+- CREATE TABLE AS SELECT (CTAS)
+- Laden von Daten
+- Datenverschiebungsvorgänge, die vom DMS (Data Movement Service) ausgeführt werden
+
+## Ausnahmen von Parallelitätslimits für Abfragen
+
+Einige Abfragen berücksichtigen die Ressourcenklasse nicht, der der Benutzer zugeordnet ist. Diese Ausnahmen von den Parallelitätslimits werden zugelassen, wenn für einen bestimmten Befehl nicht viele Arbeitsspeicherressourcen zur Verfügung stehen. Dies ist häufig der Fall, wenn es sich bei dem Befehl um einen Metadatenvorgang handelt. Mit solchen Ausnahmen wird vermieden, dass Abfragen eine größere Menge an Speicher zugewiesen wird, die diese Abfragen niemals benötigen. In diesen Fällen wird immer die Standardressourcenklasse (die kleine Ressourcenklasse, „smallrc“) verwendet, unabhängig von der Ressourcenklasse, die dem Benutzer eigentlich zugewiesen ist. Beispielsweise wird `CREATE LOGIN` immer in „smallrc“ ausgeführt. Die zum Ausführen dieses Vorgangs erforderlichen Ressourcen sind sehr gering, und daher wäre es nicht sinnvoll, die Abfrage in das Parallelitätsslot-Modell aufzunehmen. Es wäre ineffizient, vorab große Mengen an Arbeitsspeicher für diese Aktion zuzuweisen. Durch Ausschließen von `CREATE LOGIN` aus dem Parallelitätsslot-Modell kann SQL Data Warehouse sehr viel effizienter arbeiten.
 
 Die folgenden Anweisungen berücksichtigen Ressourcenklassen **nicht**:
 
@@ -214,29 +268,9 @@ Removed as these two are not confirmed / supported under SQLDW
 - REDISTRIBUTE
 -->
 
-### Abfragen mit Berücksichtigung von Parallelitätslimits
+## Beispiel: Ändern der Ressourcenklasse eines Benutzers
 
-Es ist wichtig zu beachten, dass die Mehrzahl der Endbenutzerabfragen wahrscheinlich durch Ressourcenklassen gesteuert werden. Als allgemeine Regel gilt, dass die aktive Abfrageworkload sowohl den Schwellenwert für gleichzeitige Abfragen als auch den Schwellenwert für Parallelitätsslots einhalten muss, sofern sie nicht ausdrücklich von der Plattform ausgeschlossen wurde. Als Endbenutzer können Sie eine Abfrage nicht aus dem Parallelitätsslot-Modell ausschließen. Falls einer der Schwellenwerte überschritten wird, werden Abfragen in die Warteschlange eingereiht. Abfragen in der Warteschlange werden anhand der Prioritätsreihenfolge gefolgt vom Übermittlungszeitpunkt abgearbeitet.
-
-Zur Wiederholung: Die folgenden Anweisungen **berücksichtigen** Ressourcenklassen:
-
-- INSERT-SELECT
-- UPDATE
-- DELETE
-- SELECT (wenn Benutzertabellen abgefragt werden)
-- ALTER INDEX REBUILD
-- ALTER INDEX REORGANIZE
-- ALTER TABLE REBUILD
-- CREATE INDEX
-- CREATE CLUSTERED COLUMNSTORE INDEX
-- CREATE TABLE AS SELECT
-- Laden von Daten
-- Datenverschiebungsvorgänge, die vom DMS (Data Movement Service) ausgeführt werden
-
-
-## Verwalten von Benutzern
-
-1. **Anmeldung erstellen:** Öffnen Sie eine Verbindung mit der **Masterdatenbank** für Ihre SQL Data Warehouse-Instanz, und führen Sie die folgenden Befehle aus:
+1. **Anmeldung erstellen:** Öffnen Sie eine Verbindung mit der **Masterdatenbank** für Ihr SQL Data Warehouse, und führen Sie die folgenden Befehle aus.
 	
 	```sql
 	CREATE LOGIN newperson WITH PASSWORD = 'mypassword';
@@ -245,25 +279,25 @@ Zur Wiederholung: Die folgenden Anweisungen **berücksichtigen** Ressourcenklass
 
 	> [AZURE.NOTE] Es empfiehlt sich, Benutzer für Anmeldungen bei der Masterdatenbank sowohl in Azure SQL-Datenbank als auch in Azure SQL Data Warehouse zu erstellen. Auf dieser Ebene sind zwei Serverrollen verfügbar, die eine Anmeldung dafür erfordern, dass ein Benutzer in der Masterdatenbank ist, um die Mitgliedschaft erteilen zu können. Die Rollen lauten `Loginmanager` und `dbmanager`. Sowohl in der Azure SQL-Datenbank als auch im SQL Data Warehouse erteilen diese Rollen Berechtigungen zum Verwalten von Anmeldungen und zum Erstellen von Datenbanken. Dies unterscheidet sich bei SQL Server. Weitere Informationen finden Sie im Artikel [SQL-Datenbank-Authentifizierung und -Autorisierung: Gewähren von Zugriff][].
 
-2. **Benutzerkonto erstellen:** Öffnen Sie eine Verbindung mit der **SQL Data Warehouse-Datenbank**, und führen Sie den folgenden Befehl aus:
+2. **Benutzerkonto erstellen:** Öffnen Sie eine Verbindung mit der **SQL Data Warehouse-Datenbank**, und führen Sie den folgenden Befehl aus.
 
 	```sql
 	CREATE USER newperson FOR LOGIN newperson;
 	```
 
-3. **Berechtigungen gewähren:** Im Beispiel unten erteilt `CONTROL` Berechtigungen in der SQL Data Warehouse-Datenbank. `CONTROL` auf Ebene der Datenbank entspricht „db\_owner“ in SQL Server.
+3. **Berechtigungen gewähren:** Im Beispiel unten wird die Berechtigung `CONTROL` in der SQL Data Warehouse-Datenbank gewährt. `CONTROL` auf Ebene der Datenbank entspricht „db\_owner“ in SQL Server.
 
 	```sql
 	GRANT CONTROL ON DATABASE::MySQLDW to newperson;
 	```
 
-4. **Ressourcenklasse heraufsetzen:** Verwenden Sie die folgende Abfrage, um einen Benutzer einer erhöhten Workload-Verwaltungsrolle hinzuzufügen:
+4. **Ressourcenklasse heraufsetzen:** Verwenden Sie die folgende Abfrage, um einen Benutzer einer Rolle mit erhöhten Berechtigungen für die Workloadverwaltung hinzuzufügen.
 
 	```sql
 	EXEC sp_addrolemember 'largerc', 'newperson'
 	```
 
-5. **Ressourcenklasse herabsetzen:** Verwenden Sie die folgende Abfrage, um einen Benutzer aus einer Workload-Verwaltungsrolle zu entfernen.
+5. **Ressourcenklasse herabsetzen:** Verwenden Sie die folgende Abfrage, um einen Benutzer aus einer Workloadverwaltungsrolle zu entfernen.
 
 	```sql
 	EXEC sp_droprolemember 'largerc', 'newperson';
@@ -273,7 +307,7 @@ Zur Wiederholung: Die folgenden Anweisungen **berücksichtigen** Ressourcenklass
 
 ## Erkennung von Abfragen in der Warteschlange und andere DMVs
 
-Die DMV `sys.dm_pdw_exec_requests` kann verwendet werden, um Abfragen zu identifizieren, die in eine Parallelitätswarteschlange eingereiht wurden.
+Die DMV `sys.dm_pdw_exec_requests` kann verwendet werden, um Abfragen zu identifizieren, die in eine Parallelitätswarteschlange eingereiht wurden. Abfragen, die auf einen Parallelitätsslot warten, weisen den Status **Angehalten** auf.
 
 ```sql
 SELECT 	 r.[request_id]				 AS Request_ID
@@ -285,7 +319,7 @@ SELECT 	 r.[request_id]				 AS Request_ID
 FROM    sys.dm_pdw_exec_requests r;
 ```
 
-Workload-Verwaltungsrollen können mit `sys.database_principals` angezeigt werden.
+Workloadverwaltungsrollen können mit `sys.database_principals` angezeigt werden.
 
 ```sql
 SELECT  ro.[name]           AS [db_role_name]
@@ -310,7 +344,7 @@ SQL Data Warehouse verfügt über die folgenden Wartetypen:
 - LocalQueriesConcurrencyResourceType: Bezieht sich auf Abfragen, die sich außerhalb des Parallelitätsslot-Frameworks befinden. DMV-Abfragen und Systemfunktionen wie `SELECT @@VERSION` sind Beispiele für lokale Abfragen.
 - UserConcurrencyResourceType: Bezieht sich auf Abfragen, die sich innerhalb des Parallelitätsslot-Frameworks befinden. Abfragen für Endbenutzertabellen sind ein Beispiel für die Verwendung dieses Ressourcentyps.
 - DmsConcurrencyResourceType: Bezieht sich auf Wartezeiten, die sich aufgrund von Datenverschiebungen ergeben.
-- BackupConcurrencyResourceType: Diese Wartezeit gibt an, dass eine Datenbank gesichert wird. Der maximale Wert für diesen Ressourcentyp ist 1. Wenn mehrere Sicherungen gleichzeitig angefordert werden, werden die restlichen in die Warteschlange eingereiht.
+- BackupConcurrencyResourceType: Diese Wartezeit gibt an, dass eine Datenbank gesichert wird. Der maximale Wert für diesen Ressourcentyp ist 1. Wenn mehrere Sicherungen gleichzeitig angefordert werden, werden die restlichen in die Warteschlange eingereiht.
 
 Mit der DMV `sys.dm_pdw_waits` kann angezeigt werden, auf welche Ressourcen eine Abfrage wartet.
 
@@ -348,7 +382,7 @@ JOIN    sys.dm_pdw_exec_requests r  ON w.[request_id] = r.[request_id]
 WHERE	w.[session_id] <> SESSION_ID();
 ```
 
-Mit der DMV `sys.dm_pdw_resource_waits` werden nur die Ressourcenwartezeiten angezeigt, die von einer bestimmten Abfrage verbraucht werden. Mit der Ressourcenwartezeit wird nur gemessen, wie lange auf die Bereitstellung von Ressourcen gewartet wird. Bei der Signalwartezeit (Signal Wait Time) wird dagegen gemessen, wie lange die zugrunde liegende SQL Server-Komponente zum Planen der Abfrage in der CPU benötigt.
+Mit der DMV `sys.dm_pdw_resource_waits` werden nur die Ressourcenwartezeiten einer bestimmten Abfrage angezeigt. Mit der Ressourcenwartezeit wird nur gemessen, wie lange auf die Bereitstellung von Ressourcen gewartet wird. Bei der Signalwartezeit (Signal Wait Time) wird dagegen gemessen, wie lange die zugrunde liegende SQL Server-Komponente zum Planen der Abfrage in der CPU benötigt.
 
 ```sql
 SELECT  [session_id]
@@ -366,7 +400,7 @@ FROM    sys.dm_pdw_resource_waits
 WHERE	[session_id] <> SESSION_ID();
 ```
 
-Die DMV `sys.dm_pdw_wait_stats` kann für die Verlaufsanalysen von Wartezeiten verwendet werden.
+Die DMV `sys.dm_pdw_wait_stats` kann für Verlaufsanalysen von Wartezeiten verwendet werden.
 
 ```sql
 SELECT	w.[pdw_node_id]
@@ -394,4 +428,4 @@ Weitere Informationen zum Verwalten von Datenbankbenutzern und der Sicherheit fi
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0803_2016-->

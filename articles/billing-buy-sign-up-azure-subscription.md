@@ -1,11 +1,11 @@
 <properties
 	pageTitle="Registrieren für ein Azure-Abonnement oder Erwerben, Upgraden und Aktivieren eines Azure-Abonnements | Microsoft Azure"
 	description="Beschreibt das Erwerben oder Registrieren eines Azure-Abonnements"
-	services="billing"
+	services=""
 	documentationCenter=""
 	authors="genlin"
 	manager="msmbaldwin"
-	editor="meerak"
+	editor=""
 	tags="billing,top-support-issue"
 	/>
 
@@ -119,4 +119,4 @@ Wenn Sie **Azure in Open**-Gutschriften über einen Händler erworben und einen 
 
 3. Geben Sie den Product Key ein, und aktivieren Sie dann das Kontrollkästchen für die Vereinbarung.
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->
