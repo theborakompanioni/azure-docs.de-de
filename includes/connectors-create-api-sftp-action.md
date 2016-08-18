@@ -10,14 +10,21 @@ Zum Konfigurieren dieser Aktion müssen Sie die folgenden Informationen angeben.
 
 Beginnen wir nun mit dem Hinzufügen der Aktion, um die Dateien zu extrahieren, wenn die zuvor definierte Bedingung als *True* ausgewertet wird.
 
-1. Wählen Sie **Aktion hinzufügen** aus. ![Bedingung für eine SFTP-Aktion – Abbildung 6](./media/connectors-create-api-sftp/condition-6.png)
-- Wählen Sie die Aktion **SFTP - Ordner extrahieren** aus ![Bedingung für eine SFTP-Aktion – Abbildung 7](./media/connectors-create-api-sftp/condition-7.png)
-- Wählen Sie **Quellarchiv-Dateipfad** aus. ![Bedingung für eine SFTP-Aktion – Abbildung 9](./media/connectors-create-api-sftp/condition-9.png)
-- Wählen Sie das Token **Dateipfad** aus. Damit wird angegeben, dass Sie den Dateipfad der vom Trigger gefundenen Datei als Quellarchiv-Dateipfad verwenden. ![Bedingung für eine SFTP-Aktion – Abbildung 10](./media/connectors-create-api-sftp/condition-10.png)
-- Wählen Sie **Zielordnerpfad** aus. ![Bedingung für eine SFTP-Aktion – Abbildung 11](./media/connectors-create-api-sftp/condition-11.png)
+1. Wählen Sie **Aktion hinzufügen** aus.  
+![Bedingung für eine SFTP-Aktion – Abbildung 6](./media/connectors-create-api-sftp/condition-6.png)  
+- Wählen Sie die Aktion **SFTP - Ordner extrahieren** aus  
+![Bedingung für eine SFTP-Aktion – Abbildung 7](./media/connectors-create-api-sftp/condition-7.png)  
+- Wählen Sie **Quellarchiv-Dateipfad** aus.  
+![Bedingung für eine SFTP-Aktion – Abbildung 9](./media/connectors-create-api-sftp/condition-9.png)  
+- Wählen Sie das Token **Dateipfad** aus. Damit wird angegeben, dass Sie den Dateipfad der vom Trigger gefundenen Datei als Quellarchiv-Dateipfad verwenden.  
+![Bedingung für eine SFTP-Aktion – Abbildung 10](./media/connectors-create-api-sftp/condition-10.png)  
+- Wählen Sie **Zielordnerpfad** aus.  
+![Bedingung für eine SFTP-Aktion – Abbildung 11](./media/connectors-create-api-sftp/condition-11.png)  
 - Wählen Sie das Token **Dateipfad** aus. Damit wird angegeben, dass Sie den Dateipfad der vom Trigger gefundenen Datei als Zielpfad für die extrahierten Dateien verwenden.
-- Geben Sie *\\ExtractedFile* in das Steuerelement **Zielordnerpfad** ein, und zwar unmittelbar nach dem Token für den Dateipfad im Steuerelement für den Zielordnerpfad. ![Bedingung für eine SFTP-Aktion – Abbildung 12](./media/connectors-create-api-sftp/condition-12.png)
-- Geben Sie *True* in das Steuerelement *Überschreiben?* ein, um anzugeben, dass vorhandene Dateien überschrieben werden sollen, wenn sie den gleichen Namen wie die extrahierten Dateien aufweisen. ![Bedingung für eine SFTP-Aktion – Abbildung 13](./media/connectors-create-api-sftp/condition-13.png)
+- Geben Sie *\\ExtractedFile* in das Steuerelement **Zielordnerpfad** ein, und zwar unmittelbar nach dem Token für den Dateipfad im Steuerelement für den Zielordnerpfad.  
+![Bedingung für eine SFTP-Aktion – Abbildung 12](./media/connectors-create-api-sftp/condition-12.png)  
+- Geben Sie *True* in das Steuerelement *Überschreiben?* ein, um anzugeben, dass vorhandene Dateien überschrieben werden sollen, wenn sie den gleichen Namen wie die extrahierten Dateien aufweisen.  
+![Bedingung für eine SFTP-Aktion – Abbildung 13](./media/connectors-create-api-sftp/condition-13.png)  
 - Speichern Sie die Änderungen am Workflow.
 
 <!---HONumber=AcomDC_0727_2016-->
