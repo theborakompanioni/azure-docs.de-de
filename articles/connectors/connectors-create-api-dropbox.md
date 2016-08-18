@@ -37,9 +37,11 @@ Ein Trigger ist ein Ereignis, mit dem ein in einer Logik-App definierter Workflo
 
 In diesem Beispiel verwenden wir den Trigger **When a file is created** (Wenn eine Datei erstellt wird). Wenn dieser Trigger aktiviert wird, rufen wir die Dropbox-Aktion **Get file content using path** (Dateiinhalt anhand des Pfads abrufen) auf.
 
-1. Geben Sie im Suchfeld des Logic Apps-Designers die Zeichenfolge *Dropbox* ein, und wählen Sie anschließend den Trigger **Dropbox - When a file is created** (Dropbox – Wenn eine Datei erstellt wird) aus. ![](../../includes/media/connectors-create-api-dropbox/using-dropbox-trigger.PNG)
+1. Geben Sie im Suchfeld des Logic Apps-Designers die Zeichenfolge *Dropbox* ein, und wählen Sie anschließend den Trigger **Dropbox - When a file is created** (Dropbox – Wenn eine Datei erstellt wird) aus.      
+ ![](../../includes/media/connectors-create-api-dropbox/using-dropbox-trigger.PNG)  
   
-2. Wählen Sie den Ordner aus, in dem Sie die Dateierstellung nachverfolgen möchten. Wählen Sie „...“ (rot markiert) aus, und navigieren Sie zum gewünschten Ordner für die Triggereingabe. ![](../../includes/media/connectors-create-api-dropbox/using-dropbox-trigger-2.PNG)
+2. Wählen Sie den Ordner aus, in dem Sie die Dateierstellung nachverfolgen möchten. Wählen Sie „...“ (rot markiert) aus, und navigieren Sie zum gewünschten Ordner für die Triggereingabe.  
+ ![](../../includes/media/connectors-create-api-dropbox/using-dropbox-trigger-2.PNG)  
 
 ## Verwenden einer Dropbox-Aktion
 
@@ -47,15 +49,21 @@ Eine Aktion ist ein Vorgang, der durch den in einer Logik-App definierten Workfl
 
 Führen Sie nach dem Hinzufügen des Triggers die folgenden Schritte aus, um eine Aktion hinzuzufügen, die den Inhalt der neuen Datei abruft.
 
-1. Wählen Sie **+ Neuer Schritt** aus, um die Aktion hinzuzufügen, die ausgeführt werden soll, wenn eine neue Datei erstellt wird. ![](../../includes/media/connectors-create-api-dropbox/using-dropbox-action.PNG)
+1. Wählen Sie **+ Neuer Schritt** aus, um die Aktion hinzuzufügen, die ausgeführt werden soll, wenn eine neue Datei erstellt wird.  
 
-2. Wählen Sie **Aktion hinzufügen** aus. Daraufhin öffnet sich das Suchfeld, in dem Sie nach der gewünschten Aktion suchen können. ![](../../includes/media/connectors-create-api-dropbox/using-dropbox-action-2.PNG)
+ ![](../../includes/media/connectors-create-api-dropbox/using-dropbox-action.PNG)
+
+2. Wählen Sie **Aktion hinzufügen** aus. Daraufhin öffnet sich das Suchfeld, in dem Sie nach der gewünschten Aktion suchen können.  
+ ![](../../includes/media/connectors-create-api-dropbox/using-dropbox-action-2.PNG)
 
 3. Geben Sie *dropbox* ein, um nach Dropbox-spezifischen Aktionen zu suchen.
 
-4. Wählen Sie **Dropbox - Get file content using path** (Dropbox – Dateiinhalt anhand des Pfads abrufen) als Aktion aus, die ausgeführt werden soll, wenn im ausgewählten Dropbox-Ordner eine neue Datei erstellt wird. Die Aktionskontrollblock wird geöffnet. Sie werden aufgefordert, den Zugriff Ihrer Logik-App auf Ihr Dropbox-Konto zu autorisieren, sofern Sie diesen Schritt noch nicht ausgeführt haben. ![](../../includes/media/connectors-create-api-dropbox/using-dropbox-action-3.PNG)
+4. Wählen Sie **Dropbox - Get file content using path** (Dropbox – Dateiinhalt anhand des Pfads abrufen) als Aktion aus, die ausgeführt werden soll, wenn im ausgewählten Dropbox-Ordner eine neue Datei erstellt wird. Die Aktionskontrollblock wird geöffnet. Sie werden aufgefordert, den Zugriff Ihrer Logik-App auf Ihr Dropbox-Konto zu autorisieren, sofern Sie diesen Schritt noch nicht ausgeführt haben.  
+ 
+ ![](../../includes/media/connectors-create-api-dropbox/using-dropbox-action-3.PNG)  
 
-5. Wählen Sie „...“ (rechts neben dem Steuerelement **Dateipfad**) aus, und navigieren Sie zum gewünschten Dateipfad. Alternativ können Sie das Token **Dateipfad** verwenden, um die Erstellung Ihrer Logik-App zu beschleunigen. ![](../../includes/media/connectors-create-api-dropbox/using-dropbox-action-4.PNG)
+5. Wählen Sie „...“ (rechts neben dem Steuerelement **Dateipfad**) aus, und navigieren Sie zum gewünschten Dateipfad. Alternativ können Sie das Token **Dateipfad** verwenden, um die Erstellung Ihrer Logik-App zu beschleunigen.  
+ ![](../../includes/media/connectors-create-api-dropbox/using-dropbox-action-4.PNG)  
 
 6. Speichern Sie Ihre Arbeit, und erstellen Sie in Dropbox eine neue Datei, um den Workflow zu aktivieren.
 

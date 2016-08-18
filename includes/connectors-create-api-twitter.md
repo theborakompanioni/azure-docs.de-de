@@ -5,10 +5,15 @@ Bevor Sie Ihr Twitter-Konto in einer Logik-App verwenden können, müssen Sie di
 
 Hier finden Sie die Schritte zum Autorisieren Ihrer Logik-App für Verbindungen mit Ihrem Twitter-Konto:
 
-1. Um eine Verbindung mit Twitter herzustellen, wählen Sie im Designer für Logik-Apps in der Dropdownliste **Verwaltete Microsoft-APIs anzeigen** aus, und geben Sie dann *Twitter* in das Suchfeld ein. Wählen Sie den zu verwendenden Trigger oder die gewünschte Aktion aus: ![Twitter-Verbindung – Abbildung 0](./media/connectors-create-api-twitter/twitter-0.png)
-2. Wenn Sie noch keine Verbindungen mit Twitter hergestellt haben, werden Sie aufgefordert, Ihre Twitter-Anmeldeinformationen anzugeben. Mit diesen Anmeldeinformationen wird Ihre Logik-App autorisiert, eine Verbindung mit dem Twitter-Konto herzustellen und auf dessen Daten zuzugreifen: ![Twitter-Verbindung – Abbildung 1](./media/connectors-create-api-twitter/twitter-1.png)
-3. Geben Sie Ihren Twitter-Benutzernamen und das zugehörige Kennwort zum Autorisieren Ihrer Logik-App an: ![Twitter-Verbindung – Abbildung 2](./media/connectors-create-api-twitter/twitter-2.png)
-4. Bestätigen Sie die Autorisierung: ![Twitter-Verbindung – Abbildung 3](./media/connectors-create-api-twitter/twitter-3.png)
-6. Beachten Sie, dass die Verbindung erstellt wurde und Sie nun mit anderen Schritten in Ihrer Logik-App fortfahren können: ![Twitter-Verbindung – Abbildung 4](./media/connectors-create-api-twitter/twitter-4.png)
+1. Um eine Verbindung mit Twitter herzustellen, wählen Sie im Designer für Logik-Apps in der Dropdownliste **Verwaltete Microsoft-APIs anzeigen** aus, und geben Sie dann *Twitter* in das Suchfeld ein. Wählen Sie den zu verwendenden Trigger oder die gewünschte Aktion aus:  
+  ![Twitter-Verbindung – Abbildung 0](./media/connectors-create-api-twitter/twitter-0.png)
+2. Wenn Sie noch keine Verbindungen mit Twitter hergestellt haben, werden Sie aufgefordert, Ihre Twitter-Anmeldeinformationen anzugeben. Mit diesen Anmeldeinformationen wird Ihre Logik-App autorisiert, eine Verbindung mit dem Twitter-Konto herzustellen und auf dessen Daten zuzugreifen:  
+  ![Twitter-Verbindung – Abbildung 1](./media/connectors-create-api-twitter/twitter-1.png)  
+3. Geben Sie Ihren Twitter-Benutzernamen und das zugehörige Kennwort zum Autorisieren Ihrer Logik-App an:  
+  ![Twitter-Verbindung – Abbildung 2](./media/connectors-create-api-twitter/twitter-2.png)  
+4. Bestätigen Sie die Autorisierung:  
+  ![Twitter-Verbindung – Abbildung 3](./media/connectors-create-api-twitter/twitter-3.png)  
+6. Beachten Sie, dass die Verbindung erstellt wurde und Sie nun mit anderen Schritten in Ihrer Logik-App fortfahren können:  
+  ![Twitter-Verbindung – Abbildung 4](./media/connectors-create-api-twitter/twitter-4.png)
 
 <!---HONumber=AcomDC_0727_2016-->
