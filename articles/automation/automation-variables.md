@@ -1,5 +1,12 @@
-<properties pageTitle="Variable Objekte in Azure Automation | Microsoft Azure" description="Variablenobjekte sind Werte, die allen Runbooks und DSC-Konfigurationen in Ihrem Automation-Konto zur Verfügung stehen. Dieser Artikel stellt eine ausführliche Beschreibung von Variablen bereit und zeigt, wie diese in Textrunbooks und grafischen Runbooks eingesetzt werden." services="automation" documentationCenter="" authors="mgoedtel" manager="jwhit"" editor="tysonn" />
-<tags  
+<properties 
+   pageTitle="Variablenobjekte in Azure Automation | Microsoft Azure"
+   description="Variablenobjekte sind Werte, die allen Runbooks und DSC-Konfigurationen in Azure Automation zur Verfügung stehen. Dieser Artikel stellt eine ausführliche Beschreibung von Variablen bereit und zeigt, wie diese in Textrunbooks und grafischen Runbooks eingesetzt werden."
+   services="automation"
+   documentationCenter=""
+   authors="mgoedtel"
+   manager="jwhit"
+   editor="tysonn" />
+<tags 
    ms.service="automation"
    ms.devlang="na"
    ms.topic="article"
@@ -179,6 +186,6 @@ Die folgende Abbildung zeigt das Filtern der Objekte, die in einer Variablen in 
 ## Nächste Schritte
 
 - Weitere Informationen zur Verknüpfung von Aktivitäten bei der grafischen Inhaltserstellung finden Sie unter [Links bei der grafischen Erstellung](automation-graphical-authoring-intro.md#links-and-workflow).
-- Informationen zu den ersten Schritten mit grafischen Runbooks finden Sie unter [Mein erstes grafisches Runbook](automation-first-runbook-graphical.md). 
+- Informationen über die ersten Schritte mit grafischen Runbooks finden Sie unter [Mein erstes grafisches Runbook](automation-first-runbook-graphical.md).
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0810_2016-->

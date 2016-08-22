@@ -13,14 +13,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="vm-linux"
    ms.workload="infrastructure-services"
-   ms.date="05/24/2016"
+   ms.date="08/08/2016"
    ms.author="iainfou"/>
 
 # Öffnen von Ports und Endpunkten
-In Azure öffnen Sie einen Port oder erstellen einen Endpunkt, indem Sie einen Netzwerkfilter erstellen, mit dem Datenverkehr an den von Ihnen ausgewählten Port in einem Subnetz oder die Netzwerkschnittstelle auf einem virtuellen Computer (VM) geleitet werden kann. Diese Filter, mit denen sowohl eingehender als auch ausgehender Datenverkehr gesteuert werden kann, sind in einer Netzwerksicherheitsgruppe angeordnet und an die Ressource angefügt, die den Datenverkehr empfängt. Wir verwenden ein gängiges Beispiel für Webdatenverkehr über Port 80.
+In Azure öffnen Sie einen Port oder erstellen einen Endpunkt, indem Sie einen Netzwerkfilter erstellen, mit dem Datenverkehr an den von Ihnen ausgewählten Port in einem Subnetz oder die Netzwerkschnittstelle auf einem virtuellen Computer (VM) geleitet werden kann. Sie platzieren diese Filter, mit denen sowohl eingehender als auch ausgehender Datenverkehr gesteuert werden kann, in einer Netzwerksicherheitsgruppe, die an die Ressource angefügt ist, die den Datenverkehr empfängt. Wir verwenden ein gängiges Beispiel für Webdatenverkehr über Port 80.
 
 ## Schnellbefehle
-Zum Erstellen einer Netzwerksicherheitsgruppe und der zugehörigen Regeln benötigen Sie [die Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md) im Resource Manager-Modus (`azure config mode arm`).
+Zum Erstellen einer Netzwerksicherheitsgruppe und der zugehörigen Regeln benötigen Sie [die Azure-CLI](../xplat-cli-install.md) im Resource Manager-Modus (`azure config mode arm`).
 
 Erstellen Sie die Netzwerksicherheitsgruppe, und geben Sie Ihre eigenen Werte für Namen und Speicherort ein:
 
@@ -28,7 +28,7 @@ Erstellen Sie die Netzwerksicherheitsgruppe, und geben Sie Ihre eigenen Werte f�
 azure network nsg create --resource-group TestRG --name TestNSG --location westus
 ```
 
-Fügen Sie eine Regel hinzu, um HTTP-Datenverkehr an Ihren Webserver zuzulassen (passen Sie die Regel für Ihr eigenes Szenario an, beispielsweise für SSH-Zugriff oder Datenbankverbindungen):
+Fügen Sie eine Regel hinzu, um HTTP-Datenverkehr an Ihren Webserver zuzulassen (oder passen Sie die Regel für Ihr eigenes Szenario an, beispielsweise für SSH-Zugriff oder Datenbankverbindungen):
 
 ```
 azure network nsg rule create --protocol tcp --direction inbound --priority 1000 \
@@ -50,7 +50,7 @@ azure network vnet subnet set --resource-group TestRG --name TestSubnet --networ
 ## Weitere Informationen zu Netzwerksicherheitsgruppen
 Mit diesen Schnellbefehlen können Sie den Datenverkehr zu Ihrem virtuellen Computer einrichten. Netzwerksicherheitsgruppen bieten eine Vielzahl erstklassiger Funktionen sowie eine differenzierte Steuerung des Ressourcenzugriffs. Weitere Informationen über die [Erstellung von Netzwerksicherheitsgruppen und ACL-Regeln erhalten Sie hier](../virtual-network/virtual-networks-create-nsg-arm-cli.md).
 
-Netzwerksicherheitsgruppen und ACL-Regeln können auch als Teil von Azure Resource Manager-Vorlagen definiert werden. Erfahren Sie mehr über [das Erstellen von Netzwerksicherheitsgruppen mit Vorlagen](../virtual-network/virtual-networks-create-nsg-arm-template.md).
+Sie können Netzwerksicherheitsgruppen und ACL-Regeln auch als Teil von Azure Resource Manager-Vorlagen definieren. Erfahren Sie mehr über [das Erstellen von Netzwerksicherheitsgruppen mit Vorlagen](../virtual-network/virtual-networks-create-nsg-arm-template.md).
 
 Wenn eine Portweiterleitung notwendig ist, um einem internen Port des virtuellen Computers einen eindeutigen externen Port zuzuweisen, müssen ein Lastenausgleich sowie NAT-Regeln (Network Address Translation, Netzwerkadressübersetzung) verwendet werden. Sie können beispielsweise TCP-Port 8080 extern verfügbar machen und den Datenverkehr an TCP-Port 80 auf einem virtuellen Computer weiterleiten. Hier finden Sie weitere Informationen zum [Erstellen eines Load Balancers mit Internetzugriff](../load-balancer/load-balancer-get-started-internet-arm-cli.md).
 
@@ -61,4 +61,4 @@ In diesem Beispiel haben Sie eine einfache Regel erstellt, die HTTP-Datenverkehr
 - [Was ist eine Netzwerksicherheitsgruppe (NSG)?](../virtual-network/virtual-networks-nsg.md)
 - [Unterstützung von Azure Resource Manager für Load Balancer](../load-balancer2 /load-balancer-arm.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0810_2016-->

@@ -1,10 +1,10 @@
 <properties
    pageTitle="Azure Network Security im Überblick | Microsoft Azure"
-   description="Dieser Artikel erläutert Ihnen das Angebot von Microsoft Azure im Bereich Netzwerksicherheit. Wir bieten grundlegende Erklärungen zu Kernkonzepten und Anforderungen im Bereich Netzwerksicherheit und Informationen über die Vorteile von Azure in jedem dieser Bereiche."
+   description=" Dieser Artikel erläutert Ihnen das Angebot von Microsoft Azure im Bereich Netzwerksicherheit. Wir bieten grundlegende Erklärungen zu Kernkonzepten und Anforderungen im Bereich Netzwerksicherheit und Informationen über die Vorteile von Azure in jedem dieser Bereiche. "
    services="security"
    documentationCenter="na"
    authors="TomShinder"
-   manager="StevenPo"
+   manager="MBaldwin"
    editor="TomSh"/>
 
 <tags
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/19/2016"
+   ms.date="08/09/2016"
    ms.author="terrylan"/>
 
 # Die Netzwerksicherheit in Azure im Überblick
@@ -44,7 +44,7 @@ Weitere Informationen:
 ## Die Netzwerkzugriffssteuerung
 Netzwerkzugriffssteuerung bedeutet, die Konnektivität zu oder ausgehend von bestimmten Geräten oder Subnetzen innerhalb eines virtuellen Azure-Netzwerks zu begrenzen. Das Ziel der Netzwerkzugriffssteuerung ist sicherzustellen, dass Ihre virtuellen Computer und Dienste nur denjenigen Benutzern und Geräten zugänglich sind, denen Sie den Zugriff auch erlauben möchten. Zugriffssteuerungen basieren auf den Entscheidungen, Verbindungen zu und ausgehend von virtuellen Computern oder Diensten zuzulassen oder zu verweigern.
 
-Azure unterstützt verschiedene Typen von Netzwerkzugriffssteuerungen. Das umfasst:
+Azure unterstützt verschiedene Typen von Netzwerkzugriffssteuerungen. Diese umfassen:
 
 - Die Steuerung der Vermittlungsschicht
 - Routensteuerung und Tunnelerzwingung
@@ -136,7 +136,7 @@ Weitere Informationen:
 ### Verbinden Ihrer virtuellen Azure-Netzwerke untereinander
 Sie haben auch die Möglichkeit, viele virtuelle Azure-Netzwerke für Ihre Bereitstellungen zu verwenden. Es gibt zahlreiche Gründe, warum dies sinnvoll sein kann. Einer dieser Gründe ist möglicherweise die Vereinfachung der Verwaltung, ein anderer die Sicherheit. Unabhängig von den Beweggründen hinter der Platzierung der Ressourcen in verschiedenen virtuellen Azure-Netzwerken, möchten Sie in einigen Fällen möglicherweise, dass zwischen den Ressourcen eines jeden Netzwerks eine Verbindung hergestellt wird.
 
-Sie erreichen dies z.B., indem die Dienste in einem virtuellen Azure-Netzwerk über ein Internet-Loopback eine Verbindung mit Diensten in einem anderen virtuellen Azure-Netzwerk herstellen. Die Verbindung würde von einem virtuellen Azure-Netzwerk ausgehen, das Internet durchlaufen und anschließend zum virtuellen Azure-Zielnetzwerk zurückkehren. Diese Option weist für die Verbindung die der Internet-basierten Kommunikation inhärenten Sicherheitsprobleme auf.
+Sie erreichen dies z.B., indem die Dienste in einem virtuellen Azure-Netzwerk über ein Internet-Loopback eine Verbindung mit Diensten in einem anderen virtuellen Azure-Netzwerk herstellen. Die Verbindung würde von einem virtuellen Azure-Netzwerk ausgehen, das Internet durchlaufen und anschließend zum virtuellen Azure-Zielnetzwerk zurückkehren. Bei Verwendung dieser Option wird die Verbindung den für Internet-basierte Kommunikation typischen Sicherheitsproblemen ausgesetzt.
 
 Ein besserer Weg wäre möglicherweise die Erstellung eines Standort-zu-Standort-VPN zwischen zwei virtuellen Azure-Netzwerken. Dieses Site-to-Site-VPN zwischen zwei virtuellen Azure-Netzwerken verwendet dasselbe [IPsec-Protokoll im Tunnelmodus](https://technet.microsoft.com/library/cc786385.aspx) wie die zuvor erwähnte standortübergreifende Site-to-Site-VPN-Verbindung.
 
@@ -216,7 +216,7 @@ Die Namensauflösung ist eine Schlüsselfunktion aller Dienste, die in Azure geh
 Es gibt zwei Arten der Namensauflösung, die Sie berücksichtigen müssen:
 
 - Interne Namensauflösung – Die interne Namensauflösung wird von Diensten in Ihren virtuellen Azure-Netzwerken, in lokalen Netzwerken oder in beiden verwendet. Auf Namen, die für die interne Namensauflösung verwendet werden, kann nicht über das Internet zugegriffen werden. Für die optimale Sicherheit ist es wichtig, dass Ihr internes Namensauflösungsschema nicht für externe Benutzer zugänglich ist.
-- Externe Namensauflösung – Die externe Namensauflösung wird von Personen und Geräten außerhalb Ihrer lokalen und virtuellen Azure-Netzwerke verwendet. Hierbei handelt es sich um die Namen, die im Internet sichtbar sind, und dazu verwendet werden, Verbindungen an Ihre cloudbasierten Dienste zu leiten.
+- Externe Namensauflösung – Die externe Namensauflösung wird von Personen und Geräten außerhalb Ihrer lokalen und virtuellen Azure-Netzwerke verwendet. Hierbei handelt es sich um die Namen, die im Internet sichtbar sind und dazu verwendet werden, Verbindungen an Ihre cloudbasierten Dienste zu leiten.
 
 Für die interne Namensauflösung stehen Ihnen zwei Optionen zur Verfügung:
 
@@ -253,7 +253,7 @@ Weitere Informationen:
 - [Microsoft Cloud Services und Netzwerksicherheit](../best-practices-network-security.md)
 
 ## Azure Security Center
-Mit Azure Security Center können Sie Bedrohungen verhindern, erkennen und beheben. Darüber hinaus sorgt Security Center für eine größere Transparenz und bessere Kontrolle der Sicherheit Ihrer Azure-Ressourcen. Es bietet integrierte Sicherheitsüberwachung und Richtlinienverwaltung für Ihre Azure-Abonnements, hilft bei der Erkennung von Bedrohungen, die andernfalls möglicherweise unbemerkt bleiben, und kann gemeinsam mit einem breiten Sektrum an Sicherheitslösungen verwendet werden.
+Mit Azure Security Center können Sie Bedrohungen verhindern, erkennen und beheben. Darüber hinaus sorgt Security Center für eine größere Transparenz und bessere Kontrolle der Sicherheit Ihrer Azure-Ressourcen. Es bietet integrierte Sicherheitsüberwachung und Richtlinienverwaltung für Ihre Azure-Abonnements, hilft bei der Erkennung von Bedrohungen, die andernfalls möglicherweise unbemerkt bleiben, und kann gemeinsam mit einem breiten Spektrum an Sicherheitslösungen verwendet werden.
 
 Mit Azure Security Center können Sie die Netzwerksicherheit wie folgt optimieren und überwachen:
 
@@ -265,4 +265,4 @@ Weitere Informationen:
 
 - [Einführung in Azure Security Center](../security-center/security-center-intro.md)
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0810_2016-->

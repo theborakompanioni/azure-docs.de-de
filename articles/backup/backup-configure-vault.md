@@ -3,8 +3,8 @@
 	description="Sichern Sie Windows-Server oder -Clients in Azure, indem Sie einen Sicherungstresor erstellen, Anmeldeinformationen herunterladen, den Backup-Agent installieren und eine erste Sicherung Ihrer Dateien und Ordner durchführen."
 	services="backup"
 	documentationCenter=""
-	authors="Jim-Parker"
-	manager="jwhit"
+	authors="markgalioto"
+	manager="cfreeman"
 	editor=""
 	keywords="Sicherungstresor; Windows-Server sichern; Windows sichern;"/>
 
@@ -14,10 +14,10 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/10/2016"
+	ms.date="08/10/2016"
 	ms.author="jimpark; trinadhk; markgal"/>
 
-# Sichern eines Windows-Servers oder -Clients in Azure mit Azure Backup unter Verwendung des Resource Manager-Bereitstellungsmodells
+# Sichern eines Windows-Servers oder -Clients in Azure unter Verwendung des Resource Manager-Bereitstellungsmodells
 
 > [AZURE.SELECTOR]
 - [Azure-Portal](backup-configure-vault.md)
@@ -25,9 +25,10 @@
 
 In diesem Artikel erfahren Sie, wie Sie Dateien und Ordner eines Windows-Servers (oder Windows-Clients) mithilfe von Azure Backup und des Resource Manager-Bereitstellungsmodells in Azure sichern.
 
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] klassisches Bereitstellungsmodell.
+
 ![Sicherungsprozessschritte](./media/backup-configure-vault/initial-backup-process.png)
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] Klassisches Bereitstellungsmodell.
 
 ## Vorbereitung
 Um einen Server oder Client in Azure zu sichern, benötigen Sie ein Azure-Konto. Falls Sie nicht über ein Konto verfügen, können Sie in nur wenigen Minuten ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen.
@@ -54,7 +55,7 @@ Bei einem Recovery Services-Tresor handelt es sich um eine Entität, in der alle
 
     ![Erstellen eines Recovery Services-Tresors – Schritt 5](./media/backup-configure-vault/rs-vault-attributes.png)
 
-4. Geben Sie unter **Name** einen Anzeigenamen für den Tresor ein. Der Name muss für das Azure-Abonnement eindeutig sein. Geben Sie einen Namen ein, der zwischen 2 und 50 Zeichen enthält. Er muss mit einem Buchstaben beginnen und darf nur Buchstaben, Zahlen und Bindestriche enthalten.
+4. Geben Sie unter **Name** einen Anzeigenamen für den Tresor ein. Der Name muss für das Azure-Abonnement eindeutig sein. Geben Sie einen Namen ein, der zwischen 2 und 50 Zeichen enthält. Er muss mit einem Buchstaben beginnen und darf nur Buchstaben, Zahlen und Bindestriche enthalten.
 
 5. Klicken Sie auf **Abonnement**, um die Liste mit den verfügbaren Abonnements anzuzeigen. Falls Sie nicht sicher sind, welches Abonnement geeignet ist, können Sie das Standardabonnement bzw. das vorgeschlagene Abonnement verwenden. Es sind nur dann mehrere Auswahlmöglichkeiten verfügbar, wenn Ihr Organisationskonto mehreren Azure-Abonnements zugeordnet ist.
 
@@ -164,7 +165,7 @@ Für die erste Sicherung verwenden Sie den Microsoft Azure Backup-Agent.
 
     Sie können tägliche (maximal drei pro Tag) oder wöchentliche Sicherungen planen.
 
-    ![Elemente eines Windows Server-Backups](./media/backup-configure-vault/specify-backup-schedule-close.png)
+    ![Elemente einer Windows Server-Sicherung](./media/backup-configure-vault/specify-backup-schedule-close.png)
 
     >[AZURE.NOTE] Weitere Informationen zum Angeben des Sicherungszeitplans finden Sie im Artikel [Verwenden von Azure Backup als Ersatz für Ihre Bandinfrastruktur](backup-azure-backup-cloud-as-tape.md).
 
@@ -225,4 +226,4 @@ Zusätzliche Informationen zum Sichern von virtuellen Computern oder anderen Wor
 - Nachdem Sie nun Ihre Dateien und Ordner gesichert haben, können Sie [Ihre Tresore und Server verwalten](backup-azure-manage-windows-server.md).
 - Informationen zum Wiederherstellen eines Backups finden Sie im Artikel zum [Wiederherstellen von Dateien auf einem Windows-Computer](backup-azure-restore-windows-server.md).
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0810_2016-->

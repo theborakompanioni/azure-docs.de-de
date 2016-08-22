@@ -1,10 +1,10 @@
 <properties
-	pageTitle="Einführung in Azure | Microsoft Azure"
+	pageTitle="Einführung in Microsoft Azure | Microsoft Azure"
 	description="Neu bei Microsoft Azure? Verschaffen Sie sich eine grundlegende Übersicht über die angebotenen Dienste sowie Beispiele für deren Nutzen."
 	services=" "
 	documentationCenter=".net"
-	authors="Rboucher"
-	manager="jwhit"
+	authors="rboucher"
+	manager=""
 	editor=""/>
 
 <tags
@@ -18,7 +18,7 @@
 
 # Einführung in Microsoft Azure
 
-Microsoft Azure ist die Anwendungsplattform von Microsoft für die öffentliche Cloud. Das Ziel dieses Artikels besteht darin, Ihnen ein grundlegendes Verständnis von Azure zu vermitteln, auch wenn Sie in Bezug auf [Cloud Computing](https://azure.microsoft.com/overview/what-is-cloud-computing/) über keine Erfahrungen verfügen.
+Microsoft Azure ist die Anwendungsplattform von Microsoft für die öffentliche Cloud. Das Ziel dieses Artikels besteht darin, Ihnen ein grundlegendes Verständnis von Azure zu vermitteln, auch wenn Sie in Bezug auf das Cloud Computing über keine Erfahrungen verfügen.
 
 **Wie Sie diesen Artikel lesen sollten**
 
@@ -56,7 +56,7 @@ Sie können diese Technologien separat verwenden oder sie wie benötigt miteinan
 
 ![Azure Virtual Machines ROBBCSIART\_TEST](./media/fundamentals-introduction-to-azure/mscsiart_VirtualMachinesIntroNew_12345.png) *Azure Virtual Machines bietet Ihnen vollständige Kontrolle über die Instanzen virtueller Computer in der Cloud.*
 
-Die Möglichkeit, bei Bedarf einen virtuellen Computer zu erstellen, sei es anhand eines Standard-Images oder anhand eines von Ihnen bereitgestellten Images, kann sehr nützlich sein. Genau diesen Ansatz, im Allgemeinen als Infrastructure-as-a-Services ([IaaS](https://azure.microsoft.com/overview/what-is-iaas/)) bezeichnet, bietet Ihnen Azure Virtual Machines. Abbildung 2 zeigt, wie ein virtueller Computer (VM) ausgeführt wird und wie ein solcher anhand einer VHD erstellt wird.
+Die Möglichkeit, bei Bedarf einen virtuellen Computer zu erstellen, sei es anhand eines Standard-Images oder anhand eines von Ihnen bereitgestellten Images, kann sehr nützlich sein. Genau diesen Ansatz, im Allgemeinen als Infrastructure-as-a-Services (IaaS) bezeichnet, bietet Ihnen Azure Virtual Machines. Abbildung 2 zeigt zum einen, wie ein virtueller Computer (VM) ausgeführt wird, und zum anderen, wie er anhand einer VHD erstellt wird.
 
 Zum Erstellen eines virtuellen Computers legen Sie die VHD, die verwendet werden soll, sowie die Größe des virtuellen Computers fest. Dann zahlen Sie für die Zeit, die der virtuelle Computer ausgeführt wird. Sie zahlen pro Minute und nur, wenn der virtuelle Computer aktiv ist. Allerdings fällt dafür, dass die VHD verfügbar bleibt, eine minimale Speichergebühr an. Azure bietet einen Katalog mit Bestands-VHDs (sogenannte "Images"), die ein bootfähiges Betriebssystem enthalten. Hierzu gehören Microsoft- und Partneroptionen wie Windows Server und Linux, SQL Server, Oracle und vieles mehr. Sie haben die Möglichkeit, VHDs und Images zu erstellen und selbst hochzuladen. Sie können sogar VHDs hochladen, die nur Daten enthalten, und über Ihre aktiven virtuellen Computer darauf zugreifen.
 
@@ -69,7 +69,7 @@ Dieser eher allgemeine Cloud Computing-Ansatz kann zur Lösung verschiedener Pro
 **Virtual Machine-Szenarien**
 
 1.	**Dev/Test** – Damit können Sie eine günstige Entwicklungs- und Testplattform erstellen, die Sie nach Abschluss Ihrer Arbeiten wieder außer Betrieb nehmen. Sie können auch Anwendungen erstellen und ausführen, die genau die Sprachen und Bibliotheken nutzen, die Sie benötigen. Diese Anwendungen können jede Datenverwaltungsoption nutzen, die in Azure zur Verfügung steht. Sie können auch SQL Server oder ein anderes DBMS verwenden, das auf einem oder mehreren virtuellen Computern ausgeführt wird.
-2.	**Anwendungen nach Azure verschieben (anheben und verschieben)** - Bei "anheben und verschieben" geht es um das Verschieben Ihrer Anwendung. Vergleichen Sie dies mit dem Anheben eines großen Objekts mithilfe eines Gabelstaplers. Sie "heben" die VHD aus dem lokalen Datencenter, "verschieben" sie nach Azure und führen sie dort aus. In der Regel müssen Sie anschließend noch Abhängigkeiten von anderen Systemen entfernen. Wenn zu viele vorhanden sind, können Sie stattdessen die Option 3 auswählen.  
+2.	**Anwendungen nach Azure verschieben („anheben“ und „verschieben“)**: Bei „anheben“ und „verschieben“ geht es um das Verschieben Ihrer Anwendung. Vergleichen Sie dies mit dem Anheben eines großen Objekts mithilfe eines Gabelstaplers. Sie "heben" die VHD aus dem lokalen Datencenter, "verschieben" sie nach Azure und führen sie dort aus. In der Regel müssen Sie anschließend noch Abhängigkeiten von anderen Systemen entfernen. Wenn zu viele vorhanden sind, können Sie stattdessen die Option 3 auswählen.
 3.	**Datencenter erweitern** – Verwenden Sie Azure-VMs, auf denen SharePoint oder andere Anwendungen ausgeführt werden, als Erweiterung Ihres lokalen Datencenters. Zur Unterstützung dieser Option können Sie Windows-Domänen in der Cloud erstellen, indem Sie Active Directory auf Azure-VMs ausführen. Sie können Azure Virtual Network (Erläuterungen weiter unten) verwenden, um Ihr lokales Netzwerk und Ihr Netzwerk in Azure zu verbinden.
 
 
@@ -169,7 +169,7 @@ Eine Anwendung, in der z. B. Videos, sehr große Dateien oder andere Binärinfo
 
 *Abbildung: Azure Import/Export bietet die Möglichkeit, eine physische Festplatte an oder von Azure zu schicken, um große Datenmengen schneller und günstiger zu importieren oder zu exportieren.*
 
-Gelegentlich möchten Sie große Datenmengen nach Azure verschieben. Dies kann viel Zeit, eventuell Tage, in Anspruch nehmen und sehr viel Bandbreite belegen. In diesen Fällen können Sie Azure Import/Export verwenden. Damit können Sie Bitlocker-verschlüsselte 3,5"-SATA-Festplattenlaufwerke direkt in Azure-Datencenter verschieben, wo Microsoft die Daten für Sie in einen Blobspeicher überträgt. Nach dem Upload schickt Microsoft die Laufwerke an Sie zurück. Sie können auch veranlassen, dass große Datenmengen aus dem Blobspeicher auf Festplattenlaufwerke exportiert und Ihnen per Post zugesandt werden.
+Gelegentlich möchten Sie große Datenmengen nach Azure verschieben. Dies kann viel Zeit, eventuell Tage, in Anspruch nehmen und sehr viel Bandbreite belegen. In diesen Fällen können Sie Azure Import/Export verwenden. Damit können Sie Bitlocker-verschlüsselte 3,5"-SATA-Festplattenlaufwerke direkt an Azure-Rechenzentren senden, wo Microsoft die Daten für Sie in einen Blobspeicher überträgt. Nach dem Upload schickt Microsoft die Laufwerke an Sie zurück. Sie können auch veranlassen, dass große Datenmengen aus dem Blobspeicher auf Festplattenlaufwerke exportiert und Ihnen per Post zugesandt werden.
 
 **Szenarien für den Import / Export**
 
@@ -203,7 +203,7 @@ Azure wird heute in vielen Datencentern überall auf der Welt ausgeführt. Wenn 
 ### Virtual Network
 ![VirtualNetwork](./media/fundamentals-introduction-to-azure/VirtualNetworkIntroNew.png)
 
-*Abbildung: Virtual Network stellt in der Cloud ein privates Netzwerk zur Verfügung, sodass verschiedene Dienste miteinander oder mit lokalen Ressourcen kommunizieren können, wenn Sie eine VPN-Verbindung oder eine standortübergreifende Verbindung einrichten.*
+*Abbildung: Virtual Networks stellt in der Cloud ein privates Netzwerk zur Verfügung, sodass verschiedene Dienste miteinander oder mit lokalen Ressourcen kommunizieren können, wenn Sie eine standortübergreifende VPN-Verbindung einrichten.*
 
 
 Ein nützlicher Einsatzbereich für eine öffentliche Cloud ist die Erweiterung Ihres eigenen Rechenzentrums.
@@ -403,7 +403,7 @@ Mit Azure Site Recovery (ehemals Hyper-V-Wiederherstellungs-Manager) können Sie
 
 Es überwacht ständig den Zustand Ihrer Dienste und automatisiert die geordnete Wiederherstellung von Diensten bei Ausfall eines Standorts im primären Datencenter. Virtuelle Computer können systematisch hochgefahren werden, um den Dienst selbst bei komplexen mehrschichtigen Arbeitsauslastungen schnell wiederherzustellen.
 
-Site Recovery nutzt vorhandene Technologien wie Hyper-V Replica, System Center und SQL Server AlwaysOn. Ausführlichere Informationen finden Sie unter [Übersicht über Azure Site Recovery](site-recovery/site-recovery-overview.md).
+Site Recovery nutzt vorhandene Technologien wie Hyper-V Replica, System Center und SQL Server Always On. Ausführlichere Informationen finden Sie unter [Übersicht über Azure Site Recovery](site-recovery/site-recovery-overview.md).
 
 ### Azure Backup
 ![Azure Backup](./media/fundamentals-introduction-to-azure/AzureBackupIntroNew.png)
@@ -580,7 +580,7 @@ Wie die Abbildung zeigt, bietet Media Services verschiedene Komponenten für Anw
 
 Anwendungen, die diese Plattform verwenden, können unter Azure oder anderweitig ausgeführt werden. Eine Desktopanwendung für eine Videoproduktionsfirma ermöglicht es Benutzern beispielsweise, Videos in Media Services hochzuladen, und verarbeitet sie dann auf verschiedene Weise. Darüber hinaus könnte ein cloudbasierter Inhaltsverwaltungsdienst auf Azure auf Media Services zurückgreifen, um Videos zu verarbeiten und zu verteilen. Unabhängig vom Ausführungsort und der Funktion wählt jede Anwendung die erforderlichen Komponenten und greift über RESTful-Schnittstellen darauf zu.
 
-Zum Verteilen der produzierten Medien kann eine Anwendung das Azure CDN oder ein anderes CDN nutzen oder die Bits direkt an die Benutzer senden. Unabhängig davon, wie die Medien dorthin gelangen, können Videos, die mit Media Services erstellt werden, von verschiedenen Clientsystemen verwendet werden, darunter Windows, Macintosh, HTML 5, iOS, Android, Windows Phone, Flash und Silverlight. Das Ziel besteht darin, leichter moderne Medienanwendungen zu erstellen.
+Zum Verteilen der produzierten Medien kann eine Anwendung das Azure CDN oder ein anderes CDN nutzen oder die Bits direkt an die Benutzer senden. Unabhängig davon, wie die Medien dorthin gelangen, können Videos, die mit Media Services erstellt werden, von verschiedenen Clientsystemen verwendet werden, darunter Windows, Macintosh, HTML 5, iOS, Android, Windows Phone, Flash und Silverlight. Das Ziel besteht darin, leichter moderne Medienanwendungen zu erstellen.
 
 **Referenzen**
 
@@ -607,4 +607,4 @@ Nachdem Sie nun einen Überblick erhalten haben, besteht der nächste Schritt da
 
 [Azure Media Services Poster]: http://azure.microsoft.com/documentation/infographics/media-services/
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0810_2016-->

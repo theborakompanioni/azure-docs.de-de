@@ -13,7 +13,7 @@ ms.service="virtual-machines-linux"
  ms.topic="article"
  ms.tgt_pltfrm="vm-linux"
  ms.workload="infrastructure-services"
- ms.date="05/09/2016"
+ ms.date="08/04/2016"
  ms.author="danlep"/>
 
 # Informationen zu den rechenintensiven A8-, A9-, A10- und A11-Instanzen 
@@ -28,11 +28,11 @@ Hier finden Sie Hintergrundinformationen und einige Überlegungen zur Verwendung
 
 Innerhalb eines einzelnen Clouddiensts oder einer Verfügbarkeitsgruppe können Cluster von Linux-VMs der Größe A8 und A9, auf denen eine der folgenden unterstützten Linux-HPC-Distributionen und eine unterstützte MPI-Implementierung ausgeführt werden, auf das RDMA-Netzwerk in Azure zum Ausführen von Linux-MPI-Anwendungen zugreifen. Bereitstellungsoptionen und Beispielkonfigurationsschritte finden Sie unter [Einrichten eines Linux RDMA-Clusters zum Ausführen von MPI-Anwendungen](virtual-machines-linux-classic-rdma-cluster.md).
 
-* **Verteilungen** – SUSE Linux Enterprise Server (SLES) 12 für HPC, SLES 12 für HPC (Premium), 7.1 HPC CentOS-basiert oder 6.5 HPC CentOS-basiert, aus Azure Marketplace-Image bereitgestellt
+* **Verteilungen** – SUSE Linux Enterprise Server (SLES) 12 für HPC, SLES 12 für HPC (Premium), 7.1 HPC CentOS-basiert oder 6.5 HPC CentOS-basiert, aus einem Azure Marketplace-Image bereitgestellt
 
 * **MPI** – Intel MPI Library 5.x
 
-    >[AZURE.NOTE] Intel MPI 5.1.3.181 ist bereits auf den CentOS-basierten HPC-Images im Marketplace installiert. Um Intel MPI auf SLES 12 HPC-VMs zu verwenden, müssen Sie es separat installieren.
+    >[AZURE.NOTE] Intel MPI 5.1 ist bereits auf den CentOS-basierten HPC-Images im Marketplace installiert. Um Intel MPI auf SLES 12 HPC-VMs zu verwenden, müssen Sie es separat installieren.
 
 Derzeit werden Azure Linux RDMA-Treiber nur installiert, wenn Sie RDMA-fähiges SLES 12 HPC und CentOS-HPC-Images aus dem Azure Marketplace bereitstellen. Sie können die Treiber nicht auf anderen Linux-VMs installieren, die Sie bereitstellen.
 
@@ -114,4 +114,4 @@ done
 
 * Informationen zu ersten Schritten bei der Bereitstellung und Verwendung von A8- und A9-Instanzen mit RDMA unter Linux finden Sie unter [Einrichten eines Linux RDMA-Clusters zum Ausführen von MPI-Anwendungen](virtual-machines-linux-classic-rdma-cluster.md).
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0810_2016-->

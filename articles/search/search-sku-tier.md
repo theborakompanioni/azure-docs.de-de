@@ -14,7 +14,7 @@
 	ms.workload="search"
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
-	ms.date="07/25/2016"
+	ms.date="08/08/2016"
 	ms.author="heidist"/>
 
 # Auswählen einer SKU oder eines Tarifs für Azure Search
@@ -51,10 +51,10 @@ Tarif|Primäre Szenarien
 ----|-----------------
 **Free**|Ein gemeinsam genutzter, kostenloser Dienst für Evaluierung, Untersuchung oder kleine Workloads. Da der Dienst gemeinsam mit anderen Abonnenten genutzt wird, hängen Abfragedurchsatz und Indizierung davon ab, wer den Dienst sonst noch verwendet. Kapazität: gering (50 MB oder drei Indizes mit je bis zu 10.000 Dokumenten).
 **Basic**|Kleine Produktionsworkloads auf dedizierter Hardware. Hochverfügbar. Kapazität: bis zu drei Replikate und eine Partition (2 GB).
-Standard 1 (**S1**)|Unterstützt flexible Kombinationen aus Partitionen (12) und Replikaten (12) für mittlere Produktionsworkloads auf dedizierter Hardware. Sie können Kombinationen aus Partitionen und Replikaten mit Unterstützung von maximal 36 abrechenbaren Sucheinheiten zuordnen. Auf dieser Ebene beträgt die Partitionsgröße jeweils 25 GB, und der QPS-Wert liegt bei etwa 15 Abfragen pro Sekunde.
-Standard 2 (**S2**)|Führt größere Produktionsworkloads mit den gleichen 36 Sucheinheiten wie bei S1, aber mit größeren Partitionen und Replikaten aus. Auf dieser Ebene beträgt die Partitionsgröße jeweils 100 GB, und der QPS-Wert liegt bei ca. 60 Abfragen pro Sekunde.
-Standard 3 (**S3**) – Vorschau|Führt proportional größere Produktionsworkloads auf leistungsstärkeren Systemen in Konfigurationen mit bis zu 12 Partitionen oder 12 Replikaten unter 36 Sucheinheiten aus. Auf dieser Ebene beträgt die Partitionsgröße jeweils 200 GB, und der QPS-Wert liegt bei über 60 Abfragen pro Sekunde. S3 befindet sich in der Vorschauphase und ist zu einem Einführungspreis erhältlich.
-Standard 3 mit hoher Dichte (**S3 HD**) – Vorschau|Eine große Anzahl kleinerer Indizes. Nur eine einzelne Partition (200 GB). Mehr als 60 Abfragen pro Sekunde. S3 befindet sich in der Vorschauphase und ist zu einem Einführungspreis erhältlich.
+**S1**|Standard 1 unterstützt flexible Kombinationen aus Partitionen (12) und Replikaten (12) für mittlere Produktionsworkloads auf dedizierter Hardware. Sie können Kombinationen aus Partitionen und Replikaten mit Unterstützung von maximal 36 abrechenbaren Sucheinheiten zuordnen. Auf dieser Ebene beträgt die Partitionsgröße jeweils 25 GB, und der QPS-Wert liegt bei etwa 15 Abfragen pro Sekunde.
+**S2**|Standard 2 führt größere Produktionsworkloads mit den gleichen 36 Sucheinheiten wie bei S1, aber mit größeren Partitionen und Replikaten aus. Auf dieser Ebene beträgt die Partitionsgröße jeweils 100 GB, und der QPS-Wert liegt bei ca. 60 Abfragen pro Sekunde.
+**S3** (Vorschau)|Standard 3 führt proportional größere Produktionsworkloads auf leistungsstärkeren Systemen in Konfigurationen mit bis zu 12 Partitionen oder 12 Replikaten unter 36 Sucheinheiten aus. Auf dieser Ebene beträgt die Partitionsgröße jeweils 200 GB, und der QPS-Wert liegt bei über 60 Abfragen pro Sekunde. S3 befindet sich in der Vorschauphase und ist zu einem Einführungspreis erhältlich.
+**S3 HD** (Vorschau)|Standard 3 mit hoher Dichte ist für eine große Anzahl von kleineren Indizes konzipiert. Nur eine einzelne Partition (200 GB). Mehr als 60 Abfragen pro Sekunde. S3 befindet sich in der Vorschauphase und ist zu einem Einführungspreis erhältlich.
 
 > [AZURE.NOTE] Maximalwerte für Replikate und Partitionen werden als Sucheinheiten (36 Einheiten pro Dienst) abgerechnet. Dadurch ergibt sich effektiv ein niedrigerer Grenzwert als der Maximalwert zunächst vermuten lässt. Wenn Sie also etwa die maximal zulässige Anzahl von 12 Replikaten verwenden möchten, können maximal drei Partitionen (12 * 3 = 36 Einheiten) vorhanden sein. Analog dazu gilt: Wenn Sie die maximale Anzahl von Partitionen verwenden möchten, muss die Anzahl der Replikate auf drei verringert werden. Ein Diagramm mit zulässigen Kombinationen finden Sie unter [Skalieren von Ressourcenebenen für Abfrage und Indizierung von Workloads in Azure Search](search-capacity-planning.md).
 
@@ -69,8 +69,8 @@ Zulässige Indizes pro SKU|3|5|50|200|200|1000
 Grenzwerte für Dokumente|10\.000 insgesamt|1 Million pro Dienst|15 Mio. pro Partition |60 Mio. pro Partition|120 Mio. pro Partition |1 Mio. pro Index
 Maximale Anzahl der Partitionen|– |1 |12 |12 |12|1
 Partitionsgröße|50 MB insgesamt|2 GB pro Dienst|25 GB pro Partition |100 GB pro Partition (bis zu maximal 1,2 TB pro Dienst)|200 GB pro Partition (bis zu maximal 2,4 TB pro Dienst)|200 GB (für die einzelne Partition)
-Maximale Anzahl der Replikate|N/V |3 |12 |12 |12|12
-Abfragen pro Sekunde|–|~3 pro Replikat|~15 pro Replikat|~60 pro Replikat|>60 pro Replikat|>60 pro Replikat
+Maximale Anzahl der Replikate|– |3 |12 |12 |12|12
+Abfragen pro Sekunde|N/V|~3 pro Replikat|~15 pro Replikat|~60 pro Replikat|>60 pro Replikat|>60 pro Replikat
 
 <sup>1</sup> Für Free- und Vorschau-SKUs gibt es keine SLAs. SLAs werden angewendet, sobald eine SKU allgemein verfügbar ist.
 
@@ -101,4 +101,4 @@ Wenn Sie die optimale SKU ermittelt haben, fahren Sie mit den folgenden Schritte
 - [Erstellen eines Azure Search-Diensts über das Azure-Portal](search-create-service-portal.md)
 - [Skalieren von Ressourcenebenen für Abfrage und Indizierung von Arbeitslasten in Azure Search](search-capacity-planning.md)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0810_2016-->

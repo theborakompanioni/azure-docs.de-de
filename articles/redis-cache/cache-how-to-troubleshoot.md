@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/23/2016" 
+	ms.date="08/09/2016" 
 	ms.author="sdanie"/>
 
 # Problembehandlung für Azure Redis Cache
@@ -47,7 +47,7 @@ Wenn der Arbeitsspeicher auf dem Clientcomputer sehr stark ausgelastet ist, füh
 
 #### Messung 
 
-1.	Überwachen Sie die Speicherauslastung auf dem Computer und stellen Sie sicher, dass sie den verfügbaren Speicher nicht überschreitet. 
+1.	Überwachen Sie die Speicherauslastung auf dem Computer und stellen Sie sicher, dass sie den verfügbaren Speicher nicht überschreitet.
 2.	Überwachen Sie den Leistungsindikator `Page Faults/Sec`. Bei den meisten Systemen treten selbst im normalen Betrieb einige Seitenfehler auf. Achten Sie deshalb bei diesem Leistungsindikator für Seitenfehler besonders auf die Spitzen, denn diese entsprechen Timeouts.
 
 #### Lösung
@@ -164,8 +164,8 @@ In diesem Abschnitt wird das Behandeln von Problemen beschrieben, die wegen eine
 
 Wenn der Arbeitsspeicher auf der Serverseite sehr stark ausgelastet ist, führt dies zu Leistungsproblemen aller Art und unter Umständen auch zu einer verzögerten Verarbeitung von Anforderungen. Bei vollkommen ausgelastetem Speicher lagert das System in der Regel Daten aus dem physischen Speicher in den virtuellen Speicher aus, also auf den Datenträger. Diese sogenannten *Seitenfehler* bewirken eine deutliche Verlangsamung des Systems. Eine zu hohe Speicherauslastung kann verschiedene Ursachen haben:
 
-1.	Sie haben den Cache bis zur Kapazitätsgrenze mit Daten gefüllt. 
-2.	Der Speicher in Redis ist stark fragmentiert. Dies wird meist durch das Speichern großer Objekte verursacht (Redis ist für kleine Objekte optimiert – siehe [What is the ideal value size range for redis? Is 100KB too large?](https://groups.google.com/forum/#!searchin/redis-db/size/redis-db/n7aa2A4DZDs/3OeEPHSQBAAJ) (Welche Größe ist für Werte bei Redis ideal? Sind 100 KB zu viel?)). 
+1.	Sie haben den Cache bis zur Kapazitätsgrenze mit Daten gefüllt.
+2.	Der Speicher in Redis ist stark fragmentiert. Dies wird meist durch das Speichern großer Objekte verursacht (Redis ist für kleine Objekte optimiert – siehe [What is the ideal value size range for redis? Is 100KB too large?](https://groups.google.com/forum/#!searchin/redis-db/size/redis-db/n7aa2A4DZDs/3OeEPHSQBAAJ) (Welche Größe ist für Werte bei Redis ideal? Sind 100 KB zu viel?)).
 
 #### Messung
 
@@ -264,7 +264,7 @@ Diese Fehlermeldung enthält Metriken, mit deren Hilfe Sie die Ursache und die m
 4. Wenn Anforderungen durch Bandbreiteneinschränkungen auf dem Server oder dem Client behindert werden, dauert deren Ausführung länger, und es können Timeouts auftreten. Um festzustellen, ob ein Timeout durch die verfügbare Netzwerkbandbreite auf dem Server verursacht wird, befolgen Sie die Anweisungen unter [Bandbreitenüberschreitung auf der Serverseite](#server-side-bandwidth-exceeded). Um festzustellen, ob ein Timeout durch die verfügbare Netzwerkbandbreite auf dem Client verursacht wird, befolgen Sie die Anweisungen unter [Bandbreitenüberschreitung auf der Clientseite](#client-side-bandwidth-exceeded).
 
 6. Werden Sie durch die CPU auf dem Server oder auf dem Client behindert?
-	-	Überprüfen Sie, ob Sie durch die CPU auf dem Client behindert werden. Wenn dies der Fall ist, werden Anforderungen u.U. nicht innerhalb des `synctimeout`-Intervalls verarbeitet, was zu Timeouts führt. Durch einen Wechsel zu einem größer dimensionierten Client oder durch eine Verteilung der Last können Sie Abhilfe schaffen. 
+	-	Überprüfen Sie, ob Sie durch die CPU auf dem Client behindert werden. Wenn dies der Fall ist, werden Anforderungen u.U. nicht innerhalb des `synctimeout`-Intervalls verarbeitet, was zu Timeouts führt. Durch einen Wechsel zu einem größer dimensionierten Client oder durch eine Verteilung der Last können Sie Abhilfe schaffen.
 	-	Überprüfen Sie, ob Sie durch die CPU auf dem Server behindert werden. Überwachen Sie dazu die [Cacheleistungsmetrik](cache-how-to-monitor.md#available-metrics-and-reporting-intervals) `CPU`. Wenn Anforderungen eingehen, während Redis durch die CPU behindert wird, können für diese Anforderungen Timeouts auftreten. Sie können Abhilfe schaffen, indem Sie die Last auf mehrere Shards verteilen (hierfür benötigen Sie einen Premium-Cache). Alternativ können Sie ein Upgrade zu einer größer dimensionierten CPU durchführen oder in einen höheren Tarif wechseln. Weitere Informationen finden Sie unter [Bandbreitenüberschreitung auf der Serverseite](#server-side-bandwidth-exceeded).
 
 7. Dauert die Verarbeitung von Befehlen auf dem Server lange? Wenn die Verarbeitung und Ausführung von Befehlen auf dem Redis-Server lange dauert, kann dies zu Timeouts führen. Beispiele für Befehle mit langen Ausführungszeiten sind `mget` mit einer großen Anzahl von Schlüsseln, `keys *` oder schlecht geschriebene Lua-Skripts. Sie können mithilfe des „redis-cli“-Clients eine Verbindung mit Ihrer Azure Redis Cache-Instanz herstellen oder die [Redis-Konsole](cache-configure.md#redis-console) verwenden und den Befehl [SlowLog](http://redis.io/commands/slowlog) ausführen, um festzustellen, ob für Anforderungen mehr Zeit als erwartet benötigt wird. Der Redis-Server und StackExchange.Redis sind für viele kleine Anforderungen optimiert, nicht für wenige große. Durch eine Aufteilung Ihrer Daten in kleinere Blöcke können Sie u.U. Verbesserungen erzielen.
@@ -280,21 +280,10 @@ Diese Fehlermeldung enthält Metriken, mit deren Hilfe Sie die Ursache und die m
 11. Wenn Sie `RedisSessionStateprovider` verwenden, müssen Sie das Timeout für Wiederholungsversuche richtig festlegen. `retrytimeoutInMilliseconds` muss höher als `operationTimeoutinMilliseonds` sein, andernfalls werden keine Wiederholungsversuche vorgenommen. Im folgenden Beispiel ist `retrytimeoutInMilliseconds` auf 3000 festgelegt. Weitere Informationen finden Sie unter [ASP.NET-Sitzungszustandsanbieter für Azure Redis Cache](cache-aspnet-session-state-provider.md) und [How to use the configuration parameters of Session State Provider and Output Cache Provider](https://github.com/Azure/aspnet-redis-providers/wiki/Configuration) (Verwenden der Konfigurationsparameter des Sitzungszustandsanbieters und des Ausgabecacheanbieters).
 
 
-	<add
-	  name="AFRedisCacheSessionStateProvider"
-	  type="Microsoft.Web.Redis.RedisSessionStateProvider"
-	  host="enbwcache.redis.cache.windows.net"
-	  port="6380"
-	  accessKey="…"
-	  ssl="true"
-	  databaseId="0"
-	  applicationName="AFRedisCacheSessionState"
-	  connectionTimeoutInMilliseconds = "5000"
-	  operationTimeoutInMilliseconds = "1000"
-	  retryTimeoutInMilliseconds="3000" />
+	<add name="AFRedisCacheSessionStateProvider" type="Microsoft.Web.Redis.RedisSessionStateProvider" host="enbwcache.redis.cache.windows.net" port="6380" accessKey="…" ssl="true" databaseId="0" applicationName="AFRedisCacheSessionState" connectionTimeoutInMilliseconds = "5000" operationTimeoutInMilliseconds = "1000" retryTimeoutInMilliseconds="3000" />
 
 
-12. Überprüfen Sie die Speicherauslastung auf dem Azure Redis Cache-Server, indem Sie `Used Memory RSS` und `Used Memory` [überwachen](cache-how-to-monitor.md#available-metrics-and-reporting-intervals). Wenn eine Entfernungsrichtlinie vorhanden ist und `Used_Memory` die Größe des Caches erreicht, beginnt Redis mit dem Entfernen von Schlüsseln. Im Idealfall sollte `Used Memory RSS` nur geringfügig höher als `Used memory` sein. Ein großer Unterschied bedeutet, dass eine (interne oder externe) Speicherfragmentierung vorhanden ist. Wenn `Used Memory RSS` geringer als `Used Memory` ist, bedeutet das, dass ein Teil des Cachespeichers vom Betriebssystem ausgelagert wurde. In diesem Fall müssen Sie mit erheblichen Latenzen rechnen. Da Redis nicht steuern kann, wie seine Belegungen den Speicherseiten zugeordnet werden, ist ein hoher `Used Memory RSS` oft ein Ergebnis einer Speicherauslastungsspitze. Wenn Redis Speicher freigibt, wird dieser Speicher dem Allocator zurückgegeben. Der Allocator kann den Speicher dem System zurückgeben, aber er muss dies nicht tun. Es kann zu einer Diskrepanz zwischen dem Wert für `Used Memory` und der vom Betriebssystem gemeldeten Speichernutzung kommen. Die Ursache dafür liegt möglicherweise darin, dass Speicher von Redis genutzt und freigegeben, aber nicht an das System zurückgegeben wurde. Um Speicherprobleme möglichst gering zu halten, können Sie die folgenden Schritte ausführen.
+12. Überprüfen Sie die Speicherauslastung auf dem Azure Redis Cache-Server, indem Sie `Used Memory RSS` und `Used Memory` [überwachen](cache-how-to-monitor.md#available-metrics-and-reporting-intervals). Wenn eine Entfernungsrichtlinie vorhanden ist und `Used_Memory` die Cachegröße erreicht, beginnt Redis mit dem Entfernen von Schlüsseln. Im Idealfall sollte `Used Memory RSS` nur geringfügig höher als `Used memory` sein. Ein großer Unterschied bedeutet, dass eine (interne oder externe) Speicherfragmentierung vorhanden ist. Wenn `Used Memory RSS` geringer als `Used Memory` ist, bedeutet das, dass ein Teil des Cachespeichers vom Betriebssystem ausgelagert wurde. In diesem Fall müssen Sie mit erheblichen Latenzen rechnen. Da Redis nicht steuern kann, wie seine Belegungen den Speicherseiten zugeordnet werden, ist ein hoher Wert für `Used Memory RSS` oft das Ergebnis einer Speicherauslastungsspitze. Wenn Redis Speicher freigibt, wird dieser Speicher dem Allocator zurückgegeben. Der Allocator kann den Speicher dem System zurückgeben, aber er muss dies nicht tun. Es kann zu einer Diskrepanz zwischen dem Wert für `Used Memory` und der vom Betriebssystem gemeldeten Speichernutzung kommen. Die Ursache dafür liegt möglicherweise darin, dass Speicher von Redis genutzt und freigegeben, aber nicht an das System zurückgegeben wurde. Um Speicherprobleme möglichst gering zu halten, können Sie die folgenden Schritte ausführen.
     -	Führen Sie ein Upgrade auf einen größeren Cache durch, damit in Ihrem System genügend Speicher vorhanden ist und entsprechende Einschränkungen wegfallen.
     -	Legen Sie Ablauffristen für die Schlüssel fest, damit ältere Werte proaktiv entfernt werden.
     -	Überwachen Sie die Cachemetrik `used_memory_rss`. Wenn sich dieser Wert der Größe Ihres Caches nähert, sind Leistungsprobleme absehbar. Falls Sie einen Premium-Cache nutzen, verteilen Sie die Daten über mehrere Shards. Andernfalls führen Sie ein Upgrade auf einen größeren Cache durch.
@@ -308,4 +297,4 @@ Diese Fehlermeldung enthält Metriken, mit deren Hilfe Sie die Ursache und die m
 -	[Wie führe ich Redis-Befehle aus?](cache-faq.md#how-can-i-run-redis-commands)
 -	[Überwachen von Azure Redis Cache](cache-how-to-monitor.md)
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0810_2016-->

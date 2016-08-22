@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/13/2016" 
+	ms.date="08/10/2016" 
 	ms.author="sdanie"/>
 
 # Verwalten von Azure-Redis-Cache mit Azure PowerShell
@@ -24,7 +24,7 @@
 
 Dieses Thema zeigt, wie Sie gängige Aufgaben wie Erstellen, Aktualisieren und Skalieren Ihrer Azure Redis Cache-Instanzen ausführen, Zugriffsschlüssel neu generieren und Ihre Caches anzeigen. Eine vollständige Liste der Azure Redis Cache-PowerShell-Cmdlets finden Sie unter [Azure Redis Cache-Cmdlets](https://msdn.microsoft.com/library/azure/mt634513.aspx).
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] [Klassisches Bereitstellungsmodell](#classic) werden weiter unten in diesem Artikel beschrieben.
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] [classic model](../resource-manager-deployment-model.md#classic-deployment-characteristics).
 
 ## Voraussetzungen
 
@@ -34,7 +34,7 @@ Wenn Sie bereits Azure PowerShell installiert haben, benötigen Sie Version 1.0.
 
 [AZURE.INCLUDE [powershell-preview](../../includes/powershell-preview-inline-include.md)]
 
-Zunächst müssen Sie sich mit dem folgenden Befehl in Azure anmelden.
+Zunächst müssen Sie sich mit dem folgenden Befehl bei Azure anmelden.
 
 	Login-AzureRmAccount
 
@@ -50,7 +50,7 @@ Führen Sie den folgenden Befehl aus, um das Abonnement anzugeben. Im folgenden 
 
 Bevor Sie Windows PowerShell mit dem Azure-Ressourcen-Manager verwenden können, benötigen Sie Folgendes:
 
-- Windows PowerShell, Version 3.0 oder 4.0. Um die Version von Windows PowerShell zu ermitteln, geben Sie `$PSVersionTable` ein. Vergewissern Sie sich, dass der Wert von `PSVersion` 3.0 oder 4.0 ist. Informationen zum Installieren einer kompatiblen Version finden Sie unter [Windows Management Framework 3.0 ](http://www.microsoft.com/download/details.aspx?id=34595) oder [Windows Management Framework 4.0](http://www.microsoft.com/download/details.aspx?id=40855).
+- Windows PowerShell, Version 3.0 oder 4.0. Um die Version von Windows PowerShell zu ermitteln, geben Sie `$PSVersionTable` ein. Vergewissern Sie sich, dass der Wert von `PSVersion` 3.0 oder 4.0 ist. Informationen zum Installieren einer kompatiblen Version finden Sie unter [Windows Management Framework 3.0](http://www.microsoft.com/download/details.aspx?id=34595) oder [Windows Management Framework 4.0](http://www.microsoft.com/download/details.aspx?id=40855).
 
 Um detaillierte Hilfe zu einem Cmdlet aus dem Lernprogramm zu erhalten, verwenden Sie das „Get-Help“-Cmdlet.
 
@@ -62,7 +62,7 @@ Geben Sie beispielsweise Folgendes ein, um Hilfe zum `New-AzureRmRedisCache`-Cmd
 
 ### Herstellen einer Verbindung mit der Azure Government-Cloud oder Azure China
 
-Standardmäßig ist die Azure-Umgebung `AzureCloud`, was die globale Azure-Cloudinstanz darstellt. Verwenden Sie zum Verbinden mit einer anderen Instanz den `Add-AzureRmAccount`-Befehl mit dem Befehlszeilenschalter `-Environment` oder -`EnvironmentName` mit der gewünschten Umgebung bzw. dem gewünschten Umgebungsnamen.
+Standardmäßig ist die Azure-Umgebung `AzureCloud` (die globale Azure-Cloudinstanz). Verwenden Sie zum Verbinden mit einer anderen Instanz den `Add-AzureRmAccount`-Befehl mit dem Befehlszeilenschalter `-Environment` oder -`EnvironmentName` mit der gewünschten Umgebung bzw. dem gewünschten Umgebungsnamen.
 
 Führen Sie zum Anzeigen der Liste der verfügbaren Umgebungen das Cmdlet `Get-AzureRmEnvironment` aus.
 
@@ -107,12 +107,12 @@ Die folgende Tabelle enthält Eigenschaften und Beschreibungen für Parameter, d
 | Parameter | Beschreibung | Standard |
 |--------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|
 | Name | Name des Caches | |
-| Standort | Ort des Caches | |
+| Ort | Ort des Caches | |
 | ResourceGroupName | Name der Ressourcengruppe, in der der Cache erstellt werden soll | |
-| Größe | Die Größe des Caches. Gültige Werte sind: P1, P2, P3, P4, C0, C1, C2, C3, C4, C5, C6, 250 MB, 1 GB, 2,5 GB, 6 GB, 13 GB, 26 GB, 53 GB | 1 GB |
+| Größe | Die Größe des Caches. Gültige Werte sind: P1, P2, P3, P4, C0, C1, C2, C3, C4, C5, C6, 250 MB, 1 GB, 2,5 GB, 6 GB, 13 GB, 26 GB, 53 GB | 1 GB |
 | ShardCount | Die Anzahl der zu erstellenden Shards beim Erstellen eines Premium-Caches mit Clusterunterstützung. Gültige Werte sind: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 | |
 | SKU | Gibt die SKU des Caches an. Gültige Werte sind: Basic, Standard, Premium | Standard |
-| RedisConfiguration | Gibt die Konfigurationseinstellungen für Redis an. Details zu den einzelnen Einstellungen finden Sie in der folgenden Tabelle [RedisConfiguration-Eigenschaften](#redisconfiguration-properties). | |
+| RedisConfiguration | Gibt die Konfigurationseinstellungen für Redis an. Details zu den einzelnen Einstellungen finden Sie in der Tabelle [RedisConfiguration-Eigenschaften](#redisconfiguration-properties). | |
 | EnableNonSslPort | Gibt an, ob der Nicht-SSL-Port aktiviert ist. | False |
 | MaxMemoryPolicy | Dieser Parameter ist veraltet – verwenden Sie stattdessen RedisConfiguration. | |
 | StaticIP | Wenn Sie den Cache in einem VNET hosten, geben Sie hiermit eine eindeutige IP-Adresse im Subnetz für den Cache an. Wird keine IP-Adresse angegeben, wird eine für Sie aus dem Subnetz ausgewählt. | |
@@ -142,7 +142,7 @@ Die folgende Tabelle enthält Eigenschaften und Beschreibungen für Parameter, d
 
 Neue Azure Redis Cache-Instanzen werden mit dem [New-AzureRmRedisCache](https://msdn.microsoft.com/library/azure/mt634517.aspx)-Cmdlet erstellt.
 
->[AZURE.IMPORTANT] Beim ersten Erstellen eines Redis-Caches in einem Abonnement mithilfe des Azure-Portals registriert das Portal den `Microsoft.Cache`-Namespace für dieses Abonnement. Wenn Sie versuchen, den ersten Redis-Cache in einem Abonnement mithilfe von PowerShell zu erstellen, müssen Sie zunächst diesen Namespace mit dem folgenden Befehl registrieren; andernfalls tritt bei Ausführung von Cmdlets wie `New-AzureRmRedisCache` und `Get-AzureRmRedisCache` ein Fehler auf.
+>[AZURE.IMPORTANT] Beim ersten Erstellen eines Redis-Caches in einem Abonnement mithilfe des Azure-Portals registriert das Portal den `Microsoft.Cache`-Namespace für dieses Abonnement. Wenn Sie versuchen, den ersten Redis-Cache in einem Abonnement mithilfe von PowerShell zu erstellen, müssen Sie zunächst diesen Namespace mit dem folgenden Befehl registrieren; andernfalls tritt beim Ausführen von Cmdlets wie `New-AzureRmRedisCache` und `Get-AzureRmRedisCache` ein Fehler auf.
 >
 >`Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.Cache"`
 
@@ -224,13 +224,13 @@ Um einen Cache mit Standardparametern zu erstellen, führen Sie den folgenden Be
 
 	New-AzureRmRedisCache -ResourceGroupName myGroup -Name mycache -Location "North Central US"
 
-`ResourceGroupName`, `Name` und `Location` sind erforderliche Parameter, aber die übrigen sind optional und haben Standardwerte. Mit dem vorherigen Befehl erstellen Sie eine Standard-SKU-Azure Redis Cache-Instanz mit Name, Speicherort und Ressourcengruppe gemäß der entsprechenden Angaben und einer Größe von 1 GB, für die der Nicht-SSL-Port deaktiviert ist.
+`ResourceGroupName`, `Name` und `Location` sind erforderliche Parameter, aber die übrigen sind optional und haben Standardwerte. Mit dem vorherigen Befehl erstellen Sie eine Standard-SKU-Azure Redis Cache-Instanz mit Name, Speicherort und Ressourcengruppe gemäß der entsprechenden Angaben und einer Größe von 1 GB, für die der Nicht-SSL-Port deaktiviert ist.
 
-Um einen Premium-Cache zu erstellen, geben Sie eine Größe von P1 (6 bis 60 GB), P2 (13 bis 130 GB), P3 (26 bis 260 GB), oder P4 (53 bis 530 GB) ein. Um Clustering zu aktivieren, geben Sie eine Shardanzahl mit dem Parameter `ShardCount` ein. Das folgende Beispiel erstellt einen P1-Premium-Cache mit 3 Shards. Ein P1-Premium-Cache ist 6 GB groß, und da wir drei Shards angegeben haben, beträgt die Gesamtgröße 18 GB (3 x 6 GB).
+Um einen Premium-Cache zu erstellen, geben Sie eine Größe von P1 (6 bis 60 GB), P2 (13 bis 130 GB), P3 (26 bis 260 GB), oder P4 (53 bis 530 GB) ein. Um Clustering zu aktivieren, geben Sie eine Shardanzahl mit dem Parameter `ShardCount` ein. Das folgende Beispiel erstellt einen P1-Premium-Cache mit 3 Shards. Ein P1-Premium-Cache ist 6 GB groß, und da wir drei Shards angegeben haben, beträgt die Gesamtgröße 18 GB (3 x 6 GB).
 
 	New-AzureRmRedisCache -ResourceGroupName myGroup -Name mycache -Location "North Central US" -Sku Premium -Size P1 -ShardCount 3
 
-Um Werte für die `RedisConfiguration`-Parameter anzugeben , schließen Sie die Werte als Schlüssel-/Wertpaare in `{}` ein, wie z. B. `@{"maxmemory-policy" = "allkeys-random", "notify-keyspace-events" = "KEA"}`. Im folgenden Beispiel wird ein standardmäßiger 1 GB-Cache mit `allkeys-random`-maxmemory-Richtlinie und mit `KEA` konfigurierten Keyspace-Benachrichtigungen erstellt. Weitere Informationen finden Sie unter [Keyspace-Benachrichtigungen (Erweiterte Einstellungen)](cache-configure.md#keyspace-notifications-advanced-settings) und [maxmemory-Policy und maxmemory-reserved](cache-configure.md#maxmemory-policy-and-maxmemory-reserved).
+Um Werte für die `RedisConfiguration`-Parameter anzugeben, schließen Sie die Werte als Schlüssel-Wert-Paare in `{}` ein (Beispiel: `@{"maxmemory-policy" = "allkeys-random", "notify-keyspace-events" = "KEA"}`). Im folgenden Beispiel wird ein standardmäßiger 1 GB-Cache mit `allkeys-random`-maxmemory-Richtlinie und mit `KEA` konfigurierten Keyspace-Benachrichtigungen erstellt. Weitere Informationen finden Sie unter [Keyspacebenachrichtigungen (Erweiterte Einstellungen)](cache-configure.md#keyspace-notifications-advanced-settings) und [maxmemory-policy und maxmemory-reserved](cache-configure.md#maxmemory-policy-and-maxmemory-reserved).
 
 	New-AzureRmRedisCache -ResourceGroupName myGroup -Name mycache -Location "North Central US" -RedisConfiguration @{"maxmemory-policy" = "allkeys-random", "notify-keyspace-events" = "KEA"}
 
@@ -301,7 +301,7 @@ Um eine Liste der verfügbaren Parameter und ihrer Beschreibungen für `Set-Azur
 	        OutBuffer, PipelineVariable, and OutVariable. For more information, see
 	        about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
-`Set-AzureRmRedisCache` kann verwendet werden, um Eigenschaften wie `Size`, `Sku`, `EnableNonSslPort` und die `RedisConfiguration`-Werte zu aktualisieren.
+Das Cmdlet `Set-AzureRmRedisCache` kann verwendet werden, um Eigenschaften wie `Size`, `Sku`, `EnableNonSslPort` und die `RedisConfiguration`-Werte zu aktualisieren.
 
 Der folgende Befehl aktualisiert die maxmemory-Richtlinie für den Redis-Cache mit dem Namen „myCache“.
 
@@ -312,7 +312,7 @@ Der folgende Befehl aktualisiert die maxmemory-Richtlinie für den Redis-Cache m
 
 `Set-AzureRmRedisCache` kann verwendet werden, um eine Azure Redis Cache-Instanz zu skalieren, wenn die Eigenschaften `Size`, `Sku` oder `ShardCount` geändert werden.
 
->[AZURE.NOTE]Skalieren eines Caches mithilfe von PowerShell unterliegt den gleichen Einschränkungen und Richtlinien wie die Skalierung eines Caches vom Azure-Portal aus. Sie können mit den folgenden Einschränkungen auf eine andere Preisstufe skalieren.
+>[AZURE.NOTE] Das Skalieren eines Caches mithilfe von PowerShell unterliegt den gleichen Einschränkungen und Richtlinien wie das Skalieren eines Caches über das Azure-Portal. Sie können mit den folgenden Einschränkungen auf eine andere Preisstufe skalieren.
 >
 >-	Sie können keine Skalierung von einem höheren Tarif auf einen niedrigeren Tarif vornehmen.
 >    -    Eine Skalierung von einem **Premium**-Cache auf einen niedrigeren **Standard**- oder **Basic**-Cache ist nicht möglich.
@@ -323,7 +323,7 @@ Der folgende Befehl aktualisiert die maxmemory-Richtlinie für den Redis-Cache m
 >
 >Weitere Informationen finden Sie unter [Skalieren von Azure Redis Cache](cache-how-to-scale.md).
 
-Das folgende Beispiel veranschaulicht, wie ein Cache mit Namen `myCache` zu einem 2,5-GB-Cache skaliert wird. Beachten Sie, dass dieser Befehl sowohl für einen Basic- als auch Standard-Cache gilt.
+Das folgende Beispiel veranschaulicht, wie ein Cache mit Namen `myCache` zu einem 2,5-GB-Cache skaliert wird. Beachten Sie, dass dieser Befehl sowohl für einen Basic- als auch für einen Standard-Cache verwendet werden kann.
 
 	Set-AzureRmRedisCache -ResourceGroupName myGroup -Name myCache -Size 2.5GB
 
@@ -356,7 +356,7 @@ Nach Eingabe dieses Befehls wird der Status des Caches zurückgegeben (ähnlich 
 	TenantSettings     : {}
 	ShardCount         :
 
-Wenn der Skalierungsvorgang abgeschlossen ist, ändert sich `ProvisioningState` in `Succeeded`. Wenn Sie weitere Skalierungen vornehmen möchten, z. B. Wechsel von Basic zu Standard und Änderung der Größe, müssen Sie warten, bis der vorherige Vorgang abgeschlossen ist, oder Sie erhalten eine Fehlermeldung ähnlich der folgenden.
+Nach Abschluss des Skalierungsvorgangs ändert sich `ProvisioningState` in `Succeeded`. Wenn Sie weitere Skalierungen vornehmen möchten (etwa einen Wechsel von Basic zu Standard oder eine Änderung der Größe), müssen Sie warten, bis der vorherige Vorgang abgeschlossen ist. Andernfalls wird eine Fehlermeldung wie die folgende angezeigt.
 
 	Set-AzureRmRedisCache : Conflict: The resource '...' is not in a stable state, and is currently unable to accept the update request.
 
@@ -757,64 +757,15 @@ Der folgende Befehl startet beide Knoten des angegebenen Cache neu.
 	    -Force
 	
 
-
-<a name="classic"></a>
-### Verwalten von Azure Redis Cache-Instanzen mit dem klassischen Bereitstellungsmodell von PowerShell
-
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] Erfahren Sie, wie Sie [diese Schritte mithilfe des Resource Manager-Modells ausführen](cache-howto-manage-redis-cache-powershell.md), das am Anfang dieses Artikels beschrieben wird.
-
-Das folgende Skript veranschaulicht das Erstellen, Aktualisieren und Löschen eines Azure Redis Caches mit dem klassischen Bereitstellungsmodell.
-		
-		$VerbosePreference = "Continue"
-
-    	# Create a new cache with date string to make name unique.
-		$cacheName = "MovieCache" + $(Get-Date -Format ('ddhhmm'))
-		$location = "West US"
-		$resourceGroupName = "Default-Web-WestUS"
-		
-		$movieCache = New-AzureRedisCache -Location $location -Name $cacheName  -ResourceGroupName $resourceGroupName -Size 250MB -Sku Basic
-		
-		# Wait until the Cache service is provisioned.
-		
-		for ($i = 0; $i -le 60; $i++)
-		{
-		    Start-Sleep -s 30
-		    $cacheGet = Get-AzureRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName
-		    if ([string]::Compare("succeeded", $cacheGet[0].ProvisioningState, $True) -eq 0)
-		    {
-		        break
-		    }
-		    If($i -eq 60)
-		    {
-		        exit
-		    }
-		}
-		
-		# Update the access keys.
-		
-		Write-Verbose "PrimaryKey: $($movieCache.PrimaryKey)"
-		New-AzureRedisCacheKey -KeyType "Primary" -Name $cacheName  -ResourceGroupName $resourceGroupName -Force
-		$cacheKeys = Get-AzureRedisCacheKey -ResourceGroupName $resourceGroupName  -Name $cacheName
-		Write-Verbose "PrimaryKey: $($cacheKeys.PrimaryKey)"
-		
-		# Use Set-AzureRedisCache to set Redis cache updatable parameters.
-		# Set the memory policy to Least Recently Used.
-		
-		Set-AzureRedisCache -Name $cacheName -ResourceGroupName $resourceGroupName -RedisConfiguration @{"maxmemory-policy" = "AllKeys-LRU"}
-		
-		# Delete the cache.
-		
-		Remove-AzureRedisCache -Name $movieCache.Name -ResourceGroupName $movieCache.ResourceGroupName  -Force
-
 ## Nächste Schritte
 
 Weitere Informationen zur Verwendung von Windows PowerShell mit Azure finden Sie in den folgenden Ressourcen:
 
 - [Dokumentation zu den Azure Redis Cache-Cmdlets auf MSDN](https://msdn.microsoft.com/library/azure/mt634513.aspx)
 - [Azure Resource Manager Cmdlets](http://go.microsoft.com/fwlink/?LinkID=394765) (in englischer Sprache): Verwenden der Cmdlets im AzureResourceManager-Modul.
-- [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen](../resource-group-template-deploy-portal.md): Erfahren Sie, wie Sie Ressourcengruppen im Azure-Portal erstellen und verwalten.
+- [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen](../resource-group-template-deploy-portal.md): Hier erfahren Sie, wie Sie Ressourcengruppen im Azure-Portal erstellen und verwalten.
 - [Azure-Blog](http://blogs.msdn.com/windowsazure): Informationen zu neuen Funktionen in Azure.
 - [Windows PowerShell-Blog](http://blogs.msdn.com/powershell): Informationen zu neuen Funktionen in Windows PowerShell.
 - ["Hey, Scripting Guy!"- Blog](http://blogs.technet.com/b/heyscriptingguy/): Praktische Tipps und Tricks aus der Windows PowerShell-Community.
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0810_2016-->

@@ -1,20 +1,20 @@
 <properties
 	pageTitle="Überwachen von Dienstmetriken in Microsoft Azure | Microsoft Azure"
 	description="Erfahren Sie, wie Sie Überwachungsdiagramme in Azure anpassen."
-	authors="stepsic-microsoft-com"
-	manager="ronmart"
+	authors="rboucher"
+	manager=""
 	editor=""
-	services="monitoring"
-    documentationCenter="monitoring"/>
+	services="monitoring-and-diagnostics"
+	documentationCenter="monitoring-and-diagnostics"/>
 
 <tags
-	ms.service="monitoring"
+	ms.service="monitoring-and-diagnostics"
 	ms.workload="na"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="09/08/2015"
-	ms.author="stepsic"/>
+	ms.author="robb"/>
 
 # Überwachen von Dienstmetriken
 
@@ -30,7 +30,7 @@ Sie können für beliebige Metriken und einen gewählten Zeitraum ein Diagramm e
 
 2. Der Bereich **Überwachen** enthält die wichtigsten Metriken zu jeder Azure-Ressource. Für eine Web-App ist dies beispielsweise **Anforderungen und Fehler**, während für einen virtuellen Computer **CPU-Prozentsatz** und **Lese- und Schreibvorgänge auf dem Datenträger** angezeigt wird: ![Überwachungsfokus](./media/insights-how-to-customize-monitoring/Insights_MonitoringChart.png)
 
-3. Wenn Sie auf eines dieser Diagramme klicken, wird das Blatt **Metrik** geöffnet. Auf diesem Blatt wird neben dem Diagramm eine Tabelle angezeigt, die Aggregationen der Metriken enthält (z. B. Durchschnitt, Mindest- und Maximalwert für den gewählten Zeitraum). Darunter werden die Warnregeln für die Ressource angezeigt. ![Fenster mit Metriken](./media/insights-how-to-customize-monitoring/Insights_MetricBlade.png)
+3. Wenn Sie auf eines dieser Diagramme klicken, wird das Blatt **Metrik** geöffnet. Auf diesem Blatt wird neben dem Diagramm eine Tabelle angezeigt, die Aggregationen der Metriken enthält (z. B. Durchschnitt, Mindest- und Maximalwert für den gewählten Zeitraum). Darunter werden die Warnregeln für die Ressource angezeigt. ![Blatt "Metrik"](./media/insights-how-to-customize-monitoring/Insights_MetricBlade.png)
 
 4. Zum Anpassen der angezeigten Zeilen klicken Sie auf die Schaltfläche **Bearbeiten** im Diagramm, oder klicken Sie auf den Befehl **Bearbeiten** auf dem Blatt "Metrik".
 
@@ -73,4 +73,4 @@ Wie bei den Metriken können Sie mithilfe von [REST-API](https://msdn.microsoft.
 * Verwenden von [Application Insights für JavaScript-Apps und Webseiten](../application-insights/app-insights-web-track-usage.md), um eine Clientanalyse über die Browser zu erhalten, mit denen auf eine Webseite zugegriffen wird.
 * [Überwachen der Verfügbarkeit und Reaktionsfähigkeit einer beliebigen Webseite](../application-insights/app-insights-monitor-web-app-availability.md) mit Application Insights, um zu ermitteln, ob eine Seite offline ist.
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0810_2016-->

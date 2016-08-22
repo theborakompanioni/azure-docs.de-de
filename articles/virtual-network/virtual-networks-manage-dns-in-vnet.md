@@ -3,7 +3,7 @@
    description="Hier erfahren Sie, wie Sie DNS-Server in einem virtuellen Netzwerk (VNet) hinzufügen und entfernen."
    services="virtual-network"
    documentationCenter="na"
-   authors="telmosampaio"
+   authors="jimdial"
    manager="carmonm"
    editor="tysonn" />
 <tags 
@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="03/15/2016"
-   ms.author="telmos" />
+   ms.author="jdial" />
 
 # Verwalten von DNS-Servern, die von einem virtuellen Netzwerk (VNet) verwendet werden
 
@@ -57,12 +57,4 @@ Um eine DNS-Serverliste mithilfe einer Netzwerkkonfigurationsdatei zu bearbeiten
 
 1. Starten Sie die virtuellen Computer im virtuellen Netzwerk neu, damit sie die neuen DNS-Einstellungen abrufen.
 
-## Nächste Schritte
-
-[ Verwalten der Eigenschaften eines virtuellen Netzwerks (VNet)](../virtual-networks-settings)
-
-[Verwenden von öffentlichen IP-Adressen in einem virtuellen Netzwerk](../virtual-networks-public-ip-within-vnet)
-
-[Löschen eines virtuellen Netzwerks (VNet)](../virtual-networks-delete-vnet)
-
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0810_2016-->

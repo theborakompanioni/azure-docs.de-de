@@ -3,7 +3,7 @@
    description="Erfahren Sie, wie Sie ein virtuelles Netzwerk über die Azure-Befehlszeilenschnittstelle in ARM erstellen | Ressourcen-Manager."
    services="virtual-network"
    documentationCenter=""
-   authors="telmosampaio"
+   authors="jimdial"
    manager="carmonm"
    editor=""
    tags="azure-service-management"/>
@@ -15,7 +15,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="03/15/2016"
-   ms.author="telmos"/>
+   ms.author="jdial"/>
 
 # Erstellen eines virtuellen Netzwerks (klassisch) über die Azure-Befehlszeilenschnittstelle
 
@@ -23,10 +23,10 @@
 
 [AZURE.INCLUDE [virtual-networks-create-vnet-intro](../../includes/virtual-networks-create-vnet-intro-include.md)]
 
-[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]In diesem Dokument wird beschrieben, wie ein virtuelles Netzwerk (VNet) mit dem klassischen Bereitstellungsmodell erstellt wird. Sie haben auch die Möglichkeit, [ein virtuelles Netzwerk im Bereitstellungsmodell für den Ressourcen-Manager durch Verwenden der Azure-Befehlszeilenschnittstelle zu erstellen](virtual-networks-create-vnet-arm-cli.md).
+[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)] In diesem Dokument wird beschrieben, wie ein virtuelles Netzwerk (VNet) mit dem klassischen Bereitstellungsmodell erstellt wird. Sie haben auch die Möglichkeit, [ein virtuelles Netzwerk im Bereitstellungsmodell für den Ressourcen-Manager durch Verwenden der Azure-Befehlszeilenschnittstelle zu erstellen](virtual-networks-create-vnet-arm-cli.md).
 
 [AZURE.INCLUDE [virtual-networks-create-vnet-scenario-include](../../includes/virtual-networks-create-vnet-scenario-include.md)]
 
 [AZURE.INCLUDE [virtual-networks-create-vnet-classic-cli-include](../../includes/virtual-networks-create-vnet-classic-cli-include.md)]
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0810_2016-->

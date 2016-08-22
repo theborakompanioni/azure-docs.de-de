@@ -3,7 +3,7 @@
 	description="Übersicht und Inhalt des Leitfadens mit Überlegungen zum Entwurf der Hybrid-Identität"
 	documentationCenter=""
 	services="active-directory"
-	authors="yuridio"
+	authors="billmath"
 	manager="stevenpo"
 	editor=""/>
 
@@ -13,8 +13,8 @@
 	ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="identity" 
-	ms.date="04/25/2016"
-	ms.author="yuridio"/>
+	ms.date="08/08/2016"
+	ms.author="billmath"/>
 
 # Überlegungen zum Entwurf der Azure Active Directory-Hybrid-Identität
 
@@ -55,4 +55,4 @@ Sie können eine PDF-Version des Azure Hybrid Identity Design Considerations Gui
 
                                                              
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0810_2016-->

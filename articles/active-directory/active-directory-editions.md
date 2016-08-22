@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/08/2016"
+	ms.date="08/10/2016"
 	ms.author="markvi"/>
 
 # Azure Active Directory-Editionen
@@ -51,13 +51,6 @@ Eine Reihe von Azure Active Directory-Funktionen sind als Editionen mit nutzungs
 ##Vergleichen der allgemein verfügbaren Features
 
 > [AZURE.NOTE] Eine andere Ansicht dieser Daten finden Sie unter [Azure Active Directory-Funktionen](https://www.microsoft.com/en/server-cloud/products/azure-active-directory/features.aspx).
-
-| | Azure AD Free | Azure AD Basic | Azure AD Premium |
-| ---                      | :-:           | :-:            | :-:              |
-| Gemeinsame Features | ![Prüfen][12] | ![Prüfen][12] | ![Prüfen][12] |
-| Basic-Features | | ![Prüfen][12] | ![Prüfen][12] |
-| Premium-Features | | | ![Prüfen][12] |
-
 
 
 
@@ -497,4 +490,4 @@ Neben den allgemein verfügbaren Funktionen der Free, Basic und Premium Editione
 <!--Image references-->
 [12]: ./media/active-directory-editions/ic195031.png
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0810_2016-->

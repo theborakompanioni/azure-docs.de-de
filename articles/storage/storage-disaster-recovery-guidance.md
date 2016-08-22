@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="05/17/2016"
+	ms.date="08/03/2016"
 	ms.author="robinsh"/>
 
 
@@ -81,4 +81,4 @@ Es gibt einige empfohlenen Vorgehensweisen, um die Speicherdaten in regelmäßig
 
 -   Dateien – Verwenden Sie [AzCopy](storage-use-azcopy.md) oder [Azure PowerShell](storage-powershell-guide-full.md), um die Dateien in ein anderes Speicherkonto in einer anderen Region zu kopieren.
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0810_2016-->

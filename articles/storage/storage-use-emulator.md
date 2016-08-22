@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/28/2016" 
+	ms.date="08/03/2016" 
 	ms.author="tamram"/>
 
 # Einsatz des Azure-Speicheremulators für Entwicklung und Tests
@@ -145,7 +145,7 @@ Ab Version 3.0 wird beim Start des Speicheremulators ein Befehlszeilenfenster a
 
 	AzureStorageEmulator [start] [stop] [status] [clear] [init] [help]
 
-### Optionen
+### Options
 
 Geben Sie zum Anzeigen der Liste der Optionen an der Eingabeaufforderung `/help` ein.
 
@@ -247,4 +247,4 @@ Es bestehen keine Unterschiede beim Warteschlangenspeicher im Emulator.
 
 - Version 2013-08-15 der Azure Storage-Dienste wird jetzt vollständig unterstützt. (Zuvor wurde diese Version nur von Version 2.2.1 Preview des Speicheremulators unterstützt.)
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0810_2016-->

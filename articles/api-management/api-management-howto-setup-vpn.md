@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/25/2016"
+	ms.date="08/09/2016"
 	ms.author="antonba"/>
 
 # Einrichten von VPN-Verbindungen in Azure API Management
@@ -82,4 +82,4 @@ Beim Hosten einer API Management-Dienstinstanz in einem VNET werden die in der f
 [Erstellen eines virtuellen Netzwerks mit einer Standort-zu-Standort-VPN-Verbindung mit dem klassischen Azure-Portal]: ../vpn-gateway/vpn-gateway-site-to-site-create.md
 [Verwenden des API-Inspektors zur Verfolgung von Aufrufen in Azure API Management]: api-management-howto-api-inspector.md
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0810_2016-->

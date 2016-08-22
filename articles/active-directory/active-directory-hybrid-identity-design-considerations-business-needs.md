@@ -13,7 +13,7 @@
 	ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="identity" 
-	ms.date="05/02/2016"
+	ms.date="08/08/2016"
 	ms.author="billmath"/>
 
 # Ermitteln der Identitätsanforderungen für Ihre Hybrid-Identitätslösung
@@ -40,7 +40,7 @@ Stellen Sie sich die folgenden Fragen, um Ihre geschäftlichen Anforderungen zu 
 ## Analysieren Ihrer lokalen Identitätsinfrastruktur
 Da Sie nun eine Vorstellung von den Bedürfnissen Ihres Unternehmens haben, müssen Sie Ihre lokale Identitätsinfrastruktur prüfen. Das ist wichtig für die Definition der technischen Anforderungen zum Integrieren Ihrer aktuellen Identitätslösung in das Cloud-Identitätsverwaltungssystem. Beantworten Sie die folgenden Fragen:
 
-- Welche Authentifizierungs- und Autorisierungslösung verwendet Ihr Unternehmen lokal? 
+- Welche Authentifizierungs- und Autorisierungslösung verwendet Ihr Unternehmen lokal?
 - Nutzt Ihr Unternehmen derzeit lokale Synchronisierungsdienste?
 - Nimmt Ihr Unternehmen Drittanbieter-Identitätsanbieter (IdP) in Anspruch?
 
@@ -72,7 +72,7 @@ Als Nächstes müssen Sie die Identitäts-Integrationsanforderungen bewerten. Di
 - Verfügt die Organisation eine benutzerdefinierte Domäne?
     1. Ist diese Domäne öffentlich und einfach über DNS prüfbar?
     1. Wenn das nicht der Fall ist, verfügen Sie über eine öffentliche Domäne, die zum Registrieren eines alternativen UPN in Active Directory verwendet werden kann.
-- Sind die Benutzerkennungen für die Cloud-Darstellung konsistent? 
+- Sind die Benutzerkennungen für die Cloud-Darstellung konsistent?
 - Verfügt das Unternehmen über Apps, die für die Integration mit Cloud-Diensten erforderlich sind?
 - Verfügt die Organisation über mehrere Domänen und verwenden diese alle die Standard- oder Verbund-Authentifizierung?
 
@@ -98,7 +98,7 @@ Notieren Sie sich alle Antworten, und stellen Sie sicher, dass Ihnen die Begrün
 ## Nächste Schritte
 [Ermitteln der Anforderungen an die Verzeichnissynchronisierung](active-directory-hybrid-identity-design-considerations-directory-sync-requirements.md)
 
-## Weitere Informationen
+## Siehe auch
 [Überlegungen zum Entwurf – Übersicht](active-directory-hybrid-identity-design-considerations-overview.md)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0810_2016-->

@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="data-management"
-	ms.date="05/09/2016"
+	ms.date="08/08/2016"
 	ms.author="sstein"/>
 
 
@@ -25,7 +25,7 @@
 - [PowerShell](sql-database-upgrade-server-powershell.md)
 
 
-SQL-Datenbank V12 ist die neueste Version, sodass eine Aktualisierung auf SQL-Datenbank V12 empfohlen wird. SQL-Datenbank V12 verfügt über viele [Vorteile gegenüber der vorherigen Version](sql-database-v12-whats-new.md), einschließlich:
+SQL-Datenbank V12 ist die neueste Version, sodass eine Aktualisierung der vorhandenen Server auf SQL-Datenbank V12 empfohlen wird. SQL-Datenbank V12 verfügt über viele [Vorteile gegenüber der vorherigen Version](sql-database-v12-whats-new.md), einschließlich:
 
 - Höhere Kompatibilität mit SQL Server.
 - Verbesserte Premium-Leistung und neue Leistungsstufen.
@@ -53,10 +53,12 @@ Nach dem Upgrade auf V12 stehen [Empfehlungen zur Dienstebene](sql-database-serv
 
 ## Starten des Upgrades
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) zu dem Server, den Sie aktualisieren möchten. Wählen Sie dazu **ALLE DURCHSUCHEN** > **SQL-Server** und dann den gewünschten Server aus.
-2. Wählen Sie **Letzte Aktualisierung der SQL-Datenbank** aus, und wählen Sie dann **Upgrade für diesen Server ausführen** aus.
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) zu dem Server, den Sie aktualisieren möchten. Wählen Sie dazu **DURCHSUCHEN** > **SQL-Server** und dann den zu aktualisierenden v2.0-Server aus.
+2. Wählen Sie **Letzte Aktualisierung der SQL-Datenbank** und dann **Upgrade für diesen Server ausführen**.
 
       ![Server upgraden][1]
+
+3. Das Upgrade auf einen Server auf das aktuelle SQL-Datenbank-Update kann nicht rückgängig gemacht werden. Geben Sie zum Bestätigen des Upgrades den Namen Ihres Servers ein, und klicken Sie auf **OK**.
 
 ## Durchführen eines Upgrades für alle Web- und Business-Datenbanken
 
@@ -114,10 +116,10 @@ Befolgen Sie die Anleitung im Artikel [Erstellen eines Pools für elastische Dat
 
 Überwachen Sie die Datenbank nach dem Upgrade aktiv, um sicherzustellen, dass Anwendungen mit der gewünschten Leistung ausgeführt werden. Optimieren Sie anschließend die Einstellungen.
 
-Zusätzlich zur Überwachung einzelner Datenbanken können Sie Pools für elastische Datenbanken [mit dem Azure-Portal überwachen, verwalten und skalieren](sql-database-elastic-pool-manage-portal.md) oder mit [PowerShell](sql-database-elastic-pool-powershell.md#monitoring-elastic-databases-and-elastic-database-pools) überwachen.
+Zusätzlich zur Überwachung einzelner Datenbanken können Sie Pools für elastische Datenbanken mit dem Azure-Portal ([Überwachen und Verwalten eines Pools für elastische Datenbanken über das Azure-Portal](sql-database-elastic-pool-manage-portal.md)) oder mit [PowerShell](sql-database-elastic-pool-powershell.md#monitoring-elastic-databases-and-elastic-database-pools) überwachen.
 
 
-**Ressourcenverbrauchsdaten:** Für Basic-, Standard- und Premium-Datenbanken sind Ressourcenverbrauchsdaten über die dynamische Verwaltungssicht (DMV) [sys.dm\_ db\_ resource\_stats](http://msdn.microsoft.com/library/azure/dn800981.aspx) in der Benutzerdatenbank verfügbar. Diese dynamische Verwaltungssicht stellt beinahe in Echtzeit Informationen zum Ressourcenverbrauch mit einer Genauigkeit von 15 Sekunden für die vorhergehende Stunde des Betriebs zur Verfügung. Der prozentuale DTU-Verbrauch für ein Intervall wird als maximaler prozentualer Verbrauch von CPU-, E/A- und Protokollressourcen berechnet. Die folgende Abfrage berechnet den durchschnittlichen prozentualen DTU-Verbrauch während der letzten Stunde:
+**Ressourcenverbrauchsdaten:** Für Basic-, Standard- und Premium-Datenbanken sind Ressourcenverbrauchsdaten über die dynamische Verwaltungssicht (DMV) [sys.dm_ db_ resource\_stats](http://msdn.microsoft.com/library/azure/dn800981.aspx) in der Benutzerdatenbank verfügbar. Diese dynamische Verwaltungssicht stellt beinahe in Echtzeit Informationen zum Ressourcenverbrauch mit einer Genauigkeit von 15 Sekunden für die vorhergehende Stunde des Betriebs zur Verfügung. Der prozentuale DTU-Verbrauch für ein Intervall wird als maximaler prozentualer Verbrauch von CPU-, E/A- und Protokollressourcen berechnet. Die folgende Abfrage berechnet den durchschnittlichen prozentualen DTU-Verbrauch während der letzten Stunde:
 
     SELECT end_time
     	 , (SELECT Max(v)
@@ -147,7 +149,7 @@ Sie können z. B. eine E-Mail-Benachrichtigung für den "DTU Prozentsatz" festl
 
 ## Nächste Schritte
 
-- [Überprüfen von Poolempfehlungen und Erstellen eines Pools](sql-database-elastic-pool-create-portal.md).
+- [Überprüfen von Poolempfehlungen und Erstellen eines Pools](sql-database-elastic-pool-create-portal.md)
 - [Ändern der Dienstebene und Leistungsstufe Ihrer Datenbank](sql-database-scale-up.md).
 
 
@@ -167,4 +169,4 @@ Sie können z. B. eine E-Mail-Benachrichtigung für den "DTU Prozentsatz" festl
 [6]: ./media/sql-database-upgrade-server-portal/recommendations.png
 [7]: ./media/sql-database-upgrade-server-portal/new-elastic-pool.png
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0810_2016-->

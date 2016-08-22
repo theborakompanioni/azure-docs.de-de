@@ -13,8 +13,8 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="na"
-	ms.date="05/25/2016"
-	ms.author="v-darmi"/>
+	ms.date="08/09/2016"
+	ms.author="darrmi"/>
 
 # Benutzerdefiniertes Caching in Azure API Management
 Der Azure API Management-Dienst verfügt über eine integrierte Unterstützung für das [HTTP-Antwort-Caching](api-management-howto-cache.md) mit der Ressourcen-URL als Schlüssel. Der Schlüssel kann durch Anforderungsheader mithilfe der `vary-by`-Eigenschaften geändert werden. Dies ist nützlich, wenn ganze HTTP-Antworten (auch als Darstellungen bezeichnet) zwischengespeichert werden sollen. Manchmal ist es aber auch sinnvoll, nur einen Teil einer Darstellung zwischenzuspeichern. Die neuen Richtlinien [cache-lookup-value](https://msdn.microsoft.com/library/azure/dn894086.aspx#GetFromCacheByKey) und [cache-store-value](https://msdn.microsoft.com/library/azure/dn894086.aspx#StoreToCacheByKey) bieten die Möglichkeit zum Speichern und Abrufen von zufälligen Datenelementen aus Richtliniendefinitionen: Diese Möglichkeit bereichert auch die zuvor eingeführte [send-request](https://msdn.microsoft.com/library/azure/dn894085.aspx#SendRequest)-Richtlinie, da Sie nun Antworten von externen Diensten zwischenspeichern können.
@@ -245,4 +245,4 @@ Die Freiheit, den Azure API Management-Cache zum Speichern aller Art von Daten z
 ## Nächste Schritte
 Bitte geben Sie uns im Disqus-Thread Feedback zu diesem Thema, wenn es weitere Szenarien gibt, die Sie mit diesen Richtlinien erzeugt haben, oder wenn es Szenarien gibt, die Sie erzielen möchten, wobei Sie nicht wissen, wie dies momentan möglich ist.
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0810_2016-->

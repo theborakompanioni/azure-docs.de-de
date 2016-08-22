@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/16/2016"
+	ms.date="08/04/2016"
 	ms.author="billmath"/>
 
 #Funktionsweise von Azure Multi-Factor Authentication
@@ -26,7 +26,7 @@ Die Sicherheit der Multi-Factor Authentication liegt im Ebenenansatz. Die Faktor
 
 Azure Multi-Factor Authentication hilft beim Schutz des Zugriffs auf Daten und Anwendungen und erfüllt gleichzeitig die Anforderungen von Benutzern an ein einfaches Anmeldeverfahren. Indem eine zweite Form der Authentifizierung verlangt wird, bietet das Verfahren zusätzliche Sicherheit und eine zuverlässige Authentifizierung über verschiedene einfache Überprüfungsoptionen:
 
-- Telefonanruf 
+- Telefonanruf
 - Textnachricht
 - Benachrichtigung über mobile App – Benutzer können ihre bevorzugte Methode selbst wählen
 - Überprüfungscode in der mobilen App
@@ -59,24 +59,24 @@ Azure Multi-Factor Authentication | Azure Multi-Factor Authentication bietet von
 In der folgenden Tabelle werden die Funktionen aufgeführt, die in den verschiedenen Versionen von Azure Multi-Factor Authentication verfügbar sind.
 
 
-Funktion | Multi-Factor Authentication für Office 365 (in Office 365-SKUs enthalten)|Multi-Factor Authentication für Azure-Administratoren (enthalten in Azure-Abonnement) | Azure Multi-Factor Authentication (enthalten in Azure AD Premium und Enterprise Mobility Suite) 
+Feature | Multi-Factor Authentication für Office 365 (in Office 365-SKUs enthalten)|Multi-Factor Authentication für Azure-Administratoren (enthalten in Azure-Abonnement) | Azure Multi-Factor Authentication (enthalten in Azure AD Premium und Enterprise Mobility Suite) 
 ------------- | :-------------: |:-------------: |:-------------: |
 Administratoren können Konten mit MFA schützen.| * | * (nur für Azure-Administratorkonten verfügbar)|*
 Mobile App als zweiter Faktor|* | * | *
 Telefonanruf als zweiter Faktor|* | * | *
 SMS als zweiter Faktor|* | * | *
 App-Kennwörter für Clients, die MFA nicht unterstützen|* | * | *
-Administrative Kontrolle über Authentifizierungsmethoden| **| *| * 
-PIN-Modus| | | * 
-Betrugswarnung| | | * 
-MFA-Berichte| | | * 
-Einmalumgehung| | | * 
-Benutzerdefinierte Begrüßungen für Telefonanrufe| | | * 
-Benutzerdefinierte Anrufer-ID für Telefonanrufe| | | * 
-Bestätigung von Ereignissen| | | * 
-Vertrauenswürdige IPs| | | * 
-Aussetzen der Multi-Factor Authentication für gespeicherte Geräte (öffentliche Vorschau)| | | * 
-MFA-SDK| | | * 
+Administrative Kontrolle über Authentifizierungsmethoden| *| *| *
+PIN-Modus| | | *
+Betrugswarnung| | | *
+MFA-Berichte| | | *
+Einmalumgehung| | | *
+Benutzerdefinierte Begrüßungen für Telefonanrufe| | | *
+Benutzerdefinierte Anrufer-ID für Telefonanrufe| | | *
+Bestätigung von Ereignissen| | | *
+Vertrauenswürdige IP-Adressen| | | *
+Aussetzen der Multi-Factor Authentication für gespeicherte Geräte (öffentliche Vorschau)| | | *
+MFA-SDK| | | *
 MFA für lokale Anwendungen mit MFA-Server| | | *
 
 
@@ -102,4 +102,4 @@ Wählen Sie das Pro-Arbeitsplatz-Modell oder das nutzungsbasierte Modell, das am
 
  
 
-<!----HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0810_2016-->

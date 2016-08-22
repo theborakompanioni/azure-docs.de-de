@@ -13,13 +13,13 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/09/2016"
+	ms.date="08/03/2016"
 	ms.author="robinsh"/>
 
 # Checkliste zu Leistung und Skalierbarkeit von Microsoft Azure Storage
 
 ## Übersicht
-Seit der Veröffentlichung der Microsoft Azure Storage-Dienste hat Microsoft eine Reihe bewährter Vorgehensweisen zur effektiven Verwendung dieser Dienste entwickelt. In diesem Artikel werden die wichtigsten davon in einer "Checkliste" zusammengefasst. Dieser Artikel soll Anwendungsentwickler bei der Verwendung bewährter Vorgehensweisen für den Azure-Speicher unterstützen und ihnen helfen, weitere bewährte Vorgehensweisen kennen zu lernen, die sie in Erwägung ziehen sollten. Es wird jedoch nicht jede mögliche Leistungs- und Skalierbarkeitsoptimierung in diesem Artikel abgedeckt; begrenzt anwendbare Methoden oder solche mit geringer Auswirkung sind ausgeschlossen. Insofern sich das Anwendungsverhalten während des Entwurfs vorhersagen lässt, sollten diese Vorgehensweisen von Anfang an berücksichtigt werden, um spätere Leistungsprobleme zu vermeiden.
+Seit der Veröffentlichung der Microsoft Azure Storage-Dienste hat Microsoft eine Reihe bewährter Vorgehensweisen zur effektiven Verwendung dieser Dienste entwickelt. In diesem Artikel werden die wichtigsten davon in einer "Checkliste" zusammengefasst. Dieser Artikel soll Anwendungsentwickler bei der Verwendung bewährter Vorgehensweisen für Azure Storage unterstützen und ihnen helfen, weitere bewährte Vorgehensweisen kennen zu lernen, die sie in Erwägung ziehen sollten. Es wird jedoch nicht jede mögliche Leistungs- und Skalierbarkeitsoptimierung in diesem Artikel abgedeckt; begrenzt anwendbare Methoden oder solche mit geringer Auswirkung sind ausgeschlossen. Insofern sich das Anwendungsverhalten während des Entwurfs vorhersagen lässt, sollten diese Vorgehensweisen von Anfang an berücksichtigt werden, um spätere Leistungsprobleme zu vermeiden.
 
 Jeder Anwendungsentwickler, der Azure Storage verwendet, sollte sich Zeit für diesen Artikel nehmen und überprüfen, ob seine Anwendung den unten aufgeführten bewährten Vorgehensweisen entspricht.
 
@@ -27,9 +27,9 @@ Jeder Anwendungsentwickler, der Azure Storage verwendet, sollte sich Zeit für d
 Dieser Artikel unterteilt die bewährten Vorgehensweisen in Gruppen, die wie folgt anwendbar sind:
 
 -	Alle Azure-Speicherdienste (Blobs, Tabellen, Warteschlangen und Dateien)
--	Blobs
+-	Blobs (in englischer Sprache)
 -	Tabellen
--	Warteschlangen  
+-	Warteschlangen
 
 |Vorgehensweise|	Bereich|	Kategorie|	Frage
 |----|------|-----------|-----------
@@ -40,8 +40,8 @@ Dieser Artikel unterteilt die bewährten Vorgehensweisen in Gruppen, die wie fol
 ||Alle Dienste|	Netzwerk|	[Befindet sich die Clientanwendung in der Nähe des Speicherkontos?](#subheading4)
 ||Alle Dienste|	Inhaltsverteilung|	[Verwenden Sie ein CDN für die Inhaltsverteilung?](#subheading5)
 ||Alle Dienste|	Direkter Clientzugriff|	[Verwenden Sie SAS und CORS statt eines Proxys, um direkten Zugriff auf den Speicher zu erlauben?](#subheading6)
-||Alle Dienste|	Zwischenspeichern|	[Speichert Ihre Anwendung Daten im Cache, die häufig verwendet werden und sich selten ändern?](#subheading7)
-||Alle Dienste|	Zwischenspeichern|	[Führt Ihre Anwendung Batchaktualisierungen durch (durch clientseitige Zwischenspeicherung und anschließendes Hochladen in größeren Mengen)?](#subheading8)
+||Alle Dienste|	Caching|	[Speichert Ihre Anwendung Daten im Cache, die häufig verwendet werden und sich selten ändern?](#subheading7)
+||Alle Dienste|	Caching|	[Führt Ihre Anwendung Batchaktualisierungen durch (durch clientseitige Zwischenspeicherung und anschließendes Hochladen in größeren Mengen)?](#subheading8)
 ||Alle Dienste|	.NET-Konfiguration|	[Haben Sie Ihren Client zur Verwendung einer ausreichenden Anzahl gleichzeitiger Verbindungen konfiguriert?](#subheading9)
 ||Alle Dienste|	.NET-Konfiguration|	[Haben Sie .NET zur Verwendung einer ausreichenden Anzahl von Threads konfiguriert?](#subheading10)
 ||Alle Dienste|	.NET-Konfiguration|	[Verwenden Sie .NET 4.5 oder höher mit verbesserter Garbage Collection?](#subheading11)
@@ -49,14 +49,14 @@ Dieser Artikel unterteilt die bewährten Vorgehensweisen in Gruppen, die wie fol
 ||Alle Dienste|	Tools|	[Verwenden Sie die aktuellste Version der von Microsoft bereitgestellten Clientbibliotheken und Tools?](#subheading13)
 ||Alle Dienste|	Wiederholungsversuche|	[Verwenden Sie exponentiell ansteigende Wartezeiten für Wiederholungsversuche, um Fehler und Zeitüberschreitungen zu vermeiden?](#subheading14)
 ||Alle Dienste|	Wiederholungsversuche|	[Vermeidet Ihre Anwendung Wiederholungsversuche für nicht wiederholbare Fehler?](#subheading15)
-||Blobs|	Skalierbarkeitsziele|	[Greift eine große Anzahl von Clients gleichzeitig auf ein einzelnes Objekt zu?](#subheading46)
+||Blobs (in englischer Sprache)|	Skalierbarkeitsziele|	[Greift eine große Anzahl von Clients gleichzeitig auf ein einzelnes Objekt zu?](#subheading46)
 ||Blobs (in englischer Sprache)|	Skalierbarkeitsziele|	[Bleibt Ihre Anwendung innerhalb der Bandbreiten- oder Vorgangs-Skalierbarkeitsziele für einzelne Blobs?](#subheading16)
-||Blobs|	Kopieren von Blobs|	[Kopieren Sie Blobs effizient?](#subheading17)
-||Blobs|	Kopieren von Blobs|	[Verwenden Sie AzCopy für Massenkopien von Blobs?](#subheading18)
-||Blobs|	Kopieren von Blobs|	[Verwenden Sie Azure Import/Export zum Übertragen von großen Datenmengen?](#subheading19)
-||Blobs|	Verwenden von Metadaten|	[Speichern Sie häufig verwendete Metadaten für Blobs in ihren Metadaten?](#subheading20)
-||Blobs|	Schnelles Hochladen|	[Wenn Sie versuchen, einen Blob schnell hochzuladen, laden Sie dann Blöcke parallel hoch?](#subheading21)
-||Blobs|	Schnelles Hochladen|	[Wenn Sie versuchen, mehrere Blobs schnell hochzuladen, laden Sie dann Blobs parallel hoch?](#subheading22)
+||Blobs (in englischer Sprache)|	Kopieren von Blobs|	[Kopieren Sie Blobs effizient?](#subheading17)
+||Blobs (in englischer Sprache)|	Kopieren von Blobs|	[Verwenden Sie AzCopy für Massenkopien von Blobs?](#subheading18)
+||Blobs (in englischer Sprache)|	Kopieren von Blobs|	[Verwenden Sie Azure Import/Export zum Übertragen von großen Datenmengen?](#subheading19)
+||Blobs (in englischer Sprache)|	Verwenden von Metadaten|	[Speichern Sie häufig verwendete Metadaten für Blobs in ihren Metadaten?](#subheading20)
+||Blobs (in englischer Sprache)|	Schnelles Hochladen|	[Wenn Sie versuchen, einen Blob schnell hochzuladen, laden Sie dann Blöcke parallel hoch?](#subheading21)
+||Blobs (in englischer Sprache)|	Schnelles Hochladen|	[Wenn Sie versuchen, mehrere Blobs schnell hochzuladen, laden Sie dann Blobs parallel hoch?](#subheading22)
 ||Blobs|	Richtiger Blobtyp|	[Verwenden Sie jeweils Seiten-Blobs oder Block-Blobs?](#subheading23)
 ||Tabellen|	Skalierbarkeitsziele|	[Nähern Sie sich den Skalierbarkeitszielen für Entitäten pro Sekunde?](#subheading24)
 ||Tabellen|	Konfiguration|	[Verwenden Sie JSON für Ihre Tabellenanforderungen?](#subheading25)
@@ -90,7 +90,7 @@ Jeder Azure-Speicherdienst hat Skalierbarkeitsziele für Kapazität (GB), Transa
 
 -	[Blobbandbreite und Anfragen pro Sekunde](#subheading16)
 -	[Tabellenentitäten pro Sekunde](#subheading24)
--	[Warteschlangennachrichten pro Sekunde](#subheading39)  
+-	[Warteschlangennachrichten pro Sekunde](#subheading39)
 
 ####<a name="sub1bandwidth"></a>Bandbreiten-Skalierbarkeitsziele für alle Dienste
 Zum Redaktionszeitpunkt betrugen die Bandbreitenziele in den USA für georedundante Speicherkonten (GRS) 10 Gigabit pro Sekunde (GBit/s) für eingehende Daten (an das Speicherkonto gesendete Daten) und 20 Gigabit pro Sekunde (GBit/s) für ausgehende Daten (vom Speicherkonto aus gesendete Daten). Für lokale redundante Speicherkonten (LRS) liegen die Grenzen höher – 20 GBit/s für eingehende und 30 GBit/s für ausgehende Daten. Internationale Bandbreitengrenzen können niedriger sein. Informationen dazu finden Sie auf der Seite [Skalierbarkeitsziele](http://msdn.microsoft.com/library/azure/dn249410.aspx). Weitere Informationen zu den Speicherredundanzoptionen finden Sie unter den Links zu [Nützliche Ressourcen](#sub1useful) weiter unten.
@@ -101,21 +101,21 @@ Wenn sich Ihre Anwendung den Skalierbarkeitszielen für ein Speicherkonto näher
 -	Berücksichtigen Sie die Arbeitsauslastung, aufgrund derer Ihre Anwendung das Skalierbarkeitsziel erreicht oder überschreitet. Können Sie diese anders konzipieren, um weniger Bandbreite bzw. Kapazität oder weniger Transaktionen zu verwenden?
 -	Wenn eine Anwendung eines der Skalierbarkeitsziele überschreiten muss, sollten Sie mehrere Speicherkonten erstellen und die Anwendungsdaten auf mehrere Speicherkonten aufteilen. Konzipieren Sie in diesem Fall die Anwendung so, dass Sie künftig weitere Speicherkonten für den Lastenausgleich hinzufügen können. Zum Redaktionszeitpunkt konnte jedes Azure-Abonnement über bis zu 100 Speicherkonten verfügen. Speicherkonten verursachen keine Kosten außer die Nutzung in Bezug auf gespeicherte Daten, durchgeführte Transaktionen und übertragene Daten.
 -	Wenn Ihre Anwendung das Bandbreitenziel erreicht, versuchen Sie, die Daten im Client zu komprimieren, um die erforderliche Bandbreite zum Senden der Daten an den Speicherdienst zu reduzieren. Obwohl dies Bandbreite spart und die Netzwerkleistung erhöhen kann, kann es auch negative Auswirkungen haben. Sie sollten die Leistungsauswirkung in Bezug auf die zusätzliche Verarbeitung beim Komprimieren und Dekomprimieren der Daten im Client beobachten. Außerdem kann das Speichern komprimierter Daten die Fehlerbehebung erschweren, da es schwieriger sein kann, gespeicherte Daten mithilfe von Standardtools anzuzeigen.
--	Wenn Ihre Anwendung die Skalierbarkeitsziele erreicht, stellen Sie sicher, dass Sie exponentiell ansteigende Wartezeiten für Wiederholungsversuche verwenden (siehe [Wiederholungsversuche](#subheading14)). Sie sollten besser sicherstellen, dass Sie sich nicht an die Skalierbarkeitsziele annähern (mit einer der oben angegebenen Methoden), aber dies sorgt ebenfalls dafür, dass die Anwendung keine schnellen Wiederholungen versucht, sodass die Drosselung schlimmer wird.  
+-	Wenn Ihre Anwendung die Skalierbarkeitsziele erreicht, stellen Sie sicher, dass Sie exponentiell ansteigende Wartezeiten für Wiederholungsversuche verwenden (siehe [Wiederholungsversuche](#subheading14)). Sie sollten besser sicherstellen, dass Sie sich nicht an die Skalierbarkeitsziele annähern (mit einer der oben angegebenen Methoden), aber dies sorgt ebenfalls dafür, dass die Anwendung keine schnellen Wiederholungen versucht, sodass die Drosselung schlimmer wird.
 
 ####Nützliche Ressourcen
 Die folgenden Links enthalten zusätzliche Details zu den Skalierbarkeitszielen:
 -	Weitere Informationen zu Skalierbarkeitszielen finden Sie unter [Skalierbarkeits- und Leistungsziele für Azure Storage](storage-scalability-targets.md).
 -	Weitere Informationen zu Speicherredundanzoptionen finden Sie unter [Azure Storage-Replikation](storage-redundancy.md) und im Blogbeitrag [Azure Storage Redundancy Options and Read Access Geo Redundant Storage](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/11/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx) (Azure Storage-Redundanzoptionen und Lesezugriff für georedundanten Speicher).
--	Aktuelle Informationen zu den Preisdetails für Azure-Dienste finden Sie auf der Seite [Azure-Preise](https://azure.microsoft.com/pricing/overview/).  
+-	Aktuelle Informationen zu den Preisdetails für Azure-Dienste finden Sie auf der Seite [Azure-Preise](https://azure.microsoft.com/pricing/overview/).
 
 ###<a name="subheading47"></a>Partitionsbenennungskonvention
 Azure Storage verwendet ein bereichsbasiertes Partitionierungsschema für Skalierung und Lastausgleich des Systems. Der Partitionsschlüssel wird zur Partitionierung von Daten in Bereiche verwendet, und diese Bereiche werden im Lastausgleich über das System verteilt. Dies bedeutet, dass Benennungskonventionen wie lexikalische Sortierung (z.B. „msftpayroll“, „msftperformance“, „msftemployees“ usw.) oder mit einem Zeitstempel („log20160101“, „log20160102“, „log20160102“ usw.) sich für die Partitionen eignen, die potenziell auf dem gleichen Partitionsserver zusammengestellt werden, bis ein Lastausgleichsvorgang sie in kleinere Bereiche aufteilt. So können z.B. alle Blobs in einem Container als ein einziger Server behandelt werden, bis die Last auf diesen Blobs einen Ausgleich der Partitionsbereiche erfordert. Ebenso kann eine Gruppe leicht geladener Konten, deren Namen lexikalisch sortiert sind, von einem einzigen Server bedient werden, bis die Last auf einem oder allen diesen Konten deren Aufteilung auf mehrere Partitionsserver erfordert. Jeder Lastausgleichsvorgang kann die Latenz der Speicheraufrufe während des Vorgangs beeinflussen. Die Fähigkeit des Systems, einen plötzlichen Verkehrsburst zu einer Partition zu bewältigen, wird durch die Skalierbarkeit eines einzelnen Partitionsservers begrenzt, bis der Lastausgleichsvorgang wirksam wird und den Partitionsschlüsselbereich ausgleicht.
 
 Sie können die Zahl dieser Vorgänge mit einigen bewährten Vorgehensweisen reduzieren.
 
--	Untersuchen Sie genau die Benennungskonvention, die Sie für Konten, Containers, Blobs, Tabellen und Warteschlangen verwenden. Erwägen Sie, Kontennamen mithilfe einer Hashfunktion, die Ihren Anforderungen am besten gerecht wird, mit einem 3-stelligen Hashpräfix zu versehen.  
--	Wenn Sie Ihre Daten mit Zeitstempeln oder numerischen Bezeichnern organisieren, müssen Sie sicherstellen, dass Sie keine Nur-anfügen- oder Nur-voranstellen-Verkehrsmuster verwenden. Diese Muster eignen sich nicht für ein bereichsbasiertes Partitionierungssystem und könnten dazu führen, dass der gesamte Verkehr zu einer einzigen Partition geleitet und so das System an einem wirksamen Lastausgleich gehindert wird. Wenn z.B. tägliche Vorgänge ein Blobobjekt mit einem Zeitstempel wie „yyyymmdd“ nutzen, wird der gesamte Verkehr für diesen täglichen Vorgang an ein einziges Objekt geleitet, das von einem einzigen Partitionsserver bedient wird. Prüfen Sie, ob die Grenzwerte pro Blob und pro Partition Ihren Bedürfnissen entsprechen, und erwägen Sie, diesen Vorgang bei Bedarf in mehrere Blobs aufzuteilen. Auch wenn Sie Zeitreihendaten in Ihren Tabellen speichern, könnte der gesamte Verkehr an den letzten Teil des Schlüssel-Namespace weitergeleitet werden. Wenn Sie Zeitstempel oder numerische IDs verwenden müssen, versehen Sie sie mit einem 3-stelligen Hashpräfix, oder stellen Sie bei Zeitstempeln den Sekundenteil als Präfix voran, z.B. „ssyyyymmdd“. Wenn Auflistungs- und Abfragevorgänge routinemäßig ausgeführt werden, wählen Sie eine Hashfunktion, die die Anzahl der Abfragen begrenzt. In anderen Fällen ist möglicherweise ein zufälliges Präfix ausreichend.  
+-	Untersuchen Sie genau die Benennungskonvention, die Sie für Konten, Containers, Blobs, Tabellen und Warteschlangen verwenden. Erwägen Sie, Kontennamen mithilfe einer Hashfunktion, die Ihren Anforderungen am besten gerecht wird, mit einem 3-stelligen Hashpräfix zu versehen.
+-	Wenn Sie Ihre Daten mit Zeitstempeln oder numerischen Bezeichnern organisieren, müssen Sie sicherstellen, dass Sie keine Nur-anfügen- oder Nur-voranstellen-Verkehrsmuster verwenden. Diese Muster eignen sich nicht für ein bereichsbasiertes Partitionierungssystem und könnten dazu führen, dass der gesamte Datenverkehr zu einer einzigen Partition geleitet und so das System an einem wirksamen Lastausgleich gehindert wird. Wenn z.B. tägliche Vorgänge ein Blobobjekt mit einem Zeitstempel wie „yyyymmdd“ nutzen, wird der gesamte Verkehr für diesen täglichen Vorgang an ein einziges Objekt geleitet, das von einem einzigen Partitionsserver bedient wird. Prüfen Sie, ob die Grenzwerte pro Blob und pro Partition Ihren Bedürfnissen entsprechen, und erwägen Sie, diesen Vorgang bei Bedarf in mehrere Blobs aufzuteilen. Auch wenn Sie Zeitreihendaten in Ihren Tabellen speichern, könnte der gesamte Verkehr an den letzten Teil des Schlüssel-Namespace weitergeleitet werden. Wenn Sie Zeitstempel oder numerische IDs verwenden müssen, versehen Sie sie mit einem 3-stelligen Hashpräfix, oder stellen Sie bei Zeitstempeln den Sekundenteil als Präfix voran, z.B. „ssyyyymmdd“. Wenn Auflistungs- und Abfragevorgänge routinemäßig ausgeführt werden, wählen Sie eine Hashfunktion, die die Anzahl der Abfragen begrenzt. In anderen Fällen ist möglicherweise ein zufälliges Präfix ausreichend.
 -	Weitere Informationen über das in Azure Storage verwendete Partitionierungsschema finden Sie [hier](http://sigops.org/sosp/sosp11/current/2011-Cascais/printable/11-calder.pdf) im SOSP-Dokument.
 
 ###Netzwerk
@@ -123,7 +123,7 @@ Auch wenn die API-Aufrufe eine Rolle spielen, haben häufig die physischen Netzw
 
 ####Client-Netzwerkkapazität
 #####<a name="subheading2"></a>Durchsatz
-Bei der Bandbreite liegt das Problem häufig in der Clientfunktion. Während beispielsweise ein Speicherkonto 10 GBit/s oder mehr an eingehenden Daten verarbeiten kann (siehe [Bandbreiten-Skalierbarkeitsziele](#sub1bandwidth)), beträgt die Netzwerkgeschwindigkeit in einer „kleinen“ Azure-Workerrolleninstanz maximal 100 MBit/s. Größere Azure-Instanzen verfügen über NICs mit höherer Kapazität. Daher sollten Sie erwägen, eine größere Instanz oder mehr VMs zu verwenden, wenn Sie höhere Netzwerkgrenzwerte auf einem einzelnen Computer benötigen. Wenn Sie von einer lokalen Anwendung auf einen Speicherdienst zugreifen, gilt dieselbe Regel: Informieren Sie sich über die Netzwerkkapazität des Clientgeräts und die Netzwerkverbindung zum Azure-Speicherort. Entweder Sie optimieren diese oder Sie entwerfen die Anwendung so, dass sie innerhalb dieser Kapazitätsgrenzen arbeiten.
+Bei der Bandbreite liegt das Problem häufig in der Clientkapazität. Während beispielsweise ein Speicherkonto 10 GBit/s oder mehr an eingehenden Daten verarbeiten kann (siehe [Bandbreiten-Skalierbarkeitsziele](#sub1bandwidth)), beträgt die Netzwerkgeschwindigkeit in einer „kleinen“ Azure-Workerrolleninstanz maximal 100 MBit/s. Größere Azure-Instanzen verfügen über NICs mit höherer Kapazität. Daher sollten Sie erwägen, eine größere Instanz oder mehr VMs zu verwenden, wenn Sie höhere Netzwerkgrenzwerte auf einem einzelnen Computer benötigen. Wenn Sie von einer lokalen Anwendung auf einen Speicherdienst zugreifen, gilt dieselbe Regel: Informieren Sie sich über die Netzwerkkapazität des Clientgeräts und die Netzwerkverbindung zum Azure-Speicherort. Entweder Sie optimieren diese oder Sie entwerfen die Anwendung so, dass sie innerhalb dieser Kapazitätsgrenzen arbeiten.
 
 #####<a name="subheading3"></a>Verbindungsqualität
 Seien Sie sich wie bei jeder Netzwerknutzung bewusst, dass Netzwerkbedingungen, die zu Fehlern und Verlusten von Paketen führen, den effektiven Durchsatz verlangsamen. Die Verwendung von WireShark oder NetMon kann bei der Diagnose dieses Problems helfen.
@@ -137,7 +137,7 @@ In jeder verteilten Umgebung wird die beste Leistung erzielt, indem der Client i
 Wenn Ihre Clientanwendungen nicht in Azure gehostet werden (beispielsweise Apps für Mobilgeräte oder lokale Enterprise Services), wird die Latenz ebenfalls durch Platzierung des Speicherkontos in einer Region in der Nähe der Geräte, die darauf zugreifen, reduziert. Falls Ihre Clients weit verteilt sind (z. B. einige in Nordamerika und andere in Europa), sollten Sie die Verwendung mehrerer Speicherkonten in Betracht ziehen: eines in Nordamerika und eines in Europa. Dadurch wird die Latenz für Benutzer in beiden Regionen reduziert. Diese Vorgehensweise ist meist einfacher zu implementieren, wenn die in der Anwendung gespeicherten Daten speziell für bestimmte Benutzer gelten und keine Datenreplikation zwischen den Speicherkonten erforderlich ist. Für eine verbreitete Inhaltsverteilung wird ein CDN empfohlen. Weitere Details dazu finden Sie im nächsten Abschnitt.
 
 ###<a name="subheading5"></a>Inhaltsverteilung
-Manchmal muss eine Anwendung denselben Inhalt für mehrere Benutzer bereitstellen (z. B. ein Produkt-Demovideo auf der Startseite einer Website), die sich entweder in derselben oder in verschiedenen Regionen befinden. In diesem Fall sollten Sie ein Content Delivery Network (CDN) wie das Azure CDN verwenden, und das CDN nutzt den Azure-Speicher als Datenursprung. Im Gegensatz zum Azure-Speicherkonto, das in genau einer Region vorhanden ist und Inhalte nicht mit niedriger Latenz an andere Regionen liefern kann, verwendet das Azure CDN Server in mehreren Rechenzentren weltweit. Darüber hinaus unterstützt ein CDN in der Regel höhere Ausgangsgrenzen als ein einzelnes Speicherkonto.
+Manchmal muss eine Anwendung denselben Inhalt für mehrere Benutzer bereitstellen (z. B. ein Produkt-Demovideo auf der Startseite einer Website), die sich entweder in derselben oder in verschiedenen Regionen befinden. In diesem Fall sollten Sie ein Content Delivery Network (CDN) wie das Azure CDN verwenden, und das CDN nutzt den Azure-Speicher als Datenursprung. Im Gegensatz zum Azure-Speicherkonto, das in genau einer Region vorhanden ist und Inhalte nicht mit niedriger Latenz an andere Regionen liefern kann, verwendet das Azure CDN Server in mehreren Rechenzentren weltweit. Darüber hinaus unterstützt ein CDN in der Regel höhere Ausgangsgrenzwerte als ein einzelnes Speicherkonto.
 
 Weitere Informationen zum Azure CDN finden Sie unter [Azure CDN](https://azure.microsoft.com/services/cdn/).
 
@@ -164,7 +164,7 @@ Konfigurations-, Such- und andere Daten, die immer von der Anwendung verwendet w
 Ein Beispiel für das Abrufen der Blobeigenschaften mithilfe von .NET, um das letzte Änderungsdatum zu ermitteln, finden Sie unter [Festlegen und Abrufen von Eigenschaften und Metadaten](storage-properties-metadata.md). Informationen zu bedingten Downloads finden Sie unter [Angeben von bedingten Headern für Vorgänge des Blob-Diensts](http://msdn.microsoft.com/library/azure/dd179371.aspx).
 
 ####<a name="subheading8"></a>Hochladen von Daten in Batches
-In einigen Anwendungsszenarien können Sie Daten lokal zusammenfassen und dann regelmäßig als Batch hochladen, statt die einzelnen Daten sofort hochzuladen. Beispielsweise kann eine Webanwendung eine Protokolldatei der Aktivitäten speichern: Die Anwendung kann entweder die Details jeder Aktivität sofort als Tabellenentität hochladen (was viele Speichervorgänge erforderlich macht) oder die Aktivitätsdetails in einer lokalen Protokolldatei speichern und dann regelmäßig alle Aktivitätsdetails als Datei mit Trennzeichen in den Blob hochladen. Wenn jeder Protokolleintrag eine Größe von 1 KB hat, können Sie Tausende davon in einer einzigen „Put Blob“-Transaktion übertragen (Sie können bis zu 64 MB in einer einzigen Blob-Transaktion hochladen). Wenn der lokale Computer allerdings vor dem Upload abstürzt, besteht eine hohe Wahrscheinlichkeit, dass einige Protokolldaten verloren gehen: der Anwendungsentwickler muss bei der Entwicklung die Möglichkeit defekter Clientgeräte oder eines Fehlers beim Hochladen berücksichtigen. Wenn die Aktivitätsdaten für bestimmte Zeitspannen heruntergeladen werden sollen (nicht nur für eine Aktivität), dann sind Blobs gegenüber Tabellen vorzuziehen.
+In einigen Anwendungsszenarien können Sie Daten lokal aggregieren und dann regelmäßig als Batch hochladen, statt die einzelnen Daten sofort hochzuladen. Beispielsweise kann eine Webanwendung eine Protokolldatei der Aktivitäten speichern: Die Anwendung kann entweder die Details jeder Aktivität sofort als Tabellenentität hochladen (was viele Speichervorgänge erforderlich macht) oder die Aktivitätsdetails in einer lokalen Protokolldatei speichern und dann regelmäßig alle Aktivitätsdetails als Datei mit Trennzeichen in den Blob hochladen. Wenn jeder Protokolleintrag eine Größe von 1 KB hat, können Sie Tausende davon in einer einzigen „Put Blob“-Transaktion übertragen (Sie können bis zu 64 MB in einer einzigen Blob-Transaktion hochladen). Wenn der lokale Computer allerdings vor dem Upload abstürzt, besteht eine hohe Wahrscheinlichkeit, dass einige Protokolldaten verloren gehen: der Anwendungsentwickler muss bei der Entwicklung die Möglichkeit defekter Clientgeräte oder eines Fehlers beim Hochladen berücksichtigen. Wenn die Aktivitätsdaten für bestimmte Zeitspannen heruntergeladen werden sollen (nicht nur für eine Aktivität), dann sind Blobs gegenüber Tabellen vorzuziehen.
 
 ###.NET-Konfiguration
 Für die Verwendung des .NET Frameworks sind in diesem Abschnitt einige Schnellkonfigurationseinstellungen aufgelistet, die eine deutliche Leistungsoptimierung bewirken. Bei Verwendung anderer Sprachen sollten Sie sich informieren, ob es ähnliche Konzepte für die jeweilige Sprache gibt.
@@ -210,7 +210,7 @@ Die Clientbibliotheken erkennen, welche Fehler Wiederholungsversuche nach sich z
 ####Nützliche Ressourcen
 Weitere Informationen zu Speicherfehlercodes finden Sie unter [Status- und Fehlercodes](http://msdn.microsoft.com/library/azure/dd179382.aspx) auf der Microsoft Azure-Website.
 
-##Blobs
+##Blobs (in englischer Sprache)
 Zusätzlich zu den zuvor beschriebenen bewährten Vorgehensweisen für [Alle Dienste](#allservices) können die folgenden bewährten Vorgehensweisen speziell für den Blobdienst angewendet werden.
 
 ###Blob-spezifische Skalierbarkeitsziele
@@ -239,10 +239,10 @@ Beachten Sie, dass Kopien im selben Speicherkonto normalerweise sehr schnell abg
 Weitere Informationen finden Sie unter [Copy Blob](http://msdn.microsoft.com/library/azure/dd894037.aspx).
 
 ####<a name="subheading18"></a>Verwenden von AzCopy
-Das Azure-Speicherteam hat ein Befehlszeilentool namens „AzCopy“ veröffentlicht, das die Massenübertragung von vielen Blobs von, an und über Speicherkonten hinweg unterstützen soll. Dieses Tool ist für dieses Szenario optimiert und kann hohe Übertragungsraten erzielen. Die Verwendung wird für Massenszenarien beim Hochladen, Herunterladen und Kopieren empfohlen. Weitere Informationen sowie den Download finden Sie unter [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](storage-use-azcopy.md).
+Das Azure Storage-Team hat ein Befehlszeilentool namens „AzCopy“ veröffentlicht, das die Massenübertragung von vielen Blobs von, an und über Speicherkonten hinweg unterstützen soll. Dieses Tool ist für dieses Szenario optimiert und kann hohe Übertragungsraten erzielen. Die Verwendung wird für Massenszenarien beim Hochladen, Herunterladen und Kopieren empfohlen. Weitere Informationen sowie den Download finden Sie unter [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](storage-use-azcopy.md).
 
 ####<a name="subheading19"></a>Azure Import/Export-Dienst
-Für größere Datenmengen (mehr als 1 TB) bietet der Azure-Speicher einen Import-/Export-Dienst, der das Hochladen in und Herunterladen aus dem Blob-Speicher durch den Versand von Festplatten ermöglicht. Sie können Ihre Daten auf eine Festplatte speichern und zum Hochladen an Microsoft senden oder eine leere Festplatte zum Herunterladen der Daten an Microsoft schicken. Weitere Informationen finden Sie unter [Verwenden des Microsoft Azure Import/Export-Diensts zum Übertragen von Daten in den Blobspeicher](storage-import-export-service.md). Dies kann sehr viel effizienter als das Hochladen/Herunterladen einer derartigen Datenmenge über das Netzwerk sein.
+Für größere Datenmengen (mehr als 1 TB) bietet der Azure-Speicher einen Import-/Export-Dienst, der das Hochladen in und Herunterladen aus dem Blob-Speicher durch den Versand von Festplatten ermöglicht. Sie können Ihre Daten auf eine Festplatte speichern und zum Hochladen an Microsoft senden oder eine leere Festplatte zum Herunterladen der Daten an Microsoft schicken. Weitere Informationen finden Sie unter [Verwenden des Microsoft Azure Import/Export-Diensts zum Übertragen von Daten in den Blobspeicher](storage-import-export-service.md). Dies kann sehr viel effizienter als das Hochladen/Herunterladen einer solchen Datenmenge über das Netzwerk sein.
 
 ###<a name="subheading20"></a>Verwenden von Metadaten
 Der Blobdienst unterstützt Header-Anforderungen, die Metadaten zum Blob enthalten können. Wenn Ihre Anwendung beispielsweise die EXIF-Daten eines Fotos benötigt, kann sie das Foto herunterladen und diese extrahieren. Die Anwendung kann, um Bandbreite zu sparen und die Leistung zu verbessern, die EXIF-Daten in den Blob-Metadaten speichern, wenn die Anwendung das Foto hochgeladen hat. Sie können dann mit einer HEAD-Anfrage die EXIF-Daten in den Metadaten abrufen und so erhebliche Bandbreiten- und Verarbeitungszeit sparen, die jedes Mal zum Extrahieren der EXIF-Daten beim Lesen des Blob benötigt wird. Dies kann in Fällen nützlich sein, wenn Sie nur die Metadaten benötigen und nicht den vollständigen Inhalt eines Blobs. Beachten Sie, dass pro Blob nur 8 KB Metadaten gespeichert werden können (der Dienst akzeptiert keine Anfrage, mit der mehr als das gespeichert werden soll); wenn die Daten also diese Größe überschreiten, können Sie diese Vorgehensweise nicht anwenden.
@@ -298,18 +298,18 @@ Wie Sie Ihre Daten präsentieren und abfragen, ist der größte Faktor mit Auswi
 
 -	Tabellenentwurf
 -	Effiziente Abfragen
--	Effiziente Datenaktualisierungen  
+-	Effiziente Datenaktualisierungen
 
 ####<a name="subheading27"></a>Tabellen und Partitionen
 Tabellen sind in Partitionen unterteilt. Jede in einer Partition gespeicherte Entität verwendet denselben Partitionsschlüssel und hat einen eindeutigen Zeilenschlüssel, damit sie innerhalb der Partition identifiziert werden kann. Partitionen bieten Vorteile, führen jedoch auch zu Skalierbarkeitsgrenzen.
 
 -	Vorteile: Sie können die Entitäten innerhalb derselben Partition in einer einzigen, unteilbaren Batchtransaktion aktualisieren, die bis zu 100 separate Speichervorgänge enthalten kann (Gesamtgrößenlimit 4 MB). Bei derselben Menge abzurufender Entitäten können Sie auch die Daten innerhalb einer Partition effizienter abfragen als Daten, die sich über mehrere Partitionen verteilen (lesen Sie für noch mehr Empfehlungen zur Abfrage von Tabellendaten weiter).
--	Skalierbarkeitsgrenze: Für den Zugriff auf Entitäten, die in einer einzigen Partition gespeichert sind, kann kein Lastenausgleich erfolgen, da die Partitionen unteilbare Batchtransaktionen unterstützen. Aus diesem Grund ist das Skalierbarkeitsziel für eine einzelne Tabellenpartition niedriger als für den gesamten Tabellendienst.  
+-	Skalierbarkeitsgrenze: Für den Zugriff auf Entitäten, die in einer einzigen Partition gespeichert sind, kann kein Lastenausgleich erfolgen, da die Partitionen unteilbare Batchtransaktionen unterstützen. Aus diesem Grund ist das Skalierbarkeitsziel für eine einzelne Tabellenpartition niedriger als für den gesamten Tabellendienst.
 
 Aufgrund dieser Eigenschaften von Tabellen und Partitionen sollten Sie die folgenden Entwurfsprinzipien beachten:
 
 -	Daten, die Ihre Clientanwendung häufig in derselben logischen Arbeitseinheit aktualisiert oder abfragt, sollten sich in derselben Partition befinden. Der Grund dafür kann sein, dass Ihre Anwendung Schreibvorgänge aggregiert oder dass Sie unteilbare Batchtransaktionen nutzen möchten. Außerdem können Daten innerhalb einer Partition effizienter mit nur einer Abfrage abgefragt werden als Daten, die sich über mehrere Partitionen verteilen.
--	Daten, die Ihre Clientanwendung nicht in derselben logischen Arbeitseinheit einfügt/aktualisiert (Einzelabfrage oder Batchaktualisierung), sollten sich in separaten Partitionen befinden. Ein wichtiger Hinweis ist hier, dass es keine Begrenzung der Anzahl der Partitionsschlüssel in einer Tabelle gibt, daher sind selbst Millionen von Partitionsschlüsseln kein Problem und wirken sich nicht auf die Leistung aus. Wenn es sich bei Ihrer Anwendung beispielsweise um eine beliebte Website mit Benutzeranmeldung handelt, kann die Benutzer-ID als Partitionsschlüssel verwendet werden.  
+-	Daten, die Ihre Clientanwendung nicht in derselben logischen Arbeitseinheit einfügt/aktualisiert (Einzelabfrage oder Batchaktualisierung), sollten sich in separaten Partitionen befinden. Ein wichtiger Hinweis ist hier, dass es keine Begrenzung der Anzahl der Partitionsschlüssel in einer Tabelle gibt, daher sind selbst Millionen von Partitionsschlüsseln kein Problem und wirken sich nicht auf die Leistung aus. Wenn es sich bei Ihrer Anwendung beispielsweise um eine beliebte Website mit Benutzeranmeldung handelt, kann die Benutzer-ID als Partitionsschlüssel verwendet werden.
 
 ####Hot Partition
 Eine Hot Partition ist eine Partition, die einen überproportionalen Anteil des Datenverkehrs an ein Konto empfängt und kein Lastenausgleich erfolgen kann, da es sich um eine einzelne Partition handelt. Im Allgemeinen wird eine Hot Partition mit einer der folgenden Möglichkeiten erstellt:
@@ -354,7 +354,7 @@ Im Gegensatz zum Arbeiten mit relationalen Datenbanken führen die bewährten Vo
 In diesem Abschnitt werden bewährte Vorgehensweise für das Ändern von im Tabellendienst gespeicherte Entitäten erläutert.
 
 #####<a name="subheading35"></a>Batchverarbeitung
-Batchtransaktionen werden in Azure-Speicher als Entitätsgruppentransaktionen (ETG) bezeichnet. Alle Vorgänge innerhalb einer ETG müssen sich auf eine einzige Partition in einer einzigen Tabelle beziehen. Wenn möglich, verwenden Sie ETGs für die Durchführung von Einfüge-, Aktualisierungs- und Löschvorgängen in Batches. Dadurch reduziert sich die Anzahl der Roundtrips von Ihrer Clientanwendung zum Server und somit die Anzahl der kostenpflichtigen Transaktionen (eine ETG zählt zu Abrechnungszwecken als eine Transaktion und kann bis zu 100 Speichervorgänge umfassen); außerdem werden unteilbare Aktualisierungen ermöglicht (alle Vorgänge in einer ETG sind erfolgreich oder schlagen fehl). Umgebungen mit hoher Latenz wie beispielsweise Mobilgeräte profitieren stark von der Verwendung von ETGs.
+Batchtransaktionen werden in Azure-Speicher als Entitätsgruppentransaktionen (ETG) bezeichnet. Alle Vorgänge innerhalb einer ETG müssen sich auf eine einzige Partition in einer einzigen Tabelle beziehen. Wenn möglich, verwenden Sie ETGs für die Durchführung von Einfüge-, Aktualisierungs- und Löschvorgängen in Batches. Dadurch reduziert sich die Anzahl der Roundtrips von Ihrer Clientanwendung zum Server und somit die Anzahl der kostenpflichtigen Transaktionen (eine ETG zählt zu Abrechnungszwecken als eine Transaktion und kann bis zu 100 Speichervorgänge umfassen. Außerdem werden unteilbare Aktualisierungen ermöglicht (alle Vorgänge in einer ETG sind erfolgreich oder schlagen fehl). Umgebungen mit hoher Latenz wie beispielsweise Mobilgeräte profitieren stark von der Verwendung von ETGs.
 
 #####<a name="subheading36"></a>Upsert
 Verwenden Sie wenn möglich den Tabellenvorgang **Upsert** zum Einfügen und Aktualisieren. Es gibt zwei **Upsert**-Typen, die beide effizienter als herkömmliche **Insert**- und **Update**-Vorgänge sind:
@@ -377,7 +377,7 @@ Eine einzelne Warteschlange kann ca. 2.000 Nachrichten (1 KB jeweils) pro Sekund
 Zeigen Sie aktuelle Skalierbarkeitsziele unter [Skalierbarkeits- und Leistungsziele für Azure Storage](storage-scalability-targets.md) an.
 
 ###<a name=subheading40"></a>Deaktivieren von Nagle
-Lesen Sie den Abschnitt über den Nagle-Algorithmus in der Tabellenkonfiguration. Der Nagle-Algorithmus wirkt sich meist negativ auf die Leistung von Warteschlangenanforderungen aus, daher sollten Sie ihn deaktivieren.
+Lesen Sie den Abschnitt über den Nagle-Algorithmus in der Tabellenkonfiguration – der Nagle-Algorithmus wirkt sich meist negativ auf die Leistung von Warteschlangenanforderungen aus, daher sollten Sie ihn deaktivieren.
 
 ###<a name=subheading41"></a>Nachrichtengröße
 Die Leistung der Warteschlange und der Skalierbarkeit sinkt, wenn die Nachrichtengröße steigt. Fügen Sie einer Nachricht nur die Informationen hinzu, die der Empfänger benötigt.
@@ -399,9 +399,9 @@ Weitere Informationen finden Sie im Artikel [Ändern des Inhalts von Nachrichten
 Verwenden Sie Warteschlangen, um die Anwendungsarchitektur skalierbar zu machen. Nachfolgend sind einige Möglichkeiten aufgelistet, wie Sie Warteschlangen verwenden können, um Ihre Anwendung skalierbarer zu gestalten:
 
 -	Sie können Warteschlangen verwenden, um Arbeits-Backlogs zur Verarbeitung zu erstellen und die Arbeitsauslastung in der Anwendung gleichmäßig zu verteilen. Sie können z. B. Benutzeranfragen in die Warteschlange stellen, um prozessorintensive Arbeiten durchzuführen, wie das Ändern der Größe hochgeladener Bilder.
--	Sie können Warteschlangen verwenden, um Teile Ihrer Anwendung zu entkoppeln, damit diese unabhängig skaliert werden können. Beispielsweise kann ein Web-Front-End Umfrageergebnisse von Benutzern zur späteren Analyse und Speicherung in eine Warteschlange stellen. Sie können mehr Workerrollen-Instanzen hinzufügen, um die Warteschlangendaten nach Bedarf zu verarbeiten.  
+-	Sie können Warteschlangen verwenden, um Teile Ihrer Anwendung zu entkoppeln, damit diese unabhängig skaliert werden können. Beispielsweise kann ein Web-Front-End Umfrageergebnisse von Benutzern zur späteren Analyse und Speicherung in eine Warteschlange stellen. Sie können mehr Workerrollen-Instanzen hinzufügen, um die Warteschlangendaten nach Bedarf zu verarbeiten.
 
 ##Zusammenfassung
 In diesem Artikel wurden einige der häufigsten bewährten Vorgehensweisen zur Leistungsoptimierung bei der Verwendung des Azure-Speichers erläutert. Wir empfehlen jedem Anwendungsentwickler, seine Anwendung anhand dieser Vorgehensweisen zu überprüfen und ggf. die Empfehlungen umzusetzen, um bessere Leistung für ihre Anwendungen zu erzielen, die Azure-Speicher verwenden.
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0810_2016-->

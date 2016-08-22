@@ -3,7 +3,7 @@
    description="Erfahren Sie, wie Sie VMs mit einer statischen öffentlichen IP-Adresse mithilfe der Azure-Befehlszeilenschnittstelle im Ressourcen-Manager bereitstellen."
    services="virtual-network"
    documentationCenter="na"
-   authors="telmosampaio"
+   authors="jimdial"
    manager="carmonm"
    editor=""
    tags="azure-resource-manager"
@@ -15,7 +15,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="03/15/2016"
-   ms.author="telmos" />
+   ms.author="jdial" />
 
 # Bereitstellen einer VM mit einer statischen öffentlichen IP-Adresse mithilfe der Azure-Befehlszeilenschnittstelle
 
@@ -23,7 +23,7 @@
 
 [AZURE.INCLUDE [virtual-network-deploy-static-pip-intro-include.md](../../includes/virtual-network-deploy-static-pip-intro-include.md)]
 
-[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-rm-include.md)]klassisches Bereitstellungsmodell.
+[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-rm-include.md)] klassisches Bereitstellungsmodell.
 
 [AZURE.INCLUDE [virtual-network-deploy-static-pip-scenario-include.md](../../includes/virtual-network-deploy-static-pip-scenario-include.md)]
 
@@ -64,7 +64,7 @@ Sie können das verwendete Bash-Skript ungekürzt [hier](https://raw.githubuserc
 		pipName="PIPWEB1"
 		dnsName="iaasstoryws1"
 
-## Schritt 2: Erstellen der erforderlichen Ressourcen für Ihre VM
+## Schritt 2: Erstellen der erforderlichen Ressourcen für Ihre VM
 
 Vor dem Erstellen einer virtuellen Maschine benötigen Sie eine Ressourcengruppe, ein VNET, eine öffentliche IP-Adresse und eine Netzwerkschnittstelle für die Verwendung durch die VM.
 
@@ -114,7 +114,7 @@ Vor dem Erstellen einer virtuellen Maschine benötigen Sie eine Ressourcengruppe
 		    --resource-group $rgName \
 		    --location $location --type LRS 
 
-## Schritt 3: Erstellen der VM 
+## Schritt 3: Erstellen der VM 
 
 Nachdem nun alle benötigten Ressourcen vorhanden sind, können Sie eine neue VM erstellen.
 
@@ -227,4 +227,4 @@ Nachdem Sie die erforderlichen Änderungen vorgenommen und sich mit dem Skript v
 		info:    Creating VM "WEB1"
 		info:    vm create command OK
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0810_2016-->

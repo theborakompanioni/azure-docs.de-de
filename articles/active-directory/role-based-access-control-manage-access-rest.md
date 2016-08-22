@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter="na"
 	authors="kgremban"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="rest-api"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/13/2016"
+	ms.date="08/04/2016"
 	ms.author="kgremban"/>
 
 # Verwalten der rollenbasierten Zugriffssteuerung mit der REST-API
@@ -25,14 +25,13 @@
 
 Mit der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) im Azure-Portal und der Azure Resource Manager-API können Sie den Zugriff auf Ihr Abonnement und Ihre Ressourcen differenziert steuern. Mithilfe dieser Funktion lassen sich Zugriffsberechtigungen für Active Directory-Benutzer, -Gruppen oder -Dienstprinzipale festlegen, indem ihnen bestimmte Rollen für einen bestimmten Bereich zugewiesen werden.
 
-
 ## Auflisten aller Rollenzuweisungen
 
 Listet alle Rollenzuweisungen mit dem angegebenen Bereich und den zugehörigen Unterbereichen auf.
 
 Zum Auflisten von Rollenzuweisungen benötigen Sie Zugriff auf den Vorgang `Microsoft.Authorization/roleAssignments/read` für den Bereich. Für alle integrierten Rollen wird der Zugriff auf diesen Vorgang gewährt. Weitere Informationen zu Rollenzuweisungen und zum Verwalten des Zugriffs auf Azure-Ressourcen finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure](role-based-access-control-configure.md).
 
-### Anforderung
+### Request
 
 Verwenden Sie die **GET**-Methode mit dem folgenden URI:
 
@@ -40,26 +39,19 @@ Verwenden Sie die **GET**-Methode mit dem folgenden URI:
 
 Führen Sie für den URI folgende Schritte aus, um Ihre Anforderung anzupassen:
 
-Ersetzen Sie *{scope}* durch den Bereich, für den Sie die Rollenzuweisungen auflisten möchten. Die folgenden Beispiele zeigen, wie Sie den Bereich für unterschiedliche Ebenen angeben:
+1. Ersetzen Sie *{scope}* durch den Bereich, für den Sie die Rollenzuweisungen auflisten möchten. Die folgenden Beispiele zeigen, wie Sie den Bereich für unterschiedliche Ebenen angeben:
 
-| Ebene | *{Scope}* |
-|-------|-----------|
-| Abonnement | /subscriptions/{subscription-id} |
-| Ressourcengruppe | /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1 |
-| Ressource | /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1 |
+  - Abonnement: /subscriptions/{subscription-id}
+  - Ressourcengruppe: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1
+  - Ressource: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1
 
-Ersetzen Sie *{api-version}* durch „2015-07-01“.
+2. Ersetzen Sie *{api-version}* durch „2015-07-01“.
 
-Ersetzen Sie *{filter}* durch die Bedingung, die Sie zum Filtern der Liste mit den Rollenzuweisungen anwenden möchten. Die folgenden Bedingungen werden unterstützt.
+3. Ersetzen Sie *{filter}* durch die Bedingung, die Sie zum Filtern der Liste mit den Rollenzuweisungen anwenden möchten:
 
-
-| Bedingung | *{Filter}* | Replace |
-|-----------|------------|---------|
-| Auflisten der Rollenzuweisungen nur für den angegebenen Bereich, ohne die Rollenzuweisungen der Unterbereiche | `atScope()` | |
-| Auflisten der Rollenzuweisungen nur für spezielle Benutzer, Gruppen oder Anwendungen | `principalId%20eq%20'{objectId}'` | Ersetzen Sie *{objectId}* durch die Azure AD-Objekt-ID des Benutzer-, Gruppen- oder Dienstprinzipals. Beispiel: `&$filter=principalId%20eq%20'3a477f6a-6739-4b93-84aa-3be3f8c8e7c2'` |
-| Auflisten von Rollenzuweisungen nur für bestimmte Benutzer (einschließlich der Zuweisungen von Gruppen, deren Mitglied der Benutzer ist) | `assignedTo('{objectId}')` | Ersetzen Sie *{objectId}* durch die Azure AD-Objekt-ID des Benutzers. Beispiel: `&$filter=assignedTo('3a477f6a-6739-4b93-84aa-3be3f8c8e7c2')` |
-
-
+  - Auflisten der Rollenzuweisungen nur für den angegebenen Bereich, ohne die Rollenzuweisungen der Unterbereiche: `atScope()`
+  - Auflisten der Rollenzuweisungen für spezielle Benutzer, Gruppen oder Anwendungen: `principalId%20eq%20'{objectId of user, group, or service principal}'`
+  - Auflisten der Rollenzuweisungen für spezielle Benutzer, einschließlich von Gruppen geerbter: `assignedTo('{objectId of user}')`
 
 ### Antwort
 
@@ -94,7 +86,7 @@ Dient zum Abrufen von Informationen zu einer einzelnen Rollenzuweisung, die übe
 
 Um Informationen zu einer Rollenzuweisung zu erhalten, benötigen Sie Zugriff auf den Vorgang `Microsoft.Authorization/roleAssignments/read`. Für alle integrierten Rollen wird der Zugriff auf diesen Vorgang gewährt. Weitere Informationen zu Rollenzuweisungen und zum Verwalten des Zugriffs auf Azure-Ressourcen finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure](role-based-access-control-configure.md).
 
-### Anforderung
+### Request
 
 Verwenden Sie die **GET**-Methode mit dem folgenden URI:
 
@@ -102,17 +94,15 @@ Verwenden Sie die **GET**-Methode mit dem folgenden URI:
 
 Führen Sie für den URI folgende Schritte aus, um Ihre Anforderung anzupassen:
 
-Ersetzen Sie *{scope}* durch den Bereich, für den Sie die Rollenzuweisungen auflisten möchten. Die folgenden Beispiele zeigen, wie Sie den Bereich für unterschiedliche Ebenen angeben:
+1. Ersetzen Sie *{scope}* durch den Bereich, für den Sie die Rollenzuweisungen auflisten möchten. Die folgenden Beispiele zeigen, wie Sie den Bereich für unterschiedliche Ebenen angeben:
 
-| Ebene | *{Scope}* |
-|-------|-----------|
-| Abonnement | /subscriptions/{subscription-id} |
-| Ressourcengruppe | /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1 |
-| Ressource | /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1 |
+  - Abonnement: /subscriptions/{subscription-id}
+  - Ressourcengruppe: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1
+  - Ressource: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1
 
-Ersetzen Sie *{role-assignment-id}* durch den GUID-Bezeichner der Rollenzuweisung.
+2. Ersetzen Sie *{role-assignment-id}* durch den GUID-Bezeichner der Rollenzuweisung.
 
-Ersetzen Sie *{api-version}* durch „2015-07-01“.
+3. Ersetzen Sie *{api-version}* durch „2015-07-01“.
 
 ### Antwort
 
@@ -142,7 +132,7 @@ Dient zum Erstellen einer Rollenzuweisung im angegebenen Bereich für den angege
 
 Zum Erstellen einer Rollenzuweisung benötigen Sie Zugriff auf den Vorgang `Microsoft.Authorization/roleAssignments/write`. Von den integrierten Rollen verfügen nur *Besitzer* und *Benutzerzugriffsadministrator* über Zugriff auf diesen Vorgang. Weitere Informationen zu Rollenzuweisungen und zum Verwalten des Zugriffs auf Azure-Ressourcen finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure](role-based-access-control-configure.md).
 
-### Anforderung
+### Request
 
 Verwenden Sie die **PUT**-Methode mit dem folgenden URI:
 
@@ -150,17 +140,15 @@ Verwenden Sie die **PUT**-Methode mit dem folgenden URI:
 
 Führen Sie für den URI folgende Schritte aus, um Ihre Anforderung anzupassen:
 
-Ersetzen Sie *{scope}* durch den Bereich, für den Sie die Rollenzuweisungen erstellen möchten. Wenn Sie eine Rollenzuweisung für einen übergeordneten Bereich erstellen, erben alle untergeordneten Bereiche die gleiche Rollenzuweisung. Die folgenden Beispiele zeigen, wie Sie den Bereich für unterschiedliche Ebenen angeben:
+1. Ersetzen Sie *{scope}* durch den Bereich, für den Sie die Rollenzuweisungen erstellen möchten. Wenn Sie eine Rollenzuweisung für einen übergeordneten Bereich erstellen, erben alle untergeordneten Bereiche die gleiche Rollenzuweisung. Die folgenden Beispiele zeigen, wie Sie den Bereich für unterschiedliche Ebenen angeben:
 
-| Ebene | *{Scope}* |
-|-------|-----------|
-| Abonnement | /subscriptions/{subscription-id} |
-| Ressourcengruppe | /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1 |
-| Ressource | /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1 |
+  - Abonnement: /subscriptions/{subscription-id}
+  - Ressourcengruppe: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1
+  - Ressource: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1
 
-Ersetzen Sie *{role-assignment-id}* durch eine neue GUID. Sie wird als GUID-Bezeichner der neuen Rollenzuweisung verwendet.
+2. Ersetzen Sie *{role-assignment-id}* durch eine neue GUID, die zum GUID-Bezeichner der neuen Rollenzuweisung wird.
 
-Ersetzen Sie *{api-version}* durch „2015-07-01“.
+3. Ersetzen Sie *{api-version}* durch „2015-07-01“.
 
 Geben Sie für den Anforderungstext die Werte im folgenden Format an:
 
@@ -176,8 +164,8 @@ Geben Sie für den Anforderungstext die Werte im folgenden Format an:
 
 | Elementname | Erforderlich | Typ | Beschreibung |
 |------------------|----------|--------|-------------|
-| roleDefinitionId | Ja | String | Der Bezeichner der Rolle, die zugewiesen werden soll. Das Format des Bezeichners ist: `{scope}/providers/Microsoft.Authorization/roleDefinitions/{role-definition-id-guid}` |
-| principalId | Ja | String | objectId des Azure AD-Prinzipals (Benutzer-, Gruppen- oder Dienstprinzipal), dem die Rolle zugewiesen werden soll. |
+| roleDefinitionId | Ja | String | Der Bezeichner der Rolle. Das Format des Bezeichners ist: `{scope}/providers/Microsoft.Authorization/roleDefinitions/{role-definition-id-guid}` |
+| principalId | Ja | String | objectId des Azure AD-Prinzipals (Benutzer-, Gruppen- oder Dienstprinzipal), dem die Rolle zugewiesen ist. |
 
 ### Antwort
 
@@ -207,7 +195,7 @@ Dient zum Löschen einer Rollenzuweisung im angegebenen Bereich.
 
 Zum Löschen einer Rollenzuweisung benötigen Sie Zugriff auf den Vorgang `Microsoft.Authorization/roleAssignments/delete`. Von den integrierten Rollen verfügen nur *Besitzer* und *Benutzerzugriffsadministrator* über Zugriff auf diesen Vorgang. Weitere Informationen zu Rollenzuweisungen und zum Verwalten des Zugriffs auf Azure-Ressourcen finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure](role-based-access-control-configure.md).
 
-### Anforderung
+### Request
 
 Verwenden Sie die **DELETE**-Methode mit dem folgenden URI:
 
@@ -215,17 +203,15 @@ Verwenden Sie die **DELETE**-Methode mit dem folgenden URI:
 
 Führen Sie für den URI folgende Schritte aus, um Ihre Anforderung anzupassen:
 
-Ersetzen Sie *{scope}* durch den Bereich, für den Sie die Rollenzuweisungen erstellen möchten. Die folgenden Beispiele zeigen, wie Sie den Bereich für unterschiedliche Ebenen angeben:
+1. Ersetzen Sie *{scope}* durch den Bereich, für den Sie die Rollenzuweisungen erstellen möchten. Die folgenden Beispiele zeigen, wie Sie den Bereich für unterschiedliche Ebenen angeben:
 
-| Ebene | *{Scope}* |
-|-------|-----------|
-| Abonnement | /subscriptions/{subscription-id} |
-| Ressourcengruppe | /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1 |
-| Ressource | /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1 |
+  - Abonnement: /subscriptions/{subscription-id}
+  - Ressourcengruppe: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1
+  - Ressource: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1
 
-Ersetzen Sie *{role-assignment-id}* durch die GUID der Rollenzuweisungs-ID.
+2. Ersetzen Sie *{role-assignment-id}* durch die GUID der Rollenzuweisungs-ID.
 
-Ersetzen Sie *{api-version}* durch „2015-07-01“.
+3. Ersetzen Sie *{api-version}* durch „2015-07-01“.
 
 ### Antwort
 
@@ -255,7 +241,7 @@ Dient zum Auflisten aller Rollen, die für die Zuweisung im angegebenen Bereich 
 
 Zum Auflisten von Rollen benötigen Sie Zugriff auf den Vorgang `Microsoft.Authorization/roleDefinitions/read` für den Bereich. Für alle integrierten Rollen wird der Zugriff auf diesen Vorgang gewährt. Weitere Informationen zu Rollenzuweisungen und zum Verwalten des Zugriffs auf Azure-Ressourcen finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure](role-based-access-control-configure.md).
 
-### Anforderung
+### Request
 
 Verwenden Sie die **GET**-Methode mit dem folgenden URI:
 
@@ -263,24 +249,18 @@ Verwenden Sie die **GET**-Methode mit dem folgenden URI:
 
 Führen Sie für den URI folgende Schritte aus, um Ihre Anforderung anzupassen:
 
-Ersetzen Sie *{scope}* durch den Bereich, für den Sie die Rollen auflisten möchten. Die folgenden Beispiele zeigen, wie Sie den Bereich für unterschiedliche Ebenen angeben:
+1. Ersetzen Sie *{scope}* durch den Bereich, für den Sie die Rollen auflisten möchten. Die folgenden Beispiele zeigen, wie Sie den Bereich für unterschiedliche Ebenen angeben:
 
-| Ebene | *{Scope}* |
-|-------|-----------|
-| Abonnement | /subscriptions/{subscription-id} |
-| Ressourcengruppe | /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1 |
-| Ressource | /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1 |
+  - Abonnement: /subscriptions/{subscription-id}
+  - Ressourcengruppe: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1
+  - Ressource: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1
 
-Ersetzen Sie *{api-version}* durch „2015-07-01“.
+2. Ersetzen Sie *{api-version}* durch „2015-07-01“.
 
-Ersetzen Sie *{filter}* durch die Bedingung, die Sie zum Filtern der Liste mit den Rollen anwenden möchten. Die folgenden Bedingungen werden unterstützt.
+3. Ersetzen Sie *{filter}* durch die Bedingung, die Sie zum Filtern der Liste mit den Rollen anwenden möchten:
 
-| Bedingung | *{Filter}* | Replace |
-|-----------|------------|---------|
-| Dient zum Auflisten der Rollen, die im angegebenen Bereich und in allen untergeordneten Bereichen verfügbar sind. | `atScopeAndBelow()` | |
-| Suchen nach einer Rolle mit dem genauen Anzeigenamen | `roleName%20eq%20'{role-display-name}'` | Ersetzen Sie *{role-display-name}* durch die URL-codierte Form des genauen Anzeigenamens der Rolle. Zum Beispiel `$filter=roleName%20eq%20'Virtual%20Machine%20Contributor'` |
-
-
+  - Dient zum Auflisten der Rollen, die im angegebenen Bereich und in allen untergeordneten Bereichen verfügbar sind: `atScopeAndBelow()`
+  - Suchen nach einer Rolle mit dem genauen Anzeigenamen: `roleName%20eq%20'{role-display-name}'`. Verwenden Sie die URL-codierte Form des genauen Anzeigenamens der Rolle. Beispiel: `$filter=roleName%20eq%20'Virtual%20Machine%20Contributor'` |
 
 ### Antwort
 
@@ -345,11 +325,11 @@ Statuscode: 200
 
 ## Abrufen von Informationen zu einer Rolle
 
-Dient zum Abrufen von Informationen zu einer bestimmten Rolle, die mit dem Bezeichner der Rollendefinition angegeben wird. Informationen zum Abrufen von Informationen zu einer einzelnen Rolle über den Anzeigenamen finden Sie unter „Auflisten aller Rollen“ und „roleName-Filter“.
+Dient zum Abrufen von Informationen zu einer bestimmten Rolle, die mit dem Bezeichner der Rollendefinition angegeben wird. Informationen zum Abrufen von Informationen zu einer einzelnen Rolle über den Anzeigenamen finden Sie unter [Auflisten aller Rollen](role-based-access-control-manage-access-rest.md#list-all-roles).
 
 Um Informationen zu einer Rolle zu erhalten, benötigen Sie Zugriff auf den Vorgang `Microsoft.Authorization/roleDefinitions/read`. Für alle integrierten Rollen wird der Zugriff auf diesen Vorgang gewährt. Weitere Informationen zu Rollenzuweisungen und zum Verwalten des Zugriffs auf Azure-Ressourcen finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure](role-based-access-control-configure.md).
 
-### Anforderung
+### Request
 
 Verwenden Sie die **GET**-Methode mit dem folgenden URI:
 
@@ -357,15 +337,15 @@ Verwenden Sie die **GET**-Methode mit dem folgenden URI:
 
 Führen Sie für den URI folgende Schritte aus, um Ihre Anforderung anzupassen:
 
-Ersetzen Sie *{scope}* durch den Bereich, für den Sie die Rollenzuweisungen auflisten möchten. Die folgenden Beispiele zeigen, wie Sie den Bereich für unterschiedliche Ebenen angeben:
+1. Ersetzen Sie *{scope}* durch den Bereich, für den Sie die Rollenzuweisungen auflisten möchten. Die folgenden Beispiele zeigen, wie Sie den Bereich für unterschiedliche Ebenen angeben:
 
-| Ebene | *{Scope}* |
-|-------|-----------|
-| Abonnement | /subscriptions/{subscription-id} |
-| Ressourcengruppe | /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1 |
-| Ressource | /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1 |
+  - Abonnement: /subscriptions/{subscription-id}
+  - Ressourcengruppe: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1
+  - Ressource: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1
 
-Ersetzen Sie *{role-definition-id}* durch den GUID-Bezeichner der Rollendefinition. Ersetzen Sie *{api-version}* durch „2015-07-01“.
+2. Ersetzen Sie *{role-definition-id}* durch den GUID-Bezeichner der Rollendefinition.
+
+3. Ersetzen Sie *{api-version}* durch „2015-07-01“.
 
 ### Antwort
 
@@ -433,7 +413,7 @@ Dient zum Erstellen einer benutzerdefinierten Rolle.
 
 Um eine benutzerdefinierte Rolle zu erstellen, benötigen Sie Zugriff auf den Vorgang `Microsoft.Authorization/roleDefinitions/write` für alle dazugehörigen `AssignableScopes`. Von den integrierten Rollen verfügen nur *Besitzer* und *Benutzerzugriffsadministrator* über Zugriff auf diesen Vorgang. Weitere Informationen zu Rollenzuweisungen und zum Verwalten des Zugriffs auf Azure-Ressourcen finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure](role-based-access-control-configure.md).
 
-### Anforderung
+### Request
 
 Verwenden Sie die **PUT**-Methode mit dem folgenden URI:
 
@@ -441,17 +421,15 @@ Verwenden Sie die **PUT**-Methode mit dem folgenden URI:
 
 Führen Sie für den URI folgende Schritte aus, um Ihre Anforderung anzupassen:
 
-Ersetzen Sie *{scope}* durch den ersten *AssignableScope* der benutzerdefinierten Rolle. Die folgenden Beispiele zeigen, wie Sie den Bereich für unterschiedliche Ebenen angeben:
+1. Ersetzen Sie *{scope}* durch den ersten *AssignableScope* der benutzerdefinierten Rolle. Die folgenden Beispiele zeigen, wie Sie den Bereich für unterschiedliche Ebenen angeben:
 
-| Ebene | *{Scope}* |
-|-------|-----------|
-| Abonnement | /subscriptions/{subscription-id} |
-| Ressourcengruppe | /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1 |
-| Ressource | /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1 |
+  - Abonnement: /subscriptions/{subscription-id}
+  - Ressourcengruppe: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1
+  - Ressource: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1
 
-Ersetzen Sie *{role-definition-id}* durch eine neue GUID. Sie wird als GUID-Bezeichner der neuen benutzerdefinierten Rolle verwendet.
+2. Ersetzen Sie *{role-definition-id}* durch eine neue GUID, die zum GUID-Bezeichner der neuen benutzerdefinierten Rolle wird.
 
-Ersetzen Sie *{api-version}* durch „2015-07-01“.
+3. Ersetzen Sie *{api-version}* durch „2015-07-01“.
 
 Geben Sie für den Anforderungstext die Werte im folgenden Format an:
 
@@ -493,8 +471,8 @@ Geben Sie für den Anforderungstext die Werte im folgenden Format an:
 | properties.description | Nein | String | Beschreibung der benutzerdefinierten Rolle. Maximale Größe von 1024 Zeichen. |
 | properties.type | Ja | String | Legen Sie dies auf „CustomRole“ fest. |
 | properties.permissions.actions | Ja | String | Ein Array mit Aktionszeichenfolgen, mit denen die Vorgänge angegeben werden, auf die die benutzerdefinierte Rolle Zugriff gewährt. |
-| properties.permissions.notActions | Nein | String | Ein Array mit Aktionszeichenfolgen zum Angeben der Vorgänge, die von den Vorgängen ausgeschlossen werden sollen, für die die benutzerdefinierte Rolle Zugriff gewährt. |
-| properties.assignableScopes | Ja | String | Ein Array von Bereichen, in denen die benutzerdefinierte Rolle für die Zugriffsverwaltung verwendet werden kann. |
+| properties.permissions.notActions | Nein | String | Ein Array mit Aktionszeichenfolgen, die die Vorgänge angeben, die von den Vorgängen ausgeschlossen werden, auf die die benutzerdefinierte Rolle Zugriff gewährt. |
+| properties.assignableScopes | Ja | String | Ein Array von Bereichen, in denen die benutzerdefinierte Rolle verwendet werden kann. |
 
 ### Antwort
 
@@ -543,7 +521,7 @@ Dient zum Ändern einer benutzerdefinierten Rolle.
 
 Um eine benutzerdefinierte Rolle zu ändern, benötigen Sie Zugriff auf den Vorgang `Microsoft.Authorization/roleDefinitions/write` für alle dazugehörigen `AssignableScopes`-Elemente. Von den integrierten Rollen verfügen nur *Besitzer* und *Benutzerzugriffsadministrator* über Zugriff auf diesen Vorgang. Weitere Informationen zu Rollenzuweisungen und zum Verwalten des Zugriffs auf Azure-Ressourcen finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure](role-based-access-control-configure.md).
 
-### Anforderung
+### Request
 
 Verwenden Sie die **PUT**-Methode mit dem folgenden URI:
 
@@ -551,17 +529,15 @@ Verwenden Sie die **PUT**-Methode mit dem folgenden URI:
 
 Führen Sie für den URI folgende Schritte aus, um Ihre Anforderung anzupassen:
 
-Ersetzen Sie *{scope}* durch den ersten *AssignableScope* der benutzerdefinierten Rolle. Die folgenden Beispiele zeigen, wie Sie den Bereich für unterschiedliche Ebenen angeben:
+1. Ersetzen Sie *{scope}* durch den ersten *AssignableScope* der benutzerdefinierten Rolle. Die folgenden Beispiele zeigen, wie Sie den Bereich für unterschiedliche Ebenen angeben:
 
-| Ebene | *{Scope}* |
-|-------|-----------|
-| Abonnement | /subscriptions/{subscription-id} |
-| Ressourcengruppe | /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1 |
-| Ressource | /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1 |
+  - Abonnement: /subscriptions/{subscription-id}
+  - Ressourcengruppe: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1
+  - Ressource: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1
 
-Ersetzen Sie *{role-definition-id}* durch den GUID-Bezeichner der benutzerdefinierten Rolle, die aktualisiert werden soll.
+2. Ersetzen Sie *{role-definition-id}* durch den GUID-Bezeichner der benutzerdefinierten Rolle.
 
-Ersetzen Sie *{api-version}* durch „2015-07-01“.
+3. Ersetzen Sie *{api-version}* durch „2015-07-01“.
 
 Geben Sie für den Anforderungstext die Werte im folgenden Format an:
 
@@ -598,13 +574,13 @@ Geben Sie für den Anforderungstext die Werte im folgenden Format an:
 
 | Elementname | Erforderlich | Typ | Beschreibung |
 |--------------|----------|------|-------------|
-| Name | Ja | String | GUID-Bezeichner der benutzerdefinierten Rolle, die aktualisiert werden soll |
+| Name | Ja | String | GUID-Bezeichner der benutzerdefinierten Rolle |
 | properties.roleName | Ja | String | Anzeigename der aktualisierten benutzerdefinierten Rolle |
 | properties.description | Nein | String | Beschreibung der aktualisierten benutzerdefinierten Rolle |
 | properties.type | Ja | String | Legen Sie dies auf „CustomRole“ fest. |
 | properties.permissions.actions | Ja | String | Ein Array mit Aktionszeichenfolgen, mit denen die Vorgänge angegeben werden, auf die die aktualisierte benutzerdefinierte Rolle Zugriff gewährt. |
-| properties.permissions.notActions | Nein | String | Ein Array mit Aktionszeichenfolgen zum Angeben der Vorgänge, die von den Vorgängen ausgeschlossen werden sollen, für die die aktualisierte benutzerdefinierte Rolle Zugriff gewährt. |
-| properties.assignableScopes | Ja | String | Ein Array von Bereichen, in denen die aktualisierte benutzerdefinierte Rolle für die Zugriffsverwaltung verwendet werden kann. |
+| properties.permissions.notActions | Nein | String | Ein Array mit Aktionszeichenfolgen zum Angeben der Vorgänge, die von den Vorgängen ausgeschlossen werden, auf die die aktualisierte benutzerdefinierte Rolle Zugriff gewährt. |
+| properties.assignableScopes | Ja | String | Ein Array von Bereichen, in denen die aktualisierte benutzerdefinierte Rolle verwendet werden kann. |
 
 ### Antwort
 
@@ -653,7 +629,7 @@ Dient zum Löschen einer benutzerdefinierten Rolle.
 
 Um eine benutzerdefinierte Rolle zu löschen, benötigen Sie Zugriff auf den Vorgang `Microsoft.Authorization/roleDefinitions/delete` für alle dazugehörigen `AssignableScopes`-Elemente. Von den integrierten Rollen verfügen nur *Besitzer* und *Benutzerzugriffsadministrator* über Zugriff auf diesen Vorgang. Weitere Informationen zu Rollenzuweisungen und zum Verwalten des Zugriffs auf Azure-Ressourcen finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure](role-based-access-control-configure.md).
 
-### Anforderung
+### Request
 
 Verwenden Sie die **DELETE**-Methode mit dem folgenden URI:
 
@@ -661,17 +637,15 @@ Verwenden Sie die **DELETE**-Methode mit dem folgenden URI:
 
 Führen Sie für den URI folgende Schritte aus, um Ihre Anforderung anzupassen:
 
-Ersetzen Sie *{scope}* durch den Bereich, für den Sie die Rollendefinition löschen möchten. Die folgenden Beispiele zeigen, wie Sie den Bereich für unterschiedliche Ebenen angeben:
+1. Ersetzen Sie *{scope}* durch den Bereich, für den Sie die Rollendefinition löschen möchten. Die folgenden Beispiele zeigen, wie Sie den Bereich für unterschiedliche Ebenen angeben:
 
-| Ebene | *{Scope}* |
-|-------|-----------|
-| Abonnement | /subscriptions/{subscription-id} |
-| Ressourcengruppe | /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1 |
-| Ressource | /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1 |
+  - Abonnement: /subscriptions/{subscription-id}
+  - Ressourcengruppe: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1
+  - Ressource: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1
 
-Ersetzen Sie *{role-definition-id}* durch die GUID-Rollendefinitions-ID der benutzerdefinierten Rolle, die gelöscht werden soll.
+2. Ersetzen Sie *{role-definition-id}* durch die GUID-Rollendefinitions-ID der benutzerdefinierten Rolle.
 
-Ersetzen Sie *{api-version}* durch „2015-07-01“.
+3. Ersetzen Sie *{api-version}* durch „2015-07-01“.
 
 ### Antwort
 
@@ -714,4 +688,7 @@ Statuscode: 200
 
 ```
 
-<!---HONumber=AcomDC_0518_2016-->
+
+[AZURE.INCLUDE [role-based-access-control-toc.md](../../includes/role-based-access-control-toc.md)]
+
+<!---HONumber=AcomDC_0810_2016-->

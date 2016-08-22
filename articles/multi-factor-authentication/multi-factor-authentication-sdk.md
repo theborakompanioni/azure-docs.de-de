@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/16/2016" 
+	ms.date="08/04/2016" 
 	ms.author="billmath"/>
 
 # Erstellen von Multi-Factor Authentication in benutzerdefinierten Apps (SDK)
@@ -60,7 +60,7 @@ Das Herunterladen des Azure Multi-Factor SDK erfordert einen [Azure MFA-Anbieter
 3. Doppelklicken Sie auf Ihre Instanz von Azure AD.
 4. Klicken Sie oben auf **Konfigurieren**.
 5. Wählen Sie unter Multi-Factor Authentication die Option **Diensteinstellungen verwalten** aus ![Herunterladen](./media/multi-factor-authentication-sdk/download2.png)
-6. Klicken Sie auf der Seite "Diensteinstellungen" am unteren Rand des Bildschirms auf **Portal aufrufen**.![Herunterladen](./media/multi-factor-authentication-sdk/download3a.png)
+6. Klicken Sie auf der Seite "Diensteinstellungen" am unteren Rand des Bildschirms auf **Portal aufrufen**. ![Herunterladen](./media/multi-factor-authentication-sdk/download3a.png)
 7. Dadurch wird eine neue Seite geöffnet. Klicken Sie auf der linken Seite unten auf "SDK".
 8. Wählen Sie die gewünschte Sprache und klicken Sie auf einen der zugehörigen Downloadlinks.
 9. Speichern Sie den Download.
@@ -193,4 +193,4 @@ Im folgenden serverseitigen Code wird Multi-Factor Authentication in Schritt 2 k
 	    }
 	}
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0810_2016-->

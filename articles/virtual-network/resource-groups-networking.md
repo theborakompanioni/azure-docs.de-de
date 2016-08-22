@@ -3,7 +3,7 @@
    description="Erfahren Sie mehr über neue Anbieter von Netzwerkressourcen im Azure-Ressourcen-Manager."
    services="virtual-network"
    documentationCenter="na"
-   authors="telmosampaio"
+   authors="jimdial"
    manager="carmonm"
    editor="tysonn" />
 <tags
@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="03/15/2016"
-   ms.author="telmos" />
+   ms.author="jdial" />
 
 # Anbieter von Netzwerkressourcen
 Ein zentrales Bedürfnis für den heutigen Geschäftserfolg ist die Fähigkeit, großmaßstäbliche netzwerksensible Anwendungen auf agile, flexible und wiederholbare Weise aufzubauen und zu verwalten. Mit Azure Resource Manager (ARM) können Sie solche Anwendungen als eine einzelne Ressourcensammlung in Ressourcengruppen erstellen. Solche Ressourcen werden durch mehrere Ressourcenanbieter unter ARM verwaltet.
@@ -249,7 +249,7 @@ Sie können Dienste in Azure über eine Vorlage bereitstellen, indem Sie PowerSh
 4. Klicken Sie auf **Parameter bearbeiten**, und wählen Sie einen Speicherort aus, z. B. *USA, Westen* für VNet und Subnetze.
 5. Ändern Sie ggf. die Parameter **ADDRESSPREFIX** und **SUBNETPREFIX**, und klicken Sie dann auf **OK**.
 6. Klicken Sie auf **Ressourcengruppe auswählen**, und klicken Sie dann auf die Ressourcengruppe, die VNet und den Subnetzen hinzugefügt werden soll. Alternativ können Sie eine neue Ressourcengruppe erstellen, indem Sie auf **Oder neu erstellen** klicken.
-3. Klicken Sie auf **Erstellen**. Beachten Sie die Kachel mit dem Text **Bereitstellung der Vorlagenbereitstellung**. Wenn die Bereitstellung abgeschlossen ist, wird ein Bildschirm wie der folgende angezeigt.
+3. Klicken Sie auf **Create**. Beachten Sie die Kachel mit dem Text **Bereitstellung der Vorlagenbereitstellung**. Wenn die Bereitstellung abgeschlossen ist, wird ein Bildschirm wie der folgende angezeigt.
 
 ![Bereitstellung von Beispielvorlagen](./media/resource-groups-networking/Figure6.png)
 
@@ -264,4 +264,4 @@ Sie können Dienste in Azure über eine Vorlage bereitstellen, indem Sie PowerSh
 
 [Übersicht über den Azure-Ressourcen-Manager](../resource-group-overview.md)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0810_2016-->

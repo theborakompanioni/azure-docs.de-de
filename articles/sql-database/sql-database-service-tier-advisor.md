@@ -13,12 +13,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-management" 
-   ms.date="05/09/2016"
+   ms.date="08/08/2016"
    ms.author="sstein"/>
 
 # Tarifempfehlungen für SQL-Datenbank
 
- Es werden Tarifempfehlungen bereitgestellt, die die Dienstebene und die Leistungsebene empfehlen, die am besten geeignet sind, den Workload einer vorhandenen Azure SQL-Datenbank auszuführen.
+ Tarifempfehlungen schlagen die Dienstebene und die Leistungsebene vor, die am besten zum Ausführen der Workload einer vorhandenen Azure SQL-Datenbank geeignet sind.
 
 > [AZURE.NOTE] Tarifempfehlungen sind nur für Web- und Business-Datenbanken sowie für Pools für elastische Datenbanken verfügbar – und sie sind nur im [Azure-Portal](https://portal.azure.com/) verfügbar.
 
@@ -44,12 +44,12 @@ Diese Informationen werden analysiert, und der Tarif und die Leistungsstufe, die
 - Daten werden in Intervallen von 15 Sekunden analysiert, wobei das Resultset jedes Intervalls in die vorhandene Dienstebene und Leistungsstufe kategorisiert wird, welche für die Handhabung des Workloads dieses Resultsets am besten geeignet sind.
 - Diese 15-Sekunden-Beispiele werden dann in die breitere Analyse von 15 bis 30 Tagen aggregiert, und die Dienstebene und Leistungsstufe, die 95 % des historischen Workloads optimal bewältigen können, werden empfohlen.
 
-### Recommendations
+### Empfehlungen
 
 Basierend auf Ihrer Datenbanknutzung können derzeit 2 Kategorien von Empfehlungen auftreten:
 
 
-| Empfehlungen | Beschreibung |
+| Empfehlung | Beschreibung |
 | :--- | :--- |
 | Upgrade | Führen Sie ein Upgrade auf eine neue Ebene durch. |
 | Nicht verfügbar | Für eine Datenbank sind eine minimale Workload oder ungefähr 35 Tage Aktivität erforderlich. Es sind nicht genügend Daten vorhanden, um eine gültige Empfehlung abzugeben. |
@@ -96,4 +96,4 @@ Abhängig von den Details Ihrer speziellen Datenbank erfolgt die Durchführung e
 
  
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0810_2016-->

@@ -79,7 +79,7 @@ Sie benötigen die IP-Adresse Ihrer Azure-App, um einen benutzerdefinierten Dom�
 
 4.	Klicken Sie auf Ihre App und dann auf **Einstellungen** > **Benutzerdefinierte Domänen und SSL** > **Externe Domänen einreichen**.
 
-6.  Notieren Sie sich die IP-Adresse zur späteren Verwendung.
+6.  Notieren Sie sich die IP-Adresse.
 
     ![Zuordnen eines benutzerdefinierten Domänennamens mit A-Eintrag: Abrufen der IP-Adresse für Ihre Azure App Service-App](./media/web-sites-custom-domain-name/virtual-ip-address.png)
 
@@ -90,7 +90,7 @@ Sie benötigen die IP-Adresse Ihrer Azure-App, um einen benutzerdefinierten Dom�
 
 Melden Sie sich bei Ihrer Domänenregistrierungsstelle an, und verwenden Sie die verfügbaren Tools, um einen A-Eintrag oder einen CNAME-Eintrag zu erstellen. Da sich die Benutzeroberflächen der einzelnen Registrierungsstellen leicht unterscheiden, ist es ratsam, jeweils in der Dokumentation des Anbieters nachzulesen. Hier sind aber bereits einige allgemeine Richtlinien aufgeführt.
 
-1.	Suchen Sie die Seite für die Verwaltung von DSN-Einträgen. Suchen Sie nach Links oder Bereichen der Website, die als **Domänenname**, **DNS** oder **Namenserververwaltung** bezeichnet werden. Häufig finden Sie in Ihren Kontoinformationen einen Link auf diese Seite. Suchen Sie anschließend nach einem Link, der Sie zu Ihren eigenen Domänen führt.
+1.	Suchen Sie die Seite für die Verwaltung von DSN-Einträgen. Suchen Sie nach Links oder Bereichen der Website, die als **Domänenname**, **DNS** oder **Namenserververwaltung** bezeichnet werden. Häufig finden Sie in Ihren Kontoinformationen einen Link auf diese Seite. Suchen Sie anschließend nach einem Link wie etwa **Eigene Domänen**.
 2.	Suchen Sie nach einem Link, mit dem Sie DNS-Einträge hinzufügen oder bearbeiten können. Dieser Link kann die Bezeichnung **Zone file** (Zonendatei), **DNS Records** (DNS-Einträge) oder **Advanced** (Erweitert) haben.
 3.  Erstellen Sie den Eintrag, und speichern Sie die Änderungen.
     - [Die Anleitung für einen A-Eintrag finden Sie hier](#a).
@@ -101,7 +101,7 @@ Melden Sie sich bei Ihrer Domänenregistrierungsstelle an, und verwenden Sie die
 
 Zum Verwenden eines A-Eintrags für die Zuordnung zur IP-Adresse Ihrer Azure-App müssen Sie sowohl einen A-Eintrag als auch einen CNAME-Eintrag erstellen. Der A-Eintrag gilt für die eigentliche DNS-Auflösung, und der CNAME-Eintrag gilt für Azure, um zu bestätigen, dass sich der benutzerdefinierte Domänenname in Ihrem Besitz befindet.
 
-Der A-Eintrag sollte wie folgt konfiguriert werden (@ steht normalerweise für die Stammdomäne):
+Konfigurieren Sie Ihren A-Eintrag wie folgt (@ steht normalerweise für die Stammdomäne):
  
 <table cellspacing="0" border="1">
   <tr>
@@ -126,7 +126,7 @@ Der A-Eintrag sollte wie folgt konfiguriert werden (@ steht normalerweise für d
   </tr>
 </table>
 
-Für Ihren zusätzlichen CNAME-Eintrag wird die Konvention für die Zuordnung von „awverify.&lt;*Unterdomäne*>.&lt;*Stammdomäne*>“ zu „awverify.&lt;*Unterdomäne*>.azurewebsites.net“ übernommen. Unten sind hierzu Beispiele aufgeführt:
+Für Ihren zusätzlichen CNAME-Eintrag wird die Konvention für die Zuordnung von „awverify.&lt;*Unterdomäne*>.&lt;*Stammdomäne*>“ zu „awverify.&lt;*Unterdomäne*>.azurewebsites.net“ übernommen. Konfigurieren Sie Ihren CNAME-Eintrag wie folgt:
 
 <table cellspacing="0" border="1">
   <tr>
@@ -142,7 +142,7 @@ Für Ihren zusätzlichen CNAME-Eintrag wird die Konvention für die Zuordnung vo
   <tr>
     <td>www.contoso.com (Unterdomäne)</td>
     <td>awverify.www</td>
-    <td>awverify.www.&lt;<i>App-Name</i>>.azurewebsites.net</td>
+    <td>awverify.&lt;<i>App-Name</i>>.azurewebsites.net</td>
   </tr>
   <tr>
     <td>*.contoso.com (Platzhalter)</td>
@@ -158,7 +158,7 @@ Wenn Sie einen CNAME-Eintrag für die Zuordnung zum Standarddomänennamen Ihrer 
 
 >[AZURE.IMPORTANT] Erstellen Sie keinen CNAME-Eintrag für die Stammdomäne (d.h. den „Stammeintrag“). Weitere Informationen finden Sie unter [Why can't a CNAME record be used at the root domain](http://serverfault.com/questions/613829/why-cant-a-cname-record-be-used-at-the-apex-aka-root-of-a-domain) (Warum kann ein CNAME-Eintrag nicht für die Stammdomäne verwendet werden?). Verwenden Sie stattdessen zum Zuordnen einer Stammdomäne zu Ihrer Azure-App einen [A-Eintrag](#a).
 
-Der CNAME-Eintrag sollte wie folgt konfiguriert werden (@ steht normalerweise für die Stammdomäne):
+Konfigurieren Sie Ihren CNAME-Eintrag wie folgt (@ steht normalerweise für die Stammdomäne):
 
 <table cellspacing="0" border="1">
   <tr>
@@ -193,11 +193,11 @@ Auf dem Blatt **Externe Domänen einreichen** im Azure-Portal (siehe [Schritt 1]
 
     ![Zuordnen eines benutzerdefinierten Domänennamens zu einer Azure-App: Hinzufügen zur Liste der Domänennamen](./media/web-sites-custom-domain-name/add-custom-domain.png)
 
-    >[AZURE.NOTE] Azure versucht, den hier verwendeten Domänennamen zu bestätigen. Es muss sich also um denselben Domänennamen handeln, für den Sie in [Schritt 2](#createdns) einen DNS-Eintrag erstellt haben. Wenn Sie sich sicher sind, dass
+    >[AZURE.NOTE] Azure wird versucht, den Domänennamen zu überprüfen, den Sie hier verwenden. Stellen Sie sicher, dass es der gleiche Domänenname ist, für den Sie in [Schritt 2](#createdns) einen DNS-Eintrag erstellt haben.
 
 6.  Klicken Sie auf **Speichern**.
 
-7.  Nachdem der neue benutzerdefinierte Domänenname erfolgreich konfiguriert wurde, können Sie in einem Browser zum benutzerdefinierten Domänennamen navigieren. Sie sollten nun die Ausführung Ihrer App verfolgen können, und
+7.  Nachdem Azure Ihren neuen benutzerdefinierten Domänennamen konfiguriert hat, können Sie in einem Browser zum benutzerdefinierten Domänennamen navigieren. Sie sollten nun die Ausführung Ihrer App verfolgen können, und
 
 <a name="verify"></a>
 ## Überprüfen der DNS-Verteilung
@@ -209,13 +209,14 @@ Es kann nach Abschluss der Konfigurationsschritte einige Zeit dauern, bis die Ä
 > [AZURE.NOTE] Die Verteilung von DNS-Einträgen kann bis zu 48 Stunden (manchmal mehr) dauern. Wenn alles richtig konfiguriert wurde, müssen Sie trotzdem noch warten, bis die Verteilung durchgeführt wurde.
 
 ## Nächste Schritte
-
-[Erste Schritte mit Azure DNS](../dns/dns-getstarted-create-dnszone.md) [Erstellen von DNS-Einträgen für eine Web-App in einer benutzerdefinierten Domäne](../dns/dns-web-sites-custom-domain.md) [Delegieren von Domänen an Azure DNS](../dns/dns-domain-delegation.md)
+Erfahren Sie, wie Sie Ihren benutzerdefinierten Domänennamen mit HTTPS sichern, indem Sie [ein SSL-Zertifikat in Azure erwerben](web-sites-purchase-ssl-web-site.md) oder [ein SSL-Zertifikat von einer anderen Stelle verwenden](web-sites-configure-ssl-certificate.md).
 
 >[AZURE.NOTE] Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie unter [App Service testen](http://go.microsoft.com/fwlink/?LinkId=523751) sofort kostenlos eine kurzlebige Starter-Web-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
+
+[Erste Schritte mit Azure DNS](../dns/dns-getstarted-create-dnszone.md) [Erstellen von DNS-Einträgen für eine Web-App in einer benutzerdefinierten Domäne](../dns/dns-web-sites-custom-domain.md) [Delegieren von Domänen an Azure DNS](../dns/dns-domain-delegation.md)
 
 
 <!-- Images -->
 [subdomain]: media/web-sites-custom-domain-name/azurewebsites-subdomain.png
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0810_2016-->

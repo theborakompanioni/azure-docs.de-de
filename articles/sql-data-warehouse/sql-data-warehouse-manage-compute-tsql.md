@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="05/06/2016"
+   ms.date="08/08/2016"
    ms.author="barbkess;sonyama"/>
 
 # Verwalten von Computeleistung in Azure SQL Data Warehouse (T-SQL)
@@ -45,7 +45,7 @@ So zeigen Sie die aktuellen DWU-Einstellungen für Ihre Datenbanken an:
 
 1. Öffnen Sie den Objekt-Explorer von SQL Server in Visual Studio 2015.
 2. Stellen Sie eine Verbindung mit der Masterdatenbank mit dem logischen SQL-Datenbankserver her.
-2. Treffen Sie eine Auswahl aus der dynamischen Verwaltungssicht „sys.database\_service\_objectives“. Beispiel: 
+2. Treffen Sie eine Auswahl aus der dynamischen Verwaltungssicht „sys.database\_service\_objectives“. Beispiel:
 
 ```
 SELECT
@@ -67,7 +67,7 @@ So ändern Sie die DWUs
 
 
 1. Stellen Sie eine Verbindung mit der Masterdatenbank mit Ihrem logischen SQL-Datenbankserver her.
-2. Verwenden Sie die TSQL-Anweisung [ALTER DATABASE][]. Im folgenden Beispiel wird das Servicelevelziel für die Datenbank „MySQLDW“ auf „DW1000“ gesetzt. 
+2. Verwenden Sie die TSQL-Anweisung [ALTER DATABASE][]. Im folgenden Beispiel wird das Servicelevelziel für die Datenbank „MySQLDW“ auf „DW1000“ gesetzt.
 
 ```Sql
 ALTER DATABASE MySQLDW
@@ -97,4 +97,4 @@ Andere Verwaltungsaufgaben finden Sie in der [Verwaltungsübersicht][].
 
 [Azure portal]: http://portal.azure.com/
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0810_2016-->

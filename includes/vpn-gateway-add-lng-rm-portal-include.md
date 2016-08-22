@@ -1,23 +1,19 @@
-1. Navigieren Sie im Azure-Portal zu **Neu** **>** **Netzwerk** **>** **Lokales Netzwerkgateway**.
+1. Navigieren Sie im Azure-Portal zu **Neu** > **Netzwerk** > **Lokales Netzwerkgateway**.
 
 	![Erstellen eines Gateways für das lokale Netzwerk](./media/vpn-gateway-add-lng-rm-portal-include/addlng250.png)
 
 2. Geben Sie auf dem Blatt **Lokales Netzwerkgateway erstellen** unter **Name** einen Namen für das Objekt Ihres lokalen Netzwerkgateways ein.
  
-3. Geben Sie eine **IP-Adresse** für das Gateway an. Dies ist die IP-Adresse des externen VPN-Geräts, mit dem Sie eine Verbindung herstellen möchten. Sie darf sich nicht hinter einer NAT befinden und muss für Azure erreichbar sein.
+3. Geben Sie für das VPN-Gerät oder das virtuelle Netzwerkgateway, mit dem Sie eine Verbindung herstellen möchten, eine gültige öffentliche **IP-Adresse** ein.<br>Falls es sich bei diesem lokalen Netzwerk um einen lokalen Ort handelt, ist dies die öffentliche IP-Adresse des VPN-Geräts, mit dem Sie eine Verbindung herstellen möchten. Sie darf sich nicht hinter einer NAT befinden und muss für Azure erreichbar sein.<br>Falls es sich bei diesem lokalen Netzwerk um ein anderes VNet handelt, geben Sie die öffentliche IP-Adresse an, die dem virtuellen Netzwerkgateway für dieses VNet zugewiesen wurde.<br>
 
-4. **Adressraum** bezieht sich auf die Adressbereiche für das lokale Netzwerk. Sie können mehrere Adressraumbereiche hinzufügen. Die hier eingegebenen Bereiche dürfen sich nicht mit den Adressraumbereichen für virtuelle Netzwerke überschneiden, die über das Gateway kommunizieren sollen. Sie müssen sie mit Ihrer lokalen Konfiguration sowie mit den Adressräumen des virtuellen Azure-Netzwerks koordinieren.
+4. **Adressraum** bezieht sich auf die Adressbereiche für das Netzwerk, das dieses lokale Netzwerk darstellt. Sie können mehrere Adressraumbereiche hinzufügen. Achten Sie darauf, dass sich die hier angegebenen Bereiche nicht mit den Bereichen anderer Netzwerke überschneiden, mit denen Sie eine Verbindung herstellen möchten.
  
 5. Stellen Sie unter **Abonnement** sicher, dass das richtige Abonnement angezeigt wird.
 
-6. Wählen Sie unter **Ressourcengruppe** die Ressourcengruppe aus, die Sie verwenden möchten. Sie können entweder eine neue Ressourcengruppe erstellen oder eine auswählen, die Sie bereits erstellt haben. Um eine neue Ressourcengruppe zu erstellen, geben Sie den Namen in das Feld ein. Um eine bereits erstellte Ressourcengruppe auszuwählen, klicken Sie auf **Ressourcengruppe**, um das Blatt **Ressourcengruppe** zu öffnen, und wählen Sie dann die gewünschte Ressourcengruppe aus.
+6. Wählen Sie unter **Ressourcengruppe** die Ressourcengruppe aus, die Sie verwenden möchten. Sie können entweder eine neue Ressourcengruppe erstellen oder eine auswählen, die Sie bereits erstellt haben.
 
-7. Wenn Sie ein neues Gateway für das lokale Netzwerk erstellen, können Sie für **Standort** denselben Standort verwenden wie für das Gateway des virtuellen Netzwerks. Dies ist jedoch nicht erforderlich. Das Gateway für das lokale Netzwerk kann sich an einem anderen Speicherort befinden.
+7. Wählen Sie unter **Speicherort** den Ort aus, an dem dieses Objekt erstellt wird. Es empfiehlt sich unter Umständen, den gleichen Ort auszuwählen, an dem sich auch Ihr VNet befindet, dies ist aber nicht zwingend erforderlich.
 
-8. Lassen Sie „An Dashboard anheften“ ausgewählt, wenn Sie dieses lokale Netzwerkgateway ganz bequem im Dashboard vorfinden möchten.
+8. Klicken Sie auf **Erstellen**, um das lokale Netzwerkgateway zu erstellen.
 
-9. Klicken Sie auf **Erstellen**, um das Gateway für das lokale Netzwerk zu erstellen. Im Dashboard wird „Lokales Netzwerkgateway wird bereitgestellt“ angezeigt.
-
-10. Wenn das Gateway des lokalen Netzwerks erstellt wurde, wird es im Portal zum Anzeigen geöffnet.
-
-	
+<!---HONumber=AcomDC_0810_2016-->

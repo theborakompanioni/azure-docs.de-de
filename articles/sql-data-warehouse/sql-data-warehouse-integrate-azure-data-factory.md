@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="05/02/2016"
+   ms.date="08/08/2016"
    ms.author="lodipalm;barbkess;sonyama"/>
 
 # Verwenden von Azure Data Factory mit SQL Data Warehouse
@@ -50,4 +50,4 @@ Einen Überblick über die Integration finden Sie unter [SQL Data Warehouse-Inte
 <!--Other Web references-->
 [Azure Data Factory-Dokumentation]: https://azure.microsoft.com/documentation/services/data-factory/
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0810_2016-->

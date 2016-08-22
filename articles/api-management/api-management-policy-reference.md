@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/25/2016" 
+	ms.date="08/09/2016" 
 	ms.author="sdanie"/>
 
 # Richtlinienreferenz für Azure API Management
@@ -46,16 +46,16 @@ Richtlinienausdrücke können als Attributwerte oder Textwerte in einer beliebig
 -	[Authentifizierungsrichtlinien][]
 	-	[Standardauthentifizierung][] – Authentifizierung mit einem Back-End-Dienst unter Verwendung der Standardauthentifizierung.
 	-	[Authentifizierung mit Clientzertifikat][] – Authentifizierung mit einem Back-End-Dienst unter Verwendung von Clientzertifikaten.
--	[Cachingrichtlinien][] 
+-	[Cachingrichtlinien][]
 	-	[Aus Cache abrufen][] – Führt eine Cachesuche aus und gibt ggf. eine gültige Antwort aus dem Cache zurück.
 	-	[In Cache ablegen][] – Cacheantwort gemäß der angegebenen Konfiguration für die Cachesteuerung.
 	-	[Get value from cache (Wert aus dem Cache abrufen)](https://msdn.microsoft.com/library/azure/dn894086.aspx#GetFromCacheByKey) – ruft ein zwischengespeichertes Element nach Schlüssel ab.
 	-	[Store value in cache (Wert im Cache speichern)](https://msdn.microsoft.com/library/azure/dn894086.aspx#StoreToCacheByKey) – speichert ein Element im Cache auf Basis des Schlüssels.
--	[Domänenübergreifende Richtlinien][] 
+-	[Domänenübergreifende Richtlinien][]
 	-	[Domänenübergreifende Aufrufe zulassen][] – Erlaubt API-Aufrufe aus browserbasierten Clients, die Adobe Flash und Microsoft Silverlight verwenden.
 	-	[CORS][] – Fügt Unterstützung für Cross-Origin Resource Sharing (CORS) zu einer Operation oder einer API hinzu, um domänenübergreifende Aufrufe aus browserbasierten Clients zu ermöglichen.
 	-	[JSONP][] – Fügt Unterstützung für JSON mit Padding (JSONP) zu einer Operation oder einer API hinzu, um domänenübergreifende Aufrufe aus browserbasierten Clients mit JavaScript zu ermöglichen.
--	[Transformationsrichtlinien][] 
+-	[Transformationsrichtlinien][]
 	-	[JSON in XML konvertieren][] – Konvertiert den Anforderungs- oder Antworttext von JSON in XML.
 	-	[XML in JSON konvertieren][] – Konvertiert den Anforderungs- oder Antworttext von XML in JSON.
 	-	[Zeichenfolge in Text ersetzen][] – Sucht nach einer Zeichenfolge in Antwort oder Anforderung und ersetzt diese durch eine andere Teilzeichenfolge.
@@ -119,4 +119,4 @@ Weitere Informationen zu Richtlinienausdrücken finden Sie im folgenden Video.
 
  
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0810_2016-->

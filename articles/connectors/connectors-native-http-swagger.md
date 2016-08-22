@@ -1,8 +1,9 @@
+
 <properties
 	pageTitle="Hinzufügen der Aktion „HTTP + Swagger“ in Logik-Apps | Microsoft Azure"
 	description="Übersicht über die Aktion „HTTP + Swagger“ und relevante Vorgänge"
 	services=""
-	documentationCenter="" 
+	documentationCenter=""
 	authors="jeffhollan"
 	manager="erikre"
 	editor=""
@@ -13,59 +14,58 @@
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
-   ms.workload="na" 
+   ms.workload="na"
    ms.date="07/18/2016"
    ms.author="jehollan"/>
 
 # Erste Schritte mit der Aktion „HTTP + Swagger“
 
-Mit der Aktion „HTTP + Swagger“ können Sie einen erstklassigen Connector für beliebige REST-Endpunkte über ein [Swagger-Dokument](https://swagger.io) erstellen.
+Mit der Aktion „HTTP + Swagger“ können Sie einen erstklassigen Connector für beliebige REST-Endpunkte über ein [Swagger-Dokument](https://swagger.io) erstellen. Sie können eine Logik-App auch erweitern, sodass sie beliebige REST-Endpunkte mit erstklassiger Logik-App-Designer-Funktion aufruft.
 
-- Erweitern Sie eine Logik-App, sodass sie beliebige REST-Endpunkte mit erstklassigen Entwurfsfunktionen aufruft.
-
-Wenn Sie die Aktion „HTTP + Swagger“ in einer Logik-App verwenden möchten, müssen Sie zunächst eine [Logik-App erstellen](../app-service-logic/app-service-logic-create-a-logic-app.md).
+Wenn Sie die Aktion „HTTP + Swagger“ in einer Logik-App verwenden möchten, müssen Sie zunächst [eine neue Logik-App erstellen](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
 ---
 
 ## Verwenden von „HTTP + Swagger“ als Trigger oder Aktion
 
-Der Trigger und die Aktion „HTTP + Swagger“ funktionieren wie die [HTTP-Aktion](connectors-native-http.md), bieten aber bessere Entwurfsfunktionen, da sie die Form der API und die Ausgaben im Designer anhand von [Swagger-Metadaten](https://swagger.io) anzeigen. Darüber hinaus können Sie „HTTP + Swagger“ als Trigger verwenden. Wenn Sie einen Abfragetrigger implementieren möchten, sollten Sie dem Abrufmuster folgen, das [in diesem Dokument beschrieben](../app-service-logic/app-service-logic-create-api-app.md#polling-triggers) ist.
-	
-[Erfahren Sie mehr über Logik-App-Trigger und -Aktionen.](connectors-overview.md)
+Der Trigger und die Aktion „HTTP + Swagger“ funktionieren wie die [HTTP-Aktion](connectors-native-http.md), bieten aber bessere Entwurfsfunktionen, da sie die Form der API und die Ausgaben im Designer anhand von [Swagger-Metadaten](https://swagger.io) anzeigen. Darüber hinaus können Sie HTTP + Swagger als Trigger verwenden. Wenn Sie einen Abruftrigger implementieren möchten, sollte er dem in [Erstellen einer benutzerdefinierten API zur Verwendung mit Logik-Apps](../app-service-logic/app-service-logic-create-api-app.md#polling-triggers) beschriebenen Abrufmuster entsprechen.
 
-Im Folgenden finden Sie ein Beispiel der Verwendung des Vorgangs „HTTP + Swagger“ als Aktion in einem Workflow.
+Mehr über Logik-App-Trigger und -Aktionen erfahren Sie [hier](connectors-overview.md).
+
+Im Folgenden finden Sie ein Beispiel der Verwendung des Vorgangs „HTTP + Swagger“ als Aktion in einem Workflow in einer Logik-App.
 
 1. Wählen Sie die Schaltfläche **Neuer Schritt** aus.
-1. Wählen Sie **Aktion hinzufügen** aus.
-1. Geben Sie im Aktionssuchfeld die Zeichenfolge „Swagger“ ein, um die Aktion „HTTP + Swagger“ anzuzeigen.
+2. Wählen Sie **Aktion hinzufügen** aus.
+3. Geben Sie im Aktionssuchfeld die Zeichenfolge **swagger** ein, um die Aktion „HTTP + Swagger“ anzuzeigen.
 
 	![Aktion „HTTP + Swagger“ auswählen](./media/connectors-native-http-swagger/using-action-1.png)
 
-1. Geben Sie die URL für ein Swagger-Dokument ein.
-	- Die URL muss ein HTTPS-Endpunkt und für CORS aktiviert sein, damit sie im Designer funktioniert. Wenn das Swagger-Dokument diese Anforderungen nicht erfüllt, können Sie [für CORS aktivierten Azure-Speicher](#hosting-swagger-from-storage) zum Speichern des Dokuments verwenden.
-1. Klicken Sie auf „Weiter“, um das Swagger-Dokument zu lesen und zum Rendern zu nutzen.
-1. Geben Sie alle Parameter an, die Sie ggf. für den HTTP-Aufruf benötigen.
+4. Geben Sie die URL für ein Swagger-Dokument ein:
+	- Die URL muss ein HTTPS-Endpunkt und für CORS aktiviert sein, damit sie im Logik-App-Designer funktioniert.
+	- Wenn das Swagger-Dokument diese Anforderung nicht erfüllt, können Sie [Azure Storage mit aktiviertem CORS](#hosting-swagger-from-storage) zum Speichern des Dokuments verwenden.
+5. Klicken Sie auf **Weiter**, um das Swagger-Dokument zu lesen und zum Rendern zu nutzen.
+6. Geben Sie alle Parameter an, die ggf. für den HTTP-Aufruf erforderlich sind.
 
 	![Konfigurieren der HTTP-Aktion](./media/connectors-native-http-swagger/using-action-2.png)
 
-1. Klicken Sie links oben auf der Symbolleiste auf „Speichern“. Dadurch wird Ihre Logik-App gespeichert und veröffentlicht (aktiviert).
+1. Klicken Sie links oben auf der Symbolleiste auf **Speichern**. Dadurch wird Ihre Logik-App gespeichert und veröffentlicht (aktiviert).
 
-### Hosten von Swagger über den Speicher
+### Hosten von Swagger aus Azure Storage
 
-Möglicherweise möchten Sie ein Swagger-Dokument referenzieren, das nicht gehostet wird oder die Sicherheits- und Cross-Origin-Anforderungen nicht erfüllt, die für die Verwendung im Designer gelten. Um dieses Problem zu umgehen, können Sie das Swagger-Dokument in Azure Storage speichern und CORS aktivieren, um das Dokument zu referenzieren. Im Folgenden finden Sie die Schritte zum Erstellen, Konfigurieren und Speichern von Swagger in Azure Storage:
+Möglicherweise möchten Sie auf ein Swagger-Dokument verweisen, das nicht gehostet wird, oder nicht die Sicherheits- und CORS-Anforderungen für den Designer erfüllt. Um dieses Problem zu lösen, können Sie das Swagger-Dokument in Azure Storage speichern und CORS aktivieren, um das Dokument zu referenzieren.
 
-1. [Erstellen Sie ein Azure-Speicherkonto mit Blobspeicher](../storage/storage-create-storage-account.md), und legen Sie die Berechtigungen auf „Öffentlicher Zugriff“ fest.
-1. Aktivieren Sie CORS für das Blob.
-	- Sie können [dieses PowerShell-Skript](https://github.com/logicappsio/EnableCORSAzureBlob/blob/master/EnableCORSAzureBlob.ps1) verwenden, um diese Einstellung automatisch zu konfigurieren.
-1. Laden Sie die Swagger-Datei in das Azure-Blob hoch.
-	- Hierzu können Sie das [Azure-Portal](https://portal.azure.com) oder ein Tool wie den [Azure-Speicher-Explorer](http://storageexplorer.com/) verwenden.
-1. Verweisen Sie einen HTTPS-Link auf das Dokument im Azure-Blob (im Format `https://*storageAccountName*.blob.core.windows.net/*container*/*filename*`)
+Im Folgenden finden Sie die Schritte zum Erstellen, Konfigurieren und Speichern von Swagger-Dokumenten in Azure Storage:
 
----
+1. [Erstellen Sie ein Azure-Speicherkonto mit Azure-Blobspeicher](../storage/storage-create-storage-account.md). (Legen Sie zu diesem Zweck die Berechtigungen auf **Öffentlicher Zugriff** fest.)
+2. Aktivieren Sie CORS für das Blob. Sie können [dieses PowerShell-Skript](https://github.com/logicappsio/EnableCORSAzureBlob/blob/master/EnableCORSAzureBlob.ps1) verwenden, um diese Einstellung automatisch zu konfigurieren.
+3. Laden Sie die Swagger-Datei in das Blob hoch. Hierzu können Sie das [Azure-Portal](https://portal.azure.com) oder ein Tool wie den [Azure-Speicher-Explorer](http://storageexplorer.com/) verwenden.
+1. Verweisen Sie mit einem HTTPS-Link auf das Dokument im Azure-Blobspeicher. (Der Link entspricht dem Format `https://*storageAccountName*.blob.core.windows.net/*container*/*filename*`.)
+
+
 
 ## Technische Details
 
-Im Anschluss finden Sie Details zu den von diesem Connector unterstützten Triggern und Aktionen.
+Im Folgenden finden Sie Details zu den von diesem „HTTP + Swagger“-Connector unterstützten Triggern und Aktionen.
 
 ## „HTTP + Swagger“-Trigger
 
@@ -85,20 +85,19 @@ Eine Aktion ist ein Vorgang, der durch den in einer Logik-App definierten Workfl
 
 ### Aktionsdetails
 
-Der Connector „HTTP + Swagger“ weist eine mögliche Aktion auf. Im Anschluss finden Sie Informationen zu den einzelnen Aktionen und den erforderlichen und optionalen Eingabefeldern sowie entsprechende Ausgabedetails in Verbindung mit deren Verwendung.
+Der Connector „HTTP + Swagger“ verfügt über eine mögliche Aktion. Im Anschluss finden Sie Informationen zu den einzelnen Aktionen und den erforderlichen und optionalen Eingabefeldern sowie entsprechende Ausgabedetails in Verbindung mit deren Verwendung.
 
 #### HTTP + Swagger
 
-Erstellen Sie eine ausgehende HTTP-Anforderung mit Unterstützung von Swagger-Metadaten. Mit einem Sternchen gekennzeichnete Felder sind Pflichtfelder.
+Erstellen Sie eine ausgehende HTTP-Anforderung mit Unterstützung von Swagger-Metadaten. Ein * bedeutet, dass es sich um ein Pflichtfeld handelt.
 
 |Anzeigename|Eigenschaftenname|Beschreibung|
 |---|---|---|
-|Methode*|method|Zu verwendendes HTTP-Verb|
-|URI*|uri|URI für die HTTP-Anforderung|
-|Header|headers|Ein JSON-Objekt für die einzubeziehenden Header|
-|Body|body|Der HTTP-Anforderungstext|
-|Authentifizierung|authentication|Authentifizierung für die Anforderung – [Einzelheiten finden Sie unter „HTTP“](./connectors-native-http.md#authentication)|
-<br>
+|Methode*|method|Zu verwendendes HTTP-Verb.|
+|URI*|uri|URI für die HTTP-Anforderung.|
+|Headers|headers|Ein JSON-Objekt für die einzubeziehenden HTTP-Header.|
+|Body|body|Der HTTP-Anforderungstext.|
+|Authentifizierung|Authentifizierung|Für die Anforderung zu verwendende Authentifizierung. [Weitere Informationen finden Sie unter HTTP](./connectors-native-http.md#authentication).|
 
 **Ausgabedetails**
 
@@ -106,13 +105,13 @@ HTTP-Antwort
 
 |Eigenschaftenname|Datentyp|Beschreibung|
 |---|---|---|
-|Header|Objekt|Antwortheader|
+|Headers|Objekt|Antwortheader|
 |Body|Objekt|Antwortobjekt|
 |Statuscode|int|HTTP-Statuscode|
 
 ### HTTP-Antworten
 
-Das Aufrufen verschiedener Aktionen löst unter Umständen bestimmte Antworten aus. Die folgende Tabelle enthält entsprechende Antworten und Beschreibungen:
+Das Aufrufen verschiedener Aktionen löst unter Umständen bestimmte Antworten aus. Die folgende Tabelle enthält entsprechende Antworten und Beschreibungen.
 
 |Name|Beschreibung|
 |---|---|
@@ -122,16 +121,12 @@ Das Aufrufen verschiedener Aktionen löst unter Umständen bestimmte Antworten a
 |401|Nicht autorisiert|
 |403|Verboten|
 |404|Nicht gefunden|
-|500|Interner Serverfehler. Unbekannter Fehler ist aufgetreten|
+|500|Interner Serverfehler. Unbekannter Fehler.|
 
 ---
 
 ## Nächste Schritte
 
-Im Anschluss finden Sie Details zur den weiteren Schritten mit Logik-Apps und unserer Community.
-
-## Erstellen einer Logik-App
-
 Testen Sie nun die Plattform, und [erstellen Sie eine Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md). Machen Sie sich ggf. anhand unserer [API-Liste](apis-list.md) mit den anderen verfügbaren Connectors für Logik-Apps vertraut.
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0810_2016-->

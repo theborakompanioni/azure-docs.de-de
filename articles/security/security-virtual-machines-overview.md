@@ -1,10 +1,10 @@
 <properties
    pageTitle="Virtuelle Azure-Computer – Sicherheitsübersicht | Microsoft Azure"
-   description="Ein virtueller Azure-Computer bietet Ihnen die Flexibilität der Virtualisierung, ohne Zeit und Geld für den Kauf und das Verwalten der Hardware aufwenden zu müssen, die den virtuellen Computer hostet. Dieser Artikel bietet eine Übersicht über die wichtigsten Sicherheitsfunktionen von Azure, die mit Azure Virtual Machines verwendet werden können."
+   description=" Ein virtueller Azure-Computer bietet Ihnen die Flexibilität der Virtualisierung, ohne Zeit und Geld für den Kauf und das Verwalten der Hardware aufwenden zu müssen, die den virtuellen Computer hostet. Dieser Artikel bietet eine Übersicht über die wichtigsten Sicherheitsfunktionen von Azure, die mit Azure Virtual Machines verwendet werden können. "
    services="security"
    documentationCenter="na"
    authors="TerryLanfear"
-   manager="StevenPo"
+   manager="MBaldwin"
    editor="TomSh"/>
 
 <tags
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/24/2016"
+   ms.date="08/09/2016"
    ms.author="terrylan"/>
 
 # Virtuelle Azure-Computer – Sicherheitsübersicht
@@ -45,7 +45,7 @@ Die wichtigsten Azure-Sicherheitsfunktionen für virtuelle Computer, die in dies
 
 ## Antimalware
 
-Mit Azure können Sie zum Schützen der virtuellen Computer vor Dateien mit schädlichem Inhalt, Adware und anderen Bedrohungen Antischadsoftware von großen Anbietern wie Microsoft, Symantec, Trend Micro, McAfee und Kaspersky verwenden. Artikel zu Partnerlösungen finden Sie unten im Abschnitt „Weitere Informationen“.
+Mit Azure können Sie zum Schützen der virtuellen Computer vor Dateien mit schädlichem Inhalt, Adware und anderen Bedrohungen Antischadsoftware von Anbietern wie Microsoft, Symantec, Trend Micro, McAfee und Kaspersky verwenden. Artikel zu Partnerlösungen finden Sie unten im Abschnitt „Weitere Informationen“.
 
 Microsoft Antimalware for Azure Cloud Services and Virtual Machines ist eine Echtzeit-Schutzfunktion zum Bestimmen und Entfernen von Viren, Spyware und anderer Schadsoftware. Microsoft Antimalware gibt konfigurierbare Warnungen aus, wenn bekannte schädliche oder unerwünschte Software versucht, sich selbst auf Ihren Azure-Systemen zu installieren oder dort auszuführen.
 
@@ -59,12 +59,12 @@ Wenn Sie Microsoft Antimalware bereitstellen und aktivieren, sind die folgenden 
 - Signaturaktualisierungen – Installiert automatisch mit einer vordefinierten Häufigkeit die neuesten Schutzsignaturen (Virendefinitionen), um sicherzustellen, dass der Schutz auf dem neuesten Stand ist.
 - Aktualisierungen des Antimalware-Moduls – Aktualisiert automatisch das Microsoft Antimalware-Modul.
 - Aktualisierungen der Antimalware-Plattform – Aktualisiert automatisch die Microsoft Antimalware-Plattform.
-- Aktiver Schutz – Übermittelt Telemetriemetadaten über erkannte Bedrohungen und verdächtige Ressourcen an Azure, um eine schnelle Reaktion auf die zunehmenden Bedrohungen sicherzustellen und eine synchrone Echtzeitübermittlung von Signaturen über MAPS (Microsoft Active Protection Service) zu ermöglichen.
+- Aktiver Schutz – Übermittelt Telemetriemetadaten zu erkannten Bedrohungen und verdächtigen Ressourcen an Azure, um eine schnelle Reaktion sicherzustellen, und ermöglicht eine synchrone Echtzeitübermittlung von Signaturen per MAPS (Microsoft Active Protection Service).
 - Übermittlung von Stichproben – Übermittelt Stichproben an den Microsoft Antimalware-Dienst, um den Dienst zu optimieren und die Problembehandlung zu ermöglichen.
 - Ausschlüsse – Ermöglicht Anwendungs- und Dienstadministratoren, aus Leistungs- und anderen Gründen bestimmte Dateien, Prozesse und Laufwerke vom Schutz und von Scans auszuschließen.
 - Antimalware-Ereigniserfassung – Zeichnet die Integrität des Antimalware-Diensts, verdächtige Aktivitäten und durchgeführte Wiederherstellungsaktionen im Ereignisprotokoll des Betriebssystems auf und erfasst sie im Azure Storage-Konto des Kunden.
 
-Weitere Informationen: Weitere Informationen zum Schützen Ihrer virtuellen Maschinen, zu Microsoft Antimalware sowie Antischadsoftware von anderen wichtigen Sicherheitsanbietern wie Symantec und Trend Micro Antischadsoftware finden Sie unter:
+Weitere Informationen zu Antischadsoftware zum Schützen Ihrer virtuellen Computer finden Sie unter:
 
 - [Microsoft Antimalware für Azure Cloud Services und Virtual Machines](../azure-security-antimalware.md)
 - [Deploying Antimalware Solutions on Azure Virtual Machines (Bereitstellen von Antischadsoftware-Lösungen auf virtuellen Azure-Computern, in englischer Sprache)](https://azure.microsoft.com/blog/deploying-antimalware-solutions-on-azure-virtual-machines/)
@@ -75,7 +75,7 @@ Weitere Informationen: Weitere Informationen zum Schützen Ihrer virtuellen Masc
 
 ## Hardwaresicherheitsmodul
 
-Verschlüsselung und Authentifizierung verbessern die Sicherheit erst dann, wenn die Schlüssel selbst gut geschützt sind. Sie können die Verwaltung und Sicherheit Ihrer geschäftskritischen geheimen Daten und Schlüssel vereinfachen, indem Sie diese in Azure Key Vault speichern. Mit Key Vault können Sie Ihre Schlüssel in Hardwaresicherheitsmodulen (Hardware Security Modules, HSMs) speichern, die gemäß FIPS 140-2 Level 2-Standards zertifiziert sind. Sie können Ihre SQL Server-Verschlüsselungsschlüssel für Sicherungen oder [transparente Datenverschlüsselung](https://msdn.microsoft.com/library/bb934049.aspx) gemeinsam mit den Schlüsseln oder geheimen Daten Ihrer Anwendungen in Key Vault speichern. Der Zugriff auf diese geschützten Elemente sowie die zugehörigen Berechtigungen werden über [Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/) verwaltet.
+Verschlüsselung und Authentifizierung verbessern die Sicherheit erst dann, wenn die Schlüssel selbst geschützt sind. Sie können die Verwaltung und Sicherheit Ihrer geschäftskritischen geheimen Daten und Schlüssel vereinfachen, indem Sie diese in Azure Key Vault speichern. Mit Key Vault können Sie Ihre Schlüssel in Hardwaresicherheitsmodulen (Hardware Security Modules, HSMs) speichern, die gemäß FIPS 140-2 Level 2-Standards zertifiziert sind. Sie können Ihre SQL Server-Verschlüsselungsschlüssel für Sicherungen oder [transparente Datenverschlüsselung](https://msdn.microsoft.com/library/bb934049.aspx) gemeinsam mit den Schlüsseln oder geheimen Daten Ihrer Anwendungen in Key Vault speichern. Der Zugriff auf diese geschützten Elemente sowie die zugehörigen Berechtigungen werden über [Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/) verwaltet.
 
 Weitere Informationen:
 
@@ -85,7 +85,7 @@ Weitere Informationen:
 
 ## Verschlüsselung der Datenträger virtueller Computer
 
-Azure Disk Encryption ist eine neue Funktion, mit der Sie die Datenträger von virtuellen Azure-Computern unter Windows und Linux verschlüsseln können. Azure Disk Encryption nutzt das Branchen-Standardfeature [BitLocker](https://technet.microsoft.com/library/cc732774.aspx) von Windows und das Feature [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) von Linux, um Volumeverschlüsselung für das Betriebssystem und die Datenträger bereitzustellen.
+Azure Disk Encryption ist eine neue Funktion, mit der Sie die Datenträger von virtuellen Azure-Computern unter Windows und Linux verschlüsseln können. Bei Azure Disk Encryption werden das Branchen-Standardfeature [BitLocker](https://technet.microsoft.com/library/cc732774.aspx) von Windows und das Feature [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) von Linux genutzt, um Volumeverschlüsselung für das Betriebssystem und die Datenträger bereitzustellen.
 
 Die Lösung ist in Azure Key Vault integriert, damit Sie die Schlüssel für die Datenträgerverschlüsselung und die geheimen Schlüssel unter Ihrem Schlüsseltresorabonnement steuern und verwalten können. Gleichzeitig können Sie sicherstellen, dass alle Daten auf den Datenträgern von virtuellen Computern im Ruhezustand in Ihrem Azure-Speicher verschlüsselt sind.
 
@@ -107,15 +107,15 @@ Weitere Informationen:
 
 ## Azure Site Recovery
 
-Ein wichtiger Teil der BCDR-Strategie Ihrer Organisation ist die Ermittlung, wie geschäftliche Workloads und Apps verfügbar gehalten werden können, wenn geplante und ungeplante Ausfälle auftreten. Azure Site Recovery unterstützt dies durch die Orchestrierung von Replikation, Failover und Wiederherstellung von Workloads und Apps, damit diese Komponenten über einen sekundären Standort zur Verfügung stehen, wenn der primäre Standort ausfällt.
+Ein wichtiger Teil der BCDR-Strategie Ihrer Organisation ist die Ermittlung, wie geschäftliche Workloads und Apps verfügbar gehalten werden können, wenn geplante und ungeplante Ausfälle auftreten. Azure Site Recovery unterstützt die Orchestrierung von Replikation, Failover und Wiederherstellung von Workloads und Apps, damit diese Komponenten über einen sekundären Standort zur Verfügung stehen, wenn der primäre Standort ausfällt.
 
 Site Recovery:
 
 - **Vereinfachung Ihrer BCDR-Strategie:** Site Recovery vereinfacht die Replikation, das Failover und die Wiederherstellung mehrerer Geschäftsworkloads und -Apps von einem einzelnen Standort. Site Recovery orchestriert die Replikation und das Failover, aber das Tool fängt keine Anwendungsdaten ab und besitzt auch keinerlei Informationen hierzu.
 - **Bereitstellung einer flexiblen Replikation:** Mit Site Recovery können Sie Workloads replizieren, die auf virtuellen Hyper-V-Computern, virtuellen VMware-Computern und physischen Windows bzw. Linux-Servern ausgeführt werden.
 - **Einfaches Failover und leichte Wiederherstellung werden unterstützt:** Site Recovery verfügt über Testfailover, mit denen Übungen zur Notfallwiederherstellung unterstützt werden, ohne dass sich dies auf Produktionsumgebungen auswirkt. Außerdem können Sie geplante Failover ohne Datenverlust für erwartete Ausfälle oder ungeplante Failover mit minimalem Datenverlust (je nach Replikationsfrequenz) für unerwartete Notfälle ausführen. Nach dem Failover können Sie ein Failback zu Ihren primären Standorten durchführen. Site Recovery verfügt über Wiederherstellungspläne, die Skripts und Azure Automation-Arbeitsmappen enthalten können, sodass Sie das Failover und die Wiederherstellung von Anwendungen mit mehreren Ebenen anpassen können.
-- **Beseitigung des sekundären Datencenters:** Sie können die Replikation zu einem sekundären lokalen Standort oder zu Azure durchführen. Bei Verwendung von Azure als Ziel für die Notfallwiederherstellung werden die Kosten und die Komplexität für die Verwaltung eines sekundären Standorts beseitigt, und replizierte Daten werden in Azure Storage gespeichert, sodass die damit verbundene Resilienz genutzt werden kann.
-- **Integration in vorhandene BCDR-Technologien:** Site Recovery kann zusammen mit anderen BCDR-Features für Anwendungen eingesetzt werden. Beispielsweise können Sie Site Recovery verwenden, um das SQL Server-Back-End von geschäftlichen Workloads zu schützen, einschließlich der nativen Unterstützung für SQL Server AlwaysOn zum Verwalten des Failovers von Verfügbarkeitsgruppen.
+- **Beseitigung des sekundären Datencenters:** Sie können die Replikation zu einem sekundären lokalen Standort oder zu Azure durchführen. Wenn Sie Azure als Ziel für die Notfallwiederherstellung nutzen, vermeiden Sie die Kosten und Komplexität, die mit der Verwaltung eines sekundären Standorts verbunden sind. Replizierte Daten werden in Azure Storage gespeichert.
+- **Integration in vorhandene BCDR-Technologien:** Site Recovery kann zusammen mit anderen BCDR-Features für Anwendungen eingesetzt werden. Beispielsweise können Sie Site Recovery verwenden, um das SQL Server-Back-End von geschäftlichen Workloads zu schützen. Dies umfasst auch die native Unterstützung für SQL Server Always On zum Verwalten des Failovers von Verfügbarkeitsgruppen.
 
 Weitere Informationen:
 
@@ -125,7 +125,7 @@ Weitere Informationen:
 
 ## Virtuelle Netzwerke
 
-Virtuelle Computer benötigen Netzwerkkonnektivität. Azure erfordert von einem virtuellen Computer eine Verbindung mit einem virtuellen Azure-Netzwerk, damit die Konnektivitätsanforderung unterstützt wird. Ein virtuelles Azure-Netzwerk ist ein logisches Konstrukt, das auf dem physischen Azure-Netzwerkfabric basiert. Jedes logische virtuelle Azure-Netzwerk ist von allen anderen virtuellen Azure-Netzwerken isoliert. Dadurch wird sichergestellt, dass der Netzwerkverkehr in Ihren Bereitstellungen nicht für andere Microsoft Azure-Kunden zugänglich ist.
+Virtuelle Computer benötigen Netzwerkkonnektivität. Azure erfordert von einem virtuellen Computer eine Verbindung mit einem virtuellen Azure-Netzwerk, damit die Konnektivitätsanforderung unterstützt wird. Ein virtuelles Azure-Netzwerk ist ein logisches Konstrukt, das auf dem physischen Azure-Netzwerkfabric basiert. Jedes logische virtuelle Azure-Netzwerk ist von allen anderen virtuellen Azure-Netzwerken isoliert. Mit dieser Isolierung wird sichergestellt, dass der Netzwerkverkehr in Ihren Bereitstellungen nicht für andere Microsoft Azure-Kunden zugänglich ist.
 
 Weitere Informationen:
 
@@ -135,7 +135,7 @@ Weitere Informationen:
 
 ## Verwaltung von Sicherheitsrichtlinien und Berichtserstellung
 
-Azure Security Center unterstützt Sie beim Verhindern, Erkennen und Beheben von Bedrohungen und sorgt für eine größere Transparenz und bessere Kontrolle in Bezug auf die Sicherheit Ihrer Azure-Ressourcen. Es bietet integrierte Sicherheitsüberwachung und Richtlinienverwaltung für Ihre Azure-Abonnements, hilft bei der Erkennung von Bedrohungen, die andernfalls möglicherweise unbemerkt bleiben, und kann gemeinsam mit einem breiten Sektrum an Sicherheitslösungen verwendet werden.
+Azure Security Center unterstützt Sie beim Verhindern, Erkennen und Beheben von Bedrohungen und sorgt für eine größere Transparenz und bessere Kontrolle in Bezug auf die Sicherheit Ihrer Azure-Ressourcen. Es bietet integrierte Sicherheitsüberwachung und Richtlinienverwaltung für Ihre Azure-Abonnements, hilft bei der Erkennung von Bedrohungen, die andernfalls möglicherweise unbemerkt bleiben, und kann gemeinsam mit einem breiten Spektrum an Sicherheitslösungen verwendet werden.
 
 Mit Azure Security Center können Sie virtuelle Computer wie folgt optimieren und überwachen:
 
@@ -157,4 +157,4 @@ Weitere Informationen:
 - [Microsoft Trust Center – Compliance](https://www.microsoft.com/TrustCenter/Compliance/default.aspx)
 - [Die vertrauenswürdige Cloud: Sicherheit, Datenschutz und Compliance von Microsoft Azure](http://download.microsoft.com/download/1/6/0/160216AA-8445-480B-B60F-5C8EC8067FCA/WindowsAzure-SecurityPrivacyCompliance.pdf)
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0810_2016-->

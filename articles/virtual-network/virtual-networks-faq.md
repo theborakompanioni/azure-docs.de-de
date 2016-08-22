@@ -3,7 +3,7 @@
    description="Azure Virtual Network (VNet) – häufig gestellte Fragen"
    services="virtual-network"
    documentationCenter="na"
-   authors="telmosampaio"
+   authors="jimdial"
    manager="carmonm"
    editor="tysonn" />
 <tags 
@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="03/15/2016"
-   ms.author="telmos" />
+   ms.author="jdial" />
 
 # FAQs zu virtuellen Netzwerken
 
@@ -23,4 +23,4 @@
 
 Die neuesten häufig gestellte Fragen zu virtuellen Netzwerk-VPNs finden Sie unter [Häufig gestellte Fragen zum VPN-Gateway](../vpn-gateway/vpn-gateway-vpn-faq.md).
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0810_2016-->

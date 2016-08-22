@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/25/2016" 
+	ms.date="08/09/2016" 
 	ms.author="antonba"/>
 
 # Delegieren von Benutzerregistrierung und Produktabonnierung
@@ -36,7 +36,7 @@ Richten Sie zunächst in API Management die Weiterleitung von Anfragen über Ihr
 
 ![Delegierungsseite][api-management-delegation-signin-up]
 
-* Legen Sie die URL für Ihren speziellen Delegierungsendpunkt fest und geben Sie sie in das Feld **Delegierungsendpunkt-URL** ein. 
+* Legen Sie die URL für Ihren speziellen Delegierungsendpunkt fest und geben Sie sie in das Feld **Delegierungsendpunkt-URL** ein.
 
 * Geben Sie im Feld **Schlüssel für delegierte Authentifizierung** einen geheimen Schlüssel ein. Dieser wird zur Erstellung einer Signatur verwendet, mit der sichergestellt wird, dass die Anfrage tatsächlich von Azure API Management stammt. Sie können auf die Schaltfläche **Generieren** klicken, damit API Management nach dem Zufallsprinzip einen Schlüssel für Sie generiert.
 
@@ -57,7 +57,7 @@ Anschließend müssen Sie den **Delegierungsendpunkt** einrichten. Dieser Endpun
 	* Generieren Sie einen HMAC-SHA512-Hash für eine Zeichenfolge basierend auf den Abfrageparametern **returnUrl** und **salt** ([Beispielcode finden Sie unter]):
         > HMAC(**salt** + '\\n' + **returnUrl**)
 		 
-	* Vergleichen Sie den generierten Hash mit dem Wert des **sig**Abfrageparameters. Fahren Sie mit dem nächsten Schritt fort, wenn die Hashes übereinstimmen. Lehnen Sie die Anfrage andernfalls ab.
+	* Vergleichen Sie den generierten Hash mit dem Wert des **sig**-Abfrageparameters. Fahren Sie mit dem nächsten Schritt fort, wenn die Hashes übereinstimmen. Lehnen Sie die Anfrage andernfalls ab.
 
 2. Überprüfen Sie, ob Sie eine Anfrage zur Anmeldung/Registrierung erhalten haben: Der **operation**-Abfrageparameter wird auf "**SignIn**" gesetzt.
 
@@ -110,8 +110,8 @@ Konfigurieren Sie anschließend die folgenden Aktionen für den Delegierungsendp
 		- „Subscribe“: Anfrage für ein Abonnement eines Produkts mit der angegebenen ID (siehe unten) für den Benutzer
 		- „Unsubscribe“: Anfrage zur Beendigung des Abonnement für ein Produkt durch den Benutzer
 		- „Renew“: Anfrage zur Erneuerung eines Abonnements durch den Benutzer (weil dieses z. B. demnächst abläuft)
-	- **productId**: Die ID des Produkts, das der Benutzer abonnieren möchte
-	- **userId**: Die ID des Benutzers, der die Anforderung gestellt hat
+	- **productId**: die ID des Produkts, das der Benutzer abonnieren möchte.
+	- **userId**: die ID des Benutzers, der die Anforderung gestellt hat.
 	- **salt**: Eine spezielle Salt-Zeichenfolge, mit der ein Sicherheitshash generiert wird
 	- **sig**: Ein berechneter Sicherheitshash zum Vergleich mit dem von Ihnen generierten Hash
 
@@ -121,7 +121,7 @@ Konfigurieren Sie anschließend die folgenden Aktionen für den Delegierungsendp
 	* Generieren Sie einen HMAC-SHA512-Hash für eine Zeichenfolge aus den Abfrageparametern **productId**, **redirectUrl** und **salt**:
 		> HMAC(**salt** + '\\n' + **productId** + '\\n' + **userId**)
 		 
-	* Vergleichen Sie den generierten Hash mit dem Wert des **sig**Abfrageparameters. Fahren Sie mit dem nächsten Schritt fort, wenn die Hashes übereinstimmen. Lehnen Sie die Anfrage andernfalls ab.
+	* Vergleichen Sie den generierten Hash mit dem Wert des **sig**-Abfrageparameters. Fahren Sie mit dem nächsten Schritt fort, wenn die Hashes übereinstimmen. Lehnen Sie die Anfrage andernfalls ab.
 	
 3. Führen Sie Ihre für die Produktabonnierung erforderlichen Schritte anhand der im Parameter **operation** angeforderten Operation aus, z. B. Abrechnung, weitere Fragen usw.
 
@@ -178,4 +178,4 @@ Weitere Informationen zum Delegieren finden Sie im folgenden Video.
 
 [api-management-delegation-signin-up]: ./media/api-management-howto-setup-delegation/api-management-delegation-signin-up.png
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0810_2016-->

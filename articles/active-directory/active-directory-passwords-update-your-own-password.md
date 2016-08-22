@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/02/2016"
+	ms.date="08/05/2016"
 	ms.author="asteen"/>
 
 # Aktualisieren Ihres eigenen Kennworts
@@ -71,7 +71,7 @@ Führen Sie die folgenden Schritte aus, um das Kennwort für Ihr Geschäfts- ode
  2. Klicken Sie auf die Registerkarte **Profil**.
  3. Klicken Sie rechts auf dem Bildschirm auf die Kachel **Mein Kennwort ändern**.
  4. Geben Sie Ihr altes Kennwort ein, geben Sie Ihr neues Kennwort ein, und bestätigen Sie das neue Kennwort.
- 5. Klicken Sie auf **Speichern**.
+ 5. Klicken Sie auf **Senden**.
 
  Gibt es ein Problem beim Ändern Ihres Kennworts? Dann lesen Sie den Abschnitt über [häufige Probleme und Lösungen](#common-problems-and-their-solutions).
 
@@ -80,14 +80,16 @@ Führen Sie die folgenden Schritte aus, um das Kennwort für Ihr Geschäfts- ode
 
 Führen Sie die folgenden Schritte aus, um das Kennwort für Ihr Geschäfts- oder Schulkonto in einem beliebigen Anmeldebildschirm für Geschäfts- oder Schulkonten zurückzusetzen.
 
- >[AZURE.IMPORTANT] Dieses Feature steht nur zur Verfügung, wenn Ihr Administrator es aktiviert hat. Wenn es nicht aktiviert ist, weist eine Nachricht Sie darauf hin, dass dieses Feature für Ihr Konto nicht aktiviert ist. In diesem Fall können Sie über den Link „Wenden Sie sich an den Administrator“ mit Ihrem Administrator Kontakt aufnehmen und ihn bitten, Ihr Konto zu entsperren.<br><br>Wenn Ihr Administrator das Feature für Sie aktiviert hat, müssen Sie sich dafür registrieren, bevor Sie es verwenden können. Sie können das hier erledigen: http://aka.ms/ssprsetup.
+>[AZURE.IMPORTANT] Dieses Feature steht nur zur Verfügung, wenn Ihr Administrator es aktiviert hat. Wenn es nicht aktiviert ist, weist eine Nachricht Sie darauf hin, dass dieses Feature für Ihr Konto nicht aktiviert ist. Verwenden Sie in diesem Fall den Link „Wenden Sie sich an Ihren Administrator“, damit der Administrator Ihr Konto entsperrt.
+>
+> Wenn der Administrator dieses Feature für Sie aktiviert hat, müssen Sie sich zunächst registrieren, bevor Sie es verwenden können. Sie können das hier erledigen: http://aka.ms/ssprsetup.
 
 
  1. Klicken Sie auf einer beliebigen Anmeldeseite für Geschäfts- oder Schulkonten entweder auf den Link „Kein Zugriff auf Ihr Konto?“ oder auf den Link „Kennwort vergessen?“, oder navigieren Sie direkt zu https://passwordreset.microsoftonline.com.
 
     ![][001]
 
- 2. Geben Sie auf der Seite „Wie heißen Sie?“ die ID Ihres Geschäfts- oder Schulkontos ein, und geben Sie das Captcha ein, um nachzuweisen, dass Sie kein Robot sind.
+ 2. Geben Sie auf der Seite „Wie heißen Sie?“ die ID Ihres Geschäfts-, Schul- oder Unikontos ein, und geben Sie das Captcha ein, um nachzuweisen, dass Sie kein Robot sind.
 
     ![][002]
 
@@ -127,14 +129,16 @@ Gibt es ein Problem beim Zurücksetzen Ihres Kennworts? Dann lesen Sie den Absch
 ## Entsperren Ihres Kontos
 Führen Sie die folgenden Schritte aus, um Ihr lokales Konto in einem beliebigen Anmeldebildschirm für Geschäfts- oder Schulkonten zurückzusetzen. **Hinweis: Sie können Ihr Konto nur entsperren, wenn es lokal gesperrt wurde.**
 
- >[AZURE.IMPORTANT] Dieses Feature steht nur zur Verfügung, wenn Ihr Administrator es aktiviert hat. Wenn es nicht aktiviert ist, weist eine Nachricht Sie darauf hin, dass dieses Feature für Ihr Konto nicht aktiviert ist. In diesem Fall können Sie über den Link „Wenden Sie sich an den Administrator“ mit Ihrem Administrator Kontakt aufnehmen und ihn bitten, Ihr Konto zu entsperren.<br><br>Wenn Ihr Administrator das Feature für Sie aktiviert hat, müssen Sie sich dafür registrieren, bevor Sie es verwenden können. Sie können das hier erledigen: http://aka.ms/ssprsetup.
+>[AZURE.IMPORTANT] Dieses Feature steht nur zur Verfügung, wenn Ihr Administrator es aktiviert hat. Wenn es nicht aktiviert ist, weist eine Nachricht Sie darauf hin, dass dieses Feature für Ihr Konto nicht aktiviert ist. Verwenden Sie in diesem Fall den Link „Wenden Sie sich an Ihren Administrator“, damit der Administrator Ihr Konto entsperrt.
+>
+> Wenn der Administrator dieses Feature für Sie aktiviert hat, müssen Sie sich zunächst registrieren, bevor Sie es verwenden können. Sie können das hier erledigen: http://aka.ms/ssprsetup.
 
 
  1. Klicken Sie auf einer beliebigen Anmeldeseite für Geschäfts- oder Schulkonten entweder auf den Link „Kein Zugriff auf Ihr Konto?“ oder auf den Link „Kennwort vergessen?“, oder navigieren Sie direkt zu https://passwordreset.microsoftonline.com.
 
     ![][001]
 
- 2. Geben Sie auf der Seite „Wie heißen Sie?“ die ID Ihres Geschäfts- oder Schulkontos ein, und geben Sie das Captcha ein, um nachzuweisen, dass Sie kein Robot sind.
+ 2. Geben Sie auf der Seite „Wie heißen Sie?“ die ID Ihres Geschäfts-, Schul- oder Unikontos ein, und geben Sie das Captcha ein, um nachzuweisen, dass Sie kein Robot sind.
 
     ![][002]
 
@@ -160,7 +164,7 @@ Führen Sie die folgenden Schritte aus, um Ihr lokales Konto in einem beliebigen
 
     ![][005]
 
- 9. Ihr Administrator kann festlegen, dass ein zweiter Überprüfungsschritt erforderlich ist. In diesem Fall müssen Sie Schritt 4 wiederholen und dabei eine andere Option auswählen.
+ 9. Ihr Administrator kann festlegen, dass ein zweiter Überprüfungsschritt erforderlich ist. In diesem Fall müssen Sie Schritt 4 wiederholen und dabei eine andere Option auswählen.
 
  11. Sobald die Seite mit der Erfolgsmeldung angezeigt wird, ist alles bereit. Ihr lokales Konto wurde entsperrt, und Sie können sich nun wieder dort anmelden.
 
@@ -257,4 +261,4 @@ Im Folgenden finden Sie Links zu allen Webseiten mit Informationen zur Kennwortz
 [014]: ./media/active-directory-passwords-update-your-own-password/014.jpg "Image_014.jpg"
 [015]: ./media/active-directory-passwords-update-your-own-password/015.jpg "Image_015.jpg"
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0810_2016-->

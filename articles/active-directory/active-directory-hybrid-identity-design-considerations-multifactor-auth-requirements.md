@@ -13,7 +13,7 @@
 	ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="identity" 
-	ms.date="05/12/2016"
+	ms.date="08/08/2016"
 	ms.author="billmath"/>
 
 # Ermitteln der Anforderungen an die Multi-Factor Authentication für Ihre Hybrid-Identitätslösung
@@ -25,7 +25,7 @@ Wenn Sie mit MFA und den damit verbundenen Funktionen nicht vertraut sind, empfe
 
 Beantworten Sie die folgenden Fragen:
 
-- Sollen in Ihrem Unternehmen Microsoft-Apps geschützt werden? 
+- Sollen in Ihrem Unternehmen Microsoft-Apps geschützt werden?
 - Wie werden diese Apps veröffentlicht?
 - Wird von Ihrem Unternehmen der Remotezugriff bereitgestellt, damit die Mitarbeiter auf lokale Apps zugreifen können?
 
@@ -38,7 +38,7 @@ Wenn ja: Welche Art von Remotezugriff? Außerdem müssen Sie auswerten, wo sich 
 Nachdem Sie diese Anforderungen verstanden haben, ist es wichtig, auch die Anforderungen des Benutzers an die Multi-Factor Authentication auszuwerten. Diese Auswertung ist wichtig, weil hierbei die Anforderungen für die Einführung der Multi-Factor Authentication festgelegt werden. Beantworten Sie die folgenden Fragen:
 
 - Sind die Benutzer mit der Multi-Factor Authentication vertraut?
-- Ist für einige Verwendungen eine zusätzliche Authentifizierung erforderlich?  
+- Ist für einige Verwendungen eine zusätzliche Authentifizierung erforderlich?
  - Wenn ja: Gilt dies immer, für den Eingang aus externen Netzwerken, beim Zugreifen auf bestimmte Anwendungen oder unter anderen Bedingungen?
 - Müssen die Benutzer darin geschult werden, wie die Multi-Factor Authentication eingerichtet und implementiert wird?
 - Für welche wichtigen Szenarien möchte Ihr Unternehmen die Multi-Factor Authentication für die Benutzer ermöglichen?
@@ -55,7 +55,7 @@ Nach der Beantwortung der obigen Fragen wissen Sie, ob lokal bereits eine Multi-
 [Definieren einer Strategie zur Hybrididentitätsübernahme](active-directory-hybrid-identity-design-considerations-identity-adoption-strategy.md)
 
 
-## Weitere Informationen
+## Siehe auch
 [Überlegungen zum Entwurf – Übersicht](active-directory-hybrid-identity-design-considerations-overview.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0810_2016-->

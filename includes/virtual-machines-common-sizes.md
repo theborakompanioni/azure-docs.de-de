@@ -127,7 +127,7 @@ Informationen und Überlegungen zum Verwenden dieser Größen finden Sie unter [
 |Standard\_D12\_v2 |4|28 GB|4|Temporär (SSD) = 200 GB |8|8 x 500| hoch |
 |Standard\_D13\_v2 |8|56 GB|8|Temporär (SSD) = 400 GB |16|16 x 500| hoch |
 |Standard\_D14\_v2 |16|112 GB|8|Temporär (SSD) = 800 GB |32|32 x 500| äußerst hoch |
-|Standard\_D15\_v2 |20|140 GB|10|Temporär (SSD) = 1 TB |40|40 x 500| äußerst hoch |
+|Standard\_D15\_v2 |20|140 GB|8|Temporär (SSD) = 1 TB |40|40 x 500| äußerst hoch |
 
 
 ## DS-Serie*
@@ -159,7 +159,7 @@ Informationen und Überlegungen zum Verwenden dieser Größen finden Sie unter [
 |Standard\_DS12\_v2 |4|28|4|Lokales SSD-Laufwerk = 56 GB |8|144| 12\.800 192 MB pro Sekunde | hoch |
 |Standard\_DS13\_v2 |8|56|8|Lokales SSD-Laufwerk = 112 GB |16|288| 25\.600 384 MB pro Sekunde | hoch |
 |Standard\_DS14\_v2 |16|112|8|Lokales SSD-Laufwerk = 224 GB |32|576| 51\.200 768 MB pro Sekunde | äußerst hoch |
-|Standard\_DS15\_v2 |20|140 GB|10|Lokales SSD-Laufwerk = 280 GB |40| 720|64\.000 960 MB pro Sekunde | äußerst hoch |
+|Standard\_DS15\_v2 |20|140 GB|8|Lokales SSD-Laufwerk = 280 GB |40| 720|64\.000 960 MB pro Sekunde | äußerst hoch |
 
 
 *Die bei einer DS-Serie möglichen Höchstwerte für E/A-Vorgänge pro Sekunde (IOPS) und Durchsatz (Bandbreite) werden durch die Größe des Datenträgers beeinflusst. Nähere Informationen finden Sie unter [Premium-Speicher: Hochleistungsspeicher für Arbeitslasten auf virtuellen Azure-Computern](../articles/storage/storage-premium-storage.md).
@@ -219,7 +219,7 @@ Informationen und Überlegungen zum Verwenden dieser Größen finden Sie unter [
 |Standard\_GS4|16|224|8|Lokales SSD-Laufwerk = 448 GB |32|2112| 40\.000, 1.000 MB pro Sekunde | äußerst hoch |
 |Standard\_GS5|32|448|8|Lokales SSD-Laufwerk = 896 GB |64|4224| 80\.000, 2.000 MB pro Sekunde | äußerst hoch |
 
-## N-Serie
+## N-Serie (Vorschau)
 
 Die NC- und NV-Größen werden auch als GPU-fähige Instanzen bezeichnet. Dabei handelt es sich um spezielle virtuelle Computer, die für verschiedene Szenarien und Anwendungsfälle optimierte GPU-Karten von NVIDIA enthalten. Die NV-Größen sind optimiert und konzipiert für Remotevisualisierung, Streaming, Spiele, Codierung und VDI-Szenarien mit Frameworks wie OpenGL und DirectX. Die NC-Größen sind eher für rechen- und netzwerkintensive Anwendungen und Algorithmen optimiert, beispielsweise CUDA- und OpenCL-basierte Anwendungen und Simulationen.
 
@@ -230,9 +230,9 @@ Die NV-Instanzen werden durch Tesla M60 GPUs von NVIDIA und NVIDIA GRID unterst�
 
 | Größe | Kerne | GPU | Arbeitsspeicher | Datenträger |
 |------|-------|----------------|--------|-------------|
-| NV6 | 6 | 1 x NVIDIA M60 | 56 GB | 380 GB SSD |
-| NV12 | 12 | 2 x NVIDIA M60 | 112 GB | 680 GB SSD |
-| NV24 | 24 | 4 x NVIDIA M60 | 224 GB | 1440 GB SSD | 
+| Standard\_NV6 | 6 | 1 x NVIDIA M60 | 56 GB | 380 GB SSD |
+| Standard\_NV12 | 12 | 2 x NVIDIA M60 | 112 GB | 680 GB SSD |
+| Standard\_NV24 | 24 | 4 x NVIDIA M60 | 224 GB | 1440 GB SSD | 
 
 
 
@@ -243,9 +243,9 @@ Die NC-Instanzen werden durch Tesla K80 von NVIDIA unterstützt. Benutzer könne
 
 | Größe | Kerne | GPU | Arbeitsspeicher | Datenträger |
 |------|-------|----------------|--------|-------------|
-| NC6 | 6 | 1 x NVIDIA K80 | 56 GB | 380 GB SSD |
-| NC12 | 12 | 2 x NVIDIA K80 | 112 GB | 680 GB SSD |
-| NC24 | 24 | 4 x NVIDIA K80 | 224 GB | 1440 GB SSD |
+| Standard\_NC6 | 6 | 1 x NVIDIA K80 | 56 GB | 380 GB SSD |
+| Standard\_NC12 | 12 | 2 x NVIDIA K80 | 112 GB | 680 GB SSD |
+| Standard\_NC24 | 24 | 4 x NVIDIA K80 | 224 GB | 1440 GB SSD |
 
 ## Hinweise: Standard\_A0 – A4 mit Befehlszeilenschnittstelle (CLI) und PowerShell 
 
@@ -264,4 +264,4 @@ Im klassischen Bereitstellungsmodell unterscheiden sich einige VM-Größennamen 
 - Erfahren Sie mehr über [Einschränkungen für Azure-Abonnements und -Dienste, Kontingente und Einschränkungen](../articles/azure-subscription-service-limits.md).
 - Erfahren Sie mehr über [rechenintensive A8-, A9-, A10- und A11-Instanzen](../articles/virtual-machines/virtual-machines-windows-a8-a9-a10-a11-specs.md) für Workloads wie etwa High-Performance Computing (HPC).
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0810_2016-->

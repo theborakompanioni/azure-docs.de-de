@@ -3,7 +3,7 @@
    description="Diese Seite bietet eine Übersicht über das URL-basierte Inhaltsrouting mit Application Gateway sowie über das urlPathMap-Konfigurationselement und die PathBasedRouting-Regel."
    documentationCenter="na"
    services="application-gateway"
-   authors="joaoma"
+   authors="georgewallace"
    manager="carmonm"
    editor="tysonn"/>
 <tags
@@ -12,8 +12,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="01/21/2016"
-   ms.author="joaoma"/>
+   ms.date="04/05/2016"
+   ms.author="gwallace"/>
 
 # Routing auf URL-Pfadbasis – Übersicht
 
@@ -86,4 +86,4 @@ RequestRoutingRule vom Typ PathBasedRouting wird verwendet, um einen Listener an
 
 Nachdem Sie sich mit dem URL-basierten Inhaltsrouting vertraut gemacht haben, können Sie mit [Erstellen eines Application Gateways mit URL-basiertem Routing](application-gateway-create-url-route-arm-ps.md) fortfahren, um ein Application Gateway mit URL-Routingregeln zu erstellen.
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0810_2016-->

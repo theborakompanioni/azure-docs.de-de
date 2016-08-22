@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Konfigurieren einer Punkt-zu-Standort-VPN-Gatewayverbindung mit Azure Virtual Network | Microsoft Azure"
-   description="Stellen Sie eine sichere Verbindung mit Ihrem Azure Virtual Network durch Erstellen einer Punkt-zu-Standort-VPN-Verbindung her. Diese Konfiguration ist hilfreich, wenn eine standortübergreifende Verbindung ohne Verwendung eines VPN-Geräts von einem Remotestandort aus erforderlich ist. Sie kann zudem mit Hybridnetzwerk-Konfigurationen verwendet werden. Dieser Artikel enthält PowerShell-Anweisungen für VNets, die mit dem Ressourcen-Manager-Bereitstellungsmodell erstellt wurden."
+   pageTitle="Konfigurieren einer Punkt-zu-Standort-VPN-Verbindung mit einem virtuellen Netzwerk mithilfe des Resource Manager-Bereitstellungsmodells | Microsoft Azure"
+   description="Stellen Sie eine sichere Verbindung mit Ihrem Azure Virtual Network durch Erstellen einer Punkt-zu-Standort-VPN-Verbindung her."
    services="vpn-gateway"
    documentationCenter="na"
    authors="cherylmc"
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="03/30/2016"
+   ms.date="08/03/2016"
    ms.author="cherylmc" />
 
 # Konfigurieren einer Punkt-zu-Standort-VPN-Verbindung mit einem virtuellen Netzwerk mithilfe von PowerShell
@@ -48,7 +48,7 @@ Für diese Konfiguration verwenden wir die folgenden Werte:
 - Name: **TestVNet**, mit den Adressbereichen **192.168.0.0/16** und **10.254.0.0/16**. Beachten Sie, dass Sie für ein VNet mehrere Adressräume verwenden können.
 - Subnetzname: **FrontEnd**, verwendet **192.168.1.0/24**
 - Subnetzname: **BackEnd**, verwendet **10.254.1.0/24**
-- Subnetzname: **GatewaySubnet**, verwendet **192.168.200.0/24**. Der Subnetzname *GatewaySubnet* ist erforderlich, damit das Gateway funktioniert. 
+- Subnetzname: **GatewaySubnet**, verwendet **192.168.200.0/24**. Der Subnetzname *GatewaySubnet* ist erforderlich, damit das Gateway funktioniert.
 - VPN-Clientadresspool: **172.16.201.0/24**. VPN-Clients, die sich über diese Punkt-zu-Standort-Verbindung mit dem VNet verbinden, erhalten eine IP-Adresse aus diesem Pool.
 - Abonnement: Überprüfen Sie, ob Sie das richtige Abonnement verwenden, falls Sie mehrere besitzen.
 - Ressourcengruppe: **TestRG**
@@ -123,24 +123,31 @@ Für diese Konfiguration verwenden wir die folgenden Werte:
 		$pip = New-AzureRmPublicIpAddress -Name $GWIPName -ResourceGroupName $RG -Location $Location -AllocationMethod Dynamic
 		$ipconf = New-AzureRmVirtualNetworkGatewayIpConfig -Name $GWIPconfName -Subnet $subnet -PublicIpAddress $pip
 		
-10. Laden Sie eine CER-Stammzertifikatdatei in Azure hoch. Sie können ein Stammzertifikat aus Ihrer Unternehmenszertifikatumgebung oder ein selbstsigniertes Stammzertifikat verwenden. Sie können bis zu 20 Stammzertifikate hochladen. Eine Anleitung zum Erstellen eines selbstsignierten Stammzertifikats mithilfe von *makecert* finden Sie unter [Arbeiten mit selbstsignierten Stammzertifikaten für Punkt-zu-Standort-Konfigurationen](vpn-gateway-certificates-point-to-site.md). Beachten Sie, dass die CER-Datei nicht den privaten Schlüssel des Stammzertifikats enthalten sollte. Um den öffentlichen Schlüssel wie im Beispiel unten gezeigt abzurufen, exportieren Sie die CER-Datei als Base64-codierte X.509-Datei (.CER). Öffnen Sie diese Datei dann in Editor. Kopieren Sie alles zwischen „-----BEGIN CERTIFICATE-----“ und „-----END CERTIFICATE-----“.
-	
-	Unten ist ein Beispiel aufgeführt. Die Herausforderung beim Hochladen der Daten für das öffentliche Zertifikat besteht darin, die gesamte Zeichenfolge ohne Leerzeichen zu kopieren und einzufügen. Andernfalls funktioniert der Upload nicht. Für diesen Schritt müssen Sie Ihre eigene CER-Zertifikatdatei verwenden. Versuchen Sie nicht, das unten gezeigte Beispiel zu kopieren und einzufügen.
+10. Fügen Sie Azure ein vertrauenswürdiges Zertifikat hinzu. Sie können bis zu 20 Zertifikate hinzufügen. Eine Anleitung zum Erstellen eines selbstsignierten Stammzertifikats mithilfe von *makecert* finden Sie unter [Arbeiten mit selbstsignierten Stammzertifikaten für Punkt-zu-Standort-Konfigurationen](vpn-gateway-certificates-point-to-site.md). Wenn Sie Azure eine Base64-codierte x.509-Datei (CER-Datei) hinzufügen, weisen Sie Azure dadurch an, dem Stammzertifikat zu vertrauen, das die Datei darstellt.
 
-		$MyP2SRootCertPubKeyBase64 = "MIIDUzCCAj+gAwIBAgIQRggGmrpGj4pCblTanQRNUjAJBgUrDgMCHQUAMDQxEjAQBgNVBAoTCU1pY3Jvc29mdDEeMBwGA1UEAxMVQnJrIExpdGUgVGVzdCBSb290IENBMB4XDTEzMDExOTAwMjQxOFoXDTIxMDExOTAwMjQxN1owNDESMBAGA1UEChMJTWljcm9zb2Z0MR4wHAYDVQQDExVCcmsgTGl0ZSBUZXN0IFJvb3QgQ0EwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQC7SmE+iPULK0Rs7mQBO/6a6B6/G9BaMxHgDGzAmSG0Qsyt5e08aqgFnPdkMl3zRJw3lPKGha/JCvHRNrO8UpeAfc4IXWaqxx2iBipHjwmHPHh7+VB8lU0EJcUe7WBAI2n/sgfCwc+xKtuyRVlOhT6qw/nAi8e5don/iHPU6q7GCcnqoqtceQ/pJ8m66cvAnxwJlBFOTninhb2VjtvOfMQ07zPP+ZuYDPxvX5v3nd6yDa98yW4dZPuiGO2s6zJAfOPT2BrtyvLekItnSgAw3U5C0bOb+8XVKaDZQXbGEtOw6NZvD4L2yLd47nGkN2QXloiPLGyetrj3Z2pZYcrZBo8hAgMBAAGjaTBnMGUGA1UdAQReMFyAEOncRAPNcvJDoe4WP/gH2U+hNjA0MRIwEAYDVQQKEwlNaWNyb3NvZnQxHjAcBgNVBAMTFUJyayBMaXRlIFRlc3QgUm9vdCBDQYIQRggGmrpGj4pCblTanQRNUjAJBgUrDgMCHQUAA4IBAQCGyHhMdygS0g2tEUtRT4KFM+qqUY5HBpbIXNAav1a1dmXpHQCziuuxxzu3iq4XwnWUF1OabdDE2cpxNDOWxSsIxfEBf9ifaoz/O1ToJ0K757q2Rm2NWqQ7bNN8ArhvkNWa95S9gk9ZHZLUcjqanf0F8taJCYgzcbUSp+VBe9DcN89sJpYvfiBiAsMVqGPc/fHJgTScK+8QYrTRMubtFmXHbzBSO/KTAP5rBTxse88EGjK5F8wcedvge2Ksk6XjL3sZ19+Oj8KTQ72wihN900p1WQldHrrnbixSpmHBXbHr9U0NQigrJp5NphfuU5j81C8ixvfUdwyLmTv7rNA7GTAD"
-		$p2srootcert = New-AzureRmVpnClientRootCertificate -Name $P2SRootCertName -PublicCertData $MyP2SRootCertPubKeyBase64
+	Exportieren Sie das Zertifikat als Base64-codierte x.509-Datei (CER-Datei), um den öffentlichen Schlüssel abzurufen. Notieren Sie sich den Pfad der exportierten CER-Datei. Im Anschluss finden Sie ein Beispiel für das Abrufen der Base64-Zeichenfolgendarstellung Ihres Zertifikats. Für diesen Schritt müssen Sie Ihre eigenen CER-Dateipfad verwenden.
+    
+		$filePathForCert = "pasteYourCerFilePathHere"
+		$cert = new-object System.Security.Cryptography.X509Certificates.X509Certificate2($filePathForCert)
+		$CertBase64 = [system.convert]::ToBase64String($cert.RawData)
+		$p2srootcert = New-AzureRmVpnClientRootCertificate -Name $P2SRootCertName -PublicCertData $CertBase64
 
-11. Erstellen Sie das virtuelle Netzwerkgateway für Ihr VNet. Der GatewayType muss „Vpn“ sein, und der „VpnType“ muss „RouteBased“ lauten.
 
-		New-AzureRmVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG -Location $Location -IpConfigurations $ipconf -GatewayType Vpn -VpnType RouteBased -EnableBgp $false -GatewaySku Standard -VpnClientAddressPool $VPNClientAddressPool -VpnClientRootCertificates $p2srootcert
+11. Erstellen Sie das virtuelle Netzwerkgateway für Ihr VNet. *-GatewayType* muss **Vpn** sein, und *-VpnType* muss **RouteBased** lauten.
+
+		New-AzureRmVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
+		-Location $Location -IpConfigurations $ipconf -GatewayType Vpn `
+		-VpnType RouteBased -EnableBgp $false -GatewaySku Standard `
+		-VpnClientAddressPool $VPNClientAddressPool -VpnClientRootCertificates $p2srootcert
 
 ## Clientkonfiguration
 
-Für jeden Client, der eine Punkt-zu-Standort-Verbindung mit Azure herstellt, gelten zwei Voraussetzungen: Der VPN-Client muss für die Verbindungsherstellung konfiguriert sein, und auf dem Client muss ein Clientzertifikat installiert sein. Konfigurationspakete für VPN-Clients stehen für Windows-Clients zur Verfügung. Weitere Informationen finden Sie unter [Häufig gestellte Fragen zum VPN Gateway](vpn-gateway-vpn-faq.md#point-to-site-connections).
+Für jeden Client, der eine Punkt-zu-Standort-Verbindung mit Azure herstellt, gelten zwei Voraussetzungen: Der VPN-Client muss für die Verbindungsherstellung konfiguriert sein, und auf dem Client muss ein Clientzertifikat installiert sein. Konfigurationspakete für VPN-Clients stehen für Windows-Clients zur Verfügung. Weitere Informationen finden Sie unter [Häufig gestellte Fragen zum VPN-Gateway](vpn-gateway-vpn-faq.md#point-to-site-connections).
 
 1. Laden Sie das Konfigurationspaket für VPN-Clients herunter. Verwenden Sie in diesem Schritt das folgende Beispiel zum Herunterladen des Clientkonfigurationspakets.
 
-		Get-AzureRmVpnClientPackage -ResourceGroupName $RG -VirtualNetworkGatewayName $GWName -ProcessorArchitecture Amd64
+		Get-AzureRmVpnClientPackage -ResourceGroupName $RG `
+		-VirtualNetworkGatewayName $GWName -ProcessorArchitecture Amd64
 
 	Das PowerShell-Cmdlet gibt einen URL-Link zurück. Kopieren Sie den zurückgegebenen Link, und fügen Sie ihn in einen Webbrowser ein, um das Paket auf Ihren Computer herunterzuladen. Im Folgenden sehen Sie ein Beispiel für die zurückgegebene URL.
 
@@ -171,32 +178,33 @@ Für jeden Client, der eine Punkt-zu-Standort-Verbindung mit Azure herstellt, ge
 			Default Gateway.................:
 			NetBIOS over Tcpip..............: Enabled
 
-## So können Sie ein Stammzertifikat hinzufügen oder entfernen
+## So können Sie ein vertrauenswürdiges Stammzertifikat hinzufügen oder entfernen
 
-Zertifikate werden zur Authentifizierung von VPN-Clients für Punkt-zu-Standort-VPNs verwendet. Die folgenden Schritte führen Sie durch das Hinzufügen und Entfernen von Stammzertifikaten.
+Zertifikate werden zur Authentifizierung von VPN-Clients für Punkt-zu-Standort-VPNs verwendet. Die folgenden Schritte führen Sie durch das Hinzufügen und Entfernen von Stammzertifikaten. Wenn Sie Azure eine Base64-codierte x.509-Datei (CER-Datei) hinzufügen, weisen Sie Azure dadurch an, dem Stammzertifikat zu vertrauen, das die Datei darstellt.
 
-### Hinzufügen eines Stammzertifikats
+### Hinzufügen eines vertrauenswürdigen Stammzertifikats
 
-Sie können bis zu 20 Stammzertifikate in Azure hinzufügen. Gehen Sie folgendermaßen vor, um ein Stammzertifikat hinzuzufügen.
+Sie können Azure bis zu 20 vertrauenswürdige Stammzertifikate hinzufügen. Gehen Sie folgendermaßen vor, um ein Stammzertifikat hinzuzufügen.
 
-1. Erstellen Sie das neue Stammzertifikat, und bereiten Sie es für den Upload vor.
+1. Erstellen Sie das neue Stammzertifikat, das Sie Azure hinzufügen möchten, und bereiten Sie es vor.
 
 		$P2SRootCertName2 = "ARMP2SRootCert2.cer"
 		$MyP2SCertPubKeyBase64_2 = "MIIC/zCCAeugAwIBAgIQKazxzFjMkp9JRiX+tkTfSzAJBgUrDgMCHQUAMBgxFjAUBgNVBAMTDU15UDJTUm9vdENlcnQwHhcNMTUxMjE5MDI1MTIxWhcNMzkxMjMxMjM1OTU5WjAYMRYwFAYDVQQDEw1NeVAyU1Jvb3RDZXJ0MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAyjIXoWy8xE/GF1OSIvUaA0bxBjZ1PJfcXkMWsHPzvhWc2esOKrVQtgFgDz4ggAnOUFEkFaszjiHdnXv3mjzE2SpmAVIZPf2/yPWqkoHwkmrp6BpOvNVOpKxaGPOuK8+dql1xcL0eCkt69g4lxy0FGRFkBcSIgVTViS9wjuuS7LPo5+OXgyFkAY3pSDiMzQCkRGNFgw5WGMHRDAiruDQF1ciLNojAQCsDdLnI3pDYsvRW73HZEhmOqRRnJQe6VekvBYKLvnKaxUTKhFIYwuymHBB96nMFdRUKCZIiWRIy8Hc8+sQEsAML2EItAjQv4+fqgYiFdSWqnQCPf/7IZbotgQIDAQABo00wSzBJBgNVHQEEQjBAgBAkuVrWvFsCJAdK5pb/eoCNoRowGDEWMBQGA1UEAxMNTXlQMlNSb290Q2VydIIQKazxzFjMkp9JRiX+tkTfSzAJBgUrDgMCHQUAA4IBAQA223veAZEIar9N12ubNH2+HwZASNzDVNqspkPKD97TXfKHlPlIcS43TaYkTz38eVrwI6E0yDk4jAuPaKnPuPYFRj9w540SvY6PdOUwDoEqpIcAVp+b4VYwxPL6oyEQ8wnOYuoAK1hhh20lCbo8h9mMy9ofU+RP6HJ7lTqupLfXdID/XevI8tW6Dm+C/wCeV3EmIlO9KUoblD/e24zlo3YzOtbyXwTIh34T0fO/zQvUuBqZMcIPfM1cDvqcqiEFLWvWKoAnxbzckye2uk1gHO52d8AVL3mGiX8wBJkjc/pMdxrEvvCzJkltBmqxTM6XjDJALuVh16qFlqgTWCIcb7ju"
 
-2. Laden Sie das neue Stammzertifikat hoch. Beachten Sie, dass Sie jeweils nur ein Stammzertifikat hinzufügen können.
+2. Fügen Sie das neue Stammzertifikat hinzu. Beachten Sie, dass Sie immer nur ein Zertifikat hinzufügen können.
 
 		Add-AzureRmVpnClientRootCertificate -VpnClientRootCertificateName $P2SRootCertName2 -VirtualNetworkGatewayname $GWName -ResourceGroupName $RG -PublicCertData $MyP2SCertPubKeyBase64_2
 
 3. Mit dem folgenden Cmdlet können Sie überprüfen, ob das neue Zertifikat ordnungsgemäß hinzugefügt wurde:
 
-		Get-AzureRmVpnClientRootCertificate -ResourceGroupName $RG -VirtualNetworkGatewayName $GWName
+		Get-AzureRmVpnClientRootCertificate -ResourceGroupName $RG `
+		-VirtualNetworkGatewayName $GWName
 
-### Entfernen eines Stammzertifikats
+### Entfernen eines vertrauenswürdigen Stammzertifikats
 
-Sie können ein Stammzertifikat aus Azure entfernen. Wenn Sie ein Stammzertifikat entfernen, können aus diesem Stammzertifikat generierte Clientzertifikate erst wieder über Punkt-zu-Standortverbindungen mit Azure verbunden werden, wenn ein Clientzertifikat installiert wird, das aus einem gültigen Stammzertifikat in Azure erstellt wurde.
+Sie können ein vertrauenswürdiges Stammzertifikat aus Azure entfernen. Wenn Sie ein vertrauenswürdiges Zertifikat entfernen, können auf diesem Zertifikat basierende Clientzertifikate erst dann wieder über Punkt-zu-Standortverbindungen mit Azure verbunden werden, wenn ein Clientzertifikat installiert wird, das auf der Grundlage eines vertrauenswürdigen Zertifikats in Azure generiert wurde.
 
-1. Entfernen Sie ein Stammzertifikat.
+1. Ändern Sie das folgende Beispiel, um ein vertrauenswürdiges Stammzertifikat zu entfernen:
 
 		Remove-AzureRmVpnClientRootCertificate -VpnClientRootCertificateName $P2SRootCertName2 -VirtualNetworkGatewayName $GWName -ResourceGroupName $RG -PublicCertData "MIIC/zCCAeugAwIBAgIQKazxzFjMkp9JRiX+tkTfSzAJBgUrDgMCHQUAMBgxFjAUBgNVBAMTDU15UDJTUm9vdENlcnQwHhcNMTUxMjE5MDI1MTIxWhcNMzkxMjMxMjM1OTU5WjAYMRYwFAYDVQQDEw1NeVAyU1Jvb3RDZXJ0MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAyjIXoWy8xE/GF1OSIvUaA0bxBjZ1PJfcXkMWsHPzvhWc2esOKrVQtgFgDz4ggAnOUFEkFaszjiHdnXv3mjzE2SpmAVIZPf2/yPWqkoHwkmrp6BpOvNVOpKxaGPOuK8+dql1xcL0eCkt69g4lxy0FGRFkBcSIgVTViS9wjuuS7LPo5+OXgyFkAY3pSDiMzQCkRGNFgw5WGMHRDAiruDQF1ciLNojAQCsDdLnI3pDYsvRW73HZEhmOqRRnJQe6VekvBYKLvnKaxUTKhFIYwuymHBB96nMFdRUKCZIiWRIy8Hc8+sQEsAML2EItAjQv4+fqgYiFdSWqnQCPf/7IZbotgQIDAQABo00wSzBJBgNVHQEEQjBAgBAkuVrWvFsCJAdK5pb/eoCNoRowGDEWMBQGA1UEAxMNTXlQMlNSb290Q2VydIIQKazxzFjMkp9JRiX+tkTfSzAJBgUrDgMCHQUAA4IBAQA223veAZEIar9N12ubNH2+HwZASNzDVNqspkPKD97TXfKHlPlIcS43TaYkTz38eVrwI6E0yDk4jAuPaKnPuPYFRj9w540SvY6PdOUwDoEqpIcAVp+b4VYwxPL6oyEQ8wnOYuoAK1hhh20lCbo8h9mMy9ofU+RP6HJ7lTqupLfXdID/XevI8tW6Dm+C/wCeV3EmIlO9KUoblD/e24zlo3YzOtbyXwTIh34T0fO/zQvUuBqZMcIPfM1cDvqcqiEFLWvWKoAnxbzckye2uk1gHO52d8AVL3mGiX8wBJkjc/pMdxrEvvCzJkltBmqxTM6XjDJALuVh16qFlqgTWCIcb7ju"
 
@@ -218,7 +226,8 @@ Sie können Clientzertifikate sperren. Anhand der Zertifikatsperrliste können S
 
 2. Fügen Sie den Fingerabdruck zur Liste der gesperrten Fingerabdrücke hinzu.
 
-		Add-AzureRmVpnClientRevokedCertificate -VpnClientRevokedCertificateName $RevokedClientCert1 -VirtualNetworkGatewayName $GWName -ResourceGroupName $RG -Thumbprint $RevokedThumbprint1
+		Add-AzureRmVpnClientRevokedCertificate -VpnClientRevokedCertificateName $RevokedClientCert1 `
+		-VirtualNetworkGatewayName $GWName -ResourceGroupName $RG -Thumbprint $RevokedThumbprint1
 
 3. Überprüfen Sie, ob der Fingerabdruck zur Zertifikatsperrliste hinzugefügt wurde. Sie müssen die Fingerabdrücke nacheinander hinzufügen.
 
@@ -230,7 +239,8 @@ Sie können ein Clientzertifikat reaktivieren, indem Sie den Fingerabdruck aus d
 
 1.  Entfernen Sie den Fingerabdruck aus der Liste der gesperrten Clientzertifikate.
 
-		Remove-AzureRmVpnClientRevokedCertificate -VpnClientRevokedCertificateName $RevokedClientCert1 -VirtualNetworkGatewayName $GWName -ResourceGroupName $RG -Thumbprint $RevokedThumbprint1
+		Remove-AzureRmVpnClientRevokedCertificate -VpnClientRevokedCertificateName $RevokedClientCert1 `
+		-VirtualNetworkGatewayName $GWName -ResourceGroupName $RG -Thumbprint $RevokedThumbprint1
 
 2. Überprüfen Sie, ob der Fingerabdruck aus der Sperrliste entfernt wurde.
 
@@ -240,4 +250,4 @@ Sie können ein Clientzertifikat reaktivieren, indem Sie den Fingerabdruck aus d
 
 Sie können Ihrem virtuellen Netzwerk einen virtuellen Computer hinzufügen. Für diese Schritte finden Sie Informationen unter [Erstellen eines virtuellen Computers](../virtual-machines/virtual-machines-windows-hero-tutorial.md).
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0810_2016-->

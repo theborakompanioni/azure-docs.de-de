@@ -21,12 +21,9 @@
 
 Der vorliegende Artikel bietet einen Überblick über die Verwendung der benutzerdefinierten Skripterweiterung auf virtuellen Windows-Computern mithilfe von Azure PowerShell-Cmdlets mit Azure-Dienstverwaltungs-APIs.
 
-Mit den Erweiterungen virtueller Computer, die von Microsoft und vertrauenswürdigen Drittanbietern entwickelt werden, wird die Funktionalität des virtuellen Computers erweitert. Eine Übersicht über die Erweiterungen virtueller Computer finden Sie unter [Erweiterungen virtueller Azure-Computer und Features](virtual-machines-windows-extensions-features.md).
+Mit den Erweiterungen virtueller Computer, die von Microsoft und vertrauenswürdigen Drittanbietern entwickelt werden, wird die Funktionalität des virtuellen Computers erweitert. Einen Überblick über die Erweiterungen virtueller Computer finden Sie unter [Erweiterungen virtueller Azure-Computer und Features](virtual-machines-windows-extensions-features.md).
 
-Link:
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] 
-[Resource Manager model](virtual-machines-extensions-customscript.md).
-
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] Erfahren Sie, wie Sie [diese Schritte mit dem Resource Manager-Modell ausführen](virtual-machines-windows-extensions-customscript.md).
 
 ## Übersicht über benutzerdefinierte Skripterweiterungen
 
@@ -35,7 +32,7 @@ Die benutzerdefinierte Skripterweiterung für Windows ermöglicht Ihnen das Ausf
 ### Voraussetzungen für das Ausführen der CustomScript-Erweiterung
 
 1. Installieren Sie über <a href="http://azure.microsoft.com/downloads" target="_blank">diesen Link</a> Azure PowerShell-Cmdlets der Version 0.8.0 oder höher.
-2. Wenn die Skripts auf einem vorhandenen virtuellen Computer ausgeführt werden, müssen Sie sicherstellen, dass der Agent des virtuellen Computers darauf aktiviert ist. Andernfalls folgen Sie den Anweisungen in <a href="https://msdn.microsoft.com/library/azure/dn832621.aspx" target="_blank">diesem Artikel</a>, um einen Agent zu installieren. (Bei einer Bereitstellung des virtuellen Computers aus dem Azure-Katalog sind VM-Agents standardmäßig aktiviert; Sie müssen sie nicht mehr aktivieren.)
+2. Wenn die Skripts auf einem vorhandenen virtuellen Computer ausgeführt werden, müssen Sie sicherstellen, dass der Agent des virtuellen Computers darauf aktiviert ist. Wurde der Agent nicht installiert, führen Sie die [hier](virtual-machines-windows-classic-agents-and-extensions.md) aufgeführten Schritte zur Installation aus. Wird der virtuelle Computer im Portal erstellt, wird der VM-Agent standardmäßig installiert.
 3. Laden Sie die Skripts, die Sie auf der VM ausführen möchten, nach Azure Storage hoch. Die Skripts können aus einem einzelnen oder mehreren Speichercontainern stammen.
 4. Das Skript sollte so geschrieben sein, dass das Eingangsskript, das durch die Erweiterung gestartet wird, weitere Skripts startet.
 
@@ -93,4 +90,4 @@ Informationen zum Verwenden der benutzerdefinierten Skripterweiterung mit Azure-
 <!--Image references-->
 [5]: ./media/virtual-machines-windows-classic-extensions-customscript/addcse.png
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0810_2016-->

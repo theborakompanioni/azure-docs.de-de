@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/05/2016"
+	ms.date="08/08/2016"
 	ms.author="giridham;jimpark;trinadhk;markgal"/>
 
 # Wiederherstellen von Daten von einem anderen DPM-Server im Sicherungstresor
@@ -82,7 +82,7 @@ So stellen Sie Daten von einem anderen DPM-Server wieder her
     ![Löschen des externen DPM](./media/backup-azure-alternate-dpm-server/clear-external-dpm.png)
 
 ## Problembehandlung bei Fehlermeldungen
-|Nr. |	Fehlermeldung |	Schritte zur Problembehandlung |
+|Nein. |	Fehlermeldung |	Schritte zur Problembehandlung |
 | :-------------: |:-------------| :-----|
 |1\.|		Dieser Server ist nicht bei dem Tresor registriert, der durch die Tresoranmeldeinformationen angegeben ist.|	**Ursache**: Dieser Fehler wird angezeigt, wenn die ausgewählte Datei mit den Tresoranmeldeinformationen nicht zu dem Sicherungstresor gehört, dem der DPM-Server zugeordnet ist, auf dem die Wiederherstellung versucht wird. <br> **Lösung**: Laden Sie die Anmeldeinformationsdatei für den Tresor aus dem Sicherungstresor herunter, bei dem der DPM-Server registriert ist.|
 |2\.|		Die wiederherzustellenden Daten sind nicht verfügbar, oder der ausgewählte Server ist kein DPM-Server.|	**Ursache**: Es sind keine anderen DPM-Server mit DPM 2012 R2 UR7 bei dem Sicherungstresor registriert, oder die DPM-Server mit DPM 2012 R2 UR7 haben ihre Metadaten noch nicht hochgeladen, oder der ausgewählte Server ist kein DPM-Server (also kein Windows-Server oder Windows-Client). <br> **Lösung**: Wenn noch andere DPM-Server bei dem Sicherungstresor registriert sind, müssen Sie sicherstellen, dass SCDPM 2012 R2 UR7 und der neueste Azure Backup-Agent installiert sind. <br>Sind noch andere DPM-Server mit DPM 2012 R2 UR7 bei dem Sicherungstresor registriert, warten Sie nach der Installation von UR7 einen Tag, um den Wiederherstellungsprozess zu starten. Während der Nacht werden die Metadaten für zuvor geschützte Sicherungen in die Cloud hochgeladen. Die Daten sind dann für die Wiederherstellung verfügbar.|
@@ -103,4 +103,4 @@ So stellen Sie Daten von einem anderen DPM-Server wieder her
 ## Nächste Schritte:
 • [Azure Backup – Häufig gestellte Fragen](backup-azure-backup-faq.md)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0810_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/16/2016"
+	ms.date="08/08/2016"
 	ms.author="billmath"/>
 
 
@@ -163,4 +163,4 @@ Wenn Sie Ihre AD FS-Farm und die Azure AD-Vertrauensstellung unter Verwendung vo
 
 Weitere Informationen finden Sie unter [Reparieren der Vertrauensstellung](./active-directory-aadconnect-federation-management.md#repairing-the-trust).
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0810_2016-->
