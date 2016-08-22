@@ -157,7 +157,8 @@ Bei Verwendung von Azure Active Directory mit Geo-Replikation muss der Azure Act
 3. Klicken Sie auf dem Blatt **Einstellungen** auf „Active Directory-Administrator“.
 4. Klicken Sie auf dem Blatt **Active Directory-Administrator** auf **Active Directory-Administrator**, und klicken Sie dann oben auf **Administrator festlegen**.
 5. Suchen Sie auf dem Blatt **Administrator hinzufügen** nach einem Benutzer, wählen Sie den Benutzer oder die Gruppe aus, den bzw. die Sie als Administrator festlegen möchten, und klicken Sie dann auf **Auswählen**. (Auf dem Blatt "Active Directory-Administrator" werden alle Mitglieder und Gruppen in Ihrem Active Directory-Verzeichnis angezeigt. Benutzer oder Gruppen, die abgeblendet dargestellt werden, können nicht ausgewählt werden, da sie nicht als Azure AD-Administratoren unterstützt werden. Eine Liste der unterstützten Administratoren finden Sie unter **Features und Einschränkungen von Azure AD** weiter oben.) Die rollenbasierte Zugriffskontrolle (Role-based Access Control, RBAC) gilt nur für das Portal und wird nicht an SQL Server weitergegeben.
-6. Klicken Sie oben auf dem Blatt **Active Directory-Administrator** auf **SPEICHERN**. ![Administrator auswählen][10]
+6. Klicken Sie oben auf dem Blatt **Active Directory-Administrator** auf **SPEICHERN**. 
+![Administrator auswählen][10]
 
 	Der Vorgang zum Ändern des Administrators kann einige Minuten in Anspruch nehmen. Anschließend wird der neue Administrator im Feld **Active Directory-Administrator** angezeigt.
 
@@ -250,9 +251,11 @@ Um zu bestätigen, dass der Azure AD-Administrator ordnungsgemäß eingerichtet 
 
 Verwenden Sie diese Methode, wenn Sie von einer Verbunddomäne aus mit Ihren Azure Active Directory-Anmeldeinformationen bei Windows angemeldet sind.
 
-1. Starten Sie Management Studio oder Data Tools, und wählen Sie im Dialogfeld **Verbindung mit dem Server herstellen** (oder **Verbindung mit Datenbankmodul herstellen**) im Feld **Authentifizierung** die Einstellung **Integrierte Active Directory-Authentifizierung** aus. Es ist kein Kennwort erforderlich bzw. keine Kennworteingabe möglich, da bei der Verbindungsherstellung Ihre bereits vorhandenen Anmeldeinformationen verwendet werden. ![Integrierte AD-Authentifizierung auswählen][11]
+1. Starten Sie Management Studio oder Data Tools, und wählen Sie im Dialogfeld **Verbindung mit dem Server herstellen** (oder **Verbindung mit Datenbankmodul herstellen**) im Feld **Authentifizierung** die Einstellung **Integrierte Active Directory-Authentifizierung** aus. Es ist kein Kennwort erforderlich bzw. keine Kennworteingabe möglich, da bei der Verbindungsherstellung Ihre bereits vorhandenen Anmeldeinformationen verwendet werden. 
+![Integrierte AD-Authentifizierung auswählen][11]
 
-2. Klicken Sie auf die Schaltfläche **Optionen**, und geben Sie auf der Seite **Verbindungseigenschaften** im Feld **Mit Datenbank verbinden** den Namen der Benutzerdatenbank ein, mit der die Verbindung hergestellt werden soll.![Datenbanknamen auswählen][13]
+2. Klicken Sie auf die Schaltfläche **Optionen**, und geben Sie auf der Seite **Verbindungseigenschaften** im Feld **Mit Datenbank verbinden** den Namen der Benutzerdatenbank ein, mit der die Verbindung hergestellt werden soll.
+![Datenbanknamen auswählen][13]
 
 
 #### Herstellen einer Verbindung mithilfe der Active Directory-Kennwortauthentifizierung
@@ -263,7 +266,8 @@ Verwenden Sie diese Methode, wenn Sie mit Ihren Windows-Anmeldeinformationen von
 
 1. Starten Sie Management Studio oder Data Tools, und wählen Sie im Dialogfeld **Verbindung mit dem Server herstellen** (oder **Verbindung mit Datenbankmodul herstellen**) im Feld **Authentifizierung** die Einstellung **Active Directory-Kennwortauthentifizierung** aus.
 2. Geben Sie im Feld **Benutzername** Ihren Azure Active Directory-Benutzernamen im Format **username@domain.com** ein. Es muss sich um ein Konto aus Azure Active Directory oder um ein Konto aus einer Domäne handeln, die im Verbund mit Azure Active Directory konfiguriert ist.
-3. Geben Sie im Feld **Kennwort** Ihr Benutzerkennwort für das Azure Active Directory-Konto oder das Verbunddomänenkonto ein. ![AD-Kennwortauthentifizierung auswählen][12]
+3. Geben Sie im Feld **Kennwort** Ihr Benutzerkennwort für das Azure Active Directory-Konto oder das Verbunddomänenkonto ein. 
+![AD-Kennwortauthentifizierung auswählen][12]
 
 4. Klicken Sie auf die Schaltfläche **Optionen**, und geben Sie auf der Seite **Verbindungseigenschaften** im Feld **Mit Datenbank verbinden** den Namen der Benutzerdatenbank ein, mit der Sie sich verbinden möchten. (Siehe Grafik in der vorherigen Option.)
 

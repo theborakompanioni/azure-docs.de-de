@@ -83,9 +83,7 @@ Die folgenden erweiterten Parameter sind ebenfalls verfügbar:
 |Eigenschaftenname| Anzeigename|Beschreibung|
 | ---|---|---|
 |MessageId|Nachrichten-ID|Benutzerdefinierter Wert, mit dem Service Bus doppelte Nachrichten ermitteln kann (sofern aktiviert).|
-|To  
-|To  
-|Zieladresse.|
+|To|To|Zieladresse.|
 |ReplyTo|Antworten an|Warteschlangenadresse für die Antwort.|
 |ReplyToSessionId|Antwort an Sitzungs-ID|Sitzungs-ID für die Antwort.|
 |Bezeichnung|Bezeichnung|Anwendungsspezifische Bezeichnung.|
@@ -120,8 +118,7 @@ ServiceBusMessage: Dieses Objekt enthält den Inhalt und die Eigenschaften einer
 |ContentType|string|Inhaltstyp des Nachrichteninhalts.|
 |Eigenschaften|Objekt|Schlüssel-Wert-Paare für die einzelnen vermittelten Eigenschaften.|
 |MessageId|string|Benutzerdefinierter Wert, mit dem Service Bus doppelte Nachrichten ermitteln kann (sofern aktiviert).|
-|To  
-|string|Zieladresse.|
+|To|string|Zieladresse.|
 |ReplyTo|string|Warteschlangenadresse für die Antwort.|
 |ReplyToSessionId|string|Sitzungs-ID für die Antwort.|
 |Bezeichnung|string|Anwendungsspezifische Bezeichnung.|
@@ -155,8 +152,7 @@ ServiceBusMessage: Dieses Objekt enthält den Inhalt und die Eigenschaften einer
 |ContentType|string|Inhaltstyp des Nachrichteninhalts.|
 |Eigenschaften|Objekt|Schlüssel-Wert-Paare für die einzelnen vermittelten Eigenschaften.|
 |MessageId|string|Benutzerdefinierter Wert, mit dem Service Bus doppelte Nachrichten ermitteln kann (sofern aktiviert).|
-|To  
-|string|Zieladresse.|
+|To|string|Zieladresse.|
 |ReplyTo|string|Warteschlangenadresse für die Antwort.|
 |ReplyToSessionId|string|Sitzungs-ID für die Antwort.|
 |Bezeichnung|string|Anwendungsspezifische Bezeichnung.|
@@ -185,4 +181,4 @@ Von den oben angegebenen Aktionen und Triggern können folgende HTTP-Statuscodes
 ## Nächste Schritte
 [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-<!---HONumber=AcomDC_0810_2016-->
+<!----HONumber=AcomDC_0810_2016-->

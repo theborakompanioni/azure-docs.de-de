@@ -22,7 +22,8 @@ Azure Active Directory ermöglicht das einmalige Anmelden und bietet eine höher
 Organisationen, die bereits Investitionen in Verbundlösungen anderer Anbieter getätigt haben, erhalten in diesem Thema Unterstützung bei der Konfiguration des einmaligen Anmeldens für Ihre Windows Server Active Directory-Benutzer mit Microsoft Online Services unter Verwendung von Identitätsanbietern anderer Anbieter, die in der unten stehenden Kompatibilitätsliste für den Azure Active Directory-Verbund aufgeführt sind.
 
 
-Die ![](./media/active-directory-aadconnect-federation-compatibility/oxford2.jpg) [Oxford Computer Group](http://oxfordcomputergroup.com/) hat im Auftrag von Microsoft das einmalige Anmelden bei Verwendung von nicht von Microsoft stammenden Identitätsanbietern für verschiedene gängige Azure Active Directory-Anwendungsfälle getestet.
+Die ![](./media/active-directory-aadconnect-federation-compatibility/oxford2.jpg)   
+[Oxford Computer Group](http://oxfordcomputergroup.com/) hat im Auftrag von Microsoft das einmalige Anmelden bei Verwendung von nicht von Microsoft stammenden Identitätsanbietern für verschiedene gängige Azure Active Directory-Anwendungsfälle getestet.
 
 Informationen dazu, wie Sie Ihren nicht von Microsoft stammenden Identitätsanbieter in diese Liste aufnehmen lassen können, wenden Sie sich unter [idp@oxfordcomputergroup.com](mailto:idp@oxfordcomputergroup.com) an die Oxford Computer Group.
 

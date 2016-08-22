@@ -255,7 +255,7 @@ Das folgende Beispiel zeigt eine Richtlinie, die alle Anfragen ablehnt, deren St
 
 ### Dienstverwaltung: Auswählen des Dienstkatalogs
 
-Das folgende Beispiel veranschaulicht die Verwendung der Quelle. Es zeigt, dass Aktionen nur für Dienste des Typs "Microsoft.Resources/*", "Microsoft.Compute/*", "Microsoft.Storage/*" und "Microsoft.Network/*" zulässig sind. Alle anderen Anforderungen werden verweigert.
+Das folgende Beispiel veranschaulicht die Verwendung der Quelle. Es zeigt, dass Aktionen nur für Dienste des Typs "Microsoft.Resources/\*", "Microsoft.Compute/\*", "Microsoft.Storage/\*" und "Microsoft.Network/\*" zulässig sind. Alle anderen Anforderungen werden verweigert.
 
     {
       "if" : {

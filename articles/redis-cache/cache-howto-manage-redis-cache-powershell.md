@@ -312,7 +312,7 @@ Der folgende Befehl aktualisiert die maxmemory-Richtlinie für den Redis-Cache m
 
 `Set-AzureRmRedisCache` kann verwendet werden, um eine Azure Redis Cache-Instanz zu skalieren, wenn die Eigenschaften `Size`, `Sku` oder `ShardCount` geändert werden.
 
->[AZURE.NOTE]Das Skalieren eines Caches mithilfe von PowerShell unterliegt den gleichen Einschränkungen und Richtlinien wie das Skalieren eines Caches über das Azure-Portal. Sie können mit den folgenden Einschränkungen auf eine andere Preisstufe skalieren.
+>[AZURE.NOTE] Das Skalieren eines Caches mithilfe von PowerShell unterliegt den gleichen Einschränkungen und Richtlinien wie das Skalieren eines Caches über das Azure-Portal. Sie können mit den folgenden Einschränkungen auf eine andere Preisstufe skalieren.
 >
 >-	Sie können keine Skalierung von einem höheren Tarif auf einen niedrigeren Tarif vornehmen.
 >    -    Eine Skalierung von einem **Premium**-Cache auf einen niedrigeren **Standard**- oder **Basic**-Cache ist nicht möglich.

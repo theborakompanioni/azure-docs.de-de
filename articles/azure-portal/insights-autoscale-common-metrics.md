@@ -171,7 +171,7 @@ Sie können dies im Azure-Portal auf dem Blatt **Einstellungen** konfigurieren. 
 "metricName": "ApproximateMessageCount",
  "metricNamespace": "",
  "metricResourceUri": "/subscriptions/s1/resourceGroups/rg1/providers/Microsoft.ClassicStorage/storageAccounts/mystorage/services/queue/queues/mystoragequeue"
- ```
+```
 
 ## Häufig verwendete Service Bus-Metriken
 

@@ -50,7 +50,8 @@ Alle in das Veröffentlichungsportal hochgeladen Logos müssen folgende Richtlin
 - Die Farbpalette des Azure-Designs ist einfach und geradlinig. Verwenden Sie auf Ihrem Logo möglichst wenige Primär- und Sekundärfarben.
 - Die Designfarben des Azure-Portals sind Weiß und Schwarz. Daher verwenden Sie diese Farben nicht als Hintergrundfarbe für Ihre Logos. Verwenden Sie Farben, die Ihre Logos im Azure-Portal markant hervorstechen lassen. Sie sollten einfache Primärfarben verwenden. **Wenn Sie transparenten Hintergrund verwenden, stellen Sie sicher, dass Logos/Text nicht weiß oder schwarz sind.**
 - Verwenden Sie im Logo keinen Hintergrund mit Farbverlauf.
-- Platzieren Sie nach Möglichkeit keinen Text auf dem Logo, auch nicht Ihren Firmen- oder Markennamen. Das Erscheinungsbild Ihres Logos sollte klar und direkt und frei von Farbverläufen sein.
+- Platzieren Sie nach Möglichkeit keinen Text auf dem Logo, auch nicht Ihren Firmen- oder Markennamen.
+- Das Erscheinungsbild Ihres Logos sollte klar und direkt und frei von Farbverläufen sein.
 - Das Logo sollte nicht gestreckt sein.
 - Ein kleines Logo sollte 40 x 40 px groß sein.
 - Ein mittleres Logo sollte 90 x 90 px groß sein.
@@ -247,7 +248,7 @@ Im Anschluss finden Sie eine ausführliche Übersicht darüber, wie die Marketin
 
 ![Abbildung](media/marketplace-publishing-push-to-staging/acom-listing-details-02.png)
 
-* Preisübersicht zu den Angeboten auf der Azure Marketplace-Website*
+*Preisübersicht zu den Angeboten auf der Azure Marketplace-Website*
 
 ### Azure-Portal
 ![Abbildung](media/marketplace-publishing-push-to-staging/azureportal-galleryblade-01.png)

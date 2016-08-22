@@ -22,7 +22,7 @@ Sie können Azure-Ressourcen IP-Adressen zuweisen, um die Kommunikation mit ande
 - **Öffentliche IP-Adressen**: Sie werden für die Kommunikation mit dem Internet verwendet. Hierzu zählen auch öffentliche Azure-Dienste.
 - **Private IP-Adressen**: Sie werden für die Kommunikation innerhalb eines virtuellen Azure-Netzwerks (VNet) und innerhalb Ihres lokalen Netzwerks verwendet, wenn Sie Ihr Netzwerk mithilfe eines VPN-Gateways oder einer ExpressRoute-Verbindung auf Azure ausdehnen.
 
-[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-rm-include.md)] [classic deployment model](virtual-network-ip-addresses-overview-classic.md).
+[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-rm-include.md)] [Klassisches Bereitstellungsmodell](virtual-network-ip-addresses-overview-classic.md).
 
 Wenn Sie mit dem klassischen Bereitstellungsmodell vertraut sind, sehen Sie sich die [Unterschiede bei IP-Adressen zwischen dem klassischen Bereitstellungsmodell und dem Resource Manager-Bereitstellungsmodell](virtual-network-ip-addresses-overview-classic.md#Differences-between-Resource-Manager-and-classic-deployments) an.
 

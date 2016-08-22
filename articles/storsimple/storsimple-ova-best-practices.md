@@ -81,7 +81,7 @@ Gesamter Speicherplatz für die lokale Ebene bis zu diesem Punkt: 240 GB + 120 G
 
 Zweitens: Wir benötigen mindestens so viel Speicherplatz auf der lokalen Ebene wie für die größte Einzelreservierung. Diese zusätzliche Menge wird verwendet, falls Sie die Wiederherstellung aus einer Cloudmomentaufnahme durchführen müssen. In diesem Beispiel beträgt die größte lokale Reservierung 330 GB (einschließlich der Reservierung für das Dateisystem). Diesen Betrag müssen Sie zu den 660 GB addieren: 660 GB + 330 GB = 990 GB. Wenn wir danach weitere Wiederherstellungen durchführen, können wir jeweils den Speicherplatz aus dem vorherigen Wiederherstellungsvorgang bereitstellen.
 
-Drittens: Wir benötigen 15% des bisherigen lokalen Gesamtspeicherplatzes, um lokale Momentaufnahmen zu speichern, sodass nur 85% davon verfügbar sind. In diesem Beispiel gilt daher: 990 GB = 0,85 · bereitgestellte TB für Datenträger für Daten. Für den bereitgestellten Datenträger für Daten ergibt sich also: (990 · (1/0,85)) = 1164 GB = 1,16 TB ~ 1,25 TB (Rundung auf das nächste Quartil).
+Drittens: Wir benötigen 15% des bisherigen lokalen Gesamtspeicherplatzes, um lokale Momentaufnahmen zu speichern, sodass nur 85% davon verfügbar sind. In diesem Beispiel gilt daher: 990 GB = 0,85*bereitgestellte TB für Datenträger für Daten. Für den bereitgestellten Datenträger für Daten ergibt sich also: (990*(1/0,85)) = 1.164 GB = 1,16 TB ~ 1,25 TB (Rundung auf das nächste Quartil).
 
 Wenn Sie eine unerwartete Zunahme und neue Wiederherstellungen berücksichtigen, sollten Sie also einen lokalen Datenträger mit ca. 1,25 bis 1,5 TB bereitstellen.
 

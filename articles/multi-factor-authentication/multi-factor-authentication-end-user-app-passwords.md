@@ -44,9 +44,9 @@ Während der ersten Anmeldung wird ein App-Kennwort erstellt, das Sie direkt ver
 
 Verwendung von Multi-Factor Authentication|Beschreibung
 :------------- | :------------- | 
-[Ich verwende sie mit Office 365.](#creating-and-deleting-app-passwords-with-office-365)| Erstellen Sie Ihre App-Kennwörter über das Office 365-Portal.
-[Nicht bekannt](#creating-and-deleting-app-passwords-with-myapps-portal)|Erstellen Sie Ihre App-Kennwörter unter [https://myapps.microsoft.com](https://myapps.microsoft.com)
-[Ich verwende sie mit Microsoft Azure.](#create-app-passwords-in-the-azure-portal)| Erstellen Sie Ihre App-Kennwörter über das Azure-Portal.
+<a href="#verwende">Ich verwende sie mit Office 365</a> | Erstellen Sie Ihre App-Kennwörter über das Office 365-Portal.
+<a href="#Natch">Nicht bekannt</a> |Erstellen Sie Ihre App-Kennwörter unter [https://myapps.microsoft.com](https://myapps.microsoft.com)
+<a href="#mit">Ich verwende sie mit Microsoft Azure</a>| Erstellen Sie Ihre App-Kennwörter über das Azure-Portal.
 
 ## Erstellen und Löschen von App-Kennwörtern mit Office 365 
 

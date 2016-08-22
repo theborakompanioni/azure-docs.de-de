@@ -150,7 +150,7 @@ In diesem Dokument wurden Security Center, seine wichtigsten Funktionen sowie di
 - [Azure Security Blog](http://blogs.msdn.com/b/azuresecurity/) (Blog zur Azure-Sicherheit): Hier finden Sie Neuigkeiten und Informationen zur Azure-Sicherheit.
 
 <!--Image references-->
-[1]: ./media/security-center-intro/security-tile.png
+[1]: ./media/security-center-intro/security-tile.PNG
 [2]: ./media/security-center-intro/security-center.png
 [3]: ./media/security-center-intro/security-policy.png
 [4]: ./media/security-center-intro/security-policy-blade.png
