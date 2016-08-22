@@ -40,7 +40,7 @@ Diese Informationen werden in dem von Ihnen angegebenen Azure-Speicherkonto und 
 
 * Das Feature zum Sichern und Wiederherstellen erfordert einen App Service-Plan im Tarif **Standard** oder höher. Weitere Informationen zum Skalieren des App Service-Plans zur Verwendung eines höheren Tarifs finden Sie unter [Skalieren einer App in Azure](web-sites-scale.md). Beachten Sie, dass im Tarif **Premium** eine größere Anzahl täglicher Sicherungen zulässig ist als im Tarif **Standard**.
 * Sie benötigen ein Azure-Speicherkonto und einen Container im selben Abonnement wie die App, die Sie sichern möchten. Weitere Informationen zu Azure-Speicherkonten erhalten Sie unter den [Links](#moreaboutstorage) am Ende dieses Artikels.
-* Sie können bis zu 10 GB App- und Datenbankinhalte sichern. Sie erhalten eine Fehlermeldung, wenn die Sicherungsgröße diesen Grenzwert überschreitet.
+* Sicherungen können bis zu 10GB an App- und Datenbankinhalten umfassen. Sie erhalten eine Fehlermeldung, wenn die Sicherungsgröße diesen Grenzwert überschreitet.
 
 <a name="manualbackup"></a>
 ## Erstellen einer manuellen Sicherung
@@ -115,8 +115,7 @@ Erstellen Sie zum Ausschließen von Dateien und Ordnern aus der Sicherung eine `
 
 Angenommen, Sie verfügen über eine App mit Protokolldateien und statischen Bildern aus früheren Jahren, die sich nicht ändern. Sie haben bereits eine vollständige Sicherung der App erstellt, die die alten Bilder enthält. Jetzt möchten Sie die App täglich sichern, aber Sie möchten nicht für die Speicherung von Protokolldateien oder statischen Bilddateien zahlen, die sich nie ändern.
 
-![Ordner "Logs"][LogsFolder]
-![Ordner "Images"][ImagesFolder]
+![Ordner "Logs"][LogsFolder] ![Ordner "Images"][ImagesFolder]
 	
 Die unten angegebenen Schritte zeigen, wie Sie diese Dateien aus der Sicherung ausschließen.
 
@@ -177,4 +176,4 @@ Informationen zum Wiederherstellen einer App aus einer Sicherung finden Sie unte
 [GhostUpgradeWarning]: ./media/web-sites-backup/13GhostUpgradeWarning.png
  
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0810_2016-->

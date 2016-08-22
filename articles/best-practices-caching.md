@@ -77,7 +77,7 @@ Caching kann die Leistung, Skalierbarkeit und Verfügbarkeit erheblich verbesser
 
 Eine Datenbank kann z. B. eine begrenzte Anzahl gleichzeitiger Verbindungen unterstützen. Werden die Daten in diesem Fall aber nicht aus der zu Grunde liegenden Datenbank, sondern aus einem freigegebenen Cache abgerufen, so kann die Clientanwendung selbst dann noch auf diese Daten zugreifen, wenn die Anzahl der verfügbaren Verbindungen erschöpft ist. Außerdem können die Clientanwendungen, sollte die Datenbank – aus welchem Grund auch immer – nicht mehr zur Verfügung stehen, nach wie vor auf die im Cache gespeicherten Daten zugreifen.
 
-Zwischenspeichern empfiehlt sich besonders für Daten, die häufig eingelesen werden, aber nur selten geändert (bei denen z. B. der Anteil der Lesezugriffe gegenüber dem Anteil der Schreibzugriffe überwiegt). Allerdings sollten Sie den Cache nicht als autoritativen Speicher wichtiger Informationen verwenden. Stellen Sie stattdessen sicher, dass alle Änderungen, deren Verlust sich Ihre Anwendung nicht leisten kann, immer in einem persistenten Datenspeicher gespeichert werden. Dies bedeutet: Sollte der Cache einmal nicht verfügbar sein, kann Ihre Anwendung über den Datenspeicher weiterhin verwendet werden, ohne dass wichtige Informationen verloren gehen.
+Zwischenspeichern empfiehlt sich besonders für Daten, die häufig eingelesen werden, aber nur selten geändert (bei denen z.B. der Anteil der Lesezugriffe gegenüber dem Anteil der Schreibzugriffe überwiegt). Allerdings sollten Sie den Cache nicht als autoritativen Speicher wichtiger Informationen verwenden. Stellen Sie stattdessen sicher, dass alle Änderungen, deren Verlust sich Ihre Anwendung nicht leisten kann, immer in einem persistenten Datenspeicher gespeichert werden. Dies bedeutet: Sollte der Cache einmal nicht verfügbar sein, kann Ihre Anwendung über den Datenspeicher weiterhin verwendet werden, ohne dass wichtige Informationen verloren gehen.
 
 ### Bestimmen, wie Daten effektiv zwischengespeichert werden
 
@@ -270,11 +270,11 @@ Weitere Informationen finden Sie auf der Redis-Website auf der Seite [Redis Secu
 
 Der Redis-Cache von Azure ermöglicht Zugriff auf Redis-Server, die auf Servern in einem Azure-Datencenter ausgeführt werden. Er fungiert als Fassade, die Zugriffssteuerung und Sicherheit bietet. Einen Cache können Sie mithilfe des Azure-Verwaltungsportals bereitstellen. Das Portal bietet eine Anzahl vordefinierter Konfigurationen von einem 53 GB großen Cache, der als dedizierter Dienst ausgeführt wird, zum Datenschutz SSL-Kommunikation unterstützt und eine Master/Slave-Replikation mit einer SLA von 99,9 % Verfügbarkeit garantiert, bis hin zu einem lediglich 250 MB großen Cache ohne Replikation (und somit keiner Verfügbarkeitsgarantie), der auf gemeinsam genutzter Hardware ausgeführt wird.
 
-Auch die Entfernungsrichtlinie für den Cache können Sie über das Azure-Verwaltungsportal konfigurieren, ebenso, wie Sie dort über die bereitgestellten Rollen (Owner, Contributor, Reader) den Zugriff auf den Cache steuern können. Rollen definieren die Operationen, die deren Mitglieder ausführen können. So haben Mitglieder der Rolle „Owner“ (Eigentümer) vollständige Kontrolle über den Cache und seinen Inhalt (einschließlich dessen Sicherheit), Mitglieder der Rolle „Contributor“ (Mitwirkender) können Informationen im Cache lesen und schreiben und Mitglieder der Rolle „Reader“ (Leser) können die Daten aus dem Cache nur abrufen.
+Auch die Entfernungsrichtlinie für den Cache können Sie über das Azure-Verwaltungsportal konfigurieren, ebenso, wie Sie dort über das Hinzufügen von Benutzern zu den bereitgestellten Rollen (Owner, Contributor, Reader) den Zugriff auf den Cache steuern können. Rollen definieren die Operationen, die deren Mitglieder ausführen können. So haben Mitglieder der Rolle „Owner“ (Eigentümer) vollständige Kontrolle über den Cache und seinen Inhalt (einschließlich dessen Sicherheit), Mitglieder der Rolle „Contributor“ (Mitwirkender) können Informationen im Cache lesen und schreiben und Mitglieder der Rolle „Reader“ (Leser) können die Daten aus dem Cache nur abrufen.
 
 Die meisten Verwaltungsaufgaben werden über das Azure-Verwaltungsportal ausgeführt, weshalb viele Verwaltungsbefehle aus der Standardversion von Redis wie die Möglichkeit der programmgesteuerten Änderung der Konfiguration, das Herunterfahren des Servers, die Konfiguration weiterer Slaves oder das zwangsweise Speichern von Daten auf der Festplatte nicht verfügbar sind.
 
-Das Azure-Verwaltungsportal bietet eine praktische grafische Übersicht, mit der sich die Leistung des Cache gut überwachen lässt. Beispielsweise können Sie die Anzahl der aktiven Verbindungen, die Anzahl der ausgeführten Anforderungen, die Menge der Lese- und Schreibzugriffe und die Anzahl der Cachetreffer gegenüber der Cachefehler anzeigen. Diesen Informationen können Sie die Effizienz des Cache entnehmen und daraufhin gegebenenfalls die Konfiguration oder die Entfernungsrichtlinie ändern. Sie können auch Warnungen erstellen, über die Administratoren E-Mail-Benachrichtigungen erhalten, wenn eine oder mehrere wichtige Metriken außerhalb des erwarteten Bereichs fallen. Ein Administrator könnte zum Beispiel benachrichtigt werden, wenn die Anzahl der Cachefehler innerhalb der letzten Stunde einen angegebenen Wert überschritten hat, da es in diesem Fall naheliegt, dass der Cache zu klein ist oder die zwischengespeicherten Daten zu früh entfernt werden.
+Das Azure-Verwaltungsportal bietet eine praktische grafische Übersicht, mit der sich die Leistung des Cache gut überwachen lässt. Beispielsweise können Sie die Anzahl der aktiven Verbindungen, die Anzahl der ausgeführten Anforderungen, die Menge der Lese- und Schreibzugriffe und die Anzahl der Cachetreffer gegenüber der Cachefehler anzeigen. Diesen Informationen können Sie die Effektivität des Caches entnehmen und daraufhin gegebenenfalls die Konfiguration oder die Entfernungsrichtlinie ändern. Sie können auch Warnungen erstellen, über die Administratoren E-Mail-Benachrichtigungen erhalten, wenn eine oder mehrere wichtige Metriken außerhalb des erwarteten Bereichs fallen. Ein Administrator könnte zum Beispiel benachrichtigt werden, wenn die Anzahl der Cachefehler innerhalb der letzten Stunde einen angegebenen Wert überschritten hat, da es in diesem Fall naheliegt, dass der Cache zu klein ist oder die zwischengespeicherten Daten zu früh entfernt werden.
 
 Sie können auch die CPU-, Arbeitsspeicher- und Netzwerkauslastung des Cache überwachen.
 
@@ -897,11 +897,12 @@ subscriber.PublishAsync("messages:blogPosts", blogPost.Title);
 - Mehrere Abonnenten können den gleichen Kanal abonnieren. Sie alle erhalten dann die über diesen Kanal veröffentlichten Nachrichten.
 - Abonnenten empfangen nur Nachrichten, die nach dem Abschluss ihres Abonnements veröffentlicht wurden. Die Kanäle sind nicht gepuffert. Nach der Veröffentlichung einer Nachricht überträgt die Redis-Infrastruktur die Nachricht sofort an jeden Abonnenten und entfernt die Nachricht anschließend wieder aus dem Kanal.
 - Die Abonnenten erhalten die Nachrichten standardmäßig in der Reihenfolge, in der sie gesendet werden. Innerhalb eines sehr aktiven Systems mit sehr vielen Nachrichten und vielen Abonnenten und Publishern würde die garantierte Zustellung der Nachrichten in der sequenziell richtigen Reihenfolge die Leistung des Systems beeinträchtigen. Wenn die Nachrichten unabhängig voneinander sind und die Reihenfolge ihrer Zustellung unerheblich ist, können Sie die Parallelverarbeitung durch das Redis-System aktivieren, was die Reaktionsfähigkeit verbessern kann. Dazu setzen Sie die Einstellung PreserveAsyncOrder der vom Abonnenten verwendeten Verbindung auf dem StackExchange-Client auf „false“:
-  ```csharp
-  ConnectionMultiplexer redisHostConnection = ...;
-  redisHostConnection.PreserveAsyncOrder = false;
-  ISubscriber subscriber = redisHostConnection.GetSubscriber();
-  ```
+
+```csharp
+ConnectionMultiplexer redisHostConnection = ...;
+redisHostConnection.PreserveAsyncOrder = false;
+ISubscriber subscriber = redisHostConnection.GetSubscriber();
+```
 
 ## Zugehörige Muster und Anleitungen
 
@@ -934,4 +935,4 @@ Eventuell sind auch folgende Muster für Ihr Szenario interessant, wenn Sie in I
 - Seite [Transactions in Redis](https://github.com/StackExchange/StackExchange.Redis/blob/master/Docs/Transactions.md) (Transaktionen in Redis) im Repository zu StackExchange.Redis
 - Seite [Data Partitioning Guidance](http://msdn.microsoft.com/library/dn589795.aspx) (Anleitung zur Datenpartitionierung) auf der Microsoft-Website
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0810_2016-->

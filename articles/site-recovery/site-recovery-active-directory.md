@@ -28,7 +28,7 @@ In diesem Artikel wird erläutert, wie Sie eine Lösung für die Notfallwiederhe
 
 Es gibt zwei empfohlene Methoden auf Grundlage der Komplexität Ihrer Umgebung.
 
-### Option 1:
+### Option 1
 
 Wenn nur eine geringe Anzahl von Anwendungen und ein einzelner Domänencontroller vorhanden sind, und Sie ein Failover für den gesamten Standort ausführen möchten, empfiehlt es sich, den Domänencontroller mit Site Recovery zum sekundären Standort zu replizieren (dabei spielt es keine Rolle, ob Sie ein Failover zu Azure oder einem sekundären Standort ausführen). Der gleiche replizierte virtuelle Computer kann auch für ein Testfailover verwendet werden.
 
@@ -58,7 +58,7 @@ Aktivieren Sie den Schutz von Domänencontroller/DNS-VM in Site Recovery. Konfig
 
 ###Konfigurieren der Netzwerkeinstellungen virtueller Computer
 
-Konfigurieren Sie für den virtuellen Computer mit dem Domänencontroller bzw. DNS die Netzwerkeinstellungen in Site Recovery so, dass der virtuelle Computer nach einem Failover dem richtigen Netzwerk zugeordnet wird. Wenn Sie z. B. Hyper-V-VMs zu Azure replizieren, können Sie den virtuellen Computer in der VMM-Cloud oder Schutzgruppe auswählen und die Netzwerkeinstellungen wie im Folgenden gezeigt konfigurieren.
+Konfigurieren Sie für den virtuellen Computer mit dem Domänencontroller bzw. DNS die Netzwerkeinstellungen in Site Recovery so, dass der virtuelle Computer nach einem Failover dem richtigen Netzwerk zugeordnet wird. Wenn Sie also beispielsweise Hyper-V-VMs zu Azure replizieren, können Sie den virtuellen Computer in der VMM-Cloud oder in der Schutzgruppe auswählen und die Netzwerkeinstellungen wie folgt konfigurieren:
 
 ![VM-Netzwerkeinstellungen](./media/site-recovery-active-directory/VM-Network-Settings.png)
 
@@ -78,7 +78,7 @@ Dann [konfigurieren Sie den DNS-Server für das virtuelle Netzwerk neu](../activ
 
 ## Überlegungen zum Test-Failover
 
-Das Testfailover erfolgt in einem Netzwerk, das vom Produktionsnetzwerk isoliert ist, damit keine Auswirkungen auf Workloads in der Produktion auftreten.
+Das Testfailover erfolgt in einem Netzwerk, das vom Produktionsnetzwerk isoliert ist, damit keine Auswirkungen auf Produktionsworkloads auftreten.
 
 Die meisten Anwendungen sind auch auf einen funktionierenden Domänencontroller und DNS-Server angewiesen, sodass vor dem Failover der Anwendung im isolierten Netzwerk ein Domänencontroller für das Testfailover erstellt werden muss. Die einfachste Möglichkeit hierzu ist das Aktivieren des Schutzes auf dem virtuellen Computer mit dem Domänencontroller bzw. DNS mit Site Recovery. Anschließend muss das Testfailover dieses virtuellen Computer ausgeführt werden, ehe das Testfailover des Wiederherstellungsplans der Anwendung erfolgt. Gehen Sie hierzu wie folgt vor:
 
@@ -86,7 +86,7 @@ Die meisten Anwendungen sind auch auf einen funktionierenden Domänencontroller 
 2. Erstellen Sie ein isoliertes Netzwerk. Jedes in Azure erstellte virtuelle Netzwerk ist standardmäßig von anderen Netzwerken isoliert. Der IP-Adressbereich dieses Netzwerks sollte mit dem Ihres Produktionsnetzwerks identisch sein. Aktivieren Sie nicht die Standort-zu-Standort-Konnektivität in diesem Netzwerk.
 3. Stellen Sie eine im Netzwerk erstellte DNS-IP-Adresse als die IP-Adresse bereit, die der virtuelle DNS-Computer abrufen soll. Wenn Sie zu Azure replizieren, geben Sie die IP-Adresse für die VM, die beim Failover verwendet wird, in den VM-Eigenschaften in der Einstellung **Ziel-IP-Adresse** an. Wenn Sie zu einem anderen lokalen Standort replizieren und DHCP verwenden, befolgen Sie die Anweisungen zum [Einrichten von DNS und DHCP für das Testfailover](site-recovery-failover.md#prepare-dhcp).
 
->[AZURE.NOTE] Die IP-Adresse, die einem virtuellen Computer während eines Testfailovers zugeordnet wird, entspricht der IP-Adresse, die dieser bei einem geplanten oder ungeplanten Failover erhalten würde, sofern die IP-Adresse im Testfailover-Netzwerk verfügbar ist. Wenn dies nicht der Fall ist, empfängt der virtuelle Computer eine andere IP-Adresse, die im Testfailover-Netzwerk verfügbar ist.
+>[AZURE.NOTE] Die IP-Adresse, die einem virtuellen Computer während eines Testfailovers zugeordnet wird, entspricht der IP-Adresse, die dieser bei einem geplanten oder ungeplanten Failover erhalten würde, sofern die IP-Adresse im Testfailover-Netzwerk verfügbar ist. Andernfalls erhält der virtuelle Computer eine andere, im Testfailover-Netzwerk verfügbare IP-Adresse.
 
 4. Führen Sie auf dem virtuellen Computer mit dem Domänencontroller ein Testfailover im isolierten Netzwerk aus.
 5. Führen Sie ein Testfailover für den Anwendungswiederherstellungsplan aus.
@@ -105,7 +105,7 @@ Sie können einen neuen DNS-Server verwenden und alle erforderlichen Zonen erste
 	- Für die Zone müssen sichere und nicht sichere Updates möglich sein.
 	- Die Auflösung des virtuellen Computers mit dem Domänencontroller muss auf die IP-Adresse des virtuellen Computers mit DNS zeigen.
 
-2. Führen Sie den folgenden Befehl auf dem virtuellen Computer mit dem Domänencontroller aus:
+2. Führen Sie auf dem virtuellen Computer mit dem Domänencontroller den folgenden Befehl aus:
 
 	`nltest /dsregdns`
 
@@ -121,4 +121,4 @@ Sie können einen neuen DNS-Server verwenden und alle erforderlichen Zonen erste
 
 Lesen Sie [Welche Workloads können mit Azure Site Recovery geschützt werden?](../site-recovery/site-recovery-workload.md), um weitere Informationen über den Schutz von Unternehmensworkloads mit Azure Site Recovery zu erhalten.
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0810_2016-->

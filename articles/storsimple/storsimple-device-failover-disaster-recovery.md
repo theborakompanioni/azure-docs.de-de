@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="08/03/2016"
+   ms.date="08/10/2016"
    ms.author="alkohli" />
 
 # Ausführen eines Failovers und einer Notfallwiederherstellung für das StorSimple-Gerät
@@ -33,6 +33,16 @@ Die Anweisungen in diesem Tutorial gelten für physische und virtuelle StorSimpl
 
 Bei einer Notfallwiederherstellung funktioniert das primäre Gerät nicht mehr. In diesem Fall können Sie die dem ausgefallenen Gerät zugeordneten Clouddaten auf ein anderes Gerät verschieben und dabei das primäre Gerät als *Quelle* und ein anderes Gerät als *Ziel* angeben. Sie können einen oder mehrere Volumecontainer für das Migrieren auf das Zielgerät auswählen. Dieser Vorgang wird als *Failover* bezeichnet. Während des Failovers wechseln die Volumecontainer vom Quellgerät den Eigentümer und werden auf das Zielgerät übertragen.
 
+Nach einer Notfallwiederherstellung werden die Daten in der Regel mithilfe der letzten Sicherung auf dem Zielgerät wiederhergestellt. Falls allerdings für das gleiche Volume mehrere Sicherungsrichtlinien vorhanden sind, wird die Sicherungsrichtlinie mit der größten Anzahl von Volumes ausgewählt, und die Daten werden auf dem Zielgerät auf der Grundlage der neuesten Sicherung für diese Richtlinie wiederhergestellt.
+
+Ein Beispiel: Angenommen, es sind zwei Sicherungsrichtlinien – *defaultPol* (Standardrichtlinie) und *customPol* (benutzerdefinierte Richtlinie) – mit folgenden Details vorhanden:
+
+- *defaultPol* : ein Volume (*vol1*). Wird täglich ab 22:30 Uhr ausgeführt.
+- *customPol* : vier Volumes (*vol1*, *vol2*, *vol3*, *vol4*). Wird täglich ab 22:00 Uhr ausgeführt.
+
+In diesem Fall wird *customPol* verwendet, da die Richtlinie mehr Volumes umfasst und Absturzkonsistenz Priorität hat. Die Daten werden auf der Grundlage der neuesten Sicherung für diese Richtlinie wiederhergestellt.
+
+
 ## Überlegungen zum Gerätefailover
 
 Bei einem Notfall können Sie als Failoverziel für Ihr StorSimple-Gerät Folgendes auswählen:
@@ -47,17 +57,14 @@ Bedenken Sie bei jedem Gerätefailover Folgendes:
 - Die verfügbaren Zielgeräte für die Notfallwiederherstellung sind Geräte, die über ausreichenden Speicherplatz zur Aufnahme der ausgewählten Volumecontainer verfügen.
 - Geräte, die mit dem Dienst verbunden sind, aber das Speicherplatzkriterium nicht erfüllen, stehen als Zielgeräte nicht zur Verfügung.
 - Nach einer Notfallwiederherstellung kann für eine bestimmte Dauer die Datenzugriffsleistung erheblich beeinträchtigt sein, da das Gerät auf die Daten aus der Cloud zugreifen und sie lokal speichern muss.
-- Wenn nach einer Notfallwiederherstellung ein Failover zwischen Geräten durchgeführt wird, werden die Momentaufnahmen für die Wiederherstellung der Daten folgendermaßen ausgewählt:
-	1.  	Ermitteln Sie die Sicherungsrichtlinie mit der größten Anzahl von Volumes.
-	2.  	Wählen Sie die letzte als funktionierend bekannte Cloudmomentaufnahme für diese Sicherungsrichtlinie aus, und verwenden Sie diese, um die Daten auf dem Wiederherstellungsgerät wiederherzustellen.
 
 #### Gerätefailover in allen Softwareversionen
 
-Der StorSimple Manager-Dienst verfügt in einer Bereitstellung möglicherweise über mehrere physische und virtuelle Geräte, auf denen unterschiedliche Softwareversionen ausgeführt werden. Je nach Version der Software können sich die Volumetypen auf den Geräten auch unterscheiden. So kann beispielsweise ein Gerät mit Update 2 oder höher lokal fixierte und mehrstufige Volumes haben (mit Archivierung als Teilmenge der mehrstufigen Konfiguration). Ein Gerät ohne Update 2 kann hingegen über mehrstufige und Archivierungsvolumes verfügen.
+Der StorSimple Manager-Dienst verfügt in einer Bereitstellung möglicherweise über mehrere physische und virtuelle Geräte, auf denen unterschiedliche Softwareversionen ausgeführt werden. Je nach Version der Software können sich die Volumetypen auf den Geräten auch unterscheiden. So kann beispielsweise ein Gerät mit Update 2 oder höher über lokal fixierte und mehrstufige Volumes verfügen (mit Archivierung als Teilmenge der mehrstufigen Konfiguration). Ein Gerät ohne Update 2 kann hingegen über mehrstufige und Archivierungsvolumes verfügen.
 
 Bestimmen Sie anhand der folgenden Tabelle, ob ein Failover zu einem anderen Gerät mit anderer Softwareversion möglich ist und wie sich die Volumetypen während der Notfallwiederherstellung verhalten.
 
-| Failover von | Für physische Geräte zulässig | Für virtuelle Geräte zulässig |
+| Failoverquelle | Für physische Geräte zulässig | Für virtuelle Geräte zulässig |
 |----------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------|
 | Update 2 zu Versionen vor Update 1 (Release, 0.1, 0.2, 0.3) | Nein | Nein |
 | Update 2 zu Update 1 (1, 1.1, 1.2) | Ja. <br></br>Bei lokal fixierten oder mehrstufigen Volumes oder einer Kombination aus beiden wird immer ein Failover der Volumes als mehrstufig ausgeführt. | Ja.<br></br>Bei lokal fixierten Volumes wird ein Failover als mehrstufiges Volume ausgeführt. |
@@ -90,18 +97,15 @@ Führen Sie die folgenden Schritte aus, um Ihr Gerät auf einem physischen Zielg
 
 1. Klicken Sie auf der Seite **Geräte** auf **Failover**.
 
-1. Führen Sie im angezeigten Assistenten unter **Choose volume container to failover** folgende Schritte durch:
+1. Führen Sie im angezeigten Assistenten unter **Choose volume container to fail over** (Volumecontainer für Failover auswählen) folgende Schritte durch:
 
-	1. Wählen Sie in der Liste der Volumecontainer die Volumecontainer aus, für die ein Failover durchgeführt werden soll.
-	
-
-		>[AZURE.NOTE] **Nur die Volumecontainer mit zugeordneten Cloudmomentaufnahmen und Offlinevolumes werden angezeigt.** <br></br>
+	1. Wählen Sie in der Liste der Volumecontainer die Volumecontainer aus, für die ein Failover durchgeführt werden soll. **Nur die Volumecontainer mit zugeordneten Cloudmomentaufnahmen und Offlinevolumes werden angezeigt.**
 
 	1. Wählen Sie unter **Choose a target device for the volumes in the selected containers** ein Zielgerät aus der Dropdownliste der verfügbaren Geräte aus. Nur die Geräte, die über die verfügbare Kapazität verfügen, werden in der Dropdownliste angezeigt.
 
 	1. Überprüfen Sie abschließend die Failover-Einstellungen unter **Failover bestätigen**. Klicken Sie auf das Häkchensymbol ![Häkchensymbol](./media/storsimple-device-failover-disaster-recovery/IC740895.png).
 
-1. Ein Failoverauftrag wird erstellt, der über die Seite **Aufträge** überwacht werden kann. Enthält der Volumecontainer, für den Sie ein Failover durchgeführt haben, lokale Volumes, werden einzelne Wiederherstellungsaufträge für jedes lokale Volume (nicht für mehrstufige Volumes) im Container angezeigt. Diese Wiederherstellungsaufträge können einige Zeit in Anspruch nehmen. Der Failoverauftrag wird wahrscheinlich vorher abgeschlossen. Beachten Sie, dass diese Volumes erst nach Abschluss der Wiederherstellungsaufträge über lokale Garantien verfügen. Wechseln Sie nach Abschluss des Failovers zur Seite **Geräte**.
+1. Ein Failoverauftrag wird erstellt. Dieser kann über die Seite **Aufträge** überwacht werden. Enthält der Volumecontainer, für den Sie ein Failover durchgeführt haben, lokale Volumes, werden einzelne Wiederherstellungsaufträge für jedes lokale Volume (nicht für mehrstufige Volumes) im Container angezeigt. Diese Wiederherstellungsaufträge können einige Zeit in Anspruch nehmen. Der Failoverauftrag wird wahrscheinlich vorher abgeschlossen. Beachten Sie, dass diese Volumes erst nach Abschluss der Wiederherstellungsaufträge über lokale Garantien verfügen. Wechseln Sie nach Abschluss des Failovers zur Seite **Geräte**.
 
 	1. Wählen Sie das Gerät aus, das Sie als Zielgerät für den Failovervorgang verwendet haben.
 
@@ -149,9 +153,9 @@ Führen Sie die folgenden Schritte aus, um Ihr Gerät auf einem virtuellen StorS
 													
 	a. Wählen Sie in der Liste der Volumecontainer die Volumecontainer aus, für die ein Failover durchgeführt werden soll.
 
-	>[AZURE.NOTE] **Nur die Volumecontainer mit zugeordneten Cloudmomentaufnahmen und Offlinevolumes werden angezeigt.**
+	**Nur die Volumecontainer mit zugeordneten Cloudmomentaufnahmen und Offlinevolumes werden angezeigt.**
 
-	b. Wählen Sie unter **Choose a target device for the volumes in the selected containers** das virtuelle StorSimple-Gerät aus der Dropdownliste der verfügbaren Geräte aus. Nur die Geräte, die über ausreichende Kapazität verfügen, werden in der Dropdownliste angezeigt.
+	b. Wählen Sie unter **Choose a target device for the volumes in the selected containers** das virtuelle StorSimple-Gerät aus der Dropdownliste der verfügbaren Geräte aus. **Nur die Geräte, die über ausreichende Kapazität verfügen, werden in der Dropdownliste angezeigt.**
 	
 
 1. Überprüfen Sie abschließend die Failover-Einstellungen unter **Failover bestätigen**. Klicken Sie auf das Häkchensymbol ![Häkchensymbol](./media/storsimple-device-failover-disaster-recovery/IC740895.png).
@@ -180,4 +184,4 @@ Wenn StorSimple-Geräte direkt vor einem Notfall registriert wurden, müssen die
 - Weitere Informationen zum Verwenden des StorSimple Manager-Diensts finden Sie unter [Verwalten Ihres StorSimple-Geräts mithilfe des StorSimple Manager-Diensts](storsimple-manager-service-administration.md).
  
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0810_2016-->

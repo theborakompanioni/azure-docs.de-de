@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/12/2016" 
+	ms.date="08/04/2016" 
 	ms.author="billmath"/>
 
 # Konfigurieren von Azure Multi-Factor Authentication
@@ -27,7 +27,7 @@ Melden Sie sich als Administrator am Azure-Portal an und wählen Sie die Option 
 Melden Sie sich als Administrator am Azure-Portal an und wählen Sie die Option „Active Directory“, um über die Seite mit den Diensteinstellungen für die MFA auf das MFA-Verwaltungsportal zuzugreifen. Klicken Sie auf Ihr Verzeichnis und anschließend auf die Registerkarte „**Konfigurieren**“. Klicken Sie im Abschnitt „Multi-Factor Authentication“ auf „**Diensteinstellungen verwalten**“. Klicken Sie am unteren Rand der Seite mit den Einstellungen für den MFA-Dienst auf den Link „**Portal aufrufen**“.
 
 
-Funktion| Beschreibung| Inhalt
+Feature| Beschreibung| Inhalt
 :------------- | :------------- | :------------- | 
 [Betrugswarnung](#fraud-alert)|Die Betrugswarnung kann so konfiguriert und eingerichtet werden, dass Ihre Benutzer betrügerische Versuche, auf ihre Ressourcen zuzugreifen, melden können.|Einrichtung, Konfiguration und Betrugsberichte
 [Einmalumgehung](#one-time-bypass) |Mit einer Einmalumgehung kann sich ein Benutzer ein einziges Mal authentifizieren, indem er die mehrstufige Authentifizierung "umgeht".|Einrichten und Konfigurieren einer Einmalumgehung
@@ -319,7 +319,7 @@ Darüber hinaus können Benutzer App-Kennwörter auch später erstellen, durch �
 
 ![App-Kennwörter](./media/multi-factor-authentication-whats-next/app2.png)
 
-### Erstellen von App-Kennwörtern ohne Office 365- oder Azure-Abonnement
+### So erstellen Sie App-Kennwörter ohne Office 365- oder Azure-Abonnement
 --------------------------------------------------------------------------------
 1. Melden Sie sich an bei [https://myapps.microsoft.com](https://myapps.microsoft.com).
 2. Wählen Sie oben das Profil aus.
@@ -376,4 +376,4 @@ Methode|Beschreibung
 9. Klicken Sie auf "Speichern".
 10. Klicken Sie auf "Schließen".
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0810_2016-->

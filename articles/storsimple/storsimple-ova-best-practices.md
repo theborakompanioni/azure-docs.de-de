@@ -12,22 +12,22 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="07/08/2016"
+   ms.date="08/09/2016"
    ms.author="alkohli" />
 
 # StorSimple Virtual Array – Bewährte Methoden
 
 ## Übersicht
 
-Bei Microsoft Azure StorSimple Virtual Array handelt es sich um eine integrierte Speicherlösung, mit der Speicheraufgaben zwischen einem lokalen virtuellen Gerät, das in einem Hypervisor ausgeführt wird, und dem Microsoft Azure-Cloudspeicher verwaltet werden. Das StorSimple Virtual Array ist eine effiziente und kostengünstige Alternative zum physischen Array der 8000er Serie. Das virtuelle Array kann unter Ihrer vorhandenen Hypervisor-Infrastruktur ausgeführt werden, unterstützt sowohl das iSCSI- als auch das SMB-Protokoll und ist besonders gut für Szenarien mit weit entfernten Büros oder Büros in Zweigniederlassungen geeignet. Weitere Informationen zu StorSimple-Lösungen finden Sie unter [Microsoft Azure StorSimple Overview](https://www.microsoft.com/de-DE/server-cloud/products/storsimple/overview.aspx) (Übersicht über Microsoft Azure StorSimple).
+Bei Microsoft Azure StorSimple Virtual Array handelt es sich um eine integrierte Speicherlösung, mit der Speicheraufgaben zwischen einem lokalen virtuellen Gerät, das in einem Hypervisor ausgeführt wird, und dem Microsoft Azure-Cloudspeicher verwaltet werden. Das StorSimple Virtual Array ist eine effiziente und kostengünstige Alternative zum physischen Array der 8000er Serie. Das virtuelle Array kann unter Ihrer vorhandenen Hypervisor-Infrastruktur ausgeführt werden, unterstützt sowohl das iSCSI- als auch das SMB-Protokoll und ist gut für Szenarien mit weit entfernten Büros oder Büros in Zweigniederlassungen geeignet. Weitere Informationen zu StorSimple-Lösungen finden Sie unter [Microsoft Azure StorSimple Overview](https://www.microsoft.com/de-DE/server-cloud/products/storsimple/overview.aspx) (Übersicht über Microsoft Azure StorSimple).
 
-In diesem Artikel werden die bewährten Methoden beschrieben, die während der Ersteinrichtung, Bereitstellung und Verwaltung des StorSimple Virtual Array implementiert werden. Diese bewährten Methoden umfassen überprüfte Richtlinien für die Einrichtung und Verwaltung Ihres virtuellen Arrays. Dieser Artikel richtet sich an IT-Administratoren, die für das Bereitstellen und Verwalten der virtuellen Arrays in den Datencentern verantwortlich sind.
+In diesem Artikel werden die bewährten Methoden beschrieben, die während der Ersteinrichtung, Bereitstellung und Verwaltung des StorSimple Virtual Array implementiert werden. Diese bewährten Methoden umfassen überprüfte Richtlinien für die Einrichtung und Verwaltung Ihres virtuellen Arrays. Dieser Artikel richtet sich an IT-Administratoren, die die virtuellen Arrays in den Datencentern bereitstellen und verwalten.
 
 Es ist ratsam, die bewährten Methoden regelmäßig zu überprüfen. So können Sie sicherstellen, dass Ihr Gerät noch kompatibel ist, wenn Änderungen am Setup oder am Vorgangsfluss vorgenommen werden. Falls beim Implementieren dieser bewährten Methoden auf dem Array Probleme auftreten, können Sie den [Microsoft-Support](storsimple-contact-microsoft-support.md) um Hilfe bitten.
 
 ## Bewährte Methoden für die Konfiguration 
 
-Diese bewährten Methoden decken die Richtlinien ab, die bei der Ersteinrichtung und der Bereitstellung der virtuellen Arrays befolgt werden müssen. Dazu gehören bewährte Methoden für die Bereitstellung des virtuellen Computers, Gruppenrichtlinieneinstellungen, Größenauslegung, Netzwerkeinrichtung, Speicherkontokonfiguration und Erstellung von Freigaben und Volumes für das virtuelle Array.
+Diese bewährten Methoden decken die Richtlinien ab, die bei der Ersteinrichtung und der Bereitstellung der virtuellen Arrays befolgt werden müssen. Hierzu gehören auch die bewährten Methoden für die Bereitstellung des virtuellen Computers, Gruppenrichtlinieneinstellungen, Größenauslegung, Netzwerkeinrichtung, Speicherkontokonfiguration und Erstellung von Freigaben und Volumes für das virtuelle Array.
 
 ### Bereitstellung 
 
@@ -40,16 +40,16 @@ Implementieren Sie die folgenden bewährten Methoden, wenn Sie das virtuelle Arr
 |------------------------|------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------|
 | **Typ des virtuellen Computers** | VM der **2. Generation** für die Verwendung mit Windows Server 2012 oder höher und ein *VHDX*-Image. <br></br> VM der **1. Generation** für die Verwendung mit Windows Server 2008 oder höher und ein *VHD*-Image. | Setzen Sie einen virtuellen Computer der Version 8 bis 11 ein, wenn Sie das *VMDK*-Image verwenden. |
 | **Speichertyp** | Konfigurieren Sie dies als **statischen Speicher**. <br></br> Verwenden Sie nicht die Option **Dynamischer Arbeitsspeicher**. | |
-| **Datenträger für Daten** | Führen Sie die Bereitstellung als **Dynamisch erweiterbar** durch.<br></br> **Feste Größe** ist mit einer langen Dauer verbunden. <br></br> Verwenden Sie nicht die Option **Differenzierend**. | Verwenden Sie die Option **Thin Provision** (Schlanke Speicherzuweisung). |
+| **Datenträger für Daten** | Führen Sie die Bereitstellung als **Dynamisch erweiterbar** durch.<br></br> **Feste Größe** ist mit einem größeren Zeitaufwand verbunden. <br></br> Verwenden Sie nicht die Option **Differenzierend**. | Verwenden Sie die Option **Thin Provision** (Schlanke Speicherzuweisung). |
 | **Datenträgeränderung** | Eine Erweiterung oder Verkleinerung ist nicht zulässig. Wenn ein Versuch dieser Art gestartet wird, gehen alle lokalen Daten auf dem Gerät verloren. | Eine Erweiterung oder Verkleinerung ist nicht zulässig. Wenn ein Versuch dieser Art gestartet wird, gehen alle lokalen Daten auf dem Gerät verloren. |
 
 ### Festlegen der Größe
 
-Beim Festlegen der Größe für das StorSimple Virtual Array müssen Sie die folgenden Punkte berücksichtigen:
+Berücksichtigen Sie beim Festlegen der Größe für das StorSimple Virtual Array die folgenden Punkte:
 
-- Lokale Reservierung für Volumes oder Freigaben: Ungefähr 12% des Speicherplatzes auf der lokalen Ebene sind für jedes bereitgestellte mehrstufige Volume bzw. jede mehrstufige Freigabe reserviert. Ca. 10% des Speicherplatzes sind zudem für ein lokales Volume des Dateisystems reserviert.
+- Lokale Reservierung für Volumes oder Freigaben: Ungefähr 12% des Speicherplatzes sind auf der lokalen Ebene für jedes bereitgestellte mehrstufige Volume oder eine Freigabe reserviert. Ungefähr 10% des Speicherplatzes sind außerdem für ein lokales Volume für das Dateisystem reserviert.
 - Mehraufwand für Momentaufnahmen: Ungefähr 15% des Speicherplatzes auf der lokalen Ebene sind für Momentaufnahmen reserviert.
-- Erforderliche Wiederherstellungen: Beim Festlegen der Größe sollte der Speicherplatz berücksichtigt werden, der für die Wiederherstellung erforderlich ist, falls die Wiederherstellung als neuer Vorgang durchgeführt wird. Beachten Sie, dass die Wiederherstellung auf einer Freigabe oder einem Volume mit mindestens gleicher Größe erfolgt.
+- Erforderliche Wiederherstellungen: Beim Festlegen der Größe sollte der Speicherplatz berücksichtigt werden, der für die Wiederherstellung erforderlich ist, falls die Wiederherstellung als neuer Vorgang durchgeführt wird. Die Wiederherstellung erfolgt auf einer Freigabe oder einem Volume mit mindestens gleicher Größe.
 - Rechnen Sie einen Puffer für eine unerwartete Zunahme der Größe ein.
 
 Basierend auf den oben genannten Punkten lassen sich die Anforderungen der Größenfestlegung mit der folgenden Gleichung ausdrücken:
@@ -71,7 +71,7 @@ Sie möchten auf Ihrem virtuellen Array Folgendes durchführen können:
 
 Wir berechnen für die obigen Volumes oder Freigaben die Speicherplatzanforderungen auf der lokalen Ebene.
 
-Erstens: Für jedes mehrstufige Volume bzw. jede Freigabe entspricht die lokale Reservierung 12% der Volume-/Freigabegröße. Für das lokale Volume bzw. die Freigabe entspricht die lokale Reservierung 10% der Volume-/Freigabegröße. In diesem Beispiel benötigen Sie:
+Erstens: Für jedes mehrstufige Volume bzw. jede Freigabe entspricht die lokale Reservierung 12% der Volume-/Freigabegröße. Für das lokale Volume bzw. die Freigabe entspricht die lokale Reservierung 10% der Volume-/Freigabegröße. Für dieses Beispiel benötigen Sie Folgendes:
 
 - Lokale Reservierung von 240 GB (für ein mehrstufiges Volume bzw. eine Freigabe mit 2 TB)
 - Lokale Reservierung von 120 GB (für ein mehrstufiges Volume bzw. eine Freigabe mit 1 TB)
@@ -81,11 +81,11 @@ Gesamter Speicherplatz für die lokale Ebene bis zu diesem Punkt: 240 GB + 120 G
 
 Zweitens: Wir benötigen mindestens so viel Speicherplatz auf der lokalen Ebene wie für die größte Einzelreservierung. Diese zusätzliche Menge wird verwendet, falls Sie die Wiederherstellung aus einer Cloudmomentaufnahme durchführen müssen. In diesem Beispiel beträgt die größte lokale Reservierung 330 GB (einschließlich der Reservierung für das Dateisystem). Diesen Betrag müssen Sie zu den 660 GB addieren: 660 GB + 330 GB = 990 GB. Wenn wir danach weitere Wiederherstellungen durchführen, können wir jeweils den Speicherplatz aus dem vorherigen Wiederherstellungsvorgang bereitstellen.
 
-Drittens: Wir benötigen 15% des bisherigen lokalen Gesamtspeicherplatzes, um lokale Momentaufnahmen zu speichern, sodass nur 85% davon verfügbar sind. In diesem Beispiel gilt daher: 990 GB = 0,85*bereitgestellte TB für Datenträger für Daten. Für den bereitgestellten Datenträger für Daten ergibt sich also: (990*(1/0,85)) = 1.164 GB = 1,16 TB ~ 1,25 TB (Rundung auf das nächste Quartil).
+Drittens: Wir benötigen 15% des bisherigen lokalen Gesamtspeicherplatzes, um lokale Momentaufnahmen zu speichern, sodass nur 85% davon verfügbar sind. In diesem Beispiel gilt daher: 990 GB = 0,85 · bereitgestellte TB für Datenträger für Daten. Für den bereitgestellten Datenträger für Daten ergibt sich also: (990 · (1/0,85)) = 1164 GB = 1,16 TB ~ 1,25 TB (Rundung auf das nächste Quartil).
 
 Wenn Sie eine unerwartete Zunahme und neue Wiederherstellungen berücksichtigen, sollten Sie also einen lokalen Datenträger mit ca. 1,25 bis 1,5 TB bereitstellen.
 
-> [AZURE.NOTE] Außerdem wird empfohlen, für den lokalen Datenträger die Thin-Bereitstellung (schlanke Speicherzuweisung) zu wählen. Der Grund ist, dass der Wiederherstellungsspeicherplatz nur benötigt wird, wenn Sie Daten wiederherstellen möchten, die älter als fünf Tage sind. Bei der Wiederherstellung auf Elementebene können Sie die Daten für die letzten fünf Tage wiederherstellen, ohne dass der zusätzliche Speicherplatz für die Wiederherstellung benötigt wird.
+> [AZURE.NOTE] Außerdem wird empfohlen, für den lokalen Datenträger die Thin-Bereitstellung (schlanke Speicherzuweisung) zu wählen. Der Grund für diese Empfehlung ist, dass der Wiederherstellungsspeicherplatz nur benötigt wird, wenn Sie Daten wiederherstellen möchten, die älter als fünf Tage sind. Bei der Wiederherstellung auf Elementebene können Sie die Daten für die letzten fünf Tage wiederherstellen, ohne dass der zusätzliche Speicherplatz für die Wiederherstellung benötigt wird.
 
 #### Beispiel 2: 
 Sie möchten auf Ihrem virtuellen Array Folgendes durchführen können:
@@ -102,7 +102,7 @@ Gesamter Speicherplatz für die lokale Ebene: 240 GB + 330 GB = 570 GB
 
 Der mindestens erforderliche Speicherplatz für die Wiederherstellung beträgt 330 GB.
 
-15% des gesamten Datenträgers werden verwendet, um Momentaufnahmen zu speichern, sodass nur 85% verfügbar sind. Die Größe des Datenträgers beträgt also: (900 * (1/0,85)) = 1,06 TB ~ 1,25 TB (Rundung auf das nächste Quartil)
+15% des gesamten Datenträgers werden zum Speichern von Momentaufnahmen verwendet, sodass nur 85% verfügbar sind. Die Größe des Datenträgers beträgt also: (900 · (1/0,85)) = 1,06 TB ~ 1,25 TB (Rundung auf das nächste Quartil)
 
 Wenn Sie eine unerwartete Zunahme berücksichtigen, sollten Sie also einen lokalen Datenträger mit einer Größe von 1,25 bis 1,5 TB bereitstellen.
 
@@ -136,9 +136,9 @@ Für die Bereitstellung des virtuellen Arrays empfehlen wir Ihnen, diese bewähr
 
 -   Bei geplanter Bereitstellung des Geräts als iSCSI-Server:
 	-   Es wird empfohlen, die Option **IP-Adresse automatisch abrufen** (DHCP) zu deaktivieren.
-	-   Konfigurieren Sie statische IP-Adressen. Sie müssen auch einen primären und einen sekundären DNS-Server konfigurieren.
+	-   Konfigurieren Sie statische IP-Adressen. Sie müssen einen primären und einen sekundären DNS-Server konfigurieren.
 
-	-   Wenn Sie auf dem virtuellen Array mehrere Netzwerkschnittstellen definieren, sollten Sie beachten, dass nur die erste Netzwerkschnittstelle (standardmäßig **Ethernet**) die Cloud erreichen kann. Zum Steuern der Art des Datenverkehrs können Sie mehrere virtuelle Netzwerkschnittstellen auf dem virtuellen Array erstellen (als iSCSI-Server konfiguriert) und mit unterschiedlichen Subnetzen verbinden.
+	-   Wenn Sie auf dem virtuellen Array mehrere Netzwerkschnittstellen definieren, kann nur die erste Netzwerkschnittstelle (standardmäßig die **Ethernet**-Schnittstelle) die Cloud erreichen. Zum Steuern der Art des Datenverkehrs können Sie mehrere virtuelle Netzwerkschnittstellen auf dem virtuellen Array erstellen (als iSCSI-Server konfiguriert) und mit unterschiedlichen Subnetzen verbinden.
 
 -   Um nur die (vom virtuellen Array verwendete) Cloudbandbreite zu drosseln, konfigurieren Sie die Drosselung auf dem Router oder in der Firewall. Wenn Sie die Drosselung im Hypervisor definieren, werden alle Protokolle gedrosselt, z.B. auch iSCSI und SMB, anstatt nur die Cloudbandbreite.
 
@@ -170,15 +170,15 @@ Für Ihr virtuelles Array können Sie Freigaben bereitstellen, wenn es als Datei
 
 Beachten Sie die folgenden bewährten Methoden, wenn Sie Freigaben oder Volumes auf Ihrem virtuellen Gerät bereitstellen:
 
--   Die Dateigrößen relativ zur bereitgestellten Größe einer mehrstufigen Freigabe können sich auf die Leistung der Anordnung in Ebenen auswirken. Das Arbeiten mit großen Dateien kann zu einer langsamen Anordnung führen. Bei der Arbeit mit großen Dateien sollte die größte Datei nach Möglichkeit weniger als 3% der Größe der Dateifreigabe umfassen.
+-   Die Dateigrößen relativ zur bereitgestellten Größe einer mehrstufigen Freigabe können sich auf die Leistung der Anordnung in Ebenen auswirken. Das Arbeiten mit großen Dateien kann zu einer langsamen Anordnung führen. Bei der Arbeit mit großen Dateien sollte die größte Datei nach Möglichkeit kleiner als 3 % der Größe der Dateifreigabe sein.
 
 -   Im virtuellen Array können maximal 16 Volumes/Freigaben erstellt werden. Bei lokaler Bereitstellung kann sich die Größe der Volumes bzw. Freigaben zwischen 50 GB und 2 TB bewegen. Wenn mehrere Stufen verwendet werden, müssen die Größe der Volumes bzw. Freigaben zwischen 500 GB und 20 TB liegen.
 
--   Rechnen Sie beim Erstellen eines Volumes den erwarteten Datenverbrauch und das zukünftige Wachstum ein. Beachten Sie, dass das Volume später zwar nicht erweitert werden kann, aber dass Sie es jederzeit auf einem größeren Volume wiederherstellen können.
+-   Rechnen Sie beim Erstellen eines Volumes den erwarteten Datenverbrauch und das zukünftige Wachstum ein. Das Volume kann später zwar nicht erweitert werden, aber Sie können jederzeit die Wiederherstellung auf einem größeren Volume durchführen.
 
 -   Nach der Erstellung des Volumes können Sie die Größe des Volumes unter StorSimple nicht mehr verringern.
    
--   Beachten Sie beim Schreiben auf ein mehrstufiges Volume unter StorSimple, dass eine E/A-Drosselung durchgeführt wird, wenn die Volumedaten einen bestimmten Schwellenwert erreichen (relativ zum lokalen Speicherplatz, der für das Volume reserviert ist). Wenn weiter auf dieses Volume geschrieben wird, wird der E/A-Vorgang erheblich verlangsamt. Es ist zwar möglich, über die bereitgestellte Kapazität hinaus auf ein mehrstufiges Volume zu schreiben (es wird nicht aktiv verhindert, dass der Benutzer das Schreiben über die Kapazität hinaus durchführt), aber es wird eine Warnungsbenachrichtigung mit dem Hinweis angezeigt, dass die abonnierte Menge überschritten ist. Wenn die Warnung angezeigt wird, sollten Sie unbedingt Korrekturmaßnahmen ergreifen, z.B. das Löschen der Volumedaten oder das Wiederherstellen des Volumes auf einem größeren Volume (Volumeerweiterung wird derzeit nicht unterstützt).
+-   Beim Schreiben auf ein mehrstufiges Volume unter StorSimple wird eine E/A-Drosselung durchgeführt, wenn die Volumedaten einen bestimmten Schwellenwert erreichen (relativ zum lokalen Speicherplatz, der für das Volume reserviert ist). Wenn weiter auf dieses Volume geschrieben wird, wird der E/A-Vorgang erheblich verlangsamt. Es ist zwar möglich, über die bereitgestellte Kapazität hinaus auf ein mehrstufiges Volume zu schreiben (es wird nicht aktiv verhindert, dass der Benutzer das Schreiben über die Kapazität hinaus durchführt), aber es wird eine Warnungsbenachrichtigung mit dem Hinweis angezeigt, dass die abonnierte Menge überschritten ist. Wenn die Warnung angezeigt wird, sollten Sie unbedingt Korrekturmaßnahmen ergreifen, z.B. das Löschen der Volumedaten oder das Wiederherstellen des Volumes auf einem größeren Volume (Volumeerweiterung wird derzeit nicht unterstützt).
 
 -   Für Anwendungsfälle der Notfallwiederherstellung gilt Folgendes: Da sowohl die Anzahl von zulässigen Freigaben/Volumes als auch die maximale Anzahl von Freigaben/Volumes, die parallel verarbeitet werden können, 16 beträgt, wirkt sich die Anzahl von Freigaben/Volumes nicht auf RPO und RTOs aus.
 
@@ -190,7 +190,6 @@ Es wird empfohlen, beim Konfigurieren von StorSimple-Volumes bzw. -Freigaben die
 
 -   Identifizieren Sie den Volumetyp basierend auf den Workloads, die Sie bereitstellen möchten, bevor Sie ein Volume erstellen. Verwenden Sie lokale Volumes für Workloads, für die lokale Garantien für Daten (auch während eines Cloudausfalls) und geringe Cloudlatenzen erforderlich sind. Nachdem Sie auf Ihrem virtuellen Array ein Volume erstellt haben, können Sie den Volumetyp nicht von lokal in mehrstufig bzw. umgekehrt ändern. Erstellen Sie beispielsweise lokale Volumes, wenn Sie SQL-Workloads oder Workloads mit Hosting von virtuellen Computern (VMs) bereitstellen. Verwenden Sie mehrstufige Volumes für Dateifreigabe-Workloads.
 
-
 -   Aktivieren Sie die Option für weniger häufig verwendete Archivdaten, wenn Sie mit großen Dateien arbeiten. Wenn diese Option aktiviert ist, wird eine größere Deduplizierungssegmentgröße von 512 KB verwendet, um die Datenübertragung in die Cloud zu beschleunigen.
 
 #### Volumeformat
@@ -201,7 +200,7 @@ Nachdem Sie auf Ihrem iSCSI-Server StorSimple-Volumes erstellt haben, müssen Si
 
 -   Verwenden Sie beim Formatieren eines StorSimple-Volumes für die Zuordnungseinheit (AUS) eine Größe von 64 KB (Standard ist 4 KB). Die Zuordnungseinheit mit einer Größe von 64 KB basiert auf Tests, die intern für häufige StorSimple-Workloads und für andere Workloads durchgeführt wurden.
 
--   Verwenden Sie für ein StorSimple Virtual Array, das als iSCSI-Server konfiguriert ist, keine übergreifenden Volumes oder dynamischen Datenträger, da diese von StorSimple nicht unterstützt werden.
+-   Verwenden Sie für ein StorSimple Virtual Array, das als iSCSI-Server konfiguriert ist, keine übergreifenden Volumes oder dynamischen Datenträger, da diese Volumes oder Datenträger von StorSimple nicht unterstützt werden.
 
 #### Zugriff auf Freigaben
 
@@ -219,7 +218,7 @@ Nutzen Sie die folgenden bewährten Methoden, wenn Sie ACRs für StorSimple-Volu
 
 -   Ordnen Sie einem Volume immer mindestens einen ACR zu.
 
--   Mehrere ACRs sollten nur in einer Clusterumgebung definiert werden.
+-   Definieren Sie mehrere ACRs nur in einer Clusterumgebung.
 
 -   Stellen Sie beim Zuweisen von mehr als einem ACR zu einem Volume sicher, dass das Volume nicht so verfügbar gemacht wird, dass darauf gleichzeitig mit mehr als einem nicht gruppierten Host zugegriffen werden kann. Wenn Sie einem Volume mehrere ACRs zugewiesen haben, wird eine Warnmeldung angezeigt, damit Sie die Konfiguration überprüfen können.
 
@@ -238,7 +237,7 @@ Das StorSimple Virtual Array verfügt über Sicherheits- und Verschlüsselungsfe
 
 ## Bewährte Methoden für den Betrieb
 
-Die bewährten Methoden für den Betrieb sind Richtlinien, die bei der täglichen Verwaltung bzw. beim Betrieb des virtuellen Arrays eingehalten werden sollten. Es geht um bestimmte Verwaltungsaufgaben, z.B. das Erstellen von Sicherungen, Wiederherstellen aus einem Sicherungssatz, Durchführen eines Failovers, Deaktivieren und Löschen des Arrays, Überwachen der Systemnutzung und -integrität und Ausführen von Virenscans auf dem virtuellen Array.
+Die bewährten Methoden für den Betrieb sind Richtlinien, die bei der täglichen Verwaltung bzw. beim Betrieb des virtuellen Arrays eingehalten werden sollten. Hierbei geht es um bestimmte Verwaltungsaufgaben, z.B. das Erstellen von Sicherungen, Wiederherstellen aus einem Sicherungssatz, Durchführen eines Failovers, Deaktivieren und Löschen des Arrays, Überwachen der Systemnutzung und -integrität und Ausführen von Virenscans auf dem virtuellen Array.
 
 ### Backups
 
@@ -284,7 +283,7 @@ Beachten Sie Folgendes, wenn Sie ein Failover für Ihr virtuelles Array durchfü
 
     -   Während des eigentlichen Failoverprozesses ist ein Fehler aufgetreten. In diesem Fall wird das Gerät als nicht verwendbar gekennzeichnet. Sie müssen ein anderes virtuelles Zielarray bereitstellen und konfigurieren und für das Failover verwenden.
 
-    -   Das Failover wurde abgeschlossen, und das Quellgerät wurde gelöscht, aber das Zielgerät weist Fehler auf, und der Benutzer kann nicht auf Daten zugreifen. Die Daten sind in der Cloud weiterhin sicher und können leicht abgerufen werden, indem ein weiteres virtuelles Array erstellt und dann als Zielgerät für die Notfallwiederherstellung verwendet wird.
+    -   Das Failover wurde abgeschlossen, und das Quellgerät wurde gelöscht, aber das Zielgerät weist Fehler auf, und Sie können nicht auf Daten zugreifen. Die Daten sind in der Cloud weiterhin sicher und können leicht abgerufen werden, indem ein weiteres virtuelles Array erstellt und dann als Zielgerät für die Notfallwiederherstellung verwendet wird.
 
 ### Deaktivieren
 
@@ -328,26 +327,26 @@ Beachten Sie die folgenden Richtlinien, wenn Sie den Windows-Indizierungsprozess
 
 Anwendungen können einen angegebenen Bytebereich in den Dateien sperren. Wenn Bytebereichsperren für die Anwendungen aktiviert sind, die in StorSimple schreiben, funktioniert die Anordnung auf Ebenen für Ihr virtuelles Array nicht. Damit diese Anordnung funktioniert, müssen alle Bereiche der Dateien, auf die zugegriffen wird, entsperrt werden. Bytebereichsperren werden für mehrstufige Volumes im virtuellen Array nicht unterstützt.
 
-Beispiele für empfohlene Abhilfemaßnahmen:
+Empfohlene Maßnahmen zur Entschärfung von Bytebereichsperren sind:
 
 -   Deaktivieren Sie Bytebereichsperren in der Anwendungslogik.
 
 -   Verwenden Sie lokale Volumes (anstelle von mehrstufigen Volumes) für die Daten, die der Anwendung zugeordnet sind. Lokale Volumes werden nicht in der Cloud angeordnet.
 
--   Wenn Sie lokale Volumes mit Bytebereichsperren verwenden, sollten Sie beachten, dass das Volume unter Umständen online geschaltet wird, bevor die Wiederherstellung abgeschlossen ist. In diesen Fällen müssen Sie warten, bis der Wiederherstellungsvorgang abgeschlossen ist.
+-   Wenn Sie lokale Volumes mit Bytebereichsperren verwenden, kann das Volume unter Umständen online geschaltet werden, bevor die Wiederherstellung abgeschlossen ist. In diesen Fällen müssen Sie warten, bis der Wiederherstellungsvorgang abgeschlossen ist.
 
 ## Mehrere Arrays
 
 Ggf. müssen mehrere virtuelle Arrays bereitgestellt werden, um einen wachsenden Arbeitssatz mit Daten abzudecken, die in die Cloud „überlaufen“ und daher die Leistung des Geräts beeinträchtigen können. In diesen Fällen ist es ratsam, Geräte zu skalieren, wenn sich der Arbeitssatz vergrößert. Hierfür ist es erforderlich, im lokalen Rechenzentrum mindestens ein weiteres Gerät hinzuzufügen. Beim Hinzufügen der Geräte haben Sie folgende Möglichkeiten:
 
 -   Teilen Sie den aktuellen Satz mit Daten.
--   Stellen Sie neue Workloads für die neuen Appliances bereit.
+-   Stellen Sie neue Workloads für neue Geräte bereit.
 -   Für die Bereitstellung mehrerer virtueller Arrays empfehlen wir, das Array aus Sicht des Lastenausgleichs auf mehrere Hypervisor-Hosts aufzuteilen.
 
 -  Mehrere virtuelle Arrays (bei Konfiguration als Dateiserver oder iSCSI-Server) können in einem Namespace für das verteilte Dateisystem (Distributed File System, DFS) bereitgestellt werden. Ausführliche Schritte finden Sie unter [Distributed File System Namespace Solution with Hybrid Cloud Storage Deployment Guide](https://www.microsoft.com/download/details.aspx?id=45507) (DFS-Namespacelösung mit Hybridcloudspeicher – Leitfaden zur Bereitstellung). Die DFS-Replikation ist für die Verwendung mit dem virtuellen Array derzeit nicht zu empfehlen.
 
 
-## Weitere Informationen
+## Siehe auch
 Informieren Sie sich über das [Verwalten des StorSimple Virtual Array mithilfe des StorSimple Manager-Diensts](storsimple-ova-manager-service-administration.md).
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0810_2016-->

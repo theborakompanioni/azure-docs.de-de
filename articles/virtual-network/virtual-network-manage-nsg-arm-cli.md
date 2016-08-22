@@ -3,7 +3,7 @@
    description="Erfahren Sie, wie Sie vorhandene NSGs mithilfe der Azure-Befehlszeilenschnittstelle in Resource Manager verwalten"
    services="virtual-network"
    documentationCenter="na"
-   authors="telmosampaio"
+   authors="jimdial"
    manager="carmonm"
    editor=""
    tags="azure-resource-manager"
@@ -15,7 +15,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="03/14/2016"
-   ms.author="telmos" />
+   ms.author="jdial" />
 
 # Verwalten von NSGs mithilfe der Azure-Befehlszeilenschnittstelle
 
@@ -23,7 +23,7 @@
 
 [AZURE.INCLUDE [virtual-network-manage-nsg-intro-include.md](../../includes/virtual-network-manage-nsg-intro-include.md)]
 
-[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-rm-include.md)]Klassisches Bereitstellungsmodell.
+[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-rm-include.md)] klassisches Bereitstellungsmodell.
 
 [AZURE.INCLUDE [virtual-network-manage-nsg-arm-scenario-include.md](../../includes/virtual-network-manage-nsg-arm-scenario-include.md)]
 
@@ -31,7 +31,7 @@
 
 ## Abrufen von Informationen
 
-Sie können Ihre vorhandenen NSGs anzeigen lassen, Regeln für eine vorhandene NSG abrufen und herausfinden, welchen Ressourcen eine NSG zugeordnet ist.
+Sie können Ihre vorhandenen NSGs sehen, Regeln für eine vorhandene NSG abrufen und herausfinden, welchen Ressourcen eine NSG zugeordnet ist.
 
 ### Anzeigen lassen vorhandener NSGs
 
@@ -101,7 +101,7 @@ Im Beispiel oben ist die NSG keinen Netzwerkschnittstellen (NICs) zugeordnet. Si
 
 ## Verwalten von Regeln
 
-Sie können zu einer vorhandenen NSG Regeln hinzufügen, vorhandene Regeln bearbeiten und Regeln entfernen.
+Sie können einer vorhandenen NSG Regeln hinzufügen, vorhandene Regeln bearbeiten und Regeln entfernen.
 
 ### Hinzufügen einer Regel
 
@@ -191,7 +191,7 @@ Erwartete Ausgabe:
 
 ## Verwalten von Zuordnungen
 
-Sie können eine NSG Subnetzen und NICs zuordnen. Sie können die Zuordnung einer NSG zu einer beliebigen Ressource auch aufheben.
+Sie können eine NSG Subnetzen und NICs zuordnen. Sie können auch die Zuordnung einer NSG zu jeder beliebigen Ressource, der sie zugeordnet ist, aufheben.
 
 ### Zuordnen einer NSG zu einer NIC
 
@@ -322,7 +322,7 @@ Erwartete Ausgabe:
 Sie können eine NSG nur löschen, wenn sie keiner Ressource zugeordnet ist. Um eine NSG zu löschen, gehen Sie folgendermaßen vor.
 
 1. Um die Ressourcen, die einer NSG zugeordnet sind, zu überprüfen, führen Sie `azure network nsg show` aus, wie in [Anzeigen lassen von NSG-Zuordnungen](#View-NSGs-associations) gezeigt.
-2. Falls die NSG NICs zugeordnet ist, führen Sie `azure network nic set` für jede NIC aus, wie in [Aufhebung der Zuordnung einer NSG zu einer NIC](#Dissociate-an-NSG-from-a-NIC) gezeigt. 
+2. Falls die NSG NICs zugeordnet ist, führen Sie `azure network nic set` für jede NIC aus, wie in [Aufhebung der Zuordnung einer NSG zu einer NIC](#Dissociate-an-NSG-from-a-NIC) gezeigt.
 3. Falls die NSG einem Subnetz zugeordnet ist, führen Sie `azure network vnet subnet set`, wie in [Aufhebung der Zuordnung einer NSG zu einem Subnetz](#Dissociate-an-NSG-from-a-subnet) gezeigt, für jedes Subnetz aus.
 4. Um die NSG zu löschen, führen Sie den Befehl `azure network nsg delete`, wie unten gezeigt, aus.
 
@@ -339,4 +339,4 @@ Sie können eine NSG nur löschen, wenn sie keiner Ressource zugeordnet ist. Um 
 
 - [Aktivieren der Protokollierung](virtual-network-nsg-manage-log.md) für NSGs
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0810_2016-->

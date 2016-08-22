@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Anwendungsarchitektur in Microsoft Azure" 
+	pageTitle="Anwendungsarchitektur in Microsoft Azure | Microsoft Azure" 
 	description="Übersicht über die Architektur, die allgemeine Entwurfsmuster abdeckt." 
 	services="" 
 	documentationCenter="" 
@@ -38,9 +38,9 @@ Microsoft veröffentlicht eine Reihe allgemeiner [Architekturpläne](http://aka.
 
 Jeder Plan enthält Folgendes:
 
-- Eine einfache **Visio 2003-basierte 2D-Datei**, die Sie herunterladen und bearbeiten können. 
+- Eine einfache **Visio 2003-basierte 2D-Datei**, die Sie herunterladen und bearbeiten können.
 - Eine lebendigere **3D-PDF-Datei** zur Einführung in den Plan für weniger technisch orientierte Zielgruppen.
-- Ein **Video**, das durch die 3D-Version führt. 
+- Ein **Video**, das durch die 3D-Version führt.
 
 In den Plänen wird der [Cloud- und Enterprise-Symbolsatz](#symbol-and-icon-sets) verwendet.
 
@@ -54,9 +54,9 @@ Die 3D-Versionen der [Microsoft-Architekturpläne](http://aka.ms/azblueprints) w
 
 Die Vorlage steht auch außerhalb des Kurses zur Verfügung.
 
-- [Sehen Sie sich zunächst das Trainingsvideo an](http://aka.ms/3dBlueprintTemplateVideo), damit Sie wissen, was die Vorlage leisten kann.   
+- [Sehen Sie sich zunächst das Trainingsvideo an](http://aka.ms/3dBlueprintTemplateVideo), damit Sie wissen, was die Vorlage leisten kann.
 - Laden Sie die [Microsoft Visio-Vorlage "3D Blueprint"](http://aka.ms/3DBlueprintTemplate) herunter.
-- Laden Sie die [Cloud- und Enterprise-Symbole](#drawing-symbol-and-icon-sets) herunter, die mit der 3D-Vorlage verwendet werden. 
+- Laden Sie die [Cloud- und Enterprise-Symbole](#drawing-symbol-and-icon-sets) herunter, die mit der 3D-Vorlage verwendet werden.
 
 Wenn Sie noch Fragen haben, die in den Trainingsmaterialien nicht beantwortet werden, oder uns Feedback geben möchten, senden Sie eine E-Mail an [CnESymbols@microsoft.com](mailto:CnESymbols@microsoft.com). Zweckmäßigkeit ist eines der Hauptziele der Vorlage. Lassen Sie uns deshalb wissen, was gut ist und was verbessert werden sollte.
 
@@ -85,4 +85,4 @@ Microsoft veröffentlicht mehrere architekturbezogene Poster/Infografiken. Dazu 
 
 ![Infografiken zur Azure-Architektur](./media/architecture-overview/AzureArchInfographicThumb.jpg)
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0810_2016-->

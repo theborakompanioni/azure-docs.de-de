@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="07/26/2016"
+    ms.date="08/03/2016"
     ms.author="dineshm"/>
 
 # Verwenden des Warteschlangenspeichers mit C++  
@@ -58,7 +58,7 @@ Zum Testen der Anwendung auf Ihrem lokalen Windows-Computer können Sie den [Mic
 	// Define the connection-string with Azure Storage Emulator.
 	const utility::string_t storage_connection_string(U("UseDevelopmentStorage=true;"));  
 
-Wählen Sie zum Starten des Azure-Speicheremulators die Schaltfläche **Start** aus, oder drücken Sie die **Windows**-Taste. Geben Sie **Azure-Speicheremulator** ein, und wählen Sie den **Microsoft Azure-Speicheremulator** aus der Liste der Anwendungen aus.
+Wählen Sie zum Starten des Azure-Speicheremulators die Schaltfläche **Start**, oder drücken Sie die WINDOWS-TASTE. Geben Sie **Azure-Speicheremulator** ein, und wählen Sie den **Microsoft Azure-Speicheremulator** aus der Liste der Anwendungen aus.
 
 In den folgenden Beispielen wird davon ausgegangen, dass Sie eine dieser zwei Methoden verwendet haben, um die Speicherverbindungszeichenfolge abzurufen.
 
@@ -236,4 +236,4 @@ Nachdem Sie sich nun mit den Grundlagen von Warteschlangenspeichern vertraut gem
 -	[Referenz zur Speicherclientbibliothek für C++](http://azure.github.io/azure-storage-cpp)
 -	[Azure-Speicherdokumentation](https://azure.microsoft.com/documentation/services/storage/)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0810_2016-->

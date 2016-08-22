@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/18/2016"
+   ms.date="08/09/2016"
    ms.author="yurid"/>
 
 # Internet der Dinge – bewährte Methoden für die Sicherheit
@@ -35,8 +35,8 @@ Dieser Artikel ist eine Zusammenfassung von [Internet der Dinge (IoT) – Bewäh
 
 Befolgen Sie diese bewährten Methoden, wenn Sie IoT-Hardwarehersteller oder Hardwareintegrator sind:
 
-- **Einhalten der Mindestanforderungen für Hardware:** Die Hardware sollte lediglich die für den Betrieb der Hardware erforderlichen Features enthalten. 
-- **Manipulationssicheres Gestalten von Hardware:** Integrieren Sie einen Mechanismus zum Erkennen von physischer Manipulation an der Hardware, z.B. Öffnen der Geräteabdeckung, Entfernen eines Teils des Geräts usw. 
+- **Einhalten der Mindestanforderungen für Hardware:** Die Hardware sollte lediglich die für den Betrieb der Hardware erforderlichen Features enthalten.
+- **Manipulationssicheres Gestalten von Hardware:** Integrieren Sie einen Mechanismus zum Erkennen von physischer Manipulation an der Hardware, z.B. Öffnen der Geräteabdeckung, Entfernen eines Teils des Geräts usw.
 - **Entwickeln sicherer Hardware:** Integrieren Sie, falls gemäß [COGS](https://en.wikipedia.org/wiki/Cost_of_goods_sold) zulässig, Sicherheitsfeatures wie sichere und verschlüsselte Speicher und eine auf Trusted Platform Module (TPM) basierende Startfunktion.
 - **Upgrades schützen**: Das Aktualisieren der Firmware während der Lebensdauer des Geräts ist unvermeidlich.
 
@@ -46,7 +46,7 @@ Befolgen Sie diese bewährten Methoden, wenn Sie IoT-Lösungsentwickler sind:
 
 - **Befolgen einer sicheren Softwareentwicklungsmethodik:** Zur Entwicklung sicherer Software muss von Grund auf die Sicherheit bedacht werden – vom Beginn des Projekts über Implementierung und Tests bis hin zur Bereitstellung.
 - **Open Source-Software mit Bedacht wählen**: Open Source-Software ermöglicht eine schnelle Lösungsentwicklung.
-- **Mit Bedacht integrieren**: Viele Software-Sicherheitsschwachstellen liegen zwischen Bibliotheken und APIs. 
+- **Mit Bedacht integrieren**: Viele Software-Sicherheitsschwachstellen liegen zwischen Bibliotheken und APIs.
 
 ## IoT-Lösungsbereitsteller
 
@@ -59,10 +59,10 @@ Befolgen Sie diese bewährten Methoden, wenn Sie IoT-Lösungsbereitsteller sind:
 
 Befolgen Sie diese bewährten Methoden, wenn Sie IoT-Lösungsoperator sind:
 
-- **Stetige Aktualisierung des Systems**: Stellen Sie sicher, dass Gerätebetriebssysteme und alle Gerätetreiber auf die neueste Version aktualisiert werden. 
-- **Vor schädlichen Aktivitäten schützen**: Wenn es das Betriebssystem zulässt, installieren Sie die neueste Antivirus- und Antimalwaresoftware auf jedem Gerätebetriebssystem. 
+- **Stetige Aktualisierung des Systems**: Stellen Sie sicher, dass Gerätebetriebssysteme und alle Gerätetreiber auf die neueste Version aktualisiert werden.
+- **Vor schädlichen Aktivitäten schützen**: Wenn es das Betriebssystem zulässt, installieren Sie die neueste Antivirus- und Antimalwaresoftware auf jedem Gerätebetriebssystem.
 - **Häufig überwachen**: Die Überwachung der IoT-Infrastruktur auf sicherheitsbezogene Probleme ist entscheidend für die Reaktion auf Sicherheitsvorfälle.
 - **IoT-Infrastruktur physisch schützen**: Die schlimmsten Angriffe gegen die IoT-Infrastruktur beginnen mit dem physischen Zugriff auf Geräte.
-- **Schützen der Cloud-Anmeldeinformationen**: Cloud-Authentifizierungsanmeldeinformationen für die Konfiguration und den Betrieb einer IoT-Bereitstellung sind wahrscheinlich die einfachste Möglichkeit zum Zugreifen und Manipulieren eines IoT-Systems. 
+- **Schützen der Cloud-Anmeldeinformationen**: Cloud-Authentifizierungsanmeldeinformationen für die Konfiguration und den Betrieb einer IoT-Bereitstellung sind wahrscheinlich die einfachste Möglichkeit zum Zugreifen und Manipulieren eines IoT-Systems.
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0810_2016-->

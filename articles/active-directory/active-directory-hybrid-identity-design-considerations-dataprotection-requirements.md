@@ -3,7 +3,7 @@
 	description="Beim Planen der Hybrididentitätslösung müssen Sie die Anforderungen für den Schutz der Daten ermitteln, die für Ihr Unternehmen gelten. Außerdem müssen Sie wissen, welche Optionen verfügbar sind, um diese Anforderungen am besten zu erfüllen."
 	documentationCenter=""
 	services="active-directory"
-	authors="yuridio"
+	authors="billmath"
 	manager="stevenpo"
 	editor=""/>
 
@@ -13,8 +13,8 @@
 	ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="identity" 
-	ms.date="04/28/2016"
-	ms.author="yuridio"/>
+	ms.date="08/08/2016"
+	ms.author="billmath"/>
 
 #Planen einer Erweiterung der Datensicherheit mit einer starken Identitätslösung
 
@@ -69,7 +69,7 @@ Daten, die zwischen dem Gerät und dem Rechenzentrum oder dem Gerät und der Clo
 Die Regulierungen, Gesetze und Compliance-Anforderungen variieren je nach Branche des Unternehmens. Unternehmen aus Branchen mit starker Regulierung müssen sich um die Aspekte der Identitätsverwaltung kümmern, die mit Compliance-Problemen verbunden sind. Vorschriften wie Sarbanes-Oxley (SOX), Health Insurance Portability and Accountability Act (HIPAA), Gramm-Leach-Bliley Act (GLBA) und der Payment Card Industry Data Security Standard (PCI DSS) sind sehr streng, was die Identität und den Zugriff betrifft. Die Hybrid-Identitätslösung, die von Ihrem Unternehmen eingeführt wird, muss über die Kernfunktionen verfügen, mit denen eine oder mehrere dieser Vorschriften erfüllt werden. Stellen Sie für diesen Bereich sicher, dass die folgenden Fragen gestellt werden:
 
 - Ist die Hybrid-Identitätslösung mit den gesetzlichen Vorschriften für Ihr Unternehmen kompatibel?
-- Verfügt die Hybrid-Identitätslösung über integrierte Funktionen, die Ihr Unternehmen in die Lage versetzen, die gesetzlichen Vorschriften zu erfüllen? 
+- Verfügt die Hybrid-Identitätslösung über integrierte Funktionen, die Ihr Unternehmen in die Lage versetzen, die gesetzlichen Vorschriften zu erfüllen?
  
 >[AZURE.NOTE]
 Notieren Sie sich alle Antworten, und stellen Sie sicher, dass Ihnen die Begründung der Antwort jeweils klar ist. Unter [Definieren der Strategie zum Schutz von Daten](active-directory-hybrid-identity-design-considerations-data-protection-strategy.md) sind die verfügbaren Optionen und die jeweiligen Vor- und Nachteile beschrieben. Indem Sie diese Fragen beantworten, wählen Sie aus, welche Option Ihre Geschäftsanforderungen am besten erfüllt.
@@ -78,7 +78,7 @@ Notieren Sie sich alle Antworten, und stellen Sie sicher, dass Ihnen die Begrün
  [Bestimmen der Content Management-Anforderungen](active-directory-hybrid-identity-design-considerations-contentmgt-requirements.md)
 
 
-## Siehe auch
+## Weitere Informationen
 [Überlegungen zum Entwurf – Übersicht](active-directory-hybrid-identity-design-considerations-overview.md)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0810_2016-->

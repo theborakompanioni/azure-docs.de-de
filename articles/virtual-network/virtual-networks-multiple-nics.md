@@ -3,7 +3,7 @@
    description="Weitere Informationen zum Erstellen und Konfigurieren von virtuellen Computern mit mehreren Netzwerkkarten"
    services="virtual-network, virtual-machines"
    documentationCenter="na"
-   authors="telmosampaio"
+   authors="jimdial"
    manager="carmonm"
    editor="tysonn"
    tags="azure-service-management,azure-resource-manager"
@@ -15,17 +15,17 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="02/02/2016"
-   ms.author="telmos" />
+   ms.author="jdial" />
 
 # Erstellen eines virtuellen Computers mit mehreren Netzwerkschnittstellenkarten (NICs)
 
-Sie können virtuelle Computer (VMs) in Azure erstellen und allen virtuellen Computern mehrere Netzwerkkarten (NICs) zuordnen. Viele virtuelle Netzwerkanwendungen, z. B. Lösungen für die Anwendungsübermittlung und WAN-Optimierung, erfordern mehrere NICs. Multi-NIC bietet zudem weitere Funktionen zur Verwaltung des Netzwerkdatenverkehrs, darunter die Isolation des Datenverkehrs zwischen einer Front-End-NIC und Back-End-NIC(s) oder die Trennung des Datenverkehrs auf Datenverkehrsebene vom Datenverkehr auf Verwaltungsebene.
+Sie können virtuelle Computer (VMs) in Azure erstellen und allen virtuellen Computern mehrere Netzwerkkarten (NICs) zuordnen. Viele virtuelle Netzwerkanwendungen, z. B. Lösungen für die Anwendungsübermittlung und WAN-Optimierung, erfordern mehrere NICs. Multi-NIC bietet zudem weitere Funktionen zur Verwaltung des Netzwerkdatenverkehrs, darunter die Isolation des Datenverkehrs zwischen einer Front-End-NIC und Back-End-NIC(s) oder die Trennung des Datenverkehrs auf Datenverkehrsebene vom Datenverkehr auf Verwaltungsebene.
 
 ![Multi-NIC für virtuelle Computer](./media/virtual-networks-multiple-nics/IC757773.png)
 
 Die obige Abbildung zeigt einen virtuellen Computer mit drei Netzwerkkarten, die jeweils mit einem anderen Subnetz verbunden sind.
 
-[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-rm-include.md)]Klassisches Bereitstellungsmodell.
+[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-rm-include.md)] klassisches Bereitstellungsmodell.
 
 - Die Internet-VIP (klassische Bereitstellungen) wird nur bei der „Standard“-Netzwerkkarte unterstützt. Es gibt nur eine VIP-Adresse, die an die IP-Adresse der Standard-NIC gebunden ist.
 - Derzeit werden öffentliche IP-Adressen auf Instanzebene (LPIP) (klassische Bereitstellungen) für Multi-NIC-VMs nicht unterstützt.
@@ -120,7 +120,7 @@ Um die PowerShell-Befehle in diesem Beispiel ausführen zu können, müssen die 
 
 - Ein Azure-Abonnement.
 - Ein konfiguriertes virtuelles Netzwerk. Weitere Informationen zu virtuellen Netzwerken finden Sie unter [Virtuelle Netzwerke im Überblick](virtual-networks-overview.md).
-- Die neueste Version von Azure PowerShell wurde heruntergeladen und installiert. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../install-configure-powershell).
+- Die neueste Version von Azure PowerShell wurde heruntergeladen und installiert. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
 
 Führen Sie die folgenden Schritte aus, um einen virtuellen Computer mit mehreren Netzwerkkarten zu erstellen
 
@@ -265,4 +265,4 @@ Da virtuelle Linux-Computer im Standardverhalten schwaches Hostrouting verwenden
 - Bereitstellen von [MultiNIC-VMs in einem Anwendungsszenario mit 2-Ebenen in einer Ressourcen-Manager-Bereitstellung](virtual-network-deploy-multinic-arm-template.md).
 - Bereitstellen von [MultiNIC-VMs in einem Anwendungsszenario mit 2-Ebenen in einer klassischen Bereitstellung](virtual-network-deploy-multinic-classic-ps.md).
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0810_2016-->

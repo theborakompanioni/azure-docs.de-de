@@ -3,8 +3,8 @@
 	description="Sichern Sie Windows-Server oder -Clients in Azure, indem Sie einen Sicherungstresor erstellen, Anmeldeinformationen herunterladen, den Backup-Agent installieren und eine erste Sicherung Ihrer Dateien und Ordner durchführen."
 	services="backup"
 	documentationCenter=""
-	authors="Jim-Parker"
-	manager="jwhit"
+	authors="markgalioto"
+	manager="cfreeman"
 	editor=""
 	keywords="Sicherungstresor; Windows-Server sichern; Windows sichern;"/>
 
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/09/2016"
+	ms.date="08/08/2016"
 	ms.author="jimpark; trinadhk; markgal"/>
 
 
@@ -167,7 +167,7 @@ Wenn die erste Sicherung von der Sicherungsrichtlinie abgeschlossen wird, werden
 
     Sie können tägliche (maximal drei pro Tag) oder wöchentliche Sicherungen planen.
 
-    ![Elemente eines Windows Server-Backups](./media/backup-configure-vault-classic/specify-backup-schedule-close.png)
+    ![Elemente einer Windows Server-Sicherung](./media/backup-configure-vault-classic/specify-backup-schedule-close.png)
 
     >[AZURE.NOTE] Weitere Informationen zum Angeben des Sicherungszeitplans finden Sie im Artikel [Verwenden von Azure Backup als Ersatz für Ihre Bandinfrastruktur](backup-azure-backup-cloud-as-tape.md).
 
@@ -226,4 +226,4 @@ Zusätzliche Informationen zum Sichern von virtuellen Computern oder anderen Wor
 - [Sichern von Workloads in Azure mit Microsoft Azure Backup Server](backup-azure-microsoft-azure-backup.md)
 - [Sichern von Workloads in Azure mit DPM](backup-azure-dpm-introduction.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0810_2016-->

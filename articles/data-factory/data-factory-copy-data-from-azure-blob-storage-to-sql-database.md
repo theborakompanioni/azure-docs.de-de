@@ -45,9 +45,9 @@ Sie benötigen in diesem Lernprogramm den Kontonamen und -schlüssel Ihres Azure
 1. Melden Sie sich beim [Azure-Portal][azure-portal] an.
 2. Klicken Sie auf der linken Seite auf den Hub **Durchsuchen**, und wählen Sie **Speicherkonten** aus.
 3. Wählen Sie auf dem Blatt **Speicherkonten** das **Azure-Speicherkonto** aus, das Sie in diesem Lernprogramm verwenden möchten.
-4. Klicken Sie auf dem Blatt **SPEICHER** auf die Kachel **SCHLÜSSEL**.
-5. Klicken Sie auf dem Blatt **Schlüssel verwalten** auf die (Bild-) Schaltfläche **Kopieren** neben dem Textfeld **SPEICHERKONTONAME**, und speichern Sie den Eintrag z. B. in einer Textdatei.
-6. Wiederholen Sie den vorherigen Schritt zum Kopieren oder Notieren des **PRIMÄREN ZUGRIFFSSCHLÜSSELS**.
+4. Wählen Sie den Link **Zugriffsschlüssel** unter **EINSTELLUNGEN** aus.
+5.  Klicken Sie auf die (Bild-)Schaltfläche **Kopieren** neben dem Textfeld **Speicherkontoname**, und speichern Sie den Eintrag z.B. in einer Textdatei.
+6. Wiederholen Sie den vorherigen Schritt zum Kopieren oder Notieren von **key1**.
 7. Schließen Sie alle Blätter, indem Sie auf **X** klicken.
 
 ## Erfassen der Namen von SQL Server, Datenbank und Benutzer
@@ -116,4 +116,4 @@ Ausführliche Informationen zur Kopieraktivität in Azure Data Factory finden Si
 [data-factory-create-storage]: http://azure.microsoft.com/documentation/articles/storage-create-storage-account/#create-a-storage-account
 [data-factory-create-sql-database]: ../sql-database/sql-database-get-started.md
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0810_2016-->

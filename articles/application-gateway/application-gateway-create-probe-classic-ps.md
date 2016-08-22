@@ -3,7 +3,7 @@
    description="Erfahren Sie, wie Sie mithilfe von PowerShell einen benutzerdefinierten Test für ein Application Gateway im klassischen Bereitstellungsmodell erstellen."
    services="application-gateway"
    documentationCenter="na"
-   authors="joaoma"
+   authors="georgewallace"
    manager="carmonm"
    editor=""
    tags="azure-service-management"
@@ -14,11 +14,17 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="06/07/2016"
-   ms.author="joaoma" />
+   ms.date="08/09/2016"
+   ms.author="gwallace" />
 
 # Erstellen eines benutzerdefinierten Tests für ein Azure Application Gateway (klassisch) mithilfe von PowerShell
 
+> [AZURE.SELECTOR]
+- [Azure-Portal](application-gateway-create-probe-portal.md)
+- [Azure Resource Manager PowerShell](application-gateway-create-probe-ps.md)
+- [Klassische Azure PowerShell](application-gateway-create-probe-classic-ps.md)
+
+<BR>
 
 [AZURE.INCLUDE [azure-probe-intro-include](../../includes/application-gateway-create-probe-intro-include.md)].
 
@@ -27,7 +33,7 @@
 [AZURE.INCLUDE [azure-ps-prerequisites-include.md](../../includes/azure-ps-prerequisites-include.md)]
 
 
-## Erstellen eines neuen Anwendungsgateways
+## Erstellen eines Anwendungsgateways
 
 So erstellen Sie ein Application Gateway
 
@@ -37,9 +43,9 @@ So erstellen Sie ein Application Gateway
 
 ### Erstellen einer Application Gateway-Ressource
 
-Verwenden Sie zum Erstellen des Gateways das **New-AzureApplicationGateway**-Cmdlet, und ersetzen Sie die Werte durch Ihre eigenen Werte. Beachten Sie, dass die Abrechnung für das Gateway jetzt noch nicht gestartet wird. Die Abrechnung beginnt in einem späteren Schritt, wenn das Gateway erfolgreich gestartet wurde.
+Verwenden Sie zum Erstellen des Gateways das **New-AzureApplicationGateway**-Cmdlet, und ersetzen Sie die Werte durch Ihre eigenen Werte. Die Abrechnung für das Gateway beginnt jetzt noch nicht. Die Abrechnung beginnt in einem späteren Schritt, wenn das Gateway erfolgreich gestartet wurde.
 
-Mit dem folgenden Beispiel wird ein neues Application Gateway über ein virtuelles Netzwerk mit dem Namen „testvnet1“ und ein Subnetz mit dem Namen „subnet-1“ erstellt.
+Das folgende Beispiel erstellt ein Anwendungsgateway mithilfe eines virtuellen Netzwerks mit dem Namen „testvnet1“ und eines Subnetzes mit dem Namen „subnet-1“.
 
 
 	PS C:\> New-AzureApplicationGateway -Name AppGwTest -VnetName testvnet1 -Subnets @("Subnet-1")
@@ -71,7 +77,7 @@ Sie können das **Get-AzureApplicationGateway**-Cmdlet verwenden, um zu überpr�
 >[AZURE.NOTE]  Der Standardwert für *InstanceCount* ist 2, der Maximalwert ist 10. Der Standardwert für *GatewaySize* ist "Medium". Sie können zwischen „Small“, „Medium“ und „Large“ wählen.
 
 
- *VirtualIPs* und *DnsName* werden leer angezeigt, da das Gateway noch nicht gestartet wurde. Die Werte werden erstellt, sobald das Gateway ausgeführt wird.
+ *VirtualIPs* und *DnsName* werden leer angezeigt, da das Gateway noch nicht gestartet wurde. Diese Werte werden erstellt, sobald das Gateway ausgeführt wird.
 
 ## Konfigurieren des Application Gateways
 
@@ -79,7 +85,7 @@ Sie können das Application Gateway per XML oder mit einem Konfigurationsobjekt 
 
 ## Konfigurieren des Application Gateways per XML
 
-Im folgenden Beispiel verwenden Sie eine XML-Datei, um alle Einstellungen des Application Gateways zu konfigurieren und auf die Application Gateway-Ressource zu übertragen.
+Im folgenden Beispiel verwenden Sie eine XML-Datei, um alle Einstellungen des Anwendungsgateways zu konfigurieren und auf die Anwendungsgatewayressource zu übertragen.
 
 ### Schritt 1  
 
@@ -151,7 +157,7 @@ Kopieren Sie den folgenden Text in Editor.
 
 Bearbeiten Sie die Werte zwischen den Klammern für die Konfigurationselemente. Speichern Sie die Datei mit der Erweiterung XML.
 
-Das folgende Beispiel zeigt, wie Sie mithilfe einer Konfigurationsdatei das Application Gateway für den Lastenausgleich von HTTP-Datenverkehr am öffentlichen Port 80 und zum Senden des Netzwerkdatenverkehrs an den Back-End-Port 80 zwischen zwei IP-Adressen einrichten, indem Sie einen benutzerdefinierten Test verwenden.
+Das folgende Beispiel zeigt, wie Sie mithilfe einer Konfigurationsdatei und eines benutzerdefinierten Tests das Anwendungsgateway für den Lastenausgleich von HTTP-Datenverkehr am öffentlichen Port 80 und zum Senden des Netzwerkdatenverkehrs an den Back-End-Port 80 zwischen zwei IP-Adressen einrichten.
 
 >[AZURE.IMPORTANT] Für die Protokollelemente Http oder Https muss die Groß-/Kleinschreibung beachtet werden.
 
@@ -160,12 +166,12 @@ Es wird ein neues Konfigurationselement vom Typ <Probe> hinzugefügt, um benutze
 
 Die Konfigurationsparameter sind:
 
-- **Name**: Der Referenzname für den benutzerdefinierten Test.
-- **Protocol**: Das verwendete Protokoll. (Mögliche Werte: „HTTP“ und „HTTPS“)
-- **Host** und **Path**: Vollständiger URL-Pfad, der vom Application Gateway aufgerufen wird, um die Integrität der Instanz zu ermitteln. Beispiel: Bei der Website http://contoso.com/ können Sie den benutzerdefinierten Test für „http://contoso.com/path/custompath.htm“ konfigurieren, damit die HTTP-Antwort bei den Prüfungen des Tests erfolgreich ist.
-- **Interval**: Konfiguriert die Intervalle für die Prüfungen des Tests (in Sekunden).
+- **Name**: Referenzname für den benutzerdefinierten Test.
+- **Protocol**: Das verwendete Protokoll (mögliche Werte: „HTTP“ und „HTTPS“).
+- **Host** und **Path**: Vollständiger URL-Pfad, der vom Anwendungsgateway aufgerufen wird, um die Integrität der Instanz zu ermitteln. Beispiel: Für die Website http://contoso.com/ können Sie den benutzerdefinierten Test für „http://contoso.com/path/custompath.htm“ konfigurieren, damit die HTTP-Antwort bei den Überprüfungen des Tests erfolgreich ist.
+- **Interval**: Konfiguriert die Intervalle der Testausführungen (in Sekunden).
 - **Timeout**: Definiert das Timeout des Tests für eine HTTP-Antwortprüfung.
-- **UnhealthyThreshold**: Die Anzahl von Fehlern bei HTTP-Antworten, ab der die Back-End-Instanz als *fehlerhaft* gekennzeichnet wird.
+- **UnhealthyThreshold**: Die Anzahl von HTTP-Antworten mit Fehlern, ab der die Back-End-Instanz als *fehlerhaft* gekennzeichnet wird.
 
 Auf den Namen des Tests wird in der <BackendHttpSettings>-Konfiguration verwiesen, um festzulegen, welcher Back-End-Pool die Einstellungen für den benutzerdefinierten Test verwenden soll.
 
@@ -195,7 +201,7 @@ Rufen Sie mit get-AzureApplicationGatewayConfig die XML-Datei ab. Dadurch wird d
             <UnhealthyThreshold>5</UnhealthyThreshold>
         </Probe>
 
-Fügen Sie den Namen des Tests im Abschnitt „BackendHttpSettings“ der XML-Datei wie im folgenden Beispiel hinzu:
+Fügen Sie den Namen des Tests im Abschnitt „backendHttpSettings“ der XML-Datei wie im folgenden Beispiel hinzu:
 
         <BackendHttpSettings>
             <Name>setting1</Name>
@@ -211,15 +217,15 @@ Speichern Sie die XML-Datei.
 
 ### Schritt 3
 
-Aktualisieren Sie die Application Gateway-Konfiguration mit der neuen XML-Datei, indem Sie **Set-AzureApplicationGatewayConfig** verwenden. Dadurch wird das Application Gateway mit der neuen Konfiguration aktualisiert.
+Aktualisieren Sie die Konfiguration des Anwendungsgateways mit der neuen XML-Datei, indem Sie **Set-AzureApplicationGatewayConfig** verwenden. Dadurch wird das Anwendungsgateway mit der neuen Konfiguration aktualisiert.
 
 	set-AzureApplicationGatewayConfig -Name <application gateway name> -Configfile "<path to file>"
 
 
 ## Nächste Schritte
 
-Wenn Sie die Secure Sockets Layer-Auslagerung (SSL) konfigurieren möchten, ist es ratsam, den Abschnitt [Konfigurieren eines Application Gateways für die SSL-Auslagerung](application-gateway-ssl.md) zu lesen.
+Wenn Sie die SSL-Auslagerung (Secure Sockets Layer) konfigurieren möchten, lesen Sie den Abschnitt [Konfigurieren eines Anwendungsgateways für die SSL-Auslagerung](application-gateway-ssl.md).
 
-Wenn Sie ein Application Gateway für die Verwendung mit einem internen Load Balancer konfigurieren möchten, ist es ratsam, den Abschnitt [Erstellen eines Application Gateways mit einem internen Lastenausgleich (ILB)](application-gateway-ilb.md) zu lesen.
+Wenn Sie ein Anwendungsgateway für die Verwendung mit einem internen Lastenausgleich konfigurieren möchten, lesen Sie den Abschnitt [Erstellen eines Anwendungsgateways mit einem internen Lastenausgleich (ILB)](application-gateway-ilb.md).
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0810_2016-->

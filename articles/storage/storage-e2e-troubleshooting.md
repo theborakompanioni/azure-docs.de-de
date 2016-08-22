@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="05/09/2016"
+	ms.date="08/03/2016"
 	ms.author="robinsh"/>
 
 
@@ -145,14 +145,14 @@ Sie können Message Analyzer verwenden, um eine HTTP-/HTTPS-Ablaufverfolgung zu 
 
 1. Installieren Sie [Fiddler](http://www.telerik.com/download/fiddler).
 2. Starten Sie Fiddler.
-2. Wählen Sie **Tools | Fiddler Options**.
+2. Wählen Sie **Tools.| Fiddler Options**.
 3. Stellen Sie sicher, dass im Dialogfeld "Options" die Optionen **Capture HTTPS CONNECTs** und **Decrypt HTTPS Traffic** wie unten dargestellt aktiviert sind.
 
 ![Konfigurieren von Fiddler-Optionen](./media/storage-e2e-troubleshooting/fiddler-options-1.png)
 
 Erfassen und speichern Sie für das Lernprogramm zunächst eine Netzwerkablaufverfolgung in Message Analyzer, und erstellen Sie daraufhin eine Analysesitzung, um die Ablaufverfolgung und die Protokolle zu analysieren. So erfassen Sie eine Netzwerkablaufverfolgung in Message Analyzer:
 
-1. Wählen Sie in Message Analyzer **File | Quick Trace | Unencrypted HTTPS** aus.
+1. Wählen Sie in Message Analyzer **File.| Quick Trace | Unencrypted HTTPS**.
 2. Die Ablaufverfolgung beginnt sofort. Wählen Sie **Stop** aus, um die Ablaufverfolgung anzuhalten, sodass sie für die ausschließliche Verfolgung des Speicherverkehrs konfiguriert werden kann.
 3. Wählen Sie **Edit** aus, um die Ablaufverfolgungssitzung zu bearbeiten.
 4. Wählen Sie **Configure** rechts neben dem ETW-Anbieter **Microsoft-Pef-WebProxy** aus.
@@ -339,20 +339,20 @@ Nachdem Sie nun mit der Verwendung von Message Analyzer zum Analysieren Ihrer Da
 
 | Zum Untersuchen von... | Verwenden Sie folgenden Filterausdruck... | Ausdruck gilt für Protokoll (Client, Server, Netzwerk, Alle) |
 |------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------|
-| Unerwartete Verzögerungen bei der Nachrichtenübermittlung in einer Warteschlange | AzureStorageClientDotNetV4.Description contains "Retrying failed operation." | Client |
-| HTTP-Zunahme von PercentThrottlingError | HTTP.Response.StatusCode == 500 &#124;&#124; HTTP.Response.StatusCode == 503 | Netzwerk |
+| Unerwartete Verzögerungen bei der Nachrichtenübermittlung in einer Warteschlange | AzureStorageClientDotNetV4.Description contains "Retrying failed operation." | Client- |
+| HTTP-Zunahme von PercentThrottlingError | HTTP.Response.StatusCode == 500 || HTTP.Response.StatusCode == 503 | Netzwerk |
 | Zunahme von PercentTimeoutError | HTTP.Response.StatusCode == 500 | Netzwerk |
-| Zunahme von PercentTimeoutError (alle) |    *StatusCode == 500 | All | 
-| Zunahme von PercentNetworkError | AzureStorageClientDotNetV4.EventLogEntry.Level < 2 | Client | 
-| HTTP 403 (Verboten)-Meldungen | HTTP.Response.StatusCode == 403 | Network | 
-| HTTP 404 (Nicht gefunden)-Meldungen | HTTP.Response.StatusCode == 404 | Network | 
-| 404 (Alle) | *StatusCode == 404 | All | 
-| Autorisierungsproblem für Shared Access Signature (SAS) | AzureStorageLog.RequestStatus == "SASAuthorizationError" | Network | 
-| HTTP 409 (Konflikt)-Meldungen | HTTP.Response.StatusCode == 409 | Network | 
-| 409 (Alle) | *StatusCode == 409 | All | 
-| „Low PercentSuccess“ oder Analyseprotokolleinträge verfügen über Vorgänge mit Transaktionsstatus „ClientOtherErrors“ | AzureStorageLog.RequestStatus == "ClientOtherError" | Server | 
-| Nagle-Warnung | ((AzureStorageLog.EndToEndLatencyMS - AzureStorageLog.ServerLatencyMS) > (AzureStorageLog.ServerLatencyMS * 1.5)) and (AzureStorageLog.RequestPacketSize <1460) and (AzureStorageLog.EndToEndLatencyMS - AzureStorageLog.ServerLatencyMS >= 200) | Server | 
-| Zeitraum in Server- und Netzwerkprotokollen | #Timestamp >= 2014-10-20T16:36:38 and #Timestamp <= 2014-10-20T16:36:39 | Server, Network | 
+| Zunahme von PercentTimeoutError (alle) | *StatusCode == 500 | Alle |
+| Anstieg bei „PercentNetworkError“ | AzureStorageClientDotNetV4.EventLogEntry.Level < 2 | Client- |
+| HTTP 403 (Verboten)-Meldungen | HTTP.Response.StatusCode == 403 | Netzwerk |
+| HTTP 404 (Nicht gefunden)-Meldungen | HTTP.Response.StatusCode == 404 | Netzwerk |
+| 404 (alle) | *StatusCode == 404 | Alle |
+| Problem mit der Shared Access Signature(SAS)-Authentifizierung | AzureStorageLog.RequestStatus == "SASAuthorizationError" | Netzwerk |
+| Meldungen vom Typ HTTP 409 (Konflikt) | HTTP.Response.StatusCode == 409 | Netzwerk |
+| 409 (alle) | *StatusCode == 409 | Alle |
+| Niedriger Wert für „PercentSuccess“, oder Analyseprotokolleinträge enthalten Vorgänge mit dem Transaktionsstatus „ClientOtherErrors“. | AzureStorageLog.RequestStatus == "ClientOtherError" | Server |
+| Nagle-Warnung | ((AzureStorageLog.EndToEndLatencyMS - AzureStorageLog.ServerLatencyMS) > (AzureStorageLog.ServerLatencyMS * 1.5)) and (AzureStorageLog.RequestPacketSize <1460) and (AzureStorageLog.EndToEndLatencyMS - AzureStorageLog.ServerLatencyMS >= 200) | Server |
+| Zeitraum in Server- und Netzwerkprotokollen | #Timestamp >= 2014-10-20T16:36:38 and #Timestamp <= 2014-10-20T16:36:39 | Server, Netzwerk |
 | Zeitraum in Serverprotokollen | AzureStorageLog.Timestamp >= 2014-10-20T16:36:38 and AzureStorageLog.Timestamp <= 2014-10-20T16:36:39 | Server |
 
 
@@ -366,4 +366,4 @@ Weitere Informationen zur Problembehandlung in End-to-End-Szenarien im Azure-Spe
 - [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](storage-use-azcopy.md)
 - [Microsoft Message Analyzer Operating Guide (in englischer Sprache)](http://technet.microsoft.com/library/jj649776.aspx)
 
-<!----HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0810_2016-->

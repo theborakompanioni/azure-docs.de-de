@@ -3,7 +3,7 @@
    description="Hier erfahren Sie mehr über die Verwendung öffentlicher und privater IP-Adressen in Azure-Ressourcen-Manager."
    services="virtual-network"
    documentationCenter="na"
-   authors="telmosampaio"
+   authors="jimdial"
    manager="carmonm"
    editor="tysonn"
    tags="azure-resource-manager" />
@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="04/27/2016"
-   ms.author="telmos" />
+   ms.author="jdial" />
 
 # IP-Adressen in Azure
 Sie können Azure-Ressourcen IP-Adressen zuweisen, um die Kommunikation mit anderen Azure-Ressourcen, Ihrem lokalen Netzwerk und dem Internet zu ermöglichen. In Azure können zwei Arten von IP-Adressen verwendet werden.
@@ -22,7 +22,7 @@ Sie können Azure-Ressourcen IP-Adressen zuweisen, um die Kommunikation mit ande
 - **Öffentliche IP-Adressen**: Sie werden für die Kommunikation mit dem Internet verwendet. Hierzu zählen auch öffentliche Azure-Dienste.
 - **Private IP-Adressen**: Sie werden für die Kommunikation innerhalb eines virtuellen Azure-Netzwerks (VNet) und innerhalb Ihres lokalen Netzwerks verwendet, wenn Sie Ihr Netzwerk mithilfe eines VPN-Gateways oder einer ExpressRoute-Verbindung auf Azure ausdehnen.
 
-[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-rm-include.md)] [Klassisches Bereitstellungsmodell](virtual-network-ip-addresses-overview-classic.md).
+[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-rm-include.md)] [classic deployment model](virtual-network-ip-addresses-overview-classic.md).
 
 Wenn Sie mit dem klassischen Bereitstellungsmodell vertraut sind, sehen Sie sich die [Unterschiede bei IP-Adressen zwischen dem klassischen Bereitstellungsmodell und dem Resource Manager-Bereitstellungsmodell](virtual-network-ip-addresses-overview-classic.md#Differences-between-Resource-Manager-and-classic-deployments) an.
 
@@ -75,7 +75,7 @@ Die nachstehende Tabelle zeigt die spezifischen Eigenschaften, durch die eine ö
 |Ressource der obersten Ebene|Zuordnung der IP-Adresse|Dynamisch|Statisch|
 |---|---|---|---|
 |Virtueller Computer|Netzwerkschnittstelle|Ja|Ja|
-|Lastenausgleichsmodul|Front-End-Konfiguration|Ja|Ja|
+|Load Balancer|Front-End-Konfiguration|Ja|Ja|
 |VPN Gateway|Gateway-IP-Konfiguration|Ja|Nein|
 |Anwendungsgateway|Front-End-Konfiguration|Ja|Nein|
 
@@ -107,7 +107,7 @@ Eine private IP-Adresse wird der **Netzwerkschnittstelle** eines virtuellen [Win
 #### Interne DNS-Hostnamensauflösung (für VMs)
 Alle Azure-VMs werden standardmäßig mit [von Azure verwalteten DNS-Servern](virtual-networks-name-resolution-for-vms-and-role-instances.md#azure-provided-name-resolution) konfiguriert, sofern nicht explizit benutzerdefinierte DNS-Server konfiguriert werden. Diese DNS-Server stellen die interne Namensauflösung für VMs im gleichen VNet bereit.
 
-Beim Erstellen einer VM wird den von Azure verwalteten DNS-Servern eine Zuordnung des Hostnamens zur zugehörigen privaten IP-Adresse hinzugefügt. Bei einer VM mit mehreren Netzwerkschnittstellen wird der Hostname der privaten IP-Adresse der primären Netzwerkschnittstelle zugeordnet.
+Beim Erstellen einer VM wird den von Azure verwalteten DNS-Servern eine Hostnamenzuordnung für die private IP-Adresse hinzugefügt. Bei einer VM mit mehreren Netzwerkschnittstellen wird der Hostname der privaten IP-Adresse der primären Netzwerkschnittstelle zugeordnet.
 
 VMs, die mit von Azure verwalteten DNS-Servern konfiguriert wurden, können die Hostnamen aller VMs innerhalb ihres VNets in deren private IP-Adressen auflösen.
 
@@ -120,7 +120,7 @@ Die nachstehende Tabelle zeigt die spezifischen Eigenschaften, durch die eine pr
 |Ressource der obersten Ebene|Zuordnung der IP-Adresse|Dynamisch|Statisch|
 |---|---|---|---|
 |Virtueller Computer|Netzwerkschnittstelle|Ja|Ja|
-|Lastenausgleichsmodul|Front-End-Konfiguration|Ja|Ja|
+|Load Balancer|Front-End-Konfiguration|Ja|Ja|
 |Anwendungsgateway|Front-End-Konfiguration|Ja|Ja|
 
 ## Grenzen
@@ -136,4 +136,4 @@ In den meisten Fällen sind öffentliche IP-Adressen kostenlos. Es wird eine Sch
 - [Bereitstellen einer VM mit einer statischen öffentlichen IP-Adresse über eine Vorlage](virtual-network-deploy-static-pip-arm-template.md)
 - [Bereitstellen eines virtuellen Computers mit einer statischen privaten IP-Adresse mithilfe des Azure-Portals](virtual-networks-static-private-ip-arm-pportal.md)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0810_2016-->

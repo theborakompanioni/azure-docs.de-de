@@ -73,7 +73,7 @@ Die unterstützten logischen Operatoren sind zusammen mit der Syntax nachfolgend
 
 | Name des Operators | Syntax |
 | :------------- | :------------- |
-| Nicht | "not" : {&lt;Bedingung oder Operator &gt;} |
+| Not | "not" : {&lt;Bedingung oder Operator &gt;} |
 | Und | "allOf" : [ {&lt;Bedingung oder Operator &gt;},{&lt;Bedingung oder Operator &gt;}] |
 | Oder | "anyOf" : [ {&lt;Bedingung oder Operator &gt;},{&lt;Bedingung oder Operator &gt;}] |
 
@@ -90,6 +90,7 @@ Eine Bedingung prüft, ob ein **Feld** oder eine **Quelle** bestimmte Kriterien 
 | Contains | "contains" : "&lt;Wert&gt;"|
 | Geben Sie in | "in" : [ "&lt;Wert1&gt;","&lt;Wert2&gt;" ]|
 | ContainsKey | "containsKey" : "&lt;Schlüsselname&gt;" |
+| Exists | "exists" : "&lt;bool&gt;" |
 
 ### Felder
 
@@ -254,7 +255,7 @@ Das folgende Beispiel zeigt eine Richtlinie, die alle Anfragen ablehnt, deren St
 
 ### Dienstverwaltung: Auswählen des Dienstkatalogs
 
-Das folgende Beispiel veranschaulicht die Verwendung der Quelle. Es zeigt, dass Aktionen nur für Dienste des Typs "Microsoft.Resources/\*", "Microsoft.Compute/\*", "Microsoft.Storage/\*" und "Microsoft.Network/\*" zulässig sind. Alle anderen Anforderungen werden verweigert.
+Das folgende Beispiel veranschaulicht die Verwendung der Quelle. Es zeigt, dass Aktionen nur für Dienste des Typs "Microsoft.Resources/*", "Microsoft.Compute/*", "Microsoft.Storage/*" und "Microsoft.Network/*" zulässig sind. Alle anderen Anforderungen werden verweigert.
 
     {
       "if" : {
@@ -468,4 +469,4 @@ Zum Anzeigen aller Ereignisse, die mit dem Überwachungseffekt in Verbindung ste
     Get-AzureRmLog | where {$_.OperationName -eq "Microsoft.Authorization/policies/audit/action"} 
     
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0810_2016-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/12/2016" 
+	ms.date="08/04/2016" 
 	ms.author="billmath"/>
 
 # Beheben von Problemen mit Azure Multi-Factor Authentication
@@ -47,7 +47,7 @@ Halten Sie die folgenden Informationen bereit, wenn Sie sich an den Support wend
  
 ![Korrelations-ID](./media/multi-factor-authentication-end-user-manage/correlation.png)
 
- - **Benutzer-ID** – Wie lautet die ID des Benutzers, der den Fehler beobachtet hat (z. B. user@contoso.com)?)?
+ - **Benutzer-ID** – Wie lautet die ID des Benutzers, der den Fehler beobachtet hat (z.B. user@contoso.com)?
  - **Informationen zum Benutzer** – Handelt es sich um einen Verbundbenutzer, um einen Benutzer mit Kennworthashsynchronisierung, oder um einen Benutzer, der ausschließlich über die Cloud zugreift? Verfügte der Benutzer über eine Azure AD Premium-, Enterprise Mobility- oder Azure AD Basic-Lizenz? Verwendet der Benutzer Office 365? usw.
 
 Diese Informationen helfen uns dabei, Ihr Problem so schnell wie möglich zu beheben.
@@ -101,7 +101,7 @@ Wenn Sie nicht sicher sind, wie Sie die mehrstufige Authentifizierung verwenden,
 
 #### So ändern Sie Ihre Einstellungen im Portal "Meine Apps"
 
-1. Melden Sie sich an bei [https://myapps.microsoft.com](https://myapps.microsoft.com).	
+1. Melden Sie sich an bei [https://myapps.microsoft.com](https://myapps.microsoft.com).
 2. Wählen Sie oben das Profil aus.
 3. Klicken Sie auf "Zusätzliche Sicherheitsüberprüfung". ![MyApps](./media/multi-factor-authentication-end-user-manage/myapps1.png)
 4. Dadurch gelangen Sie zu der Seite, auf der Sie Ihre Einstellungen ändern können.
@@ -145,7 +145,7 @@ Zunächst müssen Sie Folgendes sicherstellen:
 
 - Wenn Sie einen Telefonanruf auf Ihrem Mobiltelefon ausgewählt haben, stellen Sie sicher, dass das Mobilfunksignal stark genug ist. Übertragungsgeschwindigkeit und Verfügbarkeit können je nach Region und Dienstanbieter variieren.
 - Wenn Sie das Empfangen von Überprüfungscodes per Textnachricht auf Ihrem Mobiltelefon ausgewählt haben, vergewissern Sie sich, dass Ihr Tarif und Gerät die Übermittlung von Textnachrichten unterstützen. Übertragungsgeschwindigkeit und Verfügbarkeit können je nach Region und Dienstanbieter variieren. Stellen Sie auch sicher, dass das Mobilfunksignal stark genug ist, um diese Codes zu empfangen.
-- Wenn Sie das Empfangen einer Überprüfung über die mobile App gewählt haben, stellen Sie sicher, dass das Mobilfunksignal stark genug ist. Beachten Sie auch, dass Übertragungsgeschwindigkeit und Verfügbarkeit je nach Region und Dienstanbieter variieren können. 
+- Wenn Sie das Empfangen einer Überprüfung über die mobile App gewählt haben, stellen Sie sicher, dass das Mobilfunksignal stark genug ist. Beachten Sie auch, dass Übertragungsgeschwindigkeit und Verfügbarkeit je nach Region und Dienstanbieter variieren können.
 
 Bei Smartphones wird empfohlen, die [Azure Authenticator-App](multi-factor-authentication-azure-authenticator.md) zu nutzen.
 
@@ -172,4 +172,4 @@ Außerdem können Sie Ihren Administrator oder die Person, die Multi-Factor Auth
 
 Geben Sie abschließend bitte detailliertes Feedback auf dieser Seite ab, damit wir diese Seite aktualisieren und durch weitere Informationen verbessern können.
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0810_2016-->

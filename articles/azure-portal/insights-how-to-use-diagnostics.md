@@ -1,20 +1,20 @@
 <properties
 	pageTitle="Aktivieren von Überwachung und Diagnose in Microsoft Azure | Microsoft Azure "
 	description="Erfahren Sie, wie Sie die Diagnose für Ihre Ressourcen in Azure einrichten."
-	authors="stepsic-microsoft-com"
-	manager="ronmart"
+	authors="rboucher"
+	manager=""
 	editor=""
-	services="monitoring"
-	documentationCenter="monitoring"/>
+	services="monitoring-and-diagnostics"
+	documentationCenter="monitoring-and-diagnostics"/>
 
 <tags
-	ms.service="monitoring"
+	ms.service="monitoring-and-diagnostics"
 	ms.workload="na"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="09/08/2015"
-	ms.author="stepsic"/>
+	ms.author="robb"/>
 
 # Aktivieren von Überwachung und Diagnose
 
@@ -70,4 +70,4 @@ Beachten Sie, dass derzeit bestimmte Linux-Distributionen nicht unterstützt wer
 * [Anzeigen von Ereignissen und Überwachungsprotokollen](insights-debugging-with-events.md), um sich über sämtliche Aktivitäten Ihres Diensts zu informieren.
 * [Nachverfolgen der Dienstintegrität](insights-service-health.md), um den Zeitpunkt von Leistungsabfällen oder Dienstunterbrechungen zu ermitteln, die in Azure aufgetreten sind.
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0810_2016-->

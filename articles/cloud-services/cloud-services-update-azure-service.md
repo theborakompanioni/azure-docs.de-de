@@ -12,7 +12,7 @@ ms.workload="tbd"
 ms.tgt_pltfrm="na"
 ms.devlang="na"
 ms.topic="article"
-ms.date="05/05/2016"
+ms.date="08/10/2016"
 ms.author="adegeo"/>
 
 # Aktualisieren eines Clouddiensts
@@ -132,7 +132,7 @@ Azure ist bei der Verwaltung von Diensten während einer Aktualisierung flexibel
 Das Zurücksetzen einer Aktualisierung in Bearbeitung wirkt sich folgendermaßen auf die Bereitstellung aus:
 
 -   Alle Rolleninstanzen, für die noch keine Aktualisierung/kein Upgrade auf die neue Version durchgeführt wurde, werden nicht aktualisiert/upgegradet, da diese Instanzen bereits die Zielversion des Diensts ausführen.
--   Rolleninstanzen, die bereits aktualisiert oder auf die neue Version der Dienstpaketdatei (\*.CSPKG) oder der Dienstkonfigurationsdatei (\*.CSCFG) (oder beide Dateien) upgegradet wurden, werden auf die Version dieser Dateien vor dem Upgrade zurückgesetzt.
+-   Rolleninstanzen, die bereits aktualisiert oder auf die neue Version der Dienstpaketdatei (*.CSPKG) oder der Dienstkonfigurationsdatei (*.CSCFG) (oder beide Dateien) upgegradet wurden, werden auf die Version dieser Dateien vor dem Upgrade zurückgesetzt.
 
 Diese Funktion wird durch die folgenden Features bereitgestellt:
 
@@ -180,6 +180,6 @@ Das folgende Diagramm zeigt, wie ein Dienst mit zwei Rollen verteilt wird, wenn 
 > [AZURE.NOTE] Beachten Sie, dass Azure steuert, wie Instanzen Upgradedomänen zugeordnet werden. Es kann nicht festgelegt werden, welche Instanzen welcher Domäne zugeordnet werden.
 
 ## Nächste Schritte
-[Verwalten von Clouddiensten](cloud-services-how-to-manage.md)<br> [Überwachen von Clouddiensten](cloud-services-how-to-monitor.md)<br> [Konfigurieren von Clouddiensten](cloud-services-how-to-configure.md)<br>
+[Verwalten von Clouddiensten](cloud-services-how-to-manage.md) [Überwachen von Clouddiensten](cloud-services-how-to-monitor.md) [Konfigurieren von Clouddiensten](cloud-services-how-to-configure.md)
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0810_2016-->

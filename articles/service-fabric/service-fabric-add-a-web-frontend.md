@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="07/22/2016"
+   ms.date="08/05/2016"
    ms.author="seanmck"/>
 
 
@@ -167,9 +167,17 @@ Der zustandsbehaftete Dienst ist nun bereit, Datenverkehr von anderen Diensten z
 
 1. Fügen Sie Ihrem ASP.NET-Projekt einen Verweis auf die Klassenbibliothek mit der `ICounter`-Schnittstelle hinzu.
 
-2. Fügen Sie dem ASP.NET-Projekt das Microsoft.ServiceFabric.Services-Paket auf dieselbe Weise hinzu wie zuvor beim Klassenbibliotheksprojekt. Dadurch wird die `ServiceProxy`-Klasse bereitgestellt.
+2. Öffnen Sie über das Menü **Build** den **Konfigurations-Manager**. Die Ausgabe sollte folgendermaßen aussehen:
 
-3. Öffnen Sie im Ordner **Controller** die `ValuesController`-Klasse. Beachten Sie, dass die `Get`-Methode derzeit nur ein hartcodiertes Zeichenfolgenarray mit „value1“ und „value2“ zurückgibt, wie vorhin im Browser zu sehen. Ersetzen Sie diese Implementierung durch den folgenden Code:
+    ![Konfigurations-Manager mit Klassenbibliothek als AnyCPU][vs-configuration-manager]
+
+    Beachten Sie, dass für die Klassenbibliothekprojekt **MyStatefulService.Interface** eine CPU-unabhängige Erstellung konfiguriert ist. Um eine problemlose Verwendung mit Service Fabric zu gewährleisten, muss es explizit auf x64 ausgerichtet sein. Klicken Sie auf die Dropdownliste „Plattform“, wählen Sie **Neu** aus, und erstellen Sie dann eine x64-Plattformkonfiguration.
+
+    ![Erstellen einer neuen Plattform für die Klassenbibliothek][vs-create-platform]
+
+3. Fügen Sie dem ASP.NET-Projekt das Microsoft.ServiceFabric.Services-Paket auf dieselbe Weise hinzu wie zuvor beim Klassenbibliotheksprojekt. Dadurch wird die `ServiceProxy`-Klasse bereitgestellt.
+
+4. Öffnen Sie im Ordner **Controller** die `ValuesController`-Klasse. Beachten Sie, dass die `Get`-Methode derzeit nur ein hartcodiertes Zeichenfolgenarray mit „value1“ und „value2“ zurückgibt, wie wir vorhin im Browser gesehen haben. Ersetzen Sie diese Implementierung durch den folgenden Code:
 
     ```c#
     using MyStatefulService.Interfaces;
@@ -198,7 +206,7 @@ Der zustandsbehaftete Dienst ist nun bereit, Datenverkehr von anderen Diensten z
 
     Sobald wir den Proxy haben, rufen wir einfach die `GetCountAsync`-Methode auf und geben das Ergebnis zurück.
 
-4. Drücken Sie erneut F5, um die geänderte Anwendung auszuführen. Wie zuvor startet Visual Studio automatisch den Browser zum Stamm des Webprojekts. Fügen Sie den „api/Values“-Pfad hinzu und der aktuelle Zählerwert sollte zurückgegeben werden.
+5. Drücken Sie erneut F5, um die geänderte Anwendung auszuführen. Wie zuvor startet Visual Studio automatisch den Browser zum Stamm des Webprojekts. Fügen Sie den „api/Values“-Pfad hinzu und der aktuelle Zählerwert sollte zurückgegeben werden.
 
     ![Anzeige des zustandsbehafteten Zählerwerts im Browser][browser-aspnet-counter-value]
 
@@ -212,13 +220,13 @@ Der zustandsbehaftete Dienst ist nun bereit, Datenverkehr von anderen Diensten z
 
 Dieses Tutorial konzentriert sich auf das Hinzufügen des Web-Front-Ends, das mit einem zustandsbehafteten Dienst kommuniziert. Allerdings können Sie ein sehr ähnliches Modell befolgen, um mit Akteuren zu sprechen. Das ist sogar einfacher.
 
-Wenn Sie ein Akteur-Projekt erstellen, generiert Visual Studio automatisch ein Schnittstellenprojekt für Sie. Diese Schnittstelle können Sie verwenden, um einen Akteur-Proxy im Webprojekt für die Kommunikation mit den Akteur zu generieren. Der Kommunikationskanal wird automatisch bereitgestellt. Es ist also nicht erforderlich, Vorgänge wie die Einrichtung eines `ServiceRemotingListener` wie beim zustandsbehafteten Dienst in diesem Tutorial durchzuführen.
+Wenn Sie ein Akteur-Projekt erstellen, generiert Visual Studio automatisch ein Schnittstellenprojekt für Sie. Diese Schnittstelle können Sie verwenden, um einen Akteur-Proxy im Webprojekt für die Kommunikation mit den Akteur zu generieren. Der Kommunikationskanal wird automatisch bereitgestellt. Es ist also nicht erforderlich, Vorgänge wie die `ServiceRemotingListener`-Einrichtung wie beim zustandsbehafteten Dienst in diesem Tutorial durchzuführen.
 
 ## Funktionsweise von Webdiensten auf Ihrem lokalen Cluster
 
 Im Allgemeinen können Sie genau die gleiche Service Fabric-Anwendung in einem Cluster mit mehreren Computern bereitstellen, die Sie auf dem lokalen Cluster bereitgestellt haben, und sicher sein, dass es wie erwartet funktioniert. Dies ist der Fall, da der lokale Cluster einfach eine Konfiguration mit fünf Knoten ist, die auf einen einzelnen Computer reduziert ist.
 
-Bei Webdiensten gibt es jedoch eine wichtige Nuance. Wenn sich Ihr Cluster wie in Azure hinter einem Load Balancer befindet, müssen Sie sicherstellen, dass Ihre Webdienste auf jedem Computer bereitgestellt werden, da der Load Balancer den Datenverkehr einfach auf die Computer verteilt. Dafür legen Sie den Sonderwert „-1“ für den `InstanceCount` des Diensts fest.
+Bei Webdiensten gibt es jedoch eine wichtige Nuance. Wenn sich Ihr Cluster wie in Azure hinter einem Load Balancer befindet, müssen Sie sicherstellen, dass Ihre Webdienste auf jedem Computer bereitgestellt werden, da der Load Balancer den Datenverkehr einfach auf die Computer verteilt. Legen Sie hierzu für den `InstanceCount` des Diensts den Sonderwert „-1“ fest.
 
 Im Gegensatz dazu müssen Sie, wenn Sie einen Webdienst lokal ausführen, sicherstellen, dass nur eine Instanz des Diensts ausgeführt wird. Andernfalls entstehen Konflikten aus mehreren Prozessen, die den Pfad und den Port überwachen. Daher sollte bei lokalen Bereitstellungen der Wert für die Webdienstinstanzen „1“ lauten.
 
@@ -240,9 +248,12 @@ Informationen zum Konfigurieren verschiedener Werte für andere Umgebungen finde
 [vs-add-class-library-reference]: ./media/service-fabric-add-a-web-frontend/vs-add-class-library-reference.png
 [vs-services-nuget-package]: ./media/service-fabric-add-a-web-frontend/vs-services-nuget-package.png
 [browser-aspnet-counter-value]: ./media/service-fabric-add-a-web-frontend/browser-aspnet-counter-value.png
+[vs-configuration-manager]: ./media/service-fabric-add-a-web-frontend/vs-configuration-manager.png
+[vs-create-platform]: ./media/service-fabric-add-a-web-frontend/vs-create-platform.png
+
 
 <!-- external links -->
 [dotnetcore-install]: https://www.microsoft.com/net/core#windows
 [api-management-landing-page]: https://azure.microsoft.com/de-DE/services/api-management/
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0810_2016-->

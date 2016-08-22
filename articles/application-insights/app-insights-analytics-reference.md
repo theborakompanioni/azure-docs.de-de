@@ -12,14 +12,14 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/07/2016" 
+	ms.date="08/09/2016" 
 	ms.author="awills"/>
 
 # Referenz für Analytics
 
 [Analytics](app-insights-analytics.md) ist die leistungsfähige Suchfunktion von [Application Insights](app-insights-overview.md). Auf diesen Seiten wird die Analytics-Abfragesprache beschrieben.
 
-> [AZURE.NOTE] [Testen Sie Analytics mit unseren simulierten Daten](https://analytics.applicationinsights.io/demo) wenn Ihre App noch keine Daten an Application Insights sendet.
+> [AZURE.NOTE] [Test drive Analytics on our simulated data]Führen Sie https://analytics.applicationinsights.io/demo aus, wenn Ihre App noch keine Daten an Application Insights sendet.
 
 ## Index
 
@@ -125,7 +125,7 @@ Mit der set-Klausel wird eine Option für die Dauer der Abfrage festgelegt. Mit 
 
 ## Abfragen und Operatoren
 
-Eine Abfrage in Ihrer Telemetrie besteht aus einen Verweis auf einen Quelldatenstrom, gefolgt von einer Pipeline von Filtern. Beispiel:
+Eine Abfrage in Ihrer Telemetrie besteht aus einen Verweis auf einen Quelldatenstrom, gefolgt von einer Pipeline von Filtern. Zum Beispiel:
 
 
 ```AIQL
@@ -910,7 +910,7 @@ Tabelle, die die Anzahl, durchschnittliche Anforderungsdauer und Menge von Städ
 
     T | summarize count() by price_range=bin(price, 10.0)
 
-Eine Tabelle, die zeigt, wie viele Elemente in jedem Intervall [0, 10,0], [10,0, 20,0] usw. Preise aufweisen. In diesem Beispiel ist eine Spalte für die Anzahl und eine für den Preisbereich vorhanden. Alle anderen Eingabespalten werden ignoriert.
+Eine Tabelle, die zeigt, wie viele Elemente in jedem Intervall [0, 10,0][10,0, 20,0] usw. Preise aufweisen. In diesem Beispiel ist eine Spalte für die Anzahl und eine für den Preisbereich vorhanden. Alle anderen Eingabespalten werden ignoriert.
 
 
 **Syntax**
@@ -1684,17 +1684,7 @@ Das ausgewertete Argument. Wenn das Argument eine Tabelle ist, wird die erste Sp
 || |
 |---|-------------|
 | + | Hinzufügen |
-| - | Subtrahieren |
-| * | Multiplizieren |
-| / | Dividieren |
-| % | Modulo |
-||
-| `<` | Kleiner 
-| `<=` | Kleiner gleich 
-| `>` | Größer 
-|`>=` | Größer gleich 
-| `<>` | Ungleich 
-| `!=` | Ungleich
+| - | Subtrahieren | | * | Multiplizieren | | / | Dividieren | | % | Modulo | || | `<` | Kleiner | `<=` | Kleiner gleich | `>` | Größer |`>=` | Größer gleich | `<>` | Ungleich | `!=` | Ungleich
 
 
 ### abs
@@ -2124,16 +2114,18 @@ Operator|Beschreibung|Groß-/Kleinschreibung|Beispiel für „True“
 `!~`|Ungleich |Nein| `"aBc" !~ "xyz"`
 `has`|Rechte Seite (RS) ist ein ganzer Begriff innerhalb der linken Seite (LS)|Nein| `"North America" has "america"`
 `!has`|RS ist kein vollständiger Begriff innerhalb der LS|Nein|`"North America" !has "amer"` 
-`hasprefix`|RS ist ein Begriffspräfix innerhalb der LS|Nein|`"North America" hasprefix "ame"`
-`!hasprefix`|RS ist kein Begriffspräfix innerhalb der LS|Nein|`"North America" !hasprefix "mer"`
-`contains` | RS tritt als Untersequenz der LS auf|Nein| `"FabriKam" contains "BRik"`
+`hasprefix`|RS ist ein Präfix eines Begriffs in LS|Nein|`"North America" hasprefix "ame"`
+`!hasprefix`|RS ist kein Präfix eines Begriffs in LS|Nein|`"North America" !hasprefix "mer"`
+`hassuffix`|RS ist ein Suffix eines Begriffs in LS|Nein|`"North America" hassuffix "rth"`
+`!hassuffix`|RS ist kein Suffix eines Begriffs in LS|Nein|`"North America" !hassuffix "mer"`
+`contains` | RS tritt als Teilzeichenfolge von LS auf|Nein| `"FabriKam" contains "BRik"`
 `!contains`| RS tritt nicht in LS auf|Nein| `"Fabrikam" !contains "xyz"`
-`containscs` | RS tritt als Untersequenz der LS auf|Ja| `"FabriKam" contains "Kam"`
+`containscs` | RS tritt als Teilzeichenfolge von LS auf|Ja| `"FabriKam" contains "Kam"`
 `!containscs`| RS tritt nicht in LS auf|Ja| `"Fabrikam" !contains "Kam"`
-`startswith`|RS ist eine anfängliche Untersequenz der LS|Nein|`"Fabrikam" startswith "fab"`
-`!startswith`|RS ist keine anfängliche Untersequenz der LS|Nein|`"Fabrikam" !startswith "abr"`
-`endswith`|RS ist eine abschließende Untersequenz der LS|Nein|`"Fabrikam" endswith "kam"`
-`!endswith`|RS ist keine abschließende Untersequenz der LS|Nein|`"Fabrikam" !endswith "ka"`
+`startswith`|RS ist eine anfängliche Teilzeichenfolge von LS|Nein|`"Fabrikam" startswith "fab"`
+`!startswith`|RS ist keine anfängliche Teilzeichenfolge von LS|Nein|`"Fabrikam" !startswith "abr"`
+`endswith`|RS ist eine abschließende Teilzeichenfolge von LS|Nein|`"Fabrikam" endswith "kam"`
+`!endswith`|RS ist keine abschließende Teilzeichenfolge von LS|Nein|`"Fabrikam" !endswith "ka"`
 `matches regex`|LS enthält eine Übereinstimmung für RS|Ja| `"Fabrikam" matches regex "b.*k"`
 `in`|Entspricht allen Elementen|Ja|`"abc" in ("123", "345", "abc")`
 `!in`|Entspricht keinem Element|Ja|`"bc" !in ("123", "345", "abc")`
@@ -2201,7 +2193,7 @@ Ruft eine Übereinstimmung für einen [regulären Ausdruck](#regular-expressions
 
 **Rückgabe**
 
-Wenn mit *regex* eine Übereinstimmung in *text* gefunden wird: Die mit der angegebenen Erfassungsgruppe *captureGroup* abgeglichene Teilzeichenfolge, optional konvertiert in *typeLiteral*.
+Wenn mit *regex* eine Übereinstimmung in *text* gefunden wird: die mit der angegebenen Erfassungsgruppe *captureGroup* abgeglichene Teilzeichenfolge, optional konvertiert in *typeLiteral*.
 
 Wenn keine Übereinstimmung vorhanden ist oder bei der Typkonvertierung ein Fehler auftritt: `null`.
 
@@ -2398,7 +2390,7 @@ Konvertiert eine Zeichenfolge in Großbuchstaben.
 [Literale](#dynamic-literals) | [Typumwandlung](#casting-dynamic-objects) | [Operatoren](#operators) | [let-Klauseln](#dynamic-objects-in-let-clauses) <br/> [arraylength](#arraylength) | [extractjson](#extractjson) | [parsejson](#parsejson) | [range](#range) | [treepath](#treepath) | [todynamic](#todynamic)
 
 
-Hier ist das Ergebnis einer Abfrage für eine Application Insights-Ausnahme. Der Wert unter `details` ist ein Array.
+Hier ist das Ergebnis einer Abfrage für eine Application Insights-Ausnahme. Der Wert in `details` ist ein Array.
 
 ![](./media/app-insights-analytics-reference/310.png)
 
@@ -2421,7 +2413,7 @@ Hier ist das Ergebnis einer Abfrage für eine Application Insights-Ausnahme. Der
     | summarize count() 
       by tostring(details[0].parsedStack[0].assembly)
 
-**Literale:** Um ein explizites Array oder ein Eigenschaftenbehälter-Objekt zu erstellen, schreiben Sie es als JSON-Zeichenfolge mit Typumwandlung:
+**Literale:** Um ein explizites Array oder ein Eigenschaftenbehälterobjekt zu erstellen, schreiben Sie es als JSON-Zeichenfolge mit Typumwandlung:
 
     todynamic('[{"x":"1", "y":"32"}, {"x":"6", "y":"44"}]')
 
@@ -2479,10 +2471,10 @@ Beachten Sie, dass mit `indexer` markiert wird, an welcher Stelle Sie einen nume
 
 Verwenden Sie `parsejson` zum Erstellen eines dynamischen Literals (Alias: `todynamic`) mit einem JSON-Zeichenfolgenargument:
 
-* `parsejson('[43, 21, 65]')`: Ein Array mit Zahlen
+* `parsejson('[43, 21, 65]')`: ein Array mit Zahlen
 * `parsejson('{"name":"Alan", "age":21, "address":{"street":432,"postcode":"JLK32P"}}')`
-* `parsejson('21')`: Ein einzelner Wert vom Typ „dynamic“ mit einer Zahl
-* `parsejson('"21"')`: Ein einzelner Wert vom Typ „dynamic“ mit einer Zeichenfolge
+* `parsejson('21')`: ein einzelner Wert vom Typ „dynamic“ mit einer Zahl
+* `parsejson('"21"')`: ein einzelner Wert vom Typ „dynamic“ mit einer Zeichenfolge
 
 Beachten Sie, dass bei JSON, im Gegensatz zu JavaScript, die Verwendung doppelter Anführungszeichen (`"`) um Zeichenfolgen unbedingt erforderlich ist. Daher ist es im Allgemeinen einfacher, ein JSON-codiertes Zeichenfolgenliteral mit einfachen Anführungszeichen (`'`) zu kennzeichnen.
 
@@ -2514,7 +2506,7 @@ T
 ### Dynamische Objekte in let-Klauseln
 
 
-[let-Klauseln](#let-clause) speichern dynamische Werte als Zeichenfolgen, sodass diese beiden Klauseln gleichwertig sind und beide vor der Verwendung `parsejson` (oder `todynamic`) benötigen:
+[let-Klauseln](#let-clause) speichern dynamische Werte als Zeichenfolgen, sodass diese beiden Klauseln gleichwertig sind. Beide benötigen vor der Verwendung `parsejson` (oder `todynamic`):
 
     let list1 = '{"a" : "somevalue"}';
     let list2 = parsejson('{"a" : "somevalue"}');
@@ -2722,4 +2714,4 @@ Geben Sie einen Namen mit ['... '] oder [" ... "] an, um andere Zeichen einzubez
 
 [AZURE.INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0810_2016-->

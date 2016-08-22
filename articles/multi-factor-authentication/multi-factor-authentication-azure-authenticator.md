@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/12/2016" 
+	ms.date="08/04/2016" 
 	ms.author="billmath"/>
 
 
@@ -77,7 +77,7 @@ Nachdem Sie der neuen App alle Konten hinzugefügt haben, deinstallieren Sie die
 
 ![Konto hinzufügen](./media/multi-factor-authentication-azure-authenticator/addaccount3.png)
 
-- Scannen Sie den Barcode. 
+- Scannen Sie den Barcode.
 
 ![Konto hinzufügen](./media/multi-factor-authentication-azure-authenticator/scan.png)
 
@@ -147,7 +147,7 @@ Wenn Sie andere Konten als ein Azure-Konto manuell hinzufügen möchten, z. B. 
 
 ![Konto hinzufügen](./media/multi-factor-authentication-azure-authenticator/msaccount.png)
 
-- Schließen Sie den Prozess ab, indem Sie den Code eingeben, der unter Ihrem Konto angezeigt wird (hier: 875 756). Geben Sie ihn in das Feld auf der Seite ein, über die Sie den geheimen Schlüssel erhalten haben, und klicken Sie auf „Weiter“.  
+- Schließen Sie den Prozess ab, indem Sie den Code eingeben, der unter Ihrem Konto angezeigt wird (hier: 875 756). Geben Sie ihn in das Feld auf der Seite ein, über die Sie den geheimen Schlüssel erhalten haben, und klicken Sie auf „Weiter“.
 
 ![Konto hinzufügen](./media/multi-factor-authentication-azure-authenticator/verify.png)
 
@@ -168,4 +168,4 @@ Um einzelne Konten aus der Azure Authenticator-App zu entfernen, tippen Sie einf
 
 ![Konto entfernen](./media/multi-factor-authentication-azure-authenticator/remove.png)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0810_2016-->

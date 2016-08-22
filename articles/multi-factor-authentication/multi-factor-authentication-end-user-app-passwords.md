@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/12/2016" 
+	ms.date="08/04/2016" 
 	ms.author="billmath"/>
 
 
@@ -44,11 +44,11 @@ Während der ersten Anmeldung wird ein App-Kennwort erstellt, das Sie direkt ver
 
 Verwendung von Multi-Factor Authentication|Beschreibung
 :------------- | :------------- | 
-<a href="#verwende">Ich verwende sie mit Office 365</a> | Erstellen Sie Ihre App-Kennwörter über das Office 365-Portal.
-<a href="#Natch">Nicht bekannt</a> |Erstellen Sie Ihre App-Kennwörter unter [https://myapps.microsoft.com](https://myapps.microsoft.com)
-<a href="#mit">Ich verwende sie mit Microsoft Azure</a>| Erstellen Sie Ihre App-Kennwörter über das Azure-Portal.
+[Ich verwende sie mit Office 365.](#creating-and-deleting-app-passwords-with-office-365)| Erstellen Sie Ihre App-Kennwörter über das Office 365-Portal.
+[Nicht bekannt](#creating-and-deleting-app-passwords-with-myapps-portal)|Erstellen Sie Ihre App-Kennwörter unter [https://myapps.microsoft.com](https://myapps.microsoft.com)
+[Ich verwende sie mit Microsoft Azure.](#create-app-passwords-in-the-azure-portal)| Erstellen Sie Ihre App-Kennwörter über das Azure-Portal.
 
-<h2 id="verwende">Erstellen und Löschen von App-Kennwörtern mit Office 365</h2> 
+## Erstellen und Löschen von App-Kennwörtern mit Office 365 
 
 Wenn Sie Multi-Factor Authentication mit Office 365 verwenden, können Sie App-Kennwörter über das Office 365-Portal erstellen und löschen.
 
@@ -81,12 +81,12 @@ Wenn Sie Multi-Factor Authentication mit Office 365 verwenden, können Sie App-
 9. Sobald das App-Kennwort gelöscht wurde, klicken Sie auf **Schließen**. ![Schließen](./media/multi-factor-authentication-end-user-app-passwords/delete3.png)
 
 
-<h2 id="Natch">Erstellen und Löschen von App-Kennwörtern mit Myapps-Portal.</h2>
+## Erstellen und Löschen von App-Kennwörtern mit Myapps-Portal.
 Wenn Sie nicht sicher sind, wie Sie die mehrstufige Authentifizierung verwenden, können Sie jederzeit ADN zum Löschen von App-Kenwörtern über das Portal "Meine Apps" erstellen.
 
 ### So erstellen Sie ein App-Kennwort mithilfe des Myapps-Portals
 
-1. Melden Sie sich an bei [https://myapps.microsoft.com](https://myapps.microsoft.com).	
+1. Melden Sie sich an bei [https://myapps.microsoft.com](https://myapps.microsoft.com).
 2. Wählen Sie oben das Profil aus.
 3. Klicken Sie auf "Zusätzliche Sicherheitsüberprüfung". ![Cloud](./media/multi-factor-authentication-end-user-manage/myapps1.png)
 4. Dadurch gelangen Sie zu der Seite, auf der Sie Ihre Einstellungen ändern können. ![Einrichtung](./media/multi-factor-authentication-end-user-manage-myapps/proofup.png)
@@ -97,7 +97,7 @@ Wenn Sie nicht sicher sind, wie Sie die mehrstufige Authentifizierung verwenden,
 
 ### So löschen Sie ein App-Kennwort mithilfe des Myapps-Portals
 
-1. Melden Sie sich an bei [https://myapps.microsoft.com](https://myapps.microsoft.com).	
+1. Melden Sie sich an bei [https://myapps.microsoft.com](https://myapps.microsoft.com).
 2. Wählen Sie oben das Profil aus.
 3. Klicken Sie auf "Zusätzliche Sicherheitsüberprüfung". ![Cloud](./media/multi-factor-authentication-end-user-manage/myapps1.png)
 4. Dadurch gelangen Sie zu der Seite, auf der Sie Ihre Einstellungen ändern können. ![Einrichtung](./media/multi-factor-authentication-end-user-manage-myapps/proofup.png)
@@ -107,7 +107,7 @@ Wenn Sie nicht sicher sind, wie Sie die mehrstufige Authentifizierung verwenden,
 8. Sobald das App-Kennwort gelöscht wurde, klicken Sie auf **Schließen**. ![Schließen](./media/multi-factor-authentication-end-user-app-passwords/delete3.png)
 
 
-<h2 id="mit">Erstellen von App-Kennwörtern im Azure-Portal</h2>
+## Erstellen von App-Kennwörtern im Azure-Portal
 
 Wenn Sie Multi-Factor Authentication mit Azure verwenden, können Sie App-Kennwörter über das Azure-Portal erstellen.
 
@@ -129,4 +129,4 @@ Wenn Sie Multi-Factor Authentication mit Azure verwenden, können Sie App-Kennw�
 5. Bestätigen Sie den Löschvorgang mit **Ja**.
 6. Sobald das App-Kennwort gelöscht wurde, klicken Sie auf **Schließen**. ![Schließen](./media/multi-factor-authentication-end-user-app-passwords/delete3.png)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0810_2016-->

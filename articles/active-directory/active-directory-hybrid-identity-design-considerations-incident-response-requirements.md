@@ -1,10 +1,10 @@
 
 <properties
-	pageTitle="Überlegungen zum Entwurf der Azure Active Directory-Hybrid-Identität – Bestimmen der Anforderungen an Reaktionen auf Vorfälle | Microsoft Azure-Anforderungen"
+	pageTitle="Überlegungen zum Entwurf der Azure Active Directory-Hybrid-Identität – Bestimmen der Anforderungen an Reaktionen auf Vorfälle | Microsoft Azure-Anforderungen "
 	description="Ermitteln Sie für die Hybrid-Identitätslösung die Funktionen für Überwachung und Meldung, die von der IT-Abteilung genutzt werden können, um Maßnahmen zur Identifizierung und Minimierung einer potenziellen Bedrohung zu ergreifen."
 	documentationCenter=""
 	services="active-directory"
-	authors="yuridio"
+	authors="billmath"
 	manager="stevenpo"
 	editor=""/>
 
@@ -14,8 +14,8 @@
 	ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="identity" 
-	ms.date="04/28/2016"
-	ms.author="yuridio"/>
+	ms.date="08/08/2016"
+	ms.author="billmath"/>
 
 # Bestimmen der Anforderungen an Reaktionen auf Vorfälle für Ihre Hybrid-Identitätslösung
 
@@ -52,7 +52,7 @@ Während der Phase der Schadensbegrenzung und Risikominderung ist es wichtig, di
 
 - Verfügt Ihr Unternehmen über Richtlinien, mit denen für Benutzer der Zugriff auf das Netzwerk bei Bedarf blockiert werden kann?
  - Wenn ja: Kann die aktuelle Lösung in das System für die Hybrid-Identitätsverwaltung integriert werden, das Sie einführen möchten?
-- Muss Ihr Unternehmen den bedingten Zugriff für Benutzer durchsetzen, die sich in Quarantäne befinden? 
+- Muss Ihr Unternehmen den bedingten Zugriff für Benutzer durchsetzen, die sich in Quarantäne befinden?
  
 >[AZURE.NOTE]
 Notieren Sie sich alle Antworten, und stellen Sie sicher, dass Ihnen die Begründung der Antwort jeweils klar ist. Unter [Definieren der Strategie zum Schutz von Daten](active-directory-hybrid-identity-design-considerations-data-protection-strategy.md) sind die verfügbaren Optionen und die jeweiligen Vor- und Nachteile beschrieben. Indem Sie diese Fragen beantworten, wählen Sie aus, welche Option Ihre Geschäftsanforderungen am besten erfüllt.
@@ -63,4 +63,4 @@ Notieren Sie sich alle Antworten, und stellen Sie sicher, dass Ihnen die Begrün
 ## Weitere Informationen
 [Überlegungen zum Entwurf – Übersicht](active-directory-hybrid-identity-design-considerations-overview.md)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0810_2016-->

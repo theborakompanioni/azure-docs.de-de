@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/17/2016"
+   ms.date="08/10/2016"
    ms.author="adegeo"/>
 
 # Installieren von .NET in einer Clouddienstrolle 
@@ -29,7 +29,7 @@ Die Installation von .NET auf ihren Web- und Workerrollen schließt die Erfassun
   1. Klicken Sie im **Projektmappen-Explorer** unter **Rollen** im Clouddienstprojekt mit der rechten Maustaste auf Ihre Rolle, und wählen Sie **Hinzufügen > Neuer Ordner** aus. Erstellen Sie einen Ordner mit dem Namen *bin*.
   2. Klicken Sie mit der rechten Maustaste auf den Ordner **bin**, und wählen Sie **Hinzufügen > Vorhandenes Element** aus. Wählen Sie das Installationsprogramm für .NET aus und fügen Sie es dem Ordner "Bin" hinzu.
 - Für eine Workerrolle
-  1. Klicken Sie mit der rechten Maustaste auf Ihre Rolle, und wählen Sie **Hinzufügen > Vorhandenes Element** aus. Wählen Sie das Installationsprogramm für .NET aus und fügen Sie zur Rolle hinzu. 
+  1. Klicken Sie mit der rechten Maustaste auf Ihre Rolle, und wählen Sie **Hinzufügen > Vorhandenes Element** aus. Wählen Sie das Installationsprogramm für .NET aus und fügen Sie zur Rolle hinzu.
 
 Dateien, die auf diese Weise dem Inhaltsordner "Rolle" hinzugefügt werden, werden automatisch dem Clouddienstpaket hinzugefügt und an einem einheitlichen Ort auf dem virtuellen Computer bereitgestellt. Wiederholen Sie diesen Vorgang für alle Web- und Workerrollen in Ihrem Clouddienst, sodass alle Rollen über eine Kopie des Installationsprogramms verfügen.
 
@@ -183,4 +183,4 @@ Wenn Sie Ihren Dienst bereitstellen, wird die Startaufgabe ausgeführt und das .
 
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0810_2016-->

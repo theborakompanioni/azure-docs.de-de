@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/19/2016"
+   ms.date="08/09/2016"
    ms.author="yurid"/>
 
 # Datenklassifizierung für Azure
@@ -26,9 +26,9 @@ Für die erfolgreiche Datenklassifizierung in einer Organisation sind ein starke
  
 Daten sind in einem von drei Grundzuständen vorhanden:
 
-- Im Ruhezustand 
-- In Bearbeitung 
-- Während der Übertragung 
+- Im Ruhezustand
+- In Bearbeitung
+- Während der Übertragung
  
 Für alle drei Zustände sind eindeutige technische Lösungen für die Datenklassifizierung erforderlich, aber die angewendeten Prinzipien für die Datenklassifizierung sollten jeweils gleich sein. Daten, die als vertraulich klassifiziert werden, müssen auch im Ruhezustand, während der Bearbeitung und während der Übertragung vertraulich bleiben.
  
@@ -70,7 +70,7 @@ Auch wenn Sie selbst für die Klassifizierung Ihrer Daten verantwortlich sind, s
 
 - Die Anforderungen an **IaaS-Anbieter** beschränken sich darauf sicherzustellen, dass die virtuelle Umgebung Funktionen zur Datenklassifizierung bietet und die Complianceanforderungen der Kunden erfüllt. IaaS-Anbieter spielen eine kleinere Rolle bei der Datenklassifizierung, da sie nur dafür sorgen müssen, dass für Kundendaten die Complianceanforderungen erfüllt werden. Trotzdem müssen die Anbieter aber sicherstellen, dass in ihren virtuellen Umgebungen die Anforderungen an die Datenklassifizierung erfüllt werden und die Rechenzentren ausreichend geschützt sind.
 - Die Zuständigkeiten von **PaaS-Anbietern** lassen sich nicht eindeutig festlegen, da die Plattform auch für einen Ansatz mit Schichten verwendet werden kann, um Sicherheit für ein Klassifizierungstool zu bieten. PaaS-Anbieter sind für die Authentifizierung und ggf. einige Autorisierungsregeln zuständig und müssen Funktionen für die Sicherheit und Datenklassifizierung für ihre Anwendungsebene bereitstellen. Ähnlich wie IaaS-Anbieter auch, müssen PaaS-Anbieter sicherstellen, dass ihre Plattform alle relevanten Anforderungen an die Datenklassifizierung erfüllt.
-- **SaaS-Anbieter** werden häufig als Teil einer Autorisierungskette angesehen und müssen sicherstellen, dass die in der SaaS-Anwendung gespeicherten Daten nach dem Klassifizierungstyp gesteuert werden können. SaaS-Anwendungen können für Branchenanwendungen verwendet werden und müssen gemäß ihrer Bestimmung die Mittel zum Authentifizieren und Autorisieren von Daten bereitstellen, die verwendet und gespeichert werden. 
+- **SaaS-Anbieter** werden häufig als Teil einer Autorisierungskette angesehen und müssen sicherstellen, dass die in der SaaS-Anwendung gespeicherten Daten nach dem Klassifizierungstyp gesteuert werden können. SaaS-Anwendungen können für Branchenanwendungen verwendet werden und müssen gemäß ihrer Bestimmung die Mittel zum Authentifizieren und Autorisieren von Daten bereitstellen, die verwendet und gespeichert werden.
 
 ## Klassifizierungsprozess 
 
@@ -78,10 +78,10 @@ Viele Organisationen, die die Wichtigkeit der Datenklassifizierung verstanden ha
 
 Eine effektive und einfache Möglichkeit zum Implementieren der Datenklassifizierung ist die Verwendung des Modells „PLAN, DO, CHECK, ACT“ unter [MOF](https://technet.microsoft.com/solutionaccelerators/dd320379.aspx). In der folgenden Abbildung sind die Aufgaben dargestellt, die zum erfolgreichen Implementieren der Datenklassifizierung bei diesem Modell durchgeführt werden müssen.
 
-1. **PLAN (PLANEN)**: Hier werden Datenassets und ein Datenverwalter zum Bereitstellen des Klassifizierungsprogramms identifiziert und Schutzprofile entwickelt. 
-2. **DO (DURCHFÜHREN)**: Nachdem die Richtlinien für die Datenklassifizierung vereinbart wurden, stellen Sie das Programm bereit und implementieren nach Bedarf Durchsetzungstechnologien für vertrauliche Daten.  
-3. **CHECK (PRÜFEN)**: Überprüfen und validieren Sie Berichte, um sicherzustellen, dass die verwendeten Tools und Methoden wirklich für die Klassifizierungsrichtlinien geeignet sind. 
-4. **ACT (HANDELN)**: Überprüfen Sie den Status des Datenzugriffs sowie Dateien und Daten, für die dies erforderlich ist, indem Sie eine Methodik für die Neuklassifizierung und Überprüfung verwenden, um Änderungen zu übernehmen und neuen Risiken zu begegnen.  
+1. **PLAN (PLANEN)**: Hier werden Datenassets und ein Datenverwalter zum Bereitstellen des Klassifizierungsprogramms identifiziert und Schutzprofile entwickelt.
+2. **DO (DURCHFÜHREN)**: Nachdem die Richtlinien für die Datenklassifizierung vereinbart wurden, stellen Sie das Programm bereit und implementieren nach Bedarf Durchsetzungstechnologien für vertrauliche Daten.
+3. **CHECK (PRÜFEN)**: Überprüfen und validieren Sie Berichte, um sicherzustellen, dass die verwendeten Tools und Methoden wirklich für die Klassifizierungsrichtlinien geeignet sind.
+4. **ACT (HANDELN)**: Überprüfen Sie den Status des Datenzugriffs sowie Dateien und Daten, für die dies erforderlich ist, indem Sie eine Methodik für die Neuklassifizierung und Überprüfung verwenden, um Änderungen zu übernehmen und neuen Risiken zu begegnen.
 
 ![Plan, Do, Check, Act](./media/azure-security-data-classification/azure-security-data-classification-fig3.png)
  
@@ -103,11 +103,11 @@ In diesem Artikel werden zwei verallgemeinerte Terminologiemodelle eingeführt, 
 
 Informationen, die als vertraulich oder eingeschränkt klassifiziert sind, sind beispielsweise Daten, bei denen sich katastrophale Folgen für Personen bzw. Organisationen ergeben, wenn sie kompromittiert werden oder verloren gehen. Informationen dieser Art werden häufig nach dem Schema „Need to know“ bereitgestellt und können Folgendes umfassen:
 
-- Persönliche Daten, z.B. personenbezogene Informationen wie Sozialversicherungsnummer oder Personalausweisnummer, Reisepassnummer, Kreditkartennummer, Führerscheinnummer, medizinische Daten und Nummer der Krankenversicherungskarte.  
-- Finanzdaten, z.B. Kontonummern von Giro- oder Sparkonten. 
-- Geschäftliche Daten, z.B. Dokumente oder Daten, bei denen es sich um Originale oder spezielles geistiges Eigentum handelt.  
-- Rechtliche Daten, z.B. anwaltsvertrauliche Unterlagen. 
-- Authentifizierungsdaten, z.B. private Verschlüsselungsschlüssel, Benutzername/Kennwort-Paare oder andere Identifizierungssequenzen wie Dateien mit privaten biometrischen Schlüsseln. 
+- Persönliche Daten, z.B. personenbezogene Informationen wie Sozialversicherungsnummer oder Personalausweisnummer, Reisepassnummer, Kreditkartennummer, Führerscheinnummer, medizinische Daten und Nummer der Krankenversicherungskarte.
+- Finanzdaten, z.B. Kontonummern von Giro- oder Sparkonten.
+- Geschäftliche Daten, z.B. Dokumente oder Daten, bei denen es sich um Originale oder spezielles geistiges Eigentum handelt.
+- Rechtliche Daten, z.B. anwaltsvertrauliche Unterlagen.
+- Authentifizierungsdaten, z.B. private Verschlüsselungsschlüssel, Benutzername/Kennwort-Paare oder andere Identifizierungssequenzen wie Dateien mit privaten biometrischen Schlüsseln.
 
 Für Daten, die als vertraulich klassifiziert sind, gelten in Bezug auf die Handhabung häufig regulatorische und auf die Compliance bezogene Anforderungen.
 
@@ -115,7 +115,7 @@ Für Daten, die als vertraulich klassifiziert sind, gelten in Bezug auf die Hand
  
 Informationen, die als Daten mittlerer Vertraulichkeit klassifiziert werden, sind Dateien und Daten, bei denen sich für Personen bzw. Organisationen keine schwerwiegenden Auswirkungen ergeben, wenn sie verloren gehen oder zerstört werden. Beispiele für Informationen dieser Art sind:
 
-- E-Mails, die meist gelöscht oder verteilt werden können, ohne dass dies zu kritischen Situationen führt (mit Ausnahme von Postfächern oder E-Mails von Personen, die im Rahmen der vertraulichen Klassifizierung angegeben sind).  
+- E-Mails, die meist gelöscht oder verteilt werden können, ohne dass dies zu kritischen Situationen führt (mit Ausnahme von Postfächern oder E-Mails von Personen, die im Rahmen der vertraulichen Klassifizierung angegeben sind).
 - Dokumente und Dateien, die keine vertraulichen Daten enthalten.
  
 In der Regel umfasst diese Klassifizierung alle Daten, die nicht vertraulich sind. Diese Klassifizierung kann den Großteil der geschäftlichen Daten umfassen, da die meisten Dateien, die täglich verwaltet oder genutzt werden, als sensibel klassifiziert werden können. Mit Ausnahme von Daten, die öffentlich zugänglich oder vertraulich sind, können alle Daten eines Unternehmens standardmäßig als „sensibel“ klassifiziert werden.
@@ -134,7 +134,7 @@ Es ist wichtig, für alle Datenassets eine eindeutige Besitzerkette einzurichten
 | Verwalter | | | X | | |
 | Administrator | | | | | X |
 | Benutzer* | | X | | X | |
-****Benutzern können von einem Verwalter zusätzliche Rechte gewährt werden, z.B. Bearbeiten und Löschen*
+**Benutzern können von einem Verwalter zusätzliche Rechte gewährt werden, z.B. Bearbeiten und Löschen.*
 
 > [AZURE.NOTE] Diese Tabelle enthält keine vollständige Liste der Rollen und Rechte, sondern nur einen repräsentativen Ausschnitt.
 
@@ -144,12 +144,12 @@ Der **Datenassetbesitzer** ist der ursprüngliche Ersteller der Daten, der die E
 
 Der **Datenassetverwalter** wird vom Assetbesitzer (oder einer Person, an die diese Aufgabe delegiert wurde) zugewiesen, damit das Asset gemäß der Vereinbarung mit dem Assetbesitzer oder gemäß den geltenden Richtlinienanforderungen verwaltet werden kann. Idealerweise kann die Verwalterrolle in einem automatisierten System implementiert werden. Durch einen Assetverwalter wird sichergestellt, dass die erforderlichen Zugriffssteuerungen vorhanden sind, und er ist dafür verantwortlich, an ihn delegierte Assets zu verwalten und zu schützen. Für den Assetverwalter können folgende Zuständigkeiten gelten:
 
-- Schützen des Assets gemäß Anweisung des Assetbesitzers bzw. laut Vereinbarung mit dem Assetbesitzer 
-- Sicherstellen der Einhaltung von Klassifizierungsrichtlinien 
-- Informieren von Assetbesitzern über Änderungen an vereinbarten Kontrollen oder Schutzmaßnahmen, bevor diese Änderungen wirksam werden 
-- Melden von Änderungen oder des Wegfalls der Zuständigkeiten des Assetverwalters an den Assetbesitzer 
-- Ein **Administrator** ist ein Benutzer, der sicherstellen muss, dass die Integrität gewahrt wird, aber er ist kein Datenassetbesitzer, -verwalter oder -benutzer. Bei vielen Administratorrollen werden Datencontainer-Verwaltungsdienste bereitgestellt, ohne dass Zugriff auf die Daten besteht. Die Administratorrolle umfasst die Sicherung und Wiederherstellung von Daten, das Verwalten der Datensätze für die Assets und das Auswählen, Beschaffen und Betreiben der Geräte und des Speichers mit den Assets. 
-- Als Assetbenutzer gelten alle Personen, denen der Zugriff auf die Daten oder eine Datei gewährt wird. Die Zugriffszuweisung wird vom Besitzer häufig an den Datenverwalter delegiert.  
+- Schützen des Assets gemäß Anweisung des Assetbesitzers bzw. laut Vereinbarung mit dem Assetbesitzer
+- Sicherstellen der Einhaltung von Klassifizierungsrichtlinien
+- Informieren von Assetbesitzern über Änderungen an vereinbarten Kontrollen oder Schutzmaßnahmen, bevor diese Änderungen wirksam werden
+- Melden von Änderungen oder des Wegfalls der Zuständigkeiten des Assetverwalters an den Assetbesitzer
+- Ein **Administrator** ist ein Benutzer, der sicherstellen muss, dass die Integrität gewahrt wird, aber er ist kein Datenassetbesitzer, -verwalter oder -benutzer. Bei vielen Administratorrollen werden Datencontainer-Verwaltungsdienste bereitgestellt, ohne dass Zugriff auf die Daten besteht. Die Administratorrolle umfasst die Sicherung und Wiederherstellung von Daten, das Verwalten der Datensätze für die Assets und das Auswählen, Beschaffen und Betreiben der Geräte und des Speichers mit den Assets.
+- Als Assetbenutzer gelten alle Personen, denen der Zugriff auf die Daten oder eine Datei gewährt wird. Die Zugriffszuweisung wird vom Besitzer häufig an den Datenverwalter delegiert.
 
 ### Implementierung
   
@@ -167,8 +167,8 @@ Idealerweise wird hierbei sichergestellt, dass die Details einer Änderung erfas
  
 Bei der automatischen Neuklassifizierung der Daten wird die gleiche allgemeine Regel wie bei der manuellen Klassifizierung verwendet. Der Unterschied besteht darin, dass mit automatisierten Lösungen sichergestellt werden kann, dass Regeln eingehalten und bei Bedarf angewendet werden können. Die Datenklassifizierung kann im Rahmen einer Richtlinie zur Durchsetzung der Datenklassifizierung erfolgen. Sie kann angewendet werden, wenn Daten gespeichert, verwendet und übertragen werden, indem Autorisierungstechnologie eingesetzt wird.
 
-- Anwendungsbasiert: Wenn standardmäßig bestimmte Anwendungen genutzt werden, wird eine Klassifizierungsebene festgelegt. Daten, die aus einer CRM-Software (Customer Relationship Management), Personaldaten-Software und aus Datenverwaltungstools stammen, sind standardmäßig vertraulich. 
-- Standortbasiert: Der Datenstandort kann zur Identifizierung der Vertraulichkeit von Daten herangezogen werden. Daten, die von einer Personalabteilung oder Finanzabteilung gespeichert werden, sind eher vertraulicher Art.  
+- Anwendungsbasiert: Wenn standardmäßig bestimmte Anwendungen genutzt werden, wird eine Klassifizierungsebene festgelegt. Daten, die aus einer CRM-Software (Customer Relationship Management), Personaldaten-Software und aus Datenverwaltungstools stammen, sind standardmäßig vertraulich.
+- Standortbasiert: Der Datenstandort kann zur Identifizierung der Vertraulichkeit von Daten herangezogen werden. Daten, die von einer Personalabteilung oder Finanzabteilung gespeichert werden, sind eher vertraulicher Art.
  
 ### Aufbewahrung, Wiederherstellung und Ausmusterung von Daten 
 
@@ -200,9 +200,9 @@ Eine Lösung zur Verhinderung von Datenverlusten ist die Rights Management-Softw
 
 Beispiele für Vorteile der Rights Management-Software:
 
-- Sensible Informationen sind geschützt. Benutzer können ihre Daten direkt mit Anwendungen schützen, die für Rights Management geeignet sind. Es sind keine zusätzlichen Schritte erforderlich: Die Erstellung von Dokumenten, das Senden von E-Mails und das Veröffentlichen von Daten ist in einer einheitlichen Schutzumgebung möglich. 
-- Der Schutz wird quasi mit den Daten übertragen. Kunden behalten die Kontrolle darüber, wer Zugriff auf die Daten hat – ob in der Cloud, der vorhandenen IT-Infrastruktur oder auf dem Desktop des Benutzers. Organisationen können ihre Daten verschlüsseln und den Zugriff darauf gemäß ihren geschäftlichen Anforderungen beschränken. 
-- Standardmäßige Richtlinien für den Schutz von Informationen. Administratoren und Benutzer können Standardrichtlinien für viele gängige Geschäftsszenarien nutzen, z.B. „Firma (vertraulich) – Schreibgeschützt“ und „Nicht weiterleiten“. Es werden umfassende Nutzungsrechte unterstützt, z.B. Lesen, Kopieren, Drucken, Speichern, Bearbeiten und Weiterleiten, um für Flexibilität beim Definieren von benutzerdefinierten Nutzungsrechten zu sorgen. 
+- Sensible Informationen sind geschützt. Benutzer können ihre Daten direkt mit Anwendungen schützen, die für Rights Management geeignet sind. Es sind keine zusätzlichen Schritte erforderlich: Die Erstellung von Dokumenten, das Senden von E-Mails und das Veröffentlichen von Daten ist in einer einheitlichen Schutzumgebung möglich.
+- Der Schutz wird quasi mit den Daten übertragen. Kunden behalten die Kontrolle darüber, wer Zugriff auf die Daten hat – ob in der Cloud, der vorhandenen IT-Infrastruktur oder auf dem Desktop des Benutzers. Organisationen können ihre Daten verschlüsseln und den Zugriff darauf gemäß ihren geschäftlichen Anforderungen beschränken.
+- Standardmäßige Richtlinien für den Schutz von Informationen. Administratoren und Benutzer können Standardrichtlinien für viele gängige Geschäftsszenarien nutzen, z.B. „Firma (vertraulich) – Schreibgeschützt“ und „Nicht weiterleiten“. Es werden umfassende Nutzungsrechte unterstützt, z.B. Lesen, Kopieren, Drucken, Speichern, Bearbeiten und Weiterleiten, um für Flexibilität beim Definieren von benutzerdefinierten Nutzungsrechten zu sorgen.
 
 > [AZURE.TIP] Sie können Daten in Azure Storage schützen, indem Sie [Azure Storage Service Encryption](../storage/storage-service-encryption.md) für ruhende Daten verwenden. Außerdem können Sie [Azure Disk Encryption](azure-security-disk-encryption.md) verwenden, um Daten zu schützen, die auf virtuellen Datenträgern für Azure Virtual Machines gespeichert sind.
 
@@ -223,20 +223,20 @@ Mit Technologien zur Verhinderung von Datenverlusten (Data Loss Prevention, DLP)
  
 Mit DLP-Technologien können eingehende Inhaltsanalysen per Schlüsselwortabgleich, Wörterbuchabgleich, Auswertung regulärer Ausdrücke und anderen Inhaltsuntersuchungen durchgeführt werden, um Inhalte zu erkennen, die zu Verletzungen der DLP-Richtlinien des Unternehmens führen. Beispielsweise kann mit DLP dazu beigetragen werden, dass der Verlust der folgenden Datentypen verhindert wird:
 
-- Sozialversicherungsnummer und Personalausweisnummer 
-- Bankdaten 
-- Kreditkartennummer  
-- IP-Adressen 
+- Sozialversicherungsnummer und Personalausweisnummer
+- Bankdaten
+- Kreditkartennummer
+- IP-Adressen
 
 Bei einigen DLP-Technologien besteht auch die Möglichkeit, die DLP-Konfiguration außer Kraft zu setzen (wenn eine Organisation beispielsweise die US-Sozialversicherungsnummer an ein Unternehmen übertragen muss, das mit der Gehaltsabrechnung beauftragt ist). Außerdem ist es möglich, DLP so zu konfigurieren, dass Benutzer schon vor dem Versuch benachrichtigt werden, sensible Informationen zu senden, die nicht übertragen werden dürfen.
 
 > [AZURE.TIP] Sie können DLP-Funktionen von Office 365 nutzen, um Ihre Dokumente zu schützen. Weitere Informationen finden Sie unter [Office 365 compliance controls: Data Loss Prevention](https://blogs.office.com/2013/10/28/office-365-compliance-controls-data-loss-prevention/) (Office 365-Compliancesteuerung: Verhindern von Datenverlusten).
 
-## Weitere Informationen
+## Siehe auch
 
 - [Azure-Datenverschlüsselung – Bewährte Methoden](azure-security-data-encryption-best-practices.md)
 - [Azure-Identitätsverwaltung und Sicherheit der Zugriffssteuerung – Bewährte Methoden](azure-security-identity-management-best-practices.md)
 - [Blog des Azure-Sicherheitsteams](http://blogs.msdn.com/b/azuresecurity/)
 - [Microsoft Security Response Center](https://technet.microsoft.com/library/dn440717.aspx)
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0810_2016-->

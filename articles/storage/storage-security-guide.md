@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="06/16/2016"
+	ms.date="08/03/2016"
 	ms.author="robinsh"/>
 
 #Azure Storage-Sicherheitsleitfaden
@@ -196,7 +196,7 @@ Hinweis: Sie sollten nur jeweils einen der Schlüssel gleichzeitig in allen Ihre
 
 ##Die Sicherheit auf Datenebene
 
-Sicherheit auf Datenebene bezieht sich auf die Methoden zum Schützen der in Azure Storage gespeicherten Datenobjekte – Blobs, Warteschlangen, Tabellen und Dateien. Wir haben Methoden zum Verschlüsseln der Daten und die Sicherheit bei der Übertragung der Daten kennen gelernt, aber wie ermöglichen Sie den Zugriff auf die Objekte?
+Sicherheit auf Datenebene bezieht sich auf die Methoden zum Schützen der in Azure Storage gespeicherten Datenobjekte – Blobs, Warteschlangen, Tabellen und Dateien. Wir haben Methoden zum Verschlüsseln der Daten und die Sicherheit bei der Übertragung der Daten kennengelernt, aber wie ermöglichen Sie den Zugriff auf die Objekte?
 
 Es gibt im Grunde zwei Methoden, den Zugriff auf die Datenobjekte selbst zu steuern. Die erste ist die Steuerung des Zugriffs auf die Schlüssel des Speicherkontos und die zweite die Verwendung von Shared Access Signatures, um den Zugriff auf bestimmte Datenobjekte für einen bestimmten Zeitraum zu gewähren.
 
@@ -496,7 +496,7 @@ Sie sehen, dass Sie mit den Protokollen jede Art von Aufrufen eines Speicherkont
 
 ####Wofür sind alle diese Felder bestimmt?
 
-Dies ist ein in den nachstehenden Ressourcen aufgelisteter Artikel, der die Liste der vielen Felder, die in den Protokollen enthalten sind, und deren Verwendung enthält. Hier sehen Sie die Liste der Felder in der richtigen Reihenfolge:
+In den nachstehenden Ressourcen ist ein Artikel aufgeführt, der die Liste der vielen Felder in den Protokollen und Informationen zu ihrer Verwendung enthält. Hier sehen Sie die Liste der Felder in der richtigen Reihenfolge:
 
 ![Momentaufnahme von Feldern einer Protokolldatei](./media/storage-security-guide/image3.png)
 
@@ -516,7 +516,7 @@ Drei Fälle interessieren uns.
 
     1\.0;2015-11-16T18:30:05.6556115Z;GetBlob;**SASSuccess**;200;416;64;**sas**;;mystorage…
 
-3.  Das Blob ist privat, und der Speicherschlüssel wurde verwendet, um darauf zuzugreifen. In diesem Fall ist der „request-status“ „**Success**“ und der „authorization-type“ „**authenticated**“.
+3.  Das Blob ist privat, und der Speicherschlüssel wurde verwendet, um darauf zuzugreifen. In diesem Fall wird **Success** für „request-status“ und **authenticated** für „authorization-type“ angezeigt.
 
     1\.0;2015-11-16T18:32:24.3174537Z;GetBlob;**Success**;206;59;22;**authenticated**;mystorage…
 
@@ -634,4 +634,4 @@ Weitere Informationen zu CORS und zur CORS-Aktivierung finden Sie in diesen Ress
 
 	Dieser Artikel behandelt die Verwendung des FIPS-Modus auf älteren Windows-Computern.
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0810_2016-->

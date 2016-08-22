@@ -3,7 +3,7 @@
    description="Diese Seite enthält Anweisungen zum Erstellen und Konfigurieren eines Azure Application Gateways mit URL-Routingregeln."
    documentationCenter="na"
    services="application-gateway"
-   authors="joaoma"
+   authors="georgewallace"
    manager="jdial"
    editor="tysonn"/>
 <tags
@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="02/10/2016"
-   ms.author="joaoma"/>
+   ms.author="gwallace"/>
 
 
 # Erstellen eines Application Gateways mit Routing auf URL-Basis 
@@ -22,18 +22,18 @@ Mit Routing auf URL-Pfadbasis können Sie Routen basierend auf URL-Pfad oder Htt
 
 Mit Routing auf URL-Basis wird ein neuer Regeltyp für das Application Gateway eingeführt. Das Application Gateway hat 2 Regeltypen: Basisrouting und PathBasedRouting. Der Basisregeltyp bietet einen Roundrobin-Dienst für die Back-End-Pools, während PathBasedRouting neben der Roundrobin-Verteilung auch Pfadmuster der Anforderungs-URL beim Auswählen des Back-End-Pools berücksichtigt.
 
->[AZURE.IMPORTANT] PathPattern: Die Liste der abzustimmenden Pfadmuster. Jedes muss mit „/“ beginnen, und ein „*“ ist nur am Ende zulässig. Gültige Beispiele sind „/xyz“, „/xyz*“ oder „/xyz/*“. Die Zeichenfolge, die dem Pfadabgleicher eingegeben wird, enthält keinen Text nach dem ersten „?“ oder „#“, und diese Zeichen sind nicht zulässig.
+>[AZURE.IMPORTANT] PathPattern: Die Liste der abzustimmenden Pfadmuster. Jedes muss mit „/“ beginnen, und ein * ist nur am Ende zulässig. Gültige Beispiele sind „/xyz“, „/xyz*“ oder „/xyz/*“. Die Zeichenfolge, die dem Pfadabgleicher eingegeben wird, enthält keinen Text nach dem ersten „?“ oder „#“, und diese Zeichen sind nicht zulässig.
 
 ## Szenario
 Im folgenden Beispiel verarbeitet das Application Gateway Datenverkehr für „contoso.com“ mit zwei Back-End-Pools: Video-Serverpool und Image-Serverpool.
 
-Anforderungen für http://contoso.com/image* werden an den Image-Serverpool (pool1) und Anforderungen für http://contoso.com/video* an den Video-Serverpool (pool2) weitergeleitet. Ein Standard-Serverpool (pool1) wird ausgewählt, wenn keines der Pfadmuster zutrifft.
+Anforderungen für http://contoso.com/image* werden an den Imageserverpool (pool1) und Anforderungen für http://contoso.com/video* an den Videoserverpool (pool2) weitergeleitet. Ein Standard-Serverpool (pool1) wird ausgewählt, wenn keines der Pfadmuster zutrifft.
 
 ![URL-Route](./media/application-gateway-create-url-route-arm-ps/figure1.png)
 
 ## Voraussetzungen
 
-1. Installieren Sie mit dem Webplattform-Installer die aktuelle Version der Azure PowerShell-Cmdlets. Sie können die neueste Version aus dem Abschnitt **Windows PowerShell** der Seite [Downloads](https://azure.microsoft.com/downloads/) herunterladen und installieren.
+1. Installieren Sie mit dem Webplattform-Installer die aktuelle Version der Azure PowerShell-Cmdlets. Sie können die neueste Version von der [Downloadseite](https://azure.microsoft.com/downloads/) im Abschnitt **Windows PowerShell** herunterladen und installieren.
 2. Sie erstellen ein virtuelles Netzwerk und Subnetz für das Application Gateway. Stellen Sie sicher, dass keine virtuellen Maschinen oder Cloudbereitstellungen das Subnetz verwenden. Das Application Gateway muss sich allein im Subnetz eines virtuellen Netzwerks befinden.
 3. Die Server, die Sie dem Back-End-Pool zur Verwendung des Application Gateways hinzugefügt haben, müssen vorhanden sein oder Endpunkte aufweisen, die im virtuellen Netzwerk erstellt wurden, oder denen eine öffentliche IP-Adresse/VIP zugewiesen wurde.
 
@@ -44,8 +44,8 @@ Anforderungen für http://contoso.com/image* werden an den Image-Serverpool (poo
 
 - **Back-End-Serverpool:** Die Liste der IP-Adressen der Back-End-Server. Die aufgelisteten IP-Adressen sollten entweder dem Subnetz des virtuellen Netzwerks angehören oder eine öffentliche IP-Adresse/VIP sein.
 - **Einstellungen für den Back-End-Serverpool:** Jeder Pool weist Einstellungen wie Port, Protokoll und cookiebasierte Affinität auf. Diese Einstellungen sind an einen Pool gebunden und gelten für alle Server innerhalb des Pools.
-- **Front-End-Port:** Dieser Port ist der öffentliche Port, der im Application Gateway geöffnet ist. Datenverkehr erreicht diesen Port und wird dann an einen der Back-End-Server umgeleitet.
-- **Listener:** Der Listener verfügt über einen Front-End-Port, ein Protokoll (Http oder Https, jeweils mit Beachtung der Groß-/Kleinschreibung) und dem Namen des SSL-Zertifikats (falls SSL-Auslagerung konfiguriert wird).
+- **Front-End-Port:** Dieser Port ist der öffentliche Port, der im Anwendungsgateway geöffnet ist. Datenverkehr erreicht diesen Port und wird dann an einen der Back-End-Server umgeleitet.
+- **Listener:** Der Listener verfügt über einen Front-End-Port, ein Protokoll (Http oder Https, jeweils mit Beachtung der Groß-/Kleinschreibung) und den Namen des SSL-Zertifikats (falls die SSL-Auslagerung konfiguriert wird).
 - **Regel:** Mit der Regel werden der Listener und der Back-End-Serverpool gebunden, und es wird definiert, an welchen Back-End-Serverpool der Datenverkehr gesendet werden soll, wenn er einen bestimmten Listener erreicht.
 
 ## Erstellen eines neuen Anwendungsgateways
@@ -64,7 +64,7 @@ Hier sind die erforderlichen Schritte zum Erstellen eines Application Gateways a
 
 ## Erstellen einer Ressourcengruppe für den Ressourcen-Manager
 
-Stellen Sie sicher, dass Sie die neueste Version von Azure PowerShell verwenden. Weitere Informationen finden Sie unter [Verwenden von Windows PowerShell mit dem Ressourcen-Manager](../powershell-azure-resource-manager.md).
+Stellen Sie sicher, dass Sie die neueste Version von Azure PowerShell verwenden. Weitere Informationen finden Sie unter [Verwenden von Windows PowerShell mit Resource Manager](../powershell-azure-resource-manager.md).
 
 ### Schritt 1
 Melden Sie sich bei Azure Login-AzureRmAccount an.
@@ -94,7 +94,7 @@ Der Azure-Ressourcen-Manager erfordert, dass alle Ressourcengruppen einen Speich
 
 Im obigen Beispiel haben wir eine Ressourcengruppe namens „appgw-RG“ mit dem Standort „USA, Westen“ erstellt.
 
->[AZURE.NOTE] Falls Sie einen benutzerdefinierten Test für Ihr Application Gateway konfigurieren müssen, helfen Ihnen die entsprechenden Informationen unter [Erstellen eines Application Gateways mit benutzerdefinierten Tests mithilfe von PowerShell](application-gateway-create-probe-ps.md) weiter. Weitere Informationen finden Sie unter [Benutzerdefinierte Tests und Systemüberwachung](application-gateway-probe-overview.md).
+>[AZURE.NOTE] Falls Sie einen benutzerdefinierten Test für Ihr Anwendungsgateway konfigurieren müssen, finden Sie die entsprechenden Informationen unter [Erstellen eines Anwendungsgateways mit benutzerdefinierten Tests mithilfe von PowerShell](application-gateway-create-probe-ps.md). Weitere Informationen finden Sie unter [Benutzerdefinierte Tests und Systemüberwachung](application-gateway-probe-overview.md).
 
 ## Erstellen eines virtuelles Netzwerkes und eines Subnetzes für das Application Gateway
 
@@ -196,4 +196,4 @@ Erstellen Sie ein Application Gateway mit allen Konfigurationsobjekten aus den v
 ## Abrufen des Application Gateways
 	$getgw =  Get-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw-RG
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0810_2016-->

@@ -3,7 +3,7 @@
 	description="Sie erhalten einen Einblick, wie Sie die Content Management-Anforderungen für Ihr Unternehmen ermitteln. Wenn Benutzer ein eigenes Gerät verwenden, verfügen sie meist auch über unterschiedliche Anmeldeinformationen, die je nach genutzter Anwendung eingesetzt werden. Es ist wichtig zu unterscheiden, welche Inhalte mit persönlichen Anmeldeinformationen und welche Inhalte mit den Anmeldeinformationen des Unternehmens erstellt wurden. Ihre Identitätslösung sollte in der Lage sein, mit Clouddiensten zu interagieren, um für Endbenutzer eine nahtlose Erfahrung zu schaffen, und dabei den Datenschutz sicherzustellen und den Schutz vor Datenlecks zu erhöhen."
 	documentationCenter=""
 	services="active-directory"
-	authors="yuridio"
+	authors="billmath"
 	manager="stevenpo"
 	editor=""/>
 
@@ -13,8 +13,8 @@
 	ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="identity" 
-	ms.date="04/28/2016"
-	ms.author="yuridio"/>
+	ms.date="08/08/2016"
+	ms.author="billmath"/>
 
 # Ermitteln der Content Management-Anforderungen für Ihre Hybrid-Identitätslösung
 
@@ -29,7 +29,7 @@ Ihre Identitätslösung wird von unterschiedlichen technischen Steuerungen genut
 Im Allgemeinen wird Ihr Identitätsverwaltungssystem in den folgenden Bereichen für Content Management-Anforderungen genutzt:
 
 - Datenschutz: Identifizieren des Benutzers, dem eine Ressource gehört, und Anwenden der richtigen Kontrollen, um die Integrität zu wahren.
-- Klassifizierung von Daten: Identifizieren des Benutzers bzw. der Gruppe und der Zugriffsebene für ein Objekt nach seiner Klassifizierung. 
+- Klassifizierung von Daten: Identifizieren des Benutzers bzw. der Gruppe und der Zugriffsebene für ein Objekt nach seiner Klassifizierung.
 - Schutz vor Datenlecks: Sicherheitskontrollen, die als Schutz vor Datenlecks dienen, müssen mit dem Identitätssystem interagieren, um die Identität des Benutzers zu überprüfen. Dies ist auch für Überwachungspfadzwecke wichtig.
 
 >[AZURE.NOTE]
@@ -41,7 +41,7 @@ Stellen Sie beim Planen Ihrer Hybrid-Identitätslösung sicher, dass die folgend
  - Wenn ja: Können diese Sicherheitskontrollen in die Hybrid-Identitätslösung integriert werden, die Sie einführen möchten?
 - Wird in Ihrem Unternehmen die Datenklassifizierung verwendet?
  - Wenn ja: Kann die aktuelle Lösung in die Hybrid-Identitätslösung integriert werden, die Sie einführen möchten?
-- Verfügt Ihr Unternehmen derzeit über eine Lösung als Schutz vor Datenlecks? 
+- Verfügt Ihr Unternehmen derzeit über eine Lösung als Schutz vor Datenlecks?
  - Wenn ja: Kann die aktuelle Lösung in die Hybrid-Identitätslösung integriert werden, die Sie einführen möchten?
 - Muss Ihr Unternehmen den Zugriff auf Ressourcen überwachen?
  - Wenn ja: Für welche Art von Ressourcen gilt dies?
@@ -61,4 +61,4 @@ Notieren Sie sich alle Antworten, und stellen Sie sicher, dass Ihnen die Begrün
 ## Weitere Informationen
 [Überlegungen zum Entwurf – Übersicht](active-directory-hybrid-identity-design-considerations-overview.md)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0810_2016-->

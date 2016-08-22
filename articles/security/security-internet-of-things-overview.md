@@ -1,10 +1,10 @@
 <properties
    pageTitle="Internet der Dinge – Sicherheitsübersicht | Microsoft Azure"
-   description="Die Azure-Dienste für das Internet der Dinge (Internet of Things, IoT) bieten zahlreiche Funktionen. Dieser Artikel hilft Ihnen, zu verstehen, wie Sie Ihre IoT-Lösungen in Azure schützen können."
+   description=" Die Azure-Dienste für das Internet der Dinge (Internet of Things, IoT) bieten zahlreiche Funktionen. Dieser Artikel hilft Ihnen, zu verstehen, wie Sie Ihre IoT-Lösungen in Azure schützen können. "
    services="security"
    documentationCenter="na"
    authors="TomShinder"
-   manager="StevenPo"
+   manager="MBaldwin"
    editor="TomSh"/>
 
 <tags
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/22/2016"
+   ms.date="08/09/2016"
    ms.author="terrylan"/>
 
 # Internet der Dinge – Sicherheitsübersicht
@@ -68,4 +68,4 @@ In diesem Artikel werden die folgenden Themen behandelt:
 - [IoT-Lösungsbereitsteller](../iot-suite/iot-security-best-practices.md#iot-solution-deployer)
 - [IoT-Lösungsoperator](../iot-suite/iot-security-best-practices.md#iot-solution-operator)
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0810_2016-->

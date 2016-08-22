@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article" 
-	ms.date="06/16/2016"
+	ms.date="08/04/2016"
 	ms.author="billmath"/>
 
 # Was ist Azure Multi-Factor Authentication?
@@ -101,7 +101,7 @@ Azure Multi-Factor Authentication | Azure Multi-Factor Authentication bietet von
 In der folgenden Tabelle werden die Funktionen aufgeführt, die in den verschiedenen Versionen von Azure Multi-Factor Authentication verfügbar sind.
 
 
-Funktion | Multi-Factor Authentication für Office 365 (in Office 365-SKUs enthalten)|Multi-Factor Authentication für Azure-Administratoren (enthalten in Azure-Abonnement) | Azure Multi-Factor Authentication (enthalten in Azure AD Premium und Enterprise Mobility Suite)
+Feature | Multi-Factor Authentication für Office 365 (in Office 365-SKUs enthalten)|Multi-Factor Authentication für Azure-Administratoren (enthalten in Azure-Abonnement) | Azure Multi-Factor Authentication (enthalten in Azure AD Premium und Enterprise Mobility Suite)
 ------------- | :-------------: |:-------------: |:-------------: |
 Administratoren können Konten mit MFA schützen.| * | * (nur für Azure-Administratorkonten verfügbar)|*
 Mobile App als zweiter Faktor|* | * | *
@@ -147,12 +147,12 @@ Wählen Sie das Pro-Arbeitsplatz-Modell oder ein verbrauchsorientiertes Modell, 
 
 Da es mehrere Arten von Azure Multi-Factor Authentication gibt, müssen Sie einige Fragen klären, um herauszufinden, welche Version für Sie die richtige ist. Fragen:
 
--	<a href="#1">Was möchte ich sichern?</a>
--	<a href="#2">Wo befinden sich die Benutzer?</a>
+-	[Was möchte ich sichern?](#what-am-i-trying-to-secure)
+-	[Wo befinden sich die Benutzer?](#where-are-the-users-located)
 
 In den folgenden Abschnitten erhalten Sie Informationen, die Ihnen helfen, die Antworten auf diese Fragen zu geben.
 
-<h3 id="1">Was möchte ich sichern?</h3>
+### Was möchte ich sichern?
 
 Um die richtige Multi-Factor Authentication-Lösung zu ermitteln, müssen Sie zunächst die Frage beantworten, was Sie über die zweite Methode zur Authentifizierung sichern möchten. Handelt es sich um eine Anwendung in Azure? Oder ist Sie es z. B. ein RAS-System? Die Antwort auf die Frage, wo Multi-Factor Authentication aktiviert werden muss, richtet sich danach, was Sie sichern möchten.
 
@@ -168,7 +168,7 @@ Remotezugriff, z. B. VPN, RDG| |* |
 
 
 
-<h3 id="2">Wo befinden sich die Benutzer?</h3>
+### Wo befinden sich die Benutzer?
 
 Außerdem hängt die Entscheidung für die richtige Lösung – Multi-Factor Authentication in der Cloud oder lokal über den MFA-Server – davon ab, wo sich Ihre Benutzer befinden.
 
@@ -209,4 +209,4 @@ Sie haben nun ermittelt, ob Sie Multi-Factor Authentication in der Cloud oder de
 
 <center> [![Cloud](./media/multi-factor-authentication-get-started/cloud2.png)](multi-factor-authentication-get-started-cloud.md) &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;[![Proofup](./media/multi-factor-authentication-get-started/server2.png)](multi-factor-authentication-get-started-server.md) &#160;&#160;&#160;&#160;&#160; </center>
 
-<!----HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0810_2016-->

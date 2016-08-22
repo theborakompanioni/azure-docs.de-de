@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/06/2016" 
+	ms.date="08/04/2016" 
 	ms.author="raynew"/>
 
 
@@ -105,24 +105,23 @@ Bei den Anweisungen in diesem Dokument wird davon ausgegangen, dass am sekundär
 
 ## Integrieren des Schutzes in SQL Server AlwaysOn (lokal unter Azure)
 
-### Schützen von Hyper-V-VMs in VMM-Clouds
 
 Site Recovery bietet native Unterstützung von SQL AlwaysOn. Wenn Sie eine SQL-Verfügbarkeitsgruppe mit einer virtuellen Azure-Maschine erstellt haben, die als „Sekundär“ eingerichtet ist, können Sie anschließend mithilfe von Site Recovery das Failover der Verfügbarkeitsgruppen verwalten.
 
->[AZURE.NOTE] Diese Funktion befindet sich derzeit in der Vorschauphase und ist verfügbar, wenn Hyper-V-Hostserver im primären Rechenzentrum in VMM-Clouds verwaltet werden.
+>[AZURE.NOTE] Diese Funktion befindet sich derzeit in der Vorschauphase und ist verfügbar, wenn Hyper-V-Hostserver im primären Datencenter in VMM-Clouds verwaltet werden und das VMware-Setup per [Konfigurationsserver](site-recovery-vmware-to-azure.md#configuration-server-prerequisites) verwaltet wird. Derzeit ist diese Funktion im neuen Azure-Portal nicht verfügbar.
 
 #### Voraussetzungen
 
-Hier sind die Voraussetzungen angegeben, die Sie zum Integrieren von SQL AlwaysOn in Site Recovery benötigen, wenn Sie die Replikation von VMM durchführen:
+Für die Integration von SQL Always On mit Site Recovery benötigen Sie Folgendes:
 
 - Lokale SQL Server-Instanz (eigenständiger Server oder Failovercluster).
 - Mindestens ein virtueller Azure-Computer, auf dem SQL Server installiert ist.
 - Eine SQL-Verfügbarkeitsgruppe, die zwischen der lokalen SQL Server-Instanz und der unter Azure ausgeführten SQL Server-Instanz eingerichtet ist.
-- PowerShell-Remoting muss für den lokalen SQL Server-Computer aktiviert sein. Der VMM-Server muss PowerShell-Remoteaufrufe an die SQL Server-Instanz richten können.
+- PowerShell-Remoting muss für den lokalen SQL Server-Computer aktiviert sein. Der VMM-Server bzw. der Konfigurationsserver muss PowerShell-Remoteaufrufe an die SQL Server-Instanz richten können.
 - Für die lokale SQL Server-Instanz muss ein Benutzerkonto in SQL-Benutzergruppen hinzugefügt werden, und zwar mindestens mit den folgenden Berechtigungen:
 	- ALTER AVAILABILITY GROUP: Berechtigungen [hier](https://msdn.microsoft.com/library/hh231018.aspx) und [hier](https://msdn.microsoft.com/library/ff878601.aspx#Anchor_3)
 	- ALTER DATABASE: Berechtigungen [hier](https://msdn.microsoft.com/library/ff877956.aspx#Security)
-- Ein RunAs-Konto muss auf dem VMM-Server für das Konto aus dem vorherigen Schritt erstellt werden.
+- Ein ausführendes Konto (RunAs-Konto) muss auf dem VMM-Server erstellt werden, oder es muss ein Konto auf dem Konfigurationsserver erstellt werden, indem „CSPSConfigtool.exe“ für den im vorherigen Schritt erwähnten Benutzer verwendet wird.
 - Das SQL PS-Modul muss für SQL Server-Instanzen installiert werden, die lokal oder in virtuellen Azure-Maschinen ausgeführt werden.
 - Der VM-Agent muss auf virtuellen Maschinen installiert werden, die in Azure ausgeführt werden.
 - NTAUTHORITY\\System benötigt folgende Berechtigungen für eine in virtuellen Maschinen unter Azure ausgeführte SQL Server-Instanz:
@@ -139,8 +138,8 @@ Hier sind die Voraussetzungen angegeben, die Sie zum Integrieren von SQL AlwaysO
 2. Geben Sie unter **SQL Server-Einstellungen konfigurieren** > **Name** einen Anzeigenamen für die SQL Server-Instanz ein.
 3. Geben Sie unter **SQL Server (FQDN)** den FQDN der SQL Server-Quellinstanz an, die Sie hinzufügen möchten. Für den Fall, dass die SQL Server-Instanz in einem Failovercluster installiert ist, geben Sie den FQDN des Clusters und nicht den eines der Clusterknoten an.
 4. Wählen Sie unter **SQL Server-Instanz** die Standardinstanz aus, oder geben Sie den Namen der benutzerdefinierten Instanz an.
-5. Wählen Sie unter **VMM-Server** einen VMM-Server aus, der im Site Recovery-Tresor registriert ist. Site Recovery nutzt diesen VMM-Server für die Kommunikation mit der SQL Server-Instanz.
-6. Geben Sie unter **Als Konto ausführen** den Namen eines RunAs-Kontos an, das auf dem angegebenen VMM-Server erstellt wurde. Dieses Konto wird verwendet, um auf die SQL Server-Instanz zuzugreifen, und muss über die Berechtigungen „Lesen“ und „Failover“ für Verfügbarkeitsgruppen auf diesem SQL Server-Computer verfügen.
+5. Wählen Sie unter **Verwaltungsserver** einen VMM-Server oder Konfigurationsserver aus, der im Site Recovery-Tresor registriert ist. Site Recovery nutzt diesen Verwaltungsserver für die Kommunikation mit der SQL Server-Instanz.
+6. Geben Sie unter **Als Konto ausführen** ein ausführendes Konto ein, das auf dem angegebenen VMM-Server oder unter dem Konto mit dem Konfigurationsserver erstellt wurde. Dieses Konto wird verwendet, um auf die SQL Server-Instanz zuzugreifen, und muss über die Berechtigungen „Lesen“ und „Failover“ für Verfügbarkeitsgruppen auf diesem SQL Server-Computer verfügen.
 
 	![Dialogfeld "SQL hinzufügen"](./media/site-recovery-sql/add-sql-dialog.png)
 
@@ -165,7 +164,7 @@ Nachdem Sie die SQL Server-Instanz hinzugefügt haben, wird sie auf der Register
 
 #### Schritt 3: Erstellen eines Wiederherstellungsplans
 
-Der nächste Schritt ist die Erstellung eines Wiederherstellungsplans mit virtuellen Computern und Verfügbarkeitsgruppen. Wählen Sie denselben in Schritt 1 verwendeten VMM-Server als Quelle und Microsoft Azure als Ziel aus.
+Der nächste Schritt ist die Erstellung eines Wiederherstellungsplans mit virtuellen Computern und Verfügbarkeitsgruppen. Wählen Sie denselben in Schritt 1 verwendeten VMM-Server oder Konfigurationsserver als Quelle und Microsoft Azure als Ziel aus.
 
 ![Wiederherstellungsplan erstellen](./media/site-recovery-sql/create-rp1.png)
 
@@ -193,7 +192,7 @@ Sehen Sie sich diese Failoveroptionen an.
 Option | Details
 --- | ---
 **Option 1:** | 1\. Führen Sie ein Testfailover für die Anwendungs- und die Front-End-Ebene durch.<br/><br/>2. Aktualisieren Sie die Anwendungsebene für den Zugriff auf die Replikatkopie im schreibgeschützten Modus, und führen Sie einen schreibgeschützten Test der Anwendung durch.
-**Option 2** | 1\. Erstellen Sie eine Kopie der virtuellen SQL Server-Replikatcomputerinstanz (mit VMM-Klon bei Standort zu Standort oder mit Azure Backup), und machen Sie sie in einem Testnetzwerk verfügbar.<br/><br/>2. Führen Sie das Test-Failover mit dem Wiederherstellungsplan durch.
+**Option 2** | 1\. Erstellen Sie eine Kopie der virtuellen SQL Server-Replikatcomputerinstanz (mit VMM-Klon bei Standort zu Standort oder mit Azure Backup), und machen Sie sie in einem Testnetzwerk verfügbar.<br/><br/> 2. Führen Sie das Test-Failover mit dem Wiederherstellungsplan durch.
 
 Schritt 5: Failback
 
@@ -203,9 +202,9 @@ Wenn Sie die Verfügbarkeitsgruppe für die lokale SQL Server-Instanz wieder als
 
 
 
-### Schützen von Computern ohne VMM
+### Schützen von Computern ohne VMM-Server oder Konfigurationsserver
 
-Für Umgebungen, die nicht von einem VMM-Server verwaltet werden, können Azure Automation-Runbooks verwendet werden, um ein skriptgesteuertes Failover von SQL-Verfügbarkeitsgruppen zu konfigurieren. Es folgen die entsprechenden Schritte:
+Für Umgebungen, die nicht von einem VMM-Server oder Konfigurationsserver verwaltet werden, können Azure Automation-Runbooks verwendet werden, um ein skriptgesteuertes Failover von SQL-Verfügbarkeitsgruppen zu konfigurieren. Es folgen die entsprechenden Schritte:
 
 1.	Erstellen Sie eine lokale Datei für das Failoverskript einer Verfügbarkeitsgruppe. Dieses Beispielskript gibt einen Pfad zur Verfügbarkeitsgruppe im Azure-Replikat an und führt ein Failover der Gruppe zu dieser Replikatinstanz durch. Dieses Skript wird auf dem virtuellen SQL Server-Replikatcomputer ausgeführt, indem es zusammen mit der Erweiterung des benutzerdefinierten Skripts übergeben wird.
 
@@ -353,4 +352,4 @@ Lesen Sie die [weiteren Informationen](site-recovery-best-practices.md) zur Vorb
 
  
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0810_2016-->

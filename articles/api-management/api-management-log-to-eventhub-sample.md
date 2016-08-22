@@ -13,8 +13,8 @@
     ms.tgt_pltfrm="na"
     ms.devlang="dotnet"
     ms.topic="article"
-    ms.date="05/25/2016"
-    ms.author="v-darmi"/>
+    ms.date="08/09/2016"
+    ms.author="darrmi"/>
 
 # Überwachen von APIs mit Azure API Management, Event Hubs und Runscope
 
@@ -76,7 +76,7 @@ Zu diesem Richtlinienausdruck gibt es einige Anmerkungen. Die log-to-eventhub-Ri
 Um sicherzustellen, dass unsere Nachrichten in der richtigen Reihenfolge an Consumer geliefert werden, und die Funktionen zur Lastverteilung von Partitionen zu nutzen, habe ich mich dafür entschieden, HTTP-Anforderungsnachrichten an eine Partition und HTTP-Antwortnachrichten an eine zweite Partition zu senden. So wird eine gleichmäßige Lastverteilung sichergestellt, und wir können garantieren, dass alle Anforderungen und auch alle Antworten in der richtigen Reihenfolge verarbeitet werden. Es kann passieren, dass eine Antwort vor der entsprechenden Anforderung verarbeitet wird. Dies ist aber kein Problem, weil ein anderer Mechanismus zum Korrelieren von Anforderungen mit Antworten vorhanden ist und wir wissen, dass Anforderungen immer vor Antworten kommen.
 
 ### HTTP-Nutzlasten
-Nach der Erstellung von `requestLine` überprüfen wir, ob der Anforderungstext abgeschnitten werden muss. Der Anforderungstext wird auf 1024 Zeichen abgeschnitten. Dieser Wert kann auch erhöht werden. Da einzelne Event Hub-Nachrichten aber auf 256 KB beschränkt sind, kann es sein, dass einige HTTP-Nachrichtentexte nicht in eine einzelne Nachricht passen. Bei der Protokollierung und Analyse lässt sich nur aus HTTP-Anforderungszeilen und -Headern eine beträchtliche Menge an Daten ableiten. Außerdem geben viele API-Anforderungen nur kleine Textkörper zurück. Daher ist der Verlust des Informationswerts durch das Abschneiden großer Textkörper im Vergleich zur Reduzierung des Aufwands für die Übertragung, Verarbeitung und Speicherung für die Beibehaltung des gesamten Textkörperinhalts relativ gering. Ein letzter Hinweis zur Verarbeitung des Textkörpers: Wir müssen `true` an die As<string>()-Methode übergeben, weil wir die Textkörperinhalte lesen, aber wir möchten auch, dass die Back-End-API den Text lesen kann. Indem wir „true“ an diese Methode übergeben, erreichen wir, dass der Text gepuffert wird. Er kann dann ein zweites Mal gelesen werden. Es ist wichtig, dass Ihnen dies bewusst ist, wenn Sie eine API nutzen, mit der sehr große Dateien hochgeladen werden oder für die lange Abrufvorgänge verwendet werden. In diesen Fällen wäre es am besten, das Lesen des Texts ganz zu vermeiden.
+Nach der Erstellung von `requestLine` überprüfen wir, ob der Anforderungstext abgeschnitten werden muss. Der Anforderungstext wird auf 1024 Zeichen abgeschnitten. Dieser Wert kann auch erhöht werden. Da einzelne Event Hub-Nachrichten aber auf 256 KB beschränkt sind, kann es sein, dass einige HTTP-Nachrichtentexte nicht in eine einzelne Nachricht passen. Bei der Protokollierung und Analyse lässt sich nur aus HTTP-Anforderungszeilen und -Headern eine beträchtliche Menge an Daten ableiten. Außerdem geben viele API-Anforderungen nur kleine Textkörper zurück. Daher ist der Verlust des Informationswerts durch das Abschneiden großer Textkörper im Vergleich zur Reduzierung des Aufwands für die Übertragung, Verarbeitung und Speicherung für die Beibehaltung des gesamten Textkörperinhalts relativ gering. Ein letzter Hinweis zur Verarbeitung des Textkörpers: Wir müssen `true` an die As<string>()-Methode übergeben, weil wir die Textkörperinhalte lesen, die Back-End-API den Text aber auch lesen können muss. Indem wir „true“ an diese Methode übergeben, erreichen wir, dass der Text gepuffert wird. Er kann dann ein zweites Mal gelesen werden. Es ist wichtig, dass Ihnen dies bewusst ist, wenn Sie eine API nutzen, mit der sehr große Dateien hochgeladen werden oder für die lange Abrufvorgänge verwendet werden. In diesen Fällen wäre es am besten, das Lesen des Texts ganz zu vermeiden.
 
 ### HTTP-Header
 HTTP-Header können einfach in das Nachrichtenformat übertragen werden (in einem einfachen Schlüssel-Wert-Paar-Format). Wir haben uns dafür entschieden, bestimmte sicherheitsrelevante Felder wegzulassen, um das unnötige Offenlegen von vertraulichen Informationen zu vermeiden. Es ist unwahrscheinlich, dass API-Schlüssel und andere Anmeldeinformationen zu Analysezwecken verwendet werden. Wenn wir eine Analyse des Benutzers und des jeweils verwendeten Produkts durchführen möchten, können wir diese Daten über das `context`-Objekt ermitteln und der Nachricht hinzufügen.
@@ -268,4 +268,4 @@ Der Azure API Management-Dienst ist ein idealer Ort zum Erfassen des HTTP-Datenv
 	-	[log-to-eventhub policy reference](https://msdn.microsoft.com/library/azure/dn894085.aspx#log-to-eventhub)
 	
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0810_2016-->

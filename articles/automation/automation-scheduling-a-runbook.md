@@ -1,5 +1,5 @@
 <properties 
-   pageTitle="Planen eines Runbooks in Azure Automation"
+   pageTitle="Zeitpläne für Runbooks in Azure Automation | Microsoft Azure"
    description="Beschreibt die Erstellung eines Zeitplans in Azure Automation, sodass ein Runbook automatisch zu einer bestimmten Uhrzeit oder nach einem sich wiederholenden Zeitplan gestartet wird."
    services="automation"
    documentationCenter=""
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="07/12/2016"
+   ms.date="08/05/2016"
    ms.author="bwren" />
 
 # Planen eines Runbooks in Azure Automation
@@ -32,7 +32,7 @@ Sie können einen neuen Zeitplan für Runbooks im Azure-Portal, im klassischen P
 1. Wählen Sie die Registerkarte **Objekte** aus.
 1. Klicken Sie unten im Fenster auf **Einstellung hinzufügen**.
 1. Klicken Sie auf **Zeitplan hinzufügen**.
-1. Geben Sie einen **Namen** und optional eine **Beschreibung** für den neuen Zeitplan ein. Ihr Zeitplan wird **Einmalig**, **Stündlich** oder **Täglich** ausgeführt.
+1. Geben Sie einen **Namen** und optional eine **Beschreibung** für den neuen Zeitplan ein. Ihr Zeitplan wird **Einmalig**, **Stündlich**, **Täglich**, **Wöchentlich** oder **Monatlich** ausgeführt.
 1. Geben Sie eine **Startzeit** sowie weitere Optionen an, je nachdem, welche Art von Zeitplan Sie ausgewählt haben.
 
 ### So erstellen Sie einen neuen Zeitplan im Azure-Portal
@@ -41,7 +41,7 @@ Sie können einen neuen Zeitplan für Runbooks im Azure-Portal, im klassischen P
 2. Klicken Sie auf die Kachel **Zeitpläne**, um das Blatt **Zeitpläne** zu öffnen.
 3. Klicken Sie oben auf dem Blatt auf **Zeitplan hinzufügen**.
 4. Geben Sie auf dem Blatt **Neuer Zeitplan** einen **Namen** und optional eine **Beschreibung** für den neuen Zeitplan ein.
-5. Wählen Sie aus, ob der Zeitplan einmalig oder nach einem Zeitplan häufiger ausgeführt werden soll, indem Sie **Einmalig** oder **Wiederholung** angeben. Geben Sie bei Auswahl von **Einmalig** eine **Startzeit** an, und klicken Sie auf **Erstellen**. Geben Sie bei Auswahl von **Wiederholung** eine **Startzeit** und den Wert dafür an, wie oft die Ausführung des Runbooks wiederholt werden soll: **Stunde**, **Tag**, **Woche** oder **Monat**. Wenn Sie in der Dropdownliste die Option **Woche** oder **Monat** auswählen, wird auf dem Blatt die Option **Wiederholung** angezeigt. Bei Auswahl dieser Option wird das Blatt **Wiederholung** angezeigt, und Sie können den Wochentag auswählen, wenn Sie zuvor **Woche** gewählt haben. Falls Sie **Monat** gewählt haben, können Sie **Wochentage** oder bestimmte Tage des Monats im Kalender auswählen. Außerdem können Sie angeben, ob die Ausführung am letzten Tag des Monats durchgeführt werden soll. Klicken Sie anschließend auf **OK**.
+5. Wählen Sie aus, ob der Zeitplan einmalig oder nach einem Zeitplan häufiger ausgeführt werden soll, indem Sie **Einmalig** oder **Wiederholung** angeben. Geben Sie bei Auswahl von **Einmalig** eine **Startzeit** an, und klicken Sie auf **Erstellen**. Geben Sie bei Auswahl von **Wiederholung** eine **Startzeit** und den Wert an, der festlegt, wie oft die Ausführung des Runbooks wiederholt werden soll: **Stunde**, **Tag**, **Woche** oder **Monat**. Wenn Sie in der Dropdownliste die Option **Woche** oder **Monat** auswählen, wird auf dem Blatt die Option **Wiederholung** angezeigt. Bei Auswahl dieser Option wird das Blatt **Wiederholung** angezeigt, und Sie können den Wochentag auswählen, wenn Sie zuvor **Woche** gewählt haben. Falls Sie **Monat** gewählt haben, können Sie **Wochentage** oder bestimmte Tage des Monats im Kalender auswählen. Außerdem können Sie angeben, ob die Ausführung am letzten Tag des Monats durchgeführt werden soll. Klicken Sie anschließend auf **OK**.
 
 ### So erstellen Sie einen neuen Zeitplan mit Windows PowerShell
 
@@ -151,4 +151,4 @@ Die folgenden Beispielbefehle verdeutlichen, wie Sie einen Zeitplan für ein Run
 - Weitere Informationen zum Verwenden von Zeitplänen finden Sie unter [Zeitpläne in Azure Automation](http://msdn.microsoft.com/library/azure/dn940016.aspx).
 - Informationen zu den ersten Schritten mit Runbooks in Azure Automation finden Sie unter [Starten eines Runbooks in Azure Automation](automation-starting-a-runbook.md).
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0810_2016-->

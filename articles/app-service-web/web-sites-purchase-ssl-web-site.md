@@ -20,8 +20,8 @@
 #Kaufen und Konfigurieren eines SSL-Zertifikats für Ihren Azure App Service
 
 > [AZURE.SELECTOR]
-- [Kaufen eines SSL-Zertifikats für Web-Apps](web-sites-purchase-ssl-web-site.md)
-- [Aktivieren von SSL für Ihre benutzerdefinierte Domäne](web-sites-configure-ssl-certificate.md)
+- [Kaufen eines SSL-Zertifikats in Azure](web-sites-purchase-ssl-web-site.md)
+- [Verwenden eines SSL-Zertifikats von einer anderen Stelle](web-sites-configure-ssl-certificate.md)
 
 Standardmäßig aktiviert **[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714)** über ein Platzhalterzertifikat für die Domäne „*.azurewebsites.net“ bereits HTTPS für Ihre Web-App. Wenn Sie keine benutzerdefinierte Domäne konfigurieren möchten, können Sie das Standard-HTTPS-Zertifikat nutzen. *[Platzhalterdomänen](https://casecurity.org/2014/02/26/pros-and-cons-of-single-domain-multi-domain-and-wildcard-certificates) sind jedoch generell nicht so sicher wie die Verwendung einer benutzerdefinierten Domäne mit Ihrem eigenen Zertifikat. Azure App Service bietet Ihnen jetzt eine wirklich einfache Möglichkeit, ein SSL-Zertifikat direkt vom Azure-Portal aus zu erwerben und zu verwalten, ohne das Portal verlassen zu müssen. In diesem Artikel erfahren Sie, wie Sie ein SSL-Zertifikat für Ihren **[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714)** in 3 einfachen Schritten kaufen und konfigurieren können.
 
@@ -146,7 +146,7 @@ In diesem Schritt erfahren Sie, wie Sie die Überprüfung des Domänenbesitzes f
             
             * Klicken Sie auf **„Aktualisieren“**, um den Zertifikatsstatus nach Abschluss der Überprüfung zu aktualisieren. Es kann einige Minuten dauern, bis die Überprüfung abgeschlossen ist.
                               
-            Um beispielsweise die Validierung für ein Platzhalterzertifikat mit dem Hostnamen **\*.contosocertdemo.com** oder **\*.subdomain.contosocertdemo.com** und dem Domänenüberprüfungstoken **cAGgQrKc** auszuführen, müssen Sie einen TXT-Eintrag auf „dzc.contosocertdemo.com“ mit dem Wert **cAGgQrKc** erstellen.
+            Um beispielsweise die Validierung für ein Platzhalterzertifikat mit dem Hostnamen ***. contosocertdemo.com** oder ***. subdomain.contosocertdemo.com** und dem Domänenüberprüfungstoken **cAGgQrKc** auszuführen, müssen Sie einen TXT-Eintrag auf „dzc.contosocertdemo.com“ mit dem Wert **cAGgQrKc** erstellen.
 
 
 ##<a name="bkmk_AssignCertificate"></a>Schritt 3: Zuweisen des Zertifikats zur App Service-App
@@ -208,4 +208,4 @@ Wenn Sie **IP-basiertes SSL** ausgewählt haben und Ihre benutzerdefinierte Dom�
 
 >[AZURE.NOTE] Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie unter [App Service testen](http://go.microsoft.com/fwlink/?LinkId=523751) sofort kostenlos eine kurzlebige Starter-Web-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0810_2016-->

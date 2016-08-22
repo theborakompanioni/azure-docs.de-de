@@ -201,7 +201,7 @@ Im Anbieter `Microsoft.Compute/virtualMachines` der Vorlage muss ein `storagePro
           }
 ```
 
-Sie können [diese vorhandene Vorlage zum Erstellen eines virtuellen Computers aus einem benutzerdefinierten Image](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image) verwenden oder sich mit dem [Erstellen eigener Azure Resource Manager-Vorlagen] (../resource-group-authoring templates.md) beschäftigen.
+Sie können [diese vorhandene Vorlage zum Erstellen eines virtuellen Computers aus einem benutzerdefinierten Image](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image) verwenden oder sich mit dem [Erstellen eigener Azure Resource Manager-Vorlagen](../resource-group-authoring-templates.md) beschäftigen.
 
 Nachdem Sie eine Vorlage konfiguriert haben, erstellen Sie Ihre virtuellen Computer mit dem Befehl `azure group deployment create`. Geben Sie den URI der JSON-Vorlage mit dem Parameter `--template-uri` an:
 
@@ -221,4 +221,4 @@ azure group deployment create --resource-group TestTemplateRG
 ## Nächste Schritte
 Nachdem Sie die benutzerdefinierte virtuelle Festplatte vorbereitet und hochgeladen haben, können Sie sich mit der [Verwendung von Resource Manager und Vorlagen](../resource-group-overview.md) beschäftigen. Informationen zum Hinzufügen eines Datenträgers zu Ihren neuen virtuellen Computern finden Sie [hier](virtual-machines-linux-add-disk.md). Falls auf Ihren virtuellen Computern Anwendungen ausgeführt werden, auf die Sie zugreifen müssen, müssen Sie [Ports und Endpunkte öffnen](virtual-machines-linux-nsg-quickstart.md).
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0810_2016-->

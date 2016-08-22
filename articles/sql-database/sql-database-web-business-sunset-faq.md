@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-management"
-   ms.date="05/09/2016"
+   ms.date="08/08/2016"
    ms.author="sstein" />
 
 # Häufig gestellte Fragen zur Einstellung von Web Edition und Business Edition
@@ -55,10 +55,10 @@ Microsoft ändert auch die Funktionen zum Kopieren von Datenbanken bei Premium-D
 
 ## Wie verbessern die Tarife Basic, Standard und Premium das Abrechnungssystem?
 
-Azure SQL-Datenbanken der Editionen Basic, Standard und Premium werden nach Stunden berechnet. Sie haben die Möglichkeit, jede Datenbank innerhalb eines 24-Stunden-Intervalls viermal auf eine höhere oder niedrigere Stufe zu skalieren. Die Abrechnung erfolgt mit einer festen Rate basierend auf der höchsten Dienstebene und Leistungsstufe, die Sie für jede Stunde gewählt haben. Darüber hinaus werden die Leistungsstufen (Beispiel: Basic, S1 und P2) in der Rechnung aufgeschlüsselt, um noch einfacher die Anzahl der Datenbanktage/-stunden zu erkennen, die im jeweiligen Monat pro Leistungsstufe entstanden sind. Web- und Business-Datenbanken werden weiterhin mithilfe von Datenbank-Einheiten abgerechnet, die auf der Größe der Datenbank basieren. Weitere Informationen zu den Preisen und den Unterschieden zwischen den neuen Dienstebenen finden Sie unter [SQL-Datenbank Preisseite](https://azure.microsoft.com/pricing/details/sql-database/).
+Azure SQL-Datenbanken der Editionen Basic, Standard und Premium werden nach Stunden berechnet. Sie haben die Möglichkeit, jede Datenbank auf eine höhere oder niedrigere Stufe zentral hoch- bzw. herunterzuskalieren. Die Abrechnung erfolgt mit einer festen Rate basierend auf der höchsten Dienstebene und Leistungsstufe, die Sie für jede Stunde gewählt haben. Darüber hinaus werden die Leistungsstufen (Beispiel: Basic, S1 und P2) in der Rechnung aufgeschlüsselt, um noch einfacher die Anzahl der Datenbanktage/-stunden zu erkennen, die im jeweiligen Monat pro Leistungsstufe entstanden sind. Web- und Business-Datenbanken werden weiterhin mithilfe von Datenbank-Einheiten abgerechnet, die auf der Größe der Datenbank basieren. Weitere Informationen zu den Preisen und den Unterschieden zwischen den neuen Dienstebenen finden Sie unter [SQL-Datenbank Preisseite](https://azure.microsoft.com/pricing/details/sql-database/).
 
 
-## Weitere Informationen
+## Siehe auch
 
 [Azure SQL-Datenbank](https://azure.microsoft.com/documentation/services/sql-database/)
 
@@ -68,4 +68,4 @@ Azure SQL-Datenbanken der Editionen Basic, Standard und Premium werden nach Stun
 
 [Upgrade auf SQL-Datenbank V12](sql-database-upgrade-server-portal.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0810_2016-->

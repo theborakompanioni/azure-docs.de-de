@@ -4,11 +4,11 @@
 	authors="kamathashwin"
 	manager=""
 	editor=""
-	services="monitoring"
-	documentationCenter="monitoring"/>
+	services="monitoring-and-diagnostics"
+	documentationCenter="monitoring-and-diagnostics"/>
 
 <tags
-	ms.service="monitoring"
+	ms.service="monitoring-and-diagnostics"
 	ms.workload="na"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
@@ -95,7 +95,7 @@ Wenn ein neues Ereignis verfügbar ist, führt das Feature „Warnung bei Überw
 |context|Kontext für das Ereignis|
 |resourceProviderName|Ressourcenanbieter der betroffenen Ressource|
 |conditionType |Ereignis|
-|name |Name der Warnungsregel|
+|Name |Name der Warnungsregel|
 |id |Ressourcen-ID der Warnung|
 |description|	Beschreibung, die vom Ersteller der Warnung festgelegt wurde|
 |subscriptionId |Azure-Abonnement-GUID|
@@ -104,7 +104,7 @@ Wenn ein neues Ereignis verfügbar ist, führt das Feature „Warnung bei Überw
 |ResourceGroupName|Ressourcengruppenname der betroffenen Ressource|
 |Eigenschaften |Eine Reihe von Schlüssel-Wert-Paaren (d.h. Wörterbuch<Zeichenfolge, Zeichenfolge>), die Details zum Ereignis enthalten|
 |event|Element, das Metadaten zum Ereignis enthält|
-|authorization|Erfasst die RBAC-Eigenschaften des Ereignisses. Hierzu zählen üblicherweise „action“, „role“ und „scope“.|
+|Autorisierung|Erfasst die RBAC-Eigenschaften des Ereignisses. Hierzu zählen üblicherweise „action“, „role“ und „scope“.|
 |category | Kategorie des Ereignisses. Unterstützte Werte: Administrative, Alert, Security, ServiceHealth, Recommendation|
 |caller|E-Mail-Adresse des Benutzers, der den Vorgang ausgeführt hat, UPN-Anspruch oder SPN-Anspruch auf Grundlage der Verfügbarkeit Kann für bestimmte Systemaufrufe NULL sein.|
 |correlationId|	Üblicherweise eine GUID in Zeichenfolgenformat. Ereignisse mit Korrelations-ID gehören derselben größeren Aktion an und verwenden üblicherweise dieselbe Korrelations-ID.|
@@ -115,8 +115,8 @@ Wenn ein neues Ereignis verfügbar ist, führt das Feature „Warnung bei Überw
 |level|Einer der folgenden Werte: Critical, Error, Warning, Informational, Verbose|
 |operationId|Üblicherweise eine GUID, die von allen Ereignissen gemeinsam verwendet wird, die demselben Vorgang angehören|
 |operationName|Name des Vorgangs|
-|properties |Das Element innerhalb des Ereigniselelements enthält Eigenschaften zum Ereignis|
+|Eigenschaften |Das Element innerhalb des Ereigniselelements enthält Eigenschaften zum Ereignis|
 |status|Zeichenfolge, die den Status des Vorgangs beschreibt. Gängige Werte sind: Started, In Progress, Succeeded, Failed, Active, Resolved|
 |subStatus|	Enthält üblicherweise den HTTP-Statuscode des zugehörigen REST-Aufrufs. Es können auch weitere Zeichenfolgen enthalten sein, die einen Unterstatus beschreiben. Gängige Werte für den Unterstatus sind z. B.: OK (HTTP-Statuscode: 200), Erstellt (HTTP-Statuscode: 201), Akzeptiert (HTTP-Statuscode: 202), Kein Inhalt (HTTP-Statuscode: 204), Ungültige Anforderung (HTTP-Statuscode: 400), Nicht gefunden (HTTP-Statuscode: 404), Konflikt (HTTP-Statuscode: 409), Interner Serverfehler (HTTP-Statuscode: 500), Dienst nicht verfügbar (HTTP-Statuscode: 503), Gatewaytimeout (HTTP-Statuscode: 504)|
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0810_2016-->

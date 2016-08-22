@@ -13,21 +13,17 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="identity"
-	ms.date="04/28/2016"
+	ms.date="08/03/2016"
 	ms.author="kgremban"/>
 
 # Erstellen eines Verlaufsberichts zu Zugriffsänderungen
 
-Wenn Sie nicht der alleinige Besitzer der Azure-Abonnements oder der Ressourcen und Ressourcengruppen darin sind, müssen Sie alle Zugriffsänderungen nachverfolgen können. Jedes Mal, wenn ein Benutzer in Ihren Abonnement Zugriff gewährt bzw. widerruft, werden die Änderungen in Azure-Ereignissen protokolliert. Sie können Verlaufsberichte zu Zugriffsänderungen erstellen, um alle Änderungen der letzten 90 Tage anzuzeigen.
+Jedes Mal, wenn ein Benutzer in Ihren Abonnement Zugriff gewährt bzw. widerruft, werden die Änderungen in Azure-Ereignissen protokolliert. Sie können Verlaufsberichte zu Zugriffsänderungen erstellen, um alle Änderungen der letzten 90 Tage anzuzeigen.
 
 ## Erstellen eines Berichts mit Azure PowerShell
-Verwenden Sie zum Erstellen eines Verlaufsberichts zu Zugriffsänderungen in PowerShell den folgenden Befehl:
+Verwenden Sie zum Erstellen eines Verlaufsberichts zu Zugriffsänderungen in PowerShell den `Get-AzureRMAuthorizationChangeLog`-Befehl. Weitere Informationen zu diesem Cmdlet finden Sie im [PowerShell-Katalog](https://www.powershellgallery.com/packages/AzureRM.Storage/1.0.6/Content/ResourceManagerStartup.ps1).
 
-```
-Get-AzureRMAuthorizationChangeLog
-```
-
-Sie können angeben, welche Eigenschaft der Zuweisungen aufgeführt werden soll, u.a.:
+Wenn Sie diesen Befehl aufrufen, können Sie angeben, welche Eigenschaft der Zuweisungen aufgeführt werden soll, u.a.:
 
 | Eigenschaft | Beschreibung |
 | -------- | ----------- |
@@ -44,7 +40,7 @@ Sie können angeben, welche Eigenschaft der Zuweisungen aufgeführt werden soll,
 | **SubscriptionId** | Die GUID des Azure-Abonnements |
 | **SubscriptionName** | Der Name des Azure-Abonnements |
 
-Mit dem folgenden Beispielbefehl werden alle Zugriffsänderungen im Abonnement für die letzten 7 Tage aufgeführt:
+Mit dem folgenden Beispielbefehl werden alle Zugriffsänderungen im Abonnement für die letzten sieben Tage aufgeführt:
 
 ```
 Get-AzureRMAuthorizationChangeLog -StartTime ([DateTime]::Now - [TimeSpan]::FromDays(7)) | FT Caller,Action,RoleName,PrincipalType,PrincipalName,ScopeType,ScopeName
@@ -53,18 +49,15 @@ Get-AzureRMAuthorizationChangeLog -StartTime ([DateTime]::Now - [TimeSpan]::From
 ![PowerShell Get-AzureRMAuthorizationChangeLog – Screenshot](./media/role-based-access-control-configure/access-change-history.png)
 
 ## Erstellen eines Berichts über die Azure-Befehlszeilenschnittstelle
-Verwenden Sie zum Erstellen eines Verlaufsberichts zu Zugriffsänderungen in der Azure-Befehlszeilenschnittstelle den folgenden Befehl:
-```
-azure role assignment changelog list
-```
+Verwenden Sie zum Erstellen eines Verlaufsberichts zu Zugriffsänderungen in der Azure-Befehlszeilenschnittstelle den `azure role assignment changelog list`-Befehl.
 
 ## Exportieren in eine Kalkulationstabelle
 Wenn Sie den Bericht speichern oder die Daten bearbeiten möchten, exportieren Sie die Zugriffsänderungen in eine CSV-Datei. Sie können dann den Bericht in einer Kalkulationstabelle zur Überprüfung anzeigen.
 
 ![Änderungsprotokoll als Arbeitsblatt – Screenshot](./media/role-based-access-control-configure/change-history-spreadsheet.png)
 
-## Weitere Informationen
+## Siehe auch
 - Erste Schritte mit der [rollenbasierten Zugriffssteuerung von Azure](role-based-access-control-configure.md)
 - Arbeiten mit [benutzerdefinierten Rollen in Azure RBAC](role-based-access-control-custom-roles.md)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0810_2016-->
