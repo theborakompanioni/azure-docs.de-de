@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="05/09/2016"
+	ms.date="08/03/2016"
 	ms.author="robinsh"/>
 
 # Speicheranalyse
@@ -86,7 +86,7 @@ In der folgenden Tabelle werden alle Attribute im Protokollnamen beschrieben:
 | YYYY | Die vierstellige Jahresangabe für das Protokoll. Beispiel: 2011 |
 | MM | Die zweistellige Tagesangabe für das Protokoll. Beispiel: 07 |
 | DD | Die zweistellige Tagesangabe für das Protokoll. Beispiel: 07 |
-| hh | Die zweistellige Angabe der Stunde des Beginns der Protokolle im 24-Stunden-Format (UTC). Beispiel: 18 |
+| hh | Die zweistellige Angabe der Stunde des Protokollbeginns im 24-Stunden-Format (UTC). Beispiel: 18 |
 | mm | Die zweistellige Zahl, mit der die Anfangsminute der Protokolle angegeben wird. Dieser Wert wird in der aktuellen Version der Speicheranalyse nicht unterstützt und ist immer 00. |
 | <counter> | Ein nullbasierter Zähler mit sechs Stellen, der die Anzahl der im Zeitraum von einer Stunde für den Speicherdienst generierten Protokoll-BLOBs angibt. Dieser Zähler beginnt bei 000000. Beispiel: 000001 |
 
@@ -105,7 +105,7 @@ Alle Protokoll-BLOBs werden mit Metadaten gespeichert, mit deren Hilfe die im BL
 
 | Attribut | Beschreibung |
 |------------	|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------	|
-| LogType | Gibt an, ob das Protokoll Informationen über Lese-, Schreib- oder Löschvorgänge enthält. Dieser Wert kann einen Typ oder eine durch Kommas getrennte Kombination aller drei Typen enthalten. Beispiel 1: write Beispiel 2: read,write Beispiel 3: read,write,delete |
+| LogType | Gibt an, ob das Protokoll Informationen über Lese-, Schreib- oder Löschvorgänge enthält. Dieser Wert kann einen Typ oder eine durch Kommas getrennte Kombination aller drei Typen enthalten. Beispiel 1: write; Beispiel 2: read,write; Beispiel 3: read,write,delete |
 | StartTime | Der erste Zeitpunkt eines Eintrags im Protokoll, im Format YYYY-MM-DDThh:mm:ssZ. Beispiel: 2011-07-31T18:21:46Z. |
 | EndTime | Der letzte Zeitpunkt eines Eintrags im Protokoll, im Format YYYY-MM-DDThh:mm:ssZ. Beispiel: 2011-07-31T18:22:09Z. |
 | LogVersion | Die Version des Protokollformats. Einziger derzeit unterstützter Wert: 1.0. |
@@ -156,7 +156,7 @@ Weitere Informationen zu den Kapazitätsmetriken finden Sie unter [Schema der Ta
 
 ### Speichern von Metriken
 
-Alle Metrikdaten für jeden der Speicherdienste werden in drei Tabellen gespeichert, die für diesen Dienst reserviert sind: eine Tabelle für Transaktionsinformationen, eine Tabelle für minutenbezogene Transaktionsinformationen und eine weitere Tabelle für Kapazitätsinformationen. Informationen zur Transaktion und deren Dauer umfassen Anforderungs- und Antwortdaten, während Kapazitätsinformationen Daten zur Speicherverwendung enthalten. Stunden-, Minutenmetriken und Kapazitätsinformationen zum BLOB-Dienst eines Speicherkontos können aus Tabellen abgerufen werden, die wie in der folgenden Tabelle beschrieben benannt sind.
+Alle Metrikdaten für jeden der Speicherdienste werden in drei Tabellen gespeichert, die für diesen Dienst reserviert sind: eine Tabelle für Transaktionsinformationen, eine Tabelle für minutenbezogene Transaktionsinformationen und eine weitere Tabelle für Kapazitätsinformationen. Informationen zur Transaktion und deren Dauer umfassen Anforderungs- und Antwortdaten, während Kapazitätsinformationen Daten zur Speicherverwendung enthalten. Stunden- und Minutenmetriken sowie Kapazitätsinformationen zum Blobdienst eines Speicherkontos können aus Tabellen abgerufen werden, die wie in der folgenden Tabelle beschrieben benannt sind:
 
 | Metrikebene | Tabellennamen | Unterstützte Versionen |
 |------------------------------------	|-----------------------------------------------------------------------------------------------------------------------------	|----------------------------------------------------------------------------------------------------------------------------------------------	|
@@ -180,7 +180,7 @@ Die Speicheranalyse wird vom Speicherkontobesitzer aktiviert. Standardmäßig is
 
 Die folgenden Aktionen der Speicheranalyse sind gebührenpflichtig:
 
-- Anforderungen zum Erstellen von Blobs für die Protokollierung 
+- Anforderungen zum Erstellen von Blobs für die Protokollierung
 
 - Anforderungen zum Erstellen von Tabellenentitäten für Metriken
 
@@ -206,6 +206,6 @@ Wenn Sie Speicheranalysedaten überprüfen, können Sie anhand der Tabellen im T
 ### Metriken der Speicheranalyse
 - [Informationen zu Metriken der Speicheranalyse](https://msdn.microsoft.com/library/hh343258.aspx)
 - [Schema der Tabellen für Speicheranalysemetriken](https://msdn.microsoft.com/library/hh343264.aspx)
-- [Protokollierte Speicheranalysevorgänge und Statusmeldungen](https://msdn.microsoft.com/library/hh343260.aspx)  
+- [Protokollierte Speicheranalysevorgänge und Statusmeldungen](https://msdn.microsoft.com/library/hh343260.aspx)
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0810_2016-->

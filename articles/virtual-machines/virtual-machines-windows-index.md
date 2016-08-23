@@ -14,13 +14,13 @@
    ms.topic="article"
    ms.tgt_pltfrm="vm-windows"
    ms.workload="infrastructure-services"
-   ms.date="04/20/2016"
+   ms.date="08/05/2016"
    ms.author="danlep"/>
 
 # Technische Artikel zu virtuellen Windows-Computern im klassischen Bereitstellungsmodell
 
 
-Hier finden Sie die gesamte Dokumentation, die Sie zum Erstellen und Verwalten Windows-basierter virtueller Computer im klassischen Bereitstellungsmodell benötigen.
+Hier finden Sie die gesamte Dokumentation, die Sie zum Erstellen und Verwalten Windows-basierter virtueller Azure-Computer im klassischen Bereitstellungsmodell benötigen.
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
 
@@ -89,8 +89,6 @@ Hier finden Sie die gesamte Dokumentation, die Sie zum Erstellen und Verwalten W
 ## Verwalten
 
 [Verwalten Ihrer virtuellen Computer mithilfe von Azure PowerShell](virtual-machines-windows-classic-manage-psh.md)
-
-[Befehlsentsprechungen für den Ressourcen-Manager und die Dienstverwaltung für Aufgaben für virtuelle Computer mit der Azure-Befehlszeilenschnittstelle](virtual-machines-windows-cli-manage.md)
 	
 [Herstellen einer Verbindung zwischen klassischen VNets und neuen VNets](../virtual-network/virtual-networks-arm-asm-s2s-howto.md)
 	
@@ -103,6 +101,8 @@ Hier finden Sie die gesamte Dokumentation, die Sie zum Erstellen und Verwalten W
 [Automatisierte Sicherung für SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-classic-sql-automated-backup.md)
 
 [Automatisches Patchen für SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-classic-sql-automated-patching.md)
+
+[Plattformgestützte Migration vom klassischen Bereitstellungsmodell zu Azure Resource Manager](virtual-machines-windows-migration-classic-resource-manager-deep-dive.md)
 
 
 
@@ -170,6 +170,7 @@ Hier finden Sie die gesamte Dokumentation, die Sie zum Erstellen und Verwalten W
 
 [Tomcat](virtual-machines-windows-classic-java-run-tomcat-app-server.md)
 
+
 ## Referenz
 [Befehle der Azure-Befehlszeilenschnittstelle im Dienstverwaltungsmodus](../virtual-machines-command-line-tools.md)
 
@@ -178,7 +179,6 @@ Hier finden Sie die gesamte Dokumentation, die Sie zum Erstellen und Verwalten W
 [Service Management .NET API (Dienstverwaltungs-.NET-API)](https://msdn.microsoft.com/library/azure/mt420161.aspx)
 
 [Azure Service Management PowerShell cmdlet reference documentation (Referenz zu PowerShell-Cmdlets für die Azure-Dienstverwaltung)](https://msdn.microsoft.com/library/azure/dn708504.aspx)
-
 
 ## Problembehandlung
 
@@ -192,4 +192,4 @@ Hier finden Sie die gesamte Dokumentation, die Sie zum Erstellen und Verwalten W
 
 [Behandeln von Problemen beim Neustart oder Ändern der Größe eines vorhandenen virtuellen Windows-Computers in Azure (klassisches Bereitstellungsmodell)](virtual-machines-windows-classic-restart-resize-error-troubleshooting.md)
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0810_2016-->

@@ -3,7 +3,7 @@
 	description="Mit der bedingten Zugriffssteuerung überprüft Azure Active Directory die besonderen Bedingungen, die Sie beim Authentifizieren des Benutzers und vor dem Gewähren des Zugriffs auf die Anwendung auswählen. Nachdem diese Bedingungen erfüllt sind, wird der Benutzer authentifiziert und erhält Zugriff auf die Anwendung."
 	documentationCenter=""
 	services="active-directory"
-	authors="femila"
+	authors="billmath"
 	manager="stevenpo"
 	editor=""/>
 
@@ -13,8 +13,8 @@
 	ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="identity" 
-	ms.date="02/10/2016"
-	ms.author="femila"/>
+	ms.date="08/08/2016"
+	ms.author="billmath"/>
 
 # Planen des Hybrid-Identitätslebenszyklus 
 
@@ -33,19 +33,19 @@ Zum Definieren von Aufgaben der Hybrid-Identitätsverwaltung müssen Sie einige 
 
 Stellen Sie beim Definieren dieser Anforderungen sicher, dass mindestens die folgenden Fragen beantwortet werden:
 
-- Bereitstellungsoptionen: 
+- Bereitstellungsoptionen:
  - Unterstützt die Hybrid-Identitätslösung ein robustes System für die Kontozugriffsverwaltung und -bereitstellung?
  - Wie sollen Benutzer, Gruppen und Kennwörter verwaltet werden?
- - Ist die Verwaltung des Identitätslebenszyklus ausreichend reaktionsfähig? 
+ - Ist die Verwaltung des Identitätslebenszyklus ausreichend reaktionsfähig?
       - Wie lange dauert die Kontosperrung bei der Aktualisierung von Kennwörtern?
       
 - Lizenzverwaltung:
  - Kann die Hybrid-Identitätslösung die Lizenzverwaltung durchführen?
      - Wenn ja: Welche Funktionen sind verfügbar?
-- Kann die Lösung die gruppenbasierte Lizenzverwaltung durchführen? 
-      - Wenn ja: Ist es möglich, hierfür eine Sicherheitsgruppe zuzuweisen? 
-       - Wenn ja: Weist das Cloudverzeichnis automatisch allen Mitgliedern der Gruppe Lizenzen zu? 
-        - Was passiert, wenn ein Benutzer der Gruppe nachträglich hinzugefügt oder aus der Gruppe entfernt wird? Wird automatisch eine Lizenz zugewiesen bzw. entfernt? 
+- Kann die Lösung die gruppenbasierte Lizenzverwaltung durchführen?
+      - Wenn ja: Ist es möglich, hierfür eine Sicherheitsgruppe zuzuweisen?
+       - Wenn ja: Weist das Cloudverzeichnis automatisch allen Mitgliedern der Gruppe Lizenzen zu?
+        - Was passiert, wenn ein Benutzer der Gruppe nachträglich hinzugefügt oder aus der Gruppe entfernt wird? Wird automatisch eine Lizenz zugewiesen bzw. entfernt?
 
 - Integration in andere Drittanbieter-Identitätsanbieter:
 - Kann diese Hybrid-Lösung in Drittanbieter-Identitätsanbieter integriert werden, um das einmalige Anmelden zu implementieren?
@@ -64,4 +64,4 @@ Eines der Ziele eines Identitäts-Managers besteht darin, alle Identitätsanbiet
 ## Weitere Informationen
 [Überlegungen zum Entwurf – Übersicht](active-directory-hybrid-identity-design-considerations-overview.md)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0810_2016-->

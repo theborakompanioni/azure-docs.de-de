@@ -34,7 +34,7 @@ Das SDK ermöglicht die automatische Erfassung der Raten eingehender HTTP-Anford
 Erforderlich:
 
 * Visual Studio 2013 oder höher Eine neuere Version ist besser.
-* Ein Abonnement für [Microsoft Azure](http://azure.com) Wenn Ihr Team oder Ihre Organisation über ein Azure-Abonnement verfügt, kann der Besitzer Sie mit Ihrem [Microsoft-Konto](http://live.com) hinzufügen.
+* Ein Abonnement für [Microsoft Azure](http://azure.com). Wenn Ihr Team oder Ihre Organisation über ein Azure-Abonnement verfügt, kann der Besitzer Sie mit Ihrem [Microsoft-Konto](http://live.com) hinzufügen.
 
 ## <a name="add"></a>Erstellen einer Application Insights-Ressource
 
@@ -54,7 +54,7 @@ Der Schlüssel identifiziert die Ressource, den Sie bald im SDK installieren kö
 ## <a name="sdk"></a> Installieren des SDK in Ihrer Anwendung
 
 ```
-npm install applicationinsights
+npm install applicationinsights --save
 ```
 
 ## Verwendung
@@ -224,4 +224,4 @@ server.on("listening", () => {
 [qna]: app-insights-troubleshoot-faq.md
 [roles]: app-insights-resources-roles-access-control.md
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0817_2016-->

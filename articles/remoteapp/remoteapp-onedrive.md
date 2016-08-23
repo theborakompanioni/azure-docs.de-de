@@ -13,13 +13,16 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="compute"
-   ms.date="08/02/2016"
+   ms.date="08/15/2016"
    ms.author="elizapo"/>
 
 # OneDrive for Business und Azure RemoteApp
+
+> [AZURE.IMPORTANT]
+Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148).
 
 Der Synchronisierungs-Agent für OneDrive for Business wird für Azure RemoteApp nicht unterstützt.
 
 Sie können OneDrive for Business in eine Sammlung einbinden, um die Verwendung mit Office 365 zu ermöglichen.
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0817_2016-->

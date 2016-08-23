@@ -19,7 +19,9 @@
 
 # Erstellen eines virtuellen Linux-Computers in Azure mithilfe der Befehlszeilenschnittstelle
 
-Dieser Artikel zeigt, wie Sie mit dem Befehl `azure vm quick-create` der Azure-Befehlszeilenschnittstelle schnell einen virtuellen Linux-Computer bereitstellen können. Der Befehl `quick-create` stellt einen virtuellen Computer mit einer umgebenden Basisinfrastruktur bereit, mit dem Sie rasch einen Prototyp erstellen oder ein Konzept testen können. (Dies ist der schnellste Weg zu einer Linux-Bash-Shell.) Für die Schritte in diesem Artikel ist ein Azure-Konto ([kostenlose Testversion herunterladen](https://azure.microsoft.com/pricing/free-trial/)) und eine Anmeldung bei der [Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md) (`azure login`) im Resource Manager-Modus (`azure config mode arm`) erforderlich. Sie können mithilfe des [Azure-Portals](virtual-machines-linux-quick-create-portal.md) auch schnell einen virtuellen Linux-Computer bereitstellen.
+> [AZURE.NOTE] Falls Sie einen Moment Zeit haben, würden wir uns freuen, wenn Sie an dieser [kurzen Umfrage](https://aka.ms/linuxdocsurvey) teilnehmen könnten, um zur Verbesserung der Dokumentation für virtuelle Azure-Computer unter Linux beizutragen. Jede Antwort hilft uns dabei, Sie noch besser bei Ihrer Arbeit zu unterstützen.
+
+Dieser Artikel zeigt, wie Sie mit dem Befehl `azure vm quick-create` der Azure-Befehlszeilenschnittstelle schnell einen virtuellen Linux-Computer bereitstellen können. Der Befehl `quick-create` stellt einen virtuellen Computer mit einer umgebenden Basisinfrastruktur bereit, mit dem Sie rasch einen Prototyp erstellen oder ein Konzept testen können. (Dies ist der schnellste Weg zu einer Linux-Bash-Shell.) Für die Schritte in diesem Artikel sind ein Azure-Konto ([kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/)) und die Anmeldung der [Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md) (`azure login`) erforderlich, die sich zudem im Resource Manager-Modus (`azure config mode arm`) befinden muss. Ein virtueller Linux-Computer kann auch schnell über das [Azure-Portal](virtual-machines-linux-quick-create-portal.md) bereitgestellt werden.
 
 ## Kurze Zusammenfassung der Befehle
 
@@ -35,7 +37,7 @@ Verwendung des gleichen Befehls wie oben. Sie sehen im Folgenden jede Eingabeauf
 
 ## Verwenden eines ImageURN-Alias
 
-Beim Azure-CLI-Befehl `quick-create` sind den wichtigsten Betriebssystemdistributionen Aliase zugeordnet. Die folgende Tabelle listet die Distributionsaliase auf (ab Azure-CLI Version 0.10). Alle Bereitstellungen mit `quick-create` verwenden standardmäßig virtuelle SSD-Speicher-Back-End-Computer, was eine hohe Leistung ermöglicht.
+Beim Befehl `quick-create` der Azure-Befehlszeilenschnittstelle sind den wichtigsten Betriebssystemdistributionen Aliase zugeordnet. Die folgende Tabelle listet die Distributionsaliase auf (ab Azure-CLI Version 0.10). Alle Bereitstellungen mit `quick-create` verwenden standardmäßig virtuelle SSD-Speicher-Back-End-Computer und bieten somit eine hohe Leistung.
 
 | Alias | Herausgeber | Angebot | SKU | Version |
 |:----------|:----------|:-------------|:------------|:--------|
@@ -49,7 +51,7 @@ Beim Azure-CLI-Befehl `quick-create` sind den wichtigsten Betriebssystemdistribu
 
 
 
-Für die Option **ImageURN** (`-Q`) verwenden wir `RHEL`, um einen virtuellen RedHat Enterprise Linux 7.2-Computer bereitzustellen. (Diese sieben Aliase repräsentieren nur einen kleinen Teil der auf Azure verfügbaren Betriebssysteme. Weitere Images finden Sie im Marketplace, indem Sie [ein Image suchen](virtual-machines-linux-cli-ps-findimage.md). Sie können aber auch [ein benutzerdefiniertes Image hochladen](virtual-machines-linux-create-upload-generic.md).)
+Für die Option **ImageURN** (`-Q`) verwenden wir `RHEL`, um einen virtuellen Computer unter RedHat Enterprise Linux 7.2 bereitzustellen. (Diese sieben Aliase stellen nur einen kleinen Teil der auf Azure verfügbaren Betriebssysteme dar. Weitere Images finden Sie, indem Sie im Marketplace [nach einem Image suchen](virtual-machines-linux-cli-ps-findimage.md). Alternativ können Sie auch [ein benutzerdefiniertes Image hochladen](virtual-machines-linux-create-upload-generic.md).)
 
 Ersetzen Sie in der folgenden exemplarischen Vorgehensweise für einen Befehl die Aufforderungen durch die Werte aus Ihrer eigenen Umgebung. Wir verwenden hier Beispielwerte.
 
@@ -163,12 +165,12 @@ Warning: Permanently added 'rhel-westu-1630678171-pip.westus.cloudapp.azure.com,
 
 ## Nächste Schritte
 
-`azure vm quick-create` ist eine Möglichkeit, schnell einen virtuellen Computer bereitzustellen, damit Sie sich bei einer Bash-Shell anmelden und arbeiten können. Mit `vm quick-create` stehen Ihnen die zusätzlichen Vorteile einer komplexen Umgebung nicht zur Verfügung. Lesen Sie zum Bereitstellen eines virtuellen Linux-Computers, der an Ihre Infrastruktur angepasst ist, einen der folgenden Artikel:
+`azure vm quick-create` ist eine Möglichkeit zur schnellen Bereitstellung eines virtuellen Computers, damit Sie sich bei einer Bash-Shell anmelden und mit der Arbeit beginnen können. Bei Verwendung von `vm quick-create` stehen Ihnen die zusätzlichen Vorteile einer komplexen Umgebung nicht zur Verfügung. Lesen Sie zum Bereitstellen eines virtuellen Linux-Computers, der an Ihre Infrastruktur angepasst ist, einen der folgenden Artikel:
 
 - [Bereitstellen und Verwalten von virtuellen Computern mit Azure-Ressourcen-Manager-Vorlagen und der Azure-CLI](virtual-machines-linux-cli-deploy-templates.md)
 - [Direktes Erstellen einer benutzerdefinierten Umgebung für einen virtuellen Linux-Computer über Azure-CLI-Befehle](virtual-machines-linux-create-cli-complete.md)
 - [Erstellen einer geschützten Linux-VM mit einer Azure-Vorlage](virtual-machines-linux-create-ssh-secured-vm-from-template.md)
 
-Diese Artikel beschreiben die ersten Schritte beim Erstellen einer Azure-Infrastruktur sowie einer beliebigen Anzahl von proprietären und Open Source-Tools zur Infrastrukturbereitstellung, Konfiguration und Orchestrierung.
+Diese Artikel beschreiben die ersten Schritte beim Erstellen einer Azure-Infrastruktur sowie einer beliebigen Anzahl von proprietären und Open Source-Tools zur Infrastrukturbereitstellung, -konfiguration und -orchestrierung.
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0817_2016-->

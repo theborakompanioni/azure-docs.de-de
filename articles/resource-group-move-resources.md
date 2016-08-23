@@ -54,12 +54,13 @@ Derzeit unterstützen die folgenden Dienste das Verschieben in eine neue Ressour
 - DocumentDB
 - HDInsight-Cluster
 - Schlüsseltresor
+- Media Services
 - Mobile Engagement
 - Notification Hubs
 - Operational Insights
 - Redis-Cache
 - Scheduler
-- Suchen
+- Suche
 - Speicher
 - Speicher (klassisch) – siehe [Einschränkungen bei der klassischen Bereitstellung](#classic-deployment-limitations)
 - SQL-Datenbankserver – die Datenbank und der Server müssen sich in derselben Ressourcengruppe befinden. Wenn Sie eine SQL Server-Instanz verschieben, werden auch alle zugehörigen Datenbanken verschoben.
@@ -75,7 +76,7 @@ Die folgenden Dienste unterstützen derzeit nicht das Verschieben einer Ressourc
 - Application Insights
 - ExpressRoute
 - Skalierungsgruppen für virtuelle Computer
-- Virtuelle Netzwerke (klassisch) – siehe [Einschränkungen bei der klassischen Bereitstellung](#classic-deployment-limitations)
+- Virtual Networks (klassisch) – siehe [Einschränkungen bei der klassischen Bereitstellung](#classic-deployment-limitations)
 - VPN Gateway
 
 ## App Service-Einschränkungen
@@ -116,7 +117,7 @@ Um dies zu erreichen, führen Sie zwei getrennte Verschiebevorgänge in der folg
 
 Die Optionen zum Verschieben von Ressourcen, die über das klassische Modell bereitgestellt wurden, unterscheiden sich abhängig davon, ob Sie die Ressourcen innerhalb eines Abonnements oder in ein neues Abonnement verschieben.
 
-Beim Verschieben von Ressourcen aus einer Ressourcengruppe in eine andere **innerhalb desselben Abonnements** gelten die folgenden Einschränkungen:
+Beim Verschieben von Ressourcen aus einer Ressourcengruppe in eine andere **innerhalb des gleichen Abonnements** gelten die folgenden Einschränkungen:
 
 - Virtuelle Netzwerke (klassisch) können nicht verschoben werden.
 - Virtuelle Computer (klassisch) müssen mit dem Clouddienst verschoben werden.
@@ -272,4 +273,4 @@ Mit dem Anforderungstext:
 - Informationen zu Portalfeatures zum Verwalten Ihres Abonnements finden Sie unter [Verwenden des Azure-Portals zum Verwalten von Ressourcen](./azure-portal/resource-group-portal.md).
 - Informationen zum Anwenden einer logischen Organisation auf Ihre Ressourcen finden Sie unter [Verwenden von Tags zum Organisieren von Ressourcen](resource-group-using-tags.md).
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0810_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/12/2016" 
+	ms.date="08/04/2016" 
 	ms.author="billmath"/>
 
 # Bewährte Sicherheitsmethoden beim Einsatz von Azure Multi-Factor Authentication mit Azure AD-Konten
@@ -23,7 +23,7 @@ Im Hinblick auf die Verbesserung des Authentifizierungsprozesses ist die mehrstu
 ## Best Practices für Azure Multi-Factor Authentication in der Cloud
 Damit alle Benutzer die mehrstufige Authentifizierung nutzen und von den erweiterten Features von Azure Multi-Factor Authentication profitieren können, müssen Sie Azure MFA für alle Benutzer aktivieren. Hierzu benötigen Sie eine der folgenden Komponenten:
 
-- Azure AD Premium oder Enterprise Mobility Suite 
+- Azure AD Premium oder Enterprise Mobility Suite
 - Multi-Factor Authentication-Anbieter
 
 ### Azure AD Premium/Enterprise Mobility Suite
@@ -44,7 +44,7 @@ Berücksichtigen Sie bei der Einrichtung von Multi-Factor Authentication folgend
 
 Wenn Sie nicht über Azure AD Premium oder Enterprise Mobility Suite verfügen, sollten Sie zum Implementieren von Azure MFA in der Cloud zunächst einen MFA-Authentifizierungsanbieter erstellen. Wenngleich MFA standardmäßig für globale Administratoren mit Azure Active Directory verfügbar ist, muss die Multi-Factor Authentication-Funktion auf alle Benutzer angewendet werden, wenn Sie MFA für Ihr Unternehmen bereitstellen. Zu diesem Zweck ist ein Multi-Factor Authentication-Anbieter erforderlich. Bei der Auswahl des Authentifizierungsanbieters müssen Sie ein Verzeichnis auswählen und Folgendes berücksichtigen:
 
-- Zum Erstellen eines Anbieters für mehrstufige Authentifizierung benötigen Sie kein Azure AD-Verzeichnis. 
+- Zum Erstellen eines Anbieters für mehrstufige Authentifizierung benötigen Sie kein Azure AD-Verzeichnis.
 - Wenn Sie Multi-Factor Authentication jedoch für alle Benutzer verfügbar machen möchten und/oder möchten, dass die globalen Administratoren Features wie das Verwaltungsportal, benutzerdefinierte Grußformeln und Berichte nutzen können, müssen Sie den Multi-Factor Authentication-Anbieter einem Azure AD-Verzeichnis zuordnen.
 - DirSync oder AAD ist nur erforderlich, wenn Sie Ihre lokale Active Directory-Umgebung mit einem Azure AD-Verzeichnis synchronisieren. Wenn Sie nur ein Azure AD-Verzeichnis verwenden, das nicht mit einer lokalen Instanz von Active Directory synchronisiert ist, benötigen Sie weder DirSync noch AAD Sync.
 - Wenn Sie über Azure AD Premium oder die Enterprise Mobility Suite verfügen, müssen Sie keinen Anbieter für mehrstufige Authentifizierung erstellen. Sie müssen einem Benutzer lediglich eine Lizenz zuweisen und können MFA anschließend für Benutzer aktivieren.
@@ -62,14 +62,14 @@ Wenn Sie MFA für Ihre Benutzer aktivieren, können Benutzerkonten einen von dre
 
 Die meisten Benutzer sind es gewöhnt, für die Authentifizierung lediglich Kennwörter zu verwenden. Daher ist es wichtig, dass Ihr Unternehmen das Bewusstsein für diesen Prozess bei sämtlichen Benutzern fördert. Durch dieses Bewusstsein werden Anrufe beim Helpdesk aufgrund kleinerer Probleme im Zusammenhang mit MFA vermieden. In einigen Szenarien muss MFA jedoch vorübergehend deaktiviert werden. Befolgen Sie die unten stehenden Richtlinien für den Umgang mit diesen Szenarien:
 
-- Stellen Sie sicher, dass Ihre technischen Supportmitarbeiter für Szenarien geschult sind, in denen mobile Apps oder Mobiltelefone keine Nachrichten oder Anrufe empfangen, sodass sich der Benutzer nicht anmelden kann. Es kann eine Einmalumgehung aktiviert werden, damit sich der Benutzer einmalig anmelden kann, indem er Multi-Factor Authentication umgeht. Die Umgehung ist vorübergehend und läuft nach der angegebenen Anzahl von Sekunden ab. 
+- Stellen Sie sicher, dass Ihre technischen Supportmitarbeiter für Szenarien geschult sind, in denen mobile Apps oder Mobiltelefone keine Nachrichten oder Anrufe empfangen, sodass sich der Benutzer nicht anmelden kann. Es kann eine Einmalumgehung aktiviert werden, damit sich der Benutzer einmalig anmelden kann, indem er Multi-Factor Authentication umgeht. Die Umgehung ist vorübergehend und läuft nach der angegebenen Anzahl von Sekunden ab.
 - Bei Bedarf können Sie die Funktion für vertrauenswürdige IPs in Azure MFA nutzen. Mit diesem Feature können Administratoren eines verwalteten Mandanten oder Partnerverbundmandanten Multi-Factor Authentication für Benutzer umgehen, die sich über das lokale Intranet des Unternehmens anmelden. Die Funktionen sind für Azure AD-Mandanten verfügbar, die Azure AD Premium, Enterprise Mobility Suite oder Azure Multi-Factor Authentication-Lizenzen verfügen.
 
 
 ## Bewährte Methoden für lokale Azure Multi-Factor Authentication-Implementierungen
 Wenn Ihr Unternehmen die eigene Infrastruktur für die Implementierung von MFA nutzen möchte, muss ein lokaler Azure Multi-Factor Authentication-Server bereitgestellt werden. In der Abbildung unten sind die MFA-Serverkomponenten dargestellt:
 
-![Multi-Factor Authentication-Anbieter](./media/multi-factor-authentication-security-best-practices/server.png) *Standardmäßig nicht installiert **Standardmäßig installiert, jedoch nicht aktiviert
+![Multi-Factor Authentication-Anbieter](./media/multi-factor-authentication-security-best-practices/server.png) *Standardmäßig nicht installiert* *Standardmäßig installiert, jedoch nicht aktiviert
 
 
 Der Azure Multi-Factor Authentication-Server kann zum Schützen von Cloudressourcen und lokalen Ressourcen eingesetzt werden, auf die über Azure AD-Konten zugegriffen wird. Zu diesem Zweck ist jedoch ein Partnerverbund erforderlich. Das heißt, dass Sie über AD FS verfügen und für die Verbunddienste einen Partnerverbund mit Ihrem Azure AD-Mandanten konfiguriert haben müssen. Berücksichtigen Sie bei der Einrichtung des Multi-Factor Authentication-Servers Folgendes:
@@ -94,7 +94,7 @@ Wenn für Ihr Unternehmen ein SSO-Verbund mit Azure AD konfiguriert ist und Sie 
 - Die Kennwörter der SSO-Verbundbenutzer werden in der Organisations-ID gespeichert. Wenn der Benutzer das Unternehmen verlässt, muss diese Information zur Organisations-ID übertragen werden, und zwar mithilfe von DirSync in Echtzeit. Das Deaktivieren oder Löschen von Konten kann bis zu drei Stunden bei der Synchronisierung dauern, sodass das Deaktivieren bzw. Löschen des App-Kennworts verzögert wird.
 - Lokale Einstellungen für die Clientzugriffssteuerung werden vom App-Kennwort nicht berücksichtigt.
 - Für das App-Kennwort ist keine lokale Authentifizierung-Protokollierung / -Überwachungsfunktion verfügbar.
-- Weitere Schulungen für Endbenutzer sind für den Microsoft Lync 2013-Client erforderlich. 
+- Weitere Schulungen für Endbenutzer sind für den Microsoft Lync 2013-Client erforderlich.
 - Bestimmte erweiterte Architekturentwürfe erfordert möglicherweise, dass eine Kombination aus Organisationsbenutzername und Kennwörter sowie App-Kennwörter bei der Verwendung der Multi-Factor Authentication mit Clients erforderlich ist, je nachdem, wo die Authentifizierung stattfindet. Bei Clients, die sich bei einer lokalen Infrastruktur authentifizieren, verwenden Sie einen Organisationsbenutzernamen und ein Organisationskennwort. Für Clients, die bei Azure AD authentifizieren, verwenden Sie das App-Kennwort.
 - Benutzer können standardmäßig keine App-Kennwörter erstellen. Sollte dies in Ihrem Unternehmen oder in bestimmten Szenarien erforderlich sein, müssen Sie sicherstellen, dass die Option „Benutzern das Erstellen von App-Kennwörtern zum Anmelden bei nicht browserbasierten Apps gestatten“ ausgewählt ist.
 
@@ -121,4 +121,4 @@ In diesem Artikel sind einige bewährte Methoden für Azure MFA beschrieben. Zus
 - [Einrichten von Azure Multi-Factor Authentication](multi-factor-authentication-end-user-first-time.md)
 - [Azure Multi-Factor Authentication – Häufig gestellte Fragen](multi-factor-authentication-faq.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0810_2016-->

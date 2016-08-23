@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Überwachung und Problembehandlung für den Schutz von virtuellen Computern und physischen Servern | Microsoft Azure" 
-	description="Azure Site Recovery koordiniert Replikation, Failover und Wiederherstellung virtueller Computer auf lokalen Servern zu Azure oder einem sekundären Rechenzentrum. Verwenden Sie diesen Artikel zur Überwachung und Problembehandlung für den Schutz von VMM- und Hyper-V-Standorten." 
+	description="Azure Site Recovery koordiniert Replikation, Failover und Wiederherstellung virtueller Computer auf lokalen Servern zu Azure oder einem sekundären Datencenter. Verwenden Sie diesen Artikel zur Überwachung und Problembehandlung für den Schutz von VMM- und Hyper-V-Standorten." 
 	services="site-recovery" 
 	documentationCenter="" 
 	authors="anbacker" 
@@ -190,9 +190,9 @@ Im Folgenden werden häufige Fehler aufgeführt, die passieren können, sowie de
 -   [Der virtuelle Computer ist nicht bereit für ein geplantes Failover.](http://social.technet.microsoft.com/wiki/contents/articles/25507.the-virtual-machine-isn-t-ready-for-planned-failover.aspx)
 -   [Der virtuelle Computer wird nicht ausgeführt und ist nicht ausgeschaltet.](http://social.technet.microsoft.com/wiki/contents/articles/25510.virtual-machine-is-not-running-and-is-not-powered-off.aspx)
 -   [Out-of-Band-Vorgang auf einem virtuellen Computer und Fehler bei Übergabe des Failovers](http://social.technet.microsoft.com/wiki/contents/articles/25507.the-virtual-machine-isn-t-ready-for-planned-failover.aspx)
--   Test-Failover
+-   Testfailover
     -   [Failover konnte nicht initiiert werden, da das Testfailover ausgeführt wird.](http://social.technet.microsoft.com/wiki/contents/articles/31111.failover-could-not-be-initiated-since-test-failover-is-in-progress.aspx)
--   <span style="color:green;">NEU</span> Beim Failover tritt aufgrund der Konfigurationseigenschaften der Netzwerksicherheitsgruppe, die dem virtuellen Computer oder dem Subnetz für den virtuellen Computer zugeordnet ist, ein Timeout mit der Meldung „PreFailoverWorkflow task WaitForScriptExecutionTask timed out“ (Timeout bei der PreFailoverWorkflow-Aufgabe „WaitForScriptExecutionTask“) auf. Ausführlichere Informationen finden Sie unter [PreFailoverWorkflow task WaitForScriptExecutionTask timed out](https://aka.ms/troubleshoot-nsg-issue-azure-site-recovery) (Timeout bei der PreFailoverWorkflow-Aufgabe „WaitForScriptExecutionTask“).
+-   <span style="color:green;">NEU</span> Beim Failover tritt aufgrund der Konfigurationseigenschaften der Netzwerksicherheitsgruppe, die dem virtuellen Computer oder dem Subnetz für den virtuellen Computer zugeordnet ist, ein Timeout mit der Meldung „PreFailoverWorkflow task WaitForScriptExecutionTaskTimeout“ (Timeout bei der PreFailoverWorkflow-Aufgabe „„WaitForScriptExecutionTask“) auf. Ausführlichere Informationen finden Sie unter [PreFailoverWorkflow task WaitForScriptExecutionTaskTimeout](https://aka.ms/troubleshoot-nsg-issue-azure-site-recovery) (Timeout bei der PreFailoverWorkflow-Aufgabe „WaitForScriptExecutionTask“).
 
 
 ### Konfigurationsserver, Prozessserver, Masterziel
@@ -202,4 +202,4 @@ Konfigurationsserver (Configuration Server, CS), Prozessserver (Process Server, 
 ### Remotedesktop-Problembehandlung nach einem Failover
 -   Viele Kunden haben Probleme beim Herstellen einer Verbindung mit dem virtuellen Computer in Azure festgestellt, für den ein Failover ausgeführt wurde. [Stellen Sie anhand des Dokuments für die Problembehandlung eine RDP-Verbindung mit dem virtuellen Computer her.](http://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx)
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0810_2016-->

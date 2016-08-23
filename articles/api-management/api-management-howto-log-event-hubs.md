@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/25/2016" 
+	ms.date="08/09/2016" 
 	ms.author="sdanie"/>
 
 # Protokollieren von Ereignissen in Azure Event Hubs mit Azure API Management
@@ -117,7 +117,7 @@ Klicken Sie auf **Speichern**, um die aktualisierte Richtlinienkonfiguration zu 
 -	Erfahren Sie mehr über die Integration der API-Verwaltung und Event Hubs
 	-	[Verweis zu Protokollierungstool](https://msdn.microsoft.com/library/azure/mt592020.aspx)
 	-	[log-to-eventhub policy reference](https://msdn.microsoft.com/library/azure/dn894085.aspx#log-to-eventhub)
-	-	[Überwachen von APIs mit Azure API Management, Event Hubs und Runscope](api-management-log-to-eventhub-sample.md)	
+	-	[Überwachen von APIs mit Azure API Management, Event Hubs und Runscope](api-management-log-to-eventhub-sample.md)
 
 ## Video zur exemplarischen Vorgehensweise
 
@@ -133,4 +133,4 @@ Klicken Sie auf **Speichern**, um die aktualisierte Richtlinienkonfiguration zu 
 [event-hub-policy]: ./media/api-management-howto-log-event-hubs/event-hub-policy.png
 [add-policy]: ./media/api-management-howto-log-event-hubs/add-policy.png
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0810_2016-->

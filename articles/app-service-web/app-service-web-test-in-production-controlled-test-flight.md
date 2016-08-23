@@ -98,7 +98,7 @@ Sie haben die Produktions-App eingerichtet. Angenommen, Sie erhalten Rückmeldun
 
 5. Öffnen Sie *&lt;Repositorystammverzeichnis>*\\src\\MultiChannelToDo.sln in Visual Studio.
 6. Stellen Sie alle NuGet-Pakete wieder her, indem Sie mit der rechten Maustaste auf die Projektmappe > **NuGet-Pakete für Projektmappe verwalten** > **Wiederherstellen** klicken.
-6. Klicken Sie mit der rechten Maustaste auf **MultiChannelToDo.Web** > **Application Insights-Telemetrie hinzufügen** > **Einstellungen konfigurieren** > Ressourcengruppe ändern zu „ToDoApp*&lt;Ihr\_Suffix>*“ > **Application Insights zu Projekt hinzufügen**.
+6. Klicken Sie mit der rechten Maustaste auf **MultiChannelToDo.Web** > **Application Insights-Telemetrie hinzufügen** > **Einstellungen konfigurieren** > Ressourcengruppe ändern zu „ToDoApp *&lt;Ihr\_Suffix>* “ > **Application Insights zu Projekt hinzufügen**.
 7. Öffnen Sie im Azure-Portal das Blatt für die Application Insight-Ressource **MultiChannelToDo.Web**. Klicken Sie dann im Detail **Anwendungsintegrität** auf **Erfahren Sie, wie Sie Daten zu Seitenladezeiten im Browser erfassen** > Code kopieren.
 7. Fügen Sie den kopierten JS-Instrumentationscode zu *&lt;Repositorystammverzeichnis>*\\src\\MultiChannelToDo.Web\\app\\Index.cshtml hinzu, direkt vor das schließende `<heading>`-Tag. Der Code sollte den eindeutigen Instrumentationsschlüssel Ihrer Application Insight-Ressource enthalten.
 
@@ -159,7 +159,7 @@ Dieses Beispiel ist möglicherweise nicht sehr realitätsnah. Es ging nur darum,
 ### Instrumentieren Ihrer Server-App für Überwachung/Metriken
 Dies weicht ein wenig vom Thema ab, da es in dem hier vorgestellten Szenario nur um die Client-App geht. Der Vollständigkeit halber richten Sie jetzt jedoch auch die serverseitige App ein.
 
-6. Klicken Sie mit der rechten Maustaste auf **MultiChannelToDo** > **Application Insights-Telemetrie hinzufügen** > **Einstellungen konfigurieren** > Ressourcengruppe ändern zu „ToDoApp*&lt;Ihr\_Suffix>*“ > **Application Insights zu Projekt hinzufügen**.
+6. Klicken Sie mit der rechten Maustaste auf **MultiChannelToDo** > **Application Insights-Telemetrie hinzufügen** > **Einstellungen konfigurieren** > Ressourcengruppe ändern zu „ToDoApp *&lt;Ihr\_Suffix>* “ > **Application Insights zu Projekt hinzufügen**.
 12. Führen Sie für Ihre Änderungen in Git-Shell ein Commit aus, und pushen Sie die Änderungen in Ihre Verzweigung in GitHub. Warten Sie, bis die Browser auf den Clients aktualisiert werden.
 
         git add -A :/

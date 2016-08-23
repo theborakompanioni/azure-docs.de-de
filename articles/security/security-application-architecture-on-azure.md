@@ -1,10 +1,10 @@
 <properties
    pageTitle="Anwendungsarchitektur in Azure | Microsoft Azure"
-   description="Dieser Artikel hilft Ihnen, die Architektur von Anwendungen und Diensten in Azure zu verstehen, um Ihnen so die Integration der Sicherheit in Entwurf und Implementierung zu vereinfachen."
+   description=" Dieser Artikel hilft Ihnen, die Architektur von Anwendungen und Diensten in Azure zu verstehen, um Ihnen so die Integration der Sicherheit in Entwurf und Implementierung zu vereinfachen. "
    services="security"
    documentationCenter="na"
    authors="TomShinder"
-   manager="StevenPo"
+   manager="MBaldwin"
    editor="TomSh"/>
 
 <tags
@@ -13,12 +13,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/19/2016"
+   ms.date="08/09/2016"
    ms.author="terrylan"/>
 
 # Anwendungsarchitektur bei Azure
 
-Für den Schutz Ihrer cloudbasierten Lösungen in Microsoft Azure ist eine stabile Architekturgrundlage entscheidend. Architekten, Designer und Implementierer profitieren von einer umfassenden Kenntnis der Architektur von Anwendungen und Diensten. Diese grundlegende Kenntnis hilft Ihnen, alle Komponenten ihrer cloudbasierten Lösungen zu verstehen, und vereinfacht die Integration der Sicherheit in alle Aspekte von Entwurf und Implementierung.
+Für den Schutz Ihrer cloudbasierten Lösungen in Microsoft Azure ist eine stabile Architekturgrundlage entscheidend. Architekten, Designer und Implementierer profitieren von einer umfassenden Kenntnis der Architektur von Anwendungen und Diensten. Diese grundlegende Kenntnis hilft Ihnen, alle Komponenten Ihrer cloudbasierten Lösungen zu verstehen, und vereinfacht die Integration der Sicherheit in alle Aspekte von Entwurf und Implementierung.
 
 Um Sie bei Ihren architektonischen Ermittlungen und Entwürfen zu helfen, bieten wir Ihnen Folgendes:
 
@@ -48,7 +48,7 @@ Microsoft veröffentlicht eine Reihe allgemeiner [Architekturpläne](http://aka.
 
 ## Visio-Vorlage „3D Blueprint“
 
-Die 3D-Versionen der [Microsoft-Architekturpläne](http://aka.ms/azblueprints) wurden zunächst in einem Nicht-Microsoft-Tool erstellt. Eine neue Vorlage für Visio 2013 (und höher) wurde am 5. August 2015 im Rahmen eines [Zertifizierungskurses zur Microsoft-Architektur auf EDX.ORG](../architecture-overview.md#microsoft-architecture-certification-course) bereitgestellt.
+Die 3D-Versionen der [Microsoft-Architekturpläne](http://aka.ms/azblueprints) wurden zunächst in einem Nicht-Microsoft-Tool erstellt. Eine neue Vorlage für Visio 2013 (und höher) wurde am 5. August 2015 im Rahmen eines [Zertifizierungskurses zur Microsoft-Architektur auf EDX.ORG](../architecture-overview.md#microsoft-architecture-certification-course) bereitgestellt.
 
 Die Vorlage steht auch außerhalb des Kurses zur Verfügung.
 
@@ -56,4 +56,4 @@ Die Vorlage steht auch außerhalb des Kurses zur Verfügung.
 - Laden Sie die [Microsoft Visio-Vorlage "3D Blueprint"](http://aka.ms/3DBlueprintTemplate) herunter.
 - Laden Sie die [Cloud- und Enterprise-Symbole](../architecture-overview.md#drawing-symbol-and-icon-sets) herunter, die mit der 3D-Vorlage verwendet werden.
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0810_2016-->

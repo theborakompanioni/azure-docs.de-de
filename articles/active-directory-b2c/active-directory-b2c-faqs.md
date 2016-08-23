@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/22/2016"
+	ms.date="08/09/2016"
 	ms.author="swkrish"/>
 
 # Häufig gestellte Fragen zu Azure Active Directory B2C
@@ -58,7 +58,22 @@ Jeder Azure AD B2C-Mandant verfügt im Azure-Portal über ein eigenes Blatt mit 
 
 ### Wie kann ich Bestätigungs-E-Mails anpassen (Inhalt und das Feld „Von:“), die von Azure AD B2C gesendet werden?
 
-Verwenden Sie das [Feature für Unternehmensbranding](../active-directory/active-directory-add-company-branding.md), um den Inhalt von Bestätigungs-E-Mails anzupassen. Das Feld „Von:“ kann durch den Support geändert werden.
+Sie können das [Feature für Unternehmensbranding](../active-directory/active-directory-add-company-branding.md) verwenden, um den Inhalt von Bestätigungs-E-Mails anzupassen. Insbesondere diese beiden Elemente einer E-Mail können angepasst werden:
+
+- **Bannerlogo**: Wird unten rechts angezeigt.
+- **Hintergrundfarbe**: Wird oben angezeigt.
+
+	![Screenshot einer angepassten Bestätigungs-E-Mail](./media/active-directory-b2c-faqs/company-branded-verification-email.png)
+
+Die E-Mail-Signatur enthält den Namen des B2C-Mandanten, den Sie bei der ursprünglichen Erstellung des B2C-Mandanten angegeben haben. Sie können den Namen mit folgenden Schritten ändern:
+
+- Melden Sie sich beim [klassischen Azure-Portal](https://manage.windowsazure.com/) als Abonnementadministrator an.
+- Navigieren Sie zu Ihrem B2C-Mandanten.
+- Klicken Sie auf die Registerkarte **Konfigurieren**.
+- Ändern Sie im Abschnitt **Verzeichniseigenschaften** das Feld **Name**.
+- Klicken Sie unten auf der Seite auf **Speichern**.
+
+Zurzeit besteht keine Möglichkeit, das Feld „Von:“ der E-Mail zu ändern. Wenn Sie an dieser Funktionalität und einer vollständigen Bearbeitbarkeit des Texts der Bestätigungs-E-Mail interessiert sind, stimmen Sie unter [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/15334335-fully-customizable-verification-emails) für dieses Feature ab.
 
 ### Wie kann ich meine vorhandenen Benutzernamen, Kennwörter und Profile von meiner Datenbank zu Azure AD B2C migrieren?
 
@@ -94,7 +109,7 @@ Derzeit ist Azure AD B2C nur für Englisch optimiert. Es ist geplant, die Lokali
 
 ### Kann ich auf meinen von Azure AD B2C bereitgestellten Seiten für die Registrierung und Anmeldung meine eigenen URLs verwenden? Kann ich beispielsweise die URL von „login.microsoftonline.com“ in „login.contoso.com“ ändern?
 
-Derzeit ist dies nicht möglich. Dieses Feature ist aber geplant. Beachten Sie auch, dass dies nicht durch das Überprüfen Ihrer Domäne auf der Registerkarte **Domänen** für den Mandanten im klassischen Azure-Portal erfolgen kann.
+Derzeit ist dies nicht möglich. Dieses Feature ist aber geplant. Beachten Sie auch, dass dies nicht durch Überprüfen Ihrer Domäne auf der Registerkarte **Domänen** für den Mandanten im klassischen Azure-Portal erfolgen kann.
 
 ### Wie lösche ich meinen Azure AD B2C-Mandanten?
 
@@ -102,13 +117,13 @@ Führen Sie die folgenden Schritte aus, um Ihren Azure AD B2C-Mandanten zu lösc
 
 - Führen Sie die folgenden Schritte aus, um im Azure-Portal [zum Blatt „B2C-Funktionen“ zu navigieren](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade).
 - Navigieren Sie zu den Blättern **Anwendungen**, **Identitätsanbieter** und **Alle Richtlinien**, und löschen Sie jeweils alle Einträge.
-- Melden Sie sich nun beim [klassischen Azure-Portal](https://manage.windowsazure.com/) als Abonnementadministrator an. (Dies ist dasselbe Geschäfts-, Schul- oder Unikonto bzw. dasselbe Microsoft-Konto, mit dem Sie sich bei Azure registriert haben.)
+- Melden Sie sich jetzt beim [klassischen Azure-Portal](https://manage.windowsazure.com/) als Abonnementadministrator an. (Dies ist dasselbe Geschäfts-, Schul- oder Unikonto bzw. dasselbe Microsoft-Konto, mit dem Sie sich bei Azure registriert haben.)
 - Navigieren Sie links zur Active Directory-Erweiterung, und klicken Sie auf Ihren B2C-Mandanten.
 - Klicken Sie auf die Registerkarte **Benutzer**.
-- Wählen Sie nacheinander die einzelnen Benutzer aus – mit Ausnahme des Benutzers, als der Sie gerade angemeldet sind (Abonnementadministrator). Klicken Sie im unteren Bereich der Seite auf **Löschen**, und klicken Sie auf **JA**, wenn Sie zur Bestätigung aufgefordert werden.
+- Wählen Sie nacheinander die einzelnen Benutzer aus – mit Ausnahme des Benutzers, als der Sie gerade angemeldet sind (Abonnementadministrator). Klicken Sie im unteren Bereich der Seite auf **Löschen**, und klicken Sie auf **Ja**, wenn Sie zur Bestätigung aufgefordert werden.
 - Klicken Sie auf die Registerkarte **Anwendungen**.
 - Wählen Sie im Dropdownfeld **Anzeigen** die Einstellung **Anwendungen im Besitz meines Unternehmens** aus, und klicken Sie auf das Häkchen.
-- Eine Anwendung namens**b2c-extensions-app** wird angezeigt. Klicken Sie im unteren Bereich der Seite auf **Löschen**, und klicken Sie auf **JA**, wenn Sie zur Bestätigung aufgefordert werden.
+- Eine Anwendung namens**b2c-extensions-app** wird angezeigt. Klicken Sie im unteren Bereich der Seite auf **Löschen**, und klicken Sie auf **Ja**, wenn Sie zur Bestätigung aufgefordert werden.
 - Navigieren Sie erneut zur Active Directory-Erweiterung, und wählen Sie Ihren B2C-Mandanten aus.
 - Klicken Sie unten auf der Seite auf **Löschen**. Folgen Sie den Anweisungen auf dem Bildschirm, um den Vorgang abzuschließen.
 
@@ -118,10 +133,10 @@ Nein. Azure AD B2C ist ein Azure-Dienst mit nutzungsbasierter Bezahlung und nich
 
 ### Wie melde ich Probleme mit Azure AD B2C?
 
-Siehe [Azure Active Directory B2C: Senden von Supportanfragen](active-directory-b2c-support.md).
+Siehe [Senden von Supportanfragen für Azure Active Directory B2C](active-directory-b2c-support.md).
 
 ## Weitere Informationen
 
-Informieren Sie sich über die aktuellen [Einschränkungen des Dienstes](active-directory-b2c-limitations.md).
+Informieren Sie sich auch über die aktuellen [Einschränkungen des Diensts](active-directory-b2c-limitations.md).
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0810_2016-->

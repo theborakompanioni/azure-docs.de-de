@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/25/2016" 
+	ms.date="08/09/2016" 
 	ms.author="sdanie"/>
 
 # FAQ zu Azure API Management
@@ -150,4 +150,4 @@ Ja. Führen Sie folgende Schritte aus:
 
 Wenn Sie die GIT-Anmeldeinformationsverwaltung verwenden oder versuchen, das Repository über Visual Studio zu klonen, tritt möglicherweise ein bekanntes Problem mit dem Windows-Dialogfeld für die Anmeldeinformationen auf: Da die Kennwortlänge auf 127 Zeichen begrenzt ist, wird das von uns generierte Kennwort abgeschnitten. Wir arbeiten daran, das Kennwort zu verkürzen. Verwenden Sie vorerst GIT Bash für Klonvorgänge.
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0810_2016-->

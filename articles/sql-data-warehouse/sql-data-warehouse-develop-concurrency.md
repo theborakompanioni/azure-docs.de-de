@@ -291,7 +291,7 @@ Removed as these two are not confirmed / supported under SQLDW
 	GRANT CONTROL ON DATABASE::MySQLDW to newperson;
 	```
 
-4. **Ressourcenklasse heraufsetzen:** Verwenden Sie die folgende Abfrage, um einen Benutzer einer Rolle mit erhöhten Berechtigungen für die Workloadverwaltung hinzuzufügen.
+4. **Ressourcenklasse heraufsetzen:** Verwenden Sie die folgende Abfrage, um einen Benutzer einer Rolle mit höheren Berechtigungen für die Workloadverwaltung hinzuzufügen.
 
 	```sql
 	EXEC sp_addrolemember 'largerc', 'newperson'
@@ -428,4 +428,4 @@ Weitere Informationen zum Verwalten von Datenbankbenutzern und der Sicherheit fi
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0810_2016-->

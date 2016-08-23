@@ -13,10 +13,13 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="compute"
-   ms.date="05/31/2016"
+   ms.date="08/15/2016"
    ms.author="piotrci"/>
 
 # Veröffentlichen von Anwendungen für einzelne Benutzer in einer Azure RemoteApp-Sammlung (Vorschau)
+
+> [AZURE.IMPORTANT]
+Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148).
 
 Dieser Artikel erklärt, wie Anwendungen für einzelne Benutzer in einer Azure RemoteApp-Sammlung veröffentlicht werden. Dies ist eine neue Funktion in Azure RemoteApp, die derzeit nur bestimmten Erstanwendern zu Evaluierungszwecken in der privaten Vorschau zur Verfügung steht.
 
@@ -43,7 +46,7 @@ Dies ist in Azure RemoteApp nun als beschränkte Vorschaufunktion möglich. Im F
 
 Zum Testen der neuen Vorschaufunktion müssen Sie Azure PowerShell-Cmdlets verwenden. Derzeit ist es nicht möglich, das Azure-Verwaltungsportal zum Aktivieren des neuen Anwendungsveröffentlichungsmodus zu aktivieren.
 
-Zunächst muss das [Azure PowerShell-Modul](../powershell-install-configure.md) installiert sein.
+Vergewissern Sie sich zunächst, dass das [Azure PowerShell-Modul](../powershell-install-configure.md) installiert ist.
 
 Starten Sie danach die PowerShell-Konsole im Administratormodus, und führen Sie das folgende Cmdlet aus:
 
@@ -80,7 +83,7 @@ Führen Sie das folgende Cmdlet aus:
 
 Dadurch werden alle Benutzer aufgelistet, die die Anwendung sehen können.
 
-Hinweis: Sie können die Anwendungsaliase (in der oben angezeigten Syntax als „app alias“ bezeichnet) anzeigen, indem Sie Get-AzureRemoteAppProgram -CollectionName <collectionName> ausführen.
+Hinweis: Sie können die Anwendungsaliase (in der oben angezeigten Syntax als „app alias“ bezeichnet) anzeigen, indem Sie „Get-AzureRemoteAppProgram -CollectionName <Name der Sammlung>“ ausführen.
 
 ## Gewusst wie: Zuweisen einer Anwendung für einen Benutzer
 
@@ -97,9 +100,9 @@ Führen Sie das folgende Cmdlet aus:
 		Remove-AzureRemoteAppUser -CollectionName <collectionName> -UserUpn <user@domain.com> -Type <OrgId|MicrosoftAccount> -Alias <appAlias>
 
 ## Senden von Feedback
-Wir freuen uns auf Ihr Feedback und Ihre Vorschläge zu dieser Vorschaufunktion. Bitte füllen Sie die [Umfrage](http://www.instant.ly/s/FDdrb) aus, und teilen Sie uns Ihre Meinung mit.
+Wir freuen uns auf Ihr Feedback und Ihre Vorschläge zu dieser Vorschaufunktion. Bitte füllen Sie den [Fragebogen](http://www.instant.ly/s/FDdrb) aus, und teilen Sie uns Ihre Meinung mit.
 
 ## Konnten Sie die Vorschaufunktion noch nicht ausprobieren?
-Wenn Sie an der Vorschau noch nicht teilgenommen haben, fordern Sie über diese [Umfrage](http://www.instant.ly/s/AY83p) Zugriff an.
+Falls Sie noch nicht an der Vorschau teilgenommen haben, können Sie über diese [Umfrage](http://www.instant.ly/s/AY83p) Zugriff darauf anfordern.
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0817_2016-->

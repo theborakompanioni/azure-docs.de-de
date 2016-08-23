@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Azure Government – Übersicht" 
-   description="Dieser Artikel bietet einen Überblick über die Funktion der Azure Government-Cloud sowie das vertrauenswürdige Design und die Sicherheit, die zur Unterstützung der Compliance für Bundes-, Staats- und lokale Behörden und deren Partner verwendet werden." 
+   pageTitle="Azure Government – Übersicht | Microsoft Azure" 
+   description="Dieser Artikel bietet einen Überblick über die Funktion der Azure Government-Cloud sowie das vertrauenswürdige Design und die Sicherheit, die zur Unterstützung der Compliance für Bundes-, Staats- und lokale Behörden und deren Partner verwendet werden. " 
    services="Azure-Government" 
    documentationCenter="" 
    authors="joharve2" 
@@ -39,7 +39,7 @@ Neben den stabilen Diensten und Funktionen der öffentlichen Version von Azure b
 
 - **Sicherheit, Datenschutz und Compliance** – Microsoft hat sein Framework aus stabilen Kontrollelementen für Sicherheit, Datenschutz und Compliance sowie zusätzliche stringente Kontrollelemente implementiert, um die höheren Anforderungen zu erfüllen, die in den Auswirkungsstufen von ECSB und in CJIS enthalten sind.
 
-- **Datenspeicherung** – Die Umgebung von Azure Government verwaltet zwei Datencenter, die über 800 Kilometer voneinander entfernt sind. Alle vom Kunden verwalteten Daten werden in den Rechenzentren von Continental United States (CONUS) gespeichert.
+- **Datenspeicherung** – Die Umgebung von Azure Government verwaltet zwei Datencenter, die über 800 Kilometer voneinander entfernt sind. Alle vom Kunden verwalteten Daten werden in den Rechenzentren von Continental United States (CONUS) gespeichert.
 
 - **US-Personal **– Alle Azure Government-Operatoren und -Administratoren sind überprüfte US-Bürger.
 
@@ -64,7 +64,7 @@ In den Regionen USA GOV IOWA und USA GOV VIRGINIA verfügbare Azure Government-D
 
 - Virtual Machines
 - Cloud Services
-- Storage
+- Speicher
 - Active Directory
 - Scheduler
 - Virtuelle Netzwerke
@@ -117,4 +117,4 @@ Wenn Sie mehr über Azure Government erfahren möchten, nutzen Sie einige der un
 [Link 2 to another azure.microsoft.com documentation topic]: app-service-web/web-sites-custom-domain-name.md
 [Link 3 to another azure.microsoft.com documentation topic]: storage-whatis-account.md
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0810_2016-->

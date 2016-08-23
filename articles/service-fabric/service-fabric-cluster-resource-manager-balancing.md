@@ -68,7 +68,7 @@ Im nachstehenden Beispiel ist die maximale Auslastung auf einem Knoten 10, währ
 Beachten Sie, dass die Unterschreitung des Ausgleichsschwellenwerts kein explizites Ziel ist – Ausgleichsschwellenwerte sind nur die *Auslöser*, die den Clusterressourcen-Manager von Service Fabric darüber informieren, dass er den Cluster prüfen soll, um ggf. Verbesserungen darin vorzunehmen.
 
 ## Aktivitätsschwellenwerte
-Mitunter ist die Gesamtlast des Clusters niedrig, obwohl Knoten relativ unausgeglichen sind. Der Grund hierfür kann bloß die Tageszeit sein oder dass der Cluster neu ist und einem Bootstrapping unterzogen wird. In beiden Fällen möchten Sie möglicherweise auf einen Lastenausgleich verzichten, da der Nutzen sehr gering ist und Sie bloß viel Zeit für das Verschieben von Netzwerk- und Computeressourcen aufwenden. Im Ressourcen-Manager gibt es mit dem Aktivitätsschwellenwert ein weiteres Steuerungsinstrument, mit dem Sie eine absolute Untergrenze für eine Aktivität angeben können. Wenn eine Knoten nicht mindestens diese Last aufweist, wird kein Ausgleich ausgelöst, selbst wenn der Ausgleichsschwellenwert erreicht wird. Nehmen wir als Beispiel Berichte mit den folgenden Summen für die Nutzung auf diesen Knoten. Nehmen wir außerdem an, dass wir unseren Ausgleichsschwellenwert 3 beibehalten, aber nun auch den Aktivitätsschwellenwert 1536 haben. Obgleich im ersten Fall der Cluster gemäß dem Ausgleichsschwellenwert unausgeglichen ist, erreicht kein Knoten den Mindestaktivitätsschwellenwert, weshalb wir nicht eingreifen. Im folgenden Beispiel überschreitet Knoten 1 ein wenig den Aktivitätsschwellenwert, weshalb ein Ausgleich erfolgt.
+Mitunter ist die Gesamtlast des Clusters niedrig, obwohl Knoten relativ unausgeglichen sind. Der Grund hierfür kann bloß die Tageszeit sein oder dass der Cluster neu ist und einem Bootstrapping unterzogen wird. In beiden Fällen möchten Sie möglicherweise auf einen Lastenausgleich verzichten, da der Nutzen sehr gering ist und Sie bloß viel Zeit für das Verschieben von Netzwerk- und Computeressourcen aufwenden. Im Resource Manager gibt es mit dem Aktivitätsschwellenwert ein weiteres Steuerelement, mit dem Sie eine absolute Untergrenze für eine Aktivität angeben können. Falls diese Last von keinem Knoten überschritten wird, wird auch bei Erreichen des Ausgleichsschwellenwerts kein Ausgleich ausgelöst. Nehmen wir als Beispiel Berichte mit den folgenden Summen für die Nutzung auf diesen Knoten. Nehmen wir außerdem an, dass wir unseren Ausgleichsschwellenwert 3 beibehalten, aber nun auch den Aktivitätsschwellenwert 1536 haben. Obgleich im ersten Fall der Cluster gemäß dem Ausgleichsschwellenwert unausgeglichen ist, erreicht kein Knoten den Mindestaktivitätsschwellenwert, weshalb wir nicht eingreifen. Im folgenden Beispiel überschreitet Knoten 1 ein wenig den Aktivitätsschwellenwert, weshalb ein Ausgleich erfolgt.
 
 ![Beispiel eines Aktivitätsschwellenwerts][Image3]
 
@@ -81,6 +81,8 @@ ClusterManifest.xml
       <Parameter Name="Memory" Value="1536"/>
     </Section>
 ```
+
+Sowohl der Ausgleichs- als auch der Aktivitätsschwellenwert sind mit der Metrik verknüpft. Der Ausgleich wird nur ausgelöst, wenn sowohl der Ausgleichs- als auch der Aktivitätsschwellenwert für die gleiche Metrik überschritten werden. Folglich gilt: Wenn der Ausgleichsschwellenwert für den Arbeitsspeicher und der Aktivitätsschwellenwert für die CPU überschritten werden, wird kein Ausgleich mehr ausgelöst, solange die verbleibenden Schwellenwerte (Ausgleichsschwellenwert für die CPU und Aktivitätsschwellenwert für den Arbeitsspeicher) nicht überschritten werden.
 
 ## Gemeinsamer Lastenausgleich von Diensten
 Ein interessanter Hinweis ist, dass die Entscheidung, ob der Cluster unausgeglichen ist oder nicht, clusterweit gefällt wird. Doch die Korrektur darin besteht, einzelne Dienstreplikate und -instanzen zu verschieben. Das ist einleuchtend, nicht wahr? Wenn Arbeitsspeicher auf einem Knoten gestapelt wird, können mehrere Replikate oder Instanzen dazu beitragen. Dadurch kann das Verschieben aller Replikate oder Instanzen erforderlich sein, die die betroffene, unausgeglichene Metrik nutzen.
@@ -109,4 +111,4 @@ Der Ressourcen-Manager ermittelt bei jeder Ausführung automatisch, welche Diens
 [Image4]: ./media/service-fabric-cluster-resource-manager-balancing/cluster-resource-manager-balancing-services-together1.png
 [Image5]: ./media/service-fabric-cluster-resource-manager-balancing/cluster-resource-manager-balancing-services-together2.png
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0810_2016-->

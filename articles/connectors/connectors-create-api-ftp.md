@@ -39,9 +39,14 @@ Ein Trigger ist ein Ereignis, mit dem ein in einer Logik-App definierter Workflo
 
 In diesem Beispiel erfahren Sie, wie Sie mithilfe des Triggers **FTP - When a file is added or modified** (FTP – Wenn eine Datei hinzugefügt oder geändert wird) einen Logik-App- Workflow auslösen, wenn einem FTP-Server eine Datei hinzugefügt oder eine Datei auf einem FTP-Server geändert wird. In einem Unternehmensszenario können Sie mit diesem Trigger beispielsweise einen FTP-Ordner auf neue Dateien überwachen, die jeweils Bestellungen von Kunden darstellen. Anschließend können Sie den Inhalt der Bestellung zur weiteren Verarbeitung und Speicherung in Ihrer Bestelldatenbank mithilfe einer FTP-Connectoraktion wie **Get file content** (Dateiinhalt abrufen) abrufen.
 
-1. Geben Sie im Suchfeld des Logik-App-Designers die Zeichenfolge *ftp* ein, und wählen Sie dann den Trigger **FTP - When a file is added or modified** (FTP – Wenn eine Datei hinzugefügt oder geändert wird) aus. ![FTP-Trigger – Abbildung 1](./media/connectors-create-api-ftp/ftp-trigger-1.png) Das Steuerelement **When a file is added or modified** (Wenn eine Datei hinzugefügt oder geändert wird) wird geöffnet. ![FTP-Trigger – Abbildung 2](./media/connectors-create-api-ftp/ftp-trigger-2.png)
-- Wählen Sie rechts im Steuerelement die drei Punkte (**...**) aus. Die Ordnerauswahl wird geöffnet. ![FTP-Trigger – Abbildung 3](./media/connectors-create-api-ftp/ftp-trigger-3.png)
-- Wählen Sie den Pfeil nach rechts (**>**) aus, und navigieren Sie zu dem Ordner, den Sie auf neue oder geänderte Dateien überwachen möchten. Wählen Sie den Ordner aus. Der Ordner wird nun im Steuerelement **Ordner** angezeigt. ![FTP-Trigger – Abbildung 4](./media/connectors-create-api-ftp/ftp-trigger-4.png)
+1. Geben Sie im Suchfeld des Logik-App-Designers die Zeichenfolge *ftp* ein, und wählen Sie dann den Trigger **FTP - When a file is added or modified** (FTP – Wenn eine Datei hinzugefügt oder geändert wird) aus.  
+![FTP-Trigger – Abbildung 1](./media/connectors-create-api-ftp/ftp-trigger-1.png)  
+Das Steuerelement **When a file is added or modified** (Wenn eine Datei hinzugefügt oder geändert wird) wird geöffnet.  
+![FTP-Trigger – Abbildung 2](./media/connectors-create-api-ftp/ftp-trigger-2.png)  
+- Wählen Sie rechts im Steuerelement die drei Punkte (**...**) aus. Die Ordnerauswahl wird geöffnet.  
+![FTP-Trigger – Abbildung 3](./media/connectors-create-api-ftp/ftp-trigger-3.png)  
+- Wählen Sie den Pfeil nach rechts (**>**) aus, und navigieren Sie zu dem Ordner, den Sie auf neue oder geänderte Dateien überwachen möchten. Wählen Sie den Ordner aus. Der Ordner wird nun im Steuerelement **Ordner** angezeigt.  
+![FTP-Trigger – Abbildung 4](./media/connectors-create-api-ftp/ftp-trigger-4.png)   
 
 
 Ihre Logik-App ist jetzt mit einem Trigger konfiguriert, die eine Ausführung der anderen Trigger und Aktionen im Workflow startet, wenn in dem angegebenen FTP-Ordner eine Datei geändert oder erstellt wird.
@@ -57,12 +62,18 @@ Eine Aktion ist ein Vorgang, der durch den in einer Logik-App definierten Workfl
 Nachdem Sie bereits einen Trigger hinzugefügt haben, gehen Sie wie folgt vor, um eine Aktion hinzuzufügen, die den Inhalt der neuen oder geänderten Datei abruft, die der Trigger ermittelt hat.
 
 1. Wählen Sie **+ Neuer Schritt** aus, um die Aktion zum Abrufen des Inhalts der Datei auf dem FTP-Server hinzuzufügen.
-- Wählen Sie den Link **Aktion hinzufügen** aus. ![FTP-Aktion – Abbildung 1](./media/connectors-create-api-ftp/ftp-action-1.png)
+- Wählen Sie den Link **Aktion hinzufügen** aus.  
+![FTP-Aktion – Abbildung 1](./media/connectors-create-api-ftp/ftp-action-1.png)  
 - Geben Sie *FTP* ein, um nach allen FTP-bezogenen Aktionen zu suchen.
-- Wählen Sie als Aktion, die ausgeführt werden soll, wenn in dem FTP-Ordner eine neue oder geänderte Datei gefunden wird, die Option **FTP - Get file content** (FTP – Dateiinhalt abrufen) aus. ![FTP-Aktion – Abbildung 2](./media/connectors-create-api-ftp/ftp-action-2.png) Das Steuerelement **Get file content** (Dateiinhalt abrufen) wird geöffnet. **Hinweis**: Sie werden aufgefordert, den Zugriff Ihrer Logik-App auf Ihr FTP-Serverkonto zu autorisieren, sofern Sie diesen Schritt noch nicht ausgeführt haben. ![FTP-Aktion – Abbildung 3](./media/connectors-create-api-ftp/ftp-action-3.png)
+- Wählen Sie als Aktion, die ausgeführt werden soll, wenn in dem FTP-Ordner eine neue oder geänderte Datei gefunden wird, die Option **FTP - Get file content** (FTP – Dateiinhalt abrufen) aus.       
+![FTP-Aktion – Abbildung 2](./media/connectors-create-api-ftp/ftp-action-2.png)  
+Das Steuerelement **Get file content** (Dateiinhalt abrufen) wird geöffnet. **Hinweis**: Sie werden aufgefordert, den Zugriff Ihrer Logik-App auf Ihr FTP-Serverkonto zu autorisieren, sofern Sie diesen Schritt noch nicht ausgeführt haben.  
+![FTP-Aktion – Abbildung 3](./media/connectors-create-api-ftp/ftp-action-3.png)  
 - Wählen Sie das Steuerelement **Datei** (leerer Bereich unterhalb von **DATEI***) aus. Hier können Sie die unterschiedlichen Eigenschaften der neuen oder geänderten Datei verwenden, die auf dem FTP-Server gefunden wurde.
-- Wählen Sie die Option **Dateiinhalt** aus. ![FTP-Aktion – Abbildung 4](./media/connectors-create-api-ftp/ftp-action-4.png)
--  Das Steuerelement wird aktualisiert und gibt an, dass die Aktion **FTP - Get file content** (FTP – Dateiinhalt abrufen) den *Dateiinhalt* der neuen oder geänderten Datei auf dem FTP-Server abruft. ![FTP-Aktion – Abbildung 5](./media/connectors-create-api-ftp/ftp-action-5.png)
+- Wählen Sie die Option **Dateiinhalt** aus.  
+![FTP-Aktion – Abbildung 4](./media/connectors-create-api-ftp/ftp-action-4.png)   
+-  Das Steuerelement wird aktualisiert und gibt an, dass die Aktion **FTP - Get file content** (FTP – Dateiinhalt abrufen) den *Dateiinhalt* der neuen oder geänderten Datei auf dem FTP-Server abruft.  
+![FTP-Aktion – Abbildung 5](./media/connectors-create-api-ftp/ftp-action-5.png)       
 - Speichern Sie Ihre Arbeit, und fügen Sie dem FTP-Ordner eine Datei hinzu, um den Workflow zu testen.
 
 Die Logik-App ist nun mit einem Trigger konfiguriert, der einen Ordner auf einem FTP-Server überwacht und den Workflow initiiert, wenn auf dem FTP-Server eine neue oder geänderte Datei gefunden wird.

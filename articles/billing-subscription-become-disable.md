@@ -71,4 +71,4 @@ Wenn Sie nicht auf das Portal zugreifen können, können Sie auch über die Webs
 
 Weitere Informationen finden Sie unter [Erstellen eines Supporttickets bei Problemen mit Azure-Abrechnungen und -Abonnements](billing-how-to-create-billing-support-ticket.md).
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0810_2016-->

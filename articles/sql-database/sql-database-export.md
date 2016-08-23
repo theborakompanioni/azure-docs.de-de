@@ -30,7 +30,7 @@ Wenn Sie ein Archiv einer Azure SQL-Datenbank erstellen müssen, können Sie das
 ***Überlegungen***
 
 - Damit ein Archiv hinsichtlich der Transaktionen konsistent ist, müssen Sie entweder sicherstellen, dass keine Schreibaktivitäten während des Exports durchgeführt werden, oder den Export von einer [in Hinsicht auf Transaktionen konsistenten Kopie](sql-database-copy.md) Ihrer Azure SQL-Datenbank durchführen.
-- Die Maximalgröße für eine BACPAC-Datei, die in den Azure-Blobspeicher archiviert wird, beträgt 200 GB. Verwenden Sie die Eingabeaufforderung [SqlPackage](https://msdn.microsoft.com/library/hh550080.aspx), um eine große BACPAC-Datei im lokalen Speicher zu archivieren. Dieses Hilfsprogramm wird mit Visual Studio und SQL Server bereitgestellt. Sie können auch die aktuelle Version der SQL Server Data Tools [herunterladen](https://msdn.microsoft.com/library/mt204009.aspx), um dieses Hilfsprogramm zu erhalten.
+- Die Maximalgröße für eine BACPAC-Datei, die im Azure-Blobspeicher archiviert wird, beträgt 200 GB. Verwenden Sie die Eingabeaufforderung [SqlPackage](https://msdn.microsoft.com/library/hh550080.aspx), um eine große BACPAC-Datei im lokalen Speicher zu archivieren. Dieses Hilfsprogramm wird mit Visual Studio und SQL Server bereitgestellt. Sie können auch die aktuelle Version der SQL Server Data Tools [herunterladen](https://msdn.microsoft.com/library/mt204009.aspx), um dieses Hilfsprogramm zu erhalten.
 - Das Archivieren in Azure Storage Premium mithilfe einer BACPAC-Datei wird nicht unterstützt.
 - Falls der Exportvorgang länger als 20 Stunden dauert, wird er unter Umständen abgebrochen. Um die Leistung während des Exports zu erhöhen, können Sie Folgendes tun:
  - Erhöhen Sie vorübergehend Ihr Servicelevel.
@@ -63,7 +63,7 @@ Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie F
     ![Datenbank exportieren][2]
 
 6. Wählen Sie Ihren Authentifizierungstyp aus.
-7.  Geben Sie für den Azure SQL Server, der die zu exportierende Datenbank enthält, die passenden Authentifizierungsanmeldeinformationen ein.
+7.  Geben Sie für die Azure SQL Server-Instanz, die die zu exportierende Datenbank enthält, die passenden Authentifizierungsanmeldeinformationen ein.
 8.  Klicken Sie auf **OK**, um die Datenbank zu archivieren. Durch Klicken auf **OK** wird eine Anforderung zum Exportieren der Datenbank erstellt und an den Dienst gesendet. Die Dauer des Exports hängt von der Größe und Komplexität Ihrer Datenbank und von Ihrem Servicelevel ab. Sie erhalten eine Benachrichtigung.
 
     ![Benachrichtigung über Anfrage zum Datenbankexport][3]
@@ -99,4 +99,4 @@ Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie F
 [4]: ./media/sql-database-export/export-history.png
 [5]: ./media/sql-database-export/bacpac-archive.png
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0810_2016-->

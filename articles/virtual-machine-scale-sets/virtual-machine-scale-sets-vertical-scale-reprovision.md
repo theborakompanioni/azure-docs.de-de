@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-multiple"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/14/2016"
+	ms.date="08/03/2016"
 	ms.author="guybo"/>
 
 # Vertikale automatische Skalierung mit VM-Skalierungsgruppen
@@ -37,21 +37,14 @@ Sie können die vertikale Skalierung so einrichten, dass sie auf der Grundlage v
 3. Fügen Sie Ihrem Runbook einen Webhook hinzu.
 4. Fügen Sie Ihrer VM-Skalierungsgruppe mithilfe einer Webhook-Benachrichtigung eine Warnung hinzu.
 
-> [AZURE.NOTE] Die vertikale automatische Skalierung kann nur innerhalb bestimmter VM-Größenbereiche stattfinden. Sie können zwischen den folgenden Größenpaaren skalieren:
+> [AZURE.NOTE] Die vertikale automatische Skalierung kann nur innerhalb bestimmter VM-Größenbereiche stattfinden. Vergleichen Sie die Spezifikationen der einzelnen Größen, bevor Sie sich für die Skalierung entscheiden (eine höhere Zahl bedeutet nicht immer, dass der virtuelle Computer größer ist). Sie können zwischen den folgenden Größenpaaren skalieren:
 
 >| VM-Größenpaare für die Skalierung | |
 |---|---|
-| Basic\_A0 | Basic\_A4 |
-| Standard\_A0 | Standard\_A4 |
-| Standard\_A5 | Standard\_A7 |
-| Standard\_A8 | Standard\_A9 |
-| Standard\_A10 | Standard\_A11 |
-| Standard\_D1 | Standard\_D4 |
-| Standard\_D11 | Standard\_D14 |
-| Standard\_DS1 | Standard\_DS4 |
-| Standard\_DS11 | Standard\_DS14 |
-| Standard\_D1v2 | Standard\_D5v2 |
-| Standard\_D11v2 | Standard\_D14v2 |
+| Standard\_A0 | Standard\_A11 |
+| Standard\_D1 | Standard\_D14 |
+| Standard\_DS1 | Standard\_DS14 |
+| Standard\_D1v2 | Standard\_D15v2 |
 | Standard\_G1 | Standard\_G5 |
 | Standard\_GS1 | Standard\_GS5 |
 
@@ -127,4 +120,4 @@ In diesem Artikel wurden einige einfache Beispiele der vertikalen Skalierung gez
 [runbooks]: ./media/virtual-machine-scale-sets-vertical-scale-reprovision/runbooks.png
 [gallery]: ./media/virtual-machine-scale-sets-vertical-scale-reprovision/runbooks-gallery.png
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0810_2016-->

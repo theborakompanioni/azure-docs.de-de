@@ -34,7 +34,7 @@ Dieses Navigationsthema enthält Links zu anderen Themen zum Bereitstellen von W
 
 - [Installieren einer neuen Active Directory-Gesamtstruktur auf einem virtuellen Azure-Netzwerk](active-directory-new-forest-virtual-machine.md)
 - [Installieren eines Active Directory-Replikatdomänencontrollers in einem virtuellen Azure-Netzwerk](../active-directory/active-directory-install-replica-active-directory-domain-controller.md)
-- [Einrichten einer Hybridcloudumgebung zu Testzwecken](../virtual-machines/virtual-machines-windows-ps-hybrid-cloud-test-env-base.md)
+- [Einrichten einer Hybridcloudumgebung zu Testzwecken](../virtual-machines/virtual-machines-windows-ps-hybrid-cloud-test-env-sim.md)
 
 
 ## Zusätzliche Ressourcen
@@ -42,4 +42,4 @@ Dieses Navigationsthema enthält Links zu anderen Themen zum Bereitstellen von W
 - [Als Organisation für Azure registrieren](sign-up-organization.md)
 - [Azure-Identität](fundamentals-identity.md)
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0810_2016-->

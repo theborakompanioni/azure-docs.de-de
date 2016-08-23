@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/27/2016"
+	ms.date="08/05/2016"
 	ms.author="douglasl"/>
 
 # Aktivieren von Stretch-Datenbank für eine Tabelle
@@ -28,12 +28,14 @@ Um eine Tabelle für Stretch-Datenbank zu konfigurieren, wählen Sie **Stretch |
 
 **Berechtigungen** Für das Aktivieren von Stretch-Datenbank für eine Datenbank oder eine Tabelle sind db\_owner-Berechtigungen erforderlich. Zum Aktivieren von Stretch-Datenbank für eine Tabelle sind auch ALTER-Berechtigungen für die Tabelle erforderlich.
 
+ >   [AZURE.NOTE] Bedenken Sie später beim Deaktivieren von Stretch-Datenbank Folgendes: Wenn Sie Stretch-Datenbank für eine Tabelle oder eine Datenbank deaktivieren, wird das Remoteobjekt nicht gelöscht. Wenn Sie die Remotetabelle oder die Remotedatenbank löschen möchten, müssen Sie sie mithilfe des Azure-Verwaltungsportals entfernen. Für die Remoteobjekte fallen weiterhin Azure-Kosten an, bis Sie die Objekte manuell löschen.
+ 
 ## <a name="EnableWizardTable"></a>Verwenden des Assistenten zum Aktivieren von Stretch-Datenbank für eine Tabelle
 **Assistenten starten**
 
 1.  Wählen Sie in SQL Server Management Studio im Objekt-Explorer die Tabelle aus, für die Stretch aktiviert werden soll.
 
-2.  Klicken Sie mit der rechten Maustaste darauf, und wählen Sie **Stretch** aus. Wählen Sie dann **Aktivieren** aus, um den Assistenten zu starten.
+2.  Klicken Sie mit der rechten Maustaste darauf, und wählen Sie **Stretch** aus. Wählen Sie dann **Aktivieren**, um den Assistenten zu starten.
 
 **Einführung**
 
@@ -53,7 +55,7 @@ Die ALTER TABLE-Syntax wird weiter unten in diesem Thema beschrieben.
 
 **Zusammenfassung**
 
-Überprüfen Sie die Werte, die Sie eingegeben haben, und die im Assistenten ausgewählten Optionen. Wählen Sie dann **Fertig stellen**, um Stretch zu aktivieren.
+Überprüfen Sie die Werte, die Sie eingegeben haben, und die im Assistenten ausgewählten Optionen. Wählen Sie dann **Fertig stellen** aus, um Stretch zu aktivieren.
 
 **Ergebnisse**
 
@@ -62,7 +64,7 @@ Die ALTER TABLE-Syntax wird weiter unten in diesem Thema beschrieben.
 ## <a name="EnableTSQLTable"></a>Verwenden von Transact-SQL zum Aktivieren von Stretch-Datenbank für eine Tabelle
 Sie können Stretch-Datenbank mithilfe von Transact-SQL für eine vorhandene Tabelle aktivieren oder eine neue Tabelle erstellen, in der Stretch-Datenbank aktiviert ist.
 
-### Optionen
+### Options
 Verwenden Sie die folgenden Optionen beim Ausführen von CREATE TABLE oder ALTER TABLE, um Stretch-Datenbank für eine Tabelle zu aktivieren.
 
 -   Geben Sie optional über die `FILTER_PREDICATE = <function>`-Klausel eine Funktion an, mit der Sie die zu migrierenden Zeilen auswählen können, wenn die Tabelle sowohl aktive als auch inaktive Daten enthält. Das Prädikat muss eine Inline-Tabellenwertfunktion aufrufen. Weitere Informationen finden Sie unter [Auswählen von Zeilen für die Migration mit einer Filterfunktion](sql-server-stretch-database-predicate-function.md). Wenn Sie keine Filterfunktion angeben, wird die gesamte Tabelle migriert.
@@ -127,10 +129,10 @@ GO
 Weitere Informationen finden Sie unter [CREATE TABLE (Transact-SQL)](https://msdn.microsoft.com/library/ms174979.aspx).
 
 
-## Weitere Informationen
+## Siehe auch
 
 [ALTER TABLE (Transact-SQL)](https://msdn.microsoft.com/library/ms190273.aspx)
 
 [CREATE TABLE (Transact-SQL)](https://msdn.microsoft.com/library/ms174979.aspx)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0810_2016-->

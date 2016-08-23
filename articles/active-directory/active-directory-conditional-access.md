@@ -14,7 +14,7 @@
 	ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="identity" 
-	ms.date="07/26/2016"
+	ms.date="08/08/2016"
 	ms.author="markvi"/>
 
 
@@ -61,7 +61,7 @@ Mit der bedingten Zugriffssteuerung überprüft Azure Active Directory beim Auth
 
 - **Blockieren**: Der Zugriff kann bedingungsorientiert angewendet werden, z.B. nach dem Standort des Benutzers. Beispielsweise kann der Zugriff blockiert werden, wenn sich ein Benutzer nicht in einem vertrauenswürdigen Netzwerk befindet.
 
-- **Registrierte/Kompatible Geräte**: Auf der Geräteebene können Sie Richtlinien festlegen, die erzwingen, dass nur über MDM (Mobile Device Management, Verwaltung mobiler Geräte) registrierte und kompatible Geräte zugreifen dürfen. Um zu überprüfen, ob das Gerät registriert und kompatibel ist, wird Microsoft Intune verwendet. Durch den bedingten Zugriff auf Geräteebene wird dann sichergestellt, dass nur Geräten Zugriff gewährt wird, die mit der MDM-Richtlinie kompatibel sind.
+- **Kompatible Geräte**: Auf Geräteebene können Sie Richtlinien festlegen, die erzwingen, dass nur Computern der Zugriff gewährt wird, die der Domäne beigetreten sind oder – im Fall von Mobilgeräten – bei der Verwaltung mobiler Geräte (Mobile Device Management [MDM]) registriert sind und die Kompatibilitätsvoraussetzungen erfüllen. Microsoft Intune überprüft die Kompatibilität von Geräten und sendet einen Bericht an Azure Active Directory, um diese während des Zugriffs auf eine Anwendung zu erzwingen.
  
 
 ## Anwendungen
@@ -69,29 +69,58 @@ Mit der bedingten Zugriffssteuerung überprüft Azure Active Directory beim Auth
 - Die Zugriffsebene, die Sie mit diesen Richtlinien festlegen können, kann auf Anwendungen und Dienste in der Cloud oder lokal angewendet werden. Die Richtlinie wird direkt auf die Website oder den Dienst angewendet. Die Richtlinie wird dann für den Browserzugriff und für Anwendungen durchgesetzt, die auf den Dienst zugreifen. Die Liste mit den Diensten, die angewendet werden können, ist hier angegeben.
 
 
+## Gerätebasierter bedingter Zugriff
+
+Sie können den Zugriff auf Anwendungen auch auf Geräte beschränken, die bei Azure AD registriert sind und bestimmte Bedingungen erfüllen. Dies ist hilfreich, um Organisationsressourcen vor dem Zugriff durch gültige Benutzer über folgende Geräte zu schützen:
+
+- Unbekannte oder nicht verwaltete Geräte
+- Geräte, die die von Ihrer Organisation definierten Sicherheitsrichtlinien nicht erfüllen
+
+Richtlinien können basierend auf den folgenden Anforderungen festgelegt werden:
+
+- **In die Domäne eingebundene Geräte**: Sie können eine Richtlinie festlegen, um den Zugriff auf Geräte zu beschränken, die einer lokalen Active Directory-Domäne beigetreten und außerdem bei Azure AD registriert sind. Diese Richtlinie gilt für Desktops, Laptops oder Unternehmens-Tablets unter Windows, die zu einer lokalen Active Directory-Domäne gehören und bei Azure AD registriert sind. Weitere Informationen zum Einrichten der automatischen Registrierung von in die Domäne eingebundenen Geräten bei Azure AD finden Sie unter [Einrichten der automatischen Registrierung von in die Domäne eingebundenen Windows-Geräten bei Azure Active Directory](active-directory-conditional-access-automatic-device-registration-setup.md).
+
+- **Kompatible Geräte**: Sie können eine Richtlinie festlegen, um den Zugriff auf Geräte zu beschränken, die vom Verwaltungssystem im Verzeichnis als **kompatibel** gekennzeichnet wurden. Diese Richtlinie stellt sicher, dass nur Geräten der Zugriff gewährt wird, die Sicherheitsrichtlinien erfüllen, wie z.B. das Erzwingen der Dateiverschlüsselung auf einem Gerät. Diese Richtlinie kann verwendet werden, um den Zugriff über folgende Geräte zu beschränken:
+
+    - **In die Windows-Domäne eingebundene Geräte**, die von System Center Configuration Manager 2016 in einer hybriden Konfiguration verwaltet werden.
+
+    - **Mobile Arbeits- oder persönliche Geräte unter Windows 10**, die über Microsoft Intune oder ein unterstütztes MDM-Drittanbietersystem verwaltet werden.
+
+    - **iOS- und Android-Geräte**, die über Microsoft Intune verwaltet werden.
+
+
+Wenn Benutzer auf eine durch die gerätebasierte Richtlinie für bedingten Zugriff geschützte Anwendung zugreifen möchten, müssen sie dies über ein Gerät tun, das diese Richtlinie erfüllt. Wird ein Gerät verwendet, das die Richtlinie nicht erfüllt, wird der Zugriff verweigert.
+
+Informationen zum Konfigurieren von gerätebasierten Richtlinien für bedingten Zugriff in Azure AD finden Sie unter [Konfigurieren von gerätebasierten Richtlinien für bedingten Zugriff zur Steuerung des Zugriffs auf über Azure Active Directory verbundene Anwendungen](active-directory-conditional-access-policy-connected-applications.md).
+
+## Verzeichnis der Artikel zum bedingten Zugriff in Azure Active Directory
   
-## Bedingter Zugriff – eine Inhaltszuordnung  
 In der folgenden Inhaltszuordnung werden Dokumente aufgeführt, in denen Sie weitere Informationen über das Aktivieren des bedingten Zugriffs in Ihrer aktuellen Bereitstellung finden.
 
 
-### MFA- und Standortrichtlinien
+### MFA und Standortrichtlinien
 
 - [Erste Schritte mit bedingtem Zugriff auf verbundene Azure AD-Apps basierend auf Gruppen-, Standort- und MFA-Richtlinien](active-directory-conditional-access-azuread-connected-apps.md)
+
 - [Unterstützte Anwendungsarten](active-directory-conditional-access-supported-apps.md)
 
 
 ### Geräterichtlinien
 
-[Schützen von Daten durch vollständiges oder selektives Zurücksetzen mit Microsoft Intune](https://docs.microsoft.com/intune/deploy-use/use-remote-wipe-to-help-protect-data-using-microsoft-intune)
+- [Festlegen von gerätebasierten Richtlinien für bedingten Zugriff zur Steuerung des Zugriffs auf über Azure Active Directory verbundene Anwendungen](active-directory-conditional-access-policy-connected-applications.md)
+
+- [Einrichten der automatischen Registrierung von in die Domäne eingebundenen Windows-Geräten bei Azure Active Directory](active-directory-conditional-access-automatic-device-registration-setup.md)
+
+- [Schützen von Daten durch vollständiges oder selektives Zurücksetzen mit Microsoft Intune](https://docs.microsoft.com/intune/deploy-use/use-remote-wipe-to-help-protect-data-using-microsoft-intune)
 
 
 ### Schützen von Ressource basierend auf dem Anmelderisiko
 
 [Azure AD Identity Protection](active-directory-identityprotection.md)
 
-### Additional Info
+### Zusätzliche Informationen
 
 - [Häufig gestellte Fragen zum bedingten Zugriff](active-directory-conditional-faqs.md)
 - [Technische Referenz](active-directory-conditional-access-technical-reference.md)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0810_2016-->

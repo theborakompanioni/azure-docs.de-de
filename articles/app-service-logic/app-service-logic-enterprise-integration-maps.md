@@ -27,6 +27,9 @@ Eine Zuordnung ist ein XML-Dokument, das definiert, welche Daten in einem Dokume
 ## Gründe für Zuordnungen
 Angenommen, Sie erhalten regelmäßig B2B-Aufträge oder -Rechnungen von einem Kunden, der das Format JJMMTT für Datumsangaben verwendet. In Ihrer Organisation wird das Datum allerdings im Format TTMMJJJJ gespeichert. Mithilfe einer Zuordnung können das Datumsformat JJMMTT in das Format TTMMJJJJ *transformieren*, ehe die Auftrags- oder Rechnungsdetails in Ihrer Kundendatenbank gespeichert werden.
 
+## Wie erstelle ich eine Zuordnung?
+Das [Enterprise Integration Pack](./app-service-logic-enterprise-integration-overview.md "Informationen zum Enterprise Integration Pack") für Visual Studio 2015 ermöglicht die Erstellung von BizTalk Integration-Projekten. Durch Erstellen einer Integration Map-Datei können Sie Elemente visuell zwischen zwei XML-Schemadateien zuordnen. Nach der Erstellung dieses Projekts wird ein XSLT-Dokument ausgegeben.
+
 ## Hochladen einer Zuordnung
 Gehen Sie im Azure-Portal so vor:
 1. Wählen Sie **Durchsuchen** aus. ![](./media/app-service-logic-enterprise-integration-overview/overview-1.png)
@@ -58,4 +61,4 @@ Gehen Sie wie folgt vor, um eine neue Zuordnung hochzuladen, die eine vorhandene
 - [Weitere Informationen zu Vereinbarungen](./app-service-logic-enterprise-integration-agreements.md "Informationen zu Vereinbarungen zur Unternehmensintegration")
 - [Weitere Informationen zu Transformationen](./app-service-logic-enterprise-integration-transform.md "Informationen zu Unternehmensintegrationstransformationen")
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0810_2016-->

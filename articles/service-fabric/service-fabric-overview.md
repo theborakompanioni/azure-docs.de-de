@@ -13,14 +13,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="07/05/2016"
+   ms.date="08/03/2016"
    ms.author="mfussell"/>
 
 # Übersicht über Service Fabric
-Service Fabric ist eine Plattform für verteilte Systeme, über die skalierbare und zuverlässige Microservices einfach gepackt, bereitgestellt und verwaltet werden können und die Lösungen für die komplexen Herausforderungen bei der Entwicklung und Verwaltung von Cloudanwendungen bietet. Mit Service Fabric gehören komplexe Infrastrukturprobleme der Vergangenheit an. Stattdessen können sich Entwickler und Administratoren auf das Implementieren geschäftskritischer, anspruchsvoller Workloads konzentrieren, die skalierbar, zuverlässig und einfach zu verwalten sind. Service Fabric ist die Middlewareplattform der nächsten Generation für das Erstellen und Verwalten leistungsstarker Tier-1-Anwendungen mit Cloudskalierung.
+Service Fabric ist eine Plattform für verteilte Systeme, die das Packen, Bereitstellen und Verwalten skalierbarer und zuverlässiger Microservices vereinfacht. Service Fabric bietet außerdem einfache Lösungen für die komplexen Herausforderungen bei der Entwicklung und Verwaltung von Cloudanwendungen. Entwickler und Administratoren können komplexe Infrastrukturprobleme vermeiden und sich stattdessen auf das Implementieren geschäftskritischer, anspruchsvoller Workloads konzentrieren, die skalierbar, zuverlässig und einfach zu verwalten sind. Service Fabric ist die Middlewareplattform der nächsten Generation für das Erstellen und Verwalten leistungsstarker Tier-1-Anwendungen mit Cloudskalierung.
 
 ## Aus Microservices bestehende Anwendungen
-Service Fabric ermöglicht das Erstellen und Verwalten skalierbarer und zuverlässiger Anwendungen, die sich aus Microservices zusammensetzen. Diese Microservices werden in einem gemeinsam genutzten Computerpool (auch Service Fabric-Cluster genannt) mit sehr hoher Dichte ausgeführt. Die Plattform bietet eine ausgereifte Laufzeit für das Erstellen verteilter, skalierbarer zustandsloser und zustandsbehafteter Microservices sowie umfassende Anwendungsverwaltungsfunktionen zum Organisieren, Bereitstellen, Überwachen, Upgraden/Patchen und Löschen bereitgestellter Anwendungen.
+Service Fabric ermöglicht das Erstellen und Verwalten skalierbarer und zuverlässiger Anwendungen, die sich aus Microservices zusammensetzen. Diese Microservices werden in einem gemeinsam genutzten Computerpool (als Cluster bezeichnet) mit sehr hoher Dichte ausgeführt. Die Plattform bietet eine ausgereifte Laufzeit für das Erstellen verteilter, skalierbarer zustandsloser und zustandsbehafteter Microservices sowie umfassende Anwendungsverwaltungsfunktionen zum Organisieren, Bereitstellen, Überwachen, Upgraden/Patchen und Löschen bereitgestellter Anwendungen.
 
 Warum ist ein Microserviceansatz wichtig? Die beiden wichtigsten Gründe sind:
 
@@ -34,12 +34,12 @@ Service Fabric wurde konzipiert, um das Erstellen von Diensten zu ermöglichen, 
 
 Internetdienste setzen sich heutzutage aus Microservices zusammen. Beispiele für Microservices sind etwa Protokollgateways, Benutzerprofile, Einkaufswagen, Bestandsverarbeitungsvorgänge, Warteschlangen und Caches. Service Fabric ist eine Microservices-Plattform, in der jeder Microservice einen eindeutigen Namen erhält und entweder zustandslos oder zustandsbehaftet sein kann.
 
-Service Fabric bietet umfassende Verwaltungsfunktionen für die Laufzeit und den Lebenszyklus der Anwendungen, die sich aus diesen Microservices zusammensetzen. Die in Containern gehosteten Microservices werden im Service Fabric-Cluster bereitgestellt und aktiviert. Die Zunahme der Dichte, die durch den Umstieg von Containern auf Microservices erreicht wird, entspricht in etwa der Zunahme der Dichte durch den Umstieg von virtuellen Maschinen auf Container. Ein einzelner, mit Service Fabric erstellter Azure SQL-Datenbank-Cluster kann beispielsweise aus Hunderten von Rechnern bestehen, die Zehntausende von Containern ausführen, die wiederum Hunderttausende von Datenbanken hosten. (Jede Datenbank ist dabei ein zustandsbehafteter Service Fabric-Microservice.) Dies gilt auch für Event Hubs und die übrigen oben genannten Dienste. Aus diesem Grund trifft im Zusammenhang mit Service Fabric-Funktionen der Begriff „Hyperskalierung“ zu. Container bieten eine hohe Dichte, Microservices eine extrem hohe Skalierbarkeit.
+Service Fabric bietet umfassende Verwaltungsfunktionen für die Laufzeit und den Lebenszyklus der Anwendungen, die sich aus diesen Microservices zusammensetzen. Die in Containern gehosteten Microservices werden im Service Fabric-Cluster bereitgestellt und aktiviert. Die Umstellung von VMs auf Container ermöglicht eine Zunahme der Dichte in größerem Umfang. Eine weitere deutliche Steigerung der Dichte lässt sich dann erzielen, indem die Umstellung von Containern auf Microservices durchgeführt wird. Ein einzelner Azure SQL-Datenbank-Cluster kann beispielsweise aus Hunderten von Rechnern bestehen, die Zehntausende von Containern ausführen, die wiederum Hunderttausende von Datenbanken hosten. Jede Datenbank ist dabei ein zustandsbehafteter Service Fabric-Microservice. Da dasselbe für die anderen erwähnten Dienste gilt, wird der Begriff der „Hyperskalierung“ verwendet, um Service Fabric-Funktionen zu beschreiben. Container bieten eine hohe Dichte, Microservices eine extrem hohe Skalierbarkeit.
 
 Weitere Informationen zum Microservice-Ansatz finden Sie unter [Gründe für einen Microservice-Ansatz zum Erstellen von Anwendungen](service-fabric-overview-microservices.md).
 
 ## Erstellen von Service Fabric-Clustern – überall
-Sie können Service Fabric-Cluster in vielen Umgebungen erstellen, in denen Ihre Anwendungen bereitgestellt werden. Das kann eine Azure-, eine lokale, eine Windows Server- oder eine Linux-Umgebung sein. Darüber hinaus ist die Entwicklungsumgebung im SDK identisch mit der Produktionsumgebung ohne Beteiligung von Emulatoren. Anders ausgedrückt, falls das SDK in Ihrem lokalen Entwicklungscluster ausgeführt wird, wird es an den gleichen Cluster in anderen Umgebungen bereitgestellt.
+Sie können Service Fabric-Cluster in vielen Umgebungen erstellen, z.B. unter Azure oder lokal, unter Windows Server oder unter Linux. Darüber hinaus ist die Entwicklungsumgebung im SDK identisch mit der Produktionsumgebung ohne Beteiligung von Emulatoren. Anders ausgedrückt: Falls das SDK in Ihrem lokalen Entwicklungscluster ausgeführt wird, wird es für den gleichen Cluster in anderen Umgebungen bereitgestellt.
 
 Weitere Informationen zum lokalen Erstellen von Clustern finden Sie unter [Erstellen von eigenständigen Service Fabric-Clustern unter Windows Server oder Linux](service-fabric-deploy-anywhere.md). Informationen zum Erstellen von Azure-Clustern finden Sie im [Azure-Portal](service-fabric-cluster-creation-via-portal.md).
 
@@ -51,9 +51,9 @@ Service Fabric ermöglicht es Ihnen, Anwendungen zu erstellen, die aus Microserv
 
 Warum sollte man sowohl zustandsbehaftete als auch zustandslose Microservices haben? Die beiden wichtigsten Gründe sind:
 
-1. Die Möglichkeit zum Erstellen fehlertoleranter OLTP-Dienste mit hohem Durchsatz und niedriger Latenz (z. B. interaktive Geschäfte, Suchfunktionen, Internet der Dinge (IoT)-Systeme, Handelssysteme, Kreditkartenverarbeitungs- und Betrugserkennungssysteme sowie die Verwaltung personenbezogener Datensätze), indem Code und Daten ortsnah auf dem gleichen Computer behalten werden.
+1. Die Möglichkeit zum Erstellen fehlertoleranter OLTP-Dienste (Online Transaction Processing) mit hohem Durchsatz und niedriger Latenz, indem Code und Daten nah beieinander auf dem gleichen Computer vorgehalten werden. Beispiele hierfür sind interaktive Geschäfte, Suchfunktionen, IoT-Systeme (Internet der Dinge), Handelssysteme, Kreditkartenverarbeitungssysteme, Betrugserkennungssysteme und Verwaltung personenbezogener Datensätze.
 
-2. Vereinfachung des Anwendungsentwurfs, da zustandsbehaftete Microservices zusätzliche Warteschlangen und Caches überflüssig machen. Diese waren bislang erforderlich, um Verfügbarkeits- und Latenzanforderungen einer rein zustandslosen Anwendung zu erfüllen. Da zustandsbehaftete Dienste an sich bereits hochverfügbar sind und eine niedrige Latenz bieten, fällt der Verwaltungsaufwand in Ihrer Anwendung insgesamt geringer aus.
+2. Vereinfachung des Anwendungsentwurfs: Mit zustandsbehafteten Microservices werden zusätzliche Warteschlangen und Caches überflüssig, die bislang erforderlich waren, um Verfügbarkeits- und Latenzanforderungen einer rein zustandslosen Anwendung zu erfüllen. Zustandsbehaftete Dienste sind normalerweise bereits hochverfügbar und bieten eine niedrige Latenz, sodass der Verwaltungsaufwand in Ihrer Anwendung insgesamt geringer ausfällt.
 
 Weitere Informationen zu Anwendungsmustern mit Service Fabric finden Sie unter [Service Fabric-Anwendungsszenarien](service-fabric-application-scenarios.md) und [Auswählen eines Frameworks für den Dienst](service-fabric-choose-framework.md).
 
@@ -62,7 +62,7 @@ Service Fabric bietet erstklassige Unterstützung für die gesamte Anwendungsleb
 
 Dank der ALM-Funktionen von Service Fabric profitieren Anwendungsadministratoren/IT-Operatoren von einfache Workflows, um Anwendungen mit geringem Arbeitsaufwand vorzubereiten, bereitzustellen, zu patchen und zu überwachen. Diese integrierten Workflows entlasten IT-Operatoren bei der Gewährleistung der kontinuierlichen Anwendungsverfügbarkeit erheblich.
 
-Die meisten Anwendungen bestehen aus einer Kombination aus zustandslosen und zustandsbehafteten Microservices und anderen ausführbaren Dateien/Laufzeiten, die gemeinsam bereitgestellt werden. Dank leistungsstarker Typen für Anwendungen und gepackte Microservices ermöglicht Service Fabric die Bereitstellung mehrerer Anwendungsinstanzen, die jeweils unabhängig voneinander verwaltet und aktualisiert werden können. Maßgeblich dabei ist, dass Service Fabric *jede beliebige* ausführbare Datei oder Laufzeit zuverlässig bereitstellen kann. So können Sie beispielsweise ASP.NET Core 1, Node.js, Java VMs, Skripts und alle anderen beliebigen Komponenten bereitstellen, aus denen sich Ihre Anwendung zusammensetzt.
+Die meisten Anwendungen bestehen aus einer Kombination aus zustandslosen und zustandsbehafteten Microservices und anderen ausführbaren Dateien/Laufzeiten, die gemeinsam bereitgestellt werden. Dank leistungsstarker Typen für Anwendungen und gepackter Microservices ermöglicht Service Fabric die Bereitstellung mehrerer Anwendungsinstanzen. Jede Instanz kann jeweils unabhängig voneinander verwaltet und aktualisiert werden. Maßgeblich dabei ist, dass Service Fabric *jede beliebige* ausführbare Datei oder Laufzeit zuverlässig bereitstellen kann. Mit Service Fabric können beispielsweise ASP.NET Core 1, Node.js, Java-VMs, Skripts und alle anderen beliebigen Komponenten bereitgestellt werden, aus denen sich Ihre Anwendung zusammensetzt.
 
 Weitere Informationen zur Verwaltung des Anwendungslebenszyklus finden Sie unter [Lebenszyklus der Service Fabric-Anwendung](service-fabric-application-lifecycle.md) und zum Bereitstellen eines beliebigen Codes unter [Bereitstellen einer ausführbaren Gastanwendungsdatei in Service Fabric](service-fabric-deploy-existing-app.md).
 
@@ -71,9 +71,9 @@ Mit Service Fabric können Sie Folgendes tun:
 
 - Hochgradig skalierbare Anwendungen mit Selbstreparatur entwickeln.
 
-- Aus Microservices bestehende Anwendungen mit dem Service Fabric-Programmiermodell entwickeln oder ausführbare Gastanwendungsdateien und andere Anwendungsframeworks Ihrer Wahl hosten, etwa ASP.NET Core 1 oder Node.js.
+- Anwendungen entwickeln, die aus Microservices bestehen, indem Sie das Service Fabric-Programmiermodell verwenden. Oder hosten Sie einfach ausführbare Gastanwendungsdateien und andere Anwendungsframeworks Ihrer Wahl, z.B. ASP.NET Core 1 oder Node.js.
 
-- Zustandslose und zustandsbehaftete hoch zuverlässige Microservices entwickeln.
+- Sehr zuverlässige zustandslose und zustandsbehaftete Microservices entwickeln.
 
 - Den Anwendungsentwurf durch die Nutzung zustandsbehafteter Microservices anstelle von Caches und Warteschlangen vereinfachen.
 
@@ -97,12 +97,12 @@ Mit Service Fabric können Sie Folgendes tun:
 
 - Service Fabric-Cluster auf einfache Weise skalieren und dabei sicher sein, dass die Skalierung der Anwendungen unter Berücksichtigung der verfügbaren Ressourcen erfolgt.
 
-- Den selbstreparierenden Resource Balancer beim Organisieren einer erneuten Bereitstellung der Anwendungen im Service Fabric-Cluster überwachen, um nach Fehlern eine Wiederherstellung durchzuführen oder die Lastenverteilung basierend auf den verfügbaren Ressourcen zu optimieren.
+- Den selbstreparierenden Resource Balancer beim Organisieren einer erneuten Bereitstellung der Anwendungen im Cluster überwachen. Service Fabric führt nach Fehlern eine Wiederherstellung durch und optimiert die Lastenverteilung basierend auf den verfügbaren Ressourcen.
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## Nächste Schritte
 
-* Weitere Informationen:
+* Weitere Informationen finden Sie unter:
     * [Gründe für einen Microservice-Ansatz zum Erstellen von Anwendungen](service-fabric-overview-microservices.md)
     * [Technische Übersicht](service-fabric-technical-overview.md)
 * Einrichten der Service Fabric-[Entwicklungsumgebung](service-fabric-get-started.md)
@@ -110,4 +110,4 @@ Mit Service Fabric können Sie Folgendes tun:
 
 [Image1]: media/service-fabric-overview/Service-Fabric-Overview.png
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0810_2016-->

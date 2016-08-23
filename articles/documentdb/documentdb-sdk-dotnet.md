@@ -1,9 +1,9 @@
 <properties 
-	pageTitle="DocumentDB .NET SDK | Microsoft Azure" 
-	description="Wichtige Informationen zum .NET SDK einschließlich Veröffentlichungstermine, Deaktivierungstermine und Änderungen an den einzelnen Versionen des DocumentDB .NET SDK." 
+	pageTitle="DocumentDB – .NET-API und -SDK | Microsoft Azure" 
+	description="Wichtige Informationen zu .NET-API und -SDK einschließlich Veröffentlichungstermine, Deaktivierungstermine und Änderungen an den einzelnen Versionen des DocumentDB-.NET-SDK." 
 	services="documentdb" 
 	documentationCenter=".net" 
-	authors="aliuy" 
+	authors="rnagpal" 
 	manager="jhubbard" 
 	editor="cgronlun"/>
 
@@ -13,24 +13,27 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="07/25/2016" 
+	ms.date="08/09/2016" 
 	ms.author="rnagpal"/>
 
-# DocumentDB SDK
+# DocumentDB-APIs und -SDKs 
 
 > [AZURE.SELECTOR]
-- [.NET SDK](documentdb-sdk-dotnet.md)
-- [Node.js SDK](documentdb-sdk-node.md)
-- [Java SDK](documentdb-sdk-java.md)
-- [Python SDK](documentdb-sdk-python.md)
+- [.NET](documentdb-sdk-dotnet.md)
+- [Node.js](documentdb-sdk-node.md)
+- [Java](documentdb-sdk-java.md)
+- [Python](documentdb-sdk-python.md)
+- [REST](https://go.microsoft.com/fwlink/?LinkId=402413)
+- [SQL](https://msdn.microsoft.com/library/azure/dn782250.aspx)
 
-## DocumentDB .NET SDK
+## DocumentDB – .NET-API und -SDK
 
 <table>
-<tr><td>**Download**</td><td>[NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/)</td></tr>
-<tr><td>**Dokumentation**</td><td>[.NET SDK-Referenzdokumentation] (https://msdn.microsoft.com/library/azure/dn948556.aspx)</td></tr>
-<tr><td>**Beispiele**</td><td>[.NET Code-Beispiele] (https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples)</td></tr>
+<tr><td>**SDK-Download**</td><td>[NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/)</td></tr>
+<tr><td>**API-Dokumentation**</td><td>[.NET-API-Referenzdokumentation](https://msdn.microsoft.com/library/azure/dn948556.aspx)</td></tr>
+<tr><td>**Beispiele**</td><td>[.NET-Codebeispiele](documentdb-dotnet-samples.md)</td></tr>
 <tr><td>**Erste Schritte**</td><td>[Erste Schritte mit dem DocumentDB .NET SDK] (documentdb-get-started.md)</td></tr>
+<tr><td>**Web-App-Tutorial**</td><td>[Webanwendungsentwicklung mit DocumentDB](documentdb-dotnet-application.md)</td></tr>
 <tr><td>**Aktuelles unterstütztes Framework**</td><td>[Microsoft .NET Framework 4.5] (https://www.microsoft.com/download/details.aspx?id=30653)</td></tr>
 </table></br>
 
@@ -68,17 +71,17 @@
   - Ein Fehler in der Nuget-Paketerstellung von .NET SDK wurde behoben (dient zum Verpacken von .NET SDK als Teil einer Azure Cloud Service-Lösung).
   
 ### <a name="1.6.2"/>[1\.6.2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.6.2)
-  - [Partitionierte Sammlungen](documentdb-partition-data.md) und [benutzerdefinierte Leistungsstufen](documentdb-performance-levels.md) implementiert.
+  - [Partitionierte Sammlungen](documentdb-partition-data.md) und [benutzerdefinierte Leistungsstufen](documentdb-performance-levels.md) wurden implementiert.
 
 ### <a name="1.5.3"/>[1\.5.3](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.5.3)
-  - **[Behoben]** Die Abfrage des DocumentDB-Endpunkts löst Folgendes aus: „System.Net.Http.HttpRequestException: Fehler beim Kopieren von Inhalt in einen Stream“.
+  - **[Korrigiert]** Die Abfrage des DocumentDB-Endpunkts löst Folgendes aus: „System.Net.Http.HttpRequestException: Fehler beim Kopieren von Inhalt in einen Stream“.
 
 ### <a name="1.5.2"/>[1\.5.2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.5.2)
   - Erweiterte LINQ-Unterstützung, einschließlich neuer Operatoren für Paging, bedingte Ausdrücke und Bereichsvergleiche.
     - Take-Operator, um SELECT TOP-Verhalten in LINQ zu ermöglichen
     - CompareTo-Operator, um Vergleiche von Zeichenfolgenbereichen zu ermöglichen
     - Bedingte (?) und zusammengefügte (??) Operatoren
-  - **[Behoben]** ArgumentOutOfRangeException beim Kombinieren der Modellprojektion mit „Where-In“ in LINQ-Abfragen. [Nr. 81](https://github.com/Azure/azure-documentdb-dotnet/issues/81)
+  - **[Korrigiert]** ArgumentOutOfRangeException beim Kombinieren der Modellprojektion mit „Where-In“ in LINQ-Abfragen. [Nr. 81](https://github.com/Azure/azure-documentdb-dotnet/issues/81)
 
 ### <a name="1.5.1"/>[1\.5.1](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.5.1)
  - **[Korrigiert]** Wenn SELECT nicht der letzte Ausdruck ist, nahm der LINQ-Anbieter keine Projektion an und erzeugte SELECT * falsch. [Nr. 58](https://github.com/Azure/azure-documentdb-dotnet/issues/58)
@@ -123,7 +126,7 @@
   
 		**NB: Mögliche neue Änderung** 
   
-    	If you have existing code that provisions collections with a custom indexing policy, then your existing code will need to be updated to support the new IndexingPolicy class. If you have no custom indexing policy, then this change does not affect you.
+    	Wenn Sie über vorhandenen Code verfügen, der Sammlungen mit einer benutzerdefinierten Indizierungsrichtlinie bereitstellt, muss Ihr vorhandener Code so aktualisiert werden, dass er die neue IndexingPolicy-Klasse unterstützt. Wenn Sie keine benutzerdefinierte Indizierungsrichtlinie haben, betrifft Sie diese Änderung nicht.
 
 ### <a name="1.1.0"/>[1\.1.0](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.1.0)
 - Unterstützung für das Partitionieren von Daten mithilfe der neuen Klassen „HashPartitionResolver“ und „RangePartitionResolver“ und von „IPartitionResolver“
@@ -159,20 +162,20 @@ Alle Versionen des Azure DocumentDB-SDK für .NET vor Version **1.0.0** werden a
 | 1.9.1 | Veraltet |--- 
 | 1.9.0 | Veraltet |--- 
 | [1\.8.0](#1.8.0) | 14. Juni 2016 |--- 
-| [1\.7.1](#1.7.1) | 6. Mai 2016 |--- 
+| [1\.7.1](#1.7.1) | 06. Mai 2016 |--- 
 | [1\.7.0](#1.7.0) | 26. April 2016 |--- 
-| [1\.6.3](#1.6.3) | 8. April 2016 |--- 
+| [1\.6.3](#1.6.3) | 08. April 2016 |--- 
 | [1\.6.2](#1.6.2) | 29. März 2016 |--- 
 | [1\.5.3](#1.5.3) | 19. Februar 2016 |--- 
 | [1\.5.2](#1.5.2) | 14. Dezember 2015 |--- 
 | [1\.5.1](#1.5.1) | 23. November 2015 |--- 
-| [1\.5.0](#1.5.0) | 5. Oktober 2015 |--- 
+| [1\.5.0](#1.5.0) | 05. Oktober 2015 |--- 
 | [1\.4.1](#1.4.1) | 25. August 2015 |--- 
 | [1\.4.0](#1.4.0) | 13. August 2015 |--- 
-| [1\.3.0](#1.3.0) | 5. August 2015 |--- 
-| [1\.2.0](#1.2.0) | 6. Juli 2015 |--- 
+| [1\.3.0](#1.3.0) | 05. August 2015 |--- 
+| [1\.2.0](#1.2.0) | 06. Juli 2015 |--- 
 | [1\.1.0](#1.1.0) | 30. April 2015 |--- 
-| [1\.0.0](#1.0.0) | 8. April 2015 |--- 
+| [1\.0.0](#1.0.0) | 08. April 2015 |--- 
 | [0\.9.3-prelease](#0.9.x-preview) | 12. März 2015 | 29. Februar 2016 
 | [0\.9.2-prelease](#0.9.x-preview) | Januar 2015 | 29. Februar 2016 
 | [.9.1-prelease](#0.9.x-preview) | 13. Oktober 2014 | 29. Februar 2016 
@@ -185,4 +188,4 @@ Alle Versionen des Azure DocumentDB-SDK für .NET vor Version **1.0.0** werden a
 
 Weitere Informationen zu DocumentDB finden Sie auf der Seite zum Dienst [Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/).
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0810_2016-->

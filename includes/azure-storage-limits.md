@@ -1,6 +1,6 @@
 Ressource|Standardlimit
 ---|---
-Max. Anzahl von Speicherkonten pro Abonnement|100<sup>1</sup>
+Anzahl von Speicherkonten pro Abonnement|200<sup>1</sup>
 TB pro Speicherkonto|500 TB
 Maximale Anzahl an Blob-Containern, Blobs, Dateifreigaben, Tabellen, Warteschlangen, Entitäten oder Meldungen pro Speicherkonto|Die einzige Einschränkung besteht in der Speicherkontokapazität von 500 TB.
 Maximale Größe eines einzelnen Blob-Containers, einer Tabelle oder einer Warteschlange|500 TB
@@ -28,15 +28,15 @@ Max. Ausgang<sup>2</sup> pro Speicherkonto (US-Regionen)|20 GBit/s mit aktivier
 Max. Eingang<sup>2</sup> pro Speicherkonto (Regionen Europa und Asien)|5 GBit/s mit aktiviertem GRS/ZRS<sup>3</sup>, 10 GBit/s bei LRS
 Max. Ausgang<sup>2</sup> pro Speicherkonto (Regionen Europa und Asien)|10 GBit/s mit aktiviertem RA-GRS/GRS/ZRS<sup>3</sup>, 15 GBit/s bei LRS
 
-<sup>1</sup>Dies umfasst sowohl Standard- als auch Premium-Speicherkonten. Wenn Sie mehr als 100 Speicherkonten benötigen, stellen Sie eine Anfrage an den [Azure-Support](https://azure.microsoft.com/support/faq/). Das Azure Storage-Team überprüft Ihr Geschäftsszenario und kann bis zu 250 Speicherkonten genehmigen.
+<sup>1</sup>Dies umfasst sowohl Standard- als auch Premium-Speicherkonten. Wenn Sie mehr als 200 Speicherkonten benötigen, stellen Sie eine Anfrage an den [Azure-Support](https://azure.microsoft.com/support/faq/). Das Azure Storage-Team überprüft Ihr Geschäftsszenario und kann bis zu 250 Speicherkonten genehmigen.
 
-<sup>2</sup>*Eingehend* bezieht sich auf alle Daten (Anforderungen), die an ein Speicherkonto gesendet werden. *Ausgang* bezieht sich auf alle Daten (Antworten), die von einem Speicherkonto empfangen werden.
+<sup>2</sup>*Eingang* bezieht sich auf alle Daten (Anforderungen), die an ein Speicherkonto gesendet werden. *Ausgang* bezieht sich auf alle Daten (Antworten), die von einem Speicherkonto empfangen werden.
 
 <sup>3</sup>Folgende Replikationsoptionen sind für Azure Storage verfügbar:
 
 - **RA-GRS**: Georedundanter Speicher mit Lesezugriff (RA-GRS) Wenn RA-GRS aktiviert ist, sind die Ausgangsziele für den sekundären Standort mit denen für den primären Standort identisch.
-- **GRS**: Georedundanter Speicher 
-- **ZRS**: Zonenredundanter Speicher Derzeit nur für Blockblobs verfügbar. 
-- **LRS**: Lokal redundanter Speicher 
+- **GRS**: Georedundanter Speicher
+- **ZRS**: Zonenredundanter Speicher Derzeit nur für Blockblobs verfügbar.
+- **LRS**: Lokal redundanter Speicher
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0810_2016-->

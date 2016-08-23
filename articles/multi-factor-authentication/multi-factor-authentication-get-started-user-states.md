@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/12/2016" 
+	ms.date="08/04/2016" 
 	ms.author="billmath"/>
 
 # Benutzerstatus in Azure Multi-Factor Authentication
@@ -63,4 +63,4 @@ Ein Benutzerstatus ändert sich abhängig davon, ob er für MFA eingerichtet wur
 8.  Sie werden aufgefordert, dies zu bestätigen. Klicken Sie auf **Ja**. ![Benutzer deaktivieren](./media/multi-factor-authentication-get-started-user-states/userstate3.png)
 9.  Es sollte angezeigt werden, dass der Vorgang erfolgreich abgeschlossen wurde. Klicken Sie auf **Schließen**. ![Benutzer deaktivieren](./media/multi-factor-authentication-get-started-user-states/userstate4.png)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0810_2016-->

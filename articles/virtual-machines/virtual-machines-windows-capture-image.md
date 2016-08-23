@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Erfassen eines virtuellen Windows-Computers in Resource Manager | Microsoft Azure"
-	description="Erfahren Sie, wie Sie im Resource Manager-Bereitstellungsmodell ein Image eines Windows-basierten virtuellen Azure-Computers erfassen können."
+	pageTitle="Erstellen eines VM-Image aus einer Azure-VM | Microsoft Azure"
+	description="Es wird beschrieben, wie Sie ein generalisiertes VM-Image aus einer vorhandenen Azure-VM erstellen, die auf dem Resource Manager-Bereitstellungsmodell basiert."
 	services="virtual-machines-windows"
 	documentationCenter=""
 	authors="cynthn"
@@ -14,30 +14,30 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/13/2016"
+	ms.date="08/04/2016"
 	ms.author="cynthn"/>
 
-# Erfassen eines virtuellen Windows-Computers im Resource Manager-Bereitstellungsmodell
+# Erstellen eines VM-Image aus einer vorhandenen Azure-VM
 
 
-In diesem Artikel wird erläutert, wie Sie einen virtuellen Azure-Computer, auf dem Windows ausgeführt wird, mithilfe von Azure PowerShell erfassen, um ihn als Image zum Erstellen anderer virtueller Computer zu verwenden. Dieses Image umfasst den Betriebssystemdatenträger und die an den virtuellen Computer angefügten Datenträger. Nicht enthalten sind die Ressourcen des virtuellen Netzwerks, die Sie zum Erstellen eines virtuellen Windows-Computers benötigen. Sie müssen diese Ressourcen separat einrichten, bevor Sie einen weiteren virtuellen Computer auf Basis des Images erstellen. Dieses Image wird außerdem als [generalisiertes Windows-Image](https://technet.microsoft.com/library/hh824938.aspx) vorbereitet.
-
+In diesem Artikel wird gezeigt, wie Sie Azure PowerShell zum Erstellen eines generalisierten Image einer vorhandenen Azure-VM verwenden. Sie können das Image dann nutzen, um eine andere VM zu erstellen. Dieses Image umfasst den Betriebssystemdatenträger und die an den virtuellen Computer angefügten Datenträger. Das Image enthält nicht die Ressourcen des virtuellen Netzwerks. Sie müssen diese Ressourcen also einrichten, wenn Sie das Image zum Erstellen einer VM verwenden. Bei diesem Prozess wird ein [generalisiertes Windows-Image](https://technet.microsoft.com/library/hh824938.aspx) erstellt.
 
 
 ## Voraussetzungen
 
-Diese Schritte setzen voraus, dass Sie bereits einen virtuellen Azure-Computer im Resource Manager-Bereitstellungsmodell erstellt, das Betriebssystem konfiguriert, beliebige Datenträger angefügt und weitere Anpassungen wie die Installation von Anwendungen vorgenommen haben. Wenn Sie diese Schritte noch nicht ausgeführt haben, lesen Sie [Erstellen einer Windows-VM mit dem Ressourcen-Manager und PowerShell](virtual-machines-windows-ps-create.md). Sie können einen virtuellen Windows-Computer (Windows Virtual Machine, Windows-VM) aber auch genauso einfach im [Azure-Portal](https://portal.azure.com) erstellen. Lesen Sie dazu [How to create a Windows virtual machine in the Azure portal](virtual-machines-windows-hero-tutorial.md) (Gewusst wie: Erstellen eines virtuellen Windows-Computers im Azure-Portal).
+- Bei diesen Schritten wird vorausgesetzt, dass Sie bereits über einen virtuellen Azure-Computer im Resource Manager-Bereitstellungsmodell verfügen, den Sie zum Erstellen des Image verwenden möchten. Sie benötigen den VM-Namen und den Namen der Ressourcengruppe. Sie erhalten eine Liste mit den Ressourcengruppen Ihres Abonnements, indem Sie das PowerShell-Cmdlet `Get-AzureRmResourceGroup` eingeben. Sie erhalten eine Liste mit den VMs in Ihrem Abonnement, indem Sie `Get-AzureRMVM` eingeben.
 
+- Hierfür muss Azure PowerShell Version 1.0.x installiert sein. Wenn Sie PowerShell noch nicht installiert haben, finden Sie die Installationsschritte unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
 
-## Vorbereiten des virtuellen Computers für die Erfassung des Images
+## Vorbereiten der Quell-VM 
 
-In diesem Abschnitt wird erläutert, wie Sie den virtuellen Windows-Computer generalisieren. Dadurch werden unter anderem alle persönlichen Kontoinformationen entfernt. Sie sollten diesen Schritt üblicherweise ausführen, wenn Sie ein VM-Image zum schnellen Bereitstellen ähnlicher virtueller Computer verwenden möchten.
+In diesem Abschnitt erfahren Sie, wie Sie die Windows-VM generalisieren, damit sie als Image verwendet werden kann.
 
-> [AZURE.WARNING] Bitte beachten Sie, dass der virtuelle Computer nach dem Generalisieren nicht über RDP angemeldet werden kann, da der Prozess alle Benutzerkonten entfernt. Diese Änderung kann nicht rückgängig gemacht werden.
+> [AZURE.WARNING] Sie können sich nicht per RDP an der VM anmelden, nachdem sie generalisiert wurde, da bei diesem Prozess alle Benutzerkonten entfernt werden. Die Änderungen können nicht rückgängig gemacht werden.
 
 1. Melden Sie sich bei Ihrem virtuellen Windows-Computer an. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu **Durchsuchen** > **Virtuelle Computer** > Ihr virtueller Windows-Computer > **Verbinden**.
 
-2. Öffnen Sie ein Eingabeaufforderungsfenster als Administrator.
+2. Öffnen Sie ein Eingabeaufforderungsfenster als ein Administrator.
 
 3. Ändern Sie das Verzeichnis in `%windir%\system32\sysprep`, und führen Sie dann „sysprep.exe“ aus.
 
@@ -53,137 +53,133 @@ In diesem Abschnitt wird erläutert, wie Sie den virtuellen Windows-Computer gen
 
    Sysprep fährt den virtuellen Computer herunter. Sein Status im Azure-Portal wird in **Beendet** geändert.
 
-</br>
-## Erfassen des virtuellen Computers
 
-Sie können den generalisierten Windows-Computer entweder mit Azure PowerShell oder mit dem neuen Tool „Azure Resource Manager-Explorer“ erfassen. In diesem Abschnitt werden die Schritte für beide Vorgehensweisen erläutert.
-
-### Verwenden von PowerShell
-
-In diesem Artikel wird davon ausgegangen, dass Sie Azure PowerShell in der Version 1.0.x installiert haben. Wir empfehlen, diese Version zu verwenden, weil neue Resource Manager-Features nicht zu älteren PowerShell-Versionen hinzugefügt werden. Wenn Sie PowerShell noch nicht installiert haben, finden Sie die Installationsschritte unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
+## Anmelden an Azure PowerShell
 
 1. Öffnen Sie Azure PowerShell, und melden Sie sich bei Ihrem Azure-Konto an.
 
 		Login-AzureRmAccount
 
-	Dieser Befehl öffnet ein Popupfenster, in dem Sie Ihre Azure-Anmeldeinformationen eingeben können.
+	Ein Popupfenster wird geöffnet, in das Sie die Anmeldeinformationen für Ihr Azure-Konto eingeben können.
 
-2. Wenn sich die standardmäßig ausgewählte Abonnement-ID von derjenigen unterscheidet, mit der Sie arbeiten möchten, verwenden Sie einen der beiden folgenden Befehle, um das gewünschte Abonnement festzulegen.
+2. Rufen Sie die Abonnement-IDs für Ihre verfügbaren Abonnements ab.
 
-		Set-AzureRmContext -SubscriptionId "xxxx-xxxx-xxxx-xxxx"
+		Get-AzureRmSubscription
 
-	oder
+3. Legen Sie das richtige Abonnement mit der Abonnement-ID fest.
 
-		Select-AzureRmSubscription -SubscriptionId "xxxx-xxxx-xxxx-xxxx"
+		Select-AzureRmSubscription -SubscriptionId "<subscriptionID>"
 
-	Die in Ihrem Azure-Konto enthaltenen Abonnements können mithilfe des Befehls `Get-AzureRmSubscription` ermittelt werden.
 
-3. Jetzt müssen Sie die Zuordnung der Ressourcen aufheben, die von diesem virtuellen Computer verwendet werden. Verwenden Sie hierzu diesen Befehl:
+## Aufheben der VM-Zuordnung und Festlegen des Status auf „Generalisiert“		
 
-		Stop-AzureRmVM -ResourceGroupName YourResourceGroup -Name YourWindowsVM
+1. Heben Sie die Zuordnung der VM-Ressourcen auf.
 
-	Sie sehen, dass der *Status* des virtuellen Computers im Azure-Portal von **Beendet** in **Beendet (Zuordnung aufgehoben)** geändert wurde.
+		Stop-AzureRmVM -ResourceGroupName <resourceGroup> -Name <vmName>
 
-	>[AZURE.TIP] Sie können den Status Ihres virtuellen Computers auch mit PowerShell ermitteln, indem Sie </br> `$vm = Get-AzureRmVM -ResourceGroupName YourResourceGroup -Name YourWindowsVM -status`</br> `$vm.Statuses`</br> verwenden. Das Feld **DisplayStatus** entspricht dem **Status**, der im Azure-Portal angezeigt wird.
+	Der *Status* für die VM im Azure-Portal ändert sich von **Beendet** in **Beendet (Zuordnung aufgehoben)**.
 
-4. Nun müssen Sie den Status des virtuellen Computers auf **Generalisiert** festlegen. Sie müssen diesen Schritt selbst ausführen, weil bei der oben durchgeführten Generalisierung (`sysprep`) der Status nicht auf eine für Azure verständliche Weise geändert wird.
+2. Legen Sie den Status des virtuellen Computers auf **Generalisiert** fest.
 
-		Set-AzureRmVm -ResourceGroupName YourResourceGroup -Name YourWindowsVM -Generalized
+		Set-AzureRmVm -ResourceGroupName <resourceGroup> -Name <vmName> -Generalized
 
-	>[AZURE.NOTE] Der durch den Befehl oben festgelegte Status „Generalisiert“ wird nicht im Portal angezeigt. Sie können ihn jedoch mithilfe des Befehls „Get-AzureRmVM“ überprüfen, wie im Tipp oben gezeigt.
+3. Überprüfen Sie den Status der VM. Im Abschnitt **OSState/generalized** der VM sollte **DisplayStatus** auf **Virtueller Computer generalisiert** festgelegt sein.
+		
+		$vm = Get-AzureRmVM -ResourceGroupName <resourceGroup> -Name <vmName> -status
+		$vm.Statuses
 
-5. Erfassen Sie das Image des virtuellen Computers mithilfe des folgenden Befehls in einem Zielspeichercontainer:
+		
+## Erstellen des Image 
+
+1. Kopieren Sie das Image des virtuellen Computers mithilfe des folgenden Befehls in den Zielspeichercontainer: Das Image wird im demselben Speicherkonto wie der ursprüngliche virtuelle Computer erstellt. Mit der Variablen `-Path` wird eine Kopie der JSON-Vorlage lokal gespeichert. Die Variable `-DestinationContainerName` ist der Name des Containers, in dem Ihre Images aufbewahrt werden sollen. Falls der Container noch nicht vorhanden ist, wird er erstellt.
 
 		Save-AzureRmVMImage -ResourceGroupName YourResourceGroup -VMName YourWindowsVM -DestinationContainerName YourImagesContainer -VHDNamePrefix YourTemplatePrefix -Path Yourlocalfilepath\Filename.json
 
-	Die Variable `-Path` ist optional. Sie können sie verwenden, um die JSON-Vorlage lokal zu speichern. Die Variable `-DestinationContainerName` ist der Name des Containers, in dem Ihre Images aufbewahrt werden sollen. Die URL des gespeicherten Images ähnelt der Folgenden: `https://YourStorageAccountName.blob.core.windows.net/system/Microsoft.Compute/Images/YourImagesContainer/YourTemplatePrefix-osDisk.xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.vhd`. Das Image wird im gleichen Speicherkonto erstellt wie der ursprüngliche virtuelle Computer.
+	Sie können die URL Ihres Image aus der JSON-Dateivorlage abrufen. Suchen Sie den Abschnitt **resources** > **storageProfile** > **osDisk** > **image** > **uri**, um den vollständigen Pfad zu Ihrem Image zu finden. Die URL des Image sieht wie folgt aus: `https://<storageAccountName>.blob.core.windows.net/system/Microsoft.Compute/Images/<imagesContainer>/<templatePrefix-osDisk>.xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.vhd`.
+	
+	Sie können den URI auch im Portal überprüfen. Das Image wird in ein Blob mit dem Namen **system** in Ihrem Speicherkonto kopiert.
 
-	>[AZURE.NOTE] Um den Speicherort des Images zu finden, öffnen Sie die JSON-Dateivorlage. Suchen Sie den Abschnitt **resources** > **storageProfile** > **osDisk** > **image** > **uri**, um den vollständigen Pfad zu Ihrem Image zu finden. Sie können auch den URI im Portal überprüfen. Dieser wird in ein Blob mit dem Namen **system** in Ihrem Speicherkonto kopiert.
+2. Erstellen Sie eine Variable für den Pfad zum Bild.
 
-
-### Verwenden von Azure-Ressourcen-Explorer (Vorschau)
-
-[Azure-Ressourcen-Explorer (Vorschau)](https://azure.microsoft.com/blog/azure-resource-explorer-a-new-tool-to-discover-the-azure-api/) ist ein neues Tool zum Verwalten von Azure-Ressourcen, die im Resource Manager-Bereitstellungsmodell erstellt wurden. Dieses Tool bietet Ihnen folgende Möglichkeiten:
-
-- Kennenlernen der APIs für die Azure-Ressourcenverwaltung
-- Abrufen der API-Dokumentation
-- Direktes Aufrufen von APIs in Ihren Azure-Abonnements
-
-Wenn Sie mehr über dieses leistungsstarke Tool erfahren möchten, schauen Sie sich das Video zum [Azure Resource Manager-Explorer mit David Ebbo](https://channel9.msdn.com/Shows/Azure-Friday/Azure-Resource-Manager-Explorer-with-David-Ebbo) an.
-
-Sie können den Resource Manager auch zum Erfassen des virtuellen Computers verwenden – alternativ zum Verwenden von PowerShell.
-
-1. Öffnen Sie die [Ressourcen-Explorer-Website](https://resources.azure.com/), und melden Sie sich bei Ihrem Azure-Konto an.
-
-2. Wählen Sie oben rechts im Tool die Option **Lesen/schreiben**, um _PUT_- und _POST_-Vorgänge zuzulassen. Standardmäßig ist **Schreibgeschützt** festgelegt. Dies bedeutet, dass Sie nur _GET_-Vorgänge durchführen können.
-
-	![Ressourcen-Explorer – Lesen/Schreiben](./media/virtual-machines-windows-capture-image/ArmExplorerReadWrite.png)
-
-3. Suchen Sie als Nächstes Ihren virtuellen Windows-Computer. Sie können entweder oben im *Suchfeld* den Namen eingeben, oder Sie können links im Menü zu Ihrem virtuellen Computer navigieren: **subscriptions** > *Ihr Azure-Abonnement* > **resourceGroups** > *Ihre Ressourcengruppe* > **providers** > **Microsoft.Compute** > **virtualMachines** > *Ihr virtueller Windows-Computer*. Wenn Sie im linken Navigationsbereich auf Ihren virtuellen Computer klicken, wird auf der rechten Seite des Tools die zugehörige Vorlage angezeigt.
-
-4. Rechts oben über der Vorlagenseite werden Registerkarten für die verschiedenen Vorgänge angezeigt, die für diesen virtuellen Computer zur Verfügung stehen. Klicken Sie auf die Registerkarte für **Aktionen (POST/DELETE)**.
-
-	![Ressourcen-Explorer – Aktionsmenü](./media/virtual-machines-windows-capture-image/ArmExplorerActionMenu.png)
-
-	- Es wird eine Liste mit allen Aktionen angezeigt, die Sie für den virtuellen Computer ausführen können.
-
-		![Ressourcen-Explorer – einzelne Aktionen](./media/virtual-machines-windows-capture-image/ArmExplorerActionItems.png)
-
-5. Heben Sie die Zuordnung für den virtuellen Computer auf, indem Sie auf die Aktionsschaltfläche für **deallocate** klicken. Der Status des virtuellen Computers wird von **Beendet** in **Beendet (Zuordnung aufgehoben)** geändert.
-
-6. Markieren Sie den virtuellen Computer als generalisiert, indem Sie auf die Aktionsschaltfläche für **generalize** klicken. Sie können die Statusänderung überprüfen, indem Sie auf der linken Seite unter dem Namen Ihres virtuellen Computers auf **InstanceView** klicken und auf der rechten Seite zum Abschnitt **statuses** navigieren.
-
-7. Unter der Aktionsschaltfläche **capture** können Sie die Werte für das Erfassen Ihres Images festlegen. Die ausgefüllten Werte sollten wie folgt aussehen:
-
-	![Ressourcen-Explorer – „capture“](./media/virtual-machines-windows-capture-image/ArmExplorerCaptureAction.png)
-
-	Klicken Sie auf die Aktionsschaltfläche **capture**, um das Image Ihres virtuellen Computers zu erfassen. Dadurch werden eine neue VHD für das Image und eine JSON-Vorlagendatei erstellt.
-
-8. Um auf die neue Image-VHD und auf die Vorlage zugreifen zu können, müssen Sie das Azure-Tool zum Verwalten von Speicherressourcen herunterladen und installieren: den [Azure Storage-Explorer](http://storageexplorer.com/). Der Azure Storage-Explorer wird lokal auf Ihrem Computer installiert.
-
-	- Öffnen Sie den Storage-Explorer, und melden Sie sich bei Ihrem Azure-Abonnement an. Es werden alle für Ihr Abonnement verfügbaren Speicherkonten angezeigt.
-
-	- Links wird das Speicherkonto für den virtuellen Computer angezeigt, der in den vorherigen Schritten erfasst wurde. Doppelklicken Sie darunter auf den Menüeintrag **system**. Daraufhin wird auf der rechten Seite der Inhalt des Ordners **system** angezeigt.
-
-		![Storage-Explorer – „system“](./media/virtual-machines-windows-capture-image/StorageExplorer1.png)
-
-	- Doppelklicken Sie auf **Microsoft.Compute** > **Images**, wodurch alle Ihre Ordner für Images angezeigt werden. Doppelklicken Sie auf den Ordnernamen, den Sie beim Erfassen des Images im Ressourcen-Explorer für die Variable **destinationContainerName** eingegeben haben. Daraufhin wird sowohl die VHD als auch die JSON-Vorlagendatei angezeigt.
-
-	- Von hier aus können Sie die URL ermitteln oder die VHD oder die Vorlage herunterladen, indem Sie mit der rechten Maustaste darauf klicken.
-
-		![Storage-Explorer – Vorlage](./media/virtual-machines-windows-capture-image/StorageExplorer2.png)
+		$imageURI = "<https://<storageAccountName>.blob.core.windows.net/system/Microsoft.Compute/Images/<imagesContainer>/<templatePrefix-osDisk>.xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.vhd>"
 
 
-## Bereitstellen eines neuen virtuellen Computers mithilfe des erfassten Images
+## Erstellen eines virtuellen Netzwerks
 
-Sie können auf Basis des erfassten Images einen neuen virtuellen Windows-Computer erstellen. In den folgenden Schritten wird gezeigt, wie Sie diesen virtuellen Computer mit Azure PowerShell und anhand des zuvor erfassten VM-Images in einem neuen virtuellen Netzwerk erstellen.
+Erstellen Sie das VNET und das Subnetz des [virtuellen Netzwerks](../virtual-network/virtual-networks-overview.md).
+		
 
->[AZURE.NOTE] Das VM-Image und der zu erstellende virtuelle Computer müssen sich in dem gleichen Speicherkonto befinden.
+1. Ersetzen Sie den Wert der Variablen durch Ihre eigenen Informationen. Geben Sie das Adresspräfix für das Subnetz im CIDR-Format an. Erstellen Sie die Variablen und das Subnetz.
 
-### Erstellen von Netzwerkressourcen
+    	$rgName = "<resourceGroup>"
+		$location = "<location>"
+        $subnetName = "<subNetName>"
+        $singleSubnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix <0.0.0.0/0>
+        
+2. Ersetzen Sie den Wert von **$vnetName** durch den Namen des virtuellen Netzwerks. Geben Sie das Adresspräfix für das virtuelle Netzwerk im CIDR-Format an. Erstellen Sie die Variable und das virtuelle Netzwerk mit dem Subnetz.
 
-Verwenden Sie das folgende PowerShell-Beispielskript, um ein virtuelles Netzwerk und eine Netzwerkschnittstellenkarte (Network Interface Card, NIC) für den neuen virtuellen Computer zu erstellen. Verwenden Sie für die durch das **$**-Zeichen dargestellten Variablen Werte, die für Ihre Anwendung geeignet sind.
+        $vnetName = "<vnetName>"
+        $vnet = New-AzureRmVirtualNetwork -Name $vnetName -ResourceGroupName $rgName -Location $locName -AddressPrefix <0.0.0.0/0> -Subnet $singleSubnet
+        
+            
+## Erstellen einer öffentlichen IP-Adresse und einer Netzwerkschnittstelle
 
-	$pip = New-AzureRmPublicIpAddress -Name $pipName -ResourceGroupName $rgName -Location $location -AllocationMethod Dynamic
+Sie benötigen eine [öffentliche IP-Adresse](../virtual-network/virtual-network-ip-addresses-overview-arm.md) und eine Netzwerkschnittstelle, um die Kommunikation mit dem virtuellen Computer im virtuellen Netzwerk zu ermöglichen.
 
-	$subnetconfig = New-AzureRmVirtualNetworkSubnetConfig -Name $subnet1Name -AddressPrefix $vnetSubnetAddressPrefix
+1. Ersetzen Sie den Wert von **$ipName** durch den Namen der öffentlichen IP-Adresse. Erstellen Sie die Variable und die öffentliche IP-Adresse.
 
-	$vnet = New-AzureRmVirtualNetwork -Name $vnetName -ResourceGroupName $rgName -Location $location -AddressPrefix $vnetAddressPrefix -Subnet $subnetconfig
+        $ipName = "<ipName>"
+        $pip = New-AzureRmPublicIpAddress -Name $ipName -ResourceGroupName $rgName -Location $locName -AllocationMethod Dynamic
+        
+2. Ersetzen Sie den Wert von **$nicName** durch den Namen der Netzwerkschnittstelle. Erstellen Sie die Variable und die Netzwerkschnittstelle.
 
-	$nic = New-AzureRmNetworkInterface -Name $nicname -ResourceGroupName $rgName -Location $location -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id
+        $nicName = "<nicName>"
+        $nic = New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgName -Location $locName -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id
 
-### Erstellen eines neuen virtuellen Computers
 
-Das folgende PowerShell-Skript veranschaulicht, wie Sie die Konfiguration für den virtuellen Computer einrichten und das erfasste VM-Image als Quelle für die neue Installation verwenden. </br>
+## Erstellen des virtuellen Computers
 
-	#Enter a new user name and password in the pop-up for the following
+Das folgende PowerShell-Skript veranschaulicht, wie Sie die Konfiguration für den virtuellen Computer einrichten und das hochgeladene VM-Image als Quelle für die neue Installation verwenden.
+
+>[AZURE.NOTE] Die VM muss in demselben Speicherkonto wie die ursprüngliche VHD enthalten sein.
+
+</br>
+
+	
+	
+	
+	#Create variables
+	# Enter a new user name and password to use as the local administrator account for the remotely accessing the VM
 	$cred = Get-Credential
+	
+	# Name of the storage account 
+	$storageAccName = "<storageAccountName>"
+	
+	# Name of the virtual machine
+	$vmName = "<vmName>"
+	
+	# Size of the virtual machine. See the VM sizes documentation for more information: https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/
+	$vmSize = "<vmSize>"
+	
+	# Computer name for the VM
+	$computerName = "<computerName>"
+	
+	# Name of the disk that holds the OS
+	$osDiskName = "<osDiskName>"
+	
+	# Assign a SKU name
+	# Valid values for -SkuName are: **Standard_LRS** - locally redundant storage, **Standard_ZRS** - zone redundant storage, **Standard_GRS** - geo redundant storage, **Standard_RAGRS** - read access geo redundant storage, **Premium_LRS** - premium locally redundant storage. 
+	$skuName = "<skuName>"
+	
+	# Create a new storage account for the VM
+	New-AzureRmStorageAccount -ResourceGroupName $rgName -Name $storageAccName -Location $location -SkuName $skuName -Kind "Storage"
 
-	#Get the storage account where the captured image is stored
+	#Get the storage account where the uploaded image is stored
 	$storageAcc = Get-AzureRmStorageAccount -ResourceGroupName $rgName -AccountName $storageAccName
 
 	#Set the VM name and size
-	$vmConfig = New-AzureRmVMConfig -VMName $vmName -VMSize "Standard_A2"
+	#Use "Get-Help New-AzureRmVMConfig" to know the available options for -VMsize
+	$vmConfig = New-AzureRmVMConfig -VMName $vmName -VMSize $vmSize
 
 	#Set the Windows operating system configuration and add the NIC
 	$vm = Set-AzureRmVMOperatingSystem -VM $vmConfig -Windows -ComputerName $computerName -Credential $cred -ProvisionVMAgent -EnableAutoUpdate
@@ -191,16 +187,18 @@ Das folgende PowerShell-Skript veranschaulicht, wie Sie die Konfiguration für d
 	$vm = Add-AzureRmVMNetworkInterface -VM $vm -Id $nic.Id
 
 	#Create the OS disk URI
-	$osDiskUri = '{0}vhds/{1}{2}.vhd' -f $storageAcc.PrimaryEndpoints.Blob.ToString(), $vmName.ToLower(), $osDiskName
+	$osDiskUri = '{0}vhds/{1}-{2}.vhd' -f $storageAcc.PrimaryEndpoints.Blob.ToString(), $vmName.ToLower(), $osDiskName
 
-	#Configure the OS disk to be created from image (-CreateOption fromImage) and give the URL of the captured image VHD for the -SourceImageUri parameter.
-	#We found this URL in the local JSON template in the previous sections.
-	$vm = Set-AzureRmVMOSDisk -VM $vm -Name $osDiskName -VhdUri $osDiskUri -CreateOption fromImage -SourceImageUri $urlOfCapturedImageVhd -Windows
+	#Configure the OS disk to be created from the image (-CreateOption fromImage), and give the URL of the uploaded image VHD for the -SourceImageUri parameter
+	#You set this variable when you uploaded the VHD
+	$vm = Set-AzureRmVMOSDisk -VM $vm -Name $osDiskName -VhdUri $osDiskUri -CreateOption fromImage -SourceImageUri $imageURI -Windows
 
 	#Create the new VM
 	New-AzureRmVM -ResourceGroupName $rgName -Location $location -VM $vm
 
-Sie sollten nun den neu erstellten virtuellen Computer im [Azure-Portal](https://portal.azure.com) unter **Durchsuchen** > **Virtuelle Computer** sehen. Alternativ können Sie ihn auch mit den folgenden PowerShell-Befehlen ermitteln:
+
+
+Anschließend sollte der neu erstellte virtuelle Computer im [Azure-Portal](https://portal.azure.com) unter **Durchsuchen** > **Virtuelle Computer** angezeigt werden. Alternativ können Sie ihn auch mit den folgenden PowerShell-Befehlen anzeigen:
 
 	$vmList = Get-AzureRmVM -ResourceGroupName $rgName
 	$vmList.Name
@@ -210,4 +208,4 @@ Sie sollten nun den neu erstellten virtuellen Computer im [Azure-Portal](https:/
 
 Informationen zum Verwalten des neuen virtuellen Computers mit Azure PowerShell finden Sie unter [Verwalten von virtuellen Computern mit Azure Resource Manager und PowerShell](virtual-machines-windows-ps-manage.md).
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0810_2016-->

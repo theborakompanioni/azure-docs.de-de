@@ -13,7 +13,7 @@ ms.devlang="na"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="big-data"
-ms.date="05/20/2016"
+ms.date="08/09/2016"
 ms.author="larryfr"/>
 
 #So löschen Sie einen HDInsight-Cluster
@@ -32,7 +32,7 @@ Die HDInsight-Clusterabrechnung beginnt mit der Erstellung eines Clusters und en
 
     ![Löschen-Symbol](./media/hdinsight-delete-cluster/deletecluster.png)
 
-##Microsoft Azure PowerShell
+##Azure PowerShell
 
 Verwenden Sie an einer PowerShell-Eingabeaufforderung den folgenden Befehl zum Löschen des Clusters:
 
@@ -48,4 +48,4 @@ Verwenden Sie an einer Eingabeaufforderung den folgenden Befehl zum Löschen des
     
 Ersetzen Sie __CLUSTERNAME__ durch den Namen Ihres HDInsight-Clusters.
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0810_2016-->

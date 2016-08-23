@@ -14,16 +14,16 @@
 	ms.tgt_pltfrm="vm-windows" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/19/2016" 
+	ms.date="08/08/2016" 
 	ms.author="josephd"/>
 
 # Einrichten einer simulierten Hybrid Cloud-Umgebung zu Testzwecken
 
-In diesem Thema lernen Sie Schritt für Schritt, wie Sie eine simulierte Hybrid Cloud-Umgebung mit Microsoft Azure für Tests mithilfe von zwei separaten virtuellen Azure-Netzwerken erstellen. Verwenden Sie diese Konfiguration als Alternative zum [Einrichten einer Hybridcloudumgebung zu Testzwecken](virtual-machines-windows-ps-hybrid-cloud-test-env-base.md), wenn Sie nicht über eine direkte Internetverbindung und eine erreichbare öffentliche IP-Adresse verfügen. Hier sehen Sie die daraus resultierende Konfiguration.
+In diesem Artikel lernen Sie Schritt für Schritt, wie Sie unter Verwendung von zwei virtuellen Azure-Netzwerken eine simulierte Hybrid Cloud-Umgebung mit Microsoft Azure erstellen. Die resultierende Konfiguration sieht folgendermaßen aus.
 
 ![](./media/virtual-machines-windows-ps-hybrid-cloud-test-env-sim/virtual-machines-windows-ps-hybrid-cloud-test-env-sim-ph4.png)
 
-Dadurch wird eine Hybrid Cloud-Produktionsumgebung simuliert. Sie besteht aus:
+Dadurch wird eine Hybrid Cloud-Produktionsumgebung mit folgenden Bestandteilen simuliert:
 
 - Einem simulierten und vereinfachten lokalen Netzwerk (TestLab), das in einem virtuellen Azure-Netzwerk gehostet wird
 - Einem simulierten standortübergreifenden virtuellen Netzwerk (TestVNET), das in Azure gehostet wird
@@ -42,19 +42,19 @@ Die Einrichtung dieser Hybrid Cloud-Testumgebung besteht aus vier Hauptphasen:
 3.	Herstellen der VNet-zu-VNet-VPN-Verbindung
 4.	Konfigurieren von DC2
 
-Wenn Sie noch über kein Azure-Abonnement verfügen, können Sie sich unter [Azure testen](https://azure.microsoft.com/pricing/free-trial/) für eine kostenlose Testversion anmelden. Wenn Sie ein MSDN- oder Visual Studio-Abonnement besitzen, finden Sie weitere Informationen unter [Monatliche Azure-Gutschrift für Visual Studio-Abonnenten](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/).
+Für diese Konfiguration wird ein Azure-Abonnement benötigt. Wenn Sie ein MSDN- oder Visual Studio-Abonnement besitzen, finden Sie weitere Informationen unter [Monatliche Azure-Gutschrift für Visual Studio-Abonnenten](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/).
 
->[AZURE.NOTE] Für virtuelle Computer und virtuelle Netzwerkgateways in Azure fallen laufende Kosten an, wenn sie ausgeführt werden. Diese Kosten werden im Rahmen der kostenlosen Testversion, des MSDN-Abonnements oder des kostenpflichtigen Abonnements abgerechnet. Ein Azure-VPN-Gateway wird als Gruppe von zwei virtuellen Computern in Azure implementiert. Erstellen Sie zum Verringern der Kosten die Testumgebung, und führen Sie die erforderlichen Tests und Demonstrationen möglichst schnell aus.
+>[AZURE.NOTE] Für virtuelle Computer und virtuelle Netzwerkgateways in Azure fallen laufende Kosten an, wenn sie ausgeführt werden. Diese Kosten werden im Rahmen Ihres MSDN-Abonnements oder Ihres kostenpflichtigen Abonnements abgerechnet. Ein Azure-VPN-Gateway wird als Gruppe von zwei virtuellen Computern in Azure implementiert. Erstellen Sie zum Verringern der Kosten die Testumgebung, und führen Sie die erforderlichen Tests und Demonstrationen möglichst schnell aus.
 
-## Phase 1: Konfigurieren des virtuellen Netzwerks "TestLab"
+## Phase 1: Konfigurieren des virtuellen Netzwerks "TestLab"
 
-Erstellen Sie gemäß den Anweisungen zur [Testumgebung für die Basiskonfiguration](virtual-machines-windows-test-config-env.md) die Computer "DC1", "APP1" und "CLIENT1" in einem virtuellen Azure-Netzwerk mit dem Namen "TestLab".
+Erstellen Sie gemäß den Anweisungen des Themas [Testumgebung für die Basiskonfiguration](https://technet.microsoft.com/library/mt771177.aspx) die Computer „DC1“, „APP1“ und „CLIENT1“ im virtuellen Azure-Netzwerk „TestLab“.
 
 Starten Sie als Nächstes eine Azure PowerShell-Eingabeaufforderung.
 
-> [AZURE.NOTE] Die folgenden Befehlssätze verwenden Azure PowerShell 1.0 und höher. Weitere Informationen finden Sie unter [Azure PowerShell 1.0](https://azure.microsoft.com/blog/azps-1-0/) (in englischer Sprache).
+> [AZURE.NOTE] Die folgenden Befehlssätze verwenden Azure PowerShell 1.0 und höher.
 
-Melden Sie sich in Ihrem Konto an.
+Melden Sie sich bei Ihrem Konto an.
 
 	Login-AzureRMAccount
 
@@ -62,12 +62,12 @@ Rufen Sie Ihren Abonnementnamen mit dem folgenden Befehl ab.
 
 	Get-AzureRMSubscription | Sort SubscriptionName | Select SubscriptionName
 
-Legen Sie Ihr Azure-Abonnement fest. Verwenden Sie das gleiche Abonnement, das Sie zum Erstellen der grundlegenden Konfiguration verwendet haben. Ersetzen Sie alles in den Anführungszeichen, einschließlich der Zeichen < und >, durch die korrekten Namen.
+Legen Sie Ihr Azure-Abonnement fest. Verwenden Sie das gleiche Abonnement, das Sie zum Erstellen der grundlegenden Konfiguration (Phase 1) verwendet haben. Ersetzen Sie den Inhalt der Anführungszeichen (einschließlich der Zeichen „<“ und „>“) durch den korrekten Namen.
 
 	$subscr="<subscription name>"
 	Get-AzureRmSubscription –SubscriptionName $subscr | Select-AzureRmSubscription
 
-Fügen Sie als Nächstes dem virtuellen TestLab-Netzwerk der Basiskonfiguration ein Gatewaysubnetz hinzu, das zum Hosten des Azure-Gateways verwendet wird.
+Fügen Sie als Nächstes dem virtuellen Netzwerk „TestLab“ Ihrer Basiskonfiguration ein Gatewaysubnetz zum Hosten des Azure-Gateways hinzu.
 
 	$rgName="<name of your resource group that you used for your TestLab virtual network>"
 	$locName="<Azure location name where you placed the TestLab virtual network, such as West US>"
@@ -86,9 +86,9 @@ Erstellen Sie im nächsten Schritt Ihr Gateway.
 	$gwipconfig=New-AzureRmVirtualNetworkGatewayIpConfig -Name TestLab_GWConfig -SubnetId $subnet.Id -PublicIpAddressId $gwpip.Id 
 	New-AzureRmVirtualNetworkGateway -Name TestLab_GW -ResourceGroupName $rgName -Location $locName -IpConfigurations $gwipconfig -GatewayType Vpn -VpnType RouteBased
 
-Bedenken Sie, dass die Erstellung neuer Gateways 20 Minuten oder mehr in Anspruch nehmen kann.
+Bedenken Sie, dass die Erstellung neuer Gateways 20 Minuten oder länger dauern kann.
 
-Stellen Sie im Azure-Portal auf Ihrem lokalen Computer eine Verbindung mit DC1 her. Verwenden Sie dafür die Anmeldeinformationen für CORP\\User1. Führen Sie die folgenden Befehle von einer Windows PowerShell-Eingabeaufforderung aus, um die CORP-Domäne so zu konfigurieren, dass Computer und Benutzer ihren lokalen Domänencontroller zur Authentifizierung verwenden.
+Stellen Sie im Azure-Portal auf Ihrem lokalen Computer eine Verbindung mit DC1 her. Verwenden Sie dafür die Anmeldeinformationen für CORP\\User1. Führen Sie die folgenden Befehle an einer Windows PowerShell-Eingabeaufforderung auf DC1 aus, um die CORP-Domäne so zu konfigurieren, dass Computer und Benutzer ihren lokalen Domänencontroller zur Authentifizierung verwenden.
 
 	New-ADReplicationSite -Name "TestLab" 
 	New-ADReplicationSite -Name "TestVNET"
@@ -99,11 +99,11 @@ Die aktuelle Konfiguration sieht folgendermaßen aus.
 
 ![](./media/virtual-machines-windows-ps-hybrid-cloud-test-env-sim/virtual-machines-windows-ps-hybrid-cloud-test-env-sim-ph1.png)
  
-## Phase 2: Erstellen des virtuellen Netzwerks "TestVNET"
+## Phase 2: Erstellen des virtuellen Netzwerks "TestVNET"
 
 Zunächst erstellen Sie das virtuelle Netzwerk „TestVNET“ und schützen es mit einer Netzwerksicherheitsgruppe.
 
-	$rgName="<name of your resource group that you used for your TestLab virtual network>"
+	$rgName="<name of the resource group that you used for your TestLab virtual network>"
 	$locName="<Azure location name where you placed the TestLab virtual network, such as West US>"
 	$locShortName="<Azure location name from $locName in all lowercase letters with spaces removed. Example:  westus>"
 	$testSubnet=New-AzureRMVirtualNetworkSubnetConfig -Name "TestSubnet" -AddressPrefix 192.168.0.0/24
@@ -127,11 +127,11 @@ Die aktuelle Konfiguration sieht folgendermaßen aus.
 
 ![](./media/virtual-machines-windows-ps-hybrid-cloud-test-env-sim/virtual-machines-windows-ps-hybrid-cloud-test-env-sim-ph2.png)
  
-##Phase 3: Erstellen der VNet-zu-VNet-Verbindung
+##Phase 3: Erstellen der VNet-zu-VNet-Verbindung
 
-Besorgen Sie sich zunächst einen zufällig generierten vorinstallierten Schlüssel mit 32 Zeichen und starker Kryptografie vom Netzwerk- oder Systemadministrator. Verwenden Sie zum Erhalten eines vorinstallierten Schlüssels alternativ die Informationen im Artikel [Create a random string for an IPsec preshared key](http://social.technet.microsoft.com/wiki/contents/articles/32330.create-a-random-string-for-an-ipsec-preshared-key.aspx) (Erstellen einer zufälligen Zeichenfolge für einen vorinstallierten IPsec-Schlüssel).
+Besorgen Sie sich zunächst einen zufällig generierten vorinstallierten Schlüssel mit 32 Zeichen und starker Kryptografie vom Netzwerk- oder Systemadministrator. Verwenden Sie zum Abrufen eines vorinstallierten Schlüssels alternativ die Informationen im Artikel [Create a random string for an IPsec preshared key](http://social.technet.microsoft.com/wiki/contents/articles/32330.create-a-random-string-for-an-ipsec-preshared-key.aspx) (Erstellen einer zufälligen Zeichenfolge für einen vorinstallierten IPsec-Schlüssel).
 
-Verwenden Sie im nächsten Schritt diese Befehle, um die Site-to-Site-VPN-Verbindung zu erstellen. Dies kann einige Zeit in Anspruch nehmen.
+Verwenden Sie im nächsten Schritt dies folgenden Befehle, um die VNet-zu-VNet-VPN-Verbindung zu erstellen. Dies kann einige Zeit in Anspruch nehmen.
 
 	$sharedKey="<pre-shared key value>"
 	$gwTestLab=Get-AzureRmVirtualNetworkGateway -Name TestLab_GW -ResourceGroupName $rgName
@@ -139,7 +139,7 @@ Verwenden Sie im nächsten Schritt diese Befehle, um die Site-to-Site-VPN-Verbin
 	New-AzureRmVirtualNetworkGatewayConnection -Name TestLab_to_TestVNET -ResourceGroupName $rgName -VirtualNetworkGateway1 $gwTestLab -VirtualNetworkGateway2 $gwTestVNET -Location $locName -ConnectionType Vnet2Vnet -SharedKey $sharedKey
 	New-AzureRmVirtualNetworkGatewayConnection -Name TestVNET_to_TestLab -ResourceGroupName $rgName -VirtualNetworkGateway1 $gwTestVNET -VirtualNetworkGateway2 $gwTestLab -Location $locName -ConnectionType Vnet2Vnet -SharedKey $sharedKey
 
-Nach einigen Minuten sollte die Verbindung hergestellt sein. Beachten Sie, dass Gateways und Verbindungen, die mit dem Azure-Ressourcen-Manager erstellt wurden, im Azure-Portal derzeit nicht sichtbar sind.
+Nach einigen Minuten sollte die Verbindung hergestellt sein.
 
 Die aktuelle Konfiguration sieht folgendermaßen aus.
 
@@ -147,11 +147,11 @@ Die aktuelle Konfiguration sieht folgendermaßen aus.
  
 ## Phase 4: Konfigurieren von DC2
 
-Erstellen Sie zunächst einen virtuellen Azure-Computer für DC2. Führen Sie in der Eingabeaufforderung von Azure PowerShell auf dem lokalen Computer die folgenden Befehle aus.
+Erstellen Sie zunächst einen virtuellen Computer für DC2. Führen Sie in der Eingabeaufforderung von Azure PowerShell auf dem lokalen Computer die folgenden Befehle aus.
 
 	$rgName="<your resource group name>"
 	$locName="<your Azure location, such as West US>"
-	$saName="<your storage account name for the base configuration>"
+	$saName="<the storage account name for the base configuration>"
 	$vnet=Get-AzureRMVirtualNetwork -Name TestVNET -ResourceGroupName $rgName
 	$pip=New-AzureRMPublicIpAddress -Name DC2-NIC -ResourceGroupName $rgName -Location $locName -AllocationMethod Dynamic
 	$nic=New-AzureRMNetworkInterface -Name DC2-NIC -ResourceGroupName $rgName -Location $locName -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id -PrivateIpAddress 192.168.0.4
@@ -167,16 +167,16 @@ Erstellen Sie zunächst einen virtuellen Azure-Computer für DC2. Führen Sie in
 	$vm=Set-AzureRMVMOSDisk -VM $vm -Name DC2-TestVNET-OSDisk -VhdUri $osDiskUri -CreateOption fromImage
 	New-AzureRMVM -ResourceGroupName $rgName -Location $locName -VM $vm
 
-Melden Sie sich anschließend über das Azure-Portal beim neuen virtuellen Computer für DC2 an.
+Stellen Sie anschließend über das Azure-Portal eine Verbindung mit dem neuen virtuellen Computer DC2 her.
 
 Konfigurieren Sie anschließend eine Windows-Firewall-Regel, um Datenverkehr zum Testen der allgemeinen Konnektivität zuzulassen. Führen Sie in der Windows PowerShell-Eingabeaufforderung von DC2 die folgenden Befehle auf Administratorebene aus.
 
 	Set-NetFirewallRule -DisplayName "File and Printer Sharing (Echo Request - ICMPv4-In)" -enabled True
 	ping dc1.corp.contoso.com
 
-Der Ping-Befehl sollte zu vier erfolgreichen Antworten von der IP-Adresse 10.0.0.4 führen. Dies ist ein Test des Datenverkehrs über die VNet-zu-VNet-Verbindung.
+Der Ping-Befehl sollte zu vier erfolgreichen Antworten von der IP-Adresse 10.0.0.4 führen. Dadurch wird der Datenverkehr über die VNet-zu-VNet-Verbindung getestet.
 
-Fügen Sie anschließend den zusätzlichen Datenträger als neues Volume mit dem Laufwerkbuchstaben F: hinzu.
+Fügen Sie anschließend den zusätzlichen Datenträger auf DC2 als neues Volume mit dem Laufwerkbuchstaben „F:“ hinzu.
 
 1.	Klicken Sie im linken Bereich des Server-Managers auf **Datei- und Speicherdienste** und anschließend auf **Datenträger**.
 2.	Klicken Sie im Inhaltsbereich in der Gruppe **Datenträger** auf **Datenträger 2** (wobei **Partition** die Einstellung **Unbekannt** aufweisen muss).
@@ -200,7 +200,7 @@ Da das virtuelle Netzwerk TestVNET nun über einen eigenen DNS-Server (DC2) verf
 
 1.	Klicken Sie im linken Bereich des Azure-Portals auf das Symbol für virtuelle Netzwerke, und klicken Sie dann auf **TestVNET**.
 2.	Klicken Sie auf der Registerkarte **Einstellungen** auf **DNS-Server**.
-3.	Geben Sie unter **Primärer DNS-Server** die Adresse **192.168.0.4** ein, und ersetzen Sie dadurch die Adresse „10.0.0.4“.
+3.	Geben Sie unter **Primärer DNS-Server** die Adresse **192.168.0.4** ein, und ersetzen Sie dadurch die Adresse 10.0.0.4.
 4.	Klicken Sie auf **Speichern**.
 
 Die aktuelle Konfiguration sieht folgendermaßen aus.
@@ -211,6 +211,6 @@ Die simulierte Hybrid Cloud-Umgebung kann jetzt zum Testen verwendet werden.
 
 ## Nächster Schritt
 
-- Richten Sie in dieser Umgebung eine [SharePoint-Intranetfarm](virtual-machines-windows-ps-hybrid-cloud-test-env-sp.md), eine [webbasierte Branchenanwendung](virtual-machines-windows-ps-hybrid-cloud-test-env-lob.md) oder einen [Office 365-Verzeichnissynchronisierungsserver (DirSync)](virtual-machines-windows-ps-hybrid-cloud-test-env-dirsync.md) ein.
+- Richten Sie in dieser Umgebung eine [webbasierte Branchenanwendung](virtual-machines-windows-ps-hybrid-cloud-test-env-lob.md) ein.
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0810_2016-->

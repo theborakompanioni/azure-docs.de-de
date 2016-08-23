@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="Azure"
    ms.workload="na"
-   ms.date="08/01/2016"
+   ms.date="08/08/2016"
    ms.author="hascipio"/>
 
 # Abschließen der Angebotserstellung mit Marketinginhalten
@@ -50,7 +50,8 @@ Alle in das Veröffentlichungsportal hochgeladen Logos müssen folgende Richtlin
 - Die Farbpalette des Azure-Designs ist einfach und geradlinig. Verwenden Sie auf Ihrem Logo möglichst wenige Primär- und Sekundärfarben.
 - Die Designfarben des Azure-Portals sind Weiß und Schwarz. Daher verwenden Sie diese Farben nicht als Hintergrundfarbe für Ihre Logos. Verwenden Sie Farben, die Ihre Logos im Azure-Portal markant hervorstechen lassen. Sie sollten einfache Primärfarben verwenden. **Wenn Sie transparenten Hintergrund verwenden, stellen Sie sicher, dass Logos/Text nicht weiß oder schwarz sind.**
 - Verwenden Sie im Logo keinen Hintergrund mit Farbverlauf.
-- Platzieren Sie nach Möglichkeit keinen Text auf dem Logo, auch nicht Ihren Firmen- oder Markennamen. Das Erscheinungsbild Ihres Logos sollte klar und direkt und frei von Farbverläufen sein.
+- Platzieren Sie nach Möglichkeit keinen Text auf dem Logo, auch nicht Ihren Firmen- oder Markennamen.
+- Das Erscheinungsbild Ihres Logos sollte klar und direkt und frei von Farbverläufen sein.
 - Das Logo sollte nicht gestreckt sein.
 - Ein kleines Logo sollte 40 x 40 px groß sein.
 - Ein mittleres Logo sollte 90 x 90 px groß sein.
@@ -123,28 +124,27 @@ Für VM-Angebote gilt: Sobald ein Angebot/eine SKU im Azure Marketplace aufgefü
 |---|---|---|---|
 | VM-Image | Nein | Ja | Nein|
 | Entwicklerdienst | Ja | Ja | Ja |
-| Datendienst | Ja | Nein | Nein |
 
 ### 2\.1. Festlegen der VM-Preise
-Derzeit gibt es für virtuelle Maschinen die folgenden **3 Typen von Abrechnungsmodellen:**
+Derzeit sind für virtuelle Computer **drei Arten von Abrechnungsmodellen** verfügbar:
 
-- **Stündlich:** Die Abrechnung für den Kunden erfolgt auf Stundenbasis gemäß der Gebühren, die von den Herausgebern für die VM-Größen festgelegt sind. Beim **stündlichen Abrechnungmodell** für die SKUs ergibt sich der Gesamtpreis aus der Summe der vom Herausgeber in Rechnung gestellten Softwarekosten plus der von Microsoft in Rechnung gestellten Infrastrukturkosten. Diese Gesamtkosten werden dem Kunden als stündlicher und monatlicher Preis angezeigt, wenn er den Kauf erwägt (siehe Screenshot unten). **Der Herausgeber erhält 80% der in Rechnung gestellten Softwarekosten.** Bitte berücksichtigen Sie dies bei der Berechnung der Preise, die Sie für die SKUs festlegen.
+- **Stündlich:** Die Abrechnung für den Kunden erfolgt auf Stundenbasis gemäß den Gebühren, die von den Herausgebern für die VM-Größen festgelegt sind. Beim **stündlichen Abrechnungsmodell** für die SKUs ergibt sich der Gesamtpreis aus der Summe der vom Herausgeber in Rechnung gestellten Softwarekosten und der von Microsoft in Rechnung gestellten Infrastrukturkosten. Diese Gesamtkosten werden dem Kunden als stündlicher und monatlicher Preis angezeigt, wenn er den Kauf erwägt (siehe Screenshot unten). **Der Herausgeber erhält 80% der in Rechnung gestellten Softwarekosten.** Bitte berücksichtigen Sie dies bei der Berechnung der Preise, die Sie für die SKUs festlegen.
 
     ![Abbildung](media/marketplace-publishing-push-to-staging/img2.1-01.png)
 
-- **Kostenlose Testversion:** Dies ist ein anderer Typ des stündlichen Abrechnungsmodells. Hier werden dem Kunde für die ersten 30 Tage nach der Bereitstellung des virtuellen Computers keine Softwarekosten in Rechnung gestellt. Nach 30 Tagen erfolgt die Abrechnung für den Kunden auf Stundenbasis gemäß der Gebühren, die von den Herausgebern im stündlichen Abrechnungsmodell festgelegt sind.
+- **Kostenlose Testversion:** Hierbei handelt es sich um eine Abwandlung des stündlichen Abrechnungsmodells. Hier werden dem Kunde für die ersten 30 Tage nach der Bereitstellung des virtuellen Computers keine Softwarekosten in Rechnung gestellt. Nach 30 Tagen erfolgt die Abrechnung für den Kunden auf Stundenbasis gemäß der Gebühren, die von den Herausgebern im stündlichen Abrechnungsmodell festgelegt sind.
 - **Bring-Your-Own-License (BYOL):** Die Herausgeber verwalten die Lizenzierung der auf dem virtuellen Computer ausgeführten Software.
 
-**Wichtig:** Sobald ein Angebot/eine SKU im Azure Marketplace aufgeführt wird, können Sie die unten angegebenen Felder nicht ändern:
+**Wichtig:** Sobald ein Angebot/eine SKU im Azure Marketplace angeboten wird, können die unten angegebenen Felder nicht mehr geändert werden:
 
 - **Preisänderung bei aufgelisteten SKUs**
 - **Abrechnungsmodelländerung bei aufgelisteten SKUs**
 - **Entfernen von Abrechnungsregionen bei aufgelisteten SKUs**
 - **Ändern der Anzahl der Datenträger bei aufgelisteten SKUs**
-- **Angebotsbezeichner:** [Veröffentlichungsportal > „Virtuelle Computer“ > wählen Sie Ihr Angebot > „VM-Images“ > „Angebotsbezeichner“]
-- **SKU-Bezeichner:** [Veröffentlichungsportal > „Virtuelle Computer“ > wählen Sie Ihr Angebot > Registerkarte „SKUs“ > „SKU hinzufügen“]
+- **Angebotsbezeichner:** [Veröffentlichungsportal > „Virtuelle Computer“ > Angebot auswählen > „VM-Images“ > „Angebotsbezeichner“]
+- **SKU-Bezeichner:** [Veröffentlichungsportal > „Virtuelle Computer“ > Angebot auswählen > Registerkarte „SKUs“ > „SKU hinzufügen“]
 - **Herausgebernamespace:** [Veröffentlichungsportal > „Virtuelle Computer“ > Registerkarte „Vorgehensweise“ > „Informationen zu Ihrem Unternehmen“ (unter „Schritt 2: Registrieren“) > „Herausgebernamespace“ > „Namespace“]
-- **Ports:** [Veröffentlichungsportal > „Virtuelle Computer“ > wählen Sie Ihr Angebot > Registerkarte „VM-Images“ > „Offene Ports “]
+- **Ports:** [Veröffentlichungsportal > „Virtuelle Computer“ > Angebot auswählen > Registerkarte „VM-Images“ > „Offene Ports“]
 
 ### „Sell-to“-Länder der SKU
 Sie müssen sorgfältig überlegen, wo Sie die SKUs zur Verfügung stellen. Manche Länder sind klassifiziert als „Überweisung durch Microsoft“ und andere klassifiziert als „Überweisung durch ISV“.
@@ -152,7 +152,7 @@ Sie müssen sorgfältig überlegen, wo Sie die SKUs zur Verfügung stellen. Manc
 - In „Überweisung durch Microsoft“-Ländern nimmt Microsoft die Steuern von den Kunden ein und zahlt (überweist) die Steuern an den Staat.
 - In „Überweisung durch ISV“-Ländern sind die Partner für die Einnahme der Steuern bei den Kunden und die Steuerzahlung an den Staat verantwortlich. Wenn Sie sich für den Verkauf in „Überweisung durch ISV“-Ländern entscheiden, müssen Sie über die Möglichkeit verfügen, die Steuern für die Länder Ihrer Wahl zu berechnen und zu zahlen.
 
->[AZURE.NOTE] Ihre SKUs werden erst dann in den Ländern verfügbar sein, wenn Sie ihre Preise im [Veröffentlichungsportal](https://publish.windowsazure.com) festlegen. Anleitungen zum Festlegen der Preise für SKUs gemäß stündlicher Abrechnung und BYOL finden Sie im Folgenden.
+>[AZURE.NOTE] Ihre SKUs werden erst in den Ländern verfügbar, wenn Sie ihre Preise im [Veröffentlichungsportal](https://publish.windowsazure.com) festlegen. Anleitungen zum Festlegen der Preise für SKUs gemäß stündlicher Abrechnung und BYOL finden Sie im Folgenden.
 
 ### 2\.1.1 Einrichten des stündlichen Abrechnungsmodells für eine SKU
 Bitte führen Sie die folgenden Schritte aus, um ein stündliches Abrechnungsmodell für eine SKU einzurichten:
@@ -160,7 +160,7 @@ Bitte führen Sie die folgenden Schritte aus, um ein stündliches Abrechnungsmod
 1.	Melden Sie sich beim [Veröffentlichungsportal](https://publish.windowsazure.com) an.
 2.	Navigieren Sie zur Registerkarte **VIRTUELLE COMPUTER**, und wählen Sie Ihr Angebot aus.
 3.	Klicken Sie im Menü auf der linken Seite auf die Registerkarte **SKUs**.
-4.	Stellen Sie sicher, dass die SKU als „Stündliches Abrechnungsmodell“ gekennzeichnet ist. Falls nicht, klicken Sie auf die Schaltfläche **BEARBEITEN**, um das Abrechnungsmodell zurückzusetzen. Daraufhin wird ein Fenster geöffnet. Deaktivieren Sie das Kontrollkästchen „Abrechnung und Lizenzierung erfolgt extern durch Azure (auch bekannt als Bring-Your-Own-License)“, und speichern Sie die Änderungen.
+4.	Stellen Sie sicher, dass die SKU als „Stündliches Abrechnungsmodell“ gekennzeichnet ist. Klicken Sie andernfalls auf die Schaltfläche **BEARBEITEN**, um das Abrechnungsmodell zurückzusetzen. Daraufhin wird ein Fenster geöffnet. Deaktivieren Sie das Kontrollkästchen „Abrechnung und Lizenzierung erfolgt extern durch Azure (auch bekannt als Bring-Your-Own-License)“, und speichern Sie die Änderungen.
 5.	Wenn Sie den kostenlosen Test für die ersten 30 Tage der SKU-Bereitstellung aktivieren möchten, wählen Sie die Option „Ein Monat“ auf die Frage: „Ist ein kostenloser Test verfügbar?“ Wählen Sie andernfalls die Option „Kein Test“. Führen Sie jetzt die folgenden Schritte aus.
 6.	Klicken Sie im Menü auf der linken Seite auf die Registerkarte **PREISE**.
 7.	Wählen Sie Ihre Basisregion.
@@ -171,7 +171,7 @@ Bitte führen Sie die folgenden Schritte aus, um ein stündliches Abrechnungsmod
 
     ![Abbildung](media/marketplace-publishing-push-to-staging/img2.1.1_08.png)
 
-9.	Legen Sie die Preise für die anderen Regionen manuell fest, oder legen Sie die Preise für andere Regionen mit dem AUTOPRICE-Assistenten für automatische Preisfestlegung gemäß der Basisregion fest. Um den AUTOPRICE-Assistenten für automatische Preisfestlegung zu verwenden, klicken Sie auf die Schaltfläche **AUTOPRICE OTHER MARKETS BASED ON PRICES IN UNITED STATES** (Preise für andere Märkte basierend auf Preisen in den USA automatisch festlegen). **Hinweis:** Die Beschriftung der Schaltfläche kann je nach der von Ihnen ausgewählten Region unterschiedlich sein. Da wir während der Erstellung dieses Dokuments die USA ausgewählt haben, trägt die Schaltfläche im Screenshot unten die Beschriftung „Auto price other markets based on prices in United States“.
+9.	Legen Sie die Preise für die anderen Regionen manuell fest, oder legen Sie die Preise für andere Regionen mit dem AUTOPRICE-Assistenten für automatische Preisfestlegung gemäß der Basisregion fest. Wenn Sie den AUTOPRICE-Assistenten für die automatische Preisfestlegung verwenden möchten, klicken Sie auf die Schaltfläche **AUTOPRICE OTHER MARKETS BASED ON PRICES IN UNITED STATES** (Preise für andere Märkte basierend auf Preisen in den USA automatisch festlegen). **Hinweis:** Die Beschriftung der Schaltfläche kann je nach der von Ihnen ausgewählten Region unterschiedlich sein. Da wir während der Erstellung dieses Dokuments die USA ausgewählt haben, trägt die Schaltfläche im Screenshot unten die Beschriftung „Auto price other markets based on prices in United States“.
 
     ![Abbildung](media/marketplace-publishing-push-to-staging/img2.1.1_09.png)
 
@@ -204,7 +204,7 @@ Bitte führen Sie die folgenden Schritte aus, um ein BYOL-Abrechnungsmodell für
 
     ![Abbildung](media/marketplace-publishing-push-to-staging/img2.1.2_06.png)
 
-7.	Machen Sie die SKU manuell oder mithilfe des AUTOPRICE-Assistenten für automatische Preisfestlegung in anderen Regionen verfügbar. Beachten Sie die Punkte 9 bis 13 (welche die Verwendung des AUTOPRICE-Assistenten für automatische Preisfestlegung erläutern) im Abschnitt **2.1.1 Einrichten des stündlichen Abrechnungsmodells für eine SKU** dieser Seite.
+7.	Machen Sie die SKU manuell oder mithilfe des AUTOPRICE-Assistenten für automatische Preisfestlegung in anderen Regionen verfügbar. Sehen Sie sich dazu auf dieser Seite im Abschnitt **2.1.1 Einrichten des stündlichen Abrechnungsmodells für eine SKU** die Punkte 9 bis 13 an, die die Verwendung des AUTOPRICE-Assistenten für automatische Preisfestlegung erläutern.
 
 ### 2\.2. Festlegen der Preise für Entwicklerdienste
 Pläne können aus einer beliebigen Kombination aus Basis- und Verbrauchskonzepten bestehen. „Basis“ ist eine Monatspauschale, „Überschreitung“ ein nutzungsbasierter Preis. (Weitere Informationen siehe unten.)
@@ -233,7 +233,7 @@ Die Kontaktinformationen werden nur für die interne Kommunikation zwischen dem 
 Auf der Registerkarte **Kategorien** stehen verschiedene Möglichkeiten zur Auswahl. Wenn Ihr Angebot sich hier einordnen lässt, können Sie bis zu fünf Kategorien auswählen.
 
 ## Verwendung Ihrer Marketinginhalte
-Im Folgenden finden Sie eine ausführliche Übersicht darüber, wie die Marketinginhalte des Angebots auf der [Azure Marketplace-Website](https://azure.microsoft.com/marketplace/) und im [Azure-Portal](https://portal.azure.com) verwendet werden.
+Im Anschluss finden Sie eine ausführliche Übersicht darüber, wie die Marketinginhalte des Angebots auf der [Azure Marketplace-Website](https://azure.microsoft.com/marketplace/) und im [Azure-Portal](https://portal.azure.com) verwendet werden.
 
 ### Azure Marketplace-Website
 ![Abbildung](media/marketplace-publishing-push-to-staging/acom-catalog-01.png)
@@ -278,4 +278,4 @@ Nachdem nun Ihre Marketplace-Inhalte geladen wurden, geht es weiter mit dem Test
 [link-pubportal]: https://publish.windowsazure.com
 [link-push-to-production]: marketplace-publishing-push-to-production.md
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0810_2016-->

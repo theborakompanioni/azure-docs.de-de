@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="05/14/2016"
+   ms.date="08/08/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
 # Migrieren Ihres Schemas nach SQL Data Warehouse#
@@ -23,19 +23,19 @@ In den folgenden Übersichten erhalten Sie Informationen zu den Unterschieden zw
 ### Funktionen in Tabellen
 In SQL Data Warehouse werden die folgenden Funktionen nicht verwendet oder nicht unterstützt:
 
-- Primärschlüssel  
-- Fremdschlüssel  
-- CHECK-Einschränkungen  
-- UNIQUE-Einschränkungen  
-- Eindeutige Indizes  
-- Berechnete Spalten  
-- Spalten mit geringer Dichte  
-- Benutzerdefinierte Typen  
-- Indizierte Sichten  
-- Identitäten  
-- Sequenzen  
-- Trigger  
-- Synonyme  
+- Primärschlüssel
+- Fremdschlüssel
+- CHECK-Einschränkungen
+- UNIQUE-Einschränkungen
+- Eindeutige Indizes
+- Berechnete Spalten
+- Spalten mit geringer Dichte
+- Benutzerdefinierte Typen
+- Indizierte Sichten
+- Identitäten
+- Sequenzen
+- Trigger
+- Synonyme
 
 
 ### Datentypunterschiede
@@ -142,4 +142,4 @@ Weitere Hinweise zur Entwicklung finden Sie in der [Entwicklungsübersicht][].
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0810_2016-->

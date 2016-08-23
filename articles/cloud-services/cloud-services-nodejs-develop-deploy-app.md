@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="nodejs"
 	ms.topic="hero-article"
-	ms.date="06/24/2016" 
+	ms.date="08/11/2016" 
 	ms.author="robmcm"/>
 
 # Erstellen und Bereitstellen einer Node.js-Anwendung in einem Azure-Clouddienst
@@ -24,7 +24,7 @@
 
 Dieses Lernprogramm veranschaulicht, wie Sie eine einfache Node.js-Anwendung erstellen können, die in einem Azure-Clouddienst ausgeführt wird. Clouddienste sind die Bausteine skalierbarer Cloudanwendungen in Azure. Sie ermöglichen die Trennung und unabhängige Verwaltung und Skalierung von Front-End- und Back-End-Komponenten von Anwendungen. Clouddienste bieten stabile und dedizierte virtuelle Computer, um jede Rolle zuverlässig zu hosten.
 
-Weitere Informationen zu Cloud Services und einen Vergleich mit Azure-Websites und Virtual Machines finden Sie unter [Azure Websites, Cloud Services and Virtual Machines comparison] \(Vergleich von Azure-Websites, Cloud Services und Virtual Machines, in englischer Sprache).
+Weitere Informationen zu Cloud Services und einen Vergleich mit Azure-Websites und Virtual Machines finden Sie unter [Azure Websites, Cloud Services and Virtual Machines comparison] (Vergleich von Azure-Websites, Cloud Services und Virtual Machines, in englischer Sprache).
 
 >[AZURE.TIP] Möchten Sie eine einfache Website erstellen? Wenn Ihr Szenario nur ein einfaches Website-Front-End umfasst, sollten Sie die [Verwendung einer einfachen Web-App] in Betracht ziehen. Sie können einen Clouddienst mühelos aktualisieren, wenn die Web-App größer wird und sich Ihre Anforderungen ändern.
 
@@ -50,7 +50,7 @@ Führen Sie folgende Aufgaben durch, um ein neues Azure-Clouddienstprojekt sowie
 
 1. Führen Sie **Windows PowerShell** als Administrator aus. Suchen Sie im **Startmenü** oder auf dem **Startbildschirm** nach **Windows PowerShell**.
 
-2. [Verbinden Sie PowerShell] mit Ihrem Abonnement.
+2. [Stellen Sie eine PowerShell-Verbindung mit Ihrem Abonnement her.]
 
 3. Geben Sie das folgende PowerShell-Cmdlet ein, um das Projekt zu erstellen:
 
@@ -87,7 +87,7 @@ Die Node.js-App wird in der Datei **server.js** im Verzeichnis für die Webrolle
 
 Dieser Code ist im Wesentlichen identisch mit dem Beispiel "Hello World" auf der [nodejs.org]-Website, mit der Ausnahme, dass die von der Cloudumgebung zugewiesene Portnummer verwendet wird.
 
-## Bereitstellen der Anwendung in Azure
+## Bereitstellen der Anwendung für Azure
 
 	[AZURE.INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
@@ -149,7 +149,7 @@ Das Cmdlet **Publish-AzureServiceProject** führt folgende Schritte aus:
 
 ## Beenden und Löschen Ihrer Anwendung
 
-Nachdem Sie Ihre Anwendung bereitgestellt haben, möchten Sie diese möglicherweise deaktivieren, um Extrakosten zu vermeiden. Azure berechnet Webrolleninstanzen pro Stunde verbrauchter Serverzeit. Die Serverzeit wird verbraucht, sobald Ihre Anwendung bereitgestellt wurde, selbst wenn die Instanzen nicht ausgeführt werden und gestoppt wurden.
+Nachdem Sie Ihre Anwendung bereitgestellt haben, möchten Sie diese möglicherweise deaktivieren, um Extrakosten zu vermeiden. Azure berechnet Webrolleninstanzen pro Stunde verbrauchter Serverzeit. Serverzeit wird genutzt, sobald die Anwendung bereitgestellt wird, selbst wenn die Instanzen nicht ausgeführt werden und sich im Status Beendet befinden.
 
 1.  Stoppen Sie im Windows PowerShell-Fenster die im vorherigen Abschnitt erstellte Dienstbereitstellung mit folgendem Cmdlet:
 
@@ -169,7 +169,7 @@ Nachdem Sie Ihre Anwendung bereitgestellt haben, möchten Sie diese möglicherwe
 
 	![Der Status des Remove-AzureService-Befehls][The status of the Remove-AzureService command]
 
-	> [AZURE.NOTE] Durch das Löschen dieses Diensts wird das Speicherkonto, das beim erstmaligen Veröffentlichen des Diensts erstellt wurde, nicht gelöscht, und Sie erhalten weiterhin eine Rechnung über den verwendeten Speicherplatz. Weitere Informationen zum Löschen eines Speicherkontos finden Sie unter [Löschen eines Speicherkontos aus einem Azure-Abonnement].
+	> [AZURE.NOTE] Durch das Löschen dieses Diensts wird das Speicherkonto, das beim erstmaligen Veröffentlichen des Diensts erstellt wurde, nicht gelöscht, und Sie erhalten weiterhin eine Rechnung über den verwendeten Speicherplatz. Weitere Informationen zum Löschen eines Speicherkontos finden Sie unter [How to Delete a Storage Account from an Azure Subscription] (Gewusst wie: Löschen eines Speicherkontos aus einem Azure-Abonnement).
 
 ## Nächste Schritte
 
@@ -181,9 +181,9 @@ Weitere Informationen finden Sie im [Node.js Developer Center].
 [Verwenden einer einfachen Web-App]: ../app-service-web/web-sites-nodejs-develop-deploy-mac.md">
 [Azure Powershell]: ../powershell-install-configure.md
 [Azure SDK für .NET 2.7]: http://www.microsoft.com/de-DE/download/details.aspx?id=48178
-[Verbinden Sie PowerShell]: ../powershell-install-configure.md#how-to-connect-to-your-subscription
+[Stellen Sie eine PowerShell-Verbindung mit Ihrem Abonnement her.]: ../powershell-install-configure.md#how-to-connect-to-your-subscription
 [nodejs.org]: http://nodejs.org/
-[Löschen eines Speicherkontos aus einem Azure-Abonnement]: ../storage/how-to-manage-a-storage-account.md
+[How to Delete a Storage Account from an Azure Subscription]: ../storage/how-to-manage-a-storage-account.md
 [Übersicht zum Erstellen eines gehosteten Diensts für Azure]: https://azure.microsoft.com/documentation/services/cloud-services/
 [Node.js Developer Center]: https://azure.microsoft.com/develop/nodejs/
 
@@ -198,4 +198,4 @@ Weitere Informationen finden Sie im [Node.js Developer Center].
 [The status of the Stop-AzureService command]: ./media/cloud-services-nodejs-develop-deploy-app/node48.png
 [The status of the Remove-AzureService command]: ./media/cloud-services-nodejs-develop-deploy-app/node49.png
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0817_2016-->

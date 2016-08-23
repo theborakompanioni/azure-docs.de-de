@@ -4,7 +4,7 @@
 	description="Hilft, die Aufgaben der Verwaltung der Hybrididentität gemäß der für die einzelnen Phasen des Lebenszyklus verfügbaren Optionen zu definieren."
 	documentationCenter=""
 	services="active-directory"
-	authors="femila"
+	authors="billmath"
 	manager="stevenpo"
 	editor=""/>
 
@@ -14,8 +14,8 @@
 	ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="identity"
-	ms.date="12/07/2015"
-	ms.author="femila"/>
+	ms.date="08/08/2016"
+	ms.author="billmath"/>
 
 
 # Ermitteln der Strategie für die Übernahme des Hybrididentitätslebenszyklus
@@ -95,4 +95,4 @@ Weitere Informationen finden Sie unter [Integrieren Ihrer lokalen Identitäten i
 ## Weitere Informationen
 [Überlegungen zum Entwurf – Übersicht](active-directory-hybrid-identity-design-considerations-overview.md)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0810_2016-->

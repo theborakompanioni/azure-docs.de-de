@@ -3,7 +3,7 @@
    description="Hier erfahren Sie, wie virtuelle Computer und Rolleninstanzen in ein anderes Subnetz verschoben werden."
    services="virtual-network"
    documentationCenter="na"
-   authors="telmosampaio"
+   authors="jimdial"
    manager="carmonm"
    editor="tysonn" />
 <tags 
@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="03/22/2016"
-   ms.author="telmos" />
+   ms.author="jdial" />
 
 # Verschieben eines virtuellen Computers oder einer Rolleninstanz in ein anderes Subnetz
 
@@ -53,4 +53,4 @@ Bearbeiten Sie zum Verschieben einer Rolleninstanz die CSCFG-Datei. Im folgenden
 	    </AddressAssignments>
 	</NetworkConfiguration> 
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0810_2016-->

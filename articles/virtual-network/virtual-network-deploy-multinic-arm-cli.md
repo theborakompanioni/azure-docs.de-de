@@ -3,7 +3,7 @@
    description="Erfahren Sie, wie Sie Multi-NIC-VMs mithilfe der Azure-CLI in Ressourcen-Manager bereitstellen"
    services="virtual-network"
    documentationCenter="na"
-   authors="telmosampaio"
+   authors="jimdial"
    manager="carmonm"
    editor=""
    tags="azure-resource-manager"
@@ -15,7 +15,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="02/02/2016"
-   ms.author="telmos" />
+   ms.author="jdial" />
 
 #Bereitstellen von Multi-NIC-VMs mithilfe der Azure-CLI
 
@@ -96,7 +96,7 @@ Sie können das verwendete Bash-Skript ungekürzt [hier](https://raw.githubuserc
 		                --name $remoteAccessNSGName|grep Id)"
 		nsgId=${nsgId#*/}
 
-### Schritt 2: Erstellen der erforderlichen Ressourcen für die virtuellen Computer
+### Schritt 2: Erstellen der erforderlichen Ressourcen für Ihre virtuellen Computer
 
 1. Erstellen Sie eine neue Ressourcengruppe für alle Back-End-Ressourcen. Beachten Sie die Verwendung der `$backendRGName`-Variable für den Ressourcengruppennamen und `$location` für die Azure-Region.
 
@@ -330,4 +330,4 @@ Führen Sie das Skript aus, nachdem sie es heruntergeladen und angepasst haben, 
 		info:    Updating VM "DB2"
 		info:    vm disk attach-new command OK
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0810_2016-->

@@ -12,7 +12,7 @@ ms.workload="tbd"
 ms.tgt_pltfrm="na" 
 ms.devlang="na" 
 ms.topic="article" 
-ms.date="05/17/2016" 
+ms.date="08/10/2016" 
 ms.author="adegeo"/>
 
 # Verfügbarmachen von Rollenkonfigurationseinstellungen als Umgebungsvariable mit XPath
@@ -189,4 +189,4 @@ Erstellen Sie ein [ServicePackage.cspkg](cloud-services-model-and-package.md#ser
 
 Aktivieren Sie [Remotedesktop](cloud-services-role-enable-remote-desktop.md) für eine Rolle.
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0810_2016-->

@@ -14,20 +14,20 @@
 	ms.tgt_pltfrm="command-line-interface"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/05/2016"
+	ms.date="08/05/2016"
 	ms.author="danlep"/>
 
 # Befehle der Azure-Befehlszeilenschnittstelle im Resource Manager-Modus
 
-Dieser Artikel enthält Informationen zur Syntax und zu den Optionen für Befehle der Azure-Befehlszeilenschnittstelle (Azure CLI), die Sie für gewöhnlich zum Erstellen und Verwalten von Azure-Ressourcen im Azure Resource Manager-Bereitstellungsmodell verwenden. Sie können auf diese Befehle zugreifen, indem Sie die Befehlszeilenschnittstelle im ARM-Modus ausführen. Dies ist keine vollständige Referenz, und für Ihre CLI-Version gelten unter Umständen etwas andere Befehle oder Parameter.
+Dieser Artikel enthält Informationen zur Syntax und zu den Optionen für Befehle der Azure-Befehlszeilenschnittstelle (Azure CLI), die Sie für gewöhnlich zum Erstellen und Verwalten von Azure-Ressourcen im Azure Resource Manager-Bereitstellungsmodell verwenden. Sie können auf diese Befehle zugreifen, indem Sie die Befehlszeilenschnittstelle im ARM-Modus ausführen. Dies ist keine vollständige Referenz, und Ihre CLI-Version kann unter Umständen einige etwas andere Befehle oder Parameter aufweisen. Eine allgemeine Übersicht über Azure-Ressourcen und -Ressourcengruppen finden Sie unter Übersicht über den Azure-Ressourcen-Manager.
 
-Zunächst müssen Sie die [Azure-Befehlszeilenschnittstelle installieren](../xplat-cli-install.md) und [eine Verbindung mit Ihrem Azure-Abonnement herstellen](../xplat-cli-connect.md) (entweder mit einem Geschäfts- oder Schulkonto oder mit einer Microsoft-Kontoidentität).
+Zunächst müssen Sie die [Azure-Befehlszeilenschnittstelle installieren](../xplat-cli-install.md) und [eine Verbindung mit Ihrem Azure-Abonnement herstellen](../xplat-cli-connect.md) (entweder mit einem Geschäfts-, Schul- oder Unikonto oder mit einer Microsoft-Kontoidentität).
 
 Geben Sie zum Anzeigen der aktuellen Befehlssyntax und Optionen in der Befehlszeile im Ressourcen-Manager-Modus `azure help` oder der Hilfe für einen bestimmten Befehl `azure help [command]` ein. In der Dokumentation finden Sie auch CLI-Beispiele zum Erstellen und Verwalten bestimmter Azure-Dienste.
 
 Optionale Parameter sind in eckigen Klammern angegeben (Beispiel: `[parameter]`). Alle anderen Parameter müssen angegeben werden.
 
-Neben den hier dokumentierten befehlsspezifischen optionalen Parametern gibt es drei weitere optionale Parameter für die Anzeige detaillierter Ausgaben wie z. B. Anforderungsoptionen und Statuscodes. Der Parameter `-v` liefert eine ausführliche Ausgabe. Bei Verwendung des Parameters `-vv` fällt die Ausgabe sogar noch ausführlicher aus. Mit der Option `--json` erfolgt die Ausgabe im reinen JSON-Format.
+Neben den hier dokumentierten befehlsspezifischen optionalen Parametern gibt es drei weitere optionale Parameter für die Anzeige detaillierter Ausgaben wie z.B. Anforderungsoptionen und Statuscodes. Der Parameter `-v` liefert eine ausführliche Ausgabe. Bei Verwendung des Parameters `-vv` fällt die Ausgabe sogar noch ausführlicher aus. Mit der Option `--json` erfolgt die Ausgabe im JSON-Rohformat.
 
 ## Festlegen des Resource Manager-Modus
 
@@ -36,12 +36,6 @@ Verwenden Sie den folgenden Befehl, um die Resource Manager-Befehle der Azure-Be
 	azure config mode arm
 
 >[AZURE.NOTE] Der Azure-Ressourcen-Manager-Modus und der Azure-Dienstverwaltungsmodus schließen sich gegenseitig aus. Das heißt, dass Ressourcen, die in einem Modus erstellt wurden, nicht im anderen Modus verwaltet werden können.
-
-## Imperative und deklarative Ansätze
-
-Wie beim [Azure Service Management-Modus](../virtual-machines-command-line-tools.md) bietet der Ressourcen-Manager-Modus der Azure-Befehlszeilenschnittstelle Ihnen Befehle, mit denen Sie Ressourcen über die Befehlszeile imperativ erstellen können. Wenn Sie beispielsweise `azure group create <groupname> <location>` eingeben, fordern Sie Azure auf, eine Ressourcengruppe zu erstellen, und mit `azure group deployment create <resourcegroup> <deploymentname>` weisen Sie Azure an, eine Bereitstellung einer beliebigen Anzahl von Elementen zu erstellen, die in einer Gruppe abgelegt werden sollen. Da jede Art von Ressource über imperative Befehle verfügt, können Sie sie miteinander verbinden, um recht komplexe Bereitstellungen zu erstellen.
-
-Der Einsatz von Ressourcengruppen-_Vorlagen_, die eine Ressource beschreiben, ist jedoch ein deklarativer Ansatz, der sehr viel wirksamer ist und der es Ihnen ermöglicht, komplexe Bereitstellungen einer (fast) beliebigen Anzahl von Ressourcen für (nahezu) jeden Zweck zu automatisieren. Wenn Sie Vorlagen verwenden, ist der einzige imperative Befehl die Bereitstellung. Eine allgemeine Übersicht über Vorlagen, Ressourcen und Ressourcengruppen finden Sie unter [Übersicht über Azure-Ressourcengruppe](../resource-group-overview.md).
 
 
 ## Azure-Konto: Verwalten Ihrer Kontoinformationen
@@ -326,7 +320,7 @@ Parameteroptionen:
 **Befehle zum Verwalten virtueller Netzwerke**
 
 	network vnet create [options] <resource-group> <name> <location>
-Ermöglicht die Erstellung eines neuen virtuellen Networks. Im folgenden Beispiel erstellen wir ein virtuelles Netzwerk mit dem Namen "newvnet" für die Ressourcengruppe "myresourcegroup" in der Region "Westliche USA".
+Erstellt ein neues virtuelles Netzwerk. Im folgenden Beispiel erstellen wir ein virtuelles Netzwerk mit dem Namen "newvnet" für die Ressourcengruppe "myresourcegroup" in der Region "Westliche USA".
 
 
 	azure network vnet create myresourcegroup newvnet "west us"
@@ -1056,7 +1050,7 @@ Parameteroptionen:
  	-l, --lb-name <lb-name>                the name of the load balancer
  	-s, --subscription <subscription>      the subscription identifier
 
-<BR> network lb address-pool delete [Optionen] <resource-group> <lb-name> <name>
+<BR> network lb address-pool delete [options] <resource-group> <lb-name> <name>
 
 Entfernt die Back-End-IP-Pool-Bereichsressource aus dem Lastenausgleichsmodul.
 
@@ -1420,7 +1414,7 @@ Parameteroptionen:
 	--no-tags                                    remove all existing tags
 	-s, --subscription <subscription>            the subscription identifier
 
-<br> network public-ip list [Optionen] <resource-group> Listet alle öffentlichen IP-Ressourcen innerhalb einer Ressourcengruppe auf.
+<br> network public-ip list [options] <resource-group> Listet alle öffentlichen IP-Ressourcen innerhalb einer Ressourcengruppe auf.
 
 	azure network public-ip list -g myresourcegroup
 
@@ -1440,7 +1434,7 @@ Parameteroptionen:
 	--json                                 use json output
 	-g, --resource-group <resource-group>  the name of the resource group
 	-s, --subscription <subscription>      the subscription identifier
-<BR> network public-ip show [Optionen] <resource-group> <name> Zeigt die Eigenschaften der öffentlichen IP für eine öffentliche IP-Ressource innerhalb einer Ressourcengruppe an.
+<BR> network public-ip show [options] <resource-group> <name> Zeigt die Eigenschaften der öffentlichen IP für eine öffentliche IP-Ressource innerhalb einer Ressourcengruppe an.
 
 	azure network public-ip show -g myresourcegroup -n mytestpublicip
 
@@ -1590,7 +1584,7 @@ Parameteroptionen:
 
 ## azure provider: Befehle zum Verwalten von Ressourcenanbieter-Registrierungen
 
-**Auflisten der zuletzt registrierten Anbieter in ARM**
+**Auflisten der zuletzt registrierten Anbieter in Resource Manager**
 
 	provider list [options]
 
@@ -1872,4 +1866,4 @@ Parameteroptionen:
 	vm image list-skus [options] <location> <publisher> <offer>
 	vm image list [options] <location> <publisher> [offer] [sku]
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0810_2016-->

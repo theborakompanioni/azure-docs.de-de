@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/22/2016"
+	ms.date="08/09/2016"
 	ms.author="juliako"/>
 
 
@@ -24,95 +24,477 @@
 - [PowerShell](media-services-manage-with-powershell.md)
 - [REST](http://msdn.microsoft.com/library/azure/dn194267.aspx)
 
-> [AZURE.NOTE] Um ein Azure Media Services-Konto erstellen zu können, müssen Sie ein Azure-Konto besitzen. Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Einzelheiten finden Sie unter <a href="http://www.windowsazure.com/pricing/free-trial/?WT.mc_id=A8A8397B5" target="_blank">Kostenlose Azure-Testversion</a>.
+> [AZURE.NOTE] Um ein Azure Media Services-Konto erstellen zu können, müssen Sie ein Azure-Konto besitzen. Wenn Sie noch kein Konto haben, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Einzelheiten finden Sie unter <a href="http://www.windowsazure.com/pricing/free-trial/?WT.mc_id=A8A8397B5" target="_blank">Kostenlose Azure-Testversion</a>.
 
 ##Übersicht 
 
-Dieser Artikel veranschaulicht, wie Sie mithilfe von PowerShell-Cmdlets Azure Media Services-Konten verwalten.
+In diesem Artikel sind die Azure PowerShell-Cmdlets für Azure Media Services (AMS) im Azure Resource Manager-Framework aufgeführt. Die Cmdlets sind im **Microsoft.Azure.Commands.Media**-Namespace vorhanden.
 
->[AZURE.NOTE]
-Um dieses Lernprogramm abzuschließen, benötigen Sie ein Azure-Konto. Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Einzelheiten finden Sie unter <a href="http://www.windowsazure.com/pricing/free-trial/?WT.mc_id=A8A8397B5" target="_blank">Kostenlose Azure-Testversion</a>.
+## Versionen
 
-##Installieren von Microsoft Azure PowerShell-Cmdlets
+**ApiVersion**: „2015-10-01“
+               
 
-Informationen zum Installieren der neuesten Azure PowerShell-Cmdlets finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
+## New-AzureRmMediaService
 
-##Auswählen eines Azure-Abonnements
+Erstellt einen Mediendienst.
 
-Wenn Sie PowerShell-Cmdlets installieren und konfigurieren, sollten Sie angeben, welches Abonnement Sie verwenden möchten.
+### Syntax
 
-Führen Sie das folgende Cmdlet aus, um eine Liste der verfügbaren Abonnements aufzurufen:
+Parametersatz: StorageAccountIdParamSet
 
-	PS C:\> Get-AzureSubscription
+	New-AzureRmMediaService [-ResourceGroupName] <string> [-AccountName] <string> [-Location] <string> [-StorageAccountId] <string> [-Tags <hashtable>]  [<CommonParameters>]
 
-Wählen Sie dann wie folgt ein Abonnement aus:
+Parametersatz: StorageAccountsParamSet
 
-	PS C:\> Select-AzureSubscription "TestSubscription"
+	New-AzureRmMediaService [-ResourceGroupName] <string> [-AccountName] <string> [-Location] <string> [-StorageAccounts] <PSStorageAccount[]> [-Tags <hashtable>]  [<CommonParameters>]
 
- 
-##Abrufen des Speicherkontonamens
+### Parameter
 
-Azure Media Services verwendet den Azure-Speicher zum Speichern von Medieninhalten. Wenn Sie ein neues Media Services-Konto erstellen, müssen Sie es einem Speicherkonto zuordnen. Das Speicherkonto muss zu dem Abonnement gehören, das Sie auch für Ihr Media Services-Konto verwenden möchten.
+**-ResourceGroupName &lt;String&gt;**
 
-In diesem Beispiel wird ein vorhandenes Speicherkonto verwendet. Das Cmdlet [Get-AzureStorageAccount](https://msdn.microsoft.com/library/azure/dn495134.aspx) ruft Speicherkonten im aktuellen Abonnement ab. Rufen Sie den Namen (StorageAccountName) des Speicherkontos ab, dem Sie Ihr Media Services-Konto zuordnen möchten.
+Gibt den Namen der Ressourcengruppe an, zu der der Mediendienst gehört.
 
-	StorageAccountDescription : 
-	AffinityGroup             :
-	Location                  : East US
-	GeoReplicationEnabled     : True
-	GeoPrimaryLocation        : East US
-	GeoSecondaryLocation      : West US
-	Label                     : storagetest001
-	StorageAccountStatus      : Created
-	StatusOfPrimary           : Available
-	StatusOfSecondary         : Available
-	Endpoints                 : {https://storagetest001.blob.core.windows.net/,
-	                            https://storagetest001.queue.core.windows.net/,
-	                            https://storagetest001.table.core.windows.net/}
-	AccountType               : Standard_GRS
-	StorageAccountName        : storatetest001
-	OperationDescription      : Get-AzureStorageAccount
-	OperationId               : e919dd56-7691-96db-8b3c-2ceee891ae5d
-	OperationStatus           : Succeeded
+Aliase | (Keine)
+---|---
+Erforderlich | true
+Position? | 0
+Standardwert |(Keine)
+Pipelineeingabe akzeptieren? |true(ByPropertyName)
+Platzhalterzeichen akzeptieren? |false
 
-##Erstellen eines neuen Media Services-Kontos
+**-AccountName &lt;String&gt;**
 
-Verwenden Sie zum Erstellen eines neuen Azure Media Services-Kontos das Cmdlet [New-AzureMediaServicesAccount](https://msdn.microsoft.com/library/azure/dn495286.aspx), und geben Sie den Namen des Media Services-Kontos, den Speicherort im Rechenzentrum, in dem es erstellt wird, und den Namen des Speicherkontos an.
+Gibt den Namen des Mediendiensts an.
 
+Aliase |Name
+---|---
+Erforderlich |true
+Position? |1
+Standardwert |(Keine)
+Pipelineeingabe akzeptieren? |false
+Platzhalterzeichen akzeptieren? |false
 
-	PS C:\> New-AzureMediaServicesAccount -Name "amstestaccount001" -StorageAccountName "storagetest001" -Location "East US"
+**-Location &lt;String&gt;**
 
-##Abrufen von Media Services-Konten
+Gibt den Ressourcenspeicherort des Mediendiensts an.
 
-Nachdem Sie Media Services-Konten erstellt haben, können Sie mithilfe von [Get-AzureMediaServicesAccount](https://msdn.microsoft.com/library/azure/dn495286.aspx) Informationen abrufen.
+Aliase |(Keine)
+---|---
+Erforderlich |true
+Position? |2
+Standardwert |(Keine)
+Pipelineeingabe akzeptieren? |true(ByPropertyName)
+Platzhalterzeichen akzeptieren? |false
 
-	
-	PS C:\> Get-AzureMediaServicesAccount
-	
-	AccountId		Name				State
-	---------       ----       			 -----
-	xxxxxxxxxx      amstestaccount001   Active
+**-StorageAccountId &lt;String&gt;**
 
-Durch Angabe des "Name"-Parameters erhalten Sie ausführlichere Informationen, darunter die Kontoschlüssel.
+Gibt ein primäres Speicherkonto an, das dem Mediendienst zugeordnet ist.
 
-	PS C:\> Get-AzureMediaServicesAccount -Name amstestaccount001
+- Nur das neue Speicherkonto (per Resource Manager-API erstellt) wird unterstützt.
 
-##Neugenerieren der Media Services-Zugriffsschlüssel
+- Das Speicherkonto muss vorhanden sein und verfügt über den gleichen Speicherort wie der Mediendienst.
 
-Wenn Sie primäre oder sekundäre Media Services-Zugriffsschlüssel aktualisieren möchten, können Sie [New-AzureMediaServicesKey](https://msdn.microsoft.com/library/azure/dn495215.aspx) verwenden. Sie müssen den Kontonamen angeben und festlegen, welcher Schlüssel neu generiert werden soll (primärer oder sekundärer Schlüssel).
+Aliase |(Keine)
+---|---
+Erforderlich |true
+Position? |3
+Standardwert |(Keine)
+Pipelineeingabe akzeptieren? |true(ByPropertyName)
+Parametersatzname |StorageAccountIdParamSet
+Platzhalterzeichen akzeptieren?|false
 
-Geben Sie einen "-Force"-Schalter an, wenn in der PowerShell keine Aufforderungen zur Bestätigung angezeigt werden sollen.
+**-StorageAccounts &lt;PSStorageAccount[]&gt;**
 
-	PS C:\> New-AzureMediaServicesKey -Name "amstestaccount001" -KeyType "Primary" -Force
+Gibt Speicherkonten an, die dem Mediendienst zugeordnet sind.
 
-##Entfernen von Media Services-Kontos
+- Nur das neue Speicherkonto (per Resource Manager-API erstellt) wird unterstützt.
 
-Wenn Sie das Azure Media Services-Konto löschen möchten, verwenden Sie [Remove-AzureMediaServicesAccount](https://msdn.microsoft.com/library/azure/dn495220.aspx).
+- Das Speicherkonto muss vorhanden sein und verfügt über den gleichen Speicherort wie der Mediendienst.
 
-	PS C:\> Remove-AzureMediaServicesAccount -Name "amstestaccount001" -Force
+- Nur ein Speicherkonto kann als primäres Konto angegeben werden.
 
+Aliase |(Keine)
+---|---
+Erforderlich |true
+Position? |3
+Standardwert |(Keine)
+Pipelineeingabe akzeptieren? |true(ByPropertyName)
+Parametersatzname |StorageAccountsParamSet
+Platzhalterzeichen akzeptieren? |false
 
-##Media Services-Lernpfade
+**-Tags &lt;Hashtable&gt;**
+
+Gibt eine Hashtabelle mit den Tags an, die dem Mediendienst zugeordnet sind.
+
+- Beispiel: @{"tag1"="value1";"tag2"=:value2"}
+
+Aliase |(Keine)
+---|---
+Erforderlich |false
+Position? |benannt
+Standardwert |(Keine)
+Pipelineeingabe akzeptieren? |false
+Platzhalterzeichen akzeptieren? |false
+
+**&lt;CommandParameters&gt;**
+
+Dieses Cmdlet unterstützt diese gängigen Parameter: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction und -WarningVariable.
+
+### Eingaben
+
+Der Eingabetyp ist der Typ der Objekte, die Sie an das Cmdlet übergeben können.
+
+### Ausgaben
+
+Der Ausgabetyp ist der Typ der Objekte, die vom Cmdlet ausgegeben werden.
+
+## Set-AzureRmMediaService
+
+Aktualisiert einen Mediendienst.
+
+### Syntax
+
+	Set-AzureRmMediaService [-ResourceGroupName] <string> [-AccountName] <string> [-Tags <hashtable>] [-StorageAccounts <PSStorageAccount[]>]  [<CommonParameters>]
+
+### Parameter
+
+**-ResourceGroupName &lt;String&gt;**
+
+Gibt den Namen der Ressourcengruppe an, zu der der Mediendienst gehört.
+
+Aliase |(Keine)
+---|---
+Erforderlich |true
+Position? |0
+Standardwert |(Keine)
+Akzeptiert Pipeline-Eingabe? |true(ByPropertyName)
+Platzhalterzeichen akzeptieren? |false
+
+**-AccountName &lt;String&gt;**
+
+Gibt den Namen des Mediendiensts an.
+
+Aliase |Name
+---|---
+Erforderlich |True
+Position? |1
+Standardwert |Keine
+Pipelineeingabe akzeptieren? |true(ByPropertyName)
+Platzhalterzeichen akzeptieren? |False
+
+**-StorageAccounts &lt;PSStorageAccount[]&gt;**
+
+Gibt Speicherkonten an, die dem Mediendienst zugeordnet sind.
+
+- Nur das neue Speicherkonto (per Resource Manager-API erstellt) wird unterstützt.
+
+- Das Speicherkonto muss vorhanden sein und verfügt über den gleichen Speicherort wie der Mediendienst.
+
+- Nur ein Speicherkonto kann als primäres Konto angegeben werden.
+
+Aliase |(Keine)
+---|---
+Erforderlich |false
+Position? |Benannt
+Standardwert |(Keine)
+Pipelineeingabe akzeptieren? |true(ByPropertyName)
+Parametersatzname |StorageAccountsParamSet
+Platzhalterzeichen akzeptieren? |false
+
+**-Tags &lt;Hashtable&gt;**
+
+Gibt eine Hashtabelle mit den Tags an, die diesem Mediendienst zugeordnet sind.
+
+- Die Tags, die dem Mediendienst zugeordnet sind, werden durch den vom Kunden angegebenen Wert ersetzt.
+
+Aliase |(Keine)
+---|---
+Erforderlich |False
+Position? |Benannt
+Standardwert |Keine
+Pipelineeingabe akzeptieren? |true(ByPropertyName)
+Platzhalterzeichen akzeptieren? |false
+
+**&lt;CommandParameters&gt;**
+
+Dieses Cmdlet unterstützt diese gängigen Parameter: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction und -WarningVariable.
+
+### Eingaben
+
+Der Eingabetyp ist der Typ der Objekte, die Sie an das Cmdlet übergeben können.
+
+### Ausgaben
+
+Der Ausgabetyp ist der Typ der Objekte, die vom Cmdlet ausgegeben werden.
+
+## Remove-AzureRmMediaService
+
+Entfernt einen Mediendienst.
+
+### Syntax
+
+	Remove-AzureRmMediaService [-ResourceGroupName] <string> [-AccountName] <string>  [<CommonParameters>]
+
+### Parameter
+
+**-ResourceGroupName &lt;String&gt;**
+
+Gibt den Namen der Ressourcengruppe an, zu der der Mediendienst gehört.
+
+Aliase |(Keine)
+---|---
+Erforderlich |true
+Position? |0
+Standardwert |(Keine)
+Pipelineeingabe akzeptieren? |true(ByPropertyName)
+Platzhalterzeichen akzeptieren? |false
+
+**-AccountName &lt;String&gt;**
+
+Gibt den Namen des Mediendiensts an.
+
+Aliase |(Keine)
+---|---
+Erforderlich |true
+Position? |2
+Standardwert |Keine
+Pipelineeingabe akzeptieren? |true(ByPropertyName)
+Platzhalterzeichen akzeptieren? |False
+
+**&lt;CommandParameters&gt;**
+
+Dieses Cmdlet unterstützt diese gängigen Parameter: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction und -WarningVariable.
+
+### Eingaben
+
+Der Eingabetyp ist der Typ der Objekte, die Sie an das Cmdlet übergeben können.
+
+### Ausgaben
+
+Der Ausgabetyp ist der Typ der Objekte, die vom Cmdlet ausgegeben werden.
+
+## Get-AzureRmMediaService
+
+Ruft alle Mediendienste in einer Ressourcengruppe oder einen Mediendienst mit einem bestimmten Namen ab.
+
+### Syntax
+
+ParameterSet: ResourceGroupParameterSet
+
+	Get-AzureRmMediaService [-ResourceGroupName] <string>  [<CommonParameters>]	
+
+ParameterSet: AccountNameParameterSet
+
+	Get-AzureRmMediaService [-ResourceGroupName] <string> [-AccountName] <string>  [<CommonParameters>]
+
+### Parameter
+
+**-ResourceGroupName &lt;String&gt;**
+
+Gibt den Namen der Ressourcengruppe an, zu der der Mediendienst gehört.
+
+Aliase |(Keine)
+---|---
+Erforderlich |true
+Position? |0
+Standardwert |(Keine)
+Pipelineeingabe akzeptieren? |true(ByPropertyName)
+Parametersatzname |ResourceGroupParameterSet, AccountNameParameterSet
+Platzhalterzeichen akzeptieren? false
+
+**-AccountName &lt;String&gt;**
+
+Gibt den Namen des Mediendiensts an.
+
+Aliase |(Keine)
+---|---
+Erforderlich |true
+Position? |1
+Standardwert |(Keine)
+Pipelineeingabe akzeptieren? |true(ByPropertyName)
+Parametersatzname |AccountNameParameterSet
+Platzhalterzeichen akzeptieren? |false
+
+**&lt;CommandParameters&gt;**
+
+Dieses Cmdlet unterstützt diese gängigen Parameter: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction und -WarningVariable.
+
+### Eingaben
+
+Der Eingabetyp ist der Typ der Objekte, die Sie an das Cmdlet übergeben können.
+
+### Ausgaben
+
+Der Ausgabetyp ist der Typ der Objekte, die vom Cmdlet ausgegeben werden.
+
+## Get-AzureRmMediaServiceKeys
+
+Ruft die Schlüssel eines Mediendiensts ab.
+
+### Syntax
+
+	Get-AzureRmMediaServiceKeys [-ResourceGroupName] <string> [-AccountName] <string>  [<CommonParameters>]
+
+### Parameter
+
+**-ResourceGroupName &lt;String&gt;**
+
+Gibt den Namen der Ressourcengruppe an, zu der der Mediendienst gehört.
+
+Aliase |(Keine)
+---|---
+Erforderlich |true
+Position? |0
+Standardwert |(Keine)
+Pipelineeingabe akzeptieren? |true(ByPropertyName)
+Platzhalterzeichen akzeptieren? |false
+
+**-AccountName &lt;String&gt;**
+
+Gibt den Namen des Mediendiensts an.
+
+Aliase |(Keine)
+---|---
+Erforderlich |true
+Position? |1
+Standardwert |(Keine)
+Pipelineeingabe akzeptieren? |true(ByPropertyName)
+Platzhalterzeichen akzeptieren? |false
+
+**&lt;CommandParameters&gt;**
+
+Dieses Cmdlet unterstützt diese gängigen Parameter: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction und -WarningVariable.
+
+### Eingaben
+
+Der Eingabetyp ist der Typ der Objekte, die Sie an das Cmdlet übergeben können.
+
+### Ausgaben
+
+Der Ausgabetyp ist der Typ der Objekte, die vom Cmdlet ausgegeben werden.
+
+## Set-AzureRmMediaServiceKey
+
+Generiert einen primären oder sekundären Schlüssel eines Mediendiensts neu.
+
+### Syntax
+
+	Set-AzureRmMediaServiceKey [-ResourceGroupName] <string> [-AccountName] <string> [-KeyType] <KeyType> {Primary | Secondary}  [<CommonParameters>]
+
+### Parameter
+
+**-ResourceGroupName &lt;String&gt;**
+
+Gibt den Namen der Ressourcengruppe an, zu der der Mediendienst gehört.
+
+Aliase |(Keine)
+---|---
+Erforderlich |true
+Position? |0
+Standardwert |(Keine)
+Pipelineeingabe akzeptieren? |true(ByPropertyName)
+Platzhalterzeichen akzeptieren? |false
+
+**-AccountName &lt;String&gt;**
+
+Gibt den Namen des Mediendiensts an.
+
+Aliase |(Keine)
+---|---
+Erforderlich |true
+Position? |1
+Standardwert |(Keine)
+Pipelineeingabe akzeptieren? |true(ByPropertyName)
+Platzhalterzeichen akzeptieren? |false
+
+**-KeyType &lt;KeyType&gt;**
+
+Gibt den Schlüsseltyp des Mediendiensts an.
+
+- Primär oder sekundär
+
+Aliase |(Keine)
+---|---
+Erforderlich |true
+Position? |2
+Standardwert |(Keine)
+Pipelineeingabe akzeptieren? |false
+Platzhalterzeichen akzeptieren? |false
+
+**&lt;CommandParameters&gt;**
+
+Dieses Cmdlet unterstützt diese gängigen Parameter: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction und -WarningVariable.
+
+### Eingaben
+
+Der Eingabetyp ist der Typ der Objekte, die Sie an das Cmdlet übergeben können.
+
+### Ausgaben
+
+Der Ausgabetyp ist der Typ der Objekte, die vom Cmdlet ausgegeben werden.
+
+## Sync-AzureRmMediaServiceStorageKeys
+
+Synchronisiert Speicherkontoschlüssel für ein Speicherkonto, das dem Mediendienst zugeordnet ist.
+
+### Syntax
+
+	Sync-AzureRmMediaServiceStorageKeys [-ResourceGroupName] <string> [-MediaServiceAccountName] <string>    [-StorageAccountName] <string>  [<CommonParameters>]
+
+### Parameter
+
+**-ResourceGroupName &lt;String&gt;**
+
+Gibt den Namen der Ressourcengruppe an, zu der der Mediendienst gehört.
+
+Aliase |(Keine)
+---|---
+Erforderlich |true
+Position? |0
+Standardwert |(Keine)
+Pipelineeingabe akzeptieren? |true(ByPropertyName)
+Platzhalterzeichen akzeptieren? |false
+
+**-AccountName &lt;String&gt;**
+
+Gibt den Namen des Mediendiensts an.
+
+Aliase |(Keine)
+---|---
+Erforderlich |true
+Position? |1
+Standardwert |(Keine)
+Pipelineeingabe akzeptieren? |true(ByPropertyName)
+Platzhalterzeichen akzeptieren? |false
+
+**-StorageAccountId &lt;String&gt;**
+
+Gibt das Speicherkonto an, das dem Mediendienst zugeordnet ist.
+
+Aliase |ID
+---|---
+Erforderlich |true
+Position? |2
+Standardwert |(Keine)
+Pipelineeingabe akzeptieren? | true(ByPropertyName)
+Platzhalterzeichen akzeptieren? |false
+
+**&lt;CommandParameters&gt;**
+
+Dieses Cmdlet unterstützt diese gängigen Parameter: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction und -WarningVariable.
+
+### Eingaben
+
+Der Eingabetyp ist der Typ der Objekte, die Sie an das Cmdlet übergeben können.
+
+### Ausgaben
+
+Der Ausgabetyp ist der Typ der Objekte, die vom Cmdlet ausgegeben werden.
+
+## Nächster Schritt 
+
+Informieren Sie sich über die Media Services-Lernpfade.
 
 [AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
@@ -122,4 +504,4 @@ Wenn Sie das Azure Media Services-Konto löschen möchten, verwenden Sie [Remove
 
  
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0810_2016-->

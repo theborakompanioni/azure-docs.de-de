@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="04/20/2016"
+   ms.date="08/08/2016"
    ms.author="lodipalm;barbkess;sonyama"/>
 
 
@@ -22,9 +22,9 @@
 > [AZURE.SELECTOR]
 - [Hilfsprogramm für die Migration herunterladen][]
 
-Das Data Warehouse-Dienstprogramm für die Migration ist ein Tool zum Migrieren von Schemas und Daten aus SQL Server und der Azure SQL-Datenbank nach Azure SQL Data Warehouse. Während der Migration des Schemas ordnet das Tool automatisch das entsprechende Schema aus der Quelle zum Ziel zu. Nachdem das Schema migriert wurde, haben Benutzer außerdem die Möglichkeit, Daten über automatisch erstellte Skripts zu verschieben.
+Das Data Warehouse-Dienstprogramm für die Migration ist ein Tool zum Migrieren von Schemas und Daten aus SQL Server und der Azure SQL-Datenbank nach Azure SQL Data Warehouse. Während der Migration des Schemas ordnet das Tool automatisch das entsprechende Schema aus der Quelle zum Ziel zu. Nach dem Migrieren des Schemas haben Sie mit dem Tool die Möglichkeit, Daten mit automatisch erstellten Skripts zu verschieben.
 
-Zusätzlich zur Schema- und Datenmigration bietet dieses Tool Benutzern die Option, Kompatibilitätsberichte zu generieren, die Inkompatibilitäten zwischen den Ziel- und Quellinstanzen zusammenzufassen, die eine optimierte Migration verhindern würden.
+Zusätzlich zur Schema- und Datenmigration bietet dieses Tool Ihnen die Option, Kompatibilitätsberichte zu generieren, die Inkompatibilitäten zwischen den Ziel- und Quellinstanzen zusammenzufassen, die eine optimierte Migration verhindern würden.
 
 ## Erste Schritte
 Als Voraussetzung für die Installation benötigen Sie das BCP-Befehlszeilenhilfsprogramm zum Ausführen von Migrationsskripts und Office, um den Kompatibilitätsbericht anzuzeigen. Nach dem Starten der ausführbaren Datei, die heruntergeladen wird, werden Sie aufgefordert, eine standardmäßigen Endbenutzerlizenzvertrag zu akzeptieren, bevor das Tool installiert wird.
@@ -65,4 +65,4 @@ Nachdem Sie nun einige Daten migriert haben, schauen Sie sich an, die das [Entwi
 <!--Other Web references--> 
 [Hilfsprogramm für die Migration herunterladen]: https://migrhoststorage.blob.core.windows.net/sqldwsample/DataWarehouseMigrationUtility.zip
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0810_2016-->

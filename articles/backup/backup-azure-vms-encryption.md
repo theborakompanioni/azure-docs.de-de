@@ -17,7 +17,13 @@
 
 # Behandeln verschlüsselter Festplatten während der Sicherung virtueller Computer
 
-Unternehmen, die ihre VM-Daten in Azure verschlüsseln möchten, können unter Windows Bitlocker und auf Linux-Computern dmcrypt verwenden. Bei beiden handelt es sich um Verschlüsselungslösungen auf Volumeebene. Dieser Artikel befasst sich mit den Besonderheiten der Einrichtung der Sicherung für solche Azure-VMs und die Auswirkung auf die Wiederherstellungs-Workflows aufgrund der verschlüsselten Daten.
+Unternehmen, die ihre VM-Daten in Azure verschlüsseln möchten, können [Azure Disk Encryption](../azure-security-disk-encryption.md) oder Bitlocker unter Windows und dmcrypt auf Linux-Computern verwenden.
+
+> [AZURE.NOTE]  Azure Backup unterstützt die Sicherung und Wiederherstellung von virtuellen Computern, die mit Azure Disk Encryption (ADE) verschlüsselt wurden. <br>
+1. Dies wird bei der Verwendung von PowerShell unterstützt, wenn eine VM mit BEK und KEK verschlüsselt wird. <br>
+2. Sicherung und Wiederherstellung werden nicht unterstützt, wenn die VM nur mit BEK verschlüsselt ist. <br> Bitte entnehmen Sie Informationen zum Sichern und Wiederherstellen von virtuellen Computern, die mit ADE verschlüsselt wurden, der [PowerShell-Dokumentation](backup-azure-vms-automation.md) zu Azure Backup.
+
+Dieser Artikel befasst sich mit Azure-VMs, die mit CloudLink verschlüsselt wurden.
 
 ## Funktionsweise der Sicherung
 
@@ -71,4 +77,4 @@ Wenn Sie für virtuelle Computer mit Sicherungen einen Rollover der Schlüssel d
 - [Deployment guide – PDF (in englischer Sprache)](http://www.cloudlinktech.com/Azure/CL_SecureVM_4_0_DG_EMC_Azure_R2.pdf)
 - [Deploying and using SecureVM – Video (in englischer Sprache)](https://www.youtube.com/watch?v=8AIRe92UDNg)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0810_2016-->

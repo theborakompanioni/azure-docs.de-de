@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="05/09/2016" 
+	ms.date="08/03/2016" 
 	ms.author="robinsh"/>
 
 # Aktivieren der Speichermetriken und Anzeigen von Metrikdaten
@@ -47,7 +47,7 @@ Die Cmdlets zur Steuerung der Speichermetriken verwenden die folgenden Parameter
 
 - MetricsType – Mögliche Werte sind Hour und Minute.
 
-- ServiceType – Mögliche Werte sind Blob, Queue und Table.
+- ServiceType – Mögliche Werte sind „Blob“, „Queue“ und „Table“.
 
 - MetricsLevel – Mögliche Werte sind None (identisch mit "Aus" im klassischen Azure-Portal), Service (identisch mit "Minimal" im klassischen Azure-Portal) und "ServiceAndApi" (identisch mit "Ausführlich" im klassischen Azure-Portal).
 
@@ -126,7 +126,7 @@ Wenn Sie die Metriken zur langfristigen Speicherung oder für eine lokale Analys
 
 Die vollständigen Details der Schemas für diese Tabellen finden Sie unter [Schema der Tabellen für Speicheranalysemetriken](https://msdn.microsoft.com/library/azure/hh343264.aspx). Die Beispielzeilen unten zeigen nur eine Teilmenge der verfügbaren Spalten. Sie zeigen jedoch einige wichtige Funktionen, wie die Speichermetriken diese Metriken speichern:
 
-| Partitionsschlüssel | Zeilenschlüssel | Timestamp | TotalRequests | TotalBillableRequests | TotalIngress | TotalEgress | Availability | AverageE2ELatency | AverageServerLatency | PercentSuccess |
+| PartitionKey | Zeilenschlüssel | Timestamp | TotalRequests | TotalBillableRequests | TotalIngress | TotalEgress | Availability | AverageE2ELatency | AverageServerLatency | PercentSuccess |
 |---------------|:------------------:|-----------------------------:|---------------|-----------------------|--------------|-------------|--------------|-------------------|----------------------|----------------|
 | 20140522T1100 | user;All | 2014-05-22T11:01:16.7650250Z | 7 | 7 | 4003 | 46801 | 100 | 104,4286 | 6,857143 | 100 |
 | 20140522T1100 | user;QueryEntities | 2014-05-22T11:01:16.7640250Z | 5 | 5 | 2694 | 45951 | 100 | 143,8 | 7,8 | 100 |
@@ -212,4 +212,4 @@ Die von den Metriktabellen verwendete Kapazität ist ebenfalls kostenpflichtig: 
 [Aktivieren der Protokollierung von Speicheranalysen und Zugreifen auf Protokolldaten](https://msdn.microsoft.com/library/dn782840.aspx)
  
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0810_2016-->

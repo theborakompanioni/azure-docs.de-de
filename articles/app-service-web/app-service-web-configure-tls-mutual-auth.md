@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/27/2016" 
+	ms.date="08/08/2016" 
 	ms.author="naziml"/>
 
 # Konfigurieren der gegenseitigen TLS-Authentifizierung für eine Web-App
@@ -37,9 +37,9 @@ Ersetzen Sie alles in {} durch Informationen für Ihre Web-App, und erstellen Si
 
 > { "location": "Speicherort meiner Web-App", "properties": { "clientCertEnabled": true } }
 
-
 Passen Sie den Wert von "location" an die Region Ihrer Web-App an, z. B. USA, Norden-Mitte oder USA, Westen.
 
+> **Hinweis:** Wenn Sie ARMClient von PowerShell aus ausführen, müssen Sie das @-Symbol für die JSON-Datei mit einem Graviszeichen „`“ als Escapezeichen versehen.
 
 ## Zugreifen auf das Clientzertifikat in Web-Apps ##
 Wenn Sie ASP.NET verwenden und Ihre App für die Authentifizierung mit Clientzertifikaten konfigurieren, ist das Zertifikat über die **HttpRequest.ClientCertificate**-Eigenschaft verfügbar. Für andere Anwendungsstapel steht das Clientzertifikat Ihrer App über einen mit Base64 codierten Wert im Anforderungsheader „X-ARR-ClientCert“ zur Verfügung. Ihre Anwendung kann anhand dieses Werts ein Zertifikat erstellen und es für Authentifizierungs- und Autorisierungszwecke in Ihrer Anwendung verwenden.
@@ -182,4 +182,4 @@ Das Clientzertifikat, das an die Anwendung gesendet wird, durchläuft keinerlei 
         }
     }
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0810_2016-->
