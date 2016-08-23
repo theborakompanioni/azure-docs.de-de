@@ -13,7 +13,7 @@
  ms.topic="get-started-article"
  ms.tgt_pltfrm="na"
  ms.workload="na"
- ms.date="04/29/2016"
+ ms.date="08/11/2016"
  ms.author="juanpere"/>
 
 # Erste Schritte mit der Azure IoT Hub-Geräteverwaltung mithilfe von Node.js (Vorschau)
@@ -23,7 +23,7 @@
 ## Einführung
 Um die Azure IoT Hub-Geräteverwaltung verwenden zu können, müssen Sie zunächst einen Azure IoT Hub erstellen, Geräte im IoT Hub bereitstellen, mehrere simulierte Geräte starten und diese Geräte in der Beispiel-UI für die Geräteverwaltung anzeigen. In diesem Tutorial werden die entsprechenden Schritte erläutert.
 
-> [AZURE.NOTE]  Die Geräteverwaltungsfunktionen stehen erst nach Erstellung eines neuen IoT Hubs zur Verfügung. Dies gilt auch, wenn bereits ein IoT Hub vorhanden ist, da dieser noch nicht über Geräteverwaltungsfunktionen verfügt. Sobald die Geräteverwaltung allgemein verfügbar ist, werden alle bereits vorhandenen IoT Hubs per Upgrade ebenfalls mit Geräteverwaltungsfunktionen ausgestattet.
+> [AZURE.NOTE]  Die Geräteverwaltungsfunktionen stehen erst nach Erstellung eines neuen IoT Hubs zur Verfügung. Dies gilt auch, wenn bereits ein IoT Hub vorhanden ist, da diese IoT Hubs noch nicht über diese Funktionen verfügen. Sobald die Geräteverwaltung allgemein verfügbar ist, werden alle bereits vorhandenen IoT Hubs per Upgrade ebenfalls mit Geräteverwaltungsfunktionen ausgestattet.
 
 ## Voraussetzungen
 
@@ -45,7 +45,7 @@ Für die Schritte muss die folgende Software installiert sein:
 
 Sie müssen einen IoT Hub mit Geräteverwaltungsfunktionen erstellen, mit dem Ihre simulierten Geräte eine Verbindung herstellen können. Die folgenden Schritte veranschaulichen, wie Sie diese Aufgabe mit dem Azure-Portal ausführen.
 
-1.  Melden Sie sich beim [Azure-Portal] an.
+1.  Melden Sie sich auf dem [Azure-Portal] an.
 2.  Klicken Sie in der Navigationsleiste auf **Neu**, klicken Sie auf **Internet der Dinge** und dann auf **Azure IoT Hub**.
 
 	![][img-new-hub]
@@ -57,20 +57,18 @@ Sie müssen einen IoT Hub mit Geräteverwaltungsfunktionen erstellen, mit dem Ih
   -   Geben Sie im Feld **Name** einen Namen für Ihren IoT Hub ein. Wenn der **Name** gültig und verfügbar ist, wird im Feld **Name** ein grünes Häkchen angezeigt.
   -   Wählen Sie eine **Preis- und Skalierungsstufe** aus. Für dieses Tutorial ist keine bestimmte Stufe erforderlich.
   -   Erstellen Sie in **Ressourcengruppe** eine neue Ressourcengruppe, oder wählen Sie eine vorhandene aus. Weitere Informationen finden Sie unter [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen].
-  -   Aktivieren Sie das Kontrollkästchen zum Aktivieren der Geräteverwaltung.
+  -   Aktivieren Sie das Kontrollkästchen zum Aktivieren der Geräteverwaltung. Wenn Sie das Kontrollkästchen **Geräteverwaltung aktivieren** nicht aktivieren, können die Beispiele nicht ausgeführt werden. Durch das Aktivieren von **Geräteverwaltung aktivieren** erstellen Sie eine IoT Hub-Vorschauversion, die nur in den Regionen „USA, Osten“, „Europa, Norden“ und „Asien, Osten“ unterstützt wird und nicht für Produktionsszenarien bestimmt ist. Es ist nicht möglich, Geräte zu und aus Hubs zu migrieren, für die die Geräteverwaltung aktiviert ist.
   -   Wählen Sie unter **Standort** den Standort aus, an dem Ihr IoT Hub gehostet werden soll. Die IoT Hub-Geräteverwaltung ist nur in den Regionen „USA, Osten“, „Europa, Norden“ und „Asien, Osten“ verfügbar. Künftig wird sie in allen Regionen verfügbar sein.
-
-  > [AZURE.NOTE]  Wenn Sie das Kontrollkästchen zum Aktivieren der Geräteverwaltung nicht aktivieren, können die Beispiele nicht ausgeführt werden.
 
 4.  Wenn Sie die Konfigurationsoptionen für Ihren IoT Hub ausgewählt haben, klicken Sie auf **Erstellen**. Die Erstellung des IoT Hubs kann einige Minuten dauern. Im **Startmenü** oder im Bereich **Benachrichtigungen** können Sie den Fortschritt überwachen und den Status überprüfen.
 
 	![][img-monitor]
 
-5.  Öffnen Sie nach erfolgreicher Erstellung des IoT Hub das Blatt für den neuen IoT Hub, notieren Sie sich den Hostnamen, und klicken Sie dann auf das Schlüsselsymbol.
+5.  Öffnen Sie nach erfolgreicher Erstellung des IoT Hub das Blatt für den neuen IoT Hub, notieren Sie sich den **Hostnamen**, und klicken Sie dann auf **Freigegebene Zugriffsrichtlinien**.
 
 	![][img-keys]
 
-6.  Klicken Sie auf die Richtlinie **iothubowner**, und kopieren Sie oder notieren Sie die Verbindungszeichenfolge im Blatt **iothubowner**. Kopieren Sie sie an einen Speicherort, auf den Sie später zugreifen können. Sie wird im weiteren Verlauf des Tutorials benötigt.
+6.  Klicken Sie auf die Richtlinie **iothubowner**, und kopieren Sie oder notieren Sie die Verbindungszeichenfolge im Blatt **iothubowner**. Kopieren Sie sie an einen Speicherort, auf den Sie später zugreifen können. Sie wird im weiteren Verlauf des Tutorials noch benötigt.
 
  	> [AZURE.NOTE] In Produktionsszenarien dürfen keine Anmeldeinformationen vom Typ **iothubowner** verwendet werden.
 
@@ -80,7 +78,7 @@ Damit haben Sie einen IoT Hub mit Geräteverwaltungsfunktionen erstellt. Die Ver
 
 ## Erstellen der Beispiele und Bereitstellen von Geräten in Ihrem IoT Hub
 
-In diesem Abschnitt wird ein Skript ausgeführt, das das simulierte Gerät und die Beispiele erstellt und in der Geräteregistrierung Ihres IoT Hubs einen Satz neuer Geräteidentitäten bereitstellt. Ein Gerät kann nur dann eine Verbindung mit dem IoT Hub herstellen, wenn in der Geräteregistrierung ein Eintrag für das Gerät vorhanden ist.
+In diesem Abschnitt wird ein Skript ausgeführt, mit dem das simulierte Gerät und die Beispiele erstellt werden und in der Geräteregistrierung Ihres IoT Hub ein Satz neuer Geräteidentitäten bereitgestellt wird. Ein Gerät kann nur dann eine Verbindung mit dem IoT Hub herstellen, wenn in der Geräteregistrierung ein Eintrag für das Gerät vorhanden ist.
 
 Gehen Sie wie folgt vor, um die Beispiele zu erstellen und Geräte in Ihrem IoT Hub bereitzustellen:
 
@@ -117,7 +115,7 @@ Das Skript bewirkt Folgendes:
 
 ## Starten der simulierten Geräte
 
-Nachdem die Geräte der Geräteregistrierung hinzugefügt wurden, können Sie nun die simulierten verwalteten Geräte starten. Für die im Azure IoT Hub bereitgestellten Geräteidentitäten muss jeweils ein simuliertes Gerät gestartet werden.
+Nachdem die Geräte der Geräteregistrierung hinzugefügt wurden, können Sie nun die simulierten verwalteten Geräte starten. Sie müssen für jede im Azure IoT Hub bereitgestellte Geräteidentität ein simuliertes Gerät starten.
 
 Navigieren Sie mit einer Shell zum Verzeichnis **azure-iot-sdks/node/service/samples**, und führen Sie Folgendes aus:
 
@@ -129,9 +127,9 @@ Dieses Skript gibt die Befehle aus, die Sie ausführen müssen, um **iotdm\_simp
 
 Die Anwendung **iotdm\_simple\_sample** basiert auf der Clientbibliothek für C der Azure IoT Hub-Geräteverwaltung. Dies ermöglicht die Erstellung von IoT-Geräten, die von Azure IoT Hub verwaltet werden können. Mithilfe dieser Bibliothek können Gerätehersteller Geräteeigenschaften melden und die für Geräteaufträge erforderlichen Ausführungsaktionen implementieren. Die Bibliothek wird im Rahmen des quelloffenen Azure IoT Hub-SDKs als Komponente bereitgestellt.
 
-Beim Ausführen von **simulate.sh** wird im Ausgabefenster ein Datenstrom angezeigt. Diese Ausgabe zeigt den eingehenden und ausgehenden Datenverkehr sowie Anweisungen vom Typ **printf** in den anwendungsspezifischen Rückruffunktionen. Dadurch sehen Sie neben dem eingehenden und ausgehenden Datenverkehr auch, wie die Beispielanwendung mit den decodierten Paketen verfährt. Wenn das Gerät eine Verbindung mit dem IoT Hub herstellt, beginnt der Dienst automatisch mit der Überwachung der Geräteressourcen. Daraufhin initiiert die Clientbibliothek der IoT Hub-Geräteverwaltung die Geräterückrufe, um vom Gerät die neuesten Werte abzurufen.
+Beim Ausführen von **simulate.sh** wird im Ausgabefenster ein Datenstrom angezeigt. Diese Ausgabe zeigt den eingehenden und ausgehenden Datenverkehr sowie Anweisungen vom Typ **printf** in den anwendungsspezifischen Rückruffunktionen. Anhand dieser Ausgabe sehen Sie neben dem eingehenden und ausgehenden Datenverkehr auch, wie die Beispielanwendung mit den decodierten Paketen verfährt. Wenn das Gerät eine Verbindung mit dem IoT Hub herstellt, beginnt der Dienst automatisch mit der Überwachung der Geräteressourcen. Daraufhin initiiert die Clientbibliothek der IoT Hub-Geräteverwaltung die Geräterückrufe, um vom Gerät die neuesten Werte abzurufen.
 
-Im Anschluss folgt eine Ausgabe der Beispielanwendung **iotdm\_simple\_sample**. Am Anfang sehen Sie die Erfolgsmeldung **REGISTERED**, die angibt, dass das Gerät mit der ID **Device11-7ce4a850** eine Verbindung mit dem IoT Hub herstellt.
+Unten ist die Ausgabe der Beispielanwendung **iotdm\_simple\_sample** angegeben. Am Anfang sehen Sie die Erfolgsmeldung **REGISTERED**, die angibt, dass das Gerät mit der ID **Device11-7ce4a850** eine Verbindung mit dem IoT Hub herstellt.
 
 > [AZURE.NOTE]  Wenn Sie eine weniger ausführliche Ausgabe vorziehen, erstellen Sie die Retail-Konfiguration, und führen Sie sie aus.
 
@@ -143,7 +141,7 @@ Achten Sie darauf, dass alle simulierten Geräte weiter ausgeführt werden, wäh
 
 Nachdem Sie nun einen IoT Hub bereitgestellt haben und mehrere simulierte Geräte ausgeführt werden und für die Verwaltung registriert sind, können Sie die Beispiel-UI für die Geräteverwaltung bereitstellen. Die Beispiel-UI für die Geräteverwaltung enthält ein Arbeitsbeispiel für die Nutzung der Geräteverwaltungs-APIs zum Erstellen einer interaktiven Benutzeroberfläche. Weitere Informationen zur Beispiel-UI für die Geräteverwaltung, z.B. [bekannte Probleme](https://github.com/Azure/azure-iot-device-management#knownissues), finden Sie im GitHub-Repository zur [Azure IoT-UI für die Geräteverwaltung][lnk-dm-github].
 
-Führen Sie die folgenden Schritte aus, um die Beispiel-UI für die Geräteverwaltung abzurufen, zu erstellen und auszuführen:
+Führen Sie diese Schritte aus, um die Beispiel-UI für die Geräteverwaltung abzurufen, zu erstellen und auszuführen:
 
 1. Öffnen Sie eine Shell.
 
@@ -175,7 +173,7 @@ Führen Sie die folgenden Schritte aus, um die Beispiel-UI für die Geräteverwa
 	npm run start
 	```
 
-8. Wenn in der Eingabeaufforderung die Meldung „Services have started“ angezeigt wird, können Sie einen Webbrowser öffnen und unter der folgenden URL zur Geräteverwaltungs-App navigieren, um die simulierten Geräte anzuzeigen: <http://127.0.0.1:3003>.
+8. Wenn an der Eingabeaufforderung die Meldung „Services have started“ angezeigt wird, können Sie einen Webbrowser öffnen und unter der folgenden URL zur Geräteverwaltungs-App navigieren, um die simulierten Geräte anzuzeigen: <http://127.0.0.1:3003>.
 
 	![][img-dm-ui]
 
@@ -204,4 +202,4 @@ Weitere Informationen zu den Features der Azure IoT Hub-Geräteverwaltung finden
 [lnk-sample-ui]: iot-hub-device-management-ui-sample.md
 [lnk-gateway-SDK]: iot-hub-linux-gateway-sdk-get-started.md
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0817_2016-->

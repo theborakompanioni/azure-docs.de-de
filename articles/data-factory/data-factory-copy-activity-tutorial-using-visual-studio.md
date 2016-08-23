@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="Tutorial: Erstellen einer Pipeline mit Kopieraktivität mithilfe von Visual Studio" 
-	description="In diesem Tutorial erstellen Sie eine Azure Data Factory-Pipeline mit Kopieraktivität mithilfe von Visual Studio." 
+	description="In diesem Tutorial erstellen Sie mithilfe von Visual Studio eine Azure Data Factory-Pipeline mit Kopieraktivität." 
 	services="data-factory" 
 	documentationCenter="" 
 	authors="spelluru" 
@@ -22,19 +22,20 @@
 - [Verwenden des Data Factory-Editors](data-factory-copy-activity-tutorial-using-azure-portal.md)
 - [Mithilfe von PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
 - [Verwenden von Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
+- [Verwenden der REST-API](data-factory-copy-activity-tutorial-using-rest-api.md)
 - [Verwenden des Kopier-Assistenten](data-factory-copy-data-wizard-tutorial.md)
 
-In diesem Lernprogramm führen Sie mit Visual Studio 2013 die folgenden Schritte aus:
+In diesem Tutorial führen Sie mit Visual Studio 2013 die folgenden Schritte aus:
 
 1. Erstellen von zwei verknüpften Diensten: **AzureStorageLinkedService1** und **AzureSqlinkedService1**. Der AzureStorageLinkedService1 verknüpft einen Azure-Speicher, und AzureSqlLinkedService1 verknüpft eine Azure SQL-Datenbank mit der Data Factory: **ADFTutorialDataFactoryVS**. Die Eingabedaten für die Pipeline befinden sich in einem Blobcontainer im Azure-Blobspeicher. Ausgabedaten werden in einer Tabelle in der Azure SQL-Datenbank gespeichert. Daher fügen Sie diese beiden Datenspeicher als verknüpfte Dienste der Data Factory hinzu.
-2. Erstellen von zwei Data Factory-Tabellen: **EmpTableFromBlob** und **EmpSQLTable**, die Ein- und Ausgabedaten darstellen, die in den Datenspeichern gespeichert sind. Für die Tabelle "EmpTableFromBlob" geben Sie den Blobcontainer an, der ein Blob mit den Quelldaten enthält. Für die Tabelle "EmpSQLTable" geben Sie die SQL-Tabelle an, in der die Ausgabedaten gespeichert werden sollen. Sie können auch andere Eigenschaften wie z. B. die Struktur der Daten, die Verfügbarkeit von Daten usw. angeben.
-3. Erstellen einer Pipeline mit dem Namen **ADFTutorialPipeline** in ADFTutorialDataFactoryVS. Die Pipeline weist eine **Kopieraktivität** auf, die zum Kopieren von Eingabedaten aus dem Azure-Blob in die Azure SQL-Tabelle verwendet wird. Die Kopieraktivität führt die Datenverschiebung in Azure Data Factory durch, und die Aktivität wird von einem global verfügbaren Dienst gestützt, mit dem Daten zwischen verschiedenen Datenspeichern auf sichere, zuverlässige und skalierbare Weise kopiert werden können. Ausführliche Informationen zur Kopieraktivität finden Sie unter [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md).
+2. Erstellen von zwei Data Factory-Tabellen: **EmpTableFromBlob** und **EmpSQLTable**, die Ein- und Ausgabedaten darstellen, die in den Datenspeichern gespeichert sind. Für die Tabelle „EmpTableFromBlob“ geben Sie den Blobcontainer an, der ein Blob mit den Quelldaten enthält. Für die Tabelle „EmpSQLTable“ geben Sie die SQL-Tabelle an, in der die Ausgabedaten gespeichert werden. Sie können auch andere Eigenschaften angeben – etwa die Struktur der Daten, die Verfügbarkeit von Daten usw.
+3. Erstellen einer Pipeline mit dem Namen **ADFTutorialPipeline** in ADFTutorialDataFactoryVS. Die Pipeline enthält eine **Kopieraktivität**, die Eingabedaten aus dem Azure-Blob in die Azure SQL-Ausgabetabelle kopiert. Die Kopieraktivität führt die Datenverschiebung in Azure Data Factory durch, und die Aktivität wird von einem global verfügbaren Dienst gestützt, mit dem Daten zwischen verschiedenen Datenspeichern auf sichere, zuverlässige und skalierbare Weise kopiert werden können. Ausführliche Informationen zur Kopieraktivität finden Sie im Artikel [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md).
 4. Erstellen einer Data Factory und Bereitstellen von verknüpften Diensten, Tabellen und der Pipeline.
 
 ## Voraussetzungen
 
 1. Sie **müssen** den Artikel [Übersicht über das Tutorial](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) lesen und die erforderlichen Schritte abschließen, bevor Sie fortfahren.
-2. Sie müssen ein **Administrator des Azure-Abonnements** sein, um Data Factory-Entitäten für Azure Data Factory veröffentlichen zu können. Dies ist eine Einschränkung, die derzeit gilt. Wir informieren Sie, sobald sich diese Anforderung ändert.
+2. Data Factory-Entitäten können nur von einem **Administrator des Azure-Abonnements** für Azure Data Factory veröffentlicht werden. Dies ist eine derzeit geltende Einschränkung.
 3. Folgendes muss auf Ihrem Computer installiert sein:
 	- Visual Studio 2013 oder Visual Studio 2015
 	- Laden Sie das Azure-SDK für Visual Studio 2013 oder Visual Studio 2015 herunter. Navigieren Sie zur [Azure-Downloadseite](https://azure.microsoft.com/downloads/), und klicken Sie auf **VS 2013** oder**VS 2015** im Abschnitt **.NET**.
@@ -43,7 +44,7 @@ In diesem Lernprogramm führen Sie mit Visual Studio 2013 die folgenden Schritte
 
 
 ## Erstellen eines Visual Studio-Projekts 
-1. Starten Sie **Visual Studio 2013**. Klicken Sie auf **Datei**, zeigen Sie auf **Neu**, und klicken Sie auf **Projekt**. Das Dialogfeld **Neues Projekt** sollte angezeigt werden.
+1. Starten Sie **Visual Studio 2013**. Klicken Sie auf **Datei**, zeigen Sie auf **Neu**, und klicken Sie auf **Projekt**. Das Dialogfeld **Neues Projekt** sollte angezeigt werden.
 2. Wählen Sie im Dialogfeld **Neues Projekt** die Vorlage **DataFactory** aus, und klicken Sie auf **Leeres Data Factory-Projekt**. Wenn die Vorlage DataFactory nicht angezeigt wird, schließen Sie Visual Studio, installieren Sie Azure SDK für Visual Studio 2013, und öffnen Sie Visual Studio erneut.
 
 	![Dialogfeld "Neues Projekt"](./media/data-factory-copy-activity-tutorial-using-visual-studio/new-project-dialog.png)
@@ -74,12 +75,12 @@ In diesem Schritt erstellen Sie zwei verknüpfte Dienste: **AzureStorageLinkedSe
 
 5. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste erneut auf den Knoten **Verknüpfte Dienste**, zeigen Sie auf **Hinzufügen**, und klicken Sie auf **Neues Element**.
 6. Wählen Sie dieses Mal **Azure SQL Linked Service** aus, und klicken Sie dann auf **Hinzufügen**.
-7. Ersetzen Sie in der Datei **AzureSqlLinkedService1.json** die Werte **servername**, **databasename**, **username@servername** und **password** durch die betreffenden Angaben für Azure SQL-Server, -Datenbank, -Benutzerkonto und -Kennwort.
+7. Ersetzen Sie in der Datei **AzureSqlLinkedService1.json** die Werte **servername**, **databasename**, **username@servername** und **password** durch die entsprechenden Angaben für Azure SQL-Server, -Datenbank, -Benutzerkonto und -Kennwort.
 8.  Speichern Sie die Datei **AzureSqlLinkedService1.json**.
 
 
 ## Erstellen von Datasets
-Im vorherigen Schritt haben Sie die verknüpften Dienste **AzureStorageLinkedService1** und **AzureSqlLinkedService1** erstellt, um ein Azure-Speicherkonto und eine Azure SQL-Datenbank mit der Data Factory **ADFTutorialDataFactory** zu verknüpfen. In diesem Schritt definieren Sie die beiden Data Factory-Tabellen **EmpTableFromBlob** und **EmpSQLTable**, die Ein- und Ausgabedaten in den Datenspeichern darstellen, auf die von „AzureStorageLinkedService1“ und „AzureSqlLinkedService1“ verwiesen wird. Für die Tabelle "EmpTableFromBlob" geben Sie den Blobcontainer an, der ein Blob mit den Quelldaten enthält. Für die Tabelle "EmpSQLTable" geben Sie die SQL-Tabelle an, in der die Ausgabedaten gespeichert werden sollen.
+Im vorherigen Schritt haben Sie die verknüpften Dienste **AzureStorageLinkedService1** und **AzureSqlLinkedService1** erstellt, um ein Azure-Speicherkonto und eine Azure SQL-Datenbank mit der Data Factory **ADFTutorialDataFactory** zu verknüpfen. In diesem Schritt definieren Sie die beiden Data Factory-Tabellen **EmpTableFromBlob** und **EmpSQLTable**, die Ein- und Ausgabedaten in den Datenspeichern darstellen, auf die von „AzureStorageLinkedService1“ und „AzureSqlLinkedService1“ verwiesen wird. Für die Tabelle „EmpTableFromBlob“ geben Sie den Blobcontainer an, der ein Blob mit den Quelldaten enthält. Für die Tabelle „EmpSQLTable“ geben Sie die SQL-Tabelle an, in der die Ausgabedaten gespeichert werden.
 
 ### Erstellen eines Eingabedatasets
 
@@ -208,12 +209,12 @@ Sie haben bisher verknüpfte Ein-/Ausgabe-Dienste und -Tabellen erstellt. Nun er
 
 	![Dialogfeld „Veröffentlichen“](./media/data-factory-copy-activity-tutorial-using-visual-studio/publish.png)
 
-21. Führen Sie auf der Seite zum Konfigurieren der Data Factory folgende Schritte aus:
+21. Führen Sie auf der Seite zum Konfigurieren der Data Factory folgende Schritte aus:
 	1. Wählen Sie die Option **Neue Data Factory erstellen**.
 	2. Geben Sie **VSTutorialFactory** als **Name** ein.
 	
 		> [AZURE.NOTE]  
-		Der Name der Azure Data Factory muss global eindeutig sein. Wenn beim Veröffentlichen ein Fehler bezüglich des Namens der Data Factory auftritt, ändern Sie den Namen der Data Factory (z. B. in „IhrNameVSTutorialFactory“), und versuchen Sie erneut, sie zu veröffentlichen. Im Thema [Data Factory – Benennungsregeln](data-factory-naming-rules.md) finden Sie Benennungsregeln für Data Factory-Artefakte.
+		Der Name der Azure Data Factory muss global eindeutig sein. Falls beim Veröffentlichen ein Fehler in Verbindung mit dem Namens der Data Factory auftritt, ändern Sie den Namen der Data Factory (beispielsweise in „IhrNameVSTutorialFactory“), und wiederholen Sie den Veröffentlichungsvorgang. Benennungsregeln für Data Factory-Artefakte finden Sie im Thema [Data Factory – Benennungsregeln](data-factory-naming-rules.md).
 		
 	3. Wählen Sie im Feld **Abonnement** das richtige Abonnement aus.
 	4. Wählen Sie die **Ressourcengruppe** für die zu erstellende Data Factory aus.
@@ -231,28 +232,28 @@ Beachten Sie Folgendes:
 		
 			Register-AzureRmResourceProvider -ProviderNamespace Microsoft.DataFactory
 	
-		Sie können den folgenden Befehl ausführen, um sicherzustellen, dass der Data Factory-Anbieter registriert ist.
+		Sie können den folgenden Befehl ausführen, um sich zu vergewissern, dass der Data Factory-Anbieter registriert ist.
 	
 			Get-AzureRmResourceProvider
 	- Melden Sie sich mit dem Azure-Abonnement beim [Azure-Portal](https://portal.azure.com) an, und navigieren Sie zu einem Data Factory-Blatt, oder erstellen Sie eine Data Factory im Azure-Portal. Dadurch wird der Anbieter automatisch für Sie registriert.
 - 	Der Name der Data Factory kann in Zukunft als DNS-Name registriert und so öffentlich sichtbar werden.
-- 	Um Data Factory-Instanzen erstellen zu können, müssen Sie unter dem Azure-Abonnement ein Mitwirkender oder Administrator sein.
+- 	Data Factory-Instanzen können nur von Mitwirkenden/Administratoren des Azure-Abonnements erstellt werden.
 
 ## Zusammenfassung
-In diesem Lernprogramm haben Sie eine Azure Data Factory erstellt, um Daten aus einem Azure-Blob in eine Azure SQL-Datenbank zu kopieren. Sie haben Visual Studio verwendet, um die Data Factory, verknüpfte Dienste, Datasets und eine Pipeline zu erstellen. Nachfolgend sind die allgemeinen Schritte aufgeführt, die Sie in diesem Lernprogramm ausgeführt haben:
+In diesem Lernprogramm haben Sie eine Azure Data Factory erstellt, um Daten aus einem Azure-Blob in eine Azure SQL-Datenbank zu kopieren. Sie haben Visual Studio verwendet, um die Data Factory, verknüpfte Dienste, Datasets und eine Pipeline zu erstellen. Im Anschluss sind die allgemeinen Schritte aufgeführt, die Sie in diesem Tutorial ausgeführt haben:
 
 1.	Sie haben eine Azure **Data Factory** erstellt.
 2.	Sie haben **verknüpfte Dienste** erstellt:
 	1. Einen verknüpften **Azure Storage**-Dienst zum Verknüpfen Ihres Azure Storage-Kontos, in dem Eingabedaten enthalten sind.
 	2. Einen verknüpften **Azure SQL**-Dienst zum Verknüpfen Ihrer Azure SQL-Datenbank, in der die Ausgabedaten enthalten sind.
-3.	Sie haben **Datasets** erstellt, mit denen Eingabedaten und Ausgabedaten für Pipelines beschrieben werden.
-4.	Sie haben eine **Pipeline** mit einer **Kopieraktivität** und **BlobSource** als Quelle und **SqlSink** als Senke erstellt.
+3.	Sie haben **Datasets** erstellt, die Eingabedaten und Ausgabedaten für Pipelines beschreiben.
+4.	Sie haben eine **Pipeline** mit einer **Kopieraktivität**, mit **BlobSource** als Quelle und mit **SqlSink** als Senke erstellt.
 
 
 ## Verwenden von Server-Explorer zum Anzeigen von Data Factorys
 
 1. Klicken Sie in **Visual Studio** im Menü auf **Ansicht** und dann auf **Server-Explorer**.
-2. Erweitern Sie im Server-Explorer-Fenster erst die Option **Azure** und dann **Data Factory**. Wenn **Anmelden bei Visual Studio** angezeigt wird, geben Sie das mit Ihrem Azure-Abonnement verknüpfte **Konto** ein, und klicken Sie auf **Weiter**. Geben Sie Ihr **Kennwort** ein, und klicken Sie auf **Anmelden**. Visual Studio versucht, Informationen über alle Azure Data Factorys abzurufen, die in Ihrem Abonnement enthalten sind. Der Status dieses Vorgangs wird im Fenster **Data Factory-Aufgabenliste** angezeigt. ![Server-Explorer](./media/data-factory-copy-activity-tutorial-using-visual-studio/server-explorer.png)
+2. Erweitern Sie im Server-Explorer-Fenster erst die Option **Azure** und dann **Data Factory**. Wenn **Anmelden bei Visual Studio** angezeigt wird, geben Sie das mit Ihrem Azure-Abonnement verknüpfte **Konto** ein, und klicken Sie auf **Weiter**. Geben Sie Ihr **Kennwort** ein, und klicken Sie auf **Anmelden**. Visual Studio versucht, Informationen zu allen Azure Data Factorys abzurufen, die in Ihrem Abonnement enthalten sind. Der Status dieses Vorgangs wird im Fenster **Data Factory-Aufgabenliste** angezeigt. ![Server-Explorer](./media/data-factory-copy-activity-tutorial-using-visual-studio/server-explorer.png)
 3. Durch Klicken mit der rechten Maustaste auf eine Data Factory und Auswählen von „Data Factory in neues Projekt exportieren“ können Sie anhand einer vorhandenen Data Factory ein Visual Studio-Projekt erstellen. ![Exportieren einer Data Factory in ein Visual Studio-Projekt](./media/data-factory-copy-activity-tutorial-using-visual-studio/export-data-factory-menu.png)
 
 ## Aktualisieren von Data Factory-Tools für Visual Studio
@@ -262,15 +263,15 @@ Um die Azure Data Factory-Tools für Visual Studio zu aktualisieren, führen Sie
 2. Wählen Sie im linken Bereich **Updates** und dann **Visual Studio Gallery** aus.
 4. Wählen Sie **Azure Data Factory tools for Visual Studio** aus, und klicken Sie auf **Update**. Wenn dieser Eintrag nicht angezeigt wird, verfügen Sie bereits über die neueste Version der Tools.
 
-Unter [Überwachen von Datasets und Pipelines](data-factory-copy-activity-tutorial-using-azure-portal.md#monitor-pipeline) finden Sie eine Anleitung zum Überwachen der in diesem Tutorial erstellten Pipeline und Datasets über das Azure-Portal.
+Unter [Überwachen von Datasets und Pipelines](data-factory-copy-activity-tutorial-using-azure-portal.md#monitor-pipeline) erfahren Sie, wie Sie die in diesem Tutorial erstellte Pipeline und die entsprechenden Datasets mithilfe des Azure-Portals überwachen können.
 
-## Siehe auch
+## Weitere Informationen
 | Thema | Beschreibung |
 | :---- | :---- |
 | [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) | Dieser Artikel enthält ausführliche Informationen zur Kopieraktivität, die Sie in diesem Tutorial verwendet haben. |
 | [Planung und Ausführung](data-factory-scheduling-and-execution.md) | In diesem Artikel werden die Planungs- und Ausführungsaspekte des Azure Data Factory-Anwendungsmodells erläutert. |
-| [Pipelines](data-factory-create-pipelines.md) | In diesem Artikel erhalten Sie Informationen zu Pipelines und Aktivitäten in Azure Data Factory und erfahren, wie diese zum Erstellen datengesteuerter End-to-End-Workflows für Ihr Szenario oder Ihr Unternehmen genutzt werden können. |
-| [Datasets](data-factory-create-datasets.md) | Dieser Artikel bietet Ihnen Informationen über Datasets in Azure Data Factory.
+| [Pipelines](data-factory-create-pipelines.md) | Dieser Artikel enthält Informationen zu Pipelines und Aktivitäten in Azure Data Factory. Außerdem erfahren Sie hier, wie Sie diese zum Erstellen datengesteuerter End-to-End-Workflows für Ihr Szenario oder Ihr Unternehmen verwenden können. |
+| [Datasets](data-factory-create-datasets.md) | Dieser Artikel enthält Informationen zu Datasets in Azure Data Factory.
 | [Überwachen und Verwalten von Pipelines mit der Überwachungs-App](data-factory-monitor-manage-app.md) | In diesem Artikel wird das Überwachen, Verwalten und Debuggen von Pipelines mit der App für die Überwachung und Verwaltung beschrieben. 
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0817_2016-->

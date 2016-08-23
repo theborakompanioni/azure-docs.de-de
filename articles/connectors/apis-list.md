@@ -47,7 +47,7 @@ Verwenden Sie die EIP-Connectors zum Erstellen von Logik-Apps für B2B-Szenarien
 |EIP-Connectors ||||
 |-----------|-----------|-----------|-----------|
 |[![API-Symbol][as2icon]<br/>**AS2-</br>Codierung/Decodierung**][as2doc]|[![API-Symbol][x12icon]<br/>**X12-</br>Codierung/Decodierung**][x12Doc]|[![API-Symbol][xmlvalidateicon]<br/>**XML-<br/>Überprüfung**][xmlvalidatedoc]|[![API-Symbol][xmltransformicon]<br/>**XML-<br/>Transformation**][xmltransformdoc]|
-|[![API-Symbol][flatfileicon]<br/>**Flatfile</br>Codierung**][flatfiledoc]|[![API-Symbol][flatfiledecodeicon]<br/>**Flatfile</br>Decodierung**][flatfiledecodedoc]|||
+|[![API-Symbol][flatfileicon]<br/>**Flatfile-</br>Codierung**][flatfiledoc]|[![API-Symbol][flatfiledecodeicon]<br/>**Flatfile-</br>Decodierung**][flatfiledecodedoc]|||
 
 <!-- TODO: Add Functions, App Service, and Nested Workflow Icons -->
 ### Connectors können Trigger sein.
@@ -73,13 +73,13 @@ Connectors können innerhalb Ihrer Apps auch als Aktionen verwendet werden. Akti
 [crm-onlinedoc]: ./connectors-create-api-crmonline.md "Verbindung mit Dynamics CRM Online und weitere Verwendung Ihrer CRM Online-Daten."
 [dropboxdoc]: ./connectors-create-api-dropbox.md "Stellt eine Verbindung mit Dropbox her und kann zum Abrufen, Löschen, Auflisten und weitere Dateiaufgaben verwendet werden."
 [facebookdoc]: ./connectors-create-api-facebook.md "Verbindung mit Facebook zum Veröffentlichen einer Zeitachse, zum Abrufen eines Seitenfeeds und vielem mehr."
-[ftpdoc]: ./connectors-create-api-ftp.md "Stellt eine Verbindung mit einem FTP-/FTPS-Server her und ermöglicht u. a. die Ausführung verschiedener FTP-Tasks, einschließlich Hochladen, Abrufen und Löschen von Dateien."
+[ftpdoc]: ./connectors-create-api-ftp.md "Stellt eine Verbindung mit einem FTP-/FTPS-Server her und ermöglicht u. a. die Ausführung verschiedener FTP-Tasks, einschließlich Hochladen, Abrufen und Löschen von Dateien."
 [google-drivedoc]: ./connectors-create-api-googledrive.md "Verbindung mit GoogleDrive und Interaktion mit Ihren Daten."
 [translatordoc]: ./connectors-create-api-microsofttranslator.md
-[office-365~outlookdoc]: ./connectors-create-api-office365-outlook.md "Der Office 365-Connector kann über Ihr Office 365-Konto E-Mails senden und empfangen sowie Ihren Kalender und Ihre Kontakte verwalten."
+[office-365~outlookdoc]: ./connectors-create-api-office365-outlook.md "Der Office 365-Connector kann über Ihr Office 365-Konto E-Mails senden und empfangen sowie Ihren Kalender und Ihre Kontakte verwalten."
 [office-365~usersdoc]: ./connectors-create-api-office365-users.md
 [office-365~videodoc]: ./connectors-create-api-office365-video.md
-[onedrivedoc]: ./connectors-create-api-onedrive.md "Stellt eine Verbindung mit Ihrem persönlichen Microsoft OneDrive-Ordner her und ermöglicht u. a. das Hochladen, Löschen und Auflisten von Dateien."
+[onedrivedoc]: ./connectors-create-api-onedrive.md "Stellt eine Verbindung mit Ihrem persönlichen Microsoft OneDrive-Ordner her und ermöglicht u. a. das Hochladen, Löschen und Auflisten von Dateien."
 [onedrive-for~businessdoc]: ./connectors-create-api-onedriveforbusiness.md "Stellt eine Verbindung mit dem Microsoft OneDrive-Ordner Ihres Unternehmens her und ermöglicht u.a. das Hochladen, Löschen und Auflisten von Dateien."
 [outlookdoc]: ./connectors-create-api-outlook.md "Stellt eine Verbindung mit Ihrem Outlook-Postfach her und ermöglicht u.a. den Zugriff auf Ihre E-Mails."
 [project-onlinedoc]: ./connectors-create-api-projectonline.md "Stellt eine Verbindung mit Microsoft Project Online her."
@@ -96,14 +96,14 @@ Connectors können innerhalb Ihrer Apps auch als Aktionen verwendet werden. Akti
 [sqldoc]: ./connectors-create-api-sqlazure.md "Stellt eine Verbindung mit einer SQL Azure-Datenbank her. Sie können Einträge in einer SQL-Datenbanktabelle erstellen, aktualisieren, abrufen und löschen."
 [trellodoc]: ./connectors-create-api-trello.md "Trello ist eine kostenlose, flexible und visuelle Möglichkeit, um etwas mit jemandem zu organisieren."
 [twiliodoc]: ./connectors-create-api-twilio.md "Stellt eine Verbindung mit Twilio her und kann Nachrichten und verfügbare Nummern abrufen, eingehende Telefonnummern verwalten usw."
-[twitterdoc]: ./connectors-create-api-twitter.md "Stellt eine Verbindung mit Twitter her und dient u. a. zum Abrufen von Zeitachsen und Posten von Tweets."
+[twitterdoc]: ./connectors-create-api-twitter.md "Stellt eine Verbindung mit Twitter her und dient u. a. zum Abrufen von Zeitachsen und Posten von Tweets."
 [wunderlistdoc]: ./connectors-create-api-wunderlist.md "Behalten Sie den Überblick."
 [yammerdoc]: ./connectors-create-api-yammer.md "Stellt eine Verbindung mit Yammer her, um Nachrichten zu posten und neue Nachrichten abzurufen."
 [as2doc]: ../app-service-logic/app-service-logic-enterprise-integration-as2.md "Informationen zu Enterprise Integration – AS2"
 [x12doc]: ../app-service-logic/app-service-logic-enterprise-integration-x12.md "Informationen zu Enterprise Integration – X12"
 [flatfiledoc]: ../app-service-logic/app-service-logic-enterprise-integration-flatfile.md "Informationen zu Enterprise Integration – Flatfile"
-[flatfiledecodedoc]: ../app-service-logic/app-service-logic-enterprise-integration-flatfile.md/#how-to-create-the-flat-file-decoding-connector "Informationen zu Enterprise Integration – Flatfile"
-[xmlvalidatedoc]: ../app-service-logic/app-service-logic-enterprise-integration-xml.md "Informationen zu Enterprise Integration – XML-Überprüfung"
+[flatfiledecodedoc]: ../app-service-logic/app-service-logic-enterprise-integration-flatfile.md "Informationen zu Enterprise Integration – Flatfile"
+[xmlvalidatedoc]: ../app-service-logic/app-service-logic-enterprise-integration-xml-validation.md "Informationen zu Enterprise Integration – XML-Überprüfung"
 [xmltransformdoc]: ../app-service-logic/app-service-logic-enterprise-integration-transform.md "Informationen zu Enterprise Integration – Transformationen"
 [httpdoc]: ./connectors-native-http.md "HTTP-Connector zum Durchführen von HTTP-Aufrufen"
 [http~requestdoc]: ./connectors-native-reqres.md "Anforderung/Antwort-Aktionen"
@@ -183,4 +183,4 @@ Connectors können innerhalb Ihrer Apps auch als Aktionen verwendet werden. Akti
 [xmlvalidateicon]: ./media/apis-list/xmlvalidation.png
 [xmltransformicon]: ./media/apis-list/xsltransform.png
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0817_2016-->

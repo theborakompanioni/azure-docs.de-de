@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="07/06/2016"
+	ms.date="08/15/2016"
 	ms.author="marsma"/>
 
 # Grundlagen von Azure Batch
@@ -40,7 +40,7 @@ Beispiele für Workloads, die mit diesem Verfahren häufig verarbeitet werden:
 * Belastungsanalysen für den Maschinenbau
 * Testen von Software
 
-Batch kann auch parallele Berechnungen mit einem abschließenden Reduzierungsschritt sowie komplexere HPC-Workloads ausführen, z. B. [MPI](batch-mpi.md)-Anwendungen (Message Passing Interface).
+Batch kann auch parallele Berechnungen mit einem abschließenden Reduzierungsschritt sowie komplexere HPC-Workloads ausführen, z.B. MPI-Anwendungen ([Message Passing Interface](batch-mpi.md)).
 
 Ein Vergleich zwischen Batch und anderen HPC-Lösungsoptionen in Azure finden Sie unter [Batch und HPC-Lösungen](batch-hpc-solutions.md).
 
@@ -58,7 +58,7 @@ Beim Entwickeln von Batch-Lösungen verwenden Sie in Microsoft Azure die folgend
 
 - **Azure-Konto und -Abonnement:** Wenn Sie noch kein Azure-Abonnement haben, können Sie Ihre [MSDN-Abonnentenleistungen][msdn_benefits] in Anspruch nehmen oder sich für ein [kostenloses Azure-Konto][free_account] registrieren. Beim Erstellen eines Kontos wird für Sie ein Standardabonnement erstellt.
 
-- **Batch-Konto:** Wenn Ihre Anwendungen mit dem Batch-Dienst interagieren, werden der Kontoname, die URL des Kontos und ein Zugriffsschlüssel als Anmeldeinformationen verwendet. Ihre Batch-Ressourcen, z. B. Pools, Computeknoten, Aufträge und Aufgaben, sind einem Batch-Konto zugeordnet. Sie können [ein Batch-Konto im Azure-Portal erstellen und verwalten](batch-account-create-portal.md).
+- **Batch-Konto:** Wenn Ihre Anwendungen mit dem Batch-Dienst interagieren, werden der Kontoname, die URL des Kontos und ein Zugriffsschlüssel als Anmeldeinformationen verwendet. Ihre gesamten Batch-Ressourcen, z.B. Pools, Computeknoten, Aufträge und Aufgaben, sind einem Batch-Konto zugeordnet. Sie können [ein Batch-Konto im Azure-Portal erstellen und verwalten](batch-account-create-portal.md).
 
 - **Speicherkonto:** Batch enthält integrierte Unterstützung zum Verwenden von Dateien in [Azure Storage][azure_storage]. Für nahezu jedes Batch-Szenario wird Azure Storage verwendet: für das Staging der Programme, die von Ihren Aufgaben ausgeführt werden, und für die dabei verarbeiteten Daten sowie für die Speicherung der generierten Ausgabedaten. Informationen zum Erstellen eines Speicherkontos finden Sie unter [Informationen zu Azure-Speicherkonten](./../storage/storage-create-storage-account.md).
 
@@ -71,8 +71,7 @@ Ihre Anwendungen und Dienste können direkte REST-API-Aufrufe ausgeben und/oder 
 | **Batch REST (in englischer Sprache)** | [MSDN][batch_rest] | – | [MSDN][batch_rest] |
 | **Batch .NET** | [MSDN][api_net] | [NuGet][api_net_nuget] | [GitHub][api_sample_net] |
 | **Batch Python** | [readthedocs.io][api_python] | [PyPI][api_python_pypi] |[GitHub][api_sample_python] |
-| **Batch Node.js** | [github.io][api_nodejs] | [npm][api_nodejs_npm] | - | 
-| **Batch Java** (Vorschau) | [github.io][api_java] | [Repository mit Maven-Momentaufnahmen][api_java_jar] | [GitHub][api_sample_java] |
+| **Batch Node.js** | [github.io][api_nodejs] | [npm][api_nodejs_npm] | - | | **Batch Java** (Vorschau) | [github.io][api_java] | [Maven][api_java_jar] | [GitHub][api_sample_java] |
 
 ### Batch-Ressourcenverwaltung
 
@@ -83,6 +82,16 @@ Zusätzlich zu den Client-APIs können Sie auch Folgendes verwenden, um Ressourc
 - [Azure-CLI:](../xplat-cli-install.md) Die Azure-Befehlszeilenschnittstelle (Azure-CLI) ist ein plattformübergreifendes Toolset mit Shellbefehlen für die Interaktion mit vielen Azure-Diensten, z.B. Batch.
 
 - [Batch Management .NET](batch-management-dotnet.md)-Clientbibliothek: Ist auch über [NuGet][api_net_mgmt_nuget] verfügbar. Sie können die Batch Management .NET-Clientbibliothek nutzen, um Batch-Konten, -Kontingente und -Anwendungspakete programmgesteuert zu verwalten. Den Verweis auf die Verwaltungsbibliothek finden Sie auf der [MSDN-Website][api_net_mgmt].
+
+### Batch-Tools
+
+Sie sind zum Erstellen von Lösungen mit Batch zwar nicht erforderlich, aber hier sind einige sehr nützliche Tools angegeben, die Sie zum Erstellen und Debuggen Ihrer Batch-Anwendungen und -Dienste verwenden können.
+
+ - [Azure-Portal][portal]\: Sie können Batch-Pools, -Aufträge und -Aufgaben auf den Batch-Blättern des Azure-Portals erstellen, überwachen und löschen. Sie können die Statusinformationen für diese und andere Ressourcen beim Ausführen der Aufträge anzeigen und sogar Dateien von den Computeknoten in Ihren Pools herunterladen (z.B. Download der Datei `stderr.txt` einer fehlgeschlagenen Aufgabe bei der Problembehandlung). Außerdem können Sie RDP-Dateien (Remotedesktop) herunterladen, die sich zum Anmelden an Computeknoten eignen.
+
+ - [Azure Batch-Explorer][batch_explorer]\: Der Batch-Explorer stellt ähnliche Funktionen für die Batch-Ressourcenverwaltung wie das Azure-Portal bereit, nutzt dafür aber eine eigenständige WPF-Clientanwendung (Windows Presentation Foundation). Dies ist eine der Batch .NET-Beispielanwendungen auf [GitHub][github_samples]. Sie können sie mit Visual Studio 2015 oder höher erstellen und zum Durchsuchen und Verwalten der Ressourcen in Ihrem Batch-Konto verwenden, während Sie Batch-Lösungen entwickeln und debuggen. Zeigen Sie Details zu Aufträgen, Pools und Aufgaben an, laden Sie Dateien von Computeknoten herunter, und stellen Sie mit RDP-Dateien (Remotedesktop) eine Remoteverbindung mit Knoten her. Sie können diese Dateien mit Batch-Explorer herunterladen.
+
+ - [Microsoft Azure-Speicher-Explorer:][storage_explorer] Dies ist zwar kein Azure Batch-Tool, aber der Speicher-Explorer ist ein weiteres wertvolles Tool, das Sie beim Entwickeln und Debuggen Ihrer Batch-Lösungen einsetzen können.
 
 ## Szenario: Horizontales Hochskalieren eines parallelen Workloads
 
@@ -96,7 +105,7 @@ Bei diesem häufigen Szenario verarbeitet Ihre Anwendung bzw. Ihr Dienst eine Wo
 
 1. Laden Sie die **Eingabedateien** und die **Anwendung**, mit der diese Dateien verarbeitet werden, in Ihr Azure Storage-Konto hoch. Die Eingabedateien können alle Daten sein, die von Ihrer Anwendung verarbeitet werden, z. B. Daten für Finanzmodelle oder zu transcodierende Videodateien. Bei den Anwendungsdateien kann es sich um alle Anwendungen handeln, die zum Verarbeiten der Daten verwendet werden, z. B. eine 3D-Renderanwendung oder einen Medien-Transcoder.
 
-2. Erstellen Sie einen Batch-**Pool** mit Computeknoten in Ihrem Batch-Konto. Dies sind die virtuellen Computer, mit denen Ihre Aufgaben ausgeführt werden. Sie geben Eigenschaften, z.B. die [Knotengröße](./../cloud-services/cloud-services-sizes-specs.md), das Betriebssystem und den Speicherort in Azure Storage für die Anwendung an, die installiert werden soll, wenn die Knoten dem Pool beitreten (die in Schritt 1 hochgeladene Anwendung). Sie können für den Pool auch eine [automatische Skalierung](batch-automatic-scaling.md) konfigurieren. In diesem Fall wird die Anzahl von Computeknoten im Pool entsprechend der Workload, die von Ihren Aufgaben generiert wird, automatisch angepasst.
+2. Erstellen Sie einen Batch-**Pool** mit Computeknoten in Ihrem Batch-Konto. Diese Knoten sind die virtuellen Computer, mit denen Ihre Aufgaben ausgeführt werden. Sie geben Eigenschaften, z.B. die [Knotengröße](./../cloud-services/cloud-services-sizes-specs.md), das Betriebssystem und den Speicherort in Azure Storage, für die Anwendung an, die installiert werden soll, wenn die Knoten dem Pool beitreten (die in Schritt 1 hochgeladene Anwendung). Sie können für den Pool auch eine [automatische Skalierung](batch-automatic-scaling.md) konfigurieren. In diesem Fall wird die Anzahl von Computeknoten im Pool entsprechend der Workload, die von Ihren Aufgaben generiert wird, automatisch angepasst.
 
 3. Erstellen Sie einen Batch-**Auftrag**, um die Workload im Pool mit den Computeknoten auszuführen. Wenn Sie einen Auftrag erstellen, ordnen Sie ihn einem Batch-Pool zu.
 
@@ -116,9 +125,9 @@ Bedenken Sie, dass dies nur eine Möglichkeit zur Verwendung von Batch ist und d
 
 Nachdem Sie sich hier einen allgemeinen Überblick über den Batch-Dienst verschafft haben, können Sie tiefer einsteigen und sich darüber informieren, wie Sie den Dienst zum Verarbeiten Ihrer rechenintensiven parallelen Workloads nutzen können.
 
-- Lesen Sie die [Übersicht über Batch-Features für Entwickler](batch-api-basics.md), um ausführlichere Informationen zu den API-Features zu erhalten, die von Batch für die Verarbeitung Ihrer Workloads bereitgestellt werden. Die ist für die Vorbereitung auf die Verwendung von Batch eine wichtige Lektüre.
+- Lesen Sie die [Übersicht über Batch-Features für Entwickler](batch-api-basics.md), um ausführlichere Informationen zu den API-Features zu erhalten, die von Batch für die Verarbeitung Ihrer Workloads bereitgestellt werden. Dieser Artikel ist für die Vorbereitung auf die Verwendung von Batch eine wichtige Lektüre.
 
-- Unter [Erste Schritte mit der Azure Batch-Bibliothek für .NET](batch-dotnet-get-started.md) erfahren Sie, wie Sie C# und die Batch-Bibliothek für .NET verwenden, um eine einfache Workload mit einem allgemeinen Batch-Workflow auszuführen. Dies sollte beim Erlernen des Batch-Diensts einer Ihrer ersten Anlaufpunkte sein. Es ist auch eine [Python-Version](batch-python-tutorial.md) des Tutorials verfügbar.
+- Unter [Erste Schritte mit der Azure Batch-Bibliothek für .NET](batch-dotnet-get-started.md) erfahren Sie, wie Sie mit C# und der Batch .NET-Bibliothek eine einfache Workload mit einem allgemeinen Batch-Workflow ausführen. Dieser Artikel sollte beim Erlernen des Batch-Diensts einer Ihrer ersten Anlaufpunkte sein. Es ist auch eine [Python-Version](batch-python-tutorial.md) des Tutorials verfügbar.
 
 - Laden Sie die [Codebeispiele unter GitHub][github_samples] herunter, um sich zu informieren, wie C# und Python mit Batch verknüpft werden können, um Beispielworkloads zu planen und zu verarbeiten.
 
@@ -126,7 +135,7 @@ Nachdem Sie sich hier einen allgemeinen Überblick über den Batch-Dienst versch
 
 [azure_storage]: https://azure.microsoft.com/services/storage/
 [api_java]: http://azure.github.io/azure-sdk-for-java/
-[api_java_jar]: http://adxsnapshots.azurewebsites.net/?dir=com%5cmicrosoft%5cazure%5cazure-batch
+[api_java_jar]: http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-batch%22
 [api_net]: https://msdn.microsoft.com/library/azure/mt348682.aspx
 [api_net_nuget]: https://www.nuget.org/packages/Azure.Batch/
 [api_net_mgmt]: https://msdn.microsoft.com/library/azure/mt463120.aspx
@@ -144,8 +153,11 @@ Nachdem Sie sich hier einen allgemeinen Überblick über den Batch-Dienst versch
 [github_samples]: https://github.com/Azure/azure-batch-samples
 [learning_path]: https://azure.microsoft.com/documentation/learning-paths/batch/
 [msdn_benefits]: https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/
+[batch_explorer]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/BatchExplorer
+[storage_explorer]: http://storageexplorer.com/
+[portal]: https://portal.azure.com
 
 [1]: ./media/batch-technical-overview/tech_overview_01.png
 [2]: ./media/batch-technical-overview/tech_overview_02.png
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0817_2016-->

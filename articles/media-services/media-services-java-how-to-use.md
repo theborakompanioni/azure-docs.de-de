@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="get-started-article"
-	ms.date="06/22/2016"   
+	ms.date="08/11/2016"   
 	ms.author="robmcm"/>
 
 #Verwenden von Media Services mit Java
@@ -22,7 +22,7 @@
 
 ##Einrichten eines Azure-Kontos für Media Services
 
-Sie können Ihr Media Services-Konto im klassischen Azure-Portal einrichten. Weitere Informationen finden Sie unter [Vorgehensweise: Erstellen eines Mediendienstekontos](media-services-create-account.md). Nach der Erstellung des Kontos im klassischen Azure-Portal können Sie Ihren Computer für die Media Services-Entwicklung einrichten.
+Sie können Ihr Media Services-Konto im klassischen Azure-Portal einrichten. Weitere Informationen finden Sie unter [Erstellen eines Azure Media Services-Kontos](media-services-create-account.md). Nach der Erstellung des Kontos im klassischen Azure-Portal können Sie Ihren Computer für die Media Services-Entwicklung einrichten.
 
 ##Einrichtung für die Media Services-Entwicklung
 
@@ -30,7 +30,7 @@ Dieser Abschnitt beschreibt allgemeine Voraussetzungen für die Media Services-E
 
 ###Voraussetzungen
 
--   Ein Mediendienstekonto in einem neuen oder existierenden Azure-Abonnement. Weitere Informationen finden Sie unter [Vorgehensweise: Erstellen eines Mediendienstekontos](media-services-create-account.md).
+-   Ein Media Services-Konto in einem neuen oder bereits vorhandenen Azure-Abonnement. Weitere Informationen finden Sie unter [Erstellen eines Azure Media Services-Kontos](media-services-create-account.md).
 -   Die Azure-Bibliotheken für Java, die Sie im [Azure Developer Center für Java][] installieren können.
 
 ##Gewusst wie: Verwenden von Media Services mit Java
@@ -276,4 +276,4 @@ Media Services-Javadoc-Dokumentation finden Sie in den [Azure-Bibliotheken für 
 
  
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0817_2016-->

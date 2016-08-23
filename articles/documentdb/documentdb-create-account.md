@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="05/16/2016"
+	ms.date="08/11/2016"
 	ms.author="mimig"/>
 
 # Gewusst wie: Erstellen eines DocumentDB-Kontos über das Azure-Portal
@@ -25,8 +25,8 @@
 
 Zum Erstellen einer Datenbank mit Microsoft Azure DocumentDB ist Folgendes erforderlich:
 
-- Ein Azure-Konto. Sie können ein [kostenloses Azure-Konto](https://azure.microsoft.com/free) einrichten, falls Sie noch kein Konto besitzen. 
-- Erstellen eines DocumentDB-Kontos.  
+- Ein Azure-Konto. Sie können ein [kostenloses Azure-Konto](https://azure.microsoft.com/free) einrichten, falls Sie noch kein Konto besitzen.
+- Erstellen eines DocumentDB-Kontos.
 
 Sie können ein DocumentDB-Konto entweder mithilfe des Azure-Portals, der Azure Resource Manager-Vorlagen oder der Azure-CLI (Command-Line Interface, Befehlszeilenschnittstelle) erstellen. In diesem Artikel wird beschrieben, wie Sie ein Datenbankkonto über das Azure-Portal erstellen. Informationen zum Erstellen eines Kontos mit Azure-Ressourcen-Manager oder mit der Azure-Befehlszeilenschnittstelle finden Sie unter [Automatisieren der Erstellung von DocumentDB-Datenbankkonten](documentdb-automation-resource-manager-cli.md).
 
@@ -53,4 +53,4 @@ Weitere Informationen zu DocumentDB finden Sie in folgenden Ressourcen:
 -	[Lernpfad für DocumentDB](https://azure.microsoft.com/documentation/learning-paths/documentdb/)
 -	[Ressourcenmodell und Konzepte von DocumentDB](documentdb-resources.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0817_2016-->

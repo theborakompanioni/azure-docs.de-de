@@ -13,7 +13,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="05/09/2016"
+   ms.date="08/16/2016"
    ms.author="cherylmc"/>
 
 # Erstellen einer Azure-DNS-Zone mithilfe der Befehlszeilenschnittstelle
@@ -73,7 +73,7 @@ Dieser Schritt kann übersprungen werden, wenn Sie eine vorhandene Ressourcengru
 
 ### 6\. Registrieren
 
-Der Azure DNS-Dienst wird vom Ressourcenanbieter "Microsoft.Network" verwaltet. Ihr Azure-Abonnement muss für die Verwendung dieses Ressourcenanbieters registriert werden, bevor Sie Azure DNS verwenden können. Dieser Schritt muss für jedes Abonnement einmal ausgeführt werden.
+Der Azure DNS-Dienst wird vom Ressourcenanbieter "Microsoft.Network" verwaltet. Ihr Azure-Abonnement muss für die Verwendung dieses Ressourcenanbieters registriert werden, um Azure DNS verwenden zu können. Dieser Schritt muss einmal für jedes Abonnement ausgeführt werden.
 
 	Azure provider register --namespace Microsoft.Network
 
@@ -109,10 +109,10 @@ Beim Erstellen einer DNS-Zone werden auch die folgenden DNS-Einträge erstellt:
 
 - Die autoritativen Namenserver (NS)-Einträge. Diese zeigen, welche Namenserver die Zone hosten. Azure DNS verwendet einen Pool von Namenservern, sodass verschiedene Namenserver verschiedenen Zonen in Azure DNS zugewiesen werden können. Weitere Informationen finden Sie unter [Delegieren einer Domäne an Azure DNS](dns-domain-delegation.md).
 
-Verwenden Sie zum Anzeigen dieser Datensätze `azure network dns-record-set show`.<BR> *Syntax: network dns record-set show <resource-group> <dns-zone-name> <name> <type>*
+Verwenden Sie zum Anzeigen dieser Datensätze `azure network dns-record-set show`.<BR> *Syntax: network dns record-set show <Ressourcengruppe> <Name der DNS-Zone> <Name> <Typ>*
 
 
-Im folgenden Beispiel ergibt das Ausführen des Befehls mit der Ressourcengruppe *myresourcegroup*, dem Namen der Datensatzgruppe *"@"* (für einen Stammdatensatz) und dem Typ *SOA* die folgende Ausgabe:
+Im folgenden Beispiel gibt der Befehl mit der Ressourcengruppe *myresourcegroup*, dem Namen des Ressourceneintragssatzes *"@"* (für einen Stammdatensatz) und dem Typ *SOA* Folgendes aus:
 
 
 	azure network dns record-set show myresourcegroup "contoso.com" "@" SOA
@@ -149,7 +149,7 @@ Im folgenden Beispiel ergibt das Ausführen des Befehls mit der Ressourcengruppe
 	data:
 	info:    network dns-record-set show command OK
 
->[AZURE.NOTE] Eintragsgruppen am Stamm (oder der *Spitze*) einer DNS-Zone verwenden **@** als Eintragsgruppenname.
+>[AZURE.NOTE] Ressourceneintragssätze am Stamm (oder *Apex*) einer DNS-Zone verwenden **@** als Name des Ressourceneintragssatzes.
 
 ## Test
 
@@ -157,7 +157,7 @@ Sie können Ihre DNS-Zone mit DNS-Tools wie nslookup, DIG oder mit dem `Resolve-
 
 Wenn Sie Ihre Domäne noch nicht delegiert haben, um die neue Zone in Azure DNS zu verwenden, müssen Sie die DNS-Abfrage direkt auf einen der Namenserver für die Zone leiten. Die Namenserver für die Zone sind in den NS-Einträgen enthalten, die von „azure network dns-record-set show“ aufgelistet werden. Ersetzen Sie im folgenden Befehl die Werte durch die für Ihre Zone ordnungsgemäßen Werte.
 
-Im folgenden Beispiel wird DIG zum Abfragen der Domäne "contoso.com" mithilfe der Namenserver verwendet, die der DNS-Zone zugewiesen sind. Die Abfrage muss mit DIG durchgeführt werden und auf einen Namenserver, für den wir *@<name server for the zone>* verwendet haben, sowie auf den Zonennamen verweisen.
+Im folgenden Beispiel wird DIG zum Abfragen der Domäne "contoso.com" mithilfe der Namenserver verwendet, die der DNS-Zone zugewiesen sind. Die Abfrage muss mit DIG durchgeführt werden und auf einen Namenserver, für den wir *@<Namenserver für die Zone>* verwendet haben, sowie auf den Zonennamen verweisen.
 
 	 <<>> DiG 9.10.2-P2 <<>> @ns1-05.azure-dns.com contoso.com
 	(1 server found)
@@ -183,6 +183,6 @@ Im folgenden Beispiel wird DIG zum Abfragen der Domäne "contoso.com" mithilfe d
 
 ## Nächste Schritte
 
-Nach dem Erstellen einer DNS-Zone müssen [Datensatzgruppen und Einträge](dns-getstarted-create-recordset-cli.md) zum Auflösen von Namen für Ihre Internetdomäne erstellt werden.
+Nach dem Erstellen einer DNS-Zone müssen [Ressourceneintragssätze und Einträge](dns-getstarted-create-recordset-cli.md) zum Auflösen von Namen für Ihre Internetdomäne erstellt werden.
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0817_2016-->

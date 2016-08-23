@@ -13,11 +13,15 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="get-started-article" 
-	ms.date="07/25/2016" 
+	ms.date="08/15/2016" 
 	ms.author="elizapo"/>
 
 # Azure RemoteApp – Häufig gestellte Fragen
-Folgende Fragen wurden zu Azure RemoteApp an uns gestellt. Haben Sie weitere Fragen? Besuchen Sie die [RemoteApp-Foren](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureRemoteApp), und teilen Sie uns mit, was Sie wissen müssen, oder hinterlassen Sie uns unten einen Kommentar.
+
+> [AZURE.IMPORTANT]
+Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148).
+
+Folgende Fragen wurden zu Azure RemoteApp an uns gestellt. Haben Sie weitere Fragen? Besuchen Sie die [RemoteApp-Foren](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureRemoteApp), und sagen Sie uns, was Sie wissen müssen, oder hinterlassen Sie uns weiter unten einen Kommentar.
 
 ## Können Sie die gesuchten Informationen nicht finden? Haben Sie eine Frage, die wir nicht beantwortet haben?
 Falls Sie die benötigten Informationen nicht finden oder eine Frage haben, die hier nicht beantwortet wird, wechseln Sie zum [Azure RemoteApp-Forum](http://aka.ms/araforum), und stellen Sie dort Ihre Frage. Wir können hier jederzeit weitere Antworten hinzufügen.
@@ -29,7 +33,7 @@ Falls Sie die benötigten Informationen nicht finden oder eine Frage haben, die 
 - **Welche Bereitstellungsoptionen gibt es?** Es gibt zwei Arten von RemoteApp-Sammlungen: Cloud und Hybrid. Welche der beiden Sie benötigen, hängt von einer Reihe von Faktoren ab, z. B. davon, ob Sie einen Domänenbeitritt benötigen. Wir diskutieren diese Entscheidungen [hier](remoteapp-collections.md).
 
 ## Tipps zum Verwenden von Azure RemoteApp ##
-- **Wie lange kann ich inaktiv sein, bis ich getrennt werde? Wie viel Zeit habe ich bis zur automatischen Abmeldung?** 4 Stunden. Wenn Sie oder einer Ihrer Benutzer 4 Stunden lang inaktiv ist, werden Sie automatisch von Azure RemoteApp abgemeldet. Alle weiteren Standardeinstellungen werden unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../azure-subscription-service-limits.md) näher besprochen.
+- **Wie lange kann ich inaktiv sein, bis ich getrennt werde? Wie viel Zeit habe ich bis zur automatischen Abmeldung?** 4 Stunden. Wenn Sie oder einer Ihrer Benutzer 4 Stunden lang inaktiv ist, werden Sie automatisch von Azure RemoteApp abgemeldet. Alle weiteren Standardeinstellungen werden unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../azure-subscription-service-limits.md) ausführlicher besprochen.
 - **Kann ich diesen Dienst kostenlos testen?** Ja. Es ist eine kostenlose Testversion für 30 Tage verfügbar. Nach Ablauf des Testzeitraums können Sie auf ein gebührenpflichtiges Konto (für die Produktionsumgebung) umstellen oder den Dienst beenden. Starten Sie die kostenlose Testversion unter [portal.azure.com](http://portal.azure.com), und erstellen Sie eine neue Instanz von RemoteApp. Mit der kostenlosen Testversion können Sie zwei Instanzen von RemoteApp mit 10 Benutzern pro Instanz erstellen. Beachten Sie, dass diese Testversion nur für 30 Tage gilt.
 ## Informationen zu Azure RemoteApp-Abonnements ##
 
@@ -47,11 +51,11 @@ Falls Sie die benötigten Informationen nicht finden oder eine Frage haben, die 
 
 
 ## Vorlagenimages
-- **Kann ich eine Cloud oder die vorhandenen virtuellen Computer als Vorlage für meine RemoteApp-Sammlung verwenden?** Ja. Sie können beruhend auf einem virtuellen Azure-Computer ein Image erstellen, eines der im Abonnement enthaltenen Images verwenden oder ein benutzerdefiniertes Image erstellen. Beachten Sie die [RemoteApp-Image-Optionen](remoteapp-imageoptions.md).
+- **Kann ich eine Cloud oder die vorhandenen virtuellen Computer als Vorlage für meine RemoteApp-Sammlung verwenden?** Ja. Sie können ein Image auf der Grundlage eines virtuellen Azure-Computers erstellen, eines der im Abonnement enthaltenen Images verwenden oder ein benutzerdefiniertes Image erstellen. Beachten Sie die [RemoteApp-Image-Optionen](remoteapp-imageoptions.md).
 
 
 ## Netzwerkoptionen
-- **Für die Hybrid-Sammlung ist ein virtuelles Netzwerk (VNET) erforderlich. Können wir unser vorhandenes VNET verwenden?** Das ist möglich, wenn das vorhandene VNET ein Azure VNET ist. Weitere Informationen finden Sie unter "Schritt 1: Einrichten des virtuellen Netzwerks" in den [Anweisungen zu Hybridsammlungen](remoteapp-create-hybrid-deployment.md).
+- **Für die Hybridsammlung ist ein virtuelles Netzwerk (VNET) erforderlich. Können wir unser vorhandenes VNET verwenden?** Das ist möglich, wenn das vorhandene VNET ein Azure VNET ist. Weitere Informationen finden Sie unter "Schritt 1: Einrichten des virtuellen Netzwerks" in den [Anweisungen zu Hybridsammlungen](remoteapp-create-hybrid-deployment.md).
 - **Kann ich ein VNET mit einer Cloudsammlung verwenden?** Dies ist möglich. Unter [Erstellen einer Cloudsammlung](remoteapp-create-cloud-deployment.md), besonders Schritt 1, finden Sie weitere Informationen.
 
 ## Authentifizierungsoptionen
@@ -60,9 +64,9 @@ Falls Sie die benötigten Informationen nicht finden oder eine Frage haben, die 
 
 - **Wie sieht es mit der Authentifizierung aus? Welche Methoden werden unterstützt?** Die Cloudsammlung unterstützt Microsoft-Konten und Azure Active Directory-Konten, die gleichzeitig auch Office 365-Konten sind. Die Hybrid-Sammlung unterstützt nur Azure Active Directory-Konten, die von einer Windows Server Active Directory-Bereitstellung synchronisiert wurden (mithilfe eines Tools wie z. B. [Azure Active Directory Sync](http://blogs.technet.com/b/ad/archive/2014/09/16/azure-active-directory-sync-is-now-ga.aspx)). Dies gilt insbesondere für Konten, die entweder mit der Option "Kennwortsynchronisierung" oder mit Active Directory Federation Services (AD FS) in einer Verbundkonfiguration synchronisiert wurden. Sie können auch die [Multi-Factor Authentication (MFA)](https://azure.microsoft.com/services/multi-factor-authentication/) konfigurieren.
 
->[AZURE.NOTE]Azure Active Directory-Benutzer müssen dem Ihrem Abonnement zugeordneten Mandanten angehören. (Sie können Ihr Abonnement im Portal auf der Registerkarte **Einstellungen** anzeigen und bearbeiten. Weitere Informationen finden Sie unter [Ändern des von RemoteApp verwendeten Azure Active Directory-Mandanten](remoteapp-changetenant.md).)
+>[AZURE.NOTE]Die Azure Active Directory-Benutzer müssen dem Mandanten angehören, der Ihrem Abonnement zugeordnet ist. (Sie können Ihr Abonnement im Portal auf der Registerkarte **Einstellungen** anzeigen und bearbeiten. Weitere Informationen finden Sie unter [Ändern des von RemoteApp verwendeten Azure Active Directory-Mandanten](remoteapp-changetenant.md).)
 
-- **Warum kann ich meinem Azure Active Directory-Konto keinen Zugriff erteilen?** Azure Active Directory-Benutzer müssen dem Ihrem Abonnement zugeordneten Verzeichnis angehören. Sie können Ihr Abonnement im Portal auf der Registerkarte "Einstellungen" anzeigen und bearbeiten. Weitere Informationen finden Sie unter [Ändern des von RemoteApp verwendeten Azure Active Directory-Verzeichnisses](remoteapp-changetenant.md).
+- **Warum kann ich meinem Azure Active Directory-Konto keinen Zugriff erteilen?** Die Azure Active Directory-Benutzer müssen dem Verzeichnis angehören, das Ihrem Abonnement zugeordnet ist. Sie können Ihr Abonnement im Portal auf der Registerkarte "Einstellungen" anzeigen und bearbeiten. Weitere Informationen finden Sie unter [Ändern des von RemoteApp verwendeten Azure Active Directory-Verzeichnisses](remoteapp-changetenant.md).
 
 ## Clients: Mit welchen Geräten kann ich auf Azure RemoteApp zugreifen?
 Unter [Zugreifen auf Anwendungen in Azure RemoteApp](remoteapp-clients.md) finden Sie Informationen zu Clients sowie Schritte zum Installieren der verschiedenen Clients.
@@ -88,7 +92,7 @@ Unter [Zugreifen auf Anwendungen in Azure RemoteApp](remoteapp-clients.md) finde
 
 - **Welche Version von Windows Server wird für den Remotedesktop-Sitzungshost (RDSH) unterstützt?** Windows Server 2012 R2
 
-##Support und Feedback
+## Support und Feedback
 
 
 - **Wie lautet der Support-Plan für RemoteApp?** Der Support für die Abrechnungs- und Abonnementverwaltung wird kostenlos bereitgestellt. Der technische Support ist über die [Azure-Servicepläne](https://azure.microsoft.com/support/plans/) verfügbar. Über unser [Azure-Diskussionsforum](http://social.msdn.microsoft.com/Forums/windowsazure/home?forum=AzureRemoteApp) erhalten Sie zudem eine kostenlose Unterstützung durch die Community.
@@ -117,4 +121,4 @@ Unter [Zugreifen auf Anwendungen in Azure RemoteApp](remoteapp-clients.md) finde
 ### Helfen Sie uns, Ihnen zu helfen 
 Wussten Sie schon, dass Sie diesen Artikel im Bereich unten nicht nur bewerten und kommentieren, sondern ihn auch selbst ändern können? Fehlt etwas? Ist etwas nicht ganz richtig? Habe ich etwas geschrieben, das eher verwirrend ist? Scrollen Sie nach oben, und klicken Sie auf **Edit on GitHub**, um die gewünschten Änderungen vorzunehmen. Ihr Vorschlag wird uns vorgelegt, und wenn wir ihn bestätigt haben, werden Ihre Änderungen und Verbesserungen hier angezeigt.
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0817_2016-->

@@ -14,20 +14,20 @@
      ms.topic="hero-article"
      ms.tgt_pltfrm="na"
      ms.workload="na"
-     ms.date="05/25/2016"
+     ms.date="08/16/2016"
      ms.author="dobett"/>
 
 # Tutorial: Erste Schritte mit den vorkonfigurierten Lösungen
 
 ## Einführung
 
-[Vorkonfigurierte Lösungen][lnk-preconfigured-solutions] der Azure IoT- Suite kombinieren mehrere Azure IoT-Dienste, um durchgängige Lösungen bereitzustellen, die allgemeine IoT-Unternehmensszenarien implementieren. Die vorkonfigurierte Lösung für die *Remoteüberwachung* stellt eine Verbindung mit Ihren Geräten her und überwacht die Geräte. Dies ermöglicht Ihnen das Analysieren des Datenstroms von Ihren Geräten und das Verbessern der Geschäftsergebnisse, indem Sie Prozesse so einrichten, dass sie automatisch auf diesen Datenstrom reagieren.
+[Vorkonfigurierte Lösungen][lnk-preconfigured-solutions] der Azure IoT- Suite kombinieren mehrere Azure IoT-Dienste, um durchgängige Lösungen bereitzustellen, die allgemeine IoT-Unternehmensszenarien implementieren. Die vorkonfigurierte Lösung für die *Remoteüberwachung* stellt eine Verbindung mit Ihren Geräten her und überwacht die Geräte. Sie können die Lösung zum Analysieren des Datenstroms von Ihren Geräten und Verbessern der Geschäftsergebnisse verwenden, indem Sie Prozesse so einrichten, dass sie automatisch auf diesen Datenstrom reagieren.
 
-Dieses Tutorial zeigt, wie Sie eine vorkonfigurierte Lösung für die Remoteüberwachung bereitstellen. Außerdem lernen Sie die grundlegenden Funktionen der vorkonfigurierten Lösung für die Remoteüberwachung kennen. Sie können auf einen Großteil dieser Features über das Lösungsdashboard zugreifen, das zusammen mit der vorkonfigurierten Lösung bereitgestellt wird:
+Dieses Tutorial zeigt, wie Sie eine vorkonfigurierte Lösung für die Remoteüberwachung bereitstellen. Außerdem lernen Sie die grundlegenden Funktionen der Lösung für die Remoteüberwachung kennen. Sie können auf einen Großteil dieser Features über das Lösungsdashboard zugreifen, das zusammen mit der vorkonfigurierten Lösung bereitgestellt wird:
 
 ![Lösungsdashboard der vorkonfigurierten Lösung für die Remoteüberwachung][img-dashboard]
 
-Sie benötigen ein aktives Azure-Abonnement, um dieses Lernprogramm auszuführen.
+Um dieses Tutorial abzuschließen, benötigen Sie ein aktives Azure-Abonnement.
 
 > [AZURE.NOTE]  Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion][lnk_free_trial].
 
@@ -93,11 +93,11 @@ Die Lösung verfolgt den Status jedes einzelnen Befehls, der gesendet wird. Zun�
 
 Bei der Bereitstellung der vorkonfigurierten Lösung stellen Sie automatisch die vier Beispielgeräte bereit, die in der Geräteliste angezeigt werden. Dies sind *simulierte Geräte*, die in einem Azure WebJob ausgeführt werden. Simulierte Geräte erleichtern Ihnen das Experimentieren mit der vorkonfigurierten Lösung, ohne dass Sie echte physische Geräte bereitstellen müssen. Falls Sie für ein echtes Gerät eine Verbindung mit der Lösung herstellen möchten, hilft Ihnen das Tutorial [Verbinden Ihres Geräts mit der vorkonfigurierten Remoteüberwachungslösung][lnk-connect-rm] weiter.
 
-Die folgenden Schritte verdeutlichen, wie Sie der Lösung ein neues simuliertes Gerät hinzufügen:
+Die folgenden Schritte verdeutlichen, wie Sie der Lösung ein simuliertes Gerät hinzufügen:
 
 1.  Navigieren Sie zurück zur Geräteliste.
 
-2.  Klicken Sie in der unteren linken Ecke auf **+ Gerät hinzufügen**, um ein neues Gerät hinzuzufügen.
+2.  Klicken Sie in der unteren linken Ecke auf **+ Gerät hinzufügen**, um ein Gerät hinzuzufügen.
 
     ![Gerät der vorkonfigurierten Lösung hinzufügen][img-adddevice]
 
@@ -105,7 +105,7 @@ Die folgenden Schritte verdeutlichen, wie Sie der Lösung ein neues simuliertes 
 
     ![Neue Gerätedetails im Dashboard festlegen][img-addnew]
     
-    Zusätzlich zum Erstellen eines neuen simulierten Geräts können Sie auch ein physisches Gerät hinzufügen, wenn Sie sich für die Erstellung eines **benutzerdefinierten Geräts** entscheiden. Weitere Informationen finden Sie unter [Verbinden Ihres Geräts mit der vorkonfigurierten Remoteüberwachungslösung von IoT Suite][lnk-connect-rm].
+    Zusätzlich zum Erstellen eines neuen simulierten Geräts können Sie auch ein physisches Gerät hinzufügen, wenn Sie sich für die Erstellung eines **benutzerdefinierten Geräts** entscheiden. Weitere Informationen zum Verbinden von physischen Geräten mit der Lösung finden Sie unter [Verbinden Ihres Geräts mit der vorkonfigurierten Remoteüberwachungslösung von IoT Suite][lnk-connect-rm].
 
 4.  Wählen Sie **Eigene Geräte-ID definieren** aus, und geben Sie einen eindeutigen Geräte-ID-Namen wie **mydevice\_01** ein.
 
@@ -147,7 +147,7 @@ Es sind keine Regeln für das neue Gerät vorhanden, das Sie gerade hinzugefügt
 
 1.  Navigieren Sie zurück zur Geräteliste.
 
-2.  Wählen Sie das neue Gerät in der **Geräteliste** aus, und klicken Sie dann auf **Regel hinzufügen**, um eine neue Regel für das Gerät hinzuzufügen.
+2.  Wählen Sie das neue Gerät in der **Geräteliste** aus, und klicken Sie dann auf **Regel hinzufügen**, um eine Regel für das Gerät hinzuzufügen.
 
 3. Erstellen Sie eine Regel, bei der **Temperature** als Datenfeld und **AlarmTemp** als Ausgabe verwendet wird, wenn die Temperatur 47 Grad überschreitet:
 
@@ -189,11 +189,11 @@ Sie können ein Gerät deaktivieren, und nachdem es deaktiviert wurde, können S
 
 ## Abläufe im Hintergrund
 
-Wenn Sie eine vorkonfigurierte Lösung bereitstellen, werden vom Bereitstellungsprozess mehrere Ressourcen im gewählten Azure-Abonnement erstellt. Sie können diese Ressourcen im Azure-[Portal][lnk-portal] anzeigen. Der Bereitstellungsprozess erstellt eine **Ressourcengruppe** mit einem Namen basierend auf dem Namen, den Sie für Ihre vorkonfigurierte Lösung gewählt haben:
+Wenn Sie eine vorkonfigurierte Lösung bereitstellen, werden vom Bereitstellungsprozess mehrere Ressourcen im gewählten Azure-Abonnement erstellt. Sie können diese Ressourcen im Azure-[Portal][lnk-portal] anzeigen. Der Bereitstellungsprozess erstellt eine **Ressourcengruppe** mit einem Namen basierend auf dem Namen, den Sie für Ihre vorkonfigurierte Lösung wählen:
 
 ![Vorkonfigurierte Lösung im Azure-Portal][img-portal]
 
-Sie können die Einstellungen der einzelnen Ressourcen anzeigen, indem Sie sie in der Ressourcengruppe in der Liste mit den Ressourcen auswählen. Im obigen Screenshot sind die Einstellungen für den IoT Hub in der vorkonfigurierten Lösung dargestellt.
+Sie können die Einstellungen der einzelnen Ressourcen anzeigen, indem Sie sie in der Ressourcengruppe in der Liste mit den Ressourcen auswählen.
 
 Sie können auch den Quellcode für die vorkonfigurierte Lösung anzeigen. Den Quellcode zur vorkonfigurierten Lösung für die Remoteüberwachung finden Sie im GitHub-Repository [azure-iot-remote-monitoring][lnk-rmgithub]\:
 
@@ -201,7 +201,7 @@ Sie können auch den Quellcode für die vorkonfigurierte Lösung anzeigen. Den Q
 - Der Ordner **Simulator** enthält den Quellcode für das simulierte Gerät.
 - Der Ordner **EventProcessor** enthält den Quellcode für den Back-End-Prozess, mit dem die eingehenden Telemetriedaten behandelt werden.
 
-Wenn Sie fertig sind, können Sie die vorkonfigurierte Lösung auf der Website [azureiotsuite.com][lnk-azureiotsuite] aus Ihrem Azure-Abonnement löschen. Dadurch können Sie problemlos alle Ressourcen löschen, die bei der Erstellung der vorkonfigurierten Lösung bereitgestellt wurden.
+Wenn Sie fertig sind, können Sie die vorkonfigurierte Lösung auf der Website [azureiotsuite.com][lnk-azureiotsuite] aus Ihrem Azure-Abonnement löschen. Über diese Website können Sie problemlos alle Ressourcen löschen, die bei der Erstellung der vorkonfigurierten Lösung bereitgestellt wurden.
 
 > [AZURE.NOTE] Um sicherzustellen, dass Sie alle zur vorkonfigurierten Lösung gehörenden Daten löschen, sollten Sie sie über die Website [azureiotsuite.com][lnk-azureiotsuite] löschen und nicht nur einfach die Ressourcengruppe im Portal löschen.
 
@@ -249,4 +249,4 @@ Sie haben eine funktionierende vorkonfigurierte Lösung bereitgestellt und könn
 [lnk-connect-rm]: iot-suite-connecting-devices.md
 [lnk-permissions]: iot-suite-permissions.md
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0817_2016-->

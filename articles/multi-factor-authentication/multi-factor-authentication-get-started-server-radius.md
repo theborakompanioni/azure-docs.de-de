@@ -4,7 +4,7 @@
 	services="multi-factor-authentication" 
 	documentationCenter="" 
 	authors="billmath" 
-	manager="stevenpo" 
+	manager="femila" 
 	editor="curtand"/>
 
 <tags 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="get-started-article" 
-	ms.date="08/04/2016" 
+	ms.date="08/15/2016" 
 	ms.author="billmath"/>
 
 
@@ -60,4 +60,4 @@ Verwenden Sie die folgenden Richtlinien, um den RADIUS-Client zu konfigurieren:
 - Verwenden Sie den gleichen gemeinsamen geheimen Schlüssel, der weiter oben konfiguriert wurde.
 - Konfigurieren Sie den RADIUS-Timeout auf 30 bis 60 Sekunden, sodass genug Zeit ist, die Anmeldeinformationen des Benutzers zu überprüfen, die mehrstufige Authentifizierung auszuführen, deren Antwort zu empfangen, und dann auf die RADIUS-Zugriffsanforderung zu reagieren.
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0817_2016-->

@@ -14,7 +14,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="python"
     ms.topic="hero-article"
-    ms.date="04/18/2016"
+    ms.date="08/11/2016"
     ms.author="anhoh"/>
 
 # Python Flask-Webanwendungsentwicklung mit DocumentDB
@@ -419,7 +419,7 @@ Wenn auf Ihrer Abstimmungsseite ein Fehler angezeigt wird und Sie dem Projekt ei
 
 Glückwunsch! Sie haben Ihre erste Python-Webanwendung mit Azure DocumentDB abgeschlossen und auf Azure-Websites veröffentlicht.
 
-Wir aktualisieren und verbessern dieses Thema häufig basierend auf Ihrem Feedback. Verwenden Sie bitte nach Abschluss des Lernprogramms die Abstimmungsschaltflächen oben und unten auf dieser Seite, und geben Sie auch Feedback zu gewünschten Verbesserungen an. Wenn wir mit Ihnen Kontakt aufnehmen sollen, können Sie Ihre E-Mail-Adresse im Kommentar hinterlassen.
+Dieses Thema wird auf der Grundlage Ihres Feedbacks immer wieder aktualisiert und optimiert. Verwenden Sie bitte nach Abschluss des Lernprogramms die Abstimmungsschaltflächen oben und unten auf dieser Seite, und geben Sie auch Feedback zu gewünschten Verbesserungen an. Wenn wir mit Ihnen Kontakt aufnehmen sollen, können Sie Ihre E-Mail-Adresse im Kommentar hinterlassen.
 
 Um Ihrer Webanwendung weitere Funktionen hinzuzufügen, überprüfen Sie die im [Python SDK für DocumentDB](documentdb-sdk-python.md) verfügbaren APIs.
 
@@ -433,4 +433,4 @@ Weitere Python Flask-Tutorials finden Sie unter [The Flask Mega-Tutorial, Part I
   [Microsoft Web Platform Installer]: http://www.microsoft.com/web/downloads/platform.aspx
   [Azure portal]: http://portal.azure.com
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0817_2016-->

@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="05/06/2016"
+   ms.date="08/16/2016"
    ms.author="cherylmc"/>
 
 # Erstellen von DNS-Ressourceneintragssätzen und Einträgen über die CLI
@@ -38,7 +38,7 @@ Zum Erstellen eines Eintragssatzes auf oberster Ebene der Zone (in diesem Fall �
 
 Verwenden Sie `azure network dns record-set create` zum Erstellen eines Eintragssatzes. Geben Sie die Ressourcengruppe, den Zonennamen, den relativen Namen des Eintragssatzes, den Eintragstyp und die Gültigkeitsdauer an. Wenn der Parameter `--ttl` nicht definiert ist, liegt der Standardwert bei vier (in Sekunden). Wenn Sie diesen Schritt ausgeführt haben, verfügen Sie über eine leere „www“-Datensatzgruppe.
 
-*Verwendung: network dns record-set create <resource-group> <dns-zone-name> <name> <type> <ttl>*
+*Syntax: network dns record-set create <Ressourcengruppe> <Name der DNS-Zone> <Name> <Typ> <TTL>*
 
 	azure network dns record-set create myresourcegroup  contoso.com  www A  60
 
@@ -48,9 +48,9 @@ Damit Sie den neu erstellten Eintragssatz „www“ verwenden können, müssen S
 
 Die Parameter zum Hinzufügen von Einträgen zu einer Datensatzgruppe variieren je nach Typ der Datensatzgruppe. Wenn Sie beispielsweise einen Eintragssatz vom Typ „A“ verwenden, können Sie nur Einträge mit dem Parameter `-a <IPv4 address>` angeben.
 
-Mit dem folgenden Befehl können Sie dem Eintragssatz „www“ IPv4-*A*-Einträge hinzufügen:
+Mit dem folgenden Befehl können Sie dem Eintragssatz „www“ IPv4-Einträge vom Typ *A* hinzufügen:
 
-*Verwendung: network dns record-set add-record <resource-group> <dns-zone-name> <record-set-name> <type>*
+*Syntax: network dns record-set add-record <Ressourcengruppe> <Name der DNS-Zone> <Name des Eintragssatzes> <Typ>*
 
 	azure network dns record-set add-record myresourcegroup contoso.com  www A  -a 134.170.185.46
 
@@ -62,8 +62,8 @@ Die folgenden Beispiele zeigen, wie Sie einen Eintragssatz jedes Eintragstyps er
 
 ## Nächste Schritte
 
-Informationen zur Verwaltung Ihrer Eintragssätze und Einträge finden Sie unter [Verwalten von DNS-Einträgen und -Eintragssätzen über die CLI](dns-operations-recordsets-portal.md).
+Informationen zur Verwaltung Ihrer Eintragssätze und Einträge finden Sie unter [Verwalten von DNS-Ressourceneinträgen und DNS-Ressourceneintragssätzen über die Befehlszeilenschnittstelle](dns-operations-recordsets-portal.md).
 
 Weitere Informationen zu Azure DNS finden Sie unter [Azure DNS – Übersicht](dns-overview.md).
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0817_2016-->

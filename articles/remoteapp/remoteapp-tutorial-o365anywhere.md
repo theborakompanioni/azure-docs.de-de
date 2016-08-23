@@ -13,11 +13,14 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="compute"
-   ms.date="06/27/2016"
+   ms.date="08/15/2016"
    ms.author="guscatal;elizapo"/>
 
 
 # Bereitstellen der gleichen Office 365-Umgebung auf jedem Gerät mit Azure RemoteApp
+
+> [AZURE.IMPORTANT]
+Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148).
 
 In diesem Artikel wird behandelt, wie Office 365 auf jedem Gerät in Ihrem Unternehmen bereitgestellt werden kann. Ihre Benutzer erhalten die gleichen Funktionen und die gleiche Benutzeroberfläche für Android, Apple und Windows.
 
@@ -27,7 +30,7 @@ Dies wird mithilfe von Azure RemoteApp erreicht, indem Office 365 auf skalierba
 
 Navigieren Sie nach der Erstellung eines Azure-Kontos zunächst zu **RemoteApp**, indem Sie im linken Bereich auf den entsprechenden Link klicken. ![Anzeigen von Azure RemoteApp im Azure-Portal](./media/remoteapp-tutorial-o365anywhere/1-menu.png)
 
-Klicken Sie anschließend am unteren Rand auf **Neu**, und führen Sie eine Schnellerfassung für eine Sammlung durch. Geben Sie einen Namen, die Region, das Abonnement, den Plan und das Bild "Office Professional 2013" ein, das wir bereitstellen. ![Dialogfeld "Erstellen"](./media/remoteapp-tutorial-o365anywhere/2-quickcreate.png)
+Klicken Sie anschließend am unteren Rand auf **Neu**, und führen Sie eine Schnellerfassung für eine Sammlung durch. Geben Sie einen Namen, die Region, das Abonnement, den Plan und das von uns bereitgestellte Image „Office Professional 2013“ an. ![Dialogfeld "Erstellen"](./media/remoteapp-tutorial-o365anywhere/2-quickcreate.png)
 
 Sobald Sie alles eingetragen haben, sollte der Prozess der Sammlungserstellung beginnen. Dies kann bis zu einer Stunde dauern.
 
@@ -63,4 +66,4 @@ Klicken Sie auf die Anwendungen, um sie auf dem virtuellen Azure-Computer zu sta
 
 ![PowerPoint](./media/remoteapp-tutorial-o365anywhere/11-pp.png)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0817_2016-->

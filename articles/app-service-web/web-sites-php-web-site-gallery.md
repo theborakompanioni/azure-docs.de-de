@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="PHP"
 	ms.topic="hero-article"
-	ms.date="06/24/2016"
+	ms.date="08/11/2016"
 	ms.author="robmcm"/>
 
 # Erstellen einer WordPress-Web-App in Azure App Service
@@ -37,7 +37,7 @@ Azure Marketplace bietet eine breite Auswahl an beliebten Web-Apps, die von Micr
 Die WordPress-Website, die Sie in diesem Lernprogramm bereitstellen, verwendet MySQL als Datenbank. Wenn Sie stattdessen die SQL-Datenbank verwenden möchten, finden Sie unter [Project Nami](http://projectnami.org/) entsprechende Informationen. **Project Nami** ist auch über den Marketplace vorhanden.
 
 > [AZURE.NOTE]
-Sie benötigen ein Microsoft Azure-Konto, um dieses Lernprogramm auszuführen. Wenn Sie kein Konto haben, können Sie [Ihre Visual Studio-Abonnentenvorteile aktivieren](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F) oder sich [für eine kostenlose Testversion registrieren](/de-DE/pricing/free-trial/?WT.mc_id=A261C142F).
+Sie benötigen ein Microsoft Azure-Konto, um dieses Tutorial auszuführen. Wenn Sie kein Konto haben, können Sie [Ihre Visual Studio-Abonnentenvorteile aktivieren](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F) oder sich [für eine kostenlose Testversion registrieren](/de-DE/pricing/free-trial/?WT.mc_id=A261C142F).
 >
 > Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, besuchen Sie [Azure App Service-App erstellen](http://go.microsoft.com/fwlink/?LinkId=523751). Dort können Sie direkt eine kurzzeitige Start-Web-App in App Service erstellen – keine Kreditkarte erforderlich, keine weiteren Verpflichtungen.
 
@@ -47,7 +47,7 @@ Sie benötigen ein Microsoft Azure-Konto, um dieses Lernprogramm auszuführen. W
 
 2. Klicken Sie auf **Neu**.
 	
-    ![Neu erstellen][5]
+    ![Create New][5]
 	
 3. Suchen Sie nach **WordPress**, und klicken Sie dann auf **WordPress**. Wenn Sie die SQL-Datenbank statt MySQL verwenden möchten, suchen Sie nach **Project Nami**.
 
@@ -61,7 +61,7 @@ Sie benötigen ein Microsoft Azure-Konto, um dieses Lernprogramm auszuführen. W
 
 	Der Name muss innerhalb der Domäne "azurewebsites.net" eindeutig sein, da die URL der Web-App "{name}.azurewebsites.net" lauten wird. Wenn der eingegebene Name nicht eindeutig ist, wird im Textfeld ein rotes Ausrufezeichen angezeigt.
 
-8. Wenn Sie über mehr als ein Abonnement verfügen, wählen Sie das Abonnement aus, das Sie verwenden möchten.
+8. Falls Sie über mehrere Abonnements verfügen, wählen Sie das gewünschte Abonnement aus.
 
 5. Wählen Sie eine vorhandene **Ressourcengruppe** aus, oder erstellen Sie eine neue.
 
@@ -128,4 +128,4 @@ Zusätzliche Dokumentation zur Arbeit mit App Service-Web-Apps finden Sie in den
 [7]: ./media/web-sites-php-web-site-gallery/search-web-app.png
 [browse]: ./media/web-sites-php-web-site-gallery/browse-web.png
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0817_2016-->

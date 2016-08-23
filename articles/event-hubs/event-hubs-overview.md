@@ -12,38 +12,38 @@
     ms.topic="get-started-article"
     ms.tgt_pltfrm="na"
     ms.workload="na"
-    ms.date="04/15/2016"
+    ms.date="08/16/2016"
     ms.author="sethm" />
 
 # Übersicht über Event Hubs
 
 Viele moderne Lösungen sind darauf ausgelegt, adaptive Kundenerfahrungen bereitzustellen oder durch fortlaufendes Feedback und automatisierte Telemetrie-Produkte zu verbessern. Solche Lösungen stehen der Herausforderung gegenüber, auf sichere und zuverlässige Weise sehr große Informationsmengen von vielen Herausgebern gleichzeitig verarbeiten zu müssen. Microsoft Azure Event Hubs ist ein verwalteter Plattformdienst, der eine Grundlage für die Aufnahme umfangreicher Daten in einer Vielzahl von Szenarios bereitstellt. Beispiele für solche Szenarios sind Verhaltensanalysen in mobilen Apps, Verkehrsinformationen von Webfarmen, Ereignisaufzeichnungen in Konsolenspielen oder von Industriemaschinen oder verbundenen Fahrzeugen erfasste Telemetriedaten. In Lösungsarchitekturen übernehmen Event Hubs im Allgemeinen eine Funktion als "Eingangstür" für eine Ereignispipeline, häufig als *Ereigniserfasser* bezeichnet. Ein Ereigniserfasser ist eine Komponente oder ein Dienst zwischen Ereignisherausgeber und Ereignisverarbeitung zum Entkoppeln der Erzeugung eines Ereignisstreams von der Verarbeitung dieser Ereignisse.
 
-![Ereignis-Hubs](./media/event-hubs-overview/IC759856.png)
+![Event Hubs](./media/event-hubs-overview/IC759856.png)
 
-Azure Event Hubs ist ein Dienst zur Ereignisverarbeitung, der riesige Mengen an Ereignis- und Telemetriedaten erfassen kann und gleichzeitig eine niedrige Latenz und hohe Zuverlässigkeit bietet. Dieser Dienst ist in Verbindung mit anderen nachgeschalteten Diensten besonders für Anwendungsinstrumentierung, Benutzeroberflächen oder Workflowverarbeitung sowie für Internet of Things (IoT)-Szenarios geeignet. Event Hubs bieten eine Funktion zur Verarbeitung von Nachrichtenstreams, und obwohl Event Hubs ähnlich wie Warteschlangen und Themen funktionieren, weisen sie Merkmale auf, die von herkömmlichem Enterprisemessaging stark abweichen. Enterprisemessaging-Szenarios erfordern häufig anspruchsvolle Funktionen wie z. B. Sequenzierung, unzustellbare Nachrichten, Transaktionsunterstützung und hohe Zustellungsgarantien, während für die Ereignisannahme vor allem ein hoher Durchsatz und Verarbeitunsflexibilität für Ereignisstreams wichtig sind. Daher unterscheiden sich Event Hubs von Service Bus-Themen darin, dass sie für Szenarios mit hohem Durchsatz und hoher Ereignisverarbeitung optimiert sind. In Event Hubs sind einige der Messagingfunktionen, die für Themen verfügbar sind, nicht direkt implementiert. Wenn Sie diese Funktionen benötigen, sind Themen weiterhin die optimale Wahl.
+Azure Event Hubs ist ein Dienst zur Ereignisverarbeitung, der riesige Mengen an Ereignis- und Telemetriedaten erfassen kann und gleichzeitig eine niedrige Latenz und hohe Zuverlässigkeit bietet. Dieser Dienst ist in Verbindung mit anderen nachgeschalteten Diensten besonders für Anwendungsinstrumentierung, Benutzeroberflächen oder Workflowverarbeitung sowie für Internet of Things (IoT)-Szenarios geeignet. Event Hubs bietet eine Funktion zur Verarbeitung von Nachrichtendatenströmen, und auch wenn ein Event Hub mit Entitäten wie Warteschlangen und Themen vergleichbar ist, unterscheidet er sich in bestimmten Bereichen doch stark von der herkömmlichen Unternehmenskommunikation. Unternehmenskommunikationsszenarien erfordern häufig komplexe Funktionen wie Sequenzierung, unzustellbare Nachrichten, Transaktionsunterstützung und hohe Zustellungsgarantien, während für die Ereignisannahme vor allem ein hoher Durchsatz und Verarbeitungsflexibilität für Ereignisdatenströme gefragt sind. Event Hubs-Funktionen unterscheiden sich von Service Bus-Themen, da sie für Szenarien mit hohem Durchsatz und hoher Ereignisverarbeitung optimiert sind. Infolgedessen werden von Event Hubs einige der Kommunikationsfunktionen, die für Themen verfügbar sind, nicht direkt implementiert. Wenn Sie diese Funktionen benötigen, sind Themen weiterhin die beste Wahl.
 
-Ein Event Hub wird auf Namespaceebene in Service Bus erstellt, ähnlich wie Warteschlangen und Themen. Event Hubs verwendet AMQP und HTTP als primäre API-Schnittstellen. Das folgende Diagramm zeigt die Beziehung zwischen Event Hubs und Service Bus.
+Ein Event Hub wird auf der Event Hubs-Namespaceebene erstellt (ähnlich wie Service Bus-Warteschlangen und -Themen). Event Hubs verwendet AMQP und HTTP als primäre API-Schnittstellen. Das folgende Diagramm zeigt die Beziehung zwischen Event Hubs und Service Bus.
 
-![Ereignis-Hubs](./media/event-hubs-overview/IC741188.png)
+![Event Hubs](./media/event-hubs-overview/IC741188.png)
 
 ## Konzeptionelle Übersicht
 
-Event Hubs bietet Nachrichtenstreaming über ein partitioniertes Consumermuster. Für Warteschlangen und Themen wird ein Modell [konkurrierender Consumer](https://msdn.microsoft.com/library/dn568101.aspx) verwendet, in dem jeder Consumer aus derselben Warteschlange oder Ressource liest. Diese Konkurrenz um Ressourcen sorgt letztlich für Komplexitäts- und Skalierungsgrenzen für Streamverarbeitungsanwendungen. Event Hubs verwendet ein partitioniertes Consumermuster, in dem jeder Consumer nur eine bestimmte Teilmenge oder Patition des Nachrichtenstreams liest. Dieses Muster ermöglicht eine horizontale Skalierung für die Ereignisverarbeitung und bietet andere streambezogene Features, die in Warteschlangen und Themen nicht verfügbar sind.
+Event Hubs bietet Nachrichtenstreaming über ein partitioniertes Consumermuster. Für Warteschlangen und Themen wird ein Modell [konkurrierender Consumer](https://msdn.microsoft.com/library/dn568101.aspx) verwendet, in dem jeder Consumer versucht, aus der gleichen Warteschlange oder Ressource zu lesen. Diese Konkurrenz um Ressourcen sorgt letztlich für Komplexitäts- und Skalierungsgrenzen für Streamverarbeitungsanwendungen. Event Hubs verwendet ein partitioniertes Consumermuster, in dem jeder Consumer nur eine bestimmte Teilmenge oder Patition des Nachrichtenstreams liest. Dieses Muster ermöglicht eine horizontale Skalierung für die Ereignisverarbeitung und bietet andere datenstrombezogene Features, die in Warteschlangen und Themen nicht verfügbar sind.
 
 ### Partitionen
 
 Eine Partition ist eine geordnete Sequenz von Ereignissen, die in einem Event Hub besteht. Neu eingehende Ereignisse werden am Ende dieser Sequenz hinzugefügt. Eine Partition kann als "Commitprotokoll" betrachtet werden
 
-![Ereignis-Hubs](./media/event-hubs-overview/IC759857.png)
+![Event Hubs](./media/event-hubs-overview/IC759857.png)
 
 In Partitionen werden Daten für eine konfigurierte Dauer beibehalten, die auf Event Hub-Ebene festgelegt wird. Diese Einstellung gilt für alle Partitionen im Event Hub. Ereignisse laufen nach Zeit ab. Sie können nicht direkt gelöscht werden. Ein Event Hub enthält mehrere Partitionen. Jede Partition ist unabhängig und enthält eine eigene Datensequenz. Partitionen wachsen daher oft mit unterschiedlicher Geschwindigkeit.
 
-![Ereignis-Hubs](./media/event-hubs-overview/IC759858.png)
+![Event Hubs](./media/event-hubs-overview/IC759858.png)
 
 Die Anzahl der Partitionen wird bei der Erstellung des Event Hubs angegeben und muss zwischen 2 und 32 liegen (der Standardwert ist 4). Partitionen sind ein Mechanismus zur Datenorganisation und beziehen sich eher auf den für die verarbeitenden Anwendungen erforderlichen Grad der Downstreamparallelität als auf den Event Hubs-Durchsatz. Daher steht die ausgewählte Anzahl der Partitionen in einem Event Hub in direktem Zusammenhang mit der erwarteten Anzahl gleichzeitiger Leser. Nach dem Erstellen des Event Hubs kann die Anzahl der Partitionen nicht mehr geändert werden. Sie sollten für diese Zahl die langfristig erwartete Skalierung berücksichtigen. Das Limit von 32 Partitionen kann in Absprache mit dem Service Bus-Team erhöht werden.
 
-Partitionen sind identifizierbar und können direkt adressiert werden, es ist jedoch im Allgemeinen vorzuziehen, Daten nicht an bestimmte Partitionen zu senden. Stattdessen können Sie Konstrukte höherer Ebene verwenden, die in den eingeführt, die den Abschnitten [Ereignisherausgeber](#event-publisher) und [Herausgeberrichtlinie](#capacity-and-security) erläutert werden.
+Partitionen sind identifizierbar und können direkt adressiert werden, es ist jedoch vorzuziehen, Daten nicht an bestimmte Partitionen zu senden. Stattdessen können Sie Konstrukte höherer Ebene verwenden, die in den eingeführt, die den Abschnitten [Ereignisherausgeber](#event-publisher) und [Herausgeberrichtlinie](#capacity-and-security) erläutert werden.
 
 Im Kontext von Event Hubs werden Nachrichten als *Ereignisdaten* bezeichnet. Ereignisdaten enthalten den Hauptteil des Ereignisses, einen benutzerdefinierten Eigenschaftenbehälter und verschiedene Metadaten über das Ereignis wie den Offset in der Partition und die Nummer in der Streamsequenz. Partitionen werden mit einer Sequenz von Ereignisdaten gefüllt.
 
@@ -71,7 +71,7 @@ Die Wahl zwischen AMQP oder HTTPS ist auf das Verwendungsszenario bezogen. AMQP 
 
 Ein Partitionsschlüssel ist ein Wert, der in spezifischen Partitionen eingehenden Daten für die Datenorganisation zugeordnet wird. Der Partitionsschlüssel ist ein vom Absender bereitgestellter Wert, der an einen Event Hub übergeben wird. Er wird über eine statische Hashfunktion verarbeitet, deren Ergebnis die Partitionszuweisung erstellt. Wenn Sie beim Veröffentlichen eines Ereignisses keinen Partitionsschlüssel angeben, wird eine Roundrobinzuordnung verwendet. Bei der Verwendung von Schlüsseln ist dem Ereignisherausgeber nur der Partitionsschlüssel bekannt, nicht die Partition, in der die Ereignisse veröffentlicht werden. Dieses Entkoppeln von Schlüssel und Partition entbindet den Absender davon, zu viel über die Downstreamverarbeitung und Speicherung von Ereignissen wissen zu müssen. Partitionsschlüssel sind wichtig zum Organisieren von Daten für die Downstreamverarbeitung, stehen jedoch grundsätzlich nicht in Zusammenhang mit Partitionen. Eine gerätebezogene oder für einen Benutzer eindeutige Identität stellt einen guten Partitionsschlüssel dar, es können aber auch andere Attribute wie z. B. Geografie zum Gruppieren von verwandten Ereignissen in einer einzelnen Partition verwendet werden. Die folgende Abbildung zeigt, wie Ereignisabsender mithilfe von Partitionsschlüsseln Partitionen fixieren.
 
-![Ereignis-Hubs](./media/event-hubs-overview/IC759859.png)
+![Event Hubs](./media/event-hubs-overview/IC759859.png)
 
 Event Hubs stellt sicher, dass alle Ereignisse, die denselben Partitionsschlüsselwert verwenden, in der richtigen Reihenfolge und an dieselbe Partition übermittelt werden. Wenn Partitionsschlüssel mit Herausgeberrichtlinien (im nächsten Abschnitt beschrieben) verwendet werden, müssen die Identität des Herausgebers und der Wert des Partitionsschlüssels übereinstimmen. Andernfalls tritt ein Fehler auf.
 
@@ -90,13 +90,13 @@ Es folgen Beispiele für die URI-Konvention für Consumergruppen:
 
 Die folgende Abbildung zeigt die Ereignisconsumer in ihren Consumergruppen.
 
-![Ereignis-Hubs](./media/event-hubs-overview/IC759860.png)
+![Event Hubs](./media/event-hubs-overview/IC759860.png)
 
 #### Streamoffsets
 
 Ein Offset ist die Position eines Ereignisses innerhalb einer Partition. Sie können sich einen Offset als einen clientseitigen Zeiger vorstellen. Der Offset ist eine Nummerierung des Ereignisses in Byte. Dies ermöglicht Ereignisconsumern (Lesern), ein Punkt im Ereignisstream anzugeben, ab dem Ereignisse gelesen werden sollen. Sie können den Offset als Zeitstempel oder als Offsetwert angeben. Es liegt in der Verantwortung jedes Consumers, seine eigenen Offsetwerte außerhalb des Event Hubs-Diensts zu speichern.
 
-![Ereignis-Hubs](./media/event-hubs-overview/IC759861.png)
+![Event Hubs](./media/event-hubs-overview/IC759861.png)
 
 Innerhalb einer Partition enthält jedes Ereignis einen Offset. Mit diesem Offset können Consumer die Position in der Ereignissequenz für eine bestimmte Partition anzeigen. Offsets können den Ereignis-Hub als Nummer oder als Timestampwert übergeben werden, wenn ein Leser eine Verbindung herstellt.
 
@@ -116,29 +116,29 @@ Um Ereignisse von einem Event Hub zu verarbeiten, muss ein Consumer eine Verbind
 
 Nachdem eine AMQP 1.0-Sitzung und ein Link für eine bestimmte Partition geöffnet wurde, werden Ereignisse vom Event Hubs-Dienst an den AMQP 1.0-Client übergeben. Dieser Mechanismus ermöglicht einen höheren Durchsatz und eine niedrigere Latenz als Pull-basierte Mechanismen wie z. B. HTTP GET. Wenn Ereignisse an den Client gesendet werden, enthält jede Ereignisdateninstanz wichtige Metadaten wie z. B. den Offset und die Sequenznummer, die zur Vereinfachung des Setzens von Prüfpunkten in der Ereignissequenz verwendet werden.
 
-![Ereignis-Hubs](./media/event-hubs-overview/IC759862.png)
+![Event Hubs](./media/event-hubs-overview/IC759862.png)
 
-Es ist die Aufgabe des Benutzers, diesen Offset so zu verwalten, dass der Fortschritt bei der Verarbeitung des Datenstroms optimal verwaltet werden kann.
+Es ist Ihre Aufgabe, diesen Offset so zu verwalten, dass der Fortschritt bei der Verarbeitung des Datenstroms optimal verwaltet werden kann.
 
 ## Kapazität und Sicherheit
 
-Event Hubs ist eine hochgradig skalierbare parallele Architektur für Streameingänge. Daher sind verschiedene wichtige Aspekte beim Festlegen der Größe und Skalierung einer Lösung für Event Hubs zu berücksichtigen. Das erste dieser Kapazitätsmaße sind die *Durchsatzeinheiten*, die im folgenden Abschnitt beschrieben werden.
+Event Hubs ist eine hochgradig skalierbare parallele Architektur für Streameingänge. Daher sind verschiedene wichtige Aspekte beim Festlegen der Größe und Skalierung einer Lösung für Event Hubs zu berücksichtigen. Das erste dieser Kapazitätssteuerelemente sind die *Durchsatzeinheiten*, die im folgenden Abschnitt beschrieben werden.
 
 ### Durchsatzeinheiten
 
 Die Durchsatzkapazität von Event Hubs wird durch Durchsatzeinheiten gesteuert. Durchsatzeinheiten werden vorab als Kapazitätseinheiten erworben. Eine einzelne Durchsatzeinheit umfasst Folgendes:
 
-- Eingang: Bis zu 1 MB pro Sekunde oder 1000 Ereignisse pro Sekunde.
+- Eingang: Bis zu 1 MB pro Sekunde oder 1000 Ereignisse pro Sekunde.
 
-- Ausgang: Bis 2 MB pro Sekunde.
+- Ausgang: Bis zu 2 MB pro Sekunde.
 
 Der Eingang wird auf die Kapazität beschränkt, die der erworbenen Anzahl von Durchsatzeinheiten entspricht. Das Senden von Daten über diese Menge hinaus führt zur Ausnahme "Datenträgerkontingent überschritten". Diese Menge ist entweder 1 MB pro Sekunde oder 1000 Ereignisse pro Sekunde, je nachdem, was zuerst eintritt. Am Ausgang erfolgt keine Beschränkung, jedoch ist dieser auf Datenübertragungsmenge anhand der erworbenen Durchsatzeinheiten beschränkt: 2 MB pro Sekunde pro Durchsatzeinheit. Wenn Sie Ausnahmen für die Veröffentlichungsrate erhalten oder einen größeren Ausgang erwarten, überprüfen Sie, wie viele Durchsatzeinheiten Sie für den Namespace erworben haben, in dem der Event Hub erstellt wurde. Um weitere Durchsatzeinheiten zu erhalten, können Sie die Einstellung auf der Seite **Namespaces** auf der Registerkarte **Skalieren** im [klassischen Azure-Portal][] anpassen. Sie können diese Einstellung auch mit den Azure-APIs ändern.
 
-Während Partitionen ein Datenorganisationskonzept sind, sind Durchsatzeinheiten ausschließlich ein Kapazitätskonzept. Durchsatzeinheiten werden auf Stundenbasis abgerechnet und im Voraus erworben. Nach dem Erwerb werden Durchsatzeinheiten für mit einem Minimum von einer Stunde in Rechnung gestellt. Bis zu 20 Durchsatzeinheiten können für einen Service Bus-Namespace erworben werden, und für ein Azure-Konto besteht ebenfalls eine Grenze von 20 Durchsatzeinheiten. Diese Durchsatzeinheiten werden für alle Event Hubs in einem bestimmten Namespace gemeinsam genutzt.
+Während Partitionen ein Datenorganisationskonzept sind, sind Durchsatzeinheiten ausschließlich ein Kapazitätskonzept. Durchsatzeinheiten werden auf Stundenbasis abgerechnet und im Voraus erworben. Nach dem Erwerb werden Durchsatzeinheiten für mit einem Minimum von einer Stunde in Rechnung gestellt. Für einen Event Hubs-Namespace können bis zu 20 Durchsatzeinheiten erworben werden, und für ein Azure-Konto besteht ebenfalls eine Begrenzung auf 20 Durchsatzeinheiten. Diese Durchsatzeinheiten werden für alle Event Hubs in einem bestimmten Namespace gemeinsam genutzt.
 
-Durchsatzeinheiten werden nach bestmöglicher Leistung bereitgestellt und stehen nicht immer für einen sofortigen Erwerb zur Verfügung. Wenn Sie eine bestimmte Kapazität benötigen, empfiehlt es sich, diese Durchsatzeinheiten im Voraus zu erwerben. Wenn Sie mehr als 20 Durchsatzeinheiten benötigen, können Sie sich an den Service Bus-Support wenden, um weitere Einheiten zu erwerben. Bis zu den ersten 100 Durchsatzeinheiten werden diese in Blöcken von je 20 erworben. Darüber hinaus können Sie auch Blöcke von je 100 Durchsatzeinheiten erwerben.
+Durchsatzeinheiten werden nach bestmöglicher Leistung bereitgestellt und stehen nicht immer für einen sofortigen Erwerb zur Verfügung. Wenn Sie eine bestimmte Kapazität benötigen, empfiehlt es sich, diese Durchsatzeinheiten im Voraus zu erwerben. Wenn Sie mehr als 20 Durchsatzeinheiten benötigen, können Sie sich an den Azure-Support wenden, um weitere Einheiten zu erwerben. Bis zu den ersten 100 Durchsatzeinheiten werden diese in Blöcken von je 20 angeboten. Darüber hinaus können Sie auch Blöcke von je 100 Durchsatzeinheiten erwerben.
 
-Es wird empfohlen, Durchsatzeinheiten und Partitionen sorgfältig miteinander abzustimmen, um eine optimale Skalierbarkeit mit Event Hubs zu erreichen. Eine einzelne Partition weist über eine maximale Skalierung von einer Durchsatzeinheit auf. Die Anzahl der Durchsatzeinheiten sollte kleiner oder gleich der Anzahl der Partitionen in einem Event Hub sein.
+Es wird empfohlen, Durchsatzeinheiten und Partitionen sorgfältig aufeinander abzustimmen, um eine optimale Skalierbarkeit mit Event Hubs zu erreichen. Eine einzelne Partition weist über eine maximale Skalierung von einer Durchsatzeinheit auf. Die Anzahl der Durchsatzeinheiten sollte kleiner oder gleich der Anzahl der Partitionen in einem Event Hub sein.
 
 Preisinformationen finden Sie unter [Event Hubs Preise](https://azure.microsoft.com/pricing/details/event-hubs/).
 
@@ -148,7 +148,7 @@ Event Hubs ermöglicht eine abgestufte Kontrolle über Ereignisherausgeber durch
 
 	//<my namespace>.servicebus.windows.net/<event hub name>/publishers/<my publisher name>
 
-Sie müssen Herausgebernamen nicht im Voraus erstellen, jedoch müssen diese mit dem SAS-Token übereinstimmen, das beim Veröffentlichen eines Ereignisses verwendet wird, um die Identitäten unabhängiger Herausgeber sicherzustellen. Weitere Informationen zu SAS finden Sie unter [SAS-Authentifizierung (Shared Access Signature) mit Service Bus](../service-bus/service-bus-shared-access-signature-authentication.md). Bei Verwendung von Herausgeberrichtlinien wird der Wert **PartitionKey** auf den Herausgebernamen festgelegt. Für eine ordnungsgemäße Funktion müssen diese Werte übereinstimmen.
+Sie müssen Herausgebernamen nicht im Voraus erstellen, jedoch müssen diese mit dem SAS-Token übereinstimmen, das beim Veröffentlichen eines Ereignisses verwendet wird, um die Identitäten unabhängiger Herausgeber sicherzustellen. Weitere Informationen zu SAS finden Sie unter [SAS-Authentifizierung (Shared Access Signature) mit Service Bus](../service-bus/service-bus-shared-access-signature-authentication.md). Bei Verwendung von Herausgeberrichtlinien wird der Wert **PartitionKey** auf den Herausgebernamen festgelegt. Diese Werte müssen übereinstimmen, damit alles ordnungsgemäß funktioniert.
 
 ## Zusammenfassung
 
@@ -168,4 +168,4 @@ Nun, da Sie sich mit Event Hubs-Konzepten vertraut gemacht haben, können Sie mi
 [Messaginglösung mit Warteschlange]: ../service-bus/service-bus-dotnet-multi-tier-app-using-service-bus-queues.md
  
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0817_2016-->

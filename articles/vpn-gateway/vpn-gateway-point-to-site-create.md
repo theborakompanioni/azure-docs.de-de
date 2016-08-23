@@ -1,6 +1,6 @@
 <properties
    pageTitle="Konfigurieren einer Punkt-zu-Standort-VPN-Verbindung mit einem Azure Virtual Network mit dem klassischen Portal| Microsoft Azure"
-   description="Stellen Sie eine sichere Verbindung mit Ihrem Azure Virtual Network durch Erstellen einer Punkt-zu-Standort-VPN-Verbindung her. Anweisungen für VNets, die mit dem Dienstverwaltungs-Bereitstellungsmodell (klassisch) erstellt wurden."
+   description="Stellen Sie eine sichere Verbindung mit Ihrem Azure Virtual Network durch Erstellen einer Punkt-zu-Standort-VPN-Verbindung her."
    services="vpn-gateway"
    documentationCenter="na"
    authors="cherylmc"
@@ -14,7 +14,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="07/18/2016"
+   ms.date="08/16/2016"
    ms.author="cherylmc"/>
 
 # Konfigurieren einer Punkt-zu-Standort-VPN-Verbindung mit einem VNet mit dem klassischen Portal
@@ -23,16 +23,15 @@
 - [PowerShell – Resource Manager](vpn-gateway-howto-point-to-site-rm-ps.md)
 - [Portal – klassisch](vpn-gateway-point-to-site-create.md)
 
-Mit einer Punkt-zu-Standort-Konfiguration können Sie von einem Clientcomputer eine einzelne sichere Verbindung mit Ihrem virtuellen Netzwerk herstellen. Eine VPN-Verbindung wird hergestellt, indem Sie die Verbindung vom Clientcomputer aus starten. Eine Punkt-zu-Standort-Verbindung ist eine hervorragende Lösung, wenn Sie von einem Remotestandort, z. B. von zu Hause oder in einer Konferenz, eine Verbindung mit Ihrem VNet herstellen möchten. Dieses Methode eignet sich auch, wenn Sie nur wenige Clients besitzen, die mit einem virtuellen Netzwerk verbunden werden müssen.
+Mit einer P2S-Konfiguration (Punkt-zu-Standort) können Sie von einem einzelnen Clientcomputer eine sichere Verbindung mit einem virtuellen Netzwerk herstellen. Eine P2S-Verbindung ist nützlich, wenn Sie von einem Remotestandort, z.B. von zu Hause oder in einer Konferenz, eine Verbindung mit Ihrem VNet herstellen möchten. Diese Methode eignet sich auch, wenn Sie nur wenige Clients besitzen, die mit einem virtuellen Netzwerk verbunden werden müssen.
 
-Damit Punkt-zu-Standort-Verbindungen funktionieren, ist kein VPN-Gerät und keine öffentliche IP-Adresse erforderlich. Weitere Informationen zu Punkt-zu-Standort-Verbindungen finden Sie unter [Häufig gestellte Fragen zum VPN Gateway](vpn-gateway-vpn-faq.md#point-to-site-connections) und [Informationen zu standortübergreifenden Verbindungen](vpn-gateway-cross-premises-options.md).
+Damit Punkt-zu-Standort-Verbindungen funktionieren, ist kein VPN-Gerät und keine öffentliche IP-Adresse erforderlich. Eine VPN-Verbindung wird hergestellt, indem Sie die Verbindung vom Clientcomputer aus starten. Weitere Informationen zu Punkt-zu-Standort-Verbindungen finden Sie unter [Häufig gestellte Fragen zum VPN Gateway](vpn-gateway-vpn-faq.md#point-to-site-connections) und [Planung und Entwurf](vpn-gateway-plan-design.md).
 
-Dieser Artikel gilt für Punkt-zu-Standort-VPN Gateway-Verbindungen mit einem virtuellen Netzwerk, das mit dem **klassischen Bereitstellungsmodell** (Dienstverwaltung) und dem klassischen Portal erstellt wurde. Wenn die Schritte für das Azure-Portal vorhanden sind, richten wir einen Link zu diesem Artikel von dieser Seite ein.
+Dieser Artikel gilt für Punkt-zu-Standort-Verbindungen mit einem virtuellen Netzwerk, die mit dem klassischen Bereitstellungsmodell erstellt werden. Für die Schritte in diesem Artikel wird das klassische Portal verwendet. Derzeit ist es nicht möglich, diese Konfiguration über das Azure-Portal zu erstellen.
 
 **Bereitstellungsmodelle und Tools für Punkt-zu-Standort-Verbindungen**
 
 [AZURE.INCLUDE [vpn-gateway-table-point-to-site](../../includes/vpn-gateway-table-point-to-site-include.md)]
-
 
 **Informationen zu Azure-Bereitstellungsmodellen**
 
@@ -40,35 +39,31 @@ Dieser Artikel gilt für Punkt-zu-Standort-VPN Gateway-Verbindungen mit einem vi
 
 ![Punkt-zu-Standort-Diagramm](./media/vpn-gateway-point-to-site-create/point2site.png "Point-to-Site")
 
-
-
 ## Informationen zum Erstellen einer Punkt-zu-Standort-Verbindung
  
-Die folgenden Abschnitte führen Sie schrittweise durch den Erstellungsprozess einer sicheren Punkt-zu-Standort-Verbindung mit einem virtuellen Netzwerk. Auch wenn zum Konfigurieren einer Punkt-zu-Standort-Verbindung mehrere Schritte erforderlich sind, ist es eine hervorragende Möglichkeit, eine sichere Verbindung von Ihrem Computer mit dem virtuellen Netzwerk herzustellen, ohne ein VPN-Gerät kaufen und konfigurieren zu müssen.
+Im Folgenden werden die Schritte zum Erstellen einer sicheren Punkt-zu-Standort-Verbindung mit einem virtuellen Netzwerk beschrieben.
 
-Die Konfiguration einer Punkt-zu-Standort-Verbindung ist in vier Abschnitte unterteilt. Da die Reihenfolge wichtig ist, in der Sie diese Komponenten konfigurieren, dürfen Sie keine Schritte überspringen oder vorgreifen.
+Die Konfiguration einer Punkt-zu-Standort-Verbindung ist in vier Abschnitte unterteilt. Dabei ist die Reihenfolge wichtig, in der Sie die einzelnen Abschnitte konfigurieren. Überspringen Sie keine Schritte, und halten Sie die Reihenfolge ein.
 
+- **Abschnitt 1**: Erstellen eines virtuellen Netzwerks und eines VPN-Gateways
+- **Abschnitt 2**: Erstellen und Hochladen der Zertifikate für die Authentifizierung
+- **Abschnitt 3**: Exportieren und Installieren der Clientzertifikate
+- **Abschnitt 4**: Konfigurieren des VPN-Clients
 
-- In **Abschnitt 1** werden Sie durch die Erstellung eines virtuellen Netzwerks und VPN Gateways geführt.
-- In **Abschnitt 2** erhalten Sie Unterstützung beim Erstellen und Hochladen der Zertifikate für die Authentifizierung.
-- In **Abschnitt 3** werden die Schritte zum Exportieren und Installieren Ihrer Clientzertifikate beschrieben.
-- In **Abschnitt 4** werden Sie durch die Schritte zum Konfigurieren Ihres VPN-Clients geführt.
-
-## Abschnitt 1: Erstellen des virtuellen Netzwerks und eines VPN-Gateways
-
+## <a name="vnetvpn"></a>Abschnitt 1: Erstellen eines virtuellen Netzwerks und eines VPN-Gateways
 
 ### Teil 1: Erstellen eines virtuellen Netzwerks
 
-1. Melden Sie sich beim [klassischen Azure-Portal](https://manage.windowsazure.com/) an. Beachten Sie, dass bei diesen Schritten das klassische Portal verwendet wird, nicht das Azure-Portal.
+1. Melden Sie sich beim [klassischen Azure-Portal](https://manage.windowsazure.com/) an. Bei diesen Schritten wird das klassische Portal und nicht das Azure-Portal verwendet. Derzeit ist es nicht möglich, eine P2S-Verbindung mit dem Azure-Portal zu erstellen.
 
 2. Klicken Sie unten links auf dem Bildschirm auf **Neu**. Klicken Sie im Navigationsbereich auf **Netzwerkdienste** und dann auf **Virtuelles Netzwerk**. Klicken Sie auf **Custom Create**, um den Konfigurationsassistenten zu starten.
 
 3. Geben Sie auf dem Bildschirm **Details des virtuellen Netzwerks** die folgenden Informationen ein, und klicken Sie dann auf den Vorwärtspfeil unten rechts.
-	- **Name**: Name des virtuellen Netzwerks. Beispiel: „VNetEast“. Das ist der Name, auf den Sie beim Bereitstellen von virtuellen Computern und PaaS-Instanzen für dieses VNet verweisen müssen.
+	- **Name**: Name des virtuellen Netzwerks. Beispiel: „VNet1“. Dies ist der Name, den Sie beim Bereitstellen von VMs für dieses VNet angeben.
 	- **Speicherort**: Der Speicherort steht in direkter Beziehung zu dem physischen Standort (Region), an dem sich Ihre Ressourcen (VMs) befinden soll. Wenn Sie z. B. möchten, dass sich die virtuellen Computer, die Sie für Ihr virtuelles Netzwerk bereitstellen, physisch in "USA West" befinden, wählen Sie diesen Speicherort aus. Sie können die Ihrem virtuellen Netzwerk zugeordnete Region nach dem Erstellen nicht mehr ändern.
 
 4. Geben Sie auf der Seite **DNS Server und VPN-Konnektivität** die folgenden Informationen ein, und klicken Sie dann in der unteren rechten Ecke auf den Weiter-Pfeil.
-	- **DNS-Server**: Geben Sie den Namen und die IP-Adresse des DNS-Servers ein, oder wählen Sie einen zuvor registrierten DNS-Server im Kontextmenü aus. Durch diese Einstellung wird kein DNS-Server erstellt. Sie bietet die Möglichkeit, die DNS-Server anzugeben, die Sie zur Namensauflösung für dieses virtuelle Netzwerk verwenden möchten. Wenn Sie den Standarddienst für die Namensauflösung in Azure verwenden möchten, lassen Sie diesen Abschnitt leer.
+	- **DNS-Server**: Geben Sie den Namen und die IP-Adresse des DNS-Servers ein, oder wählen Sie einen zuvor registrierten DNS-Server im Kontextmenü aus. Mit dieser Einstellung wird kein DNS-Server erstellt. Sie bietet die Möglichkeit, den DNS-Server anzugeben, den Sie zur Namensauflösung für dieses virtuelle Netzwerk verwenden möchten. Wenn Sie den Standarddienst für die Namensauflösung in Azure verwenden möchten, lassen Sie diesen Abschnitt leer.
 	- **Standort-zu-Standort-VPNs konfigurieren**: Aktivieren Sie dieses Kontrollkästchen.
 
 5. Geben Sie auf der Seite **Punkt-zu-Standort-Konnektivität** den IP-Adressbereich an, aus dem die VPN-Clients eine IP-Adresse erhalten, wenn eine Verbindung besteht. Es gibt einige Regeln bezüglich der Adressbereiche, die Sie angeben können. Sie müssen unbedingt sicherstellen, dass der angegebene Bereich keine anderen Bereiche überlappt, die sich in Ihrem lokalen Netzwerk befinden.
@@ -77,10 +72,10 @@ Die Konfiguration einer Punkt-zu-Standort-Verbindung ist in vier Abschnitte unte
  - **Adressraum**: Umfasst Start-IP und CIDR (Adressenanzahl).
  - **Adressraum hinzufügen**: Fügen Sie einen Adressraum nur hinzu, wenn es für den Netzwerkentwurf erforderlich ist.
 
-7. Geben Sie auf der Seite **Adressräume des virtuellen Netzwerks** die Adressräume an, die für das virtuelle Netzwerk verwendet werden sollen. Dies sind die dynamischen IP-Adressen (DIPS), die den virtuellen Computern und anderen Rolleninstanzen zugewiesen werden, die Sie für dieses virtuelle Netzwerk bereitstellen. Es ist besonders wichtig, einen Bereich auszuwählen, der sich nicht mit den anderen Bereichen überschneidet, die für Ihr lokales Netzwerk verwendet werden. Sie müssen sich mit Ihrem Netzwerkadministrator abstimmen, der ggf. einen Bereich von IP-Adressen aus dem Adressraum Ihres lokalen Netzwerks reservieren muss, den Sie für Ihr virtuelles Netzwerk verwenden können.
+7. Geben Sie auf der Seite **Adressräume des virtuellen Netzwerks** die Adressräume an, die für das virtuelle Netzwerk verwendet werden sollen. Dies sind die dynamischen IP-Adressen (DIPS), die den virtuellen Computern und anderen Rolleninstanzen zugewiesen werden, die Sie für dieses virtuelle Netzwerk bereitstellen.<br><br>Es ist besonders wichtig, einen Bereich auszuwählen, der sich nicht mit den anderen Bereichen für Ihr lokales Netzwerk überschneidet. Sie müssen sich mit Ihrem Netzwerkadministrator abstimmen, der ggf. einen Bereich von IP-Adressen aus dem Adressraum Ihres lokalen Netzwerks reservieren muss, den Sie für Ihr virtuelles Netzwerk verwenden können.
 
 8. Geben Sie die folgenden Informationen ein, und klicken Sie dann auf das Häkchen, um das virtuelle Netzwerk zu erstellen.
- - **Adressraum**: Fügen Sie den internen IP-Adressbereich hinzu, den Sie für dieses virtuelle Netzwerk verwenden möchten, einschließlich Start-IP und Anzahl. Es ist wichtig, einen Bereich auszuwählen, der sich nicht mit den anderen Bereichen überschneidet, die für Ihr lokales Netzwerk verwendet werden. Sie müssen sich mit Ihrem Netzwerkadministrator abstimmen, der ggf. einen Bereich von IP-Adressen aus dem Adressraum Ihres lokalen Netzwerks reservieren muss, den Sie für Ihr virtuelles Netzwerk verwenden können.
+ - **Adressraum**: Fügen Sie den internen IP-Adressbereich hinzu, den Sie für dieses virtuelle Netzwerk verwenden möchten, einschließlich Start-IP und Anzahl. Es ist wichtig, einen Bereich auszuwählen, der sich nicht mit den anderen Bereichen überschneidet, die für Ihr lokales Netzwerk verwendet werden.
  - **Subnetz hinzufügen**: Zusätzliche Subnetze sind nicht erforderlich, aber Sie können ein getrenntes Subnetz für virtuelle Computer erstellen, die über statische DIPs verfügen sollen. Vielleicht möchten Sie jedoch auch Ihre virtuellen Computer in einem Subnetz zusammenfassen, das von anderen Rolleninstanzen getrennt ist.
  - **Gatewaysubnetz hinzufügen**: Das Gatewaysubnetz ist für ein Punkt-zu-Standort-VPN erforderlich. Klicken Sie auf diese Option, um das Gatewaysubnetz hinzuzufügen. Das Gatewaysubnetz wird nur für das Gateway des virtuellen Netzwerks verwendet.
 
@@ -90,95 +85,69 @@ Die Konfiguration einer Punkt-zu-Standort-Verbindung ist in vier Abschnitte unte
 
 Der Gatewaytyp muss als dynamisch konfiguriert werden. Gateways mit statischem Routing sind mit diesem Feature nicht einsetzbar.
 
-1. Klicken Sie im klassischen Azure-Portal auf der Seite **Netzwerke** auf das virtuelle Netzwerk, das Sie gerade erstellt haben, und navigieren Sie zur Seite **Dashboard**.
+1. Klicken Sie im klassischen Azure-Portal auf der Seite **Netzwerke** auf das virtuelle Netzwerk, das Sie erstellt haben, und navigieren Sie zur Seite **Dashboard**.
 
-2. Klicken Sie unten auf der Seite **Dashboard** auf **Gateway erstellen**. Es wird eine Meldung mit der Frage angezeigt: **Möchten Sie ein Gateway für das virtuelle Netzwerk "Yournetwork" erstellen**. Klicken Sie auf **Ja**, um mit der Erstellung des Gateways zu beginnen. Es kann bis zu 15 Minuten dauern, bis das Gateway erstellt worden ist.
+2. Klicken Sie unten auf der Seite **Dashboard** auf **Gateway erstellen**. Es wird eine Meldung mit der folgenden Frage angezeigt: **Möchten Sie ein Gateway für das virtuelle Netzwerk „VNet1“ erstellen?**. Klicken Sie auf **Ja**, um mit der Erstellung des Gateways zu beginnen. Es kann bis zu 15 Minuten dauern, bis das Gateway erstellt worden ist.
 
-## Abschnitt 2: Generieren und Hochladen von Zertifikaten
+## <a name="generate"></a>Abschnitt 2: Generieren und Hochladen von Zertifikaten
 
-Zertifikate werden zur Authentifizierung von VPN-Clients für Punkt-zu-Standort-VPNs verwendet. Sie können von einer Unternehmenszertifikatlösung erstellte Zertifikate sowie selbstsignierte Zertifikate verwenden. Sie können bis zu 20 Stammzertifikate in Azure hochladen.
+Zertifikate werden zur Authentifizierung von VPN-Clients für Punkt-zu-Standort-VPNs verwendet. Sie können ein Stammzertifikat verwenden, das mit einer Unternehmenszertifikatlösung generiert wurde, oder Sie können ein selbstsigniertes Zertifikat verwenden. Sie können bis zu 20 Stammzertifikate in Azure hochladen. Nach dem Hochladen der CER-Datei kann Azure die darin enthaltenen Informationen verwenden, um Clients zu authentifizieren, für die ein Clientzertifikat installiert ist. Das Clientzertifikat muss mit demselben Zertifikat generiert werden, für das die CER-Datei steht.
 
-Wenn Sie ein selbstsigniertes Zertifikat verwenden möchten, beachten Sie Erläuterung der folgenden Schritte des Prozesses. Wenn Sie beabsichtigen, eine Unternehmenszertifikatlösung zu verwenden, weichen die Schritte in den einzelnen Abschnitten ab. Sie müssen aber trotzdem die folgenden Schritte ausführen:
+In diesem Abschnitt führen Sie Folgendes aus:
 
-### Teil 1: Identifizieren oder Generieren eines Stammzertifikats
+- Beschaffen der CER-Datei für ein Stammzertifikat: Dies kann entweder ein selbstsigniertes Zertifikat sein, oder Sie können Ihr Unternehmenszertifikatsystem verwenden.
+- Hochladen der CER-Datei nach Azure
+- Generieren von Clientzertifikaten
 
-Wenn Sie keine Unternehmenszertifikatlösung verwenden, müssen Sie ein selbstsigniertes Stammzertifikat generieren. Die Schritte in diesem Abschnitt wurden für Windows 8 geschrieben. Schritte für Windows 10 finden Sie unter [Arbeiten mit selbstsignierten Stammzertifikaten für Punkt-zu-Standort-Verbindungen](vpn-gateway-certificates-point-to-site.md).
+### <a name="root"></a>Teil 1: Beschaffen der CER-Datei für ein Stammzertifikat
 
-Eine Möglichkeit zum Erstellen eines x. 509-Zertifikats ist die Verwendung des Certificate Creation Tool (makecert.exe). Wenn Sie „makecert“ verwenden möchten, laden Sie das kostenlose Produkt [Microsoft Visual Studio Express](https://www.visualstudio.com/products/visual-studio-express-vs.aspx) herunter, und installieren Sie es.
+Wenn Sie ein Unternehmenszertifikatsystem verwenden, müssen Sie die CER-Datei für das Stammzertifikat beschaffen, das Sie verwenden möchten. In [Teil 3](#createclientcert) generieren Sie die Clientzertifikate aus dem Stammzertifikat.
 
-1. Navigieren Sie zum Ordner "Visual Studio-Tools", und starten Sie die Eingabeaufforderung als Administrator.
+Wenn Sie keine Unternehmenszertifikatlösung verwenden, müssen Sie ein selbstsigniertes Stammzertifikat generieren. Schritte für Windows 10 finden Sie unter [Arbeiten mit selbstsignierten Stammzertifikaten für Punkt-zu-Standort-Verbindungen](vpn-gateway-certificates-point-to-site.md). Im Artikel werden die Schritte zur Verwendung von makecert zum Generieren eines selbstsignierten Zertifikats und anschließenden Exportieren der CER-Datei beschrieben.
 
-2. Mit dem Befehl im folgenden Beispiel wird ein Stammzertifikat im persönlichen Zertifikatspeicher auf Ihrem Computer erstellt und installiert. Zudem wird eine entsprechende *CER*-Datei erstellt, die Sie später in das klassische Azure-Portal hochladen.
+### <a name="upload"></a>Teil 2: Hochladen der CER-Stammzertifikatdatei in das klassische Azure-Portal
 
-3. Wechseln Sie zu dem Verzeichnis, in dem die CER-Datei generiert werden soll, und führen Sie den folgenden Befehl aus, wobei *RootCertificateName* für den Namen steht, den Sie für das Zertifikat verwenden möchten. Wenn Sie das folgende Beispiel ohne Änderungen ausführen, erhalten Sie ein Stammzertifikat und die zugehörige Datei *RootCertificateName.cer*.
+Fügen Sie Azure ein vertrauenswürdiges Zertifikat hinzu. Wenn Sie Azure eine Base64-codierte x.509-Datei (CER-Datei) hinzufügen, weisen Sie Azure dadurch an, dem Stammzertifikat zu vertrauen, das die Datei darstellt.
 
->[AZURE.NOTE] Da Sie ein Stammzertifikat erstellt haben, aus dem Clientzertifikate generiert werden, ist es empfehlenswert, dass Sie dieses Zertifikat zusammen mit dessen privaten Schlüssel exportieren und an einem sicheren Ort speichern, von dem es wiederhergestellt werden kann.
+1. Klicken Sie im klassischen Azure-Portal auf der Seite **Zertifikate** für Ihr virtuelles Netzwerk auf **Ein Stammzertifikat hochladen**.
 
-    makecert -sky exchange -r -n "CN=RootCertificateName" -pe -a sha1 -len 2048 -ss My "RootCertificateName.cer"
+2. Suchen Sie auf der Seite **Zertifikat hochladen** nach der CER-Datei für das Stammzertifikat, und klicken Sie dann auf das Häkchen.
 
-### Teil 2: Hochladen der Stammzertifikat-CER-Datei in das klassische Azure-Portal
+### <a name="createclientcert"></a>Teil 3: Generieren eines Clientzertifikats
 
-Sie müssen die entsprechende CER-Datei für jedes Stammzertifikat in Azure hochladen. Sie können bis zu 20 Zertifikate hochladen.
+Generieren Sie als Nächstes die Clientzertifikate. Sie können entweder ein eindeutiges Zertifikat für jeden Client generieren, mit dem eine Verbindung hergestellt wird, oder Sie können dasselbe Zertifikat für mehrere Clients verwenden. Der Vorteil beim Generieren von eindeutigen Clientzertifikaten besteht darin, dass Sie bei Bedarf ein einzelnes Zertifikat widerrufen können. Falls überall dasselbe Clientzertifikat verwendet wird und Sie das Zertifikat für einen Client widerrufen müssen, müssen Sie sonst neue Zertifikate für alle Clients generieren und installieren, die das Zertifikat für die Authentifizierung verwenden.
 
-1. Wenn Sie zuvor ein Stammzertifikat generiert haben, wurde auch eine *CER*-Datei erstellt. Sie laden die Datei jetzt in das klassische Azure-Portal hoch. Beachten Sie, dass die CER-Datei nicht den privaten Schlüssel des Stammzertifikats enthält. Sie können bis zu 20 Stammzertifikate hochladen.
+- Generieren Sie bei Verwendung einer Unternehmenszertifikatlösung ein Clientzertifikat mit dem gängigen Namenswertformat „name@ihredomäne.com“, und verwenden Sie nicht das NetBIOS-Format „DOMÄNE\\Benutzername“.
 
-2. Klicken Sie im klassischen Azure-Portal auf der Seite **Zertifikate** für Ihr virtuelles Netzwerk auf **Ein Stammzertifikat hochladen**.
+- Wenn Sie ein selbstsigniertes Zertifikat verwenden, helfen Ihnen die Informationen zum Generieren eines Clientzertifikats unter [Arbeiten mit selbstsignierten Stammzertifikaten für Punkt-zu-Standort-Konfigurationen](vpn-gateway-certificates-point-to-site.md) weiter.
 
-3. Suchen Sie auf der Seite **Zertifikat hochladen** nach der CER-Datei für das Stammzertifikat, und klicken Sie dann auf das Häkchen.
+## <a name="installclientcert"></a>Abschnitt 3: Exportieren und Installieren des Clientzertifikats
 
-### Teil 3: Generieren eines Clientzertifikats
+Installieren Sie auf jedem Computer, den Sie mit dem virtuellen Netzwerk verbinden möchten, ein Clientzertifikat. Ein Clientzertifikat wird für die Authentifizierung benötigt. Sie können die Installation des Clientzertifikats automatisieren oder manuell durchführen. In den folgenden Schritten wird das manuelle Exportieren und Installieren des Clientzertifikats beschrieben.
 
-Die folgenden Schritte gelten für das Generieren eines Clientzertifikats aus dem selbstsignierten Stammzertifikat. Die Schritte in diesem Abschnitt wurden für Windows 8 geschrieben. Schritte für Windows 10 finden Sie unter [Arbeiten mit selbstsignierten Stammzertifikaten für Punkt-zu-Standort-Verbindungen](vpn-gateway-certificates-point-to-site.md). Wenn Sie eine Unternehmenszertifikatlösung verwenden, befolgen Sie die Richtlinien für die Lösung, die Sie verwenden.
-
-1. Öffnen Sie auf dem gleichen Computer, den Sie zum Erstellen des selbstsigniertes Stammzertifikats verwendet haben, ein Visual Studio-Eingabeaufforderungsfenster als Administrator.
-
-2. Wechseln Sie zu dem Speicherort, an dem die Clientzertifikatdatei gespeichert werden soll. *RootCertificateName* steht für das selbstsignierte Stammzertifikat, das Sie generiert haben. Wenn Sie das folgende Beispiel ausführen (wobei Sie "RootCertificateName" in den Namen Ihres Stammzertifikats ändern), erhalten Sie ein Clientzertifikat mit dem Namen "ClientCertificateName" in Ihrem persönlichen Zertifikatspeicher.
-
-3. Geben Sie den folgenden Befehl ein:
-
-    	makecert.exe -n "CN=ClientCertificateName" -pe -sky exchange -m 96 -ss My -in "RootCertificateName" -is my -a sha1
-
-4. Alle Zertifikate werden im persönlichen Zertifikatspeicher auf dem Computer gespeichert. Aktivieren Sie *Certmgr* zum Überprüfen. Sie können mit diesem Verfahren bei Bedarf beliebig viele Clientzertifikate generieren. Es wird empfohlen, dass Sie für alle Computer, die Sie mit dem virtuellen Netzwerk verbinden möchten, jeweils eindeutige Clientzertifikate erstellen.
-
-## Abschnitt 3: Exportieren und Installieren des Clientzertifikats
-
-Sie müssen auf jedem Computer, den Sie mit dem virtuellen Netzwerk verbinden möchten, ein Clientzertifikat installieren. Die folgenden Schritte führen Sie durch die manuelle Installation des Clientzertifikats.
-
-1. Auf jedem Computer, den Sie mit dem virtuellen Netzwerk verbinden möchten,muss ein Clientzertifikat installiert werden. Dies bedeutet, dass Sie wahrscheinlich mehrere Clientzertifikate erstellen und diese dann exportieren müssen. Verwenden Sie zum Exportieren der Clientzertifikate *certmgr.msc*. Klicken Sie mit der rechten Maustaste auf das Clientzertifikat, das Sie exportieren möchten, klicken Sie auf **Alle Aufgaben** und anschließend auf **Exportieren**.
-2. Exportieren Sie das *Clientzertifikat* mit dem privaten Schlüssel. Dies ist eine *PFX*-Datei. Vergessen Sie nicht, sich das Kennwort (Schlüssel) zu notieren oder zu merken, das Sie für dieses Zertifikat festgelegt haben.
+1. Sie können *certmgr.msc* zum Exportieren eines Clientzertifikats verwenden. Klicken Sie mit der rechten Maustaste auf das Clientzertifikat, das Sie exportieren möchten, klicken Sie auf **Alle Aufgaben** und anschließend auf **Exportieren**.
+2. Exportieren Sie das Clientzertifikat mit dem privaten Schlüssel. Dies ist eine *PFX*-Datei. Vergessen Sie nicht, sich das Kennwort (Schlüssel) zu notieren oder zu merken, das Sie für dieses Zertifikat festgelegt haben.
 3. Kopieren Sie die *PFX*-Datei auf den Clientcomputer. Doppelklicken Sie auf dem Clientcomputer auf die *PFX*-Datei, um sie zu installieren. Geben Sie das Kennwort ein, wenn Sie dazu aufgefordert werden. Ändern Sie den Speicherort der Installation nicht.
 
-## Abschnitt 4: Konfigurieren Ihres VPN-Clients
+## <a name="vpnclientconfig"></a>Abschnitt 4: Konfigurieren Ihres VPN-Clients
 
-Zum Herstellen einer Verbindung mit dem virtuellen Netzwerk müssen Sie auch den VPN-Client konfigurieren. Der Client benötigt sowohl ein Clientzertifikat als auch die richtige VPN-Clientkonfiguration, um eine Verbindung herstellen zu können. Führen Sie die folgenden Schritte in der richtigen Reihenfolge aus, um den VPN-Client zu konfigurieren.
+Zum Herstellen einer Verbindung mit dem virtuellen Netzwerk müssen Sie auch einen VPN-Client konfigurieren. Der Client benötigt sowohl ein Clientzertifikat als auch die richtige VPN-Clientkonfiguration, um eine Verbindung herstellen zu können. Führen Sie die folgenden Schritte in der richtigen Reihenfolge aus, um einen VPN-Client zu konfigurieren.
 
 ### Teil 1: Erstellen des VPN-Clientkonfigurationspakets
 
-1. Navigieren Sie im klassischen Azure-Portal auf der Seite **Dashboard** für Ihr virtuelles Netzwerk zum Menü „Auf einen Blick“ in der rechten Ecke, und klicken Sie auf das VPN-Paket für den Client, den Sie mit Ihrem virtuellen Netzwerk verbinden möchten.
-
-2. 
-Die folgenden Clientbetriebssysteme werden unterstützt:
- - Windows 7 (32 Bit und 64 Bit)
- - Windows Server 2008 R2 (nur 64 Bit)
- - Windows 8 (32 Bit und 64 Bit)
- - Windows 8.1 (32 Bit und 64 Bit)
- - Windows Server 2012 (nur 64 Bit)
- - Windows Server 2012 R2 (nur 64 Bit)
- - Windows 10
-
-3. Wählen Sie das Downloadpaket für das Clientbetriebssystem aus, unter dem es installiert wird:
+1. Navigieren Sie im klassischen Azure-Portal auf der Seite **Dashboard** für Ihr virtuelles Netzwerk zum Menü „Auf einen Blick“ in der rechten Ecke. Die Liste mit den unterstützten Clientbetriebssystemen finden Sie im Abschnitt [Punkt-zu-Standort-Verbindungen](vpn-gateway-vpn-faq.md#point-to-site-connections) der häufig gestellten Fragen zum VPN-Gateway.<br><br>Wählen Sie das Downloadpaket für das Clientbetriebssystem aus, unter dem es installiert wird:
  - Wählen Sie für 32-Bit-Clients **32-Bit-Client-VPN-Paket herunterladen** aus.
  - Wählen Sie für 64-Bit-Clients **64-Bit-Client-VPN-Paket herunterladen** aus.
 
-4. Die Erstellung des Clientpakets kann einige Minuten in Anspruch nehmen. Sobald das Paket fertiggestellt wurde, können Sie die Datei herunterladen. Die heruntergeladene *EXE*-Datei kann sicher auf dem lokalen Computer gespeichert werden.
+2. Die Erstellung des Clientpakets kann einige Minuten in Anspruch nehmen. Sobald das Paket fertiggestellt wurde, können Sie die Datei herunterladen. Die heruntergeladene *EXE*-Datei kann sicher auf dem lokalen Computer gespeichert werden.
 
-5. Nachdem Sie das VPN-Clientpaket generiert und aus dem klassischen Azure-Portal heruntergeladen haben, können Sie das Clientpaket auf dem Clientcomputer installieren, von dem Sie eine Verbindung mit dem virtuellen Netzwerk herstellen möchten. Wenn Sie das VPN-Clientpaket auf mehreren Clientcomputern installieren möchten, stellen Sie sicher, dass auf diesen auch ein Clientzertifikat installiert worden ist. Das VPN-Clientpaket enthält Konfigurationsinformationen zum Konfigurieren der VPN-Client-Software, die in Windows integriert. Das Paket installiert keine zusätzlichen Software.
+3. Nachdem Sie das VPN-Clientpaket generiert und aus dem klassischen Azure-Portal heruntergeladen haben, können Sie das Clientpaket auf dem Clientcomputer installieren, von dem Sie eine Verbindung mit dem virtuellen Netzwerk herstellen möchten. Wenn Sie das VPN-Clientpaket auf mehreren Clientcomputern installieren möchten, stellen Sie sicher, dass auf diesen auch ein Clientzertifikat installiert worden ist. Das VPN-Clientpaket enthält Konfigurationsinformationen zum Konfigurieren der VPN-Client-Software, die in Windows integriert. Das Paket installiert keine zusätzlichen Software.
 
 ### Teil 2: Installieren des VPN-Konfigurationspakets auf dem Client und Herstellen der Verbindung
 
-1. Kopieren Sie die Konfigurationsdatei lokal auf den Computer, den Sie mit dem virtuellen Netzwerk verbinden möchten, und doppelklicken Sie auf die EXE-Datei. Sobald das Paket installiert worden ist, können Sie die VPN-Verbindung starten. Beachten Sie, dass das Konfigurationspaket nicht von Microsoft signiert ist. Sie können das Paket mithilfe des Signaturdiensts Ihres Unternehmens oder mit [SignTool](http://go.microsoft.com/fwlink/p/?LinkId=699327) selbst signieren. Sie können das Paket auch ohne Signatur verwenden. Wenn das Paket nicht signiert ist, wird jedoch bei der Installation des Pakets eine Warnung angezeigt.
-2. Navigieren Sie auf dem Clientcomputer zu "VPN-Verbindungen", und suchen Sie die VPN-Verbindung, die Sie gerade erstellt haben. Sie hat den gleichen Namen wie das virtuelle Netzwerk. Klicken Sie auf **Verbinden**.
-3. Eine entsprechende Meldung wird angezeigt, mit der ein selbstsigniertes Zertifikat für den Gateway-Endpunkt erstellt wird. Klicken Sie auf **Weiter**, um Administratorrechte zu nutzen.
+1. Kopieren Sie die Konfigurationsdatei lokal auf den Computer, den Sie mit dem virtuellen Netzwerk verbinden möchten, und doppelklicken Sie auf die EXE-Datei. Sobald das Paket installiert worden ist, können Sie die VPN-Verbindung starten. Das Konfigurationspaket ist nicht von Microsoft signiert. Sie können das Paket mithilfe des Signaturdiensts Ihres Unternehmens oder mit [SignTool](http://go.microsoft.com/fwlink/p/?LinkId=699327) selbst signieren. Sie können das Paket auch ohne Signatur verwenden. Wenn das Paket nicht signiert ist, wird bei der Installation des Pakets aber eine Warnung angezeigt.
+2. Navigieren Sie auf dem Clientcomputer zu „VPN-Verbindungen“, und suchen Sie nach der VPN-Verbindung, die Sie erstellt haben. Sie hat den gleichen Namen wie das virtuelle Netzwerk. Klicken Sie auf **Verbinden**.
+3. Eine entsprechende Meldung wird angezeigt, mit der ein selbstsigniertes Zertifikat für den Gatewayendpunkt erstellt wird. Klicken Sie auf **Weiter**, um Administratorrechte zu nutzen.
 4. Klicken Sie auf der Statusseite **Verbindung** auf **Verbinden**, um die Verbindung herzustellen.
 5. Wenn der Bildschirm **Zertifikat auswählen** angezeigt wird, vergewissern Sie sich, dass das angezeigte Clientzertifikat dem Zertifikat entspricht, die Sie zum Herstellen der Verbindung verwenden möchten. Wenn dies nicht der Fall ist, verwenden Sie den Dropdownpfeil, um das richtige Zertifikat auszuwählen, und klicken Sie dann auf **OK**.
 6. Sie sind jetzt mit dem virtuellen Netzwerk verbunden und haben vollen Zugriff auf alle Dienste und die virtuellen Computer, die im virtuellen Netzwerk gehostet werden.
@@ -192,9 +161,9 @@ Beispiel:
 
 
 
-    PPP adapter VNetEast:
+    PPP adapter VNet1:
 		Connection-specific DNS Suffix .:
-		Description.....................: VNetEast
+		Description.....................: VNet1
 		Physical Address................:
 		DHCP Enabled....................: No
 		Autoconfiguration Enabled.......: Yes
@@ -209,4 +178,4 @@ Sie können dem virtuellen Netzwerk virtuelle Computer hinzufügen. Weitere Info
 
 Weitere Informationen über virtuelle Netzwerke erhalten Sie unter [Dokumentation zu virtuellen Netzwerken](https://azure.microsoft.com/documentation/services/virtual-network/).
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0817_2016-->

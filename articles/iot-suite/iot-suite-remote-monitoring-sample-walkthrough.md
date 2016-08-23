@@ -14,7 +14,7 @@
  ms.topic="get-started-article"
  ms.tgt_pltfrm="na"
  ms.workload="na"
- ms.date="07/18/2016"
+ ms.date="08/17/2016"
  ms.author="dobett"/>
 
 # Exemplarische Vorgehensweise zur vorkonfigurierten Lösung für Remoteüberwachung
@@ -23,7 +23,11 @@
 
 Die [vorkonfigurierte Lösung][lnk-preconfigured-solutions] für die IoT Suite-Remoteüberwachung ist eine Implementierung einer End-to-End-Überwachungslösung für mehrere Computer, die an Remotestandorten ausgeführt werden. In der Lösung sind wichtige Azure-Dienste kombiniert, um eine generische Implementierung des Geschäftsszenarios zu erzielen. Sie können sie als Ausgangspunkt für Ihre Implementierung verwenden. Sie können die Lösung [anpassen][lnk-customize], um Ihre eigenen speziellen Geschäftsanforderungen zu erfüllen.
 
-In diesem Artikel werden einige wichtige Elemente der Lösung für die Remoteüberwachung beschrieben, um die Funktionsweise zu verdeutlichen. Dieses Wissen ist hilfreich, um Probleme mit der Lösung zu beheben, die Anpassung der Lösung zur Erfüllung Ihrer Anforderungen zu planen und Ihre eigene IoT-Lösung mit Nutzung von Azure-Diensten zu planen.
+In diesem Artikel werden einige wichtige Elemente der Lösung für die Remoteüberwachung beschrieben, um die Funktionsweise zu verdeutlichen. Dieses Wissen ist für folgende Zwecke hilfreich:
+
+- Behandeln von Problemen in der Lösung
+- Planen der Lösungsanpassung zur Erfüllung besonderer Anforderungen
+- Entwerfen einer eigenen IoT-Lösung mit Verwendung von Azure-Diensten
 
 ## Logische Architektur
 
@@ -38,14 +42,14 @@ In der vorkonfigurierten Lösung ist das simulierte Gerät ein Kühlgerät (z. 
 
 Jedes simulierte Gerät kann die folgenden Nachrichtentypen an den IoT Hub senden:
 
-| Message | Beschreibung |
+| Nachricht | Beschreibung |
 |----------|-------------|
-| Starten | Wenn das Gerät gestartet wird, sendet es eine **device-info**-Meldung mit Informationen über sich selbst. Dazu gehören die Geräte-ID, Gerätemetadaten, eine Liste von Befehlen, die das Gerät unterstützt, und die aktuelle Konfiguration des Geräts. |
+| Starten | Wenn das Gerät gestartet wird, sendet es eine Nachricht vom Typ **Geräteinformationen** (device-info) mit Daten über sich selbst an das Back-End. Hierzu gehören die Geräte-ID, Gerätemetadaten, eine Liste mit Befehlen, die das Gerät unterstützt, und die aktuelle Konfiguration des Geräts. |
 | Anwesenheit | Ein Gerät sendet regelmäßig eine **Anwesenheitsnachricht**, um zu melden, ob das Gerät das Vorhandensein („Anwesenheit“) eines Sensors erkennen kann. |
-| Telemetrie | Ein Gerät sendet in regelmäßigen Abständen eine **Telemetrienachricht**, mit der simulierte Werte für die Temperatur und Luftfeuchtigkeit gemeldet werden, die über die simulierten Sensoren des simulierten Geräts erfasst werden. |
+| Telemetrie | Ein Gerät sendet in regelmäßigen Abständen eine **Telemetrienachricht**, mit der simulierte Werte für die Temperatur und Luftfeuchtigkeit gemeldet werden, die über die simulierten Sensoren des Geräts erfasst werden. |
 
 
-Die simulierten Geräte senden die folgenden Geräteeigenschaften als **Nachricht mit Geräteinformationen**:
+Die simulierten Geräte senden die folgenden Geräteeigenschaften als Nachricht vom Typ **Geräteinformationen**:
 
 | Eigenschaft | Zweck |
 |------------------------|--------- |
@@ -63,7 +67,7 @@ Die simulierten Geräte senden die folgenden Geräteeigenschaften als **Nachrich
 | Breitengrad | Breitengrad des Standorts des Geräts |
 | Längengrad | Längengrad des Standorts des Geräts |
 
-Der Simulator füllt diese Eigenschaften in simulierten Geräten mit Beispielwerten. Jedes Mal, wenn der Simulator ein simuliertes Gerät initialisiert, sendet das Gerät vordefinierte Metadaten an IoT Hub. Beachten Sie, dass damit alle Aktualisierungen von Metadaten, die im Geräteportal vorgenommen werden, überschrieben werden.
+Der Simulator füllt diese Eigenschaften in simulierten Geräten mit Beispielwerten. Jedes Mal, wenn der Simulator ein simuliertes Gerät initialisiert, sendet das Gerät vordefinierte Metadaten an IoT Hub. Beachten Sie, wie hierbei alle Aktualisierungen von Metadaten, die im Geräteportal vorgenommen werden, überschrieben werden.
 
 
 Außerdem können die simulierten Geräte auch die folgenden Befehle verarbeiten, die vom Lösungsdashboard über den IoT Hub gesendet werden:
@@ -81,11 +85,11 @@ Die Bestätigung des Gerätebefehls für das Back-End der Lösung wird über den
 
 ## IoT Hub
 
-Der [IoT Hub][lnk-iothub] erfasst Daten, die von den Geräten in die Cloud gesendet werden, und stellt sie für die Azure Stream Analytics-Aufträge (ASA) zur Verfügung. Der IoT Hub sendet im Namen des Geräteportals auch Befehle an Ihre Geräte. Für jeden Datenstrom mit ASA-Aufträgen wird eine separate IoT Hub-Consumergruppe verwendet, um den Nachrichtendatenstrom von Ihren Geräten zu lesen.
+Der [IoT Hub][lnk-iothub] erfasst Daten, die von den Geräten in die Cloud gesendet werden, und stellt sie für die Azure Stream Analytics-Aufträge (ASA) zur Verfügung. Der IoT Hub sendet im Namen des Geräteportals auch Befehle an Ihre Geräte. Für jeden ASA-Datenstromauftrag wird eine separate IoT Hub-Consumergruppe verwendet, um den Nachrichtendatenstrom von Ihren Geräten zu lesen.
 
 ## Azure Stream Analytics
 
-In der Lösung für die Remoteüberwachung übermittelt [Azure Stream Analytics][lnk-asa] \(ASA) Nachrichten, die über den IoT Hub von Ihren Geräten eingehen, zur Verarbeitung oder Speicherung an andere Back-End-Komponenten. Unterschiedliche ASA-Aufträge führen bestimmte Funktionen basierend auf dem Inhalt der Nachrichten durch.
+In der Lösung für die Remoteüberwachung übermittelt [Azure Stream Analytics][lnk-asa] (ASA) Gerätenachrichten, die über den IoT Hub eingehen, zur Verarbeitung oder Speicherung an andere Back-End-Komponenten. Unterschiedliche ASA-Aufträge führen bestimmte Funktionen basierend auf dem Inhalt der Nachrichten durch.
 
 **Auftrag 1: Geräteinformationen** filtert Meldungen mit Geräteinformationen aus dem eingehenden Meldungsdatenstrom und sendet diese an einen Event Hub-Endpunkt. Ein Gerät sendet Meldungen mit Geräteinformationen beim Start und als Antwort auf den Befehl **SendDeviceInfo**. Bei diesem Auftrag wird die folgende Abfragedefinition verwendet, um Nachrichten vom Typ **Geräteinformationen** zu identifizieren:
 
@@ -101,28 +105,28 @@ Dieser Auftrag sendet seine Ausgabe zur weiteren Verarbeitung an einen Event Hub
 WITH AlarmsData AS 
 (
 SELECT
-     Stream.DeviceID,
+     Stream.IoTHub.ConnectionDeviceId AS DeviceId,
      'Temperature' as ReadingType,
      Stream.Temperature as Reading,
      Ref.Temperature as Threshold,
      Ref.TemperatureRuleOutput as RuleOutput,
      Stream.EventEnqueuedUtcTime AS [Time]
 FROM IoTTelemetryStream Stream
-JOIN DeviceRulesBlob Ref ON Stream.DeviceID = Ref.DeviceID
+JOIN DeviceRulesBlob Ref ON Stream.IoTHub.ConnectionDeviceId = Ref.DeviceID
 WHERE
      Ref.Temperature IS NOT null AND Stream.Temperature > Ref.Temperature
 
 UNION ALL
 
 SELECT
-     Stream.DeviceID,
+     Stream.IoTHub.ConnectionDeviceId AS DeviceId,
      'Humidity' as ReadingType,
      Stream.Humidity as Reading,
      Ref.Humidity as Threshold,
      Ref.HumidityRuleOutput as RuleOutput,
      Stream.EventEnqueuedUtcTime AS [Time]
 FROM IoTTelemetryStream Stream
-JOIN DeviceRulesBlob Ref ON Stream.DeviceID = Ref.DeviceID
+JOIN DeviceRulesBlob Ref ON Stream.IoTHub.ConnectionDeviceId = Ref.DeviceID
 WHERE
      Ref.Humidity IS NOT null AND Stream.Humidity > Ref.Humidity
 )
@@ -146,33 +150,38 @@ WITH
 AS (
     SELECT
         *
-    FROM 
-      [IoTHubStream] 
+    FROM [IoTHubStream]
     WHERE
         [ObjectType] IS NULL -- Filter out device info and command responses
 ) 
 
 SELECT
-    *
+    IoTHub.ConnectionDeviceId AS DeviceId,
+    Temperature,
+    Humidity,
+    ExternalTemperature,
+    EventProcessedUtcTime,
+    PartitionId,
+    EventEnqueuedUtcTime,
+    * 
 INTO
     [Telemetry]
 FROM
     [StreamData]
 
 SELECT
-    DeviceId,
-    AVG (Humidity) AS [AverageHumidity], 
-    MIN(Humidity) AS [MinimumHumidity], 
-    MAX(Humidity) AS [MaxHumidity], 
+    IoTHub.ConnectionDeviceId AS DeviceId,
+    AVG (Humidity) AS [AverageHumidity],
+    MIN(Humidity) AS [MinimumHumidity],
+    MAX(Humidity) AS [MaxHumidity],
     5.0 AS TimeframeMinutes 
 INTO
     [TelemetrySummary]
-FROM
-    [StreamData]
+FROM [StreamData]
 WHERE
     [Humidity] IS NOT NULL
 GROUP BY
-    DeviceId, 
+    IoTHub.ConnectionDeviceId,
     SlidingWindow (mi, 5)
 ```
 
@@ -182,7 +191,7 @@ Die Daten der ASA-Aufträge vom Typ **Geräteinformationen** und **Regeln** werd
 
 ## Azure-Speicher
 
-Die Lösung nutzt Azure-Blobspeicher, um alle Rohdaten und zusammengefassten Telemetriedaten von den Geräten dauerhaft in der Lösung zu speichern. Über das Dashboard werden die Telemetriedaten aus dem Blobspeicher gelesen, um die Diagramme aufzufüllen. Zum Anzeigen von Warnungen liest das Dashboard die Daten aus dem Blobspeicher aus, in dem aufgezeichnet wird, wenn die Telemetriewerte die konfigurierten Schwellenwerte überschreiten. In der Lösung wird Blobspeicher auch eingesetzt, um die Schwellenwerte aufzuzeichnen, die von einem Benutzer im Dashboard festgelegt werden.
+Die Lösung nutzt Azure-Blobspeicher, um alle Rohdaten und zusammengefassten Telemetriedaten von den Geräten dauerhaft in der Lösung zu speichern. Über das Dashboard werden die Telemetriedaten aus dem Blobspeicher gelesen, um die Diagramme aufzufüllen. Zum Anzeigen von Warnungen liest das Dashboard die Daten aus dem Blobspeicher aus, in dem aufgezeichnet wird, wenn die Telemetriewerte die konfigurierten Schwellenwerte überschreiten. In der Lösung wird Blobspeicher auch eingesetzt, um die Schwellenwerte aufzuzeichnen, die Sie im Dashboard festlegen.
 
 ## WebJobs
 
@@ -193,7 +202,7 @@ Zusätzlich zum Hosten der Gerätesimulatoren hosten die WebJobs in der Lösung 
 
 ## DocumentDB
 
-Die Lösung verwendet eine DocumentDB-Datenbank zum Speichern von Informationen zu den Geräten, die mit der Lösung verbunden sind, z.B. Gerätemetadaten und der Verlauf der Befehle, die vom Dashboard an die Geräte gesendet werden.
+Die Lösung verwendet eine DocumentDB-Datenbank zum Speichern von Informationen zu den Geräten, die mit der Lösung verbunden sind. Dies sind beispielsweise Gerätemetadaten und der Verlauf der Befehle, die vom Dashboard an die Geräte gesendet werden.
 
 ## Web-Apps
 
@@ -205,8 +214,8 @@ Diese Seite in der Webanwendung verwendet PowerBI-JavaScript-Steuerelemente (sie
 
 Diese Web-App ermöglicht Folgendes:
 
-- Bereitstellen eines neuen Geräts. Legt die eindeutige Geräte-ID fest und generiert den Authentifizierungsschlüssel. Schreibt Informationen zum Gerät sowohl in die IoT Hub-Identitätsregistrierung als auch in die DocumentDB-Datenbank der Lösung.
-- Verwalten von Geräteeigenschaften. Dies umfasst das Anzeigen von vorhandenen Eigenschaften und das Aktualisieren mit neuen Eigenschaften.
+- Bereitstellen eines neuen Geräts. Diese Aktion legt die eindeutige Geräte-ID fest und generiert den Authentifizierungsschlüssel. Sie schreibt Informationen zum Gerät sowohl in die IoT Hub-Identitätsregistrierung als auch in die DocumentDB-Datenbank der Lösung.
+- Verwalten von Geräteeigenschaften. Diese Aktion umfasst das Anzeigen von vorhandenen Eigenschaften und das Aktualisieren mit neuen Eigenschaften.
 - Senden von Befehlen an ein Gerät.
 - Anzeigen des Befehlsverlaufs für ein Gerät.
 - Aktivieren und Deaktivieren von Geräten.
@@ -231,4 +240,4 @@ Sie können mit den ersten Schritten mit IoT Suite fortfahren. Lesen Sie dazu di
 [lnk-connect-rm]: iot-suite-connecting-devices.md
 [lnk-permissions]: iot-suite-permissions.md
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0817_2016-->

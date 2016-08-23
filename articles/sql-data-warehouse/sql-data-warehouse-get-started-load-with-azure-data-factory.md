@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="08/08/2016"
+   ms.date="08/16/2016"
    ms.author="lodipalm;barbkess;sonyama"/>
 
 # Laden von Daten mit Azure Data Factory 
@@ -206,14 +206,13 @@ Klicken Sie im Abschnitt „Erstellen und Bereitstellen“ nun auf „Weitere Be
 Weitere Informationen finden Sie unter:
 
 - [Lernpfad für Azure Data Factory][]
-- [Azure SQL Data Warehouse-Connector.][] Dies ist das wichtigste Referenzthema zur die Verwendung von Azure Data Factory mit Azure SQL Data Warehouse.
+- [Azure SQL Data Warehouse-Connector.][] Dies ist das wichtigste Referenzthema zur Verwendung von Azure Data Factory mit Azure SQL Data Warehouse.
 
 
-Diese Themen enthalten ausführliche Informationen zu Azure Data Factory. Darin werden Azure SQL-Datenbank oder HDinsight behandelt, die Informationen gelten jedoch auch für Azure SQL Data Warehouse.
+Die Themen enthalten ausführliche Informationen zu Azure Data Factory. Darin werden Azure SQL-Datenbank oder HDinsight behandelt, die Informationen gelten jedoch auch für Azure SQL Data Warehouse.
 
 - [Tutorial: Erstellen der ersten Data Factory (Übersicht)][] Dies ist das wichtigste Tutorial zur Datenverarbeitung mit Azure Data Factory. In diesem Tutorial erstellen Sie Ihre erste Pipeline, die mithilfe von HDInsight monatlich Webprotokolle transformiert und analysiert. Beachten Sie, dass in diesem Tutorial keine Kopieraktivität erfolgt.
-- [Tutorial: Kopieren von Daten aus Azure Blob Storage in Azure SQL-Datenbank][] In diesem Tutorial erstellen Sie in Azure Data Factory eine Pipeline, um Daten aus einem Azure Storage-Blob in Azure SQL-Datenbank zu kopieren.
-- [Tutorial zu realistischen Szenarien.][] Dies ist ein detailliertes Tutorial zur Verwendung von Azure Data Factory.
+- [Tutorial: Kopieren von Daten aus Azure Blob Storage in Azure SQL-Datenbank][]. In diesem Tutorial erstellen Sie in Azure Data Factory eine Pipeline, um Daten aus einem Azure Storage-Blob in Azure SQL-Datenbank zu kopieren.
 
 <!--Image references-->
 
@@ -229,8 +228,7 @@ Diese Themen enthalten ausführliche Informationen zu Azure Data Factory. Darin 
 [Load sample data into SQL Data Warehouse]: sql-data-warehouse-load-sample-databases.md
 [Move data to and from Azure SQL Data Warehouse using Azure Data Factory]: ../data-factory/data-factory-azure-sql-data-warehouse-connector.md
 [PolyBase]: sql-data-warehouse-get-started-load-with-polybase.md
-[Tutorial zu realistischen Szenarien.]: ../data-factory/data-factory-tutorial.md
-[Tutorial: Kopieren von Daten aus Azure Blob Storage in Azure SQL-Datenbank]: ../data-factory/data-factory-get-started
+[Tutorial: Kopieren von Daten aus Azure Blob Storage in Azure SQL-Datenbank]: ../data-factory/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md
 [Tutorial: Erstellen der ersten Data Factory (Übersicht)]: ../data-factory/data-factory-build-your-first-pipeline.md
 
 <!--MSDN references-->
@@ -240,4 +238,4 @@ Diese Themen enthalten ausführliche Informationen zu Azure Data Factory. Darin 
 [Azure-Portal]: https://portal.azure.com
 [Laden Sie Beispieldaten herunter]: https://migrhoststorage.blob.core.windows.net/adfsample/FactInternetSales.csv
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0817_2016-->
