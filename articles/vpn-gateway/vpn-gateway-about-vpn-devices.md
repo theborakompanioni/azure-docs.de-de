@@ -118,7 +118,10 @@ Nachdem Sie die bereitgestellte Konfigurationsvorlage für das VPN-Gerät herunt
 | IKE-Version | IKEv1 | IKEv2 |
 | Hashalgorithmus | SHA1(SHA128) | SHA1(SHA128) |
 | Phase 2 Sicherheitszuordnung (SA) Lebensdauer (Zeit) | 3\.600 Sekunden | 3\.600 Sekunden |
-| Phase 2 Sicherheitszuordnung (SA) Lebensdauer (Durchsatz) | 102.400.000 KB | - | | IPsec-SA-Verschlüsselung und Authentifizierungsangebote (Rangfolge) | 1. ESP-AES256 2. ESP-AES128 3. ESP-3DES 4. N/V | Siehe *IPsec-Sicherheitszuordnungsangebote (SA) für routenbasierte Gateways* (im Anschluss) | | Perfect Forward Secrecy (PFS) | Nein | Ja (DH-Gruppe 1, 2, 5, 14, 24) | | Erkennung inaktiver Peers | Nicht unterstützt | Unterstützt |
+| Phase 2 Sicherheitszuordnung (SA) Lebensdauer (Durchsatz) | 102.400.000 KB | - |
+| IPsec-SA-Verschlüsselung und Authentifizierungsangebote (Rangfolge) | 1. ESP-AES256 2. ESP-AES128 3. ESP-3DES 4. N/V | Siehe *IPsec-Sicherheitszuordnungsangebote (SA) für routenbasierte Gateways* (im Anschluss) |
+| Perfect Forward Secrecy (PFS) | Nein | Ja (DH-Gruppe 1, 2, 5, 14, 24) |
+| Erkennung inaktiver Peers | Nicht unterstützt | Unterstützt |
 
 ### IPsec-Sicherheitszuordnungsangebote (SA) für routenbasierte Gateways
 
