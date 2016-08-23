@@ -3,7 +3,7 @@
    description="Erfahren Sie, wie Sie vorhandene NSGs mit PowerShell im Resource Manager verwalten"
    services="virtual-network"
    documentationCenter="na"
-   authors="telmosampaio"
+   authors="jimdial"
    manager="carmonm"
    editor=""
    tags="azure-resource-manager"
@@ -15,7 +15,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="03/14/2016"
-   ms.author="telmos" />
+   ms.author="jdial" />
 
 # Verwalten von NSGs in PowerShell
 
@@ -23,7 +23,7 @@
 
 [AZURE.INCLUDE [virtual-network-manage-nsg-intro-include.md](../../includes/virtual-network-manage-nsg-intro-include.md)]
 
-[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-rm-include.md)]Klassisches Bereitstellungsmodell.
+[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-rm-include.md)] klassisches Bereitstellungsmodell.
 
 [AZURE.INCLUDE [virtual-network-manage-nsg-arm-scenario-include.md](../../includes/virtual-network-manage-nsg-arm-scenario-include.md)]
 
@@ -33,7 +33,7 @@
 
 Sie können Ihre vorhandenen NSGs sehen, Regeln für eine vorhandene NSG abrufen und herausfinden, welchen Ressourcen eine NSG zugeordnet ist.
 
-### Anzeigen vorhandener NSGs
+### Anzeigen lassen vorhandener NSGs
 Um alle vorhandenen NSGs in einem Abonnement anzuzeigen, führen Sie das `Get-AzureRmNetworkSecurityGroup`-Cmdlet wie unten dargestellt aus.
 
 	Get-AzureRmNetworkSecurityGroup
@@ -472,7 +472,7 @@ Um die **NSG-FrontEnd**-NSG erneut dem **FrontEnd**-Subnetz zuzuordnen, führen 
 Sie können eine NSG nur löschen, wenn sie keiner Ressource zugeordnet ist. Um eine NSG zu löschen, gehen Sie folgendermaßen vor.
 
 1. Um die Ressourcen, die einer NSG zugeordnet sind, zu überprüfen, führen Sie `azure network nsg show` aus, wie in [Anzeigen von NSG-Zuordnungen](#View-NSGs-associations) gezeigt.
-2. Falls die NSG einer NIC zugeordnet ist, führen Sie `azure network nic set`, wie in [Aufheben der Zuordnung einer NSG zu einer NIC](#Dissociate-an-NSG-from-a-NIC) gezeigt, für jede NIC aus. 
+2. Falls die NSG einer NIC zugeordnet ist, führen Sie `azure network nic set`, wie in [Aufheben der Zuordnung einer NSG zu einer NIC](#Dissociate-an-NSG-from-a-NIC) gezeigt, für jede NIC aus.
 3. Falls die NSG einem Subnetz zugeordnet ist, führen Sie `azure network vnet subnet set`, wie in [Aufheben der Zuordnung einer NSG zu einem Subnetz](#Dissociate-an-NSG-from-a-subnet) gezeigt, für jedes Subnetz aus.
 4. Um die NSG zu löschen, führen Sie das `Remove-AzureRmNetworkSecurityGroup`-Cmdlet wie unten gezeigt aus.
 
@@ -484,4 +484,4 @@ Sie können eine NSG nur löschen, wenn sie keiner Ressource zugeordnet ist. Um 
 
 - [Aktivieren der Protokollierung](virtual-network-nsg-manage-log.md) für NSGs.
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0810_2016-->

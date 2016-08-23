@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/12/2016" 
+	ms.date="08/04/2016" 
 	ms.author="billmath"/>
 
 # Erstellen oder Löschen von App-Kennwörtern für Azure Multi-Factor Authentication im Office 365-Portal
@@ -31,7 +31,7 @@ Wenn Sie Multi-Factor Authentication mit Office 365 verwenden, können Sie App-
 ![Cloud](./media/multi-factor-authentication-end-user-app-passwords-create-o365/security.png)
 
 <li>Wählen Sie auf der rechten Seite **Aktualisieren meiner Telefonnummern für die Kontosicherheit** aus.</li>
-<li>Wählen Sie oben auf der Seite "Proofup" die Option "App-Kennwörter" aus.</li>
+<li>Wählen Sie auf der Seite „Proofup“ oben „App-Kennwörter“.</li>
 
 <center>![Cloud](./media/multi-factor-authentication-end-user-app-passwords-create-o365/addsec.png)</center>
 
@@ -56,7 +56,7 @@ Wenn Sie Multi-Factor Authentication mit Office 365 verwenden, können Sie App-
 ![Cloud](./media/multi-factor-authentication-end-user-app-passwords-create-o365/security.png)
 
 <li>Wählen Sie auf der rechten Seite **Aktualisieren meiner Telefonnummern für die Kontosicherheit** aus.</li>
-<li>Wählen Sie oben auf der Seite "Proofup" die Option "App-Kennwörter" aus.</li>
+<li>Wählen Sie auf der Seite „Proofup“ oben „App-Kennwörter“.</li>
 
 <center>![Cloud](./media/multi-factor-authentication-end-user-app-passwords-create-o365/addsec.png)</center>
 
@@ -73,4 +73,4 @@ Wenn Sie Multi-Factor Authentication mit Office 365 verwenden, können Sie App-
  
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0810_2016-->

@@ -15,7 +15,7 @@
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="na"
 	ms.workload="big-data"
-	ms.date="05/25/2016"
+	ms.date="08/10/2016"
 	ms.author="jgao"/>
 
 # Erste Schritte bei der Verwendung von Hadoop-Tools für Visual Studio für HDInsight zum Ausführen einer Hive-Abfrage
@@ -64,14 +64,14 @@ Mithilfe der HDInsight-Tools für Visual Studio können Sie eine Verbindung mit 
 2.	Klicken Sie im Menü **Ansicht** auf **Server-Explorer**, um das Fenster "Server-Explorer" zu öffnen.
 3.	Erweitern Sie erst **Azure** und dann **HDInsight**.
 
-	>[AZURE.NOTE]Beachten Sie, dass das Fenster **HDInsight-Aufgabenliste** geöffnet sein sollte. Wenn es nicht angezeigt werden sollte, klicken Sie im Menü **Ansicht** auf **Andere Fenster** und dann auf das Fenster **HDInsight-Aufgabenliste**.  
-4.	Geben Sie die Anmeldeinformationen für Ihr Azure-Abonnement ein, und klicken Sie auf **Anmelden**. Dies ist nur erforderlich, wenn Sie bislang noch nicht in Visual Studio auf dieser Arbeitsstation eine Verbindung mit dem Azure-Abonnement hergestellt haben.
+	>[AZURE.NOTE]Beachten Sie, dass das Fenster **HDInsight-Aufgabenliste** geöffnet sein sollte. Wenn es nicht angezeigt werden sollte, klicken Sie im Menü **Ansicht** auf **Andere Fenster** und dann auf das Fenster **HDInsight-Aufgabenliste**.
+4.	Geben Sie die Anmeldeinformationen für Ihr Azure-Abonnement ein, und klicken Sie auf **Anmelden**. Dies ist nur erforderlich, wenn Sie in Visual Studio auf dieser Arbeitsstation bislang noch nie eine Verbindung mit dem Azure-Abonnement hergestellt haben.
 5.	Im Server-Explorer wird eine Liste vorhandener HDInsight-Cluster angezeigt. Wenn Sie noch keine Cluster haben, können Sie einen über das Azure-Portal, Azure PowerShell oder das HDInsight SDK bereitstellen. Weitere Informationen finden Sie unter [Bereitstellen von HDInsight-Clustern][hdinsight-provision].
 
 	![Hadoop-Tools: HDInsight-Tools für Visual Studio – Clusterliste in Server-Explorer][5]
 6.	Erweitern Sie einen HDInsight-Cluster. **Hive-Datenbanken**, das Standardspeicherkonto, verknüpfte Speicherkonten und das **Hadoop-Dienstprotokoll** werden angezeigt. Sie können die einzelnen Elemente weiter erweitern.
 
-Nach dem Verbinden mit Ihrem Azure-Abonnement können Sie die folgenden Aufgaben ausführen:
+Nach dem Herstellen der Verbindung mit Ihrem Azure-Abonnement können Sie die folgenden Aufgaben ausführen:
 
 **So stellen Sie in Visual Studio eine Verbindung mit dem Azure-Portal her**
 
@@ -86,6 +86,11 @@ Nach dem Verbinden mit Ihrem Azure-Abonnement können Sie die folgenden Aufgaben
 Im Server-Explorer werden das Standardspeicherkonto und verknüpfte Speicherkonten angezeigt. Wenn Sie das Standardspeicherkonto erweitern, werden die Container im Speicherkonto angezeigt. Das Standardspeicherkonto und der Standardcontainer sind markiert. Sie können auch mit der rechten Maustaste auf einen der Container klicken, um seinen Inhalt anzuzeigen.
 
 ![HDInsight-Tools für Visual Studio – Clusterliste in Server-Explorer][2]
+
+Nach dem Öffnen eines Containers können Sie mithilfe der folgenden Schaltflächen Blobs hochladen, löschen und herunterladen:
+
+![HDInsight-Tools für Visual Studio – Blobvorgänge in Server-Explorer](./media/hdinsight-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.blob.operations.png)
+
 
 ## Ausführen einer Hive-Abfrage
 [Apache Hive][apache.hive] ist eine Data Warehouse-Infrastruktur, die auf Hadoop aufbaut und Funktionen für Datenzusammenfassung, -abfragen und -analysen bietet. Die HDInsight-Tools für Visual Studio unterstützen das Ausführen von Hive-Abfragen in Visual Studio. Weitere Informationen über Hive finden Sie unter [Verwenden von Hive mit HDInsight][hdinsight.hive].
@@ -182,7 +187,7 @@ Die neueste Version des Tools ermöglicht es Ihnen zu sehen, was sich innerhalb 
 
 >[AZURE.NOTE] Dieses Feature funktioniert nur mit HDInsight-Clustern ab Version 3.2.
 
-Die HDInsight-Tools haben bisher Hive-Aufträge via [WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat) (auch bekannt als Templeton) übermittelt. Es dauerte sehr lange, bis Auftragsdetails und Fehlerinformationen zurückgegeben wurden. Um dieses Leistungsproblem zu beheben, führen die HDInsight-Tools Hive-Aufträge jetzt über HiveServer2 direkt im Cluster aus, sodass RDP/SSH umgangen wird. Als weiterer Vorteil neben der Leistungsverbesserung können die Benutzer Hive nun in Tez-Diagrammen anzeigen, und sie können die Aufgabendetails anzeigen.
+Die HDInsight-Tools haben Hive-Aufträge bisher via [WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat) (auch bekannt als Templeton) übermittelt. Es dauerte sehr lange, bis Auftragsdetails und Fehlerinformationen zurückgegeben wurden. Um dieses Leistungsproblem zu beheben, führen die HDInsight-Tools Hive-Aufträge jetzt über HiveServer2 direkt im Cluster aus, sodass RDP/SSH umgangen wird. Als weiterer Vorteil neben der Leistungsverbesserung können die Benutzer Hive nun in Tez-Diagrammen anzeigen, und sie können die Aufgabendetails anzeigen.
 
 Für HDInsight-Cluster ab Version 3.2 wird eine Schaltfläche **Über HiveServer2 ausführen** angezeigt:
 
@@ -277,4 +282,4 @@ In diesem Artikel haben Sie erfahren, wie Sie in Visual Studio mithilfe des Hado
 
 [apache.hive]: http://hive.apache.org
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0817_2016-->

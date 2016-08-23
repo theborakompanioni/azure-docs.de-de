@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/12/2016" 
+	ms.date="08/04/2016" 
 	ms.author="billmath"/>
 
 # Verwenden einer mobilen App als Kontaktmethode mit Azure Multi-Factor Authentication
@@ -54,7 +54,7 @@ Die Azure Authenticator-App ist für [Windows Phone](http://www.windowsphone.com
 - Klicken Sie auf Done.
 
 
-<h2 id="Manuelles">Manuelles Hinzufügen eines Kontos</h2>
+## Manuelles Hinzufügen eines Kontos
 Wenn Sie ein Konto manuell hinzufügen möchten, wählen Sie die Schaltfläche zum manuellen Eingeben des Kontos aus.
 
 ![Einrichtung](./media/multi-factor-authentication-end-user-first-time-mobile-app/addaccount.png)
@@ -73,4 +73,4 @@ Wenn Sie ein Drittanbieterkonto mit der mobilen App verwenden, geben Sie den Kon
 >[AZURE.NOTE]Wenn Sie zum Hinzufügen eines Geschäftskontos aufgefordert werden, gilt dies für die Einbindung in den Arbeitsplatz und nicht für die mehrstufige Authentifizierung. Sie können dies ignorieren.
  
 
-<!------HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0810_2016-->

@@ -26,7 +26,7 @@ Sie können das Modell einmalig trainieren, indem Sie eine zusammengefasste Vers
 
 Dies wäre vermutlich der beste Ansatz. Sie möchten in Azure Machine Learning aber nicht 1.000 Trainingsexperimente erstellen müssen, also ein Experiment pro Standort. Dies ist nicht nur viel zu aufwändig, sondern auch eine sehr ineffiziente Vorgehensweise, da alle Experimente mit Ausnahme des Trainingsdatasets die gleichen Komponenten aufweisen würden.
 
-Glücklicherweise können wir hierfür die [Azure Machine Learning-API für das erneute Trainieren](machine-learning-retrain-models-programmatically.md) verwenden und die Aufgabe mit der [Azure Machine Learning PowerShell](https://blogs.technet.microsoft.com/machinelearning/2016/05/04/announcing-the-powershell-module-for-azure-ml/) automatisieren.
+Glücklicherweise können wir hierfür die [Azure Machine Learning-API für das erneute Trainieren](machine-learning-retrain-models-programmatically.md) verwenden und die Aufgabe mit der [Azure Machine Learning PowerShell](machine-learning-powershell-module.md) automatisieren.
 
 > [AZURE.NOTE] Damit das Beispiel schneller ausgeführt wird, reduzieren wir die Standortanzahl von 1.000 auf 10. Es gelten aber dieselben Prinzipien und Verfahren wie für 1.000 Standorte. Der einzige Unterschied ist: Wenn Sie das Trainieren mit 1.000 Datasets durchführen möchten, ist es ratsam, die folgenden PowerShell-Skripts parallel auszuführen. Die Erklärung hierzu würde den Rahmen dieses Artikels sprengen, aber im Internet finden Sie Beispiele für das PowerShell-Multithreading.
 
@@ -161,4 +161,4 @@ Hier ist der vollständige Quellcode angegeben:
 	    Patch-AmlWebServiceEndpoint -WebServiceId $scoringSvc.Id -EndpointName $endpointName -ResourceName 'Bike Rental [trained model]' -BaseLocation $baseLoc -RelativeLocation $relativeLoc -SasBlobToken $sasToken
 	}
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0810_2016-->

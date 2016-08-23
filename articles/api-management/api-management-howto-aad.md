@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/25/2016" 
+	ms.date="08/09/2016" 
 	ms.author="sdanie"/>
 
 # Autorisieren von Entwicklerkonten mithilfe von Active Directory in Azure API Management
@@ -228,4 +228,4 @@ Der Benutzer ist jetzt beim Entwicklerportal für Ihre API Management-Dienstinst
 
 [Anmelden beim Entwicklerportal mit einem Azure Active Directory-Konto]: #Log-in-to-the-Developer-portal-using-an-Azure-Active-Directory-account
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0810_2016-->

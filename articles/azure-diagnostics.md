@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Übersicht über Azure-Diagnose"
+	pageTitle="Übersicht über Azure-Diagnose | Microsoft Azure"
 	description="Verwenden Sie die Azure-Diagnose zur Problembehandlung, zur Leistungsmessung, zur Überwachung und zur Datenverkehrsanalyse in Clouddiensten, virtuellen Maschinen und Service Fabric."
 	services="multiple"
 	documentationCenter=".net"
@@ -81,4 +81,4 @@ Erste Schritte finden Sie unter [Überwachen einer Service Fabric-Anwendung](./s
 - Erlernen Sie das [Weiterleiten von Azure-Diagnoseinformationen an Application Insights](./azure-diagnostics-configure-applicationinsights.md)
 - Wenn bei der Diagnose Probleme mit dem Starten oder dem Finden von Daten in Azure Storage-Tabellen auftreten, finden Sie weitere Informationen unter [Problembehandlung bei Azure-Diagnose](./azure-diagnostics-troubleshooting.md).
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0810_2016-->

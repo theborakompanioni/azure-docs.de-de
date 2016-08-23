@@ -37,7 +37,7 @@ Dieses Thema führt alle Themen mit direktem Bezug zum **SQL Data Warehouse-Dien
 
 | &nbsp; | URL-ID | Titel | Beschreibung |
 | --: | :-- | :-- | :-- |
-| 3 | authentication | [Authentifizierung in Azure SQL Data Warehouse](sql-data-warehouse-authentication.md) | Azure Active Directory- (AAD) und SQL Server-Authentifizierung in Azure SQL Data Warehouse. |
+| 3 | Authentifizierung | [Authentifizierung in Azure SQL Data Warehouse](sql-data-warehouse-authentication.md) | Azure Active Directory- (AAD) und SQL Server-Authentifizierung in Azure SQL Data Warehouse. |
 | 4 | best-practices | [Bewährte Methoden für Azure SQL Data Warehouse](sql-data-warehouse-best-practices.md) | Enthält Empfehlungen und bewährte Methoden, die Sie kennen sollten, wenn Sie Lösungen für Azure SQL Data Warehouse entwickeln. Sie tragen dazu bei, dass Sie erfolgreich sind. |
 | 5 | connection-strings | [Treiber für Azure SQL Data Warehouse](sql-data-warehouse-connection-strings.md) | Verbindungszeichenfolgen und Treiber für SQL Data Warehouse |
 | 6 | connect-overview | [Verbinden mit Azure SQL Data Warehouse](sql-data-warehouse-connect-overview.md) | Enthält eine Übersicht über das Herstellen einer Verbindung mit Azure SQL Data Warehouse. |
@@ -47,7 +47,6 @@ Dieses Thema führt alle Themen mit direktem Bezug zum **SQL Data Warehouse-Dien
 | 10 | get-started-create-support-ticket | [Gewusst wie: Erstellen eines Supporttickets für SQL Data Warehouse](sql-data-warehouse-get-started-create-support-ticket.md) | Sie erfahren, wie Sie in Azure SQL Data Warehouse ein Supportticket erstellen. |
 | 11 | get-started-load-with-azure-data-factory | [Laden von Daten mit Azure Data Factory](sql-data-warehouse-get-started-load-with-azure-data-factory.md) | Informationen zum Laden von Daten mit Azure Data Factory |
 | 12 | get-started-load-with-polybase | [Laden von Daten mit PolyBase in SQL Data Warehouse](sql-data-warehouse-get-started-load-with-polybase.md) | Informationen zu PolyBase und Hinweise zur Verwendung in Data Warehouse-Szenarios. |
-| 13 | get-started-new-server | [Erstellen eines neuen logischen Servers](sql-data-warehouse-get-started-new-server.md) | Erfahren Sie, wie Sie ein Azure SQL Data Warehouse im Azure-Portal erstellen. |
 | 14 | get-started-provision | [Erstellen einer Azure SQL Data Warehouse-Instanz](sql-data-warehouse-get-started-provision.md) | Erfahren Sie, wie Sie ein Azure SQL Data Warehouse im Azure-Portal erstellen. |
 | 15 | get-started-provision-powershell | [Erstellen von SQL Data Warehouse mithilfe von Powershell](sql-data-warehouse-get-started-provision-powershell.md) | Erstellen von SQL Data Warehouse mithilfe von Powershell |
 | 16 | get-started-visualize-with-power-bi | [Visualisieren von Daten mit Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md) | Visualisieren von SQL Data Warehouse-Daten mit Power BI |
@@ -120,7 +119,7 @@ Dieses Thema führt alle Themen mit direktem Bezug zum **SQL Data Warehouse-Dien
 
 
 
-## Last
+## Laden
 
 | &nbsp; | URL-ID | Titel | Beschreibung |
 | --: | :-- | :-- | :-- |
@@ -193,4 +192,4 @@ Dieses Thema führt alle Themen mit direktem Bezug zum **SQL Data Warehouse-Dien
 | 86 | service-capacity-limits | [Kapazitätsgrenzen von SQL Data Warehouse](sql-data-warehouse-service-capacity-limits.md) | Maximale Werte für Verbindungen, Datenbanken, Tabellen und Abfragen für SQL Data Warehouse. |
 | 87 | Problembehandlung | [Problembehandlung bei Azure SQL Data Warehouse](sql-data-warehouse-troubleshoot.md) | Problembehandlung bei Azure SQL Data Warehouse. |
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0810_2016-->

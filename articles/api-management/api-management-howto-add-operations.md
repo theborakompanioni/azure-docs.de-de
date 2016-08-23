@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/25/2016" 
+	ms.date="08/09/2016" 
 	ms.author="sdanie"/>
 
 # Hinzufügen von Operationen zu einer API in Azure API Management
@@ -67,7 +67,7 @@ Das Zwischenspeichern von Antworten verbessert die Latenz der API-Consumer und s
 
 Wählen Sie die Registerkarte **Zwischenspeichern** und markieren Sie das Kontrollkästchen **Aktivieren**, um die Zwischenspeicherung für die Operation schnell und einfach zu aktivieren.
 
-![Zwischenspeichern][api-management-caching-tab]
+![Caching][api-management-caching-tab]
 
 **Dauer** gibt den Zeitraum an, für den eine Operationsantwort im Cache verbleibt. Der Standardwert beträgt 3600 Sekunden oder 1 Stunde.
 
@@ -86,7 +86,7 @@ Klicken Sie auf **Abfrageparameter hinzufügen** und geben Sie die folgenden Inf
 -	**Beschreibung** – eine kurze Beschreibung des Parameters (optional).
 -	**Typ** – Parametertyp aus einer Dropdownliste ausgewählt.
 -	**Werte** – Werte, die dieser Parameter annehmen kann. Einer der Werte kann als Standard markiert werden (optional).
--	**Erforderlich** – Markieren Sie dieses Kontrollkästchen, um diesen Parameter obligatorisch zu machen. 
+-	**Erforderlich** – Markieren Sie dieses Kontrollkästchen, um diesen Parameter obligatorisch zu machen.
 
 ![Anforderungsparameter][api-management-request-parameters]
 
@@ -168,4 +168,4 @@ Nachdem Sie die Operationen zur API hinzugefügt haben, können Sie die API zu e
 [Erstellen und Veröffentlichen eines Produkts]: api-management-howto-add-products.md
 [Zwischenspeichern von Operationsergebnissen in Azure API Management]: api-management-howto-cache.md
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0810_2016-->

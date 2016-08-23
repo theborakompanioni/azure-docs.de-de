@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/24/2016" 
+	ms.date="08/09/2016" 
 	ms.author="sdanie"/>
 
 # So implementieren Sie die Notfallwiederherstellung mit Sichern und Wiederherstellen von Diensten in Azure API Management
@@ -97,7 +97,7 @@ Ersetzen Sie `{application id}` und `{redirect uri}` durch die **Client-ID** und
 
 Wenn die Werte angegeben wurden, sollte im Codebeispiel ein Token ähnlich dem folgenden Beispiel zurückgegeben werden.
 
-![Tokenverschlüsselung][api-management-arm-token]
+![Token][api-management-arm-token]
 
 Legen Sie vor dem Aufrufen der in den folgenden Abschnitten beschriebenen Vorgänge zur Sicherung und Wiederherstellung den Autorisierungsanforderungsheader für den REST-Aufruf fest.
 
@@ -131,8 +131,8 @@ Die Sicherung ist ein länger anhaltender Vorgang, der bis zum Abschluss mehrere
 **Hinweis**:
 
 - Der im Hauptteil der Anforderung angegebene **Container** **muss vorhanden sein**.
-* **Versuchen Sie nicht, bei laufender Sicherung Dienstverwaltungsvorgänge durchzuführen**, z. B. SKU-Upgrade oder -Downgrade, Wechseln des Domänennamens usw. 
-* Die Wiederherstellung einer Sicherung nach ihrer Erstellung **wird nur 7 Tage lange garantiert**. 
+* **Versuchen Sie nicht, bei laufender Sicherung Dienstverwaltungsvorgänge durchzuführen**, z. B. SKU-Upgrade oder -Downgrade, Wechseln des Domänennamens usw.
+* Die Wiederherstellung einer Sicherung nach ihrer Erstellung **wird nur 7 Tage lange garantiert**.
 * **Nutzungsdaten** zum Erstellen von Analyseberichten sind in der Sicherung **nicht enthalten**. Verwenden Sie [Azure API Management REST API][], um regelmäßig Analyseberichte zur Aufbewahrung abzurufen.
 * Die Häufigkeit, mit der Sie Dienstsicherungen durchführen, wirkt sich auf das Ziel Ihres Wiederherstellungspunkts aus. Um die Auswirkungen zu minimieren, empfehlen wir, regelmäßige Sicherungen zu implementieren und bei Bedarf Sicherungen durchzuführen, wenn Sie bedeutende Änderungen an Ihrem API Management-Dienst vorgenommen haben.
 * **Änderungen** an der Dienstkonfiguration (z. B. APIs, Richtlinien, Erscheinungsbild des Entwicklerportals), die während des Sicherungsvorgangs vorgenommen werden, sind ggf. **nicht in der Sicherung enthalten und gehen somit verloren**.
@@ -169,7 +169,7 @@ Die Wiederherstellung ist ein länger anhaltender Vorgang, der bis zum Abschluss
 ## Nächste Schritte
 Sehen Sie sich die folgenden Microsoft-Blogs für zwei verschiedene Vorgehensweisen des Sicherungs- und Wiederherstellungsvorgangs an.
 
--	[Replicate Azure API Management Accounts (in englischer Sprache)](https://www.returngis.net/en/2015/06/replicate-azure-api-management-accounts/) 
+-	[Replicate Azure API Management Accounts (in englischer Sprache)](https://www.returngis.net/en/2015/06/replicate-azure-api-management-accounts/)
 	-	Vielen Dank an Gisela für ihren Beitrag zu diesem Artikel.
 -	[Azure API Management: Backing Up and Restoring Configuration (in englischer Sprache)](http://blogs.msdn.com/b/stuartleeks/archive/2015/04/29/azure-api-management-backing-up-and-restoring-configuration.aspx)
 	-	Der Ansatz von Stuart entspricht nicht der offiziellen Anleitung, ist aber sehr interessant.
@@ -191,4 +191,4 @@ Sehen Sie sich die folgenden Microsoft-Blogs für zwei verschiedene Vorgehenswei
 [api-management-endpoint]: ./media/api-management-howto-disaster-recovery-backup-restore/api-management-endpoint.png
  
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0810_2016-->

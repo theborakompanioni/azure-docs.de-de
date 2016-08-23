@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="08/02/2016"
+   ms.date="08/05/2016"
    ms.author="nicw;barbkess;sonyama"/>
 
 # Details zur Migration zu Storage Premium
@@ -27,8 +27,8 @@ Wenn Sie ein Data Warehouse vor den unten angegebenen Terminen erstellt haben, v
 | **Region** | **Vor diesem Datum erstelltes DW** |
 | :------------------ | :-------------------------------- |
 | Australien (Osten) | Storage Premium noch nicht verfügbar |
-| Australien (Südost) | Storage Premium noch nicht verfügbar |
-| Brasilien Süd | Storage Premium noch nicht verfügbar |
+| Australien (Südosten) | 5\. August 2016 |
+| Brasilien Süd | 5\. August 2016 |
 | Kanada, Mitte | 25\. Mai 2016 |
 | Kanada, Osten | 26\. Mai 2016 |
 | USA (Mitte) | 26\. Mai 2016 |
@@ -40,10 +40,10 @@ Wenn Sie ein Data Warehouse vor den unten angegebenen Terminen erstellt haben, v
 | Indien, Mitte | 27\. Mai 2016 |
 | Indien, Süden | 26\. Mai 2016 |
 | Indien, Westen | Storage Premium noch nicht verfügbar |
-| Japan Ost | Storage Premium noch nicht verfügbar |
+| Japan Ost | 5\. August 2016 |
 | Japan (Westen) | Storage Premium noch nicht verfügbar |
 | USA (Mitte/Norden) | Storage Premium noch nicht verfügbar |
-| Nordeuropa | Storage Premium noch nicht verfügbar |
+| Nordeuropa | 5\. August 2016 |
 | USA (Mitte/Süden) | 27\. Mai 2016 |
 | Südostasien | 24\. Mai 2016 |
 | Westeuropa | 25\. Mai 2016 |
@@ -99,7 +99,7 @@ Die automatische Migration wird zwischen 18:00 und 6:00 Uhr (Ortszeit der Region
 Wenn Sie den Zeitpunkt der Ausfallzeiten steuern möchten, können Sie die unten angegebenen Schritte ausführen, um ein vorhandenes Data Warehouse unter Storage Standard zu Storage Premium zu migrieren. Falls Sie sich für die selbst durchgeführte Migration entscheiden, müssen Sie diesen Vorgang vor Beginn der automatischen Migration in dieser Region durchführen. So vermeiden Sie das Risiko, dass die automatische Migration einen Konflikt verursacht (siehe [Zeitplan für die automatische Migration][]).
 
 ### Anleitung zur selbst durchgeführten Migration
-Wenn Sie Ihre Ausfallzeiten selbst steuern möchten, können Sie die Migration für das Data Warehouse per Sicherung und Wiederherstellung selbst durchführen. Der Wiederherstellungsanteil der Migration dauert ca. 1 Stunde pro TB an gespeicherten Daten pro DW. Führen Sie die unten angegebenen Schritte für die [Problemumgehung in Bezug auf die Umbenennung][] aus, wenn Sie nach Abschluss der Migration den gleichen Namen beibehalten möchten.
+Wenn Sie Ihre Ausfallzeiten selbst steuern möchten, können Sie die Migration für das Data Warehouse per Sicherung und Wiederherstellung selbst durchführen. Der Wiederherstellungsanteil der Migration dauert ca. 1 Stunde pro TB an gespeicherten Daten pro DW. Führen Sie die unten angegebenen Schritte für die [Umbenennung während der Migration][] aus, wenn Sie nach Abschluss der Migration den gleichen Namen beibehalten möchten.
 
 1.	[Anhalten][]\: Halten Sie das DW an, damit eine automatische Sicherung erstellt wird.
 2.	[Wiederherstellung][]\: Führen Sie eine Wiederherstellung aus der letzten Momentaufnahme durch.
@@ -129,6 +129,34 @@ ALTER DATABASE CurrentDatabasename MODIFY NAME = NewDatabaseName;
 >	-  Firewall rules at the **Database** level will need to be re-added.  Firewall rules at the **Server** level will not be impacted.
 
 ## Nächste Schritte
+Mit der Änderung zu Storage Premium haben wir auch die Anzahl von Datenbank-Blobdateien in der zugrunde liegenden Architektur Ihrer Data Warehouse-Instanz erhöht. Falls Leistungsprobleme auftreten, raten wir Ihnen, die gruppierten Columnstore-Indizes mit dem unten angegebenen Skript neu zu erstellen. So wird erzwungen, dass einige Ihrer Daten auf den zusätzlichen Blobs angeordnet werden. Wenn Sie keine Maßnahmen ergreifen, werden die Daten im Laufe der Zeit auf natürliche Weise verteilt, sobald Sie weitere Daten in die Data Warehouse-Tabellen laden.
+
+**Voraussetzungen:**
+
+1.	Data Warehouse sollte mit 1.000 DWUs oder mehr ausgeführt werden (siehe [Skalieren von Computeleistung][]).
+2.	Benutzer, die das Skript ausführen, sollten über die [Rolle „mediumrc“][] oder höher verfügen.
+	1.	Führen Sie Folgendes aus, um dieser Rolle einen Benutzer hinzuzufügen:
+		1.	````EXEC sp_addrolemember 'xlargerc', 'MyUser'````
+
+````sql
+-------------------------------------------------------------------------------
+-- Schritt 1: Erstellen der Tabelle zum Steuern der Indexneuerstellung
+-- Ausführung als Benutzer unter „mediumrc“ oder höher
+--------------------------------------------------------------------------------
+create table sql\_statements WITH (distribution = round\_robin) as select 'alter index all on ' + s.name + '.' + t.NAME + ' rebuild;' as statement, row\_number() over (order by s.name, t.name) as sequence from sys.schemas s inner join sys.tables t on s.schema\_id = t.schema\_id where is\_external = 0 ; go
+ 
+--------------------------------------------------------------------------------
+-- Schritt 2: Ausführen von Indexneuerstellungen: Wenn das Skript fehlschlägt, kann der unten angegebene Code erneut ausgeführt werden, um ab dem letzten Punkt fortzufahren.
+-- Ausführung als Benutzer unter „mediumrc“ oder höher
+--------------------------------------------------------------------------------
+
+declare @nbr\_statements int = (select count(*) from sql\_statements) declare @i int = 1 while(@i <= @nbr\_statements) begin declare @statement nvarchar(1000)= (select statement from sql\_statements where sequence = @i) print cast(getdate() as nvarchar(1000)) + ' Executing... ' + @statement exec (@statement) delete from sql\_statements where sequence = @i set @i += 1 end;
+go
+-------------------------------------------------------------------------------
+-- Schritt 3: Bereinigen der in Schritt 1 erstellten Tabelle
+--------------------------------------------------------------------------------
+drop table sql\_statements; go ````
+
 Wenn Probleme mit Ihrem Data Warehouse auftreten, können Sie [ein Supportticket erstellen][] und als möglichen Grund „Migration zu Storage Premium“ angeben.
 
 <!--Image references-->
@@ -143,13 +171,15 @@ Wenn Probleme mit Ihrem Data Warehouse auftreten, können Sie [ein Supportticket
 [Anhalten]: ./sql-data-warehouse-manage-compute-portal.md/#pause-compute
 [Wiederherstellen]: ./sql-data-warehouse-manage-database-restore-portal.md
 [Wiederherstellung]: ./sql-data-warehouse-manage-database-restore-portal.md
-[Problemumgehung in Bezug auf die Umbenennung]: #optional-rename-workaround
+[Umbenennung während der Migration]: #optional-steps-to-rename-during-migration
+[Skalieren von Computeleistung]: ./sql-data-warehouse-manage-compute-portal/#scale-compute-power
+[Rolle „mediumrc“]: ./sql-data-warehouse-develop-concurrency/#workload-management
 
 <!--MSDN references-->
 
 
 <!--Other Web references-->
-[Storage Premium eingeführt, um die Leistung besser vorhersagen zu können]: https://azure.microsoft.com/blog/azure-sql-data-warehouse-introduces-premium-storage-for-greater-performance/
+[Storage Premium eingeführt, um die Leistung besser vorhersagen zu können]: https://azure.microsoft.com/de-DE/blog/azure-sql-data-warehouse-introduces-premium-storage-for-greater-performance/
 [Azure-Portal]: https://portal.azure.com
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0810_2016-->

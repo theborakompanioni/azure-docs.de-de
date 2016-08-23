@@ -13,18 +13,18 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="05/18/2016"
+   ms.date="08/08/2016"
    ms.author="sonyama;barbkess;mausher"/>
 
 # PowerShell-Cmdlets und REST-APIs für SQL Data Warehouse
 
 Viele SQL Data Warehouse-Verwaltungsaufgaben können entweder mithilfe von Azure PowerShell-Cmdlets oder REST-APIs verwaltet werden. Die folgenden Beispiele zeigen einen Einblick, wie PowerShell-Befehle verwendet werden, um häufige Aufgaben in SQL Data Warehouse zu automatisieren. Einige gute REST-Beispiele finden Sie im Artikel [Verwalten von Computeleistung in Azure SQL Data Warehouse (REST)][].
 
-> [AZURE.NOTE]  Damit Sie Azure Powershell mit SQL Data Warehouse verwenden können, müssen Sie Azure PowerShell Version 1.0.3 oder höher installieren. Sie können die Version überprüfen, indem Sie **Get-Module -ListAvailable -Name Azure** ausführen. Sie können die neueste Version installieren, indem Sie sie über [Microsoft Web Platform Installer][] herunterladen. Weitere Informationen zum Installieren der neuesten Version finden Sie unter [Installieren und Konfigurieren von Azure PowerShell][].
+> [AZURE.NOTE]  Damit Sie Azure Powershell mit SQL Data Warehouse verwenden können, benötigen Sie Azure Powershell Version 1.0.3 oder höher. Sie können die Version überprüfen, indem Sie **Get-Module -ListAvailable -Name Azure** ausführen. Sie können die neueste Version installieren, indem Sie sie über [Microsoft Web Platform Installer][] herunterladen. Weitere Informationen zum Installieren der neuesten Version finden Sie unter [Installieren und Konfigurieren von Azure PowerShell][].
 
 ## Erste Schritte mit Azure PowerShell-Cmdlets
 
-1. Öffnen Sie Windows PowerShell. 
+1. Öffnen Sie Windows PowerShell.
 2. Zum Anmelden bei Azure Resource Manager und Auswählen Ihres Abonnements führen Sie bei der PowerShell-Eingabeaufforderung die folgenden Befehle aus:
 
     ```PowerShell
@@ -74,7 +74,7 @@ Diese PowerShell-Cmdlets werden häufig mit Azure SQL Data Warehouse verwendet.
 - [Get-AzureRmSqlDatabaseRestorePoints][]
 - [New-AzureRmSqlDatabase][]
 - [Remove-AzureRmSqlDatabase][]
-- [Restore-AzureRmSqlDatabase][] 
+- [Restore-AzureRmSqlDatabase][]
 - [Resume-AzureRmSqlDatabase][]
 - [Select-AzureRmSubscription][]
 - [Set-AzureRmSqlDatabase][]
@@ -114,4 +114,4 @@ Eine Liste mit allen Aufgaben, die mit PowerShell automatisiert werden können, 
 <!--Other Web references-->
 [Microsoft Web Platform Installer]: https://aka.ms/webpi-azps
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0810_2016-->

@@ -14,7 +14,7 @@
     ms.workload="search"
     ms.topic="get-started-article"
     ms.tgt_pltfrm="na"
-    ms.date="05/23/2016"
+    ms.date="08/15/2016"
     ms.author="brjohnst"/>
 
 # Hochladen von Daten in Azure Search mit dem .NET SDK
@@ -205,4 +205,4 @@ Aus diesem Grund empfehlen wir als bewährte Methode, in Ihren Modellklassen Typ
 ## Weiter
 Nach dem Auffüllen des Azure Search-Indexes können Sie mit Abfragen für die Suche nach Dokumenten beginnen. Ausführliche Informationen finden Sie unter [Abfragen des Azure Search-Index](search-query-overview.md).
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0817_2016-->

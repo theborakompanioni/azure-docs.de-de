@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/12/2016"
+	ms.date="08/03/2016"
 	ms.author="asteen"/>
 
 # Anpassen der Kennwortverwaltung an die Anforderungen Ihrer Organisation
@@ -851,7 +851,7 @@ In der folgenden Tabelle werden die Auswirkungen der einzelnen Steuerelemente au
                   <li class="unordered">
 												Wenn diese Einstellung auf "Ja" festgelegt ist, erhält ein Benutzer oder Administrator nach dem Zurücksetzen des eigenen Kennworts eine Benachrichtigung, dass das Kennwort zurückgesetzt wurde.<br><br></li>
                   <li class="unordered">
-												Diese Benachrichtigung wird per E-Mail an die primäre und die alternative (Authentifizierungs-) E-Mail-Adresse des Benutzers gesendet, der das Kennwort zurückgesetzt hat.<br><br></li>
+												Diese Benachrichtigung wird per E-Mail an den Benutzerprinzipalnamen und die alternative E-Mail-Adresse (Authentifizierungs-E-Mail-Adresse) des Benutzers gesendet, der das Kennwort zurückgesetzt hat.<br><br></li>
                 </ul>
               </td>
             </tr>
@@ -875,4 +875,4 @@ Im Folgenden finden Sie Links zu allen Webseiten mit Informationen zur Kennwortz
 
 [001]: ./media/active-directory-passwords-customize/001.jpg "Image_001.jpg"
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0810_2016-->

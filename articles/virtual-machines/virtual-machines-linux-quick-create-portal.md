@@ -21,16 +21,18 @@
 
 # Erstellen eines virtuellen Linux-Computers in Azure mithilfe des Portals
 
-In diesem Artikel wird beschrieben, wie Sie das [Azure-Portal](https://portal.azure.com/) zum schnellen Erstellen eines virtuellen Linux-Computers verwenden. Die einzigen Voraussetzungen sind [ein Azure-Konto](https://azure.microsoft.com/pricing/free-trial/) und [Dateien mit öffentlichen und privaten Schlüsseln](virtual-machines-linux-mac-create-ssh-keys.md).
+> [AZURE.NOTE] Falls Sie einen Moment Zeit haben, würden wir uns freuen, wenn Sie an dieser [kurzen Umfrage](https://aka.ms/linuxdocsurvey) teilnehmen könnten, um zur Verbesserung der Dokumentation für virtuelle Azure-Computer unter Linux beizutragen. Jede Antwort hilft uns dabei, Sie noch besser bei Ihrer Arbeit zu unterstützen.
+
+In diesem Artikel erfahren Sie, wie Sie mithilfe des [Azure-Portals](https://portal.azure.com/) schnell einen virtuellen Linux-Computer erstellen. Die einzigen Voraussetzungen sind [ein Azure-Konto](https://azure.microsoft.com/pricing/free-trial/) und [Dateien mit öffentlichen und privaten SSH-Schlüsseln](virtual-machines-linux-mac-create-ssh-keys.md).
 
 > [AZURE.NOTE] Wenn Sie ein Kennwort für den sicheren Zugriff auf Ihren virtuellen Computer verwenden möchten, muss das Kennwort mindestens zwölf Zeichen lang sein und mindestens einen Großbuchstaben, einen Kleinbuchstaben, ein Sonderzeichen und eine Zahl enthalten.
 
 
-1. Melden Sie sich mit Ihrer Azure-Kontoidentität beim Azure-Portal an, und klicken Sie oben links auf **+ Neu**:
+1. Melden Sie sich mit Ihrer Azure-Kontoidentität beim Azure-Portal an, und klicken Sie links oben auf **+ Neu**:
 
     ![Bildschirm 1](../media/virtual-machines-linux-quick-create-portal/screen1.png)
 
-2. Klicken Sie im **Marketplace** auf **Virtual Machines** und dann in der Imageliste **Ausgewählte Apps** auf **Ubuntu Server 14.04 LTS**. Prüfen Sie im unteren Bereich, ob als Bereitstellungsmodelltyp `Resource Manager` verwendet wird, und klicken Sie dann auf **Erstellen**.
+2. Klicken Sie im **Marketplace** auf **Virtual Machines** und dann in der Imageliste **Ausgewählte Apps** auf **Ubuntu Server 14.04 LTS**. Vergewissern Sie sich im unteren Bereich, dass das Bereitstellungsmodell auf `Resource Manager` festgelegt ist, und klicken Sie dann auf **Erstellen**.
 
     ![Bildschirm 2](../media/virtual-machines-linux-quick-create-portal/screen2.png)
 
@@ -38,26 +40,26 @@ In diesem Artikel wird beschrieben, wie Sie das [Azure-Portal](https://portal.az
     - Geben Sie einen Namen für den virtuellen Computer ein.
     - Geben Sie einen Benutzernamen für den Administratorbenutzer ein.
     - Legen Sie den Authentifizierungstyp auf **Öffentlicher SSH-Schlüssel** fest.
-    - Verwenden Sie Ihren öffentlichen SSH-Schlüssel als Zeichenfolge (standardmäßig aus dem Verzeichnis `~/.ssh/`).
+    - Geben Sie Ihren öffentlichen SSH-Schlüssel als Zeichenfolge ein (standardmäßig aus dem Verzeichnis `~/.ssh/`).
     - Geben Sie einen Ressourcengruppennamen ein (um eine neue Bereitstellungsgruppe zu erstellen), oder wählen Sie eine vorhandene Gruppe aus.
 
-    Klicken Sie auf **OK**, um fortzufahren und die VM-Größe auszuwählen. Folgendes sollte angezeigt werden:
+    Klicken Sie auf **OK**, um den Vorgang fortzusetzen und die VM-Größe auszuwählen. Das sollte dann in etwa wie folgt aussehen:
 
     ![Bildschirm 3](../media/virtual-machines-linux-quick-create-portal/screen3.png)
 
-4. Wählen Sie die Größe **DS1** aus, bei der Ubuntu auf einem Premium-SSD-Datenträger installiert wird, und klicken Sie auf **Auswählen**, um die Einstellungen zu konfigurieren.
+4. Wählen Sie die Größe **DS1** aus, um Ubuntu auf einem Premium-SSD-Datenträger zu installieren, und klicken Sie auf **Auswählen**, um die Einstellungen zu konfigurieren.
 
     ![Bildschirm 4](../media/virtual-machines-linux-quick-create-portal/screen4.png)
 
-5. Behalten Sie unter **Einstellungen** die Standardwerte für Speicher und Netzwerk bei, und klicken Sie auf **OK**, um die Zusammenfassung anzuzeigen. Durch die Auswahl „DS1“ wurde der Datenträgertyp auf „Premium-SSD“ festgelegt. Das **S** steht hierbei für SSD.
+5. Behalten Sie unter **Einstellungen** die Standardwerte für Speicher und Netzwerk bei, und klicken Sie auf **OK**, um die Zusammenfassung anzuzeigen. Durch Auswählen von „DS1“ wurde der Datenträgertyp auf „Premium-SSD“ festgelegt. Das **S** steht hierbei für SSD.
 
     ![Bildschirm 5](../media/virtual-machines-linux-quick-create-portal/screen5.png)
 
-6. Bestätigen Sie die Einstellungen für den neuen virtuellen Ubuntu-Computer, und klicken Sie auf **OK**.
+6. Überprüfen Sie die Einstellungen für den neuen virtuellen Ubuntu-Computer, und klicken Sie auf **OK**.
 
     ![Bildschirm 6](../media/virtual-machines-linux-quick-create-portal/screen6.png)
 
-7. Öffnen Sie das Portal-Dashboard, und wählen Sie unter **Netzwerkschnittstellen** Ihre Netzwerkschnittstelle aus.
+7. Öffnen Sie das Portal-Dashboard, und wählen Sie unter **Netzwerkschnittstellen** Ihre NIC aus.
 
     ![Bildschirm 7](../media/virtual-machines-linux-quick-create-portal/screen7.png)
 
@@ -81,4 +83,4 @@ Sie haben nun schnell eine Linux-VM zum Testen und für Demonstrationszwecke ers
 
 Diese Artikel beschreiben die ersten Schritte beim Erstellen einer Azure-Infrastruktur sowie einer beliebigen Anzahl von proprietären und Open Source-Tools zur Infrastrukturbereitstellung, -konfiguration und -orchestrierung.
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0817_2016-->

@@ -29,7 +29,7 @@ In diesem Thema wird das Verwenden des .NET-Back-End-Server-SDKs in Azure App Se
 
 Die Referenzdokumentation für das Server-SDK finden Sie hier: [Azure Mobile Apps .NET Referenz](https://msdn.microsoft.com/library/azure/dn961176.aspx).
 
-## <a name="create-app"></a>Erstellen eines .NET-Back-Ends für Ihre mobile Anwendung
+## <a name="create-app"></a>Vorgehensweise: Erstellen eines .NET Mobile App-Back-Ends
 
 Wenn Sie ein neues Projekt beginnen, können Sie entweder über das [Azure-Portal] oder mit Visual Studio eine App Service-Anwendung erstellen. In diesem Abschnitt wird erläutert, wie Sie mit einer dieser Komponenten ein neues Back-End für eine mobile Anwendung erstellen, das eine einfache Aufgabenlisten-API hostet. Sie können die Erstellung lokal vornehmen oder das Projekt in der cloudbasierten mobilen App Service-App veröffentlichen.
 
@@ -37,9 +37,11 @@ Wenn Sie einem vorhandenen Projekt mobile Funktionen hinzufügen, lesen Sie weit
 
 ### Erstellen eines .NET-Back-Ends mithilfe des Azure-Portals
 
-Sie können direkt im [Azure-Portal ] eine neue mobile Anwendung erstellen. Sie können entweder die unten genannten Schritte ausführen oder anhand der Anweisungen im Tutorial [Erstellen einer mobilen App](app-service-mobile-ios-get-started.md) einen neuen Client und Server erstellen.
+Sie können direkt im [Azure-Portal ] ein neues Back-End für die mobile App erstellen.
 
-[AZURE.INCLUDE [app-service-mobile-dotnet-backend-create-new-service](../../includes/app-service-mobile-dotnet-backend-create-new-service.md)]
+Sie können entweder die unten genannten Schritte ausführen oder anhand der Anweisungen im Tutorial [Erstellen einer mobilen App](app-service-mobile-ios-get-started.md) einen neuen Client und Server erstellen. Das Tutorial enthält eine vereinfachte Version dieser Anweisungen und eignet sich am besten für Proof of Concept-Projekte. Im Tutorial kann nur ein Node.js-Back-End erstellt werden.
+
+[AZURE.INCLUDE [app-service-mobile-dotnet-backend-create-new-service-classic](../../includes/app-service-mobile-dotnet-backend-create-new-service-classic.md)]
 
 Wählen Sie auf dem Blatt _Erste Schritte_ unter **Erstellen einer Tabellen-API** die Option **C#** als **Back-End-Sprache**. Klicken Sie auf **Herunterladen**, extrahieren Sie die komprimierten Projektdateien auf Ihrem lokalen Computer, und öffnen Sie die Projektmappe in Visual Studio.
 
@@ -198,7 +200,7 @@ Der benutzerdefinierte API-Controller bietet Grundfunktionen für Ihr Mobile App
 
 		using Microsoft.Azure.Mobile.Server.Config;
 
-4. Wenden Sie das **[MobileAppController]**-Attribut wie im folgenden Beispiel auf die API-Controller-Klassendefinition an:
+4. Wenden Sie das **[MobileAppController]**-Attribut wie im folgenden Beispiel auf die Definition der API-Controllerklasse an:
 
 		[MobileAppController]
 		public class CustomController : ApiController
@@ -402,7 +404,7 @@ Im folgenden Beispiel wird veranschaulicht, wie Sie eine Installations-ID verwen
 	    }
 	});
 
-Beachten Sie, dass alle Tags, die vom Client während der Registrierung von Pushbenachrichtigungen bereitgestellt werden, vom Back-End beim Erstellen der Installation ignoriert werden. Damit ein Client der Installation Tags hinzufügen kann, müssen Sie eine neue benutzerdefinierte API erstellen, die Tags nach dem obigen Muster hinzufügt. Ein Beispiel für einen benutzerdefinierten API-Controller, mit dem Clients einer Installation Tags hinzufügen können, finden Sie im abgeschlossenen Schnellstartbeispiel mit Mobile App Service-Apps für .NET-Back-Ends unter [Client-added push notification tags](https://github.com/Azure-Samples/app-service-mobile-dotnet-backend-quickstart/blob/master/README.md#client-added-push-notification-tags) (Vom Client hinzugefügte Tags für Pushbenachrichtigungen).
+Beachten Sie, dass alle Tags, die vom Client während der Registrierung von Pushbenachrichtigungen bereitgestellt werden, vom Back-End beim Erstellen der Installation ignoriert werden. Damit ein Client der Installation Tags hinzufügen kann, müssen Sie eine neue benutzerdefinierte API erstellen, die Tags nach dem obigen Muster hinzufügt. Ein Beispiel für einen benutzerdefinierten API-Controller, mit dem Clients einer Installation Tags hinzufügen können, finden Sie unter „App Service Mobile Apps completed quickstart for .NET backend“ (Abgeschlossenes Schnellstartbeispiel für Mobile App Service-Apps für .NET-Back-Ends) im Abschnitt [Client-added push notification tags](https://github.com/Azure-Samples/app-service-mobile-dotnet-backend-quickstart/blob/master/README.md#client-added-push-notification-tags) (Vom Client hinzugefügte Tags für Pushbenachrichtigungen).
 
 ##<a name="push-user"></a>Vorgehensweise: Senden von Pushbenachrichtigungen an einen authentifizierten Benutzer
 
@@ -419,7 +421,7 @@ Wenn ein authentifizierter Benutzer für Pushbenachrichtigungen registriert wird
     // Send a template notification to the user ID.
     await hub.SendTemplateNotificationAsync(notification, userTag);
 
-Stellen Sie vor der Registrierung für Pushbenachrichtigungen von einem authentifizierten Client sicher, dass die Authentifizierung abgeschlossen ist. Weitere Informationen finden Sie im abgeschlossenen Schnellstartbeispiel mit Mobile App Service-Apps für .NET-Back-Ends unter [Push to users](https://github.com/Azure-Samples/app-service-mobile-dotnet-backend-quickstart/blob/master/README.md#push-to-users) (Push an Benutzer).
+Stellen Sie vor der Registrierung für Pushbenachrichtigungen von einem authentifizierten Client sicher, dass die Authentifizierung abgeschlossen ist. Weitere Informationen finden Sie unter „App Service Mobile Apps completed quickstart for .NET backend“ (Abgeschlossenes Schnellstartbeispiel für Mobile App Service-Apps für .NET-Back-Ends) im Abschnitt [Push to users](https://github.com/Azure-Samples/app-service-mobile-dotnet-backend-quickstart/blob/master/README.md#push-to-users) (Push an Benutzer).
 
 ## Vorgehensweise: Debuggen und Problembehandlung des .NET-Server-SDKs
 
@@ -480,4 +482,4 @@ Ihr lokal ausgeführter Server kann nun Token überprüfen, die der Client vom c
 [Microsoft.Azure.Mobile.Server.Notifications]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Notifications/
 [MapHttpAttributeRoutes]: https://msdn.microsoft.com/library/dn479134(v=vs.118).aspx
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0810_2016-->

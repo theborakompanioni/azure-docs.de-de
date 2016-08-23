@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/03/2016"
+	ms.date="08/09/2016"
 	ms.author="spelluru"/>
 
 
@@ -87,7 +87,7 @@ Beachten Sie, dass sich diese Einstellung von der Eigenschaft **Parallelität** 
 
 Sehen wir uns ein **Beispielszenario** an: Im folgenden Beispiel müssen mehrere Slices aus der Vergangenheit verarbeitet werden. Der Data Factory-Dienst führt eine Instanz der Kopieraktivität (Aktivitätsausführung) für jeden Slice aus.
 
-- Datenslice des 1. Aktivitätsfensters (1:00 bis 2:00 Uhr) == > Aktivitätsausführung 1
+- Datenslice des 1. Aktivitätsfensters (1:00 bis 2:00 Uhr) ==> Aktivitätsausführung 1
 - Datenslice des 2. Aktivitätsfensters (2:00 bis 3:00 Uhr) == > Aktivitätsausführung 2
 - Datenslice des 3. Aktivitätsfensters (3:00 bis 4:00 Uhr) == > Aktivitätsausführung 3
 - und so weiter sein.
@@ -169,7 +169,7 @@ In den [Beispielen für Anwendungsfälle](#case-study---parallel-copy) finden Si
 **Denken Sie daran**, dass Ihnen die Gebühren basierend auf der Gesamtdauer des Kopiervorgangs berechnet werden. Wenn also ein Kopierauftrag bisher mit einer Cloudeinheit eine Stunde gedauert hat und jetzt mit vier Cloudeinheiten 15 Minuten dauert, ist die Gesamtrechnung etwa gleich hoch. Ein anderes Szenario: Angenommen, Sie verwenden vier Cloudeinheiten für eine Kopieraktivität. Die erste und die zweite Einheit benötigen jeweils 10 Minuten und die dritte und vierte jeweils 5 Minuten. In diesem Fall wird Ihnen die Gesamtdauer des Kopiervorgangs (bzw. der Datenverschiebung) berechnet, also 10 + 10 + 5 + 5 = 30 Minuten. Die Verwendung von **parallelCopies** hat keine Auswirkungen auf die Abrechnung.
 
 ## Gestaffeltes Kopieren
-Beim Kopieren von Daten aus einem Quelldatenspeicher in einen Senkendatenspeicher können Sie einen Azure-Blobspeicher als Stagingzwischenspeicher verwenden. Diese Stagingfunktion ist besonders in folgenden Fällen hilfreich:
+Beim Kopieren von Daten aus einem Quelldatenspeicher in einen Senkendatenspeicher können Sie einen Azure Blob Storage als Stagingzwischenspeicher verwenden. Diese Stagingfunktion ist besonders in folgenden Fällen hilfreich:
 
 1.	**Hybriddatenbewegungen (also die Bewegung aus dem lokalen Datenspeicher in einen Clouddatenspeicher oder umgekehrt) können über eine langsame Netzwerkverbindung eine Weile dauern.** Zur Verbesserung der Leistung solcher Datenbewegungen können Sie Daten lokal komprimieren, damit sie schneller über das Netzwerk an den Stagingdatenspeicher in der Cloud übertragen werden, und die Daten im Stagingspeicher dekomprimieren, bevor sie in den Zieldatenspeicher geladen werden.
 2.	**Aufgrund von IT-Richtlinien sollen in der Firewall mit Ausnahme der Ports 80 und 443 keine weiteren Ports geöffnet werden.** Ein Beispiel: Beim Kopieren von Daten aus einem lokalen Datenspeicher an eine Azure SQL-Datenbanksenke oder eine Azure SQL Data Warehouse-Senke muss ausgehende TCP-Kommunikation über den Port 1433 sowohl für die Windows-Firewall als auch für die Unternehmensfirewall ermöglicht werden. In einem solchen Szenario können Sie unter Verwendung des Datenverwaltungsgateways zunächst über HTTP(S) (also über den Port 443) Daten in einen Azure-Stagingblobspeicher kopieren und die Daten dann von dort aus in die SQL-Datenbank oder in SQL Data Warehouse laden. Der Port 1433 muss hierzu nicht aktiviert werden.
@@ -197,7 +197,7 @@ Eigenschaft | Beschreibung | Standardwert | Erforderlich
 --------- | ----------- | ------------ | --------
 enableStaging | Geben Sie an, ob Sie Daten über einen Stagingzwischenspeicher kopieren möchten. | False | Nein
 linkedServiceName | Geben Sie den Namen eines verknüpften Diensts vom Typ [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service) oder [AzureStorageSas](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) an, um auf die Azure Storage-Instanz zu verweisen, die als Stagingzwischenspeicher verwendet werden soll. <br/><br/> Beachten Sie, dass Azure Storage-Instanzen mit SAS (Shared Access Signature) nicht verwendet werden können, um Daten über PolyBase in Azure SQL Data Warehouse zu laden. In allen anderen Szenarien können sie problemlos verwendet werden. | – | Ja, wenn „enableStaging“ auf „true“ festgelegt ist. 
-path | Geben Sie den Pfad im Azure-Blobspeicher an, der die bereitgestellten Daten enthalten soll. Wenn Sie keinen Pfad angeben, erstellt der Dienst einen Container zum Speichern der temporären Daten. <br/><br/> Der Pfad muss nur angegeben werden, wenn Sie Azure Storage mit SAS verwenden oder genau vorgegeben ist, wo sich die temporären Daten befinden müssen. | N/V | Nein
+path | Geben Sie den Pfad im Azure-Blobspeicher an, der die bereitgestellten Daten enthalten soll. Wenn Sie keinen Pfad angeben, erstellt der Dienst einen Container zum Speichern der temporären Daten. <br/><br/> Der Pfad muss nur angegeben werden, wenn Sie Azure Storage mit SAS verwenden oder genau vorgegeben ist, wo sich die temporären Daten befinden müssen. | – | Nein
 enableCompression | Geben Sie an, ob die Daten zur Entlastung des Netzwerks komprimiert werden sollen, wenn sie aus dem Quelldatenspeicher an den Senkendatenspeicher bewegt werden. | False | Nein
 
 Hier sehen Sie eine Beispieldefinition für eine Kopieraktivität mit den oben angegebenen Eigenschaften:
@@ -283,7 +283,7 @@ Wenn Sie Daten aus einem **Azure-Blobspeicher** in **Azure SQL Data Warehouse** 
 	- Wenn Sie für jede Kopieraktivitätsausführung die Eigenschaft „sqlWriterCleanupScript“ konfigurieren, löst der Dienst zuerst das Skript aus und fügt die Daten dann mithilfe der API für Massenkopierfunktionen ein. Beispiel: Zum Überschreiben der gesamten Tabelle mit den aktuellen Daten können Sie zunächst ein Skript zum Löschen aller Datensätze angeben und dann die neuen Daten durch Massenladen aus der Quelle einfügen.
 - **Datenmuster und Batchgröße**:
 	- Das Tabellenschema wirkt sich auf den Kopierdurchsatz aus. Beim Kopieren derselben Datenmenge erzielen Sie mit großen Zeilen eine bessere Leistung als mit kleinen Zeilen, da die Datenbank für weniger Datenbatches effizienter einen Commit ausführen kann.
-	- Die Kopieraktivität fügt Daten in einer Folge von Batches ein, wobei die Anzahl der Zeilen in einem Batch mithilfe der Eigenschaft „writeBatchSize“ festgelegt werden kann. Wenn Ihre Daten Zeilen mit geringer Größe aufweisen, können Sie für die Eigenschaft „writeBatchSize“ einen höheren Wert festlegen, damit weniger Batchaufwand verursacht und der Durchsatz erhöht wird. Wenn die Zeilen Ihrer Daten sehr umfangreich sind, seien Sie beim Erhöhen des Werts von „writeBatchSize“ vorsichtig – ein großer Wert kann zu einem Kopiefehler aufgrund von Datenbanküberlastung führen.
+	- Die Kopieraktivität fügt Daten in einer Folge von Batches ein, wobei die Anzahl der Zeilen in einem Batch mithilfe der Eigenschaft „writeBatchSize“ festgelegt werden kann. Wenn Ihre Daten Zeilen mit geringer Größe aufweisen, können Sie für die writeBatchSize-Eigenschaft einen höheren Wert festlegen, damit weniger Batchaufwand verursacht und der Durchsatz erhöht wird. Wenn die Zeilen Ihrer Daten sehr umfangreich sind, seien Sie beim Erhöhen des Werts von „writeBatchSize“ vorsichtig – ein großer Wert kann zu einem Kopiefehler aufgrund von Datenbanküberlastung führen.
 - Außerdem finden Sie Informationen zum Szenario mit **lokalen relationalen Datenbanken** wie SQL Server und Oracle, bei dem die Verwendung des **Datenverwaltungsgateways** erforderlich ist, im Abschnitt [Hinweise zum Gateway](#considerations-on-data-management-gateway).
 
 
@@ -304,12 +304,12 @@ Serialisierung und Deserialisierung können auftreten, wenn Ihr Eingabe- oder Au
 	- Wenn sowohl das Eingabe- als auch das Ausgabedataset dieselben oder keine Dateiformateinstellungen aufweisen, führt der Datenverschiebungsdienst eine binäre Kopie ohne Serialisierung/Deserialisierung durch. Daher erzielen Sie wahrscheinlich einen besseren Durchsatz verglichen mit dem Szenario, bei dem sich die Dateiformateinstellungen für Quelle und Senke unterscheiden.
 	- Wenn sowohl das Eingabe- als auch das Ausgabedataset im Textformat vorliegen und sich nur im Codierungstyp unterscheiden, führt der Datenverschiebungsdienst nur eine Konvertierung der Codierung ohne Serialisierung/Deserialisierung durch. Dies führt im Vergleich zur binären Kopie zu einigem Leistungsaufwand.
 	- Wenn das Eingabe- und Ausgabedataset unterschiedliche Dateiformate oder unterschiedliche Konfigurationen wie Trennzeichen aufweisen, deserialisiert und transformiert der Datenverschiebungsdienst die zu streamenden Quelldaten und serialisiert sie anschließend in das gewünschte Ausgabeformat. Dies führt im Vergleich zu den vorherigen Szenarien zu wesentlich höherem Leistungsaufwand.
-- Beim Kopieren von Dateien in einen bzw. aus einem nicht dateibasierten Datenspeicher (z. B. aus einem dateibasierten Speicher in einen relationalen Speicher) ist eine Serialisierung oder Deserialisierung erforderlich und führt zu einem hohen Leistungsaufwand.
+- Beim Kopieren von Dateien in einen bzw. aus einem nicht dateibasierten Datenspeicher (z.B. aus einem dateibasierten Speicher in einen relationalen Speicher) ist eine Serialisierung oder Deserialisierung erforderlich und führt zu einem hohen Leistungsaufwand.
 
 **Dateiformat:** Die Wahl des Dateiformats kann die Leistung beeinträchtigen. Avro ist z. B. ein kompaktes binäres Format, das Metadaten mit Daten speichert und über umfassende Unterstützung im Hadoop-System für die Verarbeitung und Abfragen verfügt. Avro ist jedoch teurer für die Serialisierung/Deserialisierung, was im Vergleich mit dem Textformat zu einem niedrigeren Durchsatz führt. Die Auswahl des mit dem Verarbeitungsablauf zu verwendenden Dateiformats sollte ganzheitlich getroffen werden. Beginnen Sie dabei mit dem Format, in dem die Daten in Quellendatenspeichern gespeichert oder aus externen Systemen extrahiert werden, dem besten Format für die Speicherung, analytische Verarbeitung und Abfragen, und in welchem Format die Daten in Data Marts für die Berichterstellungs- und Visualisierungstools exportiert werden sollen. Manchmal stellt sich heraus, dass ein für die Lese- und Schreibleistung suboptimales Dateiformat sich unter Berücksichtigung des gesamten analytischen Prozesses gut eignet.
 
 ## Hinweise zur Komprimierung
-Wenn Ihr Eingabe- oder Ausgabedataset eine Datei ist, können Sie die Kopieraktivität so konfigurieren, dass beim Schreiben von Daten in das Ziel eine Komprimierung oder Dekomprimierung ausgeführt wird. Durch Aktivieren der Komprimierung, stellen Sie einen Kompromiss zwischen E/A und CPU her: Das Komprimieren der Daten kostet zusätzliche Computeressourcen, sorgt jedoch im Gegenzug für eine Reduzierung des Netzwerk-E/A und des Speichers; abhängig von Ihren Daten kann dies zu einer Verbesserung des Gesamtdurchsatzes von Kopien führen.
+Wenn Ihr Eingabe- oder Ausgabedataset eine Datei ist, können Sie die Kopieraktivität so konfigurieren, dass beim Schreiben von Daten in das Ziel eine Komprimierung oder Dekomprimierung ausgeführt wird. Durch Aktivieren der Komprimierung, stellen Sie einen Kompromiss zwischen E/A und CPU her: Das Komprimieren der Daten kostet zusätzliche Computeressourcen, sorgt jedoch im Gegenzug für eine Reduzierung von Netzwerk-E/A und Speicher; abhängig von Ihren Daten kann dies zu einer Verbesserung des Gesamtdurchsatzes beim Kopieren führen.
 
 **Codec:** GZIP-, BZIP2- und Deflate-Komprimierung werden unterstützt. Alle drei Typen können von Azure HDInsight für die Verarbeitung verwendet werden. Jeder Komprimierungscodec ist eindeutig. BZIP2 erzielt z. B. hat den niedrigsten Durchsatz, Sie erhalten jedoch die beste Hive-Abfrageleistung, da für die Verarbeitung eine Aufteilung möglich ist; GZIP bietet die ausgewogenste Option und wird am häufigsten verwendet. Sie sollten den Codec auswählen, der für das End-to-End-Szenario am besten geeignet ist.
 
@@ -327,7 +327,7 @@ Empfehlungen für die Gatewayeinrichtung finden Sie unter [Überlegungen zur Ver
 
 **Gatewaycomputerumgebung:** Es wird empfohlen, einen dedizierten Computer zum Hosten des Datenverwaltungsgateways zu verwenden. Verwenden Sie Tools wie Systemmonitor, um die Auslastung von CPU, Arbeitsspeicher und Bandbreite während eines Kopiervorgangs auf Ihrem Gatewaycomputer zu überprüfen. Wechseln Sie zu einem leistungsfähigeren Computer, wenn CPU, Arbeitsspeicher oder Netzwerkbandbreite zu einem Engpass werden.
 
-**Gleichzeitige Ausführungen der Kopieraktivität:** In einer einzelnen Instanz des Datenverwaltungsgateways können mehrere Kopieraktivitäten gleichzeitig ausgeführt werden, d. h. ein Gateway kann eine bestimmte Anzahl gleichzeitig (die Anzahl von gleichzeitigen Aufträgen wird basierend auf der Hardwarekonfiguration des Gatewaycomputers berechnet) von Kopieraufträgen ausführen. Zusätzliche Aufträge werden in der Warteschlange platziert, bis sie vom Gateway abgerufen werden oder die Zeitüberschreitung für den Auftrag erreicht ist – je nachdem, was zuerst eintritt. Zum Vermeiden von Ressourcenkonflikten auf dem Gateway können Sie den Zeitplan Ihrer Aktivitäten bereitstellen, um die Menge von gleichzeitigen Kopieraufträgen in der Warteschlange zu reduzieren, oder teilen Sie die Last auf mehrere Gateways auf.
+**Gleichzeitige Ausführungen der Kopieraktivität:** In einer einzelnen Instanz des Datenverwaltungsgateways können mehrere Kopieraktivitäten gleichzeitig ausgeführt werden, d. h. ein Gateway kann eine bestimmte Anzahl gleichzeitig (die Anzahl von gleichzeitigen Aufträgen wird basierend auf der Hardwarekonfiguration des Gatewaycomputers berechnet) von Kopieraufträgen ausführen. Zusätzliche Aufträge werden in der Warteschlange platziert, bis sie vom Gateway abgerufen werden oder die Zeitüberschreitung für den Auftrag erreicht ist – je nachdem, was zuerst eintritt. Zum Vermeiden von Ressourcenkonflikten auf dem Gateway können Sie den Zeitplan Ihrer Aktivitäten bereitstellen, um die Anzahl von gleichzeitigen Kopieraufträgen in der Warteschlange zu reduzieren, oder teilen Sie die Last auf mehrere Gateways auf.
 
 
 ## Weitere Überlegungen
@@ -358,7 +358,7 @@ Bei einem oder mehreren der folgenden Faktoren kann es sich um den Leistungsengp
 	2.	Die **Belastung des Gatewaycomputers** hat ihre Grenzen für das Ausführen der folgenden Aufgaben erreicht:
 		1.	**Serialisierung:** Der Serialisierungsdatenstrom in eine CSV-Datei weist einen langsamen Durchsatz auf.
 		2.	**Komprimierung:** Ein langsamer Komprimierungscodec wurde gewählt (z. B. BZIP2 mit 2 8 MBit/s und Core i7).
-	3.	**WAN:** Niedrige Bandbreite zwischen dem Unternehmensnetzwerk und Azure (z. B. T1 = 1544 Kbit/s, T2 = 6312 Kbit/s)
+	3.	**WAN:** Niedrige Bandbreite zwischen dem Unternehmensnetzwerk und Azure (z.B. T1 = 1544 KBit/s, T2 = 6312 KBit/s)
 4.	**Senke:** Azure-Blob hat geringen Durchsatz (jedoch unwahrscheinlich, da die SLA mindestens 60 MBit/s garantiert).
 
 In diesem Fall könnte die BZIP2-Datenkomprimierung die gesamte Pipeline verlangsamen. Ein Wechsel zum GZIP-Komprimierungscodec kann diesen Engpass beheben.
@@ -392,4 +392,4 @@ Hier finden Sie einige Referenzen zur Leistungsüberwachung und -optimierung fü
 - Lokale SQL Server: [Überwachen und Optimieren der Leistung](https://msdn.microsoft.com/library/ms189081.aspx)
 - Lokaler Dateiserver: [Leistungsoptimierung für Dateiserver](https://msdn.microsoft.com/library/dn567661.aspx)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0810_2016-->

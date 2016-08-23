@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-xamarin"
 	ms.devlang="dotnet"
 	ms.topic="hero-article"
-	ms.date="08/04/2016"
+	ms.date="08/11/2016"
 	ms.author="glenga"/>
 
 #Erstellen einer Xamarin.Forms-App
@@ -180,4 +180,4 @@ Sie finden den Code, der auf Ihr mobiles App-Back-End zugreift, in der C#-Datei 
 [Mobile app SDK]: http://go.microsoft.com/fwlink/?LinkId=257545
 [Azure-Portal]: https://portal.azure.com/
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0817_2016-->

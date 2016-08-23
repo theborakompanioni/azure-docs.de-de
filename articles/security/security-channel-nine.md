@@ -4,7 +4,7 @@
    services="security"
    documentationCenter="na"
    authors="TomShinder"
-   manager="StevenPo"
+   manager="MBaldwin"
    editor="TomSh"/>
 
 <tags
@@ -13,12 +13,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/19/2016"
+   ms.date="08/09/2016"
    ms.author="terrylan"/>
 
 # Azure-Sicherheitsvideos auf Channel 9
 
-[Channel 9](https://channel9.msdn.com/) ist eine Community. Hier treten die Menschen hinter unseren Produkten in den Vordergrund und kommen in Kontakt mit den Menschen, die die Produkte nutzen.
+[Channel 9](https://channel9.msdn.com/) ist eine Community, in der die Personen hinter unseren Produkten zu Wort kommen und Verbindung mit Kunden aufnehmen können.
 
 Die Community steht hinter der Software und sagt ihr eine große Zukunft voraus. Channel 9 als Community beteiligt sich aktiv an der aktuellen Diskussion.
 
@@ -52,20 +52,28 @@ Bereiche, die in diesem Video behandelt werden:
 
 [How to set security in DevTest Labs](https://channel9.msdn.com/Blogs/Windows-Azure/How-to-set-security-in-your-DevTest-Lab) (Gewusst wie: Festlegen von Sicherheit in DevTest Labs)
 
-Als Besitzer des Labs können Sie den Zugriff auf das Lab über die beiden Labrollen „Besitzer“ und „DevTest Labs-Benutzer“ sichern. Eine Person mit der Rolle „Besitzer“ hat vollständigen Zugriff auf das Lab, wohingegen eine Person mit der Rolle „DevTest Labs-Benutzer“ nur über beschränkten Zugriff verfügt. In diesem Video wird gezeigt, wie Sie eine Person mit diesen Rollen zu einem Lab hinzufügen können.
+Als Besitzer des Labs können Sie den Zugriff auf das Lab über die beiden Labrollen „Besitzer“ und „DevTest Labs-Benutzer“ sichern. Eine Person mit der Rolle „Besitzer“ hat vollständigen Zugriff auf das Lab, wohingegen eine Person mit der Rolle „DevTest Labs-Benutzer“ nur über beschränkten Zugriff verfügt. In diesem Video wird gezeigt, wie Sie eine Person mit diesen Rollen einem Lab hinzufügen können.
 
 [Managing Secrets for Azure Apps](https://channel9.msdn.com/events/Build/2016/P456) (Verwalten von Geheimnissen für Azure-Apps)
 
-Jede größere App, die Sie in Azure bereitstellen, weist geschäftskritische geheime Daten auf, z.B. Verbindungszeichenfolgen, Zertifikate oder Schlüssel. Leichtsinnige Fehler bei der Verwaltung dieser geheimen Daten können fatale Folgen haben, z.B. Speicherverluste, Ausfälle oder Verstöße gegen die Compliance. Aus mehreren aktuellen Umfragen geht hervor, dass leichtsinnige Fehler viermal häufiger zu Sicherheitsverletzungen von Daten führen als Angreifer. In dieser Sitzung erörtern wir einige bewährte Methoden zum Verwalten der wichtigen geheimen Daten einer App. Diese mögen selbstverständlich erscheinen, dennoch werden sie von vielen Entwicklern stiefmütterlich behandelt. Wir sehen uns auch an, wie sich Azure Key Vault zum Umsetzen dieser bewährten Methoden nutzen lässt. Die Anwendung dieser Methoden hat den zusätzlichen Vorteil, dass Sie die Einhaltung von Standards wie SOC belegen können. Die ersten zehn Minuten der Sitzung entsprechen Stufe 100 und beziehen sich auf alle Cloud-Apps, die Sie auf einer beliebigen Plattform entwickeln. Die restliche Sitzung entspricht Stufe 200–300 und konzentriert sich auf Apps, die Sie auf der Azure-Plattform entwickeln.
+Jede größere App, die Sie in Azure bereitstellen, weist geschäftskritische geheime Daten auf, z.B. Verbindungszeichenfolgen, Zertifikate oder Schlüssel. Leichtsinnige Fehler bei der Verwaltung dieser geheimen Daten können fatale Folgen haben, z.B. Speicherverluste, Ausfälle oder Verstöße gegen die Compliance. Aus mehreren aktuellen Umfragen geht hervor, dass leichtsinnige Fehler viermal häufiger zu Sicherheitsverletzungen von Daten führen als Angreifer. In dieser Sitzung erörtern wir einige bewährte Methoden zum Verwalten der wichtigen geheimen Daten einer App. Diese bewährten Methoden klingen selbstverständlich, aber sie werden von vielen Entwicklern nicht angewandt. Wir sehen uns auch an, wie sich Azure Key Vault zum Umsetzen dieser bewährten Methoden nutzen lässt. Die Anwendung dieser Methoden hat den zusätzlichen Vorteil, dass Sie die Einhaltung von Standards wie SOC belegen können. Die ersten zehn Minuten der Sitzung entsprechen Stufe 100 und beziehen sich auf alle Cloud-Apps, die Sie auf einer beliebigen Plattform entwickeln. Die restliche Sitzung entspricht Stufe 200 - 300 und konzentriert sich auf Apps, die Sie auf der Azure-Plattform entwickeln.
 
 [Securing your Azure Virtual Network using Network Security Groups with Narayan Annamalai](https://channel9.msdn.com/Shows/Azure-Friday/Sucruing-your-Azure-Virtual-Network-using-Network-ACLs-with-Narayan-Annamalai) (Sichern Ihres virtuellen Azure-Netzwerks mithilfe von Netzwerksicherheitsgruppen mit Narayan Annamalai)
 
 Narayan Annamalai, Senior Program Manager, erklärt Scott die Verwendung von Netzwerksicherheitsgruppen in einem virtuellen Azure-Netzwerk. Sie können den Steuerzugriff auf Objekte in Azure nach Subnetz und Netzwerk erstellen. Sie erfahren, wie Sie mithilfe von PowerShell den Zugriff steuern und Gruppen in Azure erstellen können.
 
-[Azure AD Privileged Identity Management: Security Wizard, Alerts, Reviews](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Azure-AD-Privileged-Identity-Management-Security-Wizard-Alerts-Reviews) (Azure AD Privileged Identity Management: Sicherheits-Assistenten, Warnungen, Überprüfungen). Azure Active Directory (AD) Privileged Identity Management ist eine Premium-Funktion, mit der Sie berechtigte Identitäten und deren Zugriff auf Ressourcen erkennen, einschränken und überwachen können. Bei Bedarf können Sie jedoch auch einen sofortigen Administratorzugriff durchsetzen. Sie erhalten Informationen zu folgenden Themen: Verwalten des Schutzes für workloadspezifische Administratorrollen in Office 365, Konfigurieren von Azure Multi-Factor Authentication(MFA) für die Aktivierung privilegierter Rollen, Messen und Verbessern des Sicherheitsstatus Ihrer Mandanten, Überwachen und Beheben von Sicherheitsergebnissen, Überprüfen, wessen privilegierte Rollen für regelmäßig wiederkehrende Workflows zur erneuten Zertifizierung beibehalten werden müssen.
+[Azure AD Privileged Identity Management: Security Wizard, Alerts, Reviews](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Azure-AD-Privileged-Identity-Management-Security-Wizard-Alerts-Reviews) (Azure AD Privileged Identity Management: Sicherheits-Assistent, Warnungen, Überprüfung)
 
-[Azure Key Vault with Amit Bapat](https://channel9.msdn.com/Shows/Azure-Friday/Azure-Key-Vault-with-Amit-Bapat) (Azure Key Vault mit Amit Bapat)
+Azure Active Directory (AD) Privileged Identity Management ist eine Premium-Funktion, mit der Sie privilegierte Identitäten und den damit verbundenen Zugriff auf Ressourcen überwachen können. Außerdem wird bei Bedarf der Verwaltungszugriff erzwungen (bedarfsgesteuert und „just in time“). Sie erhalten Informationen zu folgenden Themen:
+
+- Verwalten des Schutzes für workloadspezifische Administratorrollen in Office 365
+- Konfigurieren von Azure Multi-Factor Authentication (MFA) für die Aktivierung privilegierter Rollen
+- Messen und Verbessern des Sicherheitsstatus Ihrer Mandanten
+- Überwachen und Beheben von Sicherheitsergebnissen
+- Überprüfen, wessen privilegierte Rollen für regelmäßig wiederkehrende Workflows zur erneuten Zertifizierung beibehalten werden müssen
+
+[Azure Key Vault with Amit Bapat (Azure Key Vault mit Amit Bapat)](https://channel9.msdn.com/Shows/Azure-Friday/Azure-Key-Vault-with-Amit-Bapat)
 
 Amit Bapat führt Scott in Azure Key Vault ein. Mit Azure Key Vault können Sie Schlüssel und geheime Daten wie Kennwörter mithilfe von Schlüsseln verschlüsseln, die in HSMs (Hardware Security Module) gespeichert sind. Azure Key Vault kann zur cloudbasierten und hardwarebasierten Verwaltung geheimer Daten in Microsoft Azure eingesetzt werden.
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0810_2016-->

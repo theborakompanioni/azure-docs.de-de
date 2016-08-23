@@ -13,7 +13,7 @@
  ms.topic="article"
  ms.tgt_pltfrm="na"
  ms.workload="na"
- ms.date="04/29/2016"
+ ms.date="08/09/2016"
  ms.author="dobett"/>
 
 # Konfigurieren und Verwalten des Zugriffs auf IoT Hub
@@ -24,7 +24,7 @@ Die Informationen in diesem Artikel sollen IT-Experten beim Konfigurieren einer 
 
 Geräte können mit IoT Hub in Azure über eine Vielzahl von Protokollen kommunizieren. In der Regel richtet sich die Wahl des Protokolls nach den spezifischen Anforderungen der Lösung. Die folgende Tabelle enthält die ausgehenden Ports, die geöffnet sein müssen, damit ein Gerät ein bestimmtes Protokoll verwenden kann:
 
-| Protokoll | Port(s) |
+| Protocol | Port(s) |
 | -------- | ------- |
 | HTTPS | 443 |
 | AMQP | 5671 |
@@ -59,4 +59,4 @@ Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 [lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
 [lnk-tokens]: iot-hub-sas-tokens.md
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0810_2016-->

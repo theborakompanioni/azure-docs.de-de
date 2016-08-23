@@ -1,6 +1,7 @@
 <properties
 	pageTitle="Erste Schritte mit Azure Stream Analytics zum Verarbeiten der Daten von IoT-Geräten | Stream Analytics"
 	description="IoT-Sensortags und -Datenströme mit Stream Analytics und Echtzeit-Datenverarbeitung"
+    keywords="IoT-Lösung, erste Schritte mit IoT"
 	services="stream-analytics"
 	documentationCenter=""
 	authors="jeffstokes72"
@@ -14,7 +15,7 @@
 	ms.topic="hero-article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="08/04/2016"
+	ms.date="08/11/2016"
 	ms.author="jeffstok"
 />
 
@@ -25,7 +26,7 @@ In diesem Tutorial erfahren Sie, wie Sie Datenstrom-Verarbeitungslogik erstellen
 ## Voraussetzungen
 
 -   [Azure-Abonnement](https://azure.microsoft.com/pricing/free-trial/)
--   Beispielabfragen und Datendateien per Download von [GitHub](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/GettingStarted)
+-   Beispielabfrage und Datendateien (bei [GitHub](https://aka.ms/azure-stream-analytics-get-started-iot) als Download erhältlich)
 
 ## Szenario
 
@@ -75,7 +76,7 @@ Die einfachste Form einer Abfrage ist ein Passthrough-Vorgang, bei dem alle Eing
 
 ![Auftragsabfrage archivieren](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-04.png)
 
-Laden Sie nun die Beispieldatendatei von [GitHub](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/GettingStarted) an einen Speicherort auf Ihrem Computer herunter. Kopieren Sie die Abfrage aus der Datei **PassThrough.txt**, und fügen Sie sie ein. Klicken Sie weiter unten auf die Schaltfläche „Test“, und wählen Sie an Ihrem Downloadspeicherort die Datendatei mit dem Namen **HelloWorldASA-InputStream.json** aus.
+Laden Sie nun die Beispieldatendatei von [GitHub](https://aka.ms/azure-stream-analytics-get-started-iot) an einen Speicherort auf Ihrem Computer herunter. Kopieren Sie die Abfrage aus der Datei **PassThrough.txt**, und fügen Sie sie ein. Klicken Sie weiter unten auf die Schaltfläche „Test“, und wählen Sie an Ihrem Downloadspeicherort die Datendatei mit dem Namen **HelloWorldASA-InputStream.json** aus.
 
 ![Schaltfläche „Test“ in Stream Analytics](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-05.png)
 
@@ -119,4 +120,4 @@ Hier verwenden wir **LEFT OUTER JOIN** für den gleichen Datenstrom (Selbstverkn
 
 In diesem Tutorial erfahren Sie, wie Sie verschiedene Abfragen in der Stream Analytics-Abfragesprache schreiben und die Ergebnisse im Browser anzeigen. Dies ist aber erst der Anfang. Sie haben mit Stream Analytics noch viele weitere Möglichkeiten. Stream Analytics unterstützt verschiedenste Ein- und Ausgaben und kann sogar Funktionen in Azure Machine Learning nutzen. Das macht Stream Analytics zu einem zuverlässigen Tool für die Datenstromanalyse. Über den [Lernpfad](https://azure.microsoft.com/documentation/learning-paths/stream-analytics/) können Sie sich ausführlicher mit Stream Analytics vertraut machen. Weitere Informationen zum Schreiben von Abfragen finden Sie im Artikel [Gängige Abfragemuster](./stream-analytics-stream-analytics-query-patterns.md).
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0817_2016-->

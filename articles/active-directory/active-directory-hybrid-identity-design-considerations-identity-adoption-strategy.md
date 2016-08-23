@@ -13,7 +13,7 @@
 	ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="identity" 
-	ms.date="05/12/2016"
+	ms.date="08/08/2016"
 	ms.author="billmath"/>
 
 
@@ -37,7 +37,7 @@ In der obigen Abbildung sind folgende Szenarien definiert:
 
 - **Cloudidentitäten**: Hierbei handelt es sich um Identitäten, die ausschließlich in der Cloud vorhanden sind. Im Fall von Azure AD würden sie sich speziell in Ihrem Azure AD-Verzeichnis befinden.
 - **Synchronisiert**: Hierbei handelt es sich um Identitäten, die lokal vorhanden sind und in der Cloud. Mithilfe von Azure AD Connect werden diese Benutzer entweder erstellt oder mit vorhandenen Azure AD-Konten verknüpft. Das Kennworthash des Benutzers in der lokalen Umgebung wird mit der Cloud synchronisiert. Beim Synchronisieren ist allerdings Folgendes zu beachten: Wenn ein Benutzer in der lokalen Umgebung deaktiviert ist, kann es bis zu 3 Stunden dauern, bis der Kontostatus in Azure AD angezeigt wird. Dies liegt am Zeitintervall für die Synchronisierung.
-- **Im Verbund**: Diese Identitäten sind sowohl lokal als auch in der Cloud vorhanden. Mithilfe von Azure AD Connect werden diese Benutzer entweder erstellt oder mit vorhandenen Azure AD-Konten verknüpft.  
+- **Im Verbund**: Diese Identitäten sind sowohl lokal als auch in der Cloud vorhanden. Mithilfe von Azure AD Connect werden diese Benutzer entweder erstellt oder mit vorhandenen Azure AD-Konten verknüpft.
  
 >[AZURE.NOTE]
 Weitere Informationen zu den Optionen für die Synchronisierung finden Sie unter [Integrieren Ihrer lokalen Identitäten in Azure Active Directory](active-directory-aadconnect.md).
@@ -153,8 +153,8 @@ Hierfür gelten folgende Voraussetzungen:
 Achten Sie darauf, dass Folgendes nicht unterstützt wird und nicht als Implementierung ausgewählt werden sollte:
 
 - Die Verbindung mehrerer Azure AD Connect-Synchronisierungsserver mit dem gleichen Azure AD-Verzeichnis wird auch dann nicht unterstützt, wenn sie dazu konfiguriert sind, jeweils exklusive Gruppen von Objekten zu synchronisieren.
-- Die Synchronisierung des gleichen Benutzers mit mehreren Azure AD-Verzeichnissen wird nicht unterstützt. 
-- Es wird auch nicht unterstützt, die Konfiguration so zu ändern, dass Benutzer in einem Azure AD in einem anderen Azure AD-Verzeichnis als Kontakte angezeigt werden. 
+- Die Synchronisierung des gleichen Benutzers mit mehreren Azure AD-Verzeichnissen wird nicht unterstützt.
+- Es wird auch nicht unterstützt, die Konfiguration so zu ändern, dass Benutzer in einem Azure AD in einem anderen Azure AD-Verzeichnis als Kontakte angezeigt werden.
 - Es wird auch nicht unterstützt, die Azure AD Connect-Synchronisierung so zu ändern, dass Verbindungen zu mehreren Azure AD-Verzeichnissen möglich sind.
 - Azure AD-Verzeichnisse sind als isoliert konzipiert. Es wird nicht unterstützt, die Konfiguration der Azure AD Connect-Synchronisierung so zu ändern, dass in einem Versuch, eine gemeinsame und einheitliche GAL zwischen den Verzeichnissen zu erstellen, Daten aus einem anderen Azure AD-Verzeichnis gelesen werden. Es wird auch nicht unterstützt, mithilfe der Azure AD Connect-Synchronisierung Benutzer als Kontakte nach einem anderen lokalen AD zu exportieren.
 
@@ -197,7 +197,7 @@ Sie sollten außerdem sicherstellen, dass die ausgewählte Entwurfsoption für d
 ##Nächste Schritte
 [Bestimmen der Datenschutzanforderungen](active-directory-hybrid-identity-design-considerations-dataprotection-requirements.md)
 
-## Weitere Informationen
+## Siehe auch
 [Überlegungen zum Entwurf – Übersicht](active-directory-hybrid-identity-design-considerations-overview.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0810_2016-->

@@ -79,10 +79,10 @@ Konnektivität zwischen geopolitischen Regionen wird bei der ExpressRoute-Standa
 | **Interxion** | Unterstützt | Unterstützt | Amsterdam, London, Paris |
 | **Jisc** | In Kürze verfügbar | In Kürze verfügbar | London+ | 
 | **[Level 3 Communications](http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** | Unterstützt | Unterstützt | Amsterdam, Chicago, Dallas, Las Vegas+, London, Seattle, Silicon Valley, Washington DC |
-| **Megaport** | Unterstützt | Unterstützt | Dallas, Hongkong, Las Vegas+, Los Angeles, Melbourne, New York, Seattle, Singapur, Sydney, Washington DC |
+| **Megaport** | Unterstützt | Unterstützt | Dallas, Hongkong, Las Vegas, Los Angeles, Melbourne, New York, Seattle, Singapur, Sydney, Washington DC |
 | **MTN** | Unterstützt | Unterstützt | London |
 | **NEXTDC** | Unterstützt | Unterstützt | Melbourne, Sydney |
-| **NTT Communications** | Unterstützt | Unterstützt | London, Osaka, Tokyo |
+| **NTT Communications** | Unterstützt | Unterstützt | London, Los Angeles, Osaka, Tokio |
 | **[Orange](http://www.orange-business.com/en/products/business-vpn-galerie)** | Unterstützt | Unterstützt | Amsterdam, Hongkong, London, Silicon Valley, Singapur, Washington, D.C. |
 | **PCCW Global Limited** | Unterstützt | Unterstützt | Hongkong |
 | **[SingTel](http://info.singtel.com/about-us/news-releases/singtel-provide-secure-private-access-microsoft-azure-public-cloud)** | Unterstützt | Unterstützt | Singapur |
@@ -106,7 +106,7 @@ Konnektivität zwischen geopolitischen Regionen wird bei der ExpressRoute-Standa
 |-----------------------|--------------------|----------------|---------------|
 | **[AT&T NetBond](https://www.synaptic.att.com/clouduser/html/productdetail/ATT_NetBond.htm)** | Unterstützt | Unterstützt | Chicago, Washington DC |
 | **[Equinix](http://www.equinix.com/partners/microsoft-azure/)** | Unterstützt | Unterstützt | Chicago, Dallas+, New York, Washington DC |
-| **[Level 3 Communications](http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** | Unterstützt | In Kürze verfügbar | Chicago, New York+, Washington DC |
+| **[Level 3 Communications](http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** | Unterstützt | Unterstützt | Chicago, New York+, Washington DC |
 | **[Verizon](http://news.verizonenterprise.com/2014/04/secure-cloud-interconnect-solutions-enterprise/)** | Unterstützt | Unterstützt | Chicago, Dallas+, New York, Washington DC |
 
 #### China
@@ -171,4 +171,4 @@ Je nach Ihrer Netzwerkgröße kann das Aktivieren privater Verbindungen für Ihr
 <!--Image References-->
 [0]: ./media/expressroute-locations/expressroute-locations-map.png "Standortkarte"
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0817_2016-->

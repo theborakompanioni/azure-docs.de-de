@@ -1,9 +1,9 @@
 <properties 
 	pageTitle="Konfigurieren eines virtuellen Netzwerks mithilfe einer Netzwerkkonfigurationsdatei" 
-	description="Anweisungen zum Exportieren und Importieren einer Netzwerkkonfigurationsdatei mithilfe des Azure-Verwaltungsportals zum Erstellen oder Ändern von virtuellen Netzwerken." 
+	description="Anweisungen zum Exportieren und Importieren einer Netzwerkkonfigurationsdatei mithilfe des Azure-Verwaltungsportals zum Erstellen oder Ändern von virtuellen Netzwerken. " 
 	services="virtual-network" 
 	documentationCenter="" 
-	authors="telmosampaio" 
+	authors="jimdial" 
 	manager="carmonm" 
 	editor="tysonn"/>
 
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.workload="infrastructure-services" 
 	ms.date="03/15/2016"
-	ms.author="telmos"/>
+	ms.author="jdial"/>
 
 # Konfigurieren eines virtuellen Netzwerks mithilfe einer Netzwerkkonfigurationsdatei
 
@@ -36,8 +36,8 @@ Sie können Netzwerkkonfigurationseinstellungen, die in Ihrer Netzwerkkonfigurat
 Beim Export werden alle Einstellungen für die virtuellen Netzwerke in Ihrem Abonnement in eine XML-Datei geschrieben.
 
 1. Melden Sie sich beim **Verwaltungsportal** an.
-2. Klicken Sie im Verwaltungsportal am unteren Rand der Seite **Netzwerke** auf **Exportieren**. 
-3. Überprüfen Sie im Fenster **Netzwerkkonfiguration exportieren**, ob Sie das Abonnement ausgewählt haben, für das Sie die Netzwerkeinstellungen exportieren möchten. Markieren Sie anschließend das Häkchen in der unteren rechten Ecke. 
+2. Klicken Sie im Verwaltungsportal am unteren Rand der Seite **Netzwerke** auf **Exportieren**.
+3. Überprüfen Sie im Fenster **Netzwerkkonfiguration exportieren**, ob Sie das Abonnement ausgewählt haben, für das Sie die Netzwerkeinstellungen exportieren möchten. Markieren Sie anschließend das Häkchen in der unteren rechten Ecke.
 4. Wenn Sie dazu aufgefordert werden, speichern Sie die Datei *NetworkConfig.xml* am gewünschten Speicherort.
 
 
@@ -46,6 +46,6 @@ Beim Export werden alle Einstellungen für die virtuellen Netzwerke in Ihrem Abo
 1. Klicken Sie im Navigationsbereich im **Verwaltungsportal** unten links auf **Neu**.
 2. Klicken Sie auf **Network Services** -> **Virtuelles Netzwerk** -> **Konfiguration importieren**.
 3. Wechseln Sie auf der Seite **Die Netzwerkkonfigurationsdatei importieren** zu Ihrer Netzwerkkonfigurationsdatei, und klicken Sie dann auf den Pfeil für **Weiter**.
-4. Auf der Seite **Netzwerk wird erstellt** wird auf dem Bildschirm angezeigt, welche Teile Ihrer Netzwerkkonfiguration geändert oder erstellt werden. Wenn die Änderungen Ihnen richtig erscheinen, markieren Sie das Häkchen, um mit dem Aktualisieren oder Erstellen Ihres virtuellen Netzwerks fortzufahren. 
+4. Auf der Seite **Netzwerk wird erstellt** wird auf dem Bildschirm angezeigt, welche Teile Ihrer Netzwerkkonfiguration geändert oder erstellt werden. Wenn die Änderungen Ihnen richtig erscheinen, markieren Sie das Häkchen, um mit dem Aktualisieren oder Erstellen Ihres virtuellen Netzwerks fortzufahren.
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0810_2016-->

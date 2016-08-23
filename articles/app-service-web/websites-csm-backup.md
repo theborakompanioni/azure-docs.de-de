@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/17/2016"
+	ms.date="08/10/2016"
 	ms.author="nicking"/>
 # Verwenden von REST zum Sichern und Wiederherstellen von App Service-Apps
 
@@ -33,7 +33,7 @@ Um REST-Anforderungen senden zu können, müssen Sie **Name**, **Ressourcengrupp
 
 <a name="backup-restore-rest-api"></a>
 ## Sichern und Wiederherstellen einer REST-API
-Es folgen mehrere Beispiele dafür, wie Sie die REST-API zum Sichern und Wiederherstellen einer App verwenden. Jedes Beispiel enthält eine URL und einen HTTP-Anforderungstext. Die Beispiel-URL enthält Platzhalter, die in geschweiften Klammern stehen, z. B. {subscription-id}. Ersetzen Sie diese Platzhalter durch die entsprechenden Informationen für Ihre App. Zu Referenzzwecken werden hier kurz die Platzhalter beschrieben, die in den Beispiel-URLs verwendet werden.
+Es folgen mehrere Beispiele dafür, wie Sie die REST-API zum Sichern und Wiederherstellen einer App verwenden. Jedes Beispiel enthält eine URL und einen HTTP-Anforderungstext. Die Beispiel-URL enthält Platzhalter, die in geschweiften Klammern stehen, z.B. {subscription-id}. Ersetzen Sie diese Platzhalter durch die entsprechenden Informationen für Ihre App. Zu Referenzzwecken werden hier kurz die Platzhalter beschrieben, die in den Beispiel-URLs verwendet werden.
 
 * subscription-id: ID des Azure-Abonnements, in dem die App enthalten ist
 * resource-group-name: Name der Ressourcengruppe, in der die App enthalten ist
@@ -48,7 +48,7 @@ Wenn Sie eine App sofort sichern möchten, senden Sie eine **POST**-Anforderung 
 
 Hier ist dargestellt, wie die URL für unsere Beispielwebsite aussieht: **https://management.azure.com/subscriptions/00001111-2222-3333-4444-555566667777/resourceGroups/Default-Web-WestUS/providers/Microsoft.Web/sites/backuprestoreapiexamples/backup/**
 
-Sie müssen im Text der Anforderung ein JSON-Objekt bereitstellen, um anzugeben, welches Speicherkonto zum Speichern des Backups verwendet werden soll. Das JSON-Objekt muss eine Eigenschaft mit dem Namen **storageAccountUrl** aufweisen, die über eine [SAS-URL](../storage/storage-dotnet-shared-access-signature-part-1.md) mit Gewährung des Schreibzugriffs auf den Azure Storage-Container verfügt, in dem das Backup-Blob enthalten sein soll. Wenn Sie Ihre Datenbanken sichern möchten, müssen Sie auch eine Liste mit den Namen, Typen und Verbindungszeichenfolgen der zu sichernden Datenbanken angeben.
+Stellen Sie im Text der Anforderung ein JSON-Objekt bereit, um anzugeben, welches Speicherkonto zum Speichern des Backups verwendet werden soll. Das JSON-Objekt muss eine Eigenschaft mit dem Namen **storageAccountUrl** aufweisen, die über eine [SAS-URL](../storage/storage-dotnet-shared-access-signature-part-1.md) mit Gewährung des Schreibzugriffs auf den Azure Storage-Container verfügt, in dem das Backup-Blob enthalten sein soll. Wenn Sie Ihre Datenbanken sichern möchten, müssen Sie auch eine Liste mit den Namen, Typen und Verbindungszeichenfolgen der zu sichernden Datenbanken angeben.
 
 ```
 {
@@ -138,7 +138,7 @@ Die URL für unsere Beispielwebsite lautet **https://management.azure.com/subscr
 
 <a name="get-backup-status"></a>
 ## Abrufen des Status eines Backups
-Je nachdem, wie groß die App ist, kann die Erstellung eines Backups einige Zeit dauern. Für Backups können auch Fehler oder eine Zeitüberschreitung auftreten, oder sie können teilweise erfolgreich sein. Um den Status aller Backups einer App anzuzeigen, senden Sie eine **GET** -Anforderung an die URL **https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Web/sites/{name}/backups**.
+Je nachdem, wie groß die App ist, kann die Erstellung eines Backups einige Zeit dauern. Für Backups können auch Fehler oder eine Zeitüberschreitung auftreten, oder sie können teilweise erfolgreich sein. Um den Status aller Backups einer App anzuzeigen, senden Sie eine **GET**-Anforderung an die URL **https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Web/sites/{name}/backups**.
 
 Um den Status einer bestimmten Sicherung anzuzeigen, senden Sie eine GET-Anforderung an die URL **https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Web/sites/{name}/backups/{backup-id}**.
 
@@ -229,9 +229,9 @@ Senden Sie im Anforderungstext ein JSON-Objekt, das die neue SAS-URL enthält. B
 }
 ```
 
->[AZURE.NOTE] Aus Sicherheitsgründen wird die einem Backup zugeordnete SAS-URL nicht zurückgegeben, wenn eine GET-Anforderung für ein bestimmtes Backup gesendet wird. Wenn Sie die SAS-URL anzeigen möchten, die einem Backup zugeordnet ist, senden Sie eine POST-Anforderung an die obige URL und fügen einfach ein leeres JSON-Objekt in den Anforderungstext ein. Die Antwort des Servers enthält alle Informationen zum Backup, einschließlich der SAS-URL.
+>[AZURE.NOTE] Aus Sicherheitsgründen wird die einem Backup zugeordnete SAS-URL nicht zurückgegeben, wenn eine GET-Anforderung für ein bestimmtes Backup gesendet wird. Wenn Sie die SAS-URL anzeigen möchten, die einem Backup zugeordnet ist, senden Sie eine POST-Anforderung an die obige URL. Fügen Sie ein leeres JSON-Objekt in den Anforderungstext ein. Die Antwort des Servers enthält alle Informationen zum Backup, einschließlich der SAS-URL.
 
 <!-- IMAGES -->
 [SampleWebsiteInformation]: ./media/websites-csm-backup/01siteconfig.png
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0810_2016-->

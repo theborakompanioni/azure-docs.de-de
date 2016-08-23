@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Verwalten der rollenbasierten Zugriffssteuerung (RBAC) mit Azure PowerShell | Microsoft Azure"
+	pageTitle="Verwalten der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) mit Azure PowerShell | Microsoft Azure"
 	description="So verwalten Sie RBAC mit Azure PowerShell einschließlich der Auflistung von Rollen, der Zuweisung von Rollen und dem Löschen von Rollenzuweisungen."
 	services="active-directory"
 	documentationCenter=""
@@ -24,7 +24,7 @@
 - [REST-API](role-based-access-control-manage-access-rest.md)
 
 
-Mit der rollenbasierten Access Control (RBAC) im Azure-Portal und in der Azure Resource Management-API können Sie den Zugriff auf Ihr Abonnement differenziert steuern. Mithilfe dieser Funktion lassen sich Zugriffsberechtigungen für Active Directory-Benutzer, -Gruppen oder -Dienstprinzipale festlegen, indem ihnen bestimmte Rollen für einen bestimmten Bereich zugewiesen werden.
+Mit der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) im Azure-Portal und in der Azure Resource Management-API können Sie den Zugriff auf Ihr Abonnement differenziert steuern. Mithilfe dieser Funktion lassen sich Zugriffsberechtigungen für Active Directory-Benutzer, -Gruppen oder -Dienstprinzipale festlegen, indem ihnen bestimmte Rollen für einen bestimmten Bereich zugewiesen werden.
 
 Bevor Sie PowerShell verwenden können, um die RBAC zu verwalten, benötigen Sie Folgendes:
 
@@ -35,7 +35,7 @@ Bevor Sie PowerShell verwenden können, um die RBAC zu verwalten, benötigen Sie
 ## Auflisten der Rollen
 
 ### Auflisten aller verfügbaren Rollen
-Zum Auflisten von RBAC-Rollen für die Zuweisung und Überprüfung der Vorgänge, auf die sie Zugriff gewähren, verwenden Sie `Get-AzureRmRoleDefinition`.
+Zum Auflisten von verfügbaren RBAC-Rollen für die Zuweisung und Überprüfung der Vorgänge, auf die sie Zugriff gewähren, verwenden Sie `Get-AzureRmRoleDefinition`.
 
 ```
 Get-AzureRmRoleDefinition | FT Name, Description
@@ -67,7 +67,7 @@ Get-AzureRmRoleAssignment -ResourceGroupName Pharma-Sales-ProjectForcast | FL Di
 ![RBAC PowerShell – Get-AzureRmRoleAssignment für eine Ressourcengruppe – Screenshot](./media/role-based-access-control-manage-access-powershell/4-get-azure-rm-role-assignment1.png)
 
 ### Zugewiesenen Rollen eines Benutzers auflisten
-Um alle einem bestimmten Benutzer zugewiesenen Rollen aufzulisten, inklusive der Rollen, die den Gruppen zugewiesen sind, denen er angehört, verwenden Sie `Get-AzureRmRoleAssignment -SignInName <User email> -ExpandPrincipalGroups`.
+Verwenden Sie `Get-AzureRmRoleAssignment -SignInName <User email> -ExpandPrincipalGroups` zum Auflisten aller Rollen, die einem bestimmten Benutzer zugewiesen sind, und der Rollen, die den Gruppen zugewiesen sind, zu denen der Benutzer gehört.
 
 ```
 Get-AzureRmRoleAssignment -SignInName sameert@aaddemo.com | FL DisplayName, RoleDefinitionName, Scope
@@ -86,39 +86,39 @@ Zum Auflisten der Zugriffszuweisungen für die klassischen Abonnementadministrat
 ### Suchen nach Objekt-IDs
 Um eine Rolle zuzuweisen, müssen Sie sowohl das Objekt (Benutzer, Gruppe oder Anwendung) als auch den Bereich identifizieren.
 
-Falls Sie die Abonnement-ID nicht kennen, können Sie diese im Blatt **Abonnements** im Azure-Portal finden. Oder erfahren Sie, wie Sie sie mittels [Get-AzureSubscription](https://msdn.microsoft.com/library/dn495302.aspx) auf MSDN abfragen.
+Falls Sie die Abonnement-ID nicht kennen, können Sie diese im Blatt **Abonnements** im Azure-Portal finden. Wie Sie die Abonnement-ID abfragen, erfahren Sie im MSDN unter [Get-AzureSubscription](https://msdn.microsoft.com/library/dn495302.aspx).
 
-Zum Abrufen der Objekt-ID für eine Azure AD-Gruppe verwenden Sie Folgendes:
+So rufen Sie die Objekt-ID für eine Azure AD-Gruppe ab:
 
     Get-AzureRmADGroup -SearchString <group name in quotes>
 
-Zum Abrufen der Objekt-ID für einen Azure AD-Dienstprinzipal oder eine Anwendung verwenden Sie Folgendes:
+So rufen Sie die Objekt-ID für einen Azure AD-Dienstprinzipal oder eine Anwendung ab:
 
     Get-AzureRmADServicePrincipal -SearchString <service name in quotes>
 
 ### Zuweisen einer Rolle zu einer Anwendung im Abonnementkontext
-Zum Zuweisen des Zugriffs zu einer Anwendung im Abonnementkontext verwenden Sie Folgendes:
+So gewähren Sie einer Anwendung Zugriff im Abonnementkontext:
 
     New-AzureRmRoleAssignment -ObjectId <application id> -RoleDefinitionName <role name> -Scope <subscription id>
 
 ![RBAC PowerShell – New-AzureRmRoleAssignment – Screenshot](./media/role-based-access-control-manage-access-powershell/2-new-azure-rm-role-assignment2.png)
 
 ### Zuweisen einer Rolle zu einem Benutzer im Ressourcengruppenkontext
-Zum Zuweisen des Zugriffs zu einem Benutzer im Ressourcengruppenkontext verwenden Sie Folgendes:
+So gewähren Sie einem Benutzer Zugriff im Ressourcengruppenkontext:
 
     New-AzureRmRoleAssignment -SignInName <email of user> -RoleDefinitionName <role name in quotes> -ResourceGroupName <resource group name>
 
 ![RBAC PowerShell – New-AzureRmRoleAssignment – Screenshot](./media/role-based-access-control-manage-access-powershell/2-new-azure-rm-role-assignment3.png)
 
 ### Zuweisen einer Rolle zu einer Gruppe im Ressourcenkontext
-Zum Zuweisen des Zugriffs zu einer Gruppe im Ressourcenkontext verwenden Sie Folgendes:
+So gewähren Sie einer Gruppe Zugriff im Ressourcenkontext:
 
     New-AzureRmRoleAssignment -ObjectId <object id> -RoleDefinitionName <role name in quotes> -ResourceName <resource name> -ResourceType <resource type> -ParentResource <parent resource> -ResourceGroupName <resource group name>
 
 ![RBAC PowerShell – New-AzureRmRoleAssignment – Screenshot](./media/role-based-access-control-manage-access-powershell/2-new-azure-rm-role-assignment4.png)
 
 ## Zugriff entfernen
-Zum Entfernen des Zugriffs für Benutzer, Gruppen und Anwendungen verwenden Sie Folgendes:
+So entfernen Sie den Zugriff für Benutzer, Gruppen und Anwendungen:
 
     Remove-AzureRmRoleAssignment -ObjectId <object id> -RoleDefinitionName <role name> -Scope <scope such as subscription id>
 
@@ -127,9 +127,9 @@ Zum Entfernen des Zugriffs für Benutzer, Gruppen und Anwendungen verwenden Sie 
 ## Erstellen einer benutzerdefinierten Rolle
 Verwenden Sie zum Erstellen einer benutzerdefinierten Rolle den Befehl `New-AzureRmRoleDefinition`.
 
-Wenn Sie eine benutzerdefinierte Rolle in PowerShell erstellen, müssen Sie mit einer der [integrierten Rollen](role-based-access-built-in-roles.md) beginnen. Bearbeiten Sie die Attribute, und fügen Sie die gewünschten Actions-Elemente, notActions-Elemente oder Bereiche hinzu. Speichern Sie die Änderungen anschließend als neue Rolle.
+Wenn Sie eine benutzerdefinierte Rolle in PowerShell erstellen, müssen Sie mit einer der [integrierten Rollen](role-based-access-built-in-roles.md) beginnen. Bearbeiten Sie die Attribute, und fügen Sie die gewünschten *Actions*, *notActions* oder *scopes* hinzu. Speichern Sie die Änderungen anschließend als neue Rolle.
 
-Im folgenden Beispiel wird mit der Rolle *Virtual Machine Contributor* begonnen. Diese Rolle wird zum Erstellen einer benutzerdefinierten Rolle namens *Virtual Machine Operator* verwendet. Die neue Rolle gewährt Zugriff auf alle Lesevorgänge der Ressourcenanbieter *Microsoft.Compute*, *Microsoft.Storage* und *Microsoft.Network* sowie zum Starten, Neustarten und Überwachen virtueller Computer. Die benutzerdefinierte Rolle kann in zwei Abonnements verwendet werden.
+Das folgende Beispiel beginnt mit der Rolle *Virtual Machine Contributor*. Diese Rolle wird zum Erstellen einer benutzerdefinierten Rolle namens *Virtual Machine Operator* verwendet. Die neue Rolle gewährt Zugriff auf alle Lesevorgänge der Ressourcenanbieter *Microsoft.Compute*, *Microsoft.Storage* und *Microsoft.Network* sowie zum Starten, Neustarten und Überwachen virtueller Computer. Die benutzerdefinierte Rolle kann in zwei Abonnements verwendet werden.
 
 ```
 $role = Get-AzureRmRoleDefinition "Virtual Machine Contributor"
@@ -155,7 +155,7 @@ New-AzureRmRoleDefinition -Role $role
 ![RBAC PowerShell – Get-AzureRmRoleDefinition – Screenshot](./media/role-based-access-control-manage-access-powershell/2-new-azurermroledefinition.png)
 
 ## Ändern einer benutzerdefinierten Rolle
-Um eine benutzerdefinierte Rolle zunächst zu ändern, verwenden Sie den Befehl `Get-AzureRmRoleDefinition`, um die Rollendefinition abzurufen. Nehmen Sie dann die gewünschten Änderungen an der Rollendefinition vor. Verwenden Sie abschließend den Befehl `Set-AzureRmRoleDefinition`, um die geänderte Rollendefinition zu speichern.
+Um eine benutzerdefinierte Rolle zunächst zu ändern, verwenden Sie den Befehl `Get-AzureRmRoleDefinition`, um die Rollendefinition abzurufen. Nehmen Sie zweitens die gewünschten Änderungen an der Rollendefinitionsdatei vor. Verwenden Sie abschließend den Befehl `Set-AzureRmRoleDefinition`, um die geänderte Rollendefinition zu speichern.
 
 Im folgenden Beispiel wird der Vorgang `Microsoft.Insights/diagnosticSettings/*` zur benutzerdefinierten Rolle *Virtual Machine Operator* hinzugefügt.
 
@@ -167,7 +167,7 @@ Set-AzureRmRoleDefinition -Role $role
 
 ![RBAC PowerShell – Set-AzureRmRoleDefinition – Screenshot](./media/role-based-access-control-manage-access-powershell/3-set-azurermroledefinition-1.png)
 
-Im folgenden Beispiel wird ein Azure-Abonnement den zuweisbaren Bereichen der benutzerdefinierten Rolle „Virtual Machine Operator“ hinzugefügt.
+Im folgenden Beispiel wird ein Azure-Abonnement den zuweisbaren Bereichen der benutzerdefinierten Rolle *Virtual Machine Operator* hinzugefügt.
 
 ```
 Get-AzureRmSubscription - SubscriptionName Production3
@@ -208,8 +208,8 @@ Im folgenden Beispiel ist die benutzerdefinierte Rolle *Virtual Machine Operator
 
 ![RBAC PowerShell – Get-AzureRmRoleDefinition – Screenshot](./media/role-based-access-control-manage-access-powershell/5-get-azurermroledefinition2.png)
 
-## Weitere Informationen
+## Siehe auch
 - [Verwenden von Windows PowerShell mit dem Azure-Ressourcen-Manager](../powershell-azure-resource-manager.md)
 [AZURE.INCLUDE [role-based-access-control-toc.md](../../includes/role-based-access-control-toc.md)]
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0810_2016-->

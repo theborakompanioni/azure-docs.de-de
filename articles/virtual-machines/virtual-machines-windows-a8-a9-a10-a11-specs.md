@@ -1,5 +1,5 @@
 <properties
- pageTitle="Informationen zu A8-, A9-, A10- und A11-Instanzen mit Windows | Microsoft Azure"
+ pageTitle="Informationen zu A8-, A9-, A10- und A11-Instanzen mit Windows| Microsoft Azure"
  description="Hier finden Sie Hintergrundinformationen und Überlegungen zur Verwendung der rechenintensiven Azure-Instanzgrößen A8, A9, A10 und A11 für virtuelle Windows-Computer und Clouddienste."
  services="virtual-machines-windows, cloud-services"
  documentationCenter=""
@@ -13,7 +13,7 @@ ms.service="virtual-machines-windows"
  ms.topic="article"
  ms.tgt_pltfrm="vm-windows"
  ms.workload="infrastructure-services"
- ms.date="04/26/2016"
+ ms.date="08/04/2016"
  ms.author="danlep"/>
 
 # Informationen zu den rechenintensiven A8-, A9-, A10- und A11-Instanzen
@@ -28,7 +28,7 @@ Hier finden Sie Hintergrundinformationen und einige Überlegungen zur Verwendung
 
 In einem einzelnen Clouddienst, einer einzelnen Verfügbarkeitsgruppe oder einem einzelnen Azure-Batchpool können die A8- und A9-Instanzen auf das RDMA-Netzwerk in Azure zugreifen, um Windows-MPI-Anwendungen auszuführen, die die Microsoft Network Direct-Schnittstelle zur Kommunikation zwischen Instanzen verwenden.
 
-Weitere Informationen zu den Voraussetzungen für MPI-Anwendungen zum Zugreifen auf das RDMA-Netzwerk auf virtuellen Windows-Computern, Clouddiensten und Azure-Batchpools der Instanzen A8 oder A9 finden Sie in der folgenden Tabelle. Typische Bereitstellungsszenarios finden Sie unter [Einrichten eines Windows-RDMA-Clusters mit HPC Pack zum Ausführen von MPI-Anwendungen](virtual-machines-windows-classic-hpcpack-rdma-cluster.md) und [Verwendung von Tasks mit mehreren Instanzen zum Ausführen von MPI-Anwendungen (Message Passing Interface) in Azure Batch](../batch/batch-mpi.md).
+Nachfolgend finden Sie weitere Informationen zu den Voraussetzungen für MPI-Anwendungen zum Zugreifen auf das RDMA-Netzwerk auf virtuellen Windows-Computern, in Clouddiensten und in Azure-Batchpools der Instanzen A8 oder A9. Typische Bereitstellungsszenarios finden Sie unter [Einrichten eines Windows-RDMA-Clusters mit HPC Pack zum Ausführen von MPI-Anwendungen](virtual-machines-windows-classic-hpcpack-rdma-cluster.md) und [Verwendung von Tasks mit mehreren Instanzen zum Ausführen von MPI-Anwendungen (Message Passing Interface) in Azure Batch](../batch/batch-mpi.md).
 
 
 Voraussetzung | Virtuelle Computer | Clouddienste oder Batchpool 
@@ -58,4 +58,4 @@ Weitere Informationen und Prüflisten zur Verwendung rechenintensiver Instanzen 
 
 * Informationen zur Verwendung von A8- und A9-Instanzen zum Ausführen von MPI-Anwendungen mit Azure Batch finden Sie unter [Verwendung von Tasks mit mehreren Instanzen zum Ausführen von MPI-Anwendungen (Message Passing Interface) in Azure Batch](../batch/batch-mpi.md).
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0810_2016-->

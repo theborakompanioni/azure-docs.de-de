@@ -3,7 +3,7 @@
    description="Hier erfahren Sie, wie Sie ein virtuelles Netzwerk für die Verwendung öffentlicher IP-Adressen konfigurieren."
    services="virtual-network"
    documentationCenter="na"
-   authors="telmosampaio"
+   authors="jimdial"
    manager="carmonm"
    editor="tysonn" />
 <tags 
@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="04/27/2016"
-   ms.author="telmos" />
+   ms.author="jdial" />
 
 # Öffentlicher IP-Adressraum in einem virtuellen Netzwerk (VNet)
 
@@ -45,6 +45,6 @@ Es gibt einige IP-Adressbereiche, die nicht zulässig sind:
 
 ## Nächste Schritte
 
-[Verwalten von DNS-Servern, die von einem virtuellen Netzwerk (VNet) verwendet werden](../virtual-networks-manage-dns-in-vnet)
+[Verwalten von DNS-Servern, die von einem virtuellen Netzwerk (VNet) verwendet werden](virtual-networks-manage-dns-in-vnet.md)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0810_2016-->

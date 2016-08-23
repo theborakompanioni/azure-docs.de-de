@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Verwalten der rollenbasierten Zugriffssteuerung (RBAC) mit der Azure-CLI | Microsoft Azure"
-	description="Erfahren Sie, wie Sie den rollenbasierten Zugriff (RBAC) mit der Azure-Befehlszeilenschnittstelle verwalten, indem Sie Rollen und Rollenaktionen auflisten und Rollen im Kontext von Abonnements und Anwendungen zuweisen."
+	description="Erfahren Sie, wie Sie die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) mit der Azure-Befehlszeilenschnittstelle verwalten, indem Sie Rollen und Rollenaktionen auflisten und Rollen im Kontext von Abonnements und Anwendungen zuweisen."
 	services="active-directory"
 	documentationCenter=""
 	authors="kgremban"
@@ -45,7 +45,7 @@ azure role list --json | jq '.[] | {"roleName":.properties.roleName, "descriptio
 
 ![Azure-Befehlszeile für die RBAC – Azure-Rollenliste – Screenshot](./media/role-based-access-control-manage-access-azure-cli/1-azure-role-list.png)
 
-###	Liste der Aktionen einer Rolle
+###	Auflisten der Aktionen einer Rolle
 Um die Aktionen einer Rolle aufzulisten, verwenden Sie Folgendes:
 
     azure role show "<role name>"
@@ -74,8 +74,8 @@ azure role assignment list --resource-group pharma-sales-projecforcast --json | 
 
 ![Azure-Befehlszeile für die RBAC – Azure-Rollenzuweisungsliste nach Gruppe – Screenshot](./media/role-based-access-control-manage-access-azure-cli/4-azure-role-assignment-list-1.png)
 
-###	Auflisten von Rollenzuweisungen für einen Benutzer, einschließlich derer, die den Gruppen des Benutzers zugewiesen sind
-Listen Sie die Rollenzuweisungen für einen bestimmten Benutzer wie folgt auf:
+###	Liste von Rollenzuweisungen für einen Benutzer
+Verwenden Sie zum Auflisten der Rollenzuweisungen für einen bestimmten Benutzer und der Zuweisungen der Gruppen eines Benutzers Folgendes:
 
 	azure role assignment list --signInName <user email>
 
@@ -83,7 +83,7 @@ Sie können auch von Gruppen geerbte Rollenzuweisungen anzeigen. Ändern Sie daz
 
 	azure role assignment list --expandPrincipalGroups --signInName <user email>
 
-Das folgende Beispiel zeigt die Rollenzuweisungen für den Benutzer *sameert@aaddemo.com*. Darin sind Rollen enthalten, die dem Benutzer direkt zugewiesen werden, aber auch Rollen, die von Gruppen geerbt werden.
+Das folgende Beispiel zeigt die Rollenzuweisungen für den Benutzer *sameert@aaddemo.com*. Darin sind Rollen enthalten, die dem Benutzer direkt zugewiesen werden, und Rollen, die von Gruppen geerbt werden.
 
 ```
 azure role assignment list --signInName sameert@aaddemo.com --json | jq '.[] | {"DisplayName":.properties.aADObject.DisplayName,"RoleDefinitionName":.properties.roleName,"Scope":.properties.scope}'
@@ -94,12 +94,12 @@ azure role assignment list --expandPrincipalGroups --signInName sameert@aaddemo.
 ![Azure-Befehlszeile für die RBAC – Azure-Rollenzuweisungsliste nach Benutzer – Screenshot](./media/role-based-access-control-manage-access-azure-cli/4-azure-role-assignment-list-2.png)
 
 ##	Gewähren von Zugriff
-Nachdem Sie die Rolle, die Sie zuweisen möchten, identifiziert haben, verwenden Sie Folgendes, um den Zugriff zu gewähren:
+So gewähren Sie Zugriff, nachdem Sie die Rolle, die Sie zuweisen möchten, identifiziert haben:
 
     azure role assignment create
 
 ###	Zuweisen einer Rolle zu einer Gruppe im Abonnementkontext
-Um einer Gruppe im Abonnementkontext eine Rolle zuzuweisen, verwenden Sie Folgendes:
+So weisen Sie eine Rolle einer Gruppe im Abonnementkontext zu:
 
 	azure role assignment create --objectId  <group object id> --roleName <name of role> --subscription <subscription> --scope <subscription/subscription id>
 
@@ -109,7 +109,7 @@ Das folgende Beispiel weist die Rolle *Reader* dem *Christine Koch Team* im *Abo
 ![Azure-Befehlszeile für die RBAC – Azure-Rollenzuweisungserstellung nach Gruppe – Screenshot](./media/role-based-access-control-manage-access-azure-cli/2-azure-role-assignment-create-1.png)
 
 ###	Zuweisen einer Rolle zu einer Anwendung im Abonnementkontext
-Um einer Anwendung im Abonnementkontext eine Rolle zuzuweisen, verwenden Sie Folgendes:
+So weisen Sie eine Rolle einer Anwendung im Abonnementkontext zu:
 
     azure role assignment create --objectId  <applications object id> --roleName <name of role> --subscription <subscription> --scope <subscription/subscription id>
 
@@ -118,16 +118,16 @@ Das folgende Beispiel gewährt einer *Azure AD*-Anwendung für das ausgewählte 
  ![Azure-Befehlszeile für die RBAC – Azure-Rollenzuweisungserstellung nach Anwendung](./media/role-based-access-control-manage-access-azure-cli/2-azure-role-assignment-create-2.png)
 
 ###	Zuweisen einer Rolle zu einem Benutzer im Ressourcengruppenkontext
-Um einem Benutzer im Ressourcengruppenkontext eine Rolle zuzuweisen, verwenden Sie Folgendes:
+So weisen Sie eine Rolle einem Benutzer im Ressourcengruppenkontext zu:
 
 	azure role assignment create --signInName  <user email address> --roleName "<name of role>" --resourceGroup <resource group name>
 
-Im folgenden Beispiel wird dem Benutzer *samert@aaddemo.com* im Kontext der Ressourcengruppe *Pharma-Sales-ProjectForcast* die Rolle *Virtual Machine Contributor* gewährt:
+Im folgenden Beispiel wird dem Benutzer *samert@aaddemo.com* im Ressourcengruppenkontext *Pharma-Sales-ProjectForcast* die Rolle *Virtual Machine Contributor* gewährt.
 
 ![Azure-Befehlszeile für die RBAC – Azure-Rollenzuweisungserstellung nach Benutzer – Screenshot](./media/role-based-access-control-manage-access-azure-cli/2-azure-role-assignment-create-3.png)
 
 ###	Zuweisen einer Rolle zu einer Gruppe im Ressourcenkontext
-Um einer Gruppe im Ressourcenkontext eine Rolle zuzuweisen, verwenden Sie Folgendes:
+So weisen Sie einer Gruppe im Ressourcenkontext eine Rolle zu:
 
     azure role assignment create --objectId <group id> --role "<name of role>" --resource-name <resource group name> --resource-type <resource group type> --parent <resource group parent> --resource-group <resource group>
 
@@ -140,16 +140,16 @@ Um eine Rollenzuordnung zu entfernen, verwenden Sie Folgendes:
 
     azure role assignment delete --objectId <object id to from which to remove role> --roleName "<role name>"
 
-Im folgenden Beispiel wird die Zuweisung der Rolle *Virtual Machine Contributor* von *sammert@aaddemo.com* für die Ressourcengruppe *Pharma-Sales-ProjectForcast* entfernt. Anschließend wird die Rollenzuweisung aus einer Gruppe im Abonnement entfernt.
+Im folgenden Beispiel wird die Zuweisung der Rolle *Virtual Machine Contributor* von Benutzer *sammert@aaddemo.com* für die Ressourcengruppe *Pharma-Sales-ProjectForcast* entfernt. Anschließend wird im Beispiel die Rollenzuweisung aus einer Gruppe im Abonnement entfernt.
 
 ![Azure-Befehlszeile für die RBAC – Azure-Rollenzuweisungslöschung nach Benutzer – Screenshot](./media/role-based-access-control-manage-access-azure-cli/3-azure-role-assignment-delete.png)
 
 ## Erstellen einer benutzerdefinierten Rolle
-Verwenden Sie zum Erstellen einer benutzerdefinierten Rolle den folgenden Befehl:
+So erstellen Sie eine benutzerdefinierte Rolle:
 
 	azure role create --inputfile <file path>
 
-Das folgende Beispiel erstellt eine benutzerdefinierte Rolle namens *Virtual Machine Operator*, die Zugriff auf alle Lesevorgänge der Ressourcenanbieter *Microsoft.Compute*, *Microsoft.Storage* und *Microsoft.Network* und zum Starten, Neustarten und Überwachen virtueller Computer gewährt. Die benutzerdefinierte Rolle kann in zwei Abonnements verwendet werden. In diesem Beispiel wird eine JSON-Datei als Eingabe genutzt.
+Im folgenden Beispiel wird die benutzerdefinierte Rolle *Virtual Machine Operator* erstellt. Die benutzerdefinierte Rolle gewährt Zugriff auf alle Lesevorgänge der Ressourcenanbieter *Microsoft.Compute*, *Microsoft.Storage* und *Microsoft.Network* sowie zum Starten, Neustarten und Überwachen virtueller Computer. Die benutzerdefinierte Rolle kann in zwei Abonnements verwendet werden. In diesem Beispiel wird eine JSON-Datei als Eingabe genutzt.
 
 ![JSON – Definition der benutzerdefinierten Rolle – Screenshot](./media/role-based-access-control-manage-access-azure-cli/2-azure-role-create-1.png)
 
@@ -157,11 +157,11 @@ Das folgende Beispiel erstellt eine benutzerdefinierte Rolle namens *Virtual Mac
 
 ## Ändern einer benutzerdefinierten Rolle
 
-Um eine benutzerdefinierte Rolle zunächst zu ändern, verwenden Sie den Befehl `azure role show`, um die Rollendefinition abzurufen. Nehmen Sie dann die gewünschten Änderungen an der Rollendefinitionsdatei vor. Verwenden Sie abschließend `azure role set`, um die geänderte Rollendefinition zu speichern.
+Um eine benutzerdefinierte Rolle zunächst zu ändern, verwenden Sie den Befehl `azure role show`, um die Rollendefinition abzurufen. Nehmen Sie zweitens die gewünschten Änderungen an der Rollendefinitionsdatei vor. Verwenden Sie abschließend `azure role set`, um die geänderte Rollendefinition zu speichern.
 
 	azure role set --inputfile <file path>
 
-Im folgenden Beispiel wird der Vorgang „Microsoft.Insights/diagnosticSettings/*“ zu **Actions** und ein Azure-Abonnement zu **AssignableScopes** der benutzerdefinierten Rolle „Virtual Machine Operator“ hinzugefügt:
+Im folgenden Beispiel wird der Vorgang *Microsoft.Insights/diagnosticSettings/* zu **Actions** und ein Azure-Abonnement zu **AssignableScopes** der benutzerdefinierten Rolle „Virtual Machine Operator“ hinzugefügt.
 
 ![JSON – Ändern der Definition der benutzerdefinierten Rolle – Screenshot](./media/role-based-access-control-manage-access-azure-cli/3-azure-role-set-1.png)
 
@@ -202,4 +202,4 @@ azure role list --json | jq '.[] | if .properties.type == "CustomRole" then .pro
 ## RBAC-Themen
 [AZURE.INCLUDE [role-based-access-control-toc.md](../../includes/role-based-access-control-toc.md)]
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0810_2016-->

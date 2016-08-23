@@ -1,4 +1,4 @@
-Die Ansätze für Azure-Endpunkte unterscheiden sich beim klassischen Bereitstellungsmodell und beim Resource Manager-Bereitstellungsmodell leicht. Sie können jetzt flexibel Netzwerkfilter erstellen, mit denen der eingehende und ausgehende Datenverkehrsfluss Ihrer VMs gesteuert wird. Es ist möglich, über einen einfachen Endpunkt hinaus – wie beim klassischen Bereitstellungsmodell – sehr komplexe Netzwerkumgebungen zu erstellen. Dieser Artikel enthält eine Übersicht über die Netzwerksicherheitsgruppen und den Unterschied zur Verwendung von klassischen Endpunkten, die Erstellung von Filterregeln und Beispiele für Bereitstellungsszenarien.
+Die Ansätze für Azure-Endpunkte unterscheiden sich beim klassischen Bereitstellungsmodell und beim Resource Manager-Bereitstellungsmodell leicht. Sie können jetzt flexibel Netzwerkfilter erstellen, mit denen der eingehende und ausgehende Datenverkehrsfluss Ihrer VMs gesteuert wird. Es ist möglich, über einen einfachen Endpunkt hinaus – wie beim klassischen Bereitstellungsmodell – komplexe Netzwerkumgebungen zu erstellen. Dieser Artikel enthält eine Übersicht über die Netzwerksicherheitsgruppen und den Unterschied zur Verwendung von klassischen Endpunkten, die Erstellung von Filterregeln und Beispiele für Bereitstellungsszenarien.
 
 
 ## Übersicht über Resource Manager-Bereitstellungen
@@ -25,7 +25,7 @@ Netzwerksicherheitsgruppen sind ein neues Feature, das Ihnen eine neue Sicherhei
 ## Load Balancer – Übersicht
 Beim klassischen Bereitstellungsmodell führt Azure die gesamte Netzwerkadressübersetzung (NAT) und Portweiterleitung eines Clouddiensts für Sie durch. Bei der Erstellung eines Endpunkts geben Sie den externen Port an, der verfügbar gemacht werden soll, sowie den internen Port, an den der Datenverkehr geleitet wird. Netzwerksicherheitsgruppen selbst führen diese Art der Netzwerkadressübersetzung und Portweiterleitung nicht durch.
 
-In Ihrer Ressourcengruppe muss ein Azure Load Balancer erstellt werden, der Ihnen die Erstellung von NAT-Regeln für die Portweiterleitung ermöglicht. Auch dies kann bei Bedarf so präzise eingestellt werden, dass die Einstellung nur für bestimmte VMs gilt. Die NAT-Regeln des Azure Load Balancers in Kombination mit den ACL-Regeln für Netzwerksicherheitsgruppen bieten deutlich mehr Flexibilität und Kontrolle als bei der Verwendung von Clouddienst-Endpunkten. Weitere Informationen finden Sie in der [Übersicht über den Lastenausgleich](../articles/load-balancer/load-balancer-overview.md).
+Erstellen Sie in Ihrer Ressourcengruppe einen Azure Load Balancer, der Ihnen die Erstellung von NAT-Regeln für die Portweiterleitung ermöglicht. Der Load Balancer kann bei Bedarf wiederum so präzise eingestellt werden, dass die Einstellung nur für bestimmte VMs gilt. Die NAT-Regeln des Azure Load Balancers in Kombination mit den ACL-Regeln für Netzwerksicherheitsgruppen bieten deutlich mehr Flexibilität und Kontrolle als bei der Verwendung von Clouddienst-Endpunkten. Weitere Informationen finden Sie in der [Übersicht über den Lastenausgleich](../articles/load-balancer/load-balancer-overview.md).
 
 
 ## ACL-Regeln von Netzwerksicherheitsgruppen
@@ -33,7 +33,7 @@ Mit ACL-Regeln können Sie definieren, welcher Datenverkehr basierend auf bestim
 
 ![Liste mit ACL-Regeln von Netzwerksicherheitsgruppen](./media/virtual-machines-common-endpoints-in-resource-manager/example-acl-rules.png)
 
-ACL-Regeln werden basierend auf einer Prioritätsmetrik angewendet, die Sie angeben. Je höher der Wert, desto niedriger die Priorität. Jede Netzwerksicherheitsgruppe verfügt über drei Standardregeln, die dafür ausgelegt sind, den Fluss des Azure-Netzwerkdatenverkehrs zu verarbeiten. Hierbei wird ein explizites `DenyAllInbound`-Element als abschließende Regel verwendet. ACL-Standardregeln erhalten eine sehr niedrige Priorität, damit von Ihnen erstellte Regeln nicht beeinträchtigt werden.
+ACL-Regeln werden basierend auf einer Prioritätsmetrik angewendet, die Sie angeben. Je höher der Wert, desto niedriger die Priorität. Jede Netzwerksicherheitsgruppe verfügt über drei Standardregeln, die dafür ausgelegt sind, den Fluss des Azure-Netzwerkdatenverkehrs zu verarbeiten. Hierbei wird ein explizites `DenyAllInbound`-Element als abschließende Regel verwendet. ACL-Standardregeln erhalten eine niedrige Priorität, damit von Ihnen erstellte Regeln nicht beeinträchtigt werden.
 
 
 ## Zuweisen von Netzwerksicherheitsgruppen
@@ -45,24 +45,24 @@ Das Verhalten der Netzwerksicherheitsgruppe ändert sich nicht in Abhängigkeit 
 
 
 ## Standardverhalten von Netzwerksicherheitsgruppen
-Je nachdem, wie und wann Sie die Netzwerksicherheitsgruppe erstellen, werden unter Umständen Standardregeln erstellt, um den RDP-Zugriff auf TCP-Port 3389 zuzulassen (bei Linux-VMs ist dies TCP-Port 22). Diese automatischen ACL-Regeln werden unter den folgenden Bedingungen erstellt:
+Je nachdem, wie und wann Sie die Netzwerksicherheitsgruppe erstellen, werden unter Umständen Standardregeln erstellt, um den RDP-Zugriff auf TCP-Port 3389 zuzulassen. Bei Linux-VMs wird der SSH-Zugriff auf TCP-Port 22 zugelassen. Diese automatischen ACL-Regeln werden unter den folgenden Bedingungen erstellt:
 
-- Wenn Sie eine Windows-VM über das Portal anlegen und die Standardaktion zum Erstellen einer neuen Netzwerksicherheitsgruppe akzeptieren, wird eine ACL-Regel zum Zulassen von TCP-Port 3389 (RDP) erstellt.
-- Wenn Sie eine Linux-VM über das Portal anlegen und die Standardaktion zum Erstellen einer neuen Netzwerksicherheitsgruppe akzeptieren, wird eine ACL-Regel zum Zulassen von TCP-Port 22 (SSH) erstellt.
+- Wenn Sie eine Windows-VM über das Portal anlegen und die Standardaktion zum Erstellen einer Netzwerksicherheitsgruppe akzeptieren, wird eine ACL-Regel zum Zulassen von TCP-Port 3389 (RDP) erstellt.
+- Wenn Sie eine Linux-VM über das Portal anlegen und die Standardaktion zum Erstellen einer Netzwerksicherheitsgruppe akzeptieren, wird eine ACL-Regel zum Zulassen von TCP-Port 22 (SSH) erstellt.
 
-Unter allen anderen Bedingungen werden diese ACL-Standardregeln nicht erstellt. Sie können keine Verbindung mit Ihrer VM herstellen, indem Sie die entsprechenden ACL-Regeln erstellen. Hierzu zählen die folgenden allgemeinen Aktionen:
+Unter allen anderen Bedingungen werden diese ACL-Standardregeln nicht erstellt. Sie können keine Verbindung mit Ihrer VM herstellen, ohne die entsprechenden ACL-Regeln zu erstellen. Hierzu zählen die folgenden allgemeinen Aktionen:
 
 - Erstellen einer Netzwerksicherheitsgruppe über das Portal als separate Aktion zum Erstellen der VM
 - Programmgesteuertes Erstellen einer Netzwerksicherheitsgruppe per PowerShell, Azure-Befehlszeilenschnittstelle, Rest-APIs usw.
 - Erstellen einer VM und Zuweisen zu einer vorhandenen Netzwerksicherheitsgruppe, für die nicht bereits die richtige ACL-Regel definiert ist
 
-In allen oben genannten Fällen müssen Sie ACL-Regeln für die VM erstellen, um die entsprechenden Verbindungen für die Remoteverwaltung zuzulassen.
+In allen vorherigen Fällen müssen Sie ACL-Regeln für die VM erstellen, um die entsprechenden Verbindungen für die Remoteverwaltung zuzulassen.
 
 
 ## Standardverhalten einer VM ohne Netzwerksicherheitsgruppe
 Sie können eine VM anlegen, ohne eine Netzwerksicherheitsgruppe zu erstellen. In diesen Situationen können Sie eine Verbindung mit der VM per RDP oder SSH herstellen, ohne ACL-Regeln zu erstellen. Wenn Sie einen Webdienst unter Port 80 installiert haben, ist dieser Dienst automatisch per Remotezugriff zugänglich. Alle Ports der VM sind geöffnet.
 
-> [AZURE.NOTE] Einer VM muss aber weiterhin eine öffentliche IP-Adresse zugewiesen sein, damit Remoteverbindungen verwendet werden können. Wenn keine Netzwerksicherheitsgruppe für das Subnetz oder die Netzwerkschnittstelle vorhanden ist, bedeutet dies nicht, dass die VM für jeglichen externen Datenverkehr verfügbar ist. Die Standardaktion beim Erstellen einer VM über das Portal ist das Erstellen einer neuen öffentlichen IP-Adresse. Für alle anderen Formen der Erstellung einer VM, z.B. per PowerShell, Azure-Befehlszeilenschnittstelle oder Resource Manager-Vorlage, wird nicht automatisch eine öffentliche IP-Adresse erstellt, es sei denn, dies wird explizit angefordert. Beachten Sie auch, dass die Standardaktion über das Portal auch die Erstellung einer Netzwerksicherheitsgruppe umfasst. Es sollte also nicht zu einer Situation mit einer verfügbar gemachten VM kommen, für die keine Netzwerkfilterung vorhanden ist.
+> [AZURE.NOTE] Einer VM muss aber weiterhin eine öffentliche IP-Adresse zugewiesen sein, damit Remoteverbindungen verwendet werden können. Wenn keine Netzwerksicherheitsgruppe für das Subnetz oder die Netzwerkschnittstelle vorhanden ist, bedeutet dies nicht, dass die VM für jeglichen externen Datenverkehr verfügbar ist. Die Standardaktion beim Erstellen einer VM über das Portal ist das Erstellen einer neuen öffentlichen IP-Adresse. Für alle anderen Formen der Erstellung einer VM, z.B. per PowerShell, Azure-Befehlszeilenschnittstelle oder Resource Manager-Vorlage, wird nicht automatisch eine öffentliche IP-Adresse erstellt, sofern dies nicht explizit angefordert wird. Die Standardaktion über das Portal umfasst auch die Erstellung einer Netzwerksicherheitsgruppe. Es sollte also nicht zu einer Situation mit einer verfügbar gemachten VM kommen, für die keine Netzwerkfilterung vorhanden ist.
 
 
 ## Grundlegendes zu Load Balancern und NAT-Regeln
@@ -76,4 +76,4 @@ Bei Netzwerksicherheitsgruppen wird diese Funktion für die Portweiterleitung vo
 
 > [AZURE.NOTE] Wenn Sie einen Load Balancer implementieren, weisen Sie der VM selbst normalerweise keine öffentliche IP-Adresse zu. Stattdessen wird dem Load Balancer eine öffentliche IP-Adresse zugewiesen. Sie müssen trotzdem noch die Netzwerksicherheitsgruppe und ACL-Regeln erstellen, um den ein- und ausgehenden Fluss des Datenverkehrs der VM zu definieren. Mit den NAT-Regeln des Load Balancers wird lediglich definiert, welche Ports über den Load Balancer zugelassen sind und wie sie auf die Back-End-VMs verteilt werden. Sie müssen also eine NAT-Regel für den Fluss des Datenverkehrs durch den Load Balancer und dann eine ACL-Regel für die Netzwerksicherheitsgruppe erstellen, damit der Datenverkehr die VM auch tatsächlich erreicht.
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0810_2016-->

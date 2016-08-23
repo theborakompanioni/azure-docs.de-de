@@ -14,16 +14,18 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/18/2016" 
+	ms.date="08/07/2016" 
 	ms.author="byvinyal"/>
 
-#Azure App Service-Pläne – Detaillierte Übersicht#
+# Azure App Service-Pläne – Detaillierte Übersicht#
 
-Ein **App Service-Plan** stellt einen Satz von Funktionen und Kapazitäten dar, die Sie in mehreren Apps in [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) gemeinsam nutzen können, einschließlich Web-Apps, mobilen Apps, Logik-Apps oder API-Apps. Diese Pläne unterstützen 5 Preisstufen (**Free**, **Shared**, **Basic**, **Standard** und **Premium**), wobei jede Preisstufe über eigene Funktionen und Kapazitäten verfügt. Apps im selben Abonnement und am gleichen geografischen Standort können den gleichen Plan verwenden. Alle Apps mit gemeinsamem Plan können alle Funktionen und Features nutzen, die in der Preisstufe des Plans vorgesehen sind. Alle einem bestimmten Plan zugeordneten Apps werden auf den Ressourcen ausgeführt, die vom Plan vorgegeben sind. Wenn Ihr Plan beispielsweise so konfiguriert ist, dass zwei "kleine" Instanzen der Preisstufe "Standard" verwendet werden, werden alle Apps, die diesem Plan zugeordnet sind, auf beiden Instanzen ausgeführt und haben Zugriff auf die Funktionalität der Preisstufe "Standard". Planinstanzen, auf denen Apps ausgeführt werden, auf, sind vollständig verwaltbar und bieten hohe Verfügbarkeit.
+Ein **App Service-Plan** stellt einen Satz von Funktionen und Kapazitäten dar, die Sie in mehreren Apps in [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) gemeinsam nutzen können, einschließlich Web-Apps, mobilen Apps, Logik-Apps oder API-Apps. Diese Pläne unterstützen 5 Preisstufen (**Free**, **Shared**, **Basic**, **Standard** und **Premium**), wobei jede Preisstufe über eigene Funktionen und Kapazitäten verfügt. Apps im selben Abonnement und am gleichen geografischen Standort können den gleichen Plan verwenden. Alle Apps mit gemeinsamem Plan können alle Funktionen und Features nutzen, die in der Preisstufe des Plans vorgesehen sind. Alle einem bestimmten Plan zugeordneten Apps werden auf den Ressourcen ausgeführt, die vom Plan vorgegeben sind.
+
+Wenn Ihr Plan beispielsweise so konfiguriert ist, dass zwei "kleine" Instanzen der Preisstufe "Standard" verwendet werden, werden alle Apps, die diesem Plan zugeordnet sind, auf beiden Instanzen ausgeführt und haben Zugriff auf die Funktionalität der Preisstufe "Standard". Planinstanzen, auf denen Apps ausgeführt werden, auf, sind vollständig verwaltbar und bieten hohe Verfügbarkeit.
 
 In diesem Artikel lernen Sie die Hauptmerkmale kennen, z. B. Preisstufe und Umfang eines App Service-Plans und ihre Rolle beim Verwalten Ihrer Apps.
 
-##Apps und App Service-Pläne
+## Apps und App Service-Pläne
 
 Jede App in App Service kann nur einem App Service-Plan gleichzeitig zugeordnet sein.
 
@@ -35,13 +37,13 @@ Mehrere Pläne in einer einzelnen Ressourcengruppe ermöglichen Ihnen die Defini
 
 ## Erstellen eines neuen App Service-Plans im Vergleich zum Verwenden eines vorhandenen Plans
 
-Bei der Erstellung einer neuen App sollten Sie die Erstellung einer neuen Ressourcengruppe erwägen, wenn die zu erstellende App eine ganz neues Projekt darstellt. In diesem Fall sollten Sie eine neue Ressourcengruppe, einen neuen Plan und eine App erstellen.
+Wenn Sie eine neue App erstellen, sollten Sie das Erstellen einer neuen Ressourcengruppe erwägen. Andererseits: Wenn die App, die Sie erstellen möchten, eine Komponente einer größeren Anwendung ist, muss diese App in der Ressourcengruppe erstellt werden, die dieser größeren Anwendung zugeordnet ist.
 
-Wenn die App, die Sie erstellen möchten, eine Komponente einer größeren Anwendung ist, muss diese Webanwendung in der Ressourcengruppe erstellt werden, die dieser größeren Anwendung zugeordnet ist.
+Unabhängig davon, ob die neue App eine völlig neue oder Teil einer größeren Anwendung ist, können Sie einen vorhandenen App Service-Plan nutzen, um sie zu hosten, oder einen neuen erstellen. Dies ist eher eine Frage der Kapazität und erwarteten Auslastung.
 
-Unabhängig davon, ob die neue App eine völlig neue oder Teil einer größeren Anwendung ist, können Sie einen vorhandenen App Service-Plan nutzen, um sie zu hosten, oder einen neuen erstellen. Dies ist eher eine Frage der Kapazität und erwarteten Auslastung. Wenn diese neue App ressourcenintensiv sein und andere Skalierungsfaktoren als die anderen Apps haben wird, die in einem vorhandenen Plan gehostet werden, wird empfohlen, sie in einem eigenen Plan zu isolieren.
+Wenn diese neue App ressourcenintensiv sein und andere Skalierungsfaktoren als die anderen Apps haben wird, die in einem vorhandenen Plan gehostet werden, wird empfohlen, sie in einem eigenen Plan zu isolieren.
 
-Das Erstellen eines neuen Plans ermöglicht Ihnen das Zuordnen eines neuen Satzes von Ressourcen für Ihre Web-App und ermöglicht eine bessere Kontrolle der Ressourcenzuordnung, da jeder Plan einen eigenen Satz von Instanzen erhält.
+Das Erstellen eines neuen Plans ermöglicht Ihnen das Zuordnen eines neuen Satzes von Ressourcen für Ihre App und ermöglicht eine bessere Kontrolle der Ressourcenzuordnung, da jeder Plan einen eigenen Satz von Instanzen erhält.
  
 Die Fähigkeit zum Verschieben von Apps zwischen Plänen ermöglicht Ihnen auch, die Art und Weise zu ändern, in der Ressourcen innerhalb der größeren Anwendung zugeordnet werden.
  
@@ -51,7 +53,7 @@ Wenn Sie schließlich eine neue App in einer anderen Region erstellen möchten u
 
 Sie können einen leeren **App Service-Plan** über die Browseroberfläche **App Service-Plan** oder im Rahmen der App-Erstellung erstellen.
 
-Klicken Sie hierzu im [Azure-Portal](http://go.microsoft.com/fwlink/?LinkId=529715) auf **NEU**, anschließend auf **Web + mobil** und dann auf **Web-Apps**, **Mobile Apps**, **Logik-Apps** oder **API-Apps**. ![][createWebApp]
+Klicken Sie im [Azure-Portal](https://portal.azure.com) auf **NEU**, anschließend auf **Web + mobil** und dann auf **Web-Apps**, **Mobile Apps**, **API-Apps** oder **Funktions-Apps**. ![][createWebApp]
 
 Sie können dann den App Service-Plan für die neue Anwendung auswählen oder erstellen.
   
@@ -92,7 +94,7 @@ Sie können den Tarif und die Instanzgröße ändern, indem Sie für die App ode
  
  ![][pricingtier]
 
-##Zusammenfassung
+## Zusammenfassung
 
 App Service-Pläne stellen einen Satz an Funktionen und Kapazitäten dar, die Sie App-übergreifend gemeinsam nutzen können. App Service-Pläne bieten Ihnen die Flexibilität, bestimmte Apps einer bestimmten Gruppe von Ressourcen zuzuordnen und die Auslastung Ihrer Azure-Ressourcen weiter zu optimieren. Wenn Sie in Ihrer Testumgebung Geld sparen möchten, können Sie einen Plan für mehrere Apps freigeben. Sie können außerdem den Durchsatz für Ihre Produktionsumgebung maximieren, indem Sie sie über mehrere Regionen und Pläne skalieren.
 
@@ -107,4 +109,4 @@ App Service-Pläne stellen einen Satz an Funktionen und Kapazitäten dar, die Si
 [createWebApp]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/create-web-app.png
 [appclone]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/app-clone.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0810_2016-->

@@ -22,6 +22,7 @@
 - [Verwenden des Data Factory-Editors](data-factory-copy-activity-tutorial-using-azure-portal.md)
 - [Mithilfe von PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
 - [Verwenden von Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
+- [Verwenden der REST-API](data-factory-copy-activity-tutorial-using-rest-api.md)
 - [Verwenden des Kopier-Assistenten](data-factory-copy-data-wizard-tutorial.md)
 
 In diesem Tutorial verwenden Sie den Data Factory-Kopier-Assistenten, um eine Pipeline mit einer Kopieraktivität in einer Data Factory zu erstellen. Zuerst erstellen Sie eine Data Factory mit dem Azure-Portal. Anschließend verwenden Sie den Kopier-Assistenten, um verknüpfte Data Factory-Dienste, Datasets und eine Pipeline mit einer Kopieraktivität zu erstellen, mit der Daten aus einer Azure Blob Storage-Einheit in eine Azure SQL-Datenbank kopiert werden.
@@ -49,7 +50,7 @@ In diesem Schritt erstellen Sie im Azure-Portal eine Azure Data Factory namens *
 7. Auf dem Blatt **Neue Data Factory** ist **Zum Startmenü hinzufügen** aktiviert.
 8. Klicken Sie auf dem Blatt **Neue Data Factory** auf **Erstellen**.
 
-	Der Name der Azure Data Factory muss global eindeutig sein. Bei Anzeige der Fehlermeldung **Data Factory-Name "ADFTutorialDataFactory" ist nicht verfügbar** ändern Sie den Namen der Data Factory (z. B.in "IhrNameADFTutorialDataFactory") und wiederholen den Vorgang. Im Thema [Data Factory – Benennungsregeln](data-factory-naming-rules.md) finden Sie Benennungsregeln für Data Factory-Artefakte.
+	Der Name der Azure Data Factory muss global eindeutig sein. Bei Anzeige der Fehlermeldung **Data Factory-Name "ADFTutorialDataFactory" ist nicht verfügbar** ändern Sie den Namen der Data Factory (z. B.in "IhrNameADFTutorialDataFactory") und wiederholen den Vorgang. Im Thema [Data Factory – Benennungsregeln](data-factory-naming-rules.md) finden Sie Benennungsregeln für Data Factory-Artefakte.
 	 
 	![Data Factory-Name nicht verfügbar](./media/data-factory-copy-data-wizard-tutorial/getstarted-data-factory-not-available.png)
 	
@@ -69,7 +70,7 @@ In diesem Schritt erstellen Sie im Azure-Portal eine Azure Data Factory namens *
 	1. Geben Sie unter **Aufgabenname** den Namen **CopyFromBlobToAzureSql** ein.
 	2. Geben Sie eine **Beschreibung** ein (optional).
 	3. Achten Sie auf **Startdatum/-uhrzeit** und **Enddatum/-uhrzeit**. Ändern Sie **Enddatum/-uhrzeit** so, dass der Zeitpunkt am nächsten Tag nach **Startdatum/-uhrzeit** liegt.
-	3. Klicken Sie auf **Weiter**.
+	3. Klicken Sie auf **Next**.
 
 	![Kopiertool – Seite „Eigenschaften“](./media/data-factory-copy-data-wizard-tutorial/copy-tool-properties-page.png)
 3. Klicken Sie auf der Seite **Quelldatenspeicher** auf die Kachel **Azure Blob Storage**. Sie können diese Seite verwenden, um den Quelldatenspeicher für die Kopieraufgabe anzugeben. Sie können einen verknüpften Datenspeicherdienst verwenden oder einen neuen Datenspeicher angeben. Klicken Sie zum Verwenden eines vorhandenen verknüpften Diensts auf **ÜBER VORHANDENE VERKNÜPFTE DIENSTE**, und wählen Sie den richtigen verknüpften Dienst aus.
@@ -84,7 +85,7 @@ In diesem Schritt erstellen Sie im Azure-Portal eine Azure Data Factory namens *
 6. Auf der Seite **Eingabedatei oder -ordner auswählen**:
 	1. Navigieren Sie zum Ordner **adftutorial**.
 	2. Wählen Sie **emp.txt** aus, und klicken Sie auf **Auswählen**.
-	3. Klicken Sie auf **Weiter**.
+	3. Klicken Sie auf **Next**.
 
 	![Kopiertool – Eingabedatei- oder -ordner auswählen](./media/data-factory-copy-data-wizard-tutorial/copy-tool-choose-input-file-or-folder.png)
 7. Wählen Sie auf der Seite **Dateiformateinstellungen** die **Standard**werte aus, und klicken Sie auf **Weiter**.
@@ -96,7 +97,7 @@ In diesem Schritt erstellen Sie im Azure-Portal eine Azure Data Factory namens *
 	2. Stellen Sie sicher, dass die **Server-/Datenbankauswahlmethode** auf **Über Azure-Abonnements** festgelegt ist.
 	3. Wählen Sie **Servername** und **Datenbank** aus.
 	4. Geben Sie **Benutzername** und **Kennwort** ein.
-	5. Klicken Sie auf **Weiter**.
+	5. Klicken Sie auf **Next**.
 9. Wählen Sie auf der Seite **Tabellenzuordnung** für das Feld **Ziel** in der Dropdownliste die Option **emp** aus, und klicken Sie auf den **Pfeil nach unten** (optional), um das Schema und eine Vorschau der Daten anzuzeigen.
 
 	![Kopiertool – Tabellenzuordnung](./media/data-factory-copy-data-wizard-tutorial/copy-tool-table-mapping-page.png)
@@ -116,7 +117,7 @@ In diesem Schritt erstellen Sie im Azure-Portal eine Azure Data Factory namens *
 | [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) | Dieser Artikel enthält ausführliche Informationen zur Kopieraktivität, die Sie in diesem Tutorial verwendet haben. |
 | [Planung und Ausführung](data-factory-scheduling-and-execution.md) | In diesem Artikel werden die Planungs- und Ausführungsaspekte des Azure Data Factory-Anwendungsmodells erläutert. |
 | [Pipelines](data-factory-create-pipelines.md) | In diesem Artikel erhalten Sie Informationen zu Pipelines und Aktivitäten in Azure Data Factory und erfahren, wie diese zum Erstellen datengesteuerter End-to-End-Workflows für Ihr Szenario oder Ihr Unternehmen genutzt werden können. |
-| [Datasets](data-factory-create-datasets.md) | Dieser Artikel bietet Ihnen Informationen über Datasets in Azure Data Factory.
+| [Datasets](data-factory-create-datasets.md) | Dieser Artikel enthält Informationen zu Datasets in Azure Data Factory.
 | [Überwachen und Verwalten von Pipelines mit der Überwachungs-App](data-factory-monitor-manage-app.md) | In diesem Artikel wird das Überwachen, Verwalten und Debuggen von Pipelines mit der App für die Überwachung und Verwaltung beschrieben. 
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0817_2016-->

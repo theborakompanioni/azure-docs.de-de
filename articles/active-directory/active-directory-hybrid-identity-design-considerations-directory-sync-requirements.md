@@ -13,7 +13,7 @@
 	ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="identity" 
-	ms.date="05/12/2016"
+	ms.date="08/08/2016"
 	ms.author="billmath"/>
 
 # Ermitteln der Anforderungen an die Verzeichnissynchronisierung
@@ -34,7 +34,7 @@ Beantworten Sie die folgenden Fragen:
   - Wenn ja: Ist für Ihre Benutzer ein virtuelles Verzeichnis bzw. eine Integration der Identitäten vorhanden?
 - Sind lokal noch weitere Verzeichnisse vorhanden, die synchronisiert werden sollen (z. B. LDAP-Verzeichnis, HR-Datenbank usw.)?
   - Sollen GALSync-Vorgänge durchgeführt werden?
-  - Welchen aktuellen Stand haben UPNs in Ihrem Unternehmen? 
+  - Welchen aktuellen Stand haben UPNs in Ihrem Unternehmen?
   - Verwenden Sie ein anderes Verzeichnis, das für die Authentifizierung der Benutzer eingesetzt wird?
   - Wird in Ihrem Unternehmen Microsoft Exchange verwendet?
     - Ist eine Hybrid-Exchange-Bereitstellung geplant?
@@ -65,7 +65,7 @@ Notieren Sie sich alle Antworten, und stellen Sie sicher, dass Ihnen die Begrün
 ## Nächste Schritte
 [Ermitteln der Anforderungen für die Multi-Factor Authentication](active-directory-hybrid-identity-design-considerations-multifactor-auth-requirements.md)
 
-## Weitere Informationen
+## Siehe auch
 [Überlegungen zum Entwurf – Übersicht](active-directory-hybrid-identity-design-considerations-overview.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0810_2016-->

@@ -1,7 +1,7 @@
 <properties
 	pageTitle="Erste Schritte mit dem Speicher-Explorer (Vorschau) | Microsoft Azure"
 	description="Verwalten von Azure-Speicherressourcen mit dem Speicher-Explorer (Vorschauversion)"
-	services="visual-studio-online"
+	services="storage"
 	documentationCenter="na"
 	authors="TomArcher"
 	manager="douge"
@@ -13,14 +13,14 @@
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="na"
 	ms.workload="na"
-	ms.date="07/30/2016"
+	ms.date="08/17/2016"
 	ms.author="tarcher" />
 
 # Erste Schritte mit dem Speicher-Explorer (Vorschau)
 
 ## Übersicht 
 
-Bei der Vorschauversion des Microsoft Azure-Speicher-Explorers handelt es sich um eine eigenständige App, über die Sie ganz einfach mit Azure Storage-Daten arbeiten können – unter Windows, OSX und Linux. In diesem Artikel werden die verschiedenen Möglichkeiten zum Verbinden und Verwalten Ihrer Azure-Speicherkonten beschrieben.
+Bei der Vorschauversion des Microsoft Azure-Speicher-Explorers handelt es sich um eine eigenständige App, über die Sie unter Windows, OS X und Linux komfortabel mit Azure Storage-Daten arbeiten können. In diesem Artikel werden die verschiedenen Möglichkeiten zum Verbinden und Verwalten Ihrer Azure-Speicherkonten beschrieben.
 
 ![Microsoft Azure-Speicher-Explorer (Vorschau)][15]
 
@@ -30,7 +30,7 @@ Bei der Vorschauversion des Microsoft Azure-Speicher-Explorers handelt es sich u
 
 ## Herstellen der Verbindung mit einem Speicherkonto oder Dienst
 
-Es gibt viele Möglichkeiten, wie Sie den Speicher-Explorer (Vorschau) mit Speicherkonten verbinden können. Beispiele hierfür sind das Herstellen einer Verbindung mit Speicherkonten, die Ihren Azure-Abonnements zugeordnet sind, das Verbinden mit freigegebenen Speicherkonten und Diensten aus anderen Azure-Abonnements und sogar das Verbindungen mit und Verwalten von lokalem Speicher mit dem Azure-Speicheremulator:
+Es gibt viele Möglichkeiten, wie Sie den Speicher-Explorer (Vorschau) mit Speicherkonten verbinden können. Beispiele hierfür wären das Herstellen einer Verbindung mit Speicherkonten, die Ihren Azure-Abonnements zugeordnet sind, das Verbinden mit freigegebenen Speicherkonten und Diensten aus anderen Azure-Abonnements und sogar das Herstellen von Verbindungen mit und Verwalten von lokalem Speicher mit dem Azure-Speicheremulator:
 
 - [Herstellen einer Verbindung mit einem Azure-Abonnement](#connect-to-an-azure-subscription): Verwalten Sie Speicherressourcen, die zu Ihrem Azure-Abonnement gehören.
 - [Verwenden von lokalem Entwicklungsspeicher](#work-with-local-development-storage): Verwalten Sie lokalen Speicher mit dem Azure-Speicheremulator.
@@ -46,11 +46,11 @@ Es gibt viele Möglichkeiten, wie Sie den Speicher-Explorer (Vorschau) mit Speic
 
 	![Azure-Kontoeinstellungen][0]
 
-1. Im linken Bereich werden jetzt alle Microsoft-Konten angezeigt, an denen Sie angemeldet sind. Wählen Sie zum Herstellen einer Verbindung mit einem anderen Konto die Option **Konto hinzufügen**, und folgen Sie den Schritten in den Dialogfeldern zum Anmelden mit einem Microsoft-Konto, das mindestens einem aktiven Azure-Abonnement zugeordnet ist.
+1. Im linken Bereich werden jetzt alle Microsoft-Konten angezeigt, an denen Sie angemeldet sind. Wählen Sie zum Herstellen einer Verbindung mit einem anderen Konto die Option **Konto hinzufügen** aus, und führen Sie die Schritte in den Dialogfeldern durch, um sich mit einem Microsoft-Konto anzumelden, das mindestens einem aktiven Azure-Abonnement zugeordnet ist.
 
 	![Konto hinzufügen][1]
 
-1. Nachdem Sie sich erfolgreich an einem Microsoft-Konto angemeldet haben, werden im linken Bereich die Azure-Abonnements angezeigt, die dem Konto zugeordnet sind. Wählen Sie die Azure-Abonnements aus, die Sie verwenden möchten, und klicken Sie dann auf **Übernehmen**. (Durch die Auswahl von **Alle Abonnements** können Sie alle bzw. keine Azure-Abonnements der Liste auswählen.)
+1. Nach erfolgreicher Anmeldung mit einem Microsoft-Konto werden im linken Bereich die dem Konto zugeordneten Azure-Abonnements angezeigt. Wählen Sie die Azure-Abonnements aus, die Sie verwenden möchten, und klicken Sie dann auf **Übernehmen**. (Durch Auswählen von **Alle Abonnements** können Sie alle bzw. keine Azure-Abonnements in der Liste auswählen.)
 
 	![Azure-Abonnements auswählen][3]
 
@@ -168,7 +168,7 @@ Beispiel: Benutzer A ist Administrator eines Azure-Abonnements, und Benutzer A m
 
 ## Anfügen eines Diensts per SAS
 
-Im Abschnitt [Anfügen eines Speicherkontos per SAS](#attach-storage-account-using-sas) wird beschrieben, wie der Administrator eines Azure-Abonnements vorübergehenden Zugriff auf ein Speicherkonto gewähren kann, indem er eine SAS für das Speicherkonto generiert (und freigibt). Auf ähnliche Weise kann eine SAS für einen bestimmten Dienst (Blobcontainer, Warteschlange oder Tabelle) in einem Speicherkonto generiert werden.
+Im Abschnitt [Anfügen eines Speicherkontos per SAS](#attach-storage-account-using-sas) wird beschrieben, wie der Administrator eines Azure-Abonnements vorübergehenden Zugriff auf ein Speicherkonto gewähren kann, indem er eine SAS für das Speicherkonto generiert (und teilt). Auf ähnliche Weise kann eine SAS für einen bestimmten Dienst (Blobcontainer, Warteschlange oder Tabelle) in einem Speicherkonto generiert werden.
 
 ### Generieren einer SAS für den Dienst, den Sie freigeben möchten
 
@@ -229,4 +229,4 @@ Wählen Sie zum Löschen der Suche im Suchfeld die Schaltfläche **x**.
 [23]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/connect-to-azure-storage-icon.png
 [24]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/connect-to-azure-storage-next.png
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0817_2016-->

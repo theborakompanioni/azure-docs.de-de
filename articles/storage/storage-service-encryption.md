@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/27/2016"
+	ms.date="08/03/2016"
 	ms.author="robinsh"/>
 
 # Azure Storage Service Encryption für ruhende Daten (Vorschau)
@@ -229,4 +229,4 @@ A: Bitte wenden Sie sich in allen Angelegenheiten, die Storage Service Encryptio
 
 Azure Storage bietet einen umfassenden Satz von Sicherheitsfunktionen, die Entwicklern das Erstellen sicherer Anwendungen ermöglichen. Weitere Informationen finden Sie im [Azure Storage-Sicherheitsleitfaden](storage-security-guide.md).
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0810_2016-->

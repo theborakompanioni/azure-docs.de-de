@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/25/2016" 
+	ms.date="08/09/2016" 
 	ms.author="sdanie"/>
 
 # Verwenden des API-Inspektors zur Verfolgung von Aufrufen in Azure API Management
@@ -42,7 +42,7 @@ Klicken Sie zunächst im klassischen Azure-Portal für Ihren API Management-Dien
 
 Klicken Sie im oberen Menü auf **APIs** und anschließend auf **Basic Calculator**.
 
-![Echo API][api-management-api]
+![Echo-API][api-management-api]
 
 Klicken Sie auf **Testen**, um die Operation **Add two integers** aufzurufen.
 
@@ -261,4 +261,4 @@ Laden Sie die Ablaufverfolgungsdatei über die **ocp-apim-trace-location**-URL h
 
  
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0810_2016-->

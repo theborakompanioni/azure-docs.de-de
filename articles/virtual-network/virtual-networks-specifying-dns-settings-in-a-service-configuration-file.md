@@ -3,7 +3,7 @@
    description="Angeben benutzerdefinierter DNS-Einstellungen über die Dienstkonfigurationsdatei für ein virtuelles Netzwerk"
    services="virtual-network"
    documentationCenter="na"
-   authors="joaoma"
+   authors="jimdial"
    manager="carmonm"
    editor="tysonn" />
 <tags 
@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="02/24/2016"
-   ms.author="joaoma" />
+   ms.author="jdial" />
 
 # Angeben von DNS-Einstellungen in einer Dienstkonfigurationsdatei
 
@@ -31,7 +31,7 @@ Eine Dienstkonfigurationsdatei kann ein DnsServers-Element mit einer Liste von I
 
 >[AZURE.WARNING] Das **name**-Attribut im **DnsServer**-Element wird nur als Verweisname verwendet. Es stellt nicht den Hostnamen für den DNS-Server dar. Jeder **DnsServer**-Attributwert muss im gesamten Microsoft Azure-Abonnement eindeutig sein.
 
-## Siehe auch
+## Weitere Informationen
 
 [Azure-Dienstkonfigurationsschema (CSCFG)](https://msdn.microsoft.com/library/windowsazure/ee758710)
 
@@ -41,4 +41,4 @@ Eine Dienstkonfigurationsdatei kann ein DnsServers-Element mit einer Liste von I
 
 [Einstellungen für virtuelle Netzwerke im Verwaltungsportal](http://go.microsoft.com/fwlink/?LinkId=248092)
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0810_2016-->

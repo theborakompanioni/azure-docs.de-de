@@ -43,7 +43,7 @@ Wenn der virtuelle Computer bereits Tags enthält, werden auf der Ressource ansc
 
 Wenn Sie Tags über PowerShell hinzufügen möchten, können Sie den Befehl `Set-AzureRmResource` verwenden. Beachten Sie, dass beim Aktualisieren von Tags über PowerShell die Tags als Ganzes aktualisiert werden. Wenn Sie ein Tag auf eine Ressource hinzufügen, die bereits über Tags verfügt, müssen Sie alle Tags einschließen, die auf der Ressource platziert werden sollen. Es folgt ein Beispiel für das Hinzufügen zusätzlicher Tags zu einer Ressource über PowerShell-Cmdlets.
 
-Das erste Cmdlet legt alle Tags, die auf *MyTestVM* platziert sind, mithilfe der Funktionen `Get-AzureRmResource` und `Tags` auf die *tags*-Variable fest.
+Das erste Cmdlet legt alle Tags, die auf *MyTestVM* platziert sind, mithilfe der Eigenschaften `Get-AzureRmResource` und `Tags` auf die *$tags*-Variable fest.
 
         PS C:\> $tags = (Get-AzureRmResource -ResourceGroupName MyResourceGroup -Name MyTestVM).Tags
 
@@ -62,11 +62,11 @@ Der zweite Befehl zeigt die Tags für die angegebene Variable an.
         Value		Production
         Name		Environment
 
-Der dritte Befehl fügt ein zusätzliches Tag für die *Tags*-Variable hinzu. Beachten Sie, wie **+=** verwendet wird, um das neue Schlüssel-Wert-Paar an die *Tags*-Liste anzufügen.
+Der dritte Befehl fügt ein zusätzliches Tag für die *$tags*-Variable hinzu. Beachten Sie, wie **+=** verwendet wird, um das neue Schlüssel-Wert-Paar an die *$tags*-Liste anzufügen.
 
-        PS C:\> $tags +=@{Name="Location";Value="MyLocation"}
+        PS C:\> $tags += @{Name="Location";Value="MyLocation"}
 
-Der vierte Befehl legt alle Tags, die gemäß der *Tags*-Variable definiert sind, auf die angegebene Ressource fest. In diesem Fall ist dies „MyTestVM“.
+Der vierte Befehl legt alle Tags, die gemäß der *$tags*-Variablen definiert sind, auf die angegebene Ressource fest. In diesem Fall ist dies „MyTestVM“.
 
         PS C:\> Set-AzureRmResource -ResourceGroupName MyResourceGroup -Name MyTestVM -ResourceType "Microsoft.Compute/VirtualMachines" -Tag $tags
 
@@ -103,4 +103,4 @@ Weitere Informationen zum Festlegen von Tags über PowerShell finden Sie in den 
 [Informationen zu Ihrer Rechnung für Microsoft Azure]: ../billing-understand-your-bill.md
 [Gewinnen von Einblicken in den Ressourcenverbrauch unter Microsoft Azure]: ../billing-usage-rate-card-overview.md
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0810_2016-->

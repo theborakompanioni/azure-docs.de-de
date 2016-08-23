@@ -1,6 +1,7 @@
+
 <properties
    pageTitle="Erstellen einer vollständigen Linux-Umgebung über die Azure-Befehlszeilenschnittstelle | Microsoft Azure"
-   description="Erfahren Sie, wie Sie Speicher, einen virtuellen Linux-Computer, ein virtuelles Netzwerk mitsamt Subnetz, einen Load Balancer, eine NIC, eine öffentliche IP-Adresse und eine Netzwerksicherheitsgruppe über die Azure-Befehlszeilenschnittstelle von Grund auf neu erstellen."
+   description="Erfahren Sie, wie Sie Speicher, einen virtuellen Linux-Computer, ein virtuelles Netzwerk mitsamt Subnetz, einen Load Balancer, eine NIC, eine öffentliche IP-Adresse und eine Netzwerksicherheitsgruppe über die Azure-CLI von Grund auf neu erstellen."
    services="virtual-machines-linux"
    documentationCenter="virtual-machines"
    authors="iainfoulds"
@@ -1275,4 +1276,4 @@ Möglicherweise möchten Sie [weitere Informationen zum Bereitstellen von Vorlag
 
 Sie können jetzt beginnen, mit mehreren Netzwerkkomponenten und VMs zu arbeiten. Sie können diese Beispielumgebung nutzen, um Ihre Anwendung mithilfe der hier eingeführten zentralen Komponenten zu erstellen.
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0810_2016-->

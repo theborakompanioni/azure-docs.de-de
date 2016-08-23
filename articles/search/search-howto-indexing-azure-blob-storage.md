@@ -12,7 +12,7 @@ ms.service="search"
 ms.devlang="rest-api"
 ms.workload="search" ms.topic="article"  
 ms.tgt_pltfrm="na"
-ms.date="07/12/2016"
+ms.date="08/08/2016"
 ms.author="eugenesh" />
 
 # Indizieren von Dokumenten in Azure Blob Storage mit Azure Search
@@ -21,23 +21,41 @@ Dieser Artikel beschreibt, wie Sie Azure Search zum Indizieren von Dokumenten (z
 
 > [AZURE.IMPORTANT] Diese Funktion befindet sich derzeit in der Vorschauphase. Sie ist nur im Rahmen der REST-API unter der Version **2015-02-28-Preview** verfügbar. Beachten Sie hierbei, dass Vorschau-APIs für Tests und Evaluierungen bestimmt sind und nicht in Produktionsumgebungen eingesetzt werden sollten.
 
+## Unterstützte Dokumentformate
+
+Der Blobindexer kann Text aus den folgenden Dokumentformaten extrahieren:
+
+- PDF
+- Microsoft Office-Formate: DOCX/DOC, XLSX/XLS, PPTX/PPT, MSG (Outlook-E-Mails)
+- HTML
+- XML
+- ZIP
+- EML
+- Nur-Text-Dateien
+- JSON (Details finden Sie unter [Indizierung von JSON-Blobs](search-howto-index-json-blobs.md))
+- CSV (Details finden Sie unter [Indizierung von CSV-Blobs](search-howto-index-csv-blobs.md))
+
 ## Einrichten der Blobindizierung
 
 Zum Einrichten und Konfigurieren des Indexers für Azure Blob Storage können Sie die Azure Search-REST-API nutzen, um **Indexer** und **Datenquellen** wie in [diesem Artikel](https://msdn.microsoft.com/library/azure/dn946891.aspx) beschrieben zu erstellen und zu verwalten. In Zukunft wird die Unterstützung für die Blobindizierung dem Azure Search-.NET-SDK und dem Azure-Portal hinzugefügt.
 
-Eine Datenquelle gibt an, welche Daten indiziert werden müssen. Sie legt außerdem die Anmeldeinformationen für den Zugriff auf die Daten sowie die Richtlinien zur Aktivierung von Azure Search fest, um Änderungen an den Daten effizient identifizieren zu können (z. B. neue, geänderte oder gelöschte Zeilen). Eine Datenquelle wird als unabhängige Ressource definiert, sodass sie von mehreren Indexern verwendet werden kann.
+Führen Sie die folgenden drei Schritte aus, um einen Indexer einzurichten: Erstellen einer Datenquelle, Erstellen eines Index, Konfigurieren des Indexers.
 
-Ein Indexer ist die Ressource, die Datenquellen mit Zielsuchindizes verbindet.
+### Schritt 1: Erstellen einer Datenquelle
 
-Führen Sie zum Einrichten der Blobindizierung folgende Schritte aus:
+Eine Datenquelle gibt an, welche Daten indiziert werden müssen. Sie legt außerdem die Anmeldeinformationen für den Zugriff auf die Daten sowie die Richtlinien zur Aktivierung von Azure Search fest, um Änderungen an den Daten effizient identifizieren zu können (z.B. neue, geänderte oder gelöschte Zeilen). Eine Datenquelle kann von mehreren Indexern in demselben Abonnement verwendet werden.
 
-1. Erstellen Sie eine Datenquelle vom Typ `azureblob`, die auf einen Container (und optional einen Ordner in diesem Container) in einem Azure-Speicherkonto verweist.
-	- Übergeben Sie die Verbindungszeichenfolge des Speicherkontos als `credentials.connectionString`-Parameter. Sie erhalten die Verbindungszeichenfolge aus dem Azure-Portal. Navigieren Sie zum Blatt mit dem gewünschten Speicherkonto bzw. den Schlüsseln, und verwenden Sie den Wert von „Primäre Verbindungszeichenfolge“ oder „Sekundäre Verbindungszeichenfolge“.
-	- Geben Sie einen Containernamen an. Sie können optional auch einen Ordner mit dem Parameter `query` einschließen.
-2. Erstellen Sie einen Suchindex mit einem durchsuchbaren `content`-Feld.
-3. Erstellen Sie den Indexer, indem Sie die Datenquelle mit dem Zielindex verbinden.
+Für die Blobindizierung muss die Datenquelle über die folgenden erforderlichen Eigenschaften verfügen:
 
-### Erstellen der Datenquelle
+- **name** ist der eindeutige Name der Datenquelle im Suchdienst.
+
+- **type** muss `azureblob` lauten.
+
+- Mit **credentials** wird die Speicherkonto-Verbindungszeichenfolge als `credentials.connectionString`-Parameter angegeben. Sie erhalten die Verbindungszeichenfolge über das Azure-Portal. Navigieren Sie zum Blatt mit dem gewünschten Speicherkonto, wählen Sie **Einstellungen** > **Schlüssel**, und verwenden Sie den Wert „Primäre Verbindungszeichenfolge“ oder „Sekundäre Verbindungszeichenfolge“. Da die Verbindungszeichenfolge an ein Speicherkonto gebunden ist, wird durch das Angeben der Verbindungszeichenfolge implizit das Speicherkonto identifiziert, das die Daten bereitstellt.
+
+- Mit **container** wird ein Container in Ihrem Speicherkonto angegeben. Standardmäßig können alle Blobs im Container abgerufen werden. Wenn Sie nur Blobs in einem bestimmten virtuellen Verzeichnis indizieren möchten, können Sie dieses Verzeichnis mit dem optionalen **query**-Parameter angeben.
+
+Das folgende Beispiel veranschaulicht eine Datenquellendefinition:
 
 	POST https://[service name].search.windows.net/datasources?api-version=2015-02-28-Preview
 	Content-Type: application/json
@@ -47,12 +65,16 @@ Führen Sie zum Einrichten der Blobindizierung folgende Schritte aus:
 	    "name" : "blob-datasource",
 	    "type" : "azureblob",
 	    "credentials" : { "connectionString" : "<my storage connection string>" },
-	    "container" : { "name" : "my-container", "query" : "my-folder" }
+	    "container" : { "name" : "my-container", "query" : "<optional-virtual-directory-name>" }
 	}   
 
 Weitere Informationen über die API zum Erstellen einer Datenquelle finden Sie unter [Datenquelle erstellen](search-api-indexers-2015-02-28-preview.md#create-data-source).
 
-### Erstellen des Index 
+### Schritt 2: Erstellen eines Index 
+
+Mit dem Index werden die Felder in einem Dokument, Attribute und andere Konstrukte für die Suchoberfläche angegeben.
+
+Stellen Sie bei der Blobindizierung sicher, dass der Index über ein durchsuchbares Feld `content` zum Speichern des Blobs verfügt.
 
 	POST https://[service name].search.windows.net/indexes?api-version=2015-02-28
 	Content-Type: application/json
@@ -66,11 +88,11 @@ Weitere Informationen über die API zum Erstellen einer Datenquelle finden Sie u
   		]
 	}
 
-Weitere Informationen über die API zum Erstellen eines Index finden Sie unter [Index erstellen](https://msdn.microsoft.com/library/dn798941.aspx)
+Weitere Informationen zur API zum Erstellen eines Index finden Sie unter [Create Index (Azure Search-Dienst REST-API)](https://msdn.microsoft.com/library/dn798941.aspx).
 
-### Erstellen eines Indexers 
+### Schritt 3: Erstellen eines Indexers 
 
-Zuletzt erstellen Sie einen Indexer, der auf die Datenquelle und einen Zielindex verweist. Beispiel:
+Ein Indexer verbindet Datenquellen mit Zielsuchindizes und stellt Zeitplaninformationen bereit, sodass Sie die Datenaktualisierung automatisieren können. Nachdem der Index und die Datenquelle erstellt wurden, ist es relativ einfach, einen Indexer zu erstellen, mit dem auf die Datenquelle und einen Zielindex verwiesen wird. Zum Beispiel:
 
 	POST https://[service name].search.windows.net/indexers?api-version=2015-02-28-Preview
 	Content-Type: application/json
@@ -85,28 +107,15 @@ Zuletzt erstellen Sie einen Indexer, der auf die Datenquelle und einen Zielindex
 
 Dieser Indexer wird alle zwei Stunden ausgeführt (das Planungsintervall wird auf „PT2H“ festgelegt). Um einen Indexer alle 30 Minuten auszuführen, legen Sie das Intervall auf „PT30M“ fest. Das kürzeste unterstützte Intervall ist 5 Minuten. Der Zeitplan ist optional. Falls Sie ihn weglassen, wird ein Indexer nur einmal bei seiner Erstellung ausgeführt. Allerdings können Sie ein Indexer bei Bedarf jederzeit ausführen.
 
-Weitere Informationen zur API zum Erstellen eines Indexers finden Sie unter [Erstellen eines Indexers](search-api-indexers-2015-02-28-preview.md#create-indexer).
+Weitere Informationen zur API zum Erstellen eines Indexers finden Sie unter [Indexer erstellen](search-api-indexers-2015-02-28-preview.md#create-indexer).
 
-
-## Unterstützte Dokumentformate
-
-Der Blobindexer kann Text aus den folgenden Dokumentformaten extrahieren:
-
-- PDF
-- Microsoft Office-Formate: DOCX/DOC, XLSX/XLS, PPTX/PPT, MSG (Outlook-E-Mails)
-- HTML
-- XML
-- ZIP
-- EML
-- Nur-Text-Dateien
-- JSON (Details finden Sie unter [Indizierung von JSON-Blobs](search-howto-index-json-blobs.md))
 
 ## Prozess der Dokumentextrahierung
 
 Azure Search indiziert jedes Dokument (Blob) wie folgt:
 
 - Der gesamte Inhalt des Dokuments wird in ein Zeichenfolgenfeld mit dem Namen `content` extrahiert. Beachten Sie, dass derzeit keine Unterstützung zum Extrahieren mehrerer Dokumente aus einem einzelnen Blob vorhanden ist:
-	- Beispielsweise wird eine CSV-Datei als einzelnes Dokument indiziert. Wenn Sie jede Zeile in einer CSV-Datei als separates Dokument behandeln müssen, stimmen Sie für [diesen UserVoice-Vorschlag](https://feedback.azure.com/forums/263029-azure-search/suggestions/13865325-please-treat-each-line-in-a-csv-file-as-a-separate).
+	- Beispielsweise wird eine CSV-Datei als einzelnes Dokument indiziert. Stimmen Sie für [diesen UserVoice-Vorschlag](https://feedback.azure.com/forums/263029-azure-search/suggestions/13865325-please-treat-each-line-in-a-csv-file-as-a-separate), wenn Sie jede Zeile in einer CSV-Datei als separates Dokument behandeln müssen.
 	- Ein Verbunddokument oder eingebettetes Dokument (z. B. ein ZIP-Archiv oder ein Word-Dokument mit eingebetteter Outlook-E-Mail mit PDF-Anhang) wird ebenfalls als einzelnes Dokument indiziert.
 
 - Falls für das Blob vom Benutzer angegebene Metadateneigenschaften vorhanden sind, werden diese „Wort für Wort“ extrahiert. Die Metadateneigenschaften können auch verwendet werden, um bestimmte Aspekte des Prozesses der Dokumentextrahierung zu steuern. Weitere Informationen finden Sie unter [Verwenden von benutzerdefinierten Metadaten zum Steuern der Dokumentextrahierung](#CustomMetadataControl).
@@ -217,7 +226,7 @@ PPT (application/vnd.ms-powerpoint) | `metadata_content_type`<br/>`metadata_auth
 MSG (application/vnd.ms-outlook) | `metadata_content_type`<br/>`metadata_message_from`<br/>`metadata_message_to`<br/>`metadata_message_cc`<br/>`metadata_message_bcc`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_subject` | Extrahieren von Text, einschließlich Anlagen
 ZIP (application/zip) | `metadata_content_type` | Extrahieren von Text aus allen Dokumenten im Archiv
 XML (application/xml) | `metadata_content_type`</br>`metadata_content_encoding`</br> | Entfernen von XML-Markup und Extrahieren von Text
-JSON (application/json) | `metadata_content_type`</br>`metadata_content_encoding` | Extrahieren von Text<br/>HINWEIS: Wenn Sie mehrere Felder des Dokuments aus einem JSON-Blob extrahieren möchten, finden Sie unter [Indizierung der JSON-Blobs](search-howto-index-json-blobs.md) detaillierte Informationen.
+JSON (application/json) | `metadata_content_type`</br>`metadata_content_encoding` | Extrahieren von Text<br/>HINWEIS: Wenn Sie mehrere Felder des Dokuments aus einem JSON-Blob extrahieren möchten, helfen Ihnen die detaillierten Informationen unter [Indizierung der JSON-Blobs](search-howto-index-json-blobs.md) weiter.
 EML (message/rfc822) | `metadata_content_type`<br/>`metadata_message_from`<br/>`metadata_message_to`<br/>`metadata_message_cc`<br/>`metadata_creation_date`<br/>`metadata_subject` | Extrahieren von Text, einschließlich Anlagen
 Nur-Text (text/plain) | `metadata_content_type`</br>`metadata_content_encoding`</br> | 
 
@@ -279,7 +288,7 @@ Mithilfe der Konfigurationseigenschaft `indexStorageMetadataOnly` können Sie nu
 
 ### Indizieren von Speicher- und Inhaltstyp-Metadaten und Überspringen der Inhaltsextrahierung
 
-Falls Sie alle Metadaten extrahieren, aber die Inhaltsextraktion für alle Blobs überspringen möchten, können Sie dieses Verhalten durch die Indexerkonfiguration anfordern, statt jedem einzelnen Blob `AzureSearch_SkipContent`-Metadaten hinzuzufügen. Legen Sie zu diesem Zweck die `skipContent`-Konfigurationseigenschaft des Indexers auf `true` fest:
+Falls Sie alle Metadaten extrahieren, aber die Inhaltsextraktion für alle Blobs überspringen möchten, können Sie dieses Verhalten durch die Indexerkonfiguration anfordern, anstatt jedem einzelnen Blob `AzureSearch_SkipContent`-Metadaten hinzuzufügen. Legen Sie zu diesem Zweck die `skipContent`-Konfigurationseigenschaft des Indexers auf `true` fest:
 
 	PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2015-02-28-Preview
 	Content-Type: application/json
@@ -294,4 +303,4 @@ Falls Sie alle Metadaten extrahieren, aber die Inhaltsextraktion für alle Blobs
 
 Teilen Sie uns auf unserer [UserVoice-Website](https://feedback.azure.com/forums/263029-azure-search/) mit, wenn Sie sich Features wünschen oder Verbesserungsvorschläge haben.
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0810_2016-->

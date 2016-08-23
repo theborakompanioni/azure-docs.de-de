@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="06/27/2016"
+   ms.date="08/04/2016"
    ms.author="andkjell"/>
 
 # Azure AD Connect Sync: Scheduler
@@ -60,10 +60,17 @@ Sie können einige dieser Einstellungen mit `Set-ADSyncScheduler` ändern. Folge
 
 Die Konfiguration des Schedulers wird in Azure AD gespeichert. Wenn Sie über einen Stagingserver verfügen, wirken sich alle Änderungen am primären Server auch auf den Stagingserver aus (mit Ausnahme von „IsStagingModeEnabled“).
 
+### CustomizedSyncCycleInterval
+Syntax: `Set-ADSyncScheduler -CustomizedSyncCycleInterval d.HH:mm:ss` T - Tage, HH - Stunden, mm - Minuten, ss - Sekunden
+
+Beispiel: `Set-ADSyncScheduler -CustomizedSyncCycleInterval 03:00:00` Ändert den Scheduler so, dass er alle drei Stunden ausgeführt wird.
+
+Beispiel: `Set-ADSyncScheduler -CustomizedSyncCycleInterval 1.0:0:0` Ändert den Scheduler so, dass er täglich ausgeführt wird.
+
 ## Starten des Schedulers
 Der Scheduler wird standardmäßig alle 30 Minuten ausgeführt. In einigen Fällen möchten Sie vielleicht einen Synchronisierungszyklus zwischen den geplanten Zyklen ausführen, oder Sie müssen einen anderen Typ ausführen.
 
-**Deltasynchronisierungszyklus** – ein Deltasynchronisierungszyklus umfasst die folgenden Schritte:
+**Deltasynchronisierungszyklus**: Ein Deltasynchronisierungszyklus umfasst die folgenden Schritte:
 
 - Deltaimport auf allen Connectors
 - Deltasynchronisierung auf allen Connectors
@@ -71,7 +78,7 @@ Der Scheduler wird standardmäßig alle 30 Minuten ausgeführt. In einigen Fäll
 
 Es kann vorkommen, dass eine dringende Änderung sofort synchronisiert werden muss. In diesem Fall müssen Sie einen Zyklus manuell ausführen. Wenn Sie einen Zyklus manuell ausführen müssen, führen Sie in PowerShell den Befehl `Start-ADSyncSyncCycle -PolicyType Delta` aus.
 
-**Vollständiger Synchronisierungszyklus** – wenn Sie eine der folgenden Konfigurationsänderungen vorgenommen haben, müssen Sie einen vollständigen Synchronisierungszyklus ausführen (auch als Erstsynchronisierung bezeichnet):
+**Vollständiger Synchronisierungszyklus**: Wenn Sie eine der folgenden Konfigurationsänderungen vorgenommen haben, müssen Sie einen vollständigen Synchronisierungszyklus ausführen (auch als Erstsynchronisierung bezeichnet):
 
 - Sie haben weitere Objekte oder Attribute hinzugefügt, die aus einem Quellverzeichnis importiert werden müssen.
 - Sie haben Änderungen an den Synchronisierungsregeln vorgenommen.
@@ -114,7 +121,7 @@ Die verwendbaren [Connectornamen](active-directory-aadconnectsync-service-manage
 
 ![Aufrufen des Ausführungsprofils](./media/active-directory-aadconnectsync-feature-scheduler/invokerunprofile.png)
 
-Das `Invoke-ADSyncRunProfile`-Cmdlet ist synchron, d. h., es gibt die Steuerung erst zurück, wenn der Connector den Vorgang erfolgreich oder mit Fehler abgeschlossen hat.
+Das `Invoke-ADSyncRunProfile`-Cmdlet ist synchron, d.h., es gibt die Steuerung erst zurück, wenn der Connector den Vorgang erfolgreich oder mit Fehler abgeschlossen hat.
 
 Es empfiehlt sich, die Connectors in der folgenden Reihenfolge zu planen:
 
@@ -144,4 +151,4 @@ Weitere Informationen zur Konfiguration der [Azure AD Connect-Synchronisierung](
 
 Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md).
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0810_2016-->

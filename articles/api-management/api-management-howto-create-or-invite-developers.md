@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/25/2016" 
+	ms.date="08/09/2016" 
 	ms.author="sdanie"/>
 
 # Verwalten von Benutzerkonten in Azure API Management
@@ -95,7 +95,7 @@ Nachdem Sie das Entwicklerkonto erstellt haben, können Sie das Konto zu Rollen 
 [api-management-pending-verification]: ./media/api-management-howto-create-or-invite-developers/api-management-pending-verification.png
 [api-management-view-developer]: ./media/api-management-howto-create-or-invite-developers/api-management-view-developer.png
 [api-management-reset-password]: ./media/api-management-howto-create-or-invite-developers/api-management-reset-password.png
-[]: ./media/api-management-howto-create-or-invite-developers/.png
+: ./media/api-management-howto-create-or-invite-developers/.png
 
 
 
@@ -110,4 +110,4 @@ Nachdem Sie das Entwicklerkonto erstellt haben, können Sie das Konto zu Rollen 
 [Erstellen einer API Management-Dienstinstanz]: api-management-get-started.md#create-service-instance
 [E-Mail-Vorlagen konfigurieren]: api-management-howto-configure-notifications.md#email-templates
 
-<!----HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0810_2016-->

@@ -1,12 +1,13 @@
- <properties  
-	pageTitle="Beeinträchtigung der Web-App-Leistung in App Service | Microsoft Azure"
-	description="Dieser Artikel hilft Ihnen beim Beheben von Web-App-Leistungsproblemen in Azure App Service."
-	services="app-service\web" 
-	documentationCenter="" 
-	authors="cephalin" 
-	manager="wpickett" 
-	editor="" 
-	tags="top-support-issue keywords="Web-App-Leistung, langsame App, App langsam"/>
+<properties
+	pageTitle="Schwache Leistung der Web-App in App Service | Microsoft Azure"
+	description="In diesem Artikel erfahren Sie, wie Sie Web-App-Leistungsprobleme in Azure App Service beheben."
+	services="app-service\web"
+	documentationCenter=""
+	authors="cephalin"
+	manager="wpickett"
+	editor=""
+	tags="top-support-issue"
+	keywords="Web-App-Leistung, langsame App, App langsam"/>
 
 <tags
 	ms.service="app-service-web"
@@ -59,10 +60,10 @@ Durch das Überwachen der Web-App können Sie herausfinden, ob in Ihrer Anwendun
 Folgende Metriken können Sie z. B. für Ihre Web-App überwachen:
 
 -	Durchschnittlicher Arbeitssatz für Arbeitsspeicher
--	Average response time
+-	Durchschnittliche Reaktionszeit
 -	CPU-Zeit
 -	Arbeitssatz für Arbeitsspeicher
--	Requests
+-	Anforderungen
 
 ![Überwachen der Web-App-Leistung](./media/app-service-web-troubleshoot-performance-degradation/1-monitor-metrics.png)
 
@@ -186,4 +187,4 @@ Dies ist oft die einfachste Methode zum Beheben einmaliger Probleme. Im [Azure-P
 
 Sie können Ihre Web-App auch mit Azure PowerShell verwalten. Weitere Informationen finden Sie unter [Verwenden von Azure PowerShell mit dem Azure-Ressourcen-Manager](../powershell-azure-resource-manager.md).
 
-<!----HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0810_2016-->

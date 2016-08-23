@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/23/2016"
+	ms.date="08/03/2016"
 	ms.author="tamram"/>
 
 # Azure Storage-Replikation
@@ -65,7 +65,7 @@ Georedundanter Speicher (GRS) repliziert Ihre Daten in eine sekundäre Region, d
 
 Bei ein Speicherkonto mit aktiviertem GRS wird für ein Update zuerst ein Commit in der primären Region ausgeführt, in der es drei Mal repliziert wird. Danach wird das Update in die sekundäre Region repliziert, in der es auch dreimal in getrennten Fehler- und Upgradedomänen repliziert wird.
 
-> [AZURE.NOTE] Bei GRS werden Anforderungen zum Schreiben von Daten asynchron in die sekundäre Region repliziert. Wichtig ist der Hinweis, dass die Entscheidung für GRS die Latenz von Anforderungen an die primäre Region nicht beeinflusst. Da eine asynchrone Replikation eine Verzögerung einschließt, ist es bei einem regionalen Notfall möglich, dass Änderungen, die noch nicht in die sekundäre Region repliziert wurden, möglicherweise verloren gehen, wenn die Daten nicht aus der primären Region wiederhergestellt werden können.
+> [AZURE.NOTE] Bei GRS werden Anforderungen zum Schreiben von Daten asynchron in die sekundäre Region repliziert. Wichtig ist der Hinweis, dass die Entscheidung für GRS die Latenz von Anforderungen an die primäre Region nicht beeinflusst. Da eine asynchrone Replikation eine Verzögerung einschließt, gehen bei einem regionalen Notfall Änderungen, die noch nicht in der sekundären Region repliziert wurden, möglicherweise verloren, wenn die Daten nicht aus der primären Region wiederhergestellt werden können.
  
 Wenn Sie ein Speicherkonto erstellen, wählen Sie die primäre Region für das Konto aus. Die sekundäre Region wird basierend auf der primären Region bestimmt und kann nicht geändert werden. In der folgenden Tabelle werden die Paare primärer und sekundärer Regionen gezeigt:
 
@@ -86,8 +86,8 @@ Wenn Sie ein Speicherkonto erstellen, wählen Sie die primäre Region für das K
 | Japan Ost | Japan (Westen) |
 | Japan (Westen) | Japan Ost |
 | Brasilien Süd | USA (Mitte/Süden) |
-| Australien (Ost) | Australien (Südost) |
-| Australien (Südost) | Australien (Ost) |
+| Australien (Osten) | Australien (Südosten) |
+| Australien (Südosten) | Australien (Osten) |
 | Indien, Süden | Indien, Mitte |
 | Indien, Mitte | Indien, Süden |
 | US Government, Iowa | US Government, Virginia |
@@ -117,4 +117,4 @@ Wenn Sie den schreibgeschützten Zugriff auf Ihre Daten in der sekundären Regio
 - [Microsoft Azure Storage Redundancy Options and Read Access Geo Redundant Storage (in englischer Sprache)](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/11/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx)
 - [SOSP Paper - Azure Storage: A Highly Available Cloud Storage Service with Strong Consistency (SOSP-Dokument – Azure Storage: ein hochverfügbarer Cloudspeicherdienst mit starker Konsistenz)](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0810_2016-->

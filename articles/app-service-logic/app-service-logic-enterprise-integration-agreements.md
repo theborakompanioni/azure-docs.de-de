@@ -30,7 +30,7 @@ Für die Unternehmensintegration werden drei Protokoll- bzw. Transportstandards 
 
 - [AS2](./app-service-logic-enterprise-integration-as2.md)
 - [X12](./app-service-logic-enterprise-integration-x12.md)
-- [EDIFACT](./app-service-logic-enterprise-integration-edifact.md) (in Kürze verfügbar)
+- [EDIFACT](./app-service-logic-enterprise-integration-edifact.md)
 
 ## Gründe für Vereinbarungen
 Es folgen einige Vorteile der Verwendung von Vereinbarungen:
@@ -65,4 +65,4 @@ Sie können eine Vereinbarung löschen, indem Sie diese Schritte im Integrations
 ## Nächste Schritte
 - [Erstellen einer AS2-Vereinbarung](./app-service-logic-enterprise-integration-as2.md)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0810_2016-->

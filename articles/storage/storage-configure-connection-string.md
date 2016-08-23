@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/08/2016"
+	ms.date="08/03/2016"
 	ms.author="tamram"/>
 
 # Konfigurieren von Azure Storage-Verbindungszeichenfolgen
@@ -161,6 +161,6 @@ Ihre Verbindungszeichenfolge sollte beispielsweise der folgenden Verbindungszeic
 ## Nächste Schritte
 
 - [Einsatz des Azure-Speicheremulators für Entwicklung und Tests](storage-use-emulator.md)
-- [Microsoft Azure-Speicher-Explorer](storage-explorers.md)
+- [Windows Azure-Speicher-Explorer](storage-explorers.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0810_2016-->

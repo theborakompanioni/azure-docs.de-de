@@ -3,7 +3,7 @@
 	description="Auf GitHub finden Sie C# .NET NoSQL-Beispiele für gängige Aufgaben in DocumentDB, darunter CRUD-Vorgänge für JSON-Dokumente in NoSQL-Datenbanken." 
 	keywords="NoSQL-Beispiel"
 	services="documentdb" 
-	authors="aliuy" 
+	authors="AndrewHoh" 
 	manager="jhubbard" 
 	editor="monicar" 
 	documentationCenter=".net"/>
@@ -15,7 +15,7 @@
 	ms.devlang="na" 
 	ms.topic="article" 
 	ms.date="07/21/2016" 
-	ms.author="andrl"/>
+	ms.author="anhoh"/>
 
 
 # DocumentDB .NET-Beispiele
@@ -45,7 +45,7 @@ Jedes Beispiel ist eigenständig mit eigener Einrichtung und Bereinigung. In den
 
 Die Methode [RunDatabaseDemo](https://github.com/Azure/azure-documentdb-dotnet/blob/530c8d9cf7c99df7300246da05206c57ce654233/samples/code-samples/DatabaseManagement/Program.cs#L72-L121) des Beispiels für das DatabaseManagement-Projekt veranschaulicht, wie Sie die folgenden Aufgaben durchführen.
 
-Aufgabe | API-Referenz
+Task | API-Referenz
 --- | ---
 [Erstellen einer Datenbank](https://github.com/Azure/azure-documentdb-dotnet/blob/530c8d9cf7c99df7300246da05206c57ce654233/samples/code-samples/DatabaseManagement/Program.cs#L90) | [DocumentClient.CreateDatabaseAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createdatabaseasync.aspx)
 [Abfragen eines Kontos nach einer Datenbank](https://github.com/Azure/azure-documentdb-dotnet/blob/530c8d9cf7c99df7300246da05206c57ce654233/samples/code-samples/DatabaseManagement/Program.cs#L81) | [DocumentQueryable.CreateDatabaseQuery](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.linq.documentqueryable.createdatabasequery.aspx)
@@ -57,7 +57,7 @@ Aufgabe | API-Referenz
 
 Die Methode [RunCollectionDemo](https://github.com/Azure/azure-documentdb-dotnet/blob/530c8d9cf7c99df7300246da05206c57ce654233/samples/code-samples/CollectionManagement/Program.cs#L96-L185) des CollectionManagement-Beispielprojekts veranschaulicht, wie Sie die folgenden Aufgaben durchführen.
 
-Aufgabe | API-Referenz
+Task | API-Referenz
 --- | ---
 [Erstellen einer Sammlung](https://github.com/Azure/azure-documentdb-dotnet/blob/89670bc8aefd9bdd932db7f9b6d2fcb9b6acf35e/samples/code-samples/CollectionManagement/Program.cs#L101) | [DocumentClient.CreateDocumentCollectionAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createdocumentcollectionasync.aspx)
 [Abrufen der Leistungsebene einer Sammlung](https://github.com/Azure/azure-documentdb-dotnet/blob/89670bc8aefd9bdd932db7f9b6d2fcb9b6acf35e/samples/code-samples/CollectionManagement/Program.cs#L130) | [DocumentQueryable.CreateOfferQuery](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.linq.documentqueryable.createofferquery.aspx)
@@ -70,7 +70,7 @@ Aufgabe | API-Referenz
 
 Die Methode [RunDocumentsDemo](https://github.com/Azure/azure-documentdb-dotnet/blob/f374cc601f4cf08d11c88f0c3fa7dcefaf7ecfe8/samples/code-samples/DocumentManagement/Program.cs#L97-L102) des DocumentManagement-Beispielprojekts veranschaulicht, wie Sie die folgenden Aufgaben durchführen.
 
-Aufgabe | API-Referenz
+Task | API-Referenz
 --- | ---
 [Erstellen eines Dokuments](https://github.com/Azure/azure-documentdb-dotnet/blob/f374cc601f4cf08d11c88f0c3fa7dcefaf7ecfe8/samples/code-samples/DocumentManagement/Program.cs#L198) | [DocumentClient.CreateDocumentAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createdocumentasync.aspx)
 [Lesen eines Dokuments nach ID](https://github.com/Azure/azure-documentdb-dotnet/blob/f374cc601f4cf08d11c88f0c3fa7dcefaf7ecfe8/samples/code-samples/DocumentManagement/Program.cs#L211) | [DocumentClient.ReadDocumentAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.readdocumentasync.aspx)
@@ -87,7 +87,7 @@ Aufgabe | API-Referenz
 
 Die Methode [RunIndexDemo](https://github.com/Azure/azure-documentdb-dotnet/blob/ea8c977b9c2f37ddc2894911ec239907ab60e40a/samples/code-samples/IndexManagement/Program.cs#L89-L117) des IndexManagement-Beispielprojekts veranschaulicht, wie Sie die folgenden Aufgaben durchführen.
 
-Aufgabe | API-Referenz
+Task | API-Referenz
 --- | ---
 [Ausschließen eines Dokuments aus dem Index](https://github.com/Azure/azure-documentdb-dotnet/blob/2e9a48b6a446b47dd6182606c8608d439b88b683/samples/code-samples/IndexManagement/Program.cs#L125-L163) | [IndexingDirective.Exclude](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.indexingdirective.aspx)
 [Verwenden der manuellen Indizierung (anstatt automatisch)](https://github.com/Azure/azure-documentdb-dotnet/blob/2e9a48b6a446b47dd6182606c8608d439b88b683/samples/code-samples/IndexManagement/Program.cs#L171-L209) | [IndexingPolicy.Automatic](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.indexingpolicy.automatic.aspx)
@@ -103,7 +103,7 @@ Weitere Informationen zur Indizierung finden Sie unter [Indizierungsrichtlinien 
 
 Die Partitionierungsbeispieldatei [azure-documentdb-net/samples/code-samples/Partitioning/Program.cs](https://github.com/Azure/azure-documentdb-net/blob/master/samples/code-samples/Partitioning/Program.cs) veranschaulicht, wie Sie die folgenden Aufgaben durchführen. In einigen Fällen werden zusätzliche Hilfsdateien verwendet, um die Aufgabe durchzuführen.
 
-Aufgabe | API-Referenz
+Task | API-Referenz
 --- | ---
 [Verwenden eines HashPartitionResolver-Elements](https://github.com/Azure/azure-documentdb-dotnet/blob/d17c0ca5be739a359d105cf4112443f65ca2cb72/samples/code-samples/Partitioning/Program.cs#L144-L160) | [HashPartitionResolver](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.partitioning.hashpartitionresolver.aspx)
 [Verwenden eines RangePartitionResolver-Elements](https://github.com/Azure/azure-documentdb-dotnet/blob/d17c0ca5be739a359d105cf4112443f65ca2cb72/samples/code-samples/Partitioning/Program.cs#L162-L186) | [Bereich](https://msdn.microsoft.com/library/azure/mt126048.aspx) mit<br>[RangePartitionResolver](https://msdn.microsoft.com/library/azure/mt126047.aspx)
@@ -121,7 +121,7 @@ Weitere Informationen zu Partitionierung und Sharding finden Sie unter [Partitio
 
 Die Geodatenbeispieldatei [azure-documentdb-net/samples/code-samples/Geospatial/Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Geospatial/Program.cs) veranschaulicht, wie Sie die folgenden Aufgaben durchführen.
  
-Aufgabe | API-Referenz  
+Task | API-Referenz  
 ---- | ---  
 [Aktivieren der Geoindizierung für eine neue Sammlung](https://github.com/Azure/azure-documentdb-dotnet/blob/7b09c085817e850d683bc59bd864c2f6b552d275/samples/code-samples/Geospatial/Program.cs#L45-L63) | [IndexingPolicy](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.indexingpolicy.aspx)<br>[IndexKind.Spatial](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.indexkind.aspx)<br>[DataType.Point](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.datatype.aspx)  
 [Einfügen von Dokumenten mit GeoJSON-Punkten](https://github.com/Azure/azure-documentdb-dotnet/blob/7b09c085817e850d683bc59bd864c2f6b552d275/samples/code-samples/Geospatial/Program.cs#L116-L126) | [DocumentClient.CreateDocumentAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createdocumentasync.aspx)<br>[DataType.Point](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.datatype.aspx)   
@@ -136,7 +136,7 @@ Weitere Informationen zum Verwenden von Geodaten finden Sie unter [Arbeiten mit 
 
 Die Abfragedokumentdatei [azure-documentdb-net/samples/code-samples/Queries/Program.cs](https://github.com/Azure/azure-documentdb-net/blob/master/samples/code-samples/Queries/Program.cs) veranschaulicht, wie Sie die folgenden Aufgaben jeweils mit der SQL-Abfragegrammatik, dem LINQ-Anbieter mit Abfrage und mit Lambda durchführen.
 
-Aufgabe | API-Referenz
+Task | API-Referenz
 --- | ---
 [Abfragen aller Dokumente](https://github.com/Azure/azure-documentdb-dotnet/blob/d17c0ca5be739a359d105cf4112443f65ca2cb72/samples/code-samples/Queries/Program.cs#L122-L138) | [DocumentQueryable.CreateDocumentQuery](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.linq.documentqueryable.createdocumentquery.aspx)
 [Abfragen der Gleichheit mit „==“](https://github.com/Azure/azure-documentdb-dotnet/blob/d17c0ca5be739a359d105cf4112443f65ca2cb72/samples/code-samples/Queries/Program.cs#L251-L268) | [DocumentQueryable.CreateDocumentQuery](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.linq.documentqueryable.createdocumentquery.aspx)
@@ -159,7 +159,7 @@ Weitere Informationen zum Schreiben von Abfragen finden Sie unter [SQL-Abfrage i
 
 Die Datei [azure-documentdb-net/samples/code-samples/ServerSideScripts/Program.cs](https://github.com/Azure/azure-documentdb-net/blob/master/samples/code-samples/ServerSideScripts/Program.cs) für die serverseitige Programmierung veranschaulicht, wie Sie die folgenden Aufgaben durchführen.
 
-Aufgabe | API-Referenz
+Task | API-Referenz
 --- | ---
 [Erstellen einer gespeicherten Prozedur](https://github.com/Azure/azure-documentdb-net/blob/d17c0ca5be739a359d105cf4112443f65ca2cb72/samples/code-samples/ServerSideScripts/Program.cs#L112) | [DocumentClient.CreateStoredProcedureAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createstoredprocedureasync.aspx)
 [Ausführen einer gespeicherten Prozedur](https://github.com/Azure/azure-documentdb-net/blob/d17c0ca5be739a359d105cf4112443f65ca2cb72/samples/code-samples/ServerSideScripts/Program.cs#L127) | [DocumentClient.ExecuteStoredProcedureAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.executestoredprocedureasync.aspx)
@@ -175,10 +175,10 @@ Weitere Informationen zur serverseitigen Programmierung finden Sie unter [Docume
 
 Die Datei [azure-documentdb-net/samples/code-samples/UserManagement/Program.cs](https://github.com/Azure/azure-documentdb-net/blob/master/samples/code-samples/UserManagement/Program.cs) für die Benutzerverwaltung veranschaulicht, wie Sie die folgenden Aufgaben durchführen.
 
-Aufgabe | API-Referenz
+Task | API-Referenz
 --- | ---
 [Erstellen eines Benutzers](https://github.com/Azure/azure-documentdb-net/blob/d17c0ca5be739a359d105cf4112443f65ca2cb72/samples/code-samples/UserManagement/Program.cs#L81) | [DocumentClient.CreateUserAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createuserasync.aspx)
 [Festlegen von Berechtigungen für eine Sammlung oder ein Dokument](https://github.com/Azure/azure-documentdb-net/blob/d17c0ca5be739a359d105cf4112443f65ca2cb72/samples/code-samples/UserManagement/Program.cs#L85) | [DocumentClient.CreatePermissionAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createpermissionasync.aspx)
 [Abrufen einer Liste mit Berechtigungen eines Benutzers](https://github.com/Azure/azure-documentdb-net/blob/d17c0ca5be739a359d105cf4112443f65ca2cb72/samples/code-samples/UserManagement/Program.cs#L218) | [DocumentClient.ReadUserAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.readuserasync.aspx)<br>[DocumentClient.ReadPermissionFeedAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.readpermissionfeedasync.aspx)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0810_2016-->

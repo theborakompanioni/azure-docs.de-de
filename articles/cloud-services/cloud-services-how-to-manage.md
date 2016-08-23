@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/26/2016"
+	ms.date="08/10/2016"
 	ms.author="adegeo"/>
 
 
@@ -164,4 +164,4 @@ Wenn für den Cloud-Dienst die ausführliche Überwachung konfiguriert ist, lös
 * [Konfigurieren eines benutzerdefinierten Domänennamens](cloud-services-custom-domain-name.md)
 * Konfigurieren von [SSL-Zertifikaten](cloud-services-configure-ssl-certificate.md)
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0810_2016-->

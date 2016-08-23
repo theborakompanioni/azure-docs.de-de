@@ -1,20 +1,20 @@
 <properties
 	pageTitle="Nachverfolgen der Dienstintegrität mit Azure Insights | Microsoft Azure"
 	description="Ermitteln Sie den Zeitpunkt von Leistungsabfällen oder Dienstunterbrechungen, die bei Azure aufgetreten sind. "
-	authors="stepsic-microsoft-com"
-	manager="kamrani"
+	authors="rboucher"
+	manager=""
 	editor=""
-	services="monitoring"
-	documentationCenter="monitoring"/>
+	services="monitoring-and-diagnostics"
+	documentationCenter="monitoring-and-diagnostics"/>
 
 <tags
-	ms.service="monitoring"
+	ms.service="monitoring-and-diagnostics"
 	ms.workload="na"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="09/08/2015"
-	ms.author="stepsic"/>
+	ms.author="robb"/>
 
 # Nachverfolgen der Dienstintegrität
 
@@ -52,4 +52,4 @@ Azure informiert jeweils aktuell über Dienstunterbrechungen oder Leistungsabfä
 * [Überwachen von Dienstmetriken](insights-how-to-customize-monitoring.md), um sicherzustellen, dass Ihr Dienst verfügbar und reaktionsfähig ist.
 * [Überwachen der Verfügbarkeit und Reaktionsfähigkeit einer beliebigen Webseite](../application-insights/app-insights-monitor-web-app-availability.md) mit Application Insights, um zu ermitteln, ob eine Seite offline ist.
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0810_2016-->

@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="05/18/2016"
+	ms.date="08/15/2016"
 	ms.author="awills"/>
 
 # Application Insights für Webseiten
@@ -20,7 +20,7 @@
 
 [AZURE.INCLUDE [app-insights-selector-get-started-dotnet](../../includes/app-insights-selector-get-started-dotnet.md)]
 
-Informieren Sie sich über die Leistung und Nutzung Ihrer Webseite oder App. Fügen Sie Visual Studio Application Insights Ihrem Seitenskript hinzu, um Zeitangaben zu Seitenladevorgängen und AJAX-Aufrufen, Anzahl und Details von Browserausnahmen und AJAX-Fehlern sowie die Anzahl von Benutzern und Sitzungen zu erhalten. Diese Informationen können jeweils nach Seite, Clientbetriebssystem und Browserversion, geografischer Position und anderen Dimensionen segmentiert werden. Sie können auch Warnungen für die Fehleranzahl oder das langsame Laden von Seiten festlegen.
+Informieren Sie sich über die Leistung und Nutzung Ihrer Webseite oder App. Wenn Sie Visual Studio Application Insights Ihrem Seitenskript hinzufügen, erhalten Sie Zeitangaben zu Seitenladevorgängen und AJAX-Aufrufen, Anzahl und Details von Browserausnahmen und AJAX-Fehlern sowie die Anzahl von Benutzern und Sitzungen. Diese Informationen können jeweils nach Seite, Clientbetriebssystem und Browserversion, geografischer Position und anderen Dimensionen segmentiert werden. Sie können auch Warnungen für die Fehleranzahl oder das langsame Laden von Seiten festlegen.
 
 Sie können Application Insights mit allen Webseiten verwenden. Hierfür müssen Sie lediglich einen kurzen JavaScript-Code hinzufügen. Wenn Sie als Webdienst [Java](app-insights-java-get-started.md) oder [ASP.NET](app-insights-asp-net.md) verwenden, können Sie Telemetriedaten von Ihrem Server und den Clients integrieren.
 
@@ -29,7 +29,7 @@ Sie benötigen ein [Microsoft Azure](https://azure.com)-Abonnement. Falls Ihr Te
 
 ## Einrichten von Application Insights für Ihre Webseite
 
-Es kann sein, dass dies bereits erledigt ist. Wenn Ihre App ein neues ASP.NET-Projekt ist und Sie in Visual Studio im Dialogfeld „Neues Projekt“ das Hinzufügen von Application Insights gewählt haben, wurde das Skript bereits hinzugefügt, und die Einrichtung ist abgeschlossen.
+Ist es erforderlich, Application Insights zuerst Ihren Webseiten hinzuzufügen? Es kann sein, dass dies bereits durchgeführt wurde. Wenn Sie sich entschieden haben, Application Insights Ihrer Web-App in Visual Studio über das Dialogfeld „Neues Projekt“ hinzuzufügen, wurde das Skript bei diesem Vorgang hinzugefügt. In diesem Fall müssen Sie nichts mehr tun.
 
 Andernfalls müssen Sie Ihrer Website wie folgt einen Codeausschnitt hinzufügen.
 
@@ -130,7 +130,7 @@ Im Diagramm werden die Gesamtdauern der Seitenladevorgänge in die [vom W3C defi
 
 ![](./media/app-insights-javascript/08-client-split.png)
 
-Beachten Sie, dass die Zeit für die *Netzwerkverbindung* häufig geringer als erwartet ist, da es sich um einen Durchschnittswert über alle Anforderungen vom Browser an den Server handelt. Viele einzelne Anforderungen haben eine Verbindungszeit von 0, da bereits eine aktive Verbindung mit dem Server besteht.
+Beachten Sie, dass die Zeit für die *Netzwerkverbindung* häufig geringer als erwartet ist, da es sich um einen Durchschnittswert aller Anforderungen vom Browser an den Server handelt. Viele einzelne Anforderungen haben eine Verbindungszeit von 0, da bereits eine aktive Verbindung mit dem Server besteht.
 
 ### Dauert der Ladevorgang lange?
 
@@ -177,7 +177,7 @@ Klicken Sie auf eine beliebige Zeile, um besondere Details anzuzeigen.
 
 > [AZURE.NOTE] Wenn Sie den Filter „Browser“ auf dem Blatt löschen, werden sowohl die Serverabhängigkeiten als auch die AJAX-Abhängigkeiten in diese Diagramme eingebunden. Klicken Sie auf „Standard wiederherstellen“, um den Filter neu zu konfigurieren.
 
-Führen Sie zum **Ausführen eines Drilldowns für fehlgeschlagene Ajax-Aufrufe** einen Bildlauf nach unten zum Raster mit den Abhängigkeitsfehlern aus, und klicken Sie anschließend auf eine Zeile, um bestimmte Instanzen anzuzeigen.
+Führen Sie zum **Ausführen eines Drilldowns für fehlgeschlagene Ajax-Aufrufe ** einen Bildlauf nach unten zum Raster mit den Abhängigkeitsfehlern aus, und klicken Sie anschließend auf eine Zeile, um bestimmte Instanzen anzuzeigen.
 
 ![](./media/app-insights-javascript/37.png)
 
@@ -205,17 +205,17 @@ Legen Sie im Blatt "Diagnosesuche" als Filter die Einstellung "Seitenansicht" fe
 
 Wählen Sie ein Ereignis, um weitere Details anzuzeigen. Klicken Sie auf der Detailseite auf "...", um weitere Details anzuzeigen.
 
-> [AZURE.NOTE] Beachten Sie bei Verwendung von [Search](app-insights-diagnostic-search.md), dass Sie ganze Wörter suchen müssen: "Info" und "nfo" stimmen nicht mit "Informationen" überein, "Info*" hingegen schon. Ein Suchbegriff darf nicht mit einem Platzhalterzeichen beginnen. Beispielsweise ergibt die Suche nach „*bou“ nicht „About“.
+> [AZURE.NOTE] Beachten Sie bei Verwendung von [Search](app-insights-diagnostic-search.md), dass Sie ganze Wörter suchen müssen: „Info“ und „nfo“ ergeben keine Übereinstimmung mit „Informationen“.
 
-> [Erfahren Sie mehr über Diagnosesuche](app-insights-diagnostic-search.md)
+Sie können auch die leistungsfähige [Analytics-Abfragesprache](app-insights-analytics-tour.md) verwenden, um Seitenansichten zu durchsuchen.
 
 ### Eigenschaften von Seitenansichten
 
-* **Dauer der Seitenansicht** 
+* **Dauer der Seitenansicht**
 
  * Dies ist standardmäßig die Dauer des Ladevorgangs der Seite von der Clientanforderung bis zum vollständigen Laden (einschließlich Hilfsdateien, aber ohne asynchrone Aufgaben wie Ajax-Aufrufe).
  * Wenn Sie `overridePageViewDuration` in der [Seitenkonfiguration](#detailed-configuration) festlegen, ist dies das Intervall zwischen Clientanforderung und Ausführung des ersten `trackPageView`-Elements. Wenn Sie nach der Initialisierung des Skripts trackPageView von seiner üblichen Position verschoben haben, wird ein anderer Wert wiedergegeben.
- * Wenn `overridePageViewDuration` festgelegt und im `trackPageView()`-Aufruf ein Argument für die Dauer angegeben ist, wird stattdessen der Argumentwert verwendet. 
+ * Wenn `overridePageViewDuration` festgelegt und im `trackPageView()`-Aufruf ein Argument für die Dauer angegeben ist, wird stattdessen der Argumentwert verwendet.
 
 
 ## Benutzerdefinierte Seitenzähler
@@ -226,7 +226,7 @@ Fügen Sie an geeigneter Stelle in Ihren Client-Code einen JavaScript-Aufruf wie
 
     appInsights.trackPageView(myPageName);
 
-Der Seitenname kann die gleichen Zeichen wie eine URL enthalten, allerdings wird alles nach den Zeichen „#“ oder „?“ ignoriert.
+Der Seitenname kann die gleichen Zeichen wie eine URL enthalten, aber alles nach den Zeichen „#“ oder „?“ wird ignoriert.
 
 
 
@@ -249,4 +249,4 @@ Möchten Sie herausfinden, wofür die Benutzer Ihre App verwenden?
 * [Benutzerdefinierte Ereignisse und Metriken](app-insights-api-custom-events-metrics.md)
 * [Erstellen-Messen-Lernen](app-insights-overview-usage.md)
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0817_2016-->

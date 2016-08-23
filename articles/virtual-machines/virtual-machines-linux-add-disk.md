@@ -32,7 +32,7 @@ azure vm disk attach-new <myuniquegroupname> <myuniquevmname> <size-in-GB>
 
 ## Anfügen eines Datenträgers
 
-Neue Datenträger lassen sich schnell anfügen. Geben Sie einfach `azure vm disk attach-new <myuniquegroupname> <myuniquevmname> <size-in-GB>` ein, um eine neue GB-Festplatte für den virtuellen Computer zu erstellen und anzufügen. Wenn Sie kein Speicherkonto explizit angeben, werden alle von Ihnen erstellten Datenträger im gleichen Speicherkonto platziert, in dem sich auch der Betriebssystemdatenträger befindet. Das sollte in etwa so aussehen:
+Neue Datenträger lassen sich schnell anfügen. Geben Sie `azure vm disk attach-new <myuniquegroupname> <myuniquevmname> <size-in-GB>` ein, um eine neue GB-Festplatte für den virtuellen Computer zu erstellen und anzufügen. Wenn Sie kein Speicherkonto explizit angeben, werden alle von Ihnen erstellten Datenträger im gleichen Speicherkonto platziert, in dem sich auch der Betriebssystemdatenträger befindet. Das Ergebnis sollte etwa wie folgt aussehen:
 
 ```bash
 azure vm disk attach-new myuniquegroupname myuniquevmname 5
@@ -50,9 +50,9 @@ info:    vm disk attach-new command OK
 
 ## Herstellen einer Verbindung mit dem virtuellen Linux-Computer zum Bereitstellen des neuen Datenträgers
 
-> [AZURE.NOTE] In diesem Thema wird eine Verbindung mit einem virtuellen Computer mithilfe von Benutzernamen und Kennwörtern hergestellt. Informationen zur Verwendung öffentlicher und privater Schlüsselpaare für die Kommunikation mit Ihrem virtuellen Computer finden Sie unter [Verwenden von SSH mit Linux auf Azure](virtual-machines-linux-ssh-from-linux.md). Sie können die **SSH**-Verbindung von VMs ändern, die mit dem Befehl `azure vm quick-create` erstellt wurden, indem Sie den Befehl `azure vm reset-access` zum vollständigen Zurücksetzen des **SSH**-Zugriffs verwenden, Benutzer hinzufügen oder entfernen oder Dateien für öffentliche Schlüssel zum Sichern des Zugriffs hinzufügen.
+> [AZURE.NOTE] In diesem Thema wird mit Benutzernamen und Kennwörtern eine Verbindung mit einer VM hergestellt. Informationen zur Verwendung von öffentlichen und privaten Schlüsselpaaren für die Kommunikation mit Ihrer VM finden Sie unter [Verwenden von SSH mit Linux in Azure](virtual-machines-linux-ssh-from-linux.md). Sie können die **SSH**-Verbindung von VMs ändern, die mit dem Befehl `azure vm quick-create` erstellt wurden, indem Sie den Befehl `azure vm reset-access` zum vollständigen Zurücksetzen des **SSH**-Zugriffs verwenden, Benutzer hinzufügen oder entfernen oder Dateien für öffentliche Schlüssel zum Sichern des Zugriffs hinzufügen.
 
-Sie benötigen SSH für Ihren virtuellen Azure-Computer, um den neuen Datenträger zu partitionieren, formatieren und bereitzustellen, damit er von Ihrem virtuellen Linux-Computer verwendet werden kann. Falls Sie mit dem Herstellen einer Verbindung über **SSH** nicht vertraut sind: Der Befehl hat das Format `ssh <username>@<FQDNofAzureVM> -p <the ssh port>` und sieht wie folgt aus:
+Sie benötigen SSH für Ihren virtuellen Azure-Computer, um den neuen Datenträger zu partitionieren, zu formatieren und bereitzustellen, damit er von Ihrem virtuellen Linux-Computer verwendet werden kann. Falls Sie mit dem Herstellen einer Verbindung über **SSH** nicht vertraut sind: Der Befehl hat das Format `ssh <username>@<FQDNofAzureVM> -p <the ssh port>` und sieht wie folgt aus:
 
 ```bash
 ssh ops@myuni-westu-1432328437727-pip.westus.cloudapp.azure.com -p 22
@@ -216,7 +216,35 @@ bin   datadrive  etc   initrd.img  lib64       media  opt   root  sbin  sys  usr
 boot  dev        home  lib         lost+found  mnt    proc  run   srv   tmp  var
 ```
 
-> [AZURE.NOTE] Sie können die Verbindung zum virtuellen Linux-Computer auch mithilfe eines SSH-Schlüssels für die Identifikation herstellen. Weitere Informationen finden Sie unter [Verwenden von SSH mit Linux auf Azure](virtual-machines-linux-ssh-from-linux.md).
+Um sicherzustellen, dass das Laufwerk nach einem Neustart automatisch wieder eingebunden wird, muss es der Datei „/etc/fstab“ hinzugefügt werden. Außerdem wird dringend empfohlen, den UUID (Universally Unique IDentifier) in „/etc/fstab“ zu verwenden, um auf das Laufwerk und nicht auf den Gerätenamen (z.B. `/dev/sdc1`) zu verweisen. Wenn das Betriebssystem während des Starts einen Datenträgerfehler erkennt, wird durch den UUID verhindert, dass an einem bestimmten Ort der falsche Datenträger bereitgestellt wird. Die verbleibenden Datenträger werden dann diesen Geräte-IDs zugewiesen. Verwenden Sie das Hilfsprogramm **blkid**, um den UUID des neuen Laufwerks herauszufinden:
+
+```bash
+sudo -i blkid
+```
+
+Die Ausgabe sieht in etwa wie folgt aus:
+
+```bash
+/dev/sda1: UUID="11111111-1b1b-1c1c-1d1d-1e1e1e1e1e1e" TYPE="ext4"
+/dev/sdb1: UUID="22222222-2b2b-2c2c-2d2d-2e2e2e2e2e2e" TYPE="ext4"
+/dev/sdc1: UUID="33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e" TYPE="ext4"
+```
+
+>[AZURE.NOTE] Eine falsche Bearbeitung der Datei **/etc/fstab** könnte zu einem nicht startfähigen System führen. Wenn Sie sich nicht sicher sind, helfen Ihnen die Informationen zur richtigen Bearbeitung dieser Datei in der Dokumentation weiter. Außerdem wird empfohlen, ein Backup der Datei /etc/fstab zu erstellen, bevor Sie sie bearbeiten.
+
+Öffnen Sie als Nächstes die Datei **/etc/fstab** in einem Text-Editor:
+
+```bash
+sudo vi /etc/fstab
+```
+
+In diesem Beispiel verwenden wir den UUID-Wert für das neue Gerät **/dev/sdc1**, das in den vorhergehenden Schritten erstellt wurde, und den Bereitstellungspunkt **/datadrive**. Fügen Sie am Ende der Datei **/etc/fstab** die folgende Zeile hinzu:
+
+```bash
+UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults   1   2
+```
+
+>[AZURE.NOTE] Wenn Sie später einen Datenträger entfernen, ohne „fstab“ zu bearbeiten, kann der Start des virtuellen Computers fehlschlagen. Bei den meisten Distributionen wird entweder die fstab-Option `nofail` oder `nobootwait` bereitgestellt (bzw. auch beide). Mit diesen Optionen kann ein System auch dann starten, wenn der Datenträger beim Start nicht bereitgestellt wird. Weitere Informationen zu diesen Parametern finden Sie in der Dokumentation zu Ihrer Distribution.
 
 
 ### TRIM/UNMAP-Unterstützung für Linux in Azure
@@ -224,11 +252,11 @@ Einige Linux-Kernels unterstützen TRIM/UNMAP-Vorgänge, um ungenutzte Blöcke a
 
 Es gibt zwei Methoden, TRIM-Unterstützung auf Ihrem virtuellen Linux-Computer zu aktivieren. Den empfohlenen Ansatz finden Sie wie üblich in Ihrer Distribution:
 
-- Verwenden Sie die `discard`-Bereitstellungsoption in `/etc/fstab`, Beispiel:
+- Verwenden Sie die Bereitstellungsoption `discard` in `/etc/fstab`, z.B.:
 
 		UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,discard   1   2
 
-- Alternativ können Sie den Befehl `fstrim` manuell über die Befehlszeile ausführen oder zu „crontab“ für eine regelmäßige Ausführung hinzufügen:
+- Alternativ können Sie den Befehl `fstrim` manuell über die Befehlszeile ausführen oder ihn „crontab“ hinzufügen, um eine regelmäßige Ausführung zu erzielen:
 
 	**Ubuntu**
 
@@ -245,8 +273,8 @@ Es gibt zwei Methoden, TRIM-Unterstützung auf Ihrem virtuellen Linux-Computer z
 
 ## Nächste Schritte
 
-- Beachten Sie, dass der neue Datenträger bei einem Neustart in der Regel nicht für den virtuellen Computer zur Verfügung steht, es sei denn, Sie schreiben diese Informationen in Ihre [fstab-Datei](http://en.wikipedia.org/wiki/Fstab).
+- Beachten Sie, dass der neue Datenträger bei einem Neustart nicht für den virtuellen Computer zur Verfügung steht, sofern Sie diese Informationen nicht in Ihre [fstab-Datei](http://en.wikipedia.org/wiki/Fstab) geschrieben haben.
 - Lesen Sie die Empfehlungen unter [Optimieren virtueller Linux-Computer in Azure](virtual-machines-linux-optimization.md), um sicherzustellen, dass Ihr virtueller Linux-Computer richtig konfiguriert ist.
 - Erweitern Sie die Speicherkapazität durch Hinzufügen zusätzlicher Datenträger, und [konfigurieren Sie RAID](virtual-machines-linux-configure-raid.md) für zusätzliche Leistung.
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0810_2016-->

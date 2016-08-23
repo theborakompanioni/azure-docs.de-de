@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="05/08/2016"
+   ms.date="08/08/2016"
    ms.author="lodipalm;sonyama;barbkess"/>
 
 # Laden von Daten aus SQL Server in Azure SQL Data Warehouse (SSIS)
@@ -54,16 +54,16 @@ Für dieses Lernprogramm ist Folgendes erforderlich:
 1. **SQL Server Integration Services (SSIS)**. SSIS ist eine Komponente von SQL Server und setzt eine Evaluierungsversion oder eine lizenzierte Version von SQL Server voraus. Eine Evaluierungsversion von SQL Server 2016 Preview finden Sie unter [SQL Server-Evaluierungsversionen][].
 2. **Visual Studio** Die kostenlose Visual Studio 2015 Community Edition finden Sie unter [Visual Studio Community][].
 3. **SQL Server Data Tools (SSDT) für Visual Studio**. SQL Server Data Tools für Visual Studio 2015 ist unter [Download der neuesten SQL Server-Datatools][] erhältlich.
-4. **Beispieldaten**. In diesem Tutorial werden als Quelldaten in SQL Server gespeicherte Beispieldaten aus der AdventureWorks-Beispieldatenbank verwendet, die in SQL Data Warehouse geladen werden sollen. Die AdventureWorks-Beispieldatenbank finden Sie unter [AdventureWorks 2014 Sample Databases][] \(Adventure Works 2014 Beispieldatenbank).
+4. **Beispieldaten**. In diesem Tutorial werden als Quelldaten in SQL Server gespeicherte Beispieldaten aus der AdventureWorks-Beispieldatenbank verwendet, die in SQL Data Warehouse geladen werden sollen. Die AdventureWorks-Beispieldatenbank finden Sie unter [AdventureWorks 2014 Sample Databases][] (Adventure Works 2014 Beispieldatenbank).
 5. **Eine SQL Data Warehouse-Datenbank und entsprechende Berechtigungen**. In diesem Tutorial wird eine Verbindung mit einer SQL Data Warehouse-Instanz hergestellt, und es werden Daten in diese Instanz geladen. Sie müssen über Berechtigungen zum Erstellen einer Tabelle und zum Laden von Daten verfügen.
 6. **Eine Firewallregel**. Für SQL Data Warehouse muss eine Firewallregel mit der IP-Adresse Ihres lokalen Computers erstellt werden, um Daten an SQL Data Warehouse hochladen zu können.
 
 ## Schritt 1: Erstellen eines neuen Integration Services-Projekts
 
 1. Starten Sie Visual Studio 2015.
-2. Wählen Sie im Menü **Datei** die Optionen **Neu | Projekt** aus.
-3. Navigieren Sie zu den Projekttypen **Installiert | Vorlagen | Business Intelligence | Integration Services**.
-4. Wählen Sie **Integration Services-Projekt** aus. Geben Sie Werte für **Name** und **Speicherort** ein, und wählen Sie anschließend **OK** aus.
+2. Wählen Sie im Menü **Datei** die Option „Neu“.| Project**.
+3. Navigieren Sie zu „Installiert“.| Templates | Business Intelligence | Integration Services** project types.
+4. Wählen Sie **Integration Services-Projekt** aus. Geben Sie Werte für **Name** und **Speicherort** ein, und wählen Sie anschließend **OK**.
 
 Visual Studio wird geöffnet und erstellt ein neues SQL Server Integration Services (SSIS)-Projekt. Anschließend öffnet Visual Studio den Designer für das einzelne neue SSIS-Paket (Package.dtsx) des Projekts. Daraufhin stehen folgende Bildschirmbereiche zur Verfügung:
 
@@ -91,7 +91,7 @@ Visual Studio wird geöffnet und erstellt ein neues SQL Server Integration Servi
 
     ![][03]
 
-2. Klicken Sie auf der Registerkarte **Verbindungs-Manager** des **ADO.NET-Quellen-Editors** neben der Liste **ADO.NET-Verbindungs-Manager** auf die Schaltfläche **Neu**, um das Dialogfeld **ADO.NET-Verbindungs-Manager konfigurieren** zu öffnen, und erstellen Sie Verbindungseinstellungen für die SQL Server-Datenbank, die in diesem Tutorial als Datenquelle fungiert.
+2. Klicken Sie auf der Registerkarte **Verbindungs-Manager** des **ADO.NET-Quellen-Editors** neben der Liste **ADO.NET-Verbindungs-Manager** auf die Schaltfläche **Neu**, um das Dialogfeld **ADO.NET-Verbindungs-Manager konfigurieren** zu öffnen. Erstellen Sie dann Verbindungseinstellungen für die SQL Server-Datenbank, die in diesem Tutorial als Datenquelle fungiert.
 
     ![][04]
 
@@ -139,12 +139,12 @@ Visual Studio wird geöffnet und erstellt ein neues SQL Server Integration Servi
 
     ![][11]
 
-2. Klicken Sie auf der Registerkarte **Verbindungs-Manager** des **ADO.NET-Ziel-Editors** neben der Liste **Verbindungs-Manager** auf die Schaltfläche **Neu**, um das Dialogfeld **ADO.NET-Verbindungs-Manager konfigurieren** zu öffnen, und erstellen Sie Verbindungseinstellungen für die Azure SQL Data Warehouse-Datenbank, die in diesem Tutorial als Datenziel fungiert.
+2. Klicken Sie auf der Registerkarte **Verbindungs-Manager** des **ADO.NET-Ziel-Editors** neben der Liste **Verbindungs-Manager** auf die Schaltfläche **Neu**, um das Dialogfeld **ADO.NET-Verbindungs-Manager konfigurieren** zu öffnen. Erstellen Sie dann Verbindungseinstellungen für die Azure SQL Data Warehouse-Datenbank, die in diesem Tutorial als Datenziel fungiert.
 3. Klicken Sie im Dialogfeld **ADO.NET-Verbindungs-Manager konfigurieren** auf die Schaltfläche **Neu**, um das Dialogfeld **Verbindungs-Manager** zu öffnen und eine neue Datenverbindung zu erstellen.
 4. Gehen Sie im Dialogfeld **Verbindungs-Manager** wie folgt vor:
     1. Wählen Sie unter **Anbieter** den Datenanbieter „SqlClient“ aus.
     2. Geben Sie unter **Servername** den SQL Data Warehouse-Namen ein.
-    3. Wählen Sie im Abschnitt für die **Serveranmeldung** **SQL Server-Authentifizierung** aus, und geben Sie die Authentifizierungsinformationen ein.
+    3. Wählen Sie im Abschnitt für die **Serveranmeldung** die Option **SQL Server-Authentifizierung** aus, und geben Sie die Authentifizierungsinformationen ein.
     4. Wählen Sie im Abschnitt für die **Datenbankverbindung** eine vorhandene SQL Data Warehouse-Datenbank aus.
     5. Klicken Sie auf **Test Connection**.
     6. Klicken Sie im Dialogfeld mit den Ergebnissen des Verbindungstests auf **OK**, um zum Dialogfeld **Verbindungs-Manager** zurückzukehren.
@@ -224,4 +224,4 @@ Glückwunsch! Sie haben mit SQL Server Integration Services erfolgreich Daten in
 [Visual Studio Community]: https://www.visualstudio.com/de-DE/products/visual-studio-community-vs.aspx
 [AdventureWorks 2014 Sample Databases]: https://msftdbprodsamples.codeplex.com/releases/view/125550
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0810_2016-->

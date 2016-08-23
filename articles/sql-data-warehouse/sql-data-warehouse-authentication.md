@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-management"
-   ms.date="07/29/2016"
+   ms.date="08/04/2016"
    ms.author="rickbyh;barbkess;sonyama"/>
 
 # Authentifizierung in Azure SQL Data Warehouse
@@ -63,7 +63,6 @@ Daraus ergeben sich u. a. die folgenden Vorteile:
 - Die Azure Active Directory-Authentifizierung verwendet eigenständige Datenbankbenutzer zum Authentifizieren von Identitäten auf Datenbankebene.
 - Azure Active Directory unterstützt die tokenbasierte Authentifizierung für Anwendungen, die sich mit SQL Data Warehouse verbinden.
 
-> [AZURE.IMPORTANT] Die Azure Active Directory-Authentifizierung ist ein Vorschaufeature und unterliegt den Vorschaubestimmungen in Ihrer Lizenzvereinbarung (z. B. Enterprise Agreement, Microsoft Azure-Vertrag oder Microsoft Online-Abonnementvertrag) sowie allen anwendbaren Bestimmungen unter [Ergänzende Nutzungsbedingungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ### Konfigurationsschritte
 
@@ -80,7 +79,7 @@ Azure Active Directory-Benutzer werden derzeit nicht im SSDT-Objekt-Explorer ang
   
 ### Suchen der Details
 - Führen Sie die ausführlichen Schritte aus. Die ausführlichen Schritte zum Konfigurieren und Verwenden der Azure Active Directory-Authentifizierung sind fast identisch für die Azure SQL-Datenbank und für Azure SQL Data Warehouse. Befolgen Sie die ausführlichen Schritte im Thema [Herstellen einer Verbindung mit SQL-Datenbank oder SQL Data Warehouse unter Verwendung der Azure Active Directory-Authentifizierung](../sql-database/sql-database-aad-authentication.md).
-- Erstellen Sie benutzerdefinierte Datenbankrollen, und fügen Sie den Rollen Benutzer hinzu. Weisen Sie anschließend präzise Berechtigungen für die Rollen zu. Weitere Informationen finden Sie unter [Getting Started with Database Engine Permissions](https://msdn.microsoft.com/library/mt667986.aspx) (Erste Schritte mit Berechtigungen für Datenbankmodule).
+- Erstellen Sie benutzerdefinierte Datenbankrollen, und fügen Sie den Rollen Benutzer hinzu. Weisen Sie anschließend präzise Berechtigungen für die Rollen zu. Weitere Informationen finden Sie unter [Erste Schritte mit Berechtigungen für das Datenbankmodul](https://msdn.microsoft.com/library/mt667986.aspx).
 
 ## Nächste Schritte
 
@@ -91,4 +90,4 @@ Informationen zum Abfragen Ihres Data Warehouse mit Visual Studio und anderen An
 [Abfragen mit Visual Studio]: ./sql-data-warehouse-query-visual-studio.md
 [What is Azure Active Directory]: ../active-directory/active-directory-whatis.md
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0810_2016-->

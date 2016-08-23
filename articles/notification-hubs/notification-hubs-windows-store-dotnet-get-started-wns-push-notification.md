@@ -62,7 +62,7 @@ Sie müssen die App dem Windows Store zuordnen, um Pushbenachrichtigungen an UWP
 
    	![](./media/notification-hubs-windows-store-dotnet-get-started/notification-hubs-win8-app-name.png)
 
-   	Auf diese Weise wird eine neue Windows Store-Registrierung für Ihre Anwendung erstellt.
+   	Auf diese Weise wird eine neue Windows Store-Registrierung für Ihre App erstellt.
 
 3. Erstellen Sie in Visual Studio ein neues Visual C# Store-App-Projekt mit der Vorlage **Leere App**, und klicken Sie auf **OK**.
 
@@ -102,7 +102,7 @@ Sie müssen die App dem Windows Store zuordnen, um Pushbenachrichtigungen an UWP
 
 [AZURE.INCLUDE [notification-hubs-portal-create-new-hub](../../includes/notification-hubs-portal-create-new-hub.md)]
 
-<ol start="7">
+<ol start="6">
 <li><p>Wählen Sie die Option <b>Notification Services</b> und die Option <b>Windows (WNS)</b>. Geben Sie anschließend im Feld <b>Sicherheitsschlüssel</b> das Kennwort für <b>Geheimer Anwendungsschlüssel</b> ein. Geben Sie den Wert für die <b>Paket-SID</b> ein, den Sie über WNS im vorherigen Abschnitt ermittelt haben, und klicken Sie auf <b>Speichern</b>.</p>
 </li>
 </ol>
@@ -274,4 +274,4 @@ Weitere allgemeine Informationen zu Notification Hubs finden Sie im [Notificatio
 [Kachelkatalog]: http://msdn.microsoft.com/library/windows/apps/hh761491.aspx
 [Übersicht über Signale]: http://msdn.microsoft.com/library/windows/apps/hh779719.aspx
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0817_2016-->

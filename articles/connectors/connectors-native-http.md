@@ -1,8 +1,8 @@
 <properties
-	pageTitle="Hinzufügen der HTTP-Aktion in Logic Apps | Microsoft Azure"
+	pageTitle="Hinzufügen der HTTP-Aktion in Logik-Apps | Microsoft Azure"
 	description="Übersicht über die HTTP-Aktion mit Eigenschaften"
 	services=""
-	documentationCenter="" 
+	documentationCenter=""
 	authors="jeffhollan"
 	manager="erikre"
 	editor=""
@@ -13,7 +13,7 @@
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
-   ms.workload="na" 
+   ms.workload="na"
    ms.date="07/15/2016"
    ms.author="jehollan"/>
 
@@ -21,32 +21,32 @@
 
 Mit der HTTP-Aktion können Sie Workflows für Ihre Organisation erweitern und mit einem beliebigen Endpunkt über HTTP kommunizieren.
 
+Sie können:
+
 - Erstellen Sie Logik-App-Workflows, die aktiviert (durch einen Trigger ausgelöst) werden, wenn eine von Ihnen verwaltete Website ausfällt.
 - Kommunizieren Sie mit jedem beliebigen Endpunkt über HTTP, um Ihre Workflows auf andere Dienste auszuweiten.
 
 Wenn Sie die HTTP-Aktion in einer Logik-App verwenden möchten, müssen Sie zunächst eine [Logik-App erstellen](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
----
-
-## Verwenden eines HTTP-Triggers
+## Verwenden des HTTP-Triggers
 
 Ein Trigger ist ein Ereignis, mit dem ein in einer Logik-App definierter Workflow gestartet werden kann. Weitere Informationen zu Triggern finden Sie [hier](connectors-overview.md).
 
-Im Anschluss finden Sie eine Beispielsequenz für die Einrichtung eines HTTP-Triggers im Logik-App-Designer:
+Im Anschluss finden Sie eine Beispielsequenz für die Einrichtung eines HTTP-Triggers im Logik-App-Designer.
 
 1. Fügen Sie den HTTP-Trigger Ihrer Logik-App hinzu.
-1. Geben Sie die Parameter für den abzurufenden HTTP-Endpunkt an.
-1. Ändern Sie das Wiederholungsintervall, um die gewünschte Abrufhäufigkeit anzugeben.
-1. Die Logik-App wird nun mit den Inhalten ausgelöst, die bei den jeweiligen Überprüfungen zurückgegeben werden.
+2. Geben Sie die Parameter für den abzurufenden HTTP-Endpunkt an.
+3. Ändern Sie das Wiederholungsintervall, um die gewünschte Abrufhäufigkeit anzugeben.
+4. Die Logik-App wird nun mit den Inhalten ausgelöst, die bei den jeweiligen Überprüfungen zurückgegeben werden.
 
 ![HTTP-Trigger](./media/connectors-native-http/using-trigger.png)
 
 ### Funktionsweise des HTTP-Triggers
 
-Der HTTP-Trigger ruft in einem bestimmten Wiederholungsintervall einen HTTP-Endpunkt auf. Standardmäßig führt jeder HTTP-Antwortcode < 300 dazu, dass die Logik-App ausgeführt wird. In der Codeansicht können Sie eine Bedingung hinzufügen, um nach dem HTTP-Aufruf eine Überprüfung durchzuführen und zu ermitteln, ob die Logik-App ausgelöst werden soll. Im Anschluss finden Sie ein Beispiel für einen HTTP-Trigger, der ausgelöst wird, wenn der zurückgegebene Statuscode größer oder gleich `400` ist.
+Der HTTP-Trigger ruft in einem bestimmten Wiederholungsintervall einen HTTP-Endpunkt auf. Standardmäßig führt jeder HTTP-Antwortcode < 300 dazu, dass die Logik-App ausgeführt wird. In der Codeansicht können Sie eine Bedingung hinzufügen, um nach dem HTTP-Aufruf eine Überprüfung durchzuführen und zu ermitteln, ob die Logik-App ausgelöst werden soll. Im Anschluss finden Sie ein Beispiel für einen HTTP-Trigger, der ausgelöst wird, wenn der zurückgegebene Statuscode mindestens `400` beträgt.
 
 ```javascript
-"Http": 
+"Http":
 {
 	"conditions": [
 		{
@@ -68,41 +68,35 @@ Der HTTP-Trigger ruft in einem bestimmten Wiederholungsintervall einen HTTP-Endp
 }
 ```
 
-Umfassende Informationen zu den Parametern für HTTP-Trigger finden Sie auf der [MSDN-Website](https://msdn.microsoft.com/library/azure/mt643939.aspx#HTTP-trigger).
+Vollständige Informationen zu den Parametern der HTTP-Trigger sind im [MSDN](https://msdn.microsoft.com/library/azure/mt643939.aspx#HTTP-trigger) verfügbar.
 
-## Verwenden einer HTTP-Aktion
-	
+## Verwenden der HTTP-Aktion
+
 Eine Aktion ist ein Vorgang, der durch den in einer Logik-App definierten Workflow ausgeführt wird. Weitere Informationen zu Aktionen finden Sie [hier](connectors-overview.md).
 
 1. Wählen Sie die Schaltfläche **Neuer Schritt** aus.
-1. Wählen Sie **Aktion hinzufügen** aus.
-1. Geben Sie im Aktionssuchfeld die Zeichenfolge „HTTP“ ein, um die HTTP-Aktion anzuzeigen.
+2. Wählen Sie **Aktion hinzufügen** aus.
+3. Geben Sie im Aktionssuchfeld die Zeichenfolge **http** ein, um die HTTP-Aktion anzuzeigen.
 
-	![Auswählen der HTTP-Aktion](./media/connectors-native-http/using-action-1.png)
+	![Wählen der HTTP-Aktion](./media/connectors-native-http/using-action-1.png)
 
-1. Geben Sie alle Parameter an, die Sie ggf. für den HTTP-Aufruf benötigen.
+4. Geben Sie alle Parameter an, die ggf. für den HTTP-Aufruf erforderlich sind.
 
-	![Konfigurieren der HTTP-Aktion](./media/connectors-native-http/using-action-2.png)
+	![Ausführen der HTTP-Aktion](./media/connectors-native-http/using-action-2.png)
 
-1. Klicken Sie links oben auf der Symbolleiste auf „Speichern“. Dadurch wird Ihre Logik-App gespeichert und veröffentlicht (aktiviert).
-
----
-
-## Technische Details
-
-Im Anschluss finden Sie Details zu den von diesem Connector unterstützten Triggern und Aktionen.
+5. Klicken Sie zum Speichern auf die linke obere Ecke der Symbolleiste. Ihre Logik-App wird sowohl gespeichert als auch veröffentlicht (aktiviert).
 
 ## HTTP-Trigger
 
-Ein Trigger ist ein Ereignis, mit dem ein in einer Logik-App definierter Workflow gestartet werden kann. Weitere Informationen zu Triggern finden Sie [hier](connectors-overview.md). Der HTTP-Connector besitzt einen Trigger.
+Hier finden Sie Details zu dem Trigger, den dieser Connector unterstützt. Der HTTP-Connector besitzt einen Trigger.
 
 |Trigger|Beschreibung|
 |---|---|
 |HTTP|Führt einen HTTP-Aufruf durch und gibt den Antwortinhalt zurück.|
 
-## HTTP-Aktionen
+## HTTP-Aktion
 
-Eine Aktion ist ein Vorgang, der durch den in einer Logik-App definierten Workflow ausgeführt wird. [Weitere Informationen zu Aktionen finden Sie hier.](connectors-overview.md) Der HTTP-Connector verfügt über eine mögliche Aktion.
+Hier finden Sie Details zu der Aktion, die dieser Connector unterstützt. Der HTTP-Connector verfügt über eine mögliche Aktion.
 
 |Aktion|Beschreibung|
 |---|---|
@@ -110,46 +104,47 @@ Eine Aktion ist ein Vorgang, der durch den in einer Logik-App definierten Workfl
 
 ## HTTP-Details
 
-Für den HTTP-Connector steht eine mögliche Aktion zur Verfügung. Im Anschluss finden Sie Informationen zu den einzelnen Aktionen und den erforderlichen und optionalen Eingabefeldern sowie entsprechende Ausgabedetails in Verbindung mit deren Verwendung.
+Die folgenden Tabellen beschreiben die erforderlichen und optionalen Eingabefelder für die Aktion und die entsprechenden Ausgabedetails, die der Verwendung dieser Aktion zugeordnet sind.
 
-### HTTP-Anforderung
-Führt eine ausgehende HTTP-Anforderung durch. Mit einem Sternchen gekennzeichnete Felder sind Pflichtfelder.
+
+#### HTTP-Anforderung
+Im Folgenden werden die Eingabefelder für die Aktion angegeben, die eine ausgehende HTTP-Anforderung ausführt. Ein * bedeutet, dass es sich um ein Pflichtfeld handelt.
 
 |Anzeigename|Eigenschaftenname|Beschreibung|
 |---|---|---|
 |Methode*|method|Zu verwendendes HTTP-Verb|
-|URI*|uri|URI für die HTTP-Anforderung|
-|Header|headers|Ein JSON-Objekt für die einzubeziehenden Header|
+|URI*|uri|Der URI für die HTTP-Anforderung|
+|Headers|headers|Ein JSON-Objekt für die einzubeziehenden Header|
 |Body|body|Der HTTP-Anforderungstext|
-|Authentifizierung|authentication|[Details finden Sie hier](#authentication)|
+|Authentifizierung|Authentifizierung|Details im Abschnitt [Authentifizierung](#authentication)|
 <br>
 
-**Ausgabedetails**
+#### Ausgabedetails
 
-HTTP-Antwort
+Im Folgenden werden die Ausgabedetails für die HTTP-Antwort angegeben.
 
 |Eigenschaftenname|Datentyp|Beschreibung|
 |---|---|---|
-|Header|Objekt|Antwortheader|
+|Headers|Objekt|Antwortheader|
 |Body|Objekt|Antwortobjekt|
 |Statuscode|int|HTTP-Statuscode|
 
 ## Authentifizierung
 
-Durch Logik-Apps können Sie verschiedene Arten von Authentifizierung bei HTTP-Endpunkten verwenden. Diese Authentifizierung kann mit den Connectors HTTP, [HTTP + Swagger](./connectors-native-http-swagger.md) und [HTTP-Webhook](./connectors-native-webhook.md) genutzt werden. Die folgenden Arten der Authentifizierung können konfiguriert werden:
+Mit dem Logik-Apps-Feature von Azure App Service können Sie verschiedene Authentifizierungstypen bei HTTP-Endpunkten verwenden. Sie können diese Authentifizierung mit den Connectors **HTTP**, **[HTTP + Swagger](./connectors-native-http-swagger.md)** und **[HTTP-Webhook](./connectors-native-webhook.md)** nutzen. Die folgenden Arten der Authentifizierung können konfiguriert werden:
 
 * [Standardauthentifizierung](#basic-authentication)
-* [ClientCertificate-Authentifizierung](#client-certificate-authentication)
-* [ActiveDirectoryOAuth-Authentifizierung](#azure-active-directory-oauth-authentication)
+* [Clientzertifikatsauthentifizierung](#client-certificate-authentication)
+* [Azure Active Directory (Azure AD) OAuth-Authentifizierung](#azure-active-directory-oauth-authentication)
 
 #### Standardauthentifizierung
 
-Das folgende Authentifizierungsobjekt ist für die Standardauthentifizierung erforderlich: Mit einem Sternchen gekennzeichnete Felder sind Pflichtfelder.
+Das folgende Authentifizierungsobjekt ist für die Standardauthentifizierung erforderlich. Ein * bedeutet, dass es sich um ein Pflichtfeld handelt.
 
 |Eigenschaftenname|Datentyp|Beschreibung|
 |---|---|---|
-|Typ*|Typ|Die Art der Authentifizierung. Für die Standardauthentifizierung muss der Wert `Basic` lauten.|
-|Benutzername*|username|Der zu authentifizierende Benutzername|
+|Typ*|Typ|Authentifizierungstyp (muss für die Standardauthentifizierung `Basic` sein)|
+|Benutzername*|username|Zu authentifizierender Benutzername|
 |Kennwort*|password|Das zu authentifizierende Kennwort|
 
 >[AZURE.TIP] Wenn Sie ein Kennwort verwenden möchten, das aus der Definition nicht abgerufen werden kann, verwenden Sie einen `securestring`-Parameter und die `@parameters()`-[Funktion für die Workflowdefinition](http://aka.ms/logicappdocs).
@@ -166,15 +161,15 @@ Sie erstellen also ein Objekt wie das folgende im Authentifizierungsfeld:
 
 #### Clientzertifikatsauthentifizierung
 
-Das folgende Authentifizierungsobjekt ist für die Clientzertifikatsauthentifizierung erforderlich: Mit einem Sternchen gekennzeichnete Felder sind Pflichtfelder.
+Das folgende Authentifizierungsobjekt ist für die Clientzertifikatsauthentifizierung erforderlich. Ein * bedeutet, dass es sich um ein Pflichtfeld handelt.
 
 |Eigenschaftenname|Datentyp|Beschreibung|
 |---|---|---|
-|Typ*|Typ|Die Art der Authentifizierung. Für SSL-Clientzertifikate muss der Wert `ClientCertificate` lauten.|
-|PFX*|pfx|Base64-codierte Inhalte der PFX-Datei|
-|Kennwort*|password|Kennwort für den Zugriff auf die PFX-Datei|
+|Typ*|Typ|Der Typ der Authentifizierung (Für SSL-Clientzertifikate muss der Wert auf `ClientCertificate` festgelegt werden.)|
+|PFX*|pfx|Der Base64-codierte Inhalt der Personal Information Exchange-Datei (PFX)|
+|Kennwort*|password|Das Kennwort für den Zugriff auf die PFX-Datei|
 
->[AZURE.TIP] Sie können einen `securestring`-Parameter und die `@parameters()`-[Funktion für die Workflowdefinition](http://aka.ms/logicappdocs) verwenden, um einen Parameter zu nutzen, der in der Definition nach dem Speichern nicht lesbar ist.
+>[AZURE.TIP] Sie können einen `securestring`-Parameter und die `@parameters()`-[Funktion für die Workflowdefinition](http://aka.ms/logicappdocs) verwenden, um einen Parameter zu nutzen, der in der Definition nach dem Speichern der Logik-App nicht lesbar ist.
 
 Beispiel:
 
@@ -186,16 +181,16 @@ Beispiel:
 }
 ```
 
-#### Azure Active Directory OAuth-Authentifizierung
+#### Azure AD-OAuth-Authentifizierung
 
-Das folgende Authentifizierungsobjekt ist für die Azure Active Directory OAuth-Authentifizierung erforderlich: Mit einem Sternchen gekennzeichnete Felder sind Pflichtfelder.
+Das folgende Authentifizierungsobjekt ist für die Azure AD-OAuth-Authentifizierung erforderlich. Ein * bedeutet, dass es sich um ein Pflichtfeld handelt.
 
 |Eigenschaftenname|Datentyp|Beschreibung|
 |---|---|---|
-|Typ*|Typ|Die Art der Authentifizierung. Für ActiveDirectoryOAuth muss der Wert `ActiveDirectoryOAuth` lauten.|
-|Mandant*|tenant|Die Mandanten-ID für den Azure AD-Mandanten|
-|Zielgruppe*|audience|Dieser Wert wird auf `https://management.core.windows.net/` festgelegt.|
-|Client-ID*|clientId|Geben Sie die Client-ID für die Azure AD-Anwendung an|
+|Typ*|Typ|Der Authentifizierungstyp (muss für Azure AD OAuth `ActiveDirectoryOAuth` sein)|
+|Mandant*|Mandant|Die Mandanten-ID für den Azure AD-Mandanten|
+|Zielgruppe*|audience|Legen Sie den Wert `https://management.core.windows.net/` fest.|
+|Client-ID*|clientId|Die Client-ID für die Azure AD-Anwendung|
 |Geheimer Schlüssel*|secret|Der geheime Schlüssel des Clients, der das Token anfordert|
 
 >[AZURE.TIP] Sie können einen `securestring`-Parameter und die `@parameters()`-[Funktion für die Workflowdefinition](http://aka.ms/logicappdocs) verwenden, um einen Parameter zu nutzen, der in der Definition nach dem Speichern nicht lesbar ist.
@@ -212,14 +207,8 @@ Beispiel:
 }
 ```
 
----
-
 ## Nächste Schritte
-
-Im Anschluss finden Sie Details zur den weiteren Schritten mit Logik-Apps und unserer Community.
-
-## Erstellen einer Logik-App
 
 Testen Sie nun die Plattform, und [erstellen Sie eine Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md). Machen Sie sich ggf. anhand unserer [API-Liste](apis-list.md) mit den anderen verfügbaren Connectors für Logik-Apps vertraut.
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0810_2016-->

@@ -51,7 +51,7 @@ Der Front-End-Pool enthält Serverressourcen, die für die SSL-Beendigung sowie 
 
 Jeder Workerpool enthält Computeressourcen, die [App Service-Plänen][AppServicePlan] zugeordnet sind, die wiederum eine oder mehrere Azure App Service-Apps enthalten. Da in einer App Service-Umgebung bis zu drei verschiedenen Workerpools vorhanden sein können, können Sie flexibel verschiedene Serverressourcen für jeden Workerpool auswählen.
 
-Beispielsweise können Sie einen Workerpool mit weniger leistungsfähigen Serverressourcen für App Service-Pläne erstellen, die für Entwicklungs- oder Test-Apps vorgesehen sind. Ein zweiter (oder sogar dritter) Workerpool kann leistungsfähigere Serverressourcen für App Service-Pläne nutzen, die für Produktions-Apps ausgeführt werden.
+Beispielsweise können Sie einen Workerpool mit weniger leistungsfähigen Computeressourcen für App Service-Pläne erstellen, die für Entwicklungs- oder Test-Apps vorgesehen sind. Ein zweiter (oder sogar dritter) Workerpool kann leistungsfähigere Serverressourcen für App Service-Pläne nutzen, die für Produktions-Apps ausgeführt werden.
 
 Ausführliche Informationen über die Menge von Computeressourcen, die den Front-End- und Workerpools zur Verfügung stehen, finden Sie unter [Konfigurieren einer App Service-Umgebung][HowToConfigureanAppServiceEnvironment].
 
@@ -108,4 +108,4 @@ Informationen zur Verwendung einer App Service-Umgebung mit ExpressRoute finden 
 
  
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0810_2016-->
