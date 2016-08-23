@@ -124,8 +124,8 @@ Microsoft kennzeichnet Präfixe, die über das öffentliche Peering und Microsof
 | | USA (Ost) | 12076:51004 |
 | | USA (Ost) 2 | 12076:51005 |
 | | USA (West) | 12076:51006 |
-| | USA, Westen 2 | 12076:51022 |
-| | USA, Westen-Mitte | 12076:51023 |
+| | USA, Westen 2 | 12076:51026 |
+| | USA, Westen-Mitte | 12076:51027 |
 | | USA (Mitte/Norden) | 12076:51007 |
 | | USA Süd Mitte | 12076:51008 |
 | | USA (Mitte) | 12076:51009 |
@@ -175,4 +175,4 @@ Zusätzlich zu den obigen Kennzeichnungen versieht Microsoft Präfixe auch basie
 	- [Konfigurieren des Routings für das klassische Bereitstellungsmodell](expressroute-howto-routing-classic.md) oder [Konfigurieren des Routings für das Resource Manager-Bereitstellungsmodell](expressroute-howto-routing-arm.md)
 	- [Verknüpfen eines klassischen VNET mit einer ExpressRoute-Verbindung](expressroute-howto-linkvnet-classic.md) oder [Verknüpfen eines Resource Manager-VNET mit einer ExpressRoute-Verbindung](expressroute-howto-linkvnet-arm.md)
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0817_2016-->

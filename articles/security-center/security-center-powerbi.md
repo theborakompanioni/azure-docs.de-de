@@ -13,33 +13,32 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/19/2016"
+   ms.date="08/11/2016"
    ms.author="yurid"/>
 
 # Gewinnen von Erkenntnissen aus Azure Security Center-Daten mit Power BI
-Das [Power BI-Dashboard](http://aka.ms/azure-security-center-power-bi) für Azure Security Center ermöglicht Ihnen das Visualisieren, Analysieren und Filtern von Empfehlungen und Sicherheitswarnungen über alle Geräte, einschließlich Ihres Mobilgeräts. Erkennen Sie mit dem Power BI-Dashboard Trends und Angriffsmuster, und zeigen Sie Sicherheitswarnungen nach Ressource oder Quell-IP-Adresse und Sicherheitsrisiken ohne Adresse nach Ressource oder Alter an. Sie können die Sicherheitswarnungen und Empfehlungen aus dem Security Center auch mit anderen Daten kombinieren, z. B. mit [Azure-Überwachungsprotokollen](https://powerbi.microsoft.com/blog/monitor-azure-audit-logs-with-power-bi/) und der [Azure SQL-Datenbanküberwachung](https://powerbi.microsoft.com/blog/monitor-your-azure-sql-database-auditing-activity-with-power-bi/), die beide Power BI-Dashboards enthalten. Sie können diese Daten aber in Excel exportieren und so einfach Berichte zum Sicherheitszustand Ihrer Cloudressourcen erstellen.
+Das [Power BI-Dashboard](http://aka.ms/azure-security-center-power-bi) für Azure Security Center ermöglicht Ihnen das Visualisieren, Analysieren und Filtern von Empfehlungen und Sicherheitswarnungen über alle Geräte, einschließlich Ihres Mobilgeräts. Erkennen Sie mit dem Power BI-Dashboard Trends und Angriffsmuster, und zeigen Sie Sicherheitswarnungen nach Ressource oder Quell-IP-Adresse und Sicherheitsrisiken ohne Adresse nach Ressource oder Alter an.
 
-> [AZURE.NOTE] Die Informationen in diesem Dokument gelten für die Vorschauversion von Azure Security Center.
-
+Sie können die Empfehlungen und Sicherheitswarnungen aus Security Center auch kreativ mit anderen Daten kombinieren, indem Sie beispielsweise Daten aus [Azure-Überwachungsprotokollen](https://powerbi.microsoft.com/blog/monitor-azure-audit-logs-with-power-bi/) und der [Azure SQL-Datenbanküberwachung](https://powerbi.microsoft.com/blog/monitor-your-azure-sql-database-auditing-activity-with-power-bi/) verwenden. Power BI-Dashboards sind jeweils vorhanden, und Sie können diese Daten auch nach Excel exportieren und so leicht Berichte zum Sicherheitszustand Ihrer Cloudressourcen erstellen.
 
 ##Verwenden des Azure Security Center-Dashboards für den Zugriff auf Power BI
-Auf Power BI-Berichte können Sie auch über die Azure Security Center-Dashboards zugreifen. Gehen Sie folgendermaßen vor, um diese Aufgabe auszuführen:
+Auf Power BI-Berichte können Sie auch über die Azure Security Center-Dashboards zugreifen. Führen Sie diese Schritte aus, um die Aufgabe durchzuführen:
 
 1. Klicken Sie im **Azure Security Center**-Dashboard auf die Schaltfläche **In Power BI erkunden**.
 
 	![Mithilfe von Power BI mit Azure Security Center verbinden](./media/security-center-powerbi/security-center-powerbi-fig1-new1.png)
 
-2. Das Blatt **In Power BI erkunden** wird wie unten angezeigt auf der rechten Seite geöffnet:
+2. Das Blatt **In Power BI erkunden** wird wie unten dargestellt auf der rechten Seite geöffnet:
 
 	![Mithilfe von Power BI mit Azure Security Center verbinden](./media/security-center-powerbi/security-center-powerbi-fig1-new2.png)
 
-3. Wenn Sie das Power BI-Dashboard zum ersten Mal erstellen, können Sie im Blatt „In Power BI erkunden“ eine der unten aufgeführten Optionen wählen:
+3. Wenn Sie das Power BI-Dashboard zum ersten Mal erstellen, können Sie auf dem Blatt **In Power BI erkunden** eine der folgenden Optionen wählen:
 
 	- **Security insights dashboard** (Dashboard „Einblicke in die Sicherheit“): Wählen Sie diese Option, wenn Sie ein Dashboard erstellen möchten, das den Sicherheitsstatus, Threads und Erkennungen enthält. Dies ist eine häufigere Option für Personen mit der DevOps-Rolle, die für das abonnementübergreifende Analysieren ihres Schutzstatus und erkannter Warnungen verantwortlich sind.
 	- **Policy management dashboard** (Dashboard „Richtlinienverwaltung“): Wählen Sie diese Option, wenn Sie die Verwaltungs- und Durchsetzungsrichtlinie untersuchen möchten. Dies ist eine häufigere Option für die zentrale IT-Abteilung, bei der es eher um Governance (Kontrolle) geht. Dieses Dashboard bietet Transparenz und Einblicke in die Einhaltung von Sicherheitsrichtlinien im gesamten Unternehmen.
 	- Klicken Sie auf **Go to your current Power BI dashboard** (Zu aktuellem Power BI-Dashboard wechseln), wenn Sie bereits über ein Power BI-Dashboard verfügen.
 
-4. Klicken Sie für dieses Beispiel auf die Option **Security insights dashboard** (Dashboard „Einblicke in die Sicherheit“). Wenn dies Ihre erste Erstellung eines Power BI-Dashboards für Security Center ist, werden Sie aufgefordert, das Inhaltspaket zu installieren. Klicken Sie wie unten gezeigt im Fenster **Content packs for Power BI** (Inhaltspakete für Power BI) auf die Schaltfläche **Get** (Abrufen):
+4. Klicken Sie für dieses Beispiel auf die Option **Security insights dashboard** (Dashboard „Einblicke in die Sicherheit“). Wenn dies Ihre erste Erstellung eines Power BI-Dashboards für Security Center ist, werden Sie aufgefordert, das Inhaltspaket zu installieren. Klicken Sie wie in der Abbildung unten im Fenster **Content packs for Power BI** (Inhaltspakete für Power BI) auf die Schaltfläche **Get** (Abrufen):
 
 	![Azure Security Center – Dashboard „Einblicke in die Sicherheit“](./media/security-center-powerbi/security-center-powerbi-fig1-new3.png)
 
@@ -52,7 +51,7 @@ Auf Power BI-Berichte können Sie auch über die Azure Security Center-Dashboard
 	![Power BI-Dashboard](./media/security-center-powerbi/security-center-powerbi-fig1-new5.png)
 
 
-> [AZURE.NOTE] Für den Bericht ist eine tägliche Aktualisierung geplant. Falls bei dieser Aktualisierung ein Fehler auftritt, finden Sie unter [Potential Refresh Issues with the Azure Security Center Power BI](https://blogs.msdn.microsoft.com/azuresecurity/2016/04/07/azure-security-center-power-bi-refresh-fails/) (Mögliche Aktualisierungsprobleme mit Azure Security Center Power BI) weitere Informationen zur Problembehandlung.
+> [AZURE.NOTE] Die Aktualisierung des Berichts ist täglich geplant. Falls bei dieser Aktualisierung ein Fehler auftritt, helfen Ihnen die Informationen zur Problembehandlung unter [Potential Refresh Issues with the Azure Security Center Power BI](https://blogs.msdn.microsoft.com/azuresecurity/2016/04/07/azure-security-center-power-bi-refresh-fails/) (Potenzielle Aktualisierungsprobleme bei Azure Security Center Power BI) weiter.
 
 Hier sehen Sie die Anzahl der Sicherheitswarnungen und Empfehlungen sowie die Zahl der virtuellen Computer, Azure SQL-Datenbanken und Netzwerkressourcen, die von Azure Security Center überwacht werden.
 
@@ -65,15 +64,15 @@ Ein Link zu Azure Security Center leitet Sie zum Azure-Portal weiter. Die Diagra
 - Angegriffene Ressourcen
 - Angegriffene IPs
 
-Jedes Diagramm liefert Ihnen zusätzliche Einblicke. Wählen Sie eine Kachel aus, um weitere Informationen anzuzeigen. Die Kachel **Resource Security State** (Sicherheitsstatus von Ressourcen) zeigt beispielsweise zusätzliche Details zu ausstehenden Empfehlungen nach Ressourcen an:
+Jedes Diagramm liefert Ihnen zusätzliche Einblicke. Wählen Sie eine Kachel aus, um weitere Informationen anzuzeigen. Die Kachel **Resource Security State** (Sicherheitsstatus von Ressourcen) zeigt beispielsweise wie in der folgenden Abbildung zusätzliche Details zu ausstehenden Empfehlungen nach Ressourcen an:
 
-![Recommendations](./media/security-center-powerbi/security-center-powerbi-fig1-new6.png)
+![Empfehlungen](./media/security-center-powerbi/security-center-powerbi-fig1-new6.png)
 
-Wenn Sie auf eine beliebige Zeile in diesem Graphen klicken, werden die anderen abgeblendet, und Sie können Sie sich auf Ihre Auswahl konzentrieren. Klicken Sie im linken Bereich dieser Seite unter der Option **Dashboards** auf **Azure Security Center**, um zum Dashboard zurückzukehren.
+Wenn Sie auf eine beliebige Zeile in diesem Graphen klicken, werden die anderen abgeblendet, und Sie können sich auf Ihre Auswahl konzentrieren. Klicken Sie im linken Bereich dieser Seite unter der Option **Dashboards** auf **Azure Security Center**, um zum Dashboard zurückzukehren.
 
 > [AZURE.NOTE] Sie können den Bericht bearbeiten und ihn anpassen, zusätzliche Felder hinzufügen oder bestehende Grafiken ändern. Weitere Informationen finden Sie unter [Interagieren mit einem Bericht in der Bearbeitungsansicht von Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-interact-with-a-report-in-editing-view/).
 
-Wenn Sie auf die einzelnen Kacheln **Warnungen im Laufe der Zeit**, „Angegriffene Ressourcen“ und **Angreifer-IPs** klicken, ist deren Ausgabe ähnlich. Dies liegt daran, dass der Bericht Informationen zu all diesen drei Variablen unter der Bezeichnung **Angegriffene Ressourcen** zusammenführt:
+Wenn Sie auf die einzelnen Kacheln **Warnungen im Laufe der Zeit**, „Angegriffene Ressourcen“ und **Angreifer-IPs** klicken, ist deren Ausgabe ähnlich. Dies liegt daran, dass der Bericht wie in der folgenden Abbildung Informationen zu all diesen drei Variablen unter der Bezeichnung **Angegriffene Ressourcen** zusammenführt:
 
 ![Angegriffene Ressourcen](./media/security-center-powerbi/security-center-powerbi-fig1-new7.png)
 
@@ -83,7 +82,7 @@ Nun können Sie mit den Optionen im Menü **Datei** eine Kopie dieses Berichts s
 
 ## Untersuchen von Azure Security Center-Daten mit Power BI-Diensten
 
-Stellen Sie eine Verbindung mit [Power BI Content Pack Services](https://msit.powerbi.com/groups/me/getdata/services) in Power BI her, und führen Sie die unten angegebenen Schritte aus:
+Stellen Sie eine Verbindung mit [Power BI Content Pack Services](https://msit.powerbi.com/groups/me/getdata/services) in Power BI her, und führen Sie die folgenden Schritte aus:
 
 1. Im Fenster **Content Pack für Power BI** werden wie unten dargestellt zwei Optionen angezeigt.
 
@@ -93,7 +92,7 @@ Stellen Sie eine Verbindung mit [Power BI Content Pack Services](https://msit.po
 
 2. Klicken Sie in diesem Beispiel in der Kachel **Azure Security Center Policy Management** (Azure Security Center-Richtlinienverwaltung) auf **Abrufen**.
 
-3. Stellen Sie im Fenster **Connect to Azure Security Center Policy Management** (Mit Azure Security Center-Richtlinienverwaltung verbinden) sicher, dass in der Dropdownliste **Authentifizierungsmethode** wie unten gezeigt die Option **oAuth2** ausgewählt ist, und klicken Sie auf die Schaltfläche **Anmelden**.
+3. Stellen Sie im Fenster **Connect to Azure Security Center Policy Management** (Mit Azure Security Center-Richtlinienverwaltung verbinden) sicher, dass in der Dropdownliste **Authentifizierungsmethode** wie unten gezeigt die Option **OAuth2** ausgewählt ist, und klicken Sie auf die Schaltfläche **Anmelden**.
 
 	![Fenster „Richtlinienverwaltung“](./media/security-center-powerbi/security-center-powerbi-fig1-new8.png)
 
@@ -107,13 +106,13 @@ Stellen Sie eine Verbindung mit [Power BI Content Pack Services](https://msit.po
 
 	![Dashboard „Richtlinienverwaltung“](./media/security-center-powerbi/security-center-powerbi-fig1-new9.png)
 
-## Weitere Informationen
+## Siehe auch
 In diesem Dokument haben Sie erfahren, wie Sie Power BI in Azure Security Center verwenden können. Weitere Informationen zu Azure Security Center finden Sie in den folgenden Quellen:
 
 - [Planungs- und Betriebshandbuch für Azure Security Center](security-center-planning-and-operations-guide.md): Erfahren Sie, wie Sie die Einführung von Azure Security Center planen.
 - [Festlegen von Sicherheitsrichtlinien in Azure Security Center](security-center-policies.md): Erfahren Sie, wie Sie Sicherheitseinstellungen in Azure Security Center konfigurieren.
-- [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center](security-center-managing-and-responding-alerts.md): Erfahren Sie, wie Sie Sicherheitswarnungen verwalten und darauf reagieren.
+- [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center:](security-center-managing-and-responding-alerts.md) Erfahren Sie, wie Sie Sicherheitswarnungen verwalten und darauf reagieren.
 - [Azure Security Center – Häufig gestellte Fragen](security-center-faq.md): Hier finden Sie häufig gestellte Fragen zur Verwendung des Diensts.
-- [Azure Security Blog](http://blogs.msdn.com/b/azuresecurity/) (Blog zur Azure-Sicherheit): Hier finden Sie Blogbeiträge zur Sicherheit und Compliance von Azure.
+- [Azure Security Blog](http://blogs.msdn.com/b/azuresecurity/) (Blog zur Azure-Sicherheit): Hier finden Sie Blogbeiträge zur Azure-Sicherheit und -Compliance.
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0817_2016-->

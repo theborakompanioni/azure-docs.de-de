@@ -13,16 +13,19 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="get-started-article" 
-	ms.date="06/18/2016" 
+	ms.date="08/15/2016" 
 	ms.author="elizapo"/>
 
 # Was ist Azure RemoteApp?
+
+> [AZURE.IMPORTANT]
+Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148).
 
 Azure RemoteApp stattet Azure mit der Funktionalität des lokalen Microsoft RemoteApp-Programms, unterstützt von Remotedesktopdiensten, aus. Azure RemoteApp sorgt für den sicheren Remotezugriff auf Anwendungen von vielen unterschiedlichen Benutzergeräten aus. Im Wesentlichen hostet Azure RemoteApp nicht persistente Terminal Server-Sitzungen in der Cloud, die Sie verwenden und an Ihre Benutzer freigeben können.
 
 Mit Azure RemoteApp können Sie Apps und Ressourcen auf fast jedem Gerät für Benutzer freigeben. Wir hosten Ihre Apps in der Cloud, was bedeutet, dass wir uns um Hardware und Skalierung kümmern, um die Anforderungen der Benutzer zu erfüllen. Sie müssen lediglich die Apps, die Sie freigeben möchten, hochladen, und Ihre Benutzer dann dazu veranlassen, sie zu verwenden. [Benutzer behalten ihre eigenen Geräte](remoteapp-clients.md), während Sie alles über das Azure-Portal verwalten. Sie haben sogar die Möglichkeit, die Anmeldeinformationen Ihres Unternehmens zu verwenden, sodass Sie die Sicherheit von Apps und Daten gewährleisten.
 
-Nachfolgend erhalten Sie weitere Informationen zu Azure RemoteApp. Falls wir Sie schon überzeugt haben, können Sie den Dienst [jetzt ausprobieren](https://azure.microsoft.com/services/remoteapp/).
+Im Anschluss erhalten Sie weitere Informationen zu Azure RemoteApp. Falls wir Sie bereits überzeugen konnten, können Sie den Dienst [jetzt ausprobieren](https://azure.microsoft.com/services/remoteapp/).
 
 Haben Sie Fragen zu Azure RemoteApp? Schlagen Sie unter den [häufig gestellten Fragen](remoteapp-faq.md) nach.
 
@@ -56,7 +59,7 @@ Einer der Hauptunterschiede zwischen Hybrid- und Cloud-Sammlungen ist die Behand
 
 Bei Hybrid-Sammlungen sowie bei Cloud-Sammlungen, die ein benutzerdefiniertes Vorlagenimage verwenden, sind Sie für die Wartung und Pflege von Image und Apps verantwortlich. Bei in die Domäne eingebundenen Images können Sie Updates mithilfe von Tools wie Windows Update, Gruppenrichtlinien oder System Center steuern.
 
-Nach dem Update des benutzerdefinierten Vorlagenimages laden Sie das neue Image in die Azure-Cloud hoch und aktualisieren dann die Sammlung, um das neue Image zu verwenden. (Das können Sie über die Seite **Schnellstart** in Azure RemoteApp oder über das Dashboard erledigen.)
+Nach dem Update des benutzerdefinierten Vorlagenimages laden Sie das neue Image in die Azure-Cloud hoch und aktualisieren dann die Sammlung, um das neue Image zu verwenden. (Diesen Schritt Sie in Azure RemoteApp über die Seite **Schnellstart** oder über das Dashboard ausführen.)
 
 Weitere Informationen finden Sie unter [Aktualisieren Ihrer Sammlung](remoteapp-update.md).
 
@@ -78,6 +81,6 @@ Los! Probieren Sie es aus! Diese Artikel helfen Ihnen beim Einstieg in Azure Rem
  
 
 ### Helfen Sie uns, Ihnen zu helfen 
-Wussten Sie schon, dass Sie diesen Artikel im Bereich unten nicht nur bewerten und kommentieren, sondern ihn auch selbst ändern können? Fehlt etwas? Ist etwas nicht ganz richtig? Habe ich etwas geschrieben, das eher verwirrend ist? Scrollen Sie nach oben, und klicken Sie auf **In GitHub bearbeiten** oder **Bearbeiten**, um die gewünschten Änderungen vorzunehmen. Ihr Vorschlag wird uns vorgelegt, und wenn wir ihn bestätigt haben, werden Ihre Änderungen und Verbesserungen hier angezeigt.
+Wussten Sie schon, dass Sie diesen Artikel im Bereich unten nicht nur bewerten und kommentieren, sondern ihn auch selbst ändern können? Fehlt etwas? Ist etwas nicht ganz richtig? Habe ich etwas geschrieben, das eher verwirrend ist? Scrollen Sie nach oben, und klicken Sie auf **In GitHub bearbeiten** oder **Bearbeiten**, um die gewünschten Änderungen vorzunehmen und uns zur Prüfung zu übermitteln. Nachdem wir sie bestätigt haben, werden Ihre Änderungen und Verbesserungen hier angezeigt.
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0817_2016-->

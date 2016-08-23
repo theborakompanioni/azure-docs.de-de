@@ -37,6 +37,8 @@ Verwenden Sie diese Links, um die gleichen Aufgaben mit [C#](sql-database-get-st
 
 [AZURE.INCLUDE [Anmeldung](../../includes/azure-getting-started-portal-login.md)]
 
+<a name="create-logical-server-bk"></a>
+
 [AZURE.INCLUDE [Erstellen eines logischen SQL-Datenbankservers](../../includes/sql-database-create-new-server-portal.md)]
 
 [AZURE.INCLUDE [Erstellen einer SQL-Datenbank](../../includes/sql-database-create-new-database-portal.md)]
@@ -50,15 +52,15 @@ Nachdem Sie dieses Tutorial zu SQL-Datenbank ausgeführt und eine Datenbank mit 
 
 - Wenn Sie mit Excel vertraut sind, informieren Sie sich über das [Herstellen von Verbindungen mit SQL-Datenbank mit Excel](sql-database-connect-excel.md).
 
-- Wenn Sie mit dem Programmieren loslegen möchten, wählen Sie unter [Verbindungsbibliotheken für SQL-Datenbank und SQL Server](sql-database-libraries.md) Ihre Programmiersprache aus.
+- Wenn Sie mit dem Programmieren beginnen möchten, wählen Sie unter [Verbindungsbibliotheken für SQL-Datenbank und SQL Server](sql-database-libraries.md) Ihre Programmiersprache aus.
 
 - Wenn Sie lokale SQL Server-Datenbanken in Azure verschieben möchten, finden Sie unter [Migrieren von Datenbanken zu Azure SQL-Datenbank](sql-database-cloud-migrate.md) weitere Informationen.
 
-- Wenn Sie einige Daten aus einer CSV-Datei mit BCP in eine neue Tabelle laden möchten, helfen Ihnen die Informationen unter [Laden von Daten in SQL-Datenbank aus einer CSV-Datei per BCP](sql-database-load-from-csv-with-bcp.md) weiter.
+- Wenn Sie einige Daten aus einer CSV-Datei mit BCP in eine neue Tabelle laden möchten, machen Sie sich mit den Informationen unter [Laden von Daten aus einer CSV-Datei in Azure SQL Data Warehouse (Flatfiles)](sql-database-load-from-csv-with-bcp.md) vertraut.
 
 
 ## Zusätzliche Ressourcen
 
 [Was ist SQL Database?](sql-database-technical-overview.md)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0817_2016-->

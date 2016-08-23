@@ -12,7 +12,7 @@
     ms.topic="get-started-article"
     ms.tgt_pltfrm="na"
     ms.workload="tbd"
-    ms.date="04/15/2016"
+    ms.date="08/16/2016"
     ms.author="sethm" />
 
 # Programmierleitfaden für Event Hubs
@@ -33,7 +33,7 @@ Die .NET-Klassen, die Event Hubs unterstützen, werden in der Assembly „Micros
 Install-Package WindowsAzure.ServiceBus
 ```
 
-## Erstellen eines Event Hubs
+## Erstellen eines Ereignis-Hubs
 
 Sie können die [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx)-Klasse verwenden, um Event Hubs zu erstellen. Beispiel:
 
@@ -185,4 +185,4 @@ Weitere Informationen zu Event Hubs-Szenarien finden Sie unter diesen Links:
 - [Codebeispiele für Event Hubs](http://code.msdn.microsoft.com/site/search?query=event hub&f[0].Value=event hub&f[0].Type=SearchText&ac=5)
 - [Referenz zur Ereignisprozessorhost-API](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventprocessorhost.aspx)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0817_2016-->

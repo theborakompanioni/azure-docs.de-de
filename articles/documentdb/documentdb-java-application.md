@@ -14,7 +14,7 @@
 	ms.topic="hero-article"
 	ms.tgt_pltfrm="NA"
 	ms.workload="data-services"
-	ms.date="03/10/2016"
+	ms.date="08/11/2016"
 	ms.author="anhoh"/>
 
 # Erstellen einer Java-Webanwendung mithilfe von DocumentDB
@@ -25,7 +25,7 @@
 - [Java](documentdb-java-application.md)
 - [Python](documentdb-python-application.md)
 
-In diesem Tutorial zur Java-Webanwendung erfahren Sie, wie Sie den [Microsoft Azure DocumentDB](https://portal.azure.com/#gallery/Microsoft.DocumentDB)-Dienst verwenden, um Daten von einer auf Azure-Websites gehosteten Java-Anwendung zu speichern und abzurufen. In diesem Abschnitt lernen Sie Folgendes:
+In diesem Tutorial zur Java-Webanwendung erfahren Sie, wie Sie den [Microsoft Azure DocumentDB](https://portal.azure.com/#gallery/Microsoft.DocumentDB)-Dienst verwenden, um Daten von einer auf Azure-Websites gehosteten Java-Anwendung zu speichern und abzurufen. In diesem Thema lernen Sie Folgendes:
 
 - Erstellen einer einfachen JSP-Anwendung in Eclipse.
 - Arbeiten mit dem Azure DocumentDB-Dienst mit dem [DocumentDB Java SDK](https://github.com/Azure/azure-documentdb-java).
@@ -784,4 +784,4 @@ Alle Beispiele in diesem Tutorial befinden sich im Projekt [todo](https://github
 
 [1]: media/documentdb-java-application/keys.png
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0817_2016-->

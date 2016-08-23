@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-xamarin-android"
 	ms.devlang="dotnet"
 	ms.topic="hero-article"
-	ms.date="05/03/2016"
+	ms.date="08/11/2016"
 	ms.author="glenga" />
 
 #Erstellen einer Xamarin.Android-App
@@ -24,7 +24,7 @@
 
 In diesem Tutorial erfahren Sie, wie Sie einer Xamarin.Android-App einen cloudbasierten Back-End-Dienst hinzufügen. Weitere Informationen finden Sie unter [Was sind Mobile Apps?](app-service-mobile-value-prop.md)
 
-Unten sehen Sie einen Screenshot aus der fertigen App:
+Screenshot der fertigen App:
 
 ![][0]
 
@@ -32,7 +32,7 @@ Das Abschließen dieses Lernprogramms ist eine Voraussetzung für alle anderen M
 
 ##Voraussetzungen
 
-Für dieses Lernprogramm benötigen Sie Folgendes:
+Für dieses Tutorial benötigen Sie Folgendes:
 
 * Ein aktives Azure-Konto. Falls Sie kein Konto besitzen, können Sie sich für eine Azure-Testversion registrieren. So erhalten Sie bis zu 10 kostenlose mobile Apps, die Sie auch nach Ablauf der Testversion weiter nutzen können. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
 
@@ -72,7 +72,7 @@ Sie haben nun ein Azure-Back-End für mobile Apps bereitgestellt, das von Ihren 
 
 * [Hinzufügen von Authentifizierung zur App](app-service-mobile-xamarin-android-get-started-users.md) Erhalten Sie Informationen über die Authentifizierung von Benutzern der App mit einem Identitätsanbieter.
 * [Hinzufügen von Pushbenachrichtigungen zu Ihrer Xamarin.Android-App](app-service-mobile-xamarin-android-get-started-push.md) Erfahren Sie, wie Sie Ihrer App Pushbenachrichtigungen hinzufügen.
-* [Verwenden des verwalteten Clients für Azure Mobile Apps](app-service-mobile-dotnet-how-to-use-client-library.md) Lernen Sie, wie Sie das SDK für verwaltete Clients in Ihrer Xamarin-App verwenden. 
+* [Verwenden des verwalteten Clients für Azure Mobile Apps](app-service-mobile-dotnet-how-to-use-client-library.md) Lernen Sie, wie Sie das SDK für verwaltete Clients in Ihrer Xamarin-App verwenden.
 
 
 <!-- Images. -->
@@ -86,4 +86,4 @@ Sie haben nun ein Azure-Back-End für mobile Apps bereitgestellt, das von Ihren 
 [Azure Portal]: https://azure.portal.com/
 [Visual Studio]: https://go.microsoft.com/fwLink/p/?LinkID=534203
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0817_2016-->

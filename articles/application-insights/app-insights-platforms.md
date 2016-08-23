@@ -12,12 +12,12 @@
 	ms.tgt_pltfrm="ibiza"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="03/02/2016"
+	ms.date="08/15/2016"
 	ms.author="awills"/>
 
-# Application Insights: Sprachen, Plattformen und Integrationsmöglichkeiten
+# Entwickleranalysen: Sprachen, Plattformen und Integrationsmöglichkeiten
 
-Hierbei handelt es sich um Implementierungen, von denen wir gehört haben, u. a. auch von Drittanbietern.
+Bei diesen Elementen handelt es sich um Implementierungen von [Application Insights](app-insights-overview.md), von denen wir gehört haben. Einige davon stammen von Drittanbietern.
 
 ## Sprachen
 
@@ -38,23 +38,22 @@ Hierbei handelt es sich um Implementierungen, von denen wir gehört haben, u. a.
 + [ASP.NET](app-insights-asp-net.md)
 + [ASP.NET – Für Apps, die bereits aktiv sind.](app-insights-monitor-performance-live-website-now.md)
 + [ASP.NET 5](app-insights-asp-net-five.md)
-+ [Android](https://github.com/Microsoft/ApplicationInsights-Android)
++ [Android](https://github.com/Microsoft/ApplicationInsights-Android) (HockeyApp)
 + [Azure-Web-Apps und VMs](../azure-portal/insights-perf-analytics.md)
-+ [Azure Cloud Services](app-insights-cloudservices.md) &#150; einschließlich Web- und Workerrollen
++ [Azure Cloud Services](app-insights-cloudservices.md) – Einschließlich Web- und Workerrollen.
 + [Microsoft Dynamics CRM Online](app-insights-sample-mscrm.md)
 + [Docker](app-insights-docker.md)
 + [Glimpse](https://azure.microsoft.com/blog/glimpse-application-insights/)
-+ [iOS](https://github.com/Microsoft/ApplicationInsights-iOS)
++ [iOS](https://github.com/Microsoft/ApplicationInsights-iOS) (HockeyApp)
 + [J2EE](app-insights-java-get-started.md)
 + [J2EE – Für Apps, die bereits aktiv sind.](app-insights-java-live.md)
 + [Node.JS](https://www.npmjs.com/package/applicationinsights)
 + [OSX](https://github.com/Microsoft/ApplicationInsights-OSX)
 + [Spring](http://joe.blog.freemansoft.com/2015/12/enabling-microsoft-application-insight.html)
 + [WCF](https://github.com/Microsoft/ApplicationInsights-SDK-Labs/blob/master/WCF/readme.md)
-+ [Windows Store C#|VB](app-insights-windows-get-started.md)
-+ [Windows Store C++](app-insights-windows-cpp.md)
++ [Windows Store C#|VB](app-insights-windows-get-started.md) (HockeyApp)
++ [Windows Store C++](app-insights-windows-cpp.md) (HockeyApp)
 + [Windows-Desktopanwendungen, -Dienste und -Workerrollen](app-insights-windows-desktop.md)
-+ [Xamarin](https://github.com/Microsoft/ApplicationInsights-Xamarin)
 + [Alles andere](#projects)
 
 
@@ -62,7 +61,7 @@ Hierbei handelt es sich um Implementierungen, von denen wir gehört haben, u. a.
 
 +	[Log4Net, NLog oder System.Diagnostics.Trace](app-insights-diagnostic-search.md)
 +	[Java, Log4J oder Logback](app-insights-java-trace-logs.md)
-+   [Semantic Logging (SLAB)](https://github.com/fidmor89/SLAB_AppInsights) – In [Semantic Logging Application Block](https://msdn.microsoft.com/library/dn440729.aspx) integriert
++   [Semantic Logging (SLAB)](https://github.com/fidmor89/SLAB_AppInsights) – In [Semantic Logging Application Block](https://msdn.microsoft.com/library/dn440729.aspx) integriert
 +   [Cloudbasierte Auslastungstests](http://blogs.msdn.com/b/visualstudioalm/archive/2015/07/30/getting-application-insights-counters-with-cloud-based-load-testing.aspx)
 
 
@@ -71,7 +70,7 @@ Hierbei handelt es sich um Implementierungen, von denen wir gehört haben, u. a.
 + [Concrete](https://github.com/fidmor89/appInsights-Concrete)
 + [Drupal](https://github.com/fidmor89/AppInsights-Drupal)
 + [Joomla](https://github.com/fidmor89/AppInsights-Joomla)
-+ [Orchard](https://orchardazureappinsights.codeplex.com) 
++ [Orchard](https://orchardazureappinsights.codeplex.com)
 + [SharePoint](app-insights-sharepoint.md)
 + [WordPress](https://wordpress.org/plugins/application-insights/)
 
@@ -85,4 +84,4 @@ Hierbei handelt es sich um Implementierungen, von denen wir gehört haben, u. a.
 
 Wenn für Ihre Sprache oder Plattform noch kein SDK vorhanden ist, können Sie eins erstellen. Sehen Sie sich den Code der vorhandenen SDKs an, die im [Application Insights-SDK-Projekt auf GitHub](https://github.com/Microsoft/AppInsights-Home) aufgeführt sind.
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0817_2016-->

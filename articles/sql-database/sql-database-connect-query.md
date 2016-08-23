@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="get-started-article"
-	ms.date="04/25/2016"
+	ms.date="08/17/2016"
 	ms.author="annemill"/>
 
 
@@ -64,7 +64,7 @@ Zur Installation von Visual Studio haben Sie folgende Möglichkeiten:
 
 1. Melden Sie sich über das [Azure-Portal](https://portal.azure.com/) unter http://portal.azure.com/ an.
 
-2. Klicken Sie auf **ALLE DURCHSUCHEN*** > **SQL-Datenbanken**. Ein Blatt für die Suche nach Datenbanken wird geöffnet.
+2. Klicken Sie auf **ALLE* DURCHSUCHEN** > **SQL-Datenbanken**. Ein Blatt für die Suche nach Datenbanken wird geöffnet.
 
 3. Beginnen Sie im Filtertextfeld im oberen Bereich mit der Eingabe des Namens Ihrer **AdventureWorksLT**-Datenbank.
 
@@ -82,7 +82,7 @@ Zur Installation von Visual Studio haben Sie folgende Möglichkeiten:
 
 9. Sobald Visual Studio installiert ist, klicken Sie auf dem Blatt **In Visual Studio öffnen** auf die Schaltfläche **In Visual Studio öffnen**. Visual Studio wird geöffnet.
 
-10. Für den Bereich **SQL Server-Objekt-Explorer** werden Sie aufgefordert, Felder zur Verbindungszeichenfolge in einem Dialogfeld ausfüllen.
+10. Visual Studio fordert Sie in einem Dialogfeld zum Ausfüllen von Verbindungszeichenfolgen-Feldern auf.
  - Wählen Sie statt der **Windows-Authentifizierung** die **SQL Server-Authentifizierung**.
  - Denken Sie daran, Ihre **AdventureWorksLT**-Datenbank anzugeben (im Dialogfeld unter **Optionen** > **Verbindungseigenschaften**).
 
@@ -93,7 +93,7 @@ Zur Installation von Visual Studio haben Sie folgende Möglichkeiten:
 
 Nachdem Sie eine Verbindung mit Ihrem logischen Server hergestellt haben, können Sie eine Verbindung mit einer Datenbank herstellen und eine Beispielabfrage ausführen.
 
-1. Navigieren Sie im **Objekt-Explorer** zu einer Datenbank auf dem Server, für die Sie Berechtigungen besitzen, z.B. die Beispieldatenbank **AdventureWorks**.
+1. Navigieren Sie im **Objekt-Explorer** zu einer Datenbank auf dem Server, für die Sie Berechtigungen besitzen (etwa die Beispieldatenbank **AdventureWorks**).
 2. Klicken Sie mit der rechten Maustaste auf die Datenbank, und wählen Sie dann **Neue Abfrage** aus.
 
 	![Neue Abfrage Verbinden mit einem SQL-Datenbankserver: SQL Server Management Studio](./media/sql-database-connect-query-ssms/4-run-query.png)
@@ -121,4 +121,4 @@ Nachdem Sie eine Verbindung mit Ihrem logischen Server hergestellt haben, könne
 
 [20-OpenInVisualStudioButton]: ./media/sql-database-connect-query/connqry-free-vs-e.png
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0817_2016-->
