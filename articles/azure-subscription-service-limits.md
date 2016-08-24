@@ -67,7 +67,7 @@ Daher sollten Sie gegebenenfalls überlegen, wie hoch Ihre Azure-Ressourcengrupp
 - [Operational Insights](#operational-insights-limits)
 - [Ressourcengruppe](#resource-group-limits)
 - [Scheduler](#scheduler-limits)
-- [Suchen,](#search-limits)
+- [Suchen](#search-limits)
 - [Service Bus](#service-bus-limits)
 - [Site Recovery](#site-recovery-limits)
 - [SQL-Datenbank](#sql-database-limits)
