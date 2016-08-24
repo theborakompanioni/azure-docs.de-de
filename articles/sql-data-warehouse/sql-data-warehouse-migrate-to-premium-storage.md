@@ -22,7 +22,7 @@ Für SQL Data Warehouse wurde vor Kurzem [Storage Premium eingeführt, um die Le
 Wenn Sie mehr als ein Data Warehouse verwenden, sollten Sie anhand des unten angegebenen [Zeitplans für die automatische Migration][] ermitteln, wann die einzelnen Migrationen durchgeführt werden.
 
 ## Bestimmen des Speichertyps
-Wenn Sie ein Data Warehouse vor den unten angegebenen Terminen erstellt haben, verwenden Sie derzeit Storage Standard. Für jedes Data Warehouse (DW), bei dem derzeit Storage Standard verwendet wird und bei dem eine Migration ansteht, wird außerdem im [Azure-Portal][] oben im Blatt „Data Warehouse“ ein Hinweis mit folgendem Inhalt angezeigt: „*Ein bevorstehendes Upgrade auf Storage Premium ist mit Ausfallzeiten verbunden. Erfahren Sie mehr ->*“.
+Wenn Sie ein Data Warehouse vor den unten angegebenen Terminen erstellt haben, verwenden Sie derzeit Storage Standard. Für jedes Data Warehouse (DW), bei dem derzeit Storage Standard verwendet wird und bei dem eine Migration ansteht, wird außerdem im [Azure-Portal][] oben im Blatt „Data Warehouse“ ein Hinweis mit folgendem Inhalt angezeigt:" *Ein bevorstehendes Upgrade auf Storage Premium ist mit Ausfallzeiten verbunden. Erfahren Sie mehr ->* ".
 
 | **Region** | **Vor diesem Datum erstelltes DW** |
 | :------------------ | :-------------------------------- |
@@ -155,7 +155,8 @@ go
 -------------------------------------------------------------------------------
 -- Schritt 3: Bereinigen der in Schritt 1 erstellten Tabelle
 --------------------------------------------------------------------------------
-drop table sql\_statements; go ````
+drop table sql\_statements; go
+````
 
 Wenn Probleme mit Ihrem Data Warehouse auftreten, können Sie [ein Supportticket erstellen][] und als möglichen Grund „Migration zu Storage Premium“ angeben.
 
@@ -182,4 +183,4 @@ Wenn Probleme mit Ihrem Data Warehouse auftreten, können Sie [ein Supportticket
 [Storage Premium eingeführt, um die Leistung besser vorhersagen zu können]: https://azure.microsoft.com/de-DE/blog/azure-sql-data-warehouse-introduces-premium-storage-for-greater-performance/
 [Azure-Portal]: https://portal.azure.com
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0810_2016--->
