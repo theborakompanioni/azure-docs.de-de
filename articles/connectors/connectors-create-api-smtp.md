@@ -37,13 +37,17 @@ Ein Trigger ist ein Ereignis, mit dem ein in einer Logik-App definierter Workflo
 
 Da SMTP über keinen eigenen Trigger verfügt, verwenden wir in diesem Beispiel den Trigger **Salesforce – Wenn ein Objekt erstellt wird**. Dieser Trigger wird aktiviert, wenn in Salesforce ein neues Objekt erstellt wird. In unserem Beispiel legen wir den Trigger so fest, dass über den SMTP-Connector bei jeder Erstellung eines Leads in Salesforce eine Aktion vom Typ *E-Mail senden* mit einer entsprechenden Benachrichtigung ausgelöst wird.
 
-1. Geben Sie im Suchfeld des Logik-App-Designers die Zeichenfolge *salesforce* ein, und wählen Sie anschließend den Trigger **Salesforce – Wenn ein Objekt erstellt wird** aus. ![](../../includes/media/connectors-create-api-salesforce/trigger-1.png)
+1. Geben Sie im Suchfeld des Logik-App-Designers die Zeichenfolge *salesforce* ein, und wählen Sie anschließend den Trigger **Salesforce – Wenn ein Objekt erstellt wird** aus.  
+ ![](../../includes/media/connectors-create-api-salesforce/trigger-1.png)  
 
-2. Das Steuerelement **Wenn ein Objekt erstellt wird** wird angezeigt. ![](../../includes/media/connectors-create-api-salesforce/trigger-2.png)
+2. Das Steuerelement **Wenn ein Objekt erstellt wird** wird angezeigt.  
+ ![](../../includes/media/connectors-create-api-salesforce/trigger-2.png)  
 
-3. Wählen Sie den **Objekttyp** und anschließend in der Objektliste die Option *Lead* aus. In diesem Schritt geben Sie an, dass Sie einen Trigger erstellen, der Ihre Logik-App benachrichtigt, wenn in Salesforce ein neuer Lead erstellt wird. ![](../../includes/media/connectors-create-api-salesforce/trigger3.png)
+3. Wählen Sie den **Objekttyp** und anschließend in der Objektliste die Option *Lead* aus. In diesem Schritt geben Sie an, dass Sie einen Trigger erstellen, der Ihre Logik-App benachrichtigt, wenn in Salesforce ein neuer Lead erstellt wird.  
+ ![](../../includes/media/connectors-create-api-salesforce/trigger3.png)  
 
-4. Der Trigger wurde erstellt. ![](../../includes/media/connectors-create-api-salesforce/trigger-4.png)
+4. Der Trigger wurde erstellt.  
+ ![](../../includes/media/connectors-create-api-salesforce/trigger-4.png)  
 
 ## Verwenden einer SMTP-Aktion
 
@@ -51,15 +55,19 @@ Eine Aktion ist ein Vorgang, der durch den in einer Logik-App definierten Workfl
 
 Führen Sie nach dem Hinzufügen des Triggers die folgenden Schritte aus, um eine SMTP-Aktion hinzuzufügen, die ausgelöst wird, wenn in Salesforce ein neuer Lead erstellt wird.
 
-1. Wählen Sie **+ Neuer Schritt** aus, um die Aktion hinzuzufügen, die ausgeführt werden soll, wenn ein neuer Lead erstellt wird. ![](../../includes/media/connectors-create-api-salesforce/trigger4.png)
+1. Wählen Sie **+ Neuer Schritt** aus, um die Aktion hinzuzufügen, die ausgeführt werden soll, wenn ein neuer Lead erstellt wird.  
+ ![](../../includes/media/connectors-create-api-salesforce/trigger4.png)  
 
-2. Wählen Sie **Aktion hinzufügen** aus. Daraufhin öffnet sich das Suchfeld, in dem Sie nach der gewünschten Aktion suchen können. ![](../../includes/media/connectors-create-api-smtp/using-smtp-action-2.png)
+2. Wählen Sie **Aktion hinzufügen** aus. Daraufhin öffnet sich das Suchfeld, in dem Sie nach der gewünschten Aktion suchen können.  
+ ![](../../includes/media/connectors-create-api-smtp/using-smtp-action-2.png)  
 
 3. Geben Sie *smtp* ein, um nach SMTP-bezogenen Aktionen zu suchen.
 
-4. Wählen Sie **SMTP – E-Mail senden** als Aktion aus, die ausgeführt werden soll, wenn der neue Lead erstellt wird. Die Aktionskontrollblock wird geöffnet. Im Designerblock muss die SMTP-Verbindung eingerichtet werden, sofern Sie diesen Schritt noch nicht ausgeführt haben. ![](../../includes/media/connectors-create-api-smtp/smtp-2.png)
+4. Wählen Sie **SMTP – E-Mail senden** als Aktion aus, die ausgeführt werden soll, wenn der neue Lead erstellt wird. Die Aktionskontrollblock wird geöffnet. Im Designerblock muss die SMTP-Verbindung eingerichtet werden, sofern Sie diesen Schritt noch nicht ausgeführt haben.  
+ ![](../../includes/media/connectors-create-api-smtp/smtp-2.png)  
 
-5. Geben Sie im Block **SMTP – E-Mail senden** die gewünschten E-Mail-Informationen ein. ![](../../includes/media/connectors-create-api-smtp/using-smtp-action-4.PNG)
+5. Geben Sie im Block **SMTP – E-Mail senden** die gewünschten E-Mail-Informationen ein.  
+ ![](../../includes/media/connectors-create-api-smtp/using-smtp-action-4.PNG)  
 
 6. Speichern Sie Ihre Arbeit, um den Workflow zu aktivieren.
 
