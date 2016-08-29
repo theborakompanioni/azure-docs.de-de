@@ -22,11 +22,13 @@ Dieser Artikel beschreibt, wie [Azure Service Fabric](https://azure.microsoft.c
 
 ETW wird während der Service Fabric-Laufzeit verwendet, um Diagnoseinformationen (Ablaufverfolgungen) zu erfassen. Es ist auch die empfohlene Methode für Service Fabric-Anwendungen zum Erfassen ihrer Diagnoseinformationen. Die Verwendung des gleichen Mechanismus ermöglicht die Korrelation zwischen Ablaufverfolgungen der Laufzeit und Ablaufverfolgungen der Anwendung, was die Problembehandlung erleichtert. Die Service Fabric-Projektvorlagen in Visual Studio enthalten eine (auf der Klasse **EventSource** basierende) Protokollierungs-API, die standardmäßig ETW-Ablaufverfolgungen ausgibt. Eine allgemeine Übersicht der Service Fabric-Anwendungsablaufverfolgung mit ETW finden Sie unter [Überwachen und Diagnostizieren von Diensten in einer Entwicklungsumgebung auf einem lokalen Computer](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md).
 
-Damit die Ablaufverfolgungsdaten in Elasticsearch angezeigt werden können, müssen sie in Echtzeit (also während der Anwendungsausführung) an den Service Fabric-Clusterknoten erfasst und an den Elasticsearch-Endpunkt gesendet werden. Für die Erfassung von Ablaufverfolgungen stehen zwei Hauptoptionen zur Verfügung:
+Damit die Ablaufverfolgungsdaten in ElasticSearch angezeigt werden können, müssen sie in Echtzeit (also während der Anwendungsausführung) an den Service Fabric-Clusterknoten erfasst und an den ElasticSearch-Endpunkt gesendet werden. Für die Erfassung von Ablaufverfolgungen stehen zwei Hauptoptionen zur Verfügung:
 
-+ **In-Process-Ablaufverfolgungserfassung**: Die Diagnosedaten werden von der Anwendung (genauer gesagt: vom Dienstprozess) an den Ablaufverfolgungsspeicher (Elasticsearch) gesendet.
++ **In-Process-Ablaufverfolgungserfassung**:  
+Die Diagnosedaten werden von der Anwendung (genauer gesagt: vom Dienstprozess) an den Ablaufverfolgungsspeicher (ElasticSearch) gesendet.
 
-+ **Out-of-Process-Ablaufverfolgungserfassung**: Die Ablaufverfolgungen vom Dienstprozess bzw. den Prozessen werden von einem separaten Agenten erfasst und an den Ablaufverfolgungsspeicher gesendet.
++ **Out-of-Process-Ablaufverfolgungserfassung**:  
+Die Ablaufverfolgungen vom Dienstprozess bzw. den Prozessen werden von einem separaten Agenten erfasst und an den Ablaufverfolgungsspeicher gesendet.
 
 Im weiteren Verlauf wird beschrieben, wie Elasticsearch in Azure eingerichtet wird, welche Vor- und Nachteile die beiden Erfassungsoptionen haben, und wie Sie einen Service Fabric-Dienst für das Senden von Daten an Elasticsearch konfigurieren.
 

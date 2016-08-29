@@ -48,7 +48,7 @@ Die Verwendung von Event Hubs als Senke für Azure-Diagnosedaten wird von Cloud 
 ## Herstellen einer Verbindung zwischen der Azure-Diagnose und der Event Hubs-Senke
 
 Die Azure-Diagnose verwendet standardmäßig stets ein Azure Storage-Konto als Senke für Protokolle und Metriken. Eine Anwendung kann zusätzlich Event Hubs als Senke verwenden, indem der *.wadcfgx*-Datei im **WadCfg**-Element des **PublicConfig**-Abschnitts ein neuer **Sinks**-Abschnitt hinzugefügt wird. In Visual Studio wird die *.wadcfgx*-Datei im folgenden Pfad gespeichert:**Cloud Services-Projekt** > **Rollen** > **(RoleName)** > **diagnostics.wadcfgx**-Datei.
-
+  
 ```
 <SinksConfig>
   <Sink name="HotPath">

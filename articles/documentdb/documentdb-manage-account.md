@@ -29,7 +29,8 @@ Die Auswahl der richtigen Konsistenzebene richtet sich nach der Semantik Ihrer A
 
 1. Greifen Sie im [Azure-Portal](https://portal.azure.com/) auf Ihr DocumentDB-Konto zu.
 2. Klicken Sie auf dem Kontoblatt auf **Standardkonsistenz**.
-3. Wählen Sie auf dem Blatt **Standardkonsistenz** die neue Konsistenzebene aus, und klicken Sie auf **OK**. ![Standardkonsistenz - Sitzung][5]
+3. Wählen Sie auf dem Blatt **Standardkonsistenz** die neue Konsistenzebene aus, und klicken Sie auf **OK**. 
+![Standardkonsistenz - Sitzung][5]
 
 ## <a id="keys"></a>Anzeigen, Kopieren und erneutes Generieren von Zugriffsschlüsseln
 Wenn Sie ein DocumentDB-Konto erstellen, generiert der Dienst zwei Hauptzugriffsschlüssel, die für die Authentifizierung verwendet werden können, wenn der Zugriff auf das DocumentDB-Konto erfolgt. Durch Bereitstellen von zwei Zugriffsschlüsseln ermöglicht DocumentDB Ihnen das erneute Generieren der Schlüssel ohne Unterbrechung des Zugriffs auf das DocumentDB-Konto.
@@ -62,7 +63,8 @@ Falls Sie über Webanwendungen oder Cloud-Dienste verfügen, die das DocumentDB-
 4. Klicken Sie auf dem Blatt **Schlüssel** auf den Befehl **Primären Zugriffsschlüssel neu generieren**, und klicken Sie dann auf **OK**, um das Generieren eines neuen Schlüssels zu bestätigen. ![Erneutes Generieren von Zugriffsschlüsseln](./media/documentdb-manage-account/regenerate-keys.png)
 
 5. Sobald Sie sichergestellt haben, dass der neue Schlüssel verwendet werden kann (etwa 5 Minuten nach der erneuten Erzeugung), aktualisieren Sie den Zugriffsschlüssel im Anwendungscode, damit er auf den neuen primären Zugriffsschlüssel verweist.
-6. Generieren Sie den sekundären Zugriffsschlüssel neu. ![Erneutes Generieren von Zugriffsschlüsseln](./media/documentdb-manage-account/regenerate-secondary-key.png)
+6. Generieren Sie den sekundären Zugriffsschlüssel neu. 
+![Erneutes Generieren von Zugriffsschlüsseln](./media/documentdb-manage-account/regenerate-secondary-key.png)
 
 
 > [AZURE.NOTE] Die Bereitstellung eines neu generierten Schlüssels kann einige Minuten dauern, bevor Sie damit auf Ihr DocumentDB-Konto zugreifen können.

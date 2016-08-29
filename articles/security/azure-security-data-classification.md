@@ -48,7 +48,7 @@ Authentifizierung und Autorisierung werden häufig miteinander verwechselt, und 
 
 Die Authentifizierung besteht in der Regel aus mindestens zwei Teilen: einem Benutzernamen oder einer Benutzer-ID zur Identifizierung eines Benutzers und einem Token, z.B. einem Kennwort, um zu bestätigen, dass die Anmeldeinformation „Benutzername“ gültig ist. Bei diesem Prozess wird dem authentifizierten Benutzer kein Zugriff auf Elemente oder Dienste gewährt. Es wird überprüft, ob der Benutzer die Person ist, als die er sich ausgibt.
 
-> [AZURE.TIP] [Azure Active Directory]Unter (../active-directory/active-directory-whatis.md) finden Sie Informationen zu cloudbasierten Identitätsdiensten, mit denen Sie Benutzer authentifizieren und autorisieren können.
+> [AZURE.TIP] [Azure Active Directory Unter](./active-directory/active-directory-whatis.md) finden Sie Informationen zu cloudbasierten Identitätsdiensten, mit denen Sie Benutzer authentifizieren und autorisieren können.
 
 ### Autorisierung
  

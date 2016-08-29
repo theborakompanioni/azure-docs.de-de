@@ -40,7 +40,7 @@ Anders als während des Workflows der Clustererstellung beziehen wir hier nicht 
 
 Klicken Sie auf **Zertifikat**. Eine Bereitstellung wird gestartet, und eine blaue Statusleiste wird im Blatt „Clustersicherheit“ angezeigt.
 
-![Screenshot mit Zertifikatfingerabdrücken im Portal][SecurityConfigurations\_02]
+![Screenshot mit Zertifikatfingerabdrücken im Portal][SecurityConfigurations_02]
 
 Nach erfolgreichem Abschluss der Bereitstellung können Sie entweder das primäre oder sekundäre Zertifikat verwenden, um Verwaltungsvorgänge auf dem Cluster auszuführen.
 

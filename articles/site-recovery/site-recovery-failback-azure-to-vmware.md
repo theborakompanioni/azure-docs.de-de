@@ -38,7 +38,7 @@ Verwenden Sie diese Architektur, wenn der Prozessserver lokal angeordnet ist und
 
 Verwenden Sie diese Architektur, wenn der Prozessserver in Azure angeordnet ist und wenn Sie entweder ein VPN oder eine ExpressRoute-Verbindung verwenden.
 
-![Architekturdiagramm für VPN](./media/site-recovery-failback-azure-to-vmware-classic/architecture2.png)
+![Architekturdiagramm für VPN](./media/site-recovery-failback-azure-to-vmware-classic/architecture2.PNG)
 
 Eine vollständige Liste der Ports und das Failbackarchitekturdiagramm sehen Sie in der folgenden Abbildung.
 

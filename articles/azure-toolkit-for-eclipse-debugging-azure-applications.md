@@ -94,7 +94,8 @@ Wenn Sie die Nummer des öffentlichen Ports kennen, die der Instanz zugeordnet w
 1. Klicken Sie auf **OK**, um das Dialogfeld **Properties for WorkerRole1 Debugging** zu schließen.
 1. Legen Sie einen Haltepunkt in „index.jsp“ fest:
     1. Erweitern Sie im Projektexplorer von Eclipse **MyHelloWorld**, erweitern Sie **WebContent**, und doppelklicken Sie auf **index.jsp**.
-    1. Klicken Sie in „index.jsp“ mit der rechten Maustaste auf den blauen Balken links vom Java-Code, und klicken Sie auf **Toggle Breakpoints**, wie in der folgenden Abbildung gezeigt: ![][ic551537]
+    1. Klicken Sie in „index.jsp“ mit der rechten Maustaste auf den blauen Balken links vom Java-Code, und klicken Sie auf **Toggle Breakpoints**, wie in der folgenden Abbildung gezeigt: 
+    ![][ic551537]
 
        Ein Haltepunkt ist festgelegt, wenn Sie auf der blauen Leiste links vom Java-Code ein Haltepunktsymbol sehen.
 1. Starten Sie die Anwendung im Serveremulator, indem Sie in der Azure-Symbolleiste auf die Schaltfläche **Run in Azure Emulator** klicken.

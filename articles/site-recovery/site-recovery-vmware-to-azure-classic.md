@@ -46,7 +46,7 @@ Bei der erweiterten Bereitstellung handelt es sich um ein umfangreiches Update. 
 - **Keine Infrastruktur-VMs in Azure**: Daten werden direkt auf ein Azure-Speicherkonto repliziert. Außerdem ist für die Replikation und das Failover keine Einrichtung von Infrastruktur-VMs (Konfigurationsserver, Masterzielserver) erforderlich, wie es bei der Legacybereitstellung der Fall war.
 - **Einheitliche Installation**: Ein einziger Installationsvorgang ermöglicht eine einfache Einrichtung mit Skalierbarkeit für lokale Komponenten.
 - **Sichere Bereitstellung**: Der gesamte Datenverkehr wird verschlüsselt, und die Replikationsverwaltungskommunikation wird über HTTPS 443 übermittelt.
-- **Wiederherstellungspunkte**: Unterstützung für absturz- und anwendungskonsistente Wiederherstellungspunkte in Windows- und Linux-Umgebungen sowie Unterstützung für Konfigurationen mit Einzel-VM- und Multi-VM-Konsistenz.
+- **Wiederherstellungspunkte**: Unterstützung für absturz- und anwendungskonsistente Wiederherstellungspunkte in Windows-und Linux-Umgebungen sowie Unterstützung für Konfigurationen mit Einzel-VM- und Multi-VM-Konsistenz.
 - **Testfailover**: Unterstützung für ein unterbrechungsfreies Testfailover auf Azure ohne Beeinträchtigung der Produktion oder Unterbrechung der Replikation.
 - **Ungeplantes Failover**: Unterstützung für ein ungeplantes Failover auf Azure mit einer erweiterten Option zum automatischen Herunterfahren von virtuellen Computern vor dem Failover.
 - **Failback**: Das integrierte Failback, das nur die Deltaänderungen zurück auf den lokalen Standort repliziert.
@@ -59,7 +59,7 @@ Bei der erweiterten Bereitstellung handelt es sich um ein umfangreiches Update. 
 - VMware-Administratoren können für die auf virtuellen VMware-Computern ausgeführten geschäftlichen Workloads und Anwendungen einen externen Schutz in Azure konfigurieren. Servermanager können lokale physische Windows- und Linux-Server in Azure replizieren.
 - Über die Azure Site Recovery-Konsole können Sie die Vorgänge für Replikation, Failover und Wiederherstellung einfach und zentral einrichten und verwalten.
 - Wenn Sie virtuelle VMware-Computer replizieren, die von einem vCenter-Server verwaltet werden, kann Site Recovery diese virtuellen Computer automatisch ermitteln. Wenn sich Computer auf einem ESXi-Host befinden, ermittelt Site Recovery die virtuellen Computer auf dem Host.
-- Führen Sie einfache Failovers von der lokalen Infrastruktur zu Azure aus, und führen Sie ein Failback (Wiederherstellung) von Azure zu VMware-VM-Servern am lokalen Standort durch.
+- Führen Sie einfache Failovers von der lokalen Infrastruktur zu Azure aus, und führen Sie ein Failback (Wiederherstellung) von Azure zu VMware-VM-Servern am lokalen Standort durch. 
 - Konfigurieren Sie Wiederherstellungspläne, die Anwendungsworkloads von verschiedenen Computern in Gruppen zusammenfassen. Sie können für diese Pläne ein Failover durchführen. Site Recovery sorgt dann für die Konsistenz zwischen den verschiedenen virtuellen Computern (Multi-VM-Konsistenz). Dadurch können die Computer, die die gleichen Workloads ausführen, gemeinsam an einem konsistenten Datenpunkt wiederhergestellt werden.
 
 
@@ -498,7 +498,7 @@ Die Installationsprogramme stehen unter „C:\\Programme (x86)\\Microsoft Azure 
 Quellbetriebssystem | Installationsdatei für den Mobilitätsdienst
 --- | ---
 Windows Server (nur 64 Bit) | Microsoft-ASR\_UA\_9.*.0.0_Windows_* release.exe
-CentOS 6.4, 6.5, 6.6 (nur 64 Bit) | Microsoft-ASR\_UA\_9.*.0.0\_RHEL6-64\_*release.tar.gz
+CentOS 6.4, 6.5, 6.6 (nur 64 Bit) | Microsoft-ASR\_UA\_9.*.0.0\_RHEL6-64\_*release.tar.gz 
 SUSE Linux Enterprise Server 11 SP3 (nur 64 Bit) | Microsoft-ASR\_UA\_9.*.0.0\_SLES11-SP3-64\_*release.tar.gz
 Oracle Enterprise Linux 6.4, 6.5 (nur 64 Bit) | Microsoft-ASR\_UA\_9.*.0.0\_OL6-64\_*release.tar.gz
 

@@ -159,7 +159,8 @@ go
 -------------------------------------------------------------------------------
 -- Schritt 3: Bereinigen der in Schritt 1 erstellten Tabelle
 --------------------------------------------------------------------------------
-drop table sql\_statements; go ````
+drop table sql\_statements; go
+````
 
 Wenn Probleme mit Ihrem Data Warehouse auftreten, können Sie [ein Supportticket erstellen][] und als möglichen Grund „Migration zu Storage Premium“ angeben.
 
