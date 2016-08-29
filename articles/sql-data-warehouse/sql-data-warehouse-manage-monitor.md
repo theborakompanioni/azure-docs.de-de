@@ -147,7 +147,9 @@ ORDER BY waits.object_name, waits.object_type, waits.state;
 Wenn die Abfrage aktiv auf Ressourcen einer anderen Abfrage wartet, lautet der Status **AcquireResources**. Wenn die Abfrage über alle erforderlichen Ressourcen verfügt, ist der Status **Granted**.
 
 ## Nächste Schritte
-Weitere Informationen zu dynamischen Verwaltungssichten finden Sie unter [Systemsichten][]. Tipps zur Verwaltung von SQL Data Warehouse finden Sie unter [Übersicht über die Verwaltung][]. Bewährte Methoden finden Sie unter [Bewährte Methoden für SQL Data Warehouse][].
+Weitere Informationen zu dynamischen Verwaltungssichten finden Sie unter [Systemsichten][].  
+Tipps zur Verwaltung von SQL Data Warehouse finden Sie unter [Übersicht über die Verwaltung][].  
+Bewährte Methoden finden Sie unter [Bewährte Methoden für SQL Data Warehouse][].
 
 <!--Image references-->
 
