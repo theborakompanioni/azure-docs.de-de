@@ -1,4 +1,4 @@
-<properties 
+<properties
    pageTitle="Traffic Manager-Endpunkttypen | Microsoft Azure"
    description="In diesem Artikel werden die unterschiedlichen Arten von Endpunkten beschrieben, die mit Azure Traffic Manager verwendet werden können."
    services="traffic-manager"
@@ -6,7 +6,7 @@
    authors="jtuliani"
    manager="carmonm"
    editor="tysonn" />
-<tags 
+<tags
    ms.service="traffic-manager"
    ms.devlang="na"
    ms.topic="article"
@@ -41,7 +41,7 @@ Azure-Endpunkte werden zum Konfigurieren von Azure-basierten Diensten in Traffic
 
 - „Klassische“ IaaS-VMs und PaaS-Clouddienste
 - Web-Apps
-- PublicIPAddress-Ressourcen (können entweder direkt oder über einen Azure Load Balancer mit VMs verbunden werden)
+- PublicIPAddress-Ressourcen (können entweder direkt oder über einen Azure Load Balancer mit VMs verbunden werden) Beachten Sie, dass der publicIpAddress-Ressource ein DNS-Name zugewiesen werden muss, damit sie in Traffic Manager verwendet werden kann.
 
 PublicIPAddress-Ressourcen sind Azure Resource Manager-Ressourcen und nicht in den Azure-Dienstverwaltungs-APIs enthalten. Daher werden sie nur in Azure Resource Manager-Oberflächen von Traffic Manager unterstützt. Die anderen Endpunkttypen werden sowohl für Resource Manager- als auch für Dienstverwaltungsoberflächen in Traffic Manager unterstützt.
 
@@ -98,13 +98,13 @@ Wenn alle Endpunkte eines Profils deaktiviert werden oder das Profil selbst deak
 ## Häufig gestellte Fragen
 
 ### Kann ich Traffic Manager mit Endpunkten mehrerer Abonnements verwenden?
-Für Azure-Web-Apps ist dies nicht möglich. Die Ursache ist, dass es für die Web-Apps erforderlich ist, dass mit Web-Apps verwendete benutzerdefinierte Domänennamen nur innerhalb eines einzelnen Abonnements genutzt werden. Es ist nicht möglich, Web-Apps aus mehreren Abonnements mit dem gleichen Domänennamen zu verwenden, und daher können sie nicht mit Traffic Manager genutzt werden.
+Für Azure-Web-Apps ist dies nicht möglich. Der Grund: Für Web-Apps ist es erforderlich, dass mit Web-Apps verwendete benutzerdefinierte Domänennamen nur innerhalb eines einzelnen Abonnements genutzt werden. Es ist nicht möglich, Web-Apps aus mehreren Abonnements mit dem gleichen Domänennamen zu verwenden, daher können sie nicht mit Traffic Manager genutzt werden.
 
 Für andere Endpunkttypen kann Traffic Manager mit Endpunkten aus mehreren Abonnements verwendet werden. Ihre Vorgehensweise hängt hierbei davon ab, ob Sie die Dienstverwaltungs-APIs oder die Resource Manager-APIs für Traffic Manager verwenden. Im [Azure-Portal](https://portal.azure.com) wird Resource Manager verwendet, im [„klassischen“ Portal](https://manage.windowsazure.com) dagegen die Dienstverwaltung.
 
-In Resource Manager können Endpunkte aus jedem Abonnement Traffic Manager hinzugefügt werden, solange die Person, die das Traffic Manager-Profil konfiguriert, über Lesezugriff für den Endpunkt verfügt. Diese Berechtigungen können über die [rollenbasierte Zugriffssteuerung (RBAC) von Azure Resource Manager](../active-directory/role-based-access-control-configure.md) gewährt werden.
+In Resource Manager können Endpunkte aus jedem Abonnement zu Traffic Manager hinzugefügt werden, solange die Person, die das Traffic Manager-Profil konfiguriert, über Lesezugriff für den Endpunkt verfügt. Diese Berechtigungen können über die [rollenbasierte Zugriffssteuerung (RBAC) von Azure Resource Manager](../active-directory/role-based-access-control-configure.md) gewährt werden.
 
-In der Dienstverwaltung ist es für Traffic Manager erforderlich, dass sich der als Azure-Endpunkt konfigurierte Clouddienst bzw. die Web-App unter demselben Abonnement wie das Traffic Manager-Profil befindet. Clouddienst-Endpunkte in anderen Abonnements können Traffic Manager als „externe“ Endpunkte hinzugefügt werden (sie werden weiterhin mit der Rate für interne Endpunkte berechnet).
+In der Dienstverwaltung ist es für Traffic Manager erforderlich, dass sich der als Azure-Endpunkt konfigurierte Clouddienst bzw. die Web-App im gleichen Abonnement wie das Traffic Manager-Profil befindet. Clouddienst-Endpunkte in anderen Abonnements können als „externe“ Endpunkte zu Traffic Manager hinzugefügt werden (sie werden weiterhin mit der Rate für interne Endpunkte berechnet).
 
 ### Kann ich Traffic Manager mit „Stagingslots“ des Clouddiensts verwenden?
 Ja. Stagingslots des Clouddiensts können in Traffic Manager als externe Endpunkte konfiguriert werden.
@@ -130,7 +130,7 @@ Normalerweise wird Traffic Manager verwendet, um Datenverkehr an Anwendungen zu 
 Im Fall von Web-Apps lassen die Traffic Manager-Azure-Endpunkte es aber nicht zu, dass demselben Traffic Manager-Profil mehr als ein Web-App-Endpunkt für dieselbe Azure-Region hinzugefügt wird. Die folgenden Schritte stellen eine Umgehung dieser Einschränkung dar:
 
 1.	Überprüfen Sie, ob sich Ihre Web-Apps in derselben Region in unterschiedlichen Web-App-„Skalierungseinheiten“ befinden, also unterschiedlichen Instanzen des Web-App-Diensts. Überprüfen Sie hierzu den DNS-Pfad für den DNS-Eintrag „<...>.azurewebsites.net“. Die Skalierungseinheit sieht in etwa wie folgt aus: „waws-prod-xyz-123.vip.azurewebsites.net“. Ein Domänenname muss einer einzelnen Website in einer Skalierungseinheit zugeordnet sein. Aus diesem Grund ist es nicht möglich, dass zwei Web-Apps in derselben Skalierungseinheit ein Traffic Manager-Profil gemeinsam nutzen.
-2.	Angenommen, jede Web-App befindet sich in einer anderen Skalierungseinheit. Fügen Sie Ihren Vanity-Domänennamen dann jeder Web-App als benutzerdefinierten Hostnamen hinzu. Hierfür ist es erforderlich, dass alle Web-Apps demselben Abonnement angehören.
+2.	Angenommen, jede Web-App befindet sich in einer anderen Skalierungseinheit. Fügen Sie Ihren Vanity-Domänennamen dann jeder Web-App als benutzerdefinierten Hostnamen hinzu. Hierfür ist es erforderlich, dass alle Web-Apps zum gleichen Abonnement gehören.
 3.	Fügen Sie nur wie gewohnt einen Web-App-Endpunkt dem Traffic Manager-Profil als Azure-Endpunkt hinzu.
 4.	Fügen Sie jeden weiteren Web-App-Endpunkt dem Traffic Manager-Profil als externen Endpunkt hinzu. Sie müssen hierfür die Resource Manager-Oberfläche für Traffic Manager verwenden, nicht die Oberfläche der Dienstverwaltung.
 5.	Erstellen Sie einen DNS CNAME-Eintrag aus Ihrer Vanity-Domäne (wie oben in Schritt 2) zum DNS-Namen des Traffic Manager-Profils (<…>.trafficmanager.net).
@@ -144,4 +144,4 @@ Im Fall von Web-Apps lassen die Traffic Manager-Azure-Endpunkte es aber nicht zu
 
 - Informationen zu Traffic Manager-[Routingmethoden für Datenverkehr](traffic-manager-routing-methods.md)
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0817_2016-->

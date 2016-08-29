@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Aktivieren von App-übergreifendem SSO auf Android mit ADAL | Microsoft Azure"
-	description="Verwenden der ADAL SDK-Features zum Aktivieren von SSO über Ihre Anwendungen hinweg."
+	description="Verwenden der ADAL SDK-Features zum Aktivieren von SSO über Ihre Anwendungen hinweg. "
 	services="active-directory"
 	documentationCenter=""
 	authors="brandwe"
@@ -33,6 +33,7 @@ Die vorliegende exemplarische Vorgehensweise gilt für:
 * Azure Active Directory
 * Azure Active Directory B2C
 * Azure Active Directory B2B
+* Bedingter Zugriff mit Azure Active Directory
 
 Hinweis: In diesem Dokument wird davon ausgegangen, dass Sie wissen, wie Sie [Anwendungen im Vorgängerportal für Azure Active Directory bereitstellen](active-directory-how-to-integrate.md), und dass Sie das [Microsoft Identity Android SDK](https://github.com/AzureAD/azure-activedirectory-library-for-android) in Ihre Anwendung integriert haben.
 
@@ -58,7 +59,7 @@ Nicht brokergestützte Anmeldungen sind Anmeldungen, die anwendungsintern erfolg
 Diese Anmeldungen bieten folgende Vorteile:
 
 -  Die Benutzerinteraktion läuft vollständig innerhalb der Anwendung ab.
--  Anmeldeinformationen können gemeinsam mit anderen Anwendungen genutzt werden, die das gleiche Signaturzertifikat verwenden. Auf diese Weise erzielen Sie SSO-Funktionalität für Ihre Anwendungssuite. 
+-  Anmeldeinformationen können gemeinsam mit anderen Anwendungen genutzt werden, die das gleiche Signaturzertifikat verwenden. Auf diese Weise erzielen Sie SSO-Funktionalität für Ihre Anwendungssuite.
 -  Die Kontrolle der Anmeldeabläufe liegt sowohl vor als auch nach der Anmeldung bei der Anwendung.
 
 Diese Anmeldungen haben folgende Nachteile:
@@ -155,7 +156,7 @@ Für nicht brokergestütztes, anwendungsübergreifendes SSO übernehmen die Micr
 
 Gehen Sie folgendermaßen vor, um übergreifendes SSO für Anwendungen in Ihrem Besitz zu aktivieren:
 
-1. Stellen Sie sicher, dass all Ihre Anwendungen dieselbe Client-ID oder Anwendungs-ID verwenden. 
+1. Stellen Sie sicher, dass all Ihre Anwendungen dieselbe Client-ID oder Anwendungs-ID verwenden.
 * Stellen Sie sicher, dass all Ihre Anwendungen über denselben SharedUserID-Satz verfügen.
 * Stellen Sie sicher, dass all Ihre Anwendungen dasselbe Signaturzertifikat aus dem Google Play Store verwenden, sodass Sie den Speicher gemeinsam verwenden können.
 
@@ -163,7 +164,7 @@ Gehen Sie folgendermaßen vor, um übergreifendes SSO für Anwendungen in Ihrem 
 
 Damit die Microsoft Identity-Plattform Kenntnis davon hat, dass Token über Ihre Anwendungen hinweg verwendet werden können, muss jede Ihrer Anwendungen dieselbe Client-ID oder Anwendungs-ID verwenden. Hierbei handelt es sich um den eindeutigen Bezeichner, den Sie bei der Registrierung Ihrer ersten Anwendung im Portal erhalten haben.
 
-Nun fragen Sie sich vielleicht, wie unterschiedliche Apps gegenüber dem Microsoft Identity-Dienst identifiziert werden, wenn sie die gleiche Anwendungs-ID verwenden. Die Antwort lautet: mit **Umleitungs-URIs**. Jede Anwendung kann mehrere Umleitungs-URIs im Integrationsportal registrieren. Jede App innerhalb Ihrer Suite kann einen anderen Umleitungs-URI verwenden. Nachfolgend sehen Sie ein Beispiel hierfür:
+Nun fragen Sie sich vielleicht, wie unterschiedliche Apps gegenüber dem Microsoft Identity-Dienst identifiziert werden, wenn sie die gleiche Anwendungs-ID verwenden. Die Antwort lautet: mithilfe von **Umleitungs-URIs**. Jede Anwendung kann mehrere Umleitungs-URIs im Integrationsportal registrieren. Jede App innerhalb Ihrer Suite kann einen anderen Umleitungs-URI verwenden. Nachfolgend sehen Sie ein Beispiel hierfür:
 
 Umleitungs-URI für App1: `msauth://com.example.userapp/IcB5PxIyvbLkbFVtBI%2FitkW%2Fejk%3D`
 
@@ -240,7 +241,7 @@ Der Umleitungs-URI muss das folgende Format besitzen:
 
 `msauth://packagename/Base64UrlencodedSignature`
 
-Beispiel: **msauth://com.example.userapp/IcB5PxIyvbLkbFVtBI%2FitkW%2Fejk%3D*
+Beispiel: *msauth://com.example.userapp/IcB5PxIyvbLkbFVtBI%2FitkW%2Fejk%3D*
 
 Dieser Umleitungs-URI muss in Ihrer App-Registrierung über das [klassische Azure-Portal](https://manage.windowsazure.com/) angegeben werden. Weitere Informationen zur Azure AD-App-Registrierung finden Sie unter [Integration in Azure Active Directory](active-directory-how-to-integrate.md).
 
@@ -261,4 +262,4 @@ MANAGE_ACCOUNTS
 
 Jetzt verwendet das Microsoft Identity SDK Anmeldeinformationen automatisch über Ihre Anwendungen hinweg und ruft den Broker auf, wenn dieser auf dem Gerät vorhanden ist.
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0817_2016-->

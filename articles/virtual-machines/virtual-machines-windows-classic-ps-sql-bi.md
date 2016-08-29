@@ -1,6 +1,6 @@
 <properties
 	pageTitle="SQL Server Business Intelligence | Microsoft Azure"
-	description="In diesem Thema werden die mit dem klassischen Bereitstellungsmodell erstellten Ressourcen verwendet, um die verfügbaren Business Intelligence (BI)-Funktionen für SQL Server auf Azure Virtual Machines (VMs) zu beschreiben."
+	description="Dieses Thema verwendet mit dem klassischen Bereitstellungsmodell erstellte Ressourcen und beschreibt die für SQL Server auf virtuellen Azure-Computern (Virtual Machines, VMs) verfügbaren Business Intelligence-Features (BI)."
 	services="virtual-machines-windows"
 	documentationCenter="na"
 	authors="guyinacube"
@@ -20,7 +20,7 @@
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
 
-Der Microsoft Azure Virtual Machine-Katalog verfügt über Images, die SQL Server-Installationen enthalten. Die in den Katalogimages unterstützten SQL Server-Editionen sind die gleichen Installationsdateien, die Sie auf lokalen Computern und virtuellen Computern installieren können. In diesem Thema sind die SQL Server Business Intelligence (BI)-Features zusammengefasst, die in den Images installiert sind, und es enthält die Konfigurationsschritte, die nach dem Bereitstellen eines virtuellen Computers erforderlich sind. Außerdem werden in diesem Thema die unterstützten Bereitstellungstopologien für BI-Funktionen und bewährte Methoden beschrieben.
+Der Microsoft Azure Virtual Machine-Katalog verfügt über Images, die SQL Server-Installationen enthalten. Die in den Katalogimages unterstützten SQL Server-Editionen sind die gleichen Installationsdateien, die Sie auf lokalen Computern und virtuellen Computern installieren können. Dieses Thema beschreibt die SQL Server Business Intelligence-Features (BI), die in den Images installiert sind, und die Konfigurationsschritte, die nach dem Bereitstellen eines virtuellen Computers erforderlich sind. Außerdem werden in diesem Thema die unterstützten Bereitstellungstopologien für BI-Funktionen und bewährte Methoden erläutert.
 
 ## Lizenzaspekte
 
@@ -82,7 +82,7 @@ In der folgenden Tabelle sind die Business Intelligence-Features zusammengefasst
 |**Reporting Services – Einheitlicher Modus**|Ja|Installiert, erfordert aber eine Konfiguration, einschließlich Berichts-Manager-URL. Siehe Abschnitt [Konfigurieren von Reporting Services](#configure-reporting-services).|
 |**Reporting Services – SharePoint-Modus**|Nein|Das Image des Microsoft Azure Virtual Machine-Katalogs enthält weder SharePoint noch SharePoint-Installationsdateien. <sup>1</sup>|
 |**Analysis Services – Mehrdimensional und Data Mining (OLAP)**|Ja|Als standardmäßige Analysis Services-Instanz installiert und konfiguriert|
-|**Analysis Services – Tabellarisch**|Nein|In SQL Server 2012-, 2014- und 2016-Images unterstützt, aber nicht standardmäßig installiert. Installieren Sie eine weitere Instanz von Analysis Services. Siehe Abschnitt „Installieren anderer SQL Server-Dienste und -Features“ in diesem Thema.|
+|**Analysis Services – Tabellarisch**|Nein|In SQL Server 2012-, 2014- und 2016-Images unterstützt, aber nicht standardmäßig installiert. Installieren Sie eine weitere Instanz von Analysis Services. Weitere Informationen hierzu finden Sie im Abschnitt „Installieren anderer SQL Server-Dienste und -Features“ in diesem Thema.|
 |**Analysis Services Power Pivot für SharePoint**|Nein|Das Image des Microsoft Azure Virtual Machine-Katalogs enthält weder SharePoint noch SharePoint-Installationsdateien. <sup>1</sup>|
 
 <sup>1</sup> Weitere Informationen zu SharePoint und virtuellen Azure-Computern finden Sie unter [Microsoft Azure-Architekturen für SharePoint 2013](https://technet.microsoft.com/library/dn635309.aspx) und [SharePoint Deployment on Microsoft Azure Virtual Machines](https://www.microsoft.com/download/details.aspx?id=34598) (SharePoint-Bereitstellung auf Microsoft Azure Virtual Machines, in englischer Sprache).
@@ -269,7 +269,7 @@ Wenn Sie über einen Remotecomputer eine Verbindung mit dem Webportal oder Beric
 
 1. Öffnen Sie Port 80 in der Firewall des virtuellen Computers.
 
-1. Navigieren Sie zum Webportal oder Berichts-Manager, indem Sie den **DNS-Namen** des virtuellen Azure-Computers als Servernamen in der URL verwenden. Zum Beispiel:
+1. Navigieren Sie zum Webportal oder Berichts-Manager, indem Sie den **DNS-Namen** des virtuellen Azure-Computers als Servernamen in der URL verwenden. Beispiel:
 
 	**Berichtsserver**: http://uebi.cloudapp.net/reportserver **Webportal**: http://uebi.cloudapp.net/reports
 
@@ -319,7 +319,7 @@ Sie können auch „C:\\SQLServer\_13.0_full\\setup.exe“, „C:\\SQLServer_12.
 
 >[AZURE.NOTE] Beim ersten Ausführen des SQL Server-Setups können mehr Setupdateien heruntergeladen werden und erfordern einen Neustart des virtuellen Computers und einen Neustart des SQL Server-Setups.
 >
->Wenn Sie das von der Microsoft Azure Virtual Machine ausgewählte Image wiederholt anpassen müssen, können Sie erwägen, ein eigenes SQL Server-Image zu erstellen. Die Analysis Services-SysPrep-Funktionalität wurde mit SQL Server 2012 SP1 CU2 aktiviert. Weitere Informationen finden Sie unter [Überlegungen zur Installation von SQL Server mit SysPrep](https://msdn.microsoft.com/library/ee210754.aspx).
+>Wenn Sie das von der Microsoft Azure Virtual Machine ausgewählte Image wiederholt anpassen müssen, können Sie erwägen, ein eigenes SQL Server-Image zu erstellen. Die Analysis Services-SysPrep-Funktionalität wurde mit SQL Server 2012 SP1 CU2 aktiviert. Weitere Informationen finden Sie unter [Überlegungen zur Installation von SQL Server mit SysPrep](https://msdn.microsoft.com/library/ee210754.aspx) und [Sysprep Support for Server Roles](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles) (Sysprep-Unterstützung für Serverrollen).
 
 ### So installieren Sie Analysis Services im tabellarischen Modus
 
@@ -333,7 +333,7 @@ Die Schritte in diesem Abschnitt sind eine **Zusammenfassung** der Installation 
 
 1. Klicken Sie im SQL Server-Installations-Assistenten im linken Bereich auf **Installation**, und klicken Sie dann auf **Neue eigenständige SQL Server-Installation oder Hinzufügen von Features zu einer vorhandenen Installation**.
 
-	- Wenn **Ordner suchen** angezeigt wird, navigieren Sie zu „c:\\SQLServer\_13.0_full“, „c:\\SQLServer_12.0_full“ oder „c:\\SQLServer_11.0\_full“, und klicken Sie dann auf **OK**.
+	- Wenn **Ordner suchen** angezeigt wird, navigieren Sie zu „C:\\SQLServer\_13.0_full“, „C:\\SQLServer_12.0_full“ oder „C:\\SQLServer_11.0\_full“, und klicken Sie dann auf **OK**.
 
 1. Klicken Sie auf der Seite mit den Produktupdates auf **Weiter**.
 
@@ -410,7 +410,7 @@ Im folgenden Diagramm sind die Ports dargestellt, die in der Firewall des virtue
 
 ## Ressourcen
 
-- Informieren Sie sich über die Unterstützungsrichtlinie für Microsoft-Serversoftware, die in der Azure Virtual Machine-Umgebung verwendet wird. Im folgenden Thema wird die Unterstützung für Features wie BitLocker, Failoverclustering und Netzwerklastenausgleich zusammengefasst: [Microsoft Server Software-Support für Microsoft Azure virtuelle Maschinen](http://support.microsoft.com/kb/2721672)
+- Informieren Sie sich über die Unterstützungsrichtlinie für Microsoft-Serversoftware, die in der Azure Virtual Machine-Umgebung verwendet wird. Im folgenden Thema wird die Unterstützung für Features wie BitLocker, Failoverclustering und Netzwerklastenausgleich zusammengefasst. [Microsoft Server Software-Support für Microsoft Azure virtuelle Maschinen](http://support.microsoft.com/kb/2721672)
 
 - [Übersicht zu SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-sql-server-iaas-overview.md)
 
@@ -436,4 +436,4 @@ Im folgenden Diagramm sind die Ports dargestellt, die in der Firewall des virtue
 
 - [Verwalten von Azure SQL-Datenbank mit PowerShell](http://blogs.msdn.com/b/windowsazure/archive/2013/02/07/windows-azure-sql-database-management-with-powershell.aspx)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0817_2016-->

@@ -1,6 +1,7 @@
+
 <properties
 	pageTitle="Abrufen von Empfehlungen in Batches: Machine Learning-Empfehlungs-API | Microsoft Azure"
-	description="Azure Machine Learning-Empfehlungen – Abrufen von Empfehlungen IN BATCHES"
+	description="Azure Machine Learning-Empfehlungen – Abrufen von Empfehlungen in Batches"
 	services="cognitive-services"
 	documentationCenter=""
 	authors="luiscabrer"
@@ -18,30 +19,36 @@
 
 # Abrufen von Empfehlungen in Batches
 
->[AZURE.NOTE] Das Abrufen von Empfehlungen in Batches ist komplizierter als das Abrufen einzelner Empfehlungsergebnisse. Informationen zu den APIs zum Abrufen von Empfehlungen für eine einzelne Anforderung finden Sie hier:<br> [Item-to-Item Recommendations](https://westus.dev.cognitive.microsoft.com/docs/services/Recommendations.V4.0/operations/56f30d77eda5650db055a3d4) (Element-zu-Element-Empfehlungen)<br> [User-to-Item Recommendations](https://westus.dev.cognitive.microsoft.com/docs/services/Recommendations.V4.0/operations/56f30d77eda5650db055a3dd) (Benutzer-zu-Element-Empfehlungen)
+>[AZURE.NOTE] Das Abrufen von Empfehlungen in Batches ist komplizierter als das Abrufen einzelner Empfehlungen. Informationen zum Abrufen von Empfehlungen für eine einzelne Anforderung finden Sie unter den APIs:
+
+> [Item-to-Item recommendations](https://westus.dev.cognitive.microsoft.com/docs/services/Recommendations.V4.0/operations/56f30d77eda5650db055a3d4) (Element-zu-Element-Empfehlungen)<br> [User-to-Item recommendations](https://westus.dev.cognitive.microsoft.com/docs/services/Recommendations.V4.0/operations/56f30d77eda5650db055a3dd) (Benutzer-zu-Element-Empfehlungen)
 >
-> Batchbewertungen funktionieren nur für Builds, die nach dem 21. Juli 2016 erstellt wurden.
+> Batchbewertungen können nur für Builds verwendet werden, die nach dem 21. Juli 2016 erstellt wurden.
 
 
-Es gibt Situationen, in denen Empfehlungen für mehrere Elemente gleichzeitig benötigt werden. So können Sie beispielsweise einen Zwischenspeicher für Empfehlungen erstellen und sogar die Arten der erhaltenen Empfehlungen analysieren.
+In bestimmten Situationen müssen Empfehlungen für mehrere Elemente gleichzeitig abgerufen werden. So können Sie beispielsweise einen Zwischenspeicher für Empfehlungen erstellen und sogar die Arten der erhaltenen Empfehlungen analysieren.
 
-Diese so genannten Batchbewertungsvorgänge sind asynchrone Vorgänge. Sie müssen die Anforderung übermitteln, auf den Abschluss des Vorgangs warten und anschließend die Ergebnisse abrufen. Um genau zu sein, müssen die folgenden Schritte ausgeführt werden:
+Diese so genannten Batchbewertungsvorgänge sind asynchrone Vorgänge. Sie müssen die Anforderung übermitteln, auf den Abschluss des Vorgangs warten und anschließend die Ergebnisse abrufen.
+
+Um genau zu sein, müssen die folgenden Schritte ausgeführt werden:
 
 1.	Erstellen Sie einen Azure Storage-Container, sofern noch keiner vorhanden ist.
-2.	Laden Sie eine Eingabedatei hoch, die jede Ihrer Empfehlungsanforderungen für Azure Blob Storage beschreibt.
+2.	Laden Sie eine Eingabedatei hoch, die die einzelnen Empfehlungsanforderungen für Azure Blob Storage beschreibt.
 3.	Starten Sie den Batchbewertungsauftrag.
 4.	Warten Sie, bis der asynchrone Vorgang abgeschlossen ist.
-5.	Rufen Sie anschließend die Ergebnisse aus Azure Blob Storage ab.
+5.	Rufen Sie anschließend die Ergebnisse aus Blob Storage ab.
 
 Im Anschluss sehen wir uns die einzelnen Schritte genauer an.
 
-## Erstellen Sie einen Azure Storage-Container, sofern noch keiner vorhanden ist.
+## Erstellen eines Storage-Containers, sofern noch keiner vorhanden ist
 
-Wechseln Sie zum [Azure-Verwaltungsportal](https://portal.azure.com), und erstellen Sie bei Bedarf ein neues Speicherkonto. Navigieren Sie hierzu zu *+ Neu* > *Daten* + *Speicher* > *Speicherkonto*.
+Erstellen Sie im [Azure-Portal](https://portal.azure.com) ein neues Speicherkonto, falls noch keines vorhanden ist. Navigieren Sie hierzu zu **Neu** > **Daten** > **Speicher** > **Speicherkonto**.
 
-Wenn Sie über ein Speicherkonto verfügen, müssen Sie die Blobcontainer erstellen, in denen die Eingabe und Ausgabe der Batchausführung gespeichert werden.
+Wenn Sie über ein Speicherkonto verfügen, müssen Sie die Blobcontainer erstellen, in denen die Ein- und Ausgabe der Batchausführung gespeichert wird.
 
-Laden Sie eine Eingabedatei hoch, die jede Ihrer Empfehlungsanforderungen für Azure Blob Storage beschreibt. In diesem Beispiel nennen wir die Datei „input.json“. Wenn Sie über einen Container verfügen, müssen Sie eine Datei hochladen, in der die einzelnen Anforderungen beschrieben werden, die über den Empfehlungsdienst ausgeführt werden sollen. Ein Batch kann immer nur eine Art von Anforderung eines spezifischen Builds ausführen. Die Vorgehensweise zum Definieren dieser Information wird im nächsten Abschnitt erläutert. Für den Moment gehen wir einfach davon aus, dass wir Elementempfehlungen aus einem spezifischen Build erhalten möchten. Die Eingabedatei enthält dann die Eingabeinformationen (in diesem Fall die Seed-Elemente) für die einzelnen Anforderungen.
+Laden Sie eine Eingabedatei hoch, die jede Ihrer Empfehlungsanforderungen für Blob Storage beschreibt. In diesem Beispiel nennen wir die Datei „input.json“. Wenn Sie über einen Container verfügen, müssen Sie eine Datei hochladen, in der die einzelnen Anforderungen beschrieben werden, die über den Empfehlungsdienst ausgeführt werden sollen.
+
+Ein Batch kann immer nur eine Art von Anforderung eines spezifischen Builds ausführen. Die Vorgehensweise zum Definieren dieser Informationen wird im nächsten Abschnitt erläutert. Wir gehen vorerst einfach davon aus, dass wir Elementempfehlungen über einen bestimmten Build ausführen. Die Eingabedatei enthält dann die Eingabeinformationen (in diesem Fall die Seed-Elemente) für die einzelnen Anforderungen.
 
 Hier sehen Sie ein Beispiel für die Datei „input.json“:
 
@@ -57,14 +64,14 @@ Hier sehen Sie ein Beispiel für die Datei „input.json“:
       { "SeedItems": [ "C9A-69320" ] }
       ]
     }
-    
+
 Wie Sie sehen, handelt es sich um eine JSON-Datei, und jede der Anforderungen verfügt über die Informationen, die zum Senden einer Empfehlungsanforderung benötigt werden. Erstellen Sie eine ähnliche JSON-Datei für die Anforderungen in Ihrem Szenario, und kopieren Sie sie in den soeben erstellten Container in Blob Storage.
 
 ## Starten des Batchauftrags
 
-Als Nächstes muss ein neuer Batchauftrag übermittelt werden. Sehen Sie sich die [API-Referenz](https://westus.dev.cognitive.microsoft.com/docs/services/Recommendations.V4.0/) an.
+Als Nächstes muss ein neuer Batchauftrag übermittelt werden. Weitere Informationen finden Sie in der [API-Referenz](https://westus.dev.cognitive.microsoft.com/docs/services/Recommendations.V4.0/).
 
-Der Anforderungstext der API muss die Speicherorte für die Eingabe-, Ausgabe- und Fehlerdateien sowie die erforderlichen Anmeldeinformationen für den Zugriff auf diese Speicherorte definieren. Darüber hinaus müssen einige Parameter angegeben werden, die für den gesamten Batch gelten. Hierzu zählen unter anderem die Art der anzufordernden Empfehlungen, das zu verwendende Modell/der zu verwendende Build und die Anzahl von Ergebnissen pro Aufruf.
+Der Anforderungstext der API muss die Speicherorte für die Eingabe-, Ausgabe- und Fehlerdateien definieren. Außerdem müssen die erforderlichen Anmeldeinformationen für den Zugriff auf diese Speicherorte definiert werden. Darüber hinaus müssen einige Parameter angegeben werden, die für den gesamten Batch gelten. Hierzu zählen unter anderem die Art der anzufordernden Empfehlungen, das zu verwendende Modell/der zu verwendende Build und die Anzahl von Ergebnissen pro Aufruf.
 
 Hier sehen Sie ein Beispiel für den Anforderungstext:
 
@@ -97,21 +104,23 @@ Hier sehen Sie ein Beispiel für den Anforderungstext:
       }
     }
 
-Hinweise:
+Wichtig:
 
--	„AuthenticationType“ sollte aktuell immer auf „PublicOrSas“ festgelegt werden.
--	Sie benötigen ein SAS-Token (Shared Access Signature), um der Empfehlungs-API Lese- und Schreibzugriff für Ihr Blob-Speicherkonto zu erteilen. Weitere Informationen zum Generieren von SAS-Token finden Sie [hier](../storage/storage-dotnet-shared-access-signature-part-1.md).
--	Derzeit wird für *apiName* ausschließlich „ItemRecommend“ (für Element-zu-Element-Empfehlungen) unterstützt. Benutzer-zu-Element-Empfehlungen werden aktuell von der Batchverarbeitung nicht unterstützt.
+-	**authenticationType** muss nach aktuellem Stand immer auf **PublicOrSas** festgelegt werden.
 
-## Warten Sie, bis der asynchrone Vorgang abgeschlossen ist.
+-	Sie benötigen ein SAS-Token (Shared Access Signature), um der Empfehlungs-API Lese- und Schreibzugriff für Ihr Blob-Speicherkonto zu erteilen. Weitere Informationen zum Generieren von SAS-Token finden Sie auf der [Seite für die Empfehlungs-API](../storage/storage-dotnet-shared-access-signature-part-1.md).
+
+-	Derzeit wird für **apiName** ausschließlich **ItemRecommend** (für Element-zu-Element-Empfehlungen) unterstützt. Benutzer-zu-Element-Empfehlungen werden derzeit von der Batchverarbeitung nicht unterstützt.
+
+## Warten auf den Abschluss des asynchronen Vorgangs
 
 Wenn Sie den Batchvorgang starten, gibt die Antwort den operation-location-Header mit den Informationen zurück, die Sie zum Nachverfolgen des Vorgangs benötigen. Der Vorgangsstatus wird genau wie beim Nachverfolgen eines Buildvorgangs mithilfe der [API zum Abrufen des Vorgangsstatus](https://westus.dev.cognitive.microsoft.com/docs/services/Recommendations.V4.0/operations/56f30d77eda5650db055a3da) nachverfolgt.
 
-## Rufen Sie die Ergebnisse ab.
+## Abrufen der Ergebnisse
 
-Wenn der Vorgang abgeschlossen ist (und keine Fehler aufgetreten sind), können Sie die Ergebnisse aus dem Ausgabe-Blobspeicher abrufen.
+Wenn der Vorgang fehlerfrei abgeschlossen wurde, können Sie die Ergebnisse aus dem Ausgabe-Blobspeicher abrufen.
 
-Im Anschluss folgt ein Beispiel für die Ausgabe. Zur besseren Übersichtlichkeit zeigt das Beispiel Ergebnisse für einen Batch mit zwei Anforderungen.
+Im Anschluss sehen Sie eine Beispielausgabe. Zur besseren Übersichtlichkeit zeigt das Beispiel Ergebnisse für einen Batch mit nur zwei Anforderungen.
 
     {
       "results":
@@ -189,4 +198,4 @@ Im Anschluss folgt ein Beispiel für die Ausgabe. Zur besseren Übersichtlichkei
 -	Pro Abonnement kann immer nur ein Batchauftrag aufgerufen werden.
 -	Eine Eingabedatei für einen Batchauftrag darf maximal 2 MB groß sein.
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0817_2016-->

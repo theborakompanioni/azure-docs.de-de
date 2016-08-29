@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/15/2016"
+	ms.date="08/11/2016"
 	ms.author="mimig"/>
 
 # Konsistenzebenen in DocumentDB
@@ -87,15 +87,12 @@ In der folgenden Tabelle sind die verschiedenen Konsistenzgarantien entsprechend
 
 2. Wählen Sie auf dem Blatt **DocumentDB-Konten** das zu ändernde Datenbankkonto aus.
 
-3. Klicken Sie auf dem Blatt „Konto“, falls das Blatt **Alle Einstellungen** nicht bereits geöffnet ist, auf der oberen Befehlsleiste auf das Symbol **Einstellungen**.
+3. Klicken Sie auf dem Kontoblatt auf **Standardkonsistenz**.
 
-4. Klicken Sie auf dem Blatt **Alle Einstellungen** unter **Feature** auf den Eintrag **Standardkonsistenz**.
+
+4. Wählen Sie auf dem Blatt **Standardkonsistenz** die neue Konsistenzebene aus, und klicken Sie auf **OK**.
 
 	![Screenshot mit dem Symbol „Einstellungen“ und dem Eintrag „Standardkonsistenz“](./media/documentdb-consistency-levels/database-consistency-level-1.png)
-
-5. Wählen Sie auf dem Blatt **Standardkonsistenz** die neue Konsistenzebene aus, und klicken Sie auf **OK**.
-
-	![Screenshot mit der Konsistenzebene und der Schaltfläche „OK“](./media/documentdb-consistency-levels/database-consistency-level-2.png)
 
 ## Konsistenzebenen für Abfragen
 
@@ -104,7 +101,7 @@ Bei benutzerdefinierten Ressourcen entspricht die Konsistenzebene für Abfragen 
 Indizierungsmodus|	Lesevorgänge|	Abfragen  
 -------------|-------|---------
 Konsistent (Standard)|	Wählen Sie STARK, BEGRENZTE VERALTUNG, SITZUNG oder LETZTLICH.|	Wählen Sie STARK, BEGRENZTE VERALTUNG, SITZUNG oder LETZTLICH.|
-Verzögert|	Wählen Sie STARK, BEGRENZTE VERALTUNG, SITZUNG oder LETZTLICH.|	Eventual  
+Verzögert|	Wählen Sie STARK, BEGRENZTE VERALTUNG, SITZUNG oder LETZTLICH.|	Letztlich (Eventual)  
 
 Wie bei Leseanforderungen kann die Konsistenzebene einer bestimmten Abfrageanforderung durch Angabe des Anforderungsheaders [x-ms-consistency-level](https://msdn.microsoft.com/library/azure/mt632096.aspx) heruntergestuft werden.
 
@@ -122,4 +119,4 @@ Wenn Sie weitere Informationen zu Konsistenzebenen und deren Vor- und Nachteile 
 
 [1]: ./media/documentdb-consistency-levels/consistency-tradeoffs.png
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0817_2016-->

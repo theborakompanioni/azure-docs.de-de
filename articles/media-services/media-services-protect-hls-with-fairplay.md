@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/22/2016"
+	ms.date="08/15/2016"
 	ms.author="juliako"/>
 
 #Verwenden von Azure Media Services zum Streamen von durch Apple FairPlay geschützten HLS-Inhalten 
@@ -23,10 +23,6 @@ Mit Azure Media Services können Sie Ihre HLS-Inhalte (HTTP Live Streaming) unte
 - **Unverschlüsselter Schlüssel mit AES-128-Umschlag**: Der gesamte Block wird mit dem **AES-128 CBC**-Modus verschlüsselt. Die Entschlüsselung des Streams wird von iOS- und OS X-Playern nativ unterstützt. [hier finden Sie weitere Informationen](media-services-protect-with-aes128.md)
 
 - **Apple FairPlay**: Die einzelnen Audio- und Videosamples werden mit dem **AES-128 CBC**-Modus verschlüsselt. **FairPlay Streaming** (FPS) ist in die Gerätebetriebssysteme integriert und wird von iOS und Apple TV nativ unterstützt. Safari unter OS X ermöglicht FPS durch Unterstützung der EME-Schnittstelle (Encrypted Media Extensions).
-
-	>[AZURE.NOTE]
-	Die Verwendung von AMS zur Bereitstellung von HLS-verschlüsselten Inhalten mit FairPlay befindet sich zurzeit in der Vorschau.
-
 
 Die folgende Abbildung veranschaulicht den Workflow für dynamische FairPlay-Verschlüsselung.
 
@@ -39,10 +35,10 @@ Dieses Thema veranschaulicht, wie Sie Azure Media Services verwenden, um Ihre HL
 
 - Folgendes ist erforderlich, wenn Sie AMS verwenden, um mit FairPlay verschlüsselte HLS-Inhalte sowie FairPlay-Lizenzen zu übermitteln.
 
-	- Ein Azure-Konto. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion](/pricing/free-trial/?WT.mc_id=A261C142F).
+	- Ein Azure-Konto. Ausführliche Informationen finden Sie unter [Einen Monat kostenlos testen](/pricing/free-trial/?WT.mc_id=A261C142F).
 	- Media Services-Konto. Informationen zum Erstellen eines Media Services-Kontos finden Sie unter [Konto erstellen](media-services-create-account.md).
-	- Registrieren Sie sich für das [Apple Developer Program (Apple-Entwicklerprogramm)](https://developer.apple.com/).
-	- Apple setzt voraus, dass der Inhaltsbesitzer über das [Bereitstellungspaket](https://developer.apple.com/contact/fps/) verfügt. Geben Sie an, dass Sie bereits KSM (Key Security Module) mit Azure Media Services implementiert haben und dass Sie das endgültige FPS-Paket anfordern. Im endgültigen FPS-Paket gibt es Anweisungen zum Generieren der Zertifizierung und zum Abrufen von ASK, den Sie zum Konfigurieren von FairPlay verwenden werden.
+	- Registrieren Sie sich für das [Apple Developer Program](https://developer.apple.com/) (Apple-Entwicklerprogramm).
+	- Apple setzt voraus, dass der Inhaltsbesitzer über das [Bereitstellungspaket](https://developer.apple.com/contact/fps/) verfügt. Geben Sie an, dass Sie bereits KSM (Key Security Module) mit Azure Media Services implementiert haben, und dass Sie das endgültige FPS-Paket anfordern. Im endgültigen FPS-Paket gibt es Anweisungen zum Generieren der Zertifizierung und zum Abrufen von ASK, den Sie zum Konfigurieren von FairPlay verwenden werden.
 
 	- Azure Media Services .NET SDK, Version **3.6.0** oder höher.
 
@@ -74,7 +70,7 @@ Dieses Thema veranschaulicht, wie Sie Azure Media Services verwenden, um Ihre HL
 - Folgendes muss seitens des FPS-Clients festgelegt werden:
  	- **App Cert (AC)**: CER-/DER-Datei mit dem öffentlichen Schlüssel, den das Betriebssystem zur Verschlüsselung der Nutzlast verwendet. AMS muss den Schlüssel kennen, da er vom Player benötigt wird. Der Schlüsselbereitstellungsdienst entschlüsselt den Schlüssel mithilfe des entsprechenden privaten Schlüssels.
 
-- Um einen über FairPlay verschlüsselten Stream wiederzugeben, müssen Sie zuerst den echten ASK abrufen und dann ein echtes Zertifikat generieren. In diesem Prozess werden alle drei Teile erstellt:
+- Um einen über FairPlay verschlüsselten Stream wiederzugeben, müssen Sie zuerst den echten ASK abrufen und dann ein echtes Zertifikat generieren. Dieser Prozess erstellt alle 3 Teile:
 
 	-  DER-Datei
 	-  PFX-Datei
@@ -94,7 +90,7 @@ Die folgenden allgemeinen Schritte müssen ausgeführt werden, wenn Sie Ihre Med
 	- Bereitstellungsmethode (in diesem Fall FairPlay)
 	- Konfiguration der FairPlay-Richtlinienoptionen; Informationen zum Konfigurieren von FairPlay finden Sie im Beispiel weiter unten in der ConfigureFairPlayPolicyOptions()-Methode
 	
-		>[AZURE.NOTE] In den meisten Fällen sollten Sie FairPlay-Richtlinienoptionen nur einmal konfigurieren, da Sie nur einen Satz aus Zertifizierung und ASK haben.
+		>[AZURE.NOTE] Üblicherweise sollten Sie FairPlay-Richtlinienoptionen nur einmal konfigurieren, da Sie nur einen Satz aus Zertifizierung und ASK haben.
 	- Einschränkungen (offen oder tokenbasiert)
 	- Informationen zum Typ der Schlüsselbereitstellung, der definiert, wie der Schlüssel an den Kunden übermittelt wird.
 	
@@ -109,11 +105,11 @@ Die folgenden allgemeinen Schritte müssen ausgeführt werden, wenn Sie Ihre Med
 	>- Eine IAssetDeliveryPolicy-Richtlinie zum Konfigurieren von DASH mit CENC (PlayReady + WideVine) und Smooth mit PlayReady
 	>- Eine weitere IAssetDeliveryPolicy-Richtlinie zum Konfigurieren von FairPlay für HLS
 
-1. Erstellen eines "OnDemand"-Locators, um eine Streaming-URL zu erhalten.
+1. Erstellen eines OnDemand-Locators, um eine Streaming-URL zu erhalten.
 
 ##Verwenden der FairPlay-Schlüsselübermittlung nach Player-/Client-Apps
 
-Kunden können Player-Apps mithilfe des iOS SDK entwickeln. Damit FairPlay-Inhalte wiedergegeben werden können, müssen Kunden das Lizenzaustauschprotokoll implementieren. Das Lizenzaustauschprotokoll wird nicht von Apple angegeben. Es hängt jeweils von der App ab, wie Schlüsselübermittlungsanforderungen gesendet werden. Der AMS-FairPlay-Schlüsselübermittlungsdienst erwartet das SPC als POST-Nachricht mit Verschlüsselung vom Typ „www-form-url“ im folgenden Format:
+Kunden können Player-Apps mithilfe des iOS SDK entwickeln. Damit FairPlay-Inhalte wiedergegeben werden können, müssen Kunden das Lizenzaustauschprotokoll implementieren. Das Lizenzaustauschprotokoll wird nicht von Apple angegeben. Es ist jeder App freigestellt, wie sie Anforderungen zur Schlüsselübermittlung sendet. Der AMS-FairPlay-Schlüsselübermittlungsdienst erwartet das SPC als POST-Nachricht mit Verschlüsselung vom Typ „www-form-url“ im folgenden Format:
 
 	spc=<Base64 encoded SPC>
 
@@ -128,7 +124,7 @@ Das folgende Beispiel veranschaulicht die Funktionalität, die im Azure Media Se
 	PM> Install-Package windowsazure.mediaservices -Version 3.6.0
 
 
-1. Erstellen Sie ein neues Konsolenprojekt.
+1. Erstellen Sie ein Konsolenprojekt.
 1. Verwenden Sie NuGet, um das Azure Media Services .NET SDK zu installieren und hinzuzufügen.
 2. Fügen Sie zusätzliche Verweise hinzu: System.Configuration.
 2. Fügen Sie eine CONFIG-Datei hinzu, die den Kontonamen und Schlüsselinformationen enthält:
@@ -554,4 +550,4 @@ Das folgende Beispiel veranschaulicht die Funktionalität, die im Azure Media Se
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0817_2016-->

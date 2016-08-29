@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/19/2016"
+	ms.date="08/15/2016"
 	ms.author="genemi"/>
 
 
@@ -53,7 +53,7 @@ Ein wichtiges Ziel für SQL-Datenbank V12 war, die Kompatibilität mit Microsoft
 
 - [ALTER DATABASE SCOPED CONFIGURATION (Transact-SQL)](http://msdn.microsoft.com/library/mt629158.aspx)
 
-Informationen zu den wenigen noch nicht unterstützten SQL-Datenbankfunktionen finden Sie [hier](sql-database-transact-sql-information.md).
+Informationen zu den wenigen in SQL-Datenbank noch nicht unterstützten Funktionen finden Sie [hier](sql-database-transact-sql-information.md).
 
 
 ### Kompatibilitätsgrad 130
@@ -61,7 +61,7 @@ Informationen zu den wenigen noch nicht unterstützten SQL-Datenbankfunktionen f
 
 > [AZURE.IMPORTANT] Ab **Juni 2016** beginnt der Kompatibilitätsgrad *neu* erstellter Datenbanken unter Azure SQL-Datenbank V12 bei 130. Dies entspricht Microsoft SQL Server 2016 GA.
 > 
-> Sie können natürlich auch `ALTER DATABASE YourDatabase SET COMPATIBILITY_LEVEL = 120` verwenden.
+> Sie können auch `ALTER DATABASE YourDatabase SET COMPATIBILITY_LEVEL = 120` verwenden, wenn Sie möchten.
 > 
 > Der Kompatibilitätsgrad der vor Juni 2016 erstellten Datenbanken wird nicht standardmäßig geändert. Darüber hinaus wird der Grad einer Datenbank bei einem Upgrade von V11 auf V12 nicht geändert.
 
@@ -99,7 +99,7 @@ Klicken Sie auf [hier](sql-database-develop-direct-route-ports-adonet-v12.md), u
 ## Bessere Unterstützung für Cloud-SaaS-Anbieter
 
 
-Nur in V12 verfügbar ist die neue Standardleistungsstufe S3 sowie die öffentliche Vorschau des [elastischen Datenbankpools](sql-database-elastic-pool.md). Dies ist eine Lösung, die speziell für Cloud-SaaS-Anbieter entwickelt wurde. Elastische Datenbankpools bieten die folgenden Möglichkeiten:
+Nur in V12 verfügbar ist die neue Standardleistungsstufe S3 sowie die öffentliche Vorschau des [elastischen Datenbankpools](sql-database-elastic-pool.md). Elastische Datenbankpools sind eine Lösung, die speziell für Cloud-SaaS-Anbieter entwickelt wurden. Elastische Datenbankpools bieten die folgenden Möglichkeiten:
 
 
 - Gemeinsame Nutzung von DTUs mit anderen Datenbanken zur Kostensenkung für eine große Anzahl von Datenbanken
@@ -125,7 +125,7 @@ Sicherheit ist eines der Hauptprobleme für alle Benutzer, die für Unternehmens
 ## Erhöhte Geschäftskontinuität, wenn eine Wiederherstellung erforderlich ist
 
 
-V12 bietet wesentlich bessere Recovery Point Objectives (RPO) und geschätzte Wiederherstellungszeiten (ERTs):
+V12 bietet bessere Recovery Point Objectives (RPOs) und geschätzte Wiederherstellungszeiten (ERTs):
 
 
 | Funktionen der Geschäftskontinuität | Frühere Version | V12 |
@@ -143,7 +143,7 @@ Weitere Informationen finden Sie unter [Azure SQL-Datenbank – Geschäftskontin
 Es gibt viele gute Gründe, warum Kunden jetzt ein Upgrade von V11 auf Azure SQL-Datenbank V12 ausführen sollten:
 
 
-- SQL-Datenbank V12 bietet eine lange Liste von Features, die über Version V11 hinausgehen.
+- SQL-Datenbank V12 bietet eine Vielzahl von Features, die über die Features von Version V11 hinausgehen.
 - Wir fügen weiterhin neue Features zu V12 hinzu, aber es werden keine neuen Features mehr zu V11 hinzugefügt.
 - Die meisten neuen Features werden in SQL-Datenbank V12 veröffentlicht, bevor sie für Microsoft SQL Server veröffentlicht werden.
 
@@ -183,4 +183,4 @@ Wenn Sie noch nicht V12 ausführen, können Sie ein Upgrade des logischen Server
 
 [Ergänzende Nutzungsbedingungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0817_2016-->

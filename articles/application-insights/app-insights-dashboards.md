@@ -77,6 +77,10 @@ Wenn Sie ein Blatt oder Diagramm anzeigen, das Sie besonders interessiert, könn
 
 Beachten Sie, dass Diagramme auf Kacheln gruppiert sind: eine Kachel kann mehr als ein Diagramm enthalten. Sie heften die gesamte Kachel an das Dashboard an.
 
+### Analysediagramme
+
+Sie können Analysediagramme auch an ein [freigegebenes](#share-dashboards-with-your-team) Dashboard [anheften](app-insights-analytics-using.md#pin-to-dashboard). Dadurch können Sie neben Standardmetriken Diagramme einer beliebigen Abfrage hinzufügen.
+
 ## Anpassen einer Kachel auf dem Dashboard
 
 Sobald ein Kachel sich auf dem Dashboard befindet, können Sie sie anpassen.
@@ -111,7 +115,6 @@ Auf dem Dashboard wird ein Blatt als Kachel angezeigt: Klicken Sie darauf, um da
 
 Wenn Sie ein Dashboard erstellt haben, können Sie es für andere Benutzer freigeben.
 
-
 ![Klicken Sie in der Dashboardüberschrift auf „Freigeben“.](./media/app-insights-dashboards/41.png)
 
 Erfahren Sie mehr über [Rollen und Zugriffssteuerung](app-insights-resources-roles-access-control.md).
@@ -120,29 +123,29 @@ Erfahren Sie mehr über [Rollen und Zugriffssteuerung](app-insights-resources-ro
 
 Über die Schaltfläche „Einstellungen“ auf dem Blatt „Übersicht“ können Sie nicht nur auf die Konfiguration, sondern auch auf verschiedene Diagrammtypen zugreifen.
 
-* **Überwachungsprotokolle**: Überprüfen Sie Warnungen und Aktionen, die in Ihrer App-Ressource ausgeführt wurden.
-* [Neue Supportanforderung](app-insights-get-dev-support.md): Hilfeoptionen für alle Aspekte von Azure. Für Application Insights können Sie auch Hilfe erhalten, indem Sie auf die Smiley-Schaltfläche in der oberen rechten Ecke des Fensters klicken.
-* [Anwendungszuordnung](app-insights-dependencies.md#application-map): Aktive Zuordnung, die die Komponenten Ihrer Anwendung anzeigt, abgeleitet aus den Abhängigkeitsinformationen.
-* [Live Metrics Stream](app-insights-metrics-explorer.md#live-metrics-stream): Wichtige Metriken mit einer Latenz von etwa 1 Sekunde, zur Überwachung einer neuen Version.
-* **Fehler**: Anforderungen und Abhängigkeitsaufrufe mit Fehlern sowie Ausnahmen. [Blatt mit bearbeitbaren Metriken](app-insights-metrics-explorer.md).
-* **Leistung**: Reaktionszeit, Reaktionszeiten von Abhängigkeiten. [Blatt mit bearbeitbaren Metriken](app-insights-metrics-explorer.md).
-* [Server](app-insights-web-monitor-performance.md): Leistungsindikatoren. Verfügbar, wenn Sie den [Statusmonitor installieren](app-insights-monitor-performance-live-website-now.md).
-* **Browser**: Leistung von Seitenansichten und AJAX. Verfügbar, wenn Sie [Ihre Webseiten instrumentieren](app-insights-javascript.md).
-* **Nutzung**: Seitenansichts-, Benutzer- und Sitzungszähler. Verfügbar, wenn Sie [Ihre Webseiten instrumentieren](app-insights-javascript.md).
-* **Erste Schritte**: Inlinetutorial.
-* **Eigenschaften**: Instrumentierungsschlüssel, Abonnement und Ressourcen-ID.
-* [Verfügbarkeit](app-insights-monitor-web-app-availability.md): Konfiguration und Ergebnisse von Webtests.
-* [Warnungen](app-insights-alerts.md): Konfiguration von Warnungen zu Metriken.
-* [Fortlaufender Export](app-insights-export-telemetry.md): Konfigurieren Sie den Export von Telemetriedaten in Azure Storage.
-* [Leistungstests](app-insights-monitor-web-app-availability.md#performance-tests): Richten Sie eine synthetische Last auf Ihrer Website ein.
+* **Überwachungsprotokolle:** Überprüfen Sie Warnungen und Aktionen, die in Ihrer App-Ressource ausgeführt wurden.
+* [Neue Supportanforderung:](app-insights-get-dev-support.md) Hilfeoptionen für alle Aspekte von Azure. Für Application Insights können Sie auch Hilfe erhalten, indem Sie auf die Smiley-Schaltfläche in der oberen rechten Ecke des Fensters klicken.
+* [Anwendungszuordnung:](app-insights-dependencies.md#application-map) Aktive Zuordnung, die die Komponenten Ihrer Anwendung anzeigt, abgeleitet aus den Abhängigkeitsinformationen.
+* [Live Metrics Stream:](app-insights-metrics-explorer.md#live-metrics-stream) Wichtige Metriken mit einer Latenz von etwa 1 Sekunde, zur Überwachung einer neuen Version.
+* **Fehler:** Anforderungen und Abhängigkeitsaufrufe mit Fehlern sowie Ausnahmen. [Blatt mit bearbeitbaren Metriken](app-insights-metrics-explorer.md).
+* **Leistung:** Reaktionszeit, Reaktionszeiten von Abhängigkeiten. [Blatt mit bearbeitbaren Metriken](app-insights-metrics-explorer.md).
+* [Server:](app-insights-web-monitor-performance.md) Leistungsindikatoren. Verfügbar, wenn Sie den [Statusmonitor installieren](app-insights-monitor-performance-live-website-now.md).
+* **Browser:** Leistung von Seitenansichten und AJAX. Verfügbar, wenn Sie [Ihre Webseiten instrumentieren](app-insights-javascript.md).
+* **Nutzung:** Seitenansichts-, Benutzer- und Sitzungszähler. Verfügbar, wenn Sie [Ihre Webseiten instrumentieren](app-insights-javascript.md).
+* **Erste Schritte:** Inlinetutorial.
+* **Eigenschaften:** Instrumentierungsschlüssel, Abonnement und Ressourcen-ID.
+* [Verfügbarkeit:](app-insights-monitor-web-app-availability.md) Konfiguration und Ergebnisse von Webtests.
+* [Warnungen:](app-insights-alerts.md) Konfiguration von Warnungen zu Metriken.
+* [Fortlaufender Export:](app-insights-export-telemetry.md) Konfigurieren Sie den Export von Telemetriedaten in Azure Storage.
+* [Leistungstests:](app-insights-monitor-web-app-availability.md#performance-tests) Richten Sie eine synthetische Last auf Ihrer Website ein.
 * [Kontingent und Preise](app-insights-pricing.md) und [Erfassungs-Stichprobenerstellung](app-insights-sampling.md).
-* **API-Zugriff**: Zurzeit zum Erstellen von [Versionsanmerkungen](app-insights-annotations.md) und für die Datenzugriffs-API verwendet.
-* [**Arbeitselemente**](app-insights-diagnostic-search.md#create-work-item): Stellen Sie eine Verbindung mit einem System für die Aufgabennachverfolgung her, um Fehler erstellen zu können, während Sie die Telemetrie überprüfen.
-* [**Benutzer**](app-insights-resources-roles-access-control.md): Verwalten Sie die Benutzer, die auf Ihre App-Ressource zugreifen dürfen.
-* [**Rollen**](app-insights-resources-roles-access-control.md): Verwalten Sie die Aktionen, die Benutzer ausführen können.
-* [**Tags**](..\resource-group-using-tags.md): Organisieren Sie Azure-Ressourcen.
-* [**Sperren**](..\resource-group-lock-resources.md): Sperren Sie Azure-Ressourcen.
-* [**Exportieren einer Vorlage**](app-insights-powershell.md): Exportieren Sie eine Definition der Azure-Ressource, um diese als Vorlage für die Erstellung neuer Ressourcen zu verwenden.
+* **API-Zugriff:** Zurzeit zum Erstellen von [Versionsanmerkungen](app-insights-annotations.md) und für die Datenzugriffs-API verwendet.
+* [**Arbeitselemente:**](app-insights-diagnostic-search.md#create-work-item) Stellen Sie eine Verbindung mit einem System für die Aufgabennachverfolgung her, um Fehler erstellen zu können, während Sie die Telemetrie überprüfen.
+* [**Benutzer:**](app-insights-resources-roles-access-control.md) Verwalten Sie die Benutzer, die auf Ihre App-Ressource zugreifen dürfen.
+* [**Rollen:**](app-insights-resources-roles-access-control.md) Verwalten Sie die Aktionen, die Benutzer ausführen können.
+* [**Tags:**](..\resource-group-using-tags.md) Organisieren Sie Azure-Ressourcen.
+* [**Sperren:**](..\resource-group-lock-resources.md) Sperren Sie Azure-Ressourcen.
+* [**Exportieren einer Vorlage:**](app-insights-powershell.md) Exportieren Sie eine Definition der Azure-Ressource, um diese als Vorlage für die Erstellung neuer Ressourcen zu verwenden.
 
 ## Wie geht es weiter?
 
@@ -152,4 +155,4 @@ Erfahren Sie mehr über [Rollen und Zugriffssteuerung](app-insights-resources-ro
 |[Diagnosesuche](app-insights-diagnostic-search.md)<br/>Suchen und Untersuchen von Ereignissen bzw. zugehörigen Ereignissen und Erstellen von Fehlern |![Suchbeispiel](./media/app-insights-dashboards/61.png)
 |[Analytics](app-insights-analytics.md)<br/>Leistungsfähige Abfragesprache| ![Suchbeispiel](./media/app-insights-dashboards/63.png)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0817_2016-->

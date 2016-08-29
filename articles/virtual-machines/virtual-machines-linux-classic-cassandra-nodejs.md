@@ -14,10 +14,10 @@
 	ms.tgt_pltfrm="vm-linux" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/24/2016" 
+	ms.date="08/11/2016" 
 	ms.author="hanuk;robmcm"/>
 
-# Ausführen von Cassandra mit Linux auf Azure und Zugreifen aus Node.js 
+# Ausführen von Cassandra mit Linux auf Azure und Zugreifen darauf mit Node.js 
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] Erfahren Sie, wie Sie [diese Schritte mit dem Resource Manager-Modell ausführen](https://azure.microsoft.com/documentation/templates/datastax-on-ubuntu/).
 
@@ -63,7 +63,7 @@ Der oben dargestellte Cluster mit 8 Knoten, einem Replikationsfaktor von 3 und Q
 
 Cassandra-Clusterkonfiguration mit einer Region:
 
-| Clusterparameter | Wert | Anmerkungen |
+| Clusterparameter | Wert | Hinweise |
 | ----------------- | ----- | ------- |
 | Anzahl der Knoten (N) | 8 | Gesamtzahl der Knoten im Cluster |
 | Replikationsfaktor (RF) | 3 |	Die Anzahl der Replikate einer angegebenen Zeile |
@@ -99,7 +99,7 @@ Verteilte Bereitstellungen müssen die Auswirkungen der Clustertopologie auf den
 **Cassandra-Clusterkonfiguration in zwei Regionen**
 
 
-| Clusterparameter | Wert | Anmerkungen |
+| Clusterparameter | Wert | Hinweise |
 | ----------------- | ----- | ------- |
 | Anzahl der Knoten (N) | 8 + 8 | Gesamtzahl der Knoten im Cluster |
 | Replikationsfaktor (RF) | 3 | Die Anzahl der Replikate einer angegebenen Zeile |
@@ -127,7 +127,7 @@ Laden Sie die oben aufgeführte Software in ein bekanntes Downloadverzeichnis (z
 ### ERSTELLEN DES VIRTUELLEN UBUNTU-COMPUTERS
 In diesem Schritt des Vorgangs wird das Ubuntu-Image mit der erforderlichen Software erstellt, damit das Image für die Bereitstellung von mehreren Cassandra-Knoten wiederverwendet werden kann.
 ####Schritt 1: Generieren eines SSH-Schlüsselpaars
-Azure benötigt einen öffentlichen X509-Schlüssel, der bei seiner Bereitstellung PEM- oder DER-codiert ist. Erstellen Sie ein öffentlich/privates Schlüsselpaar, indem Sie die Anleitungen unter "Verwenden von SSH mit Linux in Azure" befolgen. Wenn Sie "putty.exe" als SSH-Client unter Windows oder Linux verwenden möchten, müssen Sie den PEM-codierten privaten RSA-Schlüssel mithilfe von "puttygen.exe" in das PPK-Format konvertieren. Anleitungen dazu finden Sie auf der oben genannten Webseite.
+Azure benötigt einen öffentlichen X509-Schlüssel, der bei seiner Bereitstellung entweder PEM- oder DER-kodiert ist. Erstellen Sie ein öffentlich/privates Schlüsselpaar, indem Sie die Anleitungen unter "Verwenden von SSH mit Linux in Azure" befolgen. Wenn Sie "putty.exe" als SSH-Client unter Windows oder Linux verwenden möchten, müssen Sie den PEM-codierten privaten RSA-Schlüssel mithilfe von "puttygen.exe" in das PPK-Format konvertieren. Anleitungen dazu finden Sie auf der oben genannten Webseite.
 
 ####Schritt 2: Erstellen des virtuellen Ubuntu-Vorlagencomputers
 Melden Sie sich zum Erstellen des virtuellen Vorlagencomputers beim klassischen Azure-Portal an, und führen Sie dann die folgenden Schritte aus: Klicken Sie auf NEU, COMPUTE, VIRTUELLER COMPUTER, AUS KATALOG, UBUNTU, Ubuntu Server 14.04 LTS und dann auf den Pfeil nach rechts. Ein Lernprogramm, das die Erstellung eines virtuellen Linux-Computers beschreibt, finden Sie unter "Erstellen eines virtuellen Linux-Computers".
@@ -137,14 +137,14 @@ Geben Sie die folgenden Informationen auf dem Bildschirm Nr. 1 "Konfiguration de
 <table>
 <tr><th>FELDNAME              </td><td>       FELDWERT               </td><td>         ANMERKUNGEN                </td><tr>
 <tr><td>VERÖFFENTLICHUNGSDATUM DER VERSION    </td><td> Wählen Sie ein Datum aus der Dropdown-Liste aus</td><td></td><tr>
-<tr><td>NAME DES VIRTUELLEN COMPUTERS    </td><td> cass-template	               </td><td> Dies ist der Hostname des virtuellen Computers. </td><tr>
+<tr><td>NAME DES VIRTUELLEN COMPUTERS    </td><td> cass-template	               </td><td> Dies ist der Hostname des virtuellen Computers </td><tr>
 <tr><td>EBENE	                 </td><td> STANDARD	                       </td><td> Behalten Sie die Standardwerte bei.              </td><tr>
 <tr><td>GRÖSSE	                 </td><td> A1                              </td><td>Wählen Sie den virtuellen Computer anhand der E/A-Anforderungen aus. Behalten Sie zu diesem Zweck die Standardwerte bei. </td><tr>
 <tr><td> NEUER BENUTZERNAME	         </td><td> localadmin	                   </td><td> "admin" ist ein reservierter Benutzername in Ubuntu 12.xx oder höher.</td><tr>
-<tr><td> AUTHENTIFIZIERUNG	     </td><td> Aktivieren Sie das Kontrollkästchen.                 </td><td>Aktivieren Sie es, wenn Sie die Authentifizierung mit einem SSH-Schlüssel sichern möchten. </td><tr>
+<tr><td> AUTHENTIFIZIERUNG	     </td><td> Aktivieren Sie das Kontrollkästchen.                 </td><td>Aktivieren Sie es, wenn Sie die Authentifizierung mit einem SSH-Schlüssel sichern möchten </td><tr>
 <tr><td> ZERTIFIKAT	         </td><td> Der Dateiname des Zertifikats für den öffentlichen Schlüssel. </td><td> Verwenden Sie den zuvor erstellten öffentlichen Schlüssel.</td><tr>
 <tr><td> Neues Kennwort	</td><td> sicheres Kennwort </td><td> </td><tr>
-<tr><td> Kennwort bestätigen	</td><td> Sicheres Kennwort </td><td></td><tr>
+<tr><td> Kennwort bestätigen	</td><td> sicheres Kennwort </td><td></td><tr>
 </table>
 
 Geben Sie die folgenden Informationen im Bildschirm Nr. 2 "Konfiguration des virtuellen Computers" ein:
@@ -152,8 +152,8 @@ Geben Sie die folgenden Informationen im Bildschirm Nr. 2 "Konfiguration des vi
 <table>
 <tr><th>FELDNAME             </th><th> FELDWERT	                   </th><th> ANMERKUNGEN                                 </th></tr>
 <tr><td> CLOUDDIENST	</td><td> Einen neuen Clouddienst erstellen	</td><td>Der Clouddienst ist eine Containerserverressource wie virtuelle Computer.</td></tr>
-<tr><td> DNS-NAME DES CLOUDDIENSTS	</td><td>ubuntu-template.cloudapp.net	</td><td>Geben Sie dem Lastenausgleichsmodul einen dem Computer nicht bekannten Namen.</td></tr>
-<tr><td> REGION/AFFINITY GROUP/VIRTUAL NETWORK </td><td>	USA (West)	</td><td> Wählen Sie eine Region aus, in der Ihre Webanwendungen auf den Cassandra-Cluster zugreifen.</td></tr>
+<tr><td> DNS-NAME DES CLOUDDIENSTS	</td><td>ubuntu-template.cloudapp.net	</td><td>Geben Sie dem Lastenausgleichsmodul einen dem Computer nicht bekannten Namen</td></tr>
+<tr><td> REGION/AFFINITY GROUP/VIRTUAL NETWORK </td><td>	USA (West)	</td><td> Wählen Sie eine Region aus, in der Ihre Webanwendungen auf das Cassandra-Cluster zugreifen</td></tr>
 <tr><td>STORAGE ACCOUNT </td><td>	Verwenden Sie den Standardwert.	</td><td>Verwenden Sie das Standardspeicherkonto oder ein zuvor erstelltes Speicherkonto in einer bestimmten Region.</td></tr>
 <tr><td>VERFÜGBARKEITSGRUPPE </td><td>	Keine </td><td>	Lassen Sie diese Angabe leer.</td></tr>
 <tr><td>ENDPUNKTE	</td><td>Verwenden Sie den Standardwert. </td><td>	Verwenden Sie die SSH-Standardkonfiguration. </td></tr>
@@ -275,7 +275,7 @@ Erstellen Sie symbolische Links im Verzeichnis "$CASS\_HOME/lib", damit das Cass
 Bearbeiten Sie "cassandra.yaml" für jeden virtuellen Computer entsprechend der Konfiguration, die von allen virtuellen Computern benötigt wird. [Wir werden dies während der eigentlichen Bereitstellung optimieren]:
 
 <table>
-<tr><th>Feldname   </th><th> Wert  </th><th>	Anmerkungen </th></tr>
+<tr><th>Feldname   </th><th> Wert  </th><th>	Hinweise </th></tr>
 <tr><td>cluster_name </td><td>	"CustomerService"	</td><td> Verwenden Sie den Namen, der Ihre Bereitstellung angibt.</td></tr> 
 <tr><td>listen_address	</td><td>[Leer lassen]	</td><td> Löschen Sie "localhost". </td></tr>
 <tr><td>rpc_address   </td><td>[Leer lassen]	</td><td> Löschen Sie "localhost". </td></tr>
@@ -302,7 +302,7 @@ Nach einigen Sekunden sollte das Image im Abschnitt "EIGENE IMAGES" des Image-Ka
 **Schritt 1: Erstellen des virtuellen Netzwerks** Melden Sie sich beim klassischen Azure-Portal an, und erstellen Sie ein virtuelles Netzwerk mit den in der Tabelle angegebenen Attributen. Eine ausführliche Beschreibung der erforderlichen Schritte finden Sie unter [Konfigurieren eines virtuellen Netzwerks nur für die Cloud im klassischen Azure-Portal](../virtual-network/virtual-networks-create-vnet-classic-portal.md).
 
 <table>
-<tr><th>Attributname des virtuellen Computers</th><th>Wert</th><th>Anmerkungen</th></tr>
+<tr><th>Attributname des virtuellen Computers</th><th>Wert</th><th>Hinweise</th></tr>
 <tr><td>Name</td><td>vnet-cass-west-us</td><td></td></tr>	
 <tr><td>Region</td><td>USA (West)</td><td></td></tr>	
 <tr><td>DNS-Server	</td><td>Keine</td><td>Ignorieren Sie diese Angabe, da wir keinen DNS-Server verwenden.</td></tr>
@@ -316,7 +316,7 @@ Nach einigen Sekunden sollte das Image im Abschnitt "EIGENE IMAGES" des Image-Ka
 Fügen Sie die folgenden Subnetze hinzu:
 
 <table>
-<tr><th>Name</th><th>Start-IP</th><th>CIDR</th><th>Anmerkungen</th></tr>
+<tr><th>Name</th><th>Start-IP</th><th>CIDR</th><th>Hinweise</th></tr>
 <tr><td>web</td><td>10.1.1.0</td><td>/24 (251)</td><td>Das Subnetz für die Webfarm.</td></tr>
 <tr><td>data</td><td>10.1.2.0</td><td>/24 (251)</td><td>Das Subnetz für die Datenbankknoten.</td></tr>
 </table>
@@ -336,7 +336,7 @@ Die Daten- und Websubnetze können mithilfe von Netzwerksicherheitsgruppen gesch
 <tr><td>hk-c7-west-us	</td><td>data	</td><td>10.1.2.10	</td><td>hk-c-aset-2	</td><td>dc =WESTUS rack =rack4	</td><td>Ja</td></tr>
 <tr><td>hk-c8-west-us	</td><td>data	</td><td>10.1.2.11	</td><td>hk-c-aset-2	</td><td>dc =WESTUS rack =rack4	</td><td>Nein </td></tr>
 <tr><td>hk-w1-west-us	</td><td>web	</td><td>10.1.1.4	</td><td>hk-w-aset-1	</td><td>                       </td><td>–</td></tr>
-<tr><td>hk-w2-west-us	</td><td>web	</td><td>10.1.1.5	</td><td>hk-w-aset-1	</td><td>                       </td><td>–</td></tr>
+<tr><td>hk-w2-west-us	</td><td>web	</td><td>10.1.1.5	</td><td>hk-w-aset-1	</td><td>                       </td><td>N/V</td></tr>
 </table>
 
 Für das Erstellen der oben aufgeführten Liste der virtuellen Computer ist der folgende Vorgang erforderlich:
@@ -424,7 +424,7 @@ Melden Sie sich an einem der Knoten (z. B. "hk-c1-west-us") an, und führen Sie 
 Die Anzeige sollte für einen Cluster mit acht Knoten ähnlich der Abbildung unten sein:
 
 <table>
-<tr><th>Status</th></th>Adresse	</th><th>Last	</th><th>Token	</th><th>Besitzer </th><th>Host-ID	</th><th>Rack</th></tr>
+<tr><th>Status</th></th>Adresse	</th><th>Laden	</th><th>Token	</th><th>Besitzer </th><th>Host-ID	</th><th>Rack</th></tr>
 <tr><th>UN	</td><td>10.1.2.4 	</td><td>87.81 KB	</td><td>256	</td><td>38,0&#160;%	</td><td>GUID (entfernt)</td><td>rack1</td></tr>
 <tr><th>UN	</td><td>10.1.2.5 	</td><td>41.08 KB	</td><td>256	</td><td>68,9&#160;%	</td><td>GUID (entfernt)</td><td>rack1</td></tr>
 <tr><th>UN	</td><td>10.1.2.6 	</td><td>55.29 KB	</td><td>256	</td><td>68,8&#160;%	</td><td>GUID (entfernt)</td><td>rack2</td></tr>
@@ -468,7 +468,7 @@ Bei diesem Verfahren wird die abgeschlossene Bereitstellung in einer Region genu
 Melden Sie sich beim klassischen Azure-Portal an, und erstellen Sie ein virtuelles Netzwerk mit den in der Tabelle angegebenen Attributen. Eine ausführliche Beschreibung der erforderlichen Schritte finden Sie unter [Konfigurieren eines virtuellen Netzwerks nur für die Cloud im klassischen Azure-Portal](../virtual-network/virtual-networks-create-vnet-classic-pportal.md).
 
 <table>
-<tr><th>Attributname    </th><th>Wert	</th><th>Anmerkungen</th></tr>
+<tr><th>Attributname    </th><th>Wert	</th><th>Hinweise</th></tr>
 <tr><td>Name	</td><td>vnet-cass-east-us</td><td></td></tr>	
 <tr><td>Region	</td><td>USA (Ost)</td><td></td></tr>	
 <tr><td>DNS-Server		</td><td></td><td>Ignorieren Sie diese Angabe, da wir keinen DNS-Server verwenden.</td></tr>
@@ -481,7 +481,7 @@ Melden Sie sich beim klassischen Azure-Portal an, und erstellen Sie ein virtuell
 
 Fügen Sie die folgenden Subnetze hinzu:
 <table>
-<tr><th>Name    </th><th>Start-IP	</th><th>CIDR	</th><th>Anmerkungen</th></tr>
+<tr><th>Name    </th><th>Start-IP	</th><th>CIDR	</th><th>Hinweise</th></tr>
 <tr><td>web	</td><td>10.2.1.0	</td><td>/24 (251)	</td><td>Das Subnetz für die Webfarm.</td></tr>
 <tr><td>data	</td><td>10.2.2.0	</td><td>/24 (251)	</td><td>Das Subnetz für die Datenbankknoten.</td></tr>
 </table>
@@ -492,7 +492,7 @@ Ein lokales Netzwerk in virtuellen Azure-Netzwerken ist ein Proxyadressraum, der
 
 Erstellen Sie zwei lokale Netzwerke mit den folgenden Details:
 
-| Netzwerkname | Adresse des VPN-Gateways | Adressraum | Anmerkungen |
+| Netzwerkname | Adresse des VPN-Gateways | Adressraum | Hinweise |
 | ------------ | ------------------- | ------------- | ------- |
 | hk-lnet-map-to-east-us | 23\.1.1.1 | 10\.2.0.0/16 | Geben Sie beim Erstellen des lokalen Netzwerks eine Platzhalter-Gatewayadresse an. Die tatsächliche Gatewayadresse wird angegeben, nachdem das Gateway erstellt wurde. Stellen Sie sicher, dass der Adressraum mit dem entsprechenden Remote-VNET genau übereinstimmt. In diesem Fall wird das VNET in der Region "USA (Ost)" erstellt. |
 | hk-lnet-map-to-west-us | 23\.2.2.2 | 10\.1.0.0/16 | Geben Sie beim Erstellen des lokalen Netzwerks eine Platzhalter-Gatewayadresse an. Die tatsächliche Gatewayadresse wird angegeben, nachdem das Gateway erstellt wurde. Stellen Sie sicher, dass der Adressraum mit dem entsprechenden Remote-VNET genau übereinstimmt. In diesem Fall wird das VNET in der Region "USA West" erstellt. |
@@ -540,7 +540,7 @@ Erstellen Sie das Ubuntu-Image wie für die Bereitstellung in der Region Nr. 1 b
 | hk-c7-east-us | data | 10\.2.2.10 | hk-c-aset-2 | dc =EASTUS rack =rack4 | Ja |
 | hk-c8-east-us | data | 10\.2.2.11 | hk-c-aset-2 | dc =EASTUS rack =rack4 | Nein |
 | hk-w1-east-us | web | 10\.2.1.4 | hk-w-aset-1 | – | – |
-| hk-w2-east-us | web | 10\.2.1.5 | hk-w-aset-1 | – | – |
+| hk-w2-east-us | web | 10\.2.1.5 | hk-w-aset-1 | – | N/V |
 
 
 Führen Sie die gleichen Schritte wie für die Region Nr. 1 aus, verwenden Sie jedoch den Adressraum "10.2.xxx.xxx".
@@ -705,4 +705,4 @@ Microsoft Azure ist eine flexible Plattform, die das Ausführen von Microsoft- s
 - [http://www.datastax.com](http://www.datastax.com)
 - [http://www.nodejs.org](http://www.nodejs.org)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0817_2016-->

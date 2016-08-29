@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="08/08/2016"
+   ms.date="08/16/2016"
    ms.author="kevin;barbkess;sonyama"/>
 
 # Verwenden von Azure Machine Learning mit SQL Data Warehouse
@@ -120,8 +120,6 @@ Wählen Sie das Writer-Modul aus, und füllen Sie das Eigenschaftenfenster aus.
 
 ## Nächste Schritte
 
-Einen Überblick über die Integration finden Sie unter [SQL Data Warehouse-Integration (Übersicht)][].
-
 Weitere Hinweise zur Entwicklung finden Sie in der [SQL Data Warehouse-Entwicklungsübersicht][].
 
 <!--Image references-->
@@ -137,7 +135,6 @@ Weitere Hinweise zur Entwicklung finden Sie in der [SQL Data Warehouse-Entwicklu
 <!--Article references-->
 
 [SQL Data Warehouse-Entwicklungsübersicht]: ./sql-data-warehouse-overview-develop.md
-[SQL Data Warehouse-Integration (Übersicht)]: ./sql-data-warehouse-overview-integration.md
 [Lernprogramm zum Erstellen eines Experiments]: https://azure.microsoft.com/documentation/articles/machine-learning-create-experiment/
 [Einführung in Machine Learning in Azure]: https://azure.microsoft.com/documentation/articles/machine-learning-what-is-machine-learning/
 [Azure Machine Learning Studio]: https://studio.azureml.net/Home
@@ -149,4 +146,4 @@ Weitere Hinweise zur Entwicklung finden Sie in der [SQL Data Warehouse-Entwicklu
 
 [Azure Machine Learning documentation]: http://azure.microsoft.com/documentation/services/machine-learning/
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0817_2016-->

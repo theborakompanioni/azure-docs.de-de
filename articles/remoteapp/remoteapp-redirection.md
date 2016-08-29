@@ -12,10 +12,13 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="05/13/2016"
+    ms.date="08/15/2016"
     ms.author="elizapo" />
 
 # Verwenden von Umleitungen in Azure RemoteApp
+
+> [AZURE.IMPORTANT]
+Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148).
 
 Mit der Geräteumleitung können Benutzer über Geräte, die an ihren lokalen Computer, an ihr Smartphone oder an ihr Tablet angeschlossen sind, mit Remoteanwendungen interagieren. Ein Beispiel: Wenn Sie Skype über Azure RemoteApp bereitstellen, muss die Kamera, die auf dem PC des Benutzers installiert ist, mit Skype verwendbar sein. Gleiches gilt für Drucker, Lautsprecher, Monitore und eine Reihe von USB-Peripheriegeräten.
 
@@ -102,6 +105,6 @@ Sie können auch das Gruppenrichtlinienverwaltungstool verwenden, um die USB-Uml
 5. Öffnen Sie **Computerkonfiguration\\Richtlinien\\Administrative Vorlagen\\Windows-Komponenten\\Remotedesktopdienste\\Remotedesktopverbindungs-Client\\RemoteFX USB-Geräteumleitung**.
 6. Doppelklicken Sie auf **RDP-Umleitung für andere unterstützte RemoteFX USB-Geräte auf diesem Computer zulassen**.
 7. Wählen Sie **Aktiviert** und anschließend unter **Zugriffsrechte für RemoteFX USB-Umleitung** die Option für Administratoren und Benutzer aus.
-8. Klicken Sie auf **OK**.  
+8. Klicken Sie auf **OK**.
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0817_2016-->

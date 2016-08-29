@@ -13,12 +13,16 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="06/13/2016"
+    ms.date="08/15/2016"
     ms.author="elizapo" />
 
 
 
 # App-Anforderungen
+
+> [AZURE.IMPORTANT]
+Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148).
+
 Azure RemoteApp unterstützt das Streaming von 32-Bit- oder 64-Bit-Windows-basierten Anwendungen von einem Windows Server 2012 R2-Image. Die meisten vorhandenen Anwendungen für 32-Bit- oder 64-Bit-Windows können in Azure RemoteApp-Umgebungen (Remote Desktop Services, früher als Terminal Services bezeichnet) ohne Änderungen ausgeführt werden. Es gibt jedoch einen Unterschied zwischen "ausführen" und "gut ausführen" – einige Anwendungen funktionieren ordnungsgemäß und bieten eine gute Leistungen, während dies bei anderen nicht gilt. Die folgenden Informationen dienen als Hilfestellung bei der Entwicklung von Anwendungen in einer Remote Desktop Services-Umgebung und beim Testen zum Sicherstellen der Kompatibilität.
 
 Tipp: Wir arbeiten daran, einige funktionierende Beispiel-Apps für Sie zu erstellen. Es werden neue Themen angeboten, in denen die Verwendung von Microsoft Access, QuickBooks und App-V in RemoteApp besprochen wird.
@@ -28,7 +32,7 @@ Die folgenden drei Anforderungen tragen dazu bei, dass Ihre Anwendung in RemoteA
 
 1.	Anwendungen, die alle [Zertifizierungsanforderungen für Windows-Desktop-Apps](https://msdn.microsoft.com/library/windows/desktop/hh749939.aspx) erfüllen und die [Programmierrichtlinien für Remote Desktop Services](https://msdn.microsoft.com/library/aa383490.aspx) einhalten, sind vollständig mit RemoteApp kompatibel.
 2.	Anwendungen sollten niemals Daten lokal im Image oder in RemoteApp-Instanzen speichern, die verloren gehen können. Nach dem Erstellen einer RemoteApp-Sammlung werden die Instanzen geklont. Sie weisen dann keinen Zustand auf und sollten ausschließlich Anwendungen enthalten. Speichern Sie Daten in externen Quellen oder im Benutzerprofil.
-3.	Benutzerdefinierte Images sollten niemals Daten enthalten, die verloren gehen können.  
+3.	Benutzerdefinierte Images sollten niemals Daten enthalten, die verloren gehen können.
 
 ## Testen Ihrer Apps
 Gehen Sie folgendermaßen vor, um Anwendungen zu testen:
@@ -55,4 +59,4 @@ Gehen Sie nach den folgenden Richtlinien vor, um Anwendungen für RemoteApp zu e
 - Sie sollten die [Threadnutzung](https://msdn.microsoft.com/library/aa383520.aspx) von Anwendungen für Umgebungen mit mehreren Benutzern und mehreren Prozessoren abstimmen und ausbalancieren.
 - Um die Leistung zu optimieren, empfiehlt es sich, der Anwendung eine [Erkennung](https://msdn.microsoft.com/library/aa380798.aspx) hinzuzufügen, ob sie in einer Clientsitzung ausgeführt wird.
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0817_2016-->

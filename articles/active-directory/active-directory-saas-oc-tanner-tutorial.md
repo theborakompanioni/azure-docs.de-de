@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/25/2016"
+	ms.date="08/16/2016"
 	ms.author="jeedes"/>
 
 
@@ -21,7 +21,7 @@
 
 In diesem Lernprogramm wird die Integration von O.C. Tanner – AppreciateHub mit Azure Active Directory (Azure AD). Integration von O.C. Tanner – AppreciateHub mit Azure AD bietet die folgenden Vorteile:
 
-- Sie können in Azure AD steuern, wer auf O.C. Tanner – AppreciateHub Zugriff hat. 
+- Sie können in Azure AD steuern, wer auf O.C. Tanner – AppreciateHub Zugriff hat.
 - Sie können für die Benutzer die automatische Anmeldung bei O.C. Tanner – AppreciateHub (einmaliges Anmelden) mit ihren Azure AD-Konten einrichten.
 - Sie können Ihre Konten an einem zentralen Ort verwalten – im klassischen Azure-Portal.
 
@@ -31,8 +31,8 @@ Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unte
 
 Für das Konfigurieren der Azure AD-Integration mit O.C. Tanner – AppreciateHub benötigen Sie die folgenden Elemente:
 
-- Ein Azure AD-Abonnement.
-- Ein O.C. Tanner – AppreciateHub-Software-Abonnement, für das die einmalige Anmeldung aktiviert ist.
+- Ein Azure AD-Abonnement
+- Ein O.C. Tanner – AppreciateHub-Abonnement, für das einmaliges Anmelden aktiviert ist
 
 
 > [AZURE.NOTE] Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
@@ -41,13 +41,13 @@ Für das Konfigurieren der Azure AD-Integration mit O.C. Tanner – AppreciateH
 Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
 
 - Sie sollten keine Produktionsumgebung verwenden, sofern dies nicht erforderlich ist.
-- Wenn Sie keine Azure AD-Testumgebung haben, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/) eine einmonatige Testversion anfordern. 
+- Wenn Sie keine Azure AD-Testumgebung haben, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/) eine einmonatige Testversion anfordern.
 
  
 ## Beschreibung des Szenarios
 Ziel dieses Tutorials ist es, das einmalige Anmelden von Azure AD in einer Testumgebung zu testen. Das in diesem Tutorial beschriebene Szenario besteht aus drei großen Bausteinen:
 
-1. Hinzufügen von O.C. Tanner – AppreciateHub aus dem Katalog 
+1. Hinzufügen von O.C. Tanner – AppreciateHub aus dem Katalog
 2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 
 
@@ -56,7 +56,7 @@ Für das Konfigurieren der Integration von O.C. Tanner – AppreciateHub in Azur
 
 **Befolgen Sie folgende Schritte, um O.C. Tanner – AppreciateHub aus dem Katalog hinzuzufügen:**
 
-1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**. 
+1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**.
 
 	![Active Directory][1]
 
@@ -94,9 +94,9 @@ Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, wer der entsprech
 Für das Konfigurieren und Testen des einmaligen Anmeldens in Azure AD mit O.C. Tanner – AppreciateHub, sind folgende Bausteine erforderlich:
 
 1. **[Konfigurieren von Azure AD – einmaliges Anmelden](#configuring-azure-ad-single-single-sign-on)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
-2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** – um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
 4. **[Erstellen eines O.C. Tanner – AppreciateHub-Testbenutzers](#creating-a-halogen-software-test-user)** – um eine Entsprechung von Britta Simon in O.C. Tanner – AppreciateHub zu haben, die mit ihrer Azure AD-Darstellung verknüpft ist.
-5. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+5. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** – um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
 5. **[Testen der einmaligen Anmeldung](#testing-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### Konfigurieren des einmaligen Anmeldens von Azure AD
@@ -130,7 +130,7 @@ Das Ziel dieses Abschnitts besteht darin, das einmalige Anmelden von Azure AD i
 
      > [AZURE.NOTE] Wenden Sie sich bei Problemen beim Auffinden der Antwort-URL in der Metadatendatei an das O.C. Tanner – AppreciateHub-Supportteam unter [sso@octanner.com](mailto:sso@octanner.com).
 
-     e. Klicken Sie auf **Weiter**.
+     e. Klicken Sie auf **Next**.
  
 4. Klicken Sie auf der Seite **Einmaliges Anmelden konfigurieren um O.C. Tanner – AppreciateHub** auf **Metadaten herunterladen**, und speichern Sie die Metadatendatei dann lokal auf Ihrem Computer.
 
@@ -163,7 +163,7 @@ In diesem Abschnitt wird im klassischen Azure-Portal eine Testbenutzerin namens 
 
 2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
 
-3. Klicken Sie zum Anzeigen der Liste der Benutzer im Menü oben auf **Benutzer**.
+3. Klicken Sie im Menü oben auf **Benutzer**, um die Liste der Benutzer anzuzeigen.
 
 	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-oc-tanner-tutorial/create_aaduser_03.png)
  
@@ -246,7 +246,7 @@ Das Ziel dieses Abschnitts ist, Britta Simon für das einmalige Anmelden bei Azu
 
 ### Testen der einmaligen Anmeldung
 
-In diesem Abschnitt soll Ihre Azure AD-Konfiguration für das einmalige Anmelden mithilfe des Zugriffsbereichs getestet werden. Wenn Sie im Zugriffsbereich auf die Kachel "O.C. Tanner – AppreciateHub" klicken, sollten Sie automatisch bei Ihrer O.C. Tanner – AppreciateHub-Anwendung angemeldet werden.
+Das Ziel dieses Abschnitts ist das Testen Ihrer Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich. Wenn Sie im Zugriffsbereich auf die Kachel "O.C. Tanner – AppreciateHub" klicken, sollten Sie automatisch bei Ihrer O.C. Tanner – AppreciateHub-Anwendung angemeldet werden.
 
 
 ## Zusätzliche Ressourcen
@@ -280,4 +280,4 @@ In diesem Abschnitt soll Ihre Azure AD-Konfiguration für das einmalige Anmelden
 [204]: ./media/active-directory-saas-oc-tanner-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-oc-tanner-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0817_2016-->

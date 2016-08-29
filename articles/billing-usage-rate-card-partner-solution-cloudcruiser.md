@@ -15,7 +15,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="billing"
-   ms.date="02/19/2016"
+   ms.date="08/16/2016"
    ms.author="mobandyo;sirishap;bryanla"/>
 
 # Integration von Cloud Cruiser und Microsoft Azure-Abrechnungs-API
@@ -54,7 +54,7 @@ Um diesen Anwendungsfall zu demonstrieren, stellen wir uns eine Workload vor, be
 
 Cloud Cruiser-Arbeitsmappen sind eine Möglichkeit, Informationen aus der RateCard-API auf automatisierte Weise zu erfassen und zu verarbeiten. Mit ETL-Arbeitsmappen (Extrahieren-Transformieren-Laden) können Sie die Sammlung, Transformation und Veröffentlichung von Daten in der Cloud Cruiser-Datenbank konfigurieren.
 
-Jede Arbeitsmappe kann über eine oder mehrere Sammlungen verfügen. So können Sie Informationen aus unterschiedlichen Quellen korrelieren, um die Nutzungsdaten zu erweitern oder zu verbessern. In den beiden folgenden Screenshots sind die Erstellung einer neuen *Sammlung* in einer vorhandenen Arbeitsmappe und das Importieren in die *Sammlung* aus der RateCard-API dargestellt:
+Jede Arbeitsmappe kann über eine oder mehrere Sammlungen verfügen. So können Sie Informationen aus unterschiedlichen Quellen korrelieren, um die Nutzungsdaten zu erweitern oder zu verbessern. Die beiden folgenden Bildschirmfotos zeigen, wie eine neue *Sammlung* in einer vorhandenen Arbeitsmappe erstellt wird und Informationen aus der RateCard-API in die *Sammlung* importiert werden:
 
 ![Abbildung 1: Erstellen einer neuen Sammlung][1]
 
@@ -144,7 +144,7 @@ Auf Abrechnungsseite automatisiert Cloud Cruiser den Showback-/Chargeback-Prozes
  
 
 ### Erstellen einer Ressourcengruppe mit Tags in Microsoft Azure
-Der erste Schritt in diesem Tutorial ist das Erstellen einer neuen Ressourcengruppe im Azure-Portal und anschließende Erstellen neuer Tags, die Ressourcen zugeordnet werden. In diesem Beispiel erstellen wir die folgenden Tags: Department, Environment, Owner, Project (Abteilung, Umgebung, Besitzer, Projekt).
+Der erste Schritt in diesem Tutorial besteht im Erstellen einer neuen Ressourcengruppe im Azure-Portal und im anschließenden Erstellen neuer Tags, die Ressourcen zugeordnet werden. In diesem Beispiel erstellen wir die folgenden Tags: Department, Environment, Owner, Project (Abteilung, Umgebung, Besitzer, Projekt).
 
 Das nachstehende Bildschirmfoto des Azure-Portals zeigt ein Beispiel einer Ressourcengruppe mit den zugehörigen Tags.
 
@@ -237,4 +237,4 @@ Das Beste ist, dass Sie diesen Prozess nur einmal durchlaufen müssen. Wenn die 
 [13]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/4_NewTagField.png "Abbildung 13: Erstellen neuer Felder für die Tag-Informationen"
 [14]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/5_PopulateAccountStructure.png "Abbildung 14: Auffüllen der Kontostruktur mit den Informationen aus den Suchvorgängen"
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0817_2016-->

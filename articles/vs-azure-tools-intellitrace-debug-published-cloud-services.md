@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="multiple"
    ms.workload="na"
-   ms.date="04/18/2016"
+   ms.date="08/15/2016"
    ms.author="tarcher" />
 
 # Debuggen eines veröffentlichten Clouddiensts mit IntelliTrace und Visual Studio
@@ -63,8 +63,8 @@ Sie können weiterhin in Visual Studio arbeiten, während die IntelliTrace-Proto
 
 >[AZURE.NOTE] Die IntelliTrace-Protokolle enthalten möglicherweise vom Framework generierte und anschließend verarbeitete Ausnahmen. Der interne Frameworkcode generiert diese Ausnahmen ganz normal im Rahmen des Starts einer Rolle, sodass sie gefahrlos ignoriert werden können.
 
-## Siehe auch
+## Weitere Informationen
 
 [Debuggen von Cloud-Diensten.](https://msdn.microsoft.com/library/ee405479.aspx)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0817_2016-->

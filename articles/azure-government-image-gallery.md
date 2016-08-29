@@ -2,6 +2,7 @@
    pageTitle="Azure Government – Imagekatalog | Microsoft Azure"
    description="Dieser Artikel bietet einen Überblick über den Imagekatalog von Azure Government und die darin enthaltenen Images."
    services="Azure-Government"
+   cloud="gov"
    documentationCenter=""
    authors="joharve2"
    manager="chrisnie"
@@ -141,4 +142,4 @@ Die folgenden Ressourcen bieten nähere Informationen zur Bereitstellung über d
 [Link 2 to another azure.microsoft.com documentation topic]: app-service-web/web-sites-custom-domain-name.md
 [Link 3 to another azure.microsoft.com documentation topic]: storage-whatis-account.md
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0817_2016-->

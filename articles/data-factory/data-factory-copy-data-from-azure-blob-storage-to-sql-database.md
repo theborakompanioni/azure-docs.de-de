@@ -23,6 +23,7 @@
 - [Verwenden des Data Factory-Editors](data-factory-copy-activity-tutorial-using-azure-portal.md)
 - [Mithilfe von PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
 - [Verwenden von Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
+- [Verwenden der REST-API](data-factory-copy-activity-tutorial-using-rest-api.md)
 - [Verwenden des Kopier-Assistenten](data-factory-copy-data-wizard-tutorial.md)
 
 In diesem Tutorial erstellen Sie eine Data Factory mit einer Pipeline, um Daten aus Blob Storage in SQL-Datenbank zu kopieren.
@@ -31,30 +32,30 @@ Die Kopieraktivität führt die Datenverschiebung in Azure Data Factory durch, u
 
 > [AZURE.NOTE] Eine ausführliche Übersicht über den Data Factory-Dienst finden Sie im Artikel [Einführung in Azure Data Factory][data-factory-introduction].
 
-##Voraussetzungen für das Lernprogramm
-Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
+##Voraussetzungen für das Tutorial
+Bevor Sie mit diesem Tutorial beginnen können, benötigen Sie Folgendes:
 
 - **Azure-Abonnement**. Wenn Sie über kein Abonnement verfügen, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Im Artikel [Kostenlose Testversion][azure-free-trial] finden Sie Details.
-- **Azure Storage-Konto**. In diesem Lernprogramm verwenden Sie den Blobspeicher als **Quelldatenspeicher**. Wenn Sie kein Azure-Speicherkonto haben, finden Sie im Artikel [Erstellen eines Speicherkontos][data-factory-create-storage] Schritte zum Erstellen eines Azure-Speicherkontos.
-- **Azure SQL-Datenbank**. In diesem Lernprogramm verwenden Sie eine Azure SQL-Datenbank als **Zieldatenspeicher**. Wenn Sie keine Azure SQL-Datenbank haben, die Sie in diesem Lernprogramm verwenden können, finden Sie unter [Erstellen und Konfigurieren einer Azure SQL-Datenbank][data-factory-create-sql-database] entsprechende Anweisungen.
+- **Azure Storage-Konto**. In diesem Tutorial verwenden Sie den Blobspeicher als **Quelldatenspeicher**. Wenn Sie kein Azure Storage-Konto haben, finden Sie im Artikel [Erstellen eines Speicherkontos][data-factory-create-storage] Schritte zum Erstellen eines Azure Storage-Kontos.
+- **Azure SQL-Datenbank**. In diesem Tutorial verwenden Sie eine Azure SQL-Datenbank als **Zieldatenspeicher**. Wenn Sie keine Azure SQL-Datenbank haben, die Sie in diesem Tutorial verwenden können, finden Sie unter [Erstellen und Konfigurieren einer Azure SQL-Datenbank][data-factory-create-sql-database] entsprechende Anweisungen.
 - **SQL Server 2012/2014 oder Visual Studio 2013**. Sie verwenden SQL Server Management Studio oder Visual Studio zum Erstellen einer Beispieldatenbank und zum Anzeigen der Ergebnisdaten in der Datenbank.
 
 ## Erfassen von Blob-Speicherkontoname und -schlüssel 
-Sie benötigen in diesem Lernprogramm den Kontonamen und -schlüssel Ihres Azure-Speicherkontos. Notieren Sie sich den **Kontonamen** und **Kontoschlüssel** Ihres Azure-Speicherkontos, indem Sie die folgenden Anweisungen befolgen:
+Sie benötigen in diesem Tutorial den Kontonamen und -schlüssel Ihres Azure-Speicherkontos. Notieren Sie sich den **Kontonamen** und **Kontoschlüssel** Ihres Azure-Speicherkontos, indem Sie die folgenden Anweisungen befolgen:
 
 1. Melden Sie sich beim [Azure-Portal][azure-portal] an.
-2. Klicken Sie auf der linken Seite auf den Hub **Durchsuchen**, und wählen Sie **Speicherkonten** aus.
-3. Wählen Sie auf dem Blatt **Speicherkonten** das **Azure-Speicherkonto** aus, das Sie in diesem Lernprogramm verwenden möchten.
+2. Klicken Sie auf der linken Seite auf den Hub **DURCHSUCHEN**, und wählen Sie **Speicherkonten** aus.
+3. Wählen Sie auf dem Blatt **Speicherkonten** das **Azure-Speicherkonto** aus, das Sie in diesem Tutorial verwenden möchten.
 4. Wählen Sie den Link **Zugriffsschlüssel** unter **EINSTELLUNGEN** aus.
 5.  Klicken Sie auf die (Bild-)Schaltfläche **Kopieren** neben dem Textfeld **Speicherkontoname**, und speichern Sie den Eintrag z.B. in einer Textdatei.
 6. Wiederholen Sie den vorherigen Schritt zum Kopieren oder Notieren von **key1**.
 7. Schließen Sie alle Blätter, indem Sie auf **X** klicken.
 
 ## Erfassen der Namen von SQL Server, Datenbank und Benutzer
-Sie benötigen in diesem Lernprogramm die Namen von Azure SQL-Server, -Datenbank und -Benutzer. Notieren Sie den Namen des **Servers**, der **Datenbank** und des **Benutzers** Ihrer Azure SQL-Datenbank, indem Sie die folgenden Anweisungen befolgen:
+Sie benötigen in diesem Tutorial die Namen von Azure SQL-Server, -Datenbank und -Benutzer. Notieren Sie den Namen des **Servers**, der **Datenbank** und des **Benutzers** Ihrer Azure SQL-Datenbank, indem Sie die folgenden Anweisungen befolgen:
 
-1. Klicken Sie links im **Azure-Portal** auf **Durchsuchen**, und wählen Sie **SQL-Datenbanken** aus.
-2. Wählen Sie auf dem Blatt **SQL-Datenbanken** die **Datenbank**, die Sie in diesem Lernprogramm verwenden möchten. Notieren Sie sich den **Datenbanknamen**.
+1. Klicken Sie links im **Azure-Portal** auf **DURCHSUCHEN**, und wählen Sie **SQL-Datenbanken** aus.
+2. Wählen Sie auf dem Blatt **SQL-Datenbanken** die **Datenbank**, die Sie in diesem Tutorial verwenden möchten. Notieren Sie sich den **Datenbanknamen**.
 3. Klicken Sie auf dem Blatt **SQL-DATENBANK** auf die Kachel **EIGENSCHAFTEN**.
 4. Notieren Sie sich die Werte für **SERVERNAME** und **SERVER-ADMIN-ANMELDUNG**.
 5. Schließen Sie alle Blätter, indem Sie auf **X** klicken.
@@ -69,7 +70,7 @@ Stellen Sie sicher, dass die Einstellung **Zugriff auf Azure-Dienste erlauben** 
 5. Schließen Sie alle Blätter, indem Sie auf **X** klicken.
 
 ## Vorbereiten von Blob Storage und SQL-Datenbank 
-Nun bereiten Sie Ihrer Azure-Blobspeicher und die Azure SQL-Datenbank durch Ausführen der folgenden Schritte auf das Lernprogramm vor:
+Nun bereiten Sie Ihrer Azure-Blobspeicher und die Azure SQL-Datenbank durch Ausführen der folgenden Schritte auf das Tutorial vor:
 
 1. Öffnen Sie den Editor, fügen Sie den folgenden Text ein, und speichern Sie die Datei als **emp.txt** im Ordner **C:\\ADFGetStarted** auf Ihrer Festplatte.
 
@@ -99,9 +100,9 @@ Nun bereiten Sie Ihrer Azure-Blobspeicher und die Azure SQL-Datenbank durch Ausf
 
 Gehen Sie wie folgt vor:
 
-- Klicken Sie oben auf den Link [Data Factory-Editor verwenden](data-factory-copy-activity-tutorial-using-azure-portal.md), um das Lernprogramm mithilfe des Data Factory-Editors auszuführen, der Teil des Azure-Portals ist.
-- Klicken Sie oben auf den Link [PowerShell verwenden](data-factory-copy-activity-tutorial-using-powershell.md), um das Lernprogramm mit Azure PowerShell auszuführen.
-- Klicken Sie oben auf den Link [Mit Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md), um das Lernprogramm mit Visual Studio 2013 auszuführen.
+- Klicken Sie oben auf den Link [Data Factory-Editor verwenden](data-factory-copy-activity-tutorial-using-azure-portal.md), um das Tutorial mithilfe des Data Factory-Editors auszuführen, der Bestandteil des Azure-Portals ist.
+- Klicken Sie oben auf den Link [PowerShell verwenden](data-factory-copy-activity-tutorial-using-powershell.md), um das Tutorial mit Azure PowerShell auszuführen.
+- Klicken Sie oben auf den Link [Mit Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md), um das Tutorial mit Visual Studio 2013 auszuführen.
 
 ## Kopieraktivität
 Ausführliche Informationen zur Kopieraktivität in Azure Data Factory finden Sie im Artikel [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md).
@@ -116,4 +117,4 @@ Ausführliche Informationen zur Kopieraktivität in Azure Data Factory finden Si
 [data-factory-create-storage]: http://azure.microsoft.com/documentation/articles/storage-create-storage-account/#create-a-storage-account
 [data-factory-create-sql-database]: ../sql-database/sql-database-get-started.md
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0817_2016-->

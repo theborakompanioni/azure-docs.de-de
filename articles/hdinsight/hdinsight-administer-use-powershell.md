@@ -14,14 +14,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/24/2016"
+	ms.date="08/10/2016"
 	ms.author="jgao"/>
 
 # Verwalten von Hadoop-Clustern in HDInsight mit Azure PowerShell
 
 [AZURE.INCLUDE [Auswahl](../../includes/hdinsight-portal-management-selector.md)]
 
-Azure PowerShell ist eine leistungsstarke Skriptumgebung, mit der Sie die Bereitstellung und Verwaltung Ihrer Workloads in Azure steuern und automatisieren können. In diesem Artikel erfahren Sie, wie Sie Hadoop-Cluster in Azure HDInsight mit einer lokalen Azure PowerShell-Konsole über Windows PowerShell verwalten. Eine Liste der HDInsight PowerShell-Cmdlets finden Sie unter [HDInsight-Cmdlet-Referenz][hdinsight-powershell-reference].
+Azure PowerShell ist eine leistungsstarke Skriptumgebung, mit der Sie die Bereitstellung und Verwaltung Ihrer Arbeitsauslastungen in Azure steuern und automatisieren können. In diesem Artikel erfahren Sie, wie Sie Hadoop-Cluster in Azure HDInsight mit einer lokalen Azure PowerShell-Konsole über Windows PowerShell verwalten. Eine Liste der HDInsight PowerShell-Cmdlets finden Sie unter [HDInsight-Cmdlet-Referenz][hdinsight-powershell-reference].
 
 
 
@@ -150,7 +150,7 @@ Zum Gewähren:
 
 >[AZURE.NOTE] Durch Gewähren/Widerrufen des Zugriffs werden der Benutzername und das Kennwort des Clusterbenutzers zurückgesetzt.
 
-Dies kann auch über das Portal durchgeführt werden. Weitere Informationen finden Sie unter [Verwalten von HDInsight mit dem Azure-Portal][hdinsight-admin-portal]
+Dies kann auch über das Portal durchgeführt werden. Siehe [Verwalten von HDInsight mit dem Azure-Portal][hdinsight-admin-portal]
 
 ##Aktualisieren von HTTP-Anmeldeinformationen
 
@@ -172,7 +172,7 @@ Das folgende PowerShell-Skript veranschaulicht, wie der Name und Schlüssel des 
 
 ##Suchen der Ressourcengruppe
 
-Im ARM-Modus gehört jeder HDInsight-Cluster einer Azure-Ressourcengruppe an. So finden Sie die Ressourcengruppe:
+Im Resource Manager-Modus gehört jeder HDInsight-Cluster einer Azure-Ressourcengruppe an. So finden Sie die Ressourcengruppe:
 
 	$clusterName = "<HDInsight Cluster Name>"
 	
@@ -239,4 +239,4 @@ Siehe [Hochladen von Daten in HDInsight][hdinsight-upload-data].
 
 [image-hdi-ps-provision]: ./media/hdinsight-administer-use-powershell/HDI.PS.Provision.png
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0817_2016-->

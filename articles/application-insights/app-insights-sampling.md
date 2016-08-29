@@ -40,7 +40,7 @@ Es gibt drei alternative Methoden zur Stichprobenerstellung:
 
 * **Adaptive Stichprobenerstellung**: Hierbei wird die Menge der Telemetriedaten, die vom SDK in Ihrer ASP.NET-App gesendet wird, automatisch angepasst. Standardmäßig ist dies SDK-Version 2.0.0-beta3.
 * **Stichprobenerstellung mit festem Prozentsatz**: Verringert die Menge an Telemetriedaten, die von Ihrem ASP.NET-Server und von den Benutzerbrowsern gesendet wird. Sie legen den Prozentsatz fest.
-* **Erfassungs-Stichprobenerstellung**: Verringert die Menge an Telemetriedaten, die vom Application Insights-Dienst beibehalten werden, nach einem von Ihnen festgelegten Prozentsatz. Obwohl dies nicht den Telemetriedatenverkehr verringert, werden Sie dabei unterstützt, Ihr monatliches Kontingent einzuhalten. 
+* **Erfassungs-Stichprobenerstellung**: Verringert die Menge an Telemetriedaten, die vom Application Insights-Dienst beibehalten werden, nach einem von Ihnen festgelegten Prozentsatz. Obwohl dies nicht den Telemetriedatenverkehr verringert, werden Sie dabei unterstützt, Ihr monatliches Kontingent einzuhalten.
 
 ## Erfassungs-Stichprobenerstellung
 
@@ -130,7 +130,7 @@ Entfernen Sie den `AdaptiveSamplingTelemetryProcessor`-Knoten aus der .config-Da
 
     // Optional: here you can adjust the settings from their defaults.
 
-    var builder = TelemetryConfiguration.Active.GetTelemetryProcessorChainBuilder();
+    var builder = TelemetryConfiguration.Active.TelemetryProcessorChainBuilder;
     
     builder.UseAdaptiveSampling(
          adaptiveSamplingSettings,
@@ -196,7 +196,7 @@ Der Stichprobenalgorithmus behält zugehörige Elemente bei. Für jedes HTTP-Anf
 
 Im Metrik-Explorer werden Kennzahlen wie beispielsweise die Anzahl von Anforderungen und Ausnahmen mit einem Faktor multipliziert, um die Stichprobenrate zu kompensieren und annähernd korrekte Werte zu erhalten.
 
-1. **Aktualisieren Sie die NuGet-Pakete Ihres Projekts** auf die neueste *Vorabversion* von Application Insights. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt, wählen Sie „NuGet-Pakete verwalten“ aus, aktivieren Sie **Vorabversion einschließen**, und suchen Sie nach „Microsoft.ApplicationInsights.Web“. 
+1. **Aktualisieren Sie die NuGet-Pakete Ihres Projekts** auf die neueste *Vorabversion* von Application Insights. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt, wählen Sie „NuGet-Pakete verwalten“ aus, aktivieren Sie **Vorabversion einschließen**, und suchen Sie nach „Microsoft.ApplicationInsights.Web“.
 
 2. **Deaktivieren Sie die adaptive Stichprobenerstellung**: Entfernen Sie in [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) den Knoten `AdaptiveSamplingTelemetryProcessor`, oder kommentieren Sie ihn aus.
 
@@ -266,9 +266,9 @@ Für die meisten kleinen und mittelgroßen Anwendungen ist keine Stichprobenerst
  
 Die Hauptvorteile von Stichproben sind:
 
-* Der Application Insights-Dienst senkt („drosselt“) Datenpunkte, wenn Ihre App in kurzen Abständen eine große Menge an Telemetriedaten sendet. 
-* Sie können das [Kontingent](app-insights-pricing.md) an Datenpunkten besser einhalten, das für Ihren Tarif vorgesehen ist. 
-* Der Netzwerk-Datenverkehr, der durch die Erfassung von Telemetriedaten verursacht wird, wird reduziert. 
+* Der Application Insights-Dienst senkt („drosselt“) Datenpunkte, wenn Ihre App in kurzen Abständen eine große Menge an Telemetriedaten sendet.
+* Sie können das [Kontingent](app-insights-pricing.md) an Datenpunkten besser einhalten, das für Ihren Tarif vorgesehen ist.
+* Der Netzwerk-Datenverkehr, der durch die Erfassung von Telemetriedaten verursacht wird, wird reduziert.
 
 ### Welche Art der Stichprobenerstellung sollte ich verwenden?
 
@@ -283,7 +283,7 @@ Die Hauptvorteile von Stichproben sind:
 
 * Sie verwenden das Application Insights-SDK für ASP.NET-Webdienste der Version 2.0.0 oder höher.
 * Sie möchten die Stichprobenerstellung zwischen Client und Server synchronisieren, sodass Sie beim Untersuchen von Ereignissen in der [Suche](app-insights-diagnostic-search.md) zwischen verwandten Ereignissen auf dem Client und dem Server navigieren können, z. B. zwischen Seitenaufrufen und HTTP-Anforderungen.
-* Sie sind sich sicher, welcher Stichproben-Prozentsatz für Ihre App angemessen ist. Er sollte hoch genug sein, um genaue Metriken zu erhalten, aber so tief liegen, dass Sie Ihr Tarifkontingent und die Drosselungslimits einhalten. 
+* Sie sind sich sicher, welcher Stichproben-Prozentsatz für Ihre App angemessen ist. Er sollte hoch genug sein, um genaue Metriken zu erhalten, aber so tief liegen, dass Sie Ihr Tarifkontingent und die Drosselungslimits einhalten.
 
 
 **Verwendung der adaptiven Stichprobenerstellung:**
@@ -324,7 +324,7 @@ Das clientseitige (JavaScript) SDK führt die Stichprobenerstellung mit festem P
 
 *Weshalb erfolgt die Stichprobenerstellung nicht einfach nach dem Prinzip „X Prozent jedes Telemetrietyps erfassen“?*
 
- *  Wenngleich dieser Ansatz an die Stichprobenerstellung eine hohe Genauigkeit bei metrischen Annäherungen bietet, bestünde in diesem Fall keine Möglichkeit, Diagnosedaten für einzelne Benutzer, Sitzungen und Anforderungen in Zusammenhang zu bringen – ein äußerst wichtiger Aspekt bei der Durchführung von Diagnosen. Aus diesem Grund sind „alle Telemetrieelemente für X Prozent der App-Benutzer“ oder „alle Telemetriedaten für X Prozent der App-Anforderungen“ besser geeignete Ansätze an die Stichprobenerstellung. Für Telemetrieelemente, die nicht mit den Anforderungen verknüpft sind (z. B. die asynchrone Hintergrundverarbeitung), wird auf den Ansatz „X Prozent aller Elemente für jeden Telemetrietyp erfassen“ zurückgegriffen. 
+ *  Wenngleich dieser Ansatz an die Stichprobenerstellung eine hohe Genauigkeit bei metrischen Annäherungen bietet, bestünde in diesem Fall keine Möglichkeit, Diagnosedaten für einzelne Benutzer, Sitzungen und Anforderungen in Zusammenhang zu bringen – ein äußerst wichtiger Aspekt bei der Durchführung von Diagnosen. Aus diesem Grund sind „alle Telemetrieelemente für X Prozent der App-Benutzer“ oder „alle Telemetriedaten für X Prozent der App-Anforderungen“ besser geeignete Ansätze an die Stichprobenerstellung. Für Telemetrieelemente, die nicht mit den Anforderungen verknüpft sind (z. B. die asynchrone Hintergrundverarbeitung), wird auf den Ansatz „X Prozent aller Elemente für jeden Telemetrietyp erfassen“ zurückgegriffen.
 
 *Kann der Prozentsatz für die Stichprobenerstellung im Verlauf der Zeit geändert werden?*
 
@@ -334,7 +334,7 @@ Das clientseitige (JavaScript) SDK führt die Stichprobenerstellung mit festem P
 
 *Wie kann ich bei einer Stichprobenerstellung mit festem Prozentsatz für meine App den idealen Prozentsatz ermitteln?*
 
-* Eine Möglichkeit ist, mit der adaptiven Stichprobenerstellung zu beginnen, herauszufinden, bei welchem Wert sie sich einstellt (siehe die oben gestellt Frage), und dann mit diesem Wert zur Stichprobenerstellung mit festem Prozentsatz zu wechseln. 
+* Eine Möglichkeit ist, mit der adaptiven Stichprobenerstellung zu beginnen, herauszufinden, bei welchem Wert sie sich einstellt (siehe die oben gestellt Frage), und dann mit diesem Wert zur Stichprobenerstellung mit festem Prozentsatz zu wechseln.
 
     Andernfalls müssen Sie raten. Analysieren Sie Ihre aktuelle Nutzung der Telemetriedaten in Application Insights, beobachten Sie die auftretende Drosselung, und schätzen Sie die Menge der erfassten Telemetriedaten. In Kombination mit Ihrem ausgewählten Tarif geben diese drei Faktoren Auskunft darüber, um wie viel Sie die Menge der erfassten Telemetriedaten gegebenenfalls reduzieren sollten. Allerdings kann eine Zunahme der Benutzeranzahl oder eine andere Verschiebung in der Menge der Telemetriedaten Ihre Schätzung ungültig werden lassen.
 
@@ -356,4 +356,4 @@ Das clientseitige (JavaScript) SDK führt die Stichprobenerstellung mit festem P
 
  * Initialisieren Sie eine separate Instanz von TelemetryClient mit einer neuen TelemetryConfiguration (nicht die standardmäßig aktivierte). Verwenden Sie diese zum Senden der seltenen Ereignisse.
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0817_2016-->

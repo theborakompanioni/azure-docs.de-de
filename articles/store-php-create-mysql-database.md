@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="PHP"
 	ms.topic="article"
-	ms.date="06/03/2016"
+	ms.date="08/11/2016"
 	ms.author="robmcm;cephalin"/>
 
 # Erstellen einer MySQL-Datenbank und Herstellen einer Verbindung in Azure
@@ -37,10 +37,10 @@ Gehen Sie wie folgt vor, um eine MySQL-Datenbank über das Azure-Portal zu erste
 
 	- **Datenbankname**: Geben Sie einen eindeutigen Namen ein.
 	- **Abonnement**: Wählen Sie das zu verwendende Abonnement aus.
-	- **Datenbanktyp**: Wählen Sie **Shared** (kostengünstige/kostenlose Tarife) oder **Dediziert** (dedizierte Ressourcen) aus. 
+	- **Datenbanktyp**: Wählen Sie **Shared** (kostengünstige/kostenlose Tarife) oder **Dediziert** (dedizierte Ressourcen) aus.
 	- **Ressourcengruppe**: Fügen Sie die MySQL-Datenbank einer bereits vorhandenen oder einer neuen [Ressourcengruppe](../resource-group-overview.md) hinzu. Ressourcen, die sich in der gleichen Gruppe befinden, lassen sich komfortabel gemeinsam verwalten.
 	- **Standort**: Wählen Sie einen Standort in Ihrer Nähe aus. Beim Hinzufügen zu einer bereits vorhandenen Ressourcengruppe ist als Standort der Standort dieser Ressourcengruppe vorgegeben.
-	- **Tarif**: Klicken Sie auf **Tarif**, wählen Sie eine Preisoption aus (**Mercury** ist kostenlos), und klicken Sie anschließend auf **Auswählen**. 
+	- **Tarif**: Klicken Sie auf **Tarif**, wählen Sie eine Preisoption aus (**Mercury** ist kostenlos), und klicken Sie anschließend auf **Auswählen**.
 	- **Rechtliche Bedingungen**: Klicken Sie auf **Rechtliche Bedingungen**, überprüfen Sie die Details der Bestellung, und klicken Sie auf **Kaufen**.
 	- **An Dashboard anheften**: Wählen Sie aus, ob Sie direkt über das Dashboard darauf zugreifen möchten. Dies ist besonders hilfreich, wenn Sie noch nicht mit der Portalnavigation vertraut sind.
 	
@@ -139,4 +139,4 @@ Wenn Sie bereits das Tutorial [Erstellen, Konfigurieren und Bereitstellen einer 
 
 Weitere Informationen finden Sie im [PHP Developer Center](/develop/php/).
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0817_2016-->

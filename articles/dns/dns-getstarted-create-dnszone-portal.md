@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="05/09/2016"
+   ms.date="08/16/2016"
    ms.author="cherylmc"/>
 
 # Erstellen einer DNS-Zone im Azure-Portal
@@ -78,7 +78,7 @@ Beim Erstellen einer DNS-Zone werden auch die folgenden Einträge erstellt:
 
 Sie können die Einträge über das Azure-Portal anzeigen.
 
-1. Klicken Sie auf dem Blatt **DNS-Zone** auf **Alle Einstellungen**, um das Blatt **Einstellungen** der DNS-Zone zu öffnen. 
+1. Klicken Sie auf dem Blatt **DNS-Zone** auf **Alle Einstellungen**, um das Blatt **Einstellungen** der DNS-Zone zu öffnen.
 
 	![Zone](./media/dns-getstarted-create-dnszone-portal/viewzonens500.png)
 
@@ -126,4 +126,4 @@ Sie können die DNS-Zone direkt aus dem Portal löschen. Vor dem Löschen einer 
 
 Nach dem Erstellen einer DNS-Zone müssen [Ressourceneintragssätze und Einträge](dns-getstarted-create-recordset-portal.md) zum Auflösen von Namen für Ihre Internetdomäne erstellt werden.
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0817_2016-->

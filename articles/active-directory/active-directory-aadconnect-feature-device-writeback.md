@@ -56,8 +56,8 @@ Enterprise-Administratoranmeldeinformationen werden benötigt, da Änderungen an
 
 Beschreibung:
 
-- Falls sie nicht vorhanden sind, werden die neuen Container und Objekte unter CN=Device Registration Configuration,CN=Services,CN=Configuration,[forest-dn] erstellt und konfiguriert.
-- Falls sie nicht vorhanden sind, werden die neuen Container und Objekte unter CN=RegisteredDevices,[domain-dn] erstellt und konfiguriert. Geräteobjekte werden in diesem Container erstellt.
+- Falls sie noch nicht vorhanden sind, werden die neuen Container und Objekte unter „CN=Device Registration Configuration,CN=Services,CN=Configuration,[forest-dn]“ erstellt und konfiguriert.
+- Falls sie noch nicht vorhanden sind, werden die neuen Container und Objekte unter „CN=RegisteredDevices,[domain-dn]“ erstellt und konfiguriert. Geräteobjekte werden in diesem Container erstellt.
 - Legt die erforderlichen Berechtigungen für das Azure AD Connector-Konto fest, um Geräte in Active Directory zu verwalten.
 - Muss nur in einer Gesamtstruktur ausgeführt werden, auch wenn Azure AD Connect in mehreren Gesamtstrukturen installiert ist.
 
@@ -130,4 +130,4 @@ Zuerst die wichtigen Dinge:
 ## Nächste Schritte
 Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md).
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0817_2016-->

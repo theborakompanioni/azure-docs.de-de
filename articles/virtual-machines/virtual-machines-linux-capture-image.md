@@ -20,19 +20,19 @@
 
 # Erfassen eines virtuellen Linux-Computers zur Verwendung als Ressourcen-Manager-Vorlage
 
-Verwenden Sie die Azure-Befehlszeilenschnittstelle (CLI), um einen virtuellen Azure-Computer zu erfassen und zu generalisieren, auf dem Linux ausgeführt wird, um ihn als Azure Resource Manager-Vorlage zum Erstellen anderer virtueller Computer zu verwenden. Diese Vorlage umfasst den Betriebssystemdatenträger und die an den virtuellen Computer angefügten Datenträger. Nicht enthalten sind die Ressourcen des virtuellen Netzwerks, die Sie zum Erstellen eines virtuellen Azure-Ressourcen-Manager-Computers benötigen, In den meisten Fällen ist eine separate Einrichtung erforderlich, bevor Sie einen weiteren virtuellen Computer erstellen, der die Vorlage verwendet.
+Verwenden Sie die Azure-Befehlszeilenschnittstelle, um einen virtuellen Azure-Computer unter Linux zu erfassen und zu generalisieren. Danach können Sie diesen Computer als Azure Resource Manager-Vorlage verwenden, um weitere virtuelle Computer zu erstellen. Diese Vorlage umfasst den Betriebssystemdatenträger und die an den virtuellen Computer angefügten Datenträger. Sie umfasst nicht die virtuellen Netzwerkressourcen, die Sie zum Erstellen eines virtuellen Azure Resource Manager-Computers benötigen. Diese müssen Sie üblicherweise separat einrichten, bevor Sie einen weiteren virtuellen Computer erstellen können, der diese Vorlage verwendet.
 
 >[AZURE.TIP]Wenn Sie daran interessiert sind, ein benutzerdefiniertes Linux-VM-Image zu erstellen und es in Azure hochzuladen, damit Sie virtuelle Computer aus dem Image erstellen können, lesen Sie [Hochladen und Erstellen eines virtuellen Computers aus einem benutzerdefinierten Datenträgerimage](virtual-machines-linux-upload-vhd.md).
 
 ## Voraussetzungen
 
-Diese Schritte setzen voraus, dass Sie bereits mithilfe des Azure-Ressourcen-Manager-Bereitstellungsmodells einen virtuellen Azure-Computer erstellt, das Betriebssystem konfiguriert, beliebige Datenträger angefügt und weitere Anpassungen wie die Installation von Anwendungen vorgenommen haben. Dies ist auf verschiedene Arten möglich, z. B. auch über die Azure-Befehlszeilenschnittstelle. Ist das noch nicht erfolgt, finden Sie hier Anweisungen zum Verwenden der Azure-CLI im Azure-Ressourcen-Manager-Modus:
+Diese Schritte setzen voraus, dass Sie bereits einen virtuellen Azure-Computer im Resource Manager-Bereitstellungsmodell erstellt, das Betriebssystem konfiguriert, Datenträger angefügt und weitere Anpassungen wie die Installation von Anwendungen vorgenommen haben. Sie können einen virtuellen Computer auf verschiedene Arten einrichten, z.B. über die Azure-Befehlszeilenschnittstelle. Ist das noch nicht erfolgt, finden Sie hier Anweisungen zum Verwenden der Azure-CLI im Azure-Ressourcen-Manager-Modus:
 
 - [Erstellen eines virtuellen Linux-Computers in Azure mithilfe der Befehlszeilenschnittstelle](virtual-machines-linux-quick-create-cli.md)
 
 - [Bereitstellen und Verwalten von virtuellen Computern mit Azure-Ressourcen-Manager-Vorlagen und der Azure-CLI](virtual-machines-linux-cli-deploy-templates.md)
 
-Beispielsweise können Sie eine Ressourcengruppe mit dem Namen *MyResourceGroup* in der Region USA Mitte erstellen. Verwenden Sie dann einen **azure vm quick-create**-Befehl ähnlich dem Folgenden zur Bereitstellung eines virtuellen Computers mit Ubuntu 14.04 LTS in der Ressourcengruppe.
+Beispielsweise können Sie eine Ressourcengruppe mit dem Namen *MyResourceGroup* in der Region USA Mitte erstellen. Verwenden Sie dann einen **azure vm quick-create**-Befehl ähnlich dem Folgenden zur Bereitstellung eines virtuellen Computers mit Ubuntu 14.04 LTS in der Ressourcengruppe.
 
  	azure vm quick-create -g MyResourceGroup -n <your-virtual-machine-name> "centralus" -y Linux -Q canonical:ubuntuserver:14.04.2-LTS:latest -u <your-user-name> -p <your-password>
 
@@ -43,7 +43,7 @@ Wenn der virtuelle Computer bereitgestellt und ausgeführt wird, sollten Sie ein
 
 1. Wenn Sie den virtuellen Computer erfassen möchten, stellen Sie mit Ihrem SSH-Client eine Verbindung dazu her.
 
-2. Geben Sie im SSH-Fenster den folgenden Befehl ein. Beachten Sie, dass das Ergebnis aus **waagent** je nach Version dieses Dienstprogramms geringfügig abweichen kann:
+2. Geben Sie im SSH-Fenster den folgenden Befehl ein. Das Ergebnis aus **waagent** kann je nach Version dieses Hilfsprogramms geringfügig abweichen:
 
 	`sudo waagent -deprovision+user`
 
@@ -64,7 +64,7 @@ Wenn der virtuelle Computer bereitgestellt und ausgeführt wird, sollten Sie ein
 
 	>[AZURE.NOTE] Bei den nächsten Schritten wird davon ausgegangen, dass Sie [die Azure-Befehlszeilenschnittstelle auf dem Clientcomputer installiert haben](../xplat-cli-install.md).
 
-5. Öffnen Sie auf dem Clientcomputer die Azure-CLI, und melden Sie sich bei Ihrem Azure-Abonnement an. Weitere Informationen hierzu finden Sie unter [Herstellen einer Verbindung mit einem Azure-Abonnement von der Azure-CLI](../xplat-cli-connect.md).
+5. Öffnen Sie auf dem Clientcomputer die Azure-Befehlszeilenschnittstelle, und melden Sie sich bei Ihrem Azure-Abonnement an. Weitere Informationen hierzu finden Sie unter [Herstellen einer Verbindung mit einem Azure-Abonnement von der Azure-Befehlszeilenschnittstelle](../xplat-cli-connect.md).
 
 6. Stellen Sie sicher, dass Sie sich im Ressourcen-Manager-Modus befinden:
 
@@ -76,7 +76,7 @@ Wenn der virtuelle Computer bereitgestellt und ausgeführt wird, sollten Sie ein
 
 8. Generalisieren Sie den virtuellen Computer mit dem folgenden Befehl:
 
-	`azure vm generalize –g <your-resource-group-name> -n <your-virtual-machine-name>`
+	`azure vm generalize -g <your-resource-group-name> -n <your-virtual-machine-name>`
 
 9. Erfassen Sie jetzt das Image und eine lokale Dateivorlage mit dem folgenden Befehl:
 
@@ -87,7 +87,7 @@ Wenn der virtuelle Computer bereitgestellt und ausgeführt wird, sollten Sie ein
 >[AZURE.TIP] Um den Speicherort eines Images zu suchen, öffnen Sie die JSON-Vorlagendatei. Suchen Sie im **storageProfile** die **uri** des **images** im **system**-Container. Der Uri des Betriebssystemdatenträger-Images lautet ähnlich wie `https://xxxxxxxxxxxxxx.blob.core.windows.net/system/Microsoft.Compute/Images/vhds/<your-vhd-name-prefix>-osDisk.xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.vhd`.
 
 ## Bereitstellen eines neuen virtuellen Computers über das erfasste Image
-Jetzt können Sie das Image mit einer Vorlage zum Erstellen eines neuen virtuellen Linux-Computers verwenden. Diese Schritte zeigen, wie Sie mit der Azure-CLI und der JSON-Dateivorlage, die Sie mit dem `azure vm capture`-Befehl erstellt haben, den virtuellen Computers in einem neuen virtuellen Netzwerk erstellen.
+Jetzt können Sie das Image mit einer Vorlage zum Erstellen eines virtuellen Linux-Computers verwenden. Diese Schritte zeigen, wie Sie mit der Azure-CLI und der JSON-Dateivorlage, die Sie mit dem `azure vm capture`-Befehl erstellt haben, den virtuellen Computers in einem neuen virtuellen Netzwerk erstellen.
 
 ### Erstellen von Netzwerkressourcen
 
@@ -107,7 +107,7 @@ Zum Bereitstellen eines virtuellen Computers aus dem Image mithilfe der während
 
 	azure network nic show <your-new-resource-group-name> <your-nic-name>
 
-Die **Id** in der Ausgabe ist eine ähnliche Zeichenfolge.
+Die **Id** in der Ausgabe ist eine Zeichenfolge ähnlich der folgenden.
 
 	/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/<your-new-resource-group-name>/providers/Microsoft.Network/networkInterfaces/<your-nic-name>
 
@@ -172,20 +172,20 @@ Verwenden Sie das erfasste Image und die Vorlage zum Bereitstellen zusätzlicher
 
 * Stellen Sie sicher, dass sich das Image des virtuellen Computers im gleichen Speicherkonto wie die VHD Ihres virtuellen Computers befindet.
 * Kopieren Sie die JSON-Dateivorlage, und geben Sie einen eindeutigen Wert für die **uri** jeder VHD Ihres virtuellen Computers ein.
-* Erstellen einer neuen NIC im selben oder in einem anderen virtuellen Netzwerk
+* Erstellen einer Netzwerkkarte im gleichen oder in einem anderen virtuellen Netzwerk
 * Erstellen Sie eine Bereitstellung in der Ressourcengruppe, in der Sie das virtuelle Netzwerk mithilfe der JSON-Dateivorlage einrichten.
 
-Wenn Sie möchten, dass das Netzwerk beim Erstellen eines virtuellen Computers automatisch eingerichtet wird, verwenden Sie die [101-vm-from-user-image-Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image) von GitHub. Diese Vorlage erstellt einen virtuellen Computer aus Ihrem benutzerdefinierten Image sowie das erforderliche virtuelle Netzwerk, die öffentliche IP-Adresse und die NIC-Ressourcen. Eine exemplarische Vorgehensweise zur Verwendung der Vorlage im Azure-Portal finden Sie unter [Gewusst wie: Erstellen eines virtuellen Computers von einem benutzerdefinierten Abbild mithilfe einer ARM-Vorlage](http://codeisahighway.com/how-to-create-a-virtual-machine-from-a-custom-image-using-an-arm-template/).
+Wenn Sie möchten, dass das Netzwerk beim Erstellen eines virtuellen Computers automatisch eingerichtet wird, verwenden Sie die [101-vm-from-user-image-Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image) von GitHub. Diese Vorlage erstellt einen virtuellen Computer aus Ihrem benutzerdefinierten Image sowie das erforderliche virtuelle Netzwerk, die öffentliche IP-Adresse und die NIC-Ressourcen. Eine exemplarische Vorgehensweise zur Verwendung der Vorlage im Azure-Portal finden Sie unter [How to create a virtual machine from a custom image using a Resource Manager template](http://codeisahighway.com/how-to-create-a-virtual-machine-from-a-custom-image-using-an-arm-template/) (Erstellen eines virtuellen Computers aus einem benutzerdefinierten Image mithilfe einer Resource Manager-Vorlage).
 
 ## Verwenden des „azure vm create“-Befehls
 
-Sie sollten stets eine Ressourcen-Manager-Vorlage verwenden, um einen virtuellen Computer aus dem Image zu erstellen. Allerdings können Sie den virtuellen Computer _imperativ_ erstellen, indem Sie den Befehl **azure vm create** mit dem Parameter **-Q** (**--image-urn**) verwenden. Übergeben Sie zudem den Parameter **-d** (**--os-disk-vhd**), um den Speicherort der VHD-Datei des Betriebssystems für den neuen virtuellen Computer anzugeben. Diese muss sich im VHDS-Container des Speicherkontos befinden, in dem die VHD-Imagedatei gespeichert ist. Der Befehl kopiert die virtuelle Festplatte für den neuen virtuellen Computer automatisch in den VHDS-Container.
+Sie sollten stets eine Ressourcen-Manager-Vorlage verwenden, um einen virtuellen Computer aus dem Image zu erstellen. Allerdings können Sie den virtuellen Computer _imperativ_ erstellen, indem Sie den Befehl **azure vm create** mit dem Parameter **-Q** (**--image-urn**) verwenden. Wenn Sie diese Methode verwenden, übergeben Sie zudem den Parameter **-d** (**--os-disk-vhd**), um den Speicherort der VHD-Datei des Betriebssystems für den neuen virtuellen Computer anzugeben. Diese muss sich im VHDS-Container des Speicherkontos befinden, in dem die VHD-Imagedatei gespeichert ist. Der Befehl kopiert die virtuelle Festplatte für den neuen virtuellen Computer automatisch in den VHDS-Container.
 
 Führen Sie vor dem Ausführen von **azure vm create** mit dem Image folgende Schritte aus:
 
-1.	Erstellen Sie eine neue Ressourcengruppe, oder wählen Sie eine vorhandene Ressourcengruppe für die Bereitstellung aus.
+1.	Erstellen Sie eine Ressourcengruppe, oder wählen Sie eine vorhandene Ressourcengruppe für die Bereitstellung aus.
 
-2.	Erstellen Sie eine öffentliche IP-Adressressource und eine NIC-Ressource für den neuen virtuellen Computer. Informationen zum Erstellen eines virtuellen Netzwerks, einer öffentlichen IP-Adresse und NIC mithilfe der CLI finden Sie weiter oben in diesem Artikel. (**azure vm create** kann auch eine neue NIC erstellen, jedoch müssen Sie zusätzliche Parameter für ein virtuelles Netzwerk und Subnetz eingeben.)
+2.	Erstellen Sie eine öffentliche IP-Adressressource und eine NIC-Ressource für den neuen virtuellen Computer. Informationen zum Erstellen eines virtuellen Netzwerks, einer öffentlichen IP-Adresse und einer Netzwerkkarte mithilfe der Befehlszeilenschnittstelle finden Sie weiter oben in diesem Artikel. (**azure vm create** kann auch eine neue Netzwerkkarte erstellen, jedoch müssen Sie zusätzliche Parameter für ein virtuelles Netzwerk und Subnetz übergeben.)
 
 
 Führen Sie einen Befehl ähnlich dem folgenden aus, und übergeben Sie dabei die URIs an die neue VHD-Betriebssystemdatei und das vorhandene Image.
@@ -198,4 +198,4 @@ Führen Sie für zusätzliche Befehlsoptionen `azure help vm create` aus.
 
 Informationen zur Verwaltung Ihrer virtuellen Computer mit der CLI finden Sie unter [Bereitstellen und Verwalten von virtuellen Computern mit Azure-Ressourcen-Manager-Vorlagen und der Azure-CLI](virtual-machines-linux-cli-deploy-templates.md).
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0817_2016-->

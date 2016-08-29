@@ -12,12 +12,15 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="article" 
-    ms.date="06/13/2016" 
+    ms.date="08/15/2016" 
     ms.author="elizapo" />
 
 
 
 # Wie werden USB-Geräte in Azure RemoteApp umgeleitet?
+
+> [AZURE.IMPORTANT]
+Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148).
 
 Die Geräteumleitung ermöglicht Benutzern das Verwenden der an ihren Computer oder ihr Tablet angeschlossenen USB-Geräte mit den Apps in Azure RemoteApp. Wenn Sie z. B. Skype über Azure RemoteApp freigegeben haben, müssen die Benutzer ihre Gerätekameras verwenden können.
 
@@ -26,7 +29,7 @@ Bevor Sie fortfahren, lesen Sie zunächst die Informationen zur USB-Umleitung un
 Obwohl in diesem Artikel von der Umleitung von Webcams die Rede ist, können Sie einen ähnlichen Ansatz befolgen, um USB-Drucker und andere -Multifunktionsgeräte umzuleiten, die nicht mit dem Befehl **nusbdevicestoredirect:s:*** umgeleitet werden.
 
 ## Umleitungsoptionen für USB-Geräte
-Azure RemoteApp verwendet sehr ähnliche Mechanismen zum Umleiten von USB-Geräten wie diejenigen, die für Remotedesktopdienste verfügbar sind. Die zugrunde liegende Technologie ermöglicht das Auswählen der ordnungsgemäßen Umleitungsmethode für ein bestimmtes Gerät, um mit dem Befehl **usbdevicestoredirect:s:** optimale Ergebnisse bei sowohl der allgemeinen als auch der RemoteFX-USB-Geräteumleitung zu erzielen. Dieser Befehl hat vier Elemente:
+Azure RemoteApp verwendet sehr ähnliche Mechanismen zum Umleiten von USB-Geräten wie diejenigen, die für Remotedesktopdienste verfügbar sind. Die zugrunde liegende Technologie ermöglicht das Auswählen der ordnungsgemäßen Umleitungsmethode für ein bestimmtes Gerät, um mit dem Befehl **usbdevicestoredirect:s:** optimale Ergebnisse sowohl bei der allgemeinen als auch der RemoteFX-USB-Geräteumleitung zu erzielen. Dieser Befehl hat vier Elemente:
 
 | Verarbeitungsreihenfolge | Parameter | Beschreibung |
 |------------------|---------------------|----------------------------------------------------------------------------------------------------------------------------|
@@ -58,7 +61,7 @@ Wenn Sie die Geräteumleitung anhand der Klassen-GUID festlegen, werden alle Ger
 
 ## Umleiten eines USB-Geräts mithilfe der Geräteinstanz-ID
 
-Wenn Sie eine präzisere Kontrolle und die Umleitung gerätebezogen steuern möchten, können Sie den Umleitungsparameter **USB\\Instanz-ID** verwenden.
+Wenn Sie eine präzisere Kontrolle wünschen und die Umleitung gerätebezogen steuern möchten, können Sie den Umleitungsparameter **USB\\InstanceID** verwenden.
 
 Der schwierigste Teil dieser Methode ist das Ermitteln der USB-Geräteinstanz-ID. Sie benötigen Zugriff auf den Computer und das jeweilige USB-Gerät. Führen Sie dann die folgenden Schritte durch:
 
@@ -77,4 +80,4 @@ Verwenden Sie anschließend die Instanz-ID im folgenden Cmdlet:
 ### Helfen Sie uns, Ihnen zu helfen 
 Wussten Sie schon, dass Sie diesen Artikel im Bereich unten nicht nur bewerten und kommentieren, sondern ihn auch selbst ändern können? Fehlt etwas? Ist etwas nicht ganz richtig? Habe ich etwas geschrieben, das eher verwirrend ist? Scrollen Sie nach oben, und klicken Sie auf **Edit on GitHub**, um die gewünschten Änderungen vorzunehmen. Ihr Vorschlag wird uns vorgelegt, und wenn wir ihn bestätigt haben, werden Ihre Änderungen und Verbesserungen hier angezeigt.
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0817_2016-->

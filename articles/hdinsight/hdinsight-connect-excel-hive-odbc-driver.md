@@ -43,7 +43,7 @@ Dieser Treiber kann unter 32- oder 64-Bit-Versionen von Windows 7, Windows 8, Wi
 
 ##Erstellen einer Hive ODBC-Datenquelle
 
-Die folgenden Schritte zeigen Ihnen, wie Sie eine Hive ODBC-Datenquelle erstellen können.
+Die folgenden Schritte zeigen Ihnen, wie Sie eine Hive-ODBC-Datenquelle erstellen können.
 
 1. Drücken Sie unter Windows 8 oder Windows 10 die Windows-Taste, um den Startbildschirm zu öffnen, und geben Sie dann **Datenquellen** ein.
 2. Klicken Sie auf **ODBC-Datenquellen einrichten (32-Bit)** oder **ODBC-Datenquellen einrichten (64-Bit)**, je nach verwendeter Office-Version. Wenn Sie Windows 7 verwenden, wählen Sie aus **Verwaltung** **ODBC-Datenquellen (32-Bit)** oder **ODBC-Datenquellen (64-Bit)** aus. Hierdurch wird das Dialogfeld **ODBC-Datenquellen-Administrator** aufgerufen.
@@ -53,12 +53,12 @@ Die folgenden Schritte zeigen Ihnen, wie Sie eine Hive ODBC-Datenquelle erstelle
 3. Klicken Sie aus Benutzer-DNS auf **Hinzufügen**, um den Assistenten **Neue Datenquelle erstellen** zu öffnen.
 4. Wählen Sie **Microsoft Hive ODBC Driver**, und klicken Sie dann auf **Fertig stellen**. Hierdurch wird das Dialogfeld **Microsoft Hive ODBC Driver DNS Setup** geöffnet.
 
-5. Geben Sie die folgenden Werte ein, oder wählen Sie sie aus:
+5. Geben Sie folgende Werte ein bzw. wählen diese aus:
 
     Eigenschaft|Beschreibung
     ---|---
     Name der Datenquelle|Geben Sie einen Namen für die Datenquelle an.
-    Host|Geben Sie „<HDInsight-Clustername>.azurehdinsight.net“ ein. Beispiel: myHDICluster.azurehdinsight.net
+    Host|Geben Sie „&lt;HDInsight-Clustername>.azurehdinsight.net“ ein. Beispiel: myHDICluster.azurehdinsight.net
     Port|Verwenden Sie <strong>443</strong>. (Dieser Port wurde von 563 in 443 geändert.)
     Datenbank|Verwenden Sie <strong>Standard</strong>.
     Hive-Servertyp|Wählen Sie <strong>Hive Server 2</strong> aus.
@@ -131,4 +131,4 @@ In diesem Artikel haben Sie erfahren, wie Sie den Microsoft Hive ODBC-Treiber ve
 [img-hdi-simbahiveodbc-excel-connectionproperties]: ./media/hdinsight-connect-excel-hive-ODBC-driver/HDI.SimbaHiveODBC.Excel.ConnectionProperties1.png
 [img-hdi-simbahiveodbc.excel.dataconnection]: ./media/hdinsight-connect-excel-hive-ODBC-driver/HDI.SimbaHiveOdbc.Excel.DataConnection1.png
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0817_2016-->

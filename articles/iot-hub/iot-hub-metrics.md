@@ -13,12 +13,12 @@
  ms.topic="article"
  ms.tgt_pltfrm="na"
  ms.workload="na"
- ms.date="07/06/2016"
+ ms.date="08/11/2016"
  ms.author="nberdy"/>
 
 # Einführung in Diagnosemetriken
 
-Diagnosemetriken liefern Ihnen bessere Daten zum Zustand der Azure-Ressourcen in Ihrem Abonnement . Anhand von Metriken können Benutzer die allgemeine Integrität des Diensts und der mit ihm verbundenen Geräte bewerten. Benutzerorientierte Statistiken sind wichtig, da Benutzer mit ihrer Hilfe erkennen können, was mit ihrem IoT Hub passiert, und Probleme beheben können, ohne den Azure-Support zu kontaktieren.
+Diagnosemetriken liefern Ihnen bessere Daten über den Zustand der Azure-Ressourcen in Ihrem Abonnement. Anhand von Metriken können Sie die allgemeine Integrität des Diensts und der mit ihm verbundenen Geräte bewerten. Benutzerorientierte Statistiken spielen eine wichtige Rolle. Sie bieten die Basis, um die Vorgänge in Ihrem IoT Hub zu erkennen und Probleme zu beheben, ohne den Azure-Support zu kontaktieren.
 
 Diagnosemetriken werden im Azure-Portal aktiviert.
 
@@ -26,15 +26,15 @@ Diagnosemetriken werden im Azure-Portal aktiviert.
 
 1. Erstellen Sie einen IoT Hub. Anweisungen zum Erstellen eines IoT Hubs finden Sie in der Anleitung mit den [ersten Schritten][lnk-get-started].
 
-2. Öffnen Sie das Blatt Ihres IoT Hubs. Klicken Sie dort auf **Alle Einstellungen** und dann auf **Diagnose**.
+2. Öffnen Sie das Blatt Ihres IoT Hubs. Klicken Sie dort auf **Diagnose**.
 
     ![][1]
 
-3. Konfigurieren Sie die Diagnose durch Festlegen des Status auf **Ein** und Auswählen eines Speicherkontos zum Speichern der Diagnosedaten. Aktivieren Sie das Kontrollkästchen „Metriken“, und klicken Sie dann auf **Speichern**. Beachten Sie, dass das Speicherkonto vorab erstellt werden muss und die Speicherung separat in Rechnung gestellt wird.
+3. Konfigurieren Sie die Diagnose durch Festlegen des Status auf **Ein** und Auswählen eines Speicherkontos zum Speichern der Diagnosedaten. Aktivieren Sie **Metriken**, und klicken Sie dann auf **Speichern**. Beachten Sie, dass das Speicherkonto vorab erstellt werden muss und die Speicherung separat in Rechnung gestellt wird. Als weitere Möglichkeit können Sie die Diagnosedaten auch an einen Event Hubs-Endpunkt senden.
 
     ![][2]
 
-4. Kehren Sie, nachdem Sie die Diagnose eingerichtet haben, zum Hauptblatt des IoT Hubs zurück. Metrikdaten werden im Abschnitt **Überwachung** des Blatts erfasst. Durch Klicken auf das Diagramm wird der Metrikbereich geöffnet, in dem Sie eine Übersicht der Metrikdaten für Ihren IoT Hub anzeigen und die Auswahl der im Diagramm gezeigten Metriken bearbeiten können. Sie können auch Warnungen auf Grundlage von Metrikwerten konfigurieren.
+4. Nachdem Sie die Diagnose eingerichtet haben, kehren Sie zum Blatt **Übersicht** des IoT Hubs zurück. Metrikdaten werden im Abschnitt **Überwachung** des Blatts dargestellt. Durch Klicken auf das Diagramm wird der Metrikbereich geöffnet, in dem Sie eine Übersicht der Metrikdaten für Ihren IoT Hub anzeigen und die Auswahl der im Diagramm gezeigten Metriken bearbeiten können. Sie können auch Warnungen auf Grundlage von Metrikwerten konfigurieren.
 
     ![][3]
 
@@ -84,4 +84,4 @@ Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 [lnk-dmui]: iot-hub-device-management-ui-sample.md
 [lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0817_2016-->

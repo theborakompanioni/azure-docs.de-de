@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="mobile"
 	ms.devlang="node"
 	ms.topic="article"
-	ms.date="05/05/2016"
+	ms.date="08/11/2016"
 	ms.author="adrianha"/>
 
 # Aktualisieren eines vorhandenen Node.js-Azure Mobile Service auf App Service
 
 Mobile App Service-Apps sind eine neue Methode zum Erstellen mobiler Anwendungen mit Microsoft Azure. Weitere Informationen finden Sie unter [Was sind Mobile Apps?].
 
-In diesem Thema wird beschrieben, wie Sie eine vorhandene Node.js-Back-End-Anwendung von Azure Mobile Services auf das neue Mobile App Service-Apps upgraden. Während Sie dieses Upgrade ausführen, können Sie Ihre vorhandene Mobile Services-Anwendung weiter betreiben. Wenn Sie eine Node.js-Back-End-Anwendung aktualisieren müssen, helfen Ihnen die Informationen unter [Aktualisieren des vorhandenen .NET-Azure Mobile Service auf App Service](./app-service-mobile-net-upgrading-from-mobile-services.md) weiter.
+In diesem Thema wird beschrieben, wie Sie eine vorhandene Node.js-Back-End-Anwendung von Azure Mobile Services auf das neue Mobile App Service-Apps-Feature upgraden. Während Sie dieses Upgrade ausführen, können Sie Ihre vorhandene Mobile Services-Anwendung weiter betreiben. Wenn Sie eine Node.js-Back-End-Anwendung aktualisieren müssen, helfen Ihnen die Informationen unter [Aktualisieren des vorhandenen .NET-Azure Mobile Service auf App Service](./app-service-mobile-net-upgrading-from-mobile-services.md) weiter.
 
 Wenn ein Mobil-Back-End auf Azure App Service aktualisiert wird, hat dieses Zugriff auf alle App Service-Features, und die Abrechnung erfolgt gemäß [App Service-Preisen], nicht gemäß den Mobile Services-Preisen.
 
@@ -104,7 +104,7 @@ Während der Bereitstellung müssen Sie die folgenden Schritte ausführen:
 
 3. Wählen Sie für die **Ressourcengruppe** eine vorhandene Ressourcengruppe aus, oder erstellen Sie eine neue (verwenden Sie dabei den gleichen Namen wie für die App).
  
-	Sie können einen anderen vorhandenen App Service-Plan auswählen oder einen neuen Plan erstellen. Weitere Informationen zu App Service-Plänen sowie zum Erstellen eines neuen Plans in einem anderen Tarif und am gewünschten Standort finden Sie unter [Azure App Service-Pläne – Detaillierte Übersicht](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md).
+	Sie können einen anderen vorhandenen App Service-Plan auswählen oder einen neuen Plan erstellen. Weitere Informationen zu App Services-Plänen sowie zum Erstellen eines neuen Plans in einem anderen Tarif und am gewünschten Standort finden Sie unter [Azure App Service-Pläne – Detaillierte Übersicht](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md).
 
 4. Für den **App Service-Plan** ist der Standardplan (im [Standard-Tarif](https://azure.microsoft.com/pricing/details/app-service/)) ausgewählt. Sie können auch einen anderen Plan auswählen oder [einen neuen Plan erstellen](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md#create-an-app-service-plan). Die Einstellungen für den App Service-Plan bestimmen [den Standort, die Funktionen, die Kosten und die Computeressourcen](https://azure.microsoft.com/pricing/details/app-service/) Ihrer App.
 
@@ -191,4 +191,4 @@ Wenn die neue Clientversion bereit ist, testen Sie sie mit dem aktualisierten Se
 [ExpressJS Middleware]: http://expressjs.com/guide/using-middleware.html
 [Winston]: https://github.com/winstonjs/winston
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0817_2016-->

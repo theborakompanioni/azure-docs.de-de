@@ -13,12 +13,15 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="06/27/2016"
+    ms.date="08/15/2016"
     ms.author="elizapo" />
 
 
 
 # Problembehandlung bei der Erstellung von RemoteApp-Cloud-Sammlungen
+
+> [AZURE.IMPORTANT]
+Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148).
 
 Wenn Sie beim Erstellen einer Cloudsammlung Probleme haben, überprüfen Sie die folgenden Informationen.
 
@@ -36,10 +39,10 @@ Cloud-Sammlungen können oftmals nicht erstellt werden, da Sie benutzerdefiniert
 - Am häufigsten tritt das Problem auf, das ein Image nicht richtig mit Sysprep vorbereitet wurde.
 - Überprüfen Sie, ob das Image in Hyper-V gestartet werden kann, oder versuchen Sie, eine IAAS-VM mit diesem Image direkt in Ihrem Azure-Abonnement zu erstellen. Wenn die VM nicht gestartet werden kann, deutet dies meist darauf hin, dass das benutzerdefinierte Image nicht richtig vorbereitet wurde. Überprüfen Sie, ob das benutzerdefinierte Image gemäß den Anweisungen in "Erstellen eines benutzerdefinierten Vorlagenimages für RemoteApp" erstellt wurde.
 
-Wenn Sie ein der Microsoft-Images verwenden, die in Ihrem Abonnement enthalten sind, wiederholen Sie das Erstellen der Sammlung. Wenn das Problem weiterhin besteht, wenden Sie sich an den Microsoft-Support.
+Wenn Sie eines der Microsoft-Images verwenden, die in Ihrem Abonnement enthalten sind, wiederholen Sie das Erstellen der Sammlung. Wenn das Problem weiterhin besteht, wenden Sie sich an den Microsoft-Support.
 
 	PlatformImageTrialModeOnly
 
 Wenn dieser Fehler angezeigt wird, deutet dies i. d. R. darauf hin, dass ein Upgrade Ihres Konto auf ein Bezahlkonto durchgeführt wurde, Sie aber versuchen, ein von Microsoft bereitgestelltes Image zu verwenden, das nur während der Testphase des Diensts gültig ist. Versuchen Sie in diesem Fall, Ihre Cloud-Sammlung erneut zu erstellen, und geben Sie dabei das richtige Image an.
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0817_2016-->

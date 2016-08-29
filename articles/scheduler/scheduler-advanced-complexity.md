@@ -35,7 +35,7 @@ Dieser Artikel enthält Beispielaufträge, die Sie mit Azure Scheduler erstellen
 
 ## Unterstützte Szenarien
 
-Die vielen Beispielen in diesem Thema veranschaulichen die hohe Bandbreite der unterstützten Szenarien. Grob gesagt zeigen diese Beispiele, wie Sie Zeitpläne für verschiedenste Verhaltensmuster erstellen. Hierzu zählen unter anderem folgende:
+Die vielen Beispielen in diesem Thema veranschaulichen die hohe Bandbreite der Szenarien, die Azure Scheduler unterstützt. Grob gesagt zeigen diese Beispiele, wie Sie Zeitpläne für verschiedenste Verhaltensmuster erstellen. Hierzu zählen unter anderem folgende:
 
 -	Einmalige Ausführung zu einem bestimmten Zeitpunkt (Datum und Uhrzeit)
 -	Ausführung mit einer bestimmten Anzahl von Wiederholungen
@@ -93,12 +93,12 @@ In diesem Abschnitt gehen wir ausführlicher auf die einzelnen Elemente ein.
 |**JSON-Name**|**Werttyp**|**Erforderlich?**|**Standardwert**|**Gültige Werte**|**Beispiel**|
 |:---|:---|:---|:---|:---|:---|
 |**_startTime_**|String|Nein|Keine|Datum/Uhrzeit (nach ISO 8601)|<code>"startTime" : "2013-01-09T09:30:00-08:00"</code>|
-|**_recurrence_**|Object|Nein|Keine|Wiederholungsobjekt|<code>"recurrence" : { "frequency" : "monthly", "interval" : 1 }</code>|
+|**_recurrence_**|Objekt|Nein|Keine|Wiederholungsobjekt|<code>"recurrence" : { "frequency" : "monthly", "interval" : 1 }</code>|
 |**_frequency_**|String|Ja|Keine|"minute", "hour", "day", "week", "month"|<code>"frequency" : "hour"</code> |
 |**_interval_**|Number|Nein|1|1 bis 1000.|<code>"interval":10</code>|
 |**_endTime_**|String|Nein|Keine|Datums-/Uhrzeitwert für einen Zeitpunkt in der Zukunft|<code>"endTime" : "2013-02-09T09:30:00-08:00"</code> |
 |**_count_**|Number|Nein|Keine|>= 1|<code>"count": 5</code>|
-|**_schedule_**|Object|Nein|Keine|Zeitplanobjekt|<code>"schedule" : { "minute" : [30], "hour" : [8,17] }</code>|
+|**_schedule_**|Objekt|Nein|Keine|Zeitplanobjekt|<code>"schedule" : { "minute" : [30], "hour" : [8,17] }</code>|
 
 ## Ausführliche Betrachtung: _startTime_
 
@@ -145,38 +145,38 @@ Bei den folgenden Zeitplänen wird jeweils davon ausgegangen, dass _interval_ au
 |**Beispiel**|**Beschreibung**|
 |:---|:---|
 |<code>{"hours":[5]}</code>|Tägliche Ausführung um 5 Uhr. Azure Scheduler gleicht jeden Wert für "hours" nacheinander mit den Werten für "minutes" ab, um eine Liste mit allen Zeiten zu erstellen, zu denen der Auftrag ausgeführt werden soll.|
-|<code>{"minutes":[15],"hours":[5]}</code>|Tägliche Ausführung um 5:15 Uhr|
-|<code>{"minutes":[15],"hours":[5,17]}</code>|Tägliche Ausführung um 5:15 Uhr und um 17:15 Uhr|
-|<code>{"minutes":[15,45],"hours":[5,17]}</code>|Tägliche Ausführung um 5:15 Uhr, 5:45 Uhr, 17:15 Uhr und um 17:45 Uhr|
+|<code>{"minutes":[15], "hours":[5]}</code>|Tägliche Ausführung um 5:15 Uhr|
+|<code>{"minutes":[15], "hours":[5,17]}</code>|Tägliche Ausführung um 5:15 Uhr und um 17:15 Uhr|
+|<code>{"minutes":[15,45], "hours":[5,17]}</code>|Tägliche Ausführung um 5:15 Uhr, 5:45 Uhr, 17:15 Uhr und um 17:45 Uhr|
 |<code>{"minutes":[0,15,30,45]}</code>|Ausführung alle 15 Minuten|
-|<code>{hours":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23]}</code>|Stündliche Ausführung. Dieser Auftrag wird einmal pro Stunde ausgeführt. Der Minutenwert wird von _startTime_ abgeleitet. Ist hier kein Minutenwert angegeben, wird der Minutenwert des Erstellungszeitpunkts verwendet. Lautet die Start- oder Erstellungszeit also beispielsweise 12:25 Uhr, wird der Auftrag um 00:25 Uhr, 01:25 Uhr, 02:25 Uhr, …, 23:25 Uhr ausgeführt. Der Zeitplan entspricht einem Auftrag mit _frequency_ = "hour", _interval_ = 1 und ohne Angabe von _schedule_. Der Unterschied besteht darin, dass dieser Zeitplan mit unterschiedlichen Angaben für _frequency_ und _interval_ zur Erstellung anderer Aufträge verwendet werden kann. Wird _frequency_ beispielsweise auf "month" festgelegt, wird der Auftrag nur einmal im Monat ausgeführt (und nicht täglich wie bei _frequency_ = "day").|
+|<code>{hours":[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]}</code>|Stündliche Ausführung. Dieser Auftrag wird einmal pro Stunde ausgeführt. Der Minutenwert wird von _startTime_ abgeleitet. Ist hier kein Minutenwert angegeben, wird der Minutenwert des Erstellungszeitpunkts verwendet. Lautet die Start- oder Erstellungszeit also beispielsweise 12:25 Uhr, wird der Auftrag um 00:25 Uhr, 01:25 Uhr, 02:25 Uhr, …, 23:25 Uhr ausgeführt. Der Zeitplan entspricht einem Auftrag mit _frequency_ = "hour", _interval_ = 1 und ohne Angabe von _schedule_. Der Unterschied besteht darin, dass dieser Zeitplan mit unterschiedlichen Angaben für _frequency_ und _interval_ zur Erstellung anderer Aufträge verwendet werden kann. Wird _frequency_ beispielsweise auf "month" festgelegt, wird der Auftrag nur einmal im Monat ausgeführt (und nicht täglich wie bei _frequency_ = "day").|
 |<code>{minutes:[0]}</code>|Ausführung jeweils zur vollen Stunde. Dieser Auftrag wird ebenfalls stündlich ausgeführt, aber immer zur vollen Stunde (also beispielsweise um 12: 00 Uhr, 13:00 Uhr, 14:00 Uhr usw.). Dies entspricht einem Auftrag mit stündlicher Häufigkeit, einer Startzeit mit null Minuten und ohne Zeitplan. Bei wöchentlicher oder monatlicher Häufigkeit würde der Zeitplan dagegen nur einmal in der Woche bzw. nur einmal im Monat ausgeführt.|
 |<code>{"minutes":[15]}</code>|Stündliche Ausführung jeweils 15 Minuten nach der vollen Stunde. Der Auftrag wird ab 00:15 Uhr stündlich (also um 1:15 Uhr, 2:15 Uhr usw.) bis 23:15 Uhr ausgeführt.|
-|<code>{"hours":[17],"weekDays":["saturday"]}</code>|Wöchentliche Ausführung, immer samstags um 17:00 Uhr|
-|<code>{hours":[17],"weekDays":["monday","wednesday","friday"]}</code>|Wöchentliche Ausführung am Montag, Mittwoch und Freitag, jeweils um 17:00 Uhr|
-|<code>{"minutes":[15,45],"hours":[17],"weekDays":["monday","wednesday","friday"]}</code>|Wöchentliche Ausführung am Montag, Mittwoch und Freitag, jeweils um 17:15 Uhr und um 17:45 Uhr|
-|<code>{"hours":[5,17],"weekDays":["monday","wednesday","friday"]}</code>|Wöchentliche Ausführung am Montag, Mittwoch und Freitag, jeweils um 5:00 Uhr und um 17:00 Uhr|
-|<code>{"minutes":[15,45],"hours":[5,17],"weekDays":["monday","wednesday","friday"]}</code>|Wöchentliche Ausführung am Montag, Mittwoch und Freitag, jeweils um 5:15 Uhr, 5:45 Uhr, 17:15 Uhr und um 17:45 Uhr|
-|<code>{"minutes":[0,15,30,45], "weekDays":["monday","tuesday","wednesday","thursday","friday"]}</code>|Ausführung an Wochentagen im 15-Minuten-Takt|
-|<code>{"minutes":[0,15,30,45], "hours": [9, 10, 11, 12, 13, 14, 15, 16] "weekDays":["monday","tuesday","wednesday","thursday","friday"]}</code>|Ausführung an Wochentagen zwischen 9:00 Uhr und 16:45 Uhr im 15-Minuten-Takt|
+|<code>{"hours":[17], "weekDays":["saturday"]}</code>|Wöchentliche Ausführung, immer samstags um 17:00 Uhr|
+|<code>{hours":[17], "weekDays":["monday", "wednesday", "friday"]}</code>|Wöchentliche Ausführung am Montag, Mittwoch und Freitag, jeweils um 17:00 Uhr|
+|<code>{"minutes":[15,45], "hours":[17], "weekDays":["monday", "wednesday", "friday"]}</code>|Wöchentliche Ausführung am Montag, Mittwoch und Freitag, jeweils um 17:15 Uhr und um 17:45 Uhr|
+|<code>{"hours":[5,17], "weekDays":["monday", "wednesday", "friday"]}</code>|Wöchentliche Ausführung am Montag, Mittwoch und Freitag, jeweils um 5:00 Uhr und um 17:00 Uhr|
+|<code>{"minutes":[15,45], "hours":[5,17], "weekDays":["monday", "wednesday", "friday"]}</code>|Wöchentliche Ausführung am Montag, Mittwoch und Freitag, jeweils um 5:15 Uhr, 5:45 Uhr, 17:15 Uhr und um 17:45 Uhr|
+|<code>{"minutes":[0,15,30,45], "weekDays":["monday", "tuesday", "wednesday", "thursday", "friday"]}</code>|Ausführung an Wochentagen im 15-Minuten-Takt|
+|<code>{"minutes":[0,15,30,45], "hours": [9, 10, 11, 12, 13, 14, 15, 16] "weekDays":["monday", "tuesday", "wednesday", "thursday", "friday"]}</code>|Ausführung an Wochentagen zwischen 9:00 Uhr und 16:45 Uhr im 15-Minuten-Takt|
 |<code>{"weekDays":["sunday"]}</code>|Ausführung an Sonntagen zur Startzeit|
 |<code>{"weekDays":["tuesday", "thursday"]}</code>|Ausführung jeweils dienstags und donnerstags zur Startzeit|
-|<code>{"minutes":[0],"hours":[6],"monthDays":[28]}</code>|Ausführung um 6:00 Uhr am 28. Tag des Monats (bei monatlicher Häufigkeit)|
-|<code>{"minutes":[0],"hours":[6],"monthDays":[-1]}</code>|Ausführung um 6:00 Uhr am letzten Tag des Monats. Wenn Sie einen Auftrag am letzten Tag eines Monats ausführen möchten, verwenden Sie „-1“ anstatt Tag 28, 29, 30 oder 31.|
-|<code>{"minutes":[0],"hours":[6],"monthDays":[1,-1]}</code>|Ausführung jeweils am ersten und letzten Tag jedes Monats um 6:00 Uhr|
+|<code>{"minutes":[0], "hours":[6], "monthDays":[28]}</code>|Ausführung um 6:00 Uhr am 28. Tag des Monats (bei monatlicher Häufigkeit)|
+|<code>{"minutes":[0], "hours":[6], "monthDays":[-1]}</code>|Ausführung um 6:00 Uhr am letzten Tag des Monats. Wenn Sie einen Auftrag am letzten Tag eines Monats ausführen möchten, verwenden Sie „-1“ anstatt Tag 28, 29, 30 oder 31.|
+|<code>{"minutes":[0], "hours":[6], "monthDays":[1,-1]}</code>|Ausführung jeweils am ersten und letzten Tag jedes Monats um 6:00 Uhr|
 |<code>{monthDays":[1,-1]}</code>|Ausführung jeweils am ersten und letzten Tag jedes Monats zur Startzeit|
 |<code>{monthDays":[1,14]}</code>|Ausführung jeweils am ersten und 14. Tag jedes Monats zur Startzeit|
 |<code>{monthDays":[2]}</code>|Ausführung jeweils am zweiten Tag des Monats zur Startzeit|
-|<code>{"minutes":[0], "hours":[5], "monthlyOccurrences":[{"day":"friday","occurrence":1}]}</code>|Ausführung am ersten Freitag jedes Monats um 5:00 Uhr|
-|<code>{"monthlyOccurrences":[{"day":"friday","occurrence":1}]}</code>|Ausführung am ersten Freitag jedes Monats zur Startzeit|
-|<code>{"monthlyOccurrences":[{"day":"friday","occurrence":-3}]}</code>|Monatliche Ausführung am dritten Freitag vom Ende des Monats zur Startzeit|
-|<code>{"minutes":[15],"hours":[5],"monthlyOccurrences":[{"day":"friday","occurrence":1},{"day":"friday","occurrence":-1}]}</code>|Ausführung am ersten und letzten Freitag jedes Monats um 5:15 Uhr|
-|<code>{"monthlyOccurrences":[{"day":"friday","occurrence":1},{"day":"friday","occurrence":-1}]}</code>|Ausführung am ersten und letzten Freitag jedes Monats zur Startzeit|
-|<code>{"monthlyOccurrences":[{"day":"friday","occurrence":5}]}</code>|Ausführung am fünften Freitag jedes Monats zur Startzeit. Ist in einem Monat kein fünfter Freitag vorhanden, wird der Auftrag nicht ausgeführt, da die Ausführung ausschließlich für den fünften Freitag geplant ist. Soll der Auftrag am letzten Freitag des Monats ausgeführt werden, empfiehlt sich unter Umständen die Verwendung von „-1“ anstelle von „5“.|
-|<code>{"minutes":[0,15,30,45],"monthlyOccurrences":[{"day":"friday","occurrence":-1}]}</code>|Ausführung im 15-Minuten-Takt am letzten Freitag des Monats|
-|<code>{"minutes":[15,45],"hours":[5,17],"monthlyOccurrences":[{"day":"wednesday","occurrence":3}]}</code>|Ausführung um 5:15 Uhr, 5:45 Uhr, 17:15 Uhr und 17:45 Uhr am dritten Mittwoch jedes Monats|
+|<code>{"minutes":[0], "hours":[5], "monthlyOccurrences":[{"day":"friday", "occurrence":1}]}</code>|Ausführung am ersten Freitag jedes Monats um 5:00 Uhr|
+|<code>{"monthlyOccurrences":[{"day":"friday", "occurrence":1}]}</code>|Ausführung am ersten Freitag jedes Monats zur Startzeit|
+|<code>{"monthlyOccurrences":[{"day":"friday", "occurrence":-3}]}</code>|Monatliche Ausführung am dritten Freitag vom Ende des Monats zur Startzeit|
+|<code>{"minutes":[15], "hours":[5], "monthlyOccurrences":[{"day":"friday", "occurrence":1},{"day":"friday", "occurrence":-1}]}</code>|Ausführung am ersten und letzten Freitag jedes Monats um 5:15 Uhr|
+|<code>{"monthlyOccurrences":[{"day":"friday", "occurrence":1},{"day":"friday", "occurrence":-1}]}</code>|Ausführung am ersten und letzten Freitag jedes Monats zur Startzeit|
+|<code>{"monthlyOccurrences":[{"day":"friday", "occurrence":5}]}</code>|Ausführung am fünften Freitag jedes Monats zur Startzeit. Ist in einem Monat kein fünfter Freitag vorhanden, wird der Auftrag nicht ausgeführt, da die Ausführung ausschließlich für den fünften Freitag geplant ist. Soll der Auftrag am letzten Freitag des Monats ausgeführt werden, empfiehlt sich unter Umständen die Verwendung von „-1“ anstelle von „5“.|
+|<code>{"minutes":[0,15,30,45], "monthlyOccurrences":[{"day":"friday", "occurrence":-1}]}</code>|Ausführung im 15-Minuten-Takt am letzten Freitag des Monats|
+|<code>{"minutes":[15,45], "hours":[5,17], "monthlyOccurrences":[{"day":"wednesday", "occurrence":3}]}</code>|Ausführung um 5:15 Uhr, 5:45 Uhr, 17:15 Uhr und 17:45 Uhr am dritten Mittwoch jedes Monats|
 
-## Siehe auch
+## Weitere Informationen
 
 
  [Was ist Azure Scheduler?](scheduler-intro.md)
@@ -197,4 +197,4 @@ Bei den folgenden Zeitplänen wird jeweils davon ausgegangen, dass _interval_ au
 
  [Ausgehende Authentifizierung von Azure Scheduler](scheduler-outbound-authentication.md)
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0817_2016-->

@@ -23,7 +23,7 @@ Wenn Sie eine Webanwendung haben, die bereits auf dem J2EE-Server ausgeführt wi
 
 Sie benötigen ein [Microsoft Azure](https://azure.com)-Abonnement.
 
-> [AZURE.NOTE] Mit dem Verfahren auf dieser Seite wird Ihrer Web-App zur Laufzeit das SDK hinzugefügt. Dies ist nützlich, wenn Sie den Quellcode nicht aktualisieren oder neu erstellen möchten. Sofern möglich, empfehlen wir jedoch, dass Sie stattdessen [das SDK zum Quellcode hinzufügen](app-insights-java-get-started.md). Dadurch erhalten Sie weitere Optionen, Sie können z. B. Code zum Nachverfolgen der Benutzeraktivität schreiben.
+> [AZURE.NOTE] Mit dem Verfahren auf dieser Seite wird Ihrer Web-App zur Laufzeit das SDK hinzugefügt. Dies ist nützlich, wenn Sie den Quellcode nicht aktualisieren oder neu erstellen möchten. Sofern möglich, empfehlen wir jedoch, dass Sie stattdessen [das SDK zum Quellcode hinzufügen](app-insights-java-get-started.md). Dadurch erhalten Sie weitere Optionen, Sie können z. B. Code zum Nachverfolgen der Benutzeraktivität schreiben.
 
 ## 1\. Abrufen eines Application Insights-Instrumentationsschlüssels
 
@@ -40,7 +40,7 @@ Sie benötigen ein [Microsoft Azure](https://azure.com)-Abonnement.
 
 ## 2\. Herunterladen des SDK
 
-1. Laden Sie das [Application Insights-SDK für Java](https://azuredownloads.blob.core.windows.net/applicationinsights/sdk.html) herunter. 
+1. Laden Sie das [Application Insights-SDK für Java](https://aka.ms/aijavasdk) herunter.
 2. Extrahieren Sie auf dem Server den SDK-Inhalt in das Verzeichnis, aus dem die Projektbinärdateien geladen werden. Wenn Sie Tomcat verwenden, ist dies in der Regel unter `webapps<your_app_name>\WEB-INF\lib`.
 
 
@@ -139,4 +139,4 @@ Beim Anzeigen der Eigenschaften einer Anforderung können Sie die damit verbunde
 
  
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0817_2016-->

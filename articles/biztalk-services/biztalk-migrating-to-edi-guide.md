@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/16/2016"
+	ms.date="08/15/2016"
 	ms.author="mandia"/>
 
 
@@ -60,7 +60,7 @@ BizTalk Services bietet eine benutzerfreundliche Konfigurationsumgebung, in der 
 
 1. Eine EDI-Nachricht wird vom Handelspartner Fabrikam empfangen. Für den EDI-Nachrichtenempfang von Handelspartnern unterstützt BizTalk Services Transportprotokolle wie FTP, SFTP, AS2 und HTTP/S.
 
-2. Die empfangsseitige Verarbeitung des Handelspartnervertrags disassembliert die EDI-Nachricht in das XML-Format. Die disassemblierte EDI-Nachricht (im XML-Format) kann an Service Bus-Endpunkte (etwa an einen Service Bus Relay-Endpunkt, an ein Service Bus-Thema, an eine Service Bus-Warteschlange oder an eine BizTalk Services-Bridge) weitergeleitet werden.
+2. Die empfangsseitige Verarbeitung des Handelspartnervertrags disassembliert die EDI-Nachricht in das XML-Format. Die disassemblierte EDI-Nachricht (im XML-Format) kann an Service Bus-Endpunkte (etwa an einen Service Bus Relay-Endpunkt, an ein Service Bus-Thema, an eine Service Bus-Warteschlange oder an eine BizTalk Services-Bridge) weitergeleitet werden.
 
 3. Die disassemblierten XML-Nachrichten können dann vom Endpunkt zur weiteren benutzerdefinierten Verarbeitung empfangen werden. Die Endpunkte können von einer lokalen Komponente oder von einer Microsoft Azure-Compute-Instanz verarbeitet werden, um die Nachricht in einem Windows Workflow (WF)- oder Windows Communication Foundation (WCF)-Dienst weiterzuverarbeiten.
 
@@ -76,7 +76,7 @@ In BizTalk Server werden Empfangsspeicherorte und Empfangsports zum Empfangen vo
 
 Pipelines sind bei EDI in BizTalk Server nachrichtenverarbeitende Entitäten, die je nach Bedarf der Anwendung auch mit benutzerdefinierter Logik für bestimmte Verarbeitungsfunktionen ausgestattet sein können. Das Äquivalent in BizTalk Services ist eine EDI-Bridge. Die EDI-Bridges in BizTalk Services sind jedoch vorerst geschlossen. Sie können also keine eigenen benutzerdefinierten Aktivitäten hinzufügen. Jede benutzerdefinierte Verarbeitung muss außerhalb der EDI-Bridge in Ihrer Anwendung erfolgen – entweder vor oder nach Eingang der Nachricht bei der im Rahmen des Handelspartnervertrags konfigurierten Bridge. Bei EAI-Bridges besteht die Möglichkeit zur benutzerdefinierten Verarbeitung. Wenn Sie eine benutzerdefinierte Verarbeitung benötigen, können Sie vor oder nach der Verarbeitung der Nachricht durch die EDI-Bridge EAI-Bridges verwenden. Weitere Informationen finden Sie unter [Einschließen von benutzerdefiniertem Code in Bridges](https://msdn.microsoft.com/library/azure/dn232389.aspx).
 
-Sie können einen Veröffentlichen/Abonnieren-Fluss mit benutzerdefiniertem Code versehen und/oder Service Bus-Messagingwarteschlangen und -Themen verwenden, bevor der Handelspartnervertrag die Nachricht empfängt oder nachdem der Vertrag die Nachricht verarbeitet und an einen Service Bus-Endpunkt weitergeleitet hat.
+Sie können einen Veröffentlichen/Abonnieren-Fluss mit benutzerdefiniertem Code versehen und/oder Service Bus-Messagingwarteschlangen und -Themen verwenden, bevor der Handelspartnervertrag die Nachricht empfängt oder nachdem der Vertrag die Nachricht verarbeitet und an einen Service Bus-Endpunkt weitergeleitet hat.
 
 Das Nachrichtenflussmuster finden Sie in diesem Artikel unter **Szenarien/Nachrichtenfluss**.
 
@@ -112,7 +112,7 @@ Sie können sich auch das Beispiel von BizTalk-MVP Sandro Pereira zum [Migrieren
 
 Wenn Sie BizTalk Server-Orchestrierungen zu Microsoft Azure migrieren möchten, müssen die Orchestrierungen neu geschrieben werden, da Microsoft Azure die Ausführung von BizTalk Server-Orchestrierungen nicht unterstützt. Die Orchestrierungsfunktion kann zu einem Windows Workflow Foundation 4.0 (WF4)-Dienst umgeschrieben werden. Dies wäre eine vollständige Überarbeitung, da derzeit keine Migration von BizTalk Server-Orchestrierungen zu WF4 zur Verfügung steht. Im Anschluss finden Sie einige Ressourcen für Windows Workflow:
 
-- [*So integrieren Sie einen Dienst für WCF-Workflows mit Service Bus-Warteschlangen und -Themen*](https://msdn.microsoft.com/library/azure/hh709041.aspx) von Paolo Salvatori. 
+- [*How to integrate a WCF Workflow Service with Service Bus Queues and Topics*](https://msdn.microsoft.com/library/azure/hh709041.aspx) (Gewusst wie: Integrieren eines Diensts für WCF-Workflows mit Service Bus-Warteschlangen und -Themen) von Paolo Salvatori.
 
 - [*Erstellen von Apps mit Windows Workflow Foundation und Azure*](http://go.microsoft.com/fwlink/p/?LinkId=237314) von der Build 2011-Konferenz.
 
@@ -130,16 +130,16 @@ Bei der EDI-Verarbeitung in BizTalk Server gibt es das Konzept der Ausweichverei
 
 ### Routing an mehrere Ziele
 
-BizTalk Services-Bridges unterstützen derzeit kein Routing von Nachrichten an mehrere Ziele mit einem Veröffentlichen/Abonnieren-Modell. Stattdessen können Nachrichten aus einer BizTalk Services-Bridge an ein Service Bus-Thema geroutet werden. Dieses kann mehrere Abonnements für den Nachrichtenempfang an mehreren Endpunkten besitzen.
+BizTalk Services-Bridges unterstützen derzeit kein Routing von Nachrichten an mehrere Ziele mit einem Veröffentlichen/Abonnieren-Modell. Stattdessen können Nachrichten aus einer BizTalk Services-Bridge an ein Service Bus-Thema geroutet werden. Dieses kann mehrere Abonnements für den Nachrichtenempfang an mehreren Endpunkten besitzen.
 
 ## Zusammenfassung
 
 Microsoft Azure BizTalk Services wird regelmäßig mit weiteren Features und Funktionen aktualisiert. Mit jeder Aktualisierung werden umfangreichere Funktionen unterstützt, um die Erstellung von End-to-End-Lösungen mit BizTalk Services und anderen Azure-Technologien zu vereinfachen.
 
-## Siehe auch
+## Weitere Informationen
 
 [Entwickeln von Enterprise-Anwendungen mit Azure](https://msdn.microsoft.com/library/azure/hh674490.aspx)
 
 [EDImessageflow]: ./media/biztalk-migrating-to-edi-guide/IC719455.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0817_2016-->

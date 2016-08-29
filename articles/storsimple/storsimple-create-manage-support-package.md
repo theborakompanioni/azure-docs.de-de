@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/09/2016"
+   ms.date="08/17/2016"
    ms.author="alkohli" />
 
 
@@ -53,7 +53,7 @@ Führen Sie im klassischen Portal die folgenden Schritte aus, um ein Unterstütz
 
 ## Manuelles Erstellen eines Unterstützungspakets
 
-In einigen Fällen müssen Sie das Unterstützungspaket über Windows PowerShell für StorSimple manuell erstellen. Zum Beispiel:
+In einigen Fällen müssen Sie das Unterstützungspaket über Windows PowerShell für StorSimple manuell erstellen. Beispiel:
 
 - Wenn Sie vertrauliche Informationen vor dem Freigeben für den Microsoft Support aus Ihren Protokolldateien entfernen müssen.
 
@@ -190,4 +190,4 @@ Das folgende Beispiel veranschaulicht das Entschlüsseln, Bearbeiten und erneute
 
 - Erfahren Sie mehr über das [Verwalten Ihres StorSimple-Geräts mithilfe des StorSimple Manager-Diensts](storsimple-manager-service-administration.md).
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0817_2016-->

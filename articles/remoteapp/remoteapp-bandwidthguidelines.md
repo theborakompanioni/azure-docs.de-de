@@ -12,10 +12,13 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="article" 
-    ms.date="06/27/2016" 
+    ms.date="08/15/2016" 
     ms.author="elizapo" />
     
 # Azure RemoteApp-Netzwerkbandbreite – allgemeine Richtlinien (wenn Sie Ihre eigenen nicht überprüfen können)
+
+> [AZURE.IMPORTANT]
+Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148).
 
 Falls Sie nicht die Zeit oder die Möglichkeit haben, [Netzwerkbandbreiten-Tests](remoteapp-bandwidthtests.md) für Azure RemoteApp auszuführen, finden Sie in diesem Artikel einige relativ allgemeine Richtlinien, die Ihnen beim Abschätzen der Netzwerkbandbreite pro Benutzer helfen können.
 
@@ -43,4 +46,4 @@ Dabei handelt es sich um ein Benutzerszenario mit geringer Bandbreite. Mit 256 K
 
 - [Azure RemoteApp – Festlegen Ihrer Netzwerkbandbreiten-Nutzung mit einigen häufigen Szenarios](remoteapp-bandwidthtests.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0817_2016-->

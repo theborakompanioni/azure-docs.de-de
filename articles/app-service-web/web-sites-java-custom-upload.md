@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="Java" 
 	ms.topic="article" 
-	ms.date="06/24/2016" 
+	ms.date="08/11/2016" 
 	ms.author="robmcm"/>
 
 # Hochladen einer benutzerdefinierten Java Web-App in Azure
 
-In diesem Thema wird erläutert, wie Sie eine benutzerdefinierte Java Web-App in [Azure App Service] Web-Apps hochladen. Es enthält Informationen, die für alle Java-Websites oder Web-Apps gelten, und einige Beispiele für spezifische Anwendungen.
+In diesem Thema wird erläutert, wie Sie eine benutzerdefinierte Java-Web-App in [Azure App Service]-Web-Apps hochladen. Es enthält Informationen, die für alle Java-Websites oder Web-Apps gelten, und einige Beispiele für spezifische Anwendungen.
 
 Beachten Sie, dass Azure die Möglichkeit bietet, Java Web-Apps mithilfe der Konfigurationsbenutzeroberfläche des Azure-Portals und des Azure Marketplace zu erstellen. Informationen hierzu finden Sie unter [Erstellen einer Java Web-App in Azure App Service](web-sites-java-get-started.md). Dieses Tutorial eignet sich für Szenarien, in denen Sie nicht die Azure-Portal-Konfigurationsbenutzeroberfläche oder Azure Marketplace verwenden möchten.
 
@@ -257,4 +257,4 @@ Weitere Informationen zu Java finden Sie im [Java Developer Center](/develop/jav
 <!-- External Links -->
 [Azure App Service]: http://go.microsoft.com/fwlink/?LinkId=529714
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0817_2016-->

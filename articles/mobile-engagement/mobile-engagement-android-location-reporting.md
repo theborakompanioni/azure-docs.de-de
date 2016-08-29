@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-android"
 	ms.devlang="Java"
 	ms.topic="article"
-	ms.date="05/12/2016"
+	ms.date="08/12/2016"
 	ms.author="piyushjo;ricksal" />
 
 # Speicherort-Berichterstellung für das Android-SDK für Azure Mobile Engagement
@@ -33,7 +33,7 @@ Wenn Sie die Speicherorte melden möchten, müssen Sie einige Zeilen zur Konfigu
 
 ### Verzögerte Bereichsspeicherortberichte
 
-Die verzögerte Berichterstellung für Bereichsspeicherorte ermöglicht es Ihnen, das Land, die Region und den Ort zu melden, die Geräten zugeordnet sind. Diese Art der Berichterstellung für Speicherorte verwendet ausschließlich Netzwerkspeicherorte (auf Basis von Zell-ID oder WLAN). Der Gerätebereich wird höchstens einmal pro Sitzung gemeldet. Das GPS wird niemals verwendet, daher hat diese Art von Standortbericht sehr geringe (oder fast keine) Auswirkungen auf den Akku.
+Die verzögerte Berichterstellung für Bereichsspeicherorte ermöglicht Ihnen, das Land, die Region und den Ort zu melden, die Geräten zugeordnet sind. Diese Art der Berichterstellung für Speicherorte verwendet ausschließlich Netzwerkspeicherorte (auf Basis von Zell-ID oder WLAN). Der Gerätebereich wird höchstens einmal pro Sitzung gemeldet. Das GPS wird niemals verwendet, daher hat diese Art von Standortbericht nur geringe Auswirkungen auf den Akku.
 
 Die gemeldeten Bereiche werden dazu verwendet, um geografische Statistiken zu Benutzern, Sitzungen, Ereignissen und Fehlern zu berechnen. Sie können auch als Kriterium für Reach-Kampagnen verwendet werden.
 
@@ -44,34 +44,34 @@ Verzögerte Bereichsspeicherortberichte aktivieren Sie mithilfe der zuvor in die
     engagementConfiguration.setLazyAreaLocationReport(true);
     EngagementAgent.getInstance(this).init(engagementConfiguration);
 
-Sie müssen auch die folgende Berechtigung hinzufügen, sofern diese noch nicht vorhanden ist:
+Sie müssen auch eine Speicherortberechtigung angeben. Dieser Code verwendet die ``COARSE``-Berechtigung:
 
 	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
 
-Sie können auch weiterhin ``ACCESS_FINE_LOCATION`` verwenden, wenn dies bereits Teil Ihrer Anwendung ist.
+Wenn Ihre App sie erfordert, können Sie stattdessen ``ACCESS_FINE_LOCATION`` verwenden.
 
 ### Echtzeit-Berichterstellung für Speicherorte
 
-Mithilfe der Echtzeit-Berichterstellung für Speicherorte können der Längen- und Breitengrad gemeldet werden, die Geräten zugeordnet sind. Diese Art der Berichterstellung für Speicherorte verwendet ausschließlich Netzwerkspeicherorte (auf Basis von Zell-ID oder WLAN), und die Berichterstellung ist nur aktiv, wenn die Anwendung im Vordergrund ausgeführt wird (d. h. während einer Sitzung).
+Mithilfe der Echtzeit-Berichterstellung für Speicherorte können der Längen- und Breitengrad gemeldet werden, die Geräten zugeordnet sind. Diese Art der Berichterstellung für Speicherorte verwendet standardmäßig ausschließlich Netzwerkspeicherorte (auf Basis von Zell-ID oder WLAN). Die Berichterstellung ist nur aktiv, wenn die Anwendung im Vordergrund ausgeführt wird (z.B. während einer Sitzung).
 
-Echtzeit-Speicherorte werden *NICHT* zum Berechnen von Statistiken verwendet. Ihr einziger Zweck ist es, die Verwendung des Echtzeit-Geofencing <Reach-Audience-geofencing >Kriteriums in Reach-Kampagnen zu ermöglichen.
+Echtzeit-Speicherorte werden *NICHT* zum Berechnen von Statistiken verwendet. Ihr einziger Zweck ist, die Verwendung des Echtzeit-Geofencing <Reach-Audience-geofencing>-Kriteriums in Reach-Kampagnen zu ermöglichen.
 
-Um die Echtzeit-Berichterstellung für Speicherorte zu aktivieren, fügen Sie eine Codezeile hinzu, in der Sie die Engagement-Verbindungszeichenfolge in der Startprogrammaktivität festlegen. Das Ergebnis sieht so aus:
+Um die Echtzeit-Berichterstellung für Speicherorte zu aktivieren, fügen Sie eine Codezeile hinzu, in der Sie die Engagement-Verbindungszeichenfolge in der Startprogrammaktivität festlegen. Das Ergebnis sieht wie folgt aus:
 
     EngagementConfiguration engagementConfiguration = new EngagementConfiguration();
     engagementConfiguration.setConnectionString("Endpoint={appCollection}.{domain};AppId={appId};SdkKey={sdkKey}");
     engagementConfiguration.setRealtimeLocationReport(true);
     EngagementAgent.getInstance(this).init(engagementConfiguration);
 
-Sie müssen auch die folgende Berechtigung hinzufügen, sofern diese noch nicht vorhanden ist:
+		You also need to specify a location permission. This code uses ``COARSE`` permission:
 
-	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+			<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
 
-Sie können auch weiterhin ``ACCESS_FINE_LOCATION`` verwenden, wenn dies bereits Teil Ihrer Anwendung ist.
+		If your app requires it, you can use ``ACCESS_FINE_LOCATION`` instead.
 
 #### GPS-basierte Berichterstellung
 
-Die Echtzeit-Berichterstellung für Speicherorte verwendet standardmäßig nur netzwerkbasierte Speicherorte. Verwenden Sie das Konfigurationsobjekt, um die Verwendung von GPS-basierten Speicherorten (die viel genauer sind) zu aktivieren:
+Die Echtzeit-Berichterstellung für Speicherorte verwendet standardmäßig nur netzwerkbasierte Speicherorte. Verwenden Sie das Konfigurationsobjekt, um die Verwendung von viel genaueren GPS-basierten Speicherorten zu aktivieren:
 
     EngagementConfiguration engagementConfiguration = new EngagementConfiguration();
     engagementConfiguration.setConnectionString("Endpoint={appCollection}.{domain};AppId={appId};SdkKey={sdkKey}");
@@ -85,7 +85,7 @@ Sie müssen auch die folgende Berechtigung hinzufügen, sofern diese noch nicht 
 
 #### Berichterstellung im Hintergrund
 
-Die Echtzeit-Berichterstellung für Speicherorte ist standardmäßig nur aktiv, wenn die Anwendung im Vordergrund ausgeführt wird (d. h. während einer Sitzung). Verwenden Sie das folgende Konfigurationsobjekt, um die Berichterstellung auch im Hintergrund zu aktivieren:
+Die Echtzeit-Berichterstellung für Speicherorte ist standardmäßig nur aktiv, wenn die Anwendung im Vordergrund ausgeführt wird (z.B. während einer Sitzung). Verwenden Sie das folgende Konfigurationsobjekt, um die Berichterstellung auch im Hintergrund zu aktivieren:
 
     EngagementConfiguration engagementConfiguration = new EngagementConfiguration();
     engagementConfiguration.setConnectionString("Endpoint={appCollection}.{domain};AppId={appId};SdkKey={sdkKey}");
@@ -95,7 +95,7 @@ Die Echtzeit-Berichterstellung für Speicherorte ist standardmäßig nur aktiv, 
 
 > [AZURE.NOTE] Wenn die Anwendung im Hintergrund ausgeführt wird, werden nur netzwerkbasierte Speicherorte gemeldet, auch wenn Sie das GPS aktiviert haben.
 
-Der Hintergrundbericht für Speicherorte wird beendet, wenn der Benutzer sein Gerät neu startet. Sie können dies hinzufügen, damit zur Startzeit automatisch ein Neustart erfolgt:
+Wenn der Benutzer das Gerät neu startet, wird der Hintergrundbericht über Speicherorte beendet. Damit er beim Starten des Geräts automatisch neu gestartet wird, fügen Sie diesen Code hinzu.
 
 	<receiver android:name="com.microsoft.azure.engagement.EngagementLocationBootReceiver"
 		   android:exported="false">
@@ -112,16 +112,16 @@ Sie müssen auch die folgende Berechtigung hinzufügen, sofern diese noch nicht 
 
 Ab Android M werden bestimmte Berechtigungen zur Laufzeit verwaltet und erfordern die Genehmigung des Benutzers.
 
-Die Laufzeitberechtigungen werden für neue App-Installationen standardmäßig deaktiviert, wenn Sie auf die Android-API-Ebene 23 abzielen. Andernfalls sind sie standardmäßig aktiviert.
+Wenn Sie auf die Android-API-Ebene 23 abzielen, werden die Laufzeitberechtigungen für neue App-Installationen standardmäßig deaktiviert. Andernfalls sind sie standardmäßig aktiviert.
 
-Der Benutzer kann diese Berechtigungen im Einstellungsmenü des Geräts aktivieren oder deaktivieren. Das Deaktivieren der Berechtigungen im Systemmenü beendet alle Hintergrundprozesse der Anwendung. Dabei handelt es sich um ein Systemverhalten, das keine Auswirkungen auf die Möglichkeit hat, Pushbenachrichtigungen im Hintergrund zu empfangen.
+Sie können diese Berechtigungen im Einstellungsmenü des Geräts aktivieren oder deaktivieren. Das Deaktivieren der Berechtigungen im Systemmenü beendet alle Hintergrundprozesse der Anwendung. Dabei handelt es sich um ein Systemverhalten, das keine Auswirkungen auf die Möglichkeit hat, Pushbenachrichtigungen im Hintergrund zu empfangen.
 
 Für die Berichterstellung für Speicherorte in Mobile Engagement müssen folgende Berechtigungen zur Laufzeit genehmigt werden:
 
 - `ACCESS_COARSE_LOCATION`
 - `ACCESS_FINE_LOCATION`
 
-Sie sollten Berechtigungen vom Benutzer über ein Standarddialogfeld anfordern. Wenn der Benutzer zustimmt, müssen Sie ``EngagementAgent`` mitteilen, dass diese Änderung in Echtzeit vorgenommen wird (andernfalls wird die Änderung verarbeitet, sobald der Benutzer die Anwendung das nächste Mal startet).
+Fordern Sie über ein Standarddialogfeld Berechtigungen vom Benutzer an. Wenn der Benutzer zustimmt, teilen Sie ``EngagementAgent`` mit, diese Änderung in Echtzeit zu berücksichtigen. Andernfalls wird die Änderung beim nächsten Start der Anwendung durch den Benutzer ausgeführt.
 
 Hier ist ein Codebeispiel, dass Sie in einer Aktivität Ihrer Anwendung verwenden können, um Berechtigungen anzufordern und das Ergebnis (wenn positiv) weiterzuleiten an ``EngagementAgent``:
 
@@ -141,7 +141,7 @@ Hier ist ein Codebeispiel, dass Sie in einer Aktivität Ihrer Anwendung verwende
       if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
       {
         /*
-         * Request location permission, but this won't explain why it is needed to the user.
+         * Request location permission, but this doesn't explain why it is needed to the user.
          * The standard Android documentation explains with more details how to display a rationale activity to explain the user why the permission is needed in your application.
          * Putting COARSE vs FINE has no impact here, they are part of the same group for runtime permission management.
          */
@@ -159,4 +159,4 @@ Hier ist ein Codebeispiel, dass Sie in einer Aktivität Ihrer Anwendung verwende
         getEngagementAgent().refreshPermissions();
     }
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0817_2016-->

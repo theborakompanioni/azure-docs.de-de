@@ -13,17 +13,20 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="06/27/2016"
+    ms.date="08/15/2016"
     ms.author="elizapo" />
 
 
 
 # Neuigkeiten in Azure RemoteApp
 
+> [AZURE.IMPORTANT]
+Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148).
+
 Einer der Vorteile von Azure RemoteApp besteht darin, dass wir ständig an Verbesserungen arbeiten. Hier werden Sie über solche Änderungen informiert.
 
 ## Zukünftige Updates
-Wussten Sie, dass das Azure RemoteApp-Team monatlich Updates im RDS-Blog veröffentlicht? Sie erfahren nicht nur, was sich in Azure RemoteApp ändert, sondern erhalten auch andere Informationen zur Verwendung von RDS. Weitere Informationen finden Sie im Blog [Remote Desktop Services-Blog](https://blogs.msdn.microsoft.com/rds/). Vor einigen Wochen wurde z. B. ein Eintrag zum [Anheben und Verschieben von Workloads mit Azure RemoteApp und Azure AD](https://blogs.msdn.microsoft.com/rds/2016/01/19/lift-and-shift-your-workloads-with-azure-remoteapp-and-azure-ad-domain-services/) veröffentlicht.
+Wussten Sie, dass das Azure RemoteApp-Team monatlich Updates im RDS-Blog veröffentlicht? Sie erfahren nicht nur, was sich in Azure RemoteApp ändert, sondern erhalten auch andere Informationen zur Verwendung von RDS. Weitere Informationen finden Sie im [Remote Desktop Services-Blog](https://blogs.msdn.microsoft.com/rds/). Vor einigen Wochen wurde z.B. ein Eintrag zum [Anheben und Verschieben von Workloads mit Azure RemoteApp und Azure AD](https://blogs.msdn.microsoft.com/rds/2016/01/19/lift-and-shift-your-workloads-with-azure-remoteapp-and-azure-ad-domain-services/) veröffentlicht.
  
 ## September 2015
 - InfoPath wurde der Microsoft Office 365-Vorlage und dem Katalogimage hinzugefügt. Wenn Sie InfoPath freigeben möchten, müssen Sie unbedingt Ihre Sammlungen mit dem aktuellen Image aktualisieren.
@@ -38,7 +41,7 @@ Wussten Sie, dass das Azure RemoteApp-Team monatlich Updates im RDS-Blog veröff
 Im August gab es große Änderungen – hier sind die wichtigsten:
 
 - Sie können Azure-VNETs nun mit einer Cloudsammlung verwenden! Sehen Sie sich die [Anleitung zur Clouderstellung](remoteapp-create-cloud-deployment.md) an, in der Sie die neuen Schritte erfahren.
-- Es wurde ermöglicht, dem **Startmenü** für den Windows RemoteApp-Client Apps hinzuzufügen. Apps werden in der Anwendungsliste angezeigt, und Sie können sie an das **Startmenü** in Windows anheften.
+- Es wurde ermöglicht, dem **Startmenü** Apps für den Windows RemoteApp-Client hinzuzufügen. Apps werden in der Anwendungsliste angezeigt, und Sie können sie dem **Startmenü** in Windows anheften.
 - Ein neues Image wurde dem Azure-VM-Katalog hinzugefügt – Windows Server Remote Desktop Session Host with Microsoft Office 365 ProPlus.
 - Der Mac-Client wurde korrigiert, sodass Apps mit modalen Fenstern nicht mehr einfrieren.
 - Die Verwendung Ihres [Office 365 ProPlus-Abonnements](remoteapp-officesubscription.md) mit Azure RemoteApp wurde dokumentiert.
@@ -87,4 +90,4 @@ Vielen Dank, dass Sie uns treu bleiben. Im nächsten Monat gibt es weitere Updat
 ### Helfen Sie uns, Ihnen zu helfen
 Wussten Sie schon, dass Sie diesen Artikel im Bereich unten nicht nur bewerten und kommentieren, sondern ihn auch selbst ändern können? Fehlt etwas? Ist etwas nicht ganz richtig? Habe ich etwas geschrieben, das eher verwirrend ist? Scrollen Sie nach oben, und klicken Sie auf **Edit on GitHub**, um die gewünschten Änderungen vorzunehmen. Ihr Vorschlag wird uns vorgelegt, und wenn wir ihn bestätigt haben, werden Ihre Änderungen und Verbesserungen hier angezeigt.
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0817_2016-->

@@ -13,12 +13,15 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="07/26/2016"
+    ms.date="08/15/2016"
     ms.author="elizapo" />
 
 
 
 # Beenden der Abrechnung für Azure RemoteApp
+
+> [AZURE.IMPORTANT]
+Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148).
 
 Solange Sie über Azure RemoteApp-Sammlungen verfügen, selbst wenn diesen keine Benutzer zugewiesen sind, wird Ihnen RemoteApp in Rechnung gestellt. Um dies zu beenden, löschen Sie all Ihre Sammlungen.
 
@@ -30,4 +33,4 @@ So löschen Sie Ihre Sammlung:
 
 Es kann ein paar Minuten dauern, bis alle Sammlungen gelöscht sind.
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0817_2016-->

@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Gewusst wie: Aktivieren von App-übergreifendem SSO unter iOS mit ADAL | Microsoft Azure"
-	description="Verwenden der ADAL SDK-Features zum Aktivieren von anwendungsübergreifendem SSO."
+	description="Verwenden der ADAL SDK-Features zum Aktivieren von anwendungsübergreifendem SSO. "
 	services="active-directory"
 	documentationCenter=""
 	authors="brandwe"
@@ -33,6 +33,7 @@ Die vorliegende exemplarische Vorgehensweise gilt für:
 * Azure Active Directory
 * Azure Active Directory B2C
 * Azure Active Directory B2B
+* Bedingter Zugriff mit Azure Active Directory
 
 
 Hinweis: In diesem Dokument wird davon ausgegangen, dass Sie wissen, wie Sie [Anwendungen im Vorgängerportal für Azure Active Directory bereitstellen](active-directory-how-to-integrate.md), und dass Sie das [Microsoft Identity iOS SDK](https://github.com/AzureAD/azure-activedirectory-library-for-objc) in Ihre Anwendung integriert haben.
@@ -59,7 +60,7 @@ Nicht brokergestützte Anmeldungen sind Anmeldungen, die anwendungsintern erfolg
 Diese Anmeldungen bieten folgende Vorteile:
 
 -  Die Benutzerinteraktion läuft vollständig innerhalb der Anwendung ab.
--  Anmeldeinformationen können gemeinsam mit anderen Anwendungen genutzt werden, die das gleiche Signaturzertifikat verwenden. Auf diese Weise erzielen Sie SSO-Funktionalität für Ihre Anwendungssuite. 
+-  Anmeldeinformationen können gemeinsam mit anderen Anwendungen genutzt werden, die das gleiche Signaturzertifikat verwenden. Auf diese Weise erzielen Sie SSO-Funktionalität für Ihre Anwendungssuite.
 -  Die Kontrolle der Anmeldeabläufe liegt sowohl vor als auch nach der Anmeldung bei der Anwendung.
 
 Diese Anmeldungen haben folgende Nachteile:
@@ -154,7 +155,7 @@ Für nicht brokergestütztes, anwendungsübergreifendes SSO übernehmen die Micr
 
 Gehen Sie folgendermaßen vor, um übergreifendes SSO für Anwendungen in Ihrem Besitz zu aktivieren:
 
-1. Stellen Sie sicher, dass all Ihre Anwendungen die gleiche Client-ID oder Anwendungs-ID verwenden. 
+1. Stellen Sie sicher, dass all Ihre Anwendungen die gleiche Client-ID oder Anwendungs-ID verwenden.
 * Stellen Sie sicher, dass all Ihre Anwendungen das gleiche Signaturzertifikat von Apple verwenden, um die gemeinsame Verwendung von Schlüsselbunden zu ermöglichen.
 * Fordern Sie für jede Ihrer Anwendungen die gleichen Schlüsselbundberechtigung an.
 * Geben Sie für die Microsoft Identity SDKs an, welchen freigegebenen Schlüsselbund wir verwenden sollen.
@@ -163,7 +164,7 @@ Gehen Sie folgendermaßen vor, um übergreifendes SSO für Anwendungen in Ihrem 
 
 Damit die Microsoft Identity-Plattform weiß, dass Token anwendungsübergreifend verwendet werden dürfen, muss jede Ihrer Anwendungen die gleiche Client-ID oder Anwendungs-ID verwenden. Hierbei handelt es sich um den eindeutigen Bezeichner, den Sie bei der Registrierung Ihrer ersten Anwendung im Portal erhalten haben.
 
-Nun fragen Sie sich vielleicht, wie unterschiedliche Apps gegenüber dem Microsoft Identity-Dienst identifiziert werden, wenn sie die gleiche Anwendungs-ID verwenden. Die Antwort lautet: mithilfe von **Umleitungs-URIs**. Jede Anwendung kann mehrere Umleitungs-URIs im Integrationsportal registrieren. Jede App innerhalb Ihrer Suite kann einen anderen Umleitungs-URI verwenden. Nachfolgend sehen Sie ein Beispiel hierfür:
+Nun fragen Sie sich vielleicht, wie unterschiedliche Apps gegenüber dem Microsoft Identity-Dienst identifiziert werden, wenn sie die gleiche Anwendungs-ID verwenden. Die Antwort lautet: mit **Umleitungs-URIs**. Jede Anwendung kann mehrere Umleitungs-URIs im Integrationsportal registrieren. Jede App innerhalb Ihrer Suite kann einen anderen Umleitungs-URI verwenden. Nachfolgend sehen Sie ein Beispiel hierfür:
 
 Umleitungs-URI für App1: `x-msauth-mytestiosapp://com.myapp.mytestapp`
 
@@ -236,7 +237,7 @@ Das ist alles! Das Microsoft Identity SDK verwendet jetzt Anmeldeinformationen �
 
 ### Aktivieren von SSO für brokergestütztes SSO
 
-Die Fähigkeit einer Anwendung, einen beliebigen der auf dem Gerät installierten Broker zu verwenden, ist **standardmäßig deaktiviert**. Damit Ihre Anwendung mit dem Broker verwendet werden kann, müssen Sie einige zusätzliche Konfigurationsschritte ausführen und Ihrer Anwendung Code hinzufügen.
+Die Fähigkeit einer Anwendung, jeden der auf dem Gerät installierten Broker zu verwenden, ist **standardmäßig deaktiviert**. Damit Ihre Anwendung mit dem Broker verwendet werden kann, müssen Sie einige zusätzliche Konfigurationsschritte ausführen und Ihrer Anwendung Code hinzufügen.
 
 Erforderliche Schritte:
 
@@ -298,7 +299,7 @@ Zur Unterstützung der zertifikatbasierten Authentifizierung muss in Ihrer Anwen
 
 `msauth://code/<broker-redirect-uri-in-url-encoded-form>`
 
-Beispiel: **msauth://code/x-msauth-mytestiosapp%3A%2F%2Fcom.myapp.mytestapp*
+Beispiel: *msauth://code/x-msauth-mytestiosapp%3A%2F%2Fcom.myapp.mytestapp*
 
 
 #### Schritt 4: iOS9: Hinzufügen eines Konfigurationsparameters zu Ihrer App
@@ -307,8 +308,8 @@ ADAL prüft mithilfe von „–CanOpenURL:“, ob der Broker auf dem Gerät inst
 
 <key>LSApplicationQueriesSchemes</key> <array> <string>msauth</string> </array>
 
-### Sie haben SSO konfiguriert.
+### Sie haben SSO konfiguriert!
 
 Das Microsoft Identity SDK verwendet Anmeldeinformationen nun automatisch anwendungsübergreifend und ruft den Broker auf, wenn dieser auf dem Gerät vorhanden ist.
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0817_2016-->

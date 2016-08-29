@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="06/17/2016"
+   ms.date="08/16/2016"
    ms.author="lodipalm;barbkess;sonyama"/>
 
 #Laden von Beispieldaten in SQL Data Warehouse
@@ -45,7 +45,7 @@ Befolgen Sie diese einfachen Schritte, um die Adventure Works-Beispieldatenbank 
 
 ##Abfragen von Beispieldaten
 
-Nachdem Sie einige Beispieldaten in SQL Data Warehouse geladen haben, können Sie schnell einige Abfragen ausführen. Stellen Sie zum Ausführen einer Abfrage eine Verbindung zur neu erstellten Adventure Works-Datenbank in Azure SQL DW mit Visual Studio und SSDT her, wie im [Verbindungsdokument][] beschrieben.
+Nachdem Sie einige Beispieldaten in SQL Data Warehouse geladen haben, können Sie schnell einige Abfragen ausführen. Stellen Sie zum Ausführen einer Abfrage eine Verbindung mit der neu erstellten Adventure Works-Datenbank in Azure SQL Data Warehouse mit Visual Studio und SSDT her, wie im Artikel [Abfragen von Azure SQL Data Warehouse (Visual Studio)][] beschrieben.
 
 Beispiel einer einfachen SELECT-Anweisung, um alle Informationen zu den Mitarbeitern abzurufen:
 
@@ -80,15 +80,15 @@ Da Sie jetzt Gelegenheit hatten, einige Abfragen mit Beispieldaten auszuprobiere
 <!--Image references-->
 
 <!--Article references-->
-[migrieren]: ./sql-data-warehouse-overview-migrate.md
-[entwickeln]: ./sql-data-warehouse-overview-develop.md
-[laden]: ./sql-data-warehouse-overview-load.md
-[Verbindungsdokument]: ./sql-data-warehouse-get-started-connect.md
-[Migrieren von Code]: ./sql-data-warehouse-migrate-code.md
-[bcp]: ./sql-data-warehouse-load-with-bcp.md
-[sqlcmd]: ./sql-data-warehouse-get-started-connect-sqlcmd.md
+[migrieren]: sql-data-warehouse-overview-migrate.md
+[entwickeln]: sql-data-warehouse-overview-develop.md
+[laden]: sql-data-warehouse-overview-load.md
+[Abfragen von Azure SQL Data Warehouse (Visual Studio)]: sql-data-warehouse-query-visual-studio.md
+[Migrieren von Code]: sql-data-warehouse-migrate-code.md
+[bcp]: sql-data-warehouse-load-with-bcp.md
+[sqlcmd]: sql-data-warehouse-get-started-connect-sqlcmd.md
 
 <!--Other Web references-->
 [Adventure Works-Beispielskripts für SQL Data Warehouse]: https://migrhoststorage.blob.core.windows.net/sqldwsample/AdventureWorksSQLDW2012.zip
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0817_2016-->

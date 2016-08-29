@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="vs-getting-started" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/01/2016" 
+	ms.date="08/15/2016" 
 	ms.author="tarcher"/>
 
 # Fehler während der Authentifizierungserkennung
@@ -49,9 +49,9 @@ Außerdem überprüft der Assistent die folgenden Einstellungen in einem Web-API
 
 Der Assistent versucht schließlich, Versionen von Authentifizierungscode zu erkennen, die mit früheren Versionen von Visual Studio konfiguriert wurden. Wenn Sie diesen Fehler erhalten, ist ein nicht kompatibler Authentifizierungstyp in Ihrem Projekt vorhanden. Der Assistent erkennt die folgenden Authentifizierungstypen aus früheren Versionen von Visual Studio:
 
-* Windows-Authentifizierung 
-* Einzelne Benutzerkonten 
-* Organisationskonten 
+* Windows-Authentifizierung
+* Einzelne Benutzerkonten
+* Organisationskonten
  
 
 Zum Erkennen der Windows-Authentifizierung in einem MVC-Projekt sucht der Assistent nach dem `authentication`-Element aus Ihrer Datei **web.config**.
@@ -96,4 +96,4 @@ Wenn Sie den Authentifizierungstyp ändern möchten, entfernen Sie den inkompati
 
 Weitere Informationen finden Sie unter [Authentifizierungsszenarien für Azure AD](active-directory-authentication-scenarios.md).
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0817_2016-->

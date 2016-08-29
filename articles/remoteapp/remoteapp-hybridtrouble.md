@@ -13,12 +13,15 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="05/16/2016"
+    ms.date="08/15/2016"
     ms.author="elizapo" />
 
 
 
 # Problembehandlung beim Erstellen von Azure RemoteApp-Hybridsammlungen
+
+> [AZURE.IMPORTANT]
+Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148).
 
 Eine Hybrid-Sammlung wird in der Cloud gehostet und speichert die Daten in der Azure-Cloud. Benutzer können aber auch auf die Daten und Ressourcen zugreifen, die im lokalen Netzwerk gespeichert sind. Benutzer können sich mit den Anmeldeinformationen des Unternehmens, die mit Azure Active Directory verbunden sind oder synchronisiert werden, anmelden und auf die Apps zugreifen. Sie können eine Hybridsammlung für ein vorhandenes virtuelles Azure-Netzwerk bereitstellen oder ein neues virtuelles Netzwerk erstellen. Es wird empfohlen, dass Sie ein Subnetz des virtuellen Netzwerks mit einem CIDR-Bereich, der für das erwartete Wachstum für Azure RemoteApp groß genug ist, erstellen oder verwenden.
 
@@ -32,7 +35,7 @@ Wenn eine Meldung wie „GoldImageInvalid“ angezeigt wird, während Sie darauf
 
 
 ## Sind in Ihrem VNET Netzwerksicherheitsgruppen definiert? ##
-Wenn in dem Subnetz, das Sie für die Sammlung verwenden, Netzwerksicherheitsgruppen definiert sind, stellen Sie sicher, dass aus dem Subnetz auf die folgenden [URLs und Ports](remoteapp-ports.md) zugegriffen werden kann:
+Wenn in dem Subnetz, das Sie für die Sammlung verwenden, Netzwerksicherheitsgruppen definiert sind, stellen Sie sicher, dass aus dem Subnetz auf diese [URLs und Ports](remoteapp-ports.md) zugegriffen werden kann.
 
 Sie können den im Subnetz bereitgestellten virtuellen Computern für eine bessere Kontrolle zusätzliche Netzwerksicherheitsgruppen hinzufügen.
 
@@ -67,4 +70,4 @@ Stellen Sie sicher, dass die Domänendetails gültig sind und dass der Domänenc
 
 Der erstellte oder hinzugefügte Domänenname muss ein interner Domänenname sein (nicht Ihr Azure AD-Domänenname), und er muss in das DNS-Format auflösbar sein (contoso.local). Angenommen, Sie verfügen über einen internen Active Directory-Namen (contoso.local) und eine Active Directory-UPN (contoso.com), dann müssen Sie den internen Namen verwenden, wenn Sie eine Sammlung erstellen.
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0817_2016-->

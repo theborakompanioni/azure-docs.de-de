@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/26/2016"
+   ms.date="08/16/2016"
    ms.author="yurid"/>
 
 # Azure-Identitätsverwaltung und Sicherheit der Zugriffssteuerung – Bewährte Methoden
@@ -22,13 +22,13 @@ Die Identität wird häufig als neue Grenzschicht für die Sicherheit angesehen,
 
 In diesem Artikel werden bewährte Methoden für die Azure-Identitätsverwaltung und die Sicherheit der Zugriffssteuerung beschrieben. Diese empfohlenen Vorgehensweisen sind aus unseren Erfahrungen mit [Azure AD](../active-directory/active-directory-whatis.md) und den Erfahrungen von Kunden wie Ihnen abgeleitet.
 
-Für jede bewährte Methode wird Folgendes beschrieben:
+Für jede empfohlene Vorgehensweise erklären wir:
 
 - Wobei es bei der bewährten Methode geht
 - Warum Sie die bewährte Methode nutzen sollten
 - Was die Folge sein könnte, wenn Sie die bewährte Methode nicht aktivieren
 - Mögliche Alternativen zur bewährten Methode
-- Wie Sie erfahren können, wie Sie die bewährte Methode aktivieren
+- Wie Sie erfahren können, wie Sie die empfohlenen Vorgehensweisen aktivieren
 
 Dieser Artikel zu den bewährten Methoden für die Azure-Identitätsverwaltung und Zugriffssteuerung basiert auf einer Konsensmeinung und den Fähigkeiten und Funktionssätzen der Azure-Plattform, wie sie zum Erstellungszeitpunkt dieses Artikels existierten. Meinungen und Technologien ändern sich im Laufe der Zeit. Dieser Artikel wird daher regelmäßig aktualisiert, um diese Änderungen widerzuspiegeln.
 
@@ -93,7 +93,7 @@ Weitere Informationen über Azure Multi-Factor Authentication finden Sie unter [
 ## Verwenden der rollenbasierten Zugriffssteuerung (Role-Based Access Control; RBAC)
 
 Das Einschränken des Zugriffs basierend auf den Sicherheitsprinzipien [Need to know](https://en.wikipedia.org/wiki/Need_to_know) und [Least Privilege](https://en.wikipedia.org/wiki/Principle_of_least_privilege) ist für Organisationen unerlässlich, die Sicherheitsrichtlinien für den Datenzugriff durchsetzen möchten. Die rollenbasierte Zugriffssteuerung in Azure (RBAC) kann verwendet werden, um Benutzern, Gruppen und Anwendungen Berechtigungen für einen bestimmten Bereich zu erteilen. Der Bereich einer Rollenzuweisung kann ein Abonnement, eine Ressourcengruppe oder eine einzelne Ressource sein.
-
+ 
 Sie können [integrierte RBAC-Rollen](./active-directory/role-based-access-built-in-roles.md) in Azure verwenden, um Benutzern Berechtigungen zuzuweisen. Ziehen Sie die Verwendung von *Speicherkontomitwirkender* für Cloudbediener in Betracht, die Speicherkonten verwalten müssen, und die Rolle *Klassischer Speicherkontomitwirkender*, um klassische Speicherkonten zu verwalten. Überlegen Sie sich, ob Sie Cloudbediener, die VMs und Speicherkonten verwalten müssen, der Rolle *Mitwirkender für virtuelle Computer* hinzufügen.
 
 Organisationen, die keine Datenzugriffssteuerung mithilfe von Funktionen wie RBAC erzwingen, erteilen ihren Benutzern unter Umständen mehr Berechtigungen als erforderlich. Dies kann zur Kompromittierung von Daten führen, indem Benutzern erlaubt wird, auf bestimmte Arten von Daten zuzugreifen (z.B. Daten mit hoher geschäftlicher Bedeutung), auf die sie eigentlich keinen Zugriff haben dürften.
@@ -134,4 +134,4 @@ Im Gegensatz dazu ist Azure AD Identity Protection ein aktives Überwachungssyst
 
 Für Organisationen, die ihre Identitätssysteme nicht aktiv überwachen, besteht das Risiko, dass Anmeldeinformationen kompromittiert werden. Ohne das Wissen, dass diese Anmeldeinformationen für verdächtige Aktivitäten genutzt werden, können Organisationen dieser Art von Bedrohung nicht begegnen. Weitere Informationen zu Azure Identity Protection finden Sie im Artikel [Azure Active Directory Identity Protection](../active-directory/active-directory-identityprotection.md).
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0817_2016-->

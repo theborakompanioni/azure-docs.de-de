@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/18/2016" 
+	ms.date="08/17/2016" 
 	ms.author="naziml"/>
 
 # Konfigurieren einer Web Application Firewall (WAF) für eine App Service-Umgebung
@@ -32,17 +32,17 @@ Für dieses Dokument konfigurieren wir unsere App Service-Umgebung hinter mehrer
 Informationen zum Konfigurieren einer App Service-Umgebung finden Sie in [unserer Dokumentation](app-service-web-how-to-create-an-app-service-environment.md) zu diesem Thema. Sobald Sie ein App Service-Umgebung eingerichtet haben, können Sie in dieser Umgebung [Web Apps](app-service-web-overview.md), [API-Apps](../app-service-api/app-service-api-apps-why-best-platform.md) und [mobile Apps](../app-service-mobile/app-service-mobile-value-prop.md) erstellen, die alle hinter der WAF geschützt werden, die wir im nächsten Abschnitt konfigurieren.
 
 ## Konfiguration des Barracuda WAF-Clouddiensts ##
-Barracuda hat einen [ausführlichen Artikel](https://techlib.barracuda.com/WAF/AzureDeploy) zur Bereitstellung seiner WAF auf einem virtuellen Computer in Azure verfasst. Wir befolgen diese Anweisungen, wollen aber zugleich Redundanz und keine einzelne Fehlerquelle hinzufügen, weshalb wir mindestens 2 VMs mit WAF-Instanzen im selben Clouddienst bereitstellen.
+Barracuda hat einen [ausführlichen Artikel](https://campus.barracuda.com/product/webapplicationfirewall/article/WAF/DeployWAFInAzure) zur Bereitstellung seiner WAF auf einem virtuellen Computer in Azure verfasst. Wir befolgen diese Anweisungen, wollen aber zugleich Redundanz und keine einzelne Fehlerquelle hinzufügen, weshalb wir mindestens 2 VMs mit WAF-Instanzen im selben Clouddienst bereitstellen.
 
 ### Hinzufügen von Endpunkten zum Clouddienst ###
-Sobald Ihr Cloud Service zwei oder mehr WAF VM-Instanzen aufweist, können Sie im [Azure-Portal](https://portal.azure.com/) HTTP- und HTTPS-Endpunkte hinzufügen, die von Ihrer Anwendung verwendet werden (siehe die folgende Abbildung).
+Sobald Ihr Clouddienst zwei oder mehr WAF VM-Instanzen aufweist, können Sie im [Azure-Portal](https://portal.azure.com/) HTTP- und HTTPS-Endpunkte hinzufügen, die von Ihrer Anwendung verwendet werden (siehe folgende Abbildung).
 
 ![Endpunkt konfigurieren][ConfigureEndpoint]
 
 Wenn Ihre Anwendungen andere Endpunkte verwenden, sollten Sie diese auch unbedingt dieser Liste hinzufügen.
 
-### Konfigurieren von Barracuda WAF über das dazugehörige Verwaltungsportal ###
-Barracuda WAF verwendet für die Konfiguration über sein Verwaltungsportal den TCP-Port 8000. Da wir mehrere Instanzen von WAF-VMs haben, müssen Sie die Schritte hier für jede VM-Instanz wiederholen.
+### Konfigurieren von Barracuda WAF über das zugehörige Verwaltungsportal ###
+Barracuda WAF verwendet für die Konfiguration über sein Verwaltungsportal den TCP-Port 8000. Da wir mehrere Instanzen von WAF-VMs haben, müssen Sie die Schritte hier für jede VM-Instanz wiederholen.
 
 
 > Hinweis: Sobald Sie die WAF-Konfiguration abgeschlossen haben, entfernen Sie den TCP/8000-Endpunkt aus allen WAF-VMs, um Ihre WAF zu schützen.
@@ -79,7 +79,7 @@ Zum Weiterleiten der Traffic Manager-Pingsignale von Ihrer WAF zu Ihrer Anwendun
 ![Websiteübersetzungen][WebsiteTranslations]
 
 ## Schützen des Datenverkehrs zu einer App Service-Umgebung mithilfe von Netzwerksicherheitsgruppen (NSGs)##
-In der [Dokumentation zum Steuern des eingehenden Datenverkehrs](app-service-app-service-environment-control-inbound-traffic.md) finden Sie ausführliche Informationen zum Einschränken des Datenverkehrs zu Ihrer App Service-Umgebung von der WAF nur durch Verwenden der VIP-Adresse Ihres Clouddiensts. Hier ist ein PowerShell-Beispielbefehl zur Durchführung dieser Aufgabe für TCP-Port 80.
+In der [Dokumentation zum Steuern des eingehenden Datenverkehrs](app-service-app-service-environment-control-inbound-traffic.md) finden Sie ausführliche Informationen zum Einschränken des Datenverkehrs zu Ihrer App Service-Umgebung von der WAF nur durch Verwenden der VIP-Adresse Ihres Clouddiensts. Hier ist ein PowerShell-Beispielbefehl zur Durchführung dieser Aufgabe für TCP-Port 80.
 
 
     Get-AzureNetworkSecurityGroup -Name "RestrictWestUSAppAccess" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTP Barracuda" -Type Inbound -Priority 201 -Action Allow -SourceAddressPrefix '191.0.0.1'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '80' -Protocol TCP
@@ -99,4 +99,4 @@ Ersetzen Sie "SourceAddressPrefix" durch die virtuelle IP-Adresse (VIP) des Clou
 [ConfigureTrafficManager]: ./media/app-service-app-service-environment-web-application-firewall/ConfigureTrafficManager.png
 [WebsiteTranslations]: ./media/app-service-app-service-environment-web-application-firewall/WebsiteTranslations.png
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0817_2016-->

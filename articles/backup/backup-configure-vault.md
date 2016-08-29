@@ -134,6 +134,32 @@ Nachdem Sie nun über einen Tresor verfügen, können Sie Ihre Infrastruktur zum
 
 Der Agent wurde jetzt installiert, und Ihr Computer wurde im Tresor registriert. Sie können die Sicherung jetzt konfigurieren und planen.
 
+### Bestätigen der Installation
+
+Um zu bestätigen, dass der Agent ordnungsgemäß installiert und registriert wurde, können Sie im Verwaltungsportal im Abschnitt **Produktionsserver** nach den gesicherten Elementen suchen. Gehen Sie dazu folgendermaßen vor:
+
+1. Melden Sie sich mit Ihrem Azure-Abonnement am [Azure-Portal](https://portal.azure.com/) an.
+
+2. Klicken Sie im Hub-Menü auf **Durchsuchen**, und geben Sie in der Liste mit den Ressourcen **Recovery Services** ein. Wenn Sie mit der Eingabe beginnen, wird die Liste anhand Ihrer Eingaben gefiltert. Klicken Sie auf **Recovery Services-Tresore**.
+
+    ![Erstellen eines Recovery Services-Tresors – Schritt 1](./media/backup-configure-vault/browse-to-rs-vaults.png) <br/>
+
+    Die Liste mit den Recovery Services-Tresoren wird angezeigt.
+
+2. Wählen Sie den Namen des Tresors, den Sie erstellt haben.
+
+    Das Blatt mit dem Dashboard des Recovery Services-Tresors wird geöffnet.
+
+    ![Dashboard des Recovery Services-Tresors](./media/backup-configure-vault/rs-vault-dashboard.png) <br/>
+
+3. Klicken Sie am oberen Rand der Seite auf die Schaltfläche **Einstellungen**.
+
+4. Klicken Sie auf **Sicherungsinfrastruktur > Produktionsserver**.
+
+    ![Produktionsserver](./media/backup-configure-vault/production-server-verification.png)
+
+Werden Ihre Server in der Liste angezeigt, ist damit bestätigt, dass der Agent ordnungsgemäß installiert und registriert wurde.
+
 ## Schritt 4: Abschließen der ersten Sicherung
 
 Die erste Sicherung umfasst zwei wichtige Aufgaben:
@@ -226,4 +252,4 @@ Zusätzliche Informationen zum Sichern von virtuellen Computern oder anderen Wor
 - Nachdem Sie nun Ihre Dateien und Ordner gesichert haben, können Sie [Ihre Tresore und Server verwalten](backup-azure-manage-windows-server.md).
 - Informationen zum Wiederherstellen eines Backups finden Sie im Artikel zum [Wiederherstellen von Dateien auf einem Windows-Computer](backup-azure-restore-windows-server.md).
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0817_2016-->

@@ -18,7 +18,7 @@
 
 # Identifizieren von Datenbanken und Tabellen für Stretch-Datenbank durch Ausführen von Stretch Database Advisor
 
-Laden Sie den SQL Server 2016 Upgrade Advisor herunter, um Datenbanken und Tabellen, die sich für Stretch-Datenbank eignen, zu identifizieren, und führen Sie den Stretch Database Advisor aus. Stretch Database Advisor erkennt auch Hindernisse.
+Laden Sie SQL Server 2016 Upgrade Advisor herunter, um Datenbanken und Tabellen zu identifizieren, die sich für Stretch-Datenbank eignen, und führen Sie Stretch Database Advisor aus. Der Stretch-Datenbank-Ratgeber erkennt auch Blockierungsprobleme.
 
 ## Herunterladen und Installieren von Upgrade Advisor
 Laden Sie Upgrade Advisor [hier](http://go.microsoft.com/fwlink/?LinkID=613421) herunter, und installieren Sie ihn. Dieses Tool ist nicht auf dem SQL Server-Installationsmedium enthalten.
@@ -56,7 +56,7 @@ Aktivieren Sie Stretch-Datenbank.
 
 -   Informationen zum Aktivieren von Stretch-Datenbank für eine andere **Tabelle**, wenn Stretch bereits für die Datenbank aktiviert ist, finden Sie unter [Aktivieren von Stretch-Datenbank für eine Tabelle](sql-server-stretch-database-enable-table.md).
 
-## Weitere Informationen
+## Siehe auch
 
 [Einschränkungen für Stretch-Datenbank](sql-server-stretch-database-limitations.md)
 
@@ -64,4 +64,6 @@ Aktivieren Sie Stretch-Datenbank.
 
 [Aktivieren von Stretch-Datenbank für eine Tabelle](sql-server-stretch-database-enable-table.md)
 
-<!---HONumber=AcomDC_0622_2016-->
+[Alle Themen für den SQL Server Stretch-Datenbankdienst](sql-server-stretch-database-index-all-articles.md)
+
+<!---HONumber=AcomDC_0817_2016-->

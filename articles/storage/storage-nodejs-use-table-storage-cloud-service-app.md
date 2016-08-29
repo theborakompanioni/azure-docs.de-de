@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="nodejs" 
 	ms.topic="article" 
-	ms.date="06/24/2016" 
+	ms.date="08/11/2016" 
 	ms.author="robmcm"/>
 
 # Node.js-Webanwendung mit Speicher
@@ -31,7 +31,7 @@ Sie erhalten Informationen zu folgenden Themen:
 -   Arbeiten mit der Jade Template Engine
 -   Arbeiten mit den Azure-Datenverwaltungsdiensten
 
-Unten finden Sie einen Screenshot der vollständigen Anwendung:
+Nachfolgend sehen Sie einen Screenshot der fertigen Anwendung:
 
 ![Die abgeschlossene Webseite in Internet Explorer](./media/storage-nodejs-use-table-storage-cloud-service-app/getting-started-1.png)
 
@@ -403,4 +403,4 @@ In den folgenden Schritten erfahren Sie, wie Sie die Anwendung beenden und lösc
  
  
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0817_2016-->

@@ -13,12 +13,27 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="tbd" 
-   ms.date="07/19/2016"
-   ms.author="yuemlu"/>
+   ms.date="08/17/2016"
+   ms.author="raiye"/>
 
 # Azure-Gastbetriebssystem 
 
 Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MSRC), die auf das Azure-Gastbetriebssystem angewendet wurden. Durchsuchen Sie diesen Artikel, um zu ermitteln, ob ein bestimmtes Update für das Gastbetriebssystem gilt, das Sie verwenden. Updates werden für die [Familie][family-explain], in der sie eingeführt wurden, immer in die jeweils neueste Version übertragen.
+
+## Gastbetriebssystem August 
+
+| Bulletin-ID | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
+| ----------- | ------------------- | --------------------------------------------------------------------------- | ---------------- | --------------------- |
+| MS16-095 | [3177356] | Kumulatives Sicherheitsupdate für Internet Explorer | 4\.35, 3.42, 2.54 | 9\. August 2016 |
+| MS16-097 | [3177393] | Sicherheitsupdate für Microsoft-Grafikkomponente | 4\.35, 3.42, 2.54 | 9\. August 2016 |
+| MS16-098 | [3178466] | Sicherheitsupdate für Windows Kernelmodustreiber | 4\.35, 3.42, 2.54 | 9\. August 2016 |
+| MS16-100 | [3179577] | Sicherheitsupdate für sicheren Start | 4\.35, 3.42 | 9\. August 2016 |
+| MS16-101 | [3178465] | Sicherheitsupdate für Windows-Authentifizierungsmethoden | 4\.35, 3.42, 2.54 | 9\. August 2016 |
+| MS16-102 | [3182248] | Sicherheitsupdate für Microsoft Windows-PDF-Bibliothek | 4\.35, 3.42 | 9\. August 2016 |
+| MS16-077 – Neuveröffentlichung | [3165191] | Sicherheitsupdate für Webproxy-AutoErmittlung (Web Proxy Autodiscovery, WPAD) | 4\.35, 3.42, 2.54 | 9\. August 2016 |
+| | [3172605] | Updaterollup vom Juli 2016 für Windows 7 SP1 und Windows Server 2008 R2 SP1 | 2\.54 | 9\. August 2016 |
+| | [3172615] | Updaterollup vom Juli 2016 für Windows Server 2012 | 3\.42 | 9\. August 2016 |
+| | [3172614] | Updaterollup vom Juli 2016 für Windows RT 8.1, Windows 8.1 und Windows Server 2012 R2 | 4\.35 | 9\. August 2016 |
 
 ## Gastbetriebssystem Juli 
 
@@ -152,7 +167,7 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | MS15-127 | [3100465] | Sicherheitsupdate für Microsoft Windows DNS, um Remotecodeausführung zu beheben | 4\.27, 3.34, 2.46 | 8\. Dezember 2015 |
 | MS15-128 | [3104503] | Sicherheitsupdate für Microsoft Graphics Component, um Remotecodeausführung zu beheben | 4\.27, 3.34, 2.46 | 8\. Dezember 2015 |
 | MS15-132 | [3116162] | Sicherheitsupdate für Windows, um Remotecodeausführung zu beheben | 4\.27, 3.34, 2.46 | 8\. Dezember 2015 |
-| MS15-133 | [3116130] | Sicherheitsupdate für Windows PGM, um Erhöhung von Berechtigungen zu beheben | 4\.27, 3.34, 2.46 | 8\. Dezember 2015 |
+| MS15-133 | [3116130] | Sicherheitsupdate für Windows PGM, um Erhöhung von Berechtigungen zu beheben | 4\.27, 3.34, 2.46 | 8\. Dezember 2015 |
 | MS15-134 | [3108669] | Sicherheitsupdate für Windows Media Center, um Remotecodeausführung zu beheben | 4\.27, 3.34, 2.46 | 8\. Dezember 2015 |
 | MS15-135 | [3119075] | Sicherheitsupdate für Windows Kernelmodustreiber, um Erhöhung von Berechtigungen zu beheben | 4\.27, 3.34, 2.46 | 8\. Dezember 2015 |
 
@@ -160,41 +175,41 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 
 | Bulletin-ID | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
 | ----------- | ------------------- | --------------------------------------------------------------------------- | ---------------- | --------------------- |
-| MS15-112 | [3104517] | Kumulatives Sicherheitsupdate für Internet Explorer | 4\.26, 3.33, 2.45 | 10\. November 2015 |
-| MS15-114 | [3100213] | Sicherheitsupdate für Windows Journal, um Remotecodeausführung zu beheben | 2\.45 | 10\. November 2015 |
-| MS15-115 | [3105864] | Sicherheitsupdate für Microsoft Windows, um Remotecodeausführung zu beheben | 4\.26, 3.33, 2.45 | 10\. November 2015 |
-| MS15-117 | [3101722] | Sicherheitsupdate für NDIS, um Erhöhung von Berechtigungen zu beheben | 2\.45 | 10\. November 2015 |
-| MS15-118 | [3104507] | Sicherheitsupdates für .NET Framework, um Erhöhung von Berechtigungen zu beheben | 4\.26, 3.33, 2.45 | 10\. November 2015 |
-| MS15-119 | [3104521] | Sicherheitsupdate für Windows, um Erhöhung von Berechtigungen zu beheben | 4\.26, 3.33, 2.45 | 10\. November 2015 |
-| MS15-120 | [3102939] | Sicherheitsupdate für IPSec, um Denial-of-Service zu beheben | 4\.26, 3.33 | 10\. November 2015 |
-| MS15-121 | [3081320] | Sicherheitsupdate für SChannel, um Spoofing zu verhindern | 4\.26, 3.33, 2.45 | 10\. November 2015 |
-| MS15-122 | [3105256] | Sicherheitsupdate für Kerberos, um Umgehung der Sicherheitsfunktion zu beheben. | 4\.26, 3.33, 2.45 | 10\. November 2015 |
-| Microsoft-Sicherheitsempfehlung | [3097966] | Versehentlich offengelegte digitale Zertifikate können spoofing | 4\.26, 3.33, 2.45 | 10\. November 2015 |
+| MS15-112 | [3104517] | Kumulatives Sicherheitsupdate für Internet Explorer | 4\.26, 3.33, 2.45 | 10\. November 2015 |
+| MS15-114 | [3100213] | Sicherheitsupdate für Windows Journal, um Remotecodeausführung zu beheben | 2\.45 | 10\. November 2015 |
+| MS15-115 | [3105864] | Sicherheitsupdate für Microsoft Windows, um Remotecodeausführung zu beheben | 4\.26, 3.33, 2.45 | 10\. November 2015 |
+| MS15-117 | [3101722] | Sicherheitsupdate für NDIS, um Erhöhung von Berechtigungen zu beheben | 2\.45 | 10\. November 2015 |
+| MS15-118 | [3104507] | Sicherheitsupdates für .NET Framework, um Erhöhung von Berechtigungen zu beheben | 4\.26, 3.33, 2.45 | 10\. November 2015 |
+| MS15-119 | [3104521] | Sicherheitsupdate für Windows, um Erhöhung von Berechtigungen zu beheben | 4\.26, 3.33, 2.45 | 10\. November 2015 |
+| MS15-120 | [3102939] | Sicherheitsupdate für IPSec, um Denial-of-Service zu beheben | 4\.26, 3.33 | 10\. November 2015 |
+| MS15-121 | [3081320] | Sicherheitsupdate für SChannel, um Spoofing zu verhindern | 4\.26, 3.33, 2.45 | 10\. November 2015 |
+| MS15-122 | [3105256] | Sicherheitsupdate für Kerberos, um Umgehung der Sicherheitsfunktion zu beheben. | 4\.26, 3.33, 2.45 | 10\. November 2015 |
+| Microsoft-Sicherheitsempfehlung | [3097966] | Versehentlich offengelegte digitale Zertifikate können spoofing | 4\.26, 3.33, 2.45 | 10\. November 2015 |
 
 
 ## Gastbetriebssystem Oktober
 
 | Bulletin-ID | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
 | ----------- | ------------------- | --------------------------------------------------------------------------- | ---------------- | --------------------- |
-| MS15-106 | [3096441] | Kumulatives Sicherheitsupdate für Internet Explorer | 4\.25, 3.32, 2.44 | 13\. Oktober 2015 |
-| MS15-108 | [3089659] | Sicherheitsupdate für JScript und VBScript, um potenzielle Remotecodeausführung zu beheben | 2\.44 | 13\. Oktober 2015 |
-| MS15-109 | [3096443] | Sicherheitsupdate für Windows-Shell, um Remotecodeausführung zu beheben | 4\.25, 3.32, 2.44 | 13\. Oktober 2015 |
-| MS15-111 | [3096447] | Sicherheitsupdate für Windows-Kernel, um Erhöhung von Berechtigungen zu beheben | 4\.25, 3.32, 2.44 | 13\. Oktober 2015 |
-| Microsoft-Sicherheitsempfehlung | [3092627] | Update von September 2015 zur Behebung von Windows- oder Anwendungsabstürzen nach Installation von Security Update 3076895 | 4\.25, 3.32, 2.44 | 13\. Oktober 2015 |
+| MS15-106 | [3096441] | Kumulatives Sicherheitsupdate für Internet Explorer | 4\.25, 3.32, 2.44 | 13\. Oktober 2015 |
+| MS15-108 | [3089659] | Sicherheitsupdate für JScript und VBScript, um potenzielle Remotecodeausführung zu beheben | 2\.44 | 13\. Oktober 2015 |
+| MS15-109 | [3096443] | Sicherheitsupdate für Windows-Shell, um Remotecodeausführung zu beheben | 4\.25, 3.32, 2.44 | 13\. Oktober 2015 |
+| MS15-111 | [3096447] | Sicherheitsupdate für Windows-Kernel, um Erhöhung von Berechtigungen zu beheben | 4\.25, 3.32, 2.44 | 13\. Oktober 2015 |
+| Microsoft-Sicherheitsempfehlung | [3092627] | Update von September 2015 zur Behebung von Windows- oder Anwendungsabstürzen nach Installation von Security Update 3076895 | 4\.25, 3.32, 2.44 | 13\. Oktober 2015 |
 
 
 ## Gastbetriebssystem September
 
 | Bulletin-ID | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
 | ----------- | ------------------- | --------------------------------------------------------------------------- | ---------------- | --------------------- |
-| MS15-093 | [3088903] | Sicherheitsupdate für Internet Explorer | 4\.24, 3.31, 2.43 | 8\. September 2015 |
-| MS15-094 | [3089548] | Kumulatives Sicherheitsupdate für Internet Explorer | 4\.24, 3.31, 2.43 | 8\. September 2015 |
-| MS15-096 | [3072595] | Schwachstellen im Active Directory-Dienst können Denial-of-Service ermöglichen. | 4\.24, 3.31, 2.43 | 8\. September 2015 |
-| MS15-097 | [3089656] | Schwachstellen in Microsoft-Grafikkomponente können Erhöhung von Berechtigungen ermöglichen. | 4\.24, 3.31, 2.43 | 8\. September 2015 |
-| MS15-098 | [3089669] | Schwachstellen in Windows Journal können Remotecodeausführung ermöglichen. | 4\.24, 3.31, 2.43 | 8\. September 2015 |
-| MS15-101 | [3089662] | Sicherheitsanfälligkeiten im .NET Framework können Erhöhung von Berechtigungen ermöglichen | 4\.24, 3.31, 2.43 | 8\. September 2015 |
-| MS15-102 | [3089657] | Schwachstellen im Windows-Task-Management können Erhöhung von Berechtigungen ermöglichen. | 4\.24, 3.31, 2.43 | 8\. September 2015 |
-| MS15-105 | [3091287] | Sicherheitsanfälligkeit im Windows-Hyper-V kann Umgehung von Sicherheitsfunktionen ermöglichen. | 4\.24 | 8\. September 2015 |
+| MS15-093 | [3088903] | Sicherheitsupdate für Internet Explorer | 4\.24, 3.31, 2.43 | 8\. September 2015 |
+| MS15-094 | [3089548] | Kumulatives Sicherheitsupdate für Internet Explorer | 4\.24, 3.31, 2.43 | 8\. September 2015 |
+| MS15-096 | [3072595] | Schwachstellen im Active Directory-Dienst können Denial-of-Service ermöglichen. | 4\.24, 3.31, 2.43 | 8\. September 2015 |
+| MS15-097 | [3089656] | Schwachstellen in Microsoft-Grafikkomponente können Erhöhung von Berechtigungen ermöglichen. | 4\.24, 3.31, 2.43 | 8\. September 2015 |
+| MS15-098 | [3089669] | Schwachstellen in Windows Journal können Remotecodeausführung ermöglichen. | 4\.24, 3.31, 2.43 | 8\. September 2015 |
+| MS15-101 | [3089662] | Sicherheitsanfälligkeiten im .NET Framework können Erhöhung von Berechtigungen ermöglichen | 4\.24, 3.31, 2.43 | 8\. September 2015 |
+| MS15-102 | [3089657] | Schwachstellen im Windows-Task-Management können Erhöhung von Berechtigungen ermöglichen. | 4\.24, 3.31, 2.43 | 8\. September 2015 |
+| MS15-105 | [3091287] | Sicherheitsanfälligkeit im Windows-Hyper-V kann Umgehung von Sicherheitsfunktionen ermöglichen. | 4\.24 | 8\. September 2015 |
 
 
 ## Gastbetriebssystem August
@@ -227,7 +242,7 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | MS15-075 | [3072633] | Sicherheitsanfälligkeiten in OLE können Erhöhung von Berechtigungen ermöglichen | 4\.22, 3.29, 2.41 | 14\. Juli 2015 |
 | MS15-076 | [3067505] | Sicherheitsanfälligkeit im Windows-Remoteprozeduraufruf kann Erhöhung von Berechtigungen ermöglichen | 4\.22, 3.29, 2.41 | 14\. Juli 2015 |
 | MS15-077 | [3077657] | Sicherheitsanfälligkeit im ATM-Schriftartentreiber kann Erhöhung von Berechtigungen ermöglichen | 4\.22, 3.29, 2.41 | 14\. Juli 2015 |
-| – | [3057154] | Aktualisierung der eingeschränkten Verwendung der DES-Verschlüsselung | 4\.22, 3.29, 2.41 | 14\. Juli 2015 |
+| NA | [3057154] | Aktualisierung der eingeschränkten Verwendung der DES-Verschlüsselung | 4\.22, 3.29, 2.41 | 14\. Juli 2015 |
 
 ## Gastbetriebssystem Juni
 
@@ -262,7 +277,7 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | MS15-040 | [3045711] | Sicherheitsanfälligkeit in ADFS kann Offenlegung von Daten ermöglichen | 4\.20, 3.27, 2.39 | 17\. April 2015 |
 | MS15-041 | [3048010] | Sicherheitsanfälligkeit im .NET Framework kann Offenlegung von Daten ermöglichen | 4\.20, 3.27, 2.39 | 17\. April 2015 |
 | MS15-042 | [3047234] | Sicherheitsanfälligkeit in Windows Hyper-V kann Denial-of-Service-Angriffe ermöglichen | 4\.20, 3.27, 2.39 | 17\. April 2015 |
-| – | [3045755] | Update zur Verbesserung der PKU2U-Authentifizierung | 4\.20, 3.27, 2.39 | 17\. April 2015 |
+| NA | [3045755] | Update zur Verbesserung der PKU2U-Authentifizierung | 4\.20, 3.27, 2.39 | 17\. April 2015 |
 
 ## Gastbetriebssystem April
 
@@ -275,16 +290,16 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 
 | Bulletin-ID | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
 | ----------- | ------------------- | --------------------------------------------------------------------------- | ---------------- | --------------------- |
-| MS15-018 | [3032359][3032359] | Kumulatives Sicherheitsupdate für Internet Explorer | 4\.18, 3.25, 2.37 | – |
+| MS15-018 | [3032359][3032359] | Kumulatives Sicherheitsupdate für Internet Explorer | 4\.18, 3.25, 2.37 | N/V |
 | MS15-019 | [3040297][3040297] | Sicherheitsanfälligkeit im Skriptmodul VBScript kann Remotecodeausführung ermöglichen | 4\.18, 3.25, 2.37 | – |
 | MS15-020 | [3041836][3041836] | Sicherheitsanfälligkeiten in Microsoft Windows können Remotecodeausführung ermöglichen | 4\.18, 3.25, 2.37 | – |
 | MS15-021 | [3032323][3032323] | Sicherheitsanfälligkeiten in Adobe-Schriftartentreiber können Remotecodeausführung ermöglichen | 4\.18, 3.25, 2.37 | – |
 | MS15-023 | [3034344][3034344] | Sicherheitsanfälligkeiten in Windows-Kernelmodustreibern können Erhöhung von Berechtigungen ermöglichen | 4\.18, 3.25, 2.37 | – |
 | MS15-024 | [3035132][3035132] | Sicherheitsanfälligkeit bei PNG-Verarbeitung kann Offenlegung von Information ermöglichen | 4\.18, 3.25, 2.37 | – |
 | MS15-025 | [3038680][3038680] | Sicherheitsanfälligkeiten im Windows-Kernel können Erhöhung von Berechtigungen ermöglichen | 4\.18, 3.25, 2.37 | – |
-| MS15-027 | [3002657][3002657] | Sicherheitsanfälligkeit in NETLOGON kann Spoofing ermöglichen | 4\.18, 3.25, 2.37 | – |
+| MS15-027 | [3002657][3002657] | Sicherheitsanfälligkeit in NETLOGON kann Spoofing ermöglichen | 4\.18, 3.25, 2.37 | N/V |
 | MS15-028 | [3030377] | Sicherheitsanfälligkeit im Windows-Taskplaner kann Umgehung von Sicherheitsfunktionen ermöglichen | 4\.18, 3.25, 2.37 | – |
-| MS15-029 | [3035126][3035126] | Sicherheitsanfälligkeit in Windows Photo Decoder-Komponente kann Offenlegung von Informationen ermöglichen | 4\.18, 3.25, 2.37 | – |
+| MS15-029 | [3035126][3035126] | Sicherheitsanfälligkeit in Windows Photo Decoder-Komponente kann Offenlegung von Informationen ermöglichen | 4\.18, 3.25, 2.37 | N/V |
 | MS15-030 | [3039976] | Sicherheitsanfälligkeit in Remote Desktop Protocol kann Denial-of-Service-Angriffe ermöglichen | 4\.18, 3.25, 2.37 | – |
 
 > [AZURE.NOTE] Bulletin MS15-031 wird möglicherweise als deinstalliert angezeigt. Es gilt jedoch nicht für dieses Gastbetriebssystemrelease.
@@ -293,13 +308,13 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 
 | Bulletin-ID | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
 | ----------- | ------------------- | --------------------------------------------------------------------------- | ---------------- | --------------------- |
-| MS15-009 | [3034682][3034682] | Sicherheitsupdate für Internet Explorer | 4\.17, 3.24, 2.36 | – |
-| MS15-010 | [3036220][3036220] | Sicherheitsanfälligkeiten in Windows-Kernelmodustreibern können Remotecodeausführung ermöglichen | 4\.17, 3.24, 2.36 | – |
+| MS15-009 | [3034682][3034682] | Sicherheitsupdate für Internet Explorer | 4\.17, 3.24, 2.36 | N/V |
+| MS15-010 | [3036220][3036220] | Sicherheitsanfälligkeiten in Windows-Kernelmodustreibern können Remotecodeausführung ermöglichen | 4\.17, 3.24, 2.36 | N/V |
 | MS15-011 | [3000483][3000483] | Sicherheitsanfälligkeit in Gruppenrichtlinien kann Remotecodeausführung ermöglichen | 4\.17, 3.24, 2.36 | – |
 | MS15-014 | [3004361][3004361] | Sicherheitsanfälligkeit in SMB kann Umgehung der Sicherheitsfunktion ermöglichen | 4\.17, 3.24, 2.36 | – |
 | MS15-015 | [3031432][3031432] | Sicherheitsanfälligkeit in Microsoft Windows kann Erhöhung von Berechtigungen ermöglichen | 4\.17, 3.24, 2.36 | – |
 | MS15-016 | [3029944][3029944] | Sicherheitsanfälligkeit in Microsoft-Grafikkomponente kann Offenlegung von Informationen ermöglichen | 4\.17, 3.24, 2.36 | – |
-| – | [3004375][3004375] | Update zur Verbesserung der Windows-Befehlszeilenüberwachung<p/>**Hinweis**: Dies wird installiert, aber der Registrierungsschlüssel zum Aktivieren ist deaktiviert. | 4\.17, 3.24, 2.36 | – |
+| N/V | [3004375][3004375] | Update zur Verbesserung der Windows-Befehlszeilenüberwachung<p/>**Hinweis**: Dies wird installiert, aber der Registrierungsschlüssel zum Aktivieren ist deaktiviert. | 4\.17, 3.24, 2.36 | N/V |
  
 
 ## Gastbetriebssystem Januar
@@ -322,18 +337,29 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 
 | Bulletin-ID | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
 | ----------- | ------------------- | --------------------------------------------------------------------------- | ---------------- | --------------------- |
-| – | [3013776][3013776] | System stürzt ab, wenn Sie ein Domänenkonto zum Starten einer Anwendung verwenden | 4\.15, 3.22, 2.34 | 13\. Januar 2015 | 
+| N/V | [3013776][3013776] | System stürzt ab, wenn Sie ein Domänenkonto zum Starten einer Anwendung verwenden | 4\.15, 3.22, 2.34 | 13\. Januar 2015 | 
 | – | [3013043][3013043] | Dateisystemdaten sind auf einem Windows-basierten Computer mit mehr als einem NUMA-Knoten beschädigt | 4\.15, 3.22, 2.34 | 13\. Januar 2015 |
-| – | [3012712][3012712] | Neue Datenblöcke werden nicht ordnungsgemäß initialisiert, wenn eine differenzierende VHD erweitert wird | 4\.15, 3.22, 2.34 | 13\. Januar 201 |
+| N/V | [3012712][3012712] | Neue Datenblöcke werden nicht ordnungsgemäß initialisiert, wenn eine differenzierende VHD erweitert wird | 4\.15, 3.22, 2.34 | 13\. Januar 201 |
 | – | [3004905][3004905] | Windows Hyper-V-Verbesserung für virtuelle Linux-Computer mit Dateisystemen, die größer als 2 TB sind | 4\.15, 3.22, 2.34 | 13\. Januar 2015 |
-| – | [3004394][3004394] | Update für Windows-Programm für Stammzertifikate in Windows – Dezember 2014 | 4\.15, 3.22, 2.34 | 13\. Januar 2015 |
-| – | [2999323][2999323] | Der Text für Ereignis-ID 17 wurde geändert | 4\.15, 3.22, 2.34 | 13\. Januar 2015 |
-| – | [3013488][3013488] | Lange Wartezeit beim Zurücksetzen eines WSUS-Servers während des Imports von CSA-Dateien in Windows Server 2012 R2 oder Windows Server 2012 | 4\.15, 3.22, 2.34 | 13\. Januar 2015 |
-| – | [3012325][3012325] | Update der Windows APN-Datenbankeinträge für die Netzbetreiber DIGI, Vodafone und Telekom in Windows 8.1 und Windows 8 | 4\.15, 3.22, 2.34 | 13\. Januar 2015 |
-| – | [3007054][3007054] | PIN-geschützte Druckoption wird beim Drucken eines Dokuments aus einer Windows Store-Anwendung in Windows immer angezeigt | 4\.15, 3.22, 2.34 | 13\. Januar 2015 |
-| – | [2999802][2999802] | In Windows werden durchgezogene Linien statt gepunktete Linien gedruckt | 4\.15, 3.22, 2.34 | 13\. Januar 2015 |
-| – | [2896881][2896881] | Lange Anmeldezeit bei der Verwendung des VBScript-Befehls "AddPrinterConnection" zum Zuordnen von Druckern zu Benutzern während des Anmeldeprozesses in Windows | 4\.15, 3.22, 2.34 | 13\. Januar 2015 |
+| N/V | [3004394][3004394] | Update für Windows-Programm für Stammzertifikate in Windows – Dezember 2014 | 4\.15, 3.22, 2.34 | 13\. Januar 2015 |
+| N/V | [2999323][2999323] | Der Text für Ereignis-ID 17 wurde geändert | 4\.15, 3.22, 2.34 | 13\. Januar 2015 |
+| N/V | [3013488][3013488] | Lange Wartezeit beim Zurücksetzen eines WSUS-Servers während des Imports von CSA-Dateien in Windows Server 2012 R2 oder Windows Server 2012 | 4\.15, 3.22, 2.34 | 13\. Januar 2015 |
+| N/V | [3012325][3012325] | Update der Windows APN-Datenbankeinträge für die Netzbetreiber DIGI, Vodafone und Telekom in Windows 8.1 und Windows 8 | 4\.15, 3.22, 2.34 | 13\. Januar 2015 |
+| N/V | [3007054][3007054] | PIN-geschützte Druckoption wird beim Drucken eines Dokuments aus einer Windows Store-Anwendung in Windows immer angezeigt | 4\.15, 3.22, 2.34 | 13\. Januar 2015 |
+| N/V | [2999802][2999802] | In Windows werden durchgezogene Linien statt gepunktete Linien gedruckt | 4\.15, 3.22, 2.34 | 13\. Januar 2015 |
+| N/V | [2896881][2896881] | Lange Anmeldezeit bei der Verwendung des VBScript-Befehls "AddPrinterConnection" zum Zuordnen von Druckern zu Benutzern während des Anmeldeprozesses in Windows | 4\.15, 3.22, 2.34 | 13\. Januar 2015 |
 
+
+[3177356]: http://support.microsoft.com/kb/3177356
+[3177393]: http://support.microsoft.com/kb/3177393
+[3178466]: http://support.microsoft.com/kb/3178466
+[3179577]: http://support.microsoft.com/kb/3179577
+[3178465]: http://support.microsoft.com/kb/3178465
+[3182248]: http://support.microsoft.com/kb/3182248
+[3165191]: http://support.microsoft.com/kb/3165191
+[3172605]: http://support.microsoft.com/kb/3172605
+[3172614]: http://support.microsoft.com/kb/3172614
+[3172615]: http://support.microsoft.com/kb/3172615
 
 [3169991]: http://support.microsoft.com/kb/3169991
 [3170005]: http://support.microsoft.com/kb/3170005
@@ -576,4 +602,4 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 [family-explain]: cloud-services-guestos-update-matrix.md#guest-os-family-version-and-release-explanation
  
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0817_2016-->

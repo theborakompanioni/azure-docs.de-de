@@ -14,27 +14,27 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="billing"
-   ms.date="02/19/2016"
+   ms.date="08/16/2016"
    ms.author="mobandyo;bryanla"/>
 
-# Gewinnen von Einblicken in den Ressourcenverbrauch unter Microsoft Azure 
+# Gewinnen von Einblicken in den Ressourcenverbrauch unter Microsoft Azure
 
 Kunden und Partner müssen ihre Azure-Kosten genau vorhersagen und verwalten können. Wenn Kunden und Partner die Umstellung von einem CAPEX- zu einem OPEX-Modell vollziehen, müssen sie auch eine „Showback vs. Chargeback“-Analyse durchführen und sich auf eine sichere Schätzung und Abrechnung verlassen können. Dies gilt besonders bei großen Cloudbereitstellungen.
 
 Mit den Azure-APIs zur Ressourcennutzung und Gebührenkarte (Resource Usage und RateCard), die in diesem Artikel beschrieben werden, werden diese Anforderungen erfüllt. Sie ermöglichen neue Einblicke in die Nutzung von Azure-Ressourcen.
 
-## Einführung in die Azure-APIs zur Ressourcennutzung und Gebührenkarte 
+## Einführung in die Azure-APIs zur Ressourcennutzung und Gebührenkarte
 
 Azure-APIs zur Ressourcennutzung und Gebührenkarte werden als Ressourcenanbieter implementiert. Sie sind Teil der API-Familie, die vom Azure-Ressourcen-Manager verfügbar gemacht wird.
 
 ### Azure-API zur Ressourcennutzung (Preview)
 Kunden und Partner können mit der Azure-API zur Ressourcennutzung ihre geschätzten Azure-Verbrauchsdaten abrufen. Sie enthält folgende Features:
-	
-- **Rollenbasierte Zugriffssteuerung für Azure** – Kunden und Partner können ihre Zugriffsrichtlinien im [Azure-Vorschauportal](https://portal.azure.com) oder mit [Azure PowerShell-Cmdlets](powershell-install-configure.md) konfigurieren, um anzugeben, welche Benutzer oder Anwendungen Zugriff auf die Nutzungsdaten eines Abonnements erhalten. Aufrufer müssen zur Authentifizierung standardmäßige Azure Active Directory-Token verwenden. Außerdem muss dem Aufrufer die Rolle „Leser“, „Besitzer“ oder „Mitwirkender“ zugeordnet sein, um Zugriff auf die Nutzungsdaten für ein bestimmtes Azure-Abonnement zu erhalten.
+
+- **Rollenbasierte Zugriffssteuerung für Azure** – Kunden und Partner können ihre Zugriffsrichtlinien im [Azure-Portal](https://portal.azure.com) oder mit [Azure PowerShell-Cmdlets](powershell-install-configure.md) konfigurieren, um anzugeben, welche Benutzer oder Anwendungen Zugriff auf die Nutzungsdaten eines Abonnements erhalten. Aufrufer müssen zur Authentifizierung standardmäßige Azure Active Directory-Token verwenden. Außerdem muss dem Aufrufer die Rolle „Leser“, „Besitzer“ oder „Mitwirkender“ zugeordnet sein, um Zugriff auf die Nutzungsdaten für ein bestimmtes Azure-Abonnement zu erhalten.
 
 - **Stündliche oder tägliche Aggregationen** – Aufrufer können angeben, ob sie ihre Azure-Nutzungsdaten in stündlichen Buckets oder täglichen Buckets erhalten möchten. Die Standardeinstellung ist „Täglich“.
 
-- **Bereitstellung von Instanzmetadaten (inkl. Ressourcentags)** – Details der Instanzebene, z. B. der vollqualifizierte Ressourcen-URI (/subscriptions/{subscription-id}/..) sowie Ressourcengruppeninformationen und Ressourcentags werden in der Antwort angegeben. Damit können Kunden die Nutzung auf deterministische und programmgesteuerte Weise anhand der Tags zuordnen, z. B. bei der internen Verrechnung.
+- **Bereitstellung von Instanzmetadaten (inkl. Ressourcentags)** – Details der Instanzebene, z.B. der vollqualifizierte Ressourcen-URI (/subscriptions/{subscription-id}/..) sowie Ressourcengruppeninformationen und Ressourcentags, werden in der Antwort angegeben. Damit können Kunden die Nutzung auf deterministische und programmgesteuerte Weise anhand der Tags zuordnen, z. B. bei der internen Verrechnung.
 
 - **Bereitstellung von Ressourcenmetadaten** – Ressourcendetails (z. B. Meter Name, Meter Category, Meter Sub-Category, Unit und Region) werden in der Antwort ebenfalls übergeben, damit Aufrufer besser verstehen, was genutzt wurde. Außerdem arbeiten wir an einer Vereinheitlichung der Terminologie für Ressourcenmetadaten im Azure-Portal, in der CSV-Datei zur Azure-Nutzung, in der CSV-Datei zur EA-Abrechnung und in anderen öffentlich zugänglichen Benutzeroberflächen, um Kunden die Korrelation von Daten über verschiedene Umgebungen hinweg zu ermöglichen.
 
@@ -43,9 +43,9 @@ Kunden und Partner können mit der Azure-API zur Ressourcennutzung ihre geschät
 ### Azure-API für Ressourcengebührenkarte (Preview)
 Kunden und Partner können mit der Azure-Ressourcengebührenkarten-API (Resource RateCard) die Liste der verfügbaren Azure-Ressourcen sowie jeweils die geschätzten Preise abrufen. Sie enthält folgende Features:
 
-- **Rollenbasierte Zugriffssteuerung für Azure** – Kunden und Partner können ihre Zugriffsrichtlinien im [Azure-Vorschauportal](https://portal.azure.com) oder mit [Azure PowerShell-Cmdlets](powershell-install-configure.md) konfigurieren, um anzugeben, welche Benutzer oder Anwendungen Zugriff auf die Daten der Gebührenkarte erhalten. Aufrufer müssen zur Authentifizierung standardmäßige Azure Active Directory-Token verwenden. Außerdem muss dem Aufrufer die Rolle „Leser“, „Besitzer“ oder „Mitwirkender“ zugeordnet sein, um Zugriff auf die Nutzungsdaten für ein bestimmtes Azure-Abonnement zu erhalten.
-	
-- **Unterstützung für die Angebote Nutzungsbasierte Bezahlung, MSDN, Verbindliche Zusage und Guthaben (EA wird nicht unterstützt)** – Mit dieser API werden Preisinformationen der Azure-Angebotsebene bereitgestellt (im Gegensatz zur Abonnementebene). Aufrufer dieser API müssen die Angebotsinformationen übergeben, um Ressourcendetails und -preise abzurufen. Da EA-Angebote über angepasste Preise pro Registrierung verfügen, können wir derzeit keine EA-Preise angeben.
+- **Rollenbasierte Zugriffssteuerung für Azure** – Kunden und Partner können ihre Zugriffsrichtlinien im [Azure-Portal](https://portal.azure.com) oder mit [Azure PowerShell-Cmdlets](powershell-install-configure.md) konfigurieren, um anzugeben, welche Benutzer oder Anwendungen Zugriff auf die Daten der Gebührenkarte erhalten. Aufrufer müssen zur Authentifizierung standardmäßige Azure Active Directory-Token verwenden. Außerdem muss dem Aufrufer die Rolle „Leser“, „Besitzer“ oder „Mitwirkender“ zugeordnet sein, um Zugriff auf die Nutzungsdaten für ein bestimmtes Azure-Abonnement zu erhalten.
+
+- **Unterstützung für die Angebote „Nutzungsbasierte Bezahlung“, „MSDN“, „Verbindliche Zusage“ und „Guthaben“ (EA wird nicht unterstützt)** – Mit dieser API werden Preisinformationen der Azure-Angebotsebene bereitgestellt (im Gegensatz zur Abonnementebene). Aufrufer dieser API müssen die Angebotsinformationen übergeben, um Ressourcendetails und -preise abzurufen. Da EA-Angebote über angepasste Preise pro Registrierung verfügen, können wir derzeit keine EA-Preise angeben.
 
 ## Szenarios
 
@@ -79,4 +79,4 @@ Unter [Integration von Cloud Cruiser und Microsoft Azure-Abrechnungs-API](billin
 + Weitere Informationen zum Azure-Ressourcen-Manager finden Sie unter [Übersicht über den Azure-Ressourcen-Manager](resource-group-overview.md).
 + Weitere Informationen zu den Tools, die zum Entwickeln eines Verständnisses der Cloudausgaben erforderlich sind, finden Sie im Gartner-Artikel [Market Guide for IT Financial Management (ITFM) Tools](http://www.gartner.com/technology/reprints.do?id=1-212F7AL&ct=140909&st=sb) (Marktleitfaden für IT Financial Management (ITFM)-Tools).
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0817_2016-->

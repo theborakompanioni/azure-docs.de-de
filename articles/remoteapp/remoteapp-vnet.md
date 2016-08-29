@@ -13,12 +13,15 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="06/12/2016"
+    ms.date="08/15/2016"
     ms.author="elizapo" />
 
 
 
 # Überprüfen des Azure-VNET für die Verwendung mit Azure RemoteApp
+
+> [AZURE.IMPORTANT]
+Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148).
 
 Bevor Sie ein Azure-VNET mit Azure RemoteApp verwenden, empfiehlt es sich, das VNET zu überprüfen. Dadurch werden Konnektivitätsprobleme vermieden.
 
@@ -37,4 +40,4 @@ Weitere Informationen zum End-to-End-Workflow für Hybridsammlungen finden Sie i
 - [Erstellen einer Hybridsammlung](remoteapp-create-hybrid-deployment.md)
 - [Bereitstellen einer Azure RemoteApp-Sammlung für Azure Virtual Network (mit ExpressRoute-Unterstützung)](http://blogs.msdn.com/b/rds/archive/2015/04/23/deploy-azure-remoteapp-collection-to-your-azure-virtual-network-with-support-for-expressroute.aspx)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0817_2016-->

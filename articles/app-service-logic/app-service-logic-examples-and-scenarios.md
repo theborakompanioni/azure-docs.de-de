@@ -13,16 +13,16 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration"
-   ms.date="08/01/2016"
+   ms.date="08/11/2016"
    ms.author="jehollan"/>
 
 # Beispiele und häufige Szenarios für Logik-Apps
 
 In diesem Artikel werden häufige Szenarios und Beispiele für die Verwendung von Logik-Apps zum Automatisieren von Geschäftsprozessen erläutert.
 
-## Trigger und Aktionen
+## Benutzerdefinierte Trigger und Aktionen
 
-Sie können eine Logik-App auf verschiedene Weise über eine andere App auslösen. Hier einige Beispiele:
+Sie können eine Logik-App auf verschiedene Weise über eine andere App auslösen. Hier sehen Sie ein paar allgemeine Beispiele:
 
 - [Erstellen eines benutzerdefinierten Triggers oder einer benutzerdefinierten Aktion](app-service-logic-create-api-app.md)
 - [Aktionen mit langer Ausführungszeit](app-service-logic-create-api-app.md)
@@ -33,9 +33,11 @@ Sie können eine Logik-App auf verschiedene Weise über eine andere App auslöse
 ### Szenarios
 
 - [Anfordern synchroner Antworten](app-service-logic-http-endpoint.md)
+- [Anfordern von Antworten mit SMS](https://channel9.msdn.com/Blogs/Windows-Azure/Azure-Logic-Apps-Walkthrough-Webhook-Functions-and-an-SMS-Bot)
 
 ## Fehlerbehandlung und Protokollierung
 
+- [Ausnahme- und Fehlerbehandlung](app-service-logic-exception-handling.md)
 - [Konfigurieren von Azure-Warnungen und Diagnose](app-service-logic-monitor-your-logic-apps.md)
 
 ### Szenarios
@@ -50,11 +52,11 @@ Sie können eine Logik-App auf verschiedene Weise über eine andere App auslöse
 
 ## Inhaltstypen, Konvertierungen und Transformationen
 
-Die [Definitionssprache für Workflows](http://aka.ms/logicappsdocs) in Logik-Apps enthält viele Funktionen zum Konvertieren von und Arbeiten mit unterschiedlichen Inhaltstypen. Darüber hinaus versucht das Modul, möglichst alle Inhaltstypen während des Workflows als Datenflüsse beizubehalten.
+Die [Definitionssprache für Workflows](http://aka.ms/logicappsdocs) in Logic Apps enthält viele Funktionen zum Konvertieren von und Arbeiten mit unterschiedlichen Inhaltstypen. Darüber hinaus versucht das Modul, möglichst alle Inhaltstypen während des Workflows als Datenflüsse beizubehalten.
 
 - [Behandeln von Inhaltstypen](app-service-logic-content-type.md) wie „application/json“, „application/xml“ und „plain/text“
 - [Erstellen von Logik-App-Definitionen](app-service-logic-author-definitions.md)
-- [Workflow Definition Language Reference](http://aka.ms/logicappsdocs) (Referenz zur Definitionssprache für Workflows)
+- [Workflow Definition Language Reference (Referenz zur Definitionssprache für Workflows)](http://aka.ms/logicappsdocs)
 
 ## Batches und Schleifen
 
@@ -68,7 +70,7 @@ Die [Definitionssprache für Workflows](http://aka.ms/logicappsdocs) in Logik-Ap
 
 ### Szenarios
 
-- [Azure Function as a Service Bus Trigger](app-service-logic-scenario-function-sb-trigger.md) (Azure-Funktion als Service Bus-Trigger)
+- [Azure Function as a Service Bus Trigger (Azure-Funktion als Service Bus-Trigger)](app-service-logic-scenario-function-sb-trigger.md)
 
 ## HTTP, REST und SOAP
 
@@ -77,4 +79,4 @@ Die [Definitionssprache für Workflows](http://aka.ms/logicappsdocs) in Logik-Ap
 
 Wir werden diesem Artikel weitere Beispiele und Szenarios hinzufügen. Im Bereich „Kommentare“ unten können Sie uns Wünsche zu Beispielen oder Szenarios mitteilen.
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0817_2016-->

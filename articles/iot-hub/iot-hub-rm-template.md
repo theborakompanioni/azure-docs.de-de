@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Erstellen eines IoT-Hubs mithilfe einer ARM-Vorlage und C# | Microsoft Azure"
-	description="Nutzen Sie dieses Tutorial für erste Schritte mit Resource Manager-Vorlagen zum Erstellen eines IoT-Hubs mit einem C#-Programm."
+	pageTitle="Erstellen eines IoT Hubs mithilfe einer ARM-Vorlage und C# | Microsoft Azure"
+	description="Nutzen Sie dieses Tutorial für erste Schritte mit Resource Manager-Vorlagen zum Erstellen eines IoT Hubs mit einem C#-Programm."
 	services="iot-hub"
 	documentationCenter=".net"
 	authors="dominicbetts"
@@ -13,20 +13,20 @@
      ms.topic="article"
      ms.tgt_pltfrm="na"
      ms.workload="na"
-     ms.date="05/31/2016"
+     ms.date="08/16/2016"
      ms.author="dobett"/>
 
-# Tutorial: Erstellen eines IoT-Hubs mithilfe eines C#-Programms mit einer ARM-Vorlage
+# Erstellen eines IoT Hubs mithilfe eines C#-Programms mit einer Resource Manager-Vorlage | Microsoft Azure
 
 [AZURE.INCLUDE [iot-hub-resource-manager-selector](../../includes/iot-hub-resource-manager-selector.md)]
 
 ## Einführung
 
-Sie können den Azure Resource Manager (ARM) verwenden, um Azure IoT-Hubs programmgesteuert zu erstellen und zu verwalten. In diesem Tutorial erfahren Sie, wie Sie anhand einer Ressourcen-Manager-Vorlage mit einem C#-Programm einen IoT-Hub erstellen.
+Sie können den Azure-Ressourcen-Manager verwenden, um Azure IoT Hubs programmgesteuert zu erstellen und zu verwalten. In diesem Tutorial erfahren Sie, wie Sie anhand einer Resource Manager-Vorlage mit einem C#-Programm einen IoT Hub erstellen.
 
 > [AZURE.NOTE] Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Ressourcen-Manager und klassische Bereitstellungen](../resource-manager-deployment-model.md). Dieser Artikel behandelt die Verwendung des Ressourcen-Manager-Bereitstellungsmodells.
 
-Zum Durchführen dieses Lernprogramms benötigen Sie Folgendes:
+Für dieses Tutorial benötigen Sie Folgendes:
 
 - Microsoft Visual Studio 2015.
 - Ein aktives Azure-Konto. <br/>Wenn Sie noch kein Konto haben, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Einzelheiten finden Sie unter [Kostenlose Azure-Testversion][lnk-free-trial].
@@ -37,17 +37,15 @@ Zum Durchführen dieses Lernprogramms benötigen Sie Folgendes:
 
 ## Vorbereiten des Visual Studio-Projekts
 
-1. Erstellen Sie in Visual Studio mithilfe der Projektvorlage **Konsolenanwendung** ein neues Visual C#-Windows-Projekt. Geben Sie dem Projekt den Namen **CreateIoTHub**.
+1. Erstellen Sie in Visual Studio mithilfe der Projektvorlage **Konsolenanwendung** ein Visual C#-Windows-Projekt. Geben Sie dem Projekt den Namen **CreateIoTHub**.
 
 2. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt, und klicken Sie dann auf **NuGet-Pakete verwalten**.
 
-3. Markieren Sie im NuGet-Paket-Manager die Option **Vorabversion einschließen**, und suchen Sie nach **Microsoft.Azure.Management.ResourceManager**. Klicken Sie auf **Installieren**, dann unter **Änderungen überprüfen** auf **OK**. Klicken Sie anschließend auf **Ich akzeptiere**, um die Lizenzen zu akzeptieren.
+3. Markieren Sie im NuGet-Paket-Manager die Option **Vorabversion einbeziehen**, und suchen Sie nach **Microsoft.Azure.Management.ResourceManager**. Klicken Sie auf **Installieren**, dann unter **Änderungen überprüfen** auf **OK**. Klicken Sie anschließend auf **Ich akzeptiere**, um die Lizenzen zu akzeptieren.
 
 4. Suchen Sie im NuGet-Paket-Manager nach **Microsoft.IdentityModel.Clients.ActiveDirectory**. Klicken Sie auf **Installieren**, dann unter **Änderungen überprüfen** auf **OK**. Klicken Sie anschließend auf **Ich akzeptiere**, um die Lizenz zu akzeptieren.
 
-5. Suchen Sie im NuGet-Paket-Manager nach **Microsoft.Azure.Common**. Klicken Sie auf **Installieren**, dann unter **Änderungen überprüfen** auf **OK**. Klicken Sie anschließend auf **Ich akzeptiere**, um die Lizenzen zu akzeptieren.
-
-6. Ersetzen Sie in „Program.cs“ die vorhandenen **using**-Anweisungen durch folgenden Text:
+5. Ersetzen Sie in „Program.cs“ die vorhandenen **using**-Anweisungen durch folgenden Text:
 
     ```
     using System;
@@ -57,7 +55,7 @@ Zum Durchführen dieses Lernprogramms benötigen Sie Folgendes:
     using Microsoft.Rest;
     ```
     
-7. Fügen Sie in „Program.cs“ die folgenden statischen Variablen ein, mit denen die Platzhalterwerte ersetzt werden. Weiter oben in diesem Tutorial haben Sie sich die Werte für **ApplicationId**, **SubscriptionId**, **TenantId** und **Password** notiert. **Der Name Ihres Speicherkontos** ist der Name des Azure-Speicherkontos, in dem Sie die Vorlagendateien speichern. **Ressourcengruppenname** ist der Name der Ressourcengruppe, die beim Erstellen des IoT-Hubs verwendet wird – diese Gruppe kann neu oder bereits vorhanden sein. **Bereitstellungsname** ist ein Name für die Bereitstellung, wie z. B. **Deployment\_01**.
+6. Fügen Sie in „Program.cs“ die folgenden statischen Variablen ein, mit denen die Platzhalterwerte ersetzt werden. Weiter oben in diesem Tutorial haben Sie sich die Werte für **ApplicationId**, **SubscriptionId**, **TenantId** und **Password** notiert. **Der Name Ihres Speicherkontos** ist der Name des Azure-Speicherkontos, in dem Sie die Vorlagendateien speichern. **Ressourcengruppenname** ist der Name der Ressourcengruppe, die beim Erstellen des IoT Hubs verwendet wird – diese Gruppe kann neu oder bereits vorhanden sein. **Bereitstellungsname** ist ein Name für die Bereitstellung, wie z. B. **Deployment\_01**.
 
     ```
     static string applicationId = "{Your ApplicationId}";
@@ -71,13 +69,13 @@ Zum Durchführen dieses Lernprogramms benötigen Sie Folgendes:
 
 [AZURE.INCLUDE [iot-hub-get-access-token](../../includes/iot-hub-get-access-token.md)]
 
-## Einsenden einer Vorlage zum Erstellen eines IoT-Hubs
+## Einsenden einer Vorlage zum Erstellen eines IoT Hubs
 
-Verwenden Sie eine JSON-Vorlage und eine Parameterdatei, um einen neuen IoT-Hub in der Ressourcengruppe zu erstellen. Sie können auch eine Vorlage verwenden, um Änderungen an einem vorhandenen IoT-Hub vorzunehmen.
+Verwenden Sie eine JSON-Vorlage und eine Parameterdatei, um einen IoT Hub in der Ressourcengruppe zu erstellen. Sie können auch eine Vorlage verwenden, um Änderungen an einem vorhandenen IoT Hub vorzunehmen.
 
-1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt, klicken Sie auf **Hinzufügen** und dann auf **Neues Element**. Fügen Sie dem Projekt eine neue JSON-Datei namens **template.json** hinzu.
+1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt, klicken Sie auf **Hinzufügen** und dann auf **Neues Element**. Fügen Sie dem Projekt eine JSON-Datei namens **template.json** hinzu.
 
-2. Ersetzen Sie den Inhalt von **template.json** mit der folgenden Ressourcendefinition, um der Region **East US** einen neuen Standard-IoT-Hub hinzuzufügen:
+2. Ersetzen Sie den Inhalt von **template.json** mit der folgenden Ressourcendefinition, um der Region **USA, Osten** einen Standard-IoT Hub hinzuzufügen:
 
     ```
     {
@@ -113,9 +111,9 @@ Verwenden Sie eine JSON-Vorlage und eine Parameterdatei, um einen neuen IoT-Hub 
     }
     ```
 
-3. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt, klicken Sie auf **Hinzufügen** und dann auf **Neues Element**. Fügen Sie dem Projekt eine neue JSON-Datei namens **parameters.json** hinzu.
+3. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt, klicken Sie auf **Hinzufügen** und dann auf **Neues Element**. Fügen Sie dem Projekt eine JSON-Datei namens **parameters.json** hinzu.
 
-4. Ersetzen Sie den Inhalt von **parameters.json** durch die folgenden Parameterinformationen, die den Namen des neuen IoT Hubs festlegen, beispielsweise**{Ihre Initialen}mynewiothub** (beachten Sie, dass dieser Name global eindeutig sein muss und daher Ihren Namen oder Ihre Initialen enthalten sollte):
+4. Ersetzen Sie den Inhalt von **parameters.json** mit den folgenden Parameterinformationen, die z.B. **{Ihre Initialen}mynewiothub** als Namen des neuen IoT Hubs festlegen. Beachten Sie, dass dieser Name global eindeutig sein muss und daher Ihren Namen oder Ihre Initialen enthalten sollte:
 
     ```
     {
@@ -127,13 +125,13 @@ Verwenden Sie eine JSON-Vorlage und eine Parameterdatei, um einen neuen IoT-Hub 
     }
     ```
 
-5. Verbinden Sie sich im **Server-Explorer** mit Ihrem Azure-Abonnement, und erstellen Sie in Ihrem Speicherkonto einen neuen Container namens **templates**. Setzen Sie im Bereich **Eigenschaften** die Berechtigungen für den **Öffentlichen Lesezugriff** für den Container **templates** auf **Blob**.
+5. Verbinden Sie sich im **Server-Explorer** mit Ihrem Azure-Abonnement, und erstellen Sie in Ihrem Speicherkonto einen Container namens **templates**. Setzen Sie im Bereich **Eigenschaften** die Berechtigungen für den **Öffentlichen Lesezugriff** für den Container **templates** auf **Blob**.
 
 6. Klicken Sie im **Server-Explorer** mit der rechten Maustaste auf den Container **templates**, und klicken Sie dann auf **BLOB-Container anzeigen**. Klicken Sie auf die Schaltfläche **Blob hochladen**, wählen Sie die beiden Dateien **parameters.json** und **templates.json**, und klicken Sie dann auf **Öffnen**, um die JSON-Dateien in den Container **templates** hochzuladen. Die URLs der Blobs mit den JSON-Daten lauten:
 
     ```
     https://{Your storage account name}.blob.core.windows.net/templates/parameters.json
-    https://{Your storage account name}.windows.net/templates/template.json
+    https://{Your storage account name}.blob.core.windows.net/templates/template.json
     ```
 
 7. Fügen Sie "Program.cs" die folgende Methode hinzu:
@@ -168,7 +166,7 @@ Verwenden Sie eine JSON-Vorlage und eine Parameterdatei, um einen neuen IoT-Hub 
         });
     ```
 
-6. Fügen Sie den folgenden Code der Methode **CreateIoTHub** hinzu, um den Status und die Schlüssel für den neuen IoT-Hub anzuzeigen:
+6. Fügen Sie den folgenden Code der Methode **CreateIoTHub** hinzu, um den Status und die Schlüssel für den neuen IoT Hub anzuzeigen:
 
     ```
     string state = createResponse.Properties.ProvisioningState;
@@ -196,13 +194,13 @@ Sie können die Anwendung jetzt durch Aufrufen der Methode **CreateIoTHub** fert
 
 3. Klicken Sie auf **Debuggen** und dann auf **Debuggen starten**, um die Anwendung auszuführen. Es kann mehrere Minuten dauern, bis die Bereitstellung abgeschlossen ist.
 
-4. Das Hinzufügen des neuen IoT-Hubs durch die Anwendung lässt sich durch Anzeigen der Ressourcenliste im [Portal][lnk-azure-portal] oder mithilfe des PowerShell-Cmdlets **Get-AzureRmResource** überprüfen.
+4. Das Hinzufügen des neuen IoT Hubs durch die Anwendung lässt sich durch Anzeigen der Ressourcenliste im [Portal][lnk-azure-portal] oder mithilfe des PowerShell-Cmdlets **Get-AzureRmResource** überprüfen.
 
-> [AZURE.NOTE] Diese Beispielanwendung fügt einen für Sie kostenpflichtigen S1-Standard-IoT-Hub hinzu. Sie können den IoT-Hub nach Abschluss des Beispiels über das [Portal][lnk-azure-portal] oder mithilfe des PowerShell-Cmdlets **Remove-AzureRmResource** löschen.
+> [AZURE.NOTE] Diese Beispielanwendung fügt einen für Sie kostenpflichtigen S1-Standard-IoT Hub hinzu. Sie können den IoT Hub nach Abschluss des Beispiels über das [Portal][lnk-azure-portal] oder mithilfe des PowerShell-Cmdlets **Remove-AzureRmResource** löschen.
 
 ## Nächste Schritte
 
-Nachdem Sie nun einen IoT-Hub mithilfe einer ARM-Vorlage mit einem C#-Programm bereitgestellt haben, möchten Sie vielleicht mehr wissen:
+Nachdem Sie nun einen IoT Hub mithilfe einer Resource Manager-Vorlage mit einem C#-Programm bereitgestellt haben, möchten Sie vielleicht mehr wissen:
 
 - Informieren Sie sich über die Funktionen der [IoT Hub-Ressourcenanbieter-REST-API][lnk-rest-api].
 - Weitere Informationen zu den Fähigkeiten des Azure-Ressourcen-Manager finden Sie unter [Übersicht über den Azure-Ressourcen-Manager][lnk-azure-rm-overview].
@@ -235,4 +233,4 @@ Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 [lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
 [lnk-portal]: iot-hub-manage-through-portal.md
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0817_2016-->

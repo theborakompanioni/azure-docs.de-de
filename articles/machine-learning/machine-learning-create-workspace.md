@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/23/2016"
+	ms.date="08/16/2016"
 	ms.author="garye;bradsev;ahgyger"/>
 
 
@@ -74,7 +74,7 @@ Informationen zum Verwalten des Arbeitsbereichs finden Sie unter [Verwalten eine
 
 Es folgt eine Tabelle zur Verdeutlichung der Unterschiede zwischen einem Azure-Abonnementadministrator und Besitzer eines Arbeitsbereichs.
 
-| Aktionen | Azure-Abonnementadministrator | Besitzer des Arbeitsbereichs |
+| Actions | Azure-Abonnementadministrator | Besitzer des Arbeitsbereichs |
 | --------------			|:------------------------:| :----------------:|
 | Zugriff auf das [klassische Microsoft Azure-Portal]| Ja | Nein |
 | Erstellen eines neuen Arbeitsbereichs | Ja | Nein |
@@ -106,4 +106,4 @@ Es folgt eine Tabelle zur Verdeutlichung der Unterschiede zwischen einem Azure-A
 [klassische Microsoft Azure-Portal]: https://manage.windowsazure.com/
 [klassischen Microsoft Azure-Portal]: https://manage.windowsazure.com/
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0817_2016-->

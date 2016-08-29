@@ -14,7 +14,7 @@
 	ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="identity" 
-	ms.date="08/08/2016"
+	ms.date="08/17/2016"
 	ms.author="markvi"/>
 
 
@@ -105,11 +105,13 @@ In der folgenden Inhaltszuordnung werden Dokumente aufgeführt, in denen Sie wei
 - [Unterstützte Anwendungsarten](active-directory-conditional-access-supported-apps.md)
 
 
-### Geräterichtlinien
+### Gerätebasierter bedingter Zugriff
 
 - [Festlegen von gerätebasierten Richtlinien für bedingten Zugriff zur Steuerung des Zugriffs auf über Azure Active Directory verbundene Anwendungen](active-directory-conditional-access-policy-connected-applications.md)
 
 - [Einrichten der automatischen Registrierung von in die Domäne eingebundenen Windows-Geräten bei Azure Active Directory](active-directory-conditional-access-automatic-device-registration-setup.md)
+
+- [Benutzerkorrektur beim Zugreifen auf Anwendungen mit gerätebasiertem bedingtem Azure AD-Zugriffsschutz](active-directory-conditional-access-device-remediation.md)
 
 - [Schützen von Daten durch vollständiges oder selektives Zurücksetzen mit Microsoft Intune](https://docs.microsoft.com/intune/deploy-use/use-remote-wipe-to-help-protect-data-using-microsoft-intune)
 
@@ -123,4 +125,4 @@ In der folgenden Inhaltszuordnung werden Dokumente aufgeführt, in denen Sie wei
 - [Häufig gestellte Fragen zum bedingten Zugriff](active-directory-conditional-faqs.md)
 - [Technische Referenz](active-directory-conditional-access-technical-reference.md)
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0817_2016-->

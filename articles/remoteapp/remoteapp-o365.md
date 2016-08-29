@@ -13,14 +13,17 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="06/27/2016"
+    ms.date="08/15/2016"
     ms.author="elizapo" />
 
 # Verwenden von Office mit Azure RemoteApp
 
+> [AZURE.IMPORTANT]
+Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148).
+
 Sie haben zwei Möglichkeiten für das Hosten von Office-Anwendungen in Azure RemoteApp: Office 365 ProPlus oder die Testversion von Office 2013 Professional Plus.
 
-**Wussten Sie, dass dieser Artikel schon bald durch eine neue, überarbeitete Version ersetzt wird? Lesen Sie [Verwenden Ihres Office 365-Abonnements mit Azure RemoteApp](remoteapp-officesubscription.md). Hier erfahren Sie alles Wissenswerte zur Verwendung von Office 365 + Azure RemoteApp.**
+**Wussten Sie, dass dieser Artikel schon bald durch eine neue, überarbeitete Version ersetzt wird? Lesen Sie [Verwenden Ihres Office 365-Abonnements mit Azure RemoteApp](remoteapp-officesubscription.md). Hier erfahren Sie alles Wissenswerte zur Verwendung von Office 365 + Azure RemoteApp.**
 
 ## Office 365 ProPlus
 Sie können eine RemoteApp-Sammlung mit dem Office 365 ProPlus-Vorlagenimage erstellen. Diese Option ermöglicht die Erweiterung Ihres Office 365-Diensts um RemoteApp. Dazu benötigen Sie einen vorhandenen Abonnementplan, und Ihre Benutzer müssen entweder eigenständig oder über Office 365-Servicepläne für den Office 365 ProPlus-Dienst lizenziert sein.
@@ -49,4 +52,4 @@ Wenn Sie Ihr Konto aktivieren, wirkt sich dies auf alle RemoteApp-Sammlungen in 
 
 Wenn Sie nach Ablauf des Testzeitraums nicht zum Produktionsmodus wechseln, werden die RemoteApp-Sammlungen deaktiviert. Keine Sorge - Ihre Einstellungen und Benutzerdaten bleiben für weitere 90 Tage gespeichert, sodass Sie Ihren Dienst noch aktivieren und ohne Datenverlust in den Produktionsmodus wechseln können.
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0817_2016-->

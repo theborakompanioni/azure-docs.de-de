@@ -13,12 +13,15 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="06/13/2016"
+    ms.date="08/15/2016"
     ms.author="elizapo" />
 
 
 
 # Größeninformationen für ein VNET in Azure RemoteApp
+
+> [AZURE.IMPORTANT]
+Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148).
 
 Wenn Sie Azure RemoteApp mit einem virtuellen Netzwerk (VNET) verwenden, werden von RemoteApp IP-Adressen innerhalb des Subnetzes verwendet. Je nach Größe Ihres RemoteApp-Diensts müssen Sie sicherstellen, dass Ihr Subnetz über genügend IP-Adressen für die virtuellen Computer der RemoteApp verfügt. Die Größeninformationen können nicht ganz präzise sein, da die virtuellen Computer in einer Sammlung von der RemoteApp dynamisch angepasst werden. Die Informationen dienen daher nur zur Einschätzung Ihres Subnetzbereichs. Dies ist besonders wichtig, da nach dem Platzieren eines RemoteApp-Diensts in einem VNET keine Erhöhung der Subnetzgröße möglich ist, ohne die RemoteApp zu entfernen.
 
@@ -29,4 +32,4 @@ Sehen Sie sich die folgenden Informationen an, um sicherzustellen, dass Ihr VNET
 - [Migrieren Sie von einem persönlichen VNET zu einem Azure-VNET](remoteapp-migratevnet.md)
 - [Überprüfen des Azure-VNET für die Verwendung mit Azure RemoteApp](remoteapp-vnet.md)
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0817_2016-->

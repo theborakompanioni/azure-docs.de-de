@@ -44,7 +44,7 @@ Sie können einen virtuellen Computer im [Azure-Verwaltungsportal](http://go.mic
 
     >[AZURE.NOTE] Wenn Sie eine größere Größe für den virtuellen Computer auswählen, fallen ggf. zusätzliche Kosten an. Weitere Informationen finden Sie unter [Preisdetails für virtuelle Computer](https://azure.microsoft.com/pricing/details/virtual-machines/).
 
-1. Für virtuelle Computer, die in Visual Studio erstellt werden, ist ein Clouddienst erforderlich. Wählen Sie auf der Seite **Einstellungen des Clouddiensts** einen Clouddienst für den virtuellen Computer aus, oder klicken Sie in der Dropdownliste auf **Neu erstellen…**, wenn Sie noch nicht über einen Clouddienst verfügen oder einen neuen Clouddienst verwenden möchten. Ein Speicherkonto ist ebenfalls erforderlich. Wählen Sie daher aus dem Dropdownlistenfeld **Speicherkonto** ein Speicherkonto aus (oder erstellen Sie ein neues Speicherkonto). Weitere Informationen finden Sie unter [Einführung in Microsoft Azure Storage](../articles/storage/storage-introduction/).
+1. Für virtuelle Computer, die in Visual Studio erstellt werden, ist ein Clouddienst erforderlich. Wählen Sie auf der Seite **Einstellungen des Clouddiensts** einen Clouddienst für den virtuellen Computer aus, oder klicken Sie in der Dropdownliste auf **Neu erstellen…**, wenn Sie noch nicht über einen Clouddienst verfügen oder einen neuen Clouddienst verwenden möchten. Ein Speicherkonto ist ebenfalls erforderlich. Wählen Sie daher aus dem Dropdownlistenfeld **Speicherkonto** ein Speicherkonto aus (oder erstellen Sie ein neues Speicherkonto). Weitere Informationen finden Sie unter [Einführung in Microsoft Azure Storage](../articles/storage/storage-introduction.md).
 
 1. Wenn Sie ein virtuelles Netzwerk angeben möchten (dies ist optional), wählen Sie dieses in den Dropdownlistenfeldern "Virtuelles Netzwerk" und "Subnetz" aus.
 
@@ -78,7 +78,7 @@ Sie können einen virtuellen Computer im [Azure-Verwaltungsportal](http://go.mic
 
 ## Verwalten Ihrer virtuellen Computer
 
-Auf der Konfigurationsseite des virtuellen Computers können Sie den ausgewählten virtuellen Computer herunterfahren, Verbindungen herstellen, den Computer aktualisieren und dem Computer Prüfpunkte hinzufügen. Außerdem können Sie Einstellungen für den virtuellen Computer anzeigen oder ändern. Sie können Folgendes ausführen:
+Auf der Konfigurationsseite des virtuellen Computers können Sie den ausgewählten virtuellen Computer herunterfahren, Verbindungen herstellen, den Computer aktualisieren und dem Computer Prüfpunkte hinzufügen. Außerdem können Sie Einstellungen für den virtuellen Computer anzeigen oder ändern. Sie können:
 
 - Ändern der Größe des virtuellen Computers
 
@@ -157,3 +157,5 @@ Wenn Sie Ihren virtuellen Computer konfigurieren und Software darauf installiere
 ## Nächste Schritte
 
 Weitere Informationen zum Erstellen von virtuellen Computern finden Sie unter [Erstellen eines virtuellen Linux-Computers](../articles/virtual-machines/virtual-machines-linux-quick-create-cli.md) und [Erstellen ein virtuellen Windows-Computers im Azure-Vorschauportal](../articles/virtual-machines/virtual-machines-windows-hero-tutorial.md).
+
+<!---HONumber=AcomDC_0817_2016-->

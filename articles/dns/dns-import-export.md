@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="05/11/2016"
+   ms.date="08/16/2016"
    ms.author="cherylmc"/>
 
 # Importieren und Exportieren einer DNS-Zonendatei mit der Azure-Befehlszeilenschnittstelle
@@ -95,7 +95,7 @@ Um das Format einer Zonendatei zu überprüfen, ohne sie tatsächlich zu importi
 
 So importieren Sie eine Zonendatei für die Zone **contoso.com**
 
-1. Melden Sie sich an Ihrem Azure-Abonnement an, indem Sie die Azure-Befehlszeilenschnittstelle verwenden.
+1. Melden Sie sich bei Ihrem Azure-Abonnement an, indem Sie die Azure-Befehlszeilenschnittstelle verwenden.
 
 		azure login
 
@@ -172,12 +172,12 @@ Werte:
 - `<zone name>` ist der Name der Zone.
 - `<zone file name>` ist der Pfad/Name der zu exportierenden Zonendatei.
 
-Wie beim Zonenimport auch, müssen Sie sich zuerst anmelden, Ihr Abonnement auswählen und die Azure-Befehlszeilenschnittstelle so konfigurieren, dass der Ressourcen-Manager-Modus verwendet wird.
+Sie müssen sich – wie beim Zonenimport – zunächst anmelden, Ihr Abonnement auswählen und die Azure-Befehlszeilenschnittstelle so konfigurieren, dass der Ressourcen-Manager-Modus verwendet wird.
 
 ### So exportieren Sie eine Zonendatei
 
 
-1. Melden Sie sich an Ihrem Azure-Abonnement an, indem Sie die Azure-Befehlszeilenschnittstelle verwenden.
+1. Melden Sie sich bei Ihrem Azure-Abonnement an, indem Sie die Azure-Befehlszeilenschnittstelle verwenden.
 
 		azure login
 
@@ -193,4 +193,4 @@ Wie beim Zonenimport auch, müssen Sie sich zuerst anmelden, Ihr Abonnement ausw
 
 		azure network dns zone export myresourcegroup contoso.com contoso.com.txt
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0817_2016-->

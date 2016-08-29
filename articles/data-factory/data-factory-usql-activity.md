@@ -52,7 +52,7 @@ Eigenschaft | Beschreibung | Erforderlich
 Typ | Legen Sie die Typeigenschaft auf **AzureDataLakeAnalytics** fest. | Ja
 accountName | Name des Azure Data Lake Analytics-Kontos. | Ja
 dataLakeAnalyticsUri | URI des Azure Data Lake Analytics-Kontos. | Nein 
-authorization | Der Autorisierungscode wird automatisch abgerufen, nachdem Sie im Data Factory-Editor auf die Schaltfläche **Autorisieren** geklickt und die OAuth-Anmeldung abgeschlossen haben. | Ja 
+Autorisierung | Der Autorisierungscode wird automatisch abgerufen, nachdem Sie im Data Factory-Editor auf die Schaltfläche **Autorisieren** geklickt und die OAuth-Anmeldung abgeschlossen haben. | Ja 
 subscriptionId | Azure-Abonnement-ID | Nein (falls nicht angegeben, wird das Abonnement der Data Factory verwendet). 
 ResourceGroupName | Azure-Ressourcengruppenname | Nein (falls nicht angegeben, wird die Ressourcengruppe der Data Factory verwendet).
 sessionId | Sitzungs-ID aus der OAuth-Autorisierungssitzung. Jede Sitzungs-ID ist eindeutig und darf nur einmal verwendet werden. Sie wird im Data Factory-Editor automatisch generiert. | Ja
@@ -155,19 +155,19 @@ Die folgende Tabelle beschreibt die Namen und Eigenschaften, die für diese Akti
 
 Eigenschaft | Beschreibung | Erforderlich
 :-------- | :----------- | :--------
-type | Die type-Eigenschaft muss auf **DataLakeAnalyticsU-SQL** festgelegt werden. | Ja
+Typ | Die type-Eigenschaft muss auf **DataLakeAnalyticsU-SQL** festgelegt werden. | Ja
 scriptPath | Der Pfad zum Ordner, der das U-SQL-Skript enthält. Beachten Sie, dass beim Dateinamen Groß-/Kleinschreibung beachtet werden muss. | Nein (wenn script verwendet wird)
 scriptLinkedService | Verknüpfter Dienst, der den Speicher, der das Skript enthält, mit der Data Factory verknüpft. | Nein (wenn script verwendet wird)
-script | Geben Sie ein Inlineskript anstelle von scriptPath und scriptLinkedService an. Beispiel: „script“ : „CREATE DATABASE test“. | Nein (wenn scriptPath and scriptLinkedService verwendet werden)
+script | Geben Sie anstelle von scriptPath und scriptLinkedService ein Inlineskript an. Beispiel: „script“ : „CREATE DATABASE test“. | Nein (wenn scriptPath and scriptLinkedService verwendet werden)
 degreeOfParallelism | Die maximale Anzahl von Knoten, die zum Ausführen des Auftrags gleichzeitig verwendet werden. | Nein
 priority | Bestimmt, welche der in der Warteschlange befindlichen Aufträge als erstes ausgeführt werden. Je niedriger die Zahl, desto höher die Priorität. | Nein 
 parameters | Parameter für das U-SQL-Skript | Nein 
 
 Die Skriptdefinition finden Sie unter [Skriptdefinition „SearchLogProcessing.txt“](#script-definition).
 
-### Eingabe- und Ausgabedatasets als Beispiel
+## Eingabe- und Ausgabedatasets als Beispiel
 
-#### Eingabedataset
+### Eingabedataset
 In diesem Beispiel befinden sich die Eingabedaten in einem Azure Data Lake-Speicher (Datei SearchLog.tsv im Ordner datalake/input).
 
 	{
@@ -191,7 +191,7 @@ In diesem Beispiel befinden sich die Eingabedaten in einem Azure Data Lake-Speic
     	}
 	}	
 
-#### Ausgabedataset
+### Ausgabedataset
 In diesem Beispiel werden die von dem U-SQL-Skript erzeugten Ausgabedaten in einem Azure Data Lake-Speicher abgelegt (im Ordner „datalake/output“).
 
 	{
@@ -209,8 +209,8 @@ In diesem Beispiel werden die von dem U-SQL-Skript erzeugten Ausgabedaten in ein
 	    }
 	}
 
-#### Beispiel: Mit Azure Data Lake-Speicher verknüpfter Dienst
-Hier finden Sie die Definition des Beispiels „Mit Azure Data Lake-Speicher verknüpfter Dienst“, der von den oben genannten Eingabe- und Ausgabedatasets verwendet wird.
+### Beispiel für einen mit Azure Data Lake Store verknüpften Dienst
+Hier finden Sie die Definition des mit Azure Data Lake Store verknüpften Beispieldiensts, der von den oben genannten Eingabe- und Ausgabedatasets verwendet wird.
 
 	{
 	    "name": "AzureDataLakeStoreLinkedService",
@@ -226,7 +226,7 @@ Hier finden Sie die Definition des Beispiels „Mit Azure Data Lake-Speicher ver
 
 Eine Beschreibung der in den oben gezeigten JSON-Ausschnitten zum Thema „Verknüpfte Dienste und Datasets mit Azure Data Lake-Speicher“ verwendeten JSON-Eigenschaften finden Sie unter [Verschieben von Daten zu und von Azure Data Lake-Speicher](data-factory-azure-datalake-connector.md)
 
-### Skriptdefinition
+## Beispiel-U-SQL-Skript 
 
 	@searchlog =
 	    EXTRACT UserId          int,
@@ -257,4 +257,21 @@ Die Werte für die Parameter **@in** und **@out** im oben dargestellten U-SQL-Sk
 
 Sie können in Ihrer Pipelinedefinition auch andere Eigenschaften wie etwa „degreeOfParallelism“ oder „priority“ für die Aufträge angeben, die im Azure Data Lake Analytics-Dienst ausgeführt werden.
 
-<!---HONumber=AcomDC_0629_2016-->
+## Dynamische Parameter
+In der oben gezeigten beispielhaften Pipelinedefinition werden die Eingabe- und Ausgabeparameter mit hartcodierten Werten zugewiesen.
+
+    "parameters": {
+        "in": "/datalake/input/SearchLog.tsv",
+        "out": "/datalake/output/Result.tsv"
+    }
+
+Anstelle von hartcodierten Werten können dynamische Parameter verwendet werden. Beispiel:
+
+    "parameters": {
+        "in": "$$Text.Format('/datalake/input/{0:yyyy-MM-dd HH:mm:ss}.tsv', SliceStart)",
+        "out": "$$Text.Format('/datalake/output/{0:yyyy-MM-dd HH:mm:ss}.tsv', SliceStart)"
+    }
+
+In diesem Fall werden die Eingabedateien weiterhin aus dem Ordner „/datalake/input“ abgerufen und die Ausgabedateien im Ordner „datalake/output“ generiert, aber die Dateinamen sind dynamisch und basieren auf der Startzeit der Slices.
+
+<!---HONumber=AcomDC_0817_2016-->

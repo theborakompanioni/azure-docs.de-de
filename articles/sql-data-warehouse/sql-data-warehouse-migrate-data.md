@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="05/31/2016"
+   ms.date="08/16/2016"
    ms.author="lodipalm;barbkess;sonyama"/>
 
 # Migrieren von Daten
@@ -22,15 +22,15 @@ Daten können aus unterschiedlichen Quellen und mithilfe verschiedener Tools in 
 In diesem Artikel werden zunächst einfache Migrationsszenarios der ADF-Kopieraktivität sowie von SSIS und bcp erörtert. Dann wird detaillierter erläutert, wie die Migration optimiert werden kann.
 
 ## Azure Data Factory (ADF)-Kopieraktivität
-Die [ADF-Kopieraktivität][] ist Teil von [Azure Data Factory][]. Mithilfe der ADF-Kopieraktivität können Sie Ihre Daten in Flatfiles im lokalen Speicher, in Remoteflatfiles im Azure-Blob-Speicher oder direkt in SQL Data Warehouse exportieren.
+[ADF Copy][] ist Teil von [Azure Data Factory][]. Mithilfe der ADF-Kopieraktivität können Sie Ihre Daten in Flatfiles im lokalen Speicher, in Remoteflatfiles im Azure-Blob-Speicher oder direkt in SQL Data Warehouse exportieren.
 
-Wenn sich Ihre Daten in Flatfiles befinden, müssen Sie sie zuerst in den Azure-Blob-Speicher übertragen. Erst dann können Sie sie in SQL Data Warehouse laden. Nachdem die Daten in den Azure-Blob-Speicher übertragen wurden, können Sie sie dann wieder mithilfe der [ADF-Kopieraktivität][] in SQL Data Warehouse übertragen.
+Wenn sich Ihre Daten in Flatfiles befinden, müssen Sie sie zuerst in den Azure-Blob-Speicher übertragen. Erst dann können Sie sie in SQL Data Warehouse laden. Sobald die Daten in den Azure-Blobspeicher übertragen wurden, können Sie [ADF Copy][] erneut verwenden, um die Daten in das SQL Data Warehouse zu übertragen.
 
 Auch PolyBase stellt eine leistungsstarke Möglichkeit zum Laden der Daten dar. Allerdings bedeutet dies, dass statt einem zwei Tools verwendet werden. Wenn Ihr Schwerpunkt auf der besten Leistung liegt, sollten Sie PolyBase verwenden. Wenn Sie nur ein Tool verwenden möchten (und die Daten nicht allzu umfangreich sind), ist ADF die beste Lösung für Sie.
 
 > [AZURE.NOTE] Für PolyBase müssen die Datendateien mit UTF-8 codiert sein. Dies ist die Standardcodierung der ADF-Kopieraktivität, sodass keine Änderungen vorgenommen werden müssen. Es gilt lediglich zu beachten, dass das Standardverhalten der ADF-Kopieraktivität nicht geändert wird.
 
-In diesem Artikel finden Sie [Beispiele zur Verwendung der ADF-Kopieraktivität][].
+Lesen Sie diesen Artikel: [Azure Data Factory Editor – Beispiele][].
 
 ## Integration Services ##
 Integration Services (SSIS) ist ein leistungsfähiges und flexibles ETL-Tool (Extrahieren Transformieren und Laden), das komplexe Workflows, Datentransformation und verschiedene Optionen zum Laden von Daten unterstützt. Mit SSIS können Sie Daten in Azure oder als Teil einer größeren Migration übertragen.
@@ -173,9 +173,9 @@ Weitere Informationen zur Migration finden Sie unter [Migrieren Ihrer Lösung na
 
 <!--Article references-->
 [AZCopy]: ../storage/storage-use-azcopy.md
-[ADF-Kopieraktivität]: ../data-factory/data-factory-copy-activity.md
-[Beispiele zur Verwendung der ADF-Kopieraktivität]: ../data-factory/data-factory-copy-activity-examples.md
-[Entwicklungsübersicht]: sql-data-warehouse-develop-overview.md
+[Azure Data Factory Editor – Beispiele]: ../data-factory/data-factory-samples.md
+[ADF Copy examples]: ../data-factory/data-factory-copy-activity-tutorial-using-visual-studio.md
+[Entwicklungsübersicht]: sql-data-warehouse-overview-develop.md
 [Migrieren Ihrer Lösung nach SQL Data Warehouse]: sql-data-warehouse-overview-migrate.md
 [SQL Data Warehouse development overview]: sql-data-warehouse-overview-develop.md
 [Load data with bcp]: sql-data-warehouse-load-with-bcp.md
@@ -194,4 +194,4 @@ Weitere Informationen zur Migration finden Sie unter [Migrieren Ihrer Lösung na
 [ADO.NET-Zieladapter]: https://msdn.microsoft.com/library/bb934041.aspx
 [SSIS-Dokumentation]: https://msdn.microsoft.com/library/ms141026.aspx
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0817_2016-->

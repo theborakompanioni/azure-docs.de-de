@@ -3,7 +3,7 @@
    description="Erstellen eines Shardzuordnungs-Managers, um Sharddatenbanken für die Verwendung der Tools für elastische Datenbanken umzuwandeln"
    services="sql-database"
    documentationCenter=""
-   authors="SilviaDoomra"
+   authors="ddove"
    manager="jhubbard"
    editor=""/>
 
@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="NA"
    ms.workload="data-management"
    ms.date="04/26/2016"
-   ms.author="SilviaDoomra"/>
+   ms.author="ddove"/>
 
 # Migrieren von vorhandenen Datenbanken zu horizontaler Hochskalierung
 
@@ -25,7 +25,7 @@ So migrieren Sie eine vorhandene Sharddatenbank:
 
 1. Bereiten Sie die [Shardzuordnungs-Manager-Datenbank](sql-database-elastic-scale-shard-map-management.md) vor.
 2. Erstellen Sie die Shardzuordnung.
-3. Bereiten Sie die einzelnen Shards vor.  
+3. Bereiten Sie die einzelnen Shards vor.
 2. Fügen Sie Zuordnungen zur Shardzuordnung hinzu.
 
 Diese Schritte können entweder unter Verwendung der [.NET Framework-Clientbibliothek](http://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/) oder der PowerShell-Skripts ausgeführt werden, die unter [Azure SQL DB - Elastic Database tools scripts (Azure SQL-Datenbank – Skripts für Tools für elastische Datenbanken)](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db) verfügbar sind. Für die hier beschriebenen Beispiele werden die PowerShell-Skripts verwendet.
@@ -62,7 +62,7 @@ Nach dem Erstellen können Sie den Shardzuordnungs-Manager mit diesem Cmdlet abr
 
 Sie müssen den Typ der zu erstellenden Shardzuordnung auswählen. Die Auswahl hängt von der Architektur der Datenbank ab:
 
-1. Ein Mandant pro Datenbank (Informationen finden Sie im [Glossar](sql-database-elastic-scale-glossary.md)). 
+1. Ein Mandant pro Datenbank (Informationen finden Sie im [Glossar](sql-database-elastic-scale-glossary.md)).
 2. Mehrere Mandanten pro Datenbank (zwei Typen):
 	3. Listenzuordnung
 	4. Bereichszuordnung
@@ -187,4 +187,4 @@ Bei Fragen erreichen Sie uns im [SQL-Datenbankforum](http://social.msdn.microsof
 [3]: ./media/sql-database-elastic-convert-to-use-elastic-tools/multipleonsingledb.png
  
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0817_2016-->
