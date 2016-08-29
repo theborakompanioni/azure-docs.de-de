@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="05/18/2016"
+   ms.date="08/17/2016"
    ms.author="magoedte" />
 
 # Hybrid Runbook Worker: Ein Runbookauftrag wird mit dem Status „Angehalten“ beendet
@@ -33,7 +33,7 @@ Bei der Ausführung eines Runbooks tritt ein Fehler auf. Folgende Fehlermeldung 
 Es gibt mehrere mögliche Ursachen für den Fehler:
 
   1. Der Hybrid Worker befindet sich hinter einem Proxy oder einer Firewall.
-  2. Der Computer, auf dem der Hybrid Worker ausgeführt wird, erfüllt die [Mindestanforderungen](automation-hybrid-runbook-worker.md#hybrid-runbook-worker-requirements) an die Hardware nicht. 
+  2. Der Computer, auf dem der Hybrid Worker ausgeführt wird, erfüllt die [Mindestanforderungen](automation-hybrid-runbook-worker.md#hybrid-runbook-worker-requirements) an die Hardware nicht.
   3. Die Runbooks können nicht mit lokalen Ressourcen authentifiziert werden.
 
 
@@ -57,9 +57,9 @@ Vergewissern Sie sich zuerst, dass der für die Ausführung des Hybrid Runbook W
 
 ### Lösung
 
-Prüfen Sie, ob im Ereignisprotokoll **Microsoft-SMA** ein entsprechendes Ereignis mit der Beschreibung *Win32-Prozess wurde mit dem Code [4294967295] beendet* vorhanden ist. Die Ursache dieses Fehlers liegt darin, dass Sie in Ihren Runbooks die Authentifizierung nicht konfiguriert haben oder dass Sie die „Ausführen als“-Anmeldeinformationen für die Hybrid Worker-Gruppe nicht angegeben haben. Überprüfen Sie die [Runbookberechtigungen](automation-hybrid-runbook-worker#runbook-permissions), und vergewissern Sie sich, dass Sie die Authentifizierung für Ihre Runbooks ordnungsgemäß konfiguriert haben.
+Prüfen Sie, ob im Ereignisprotokoll **Microsoft-SMA** ein entsprechendes Ereignis mit der Beschreibung *Win32-Prozess wurde mit dem Code [4294967295] beendet* vorhanden ist. Die Ursache dieses Fehlers liegt darin, dass Sie in Ihren Runbooks die Authentifizierung nicht konfiguriert haben oder dass Sie die „Ausführen als“-Anmeldeinformationen für die Hybrid Worker-Gruppe nicht angegeben haben. Überprüfen Sie die [Runbookberechtigungen](automation-hybrid-runbook-worker.md#runbook-permissions), und vergewissern Sie sich, dass Sie die Authentifizierung für Ihre Runbooks ordnungsgemäß konfiguriert haben.
 
 
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0817_2016-->

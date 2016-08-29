@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="06/30/2016"
+   ms.date="08/16/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
 # Entwurfsentscheidungen und Programmiertechniken für SQL Data Warehouse
@@ -52,7 +52,7 @@ Wenn Sie die Entwicklungsartikel durchgearbeitet haben, finden Sie auf der Seite
 
 <!--Article references-->
 [Parallelität]: ./sql-data-warehouse-develop-concurrency.md
-[Verbindungen]: ./sql-data-warehouse-develop-connections.md
+[Verbindungen]: ./sql-data-warehouse-connect-overview.md
 [CTAS]: ./sql-data-warehouse-develop-ctas.md
 [Dynamisches SQL]: ./sql-data-warehouse-develop-dynamic-sql.md
 [Gruppierungsoptionen]: ./sql-data-warehouse-develop-group-by-options.md
@@ -75,4 +75,4 @@ Wenn Sie die Entwicklungsartikel durchgearbeitet haben, finden Sie auf der Seite
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0817_2016-->

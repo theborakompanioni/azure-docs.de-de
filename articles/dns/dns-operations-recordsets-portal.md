@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="05/06/2016"
+   ms.date="08/16/2016"
    ms.author="cherylmc"/>
 
 # Verwalten von DNS-Einträgen und - Ressourceneintragssätzen im Azure-Portal
@@ -134,4 +134,4 @@ Sie können den SOA- und NS-Ressourceneintragssatz an der Zonenspitze (Name = �
 -   Weitere Informationen zum Automatisieren von DNS finden Sie unter [Erstellen von DNS-Zonen und -Datensatzgruppen mithilfe des .NET SDK](dns-sdk.md).
 -   Weitere Informationen zu Reverse-DNS-Einträgen finden Sie unter [Mit PowerShell Ihre Reverse-DNS-Einträge für Ihre Dienste verwalten](dns-reverse-dns-record-operations-ps.md).
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0817_2016-->

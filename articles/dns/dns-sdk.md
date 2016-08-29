@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services" 
-   ms.date="05/10/2016"
+   ms.date="08/16/2016"
    ms.author="cherylmc"/>
 
 
@@ -25,7 +25,7 @@ Sie können die Vorgänge zum Erstellen, Löschen oder Aktualisieren von DNS-Zon
 
 Um den DNS-Client zu verwenden, müssen Sie das NuGet-Paket **Azure DNS Management Library** installieren und die DNS-Management-Namespaces Ihrem Projekt hinzufügen.
  
-1. Öffnen Sie in **Visual Studio** ein vorhandenes oder neues Projekt. 
+1. Öffnen Sie in **Visual Studio** ein vorhandenes oder neues Projekt.
 
 2. Wechseln Sie zu **Tools** **>** **NuGet-Paket-Manager** **>** **Paket-Manager-Konsole**.
 
@@ -37,7 +37,7 @@ Um den DNS-Client zu verwenden, müssen Sie das NuGet-Paket **Azure DNS Manageme
 
 ## Initialisieren des DNS-Verwaltungsclients
 
-*DnsManagementClient* enthält die Methoden und Eigenschaften, die für die Verwaltung von DNS-Zonen und Ressourceneintragssätzen erforderlich sind. Damit der Client auf Ihr Abonnement zugreifen kann, müssen Sie die ordnungsgemäßen Berechtigungen einrichten und ein AWT-Token generieren. Weitere Informationen finden Sie unter [Authentifizieren von Anforderungen von Azure Resource Manager](https://msdn.microsoft.com/library/azure/dn790557.aspx).
+*DnsManagementClient* enthält die Methoden und Eigenschaften, die für die Verwaltung von DNS-Zonen und Ressourceneintragssätzen erforderlich sind. Damit der Client auf Ihr Abonnement zugreifen kann, müssen Sie geeignete Berechtigungen einrichten und ein AWT-Token generieren. Weitere Informationen finden Sie unter [Authentifizieren von Anforderungen von Azure Resource Manager](https://msdn.microsoft.com/library/azure/dn790557.aspx).
 
 	// get a token for the AAD application (see the article link above for code)
 	string jwt = GetAToken();
@@ -113,4 +113,4 @@ Das folgende Beispiel zeigt, wie Sie eine Liste der DNS-Zonen und Ressourceneint
 
 [Visual Studio SDK-Beispielprojekt](http://download.microsoft.com/download/2/A/C/2AC64449-1747-49E9-B875-C71827890126/AzureDnsSDKExample_2015_05_05.zip)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0817_2016-->

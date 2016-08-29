@@ -13,25 +13,28 @@
 	ms.tgt_pltfrm="mobile-android"
 	ms.devlang="Java"
 	ms.topic="article"
-	ms.date="05/12/2016"
+	ms.date="08/10/2016"
 	ms.author="piyushjo;ricksal" />
 
-# Berichtserstellungsoptionen mit Engagement unter Android
+# Erweiterte Berichterstellung mit Engagement unter Android
 
 > [AZURE.SELECTOR]
+- [Universal Windows](mobile-engagement-windows-store-integrate-engagement.md)
+- [Windows Phone Silverlight](mobile-engagement-windows-phone-integrate-engagement.md)
+- [iOS](mobile-engagement-ios-integrate-engagement.md)
 - [Android](mobile-engagement-android-advanced-reporting.md)
 
-Dieses Thema beschreibt zusätzliche Berichtserstellungsszenarien in Ihrer Android-Anwendung. Das sind Optionen, die Sie auswählen und auf die App anwenden können, die im [Erste Schritte](mobile-engagement-android-get-started.md)-Lernprogramm erstellt wird.
+Dieses Thema beschreibt zusätzliche Berichterstellungsszenarien in Ihrer Android-Anwendung. Sie können diese Optionen auf die App anwenden, die im [Erste Schritte](mobile-engagement-android-get-started.md)-Tutorial erstellt wird.
 
 ## Voraussetzungen
 
 [AZURE.INCLUDE [Voraussetzungen](../../includes/mobile-engagement-android-prereqs.md)]
 
-Das Lernprogramm, das Sie abgeschlossen haben, war absichtlich direkt und einfach, aber Sie können aus einer Reihe von Optionen auswählen.
+Das Tutorial, das Sie abgeschlossen haben, war absichtlich direkt und einfach gehalten, aber Sie können aus einer Reihe von erweiterten Optionen auswählen.
 
-## Ändern der `Activity`-Klassen
+## Ändern Ihrer `Activity`-Klassen
 
-Im Tutorial [Erste Schritte](mobile-engagement-android-get-started.md) mussten Sie lediglich dafür sorgen, dass die `*Activity`-Unterklassen von den entsprechenden `Engagement*Activity`-Klassen erben (wenn z.B. Ihre Legacyaktivität `ListActivity` erweiterte, war die Erweiterung von `EngagementListActivity` erforderlich).
+Im Tutorial [Erste Schritte](mobile-engagement-android-get-started.md) mussten Sie lediglich dafür sorgen, dass die `*Activity`-Unterklassen von den entsprechenden `Engagement*Activity`-Klassen erben. Wenn z.B. Ihre Legacyaktivität `ListActivity` erweiterte, war die Erweiterung von `EngagementListActivity` erforderlich.
 
 > [AZURE.IMPORTANT] Stellen Sie bei der Verwendung von `EngagementListActivity` oder `EngagementExpandableListActivity` sicher, dass jeder Aufruf von `requestWindowFeature(...);` vor dem Aufruf von `super.onCreate(...);` erfolgt, da es andernfalls zu einem Absturz kommt.
 
@@ -41,7 +44,7 @@ Sie finden diese Klassen im Ordner `src`, und Sie können sie in Ihr Projekt kop
 
 Wenn Sie die `Activity`-Klassen nicht überladen können oder möchten, können Sie die Aktivitäten stattdessen durch direktes Aufrufen der Methoden von `EngagementAgent` starten und beenden.
 
-> [AZURE.IMPORTANT] Das Android-SDK ruft die `endActivity()`-Methode niemals auf, auch nicht beim Schließen der Anwendung (unter Android werden Anwendungen eigentlich niemals geschlossen). Daher wird *DRINGEND* empfohlen, die `startActivity()`-Methode in der `onResume`-Rückruffunktion *ALLER* Aktivitäten und die `endActivity()`-Methode in der `onPause()`-Rückruffunktion *ALLER* Aktivitäten aufzurufen. Dies ist die einzige Möglichkeit, um sicherzustellen, dass die Sitzungen nicht verloren gehen. Wenn eine Sitzung verloren geht, wird die Verbindung vom Engagement-Dienst zum Engagement-Back-End niemals getrennt (da der Dienst verbunden bleibt, so lange eine Sitzung aussteht).
+> [AZURE.IMPORTANT] Das Android-SDK ruft die `endActivity()`-Methode niemals auf, auch nicht beim Schließen der Anwendung (unter Android werden Anwendungen niemals geschlossen). Daher wird *DRINGEND* empfohlen, die `startActivity()`-Methode in der `onResume`-Rückruffunktion *ALLER* Aktivitäten und die `endActivity()`-Methode in der `onPause()`-Rückruffunktion *ALLER* Aktivitäten aufzurufen. Dies ist die einzige Möglichkeit, um sicherzustellen, dass die Sitzungen nicht verloren gehen. Wenn eine Sitzung verloren geht, wird die Verbindung vom Engagement-Dienst zum Engagement-Back-End niemals getrennt (da der Dienst verbunden bleibt, so lange eine Sitzung aussteht).
 
 Beispiel:
 
@@ -69,7 +72,7 @@ Dieses Beispiel ähnelt der `EngagementActivity`-Klasse und ihren Varianten, der
 
 Sämtlicher in `Application.onCreate()` und in anderen Anwendungsrückruffunktionen hinzugefügter Code wird für alle Prozesse der Anwendung ausgeführt, einschließlich des Engagement-Diensts. Dies kann unerwünschte Nebeneffekte haben, z. B. nicht erforderliche Speicherbelegungen und Threads im Engagement-Prozess oder doppelte Übertragungsempfänger oder -dienste.
 
-Wenn Sie `Application.onCreate()` außer Kraft setzen, wird empfohlen, den folgenden Codeausschnitt am Anfang der `Application.onCreate()`-Funktion hinzuzufügen:
+Wenn Sie `Application.onCreate()` außer Kraft setzen, sollten Sie den folgenden Codeausschnitt am Anfang der `Application.onCreate()`-Funktion hinzufügen:
 
 	 public void onCreate()
 	 {
@@ -79,15 +82,15 @@ Wenn Sie `Application.onCreate()` außer Kraft setzen, wird empfohlen, den folge
 	   ... Your code...
 	 }
 
-Sie können dieselben Schritte für `Application.onTerminate()`, `Application.onLowMemory()` und `Application.onConfigurationChanged(...)` ausführen.
+Sie können die gleichen Schritte für `Application.onTerminate()`, `Application.onLowMemory()` und `Application.onConfigurationChanged(...)` ausführen.
 
 Sie können auch `EngagementApplication` anstelle von `Application` erweitern: Die Rückruffunktion `Application.onCreate()` übernimmt die Prozessprüfung und ruft `Application.onApplicationProcessCreate()` nur auf, wenn es sich bei dem aktuellen Prozess nicht um den Prozess handelt, der den Engagement-Dienst hostet. Dieselben Regeln gelten für die anderen Rückruffunktionen.
 
 ## Tags in der Datei "AndroidManifest.xml"
 
-Im Dienst-Tag der Datei „AndroidManifest.xml“ ermöglicht es das `android:label`-Attribut Ihnen, den Namen des Engagement-Diensts so auszuwählen, wie er den Endbenutzern auf dem Bildschirm für aktive Dienste ihres Mobiltelefons angezeigt wird. Es wird empfohlen, dieses Attribut auf `"<Your application name>Service"` festzulegen (z.B. `"AcmeFunGameService"`).
+Das `android:label`-Attribut ermöglicht Ihnen, im Diensttag der Datei AndroidManifest.xml den Namen des Engagement-Diensts so auszuwählen, wie er den Endbenutzern auf dem Bildschirm für aktive Dienste ihres Mobiltelefons angezeigt wird. Sie sollten dieses Attribut auf `"<Your application name>Service"` festlegen (z.B. `"AcmeFunGameService"`).
 
-Durch die Angabe des Attributs `android:process` wird sichergestellt, dass der Engagement-Dienst im eigenen Prozess ausgeführt wird (durch Ausführen von Engagement in demselben Prozess wie die Anwendung wird der Thread „main/UI“ potenziell weniger reaktionsfähig).
+Durch die Angabe des Attributs `android:process` wird sichergestellt, dass der Engagement-Dienst im eigenen Prozess ausgeführt wird (durch Ausführen von Engagement im gleichen Prozess wie die Anwendung wird der Thread „main/UI“ potenziell weniger reaktionsfähig).
 
 ## Erstellen mit ProGuard
 
@@ -98,4 +101,4 @@ Wenn Sie das Anwendungspaket mithilfe von ProGuard erstellen, müssen Sie einige
 	<methods>;
  	}
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0817_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="nodejs" 
 	ms.topic="article" 
-	ms.date="06/24/2016" 
+	ms.date="08/11/2016" 
 	ms.author="robmcm"/>
 
 # Aktivieren von Remotedesktop in Azure
@@ -73,13 +73,13 @@ Nachdem Sie die aktualisierte Dienstdefinition veröffentlicht haben, können Si
 
     ![Windows-Sicherheitshinweis][5]
 
-4.  Klicken Sie auf **Verbinden**. Ein Sicherheitshinweis wird angezeigt, mit dem gemeldet wird, dass Sie Ihre Anmeldedaten eingeben müssen, um auf die Instanz zuzugreifen. Geben Sie das Kennwort ein, das Sie in [Schritt 1](Schritt 1: Konfigurieren des Diensts für Remotedesktopzugriff mit Azure PowerShell) erstellt haben, und klicken Sie dann auf **OK.**
+4.  Klicken Sie auf **Verbinden**. Ein Sicherheitshinweis wird angezeigt, mit dem gemeldet wird, dass Sie Ihre Anmeldedaten eingeben müssen, um auf die Instanz zuzugreifen. Geben Sie das Kennwort ein, das Sie in [Schritt 1][Schritt 1: Konfigurieren des Diensts für Remotedesktopzugriff mit Azure PowerShell] erstellt haben, und klicken Sie dann auf **OK.**
 
     ![Hinweis auf Benutzernamen/Kennwort][6]
 
 Wenn die Verbindung hergestellt ist, zeigt die Remotedesktopverbindung den Desktop der Instanz in Azure an.
 
-![Remotedesktopsitzung][7]
+![Remotedesktop-Sitzung][7]
 
 ## Schritt 3: Konfigurieren des Diensts zur Deaktivierung des Remotedesktopzugriffs 
 
@@ -95,7 +95,7 @@ Wenn Sie die Remotedesktopverbindungen zu den Rolleninstanzen in der Cloud nicht
 
 ## Zusätzliche Ressourcen
 
-- [Fernzugriff auf Rolleninstanzen in Azure] 
+- [Fernzugriff auf Rolleninstanzen in Azure]
 - [Verwenden von Remotedesktop mit Azure-Rollen]
 - [Node.js Developer Center](/develop/nodejs/)
 
@@ -115,4 +115,4 @@ Wenn Sie die Remotedesktopverbindungen zu den Rolleninstanzen in der Cloud nicht
 [Verwenden von Remotedesktop mit Azure-Rollen]: http://msdn.microsoft.com/library/windowsazure/gg443832.aspx
  
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0817_2016-->

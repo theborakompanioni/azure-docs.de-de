@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
-   ms.date="04/19/2016"
+   ms.date="08/15/2016"
    ms.author="tarcher" />
 
 # Optimieren des Azure-Codes
@@ -532,4 +532,4 @@ public class BlogsController : Controller
 
 Weitere Informationen zur Optimierung und Problembehandlung von Azure-Apps finden Sie unter [Problembehandlung von Web-Apps in Azure App Service in Visual Studio](./app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md).
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0817_2016-->

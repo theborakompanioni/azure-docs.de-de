@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/08/2016"
+   ms.date="08/10/2016"
    ms.author="chackdan"/>
 
 # Szenarien für die Clustersicherheit in Service Fabric
@@ -54,7 +54,7 @@ Cluster unter Azure oder eigenständige Cluster unter Windows können entweder [
 
 Clients, die unter Verwendung des Administratorzertifikats eine Verbindung mit dem Cluster herstellen, haben uneingeschränkten Zugriff auf die Verwaltungsfunktionen. Clients, die unter Verwendung des schreibgeschützten Benutzerclientzertifikats eine Verbindung mit dem Cluster herstellen, haben nur Lesezugriff auf die Verwaltungsfunktionen. Diese Zertifikate werden also für die weiter unten beschriebene rollenbasierte Zugriffssteuerung (Role Based Access Control, RBAC) verwendet.
 
-Bei Verwendung von Azure finden Sie Informationen zum Konfigurieren der Zertifikatsicherheit in einem Cluster unter [Schützen eines Service Fabric-Clusters in Azure mit Zertifikaten](service-fabric-secure-azure-cluster-with-certs.md) sowie unter [Einrichten eines Service Fabric-Clusters mit einer Azure Resource Manager-Vorlage](service-fabric-cluster-creation-via-arm.md).
+Um zu erfahren, wie Sie Zertifikatsicherheit in einem Azure-Cluster konfigurieren, lesen Sie [Schützen eines Service Fabric-Clusters in Azure mit Zertifikaten](service-fabric-secure-azure-cluster-with-certs.md) sowie [Einrichten eines Service Fabric-Clusters mit einer Azure Resource Manager-Vorlage](service-fabric-cluster-creation-via-arm.md).
 
 Bei Verwendung eines eigenständigen Clusters unter Windows Server finden Sie weitere Informationen unter [Schützen des eigenständigen Windows-Clusters mit Zertifikaten](service-fabric-windows-cluster-x509-security.md).
 
@@ -64,7 +64,7 @@ Unter Azure ausgeführte Cluster können den Zugriff auf die Verwaltungsendpunkt
 ## Sicherheitsempfehlungen
 Für Azure-Cluster wird die Verwendung der AAD-Sicherheit empfohlen, um Clients und Zertifikate für die Knoten-zu-Knoten-Sicherheit zu authentifizieren.
 
-Für eigenständige Windows Server-Cluster wird die Verwendung der Windows-Sicherheit mit gruppenverwalteten Konten empfohlen, wenn Sie über Windows Server 2012 R2 und Active Directory verfügen. Verwenden Sie andernfalls weiterhin die Windows-Sicherheit mit Windows-Konten.
+Für eigenständige Windows Server-Cluster wird die Verwendung der Windows-Sicherheit mit gruppenverwalteten Konten empfohlen (Group Managed Accounts, GMA), wenn Sie über Windows Server 2012 R2 und Active Directory verfügen. Verwenden Sie andernfalls weiterhin die Windows-Sicherheit mit Windows-Konten.
 
 ## Rollenbasierte Zugriffssteuerung (Role Based Access Control, RBAC)
 Zugriffssteuerung ermöglicht es dem Clusteradministrator, den Zugriff auf bestimmte Clustervorgänge für verschiedene Gruppen von Benutzern einzuschränken, wodurch die Sicherheit des Clusters erhöht wird. Für Clients, die eine Clusterverbindung herstellen, werden zwei unterschiedliche Zugriffssteuerungen unterstützt: Administratorrolle und Benutzerrolle.
@@ -103,9 +103,15 @@ Clientzertifikate werden in der Regel nicht von einer Drittanbieter-Zertifizieru
 
 
 ## Nächste Schritte
+
+Erfahren Sie, wie Sie einen sicheren Cluster einrichten:
+
+- [Schützen eines Service Fabric-Clusters in Azure mit Zertifikaten](service-fabric-secure-azure-cluster-with-certs.md)
+
 Nachdem Sie nun Ihren Cluster eingerichtet haben, erhalten Sie Informationen über Clusterupgrades:
 
 - [Upgrade von Service Fabric-Clustern](service-fabric-cluster-upgrade.md)
+- [Hinzufügen oder Entfernen von Zertifikaten für einen Service Fabric-Cluster in Azure](service-fabric-cluster-security-update-certs-azure.md)
 
 Weitere Informationen zur Anwendungssicherheit:
 
@@ -117,4 +123,4 @@ Weitere Informationen zur Anwendungssicherheit:
 [Node-to-Node]: ./media/service-fabric-cluster-security/node-to-node.png
 [Client-to-Node]: ./media/service-fabric-cluster-security/client-to-node.png
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0817_2016-->

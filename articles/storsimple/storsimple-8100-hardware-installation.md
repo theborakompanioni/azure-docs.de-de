@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="04/25/2016"
+   ms.date="08/17/2016"
    ms.author="alkohli" />
 
 # Auspacken, Einbauen und Verkabeln des StorSimple 8100-Geräts
@@ -291,4 +291,4 @@ Das Gerät ist jetzt für Stromversorgung, Netzwerkzugriff und serielle Konnekti
 
 Erfahren Sie, wie Sie Ihr [lokales StorSimple-Gerät bereitstellen und konfigurieren](storsimple-deployment-walkthrough.md).
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0817_2016-->

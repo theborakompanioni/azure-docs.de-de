@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
-   ms.date="06/01/2016"
+   ms.date="08/15/2016"
    ms.author="tarcher" />
 
 # Konfigurieren der Rollen für einen Azure-Clouddienst mit Visual Studio
@@ -99,7 +99,7 @@ Wenn Sie verschiedene Werte für die einzelnen Dienstkonfigurationen verwenden, 
 
 1. Um den lokalen Speicherkontoemulator zu verwenden, wählen Sie das Optionsfeld **Microsoft Azure-Speicheremulator** aus, und klicken Sie dann auf die Schaltfläche **OK**.
 
-1. Um ein Speicherkonto in Azure zu verwenden, wählen Sie das Optionsfeld **Ihr Abonnement** aus, und wählen Sie dann das gewünschte Speicherkonto aus.
+1. Um ein Speicherkonto in Azure zu verwenden, wählen Sie das Optionsfeld **Ihr Abonnement**, und wählen Sie dann das gewünschte Speicherkonto aus.
 
 1. Wählen Sie das Optionsfeld **Manuell eingegebene Anmeldeinformationen** aus, um benutzerdefinierte Anmeldeinformationen zu verwenden. Geben Sie den Speicherkontonamen und dann entweder den primären oder sekundären Schlüssel ein. Informationen zur Erstellung eines Speicherkontos und zur Eingabe der Details für das Speicherkonto im Dialogfeld **Verbindungszeichenfolge für den Speicher erstellen** finden Sie unter [Veröffentlichen und Bereitstellen einer Azure-Anwendung in Visual Studio](vs-azure-tools-cloud-service-publish-set-up-required-services-in-visual-studio.md).
 
@@ -271,7 +271,7 @@ Sie können Diagnosedaten für den Azure-Clouddienst sammeln. Diese Daten werden
 
 1. Um eine lokale Verbindungszeichenfolge zu verwenden, wählen Sie die Option für den Azure-Speicheremulator aus, und klicken Sie dann auf **OK**.
 
-1. Um ein Speicherkonto zu verwenden, das dem Azure-Abonnement zugeordnet ist, wählen Sie die Option **Ihr Abonnement** aus.
+1. Um ein Speicherkonto zu verwenden, das dem Azure-Abonnement zugeordnet ist, wählen Sie die Option **Ihr Abonnement**.
 
 1. Um ein Speicherkonto für die lokale Verbindungszeichenfolge zu verwenden, wählen Sie die Option **Manuell eingegebene Anmeldeinformationen** aus.
 
@@ -376,4 +376,4 @@ Alle Verwaltungszertifikate, die Sie den Dienstkonfigurationen zuordnen, gelten 
 ## Nächste Schritte
 Unter [Konfigurieren eines Azure-Projekts](vs-azure-tools-configuring-an-azure-project.md) erhalten Sie weitere Informationen zu Azure-Projekten in Visual Studio. Informationen zum Clouddienstschema finden Sie unter [Schemareferenz](https://msdn.microsoft.com/library/azure/dd179398).
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0817_2016-->

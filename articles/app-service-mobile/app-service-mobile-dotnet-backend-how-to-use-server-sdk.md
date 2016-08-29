@@ -465,7 +465,7 @@ Stellen Sie sicher, dass für Ihre Anwendung [Microsoft.Azure.Mobile.Server.Auth
 			SigningKey = ConfigurationManager.AppSettings["authSigningKey"],
 			ValidAudiences = new[] { ConfigurationManager.AppSettings["authAudience"] },
 			ValidIssuers = new[] { ConfigurationManager.AppSettings["authIssuer"] },
-			TokenHandler = config.GetMobileAppTokenHandler()
+			TokenHandler = config.GetAppServiceTokenHandler()
 		});
 
 Im obigen Beispiel müssen die Anwendungseinstellungen _authAudience_ und _authIssuer_ in der Datei „Web.config“ so konfiguriert werden, dass beide die URL des Anwendungsstammverzeichnisses darstellen. Verwenden Sie dazu das HTTPS-Schema. _authSigningKey_ muss auf den Wert des Signaturschlüssels Ihrer Anwendung festgelegt werden. Dies ist ein vertraulicher Wert, der keinesfalls freigegeben werden oder in einem Client enthalten sein sollte. Navigieren Sie zum Abrufen dieses Werts im [Azure-Portal] zu Ihrer App, und klicken Sie auf **Tools**. Wählen Sie dann **Kudu** aus, und klicken Sie auf **Go**. Dadurch gelangen Sie zum Kudu-Verwaltungsendpunkt für Ihre Website. Klicken Sie auf **Umgebung**, und suchen Sie den Wert unter _WEBSITE\_AUTH\_SIGNING\_KEY_. Dies ist der Wert, den Sie in Ihrer lokalen App-Konfiguration für _authSigningKey_ verwenden müssen.
@@ -482,4 +482,4 @@ Ihr lokal ausgeführter Server kann nun Token überprüfen, die der Client vom c
 [Microsoft.Azure.Mobile.Server.Notifications]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Notifications/
 [MapHttpAttributeRoutes]: https://msdn.microsoft.com/library/dn479134(v=vs.118).aspx
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0817_2016-->

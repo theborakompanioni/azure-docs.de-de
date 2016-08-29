@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Überwachen von Hadoop-Clustern in HDInsight mit der Ambari API | Microsoft Azure"
-	description="Verwenden Sie die Apache Ambari-APIs für die Bereitstellung, Verwaltung und Überwachung von Hadoop-Clustern. Die intuitiven Operatortools und APIs verbergen die Komplexität von Hadoop."
+	description="Verwenden Sie die Apache Ambari-APIs für die Erstellung, Verwaltung und Überwachung von Hadoop-Clustern. Die intuitiven Operatortools und APIs verbergen die Komplexität von Hadoop."
 	services="hdinsight"
 	documentationCenter=""
 	tags="azure-portal"
@@ -14,12 +14,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/18/2016"
+	ms.date="08/10/2016"
 	ms.author="jgao"/>
 
 # Überwachen von Hadoop-Clustern in HDInsight mit der Ambari API
 
-Erfahren Sie, wie Sie HDInsight-Cluster der Versionen 3.1 und 2.1 mithilfe der Ambari-APIs überwachen können.
+Erfahren Sie, wie HDInsight-Cluster mithilfe der Ambari-APIs überwacht werden.
 
 > [AZURE.NOTE] Die Informationen in diesem Artikel betreffen in erster Linie Windows-basierte HDInsight-Cluster, die eine schreibgeschützte Version der Ambari REST-API bereitstellen. Informationen zu Linux-basierten Clustern finden Sie unter [Verwalten von Hadoop-Clustern mit Ambari](hdinsight-hadoop-manage-ambari.md).
 
@@ -27,9 +27,7 @@ Erfahren Sie, wie Sie HDInsight-Cluster der Versionen 3.1 und 2.1 mithilfe der A
 
 [Apache Ambari][ambari-home] dient zur Bereitstellung, Verwaltung und Überwachung von Apache Hadoop-Clustern. Es umfasst eine Sammlung intuitiver Operatortools und eine Reihe robuster APIs, welche die Komplexität von Hadoop verbergen und den Betrieb von Clustern vereinfachen. Weitere Informationen zu den APIs finden Sie in der [Ambari API-Referenz][ambari-api-reference].
 
-
 HDInsight unterstützt derzeit nur das Ambari-Überwachungsfeature. Ambari API 1.0 wird von HDInsight-Clustern der Versionen 3.0 und 2.1 unterstützt. Dieser Artikel behandelt den Zugriff auf Ambari-API auf HDInsight-Clustern der Versionen 3.1 und 2.1. Die beiden Versionen unterscheiden sich hauptsächlich darin, dass sich bestimmte Komponenten mit der Einführung neuer Funktionen geändert haben (z. B. der Auftragsverlauf-Server).
-
 
 **Voraussetzungen**
 
@@ -48,7 +46,7 @@ Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
     Clustereigenschaft|Azure PowerShell-Variablenname|Wert|Beschreibung
     ---|---|---|---
     HDInsight-Clustername|$clusterName||Der Name des HDInsight-Clusters.
-    Cluster-Benutzername|$clusterUsername||Der bei der Bereitstellung angegebene Cluster-Benutzername.
+    Cluster-Benutzername|$clusterUsername||Der Clustername, der beim Erstellen des Clusters angegeben wurde.
     Cluster-Kennwort|$clusterPassword||Das Benutzerkennwort für den Cluster.
 
     >[AZURE.NOTE] Tragen Sie die Werte in die Tabelle ein. Dies ist beim Durcharbeiten dieses Lernprogramms hilfreich.
@@ -174,4 +172,4 @@ Sie haben erfahren, wie Ambari-Überwachungs-API-Aufrufe verwendet werden. Weite
 
 [img-jobtracker-output]: ./media/hdinsight-monitor-use-ambari-api/hdi.ambari.monitor.jobtracker.output.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0817_2016-->

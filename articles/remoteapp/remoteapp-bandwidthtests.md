@@ -12,10 +12,13 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="article" 
-    ms.date="06/27/2016" 
+    ms.date="08/15/2016" 
     ms.author="elizapo" />
     
 # Azure RemoteApp – Testen Ihrer Netzwerkbandbreiten-Nutzung mit einigen gängigen Szenarien
+
+> [AZURE.IMPORTANT]
+Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148).
 
 Wie in [Schätzen der Netzwerkbandbreiten-Nutzung von Azure RemoteApp](remoteapp-bandwidth.md) erläutert, können Sie die Auswirkung von Azure RemoteApp auf Ihr Netzwerk am besten durch einige Nutzungstests herausfinden. Führen Sie diese Tests für einen festgelegten Zeitraum aus, und messen Sie die erforderliche Bandbreite für jedes Szenario. Wenn Sie die Möglichkeit haben, können Sie auch Netzwerkpaketverlust und Netzwerkjitter messen, um die Netzwerkmuster zu verstehen, die speziell in Ihrer Umgebung erstellt werden.
 
@@ -97,4 +100,4 @@ Um die Netzwerkbandbreite pro Benutzer zu evaluieren, erstellen Sie eine Mischun
 
 - [Azure RemoteApp-Netzwerkbandbreite – allgemeine Richtlinien (wenn Sie keine eigenen erstellen können)](remoteapp-bandwidthguidelines.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0817_2016-->

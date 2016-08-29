@@ -30,7 +30,7 @@
 Die folgenden PowerShell-Beispielbefehle setzen voraus, dass bereits eine einfache Umgebung erstellt wurde. Wenn Sie die in diesem Dokument aufgeführten Befehle ohne Veränderungen ausführen möchten, erstellen Sie zunächst eine Testumgebung, wie unter [Erstellen eines VNets](virtual-networks-create-vnet-classic-netcfg-ps.md) beschrieben.
 
 ## Überprüfen der Verfügbarkeit einer bestimmten IP-Adresse
-Wenn Sie beispielsweise überprüfen möchten, ob die IP-Adresse *192.168.1.101* in einem VNet namens *TestVnet* verfügbar ist, führen Sie den folgenden PowerShell-Befehl aus, und sehen Sie sich den Wert für *IsAvailable* an:
+Wenn Sie beispielsweise überprüfen möchten, ob die IP-Adresse *192.168.1.101* in einem VNet namens *TestVNet* verfügbar ist, führen Sie den folgenden PowerShell-Befehl aus, und sehen Sie sich den Wert für *IsAvailable* an:
 
 	Test-AzureStaticVNetIP –VNetName TestVNet –IPAddress 192.168.1.101 
 
@@ -46,12 +46,12 @@ Erwartete Ausgabe:
 Das folgende PowerShell-Skript erstellt einen neuen Clouddienst namens *TestService*, ruft dann ein Image aus Azure ab, erstellt auf dessen Grundlage in dem neuen Clouddienst einen virtuellen Computer namens *DNS01*, platziert den virtuellen Computer in einem Subnetz namens *FrontEnd* und legt *192.168.1.7* als statische private IP-Adresse für den virtuellen Computer fest:
 
 	New-AzureService -ServiceName TestService -Location "Central US"
-	$image = Get-AzureVMImage|?{$_.ImageName -like "*RightImage-Windows-2012R2-x64*"}
-	New-AzureVMConfig -Name DNS01 -InstanceSize Small -ImageName $image.ImageName `
-	| Add-AzureProvisioningConfig -Windows -AdminUsername adminuser -Password MyP@ssw0rd!! `
-	| Set-AzureSubnet –SubnetNames FrontEnd `
-	| Set-AzureStaticVNetIP -IPAddress 192.168.1.7 `
-	| New-AzureVM -ServiceName "TestService" –VNetName TestVNet
+	$image = Get-AzureVMImage | where {$_.ImageName -like "*RightImage-Windows-2012R2-x64*"}
+	New-AzureVMConfig -Name DNS01 -InstanceSize Small -ImageName $image.ImageName |
+	  Add-AzureProvisioningConfig -Windows -AdminUsername adminuser -Password MyP@ssw0rd!! |
+	  Set-AzureSubnet –SubnetNames FrontEnd |
+	  Set-AzureStaticVNetIP -IPAddress 192.168.1.7 |
+	  New-AzureVM -ServiceName TestService –VNetName TestVNet
 
 Erwartete Ausgabe:
 
@@ -98,9 +98,9 @@ Erwartete Ausgabe:
 ## Entfernen einer statischen privaten IP-Adresse von einem virtuellen Computer
 Führen Sie den folgenden PowerShell-Befehl aus, um die statische private IP-Adresse zu entfernen, die dem virtuellen Computer im obigen Skript hinzugefügt wurde:
 	
-	Get-AzureVM -ServiceName TestService -Name DNS01 `
-	| Remove-AzureStaticVNetIP `
-	| Update-AzureVM
+	Get-AzureVM -ServiceName TestService -Name DNS01 |
+	  Remove-AzureStaticVNetIP |
+	  Update-AzureVM
 
 Erwartete Ausgabe:
 
@@ -111,9 +111,9 @@ Erwartete Ausgabe:
 ## Hinzufügen einer statischen privaten IP-Adresse zu einem vorhandenen virtuellen Computer
 Führen Sie folgenden Befehl aus, um dem virtuellen Computer, der mit dem obigen Skript erstellt wurde, eine statische private IP-Adresse hinzuzufügen:
 
-	Get-AzureVM -ServiceName TestService -Name DNS01 `
-	| Set-AzureStaticVNetIP -IPAddress 192.168.1.7 `
-	| Update-AzureVM
+	Get-AzureVM -ServiceName TestService -Name DNS01 |
+	  Set-AzureStaticVNetIP -IPAddress 192.168.1.7 |
+	  Update-AzureVM
 
 Erwartete Ausgabe:
 
@@ -127,4 +127,4 @@ Erwartete Ausgabe:
 - Erfahren Sie mehr über [öffentliche IP-Adressen auf Instanzebene (ILPIP)](virtual-networks-instance-level-public-ip.md).
 - Lesen Sie die Informationen zu [REST-APIs für reservierte IP-Adressen](https://msdn.microsoft.com/library/azure/dn722420.aspx).
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0817_2016-->

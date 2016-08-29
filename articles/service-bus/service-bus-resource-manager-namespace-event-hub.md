@@ -1,14 +1,14 @@
 <properties
-    pageTitle="Erstellen eines Event Hub-Namespace mit Event Hub und einer Consumergruppe mithilfe einer Azure Resource Manager-Vorlage | Microsoft Azure"
-    description="Erstellen eines Event Hub-Namespace mit Event Hub und einer Consumergruppe mithilfe einer Azure Resource Manager-Vorlage"
-    services="service-bus"
+    pageTitle="Erstellen eines Event Hubs-Namespace mit Event Hub und einer Consumergruppe mithilfe einer Azure Resource Manager-Vorlage | Microsoft Azure"
+    description="Erstellen eines Event Hubs-Namespace mit Event Hub und einer Consumergruppe mithilfe einer Azure Resource Manager-Vorlage"
+    services="event-hubs"
     documentationCenter=".net"
     authors="sethmanheim"
     manager="timlt"
     editor=""/>
 
 <tags
-    ms.service="service-bus"
+    ms.service="event-hubs"
     ms.devlang="tbd"
     ms.topic="article"
     ms.tgt_pltfrm="dotnet"
@@ -166,4 +166,4 @@ Da Sie nun Ressourcen mit Azure Resource Manager erstellt und bereitgestellt hab
   [Using the Azure CLI for Mac, Linux, and Windows with Azure Resource Management]: ../xplat-cli-azure-resource-manager.md
   [Service Bus Event Hub and consumer group template]: https://github.com/Azure/azure-quickstart-templates/blob/master/201-servicebus-create-eventhub-and-consumergroup/
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0817_2016-->

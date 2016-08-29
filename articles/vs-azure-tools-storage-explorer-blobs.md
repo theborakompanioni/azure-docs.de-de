@@ -1,7 +1,7 @@
 <properties
 	pageTitle="Verwalten von Azure-Blobspeicherressourcen mit dem Speicher-Explorer (Vorschau) | Microsoft Azure"
 	description="Verwalten von Azure-Blobcontainern und Blobs mit dem Speicher-Explorer (Vorschau)"
-	services="visual-studio-online"
+	services="storage"
 	documentationCenter="na"
 	authors="TomArcher"
 	manager="douge"
@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="na"
-	ms.date="07/14/2016"
+	ms.date="08/17/2016"
 	ms.author="tarcher" />
 
 # Verwalten von Azure-Blobspeicherressourcen mit dem Speicher-Explorer (Vorschau)
@@ -277,4 +277,4 @@ Die folgenden Schritte veranschaulichen, wie Sie die Blobs (und Ordner) in einem
 [18]: ./media/vs-azure-tools-storage-explorer-blobs/blob-upload-folder-options.png
 [19]: ./media/vs-azure-tools-storage-explorer-blobs/blob-container-open-editor-context-menu.png
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0817_2016-->

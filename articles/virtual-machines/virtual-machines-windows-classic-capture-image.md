@@ -32,6 +32,7 @@ Diese Schritte setzen voraus, dass Sie bereits einen virtuellen Azure-Computer e
 
 - [Erstellen eines virtuellen Computers von einem Image](virtual-machines-windows-classic-createportal.md)
 - [Anfügen eines Datenträgers an einen virtuellen Computer](virtual-machines-windows-classic-attach-disk.md)
+- Stellen Sie sicher, dass die Serverrollen von Sysprep unterstützt werden. Weitere Informationen finden Sie unter [Sysprep Support for Server Roles](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles) (Sysprep-Unterstützung für Serverrollen).
 
 > [AZURE.WARNING] Mit diesem Vorgang wird die ursprüngliche virtuelle Maschine nach der Erfassung gelöscht.
 
@@ -90,4 +91,4 @@ Das Image kann jetzt zum Erstellen virtueller Computer verwendet werden. Dazu er
 [Image capture successful]: ./media/virtual-machines-capture-image-windows-server/CaptureSuccess.png
 [Use the captured image]: ./media/virtual-machines-capture-image-windows-server/MyImagesWindows.png
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0817_2016-->

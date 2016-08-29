@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/23/2016"
+	ms.date="08/12/2016"
 	ms.author="juliako"/>
 
 
@@ -40,9 +40,9 @@ Zusätzlich zum Typ reservierter Einheiten können Sie angeben, dass für Ihr Ko
 
 Die folgende Tabelle hilft Ihnen bei der Entscheidung, wenn Sie zwischen verschiedenen Codierungsgeschwindigkeit wählen müssen. Sie enthält darüber hinaus einige Fälle für Vergleichstests sowie SAS-URLs, über die Sie Videos für eigene Tests herunterladen können:
 
-|**S1**|**S2**|**S3**|
+Szenarios|**S1**|**S2**|**S3**|
 ----------|------------|----------|------------
-Beabsichtigter Anwendungsfall| Single-Bitrate-Codierung. <br/>Dateien mit SD-Auflösung oder einer niedrigeren Auflösung, nicht zeitkritisch, niedrige Kosten|Single-Bitrate- und Multi-Bitrate-Codierung.<br/>Normale Verwendung für SD- und HD-Codierung |Single-Bitrate- und Multi-Bitrate-Codierung.<br/>Videos mit Full HD- und 4K-Auflösung Zeitkritisch, schnellere Codierung 
+Beabsichtigter Anwendungsfall| Single-Bitrate-Codierung. <br/>Dateien mit SD-Auflösung oder einer niedrigeren Auflösung, nicht zeitkritisch, niedrige Kosten.|Single-Bitrate- und Multi-Bitrate-Codierung.<br/>Normale Verwendung für SD- und HD-Codierung. |Single-Bitrate- und Multi-Bitrate-Codierung.<br/>Videos mit Full HD- und 4K-Auflösung. Zeitkritisch, schnellere Codierung 
 Vergleichstest|[Eingabedatei: Dauer: 5 Minuten, 640x360p bei 29,97 Bildern pro Sekunde](https://wamspartners.blob.core.windows.net/for-long-term-share/Whistler_5min_360p30.mp4?sr=c&si=AzureDotComReadOnly&sig=OY0TZ%2BP2jLK7vmcQsCTAWl33GIVCu67I02pgarkCTNw%3D).<br/><br/>Codierung in eine Single-Bitrate-MP4-Datei mit gleicher Auflösung. Dauer: ca. 11 Minuten.|[Eingabedatei: Dauer 5 Minuten, 1280x720p bei 29,97 Bildern pro Sekunde](https://wamspartners.blob.core.windows.net/for-long-term-share/Whistler_5min_720p30.mp4?sr=c&si=AzureDotComReadOnly&sig=OY0TZ%2BP2jLK7vmcQsCTAWl33GIVCu67I02pgarkCTNw%3D)<br/><br/>Die Codierung mit der Voreinstellung „H264 Single Bitrate 720p“ dauert etwa 5 Minuten.<br/><br/>Die Codierung mit der Voreinstellung „H264 Multiple Bitrate 720p“ dauert etwa 11,5 Minuten.|[Eingabedatei: Dauer: 5 Minuten, 1920x1080p bei 29,97 Bildern pro Sekunde](https://wamspartners.blob.core.windows.net/for-long-term-share/Whistler_5min_1080p30.mp4?sr=c&si=AzureDotComReadOnly&sig=OY0TZ%2BP2jLK7vmcQsCTAWl33GIVCu67I02pgarkCTNw%3D) <br/><br/>Die Codierung mit der Voreinstellung „H264 Single Bitrate 1080p“ dauert etwa 2,7 Minuten.<br/><br/>Die Codierung mit der Voreinstellung „H264 Multiple Bitrate 1080p“ dauert etwa 5,7 Minuten.
 
 ##Überlegungen
@@ -93,4 +93,4 @@ Informationen zu Kontingenten und Einschränkungen sowie zum Öffnen von Support
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0817_2016-->

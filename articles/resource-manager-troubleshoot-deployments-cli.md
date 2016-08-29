@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="vm-multiple"
    ms.workload="infrastructure"
-   ms.date="06/13/2016"
+   ms.date="08/15/2016"
    ms.author="tomfitz"/>
 
 # Anzeigen von Bereitstellungsvorgängen mit der Azure-Befehlszeilenschnittstelle
@@ -41,7 +41,7 @@ Gehen Sie wie folgt vor, um Fehler für eine Bereitstellung anzuzeigen:
 
         azure group log show ExampleGroup --last-deployment
 
-2. Mit dem Befehl **azure group log show** können zahlreiche Informationen abgerufen werden. Bei der Problembehandlung konzentrieren Sie sich in der Regel auf fehlgeschlagene Vorgänge. Im folgenden Skript werden die Option **--json** und das JSON-Hilfsprogramm [jq](https://stedolan.github.io/jq/) verwendet, um das Protokoll nach Bereitstellungsfehlern zu durchsuchen.
+2. Mit dem Befehl **azure group log show** werden zahlreiche Informationen abgerufen. Bei der Problembehandlung konzentrieren Sie sich in der Regel auf fehlgeschlagene Vorgänge. Im folgenden Skript werden die Option **--json** und das JSON-Hilfsprogramm [jq](https://stedolan.github.io/jq/) verwendet, um das Protokoll nach Bereitstellungsfehlern zu durchsuchen.
 
         azure group log show ExampleGroup --json | jq '.[] | select(.status.value == "Failed")'
         
@@ -123,4 +123,4 @@ Gehen Sie wie folgt vor, um Fehler für eine Bereitstellung anzuzeigen:
 - Informationen zur Überwachung anderer Arten von Aktionen anhand der Überwachungsprotokolle finden Sie unter [Überwachen von Vorgängen mit Resource Manager](resource-group-audit.md).
 - Informationen zum Überprüfen der Bereitstellung vor der Ausführung finden Sie unter [Bereitstellen einer Ressourcengruppe mit Azure Resource Manager-Vorlagen](resource-group-template-deploy.md).
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0817_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/31/2016"
+	ms.date="08/15/2016"
 	ms.author="spelluru"/>
 
 # Verknüpfte Computedienste
@@ -27,11 +27,11 @@ Bei dieser Konfiguration wird die Compute-Umgebung vollständig vom Azure Data F
 > [AZURE.NOTE] Die bedarfsgesteuerte Konfiguration wird gegenwärtig nur für Azure HDInsight-Cluster unterstützt.
 
 ## Bedarfsgesteuerter verknüpfter Azure HDInsight-Dienst
-Der Azure Data Factory-Dienst kann zum Verarbeiten von Daten automatisch einen bedarfsgesteuerten Windows-/Linux-basierten HDInsight-Cluster erstellen. Der Cluster wird in derselben Region erstellt wie das Speicherkonto (Eigenschaft "linkedServiceName" in JSON), das dem Cluster zugeordnet ist.
+Der Azure Data Factory-Dienst kann zum Verarbeiten von Daten automatisch einen bedarfsgesteuerten Windows-/Linux-basierten HDInsight-Cluster erstellen. Der Cluster wird in derselben Region erstellt wie das Speicherkonto (Eigenschaft „linkedServiceName“ in JSON), das dem Cluster zugeordnet ist.
 
 Beachten Sie die folgenden **wichtigen** Hinweise zum bedarfsgesteuerten verknüpften HDInsight-Dienst:
 
-- Der bedarfsgesteuerte HDInsight-Cluster wird nicht in Ihrem Azure-Abonnement angezeigt, sondern vom Azure Data Factory-Dienst verwaltet.
+- Der bedarfsgesteuerte HDInsight-Cluster wird nicht in Ihrem Azure-Abonnement angezeigt, sondern in Ihrem Namen vom Azure Data Factory-Dienst verwaltet.
 - Die Protokolle für Aufträge, die in einem bedarfsgesteuerten HDInsight-Cluster ausgeführt werden, werden in das mit dem HDInsight-Cluster verknüpfte Speicherkonto kopiert. Der Zugriff auf diese Protokolle erfolgt über das Azure-Portal auf dem Blatt **Aktivitätsausführung – Details**. Einzelheiten finden Sie im Artikel [Überwachen und Verwalten von Pipelines](data-factory-monitor-manage-pipelines.md).
 - Ihnen wird nur die Zeit in Rechnung gestellt, in der der HDInsight-Cluster verfügbar ist und Aufträge ausführt.
 
@@ -57,19 +57,19 @@ Die folgende JSON definiert einen bedarfsgesteuerten Linux-basierten mit HDInsig
 Legen Sie zum Verwenden eines Windows-basierten HDInsight-Clusters **osType** auf **windows** fest, oder verwenden Sie die Eigenschaft nicht, wenn der Standardwert „windows“ ist.
 
 > [AZURE.IMPORTANT] 
-Der HDInsight-Cluster erstellt einen **Standardcontainer** im Blobspeicher, den Sie im JSON angegeben haben (**linkedServiceName**). HDInsight löscht diesen Container nicht, wenn der Cluster gelöscht wird. Dies ist beabsichtigt. Durch den bedarfsgesteuerten, mit HDInsight verknüpften Dienst wird jedes Mal ein HDInsight-Cluster erstellt, wenn ein Slice verarbeitet werden muss, es sei denn, ein aktiver Cluster (**timeToLive**) ist vorhanden und wird gelöscht, nachdem die Verarbeitung abgeschlossen ist.
+Der HDInsight-Cluster erstellt einen **Standardcontainer** im Blobspeicher, den Sie im JSON angegeben haben (**linkedServiceName**). HDInsight löscht diesen Container nicht, wenn der Cluster gelöscht wird. Dieses Verhalten ist beabsichtigt. Durch den bedarfsgesteuerten, mit HDInsight verknüpften Dienst wird jedes Mal ein HDInsight-Cluster erstellt, wenn ein Slice verarbeitet werden muss, es sei denn, ein aktiver Cluster (**timeToLive**) ist vorhanden und wird gelöscht, nachdem die Verarbeitung abgeschlossen ist.
 > 
-> Wenn immer mehr Slices verarbeitet werden, enthält Azure Blob Storage viele Container. Falls Sie diese für die Problembehandlung der Aufträge nicht benötigen, sollten Sie sie ggf. löschen, um die Speicherkosten zu verringern. Der Name dieser Container basiert auf dem folgenden Muster: „adf**IhrDataFactoryName**-**linkedservicename**-Zeitstempel“. Verwenden Sie Tools wie [Microsoft Storage-Explorer](http://storageexplorer.com/), um Container in Ihrem Azure-Blobspeicher zu löschen.
+> Wenn mehr Segmente verarbeitet werden, werden in Ihrem Azure-Blobspeicher viele Container angezeigt. Falls Sie diese für die Problembehandlung der Aufträge nicht benötigen, sollten Sie sie ggf. löschen, um die Speicherkosten zu verringern. Die Namen dieser Container basieren auf dem folgenden Muster: „adf**IhrDataFactoryName**-**NameVerknüpfterDienst**-Datums-/Uhrzeitstempel“. Verwenden Sie Tools wie den [Microsoft-Speicher-Explorer](http://storageexplorer.com/), um Container in Ihrem Azure-Blobspeicher zu löschen.
 
 ### Eigenschaften
 
 Eigenschaft | Beschreibung | Erforderlich
 -------- | ----------- | --------
-type | Legen Sie die Typeigenschaft auf **HDInsightOnDemand** fest. | Ja
-clusterSize | Anzahl der Worker-/Datenknoten im Cluster. Der HDInsight-Cluster wird mit zwei Hauptknoten sowie der Anzahl der Workerknoten, die Sie für diese Eigenschaft angeben, erstellt. Die Knoten haben die Größe Standard\_D3, die vier Kerne aufweist. Ein Cluster mit vier Workerknoten nutzt also 24 Kerne (4 * 4 für Workerknoten + 2 * 4 für Hauptknoten). Ausführliche Informationen über die Standard\_D3-Ebene finden Sie unter [Erstellen von Linux-basierten Hadoop-Clustern in HDInsight](../hdinsight/hdinsight-hadoop-provision-linux-clusters.md). | Ja
-timetolive | Die zulässige Leerlaufzeit für den bedarfsgesteuerten HDInsight-Cluster. Gibt an, wie lange der bedarfsgesteuerte HDInsight-Cluster nach Abschluss einer Aktivitätsausführung beibehalten wird, wenn der Cluster über keine weiteren aktiven Aufträge verfügt.<br/><br/>Wenn eine Aktivitätsausführung z. B. 6 Minuten dauert und "timetolive" auf 5 Minuten festgelegt ist, wird der Cluster nach den 6 Minuten, in denen die Aktivitätsausführung verarbeitet wird, weitere 5 Minuten beibehalten. Wenn innerhalb dieser 6 Minuten eine weitere Aktivitätsausführung verarbeitet wird, wird diese vom selben Cluster verarbeitet.<br/><br/>Da das Erstellen eines bedarfsgesteuerten HDInsight-Clusters ein kostenintensiver Vorgang ist, der mit einem recht hohen Zeitaufwand einhergehen kann, sollten Sie diese Einstellung gegebenenfalls nutzen, um die Data Factory-Leistung durch die Wiederverwendung eines bedarfsgesteuerten HDInsight-Clusters zu verbessern.<br/><br/>Wenn Sie den timetolive-Wert auf 0 festlegen, wird der Cluster gelöscht, sobald die Aktivitätsausführung verarbeitet wurde. Wenn Sie jedoch einen hohen Wert festlegen, wird der Cluster möglicherweise für einen zu langen Zeitraum im Leerlauf beibehalten, was hohe Kosten verursachen kann. Daher ist es wichtig, basierend auf Ihren individuellen Anforderungen einen geeigneten Wert festzulegen.<br/><br/>Wenn der Wert der Eigenschaft „timetolive“ ordnungsgemäß festgelegt wird, können mehrere Pipelines dieselbe Instanz des bedarfsgesteuerten HDInsight-Clusters verwenden. | Ja
+Typ | Legen Sie die Typeigenschaft auf **HDInsightOnDemand** fest. | Ja
+clusterSize | Anzahl der Worker-/Datenknoten im Cluster. Der HDInsight-Cluster wird mit zwei Hauptknoten sowie der Anzahl der Workerknoten erstellt, die Sie für diese Eigenschaft angeben. Die Knoten haben die Größe Standard\_D3, die über vier Kerne verfügt. Ein Cluster mit vier Workerknoten nutzt also 24 Kerne (*4 × 4 für die Workerknoten + 2 × 4 für Hauptknoten*). Ausführliche Informationen zum Standard\_D3-Tarif finden Sie unter [Erstellen von Linux-basierten Hadoop-Clustern in HDInsight](../hdinsight/hdinsight-hadoop-provision-linux-clusters.md). | Ja
+timetolive | Die zulässige Leerlaufzeit für den bedarfsgesteuerten HDInsight-Cluster. Gibt an, wie lange der bedarfsgesteuerte HDInsight-Cluster nach Abschluss einer Aktivitätsausführung beibehalten wird, wenn der Cluster über keine weiteren aktiven Aufträge verfügt.<br/><br/>Wenn eine Aktivitätsausführung z. B. 6 Minuten dauert und "timetolive" auf 5 Minuten festgelegt ist, wird der Cluster nach den 6 Minuten, in denen die Aktivitätsausführung verarbeitet wird, weitere 5 Minuten beibehalten. Wenn innerhalb dieser 6 Minuten eine weitere Aktivitätsausführung verarbeitet wird, wird diese vom selben Cluster verarbeitet.<br/><br/>Da das Erstellen eines bedarfsgesteuerten HDInsight-Clusters ein kostenintensiver Vorgang ist, der mit einem recht hohen Zeitaufwand einhergehen kann, sollten Sie diese Einstellung gegebenenfalls nutzen, um die Data Factory-Leistung durch die Wiederverwendung eines bedarfsgesteuerten HDInsight-Clusters zu verbessern.<br/><br/>Wenn Sie den timetolive-Wert auf 0 festlegen, wird der Cluster gelöscht, sobald die Aktivitätsausführung verarbeitet wurde. Wenn Sie jedoch einen hohen Wert festlegen, wird der Cluster möglicherweise für einen zu langen Zeitraum im Leerlauf beibehalten, was hohe Kosten verursachen kann. Daher ist es wichtig, basierend auf Ihren individuellen Anforderungen einen geeigneten Wert festzulegen.<br/><br/>Wenn der Wert der Eigenschaft "timetolive" ordnungsgemäß festgelegt wird, können mehrere Pipelines dieselbe Instanz des bedarfsgesteuerten HDInsight-Clusters verwenden. | Ja
 Version | Version des HDInsight-Clusters. Der Standardwert ist 3.1 für Windows-Cluster und 3.2 für Linux-Cluster. | Nein
-linkedServiceName | Der Blobspeicher, den der bedarfsgesteuerte Cluster zum Speichern und Verarbeiten von Daten nutzt. | Ja
+linkedServiceName | Der verknüpfte Azure Storage-Dienst, den der bedarfsgesteuerte Cluster zum Speichern und Verarbeiten von Daten nutzt. | Ja
 additionalLinkedServiceNames | Gibt zusätzliche Speicherkonten für den verknüpften HDInsight-Dienst an, damit der Data Factory-Dienst diese für Sie registrieren kann. | Nein
 osType | Typ des Betriebssystems. Zulässige Werte sind: „Windows“ (Standard) und „Linux“. | Nein
 hcatalogLinkedServiceName | Der Name des mit Azure SQL verknüpften Diensts, der auf die HCatalog-Datenbank verweist. Der bedarfsgesteuerte HDInsight-Cluster wird mit der Azure SQL-Datenbank als Metastore erstellt. | Nein
@@ -200,7 +200,7 @@ Lesen Sie die folgenden Themen, wenn Sie noch nicht mit dem Azure Batch-Dienst v
 
 
 - Unter [Azure Batch – Grundlagen](../batch/batch-technical-overview.md) finden Sie eine Übersicht über den Azure Batch-Dienst.
-- Erstellen Sie ein Azure Batch-Konto mit dem Cmdlet [New-AzureBatchAccount](https://msdn.microsoft.com/library/mt125880.aspx) oder über das [Azure-Portal](../batch/batch-account-create-portal.md). Im Blog [Using Azure PowerShell to Manage Azure Batch Account](http://blogs.technet.com/b/windowshpc/archive/2014/10/28/using-azure-powershell-to-manage-azure-batch-account.aspx) ist die Verwendung dieses Cmdlets im Detail beschrieben.
+- Erstellen Sie ein Azure Batch-Konto mit dem Cmdlet [New-AzureBatchAccount](https://msdn.microsoft.com/library/mt125880.aspx), oder erstellen Sie das Azure Batch-Konto über das [Azure-Portal](../batch/batch-account-create-portal.md). Im Blog [Using Azure PowerShell to Manage Azure Batch Account](http://blogs.technet.com/b/windowshpc/archive/2014/10/28/using-azure-powershell-to-manage-azure-batch-account.aspx) (Verwenden von Azure PowerShell zum Verwalten eines Azure Batch-Kontos) ist die Verwendung dieses Cmdlets im Detail beschrieben.
 - Verwenden Sie das Cmdlet [New-AzureBatchPool](https://msdn.microsoft.com/library/mt125936.aspx), um einen Azure Batch-Pool zu erstellen.
 
 ### Beispiel
@@ -231,7 +231,7 @@ Außerdem kann auch der batchUri-Endpunkt angegeben werden, wie nachfolgend geze
 
 Eigenschaft | Beschreibung | Erforderlich
 -------- | ----------- | --------
-type | Legen Sie die Typeigenschaft auf **AzureBatch** fest. | Ja
+Typ | Legen Sie die Typeigenschaft auf **AzureBatch** fest. | Ja
 accountName | Der Name des Azure Batch-Kontos. | Ja
 accessKey | Der Zugriffsschlüssel für das Azure Batch-Konto. | Ja
 poolName | Der Name des Pools mit virtuellen Computern. | Ja
@@ -292,19 +292,19 @@ Eigenschaft | Beschreibung | Erforderlich
 Typ | Legen Sie die Typeigenschaft auf **AzureDataLakeAnalytics** fest. | Ja
 accountName | Name des Azure Data Lake Analytics-Kontos. | Ja
 dataLakeAnalyticsUri | URI des Azure Data Lake Analytics-Kontos. | Nein
-authorization | Der Autorisierungscode wird automatisch abgerufen, nachdem Sie im Data Factory-Editor auf die Schaltfläche **Autorisieren** geklickt und die OAuth-Anmeldung abgeschlossen haben. | Ja
+Autorisierung | Der Autorisierungscode wird automatisch abgerufen, nachdem Sie im Data Factory-Editor auf die Schaltfläche **Autorisieren** geklickt und die OAuth-Anmeldung abgeschlossen haben. | Ja
 subscriptionId | Azure-Abonnement-ID | Nein (falls nicht angegeben, wird das Abonnement der Data Factory verwendet).
 ResourceGroupName | Azure-Ressourcengruppenname | Nein (falls nicht angegeben, wird die Ressourcengruppe der Data Factory verwendet).
 sessionId | Sitzungs-ID aus der OAuth-Autorisierungssitzung. Jede Sitzungs-ID ist eindeutig und darf nur einmal verwendet werden. Sie wird im Data Factory-Editor automatisch generiert. | Ja
 
-Der von Ihnen mithilfe der Schaltfläche **Autorisieren** generierte Autorisierungscode läuft nach einer gewissen Zeit ab. Die Zeiten bis zum Ablaufen der Autorisierungscodes für die verschiedenen Benutzerkonten finden Sie in der folgenden Tabelle. Unter Umständen wird Ihnen nach dem **Ablauf des Tokens** folgende Fehlermeldung angezeigt: „Fehler beim Anmeldevorgang: invalid\_grant – AADSTS70002: Fehler beim Überprüfen der Anmeldeinformationen. AADSTS70008: Die angegebene Zugriffserteilung ist abgelaufen oder wurde widerrufen. Ablaufverfolgungs-ID: d18629e8-af88-43c5-88e3-d8419eb1fca1 Korrelations-ID: fac30a0c-6be6-4e02-8d69-a776d2ffefd7 Zeitstempel: 2015-12-15 21:09:31Z“
+Der von Ihnen mithilfe der Schaltfläche **Autorisieren** generierte Autorisierungscode läuft nach einer gewissen Zeit ab. Die Zeiten bis zum Ablaufen der Autorisierungscodes für die verschiedenen Benutzerkonten finden Sie in der folgenden Tabelle. Unter Umständen wird Ihnen nach dem **Ablauf des Tokens** folgende Fehlermeldung angezeigt: „Fehler beim Anmeldevorgang: invalid\_grant – AADSTS70002: Fehler beim Überprüfen der Anmeldeinformationen.“ AADSTS70008: Die angegebene Zugriffserteilung ist abgelaufen oder wurde widerrufen. Ablaufverfolgungs-ID: d18629e8-af88-43c5-88e3-d8419eb1fca1 Korrelations-ID: fac30a0c-6be6-4e02-8d69-a776d2ffefd7 Zeitstempel: 2015-12-15 21:09:31Z“
 
 | Benutzertyp | Läuft ab nach |
 | :-------- | :----------- | 
 | Benutzerkonten, die NICHT von Azure Active Directory verwaltet werden (@hotmail.com, @live.com usw.) | 12 Stunden |
-| Benutzerkonten, die von Azure Active Directory (AAD) verwaltet werden | 14 Tage nach der letzten Sliceausführung. <br/><br/>90 Tagen, wenn ein Slice, der auf einem verknüpften OAuth-Dienst basiert, mindestens einmal alle 14 Tage ausgeführt wird. |
+| Benutzerkonten, die von Azure Active Directory (AAD) verwaltet werden | 14 Tage nach der letzten Sliceausführung. <br/><br/>90 Tage, wenn ein Slice, das auf einem verknüpften OAuth-Dienst basiert, mindestens einmal alle 14 Tage ausgeführt wird. |
  
-Um diesen Fehler zu vermeiden oder zu beheben, müssen Sie sich durch Klicken auf die Schaltfläche **Autorisieren** erneut autorisieren, wenn das **Token abläuft**, und den verknüpften Dienst anschließend erneut bereitstellen. Sie können auch programmgesteuert Werte für die Eigenschaften „sessionId“ und „authorization“ generieren. Verwenden Sie dazu den im folgenden Abschnitt bereitgestellten Code.
+Um diesen Fehler zu vermeiden/beheben, müssen Sie sich durch Klicken auf die Schaltfläche **Autorisieren** erneut autorisieren, wenn das **Token abläuft**, und den verknüpften Dienst anschließend erneut bereitstellen. Sie können auch programmgesteuert Werte für die Eigenschaften „sessionId“ und „authorization“ generieren. Verwenden Sie dazu den im folgenden Abschnitt bereitgestellten Code.
 
 ### So generieren Sie programmgesteuert Werte für „sessionId“ und „authorization“ 
 Der folgende Code generiert Werte für **sessionId** und **authorization**.
@@ -344,4 +344,4 @@ Sie erstellen einen mit Azure SQL Data Warehouse verknüpften Dienst und verwend
 ## Mit SQL Server verknüpfter Dienst
 Sie erstellen einen mit SQL Server verknüpften Dienst und verwenden ihn mit der [Aktivität „Gespeicherte Prozedur“](data-factory-stored-proc-activity.md) zum Aufrufen einer gespeicherten Prozedur in einer Data Factory-Pipeline. Im Artikel [SQL Server-Connector](data-factory-sqlserver-connector.md#sql-server-linked-service-properties) finden Sie weitere Informationen zu diesem verknüpften Dienst.
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0817_2016-->

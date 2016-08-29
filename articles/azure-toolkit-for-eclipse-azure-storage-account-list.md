@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="multiple"
     ms.devlang="Java"
     ms.topic="article"
-    ms.date="06/24/2016" 
+    ms.date="08/11/2016" 
     ms.author="robmcm"/>
 
 <!-- Legacy MSDN URL = https://msdn.microsoft.com/library/azure/dn205108.aspx -->
@@ -36,9 +36,9 @@ Dieses Dialogfeld kann auch über einen der Links **Accounts** in Dialogfeldern 
 ## So importieren Sie Ihre Speicherkonten mithilfe einer Datei mit Veröffentlichungseinstellungen ##
 
 1. Klicken Sie im Dialogfeld **Storage Accounts** auf **Import from PUBLISH-SETTINGS file**.
-2. (Überspringen Sie diesen Schritt, wenn Sie bereits eine Datei mit Veröffentlichungseinstellungen auf Ihrem lokalen Computer gespeichert haben.) Klicken Sie im Dialogfeld **Import Subscription Information** auf **Download PUBLISH-SETTINGS File**. Wenn Sie noch nicht bei Ihrem Azure-Konto angemeldet sind, werden Sie zur Anmeldung aufgefordert. Anschließend werden Sie aufgefordert, eine Azure-Datei mit Veröffentlichungseinstellungen zu speichern. (Sie können die resultierenden Anweisungen auf den Anmeldeseiten ignorieren – diese werden vom Azure-Portal bereitgestellt und sind für Visual Studio-Benutzer gedacht.) Speichern Sie sie auf Ihrem lokalen Computer.
-3. Klicken Sie im Dialogfeld **Import Subscription Information** auf die Schaltfläche **Browse**, wählen Sie die zuvor lokal gespeicherte Datei mit den Veröffentlichungseinstellungen aus, und klicken Sie dann auf **Öffnen**.
-4. Klicken Sie auf **OK**, um das Dialogfeld **Import Subscription Information** zu schließen.
+2. (Überspringen Sie diesen Schritt, wenn Sie bereits eine Datei mit Veröffentlichungseinstellungen auf Ihrem lokalen Computer gespeichert haben.) Klicken Sie im Dialogfeld **Import Subscription Information** (Abonnementinformationen importieren) auf **Download PUBLISH-SETTINGS File** (PUBLISH-SETTINGS-Datei herunterladen). Wenn Sie noch nicht bei Ihrem Azure-Konto angemeldet sind, werden Sie zur Anmeldung aufgefordert. Anschließend werden Sie aufgefordert, eine Azure-Datei mit Veröffentlichungseinstellungen zu speichern. (Sie können die resultierenden Anweisungen auf den Anmeldeseiten ignorieren – diese werden vom Azure-Portal bereitgestellt und sind für Visual Studio-Benutzer gedacht.) Speichern Sie sie auf Ihrem lokalen Computer.
+3. Klicken Sie im Dialogfeld **Import Subscription Information** (Abonnementinformationen importieren) auf die Schaltfläche **Durchsuchen**, wählen Sie die zuvor lokal gespeicherte Datei mit den Veröffentlichungseinstellungen aus, und klicken Sie dann auf **Öffnen**.
+4. Klicken Sie auf **OK**, um das Dialogfeld **Import Subscription Information** (Abonnementinformationen importieren) zu schließen.
 
 ## So erstellen Sie ein neues Speicherkonto ##
 
@@ -100,4 +100,4 @@ Weitere Informationen zum Verwenden von Azure mit Java finden Sie im [Azure Java
 [ic719496]: ./media/azure-toolkit-for-eclipse-azure-storage-account-list/ic719496.png
 [ic719497]: ./media/azure-toolkit-for-eclipse-azure-storage-account-list/ic719497.png
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0817_2016-->

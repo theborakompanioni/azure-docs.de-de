@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/12/2016"
+	ms.date="08/12/2016"
 	ms.author="asteen"/>
 
 # Problembehandlung für die Kennwortverwaltung
@@ -46,7 +46,7 @@ Wenn Ihr Problem mithilfe der folgenden Anleitungen nicht gelöst wird, können 
 
     ![][001]
 
- - **Benutzer-ID** – wie lautet die ID des Benutzers, der den Fehler beobachtet hat (z.B. user@contoso.com)?
+ - **Benutzer-ID** – Wie lautet die ID des Benutzers, der den Fehler beobachtet hat (z.B. user@contoso.com)?
  - **Informationen zum Benutzer** – Handelt es sich um einen Verbundbenutzer, um einen Benutzer mit Kennworthashsynchronisierung, oder um einen Benutzer, der ausschließlich über die Cloud zugreift? Ist dem Benutzer eine AAD Premium- oder eine AAD Basic-Lizenz zugewiesen?
  - **Anwendungsereignisprotokoll** – Wenn Sie die Kennwortrückschreibung verwenden und der Fehler in Ihrer lokalen Infrastruktur auftritt, zippen Sie eine Kopie des Anwendungsereignisprotokolls von Ihrem Azure AD Connect-Server, und fügen Sie die ZIP-Datei an Ihre Anfrage an.
 
@@ -285,7 +285,7 @@ Wenn beim Zurücksetzen eines Kennworts für einen Benutzer ein Fehler auftritt,
               <p>Das Verzeichnis ist für die Kennwortzurücksetzung aktiviert, aber für den Benutzer wurden keine Authentifizierungsinformationen konfiguriert oder diese sind fehlerhaft.</p>
             </td>
             <td>
-              <p>Ihr Konto ist nicht für die Kennwortzurücksetzung aktiviert.</p>
+              <p>Ihr Konto ist für ein Zurücksetzen des Kennworts nicht aktiviert.</p>
               <p>Ihr Administrator hat Ihr Konto nicht zur Verwendung mit diesem Dienst eingerichtet. </p>
               <p>
 
@@ -301,7 +301,7 @@ Wenn beim Zurücksetzen eines Kennworts für einen Benutzer ein Fehler auftritt,
               <p>Das Verzeichnis ist für die Kennwortzurücksetzung aktiviert, der Benutzer hat jedoch nur eine Information in Form registrierter Kontaktdaten konfiguriert, während die konfigurierte Richtlinie eine Überprüfung in zwei Schritten erfordert. </p>
             </td>
             <td>
-              <p>Ihr Konto ist nicht für die Kennwortzurücksetzung aktiviert.</p>
+              <p>Ihr Konto ist für ein Zurücksetzen des Kennworts nicht aktiviert.</p>
               <p>Ihr Administrator hat Ihr Konto nicht zur Verwendung mit diesem Dienst eingerichtet. </p>
               <p>
 
@@ -457,7 +457,21 @@ Wenn beim Aktivieren, Deaktivieren oder Verwenden der Kennwortrückschreibung ei
               <p>Beim Neustart des ADSync-Diensts wird, sofern die Kennwortrückschreibung konfiguriert wurde, der WCF-Endpunkt gestartet. Wenn jedoch beim Start des Endpunkts ein Fehler auftritt, wird lediglich Fehler&#160;6800 protokolliert, und der Synchronisierungsdienst wird gestartet. Das Vorhandensein dieses Ereignisses bedeutet, dass der Endpunkt für die Kennwortrückschreibung nicht gestartet wurde. Die Ereignisprotokolldetails für dieses Ereignis (6800) geben – gemeinsam mit den von der PasswordResetService-Komponente generierten Ereignisprotokolleinträgen – an, warum der Endpunkt nicht gestartet werden konnte. Überprüfen Sie diese Ereignisprotokollfehler, und versuchen Sie Azure AD Connect neu zu starten, wenn die Kennwortrückschreibung weiterhin nicht funktioniert. Wenn das Problem weiterhin auftritt, versuchen Sie die Kennwortrückschreibung zu deaktivieren und erneut zu aktivieren.</p>
             </td>
           </tr>
-          <tr>
+					<tr>
+            <td>
+              <p>Wenn ein Benutzer versucht, ein Kennwort zurückzusetzen oder ein Konto mit aktiviertem Kennwortrückschreiben zu entsperren, tritt dabei ein Fehler auf. Darüber hinaus wird nach dem Entsperren ein Ereignis im Azure AD Connect-Ereignisprotokoll mit dem Inhalt „Synchronization Engine returned an error hr=800700CE, message=The filename or extension is too long“ (Das Synchronisierungsmodul hat einen Fehler zurückgegeben: hr=800700CE, message=Der Dateiname oder die Dateierweiterung ist zu lang.) angezeigt.
+							</p>
+            </td>
+            <td>
+              <p>Dies kann vorkommen, wenn Sie ein Upgrade von älteren Versionen von Azure AD Connect oder DirSync ausgeführt haben. Beim Upgrade auf ältere Versionen von Azure AD Connect wird ein Kennwort mit 254 Zeichen für das Konto des Azure AD-Verwaltungs-Agenten festgelegt (bei neueren Versionen wird ein Kennwort mit 127 Zeichen festgelegt). Solche langen Kennwörter können für Import- und Exportvorgänge von AD Connector verwendet werden, für das Entsperren werden sie jedoch nicht unterstützt.
+							</p>
+            </td>
+            <td>
+              <p>[Suchen Sie das Active Directory-Konto](active-directory-aadconnect-accounts-permissions.md#active-directory-account) für Azure AD Connect, und setzen Sie das Kennwort zurück, sodass es nicht mehr als 127 Zeichen umfasst. Öffnen Sie dann den **Synchronisierungsdienst** über das Startmenü. Navigieren Sie zu **Connectors** und dann zu **Active Directory Connector**. Wählen Sie den Eintrag aus, und klicken Sie auf **Eigenschaften**. Navigieren Sie zur Seite **Anmeldeinformationen**, und geben Sie das neue Kennwort ein. Wählen Sie **OK**, um die Seite zu schließen.
+							</p>
+            </td>
+          </tr>
+					<tr>
             <td>
               <p>Fehler beim Konfigurieren der Kennwortrückschreibung während der Azure AD Connect-Installation.</p>
             </td>
@@ -1502,4 +1516,4 @@ Im Folgenden finden Sie Links zu allen Webseiten mit Informationen zur Kennwortz
 [003]: ./media/active-directory-passwords-troubleshoot/003.jpg "Image_003.jpg"
 [004]: ./media/active-directory-passwords-troubleshoot/004.jpg "Image_004.jpg"
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0817_2016-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/18/2016"
+	ms.date="08/10/2016"
 	ms.author="jgao"/>
 
 
@@ -175,12 +175,16 @@ Es gibt auch einige Anwendungen, die eine grafische Benutzeroberfläche für die
 
 | Client- | Linux | OS X | Windows |
 | ------ |:-----:|:----:|:-------:|
+| [Microsoft Visual Studio-Tools für HDInsight](hdinsight-hadoop-visual-studio-tools-get-started.md#navigate-the-linked-resources) | ✔ | ✔ | ✔ |
 | [Azure-Speicher-Explorer](http://storageexplorer.com/) | ✔ | ✔ | ✔ |
 | [Cloud Storage Studio 2](http://www.cerebrata.com/Products/CloudStorageStudio/) | | | ✔ |
 | [CloudXplorer](http://clumsyleaf.com/products/cloudxplorer) | | | ✔ |
 | [Azure Explorer](http://www.cloudberrylab.com/free-microsoft-azure-explorer.aspx) | | | ✔ |
-| [Zudio](https://zudio.co/) | ✔ | ✔ | ✔ |
 | [Cyberduck](https://cyberduck.io/) | | ✔ | ✔ |
+
+###Visual Studio-Tools für HDInsight
+
+Weitere Informationen finden Sie unter [Navigieren durch die verknüpften Ressourcen](hdinsight-hadoop-visual-studio-tools-get-started.md#navigate-the-linked-resources).
 
 ###<a id="storageexplorer"></a>Azure-Speicher-Explorer
 
@@ -282,4 +286,4 @@ Jetzt wissen Sie, wie Sie Daten in HDInsight importieren. Lesen Sie in den folge
 [image-ase-addaccount]: ./media/hdinsight-upload-data/HDI.ASEAddAccount.png
 [image-ase-blob]: ./media/hdinsight-upload-data/HDI.ASEBlob.png
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0817_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/11/2016"
+   ms.date="08/15/2016"
    ms.author="tomfitz"/>
 
 # Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure-CLI
@@ -40,7 +40,7 @@ Ihre Vorlage kann entweder eine lokale Datei oder eine externe Datei sein, die �
 
 ## Schnelle Schritte zur Bereitstellung
 
-Dieser Artikel beschreibt alle verschiedenen Optionen, die Ihnen während der Bereitstellung zur Verfügung stehen. Allerdings werden Sie sehr häufig nur zwei einfache Befehle benötigen. Verwenden Sie die folgenden Befehle, um schnell mit der Bereitstellung zu beginnen:
+Dieser Artikel beschreibt alle verschiedenen Optionen, die Ihnen während der Bereitstellung zur Verfügung stehen. Allerdings benötigen Sie häufig nur zwei einfache Befehle. Verwenden Sie die folgenden Befehle, um schnell mit der Bereitstellung zu beginnen:
 
     azure group create -n ExampleResourceGroup -l "West US"
     azure group deployment create -f <PathToTemplate> -e <PathToParameterFile> -g ExampleResourceGroup -n ExampleDeployment
@@ -53,7 +53,7 @@ Weitere Informationen zu Optionen für die Bereitstellung, die für Ihr Szenario
 
 Wenn Sie die Azure-Befehlszeilenschnittstelle noch nicht mit dem Ressourcen-Manager verwendet haben, finden Sie unter [Verwenden der Azure-Befehlszeilenschnittstelle für Mac, Linux und Windows mit der Azure-Ressourcenverwaltung](xplat-cli-azure-resource-manager.md) weitere Informationen.
 
-1. Melden Sie sich bei Ihrem Azure-Konto an. Nach der Eingabe Ihrer Anmeldeinformationen gibt der Befehl das Ergebnis der Anmeldung zurück.
+1. Melden Sie sich beim Azure-Konto an. Nach der Eingabe Ihrer Anmeldeinformationen gibt der Befehl das Ergebnis der Anmeldung zurück.
 
         azure login
   
@@ -70,7 +70,7 @@ Wenn Sie die Azure-Befehlszeilenschnittstelle noch nicht mit dem Ressourcen-Mana
    
         info:     New mode is arm
 
-4. Erstellen Sie eine neue Ressourcengruppe, wenn noch keine vorhanden ist. Geben Sie den Namen der Ressourcengruppe und des gewünschten Speicherorts ein. Es wird eine Zusammenfassung der neuen Ressourcengruppe zurückgegeben.
+4. Erstellen Sie eine Ressourcengruppe, wenn noch keine vorhanden ist. Geben Sie den Namen der Ressourcengruppe und des gewünschten Speicherorts ein. Es wird eine Zusammenfassung der neuen Ressourcengruppe zurückgegeben.
 
         azure group create -n ExampleResourceGroup -l "West US"
    
@@ -90,7 +90,7 @@ Wenn Sie die Azure-Befehlszeilenschnittstelle noch nicht mit dem Ressourcen-Mana
 
         azure group template validate -f <PathToTemplate> -p "{"ParameterName":{"value":"ParameterValue"}}" -g ExampleResourceGroup
 
-5. Führen Sie zum Erstellen einer neuen Bereitstellung für die Ressourcengruppe den folgenden Befehl aus, und geben Sie die erforderlichen Parameter ein. Die Parameter enthalten den Namen der Bereitstellung, den Namen der Ressourcengruppe, den Pfad oder die URL der erstellten Vorlage und alle anderen für Ihr Szenario erforderlichen Parameter.
+5. Führen Sie zum Bereitstellen von Ressourcen in Ihrer Ressourcengruppe den folgenden Befehl aus, und geben Sie die erforderlichen Parameter ein. Die Parameter enthalten den Namen der Bereitstellung, den Namen der Ressourcengruppe, den Pfad oder die URL der erstellten Vorlage und alle anderen für Ihr Szenario erforderlichen Parameter.
    
      Sie haben die folgenden drei Möglichkeiten, die Parameterwerte anzugeben:
 
@@ -106,7 +106,7 @@ Wenn Sie die Azure-Befehlszeilenschnittstelle noch nicht mit dem Ressourcen-Mana
     
             azure group deployment create -f <PathToTemplate> -e <PathToParameterFile> -g ExampleResourceGroup -n ExampleDeployment
 
-     Nach der Bereitstellung der Ressourcen über eine der oben genannten drei Methoden, sehen Sie eine Zusammenfassung der Bereitstellung.
+     Nach der Bereitstellung der Ressourcen über eine der oben genannten drei Methoden sehen Sie eine Zusammenfassung der Bereitstellung.
   
         info:    Executing command group deployment create
         + Initializing template configurations and parameters
@@ -132,11 +132,11 @@ Sie können Ihre Vorlagen einem Speicherkonto hinzufügen und sie während der B
 
 Führen Sie die folgenden Schritte aus, um ein Speicherkonto für Vorlagen einzurichten:
 
-1. Erstellen Sie eine neue Ressourcengruppe.
+1. Erstellen Sie eine Ressourcengruppe.
 
         azure group create -n "ManageGroup" -l "westus"
 
-2. Erstellen Sie ein neues Speicherkonto Der Name des Speicherkontos muss innerhalb von Azure eindeutig sein. Geben Sie deshalb Ihren eigenen Namen für das Konto an.
+2. Erstellen Sie ein Speicherkonto. Der Name des Speicherkontos muss innerhalb von Azure eindeutig sein. Geben Sie deshalb Ihren eigenen Namen für das Konto an.
 
         azure storage account create -g ManageGroup -l "westus" --sku-name LRS --kind Storage storagecontosotemplates
 
@@ -145,7 +145,7 @@ Führen Sie die folgenden Schritte aus, um ein Speicherkonto für Vorlagen einzu
         export AZURE_STORAGE_ACCOUNT=storagecontosotemplates
         export AZURE_STORAGE_ACCESS_KEY={storage_account_key}
 
-4. Erstellen Sie einen neuen Container. Die Berechtigung ist auf **Off** festgelegt, was bedeutet, dass nur der Besitzer Zugriff auf den Container hat.
+4. Erstellen Sie einen Container. Die Berechtigung ist auf **Off** festgelegt, was bedeutet, dass nur der Besitzer Zugriff auf den Container hat.
 
         azure storage container create --container templates -p Off 
         
@@ -176,4 +176,4 @@ Ein Beispiel der Verwendung eines SAS-Tokens mit verknüpften Vorlagen finden Si
 - Informationen zum Bereitstellen der Lösung in andere Umgebungen finden Sie unter [Entwicklungs- und Testumgebungen in Microsoft Azure](solution-dev-test-environments.md).
 - Weitere Informationen zum Verwenden eines KeyVault-Verweises zum Übergeben sicherer Werte finden Sie unter [Übergeben sicherer Werte während der Bereitstellung](resource-manager-keyvault-parameter.md).
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0817_2016-->

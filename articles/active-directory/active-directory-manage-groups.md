@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="curtand"
-	manager="stevenpo"
+	manager="femila"
 	editor=""
 />
 
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/14/2016"
+	ms.date="08/10/2016"
 	ms.author="curtand"/>
 
 
@@ -91,4 +91,4 @@ Da Sie nun die Grundlagen der Zugriffsverwaltung kennen, können Sie sich jetzt 
 
 * [Azure Active Directory-Cmdlets zum Konfigurieren von Gruppeneinstellungen](active-directory-accessmanagement-groups-settings-cmdlets.md)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0817_2016-->

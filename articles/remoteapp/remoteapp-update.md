@@ -13,10 +13,13 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="compute"
-   ms.date="06/05/2016"
+   ms.date="08/15/2016"
    ms.author="elizapo"/>
 
 # Aktualisieren einer Sammlung in Azure RemoteApp
+
+> [AZURE.IMPORTANT]
+Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148).
 
 Irgendwann kommt der Punkt, an dem eine Aktualisierung der Apps oder des Image in Ihrer Azure RemoteApp-Sammlung erforderlich wird. Wenn Sie eines der Images aus Ihrem Azure RemoteApp-Abonnement verwenden (ganz gleich, ob in einer Cloud- oder in einer Hybridsammlung), werden sämtliche Aktualisierungen von Azure RemoteApp abgewickelt, und Sie müssen sich um nichts weiter kümmern.
 
@@ -34,4 +37,4 @@ In diesem Artikel erfahren Sie, wie Sie Ihre Sammlung aktualisieren. Es ist ganz
 
 1. Klicken Sie auf das Häkchen, um die Aktualisierung zu starten.
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0817_2016-->

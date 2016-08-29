@@ -2,7 +2,7 @@
 	pageTitle="Hinzufügen der Abfrageaktion in Logik-Apps | Microsoft Azure"
 	description="Übersicht über die Abfrageaktion zum Ausführen von Aktionen wie „Array filtern“."
 	services=""
-	documentationCenter="" 
+	documentationCenter=""
 	authors="jeffhollan"
 	manager="erikre"
 	editor=""
@@ -13,7 +13,7 @@
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
-   ms.workload="na" 
+   ms.workload="na"
    ms.date="07/20/2016"
    ms.author="jehollan"/>
 
@@ -26,46 +26,42 @@ Mit der Abfrageaktion können Sie Batches und Arrays zum Ausführen von Workflow
 
 Wenn Sie die Abfrageaktion in einer Logik-App verwenden möchten, müssen Sie zunächst eine [Logik-App erstellen](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
----
-
 ## Verwenden der Abfrageaktion
-	
-Eine Aktion ist ein Vorgang, der durch den in einer Logik-App definierten Workflow ausgeführt wird. [Weitere Informationen zu Aktionen finden Sie hier.](connectors-overview.md) Für die Abfrageaktion ist derzeit ein Vorgang im Designer verfügbar: „Array filtern“. Dadurch können Sie ein Array abfragen und einen Satz gefilterter Ergebnisse zurückgeben. Im Folgenden wird erläutert, wie Sie die Aktion in einer Logik-App hinzufügen können:
+
+Eine Aktion ist ein Vorgang, der durch den in einer Logik-App definierten Workflow ausgeführt wird. Weitere Informationen zu Aktionen finden Sie [hier](connectors-overview.md).
+
+Für die Abfrageaktion ist derzeit ein Vorgang („Array filtern“) im Designer verfügbar. Dadurch können Sie ein Array abfragen und einen Satz gefilterter Ergebnisse zurückgeben.
+
+Im Folgenden wird erläutert, wie Sie die Aktion in einer Logik-App hinzufügen können:
 
 1. Wählen Sie die Schaltfläche **Neuer Schritt** aus.
-1. Wählen Sie **Aktion hinzufügen** aus.
-1. Geben Sie in das Aktionssuchfeld „Filter“ ein, um die Aktion **Array filtern** anzuzeigen.
+2. Wählen Sie **Aktion hinzufügen** aus.
+3. Geben Sie in das Aktionssuchfeld **Filter** ein, um die Aktion **Array filtern** anzuzeigen.
 
 	![Auswählen der Abfrageaktion](./media/connectors-native-query/using-action-1.png)
 
-1. Wählen Sie ein zu filterndes Array aus (der folgende Screenshot zeigt die Ergebnisse einer Twitter-Suche).
-1. Erstellen Sie eine Bedingung zur Auswertung der einzelnen Elemente (der folgende Screenshot zeigt, wie Tweets von Benutzern mit mehr als 100 Followern gefiltert werden).
+4. Wählen Sie ein zu filterndes Array aus. (Das folgende Bildschirmfoto zeigt das Array mit Ergebnissen aus einer Twitter-Suche.)
+5. Erstellen Sie eine für jedes Element auszuwertende Bedingung. (Im folgenden Bildschirmfoto werden Tweets von Benutzern mit mehr als 100 Followern gefiltert.)
 
-	![Abschließen der Abfrageaktion](./media/connectors-native-query/using-action-2.png)
+	![Ausführen der Abfrageaktion](./media/connectors-native-query/using-action-2.png)
 
-1. Die Aktion gibt ein neues Array aus, das nur Ergebnisse enthält, die die Filteranforderungen erfüllen.
-1. Klicken Sie links oben auf der Symbolleiste auf „Speichern“. Dadurch wird Ihre Logik-App gespeichert und veröffentlicht (aktiviert).
+	Die Aktion gibt ein neues Array aus, das nur Ergebnisse enthält, die die Filteranforderungen erfüllen.
+6. Klicken Sie zum Speichern links oben auf die Symbolleiste. Dadurch wird Ihre Logik-App gespeichert und veröffentlicht (aktiviert).
 
----
+## Abfrageaktion
 
-## Technische Details
-
-Im Folgenden finden Sie Details zu den von diesem Connector unterstützten Aktionen.
-
-## Abfrageaktionen
-
-Eine Aktion ist ein Vorgang, der durch den in einer Logik-App definierten Workflow ausgeführt wird. [Weitere Informationen zu Aktionen finden Sie hier.](connectors-overview.md) Der Connector verfügt über eine mögliche Aktion.
+Hier finden Sie Details zu der Aktion, die dieser Connector unterstützt. Der Connector verfügt über eine mögliche Aktion.
 
 |Aktion|Beschreibung|
 |---|---|
 |Array filtern|Auswerten einer Bedingung für jedes Element in einem Array und Zurückgeben der Ergebnisse|
 
-### Aktionsdetails
+## Aktionsdetails
 
-Für die Abfrageaktion steht eine mögliche Aktion zur Verfügung. Im Anschluss finden Sie Informationen zu den einzelnen Aktionen und den erforderlichen und optionalen Eingabefeldern sowie entsprechende Ausgabedetails in Verbindung mit deren Verwendung.
+Für die Abfrageaktion steht eine mögliche Aktion zur Verfügung. Die folgenden Tabellen beschreiben die erforderlichen und optionalen Eingabefelder für die Aktion und die entsprechenden Ausgabedetails, die der Verwendung dieser Aktion zugeordnet sind.
 
-#### Array filtern
-Führt eine ausgehende HTTP-Anforderung durch. Mit einem Sternchen gekennzeichnete Felder sind Pflichtfelder.
+### Array filtern
+Im Folgenden werden die Eingabefelder für die Aktion angegeben, die eine ausgehende HTTP-Anforderung ausführt. Ein * bedeutet, dass es sich um ein Pflichtfeld handelt.
 
 |Anzeigename|Eigenschaftenname|Beschreibung|
 |---|---|---|
@@ -73,22 +69,16 @@ Führt eine ausgehende HTTP-Anforderung durch. Mit einem Sternchen gekennzeichne
 |Bedingung*|Hierbei gilt:|Die für jedes Element auszuwertende Bedingung|
 <br>
 
-**Ausgabedetails**
+### Ausgabedetails
 
-HTTP-Antwort
+Im Folgenden werden die Ausgabedetails für die HTTP-Antwort angegeben.
 
 |Eigenschaftenname|Datentyp|Beschreibung|
 |---|---|---|
 |Array gefiltert|array|Array, das ein Objekt für jedes gefilterte Ergebnis enthält|
 
----
-
 ## Nächste Schritte
-
-Im Anschluss finden Sie Details zur den weiteren Schritten mit Logik-Apps und unserer Community.
-
-## Erstellen einer Logik-App
 
 Testen Sie nun die Plattform, und [erstellen Sie eine Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md). Machen Sie sich ggf. anhand unserer [API-Liste](apis-list.md) mit den anderen verfügbaren Connectors für Logik-Apps vertraut.
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0817_2016-->

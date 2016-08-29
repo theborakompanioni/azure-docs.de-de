@@ -19,7 +19,7 @@
 
 # Plattformgestützte Migration von IaaS-Ressourcen vom klassischen Bereitstellungsmodell zu Azure Resource Manager
 
-Es ist schon fast ein Jahr her, seit wir die Unterstützung für virtuelle Computer unter Azure Resource Manager angekündigt haben. Hier finden Sie weitere Informationen zu den Weiterentwicklungen und zusätzlichen Funktionen, die unterstützt werden. Außerdem wird beschrieben, wie Sie am besten eine Verbindung herstellen und Ressourcen aus den beiden Bereitstellungsmodellen im Abonnement zusammen nutzen können, indem Sie Site-to-Site-Gateways für virtuelle Netzwerke verwenden. In diesem Artikel wird veranschaulicht, wie die Migration von IaaS-Ressourcen (Infrastructure-as-a-Service) vom klassischen Bereitstellungsmodell zu Resource Manager ermöglicht wird.
+Es ist schon fast ein Jahr her, seit wir die Unterstützung für virtuelle Computer unter Azure Resource Manager angekündigt haben. Hier finden Sie weitere Informationen zu den Weiterentwicklungen und zusätzlichen Funktionen, die unterstützt werden. Außerdem wird beschrieben, wie Sie am besten eine Verbindung herstellen und Ressourcen aus den beiden Bereitstellungsmodellen im Abonnement zusammen nutzen können, indem Sie Standort-zu-Standort-Gateways für virtuelle Netzwerke verwenden. In diesem Artikel wird veranschaulicht, wie die Migration von IaaS-Ressourcen (Infrastructure-as-a-Service) vom klassischen Bereitstellungsmodell zu Resource Manager ermöglicht wird.
 
 ## Ziel der Migration
 
@@ -78,20 +78,20 @@ Derzeit werden einige Features und Konfigurationen nicht unterstützt. In den fo
 
 Die folgenden Funktionen werden derzeit nicht unterstützt: Optional können Sie diese Einstellungen entfernen, die virtuellen Computer migrieren und die Einstellungen dann im Resource Manager-Bereitstellungsmodell wieder aktivieren.
 
-Ressourcenanbieter | Funktion
+Ressourcenanbieter | Feature
 ---------- | ------------
 Compute | Nicht zugeordnete VM-Datenträger.
 Compute | VM-Images.
-Netzwerk | Nicht zugeordnete reservierte IP-Adressen (falls nicht einem virtuellen Computer zugeordnet). Reservierte IP-Adressen, die virtuellen Computern zugeordnet sind, werden unterstützt.
-Netzwerk | Nicht zugeordnete Netzwerksicherheitsgruppen (falls nicht einem virtuellen Netzwerk oder einer Netzwerkschnittstelle zugeordnet). NSGs, auf die von virtuellen Netzwerken verwiesen wird, werden unterstützt.
 Netzwerk | Endpunkt-ACLs.
-Netzwerk | Gateways des virtuellen Netzwerks (Standort-zu-Standort, Azure ExpressRoute, Punkt-zu-Standort).
+Netzwerk | Gateways des virtuellen Netzwerks (Standort-zu-Standort, Azure ExpressRoute, Anwendungsgateway, Punkt-zu-Standort).
+Netzwerk | Virtuelle Netzwerke mit VNet-Peering. (Migrieren von VNet zu ARM, dann Peering.) Erfahren Sie mehr über das [VNet-Peering](../virtual-network/virtual-network-peering-overview.md).
+Netzwerk | Traffic Manager-Profile.
 
 ### Nicht unterstützte Konfigurationen
 
 Die folgenden Konfigurationen werden derzeit nicht unterstützt:
 
-Dienst | Konfiguration | Empfehlungen
+Dienst | Konfiguration | Empfehlung
 ---------- | ------------ | ------------
 Ressourcen-Manager | Rollenbasierte Zugriffssteuerung (RBAC) für klassische Ressourcen | Da der URI der Ressourcen nach der Migration geändert wird, empfehlen wir Ihnen, die RBAC-Richtlinienaktualisierungen zu planen, die nach der Migration ausgeführt werden müssen.
 Compute | Mehrere Subnetze, die einem virtuellen Computer zugeordnet sind | Aktualisieren Sie die Subnetzkonfiguration so, dass nur auf Subnetze verwiesen wird.
@@ -167,7 +167,7 @@ Der Abbruch ist ein optionaler Schritt, mit dem Sie Ihre Änderungen auf das kla
 
 Nach Abschluss der Überprüfung können Sie einen Commit für die Migration durchführen. Die Ressourcen werden nicht mehr im klassischen Bereitstellungsmodell angezeigt und stehen nur noch im Resource Manager-Bereitstellungsmodell zur Verfügung. Dies bedeutet auch, dass die migrierten Ressourcen nur im neuen Portal verwaltet werden können.
 
->[AZURE.NOTE] Dies ist ein idempotenter Vorgang. Wenn er fehlschlägt, raten wir Ihnen, es einige Male erneut zu versuchen. Sollten weiterhin Fehler auftreten, erstellen Sie ein Supportticket, oder erstellen Sie einen Eintrag in unserem [VM-Forum](https://social.msdn.microsoft.com/Forums/azure/de-DE/home?forum=WAVirtualMachinesforWindows) mit dem Tag „ClassicIaaSMigration“.
+>[AZURE.NOTE] Dies ist ein idempotenter Vorgang. Wenn er fehlschlägt, raten wir Ihnen, es einige Male erneut zu versuchen. Sollten weiterhin Fehler auftreten, erstellen Sie ein Supportticket, oder posten Sie unter Verwendung des Tags „ClassicIaaSMigration“ in unserem [VM-Forum](https://social.msdn.microsoft.com/Forums/azure/de-DE/home?forum=WAVirtualMachinesforWindows).
 
 ## Häufig gestellte Fragen
 
@@ -193,7 +193,7 @@ Sie können die Migration abbrechen, solange sich die Ressourcen im Zustand „V
 
 **Kann ich für meine Migration einen Rollback durchführen, wenn beim Commitvorgang ein Fehler auftritt?**
 
-Sie können die Migration nicht abbrechen, wenn für den Commitvorgang ein Fehler auftritt. Alle Migrationsvorgänge, einschließlich des Commitvorgangs, sind idempotent. Daher wird empfohlen, den Vorgang nach einer kurzen Wartezeit zu wiederholen. Sollte weiterhin ein Fehler auftreten, erstellen Sie ein Supportticket, oder erstellen Sie einen Eintrag in unserem [VM-Forum](https://social.msdn.microsoft.com/Forums/azure/de-DE/home?forum=WAVirtualMachinesforWindows) mit dem Tag „ClassicIaaSMigration“.
+Sie können die Migration nicht abbrechen, wenn für den Commitvorgang ein Fehler auftritt. Alle Migrationsvorgänge, einschließlich des Commitvorgangs, sind idempotent. Daher wird empfohlen, den Vorgang nach einer kurzen Wartezeit zu wiederholen. Sollten weiterhin Fehler auftreten, erstellen Sie ein Supportticket, oder posten Sie unter Verwendung des Tags „ClassicIaaSMigration“ unserem [VM-Forum](https://social.msdn.microsoft.com/Forums/azure/de-DE/home?forum=WAVirtualMachinesforWindows).
 
 **Muss ich eine weitere ExpressRoute-Verbindung erwerben, wenn ich IaaS unter Resource Manager verwenden muss?**
 
@@ -217,13 +217,13 @@ Wir empfehlen Ihnen, die Migration abzubrechen und anschließend eine Supportanf
 
 **Wie melde ich ein Problem?**
 
-Posten Sie Ihre Probleme und Fragen zur Migration in unserem [VM-Forum](https://social.msdn.microsoft.com/Forums/azure/de-DE/home?forum=WAVirtualMachinesforWindows) unter dem Schlüsselwort „ClassicIaaSMigration“. Wir empfehlen, all Ihre Fragen in diesem Forum zu posten. Wenn Sie einen Supportvertrag haben, können Sie auch gerne ein Supportticket erstellen.
+Posten Sie Ihre Probleme und Fragen zur Migration mit dem Schlüsselwort „ClassicIaaSMigration“ in unserem [VM-Forum](https://social.msdn.microsoft.com/Forums/azure/de-DE/home?forum=WAVirtualMachinesforWindows). Wir empfehlen, all Ihre Fragen in diesem Forum zu posten. Wenn Sie einen Supportvertrag haben, können Sie auch gerne ein Supportticket erstellen.
 
 **Was passiert, wenn mir die Namen der Ressourcen nicht gefallen, die von der Plattform während der Migration ausgewählt wurden?**
 
 Für alle Ressourcen, für die Sie unter dem klassischen Bereitstellungsmodell explizit Namen angeben, werden diese während der Migration beibehalten. In einigen Fällen werden neue Ressourcen erstellt. Beispiel: Für jeden virtuellen Computer wird eine Netzwerkschnittstelle erstellt. Derzeit wird es nicht unterstützt, die Namen dieser neuen Ressourcen, die während der Migration erstellt werden, zu steuern. Besuchen Sie das [Azure-Feedbackforum](http://feedback.azure.com), um für dieses Feature abzustimmen.
 
-**Ich erhalte die Fehlermeldung *„Der VM-Agent für die VM meldet den Gesamtstatus des Agents als „Nicht bereit“. Daher kann die VM nicht migriert werden. Stellen Sie sicher, dass der VM-Agent den Gesamtstatus des Agents als „Bereit“ meldet“* oder *„Die VM enthält die Erweiterung, deren Status nicht von der VM gemeldet wird. Daher kann diese VM nicht migriert werden.“***
+**Ich erhalte die Fehlermeldung *„Die VM meldet den Gesamtstatus des Agents als ,Nicht bereit‘. Daher kann die VM nicht migriert werden. Stellen Sie sicher, dass der VM-Agent den Gesamtstatus des Agents als ,Bereit‘ meldet“* oder *„Die VM enthält eine Erweiterung, deren Status nicht von der VM gemeldet wird. Daher kann diese VM nicht migriert werden.“***
 
 Diese Meldung wird empfangen, wenn der virtuelle Computer keine ausgehende Verbindung mit dem Internet aufweist. Der VM-Agent verwendet ausgehende Verbindungen, um das Azure-Speicherkonto für die Aktualisierung des Agent-Status alle 5 Minuten zu erreichen.
 
@@ -235,4 +235,4 @@ Nachdem Sie nun eine Vorstellung von der Migration klassischer IaaS-Ressourcen z
 - [Migrieren von IaaS-Ressourcen vom klassischen Bereitstellungsmodell zu Azure Resource Manager mithilfe der Befehlszeilenschnittstelle](virtual-machines-linux-cli-migration-classic-resource-manager.md)
 - [Klonen eines klassischen virtuellen Computers nach Azure Resource Manager mithilfe von PowerShell-Skripts aus der Community](virtual-machines-windows-migration-scripts.md)
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0817_2016-->

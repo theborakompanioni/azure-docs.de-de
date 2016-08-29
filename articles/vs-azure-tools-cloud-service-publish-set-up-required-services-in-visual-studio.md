@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
-   ms.date="05/08/2016"
+   ms.date="08/15/2016"
    ms.author="tarcher" />
 
 # Veröffentlichen und Bereitstellen einer Azure-Anwendung in Visual Studio
@@ -30,7 +30,7 @@ Befolgen Sie die folgenden Verfahren, um diese Dienste einzurichten und Ihre Anw
 
 ## Erstellen eines Clouddiensts
 
-Um einen Clouddienst in Azure zu veröffentlichen, müssen Sie zunächst einen Clouddienst erstellen, in dem Ihre Rollen in der Azure-Umgebung ausgeführt werden. Sie können einen Clouddienst im [klassischen Azure-Portal](http://go.microsoft.com/fwlink/?LinkID=213885) erstellen, wie im Abschnitt **So erstellen Sie einen Clouddienst über das klassische Azure-Portal** weiter unten in diesem Artikel beschrieben. Sie können auch mit dem Veröffentlichungs-Assistenten einen Clouddienst in Visual Studio erstellen.
+Um einen Clouddienst in Azure zu veröffentlichen, müssen Sie zunächst einen Clouddienst erstellen, in dem Ihre Rollen in der Azure-Umgebung ausgeführt werden. Sie können einen Clouddienst im [klassischen Azure-Portal](http://go.microsoft.com/fwlink/?LinkID=213885) erstellen, wie weiter unten in diesem Artikel im Abschnitt **So erstellen Sie einen Clouddienst über das klassische Azure-Portal** beschrieben. Sie können auch mit dem Veröffentlichungs-Assistenten einen Clouddienst in Visual Studio erstellen.
 
 ### So erstellen Sie einen Clouddienst in Visual Studio
 
@@ -64,7 +64,7 @@ Um einen Clouddienst in Azure zu veröffentlichen, müssen Sie zunächst einen C
 
 1. Klicken Sie am unteren Rand des Fensters auf den Link **Clouddienst erstellen**.
 
-## Erstellen eines Speicherkontos
+## Erstellen Sie ein Speicherkonto.
 
 Ein Speicherkonto bietet Zugriff auf die Blob-, Warteschlangen- und Tabellendienste. Sie können ein Speicherkonto in Visual Studio oder im [klassischen Azure-Portal](http://go.microsoft.com/fwlink/?LinkId=253103) erstellen.
 
@@ -153,4 +153,4 @@ Sie müssen alle Rollen, die auf Speicherdienste zugreifen, für das Verwenden d
 
 Weitere Informationen zum Veröffentlichen von Anwendungen in Azure aus Visual Studio finden Sie unter [Veröffentlichen eines Clouddiensts mit den Azure Tools](vs-azure-tools-publishing-a-cloud-service.md).
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0817_2016-->

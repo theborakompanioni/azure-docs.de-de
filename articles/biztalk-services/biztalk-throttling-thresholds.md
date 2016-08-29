@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/16/2016" 
+	ms.date="08/15/2016" 
 	ms.author="mandia"/>
 
 
@@ -42,9 +42,7 @@ Azure BizTalk Services verfolgen den Drosselungsstatus (normaler Status vs. gedr
 
 Wenn Azure BizTalk Services einen Drosselungsstatus erreichen, tritt Folgendes ein:
 
-- Die Drosselung wird pro Rolleninstanz durchgeführt. Beispiel:<br/> 
-RoleInstanceA wird gedrosselt. RoleInstanceB wird nicht gedrosselt. In dieser Situation werden die Nachrichten in RoleInstanceB erwartungsgemäß verarbeitet. Die Nachrichten in RoleInstanceA werden verworfen und geben folgenden Fehler aus:<br/><br/> 
-**Server ist ausgelastet. Versuchen Sie es erneut.**<br/><br/>
+- Die Drosselung wird pro Rolleninstanz durchgeführt. Beispiel:<br/> RoleInstanceA wird gedrosselt. RoleInstanceB wird nicht gedrosselt. In dieser Situation werden die Nachrichten in RoleInstanceB erwartungsgemäß verarbeitet. Die Nachrichten in RoleInstanceA werden verworfen und geben folgenden Fehler aus:<br/><br/> **Server ist ausgelastet. Versuchen Sie es erneut.**<br/><br/>
 - Keine der Pullquellen ruft eine Nachricht ab oder lädt eine herunter. Beispiel:<br/> Eine Pipeline ruft Nachrichten per Pullaktion aus einer externen FTP-Quelle ab. Die Rolleninstanz, welche die Pullaktion durchführt, geht in einen Drosselungsstatus über. In dieser Situation setzt die Pipeline das Herunterladen zusätzlicher Nachrichten aus, bis die Rolleninstanz die Drosselung beendet.
 - Eine Antwort wird an den Client gesendet, so dass dieser die Nachricht neu senden kann.
 - Sie müssen solange warten, bis die Drosselung aufgelöst ist. Insbesondere müssen Sie warten, bis ein niedriger Schwellenwert erreicht ist.
@@ -71,4 +69,4 @@ RoleInstanceA wird gedrosselt. RoleInstanceB wird nicht gedrosselt. In dieser Si
 - [BizTalk Services: Name und Schlüssel des Ausstellers](http://go.microsoft.com/fwlink/p/?LinkID=303941)<br/>
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0817_2016-->

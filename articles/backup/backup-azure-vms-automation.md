@@ -339,10 +339,9 @@ Nachdem Sie die Datenträger wiederhergestellt haben, verwenden Sie diese Schrit
 2. Legen Sie den Azure-Speicherkontext fest, und stellen Sie die JSON-Konfigurationsdatei wieder her.
 
     ```
-    Set -AzureRmCurrentStorageAccount -Name $storageaccountname -ResourceGroupName testvault
+    PS C:\> Set-AzureRmCurrentStorageAccount -Name $storageaccountname -ResourceGroupName testvault
     PS C:\> $destination_path = "C:\vmconfig.json"
-    Get-AzureStorageBlobContent -Container $containerName -Blob $blobName -Destination
-    PS C:\> $destination_path -Context $storageContext
+    PS C:\> Get-AzureStorageBlobContent -Container $containerName -Blob $blobName -Destination $destination_path
     PS C:\> $obj = ((Get-Content -Path $destination_path -Encoding Unicode)).TrimEnd([char]0x00) | ConvertFrom-Json
     ```
 
@@ -394,4 +393,4 @@ Nachdem Sie die Datenträger wiederhergestellt haben, verwenden Sie diese Schrit
 
 Falls Sie PowerShell für die Arbeit mit Azure-Ressourcen vorziehen, lesen Sie den PowerShell-Artikel für den Schutz von Windows Server: [Bereitstellen und Verwalten der Sicherung in Azure für Windows Server-/Windows-Clientcomputer mit PowerShell](./backup-client-automation.md). Es gibt auch einen PowerShell-Artikel über das Verwalten von DPM-Sicherungen: [Bereitstellen und Verwalten der Sicherung für DPM](./backup-dpm-automation.md). Diese beiden Artikel weisen eine Version für Resource Manager-Bereitstellungen und eine für klassische Bereitstellungen auf.
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0817_2016-->

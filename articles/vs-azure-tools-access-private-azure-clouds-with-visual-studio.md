@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
-   ms.date="05/08/2016"
+   ms.date="08/15/2016"
    ms.author="tarcher" />
 
 # Zugreifen auf private Azure-Clouds mit Visual Studio
@@ -27,7 +27,7 @@ Visual Studio unterstützt standardmäßig REST-Endpunkte der öffentlichen Azur
 
 1. Wählen Sie in Visual Studio im **Server-Explorer** den Knoten **Azure** und dann im Kontextmenü den Befehl **Abonnements verwalten** aus.
 
-    ![Befehl "Abonnement verwalten"](./media/vs-azure-tools-access-private-azure-clouds-with-visual-studio/IC790778.png)
+    ![Befehl „Abonnements verwalten“](./media/vs-azure-tools-access-private-azure-clouds-with-visual-studio/IC790778.png)
 
 1. Klicken Sie im Dialogfeld **Microsoft Azure-Abonnements verwalten** auf die Registerkarte **Zertifikate** und dann auf die Schaltfläche **Importieren**.
 
@@ -41,6 +41,6 @@ Visual Studio unterstützt standardmäßig REST-Endpunkte der öffentlichen Azur
 
 [Veröffentlichen eines Clouddiensts mit Azure Tools](https://msdn.microsoft.com/library/azure/ee460772.aspx)
 
-[Vorgehensweise: Herunterladen und Importieren von Veröffentlichungseinstellungen und Abonnementinformationen] (https://msdn.microsoft.com/library/dn385850(v=nav.70).aspx)
+[How to: Download and Import Publish Settings and Subscription Information](https://msdn.microsoft.com/library/dn385850(v=nav.70).aspx) (Gewusst wie: Herunterladen und Importieren von Veröffentlichungseinstellungen und Abonnementinformationen)
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0817_2016-->

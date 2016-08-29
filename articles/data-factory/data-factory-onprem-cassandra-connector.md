@@ -33,7 +33,8 @@ Damit der Azure Data Factory-Dienst eine Verbindung mit Ihrer lokalen Cassandra-
 ## Assistent zum Kopieren von Daten
 Die einfachste Art, eine Pipeline zu erstellen, mit der Daten aus einer Cassandra-Datenbank in einen der unterstützten Senkendatenspeicher kopiert werden, ist die Verwendung des Assistenten zum Kopieren von Daten. Unter [Tutorial: Erstellen einer Pipeline mit Kopieraktivität mithilfe des Data Factory-Kopier-Assistenten](data-factory-copy-data-wizard-tutorial.md) finden Sie eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mithilfe des Assistenten zum Kopieren von Daten.
 
-Die folgenden Beispiele zeigen JSON-Beispieldefinitionen, die Sie zum Erstellen einer Pipeline mit dem [Azure-Portal](data-factory-copy-activity-tutorial-using-azure-portal.md), mit [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) oder über [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) verwenden können.
+Die folgenden Beispiele zeigen JSON-Beispieldefinitionen, die Sie zum Erstellen einer Pipeline mit dem [Azure-Portal](data-factory-copy-activity-tutorial-using-azure-portal.md), mit [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) oder [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) verwenden können. Darin wird veranschaulicht, wie Sie Daten aus einer Cassandra-Datenbank in Azure Blob Storage kopieren. Daten können jedoch auch mithilfe der Kopieraktivität in Azure Data Factory in eine beliebige der [hier](data-factory-data-movement-activities.md#supported-data-stores) aufgeführten Senken kopiert werden.
+
 
 ## Beispiel: Kopieren von Daten aus Cassandra in ein Blob
 Im Beispiel werden stündlich Daten aus einer Cassandra-Datenbank in ein Azure-Blob kopiert. Die bei diesen Beispielen verwendeten JSON-Eigenschaften werden in den Abschnitten beschrieben, die auf die Beispiele folgen. Daten können mithilfe der Kopieraktivität in Azure Data Factory direkt in die im Artikel [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md#supported-data-stores) aufgeführten Senken kopiert werden.
@@ -187,7 +188,7 @@ Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die speziell 
 | Eigenschaft | Beschreibung | Erforderlich |
 | -------- | ----------- | -------- | 
 | type | Die type-Eigenschaft muss auf **OnPremisesCassandra** festgelegt sein. | Ja |
-| host | Mindestens eine IP-Adresse oder ein Hostname von Cassandra-Servern.<br/><br/>Geben Sie eine kommagetrennte Liste mit IP-Adressen oder Hostnamen an, um gleichzeitig mit allen Servern Verbindungen herzustellen. | Ja | 
+| host | Mindestens eine IP-Adresse oder ein Hostname von Cassandra-Servern.<br/><br/>Geben Sie eine durch Trennzeichen getrennte Liste mit IP-Adressen oder Hostnamen an, um gleichzeitig mit allen Servern Verbindungen herzustellen. | Ja | 
 | port | Der TCP-Port, den der Cassandra-Server verwendet, um auf Clientverbindungen zu lauschen. | Nein. Standardwert: 9042 |
 | authenticationType | Basic (Standard) oder Anonymous (Anonym) | Ja |
 | username |Geben Sie einen Benutzernamen für das Benutzerkonto an. | Ja, wenn authenticationType auf „Basic“ (Standard) festgelegt ist. |
@@ -199,7 +200,7 @@ Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die speziell 
 
 Eine vollständige Liste der Abschnitte und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel [Erstellen von Datasets](data-factory-create-datasets.md). Abschnitte wie "structure", "availability" und "policy" des JSON-Codes eines Datasets sind bei allen Typen von Datasets (Azure SQL, Azure-Blob, Azure-Tabelle usw.) ähnlich.
 
-Der Abschnitt **typeProperties** unterscheidet sich bei jedem Typ von Dataset und bietet Informationen zum Speicherort der Daten im Datenspeicher. Der Abschnitt typeProperties für ein Dataset des Typs **CassandraTable** hat die folgenden Eigenschaften:
+Der Abschnitt **typeProperties** unterscheidet sich bei jedem Typ von Dataset und bietet Informationen zum Speicherort der Daten im Datenspeicher. Der Abschnitt „typeProperties“ für ein Dataset des Typs **CassandraTable** hat die folgenden Eigenschaften:
 
 | Eigenschaft | Beschreibung | Erforderlich |
 | -------- | ----------- | -------- |
@@ -212,11 +213,11 @@ Eine vollständige Liste der Abschnitte und Eigenschaften zum Definieren von Akt
 
 Im Abschnitt "typeProperties" der Aktivität verfügbare Eigenschaften variieren hingegen bei jedem Aktivitätstyp. Bei der Kopieraktivität variieren sie je nach Typ der Quellen und Senken.
 
-Wenn „source“ bei der Kopieraktivität den Typ **CassandraSource** hat, sind im Abschnitt typeProperties die folgenden Eigenschaften verfügbar:
+Wenn „source“ bei der Kopieraktivität den Typ **CassandraSource** aufweist, sind im Abschnitt „typeProperties“ die folgenden Eigenschaften verfügbar:
 
 | Eigenschaft | Beschreibung | Zulässige Werte | Erforderlich |
 | -------- | ----------- | -------------- | -------- |
-| query | Verwendet die benutzerdefinierte Abfrage zum Lesen von Daten. | SQL-92-Abfrage oder CQL-Abfrage. Weitere Informationen finden Sie unter [CQL reference](https://docs.datastax.com/en/cql/3.1/cql/cql_reference/cqlReferenceTOC.html) (Referenz zu CQL). <br/><br/>Geben Sie beim Verwenden der SQL-Abfrage **keyspace name.table name** für die Tabelle an, die Sie abfragen möchten. | Nein (wenn tableName und keyspace im Dataset definiert sind) |
+| query | Verwendet die benutzerdefinierte Abfrage zum Lesen von Daten. | SQL-92-Abfrage oder CQL-Abfrage. Weitere Informationen finden Sie in der [Referenz zu CQL](https://docs.datastax.com/en/cql/3.1/cql/cql_reference/cqlReferenceTOC.html). <br/><br/>Geben Sie beim Verwenden der SQL-Abfrage **keyspace name.table name** für die Tabelle an, die Sie abfragen möchten. | Nein (wenn tableName und keyspace im Dataset definiert sind) |
 | consistencyLevel | Mit der Konsistenzebene (consistencyLevel) wird angegeben, wie viele Replikate auf eine Leseanforderung reagieren müssen, bevor Daten an die Clientanwendung zurückgegeben werden. Cassandra überprüft die angegebene Anzahl von Replikaten auf Daten, um die Leseanforderung zu erfüllen. | ONE, TWO, THREE, QUORUM, ALL, LOCAL\_QUORUM, EACH\_QUORUM, LOCAL\_ONE. Ausführliche Informationen finden Sie unter [Configuring data consistency](http://docs.datastax.com/en//cassandra/2.0/cassandra/dml/dml_config_consistency_c.html) (Konfigurieren der Datenkonsistenz). | Nein. Der Standardwert ist ONE. |  
 
 
@@ -249,12 +250,12 @@ Informationen zu Sammlungstypen (map, set, list usw.) finden Sie im Abschnitt [V
 ## Verwenden von Cassandra-Sammlungstypen mit einer virtuellen Tabelle
 Azure Data Factory verwendet einen integrierten ODBC-Treiber, um eine Verbindung mit der Cassandra-Datenbank herzustellen und Daten daraus zu kopieren. Für Sammlungstypen, z.B. „map“, „set“ und „list“, normalisiert der Treiber die Daten erneut in die entsprechenden virtuellen Tabellen. Wenn eine Tabelle Sammlungsspalten enthält, generiert der Treiber die folgenden virtuellen Tabellen:
 
--	Eine **Basistabelle**, die die gleichen Daten wie die echte Tabelle enthält, mit Ausnahme der Sammlungsspalten. Für die Basistabelle wird der gleiche Name wie für die echte Tabelle verwendet, die sie repräsentiert.
--	Eine **virtuelle Tabelle** für jede Sammlungsspalte (Erweiterung der geschachtelten Daten). Die virtuellen Tabellen, die Sammlungen repräsentieren, werden mit dem Namen der echten Tabelle benannt und erhalten zusätzlich das Trennzeichen „_vt_“ und den Namen der Spalte.
+-	Eine **Basistabelle**, die die gleichen Daten wie die tatsächliche Tabelle enthält, mit Ausnahme der Sammlungsspalten. Für die Basistabelle wird der gleiche Name wie für die echte Tabelle verwendet, die sie repräsentiert.
+-	Eine **virtuelle Tabelle** für jede Sammlungsspalte (Erweiterung der geschachtelten Daten). Die virtuellen Tabellen, die Sammlungen repräsentieren, werden mit dem Namen der tatsächlichen Tabelle benannt und erhalten zusätzlich das Trennzeichen „_vt_“ und den Namen der Spalte.
 
 Virtuelle Tabellen beziehen sich auf die Daten in der echten Tabelle, sodass der Treiber auf die denormalisierten Daten zugreifen kann. Details finden Sie unten im Abschnitt mit dem Beispiel. Sie können auf den Inhalt von Cassandra-Sammlungen zugreifen, indem Sie die virtuellen Tabellen abfragen und verknüpfen.
 
-Sie können den [Kopier-Assistenten](data-factory-data-movement-activities.md#data-factory-copy-wizard) verwenden, um die Liste mit den Tabellen in der Cassandra-Datenbank, einschließlich der virtuellen Tabellen, intuitiv anzuzeigen. Sie können im Kopier-Assistenten auch eine Abfrage erstellen und eine Überprüfung durchführen, um das Ergebnis anzuzeigen.
+Sie können den [Kopier-Assistenten](data-factory-data-movement-activities.md#data-factory-copy-wizard) verwenden, um die Liste mit den Tabellen in der Cassandra-Datenbank anzuzeigen, einschließlich der virtuellen Tabellen. Sie können im Kopier-Assistenten auch eine Abfrage erstellen und eine Überprüfung durchführen, um das Ergebnis anzuzeigen.
 
 ### Beispiel
 „ExampleTable“ unten ist beispielsweise eine Cassandra-Datenbanktabelle, die eine Spalte mit dem Namen „pk\_int“ für ganzzahlige Primärschlüssel, eine Textspalte mit dem Namen „value“ und die Spalten „list“, „map“ und „set“ („StringSet“) enthält.
@@ -312,4 +313,4 @@ pk\_int | StringSet\_value
 ## Leistung und Optimierung  
 Im Artikel [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-factory-copy-activity-performance.md) werden wichtige Faktoren beschrieben, die sich auf die Leistung der Datenverschiebung (Kopieraktivität) in Azure Data Factory auswirken, sowie verschiedene Möglichkeiten zur Leistungsoptimierung.
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0817_2016-->

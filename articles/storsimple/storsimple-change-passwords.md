@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD" 
-   ms.date="03/24/2016"
+   ms.date="08/17/2016"
    ms.author="alkohli"/>
 
 # Verwenden des StorSimple Manager-Diensts, um StorSimple-Kennwörter zu ändern
@@ -32,7 +32,7 @@ Das Kennwort, das zuerst über die Windows PowerShell-Schnittstelle während der
 
 1. Klicken Sie im klassischen Portal auf **Geräte** > **Konfigurieren** für Ihr Gerät.
 
-2. Scrollen Sie bis zum Abschnitt **Geräteadministratorkennwort** nach unten. Geben Sie ein Administratorkennwort ein, das zwischen 8 und 15 Zeichen lang ist. Beim Kennwort muss es sich um eine Kombination aus mindestens drei der Elemente Großbuchstaben, Kleinbuchstaben, Zahlen und Sonderzeichen handeln.
+2. Scrollen Sie bis zum Abschnitt **Geräteadministratorkennwort** nach unten. Geben Sie ein Administratorkennwort ein, das zwischen 8 und 15 Zeichen lang ist. Beim Kennwort muss es sich um eine Kombination aus mindestens drei der Elemente Großbuchstaben, Kleinbuchstaben, Zahlen und Sonderzeichen handeln.
 
 3. Bestätigen Sie das Kennwort.
 
@@ -52,7 +52,7 @@ Das Kennwort, das zuerst über die Windows PowerShell-Schnittstelle während der
 
 1. Klicken Sie im klassischen Portal auf **Geräte** > **Konfigurieren** für Ihr Gerät.
 
-2. Führen Sie einen Bildlauf nach unten bis zum Abschnitt **StorSimple Snapshot Manager** aus. Geben Sie ein Kennwort mit einer Länge von 14 oder 15 Zeichen ein. Stellen Sie sicher, dass das Kennwort eine Kombination aus mindestens drei der Elemente Großbuchstaben, Kleinbuchstaben, Zahlen und Sonderzeichen enthält.
+2. Führen Sie einen Bildlauf nach unten bis zum Abschnitt **StorSimple Snapshot Manager** aus. Geben Sie ein Kennwort mit einer Länge von 14 oder 15 Zeichen ein. Stellen Sie sicher, dass das Kennwort eine Kombination aus mindestens drei der Elemente Großbuchstaben, Kleinbuchstaben, Zahlen und Sonderzeichen enthält.
 
 3. Bestätigen Sie das Kennwort.
 
@@ -67,6 +67,6 @@ Das Kennwort für StorSimple Snapshot Manager sollte jetzt aktualisiert sein.
 
 - Weitere Informationen zum [Ändern Ihrer Gerätekonfiguration](storsimple-modify-device-config.md).
 
-- Weitere Informationen zum [Verwenden Ihres StorSimple-Geräts mithilfe des StorSimple Manager-Diensts](storsimple-manager-service-administration.md).
+- Weitere Informationen zum [Verwenden Ihres StorSimple-Geräts mithilfe des StorSimple Manager-Diensts](storsimple-manager-service-administration.md).
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0817_2016-->

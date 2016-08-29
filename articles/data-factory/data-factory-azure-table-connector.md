@@ -20,8 +20,10 @@
 
 Dieser Artikel beschreibt die Verwendung der Kopieraktivität in einer Azure Data Factory, um Daten aus einem anderen Datenspeicher in eine Azure-Tabelle und aus einer Azure-Tabelle in einen anderen Datenspeicher zu verschieben. Dieser Artikel baut auf dem Artikel [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) auf, der eine allgemeine Übersicht zur Datenverschiebung mit Kopieraktivität und unterstützten Datenspeicherkombinationen bietet.
 
-In den folgenden Beispielen wird veranschaulicht, wie Sie Daten in und aus Azure Table Storage und Azure-BLOB-Speicher kopieren. Daten können jedoch mithilfe der Kopieraktivität in Azure Data Factory **direkt** aus beliebigen Quellen in die [hier](data-factory-data-movement-activities.md#supported-data-stores) aufgeführten Senken kopiert werden.
+## Assistent zum Kopieren von Daten
+Die einfachste Möglichkeit zum Erstellen einer Pipeline, die Daten in und aus Azure Table Storage kopiert, ist die Verwendung des Assistenten zum Kopieren von Daten. Unter [Tutorial: Erstellen einer Pipeline mit dem Assistenten zum Kopieren](data-factory-copy-data-wizard-tutorial.md) finden Sie eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mithilfe des Assistenten zum Kopieren von Daten.
 
+Die folgenden Beispiele zeigen Beispiel-JSON-Definitionen, die Sie zum Erstellen einer Pipeline mit dem [Azure-Portal](data-factory-copy-activity-tutorial-using-azure-portal.md), mit [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) oder [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) verwenden können. Sie zeigen Ihnen das Kopieren von Daten aus Azure Table Storge und der Azure-Blobdatenbank (und umgekehrt). Daten können jedoch mithilfe der Kopieraktivität in Azure Data Factory **direkt** aus beliebigen Quellen in die [hier](data-factory-data-movement-activities.md#supported-data-stores) aufgeführten Senken kopiert werden.
 
 ## Beispiel: Kopieren von Daten aus einer Azure-Tabelle in ein Azure-Blob
 
@@ -402,7 +404,7 @@ Eigenschaft | Beschreibung | Zulässige Werte | Erforderlich
 azureTableDefaultPartitionKeyValue | Standardmäßiger Partitionsschlüsselwert, der von der Senke verwendet werden kann. | Ein Zeichenfolgenwert. | Nein 
 azureTablePartitionKeyName | Vom Benutzer angegebener Spaltenname, dessen Spaltenwerte als Partitionsschlüssel verwendet werden. Wenn dieser nicht angegeben ist, wird "AzureTableDefaultPartitionKeyValue" als Partitionsschlüssel verwendet. | Ein Spaltenname. | Nein |
 azureTableRowKeyName | Vom Benutzer angegebener Spaltenname, dessen Spaltenwerte als Zeilenschlüssel verwendet werden. Wenn nicht angegeben, verwenden Sie für jede Zeile eine GUID. | Ein Spaltenname. | Nein  
-azureTableInsertType | Der Modus zum Einfügen von Daten in eine Azure-Tabelle.<br/><br/>Diese Eigenschaft steuert, ob die Werte von vorhandenen Zeilen in der Ausgabetabelle, deren Partitions- und Zeilenschlüssel übereinstimmen, ersetzt oder zusammengeführt werden. <br/><br/>Informationen zur Funktionsweise dieser Einstellungen (Zusammenführen und Ersetzen) finden Sie in den Themen [Insert or Merge Entity](https://msdn.microsoft.com/library/azure/hh452241.aspx) (Entität einfügen oder zusammenführen) und [Insert or Replace Entity](https://msdn.microsoft.com/library/azure/hh452242.aspx) (Entität einfügen oder ersetzen). <br/><br> Beachten Sie dass diese Einstellungen auf Zeilenebene gelten, nicht auf Tabellenebene, und dass keine der beiden Optionen Zeilen in der Ausgabetabelle löscht, die in der Eingabe nicht vorhanden sind. | merge (default)<br/>replace | Nein 
+azureTableInsertType | Der Modus zum Einfügen von Daten in eine Azure-Tabelle.<br/><br/>Diese Eigenschaft steuert, ob die Werte von vorhandenen Zeilen in der Ausgabetabelle, deren Partitions- und Zeilenschlüssel übereinstimmen, ersetzt oder zusammengeführt werden. <br/><br/>Informationen zur Funktionsweise dieser Einstellungen (Zusammenführen und Ersetzen) finden Sie in den Themen [Insert or Merge Entity](https://msdn.microsoft.com/library/azure/hh452241.aspx) (Entität einfügen oder zusammenführen) und [Insert or Replace Entity](https://msdn.microsoft.com/library/azure/hh452242.aspx) (Entität einfügen oder ersetzen). <br/><br> Beachten Sie, dass diese Einstellung nicht auf Tabellenebene, sondern auf Zeilenebene gilt, und dass keine der beiden Optionen Zeilen in der Ausgabetabelle löscht, die in der Eingabe nicht vorhanden sind. | merge (default)<br/>replace | Nein 
 writeBatchSize | Fügt Daten in die Azure-Tabelle ein, wenn "writeBatchSize" oder "writeBatchTimeout" erreicht wird. | Integer (Gesamtanzahl von Zeilen)| Nein (Standard = 10000) 
 writeBatchTimeout | Fügt Daten in die Azure-Tabelle ein, wenn "writeBatchSize" oder "writeBatchTimeout" erreicht wird. | Zeitraum<br/><br/>Beispiel: 00:20:00 (20 Minuten) | Nein (Standardmäßiger Timeoutwert von 90 Sekunden für Speicherclient)
 
@@ -439,7 +441,7 @@ Beim Verschieben von Daten in die und aus der Azure-Tabelle werden die folgenden
 
 | OData-Datentyp | .NET-Typ | Details |
 | --------------- | --------- | ------- |
-| Edm.Binary | Byte | Ein Array von Bytes mit einer Größe bis zu 64 KB. |
+| Edm.Binary | byte | Ein Array von Bytes mit einer Größe bis zu 64 KB. |
 | Edm.Boolean | bool | Ein boolescher Wert. |
 | Edm.DateTime | DateTime | Ein 64-Bit-Wert, ausgedrückt als koordinierte Weltzeit (UTC). Der unterstützte DateTime-Bereich beginnt um 00:00 Uhr, Mitternacht, 1. Januar, 1601 n. Chr. (unsere Zeitrechnung), UTC Der Bereich endet am 31. Dezember 9999. |
 | Edm.Double | double | Ein 64-Bit-Gleitkommawert. |
@@ -500,7 +502,7 @@ Zur Zuordnung des Azure-Tabellen-OData-Typs zum obigen .NET-Typ würden Sie die 
 Spaltenname | Typ
 ----------- | --------
 userid | Edm.Int64
-Name | Edm.String 
+name | Edm.String 
 lastlogindate | Edm.DateTime
 
 Als Nächstes definieren Sie das Azure-Tabellendataset wie folgt. Sie müssen keinen Abschnitt "structure" mit den Typinformationen angeben, da die Typinformationen bereits im zugrunde liegenden Datenspeicher angegeben werden.
@@ -527,6 +529,6 @@ In diesem Fall führt Data Factory die Typkonvertierungen automatisch einschlie�
 [AZURE.INCLUDE [data-factory-column-mapping](../../includes/data-factory-column-mapping.md)]
 
 ## Leistung und Optimierung  
-Der Artikel [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-factory-copy-activity-performance.md) beschreibt wichtige Faktoren, die sich auf die Leistung der Datenverschiebung (Kopieraktivität) in Azure Data Factory auswirken, sowie verschiedene Möglichkeiten zur Leistungsoptimierung.
+Im Artikel [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-factory-copy-activity-performance.md) werden wichtige Faktoren beschrieben, die sich auf die Leistung der Datenverschiebung (Kopieraktivität) in Azure Data Factory auswirken, sowie verschiedene Möglichkeiten zur Leistungsoptimierung.
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0817_2016-->

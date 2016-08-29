@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="Java"
     ms.topic="article"
-    ms.date="06/24/2016" 
+    ms.date="08/11/2016" 
     ms.author="robmcm" />
 
 # Authentifizieren von Webbenutzern mit dem Azure Access Control Service über Eclipse
@@ -62,7 +62,7 @@ Die folgende Abbildung zeigt, wie die ACS-Authentifizierung bei einer Webanwendu
 ![ACS-Ablaufdiagramm][acs_flow]
 
 1.  Der Client (in diesem Fall ein Browser) fordert von der RP eine Seite an.
-2.  Da die Anforderung noch nicht authentifiziert ist, verweist die RP den Benutzer an die Stelle, der sie vertraut, also an den ACS. Der ACS übermittelt dem Benutzer verschiedene IPs, die für diese RP definiert wurden. Der Benutzer wählt einen passenden IP aus.
+2.  Da die Anforderung noch nicht authentifiziert ist, verweist die RP den Benutzer an die Stelle, der sie vertraut, also an ACS. Der ACS übermittelt dem Benutzer verschiedene IPs, die für diese RP definiert wurden. Der Benutzer wählt einen passenden IP aus.
 3.  Der Client geht auf die Authentifizierungsseite des IPs und fordert den Benutzer auf, sich anzumelden.
 4.  Wenn der Client authentifiziert ist (beispielsweise die Anmeldeinformationen eingegeben wurden), gibt der IP ein Sicherheitstoken aus.
 5.  Nach der Ausgabe des Sicherheitstokens leitet der IP den Client an den ACS weiter und sendet das vom IP ausgegebene Sicherheitstoken an den ACS.
@@ -142,7 +142,7 @@ In dieser Aufgabe laden Sie ein .PFX-Zertifikat hoch, das verwendet wird, um von
 3.  Führen Sie auf der Seite **Add Token-Signing Certificate or Key** folgende Aktionen aus:
     1. Klicken Sie im Abschnitt **Used for** auf **Relying Party Application**, und wählen Sie **Azure Web App** aus (dies wurde zuvor als Name Ihrer Anwendung der vertrauenden Seite festgelegt).
     2. Wählen Sie im Abschnitt **Typ** die Option **X.509-Zertifikat** aus.
-    3. Klicken Sie im Abschnitt **Zertifikat** auf die Schaltfläche "Durchsuchen", und navigieren Sie zur X.509 Zertifikat-Datei, die Sie verwenden möchten. Dies ist eine PFX-Datei. Wählen Sie die Datei, klicken Sie auf **Öffnen**, und geben Sie im Textfeld **Kennwort** das Zertifikatkennwort ein. Bitte beachten Sie, dass Sie zu Testzwecken ein selbstsigniertes Zertifikat verwenden können. Klicken Sie zum Erstellen eines selbstsignierten Zertifikats im Dialogfeld **ACS Filter Library** (dieses wird später beschrieben) auf die Schaltfläche **Neu**, oder verwenden Sie das Hilfsprogramm **encutil.exe** auf der [Projektwebsite][] des Azure-Starterkits für Java.
+    3. Klicken Sie im Abschnitt **Zertifikat** auf die Schaltfläche "Durchsuchen", und navigieren Sie zur X.509 Zertifikat-Datei, die Sie verwenden möchten. Dies ist eine .PFX-Datei. Wählen Sie die Datei, klicken Sie auf **Öffnen**, und geben Sie im Textfeld **Kennwort** das Zertifikatkennwort ein. Bitte beachten Sie, dass Sie zu Testzwecken ein selbstsigniertes Zertifikat verwenden können. Klicken Sie zum Erstellen eines selbstsignierten Zertifikats im Dialogfeld **ACS Filter Library** (dieses wird später beschrieben) auf die Schaltfläche **Neu**, oder verwenden Sie das Hilfsprogramm **encutil.exe** auf der [Projektwebsite][] des Azure-Starterkits für Java.
     4. Stellen Sie sicher, dass **Make Primary** aktiviert ist. Die Seite **Zertifikat oder Schlüssel für Tokensignierung hinzufügen** sollte nun in etwas wie folgt aussehen.![Tokensignaturzertifikat hinzufügen][add_token_signing_cert]
     5. Klicken Sie auf **Speichern**, um Ihre Einstellungen zu speichern und die Seite **Add Token-Signing Certificate or Key** zu schließen.
 
@@ -169,7 +169,7 @@ Auf der Seite **Login Page Integration: Azure Web App** wird die unter **Option 
 
     ![Hinzufügen einer JSP-Datei für den ACS (Beispiel)][add_jsp_file_acs]
 
-    Klicken Sie auf **Weiter**.
+    Klicken Sie auf **Next**.
 
 4. Wählen Sie im Dialogfeld **JSP-Vorlage auswählen** die Option **Neue JSP-Datei (HTML)**, und klicken Sie auf **Fertig stellen**.
 5. Wenn in Eclipse die Datei "index.jsp" geöffnet wird, geben Sie den Text **Hello ACS World!** ein, damit er im vorhandenen `<body>`-Element angezeigt wird. Der aktualisierte `<body>`-Inhalt sollte wie folgt aussehen:
@@ -178,7 +178,7 @@ Auf der Seite **Login Page Integration: Azure Web App** wird die unter **Option 
           <b><% out.println("Hello ACS World!"); %></b>
         </body>
     
-    Speichern Sie die Datei index.jsp.
+    Speichern Sie die Datei „index.jsp“.
   
 ## Hinzufügen der ACS-Filter-Bibliothek zu Ihrer Anwendung
 
@@ -240,11 +240,11 @@ Für eine Bereitstellung in Azure müssen Sie den RP-Bereich und die Rückgabe-U
 
 13. Klicken Sie auf **Fertig stellen**, um das Dialogfeld **Bibliothek bearbeiten** zu schließen.
 14. Klicken Sie auf **OK**, um das Dialogfeld **Eigenschaften für MyACSHelloWorld** zu schließen.
-15. Klicken Sie in Eclipse auf die Schaltfläche **Publish to Azure Cloud**. Befolgen Sie die Anweisungen ähnlich wie im Abschnitt **Bereitstellen der Anwendung in Azure** des Themas [Creating a Hello World Application for Microsoft Azure in Eclipse (Erstellen einer Hallo-Welt-Anwendung für Azure in Eclipse, in englischer Sprache)](http://msdn.microsoft.com/library/windowsazure/hh690944.aspx).
+15. Klicken Sie in Eclipse auf die Schaltfläche **Publish to Azure Cloud**. Befolgen Sie die Anweisungen ähnlich wie im Abschnitt **Bereitstellen der Anwendung in Azure** des Themas [Erstellen einer Hello World-Anwendung für Azure in Eclipse](http://msdn.microsoft.com/library/windowsazure/hh690944.aspx) beschrieben.
 
 Schließen Sie nach der Bereitstellung Ihrer Webanwendung alle offenen Browser-Sitzungen, und führen Sie Ihre Webanwendung aus. Sie sollten nun die Aufforderung erhalten, sich mit Ihren Anmeldeinformationen für Windows Live ID anzumelden, und danach zur Rückgabe-URL Ihrer Anwendung der vertrauenden Seite weitergeleitet werden.
 
-Wenn Sie Ihre ACS-Hallo-Welt-Anwendung nicht mehr benötigen, denken Sie daran, die Bereitstellung zu löschen (Informationen dazu finden Sie im Thema [Creating a Hello World Application for Microsoft Azure in Eclipse (Erstellen einer Hallo-Welt-Anwendung für Azure in Eclipse, in englischer Sprache)](http://msdn.microsoft.com/library/windowsazure/hh690944.aspx).
+Wenn Sie Ihre Hello World-ACS-Anwendung nicht mehr benötigen, denken Sie daran, die Bereitstellung zu löschen (Informationen dazu finden Sie im Thema [Erstellen einer Hello World-Anwendung für Azure in Eclipse](http://msdn.microsoft.com/library/windowsazure/hh690944.aspx).
 
 
 ## <a name="next_steps"></a>Nächste Schritte
@@ -311,4 +311,4 @@ An diesem Punkt wird Ihr Zertifikat in Ihre Bereitstellung aufgenommen. Bitte be
 [add_token_signing_cert]: ./media/active-directory-java-authenticate-users-access-control-eclipse/AddTokenSigningCertificate.png
  
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0817_2016-->

@@ -22,9 +22,10 @@ Mit **Power BI Embedded** können Sie Berichte in Ihre eigene Anwendung einbette
 
 Im Folgenden werden die Unterschiede zwischen der Verwendung des **Importvorgangs** und der Verwendung von **DirectQuery** aufgeführt.
 
-|Importieren | DirectQuery
+|Import | DirectQuery
 |---|---
 |Tabellen, Spalten *und Daten* werden in das Dataset des Berichts importiert oder kopiert. Um Änderungen anzuzeigen, die an den zugrunde liegenden Daten vorgenommen wurden, müssen Sie ein Dataset aktualisieren bzw. ein vollständiges aktuelles Dataset importieren.|Nur *Tabellen und Spalten* werden in das Dataset des Berichts importiert oder kopiert. Sie sehen immer die aktuellen Daten.
+Mit Power BI Embedded können Sie DirectQuery mit Clouddatenquellen verwenden, jedoch derzeit nicht mit lokalen Datenquellen.
 
 ## Vorteile der Verwendung von DirectQuery
 
@@ -35,7 +36,7 @@ Die Verwendung von **DirectQuery** bietet zwei wesentliche Vorteile:
 
 ## Einschränkungen von DirectQuery
 
-   Es gibt einige Einschränkungen bei der Verwendung von **DirectQuery**:
+   Es gibt ein paar Einschränkungen bei der Verwendung von **DirectQuery**:
 
    -	Alle Tabellen müssen aus einer einzigen Datenbank stammen.
    -	Wenn die Abfrage sehr komplex ist, tritt ein Fehler auf. Um den Fehler zu beheben, müssen Sie die Abfrage so umgestalten, dass sie weniger komplex ist. Wenn die Abfrage komplex sein muss, müssen Sie die Daten importieren, statt **DirectQuery** einzusetzen.
@@ -48,8 +49,8 @@ Die Verwendung von **DirectQuery** bietet zwei wesentliche Vorteile:
 
 Um sicherzustellen, dass die an die zugrunde liegende Datenquelle gesendeten Abfragen eine akzeptable Leistung zeigen, werden den Measures Einschränkungen auferlegt. Bei Verwendung von **Power BI Desktop** können fortgeschrittene Benutzer diese Einschränkung umgehen, indem sie **Datei > Optionen und Einstellungen > Optionen** wählen. Wählen Sie im Dialogfeld **Optionen** die Option **DirectQuery**, und wählen Sie dann die Option **Unbeschränkte Measures im DirectQuery-Modus zulassen**. Wenn diese Option ausgewählt ist, kann jeder DAX-Ausdruck verwendet werden, der für ein Measure gültig ist. Benutzer müssen sich jedoch bewusst sein, dass einige Ausdrücke, die beim Importieren der Daten eine sehr gute Leistung zeigen, im **DirectQuery**-Modus zu sehr langsamen Abfragen an die Back-End-Datenquelle führen können.
 
-## Siehe auch
+## Weitere Informationen
 - [Erste Schritte mit Microsoft Power BI Embedded](power-bi-embedded-get-started.md)
 - [Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/)
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0817_2016-->

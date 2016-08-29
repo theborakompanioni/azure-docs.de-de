@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="03/28/2016"
+   ms.date="08/17/2016"
    ms.author="alkohli" />
 
 # Austauschen eines Festplattenlaufwerks im StorSimple-Gerät
@@ -35,7 +35,7 @@ In dieser Vorgehensweise wird erläutert, wie die Zugangssperren eines StorSimpl
 
 #### So entriegeln Sie eine Zugangssperre
 
-1. Führen Sie den Sperrschlüssel (ein "manipulationssicherer" T10-Schraubendreher, der von Microsoft mitgeliefert wurde), vorsichtig in die Öffnung im Griff und in die zugehörige Vertiefung ein. 
+1. Führen Sie den Sperrschlüssel (ein "manipulationssicherer" T10-Schraubendreher, der von Microsoft mitgeliefert wurde), vorsichtig in die Öffnung im Griff und in die zugehörige Vertiefung ein.
 
     >[AZURE.NOTE] Ist die Zugangssperre aktiviert, ist in der Öffnung das rote Kennzeichen zu sehen.
 
@@ -70,7 +70,7 @@ Ihr StorSimple-Gerät unterstützt eine RAID-10-ähnliche Speicherplatzkonfigura
 >
 >- Stellen Sie sicher, dass Sie eine Austausch-SSD in einem Einschubfach platzieren, das zuvor eine SSD enthalten hat. Auf ähnliche Weise setzen Sie eine Austauschfestplatte in ein Einschubfach ein, das zuvor eine HDD enthalten hat.
 >
->- Im klassischen Azure-Portal sind Einschubfächer von 0 bis 11 nummeriert. Wenn das Portal also anzeigt, dass ein Datenträger in Einschubfach 2 ausgefallen ist, finden Sie diesen Datenträger im Gerät im dritten Einschubfach von links oben.
+>- Im klassischen Azure-Portal sind Einschubfächer von 0 bis 11 nummeriert. Wenn das Portal also anzeigt, dass ein Datenträger in Einschubfach 2 ausgefallen ist, finden Sie diesen Datenträger im Gerät im dritten Einschubfach von links oben.
 
 Laufwerke können bei laufendem Betrieb des Systems ausgebaut und ausgetauscht werden.
 
@@ -124,4 +124,4 @@ Nachdem ein Laufwerk in einem StorSimple-Gerät ausgefallen ist und Sie es entfe
 
 Erfahren Sie mehr zum [Austauschen von StorSimple-Hardwarekomponenten](storsimple-hardware-component-replacement.md).
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0817_2016-->

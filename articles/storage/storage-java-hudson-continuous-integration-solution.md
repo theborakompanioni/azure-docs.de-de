@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="Java"
 	ms.topic="article"
-	ms.date="06/24/2016" 
+	ms.date="08/11/2016" 
 	ms.author="robmcm"/>
 
 # Verwenden von Azure-Speicher mit einer Hudson-Lösung für die fortlaufende Integration
@@ -47,7 +47,7 @@ Sie müssen folgende Voraussetzungen erfüllen, um den Blob-Dienst mit Ihrer Hud
 
     Wenn Sie noch keine Hudson CI-Lösung im Einsatz haben, können Sie eine Hudson CI-Lösung auf folgende Weise ausführen:
 
-    1. Laden Sie für einen Java-fähigen Computer Hudson WAR von <http://hudson-ci.org/> herunter.
+    1. Laden Sie für einen Java-fähigen Computer Hudson WAR von http://hudson-ci.org/ herunter.
     2. Führen Sie in einer Eingabeaufforderung im Ordner, der Hudson.WAR enthält, den folgenden Befehl aus: Falls Sie zum Beispiel Version 3.1.2 heruntergeladen haben:
 
         `java -jar hudson-3.1.2.war`
@@ -66,7 +66,7 @@ Sie müssen folgende Voraussetzungen erfüllen, um den Blob-Dienst mit Ihrer Hud
 
 - Vorkenntnisse der Hudson CI-Lösung werden empfohlen, sind aber nicht zwingend erforderlich, da in den folgenden Abschnitten ein einfaches Beispiel verwendet wird, um zu zeigen, welche Schritte erforderlich sind, wenn Sie den Blob-Dienst als Repository für Hudson CI-Buildartefakte nutzen möchten.
 
-## Verwenden des Blob-Diensts mit Hudson CI ##
+## Verwenden des Blob-Dienstes mit Hudson CI ##
 
 Um den Blob-Dienst mit Hudson verwenden zu können, müssen Sie das Azure-Speicher-Plug-In installieren, das Plug-In für die Verwendung Ihres Speicherkontos konfigurieren und dann eine Postbuildaktion erstellen, die Ihre Buildartefakte in Ihr Speicherkonto hochlädt. Diese Schritte sind in den folgenden Abschnitten beschrieben.
 
@@ -182,4 +182,4 @@ Im Folgenden erhalten Sie einen Überblick über die Komponenten des Blob-Dienst
 
 Weitere Informationen finden Sie auch im [Java Developer Center](https://azure.microsoft.com/develop/java/).
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0817_2016-->

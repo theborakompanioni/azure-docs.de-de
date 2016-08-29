@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="multiple"
    ms.workload="na"
-   ms.date="04/18/2016"
+   ms.date="08/15/2016"
    ms.author="tarcher" />
 
 
@@ -24,7 +24,7 @@ Sie können die Leistung eines Clouddiensts mit folgenden Methoden testen:
 
 - Verwenden Sie die Azure-Diagnose, um Informationen zu Anforderungen und Verbindungen zu erfassen und Websitestatistiken zu überprüfen, welche die Leistung des Diensts aus Kundenperspektive darstellen. Informationen zum Einstieg finden Sie unter [Konfigurieren der Diagnose für Azure Cloud Services und Virtual Machines](http://go.microsoft.com/fwlink/p/?LinkId=623009)
 
-- Verwenden Sie den Visual Studio-Profiler, um eine detaillierte Analyse der Computingaspekte der Dienstausführung zu erhalten. Wie in diesem Thema beschrieben, können Sie den Profiler verwenden, um die Leistung zu messen, während ein Dienst in Azure ausgeführt wird. Informationen dazu, wie Sie den Profiler verwenden, um die Leistung eines lokal in einem Compute-Emulator ausgeführten Diensts zu messen, finden Sie unter [Testen der Leistung eines lokalen Azure-Clouddiensts im Compute-Emulator mithilfe des Visual Studio-Profilers](http://go.microsoft.com/fwlink/p/?LinkId=262845).
+- Verwenden Sie den Visual Studio-Profiler, um eine detaillierte Analyse der Computingaspekte der Dienstausführung zu erhalten. Wie in diesem Thema beschrieben, können Sie mit dem Profiler die Leistung messen, während ein Dienst in Azure ausgeführt wird. Informationen dazu, wie Sie den Profiler verwenden, um die Leistung eines lokal in einem Compute-Emulator ausgeführten Diensts zu messen, finden Sie unter [Testen der Leistung eines lokalen Azure-Clouddiensts im Compute-Emulator mithilfe des Visual Studio-Profilers](http://go.microsoft.com/fwlink/p/?LinkId=262845).
 
 
 
@@ -136,7 +136,7 @@ Für jede Instanz einer Rolle in Ihrem Clouddienst wird eine Profilerstellungssi
 
 1. Wählen Sie die Rolle im Dienst aus, öffnen Sie dann das Kontextmenü für eine bestimmte Instanz, und wählen Sie **Profilerstellungsbericht anzeigen** aus, um Profilerstellungsberichte für eine Instanz anzuzeigen.
 
-    Der Bericht, eine VSP-Datei, wird nun aus Azure heruntergeladen, und der Status des Downloads wird im Azure-Aktivitätsprotokoll angezeigt. Wenn der Download abgeschlossen ist, wird der Profilerstellungsbericht auf einer Registerkarte im Editor für Visual Studio unter der Bezeichnung "<Role name>\_<Instance Number>\_<identifier>.vsp" angezeigt. Es werden Übersichtsdaten für den Bericht angezeigt.
+    Der Bericht, eine VSP-Datei, wird nun aus Azure heruntergeladen, und der Status des Downloads wird im Azure-Aktivitätsprotokoll angezeigt. Wenn der Download abgeschlossen ist, wird der Profilerstellungsbericht auf einer Registerkarte im Editor für Visual Studio unter der Bezeichnung „<Rollenname>_<Instanznummer>_<ID>.vsp“ angezeigt. Es werden Übersichtsdaten für den Bericht angezeigt.
 
 1. Um verschiedene Ansichten des Berichts anzuzeigen, wählen Sie in der Liste der aktuellen Ansichten die gewünschte Ansicht aus. Weitere Informationen finden Sie unter [Berichtsansichten für Profilerstellungstools](https://msdn.microsoft.com/library/azure/bb385755.aspx).
 
@@ -146,4 +146,4 @@ Für jede Instanz einer Rolle in Ihrem Clouddienst wird eine Profilerstellungssi
 
 [Veröffentlichen eines Clouddiensts mit Azure Tools](https://msdn.microsoft.com/library/azure/ee460772.aspx)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0817_2016-->

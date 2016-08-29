@@ -11,7 +11,7 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="05/25/2016" 
+    ms.date="08/16/2016" 
     ms.author="jeedes" />
 
 #Tutorial: Azure Active Directory-Integration mit Zoom
@@ -72,19 +72,19 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
 1.  Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für **Zoom** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-zoom-tutorial/IC784696.png "Einmaliges Anmelden konfigurieren")
+    ![Configure single sign-on](./media/active-directory-saas-zoom-tutorial/IC784696.png "Configure single sign-on")
 
 2.  Wählen Sie auf der Seite **Wie sollen sich Benutzer bei Zoom anmelden?** die Option **Microsoft Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-zoom-tutorial/IC784697.png "Einmaliges Anmelden konfigurieren")
+    ![Configure single sign-on](./media/active-directory-saas-zoom-tutorial/IC784697.png "Configure single sign-on")
 
-3.  Geben Sie auf der Seite **App-URL konfigurieren** im Textfeld für die **Zoom-Anmelde-URL** die URL im Format „ *http://company.zoom.us* " ein, und klicken Sie dann auf **Weiter**.
+3.  Geben Sie auf der Seite **App-URL konfigurieren** im Textfeld für die **Zoom-Anmelde-URL** die URL im Format „*http://company.zoom.us*" ein, und klicken Sie dann auf **Weiter**.
 
     ![App-URL konfigurieren](./media/active-directory-saas-zoom-tutorial/IC784698.png "App-URL konfigurieren")
 
 4.  Klicken Sie auf der Seite **Einmaliges Anmelden konfigurieren für Zoom** auf **Zertifikat herunterladen**, und speichern Sie die Zertifikatsdatei auf Ihrem Computer.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-zoom-tutorial/IC784699.png "Einmaliges Anmelden konfigurieren")
+    ![Configure single sign-on](./media/active-directory-saas-zoom-tutorial/IC784699.png "Configure single sign-on")
 
 5.  Melden Sie sich in einem anderen Webbrowserfenster bei der Zoom-Unternehmenswebsite als Administrator an.
 
@@ -100,7 +100,7 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
     1.  Kopieren Sie im klassischen Azure-Portal auf der Dialogfeldseite **Einmaliges Anmelden konfigurieren für Zoom** den Wert für **Dienst-URL für einmaliges Anmelden**, und fügen Sie ihn in das Textfeld **URL der Anmeldeseite** ein.
     2.  Kopieren Sie im klassischen Azure-Portal auf der Dialogfeldseite **Einmaliges Anmelden konfigurieren für Zoom** den Wert für **Dienst-URL für einmaliges Abmelden**, und fügen Sie ihn in das Textfeld **URL der Abmeldeseite** ein.
-    3.  Erstellen Sie eine **Base64-codierte** Datei aus dem heruntergeladenen Zertifikat.  
+    3.  Erstellen Sie eine **Base64-codierte** Datei aus dem heruntergeladenen Zertifikat.
 
         >[AZURE.TIP] Weitere Informationen finden Sie unter [Konvertieren eines binären Zertifikats in eine Textdatei](http://youtu.be/PlgrzUZ-Y1o).
 
@@ -110,13 +110,13 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
 9.  Wählen Sie im klassischen Azure-Portal die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Abschließen**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu schließen.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-zoom-tutorial/IC784702.png "Einmaliges Anmelden konfigurieren")
+    ![Configure single sign-on](./media/active-directory-saas-zoom-tutorial/IC784702.png "Configure single sign-on")
 
 ##Konfigurieren der Benutzerbereitstellung
   
 Damit sich Azure AD-Benutzer bei Zoom anmelden können, müssen sie in Zoom bereitgestellt werden. Im Fall von Zoom ist die Bereitstellung eine manuelle Aufgabe.
 
-###So stellen Sie Benutzerkonten bereit
+###Führen Sie zum Bereitstellen von Benutzerkonten die folgenden Schritte aus:
 
 1.  Melden Sie sich bei der **Zoom**-Unternehmenswebsite als Administrator an.
 
@@ -124,7 +124,7 @@ Damit sich Azure AD-Benutzer bei Zoom anmelden können, müssen sie in Zoom bere
 
 3.  Klicken Sie im Abschnitt „Benutzerverwaltung“ auf **Benutzer hinzufügen**.
 
-    ![Benutzerverwaltung](./media/active-directory-saas-zoom-tutorial/IC784703.png "Benutzerverwaltung")
+    ![Benutzerverwaltung](./media/active-directory-saas-zoom-tutorial/IC784703.png "Verwaltung")
 
 4.  Führen Sie auf der Seite **Benutzer hinzufügen** die folgenden Schritte aus:
 
@@ -154,4 +154,4 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie d
   
 Wenn Sie die SSO-Einstellungen testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md).
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0817_2016-->

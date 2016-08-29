@@ -13,21 +13,24 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/12/2016"
+	ms.date="08/15/2016"
 	ms.author="elizapo"/>
 
 # Erstellen einer Hybridsammlung für Azure RemoteApp
+
+> [AZURE.IMPORTANT]
+Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148).
 
 Es gibt zwei Arten von Azure RemoteApp-Sammlungen:
 
 - Cloud: vollständige Speicherung in Azure. Sie können alle Daten in der Cloud speichern (also eine reine Cloudsammlung), oder Sie verbinden Ihre Sammlung mit einem VNET und speichern die Daten dort.
 - Hybrid: Umfasst ein virtuelles Netzwerk für den lokalen Zugriff – dies erfordert die Verwendung von Azure AD und einer lokalen Active Directory-Umgebung.
 
-Sie wissen nicht, was Sie benötigen? Lesen Sie [Welche Art von Sammlung benötigen Sie für Azure RemoteApp?](remoteapp-collections.md)
+Sie wissen nicht, was Sie benötigen? Lesen Sie: [Welche Art von Sammlung benötigen Sie für Azure RemoteApp?](remoteapp-collections.md)
 
 Dieses Tutorial führt Sie durch den Prozess für das Erstellen einer Hybridsammlung. Der Vorgang umfasst acht Schritte:
 
-1.	Entscheiden Sie, welches [Image](remoteapp-imageoptions.md) für Ihre Sammlung verwendet werden soll. Sie können ein benutzerdefiniertes Image erstellen oder ein Microsoft-Image erstellen, das in Ihrem Abonnement enthalten ist.
+1.	Entscheiden Sie, welches [Image](remoteapp-imageoptions.md) für Ihre Sammlung verwendet werden soll. Sie können ein benutzerdefiniertes Image erstellen oder eines der in Ihrem Abonnement enthaltenen Microsoft-Images verwenden.
 2. Richten Sie Ihr virtuelles Netzwerk ein. Sehen Sie sich die Informationen [VNET-Planung](remoteapp-planvnet.md) und [-Größe](remoteapp-vnetsizing.md) an.
 2.	Erstellen Sie eine Sammlung.
 2.	Fügen Sie Ihre Sammlung Ihrer lokalen Domäne hinzu.
@@ -83,7 +86,7 @@ Hat dies funktioniert? Ihr virtuelles Netzwerk und das Subnetz sind für Azure R
 4. Wählen Sie den Plan aus, den Sie verwenden möchten: "Standard" oder "Einfach".
 5. Wählen Sie Ihr VNET aus der Dropdownliste aus, und geben Sie dann Ihr Subnetz an.
 6. Wählen Sie einen Beitritt zu Ihrer Domäne.
-5. Klicken Sie auf **Create RemoteApp collection**.
+5. Klicken Sie auf **RemoteApp-Sammlung erstellen**.
 
 Nachdem Ihre Azure RemoteApp-Sammlung erstellt wurde, doppelklicken Sie auf den Namen der Sammlung. Daraufhin wird die Seite **Schnellstart** geöffnet – hier können Sie die Konfiguration der Sammlung abschließen.
 
@@ -100,11 +103,11 @@ Ist etwas schiefgegangen? Sehen Sie sich die [Informationen zur Problembehandlun
 
 ## Schritt 4: Verbinden mit einem Azure RemoteApp-Image ##
 
-Ein Azure RemoteApp-Vorlagenimage enthält die Programme, die Sie für Benutzer freigeben möchten. Sie können entweder ein neues [Vorlagenimage](remoteapp-imageoptions.md) erstellen oder eine Verbindung zu einem vorhandenen Image (das bereits in Azure hochgeladen oder importiert wurde) herstellen. Sie können außerdem eine Verbindung mit einem der [Vorlagenimages](remoteapp-images.md) für Azure RemoteApp herstellen, die Office 365- oder Office 2013-Programme (für die Testnutzung) enthalten.
+Ein Azure RemoteApp-Vorlagenimage enthält die Programme, die Sie für Benutzer freigeben möchten. Sie können entweder ein neues [Vorlagenimage](remoteapp-imageoptions.md) erstellen oder eine Verbindung zu einem vorhandenen Image (das bereits in Azure hochgeladen oder importiert wurde) herstellen. Sie können außerdem eine Verbindung mit einem der [Vorlagenimages](remoteapp-images.md) für Azure RemoteApp herstellen, die Office 365- oder Office 2013-Programme (für die Testnutzung) enthalten.
 
 Wenn Sie ein neues Abbild hochladen, müssen Sie den Namen des Abbilds eingeben und den Speicherort wählen. Auf der nächsten Seite des Assistenten wird Ihnen eine Gruppe von PowerShell-Cmdlets angezeigt. Kopieren Sie diese Cmdlets und führen Sie sie von einer Windows PowerShell-Eingabeaufforderung mit erhöhten Rechten aus, um das Abbild hochzuladen.
 
-Wenn Sie eine Verbindung zu einem vorhandenen Abbild herstellen, geben Sie einfach den Namen und den Speicherort des Abbilds sowie das dazugehörige Azure-Abonnement an.
+Wenn Sie eine Verbindung zu einem vorhandenen Vorlagenimage herstellen, geben Sie einfach den Namen und den Speicherort des Images sowie das dazugehörige Azure-Abonnement an.
 
 
 
@@ -147,6 +150,6 @@ Geschafft – Sie haben die Azure RemoteApp-Hybridsammlung erfolgreich erstellt 
 
 
 ### Helfen Sie uns, Ihnen zu helfen
-Wussten Sie schon, dass Sie diesen Artikel im Bereich unten nicht nur bewerten und kommentieren, sondern ihn auch selbst ändern können? Fehlt etwas? Ist etwas nicht ganz richtig? Habe ich etwas geschrieben, das eher verwirrend ist? Scrollen Sie nach oben, und klicken Sie auf **In GitHub bearbeiten**, um die gewünschten Änderungen vorzunehmen. Ihr Vorschlag wird uns vorgelegt, und wenn wir ihn bestätigt haben, werden Ihre Änderungen und Verbesserungen hier angezeigt.
+Wussten Sie schon, dass Sie diesen Artikel im Bereich unten nicht nur bewerten und kommentieren, sondern ihn auch selbst ändern können? Fehlt etwas? Ist etwas nicht ganz richtig? Habe ich etwas geschrieben, das eher verwirrend ist? Scrollen Sie nach oben, und klicken Sie auf **Edit on GitHub**, um die gewünschten Änderungen vorzunehmen. Ihr Vorschlag wird uns vorgelegt, und wenn wir ihn bestätigt haben, werden Ihre Änderungen und Verbesserungen hier angezeigt.
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0817_2016-->

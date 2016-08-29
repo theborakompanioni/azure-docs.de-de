@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="Java" 
 	ms.topic="article" 
-	ms.date="06/24/2016" 
+	ms.date="08/11/2016" 
 	ms.author="asirveda;robmcm"/>
 
 # Erstellen einer „Hello World“-Web-App für Azure in IntelliJ
@@ -76,7 +76,7 @@ Es gibt mehrere Möglichkeiten, eine Java-Webanwendung in Azure bereitzustellen.
 
    Hinweis: Wenn Sie über mehrere Azure-Konten verfügen, können einige der Eingabeaufforderungen während des Anmeldeprozesses mehrmals angezeigt werden, auch wenn sie scheinbar identisch sind. Befolgen Sie in diesem Fall weiterhin die Anweisungen zur Anmeldung.
 
-1. Nachdem Sie sich erfolgreich bei Ihrem Azure-Konto angemeldet haben, wird im Dialogfeld **Abonnements verwalten** eine Liste der Abonnements angezeigt, die mit Ihren Anmeldeinformationen verknüpft sind. Wenn mehrere Abonnements aufgeführt sind und Sie nur mit einer bestimmten Teilmenge davon arbeiten möchten, können Sie optional die deaktivieren, die Sie nicht verwenden möchten. Wenn Sie Ihre Abonnements ausgewählt haben, klicken Sie auf **Schließen**.
+1. Nachdem Sie sich erfolgreich bei Ihrem Azure-Konto angemeldet haben, wird im Dialogfeld **Manage Subscriptions** (Abonnements verwalten) eine Liste der Abonnements angezeigt, die mit Ihren Anmeldeinformationen verknüpft sind. Wenn mehrere Abonnements aufgeführt sind und Sie nur mit einer bestimmten Teilmenge davon arbeiten möchten, können Sie optional die Abonnements deaktivieren, die Sie nicht verwenden möchten. Wenn Sie Ihre Abonnements ausgewählt haben, klicken Sie auf **Close** (Schließen).
 
    ![][08]
 
@@ -98,15 +98,15 @@ Es gibt mehrere Möglichkeiten, eine Java-Webanwendung in Azure bereitzustellen.
 
   1. Wählen Sie im Dropdownmenü **Web Container** (Webcontainer) die entsprechende Software für Ihre Anwendung aus.
 
-        Aktuell können Sie zwischen Tomcat 8, Tomcat 7 und Jetty 9 wählen. Azure stellt eine aktuelle Distribution der gewählten Software bereit und diese wird auf einer aktuellen Distribution von JDK 8 ausgeführt, die von Oracle erstellt und von Azure bereitgestellt wird.
+        Currently, you can choose from Tomcat 8, Tomcat 7 or Jetty 9. A recent distribution of the selected software will be provided by Azure, and it will run on a recent distribution of JDK 8 created by Oracle and provided by Azure.
 
   1. Wählen Sie im Dropdownmenü **Subscription** (Abonnement) das Abonnement aus, das Sie für diese Bereitstellung verwenden möchten.
 
   1. Wählen Sie im Dropdownmenü **Resource Group** (Ressourcengruppe) die Ressourcengruppe aus, der Sie Ihre Web-App zuordnen möchten.
 
-        Hinweis: Mithilfe von Azure-Ressourcengruppen können Sie verwandte Ressourcen in Gruppen zusammenfassen, um diese z. B. gemeinsam löschen zu können.
+        Note: Azure Resource Groups allow you to group related resources together so that, for example, they can be deleted together.
 
-        Sie können eine vorhandene Ressourcengruppe auswählen (sofern vorhanden) und direkt mit Schritt g unten fortfahren oder die folgenden Schritte ausführen, um eine neue Ressourcengruppe zu erstellen:
+        You can select an existing Resource Group (if you have any) and skip to step g below, or use the following these steps to create a new Resource Group:
 
       * Klicken Sie auf **New...** (Neu...).
 
@@ -122,9 +122,9 @@ Es gibt mehrere Möglichkeiten, eine Java-Webanwendung in Azure bereitzustellen.
 
   1. Im Dropdownmenü **App Service Plan** (App Service-Plan) werden die App Service-Pläne aufgelistet, die der ausgewählten Ressourcengruppe zugeordnet sind.
 
-        Hinweis: Der App Service-Plan enthält verschiedene Informationen wie z. B. den Speicherort Ihrer Web-App, den Tarif und die Größe der Compute-Instanz. Da ein App Service-Plan für mehrere Web-Apps verwendet werden kann, wird er getrennt von einer bestimmten Web-App-Bereitstellung verwaltet.
+        Note: An App Service Plan specifies information such as the location of your Web App, the pricing tier and the compute instance size. A single App Service Plan can be used for multiple Web Apps, which is why it is maintained separately from a specific Web App deployment.
 
-        Sie können einen vorhandenen App Service-Plan auswählen (sofern vorhanden) und direkt mit Schritt h unten fortfahren oder die folgenden Schritte ausführen, um einen neuen App Service-Plan zu erstellen:
+        You can select an existing App Service Plan (if you have any) and skip to step h below, or use the following these steps to create a new App Service Plan:
 
       * Klicken Sie auf **New...** (Neu...).
 
@@ -146,7 +146,7 @@ Es gibt mehrere Möglichkeiten, eine Java-Webanwendung in Azure bereitzustellen.
 
   1. Klicken Sie auf **OK**, um die Erstellung Ihres neuen Web-App-Containers abzuschließen.
 
-        Warten Sie einige Sekunden, bis die Liste der Web-App-Container aktualisiert wurde. Ihr neu erstellter Web-App-Container sollte nun in der Liste angezeigt werden und markiert sein.
+        Wait a few seconds for the list of the Web App containers to be refreshed, and your newly-created web app container should now be selected in the list.
 
 1. Sie sind nun bereit für die erste Bereitstellung der Web-App in Azure. Klicken Sie auf **OK**, um Ihre Java-Anwendung im ausgewählten Web-App-Container bereitzustellen.
 
@@ -270,4 +270,4 @@ Weitere Informationen zum Erstellen von Azure-Web-Apps finden Sie unter [Web-App
 [17]: ./media/app-service-web-intellij-create-hello-world-web-app/17-Browse-Web-App.png
 [18]: ./media/app-service-web-intellij-create-hello-world-web-app/18-Stop-Web-App.png
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0817_2016-->

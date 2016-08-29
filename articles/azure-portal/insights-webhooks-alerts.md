@@ -64,7 +64,7 @@ Der POST-Vorgang enthält die folgende JSON-Nutzlast und das folgende JSON-Schem
             "resourceType": "microsoft.foo/sites",
             "resourceId": "/subscriptions/s1/resourceGroups/useast/providers/microsoft.foo/sites/mysite1",
             "resourceRegion": "centralus",
-            "portalLink": “https://portal.azure.com/#resource/subscriptions/s1/resourceGroups/useast/providers/microsoft.foo/sites/mysite1”                                
+            "portalLink": "https://portal.azure.com/#resource/subscriptions/s1/resourceGroups/useast/providers/microsoft.foo/sites/mysite1"
 },
 "properties": {
               "key1": "value1",
@@ -72,8 +72,6 @@ Der POST-Vorgang enthält die folgende JSON-Nutzlast und das folgende JSON-Schem
               }
 }
 ```
-
->[AZURE.NOTE] Bei der nächsten Aktualisierung wird die Unterstützung von Warnungen für Ereignisse hinzugefügt ("conditionType" : "Event").
 
 
 | Feld | Erforderlich? | Feste Gruppe von Werten? | Hinweise |
@@ -123,4 +121,4 @@ Verwenden Sie Azure-Warnungen zum Senden von Nachrichten an andere Dienste. Zum 
 
 [Use Logic App to send messages to an Azure Queue (in englischer Sprache)](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-queue-with-logic-app)
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0817_2016-->

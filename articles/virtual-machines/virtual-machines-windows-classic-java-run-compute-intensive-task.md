@@ -14,10 +14,10 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="Java"
 	ms.topic="article"
-	ms.date="06/24/2016"
+	ms.date="08/11/2016"
 	ms.author="robmcm"/>
 
-# Gewusst wie: Ausführen einer rechenintensiven Aufgabe in Java auf einem virtuellen Computer
+# Ausführen einer rechenintensiven Aufgabe in Java auf einem virtuellen Computer
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
  
@@ -57,7 +57,7 @@ Es folgt ein Beispiel für die Java-Anwendung, die die rechenintensive Aufgabe �
     2. Geben Sie die Größe für den virtuellen Computer an.
     3. Geben Sie im Feld **Benutzername** einen Namen für den Administrator ein. Merken Sie sich diesen Namen und das als nächstes eingegebene Kennwort. Sie benötigen diese Daten, wenn Sie sich von einem Remotestandort aus an dem virtuellen Computer anmelden.
     4. Geben Sie ein Kennwort in das Feld **Neues Kennwort** ein, und geben Sie das Kennwort dann erneut in das Feld **Kennwort bestätigen** ein. Dies ist das Kennwort für das Administratorkonto.
-    5. Klicken Sie auf **Weiter**.
+    5. Klicken Sie auf **Next**.
 5. Gehen Sie im nächsten Dialogfeld **Konfiguration des virtuellen Computers** wie folgt vor:
     1. Verwenden Sie für den **Clouddienst** die Standardeinstellung **Neuen Clouddienst erstellen**.
     2. Der Wert für **DNS-Name des Clouddiensts** muss auf cloudapp.net eindeutig sein. Ändern Sie wenn nötig diesen Wert, sodass Azure angibt, dass er eindeutig ist.
@@ -521,4 +521,4 @@ Für Solver- und Clientanwendungen können Sie **Strg+C** drücken, um die Anwen
 [default_key]: ./media/virtual-machines-windows-classic-java-run-compute-intensive-task/SvcBusQueues_07_DefaultKey.jpg
 [add_ca_cert]: ../java-add-certificate-ca-store.md
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0817_2016-->

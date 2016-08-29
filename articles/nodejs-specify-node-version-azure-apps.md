@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="nodejs"
 	ms.topic="article"
-	ms.date="06/24/2016"
+	ms.date="08/11/2016"
 	ms.author="robmcm"/>
 
 # Festlegen einer Node.js-Version in einer Azure-Anwendung
@@ -102,4 +102,4 @@ Weitere Informationen finden Sie im [Node.js Developer Center](/develop/nodejs/)
 [Arbeiten mit Modulen]: nodejs-use-node-modules-azure-apps.md
 [Erstellen und Bereitstellen einer Node.js-Website]: web-sites-nodejs-develop-deploy-mac.md
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0817_2016-->

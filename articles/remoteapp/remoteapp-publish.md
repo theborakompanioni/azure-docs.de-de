@@ -12,11 +12,14 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="06/27/2016"
+    ms.date="08/15/2016"
     ms.author="elizapo" />
 
 
 # Gewusst wie: Veröffentlichen einer App in RemoteApp
+
+> [AZURE.IMPORTANT]
+Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148).
 
 Nach dem Erstellen der RemoteApp-Sammlung müssen Sie die Apps oder Ressourcen, die Sie für Ihre Benutzer zur Verfügung stellen möchten, veröffentlichen. Die Vorlagenimages, die mit Ihrem Abonnement bereitgestellt wurden, enthalten nur wenige Apps, die standardmäßig veröffentlicht werden. Um die anderen Apps freizugeben, müssen Sie diese zuerst veröffentlichen.
 
@@ -33,4 +36,4 @@ Klicken Sie im Portal auf der Registerkarte **Veröffentlichung** auf **Veröffe
 
  
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0817_2016-->

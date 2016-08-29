@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="data-services"
-	ms.date="07/27/2016"
+	ms.date="08/11/2016"
 	ms.author="jeffstok" />
 
 
@@ -37,7 +37,7 @@ In typischen Szenarien des Internet der Dinge (IoT) werden unzählige Telemetrie
 ## Voraussetzungen
 
 - Herunterladen von [TelcoGenerator.zip](http://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip) aus dem Microsoft Download Center
-- Optional: Quellcode des Ereignisgenerators von [GitHub](https://github.com/Azure/azure-stream-analytics/tree/master/DataGenerators/TelcoGenerator)
+- Optional: Quellcode des Ereignisgenerators von [GitHub](https://aka.ms/azure-stream-analytics-telcogenerator)
 
 ## Erstellen einer Azure Event Hub-Eingabe und einer Consumergruppe
 
@@ -114,9 +114,9 @@ Nun, da wir einen Datenstrom von Telekommunikationsereignissen haben, können wi
 4.	Geben Sie die folgenden Werte auf der dritten Seite ein, oder wählen Sie sie aus:
 
 	* **Input Alias**: Geben Sie einen Anzeigenamen für diese Auftragseingabe ein, z. B. *CallStream*. Beachten Sie, dass Sie diesen Namen später in der Abfrage verwenden werden.
-	* **Event Hub**: Wenn der Event Hub, den Sie erstellt haben, sich in demselben Abonnement wie der Stream Analytics-Auftrag befindet, wählen Sie den Namespace aus, in dem sich der Event Hub befindet.
+	* **Event Hub**: Wenn der Event Hub, den Sie erstellt haben, sich im gleichen Abonnement wie der Stream Analytics-Auftrag befindet, wählen Sie den Namespace aus, in dem sich der Event Hub befindet.
 
-	Wenn sich Ihr Event Hub in einem anderen Abonnement befindet, wählen Sie **Event Hub aus anderem Abonnement verwenden**, und geben Sie manuell den **Service Bus-Namespace**, **Event Hub-Namen**, **Event Hub-Richtliniennamen**, **Event Hub-Richtlinienschlüssel** und die **Event Hub-Partitionsanzahl** ein.
+	Wenn sich Ihr Event Hub in einem anderen Abonnement befindet, wählen Sie **Event Hub aus anderem Abonnement verwenden** aus, und geben Sie manuell die Informationen für **Service Bus-Namespace**, **Event Hub-Name**, **Event Hub-Richtlinienname**, **Event Hub-Richtlinienschlüssel** und **Event Hub-Partitionsanzahl** ein.
 
 	* **Event Hub-Name**: Wählen Sie den Namen des Event Hubs aus.
 
@@ -155,7 +155,7 @@ Wenn Sie alle Ereignisse archivieren möchten, können Sie eine Pass-Through-Abf
 	> Stellen Sie sicher, dass der Name der Eingabequelle dem Namen der Eingabe entspricht, die Sie zuvor angegeben haben.
 
 3.	Klicken Sie im Abfrage-Editor auf **Test**.
-4.	Geben Sie eine Testdatei an. Hierbei kann es sich um die im Rahmen der zuvor angegebenen Schritte von Ihnen erstellte Datei oder um die Datei [telco.json](https://github.com/Azure/azure-stream-analytics/blob/master/Sample%20Data/telco.json) handeln.
+4.	Geben Sie eine Testdatei an. Hierbei kann es sich um die im Rahmen der obigen Schritte von Ihnen erstellte Datei oder um die Datei [telco.json](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/SampleDataFiles/Telco.json) handeln.
 5.	Klicken Sie auf die Schaltfläche „Prüfen“. Die Ergebnisse werden unterhalb der Abfragedefinition angezeigt.
 
 	![Ergebnisse der Abfragedefinition](./media/stream-analytics-real-time-fraud-detection/stream-analytics-sim-fraud-output.png)
@@ -227,7 +227,7 @@ Befolgen Sie die nachstehenden Schritte, um (sofern noch nicht erfolgt) einen Co
 3.	Geben Sie die folgenden Werte auf der dritten Seite ein, oder wählen Sie sie aus:
 
 	* **AUSGABEALIAS**: Geben Sie einen Anzeigenamen für diese Auftragsausgabe ein.
-	* **ABONNEMENT**: Befindet sich der Blobspeicher, den Sie erstellt haben, in demselben Abonnement wie der Stream Analytics-Auftrag, wählen Sie **Speicherkonto aus dem aktuellen Abonnement verwenden**. Wenn sich der Speicher in einem anderen Abonnement befindet, wählen Sie **Use Storage Account from Another Subscription** aus, und geben Sie manuell **SPEICHERKONTO**, **SPEICHERKONTOSCHLÜSSEL** und **CONTAINER** ein.
+	* **ABONNEMENT**: Befindet sich der Blobspeicher, den Sie erstellt haben, im gleichen Abonnement wie der Stream Analytics-Auftrag, wählen Sie **Speicherkonto aus dem aktuellen Abonnement verwenden** aus. Wenn sich der Speicher in einem anderen Abonnement befindet, wählen Sie **Speicherkonto aus einem anderen Abonnement verwenden** aus, und geben Sie manuell die Informationen für **SPEICHERKONTO**, **SPEICHERKONTOSCHLÜSSEL** und **CONTAINER** ein.
 	* **SPEICHERKONTO**: Wählen Sie den Namen des Speicherkontos aus.
 	* **CONTAINER**: Wählen Sie den Namen des Containers aus.
 	* **DATEINAMENPRÄFIX**: Geben Sie ein Präfix ein, das beim Schreiben von Blob-Ausgaben verwendet wird.
@@ -249,7 +249,7 @@ Nachdem wir Eingabe, Abfrage und Ausgabe für den Auftrag angegeben haben, könn
 
 ## Anzeigen der Ausgabe zur Betrugserkennung
 
-Verwenden Sie ein Tool wie [Azure-Speicher-Explorer](https://azurestorageexplorer.codeplex.com/) oder [Azure Explorer](http://www.cerebrata.com/products/azure-explorer/introduction), um betrügerische Ereignisse beim Schreiben in die Ausgabe in Echtzeit anzuzeigen.
+Verwenden Sie ein Tool wie [Azure-Speicher-Explorer](http://storageexplorer.com/) oder [Azure Explorer](http://www.cerebrata.com/products/azure-explorer/introduction), um betrügerische Ereignisse beim Schreiben in die Ausgabe in Echtzeit anzuzeigen.
 
 ![Betrugserkennung: Echtzeitanzeige von betrügerischen Ereignissen](./media/stream-analytics-real-time-fraud-detection/stream-ananlytics-view-real-time-fraudent-events.png)
 
@@ -264,4 +264,4 @@ Um Hilfe zu erhalten, nutzen Sie unser [Azure Stream Analytics-Forum](https://so
 - [Stream Analytics Query Language Reference (in englischer Sprache)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 - [Referenz zur Azure Stream Analytics-Verwaltungs-REST-API](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0817_2016-->

@@ -18,7 +18,7 @@
 
 # Verwenden des Tabellenspeichers mit C++
 
-[AZURE.INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
+[AZURE.INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)] <br/> [AZURE.INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-tables.md)]
 
 ## Übersicht  
 In diesem Leitfaden wird gezeigt, wie häufige Szenarios mit dem Azure-Tabellenspeicherdienst ausgeführt werden. Die Beispiele sind in C++ geschrieben und greifen auf die [Azure-Speicherclientbibliothek für C++](https://github.com/Azure/azure-storage-cpp/blob/master/README.md) zurück. Die behandelten Szenarios umfassen das **Erstellen und Löschen einer Tabelle** sowie das **Arbeiten mit Tabellenentitäten**.
@@ -172,7 +172,7 @@ Beachten Sie im Zusammenhang mit Batchvorgängen Folgendes:
 -	Alle Entitäten in einem Batchvorgang müssen über denselben Partitionsschlüssel verfügen.
 -	Ein Batchvorgang ist auf eine Datennutzlast von 4 MB beschränkt.
 
-## Abrufen aller Entitäten in einer Partition
+## Abrufen aller Entitäten einer Partition
 Verwenden Sie ein **table\_query**-Objekt, um eine Tabelle für alle Entitäten in einer Partition abzurufen. Im folgenden Codebeispiel wird ein Filter für Entitäten erstellt, wobei "Smith" der Partitionsschlüssel ist. In diesem Beispiel werden die Felder der einzelnen Entitäten in den Abfrageergebnissen an die Konsole ausgegeben.
 
 	// Retrieve the storage account from the connection string.
@@ -241,7 +241,7 @@ Wenn Sie nicht alle Entitäten in einer Partition abrufen möchten, können Sie 
 	}  
 
 ## Abrufen einer einzelnen Entität
-Sie können eine Abfrage schreiben, um eine bestimmte Entität abzurufen. Im folgenden Code wird der Kunde "Jeff Smith" durch **table\_operation::retrieve\_entity** angegeben. Bei dieser Methode wird nur eine Entität anstelle einer Sammlung zurückgegeben, und der zurückgegebene Wert befindet sich in **table\_result**. Die Angabe beider Schlüssel, Partition und Zeile, in einer Abfrage ist die schnellste Möglichkeit, um eine einzelne Entität aus dem Tabellenspeicherdienst abzurufen.
+Sie können eine Abfrage schreiben, um eine einzelne bestimmte Entität abzurufen. Im folgenden Code wird der Kunde "Jeff Smith" durch **table\_operation::retrieve\_entity** angegeben. Bei dieser Methode wird nur eine Entität anstelle einer Sammlung zurückgegeben, und der zurückgegebene Wert befindet sich in **table\_result**. Die Angabe beider Schlüssel, Partition und Zeile, in einer Abfrage ist die schnellste Möglichkeit, um eine einzelne Entität aus dem Tabellenspeicherdienst abzurufen.
 
 	azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_connection_string);
 
@@ -292,7 +292,7 @@ Um eine Entität zu ersetzen, rufen Sie sie aus dem Tabellenspeicherdienst ab, �
 	// Submit the operation to the Table service.
 	azure::storage::table_result replace_result = table.execute(replace_operation);
 
-## Einfügen oder Ersetzen einer Entität
+## Einfügen-oder-Ersetzen einer Entität
 **table\_operation::replace\_entity**-Vorgänge sind nicht erfolgreich, wenn die Entität seit dem letzten Abruf vom Server geändert wurde. Darüber hinaus müssen Sie zuerst die Entität vom Server abrufen, damit **table\_operation::replace\_entity** erfolgreich ist. Manchmal ist jedoch nicht bekannt, ob die Entität auf dem Server vorhanden ist, und die darin aktuell gespeicherten Werte sind nicht relevant. In diesem Fall sollten diese durch die Aktualisierung vollständig überschrieben werden. Dies erreichen Sie mit einem **table\_operation::insert\_or\_replace\_entity**-Vorgang. Bei diesem Vorgang wird die Entität eingefügt, falls sie nicht vorhanden ist, oder ersetzt, falls sie vorhanden ist, unabhängig davon, wann die letzte Aktualisierung stattgefunden hat. Im folgenden Codebeispiel wird die Kundenentität für Jeff Smith abgerufen, sie wird danach jedoch über **table\_operation::insert\_or\_replace\_entity** wieder auf dem Server gespeichert. Alle Änderungen, die zwischen dem Abruf- und Aktualisierungsvorgang an der Entität vorgenommen wurden, werden überschrieben.
 
 	// Retrieve the storage account from the connection string.
@@ -414,4 +414,4 @@ Nachdem Sie sich nun mit den Grundlagen von Tabellenspeichern vertraut gemacht h
 -	[Referenz zur Speicherclientbibliothek für C++](http://azure.github.io/azure-storage-cpp)
 -	[Azure Storage-Dokumentation](https://azure.microsoft.com/documentation/services/storage/)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0817_2016-->

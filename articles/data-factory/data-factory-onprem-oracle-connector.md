@@ -32,6 +32,11 @@ Damit der Azure Data Factory-Dienst eine Verbindung mit Ihrer lokalen Oracle-D
 
 > [AZURE.NOTE] Unter [Problembehandlung bei Gateways](data-factory-data-management-gateway.md#troubleshoot-gateway-issues) finden Sie Tipps zur Behandlung von Verbindungs- bzw. Gatewayproblemen.
 
+## Assistent zum Kopieren von Daten
+Die einfachste Art, eine Pipeline zu erstellen, mit der Daten aus einer Oracle-Datenbank in einen der unterstützten Senkendatenspeicher kopiert werden (oder umgekehrt), ist die Verwendung des Assistenten zum Kopieren von Daten. Unter [Tutorial: Erstellen einer Pipeline mit dem Assistenten zum Kopieren](data-factory-copy-data-wizard-tutorial.md) finden Sie eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mithilfe des Assistenten zum Kopieren von Daten.
+
+Die folgenden Beispiele zeigen JSON-Beispieldefinitionen, die Sie zum Erstellen einer Pipeline mit dem [Azure-Portal](data-factory-copy-activity-tutorial-using-azure-portal.md), mit [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) oder [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) verwenden können. Darin wird veranschaulicht, wie Sie Daten aus einer Oracle-Datenbank in Azure Blob Storage kopieren. Daten können jedoch auch mithilfe der Kopieraktivität in Azure Data Factory in eine beliebige der [hier](data-factory-data-movement-activities.md#supported-data-stores) aufgeführten Senken kopiert werden.
+
 ## Beispiel: Kopieren von Daten aus Oracle in Azure-Blob
 In diesem Beispiel wird gezeigt, wie Sie Daten aus einer lokalen Oracle-Datenbank in einen Azure-BLOB-Speicher kopieren. Daten können jedoch mithilfe der Kopieraktivität in Azure Data Factory **direkt** in die [hier](data-factory-data-movement-activities.md#supported-data-stores) aufgeführten Senken kopiert werden.
  
@@ -221,7 +226,7 @@ müssen Sie möglicherweise die Abfrage wie unten gezeigt ändern (unter Verwend
 	"oracleReaderQuery": "$$Text.Format('select * from MyTable where timestampcolumn >= to_date(\\'{0:MM-dd-yyyy HH:mm}\\',\\'MM/DD/YYYY HH24:MI\\')  AND timestampcolumn < to_date(\\'{1:MM-dd-yyyy HH:mm}\\',\\'MM/DD/YYYY HH24:MI\\') ', WindowStart, WindowEnd)"
 
 ## Beispiel: Kopieren von Daten aus einem Azure-Blob in Oracle
-In diesem Beispiel wird gezeigt, wie Sie Daten aus einem Azure-Blobspeicher in eine lokale Oracle-Datenbank kopieren. Daten können jedoch mithilfe der Kopieraktivität in Azure Data Factory **direkt** aus den [hier](data-factory-data-movement-activities.md#supported-data-stores) aufgeführten Quellen kopiert werden.
+In diesem Beispiel wird gezeigt, wie Sie Daten aus Azure Blog Storage in eine lokale Oracle-Datenbank kopieren. Daten können jedoch auch mithilfe der Kopieraktivität in Azure Data Factory **direkt** aus den [hier](data-factory-data-movement-activities.md#supported-data-stores) aufgeführten Quellen kopiert werden.
  
 Das Beispiel enthält die folgenden Data Factory-Entitäten:
 
@@ -446,7 +451,7 @@ sliceIdentifierColumnName | Benutzerdefinierter Spaltenname, den die Kopieraktiv
 
 ### Typzuordnung für Oracle
 
-Wie im Artikel [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) beschrieben, führt die Kopieraktivität automatische Typkonvertierungen von Quelltypen in Senkentypen mithilfe des folgenden aus zwei Schritten bestehenden Ansatzes durch:
+Wie im Artikel [Aktivitäten der Datenverschiebung](data-factory-data-movement-activities.md) beschrieben, führt die Kopieraktivität automatische Typkonvertierungen von Quelltypen in Senkentypen mithilfe des folgenden aus zwei Schritten bestehenden Ansatzes durch:
 
 1. Konvertieren von systemeigenen Quelltypen in den .NET-Typ
 2. Konvertieren vom .NET-Typ in systemeigenen Senkentyp
@@ -503,6 +508,6 @@ XML | String
 
 
 ## Leistung und Optimierung  
-Der Artikel [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-factory-copy-activity-performance.md) beschreibt wichtige Faktoren, die sich auf die Leistung der Datenverschiebung (Kopieraktivität) in Azure Data Factory auswirken, sowie verschiedene Möglichkeiten zur Leistungsoptimierung.
+Im Artikel [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-factory-copy-activity-performance.md) werden wichtige Faktoren beschrieben, die sich auf die Leistung der Datenverschiebung (Kopieraktivität) in Azure Data Factory auswirken, sowie verschiedene Möglichkeiten zur Leistungsoptimierung.
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0817_2016-->

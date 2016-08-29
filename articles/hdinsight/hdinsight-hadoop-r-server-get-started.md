@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-services"
-   ms.date="07/19/2016"
+   ms.date="08/17/2016"
    ms.author="jeffstok"
 />
 
@@ -374,17 +374,18 @@ Skriptaktionen sind Bash-Skripts, mit denen Konfigurationsänderungen am HDInsig
 
 3. Geben Sie auf dem Blatt __Skriptaktion übermitteln__ die folgenden Informationen an.
 
-    * __Name__: Ein Anzeigename zum Identifizieren dieses Skripts.
-    * __Bash-Skript-URI__: http://mrsactionscripts.blob.core.windows.net/rpackages-v01/InstallRPackages.sh.
-    * __Hauptknoten__: Diese Option muss __deaktiviert__ sein.
-    * __Worker__: Diese Option muss __aktiviert__ sein.
-    * __Zookeeper__: Diese Option muss __deaktiviert__ sein.
-    * __Parameter__: Die zu installierenden R-Pakete. Beispiel: `bitops stringr arules`
-    * __Speichern Sie diese Skript...__: Diese Option muss __aktiviert__ sein.
+* __Name__: Ein Anzeigename zum Identifizieren dieses Skripts.
+* __Bash-Skript-URI__: `http://mrsactionscripts.blob.core.windows.net/rpackages-v01/InstallRPackages.sh`
+* __Hauptknoten__: Diese Option muss __deaktiviert__ sein.
+* __Worker__: Diese Option muss __aktiviert__ sein.
+* __Zookeeper__: Diese Option muss __deaktiviert__ sein.
+* __Parameter__: Die zu installierenden R-Pakete. Beispiel: `bitops stringr arules`
     
-    > [AZURE.IMPORTANT] Wenn für die R-Pakete, die Sie installieren, Systembibliotheken hinzugefügt werden müssen, müssen Sie das hier verwendete Basisskript herunterladen und Schritte zum Installieren der Systembibliotheken hinzufügen. Dann müssen Sie das geänderte Skript in einen öffentlichen Blobcontainer im Azure-Speicher hochladen und das geänderte Skript zum Installieren der Pakete verwenden.
-    >
-    >Weitere Informationen zum Entwickeln von Skriptaktionen finden Sie unter [Entwickeln von Skriptaktionen](hdinsight-hadoop-script-actions-linux.md).
+    > [AZURE.NOTE] Standardmäßig werden alle R-Pakete über eine Momentaufnahme des Microsoft MRAN-Repositorys erstellt, die der installierten Version von R Server entspricht. Wenn Sie neuere Versionen von Paketen installieren möchten, besteht das Risiko von Inkompatibilitäten. Eine Installation ist jedoch möglich, indem `useCRAN` als erstes Element der Paketliste angegeben wird, z.B. `useCRAN bitops, stringr, arules`.
+    
+* __Speichern Sie diese Skript...__: Diese Option muss __aktiviert__ sein.
+    
+    > [AZURE.IMPORTANT] Für einige R-Paket werden zusätzliche Linux-Systembibliotheken benötigt. Um Ihnen die Arbeit zu erleichtern, haben wird die abhängigen Komponenten für die 100 populärsten R-Pakete für Sie vorinstalliert. Wenn für die R-Pakete, die Sie installieren, weitere Bibliotheken hinzugefügt werden müssen, müssen Sie das hier verwendete Basisskript herunterladen und Schritte zum Installieren der Systembibliotheken hinzufügen. Dann müssen Sie das geänderte Skript in einen öffentlichen Blobcontainer im Azure-Speicher hochladen und das geänderte Skript zum Installieren der Pakete verwenden. Weitere Informationen zum Entwickeln von Skriptaktionen finden Sie unter [Entwickeln von Skriptaktionen](hdinsight-hadoop-script-actions-linux.md).
     
     ![Hinzufügen einer Skriptaktion](./media/hdinsight-getting-started-with-r/scriptaction.png)
 
@@ -409,6 +410,6 @@ Wenn Sie die Automatisierung der Erstellung einer R Server-Instanz in HDInsight 
 
 Mit beide Vorlagen werden ein neuer HDInsight-Cluster und das zugehörige Speicherkonto erstellt. Sie können über die Azure-Befehlszeilenschnittstelle, Azure PowerShell oder das Azure-Portal verwendet werden.
 
-Informationen zum Aufrufen von ARM-Vorlagen zur Erstellung von HDInsight-Clustern finden Sie unter [Erstellen von Linux-basierten Hadoop-Clustern in HDInsight mit Azure Resource Manager-Vorlagen](hdinsight-hadoop-create-linux-clusters-arm-templates.md).
+Allgemeine Informationen zur Verwendung von Azure Resource Manager-Vorlagen finden Sie unter [Erstellen von Linux-basierten Hadoop-Clustern in HDInsight mit Azure Resource Manager-Vorlagen](hdinsight-hadoop-create-linux-clusters-arm-templates.md).
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0817_2016-->

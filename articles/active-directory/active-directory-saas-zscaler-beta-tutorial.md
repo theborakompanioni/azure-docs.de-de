@@ -4,14 +4,14 @@
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
-    manager="stevenpo"/>
+    manager="femila"/>
 <tags 
     ms.service="active-directory" 
     ms.devlang="na" 
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="05/25/2016" 
+    ms.date="08/16/2016" 
     ms.author="jeedes" />
 
 #Tutorial: Azure Active Directory-Integration mit ZScaler Beta
@@ -67,9 +67,9 @@ In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für ZSc
 
 ##Konfigurieren der einmaligen Anmeldung
   
-In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbundanmeldung auf Basis des SAML-Protokolls ermöglichen, sich mit ihrem Azure AD-Konto bei ZScaler Beta zu authentifizieren. Im Rahmen dieses Verfahrens müssen Sie eine Base-64-codierte Zertifikatsdatei in Ihren ZScaler Beta-Mandanten hochladen. Falls Sie nicht mit diesem Verfahren vertraut sind, finden Sie unter [Konvertieren eines binären Zertifikats in eine Textdatei](http://youtu.be/PlgrzUZ-Y1o) weitere Informationen.
+In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbundanmeldung auf Basis des SAML-Protokolls ermöglichen, sich mit ihrem Azure AD-Konto bei ZScaler Beta zu authentifizieren. Im Rahmen dieses Verfahrens müssen Sie eine Base-64-codierte Zertifikatsdatei in Ihren ZScaler Beta-Mandanten hochladen. Falls Sie nicht mit diesem Verfahren vertraut sind, finden Sie unter [How to convert a binary certificate into a text file](http://youtu.be/PlgrzUZ-Y1o) (in englischer Sprache) weitere Informationen.
 
-###So konfigurieren Sie einmaliges Anmelden
+###Führen Sie zum Konfigurieren des einmaligen Anmeldens die folgenden Schritte aus:
 
 1.  Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für **ZScaler Beta** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
 
@@ -122,7 +122,7 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
     1.  Klicken Sie auf **Speichern**.
     2.  Klicken Sie auf **Jetzt aktivieren**.
 
-11. Wählen Sie im klassischen Azure-Portal auf der Dialogfeldseite **Einmaliges Anmelden konfigurieren für ZScaler Beta** die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Abschließen**.
+11. Bestätigen Sie im klassischen Azure-Portal auf der Dialogfeldseite **Einmaliges Anmelden konfigurieren für ZScaler Beta** die Konfiguration für das einmalige Anmelden, und klicken Sie dann auf **Abschließen**.
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-zscaler-beta-tutorial/IC800229.png "Einmaliges Anmelden konfigurieren")
 
@@ -201,4 +201,4 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie d
   
 Wenn Sie die SSO-Einstellungen testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md).
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0817_2016-->

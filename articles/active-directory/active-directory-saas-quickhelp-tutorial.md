@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/25/2016"
+	ms.date="08/16/2016"
 	ms.author="jeedes"/>
 
 
@@ -21,7 +21,7 @@
 
 Dieses Tutorial soll Ihnen zeigen, wie Sie QuickHelp in Azure Active Directory (Azure AD) integrieren können. Die Integration von QuickHelp in Azure AD bietet die folgenden Vorteile:
 
-- Sie können in Azure AD steuern, wer auf QuickHelp Zugriff hat. 
+- Sie können in Azure AD steuern, wer auf QuickHelp Zugriff hat.
 - Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei QuickHelp anzumelden (einmaliges Anmelden).
 - Sie können Ihre Konten an einem zentralen Ort verwalten – im klassischen Azure-Portal.
 
@@ -31,7 +31,7 @@ Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unte
 
 Um die Azure AD-Integration mit QuickHelp konfigurieren zu können, benötigen Sie Folgendes:
 
-- Ein Azure AD-Abonnement.
+- Ein Azure AD-Abonnement
 - Ein QuickHelp-Abonnement, für das einmaliges Anmelden aktiviert ist
 
 
@@ -41,13 +41,13 @@ Um die Azure AD-Integration mit QuickHelp konfigurieren zu können, benötigen 
 Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
 
 - Sie sollten keine Produktionsumgebung verwenden, sofern dies nicht erforderlich ist.
-- Wenn Sie keine Azure AD-Testumgebung haben, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/) eine einmonatige Testversion anfordern. 
+- Wenn Sie keine Azure AD-Testumgebung haben, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/) eine einmonatige Testversion anfordern.
 
  
 ## Beschreibung des Szenarios
 Ziel dieses Tutorials ist es, das einmalige Anmelden von Azure AD in einer Testumgebung zu testen. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
 
-1. Hinzufügen von QuickHelp aus dem Katalog 
+1. Hinzufügen von QuickHelp aus dem Katalog
 2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 
 
@@ -56,7 +56,7 @@ Zum Konfigurieren der Integration von QuickHelp in Azure AD müssen Sie QuickHe
 
 **Um QuickHelp aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
 
-1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**. 
+1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**.
 
 	![Active Directory][1]
 
@@ -114,11 +114,11 @@ Das Ziel dieses Abschnitts besteht darin, das einmalige Anmelden von Azure AD im
 
 	![Konfigurieren von App-Einstellungen][8]
  
-     a. Geben Sie im Textfeld **Anmelde-URL** die URL ein, die die Benutzer zur Anmeldung bei der QuickHelp-Website verwenden (z. B. *https://quickhelp.com/bsiazure/*).
+     a. Geben Sie im Textfeld **Anmelde-URL** die URL ein, die die Benutzer zur Anmeldung bei der QuickHelp-Website verwenden (z.B. *https://quickhelp.com/bsiazure/*).
 
      > [AZURE.NOTE] Wenden Sie sich an das QuickHelp-Supportteam, falls Ihnen die Anmelde-URL nicht bekannt ist.
 
-     b. Klicken Sie auf **Weiter**.
+     b. Klicken Sie auf **Next**.
 
  
 4. Klicken Sie auf der Seite **Einmaliges Anmelden konfigurieren für QuickHelp** auf **Metadaten herunterladen**, und speichern Sie die Metadatendatei lokal auf Ihrem Computer.
@@ -269,10 +269,10 @@ Das Ziel dieses Abschnitts besteht darin, Britta Simon die Verwendung des einmal
 
 ### Testen der einmaligen Anmeldung
 
-In diesem Abschnitt soll Ihre Azure AD-Konfiguration für das einmalige Anmelden mithilfe des Zugriffsbereichs getestet werden. Wenn Sie im Zugriffsbereich auf die Kachel "QuickHelp" klicken, sollten Sie automatisch bei Ihrer QuickHelp-Anwendung angemeldet werden.
+Das Ziel dieses Abschnitts ist das Testen Ihrer Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich. Wenn Sie im Zugriffsbereich auf die Kachel "QuickHelp" klicken, sollten Sie automatisch bei Ihrer QuickHelp-Anwendung angemeldet werden.
 
 
-## Zusätzliche Ressourcen
+## Weitere Ressourcen
 
 * [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)
@@ -316,4 +316,4 @@ In diesem Abschnitt soll Ihre Azure AD-Konfiguration für das einmalige Anmelden
 [401]: ./media/active-directory-saas-QuickHelp-tutorial/tutorial_QuickHelp_401.png
 [402]: ./media/active-directory-saas-QuickHelp-tutorial/tutorial_QuickHelp_402.png
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0817_2016-->

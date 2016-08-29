@@ -39,7 +39,7 @@ In diesem Artikel erfahren Sie, wie Sie eine End-to-End-Konfiguration der Azure-
 Die Verwendung von Event Hubs als Senke für Azure-Diagnosedaten wird von Cloud Services, VMs, VM-Skalierungsgruppen und Service Fabric unterstützt. Die Unterstützung beginnt mit Azure SDK 2.9 und den entsprechenden Azure-Tools für Visual Studio.
 
 - Azure-Diagnoseerweiterung 1.6 (standardmäßiges Ziel im [Azure SDK für .NET 2.9 oder höher](https://azure.microsoft.com/downloads/))
-- [Visual Studio 2013 oder höher](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx)
+- [Visual Studio 2013 oder höher](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx)
 - Vorhandene Konfigurationen der Azure-Diagnose in einer Anwendung mithilfe einer *.wadcfgx*-Datei und einer der folgenden Methoden:
 	- Visual Studio: [Konfigurieren der Diagnose für Azure Cloud Services und Virtual Machines](../vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md)
 	- Windows PowerShell: [Aktivieren der Diagnose mithilfe von PowerShell in Azure Cloud Services](../cloud-services/cloud-services-diagnostics-powershell.md)
@@ -47,7 +47,7 @@ Die Verwendung von Event Hubs als Senke für Azure-Diagnosedaten wird von Cloud 
 
 ## Herstellen einer Verbindung zwischen der Azure-Diagnose und der Event Hubs-Senke
 
-Die Azure-Diagnose verwendet standardmäßig stets ein Azure Storage-Konto als Senke für Protokolle und Metriken. Eine Anwendung kann zusätzlich Event Hubs als Senke verwenden, indem der *.wadcfgx* -Datei im **WadCfg**-Element des **PublicConfig**-Abschnitts ein neuer **Sinks**-Abschnitt hinzugefügt wird. In Visual Studio wird die *.wadcfgx*-Datei unter folgendem Pfad gespeichert:**Cloud Services-Projekt** > **Rollen** > **(RoleName)** > **diagnostics.wadcfgx**-Datei.
+Die Azure-Diagnose verwendet standardmäßig stets ein Azure Storage-Konto als Senke für Protokolle und Metriken. Eine Anwendung kann zusätzlich Event Hubs als Senke verwenden, indem der *.wadcfgx*-Datei im **WadCfg**-Element des **PublicConfig**-Abschnitts ein neuer **Sinks**-Abschnitt hinzugefügt wird. In Visual Studio wird die *.wadcfgx*-Datei im folgenden Pfad gespeichert:**Cloud Services-Projekt** > **Rollen** > **(RoleName)** > **diagnostics.wadcfgx**-Datei.
 
 ```
 <SinksConfig>
@@ -57,7 +57,7 @@ Die Azure-Diagnose verwendet standardmäßig stets ein Azure Storage-Konto als S
 </SinksConfig>
 ```
 
-In diesem Beispiel wird die Event Hub-URL auf den vollqualifizierten Namespace des Event Hubs festgelegt: Service Bus-Namespace + „/“ + Event Hub-Name.
+In diesem Beispiel wird die Event Hub-URL auf den vollqualifizierten Namespace des Event Hubs festgelegt: Event Hubs-Namespace + „/“ + Event Hub-Name.
 
 Die Event Hub-URL wird im [Azure-Portal](http://go.microsoft.com/fwlink/?LinkID=213885) auf dem Event Hubs-Dashboard angezeigt.
 
@@ -74,7 +74,7 @@ Die Event Hubs-Senke muss ebenfalls im Abschnitt **PrivateConfig** der *.wadcfgx
 </PrivateConfig>
 ```
 
-Der `SharedAccessKeyName`-Wert muss einem SAS-Schlüssel (Shared Access Signature) und einer Richtlinie entsprechen, die im **Service Bus/Event Hubs**-Namespace definiert wurde. Navigieren Sie zum Event Hubs-Dashboard im [Azure-Portal](https://manage.windowsazure.com), klicken Sie auf die Registerkarte **Konfigurieren**, und richten Sie eine benannte Richtlinie (z.B. „SendRule“) mit Berechtigungen zum *Senden* ein. Das **StorageAccount** wird ebenfalls in **PrivateConfig** konfiguriert. Wenn die Werte hier funktionieren, muss nichts geändert werden. In diesem Beispiel lassen wir die Werte leer. Dies bedeutet, dass ein Downstream-Asset später die Werte festlegt. Beispielsweise legt die Umgebungskonfigurationsdatei *ServiceConfiguration.Cloud.cscfg* die geeigneten Namen und Schlüssel für die Umgebung fest.
+Der `SharedAccessKeyName`-Wert muss einem SAS-Schlüssel (Shared Access Signature) und einer Richtlinie entsprechen, die im **Event Hubs**-Namespace definiert wurde. Navigieren Sie zum Event Hubs-Dashboard im [Azure-Portal](https://manage.windowsazure.com), klicken Sie auf die Registerkarte **Konfigurieren**, und richten Sie eine benannte Richtlinie (z.B. „SendRule“) mit Berechtigungen zum *Senden* ein. Das **StorageAccount** wird ebenfalls in **PrivateConfig** konfiguriert. Wenn die Werte hier funktionieren, muss nichts geändert werden. In diesem Beispiel lassen wir die Werte leer. Dies bedeutet, dass ein Downstream-Asset später die Werte festlegt. Beispielsweise legt die Umgebungskonfigurationsdatei *ServiceConfiguration.Cloud.cscfg* die geeigneten Namen und Schlüssel für die Umgebung fest.
 
 > [AZURE.WARNING] Der Event Hubs-SAS-Schlüssel wird im Nur-Text-Format in der *.wadcfgx*-Datei gespeichert. Häufig wird dieser Schlüssel in der Quellcodeverwaltung eingecheckt oder ist als Asset in Ihrem Buildserver verfügbar, deshalb sollten die Daten in geeigneter Weise geschützt werden. Es wird empfohlen, hier einen SAS-Schlüssel mit der Berechtigung *Nur senden* zu verwenden, sodass böswillige Benutzer Schreibvorgänge im Event Hub durchführen können, aber nicht am Event Hub lauschen und den Event Hub nicht verwalten können.
 
@@ -319,4 +319,4 @@ Die ergänzende Datei *ServiceConfiguration.Cloud.cscfg* für dieses Beispiel si
 <!-- Images. -->
 [0]: ./media/event-hubs-streaming-azure-diags-data/dashboard.png
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0817_2016-->

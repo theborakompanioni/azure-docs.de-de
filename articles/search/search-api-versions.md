@@ -13,7 +13,7 @@
    ms.workload="search"
    ms.topic="article"
    ms.tgt_pltfrm="na"
-   ms.date="05/23/2016"
+   ms.date="08/16/2016"
    ms.author="brjohnst"/>
 
 # API-Versionen in Azure Search
@@ -31,6 +31,7 @@ Unten sehen Sie eine Momentaufnahme der aktuellen Versionen aller Programmiersch
 Schnittstellen|Letzte Hauptversion|Status
 ----------|-------------------------|------
 [.NET SDK](https://msdn.microsoft.com/library/azure/dn951165.aspx)|1\.1|Allgemein verfügbar, freigegeben Februar 2016
+[.NET SDK-Vorschau](https://msdn.microsoft.com/library/mt761536%28v=azure.103%29.aspx)|2\.0-Vorschau|Vorschau, veröffentlicht August 2016
 [Dienst-REST-API](https://msdn.microsoft.com/library/azure/dn798935.aspx)|2015-02-28|Allgemein verfügbar
 [Dienst-REST-API (Vorschau)](search-api-2015-02-28-preview.md)|2015-02-28-Preview|Vorschau
 [Verwaltungs-REST-API](https://msdn.microsoft.com/library/azure/dn832684.aspx)|2015-08-19|Allgemein verfügbar
@@ -51,15 +52,15 @@ Jede Version des .NET SDK spricht eine bestimmte Version der Dienst-REST-API an.
 
 Das .NET SDK ist jetzt allgemein verfügbar, und derzeit wird bereits die nächste Version vorbereitet. In der folgenden Tabelle sind zukünftige Versionen des SDK aufgeführt, sodass Sie eine Vorstellung haben, was als Nächstes kommt.
 
-.NET SDK-Version|REST-API-Version|Merkmale|ETA
+.NET SDK-Version|REST-API-Version|Features|ETA
 ----------------|----------------|--------|---
 1\.1|2015-02-28|Lucene-Abfragesyntax|Februar 2016
-2\.x-Vorschau|2015-02-28-Preview|Benutzerdefinierte Analyse, Azure-Blob-Indexer, Feldzuordnungen, ETags|Die Funktionen werden ab Q1 2016 bereitgestellt
-2\.x|Neue GA-API-Version|Identisch mit 2.x-Vorschau|Bald nach Abschluss der 2.x-Vorschau
+2\.0-Vorschau|2015-02-28-Preview|Benutzerdefinierte Analyse, Azure-Blob- und Tabellenindexer, Feldzuordnungen, ETags|August 2016
+2\.x|Neue GA-API-Version|Identisch mit 2.0-Vorschau|Frühes 4. Quartal 2016
 
 ##Informationen zu Vorschau- und allgemein verfügbaren Versionen
 
-Azure Search bietet immer zuerst Vorabversionen experimenteller Funktionen über die REST-API, dann über Vorabversionen von .NET SDK. Eine Liste der Previewfunktionen finden Sie unter [Neuerungen im aktuellen Update zu Azure Search](search-latest-updates.md).
+Azure Search bietet immer zuerst Vorabversionen experimenteller Funktionen über die REST-API, dann über Vorabversionen von .NET SDK.
 
 Previewfunktionen werden nicht unbedingt zu einer GA-Version migriert. Während bei Funktionen in einer GA-Version vorausgesetzt wird, dass sie stabil sind und es unwahrscheinlich ist, dass sie geändert werden – mit Ausnahme von kleinen abwärtskompatiblen Korrekturen und Verbesserungen – stehen Previewfunktionen für Tests und Experimente zur Verfügung, mit dem Ziel, Feedback zu Entwurf und Implementierung der Funktionen zu sammeln.
 
@@ -69,4 +70,4 @@ Für das .NET SDK: Anleitung zur Codemigration finden Sie unter [Upgrade auf Ver
 
 Allgemeine Verfügbarkeit bedeutet, dass Azure Search jetzt der Vereinbarung zum Servicelevel (SLA) unterliegt. Die SLA finden Sie unter [SLA für Search](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0817_2016-->

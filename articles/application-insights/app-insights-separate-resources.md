@@ -37,7 +37,7 @@ Hier sind einige allgemeinen Richtlinien:
  - Sie möchten geringere Aufkommen an Telemetriedaten von hohem Datenaufkommen trennen, sodass Drosselung, Kontingente und Stichproben für einen Datenstrom keine Auswirkungen auf den anderen haben.
  - Sie möchten Konfigurationen für Warnungen, Exporte und Arbeitsaufgaben voneinander trennen.
  - Sie möchten [Grenzwerte](app-insights-pricing.md#limits-summary), z.B. für Telemetriekontingente, Drosselung und Webtestanzahl, verteilen.
- - Code, der sich im Entwicklungs- oder Teststadium befindet, soll seine Telemetriedaten an einen anderen iKey senden als der Code im Produktivbetrieb.  
+ - Code, der sich im Entwicklungs- oder Teststadium befindet, soll seine Telemetriedaten an einen anderen iKey senden als der Code im Produktivbetrieb.
 
 Viele Funktionen im Application Insights-Portal spiegeln diese Richtlinien wider. Beispielsweise wird bei der Betrachtung von Segmenten die Serverinstanz berücksichtigt. Es wird also davon ausgegangen, dass Telemetriedaten zu einer logischen Komponente von verschiedenen Serverinstanzen stammen können.
 
@@ -45,7 +45,7 @@ Viele Funktionen im Application Insights-Portal spiegeln diese Richtlinien wider
 
 Wenn Sie Telemetriedaten von mehreren Komponenten an einen einzigen iKey senden:
 
-* Fügen Sie allen Telemetriedaten eine Eigenschaft hinzu, anhand derer Sie sie segmentieren und nach Komponenten-ID filtern können. Für Serverrolleninstanzen geschieht dies automatisch. In anderen Fällen können Sie die Eigenschaft mit einem [Telemetrieinitialisierer](app-insights-api-filtering-sampling.md#add-properties) hinzufügen.
+* Fügen Sie allen Telemetriedaten eine Eigenschaft hinzu, anhand derer Sie sie segmentieren und nach Komponenten-ID filtern können. Die Rollen-ID wird Telemetriedaten aus Rolleninstanzen automatisch hinzugefügt. In anderen Fällen können Sie die Eigenschaft mit einem [Telemetrieinitialisierer](app-insights-api-filtering-sampling.md#add-properties) hinzufügen.
 * Aktualisieren Sie die Application Insights-SDKs in den verschiedenen Komponenten gleichzeitig. Die Telemetriedaten für einen iKey sollten aus der gleichen Version des SDKs stammen.
 
 ## Separate iKeys
@@ -53,7 +53,7 @@ Wenn Sie Telemetriedaten von mehreren Komponenten an einen einzigen iKey senden:
 Wenn Sie mehrere iKeys für verschiedene Anwendungskomponenten verwenden:
 
 * Erstellen Sie ein [Dashboard](app-insights-dashboards.md) zum Anzeigen der wichtigsten Telemetriedaten aus Ihrer logischen Anwendung, in dem die Daten aus den verschiedenen Anwendungskomponenten kombiniert werden. Solche Dashboards können freigegeben werden, damit die einheitliche Ansicht für ein logisches System von verschiedenen Teams genutzt werden kann.
-* Organisieren Sie [Ressourcengruppen](app-insights-resources-roles-access-control.md) auf Teamebene. Zugriffsberechtigungen werden nach Ressourcengruppe zugewiesen, und dazu gehören auch die Berechtigungen zum Einrichten von Warnungen. 
+* Organisieren Sie [Ressourcengruppen](app-insights-resources-roles-access-control.md) auf Teamebene. Zugriffsberechtigungen werden nach Ressourcengruppe zugewiesen, und dazu gehören auch die Berechtigungen zum Einrichten von Warnungen.
 * Verwenden Sie [Azure Resource Manager-Vorlagen und PowerShell](app-insights-powershell.md), um Artefakte wie Warnungsregeln und Webtests zu verwalten.
 
 
@@ -107,8 +107,8 @@ Fügen Sie unter [portal.azure.com](https://portal.azure.com) eine neue Applicat
 * **Anwendungstyp** bestimmt den Inhalt des Blatts "Übersicht" und die im [Metrik-Explorer](app-insights-metrics-explorer.md) verfügbaren Eigenschaften. Wenn Ihr App-Typ nicht angezeigt wird, wählen Sie einen der Webtypen für Webseiten aus.
 * Eine **Ressourcengruppe** ist eine benutzerfreundliche Möglichkeit zum Verwalten von Eigenschaften wie der [Zugriffssteuerung](app-insights-resources-roles-access-control.md). Sie können separate Ressourcengruppen für Entwicklungs-, Test- und Produktionsumgebungen verwenden.
 * **Abonnement** ist Ihr Zahlungskonto in Azure.
-* **Speicherort** ist der Ort, an dem Ihre Daten aufbewahrt werden. Dieser kann derzeit nicht geändert werden. 
-* **Zu Dashboard hinzufügen** legt eine Schnellzugriffskachel für die Ressource auf Ihrer Azure-Startseite ab. 
+* **Speicherort** ist der Ort, an dem Ihre Daten aufbewahrt werden. Dieser kann derzeit nicht geändert werden.
+* **Zu Dashboard hinzufügen** legt eine Schnellzugriffskachel für die Ressource auf Ihrer Azure-Startseite ab.
 
 Das Erstellen der Ressource dauert einige Sekunden. Wenn es abgeschlossen ist, sehen Sie eine Warnung.
 
@@ -124,6 +124,7 @@ Der Instrumentierungsschlüssel identifiziert die Ressource, die Sie erstellt ha
 Sie benötigen die Instrumentierungsschlüssel aller Ressourcen, an die Ihre App Daten sendet.
 
 
+
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0817_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="08/10/2016"
+   ms.date="08/11/2016"
    ms.author="larryfr"/>
 
 # Zugreifen auf Diagnoseprotokolle für Azure Data Lake Analytics
@@ -32,7 +32,7 @@ Organisationen können die Diagnoseprotokollierung für ihr Azure Data Lake Anal
 - **Aktivieren Sie Ihr Azure-Abonnement** für die öffentliche Vorschauversion von Data Lake Analytics. Weitere Informationen finden Sie in den [Anweisungen](data-lake-analytics-get-started-portal.md#signup).
 - **Azure Data Lake Analytics-Konto**. Führen Sie die Schritte der Anleitung unter [Erste Schritte mit Azure Data Lake Analytics mithilfe des Azure-Portals](data-lake-analytics-get-started-portal.md) aus.
 
-## Aktivieren der Diagnoseprotokollierung für Ihr Data Lake Analytics-Konto
+## Aktivieren der Protokollierung
 
 1. Melden Sie sich am neuen [Azure-Portal](https://portal.azure.com) an.
 
@@ -52,7 +52,7 @@ Organisationen können die Diagnoseprotokollierung für ihr Azure Data Lake Anal
 
 Nachdem Sie die Diagnoseeinstellungen aktiviert haben, können Sie die Protokolle auf der Registerkarte **Diagnoseprotokolle** verfolgen.
 
-## Anzeigen der Diagnoseprotokolle für Ihr Data Lake Analytics-Konto
+## Anzeigen von Protokollen
 
 Es gibt zwei Möglichkeiten, die Protokolldaten Ihres Data Lake Analytics-Kontos anzuzeigen:
 
@@ -108,7 +108,7 @@ Es gibt zwei Möglichkeiten, die Protokolldaten Ihres Data Lake Analytics-Kontos
     
         https://adllogs.blob.core.windows.net/insights-logs-requests/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKEANALYTICS/ACCOUNTS/mydatalakeanalytics/y=2016/m=07/d=18/h=14/m=00/PT1H.json
 
-## Grundlegendes zur Struktur der Protokolldaten
+## Protokollstruktur
 
 Die Überwachungs- und Anforderungsprotokolle liegen im JSON-Format vor. In diesem Abschnitt betrachten wir die Struktur von JSON für Anforderungs- und Überwachungsprotokolle.
 
@@ -225,13 +225,13 @@ Hier ist ein Beispiel für einen Eintrag im JSON-formatierten Überwachungsproto
 
 > [AZURE.NOTE] Die Elemente __SubmitTime__, __StartTime__, __EndTime__ und __Parallelism__ liefern Informationen zu einem Vorgang und enthalten nur dann einen Wert, wenn ein Vorgang gestartet oder abgeschlossen wurde. Beispiel: __SubmitTime__ enthält einen Wert nach __operationName__ mit dem Hinweis __JobSubmitted__.
 
-## Beispiele für die Verarbeitung der Protokolldaten
+## Verarbeitung der Protokolldaten
 
 Azure Data Lake Analytics stellt ein Muster bereit, nach dem die Protokolldaten verarbeitet und analysiert werden sollen. Sie finden das Beispiel hier: [https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample](https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample).
 
 
-## Siehe auch
+## Nächste Schritte
 
 - [Azure Data Lake Analytics – Übersicht](data-lake-analytics-overview.md)
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0817_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/29/2016"
+   ms.date="08/16/2016"
    ms.author="terrylan"/>
 
 # Installieren von Endpoint Protection in Azure Security Center
@@ -32,11 +32,11 @@ In Azure Security Center wird die Bereitstellung einer Antischadsoftware für Ih
 
 4. Weitere Informationen zur Antischadsoftware-Lösung werden angezeigt. Klicken Sie auf **Erstellen**. ![Erstellen einer Antischadsoftware-Lösung][4]
 
-5. Geben Sie die erforderlichen Konfigurationseinstellungen auf dem Blatt **Erweiterung hinzufügen** ein, und wählen Sie anschließend **OK**. Weitere Informationen zu den Konfigurationseinstellungen finden Sie unter [Standardmäßige und benutzerdefinierte Antimalware-Konfiguration](../azure-security-antimalware.md#default-and-custom-antimalware-configuration).
+5. Geben Sie die erforderlichen Konfigurationseinstellungen auf dem Blatt **Erweiterung hinzufügen** ein, und wählen Sie anschließend **OK**. Weitere Informationen zu den Konfigurationseinstellungen finden Sie unter [Standardmäßige und benutzerdefinierte Antimalware-Konfiguration](../security/azure-security-antimalware.md#default-and-custom-antimalware-configuration).
 
 [Microsoft Antimalware](../azure-security-antimalware.md) ist jetzt auf den ausgewählten virtuellen Computern aktiv.
 
-## Weitere Informationen
+## Siehe auch
 
 In diesem Artikel wurde gezeigt, wie Sie die Security Center-Empfehlung „Endpoint Protection installieren“ implementieren. Weitere Informationen zum Aktivieren von Antischadsoftware finden Sie in den folgenden Artikeln:
 
@@ -58,4 +58,4 @@ Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:
 [3]: ./media/security-center-install-endpoint-protection/select-endpoint-protection.png
 [4]: ./media/security-center-install-endpoint-protection/create-antimalware-solution.png
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0817_2016-->

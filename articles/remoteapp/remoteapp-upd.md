@@ -13,10 +13,13 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="article" 
-    ms.date="06/30/2016" 
+    ms.date="08/15/2016" 
     ms.author="elizapo" />
 
 # Wie speichert Azure RemoteApp Benutzerdaten und -einstellungen?
+
+> [AZURE.IMPORTANT]
+Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148).
 
 Azure RemoteApp speichert die Benutzeridentität und -anpassungen über alle Geräte und Sitzungen hinweg. Diese Benutzerdaten werden auf einem benutzer- und sammlungsspezifischen Datenträger gespeichert, der sogenannte Benutzerprofil-Datenträger. Der Datenträger gilt für den Benutzer und stellt sicher, dass er eine einheitliche Umgebung erfährt, unabhängig davon, wo er sich anmeldet.
 
@@ -31,7 +34,7 @@ Lesen Sie weiter, um mehr über die Besonderheiten von Benutzerprofildaten zu er
 
 ## Wie kann ein Administrator auf die Daten zugreifen?
 
-Wenn Sie Zugriff auf die Daten für einen Ihrer Benutzer benötigen (für die Wiederherstellung im Notfall oder wenn der Benutzer das Unternehmen verlässt), wenden Sie sich an den Support von [Azure RemoteApp](mailto:remoteappforum@microsoft.com), und stellen Sie die Abonnementinformationen für die Sammlung und die Identität des Benutzers bereit. Das Team von Azure RemoteApp stellt Ihnen eine URL für die virtuelle Festplatte zur Verfügung. Laden Sie diese VHD herunter, und rufen Sie alle Dokumente oder Dateien ab, die Sie benötigen. Die virtuelle Festplatte hat eine Größe von 50 GB, weshalb das Herunterladen ein wenig Zeit in Anspruch nimmt.
+Wenn Sie Zugriff auf die Daten für einen Ihrer Benutzer benötigen (für die Wiederherstellung im Notfall oder wenn der Benutzer das Unternehmen verlässt), wenden Sie sich an den Azure-Support, und stellen Sie die Abonnementinformationen für die Sammlung und die Identität des Benutzers bereit. Das Team von Azure RemoteApp stellt Ihnen eine URL für die virtuelle Festplatte zur Verfügung. Laden Sie diese VHD herunter, und rufen Sie alle Dokumente oder Dateien ab, die Sie benötigen. Die virtuelle Festplatte hat eine Größe von 50 GB, weshalb das Herunterladen ein wenig Zeit in Anspruch nimmt.
 
 
 ## Werden die Daten gesichert?
@@ -75,7 +78,7 @@ Ja. Alles, was in „HKEY\_Current\_User“ geschrieben ist, ist Teil des Benutz
 
 ## Kann ich Benutzerprofil-Datenträger für eine Sammlung deaktivieren?
 
-Ja, Sie können das Azure RemoteApp-Team darum bitten, Benutzerprofil-Datenträger für ein Abonnement zu löschen. Sie können dies nicht selbst tun. Das bedeutet, dass Benutzerprofil-Datenträger für alle Sammlungen im Abonnement deaktiviert werden.
+Ja, Sie können das Azure RemoteApp-Team darum bitten, Benutzerprofil-Datenträger für ein Abonnement zu löschen. Sie können dies jedoch nicht selbst tun. Das bedeutet, dass Benutzerprofil-Datenträger für alle Sammlungen im Abonnement deaktiviert werden.
 
 In den folgenden Situationen möchten Sie Benutzerprofil-Datenträger möglicherweise deaktivieren:
 
@@ -117,7 +120,7 @@ Wenn Sie ein Startskript ausführen möchten, beginnen Sie mit dem Erstellen ein
 
 ![Erstellen Sie eine Systemaufgabe, die ausgeführt wird, wenn sich ein Benutzer anmeldet.](./media/remoteapp-upd/upd2.png)
 
-Ändern Sie auf der Registerkarte **Allgemein** das **Benutzerkonto** in den Sicherheitsoptionen unbedingt in „BUILTIN\\Users“.
+Ändern Sie in der Registerkarte **Allgemein** unbedingt das **Benutzerkonto** in den Sicherheitsoptionen auf „VORDEFINIERT\\Benutzer“.
 
 ![Ändern Sie das Benutzerkonto zu einer Gruppe](./media/remoteapp-upd/upd4.png)
 
@@ -155,4 +158,4 @@ Sie können Ihre Anmeldeinformationen außerdem wie folgt speichern:
 
 So können Sie das Parameter „-Credential“ im New-PSDrive-Cmdlet überspringen.
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0817_2016-->

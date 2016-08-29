@@ -13,20 +13,20 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/05/2016"
+	ms.date="08/12/2016"
 	ms.author="asteen"/>
 
 # Aktualisieren Ihres eigenen Kennworts
 Wenn Sie sich nicht sicher sind, wie Sie Ihr Geschäfts- oder Schulkonto verwalten können, dann sind Sie hier genau richtig. Lesen Sie nachfolgend, wie Sie häufige Schritte ausführen, z. B. das Ändern des Kennworts, das Zurücksetzen des Kennworts oder das Registrieren für die Kennwortzurücksetzung.
 
-* [**Registrieren für die Kennwortzurücksetzung**](#how-to-register-for-password-reset)
+* [**Verlieren Sie nicht den Zugriff auf Ihr Konto!**](#how-to-register-for-password-reset)
 * [**Ändern des Kennworts in Office 365**](#how-to-change-your-password-from-o365)
 * [**Ändern des Kennworts im Zugriffsbereich**](#how-to-change-your-password-from-the-access-panel)
 * [**Zurücksetzen des Kennworts**](#how-to-reset-your-password)
 * [**Entsperren Ihres Kontos**](#how-to-unlock-your-account)
 * [**Häufige Probleme und Lösungen**](#common-problems-and-their-solutions)
 
-## Registrieren für die Kennwortzurücksetzung
+## Verlieren Sie nicht den Zugriff auf Ihr Konto!
 
 > [AZURE.IMPORTANT]
 **Warum wird dies angezeigt?** Wenn Sie über einen Link auf diese Seite gelangt sind, fordert Ihr Administrator wahrscheinlich, dass Sie sich für die Kennwortzurücksetzung registrieren, um Zugriff auf die App zu erhalten. Sie werden unter Umständen zur Eingabe der Telefonnummer oder E-Mail-Adresse und zum Einrichten von Sicherheitsfragen aufgefordert. Keine Sorge, diese Informationen werden nicht verwendet, um Sie mit unerwünschten Informationen zu belästigen, sondern um Ihr Konto besser zu schützen. Die hier aufgeführten Schritte sollen Sie bei der Erreichung Ihres Ziels unterstützen.
@@ -261,4 +261,4 @@ Im Folgenden finden Sie Links zu allen Webseiten mit Informationen zur Kennwortz
 [014]: ./media/active-directory-passwords-update-your-own-password/014.jpg "Image_014.jpg"
 [015]: ./media/active-directory-passwords-update-your-own-password/015.jpg "Image_015.jpg"
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0817_2016-->

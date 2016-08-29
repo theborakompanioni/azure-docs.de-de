@@ -13,12 +13,15 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="compute"
-   ms.date="06/27/2016"
+   ms.date="08/15/2016"
    ms.author="elizapo"/>
 
 
 
 # Verwenden von Windows PowerShell-Cmdlets mit Azure RemoteApp
+
+> [AZURE.IMPORTANT]
+Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148).
 
  Sie können die PowerShell-Cmdlets in Azure RemoteApp zur Bereitstellung und Verwaltung Ihrer Sammlungen verwenden. Die folgenden Informationen erleichtern Ihnen den Einsteig.
 
@@ -28,7 +31,7 @@ Laden Sie [hier](http://go.microsoft.com/?linkid=9811175) zunächst die Azure Po
 
 Weitere Informationen finden Sie in der [Hilfe zu Azure RemoteApp-Cmdlets](https://msdn.microsoft.com/library/mt428031.aspx).
 
-## Konfigurieren Sie Azure-Cmdlets, um Ihr Abonnement zu verwenden
+## Konfigurieren Sie Azure-Cmdlets zur Verwendung Ihres Abonnements
 ------------------
 Folgen Sie den Anweisungen [dieses Handbuchs](../powershell-install-configure.md), sodass Sie die Cmdlets für Ihr Azure-Abonnement verwenden können.
 
@@ -111,4 +114,4 @@ Andere RemoteApp-Cmdlets:
 - Get-AzureRemoteAppOperationResult
  
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0817_2016-->

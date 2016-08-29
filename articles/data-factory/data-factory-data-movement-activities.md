@@ -82,21 +82,24 @@ Wenn sich Quell- und Senkendatenspeicher in der Cloud befinden, verwendet Azure 
 
 Region des Zieldatenspeichers | Verwendete Region für die Datenverschiebung
 :----------------------------------- | :----------------------------
-USA (Ost) | USA (Ost)
-USA (Ost) 2 | USA (Ost) 2
-USA (Mitte) | USA (Mitte)
-USA (West) | USA (West)
-USA (Mitte/Norden) | USA (Mitte/Norden)
-USA (Mitte/Süden) | USA (Mitte/Süden)
-Nordeuropa | Nordeuropa
-Westeuropa | Westeuropa
-Südostasien | Südostasien
-Ostasien | Südostasien
-Japan Ost | Japan Ost
-Japan (Westen) | Japan Ost
-Brasilien Süd | Brasilien Süd
-Australien (Osten) | Australien (Osten)
-Australien (Südosten) | Australien (Südosten)
+USA, Osten | USA, Osten
+USA, Osten 2 | USA, Osten 2
+USA, Mitte | USA, Mitte
+USA, Westen | USA, Westen
+USA, Norden-Mitte | USA, Norden-Mitte
+USA, Süden-Mitte | USA, Süden-Mitte
+Europa, Norden | Europa, Norden
+Europa, Westen | Europa, Westen
+Asien, Südosten | Asien, Südosten
+Asien, Osten | Asien, Südosten
+Japan, Osten | Japan, Osten
+Japan, Westen | Japan, Osten
+Brasilien, Süden | Brasilien, Süden
+Australien, Osten | Australien, Osten
+Australien, Südosten | Australien, Südosten
+Indien, Mitte | Indien, Mitte
+Indien, Süden | Indien, Mitte
+Indien, Westen | Indien, Mitte
 
 
 > [AZURE.NOTE] Wenn die Region des Zieldatenspeichers in der obigen Liste nicht enthalten ist, schlägt die Kopieraktivität fehl, anstatt eine Alternativregion auszuwählen.
@@ -185,4 +188,4 @@ Sie finden die Zuordnung für ein bestimmtes natives Typsystem zu .NET für den 
 - Unter [Verschieben von Daten zwischen lokalen Quellen und der Cloud](data-factory-move-data-between-onprem-and-cloud.md) erfahren Sie, wie Sie Daten aus einem lokalen Datenspeicher in einen Clouddatenspeicher verschieben.
  
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0817_2016-->

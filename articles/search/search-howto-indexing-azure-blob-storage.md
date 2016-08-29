@@ -12,7 +12,7 @@ ms.service="search"
 ms.devlang="rest-api"
 ms.workload="search" ms.topic="article"  
 ms.tgt_pltfrm="na"
-ms.date="08/08/2016"
+ms.date="08/16/2016"
 ms.author="eugenesh" />
 
 # Indizieren von Dokumenten in Azure Blob Storage mit Azure Search
@@ -37,7 +37,7 @@ Der Blobindexer kann Text aus den folgenden Dokumentformaten extrahieren:
 
 ## Einrichten der Blobindizierung
 
-Zum Einrichten und Konfigurieren des Indexers für Azure Blob Storage können Sie die Azure Search-REST-API nutzen, um **Indexer** und **Datenquellen** wie in [diesem Artikel](https://msdn.microsoft.com/library/azure/dn946891.aspx) beschrieben zu erstellen und zu verwalten. In Zukunft wird die Unterstützung für die Blobindizierung dem Azure Search-.NET-SDK und dem Azure-Portal hinzugefügt.
+Zum Einrichten und Konfigurieren des Indexers für Azure Blob Storage können Sie die Azure Search-REST-API nutzen, um **Indexer** und **Datenquellen** wie in [diesem Artikel](https://msdn.microsoft.com/library/azure/dn946891.aspx) beschrieben zu erstellen und zu verwalten. Sie können auch die [Version 2.0-Vorschau](https://msdn.microsoft.com/library/mt761536%28v=azure.103%29.aspx) des .NET SDK verwenden. In Zukunft wird die Blobindizierung vom Azure-Portal unterstützt.
 
 Führen Sie die folgenden drei Schritte aus, um einen Indexer einzurichten: Erstellen einer Datenquelle, Erstellen eines Index, Konfigurieren des Indexers.
 
@@ -303,4 +303,4 @@ Falls Sie alle Metadaten extrahieren, aber die Inhaltsextraktion für alle Blobs
 
 Teilen Sie uns auf unserer [UserVoice-Website](https://feedback.azure.com/forums/263029-azure-search/) mit, wenn Sie sich Features wünschen oder Verbesserungsvorschläge haben.
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0817_2016-->

@@ -12,11 +12,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="05/31/2016"
+   ms.date="08/17/2016"
    ms.author="magoedte;bwren" />
 
 # Untergeordnete Runbooks in Azure Automation
-
 
 Es ist eine bewährte Methode in Azure Automation, wieder verwendbare, modulare Runbooks mit einer diskreten Funktion zu schreiben, die von anderen Runbooks verwendet werden können. Ein übergeordnetes Runbook ruft häufig untergeordnete Runbooks zum Durchführen erforderlicher Funktionen auf. Zum Aufrufen eines untergeordneten Runbooks stehen zwei Methoden zur Auswahl, die sich erheblich unterscheiden. Um die beste Methode für Ihre verschiedenen Szenarien bestimmen zu können, sollten Sie sich daher zunächst mit diesen Unterschieden vertraut machen.
 
@@ -86,7 +85,7 @@ Die folgende Tabelle enthält eine Zusammenfassung der Unterschiede zwischen den
 |Ausführung|Das übergeordnete Runbook wird erst nach Abschluss des untergeordneten Runbooks fortgesetzt.|Das übergeordnete Runbook wird sofort fortgesetzt, nachdem das untergeordnete Runbook gestartet wurde, *oder* das übergeordnete Runbook wartet, bis der untergeordnete Auftrag abgeschlossen ist.|
 |Ausgabe|Ausgaben des untergeordneten Runbooks werden direkt an das übergeordnete Runbook zurückgegeben.|Das übergeordnete Runbook muss die Ausgabe aus dem untergeordneten Runbookauftrag abrufen, *oder* das übergeordnete Runbook kann die Ausgabe direkt aus dem untergeordneten Runbook abrufen.|
 |Parameter|Werte für die Parameter des untergeordneten Runbooks werden separat angegeben, und es können beliebige Datentypen verwendet werden.|Werte für die Parameter des untergeordneten Runbooks müssen in einer einzigen Hashtabelle kombiniert werden, und es können nur einfache, Array- und Objektdatentypen, die JSON-Serialisierung nutzen, verwendet werden.|
-|Automation-Konto|Das übergeordnete Runbook kann nur im selben Automation-Konto enthaltene untergeordnete Runbooks verwenden.|Das übergeordnete Runbook kann untergeordnete Runbooks aus allen Automation-Konten desselben Azure-Abonnements und sogar eines anderen Abonnements verwenden, wenn eine Verbindung damit besteht.|
+|Automation-Konto|Das übergeordnete Runbook kann nur im selben Automation-Konto enthaltene untergeordnete Runbooks verwenden.|Das übergeordnete Runbook kann untergeordnete Runbooks aus allen Automation-Konten desselben Azure-Abonnements und sogar eines anderen Abonnements verwenden, wenn eine Verbindung damit hergestellt wurde.|
 |Veröffentlichung|Das untergeordnete Runbook muss vor der Veröffentlichung des übergeordneten Runbooks veröffentlicht werden.|Das untergeordnete Runbook muss vor dem Start des übergeordneten Runbooks veröffentlicht werden.|
 
 ## Nächste Schritte
@@ -94,4 +93,4 @@ Die folgende Tabelle enthält eine Zusammenfassung der Unterschiede zwischen den
 - [Starten eines Runbooks in Azure Automation](automation-starting-a-runbook.md)
 - [Runbookausgabe und -meldungen in Azure Automation](automation-runbook-output-and-messages.md)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0817_2016-->

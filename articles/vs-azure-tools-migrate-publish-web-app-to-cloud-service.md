@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
-   ms.date="06/01/2016"
+   ms.date="08/15/2016"
    ms.author="tarcher" />
 
 # Vorgehensweise: Migrieren und Veröffentlichen einer Webanwendung in einem Azure-Clouddienst aus Visual Studio
@@ -45,7 +45,7 @@ Führen Sie die unten angegebenen Schritte aus, um eine Webanwendung aus Visual 
 
     - Die **Copy Local**-Eigenschaft wird für alle Assemblys, die für MVC 2-, MVC 3-, MVC 4- und Silverlight-Geschäftsanwendungen erforderlich sind, auf "true" festgelegt. So werden diese Assemblys dem Dienstpaket hinzugefügt, das für die Bereitstellung verwendet wird.
 
-  >[AZURE.IMPORTANT]Wenn Sie über andere Assemblys oder Dateien verfügen, die für diese Webanwendung benötigt werden, müssen Sie die Eigenschaften für diese Dateien manuell festlegen. Informationen zum Festlegen dieser Eigenschaften finden Sie im Abschnitt **Einschließen von Dateien in das Dienstpaket** weiter unten in diesem Artikel.  
+  >[AZURE.IMPORTANT] Wenn Sie über andere Assemblys oder Dateien verfügen, die für diese Webanwendung benötigt werden, müssen Sie die Eigenschaften für diese Dateien manuell festlegen. Informationen zum Festlegen dieser Eigenschaften finden Sie im Abschnitt **Einschließen von Dateien in das Dienstpaket** weiter unten in diesem Artikel.
 
   >[AZURE.NOTE] Wenn eine Webrolle für ein bestimmtes Webprojekt in einem Azure-Projekt der Lösung bereits vorhanden ist, wird **Konvertieren**, **In Azure-Clouddienstprojekt konvertieren** im Kontextmenü für dieses Webprojekt nicht angezeigt.
 
@@ -67,7 +67,7 @@ Wenn Sie eine Verbindungszeichenfolge für Ihre Webanwendung nutzen, für die ei
 
 1. Führen Sie die folgenden Schritte im [klassischen Azure-Portal](http://go.microsoft.com/fwlink/?LinkID=213885) aus, um die ADO.NET-Verbindungszeichenfolge zu kopieren, die Sie als Ihre Verbindungszeichenfolge verwenden möchten.
 
-  1. Wählen Sie die Schaltfläche **Datenbank** aus, und öffnen Sie den Knoten für das Abonnement, das Sie zum Erstellen Ihrer Instanz von SQL-Datenbank verwendet haben.
+  1. Wählen Sie die Schaltfläche **Datenbank**, und öffnen Sie den Knoten für das Abonnement, das Sie zum Erstellen Ihrer Instanz von SQL-Datenbank verwendet haben.
 
   1. Um die verfügbaren Instanzen von SQL-Datenbank anzuzeigen, wählen Sie den Knoten **SQL-Datenbanken** aus.
 
@@ -160,7 +160,7 @@ Wenn Sie eine Verbindungszeichenfolge für Ihre Webanwendung nutzen, für die ei
     |WCF-Dienstanwendung|Sie müssen die SVC-Datei als Startseite für Ihr WCF-Dienstprojekt festlegen. Wählen Sie dann in der Menüleiste die Option **Debuggen**, **Debuggen starten** aus (Tastatur: **F5**).|Sie müssen zur SVC-Datei für Ihre Anwendung navigieren, indem Sie das folgende Format für Ihre URL verwenden: `<url for deployment>/<name of service file>.svc`|
     |Dienstanwendung für WCF-Workflows|Sie müssen die SVC-Datei als Startseite für Ihr WCF-Dienstprojekt festlegen. Wählen Sie dann in der Menüleiste die Option **Debuggen**, **Debuggen starten** aus (Tastatur: **F5**).|Sie müssen zur SVC-Datei für Ihre Anwendung navigieren, indem Sie das folgende Format für Ihre URL verwenden: `<url for deployment>/<name of service file>.svc`|
     |ASP.NET Dynamic Entities|Wählen Sie in der Menüleiste die Option **Debuggen**, **Debuggen starten** aus (Tastatur: **F5**).|Sie müssen die Verbindungszeichenfolge aktualisieren (siehe nächsten Abschnitt). Sie müssen auch zur speziellen Seite für Ihre Anwendung navigieren, indem Sie das folgende Format für Ihre URL verwenden: `<url for deployment>/<name of page>.aspx`|
-    |ASP.NET Dynamic Data-LINQ to SQL|Wählen Sie in der Menüleiste die Option **Debuggen**, **Debuggen starten** aus (Tastatur: **F5**).|Führen Sie die Schritte in diesem Verfahren aus: Verwenden Sie eine SQL Azure-Datenbank für Ihre Anwendung (siehe Abschnitt weiter oben in diesem Thema). Sie müssen auch zur speziellen Seite für Ihre Anwendung navigieren, indem Sie das folgende Format für Ihre URL verwenden: `<url for deployment>/<name of page>.aspx`|
+    |ASP.NET Dynamic Data-LINQ to SQL|Wählen Sie in der Menüleiste die Option **Debuggen**, **Debuggen starten** aus (Tastatur: **F5**).|Führen Sie die Schritte in diesem Verfahren aus: Verwenden einer SQL Azure-Datenbank für Ihre Anwendung (siehe Abschnitt weiter oben in diesem Thema). Sie müssen auch zur speziellen Seite für Ihre Anwendung navigieren, indem Sie das folgende Format für Ihre URL verwenden: `<url for deployment>/<name of page>.aspx`|
 
 ## Aktualisieren einer Verbindungszeichenfolge für ASP.NET Dynamic Entities
 
@@ -208,4 +208,4 @@ Zum Veröffentlichen einer Webanwendung unter Azure muss für die Anwendung eine
 ## Nächste Schritte
 Weitere Informationen zur Veröffentlichung finden Sie unter [Veröffentlichen und Bereitstellen einer Azure-Anwendung in Visual Studio](vs-azure-tools-cloud-service-publish-set-up-required-services-in-visual-studio.md). Sehen Sie sich auch [Einrichten benannter Authentifizierungsanmeldeinformationen](vs-azure-tools-setting-up-named-authentication-credentials.md) an.
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0817_2016-->

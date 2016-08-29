@@ -38,7 +38,7 @@ Erstellen Sie einen Ordner zum Speichern der Anwendung. Legen Sie in einer Konso
 	
 	npm init
 	
-Ihnen werden dann verschiedene Fragen zur Initialisierung des Projekts gestellt. Als **Einstiegspunkt** wird in diesem Tutorial *app.js* verwendet. Meine anderen gewählten Optionen sehen Sie im Beispiel unten.
+Ihnen werden dann verschiedene Fragen zur Initialisierung des Projekts gestellt. Als **Einstiegspunkt** wird in diesem Tutorial *app.js* verwendet. Meine anderen gewählten Optionen sehen Sie im folgenden Beispiel:
 
 ![NPM-Initialisierungsausgabe](./media/cdn-app-dev-node/cdn-npm-init.png)
 
@@ -47,7 +47,7 @@ Unser Projekt wird jetzt mit der Datei *packages.json* initialisiert. Im Projekt
 	npm install --save ms-rest-azure
 	npm install --save azure-arm-cdn
 
-Nachdem die Installation der Pakete abgeschlossen ist, sollte die Datei *package.json* in etwa wie folgt aussehen (Versionsnummern können abweichen):
+Nachdem die Installation der Pakete abgeschlossen ist, sollte die Datei *package.json* in etwa wie folgendes Beispiel aussehen (Versionsnummern können abweichen):
 
 ``` json
 {
@@ -103,7 +103,7 @@ Bei geöffneter Datei *app.js* im Editor schreiben wir die Grundstruktur unseres
 	
 	Wenn Sie die individuelle Benutzerauthentifizierung verwenden, sehen diese beiden Zeilen etwas anders aus.
 
-	>[AZURE.IMPORTANT] Verwenden Sie dieses Codebeispiel nur, wenn Sie die individuelle Benutzerauthentifizierung anstelle eines Dienstprinzipals verwenden möchten. Schützen Sie Ihre individuellen Anmeldeinformationen gut, und halten Sie sie geheim.
+	>[AZURE.IMPORTANT] Verwenden Sie dieses Codebeispiel nur, wenn Sie die individuelle Benutzerauthentifizierung anstelle eines Dienstprinzipals verwenden möchten. Schützen Sie Ihre individuellen Anmeldeinformationen, und halten Sie sie geheim.
 
 	``` javascript
 	var credentials = new msRestAzure.UserTokenCredentials(clientId, 
@@ -117,7 +117,7 @@ Bei geöffneter Datei *app.js* im Editor schreiben wir die Grundstruktur unseres
 4.  Für unsere Node.js-Konsolenanwendung benötigen wir einige Befehlszeilenparameter. Wir vergewissern uns, dass mindestens ein Parameter übergeben wurde.
 
 	```javascript
-	//Collect command line parameters
+	//Collect command-line parameters
 	var parms = process.argv.slice(2);
 
 	//Do we have parameters?
@@ -213,7 +213,7 @@ Nachdem wir die Grundstruktur für unser Programm nun geschrieben haben, sollten
 
 ## Auflisten von CDN-Profilen und -Endpunkten
 
-Wir beginnen mit Code zum Auflisten der vorhandenen Profile und Endpunkte. Ich stelle Codekommentare mit der erwarteten Syntax bereit, damit wir wissen, welcher Parameter an welche Stelle gehört.
+Wir beginnen mit Code zum Auflisten der vorhandenen Profile und Endpunkte. Meine Codekommentare enthalten die erwartete Syntax, damit wir wissen, welcher Parameter an welche Stelle gehört.
 
 ```javascript
 // list profiles
@@ -367,4 +367,6 @@ Lesen Sie die [Referenz](http://azure.github.io/azure-sdk-for-node/azure-arm-cdn
 
 Weitere Teile der Dokumentation zum Azure SDK für Node.js finden Sie in der [vollständigen Referenz](http://azure.github.io/azure-sdk-for-node/).
 
-<!---HONumber=AcomDC_0803_2016-->
+Verwalten Sie Ihre CDN-Ressourcen mit [PowerShell](./cdn-manage-powershell.md).
+
+<!---HONumber=AcomDC_0817_2016-->

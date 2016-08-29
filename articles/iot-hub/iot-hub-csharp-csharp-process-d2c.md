@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Verarbeiten von D2C-Nachrichten mit IoT Hub | Microsoft Azure"
-	description="In diesem Lernprogramm werden nützliche Verfahren zum Verarbeiten von Gerät-zu-Cloud-Nachrichten (Device-to-Cloud, D2C) mit IoT Hub beschrieben."
+	description="In diesem Tutorial werden nützliche Verfahren zum Verarbeiten von Gerät-zu-Cloud-Nachrichten (Device-to-Cloud, D2C) mit IoT Hub beschrieben."
 	services="iot-hub"
 	documentationCenter=".net"
 	authors="dominicbetts"
@@ -16,7 +16,7 @@
      ms.date="07/19/2016"
      ms.author="dobett"/>
 
-# Lernprogramm: Verarbeiten von D2C-Nachrichten mit IoT Hub
+# Tutorial: Verarbeiten von D2C-Nachrichten mit IoT Hub
 
 ## Einführung
 
@@ -94,7 +94,7 @@ In diesem Abschnitt ändern Sie die simulierte Geräteanwendung, die Sie im Tuto
 
 ## Verarbeiten von Gerät-zu-Cloud-Nachrichten
 
-In diesem Abschnitt erstellen Sie eine Windows-Konsolen-App, die D2C-Nachrichten von IoT Hub verarbeitet. IoT Hub macht einen mit [Event Hubs] kompatiblen Endpunkt verfügbar, der einer Anwendung das Lesen von D2C-Nachrichten ermöglicht. In diesem Lernprogramm wird die [EventProcessorHost]-Klasse verwendet, um die Nachrichten in einer Konsolen-App zu verarbeiten. Weitere Informationen zum Verarbeiten von Nachrichten von Event Hubs finden Sie im Tutorial [Erste Schritte mit Event Hubs].
+In diesem Abschnitt erstellen Sie eine Windows-Konsolen-App, die D2C-Nachrichten von IoT Hub verarbeitet. IoT Hub macht einen mit [Event Hubs] kompatiblen Endpunkt verfügbar, der einer Anwendung das Lesen von D2C-Nachrichten ermöglicht. In diesem Tutorial wird die [EventProcessorHost]-Klasse verwendet, um die Nachrichten in einer Konsolen-App zu verarbeiten. Weitere Informationen zum Verarbeiten von Nachrichten von Event Hubs finden Sie im Tutorial [Erste Schritte mit Event Hubs].
 
 Die größte Herausforderung beim Implementieren der zuverlässigen Speicherung von Datenpunktnachrichten oder der Weiterleitung von interaktiven Nachrichten besteht darin, dass der Nachrichtenconsumer für die Event Hubs-Ereignisverarbeitung Prüfpunkte für den Status bereitstellen muss. Darüber hinaus sollten Sie beim Lesen von Event Hubs Prüfpunkte für große Batches festlegen, um einen hohen Durchsatz zu erzielen. Hieraus ergibt sich die Möglichkeit einer doppelten Verarbeitung für eine große Zahl von Nachrichten, wenn ein Fehler vorliegt und Sie zum vorherigen Prüfpunkt zurückkehren. In diesem Tutorial wird veranschaulicht, wie Azure-Speicherschreibvorgänge und Service Bus-Deduplizierungsfenster mit **EventProcessorHost**-Prüfpunkten synchronisiert werden.
 
@@ -102,13 +102,13 @@ Um Nachrichten zuverlässig in den Azure-Speicher zu schreiben, wird im Beispiel
 
 Der Ereignisprozessor nutzt Event Hubs-Nachrichten-Offsets als Block-IDs. Dies ermöglicht eine Überprüfung der Deduplizierung vor dem Ausführen eines Commits für den neuen Block an den Speicher, und ein etwaiger Konflikt zwischen dem Commit eines Blocks und dem Prüfpunkt wird verhindert.
 
-> [AZURE.NOTE] In diesem Lernprogramm wird ein einzelnes Speicherkonto zum Schreiben aller Nachrichten verwendet, die von IoT Hub abgerufen werden. Informationen dazu, ob Sie in Ihrer Lösung mehrere Azure Storage-Konten benötigen, finden Sie in den [Richtlinien zur Azure Storage-Skalierbarkeit].
+> [AZURE.NOTE] In diesem Tutorial wird ein einzelnes Speicherkonto zum Schreiben aller Nachrichten verwendet, die von IoT Hub abgerufen werden. Informationen dazu, ob Sie in Ihrer Lösung mehrere Azure Storage-Konten benötigen, finden Sie in den [Richtlinien zur Azure Storage-Skalierbarkeit].
 
 Die Anwendung nutzt die Service Bus-Deduplizierungsfunktion, um beim Verarbeiten interaktiver Nachrichten Duplikate zu vermeiden. Das simulierte Gerät versieht jede interaktive Nachricht mit einer eindeutigen **MessageId**. Dadurch kann Service Bus sicherstellen, dass im angegebenen Zeitfenster für die Deduplizierung nicht zwei Nachrichten mit der gleichen **MessageId** an die Empfänger übertragen werden. Diese Deduplizierung sorgt zusammen mit der Abschlusssemantik pro Nachricht von Service Bus-Warteschlangen dafür, dass die zuverlässige Verarbeitung von interaktiven Nachrichten vereinfacht wird.
 
 Um sicherzustellen, dass Nachrichten nicht außerhalb des Deduplizierungsfensters erneut übermittelt werden, wird der **EventProcessorHost**-Prüfpunktmechanismus im Code mit dem Deduplizierungsfenster der Service Bus-Warteschlange synchronisiert. Hierzu wird mindestens einmal bei jedem Ablauf des Deduplizierungsfensters (in diesem Tutorial nach einer Stunde) ein Prüfpunkt erzwungen.
 
-> [AZURE.NOTE] In diesem Lernprogramm wird eine einzelne partitionierte Service Bus-Warteschlange verwendet, um alle interaktiven Nachrichten zu verarbeiten, die von IoT Hub abgerufen werden. Weitere Informationen zur Erfüllung der Skalierbarkeitsanforderungen Ihrer Lösung mithilfe von Service Bus-Warteschlangen finden Sie in der [Dokumentation zu Azure Service Bus].
+> [AZURE.NOTE] In diesem Tutorial wird eine einzelne partitionierte Service Bus-Warteschlange verwendet, um alle interaktiven Nachrichten zu verarbeiten, die von IoT Hub abgerufen werden. Weitere Informationen zur Erfüllung der Skalierbarkeitsanforderungen Ihrer Lösung mithilfe von Service Bus-Warteschlangen finden Sie in der [Dokumentation zu Azure Service Bus].
 
 ### Bereitstellen eines Azure-Speicherkontos und einer Service Bus-Warteschlange
 Zum Verwenden der [EventProcessorHost]-Klasse müssen Sie über ein Azure-Speicherkonto verfügen, damit von **EventProcessorHost** Prüfpunktinformationen erfasst werden können. Sie können ein vorhandenes Speicherkonto verwenden oder mithilfe der Anweisungen unter [Informationen zu Azure Storage] ein neues Konto erstellen. Notieren Sie sich die Verbindungszeichenfolge für das Speicherkonto.
@@ -298,7 +298,7 @@ Sie benötigen außerdem eine Service Bus-Warteschlange, um die zuverlässige Ve
 
     Mit der **AppendAndCheckpoint**-Methode wird zuerst eine Block-ID für den anzufügenden Block generiert. Für Azure Storage müssen alle Block-IDs die gleiche Länge besitzen. Die Methode füllt den Offset daher mit führenden Nullen auf: `currentBlockInitOffset.ToString("0000000000000000000000000")`. Wenn ein Block mit dieser ID im Blob bereits vorhanden ist, überschreibt die Methode ihn mit dem aktuellen Inhalt des Puffers.
 
-    > [AZURE.NOTE] Um den Code zu vereinfachen, wird in diesem Lernprogramm eine einzelne Blob-Datei pro Partition zum Speichern von Nachrichten verwendet. Für eine echte Lösung würde das „File Rolling“ implementiert werden, indem zusätzliche Dateien erstellt werden, wenn ein bestimmter Zeitraum verstrichen ist oder wenn sie eine bestimmte Größe erreichen (ein Azure-Blockblob kann maximal 195 GB groß sein).
+    > [AZURE.NOTE] Um den Code zu vereinfachen, wird in diesem Tutorial eine einzelne Blob-Datei pro Partition zum Speichern von Nachrichten verwendet. Für eine echte Lösung würde das „File Rolling“ implementiert werden, indem zusätzliche Dateien erstellt werden, wenn ein bestimmter Zeitraum verstrichen ist oder wenn sie eine bestimmte Größe erreichen (ein Azure-Blockblob kann maximal 195 GB groß sein).
 
 8. Fügen Sie am Anfang der **Program**-Klasse die folgenden **using**-Anweisung hinzu:
 
@@ -336,7 +336,7 @@ In diesem Abschnitt schreiben Sie eine Windows-Konsolen-App, die interaktive Nac
 
 2. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt **ProcessD2CInteractiveMessages**, und klicken Sie dann auf **NuGet-Pakete verwalten**. Das Fenster **NuGet-Paket-Manager** wird angezeigt.
 
-3. Suchen Sie nach **WindowsAzure.Service Bus**, klicken Sie auf **Installieren**, und akzeptieren Sie die Nutzungsbedingungen. Daraufhin wird [Azure Service Bus](https://www.nuget.org/packages/WindowsAzure.ServiceBus) mit allen Abhängigkeiten heruntergeladen, installiert und mit einem Verweis versehen.
+3. Suchen Sie nach **WindowsAzure.ServiceBus**, klicken Sie auf **Installieren**, und akzeptieren Sie die Nutzungsbedingungen. Daraufhin wird [Azure Service Bus](https://www.nuget.org/packages/WindowsAzure.ServiceBus) mit allen Abhängigkeiten heruntergeladen, installiert und mit einem Verweis versehen.
 
 4. Fügen Sie am Anfang der Datei **Program.cs** die folgenden **using**-Anweisungen hinzu:
 
@@ -447,4 +447,4 @@ Weitere Informationen zum Entwickeln von Lösungen mit IoT Hub finden Sie im [Io
 [lnk-c2d]: iot-hub-csharp-csharp-process-d2c.md
 [lnk-suite]: https://azure.microsoft.com/documentation/suites/iot-suite/
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0817_2016-->

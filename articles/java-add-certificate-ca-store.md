@@ -13,11 +13,11 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="Java" 
 	ms.topic="article" 
-	ms.date="06/24/2016" 
+	ms.date="08/11/2016" 
 	ms.author="robmcm"/>
 
 # Hinzufügen eines Zertifikats zum Java CA-Zertifikatspeicher
-In den folgenden Schritten wird gezeigt, wie ein Zertifikat der Zertifizierungsstelle (Certificate Authority, CA) zum Java CA-Zertifikatspeicher bzw. cacerts-Speicher hinzugefügt wird. Das verwendete Beispiel steht für das Zertifizierungsstellenzertifikat, das für den Twilio-Dienst erforderlich ist. Weiter unten in diesem Thema wird beschrieben, wie das Zertifizierungsstellenzertifikat für den Azure-Dienstbus installiert wird.
+In den folgenden Schritten wird gezeigt, wie ein Zertifikat der Zertifizierungsstelle (Certificate Authority, CA) zum Java CA-Zertifikatspeicher bzw. cacerts-Speicher hinzugefügt wird. Das verwendete Beispiel steht für das Zertifizierungsstellenzertifikat, das für den Twilio-Dienst erforderlich ist. Weiter unten in diesem Thema wird beschrieben, wie das Zertifizierungsstellenzertifikat für Azure Service Bus installiert wird.
 
 Sie können "keytool" zum Hinzufügen des Zertifizierungsstellenzertifikats verwenden, bevor Sie das JDK komprimieren und zum Ordner **approot** des Azure-Projekts hinzufügen. Optional können Sie auch eine Azure-Startaufgabe ausführen, bei der zum Hinzufügen des Zertifikats "keytool" zum Einsatz kommt. Bei diesem Beispiel wird davon ausgegangen, dass Sie ein Zertifizierungsstellenzertifikat hinzufügen, bevor das JDK gezippt wird. Darüber hinaus wird in diesem Beispiel ein bestimmtes Zertifizierungsstellenzertifikat verwendet. Die Schritte zum Abrufen eines anderen Zertifizierungsstellenzertifikats und Importieren dieses Zertifikats in den cacerts-Speicher sind allerdings nahezu identisch.
 
@@ -27,7 +27,7 @@ Sie können "keytool" zum Hinzufügen des Zertifizierungsstellenzertifikats verw
 
 	`keytool -list -keystore cacerts`
 
-	Sie werden aufgefordert, das Kennwort für den Speicher einzugeben. Das Standardkennwort lautet **changeit**. (Falls Sie das Kennwort ändern möchten, finden Sie die entsprechenden Informationen in der keytool-Dokumentation unter <http://docs.oracle.com/javase/7/docs/technotes/tools/windows/keytool.html>.) Bei diesem Beispiel wird davon ausgegangen, dass das Zertifikat mit dem MD5-Fingerabdruck "67:CB:9D:C0:13:24:8A:82:9B:B2:17:1E:D1:1B:EC:D4" nicht aufgeführt ist und dass Sie dieses Zertifikat importieren möchten. Dieses bestimmte Zertifikat ist für den Twilio API-Dienst erforderlich.
+	Sie werden aufgefordert, das Kennwort für den Speicher einzugeben. Das Standardkennwort lautet **changeit**. (Falls Sie das Kennwort ändern möchten, finden Sie die entsprechenden Informationen in der keytool-Dokumentation unter http://docs.oracle.com/javase/7/docs/technotes/tools/windows/keytool.html.) Bei diesem Beispiel wird davon ausgegangen, dass das Zertifikat mit dem MD5-Fingerabdruck „67:CB:9D:C0:13:24:8A:82:9B:B2:17:1E:D1:1B:EC:D4“ nicht aufgeführt ist und dass Sie dieses Zertifikat importieren möchten. Dieses bestimmte Zertifikat ist für den Twilio API-Dienst erforderlich.
 2. Rufen Sie das Zertifikat in der Liste der Zertifikate ab, die unter [GeoTrust-Stammzertifikate](http://www.geotrust.com/resources/root-certificates/) aufgeführt sind. Klicken Sie mit der rechten Maustaste auf den Link für das Zertifikat mit der Seriennummer "35:DE:F4:CF", und speichern Sie das Zertifikat im Ordner **jdk\\jre\\lib\\security**. In diesem Beispiel wurde das Zertifikat in einer Datei mit dem Namen **Equifax\_Secure\_Certificate\_Authority.cer** gespeichert.
 3. Importieren Sie das Zertifikat mithilfe des folgenden Befehls:
 
@@ -44,7 +44,7 @@ Weitere Informationen zu "keytool" finden Sie unter <http://docs.oracle.com/java
 
 ## Azure-Stammzertifikate
 
-Anwendungen, bei denen Azure-Dienste (z. B. Azure Service Bus) zum Einsatz kommen, müssen das Baltimore CyberTrust-Stammzertifikat als vertrauenswürdig einstufen. (Am 15. April 2013 begann Azure mit der Migration von "GTE CyberTrust Global Root" zu "Baltimore CyberTrust Root". Bis diese Migration letztendlich abgeschlossen war, vergingen mehrere Monate.)
+Anwendungen, bei denen Azure-Dienste (z. B. Azure Service Bus) zum Einsatz kommen, müssen das Baltimore CyberTrust-Stammzertifikat als vertrauenswürdig einstufen. (Am 15. April 2013 begann Azure mit der Migration von "GTE CyberTrust Global Root" zu "Baltimore CyberTrust Root". Bis diese Migration letztendlich abgeschlossen war, vergingen mehrere Monate.)
 
 Das Baltimore-Zertifikat ist ggf. im cacerts-Speicher vorhanden. Führen Sie also zunächst den Befehl **keytool -list** aus, um herauszufinden, ob dieses Zertifikat bereits installiert wurde.
 
@@ -56,4 +56,4 @@ Weitere Informationen zu den von Azure verwendeten Stammzertifikaten finden Sie 
 
 Weitere Informationen zu Java finden Sie im [Java Developer Center](/develop/java/).
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0817_2016-->

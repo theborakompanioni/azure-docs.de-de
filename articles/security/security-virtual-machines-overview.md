@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="08/09/2016"
+   ms.date="08/16/2016"
    ms.author="terrylan"/>
 
 # Virtuelle Azure-Computer – Sicherheitsübersicht
@@ -66,7 +66,7 @@ Wenn Sie Microsoft Antimalware bereitstellen und aktivieren, sind die folgenden 
 
 Weitere Informationen zu Antischadsoftware zum Schützen Ihrer virtuellen Computer finden Sie unter:
 
-- [Microsoft Antimalware für Azure Cloud Services und Virtual Machines](../azure-security-antimalware.md)
+- [Microsoft Antimalware für Azure Cloud Services und Virtual Machines](../security/azure-security-antimalware.md)
 - [Deploying Antimalware Solutions on Azure Virtual Machines (Bereitstellen von Antischadsoftware-Lösungen auf virtuellen Azure-Computern, in englischer Sprache)](https://azure.microsoft.com/blog/deploying-antimalware-solutions-on-azure-virtual-machines/)
 - [Installieren und Konfigurieren von Trend Micro Deep Security als Dienst auf einem virtuellen Windows-Computer](../virtual-machines/virtual-machines-windows-classic-install-trend.md)
 - [Installieren und Konfigurieren von Symantec Endpoint Protection auf einem virtuellen Windows-Computer](../virtual-machines/virtual-machines-windows-classic-install-symantec.md)
@@ -157,4 +157,4 @@ Weitere Informationen:
 - [Microsoft Trust Center – Compliance](https://www.microsoft.com/TrustCenter/Compliance/default.aspx)
 - [Die vertrauenswürdige Cloud: Sicherheit, Datenschutz und Compliance von Microsoft Azure](http://download.microsoft.com/download/1/6/0/160216AA-8445-480B-B60F-5C8EC8067FCA/WindowsAzure-SecurityPrivacyCompliance.pdf)
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0817_2016-->

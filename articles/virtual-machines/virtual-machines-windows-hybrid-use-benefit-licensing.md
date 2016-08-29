@@ -33,17 +33,17 @@ Unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-instal
 
 ### Hochladen einer Windows Server-VHD
 
-Für die Bereitstellung eines virtuellen Windows Server-Computers in Azure müssen Sie zunächst eine virtuelle Festplatte erstellen, die den Windows Server-Basisbuild enthält. Diese virtuelle Festplatte muss entsprechend über Sysprep vorbereitet werden, bevor Sie sie in Azure hochladen. [In diesem Artikel](./virtual-machines-windows-upload-image.md) finden Sie weitere Informationen zu den VHD-Anforderungen und dem Sysprep-Prozess. Nachdem Sie die virtuelle Festplatte vorbereitet haben, laden Sie sie mit dem `Add-AzureRmVhd`-Cmdlet wie folgt in Ihr Azure-Speicherkonto hoch:
+Für die Bereitstellung eines virtuellen Windows Server-Computers in Azure müssen Sie zunächst eine virtuelle Festplatte erstellen, die den Windows Server-Basisbuild enthält. Diese virtuelle Festplatte muss entsprechend über Sysprep vorbereitet werden, bevor Sie sie in Azure hochladen. Informieren Sie sich über die [VHD-Anforderungen und den Sysprep-Prozess](./virtual-machines-windows-upload-image.md). Weitere Informationen finden Sie auch unter [Sysprep Support for Server Roles](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles) (Sysprep-Unterstützung für Serverrollen). Nachdem Sie die virtuelle Festplatte vorbereitet haben, laden Sie sie mit dem `Add-AzureRmVhd`-Cmdlet wie folgt in Ihr Azure-Storage-Konto hoch:
 
 ```
 Add-AzureRmVhd -ResourceGroupName MyResourceGroup -Destination "https://mystorageaccount.blob.core.windows.net/vhds/myvhd.vhd" -LocalFilePath 'C:\Path\To\myvhd.vhd'
 ```
 
-> [AZURE.NOTE] Microsoft SQL Server, SharePoint Server und Dynamics können ebenfalls Ihre Software Assurance-Lizenzierung verwenden. Sie müssen weiterhin das Windows Server-Image vorbereiten, indem Sie die Anwendungskomponenten installieren, Lizenzschlüssel bereitstellen und anschließend das Datenträgerimage in Azure hochladen. Lesen Sie in der entsprechenden Dokumentation die Informationen zum Ausführen von Sysprep mit Ihrer Anwendung, etwa [Überlegungen zur Installation von SQL Server mit Sysprep](https://msdn.microsoft.com/library/ee210754.aspx) oder [Build a SharePoint Server 2016 Reference Image (Sysprep)](http://social.technet.microsoft.com/wiki/contents/articles/33789.build-a-sharepoint-server-2016-reference-image-sysprep.aspx) (Erstellen eines SharePoint Server 2016-Referenzimage (Sysprep)).
+> [AZURE.NOTE] Microsoft SQL Server, SharePoint Server und Dynamics können ebenfalls Ihre Software Assurance-Lizenzierung verwenden. Sie müssen weiterhin das Windows Server-Image vorbereiten, indem Sie die Anwendungskomponenten installieren, Lizenzschlüssel bereitstellen und anschließend das Datenträgerimage in Azure hochladen. Lesen Sie in der entsprechenden Dokumentation die Informationen zum Ausführen von Sysprep mit Ihrer Anwendung, etwa [Überlegungen zur Installation von SQL Server mit Sysprep](https://msdn.microsoft.com/library/ee210754.aspx) oder [Build a SharePoint Server 2016 Reference Image (Sysprep)](http://social.technet.microsoft.com/wiki/contents/articles/33789.build-a-sharepoint-server-2016-reference-image-sysprep.aspx) (Erstellen eines SharePoint Server 2016-Referenzimages [Sysprep]).
 
-[In diesem Artikel](./virtual-machines-windows-upload-image.md#upload-the-vm-image-to-your-storage-account) finden Sie weitere Informationen zum Hochladen der VHD in Azure.
+Informieren Sie sich auch über das [Hochladen der VHD in Azure](./virtual-machines-windows-upload-image.md#upload-the-vm-image-to-your-storage-account).
 
-> [AZURE.TIP] Der vorliegende Artikel konzentriert sich auf die Bereitstellung von virtuellen Windows Server-Computern, Sie können auf diese Weise jedoch auch virtuelle Windows-Clientcomputer bereitstellen. Ersetzen Sie dann in den folgenden Beispielen entsprechend `Server` durch `Client`.
+> [AZURE.TIP] Der vorliegende Artikel konzentriert sich auf die Bereitstellung von virtuellen Windows Server-Computern, Sie können auf diese Weise jedoch auch virtuelle Windows-Clientcomputer bereitstellen. Ersetzen Sie in den folgenden Beispielen entsprechend `Server` durch `Client`.
 
 ## Schnellstartanleitung für das Bereitstellen eines virtuellen Computers über PowerShell
 Beim Bereitstellen des virtuellen Windows Server-Computers über PowerShell ist ein zusätzlicher Parameter für `-LicenseType` vorhanden. Nachdem Sie die virtuelle Festplatte in Azure hochgeladen haben, erstellen Sie einen neuen virtuellen Computer mit `New-AzureRmVM` und geben den Lizenzierungstyp wie folgt an:
@@ -55,7 +55,7 @@ New-AzureRmVM -ResourceGroupName MyResourceGroup -Location "West US" -VM $vm -Li
 Eine [ausführliche Anleitung zum Bereitstellen eines virtuellen Computers in Azure mit PowerShell](./virtual-machines-windows-hybrid-use-benefit-licensing.md#deploy-windows-server-vm-via-powershell-detailed-walkthrough) finden Sie weiter unten. Alternativ können Sie eine ausführliche Anleitung zu den verschiedenen Schritten beim [Erstellen eines virtuellen Windows-Computers mit Resource Manager und PowerShell](./virtual-machines-windows-ps-create.md) lesen.
 
 ## Bereitstellen eines virtuellen Computers mit Resource Manager
-In den Resource Manager-Vorlagen kann ein zusätzlicher Parameter für `licenseType` angegeben werden. [In diesem Artikel](../resource-group-authoring-templates.md) finden Sie weitere Informationen zum Erstellen von Azure Resource Manager-Vorlagen. Nachdem Sie die virtuelle Festplatte in Azure hochgeladen haben, bearbeiten Sie die Resource Manager-Vorlage, um den Lizenztyp als Teil des Computeanbieters einzuschließen, und stellen die Vorlage als normale Vorlage bereit:
+In den Resource Manager-Vorlagen kann ein zusätzlicher Parameter für `licenseType` angegeben werden. Informieren Sie sich weiter über das [Erstellen von Azure Resource Manager-Vorlagen](../resource-group-authoring-templates.md). Nachdem Sie die virtuelle Festplatte in Azure hochgeladen haben, bearbeiten Sie die Resource Manager-Vorlage, um den Lizenztyp als Teil des Computeanbieters einzuschließen, und stellen die Vorlage als normale Vorlage bereit:
 
 ```
 "properties": {  
@@ -161,8 +161,8 @@ New-AzureRmVM -ResourceGroupName $resourceGroupName -Location $location -VM $vm 
 
 ## Nächste Schritte
 
-Weitere Informationen zur [Lizenzierung für den Azure-Vorteil bei Hybridnutzung](https://azure.microsoft.com/pricing/hybrid-use-benefit/)
+Erfahren Sie mehr zur [Lizenzierung für den Azure-Vorteil bei Hybridnutzung](https://azure.microsoft.com/pricing/hybrid-use-benefit/).
 
-Weitere Informationen zum [Verwenden von Resource Manager-Vorlagen](../resource-group-overview.md)
+Erfahren Sie mehr zum [Verwenden von Resource Manager-Vorlagen](../resource-group-overview.md).
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0817_2016-->

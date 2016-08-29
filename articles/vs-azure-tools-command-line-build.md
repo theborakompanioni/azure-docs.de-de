@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/08/2016"
+   ms.date="08/15/2016"
    ms.author="tarcher" />
 
 # Build per Befehlszeile für Azure
@@ -26,7 +26,7 @@ Sie können ein Paket für die Azure-Bereitstellung durch Ausführen von "MSBuil
 
 Mithilfe des Microsoft-Buildmoduls (MSBuild) können Sie Produkte in Testumgebungen für Builds erstellen, in denen Visual Studio nicht installiert ist. Von MSBuild wird ein XML-Format für Projektdateien verwendet, das erweiterbar ist und von Microsoft vollständig unterstützt wird. In diesem Dateiformat können Sie beschreiben, welche Elemente für eine oder mehrere Plattformen und Konfigurationen erstellt werden müssen.
 
-Sie können MSBuild auch an der Eingabeaufforderung ausführen, was in diesen Thema beschrieben wird. Durch Festlegen von Eigenschaften an der Eingabeaufforderung können Sie bestimmte Konfigurationen für ein Projekt erstellen. Entsprechend können Sie die Ziele definieren, die vom MSBuild-Befehl erstellt werden. Weitere Informationen über Befehlszeilenparameter und MSBuild finden Sie unter [MSBuild-Befehlszeilenreferenz](https://msdn.microsoft.com/library/ms164311.aspx).
+Sie können MSBuild auch an der Eingabeaufforderung ausführen. Diese Methode wird in diesem Thema beschrieben. Durch Festlegen von Eigenschaften an der Eingabeaufforderung können Sie bestimmte Konfigurationen für ein Projekt erstellen. Entsprechend können Sie die Ziele definieren, die vom MSBuild-Befehl erstellt werden. Weitere Informationen über Befehlszeilenparameter und MSBuild finden Sie unter [MSBuild-Befehlszeilenreferenz](https://msdn.microsoft.com/library/ms164311.aspx).
 
 ## Installation
 
@@ -62,4 +62,4 @@ Wenn Sie ein alternatives Verzeichnis zur Speicherung des Pakets und der Konfigu
 
 Nach dem Erstellen des Pakets können Sie es in Azure bereitstellen. Ein Tutorial, das diesen Prozess veranschaulicht, finden Sie auf der Azure-Website. Weitere Informationen zur Automatisierung dieses Prozesses finden Sie unter [Kontinuierliche Bereitstellung für Clouddienste in Azure](./cloud-services/cloud-services-dotnet-continuous-delivery.md).
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0817_2016-->

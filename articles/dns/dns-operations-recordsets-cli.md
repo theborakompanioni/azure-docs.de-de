@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="05/06/2016"
+   ms.date="08/16/2016"
    ms.author="cherylmc"/>
 
 # Verwalten von DNS-Ressourceneinträgen und DNS-Ressourceneintragssätzen über die Befehlszeilenschnittstelle
@@ -130,7 +130,7 @@ verwenden Sie `azure network dns record-set delete-record`.
 
 Einträge können mithilfe von `azure network dns record-set delete-record` aus einem Ressourceneintragssatz entfernt werden. Der entfernte Eintrag muss bei allen Parametern exakt mit einem vorhandenen Eintrag übereinstimmen.
 
-Durch Entfernen des letzten Eintrags aus einer Datensatzgruppe wird die Datensatzgruppe nicht gelöscht. Weitere Informationen finden Sie in diesem Artikel im Abschnitt [Löschen eines Ressourceneintragssatzes](#delete).
+Durch Entfernen des letzten Eintrags aus einem Ressourceneintragssatz wird der Ressourceneintragssatz nicht gelöscht. Weitere Informationen finden Sie in diesem Artikel im Abschnitt [Löschen eines Ressourceneintragssatzes](#delete).
 
 	azure network dns record-set delete-record myresourcegroup contoso.com www A -a 192.168.1.1
 
@@ -178,4 +178,4 @@ Weitere Informationen zu Azure DNS finden Sie unter [Azure DNS – Übersicht](d
 
 Wenn Sie mit Reverse-DNS-Einträgen arbeiten möchten, finden Sie weitere Informationen unter [Mit der Azure-Befehlszeilenschnittstelle Ihre Reverse-DNS-Einträge für Ihre Dienste verwalten](dns-reverse-dns-record-operations-cli.md).
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0817_2016-->

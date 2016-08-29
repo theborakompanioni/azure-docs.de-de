@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/06/2016" 
+	ms.date="08/15/2016" 
 	ms.author="awills"/>
 
 #  Application Insights für Microsoft Azure-Apps
@@ -39,10 +39,6 @@ Zusätzliche Telemetriedaten
 
 
 
-
-
-
-
  
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0817_2016-->

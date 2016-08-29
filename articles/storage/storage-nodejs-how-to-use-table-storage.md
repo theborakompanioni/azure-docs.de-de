@@ -13,14 +13,13 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="nodejs"
 	ms.topic="article"
-	ms.date="06/24/2016"
+	ms.date="08/11/2016"
 	ms.author="micurd"/>
 
 
 # Verwenden des Azure-Tabellenspeichers mit Node.js
 
-[AZURE.INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
-
+[AZURE.INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)] <br/> [AZURE.INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-tables.md)]
 
 ## Übersicht
 
@@ -59,7 +58,7 @@ Um Azure Storage verwenden zu können, müssen Sie das Azure Storage-SDK für No
 		+-- xml2js@0.2.7 (sax@0.5.2)
 		+-- request@2.57.0 (caseless@0.10.0, aws-sign2@0.5.0, forever-agent@0.6.1, stringstream@0.0.4, oauth-sign@0.8.0, tunnel-agent@0.4.1, isstream@0.1.2, json-stringify-safe@5.0.1, bl@0.9.4, combined-stream@1.0.5, qs@3.1.0, mime-types@2.0.14, form-data@0.2.0, http-signature@0.11.0, tough-cookie@2.0.0, hawk@2.3.1, har-validator@1.8.0)
 
-3.  Sie können den Befehl **ls** manuell ausführen, um zu überprüfen, ob der Ordner **node\_modules** erstellt wurde. In diesem Ordner finden Sie das Paket **azure-storage** mit den Bibliotheken, die Sie benötigen, um auf den Speicher zuzugreifen.
+3.  Sie können den Befehl **ls** manuell aufrufen, um sich davon zu überzeugen, dass der Ordner **node\_modules** erstellt wurde. In diesem Ordner finden Sie das Paket **azure-storage** mit den Bibliotheken, die Sie benötigen, um auf den Speicher zuzugreifen.
 
 ### Importieren des Pakets
 
@@ -71,7 +70,7 @@ Fügen Sie den folgenden Code am Anfang der Datei **server.js** in der Anwendung
 
 Das Azure-Modul entnimmt den Umgebungsvariablen AZURE\_STORAGE\_ACCOUNT und AZURE\_STORAGE\_ACCESS\_KEY oder AZURE\_STORAGE\_CONNECTION\_STRING die Informationen, die zum Herstellen einer Verbindung mit Ihrem Azure-Speicherkonto benötigt werden. Wenn diese Umgebungsvariablen nicht festgelegt wurden, müssen Sie die Kontoinformationen beim Aufruf von **TableService** angeben.
 
-Ein Beispiel zum Festlegen der Umgebungsvariablen für eine Azure-Website im [Azure-Portal](https://portal.azure.com) finden Sie unter [Node.js-Web-App mit Azure-Tabellendienst].
+Ein Beispiel zum Festlegen der Umgebungsvariablen für eine Azure-Website im [Azure-Portal](https://portal.azure.com) finden Sie unter [Node.js-Web-App mit Azure-Tabellenspeicherdienst].
 
 ## Erstellen einer Tabelle
 
@@ -159,7 +158,7 @@ Beispielantwort:
 
 Es sind mehrere Methoden zum Aktualisieren einer vorhandenen Entität vorhanden:
 
-* **replaceEntity** – aktualisiert eine vorhandene Entität, indem sie ersetzt wird
+* **replaceEntity**: aktualisiert eine vorhandene Entität, indem sie ersetzt wird.
 
 * **mergeEntity**: aktualisiert eine vorhandene Entität durch Zusammenführen neuer Eigenschaftswerte mit der vorhandenen Entität.
 
@@ -179,13 +178,13 @@ Das folgende Beispiel zeigt, wie eine Entität mit **replaceEntity** aktualisier
 >
 > 1. Rufen Sie das Etag des aktualisierten Objekts ab. Es wird im Rahmen der `response` für jeden entitätsbezogenen Vorgang zurückgegeben und kann durch `response['.metadata'].etag` abgerufen werden.
 >
-> 2. Wenn Sie einen Aktualisierungsvorgang für eine Entität ausführen, sollten Sie der neuen Entität die zuvor abgerufenen Etag-Informationen hinzufügen. Beispiel:
+> 2. Wenn Sie einen Aktualisierungsvorgang für eine Entität ausführen, sollten Sie der neuen Entität die zuvor abgerufenen ETag-Informationen hinzufügen. Beispiel:
 >
 >     `entity2['.metadata'].etag = currentEtag;`
 >
 > 3. Führen Sie den Aktualisierungsvorgang aus. Wurde die Entität seit dem Abruf des ETag-Werts beispielsweise durch eine andere Instanz Ihrer Anwendung geändert, wird ein `error` zurückgegeben, der besagt, dass die in der Anforderung angegebene Aktualisierungsbedingung nicht erfüllt ist.
 
-Mit **replaceEntity** und **mergeEntity** schlägt der Aktualisierungsvorgang fehl, wenn die zu aktualisierende Entität nicht vorhanden ist. Daher sollten Sie **insertOrReplaceEntity** oder **insertOrMergeEntity** verwenden, wenn Sie eine Entität unabhängig davon speichern möchten, ob sie bereits vorhanden ist.
+Bei **replaceEntity** und **mergeEntity** tritt beim Aktualisierungsvorgang ein Fehler auf, wenn die zu aktualisierende Entität nicht vorhanden ist. Daher sollten Sie **insertOrReplaceEntity** oder **insertOrMergeEntity** verwenden, wenn Sie eine Entität unabhängig davon speichern möchten, ob sie bereits vorhanden ist.
 
 Für erfolgreiche Aktualisierungsvorgänge enthält das `result` das **ETag** der aktualisierten Entität.
 
@@ -193,7 +192,7 @@ Für erfolgreiche Aktualisierungsvorgänge enthält das `result` das **ETag** de
 
 Gelegentlich ist es sinnvoll, mehrere Vorgänge zusammen in einem Batch zu senden, um die atomische Verarbeitung durch den Server sicherzustellen. Dazu erstellen Sie mit der **TableBatch**-Klasse einen Batch und führen dann mit der **executeBatch**-Methode von **TableService** die Batchvorgänge aus.
 
- Im folgenden Beispiel wird gezeigt, wie zwei Entitäten in einem Batch übermittelt werden:
+ Im folgenden Beispiel wird gezeigt, wie zwei Entitäten in einem Stapel übermittelt werden:
 
 	var task1 = {
 	  PartitionKey: {'_':'hometasks'},
@@ -439,7 +438,7 @@ Weitere Informationen finden Sie in den folgenden Ressourcen.
   [Azure Storage Team Blog]: http://blogs.msdn.com/b/windowsazurestorage/
   [Website with WebMatrix]: ../web-sites-nodejs-use-webmatrix.md
   [Node.js Cloud Service with Storage]: ../storage-nodejs-use-table-storage-cloud-service-app.md
-  [Node.js-Web-App mit Azure-Tabellendienst]: ../storage-nodejs-use-table-storage-web-site.md
+  [Node.js-Web-App mit Azure-Tabellenspeicherdienst]: ../storage-nodejs-use-table-storage-web-site.md
   [Create and deploy a Node.js application to an Azure website]: ../web-sites-nodejs-develop-deploy-mac.md
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0817_2016-->

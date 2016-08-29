@@ -12,18 +12,18 @@ ms.service="search"
 ms.devlang="rest-api"
 ms.workload="search" ms.topic="article"  
 ms.tgt_pltfrm="na"
-ms.date="05/28/2016"
+ms.date="08/16/2016"
 ms.author="eugenesh" />
 
 # Indizieren von Azure Table Storage mit Azure Search
 
 In diesem Artikel wird beschrieben, wie Sie Azure Search zum Indizieren von Daten verwenden, die in Azure Table Storage gespeichert sind. Mit dem neuen Azure Search-Indexer für Tabellen verläuft dieser Prozess schnell und reibungslos.
 
-> [AZURE.IMPORTANT] Diese Funktion befindet sich derzeit in der Vorschauphase. Sie ist nur im Rahmen der REST-API unter der Version **2015-02-28-Preview** verfügbar. Beachten Sie hierbei, dass Vorschau-APIs für Tests und Evaluierungen bestimmt sind und nicht in Produktionsumgebungen eingesetzt werden sollten.
+> [AZURE.IMPORTANT] Diese Funktion befindet sich derzeit in der Vorschauphase. Sie ist nur im Rahmen der REST-API unter der Version **2015-02-28-Preview** und in Version 2.0-Vorschau des .NET SDK verfügbar. Beachten Sie hierbei, dass Vorschau-APIs für Tests und Evaluierungen bestimmt sind und nicht in Produktionsumgebungen eingesetzt werden sollten.
 
 ## Einrichten der Azure-Tabellenindizierung
 
-Für die Einrichtung und Konfiguration eines Azure-Indexers für Tabellen können Sie die Azure Search-REST-API nutzen, um **Indexer** und **Datenquellen** wie unter [Indizierungsvorgänge](https://msdn.microsoft.com/library/azure/dn946891.aspx) beschrieben zu erstellen und zu verwalten. In Zukunft wird die Unterstützung für die Tabellenindizierung dem Azure Search-.NET-SDK und dem Azure-Portal hinzugefügt.
+Für die Einrichtung und Konfiguration eines Azure-Indexers für Tabellen können Sie die Azure Search-REST-API nutzen, um **Indexer** und **Datenquellen** wie unter [Indizierungsvorgänge](https://msdn.microsoft.com/library/azure/dn946891.aspx) beschrieben zu erstellen und zu verwalten. Sie können auch die [Version 2.0-Vorschau](https://msdn.microsoft.com/library/mt761536%28v=azure.103%29.aspx) des .NET SDK verwenden. In Zukunft wird die Tabellenindizierung vom Azure-Portal unterstützt.
 
 Eine Datenquelle gibt an, welche Daten indiziert werden müssen. Sie legt außerdem die Anmeldeinformationen für den Zugriff auf die Daten sowie die Richtlinien zur Aktivierung von Azure Search fest, um Änderungen an den Daten effizient identifizieren zu können (z. B. neue, geänderte oder gelöschte Zeilen).
 
@@ -32,11 +32,11 @@ Mit einem Indexer werden Daten aus einer Datenquelle gelesen und in einen Zielsu
 So richten Sie die Tabellenindizierung ein:
 
 1. Erstellen einer Datenquelle
-	- Legen Sie für den Parameter `type` `azuretable` fest.
+	- Legen Sie den `type`-Parameter auf `azuretable` fest.
 	- Übergeben Sie die Verbindungszeichenfolge des Speicherkontos als `credentials.connectionString`-Parameter.
 	- Geben Sie den Tabellennamen mit dem Parameter `container.name` an.
 	- Geben Sie optional eine Abfrage mit dem Parameter `container.query` an. Verwenden Sie nach Möglichkeit einen Filter für PartitionKey, um die beste Leistung zu erzielen. Alle anderen Abfragen führen zu einem vollständigen Tabellenscan, wodurch bei großen Tabellen die Leistung beeinträchtigt werden kann.
-2. Erstellen Sie einen Suchindex mit dem Schema, das den Spalten in der Tabelle entspricht, die Sie indizieren möchten. 
+2. Erstellen Sie einen Suchindex mit dem Schema, das den Spalten in der Tabelle entspricht, die Sie indizieren möchten.
 3. Erstellen Sie den Indexer, indem Sie die Datenquelle mit dem Suchindex verbinden.
 
 ### Erstellen der Datenquelle
@@ -68,11 +68,11 @@ Weitere Informationen über die API zum Erstellen einer Datenquelle finden Sie u
   		]
 	}
 
-Weitere Informationen über die API zum Erstellen eines Indexes finden Sie unter [Index erstellen](https://msdn.microsoft.com/library/dn798941.aspx).
+Weitere Informationen zur API zum Erstellen eines Index finden Sie unter [Create Index (Azure Search-Dienst REST-API)](https://msdn.microsoft.com/library/dn798941.aspx).
 
 ### Erstellen eines Indexers 
 
-Zuletzt erstellen Sie den Indexer, der auf die Datenquelle und den Zielindex verweist. Zum Beispiel:
+Zuletzt erstellen Sie den Indexer, der auf die Datenquelle und den Zielindex verweist. Beispiel:
 
 	POST https://[service name].search.windows.net/indexers?api-version=2015-02-28-Preview
 	Content-Type: application/json
@@ -97,7 +97,7 @@ Die Feldnamen in Ihrem vorhandenen Index unterscheiden sich häufig von den Eige
 
 In Azure Search wird ein Dokument mit dem Dokumentschlüssel eindeutig identifiziert. Jeder Suchindex muss über genau ein Schlüsselfeld vom Typ `Edm.String` verfügen. Das Schlüsselfeld ist für jedes Dokument erforderlich, das dem Index hinzugefügt wird (es ist gleichzeitig das einzige erforderliche Feld).
 
-Da Tabellenzeilen über einen Verbundschlüssel verfügen, generiert Azure Search ein gemeinsames Feld mit dem Namen `Key`, bei dem es sich um eine Verkettung von Partitionsschlüssel- und Zeilenschlüsselwerten handelt. Wenn der Partitionsschlüssel einer Zeile beispielsweise `PK1` lautet und der Zeilenschlüssel den Wert `RK1` hat, hat das Feld `Key` den Wert `PK1RK1`.
+Da Tabellenzeilen über einen Verbundschlüssel verfügen, generiert Azure Search ein synthetisches Feld mit dem Namen `Key`, bei dem es sich um eine Verkettung von Partitionsschlüssel- und Zeilenschlüsselwerten handelt. Wenn der Partitionsschlüssel einer Zeile beispielsweise `PK1` lautet, und der Zeilenschlüssel den Wert `RK1` hat, hat das Feld `Key` den Wert `PK1RK1`.
 
 > [AZURE.NOTE] Der Wert von `Key` kann unter Umständen Zeichen enthalten, die in Dokumentschlüsseln ungültig sind, z.B. Bindestriche. Ungültige Zeichen können Sie mit der [Feldzuordnungsfunktion](search-indexer-field-mappings.md#base64EncodeFunction) `base64Encode` behandeln. Verwenden Sie in diesem Fall auch die URL-sichere Base64-Codierung beim Übergeben von Dokumentschlüsseln in API-Aufrufen (z.B. Suche).
 
@@ -124,4 +124,4 @@ Um anzugeben, dass bestimmte Dokumente aus dem Index entfernt werden müssen, k�
 
 Teilen Sie uns auf unserer [UserVoice-Website](https://feedback.azure.com/forums/263029-azure-search/) mit, wenn Sie sich Features wünschen oder Verbesserungsvorschläge haben.
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0817_2016-->

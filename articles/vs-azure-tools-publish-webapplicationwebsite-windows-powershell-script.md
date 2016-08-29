@@ -1,6 +1,6 @@
 <properties
    pageTitle="Publish-WebApplicationWebSite (Windows PowerShell-Skript)) | Microsoft Azure"
-   description="Informationen zum Veröffentlichen eines Webprojekts auf einer Azure-Website. Dieses Skript erstellt die erforderlichen Ressourcen in Ihrem Azure-Abonnement, sofern noch nicht vorhanden."
+   description="Informationen zum Veröffentlichen eines Webprojekts auf einer Azure-Website. Dieses Skript erstellt die erforderlichen Ressourcen in Ihrem Azure-Abonnement, wenn sie noch nicht vorhanden sind."
    services="visual-studio-online"
    documentationCenter="na"
    authors="TomArcher"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
-   ms.date="04/18/2016"
+   ms.date="08/15/2016"
    ms.author="tarcher" />
 
 # Publish-WebApplicationWebSite (Windows PowerShell-Skript)
@@ -129,4 +129,4 @@ Sie können die JSON-Konfigurationsdatei bearbeiten, um den Umfang der Bereitste
 
 Weitere Informationen finden Sie unter [Publish-WebApplicationWebSite (Windows PowerShell-Skript)](vs-azure-tools-publish-webapplicationvm.md).
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0817_2016-->

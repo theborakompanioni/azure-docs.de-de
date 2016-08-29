@@ -5,7 +5,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="curtand"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/14/2016"
+	ms.date="08/10/2016"
 	ms.author="curtand"/>
 
 # Verwalten von Besitzern einer Gruppe
@@ -53,4 +53,4 @@ Diese Artikel enthalten zusätzliche Informationen zu Azure Active Directory.
 * [Was ist Azure Active Directory?](active-directory-whatis.md)
 * [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0817_2016-->
