@@ -47,6 +47,10 @@ Es gibt zwei Arten von DNS-Server:
 - Ein _autoritativer_ DNS-Server hostet DNS-Zonen. Er antwortet nur auf DNS-Abfragen nach Einträgen für diese Zonen.
 - Ein _rekursiver_ DNS-Server hostet keine DNS-Zonen. Er reagiert auf alle DNS-Abfragen durch Aufrufen der autoritativen DNS-Server, um die benötigten Daten zu erfassen.
 
+>[AZURE.NOTE] Azure DNS stellt einen autoritativen DNS-Dienst bereit. Ein rekursiver DNS-Dienst wird nicht bereitgestellt.
+
+> Cloud Services und virtuelle Computer in Azure werden automatisch für die Verwendung eines rekursiven DNS-Diensts konfiguriert, der separat als Teil der Infrastruktur von Azure bereitgestellt wird. Informationen zum Ändern dieser DNS-Einstellungen finden Sie unter [Namensauflösung mithilfe eines eigenen DNS-Servers](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-using-your-own-dns-server).
+
 DNS-Clients in PCs und mobilen Geräten rufen in der Regel einen rekursiven DNS-Server auf, um DNS-Abfragen auszuführen, die die Clientanwendungen benötigen.
 
 Wenn ein rekursiver DNS-Server eine Abfrage für einen DNS-Eintrag erhält, z. B. "www.contoso.com", muss er zuerst den Namenserver suchen, der die Zone für die Domäne "contoso.com" hostet. Zu diesem Zweck beginnt er mit den Stammnamenservern und sucht von dort aus die Namenserver, die die Zone "com" hosten. Anschließend fragt er die com-Namenserver ab, um den Namenserver zu suchen, der die Zone "contoso.com" hostet. Anschließend kann er diese Namenserver nach "www.contoso.com" abfragen.
@@ -61,7 +65,7 @@ Wie verweist eine übergeordnete Zone auf die Namenserver für eine untergeordne
 Jede Delegierung umfasst eigentlich zwei Kopien der NS-Einträge: eine in der übergeordneten Zone, die auf die untergeordnete Zone verweist, und eine in der untergeordneten Zone selbst. Die Zone "contoso.com" enthält die NS-Einträge für "contoso.com" (neben den NS-Einträgen in "com"). Diese werden als autoritative NS-Einträge bezeichnet und befinden sich an der Spitze der untergeordneten Zone.
 
 
-## Delegieren einer Domänen an Azure DNS
+## Delegieren einer Domäne an Azure DNS
 
 Nachdem Sie Ihre DNS-Zone in Azure DNS erstellt haben, müssen Sie NS-Einträge in der übergeordneten Zone einrichten, um Azure DNS zur autoritativen Quelle für die Namensauflösung der Zone zu machen. Für Domänen, die von einer Registrierungsstelle erworben wurden, bietet Ihnen die Registrierungsstelle die Möglichkeit, diese NS-Einträge einzurichten.
 
@@ -169,7 +173,7 @@ Dann rufen wir wie im folgenden Beispiel dargestellt die autoritativen NS-Datens
 
 	$child_ns_recordset = Get-AzureRmDnsRecordSet -Zone $child -Name "@" -RecordType NS
 
-#### Schritt 3. Delegieren der untergeordneten Zone
+#### Schritt 3: Delegieren der untergeordneten Zone
 
 Erstellen Sie in der übergeordneten Zone den entsprechenden NS-Eintragssatz, um die Delegierung abzuschließen. Beachten Sie, dass der Name des Datensatzes in der übergeordneten Zone mit dem Namen in der untergeordneten Zone (in diesem Fall „partners“) übereinstimmt.
 
@@ -201,4 +205,4 @@ Sie können überprüfen, ob alles ordnungsgemäß eingerichtet ist, indem Sie d
 
 [Verwalten von DNS-Einträgen](dns-operations-recordsets.md)
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0824_2016-->

@@ -67,53 +67,17 @@ Bevor Sie mit der Entwicklung von Azure-Anwendungen beginnen können, müssen Si
 
 Um mit der Verwendung von Service Bus-Features in Azure beginnen zu können, müssen Sie zuerst einen Dienstnamespace erstellen. Ein Namespace ist ein Bereichscontainer für die Adressierung von Service Bus-Ressourcen innerhalb Ihrer Anwendung.
 
-1.  Melden Sie sich beim [klassischen Azure-Portal][] an.
-
-2.  Klicken Sie im linken Navigationsbereich des Portals auf **Service Bus**.
-
-3.  Klicken Sie im unteren Bereich des Portals auf **Erstellen**.
-
-    ![][5]
-
-4.  Geben Sie im Dialogfeld **Neuen Namespace hinzufügen** einen Namen für den Namespace ein. Das System prüft sofort, ob dieser Name verfügbar ist.![][6]
-
-5.  Wählen Sie nach der Bestätigung, dass der Name für den Namespace verfügbar ist, das Land oder die Region, wo dieser Namespace gehostet werden soll. (Stellen Sie sicher, dass dies dasselbe Land/dieselbe Region ist, in dem/der sie Ihre Rechnerressourcen einsetzen.)
-
-    > [AZURE.IMPORTANT] Wählen Sie *dieselbe Region*, in der Sie auch Ihre Anwendung einsetzen möchten. Dies sorgt für die beste Leistung.
-
-6.	Lassen Sie in den anderen Feldern im Dialogfeld die Standardwerte unverändert, und klicken Sie dann auf das Häkchen („OK“). Ihr Dienstnamespace wird erstellt und aktiviert. Ggf. müssen Sie einige Minuten warten, bis die Ressourcen für Ihr Konto durch das System bereitgestellt werden.
-
-Der erstellte Namespace wird im Portal angezeigt. Es kann aber einen Moment dauern, bis er aktiviert wurde. Warten Sie, bis der Status **Aktiv** lautet, bevor Sie fortfahren.
-
-## Abrufen der Standard-Anmeldeinformationen für den Namespace
-
-Um Verwaltungsvorgänge für den neuen Namespace auszuführen, z. B. das Erstellen von Messaging-Entitäten, müssen Sie die Anmeldeinformationen für den Namespace abrufen.
-
-1.  Klicken Sie im Hauptfenster auf den Namespace, den Sie im vorherigen Schritt erstellt haben.
-
-2.  Klicken Sie unten auf der Seite auf **Verbindungsinformationen**.
-
-3.  Im Bereich **Zugriff auf die Verbindungsinformationen** finden Sie die Verbindungszeichenfolge, die den SAS-Schlüssel und den Schlüsselnamen enthält.
-
-	![][45]
-
-4.  Kopieren Sie die Verbindungszeichenfolge, und speichern Sie sie an einem Ort, auf den Sie während dieses Tutorials zugreifen können.
-
-5. Klicken Sie oben auf derselben Portalseite auf die Registerkarte **Konfigurieren**.
-
-6. Kopieren Sie den Primärschlüssel für die Richtlinie **RootManageSharedAccessKey** in die Zwischenablage, oder fügen Sie ihn in den Editor ein. Sie verwenden diesen Wert später im Tutorial.
-
-	![][46]
+[AZURE.INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
 ## Erstellen eines lokalen Servers
 
 Zunächst erstellen Sie ein (falsches) lokales Produktkatalogsystem. Dies ist relativ einfach; Sie können es sich als ein echtes lokales Produktkatalogsystem mit einer vollständigen Dienstoberfläche vorstellen, das integriert werden soll.
 
-Bei diesem Projekt handelt es sich um eine Visual Studio-Konsolenanwendung, und das [Azure Service Bus-NuGet-Paket](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) wird verwendet, um die Service Bus-Bibliotheken und -Konfigurationseinstellungen einzubinden.
+Bei diesem Projekt handelt es sich um eine Visual Studio-Konsolenanwendung, bei dem das [Azure Service Bus-NuGet-Paket](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) verwendet wird, um die Service Bus-Bibliotheken und -Konfigurationseinstellungen einzubinden.
 
 ### Erstellen des Projekts
 
-1.  Starten Sie Microsoft Visual Studio mit Administratorrechten. Um Visual Studio mit Administratorrechten zu starten, klicken Sie mit der rechten Maustaste auf das Programmsymbol von **Visual Studio** und klicken dann auf **Als Administrator ausführen**.
+1.  Starten Sie Microsoft Visual Studio mit Administratorrechten. Klicken Sie mit der rechten Maustaste auf das Programmsymbol von **Visual Studio**, und klicken Sie anschließend auf **Als Administrator ausführen**, um Visual Studio mit Administratorrechten zu starten.
 
 2.  Klicken Sie in Visual Studio im Menü **Datei** auf **Neu** und anschließend auf **Projekt**.
 
@@ -229,7 +193,7 @@ Bei diesem Projekt handelt es sich um eine Visual Studio-Konsolenanwendung, und 
 	}
 	```
 
-13. Doppelklicken Sie im Projektmappen-Explorer auf die Datei **App.config**, um sie im Visual Studio-Editor zu öffnen. Fügen Sie unten im **&lt;system.ServiceModel&gt;**-Element (aber noch innerhalb von &lt;system.ServiceModel&gt;) den folgenden XML-Code hinzu. Achten Sie darauf, *yourServiceNamespace* durch den Namen Ihres Namespace und *yourKey* durch den SAS-Schlüssel zu ersetzen, den Sie zuvor aus dem Portal abgerufen haben:
+13. Doppelklicken Sie im Projektmappen-Explorer auf die Datei **App.config**, um sie im Visual Studio-Editor zu öffnen. Fügen Sie am Ende des **&lt;system.ServiceModel&gt;**-Elements (aber noch innerhalb von &lt;system.ServiceModel&gt;) den folgenden XML-Code hinzu. Ersetzen Sie dabei *yourServiceNamespace* durch den Namen Ihres Namespace und *yourKey* durch den SAS-Schlüssel, den Sie zuvor aus dem Portal abgerufen haben:
 
     ```
     <system.serviceModel>
@@ -252,7 +216,7 @@ Bei diesem Projekt handelt es sich um eine Visual Studio-Konsolenanwendung, und 
       </behaviors>
     </system.serviceModel>
     ```
-14. Ersetzen Sie in „App.config“ im **&lt;appSettings&gt;**-Element den Wert der Verbindungszeichenfolge durch die Verbindungszeichenfolge, die Sie zuvor aus dem Portal abgerufen haben. 
+14. Ersetzen Sie in „App.config“ im **&lt;appSettings&gt;**-Element den Wert der Verbindungszeichenfolge durch die Verbindungszeichenfolge, die Sie zuvor aus dem Portal abgerufen haben.
 
 	```
 	<appSettings>
@@ -262,7 +226,7 @@ Bei diesem Projekt handelt es sich um eine Visual Studio-Konsolenanwendung, und 
 	</appSettings>
 	```
 
-14. Drücken Sie **STRG+UMSCHALT+B**, oder klicken Sie im Menü **Erstellen** auf **Projektmappe erstellen**, um die Anwendung zu erstellen und die Richtigkeit Ihrer bisherigen Arbeit zu prüfen.
+14. Drücken Sie STRG+UMSCHALT+B, oder klicken Sie im Menü **Build** auf **Projektmappe erstellen**, um die Anwendung zu erstellen und Ihre bisherige Arbeit zu überprüfen.
 
 ## Erstellen einer ASP.NET-Anwendung
 
@@ -280,7 +244,7 @@ In diesem Abschnitt erstellen Sie eine einfache ASP.NET-Anwendung, in der von Ih
 
 4.  Klicken Sie in der Liste **Vorlage auswählen** auf **MVC**.
 
-6.  Aktivieren Sie das Kontrollkästchen für **In der Cloud hosten**.
+6.  Aktivieren Sie das Kontrollkästchen **In der Cloud hosten**.
 
     ![][16]
 
@@ -288,7 +252,7 @@ In diesem Abschnitt erstellen Sie eine einfache ASP.NET-Anwendung, in der von Ih
 
 	![][18]
 
-6. 	Vergewissern Sie sich im Dialogfeld **Neues ASP.NET-Projekt** im Abschnitt **Microsoft Azure**, dass **In der Cloud hosten** und in der Dropdownliste die Option **App Service** ausgewählt ist.
+6. 	Vergewissern Sie sich im Dialogfeld **Neues ASP.NET-Projekt** im Abschnitt **Microsoft Azure**, dass **In der Cloud hosten** aktiviert und in der Dropdownliste die Option **App Service** ausgewählt ist.
 
 	![][19]
 
@@ -319,7 +283,7 @@ In diesem Abschnitt erstellen Sie eine einfache ASP.NET-Anwendung, in der von Ih
 
 2.  Erweitern Sie im Projektmappen-Explorer den Ordner **Controller**, und doppelklicken Sie auf die Datei **HomeController.cs**, um sie in Visual Studio zu öffnen.
 
-3. Ersetzen Sie in der Datei **HomeController.cs** die vorhandene Namespacedefinition durch den folgenden Code.
+3. Ersetzen Sie in der Datei **HomeController.cs** die vorhandene Namespacedefinition durch den folgenden Code:
 
 	```
 	namespace ProductsWeb.Controllers
@@ -385,7 +349,7 @@ In diesem Abschnitt erstellen Sie eine einfache ASP.NET-Anwendung, in der von Ih
 	</table>
 	```
 
-9.  Drücken Sie **STRG+UMSCHALT+B** zum Erstellen des Projekts, um die Richtigkeit Ihrer bisherigen Arbeit zu prüfen.
+9.  Drücken Sie STRG+UMSCHALT+B, um das Projekt zu erstellen und Ihre bisherige Arbeit zu überprüfen.
 
 
 ### Lokales Ausführen der App
@@ -406,7 +370,7 @@ Im nächsten Schritt wird der lokale Produktserver mit der ASP.NET-Webanwendung 
 
 2.  Fügen Sie das NuGet-Paket den Projektverweisen hinzu, wie im Schritt "Erstellen eines lokalen Servers" beschrieben. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt **ProductsPortal**, und klicken Sie anschließend auf **NuGet-Pakete verwalten**.
 
-3.  Suchen Sie nach "Service Bus", und wählen Sie das Element **Microsoft Azure Service Bus** aus. Schließen Sie die Installation ab, und schließen Sie das Dialogfeld.
+3.  Suchen Sie nach „Service Bus“, und wählen Sie das Element **Microsoft Azure Service Bus** aus. Schließen Sie die Installation ab, und schließen Sie das Dialogfeld.
 
 4.  Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt **ProductsPortal**. Klicken Sie auf **Hinzufügen** und dann auf **Vorhandenes Element**.
 
@@ -462,15 +426,15 @@ Im nächsten Schritt wird der lokale Produktserver mit der ASP.NET-Webanwendung 
 
 9.  **ProductsServer** muss ausgeführt werden, damit die Daten unter **ProductsPortal** angezeigt werden. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf die Projektmappe **ProductsPortal**, und klicken Sie dann auf **Eigenschaften**. Das Dialogfeld **Eigenschaftenseiten** wird angezeigt.
 
-10. Klicken Sie auf der linken Seite auf **Startprojekt**. Klicken Sie auf der rechten Seite auf **Mehrere Startprojekts**. Stellen Sie sicher, dass **ProductsServer** und **ProductsPortal** in dieser Reihenfolge angezeigt werden und jeweils **Start** als Aktion festgelegt ist.
+10. Klicken Sie auf der linken Seite auf **Startprojekt**. Klicken Sie auf der rechten Seite auf **Mehrere Startprojekts**. Vergewissern Sie sich, dass **ProductsServer** und **ProductsPortal** in dieser Reihenfolge angezeigt werden und jeweils **Start** als Aktion festgelegt ist.
 
       ![][25]
 
 11. Klicken Sie im Dialogfeld **Eigenschaften** auf der linken Seite auf **Projektabhängigkeiten**.
 
-12. Klicken Sie in der Liste **Projekte** auf **ProductsServer**. Stellen Sie sicher, dass **ProductsPortal** **nicht** ausgewählt ist.
+12. Klicken Sie in der Liste **Projekte** auf **ProductsServer**. Vergewissern Sie sich, dass **ProductsPortal** **nicht** ausgewählt ist.
 
-14. Klicken Sie in der Liste **Projekte** auf **ProductsPortal**. Stellen Sie sicher, dass **ProductsServer** ausgewählt ist.
+14. Klicken Sie in der Liste **Projekte** auf **ProductsPortal**. Vergewissern Sie sich, dass **ProductsServer** ausgewählt ist.
 
     ![][26]
 
@@ -478,11 +442,11 @@ Im nächsten Schritt wird der lokale Produktserver mit der ASP.NET-Webanwendung 
 
 ## Lokales Ausführen des Projekts
 
-Drücken Sie **F5**, um die Anwendung in Visual Studio lokal zu testen. Der lokale Server (**ProductsServer**) muss zuerst gestartet werden, und anschließend muss die Anwendung **ProductsPortal** in einem Browserfenster gestartet werden. Dieses Mal werden Sie feststellen, dass in der Produktbestandsliste Daten aus dem lokalen Produktdienstsystem aufgeführt werden.
+Drücken Sie F5, um die Anwendung in Visual Studio lokal zu testen. Zuerst muss der lokale Server (**ProductsServer**) gestartet werden, gefolgt von der Anwendung **ProductsPortal** in einem Browserfenster. Dieses Mal werden Sie feststellen, dass in der Produktbestandsliste Daten aus dem lokalen Produktdienstsystem aufgeführt werden.
 
 ![][10]
 
-Wählen Sie auf der Seite **ProductsPortal** die Option **Aktualisieren**. Bei jeder Aktualisierung der Seite wird von der Server-App eine Nachricht angezeigt, wenn `GetProducts()` von **ProductsServer** aufgerufen wird.
+Wählen Sie auf der Seite **ProductsPortal** die Option **Aktualisieren** aus. Bei jeder Aktualisierung der Seite wird von der Server-App eine Nachricht angezeigt, wenn `GetProducts()` von **ProductsServer** aufgerufen wird.
 
 ## Bereitstellen des Projekts ProductsPortal in einer Azure-Web-App
 
@@ -493,44 +457,44 @@ Kopieren Sie die URL der bereitgestellten Web-App, da Sie die URL im nächsten S
 ![][9]
    
 
-> [AZURE.NOTE] Im Browserfenster wird unter Umständen eine Fehlermeldung angezeigt, wenn das Webprojekt **ProductsPortal** nach der Bereitstellung automatisch gestartet wird. Dies ist zu erwarten und tritt auf, weil die Anwendung **ProductsServer** noch nicht ausgeführt wird.
+> [AZURE.NOTE] Im Browserfenster wird unter Umständen eine Fehlermeldung angezeigt, wenn das Webprojekt **ProductsPortal** nach der Bereitstellung automatisch gestartet wird. Dies ist zu erwarten und tritt auf, da die Anwendung **ProductsServer** noch nicht ausgeführt wird.
 
 ### Festlegen von ProductsPortal als Web-App
 
-Bevor Sie die Anwendung in der Cloud ausführen, müssen Sie sicherstellen, dass **ProductsPortal** aus Visual Studio als Web-App gestartet wird.
+Bevor Sie die Anwendung in der Cloud ausführen, müssen Sie dafür sorgen, dass **ProductsPortal** in Visual Studio als Web-App gestartet wird.
 
 1. Klicken Sie in Visual Studio mit der rechten Maustaste auf das Projekt **ProjectsPortal**, und klicken Sie dann auf **Eigenschaften**.
 
 3. Klicken Sie in der linken Spalte auf **Web**.
 
-5. Klicken Sie im Abschnitt **Aktion starten** auf die Schaltfläche **Start-URL**, und geben Sie im Textfeld die URL für die zuvor bereitgestellte Web-App ein, z.B. `http://productsportal1234567890.azurewebsites.net/`.
+5. Klicken Sie im Abschnitt **Aktion starten** auf die Schaltfläche **Start-URL**, und geben Sie im Textfeld die URL für die zuvor bereitgestellte Web-App ein (beispielsweise `http://productsportal1234567890.azurewebsites.net/`).
 
 	![][27]
 
 6. Klicken Sie im Menü **Datei** in Visual Studio auf **Save All**.
 
-7. Klicken Sie in Visual Studio im Menü „Erstellen“ auf **Projektmappe neu erstellen**.
+7. Klicken Sie in Visual Studio im Menü „Build“ auf **Projektmappe neu erstellen**.
 
 ## Ausführen der Anwendung
 
-2.  Drücken Sie F5, um die Anwendung zu erstellen und auszuführen. Der lokale Server (die Konsolenanwendung **ProductsServer**) sollte zuerst gestartet werden, und danach die Anwendung **ProductsPortal** in einem Browserfenster, wie im folgenden Screenshot dargestellt. Beachten Sie auch hier wieder, dass im Produktbestand die aus dem lokalen Produktdienstsystem abgerufenen Daten aufgelistet und in der Web-App angezeigt werden. Überprüfen Sie die URL, um sicherzustellen, dass **ProductsPortal** in der Cloud als Azure-Web-App ausgeführt wird. 
+2.  Drücken Sie F5, um die Anwendung zu erstellen und auszuführen. Zuerst muss der lokale Server (die Konsolenanwendung **ProductsServer**) gestartet werden, gefolgt von der Anwendung **ProductsPortal** in einem Browserfenster, wie im Screenshot weiter unten dargestellt. Beachten Sie auch hier wieder, dass im Produktbestand die aus dem lokalen Produktdienstsystem abgerufenen Daten aufgelistet und in der Web-App angezeigt werden. Vergewissern Sie sich anhand der URL, dass **ProductsPortal** in der Cloud als Azure-Web-App ausgeführt wird.
 
     ![][1]
 
-	> [AZURE.IMPORTANT] Die Konsolenanwendung **ProductsServer** muss ausgeführt werden, und sie muss die Daten für die Anwendung **ProductsPortal** bereitstellen können. Warten Sie beim Anzeigen eines Fehlers im Browser einige Sekunden, bis **ProductsServer** die folgende Nachricht geladen und angezeigt hat. Wählen Sie im Browser dann die Option **Aktualisieren**.
+	> [AZURE.IMPORTANT] Die Konsolenanwendung **ProductsServer** muss ausgeführt werden, und sie muss die Daten für die Anwendung **ProductsPortal** bereitstellen können. Sollte im Browser ein Fehler angezeigt werden, warten Sie noch einige Sekunden, bis **ProductsServer** geladen wurde und die folgende Nachricht angezeigt wird. Wählen Sie im Browser dann die Option **Aktualisieren** aus.
 
 	![][37]
 
-3. Wählen Sie im Browser auf der Seite **ProductsPortal** die Option **Aktualisieren**. Bei jeder Aktualisierung der Seite wird von der Server-App eine Nachricht angezeigt, wenn `GetProducts()` von **ProductsServer** aufgerufen wird.
+3. Wählen Sie im Browser auf der Seite **ProductsPortal** die Option **Aktualisieren** aus. Bei jeder Aktualisierung der Seite wird von der Server-App eine Nachricht angezeigt, wenn `GetProducts()` von **ProductsServer** aufgerufen wird.
 
 	![][38]
 
 ## Nächste Schritte  
 
-Weitere Informationen zum Service Bus finden Sie in den folgenden Ressourcen:
+Weitere Informationen zum Servicebus finden Sie in den folgenden Ressourcen:
 
-* [Azure Service Bus][sbwacom]  
-* [Verwenden von Servicebus-Warteschlangen][sbwacomqhowto]  
+* [Azure Service Bus][sbwacom]
+* [Verwenden von Servicebus-Warteschlangen][sbwacomqhowto]
 
 
   [0]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/hybrid.png
@@ -538,11 +502,6 @@ Weitere Informationen zum Service Bus finden Sie in den folgenden Ressourcen:
   [Tools und SDK herunterladen]: http://go.microsoft.com/fwlink/?LinkId=271920
   [NuGet]: http://nuget.org
   
-  [klassischen Azure-Portal]: http://manage.windowsazure.com
-  [5]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/sb-queues-03.png
-  [6]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/sb-queues-04.png
-
-
   [11]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/hy-con-1.png
   [13]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/getting-started-multi-tier-13.png
   [15]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/hy-web-2.png
@@ -564,10 +523,9 @@ Weitere Informationen zum Service Bus finden Sie in den folgenden Ressourcen:
   [38]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/hy-service2.png
   [41]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/getting-started-multi-tier-40.png
   [43]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/getting-started-hybrid-43.png
-  [45]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/hy-web-45.png
-  [46]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/service-bus-policies.png
+
 
   [sbwacom]: /documentation/services/service-bus/
   [sbwacomqhowto]: service-bus-dotnet-get-started-with-queues.md
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0824_2016-->

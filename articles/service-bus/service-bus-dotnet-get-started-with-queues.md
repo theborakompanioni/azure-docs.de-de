@@ -13,7 +13,7 @@
     ms.topic="get-started-article"
     ms.tgt_pltfrm="dotnet"
     ms.workload="na"
-    ms.date="06/07/2016"
+    ms.date="08/23/2016"
     ms.author="jotaub;sethm"/>
 
 # Erste Schritte mit Service Bus-Warteschlangen
@@ -111,13 +111,13 @@ Um Nachrichten an die Warteschlange senden zu können, erstellen wir mithilfe vo
     }
     ```
   
-3. Führen Sie das Programm aus, und überprüfen Sie das klassische Azure-Portal. **Warteschlangenlänge** müsste nun den Wert „1“ haben.
+3. Führen Sie das Programm aus, und überprüfen Sie das Azure-Portal. Klicken Sie auf dem Übersichtsblatt des Namespaces auf den Namen Ihrer Warteschlange. Unter **Anzahl aktiver Nachrichten** sollte nun der Wert „1“ angezeigt werden.
     
-      ![Warteschlangenlänge][queue-length-send]
+      ![Nachrichtenanzahl][queue-message]
     
 ## 4\. Empfangen von Nachrichten aus der Warteschlange
 
-1. Erstellen Sie eine neue Konsolenanwendung, und fügen Sie ähnlich wie bei der obigen Sendeanwendung einen Verweis auf das NuGet-Paket „Service Bus“ hinzu.
+1. Erstellen Sie eine neue Konsolenanwendung, und fügen Sie ähnlich wie bei der vorherigen Sendeanwendung einen Verweis auf das NuGet-Paket „Service Bus“ hinzu.
 
 2. Fügen Sie am Anfang der Datei „Program.cs“ die folgende `using`-Anweisung hinzu:
   
@@ -171,25 +171,25 @@ Um Nachrichten an die Warteschlange senden zu können, erstellen wir mithilfe vo
     }
     ```
   
-4. Führen Sie das Programm aus, und überprüfen Sie das Portal. **Warteschlangenlänge** müsste nun den Wert „0“ haben.
+4. Führen Sie das Programm aus, und überprüfen Sie das Portal. **Warteschlangenlänge** sollte nun den Wert „0“ haben.
 
-    ![Warteschlangenlänge][queue-length-receive]
+    ![Warteschlangenlänge][queue-message-receive]
   
 Glückwunsch! Sie haben eine Warteschlange erstellt, eine Nachricht gesendet und eine Nachricht empfangen.
 
 ## Nächste Schritte
 
-Sehen Sie sich das [GitHub-Repository mit Beispielen](https://github.com/Azure-Samples/azure-servicebus-messaging-samples) an, mit denen einige erweiterte Features von Azure Service Bus Messaging veranschaulicht werden.
+Sehen Sie sich das [GitHub-Repository mit Beispielen](https://github.com/Azure-Samples/azure-servicebus-messaging-samples) an, die einige erweiterte Features von Azure Service Bus Messaging veranschaulichen.
 
 <!--Image references-->
 
 [nuget-pkg]: ./media/service-bus-dotnet-get-started-with-queues/nuget-package.png
-[queue-length-send]: ./media/service-bus-dotnet-get-started-with-queues/queue-length-send.png
-[queue-length-receive]: ./media/service-bus-dotnet-get-started-with-queues/queue-length-receive.png
+[queue-message]: ./media/service-bus-dotnet-get-started-with-queues/queue-message.png
+[queue-message-receive]: ./media/service-bus-dotnet-get-started-with-queues/queue-message-receive.png
 
 
 <!--Reference style links - using these makes the source content way more readable than using inline links-->
 
 [github-samples]: https://github.com/Azure-Samples/azure-servicebus-messaging-samples
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0824_2016-->

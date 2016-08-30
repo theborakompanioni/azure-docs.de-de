@@ -1,33 +1,28 @@
 Vergewissern Sie sich, dass Sie bereits wie [hier][namespace-how-to] gezeigt einen Service Bus-Namespace erstellt haben.
 
-1. Melden Sie sich beim [klassischen Azure-Portal][classic-portal] an.
+1. Melden Sie sich beim [Azure-Portal][azure-portal] an.
 
 2. Klicken Sie im linken Navigationsbereich des Portals auf **Service Bus**.
 
-3. Wählen Sie den Namespace, in dem die Warteschlange erstellt werden soll. In diesem Fall ist dies „mytestns1“.
+3. Wählen Sie den Namespace, in dem die Warteschlange erstellt werden soll. In diesem Fall: **nstest1**.
 
-    ![Auswählen eines Namespace][select-namespace]
+    ![Erstellen einer Warteschlange][createqueue1]
 
-4. Wählen Sie **Warteschlangen**.
+4. Wählen Sie auf dem Blatt **Service Bus-Namespace** die Option **Warteschlangen** aus, und klicken Sie anschließend auf **Warteschlange hinzufügen**.
 
-    ![„Warteschlangen“ wählen][select-queue]
+    ![„Warteschlangen“ wählen][createqueue2]
 
-5. Wählen Sie unten links **Neu** und anschließend **Schnellerfassung**.
+5. Geben Sie den Warteschlangennamen ein, und lassen Sie die anderen Werte unverändert.
 
-    ![„Neu“ wählen][select-new]
+    ![„Neu“ wählen][createqueue3]
 
-6. Geben Sie den **Warteschlangennamen** ein, und stellen Sie sicher, dass der richtige Namespace ausgewählt ist.
+7. Klicken Sie im unteren Bereich des Blatts auf **Erstellen**.
 
-7. Wählen Sie **Neue Warteschlange erstellen**.
-
-    ![Erstellen einer Warteschlange][create-queue]
-
-[select-namespace]: ./media/service-bus-create-queue-portal/select-namespace.png
-[select-queue]: ./media/service-bus-create-queue-portal/select-queue.png
-[select-new]: ./media/service-bus-create-queue-portal/select-new.png
-[create-queue]: ./media/service-bus-create-queue-portal/create-queue.png
+[createqueue1]: ./media/service-bus-create-queue-portal/create-queue1.png
+[createqueue2]: ./media/service-bus-create-queue-portal/create-queue2.png
+[createqueue3]: ./media/service-bus-create-queue-portal/create-queue3.png
 
 [namespace-how-to]: ../articles/service-bus/service-bus-create-namespace-portal.md
-[classic-portal]: https://manage.windowsazure.com
+[azure-portal]: https://portal.azure.com
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0824_2016-->

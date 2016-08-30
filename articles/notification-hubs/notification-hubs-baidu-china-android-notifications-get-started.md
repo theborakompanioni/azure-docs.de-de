@@ -13,7 +13,7 @@
 	ms.topic="hero-article"
 	ms.tgt_pltfrm="mobile-baidu"
 	ms.workload="mobile"
-	ms.date="05/05/2016"
+	ms.date="08/19/2016"
 	ms.author="wesmc"/>
 
 # Erste Schritte mit Notification Hubs mit Baidu
@@ -79,7 +79,7 @@ Nachdem Sie Ihr Baidu-Konto aktiviert haben, melden Sie sich beim [Baidu-Portal]
 
   	![][9]
 
-6. Sie sollten dann eine Textnachricht mit einer Überprüfungsnummer erhalten, wie im folgenden Beispiel gezeigt:
+6. Sie sollten dann eine Textnachricht mit einer Verifizierungsnummer wie im folgenden Beispiel erhalten:
 
   	![][10]
 
@@ -91,7 +91,7 @@ Nachdem Sie Ihr Baidu-Konto aktiviert haben, melden Sie sich beim [Baidu-Portal]
 
 ##Erstellen eines Baidu-Cloud-Push-Projekts
 
-Wenn Sie ein Baidu-Cloud-Push-Projekt erstellen, erhalten Sie Ihre App-ID, einen API-Schlüssel und einen geheimen Schlüssel.
+Wenn Sie ein Baidu-Cloud-Pushprojekt erstellen, erhalten Sie App-ID, API-Schlüssel und geheimen Schlüssel.
 
 1. Nachdem Sie sich beim [Baidu-Portal] angemeldet haben, klicken Sie auf **更多>>** (**Mehr**).
 
@@ -503,4 +503,4 @@ Zum Senden einer Testbenachrichtigung können Sie die Registerkarte „Debuggen�
 [klassischen Azure-Portal]: https://manage.windowsazure.com/
 [Baidu-Portal]: http://www.baidu.com/
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0824_2016-->

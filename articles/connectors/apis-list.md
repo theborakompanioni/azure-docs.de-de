@@ -14,12 +14,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="07/15/2016"
+	ms.date="08/23/2016"
 	ms.author="deonhe"/>
 
 # Liste der Connectors
 
-Wählen Sie ein Symbol aus, um zu erfahren, wie Sie über diese Connectors schnell Workflows zum Aufrufen der Dienste erstellen können.
+Wählen Sie einen Connector aus, um zu erfahren, wie Sie Workflows schnell erstellen können.
 
 ## Standardconnectors
 
@@ -46,8 +46,9 @@ Verwenden Sie die EIP-Connectors zum Erstellen von Logik-Apps für B2B-Szenarien
  
 |EIP-Connectors ||||
 |-----------|-----------|-----------|-----------|
-|[![API-Symbol][as2icon]<br/>**AS2-</br>Codierung/Decodierung**][as2doc]|[![API-Symbol][x12icon]<br/>**X12-</br>Codierung/Decodierung**][x12Doc]|[![API-Symbol][xmlvalidateicon]<br/>**XML-<br/>Überprüfung**][xmlvalidatedoc]|[![API-Symbol][xmltransformicon]<br/>**XML-<br/>Transformation**][xmltransformdoc]|
-|[![API-Symbol][flatfileicon]<br/>**Flatfile-</br>Codierung**][flatfiledoc]|[![API-Symbol][flatfiledecodeicon]<br/>**Flatfile-</br>Decodierung**][flatfiledecodedoc]|||
+|[![API-Symbol][xmlvalidateicon]<br/>**XML-<br/>Überprüfung**][xmlvalidatedoc]|[![API-Symbol][xmltransformicon]<br/>**XML-<br/>Transformation**][xmltransformdoc]|[![API-Symbol][flatfileicon]<br/>**Flatfile-</br>Codierung**][flatfiledoc]|[![API-Symbol][flatfiledecodeicon]<br/>**Flatfile-</br>Decodierung**][flatfiledecodedoc]|
+|[![API-Symbol][as2icon]<br/>**AS2-</br>Decodierung**][as2decode]|[![API-Symbol][as2icon]<br/>**AS2-</br>Codierung**][as2encode]|[![API-Symbol][x12icon]<br/>**X12-</br>Decodierung**][x12decode]|[![API-Symbol][x12icon]<br/>**X12-</br>Codierung**][x12encode]|
+|[![API-Symbol][x12icon]<br/>**EDIFACT-</br>Decodierung**][EDIFACTdecode]|[![API-Symbol][x12icon]<br/>**EDIFACT-</br>Codierung**][EDIFACTencode]||||
 
 <!-- TODO: Add Functions, App Service, and Nested Workflow Icons -->
 ### Connectors können Trigger sein.
@@ -56,7 +57,7 @@ Mehrere Connectors umfassen Trigger, die Ihre App benachrichtigen können, wenn 
 Es gibt zwei Arten von Triggern:
 
 * Abfragetrigger: Diese Trigger fragen den Dienst in angegebenen Abständen auf neue Daten ab. Wenn neue Daten verfügbar sind, wird eine neue Instanz der App mit den Daten als Eingabe ausgeführt. Damit die gleichen Daten nicht mehrere Male verarbeitet werden, kann der Trigger Daten bereinigen, die gelesen und an die App übergeben wurden.
-* Push-Trigger: Diese Trigger lauschen auf den Eingang von Daten an einem Endpunkt oder das Eintreten eines Ereignisses. Dann lösen sie eine neue Instanz der App aus. Ein Beispiel hierfür ist der Twitter-Connector.
+* Push-Trigger: Diese Trigger lauschen auf den Eingang von Daten an einem Endpunkt oder das Eintreten eines Ereignisses und lösen eine neue Instanz Ihrer App aus. Ein Beispiel hierfür ist der Twitter-Connector.
 
 ### Connectors können Aktionen sein.
 Connectors können innerhalb Ihrer Apps auch als Aktionen verwendet werden. Aktionen sind hilfreich für die Suche nach Daten, die dann bei der Ausführung der App verwendet werden können. Beispielsweise kann es sein, dass Sie bei der Verarbeitung einer Bestellung Daten in einer SQL-Datenbank suchen müssen. Oder Sie müssen möglicherweise Daten in eine Zieltabelle schreiben oder in dieser aktualisieren oder löschen. Sie können dazu die Aktionen verwenden, die von den Connectors bereitgestellt werden. Aktionen sind den in den Swagger-Metadaten definierten Vorgängen zugeordnet.
@@ -105,6 +106,12 @@ Connectors können innerhalb Ihrer Apps auch als Aktionen verwendet werden. Akti
 [flatfiledecodedoc]: ../app-service-logic/app-service-logic-enterprise-integration-flatfile.md "Informationen zu Enterprise Integration – Flatfile"
 [xmlvalidatedoc]: ../app-service-logic/app-service-logic-enterprise-integration-xml-validation.md "Informationen zu Enterprise Integration – XML-Überprüfung"
 [xmltransformdoc]: ../app-service-logic/app-service-logic-enterprise-integration-transform.md "Informationen zu Enterprise Integration – Transformationen"
+[as2decode]: ..//app-service-logic/app-service-logic-enterprise-integration-as2-decode.md "Informationen zu Enterprise Integration – AS2-Decodierung"
+[as2encode]: ..//app-service-logic/app-service-logic-enterprise-integration-as2-encode.md "Informationen zu Enterprise Integration – AS2-Codierung"
+[X12decode]: ..//app-service-logic/app-service-logic-enterprise-integration-X12-decode.md "Informationen zu Enterprise Integration – X12-Decodierung"
+[X12encode]: ..//app-service-logic/app-service-logic-enterprise-integration-X12-encode.md "Informationen zu Enterprise Integration – X12-Codierung"
+[EDIFACTdecode]: ..//app-service-logic/app-service-logic-enterprise-integration-EDIFACT-decode.md "Informationen zu Enterprise Integration – EDIFACT-Decodierung"
+[EDIFACTencode]: ..//app-service-logic/app-service-logic-enterprise-integration-EDIFACT-encode.md "Informationen zu Enterprise Integration – EDIFACT-Codierung"
 [httpdoc]: ./connectors-native-http.md "HTTP-Connector zum Durchführen von HTTP-Aufrufen"
 [http~requestdoc]: ./connectors-native-reqres.md "Anforderung/Antwort-Aktionen"
 [http~responsedoc]: ./connectors-native-reqres.md "Anforderung/Antwort-Aktionen"
@@ -183,4 +190,4 @@ Connectors können innerhalb Ihrer Apps auch als Aktionen verwendet werden. Akti
 [xmlvalidateicon]: ./media/apis-list/xmlvalidation.png
 [xmltransformicon]: ./media/apis-list/xsltransform.png
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0824_2016-->

@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="mobile-unity-ios"
 	ms.devlang="dotnet"
 	ms.topic="hero-article"
-	ms.date="03/25/2016"
+	ms.date="08/19/2016"
 	ms.author="piyushjo" />
 
 # Erste Schritte mit Azure Mobile Engagement für die Unity iOS-Bereitstellung
 
 [AZURE.INCLUDE [Umschalter für das Hero-Tutorial](../../includes/mobile-engagement-hero-tutorial-switcher.md)]
 
-In diesem Thema erfahren Sie, wie Sie mithilfe von Azure Mobile Engagement die Nutzung Ihrer App verstehen können und wie Sie bei der Bereitstellung auf einem iOS-Gerät Pushbenachrichtigungen an segmentierte Benutzer einer Unity-Anwendung senden. In diesem Tutorial wird das klassische Roll-A-Ball-Tutorial von Unity als Ausgangspunkt verwendet. Es wird empfohlen, die Schritte in diesem [Tutorial](mobile-engagement-unity-roll-a-ball.md) auszuführen, bevor Sie mit der Mobile Engagement-Integration fortfahren, die im Tutorial weiter unten erläutert wird.
+In diesem Thema erfahren Sie, wie Sie mithilfe von Azure Mobile Engagement die Nutzung Ihrer App nachvollziehen und bei der Bereitstellung auf einem iOS-Gerät Pushbenachrichtigungen an segmentierte Benutzer einer Unity-Anwendung senden. In diesem Tutorial wird das klassische Roll-A-Ball-Tutorial von Unity als Ausgangspunkt verwendet. Sie sollten die Schritte in diesem [Tutorial](mobile-engagement-unity-roll-a-ball.md) ausführen, bevor Sie mit der Mobile Engagement-Integration beginnen, die in diesem Tutorial beschrieben wird.
 
 Für dieses Lernprogramm ist Folgendes erforderlich:
 
@@ -38,7 +38,7 @@ Für dieses Lernprogramm ist Folgendes erforderlich:
 
 ###Importieren des Unity-Pakets
 
-1. Laden Sie das [Mobile Engagement Unity-Paket](https://aka.ms/azmeunitysdk) herunter, und speichern Sie es auf Ihrem lokalen Computer. 
+1. Laden Sie das [Mobile Engagement Unity-Paket](https://aka.ms/azmeunitysdk) herunter, und speichern Sie es auf Ihrem lokalen Computer.
 
 2. Wechseln Sie zu **Assets -> Paket importieren -> Benutzerdefiniertes Paket**, und wählen Sie das im vorherigen Schritt heruntergeladene Paket aus.
 
@@ -54,7 +54,7 @@ Für dieses Lernprogramm ist Folgendes erforderlich:
 
 ###Aktualisieren von „EngagementConfiguration“
 
-1. Öffnen Sie die **EngagementConfiguration**-Skriptdatei im SDK-Ordner, und aktualisieren **IOS\_CONNECTION\_STRING** gemäß der Verbindungszeichenfolge, die Sie zuvor im Azure-Portal abgerufen haben.  
+1. Öffnen Sie die **EngagementConfiguration**-Skriptdatei im SDK-Ordner, und aktualisieren **IOS\_CONNECTION\_STRING** gemäß der Verbindungszeichenfolge, die Sie zuvor im Azure-Portal abgerufen haben.
 
 	![][73]
 
@@ -62,7 +62,7 @@ Für dieses Lernprogramm ist Folgendes erforderlich:
 
 ###Konfigurieren der App für die einfache Nachverfolgung
 
-1. Öffnen Sie das an das Player-Objekt angefügte **PlayerController**-Skript für die Bearbeitung. 
+1. Öffnen Sie das an das Player-Objekt angefügte **PlayerController**-Skript für die Bearbeitung.
 
 2. Fügen Sie die folgende using-Anweisung hinzu:
 
@@ -75,7 +75,7 @@ Für dieses Lernprogramm ist Folgendes erforderlich:
 
 ###Bereitstellen und Ausführen der App
 
-1. Verbinden Sie ein iOS-Gerät mit dem Computer. 
+1. Verbinden Sie ein iOS-Gerät mit dem Computer.
 
 2. Öffnen Sie **Datei -> Buildeinstellungen**.
 
@@ -131,4 +131,4 @@ Mit Mobile Engagement können Sie mit Ihren Benutzern und mit REACH mit Push-Ben
 [74]: ./media/mobile-engagement-unity-ios-get-started/74.png
 [75]: ./media/mobile-engagement-unity-ios-get-started/75.png
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0824_2016-->
