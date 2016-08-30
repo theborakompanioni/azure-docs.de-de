@@ -57,7 +57,7 @@ Rufen Sie im Schnellstart das Skript für Webseiten ab:
 
 ![Wählen Sie in Ihrer App auf dem Blatt "Übersicht" im Schnellstart die Option "Code abrufen", um Ihre Webseiten zu überwachen. Kopieren Sie das Skript.](./media/app-insights-javascript/02-monitor-web-page.png)
 
-Fügen Sie das Skript direkt vor dem `<head>`-Tag jeder Seite ein, die Sie nachverfolgen möchten. Wenn Ihre Website über eine Masterseite verfügt, können Sie das Skript dort ablegen. Beispiel:
+Fügen Sie das Skript direkt vor dem `</head>`-Tag jeder Seite ein, die Sie nachverfolgen möchten. Wenn Ihre Website über eine Masterseite verfügt, können Sie das Skript dort ablegen. Beispiel:
 
 * Bei einem ASP.NET MVC-Projekt fügen Sie es in `View\Shared\_Layout.cshtml` ein.
 * Öffnen Sie in einer SharePoint-Website in der Systemsteuerung [Websiteeinstellungen / Masterseite](app-insights-sharepoint.md).
@@ -249,4 +249,4 @@ Möchten Sie herausfinden, wofür die Benutzer Ihre App verwenden?
 * [Benutzerdefinierte Ereignisse und Metriken](app-insights-api-custom-events-metrics.md)
 * [Erstellen-Messen-Lernen](app-insights-overview-usage.md)
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0824_2016-->

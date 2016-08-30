@@ -4,8 +4,8 @@
 	description="Mit der bedingten Zugriffssteuerung überprüft Azure Active Directory die besonderen Bedingungen, die Sie beim Authentifizieren des Benutzers und vor dem Gewähren des Zugriffs auf die Anwendung auswählen. Nachdem diese Bedingungen erfüllt sind, wird der Benutzer authentifiziert und erhält Zugriff auf die Anwendung."
     services="active-directory"
 	documentationCenter=""
-	authors="femila"
-	manager="swadhwa"
+	authors="markusvi"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -14,15 +14,15 @@
 	ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="identity" 
-	ms.date="07/14/2016"
-	ms.author="femila"/>
+	ms.date="08/12/2016"
+	ms.author="markvi"/>
 
 
 # Unterstützung des bedingten Zugriffs für Anwendungen
 
-Regeln für bedingten Zugriff werden übergreifend für verbundene Azure AD-Anwendungen, für vorab integrierte SaaS-Verbundanwendungen, für Anwendungen, die einmaliges Anmelden mit Kennwort verwenden, sowie für Branchenanwendungen und für den Azure AD-Anwendungsproxy unterstützt. Eine detaillierte Liste mit Anwendungen, für die der bedingte Zugriff aktiviert werden kann, finden Sie unter [Dienste mit aktiviertem bedingtem Zugriff](active-directory-conditional-access-technical-reference.md#Services-enabled-with-conditional-access). Der bedingte Zugriff kann sowohl für mobile Anwendungen als auch für Desktopanwendungen mit modernen Authentifizierungsverfahren verwendet werden. In diesem Thema erfahren Sie, was hinsichtlich der mobilen und desktopbasierten Version dieser Apps unterstützt wird.
+Regeln für bedingten Zugriff werden übergreifend für verbundene Azure Active Directory-Anwendungen, für vorab integrierte SaaS-Verbundanwendungen, für Anwendungen, die einmaliges Anmelden mit Kennwort verwenden, sowie für Branchenanwendungen und für den Azure AD-Anwendungsproxy unterstützt. Eine detaillierte Liste mit Anwendungen, für die der bedingte Zugriff aktiviert werden kann, finden Sie unter [Dienste mit aktiviertem bedingtem Zugriff](active-directory-conditional-access-technical-reference.md#Services-enabled-with-conditional-access). Der bedingte Zugriff kann sowohl für mobile Anwendungen als auch für Desktopanwendungen mit modernen Authentifizierungsverfahren verwendet werden. In diesem Thema erfahren Sie, was hinsichtlich der mobilen und der desktopbasierten Version dieser Apps unterstützt wird.
 
- Anwendungen mit moderner Authentifizierung können Azure AD-Anmeldeseiten anzeigen. Dadurch können Benutzer inline aufgefordert werden, sich per MFA (Multi-Factor Authentication, mehrstufige Authentifizierung) zu authentifizieren, oder Endbenutzern können Meldungen angezeigt werden, wenn der Zugriff blockiert wird. Es ist wichtig zu wissen, welche Anwendungen unterstützt werden, und die Schritte zu kennen, die möglicherweise zum Sichern weiterer Zugangspunkte erforderlich sind.
+Anwendungen mit moderner Authentifizierung können Azure AD-Anmeldeseiten anzeigen. Dadurch können Benutzer inline aufgefordert werden, sich per MFA (Multi-Factor Authentication, mehrstufige Authentifizierung) zu authentifizieren, oder Endbenutzern können Meldungen angezeigt werden, wenn der Zugriff blockiert wird. Es ist wichtig zu wissen, welche Anwendungen unterstützt werden, und die Schritte zu kennen, die möglicherweise zum Sichern weiterer Zugangspunkte erforderlich sind.
 
 ## Anwendung mit moderner Authentifizierung
 Die folgenden Anwendungen wurden mit MFA und einer auf den Zieldienst festgelegten Standortrichtlinie getestet.
@@ -39,11 +39,34 @@ Die folgenden Anwendungen wurden mit MFA und einer auf den Zieldienst festgelegt
 | Yammer-App|Yammer| Windows Mobile 10, iOS, Android|
 |Azure RemoteApp|Azure Remote-App-Dienst|Windows 10, Windows 8.1, Windows 7, Mac, iOS, Android|
 
+
+
+
+
+Die folgenden Anwendungen unterstützen den gerätebasierten Richtliniensatz für den Zieldienst:
+
+| Anwendung | Zieldienst | Plattform |
+| :--                                     | :--            | :--      |
+| Mail/Kalender/Kontakte | Exchange | Windows 10, Windows Mobile 10 |
+| Office Universal: Word/Excel/PowerPoint | SharePoint | Windows 10, Windows Mobile 10 |
+| Outlook 2016 | Exchange | Windows 10, Windows Mobile 10, Windows 8.1, Windows 7 |
+|Outlook 2013 (erfordert die Aktivierung der modernen Authentifizierung) | Exchange | Windows 8.1, Windows 7 |
+
+
+Die folgenden Anwendungen unterstützen den gerätebasierten Richtliniensatz für den Zieldienst nicht:
+
+| Anwendung | Zieldienst | Plattform |
+| :--                                     | :--            | :--      |
+| OneDrive for Business mit dem Synchronisierungsclient der nächsten Generation (Next Generation Sync Client, NGSC) (auf eigenen Websites und Teamwebsites) | SharePoint | Windows 10, Windows Mobile 10 |
+| App „Meine Apps“ | Beliebig | iOS, Android |
+
+
 ## Anwendungen ohne moderne Authentifizierung
 
 Zurzeit muss für Apps, die keine moderne Authentifizierungsverfahren verwenden, der Zugriff mithilfe anderer Methoden blockiert werden, da der bedingte Zugriff für diese nicht erzwungen wird. Dieser Aspekt gilt hauptsächlich für den Zugriff auf Exchange und SharePoint, da vorherige App-Versionen unter Verwendung älterer Protokolle erstellt wurden.
 
 ## SharePoint
+
 Bei SharePoint können ältere Protokolle mithilfe des Cmdlets Set-SPOTenant deaktiviert werden. Dieses Cmdlet verhindert, dass Office-Clients, die keine modernen Authentifizierungsprotokolle verwenden, auf SharePoint Online-Ressourcen zugreifen.
 
 **Beispielbefehl:** `Set-SPOTenant -LegacyAuthProtocolsEnabled $false`
@@ -107,4 +130,4 @@ Regel 3
 	c2:[Type == "http://schemas.microsoft.com/2012/01/requestcontext/claims/x-ms-endpoint-absolute-path", Value =~ "(/adfs/ls)|(/adfs/oauth2)"] 
 	=> issue(Type = "http://schemas.microsoft.com/authorization/claims/permit", Value = "true");
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0817_2016-->

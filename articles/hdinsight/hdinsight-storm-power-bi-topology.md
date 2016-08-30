@@ -14,7 +14,7 @@
  ms.topic="article"
  ms.tgt_pltfrm="na"
  ms.workload="big-data"
- ms.date="05/27/2016"
+ ms.date="08/16/2016"
  ms.author="larryfr"/>
 
 # Verwenden von Power BI zur Visualisierung von Daten aus einer Apache Storm-Topologie
@@ -83,7 +83,7 @@ Herunterladen des [HDInsight C# Storm Power BI-Beispiels](https://github.com/Azu
 
     > [AZURE.NOTE] Es kann einige Sekunden dauern, bis die Dropdown-Liste **Storm-Cluster** mit Servernamen befüllt wird.
     >
-    > Wenn Sie dazu aufgefordert werden, geben Sie die Anmeldeinformationen für Ihr Azure-Abonnement ein. Wenn Sie über mehrere Abonnements verfügen, melden Sie sich bei dem Abonnement an, das Ihren Storm-Cluster in HDInsight enthält.
+    > Geben Sie bei Aufforderung die Anmeldeinformationen für Ihr Azure-Abonnement ein. Wenn Sie über mehrere Abonnements verfügen, melden Sie sich bei dem Abonnement an, das Ihren Storm-Cluster in HDInsight enthält.
 
 2. Sobald die Topologie erfolgreich übermittelt wurde, sollten die Storm-Topologien für den Cluster angezeigt werden. Wählen Sie den Eintrag „SqlAzureWriterTopology“ in der Liste aus, um Informationen zur aktiven Topologie anzuzeigen.
 
@@ -146,7 +146,7 @@ Die Topologie wird weiterhin ausgeführt, bis Sie sie beenden oder das Storm-Clu
 
 2. Wählen Sie die Schaltfläche **Beenden** aus, um die Topologie anzuhalten.
 
-    ![Schaltfläche Beenden in der Topologie-Zusammenfassung](./media/hdinsight-storm-power-bi-topology/killtopology.png)
+    ![Schaltfläche „Beenden“ in der Topologie-Zusammenfassung](./media/hdinsight-storm-power-bi-topology/killtopology.png)
 
 ## Löschen des Clusters
 
@@ -158,4 +158,4 @@ In diesem Dokument haben Sie erfahren, wie Daten aus einer Storm-Topologie an ei
 
 * [Beispiele für Storm-Topologien für Storm in HDInsight](hdinsight-storm-example-topology.md)
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0817_2016-->

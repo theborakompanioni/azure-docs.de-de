@@ -49,7 +49,7 @@ ID | nginx
 Image | nginx
 Netzwerk | Überbrückt
 Hostport | 80
-Protokoll | TCP
+Protocol | TCP
 
 ![Neue Anwendungsbenutzeroberfläche – Allgemein](media/dcos/dcos4.png)
 
@@ -73,7 +73,7 @@ Auf der Marathon-Hauptseite können Sie den Bereitstellungsstatus für den Conta
 
 ![Hauptseite der Marathon-Benutzeroberfläche – Containerbereitstellungsstatus](media/dcos/dcos7.png)
 
-Wenn Sie zurück zur DC/OS-Webbenutzeroberfläche (http://localhost/) wechseln, sehen Sie, dass eine Aufgabe – in diesem Fall ein Container im Docker-Format – auf dem DC/OS-Cluster ausgeführt wird.
+Wenn Sie wieder zur DC/OS-Webbenutzeroberfläche (http://localhost/) wechseln, sehen Sie, dass eine Aufgabe – in diesem Fall ein Container im Docker-Format – im DC/OS-Cluster ausgeführt wird.
 
 ![DC/OS-Webbenutzeroberfläche – Im Cluster ausgeführte Aufgabe](media/dcos/dcos8.png)
 
@@ -97,4 +97,8 @@ Sobald der Skalierungsvorgang abgeschlossen ist, sehen Sie, dass mehrere Instanz
 
 - [Verwenden von DC/OS und der Marathon-API](container-service-mesos-marathon-rest.md)
 
-<!---HONumber=AcomDC_0601_2016-->
+Deep dive on the Azure Container Service with Mesos (Ausführliche Informationen zu Azure Container Service mit Mesos)
+
+> [AZURE.VIDEO] azurecon-2015-deep-dive-on-the-azure-container-service-with-mesos]
+
+<!---HONumber=AcomDC_0824_2016-->

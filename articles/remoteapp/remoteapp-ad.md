@@ -13,13 +13,15 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="article" 
-    ms.date="06/13/2016" 
+    ms.date="08/15/2016" 
     ms.author="elizapo" />
 
 
 
 # Azure AD + Active Directory-Anforderungen für Azure RemoteApp
 
+> [AZURE.IMPORTANT]
+Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148).
 
 
 Wenn Sie mittels AD Connect einen Verbund für Ihre Azure RemoteApp-Hybrid-Sammlung oder eine Cloudsammlung erstellen möchten, müssen Sie folgende Aktionen ausführen.
@@ -45,4 +47,4 @@ Sie müssen außerdem die folgenden lokalen Active Directory-Objekte erstellen:
 
 Sie benötigen diese beiden Objekte beim Erstellen Ihrer RemoteApp-Sammlung, daher führen Sie diese Schritte unbedingt zuerst aus.
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0817_2016-->

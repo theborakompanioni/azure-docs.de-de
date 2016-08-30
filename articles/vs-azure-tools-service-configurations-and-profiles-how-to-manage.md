@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
-   ms.date="06/01/2016"
+   ms.date="08/15/2016"
    ms.author="tarcher" />
 
 # Verwalten von Dienstkonfigurationen und Profilen
@@ -131,4 +131,4 @@ Wenn Sie den Assistenten zum ersten Mal ausführen, wird ein Standardprofil erst
 
 Informationen zum Konfigurieren anderer Teile des Azure-Projekts in Visual Studio finden Sie unter [Konfigurieren eines Azure-Projekts](http://go.microsoft.com/fwlink/p/?LinkID=623075).
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0817_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="Azure"
    ms.workload="na"
-   ms.date="08/08/2016"
+   ms.date="08/17/2016"
    ms.author="hascipio"/>
 
 # Abschließen der Angebotserstellung mit Marketinginhalten
@@ -48,10 +48,10 @@ In diesem Schritt des Veröffentlichungsprozesses müssen Sie bestimmte Marketin
 Alle in das Veröffentlichungsportal hochgeladen Logos müssen folgende Richtlinien erfüllen:
 
 - Die Farbpalette des Azure-Designs ist einfach und geradlinig. Verwenden Sie auf Ihrem Logo möglichst wenige Primär- und Sekundärfarben.
-- Die Designfarben des Azure-Portals sind Weiß und Schwarz. Daher verwenden Sie diese Farben nicht als Hintergrundfarbe für Ihre Logos. Verwenden Sie Farben, die Ihre Logos im Azure-Portal markant hervorstechen lassen. Sie sollten einfache Primärfarben verwenden. **Wenn Sie transparenten Hintergrund verwenden, stellen Sie sicher, dass Logos/Text nicht weiß oder schwarz sind.**
+- Die Designfarben des Azure-Portals sind Weiß und Schwarz. Daher verwenden Sie diese Farben nicht als Hintergrundfarbe für Ihre Logos. Verwenden Sie Farben, die Ihre Logos im Azure-Portal markant hervorstechen lassen. Sie sollten einfache Primärfarben verwenden. **Wenn Sie transparenten Hintergrund verwenden, stellen Sie sicher, dass Logos/Text nicht weiß, schwarz oder blau sind.**
 - Verwenden Sie im Logo keinen Hintergrund mit Farbverlauf.
 - Platzieren Sie nach Möglichkeit keinen Text auf dem Logo, auch nicht Ihren Firmen- oder Markennamen.
-- Das Erscheinungsbild Ihres Logos sollte klar und direkt und frei von Farbverläufen sein.
+ Das Erscheinungsbild Ihres Logos sollte klar und direkt und frei von Farbverläufen sein.
 - Das Logo sollte nicht gestreckt sein.
 - Ein kleines Logo sollte 40 x 40 px groß sein.
 - Ein mittleres Logo sollte 90 x 90 px groß sein.
@@ -278,4 +278,4 @@ Nachdem nun Ihre Marketplace-Inhalte geladen wurden, geht es weiter mit dem Test
 [link-pubportal]: https://publish.windowsazure.com
 [link-push-to-production]: marketplace-publishing-push-to-production.md
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0817_2016-->

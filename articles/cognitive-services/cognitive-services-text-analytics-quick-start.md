@@ -32,7 +32,7 @@ Am Ende dieses Tutorials können Sie programmgesteuert Folgendes erkennen:
 
 - **Schlüsselwörter**: Was wird in einem einzigen Artikel besprochen?
 
-- **Themen**: Worüber diskutieren die Menschen in verschiedenen Artikeln?
+- **Themen:** Worüber diskutieren die Menschen in verschiedenen Artikeln?
 
 - **Sprachen**: In welcher Sprache wurde der Text geschrieben?
 
@@ -70,7 +70,7 @@ Die Erkennung von Stimmung, Schlüsselwörtern und Sprachen im Text ist einfach.
 
 Die folgenden Sprachen werden unterstützt:
 
-| Funktion | Unterstützte Sprachcodes |
+| Feature | Unterstützte Sprachcodes |
 |:-----|:----|
 | Stimmung | `en` (Englisch), `es` (Spanisch), `fr` (Französisch), `pt` (Portugiesisch) |
 | Schlüsselwörter | `en` (Englisch), `es` (Spanisch), `de` (Deutsch), `ja` (Japanisch) |
@@ -82,7 +82,7 @@ Die folgenden Sprachen werden unterstützt:
 		Content-Type: application/json
 		Accept: application/json
 
-1. Formatieren Sie als Nächstes die Eingabezeilen in JSON. Das Format für Stimmung, Schlüsselwörter und Sprache ist identisch. Beachten Sie, dass jede ID eindeutig sein muss und die vom System zurückgegebene ID ist. Die maximale Größe eines einzelnen Dokuments, das übermittelt werden kann, beträgt 10 KB, und die maximale Gesamtgröße der übermittelten Eingabe beträgt 1 MB. In einem Aufruf können nicht mehr als 1.000 Dokumente übermittelt werden. Die Sprache ist ein optionaler Parameter, der angegeben werden muss, wenn nicht englischer Text analysiert wird. Ein Beispiel für die Eingabe ist unten dargestellt, wobei der optionale Parameter `language` für die Stimmungsanalyse oder Schlüsselwortextraktion hinzugefügt wurde:
+1. Formatieren Sie als Nächstes die Eingabezeilen in JSON. Das Format für Stimmung, Schlüsselwörter und Sprache ist identisch. Beachten Sie, dass jede ID eindeutig sein muss und die vom System zurückgegebene ID ist. Die maximale Größe eines einzelnen Dokuments, das übermittelt werden kann, beträgt 10 KB, und die maximale Gesamtgröße der übermittelten Eingabe beträgt 1 MB. In einem Aufruf können nicht mehr als 1.000 Dokumente übermittelt werden. Aufrufe sind auf 100 Aufrufe pro Minute begrenzt. Daher wird empfohlen, große Mengen an Dokumenten in einem einzelnen Aufruf zu übermitteln. Die Sprache ist ein optionaler Parameter, der angegeben werden muss, wenn nicht englischer Text analysiert wird. Ein Beispiel für die Eingabe ist unten dargestellt, wobei der optionale Parameter `language` für die Stimmungsanalyse oder Schlüsselwortextraktion hinzugefügt wurde:
 
 		{
 			"documents": [
@@ -166,11 +166,11 @@ Die folgenden Sprachen werden unterstützt:
 		}
 
 
-## Aufgabe 3: Erkennen von Themen in einem Textcorpus ####
+## Aufgabe 3: Erkennen von Themen in einem Textkorpus ####
 
-Diese neu veröffentlichte API gibt die am meisten erkannten Themen für eine Liste übermittelter Textdatensätze zurück. Ein Thema wird anhand eines Schlüsselausdrucks identifiziert, der aus einem oder mehreren darauf bezogenen Wörtern bestehen kann. Die API eignet sich ideal für kurzen, von Menschen geschriebenen Text, z.B. Kritiken und Feedback von Benutzern.
+Diese neu veröffentlichte API gibt die am häufigsten erkannten Themen für eine Liste übermittelter Textdatensätze zurück. Ein Thema wird anhand eines Schlüsselausdrucks identifiziert, der aus einem oder mehreren darauf bezogenen Wörtern bestehen kann. Die API eignet sich ideal für kurzen, von Menschen geschriebenen Text, z.B. Kritiken und Feedback von Benutzern.
 
-Für diese API müssen **mindestens 100 Textdatensätze** übermittelt werden, aber sie kann Themen in Hunderten bis Tausenden von Datensätzen erkennen. Alle nicht englischsprachigen Datensätze oder Datensätze mit weniger als 3 Wörtern werden verworfen. Ihnen wird daher kein Thema zugewiesen. Die maximale Größe eines einzelnen Dokuments, das für die Themenerkennung übermittelt werden kann, beträgt 30 KB, und die maximale Gesamtgröße der übermittelten Eingabe beträgt 30 MB.
+Für diese API müssen **mindestens 100 Textdatensätze** übermittelt werden, aber sie kann Themen in Hunderten bis Tausenden von Datensätzen erkennen. Alle nicht englischsprachigen Datensätze oder Datensätze mit weniger als drei Wörtern werden verworfen. Ihnen wird daher kein Thema zugewiesen. Die maximale Größe eines einzelnen Dokuments, das für die Themenerkennung übermittelt werden kann, beträgt 30 KB, und die maximale Gesamtgröße der übermittelten Eingabe beträgt 30 MB. Die Themenerkennung ist auf fünf Übermittlungen alle fünf Minuten beschränkt.
 
 Es gibt zwei zusätzliche **optionale** Eingabeparameter, die zur Verbesserung der Ergebnisqualität beitragen können:
 
@@ -205,7 +205,7 @@ Gehen Sie wie folgt vor, um Themen im Text zu erkennen.
 
         POST https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/topics
 
-1. Dies gibt eine `operation-location` als Header in der Antwort zurück, wobei der Wert die abzufragende URL für die resultierenden Themen ist:
+1. Dies gibt ein `operation-location`-Element als Header in der Antwort zurück, wobei der Wert die abzufragende URL für die resultierenden Themen ist:
 
         'operation-location': 'https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/operations/<operationId>'
 
@@ -272,17 +272,17 @@ Die Erläuterungen für jeden Teil dieser Antwort lauten:
 
 | Schlüssel | Beschreibung |
 |:-----|:----|
-| id | Ein eindeutiger Bezeichner für jedes Thema. |
-| Ergebnis Ihrer App | Anzahl der Dokumente, die dem Thema zugewiesen sind. |
-| keyPhrase | Eine Zusammenfassung des Themas in einem Wort oder Ausdruck. |
+| id | Ein eindeutiger Bezeichner für jedes Thema |
+| Ergebnis Ihrer App | Anzahl der Dokumente, die dem Thema zugewiesen sind |
+| keyPhrase | Eine Zusammenfassung des Themas in einem Wort oder Ausdruck |
 
 **topicAssignments**
 
 | Schlüssel | Beschreibung |
 |:-----|:----|
 | documentId | Bezeichner des Dokuments. Entspricht der in der Eingabe enthaltenen ID. |
-| topicId | Die Themen-ID, der das Dokument zugewiesen wurde. |
-| distance | Dokument-Thema-Zugehörigkeitsfaktor zwischen 0 und 1. Je niedriger der Abstandswert, desto stärker die Zugehörigkeit des Themas. |
+| topicId | Die Themen-ID, der das Dokument zugewiesen wurde |
+| distance | Dokument/Thema-Zugehörigkeitsfaktor zwischen 0 und 1. Je niedriger der Abstandswert, desto stärker die Zugehörigkeit des Themas. |
 
 **errors**
 
@@ -297,4 +297,4 @@ Glückwunsch! Sie haben nun die Nutzung der Textanalyse für Ihre Daten abgeschl
 
 Wie Textanalysefunktionen, z.B. Stimmung, als Teil eines Bots verwendet werden können, zeigt Ihnen das Beispiel [Emotional Bot](http://docs.botframework.com/de-DE/bot-intelligence/language/#example-emotional-bot) (Emotionaler Bot) auf der Bot-Framework-Website.
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0817_2016-->

@@ -5,7 +5,7 @@
 	keywords="Azure Active Directory Identity Protection, Cloud App Discovery, Verwalten von Anwendungen, Sicherheit, Risiko, Risikostufe, Sicherheitsrisiko, Sicherheitsrichtlinie, Glossar"
 	documentationCenter=""
 	authors="markusvi"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/17/2016"
+	ms.date="08/16/2016"
 	ms.author="markvi"/>
 
 # Azure Active Directory Identity Protection – Glossar 
@@ -41,7 +41,7 @@ Ein Datensatz einer Aktivität in Azure Active Directory.
 ### Falsch positives Ergebnis (Risikoereignis) 
 Ein Risikoereignisstatus, der von einem Identity Protection-Benutzer manuell festgelegt wird. Er gibt an, dass das Risikoereignis untersucht und dabei ermittelt wurde, dass es fälschlicherweise als Risikoereignis eingestuft wurde.
 
-### Identität	
+### Identity	
 Eine Person oder Identität, die per Authentifizierung anhand von Kriterien, z. B. einem Kennwort oder Zertifikat, überprüft werden muss.
 
 ### Identitätsrisikoereignis 	
@@ -160,8 +160,8 @@ Benutzer, die über Risikoereignisse verfügen (entweder „Aktiv“ oder „Ber
 Eine Konfiguration oder ein Zustand in Azure Active Directory, durch die bzw. den das Verzeichnis anfällig für Angriffe oder Bedrohungen wird.
 
 
-## Weitere Informationen
+## Siehe auch
 
 - [Azure Active Directory Identity Protection](active-directory-identityprotection.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0817_2016-->

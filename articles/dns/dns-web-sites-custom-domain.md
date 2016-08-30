@@ -1,5 +1,5 @@
 <properties 
-   pageTitle="Erstellen von benutzerdefinierten DNS-Einträgen für eine Web-App | Microsoft Azure" 
+   pageTitle="Erstellen von benutzerdefinierten DNS-Einträgen für eine Web-App | Microsoft Azure " 
    description="Informationen zum Erstellen von benutzerdefinierten Domänen-DNS-Einträgen für die Web-App mithilfe von Azure DNS." 
    services="dns" 
    documentationCenter="na" 
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services" 
-   ms.date="05/11/2016"
+   ms.date="08/16/2016"
    ms.author="cherylmc"/>
 
 # Erstellen von DNS-Einträgen für eine Web-App in einer benutzerdefinierten Domäne
@@ -31,8 +31,8 @@ Beachten Sie, dass Sie beim Erstellen eines A-Eintrags für eine Web-App in Azur
 
 Bevor Sie beginnen, müssen Sie zuerst in Azure DNS eine DNS-Zone erstellen und die Zone in Ihrer Registrierungsstelle an Azure DNS delegieren.
  
-1. Befolgen Sie zum Erstellen einer DNS-Zone die Anweisungen unter [Erstellen einer DNS-Zone](dns-getstarted-create-dnszone.md). 
-2. Befolgen Sie zum Delegieren Ihres DNS an Azure DNS die Anweisungen unter [Delegieren von Domänen an Azure DNS](dns-domain-delegation.md). 
+1. Befolgen Sie zum Erstellen einer DNS-Zone die Anweisungen unter [Erstellen einer DNS-Zone](dns-getstarted-create-dnszone.md).
+2. Befolgen Sie zum Delegieren Ihres DNS an Azure DNS die Anweisungen unter [Delegieren von Domänen an Azure DNS](dns-domain-delegation.md).
 
 Nach dem Erstellen einer Zone und ihrer Delegierung an Azure DNS können Sie Einträge für Ihre benutzerdefinierte Domäne erstellen.
 
@@ -179,4 +179,4 @@ Befolgen Sie die Anweisungen unter [Konfigurieren eines benutzerdefinierten Dom�
 
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0817_2016-->

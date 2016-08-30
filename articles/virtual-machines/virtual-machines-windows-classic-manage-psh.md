@@ -3,7 +3,7 @@
    description="Lernen Sie Befehle kennen, mit denen Sie Aufgaben bei der Verwaltung Ihrer virtuellen Computer verwenden können."
    services="virtual-machines-windows"
    documentationCenter="windows"
-   authors="singhkay"
+   authors="singhkays"
    manager="timlt"
    editor=""
    tags="azure-service-management"/>
@@ -88,11 +88,11 @@ Führen Sie den folgenden Befehl zum Anfügen von Datenträgern aus einer vorhan
 
 ## Erstellen eines virtuellen Computers auf Windows-Basis
 
-Zum Erstellen eines auf Windows basierenden virtuellen Computers in Azure folgen Sie den Anweisungen unter [Verwenden von Azure PowerShell zum Erstellen und Vorabkonfigurieren Windows-basierter virtueller Computer](virtual-machines-windows-classic-create-powershell.md). In diesem Thema wird schrittweise erläutert, wie Sie einen Azure PowerShell-Befehlssatz erstellen, mit dem Sie einen virtuellen Windows-Computer generieren, der vorkonfiguriert werden kann:
+Zum Erstellen eines auf Windows basierenden virtuellen Computers in Azure folgen Sie den Anweisungen unter [Verwenden von Azure PowerShell zum Erstellen und Vorabkonfigurieren Windows-basierter virtueller Computer](virtual-machines-windows-classic-create-powershell.md). In diesem Thema wird schrittweise erläutert, wie Sie einen Azure PowerShell-Befehlssatz erstellen, mit dem Sie einen virtuellen Windows-Computer generieren, der mit Folgendem vorkonfiguriert werden kann:
 
 - Mit einer Mitgliedschaft in einer Active Directory-Domäne.
 - Mit zusätzlichen Datenträgern.
 - Als Mitglied in einer vorhandenen Lastenausgleichsgruppe.
 - Mit einer statischen IP-Adresse.
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0817_2016-->

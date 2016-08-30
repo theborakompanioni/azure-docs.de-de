@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/26/2016"
+	ms.date="08/16/2016"
 	ms.author="markusvi"/>
 
 
@@ -31,13 +31,13 @@ Das durch dieses neue Feature ermöglichte Verhalten befindet sich im Cloudteil 
 Beim Versuch, ein neues Objekt mit einem UPN- oder ProxyAddress-Wert bereitzustellen, der die Eindeutigkeitsanforderung nicht erfüllt, wird die Erstellung des Objekts durch Azure Active Directory blockiert. Analog dazu gilt: Ein Objekt kann nicht mit einem nicht eindeutigen UPN- oder ProxyAddress-Wert aktualisiert werden. Der Bereitstellungs- oder Aktualisierungsversuch wird vom Synchronisierungsclient bei jedem Exportzyklus wiederholt und kann erst nach Beseitigung des Konflikts erfolgreich abgeschlossen werden. Bei jedem Versuch wird eine E-Mail mit einem Fehlerbericht generiert, und vom Synchronisierungsclient wird ein Fehler protokolliert.
 
 ## Verhalten mit Resilienz bei doppelten Attributen
-Das Bereitstellen oder Aktualisieren eines Objekts mit doppeltem Attribut ist nicht einfach ohne Erfolg. Stattdessen wird das doppelte Attribut, das gegen die Eindeutigkeitsanforderung verstößt, von Azure Active Directory isoliert. Ist dieses Attribut für die Bereitstellung erforderlich (wie etwa im Falle von UserPrincipalName), weist der Dienst einen Platzhalterwert zu. Diese temporären Werte weisen folgendes Format auf:  
-„***<OriginalPrefix>+<4DigitNumber>@<InitialTenantDomain>.onmicrosoft.com***“.  
+Das Bereitstellen oder Aktualisieren eines Objekts mit doppeltem Attribut ist nicht einfach ohne Erfolg. Stattdessen wird das doppelte Attribut, das gegen die Eindeutigkeitsanforderung verstößt, von Azure Active Directory isoliert. Ist dieses Attribut für die Bereitstellung erforderlich (wie etwa im Falle von UserPrincipalName), weist der Dienst einen Platzhalterwert zu. Das Format dieser temporären Werte ist wie folgt: 
+***<UrsprünglichesPräfix>+<4-stelligeZahl>@<UrsprünglicheMandantendomäne>.onmicrosoft.com***. 
 Ist das Attribut nicht erforderlich (etwa im Falle von **ProxyAddress**), wird das Konfliktattribut einfach von Azure Active Directory unter Quarantäne gestellt, und die Objekterstellung oder -aktualisierung wird fortgesetzt.
 
 Im Falle einer Attributisolierung werden Informationen zum Konflikt in der gleichen Fehlerbericht-E-Mail gesendet, die auch im Rahmen des alten Verhaltens verwendet wurde. Diese Informationen werden aber nur einmal (zum Zeitpunkt der Isolierung) in den Fehlerbericht aufgenommen und in zukünftigen E-Mails nicht immer wieder erneut protokolliert. Da der Export für das Objekt erfolgreich war, protokolliert der Synchronisierungsclient keinen Fehler, und es wird in den folgenden Synchronisierungszyklen nicht erneut versucht, die Erstellung/Aktualisierung durchzuführen.
 
-Zur Unterstützung dieses Verhaltens wurde den Objektklassen für Benutzer, Gruppen und Kontakte ein neues Attribut hinzugefügt:  
+Zur Unterstützung dieses Verhaltens wurde den Objektklassen für Benutzer, Gruppen und Kontakte ein neues Attribut hinzugefügt: 
 **DirSyncProvisioningErrors**.
 
 Hierbei handelt es sich um ein mehrwertiges Attribut zum Speichern der in Konflikt stehenden Attribute, die gegen die Eindeutigkeitsanforderung verstoßen würden, wenn sie normal hinzugefügt würden. In Azure Active Directory wurde eine Timer-Hintergrundaufgabe hinzugefügt, um stündlich nach behobenen Konflikten mit doppelten Attributen zu suchen und automatisch die Isolation der betreffenden Attribute aufzuheben.
@@ -82,7 +82,7 @@ Führen Sie nach dem Herstellen der Verbindung den folgenden Befehl aus, um eine
 
 `Get-MsolDirSyncProvisioningError -ErrorCategory PropertyConflict`
 
-Das Ergebnis sieht beispielsweise wie folgt aus:  
+Das Ergebnis sieht beispielsweise wie folgt aus: 
  ![Get-MsolDirSyncProvisioningError](./media/active-directory-aadconnectsyncservice-duplicate-attribute-resiliency/1.png "Get-MsolDirSyncProvisioningError")
 
 
@@ -109,9 +109,9 @@ Verwenden Sie für eine allgemeine Zeichenfolgensuche das Flag **-SearchString**
 #### Sortiert
 Die Ergebnisse einer Abfrage können mithilfe von zwei Flags sortiert werden:
 
-1.	**SortField**: Gültige Argumente sind DisplayName und UserPrincipalName.
+1.	**SortField**: Gültige Argumente sind „DisplayName“ und „UserPrincipalName“.
 
-2.	**SortDirection**: Gültige Argumente sind Ascending und Descending.
+2.	**SortDirection**: Gültige Argumente sind „Ascending“ und „Descending“.
 
 `Get-MsolDirSyncProvisioningError -ErrorCategory PropertyConflict -SortField UserPrincipalName -SortDirection Ascending`
 
@@ -124,7 +124,7 @@ Die Ergebnisse einer Abfrage können mithilfe von zwei Flags sortiert werden:
 
 ## Office 365-Verwaltungsportal
 
-Sie können Fehler bei der Verzeichnissynchronisierung im Office 365 Admin Center anzeigen. Der Bericht im Office 365-Portal enthält nur Objekte vom Typ **Benutzer**, für die diese Fehler vorliegen. Er enthält keine Informationen zu Konflikten zwischen Objekten vom Typ **Gruppe**, **Kontakt** oder **Öffentlicher Ordner**.
+Sie können Fehler bei der Verzeichnissynchronisierung im Office 365 Admin Center anzeigen. Der Bericht im Office 365-Portal enthält nur Objekte vom Typ **User**, für die diese Fehler vorliegen. Er enthält keine Informationen zu Konflikten zwischen Objekten vom Typ **Groups**, **Contacts** oder **PublicFolders**.
 
 
 ![Aktive Benutzer](./media/active-directory-aadconnectsyncservice-duplicate-attribute-resiliency/1234.png "Aktive Benutzer")
@@ -135,7 +135,7 @@ Eine Anleitung zum Anzeigen von Fehlern bei der Verzeichnissynchronisierung im O
 ### Fehlerbericht für die Identitätssynchronisierung
 Wenn dieses neue Verhalten bei einem Objekt mit einem Konflikt aufgrund eines doppelten Attributs angewendet wird, enthält die standardmäßige Fehlerberichts-E-Mail für die Identitätssynchronisierung, die an den Kontakt für technische Benachrichtigungen des Mandanten gesendet wird, eine entsprechende Benachrichtigung. Bei diesem Verhalten gibt es jedoch eine wichtige Änderung. In der Vergangenheit wurden Informationen zu einem Konflikt aufgrund eines doppelten Attributs in jeden nachfolgenden Fehlerbericht einbezogen, bis der Konflikt behoben wurde. Bei Verwendung des neuen Verhaltens erscheint die Fehlerbenachrichtigung für einen bestimmten Konflikt lediglich einmal (zu dem Zeitpunkt, zu dem das in Konflikt stehende Attribut isoliert wird).
 
-Hier sehen Sie ein Beispiel für eine E-Mail-Benachrichtigung bei einem ProxyAddress-Konflikt: 
+Hier sehen Sie ein Beispiel für eine E-Mail-Benachrichtigung bei einem ProxyAddress-Konflikt:  
     ![Aktive Benutzer](./media/active-directory-aadconnectsyncservice-duplicate-attribute-resiliency/6.png "Aktive Benutzer")
 
 ## Beheben von Konflikten
@@ -144,11 +144,12 @@ Zur Behandlung von Fehlern aufgrund von doppelten Attributen werden die gleichen
 Der folgende Artikel beschäftigt sich mit verschiedenen Strategien zur Problembehandlung und -behebung: [Doppelte oder ungültige Attribute verhindern Verzeichnissynchronisierung in Office 365](https://support.microsoft.com/kb/2647098).
 
 ## Bekannte Probleme
-Keines dieser bekannten Probleme führt zu Datenverlusten oder Dienstbeeinträchtigungen. Einige sind kosmetischer Natur, andere führen dazu, dass das in Konflikt stehende Attribut nicht isoliert und stattdessen ein Standardfehler wie vor der Resilienz bei doppelten Attributen ausgelöst wird, und wieder ein anderer bewirkt, dass bei bestimmten Fehlern zusätzliche manuelle Korrekturen erforderlich sind.
+Keines dieser bekannten Probleme führt zu Datenverlusten oder Dienstbeeinträchtigungen. Einige sind kosmetischer Natur, andere führen dazu, dass das in Konflikt stehende Attribut nicht isoliert und stattdessen ein Standardfehler wie *vor der Resilienz* bei doppelten Attributen ausgelöst wird, und wieder ein anderer bewirkt, dass bei bestimmten Fehlern zusätzliche manuelle Korrekturen erforderlich sind.
 
 **Grundverhalten:**
 
-1. Bei einem Benutzer mit einer bestimmten Attributkonfiguration treten immer wieder Exportfehler auf, obwohl Attribute eigentlich isoliert werden sollten. Beispiel:
+1. Bei einem Benutzer mit einer bestimmten Attributkonfiguration treten immer wieder Exportfehler auf, obwohl Attribute eigentlich isoliert werden sollten. 
+Beispiel:
 
     a. In Active Directory wird ein neuer Benutzer mit dem UPN-Wert **Joe@contoso.com** und dem ProxyAddress-Wert **smtp:Joe@contoso.com** erstellt.
 
@@ -168,7 +169,7 @@ Keines dieser bekannten Probleme führt zu Datenverlusten oder Dienstbeeinträch
 
 3. Wenn zwei Gruppen lokal mit der gleichen SMTP-Adresse erstellt werden, kann eine davon beim ersten Versuch nicht erfolgreich bereitgestellt werden, und es tritt ein Standardfehler für doppelte Werte vom Typ **ProxyAddress** auf. Der doppelte Wert wird beim nächsten Synchronisierungszyklus aber richtig isoliert.
 
-**PowerShell-Cmdlets**:
+**PowerShell-Cmdlets:**
 
 1. **ImmutableId**/**LastDirSyncTime** werden für die Objektklasse für Benutzer nicht angezeigt.
 
@@ -178,7 +179,7 @@ Keines dieser bekannten Probleme führt zu Datenverlusten oder Dienstbeeinträch
 
 4. Das Flag **SearchString** gibt zusätzliche Ergebnisse zurück, wenn es ohne die Flags **PropertyValue** und **PropertyName** verwendet wird.
 
-**Bericht des Office-Portals**:
+**Bericht des Office-Portals:**
 
 1. Die ausführliche Fehlermeldung für zwei Objekte in einem UPN-Konfliktsatz ist identisch. Sie gibt an, dass bei beiden der UPN-Wert geändert/isoliert wurde, obwohl sich eigentlich nur die Daten eines der Objekte geändert haben.
 
@@ -194,7 +195,7 @@ Keines dieser bekannten Probleme führt zu Datenverlusten oder Dienstbeeinträch
 
 3. Der Bericht enthält unter Umständen nur ausführliche Fehlerinformationen zu Benutzern mit **UPN**-Konflikten, nicht zu Benutzern mit **ProxyAddress**-Fehlern. (Es wird noch untersucht, ob dies immer so ist oder von der Umgebung abhängt.)
 
-## Weitere Informationen
+## Siehe auch
 
 - [Azure AD Connect-Synchronisierung](active-directory-aadconnectsync-whatis.md)
 
@@ -202,4 +203,4 @@ Keines dieser bekannten Probleme führt zu Datenverlusten oder Dienstbeeinträch
 
 - [Ermitteln von Fehlern der Verzeichnissynchronisierung in Office 365](https://support.office.com/de-DE/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067)
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0817_2016-->

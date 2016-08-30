@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/19/2016"
+	ms.date="08/15/2016"
 	ms.author="anuragm;jimpark;delhan;trinadhk;markgal"/>
 
 
@@ -64,7 +64,7 @@ Führen Sie die folgenden Schritte aus, um den DPM-Schutz-Agent auf dem Exchange
     - Kurzfristiger Schutz unter Verwendung eines Datenträgers
     - Onlineschutz
 
-6. Klicken Sie auf **Weiter**.
+6. Klicken Sie auf **Next**.
 
 7. Wählen Sie die Option **„Eseutil“ zum Prüfen der Datenintegrität ausführen** aus, wenn Sie die Integrität der Exchange-Server-Datenbanken überprüfen möchten.
 
@@ -72,7 +72,7 @@ Führen Sie die folgenden Schritte aus, um den DPM-Schutz-Agent auf dem Exchange
 
     >[AZURE.NOTE] Zum Verwenden dieser Option müssen Sie die Dateien „Ese.dll“ und „Eseutil.exe“ auf dem DPM-Server in das Verzeichnis „C:\\Programme\\Microsoft System Center 2012 R2\\DPM\\DPM\\bin“ kopieren. Andernfalls wird der folgende Fehler ausgelöst: ![eseutil-Fehler](./media/backup-azure-backup-exchange-server/eseutil-error.png)
 
-8. Klicken Sie auf **Weiter**.
+8. Klicken Sie auf **Next**.
 
 9. Wählen Sie die Datenbank für **Kopiesicherung** aus, und klicken Sie auf **Weiter**.
 
@@ -132,4 +132,4 @@ Für Online-Wiederherstellungspunkte gibt es fünf Wiederherstellungstypen:
 
 - [Azure Backup – Häufig gestellte Fragen](backup-azure-backup-faq.md)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0817_2016-->

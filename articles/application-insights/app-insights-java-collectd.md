@@ -40,12 +40,12 @@ Kopieren Sie den Instrumentationsschlüssel, der die Ressource identifiziert.
 Auf Unix-Servercomputern:
 
 1. Installieren Sie [collectd](http://collectd.org/), Version 5.4.0 oder höher.
-2. Laden Sie das [collectd-Writer-Plug-In für Application Insights](https://azuredownloads.blob.core.windows.net/applicationinsights/sdk.html) herunter. Beachten Sie die Versionsnummer.
+2. Laden Sie das [collectd-Writer-Plug-In für Application Insights](https://aka.ms/aijavasdk) herunter. Beachten Sie die Versionsnummer.
 3. Kopieren Sie die Plug-In-JAR in `/usr/share/collectd/java`.
 3. Bearbeiten Sie `/etc/collectd/collectd.conf`:
  * Stellen Sie sicher, dass [das Java-Plug-In](https://collectd.org/wiki/index.php/Plugin:Java) aktiviert ist.
  * Aktualisieren Sie den JVMArg-Wert für "java.class.path", sodass die folgende JAR-Datei enthalten ist. Aktualisieren Sie die Versionsnummer, sodass sie mit der übereinstimmt, die Sie heruntergeladen haben:
-  * `/usr/share/collectd/java/applicationinsights-collectd-0.9.4.jar`
+  * `/usr/share/collectd/java/applicationinsights-collectd-1.0.5.jar`
  * Fügen Sie diesen Codeausschnitt mit dem Instrumentationsschlüssel der Ressource hinzu:
 
 ```
@@ -71,7 +71,7 @@ Er ist Teil der Beispielkonfigurationsdatei:
     # Configure Java Plugin
     <Plugin "java">
       JVMArg "-verbose:jni"
-      JVMArg "-Djava.class.path=/usr/share/collectd/java/applicationinsights-collectd-0.9.4.jar:/usr/share/collectd/java/collectd-api.jar"
+      JVMArg "-Djava.class.path=/usr/share/collectd/java/applicationinsights-collectd-1.0.5.jar:/usr/share/collectd/java/collectd-api.jar"
 
       # Enabling Application Insights plugin
       LoadPlugin "com.microsoft.applicationinsights.collectd.ApplicationInsightsWriter"
@@ -105,7 +105,7 @@ Standardmäßig sendet das Application Insights-Plug-In alle Daten, die von alle
 
 So schließen Sie Daten von bestimmten Plug-Ins oder Datenquellen aus:
 
-* Bearbeiten Sie die Konfigurationsdatei. 
+* Bearbeiten Sie die Konfigurationsdatei.
 * Fügen Sie in `<Plugin ApplicationInsightsWriter>` folgende Direktivenzeilen hinzu:
 
 Direktive | Effekt
@@ -143,4 +143,4 @@ Trennen Sie Direktiven mit einem Zeilenumbruch.
 
  
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0817_2016-->

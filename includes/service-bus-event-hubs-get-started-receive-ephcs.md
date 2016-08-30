@@ -26,7 +26,7 @@ Um [EventProcessorHost][] verwenden zu können, benötigen Sie ein [Azure-Speich
 
     ![][13]
 
-	Daraufhin wird das NuGet-Paket [Azure Service Bus Event Hub - EventProcessorHost](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost) mit allen Abhängigkeiten heruntergeladen und installiert, und dem Projekt wird ein Verweis auf das Paket hinzugefügt.
+	Visual Studio lädt das NuGet-Paket [Azure Service Bus Event Hub – EventProcessorHost](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost) mit allen Abhängigkeiten herunter, installiert es und fügt dem Projekt einen Verweis auf das Paket hinzu.
 
 7. Klicken Sie mit der rechten Maustaste auf das Projekt **Receiver**, klicken Sie auf **Hinzufügen** und dann auf **Klasse**. Geben Sie der neuen Klasse den Namen **SimpleEventProcessor**, und klicken Sie auf **Hinzufügen**, um die Klasse zu erstellen.
 
@@ -115,13 +115,13 @@ Um [EventProcessorHost][] verwenden zu können, benötigen Sie ein [Azure-Speich
     }
 	```
 
-> [AZURE.NOTE] In diesem Tutorial wird eine einzelne Instanz von [EventProcessorHost][] verwendet. Um den Durchsatz zu erhöhen, sollten Sie mehrere Instanzen von [EventProcessorHost][] ausführen, wie im Beispiel [Skalieren der Ereignisverarbeitung][] beschrieben. In diesen Fällen koordinieren sich die verschiedenen automatisch untereinander, um die Last der eingegangenen Ereignisse ausgeglichen zu verteilen. Wenn mehrere Empfänger für jeden Prozess *alle* Ereignisse verarbeiten sollen, müssen Sie das **ConsumerGroup**-Konzept verwenden. Wenn Ereignisse von anderen Computern empfangen werden, kann es hilfreich sein, die [EventProcessorHost][]-Instanzen nach den Computern (oder Rollen) zu benennen, auf denen sie bereitgestellt werden. Weitere Informationen zu diesen Themen finden Sie unter [Event Hubs – Übersicht][] und im [Event Hubs-Programmierhandbuch][].
+> [AZURE.NOTE] In diesem Tutorial wird eine einzelne Instanz von [EventProcessorHost][] verwendet. Um den Durchsatz zu erhöhen, sollten Sie mehrere Instanzen von [EventProcessorHost][] ausführen, wie im Beispiel [Skalieren der Ereignisverarbeitung][] beschrieben. In diesen Fällen koordinieren sich die verschiedenen Instanzen automatisch untereinander, um die Last der eingegangenen Ereignisse ausgeglichen zu verteilen. Wenn mehrere Empfänger für jeden Prozess *alle* Ereignisse verarbeiten sollen, müssen Sie das **ConsumerGroup**-Konzept verwenden. Wenn Ereignisse von anderen Computern empfangen werden, kann es hilfreich sein, die [EventProcessorHost][]-Instanzen nach den Computern (oder Rollen) zu benennen, auf denen sie bereitgestellt werden. Weitere Informationen zu diesen Themen finden Sie unter [Event Hubs – Übersicht][] und im [Event Hubs-Programmierhandbuch][].
 
 <!-- Links -->
 [Event Hubs – Übersicht]: event-hubs-overview.md
 [Event Hubs-Programmierhandbuch]: event-hubs-programming-guide.md
 [Skalieren der Ereignisverarbeitung]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3
-[Azure-Speicherkonto]: ../storage/storage-create-storage-account.md
+[Azure-Speicherkonto]: ../storage/storage-create-storage-account-classic-portal.md
 [EventProcessorHost]: http://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventprocessorhost(v=azure.95).aspx
 [klassischen Azure-Portal]: http://manage.windowsazure.com
 
@@ -133,3 +133,4 @@ Um [EventProcessorHost][] verwenden zu können, benötigen Sie ein [Azure-Speich
 [14]: ./media/service-bus-event-hubs-getstarted/create-receiver-csharp1.png
 [15]: ./media/service-bus-event-hubs-getstarted/create-receiver-csharp2.png
 
+<!---HONumber=AcomDC_0824_2016-->

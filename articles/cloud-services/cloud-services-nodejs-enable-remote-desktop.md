@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="nodejs" 
 	ms.topic="article" 
-	ms.date="06/24/2016" 
+	ms.date="08/11/2016" 
 	ms.author="robmcm"/>
 
 # Aktivieren von Remotedesktop in Azure
@@ -79,7 +79,7 @@ Nachdem Sie die aktualisierte Dienstdefinition veröffentlicht haben, können Si
 
 Wenn die Verbindung hergestellt ist, zeigt die Remotedesktopverbindung den Desktop der Instanz in Azure an.
 
-![Remotedesktopsitzung][7]
+![Remotedesktop-Sitzung][7]
 
 ## Schritt 3: Konfigurieren des Diensts zur Deaktivierung des Remotedesktopzugriffs 
 
@@ -115,4 +115,4 @@ Wenn Sie die Remotedesktopverbindungen zu den Rolleninstanzen in der Cloud nicht
 [Verwenden von Remotedesktop mit Azure-Rollen]: http://msdn.microsoft.com/library/windowsazure/gg443832.aspx
  
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0817_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/16/2016" 
+	ms.date="08/15/2016" 
 	ms.author="mandia"/>
 
 
@@ -40,11 +40,11 @@ In den folgenden Tabellen sind diejenigen Vorgänge oder Aktionen aufgelistet, d
 </tr>
 <tr bgcolor="FAF9F9">
         <th> </th>
-        <th>Starten</th>
+        <th>Start</th>
         <th>Beenden</th>
         <th>Neu starten</th>
         <th>Anhalten</th>
-        <th>Wiederaufnehmen</th>
+        <th>Fortfahren</th>
         <th>Löschen</th>
 </tr>
 <tr>
@@ -267,4 +267,4 @@ RestoreFailed<br/></b></td>
 
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0817_2016-->

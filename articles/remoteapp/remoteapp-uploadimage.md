@@ -13,12 +13,15 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="06/12/2016"
+    ms.date="08/15/2016"
     ms.author="ericor" />
 
 
 
 # Hochladen eines benutzerdefinierten Images für Azure RemoteApp
+
+> [AZURE.IMPORTANT]
+Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148).
 
 Nachdem Sie Ihr benutzerdefiniertes Vorlagenimage erstellt oder aktualisiert haben, müssen Sie es in Ihre Azure RemoteApp-Imagebibliothek hochladen. Gehen Sie dazu folgendermaßen vor:
 
@@ -51,4 +54,4 @@ Nachdem Sie Ihr benutzerdefiniertes Vorlagenimage erstellt oder aktualisiert hab
 - Nehmen Sie keine Änderungen am Skript vor, die Überprüfungen sollen Ihnen helfen.
 - Wenn die VHD-Datei beim Upload ausgesperrt wird, kopieren oder verschieben Sie sie an den neuen Speicherort, und wiederholen Sie den Upload. Möglicherweise verhindern bestimmte Windows-Prozesse den Upload.
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0817_2016-->

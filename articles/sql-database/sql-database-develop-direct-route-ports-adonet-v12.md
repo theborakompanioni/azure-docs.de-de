@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/25/2016" 
+	ms.date="08/17/2016"
 	ms.author="annemill"/>
 
 
@@ -120,4 +120,4 @@ In diesem Thema werden die Unterschiede bei der Clientverbindung zwischen SQL-Da
 
 - [Konfigurieren der Firewalleinstellungen für Azure SQL-Datenbank](sql-database-configure-firewall-settings.md)
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0817_2016-->

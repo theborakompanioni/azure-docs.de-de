@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/25/2016"
+	ms.date="08/10/2016"
 	ms.author="jgao"/>
 
 
@@ -56,7 +56,7 @@ Azure HDInsight unterstützt mehrere Hadoop-Clusterversionen, die jederzeit bere
 
 Component|HDInsight-Version 3.4 | HDInsight-Version 3.3 | HDInsight-Version 3.2 (Standard)|HDInsight-Version 3.1 |HDInsight Version 3,0|
 ---|---|---|---|---|---
-Hortonworks Data Platform|2\.4|2\.3|2\.2|2\.1.7|2,0|
+Hortonworks Data Platform|2\.4|2\.3|2\.2|2\.1.7|2\.0|
 Apache Hadoop und YARN|2\.7.1|2\.7.1|2\.6.0|2\.4.0|2\.2.0|
 Apache Tez|0\.7.0|0\.7.0 | 0\.5.2|0\.4.0||
 Apache Pig|0\.15.0|0\.15.0|0\.14.0|0\.12.1|0\.12.0|
@@ -87,15 +87,15 @@ In der folgenden Tabelle werden die derzeit verfügbaren Versionen von HDInsight
 * Hochverfügbare Cluster mit zwei Hauptknoten werden standardmäßig für HDInsight 2.1 und höher bereitgestellt. Für HDInsight 1.6-Cluster sind sie nicht verfügbar.
 * Nachdem der Support für eine bestimmte Version abgelaufen ist, steht sie möglicherweise nicht mehr im Azure-Portal zur Verfügung. Die folgende Tabelle zeigt, welche Versionen im klassischen Azure-Portal verfügbar sind. Clusterversionen stehen bis zum Zeitpunkt ihrer „Veraltung“ weiterhin über den Parameter `Version` im Windows PowerShell-Befehl [New-AzureRmHDInsightCluster](https://msdn.microsoft.com/library/mt619331.aspx) und das .NET SDK zur Verfügung.
 
-HDInsight-Version|HDP-Version|Hohe Verfügbarkeit|Herausgabedatum|Im Azure-Portal verfügbar|Supportablaufdatum|Veraltet ab
----|---|---|---|---|---|---
-HDI 3.4|HDP 2.4|Ja|03/29/2016|Ja||
-HDI 3.3|HDP 2.3|Ja|02\.12.2015|Ja||
-HDI 3.2|HDP 2.2|Ja|18\.02.2015|Ja||
-HDI 3,1|HDP 2,1|Ja|24\.06.2014|Ja||
-HDI 3,0|HDP 2,0|Ja|11\.02.2014|Ja|17\.09.2014|30\.06.2015
-HDI 2,1|HDP 1,3|Ja|28\.10.2013|Ja|12\.05.2014|31\.05.2015
-HDI 1.6|HDP 1.1|Nein|28\.10.2013|Ja|26\.04.2014|31\.05.2015
+HDInsight-Version|HDP-Version|Betriebssystem des virtuellen Computers|Hohe Verfügbarkeit|Herausgabedatum|Im Azure-Portal verfügbar|Supportablaufdatum|Veraltet ab
+---|---|---|---|---|---|---|---
+HDI 3.4|HDP 2.4|Ubuntu 14.0.4 LTS|Ja|03/29/2016|Ja||
+HDI 3.3|HDP 2.3|Ubuntu 14.0.4 LTS oder Windows Server 2012 R2|Ja|02\.12.2015|Ja||
+HDI 3.2|HDP 2.2|Ubuntu 12.04 LTS oder Windows Server 2012 R2|Ja|18\.02.2015|Ja||
+HDI 3,1|HDP 2,1|Windows Server 2012 R2|Ja|24\.06.2014|Ja||
+HDI 3,0|HDP 2,0|Windows Server 2012 R2|Ja|11\.02.2014|Ja|17\.09.2014|30\.06.2015
+HDI 2,1|HDP 1,3|Windows Server 2012 R2|Ja|28\.10.2013|Ja|12\.05.2014|31\.05.2015
+HDI 1.6|HDP 1.1||Nein|28\.10.2013|Ja|26\.04.2014|31\.05.2015
 
 **Bereitstellung von Nicht-Standardclustern**
 
@@ -112,7 +112,7 @@ Das Datum **Veraltet ab** ist das Datum, nach dem eine Clusterversion nicht mehr
 
 ## Hortonworks-Versionshinweise im Zusammenhang mit HDInsight-Versionen##
 
-* HDInsight-Clusterversion 3.4 verwendet eine Hadoop-Distribution, die auf [Hortonworks Data Platform 2.4](http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.4.0/bk_HDP_RelNotes/content/ch_relnotes_v240.html) basiert.
+* HDInsight-Clusterversion 3.4 verwendet eine Hadoop-Distribution, die auf [Hortonworks Data Platform 2.4](http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.4.0/bk_HDP_RelNotes/content/ch_relnotes_v240.html) basiert.
 
 
 
@@ -156,4 +156,4 @@ Das Datum **Veraltet ab** ist das Datum, nach dem eine Clusterversion nicht mehr
 
 [zookeeper]: http://zookeeper.apache.org/
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0817_2016-->

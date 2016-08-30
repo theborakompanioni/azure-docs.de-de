@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="nodejs"
 	ms.topic="article"
-	ms.date="06/24/2016"
+	ms.date="08/11/2016"
 	ms.author="robmcm"/>
 
 # Node.js-Web-App mit Azure-Tabellendienst
@@ -68,7 +68,7 @@ Erstellen Sie ein Azure-Speicherkonto. Die App verwendet dieses Konto zum Speich
 
 ##Installieren der Module und Generieren des Gerüsts
 
-In diesem Abschnitt erstellen Sie eine neue Node-Anwendung und fügen Modulpakete mithilfe von npm hinzu. Für diese Anwendung verwenden Sie die Module [Express] und [Azure]. Das Express-Modul stellt ein Modellansichts-Controller-Framework für Node bereit, das Azure-Modul Konnektivität zum Tabellendienst.
+In diesem Abschnitt erstellen Sie eine neue Node-Anwendung und fügen Sie Modulpakete mithilfe von npm hinzu. Für diese Anwendung verwenden Sie die Module [Express] und [Azure]. Das Express-Modul stellt ein Modellansichts-Controller-Framework für Node bereit, das Azure-Modul Konnektivität zum Tabellendienst.
 
 ### Installieren von Express und Generieren des Gerüsts
 
@@ -169,7 +169,7 @@ Jetzt können wir die Anwendung erstellen.
 
 Ein *Modell* ist ein Objekt, das für die Daten in Ihrer Anwendung steht. Für die Anwendung liegt als einziges Modell ein Task-Objekt vor, das ein Element in der Aufgabenliste darstellt. Aufgaben enthalten die folgenden Felder:
 
-- Partitionsschlüssel
+- PartitionKey
 - Zeilenschlüssel
 - Name (Zeichenfolge)
 - Kategorie (Zeichenfolge)
@@ -636,4 +636,4 @@ Die Schritte in diesem Artikel beschreiben zwar die Verwendung des Tabellendiens
 [app-settings-save]: ./media/storage-nodejs-use-table-storage-web-site/savebutton.png
 [app-settings]: ./media/storage-nodejs-use-table-storage-web-site/storage-tasks-appsettings.png
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0817_2016-->

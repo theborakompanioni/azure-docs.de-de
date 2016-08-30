@@ -34,6 +34,12 @@ Führen Sie die folgenden beiden Schritte aus, um eine Linux-Dateifreigabe mit d
 - Installieren Sie [Samba](https://www.samba.org/) auf dem Linux-Server.
 - Installieren und konfigurieren Sie das Datenverwaltungsgateway auf einem Windows-Server. Das Installieren des Gateways auf einem Linux-Server wird nicht unterstützt.
  
+## Assistent zum Kopieren von Daten
+Die einfachste Möglichkeit zum Erstellen einer Pipeline, die Daten aus einem und in ein lokales Dateisystem kopiert, ist die Verwendung des Assistenten zum Kopieren von Daten. Unter [Tutorial: Erstellen einer Pipeline mit dem Assistenten zum Kopieren](data-factory-copy-data-wizard-tutorial.md) finden Sie eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mithilfe des Assistenten zum Kopieren von Daten.
+
+Die folgenden Beispiele zeigen JSON-Beispieldefinitionen, die Sie zum Erstellen einer Pipeline mit dem [Azure-Portal](data-factory-copy-activity-tutorial-using-azure-portal.md), mit [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) oder [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) verwenden können. Sie zeigen, wie Sie Daten in und aus einem lokalen Dateisystem und Azure Blob Storage kopieren. Daten können jedoch auch mithilfe der Kopieraktivität in Azure Data Factory **direkt** aus beliebigen Quellen in die [hier](data-factory-data-movement-activities.md#supported-data-stores) aufgeführten Senken kopiert werden.
+
+
 ## Beispiel: Kopieren von Daten aus dem lokalen Dateisystem in ein Azure-Blob
 
 In diesem Beispiel wird gezeigt, wie Sie Daten aus einem lokalen Dateisystem in einen Azure-BLOB-Speicher kopieren. Daten können jedoch mithilfe der Kopieraktivität in Azure Data Factory **direkt** in die [hier](data-factory-data-movement-activities.md#supported-data-stores) aufgeführten Senken kopiert werden.
@@ -439,7 +445,7 @@ type | Die "type"-Eigenschaft muss auf **OnPremisesFileServer** festgelegt sein.
 host | Stammpfad des Ordners, den Sie kopieren möchten. Verwenden Sie für Sonderzeichen in der Zeichenfolge das Escapezeichen „\\“. Beispiele finden Sie unter [Beispieldefinitionen für verknüpfte Dienste und Datasets](#sample-linked-service-and-dataset-definitions). | Ja
 userid | Geben Sie die ID des Benutzers an, der auf dem Server zugreifen darf. | Nein (wenn Sie "encryptedCredential" auswählen)
 password | Geben Sie das Kennwort für das Benutzerkonto (userid) an. | Nein (wenn Sie "encryptedCredential" auswählen) 
-encryptedCredential | Geben Sie die verschlüsselten Anmeldeinformationen an. Diese können Sie durch Ausführen des Cmdlets „New-AzureRmDataFactoryEncryptValue“ abrufen.<br/><br/>**Hinweis:** Zur Verwendung von Cmdlets wie „New-AzureRmDataFactoryEncryptValue“, bei denen der type-Parameter auf "OnPremisesFileSystemLinkedService" festgelegt ist, muss mindestens die Azure PowerShell-Version 0.8.14 verwendet werden. | Nein (wenn Sie "userid" und "password" unverschlüsselt angeben)
+encryptedCredential | Geben Sie die verschlüsselten Anmeldeinformationen an. Diese können Sie durch Ausführen des Cmdlets „New-AzureRmDataFactoryEncryptValue“ abrufen.<br/><br/>**Hinweis:** Zur Verwendung von Cmdlets wie „New-AzureRmDataFactoryEncryptValue“, bei denen der type-Parameter auf „OnPremisesFileSystemLinkedService“ festgelegt ist, muss mindestens die Azure PowerShell-Version 0.8.14 verwendet werden. | Nein (wenn Sie "userid" und "password" unverschlüsselt angeben)
 gatewayName | Der Name des Gateways, das der Data Factory-Dienst zum Verbinden mit dem lokalen Dateiserver verwenden soll. | Ja
 
 Ausführliche Informationen zum Festlegen von Anmeldeinformationen für eine Datenquelle des lokalen Dateisystems finden Sie unter [Festlegen von Anmeldeinformationen und Sicherheit](data-factory-move-data-between-onprem-and-cloud.md#set-credentials-and-security).
@@ -450,7 +456,7 @@ Szenario | Host in der Definition des verknüpften Diensts | folderPath in der D
 Lokaler Ordner auf dem Datenverwaltungsgateway-Computer: <br/><br/>z.B. D:\\* oder D:\\folder\\subfolder\\* | D:\\\ (für Gatewayversion 2.0 und höher) <br/><br/> localhost (für Gatewayversionen unter 2.0) | .\\\ oder folder\\\subfolder (für Gatewayversion 2.0 und höher) <br/><br/>D:\\\ oder D:\\\folder\\\subfolder (für Gatewayversionen unter 2.0)
 Freigegebener Remoteordner: <br/><br/>z.B. \\\myserver\\share\\* oder \\\myserver\\share\\folder\\subfolder\\* | \\\\\\myserver\\\share | .\\\ oder folder\\\subfolder
 
-Die **Version** des installierten Gateways finden Sie, indem Sie den [Datenverwaltungsgateway-Konfigurations-Manager](data-factory-data-management-gateway.md#data-management-gateway-configuration-manager) auf Ihrem Computer starten und zur Registerkarte **Hilfe** wechseln.
+Die **Version** des installierten Gateways ermitteln Sie, indem Sie den [Datenverwaltungsgateway-Konfigurations-Manager](data-factory-data-management-gateway.md#data-management-gateway-configuration-manager) auf Ihrem Computer starten und zur Registerkarte **Hilfe** wechseln.
 
 > [AZURE.NOTE] Wenn Sie in einem Szenario mit lokalem Ordner die host-Eigenschaft als „localhost“ angeben, funktioniert die Kopieraktivität weiterhin mit jeder Gatewayversion, aber Sie können den Kopier-Assistenten nicht zum Einrichten der Kopie verwenden. Es empfiehlt sich, [das Gateway auf Version 2.0 oder höher zu aktualisieren](data-factory-data-management-gateway.md#update-data-management-gateway). Dann können Sie die oben genannten neuen Konfigurationen sowohl in JSON als auch im Kopier-Assistenten verwenden, damit das Szenario funktioniert.
 
@@ -494,9 +500,9 @@ Eigenschaft | Beschreibung | Erforderlich
 folderPath | Unterpfad zum Ordner. Verwenden Sie für Sonderzeichen in der Zeichenfolge das Escapezeichen „\\“. Beispiele finden Sie unter [Beispieldefinitionen für verknüpfte Dienste und Datasets](#sample-linked-service-and-dataset-definitions).<br/><br/>Sie können dies mit **partitionBy** kombinieren, um Ordnerpfade basierend auf Datum und Uhrzeit für Start und Ende des Slices zu erhalten. | Ja
 fileName | Geben Sie den Namen der Datei in **folderPath** an, wenn die Tabelle auf eine bestimmte Datei im Ordner verweisen soll. Wenn Sie keine Werte für diese Eigenschaft angeben, verweist die Tabelle auf alle Dateien im Ordner.<br/><br/>Wenn fileName für ein Ausgabedataset nicht angegeben ist, hat der Name der generierten Datei das folgende Format: <br/><br/>Data.<GUID>.txt (Beispiel: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt). | Nein
 partitionedBy | "partitionedBy" kann genutzt werden, um einen dynamischen Wert für "folderPath" oder "filename" für Zeitreihendaten anzugeben. Beispiel: "folderPath" als Parameter für jedes Stunde mit Daten. | Nein
-Format | Die folgenden Formattypen werden unterstützt: **TextFormat**, **AvroFormat**, **JsonFormat** und **OrcFormat**. Legen Sie die **type**-Eigenschaft unter „Format“ auf einen dieser Werte fest. Weitere Informationen finden Sie in den Abschnitten [Angeben von TextFormat](#specifying-textformat), [Angeben von AvroFormat](#specifying-avroformat), [Angeben von JsonFormat](#specifying-jsonformat) und [Angeben von OrcFormat](#specifying-orcformat). Wenn Sie Dateien unverändert zwischen dateibasierten Speichern kopieren möchten (binäre Kopie), können Sie den Formatabschnitt bei den Definitionen von Eingabe- und Ausgabedatasets überspringen. | Nein
+Format | Die folgenden Formattypen werden unterstützt: **TextFormat**, **AvroFormat**, **JsonFormat** und **OrcFormat**. Sie müssen die **type**-Eigenschaft unter „format“ auf einen dieser Werte festlegen. Weitere Informationen finden Sie in den Abschnitten [Angeben von TextFormat](#specifying-textformat), [Angeben von AvroFormat](#specifying-avroformat), [Angeben von JsonFormat](#specifying-jsonformat) und [Angeben von OrcFormat](#specifying-orcformat). Wenn Sie Dateien unverändert zwischen dateibasierten Speichern kopieren möchten (binäre Kopie), können Sie den Formatabschnitt bei den Definitionen von Eingabe- und Ausgabedatasets überspringen. | Nein
 fileFilter | Geben Sie einen Filter zur Auswahl einer Teilmenge der Dateien in "folderPath" statt alle Dateien an. <br/><br/>Zulässige Werte: * (mehrere Zeichen) und ? (einzelnes Zeichen).<br/><br/>Beispiel 1: „fileFilter“: „*.log“<br/>Beispiel 2: „fileFilter“: „2014-1-?.txt“<br/><br/>**Hinweis:** fileFilter eignet sich für ein FileShare-Eingabedataset. | Nein
-| Komprimierung | Geben Sie den Typ und den Grad der Komprimierung für die Daten an. Folgende Typen werden unterstützt: **GZip**, **Deflate** und **BZip2**. Folgende Komprimierungsgrade werden unterstützt: **Optimal** und **Schnellste**. Beachten Sie, dass für Daten mit **AvroFormat** oder **OrcFormat** derzeit keine Komprimierungseinstellungen unterstützt werden. Weitere Einzelheiten finden Sie im Abschnitt [Komprimierungsunterstützung](#compression-support). | Nein |
+| Komprimierung | Geben Sie den Typ und den Grad der Komprimierung für die Daten an. Folgende Typen werden unterstützt: **GZip**, **Deflate** und **BZip2**. Folgende Komprimierungsstufen werden unterstützt: **Optimal** und **Schnellste**. Beachten Sie, dass für Daten mit **AvroFormat** oder **OrcFormat** derzeit keine Komprimierungseinstellungen unterstützt werden. Weitere Einzelheiten finden Sie im Abschnitt [Komprimierungsunterstützung](#compression-support). | Nein |
 
 > [AZURE.NOTE] "filename" und "fileFilter" können nicht gleichzeitig verwendet werden.
 
@@ -565,7 +571,7 @@ false | mergeFiles | Für einen Quellordner „Ordner1“ mit der folgenden Stru
 [AZURE.INCLUDE [data-factory-column-mapping](../../includes/data-factory-column-mapping.md)]
 
 ## Leistung und Optimierung  
-Der Artikel [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-factory-copy-activity-performance.md) beschreibt wichtige Faktoren, die sich auf die Leistung der Datenverschiebung (Kopieraktivität) in Azure Data Factory auswirken, sowie verschiedene Möglichkeiten zur Leistungsoptimierung.
+Im Artikel [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-factory-copy-activity-performance.md) werden wichtige Faktoren beschrieben, die sich auf die Leistung der Datenverschiebung (Kopieraktivität) in Azure Data Factory auswirken, sowie verschiedene Möglichkeiten zur Leistungsoptimierung.
 
 
 
@@ -574,4 +580,4 @@ Der Artikel [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-fa
 
  
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0817_2016-->

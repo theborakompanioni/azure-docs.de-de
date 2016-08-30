@@ -15,7 +15,7 @@
     ms.tgt_pltfrm="vm-linux"
     ms.devlang="na"
     ms.topic="hero-article"
-    ms.date="04/29/2016"
+    ms.date="08/18/2016"
     ms.author="v-livech"
 />
 
@@ -24,8 +24,6 @@
 > [AZURE.NOTE] Falls Sie einen Moment Zeit haben, würden wir uns freuen, wenn Sie an dieser [kurzen Umfrage](https://aka.ms/linuxdocsurvey) teilnehmen könnten, um zur Verbesserung der Dokumentation für virtuelle Azure-Computer unter Linux beizutragen. Jede Antwort hilft uns dabei, Sie noch besser bei Ihrer Arbeit zu unterstützen.
 
 In diesem Artikel erfahren Sie, wie Sie mithilfe des [Azure-Portals](https://portal.azure.com/) schnell einen virtuellen Linux-Computer erstellen. Die einzigen Voraussetzungen sind [ein Azure-Konto](https://azure.microsoft.com/pricing/free-trial/) und [Dateien mit öffentlichen und privaten SSH-Schlüsseln](virtual-machines-linux-mac-create-ssh-keys.md).
-
-> [AZURE.NOTE] Wenn Sie ein Kennwort für den sicheren Zugriff auf Ihren virtuellen Computer verwenden möchten, muss das Kennwort mindestens zwölf Zeichen lang sein und mindestens einen Großbuchstaben, einen Kleinbuchstaben, ein Sonderzeichen und eine Zahl enthalten.
 
 
 1. Melden Sie sich mit Ihrer Azure-Kontoidentität beim Azure-Portal an, und klicken Sie links oben auf **+ Neu**:
@@ -40,8 +38,8 @@ In diesem Artikel erfahren Sie, wie Sie mithilfe des [Azure-Portals](https://por
     - Geben Sie einen Namen für den virtuellen Computer ein.
     - Geben Sie einen Benutzernamen für den Administratorbenutzer ein.
     - Legen Sie den Authentifizierungstyp auf **Öffentlicher SSH-Schlüssel** fest.
-    - Geben Sie Ihren öffentlichen SSH-Schlüssel als Zeichenfolge ein (standardmäßig aus dem Verzeichnis `~/.ssh/`).
-    - Geben Sie einen Ressourcengruppennamen ein (um eine neue Bereitstellungsgruppe zu erstellen), oder wählen Sie eine vorhandene Gruppe aus.
+    - Geben Sie Ihren öffentlichen SSH-Schlüssel als Zeichenfolge ein (aus dem Verzeichnis `~/.ssh/`).
+    - Geben Sie einen Ressourcengruppennamen ein, oder wählen Sie eine vorhandene Gruppe aus.
 
     Klicken Sie auf **OK**, um den Vorgang fortzusetzen und die VM-Größe auszuwählen. Das sollte dann in etwa wie folgt aussehen:
 
@@ -81,6 +79,4 @@ Sie haben nun schnell eine Linux-VM zum Testen und für Demonstrationszwecke ers
 - [Erstellen einer geschützten Linux-VM mit einer Azure-Vorlage](virtual-machines-linux-create-ssh-secured-vm-from-template.md)
 - [Erstellen einer Linux-VM von Grund auf mit der Azure-Befehlszeilenschnittstelle](virtual-machines-linux-create-cli-complete.md)
 
-Diese Artikel beschreiben die ersten Schritte beim Erstellen einer Azure-Infrastruktur sowie einer beliebigen Anzahl von proprietären und Open Source-Tools zur Infrastrukturbereitstellung, -konfiguration und -orchestrierung.
-
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0824_2016-->

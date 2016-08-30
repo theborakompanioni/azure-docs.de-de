@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
-   ms.date="05/08/2016"
+   ms.date="08/15/2016"
    ms.author="tarcher" />
 
 # Veröffentlichung in Entwicklungs- und Testumgebungen mithilfe von Windows PowerShell-Skripts
@@ -181,7 +181,7 @@ Beachten Sie, dass diese Methode für die Bereitstellung von Azure-Anmeldeinform
 
 `Publish-WebApplication.ps1 -Verbose –Configuration C:\Path\WebProject-WAWS-dev.json`
 
-1. Verwenden Sie den Befehl **Publish-WebApplication.ps1** wie in einem der folgenden Beispiele gezeigt, um das Skript aufzurufen und Ihre Webanwendung zu veröffentlichen. Wenn Sie die Standardeinstellungen für andere Argumente (z. B. den Abonnementnamen, den Namen des Veröffentlichungspakets, die Anmeldeinformationen des virtuellen Computers oder die Anmeldeinformationen des Datenbankservers) außer Kraft setzen müssen, können Sie diese Parameter angeben. Verwenden Sie die Option **–Verbose**, um weitere Informationen zum Verlauf des Veröffentlichungsvorgangs anzuzeigen.
+1. Verwenden Sie den Befehl **Publish-WebApplication.ps1** wie in einem der folgenden Beispiele gezeigt, um das Skript aufzurufen und Ihre Webanwendung zu veröffentlichen. Wenn Sie die Standardeinstellungen für andere Argumente (z.B. den Abonnementnamen, den Namen des Veröffentlichungspakets, die Anmeldeinformationen des virtuellen Computers oder die Anmeldeinformationen des Datenbankservers) außer Kraft setzen müssen, können Sie diese Parameter angeben. Verwenden Sie die Option **–Verbose**, um weitere Informationen zum Verlauf des Veröffentlichungsvorgangs anzuzeigen.
 
 ```
 Publish-WebApplication.ps1 –Configuration C:\Path\WebProject-WAWS-dev-json `
@@ -318,13 +318,13 @@ Wenn Sie Hilfe zu Funktionen abrufen möchten, können Sie an der Windows PowerS
 |Add-AzureVMEndpoints|Fügt einem virtuellen Computer neue Eingabeendpunkte hinzu und gibt den virtuellen Computer mit dem neuen Endpunkt zurück.|
 |Add-AzureVMStorage|Erstellt ein neues Azure-Speicherkonto im aktuellen Abonnement. Der Name des Kontos beginnt mit "devtest", gefolgt von einer eindeutigen alphanumerischen Zeichenfolge. Die Funktion gibt den Namen des neuen Speicherkontos zurück. Sie müssen einen Speicherort oder eine Affinitätsgruppe für das neue Speicherkonto angeben.|
 |Add-AzureWebsite|Erstellt eine Website mit dem angegebenen Namen und Speicherort. Diese Funktion ruft die Funktion **New-AzureWebsite** im Azure-Modul auf. Wenn das Abonnement noch keine Website mit dem angegebenen Namen umfasst, erstellt diese Funktion die Website und gibt ein Websiteobjekt zurück. Andernfalls wird `$null` zurückgegeben.|
-|Backup-Subscription|Speichert das aktuelle Azure-Abonnement in der Variablen `$Script:originalSubscription` im Skriptbereich. Diese Funktion speichert das aktuelle Azure-Abonnement (wie durch `Get-AzureSubscription -Current` abgerufen) und das zugehörige Speicherkonto sowie das Abonnement, das von diesem Skript geändert wird (in der Variablen `$UserSpecifiedSubscription` gespeichert), und das zugehörige Speicherkonto im Skriptbereich. Da diese Werte gespeichert werden, können Sie eine Funktion (z. B. `Restore-Subscription`) zum Wiederherstellen des ursprünglichen aktuellen Abonnements und Speicherkontos im aktuellen Status verwenden, wenn sich der aktuelle Status geändert hat.|
+|Backup-Subscription|Speichert das aktuelle Azure-Abonnement in der Variablen `$Script:originalSubscription` im Skriptbereich. Diese Funktion speichert das aktuelle Azure-Abonnement (wie durch `Get-AzureSubscription -Current` abgerufen) und das zugehörige Speicherkonto sowie das Abonnement, das von diesem Skript geändert wird (in der Variablen `$UserSpecifiedSubscription` gespeichert), und das zugehörige Speicherkonto im Skriptbereich. Da diese Werte gespeichert werden, können Sie eine Funktion (z.B. `Restore-Subscription`) zum Wiederherstellen des ursprünglichen aktuellen Abonnements und Speicherkontos im aktuellen Status verwenden, wenn sich der aktuelle Status geändert hat.|
 |Find-AzureVM|Ruft den angegebenen virtuellen Azure-Computer ab.|
 |Format-DevTestMessageWithTime|Stellt einer Meldung das Datum und die Uhrzeit voran. Diese Funktion bezieht sich auf Meldungen, die in die Datenströme vom Typ "Fehler" und "Ausführlich" geschrieben werden.|
 |Get-AzureSQLDatabaseConnectionString|Stellt eine Verbindungszeichenfolge zum Herstellen einer Verbindung mit einer Azure SQL-Datenbank zusammen.|
-|Get-AzureVMStorage|Gibt den Namen des ersten Speicherkontos am angegebenen Speicherort oder in der Affinitätsgruppe mit dem Namensmuster "devtest*" zurück (ohne Unterscheidung von Groß-/Kleinschreibung). Wenn das Speicherkonto "devtest*" nicht mit dem Speicherort oder der Affinitätsgruppe übereinstimmt, wird es von der Funktion ignoriert. Sie müssen einen Speicherort oder eine Affinitätsgruppe angeben.|
+|Get-AzureVMStorage|Gibt den Namen des ersten Speicherkontos am angegebenen Speicherort oder in der Affinitätsgruppe mit dem Namensmuster „devtest*“ zurück (ohne Unterscheidung von Groß-/Kleinschreibung). Wenn das Speicherkonto „devtest*“ nicht mit dem Speicherort oder der Affinitätsgruppe übereinstimmt, wird es von der Funktion ignoriert. Sie müssen einen Speicherort oder eine Affinitätsgruppe angeben.|
 |Get-MSDeployCmd|Gibt einen Befehl zum Ausführen des Tools "MsDeploy.exe" zurück.|
-|New-AzureVMEnvironment|Sucht oder erstellt einen virtuellen Computer im Abonnement, der mit den Werten in der JSON-Konfigurationsdatei übereinstimmt.|
+|New-AzureVMEnvironment|Sucht oder erstellt einen virtuellen Computer im Abonnement, das mit den Werten in der JSON-Konfigurationsdatei übereinstimmt.|
 |Publish-WebPackage|Verwendet "MsDeploy.exe" und eine Webveröffentlichungspaket-ZIP-Datei zum Bereitstellen von Ressourcen für eine Website. Diese Funktion generiert keine Ausgabe. Wenn beim Aufruf von "MSDeploy.exe" ein Fehler auftritt, löst die Funktion eine Ausnahme aus. Verwenden Sie die Option **-Verbose**, wenn Sie eine ausführlichere Ausgabe wünschen.|
 |Publish-WebPackageToVM|Überprüft die Parameterwerte und ruft dann die Funktion **Publish-WebPackage** auf.|
 |Read-ConfigFile|Überprüft die JSON-Konfigurationsdatei und gibt eine Hashtabelle ausgewählter Werte zurück.|
@@ -351,4 +351,4 @@ Wenn Sie Hilfe zu Funktionen abrufen möchten, können Sie an der Windows PowerS
 
 Weitere Informationen zur PowerShell-Skripterstellung finden Sie unter [Scripting with Windows PowerShell](https://technet.microsoft.com/library/bb978526.aspx). Weitere Azure PowerShell-Skripts finden Sie im [Script Center](https://azure.microsoft.com/documentation/scripts/).
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0817_2016-->

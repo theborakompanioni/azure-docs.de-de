@@ -30,10 +30,10 @@ Zu Beginn gehen wir davon aus, dass Sie Zugriff auf einen Datenfeed haben. Beisp
 
 Beim Starten der GenericWebToEH-Lösung wird eine Konfigurationsdatei (App.config) gelesen, um eine Reihe von Informationen abzurufen:
 
-1. Die URL oder eine Liste von URLs für die Website, auf der die Daten veröffentlicht werden. Dies ist im Idealfall eine Website, die die Daten im JSON-Format veröffentlicht, z. B. die [hier](http://www.wsdot.wa.gov/Traffic/api/) aufgeführten WSDOT-Verweise. 
+1. Die URL oder eine Liste von URLs für die Website, auf der die Daten veröffentlicht werden. Dies ist im Idealfall eine Website, die die Daten im JSON-Format veröffentlicht, z. B. die [hier](http://www.wsdot.wa.gov/Traffic/api/) aufgeführten WSDOT-Verweise.
 2. Anmeldeinformationen für die URL, falls erforderlich. Viele öffentliche Quellen benötigen keine Anmeldeinformationen, oder Sie können die Anmeldeinformationen in die URL-Zeichenfolge aufnehmen. Bei anderen ist es erforderlich, dass Sie die Informationen separat angeben. (Beachten Sie, dass Sie in dieser Anwendung nur einen Satz von Anmeldeinformationen angeben können. Daher funktioniert sie nur dann, wenn Sie nur eine URL, keine Liste mit URLs angeben.)
-3. Die Service Bus-Verbindungszeichenfolge und der Name des Event Hubs in diesem Service Bus-Namespace, an den Sie die Daten per Push übertragen werden. Diese Informationen finden Sie im klassischen Azure-Portal.
-4. Ein Ruheintervall in Millisekunden zwischen den Vorgängen zum Datenabruf von der öffentlichen Website. Zu dieser Einstellung müssen einige Aspekte berücksichtigt werden. Wenn Sie zu selten Daten abrufen, können Ihnen Daten entgehen; wenn Sie andererseits zu häufig Daten abrufen, erhalten Sie eventuell wiederholt dieselben Daten oder werden womöglich als schädlicher Bot blockiert. Ziehen Sie in Betracht, wie oft die Datenquelle aktualisiert wird – Wetter- oder Verkehrsdaten werden vielleicht alle 15 Minuten aktualisiert, aber Aktienkurse vielleicht alle paar Sekunden, je nachdem, wo Sie diese abrufen. 
+3. Die Verbindungszeichenfolge und der Name des Event Hubs in diesem Event Hubs-Namespace, an den Sie die Daten per Push übertragen werden. Diese Informationen finden Sie im Azure-Portal.
+4. Ein Ruheintervall in Millisekunden zwischen den Vorgängen zum Datenabruf von der öffentlichen Website. Zu dieser Einstellung müssen einige Aspekte berücksichtigt werden. Wenn Sie zu selten Daten abrufen, können Ihnen Daten entgehen; wenn Sie andererseits zu häufig Daten abrufen, erhalten Sie eventuell wiederholt dieselben Daten oder werden womöglich als schädlicher Bot blockiert. Ziehen Sie in Betracht, wie oft die Datenquelle aktualisiert wird – Wetter- oder Verkehrsdaten werden vielleicht alle 15 Minuten aktualisiert, aber Aktienkurse vielleicht alle paar Sekunden, je nachdem, wo Sie diese abrufen.
 5. Ein Flag, um der Anwendung mitzuteilen, ob die Daten im JSON- oder im XML-Format eingehen. Da die Daten an einen Event Hub übertragen werden sollen, umfasst die Anwendung ein Modul zum Konvertieren vom XML- ins JSON-Format vor der Übertragung.
 
 Nach dem Lesen der Konfigurationsdatei wechselt die Anwendung in eine Schleife: Zugreifen auf die öffentliche Website, ggf. Konvertieren der Daten, Schreiben der Daten an den Event Hub und Warten auf ein Verstreichen des Ruheintervalls, bevor der Vorgang von Neuem beginnt. Genauer:
@@ -47,4 +47,4 @@ Zum Bereitstellen der Lösung klonen Sie die Anwendung [GenericWebToEH](https://
 
 Weitere Event Hubs-Beispiele finden Sie im [Azure-Beispielkatalog](https://azure.microsoft.com/documentation/samples/?service=event-hubs) und unter [MSDN](https://code.msdn.microsoft.com/site/search?query=event%20hubs&f%5B0%5D.Value=event%20hubs&f%5B0%5D.Type=SearchText&ac=5).
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0817_2016-->

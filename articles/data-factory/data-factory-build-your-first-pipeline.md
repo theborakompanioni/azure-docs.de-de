@@ -24,10 +24,11 @@
 - [Verwenden von Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
 - [Mithilfe von PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
 - [Verwenden der Resource Manager-Vorlage](data-factory-build-your-first-pipeline-using-arm.md)
+- [Verwenden der REST-API](data-factory-build-your-first-pipeline-using-rest-api.md)
 
 In diesem Tutorial erstellen Sie Ihre erste Azure Data Factory mit einer Datenpipeline zur Datenverarbeitung mittels Ausführung eines Hive-Skripts in einem Azure HDInsight (Hadoop)-Cluster.
 
-Dieser Artikel bietet eine **Übersicht** über das Tutorial und eine detaillierte Anleitung zum Erfüllen seiner **Voraussetzungen**. Sobald die Voraussetzungen erfüllt sind, verwenden Sie eines der folgenden Elemente zum Durcharbeiten des Tutorials: Data Factory-Editor im Azure-Portal, Visual Studio, Azure PowerShell oder ARM-Vorlage.
+Dieser Artikel bietet eine **Übersicht** über das Tutorial und eine detaillierte Anleitung zum Erfüllen seiner **Voraussetzungen**. Sobald die Voraussetzungen erfüllt sind, verwenden Sie eines der folgenden Elemente zum Durcharbeiten des Tutorials: Data Factory-Editor im Azure-Portal, Visual Studio, Azure PowerShell oder Azure Resource Manager-Vorlage.
 
 Beachten Sie, dass dieser Artikel keine grundlegende Übersicht über den Azure Data Factory-Dienst bietet. Eine Übersicht über das Konzept des Diensts finden Sie unter [Einführung in Azure Data Factory](data-factory-introduction.md).
 
@@ -58,7 +59,7 @@ Wenn die Datei von der Pipeline mit HDInsight-Hive-Aktivität verarbeitet wird, 
 	adfgetstarted/partitioneddata/year=2014/month=2/000000_0
 	adfgetstarted/partitioneddata/year=2014/month=3/000000_0
 
-Von den obigen Beispielzeilen wird die erste (mit „2014-01-01“) in die Datei „000000\_0“ im Ordner „month=1“ geschrieben. Auf ähnliche Weise wird die zweite in die Datei im Ordner „month=2“ geschrieben und die dritte in die Datei im Ordner „month=3“.
+Von den obigen Beispielzeilen wird die erste (mit „2014-01-01“) in die Datei „000000\_0“ im Ordner „month=1“ geschrieben. Auf ähnliche Weise wird die zweite Zeile in die Datei im Ordner „month=2“ geschrieben und die dritte Zeile in die Datei im Ordner „month=3“.
 
 
 ## Voraussetzungen
@@ -66,12 +67,12 @@ Bevor Sie mit diesem Tutorial beginnen, müssen folgende Voraussetzungen erfüll
 
 1.	**Azure-Abonnement** – Wenn Sie über kein Azure-Abonnement verfügen, können Sie in wenigen Minuten ein kostenloses Testversionskonto einrichten. Im Artikel [Kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/) erfahren Sie, wie Sie ein kostenloses Testkonto erhalten.
 
-2.	**Azure-Speicher** – Sie benötigen ein Azure-Speicherkonto zum Speichern der Daten in diesem Tutorial. Falls Sie noch kein Azure-Speicherkonto haben, lesen Sie den Artikel [Erstellen eines Speicherkontos](../storage/storage-create-storage-account.md#create-a-storage-account). Nachdem Sie das Speicherkonto erstellt haben, müssen Sie den Kontoschlüssel für den Zugriff auf den Speicher abrufen. Siehe [Anzeigen, Kopieren und erneutes Generieren von Speicherzugriffsschlüsseln](../storage/storage-create-storage-account.md#view-and-copy-storage-access-keys).
+2.	**Azure Storage** – Sie benötigen ein Azure-Speicherkonto zum Speichern der Daten in diesem Tutorial. Falls Sie noch kein Azure-Speicherkonto haben, lesen Sie den Artikel [Erstellen eines Speicherkontos](../storage/storage-create-storage-account.md#create-a-storage-account). Nachdem Sie das Speicherkonto erstellt haben, müssen Sie den Kontoschlüssel für den Zugriff auf den Speicher abrufen. Siehe [Anzeigen, Kopieren und erneutes Generieren von Speicherzugriffsschlüsseln](../storage/storage-create-storage-account.md#view-and-copy-storage-access-keys).
 
 ## Hochladen von Dateien in Azure Storage für das Tutorial
 Bevor Sie mit dem Tutorial beginnen, müssen Sie den Azure-Speicher mit Dateien vorbereiten, die für das Tutorial benötigt werden.
 
-In diesem Abschnitt werden Sie Folgendes ausführen:
+In diesem Abschnitt führen Sie die folgenden Aufgaben aus:
 
 2. Hochladen der Hive-Abfragedatei (HQL) in den Ordner **script** des Containers **adfgetstarted**.
 3. Hochladen der Eingabedatei in den Ordner **inputdata** des Containers **adfgetstarted**.
@@ -227,4 +228,4 @@ Jetzt können Sie mit dem Tutorial beginnen. Klicken Sie oben auf eine der Regis
 - [Mithilfe von PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
 - [Verwenden der Resource Manager-Vorlage](data-factory-build-your-first-pipeline-using-arm.md)
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0817_2016-->

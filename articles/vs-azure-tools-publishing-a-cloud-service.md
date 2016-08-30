@@ -12,14 +12,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
-   ms.date="06/01/2016"
+   ms.date="08/15/2016"
    ms.author="tarcher" />
 
 # Veröffentlichen eines Clouddiensts mit den Azure Tools
 
 Mit den Azure-Tools für Microsoft Visual Studio können Sie Ihre Azure-Anwendung direkt aus Visual Studio veröffentlichen. Visual Studio unterstützt die integrierte Veröffentlichung für die Staging- oder Produktionsumgebung eines Clouddiensts.
 
-Um eine Azure-Anwendung veröffentlichen zu können, müssen Sie über ein Azure-Abonnement verfügen. Sie müssen auch einen Clouddienst und ein Speicherkonto für die Nutzung durch die Anwendung einrichten. Dies können Sie im [klassischen Azure-Portal](http://go.microsoft.com/fwlink/?LinkID=213885) festlegen.
+Um eine Azure-Anwendung veröffentlichen zu können, benötige Sie ein Azure-Abonnement. Sie müssen auch einen Clouddienst und ein Speicherkonto für die Nutzung durch die Anwendung einrichten. Dies können Sie im [klassischen Azure-Portal](http://go.microsoft.com/fwlink/?LinkID=213885) festlegen.
 
 >[AZURE.IMPORTANT] Beim Veröffentlichen können Sie die Bereitstellungsumgebung für Ihren Clouddienst auswählen. Außerdem müssen Sie ein Speicherkonto auswählen, das zum Speichern des Anwendungspakets für die Bereitstellung verwendet wird. Nach der Bereitstellung wird das Anwendungspaket aus dem Speicherkonto entfernt.
 
@@ -173,4 +173,4 @@ Unter Umständen müssen Sie bestimmte Dateien in Ihr Dienstpaket einschließen,
 
 Weitere Informationen zum Veröffentlichen in Azure aus Visual Studio finden Sie unter [Assistent zur Veröffentlichung einer Azure-Anwendung](vs-azure-tools-publish-azure-application-wizard.md).
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0817_2016-->

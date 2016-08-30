@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/13/2016" 
+	ms.date="08/11/2016" 
 	ms.author="ccompy"/>
 
 # Integrieren Ihrer App in ein Azure Virtual Network #
@@ -23,38 +23,40 @@ In diesem Dokument wird die Azure App Service-Funktion für die Integration in e
 Es gibt zwei Methoden, um Azure App Service zu nutzen.
 
 1. Mehrinstanzenfähige Systeme, die den gesamten Bereich der Tarife unterstützen
-1. Premium-Funktion „App Service-Umgebung“ (App Service Environment, ASE), die in Ihrem VNET bereitgestellt wird  
+1. Premium-Funktion „App Service-Umgebung“ (App Service Environment, ASE), die in Ihrem VNET bereitgestellt wird
 
-Die Bereitstellung einer ASE in einem V2-VNET wird in diesem Artikel nicht beschrieben. Dies wird weiterhin noch nicht unterstützt und daher in diesem Artikel außer Acht gelassen. Hier wird erläutert, wie Sie Ihre Apps so konfigurieren, dass Ressourcen in einem V1-VNET oder V2-VNET genutzt werden können.
+In diesem Dokument wird die VNET-Integration behandelt. Weitere Informationen zum ASE-Feature finden Sie unter [App Service-Umgebung – Einführung][ASEintro].
 
-Die VNET-Integration ermöglicht Ihrer Web-App den Zugriff auf Ressourcen in Ihrem virtuellen Netzwerk, gewährt aber keinen privaten Zugriff auf Ihre Web-App aus dem virtuellen Netzwerk. Ein häufiges Szenario für die Verwendung dieses Features besteht darin, für Ihre Web-App den Zugriff auf eine Datenbank oder Webdienste zu ermöglichen, die in Ihrem Azure Virtual Network auf einer virtuellen Maschine ausgeführt werden. Bei der VNET-Integration müssen Sie keinen öffentlichen Endpunkt für Anwendungen auf Ihrer VM verfügbar machen, sondern Sie können stattdessen die privaten nicht über das Internet routbaren Adressen verwenden.
+Die VNET-Integration ermöglicht Ihrer Web-App den Zugriff auf Ressourcen in Ihrem virtuellen Netzwerk, gewährt aber keinen privaten Zugriff auf Ihre Web-App aus dem virtuellen Netzwerk. Der private Websitezugriff ist nur verfügbar, wenn eine ASE mit einem internen Lastenausgleichsmodul (Internal Load Balancer, ILB) konfiguriert ist. Ausführlichere Informationen zum Verwenden einer ASE mit ILB finden Sie [hier][ILBASE].
+
+Ein gängiges Szenario für die Verwendung der VNET-Integration ist die Ermöglichung des Web-App-Zugriffs auf eine Datenbank oder auf einen Webdienst, die bzw. der auf einem virtuellen Computer in Ihrem virtuellen Azure-Netzwerk ausgeführt wird. Bei der VNET-Integration müssen Sie keinen öffentlichen Endpunkt für Anwendungen auf Ihrer VM verfügbar machen, sondern Sie können stattdessen die privaten nicht über das Internet routbaren Adressen verwenden.
 
 Für die Funktion für die VNET-Integration gilt Folgendes:
 
-- Standard- oder Premium-Tarif erforderlich 
-- Funktioniert mit V1-VNET (klassisch) oder V2-VNET (Resource Manager) 
+- Standard- oder Premium-Tarif erforderlich
+- Kompatibel mit klassischem VNET (V1) oder Resource Manager-VNET (V2)
 - TCP und UDP wird unterstützt
 - Funktioniert mit Web-Apps, Mobile Apps und API-Apps
 - Eine App kann nur jeweils mit einem VNET eine Verbindung herstellen
-- Bis zu fünf VNETs können in einen App Service-Plan integriert werden 
+- Bis zu fünf VNETs können in einen App Service-Plan integriert werden
 - Ein VNET kann im Rahmen eines App Service-Plans von mehreren Apps verwendet werden
 - Unterstützt dank der Nutzung des VNET-Gateways ein SLA mit einer Verfügbarkeit von 99,9 %
 
 Einige Dinge werden von der VNET-Integration nicht unterstützt, z. B.:
 
 - Bereitstellung eines Laufwerks
-- AD-Integration 
+- AD-Integration
 - NetBios
 - Privater Websitezugriff
 
 ### Erste Schritte ###
 Beachten Sie Folgendes, bevor Sie Ihre Web-App mit einem virtuellen Netzwerk verbinden:
 
-- Die VNET-Integration funktioniert nur mit Apps mit dem Tarif **Standard** oder **Premium**. Wenn Sie die Funktion aktivieren und Ihren App Service-Plan dann auf einen nicht unterstützten Tarif skalieren, verlieren Ihre Apps ihre Verbindungen mit den genutzten VNETs.  
+- Die VNET-Integration funktioniert nur mit Apps mit dem Tarif **Standard** oder **Premium**. Wenn Sie die Funktion aktivieren und Ihren App Service-Plan dann auf einen nicht unterstützten Tarif skalieren, verlieren Ihre Apps ihre Verbindungen mit den genutzten VNETs.
 - Wenn Ihr virtuelles Zielnetzwerk bereits vorhanden ist, muss es über ein Punkt-zu-Standort-VPN mit einem dynamischen Routing-Gateway aktiviert werden, bevor es mit einer App verbunden werden kann. Sie können Punkt-zu-Standort-VPN (Virtual Private Network) nicht aktivieren, wenn Ihr Gateway mit statischem Routing konfiguriert ist.
-- Das VNET muss sich in demselben Abonnement wie Ihr App Service-Plan (ASP) befinden.  
+- Das VNET muss sich im gleichen Abonnement befinden wie Ihr App Service-Plan (ASP).
 - Die Apps, die in ein VNET integriert sind, nutzen das DNS, das für das VNET angegeben ist.
-- Standardmäßig leiten die integrierten Apps Datenverkehr nur basierend auf den Routen, die im VNET definiert sind, in Ihr VNET weiter.  
+- Standardmäßig leiten die integrierten Apps Datenverkehr nur basierend auf den Routen, die im VNET definiert sind, in Ihr VNET weiter.
 
 
 ## Aktivieren der VNET-Integration ##
@@ -73,7 +75,7 @@ Wenn Ihre App nicht den richtigen Tarif aufweist, können Sie die Benutzeroberfl
 ![][1]
  
 ###Aktivieren der VNET-Integration mit einem bereits vorhandenen VNET###
-Die Benutzeroberfläche der VNET-Integration ermöglicht Ihnen die Auswahl aus einer Liste mit VNETs. Die V1-VNETs werden durch Angabe von „klassisch“ in Klammern neben dem VNET-Namen als solche ausgewiesen. Die V2-VNETs sind oben in der Liste aufgeführt. In der Abbildung unten sehen Sie, dass nur ein VNET ausgewählt werden kann. Es gibt mehrere Gründe dafür, warum ein VNET abgeblendet sein kann, z. B.:
+Die Benutzeroberfläche der VNET-Integration ermöglicht Ihnen die Auswahl aus einer Liste mit VNETs. Bei klassischen VNETs ist neben dem VNET-Namen in Klammern der Begriff „Klassisch“ angegeben. In der Liste werden zuerst die Resource Manager-VNETs aufgeführt. In der Abbildung unten sehen Sie, dass nur ein VNET ausgewählt werden kann. Es gibt mehrere Gründe dafür, warum ein VNET abgeblendet sein kann, z. B.:
 
 - Das VNET befindet sich in einem anderen Abonnement, auf das Ihr Konto Zugriff hat.
 - Für das VNET ist „Punkt-zu-Standort“ nicht aktiviert.
@@ -84,19 +86,19 @@ Die Benutzeroberfläche der VNET-Integration ermöglicht Ihnen die Auswahl aus e
 
 Klicken Sie zum Aktivieren der Integration einfach auf das VNET, das Sie für die Integration verwenden möchten. Nach dem Auswählen des VNET wird Ihre App automatisch neu gestartet, damit die Änderungen wirksam werden.
 
-##### Aktivieren von „Punkt-zu-Standort“ in einem V1-VNET #####
-Wenn Ihr VNET kein Gateway aufweist und auch nicht über „Punkt-zu-Standort“ verfügt, müssen Sie dies zuerst einrichten. Rufen Sie dazu für ein V1-VNET im [Azure-Portal][AzurePortal] die Liste mit den virtuellen Netzwerken (klassisch) auf. Klicken Sie darin auf das Netzwerk, das Sie für die Integration verwenden möchten, und klicken Sie unter „Essentials“ in das große Feld mit der Bezeichnung „VPN-Verbindungen“. Hier können Sie Ihr Punkt-zu-Standort-VPN erstellen und dafür sogar ein Gateway erstellen lassen. Nachdem Sie die Schritte für die Erstellung des Punkt-zu-Standort-VPN mit Gateway ausgeführt haben, dauert es ca. 30 Minuten, bevor es betriebsbereit ist.
+##### Aktivieren von „Punkt-zu-Standort“ in einem klassischen VNET #####
+Wenn Ihr VNET kein Gateway aufweist und auch nicht über „Punkt-zu-Standort“ verfügt, müssen Sie dies zuerst einrichten. Rufen Sie bei einem klassischen VNET im [Azure-Portal][AzurePortal] die Liste mit den klassischen virtuellen Netzwerken auf. Klicken Sie darin auf das Netzwerk, das Sie für die Integration verwenden möchten, und klicken Sie unter „Essentials“ in das große Feld mit der Bezeichnung „VPN-Verbindungen“. Hier können Sie Ihr Punkt-zu-Standort-VPN erstellen und dafür sogar ein Gateway erstellen lassen. Nachdem Sie die Schritte für die Erstellung des Punkt-zu-Standort-VPN mit Gateway ausgeführt haben, dauert es ca. 30 Minuten, bevor es betriebsbereit ist.
 
 ![][8]
 
-##### Aktivieren von „Punkt-zu-Standort“ in einem V2-VNET #####
+##### Aktivieren von „Punkt-zu-Standort“ in einem Resource Manager-VNET #####
 
-Wenn Sie ein V2-VNET mit einem Gateway und „Punkt-zu-Standort“ konfigurieren möchten, müssen Sie PowerShell verwenden (siehe dazu [Konfigurieren einer Punkt-zu-Standort-VPN-Verbindung mit einem virtuellen Netzwerk mithilfe von PowerShell][V2VNETP2S]). Die Benutzeroberfläche zum Ausführen dieser Funktion ist noch nicht verfügbar.
+Wenn Sie ein Resource Manager-VNET mit einem Gateway und „Punkt-zu-Standort“ konfigurieren möchten, müssen Sie PowerShell verwenden (siehe [Konfigurieren einer Punkt-zu-Standort-VPN-Verbindung mit einem virtuellen Netzwerk mithilfe von PowerShell][V2VNETP2S]). Die Benutzeroberfläche zum Ausführen dieser Funktion ist noch nicht verfügbar.
 
 ### Erstellen eines vorkonfigurierten VNET ###
-Wenn Sie ein neues VNET erstellen möchten, das mit einem Gateway und „Punkt-zu-Standort“ konfiguriert ist, kann dies über die App Service-Netzwerkbenutzeroberfläche erfolgen, allerdings nur bei einem V2-VNET. Wenn Sie ein V1-VNET mit einem Gateway und „Punkt-zu-Standort“ erstellen möchten, müssen Sie es manuell über die Netzwerkbenutzeroberfläche erstellen.
+Wenn Sie ein neues VNET erstellen möchten, das mit einem Gateway und „Punkt-zu-Standort“ konfiguriert ist, kann dafür die App Service-Netzwerkbenutzeroberfläche verwendet werden. Dies ist allerdings nur bei einem Resource Manager-VNET möglich. Wenn Sie ein klassisches VNET mit einem Gateway und „Punkt-zu-Standort“ erstellen möchten, müssen Sie es manuell über die Netzwerkbenutzeroberfläche erstellen.
 
-Wählen Sie zum Erstellen eines V2-VNET über die Benutzeroberfläche der VNET-Integration einfach die Option **Neues virtuelles Netzwerk erstellen** aus, und machen Sie folgende Angaben:
+Wählen Sie zum Erstellen eines Resource Manager-VNETs über die Benutzeroberfläche der VNET-Integration einfach die Option **Neues virtuelles Netzwerk erstellen** aus, und geben Sie Folgendes an:
 
 - Name des virtuellen Netzwerks
 - Adressblock des virtuellen Netzwerks
@@ -107,21 +109,21 @@ Wählen Sie zum Erstellen eines V2-VNET über die Benutzeroberfläche der VNET-I
 
 Wenn Sie für dieses VNET eine Verbindung mit einem Ihrer anderen Netzwerke herstellen möchten, sollten Sie die Auswahl eines IP-Adressbereichs vermeiden, der sich mit diesen Netzwerken überlappt.
 
->[AZURE.NOTE] Die Erstellung eines V2-VNET mit einem Gateway dauert etwa 30 Minuten. Das VNET wird derzeit nicht in Ihre App integriert. Nachdem Sie das VNET mit dem Gateway erstellt haben, müssen Sie dieses neue VNET über die Benutzeroberfläche der VNET-Integration für die App auswählen.
+>[AZURE.NOTE] Die Erstellung eines Resource Manager-VNETs mit einem Gateway dauert etwa 30 Minuten. Das VNET wird nach aktuellem Stand nicht in Ihre App integriert. Nachdem Sie das VNET mit dem Gateway erstellt haben, müssen Sie dieses neue VNET über die Benutzeroberfläche der VNET-Integration für die App auswählen.
 
 ![][3]
 
 Azure-VNETs werden normalerweise innerhalb der Adressbereiche privater Netzwerke erstellt. Standardmäßig leitet die Funktion für die VNET-Integration den gesamten Datenverkehr, der für diese IP-Adressbereiche bestimmt ist, in Ihr VNET weiter. Die privaten IP-Adressbereiche lauten:
 
 - 10\.0.0.0/8: entspricht 10.0.0.0 - 10.255.255.255
-- 172\.16.0.0/12: entspricht 172.16.0.0 - 172.31.255.255 
+- 172\.16.0.0/12: entspricht 172.16.0.0 - 172.31.255.255
 - 192\.168.0.0/16: entspricht 192.168.0.0 - 192.168.255.255
  
 Der VNET-Adressraum muss per CIDR-Notation angegeben werden. Falls Sie mit der CIDR-Notation nicht vertraut sind, hilft Ihnen vielleicht diese Beschreibung weiter: Es handelt sich dabei um ein Verfahren zum Angeben von Adressblöcken mit einer IP-Adresse und einer Ganzzahl, die für die Netzwerkmaske steht. Hinweis: 10.1.0.0/24 ergibt 256 Adressen, und 10.1.0.0/25 ergibt 128 Adressen. Eine IPv4-Adresse mit „/32“ ergibt nur eine Adresse.
 
 Wenn Sie die DNS-Serverinformationen hier angeben, werden diese für Ihr VNET festgelegt. Nach der Erstellung des VNET können Sie diese Informationen über die VNET-Benutzeroberflächen bearbeiten.
 
-Wenn Sie mit der Benutzeroberfläche für die VNET-Integration ein V1 VNET erstellen, wird ein VNET in derselben Ressourcengruppe wie Ihre App erstellt.
+Wenn Sie über die Benutzeroberfläche für die VNET-Integration ein klassisches VNET erstellen, wird es in der Ressourcengruppe erstellt, in der sich auch Ihre App befindet.
 
 ## Wie das System funktioniert ##
 Im Hintergrund baut diese Funktion auf Punkt-zu-Standort-VPN-Technologie auf, um die App mit Ihrem VNET zu verbinden. Apps in Azure App Service nutzen eine mehrinstanzenfähige Systemarchitektur, die eine Bereitstellung einer App direkt in einem VNET, wie dies bei virtuellen Maschinen der Fall ist, ausschließt. Durch die Verwendung der Punkt-zu-Standort-Technologie als Grundlage beschränken wir den Netzwerkzugriff auf die virtuelle Maschine, auf dem die App gehostet wird. Der Zugriff auf das Netzwerk bleibt auf diese App-Hosts beschränkt, sodass Ihre Apps nur auf Netzwerke zugreifen können, für die Sie den Zugriff konfiguriert haben.
@@ -144,12 +146,12 @@ Die Informationen, die für Sie jetzt auf der Benutzeroberfläche für die VNET-
 - VNET-Name: Mit diesem Link öffnen Sie die Benutzeroberfläche des Netzwerks.
 - Standort: Gibt den Standort Ihres VNET an. Es ist möglich, ein VNET in einen anderen Standort zu integrieren.
 - Zertifikatstatus: Es sind Zertifikate vorhanden, die zum Schützen der VPN-Verbindung zwischen der App und dem VNET verwendet werden. Mit dieser Funktion wird ein Test durchgeführt, um sicherzustellen, dass beide synchron sind.
-- Gatewaystatus: Wenn die Gateways ausgefallen sind, kann Ihre App nicht auf Ressourcen im VNET zugreifen.  
-- VNET-Adressraum: Dies ist der Adressraum für Ihr VNET.  
-- Punkt-zu-Standort-Adressraum: Dies ist der Punkt-zu-Standort-IP-Adressraum für Ihr VNET. Ihre App zeigt an, dass die Kommunikation von einer der IP-Adressen in diesem Adressraum stammt.  
+- Gatewaystatus: Wenn die Gateways ausgefallen sind, kann Ihre App nicht auf Ressourcen im VNET zugreifen.
+- VNET-Adressraum: Dies ist der Adressraum für Ihr VNET.
+- Punkt-zu-Standort-Adressraum: Dies ist der Punkt-zu-Standort-IP-Adressraum für Ihr VNET. Ihre App zeigt an, dass die Kommunikation von einer der IP-Adressen in diesem Adressraum stammt.
 - Standort-zu-Standort-Adressraum: Sie können Standort-zu-Standort-VPNs verwenden, um für Ihr VNET eine Verbindung mit lokalen Ressourcen oder den anderen VNETs herzustellen. Falls Sie dies konfiguriert haben, werden die IP-Bereiche, die für die jeweilige VPN-Verbindung definiert wurden, hier angezeigt.
 - DNS-Server: Wenn Sie für Ihr VNET DNS-Server konfiguriert haben, werden diese hier aufgeführt.
-- IPs mit Routing zum VNET: Es ist eine Liste mit IP-Adressen vorhanden, für die im VNET das Routing definiert ist. Diese Adressen werden hier angezeigt.  
+- IPs mit Routing zum VNET: Es ist eine Liste mit IP-Adressen vorhanden, für die im VNET das Routing definiert ist. Diese Adressen werden hier angezeigt.
 
 Der einzige Vorgang, den Sie in der App-Ansicht Ihrer VNET-Integration durchführen können, ist das Trennen Ihrer App von dem VNET, mit dem derzeit eine Verbindung besteht. Klicken Sie hierzu oben einfach auf „Trennen“. Durch diese Aktion wird Ihr VNET nicht beeinträchtigt. Das VNET und dessen Konfiguration, einschließlich der Gateways, bleibt unverändert. Wenn Sie Ihr VNET dann löschen möchten, müssen Sie zuerst die darin enthaltenen Ressourcen löschen, z. B. auch die Gateways.
 
@@ -175,7 +177,7 @@ In Bezug auf Aktionen gibt es zwei Hauptaktionen. Erstens die Möglichkeit, Rout
 
 Einer der Vorteile der Funktion für die VNET-Integration ist, dass für Ihre Apps Zugriff auf Ihre lokalen Ressourcen bestehen kann, sofern das VNET per Standort-zu-Standort-VPN mit Ihrem lokalen Netzwerk verbunden ist. Damit dies funktioniert, müssen Sie unter Umständen das lokale VPN Gateway mit den Routen für den Punkt-zu-Standort-IP-Bereich aktualisieren. Nach dem ersten Einrichten des Standort-zu-Standort-VPN sollten mit den Skripts, die für die Konfiguration verwendet werden, Routen eingerichtet werden, z. B. das Punkt-zu-Standort-VPN. Wenn Sie das Punkt-zu-Standort-VPN nach dem Erstellen des Standort-zu-Standort-VPN erstellen, müssen Sie die Routen manuell aktualisieren. Die Details zur Vorgehensweise variieren je nach Gateway und sind hier nicht beschrieben.
 
->[AZURE.NOTE] Die Funktion für die VNET-Integration funktioniert mit einem Standort-zu-Standort-VPN, was den Zugriff auf lokale Ressourcen betrifft, aber mit einem ExpressRoute-VPN ist dies derzeit nicht möglich. Dies gilt für die Integration in einem V1-VNET oder V2-VNET. Wenn Sie über ein ExpressRoute-VPN auf Ressourcen zugreifen möchten, können Sie dazu eine ASE nutzen, die in Ihrem VNET ausgeführt werden kann.
+>[AZURE.NOTE] Die Funktion für die VNET-Integration funktioniert mit einem Standort-zu-Standort-VPN, was den Zugriff auf lokale Ressourcen betrifft, aber mit einem ExpressRoute-VPN ist dies derzeit nicht möglich. Dies gilt sowohl beim Integrieren eines klassischen VNETs als auch beim Integrieren eines Resource Manager-VNETs. Wenn Sie über ein ExpressRoute-VPN auf Ressourcen zugreifen möchten, können Sie dazu eine ASE nutzen, die in Ihrem VNET ausgeführt werden kann.
 
 ##Preisübersicht##
 Bei der Verwendung der Funktion für die VNET-Integration sollten Sie einige Details in Bezug auf die Preise beachten. Die Nutzung der Funktion ist mit drei Gebühren verbunden:
@@ -186,7 +188,7 @@ Bei der Verwendung der Funktion für die VNET-Integration sollten Sie einige Det
 
 Damit Ihre Apps diese Funktion verwenden können, müssen sie im Rahmen des App Service-Plans „Standard“ oder „Premium“ genutzt werden. Weitere Informationen zu diesen Kosten finden Sie hier: [App Service-Preisdetails][ASPricing].
 
-Aufgrund der Art und Weise, wie Punkt-zu-Standort-VPNs behandelt werden, fällt für Sie immer eine Gebühr für ausgehende Daten über die Verbindung der VNET-Integration an. Dies gilt auch, wenn sich das VNET in demselben Rechenzentrum befindet. Sie können sich hier über diese Gebühren informieren: [Datenübertragungen – Preisdetails][DataPricing].
+Aufgrund der Art und Weise, wie Punkt-zu-Standort-VPNs behandelt werden, fällt für Sie immer eine Gebühr für ausgehende Daten über die Verbindung der VNET-Integration an. Dies gilt auch, wenn sich das VNET in demselben Rechenzentrum befindet. Informationen zu diesen Gebühren finden Sie unter [Datenübertragungen – Preisdetails][DataPricing].
 
 Das letzte Element sind die Kosten für die VNET-Gateways. Wenn Sie die Gateways nicht für etwas anderes benötigen, z. B. Standort-zu-Standort-VPNs, bezahlen Sie für Gateways als Unterstützung der Funktion für die VNET-Integration. Details zu diesen Kosten finden Sie hier: [VPN Gateway – Preise][VNETPricing].
 
@@ -212,7 +214,13 @@ Mit diesem Tool können Sie ermitteln, ob Sie einen bestimmten Host und Port err
 
 ####Debuggen des Zugriffs auf im VNET gehostete Ressourcen####
 
-Es kann verschiedene Ursachen haben, warum Ihre App einen bestimmten Host und Port nicht erreichen kann. Beginnen Sie mit den einfachen Punkten, um das Problem aufzuschlüsseln, z. B.:
+Es kann verschiedene Ursachen haben, warum Ihre App einen bestimmten Host und Port nicht erreichen kann. In den meisten Fällen liegt eine der drei folgenden Ursachen vor:
+
+- **Eine Firewall.** Falls eine Firewall den Zugriff verhindert, wird das TCP-Timeout ausgelöst. Dies ist hier nach 21 Sekunden der Fall. Überprüfen Sie die Verbindung mithilfe des tcpping-Tools. TCP-Timeouts können zwar auch zahlreiche andere Ursachen haben, es empfiehlt sich allerdings, bei der Firewall zu beginnen.
+- **Kein DNS-Zugriff.** Das DNS-Timeout beträgt drei Sekunden pro DNS-Server. Bei zwei DNS-Servern beträgt das Timeout also sechs Sekunden. Überprüfen Sie mithilfe des nameresolver-Tools, ob DNS funktioniert. Zur Erinnerung: Das nslookup-Tool kann nicht verwendet werden, da es nicht das DNS verwendet, mit dem Ihr VNET konfiguriert ist.
+- **Ungültiger P2S-IP-Bereich.** Der IP-Bereich für „Punkt-zu-Standort“ muss innerhalb der privaten IP-Bereiche von RFC 1918 (10.0.0.0–10.255.255.255/172.16.0.0–172.31.255.255/192.168.0.0–192.168.255.255) liegen. Bei Verwendung von IP-Adressen außerhalb dieser Bereiche tritt ein Fehler auf.
+
+Sollte das Problem weiterhin bestehen, prüfen Sie zunächst einige einfache Dinge wie etwa:
 
 - Wird im Portal angezeigt, dass das Gateway ausgeführt wird?
 - Wird angezeigt, dass die Zertifikate synchron sind?
@@ -222,25 +230,24 @@ Fahren Sie das Gateway hoch, wenn es heruntergefahren ist. Falls Ihre Zertifikat
 
 Wenn dies nicht die Lösung des Problems ist, müssen Sie weiterforschen:
 
-- Sind andere Apps vorhanden, von denen dieses VNET zum Erreichen einer Remoteressource verwendet wird? 
-- Können Sie in der App-Konsole „tcpping“ verwenden, um Ressourcen in Ihrem VNET zu erreichen?  
+- Sind andere Apps vorhanden, die die VNET-Integration verwenden, um Ressourcen im gleichen VNET zu erreichen?
+- Können Sie andere Ressourcen in Ihrem VNET mithilfe von „tcpping“ über die App-Konsole erreichen?
 
-Wenn Sie beide obigen Fragen mit „ja“ beantworten können, liegt für Ihre VNET-Integration kein Problem vor. Das Problem hat also eine andere Ursache. Es kann auch einfach sein, dass Sie für die beiden obigen Elemente keine Antwort erhalten, weil Ihr VNET keine anderen Ziele enthält. Dieser Fall ist etwas schwieriger zu lösen, weil Sie nicht leicht ermitteln können, warum eine host:port-Kombination nicht erreichbar ist. Mögliche Ursachen sind:
+Wenn Sie beide obigen Fragen mit „ja“ beantworten können, liegt für Ihre VNET-Integration kein Problem vor. Das Problem hat also eine andere Ursache. Dieser Fall ist etwas schwieriger zu lösen, weil Sie nicht leicht ermitteln können, warum eine host:port-Kombination nicht erreichbar ist. Mögliche Ursachen sind:
 
+- Aktivierte Firewall auf Ihrem Host, die den Zugriff auf den Anwendungsport über Ihren Punkt-zu-Standort-IP-Bereich verhindert Gegebenenfalls erforderlicher öffentlicher Zugriff für die Durchquerung von Subnetzen
 - Zielhost ist ausgefallen
 - Anwendung ist nicht verfügbar
 - Falsche IP-Adresse oder falscher Hostname
-- Ihre Anwendung lauscht über andere Ports als von Ihnen erwartet. Sie können dies überprüfen, indem Sie auf den Host wechseln und an der Befehlseingabeaufforderung „netstat -aon“ verwenden. Es wird angezeigt, welche Prozess-ID über welchen Port lauscht.  
-- Aktivierte Firewall auf Ihrem Host, die den Zugriff auf den Anwendungsport aus Ihrem Punkt-zu-Standort-IP-Bereich verhindert
+- Ihre Anwendung lauscht über andere Ports als von Ihnen erwartet. Sie können dies überprüfen, indem Sie auf den Host wechseln und an der Befehlseingabeaufforderung „netstat -aon“ verwenden. Es wird angezeigt, welche Prozess-ID über welchen Port lauscht.
 - Netzwerksicherheitsgruppen sind so konfiguriert, dass der Zugriff auf Ihren Anwendungshost und -port aus Ihrem Punkt-zu-Standort-IP-Bereich verhindert wird
 
 Denken Sie daran, dass Sie nicht wissen, welche IP-Adresse Ihres Punkt-zu-Standort-IP-Bereichs von der App verwendet wird. Sie müssen also den Zugriff für den gesamten Bereich zulassen.
 
 Weitere Debugschritte:
 
-- Melden Sie sich an einer anderen VM im VNET an, und versuchen Sie, die host:port-Kombination der Ressource von dort aus zu erreichen. Es gibt einige TCP-ping-Hilfsprogramme, die Sie zu diesem Zweck verwenden können, oder Sie können bei Bedarf auch „telnet“ nutzen. Hierbei soll bestimmt werden, ob für diese andere VM eine Verbindung besteht. 
-- Rufen Sie eine Anwendung auf einer anderen VM auf, und testen Sie den Zugriff auf den Host und Port über die Konsole der App.  
-
+- Melden Sie sich an einer anderen VM im VNET an, und versuchen Sie, die host:port-Kombination der Ressource von dort aus zu erreichen. Es gibt einige TCP-ping-Hilfsprogramme, die Sie zu diesem Zweck verwenden können, oder Sie können bei Bedarf auch „telnet“ nutzen. Hierbei soll bestimmt werden, ob für diese andere VM eine Verbindung besteht.
+- Rufen Sie eine Anwendung auf einer anderen VM auf, und testen Sie den Zugriff auf den Host und Port über die Konsole der App.
 ####Lokale Ressourcen####
 Wenn Sie keine lokalen Ressourcen erreichen können, sollten Sie als Erstes überprüfen, ob Sie eine Ressource in Ihrem VNET erreichen können. Falls dies funktioniert, sind die weiteren Schritte recht einfach. Versuchen Sie, die lokale Anwendung von einer VM in Ihrem VNET zu erreichen. Sie können hierfür „telnet“ oder ein TCP-ping-Hilfsprogramm verwenden. Wenn Sie die lokale Ressource mit der VM erreichen können, sollten Sie zuerst sicherstellen, dass Ihre Standort-zu-Standort-VPN-Verbindung funktioniert. Wenn dies der Fall ist, sollten Sie die oben angegebenen Punkte sowie die Konfiguration und den Status des lokalen Gateways überprüfen.
 
@@ -263,9 +270,9 @@ Mit der Funktion für die App Service-Umgebung können Sie eine Instanz von Azur
 
 Bei den Anwendungsfällen gibt es zwar einige Überschneidungen, aber diese Funktionen können sich nicht gegenseitig ersetzen. Das Wissen, welche Funktion verwendet werden sollte, richtet sich nach Ihren Anforderungen und der gewünschten Nutzung. Beispiel:
 
-- Wenn Sie Entwickler sind, einfach eine Website unter Azure ausführen möchten und dafür den Zugriff auf die Datenbank auf der Arbeitsstation unter Ihrem Schreibtisch ermöglichen möchten, ist es am einfachsten, Hybridverbindungen zu verwenden.  
-- Wenn Sie in einem großen Unternehmen arbeiten, das eine größere Zahl von Webeigenschaften in der Public Cloud anordnen und im eigenen Netzwerk verwalten möchte, ist es ratsam, die App Service-Umgebung zu verwenden.  
-- Falls Sie über einige unter App Service gehostete Apps verfügen und einfach auf Ressourcen in Ihrem VNET zugreifen möchten, ist die VNET-Integration am besten geeignet.  
+- Wenn Sie Entwickler sind, einfach eine Website unter Azure ausführen möchten und dafür den Zugriff auf die Datenbank auf der Arbeitsstation unter Ihrem Schreibtisch ermöglichen möchten, ist es am einfachsten, Hybridverbindungen zu verwenden.
+- Wenn Sie in einem großen Unternehmen arbeiten, das eine größere Zahl von Webeigenschaften in der Public Cloud anordnen und im eigenen Netzwerk verwalten möchte, ist es ratsam, die App Service-Umgebung zu verwenden.
+- Falls Sie über einige unter App Service gehostete Apps verfügen und einfach auf Ressourcen in Ihrem VNET zugreifen möchten, ist die VNET-Integration am besten geeignet.
 
 Über die Anwendungsfälle hinaus sind noch einige Aspekte in Bezug auf die Einfachheit zu beachten. Wenn Ihr VNET bereits mit dem lokalen Netzwerk verbunden ist, stellen die VNET-Integration oder eine App Service-Umgebung eine einfache Möglichkeit zur Nutzung der lokalen Ressourcen dar. Wenn Ihr VNET dagegen nicht mit dem lokalen Netzwerk verbunden ist, bedeutet es gegenüber der Installation des HCM deutlich mehr Aufwand, ein Standort-zu-Standort-VPN mit Ihrem VNET einzurichten.
 
@@ -290,5 +297,7 @@ Bei den Anwendungsfällen gibt es zwar einige Überschneidungen, aber diese Funk
 [DataPricing]: http://azure.microsoft.com/pricing/details/data-transfers/
 [V2VNETP2S]: http://azure.microsoft.com/documentation/articles/vpn-gateway-howto-point-to-site-rm-ps/
 [IntPowershell]: http://azure.microsoft.com/documentation/articles/app-service-vnet-integration-powershell/
+[ASEintro]: http://azure.microsoft.com/documentation/articles/app-service-app-service-environment-intro/
+[ILBASE]: http://azure.microsoft.com/documentation/articles/app-service-environment-with-internal-load-balancer/
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0817_2016-->

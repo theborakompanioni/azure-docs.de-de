@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="04/18/2016"
+   ms.date="08/15/2016"
    ms.author="tarcher" />
 
 # Erstellen von Filterzeichenfolgen für den Tabellen-Designer
@@ -35,8 +35,8 @@ Die folgenden logischen Operatoren werden für alle Eigenschaftentypen unterstü
 |lt|Kleiner als|Preis lt 20|
 |le|Kleiner oder gleich|Preis le 100|
 |ne|Ungleich|Ort ne 'London'|
-|and|Und|Preis le 200 and Preis gt 3,5|
-|or|Oder|Preis le 3,5 or Preis gt 200|
+|und|Und|Preis le 200 and Preis gt 3,5|
+|oder|Oder|Preis le 3,5 or Preis gt 200|
 |not|Nicht|not isAvailable|
 
 Wenn Sie eine Filterzeichenfolge erstellen, sind die folgenden Regeln wichtig:
@@ -99,4 +99,4 @@ Im folgenden Beispiel werden Entitäten zurückgegeben, bei denen die CustomerSi
 
     CustomerSince eq datetime'2008-07-10T00:00:00Z'
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0817_2016-->

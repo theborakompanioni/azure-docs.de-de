@@ -14,11 +14,16 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/03/2016"
+	ms.date="08/17/2016"
 	ms.author="nitinme"/>
 
 
 # Versionshinweise zu Hadoop-Komponenten in Azure HDInsight
+
+## Versionshinweise zu R Server in HDInsight vom 17.08.2016
+
+• R Server 8.0.5: Diese Version dient hauptsächlich der Fehlerbehebung. Weitere Informationen finden Sie in den [Versionsanmerkungen zu R Server](https://msdn.microsoft.com/microsoft-r/notes/r-server-notes). • AzureML-Paket auf dem Edgeknoten: [Dieses R-Paket](https://cran.r-project.org/web/packages/AzureML/vignettes/getting_started.html) ermöglicht das Veröffentlichen und Nutzen von R-Modellen als Azure ML-Webdienst. Weitere Informationen finden Sie im Abschnitt [Operationalisieren eines Modells](hdinsight-hadoop-r-server-overview.md#operationalize-a-model) des Artikels [Übersicht über R Server in HDInsight (Vorschau)](hdinsight-hadoop-r-server-overview.md). • Linux-Abhängigkeiten der [100 populärsten R-Pakete](https://github.com/metacran/cranlogs): Diese Linux-Paketabhängigkeiten sind jetzt vorinstalliert. • Option zur Verwendung des CRAN-Repositorys beim Hinzufügen von R-Paketen zu Datenknoten. Weitere Informationen finden Sie im Abschnitt [Installieren von R-Paketen](hdinsight-hadoop-r-server-get-started.md#install-r-packages) des Artikels[Erste Schritte mit R Server in HDInsight (Vorschau)](hdinsight-hadoop-r-server-get-started.md). • Verbesserte Zuverlässigkeit der R Server-Bereitstellung beim Erstellen von Clustern.
+
 
 ## Hinweise zur HDInsight-Version vom 01.08.2016
 
@@ -73,7 +78,7 @@ Die vollständigen Versionsnummern für mit dieser Version bereitgestellte Linux
 
 |HDI |HDI-Clusterversion |HDP |HDP Build |
 |----|----------------------|----|------------|
-|3\.2 |3\.2.1000.0.7864996 |2\.2 |2\.2.9.1-11 |
+|3\.2 |3\.2.1000.0.7864996 |2.2 |2\.2.9.1-11 |
 |3\.3 |3\.3.1000.0.7864996 |2\.3 |2\.3.3.1-18 |
 |3\.4 |3\.4.1000.0.7861906 |2\.4 |2\.4.2.0 |
 
@@ -84,7 +89,7 @@ Die vollständigen Versionsnummern für mit dieser Version bereitgestellte Windo
 |2\.1 |2\.1.10.977.2413853 |1\.3 |1\.3.12.0-01795|
 |3\.0 |3\.0.6.977.2413853 |2,0 |2\.0.13.0-2117 |
 |3\.1 |3\.1.4.977.2413853 |2\.1 |2\.1.16.0-2374 |
-|3\.2 |3\.2.7.977.2413853 |2\.2 |2\.2.9.1-11 |
+|3\.2 |3\.2.7.977.2413853 |2.2 |2\.2.9.1-11 |
 |3\.3 |3\.3.0.977.2413853 |2\.3 |2\.3.3.1-21 |
 
 Diese Version enthält die folgenden Updates.
@@ -844,7 +849,7 @@ Diese Version enthält die folgenden Updates.
 <td>Dieses Update für HDInsight Version 3.2 enthält verschiedene Fehlerbehebungen, und einige interne Jars, die einen Teil des HDP-Pakets bilden, wurden aktualisiert. Beachten Sie, dass diese JAR-Dateien im HDP-Paket enthalten und nicht für die direkte Verwendung durch Kundenanwendungen vorgesehen sind. Anwendungen sollten ihre eigene Version der JAR-Dateien in einem Paket zusammenstellen, damit Kundenanwendungen durch ein Upgrade auf die internen HDP-JARs nicht beschädigt werden.</td>
 <td>HDP</td>
 <td>Alle</td>
-<td>–</td>
+<td>N/V</td>
 </tr>
 
 </table>
@@ -877,7 +882,7 @@ Diese Version enthält das folgende Update.
 <td>Wir haben Verbesserungen vorgenommen, damit der Dienst für die erhöhte Auslastung im Zusammenhang mit der Clustererstellung besser skaliert werden kann.</td>
 <td>Dienst</td>
 <td>Alle</td>
-<td>–</td>
+<td>N/V</td>
 </tr>
 
 
@@ -968,7 +973,7 @@ Diese Version enthält die folgenden Updates.
 <td>Es wurden verschiedene geringfügige Fehlerbehebungen für HDInsight-Dienste vorgenommen. Es werden keine  Änderungen an kundenorientiertem Verhalten erwartet.</td>
 <td>Dienst</td>
 <td>Alle</td>
-<td>–</td>
+<td>N/V</td>
 </tr>
 
 </table>
@@ -1679,4 +1684,4 @@ Versionshinweise zu den HDPs (Hortonworks Data Platforms), die von den Versionen
 [hdinsight-r-scripts]: ../hdinsight-hadoop-r-scripts/
  
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0817_2016-->

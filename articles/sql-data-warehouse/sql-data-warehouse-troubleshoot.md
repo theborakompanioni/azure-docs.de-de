@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="07/18/2016"
+   ms.date="08/16/2016"
    ms.author="sonyama;barbkess"/>
 
 # Problembehandlung bei Azure SQL Data Warehouse
@@ -40,11 +40,11 @@ In diesem Thema sind einige häufige Fragen zur Problembehandlung aufgeführt, d
 | Problem | Lösung |
 | :----------------------------------| :---------------------------------------------- |
 | Behandlung von Problemen mit der Abfrageleistung | Wenn Sie die Problembehandlung für eine bestimmte Abfrage durchführen möchten, sollten Sie sich zunächst über das [Untersuchen der Ausführung von Abfragen][] informieren.|
-| Schlechte Abfrageleistung und Planung ist häufig das Ergebnis fehlender Statistiken | Die häufigste Ursache für schlechte Leistung ist das Fehlen von Statistiken für Ihre Tabellen. Ausführliche Informationen dazu, wie Sie Statistiken erstellen und warum sie für die Leistung wichtig sind, finden Sie unter [Managing statistics on tables in SQL Data Warehouse][Statistics] \(Verwalten von Statistiken für Tabellen in SQL Data Warehouse).|
+| Schlechte Abfrageleistung und Planung ist häufig das Ergebnis fehlender Statistiken | Die häufigste Ursache für schlechte Leistung ist das Fehlen von Statistiken für Ihre Tabellen. Ausführliche Informationen dazu, wie Sie Statistiken erstellen und warum sie für die Leistung wichtig sind, finden Sie unter [Managing statistics on tables in SQL Data Warehouse][Statistics] (Verwalten von Statistiken für Tabellen in SQL Data Warehouse).|
 | Geringe Parallelität/Abfragen in der Warteschlange | Das Verständnis der [Workloadverwaltung][] ist wichtig, damit Sie wissen, wie Sie die Speicherbelegung und die Parallelität abwägen sollen.|
 | Implementieren von bewährten Methoden | Wenn Sie die Leistung bei Ihren Abfragen verbessern möchten, ist der Artikel [Bewährte Methoden für SQL Data Warehouse][] ein idealer Ausgangspunkt.|
 | Verbessern der Leistung mit der Skalierung | Mitunter besteht der Weg zum Verbessern der Leistung einfach darin, den Abfragen mehr Computeleistung hinzuzufügen, indem Sie Ihr [SQL Data Warehouse skalieren][].|
-| Schlechte Leistung aufgrund von schlechter Indexqualität | Es kann vorkommen, dass sich Abfragen verlangsamen, weil eine [schlechte Qualität der Columnstore-Indizes][] vorliegt. Weitere Informationen finden Sie unter [Rebuild indexes to improve segment quality][] \(Neuerstellen von Indizes zum Verbessern der Segmentqualität).|
+| Schlechte Leistung aufgrund von schlechter Indexqualität | Es kann vorkommen, dass sich Abfragen verlangsamen, weil eine [schlechte Qualität der Columnstore-Indizes][] vorliegt. Weitere Informationen finden Sie unter [Rebuild indexes to improve segment quality][] (Neuerstellen von Indizes zum Verbessern der Segmentqualität).|
 
 ## Systemverwaltung
 
@@ -52,7 +52,7 @@ In diesem Thema sind einige häufige Fragen zur Problembehandlung aufgeführt, d
 | :----------------------------------| :---------------------------------------------- |
 | Msg 40847: Der Vorgang konnte nicht ausgeführt werden, da der Server das zulässige Datenbankdurchsatzeinheit-Kontingent von 45.000 überschreiten würde. | Reduzieren Sie entweder die [DWU][] der Datenbank, die Sie erstellen möchten, oder [fordern Sie eine Erhöhung des Kontingents][] an.|
 | Untersuchen der Speicherauslastung | Informationen zu den Grundlagen der Speicherauslastung des Systems finden Sie unter [Tabellengrößen][].|
-| Hilfe beim Verwalten von Tabellen | Hilfe zur Verwaltung von Tabellen finden Sie unter [Übersicht über Tabellen][Overview]. Dieser Artikel enthält auch Links zu ausführlicheren Themen, z.B. [Tabellendatentypen][Data types], [Verteilen einer Tabelle][Distribute], [Indizieren einer Tabelle][Index], [Partitionieren einer Tabelle][Partition], [Managing statistics on tables in SQL Data Warehouse][Statistics] \(Verwalten von Statistiken für Tabellen in SQL Data Warehouse) und [Temporäre Tabellen][Temporary].|
+| Hilfe beim Verwalten von Tabellen | Hilfe zur Verwaltung von Tabellen finden Sie unter [Übersicht über Tabellen][Overview]. Dieser Artikel enthält auch Links zu ausführlicheren Themen, z.B. [Tabellendatentypen][Data types], [Verteilen einer Tabelle][Distribute], [Indizieren einer Tabelle][Index], [Partitionieren einer Tabelle][Partition], [Verwalten von Tabellenstatistiken][Statistics] und [Temporäre Tabellen][Temporary].|
 
 ## PolyBase
 
@@ -98,7 +98,7 @@ Wenn Sie bisher keine Lösung für Ihr Problem gefunden haben, können Sie folge
 [Untersuchen der Ausführung von Abfragen]: ./sql-data-warehouse-manage-monitor.md
 [Erstellen einer Azure SQL Data Warehouse-Instanz]: ./sql-data-warehouse-get-started-provision.md
 [Erstellen einer neuen Azure SQL-Firewall auf Serverebene]: ./sql-data-warehouse-get-started-provision.md#create-a-new-azure-sql-server-level-firewall
-[Visual Studio 2013 oder 2015]: ./sql-data-warehouse-get-started-connect.md
+[Visual Studio 2013 oder 2015]: ./sql-data-warehouse-query-visual-studio.md
 [Bewährte Methoden für SQL Data Warehouse]: ./sql-data-warehouse-best-practices.md
 [Tabellengrößen]: ./sql-data-warehouse-tables-overview.md#table-size-queries
 [Nicht unterstützte Tabellenfunktionen]: ./sql-data-warehouse-tables-overview.md#unsupported-table-features
@@ -130,9 +130,9 @@ Wenn Sie bisher keine Lösung für Ihr Problem gefunden haben, können Sie folge
 [Blogs]: https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/
 [CAT Team-Blogs]: https://blogs.msdn.microsoft.com/sqlcat/tag/sql-dw/
 [Funktionsanfragen]: https://feedback.azure.com/forums/307516-sql-data-warehouse
-[MSDN-Forum]: https://social.msdn.microsoft.com/Forums/de-DE/home?forum=AzureSQLDataWarehouse
+[MSDN-Forum]: https://social.msdn.microsoft.com/Forums/home?forum=AzureSQLDataWarehouse
 [Stack Overflow-Forum]: http://stackoverflow.com/questions/tagged/azure-sqldw
 [Twitter]: https://twitter.com/hashtag/SQLDW
 [Videos]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0817_2016-->

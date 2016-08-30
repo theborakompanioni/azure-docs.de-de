@@ -12,7 +12,7 @@
  ms.tgt_pltfrm="na"
  ms.devlang="dotnet"
  ms.topic="get-started-article"
- ms.date="06/30/2016"
+ ms.date="08/18/2016"
  ms.author="krisragh"/>
 
 # Konzepte, Terminologie und Entitätshierarchie für Scheduler
@@ -24,7 +24,7 @@ Die folgende Tabelle beschreibt die wichtigsten Ressourcen, die von der Schedule
 |Ressource | Beschreibung |
 |---|---|
 |**Auftragssammlung**|Eine Auftragssammlung enthält eine Gruppe von Aufträgen und dient zum Verwalten von Einstellungen, Kontingenten und Drosselungen für die Aufträge in der Sammlung. Eine Auftragssammlung wird von einem Abonnementbesitzer erstellt und fasst Aufträge auf der Grundlage von Verwendungs- oder Anwendungsgrenzen zusammen. Sie ist auf eine einzelne Region beschränkt. Außerdem ermöglicht sie die Erzwingung von Kontingenten, um die Verwendung aller Aufträge in der Sammlung zu beschränken. Dazu gehören „MaxJobs“ und „MaxRecurrence“.|
-|**Auftrag**|Ein Auftrag definiert eine einzelne wiederkehrende Aktion mit einfachen oder komplexen Ausführungsstrategien. Beispiele für Aktionen sind HTTP, Speicherwarteschlange, Service Bus-Warteschlange oder Service Bus-Warteschlangenanforderungen.|
+|**Auftrag**|Ein Auftrag definiert eine einzelne wiederkehrende Aktion mit einfachen oder komplexen Ausführungsstrategien. Beispiele für Aktionen wären etwa HTTP-Anforderungen, Speicherwarteschlangen-Anforderungen, Service Bus-Warteschlangenanforderungen oder Service Bus-Themenanforderungen.|
 |**Auftragsverlauf**|Ein Auftragsverlauf liefert Details zur Ausführung eines Auftrags. Er gibt Aufschluss darüber, ob die Ausführung erfolgreich war, und enthält Details zur Antwort.|
 
 ## Entitätsverwaltung für Scheduler
@@ -39,7 +39,7 @@ Die Scheduler- und die Service Management-API machen für die Ressourcen allgem
 
 ## Auftragstypen
 
-Es gibt mehrere Arten von Aufträgen: HTTP-Aufträge (z.B. HTTPS-Aufträge mit SSL-Unterstützung), Speicherwarteschlangen-Aufträge, Service Bus-Warteschlangenaufträge und Service Bus-Themenaufträge. HTTP-Aufträge sind ideal, wenn Sie über einen Endpunkt einer vorhandenen Workload oder eines vorhandenen Diensts verfügen. Mit Speicherwarteschlangenaufträgen können Sie Nachrichten in Speicherwarteschlangen veröffentlichen. Daher eignen sich diese Aufträge perfekt für Workloads, die Speicherwarteschlangen verwenden. Ebenso sind Service Bus-Aufträge ideal für Workloads, für die Service Bus-Warteschlangen und -Themen verwendet werden.
+Es gibt mehrere Arten von Aufträgen: HTTP-Aufträge (etwa HTTPS-Aufträge mit SSL-Unterstützung), Speicherwarteschlangen-Aufträge, Service Bus-Warteschlangenaufträge und Service Bus-Themenaufträge. HTTP-Aufträge sind ideal, wenn Sie über einen Endpunkt einer vorhandenen Workload oder eines vorhandenen Diensts verfügen. Mit Speicherwarteschlangenaufträgen können Sie Nachrichten in Speicherwarteschlangen veröffentlichen. Daher eignen sich diese Aufträge perfekt für Workloads, die Speicherwarteschlangen verwenden. Ebenso sind Service Bus-Aufträge ideal für Workloads, für die Service Bus-Warteschlangen und -Themen verwendet werden.
 
 ## Die Auftragsentität im Detail
 
@@ -129,7 +129,7 @@ Sehen wir uns die einzelnen Elemente im Detail an:
 
 ## action und errorAction
 
-„action“ ist die Aktion, die bei jedem Vorkommen aufgerufen wird, und beschreibt eine Art von Dienstaufruf. Die Aktion wird gemäß dem angegebenen Zeitplan ausgeführt. Scheduler unterstützt HTTP, Speicherwarteschlange, Service Bus-Themen und Service Bus-Warteschlangenaktionen.
+„action“ ist die Aktion, die bei jedem Vorkommen aufgerufen wird, und beschreibt eine Art von Dienstaufruf. Die Aktion wird gemäß dem angegebenen Zeitplan ausgeführt. Scheduler unterstützt HTTP-Aktionen, Speicherwarteschlangen-Aktionen, Service Bus-Themenaktionen und Service Bus-Warteschlangenaktionen.
 
 Die Aktion im obigen Beispiel ist eine HTTP-Aktion. Im folgenden Beispiel wird eine Speicherwarteschlangenaktion verwendet:
 
@@ -145,9 +145,9 @@ Die Aktion im obigen Beispiel ist eine HTTP-Aktion. Im folgenden Beispiel wird e
 			},
 	}
 
-Unten ist ein Beispiel für eine Service Bus-Themenaktion angegeben.
+Beispiel für eine Service Bus-Themenaktion:
 
-  "action": { "type": "serviceBusTopic", "serviceBusTopicMessage": { "topicPath": "t1", "namespace": "mySBNamespace", "transportType": "netMessaging", // Kann entweder netMessaging oder AMQP sein "authentication": { "sasKeyName": "QPolicy", "type": "sharedAccessKey" }, "message": "Some message", "brokeredMessageProperties": {}, "customMessageProperties": { "appname": "FromScheduler" } }, }
+  "action": { "type": "serviceBusTopic", "serviceBusTopicMessage": { "topicPath": "t1", "namespace": "mySBNamespace", "transportType": "netMessaging", // Kann entweder netMessaging oder AMQP sein. "authentication": { "sasKeyName": "QPolicy", "type": "sharedAccessKey" }, "message": "Some message", "brokeredMessageProperties": {}, "customMessageProperties": { "appname": "FromScheduler" } }, }
 
 Unten ist ein Beispiel für eine Service Bus-Warteschlangenaktion angegeben:
 
@@ -192,9 +192,9 @@ Für den Fall, dass bei einem Scheduler-Auftrag ein Fehler auftritt, kann durch 
 
 Für eine Wiederholungsrichtlinie können zwei zusätzliche Einstellungen angegeben werden: ein Wiederholungsintervall (**retryInterval**) und die Anzahl von Wiederholungen (**retryCount**).
 
-Das Wiederholungsintervall, das durch das Objekt **retryInterval** angegeben wird, ist das Intervall zwischen den Wiederholungen. Der Standardwert ist 30 Sekunden, die konfigurierbare Mindestwert beträgt 15 Sekunden, und der maximale Wert beträgt 18 Monate. Aufträge in Auftragssammlungen vom Typ „Free“ haben einen konfigurierbaren Mindestwert von 1 Stunde. Es wird im ISO-8601-Format definiert. Gleichermaßen wird der Wert für die Anzahl von Wiederholungen mit dem Objekt **retryCount** angegeben; es bestimmt, wie oft versucht wird, einen Vorgang zu wiederholen. Der Standardwert ist 4, der maximal zulässige Wert ist 20. Die Angabe von **retryInterval** und **retryCount** ist jeweils optional. Wenn **retryType** auf **fixed** festgelegt ist und keine expliziten Werte angegeben werden, werden die Standardwerte verwendet.
+Das Wiederholungsintervall, das durch das Objekt **retryInterval** angegeben wird, ist das Intervall zwischen den Wiederholungen. Der Standardwert ist 30 Sekunden, der konfigurierbare Mindestwert beträgt 15 Sekunden, und der maximale Wert beträgt 18 Monate. Aufträge in Auftragssammlungen vom Typ „Free“ haben einen konfigurierbaren Mindestwert von 1 Stunde. Es wird im ISO-8601-Format definiert. Gleichermaßen wird der Wert für die Anzahl von Wiederholungen mit dem Objekt **retryCount** angegeben; es bestimmt, wie oft versucht wird, einen Vorgang zu wiederholen. Der Standardwert ist 4, der maximal zulässige Wert ist 20. Die Angabe von **retryInterval** und **retryCount** ist jeweils optional. Wenn **retryType** auf **fixed** festgelegt ist und keine expliziten Werte angegeben werden, werden die Standardwerte verwendet.
 
-## Weitere Informationen
+## Siehe auch
 
  [Was ist Azure Scheduler?](scheduler-intro.md)
 
@@ -214,4 +214,4 @@ Das Wiederholungsintervall, das durch das Objekt **retryInterval** angegeben wir
 
  [Ausgehende Authentifizierung von Azure Scheduler](scheduler-outbound-authentication.md)
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0824_2016-->

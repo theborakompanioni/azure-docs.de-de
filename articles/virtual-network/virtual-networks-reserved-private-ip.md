@@ -15,10 +15,10 @@
    ms.date="03/22/2016"
    ms.author="jdial" />
 
-# Festlegen einer statischen internen privaten IP-Adresse
-In den meisten Fällen muss für Ihren virtuellen Computer keine statische interne IP-Adresse angegeben werden. Virtuelle Computer in einem virtuellen Netzwerk erhalten automatisch eine interne IP-Adresse aus einem von Ihnen angegebenen Bereich. In bestimmten Fällen ist die Angabe einer statischen IP-Adresse für einen bestimmten virtuellen Computer allerdings sinnvoll – beispielsweise, wenn auf Ihrem virtuellen Computer DNS ausgeführt werden oder der virtuelle Computer als Domänencontroller fungieren soll.
+# Festlegen einer internen privaten statischen IP-Adresse mithilfe von PowerShell (klassisch)
+In den meisten Fällen muss für Ihren virtuellen Computer keine statische interne IP-Adresse angegeben werden. Virtuelle Computer in einem virtuellen Netzwerk erhalten automatisch eine interne IP-Adresse aus einem von Ihnen angegebenen Bereich. In bestimmten Fällen ist die Angabe einer statischen IP-Adresse für einen bestimmten virtuellen Computer allerdings sinnvoll – beispielsweise, wenn auf Ihrem virtuellen Computer DNS ausgeführt werden oder der virtuelle Computer als Domänencontroller fungieren soll. Eine statische interne IP-Adresse bleibt erhalten, auch wenn der virtuelle Computer beendet oder seine Bereitstellung aufgehoben wird.
 
->[AZURE.NOTE] Eine statische interne IP-Adresse bleibt erhalten, auch wenn der virtuelle Computer beendet oder seine Bereitstellung aufgehoben wird.
+> [AZURE.IMPORTANT] Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Ressourcen-Manager und klassische Bereitstellungen](../resource-manager-deployment-model.md). Dieser Artikel befasst sich mit der Verwendung des klassischen Bereitstellungsmodells. Microsoft empfiehlt für die meisten neuen Bereitstellungen die Verwendung des [Resource Manager-Bereitstellungsmodells](virtual-networks-static-private-ip-arm-ps.md).
 
 ## Überprüfen der Verfügbarkeit einer bestimmten IP-Adresse
 Wenn Sie beispielsweise überprüfen möchten, ob die IP-Adresse *10.0.0.7* in einem VNet namens *TestVnet* verfügbar ist, führen Sie den folgenden PowerShell-Befehl aus, und sehen Sie sich den Wert für *IsAvailable* an:
@@ -99,4 +99,4 @@ Führen Sie den folgenden Befehl aus, um dem virtuellen Computer, der mit dem ob
 [Reservierte IP-REST-APIs](https://msdn.microsoft.com/library/azure/dn722420.aspx)
  
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0817_2016-->

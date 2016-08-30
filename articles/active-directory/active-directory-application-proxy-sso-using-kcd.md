@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/19/2016"
+	ms.date="08/10/2016"
 	ms.author="kgremban"/>
 
 
@@ -23,7 +23,7 @@ Die einmalige Anmeldung ist ein wichtiges Element von Azure AD-Anwendungsproxy. 
 
 1. Ein Benutzer meldet sich bei der Cloud an.
 2. Alle Sicherheitsüberprüfungen erfolgen in der Cloud (Vorauthentifizierung).
-3. Wenn die Anforderung an die lokale Anwendung gesendet wird, nimmt der Anwendungsproxyconnector die Identität des Benutzers an, damit die Back-End-Anwendung von einem regulären Benutzer eines in eine Domäne eingebundenen Geräts ausgeht.
+3. Wenn die Anforderung an die lokale Anwendung gesendet wird, nimmt der Anwendungsproxyconnector die Identität des Benutzers an. Die Back-End-Anwendung geht von einem regulären Benutzer eines in eine Domäne eingebundenen Geräts aus.
 
 ![Diagramm zum Zugriffsverlauf vom Endbenutzer über den Anwendungsproxy zum Unternehmensnetzwerk](./media/active-directory-application-proxy-sso-using-kcd/app_proxy_sso_diff_id_diagram.png)
 
@@ -57,7 +57,7 @@ Vergewissern Sie sich vor Ihren ersten Schritten mit SSO für den Anwendungsprox
 
 - Alle Ihre Apps verfügen über Dienstprinzipalnamen.
 
-- Der Server, auf dem der Connector ausgeführt wird, und der Server, auf dem die App ausgeführt wird, gehören einer Domäne an und sind Teil der gleichen Domäne. Weitere Informationen zum Domänenbeitritt finden Sie unter [Hinzufügen eines Computers zu einer Domäne](https://technet.microsoft.com/library/dd807102.aspx).
+- Der Server, auf dem der Connector ausgeführt wird, und der Server, auf dem die App ausgeführt wird, gehören einer Domäne an und sind Teil der gleichen Domäne bzw. der vertrauenswürdigen Domänen. Weitere Informationen zum Domänenbeitritt finden Sie unter [Hinzufügen eines Computers zu einer Domäne](https://technet.microsoft.com/library/dd807102.aspx).
 
 - Der Server, auf dem der Connector ausgeführt wird, verfügt über Lesezugriff auf „TokenGroupsGlobalAndUniversal“ für Benutzer. Hierbei handelt es sich um eine Standardeinstellung, die unter Umständen im Rahmen einer Sicherheitshärtung für die Umgebung geändert wurde. Weitere hilfreiche Informationen finden Sie unter [KB2009157](https://support.microsoft.com/de-DE/kb/2009157).
 
@@ -69,7 +69,7 @@ Die Active Directory-Konfiguration variiert in Abhängigkeit davon, ob Ihr Anwen
 
 1. Wechseln Sie in Active Directory zu **Extras** > **Benutzer und Computer**.
 2. Wählen Sie den Server aus, der den Connector ausführt.
-3. Klicken Sie mit der rechten Maustaste, und wählen Sie **Eigenschaften** > **Delegierung** aus.
+3. Klicken Sie mit der rechten Maustaste, und wählen Sie **Eigenschaften** > **Delegierung**.
 4. Wählen Sie **Computer bei Delegierungen angegebener Dienste vertrauen** aus, und fügen Sie unter **Dienste, für die dieses Konto delegierte Anmeldeinformationen verwenden kann** den Wert für die Dienstprinzipalnamen-Identität (SPN) des Anwendungsservers hinzu.
 5. Auf diese Weise kann der Anwendungsproxy-Connector die Identität von Benutzern in AD für die Anwendungen annehmen, die in der Liste definiert sind.
 
@@ -97,7 +97,7 @@ Die Active Directory-Konfiguration variiert in Abhängigkeit davon, ob Ihr Anwen
 3. Legen Sie unter **Eigenschaften** die Option **Interne Authentifizierungsmethode** auf **Integrierte Windows-Authentifizierung** fest. ![Erweiterte Anwendungskonfiguration](./media/active-directory-application-proxy-sso-using-kcd/cwap_auth2.png)
 4. Geben Sie den Wert für **Interner Anwendungs-SPN** des Anwendungsservers ein. In diesem Beispiel ist der SPN für die veröffentlichte Anwendung http/lob.contoso.com.
 
->[AZURE.IMPORTANT] Stimmen Ihre lokale UPN und die UPN in Azure Active Directory nicht überein, müssen Sie die [Delegierte Identität für Anmeldung](#delegated-login-identity) konfigurieren, damit die Präauthentifizierung funktioniert.
+>[AZURE.IMPORTANT] Stimmen Ihre lokale UPN und die UPN in Azure Active Directory nicht überein, müssen Sie die [delegierte Identität für die Anmeldung](#delegated-login-identity) konfigurieren, damit die Präauthentifizierung funktioniert.
 
 | | |
 | --- | --- |
@@ -155,7 +155,7 @@ Dies hilft auch bei Anwendungen, die keine Adressen in Form von E-Mail-Adressen 
 Wenn im SSO-Prozess ein Fehler auftritt, wird dieser im Ereignisprotokoll des Connectorcomputers aufgeführt, wie unter [Problembehandlung](active-directory-application-proxy-troubleshoot.md) beschrieben. In einigen Fällen wird die Anforderung jedoch erfolgreich an die Back-End-Anwendung gesendet, während die Anwendung mit verschiedenen anderen HTTP-Antworten reagiert. Die Problembehandlung beginnt in diesen Fällen zweckmäßigerweise mit der Untersuchung der Ereignisnummer 24029 auf dem Connectorcomputer im Sitzungsereignisprotokoll des Anwendungsproxys. Die Identität des Benutzers, die für die Delegierung verwendet wurde, wird im Feld „Benutzer“ in den Ereignisdetails angezeigt. Wählen Sie zum Aktivieren des Sitzungsprotokolls im Menü „Ansicht“ der Ereignisanzeige die Option **Analytische und Debugprotokolle einblenden** aus.
 
 
-## Weitere Informationen
+## Siehe auch
 
 - [Veröffentlichen von Anwendungen mit dem Anwendungsproxy](active-directory-application-proxy-publish.md)
 - [Problembehandlung von Anwendungsproxys](active-directory-application-proxy-troubleshoot.md)
@@ -169,4 +169,4 @@ Aktuelle Neuigkeiten und Updates finden Sie im [Blog zum Anwendungsproxy](http:/
 [1]: ./media/active-directory-application-proxy-sso-using-kcd/AuthDiagram.png
 [2]: ./media/active-directory-application-proxy-sso-using-kcd/Properties.jpg
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0817_2016-->

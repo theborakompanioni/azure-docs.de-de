@@ -23,9 +23,14 @@
 - [Windows](virtual-machines-linux-ssh-from-windows.md)
 - [Linux/Mac](virtual-machines-linux-ssh-from-linux.md)
 
-In diesem Thema wird beschrieben, wie Sie **ssh-keygen** und **openssl** unter Linux und Mac verwenden, um Dateien im **SSH-RSA**- und **PEM**-Format zum Sichern der Kommunikation mit Linux-basierten virtuellen Azure-Computern (VMs) erstellen und verwenden. Für neue Bereitstellungen wird die Erstellung von Linux-basierten Azure-VMs anhand des Ressourcen-Manager-Bereitstellungsmodells empfohlen. Dazu ist eine Datei oder Zeichenfolge (je nach Bereitstellungsclient) mit einem öffentlichen Schlüssel im *SSH-RSA*-Format erforderlich. Das [Azure-Portal](https://portal.azure.com) akzeptiert gegenwärtig sowohl für klassische als auch für Resource Manager-Bereitstellungen nur die Zeichenfolgen im **SSH-RSA**-Format.
 
-> [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]Informationen dazu, wie Sie diese Dateien zum Sichern der Kommunikation mit Linux-VMs in Azure auf einem Windows-Computer erstellen, finden Sie unter [Verwenden von SSH-Schlüsseln unter Windows](virtual-machines-linux-ssh-from-windows.md).
+In diesem Thema wird beschrieben, wie Sie unter Linux und Mac mithilfe von **ssh-keygen** und **openssl** Dateien im **SSH-RSA**- und **PEM**-Format erstellen und verwenden, um die Kommunikation mit Linux-basierten virtuellen Azure-Computern zu sichern. Für neue Bereitstellungen wird die Erstellung von Linux-basierten Azure-VMs anhand des Ressourcen-Manager-Bereitstellungsmodells empfohlen. Dazu ist eine Datei oder Zeichenfolge (je nach Bereitstellungsclient) mit einem öffentlichen Schlüssel im *SSH-RSA*-Format erforderlich. Das [Azure-Portal](https://portal.azure.com) akzeptiert gegenwärtig sowohl für klassische als auch für Resource Manager-Bereitstellungen nur die Zeichenfolgen im **SSH-RSA**-Format.
+
+
+> [AZURE.NOTE] Falls Sie einen Moment Zeit haben, würden wir uns freuen, wenn Sie an dieser [kurzen Umfrage](https://aka.ms/linuxdocsurvey) teilnehmen könnten, um zur Verbesserung der Dokumentation für virtuelle Azure-Computer unter Linux beizutragen. Jede Antwort hilft uns dabei, Sie noch besser bei Ihrer Arbeit zu unterstützen.
+
+
+> [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)] Informationen dazu, wie Sie diese Dateien zum Sichern der Kommunikation mit Linux-VMs in Azure auf einem Windows-Computer erstellen, finden Sie unter [Verwenden von SSH-Schlüsseln unter Windows](virtual-machines-linux-ssh-from-windows.md).
 
 ## Welche Dateien sind erforderlich?
 
@@ -34,7 +39,7 @@ Ein grundlegendes SSH-Setup für Azure umfasst ein öffentliches und privates **
 Im Folgenden sind die Dateitypen für die unterschiedlichen Bereitstellungsszenarien aufgeführt:
 
 1. **SSH-RSA**-Schlüssel sind unabhängig vom Bereitstellungsmodell für alle Bereitstellungen mithilfe des [Azure-Portals](https://portal.azure.com) erforderlich.
-2. PEM-Dateien sind erforderlich, um VMs mithilfe des [klassischen Portals](https://manage.windowsazure.com) zu erstellen. PEM-Dateien werden auch in klassischen Bereitstellungen mit der [Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md) unterstützt. 
+2. PEM-Dateien sind erforderlich, um VMs mithilfe des [klassischen Portals](https://manage.windowsazure.com) zu erstellen. PEM-Dateien werden auch in klassischen Bereitstellungen mit der [Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md) unterstützt.
 
 ## Erstellen von Schlüsseln zur Verwendung mit SSH
 
@@ -42,7 +47,7 @@ Wenn Sie bereits über SSH-Schlüssel verfügen, übergeben Sie die Datei mit de
 
 Falls Sie die Dateien erstellen müssen, gehen Sie wie folgt vor:
 
-1. Stellen Sie sicher, dass Ihre Implementierung von **ssh-keygen** und **openssl** auf dem neuesten Stand ist. Die Implementierung unterscheidet sich je nach Plattform. 
+1. Stellen Sie sicher, dass Ihre Implementierung von **ssh-keygen** und **openssl** auf dem neuesten Stand ist. Die Implementierung unterscheidet sich je nach Plattform.
 
 	- Besuchen Sie im Fall von Mac die [Produktsicherheitswebsite von Apple](https://support.apple.com/HT201222), und wählen Sie ggf. die entsprechenden Updates aus.
 	- Für Debian-basierte Linux-Distributionen wie Ubuntu, Debian, Mint usw.:
@@ -69,7 +74,7 @@ Falls Sie die Dateien erstellen müssen, gehen Sie wie folgt vor:
 
 	Wenn Sie die PEM-Datei aus einer anderen Datei mit einem privaten Schlüssel erstellen möchten, ändern Sie das `-key`-Argument.
 
-> [AZURE.NOTE] Wenn Sie vorhaben, mit dem klassischen Bereitstellungsmodell bereitgestellte Dienste zu verwalten, können Sie auch eine **CER**-Datei erstellen. Dies erfordert jedoch weder die Verwendung von **SSH** noch das Herstellen einer Verbindung mit Linux-VMs und ist daher nicht Gegenstand dieses Artikels. Geben Sie zum Konvertieren der PEM-Datei in eine DER-codierte X509-Zertifikatsdatei unter Linux oder auf einem Mac Folgendes ein: <br /> openssl x509 -outform der -in myCert.pem -out myCert.cer
+> [AZURE.NOTE] Wenn Sie vorhaben, mit dem klassischen Bereitstellungsmodell bereitgestellte Dienste zu verwalten, können Sie auch eine **CER**-Datei erstellen. Dies erfordert jedoch weder die Verwendung von **SSH** noch das Herstellen einer Verbindung mit Linux-VMs und ist daher nicht Gegenstand dieses Artikels. Geben Sie zum Konvertieren der PEM-Datei in eine DER-codierte X.509-Zertifikatdatei unter Linux oder auf einem Mac Folgendes ein: <br /> openssl x509 -outform der -in myCert.pem -out myCert.cer
 
 ## Verwenden bereits vorhandener SSH-Schlüssel
 
@@ -293,4 +298,4 @@ Möglicherweise lässt sich das Problem mithilfe der Empfehlungen unter [Problem
  
 Nachdem Sie eine Verbindung mit Ihrer VM hergestellt haben, müssen Sie die ausgewählte Distribution vor der weiteren Verwendung unbedingt aktualisieren.
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0817_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="06/30/2016"
+   ms.date="08/16/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
 
@@ -35,7 +35,7 @@ In diesem Lernprogramm führen Sie folgende Schritte aus:
 
 
 ## Voraussetzungen
-Sie benötigen ein Azure-Konto, das bereits über eine SQL Data Warehouse-Datenbank verfügt, um dieses Tutorial ausführen zu können. Falls diese Voraussetzungen bei Ihnen noch nicht erfüllt sind, helfen Ihnen die Informationen unter [Erstellen eines SQL Data Warehouse][] weiter.
+Sie benötigen ein Azure-Konto, das bereits über eine SQL Data Warehouse-Datenbank verfügt, um dieses Tutorial ausführen zu können. Wenn Sie noch über keines verfügen, gehen Sie unter [Erstellen eines SQL Data Warehouse][].
 
 ## 1\. Konfigurieren der Datenquelle
 
@@ -232,7 +232,7 @@ GO
 
 ### 4\.2. Laden der Daten in neue Tabellen
 
-Verwenden Sie zum Laden von Daten aus Azure Blob Storage, und zum Speichern der Daten in einer Tabelle innerhalb Ihrer Datenbank, die T-SQL-Anweisung [CREATE TABLE AS SELECT] [] (CTAS). Das Laden mit CTAS nutzt die stark typisierten externen Tabellen, die Sie gerade erstellt haben. Verwenden Sie eine [CTAS][]-Anweisung pro Tabelle, um die Daten in neue Tabellen zu laden.
+Um Daten aus einem Azure-Blobspeicher zu laden und in einer Tabelle innerhalb Ihrer Datenbank zu speichern, verwenden Sie die Anweisung [CREATE TABLE AS SELECT (Transact-SQL)][]. Das Laden mit CTAS nutzt die stark typisierten externe Tabellen, die Sie gerade erstellt haben. Verwenden Sie eine [CTAS][]-Anweisung pro Tabelle, um die Daten in neue Tabellen zu laden.
 
 CTAS erstellt eine neue Tabelle und füllt sie mit den Ergebnissen einer SELECT-Anweisung. CTAS definiert die neue Tabelle, sodass sie die gleichen Spalten und Datentypen wie die Ergebnisse der SELECT-Anweisung aufweist. Wenn Sie alle Spalten einer externen Tabelle auswählen, wird die neue Tabelle ein Replikat der Spalten und Datentypen in der externen Tabelle sein.
 
@@ -282,7 +282,7 @@ Weitere Informationen zum Verwalten von Columnstore-Indizes finden Sie im Artike
 
 Es empfiehlt sich, Statistiken für einzelne Spalten sofort nach dem Ladevorgang zu erstellen. Es gibt einige Optionen für Statistiken. Beim Erstellen einer Einspaltenstatistik auf jeder Spalten vergeht möglicherweise viel Zeit bis alle Statistiken wiederhergestellt werden. Wenn Sie wissen, dass bestimmte Spalten nicht in den Abfrageprädikaten erhalten sein werden, können Sie die Erstellung von Statistiken für diese Spalten überspringen.
 
-Wenn Sie sich entschließen, Statistiken für einzelne Spalten jeder Spalte jeder Tabelle zu erstellen, können Sie das Codebeispiel für die gespeicherte Prozedur `prc_sqldw_create_stats` im Artikel [Statistiken][] verwenden.
+Wenn Sie Einzelspaltenstatistiken für jede Spalte jeder Tabelle erstellen möchten, können Sie das Codebeispiel für die gespeicherte Prozedur `prc_sqldw_create_stats` im Artikel [Statistiken][] verwenden.
 
 Das folgende Beispiel ist ein guter Ausgangspunkt zum Erstellen von Statistiken. Es werden Statistiken für einzelne Spalten für jede Spalte in der Dimensionstabelle erstellt sowie für jede verknüpfte Spalte in der Faktentabelle. Sie können später immer Statistiken für einzelne oder mehrere Spalten auf anderen Faktentabellenspalten hinzufügen.
 
@@ -351,17 +351,18 @@ Verwenden Sie das Skript unter [Entwurfsentscheidungen und Programmiertechniken 
 <!--Image references-->
 
 <!--Article references-->
-[Erstellen eines SQL Data Warehouse]: ./sql-data-warehouse-get-started-provision.md
-[Load data into SQL Data Warehouse]: ./sql-data-warehouse-overview-load.md
-[Entwurfsentscheidungen und Programmiertechniken für SQL Data Warehouse]: ./sql-data-warehouse-overview-develop.md
-[Verwalten von Columnstore-Indizes]: ./sql-data-warehouse-tables-index.md
-[Statistiken]: ./sql-data-warehouse-tables-statistics.md
-[CTAS]: ./sql-data-warehouse-develop-ctas.md
-[label]: ./sql-data-warehouse-develop-label.md
+[Erstellen eines SQL Data Warehouse]: sql-data-warehouse-get-started-provision.md
+[Load data into SQL Data Warehouse]: sql-data-warehouse-overview-load.md
+[Entwurfsentscheidungen und Programmiertechniken für SQL Data Warehouse]: sql-data-warehouse-overview-develop.md
+[Verwalten von Columnstore-Indizes]: sql-data-warehouse-tables-index.md
+[Statistiken]: sql-data-warehouse-tables-statistics.md
+[CTAS]: sql-data-warehouse-develop-ctas.md
+[label]: sql-data-warehouse-develop-label.md
 
 <!--MSDN references-->
 [CREATE EXTERNAL DATA SOURCE]: https://msdn.microsoft.com/de-DE/library/dn935022.aspx
 [CREATE EXTERNAL FILE FORMAT]: https://msdn.microsoft.com/de-DE/library/dn935026.aspx
+[CREATE TABLE AS SELECT (Transact-SQL)]: https://msdn.microsoft.com/library/mt204041.aspx
 [sys.dm_pdw_exec_requests]: https://msdn.microsoft.com/library/mt203887.aspx
 [REBUILD]: https://msdn.microsoft.com/library/ms188388.aspx
 
@@ -369,4 +370,4 @@ Verwenden Sie das Skript unter [Entwurfsentscheidungen und Programmiertechniken 
 [Microsoft Download Center]: http://www.microsoft.com/download/details.aspx?id=36433
 [Laden des kompletten Contoso Retail-Data Warehouse]: https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/contoso-data-warehouse/readme.md
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0817_2016-->

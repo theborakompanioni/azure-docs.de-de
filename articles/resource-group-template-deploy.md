@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/11/2016"
+   ms.date="08/15/2016"
    ms.author="tomfitz"/>
 
 # Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure PowerShell
@@ -41,7 +41,7 @@ Ihre Vorlage kann entweder eine lokale Datei oder eine externe Datei sein, die �
 
 ## Schnelle Schritte zur Bereitstellung
 
-Dieser Artikel beschreibt alle verschiedenen Optionen, die Ihnen während der Bereitstellung zur Verfügung stehen. Allerdings werden Sie sehr häufig nur zwei einfache Befehle benötigen. Verwenden Sie die folgenden Befehle, um schnell mit der Bereitstellung zu beginnen:
+Dieser Artikel beschreibt alle verschiedenen Optionen, die Ihnen während der Bereitstellung zur Verfügung stehen. Allerdings benötigen Sie häufig nur zwei einfache Befehle. Verwenden Sie die folgenden Befehle, um schnell mit der Bereitstellung zu beginnen:
 
     New-AzureRmResourceGroup -Name ExampleResourceGroup -Location "West US"
     New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup -TemplateFile <PathToTemplate> -TemplateParameterFile <PathToParameterFile>
@@ -52,7 +52,7 @@ Weitere Informationen zu Optionen für die Bereitstellung, die für Ihr Szenario
 
 ## Bereitstellen mit PowerShell
 
-1. Melden Sie sich bei Ihrem Azure-Konto an.
+1. Melden Sie sich beim Azure-Konto an.
 
         Add-AzureRmAccount
 
@@ -66,9 +66,9 @@ Weitere Informationen zu Optionen für die Bereitstellung, die für Ihr Szenario
 
         Set-AzureRmContext -SubscriptionID <YourSubscriptionId>
 
-3. Wenn Sie eine neue Vorlage bereitstellen, müssen Sie zunächst eine neue Ressourcengruppe erstellen, die die Ressource enthalten soll. Wenn es bereits eine Ressourcengruppe gibt, in der die Bereitstellung erfolgen soll, können Sie diesen Schritt überspringen und einfach diese Ressourcengruppe nutzen.
+3. Wenn Sie eine neue Vorlage bereitstellen, müssen Sie in der Regel zunächst eine Ressourcengruppe erstellen, die die Ressourcen enthalten soll. Wenn es bereits eine Ressourcengruppe gibt, in der die Bereitstellung erfolgen soll, können Sie diesen Schritt überspringen und einfach diese Ressourcengruppe nutzen.
 
-     Geben Sie zum Erstellen einer neuen Ressourcengruppe einen Namen und Speicherort für diese an.
+     Geben Sie zum Erstellen einer Ressourcengruppe einen Namen und Speicherort für diese an.
 
         New-AzureRmResourceGroup -Name ExampleResourceGroup -Location "West US"
    
@@ -88,7 +88,7 @@ Weitere Informationen zu Optionen für die Bereitstellung, die für Ihr Szenario
 
         Test-AzureRmResourceGroupDeployment -ResourceGroupName ExampleResourceGroup -TemplateFile <PathToTemplate>
 
-5. Führen Sie zum Erstellen einer neuen Bereitstellung für die Ressourcengruppe den Befehl **New-AzureRmResourceGroupDeployment** aus, und geben Sie die erforderlichen Parameter ein. Die Parameter enthalten den Namen der Bereitstellung, den Namen der Ressourcengruppe, den Pfad oder die URL der erstellten Vorlage und alle anderen für Ihr Szenario erforderlichen Parameter. Wenn der Parameter **Mode** nicht angegeben wurde, wird der Standardwert **Incremental** verwendet. Legen Sie zum Ausführen einer vollständigen Bereitstellung **Mode** auf **Complete** fest. Seien Sie bei Wahl des Modus „Complete“ vorsichtig, da Sie versehentlich Ressourcen löschen können, die nicht in Ihrer Vorlage enthalten sind.
+5. Führen Sie zum Bereitstellen in der Ressourcengruppe den Befehl **New-AzureRmResourceGroupDeployment** aus, und geben Sie die erforderlichen Parameter ein. Die Parameter enthalten den Namen der Bereitstellung, den Namen der Ressourcengruppe, den Pfad oder die URL der erstellten Vorlage und alle anderen für Ihr Szenario erforderlichen Parameter. Wenn der Parameter **Mode** nicht angegeben wurde, wird der Standardwert **Incremental** verwendet. Legen Sie zum Ausführen einer vollständigen Bereitstellung **Mode** auf **Complete** fest. Seien Sie bei Wahl des Modus „Complete“ vorsichtig, da Sie versehentlich Ressourcen löschen können, die nicht in Ihrer Vorlage enthalten sind.
 
      Verwenden Sie zum Bereitstellen einer lokalen Vorlage den **TemplateFile**-Parameter:
 
@@ -117,6 +117,8 @@ Weitere Informationen zu Optionen für die Bereitstellung, die für Ihr Szenario
 
             New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup -TemplateUri <LinkToTemplate> -TemplateParameterUri <LinkToParameterFile>
 
+        Bei Verwendung einer externen Parameterdatei können Sie keine anderen Werte (weder inline noch aus einer lokalen Datei) übergeben. Weitere Informationen finden Sie im Thema zur [Parameterrangfolge](#parameter-precendence).
+
      Nachdem die Ressourcen bereitgestellt wurden, wird eine Zusammenfassung der Bereitstellung angezeigt.
 
         DeploymentName    : ExampleDeployment
@@ -126,9 +128,9 @@ Weitere Informationen zu Optionen für die Bereitstellung, die für Ihr Szenario
         Mode              : Incremental
         ...
 
-     Enthält die Vorlage einen Parameter mit einem Namen, der einem der Parameter im Befehl zum Bereitstellen der Vorlage entspricht (z.B. einen Parameter namens **ResourceGroupName** in der Vorlage, der mit dem Parameter **ResourceGroupName** im Cmdlet [New-AzureRmResourceGroupDeployment](https://msdn.microsoft.com/library/azure/mt679003.aspx) identisch ist), werden Sie aufgefordert, einen Wert für einen Parameter mit dem Postfix **FromTemplate** anzugeben (z.B. **ResourceGroupNameFromTemplate**). Im Allgemeinen sollten Sie diese Verwirrung vermeiden, indem Sie Parametern nicht dieselben Namen wie Parametern für Bereitstellungsvorgänge geben.
+     Enthält Ihre Vorlage einen Parameter mit dem gleichen Namen wie einer der Parameter im PowerShell-Befehl zum Bereitstellen der Vorlage, werden Sie zur Eingabe eines Werts für diesen Parameter mit dem Postfix **FromTemplate** aufgefordert. Beispiel: Ein Parameter namens **ResourceGroupName** in Ihrer Vorlage verursacht einen Konflikt mit dem Parameter **ResourceGroupName** im [New-AzureRmResourceGroupDeployment](https://msdn.microsoft.com/library/azure/mt679003.aspx)-Cmdlet. Sie werden zur Eingabe eines Werts für **ResourceGroupNameFromTemplate** aufgefordert. Im Allgemeinen sollten Sie diese Verwirrung vermeiden, indem Sie Parametern nicht dieselben Namen wie Parametern für Bereitstellungsvorgänge geben.
 
-6. Wenn Sie zusätzliche Informationen über die Bereitstellung protokollieren möchten, die Ihnen möglicherweise bei der Behebung von Bereitstellungsfehlern helfen können, verwenden Sie den Parameter **DeploymentDebugLogLevel**. Sie können angeben, dass der Anforderungsinhalt, der Antwortinhalt oder beide beim Bereitstellungsvorgang protokolliert werden.
+6. Wenn Sie zusätzliche Informationen zur Bereitstellung protokollieren möchten, die Ihnen möglicherweise bei der Behebung von Bereitstellungsfehlern helfen können, verwenden Sie den Parameter **DeploymentDebugLogLevel**. Sie können angeben, dass der Anforderungsinhalt, der Antwortinhalt oder beide beim Bereitstellungsvorgang protokolliert werden.
 
         New-AzureRmResourceGroupDeployment -Name ExampleDeployment -DeploymentDebugLogLevel All -ResourceGroupName ExampleResourceGroup -TemplateFile <PathOrLinkToTemplate>
         
@@ -144,11 +146,11 @@ Sie können Ihre Vorlagen einem Speicherkonto hinzufügen und sie während der B
 
 Führen Sie die folgenden Schritte aus, um ein Speicherkonto für Vorlagen einzurichten:
 
-1. Erstellen Sie eine neue Ressourcengruppe.
+1. Erstellen Sie eine Ressourcengruppe.
 
         New-AzureRmResourceGroup -Name ManageGroup -Location "West US"
 
-2. Erstellen Sie ein neues Speicherkonto Der Name des Speicherkontos muss innerhalb von Azure eindeutig sein. Geben Sie deshalb Ihren eigenen Namen für das Konto an.
+2. Erstellen Sie ein Speicherkonto. Der Name des Speicherkontos muss innerhalb von Azure eindeutig sein. Geben Sie deshalb Ihren eigenen Namen für das Konto an.
 
         New-AzureRmStorageAccount -ResourceGroupName ManageGroup -Name storagecontosotemplates -Type Standard_LRS -Location "West US"
 
@@ -156,7 +158,7 @@ Führen Sie die folgenden Schritte aus, um ein Speicherkonto für Vorlagen einzu
 
         Set-AzureRmCurrentStorageAccount -ResourceGroupName ManageGroup -Name storagecontosotemplates
 
-4. Erstellen Sie einen neuen Container. Die Berechtigung ist auf **Off** festgelegt, was bedeutet, dass nur der Besitzer Zugriff auf den Container hat.
+4. Erstellen Sie einen Container. Die Berechtigung ist auf **Off** festgelegt, was bedeutet, dass nur der Besitzer Zugriff auf den Container hat.
 
         New-AzureStorageContainer -Name templates -Permission Off
         
@@ -184,10 +186,17 @@ Ein Beispiel der Verwendung eines SAS-Tokens mit verknüpften Vorlagen finden Si
 
 [AZURE.INCLUDE [resource-manager-parameter-file](../includes/resource-manager-parameter-file.md)]
 
+## Parameterrangfolge
+
+Sie können Inlineparameter und eine lokale Parameterdatei im selben Bereitstellungsvorgang verwenden. Sie können beispielsweise einige Werte in der lokalen Parameterdatei angeben und weitere Werte während der Bereitstellung inline hinzufügen. Wenn Sie Werte für einen Parameter sowohl in der lokalen Parameterdatei als auch inline bereitstellen, haben die Inlinewerte Vorrang.
+
+Inlineparameter können jedoch nicht mit einer externen Parameterdatei verwendet werden. Wenn Sie eine Parameterdatei im Parameter **TemplateParameterUri** angeben, werden alle Inlineparameter ignoriert. Sie müssen alle Parameterwerte in der externen Datei bereitstellen. Enthält Ihre Vorlage einen vertraulichen Wert, der nicht in die Parameterdatei aufgenommen werden kann, fügen Sie diesen Wert zu einem Schlüsseltresor hinzu, und verweisen Sie in der externen Parameterdatei auf den Schlüsseltresor. Alternativ können Sie alle Parameterwerte dynamisch inline bereitstellen.
+
+Weitere Informationen zum Verwenden eines KeyVault-Verweises zum Übergeben sicherer Werte finden Sie unter [Übergeben sicherer Werte während der Bereitstellung](resource-manager-keyvault-parameter.md).
+
 ## Nächste Schritte
 - Ein Beispiel für die Bereitstellung von Ressourcen über die .NET-Clientbibliothek finden Sie unter [Bereitstellen von Ressourcen mithilfe von .NET-Bibliotheken und einer Vorlage](virtual-machines/virtual-machines-windows-csharp-template.md).
 - Informationen zum Definieren von Parametern in der Vorlage finden Sie unter [Erstellen von Vorlagen](resource-group-authoring-templates.md#parameters).
 - Informationen zum Bereitstellen der Lösung in andere Umgebungen finden Sie unter [Entwicklungs- und Testumgebungen in Microsoft Azure](solution-dev-test-environments.md).
-- Weitere Informationen zum Verwenden eines KeyVault-Verweises zum Übergeben sicherer Werte finden Sie unter [Übergeben sicherer Werte während der Bereitstellung](resource-manager-keyvault-parameter.md).
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0817_2016-->

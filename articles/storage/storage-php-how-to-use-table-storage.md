@@ -13,13 +13,13 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="PHP"
 	ms.topic="article"
-	ms.date="06/01/2016"
+	ms.date="08/11/2016"
 	ms.author="robmcm"/>
 
 
 # Verwenden des Tabellenspeichers mit PHP
 
-[AZURE.INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
+[AZURE.INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)] <br/> [AZURE.INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-tables.md)]
 
 ## Übersicht
 
@@ -41,7 +41,7 @@ In diesem Leitfaden verwenden Sie Funktionen des Tabellenspeicherdiensts, die lo
 
 ## Konfigurieren der Anwendung für den Zugriff auf den Tabellenspeicherdienst
 
-Um die APIs des Azure-Tabellenspeicherdiensts zu verwenden, müssen Sie folgendermaßen vorgehen:
+Um die APIs des Azure-Tabellendiensts zu verwenden, müssen Sie folgendermaßen vorgehen:
 
 1. Verweisen Sie mithilfe der [require\_once][require_once]-Anweisung auf die Autoloaderdatei und
 2. Verweisen Sie auf alle Klassen, die Sie möglicherweise verwenden.
@@ -87,7 +87,7 @@ Für die hier erläuterten Beispiele wird die Verbindungszeichenfolge direkt wei
 
 ## Erstellen einer Tabelle
 
-Mithilfe eines **TableRestProxy**-Objekts können Sie eine Tabelle mit der **createTable**-Methode erstellen. Wenn Sie eine Tabelle erstellen, können Sie das Timeout für den Tabellenspeicherdienst festlegen. (Weitere Informationen zum Timeout für den Tabellenspeicherdienst finden Sie unter [Festlegen von Timeouts für Tabellendienstvorgänge][table-service-timeouts].)
+Mithilfe eines **TableRestProxy**-Objekts können Sie eine Tabelle mit der **createTable**-Methode erstellen. Wenn Sie eine Tabelle erstellen, können Sie das Timeout für den Tabellenspeicherdienst festlegen. (Weitere Informationen zum Timeout für den Tabellenspeicherdienst finden Sie unter [Festlegen von Timeouts für Tabellenspeicherdienstvorgänge][table-service-timeouts].)
 
 	require_once 'vendor\autoload.php';
 
@@ -109,7 +109,7 @@ Mithilfe eines **TableRestProxy**-Objekts können Sie eine Tabelle mit der **cre
 		// http://msdn.microsoft.com/library/azure/dd179438.aspx
 	}
 
-Informationen zu Einschränkungen für Tabellennamen finden Sie unter [Grundlegendes zum Tabellendienst-Datenmodell][table-data-model].
+Informationen zu Einschränkungen für Tabellennamen finden Sie unter [Grundlegendes zum Tabellenspeicherdienst-Datenmodell][table-data-model].
 
 ## Hinzufügen einer Entität zu einer Tabelle
 
@@ -216,7 +216,7 @@ Mit der **TableRestProxy->getEntity**-Methode können Sie eine einzelne Entität
 
 	echo $entity->getPartitionKey().":".$entity->getRowKey();
 
-## Abrufen aller Entitäten in einer Partition
+## Abrufen aller Entitäten einer Partition
 
 Entitätsabfragen werden mithilfe von Filtern erstellt (weitere Informationen finden Sie unter [Abfragen von Tabellen und Entitäten][filters]). Um alle Entitäten in einer Partition abzurufen, verwenden Sie den Filter "PartitionKey eq *Partitionsname*". Das folgende Beispiel zeigt, wie alle Entitäten in der Partition `tasksSeattle` durch Übergeben eines Filters an die **queryEntities**-Methode abgerufen werden.
 
@@ -250,7 +250,7 @@ Entitätsabfragen werden mithilfe von Filtern erstellt (weitere Informationen fi
 
 ## Abrufen einer Teilmenge von Entitäten in einer Partition
 
-Das Muster, das im vorherigen Beispiel verwendet wird, kann auch verwendet werden, um eine Teilmenge der Entitäten in einer Partition abzurufen. Die Teilmenge der Entitäten, die Sie abrufen, wird durch den verwendeten Filter bestimmt (weitere Informationen finden Sie unter [Abfragen von Tabellen und Entitäten][filters]). Das folgende Beispiel zeigt, wie ein Filter zum Abrufen aller Entitäten mit einem bestimmten Wert für `Location` und einem `DueDate` vor einem angegebenen Datum verwendet wird.
+Das Muster, das im vorherigen Beispiel verwendet wird, kann auch verwendet werden, um eine Teilmenge der Entitäten in einer Partition abzurufen. Die Teilmenge der Entitäten, die Sie abrufen, wird durch den verwendeten Filter bestimmt (weitere Informationen finden Sie unter [Abfragen von Tabellen und Entitäten][filters]). Das folgende Beispiel zeigt, wie ein Filter zum Abrufen aller Entitäten mit einem bestimmten `Location`-Wert und einem `DueDate`-Wert verwendet wird, der vor einem angegebenen Datum liegt.
 
 	require_once 'vendor/autoload.php';
 
@@ -466,7 +466,7 @@ Um eine Tabelle zu löschen, übergeben Sie den Tabellennamen an die **TableRest
 
 Nachdem Sie sich nun mit den Grundlagen des Azure-Tabellenspeicherdiensts vertraut gemacht haben, folgen Sie diesen Links, um zu erfahren, wie komplexere Speicheraufgaben ausgeführt werden.
 
-- Besuchen Sie den [Blog des Azure-Speicherteams](http://blogs.msdn.com/b/windowsazurestorage/)
+- Besuchen Sie den [Blog des Azure-Speicherteams](http://blogs.msdn.com/b/windowsazurestorage/).
 
 Weitere Informationen finden Sie außerdem im [PHP Developer Center](/develop/php/).
 
@@ -478,4 +478,4 @@ Weitere Informationen finden Sie außerdem im [PHP Developer Center](/develop/ph
 [filters]: http://msdn.microsoft.com/library/azure/dd894031.aspx
 [entity-group-transactions]: http://msdn.microsoft.com/library/azure/dd894038.aspx
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0817_2016-->

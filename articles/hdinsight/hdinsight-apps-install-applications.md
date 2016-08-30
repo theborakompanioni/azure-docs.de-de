@@ -122,4 +122,4 @@ Weitere Informationen finden Sie unter [Behandeln von Installationsproblemen](hd
 - [Anpassen Linux-basierter HDInsight-Cluster mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md): Hier erfahren Sie, wie Sie mithilfe der Skriptaktion zusätzliche Anwendungen installieren.
 - [Erstellen von Linux-basierten Hadoop-Clustern in HDInsight mit Resource Manager-Vorlagen](hdinsight-hadoop-create-linux-clusters-arm-templates.md): Hier erfahren Sie, wie Sie Resource Manager-Vorlagen für die Erstellung von HDInsight-Clustern aufrufen.
 
-<!---HONumber=AcomDC_0706_2016-->
+<!----HONumber=AcomDC_0706_2016-->

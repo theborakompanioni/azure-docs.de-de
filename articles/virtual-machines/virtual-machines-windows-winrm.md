@@ -3,7 +3,7 @@
 	description="Vorgehensweise zum Einrichten des WinRM-Zugriffs zur Verwendung mit einem virtuellen Azure Resource Manager-Computer"
 	services="virtual-machines-windows"
 	documentationCenter=""
-	authors="rothja"
+	authors="singhkays"
 	manager="drewm"
 	editor=""
 	tags="azure-resource-manager"/>
@@ -165,4 +165,4 @@ Wenn das Setup abgeschlossen ist, können Sie mit dem folgenden Befehl eine Verb
 
     Enter-PSSession -ConnectionUri https://<public-ip-dns-of-the-vm>:5986 -Credential $cred -SessionOption (New-PSSessionOption -SkipCACheck -SkipCNCheck -SkipRevocationCheck) -Authentication Negotiate
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0817_2016-->

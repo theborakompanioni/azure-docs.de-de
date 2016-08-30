@@ -12,7 +12,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="04/26/2016"
+   ms.date="08/17/2016"
    ms.author="alkohli" />
 
 # Bereitstellen lokaler StorSimple-Geräte
@@ -72,7 +72,7 @@ Die folgende Konfigurationsprüfliste für die Bereitstellung enthält die Infor
 |----------------------------------------|---------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------|
 | **Verkabeln Ihres Geräts** | Serieller Zugriff | Anfängliche Gerätekonfiguration | Ja/Nein |
 | | | | |
-| **Konfigurieren und Registrieren des Geräts** | DATA 0 Netzwerkeinstellungen | DATA 0 IP Adresse:</br>Subnetzmaske:</br>Gateway:</br>Primärer DNS-Server:</br>Primärer NTP-Server:</br>Webproxyserver-IP/FQDN (optional):</br>Webproxyport:| |
+| **Konfigurieren und Registrieren des Geräts** | DATA 0-Netzwerkeinstellungen | DATA 0-IP-Adresse:</br>Subnetzmaske:</br>Gateway:</br>Primärer DNS-Server:</br>Primärer NTP-Server:</br>Webproxyserver-IP/FQDN (optional):</br>Webproxyport:| |
 | | Geräteadministratorkennwort | Das Kennwort muss zwischen 8 und 15 Zeichen lang sein und Kleinbuchstaben, Großbuchstaben, Ziffern und Sonderzeichen umfassen. | |
 | | StorSimple Snapshot Manager-Kennwort | Das Kennwort muss 14 oder 15 Zeichen lang sein und Kleinbuchstaben, Großbuchstaben, Ziffern und Sonderzeichen umfassen.| |
 | | Dienstregistrierungsschlüssel | Dieser Schlüssel wird im klassischen Azure-Portal generiert. | |
@@ -135,18 +135,18 @@ Stellen Sie vor der Konfiguration des Geräts Folgendes sicher:
 Stellen Sie Folgendes sicher, bevor Sie beginnen:
 
 - Die Ports in der Datencenter-Firewall werden geöffnet, um iSCSI- und Clouddatenverkehr zu ermöglichen, wie in [Netzwerkanforderungen für das StorSimple-Gerät](storsimple-system-requirements.md#networking-requirements-for-your-storsimple-device) beschrieben.
-- Das Gerät in Ihrem Datencenter kann eine Verbindung zum externen Netzwerk herstellen. Führen Sie folgende [Windows PowerShell 4.0](http://www.microsoft.com/download/details.aspx?id=40855)-Cmdlets (siehe unten stehende Tabelle) aus, um die Verbindung zum externen Netzwerk zu überprüfen. Führen Sie diese Überprüfung auf einem Computer (im Datencenternetzwerk) mit Verbindung zu Azure und an dem Standort durch, an dem Sie das StorSimple-Gerät bereitstellen.  
+- Das Gerät in Ihrem Datencenter kann eine Verbindung zum externen Netzwerk herstellen. Führen Sie folgende [Windows PowerShell 4.0](http://www.microsoft.com/download/details.aspx?id=40855)-Cmdlets (siehe unten stehende Tabelle) aus, um die Verbindung zum externen Netzwerk zu überprüfen. Führen Sie diese Überprüfung auf einem Computer (im Datencenternetzwerk) mit Verbindung zu Azure und an dem Standort durch, an dem Sie das StorSimple-Gerät bereitstellen.
 
 | Parameter | Gültigkeitsprüfung | Ausführung dieser Befehle/Cmdlets |
 |---------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **IP-**</br>Subnetz</br>-gateway | Ist dies eine gültige IPv4- oder IPv6-Adresse?</br>Ist dies ein gültiges Subnetz?</br>Ist dies ein gültiges Gateway?</br>Ist dies eine doppelte IP im Netzwerk? | `ping ip`</br>`arp -a`</br>Die Befehle `ping` und `arp` sollten einen Fehler zurückgeben mit dem Hinweis, dass kein Gerät im Datencenternetzwerk diese IP-Adresse verwendet.
+| **IP**</br>**Subnetz**</br>**Gateway** | Ist dies eine gültige IPv4- oder IPv6-Adresse?</br>Ist dies ein gültiges Subnetz?</br>Ist dies ein gültiges Gateway?</br>Ist dies eine doppelte IP im Netzwerk? | `ping ip`</br>`arp -a`</br>Die Befehle `ping` und `arp` sollten einen Fehler zurückgeben mit dem Hinweis, dass kein Gerät im Datencenternetzwerk diese IP-Adresse verwendet.
 | | | |
 | **DNS** | Ist dies ein gültiges DNS, das Azure-URLs auflösen kann? | `Resolve-DnsName -Name www.bing.com -Server <DNS server IP address>` </br>Alternativ kann folgender Befehl verwendet werden:</br>`nslookup --dns-ip=<DNS server IP address> www.bing.com` |
 | | Prüfen Sie, ob Port 53 offen ist. Dies gilt nur, wenn Sie ein externes DNS für Ihr Gerät verwenden. Das interne DNS sollte die externen URLs automatisch auflösen. | `Test-Port -comp dc1 -port 53 -udp -UDPtimeout 10000` </br>[Weitere Informationen zu diesem Cmdlet](http://learn-powershell.net/2011/02/21/querying-udp-ports-with-powershell/)|
 | | | |
 | **NTP** | Wir lösen eine Zeitsynchronisierung aus, sobald der NTP-Server eingegeben wird. Prüfen Sie, ob UDP-Port 123 offen ist, wenn Sie `time.windows.com` oder öffentliche Zeitserver eingeben. | [Laden Sie dieses Skript herunter, und verwenden Sie es](https://gallery.technet.microsoft.com/scriptcenter/Get-Network-NTP-Time-with-07b216ca). |
 | | | |
-| **Proxy (optional)** | Ist dies ein gültiger Proxy-URI und -Port? </br> Ist der Authentifizierungsmodus korrekt? | <code>wget http://bing.com &#124; % {$\_.StatusCode}</code></br>Dieser Befehl sollte unmittelbar nach der Konfiguration des Webproxys ausgeführt werden. Wenn der Statuscode "200" zurückgegeben wird, weist dies darauf hin, dass die Verbindung erfolgreich hergestellt wurde. |
+| **Proxy (optional)** | Ist dies ein gültiger Proxy-URI und -Port? </br> Ist der Authentifizierungsmodus korrekt? | <code>wget http://bing.com | % {$\_.StatusCode}</code></br>Dieser Befehl sollte unmittelbar nach der Konfiguration des Webproxys ausgeführt werden. Wenn der Statuscode "200" zurückgegeben wird, weist dies darauf hin, dass die Verbindung erfolgreich hergestellt wurde. |
 | | Kann der Datenverkehr durch den Proxy geroutet werden? | Führen Sie die DNS-, NTP- oder HTTP-Überprüfung einmal nach der Konfiguration der Proxyeinstellungen auf Ihrem Gerät aus. So erhalten Sie genaue Informationen darüber, ob Datenverkehr im Proxy oder an anderer Stelle blockiert wird. |
 | | | |
 | **Registrierung** | Prüfen Sie, ob die ausgehenden TCP-Ports 443, 80 und 9354 offen sind. | `Test-NetConnection -Port   443 -InformationLevel Detailed`</br>[Weitere Informationen zum Cmdlet "Test-NetConnection"](https://technet.microsoft.com/library/dn372891.aspx) |
@@ -264,7 +264,7 @@ Die Aktualisierung eines Geräts kann zwischen einer und vier Stunden dauern. F�
 > [AZURE.NOTE] Wenn das Gateway für eine andere Netzwerkschnittstelle als DATA 0 konfiguriert ist, müssen Sie die Netzwerkschnittstellen DATA 2 und DATA 3 deaktivieren, bevor Sie das Update installieren. Wechseln Sie zu **Geräte > Konfigurieren**, und deaktivieren Sie die Schnittstellen DATA 2 und DATA 3. Sie sollten diese Schnittstellen nach der Aktualisierung des Geräts wieder aktivieren.
 
 #### So aktualisieren Sie Ihr Gerät
-1.	Klicken Sie auf der Seite **Schnellstart** für das Gerät auf **Geräte**. Wählen Sie das physische Gerät aus, und klicken Sie auf **Wartung** und dann auf **Updates scannen**.  
+1.	Klicken Sie auf der Seite **Schnellstart** für das Gerät auf **Geräte**. Wählen Sie das physische Gerät aus, und klicken Sie auf **Wartung** und dann auf **Updates scannen**.
 2.	Für die Suche nach verfügbaren Updates wird ein Auftrag erstellt. Wenn Updates verfügbar sind, ändert sich die Option **Updates scannen** in **Updates installieren**. Klicken Sie auf **Updates installieren**. Möglicherweise werden Sie dazu aufgefordert, DATA 2 und DATA 3 vor der Installation der Updates zu deaktivieren. Sie müssen diese Netzwerkschnittstellen deaktivieren, da die Updates sonst nicht installiert werden können.
 3.	Es wird ein Updateauftrag erstellt. Überwachen Sie den Status Ihres Updates, indem Sie zu **Aufträge** wechseln.
 
@@ -294,4 +294,4 @@ Führen Sie die folgenden Schritte im klassischen Azure-Portal aus, um bei Bedar
 
 - Verwenden des [StorSimple-Manager-Diensts](https://msdn.microsoft.com/library/azure/dn772396.aspx) für das Verwalten Ihres StorSimple-Geräts
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0824_2016-->

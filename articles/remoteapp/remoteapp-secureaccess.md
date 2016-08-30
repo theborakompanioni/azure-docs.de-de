@@ -13,10 +13,13 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="article" 
-    ms.date="06/27/2016" 
+    ms.date="08/15/2016" 
     ms.author="elizapo" />
 
 # Sichern des Zugriffs auf Azure RemoteApp und darüber hinaus
+
+> [AZURE.IMPORTANT]
+Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148).
 
 In diesem Artikel erhalten Sie einen Überblick darüber, wie ein Administrator einen sicheren Zugriffskanal vom Endbenutzer über Azure RemoteApp bis hin zu einer sicheren Ressource einrichten kann, z. B. einer SQL-Datenbank oder einem anderen Anwendungs-Back-End. Ziel ist es, sicherzustellen, dass nur autorisierte Benutzer, die die gewünschten Bedingungen erfüllen, auf Remoteanwendungen zugreifen können und dass das sichere Back-End nur von der kontrollierten Azure RemoteApp-Umgebung und nicht von anderen Stellen aus zugänglich ist.
 
@@ -53,7 +56,7 @@ Wir durchlaufen ein Beispielszenario: Der Azure RemoteApp-Administrator möchte 
 2.	Klicken Sie auf **Anwendungen**, und klicken Sie dann auf **Microsoft Azure RemoteApp**, um den bedingten Zugriff einzurichten. Beachten Sie, dass Sie den bedingten Zugriff für jede SaaS-Anwendung (Software-as-a-Service) in Ihrem Verzeichnis separat einrichten können. ![Einrichten des bedingten Zugriffs für Azure RemoteApp](./media/remoteapp-secureaccess/ra-conditionalaccessscreen.png)
  
 
-3.	Auf der Registerkarte **Konfigurieren** legen Sie **Zugriffsregeln aktivieren** auf EIN fest. ![Aktivieren von Zugriffsregeln für Azure RemoteApp](./media/remoteapp-secureaccess/ra-enableaccessrules.png)
+3.	Legen Sie auf der Registerkarte **Konfigurieren** **Zugriffsregeln aktivieren** auf EIN fest. ![Aktivieren von Zugriffsregeln für Azure RemoteApp](./media/remoteapp-secureaccess/ra-enableaccessrules.png)
  
 
 4.	Jetzt können Sie verschiedene Regeln konfigurieren und auswählen, auf wen Sie sie anwenden möchten:
@@ -110,4 +113,4 @@ Mit Azure RemoteApp müssen Sie zuerst Ihr VNet konfigurieren und es dann beim V
 ## Die vollständige Lösung
 Das folgende Diagramm zeigt die vollständige Lösung, in der wir einen sicheren Zugriffskanal vom Endbenutzer über Azure RemoteApp (ARA) bis hin zur Back-End-Ressource erstellt haben. ![Sichern von Azure RemoteApp](./media/remoteapp-secureaccess/ra-secureoverview.png) In Phase 1 wurden die Benutzer ausgewählt und Zugriffsregeln erstellt, die den Zugriff auf ARA steuern. Im folgenden Beispiel gestatten wir nur den Benutzern Zugriff, die vom Unternehmensnetzwerk aus arbeiten. Benutzer, die dieser Vorgabe nicht entsprechen, können überhaupt nicht auf die ARA-Umgebung zugreifen. In Phase 2 haben wir die Back-End-Ressource nur über die Konfiguration von VNet/VPN verfügbar gemacht, die von uns gesteuert wird. Azure RemoteApp wurde im selben VNet platziert. Als Endergebnis ist die Ressource nur über die ARA-Umgebung zugänglich.
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0817_2016-->

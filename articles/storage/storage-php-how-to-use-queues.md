@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="PHP"
 	ms.topic="article"
-	ms.date="06/01/2016"
+	ms.date="08/11/2016"
 	ms.author="robmcm"/>
 
 # Verwenden des Warteschlangenspeichers mit PHP
 
-[AZURE.INCLUDE [storage-selector-queue-include](../../includes/storage-selector-queue-include.md)]
+[AZURE.INCLUDE [storage-selector-queue-include](../../includes/storage-selector-queue-include.md)] <br/> [AZURE.INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
 
 ## Übersicht
 
@@ -191,7 +191,7 @@ Sie können einen Blick auf die Nachricht(en) am Anfang einer Warteschlange werf
 		}
 	}
 
-## Entfernen der nächsten Nachricht
+## Entfernen der nächsten Nachricht aus der Warteschlange
 
 Dieser Code entfernt eine Nachricht in zwei Schritten aus der Warteschlange. Zunächst rufen Sie **QueueRestProxy->listMessages**, um die Nachricht unsichtbar für anderen Code zu machen, der aus der Warteschlange liest. Standardmäßig bleibt die Nachricht 30 Sekunden lang unsichtbar. (Falls sie in diesem Zeitraum nicht gelöscht wird, kann sie wieder aus der Warteschlange gelesen werden.) Um die Nachricht endgültig aus der Warteschlange zu entfernen, müssen Sie **QueueRestProxy->deleteMessage** aufrufen. Dieser zweistufige Prozess zum Entfernen von Nachrichten stellt sicher, dass eine andere Codeinstanz dieselbe Nachricht erneut abrufen kann, falls die Verarbeitung aufgrund eines Hardware- oder Softwarefehlers fehlschlägt. Der Code ruft **deleteMessage** direkt nach der Verarbeitung der Nachricht auf.
 
@@ -384,4 +384,4 @@ Weitere Informationen finden Sie außerdem im [PHP Developer Center](/develop/ph
 [require\_once]: http://www.php.net/manual/en/function.require-once.php
 [Azure Portal]: https://portal.azure.com
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0817_2016-->

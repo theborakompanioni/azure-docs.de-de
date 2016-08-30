@@ -3,7 +3,7 @@
 	description="Einrichten eines Schlüsseltresors, der für einen mit Azure Resource Manager erstellten virtuellen Computer verwendet werden soll."
 	services="virtual-machines-linux"
 	documentationCenter=""
-	authors="rothja"
+	authors="singhkays"
 	manager="drewm"
 	editor=""
 	tags="azure-resource-manager"/>
@@ -19,7 +19,7 @@
 
 # Einrichten des Schlüsseltresors für virtuelle Computer in Azure Resource Manager
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]Klassisches Bereitstellungsmodell
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] Klassisches Bereitstellungsmodell
 
 Im Azure Resource Manager-Stapel sind geheime Schlüssel/Zertifikate als Ressourcen modelliert, die durch den Ressourcenanbieter des Schlüsseltresors bereitgestellt werden. Weitere Informationen über Azure Schlüsseltresore finden Sie unter [Was ist der Azure-Schlüsseltresor?](../key-vault/key-vault-whatis.md).
 
@@ -49,4 +49,4 @@ Wenn Sie eine Vorlage verwenden, müssen Sie die `enabledForDeployment`-Eigensch
 
 Weitere Optionen, die Sie beim Erstellen eines Schlüsseltresors mithilfe von Vorlagen konfigurieren können, finden Sie unter [Create a Key Vault](https://azure.microsoft.com/documentation/templates/101-key-vault-create/) (Erstellen eines Schlüsseltresors).
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0817_2016-->

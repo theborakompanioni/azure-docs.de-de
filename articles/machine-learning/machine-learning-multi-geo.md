@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/09/2016"
+   ms.date="08/16/2016"
    ms.author="tedway; neerajkh"/>
 
 # Hilfedokumentation für mehrere geografische Räume
@@ -44,7 +44,7 @@ Um Webdienste programmgesteuert zu verwalten, etwa zum erneuten Trainieren, verw
 
 ### Was Sie beachten sollten
 
-1.	Experimente können auf diese Art nur zwischen Arbeitsbereichen innerhalb der gleichen Region kopiert werden. Wenn Sie Experimente Arbeitsbereiche übergreifend kopieren müssen, können Sie hierzu das [PowerShell](http://aka.ms/amlps)-Cmdlet [*Copy-AmlExperiment*](https://github.com/hning86/azuremlps/blob/master/README.md#copy-amlexperiment) verwenden. Eine weitere Möglichkeit besteht darin, das Experiment im Katalog im nicht gelisteten Modus zu veröffentlichen und dann aus der anderen Region heraus im Arbeitsbereich zu öffnen.
+1.	Experimente können auf diese Art nur zwischen Arbeitsbereichen innerhalb der gleichen Region kopiert werden. Wenn Sie Experimente Arbeitsbereiche in verschiedenen Regionen übergreifend kopieren müssen, können Sie hierzu das [PowerShell](http://aka.ms/amlps)-Cmdlet [*Copy-AmlExperiment*](https://github.com/hning86/azuremlps/blob/master/README.md#copy-amlexperiment) verwenden. Eine weitere Möglichkeit besteht darin, das Experiment im Katalog im nicht gelisteten Modus zu veröffentlichen und dann aus der anderen Region heraus im Arbeitsbereich zu öffnen.
 2.	Die Regionsauswahl zeigt immer nur jeweils die Arbeitsbereiche einer Region an. Zukünftig können Sie die vollständige Liste aller Arbeitsbereiche, zu denen Sie Zugang haben, aus allen Regionen zugleich anzeigen.
 3.	Kostenlose Arbeitsbereiche oder Gastkonten (anonym) werden in South Central-USA erstellt und gehostet. Zukünftig werden Sie imstande sein, kostenlose bzw. Gastarbeitsbereiche in der Region Ihrer Wahl zu erstellen.
 4.	Webdienste, die aus einem Arbeitsbereich in Südostasien bereitgestellt werden, werden auch in Südostasien gehostet. Zukünftig wird es möglich sein, Experimente in einer Region zu erstellen und die generierten Webdienstendpunkte in verschiedenen Regionen bereitzustellen.
@@ -59,4 +59,4 @@ Stellen Sie eine Frage im [Azure Machine Learning-Forum](https://social.msdn.mic
 [3]: ./media/machine-learning-multi-geo/multi-geo_3.png
 [4a]: ./media/machine-learning-multi-geo/multi-geo_4a.png
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0817_2016-->

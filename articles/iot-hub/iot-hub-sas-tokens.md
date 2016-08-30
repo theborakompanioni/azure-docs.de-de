@@ -78,14 +78,33 @@ Dies ist eine Node-Funktion, die das Token aus den Eingaben `resourceUri, signin
         // console.log("signature:" + token);
         return token;
     };
+ 
+ Hier ist der entsprechende Python-Code zum Vergleich:
+ 
+    from base64 import b64encode, b64decode
+    from hashlib import sha256
+    from hmac import HMAC
+    from urllib import urlencode
+    
+    def generate_sas_token(uri, key, policy_name='device', expiry=3600):
+        ttl = time() + expiry
+        sign_key = "%s\n%d" % (uri, int(ttl))
+        signature = b64encode(HMAC(b64decode(key), sign_key, sha256).digest())
+     
+        return 'SharedAccessSignature ' + urlencode({
+            'sr' :  uri,
+            'sig': signature,
+            'se' : str(int(ttl)),
+            'skn': policy_name
+        })
 
 > [AZURE.NOTE] Da der Gültigkeitszeitraum des Tokens auf dem IoT Hub-Computer überprüft wird, ist es wichtig, dass die Abweichung der Uhr des Computers, auf dem das Token generiert wird, minimal ist.
 
 ## Verwenden von SAS-Token als Gerät
 
-Es gibt zwei Methoden zum Abrufen von **DeviceConnect**-Berechtigungen mit IoT Hub mit Sicherheitstoken: mit einem Identitätsschlüssel für das Gerät oder einem SAS-Richtlinienschlüssel.
+Es gibt zwei Methoden zum Abrufen von **DeviceConnect**-Berechtigungen mit IoT Hub mit Sicherheitstoken: Identitätsschlüssel für das Gerät oder SAS-Richtlinienschlüssel.
 
-Darüber hinaus müssen Sie beachten, dass alle Funktionen, auf die mit Geräten zugegriffen werden kann, für Endpunkte mit dem Präfix `/devices/{deviceId}` verfügbar gemacht werden.
+Darüber hinaus ist zu beachten, dass alle Funktionen, auf die auf Geräten zugegriffen werden kann, für Endpunkte mit dem Präfix `/devices/{deviceId}` absichtlich verfügbar gemacht werden.
 
 > [AZURE.IMPORTANT] Die einzige Möglichkeit, dass IoT Hub ein bestimmtes Gerät authentifiziert, ist durch die Verwendung des symmetrischen Schlüssels der Geräteidentität. Wenn eine SAS-Richtlinie verwendet wird, um auf Gerätefunktionen zuzugreifen, muss die Lösung die Komponente, die das Sicherheitstoken ausgibt, als vertrauenswürdige Unterkomponente ansehen.
 
@@ -184,11 +203,11 @@ Das Ergebnis, das Lesezugriff für alle Geräteidentitäten gewähren würde, w�
 
 Sie können ein beliebiges X.509-Zertifikat zum Authentifizieren eines Geräts bei IoT Hub verwenden. Dies umfasst:
 
--   **Ein vorhandenes X.509-Zertifikat.** Einem Gerät ist möglicherweise bereits ein X.509-Zertifikat zugeordnet. Das Gerät kann dieses Zertifikat für die Authentifizierung bei IoT Hub verwenden.
+-   **Ein vorhandenes X.509-Zertifikat**. Einem Gerät ist möglicherweise bereits ein X.509-Zertifikat zugeordnet. Das Gerät kann dieses Zertifikat für die Authentifizierung bei IoT Hub verwenden.
 
--   **Ein selbst generiertes und selbstsigniertes X.509-Zertifikat.** Ein Gerätehersteller oder interner Bereitsteller kann diese Zertifikate generieren und den entsprechenden privaten Schlüssel (und das Zertifikat) auf dem Gerät speichern. Sie können Tools wie etwa [OpenSSL] und das Windows-Hilfsprogramm [SelfSignedCertificate] dafür verwenden.
+-   **Ein selbst generiertes und selbstsigniertes X.509-Zertifikat**. Ein Gerätehersteller oder interner Bereitsteller kann diese Zertifikate generieren und den entsprechenden privaten Schlüssel (und das Zertifikat) auf dem Gerät speichern. Sie können Tools wie etwa [OpenSSL] und das Windows-Hilfsprogramm [SelfSignedCertificate] dafür verwenden.
 
--   **Ein von einer Zertifizierungsstelle signiertes X.509-Zertifikat.** Sie können auch ein von einer Zertifizierungsstelle generiertes und signiertes X.509-Zertifikat verwenden, um ein Gerät zu identifizieren und das Gerät bei IoT Hub zu authentifizieren.
+-   **Ein von einer Zertifizierungsstelle signiertes X.509-Zertifikat**. Sie können auch ein von einer Zertifizierungsstelle generiertes und signiertes X.509-Zertifikat verwenden, um ein Gerät zu identifizieren und das Gerät bei IoT Hub zu authentifizieren.
 
 Ein Gerät verwendet entweder ein X.509-Zertifikat oder ein Sicherheitstoken für die Authentifizierung, aber nicht beides.
 
@@ -198,7 +217,7 @@ Das [Azure IoT-Dienst-SDK für C#][lnk-service-sdk] (mindestens Version 1.0.8) u
 
 ### C#-Unterstützung
 
-Die **RegistryManager**-Klasse stellt eine programmgesteuerte Methode zum Registrieren eines Geräts bereit. Insbesondere die Methoden **AddDeviceAsync** und **UpdateDeviceAsync** ermöglichen einem Benutzer die Registrierung und Aktualisierung eines Geräts in der Iot Hub-Geräteidentitätsregistrierung. Diese beiden Methoden nutzen eine **Device**-Instanz als Eingabe. Die **Device**-Klasse enthält eine **Authentication**-Eigenschaft, die dem Benutzer die Angabe primärer und sekundärer X.509-Zertifikatfingerabdrücke ermöglicht. Der Fingerabdruck stellt einen SHA-1-Hash des X.509-Zertifikats dar (gespeichert mithilfe binärer DER-Codierung). Benutzer haben die Möglichkeit, einen primären Fingerabdruck oder einen sekundären Fingerabdruck oder beides anzugeben. Primäre und sekundäre Fingerabdrücke werden unterstützt, um Szenarios mit Zertifikat-Rollover zu behandeln.
+Die **RegistryManager**-Klasse stellt eine programmgesteuerte Methode zum Registrieren eines Geräts bereit. Insbesondere die Methoden **AddDeviceAsync** und **UpdateDeviceAsync** ermöglichen einem Benutzer die Registrierung und Aktualisierung eines Geräts in der IoT Hub-Geräteidentitätsregistrierung. Diese beiden Methoden nutzen eine **Device**-Instanz als Eingabe. Die **Device**-Klasse enthält eine **Authentication**-Eigenschaft, die dem Benutzer die Angabe primärer und sekundärer X.509-Zertifikatfingerabdrücke ermöglicht. Der Fingerabdruck stellt einen SHA-1-Hash des X.509-Zertifikats dar (gespeichert mithilfe binärer DER-Codierung). Benutzer haben die Möglichkeit, einen primären Fingerabdruck oder einen sekundären Fingerabdruck oder beides anzugeben. Primäre und sekundäre Fingerabdrücke werden unterstützt, um Szenarios mit Zertifikat-Rollover zu behandeln.
 
 > [AZURE.NOTE] IoT Hub benötigt oder speichert nicht das gesamte X.509-Clientzertifikat, sondern nur den Fingerabdruck.
 
@@ -246,4 +265,4 @@ var deviceClient = DeviceClient.Create("<IotHub DNS HostName>", authMethod);
 [lnk-service-sdk]: https://github.com/Azure/azure-iot-sdks/tree/master/csharp/service
 [lnk-client-sdk]: https://github.com/Azure/azure-iot-sdks/tree/master/csharp/device
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0817_2016-->

@@ -3,7 +3,7 @@
 	description="Vertikales Skalieren eines virtuellen Linux-Computers als Reaktion auf die Überwachung von Warnungen mit Azure Automation"
 	services="virtual-machines-linux"
 	documentationCenter=""
-	authors="singhkay"
+	authors="singhkays"
 	manager="drewm"
 	editor=""
 	tags="azure-resource-manager"/>
@@ -88,4 +88,4 @@ Stellen Sie sicher, dass Sie den Webhook kopieren, bevor Sie das Dialogfeld für
 
 ![Hinzufügen einer Warnung zu VM 2](./media/virtual-machines-vertical-scaling-automation/add-alert-webhook-2.png)
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0817_2016-->

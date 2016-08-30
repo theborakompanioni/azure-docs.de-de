@@ -21,6 +21,12 @@ Dieser Artikel beschreibt, wie Sie die Kopieraktivität in einer Azure Data Fact
 
 > [AZURE.NOTE] Dieser OData-Connector unterstützt das Kopieren von Daten aus OData-Quellen in der Cloud und vor Ort. In letzterem Fall müssen Sie möglicherweise das Datenverwaltungsgateway installieren. Weitere Informationen zum Datenverwaltungsgateway finden Sie im Artikel [Verschieben von Daten zwischen lokalen Quellen und der Cloud](data-factory-move-data-between-onprem-and-cloud.md).
 
+## Assistent zum Kopieren von Daten
+Die einfachste Möglichkeit zum Erstellen einer Pipeline, die Daten aus einer OData-Quelle kopiert, ist die Verwendung des Assistenten zum Kopieren von Daten. Unter [Tutorial: Erstellen einer Pipeline mit dem Assistenten zum Kopieren](data-factory-copy-data-wizard-tutorial.md) finden Sie eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mithilfe des Assistenten zum Kopieren von Daten.
+
+Die folgenden Beispiele zeigen JSON-Beispieldefinitionen, die Sie zum Erstellen einer Pipeline mit dem [Azure-Portal](data-factory-copy-activity-tutorial-using-azure-portal.md), mit [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) oder [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) verwenden können. Darin wird veranschaulicht, wie Sie Daten aus einer OData-Quelle in Azure Blob Storage kopieren. Daten können jedoch auch mithilfe der Kopieraktivität in Azure Data Factory in eine beliebige der [hier](data-factory-data-movement-activities.md#supported-data-stores) aufgeführten Senken kopiert werden.
+
+
 ## Beispiel: Kopieren von Daten aus einer OData-Quelle in Azure Blob
 
 In diesem Beispiel wird gezeigt, wie Sie Daten aus einer OData-Quelle in Azure Blob Storage kopieren. Daten können jedoch mithilfe der Kopieraktivität in Azure Data Factory **direkt** in die [hier](data-factory-data-movement-activities.md#supported-data-stores) aufgeführten Senken kopiert werden.
@@ -96,7 +102,7 @@ Beachten Sie, dass die Angabe von **path** in der Datasetdefinition optional ist
 
 **Azure-Blob-Ausgabedataset**
 
-Daten werden stündlich in ein neues Blob geschrieben ("frequency": "hour", "interval": 1). Der Ordnerpfad des Blobs wird basierend auf der Startzeit des Slices, der verarbeitet wird, dynamisch ausgewertet. Im Ordnerpfad werden Jahr, Monat, Tag und die Stundenteile der Startzeit verwendet.
+Daten werden stündlich in ein neues Blob geschrieben (frequency: hour, interval: 1). Der Ordnerpfad des Blobs wird basierend auf der Startzeit des Slices, der verarbeitet wird, dynamisch ausgewertet. Im Ordnerpfad werden Jahr, Monat, Tag und die Stundenteile der Startzeit verwendet.
 
 	{
 	    "name": "AzureBlobODataDataSet",
@@ -272,9 +278,9 @@ Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den 
 
 ## Eigenschaften des Datasettyps „OData“
 
-Eine vollständige Liste der Abschnitte und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel [Erstellen von Datasets](data-factory-create-datasets.md). Abschnitte wie "structure", "availability" und "policy" des JSON-Codes eines Datasets sind bei allen Typen von Datasets (Azure SQL, Azure-Blob, Azure-Tabelle usw.) ähnlich.
+Eine vollständige Liste der Abschnitte und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel [Erstellen von Datasets](data-factory-create-datasets.md). Abschnitte wie „structure“, „availability“ und „policy“ des JSON-Codes eines Datasets sind bei allen Typen von Datasets (Azure SQL, Azure-Blob, Azure-Tabelle usw.) ähnlich.
 
-Der Abschnitt **typeProperties** unterscheidet sich bei jedem Typ von Dataset und bietet Informationen zum Speicherort der Daten im Datenspeicher. Der Abschnitt typeProperties für ein Dataset vom Typ **ODataResource** (zu dem OData-Datasets gehören) hat die folgenden Eigenschaften:
+Der Abschnitt **typeProperties** unterscheidet sich bei jedem Typ von Dataset und bietet Informationen zum Speicherort der Daten im Datenspeicher. Der Abschnitt „typeProperties“ für ein Dataset vom Typ **ODataResource** (mit OData-Datasets) hat die folgenden Eigenschaften:
 
 | Eigenschaft | Beschreibung | Erforderlich |
 | -------- | ----------- | -------- |
@@ -286,7 +292,7 @@ Eine vollständige Liste der Abschnitte und Eigenschaften zum Definieren von Akt
 
 Im Abschnitt "typeProperties" der Aktivität verfügbare Eigenschaften variieren hingegen bei jedem Aktivitätstyp. Bei der Kopieraktivität variieren sie je nach Typ der Quellen und Senken.
 
-Wenn bei der Kopieraktivität „source“ den Typ **RelationalSource** hat (zu dem OData gehört), sind im Abschnitt typeProperties die folgenden Eigenschaften verfügbar:
+Wenn bei der Kopieraktivität „source“ den Typ **RelationalSource** hat (mit OData), sind im Abschnitt typeProperties die folgenden Eigenschaften verfügbar:
 
 | Eigenschaft | Beschreibung | Beispiel | Erforderlich |
 | -------- | ----------- | -------------- | -------- |
@@ -311,4 +317,4 @@ Beim Verschieben von Daten aus OData-Datenspeichern werden die OData-Datentypen 
 ## Leistung und Optimierung  
 Im Artikel [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-factory-copy-activity-performance.md) werden wichtige Faktoren beschrieben, die sich auf die Leistung der Datenverschiebung (Kopieraktivität) in Azure Data Factory auswirken, sowie verschiedene Möglichkeiten zur Leistungsoptimierung.
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0817_2016-->

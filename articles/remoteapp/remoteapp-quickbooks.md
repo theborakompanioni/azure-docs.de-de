@@ -12,12 +12,15 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="article" 
-    ms.date="06/27/2016" 
+    ms.date="08/15/2016" 
     ms.author="elizapo" />
 
 
 
 # Bereitstellen von QuickBooks in Azure RemoteApp
+
+> [AZURE.IMPORTANT]
+Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148).
 
 Verwenden Sie die folgenden Informationen, um QuickBooks als App in Azure RemoteApp freizugeben.
 
@@ -44,4 +47,4 @@ Sie können sich auch meine Ignite-Präsentation mit dem Titel [Fundamentals of 
 
 ![QuickBooks- und Azure RemoteApp-Bereitstellung](./media/remoteapp-quickbooks/ra-quickbooks.png)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0817_2016-->

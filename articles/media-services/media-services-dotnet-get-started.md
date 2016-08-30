@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Erste Schritte zum Bereitstellen von Inhalten nach Bedarf mit dem .NET SDK"
+	pageTitle="Erste Schritte zum Bereitstellen von Inhalten nach Bedarf mit dem .NET SDK | Azure"
 	description="Dieses Lernprogramm führt Sie durch die Schritte zum Implementieren einer Anwendung zur Übermittlung von Inhalten nach Bedarf mit Azure Media Services mithilfe von .NET."
 	services="media-services"
 	documentationCenter=""
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="hero-article"
- 	ms.date="07/18/2016"
+ 	ms.date="08/17/2016"
 	ms.author="juliako"/>
 
 
@@ -24,7 +24,7 @@
 
 
 >[AZURE.NOTE]
-Um dieses Lernprogramm abzuschließen, benötigen Sie ein Azure-Konto. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion](/pricing/free-trial/?WT.mc_id=A261C142F).
+Sie benötigen ein Azure-Konto, um dieses Lernprogramm auszuführen. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion](/pricing/free-trial/?WT.mc_id=A261C142F).
  
 ##Übersicht 
 
@@ -50,9 +50,9 @@ Dieses Tutorial beschreibt die Durchführung der folgenden Aufgaben:
 
 Zum Abschließen dieses Lernprogramms müssen folgende Voraussetzungen erfüllt sein:
 
-- Um dieses Lernprogramm abzuschließen, benötigen Sie ein Azure-Konto.
+- Sie benötigen ein Azure-Konto, um dieses Lernprogramm auszuführen.
 	
-	Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion](/pricing/free-trial/?WT.mc_id=A261C142F). Sie erhalten ein Guthaben, mit dem Sie andere kostenpflichtige Azure-Dienste ausprobieren können. Selbst, nachdem Sie dieses Guthaben aufgebraucht haben, können Sie das Konto behalten und kostenlose Azure-Dienste und -Features nutzen, z. B. das Web-Apps-Feature in Azure App Service.
+	Wenn Sie noch kein Konto haben, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion](/pricing/free-trial/?WT.mc_id=A261C142F). Sie erhalten ein Guthaben, mit dem Sie andere kostenpflichtige Azure-Dienste ausprobieren können. Selbst, nachdem Sie dieses Guthaben aufgebraucht haben, können Sie das Konto behalten und kostenlose Azure-Dienste und -Features nutzen, z. B. das Web-Apps-Feature in Azure App Service.
 - Betriebssysteme: Windows 8 oder höher, Windows 2008 R2, Windows 7.
 - .NET Framework 4.0 oder höher
 - Visual Studio 2010 SP1 (Professional, Premium, Ultimate oder Express) oder höhere Versionen.
@@ -78,7 +78,7 @@ Laden Sie [hier](https://azure.microsoft.com/documentation/samples/media-service
 
 6. Klicken Sie unten im Formular auf **Schnellerfassung**.
 
-Sie können den Status des Prozesses im Meldungsbereich unten im Fenster überwachen.
+Sie können den Status des Prozesses im Nachrichtenbereich unten im Fenster überwachen.
 
 Wenn das Konto erfolgreich erstellt wurde, ändert sich der Status in **Aktiv**.
 
@@ -101,15 +101,15 @@ Um die dynamische Paketerstellung nutzen zu können, müssen Sie folgende Schrit
 
 Mit der dynamischen Paketerstellung müssen Sie die Dateien nur in einem Speicherformat speichern und bezahlen. Media Services erstellt und verarbeitet die entsprechende Antwort basierend auf Anforderungen von einem Client.
 
-Um die Anzahl der reservierten Einheiten für das Streaming zu ändern, gehen Sie folgendermaßen vor:
+Um die Anzahl der Einheiten zu ändern, die für das Streaming reserviert sind, gehen Sie folgendermaßen vor:
 
-1. Klicken Sie im [Portal](https://manage.windowsazure.com/) auf **Media Services**. Klicken Sie anschließend auf den Namen des Mediendienstes.
+1. Klicken Sie im [Portal](https://manage.windowsazure.com/) auf **Media Services**. Klicken Sie anschließend auf den Namen des Media Service
 
 2. Wählen Sie die Seite STREAMING-ENDPUNKTE aus. Klicken Sie anschließend auf den Streaming-Endpunkt, den Sie ändern möchten.
 
 3. Um die Anzahl der Streaming-Einheiten anzugeben, klicken Sie die auf Registerkarte "SKALIERUNG" und verschieben anschließend den Schieberegler für die **reservierte Kapazität**.
 
-	![Skalierungsseite](./media/media-services-dotnet-get-started/media-services-origin-scale.png)
+	![Seite "Skalieren"](./media/media-services-dotnet-get-started/media-services-origin-scale.png)
 
 4. Klicken Sie zum Speichern der Änderungen auf **SPEICHERN**.
 
@@ -298,7 +298,7 @@ Fügen Sie die folgende Methode zur Program-Klasse hinzu.
 
 ##Veröffentlichen des Medienobjekts und Abrufen von URLs für Streaming und progressiven Download
 
-Um ein Medienobjekt zu streamen oder herunterzuladen, müssen Sie es zunächst durch Erstellen eines Locators "veröffentlichen". Locator ermöglichen den Zugriff auf Dateien im Medienobjekt. Media Services unterstützt zwei Locator-Typen: OnDemandOrigin-Locator zum Streamen von Medien (z. B. MPEG DASH, HLS oder Smooth Streaming) und Access Signature (SAS)-Locator zum Herunterladen von Mediendateien.
+Um ein Medienobjekt zu streamen oder herunterzuladen, müssen Sie es zunächst durch Erstellen eines Locators "veröffentlichen". Locators ermöglichen den Zugriff auf Dateien im Medienobjekt. Media Services unterstützt zwei Locator-Typen: OnDemandOrigin-Locator zum Streamen von Medien (z. B. MPEG DASH, HLS oder Smooth Streaming) und Access Signature (SAS)-Locator zum Herunterladen von Mediendateien.
 
 Nachdem Sie die Locator erstellt haben, können Sie die URLs erstellen, mit denen Sie die Dateien streamen oder herunterladen möchten.
 
@@ -453,4 +453,4 @@ Wenn dieses Thema nicht die erwarteten Informationen enthält, Informationen feh
   [Web Platform Installer]: http://go.microsoft.com/fwlink/?linkid=255386
   [Portal]: http://manage.windowsazure.com/
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0824_2016-->

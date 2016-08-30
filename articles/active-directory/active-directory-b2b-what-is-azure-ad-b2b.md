@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="identity"
-   ms.date="08/09/2016"
+   ms.date="08/11/2016"
    ms.author="femila"/>
 
 # Vorschau der Azure AD B2B-Zusammenarbeit: Einfache, sichere Integration von Partnern in der Cloud
@@ -23,8 +23,7 @@ Da sich Unternehmen mehr auf ihr Kerngeschäft konzentrieren, wächst auch die N
 
 - **Einfach**: Jeder Partnerbenutzer verwendet ein vorhandenes Azure AD-Konto oder ein Konto, das sich mühelos während der Annahme der Einladung erstellen lässt. Sie können diesem Benutzer den direkten Zugriff auf die ausgewählte Unternehmens-App oder eine Reihe von Anwendungen über den App-Zugriffsbereich ermöglichen.
 
-- **Sicher**: Ihr Administrator steuert den gesamten Zugriff auf Ihre Unternehmens-Apps über Ihr Azure AD-Verzeichnis. Wenn die Zusammenarbeit beendet ist, können Partnerbenutzer
-- aus Ihrem Azure AD entfernt werden, und ihr Zugriff auf Ihre Apps wird sofort widerrufen. Darüber hinaus wird der Zugriff automatisch aufgehoben, wenn ein Partnerbenutzer die Partnerorganisation verlässt.
+- **Sicher**: Ihr Administrator steuert den gesamten Zugriff auf Ihre Unternehmens-Apps über Ihr Azure AD-Verzeichnis. Wenn die Zusammenarbeit beendet ist, können Partnerbenutzer aus Azure AD entfernt werden, und ihr Zugriff auf Ihre Apps wird sofort aufgehoben. Darüber hinaus wird der Zugriff automatisch aufgehoben, wenn ein Partnerbenutzer die Partnerorganisation verlässt.
 
 - **Nahtlos**: Die Partnerunternehmen, die Zugriff auf Ihre Unternehmens-Apps benötigen, **müssen nicht über Azure AD verfügen**. Die Azure AD-B2B-Zusammenarbeit bietet eine einfache Anmeldeumgebung, über die Partner unmittelbaren Zugriff auf Ihre Apps erhalten.
 
@@ -43,4 +42,4 @@ Weitere Artikel zur Azure AD B2B-Zusammenarbeit:
 - [Aktuelle Einschränkungen der Vorschau](active-directory-b2b-current-preview-limitations.md)
 - [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](active-directory-apps-index.md)
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0817_2016-->

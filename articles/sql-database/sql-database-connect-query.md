@@ -4,7 +4,7 @@
 	services="sql-database"
 	keywords="C#-Datenbankabfrage, C#-Abfrage, mit Datenbank verbinden, SQL C#"
 	documentationCenter=""
-	authors="MightyPen"
+	authors="stevestein"
 	manager="jhubbard"
 	editor=""/>
 
@@ -15,7 +15,8 @@
 	ms.devlang="dotnet"
 	ms.topic="get-started-article"
 	ms.date="08/17/2016"
-	ms.author="annemill"/>
+	ms.author="stevestein"/>
+
 
 
 # Herstellen der Verbindung mit einer SQL-Datenbank mit Visual Studio
@@ -30,73 +31,57 @@ Erfahren Sie, wie Sie in Visual Studio eine Verbindung mit einer Azure SQL-Daten
 ## Voraussetzungen
 
 
-Zum Herstellen einer Verbindung mit SQL-Datenbank per Visual Studio benötigen Sie Folgendes:
+Zum Herstellen einer Verbindung mit einer SQL-Datenbank mit Visual Studio benötigen Sie Folgendes:
 
 
-- Ein Azure-Konto und ein Azure-Abonnement. Sie können sich für eine [kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/) registrieren.
-
-
-- Eine **AdventureWorksLT**-Demodatenbank im Azure SQL-Datenbankdienst.
- - [Erstellen Sie die Demodatenbank](sql-database-get-started.md) in Minuten.
+- Eine SQL-Datenbank, mit der eine Verbindung hergestellt werden kann. In diesem Artikel wird die **AdventureWorks**-Beispieldatenbank verwendet. Die AdventureWorks-Beispieldatenbank finden Sie unter [Erstellen Sie die Demodatenbank](sql-database-get-started.md).
 
 
 - Visual Studio 2013, Update 4 (oder höher). Microsoft bietet Visual Studio Community jetzt *kostenlos* an.
  - [Download von Visual Studio Community](http://www.visualstudio.com/products/visual-studio-community-vs)
  - [Weitere Optionen für kostenlose Visual Studio-Versionen](http://www.visualstudio.com/products/free-developer-offers-vs.aspx)
- - Oder lesen Sie in einem [Schritt](#InstallVSForFree) weiter unten in diesem Thema, wie das [Azure-Portal](https://portal.azure.com/) Ihnen bei der Installation von Visual Studio hilft.
 
 
-<a name="InstallVSForFree" id="InstallVSForFree"></a>
-
-&nbsp;
-
-## Schritt 1: Kostenloses Installieren von Visual Studio Community
 
 
-Zur Installation von Visual Studio haben Sie folgende Möglichkeiten:
-
-- Installieren Sie Visual Studio Community kostenlos, indem Sie in Ihrem Browser die Visual Studio-Produktwebseiten aufrufen, auf denen kostenlose Downloads und andere Optionen angeboten werden.
-- Lassen Sie sich vom [Azure-Portal](https://portal.azure.com/) zur Downloadwebseite führen, die als Nächstes beschrieben wird.
+## Öffnen von Visual Studio über das Azure-Portal
 
 
-### Visual Studio über das Azure-Portal
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
+
+2. Klicken Sie auf **Weitere Dienste** > **SQL-Datenbanken**.
+3. Öffnen Sie das Blatt der **AdventureWorks**-Datenbank, indem Sie nach der *AdventureWorks*-Datenbank suchen und darauf klicken.
+
+6. Klicken Sie oben auf dem Datenbankblatt auf die Schaltfläche **Tools**:
+
+	![Neue Abfrage Verbinden mit einem SQL-Datenbankserver: SQL Server Management Studio](./media/sql-database-connect-query/tools.png)
+
+7. Klicken Sie auf **In Visual Studio öffnen** (klicken Sie auf den Downloadlink, wenn Sie Visual Studio benötigen):
+
+	![Neue Abfrage Verbinden mit einem SQL-Datenbankserver: SQL Server Management Studio](./media/sql-database-connect-query/open-in-vs.png)
 
 
-1. Melden Sie sich über das [Azure-Portal](https://portal.azure.com/) unter http://portal.azure.com/ an.
-
-2. Klicken Sie auf **ALLE* DURCHSUCHEN** > **SQL-Datenbanken**. Ein Blatt für die Suche nach Datenbanken wird geöffnet.
-
-3. Beginnen Sie im Filtertextfeld im oberen Bereich mit der Eingabe des Namens Ihrer **AdventureWorksLT**-Datenbank.
-
-4. Wenn die Zeile für die Datenbank auf dem Server angezeigt wird, klicken Sie auf die Zeile. Ein Blatt für die Datenbank wird geöffnet.
-
-5. Der Einfachheit halber klicken Sie für alle vorherigen Blätter auf das Steuerelement zum Minimieren.
-
-6. Klicken Sie im oberen Bereich des Blatts "Datenbank" auf die Schaltfläche **In Visual Studio öffnen**. Ein neues Blatt zu Visual Studio wird geöffnet. Es enthält Links zu den Speicherorten für die Visual Studio-Installation.
-
-	![Schaltfläche "In Visual Studio öffnen"][20-OpenInVisualStudioButton]
-
-7. Klicken Sie auf den Link **Community (kostenlos)** oder einen ähnlichen Link. Eine neue Webseite wird hinzugefügt.
-
-8. Verwenden Sie die Links auf der Webseite für die Installation von Visual Studio.
-
-9. Sobald Visual Studio installiert ist, klicken Sie auf dem Blatt **In Visual Studio öffnen** auf die Schaltfläche **In Visual Studio öffnen**. Visual Studio wird geöffnet.
-
-10. Visual Studio fordert Sie in einem Dialogfeld zum Ausfüllen von Verbindungszeichenfolgen-Feldern auf.
- - Wählen Sie statt der **Windows-Authentifizierung** die **SQL Server-Authentifizierung**.
- - Denken Sie daran, Ihre **AdventureWorksLT**-Datenbank anzugeben (im Dialogfeld unter **Optionen** > **Verbindungseigenschaften**).
-
-11. Erweitern Sie im **SQL Server-Objekt-Explorer** den Knoten für Ihre Datenbank.
+8. Visual Studio wird geöffnet, und im Fenster **Mit Server verbinden** sind bereits die Angaben für die Verbindung mit dem Server und der Datenbank gemäß Ihrer Auswahl im Portal vorhanden. (Klicken Sie auf **Optionen**, um sicherzustellen, dass die Verbindung auf die richtige Datenbank festgelegt ist.) Geben Sie Ihr Serveradministratorkennwort ein, und klicken Sie auf **Verbinden**.
 
 
-## Schritt 2: Durchführen von Beispielabfragen
+	![Neue Abfrage Verbinden mit einem SQL-Datenbankserver: SQL Server Management Studio](./media/sql-database-connect-query/connect.png)
 
-Nachdem Sie eine Verbindung mit Ihrem logischen Server hergestellt haben, können Sie eine Verbindung mit einer Datenbank herstellen und eine Beispielabfrage ausführen.
 
-1. Navigieren Sie im **Objekt-Explorer** zu einer Datenbank auf dem Server, für die Sie Berechtigungen besitzen (etwa die Beispieldatenbank **AdventureWorks**).
+8. Wenn Sie für die IP-Adresse Ihres Computers keine Firewallregel eingerichtet haben, erhalten Sie hier eine Meldung der Art *Keine Verbindung möglich*. Informationen zur Erstellung einer Firewall finden Sie unter [Konfigurieren einer Firewallregel auf Serverebene für Azure SQL-Datenbank mithilfe des Azure-Portals](sql-database-configure-firewall-settings.md).
+
+
+9. Nachdem die Verbindung hergestellt wurde, wird das Fenster **SQL Server-Objekt-Explorer** mit einer Verbindung mit Ihrer Datenbank geöffnet.
+
+	![Neue Abfrage Verbinden mit einem SQL-Datenbankserver: SQL Server Management Studio](./media/sql-database-connect-query/sql-server-object-explorer.png)
+
+
+## Ausführen einer Beispielabfrage
+
+Nachdem wir die Verbindung mit der Datenbank hergestellt haben, wird anhand der folgenden Schritte veranschaulicht, wie Sie eine einfache Abfrage ausführen:
+
 2. Klicken Sie mit der rechten Maustaste auf die Datenbank, und wählen Sie dann **Neue Abfrage** aus.
 
-	![Neue Abfrage Verbinden mit einem SQL-Datenbankserver: SQL Server Management Studio](./media/sql-database-connect-query-ssms/4-run-query.png)
+	![Neue Abfrage Verbinden mit einem SQL-Datenbankserver: SQL Server Management Studio](./media/sql-database-connect-query/new-query.png)
 
 3. Kopieren Sie den folgenden Code, und fügen Sie ihn im Abfragefenster ein.
 
@@ -108,17 +93,13 @@ Nachdem Sie eine Verbindung mit Ihrem logischen Server hergestellt haben, könne
 		,CompanyName
 		FROM SalesLT.Customer;
 
-4. Klicken Sie auf die Schaltfläche **Ausführen**. Der folgende Screenshot zeigt eine erfolgreiche Abfrage.
+4. Klicken Sie auf die Schaltfläche **Ausführen**, um die Abfrage auszuführen:
 
-	![Erfolgreich. Verbinden mit einem SQL-Datenbankserver: Visual Studio](./media/sql-database-connect-query-ssms/5-success.png)
+	![Erfolgreich. Verbinden mit einem SQL-Datenbankserver: Visual Studio](./media/sql-database-connect-query/run-query.png)
 
 ## Nächste Schritte
 
-[Herstellen von Verbindungen mit SQL-Datenbanken mithilfe von .NET (C#)](sql-database-develop-dotnet-simple.md)
+- Beim Öffnen von SQL-Datenbanken in Visual Studio werden SQL Server Data Tools verwendet. Weitere Informationen finden Sie unter [SQL Server Data Tools](https://msdn.microsoft.com/library/hh272686.aspx).
+- Informationen zum Herstellen einer Verbindung mit einer SQL-Datenbank finden Sie unter [Herstellen von Verbindungen mit SQL-Datenbanken mithilfe von .NET (C#)](sql-database-develop-dotnet-simple.md).
 
-
-<!-- Image references. -->
-
-[20-OpenInVisualStudioButton]: ./media/sql-database-connect-query/connqry-free-vs-e.png
-
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0824_2016-->

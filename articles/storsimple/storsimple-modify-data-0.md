@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="04/25/2016"
+   ms.date="08/17/2016"
    ms.author="alkohli" />
 
 # Ändern der DATA 0-Netzwerkschnittstelleneinstellungen auf dem StorSimple-Gerät
@@ -23,7 +23,7 @@ Ihr Microsoft Azure StorSimple-Gerät hat sechs Netzwerkschnittstellen (DATA 0 
 
 Die DATA 0-Schnittstelle wird zunächst über den Setup-Assistent während der ersten Bereitstellung des StorSimple-Geräts konfiguriert. Wenn sich das Gerät im Betriebsmodus befindet, müssen Sie die DATA 0-Einstellungen möglicherweise neu konfigurieren. In diesem Tutorial werden zwei Methoden zum Ändern der DATA 0-Netzwerkeinstellungen beschrieben. Beide Methoden werden über Windows PowerShell für StorSimple ausgeführt.
 
-In diesem Tutorial erfahren Sie Folgendes:
+In diesem Tutorial lernen Sie Folgendes:
 
 - Ändern von DATA 0-Netzwerkeinstellungen über den Setup-Assistenten
 - Ändern von DATA 0-Netzwerkeinstellungen über das Cmdlet `Set-HcsNetInterface`
@@ -73,8 +73,8 @@ Sie können die DATA 0-Netzwerkschnittstelle auch mithilfe des Cmdlets `Set-Hcs
 
 ## Nächste Schritte
 
-- Um Netzwerkschnittstellen nicht als DATA 0 zu konfigurieren, können Sie die [Seite „Konfigurieren“ im klassischen Azure-Portal](storsimple-modify-device-config.md) verwenden. 
+- Um Netzwerkschnittstellen nicht als DATA 0 zu konfigurieren, können Sie die [Seite „Konfigurieren“ im klassischen Azure-Portal](storsimple-modify-device-config.md) verwenden.
 
 - Wenn beim Konfigurieren der Netzwerkschnittstellen Probleme auftreten, lesen Sie die Informationen unter [Beheben von Bereitstellungsproblemen](storsimple-troubleshoot-deployment.md).
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0817_2016-->

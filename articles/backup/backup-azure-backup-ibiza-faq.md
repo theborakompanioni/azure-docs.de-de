@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Öffentliche Vorschauversion von Azure Backup – Häufig gestellte Fragen | Microsoft Azure"
+   pageTitle="Recovery Services-Tresor – häufig gestellte Fragen | Microsoft Azure"
    description="Diese Version der häufig gestellten Fragen dient als Unterstützung für die öffentliche Vorschauversion des Azure Backup-Diensts. Hier finden Sie Antworten auf häufig gestellte Fragen zum Backup-Agent, zu Sicherung und Aufbewahrung, Wiederherstellung, Sicherheit und auf andere allgemeine Fragen zur Azure Backup-Lösung."
    services="backup"
    documentationCenter=""
@@ -14,33 +14,33 @@
 	 ms.tgt_pltfrm="na"
 	 ms.devlang="na"
 	 ms.topic="get-started-article"
-	 ms.date="07/01/2016"
+	 ms.date="08/21/2016"
 	 ms.author="trinadhk; markgal; jimpark;"/>
 
-# Öffentliche Vorschauversion des Azure Backup-Diensts – Häufig gestellte Fragen
+# Recovery Services-Tresor – häufig gestellte Fragen
 
 > [AZURE.SELECTOR]
 - [Häufig gestellte Fragen zu Backup für den klassischen Modus](backup-azure-backup-faq.md)
-- [Häufig gestellte Fragen zu Backup für den ARM-Modus](backup-azure-backup-ibiza-faq.md)
+- [Häufig gestellte Fragen zu Backup für den Resource Manager-Modus](backup-azure-backup-ibiza-faq.md)
 
-Dieser Artikel enthält spezielle Informationen zur öffentlichen Vorschauversion des Azure Backup-Diensts. Der Artikel wird aktualisiert, wenn neue häufig gestellte Fragen eintreffen, und er dient als Zusatz zum Artikel [Azure Backup – Häufig gestellte Fragen](backup-azure-backup-faq). Der Artikel „Azure Backup – Häufig gestellte Fragen“ enthält alle Fragen und Antworten zum Azure Backup-Dienst.
+Dieser Artikel enthält Informationen zum Recovery Services-Tresor und ergänzt die [häufig gestellten Fragen zu Azure Backup](backup-azure-backup-faq). Der Artikel „Azure Backup – Häufig gestellte Fragen“ enthält alle Fragen und Antworten zum Azure Backup-Dienst.
 
 Sie können im Disqus-Abschnitt dieses Artikels oder eines verwandten Artikels Fragen zu Azure Backup stellen. Außerdem können Sie Fragen zum Azure Backup-Dienst im [Diskussionsforum](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup) stellen.
 
-## Was umfasst die öffentliche Vorschauversion?
-Mit der öffentlichen Vorschauversion werden der Recovery Services-Tresor und die ARM-Unterstützung beim Schützen von Azure-VMs eingeführt. Der Recovery Services-Tresor ist die nächste Generation der Tresore. Dieser Tresor wird von den Diensten Azure Backup und Azure Site Recovery (ASR) genutzt. Sie können sich dies als „Tresor v.2“ vorstellen.
+## Recovery Services-Tresore sind Resource Manager-basiert. Werden Backup-Tresore (klassischer Modus weiterhin unterstützt)? <br/>
+Ja. Backup-Tresore werden weiterhin unterstützt. Erstellen Sie Backup-Tresore im [klassischen Portal](https://manage.windowsazure.com). Erstellen Sie Recovery Services-Tresore im [Azure-Portal](https://portal.azure.com). Wir empfehlen Ihnen jedoch, Recovery Services-Tresore zu erstellen, da alle zukünftigen Verbesserungen nur für Recovery Services-Tresore verfügbar sind.
 
-## Recovery Services- und Backup-Tresore
+## Kann ich einen Backup-Tresor zu einem Recovery Services-Tresor migrieren? <br/>
+Nein, leider nicht. Derzeit ist es nicht möglich, den Inhalt eines Backup-Tresors zu einem Recovery Services-Tresor zu migrieren. Wir arbeiten daran, diese Funktion hinzuzufügen, aber sie steht im Rahmen der öffentlichen Vorschau noch nicht zur Verfügung.
 
-**F1. Da Version 2 (v.2) von Recovery Services-Tresoren verfügbar ist, stellt sich die Frage, ob Backup-Tresore (v.1) noch unterstützt werden?** <br/> A1. Ja. Backup-Tresore werden weiterhin unterstützt. Erstellen Sie Backup-Tresore im klassischen Portal. Erstellen Sie Recovery Services-Tresore im Azure-Portal.
+## Unterstützen Recovery Services-Tresore klassische virtuelle Computer oder Resource Manager-basierte virtuelle Computer? <br/>
+Recovery Services-Tresore unterstützen beide Modelle. Sie können einen im klassischen Portal erstellten virtuellen Computer (klassischer Modus) oder im Azure-Portal erstellte virtuelle Computer (Resource Manager-basiert) in einem Recovery Services-Tresor sichern.
 
-**F2. Kann ich einen Backup-Tresor zu einem Recovery Services-Tresor migrieren?** <br/> A2. Nein, leider nicht. Derzeit ist es nicht möglich, den Inhalt eines Backup-Tresors zu einem Recovery Services-Tresor zu migrieren. Wir arbeiten daran, diese Funktion hinzuzufügen, aber sie steht im Rahmen der öffentlichen Vorschau noch nicht zur Verfügung.
+## Ich habe meine klassischen virtuellen Computer in einem Sicherungstresor gesichert. Nun möchten ich meine virtuellen Computer vom klassischen Modus zum Resource Manager-Modus migrieren. Wie kann ich sie in einem Recovery Services-Tresor sichern?
+Sicherungen von klassischen virtuellen Computern in einem Sicherungstresor werden nicht automatisch zu Recovery Services-Tresoren migriert, wenn Sie die virtuellen Computer vom klassischen Modus zum Resource Manager-Modus migrieren. Führen Sie die folgenden Schritte aus, um Sicherungen virtueller Computer zu migrieren:
 
-**F3. Unterstützen Recovery Services-Tresore VMs der v.1 oder v.2?** <br/> A3. Recovery Services-Tresore unterstützen VMs der v.1 und v.2. Sie können eine im klassischen Portal erstellte VM (v.1) oder eine im Azure-Portal erstellte VM (v.2) in einem Recovery Services-Tresor sichern.
+1. Wechseln Sie im Sicherungstresor zur Registerkarte **Geschützte Elemente**, und wählen Sie den virtuellen Computer aus. Klicken Sie auf [Schutz beenden](backup-azure-manage-vms-classic.md#stop-protecting-virtual-machines). Aktivieren Sie die Option *Zugeordnete Sicherungsdaten löschen* **nicht**.
+2. Migrieren Sie den virtuellen Computer vom klassischen Modus zum Resource Manager-Modus. Stellen Sie sicher, dass Speicher und Netzwerk, die dem virtuellen Computer entsprechen, auch zum Resource Manager-Modus migriert werden.
+3. Erstellen Sie einen Recovery Services-Tresor, und konfigurieren Sie die Sicherung auf dem migrierten virtuellen Computer mithilfe der Aktion **Sicherung** oben auf dem Tresordashboard. Erfahren Sie mehr darüber, wie Sie [Sicherungen im Recovery Services-Tresor ermöglichen](backup-azure-vms-first-look-arm.md).
 
-
-## ARM-Unterstützung für Azure-VMs
-
-**F1. Gelten in Bezug auf die ARM-Unterstützung für Azure-VMs Einschränkungen?** <br/> A1. Die PowerShell-Cmdlets für ARM sind derzeit nicht verfügbar. Sie müssen die Benutzeroberfläche des Azure-Portals verwenden, um einer Ressourcengruppe Ressourcen hinzuzufügen.
-
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0824_2016-->

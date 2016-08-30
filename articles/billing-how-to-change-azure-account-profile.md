@@ -15,7 +15,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/31/2016"
+	ms.date="08/11/2016"
 	ms.author="genli"/>
 
 # Ändern von Profilinformationen für Ihr Azure-Konto, beispielsweise Kontakt-E-Mail-Adresse, Adresse und Telefonnummer
@@ -33,7 +33,7 @@ Die E-Mail-Adresse im Profil des Kontoadministrators wird von Microsoft dazu ver
 
 ## Ändern Ihrer Profilinformationen
 
-1.	Melden Sie sich im [Azure-Kontocenter](https://account.windowsazure.com/) als Kontoadministrator an, und klicken Sie auf **Profil**. Oder gehen Sie einfach zu https://account.windowsazure.com/Profile.
+1.	Melden Sie sich im [Azure-Kontocenter](https://account.windowsazure.com/) als Kontoadministrator an, und klicken Sie auf **Profil**. Oder wechseln Sie zu https://account.windowsazure.com/Profile.
 
 2.	Klicken Sie auf die Schaltfläche **Details bearbeiten**, und aktualisieren Sie die Informationen für das **Profil**.
 
@@ -51,7 +51,7 @@ Nein. Das Aktualisieren der Profil-E-Mail-Adresse führt nicht zum Aktualisieren
 
 ### Wird durch das Aktualisieren meiner Profil-E-Mail-Adresse auch meine Adresse für die Kreditkartenabrechnung aktualisiert?
 
-Nein. Sie können die E-Mail-Adresse für die Abrechnung im Rahmen Ihrer Kreditkarte ändern, indem Sie im Azure-Kontocenter auf die [Abonnementseite](https://account.windowsazure.com/subscriptions) wechseln.
+Nein. Sie können die für Ihre Kreditkarte hinterlegte Rechnungsadresse ändern, indem Sie im Azure-Kontocenter zur [Abonnementseite](https://account.windowsazure.com/subscriptions) wechseln.
 
 ### Warum kann ich das Land nicht aktualisieren?
 
@@ -61,4 +61,4 @@ Aufgrund technischer Einschränkungen kann das Land für ein vorhandenes Konto n
 
 Wenn Sie sich für das neue Feature Azure-Abrechnungswarnungen (Vorschau) anmelden, werden Azure-Abrechnungswarnungen an die angegebene E-Mail-Adresse gesendet – unabhängig davon, ob sie die E-Mail-Adresse für den Kontoadministrator geändert haben.
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0817_2016-->

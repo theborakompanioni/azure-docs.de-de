@@ -42,7 +42,7 @@ Die folgenden standortübergreifende Verbindungen werden unterstützt:
 
 - [ExpressRoute](../expressroute/expressroute-introduction.md): ExpressRoute ist eine Azure-Direktverbindung mit Ihrem WAN (nicht über das öffentliche Internet). Weitere Informationen finden Sie unter [ExpressRoute – Technische Übersicht](../expressroute/expressroute-introduction.md) sowie unter [ExpressRoute – FAQ](../expressroute/expressroute-faqs.md).
 
-Weitere Informationen zu standortübergreifenden Verbindungen finden Sie unter [Informationen zu sicheren, standortübergreifenden Verbindungen](vpn-gateway-cross-premises-options.md).
+Weitere Informationen zu Verbindungen finden Sie unter [Informationen zu VPN Gateway](vpn-gateway-topology.md).
 
 ### Was ist der Unterschied zwischen einer Standort-zu-Standort- und einer Punkt-zu-Standort-Verbindung?
 
@@ -51,8 +51,6 @@ Weitere Informationen zu standortübergreifenden Verbindungen finden Sie unter [
 **Punkt zu Standort**: Mit diesem Verbindungstyp können Sie ortsunabhängig eine Verbindung zwischen einem einzelnen Computer mit einer beliebigen Ressource in Ihrem virtuellen Netzwerk herstellen. Hierbei kommt der in Windows enthaltene VPN-Client zum Einsatz. Im Rahmen der Punkt-zu-Standort-Konfiguration installieren Sie ein Zertifikat und ein VPN-Clientkonfigurationspaket mit den Einstellungen, die es Ihrem Computer ermöglichen, eine Verbindung mit einem beliebigen virtuellen Computer oder einer beliebigen Rolleninstanz innerhalb des virtuellen Netzwerks herzustellen. Dieser Verbindungstyp eignet sich hervorragend, wenn Sie eine Verbindung mit einem virtuellen Netzwerk herstellen möchten, sich aber nicht vor Ort befinden. Er ist auch eine gute Wahl, wenn Ihnen keine VPN-Hardware oder keine extern ausgerichtete IPv4-Adresse zur Verfügung steht (beides Voraussetzungen für eine Standort-zu-Standort-Verbindung).
 
 Sie können Ihr virtuelles Netzwerk für die parallele Verwendung von Standort-zu-Standort- und Punkt-zu-Standort-Verbindungen konfigurieren. Hierzu müssen Sie Ihre Standort-zu-Standort-Verbindung mit einem routenbasierten VPN-Typ für Ihr Gateway erstellen. Routenbasierte VPN-Typen werden im klassischen Bereitstellungsmodell als dynamische Gateways bezeichnet.
-
-Weitere Informationen finden Sie unter [Informationen zu sicheren, standortübergreifenden Verbindungen für virtuelle Netzwerke](vpn-gateway-cross-premises-options.md).
 
 ### Was ist ExpressRoute?
 
@@ -174,7 +172,7 @@ Die Mindestgröße des Gatewaysubnetzes hängt gänzlich von der Konfiguration a
 
 ## Kann ich virtuelle Computer oder Rolleninstanzen in meinem Gatewaysubnetz bereitstellen?
 
-Nr.
+Nein.
 
 ### Wie kann ich angeben, welcher Datenverkehr über das VPN-Gateway abgewickelt werden soll?
 
@@ -219,7 +217,7 @@ Ja.
 
 ### Mit wie vielen lokalen Standorten und virtuellen Netzwerken kann ein virtuelles Netzwerk verbunden werden?
 
-Maximal zehn (kombiniert für Basic- und Standard-Gateways mit dynamischem Routing); 30 bei VPN-Hochleistungsgateways.
+Max. zehn (kombiniert für Basic- und Standard-Gateways mit dynamischem Routing); 30 bei VPN-Hochleistungsgateways.
 
 ### Kann ich Punkt-zu-Standort-VPNs mit meinem virtuellen Netzwerk und mehreren VPN-Tunneln kombinieren?
 
@@ -283,4 +281,4 @@ Weitere Informationen zu VPN-Gateways erhalten Sie auf der Seite [VPN Gateway-Do
 
  
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0824_2016-->

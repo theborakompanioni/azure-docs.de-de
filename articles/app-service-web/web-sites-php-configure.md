@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="PHP"
 	ms.topic="article"
-	ms.date="06/03/2016"
+	ms.date="08/11/2016"
 	ms.author="robmcm"/>
 
 #Konfigurieren von PHP in Azure App Service-Web-Apps
@@ -154,7 +154,7 @@ Anstelle der PHP-Standardlaufzeit können App Service-Web-Apps auch eine PHP-Lau
 
 7. Wählen Sie im Blatt **Einstellungen** die Option **Anwendungseinstellungen** aus, und führen Sie einen Bildlauf zum Bereich **Handlerzuordnungen** aus. Geben Sie im Feld "Erweiterung" `*.php` ein, und fügen Sie der ausführbaren Datei `php-cgi.exe` den Pfad hinzu. Wenn Sie die PHP-Laufzeit in Verzeichnis `bin` des Stammverzeichnisses Ihrer Anwendung abgelegt haben, lautet der Pfad `D:\home\site\wwwroot\bin\php\php-cgi.exe`.
 
-	![Handler in Handlerzuordnungen angeben][handler-mappings]
+	![Geben Sie Handler in Handler mappings an][handler-mappings]
 
 8. Klicken Sie im oberen Bereich des Blatts **Web-App-Einstellungen** auf die Schaltfläche **Speichern**.
 
@@ -208,4 +208,4 @@ Weitere Informationen finden Sie im [PHP Developer Center](/develop/php/).
 [GETPHPVERPS]: ./media/web-sites-php-configure/ShowPHPVersion-PS.png
  
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0817_2016-->

@@ -20,7 +20,7 @@
 
 ##Übersicht
 
-Azure Storage bietet einen umfassenden Satz von Sicherheitsfunktionen, die Entwicklern das Erstellen sicherer Anwendungen ermöglichen. Das Speicherkonto selbst kann mit rollenbasierter Zugriffssteuerung und Azure Active Directory geschützt werden. Daten können während der Übertragung zwischen einer Anwendung und Azure mit [clientseitiger Verschlüsselung](storage-client-side-encryption.md), HTTPS oder SMB 3.0 geschützt werden. Es kann festgelegt werden, dass Daten automatisch mit [Storage Service Encryption (SSE)](storage-service-encryption.md) verschlüsselt werden, wenn sie in Azure Storage geschrieben werden. Betriebssystemdatenträger und sonstige Datenträger, die von virtuellen Computern verwendet werden, können mit [Azure Disk Encryption](../azure-security-disk-encryption.md) verschlüsselt werden. Delegierter Zugriff auf die Datenobjekte in Azure Storage kann mit [Shared Access Signatures](storage-dotnet-shared-access-signature-part-1.md) erteilt werden.
+Azure Storage bietet einen umfassenden Satz von Sicherheitsfunktionen, die Entwicklern das Erstellen sicherer Anwendungen ermöglichen. Das Speicherkonto selbst kann mit rollenbasierter Zugriffssteuerung und Azure Active Directory geschützt werden. Daten können während der Übertragung zwischen einer Anwendung und Azure mit [clientseitiger Verschlüsselung](storage-client-side-encryption.md), HTTPS oder SMB 3.0 geschützt werden. Es kann festgelegt werden, dass Daten automatisch mit [Storage Service Encryption (SSE)](storage-service-encryption.md) verschlüsselt werden, wenn sie in Azure Storage geschrieben werden. Betriebssystemdatenträger und sonstige Datenträger, die von virtuellen Computern verwendet werden, können mit [Azure Disk Encryption](../security/azure-security-disk-encryption.md) verschlüsselt werden. Delegierter Zugriff auf die Datenobjekte in Azure Storage kann mit [Shared Access Signatures](storage-dotnet-shared-access-signature-part-1.md) erteilt werden.
 
 Dieser Artikel bietet eine Übersicht über jede dieser Sicherheitsfunktionen, die mit Azure Storage verwendet werden können. Links führen Sie zu Artikeln, die weitere Informationen zu den einzelnen Funktionen enthalten. So können Sie Ihre Kenntnisse zu jedem Thema problemlos vertiefen.
 
@@ -634,4 +634,4 @@ Weitere Informationen zu CORS und zur CORS-Aktivierung finden Sie in diesen Ress
 
 	Dieser Artikel behandelt die Verwendung des FIPS-Modus auf älteren Windows-Computern.
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0817_2016-->

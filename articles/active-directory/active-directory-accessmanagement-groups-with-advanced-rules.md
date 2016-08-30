@@ -5,7 +5,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="curtand"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/14/2016"
+	ms.date="08/15/2016"
 	ms.author="curtand"/>
 
 
@@ -72,7 +72,7 @@ In der folgenden Tabelle sind mögliche Fehler und deren entsprechende Behebung 
 |-----------------------|-------------------|-----------------------------|
 | Fehler: Das Attribut nicht unterstützt. | (user.invalidProperty -eq "Value") | (user.department -eq "value")<br/>Die Eigenschaft sollte einer der unterstützten Eigenschaften aus der [Liste oben](#supported-properties) entsprechen. |
 | Fehler: Der Operator wird für das Attribut nicht unterstützt. | (user.accountEnabled -contains true) | (user.accountEnabled -eq true)<br/>Die Eigenschaft weist den Typ „boolesch“ auf. Verwenden Sie die unterstützten booleschen Operatoren (-eq oder -ne) aus der oben stehenden Liste. |
-| Fehler: Abfragekompilierungsfehler. | (user.department -eq "Sales") -and (user.department -eq "Marketing")(user.userPrincipalName -match "*@domain.ext") | (user.department -eq "Sales") -and (user.department -eq "Marketing")<br/>Der logische Operator sollte einer der unterstützten Eigenschaften aus der Liste oben entsprechen. (user.userPrincipalName -match ".*@domain.ext")or(user.userPrincipalName -match "@domain.ext$") – Fehler im regulären Ausdruck. |
+| Fehler: Abfragekompilierungsfehler. | (user.department -eq "Sales") -and (user.department -eq "Marketing")(user.userPrincipalName -match "*@domain.ext") | (user.department -eq "Sales") -and (user.department -eq "Marketing")<br/>Der logische Operator sollte einer der unterstützten Eigenschaften aus der obigen Liste entsprechen. (user.userPrincipalName -match ".*@domain.ext") oder (user.userPrincipalName -match "@domain.ext$") Fehler im regulären Ausdruck. |
 | Fehler: Die Binärausdruck weist nicht das richtige Format auf. | (user.department –eq “Sales”) (user.department -eq "Sales")(user.department-eq"Sales") | (user.accountEnabled -eq true) -and (user.userPrincipalName -contains "alias@domain")<br/>Abfrage enthält mehrere Fehler. Die Klammern befinden sich nicht an der richtigen Stelle. |
 | Fehler: Unbekannter Fehler beim Einrichten dynamischer Mitgliedschaften. | (user.accountEnabled -eq "True" AND user.userPrincipalName -contains "alias@domain") | (user.accountEnabled -eq true) -and (user.userPrincipalName -contains "alias@domain")<br/>Abfrage enthält mehrere Fehler. Die Klammern befinden sich nicht an der richtigen Stelle. |
 
@@ -168,7 +168,7 @@ Erweiterungsattributes werden von einer lokalen Windows Server AD-Instanz synch
 
 (user.extensionAttribute15 -eq "Marketing")
 
-Benutzerdefinierte Attribute werden von einer lokalen Windows Server AD-Instanz oder von einer verbundenen SaaS-Anwendung aus synchronisiert und erhalten das Format „user.extension\_[GUID]\_\_[Attribute]“. Dabei ist [GUID] der eindeutige Bezeichner in AAD für die Anwendung, die das Attribut in AAD erstellt hat, und [Attribute] ist der Name des Attributs bei seiner Erstellung. Beispiel für eine Regel, die ein benutzerdefiniertes Attribut verwendet:
+Benutzerdefinierte Attribute werden von einer lokalen Windows Server AD-Instanz oder von einer verbundenen SaaS-Anwendung aus synchronisiert und erhalten das Format „user.extension_[GUID]\__[Attribute]“. Dabei ist „[GUID]“ der eindeutige Bezeichner in AAD für die Anwendung, die das Attribut in AAD erstellt hat, und „[Attribute]“ ist der Name des Attributs bei seiner Erstellung. Beispiel für eine Regel, die ein benutzerdefiniertes Attribut verwendet:
 
 user.extension\_c272a57b722d4eb29bfe327874ae79cb\_\_OfficeNumber
 
@@ -181,7 +181,7 @@ Sie können Mitglieder einer Gruppe jetzt basierend auf dem manager-Attribut ein
 
 1. Klicken Sie im klassischen Azure-Portal auf **Active Directory**, und klicken Sie dann auf den Namen des Verzeichnisses Ihrer Organisation.
 
-2. Wählen Sie die Registerkarte **Gruppen** aus, und öffnen Sie dann die Gruppe, die Sie bearbeiten möchten.
+2. Wählen Sie die Registerkarte **Gruppen**, und öffnen Sie dann die Gruppe, die Sie bearbeiten möchten.
 
 3. Wählen Sie die Registerkarte **Konfigurieren** und anschließend die Option **ERWEITERTE REGEL** aus.
 
@@ -191,13 +191,30 @@ Sie können Mitglieder einer Gruppe jetzt basierend auf dem manager-Attribut ein
 
 					Direct Reports for "62e19b97-8b3d-4d4a-a106-4ce66896a863”
 
-	Dabei ist „62e19b97-8b3d-4d4a-a106-4ce66896a863“ die Objekt-ID des Managers. Die Objekt-ID kann in Azure AD auf der **Registerkarte „Profil“** der Benutzerseite desjenigen Benutzers gefunden werden, der Manager ist.
+	Dabei ist „62e19b97-8b3d-4d4a-a106-4ce66896a863“ die Objekt-ID des Managers. Die Objekt-ID kann in Azure AD auf der Registerkarte **Profil** der Benutzerseite desjenigen Benutzers gefunden werden, der Manager ist.
 
 3. Nach dem Speichern dieser Regel werden alle Benutzer, die diese Regel erfüllen, als Mitglieder dieser Gruppe eingetragen. Das erste Auffüllen der Gruppe kann einige Minuten dauern.
 
 
+## Verwenden von Attributen zum Erstellen von Regeln für Geräteobjekte
+
+Sie können auch eine Regel erstellen, die Geräteobjekte für die Mitgliedschaft in einer Gruppe auswählt. Die folgenden Geräteattribute können verwendet werden:
+
+| Eigenschaften | Zulässige Werte | Verwendung |
+|----------------------|---------------------------------|------------------------------------------------------|
+| displayName | Jeder string-Wert | (device.displayName -eq "Rob Iphone”) |
+| deviceOSType | Jeder string-Wert | (device.deviceOSType -eq "IOS") |
+| deviceOSVersion | Jeder string-Wert | (device.OSVersion -eq "9.1") |
+| isDirSynced | true false null | (device.isDirSynced -eq "true") |
+| isManaged | true false null | (device.isManaged -eq "false") |
+| isCompliant | true false null | (device.isCompliant -eq "true") |
+
+> [AZURE.NOTE]
+Diese Geräteregeln können nicht mithilfe der Dropdownliste mit einfachen Regeln im klassischen Azure-Portal erstellt werden.
+
+
 ## Zusätzliche Informationen
-Diese Artikel enthalten zusätzliche Informationen zum Azure Active Directory.
+Diese Artikel enthalten zusätzliche Informationen zu Azure Active Directory.
 
 * [Problembehandlung bei dynamischen Mitgliedschaften für Gruppen](active-directory-accessmanagement-troubleshooting.md)
 
@@ -209,4 +226,4 @@ Diese Artikel enthalten zusätzliche Informationen zum Azure Active Directory.
 
 * [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0817_2016-->

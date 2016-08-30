@@ -2,6 +2,7 @@
 	pageTitle="Entwicklerhandbuch für Azure Government" 
 	description="Dies bietet einen Vergleich der Features und Richtlinien zum Entwickeln von Anwendungen für Azure Government" 
 	services="" 
+	cloud="gov"
 	documentationCenter="" 
 	authors="Joharve2" 
 	manager="Chrisnie" 
@@ -59,9 +60,9 @@ Da die meisten technischen Inhalte, die derzeit verfügbar sind, davon ausgehen,
 ## <a name="Features"></a> Derzeit in Microsoft Azure Government verfügbare Funktionen
 Azure Government verfügt derzeit in den Regionen US GOV IOWA und US GOV VIRGINIA über die folgenden Dienste:
 
-- Virtuelle Computer
+- Virtual Machines
 - Cloud Services
-- Storage
+- Speicher
 - Active Directory
 - Scheduler
 - Virtuelle Netzwerke
@@ -86,14 +87,14 @@ Derzeit wird Azure Government von den Rechenzentren von US GOV Iowa und US GOV V
 Verwenden Sie die folgende Tabelle als Anleitung für die Zuordnung von öffentlichen Microsoft Azure- und SQL-Datenbank-Endpunkten zu Azure Government-spezifischen Endpunkten.
 
 
-Dienstart|Azure – Öffentlich|Azure Government
+Service Type|Azure – Öffentlich|Azure Government
 ---|---|---
 Verwaltungsportal|manage.windowsazure.com|manage.windowsazure.us
 Allgemein|*.windows.net|*.usgovcloudapi.net
 Core|*.core.windows.net|*.core.usgovcloudapi.net
 Compute|*.cloudapp.net|*.usgovcloudapp.net
 Blob-Speicher|*.blob.core.windows.net| *.blob.core.usgovcloudapi.net
-Queue Storage|*.queue.core.windows.net|*.queue.core.usgovcloudapi.net
+Warteschlangenspeicher|*.queue.core.windows.net|*.queue.core.usgovcloudapi.net
 Tabellenspeicher|*.table.core.windows.net|*.table.core.usgovcloudapi.net
 Dienstverwaltung|management.core.windows.net|management.core.usgovcloudapi.net
 SQL-Datenbank|*.database.windows.net|*.database.usgovcloudapi.net
@@ -129,4 +130,4 @@ Wenn Sie mehr über Azure Government erfahren möchten, nutzen Sie einige der un
 [Link 2 to another azure.microsoft.com documentation topic]: web-sites-custom-domain-name.md
 [Link 3 to another azure.microsoft.com documentation topic]: storage-whatis-account.md
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0817_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="08/09/2016"
+   ms.date="08/16/2016"
    ms.author="yurid"/>
 
 # Datenklassifizierung für Azure
@@ -48,7 +48,7 @@ Authentifizierung und Autorisierung werden häufig miteinander verwechselt, und 
 
 Die Authentifizierung besteht in der Regel aus mindestens zwei Teilen: einem Benutzernamen oder einer Benutzer-ID zur Identifizierung eines Benutzers und einem Token, z.B. einem Kennwort, um zu bestätigen, dass die Anmeldeinformation „Benutzername“ gültig ist. Bei diesem Prozess wird dem authentifizierten Benutzer kein Zugriff auf Elemente oder Dienste gewährt. Es wird überprüft, ob der Benutzer die Person ist, als die er sich ausgibt.
 
-> [AZURE.TIP] [Azure Active Directory]Unter (../active-directory/active-directory-whatis.md) finden Sie Informationen zu cloudbasierten Identitätsdiensten, mit denen Sie Benutzer authentifizieren und autorisieren können.
+> [AZURE.TIP] [Azure Active Directory Unter](./active-directory/active-directory-whatis.md) finden Sie Informationen zu cloudbasierten Identitätsdiensten, mit denen Sie Benutzer authentifizieren und autorisieren können.
 
 ### Autorisierung
  
@@ -239,4 +239,4 @@ Bei einigen DLP-Technologien besteht auch die Möglichkeit, die DLP-Konfiguratio
 - [Blog des Azure-Sicherheitsteams](http://blogs.msdn.com/b/azuresecurity/)
 - [Microsoft Security Response Center](https://technet.microsoft.com/library/dn440717.aspx)
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0817_2016-->

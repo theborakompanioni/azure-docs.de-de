@@ -22,7 +22,7 @@ Mithilfe von Azure Active Directory (Azure AD) können Sie verschiedene Administ
 
 Die folgenden Administratorrollen sind verfügbar:
 
-- **Rechnungsadministrator**: erledigt Käufe, verwaltet Abonnements, verwaltet Support-Tickets und überwacht die Integrität des Dienstes.
+- **Rechnungsadministrator**: Erledigt Käufe, verwaltet Abonnements, verwaltet Supporttickets und überwacht die Dienstintegrität.
 
 - **Globaler Administrator**: hat Zugriff auf alle administrativen Funktionen. Die Person, die die Anmeldung für das Azure-Konto vornimmt, wird ein globaler Administrator. Nur globale Administratoren können weitere Administratorrollen zuweisen. In Ihrem Unternehmen können mehrere globale Administratoren vorhanden sein.
 
@@ -38,9 +38,9 @@ Die folgenden Administratorrollen sind verfügbar:
 
 - **Benutzeradministrator**: setzte Kennwörter zurück, überwacht die Dienstintegrität und verwaltet Benutzerkonten, Benutzergruppen und Dienstanforderungen. Für die Berechtigungen eines Benutzerverwaltungsadministrators gelten einige Einschränkungen. Sie können z. B. keinen globalen Administrator löschen oder andere Administratoren erstellen. Sie können außerdem keine Kennwörter für Abrechnungs-, globale und Dienstadministratoren zurücksetzen.
 
-- **Sicherheit lesen**: schreibgeschützter Zugriff auf eine Reihe von Sicherheitsfunktionen von Identity Protection Center, Privileged Identity Management, Monitor Office 365 Service Health und Office 365 Protection Center.
+- **Sicherheit lesen**: Schreibgeschützter Zugriff auf eine Reihe von Sicherheitsfunktionen von Identity Protection Center, Privileged Identity Management, Monitor Office 365 Service Health und Office 365 Security & Compliance Center.
 
-- **Sicherheitsadministrator**: alle Leseberechtigungen der Rolle **Sicherheit lesen** sowie eine Reihe von zusätzlichen administrativen Berechtigungen für die gleichen Dienste: Identity Protection Center, Privileged Identity Management, Monitor Office 365 Service Health und Office 365 Protection Center.
+- **Sicherheitsadministrator**: Alle Leseberechtigungen der Rolle **Sicherheit lesen** sowie eine Reihe von zusätzlichen administrativen Berechtigungen für die gleichen Dienste: Identity Protection Center, Privileged Identity Management, Monitor Office 365 Service Health und Office 365 Security & Compliance Center.
 
 ## Administratorberechtigungen
 
@@ -54,7 +54,7 @@ Möglich | Nicht möglich
 
 Möglich | Nicht möglich
 ------------- | -------------
-<p>Anzeigen von Unternehmens-und Benutzerinformationen</p><p>Verwalten von Office-Support-Tickets</p><p>Ausführen von Abrechnungs- und Kaufvorgängen für Office-Produkte</p> <p>Zurücksetzen von Benutzerkennwörtern</p><p>Erstellen und Verwalten von Benutzeransichten</p><p>Erstellen, Bearbeiten und Löschen von Benutzern und Gruppen, Verwalten von Benutzerlizenzen</p><p>Verwalten von Domänen</p><p>Verwalten von Unternehmensinformationen</p><p>Delegieren von Administratorrollen an andere</p><p>Verwenden von Verzeichnissynchronisierung</p><p>Aktivieren oder Deaktivieren der Multi-Factor Authentication</p> | N/V
+<p>Anzeigen von Unternehmens-und Benutzerinformationen</p><p>Verwalten von Office-Support-Tickets</p><p>Ausführen von Abrechnungs- und Kaufvorgängen für Office-Produkte</p> <p>Zurücksetzen von Benutzerkennwörtern</p><p>Erstellen und Verwalten von Benutzeransichten</p><p>Erstellen, Bearbeiten und Löschen von Benutzern und Gruppen, Verwalten von Benutzerlizenzen</p><p>Verwalten von Domänen</p><p>Verwalten von Unternehmensinformationen</p><p>Delegieren von Administratorrollen an andere</p><p>Verwenden von Verzeichnissynchronisierung</p><p>Aktivieren oder Deaktivieren der Multi-Factor Authentication</p> | –
 
 ### Kennwortadministrator
 
@@ -80,7 +80,7 @@ Geben Sie in | Möglich
 ------------- | -------------
 Identity Protection Center | Lesen von allen Sicherheitsberichten und Einstellungsinformationen für die Sicherheitsfunktionen<ul><li>Antispam<li>Verschlüsselung<li>Verhinderung von Datenverlust<li>Antischadsoftware<li>Advanced Threat Protection<li>Antiphishing<li>Nachrichtenflussregeln
 Privileged Identity Management | <p>Verfügt über schreibgeschützten Zugriff auf alle eingeblendeten Informationen in Azure AD PIM: Richtlinien und Berichte für Azure AD-Rollenzuweisungen, Sicherheitsüberprüfungen und in Zukunft Lesezugriff auf Richtliniendaten und Berichte für Szenarien zusätzlich zu der Azure AD-Rollenzuweisung.<p>**Kann sich nicht** für Azure AD PIM registrieren oder Änderungen durchführen. Im PIM-Portal oder über PowerShell können Personen mit dieser Rolle zusätzliche Rollen (z.B. globaler Administrator oder Administrator für privilegierte Rollen) aktivieren, wenn der Benutzer für sie geeignet ist.
-<p>Monitor Office 365 Service Health</p><p>Office 365 Protection Center</p> | <ul><li>Lesen und Verwalten von Warnungen<li>Lesen von Sicherheitsrichtlinien<li>Lesen von Informationen zu Bedrohungen, Cloud App Discovery und Quarantäne in „Search and Investigate“<li>Lesen aller Berichte
+<p>Monitor Office 365 Service Health</p><p>Office 365 Security & Compliance Center</p> | <ul><li>Lesen und Verwalten von Warnungen<li>Lesen von Sicherheitsrichtlinien<li>Lesen von Informationen zu Bedrohungen, Cloud App Discovery und Quarantäne in „Search and Investigate“<li>Lesen aller Berichte
 
 ### Sicherheitsadministrator
 
@@ -88,7 +88,7 @@ Geben Sie in | Möglich
 ------------- | -------------
 Identity Protection Center | <ul><li>Alle Berechtigungen der Rolle „Sicherheit lesen“.<li>Darüber hinaus die Möglichkeit, alle IPC-Vorgänge außer des Zurücksetzens von Kennwörtern auszuführen.
 Privileged Identity Management | <ul><li>Alle Berechtigungen der Rolle „Sicherheit lesen“.<li>Kann Rollenmitgliedschaften oder -einstellungen in Azure AD **nicht** verwalten.
-<p>Monitor Office 365 Service Health</p><p>Office 365 Protection | <ul><li>Alle Berechtigungen der Rolle „Sicherheit lesen“.<li>Kann alle Einstellungen im Feature „Advanced Threat Protection“ (Schutz vor Malware und Viren, schadhafte URL-Konfiguration, URL-Ablaufverfolgung usw.) konfigurieren.
+<p>Monitor Office 365 Service Health</p><p>Office 365 Security & Compliance Center | <ul><li>Alle Berechtigungen der Rolle „Sicherheit lesen“.<li>Kann alle Einstellungen im Feature „Advanced Threat Protection“ (Schutz vor Malware und Viren, schadhafte URL-Konfiguration, URL-Ablaufverfolgung usw.) konfigurieren.
 
 ## Details zur globalen Administratorrolle
 
@@ -124,4 +124,4 @@ Der globale Administrator hat Zugriff auf alle administrativen Funktionen. Stand
 
 - [Gruppen verwalten](active-directory-manage-groups.md)
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0817_2016-->

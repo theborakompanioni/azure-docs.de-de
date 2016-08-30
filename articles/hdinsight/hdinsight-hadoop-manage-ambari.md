@@ -25,8 +25,6 @@ Apache Ambari vereinfacht die Verwaltung und Überwachung von Hadoop-Clustern du
 
 In diesem Dokument erfahren Sie, wie Sie die Ambari-Webbenutzeroberfläche mit einem HDInsight-Cluster verwenden.
 
-> [AZURE.NOTE] Die Informationen in diesem Artikel gelten nur für Linux-basierte HDInsight-Cluster. Für Windows-basierte HDInsight-Cluster ist die Überwachung nur über die Ambari-REST-API verfügbar. Weitere Informationen finden Sie unter [Überwachen von Hadoop in HDInsight mit der Ambari-API](hdinsight-monitor-use-ambari-api.md).
-
 ##<a id="whatis"></a>Was ist Ambari?
 
 <a href="http://ambari.apache.org" target="_blank">Apache Ambari</a> vereinfacht die Hadoop-Verwaltung durch die Bereitstellung einer benutzerfreundlichen Webbenutzeroberfläche, die zum Bereitstellen, Verwalten und Überwachen von Hadoop-Clustern verwendet werden kann. Entwickler können diese Funktionen mithilfe der <a href="https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md" target="_blank">Ambari-REST-APIs</a> in ihre Anwendungen integrieren.
@@ -99,7 +97,7 @@ Sie können auch über das Menü **Aktionen** Warnbenachrichtigungen erstellen. 
 
 ![Warnung erstellen (Dialogfeld)](./media/hdinsight-hadoop-manage-ambari/create-alert-notification.png)
 
-###bereitstellen
+###Cluster
 
 Die Registerkarte **Metrics** im Dashboard enthält eine Reihe von Widgets, die das Überwachen des Clusterstatus auf einen Blick erleichtern. Verschiedene Widgets wie **CPU Usage** bieten zusätzliche Informationen, wenn Sie darauf klicken.
 
@@ -224,4 +222,4 @@ Ambari-Ansichten ermöglichen Entwicklern das Hinzufügen von Benutzeroberfläch
 * Hive-Ansicht: In der Hive-Ansicht können Sie Hive-Abfragen direkt in Ihrem Webbrowser ausführen. Sie können Abfragen speichern sowie Ergebnisse anzeigen, im Clusterspeicher speichern oder auf Ihr lokales System herunterladen. Weitere Informationen zum Verwenden von Hive-Ansichten finden Sie unter [Verwenden von Hive-Ansichten mit HDInsight](hdinsight-hadoop-use-hive-ambari-view.md).
 * Tez-Ansicht: Mithilfe der Tez-Ansicht können Sie Aufträge besser verstehen und optimieren, indem Sie Informationen dazu anzeigen, wie Tez-Aufträge ausgeführt und welche Ressourcen von den Aufträgen verwendet werden.
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0817_2016-->

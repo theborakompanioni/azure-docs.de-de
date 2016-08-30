@@ -13,12 +13,15 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="07/26/2016"
+    ms.date="08/15/2016"
     ms.author="elizapo" />
 
 
 
 # Migrieren von Daten in und aus Azure RemoteApp
+
+> [AZURE.IMPORTANT]
+Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148).
 
 Sie können viele verschiedene Tools und Methoden verwenden, um [Benutzerdaten](remoteapp-upd.md) nach und aus Azure RemoteApp zu übertragen. Hier sind einige Methoden:
 
@@ -55,4 +58,4 @@ Sie können zwar den Synchronisierungs-Agent für OneDrive for Business nicht in
 
 Wenn Sie die [Laufwerkumleitung](remoteapp-redirection.md) aktiviert haben, haben Sie bereits ein zugeordnetes Laufwerk für Ihre Benutzer erstellt. In diesem Fall können die Benutzer ihre Dateien im umgeleiteten Laufwerk zippen und dann auf ihrem lokalen PC speichern.
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0817_2016-->

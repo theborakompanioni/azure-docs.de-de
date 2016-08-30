@@ -3,7 +3,7 @@
 	description="Anwenden einer Richtlinie auf einen virtuellen Windows-Computer des Azure Resource Manager"
 	services="virtual-machines-windows"
 	documentationCenter=""
-	authors="singhkay"
+	authors="singhkays"
 	manager="drewm"
 	editor=""
 	tags="azure-resource-manager"/>
@@ -102,8 +102,8 @@ Eine Richtlinie kann problemlos über die REST-API direkt oder über PowerShell-
 
 ## Anwenden der Richtlinie
 
-Nach dem Erstellen der Richtlinie müssen Sie sie auf einen definierten Bereich anwenden. Bei dem Bereich kann es sich um ein Abonnement, die Ressourcengruppe oder die Ressource handeln. Informationen zum Anwenden der Richtlinie finden Sie im folgenden Artikel:
+Nach dem Erstellen der Richtlinie müssen Sie sie auf einen definierten Bereich anwenden. Bei dem Bereich kann es sich um ein Abonnement, eine Ressourcengruppe oder die Ressource handeln. Informationen zum Anwenden der Richtlinie finden Sie im folgenden Artikel:
 
 * [Erstellen einer Richtlinie](../resource-manager-policy.md#applying-a-policy)
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0817_2016-->

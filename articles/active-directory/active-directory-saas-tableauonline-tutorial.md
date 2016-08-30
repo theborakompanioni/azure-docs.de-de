@@ -173,7 +173,7 @@ In diesem Abschnitt erstellen Sie im klassischen Portal einen Testbenutzer mit d
 
 2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
 
-3. Klicken Sie zum Anzeigen der Liste der Benutzer im Menü oben auf **Benutzer**.
+3. Klicken Sie im Menü oben auf **Benutzer**, um die Liste der Benutzer anzuzeigen.
 	
 	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-tableauonline-tutorial/create_aaduser_03.png)
 
@@ -241,12 +241,11 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 **Zum Zuweisen von Britta Simon zu Tableau Online führen Sie die folgenden Schritte aus:**
 
-1. Klicken Sie zum Öffnen der Anwendungsansicht im klassischen Portal in der
-2. Verzeichnisansicht im oberen Menü auf **Applications** (Anwendungen).
+1. Klicken Sie zum Öffnen der Anwendungsansicht im klassischen Portal in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen**.
 
 	![Benutzer zuweisen][201]
 
-3. Wählen Sie in der Anwendungsliste **Tableau Online**.
+3. Wählen Sie in der Anwendungsliste **Tableau Online** aus.
 
 	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-tableauonline-tutorial/tutorial_tableauonline_50.png)
 
@@ -295,4 +294,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Tableau Online“ klicken, sollten
 [204]: ./media/active-directory-saas-tableauonline-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-tableauonline-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0817_2016-->

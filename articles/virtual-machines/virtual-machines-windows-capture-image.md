@@ -29,6 +29,8 @@ In diesem Artikel wird gezeigt, wie Sie Azure PowerShell zum Erstellen eines gen
 
 - Hierfür muss Azure PowerShell Version 1.0.x installiert sein. Wenn Sie PowerShell noch nicht installiert haben, finden Sie die Installationsschritte unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
 
+- Stellen Sie sicher, dass die auf dem Computer ausgeführten Serverrollen von Sysprep unterstützt werden. Weitere Informationen finden Sie unter [Sysprep Support for Server Roles](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles) (Sysprep-Unterstützung für Serverrollen).
+
 ## Vorbereiten der Quell-VM 
 
 In diesem Abschnitt erfahren Sie, wie Sie die Windows-VM generalisieren, damit sie als Image verwendet werden kann.
@@ -93,7 +95,7 @@ In diesem Abschnitt erfahren Sie, wie Sie die Windows-VM generalisieren, damit s
 
 1. Kopieren Sie das Image des virtuellen Computers mithilfe des folgenden Befehls in den Zielspeichercontainer: Das Image wird im demselben Speicherkonto wie der ursprüngliche virtuelle Computer erstellt. Mit der Variablen `-Path` wird eine Kopie der JSON-Vorlage lokal gespeichert. Die Variable `-DestinationContainerName` ist der Name des Containers, in dem Ihre Images aufbewahrt werden sollen. Falls der Container noch nicht vorhanden ist, wird er erstellt.
 
-		Save-AzureRmVMImage -ResourceGroupName YourResourceGroup -VMName YourWindowsVM -DestinationContainerName YourImagesContainer -VHDNamePrefix YourTemplatePrefix -Path Yourlocalfilepath\Filename.json
+		Save-AzureRmVMImage -ResourceGroupName YourResourceGroup -Name YourWindowsVM -DestinationContainerName YourImagesContainer -VHDNamePrefix YourTemplatePrefix -Path Yourlocalfilepath\Filename.json
 
 	Sie können die URL Ihres Image aus der JSON-Dateivorlage abrufen. Suchen Sie den Abschnitt **resources** > **storageProfile** > **osDisk** > **image** > **uri**, um den vollständigen Pfad zu Ihrem Image zu finden. Die URL des Image sieht wie folgt aus: `https://<storageAccountName>.blob.core.windows.net/system/Microsoft.Compute/Images/<imagesContainer>/<templatePrefix-osDisk>.xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.vhd`.
 	
@@ -106,7 +108,7 @@ In diesem Abschnitt erfahren Sie, wie Sie die Windows-VM generalisieren, damit s
 
 ## Erstellen eines virtuellen Netzwerks
 
-Erstellen Sie das VNET und das Subnetz des [virtuellen Netzwerks](../virtual-network/virtual-networks-overview.md).
+Erstellen Sie das vNet und das Subnetz des [virtuellen Netzwerks](../virtual-network/virtual-networks-overview.md).
 		
 
 1. Ersetzen Sie den Wert der Variablen durch Ihre eigenen Informationen. Geben Sie das Adresspräfix für das Subnetz im CIDR-Format an. Erstellen Sie die Variablen und das Subnetz.
@@ -198,7 +200,7 @@ Das folgende PowerShell-Skript veranschaulicht, wie Sie die Konfiguration für d
 
 
 
-Anschließend sollte der neu erstellte virtuelle Computer im [Azure-Portal](https://portal.azure.com) unter **Durchsuchen** > **Virtuelle Computer** angezeigt werden. Alternativ können Sie ihn auch mit den folgenden PowerShell-Befehlen anzeigen:
+Anschließend müsste der neu erstellte virtuelle Computer im [Azure-Portal](https://portal.azure.com) unter **Durchsuchen** > **Virtuelle Computer** angezeigt werden. Alternativ können Sie ihn auch mit den folgenden PowerShell-Befehlen anzeigen:
 
 	$vmList = Get-AzureRmVM -ResourceGroupName $rgName
 	$vmList.Name
@@ -208,4 +210,4 @@ Anschließend sollte der neu erstellte virtuelle Computer im [Azure-Portal](http
 
 Informationen zum Verwalten des neuen virtuellen Computers mit Azure PowerShell finden Sie unter [Verwalten von virtuellen Computern mit Azure Resource Manager und PowerShell](virtual-machines-windows-ps-manage.md).
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0817_2016-->

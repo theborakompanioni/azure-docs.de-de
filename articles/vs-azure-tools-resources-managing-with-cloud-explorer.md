@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
-   ms.date="05/08/2016"
+   ms.date="08/15/2016"
    ms.author="tarcher" />
 
 # Verwalten von Azure-Ressourcen mit dem Cloud-Explorer
@@ -21,7 +21,7 @@
 
 Der Cloud-Explorer ist so ausgelegt, dass Sie Ihre Azure-Ressourcen innerhalb der integrierten Entwicklungsumgebung (Integrated Development Environment, IDE) von Visual Studio einfacher und schneller durchsuchen und verwalten können. Er dient z.B. zum Öffnen einer Web-App im [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) oder in einem Browser bzw. zum Anfügen eines Debuggers an die Web-App. Sie können im Cloud-Explorer auch die Eigenschaften eines Blobcontainers anzeigen oder diesen im Blobcontainer-Editor öffnen.
 
-Der Cloud-Explorer setzt wie das [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) auf dem Azure Resource Manager-Stapel auf. Er unterstützt Ressourcen wie Azure-Ressourcengruppen und Azure-Dienste wie Logik- und API-Apps sowie die [rollenbasierte Zugriffskontrolle](../role-based-access-control-configure/) (RBAC). Um Azure-Ressourcen anzuzeigen, die hinzugefügt oder geändert wurden, wählen Sie auf der Cloud Explorer-Symbolleiste die Schaltfläche **Aktualisieren** aus.
+Der Cloud-Explorer setzt wie das [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) auf dem Azure Resource Manager-Stapel auf. Er unterstützt Ressourcen wie Azure-Ressourcengruppen und Azure-Dienste wie Logik- und API-Apps sowie die [rollenbasierte Zugriffskontrolle](./active-directory/role-based-access-control-configure.md) (RBAC). Um Azure-Ressourcen anzuzeigen, die hinzugefügt oder geändert wurden, wählen Sie auf der Cloud Explorer-Symbolleiste die Schaltfläche **Aktualisieren** aus.
 
 Der Cloud-Explorer wird als Teil der Visual Studio-Tools für Azure SDK 2.7 installiert.
 
@@ -50,7 +50,7 @@ Wenn Sie Azure noch nicht verwendet oder Visual Studio nicht die erforderlichen 
 
     ![Auswählen von Azure-Abonnements](./media/vs-azure-tools-resources-managing-with-cloud-explorer/IC819515.png)
 
-1. Aktivieren Sie die Kontrollkästchen für die Kontoabonnements, die Sie durchsuchen möchten, und wählen dann die Schaltfläche **Übernehmen** aus.
+1. Aktivieren Sie die Kontrollkästchen für die Kontoabonnements, die Sie durchsuchen möchten, und wählen dann die Schaltfläche **Übernehmen**.
 
     Die Azure-Ressourcen für die ausgewählten Abonnements werden im Cloud-Explorer angezeigt.
 
@@ -89,10 +89,10 @@ Zusätzliche Aktionen und Eigenschaftswerte können auch basierend auf der Azure
 
 ## Durchsuchen von Ressourcen
 
-Um in Ihren Azure-Kontoabonnements Ressourcen mit einem bestimmten Namen zu suchen, geben Sie den Namen in das Feld "Suchen" im Cloud-Explorer ein.
+Um in Ihren Azure-Kontoabonnements Ressourcen mit einem bestimmten Namen zu suchen, geben Sie den Namen in das Feld „Suchen“ im Cloud-Explorer ein.
 
 ![Suchen von Ressourcen im Cloud-Explorer](./media/vs-azure-tools-resources-managing-with-cloud-explorer/IC820394.png)
 
 Bei der Eingabe von Zeichen in das Feld "Suchen" werden nur die Ressourcen in der Ressourcenstruktur angezeigt, die diesen Zeichen entsprechen.
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0817_2016-->

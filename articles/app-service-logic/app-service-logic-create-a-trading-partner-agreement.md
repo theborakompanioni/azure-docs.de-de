@@ -13,7 +13,7 @@
 	ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="integration" 
-   ms.date="04/20/2016"
+   ms.date="08/23/2016"
    ms.author="rajram"/>
 
 # Erstellen einer Handelspartnervereinbarung   
@@ -79,4 +79,4 @@ So erstellen Sie Handelspartnervereinbarungen:
 [3]: ./media/app-service-logic-create-a-trading-partner-agreement/X12AgreementCreation.png
  
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0824_2016-->

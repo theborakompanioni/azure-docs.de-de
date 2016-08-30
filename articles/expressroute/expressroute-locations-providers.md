@@ -29,7 +29,7 @@ Wenn Sie mit mindestens einem ExpressRoute-Standort innerhalb der geopolitischen
 
 |**Geopolitische Region**|**Azure-Regionen**|**ExpressRoute-Standorte**|
 |---|---|---|
-|**Nordamerika**|USA, Osten; USA, Westen; USA, Osten 2; USA, Mitte; USA, Süden-Mitte; USA, Norden-Mitte; Kanada, Mitte; Kanada, Osten|Atlanta, Chicago, Dallas, Las Vegas+, Los Angeles, New York, Seattle, Silicon Valley, Washington DC, Montreal+, Quebec City+, Toronto|
+|**Nordamerika**|USA, Osten; USA, Westen; USA, Osten 2; USA, Mitte; USA, Süden-Mitte; USA, Norden-Mitte; Kanada, Mitte; Kanada, Osten|Atlanta, Chicago, Dallas, Las Vegas, Los Angeles, New York, Seattle, Silicon Valley, Washington DC, Montreal+, Quebec City+, Toronto|
 |**Südamerika**|Brasilien Süd|Sao Paulo|
 |**Europa**|Nordeuropa, Westeuropa|Amsterdam, Dublin, London, Newport(Wales)+, Paris|
 |**Asien**|Ostasien, Südostasien|Hongkong, Singapur|
@@ -156,4 +156,4 @@ Je nach Ihrer Netzwerkgröße kann das Aktivieren privater Verbindungen für Ihr
 <!--Image References-->
 [0]: ./media/expressroute-locations/expressroute-locations-map.png "Standortkarte"
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0824_2016-->

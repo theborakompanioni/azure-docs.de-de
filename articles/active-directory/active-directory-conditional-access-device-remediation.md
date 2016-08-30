@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Benutzerkorrektur beim Zugreifen auf Anwendungen mit gerätebasiertem bedingtem Azure AD-Zugriffsschutz | Microsoft Azure"
+	pageTitle="Problembehandlung: Zugriff nicht möglich | Microsoft Azure"
 	description="Mit den Informationen in diesem Thema können Sie ermitteln, ob es Korrekturschritte gibt, um Zugriff auf die gewünschte Anwendung zu erhalten."
 	services="active-directory"
 	keywords="gerätebasierter bedingter Zugriff, Geräteregistrierung, Geräteregistrierung aktivieren, Geräteregistrierung und MDM"
@@ -14,11 +14,11 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="08/15/2016"
+	ms.date="08/23/2016"
 	ms.author="markvi"/>
 
 
-# Benutzerkorrektur beim Zugreifen auf Anwendungen mit gerätebasiertem bedingtem Azure AD-Zugriffsschutz
+# Problembehandlung: Zugriff nicht möglich
 
 Sie haben beim Zugreifen auf eine Anwendung wie Office 365 SharePoint Online eine Seite mit der Meldung „Zugriff verweigert“ erhalten. Was können Sie tun?
 
@@ -172,4 +172,4 @@ In Kürze finden Sie hier eine Anleitung für Android-Smartphones bzw. -Tablets.
 
 [Bedingter Zugriff mit Azure Active Directory](active-directory-conditional-access.md)
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0824_2016-->

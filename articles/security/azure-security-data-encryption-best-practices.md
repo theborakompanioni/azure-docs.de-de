@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/26/2016"
+   ms.date="08/16/2016"
    ms.author="yuridio"/>
 
 #Empfohlene Vorgehensweisen für Datensicherheit und Verschlüsselung in Azure
@@ -63,7 +63,7 @@ Weitere Informationen über Azure Multi-Factor Authentication finden Sie unter [
 ## Verwenden der rollenbasierten Zugriffssteuerung (Role-Based Access Control; RBAC)
 Schränken Sie den Zugriff auf Grundlage der Sicherheitsprinzipien [Need-to-know](https://en.wikipedia.org/wiki/Need_to_know)- und [least privilege](https://en.wikipedia.org/wiki/Principle_of_least_privilege) (Prinzip der minimalen Berechtigung, Artikel in englischer Sprache) ein. Dies ist für Organisationen zwingend erforderlich, die Sicherheitsrichtlinien für den Datenzugriff durchsetzen möchten. Die rollenbasierte Zugriffssteuerung in Azure (RBAC) kann verwendet werden, um Benutzern, Gruppen und Anwendungen Berechtigungen für einen bestimmten Bereich zu erteilen. Der Bereich einer Rollenzuweisung kann ein Abonnement, eine Ressourcengruppe oder eine einzelne Ressource sein.
 
-Sie können [integrierte RBAC-Rollen](./active-directory/role-based-access-built-in-roles.md) in Azure verwenden, um Benutzern Berechtigungen zuzuweisen. Ziehen Sie die Verwendung von *Speicherkontomitwirkender* für Cloudoperatoren in Betracht, die Speicherkonten verwalten müssen und die Rolle *Klassischer Speicherkontomitwirkender*, um klassische Speicherkonten zu verwalten. Überlegen Sie sich, ob Sie Cloudoperatoren, die VMs und Speicherkonten verwalten müssen, zur Rolle *Mitwirkender für virtuelle Computer* hinzufügen.
+Sie können [integrierte RBAC-Rollen](../active-directory/role-based-access-built-in-roles.md) in Azure verwenden, um Benutzern Berechtigungen zuzuweisen. Ziehen Sie die Verwendung von *Speicherkontomitwirkender* für Cloudoperatoren in Betracht, die Speicherkonten verwalten müssen und die Rolle *Klassischer Speicherkontomitwirkender *, um klassische Speicherkonten zu verwalten. Überlegen Sie sich, ob Sie Cloudoperatoren, die VMs und Speicherkonten verwalten müssen, zur Rolle *Mitwirkender für virtuelle Computer* hinzufügen.
 
 Organisationen, die keine Datenzugriffssteuerung mithilfe von Funktionen wie RBAC erzwingen, erteilen Ihren Benutzern möglicherweise mehr Berechtigungen als erforderlich. Dies kann zur Kompromittierung der Daten führen, da einige Benutzer Zugriff auf Daten erhalten, auf die sie von vorneherein keinen Zugriff haben sollten.
 
@@ -90,7 +90,7 @@ Erfahren Sie mehr über die Azure Disk Encryption, indem Sie den Artikel [Azure 
 
 Branchenverschlüsselungslösungen verwenden für die Verschlüsselung von Daten geheime Schlüssel. Deshalb ist es sehr wichtig, dass diese Schlüssel sicher gespeichert werden. Das Verwalten von Schlüsseln wird zu einem integralen Bestandteil des Datenschutzes, da mithilfe der Schlüsselverwaltung geheime Schlüssel gespeichert werden, die wiederum zur Datenverschlüsselung dienen.
 
-Azure Disk Encryption verwendet [Azure Key Vault](https://azure.microsoft.com/services/key-vault/), um Ihnen bei der Steuerung und Verwaltung von Datenträger-Verschlüsselungsschlüsseln und geheimen Schlüsseln in Ihrem Schlüsseltresor-Abonnement zu helfen. Dabei wird gleichzeitig sichergestellt, dass alle ruhenden Daten auf den Laufwerken der virtuellen Computer in Ihrem Azure-Speicher verschlüsselt sind. Sie sollten Azure Key Vault verwenden, um die Verwendung der Schlüssel und der Richtlinien zu überwachen.
+Azure Disk Encryption verwendet [Azure Key Vault](https://azure.microsoft.com/services/key-vault/), um Sie bei der Steuerung und Verwaltung von Datenträger-Verschlüsselungsschlüsseln und geheimen Schlüsseln in Ihrem Schlüsseltresorabonnement zu unterstützen. Gleichzeitig wird sichergestellt, dass alle ruhenden Daten auf den Laufwerken der virtuellen Computer in Ihrem Azure-Speicher verschlüsselt sind. Sie sollten Azure Key Vault verwenden, um die Verwendung der Schlüssel und der Richtlinien zu überwachen.
 
 Es gibt viele inhärente Risiken im Zusammenhang mit dem Fehlen passender Sicherheitsprotokolle zum Schutz der geheimen Schlüssel, die für die Verschlüsselung Ihrer Daten verwendet wurden. Falls die Angreifer über Zugriff auf die geheimen Schlüssel verfügen, ist es ihnen möglich, die Daten zu entschlüsseln und potenziell auf die vertraulichen Informationen zuzugreifen.
 
@@ -133,7 +133,7 @@ Der Schutz von Daten während der Übertragung sollte ein wesentlicher Bestandte
 
 Für Daten, die sich zwischen Ihrer lokalen Infrastruktur und Azure bewegen, sollten Sie passende Sicherheitsmaßnahmen in Betracht ziehen, beispielsweise HTTPS oder VPN.
 
-Verwenden Sie eine [Azure-Site-to-Site-VPN-Verbindung ](../vpn-gateway/vpn-gateway-site-to-site-create.md) für Organisationen, die den Zugriff von mehreren lokalen Arbeitsstationen auf Azure sichern müssen.
+Verwenden Sie eine [Azure-Standort-zu-Standort-VPN-Verbindung ](../vpn-gateway/vpn-gateway-site-to-site-create.md) für Organisationen, die den Zugriff von mehreren lokalen Arbeitsstationen auf Azure sichern müssen.
 
 Verwenden Sie eine [Punkt-zu-Standort-VPN-Verbindung](../vpn-gateway/vpn-gateway-point-to-site-create.md) für Organisationen, die den Zugriff von einer lokalen Arbeitsstation auf Azure sichern müssen.
 
@@ -163,4 +163,4 @@ Organisationen, die in Hinsicht auf die [Datenklassifizierung](http://download.m
 
 Erfahren Sie mehr über Azure RMS, indem Sie den Artikel [Erste Schritte mit Azure Rights Management](https://technet.microsoft.com/library/jj585016.aspx) lesen.
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0817_2016-->

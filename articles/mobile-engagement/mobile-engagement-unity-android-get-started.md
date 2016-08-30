@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="mobile-unity-android"
 	ms.devlang="dotnet"
 	ms.topic="hero-article"
-	ms.date="03/25/2016"
+	ms.date="08/19/2016"
 	ms.author="piyushjo" />
 
 # Erste Schritte mit Azure Mobile Engagement für eine Unity Android-Bereitstellung
 
 [AZURE.INCLUDE [Umschalter für das Hero-Tutorial](../../includes/mobile-engagement-hero-tutorial-switcher.md)]
 
-In diesem Thema erfahren Sie, wie Sie mithilfe von Azure Mobile Engagement die Nutzung Ihrer App verstehen können und wie Sie Pushbenachrichtigungen an segmentierte Benutzer einer Unity-Anwendung senden, wenn Sie die Bereitstellung für ein Android-Gerät durchführen. In diesem Tutorial wird das klassische Roll-A-Ball-Tutorial von Unity als Ausgangspunkt verwendet. Sie sollten die Schritte in diesem [Tutorial](mobile-engagement-unity-roll-a-ball.md) ausführen, bevor Sie mit der Mobile Engagement-Integration beginnen, die in diesem Tutorial beschrieben wird.
+In diesem Thema erfahren Sie, wie Sie mithilfe von Azure Mobile Engagement die Nutzung Ihrer App nachvollziehen und Pushbenachrichtigungen an segmentierte Benutzer einer Unity-Anwendung senden, wenn Sie die Bereitstellung für ein Android-Gerät durchführen. In diesem Tutorial wird das klassische Roll-A-Ball-Tutorial von Unity als Ausgangspunkt verwendet. Sie sollten die Schritte in diesem [Tutorial](mobile-engagement-unity-roll-a-ball.md) ausführen, bevor Sie mit der Mobile Engagement-Integration beginnen, die in diesem Tutorial beschrieben wird.
 
 Für dieses Lernprogramm ist Folgendes erforderlich:
 
@@ -38,7 +38,7 @@ Für dieses Lernprogramm ist Folgendes erforderlich:
 
 ###Importieren des Unity-Pakets
 
-1. Laden Sie das [Mobile Engagement Unity-Paket](https://aka.ms/azmeunitysdk) herunter, und speichern Sie es auf Ihrem lokalen Computer. 
+1. Laden Sie das [Mobile Engagement Unity-Paket](https://aka.ms/azmeunitysdk) herunter, und speichern Sie es auf Ihrem lokalen Computer.
 
 2. Wechseln Sie zu **Assets -> Paket importieren -> Benutzerdefiniertes Paket**, und wählen Sie das im vorherigen Schritt heruntergeladene Paket aus.
 
@@ -54,7 +54,7 @@ Für dieses Lernprogramm ist Folgendes erforderlich:
 
 ###Aktualisieren von „EngagementConfiguration“
 
-1. Öffnen Sie die **EngagementConfiguration**-Skriptdatei im SDK-Ordner, und aktualisieren **ANDROID\_CONNECTION\_STRING** gemäß der Verbindungszeichenfolge, die Sie zuvor im Azure-Portal abgerufen haben.  
+1. Öffnen Sie die **EngagementConfiguration**-Skriptdatei im SDK-Ordner, und aktualisieren **ANDROID\_CONNECTION\_STRING** gemäß der Verbindungszeichenfolge, die Sie zuvor im Azure-Portal abgerufen haben.
 
 	![][73]
 
@@ -68,7 +68,7 @@ Für dieses Lernprogramm ist Folgendes erforderlich:
 
 ###Konfigurieren der App für die einfache Nachverfolgung
 
-1. Öffnen Sie das an das Player-Objekt angefügte **PlayerController**-Skript für die Bearbeitung. 
+1. Öffnen Sie das an das Player-Objekt angefügte **PlayerController**-Skript für die Bearbeitung.
 
 2. Fügen Sie die folgende using-Anweisung hinzu:
 
@@ -82,7 +82,7 @@ Für dieses Lernprogramm ist Folgendes erforderlich:
 ###Bereitstellen und Ausführen der App
 Stellen Sie sicher, dass das Android-SDK auf Ihrem Computer installiert ist, bevor Sie versuchen, diese Unity-App auf Ihrem Gerät bereitzustellen.
 
-1. Verbinden Sie ein Android-Gerät mit dem Computer. 
+1. Verbinden Sie ein Android-Gerät mit dem Computer.
 
 2. Öffnen Sie **Datei -> Buildeinstellungen**.
 
@@ -116,11 +116,11 @@ Stellen Sie sicher, dass das Android-SDK auf Ihrem Computer installiert ist, bev
 
 ###Aktualisieren von „EngagementConfiguration“
 
-1. Öffnen Sie die **EngagementConfiguration**-Skriptdatei im SDK-Ordner, und aktualisieren Sie **ANDROID\_GOOGLE\_NUMBER** mit der **Google Project Number**, die Sie zuvor über das Google Cloud Developer-Portal abgerufen haben. Da dies ein Zeichenfolgenwert ist, muss er in doppelte Anführungszeichen gesetzt werden. 
+1. Öffnen Sie die **EngagementConfiguration**-Skriptdatei im SDK-Ordner, und aktualisieren Sie **ANDROID\_GOOGLE\_NUMBER** mit der **Google Project Number**, die Sie zuvor über das Google Cloud Developer-Portal abgerufen haben. Da dies ein Zeichenfolgenwert ist, muss er in doppelte Anführungszeichen gesetzt werden.
 
 	![][75]
 
-2. Speichern Sie die Datei .
+2. Speichern Sie die Datei.
 
 3. Führen Sie **Datei -> Engagement -> Android-Manifest generieren** aus. Dies ist das Plug-In, das vom Mobile Engagement SDK hinzugefügt wird. Wenn Sie darauf klicken, werden die Projekteinstellungen automatisch aktualisiert.
 
@@ -128,7 +128,7 @@ Stellen Sie sicher, dass das Android-SDK auf Ihrem Computer installiert ist, bev
 
 ###Konfigurieren der App für den Empfang von Benachrichtigungen
 
-1. Öffnen Sie das an das Player-Objekt angefügte **PlayerController**-Skript für die Bearbeitung. 
+1. Öffnen Sie das an das Player-Objekt angefügte **PlayerController**-Skript für die Bearbeitung.
 
 2. Fügen Sie der `Start()`-Methode Folgendes hinzu:
 
@@ -151,4 +151,4 @@ Stellen Sie sicher, dass das Android-SDK auf Ihrem Computer installiert ist, bev
 [53]: ./media/mobile-engagement-unity-android-get-started/53.png
 [54]: ./media/mobile-engagement-unity-android-get-started/54.png
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0824_2016-->

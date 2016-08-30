@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/15/2016" 
+	ms.date="07/26/2016" 
 	ms.author="danha"/>
 
 
@@ -21,12 +21,14 @@
 
 [Analytics](app-insights-analytics.md) ist die leistungsfähige Suchfunktion von [Application Insights](app-insights-overview.md). Auf diesen Seiten wird die Analytics-Abfragesprache beschrieben.
 
-* **[Sehen Sie das Einführungsvideo an](https://applicationanalytics-media.azureedge.net/home_page_video.mp4)**.
+* **[Sehen Sie sich das Einführungsvideo an](https://applicationanalytics-media.azureedge.net/home_page_video.mp4)**.
 * **[Testen Sie Analytics mit unseren simulierten Daten](https://analytics.applicationinsights.io/demo)**, wenn Ihre App noch keine Daten an Application Insights sendet.
 
 ## Öffnen von Analytics
 
-Klicken Sie auf der Startseite Ihrer App in Application Insights auf Analytics .S.![Öffnen Sie unter „portal.azure.com“ die Application Insights-Ressource, und wählen Sie „Analytics“.](./media/app-insights-analytics-using/001.png)
+Klicken Sie auf der Startseite Ihrer App in Application Insights auf Analytics.
+
+![Öffnen Sie unter „portal.azure.com“ die Application Insights-Ressource, und wählen Sie „Analytics“.](./media/app-insights-analytics-using/001.png)
 
 Das Inlinetutorial bietet Ihnen Anregungen, wozu Sie Analytics verwenden können.
 
@@ -36,7 +38,7 @@ Eine [ausführlichere Einführung finden Sie hier](app-insights-analytics-tour.m
 
 ### Schreiben Sie eine Abfrage.
 
-![](./media/app-insights-analytics-using/150.png)
+![Schemaanzeige](./media/app-insights-analytics-using/150.png)
 
 Beginnen Sie mit den Namen der Tabellen auf der linken Seite (oder mit den Operatoren [range](app-insights-analytics-reference.md#range-operator) oder [union](app-insights-analytics-reference.md#union-operator)). Verwenden Sie `|`, um eine Pipeline von [Operatoren](app-insights-analytics-reference.md#queries-and-operators) zu erstellen. IntelliSense schlägt Ihnen die Operatoren und einige der Ausdruckselemente vor, die Sie verwenden können.
 
@@ -94,7 +96,7 @@ Sortieren Sie Ihre Ergebnisse durch Klicken auf eine Spaltenüberschrift. Klicke
 
 Wenn Sie nach mehreren Spalten sortieren möchten, verwenden Sie eine Gruppierung. Aktivieren Sie dazu zunächst die Funktion, und ziehen Sie dann Spaltenüberschriften in den Bereich über der Tabelle.
 
-![Gruppieren](./media/app-insights-analytics-using/060.png)
+![Group](./media/app-insights-analytics-using/060.png)
 
 
 
@@ -115,13 +117,44 @@ Daher empfiehlt es sich, eine Überschreitung des Grenzwerts zu vermeiden. Verwe
 
 Wählen Sie den gewünschten Diagrammtyp:
 
-![](./media/app-insights-analytics-using/230.png)
+![Diagrammtyp auswählen](./media/app-insights-analytics-using/230.png)
 
 Wenn Sie über mehrere Spalten mit den richtigen Typen verfügen, können Sie die X- und Y-Achse sowie eine Spalte mit Dimensionen auswählen, um die Ergebnisse aufzuteilen.
 
 Die Ergebnisse werden standardmäßig zunächst als Tabelle angezeigt. Sie wählen die Diagrammdarstellung dann manuell aus. Sie können jedoch die [render-Anweisung](app-insights-analytics-reference.md#render-directive) am Ende einer Abfrage verwenden, um ein Diagramm auszuwählen.
 
-Sie können ein Diagramm an eines Ihrer [freigegebenen Dashboards](app-insights-dashboards.md) anheften – klicken Sie einfach auf die Stecknadel. (Nur für Apps in einer kostenpflichtigen Preisstufe verfügbar.)
+## An das Dashboard anheften
+
+Sie können ein Diagramm an eines Ihrer [freigegebenen Dashboards](app-insights-dashboards.md) anheften – klicken Sie einfach auf die Stecknadel. (Unter Umständen müssen Sie [das Tarifpaket für Ihre App aktualisieren](app-insights-pricing.md), um diese Funktion zu aktivieren.)
+
+![Auf Stecknadel klicken](./media/app-insights-analytics-using/pin-01.png)
+
+Wenn Sie ein Dashboard zum Überwachen der Leistung oder Nutzung Ihrer Webdienste erstellen, können Sie so zusätzlich zu den anderen Metriken komplexe Analysen hinzufügen.
+
+#### Dashboard-Aktualisierung
+
+Das an das Dashboard angeheftete Diagramm wird automatisch aktualisiert, indem Sie die Abfrage etwa jede halbe Stunde erneut ausführen.
+
+#### Automatische Vereinfachungen
+
+In manchen Fällen werden auf ein Diagramm bestimmte Vereinfachungen angewendet, wenn Sie es an ein Dashboard anheften.
+
+Wenn Sie ein Diagramm mit zahlreichen separaten Containern (in der Regel ein Balkendiagramm) anheften, werden die Container mit wenig Daten automatisch in einem einzelnen Container zusammengefasst. Die folgende Abfrage:
+
+    requests | summarize count_search = count() by client_CountryOrRegion
+
+sieht in Analytics wie folgt aus:
+
+
+![Ausführliches Diagramm](./media/app-insights-analytics-using/pin-07.png)
+
+Wenn Sie sie an ein Dashboard anheften, sieht das folgendermaßen aus:
+
+
+![Diagramm mit begrenzter Anzahl von Containern](./media/app-insights-analytics-using/pin-08.png)
+
+
+
 
 ## Exportieren in Excel
 
@@ -129,7 +162,7 @@ Nachdem Sie eine Abfrage ausgeführt haben, können Sie eine CSV-Datei herunterl
 
 ## Exportieren nach Power BI
 
-1. Positionieren Sie den Cursor in einer Abfrage, und wählen Sie **Nach Power BI exportieren** aus.
+1. Positionieren Sie den Cursor in einer Abfrage, und wählen Sie **Nach Power BI exportieren**.
 
     ![](./media/app-insights-analytics-using/240.png)
 
@@ -150,4 +183,4 @@ Nachdem Sie eine Abfrage ausgeführt haben, können Sie eine CSV-Datei herunterl
 
 [AZURE.INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0817_2016-->

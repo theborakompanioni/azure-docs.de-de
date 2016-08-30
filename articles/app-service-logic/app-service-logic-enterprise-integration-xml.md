@@ -26,8 +26,12 @@ Mit Enterprise Integration Pack können Sie mühelos XML-Dokumente überprüfen 
 - [Flatfilecodierung und -decodierung](./app-service-logic-enterprise-integration-flatfile.md "Informationen zum Codieren/Decodieren von Flatfiles") – Mit Flatfilecodierung und -decodierung können Sie eine Flatfile codieren bzw. decodieren.
 - [XPath](https://msdn.microsoft.com/library/mt643789.aspx) – Bietet die Möglichkeit, eine Nachricht anzureichern und bestimmte Eigenschaften aus der Nachricht zu extrahieren. Mit den extrahierten Eigenschaften können Sie die Nachricht dann an einen Ziel- oder Zwischenendpunkt weiterleiten.
 
+## Probieren Sie es selbst aus
+
+Versuchen Sie es doch einfach mal. Klicken Sie [hier](https://github.com/Azure/azure-quickstart-templates/tree/master/201-logic-app-veter-pipeline), um Ihre eigene voll funktionsfähige Logik-App mit den XML-Features von Logic Apps bereitzustellen.
+
 ## Weitere Informationen
 
 [Weitere Informationen zum Enterprise Integration Pack](./app-service-logic-enterprise-integration-overview.md "Informationen zum Enterprise Integration Pack")
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0817_2016-->

@@ -22,14 +22,17 @@ Dieser Artikel beschreibt die Verwendung der Kopieraktivität in Azure Data Fact
 
 Sie können angeben, ob Sie PolyBase beim Laden von Daten in Azure SQL Data Warehouse verwenden möchten. Es wird empfohlen, dass Sie PolyBase verwenden, um beim Laden von Daten in Azure SQL Data Warehouse eine optimale Leistung zu erzielen. Details finden Sie im Abschnitt [Daten unter Verwendung von PolyBase in Azure SQL Data Warehouse laden](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-sql-data-warehouse).
 
-In den folgenden Beispielen wird veranschaulicht, wie Sie Daten in und aus Azure SQL Data Warehouse und Azure-BLOB-Speicher kopieren. Daten können jedoch mithilfe der Kopieraktivität in Azure Data Factory **direkt** aus beliebigen Quellen in die im Artikel [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md#supported-data-stores) aufgeführten Senken kopiert werden.
 
+## Assistent zum Kopieren von Daten
+Die einfachste Möglichkeit zum Erstellen einer Pipeline, die Daten in und aus Azure SQL Data Warehouse kopiert, ist die Verwendung des Assistenten zum Kopieren von Daten. Unter [Tutorial: Erstellen einer Pipeline mit dem Assistenten zum Kopieren](data-factory-copy-data-wizard-tutorial.md) finden Sie eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mithilfe des Assistenten zum Kopieren von Daten.
+
+Die folgenden Beispiele zeigen Beispiel-JSON-Definitionen, die Sie zum Erstellen einer Pipeline mit dem [Azure-Portal](data-factory-copy-activity-tutorial-using-azure-portal.md), mit [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) oder [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) verwenden können. Sie zeigen Ihnen das Kopieren von Daten in und aus Azure SQL Data Warehouse und Azure Blob Storage. Daten können jedoch mithilfe der Kopieraktivität in Azure Data Factory **direkt** aus beliebigen Quellen in die [hier](data-factory-data-movement-activities.md#supported-data-stores) aufgeführten Senken kopiert werden.
 
 
 > [AZURE.NOTE] 
 Eine Übersicht über den Azure Data Factory-Dienst finden Sie unter [Einführung in Azure Data Factory](data-factory-introduction.md).
 > 
-> Dieser Artikel bietet JSON-Beispiele, aber keine detaillierten Anleitungen zum Erstellen einer Data Factory. Unter [Copy data from Blob Storage to SQL Database using Data Factory](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) (Kopieren von Daten aus Azure-Blobspeicher in die SQL-Datenbank mithilfe von Data Factory) finden Sie eine kurze exemplarische Vorgehensweise mit detaillierten Anleitungen zur Verwendung der Kopieraktivität in Azure Data Factory.
+> Dieser Artikel bietet JSON-Beispiele, aber keine detaillierten Anleitungen zum Erstellen einer Data Factory. Unter [Kopieren von Daten aus Blob Storage in SQL-Datenbank mithilfe von Data Factory](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) finden Sie eine kurze exemplarische Vorgehensweise mit detaillierten Anleitungen zur Verwendung der Kopieraktivität in Azure Data Factory.
 
 
 ## Beispiel: Kopieren von Daten aus Azure SQL Data Warehouse in ein Azure-Blob
@@ -511,7 +514,7 @@ Beachten Sie, dass Azure Data Factory die Einstellungen überprüft und automati
 1.	**Der mit der Quelle verknüpfte Dienst** ist vom Typ **Azure Storage**. Außerdem ist dieser Dienst nicht für die Verwendung der SAS-Authentifizierung (Shared Access Signature) konfiguriert. Ausführliche Informationen finden Sie unter [Mit Azure Storage verknüpfter Dienst](data-factory-azure-blob-connector.md#azure-storage-linked-service).
 2. Das **Eingabedataset** ist vom Typ **Azure-Blob**, und der Formattyp unter Typeigenschaften lautet **OrcFormat** oder **TextFormat** mit folgenden Konfigurationen:
 	1. **rowDelimiter** muss **\\n** sein.
-	2. **nullValue** ist auf eine leere Zeichenfolge (**""**) festgelegt.
+	2. **nullValue** ist auf eine leere Zeichenfolge ("") festgelegt.
 	3. **encodingName** ist auf **utf-8** festgelegt. Dies ist der **Standardwert**. Legen Sie keinen anderen Wert fest.
 	4. **escapeChar** und **quoteChar** sind nicht angegeben.
 	5. **Compression** lautet nicht **BZIP2**.
@@ -601,7 +604,7 @@ Der NULL-Wert ist eine Sonderform eines Standardwerts. Wenn die Spalte NULL-Wert
 
 ### Typzuordnung für Azure SQL Data Warehouse
 
-Wie im Artikel [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) beschrieben, führt die Kopieraktivität automatische Typkonvertierungen von Quelltypen in Senkentypen mithilfe des folgenden aus zwei Schritten bestehenden Ansatzes durch:
+Wie im Artikel [Aktivitäten der Datenverschiebung](data-factory-data-movement-activities.md) beschrieben, führt die Kopieraktivität automatische Typkonvertierungen von Quelltypen in Senkentypen mithilfe des folgenden aus zwei Schritten bestehenden Ansatzes durch:
 
 1. Konvertieren von systemeigenen Quelltypen in den .NET-Typ
 2. Konvertieren vom .NET-Typ in systemeigenen Senkentyp
@@ -652,6 +655,6 @@ Die Zuordnung ist mit der [SQL Server-Datentypzuordnung für ADO.NET](https://ms
 [AZURE.INCLUDE [data-factory-column-mapping](../../includes/data-factory-column-mapping.md)]
 
 ## Leistung und Optimierung  
-Der Artikel [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-factory-copy-activity-performance.md) beschreibt wichtige Faktoren, die sich auf die Leistung der Datenverschiebung (Kopieraktivität) in Azure Data Factory auswirken, sowie verschiedene Möglichkeiten zur Leistungsoptimierung.
+Im Artikel [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-factory-copy-activity-performance.md) werden wichtige Faktoren beschrieben, die sich auf die Leistung der Datenverschiebung (Kopieraktivität) in Azure Data Factory auswirken, sowie verschiedene Möglichkeiten zur Leistungsoptimierung.
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0817_2016-->

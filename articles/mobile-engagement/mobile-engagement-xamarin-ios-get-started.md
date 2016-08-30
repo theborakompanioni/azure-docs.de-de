@@ -13,18 +13,18 @@
 	ms.tgt_pltfrm="mobile-xamarin-ios"
 	ms.devlang="dotnet"
 	ms.topic="hero-article"
-	ms.date="03/25/2016"
+	ms.date="08/19/2016"
 	ms.author="piyushjo" />
 
 # Erste Schritte mit Azure Mobile Engagement für Xamarin.iOS-Apps
 
 [AZURE.INCLUDE [Umschalter für das Hero-Tutorial](../../includes/mobile-engagement-hero-tutorial-switcher.md)]
 
-In diesem Thema erfahren Sie, wie Sie mithilfe von Azure Mobile Engagement die Nutzung Ihrer App verstehen und Pushbenachrichtigungen an segmentierte Benutzer in einer Xamarin.iOS-Anwendung senden können. In diesem Tutorial erstellen Sie eine leere Xamarin.iOS-App, die einfache Daten erfasst und Pushbenachrichtigungen mithilfe des Apple-Pushbenachrichtigungsdiensts (APNS) empfängt.
+In diesem Thema erfahren Sie, wie Sie mithilfe von Azure Mobile Engagement die Nutzung Ihrer App nachvollziehen und Pushbenachrichtigungen an segmentierte Benutzer in einer Xamarin.iOS-Anwendung senden. In diesem Tutorial erstellen Sie eine leere Xamarin.iOS-App, die einfache Daten erfasst und Pushbenachrichtigungen mithilfe des Apple-Pushbenachrichtigungsdiensts (APNS) empfängt.
 
 Für dieses Lernprogramm ist Folgendes erforderlich:
 
-+ [Xamarin Studio](http://xamarin.com/studio). Sie können auch Visual Studio mit Xamarin verwenden, in den Anweisungen in diesem Tutorial wird jedoch Xamarin Studio eingesetzt. Installationsanweisungen finden Sie unter [Setup und Installation für Visual Studio und Xamarin](https://msdn.microsoft.com/library/mt613162.aspx). 
++ [Xamarin Studio](http://xamarin.com/studio). Sie können auch Visual Studio mit Xamarin verwenden, in den Anweisungen in diesem Tutorial wird jedoch Xamarin Studio eingesetzt. Installationsanweisungen finden Sie unter [Setup und Installation für Visual Studio und Xamarin](https://msdn.microsoft.com/library/mt613162.aspx).
 + [Mobile Engagement Xamarin SDK](https://www.nuget.org/packages/Microsoft.Azure.Engagement.Xamarin/)
 
 > [AZURE.NOTE] Sie benötigen ein aktives Azure-Konto, um dieses Lernprogramm abzuschließen. Wenn Sie noch kein Konto haben, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fde-DE%2Fdocumentation%2Farticles%2Fmobile-engagement-xamarin-ios-get-started).
@@ -41,7 +41,7 @@ Wir erstellen eine einfache App mit Xamarin, um die Integration zu veranschaulic
 
 ###Erstellen eines neuen Xamarin.iOS-Projekts
 
-1. Starten Sie Xamarin Studio. Klicken Sie auf **Datei** -> **Neu** -> **Projektmappe**. 
+1. Starten Sie Xamarin Studio. Klicken Sie auf **Datei** -> **Neu** -> **Projektmappe**.
 
     ![][1]
 
@@ -168,4 +168,4 @@ Mit Mobile Engagement können Sie mit Ihren Benutzern und mit REACH mit Push-Ben
 [7]: ./media/mobile-engagement-xamarin-ios-get-started/info-plist-confirm-bundle.png
 [8]: ./media/mobile-engagement-xamarin-ios-get-started/info-plist-configure-push.png
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0824_2016-->

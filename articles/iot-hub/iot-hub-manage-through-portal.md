@@ -13,7 +13,7 @@
 	 ms.topic="article"
 	 ms.tgt_pltfrm="na"
 	 ms.workload="na"
-	 ms.date="06/28/2016"
+	 ms.date="08/11/2016"
 	 ms.author="nasing"/>
 
 # Verwalten von IoT Hubs über das Azure-Portal
@@ -24,7 +24,7 @@ In diesem Artikel erhalten Sie Informationen zu den ersten Schritten mit Azure I
 
 ## Suchen nach IoT Hubs
 
-IoT Hubs finden Sie an vielen Stellen.
+Es gibt verschiedene Orte, wo Sie IoT Hubs finden können.
 
 1. **+ Neu**: **Azure IoT Hub** ist ein IoT-Dienst, den Sie wie andere Dienste unter der Kategorie **Internet der Dinge** unter **+ Neu** finden.
 
@@ -36,15 +36,15 @@ Sie können einen IoT Hub mit den folgenden Methoden erstellen.
 
 1. Wenn Sie einen IoT Hub über die Option **+ Neu** erstellen, wird das folgende Blatt aus dem nächsten Screenshot angezeigt. Beim Erstellen des IoT Hubs mit dieser Methode gehen Sie genauso vor wie beim Erstellen über den Marketplace.
 
-2. Erstellen eines IoT Hubs über den Marketplace: Wenn Sie auf **Erstellen** klicken, wird ein Blatt geöffnet, das mit dem vorherigen Blatt der Option **+ Neu** identisch ist. Die Erstellung eines IoT Hubs umfasst mehrere Schritte, die in den nächsten Abschnitten aufgeführt sind:
+2. Erstellen eines IoT Hubs über den Marketplace: Wenn Sie auf **Erstellen** klicken, wird ein Blatt geöffnet, das mit dem vorherigen Blatt der Option **+ Neu** identisch ist. In den nächsten Abschnitten werden die verschiedenen Schritte zum Erstellen eines IoT Hubs aufgeführt.
 
 ### Auswählen des Namen des IoT Hubs
 
-Sie müssen dem Hub einen Namen geben, um einen IoT Hub zu erstellen. Beachten Sie, dass dieser Name für die Hubs eindeutig sein muss. Da im Back-End keine Duplizierung von Hubs zulässig ist, wird eine möglichst eindeutige Benennung dieses Hubs empfohlen.
+Um einen IoT Hub zu erstellen, müssen Sie einen Namen für den Hub festlegen. Beachten Sie, dass dieser Name für die Hubs eindeutig sein muss. Da im Back-End keine Duplizierung von Hubs zulässig ist, wird eine möglichst eindeutige Benennung dieses Hubs empfohlen.
 
 ### Auswählen des Tarifs
 
-Sie können zwischen 4 Tarifen wählen: **Free**, **Standard 1**, **Standard 2** und **Standard S3**. Mit dem Free-Tarif können nur 500 Geräte mit dem IoT Hub verbunden sein, und bis zu 8.000 Nachrichten pro Tag sind möglich.
+Sie können zwischen vier Tarifen wählen: **Free**, **Standard 1**, **Standard 2** und **Standard S3**. Mit dem Free-Tarif können nur 500 Geräte mit dem IoT Hub verbunden sein, und bis zu 8.000 Nachrichten pro Tag sind möglich.
 
 **Standard S1**: Die IoT Hub-Edition S1 ist für IoT-Lösungen mit einer großen Anzahl von Geräten ausgelegt, die relativ kleine Datenmengen pro Gerät generieren. Mit jeder S1-Einheit können bis zu 400.000 Nachrichten pro Tag (auf allen verbundenen Geräten) übermittelt werden.
 
@@ -58,7 +58,7 @@ Sie können zwischen 4 Tarifen wählen: **Free**, **Standard 1**, **Standard 2
 
 ### IoT Hub-Einheiten
 
-Eine IoT Hub-Einheit enthält eine bestimmte Anzahl von Nachrichten pro Tag. Die Anzahl der IoT-Einheiten bedeutet also, dass die Gesamtanzahl der für diesen Hub unterstützten Geräte der Anzahl der Einheiten multipliziert mit der Anzahl der Nachrichten pro Tag für diesen Tarif entspricht. Beispiel: Wenn der IoT Hub 700.000 eingehende Nachrichten unterstützen soll, wählen Sie zwei Einheiten des Tarifs S1.
+Eine IoT Hub-Einheit enthält eine bestimmte Anzahl von Nachrichten pro Tag. Wenn Sie die Anzahl von IoT-Einheiten auswählen, legen Sie also die Gesamtanzahl der für diesen Hub unterstützten Nachrichten fest. Diese Gesamtanzahl entspricht der Anzahl der Einheiten multipliziert mit der Anzahl der Nachrichten pro Tag für diesen Tarif. Beispiel: Wenn der IoT Hub 700.000 eingehende Nachrichten unterstützen soll, wählen Sie zwei Einheiten des Tarifs S1.
 
 ### Gerät für Cloud-Partitionen und Ressourcengruppe
 
@@ -80,23 +80,23 @@ Die Option „Standort“ enthält eine Liste der Regionen, in denen IoT Hub ang
 
 Wenn alle vorherigen Schritte abgeschlossen sind, kann der IoT Hub erstellt werden. Klicken Sie auf **Erstellen**, um den Back-End-Prozess zur Erstellung dieses IoT Hubs mit den festgelegten Optionen zu starten und die Bereitstellung am angegebenen Ort durchzuführen.
 
-Bitte beachten Sie, dass die Erstellung des IoT Hubs einige Minuten in Anspruch nehmen kann, da es etwas dauert, bis die Back-End-Bereitstellung in den jeweiligen Servern angezeigt werden
+Beachten Sie, dass die Erstellung des IoT Hubs einige Minuten in Anspruch nehmen kann, da es etwas dauert, bis die Back-End-Bereitstellung in den jeweiligen Servern abgeschlossen ist.
 
 ## Ändern der Einstellungen des IoT Hubs
 
-Sie können die Einstellungen eines vorhandenen IoT Hub nach dessen Erstellung ändern. Klicken Sie auf den IoT Hub-Namen, um die Seite mit den Einstellungen zu öffnen.
+Sie können die Einstellungen für einen IoT Hub nach dessen Erstellung im Blatt „IoT Hub“ ändern.
 
 ![][8]
 
-**Freigegebene Zugriffsrichtlinien**: Hierbei handelt es sich um die Richtlinien, die die Berechtigungen für Geräte und Dienste zum Herstellen einer Verbindung mit dem IoT Hub definieren. Sie finden diese Richtlinien, indem Sie unter **Einstellungen** auf **Freigegebene Zugriffsrichtlinien** klicken. Auf diesem Blatt können Sie vorhandene Richtlinien ändern oder eine neue Richtlinie hinzufügen.
+**Richtlinien für gemeinsamen Zugriff**: Diese Richtlinien definieren die Berechtigungen für Geräte und Dienste zum Herstellen einer Verbindung mit dem IoT Hub. Sie finden diese Richtlinien, indem Sie unter **Allgemein** auf **Richtlinien für gemeinsamen Zugriff** klicken. Auf diesem Blatt können Sie vorhandene Richtlinien ändern oder eine neue Richtlinie hinzufügen.
 
 ### Erstellen einer neuen Richtlinie
 
 - Klicken Sie auf **Hinzufügen**, um ein Blatt zu öffnen, auf dem Sie den Namen der neuen Richtlinie und die Berechtigungen, die dieser Richtlinie zugeordnet werden sollen, wie in der folgenden Abbildung gezeigt eingeben können.
 
-	Diesen freigegebenen Richtlinien können mehrere Berechtigungen zugeordnet werden. Die ersten beiden Richtlinien, **Registry lesen** und **Registry schreiben**, berechtigen zum Lesen und Schreiben im Geräteidentitätsspeicher oder der Identitätsregistrierung. Bitte beachten Sie, dass beim Auswählen der Option mit Schreibzugriff auch die Option mit Lesezugriff automatisch ausgewählt wird.
+	Diesen freigegebenen Richtlinien können mehrere Berechtigungen zugeordnet werden. Die ersten beiden Richtlinien, **Registry lesen** und **Registry schreiben**, berechtigen zum Lesen und Schreiben im Geräteidentitätsspeicher oder der Identitätsregistrierung. Beachten Sie, dass beim Auswählen der Option mit Schreibzugriff auch die Option mit Lesezugriff automatisch ausgewählt wird.
 
- 	Die Richtlinie für die **Serververbindung** gewährt Berechtigungen zum Zugriff auf die cloudseitigen Endpunkte, z.B. die Consumergruppe für Dienste mit Verbindung zum IoT Hub, während die Richtlinie für die **Geräteverbindung** Berechtigungen zum Senden und Empfangen von Nachrichten auf den geräteseitigen Endpunkten des IoT Hubs gewährt.
+ 	Die Richtlinie **Dienstverbindung** gewährt die Berechtigung zum Zugreifen auf die cloudseitigen Endpunkte, z.B. auf die Consumergruppe für Dienste, die eine Verbindung mit dem IoT Hub herstellen. Die Richtlinie **Geräteverbindung** gewährt Berechtigungen zum Senden und Empfangen von Nachrichten auf den geräteseitigen Endpunkten des IoT Hubs.
 
 - Klicken Sie auf **Erstellen**, um der vorhandenen Liste diese neu erstellte Richtlinie hinzuzufügen.
 
@@ -104,17 +104,17 @@ Sie können die Einstellungen eines vorhandenen IoT Hub nach dessen Erstellung �
 
 ## Nachrichten
 
-Klicken Sie auf die **Messaging**-Richtlinien, um eine Liste der Messaging-Eigenschaften für den IoT Hub anzuzeigen, der verändert wird. Zwei wichtige Eigenschaften können geändert oder kopiert werden: **C2D** (Cloud to Device, Cloud zu Gerät) und **D2C** (Device to Cloud, Gerät zu Cloud).
+Klicken Sie auf **Messaging**, um eine Liste der Messaging-Eigenschaften für den zu ändernden IoT Hub anzuzeigen. Zwei wichtige Eigenschaften können geändert oder kopiert werden: **C2D** (Cloud to Device, Cloud zu Gerät) und **D2C** (Device to Cloud, Gerät zu Cloud).
 
-- **C2D-Einstellungen**: Diese Option hat zwei untergeordnete Einstellungen: **C2D-TTL** (Time to Live, Gültigkeitsdauer) und **Aufbewahrungszeit** für Nachrichten. Bei der ersten Erstellung des IoT Hubs werden diese beiden Einstellungen mit einem Standardwert von 1 Stunde erstellt. Allerdings können Sie diese mithilfe der Schieberegler oder durch Eingeben der Werte anpassen.
+- **Cloud-zu-Gerät-Einstellungen**: Diese Einstellung hat zwei untergeordnete Einstellungen: **Cloud-zu-Gerät-TTL** (Time to Live, Gültigkeitsdauer) und **Aufbewahrungszeit** für Nachrichten. Bei der ersten Erstellung des IoT Hubs werden diese beiden Einstellungen mit einem Standardwert von einer Stunde erstellt. Zum Anpassen dieser Werte verwenden Sie die Schieberegler oder geben die entsprechenden Werte ein.
 
-- **D2C-Einstellungen**: Diese Option hat mehrere untergeordnete Einstellungen, von denen einige bei Erstellung des IoT Hubs benannt bzw. zugewiesen werden und nur in andere untergeordnete Einstellungen kopiert werden können, die angepasst werden können. Diese Einstellungen sind im nächsten Abschnitt aufgeführt.
+- **Gerät-zu-Cloud-Einstellungen**: Diese Einstellung hat mehrere untergeordnete Einstellungen, von denen einige bei Erstellung des IoT Hubs benannt bzw. zugewiesen werden und nur in andere untergeordnete Einstellungen kopiert werden können, die angepasst werden können. Diese Einstellungen sind im nächsten Abschnitt aufgeführt.
 
 **Partitionen**: Dieser Wert wird bei Erstellung des IoT Hubs festgelegt und kann durch diese Einstellung geändert werden.
 
-**Event Hub – Kompatibler Name und Endpunkt**: Bei Erstellung des IoT Hubs wird intern ein Event Hub erstellt, auf den der Benutzer unter bestimmten Umständen zugreifen muss. Name und Endpunkt dieses Event Hubs können nicht angepasst werden, stehen jedoch über die Schaltfläche **Kopieren** zur Verfügung.
+**Event Hub-kompatibler Name und Event-Hub-kompatibler Endpunkt**: Bei Erstellung des IoT Hubs wird intern ein Event Hub erstellt, auf den Sie unter bestimmten Umständen zugreifen müssen. Name und Endpunkt dieses Event Hubs können nicht angepasst werden, stehen jedoch über die Schaltfläche **Kopieren** zur Verfügung.
 
-**Aufbewahrungszeit**: Standardmäßig auf 1 Tag festgelegt, kann aber mithilfe der Dropdownliste in andere Werte geändert werden. Beachten Sie, dass dieser Wert für D2C in Tagen statt Stunden angegeben ist und die Einstellungen für C2D identisch sind.
+**Aufbewahrungszeit**: Standardmäßig auf 1 Tag festgelegt, kann aber mithilfe der Dropdownliste in andere Werte geändert werden. Beachten Sie, dass dieser Wert bei Gerät-zu-Cloud in Tagen statt Stunden angegeben ist, genauso wie die ähnliche Einstellung bei Cloud-zu-Gerät.
 
 **Consumergruppen**: Consumergruppen ähneln als Einstellung anderen Messaging-Systemen, die zum Abrufen von Daten auf bestimmte Weise verwendet werden können, um andere Programme oder Dienste mit IoT Hub zu verbinden. Jeder IoT Hub wird mit einer Standard-Consumergruppe erstellt. Sie können Ihren IoT Hubs jedoch Consumergruppen hinzufügen oder diese daraus löschen.
 
@@ -126,17 +126,17 @@ Klicken Sie auf die **Messaging**-Richtlinien, um eine Liste der Messaging-Eigen
 
 Damit Sie die Dateiuploadfunktion in IoT Hub verwenden können, müssen Sie Ihrem Hub zunächst ein Azure Storage-Konto zuordnen. Wählen Sie die **Dateiupload**-Einstellungen zum Anzeigen einer Liste der Dateiuploadeigenschaften für den IoT Hub, der geändert wird.
 
-**Speichercontainer**: Verwenden Sie das Portal, um einen Blobcontainer in einem Speicherkonto in Ihrem aktuellen Abonnement Ihrer IoT Hub-Instanz zuzuordnen. Erstellen Sie bei Bedarf auf dem Blatt **Speicherkonten** ein neues Speicherkonto und auf dem Blatt **Container** einen neuen Blobcontainer. IoT Hub generiert automatisch SAS-URIs mit Schreibberechtigungen für diesen Blobcontainer, die Geräte beim Hochladen von Dateien verwenden können.
+**Speichercontainer**: Verwenden Sie das Portal, um einen Blobcontainer in einem Speicherkonto Ihres aktuellen Abonnements auszuwählen, der Ihrer IoT Hub-Instanz zugeordnet werden soll. Erstellen Sie bei Bedarf auf dem Blatt **Speicherkonten** ein neues Speicherkonto und auf dem Blatt **Container** einen neuen Blobcontainer. IoT Hub generiert automatisch SAS-URIs mit Schreibberechtigungen für diesen Blobcontainer, die Geräte beim Hochladen von Dateien verwenden können.
 
 ![][14]
 
 **Benachrichtigungen für hochgeladene Dateien empfangen**: Aktivieren oder deaktivieren Sie Dateiuploadbenachrichtigungen über den Umschalter.
 
-**SAS-TTL**: Diese Einstellung dient zum Festlegen der Gültigkeitsdauer der SAS-URIs, die von IoT Hub an das Gerät zurückgegeben werden. Standardmäßig auf 1 Stunde festgelegt, kann aber mithilfe des Schiebereglers in andere Werte geändert werden.
+**SAS-TTL**: Diese Einstellung dient zum Festlegen der Gültigkeitsdauer der SAS-URIs, die von IoT Hub an das Gerät zurückgegeben werden. Standardmäßig auf 1 Stunde festgelegt, kann aber mithilfe des Schiebereglers in andere Werte geändert werden.
 
-**Standard-TTL für Dateibenachrichtigungseinstellungen**: Die Gültigkeitsdauer einer Dateiuploadbenachrichtigung (Zeit bis zum Ablauf). Standardmäßig auf 1 Tag festgelegt, kann aber mithilfe des Schiebereglers in andere Werte geändert werden.
+**Standard-TTL für Dateibenachrichtigungseinstellungen**: Die Gültigkeitsdauer einer Dateiuploadbenachrichtigung (Zeit bis zum Ablauf). Standardmäßig auf 1 Tag festgelegt, kann aber mithilfe des Schiebereglers in andere Werte geändert werden.
 
-**Maximale Zahl gesendeter Dateibenachrichtigungen**: Gibt an, wie oft IoT Hub versucht, eine Dateiuploadbenachrichtigung zu senden. Standardmäßig auf 10 festgelegt, kann aber mithilfe des Schiebereglers in andere Werte geändert werden.
+**Anzahl maximaler Zustellungen für Dateibenachrichtigungen**: Gibt an, wie oft IoT Hub versucht, eine Dateiuploadbenachrichtigung zu senden. Standardmäßig auf 10 festgelegt, kann aber mithilfe des Schiebereglers in andere Werte geändert werden.
 
 ![][13]
 
@@ -149,7 +149,7 @@ Die Preise eines vorhandenen IoT Hubs können mit folgenden Ausnahmen über die 
 
 ![][12]
 
-Der Wechsel von einem höheren Tarif (S2 oder S3) in einen niedrigeren Tarif (S1 oder S2) ist nur zulässig, wenn die Anzahl an gesendeten Nachrichten des Tages nicht dazu in Konflikt steht. Wenn die Anzahl der Nachrichten pro Tag beispielsweise 400.000 überschreitet, kann die Ebene für den IoT Hub geändert werden, aber wenn Sie zur Ebene S1 wechseln, wird der Hub für diesen Tag gedrosselt.
+Der Wechsel von einem höheren Tarif (S2 oder S3) in einen niedrigeren Tarif (S1 oder S2) ist nur zulässig, wenn die Anzahl an gesendeten Nachrichten des Tages nicht dazu in Konflikt steht. Wenn die Anzahl der Nachrichten pro Tag beispielsweise 400.000 überschreitet, kann der Tarif für den IoT Hub geändert werden, aber wenn Sie zum Tarif S1 wechseln, wird der Hub für diesen Tag gedrosselt.
 
 ## Löschen des IoT Hubs
 
@@ -196,4 +196,4 @@ Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 [lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
 [lnk-securing]: iot-hub-security-ground-up.md
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0817_2016-->

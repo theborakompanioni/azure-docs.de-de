@@ -13,19 +13,19 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="05/16/2016"
+   ms.date="08/09/2016"
    ms.author="karolz@microsoft.com"/>
 
 # Verwenden von Elasticsearch als Service Fabric-Anwendungsüberwachungsspeicher
 ## Einführung
-Dieser Artikel beschreibt, wie [Azure Service Fabric](https://azure.microsoft.com/documentation/services/service-fabric/)-Anwendungen **Elasticsearch** und **Kibana** als Anwendungsüberwachungsspeicher sowie zur Indizierung und Suche verwenden können. [Elasticsearch](https://www.elastic.co/guide/index.html) ist ein verteiltes und skalierbares Open Source-Modul für Such- und Analysevorgänge in Echtzeit, das sich hervorragend für diese Aufgabe eignet. Es kann auf virtuellen, unter Microsoft Azure ausgeführten Windows- oder Linux-Computern installiert werden. ElasticSearch zeichnet sich durch eine überaus effiziente Verarbeitung *strukturierter* Ablaufverfolgungen aus, die von Technologien wie **Ereignisablaufverfolgung für Windows (Event Tracing for Windows, ETW)** generiert werden.
+Dieser Artikel beschreibt, wie [Azure Service Fabric](https://azure.microsoft.com/documentation/services/service-fabric/)-Anwendungen **Elasticsearch** und **Kibana** als Anwendungsüberwachungsspeicher sowie zur Indizierung und Suche verwenden können. [Elasticsearch](https://www.elastic.co/guide/index.html) ist ein verteiltes und skalierbares Open Source-Modul für Such- und Analysevorgänge in Echtzeit, das sich hervorragend für diese Aufgabe eignet. Es kann auf virtuellen, unter Microsoft Azure ausgeführten Windows- oder Linux-Computern installiert werden. Elasticsearch zeichnet sich durch eine effiziente Verarbeitung *strukturierter* Ablaufverfolgungen aus, die von Technologien wie **Ereignisablaufverfolgung für Windows** (Event Tracing for Windows, ETW) generiert werden.
 
-ETW wird während der Service Fabric-Laufzeit verwendet, um Diagnoseinformationen (Ablaufverfolgungen) zu erfassen. Es ist auch die empfohlene Methode für Service Fabric-Anwendungen zum Erfassen ihrer Diagnoseinformationen. Dies ermöglicht die Korrelation zwischen Ablaufverfolgungen der Laufzeit und Ablaufverfolgungen der Anwendung, was die Problembehandlung erleichtert. Die Service Fabric-Projektvorlagen in Visual Studio enthalten eine (auf der Klasse **EventSource** basierende) Protokollierungs-API, die standardmäßig ETW-Ablaufverfolgungen ausgibt. Eine allgemeine Übersicht der Service Fabric-Anwendungsablaufverfolgung mit ETW finden Sie unter [Überwachen und Diagnostizieren von Diensten in einer Entwicklungsumgebung auf einem lokalen Computer](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md).
+ETW wird während der Service Fabric-Laufzeit verwendet, um Diagnoseinformationen (Ablaufverfolgungen) zu erfassen. Es ist auch die empfohlene Methode für Service Fabric-Anwendungen zum Erfassen ihrer Diagnoseinformationen. Die Verwendung des gleichen Mechanismus ermöglicht die Korrelation zwischen Ablaufverfolgungen der Laufzeit und Ablaufverfolgungen der Anwendung, was die Problembehandlung erleichtert. Die Service Fabric-Projektvorlagen in Visual Studio enthalten eine (auf der Klasse **EventSource** basierende) Protokollierungs-API, die standardmäßig ETW-Ablaufverfolgungen ausgibt. Eine allgemeine Übersicht der Service Fabric-Anwendungsablaufverfolgung mit ETW finden Sie unter [Überwachen und Diagnostizieren von Diensten in einer Entwicklungsumgebung auf einem lokalen Computer](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md).
 
-Damit die Ablaufverfolgungsdaten in Elasticsearch angezeigt werden können, müssen sie in Echtzeit (also während der Anwendungsausführung) an den Service Fabric-Clusterknoten erfasst und an den Elasticsearch-Endpunkt gesendet werden. Für die Erfassung von Ablaufverfolgungen stehen zwei Hauptoptionen zur Verfügung:
+Damit die Ablaufverfolgungsdaten in ElasticSearch angezeigt werden können, müssen sie in Echtzeit (also während der Anwendungsausführung) an den Service Fabric-Clusterknoten erfasst und an den ElasticSearch-Endpunkt gesendet werden. Für die Erfassung von Ablaufverfolgungen stehen zwei Hauptoptionen zur Verfügung:
 
 + **In-Process-Ablaufverfolgungserfassung**:  
-Die Diagnosedaten werden von der Anwendung (genauer gesagt: vom Dienstprozess) an den Ablaufverfolgungsspeicher (Elasticsearch) gesendet.
+Die Diagnosedaten werden von der Anwendung (genauer gesagt: vom Dienstprozess) an den Ablaufverfolgungsspeicher (ElasticSearch) gesendet.
 
 + **Out-of-Process-Ablaufverfolgungserfassung**:  
 Die Ablaufverfolgungen vom Dienstprozess bzw. den Prozessen werden von einem separaten Agenten erfasst und an den Ablaufverfolgungsspeicher gesendet.
@@ -36,12 +36,12 @@ Im weiteren Verlauf wird beschrieben, wie Elasticsearch in Azure eingerichtet wi
 ## Einrichten von Elasticsearch für Azure
 Am einfachsten lässt sich der Elasticsearch-Dienst für Azure mit [**Azure-Ressourcen-Manager-Vorlagen**](../resource-group-overview.md) einrichten. Eine umfassende [Azure-Ressourcen-Manager-Schnellstartvorlage für Elasticsearch](https://github.com/Azure/azure-quickstart-templates/tree/master/elasticsearch) steht im Repository für Azure-Schnellstartvorlagen zur Verfügung. Diese Vorlage verwendet separate Speicherkonten für Skalierungseinheiten (Gruppen von Knoten). Sie kann auch separate Client- und Serverknoten mit unterschiedlichen Konfigurationen und unterschiedlicher Anzahl angehängter Datenträger bereitstellen.
 
-Nachstehend werden wir eine andere Vorlage namens **ES-MultiNode** aus dem [Azure Diagnosetools-Repository](https://github.com/Azure/azure-diagnostics-tools) verwenden. Diese Vorlage ist etwas leichter zu verwenden und erstellt einen Elasticsearch-Cluster, der mittels HTTP-Standardauthentifizierung geschützt ist. Bevor Sie fortfahren, laden Sie bitte das Repository von GitHub auf Ihren Computer herunter (entweder durch Klonen des Repositorys oder durch Herunterladen einer ZIP-Datei). Die Vorlage „ES-MultiNode“ befindet sich im gleichnamigen Ordner.
+Nachstehend werden wir eine andere Vorlage namens **ES-MultiNode** aus dem [Azure Diagnosetools-Repository](https://github.com/Azure/azure-diagnostics-tools) verwenden. Diese Vorlage ist leichter zu verwenden und erstellt einen Elasticsearch-Cluster, der mittels HTTP-Standardauthentifizierung geschützt ist. Bevor Sie fortfahren, laden Sie das Repository von GitHub auf Ihren Computer herunter (entweder durch Klonen des Repositorys oder durch Herunterladen einer ZIP-Datei). Die Vorlage „ES-MultiNode“ befindet sich im gleichnamigen Ordner.
 
 ### Vorbereiten eines Computers für die Ausführung von Elasticsearch-Installationsskripts
 Am einfachsten lässt sich die Vorlage „ES-MultiNode“ über das bereitgestellte Azure PowerShell-Skript namens `CreateElasticSearchCluster` verwenden. Sie müssen PowerShell-Module und ein Tool namens **OpenSSL** installieren, um dieses Skript verwenden zu können. Letzteres wird zum Erstellen eines SSH-Schlüssels benötigt, der die Remoteverwaltung Ihres Elasticsearch-Clusters ermöglicht.
 
-Beachten Sie, dass das `CreateElasticSearchCluster`-Skript für die einfache Verwendung mit der Vorlage „ES-MultiNode“ aus einem Windows-Computer entwickelt wurde. Die Vorlage kann zwar auch auf einem Windows-fremden Computer verwendet werden, ein solches Szenario ist jedoch nicht Gegenstand dieses Artikels.
+Beachten Sie, dass das `CreateElasticSearchCluster`-Skript für die einfache Verwendung mit der Vorlage ES-MultiNode aus einem Windows-Computer entwickelt wurde. Die Vorlage kann zwar auch auf einem Windows-fremden Computer verwendet werden, ein solches Szenario ist jedoch nicht Gegenstand dieses Artikels.
 
 1. Installieren Sie die [**Azure PowerShell-Module**](http://aka.ms/webpi-azps), sofern diese noch nicht installiert sind. Klicken Sie bei Aufforderung auf **Ausführen** und anschließend auf **Installieren**. Azure PowerShell 1.3 oder höher ist erforderlich.
 
@@ -56,7 +56,7 @@ Beachten Sie, dass das `CreateElasticSearchCluster`-Skript für die einfache Ver
 
     Ersetzen Sie `<Git installation folder>` durch den Speicherort von Git auf Ihrem Computer (standardmäßig **C:\\Programme\\Git**). Beachten Sie das Semikolon am Anfang des ersten Pfads.
 
-4. Vergewissern Sie sich, dass Sie bei Azure angemeldet sind (über das Cmdlet [`Add-AzureRmAccount`](https://msdn.microsoft.com/library/mt619267.aspx)) und dass Sie das Abonnement ausgewählt haben, das zum Erstellen Ihres Elasticsearch-Clusters verwendet werden soll. Mithilfe der Cmdlets `Get-AzureRmContext` und `Get-AzureRmSubscription` können Sie überprüfen, ob das richtige Abonnement ausgewählt wurde.
+4. Vergewissern Sie sich, dass Sie bei Azure angemeldet sind (über das Cmdlet [`Add-AzureRmAccount`](https://msdn.microsoft.com/library/mt619267.aspx)), und dass Sie das Abonnement ausgewählt haben, das zum Erstellen Ihres Elasticsearch-Clusters verwendet werden soll. Mithilfe der Cmdlets `Get-AzureRmContext` und `Get-AzureRmSubscription` können Sie überprüfen, ob das richtige Abonnement ausgewählt wurde.
 
 5. Ändern Sie das aktuelle Verzeichnis in den Ordner „ES-MultiNode“, sofern noch nicht geschehen.
 
@@ -65,10 +65,10 @@ Beachten Sie, dass das `CreateElasticSearchCluster`-Skript für die einfache Ver
 
 |Parametername |Beschreibung|
 |-----------------------  |--------------------------|
-|dnsNameForLoadBalancerIP |Dies ist der Name, der zum Erstellen des öffentlich sichtbaren DNS-Namens für den Elasticsearch-Cluster verwendet wird. Dabei wird die Azure-Regionsdomäne an den angegebenen Namen angehängt. Wenn der Parameterwert also beispielsweise „MyBigCluster“ lautet und als Azure-Region „West US“ ausgewählt ist, erhält der Cluster den DNS-Namen „myBigCluster.westus.cloudapp.azure.com“. <br /><br />Dieser Name fungiert auch als Namensstamm für viele Artefakte des Elasticsearch-Clusters (etwa für Datenknotennamen).|
-|adminUsername |Der Name des Administratorkontos für die Verwaltung des Elasticsearch-Clusters (entsprechende SSH-Schlüssel werden automatisch generiert.)|
+|dnsNameForLoadBalancerIP |Dieser Name wird zum Erstellen des öffentlich sichtbaren DNS-Namens für den Elasticsearch-Cluster verwendet. Dabei wird die Azure-Regionsdomäne dem angegebenen Namen angehängt. Wenn der Parameterwert also beispielsweise myBigCluster lautet und als Azure-Region „USA, Westen“ ausgewählt ist, erhält der Cluster den DNS-Namen myBigCluster.westus.cloudapp.azure.com. <br /><br />Dieser Name fungiert auch als Namensstamm für viele Artefakte des Elasticsearch-Clusters (etwa für Datenknotennamen).|
+|adminUsername |Der Name des Administratorkontos für die Verwaltung des Elasticsearch-Clusters (entsprechende SSH-Schlüssel werden automatisch generiert).|
 |dataNodeCount |Die Anzahl von Knoten im Elasticsearch-Cluster. Bei der aktuellen Version des Skripts wird nicht zwischen Daten- und Abfrageknoten unterschieden. Alle Knoten übernehmen beide Rollen. Standardmäßig werden 3 Knoten verwendet.|
-|dataDiskSize |Die Datenträgergröße (in GB), die für die einzelnen Datenknoten reserviert wird. Jeder Knoten erhält vier Datenträger, die ausschließlich für den Elasticsearch-Dienst vorgesehen sind.|
+|dataDiskSize |Die Datenträgergröße (in GB), die für die einzelnen Datenknoten reserviert wird. Jeder Knoten erhält 4 Datenträger, die ausschließlich für den Elasticsearch-Dienst vorgesehen sind.|
 |region |Der Name der Azure-Region, in der sich der Elasticsearch-Cluster befinden soll.|
 |esUserName |Der Benutzername des Benutzers, der für den Zugriff auf den ES-Cluster (mit HTTP-Standardauthentifizierung) konfiguriert wird. Das Kennwort ist nicht Teil der Parameterdatei und muss angegeben werden, wenn das Skript `CreateElasticSearchCluster` aufgerufen wird.|
 |vmSizeDataNodes |Die Größe des virtuellen Azure-Computers für Elasticsearch-Clusterknoten. Der Standardwert ist „Standard\_D2“.|
@@ -83,23 +83,23 @@ Hierbei gilt:
 
 |Skriptparametername |Beschreibung|
 |-----------------------  |--------------------------|
-|`<es-group-name>` |der Name der Azure-Ressourcengruppe, die alle Elasticsearch-Clusterressourcen enthält|
-|`<azure-region>` |der Name der Azure-Region, in der der Elasticsearch-Cluster erstellt werden soll|         
-|`<es-password>` |das Kennwort für den Elasticsearch-Benutzer|
+|`<es-group-name>` |Der Name der Azure-Ressourcengruppe, die alle Elasticsearch-Clusterressourcen enthält.|
+|`<azure-region>` |Der Name der Azure-Region, in der der Elasticsearch-Cluster erstellt werden soll.|         
+|`<es-password>` |Das Kennwort für den Elasticsearch-Benutzer.|
 
 >[AZURE.NOTE] Falls das Cmdlet „Test-AzureResourceGroup“ eine Ausnahme vom Typ „NullReferenceException“ zurückgibt, haben Sie vergessen, sich bei Azure anzumelden (`Add-AzureRmAccount`).
 
 Tritt bei der Skriptausführung ein Fehler auf, der auf einen falschen Vorlagenparameterwert zurückzuführen ist, korrigieren Sie die Parameterdatei, und führen Sie das Skript mit einem anderen Ressourcengruppennamen erneut aus. Sie können auch den gleichen Ressourcengruppennamen erneut verwenden und angeben, dass das Skript die alte Version bereinigen soll. Hierzu müssen Sie dem Skriptaufruf den Parameter `-RemoveExistingResourceGroup` hinzufügen.
 
 ### Ergebnis der Ausführung des Skripts „CreateElasticSearchCluster“
-Nach der Ausführung des Skripts `CreateElasticSearchCluster` werden die folgenden Hauptartefakte erstellt. Aus Gründen der Übersichtlichkeit wird davon ausgegangen, dass als Parameterwert für `dnsNameForLoadBalancerIP` „myBigCluster“ verwendet und der Cluster in der Region „USA, Westen“ erstellt wurde.
+Nach der Ausführung des Skripts `CreateElasticSearchCluster` werden die folgenden Hauptartefakte erstellt. Bei diesem Beispiel wird davon ausgegangen, dass als Parameterwert für `dnsNameForLoadBalancerIP` myBigCluster verwendet und der Cluster in der Region „USA, Westen“ erstellt wurde.
 
 |Artefakt|Name, Ort und Anmerkungen|
 |----------------------------------|----------------------------------|
-|SSH-Schlüssel für die Remoteverwaltung |Datei „myBigCluster.key“ (in dem Verzeichnis, in dem „CreateElasticSearchCluster“ ausgeführt wurde). <br /><br />Mit diesem Schlüssel kann eine Verbindung mit dem Verwaltungsknoten und (über den Verwaltungsknoten) mit Datenknoten im Cluster hergestellt werden.|
-|Verwaltungsknoten |myBigCluster-admin.westus.cloudapp.azure.com <br /><br />Hierbei handelt es sich um einen dedizierten virtuellen Computer für die Remoteverwaltung des Elasticsearch-Clusters – der Einzige, der externe SSH-Verbindungen zulässt. Er wird im gleichen virtuellen Netzwerk ausgeführt wie die Elasticsearch-Clusterknoten, führt aber keine Elasticsearch-Dienste aus.|
+|SSH-Schlüssel für die Remoteverwaltung |Datei „myBigCluster.key“ (in dem Verzeichnis, in dem „CreateElasticSearchCluster“ ausgeführt wurde). <br /><br />Mit dieser Schlüsseldatei kann eine Verbindung mit dem Verwaltungsknoten und (über den Verwaltungsknoten) mit Datenknoten im Cluster hergestellt werden.|
+|Verwaltungsknoten |myBigCluster-admin.westus.cloudapp.azure.com <br /><br />Hierbei handelt es sich um einen dedizierten virtuellen Computer für die Remoteverwaltung des Elasticsearch-Clusters – des einzigen, der externe SSH-Verbindungen zulässt. Er wird im gleichen virtuellen Netzwerk ausgeführt wie die Elasticsearch-Clusterknoten, führt aber keine Elasticsearch-Dienste aus.|
 |Datenknoten |myBigCluster1 … myBigCluster*N* <br /><br />Datenknoten, die Elasticsearch- und Kibana-Dienste ausführen. Sie können über SSH eine Verbindung mit den einzelnen Knoten herstellen (allerdings nur über den Verwaltungsknoten).|
-|Elasticsearch-Cluster |http://myBigCluster.westus.cloudapp.azure.com/es/ <br /><br />Bei der obigen Angabe handelt es sich um den primären Endpunkt für den Elasticsearch-Cluster (beachten Sie das Suffix „/es“.) Dieser ist durch die Standard-HTTP-Authentifizierung geschützt (die Anmeldeinformationen wurden mithilfe der Parameter „esUserName“/„esPassword“ der Vorlage „ES-MultiNode“ angegeben). Zur grundlegenden Clusterverwaltung ist für den Cluster auch das Head-Plug-In installiert (http://myBigCluster.westus.cloudapp.azure.com/es/_plugin/head).|
+|Elasticsearch-Cluster |http://myBigCluster.westus.cloudapp.azure.com/es/ <br /><br />Der primäre Endpunkt für den Elasticsearch-Cluster (beachten Sie das Suffix „/es“). Dieser ist durch die Standard-HTTP-Authentifizierung geschützt (die Anmeldeinformationen wurden mithilfe der Parameter „esUserName“/„esPassword“ der Vorlage „ES-MultiNode“ angegeben). Zur grundlegenden Clusterverwaltung ist für den Cluster auch das Head-Plug-In installiert (http://myBigCluster.westus.cloudapp.azure.com/es/_plugin/head).|
 |Kibana-Dienst |http://myBigCluster.westus.cloudapp.azure.com <br /><br />Der Kibana-Dienst wird zum Anzeigen von Daten aus dem erstellten Elasticsearch-Cluster eingerichtet. Er wird durch die gleichen Authentifizierungsanmeldeinformationen wie der Cluster selbst geschützt.|
 
 ## Gegenüberstellung von In-Process- und Out-of-Process-Ablaufverfolgungserfassung
@@ -127,7 +127,7 @@ Vorteile der **In-Process-Ablaufverfolgungserfassung**:
 
     * Das Diagnosesubsystem innerhalb des Anwendungs-/Dienstprozesses kann die Ablaufverfolgungen problemlos mit Kontextinformationen ergänzen.
 
-    * Bei der Out-of-Process-Methode müssen die Daten über einen prozessübergreifenden Kommunikationsmechanismus wie etwa die Ereignisablaufverfolgung für Windows an einen Agent gesendet werden. Dies hat unter Umständen weitere Einschränkungen zur Folge.
+    * Bei der Out-of-Process-Methode müssen die Daten über einen prozessübergreifenden Kommunikationsmechanismus wie etwa die Ereignisablaufverfolgung für Windows an einen Agent gesendet werden. Dieser Mechanismus hat unter Umständen weitere Einschränkungen zur Folge.
 
 Vorteile der **Out-of-Process-Ablaufverfolgungserfassung**:
 
@@ -139,7 +139,7 @@ Vorteile der **Out-of-Process-Ablaufverfolgungserfassung**:
 
     * Ein von einem Plattformanbieter entwickelter Agent (etwa der Microsoft Azure-Diagnose-Agent) wurde ausgiebig getestet und in der Praxis optimiert.
 
-    * Bei der In-Process-Ablaufverfolgungserfassung muss darauf geachtet werden, dass das Senden von Diagnosedaten aus einem Anwendungsprozess nicht die Hauptaufgaben der Anwendung beeinträchtigt bzw. zu Timing- oder Leistungsproblemen führt. Ein unabhängig ausgeführter Agent ist hier weniger anfällig und in der Regel speziell darauf ausgelegt, die Auswirkungen auf das System möglichst gering zu halten.
+    * Bei der In-Process-Ablaufverfolgungserfassung muss darauf geachtet werden, dass das Senden von Diagnosedaten aus einem Anwendungsprozess nicht die Hauptaufgaben der Anwendung beeinträchtigt bzw. zu Timing- oder Leistungsproblemen führt. Ein unabhängig ausgeführter Agent ist hier weniger anfällig und speziell darauf ausgelegt, die Auswirkungen auf das System möglichst gering zu halten.
 
 Natürlich ist es möglich, beide Ansätze zu kombinieren und von Ihnen zu profitieren. In der Tat ist dies möglicherweise die beste Lösung für viele Anwendungen.
 
@@ -158,8 +158,8 @@ Die Bibliothek „Microsoft.Diagnostic.Listeners“ ist Teil der PartyCluster-Se
 
     ![Projektverweise auf die Bibliotheken „Microsoft.Diagnostics.EventListeners“ und „Microsoft.Diagnostics.EventListeners.Fabric“][1]
 
-### Das GA-Release von Service Fabric und „Microsoft.Diagnostics.Tracing NuGet“-Paket
-Anwendungen, die mit dem GA-Release von Service Fabric (2.0.135, veröffentlicht am 31. März 2016) erstellt wurden richten sich an **.NET Framework 4.5.2**. Dies ist die höchste Version von .NET Framework, die von Azure zum Zeitpunkt der Veröffentlichung des GA-Releases unterstützt wurde. Leider fehlen bei dieser Framework-Version bestimmte EventListener-APIs, die für die Bibliothek „Microsoft.Diagnostics.Listeners“ benötigt werden. Da „EventSource“ (die Komponente, die die Grundlage für Protokollierungs-APIs in Fabric-Anwendungen bildet) und „EventListener“ eng zusammenhängen, muss jedes Projekt, das die Bibliothek „Microsoft.Diagnostics.Listeners“ verwendet, eine alternative Implementierung von „EventSource“ verwenden. Diese wird durch das von Microsoft erstellte Paket **Microsoft.Diagnostics.Tracing NuGet** bereitgestellt. Dieses Paket ist vollständig mit „EventSource“ aus dem Framework abwärtskompatibel, sodass außer einer Änderung der referenzierten Namespaces keine weiteren Codeänderungen erforderlich sein sollten.
+### Das GA-Release von Service Fabric und Microsoft.Diagnostics.Tracing-NuGet-Paket
+Anwendungen, die mit dem GA-Release von Service Fabric (2.0.135, veröffentlicht am 31. März 2016) erstellt wurden, richten sich an **.NET Framework 4.5.2**. Dies ist die höchste Version von .NET Framework, die von Azure zum Zeitpunkt der Veröffentlichung des GA-Releases unterstützt wurde. Leider fehlen bei dieser Framework-Version bestimmte EventListener-APIs, die für die Bibliothek „Microsoft.Diagnostics.Listeners“ benötigt werden. Da „EventSource“ (die Komponente, die die Grundlage für Protokollierungs-APIs in Fabric-Anwendungen bildet) und „EventListener“ eng zusammenhängen, muss jedes Projekt, das die Bibliothek „Microsoft.Diagnostics.Listeners“ verwendet, eine alternative Implementierung von „EventSource“ verwenden. Diese Implementierung wird durch das von Microsoft erstellte Paket **Microsoft.Diagnostics.Tracing NuGet** bereitgestellt. Dieses Paket ist vollständig mit „EventSource“ aus dem Framework abwärtskompatibel, sodass außer einer Änderung der referenzierten Namespaces keine weiteren Codeänderungen erforderlich sein sollten.
 
 Führen Sie für jedes Dienstprojekt, das Daten an Elasticsearch senden soll, die folgenden Schritte aus, um mit der Verwendung der Microsoft.Diagnostics.Tracing-Implementierung der Klasse „EventSource“ zu beginnen:
 
@@ -233,7 +233,7 @@ namespace Stateless1
 }
 ```
 
-Die Elasticsearch-Verbindungsdaten sollten in einem separaten Abschnitt der Dienstkonfigurationsdatei (**PackageRoot\\Config\\Settings.xml**) platziert werden. Der Abschnittsname muss dem an den Konstruktor `FabricConfigurationProvider` übergebenen Wert entsprechen. Beispiel:
+Die Elasticsearch-Verbindungsdaten müssen in einem separaten Abschnitt der Dienstkonfigurationsdatei (**PackageRoot\\Config\\Settings.xml**) platziert werden. Der Abschnittsname muss dem an den Konstruktor `FabricConfigurationProvider` übergebenen Wert entsprechen. Beispiel:
 
 ```xml
 <Section Name="ElasticSearchEventListener">
@@ -243,10 +243,10 @@ Die Elasticsearch-Verbindungsdaten sollten in einem separaten Abschnitt der Dien
   <Parameter Name="indexNamePrefix" Value="myapp" />
 </Section>
 ```
-Bei den Werten `serviceUri`, `userName` und `password` handelt es sich um die Endpunktadresse des Elasticsearch-Clusters bzw. um den Elasticsearch-Benutzernamen und das Kennwort. `indexNamePrefix` ist das Präfix für Elasticsearch-Indizes. Die Bibliothek „Microsoft.Diagnostics.Listeners“ erstellt täglich einen neuen Index für die Daten.
+Bei den Werten der Parameter `serviceUri`, `userName` und `password` handelt es sich um die Endpunktadresse des Elasticsearch-Clusters, bzw. um den Elasticsearch-Benutzernamen und das Kennwort. `indexNamePrefix` ist das Präfix für Elasticsearch-Indizes. Die Bibliothek „Microsoft.Diagnostics.Listeners“ erstellt täglich einen neuen Index für die Daten.
 
 ### Überprüfung
-Das ist alles! Wenn der Dienst nun ausgeführt wird, sendet er Ablaufverfolgungen an den in der Konfiguration angegebenen Elasticsearch-Dienst. Öffnen Sie zum Überprüfen die Kibana-Benutzeroberfläche für die entsprechende Elasticsearch-Zielinstanz (in unserem Beispiel wäre die Seitenadresse http://myBigCluster.westus.cloudapp.azure.com/), und vergewissern Sie sich, dass tatsächlich Indizes mit dem für die Instanz `ElasticSearchListener` gewählten Namenspräfix erstellt und mit Daten gefüllt wurden.
+Das ist alles! Wenn der Dienst nun ausgeführt wird, sendet er Ablaufverfolgungen an den in der Konfiguration angegebenen Elasticsearch-Dienst. Sie können dies überprüfen, indem Sie die Kibana-Benutzeroberfläche öffnen, die der Elasticsearch-Zielinstanz zugeordnet ist. In diesem Beispiel ist die Seitenadresse http://myBigCluster.westus.cloudapp.azure.com/. Überprüfen Sie, ob tatsächlich Indizes mit dem für die `ElasticSearchListener`-Instanz ausgewählten Namenspräfix erstellt und mit Daten aufgefüllt wurden.
 
 ![Kibana mit PartyCluster-Anwendungsereignissen][2]
 
@@ -257,4 +257,4 @@ Das ist alles! Wenn der Dienst nun ausgeführt wird, sendet er Ablaufverfolgunge
 [1]: ./media/service-fabric-diagnostics-how-to-use-elasticsearch/listener-lib-references.png
 [2]: ./media/service-fabric-diagnostics-how-to-use-elasticsearch/kibana.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0817_2016-->

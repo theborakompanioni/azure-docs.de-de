@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/24/2016"
+	ms.date="08/11/2016"
 	ms.author="robmcm"/>
 
 # Kaufen und Konfigurieren eines benutzerdefinierten Domänennamens in Azure App Service
@@ -116,4 +116,4 @@ Wenn Sie die benutzerdefinierte Domäne über das Blatt **Benutzerdefinierte Dom
 - Möglicherweise haben Sie die benutzerdefinierte Domäne zu einem bestimmten Zeitpunkt gelöscht. Überprüfen Sie die Überwachungsprotokolle durch Klicken auf **Einstellungen** > **Überwachungsprotokolle** auf dem Hauptblatt Ihrer App.
 - Das Blatt **Benutzerdefinierte Domänen und SSL**, auf dem Sie suchen, gehört vielleicht zu einer App, die in einem anderen Azure-Abonnement erstellt wurde. Wechseln Sie zu einer anderen App in einem anderen Abonnement, und überprüfen Sie das Blatt **Benutzerdefinierte Domänen und SSL**. Innerhalb des Portals können Sie keine benutzerdefinierten Domänen anzeigen oder verwalten, die in einem anderen Azure-Abonnement erstellt wurden als die App. Wenn Sie jedoch auf dem zu der Domäne gehörenden Blatt **Domäne verwalten** auf **Erweiterte Verwaltung** klicken, werden Sie zur der Website des Domänennamenanbieters weitergeleitet, wo Sie für Apps, die in einem anderen Azure-Abonnement erstellt wurden, [Ihre benutzerdefinierte Domäne wie alle externen Domänen manuell konfigurieren](web-sites-custom-domain-name.md) können.
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0817_2016-->

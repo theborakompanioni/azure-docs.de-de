@@ -13,10 +13,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/27/2016" 
+	ms.date="08/15/2016" 
 	ms.author="elizapo"/>
 
 # Erstellen eines benutzerdefinierten Vorlagenimages für Azure RemoteApp
+
+> [AZURE.IMPORTANT]
+Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148).
+
 Azure RemoteApp verwendet ein Windows Server 2012 R2-Vorlagenimage, um alle Programme zu hosten, die Sie an die Benutzer freigeben möchten. Um ein benutzerdefiniertes RemoteApp-Vorlagenimage zu erstellen, beginnen Sie mit einem bestehenden Abbild oder erstellen Sie ein neues.
 
 
@@ -142,4 +146,4 @@ Nach dem Erstellen des benutzerdefinierten Vorlagenimages müssen Sie dieses Ima
 - [Erstellen einer Cloud-Sammlung von RemoteApp](remoteapp-create-cloud-deployment.md)
  
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0817_2016-->

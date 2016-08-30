@@ -155,38 +155,38 @@ Nachdem der Entwickler die erforderlichen Vokabulare erstellt hat, ist der Busin
 
 ##Regelerstellung
 Eine Regel ist eine Auflistung von Bedingungs- und Aktionsanweisungen. Die Aktionen werden ausgeführt, wenn die Bedingung als wahr („true“) ausgewertet wird. Geben Sie auf dem Blatt zur Regelerstellung einen eindeutigen Regelnamen (für diese Richtlinie) und eine Beschreibung (optional) ein. 
-Das Bedingungsfeld („IF“) kann zum Erstellen komplexer Bedingungsanweisungen verwendet werden. Folgende Schlüsselwörter werden unterstützt:
-1. 	Und – bedingter Operator
-2. 	Oder – bedingter Operator
-3. 	does\_not\_exist
-4. 	exists
-5. 	false
-6. 	is\_equal\_to
-7. 	is\_greater\_than
-8. 	is\_greater\_than\_equal\_to
-9. 	is\_in
-10. is\_less\_than
-11. is\_less\_than\_equal\_to
-12. is\_not\_in
-13. is\_not\_equal\_to
-14. mod
-15. true
+Das Bedingungsfeld („IF“) kann zum Erstellen komplexer Bedingungsanweisungen verwendet werden. Folgende Schlüsselwörter werden unterstützt:  
+1. 	Und – bedingter Operator  
+2. 	Oder – bedingter Operator  
+3. 	does\_not\_exist  
+4. 	exists  
+5. 	false  
+6. 	is\_equal\_to  
+7. 	is\_greater\_than  
+8. 	is\_greater\_than\_equal\_to  
+9. 	is\_in  
+10. is\_less\_than  
+11. is\_less\_than\_equal\_to  
+12. is\_not\_in  
+13. is\_not\_equal\_to  
+14. mod  
+15. true  
 
-Das Aktionsfeld („THEN“) kann mehrere Anweisungen enthalten, eine pro Zeile, um Aktionen zu erstellen, die ausgeführt werden sollen. Folgende Schlüsselwörter werden unterstützt:
-1.	equals
-2.	false
-3.	true
-4.	halt
-5.	mod
-6.	null
-7.	aktualisieren
+Das Aktionsfeld („THEN“) kann mehrere Anweisungen enthalten, eine pro Zeile, um Aktionen zu erstellen, die ausgeführt werden sollen. Folgende Schlüsselwörter werden unterstützt:  
+1.	equals  
+2.	false  
+3.	true  
+4.	halt  
+5.	mod  
+6.	null  
+7.	aktualisieren  
 
 Das Bedingungs- und das Aktionsfeld bieten Intellisense, damit Sie schnell eine Regel erstellen können. Dies kann durch Drücken von STRG+LEERTASTE oder einfach durch den Beginn der Eingabe ausgelöst werden. Schlüsselwörter, die den eingegebenen Zeichen entsprechen, werden automatisch gefiltert und dargestellt. Das Intellisense-Fenster zeigt alle Schlüsselwörter und Vokabulardefinitionen an.  
 ![Alt text][9]
 
 ##Explizite Vorwärtsverkettung
-BizTalk-Regeln unterstützen die explizite Vorwärtsverkettung, sodass Benutzer, die Regeln auf bestimmte Aktionen hin erneut auswerten möchten, diesen Vorgang anhand von bestimmten Schlüsselwörtern auslösen können. Folgende Schlüsselwörter werden unterstützt:
-   1.	<Vokabulardefinition> aktualisieren – Durch dieses Schlüsselwort werden alle Regeln neu ausgewertet, die die angegebene Vokabulardefinition in ihrer Bedingung verwenden.
+BizTalk-Regeln unterstützen die explizite Vorwärtsverkettung, sodass Benutzer, die Regeln auf bestimmte Aktionen hin erneut auswerten möchten, diesen Vorgang anhand von bestimmten Schlüsselwörtern auslösen können. Folgende Schlüsselwörter werden unterstützt:  
+   1.	<Vokabulardefinition> aktualisieren – Durch dieses Schlüsselwort werden alle Regeln neu ausgewertet, die die angegebene Vokabulardefinition in ihrer Bedingung verwenden.  
    2.	Halt – Dieses Schlüsselwort beendet alle Regelausführungen.
 
 ##Aktivieren/Deaktivieren von Regeln
