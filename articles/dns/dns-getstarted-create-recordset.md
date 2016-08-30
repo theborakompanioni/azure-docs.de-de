@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="05/06/2016"
+   ms.date="08/16/2016"
    ms.author="cherylmc"/>
 
 
@@ -93,7 +93,7 @@ Das Hinzufügen von Einträgen zu einem Ressourceneintragssatz mithilfe von `Add
 
 ### 4\. Übergeben der Änderungen
 
-Übergeben Sie die Änderungen an die Datensatzgruppe. Verwenden Sie `Set-AzureRmDnsRecordSet`, um Änderungen am Ressourceneintragssatz in Azure DNS hochzuladen.
+Übergeben Sie die Änderungen an den Ressourceneintragssatz. Verwenden Sie `Set-AzureRmDnsRecordSet`, um Änderungen am Ressourceneintragssatz in Azure DNS hochzuladen.
 
 	Set-AzureRmDnsRecordSet -RecordSet $rs
 
@@ -145,4 +145,4 @@ Die folgenden Beispiele zeigen, wie Sie einen Eintragssatz jedes Eintragstyps er
 
 [Automatisieren von Azure-Vorgängen mit dem .NET SDK](dns-sdk.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0817_2016-->

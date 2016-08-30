@@ -50,7 +50,7 @@ Der Cluster kann über mehrere Knotentypen verfügen. Der primäre Knotentyp (de
 ### Primärer Knotentyp
 Bei Clustern mit mehreren Knotentypen muss ein Knotentyp als primärer Knotentyp festgelegt werden. Nachfolgend sind die Merkmale eines primären Knotentyps aufgeführt:
 
-- Die Mindestgröße von VMs für den primären Knotentyp hängt von der gewählten Dauerhaftigkeitsstufe ab. Der Standardwert für die Dauerhaftigkeitsstufe ist „Bronze“. Scrollen Sie nach unten, um Einzelheiten zur Dauerhaftigkeitsstufe und den möglichen Werten anzuzeigen.  
+- Die Mindestgröße von VMs für den primären Knotentyp hängt von der gewählten Dauerhaftigkeitsstufe ab. Der Standardwert für die Dauerhaftigkeitsstufe ist „Bronze“. Scrollen Sie nach unten, um Einzelheiten zur Dauerhaftigkeitsstufe und den möglichen Werten anzuzeigen.
 
 - Die Mindestanzahl von VMs für den primären Knotentyp hängt von der gewählten Zuverlässigkeitsstufe ab. Der Standardwert für die Zuverlässigkeitsstufe ist „Silber“. Scrollen Sie nach unten, um Einzelheiten zur Zuverlässigkeitsstufe und den möglichen Werten anzuzeigen.
 
@@ -62,7 +62,7 @@ Bei Clustern mit mehreren Knotentypen muss ein Knotentyp als primärer Knotentyp
 ### Nicht primärer Knotentyp
 Cluster mit mehreren Knotentypen verfügen über einen primären Knotentyp, und die übrigen Knotentypen sind nicht primäre Knotentypen. Nachfolgend sind die Merkmale eines nicht primären Knotentyps aufgeführt:
 
-- Die Mindestgröße von VMs für diesen Knotentyp hängt von der gewählten Dauerhaftigkeitsstufe ab. Der Standardwert für die Dauerhaftigkeitsstufe ist „Bronze“. Scrollen Sie nach unten, um Einzelheiten zur Dauerhaftigkeitsstufe und den möglichen Werten anzuzeigen.  
+- Die Mindestgröße von VMs für diesen Knotentyp hängt von der gewählten Dauerhaftigkeitsstufe ab. Der Standardwert für die Dauerhaftigkeitsstufe ist „Bronze“. Scrollen Sie nach unten, um Einzelheiten zur Dauerhaftigkeitsstufe und den möglichen Werten anzuzeigen.
 
 - Die Mindestanzahl von VMs für diesen Knotentyp beträgt 1. Diese Anzahl sollte jedoch basierend auf der Anzahl von Replikaten der Anwendung/Dienste gewählt werden, die auf diesem Knotentyp ausgeführt werden soll bzw. sollen. Die Anzahl von VMs auf einem Knotentyp kann nach der Bereitstellung des Clusters erhöht werden.
 
@@ -107,4 +107,4 @@ Wenn Sie die Kapazitätsplanung abgeschlossen haben und einen Cluster einrichten
 <!--Image references-->
 [SystemServices]: ./media/service-fabric-cluster-capacity/SystemServices.png
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0817_2016-->

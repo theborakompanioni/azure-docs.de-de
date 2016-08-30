@@ -14,10 +14,10 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="PHP"
 	ms.topic="article"
-	ms.date="06/24/2016"
+	ms.date="08/11/2016"
 	ms.author="robmcm"/>
 
-#Erstellen einer PHP-MySQL-Web-App in Azure App Service und Bereitstellen über Git
+# Erstellen einer PHP-MySQL-Web-App in Azure App Service und Bereitstellen über Git
 
 In diesem Lernprogramm erfahren Sie, wie Sie eine PHP-MySQL-Web-App erstellen und über Git in [App Service](http://go.microsoft.com/fwlink/?LinkId=529714) bereitstellen. Dazu verwenden Sie [PHP][install-php], das MySQL-Befehlszeilentool (Teil von [MySQL][install-mysql]) und [Git][install-git] auf Ihrem Computer. Die Anweisungen in diesem Lernprogramm lassen sich von jedem Betriebssystem aus befolgen, einschließlich Windows, Max und Linux. Nachdem Sie diese Anleitung durchgearbeitet haben, verfügen Sie über eine in Azure ausgeführte PHP-/MySQL-Web-App.
 
@@ -31,7 +31,7 @@ Mithilfe dieses Lernprogramms erstellen Sie eine einfache Web-App für die Regis
 
 ![Azure-PHP-Website][running-app]
 
-##Einrichten der Entwicklungsumgebung
+## Einrichten der Entwicklungsumgebung
 
 Voraussetzung für dieses Tutorial sind [PHP][install-php], das MySQL-Befehlszeilentool (Teil von [MySQL][install-mysql]) und [Git][install-git] auf Ihrem Computer.
 
@@ -70,12 +70,12 @@ Befolgen Sie diese Schritte, um eine Web-App und eine MySQL-Datenbank zu erstell
     ![Git-Repository einrichten][setup-repository]
 
 
-9. Um die Git-Veröffentlichung aktivieren zu können, müssen Sie einen Benutzernamen und ein Kennwort angeben. Notieren Sie sich den Benutzernamen und das Kennwort, die Sie erstellen. (Wenn Sie schon einmal ein Git-Verzeichnis eingerichtet haben, wird dieser Schritt übersprungen.)
+9. Zum Aktivieren der Git-Veröffentlichung müssen Sie einen Benutzernamen und ein Kennwort angeben. Notieren Sie sich den Benutzernamen und das Kennwort, die Sie erstellen. (Wenn Sie schon einmal ein Git-Verzeichnis eingerichtet haben, wird dieser Schritt übersprungen.)
 
 	![Anmeldedaten für die Veröffentlichung erstellen][credentials]
 
 
-##Abrufen von MySQL-Remoteverbindungsinformationen
+## Abrufen von MySQL-Remoteverbindungsinformationen
 
 Um eine Verbindung mit der in Web-Apps ausgeführten MySQL-Datenbank herzustellen, benötigen Sie die Verbindungsinformationen. Befolgen Sie die folgenden Schritte, um MySQL-Verbindungsinformationen abzurufen:
 
@@ -91,7 +91,7 @@ Um eine Verbindung mit der in Web-Apps ausgeführten MySQL-Datenbank herzustelle
 
     ![Eigenschaften notieren][note-properties]
 
-##Lokales Erstellen und Testen der App
+## Lokales Erstellen und Testen der App
 
 Nach der Erstellung einer Web-App können Sie Ihre Anwendung lokal entwickeln und nach dem Testen bereitstellen.
 
@@ -209,10 +209,9 @@ Befolgen Sie die unten stehenden Schritte, um die Anwendung lokal zu erstellen u
 Nun können Sie zu **http://localhost:8000/** navigieren, um die Anwendung zu testen.
 
 
-##Veröffentlichen der App
+## Veröffentlichen der App
 
 Nachdem Sie Ihre App lokal getestet haben, können Sie sie über Git in Web-Apps veröffentlichen. Sie initialisieren Ihr lokales Git-Verzeichnis und veröffentlichen die Anwendung.
-
 
 > [AZURE.NOTE] Dies sind dieselben Schritte, die am Ende des obigen Abschnitts „Erstellen einer Web-App und Einrichten der Git-Veröffentlichung“ im Azure-Portal gezeigt werden.
 
@@ -236,7 +235,7 @@ Nachdem Sie Ihre App lokal getestet haben, können Sie sie über Git in Web-Apps
 
 Nach Veröffentlichung Ihrer Anwendung können Sie Änderungen an ihr vornehmen und diese über Git veröffentlichen.
 
-##Veröffentlichen von Änderungen an der Anwendung
+## Veröffentlichen von Änderungen an der Anwendung
 
 Befolgen Sie die folgenden Schritte, um Änderungen an der Anwendung zu veröffentlichen:
 
@@ -319,4 +318,4 @@ Weitere Informationen finden Sie im [PHP Developer Center](/develop/php/).
 [composer-extension-view]: ./media/web-sites-php-mysql-deploy-use-git/composer-extension-view.png
 [composer-extension-success]: ./media/web-sites-php-mysql-deploy-use-git/composer-extension-success.png
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0817_2016-->

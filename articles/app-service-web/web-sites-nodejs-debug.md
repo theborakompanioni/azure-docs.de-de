@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="nodejs"
 	ms.topic="article"
-	ms.date="06/24/2016"
+	ms.date="08/11/2016"
 	ms.author="robmcm"/>
 
 # Debuggen einer Node.js-Web-App in Azure App Service
@@ -48,7 +48,7 @@ Wenn die Datei **IISNode.yml** in Ihrer Anwendung zuvor noch nicht vorhanden war
 
 Um die Web-App neu zu starten, wählen Sie die Web-App im [Azure-Portal](https://portal.azure.com) aus, und klicken Sie dann auf die Schaltfläche **NEU STARTEN**:
 
-![Schaltfläche 'Neustart'][restart-button]
+![Schaltfläche "Neu starten"][restart-button]
 
 Wenn in Ihrer Entwicklungsumgebung die Azure-Befehlszeilentools installiert sind, können Sie zum Neustarten der Web-App den folgenden Befehl verwenden:
 
@@ -63,7 +63,7 @@ Es gibt drei Möglichkeiten zum Zugreifen auf Diagnoseprotokolle: über das File
 
 	npm install azure-cli -g
 
-Nachdem sie installiert wurden, können Sie mit dem Befehl "azure" auf die Tools zugreifen. Sie müssen die Befehlszeilentools zunächst für die Verwendung Ihrer Azure-Abonnements konfigurieren. Informationen hierzu finden Sie im Abschnitt **Herunterladen und Importieren der Veröffentlichungseinstellungen** des Artikels [Verwenden der Azure-Befehlszeilentools](../xplat-cli-connect.md).
+Nachdem sie installiert wurden, können Sie mit dem Befehl "azure" auf die Tools zugreifen. Sie müssen die Befehlszeilentools zunächst für die Verwendung Ihres Azure-Abonnements konfigurieren. Informationen hierzu finden Sie im Abschnitt **Herunterladen und Importieren der Veröffentlichungseinstellungen** des Artikels [Verwenden der Azure-Befehlszeilentools](../xplat-cli-connect.md).
 
 ###FTP
 
@@ -126,4 +126,4 @@ Weitere Informationen finden Sie außerdem im [Node.js Developer Center](/develo
 [restart-button]: ./media/web-sites-nodejs-debug/restartbutton.png
  
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0817_2016-->

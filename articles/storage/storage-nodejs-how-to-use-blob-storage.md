@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="nodejs"
 	ms.topic="article"
-    ms.date="06/24/2016"
+    ms.date="08/11/2016"
 	ms.author="micurd"/>
 
 
 
 # Verwenden des Blob-Speichers mit Node.js
 
-[AZURE.INCLUDE [storage-selector-blob-include](../../includes/storage-selector-blob-include.md)]
+[AZURE.INCLUDE [storage-selector-blob-include](../../includes/storage-selector-blob-include.md)] <br/> [AZURE.INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-blobs.md)]
 
 ## Übersicht
 
@@ -55,7 +55,7 @@ Um Azure-Speicher verwenden zu können, müssen Sie das Azure Storage-SDK für N
 		+-- xml2js@0.2.7 (sax@0.5.2)
 		+-- request@2.57.0 (caseless@0.10.0, aws-sign2@0.5.0, forever-agent@0.6.1, stringstream@0.0.4, oauth-sign@0.8.0, tunnel-agent@0.4.1, isstream@0.1.2, json-stringify-safe@5.0.1, bl@0.9.4, combined-stream@1.0.5, qs@3.1.0, mime-types@2.0.14, form-data@0.2.0, http-signature@0.11.0, tough-cookie@2.0.0, hawk@2.3.1, har-validator@1.8.0)
 
-3.  Sie können den Befehl **ls** manuell ausführen, um zu überprüfen, ob der Ordner **node\_modules** erstellt wurde. In diesem Ordner finden Sie das Paket **azure-storage** mit den Bibliotheken, die Sie benötigen, um auf den Speicher zuzugreifen.
+3.  Sie können den Befehl **ls** manuell aufrufen, um sich davon zu überzeugen, dass der Ordner **node\_modules** erstellt wurde. In diesem Ordner finden Sie das Paket **azure-storage** mit den Bibliotheken, die Sie benötigen, um auf den Speicher zuzugreifen.
 
 ### Importieren des Pakets
 
@@ -67,7 +67,7 @@ Verwenden Sie Editor oder einen anderen Texteditor, um die folgende Zeile am Anf
 
 Das Azure-Modul entnimmt den Umgebungsvariablen `AZURE_STORAGE_ACCOUNT` und `AZURE_STORAGE_ACCESS_KEY` oder `AZURE_STORAGE_CONNECTION_STRING` die erforderlichen Informationen zum Herstellen einer Verbindung mit Ihrem Azure-Speicherkonto. Falls diese Umgebungsvariablen nicht gesetzt sind, müssen Sie die Kontoinformationen beim Aufruf von **createBlobService** angeben.
 
-Ein Beispiel zum Festlegen der Umgebungsvariablen für eine Azure-Web-App im [Azure-Portal](https://portal.azure.com) finden Sie unter [Node.js-Web-App mit Azure-Tabellendienst].
+Ein Beispiel zum Festlegen der Umgebungsvariablen für eine Azure-Web-App im [Azure-Portal](https://portal.azure.com) finden Sie unter [Node.js-Web-App mit Azure-Tabellenspeicherdienst].
 
 ## Erstellen eines Containers
 
@@ -164,13 +164,13 @@ Das von diesen Methoden zurückgegebene `result` enthält Informationen über de
 
 Verwenden Sie zum Hochladen von Daten zu einem neuen Anfügeblob Folgendes:
 
-* **createAppendBlobFromLocalFile** – erstellt einen neuen Anfügeblob und lädt die Inhalte einer Datei hoch
+* **createAppendBlobFromLocalFile** – erstellt ein neues Anfügeblob und lädt die Inhalte einer Datei hoch.
 
-* **createAppendBlobFromStream** – erstellt einen neuen Anfügeblob und lädt die Inhalte eines Datenstroms hoch
+* **createAppendBlobFromStream** – erstellt ein neues Anfügeblob und lädt die Inhalte eines Datenstroms hoch.
 
-* **createAppendBlobFromText** – erstellt einen neuen Anfügeblob und lädt die Inhalte einer Zeichenfolge hoch
+* **createAppendBlobFromText** – erstellt ein neues Anfügeblob und lädt die Inhalte einer Zeichenfolge hoch.
 
-* **createWriteStreamToNewAppendBlob** – erstellt einen neuen Anfügeblob und stellt dann einen Datenstrom bereit, um darin schreiben zu können
+* **createWriteStreamToNewAppendBlob** – erstellt ein neues Anfügeblob und stellt dann einen Datenstrom bereit, um darin schreiben zu können.
 
 Das folgende Codebeispiel lädt den Inhalt der Datei **test.txt** in **myappendblob** hoch.
 
@@ -182,15 +182,15 @@ Das folgende Codebeispiel lädt den Inhalt der Datei **test.txt** in **myappendb
 
 Um einen Block an einen vorhandenen Anfügeblob anzufügen, verwenden Sie Folgendes:
 
-* **appendFromLocalFile** – fügt den Inhalt einer Datei an einen vorhandenen Anfügeblob an
+* **appendFromLocalFile** – fügt den Inhalt einer Datei an ein vorhandenes Anfügeblob an.
 
-* **appendFromStream** – fügt den Inhalt eines Datenstroms an einen vorhandenen Anfügeblob an
+* **appendFromStream** – fügt den Inhalt eines Datenstroms an ein vorhandenes Anfügeblob an.
 
-* **appendFromText** – fügt den Inhalt einer Zeichenfolge an einen vorhandenen Anfügeblob an
+* **appendFromText** – fügt den Inhalt einer Zeichenfolge an ein vorhandenes Anfügeblob an.
 
-* **appendBlockFromStream** – fügt den Inhalt eines Datenstroms an einen vorhandenen Anfügeblob an
+* **appendBlockFromStream** – fügt den Inhalt eines Datenstroms an ein vorhandenes Anfügeblob an.
 
-* **appendBlockFromText** – fügt den Inhalt einer Zeichenfolge an einen vorhandenen Anfügeblob an
+* **appendBlockFromText** – fügt den Inhalt einer Zeichenfolge an ein vorhandenes Anfügeblob an.
 
 > [AZURE.NOTE] appendFromXXX-APIs führen einige clientseitige Validierungen aus, um damit einen unnötigen Serveraufruf zu vermeiden. appendBlockFromXXX-APIs machen dies nicht.
 
@@ -215,7 +215,7 @@ Verwenden Sie zum Hochladen von Daten zu einem Seitenblob Folgendes:
 
 * **createWriteStreamToExistingPageBlob** – stellt einen Schreibdatenstrom für einen vorhandenen Seitenblob bereit.
 
-* **createWriteStreamToNewPageBlob** – erstellt einen neuen Seitenblob und stellt dann einen Datenstrom bereit, um darin schreiben zu können
+* **createWriteStreamToNewPageBlob** – erstellt ein neues Seitenblob und stellt dann einen Datenstrom bereit, um darin schreiben zu können.
 
 Das folgende Codebeispiel lädt den Inhalt der Datei **test.txt** in **mypageblob** hoch.
 
@@ -263,7 +263,7 @@ Das folgende Codebeispiel verwendet **getBlobToStream**, um den Inhalt des **myb
 
 Das `result` enthält Informationen zum Blob, einschließlich der **ETag**-Informationen.
 
-## Löschen eines Blobs
+## Löschen eines BLOBs
 
 Um einen Blob zu löschen, rufen Sie **deleteBlob** auf. Im folgenden Codebeispiel wird das Blob namens **myblob** gelöscht.
 
@@ -407,7 +407,7 @@ Weitere Informationen finden Sie in den folgenden Ressourcen.
 
 [Erstellen einer Node.js-Web-App in Azure App Service]: ../app-service-web/web-sites-nodejs-develop-deploy-mac.md
 [Node.js Cloud Service with Storage]: ../cloud-services/storage-nodejs-use-table-storage-cloud-service-app.md
-[Node.js-Web-App mit Azure-Tabellendienst]: ../app-service-web/storage-nodejs-use-table-storage-web-site.md
+[Node.js-Web-App mit Azure-Tabellenspeicherdienst]: ../app-service-web/storage-nodejs-use-table-storage-web-site.md
 [Erstellen und Bereitstellen einer Node.js-Web-App für Azure mithilfe von WebMatrix]: ../app-service-web/web-sites-nodejs-use-webmatrix.md
 [Using the REST API]: http://msdn.microsoft.com/library/azure/hh264518.aspx
 [Azure Portal]: https://portal.azure.com
@@ -415,4 +415,4 @@ Weitere Informationen finden Sie in den folgenden Ressourcen.
 [Azure Storage-Teamblog]: http://blogs.msdn.com/b/windowsazurestorage/
 [API-Referenz zum Azure Storage-SDK für Node]: http://dl.windowsazure.com/nodestoragedocs/index.html
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0817_2016-->

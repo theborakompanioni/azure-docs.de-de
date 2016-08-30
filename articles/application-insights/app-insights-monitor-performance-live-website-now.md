@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="07/28/2016"
+	ms.date="08/24/2016"
 	ms.author="awills"/>
 
 
@@ -48,7 +48,7 @@ Hier ist zusammengefasst, was Sie jeweils erhalten:
 
 ## Instrumentieren der Web-App zur Laufzeit
 
-Sie benötigen ein [Microsoft Azure](http://azure.com)-Abonnement.
+Sie benötigen ein [Microsoft Azure](http://azure.com)-Abonnement.
 
 ### Bei auf dem IIS-Server gehosteter App
 
@@ -300,4 +300,4 @@ Wenn sich die Web-App in Azure befindet und Sie Ihre Ressourcen mit einer Azure 
 [roles]: app-insights-resources-roles-access-control.md
 [usage]: app-insights-web-track-usage.md
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0824_2016-->

@@ -13,12 +13,16 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="06/13/2016"
+    ms.date="08/15/2016"
     ms.author="elizapo" />
 
 
 
 # Anforderungen für Azure RemoteApp-Images
+
+> [AZURE.IMPORTANT]
+Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148).
+
 Azure RemoteApp verwendet ein Windows Server 2012 R2-Image, um alle Programme zu hosten, die Sie an die Benutzer freigeben möchten. Um ein benutzerdefiniertes Image zu erstellen, beginnen Sie mit einem bestehenden Image oder [erstellen ein neues](remoteapp-create-custom-image.md).
 
 > [AZURE.TIP] Wussten Sie, dass Ihnen Ihr Azure RemoteApp-Abonnement Zugriff auf ein Windows Server 2012 R2-Image im Azure-VM-Katalog bietet, mit dem Sie Ihr eigenes Vorlagenimage erstellen können? [Probieren Sie es aus](remoteapp-image-on-azurevm.md).
@@ -29,7 +33,7 @@ Das Abbild, das für die Verwendung mit Azure RemoteApp hochgeladen werden soll,
 
 - Benutzerdefinierte Anwendungen speichern keine lokalen Daten im Image. Diese Images verfügen über keinen Status und sollten nur Anwendungen enthalten.
 - Das Image enthält keine Daten, die verloren gehen können.
-- Die Größe des Images sollte ein Vielfaches der Einheit MB betragen. Wenn Sie versuchen, ein Abbild hochzuladen, das kein exaktes Vielfaches ist, treten beim Upload Fehler auf.
+- Die Größe des Abbilds sollte ein Vielfaches der Einheit MB (1.024 KB) betragen. Wenn Sie versuchen, ein Abbild hochzuladen, das kein exaktes Vielfaches ist, treten beim Upload Fehler auf.
 - Das Abbild darf nicht größer als 127 GB sein.
 - Es muss sich auf einer VHD-Datei befinden (VHDX-Dateien werden derzeit nicht unterstützt).
 - Die VHD darf kein virtueller Computer der 2. Generation sein.
@@ -44,4 +48,4 @@ Das Abbild, das für die Verwendung mit Azure RemoteApp hochgeladen werden soll,
 
 Weitere Informationen zum Erstellen von Images für Azure RemoteApp finden Sie unter [Erstellen von Azure RemoteApp-Images](remoteapp-imageoptions.md).
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0817_2016-->

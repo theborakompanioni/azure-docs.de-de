@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="multiple"
     ms.devlang="Java"
     ms.topic="article"
-    ms.date="06/24/2016" 
+    ms.date="08/11/2016" 
     ms.author="robmcm"/>
 
 <!-- Legacy MSDN URL = https://msdn.microsoft.com/library/azure/hh690944.aspx -->
@@ -60,29 +60,33 @@ Zunächst beginnen wir mit der Erstellung eines Java-Projekts.
 Wenn Ihre Java-Webanwendung zum Testen bereit steht, können Sie sie auf einem abgekürzten Weg direkt in der Azure-Cloud ausprobieren.
 
 1. Klicken Sie im Projektexplorer von Eclipse auf **MyHelloWorld**.
-1. Klicken Sie in der Eclipse-Symbolleiste auf die Dropdownschaltfläche **Publish**, und klicken Sie dann auf **Publish As Azure Cloud Service**.  
-	![][publishDropdownButton]
-1. Wenn Sie diese Anwendung zum ersten Mal in Azure veröffentlichen und Sie zuvor noch kein Azure-Bereitstellungsprojekt für diese Anwendung erstellt haben, wird automatisch ein Azure-Bereitstellungsprojekt für Sie erstellt. In der Regel wird Ihnen die folgende Eingabeaufforderung angezeigt, die auch das JDK-Paket und den Anwendungsserver auflistet. Beide werden automatisch bereitgestellt, um Ihre Anwendung auszuführen.  
-
-	![][ic789598]
-
+1. Klicken Sie in der Eclipse-Symbolleiste auf die Dropdownschaltfläche **Publish**, und klicken Sie dann auf **Publish As Azure Cloud Service**. 
+![][publishDropdownButton]
+1. Wenn Sie diese Anwendung zum ersten Mal in Azure veröffentlichen und Sie zuvor noch kein Azure-Bereitstellungsprojekt für diese Anwendung erstellt haben, wird automatisch ein Azure-Bereitstellungsprojekt für Sie erstellt. In der Regel wird Ihnen die folgende Eingabeaufforderung angezeigt, die auch das JDK-Paket und den Anwendungsserver auflistet. Beide werden automatisch bereitgestellt, um Ihre Anwendung auszuführen.
+    ![][ic789598]
     Auf diesem abgekürzten Weg können Sie Ihre Anwendung schnell und einfach in Azure testen, ohne einen bestimmten Server oder ein JDK zu konfigurieren und ohne dabei Standardeinstellungen zu verändern. Wenn Sie mit den Standardeinstellungen zufrieden sind, klicken Sie auf **OK**, um die folgenden Schritte auszuführen.
     Falls Sie jedoch das JDK oder den Anwendungsserver für Ihre Anwendung ändern möchten, ist dies später möglich. Dazu bearbeiten Sie das automatisch erstellte Azure-Bereitstellungsprojekt, oder Sie klicken jetzt auf **Cancel** und lesen in diesem Tutorial den Abschnitt **Informationen zu Azure-Bereitstellungsprojekten**.
 1. Führen Sie im Dialogfeld **Publish to Azure** folgende Schritte aus:
-    1. Wenn in der Liste **Subscription** noch keine Abonnements aufgeführt sind, importieren Sie Ihre Abonnementinformationen wie folgt:
+    1. Wenn in der Liste **Abonnement** noch keine Abonnements aufgeführt sind, importieren Sie Ihre Abonnementinformationen wie folgt:
         1. Klicken Sie auf **Import from PUBLISH-SETTINGS file**.
-        1. Klicken Sie im Dialogfeld **Import Subscription Information** auf **Download PUBLISH-SETTINGS File**. Wenn Sie noch nicht bei Ihrem Azure-Konto angemeldet sind, werden Sie zur Anmeldung aufgefordert. Anschließend werden Sie aufgefordert, eine Datei mit Azure-Veröffentlichungseinstellungen zu speichern. Speichern Sie sie auf Ihrem lokalen Computer.
-        1. Klicken Sie im Dialogfeld **Import Subscription Information** auf die Schaltfläche **Browse**, wählen Sie die im vorherigen Schritt lokal gespeicherte Datei mit den Veröffentlichungseinstellungen aus, und klicken Sie dann auf **Open**. Ihr Bildschirm sollte ähnlich dem folgenden aussehen:
-
-			![][ic644267]
+        1. Klicken Sie im Dialogfeld **Import Subscription Information** (Abonnementinformationen importieren) auf **Download PUBLISH-SETTINGS File** (PUBLISH-SETTINGS-Datei herunterladen). Wenn Sie noch nicht bei Ihrem Azure-Konto angemeldet sind, werden Sie zur Anmeldung aufgefordert. Anschließend werden Sie aufgefordert, eine Datei mit Azure-Veröffentlichungseinstellungen zu speichern. Speichern Sie sie auf Ihrem lokalen Computer.
+        1. Klicken Sie im Dialogfeld **Import Subscription Information** (Abonnementinformationen importieren) auf die Schaltfläche **Durchsuchen**, wählen Sie die im vorherigen Schritt lokal gespeicherte Datei mit den Veröffentlichungseinstellungen aus, und klicken Sie dann auf **Öffnen**. Ihr Bildschirm sollte ähnlich dem folgenden aussehen: 
+![][ic644267]
         1. Klicken Sie auf **OK**.
-    1. Wählen Sie bei **Subscription** das Abonnement aus, das Sie für Ihre Bereitstellung verwenden möchten.
+    1. Wählen Sie unter **Abonnement** das Abonnement aus, das Sie für Ihre Bereitstellung verwenden möchten.
     1. Bei **Storage account** wählen Sie das zu verwendende Speicherkonto aus, oder klicken Sie auf **New**, um ein neues Speicherkonto zu erstellen.
     1. Bei **Service name** wählen Sie den zu verwendenden Clouddienst aus, oder klicken Sie auf **New**, um einen neuen Clouddienst zu erstellen.
     1. Bei **Target OS** wählen Sie die Version des Betriebssystems aus, die Sie für Ihre Bereitstellung verwenden möchten.
     1. Bei **Target environment** wählen Sie für die Zwecke dieses Tutorials **Staging** aus. (Wenn Sie Ihre Website für den Produktivbetrieb bereitstellen möchten, ändern Sie diese Einstellung in **Production**.)
-    1. Optional: Wenn die neue Bereitstellung die vorherige automatisch überschreiben soll, aktivieren Sie **Overwrite previous deployment**. Falls die Veröffentlichung am gleichen Speicherort erfolgt, können Sie durch Aktivieren dieser Option Probleme vom Typ „409 Konflikt“ vermeiden. Beachten Sie, dass das Dialogfeld **Publish to Azure** einen Abschnitt **Remote Access** für den Remotezugriff enthält. In der Standardeinstellung ist der Remotezugriff nicht aktiviert, und er wird für dieses Beispiel auch nicht aktiviert. Zum Aktivieren des Remotezugriffs müssten Sie einen Benutzernamen und ein Kennwort angeben, das bei der Remoteanmeldung verwendet wird. Weitere Informationen zum Remotezugriff finden Sie unter [Aktivieren des Remotezugriffs für Azure-Bereitstellungen in Eclipse][]. Das bei Ihnen angezeigte Dialogfeld **Publish to Azure** sieht etwa wie folgt aus: ![][ic719488]
-1. Klicken Sie auf **Publish**, um die Veröffentlichung in einer Stagingumgebung anzustoßen. Wenn Sie zum Ausführen eines vollständigen Builds aufgefordert werden, klicken Sie auf **Yes**. Das Erstellen des ersten Builds kann mehrere Minuten in Anspruch nehmen. In Eclipse wird eine Registerkarte **Azure Activity Log** angezeigt. ![][ic719489] In diesem Protokoll oder in der Ansicht **Console** können Sie den Fortschritt bei Ihrer Bereitstellung verfolgen. Alternativ dazu können Sie sich beim [Azure-Verwaltungsportal][] anmelden und den Abschnitt **Cloud Services** verwenden, um den Status zu überwachen.
+    1. Optional: Wenn die neue Bereitstellung die vorherige automatisch überschreiben soll, aktivieren Sie **Overwrite previous deployment**. Falls die Veröffentlichung am gleichen Speicherort erfolgt, können Sie durch Aktivieren dieser Option Probleme vom Typ „409 Konflikt“ vermeiden. 
+        Beachten Sie, dass das Dialogfeld **Publish to Azure** einen Abschnitt **Remote Access** für den Remotezugriff enthält. In der Standardeinstellung ist der Remotezugriff nicht aktiviert, und er wird für dieses Beispiel auch nicht aktiviert. Zum Aktivieren des Remotezugriffs müssten Sie einen Benutzernamen und ein Kennwort angeben, das bei der Remoteanmeldung verwendet wird. Weitere Informationen zum Remotezugriff finden Sie unter [Aktivieren des Remotezugriffs für Azure-Bereitstellungen in Eclipse][].
+        Das bei Ihnen angezeigte Dialogfeld **Publish to Azure** sieht etwa wie folgt aus:
+        ![][ic719488]
+1. Klicken Sie auf **Publish**, um die Veröffentlichung in einer Stagingumgebung anzustoßen.
+    Wenn Sie zum Ausführen eines vollständigen Builds aufgefordert werden, klicken Sie auf **Yes**. Das Erstellen des ersten Builds kann mehrere Minuten in Anspruch nehmen.
+    In Eclipse wird eine Registerkarte **Azure Activity Log** angezeigt.
+    ![][ic719489]
+    In diesem Protokoll oder in der Ansicht **Console** können Sie den Fortschritt bei Ihrer Bereitstellung verfolgen. Alternativ dazu können Sie sich beim [Azure-Verwaltungsportal][] anmelden und den Abschnitt **Cloud Services** verwenden, um den Status zu überwachen.
 1. Wenn die Bereitstellung erfolgreich abgeschlossen wurde, wird im **Azure Activity Log** der Status **Published** angezeigt. Klicken Sie wie in der folgenden Abbildung gezeigt auf **Published**. Daraufhin öffnet Ihr Browser eine Instanz Ihrer Bereitstellung.
     ![][ic719490]
 
@@ -191,4 +195,4 @@ Weitere Informationen zum Verwenden von Azure mit Java finden Sie im [Azure Java
 [ic789598]: ./media/azure-toolkit-for-eclipse-creating-a-hello-world-application/ic789598.png
 [publishDropdownButton]: ./media/azure-toolkit-for-eclipse-creating-a-hello-world-application/publishDropdownButton.png
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0817_2016-->

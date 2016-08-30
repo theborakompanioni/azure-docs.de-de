@@ -12,12 +12,15 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="article" 
-    ms.date="06/12/2016" 
+    ms.date="08/15/2016" 
     ms.author="elizapo" />
 
 
 
 #Problembehandlung bei Azure RemoteApp – Fehler beim Starten und Verbinden der Anwendung 
+
+> [AZURE.IMPORTANT]
+Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148).
 
 Anwendungen, die in Azure RemoteApp gehostet werden, können aus unterschiedlichen Gründe nicht gestartet werden. In diesem Artikel werden die verschiedenen Gründe und Fehlermeldungen beschrieben, die Benutzern möglicherweise ausgegeben werden, wenn sie versuchen, Anwendungen zu starten. Er befasst sich auch mit Verbindungsfehlern. (In diesem Artikel werden jedoch keine Probleme mit der Anmeldung beim Azure RemoteApp-Client beschrieben.)
 
@@ -51,4 +54,4 @@ Dies ist eine generische Fehlermeldung. Wenden Sie sich an den Azure-Support, od
 
 ![Generische Azure RemoteApp-Meldung](./media/remoteapp-apptrouble/ra-apptrouble4.png)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0817_2016-->

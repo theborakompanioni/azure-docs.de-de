@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="PHP"
 	ms.topic="article"
-    	ms.date="06/01/2016"
+    	ms.date="08/11/2016"
 	ms.author="robmcm"/>
 
 # Verwenden des Blob-Speichers mit PHP
 
-[AZURE.INCLUDE [storage-selector-blob-include](../../includes/storage-selector-blob-include.md)]
+[AZURE.INCLUDE [storage-selector-blob-include](../../includes/storage-selector-blob-include.md)] <br/> [AZURE.INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-blobs.md)]
 
 ## Übersicht
 
@@ -236,7 +236,7 @@ Um einen Blob herunterzuladen, rufen Sie die **BlobRestProxy->getBlob**-Methode 
 
 Beachten Sie, dass in dem Beispiel oben ein Blob als Streamressource abgerufen wird (das Standardverhalten). Sie können allerdings die [stream\_get\_contents][stream-get-contents]-Funktion verwenden, um den zurückgegebenen Stream in eine Zeichenfolge zu konvertieren.
 
-## Löschen eines Blobs
+## Löschen eines BLOBs
 
 Um einen Blob zu löschen, geben Sie den Containernamen und den Blob-Namen an **BlobRestProxy->deleteBlob** weiter.
 
@@ -292,9 +292,9 @@ Um schließlich einen Blob-Container zu löschen, geben Sie den Containernamen a
 
 Nachdem Sie sich nun mit den Grundlagen des Azure-Blob-Diensts vertraut gemacht haben, folgen Sie diesen Links, um zu erfahren, wie komplexere Speicheraufgaben ausgeführt werden.
 
-- Besuchen Sie den [Blog des Azure-Speicherteams](http://blogs.msdn.com/b/windowsazurestorage/)
-- Sehen Sie sich das [PHP-Blockblob-Beispiel](https://github.com/WindowsAzure/azure-sdk-for-php-samples/blob/master/storage/BlockBlobExample.php) an.
-- Sehen Sie sich das [PHP-Seitenblob-Beispiel](https://github.com/WindowsAzure/azure-sdk-for-php-samples/blob/master/storage/PageBlobExample.php) an.
+- Besuchen Sie den [Blog des Azure-Speicherteams](http://blogs.msdn.com/b/windowsazurestorage/).
+- Sehen Sie sich das [Beispiel für PHP-Blockblobs](https://github.com/WindowsAzure/azure-sdk-for-php-samples/blob/master/storage/BlockBlobExample.php) an.
+- Sehen Sie sich das [Beispiel für PHP-Seitenblobs](https://github.com/WindowsAzure/azure-sdk-for-php-samples/blob/master/storage/PageBlobExample.php) an.
 - [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](storage-use-azcopy.md)
  
 Weitere Informationen finden Sie außerdem im [PHP Developer Center](/develop/php/).
@@ -308,4 +308,4 @@ Weitere Informationen finden Sie außerdem im [PHP Developer Center](/develop/ph
 [fopen]: http://www.php.net/fopen
 [stream-get-contents]: http://www.php.net/stream_get_contents
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0817_2016-->

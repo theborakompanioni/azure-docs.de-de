@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
-   ms.date="05/08/2016"
+   ms.date="08/15/2016"
    ms.author="tarcher" />
 
 # Zugreifen auf virtuelle Computer in Azure über den Server-Explorer
@@ -46,11 +46,11 @@ Wenn Sie in Azure gehostete virtuelle Computer verwenden, können Sie über den 
   	|---|---|
   	|Name|Ein Bezeichner für den Endpunkt.|
   	|Privater Port|Der Port für den internen Netzwerkzugriff auf Ihre Anwendung.|
-  	|Protokoll|Das Protokoll, das von der Transportschicht für diesen Endpunkt verwendet wird – entweder TCP oder UDP.|
+  	|Protocol|Das Protokoll, das von der Transportschicht für diesen Endpunkt verwendet wird – entweder TCP oder UDP.|
   	|Öffentlicher Port|Der Port, der für den öffentlichen Zugang auf Ihrer Anwendung verwendet wird.|
 
 ## Nächste Schritte
 
 Weitere Informationen zum Verwenden von Azure-Rollen in Visual Studio finden Sie unter [Verwenden von Remotedesktop mit Azure-Rollen](vs-azure-tools-remote-desktop-roles.md).
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0817_2016-->

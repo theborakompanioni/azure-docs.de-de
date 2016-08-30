@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/23/2016" 
+	ms.date="08/17/2016" 
 	ms.author="xueshzha"/>
 
 
@@ -124,7 +124,7 @@ In Azure Machine Learning wurde ein neues leeres Experiment erstellt. Stichprobe
  
 ##Einschränkungen 
 
-Dies ist ein sehr einfaches Beispiel für die Prognose mit ETS. Wie aus dem oben stehenden Beispielcode ersichtlich ist, wird kein Abfangen von Fehlern implementiert, und der Dienst geht davon aus, dass alle Variablen kontinuierliche/positive Werte sind und die Häufigkeit eine ganze Zahl größer als 1 sein sollte. Die Länge der Vektoren Datum und Wert sollte identisch sein. Die Variable für das Datum muss dem Format "mm/tt/jjjj" entsprechen.
+Dies ist ein sehr einfaches Beispiel für die Prognose mit ETS. Wie aus dem oben stehenden Beispielcode ersichtlich ist, wird kein Abfangen von Fehlern implementiert, und der Dienst geht davon aus, dass alle Variablen kontinuierliche/positive Werte sind und die Häufigkeit eine ganze Zahl größer als 1 sein sollte. Die Länge der Vektoren Datum und Wert sollte identisch sein. Die Variable für das Datum muss dem Format "mm/tt/jjjj" entsprechen.
 
 ##Häufig gestellte Fragen
 Häufig gestellte Fragen zur Nutzung des Webdiensts und zum Veröffentlichen im Azure Marketplace finden Sie [hier](machine-learning-marketplace-faq.md).
@@ -138,4 +138,4 @@ Häufig gestellte Fragen zur Nutzung des Webdiensts und zum Veröffentlichen im 
 [execute-r-script]: https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/
  
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0817_2016-->

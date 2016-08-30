@@ -197,7 +197,7 @@ Auf dem Blatt **Externe Domänen einreichen** im Azure-Portal (siehe [Schritt 1]
 
 6.  Klicken Sie auf **Speichern**.
 
-7.  Nachdem Azure Ihren neuen benutzerdefinierten Domänennamen konfiguriert hat, können Sie in einem Browser zum benutzerdefinierten Domänennamen navigieren. Sie sollten nun die Ausführung Ihrer App verfolgen können, und
+7.  Nachdem Azure Ihren neuen benutzerdefinierten Domänennamen konfiguriert hat, können Sie in einem Browser zum benutzerdefinierten Domänennamen navigieren. Der Browser sollte Ihre Azure-App öffnen. Das bedeutet, dass der benutzerdefinierte Domänenname richtig konfiguriert wurde.
 
 <a name="verify"></a>
 ## Überprüfen der DNS-Verteilung
@@ -219,4 +219,4 @@ Erfahren Sie, wie Sie Ihren benutzerdefinierten Domänennamen mit HTTPS sichern,
 <!-- Images -->
 [subdomain]: media/web-sites-custom-domain-name/azurewebsites-subdomain.png
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0817_2016-->

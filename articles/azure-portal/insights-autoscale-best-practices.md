@@ -105,16 +105,17 @@ Es gibt Fälle, in denen Sie möglicherweise mehrere Regeln innerhalb eines Prof
 Beim *horizontalen Hochskalieren* wird die automatische Skalierung durchgeführt, sobald eine Regel erfüllt wird. Beim *horizontalen Herunterskalieren* wird die automatische Skalierung nur ausgeführt, wenn alle Regeln erfüllt werden.
  
 Nehmen Sie an, Sie hätten die folgenden vier Regeln für die automatische Skalierung:
- 
+
 - Falls CPU-Auslastung < 30 %, skaliere horizontal um 1 herunter
-- ​Falls Arbeitsspeicherauslastung < 50 %, skaliere horizontal um 1 herunter
-- ​Falls CPU-Auslastung > 75 %, skaliere horizontal um 1 hoch
-- ​Falls Arbeitsspeicherauslastung > 75 %, skaliere horizontal um 1 hoch
+- Falls Arbeitsspeicherauslastung < 50 %, skaliere horizontal um 1 herunter
+- Falls CPU-Auslastung > 75 %, skaliere horizontal um 1 hoch
+- Falls Arbeitsspeicherauslastung > 75 %, skaliere horizontal um 1 hoch
 
 Daraufhin erfolgt Folgendes:
+
 - Falls die CPU-Auslastung 76 % und die Arbeitsspeicherauslastung 50 % beträgt, skalieren wir horizontal hoch.
 - Falls die CPU-Auslastung 50 % und die Arbeitsspeicherauslastung 76 % beträgt, skalieren wir horizontal hoch.
- 
+
 Andererseits wird, wenn die CPU-Auslastung 25 % und die Arbeitsspeicherauslastung 51 % beträgt, **nicht** automatisch horizontal herunterskaliert. Um horizontal herunterzuskalieren, muss die CPU-Auslastung 29 % und die Arbeitsspeicherauslastung 49 % betragen.
 
 ### Wählen Sie als Standard immer eine sichere Anzahl an Instanzen
@@ -126,4 +127,4 @@ Die automatische Skalierung benachrichtigt die Administratoren und die Mitwirken
 - Für den Autoskalierungsdienst stehen keine Metriken zur Verfügung, auf deren Grundlage eine Skalierungsentscheidung getroffen werden kann.
 - Metriken stehen wieder zur Verfügung (Wiederherstellung), um eine Skalierungsentscheidung zu treffen. Zusätzlich zu den oben aufgeführten Bedingungen, können Sie E-Mail- oder Webhook-Benachrichtigungen konfigurieren, um bei erfolgreichen Skalierungsaktionen informiert zu werden.
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0817_2016-->

@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="04/19/2016"
+   ms.date="08/17/2016"
    ms.author="alkohli" />
 
 # Technische Spezifikationen und Kompatibilität des StorSimple-Geräts
@@ -62,12 +62,12 @@ Die folgende Tabelle enthält die typischen Stromverbrauchsdaten für die versch
 Das StorSimple-Gerät unterstützt bis zu zwölf serielle SAS-Laufwerke (Serial Attached SCSI) im 3,5-Zoll-Formfaktor. Bei den tatsächlichen Laufwerken kann es sich je nach Produktkonfiguration um eine Mischumgebung aus Solid-State-Laufwerken (SSDs) oder Festplattenlaufwerken (HDDs) handeln. Die zwölf Laufwerkseinschübe befinden sich in einer 3 x 4-Konfiguration vor dem Gehäuse. Das EBOD-Gehäuse bietet zusätzlichen Platz für weitere zwölf Laufwerke. Dies müssen jedoch HDDs sein.
 
 ## Speicherspezifikation
-Die StorSimple-Geräte verfügen über eine Mischung von Festplatten- und SSD-Laufwerken für 8100 und 8600. Die für 8100 und 8600 nutzbare Gesamtkapazität beträgt etwa 15 TB bzw. 38 TB. In der folgenden Tabelle sind die Details von SSD-, HDD- und Cloudkapazität im Kontext der Kapazität der StorSimple-Lösung dokumentiert.
+Sowohl das StorSimple 8100 als auch das StorSimple 8600 verfügen über eine Kombination aus Festplatten- und Solid-State-Laufwerken. Die für 8100 und 8600 nutzbare Gesamtkapazität beträgt etwa 15 TB bzw. 38 TB. In der folgenden Tabelle sind die Details von SSD-, HDD- und Cloudkapazität im Kontext der Kapazität der StorSimple-Lösung dokumentiert.
 
 | Gerätemodell/Kapazität | 8100 | 8600 |
 |------------------------------------------------|---------------------------------------------------------|---------------------------------------------------------|
 | Anzahl von Festplattenlaufwerken (HDD) | 8 | 19 |
-| Anzahl von Solid-State-Laufwerken (SSD) | 4 | 5 |
+| Anzahl von Solid-State-Laufwerken (SSDs) | 4 | 5 |
 | Kapazität eines HDD-Laufwerks | 4 TB | 4 TB |
 | Kapazität eines SSD-Laufwerks | 400 GB | 800 GB |
 | Reservekapazität | 4 TB | 4 TB |
@@ -135,16 +135,16 @@ Dieser Abschnitt enthält die Spezifikationen im Zusammenhang mit der Gehäuseum
 ## Einhaltung internationaler Standards
 Ihr Microsoft Azure StorSimple-Gerät entspricht den folgenden internationalen Standards:
 
-- CE – EN 60950 – 1  
-- CB-Zertifizierung für IEC 60950 - 1  
-- UL und cUL für UL 60950 - 1  
+- CE – EN 60950 – 1
+- CB-Zertifizierung für IEC 60950 - 1
+- UL und cUL für UL 60950 - 1
 
 ## Sicherheitskompatibilität  
 
 Ihr Microsoft Azure StorSimple-Gerät erfüllt die folgenden Sicherheitsstandards:
 
-- System-Produkttypgenehmigung: UL, cUL, CE  
-- Sicherheitskompatibilität: UL 60950, IEC 60950, EN 60950  
+- System-Produkttypgenehmigung: UL, cUL, CE
+- Sicherheitskompatibilität: UL 60950, IEC 60950, EN 60950
 
 ## EMC-kompatibel 
 
@@ -152,10 +152,10 @@ Ihr Microsoft Azure StorSimple-Gerät erfüllt die folgenden EMC-Standards:
 
 ### Emissionen
 
-Das Gerät verfügt über EMC-Kompatibilität für Leitungs- und Strahlungsemissionswerte.
+Das Gerät ist EMC-konform für Leitungs- und Strahlungsemissionswerte.
 
-- Leitungsemissions-Grenzwerte: CFR 47 Part 15B Klasse A EN55022 Klasse A CISPR Klasse A  
-- Strahlungsemissions-Grenzwerte: CFR 47 Part 15B Klasse A EN55022 Klasse A CISPR Klasse A   
+- Leitungsemissions-Grenzwerte: CFR 47 Part 15B Klasse A EN55022 Klasse A CISPR Klasse A
+- Strahlungsemissions-Grenzwerte: CFR 47 Part 15B Klasse A EN55022 Klasse A CISPR Klasse A
 
 ### Oberschwingungen und Flicker  
 
@@ -170,7 +170,7 @@ Der Stecker und das gesamte Netzkabelmodul müssen den Richtlinien des jeweilige
 
 ### Netzkabel – USA (muss NRTL-registriert sein)
 
-| Komponente | Spezifikation |
+| Component | Spezifikation |
 | --------------- | ----------------------------------------------------------------- | 
 | Kabeltyp | SV oder SVT, 18 AWG Minimum, 3 Leiter, 2,0 m Maximallänge |
 | Stecker | NEMA 5-15P-Stecker mit Erdung und Nennwerten von 120 V, 10 A; oder IEC 320 C14, 250 V, 10 A |
@@ -178,7 +178,7 @@ Der Stecker und das gesamte Netzkabelmodul müssen den Richtlinien des jeweilige
 
 ### Netzkabel – Europa
 
-| Komponente | Spezifikation |
+| Component | Spezifikation |
 | --------------- | ----------------------------------------------------------------- | 
 | Kabeltyp | Harmonisiert, H05-VVF-3G1.0 |
 | Steckdose | IEC 320 C-13, 250 V, 10 A |
@@ -191,4 +191,4 @@ Für die 10-GbE-Netzwerkschnittstellen, DATA 2 und DATA 3, finden Sie Informat
 
 Sie können jetzt ein StorSimple-Gerät in Ihrem Datencenter bereitstellen. Weitere Informationen finden Sie unter [Bereitstellen Ihres lokalen Geräts](storsimple-deployment-walkthrough-u2.md).
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0817_2016-->

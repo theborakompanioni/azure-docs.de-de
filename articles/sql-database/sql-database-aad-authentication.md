@@ -14,12 +14,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-management"
-   ms.date="08/04/2016"
+   ms.date="08/17/2016"
    ms.author="rick.byham@microsoft.com"/>
 
 # Herstellen einer Verbindung mit SQL-Datenbank oder SQL Data Warehouse unter Verwendung der Azure Active Directory-Authentifizierung
 
-Die Azure Active Directory-Authentifizierung ist ein Mechanismus zum Herstellen einer Verbindung mit Microsoft Azure SQL-Datenbank und [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) unter Verwendung von Identitäten in Azure Active Directory (Azure AD). Mithilfe der Azure Active Directory-Authentifizierung ist es möglich, die Identitäten von Datenbankbenutzern und anderen Microsoft-Diensten an einer zentralen Stelle zu verwalten. Die zentrale ID-Verwaltung ermöglicht eine einheitliche Verwaltung von Datenbankbenutzern und vereinfacht die Berechtigungsverwaltung. Daraus ergeben sich u. a. die folgenden Vorteile:
+Die Azure Active Directory-Authentifizierung ist ein Mechanismus zum Herstellen einer Verbindung mit Microsoft Azure SQL-Datenbank und [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) unter Verwendung von Identitäten in Azure Active Directory (Azure AD). Mithilfe der Azure Active Directory-Authentifizierung können Sie die Identitäten von Datenbankbenutzern und andere Microsoft-Dienste an einer zentralen Stelle verwalten. Die zentrale ID-Verwaltung ermöglicht eine einheitliche Verwaltung von Datenbankbenutzern und vereinfacht die Berechtigungsverwaltung. Daraus ergeben sich u. a. die folgenden Vorteile:
 
 - Es wird eine Alternative zur SQL Server-Authentifizierung bereitgestellt.
 - Es wird einer unkontrollierten Ausbreitung von Benutzeridentitäten über Datenbankserver hinweg Einhalt geboten.
@@ -29,6 +29,7 @@ Die Azure Active Directory-Authentifizierung ist ein Mechanismus zum Herstellen 
 - Die Azure Active Directory-Authentifizierung verwendet eigenständige Datenbankbenutzer zum Authentifizieren von Identitäten auf Datenbankebene.
 - Azure Active Directory unterstützt die tokenbasierte Authentifizierung für Anwendungen, die sich mit SQL-Datenbank verbinden.
 - Die Azure Active Directory-Authentifizierung unterstützt AD FS (Domänenverbund) sowie native Benutzer-/Kennwortauthentifizierung für ein lokales Azure Active Directory ohne Domänensynchronisierung.
+- Azure Active Directory unterstützt Verbindungen von SQL Server Management Studio, bei denen universelle Active Directory-Authentifizierungsverfahren verwendet werden, zu denen auch die Multi-Factor Authentication (MFA) gehört. MFA bietet eine sichere Authentifizierung über eine Reihe einfacher Überprüfungsoptionen – Telefonanruf, SMS, Smartcards mit PIN oder Benachrichtigung in einer mobilen App.
 
 Die Konfigurationsschritte schließen die folgenden Verfahren zum Konfigurieren und Verwenden der Azure Active Directory-Authentifizierung ein:
 
@@ -43,25 +44,25 @@ Die Konfigurationsschritte schließen die folgenden Verfahren zum Konfigurieren 
 
 ## Architektur von Vertrauensstellungen
 
-Das folgende allgemeine Diagramm fasst die Lösungsarchitektur unter Verwendung der Azure AD-Authentifizierung mit Azure SQL-Datenbank zusammen. Die gleichen Konzepte gelten für SQL Data Warehouse. Zur Unterstützung des nativen Benutzerkennworts von Azure Active Directory werden nur der Cloudanteil und Azure AD/Azure SQL-Datenbank berücksichtigt. Zur Unterstützung der Verbundauthentifizierung (oder von Benutzer/Kennwort für Windows-Anmeldeinformationen) ist die Kommunikation mit dem AD FS-Block erforderlich. Die Pfeile zeigen die Kommunikationswege.
+Das folgende Diagramm bietet eine Übersicht über die Lösungsarchitektur für die Azure AD-Authentifizierung mit Azure SQL-Datenbank. Die gleichen Konzepte gelten für SQL Data Warehouse. Zur Unterstützung des nativen Benutzerkennworts von Azure Active Directory werden nur der Cloudanteil und Azure AD/Azure SQL-Datenbank berücksichtigt. Zur Unterstützung der Verbundauthentifizierung (oder von Benutzername und Kennwort für Windows-Anmeldeinformationen) ist die Kommunikation mit dem AD FS-Block erforderlich. Die Pfeile zeigen die Kommunikationswege.
 
 ![Diagramm zur AAD-Authentifizierung][1]
 
-Das folgende Diagramm zeigt die Verbund-, Vertrauensstellungs- und Hostbeziehungen, die einem Client die Verbindungsherstellung mit einer Datenbank ermöglichen, indem ein von Azure AD authentifiziertes Token übermittelt wird, dem die Datenbank vertraut. Bei „Customer1“ kann es sich um ein Azure Active Directory mit nativen Benutzern oder um ein Azure Active Directory mit Verbundbenutzern handeln. „Customer2“ stellt eine mögliche Lösung einschließlich importierter Benutzer dar. In diesem Beispiel stammen diese aus einem dem Verbund angehörenden Azure Active Directory, und AD FS wird mit Azure Active Directory synchronisiert. Wichtig: Für den Zugriff auf eine Datenbank mithilfe der Azure AD-Authentifizierung muss das Abonnement, das als Host fungiert, dem Azure Active Directory zugeordnet sein. Das gleiche Abonnement wird auch verwendet, um den Azure SQL-Datenbankserver oder den SQL Data Warehouse-Server zu erstellen.
+Das folgende Diagramm zeigt die Verbund-, Vertrauensstellungs- und Hostbeziehungen, die einem Client durch Übermittlung eines Tokens die Verbindungsherstellung mit einer Datenbank ermöglichen. Das Token wird von einem Azure Active Directory authentifiziert, und die Datenbank vertraut dem Token. Bei „Customer1“ kann es sich um ein Azure Active Directory mit nativen Benutzern oder um ein Azure Active Directory mit Verbundbenutzern handeln. „Customer2“ stellt eine mögliche Lösung einschließlich importierter Benutzer dar. In diesem Beispiel stammen diese aus einem dem Verbund angehörenden Azure Active Directory, und AD FS wird mit Azure Active Directory synchronisiert. Wichtig: Für den Zugriff auf eine Datenbank mithilfe der Azure AD-Authentifizierung muss das Abonnement, das als Host fungiert, dem Azure Active Directory zugeordnet sein. Das gleiche Abonnement muss auch verwendet werden, um die SQL Server-Instanz zu erstellen, auf der die Azure SQL-Datenbank oder das SQL Data Warehouse gehostet werden.
 
 ![Abonnementbeziehung][2]
 
 ## Administratorstruktur
 
-Bei Verwendung der Azure AD-Authentifizierung sind zwei Administratorkonten für den SQL-Datenbankserver vorhanden: der ursprüngliche SQL Server-Administrator und der Azure AD-Administrator. Die gleichen Konzepte gelten für SQL Data Warehouse. Nur der auf einem Azure AD-Konto basierende Administrator kann den ersten eigenständigen Azure AD-Datenbankbenutzer in einer Benutzerdatenbank erstellen. Das Konto für die Azure AD-Administratoranmeldung kann ein Azure AD-Benutzer oder eine Azure AD-Gruppe sein. Wenn es sich bei dem Administrator um ein Gruppenkonto handelt, kann es von einem beliebigen Gruppenmitglied verwendet werden, sodass mehrere Azure AD-Administratoren die SQL Server-Instanz verwalten können. Die Verwendung eines Gruppenkontos für den Administrator ermöglicht es Ihnen, Gruppenmitglieder in Azure AD zentral hinzuzufügen und zu entfernen, ohne die Benutzer oder Berechtigungen in SQL-Datenbank zu ändern. Es kann jeweils nur ein Azure AD-Administrator (ein Benutzer oder eine Gruppe) konfiguriert werden.
+Bei Verwendung der Azure AD-Authentifizierung sind zwei Administratorkonten für den SQL-Datenbank-Server vorhanden: der ursprüngliche SQL Server-Administrator und der Azure AD-Administrator. Die gleichen Konzepte gelten für SQL Data Warehouse. Nur der auf einem Azure AD-Konto basierende Administrator kann den ersten eigenständigen Azure AD-Datenbankbenutzer in einer Benutzerdatenbank erstellen. Das Konto für die Azure AD-Administratoranmeldung kann ein Azure AD-Benutzer oder eine Azure AD-Gruppe sein. Wenn es sich bei dem Administrator um ein Gruppenkonto handelt, kann es von einem beliebigen Gruppenmitglied verwendet werden, sodass mehrere Azure AD-Administratoren die SQL Server-Instanz verwalten können. Die Verwendung eines Gruppenkontos für den Administrator ermöglicht es Ihnen, Gruppenmitglieder in Azure AD zentral hinzuzufügen und zu entfernen, ohne die Benutzer oder Berechtigungen in SQL-Datenbank zu ändern. Es kann jeweils nur ein Azure AD-Administrator (ein Benutzer oder eine Gruppe) konfiguriert werden.
 
 ![Administratorstruktur][3]
 
 ## Berechtigungen
 
-Um neue Benutzer zu erstellen, müssen Sie über die Berechtigung **BELIEBIGEN BENUTZER ÄNDERN** in der Datenbank verfügen. Die Berechtigung **BELIEBIGEN BENUTZER ÄNDERN** kann jedem Datenbankbenutzer gewährt werden. Die Berechtigung **BELIEBIGEN BENUTZER ÄNDERN** haben auch Serveradministratorkonten inne, ebenso wie Datenbankbenutzer mit der Berechtigung **STEUERUNG FÜR DATENBANK** oder **DATENBANK ÄNDERN** für diese Datenbank sowie Mitglieder der Datenbankrolle **db\_owner**.
+Um neue Benutzer zu erstellen, müssen Sie über die Berechtigung `ALTER ANY USER` in der Datenbank verfügen. Die Berechtigung `ALTER ANY USER` kann jedem Datenbankbenutzer gewährt werden. Die Berechtigung `ALTER ANY USER` haben auch Serveradministratorkonten inne, ebenso wie Datenbankbenutzer mit der Berechtigung `CONTROL ON DATABASE` oder `ALTER ON DATABASE` für diese Datenbank sowie Mitglieder der Datenbankrolle `db_owner`.
 
-Für die Erstellung eines eigenständigen Datenbankbenutzers in Azure SQL-Datenbank oder SQL Data Warehouse müssen Sie unter Verwendung einer Azure AD-Identität eine Verbindung mit der Datenbank herstellen. Für den ersten eigenständigen Datenbankbenutzer muss unter Verwendung eines Azure Active Directory-Administrators (Besitzer der Datenbank) eine Verbindung mit der Datenbank hergestellt werden. Dies wird nachstehend in den Schritten 4 und 5 gezeigt. Eine Azure Active Directory-Authentifizierung ist nur möglich, wenn der Azure Active Directory-Administrator für den Azure SQL-Datenbankserver oder den SQL Data Warehouse-Server erstellt wurde. Falls der Azure Active Directory-Administrator vom Server entfernt wurde, können vorhandene Azure Active Directory-Benutzer, die zuvor in SQL Server erstellt wurden, nicht mehr mithilfe ihrer aktuellen Azure Active Directory-Anmeldeinformationen auf die Datenbank zugreifen.
+Für die Erstellung eines eigenständigen Datenbankbenutzers in Azure SQL-Datenbank oder SQL Data Warehouse müssen Sie unter Verwendung einer Azure AD-Identität eine Verbindung mit der Datenbank herstellen. Für den ersten eigenständigen Datenbankbenutzer muss unter Verwendung eines Azure Active Directory-Administrators (Besitzer der Datenbank) eine Verbindung mit der Datenbank hergestellt werden. Dies wird nachstehend in den Schritten 4 und 5 gezeigt. Eine Azure Active Directory-Authentifizierung ist nur möglich, wenn der Azure Active Directory-Administrator für den Azure SQL-Datenbankserver oder den SQL Data Warehouse-Server erstellt wurde. Falls der Azure Active Directory-Administrator vom Server entfernt wurde, können vorhandene Azure Active Directory-Benutzer, die zuvor in SQL Server erstellt wurden, nicht mehr mithilfe ihrer Azure Active Directory-Anmeldeinformationen auf die Datenbank zugreifen.
 
 ## Funktionen und Einschränkungen von Azure AD
 
@@ -89,16 +90,12 @@ Microsoft-Konten (beispielsweise "outlook.com", "hotmail.com", "live.com") oder 
 - [Microsoft JDBC-Treiber 6.0 für SQL Server](https://www.microsoft.com/de-DE/download/details.aspx?id=11774) unterstützt die Azure Active Directory-Authentifizierung. Siehe auch [Einstellen der Verbindungseigenschaften](https://msdn.microsoft.com/library/ms378988.aspx).
 - PolyBase kann sich nicht per Azure Active Directory-Authentifizierung authentifizieren.
 - Einige Tools wie BI und Excel werden nicht unterstützt.
-- Eine mehrstufige Authentifizierung (MFA/2FA) oder andere Formen der interaktiven Authentifizierung werden nicht unterstützt.
-- Die Azure Active Directory-Authentifizierung wird für die SQL-Datenbank von den Blättern **Datenbank importieren** und **Datenbank exportieren** des Azure-Portals unterstützt. Import- und Exportvorgänge mit Azure Active Directory-Authentifizierung werden auch per PowerShell-Befehl unterstützt.
+- Die Azure Active Directory-Authentifizierung wird für SQL-Datenbank auf den Blättern **Datenbank importieren** und **Datenbank exportieren** des Azure-Portals unterstützt. Import- und Exportvorgänge mit Azure Active Directory-Authentifizierung werden auch per PowerShell-Befehl unterstützt.
 
 
 ## 1\. Erstellen und Auffüllen von Azure AD
 
-Erstellen Sie ein Azure Active Directory-Verzeichnis, und füllen Sie es mit Benutzern und Gruppen. Dies umfasst:
-
-- Erstellen der anfänglichen, von Azure AD verwalteten Domäne
-- Konfigurieren eines Verbunds aus lokalen Active Directory-Domänendiensten und Azure Active Directory
+Erstellen Sie ein Azure Active Directory-Verzeichnis, und füllen Sie es mit Benutzern und Gruppen. Das Azure Active Directory kann die von Azure AD verwaltete Anfangsdomäne sein. Das Azure Active Directory kann auch ein lokaler Active Directory-Domänendienst im Verbund mit dem Azure Active Directory sein.
 
 Weitere Informationen finden Sie unter [Integrieren Ihrer lokalen Identitäten in Azure Active Directory](../active-directory/active-directory-aadconnect.md), [Hinzufügen eines benutzerdefinierten Domänennamens zu Azure Active Directory](../active-directory/active-directory-add-domain.md), [Microsoft Azure now supports federation with Windows Server Active Directory](https://azure.microsoft.com/blog/2012/11/28/windows-azure-now-supports-federation-with-windows-server-active-directory/) (Microsoft Azure unterstützt jetzt den Verbund mit Windows Server Active Directory), [Verwalten Ihres Azure AD-Verzeichnisses](https://msdn.microsoft.com/library/azure/hh967611.aspx) sowie unter [Verwalten von Azure AD mit Windows PowerShell](https://msdn.microsoft.com/library/azure/jj151815.aspx).
 
@@ -106,7 +103,7 @@ Weitere Informationen finden Sie unter [Integrieren Ihrer lokalen Identitäten i
 
 Die Azure Active Directory-Authentifizierung wird in der aktuellen Version unterstützt, SQL-Datenbank V12. Informationen zu SQL-Datenbank V12 und darüber, ob diese Version in Ihrer Region verfügbar ist, finden Sie unter [Neuerungen in SQL-Datenbank V12](sql-database-v12-whats-new.md). Dieser Schritt ist für Azure SQL Data Warehouse nicht erforderlich, da SQL Data Warehouse nur in V12 verfügbar ist.
 
-Wenn Sie über eine vorhandene Datenbank verfügen, prüfen Sie, ob diese in SQL-Datenbank V12 gehostet wird, indem Sie (beispielsweise über SQL Server Management Studio) eine Verbindung mit der Datenbank herstellen und `SELECT @@VERSION;` ausführen. Die erwartete Ausgabe für eine Datenbank in SQL-Datenbank V12 ist mindestens **Microsoft SQL Azure (RTM) – 12.0**.
+Wenn Sie über eine vorhandene Datenbank verfügen, prüfen Sie, ob diese in SQL-Datenbank V12 gehostet wird, indem Sie (beispielsweise über SQL Server Management Studio) eine Verbindung mit der Datenbank herstellen und `SELECT @@VERSION;` ausführen. Die erwartete Ausgabe für eine Datenbank in SQL-Datenbank V12 ist mindestens **Microsoft SQL Azure (RTM) – 12.0**. 
 
 Wenn Ihre Datenbank nicht in SQL-Datenbank V12 gehostet wird, finden Sie weitere Informationen unter [Planen und Vorbereiten des Upgrades auf die SQL-Datenbank V12](sql-database-v12-plan-prepare-upgrade.md). Besuchen Sie dann das klassische Azure-Portal, um die Datenbank nach SQL-Datenbank V12 zu migrieren.
 
@@ -146,7 +143,7 @@ Bei Verwendung von Azure Active Directory mit Geo-Replikation muss der Azure Act
 
 > [AZURE.NOTE] Benutzer, die nicht auf einem Azure AD-Konto basieren (hierzu gehört auch das Azure SQL Server-Administratorkonto) können keine Azure AD-basierten Benutzer erstellen, da sie keine Berechtigung zum Überprüfen der vorgeschlagenen Datenbankbenutzer mit Azure AD besitzen.
 
-### Bereitstellen eines Azure Active Directory-Administrators für Azure SQL Server unter Verwendung des Azure-Portals
+### Bereitstellen eines Azure Active Directory-Administrators für Ihre Azure SQL Server-Instanz unter Verwendung des Azure-Portals
 
 1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) in der oberen rechten Ecke auf Ihre Verbindung, um eine Dropdownliste mit möglichen Active Directory-Verzeichnissen zu öffnen. Wählen Sie das richtige Active Directory-Verzeichnis als Standardeinstellung für Azure AD aus. Durch diesen Schritt wird das Abonnement mit Active Directory und Azure SQL Server verknüpft. So wird sichergestellt, dass dasselbe Abonnement sowohl für Azure AD als auch für SQL Server verwendet wird. (Der Azure SQL Server kann entweder Azure SQL-Datenbank oder Azure SQL Data Warehouse hosten.)
 
@@ -157,8 +154,7 @@ Bei Verwendung von Azure Active Directory mit Geo-Replikation muss der Azure Act
 3. Klicken Sie auf dem Blatt **Einstellungen** auf „Active Directory-Administrator“.
 4. Klicken Sie auf dem Blatt **Active Directory-Administrator** auf **Active Directory-Administrator**, und klicken Sie dann oben auf **Administrator festlegen**.
 5. Suchen Sie auf dem Blatt **Administrator hinzufügen** nach einem Benutzer, wählen Sie den Benutzer oder die Gruppe aus, den bzw. die Sie als Administrator festlegen möchten, und klicken Sie dann auf **Auswählen**. (Auf dem Blatt "Active Directory-Administrator" werden alle Mitglieder und Gruppen in Ihrem Active Directory-Verzeichnis angezeigt. Benutzer oder Gruppen, die abgeblendet dargestellt werden, können nicht ausgewählt werden, da sie nicht als Azure AD-Administratoren unterstützt werden. Eine Liste der unterstützten Administratoren finden Sie unter **Features und Einschränkungen von Azure AD** weiter oben.) Die rollenbasierte Zugriffskontrolle (Role-based Access Control, RBAC) gilt nur für das Portal und wird nicht an SQL Server weitergegeben.
-6. Klicken Sie oben auf dem Blatt **Active Directory-Administrator** auf **SPEICHERN**. 
-![Administrator auswählen][10]
+6. Klicken Sie oben auf dem Blatt **Active Directory-Administrator** auf **SPEICHERN**. ![Administrator auswählen][10]
 
 	Der Vorgang zum Ändern des Administrators kann einige Minuten in Anspruch nehmen. Anschließend wird der neue Administrator im Feld **Active Directory-Administrator** angezeigt.
 
@@ -245,29 +241,26 @@ Für die Azure Active Directory-Authentifizierung ist es erforderlich, dass Date
 
 Um zu bestätigen, dass der Azure AD-Administrator ordnungsgemäß eingerichtet ist, stellen Sie mit dem Azure AD-Administratorkonto eine Verbindung mit der Datenbank **master** her. Um einen Azure AD-basierten eigenständigen Datenbankbenutzer bereitzustellen (bei dem es sich nicht um den Serveradministrator handelt, der Besitzer der Datenbank ist), stellen Sie mithilfe einer Azure AD-Identität, die Zugriff auf die Datenbank hat, eine Verbindung mit der Datenbank her.
 
-> [AZURE.IMPORTANT] Unterstützung für die Azure Active Directory-Authentifizierung wird über [SQL Server 2016 Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) und [SQL Server Data Tools](https://msdn.microsoft.com/library/mt204009.aspx) in Visual Studio 2015 bereitgestellt.
+> [AZURE.IMPORTANT] Unterstützung für die Azure Active Directory-Authentifizierung wird über [SQL Server 2016 Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) und [SQL Server Data Tools](https://msdn.microsoft.com/library/mt204009.aspx) in Visual Studio 2015 bereitgestellt. Die SSMS-Version von August 2016 bietet auch Unterstützung für die universelle Active Directory-Authentifizierung, die es Administratoren ermöglicht, die Multi-Factor Authentication per Telefonanruf, SMS, Smartcards mit PIN oder Benachrichtigung in einer mobilen App anzufordern.
 
 #### Herstellen einer Verbindung mithilfe der integrierten Active Directory-Authentifizierung
 
-Verwenden Sie diese Methode, wenn Sie von einer Verbunddomäne aus mit Ihren Azure Active Directory-Anmeldeinformationen bei Windows angemeldet sind.
+Verwenden Sie diese Methode, wenn Sie mit Ihren Azure Active Directory-Anmeldeinformationen aus einer Verbunddomäne bei Windows angemeldet sind.
 
-1. Starten Sie Management Studio oder Data Tools, und wählen Sie im Dialogfeld **Verbindung mit dem Server herstellen** (oder **Verbindung mit Datenbankmodul herstellen**) im Feld **Authentifizierung** die Einstellung **Integrierte Active Directory-Authentifizierung** aus. Es ist kein Kennwort erforderlich bzw. keine Kennworteingabe möglich, da bei der Verbindungsherstellung Ihre bereits vorhandenen Anmeldeinformationen verwendet werden. 
-![Integrierte AD-Authentifizierung auswählen][11]
+1. Starten Sie Management Studio oder Data Tools, und wählen Sie im Dialogfeld **Verbindung mit dem Server herstellen** (oder **Verbindung mit Datenbankmodul herstellen**) im Feld **Authentifizierung** die Einstellung **Integrierte Active Directory-Authentifizierung** aus. Es ist kein Kennwort erforderlich bzw. keine Kennworteingabe möglich, da bei der Verbindungsherstellung Ihre bereits vorhandenen Anmeldeinformationen verwendet werden. ![Integrierte AD-Authentifizierung auswählen][11]
 
-2. Klicken Sie auf die Schaltfläche **Optionen**, und geben Sie auf der Seite **Verbindungseigenschaften** im Feld **Mit Datenbank verbinden** den Namen der Benutzerdatenbank ein, mit der die Verbindung hergestellt werden soll.
-![Datenbanknamen auswählen][13]
+2. Klicken Sie auf die Schaltfläche **Optionen**, und geben Sie auf der Seite **Verbindungseigenschaften** im Feld **Mit Datenbank verbinden** den Namen der Benutzerdatenbank ein, mit der die Verbindung hergestellt werden soll.![Datenbanknamen auswählen][13]
 
 
 #### Herstellen einer Verbindung mithilfe der Active Directory-Kennwortauthentifizierung
 
 Verwenden Sie diese Methode, wenn Sie unter Verwendung der verwalteten Azure AD-Domäne und mit einem Azure AD-Prinzipalnamen eine Verbindung herstellen. Sie können diese Authentifizierungsmethode auch für ein Verbundkonto ohne Zugriff auf die Domäne verwenden, beispielsweise wenn Sie an einem Remotestandort arbeiten.
 
-Verwenden Sie diese Methode, wenn Sie mit Ihren Windows-Anmeldeinformationen von einer Domäne aus angemeldet sind, die nicht im Verbund mit Azure konfiguriert ist, oder wenn Sie die Azure AD-Authentifizierung mit Azure AD basierend auf Anfangs- oder Clientdomäne nutzen.
+Verwenden Sie diese Methode, wenn Sie mit Ihren Windows-Anmeldeinformationen aus einer Domäne angemeldet sind, die nicht im Verbund mit Azure konfiguriert ist, oder wenn Sie die Azure AD-Authentifizierung mit Azure AD basierend auf der Anfangs- oder der Clientdomäne nutzen.
 
 1. Starten Sie Management Studio oder Data Tools, und wählen Sie im Dialogfeld **Verbindung mit dem Server herstellen** (oder **Verbindung mit Datenbankmodul herstellen**) im Feld **Authentifizierung** die Einstellung **Active Directory-Kennwortauthentifizierung** aus.
 2. Geben Sie im Feld **Benutzername** Ihren Azure Active Directory-Benutzernamen im Format **username@domain.com** ein. Es muss sich um ein Konto aus Azure Active Directory oder um ein Konto aus einer Domäne handeln, die im Verbund mit Azure Active Directory konfiguriert ist.
-3. Geben Sie im Feld **Kennwort** Ihr Benutzerkennwort für das Azure Active Directory-Konto oder das Verbunddomänenkonto ein. 
-![AD-Kennwortauthentifizierung auswählen][12]
+3. Geben Sie im Feld **Kennwort** Ihr Benutzerkennwort für das Azure Active Directory-Konto oder das Verbunddomänenkonto ein. ![AD-Kennwortauthentifizierung auswählen][12]
 
 4. Klicken Sie auf die Schaltfläche **Optionen**, und geben Sie auf der Seite **Verbindungseigenschaften** im Feld **Mit Datenbank verbinden** den Namen der Benutzerdatenbank ein, mit der Sie sich verbinden möchten. (Siehe Grafik in der vorherigen Option.)
 
@@ -381,4 +374,4 @@ Weitere Informationen finden Sie im [SQL Server Security Blog](https://blogs.msd
 [12]: ./media/sql-database-aad-authentication/12connect-using-pw-auth.png
 [13]: ./media/sql-database-aad-authentication/13connect-to-db.png
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0817_2016-->

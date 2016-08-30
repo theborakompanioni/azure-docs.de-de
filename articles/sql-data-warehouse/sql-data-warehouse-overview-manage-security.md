@@ -108,10 +108,10 @@ Informationen und Beispiele zum Herstellen einer Verbindung mit SQL Data Warehou
 <!--Image references-->
 
 <!--Article references-->
-[Herstellen einer Verbindung mit SQL Data Warehouse]: ./sql-data-warehouse-develop-connections.md
-[Erste Schritte mit der SQL-Datenbanküberwachung]: ./sql-data-warehouse-overview-auditing.md
+[Herstellen einer Verbindung mit SQL Data Warehouse]: ./sql-data-warehouse-connect-overview.md
+[Erste Schritte mit der SQL-Datenbanküberwachung]: ./sql-data-warehouse-auditing-overview.md
 [Erste Schritte mit Transparent Data Encryption (TDE)]: ./sql-data-warehouse-encryption-tde.md
-[Herstellen einer Verbindung mit SQL Data Warehouse mithilfe der Azure Active Directory-Authentifizierung]: ./sql-data-warehouse-get-started-connect-aad-authentication.md
+[Herstellen einer Verbindung mit SQL Data Warehouse mithilfe der Azure Active Directory-Authentifizierung]: ./sql-data-warehouse-authentication.md
 
 <!--MSDN references-->
 [Azure SQL-Datenbankfirewall]: https://msdn.microsoft.com/library/ee621782.aspx
@@ -127,4 +127,4 @@ Informationen und Beispiele zum Herstellen einer Verbindung mit SQL Data Warehou
 <!--Other Web references-->
 [Rollenbasierte Zugriffssteuerung im Azure-Portal]: https://azure.microsoft.com/documentation/articles/role-based-access-control-configure
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0817_2016-->

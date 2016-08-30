@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="03/30/2016"
+   ms.date="08/17/2016"
    ms.author="alkohli" />
 
 # Konfigurieren des Webproxys für Ihr StorSimple-Gerät
@@ -29,7 +29,7 @@ Bei dem Webproxy handelt es sich um eine optionale Konfiguration für Ihr StorSi
 
 Nach Abschluss der Webproxykonfiguration können Sie die konfigurierten Webproxyeinstellungen im StorSimple Manager-Dienst von Microsoft Azure sowie in Windows PowerShell für StorSimple anzeigen.
 
-In diesem Tutorial erfahren Sie Folgendes:
+In diesem Tutorial lernen Sie Folgendes:
 
 - Konfigurieren des Webproxys mithilfe von Setup-Assistent und Cmdlets
 - Aktivieren des Webproxys mithilfe von Cmdlets
@@ -57,7 +57,7 @@ Der Setup-Assistent führt Sie durch die einzelnen Schritte für die Webproxykon
 
     `Invoke-HcsSetupWizard`
 
-2. Bei erstmaliger Verwendung des Setup-Assistenten für die Geräteregistrierung müssen Sie alle erforderlichen Netzwerkeinstellungen konfigurieren, um zur Webproxykonfiguration zu gelangen. Ist Ihr Gerät bereits registriert, können Sie die konfigurierten Netzwerkeinstellungen akzeptieren, bis Sie die Webproxykonfiguration erreichen. Geben Sie im Setup-Assistenten **Ja** ein, wenn Sie zum Konfigurieren der Webproxyeinstellungen aufgefordert werden.
+2. Bei erstmaliger Verwendung des Setup-Assistenten für die Geräteregistrierung müssen Sie alle erforderlichen Netzwerkeinstellungen konfigurieren, um zur Webproxykonfiguration zu gelangen. Ist Ihr Gerät bereits registriert, können Sie alle konfigurierten Netzwerkeinstellungen akzeptieren, bis Sie die Webproxykonfiguration erreichen. Geben Sie im Setup-Assistenten **Ja** ein, wenn Sie zum Konfigurieren der Webproxyeinstellungen aufgefordert werden.
 
 3. Geben Sie als Webproxy-URL die IP-Adresse oder den vollqualifizierten Domänennamen (Fully Qualified Domain Name, FQDN) des Webproxyservers sowie die TCP-Portnummer ein, die das Gerät bei der Kommunikation mit der Cloud verwenden soll. Verwenden Sie das folgende Format:
 
@@ -137,12 +137,12 @@ Sind die Webproxyeinstellungen nicht korrekt konfiguriert, werden in Windows Pow
 |3\.|0x80070057 – Ungültiger Parameter.|Einer der Parameter für die Proxyeinstellungen ist ungültig.|Der URI wurde nicht im korrekten Format angegeben. Verwenden Sie das folgende Format: `http://<IP address or FQDN of the web proxy server>:<TCP port number>`|
 |4\.|0x800706ba – RPC-Server ist nicht verfügbar.|Mögliche Ursache:</br></br>Der Cluster ist nicht aktiv.</br></br>Der Datenpfaddienst wird nicht ausgeführt.</br></br>Der Befehl wird über den passiven Controller ausgeführt, und es ist keine Kommunikation mit dem aktiven Controller möglich.|Wenden Sie sich an den Microsoft-Support, um sicherzustellen, dass der Cluster aktiv ist und der Datenpfaddienst ausgeführt wird.</br></br>Führen Sie den Befehl über den aktiven Controller aus. Wenn Sie den Befehl über den passiven Controller ausführen möchten, müssen Sie sicherstellen, dass der passive Controller mit dem aktiven Controller kommunizieren kann. Sollte die Verbindung unterbrochen sein, wenden Sie sich an den Support von Microsoft.|
 |5\.|0x800706be – Fehler des RPC-Aufrufs.|Cluster ist nicht verfügbar.|Wenden Sie sich an den Support von Microsoft, um sicherzustellen, dass der Cluster aktiv ist.|
-|6\.|0x8007138f – Die Clusterressource wurde nicht gefunden.|Die Clusterressource des Plattformdiensts wurde nicht gefunden. Dieses Problem kann auf eine nicht ordnungsgemäße Installation zurückzuführen sein.|Das Gerät muss unter Umständen auf die Werkseinstellungen zurückgesetzt werden. Gegebenenfalls muss eine Plattformressource erstellt werden. Erkundigen Sie sich beim Support von Microsoft nach den weiteren Schritten.|
+|6\.|0x8007138f – Die Clusterressource wurde nicht gefunden.|Die Clusterressource des Plattformdiensts wurde nicht gefunden. Dieses Problem kann auf eine nicht ordnungsgemäße Installation zurückzuführen sein.|Möglicherweise müssen Sie Ihr Gerät auf die Werkseinstellungen zurücksetzen. Möglicherweise müssen Sie eine Plattformressource erstellen. Erkundigen Sie sich beim Support von Microsoft nach den weiteren Schritten.|
 |7\.|0x8007138c – Die Clusterressource ist nicht online.|Die Plattform- oder Datenpfad-Clusterressourcen sind nicht online.|Wenden Sie sich an den Support von Microsoft, um sicherzustellen, dass die Datenpfad- und die Plattformdienstressource online sind.|
 
 > [AZURE.NOTE] 
 > 
-> -  Die obige Liste mit Fehlermeldungen ist nicht vollständig. 
+> -  Die obige Liste mit Fehlermeldungen ist nicht vollständig.
 > - Im klassischen Azure-Portal Ihres StorSimple Manager-Diensts werden keine Fehler für Webproxyeinstellungen angezeigt. Liegt nach Abschluss der Konfiguration ein Problem mit dem Webproxy vor, wechselt der Gerätestatus im klassischen Portal zu **Offline**.|
 
 ## Nächste Schritte
@@ -151,4 +151,4 @@ Sind die Webproxyeinstellungen nicht korrekt konfiguriert, werden in Windows Pow
 
 - Informationen zum Verwenden des StorSimple Manager-Diensts finden Sie unter [Verwalten Ihres StorSimple-Geräts mithilfe des StorSimple Manager-Diensts](storsimple-manager-service-administration.md).
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0817_2016-->

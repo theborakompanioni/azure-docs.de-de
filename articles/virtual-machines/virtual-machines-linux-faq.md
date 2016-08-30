@@ -14,13 +14,13 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/16/2016"
+	ms.date="08/16/2016"
 	ms.author="cynthn"/>
 
 # Häufig gestellte Fragen zu virtuellen Linux-Computern 
 
 
-Dieser Artikel enthält die am häufigsten gestellten Fragen zu virtuellen Linux-Computern, die in Azure mit dem Resource Manager-Bereitstellungsmodell erstellt wurden. Die Windows-Version dieses Themas finden Sie unter [Häufig gestellte Fragen zu virtuellen Windows-Computern](virtual-machines-windows-faq.md).
+Dieser Artikel enthält einige häufig gestellte Fragen zu virtuellen Linux-Computern, die in Azure mit dem Resource Manager-Bereitstellungsmodell erstellt wurden. Die Windows-Version dieses Themas finden Sie unter [Häufig gestellte Fragen zu virtuellen Windows-Computern](virtual-machines-windows-faq.md).
 
 ## Was kann ich auf einem virtuellen Azure-Computer ausführen?
 
@@ -44,7 +44,7 @@ Wenn Probleme auftreten, finden Sie weitere Informationen unter [Problembehandlu
 
 ## Kann ich den temporären Datenträger (/dev/sdb1) zum Speichern von Daten verwenden?
 
-Sie sollten keinen temporären Datenträger (/dev/sdb1) zum Speichern von Daten verwenden. Dieser dient nur als temporärer Speicher, sodass das Risiko eines Verlusts von Daten besteht, die nicht wiederhergestellt werden können.
+Verwenden Sie den temporären Datenträger (/dev/sdb1) nicht zum Speichern von Daten. Dieser dient nur als temporärer Speicher, sodass das Risiko eines Verlusts von Daten besteht, die nicht wiederhergestellt werden können.
 
 ## Kann ich einen vorhandenen virtuellen Azure-Computer kopieren oder klonen?
 
@@ -52,10 +52,10 @@ Ja. Anweisungen hierzu finden Sie unter [Erstellen einer Kopie eines virtuellen 
 
 ## Warum werden die Regionen „Kanada, Mitte“ und „Kanada, Osten“ nicht in Azure Resource Manager angezeigt?
 
-Die beiden neuen Regionen „Kanada, Mitte“ und „Kanada, Osten“ werden nicht automatisch für das Erstellen von virtuellen Computern im Rahmen von vorhandenen Azure-Abonnements registriert. Diese Registrierung erfolgt automatisch, wenn ein virtueller Computer über das Azure-Portal für eine andere Region mit Azure Resource Manager bereitgestellt wird. Nach der Bereitstellung eines virtuellen Computers in einer anderen Azure-Region sollten die neuen Regionen für nachfolgende virtuelle Computer verfügbar sein.
+Die beiden neuen Regionen „Kanada, Mitte“ und „Kanada, Osten“ werden nicht automatisch für das Erstellen von virtuellen Computern im Rahmen von vorhandenen Azure-Abonnements registriert. Diese Registrierung erfolgt automatisch, wenn ein virtueller Computer mit Azure Resource Manager über das Azure-Portal für eine andere Region bereitgestellt wird. Nach der Bereitstellung eines virtuellen Computers in einer anderen Azure-Region sollten die neuen Regionen für nachfolgende virtuelle Computer verfügbar sein.
 
 ## Kann ich meinem virtuellen Computer nach der Erstellung eine NIC hinzufügen?
 
-Nein. Dies ist derzeit nur zum Zeitpunkt der Erstellung möglich.
+Nein. Das Hinzufügen einer Netzwerkkarte ist nur zum Zeitpunkt der Erstellung möglich.
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0817_2016-->

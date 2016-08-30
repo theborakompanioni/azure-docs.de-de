@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="dotnet"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="05/27/2016"
+	ms.date="08/19/2016"
 	ms.author="rachelap"/>
 
 # Erste Schritte mit API-Apps, ASP.NET und Swagger in Azure App Service
@@ -239,7 +239,7 @@ In diesem Abschnitt verwenden Sie Azure-Tools, die in den Visual Studio-Assisten
 
 	Eine Ressourcengruppe ist eine Sammlung mit Azure-Ressourcen, z. B. API-Apps, Datenbanken, VMs usw. Für dieses Tutorial ist es besser, eine neue Ressourcengruppe zu erstellen. Es ist dann einfacher, alle Azure-Ressourcen, die Sie für das Tutorial erstellen, in einem Schritt zu löschen.
 
-	In diesem Feld können Sie eine vorhandene [Ressourcengruppe](../resource-group-overview.md) auswählen oder eine neue Ressourcengruppe erstellen. Geben Sie hierfür einen Namen ein, der sich von einer vorhandenen Ressourcengruppe in Ihrem Abonnement unterscheidet.
+	In diesem Feld können Sie eine vorhandene [Ressourcengruppe](../resource-group-overview.md) auswählen oder eine neue Ressourcengruppe erstellen. Geben Sie hierfür einen Namen ein, der sich von den in Ihrem Abonnement vorhandenen Ressourcengruppe unterscheidet.
 
 4. Klicken Sie neben der Dropdownliste **App Service-Plan** auf die Schaltfläche **Neu**.
 
@@ -491,4 +491,4 @@ Falls Sie neue API-App-Projekte von Grund auf neu erstellen möchten, können Si
 
 Die Projektvorlage **Azure-API-App** entspricht folgenden Schritten: Auswählen der ASP.NET 4.5.2-Vorlage **Leer**, Klicken auf das Kontrollkästchen zum Hinzufügen der Web-API-Unterstützung und anschließendes Installieren des Swashbuckle-NuGet-Pakets. Außerdem wird mit der Vorlage Swashbuckle-Konfigurationscode hinzugefügt, der dafür bestimmt ist, die Erstellung von doppelten Swagger-Vorgangs-IDs zu verhindern. Nachdem Sie ein API-App-Projekt erstellt haben, können Sie es wie in diesem Tutorial gezeigt für eine API-App bereitstellen.
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0824_2016-->

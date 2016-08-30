@@ -1,7 +1,7 @@
 <properties 
 	pageTitle="Eine IOT-Lösung mithilfe von Stream Analytics erstellen | Microsoft Azure" 
 	description="Tutorial zu den ersten Schritten für die Stream Analytics IOT-Lösung für ein Mauthäuschen--Szenario."
-	keywords=""
+	keywords="IoT-Lösung, Fensterfunktionen"
 	documentationCenter=""
 	services="stream-analytics"
 	authors="jeffstokes72" 
@@ -15,7 +15,7 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="07/27/2016" 
+	ms.date="08/11/2016" 
 	ms.author="jeffstok"
 />
 
@@ -42,7 +42,7 @@ Für den erfolgreichen Abschluss dieses Tutorials wird Folgendes vorausgesetzt:
 -   [Azure-Abonnement](https://azure.microsoft.com/pricing/free-trial/)
 -   Administratorrechte auf dem Computer
 -   Herunterladen von [TollApp.zip](http://download.microsoft.com/download/D/4/A/D4A3C379-65E8-494F-A8C5-79303FD43B0A/TollApp.zip) aus dem Microsoft Download Center
--   Optional: Quellcode für TollApp-Ereignisgenerator in [GitHub](https://github.com/streamanalytics/samples/tree/master/TollApp)
+-   Optional: Quellcode für TollApp-Ereignisgenerator in [GitHub](https://aka.ms/azure-stream-analytics-toll-source)
 
 ## Einführung in das Szenario „Hallo Maut!“
 
@@ -58,9 +58,9 @@ Wir arbeiten mit zwei Datenströmen, die von Sensoren erzeugt werden, die in der
 ### Eingangsdatenstrom
 
 Der Eingangsdatenstrom enthält Informationen über Fahrzeuge, die in Mautstellen einfahren.
-  
-  
-| TollId | EntryTime | LicensePlate | Zustand | Stellen | Modell | Vehicle Type | Vehicle Weight | Toll | Tag |
+
+
+| TollId | EntryTime | LicensePlate | Zustand | Make | Modell | Vehicle Type | Vehicle Weight | Toll | Tag |
 |---------|-------------------------|--------------|-------|--------|---------|--------------|----------------|------|-----------|
 | 1 | 2014-09-10 12:01:00.000 | JNB 7001 | NY | Honda | CRV | 1 | 0 | 7 | |
 | 1 | 2014-09-10 12:02:00.000 | YXZ 1001 | NY | Toyota | Camry | 1 | 0 | 4 | 123456789 |
@@ -68,17 +68,17 @@ Der Eingangsdatenstrom enthält Informationen über Fahrzeuge, die in Mautstelle
 | 2 | 2014-09-10 12:03:00.000 | XYZ 1003 | CT | Toyota | Corolla | 1 | 0 | 4 | |
 | 1 | 2014-09-10 12:03:00.000 | BNJ 1007 | NY | Honda | CRV | 1 | 0 | 5 | 789123456 |
 | 2 | 2014-09-10 12:05:00.000 | CDE 1007 | NJ | Toyota | 4x4 | 1 | 0 | 6 | 321987654 |
-  
+
 
 Nachfolgend finden Sie eine kurze Beschreibung der Spalten:
-  
-  
+
+
 | TollId | Die Mauthäuschen-ID (TollId) bestimmt ein Mauthäuschen eindeutig. |
 |--------------|----------------------------------------------------------------|
 | EntryTime | Datum und Uhrzeit der Einfahrt des Fahrzeugs in das Mauthäuschen in UTC |
 | LicensePlate | Nummernschild des Fahrzeugs |
 | Zustand | Angabe des Bundesstaats (USA) |
-| Stellen | Der Fahrzeughersteller |
+| Make | Der Fahrzeughersteller |
 | Modell | Modellnummer des Fahrzeugs |
 | VehicleType | „1“ für PKWs und „2“ für Nutzfahrzeuge |
 | WeightType | Fahrzeuggewicht in Tonnen; „0“ für Pkws |
@@ -89,8 +89,8 @@ Nachfolgend finden Sie eine kurze Beschreibung der Spalten:
 ### Ausgangsdatenstrom
 
 Der Ausgangsdatenstrom enthält Informationen über die Autos, die aus der Mautstelle ausfahren.
-  
-  
+
+
 | **TollId** | **ExitTime** | **LicensePlate** |
 |------------|------------------------------|------------------|
 | 1 | 2014-09-10T12:03:00.0000000Z | JNB 7001 |
@@ -101,8 +101,8 @@ Der Ausgangsdatenstrom enthält Informationen über die Autos, die aus der Mauts
 | 2 | 2014-09-10T12:07:00.0000000Z | CDE 1007 |
 
 Nachfolgend finden Sie eine kurze Beschreibung der Spalten:
-  
-  
+
+
 | Column | Beschreibung |
 |--------------|-----------------------------------------------------------------|
 | TollId | Die Mauthäuschen-ID (TollId) bestimmt ein Mauthäuschen eindeutig. |
@@ -112,8 +112,8 @@ Nachfolgend finden Sie eine kurze Beschreibung der Spalten:
 ### Registrierungsdaten von Nutzfahrzeugen
 
 Wir verwenden eine statische Momentaufnahme der Registrierungsdatenbank für Nutzfahrzeuge.
-  
-  
+
+
 | LicensePlate | RegistrationId | Abgelaufen |
 |--------------|----------------|---------|
 | SVT 6023 | 285429838 | 1 |
@@ -121,11 +121,11 @@ Wir verwenden eine statische Momentaufnahme der Registrierungsdatenbank für Nut
 | BAC 1005 | 876133137 | 1 |
 | RIV 8632 | 992711956 | 0 |
 | SNY 7188 | 592133890 | 0 |
-| ELH 9896 | 678427724 | 1 |                      
+| ELH 9896 | 678427724 | 1 |
 
 Nachfolgend finden Sie eine kurze Beschreibung der Spalten:
-  
-  
+
+
 | Column | Beschreibung |
 |--------------|-----------------------------------------------------------------|
 | LicensePlate | Nummernschild des Fahrzeugs |
@@ -173,7 +173,7 @@ Geben Sie „.\\Setup.ps1“ ein, um Ihr Azure-Konto einzurichten, alle benötig
 
 Das Skript wird die Seite „Anmelden“ für Microsoft Azure öffnen. Geben Sie Ihre Anmeldeinformationen ein.
 
-Beachten Sie, dass, wenn Ihr Konto den Zugriff auf mehrere Abonnements ermöglicht, Sie aufgefordert werden, den Abonnementnamen einzugeben, den Sie für das Tutorial verwenden möchten.
+Beachten Folgendes: Wenn Ihr Konto auf mehrere Abonnements zugreifen kann, werden Sie aufgefordert, den Abonnementnamen einzugeben, den Sie für das Tutorial verwenden möchten.
 
 Die Ausführung des Skripts kann mehrere Minuten dauern. Nach Abschluss sollte die Ausgabe wie im folgenden Screenshot aussehen.
 
@@ -246,22 +246,22 @@ Gehen Sie folgendermaßen vor, um über Visual Studio eine Verbindung mit der Az
 6) Wählen Sie als Datenbank „TollDataDB“ aus.
 
 ![](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image17.jpg)
-    
+
 7) Klicken Sie auf „OK“.
 
 8) Öffnen Sie den Server-Explorer.
 
 ![](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image18.png)
-  
+
 9) Werfen Sie einen Blick auf die vier Tabellen, die in der Datenbank TollDataDB erstellt wurden.
-  
+
 ![](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image19.jpg)
-  
+
 ## Ereignisgenerator – TollApp-Beispielprojekt
 
 Das PowerShell-Skript beginnt automatisch damit, Ereignisse zu senden, indem es die TollApp-Beispielanwendung verwendet. Sie müssen keine zusätzlichen Schritte ausführen.
 
-Wenn Sie jedoch an Details zur Implementierung interessiert sind, finden Sie den Quellcode der TollApp-Anwendung in GitHub unter [samples/TollApp](https://github.com/streamanalytics/samples/tree/master/TollApp).
+Wenn Sie jedoch an Details zur Implementierung interessiert sind, finden Sie den Quellcode der TollApp-Anwendung in GitHub unter [samples/TollApp](https://aka.ms/azure-stream-analytics-toll-source).
 
 ![](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image20.png)
 
@@ -376,9 +376,7 @@ Angenommen, wir müssen die Fahrzeuge zählen, die ein Mauthäuschen passieren. 
 
 Sehen wir uns die Beantwortung dieser Frage durch die Azure Stream Analytics-Abfrage an.
 
-    SELECT TollId, System.Timestamp AS WindowEnd, COUNT(*) AS Count
-    FROM EntryStream TIMESTAMP BY EntryTime
-    GROUP BY TUMBLINGWINDOW(minute, 3), TollId
+SELECT TollId, System.Timestamp AS WindowEnd, COUNT(*) AS Count FROM EntryStream TIMESTAMP BY EntryTime GROUP BY TUMBLINGWINDOW(minute, 3), TollId
 
 Wie Sie sehen können, verwendet Azure Stream Analytics eine SQL-ähnliche Abfragesprache mit einigen zusätzlichen Erweiterungen, um die Angabe zeitlicher Aspekte der Abfrage zu aktivieren.
 
@@ -418,11 +416,7 @@ Wir möchten für jedes Auto, das die Mautstelle passiert, die durchschnittlich 
 
 Dafür müssen wir den Datenstrom, der die Einfahrtszeit (EntryTime) enthält, mit dem Datenstrom zusammenfügen, der die Ausfahrtzeit (ExitTime) enthält. Wir werden die Datenströme über die Spalten TollId und LicencePlate zusammenfügen. Der JOIN-Operator erfordert die Angabe eines zeitlichen Spielraums, der den zulässigen Zeitunterschied zwischen den verknüpften Ereignissen beschreibt. Wir verwenden die DATEDIFF-Funktion, um anzugeben, dass Ereignisse nicht mehr als 15 Minuten auseinander liegen sollen. Wir werden die DATEDIFF-Funktion zusätzlich auf Ausfahrts- und Einfahrtszeiten anwenden, um die genaue Zeit zu berechnen, die ein Auto in der Mautstelle verbringt. Beachten Sie den Unterschied bei der Verwendung der DATEDIFF-Funktion in einer SELECT-Anweisung im Vergleich zu einer JOIN-Bedingung.
 
-    SELECT EntryStream.TollId, EntryStream.EntryTime, ExitStream.ExitTime, EntryStream.LicensePlate, DATEDIFF (minute , EntryStream.EntryTime, ExitStream.ExitTime) AS DurationInMinutes
-    FROM EntryStream TIMESTAMP BY EntryTime
-    JOIN ExitStream TIMESTAMP BY ExitTime
-    ON (EntryStream.TollId= ExitStream.TollId AND EntryStream.LicensePlate = ExitStream.LicensePlate)
-    AND DATEDIFF (minute, EntryStream, ExitStream ) BETWEEN 0 AND 15
+SELECT EntryStream.TollId, EntryStream.EntryTime, ExitStream.ExitTime, EntryStream.LicensePlate, DATEDIFF (minute , EntryStream.EntryTime, ExitStream.ExitTime) AS DurationInMinutes FROM EntryStream TIMESTAMP BY EntryTime JOIN ExitStream TIMESTAMP BY ExitTime ON (EntryStream.TollId= ExitStream.TollId AND EntryStream.LicensePlate = ExitStream.LicensePlate) AND DATEDIFF (minute, EntryStream, ExitStream ) BETWEEN 0 AND 15
 
 Aktualisieren Sie die Abfrage auf der Registerkarte „Abfrage“ Ihres Auftrags, um sie zu testen:
 
@@ -442,11 +436,7 @@ Azure Stream Analytics kann statische Momentaufnahmen von Daten mit temporären 
 
 Wenn ein Nutzfahrzeug bei einer Mautfirma registriert ist, kann es das Mauthäuschen passieren, ohne für eine Kontrolle angehalten zu werden. Wir werden die Nachschlagetabellen für Nutzfahrzeugzulassung verwenden, um alle Nutzfahrzeuge mit ausgelaufener Registrierung zu identifizieren.
 
-    SELECT EntryStream.EntryTime, EntryStream.LicensePlate, EntryStream.TollId, Registration.RegistrationId
-    FROM EntryStream TIMESTAMP BY EntryTime
-    JOIN Registration
-    ON EntryStream.LicensePlate = Registration.LicensePlate
-    WHERE Registration.Expired = '1'
+SELECT EntryStream.EntryTime, EntryStream.LicensePlate, EntryStream.TollId, Registration.RegistrationId FROM EntryStream TIMESTAMP BY EntryTime JOIN Registration ON EntryStream.LicensePlate = Registration.LicensePlate WHERE Registration.Expired = '1'
 
 Beachten Sie, dass das Testen einer Abfrage mit Verweisdaten verlangt, dass eine Eingabequelle für Verweisdaten definiert ist, was wir in Schritt 5 getan haben.
 
@@ -485,9 +475,7 @@ Das Starten des Auftrags kann einige Minuten dauern. Sie können den Status auf 
 
 Azure Stream Analytics soll flexibel skalieren und mit hohen Datenlasten umgehen können. Die Azure Stream Analytics-Abfrage kann eine **PARTITION BY**-Klausel verwenden, um das System darauf hinzuweisen, dass dieser Schritt horizontal hochskaliert wird. „PartitionId“ ist eine spezielle Spalte, die vom System hinzugefügt wurde und mit der Partitions-ID der Eingabe (Event Hub) übereinstimmt.
 
-    SELECT TollId, System.Timestamp AS WindowEnd, COUNT(*)AS Count
-    FROM EntryStream TIMESTAMP BY EntryTime PARTITION BY PartitionId
-    GROUP BY TUMBLINGWINDOW(minute,3), TollId, PartitionId    
+SELECT TollId, System.Timestamp AS WindowEnd, COUNT(*)AS Count FROM EntryStream TIMESTAMP BY EntryTime PARTITION BY PartitionId GROUP BY TUMBLINGWINDOW(minute,3), TollId, PartitionId
 
 Beenden Sie den aktuellen Auftrag, aktualisieren Sie die Abfrage in der Registerkarte „Abfrage“ und öffnen Sie die Registerkarte „Skalieren“.
 
@@ -535,4 +523,4 @@ Beachten Sie, dass Ressourcen anhand des Namens identifiziert werden. Stellen Si
 
 ![](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image57.png)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0817_2016-->

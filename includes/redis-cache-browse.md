@@ -11,3 +11,5 @@ Wählen Sie den gewünschten Cache aus, um die Eigenschaften für den Cache anzu
 Klicken Sie auf **Einstellungen** oder **Alle Einstellungen**, um den Cache anzuzeigen und zu konfigurieren.
 
 ![Redis Cache: Alle Einstellungen](media/redis-cache-browse/redis-cache-blade.png)
+
+<!---HONumber=AcomDC_0817_2016-->

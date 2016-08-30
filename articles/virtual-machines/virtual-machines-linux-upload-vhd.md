@@ -17,9 +17,9 @@
 	ms.date="07/15/2016"
 	ms.author="iainfou"/>
 
-# Hochladen und Erstellen eines virtuellen Computers aus einem benutzerdefinierten Datenträgerimage
+# Hochladen und Erstellen eines virtuellen Linux-Computers aus einem benutzerdefinierten Datenträgerimage
 
-In diesem Artikel erfahren Sie, wie Sie eine virtuelle Festplatte (Virtual Hard Disk, VHD) mit dem Resource Manager-Bereitstellungsmodell hochladen und virtuelle Computer aus diesem benutzerdefinierten Image erstellen. Dadurch können Sie eine Linux-Distribution installieren und konfigurieren und die VHD dann zur schnellen Erstellung virtueller Azure-Computer (Azure-VMs) verwenden.
+In diesem Artikel erfahren Sie, wie Sie eine virtuelle Festplatte (Virtual Hard Disk, VHD) mit dem Resource Manager-Bereitstellungsmodell in Azure hochladen und virtuelle Linux-Computer aus diesem benutzerdefinierten Image erstellen. Dadurch können Sie eine Linux-Distribution installieren und konfigurieren und die VHD dann zur schnellen Erstellung virtueller Azure-Computer (Azure-VMs) verwenden.
 
 ## Schnellbefehle
 Vergewissern Sie sich, dass die [Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md) angemeldet ist und den Resource Manager-Modus (`azure config mode arm`) nutzt.
@@ -37,7 +37,7 @@ azure storage account create testuploadedstorage --resource-group TestRG \
 	--location "WestUS" --kind Storage --sku-name PLRS
 ```
 
-Führen Sie die Zugriffsschlüssel für das soeben erstellte Speicherkonto auf, und notieren Sie sich `key1`:
+Führen Sie die Zugriffsschlüssel für das erstellte Speicherkonto auf, und notieren Sie sich `key1`:
 
 ```bash
 azure storage account keys list testuploadedstorage --resource-group TestRG
@@ -50,29 +50,29 @@ azure storage container create --account-name testuploadedstorage \
 	--account-key <key1> --container vm-images
 ```
 
-Laden Sie schließlich Ihre virtuelle Festplatte in den soeben erstellten Container hoch:
+Laden Sie schließlich Ihre virtuelle Festplatte in den erstellten Container hoch:
 
 ```bash
 azure storage blob upload --blobtype page --account-name testuploadedstorage \
 	--account-key <key1> --container vm-images /path/to/disk/yourdisk.vhd
 ```
 
-Nun können Sie auf der Grundlage der hochgeladenen virtuellen Festplatte [mithilfe einer Resource Manager-Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-from-specialized-vhd) oder über die Befehlszeilenschnittstelle einen virtuellen Computer erstellen, indem Sie den URI zu Ihrem Datenträger angeben:
+Jetzt können Sie aus Ihrer hochgeladenen virtuellen Festplatte [mithilfe einer Resource Manager-Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-from-specialized-vhd) einen virtuellen Computer erstellen. Sie können auch die Befehlszeilenschnittstelle verwenden, indem Sie wie folgt den URI zu Ihrem Datenträger angeben:
 
 ```bash
 azure vm create TestVM -l "WestUS" --resource-group TestRG \
 	-Q https://testuploadedstorage.blob.core.windows.net/vm-images/yourdisk.vhd
 ```
 
-Beachten Sie, dass das Zielspeicherkonto mit dem Konto identisch sein muss, in das Sie den virtuellen Datenträger hochgeladen haben. Sie müssen außerdem alle erforderlichen Zusatzparameter für den `azure vm create`-Befehl angeben bzw. entsprechende Eingabeaufforderungen beantworten. Dazu gehören: virtuelles Netzwerk, öffentliche IP-Adresse, Benutzername, SSH-Schlüssel usw. Weitere Informationen zu den verfügbaren Resource Manager-Parametern für die Befehlszeilenschnittstelle finden Sie [hier](azure-cli-arm-commands.md#azure-vm-commands-to-manage-your-azure-virtual-machines).
+Das Zielspeicherkonto muss mit dem Konto identisch sein, in das Sie den virtuellen Datenträger hochgeladen haben. Sie müssen außerdem alle erforderlichen Zusatzparameter für den `azure vm create`-Befehl angeben bzw. entsprechende Eingabeaufforderungen beantworten. Dazu gehören: virtuelles Netzwerk, öffentliche IP-Adresse, Benutzername und SSH-Schlüssel. Erfahren Sie mehr zu den [verfügbaren Resource Manager-Parametern für die Befehlszeilenschnittstelle](azure-cli-arm-commands.md#azure-vm-commands-to-manage-your-azure-virtual-machines).
 
 
 ## Ausführliche Schritte
-Sie müssen zum Vorbereiten Ihres benutzerdefinierten Linux-Images und zum Hochladen in Azure eine Reihe von Schritten ausführen. Der Rest dieses Artikels bietet ausführlichere Informationen zu den einzelnen Schritten, die weiter oben unter „Schnellbefehle“ aufgeführt sind.
+Sie müssen eine Reihe von Schritten ausführen, um Ihr benutzerdefiniertes Linux-Image vorzubereiten und in Azure hochzuladen. Der Rest dieses Artikels bietet ausführlichere Informationen zu den einzelnen Schritten, die weiter oben unter „Schnellbefehle“ aufgeführt sind.
 
 
 ## Anforderungen
-Für die oben angegebenen Schritte benötigen Sie Folgendes:
+Um die folgenden Schritte ausführen zu können, benötigen Sie Folgendes:
 
 - **In einer VHD-Datei installiertes Linux-Betriebssystem**: Installieren Sie auf einer virtuellen Festplatte im VHD-Format eine [von Azure unterstützte Linux-Distribution](virtual-machines-linux-endorsed-distros.md). (Informationen zu nicht unterstützten Distributionen finden Sie [hier](virtual-machines-linux-create-upload-generic.md).) Für die Erstellung virtueller Computer und Festplatten stehen verschiedene Tools zur Verfügung:
 	- Installieren und konfigurieren Sie [QEMU](https://en.wikibooks.org/wiki/QEMU/Installing_QEMU) oder [KVM](http://www.linux-kvm.org/page/RunningKVM), und verwenden Sie dabei „VHD“ als Imageformat. Bei Bedarf können Sie ein Image mithilfe von `qemu-img convert` [konvertieren](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats).
@@ -88,7 +88,7 @@ Für die oben angegebenen Schritte benötigen Sie Folgendes:
 <a id="prepimage"> </a>
 ## Vorbereiten des hochzuladenden Images
 
-Microsoft Azure unterstützt eine Vielzahl von Linux-Distributionen (siehe [Unterstützte Distributionen](virtual-machines-linux-endorsed-distros.md)). Die folgenden Artikel führen Sie durch die Vorbereitung der verschiedenen Linux-Distributionen, die in Azure unterstützt werden:
+Azure unterstützt eine Vielzahl von Linux-Distributionen (siehe [Unterstützte Distributionen](virtual-machines-linux-endorsed-distros.md)). Die folgenden Artikel führen Sie durch die Vorbereitung der verschiedenen Linux-Distributionen, die in Azure unterstützt werden:
 
 - **[CentOS-basierte Verteilungen](virtual-machines-linux-create-upload-centos.md)**
 - **[Debian Linux](virtual-machines-linux-debian-create-upload-vhd.md)**
@@ -111,9 +111,9 @@ azure group create TestRG --location "WestUS"
 ```
 
 ## Erstellen Sie ein Speicherkonto.
-Virtuelle Computer werden als Seitenblobs in einem Speicherkonto gespeichert. Erfahren Sie [hier](../storage/storage-introduction.md#blob-storage) mehr über Azure Blob Storage. Sie müssen ein Speicherkonto für Ihr benutzerdefiniertes Datenträgerimage und die virtuellen Computer erstellen. Alle virtuellen Computer, die Sie aus Ihrem benutzerdefinierten Image erstellen, müssen sich im gleichen Speicherkonto wie das Image befinden.
+Virtuelle Computer werden als Seitenblobs in einem Speicherkonto gespeichert. Erfahren Sie [hier](../storage/storage-introduction.md#blob-storage) mehr über Azure Blob Storage. Sie erstellen ein Speicherkonto für Ihr benutzerdefiniertes Datenträgerimage und die virtuellen Computer. Alle virtuellen Computer, die Sie aus Ihrem benutzerdefinierten Image erstellen, müssen sich im gleichen Speicherkonto wie das Image befinden.
 
-Erstellen Sie ein Speicherkonto in der Ressourcengruppe, die Sie gerade erstellt haben:
+Erstellen Sie ein Speicherkonto in der Ressourcengruppe, die Sie erstellt haben:
 
 ```bash
 azure storage account create testuploadedstorage --resource-group TestRG \
@@ -123,13 +123,13 @@ azure storage account create testuploadedstorage --resource-group TestRG \
 ## Auflisten von Speicherkontoschlüsseln
 Azure generiert zwei 512-Bit-Zugriffsschlüssel für jedes Speicherkonto. Die Zugriffsschlüssel werden für die Authentifizierung beim Speicherkonto verwendet, um beispielsweise Schreibvorgänge auszuführen. Erfahren Sie [hier](../storage/storage-create-storage-account.md#manage-your-storage-account) mehr über das Verwalten von Speicherzugriff. Sie können Zugriffsschlüssel mit dem Befehl `azure storage account keys list` anzeigen.
 
-Zeigen Sie die Zugriffsschlüssel für das soeben erstellte Speicherkonto an:
+Zeigen Sie die Zugriffsschlüssel für das erstellte Speicherkonto an:
 
 ```bash
 azure storage account keys list testuploadedstorage --resource-group TestRG
 ```
 
-Die Ausgabe ähnelt der folgenden:
+Die Ausgabe sieht in etwa wie folgt aus:
 
 ```
 info:    Executing command storage account keys list
@@ -144,7 +144,7 @@ info:    storage account keys list command OK
 Notieren Sie sich `key1`, da Sie ihn in den nächsten Schritten für die Interaktion mit Ihrem Speicherkonto benötigen.
 
 ## Erstellen eines Speichercontainers
-So wie Sie verschiedene Verzeichnisse zum logischen Organisieren Ihres lokalen Dateisystems erstellen, erstellen Sie Container in einem Speicherkonto, um die virtuellen Datenträger und Datenträgerimages zu organisieren. Ein Speicherkonto kann eine beliebige Anzahl von Containern enthalten.
+Auf die gleiche Weise, in der Sie verschiedene Verzeichnisse erstellen, um Ihr lokales Dateisystem logisch zu organisieren, erstellen Sie Container in einem Speicherkonto, um die virtuellen Datenträger und Images zu organisieren. Ein Speicherkonto kann eine beliebige Anzahl von Containern enthalten.
 
 Erstellen Sie einen neuen Container, und geben Sie dabei den Zugriffsschlüssel an, den Sie im vorherigen Schritt erhalten haben:
 
@@ -156,7 +156,7 @@ azure storage container create --account-name testuploadedstorage \
 ## Hochladen der VHD
 Jetzt können Sie Ihr benutzerdefiniertes Datenträgerimage tatsächlich hochladen. Wie bei allen virtuellen Laufwerken, die von virtuellen Computern verwendet werden, laden Sie Ihr benutzerdefiniertes Datenträgerimage als Seitenblob hoch und speichern es so.
 
-Sie müssen Ihren Zugriffsschlüssel, den Container, den Sie im vorherigen Schritt erstellt haben, und dann den Pfad zum benutzerdefinierten Datenträgerimage auf dem lokalen Computer angeben:
+Geben Sie Ihren Zugriffsschlüssel, den Container, den Sie im vorherigen Schritt erstellt haben, und dann den Pfad zum benutzerdefinierten Datenträgerimage auf dem lokalen Computer an:
 
 ```bash
 azure storage blob upload --blobtype page --account-name testuploadedstorage \
@@ -164,11 +164,11 @@ azure storage blob upload --blobtype page --account-name testuploadedstorage \
 ```
 
 ## Erstellen von virtuellen Computern aus dem benutzerdefinierten Image
-Wenn Sie virtuelle Computer aus Ihrem benutzerdefinierten Image erstellen, müssen Sie den URI für das Datenträgerimage angeben und sicherstellen, dass das Zielspeicherkonto dem Konto entspricht, in dem Ihr benutzerdefiniertes Datenträgerimage gespeichert ist. Sie können Ihren virtuellen Computer mithilfe der Azure-Befehlszeilenschnittstelle oder einer Resource Manager-JSON-Vorlage erstellen.
+Wenn Sie virtuelle Computer aus Ihrem benutzerdefinierten Datenträgerimage erstellen, geben Sie den URI zum Datenträgerimage an. Stellen Sie sicher, dass das Zielspeicherkonto dem Speicherkonto entspricht, in dem Ihr benutzerdefiniertes Datenträgerimage gespeichert ist. Sie können Ihren virtuellen Computer mithilfe der Azure-Befehlszeilenschnittstelle oder einer Resource Manager-JSON-Vorlage erstellen.
 
 
 ### Erstellen eines virtuellen Computers mit der Azure-Befehlszeilenschnittstelle
-Sie geben den Parameter `--image-urn` (oder einfach `-Q`) mit dem Befehl `azure vm create` an, um auf Ihr benutzerdefiniertes Datenträgerimage zu verweisen. Stellen Sie sicher, dass `--storage-account-name` (oder `-o`) dem Speicherkonto entspricht, in dem Ihr benutzerdefiniertes Datenträgerimage gespeichert ist. Sie müssen nicht den gleichen Container wie für das benutzerdefinierte Datenträgerimage verwenden, um Ihren virtuellen Computer zu speichern. Achten Sie nur darauf, alle weiteren Container auf die gleiche Weise zu erstellen, wie in den Schritten weiter oben beschrieben, bevor Sie Ihre benutzerdefinierten Datenträgerimages hochladen.
+Sie geben den Parameter `--image-urn` (oder einfach `-Q`) mit dem Befehl `azure vm create` an, um auf Ihr benutzerdefiniertes Datenträgerimage zu verweisen. Stellen Sie sicher, dass `--storage-account-name` (oder `-o`) dem Speicherkonto entspricht, in dem Ihr benutzerdefiniertes Datenträgerimage gespeichert ist. Sie müssen nicht den gleichen Container verwenden wie das benutzerdefinierte Datenträgerimage, um Ihre virtuellen Computer zu speichern. Stellen Sie sicher, dass Sie jegliche weiteren Container auf die gleiche Weise erstellen, wie in den vorherigen Schritten beschrieben, bevor Sie Ihre benutzerdefinierten Datenträgerimages hochladen.
 
 Erstellen Sie einen virtuellen Computer aus Ihrem benutzerdefinierten Datenträgerimage:
 
@@ -178,12 +178,12 @@ azure vm create TestVM -l "WestUS" --resource-group TestRG \
 	-o testuploadedstorage
 ```
 
-Beachten Sie, dass Sie außerdem alle erforderlichen Zusatzparameter für den `azure vm create`-Befehl angeben bzw. entsprechende Eingabeaufforderungen beantworten müssen. Dazu gehören: virtuelles Netzwerk, öffentliche IP-Adresse, Benutzername, SSH-Schlüssel usw. Weitere Informationen zu den verfügbaren Resource Manager-Parametern für die Befehlszeilenschnittstelle finden Sie [hier](azure-cli-arm-commands.md#azure-vm-commands-to-manage-your-azure-virtual-machines).
+Sie müssen alle erforderlichen Zusatzparameter für den `azure vm create`-Befehl angeben bzw. entsprechende Eingabeaufforderungen beantworten. Dazu gehören: virtuelles Netzwerk, öffentliche IP-Adresse, Benutzername und SSH-Schlüssel. Erfahren Sie mehr zu den [verfügbaren Resource Manager-Parametern für die Befehlszeilenschnittstelle](azure-cli-arm-commands.md#azure-vm-commands-to-manage-your-azure-virtual-machines).
 
 ### Erstellen eines virtuellen Computers mit einer JSON-Vorlage
-Azure Resource Manager-Vorlagen sind JSON-Dateien (JavaScript Object Notation), die die Umgebung definieren, die Sie erstellen möchten. Die Vorlagen werden nach unterschiedlichen Ressourcenanbieter unterteilt, z.B. Compute oder Netzwerk. Sie können vorhandene Vorlagen verwenden oder eigene schreiben. Erfahren Sie [hier](../resource-group-overview.md) mehr über die Verwendung von Resource Manager und Vorlagen.
+Azure Resource Manager-Vorlagen sind JSON-Dateien (JavaScript Object Notation), die die Umgebung definieren, die Sie erstellen möchten. Die Vorlagen werden nach unterschiedlichen Ressourcenanbieter unterteilt, z.B. Compute oder Netzwerk. Sie können vorhandene Vorlagen verwenden oder eigene schreiben. Erfahren Sie mehr über die [Verwendung von Resource Manager und Vorlagen](../resource-group-overview.md).
 
-Im Anbieter `Microsoft.Compute/virtualMachines` der Vorlage muss ein `storageProfile`-Knoten vorhanden sein, der die Konfigurationsdetails für den virtuellen Computer enthält. Die beiden wichtigsten zu bearbeitenden Parameter sind die `image`- und `vhd`-URIs, die auf Ihr benutzerdefiniertes Datenträgerimage und die neue virtuelle Festplatte Ihres virtuellen Computers verweisen. Im Folgenden finden Sie ein JSON-Beispiel für die Verwendung eines benutzerdefinierten Datenträgerimages:
+Im Anbieter `Microsoft.Compute/virtualMachines` der Vorlage ist ein `storageProfile`-Knoten vorhanden, der die Konfigurationsdetails für den virtuellen Computer enthält. Die beiden wichtigsten zu bearbeitenden Parameter sind die `image`- und `vhd`-URIs, die auf Ihr benutzerdefiniertes Datenträgerimage und die neue virtuelle Festplatte Ihres virtuellen Computers verweisen. Im Folgenden finden Sie ein JSON-Beispiel für die Verwendung eines benutzerdefinierten Datenträgerimages:
 
 ```bash
 "storageProfile": {
@@ -219,6 +219,6 @@ azure group deployment create --resource-group TestTemplateRG
 
 
 ## Nächste Schritte
-Nachdem Sie die benutzerdefinierte virtuelle Festplatte vorbereitet und hochgeladen haben, können Sie sich mit der [Verwendung von Resource Manager und Vorlagen](../resource-group-overview.md) beschäftigen. Informationen zum Hinzufügen eines Datenträgers zu Ihren neuen virtuellen Computern finden Sie [hier](virtual-machines-linux-add-disk.md). Falls auf Ihren virtuellen Computern Anwendungen ausgeführt werden, auf die Sie zugreifen müssen, müssen Sie [Ports und Endpunkte öffnen](virtual-machines-linux-nsg-quickstart.md).
+Nachdem Sie den benutzerdefinierten virtuellen Datenträger vorbereitet und hochgeladen haben, können Sie sich mit der [Verwendung von Resource Manager und Vorlagen](../resource-group-overview.md) beschäftigen. Informationen zum Hinzufügen eines Datenträgers zu Ihren neuen virtuellen Computern finden Sie [hier](virtual-machines-linux-add-disk.md). Falls auf Ihren virtuellen Computern Anwendungen ausgeführt werden, auf die Sie zugreifen müssen, müssen Sie [Ports und Endpunkte öffnen](virtual-machines-linux-nsg-quickstart.md).
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0817_2016-->

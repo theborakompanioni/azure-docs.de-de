@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Leitfaden zur Azure SQL-Datenbankleistung für Einzeldatenbanken"
-	description="Dieses Thema enthält eine Anleitung, mit deren Hilfe Sie ermitteln können, welche Dienstebene für Ihre Anwendung geeignet ist. Außerdem enthält es Empfehlungen zur Optimierung der Anwendung, damit Sie alle Vorteile von Azure SQL-Datenbank ausnutzen können."
+	description="Dieses Thema enthält eine Anleitung, mit deren Hilfe Sie ermitteln können, welche Dienstebene für Ihre Anwendung geeignet ist. Außerdem bietet es Empfehlungen zur Optimierung der Anwendung, damit Sie optimal von Azure SQL-Datenbank profitieren können."
 	services="sql-database"
 	documentationCenter="na"
 	authors="CarlRabeler"
@@ -157,7 +157,7 @@ Die **maximale Anzahl gleichzeitiger Anmeldungen** stellt die Obergrenze für di
 
 >[AZURE.NOTE] Diese Beschränkung gilt derzeit nicht für Datenbanken in Pools für elastische Datenbanken.
 
-Es ist keine Abfrage oder dynamische Verwaltungssicht vorhanden, mit der Sie die Anzahl gleichzeitiger Anmeldungen oder den Verlauf anzeigen können. Sie können Ihre Benutzer- und Anmeldungsmuster analysieren, um Informationen zur Häufigkeit der Anmeldungen zu erhalten. Sie können auch reale Auslastungen in einer Testumgebung ausführen, um sicherzustellen, dass Sie diese oder andere Obergrenzen, die in diesem Thema beschrieben werden, nicht überschreiten.
+Es ist keine Abfrage oder dynamische Verwaltungssicht vorhanden, mit der Sie die Anzahl gleichzeitiger Anmeldungen oder den Verlauf anzeigen können. Sie können Ihre Benutzer- und Anmeldungsmuster analysieren, um Informationen zur Häufigkeit der Anmeldungen zu erhalten. Sie können auch reale Auslastungen in einer Testumgebung ausführen, um sicherzustellen, dass diese oder andere in diesem Thema beschriebene Limits nicht erreicht oder überschritten werden.
 
 ### Maximale Anzahl von Sitzungen
 
@@ -189,7 +189,7 @@ Es gibt zwei Ansichten, mit denen Sie die Ressourcenverwendung für eine SQL-Dat
 ### Verwenden von „sys.dm\_db\_resource\_stats“
 Die Sicht [sys.dm\_db\_resource\_stats](https://msdn.microsoft.com/library/dn800981.aspx) ist in jeder SQL-Datenbank vorhanden und liefert Daten zur letzten Ressourcenverwendung relativ zur Dienstebene. Durchschnittliche Prozentsätze für CPU, Dateneingang/-ausgang, Protokollschreibvorgänge und Arbeitsspeicher werden alle 15 Sekunden aufgezeichnet und eine Stunde lang aufbewahrt.
 
-Da diese Ansicht eine ausführlichere Darstellung der Ressourcenverwendung ist, sollten Sie für alle Analysen des aktuellen Zustands oder für die Problembehandlung zuerst **sys.dm\_db\_resource\_stats** verwenden. Mit der folgenden Abfrage werden beispielsweise die durchschnittliche und maximale Ressourcenverwendung für die aktuelle Datenbank innerhalb der letzten Stunde angezeigt:
+Da diese Ansicht eine detailliertere Darstellung der Ressourcenverwendung ist, sollten Sie für alle Analysen des aktuellen Zustands oder für die Problembehandlung zuerst **sys.dm\_db\_resource\_stats** verwenden. Mit der folgenden Abfrage werden beispielsweise die durchschnittliche und maximale Ressourcenverwendung für die aktuelle Datenbank innerhalb der letzten Stunde angezeigt:
 
 	SELECT  
 	    AVG(avg_cpu_percent) AS 'Average CPU Utilization In Percent',
@@ -368,7 +368,7 @@ Die folgende Abfrage kann verwendet werden, um potenzielle fehlende Indizes zu e
 
 In diesem Beispiel wird der folgende Index empfohlen.
 
-	CREATE INDEX missing_index_5006_5005 ON [dbo].[missingindex] \([col2])  
+	CREATE INDEX missing_index_5006_5005 ON [dbo].[missingindex] ([col2])  
 
 Nach der Erstellung wird mit derselben SELECT-Anweisung jetzt ein anderer Plan ausgewählt, bei dem anstelle eines Scans eine Suche verwendet wird. Die Ausführung der Suche ist effizienter, wie im folgenden Abfrageplan zu sehen ist.
 
@@ -507,4 +507,4 @@ Einige Datenbankanwendungen enthalten Workloads mit einer hohen Zahl von Lesevor
 
 Dank der Dienstebenen in Azure SQL-Datenbank verfügen Sie in Bezug auf die Typen von Anwendungen, die Sie in der Cloud erstellen, über mehr Flexibilität. In Kombination mit einer sorgfältigen Anwendungsoptimierung können Sie für Ihre Anwendung eine hohe und vorhersagbare Leistung erzielen. In diesem Dokument werden empfohlene Verfahren zum Optimieren des Ressourcenverbrauchs einer Datenbank und Ermitteln der Eignung für eine der Leistungsebenen beschrieben. Die Optimierung ist beim Cloudmodell ein fortlaufender Prozess, und die Dienstebenen und ihre Leistungsebenen ermöglichen Administratoren die Steigerung der Leistung, während die Kosten auf der Microsoft Azure Platform gesenkt werden.
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0817_2016-->

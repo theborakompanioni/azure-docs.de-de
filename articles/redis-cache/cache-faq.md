@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/29/2016" 
+	ms.date="08/12/2016" 
 	ms.author="sdanie"/>
 
 # Azure Redis Cache – häufig gestellte Fragen
@@ -58,7 +58,7 @@ Es gibt verschiedene Möglichkeiten, mit Azure Redis Cache zu starten.
 -    Sie können sich die Clientdokumentation für die Clients für die jeweilige Entwicklersprache Ihres Projekts ansehen, um weitere Informationen zur Verwendung von Redis zu erhalten. Es gibt viele Redis-Clients, die mit Azure Redis Cache verwendet werden können. Eine Liste mit Redis-Clients finden Sie unter [http://redis.io/clients](http://redis.io/clients).
 
 
-Wenn Sie noch nicht über ein Azure-Konto verfügen, haben Sie folgende Möglichkeiten:
+Wenn Sie noch kein Azure-Konto besitzen, haben Sie folgende Möglichkeiten:
 
 -    [Kostenloses Anlegen eines Azure-Kontos](/pricing/free-trial/?WT.mc_id=redis_cache_hero). Sie erhalten ein Guthaben, mit dem Sie andere kostenpflichtige Azure-Dienste ausprobieren können. Auch nachdem Sie das Guthaben aufgebraucht haben, können Sie das Konto behalten und kostenlose Azure-Dienste und -Features nutzen.
 -    [Aktivieren Sie Visual Studio-Abonnementvorteile](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=redis_cache_hero). Ihr MSDN-Abonnement beinhaltet ein monatliches Guthaben, das Sie für zahlungspflichtige Azure-Dienste verwenden können.
@@ -76,7 +76,7 @@ Jedes Azure Redis Cache-Angebot bietet unterschiedliche Optionen in Bezug auf **
 
 Nachfolgend sind verschiedene Aspekte aufgeführt, die Ihnen bei der Wahl helfen können.
 
--	**Speicher**: Der Basic-Tarif und der Standard-Tarif bieten 250 MB bis 53 GB. Der Premium-Tarif bietet bis zu 530 GB, die [auf Anfrage](mailto:wapteams@microsoft.com?subject=Redis%20Cache%20quota%20increase) aufgestockt werden können. Weitere Informationen finden Sie unter [Azure Redis Cache Preise](https://azure.microsoft.com/pricing/details/cache/).
+-	**Speicher**: Der Basic-Tarif und der Standard-Tarif bieten 250 MB bis 53 GB. Der Premium-Tarif bietet bis zu 530 GB, die [auf Anfrage](mailto:wapteams@microsoft.com?subject=Redis%20Cache%20quota%20increase) aufgestockt werden können. Weitere Informationen finden Sie unter [Azure Redis Cache – Preise](https://azure.microsoft.com/pricing/details/cache/).
 -	**Netzwerkleistung**: Bei einer Workload, die einen hohen Durchsatz erfordert, bietet der Premium-Tarif im Vergleich zum Standard- oder Basic-Tarif eine größere Bandbreite. Zudem haben die größeren Caches aufgrund des zugrunde liegenden virtuellen Computers, der den Cache hostet, bei jedem Tarif eine höhere Bandbreite. Ausführliche Informationen finden Sie in der [Tabelle weiter unten](#cache-performance).
 -	**Durchsatz**: Der Premium-Tarif bietet den maximal verfügbaren Durchsatz. Wenn Cacheserver oder -clients die Bandbreitengrenzwerte erreichen, kommt es zu Timeouts auf Clientseite. Ausführliche Informationen finden Sie in der Tabelle weiter unten.
 -	**Hohe Verfügbarkeit/SLA**: Azure Redis Cache garantiert, dass ein Standard-/Premium-Cache mindestens 99,9 % der Zeit zur Verfügung steht. Weitere Informationen zu unserer SLA finden Sie unter [Azure Redis Cache Preise](https://azure.microsoft.com/support/legal/sla/cache/v1_0/). Die SLA deckt nur die Konnektivität zu den Cache-Endpunkten ab. Sie bezieht sich dagegen nicht auf Schutz vor Datenverlusten. Es wird empfohlen, das Redis-Feature für Datenpersistenz im Premium-Tarif zu verwenden, um den Schutz vor Datenverlusten zu erhöhen.
@@ -96,8 +96,8 @@ In der folgenden Tabelle sind die maximalen Bandbreitenwerte beim Testen verschi
 
 Aus dieser Tabelle können folgende Schlussfolgerungen gezogen werden.
 
--	Der Durchsatz für Cache derselben Größe ist im Tarif "Premium" im Vergleich zum Tarif "Standard" höher. Bei einem Cache mit 6 GB liegt der Durchsatz von P1 bei 140.000 RPS im Vergleich zu 49.000 RPS bei C3.
--	Mit dem Redis-Clustering steigt der Durchsatz linear, je mehr Shards (Knoten) Sie im Cluster verwenden. Wenn Sie z. B. einen P4-Cluster mit 10 Shards erstellen, beträgt der verfügbare Durchsatz 250 KB * 10 = 2,5 Millionen RPS.
+-	Der Durchsatz für Caches gleicher Größe ist im Premium-Tarif besser als im Standard-Tarif. Beispielsweise liegt bei einem Cache mit 6 GB der Durchsatz von P1 bei 140.000 RPS im Vergleich zu 49.000 RPS bei C3.
+-	Mit dem Redis-Clustering steigt der Durchsatz linear, je mehr Shards (Knoten) Sie im Cluster verwenden. Wenn Sie beispielsweise einen P4-Cluster mit 10 Shards erstellen, beträgt der verfügbare Durchsatz 250.000 × 10 = 2,5 Millionen RPS.
 -	Der Durchsatz für größere Schlüsselgrößen ist im Premium-Tarif höher als im Standard-Tarif.
 
 | Tarif | Größe | CPU-Kerne | Verfügbare Bandbreite | 1 KB Schlüsselgröße |
@@ -145,8 +145,8 @@ Für "StackExchange.Redis" stehen zahlreiche Optionen zur Verfügung. In diesem 
 ConfigurationOptions|Beschreibung|Empfehlung
 ---|---|---
 AbortOnConnectFail|Wenn Sie diese Option auf "true" setzen, wird die Verbindung nach einem Netzwerkausfall nicht wiederhergestellt.|Bei Festlegung auf "false" kann "StackExchange.Redis" die Verbindung automatisch wiederherstellen.
-ConnectRetry|Die Anzahl von Versuchen für die Verbindungsherstellung bei der anfänglichen Verbindung.| Anleitungen finden Sie nachstehend. |
-ConnectTimeout|Timeout in Millisekunden für Verbindungsvorgänge.| Anleitungen finden Sie nachstehend. |
+ConnectRetry|Die Anzahl von Versuchen für die Verbindungsherstellung bei der anfänglichen Verbindung.| Die folgenden Informationen bieten eine Orientierung. |
+ConnectTimeout|Timeout in Millisekunden für Verbindungsvorgänge.| Die folgenden Informationen bieten eine Orientierung. |
 
 In den meisten Fällen reichen die Standardwerte des Clients aus. Sie können die Optionen basierend auf Ihrer Workload optimieren.
 
@@ -231,23 +231,53 @@ Der Redis-Server bietet keine integrierte SSL-Unterstützung, Azure Redis Cache 
 
 Beachten Sie, dass der Nicht-SSL-Port für neue Azure Redis Cache-Instanzen standardmäßig deaktiviert ist. Wenn Ihr Client keine SSL-Unterstützung bietet, müssen Sie den Nicht-SSL-Port mithilfe der Anweisungen im Abschnitt [Zugriffsports](cache-configure.md#access-ports) des Artikels [Konfigurieren eines Caches in Azure Redis Cache](cache-configure.md) aktivieren.
 
-Redis-Tools wie z. B. `redis-cli` funktionieren nicht mit dem SSL-Port, aber Sie können ein Hilfsprogramm wie `stunnel` verwenden, um eine sichere Verbindung zwischen den Tools und dem SSL-Port herzustellen. Anweisungen hierzu finden Sie im Blogbeitrag [Announcing ASP.NET Session State Provider for Redis Preview Release](http://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx).
+Redis-Tools wie z.B. `redis-cli` funktionieren nicht mit dem SSL-Port, aber Sie können ein Hilfsprogramm wie `stunnel` verwenden, um eine sichere Verbindung zwischen den Tools und dem SSL-Port herzustellen. Anweisungen hierzu finden Sie im Blogbeitrag [Announcing ASP.NET Session State Provider for Redis Preview Release](http://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx).
 
 Anweisungen zum Herunterladen der Redis-Tools finden Sie im Abschnitt [Wie führe ich Redis-Befehle aus?](#cache-commands).
 
 ## Häufig gestellte Fragen zur Produktion
 
+-	[Welche Best Practices gelten für die Produktion?](#what-are-some-production-best-practices)
 -	[Was muss bei der Verwendung gängiger Redis-Befehle beachtet werden?](#what-are-some-of-the-considerations-whde-DEing-common-redis-commands)
 -	[Wie kann ich die Leistung meines Caches messen und testen?](#how-can-i-benchmark-and-test-the-performance-of-my-cache)
 -	[Wichtige Details zum Threadpool-Wachstum](#important-details-about-threadpool-growth)
 -	[Aktivieren der Garbage Collection auf dem Server-, um bei Verwenden von „StackExchange.Redis“ mehr Durchsatz auf dem Client zu erzielen](#enable-server-gc-to-get-more-throughput-on-the-client-whde-DEing-stackexchangeredis)
 
+### Welche Best Practices gelten für die Produktion?
+
+-	[Best Practices für StackExchange.Redis](#stackexchangeredis-best-practices)
+-	[Konfiguration und Konzepte](#configuration-and-concepts)
+-	[Leistungstests](#performance-testing)
+
+#### Best Practices für StackExchange.Redis
+
+-	Legen Sie `AbortConnect` auf „false“ fest, und lassen Sie dann den ConnectionMultiplexer automatisch eine neue Verbindung herstellen. [Ausführliche Informationen finden Sie hier](https://gist.github.com/JonCole/36ba6f60c274e89014dd#file-se-redis-setabortconnecttofalse-md).
+-	Verwenden Sie den ConnectionMultiplexer wieder – erstellen Sie nicht für jede Anforderung einen neuen ConnectionMultiplexer. Es wird dringend empfohlen, das [hier gezeigte](cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache) `Lazy<ConnectionMultiplexer>`-Muster zu verwenden.
+-	Redis funktioniert am besten mit kleineren Werten, deshalb sollten Sie die Aufteilung großer Daten in mehrere Schlüssel erwägen. In [dieser Diskussion zu Redis](https://groups.google.com/forum/#!searchin/redis-db/size/redis-db/n7aa2A4DZDs/3OeEPHSQBAAJ) werden 100 KB als „groß“ betrachtet. Lesen Sie [diesen Artikel](https://gist.github.com/JonCole/db0e90bedeb3fc4823c2#large-requestresponse-size) über ein beispielhaftes Problem, das durch große Werte verursacht werden kann.
+-	Konfigurieren Sie Ihre [ThreadPool-Einstellungen](#important-details-about-threadpool-growth), um Timeouts zu verhindern.
+-	Verwenden Sie mindestens den Standardwert von 5 Sekunden für connectTimeout. Dies gibt StackExchange.Redis bei einer Netzwerkunterbrechung genügend Zeit zur erneuten Verbindungsherstellung.
+-	Berücksichtigen Sie die Leistungskosten für andere Vorgänge, die Sie ausführen. Beispielsweise ist der `KEYS`-Befehl ein O(n)-Vorgang und sollte vermieden werden. Die [redis.io-Website](http://redis.io/commands/) umfasst Details zur Zeitkomplexität für jeden unterstützten Vorgang. Klicken Sie auf jeden Befehl, um die Komplexität für jeden Vorgang anzuzeigen.
+
+#### Konfiguration und Konzepte
+
+-	Verwenden Sie den Standard- oder Premium-Tarif für Produktionssysteme. Der Basic-Tarif ist ein System mit einem einzelnen Knoten, ohne Datenreplikation und ohne SLA. Verwenden Sie mindestens einen C1-Cache. C0-Caches sind nur für einfache Entwicklungs-/Testszenarien vorgesehen.
+-	Beachten Sie, dass Redis ein **In-Memory**-Datenspeicher ist. Lesen Sie [diesen Artikel](https://gist.github.com/JonCole/b6354d92a2d51c141490f10142884ea4#file-whathappenedtomydatainredis-md), um zu erfahren, in welchen Szenarien es zu einem Datenverlust kommen kann.
+-	Entwickeln Sie Ihr System so, dass es Verbindungsunterbrechungen [aufgrund von Patching- und Failovervorgängen](https://gist.github.com/JonCole/317fe03805d5802e31cfa37e646e419d#file-azureredis-patchingexplained-md) behandeln kann.
+
+#### Leistungstests
+
+-	Starten Sie mit der Verwendung von `redis-benchmark.exe`, um den möglichen Durchsatz einschätzen zu können, bevor Sie Ihre eigenen Leistungstests schreiben. Beachten Sie, dass „redis-benchmark.exe“ keine Unterstützung für SSL bietet, Sie müssen deshalb [den Nicht-SSL-Port über das Azure-Portal aktivieren](cache-configure.md#access-ports), bevor Sie den Test ausführen. Beispiele finden Sie unter [Wie kann ich die Leistung meines Caches messen und testen?](#how-can-i-benchmark-and-test-the-performance-of-my-cache)
+-	Die für den Test verwendete Client-VM sollte sich in derselben Region befinden wie Ihre Redis-Cache-Instanz.
+-	Es wird empfohlen, die Dv2-VM-Serie für Ihren Client zu verwenden, da sie über bessere Hardware verfügt und die besten Ergebnisse liefert.
+-	Stellen Sie sicher, dass die von Ihnen ausgewählte Client-VM mindestens über die gleiche Computing- und Bandbreitenkapazität verfügt wie der getestete Cache.
+-	Aktivieren Sie VRSS auf dem Clientcomputer, wenn Sie unter Windows arbeiten. [Ausführliche Informationen finden Sie hier](https://technet.microsoft.com/library/dn383582.aspx).
+-	Redis-Instanzen im Premium-Tarif verfügen über eine bessere Netzwerklatenz und einen höheren Durchsatz, weil sowohl die CPU als auch das Netzwerk auf besserer Hardware ausgeführt werden.
 
 <a name="cache-redis-commands"></a>
 ### Was muss bei der Verwendung gängiger Redis-Befehle beachtet werden?
 
 -	Sie sollten bestimmte Redis-Befehle mit langer Ausführungszeit nur dann einsetzen, wenn Sie deren Auswirkung verstehen.
--	Führen Sie beispielsweise den [KEYS](http://redis.io/commands/keys)-Befehl nicht in der Produktion aus, da die Rückgabe in Abhängigkeit von der Anzahl von Schlüsseln sehr viel Zeit in Anspruch nehmen kann. Redis ist ein Server mit Single-Threading, d. h. Befehle werden nacheinander verarbeitet. Wenn Sie nach KEYS weitere Befehle ausgeben, werden diese erst ausgeführt, wenn Redis den KEYS-Befehl verarbeitet hat.
+	-	Führen Sie beispielsweise den [KEYS](http://redis.io/commands/keys)-Befehl nicht in der Produktion aus, da die Rückgabe in Abhängigkeit von der Anzahl von Schlüsseln sehr viel Zeit in Anspruch nehmen kann. Redis ist ein Server mit Single-Threading, d. h. Befehle werden nacheinander verarbeitet. Wenn Sie nach KEYS weitere Befehle ausgeben, werden diese erst ausgeführt, wenn Redis den KEYS-Befehl verarbeitet hat. Die [redis.io-Website](http://redis.io/commands/) umfasst Details zur Zeitkomplexität für jeden unterstützten Vorgang. Klicken Sie auf jeden Befehl, um die Komplexität für jeden Vorgang anzuzeigen.
 -	Schlüsselgrößen – sollte ich kleine Schlüssel/Werte oder große Schlüssel/Werte verwenden? Dies hängt im Allgemeinen vom Szenario ab. Wenn Ihre Szenarios größere Schlüssel erfordern, können Sie die ConnectionTimeout- und retry-Werte sowie die Logik für erneute Verbindungsversuche anpassen. In Bezug auf den Redis-Server führen kleinere Werte zu einer besseren Leistung.
 -	Dies bedeutet jedoch nicht, dass Sie in Redis keine größeren Werte speichern können – Sie müssen sich lediglich der folgenden Punkte bewusst sein. Latenzen sind höher. Wenn Sie über einen größeren und einen kleineren Datensatz verfügen, können Sie mehrere ConnectionMultiplexer-Instanzen verwenden und jede mit einem anderen Satz an Werten für Timeout und erneute Verbindungsherstellung konfigurieren – wie im vorangegangenen Abschnitt [Was bewirken die StackExchange.Redis-Konfigurationsoptionen?](#cache-configuration) beschrieben.
 
@@ -263,6 +293,15 @@ Anweisungen zum Herunterladen der Redis-Tools finden Sie im Abschnitt [Wie führ
 -	Wenn Ihre Datenlast zu einer hohen Arbeitsspeicherfragmentierung führt, sollte Sie eine zentrale Skalierung auf einen größeren Cache durchführen.
 -	Anweisungen zum Herunterladen der Redis-Tools finden Sie im Abschnitt [Wie führe ich Redis-Befehle aus?](#cache-commands).
 
+Es folgt ein Beispiel für die Verwendung von „redis-benchmark.exe“. Führen Sie diesen Befehl von einem virtuellen Computer in derselben Region wie Ihr Cache aus, um genaue Ergebnisse zu erhalten.
+
+-	Test von SET-Anforderungen in der Pipeline mithilfe einer 1-K-Nutzlast
+
+    redis-benchmark.exe -h **IhrCache**.redis.cache.windows.net -a **IhrZugriffsschlüssel** -t SET -n 1000000 -d 1024 -P 50
+	
+-	Test von GET-Anforderungen in der Pipeline mithilfe einer 1-K-Nutzlast HINWEIS: Führen Sie zunächst den oben gezeigten SET-Test aus, um den Cache zu füllen.
+	
+    redis-benchmark.exe -h **IhrCache**.redis.cache.windows.net -a **IhrZugriffsschlüssel** -t GET -n 1000000 -d 1024 -P 50
 
 <a name="threadpool"></a>
 ### Wichtige Details zum Threadpool-Wachstum
@@ -334,28 +373,27 @@ Microsoft Azure Redis Cache-Instanzen können im [Azure-Portal](https://portal.a
 
 Der Abschnitt **Support und Problembehandlung** auf dem Redis Cache-Blatt **Einstellungen** enthält auch verschiedene Tools zur Überwachung und Problembehandlung Ihrer Caches.
 
--	**Problembehandlung** bietet Informationen zu gängigen Problemen sowie Strategien zu deren Behebung.
--	**Überwachungsprotokolle** bietet Informationen zu Aktionen, die für Ihren Cache erfolgt sind. Sie können auch filtern, um diese Ansicht zum Einbeziehen anderer Ressourcen zu erweitern.
--	Die Informationen zur **Ressourcenintegrität** dienen zum Überwachen Ihrer Ressource, d.h. ob sie wie erwartet ausgeführt wird. Weitere Informationen zum Azure Resource Health-Dienst finden Sie in der [Übersicht über Azure Resource Health](../resource-health/resource-health-overview.md).
+-	**Problembehandlung** bietet Informationen zu häufigen Problemen sowie Strategien zu deren Behebung.
+-	**Überwachungsprotokolle** bietet Informationen zu Aktionen, die für Ihren Cache ausgeführt werden. Sie können auch filtern, um diese Ansicht zum Einbeziehen anderer Ressourcen zu erweitern.
+-	Die Informationen zur **Ressourcenintegrität** dienen zum Überwachen Ihrer Ressource und informieren Sie darüber, ob sie wie erwartet ausgeführt wird. Weitere Informationen zum Azure Resource Health-Dienst finden Sie in der [Übersicht über Azure Resource Health](../resource-health/resource-health-overview.md).
 -	**Neue Supportanfrage** bietet Optionen, um eine Supportanfrage für Ihren Cache zu öffnen.
 
 Diese Tools ermöglichen es Ihnen, die Integrität Ihrer Azure Redis Cache-Instanzen zu überwachen und unterstützen Sie beim Verwalten Ihrer Cachinganwendungen. Weitere Informationen finden Sie im Abschnitt [Einstellungen für Support und Problembehandlung](cache-configure.md#support-amp-troubleshooting-settings).
 
 ### Die Einstellungen meines Speicherkontos für die Cachediagnose haben sich geändert. Was ist passiert?
 
-Für Caches innerhalb derselben Region und desselben Abonnements gelten die gleichen Speichereinstellungen für Diagnosedaten. Wenn die Konfiguration geändert wird (durch Aktivieren/Deaktivieren der Diagnose oder Ändern des Speicherkontos), gilt diese Änderung für alle Caches dieses Abonnements in dieser Region. Wenn sich die Diagnoseeinstellungen für Ihren Cache geändert haben, überprüfen Sie, ob sich die Diagnoseeinstellungen für einen anderen Cache im selben Abonnement und derselben Region geändert haben. Eine Möglichkeit zum Überprüfen ist das Anzeigen der Überwachungsprotokolle für Ihren Cache für ein `Write DiagnosticSettings`-Ereignis. Weitere Informationen zum Arbeiten mit Überwachungsprotokollen finden Sie unter [Anzeigen von Ereignissen und Überwachungsprotokollen](../azure-portal/insights-debugging-with-events.md) und [Überwachen von Vorgängen mit Resource Manager](../resource-group-audit.md). Weitere Informationen zum Überwachen von Azure Redis Cache-Ereignissen finden Sie unter [Vorgänge und Warnungen](cache-how-to-monitor.md#operations-and-alerts).
+Für Caches innerhalb derselben Region und desselben Abonnements gelten die gleichen Diagnosespeichereinstellungen. Wenn die Konfiguration geändert wird (durch Aktivieren/Deaktivieren der Diagnose oder Ändern des Speicherkontos), gilt diese Änderung für alle Caches dieses Abonnements in dieser Region. Wenn sich die Diagnoseeinstellungen für Ihren Cache geändert haben, überprüfen Sie, ob sich die Diagnoseeinstellungen für einen anderen Cache im selben Abonnement und derselben Region geändert haben. Eine Möglichkeit besteht darin, die Überwachungsprotokolle für Ihren Cache auf ein `Write DiagnosticSettings`-Ereignis zu überprüfen. Weitere Informationen zum Arbeiten mit Überwachungsprotokollen finden Sie unter [Anzeigen von Ereignissen und Überwachungsprotokollen](../azure-portal/insights-debugging-with-events.md) und [Überwachen von Vorgängen mit Resource Manager](../resource-group-audit.md). Weitere Informationen zum Überwachen von Azure Redis Cache-Ereignissen finden Sie unter [Vorgänge und Warnungen](cache-how-to-monitor.md#operations-and-alerts).
 
 ### Warum ist die Diagnose für einige neue Caches aktiviert, für andere dagegen nicht?
 
-Caches in derselben Region und in im selben Abonnement haben die gleichen Diagnosespeichereinstellungen. Wenn Sie einen neuen Cache in derselben Region und im selben Abonnement wie einen anderen Cache erstellen, für den die Diagnose aktiviert ist, wird die Diagnose für den neuen Cache mit denselben Einstellungen aktiviert.
+Caches in derselben Region und im selben Abonnement haben die gleichen Diagnosespeichereinstellungen. Wenn Sie einen neuen Cache in derselben Region und im selben Abonnement wie einen anderen Cache erstellen, für den die Diagnose aktiviert ist, wird die Diagnose für den neuen Cache mit denselben Einstellungen aktiviert.
 
 
 <a name="cache-timeouts"></a>
 ### Warum kommt es zu Timeouts?
 
-Timeouts treten auf dem Client auf, der mit Redis kommuniziert. In der Regel kommt es auf dem Redis-Server nicht zu Timeouts. Wenn ein Befehl an den Redis-Server gesendet wird, wird dieser in die Warteschlange eingereiht, bis der Redis-Server den Befehl auswählt und ausführt. Auf dem Client kann es bei diesem Vorgang zu einem Timeout kommen. In diesem Fall wird auf der aufrufenden Seite eine Ausnahme ausgelöst. Weitere Informationen zur Behandlung von Timeoutproblemen finden Sie unter [Behandeln von clientseitigen Problemen](cache-how-to-troubleshoot.md#client-side-troubleshooting) und [StackExchange.Redis-Timeoutausnahmen](Behandeln von clientseitigen Problemen](cache-how-to-troubleshoot.md#stackexchangeredis-timeout-exceptions).
+Timeouts treten auf dem Client auf, der mit Redis kommuniziert. In der Regel kommt es auf dem Redis-Server nicht zu Timeouts. Wenn ein Befehl an den Redis-Server gesendet wird, wird dieser in die Warteschlange eingereiht, bis der Redis-Server den Befehl auswählt und ausführt. Auf dem Client kann es bei diesem Vorgang zu einem Timeout kommen. In diesem Fall wird auf der aufrufenden Seite eine Ausnahme ausgelöst. Weitere Informationen zur Behandlung von Timeoutproblemen finden Sie unter [Behandeln von clientseitigen Problemen](cache-how-to-troubleshoot.md#client-side-troubleshooting) und [StackExchange.Redis-Timeoutausnahmen](cache-how-to-troubleshoot.md#stackexchangeredis-timeout-exceptions).
 
-'<-- Loc Comment: Broken link: [StackExchange.Redis timeout exceptions](Client side troubleshooting](cache-how-to-troubleshoot.md#stackexchangeredis-timeout-exceptions). "(Client side troubleshooting]" should be removed. -->'
 
 <a name="cache-disconnect"></a>
 ### Warum wurde mein Client vom Cache getrennt?
@@ -410,5 +448,4 @@ Weitere Informationen zu den ersten Schritten mit Azure Redis Cache finden Sie u
 
 [Konfigurationseinstellung „minIoThreads“]: https://msdn.microsoft.com/library/vstudio/7w2sway1(v=vs.100).aspx
 
-
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0817_2016-->

@@ -85,11 +85,11 @@ Aktualisieren Sie dann die Projektabhängigkeiten, damit die Binärdateien herun
 Laden Sie den entsprechenden Appender herunter, extrahieren Sie ihn, und fügen Sie Ihrem Projekt die entsprechende Bibliothek hinzu:
 
 
-Protokollierungstool | Herunterladen | Bibliothek
+Protokollierungstool | Download | Bibliothek
 ----|----|----
-Logback|[SDK mit Logback-Appender](https://azuredownloads.blob.core.windows.net/applicationinsights/logbackAppender.zip)|applicationinsights-logging-logback
-Log4J v2. 0|[SDK mit Log4J-v2-Appender](https://azuredownloads.blob.core.windows.net/applicationinsights/log4j2Appender.zip)|applicationinsights-logging-log4j2 
-Log4J v1. 2|[SDK mit Log4J-v1. 2-Appender](https://azuredownloads.blob.core.windows.net/applicationinsights/log4j1_2Appender.zip)|applicationinsights-logging-log4j1\_2 
+Logback|[SDK mit Logback-Appender](https://aka.ms/xt62a4)|applicationinsights-logging-logback
+Log4J v2. 0|[SDK mit Log4J-v2-Appender](https://aka.ms/qypznq)|applicationinsights-logging-log4j2 
+Log4J v1. 2|[SDK mit Log4J-v1. 2-Appender](https://aka.ms/ky9cbo)|applicationinsights-logging-log4j1\_2 
 
 
 
@@ -151,4 +151,4 @@ Nachdem Sie das Projekt so konfiguriert haben, dass Ablaufverfolgungen an Applic
 
  
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0817_2016-->

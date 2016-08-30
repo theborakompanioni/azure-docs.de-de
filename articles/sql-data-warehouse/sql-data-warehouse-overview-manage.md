@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="06/13/2016"
+   ms.date="08/16/2016"
    ms.author="barbkess;sonyama;"/>
 
 # Verwalten von Datenbanken in Azure SQL Data Warehouse
@@ -46,7 +46,7 @@ Mit [SQL Server Data Tools][] (SSDT) in Visual Studio können Sie eine Verbindun
 
 SSDT enthält den SQL Server-Objekt-Explorer, mit dem Sie SQL Data Warehouse-Datenbanken visuell darstellen, Verbindungen zu diesen herstellen und Skripts für sie ausführen können. Um eine schnelle Verbindung mit SQL Data Warehouse herzustellen, klicken Sie einfach in der Befehlsleiste auf die Schaltfläche **In Visual Studio öffnen**, während Sie die Datenbankdetails im klassischen Azure-Portal anzeigen.
 
-Informationen zum Einstieg in SSDT in Visual Studio finden Sie unter [Herstellen einer Verbindung mit Azure SQL Data Warehouse über Visual Studio][].
+Informationen zum Einstieg mit SSDT in Visual Studio finden Sie unter [Abfragen von Azure SQL Data Warehouse mit Visual Studio][].
 
 ### Befehlszeilentools
 Befehlszeilentools eignen sich ideal für die Automatisierung Ihrer Workloads. PowerShell und SQLCMD sind zwei großartige Möglichkeiten, Ihre Prozesse zu automatisieren. Diese Tools werden für die Verwaltung einer großen Anzahl von logischen Servern und die Bereitstellung von Ressourcenänderungen in einer Produktionsumgebung empfohlen, da die erforderlichen Aufgaben durch Skripts ausgeführt und automatisiert werden können.
@@ -100,7 +100,7 @@ Ein sinnvoller Datenbankentwurf erleichtert die Verwaltung Ihrer Datenbanken in 
 [Erstellen eines SQL Data Warehouse (Azure-Portal)]: sql-data-warehouse-get-started-provision.md
 [Erstellen einer Datenbank (PowerShell)]: sql-data-warehouse-get-started-provision-powershell
 [connection]: sql-data-warehouse-develop-connections.md
-[Herstellen einer Verbindung mit Azure SQL Data Warehouse über Visual Studio]: sql-data-warehouse-get-started-connect.md
+[Abfragen von Azure SQL Data Warehouse mit Visual Studio]: sql-data-warehouse-query-visual-studio.md
 [Verbinden und Abfragen mit SQLCMD]: sql-data-warehouse-get-started-connect-sqlcmd.md
 [Entwicklungsübersicht]: sql-data-warehouse-overview-develop.md
 [Überwachen Ihrer Workload mit DMVs]: sql-data-warehouse-manage-monitor.md
@@ -118,4 +118,4 @@ Ein sinnvoller Datenbankentwurf erleichtert die Verwaltung Ihrer Datenbanken in 
 <!--Other web references-->
 [Azure-Portal]: http://portal.azure.com/
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0817_2016-->

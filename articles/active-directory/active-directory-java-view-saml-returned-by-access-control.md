@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="Java"
     ms.topic="article"
-    ms.date="06/24/2016" 
+    ms.date="08/11/2016" 
     ms.author="robmcm" />
 
 # Anzeigen der vom Azure Access Control Service zurückgegebenen SAML
@@ -31,7 +31,7 @@ Der Azure Access Control Service-Filter ist eine Technologievorschau für die Co
 
 Um die Aufgaben in dieser Anleitung erledigen zu könne, müssen Sie zunächst das Beispiel unter [Authentifizieren von Webbenutzern mit dem Azure Access Control Service über Eclipse][] abschließen und als Ausgangspunkt für dieses Lernprogramm verwenden.
 
-## Fügen Sie die JspWriter-Bibliothek zu Ihrem Buildpfad und zu Ihrer Bereitstellungs-Assembly hinzu
+## Hinzufügen der JspWriter-Bibliothek zu Ihrem Buildpfad und zu Ihrer Bereitstellungsassembly
 
 Fügen Sie die Bibliothek mit der Klasse **javax.servlet.jsp.JspWriter** zu Ihrem Buildpfad und zu Ihrer Bereitstellungs-Assembly hinzu. Falls Sie Tomcat verwenden, ist diese Klasse in der Datei **jsp-api.jar** enthalten, die sich im Apache **lib**-Ordner befindet.
 
@@ -196,4 +196,4 @@ Wenn Sie die ACS-Funktionalität genauer erforschen und mit anspruchsvolleren Sz
 [saml_output]: ./media/active-directory-java-view-saml-returned-by-access-control/SAML_Output.png
  
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0817_2016-->

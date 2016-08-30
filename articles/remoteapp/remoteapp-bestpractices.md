@@ -12,10 +12,13 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="06/13/2016"
+    ms.date="08/15/2016"
     ms.author="elizapo" />
 
 # Bewährte Methoden zum Konfigurieren und Verwenden von Azure RemoteApp
+
+> [AZURE.IMPORTANT]
+Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148).
 
 Die folgenden Informationen sollen Ihnen bei der Konfiguration und der produktiven Verwendung von Azure RemoteApp behilflich sein.
 
@@ -23,7 +26,7 @@ Die folgenden Informationen sollen Ihnen bei der Konfiguration und der produktiv
 
 
 - Verwenden Sie immer die neueste Clientversion. Bei Verwendung älterer Clients können Verbindungsprobleme und andere Beeinträchtigungen auftreten. Durch das Aktivieren automatischer Anwendungsupdates für Ihr Gerät ist sichergestellt, dass immer der neueste Client installiert ist.
-- Verwenden Sie immer die stabilste und zuverlässigste Internetverbindung.  
+- Verwenden Sie immer die stabilste und zuverlässigste Internetverbindung.
 - Verwenden Sie nur unterstützte Proxy-Verbindungen für eine optimale Verbindungsqualität. Der SOCKS-Proxy wird nicht unterstützt.
 
 ## Anwendungen
@@ -35,7 +38,7 @@ Die folgenden Informationen sollen Ihnen bei der Konfiguration und der produktiv
 ## Konfiguration und Verwaltung
 
 
-- Halten Sie die Vorlagenimages auf dem neuesten Stand, und installieren Sie nach Bedarf Softwareupdates und andere wichtige Hotfixes und Patches. Dadurch ist gewährleistet, dass bei der automatischen Anpassung von Azure RemoteApp an Ihre Kapazität jede Instanz gepatcht wird.  
+- Halten Sie die Vorlagenimages auf dem neuesten Stand, und installieren Sie nach Bedarf Softwareupdates und andere wichtige Hotfixes und Patches. Dadurch ist gewährleistet, dass bei der automatischen Anpassung von Azure RemoteApp an Ihre Kapazität jede Instanz gepatcht wird.
 - Sorgen Sie für eine sichere und zuverlässige Bereitstellung von Active Directory Federation Services (AD FS). Sonst treten bei Clientauthentifizierungen möglicherweise Fehler auf, und die Benutzer können nicht auf Azure RemoteApp zugreifen.
 - Achten Sie beim Konfigurieren von Vorlagenimages mit installierten Anwendungen, Rollen oder Features darauf, dass sie keinen Status aufweisen. Sie sollten sich nicht auf eine Instanz der virtuellen Computer in einem RemoteApp-Dienst, der sich in einem permanenten Status befindet, stützen.
 	- Speichern Sie alle Benutzerdaten in Benutzerprofilen oder an anderen externen Speicherorten (außerhalb des Diensts), wie z. B. in lokalen Dateifreigaben oder auf OneDrive.
@@ -43,4 +46,4 @@ Die folgenden Informationen sollen Ihnen bei der Konfiguration und der produktiv
 	- Konfigurieren Sie systemweite Einstellungen im Vorlagenimage und nicht auf einzelnen virtuellen Computern in einem Dienst.
 	- Deaktivieren Sie automatische Softwareupdates für veröffentlichte Anwendungen – wenden Sie Updates stattdessen manuell auf das Vorlagenimage an, und testen Sie sie, bevor Sie sie über die Vorlage bereitstellen.
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0817_2016-->

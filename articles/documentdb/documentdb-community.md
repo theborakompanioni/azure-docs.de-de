@@ -13,7 +13,7 @@
   ms.topic="article"
   ms.tgt_pltfrm="na"
   ms.workload="data-services"
-  ms.date="07/06/2016"
+  ms.date="08/17/2016"
   ms.author="andrl"/>
 
 # Communityportal
@@ -120,7 +120,9 @@ Sie können über aktuelle DocumentDB-Nachrichten und -Features auf dem Laufende
 
 | Veranstaltungsname | Referent | Ort | Datum | Hashtag |
 | -------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- | -------------------- | ------------------------ | ------- |
+| [Capital City .NET Users Group](https://www.meetup.com/tally-dot-net/events/233070827/) | Santosh Hari | Tallahassee, Florida | 1\. September 2016 | – |
 | [Ignite 2016](https://myignite.microsoft.com/sessions?q=documentdb) | Andrew Liu und Tara Jana | Atlanta (Georgia, USA) | 26\.-30. September 2016 | [#MSIgnite](https://twitter.com/MS_Ignite) |
+| [Strata + Hadoop World](http://conferences.oreilly.com/strata/hadoop-big-data-ny/?cmp=kn-data-confreg-home-stny16_bing_branded) | TBD | New York, NY | 26\. bis 29. September 2016 | [#StrataConf](https://twitter.com/strataconf) |
 
 
 *Sprechen Sie auf einer Veranstaltung oder organisieren Sie sie? [Teilen Sie uns mit, ](mailto:askdocdb@microsoft.com)wie wir helfen können!*
@@ -129,7 +131,7 @@ Sie können über aktuelle DocumentDB-Nachrichten und -Features auf dem Laufende
 
 | Veranstaltungsname | Referent | Ort | Datum | Aufzeichnung |
 | -------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- | -------------------- | ---------------------- | --------- |
-| [DevTeach](http://devteach.com/) | Ken Cenerelli | Montreal (Kanada) | 4\.-8. Juli 2016 | [NoSQL, No Problem, Using Azure DocumentDB](http://www.slideshare.net/KenCenerelli) (NoSQL, Kein Problem, Verwenden von Azure DocumentDB) |
+| [DevTeach](http://devteach.com/) | Ken Cenerelli | Montreal (Kanada) | 4\.-8. Juli 2016 | [NoSQL, No Problem, Using Azure DocumentDB (NoSQL, Kein Problem, Verwenden von Azure DocumentDB)](http://www.slideshare.net/KenCenerelli) |
 | [Integration und IoT ](http://www.btug.be/events) | Eldert Grootenboer | Kontich, Belgien | 30\. Juni 2016 | – |
 | [MongoDB World 2016](https://www.mongodb.com/world16) | Kirill Gavrylyuk | New York (New York, USA) | 28\.-29. Juni 2016 | – |
 | [Integration User Group](http://www.integrationusergroup.com/do-logic-apps-support-error-handling/) | Howard S. Edidin | Webcast | 20\. Juni 2016 | [Do Logic Apps support error handling? (Unterstützen Logik-Apps die Fehlerbehandlung?)](http://www.integrationusergroup.com/do-logic-apps-support-error-handling/) |
@@ -161,7 +163,7 @@ Sie können über aktuelle DocumentDB-Nachrichten und -Features auf dem Laufende
 | [@Scale Seattle](http://www.atscaleconference.com/) | Dharma Shukla | Seattle, WA | 17\. Juni 2015 | [Schema Agnostic Indexing with Azure DocumentDB](https://www.youtube.com/watch?v=VJQ_5qFFVP4) |
 | [Tech Refresh 2015](https://channel9.msdn.com/Events/DXPortugal/Tech-Refresh-2015) | Bruno Lopes | Lissabon, Portugal | 15\. Juni 2015 | [DocumentDB 101](https://channel9.msdn.com/Events/DXPortugal/Tech-Refresh-2015/DPDEV01) |
 | [SQL Samstag #417 – Sri Lanka 2015](http://www.sqlsaturday.com/417/Sessions/Details.aspx?sid=21415) | Mihail Mateev | Colombo, Sri Lanka | 06\. Juni 2015 | – |
-| [Meetup:Seattle Scalability Meetup](http://www.meetup.com/Seattle-Scalability-Meetup/events/204010442/) | Dharma Shukla | Seattle, WA | 27\. Mai 2015 | – |
+| [Meetup: Seattle Scalability Meetup](http://www.meetup.com/Seattle-Scalability-Meetup/events/204010442/) | Dharma Shukla | Seattle, WA | 27\. Mai 2015 | – |
 | [SQL Samstag #377 – Kiew 2015](http://www.sqlsaturday.com/377/Sessions/Details.aspx?sid=20322) | Mihail Mateev | Kiew, Ukraine | 23\. Mai 2015 | – |
 | [Database Month](http://www.databasemonth.com/database/azure-documentdb) | Dharma Shukla | New York, NY | 19\. Mai 2015 | [Azure DocumentDB: Massively-Scalable,­ Multi-Tenant Document Database Service](https://www.youtube.com/watch?v=iZsqBc3Dkbk) |
 | [Meetup: London SQL Server User Group](http://www.meetup.com/London-SQL-Server-User-Group/events/221525058/) | Allan Mitchell | London, Großbritannien | 19\. Mai 2015 | – |
@@ -229,7 +231,7 @@ Folgen Sie uns auf Twitter ([@DocumentDB](https://twitter.com/DocumentDB)), um u
 
 ![Team](./media/documentdb-community/documentdb-team.png)
 
-Benötigen Sie technische Hilfe? Haben Sie Fragen? Fragen Sie sich, ob NoSQL eine gute Option für Sie ist? Sie können [einen direkten persönlichen Chat mit dem DocumentDB-Entwicklungsteam planen](http://www.askdocdb.com/). Sie können uns auch eine [E-Mail](mailto:askdocdb@microsoft.com) schicken oder unter [@DocumentDB](https://twitter.com/DocumentDB) einen Tweet senden.
+Benötigen Sie technische Hilfe? Haben Sie Fragen? Fragen Sie sich, ob NoSQL eine gute Option für Sie ist? Sie können [einen direkten 1:1-Chat mit dem DocumentDB-Engineeringteam planen](http://www.askdocdb.com/). Sie können uns auch eine [E-Mail](mailto:askdocdb@microsoft.com) schicken oder unter [@DocumentDB](https://twitter.com/DocumentDB) einen Tweet senden.
 
 ## Open Source-Projekte
 
@@ -266,4 +268,4 @@ Assistent | Bild
 
 Möchten Sie ein DocumentDB-Genie werden? Wenngleich es nicht unbedingt ein bestimmtes Kriterium gibt, das erfüllt sein muss, um ein DocumentDB-Genie zu werden, bewerten wir u. a. den Einfluss der Beiträge des Kandidaten zu Onlineforen wie StackOverflow und MSDN, Wikis, Online-Inhalten, Konferenzen, Benutzergruppen, Podcasts, Websites, Blogs und sozialen Medien sowie Artikeln und Büchern. [Senden uns eine E-Mail](mailto:askdocdb@microsoft.com), um sich selbst oder jemand anderen vorzuschlagen.
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0817_2016-->

@@ -13,12 +13,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="06/08/2016"
+   ms.date="08/11/2016"
    ms.author="tomfitz"/>
 
 # Verwenden von verknüpften Vorlagen mit Azure-Ressourcen-Manager
 
-Aus einer Azure-Ressourcen-Manager-Vorlage heraus können Sie einen Link zu einer anderen Vorlage herstellen, sodass Sie die Bereitstellung in eine Reihe von ausgewählten und zweckgebundenen Vorlagen zerlegen können. Wie das Zerlegen einer Anwendung in eine Reihe von Codeklassen bietet diese Zerlegung Vorteile in Bezug auf Tests, Wiederverwendung und Lesbarkeit.
+Aus einer Azure Resource Manager-Vorlage heraus können Sie einen Link zu einer anderen Vorlage herstellen, sodass Sie die Bereitstellung in eine Reihe von ausgewählten und zweckgebundenen Vorlagen zerlegen können. Wie das Zerlegen einer Anwendung in mehrere Codeklassen bietet diese Zerlegung Vorteile in Bezug auf Tests, Wiederverwendung und Lesbarkeit.
 
 Sie können Parameter aus einer Hauptvorlage an eine verknüpfte Vorlage übergeben, und diese Parameter können direkt Parametern oder Variablen zugeordnet werden, die von der aufrufenden Vorlage verfügbar gemacht werden. Die verknüpfte Vorlage kann auch eine Ausgabevariable zurück an die Quellvorlage übergeben, wodurch ein bidirektionaler Datenaustausch zwischen Vorlagen ermöglicht wird.
 
@@ -44,14 +44,14 @@ Sie erstellen einen Link zwischen zwei Vorlagen durch Hinzufügen einer Bereitst
       } 
     ] 
 
-Der Ressourcen-Manager-Dienst muss in der Lage sein, auf die verknüpften Vorlagen zuzugreifen. Dies bedeutet, dass Sie keine lokale Datei und keine Datei, die nur in Ihrem lokalen Netzwerk verfügbar ist, für die verknüpfte Vorlage angeben können. Sie müssen einen URI-Wert bereitstellen, der entweder **http** oder **https** enthält. Eine Option besteht darin, Ihre verknüpfte Vorlage in einem Speicherkonto zu platzieren und den URI für dieses Element zu verwenden, wie nachfolgend gezeigt.
+Der Resource Manager-Dienst muss auf die verknüpfte Vorlage zugreifen können. Sie können keine lokale Datei und keine Datei, die nur in Ihrem lokalen Netzwerk verfügbar ist, für die verknüpfte Vorlage angeben. Sie müssen einen URI-Wert bereitstellen, der entweder **http** oder **https** enthält. Eine Option besteht darin, Ihre verknüpfte Vorlage in einem Speicherkonto zu platzieren und den URI für dieses Element zu verwenden, wie im folgenden Beispiel gezeigt.
 
     "templateLink": {
         "uri": "http://mystorageaccount.blob.core.windows.net/templates/template.json",
         "contentVersion": "1.0.0.0",
     }
 
-Obwohl die verknüpfte Vorlage extern verfügbar sein muss, muss sie der Öffentlichkeit nicht allgemein zur Verfügung stehen. Sie können Ihre Vorlage einem privates Speicherkonto hinzufügen, auf das nur der Speicherkontobesitzer Zugriff hat, und anschließend ein SAS-Token (Shared Access Signature) erstellen, um den Zugriff während der Bereitstellung zu ermöglichen. Sie fügen dieses SAS-Token dem URI für die verknüpfte Vorlage hinzu. Schritte zum Einrichten einer Vorlage in einem Speicherkonto und zum Generieren eines SAS-Tokens finden Sie unter [Bereitstellen von Ressourcen mit dem Resource Manager-Vorlagen und Azure PowerShell](resource-group-template-deploy.md) oder [Bereitstellen von Ressourcen mit Resource Manager-Vorlage und Azure-CLI](resource-group-template-deploy-cli.md).
+Obwohl die verknüpfte Vorlage extern verfügbar sein muss, muss sie der Öffentlichkeit nicht allgemein zur Verfügung stehen. Sie können Ihre Vorlage einem privaten Speicherkonto hinzufügen, auf das nur der Speicherkontobesitzer Zugriff hat. Anschließend erstellen Sie ein SAS-Token (Shared Access Signature), um den Zugriff während der Bereitstellung zu ermöglichen. Sie fügen dieses SAS-Token dem URI für die verknüpfte Vorlage hinzu. Schritte zum Einrichten einer Vorlage in einem Speicherkonto und zum Generieren eines SAS-Tokens finden Sie unter [Bereitstellen von Ressourcen mit dem Resource Manager-Vorlagen und Azure PowerShell](resource-group-template-deploy.md) oder [Bereitstellen von Ressourcen mit Resource Manager-Vorlage und Azure-CLI](resource-group-template-deploy-cli.md).
 
 Im folgenden Beispiel wird eine übergeordnete Vorlage gezeigt, die mit einer anderen Vorlage verknüpft ist. Der Zugriff auf die geschachtelte Vorlage erfolgt mithilfe eines SAS-Tokens, das als Parameter übergeben wird.
 
@@ -125,10 +125,111 @@ Das folgende Beispiel zeigt, wie Sie eine Basis-URL verwenden können, um zwei U
         }
     }
 
-Sie können auch [Bereitstellung()](resource-group-template-functions.md#deployment) verwenden, um die Basis-URL für die aktuelle Vorlage zu erhalten. Mit dieser können Sie die URL für die anderen Vorlagen am gleichen Speicherort abrufen. Dies ist hilfreich, wenn sich der Speicherort der Vorlage ändert (möglicherweise aufgrund einer Versionsverwaltung) oder wenn Sie es vermeiden möchten, URLs in der Vorlagendatei fest programmieren zu müssen.
+Sie können auch [Bereitstellung()](resource-group-template-functions.md#deployment) verwenden, um die Basis-URL für die aktuelle Vorlage zu erhalten. Mit dieser können Sie die URL für die anderen Vorlagen am gleichen Speicherort abrufen. Diese Vorgehensweise ist hilfreich, wenn sich der Speicherort der Vorlage ändert (möglicherweise aufgrund einer Versionsverwaltung) oder wenn Sie es vermeiden möchten, URLs in der Vorlagendatei fest programmieren zu müssen.
 
     "variables": {
         "sharedTemplateUrl": "[uri(deployment().properties.templateLink.uri, 'shared-resources.json')]"
+    }
+
+## Bedingtes Verknüpfen mit Vorlagen
+
+Sie können eine Verknüpfung mit verschiedenen Vorlagen erstellen, indem Sie einen Parameterwert übergeben, der zum Erstellen des URIs der verknüpften Vorlage verwendet wird. Dieser Ansatz eignet sich gut, wenn Sie während der Bereitstellung angeben müssen, welche verknüpfte Vorlage verwendet werden soll. Geben Sie beispielsweise eine Vorlage an, die für ein vorhandenes Speicherkonto verwendet werden soll, und geben Sie eine andere Vorlage an, die für ein neues Speicherkonto verwendet werden soll.
+
+Im folgenden Beispiel sehen Sie einen Parameter für einen Speicherkontonamen und einen Parameter, der angibt, ob das Speicherkonto neu oder bereits vorhanden ist.
+
+    "parameters": {
+        "storageAccountName": {
+            "type": "String"
+        },
+        "newOrExisting": {
+            "type": "String",
+            "allowedValues": [
+                "new",
+                "existing"
+            ]
+        }
+    },
+
+Sie erstellen eine Variable für den Vorlagen-URI mit dem Wert des neuen oder vorhandenen Parameters.
+
+    "variables": {
+        "templatelink": "[concat('https://raw.githubusercontent.com/exampleuser/templates/master/',parameters('newOrExisting'),'StorageAccount.json')]"
+    },
+
+Sie geben diesen Variablenwert für die Bereitstellungsressource an.
+
+    "resources": [
+        {
+            "apiVersion": "2015-01-01",
+            "name": "nestedTemplate",
+            "type": "Microsoft.Resources/deployments",
+            "properties": {
+                "mode": "incremental",
+                "templateLink": {
+                    "uri": "[variables('templatelink')]",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "StorageAccountName": {
+                        "value": "[parameters('storageAccountName')]"
+                    }
+                }
+            }
+        }
+    ],
+
+Der URI wird in eine Vorlage aufgelöst, die entweder den Namen **existingStorageAccount.json** oder **newStorageAccount.json** hat. Erstellen Sie Vorlagen für diese URIs.
+
+Das folgende Beispiel zeigt die Vorlage **existingStorageAccount.json**:
+
+    {
+      "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "storageAccountName": {
+          "type": "String"
+        }
+      },
+      "variables": {},
+      "resources": [],
+      "outputs": {
+        "storageAccountInfo": {
+          "value": "[reference(concat('Microsoft.Storage/storageAccounts/', parameters('storageAccountName')),providers('Microsoft.Storage', 'storageAccounts').apiVersions[0])]",
+          "type" : "object"
+        }
+      }
+    }
+
+Das nächste Beispiel zeigt die Vorlage **newStorageAccount.json**. Beachten Sie, dass das Speicherkontoobjekt wie die Vorlage für das vorhandene Speicherkonto in den Ausgaben zurückgegeben wird. Die Mastervorlage kann mit beiden geschachtelten Vorlagen verwendet werden.
+
+    {
+      "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "storageAccountName": {
+          "type": "string"
+        }
+      },
+      "resources": [
+        {
+          "type": "Microsoft.Storage/storageAccounts",
+          "name": "[parameters('StorageAccountName')]",
+          "apiVersion": "2016-01-01",
+          "location": "[resourceGroup().location]",
+          "sku": {
+            "name": "Standard_LRS"
+          },
+          "kind": "Storage",
+          "properties": {
+          }
+        }
+      ],
+      "outputs": {
+        "storageAccountInfo": {
+          "value": "[reference(concat('Microsoft.Storage/storageAccounts/', parameters('StorageAccountName')),providers('Microsoft.Storage', 'storageAccounts').apiVersions[0])]",
+          "type" : "object"
+        }
+      }
     }
 
 ## Vollständiges Beispiel
@@ -199,4 +300,4 @@ Sie werden aufgefordert, das SAS-Token als Parameter anzugeben. Sie müssen dem 
 - Informationen zum Definieren der Bereitstellungsreihenfolge Ihrer Ressourcen finden Sie unter [Definieren von Abhängigkeiten in Azure-Ressourcen-Manager-Vorlagen](resource-group-define-dependencies.md).
 - Informationen, wie Sie eine Ressource definieren und von dieser viele Instanzen erstellen, finden Sie unter [Erstellen mehrerer Instanzen von Ressourcen im Azure-Ressourcen-Manager](resource-group-create-multiple.md).
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0817_2016-->

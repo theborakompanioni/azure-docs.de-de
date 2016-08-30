@@ -83,7 +83,7 @@ Erstellen Sie anschließend folgende Ressourcen in dem Konto:
 
 	![](media/site-recovery-runbook-automation/07_1.png)
 
-Den Namen Ihres Abonnements finden Sie im Azure-Portal auf der Seite mit den Einstellungen für Ihr Konto.
+Sie finden den Namen Ihres Abonnements im Azure-Portal auf der Seite mit den Einstellungen für Ihr Konto.
 
 ### Hinzufügen der Azure-Anmeldeinformationen als Ressource
 
@@ -278,7 +278,7 @@ Wenn das Skript bereit ist, können Sie es dem zuvor erstellten Wiederherstellun
 
 ## Primäre serverseitige Skripts
 
-Wenn Sie ein Failover an Azure ausführen, können Sie auch auswählen, primäre serverseitige Skripts auszuführen. Diese Skripts werden während des Failovers auf dem VMM-Server ausgeführt. Primäre serverseitige Skripts sind nur für die Phasen vor und nach dem Herunterfahren verfügbar. Dies liegt daran, dass typischerweise zu erwarten ist, dass der primäre Standort nicht erreichbar ist, wenn ein Notfall eintritt. Bei einem ungeplanten Failover werden primäre serverseitige Skripts nur dann ausgeführt, wenn Sie sich für primäre serverseitige Vorgänge entscheiden. Wenn sie nicht erreichbar sind oder das Zeitlimit überschritten wurde, wird das Failover weiterhin die virtuellen Computer wiederherstellen. Primäre serverseitige Skripts stehen nicht für VMware/physische/Hyper-V-Sites ohne VMM in mit Schutz in Azure – während der Failover an Azure übergeben wird. Bei einem Failback von Azure an den lokalen Standort können primäre serverseitige Skrips (Runbooks) für alle Ziele außer VMware verwendet werden.
+Wenn Sie ein Failover an Azure ausführen, können Sie auch auswählen, primäre serverseitige Skripts auszuführen. Diese Skripts werden während des Failovers auf dem VMM-Server ausgeführt. Primäre serverseitige Skripts sind nur für die Phasen vor und nach dem Herunterfahren verfügbar. Dies liegt daran, dass typischerweise zu erwarten ist, dass der primäre Standort nicht erreichbar ist, wenn ein Notfall eintritt. Bei einem ungeplanten Failover werden primäre serverseitige Skripts nur dann ausgeführt, wenn Sie sich für primäre serverseitige Vorgänge entscheiden. Wenn sie nicht erreichbar sind oder das Zeitlimit überschritten wurde, wird das Failover weiterhin die virtuellen Computer wiederherstellen. Primäre serverseitige Skripts stehen nicht für VMware/physische/Hyper-V-Sites ohne VMM in mit Schutz in Azure – während der Failover an Azure übergeben wird. Bei einem Failback von Azure an den lokalen Standort können primäre serverseitige Skripts (Runbooks) jedoch für alle Ziele außer VMware verwendet werden.
 
 ## Testen des Wiederherstellungsplans
 
@@ -302,10 +302,10 @@ Nachdem Sie dem Plan das Runbook hinzugefügt haben, können Sie ein Test-Failov
 
 In diesem Lernprogramm haben Sie gesehen, wie Sie eine häufig verwendete Aufgabe (das Hinzufügen eines Endpunkts zu einem virtuellen Azure-Computer) automatisieren können. Azure Automation bietet jedoch noch viele weitere Automatisierungsmöglichkeiten. Microsoft und die Azure Automation-Community stellen Beispiel-Runbooks, die Ihnen das Erstellen eigener Lösungen erleichtern, sowie Hilfsprogramm-Runbooks zur Verfügung, die Sie als Bausteine für umfangreichere Automatisierungen verwenden können. Erstellen Sie mithilfe des Katalogs leistungsstarke, mit nur einem Klick ausführbare Wiederherstellungspläne für Ihre Anwendungen mit Azure Site Recovery.
 
-## Zusätzliche Ressourcen
+## Weitere Ressourcen
 
 [Übersicht über Azure Automation](http://msdn.microsoft.com/library/azure/dn643629.aspx "Übersicht über Azure Automation")
 
 [Beispielskripts für Azure Automation](http://gallery.technet.microsoft.com/scriptcenter/site/search?f[0].Type=User&f[0].Value=SC%20Automation%20Product%20Team&f[0].Text=SC%20Automation%20Product%20Team "Beispielskripts für Azure Automation")
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0817_2016-->

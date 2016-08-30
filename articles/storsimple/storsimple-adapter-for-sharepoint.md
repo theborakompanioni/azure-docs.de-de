@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="05/16/2016"
+   ms.date="07/11/2016"
    ms.author="v-sharos" />
 
 # Installieren und Konfigurieren des StorSimple-Adapters für SharePoint
@@ -39,7 +39,7 @@ RBS erfordert die Verwendung eines RBS-Anbieters, z. B. den StorSimple-Adapter 
 
 Die Microsoft Azure StorSimple-Implementierung von RBS bietet die folgenden Vorteile:
 
-- Indem Sie BLOB-Inhalt auf einen separaten Server verschieben, können Sie die Abfragenlast für SQL Server reduzieren. So kann die Reaktionsfähigkeit von SQL Server verbessert werden. 
+- Indem Sie BLOB-Inhalt auf einen separaten Server verschieben, können Sie die Abfragenlast für SQL Server reduzieren. So kann die Reaktionsfähigkeit von SQL Server verbessert werden.
 
 - Azure StorSimple verwendet die Deduplizierung und Komprimierung, um die Datengröße zu reduzieren.
 
@@ -59,7 +59,7 @@ Bevor Sie die Verwendung von RBS in Ihrer SharePoint-Lösung erwägen, sollten S
 
 Überprüfen Sie Folgendes, bevor Sie RBS konfigurieren:
 
-- Stellen Sie sicher, dass die Gesamtgröße des Inhalts (die Größe einer Inhaltsdatenbank zzgl. der Größe aller zugeordneten externen BLOBs) nicht die RBS-Größenbeschränkung überschreitet, die von SharePoint unterstützt wird. Dieser Grenzwert beträgt 200 GB. 
+- Stellen Sie sicher, dass die Gesamtgröße des Inhalts (die Größe einer Inhaltsdatenbank zzgl. der Größe aller zugeordneten externen BLOBs) nicht die RBS-Größenbeschränkung überschreitet, die von SharePoint unterstützt wird. Dieser Grenzwert beträgt 200 GB.
 
     **So messen Sie die Größe der Inhaltsdatenbank und BLOBs**
 
@@ -85,7 +85,7 @@ Bevor Sie die Verwendung von RBS in Ihrer SharePoint-Lösung erwägen, sollten S
 
     Wenden Sie die herkömmlichen bewährten Methoden für die SQL Server-Migration an, um die Inhaltsdatenbank auf das StorSimple-Gerät zu verschieben. Verschieben Sie die Datenbank erst, nachdem der gesamte BLOB-Inhalt aus der Datenbank per RBS auf die Dateifreigabe verschoben wurde. Wenn Sie die Inhaltsdatenbank auf das StorSimple-Gerät verschieben möchten, empfehlen wir, den Inhaltsdatenbankspeicher auf dem Gerät als primäres Volume zu konfigurieren.
 
-- In Microsoft Azure StorSimple gibt es keine Möglichkeit sicherzustellen, dass lokal auf dem StorSimple-Gerät gespeicherter Inhalt nicht mehrstufig im Microsoft Azure-Cloudspeicher abgelegt wird. Um dafür zu sorgen, dass die Inhaltsdatenbank auf dem StorSimple-Gerät verbleibt und nicht nach Microsoft Azure verschoben wird (was sich negativ auf die Reaktionszeiten der SharePoint-Transaktionen auswirken würde), ist es wichtig, die anderen Workloads auf dem StorSimple-Gerät zu verstehen und zu verwalten. Es wird empfohlen, kein StorSimple-Gerät zum Hosten von Workloads mit hohen Raten von Schreibvorgängen zu konfigurieren, wenn das Gerät bereits SharePoint-Inhaltsdatenbank-Workloads und SharePoint-Dateifreigabe-Workloads hostet.
+- Wenn Sie in Microsoft Azure StorSimple mehrstufige Volumes verwenden, gibt es keine Möglichkeit sicherzustellen, dass lokal auf dem StorSimple-Gerät gespeicherter Inhalt nicht im Microsoft Azure-Cloudspeicher abgelegt wird. Wir empfehlen daher die Verwendung lokaler StorSimple-Volumes in Verbindung mit SharePoint-RBS. So wird sichergestellt, dass alle Blobinhalte lokal auf dem StorSimple-Gerät verbleiben und nicht nach Microsoft Azure verschoben werden.
 
 - Wenn Sie die Inhaltsdatenbanken nicht auf dem StorSimple-Gerät speichern, sollten Sie herkömmliche bewährte Methoden für die hohe Verfügbarkeit von SQL Server verwenden, bei denen RBS unterstützt wird. SQL Server-Clustering unterstützt RBS, während dies für die SQL Server-Spiegelung nicht der Fall ist.
 
@@ -103,7 +103,7 @@ Stellen Sie vor der Installation des StorSimple-Adapters für SharePoint sicher,
 
 Der StorSimple-Adapter für SharePoint funktioniert mit der folgenden Hardware und Software:
 
-- Unterstützte Betriebssysteme – Windows Server 2008 R2 SP1, Windows Server 2012 und Windows Server 2012 R2 
+- Unterstützte Betriebssysteme – Windows Server 2008 R2 SP1, Windows Server 2012 und Windows Server 2012 R2
 
 - Unterstützte SharePoint-Versionen – SharePoint Server 2010 und SharePoint Server 2013
 
@@ -141,7 +141,7 @@ Wenn Sie StorSimple Snapshot Manager zum Erstellen von Momentaufnahmen der BLOB-
 
 Stellen Sie sicher, dass Ihre SharePoint-Serverfarm wie folgt richtig konfiguriert ist:
 
-- Vergewissern Sie sich, dass sich die SharePoint-Serverfarm in einem intakten Zustand befindet, und überprüfen Sie Folgendes: 
+- Vergewissern Sie sich, dass sich die SharePoint-Serverfarm in einem intakten Zustand befindet, und überprüfen Sie Folgendes:
 
 - Alle registrierten SharePoint WFE- und -Anwendungsserver der Farm werden ausgeführt und sind per Ping von dem Server aus erreichbar, auf dem Sie den StorSimple-Adapter für SharePoint installieren.
 
@@ -276,7 +276,7 @@ Nachdem Sie die BLOBs zurück in die SQL Server-Inhaltsdatenbanken verschoben ha
 
     ![Setup-Assistent](./media/storsimple-adapter-for-sharepoint/sasp2.png)
 
-3. Klicken Sie auf **Weiter**. Die folgende Seite wird angezeigt.
+3. Klicken Sie auf **Next**. Die folgende Seite wird angezeigt.
 
     ![Seite „Entfernen“ im Setup-Assistenten](./media/storsimple-adapter-for-sharepoint/sasp3.png)
 
@@ -308,4 +308,4 @@ Nachdem Sie die BLOBs zurück in die SQL Server-Inhaltsdatenbanken verschoben ha
 [5]: https://technet.microsoft.com/library/ff628583(v=office.15).aspx
 [8]: https://technet.microsoft.com/de-DE/library/ff943565.aspx
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0817_2016-->

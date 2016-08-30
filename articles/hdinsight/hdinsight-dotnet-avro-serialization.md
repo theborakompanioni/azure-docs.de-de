@@ -14,13 +14,13 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/04/2016"
+	ms.date="08/10/2016"
 	ms.author="jgao"/>
 
 
 # Serialisieren von Daten in Hadoop mit der Microsoft Avro-Bibliothek
 
-In diesem Thema erfahren Sie, wie Sie mit der <a href="https://hadoopsdk.codeplex.com/wikipage?title=Avro%20Library" target="_blank">Microsoft Avro -Bibliothek</a> Objekte und andere Datenstrukturen in Datenströme serialisieren, um sie in einer Datenbank oder einer Datei zu speichern, und wie Sie sie wieder deserialisieren, um die ursprünglichen Objekte wiederherzustellen.
+In diesem Thema erfahren Sie, wie Sie mit der <a href="https://hadoopsdk.codeplex.com/wikipage?title=Avro%20Library" target="_blank">Microsoft Avro-Bibliothek</a> Objekte und andere Datenstrukturen in Datenströme serialisieren, um sie in einer Datenbank oder einer Datei zu speichern, und wie Sie sie wieder deserialisieren, um die ursprünglichen Objekte wiederherzustellen.
 
 [AZURE.INCLUDE [nur für Windows](../../includes/hdinsight-windows-only.md)]
 
@@ -104,14 +104,14 @@ Das fünfte Beispiel zeigt die Verwendung eines benutzerdefinierten Komprimierun
 
 Das sechste Beispiel zeigt, wie mithilfe der Avro-Serialisierung Daten in Azure-Blobspeicher hochgeladen und anschließend mithilfe von Hive in einem HDInsight (Hadoop)-Cluster analysiert werden. Es kann von der Website mit <a href="https://code.msdn.microsoft.com/windowsazure/Using-Avro-to-upload-data-ae81b1e3" target="_blank">Azure-Codebeispielen</a> heruntergeladen werden.
 
-Es folgen Links zu den sechs in diesem Thema behandelten Beispielen:
+Nachfolgend finden Sie die Links zu den sechs in diesem Thema behandelten Beispielen:
 
- * <a href="#Scenario1">**Serialisierung mit Reflexion**</a> – Das JSON-Schema für die zu serialisierenden Typen wird automatisch aus den Datenvertragsattributen erstellt.
- * <a href="#Scenario2">**Serialisierung mit generischem Datensatz**</a> – Das JSON-Schema wird explizit in einem Datensatz angegeben, wenn kein .NET-Typ für die Reflexion verfügbar ist.
- * <a href="#Scenario3">** Serialisierung mithilfe von Objektcontainerdateien mit Reflexion **</a> – Das JSON-Schema wird automatisch erstellt und zusammen mit den serialisierten Daten über eine Avro-Objektcontainerdatei freigegeben.
- * <a href="#Scenario4">** Serialisierung mithilfe von Objektcontainerdateien mit generischem Datensatz **</a> – Das JSON-Schema wird vor der Serialisierung explizit angegeben und zusammen mit den Daten über eine Avro-Objektcontainerdatei freigegeben.
- * <a href="#Scenario5">** Serialisierung mithilfe von Objektcontainerdateien mit einem benutzerdefinierten Komprimierungscodec **</a> – Das Beispiel veranschaulicht, wie eine Avro-Objektcontainerdatei mit einer benutzerdefinierten .NET-Implementierung des Datenkomprimierungscodecs "Deflate" erstellt wird.
- * <a href="#Scenario6">**Verwenden von Avro zum Hochladen von Daten für den Microsoft Azure HDInsight-Dienst**</a> – Das Beispiel veranschaulicht, wie die Avro-Serialisierung mit dem HDInsight-Dienst interagiert. Zum Ausführen dieses Beispiels sind ein aktives Azure-Abonnement und Zugriff auf einen Microsoft Azure HDInsight-Cluster erforderlich.
+ * <a href="#Scenario1">**Serialisierung mit Reflexion**</a>: Das JSON-Schema für die zu serialisierenden Typen wird automatisch aus den Datenvertragsattributen erstellt.
+ * <a href="#Scenario2">**Serialisierung mit generischem Datensatz**</a>: Das JSON-Schema wird explizit in einem Datensatz angegeben, wenn kein .NET-Typ für die Reflexion verfügbar ist.
+ * <a href="#Scenario3">**Serialisierung mithilfe von Objektcontainerdateien mit Reflexion**</a>: Das JSON-Schema wird automatisch erstellt und zusammen mit den serialisierten Daten über eine Avro-Objektcontainerdatei freigegeben.
+ * <a href="#Scenario4">**Serialisierung mithilfe von Objektcontainerdateien mit generischem Datensatz**</a>: Das JSON-Schema wird vor der Serialisierung explizit angegeben und zusammen mit den Daten über eine Avro-Objektcontainerdatei freigegeben.
+ * <a href="#Scenario5">**Serialisierung mithilfe von Objektcontainerdateien mit einem benutzerdefinierten Komprimierungscodec**</a>: Das Beispiel veranschaulicht, wie eine Avro-Objektcontainerdatei mit einer benutzerdefinierten .NET-Implementierung des Datenkomprimierungscodecs „Deflate“ erstellt wird.
+ * <a href="#Scenario6">**Verwenden von Avro zum Hochladen von Daten für den Microsoft Azure HDInsight-Dienst**</a>: Das Beispiel veranschaulicht, wie die Avro-Serialisierung mit dem HDInsight-Dienst interagiert. Zum Ausführen dieses Beispiels sind ein aktives Azure-Abonnement und Zugriff auf einen Microsoft Azure HDInsight-Cluster erforderlich.
 
 ###<a name="Scenario1"></a>Beispiel 1: Serialisierung mit Reflexion
 
@@ -1382,7 +1382,7 @@ Darüber hinaus führt das Beispiel vor und nach der Ausführung wichtiger Vorg�
 
 Für das Beispiel ist Folgendes erforderlich:
 
-* Ein aktives Microsoft Azure-Abonnement samt Abonnement-ID.
+* Ein aktives Microsoft Azure-Abonnement sowie die zugehörige Abonnement-ID.
 * Ein Verwaltungszertifikat für das Abonnement mit dem entsprechenden privaten Schlüssel. Das Zertifikat muss auf dem Computer, auf dem das Beispiel ausgeführt wird, im privaten Speicher des aktuellen Benutzers installiert werden.
 * Ein aktiver Azure HDInsight-Cluster.
 * Ein Azure-Speicherkonto, das mit dem HDInsight-Cluster aus der vorhergehenden Vorbedingung verknüpft ist, zusammen mit dem entsprechenden primären oder sekundären Zugriffsschlüssel.
@@ -1403,4 +1403,4 @@ Führen Sie zum Aufräumen des Clusters den folgenden Befehl aus:
 [deflate-100]: http://msdn.microsoft.com/library/system.io.compression.deflatestream(v=vs.100).aspx
 [deflate-110]: http://msdn.microsoft.com/library/system.io.compression.deflatestream(v=vs.110).aspx
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0817_2016-->

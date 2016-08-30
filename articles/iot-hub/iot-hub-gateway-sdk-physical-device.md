@@ -43,7 +43,7 @@ Das Gateway enthält die folgenden Module:
 - Ein *BLE-Modul*, das über eine Schnittstelle mit einem BLE-Gerät verbunden ist, um Temperaturdaten von dem Gerät zu empfangen und Befehle an das Gerät zu senden.
 - Ein *Protokollierungsmodul*, das Nachrichtenbus-Diagnosedaten generiert.
 - Ein *Identitätszuordnungsmodul*, das zwischen BLE-Gerät-MAC-Adressen und Azure IoT Hub-Geräteidentitäten übersetzt.
-- Ein *IoT Hub-HTTP-Modul*, das die Telemetriedaten in einen IoT-Hub hochlädt und Gerätebefehle von einem IoT-Hub empfängt.
+- Ein *IoT Hub-HTTP-Modul*, das die Telemetriedaten in einen IoT Hub hochlädt und Gerätebefehle von einem IoT Hub empfängt.
 - Ein *BLE-Druckermodul*, das die Telemetriedaten von dem BLE-Gerät interpretiert und formatierte Daten an die Konsole ausgibt, um Problembehandlung und Debuggen zu aktivieren.
 
 ### Datenfluss über das Gateway
@@ -57,14 +57,14 @@ Folgende Schritte legt ein Telemetrieelement auf dem Weg von einem BLE-Gerät zu
 1. Das BLE-Gerät generiert eine Temperaturstichprobe und sendet sie über Bluetooth an das BLE-Modul im Gateway.
 2. Das BLE-Modul empfängt die Stichprobe und gibt sie zusammen mit der MAC-Adresse des Geräts an den Nachrichtenbus aus.
 3. Das Identitätszuordnungsmodul nimmt diese Nachricht vom Nachrichtenbus auf und verwendet eine interne Tabelle, um die MAC-Adresse des Geräts in eine IoT Hub-Geräteidentität (Geräte-ID und Schlüssel des Geräts) zu übersetzen. Anschließend wird eine neue Nachricht im Nachrichtenbus veröffentlicht, die die Temperaturbeispieldaten, die MAC-Adresse des Geräts, die Geräte-ID und den Schlüssel des Geräts enthält.
-4. Das IoT Hub-HTTP-Modul empfängt diese (vom Identitätszuordnungsmodul generierte) neue Nachricht vom Nachrichtenbus und veröffentlicht sie im IoT-Hub.
+4. Das IoT Hub-HTTP-Modul empfängt diese (vom Identitätszuordnungsmodul generierte) neue Nachricht vom Nachrichtenbus und veröffentlicht sie im IoT Hub.
 5. Das Modul für die Protokollierung protokolliert alle Nachrichten vom Nachrichtenbus in einer Datenträgerdatei.
 
 Das folgende Blockdiagramm zeigt die Datenflusspipeline des Gerätebefehls:
 
 ![](media/iot-hub-gateway-sdk-physical-device/gateway_ble_command_data_flow.png)
 
-1. Das IoT Hub-HTTP-Modul fragt den IoT-Hub in regelmäßigen Abständen nach neuen Befehlsnachrichten ab.
+1. Das IoT Hub-HTTP-Modul fragt den IoT Hub in regelmäßigen Abständen nach neuen Befehlsnachrichten ab.
 2. Wenn das IoT Hub-HTTP-Modul eine neue Befehlsnachricht empfängt, veröffentlicht es sie im Nachrichtenbus.
 3. Das Identitätszuordnungsmodul nimmt diese Nachricht vom Nachrichtenbus auf und verwendet eine interne Tabelle, um die IoT Hub-Geräte-ID in eine MAC-Adresse zu übersetzen. Dann veröffentlicht es eine neue Nachricht auf dem Nachrichtenbus, die die MAC-Adresse des Zielgeräts in der Eigenschaftenzuordnung der Nachricht enthält.
 4. Das BLE-Modul nimmt diese Nachricht auf und führt die E/A-Anweisung durch Kommunikation mit dem BLE-Gerät aus.
@@ -207,7 +207,7 @@ Zum Zeitpunkt der Abfassung dieses Artikels unterstützt das Gateway SDK nur Gat
 
 ### Konfigurieren von zwei Beispielgeräten in Ihrem IoT Hub
 
-- [Erstellen Sie eine IoT Hub-Instanz][lnk-create-hub] in Ihrem Azure-Abonnement. Der Name des Hubs wird in dieser exemplarischen Vorgehensweise benötigt. Wenn Sie noch nicht über ein Azure-Abonnement verfügen, können Sie ein [kostenloses Konto erstellen][lnk-free-trial].
+- [Erstellen Sie einen IoT Hub][lnk-create-hub] in Ihrem Azure-Abonnement. Der Name des Hubs wird später in dieser exemplarischen Vorgehensweise benötigt. Wenn Sie nicht bereits über ein Azure-Abonnement verfügen, können Sie ein [kostenloses Konto erstellen][lnk-free-trial].
 - Fügen Sie Ihrer IoT Hub-Instanz ein Gerät namens **SensorTag\_01** hinzu, und notieren Sie sich die ID und den Geräteschlüssel. Sie können die Tools [Geräte-Explorer oder iothub-explorer][lnk-explorer-tools] verwenden, um der im vorherigen Schritt erstellten IoT Hub-Instanz Geräte hinzuzufügen und die zugehörigen Schlüssel abzurufen. Ordnen Sie beim Konfigurieren des Gateways dieses Gerät dem SensorTag-Gerät zu.
 
 ### Erstellen des Gateway SDK auf Ihrem Edison-Gerät
@@ -315,7 +315,7 @@ Die Beispielkonfiguration für das BLE-Gerät setzt ein Texas Instruments Sensor
 
 #### IoT Hub-HTTP-Modul
 
-Fügen Sie den Namen Ihres IoT-Hubs hinzu. Der Suffixwert lautet in der Regel **azure-devices.net**:
+Fügen Sie den Namen Ihres IoT Hubs hinzu. Der Suffixwert lautet in der Regel **azure-devices.net**:
 
 ```json
 {
@@ -368,7 +368,7 @@ Wenn Sie das Beispiel ausführen, können Sie die Tools [Geräte-Explorer oder i
 
 ## Senden von C2D-Nachrichten.
 
-Das BLE-Modul unterstützt auch das Senden von Anweisungen aus dem Azure IoT-Hub an das Gerät. Sie können den [Azure IoT Hub-Geräte-Explorer](https://github.com/Azure/azure-iot-sdks/blob/master/tools/DeviceExplorer/doc/how_to_use_device_explorer.md) (oder den [IoT Hub-Explorer] https://github.com/Azure/azure-iot-sdks/tree/master/tools/iothub-explorer) zum Senden von JSON-Nachrichten verwenden, die das BLE-Gatewaymodul an das BLE-Gerät übergibt. Wenn Sie z.B. das SensorTag-Gerät von Texas Instruments verwenden, können Sie die folgenden JSON-Nachrichten aus IoT Hub an das Gerät senden.
+Das BLE-Modul unterstützt auch das Senden von Anweisungen aus dem Azure IoT Hub an das Gerät. Sie können den [Azure IoT Hub-Geräte-Explorer](https://github.com/Azure/azure-iot-sdks/blob/master/tools/DeviceExplorer/doc/how_to_use_device_explorer.md) oder den [IoT Hub-Explorer](https://github.com/Azure/azure-iot-sdks/tree/master/tools/iothub-explorer) zum Senden von JSON-Nachrichten verwenden, die das BLE-Gatewaymodul an das BLE-Gerät übergibt. Wenn Sie z.B. das SensorTag-Gerät von Texas Instruments verwenden, können Sie die folgenden JSON-Nachrichten aus IoT Hub an das Gerät senden.
 
 - Zurücksetzen aller LEDs und des Summers (Ausschalten)
 
@@ -458,4 +458,4 @@ Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 [lnk-dmui]: iot-hub-device-management-ui-sample.md
 [lnk-portal]: iot-hub-manage-through-portal.md
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0817_2016-->

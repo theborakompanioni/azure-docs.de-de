@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/01/2016"
+	ms.date="08/16/2016"
 	ms.author="jeedes"/>
 
 
@@ -93,16 +93,16 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
 3. Führen Sie auf der Seite **App-Einstellungen konfigurieren** die folgenden Schritte aus:
 
-	![Konfigurieren der einmaligen Anmeldung][9]
+	![Konfigurieren der einmaligen Anmeldung][61]
 
-	a. Geben Sie im Textfeld **Anmelde-URL** die URL Ihres DocuSign-Mandanten im folgenden Format ein: Für die Produktionsumgebung lautet das URL-Muster **"https://account.docusign.com/organizations/<ORGANISATIONS-ID>/saml2/login/sp/<IDP-ID>"**. Für die Demoumgebung lautet das URL-Muster **"https://account-d.docusign.com/organizations/<ORGANISATIONS-ID>/saml2/login/sp/<IDP-ID>"**.
+	a. Geben Sie im Textfeld **Anmelde-URL** Folgendes ein: `https://account.docusign.com/*`.
 
-	b. Geben Sie im Textfeld **Bezeichner** die URL des DocuSign-Ausstellers im folgenden Format ein: Für die Produktionsumgebung lautet das URL-Muster **"https://account.docusign.com/organizations/<ORGANISATIONS-ID>/saml2"**. Für die Demoumgebung lautet das URL-Muster **"https://account-d.docusign.com/organizations/<ORGANISATIONS-ID>/saml2"**.
+	b. Geben Sie im Textfeld **Bezeichner** Folgendes ein: `https://account.docusign.com/*`.
+   
+	c. Klicken Sie auf **Next**.
 
-	c. Klicken Sie auf **Weiter**.
 
-
-    > [AZURE.TIP] Falls Sie die App-URL für Ihren Mandanten nicht kennen, können Sie sich unter [SSOSetup@Docusign.com](emailTo:SSOSetup@Docusign.com) an DocuSign wenden, um die vom Service Provider initiierte SSO-URL für den Mandanten zu erfragen.
+    > [AZURE.TIP] Die Werte für die Anmelde-URL und den Bezeichner sind nur Platzhalter. Anweisungen zum Abrufen der tatsächlichen Werte für Ihre Umgebung finden Sie weiter unten in diesem Thema.
  
 
 4. Klicken Sie auf der Seite **Einmaliges Anmelden konfigurieren für DocuSign** auf **Zertifikat herunterladen**, und speichern Sie die Zertifikatsdatei lokal auf Ihrem Computer.
@@ -117,67 +117,77 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
 	![Konfigurieren der einmaligen Anmeldung][51]
 
-7. Klicken Sie im rechten Bereich jetzt auf die Schaltfläche **CLAIM DOMAIN** (DOMÄNE BEANSPRUCHEN).
+7. Klicken Sie im rechten Bereich auf **Claim Domain** (Domäne anfordern).
 
 	![Konfigurieren der einmaligen Anmeldung][52]
 
-8. Geben Sie im Popupfenster den Domänennamen Ihres Unternehmens ein, und klicken Sie auf „Claim“ (Beanspruchen). Achten Sie darauf, die Domäne zu überprüfen, und vergewissern Sie sich, dass der Status als „Aktiv“ angezeigt wird.
+8. Geben Sie im Dialogfeld **Claim a domain** (Domäne anfordern) im Textfeld **Domänenname** Ihre Unternehmensdomäne ein, und klicken Sie auf **Claim** (Anfordern). Achten Sie darauf, die Domäne zu überprüfen, und vergewissern Sie sich, dass der Status „Aktiv“ lautet.
 
 	![Konfigurieren der einmaligen Anmeldung][53]
 
-9. Klicken Sie im Navigationsmenü auf der linken Seite auf **Identitätsanbieter**.
+9. Klicken Sie im Menü auf der linken Seite auf **Identitätsanbieter**.
 
 	![Konfigurieren der einmaligen Anmeldung][54]
 
-10. Klicken Sie im rechten Bereich auf die Schaltfläche „ADD IDENTITY PROVIDER“ (IDENTITÄTSANBIETER HINZUFÜGEN). Die Seite mit den SSO-Einstellungen wird geöffnet.
+10. Klicken Sie im rechten Bereich auf **Add Identity Provider** (Identitätsanbieter hinzufügen).
 	
 	![Konfigurieren der einmaligen Anmeldung][55]
 
-11. Führen Sie auf der Seite mit den Identitätsanbietereinstellungen die unten angegebenen Aktionen durch.
-
-	a. Geben Sie den eindeutigen Namen für Ihre Konfiguration ein. Verwenden Sie keine Leerzeichen zwischen den Wörtern.
-
-	b. Geben Sie im Textfeld **Aussteller des Identitätsanbieters** den Wert für die **Aussteller-URL** aus dem Konfigurations-Assistenten der Azure AD-Anwendung ein.
-
-	c. Geben Sie im Textfeld **Anmelde-URL für Identitätsanbieter** den Wert für die **Remoteanmelde-URL** aus dem Konfigurations-Assistenten der Azure AD-Anwendung ein.
-
-	d. Geben Sie im Textfeld **Abmelde-URL für Identitätsanbieter** den Wert für die **Remoteabmelde-URL** aus dem Konfigurations-Assistenten der Azure AD-Anwendung ein.
-
-	e. Aktivieren Sie das Kontrollkästchen **Sign AuthN Request** (Authentifizierungsanforderung signieren).
-
-	f. Stellen Sie sicher, dass die Option **Send AuthN request by:** (Authentifizierungsanforderung senden per:) auf **POST** festgelegt ist.
-
-	g. Stellen Sie sicher, dass die Option **Send logout request by:** (Abmeldeanforderung senden per:) auf **POST** festgelegt ist.
+11. Führen Sie auf der Seite mit den Identitätsanbietereinstellungen die folgenden Schritte aus:
 
 	![Konfigurieren der einmaligen Anmeldung][56]
 
-12. Wählen Sie im Abschnitt **Benutzerdefinierte Attributzuordnung** das Feld aus, das Sie dem Azure AD-Anspruch zuordnen möchten. Wir haben beispielsweise den Anspruch **emailaddress** verwendet, der dem Wert als **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress** zugeordnet ist. Dies ist der Standard-Anspruchsname aus Azure AD für den E-Mail-Anspruch.
 
-	> [AZURE.NOTE] Verwenden Sie den entsprechenden Benutzerbezeichner, um den Benutzer aus Azure AD der DocuSign-Benutzerzuordnung zuzuordnen. Wählen Sie das richtige Feld, und geben Sie den entsprechenden Wert basierend auf den Einstellungen Ihrer Organisation ein.
+	a. Geben Sie im Textfeld **Name** einen eindeutigen Namen für die Konfiguration ein. Verwenden Sie keine Leerzeichen.
+
+	b. Kopieren Sie im klassischen Azure-Portal die Aussteller-URL und fügen Sie sie in das Textfeld **Aussteller des Identitätsanbieters** ein.
+
+	c. Kopieren Sie im klassischen Azure-Portal die **Remoteanmelde-URL**, und fügen Sie sie in das Textfeld **Anmelde-URL für Identitätsanbieter** ein.
+
+	d. Kopieren Sie im klassischen Azure-Portal die **Remoteabmelde-URL**, und fügen Sie sie in das Textfeld **Abmelde-URL des Identitätsanbieters** ein.
+
+	e. Wählen Sie **Sign AuthN Request** (Authentifizierungsanforderung signieren).
+
+	f. Wählen Sie für **Send AuthN request by** (Authentifizierungsanforderung senden per) die Option **POST**.
+
+	g. Wählen Sie für **Send logout request by** (Abmeldeanforderung senden per:) die Option **POST**.
+
+
+12. Wählen Sie im Abschnitt **Benutzerdefinierte Attributzuordnung** das Feld aus, das Sie dem Azure AD-Anspruch zuordnen möchten. In diesem Beispiel ist dem Anspruch **emailaddress** der Wert **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress** zugewiesen. Dies ist der Standard-Anspruchsname aus Azure AD für den E-Mail-Anspruch.
+
+	> [AZURE.NOTE] Verwenden Sie den entsprechenden **Benutzerbezeichner**, um den Benutzer aus Azure AD der DocuSign-Benutzerzuordnung zuzuordnen. Wählen Sie das richtige Feld, und geben Sie den entsprechenden Wert basierend auf den Einstellungen Ihrer Organisation ein.
 
 	![Konfigurieren der einmaligen Anmeldung][57]
 
-13. Klicken Sie im Abschnitt **Identity Provider Certificate** (Identitätsanbieterzertifikat) auf die Schaltfläche **ZERTIFIKAT HINZUFÜGEN**, und laden Sie das Zertifikat hoch, das Sie aus dem Konfigurations-Assistenten der Azure AD-Anwendung heruntergeladen haben.
+13. Klicken Sie im Abschnitt **Zertifikat des Identitätsanbieters** auf **Zertifikat hinzufügen**, und laden Sie anschließend das aus dem klassischen Azure AD-Portal heruntergeladene Zertifikat hoch.
 
 	![Konfigurieren der einmaligen Anmeldung][58]
 
-14. Klicken Sie jetzt auf die Schaltfläche **Speichern**, um alle Einstellungen zu speichern.
+14. Klicken Sie auf **Speichern**.
 
-15. Klicken Sie im Abschnitt **Identitätsanbieter** auf die Schaltfläche **Aktionen** und dann auf **Endpunkte**.
+15. Klicken Sie im Abschnitt **Identitätsanbieter** auf **Aktionen** und dann auf **Endpunkte**.
 
 	![Konfigurieren der einmaligen Anmeldung][59]
 
-16. Führen Sie im Abschnitt **SAML 2.0-Endpunkte** die folgenden Schritte aus:
 
-	a. Kopieren Sie die **Service Provider Issuer URL** (Service Provider-Aussteller-URL), und geben Sie sie im Textfeld **Bezeichner** des Azure AD-Konfigurations-Assistenten ein.
 
-	b. Kopieren Sie die **Service Provider Login URL** (Service Provider-Anmelde-URL), und geben Sie sie im Textfeld **Anmelde-URL** des Azure AD-Konfigurations-Assistenten ein.
+10. Navigieren Sie im klassischen Azure-Portal zurück zur Seite **App-Einstellungen konfigurieren**.
+
+16. Führen Sie im **DocuSign-Verwaltungsportal** im Abschnitt **SAML 2.0-Endpunkte** die folgenden Schritte aus:
 
 	![Konfigurieren der einmaligen Anmeldung][60]
 
+	a. Kopieren Sie **Service Provider Issuer URL** (Service Provider-Aussteller-URL), und fügen Sie sie im klassischen Azure-Portal ins Textfeld **Bezeichner** ein.
+
+	b. Kopieren Sie **Service Provider Login URL** (Service Provider-Anmelde-URL), und fügen Sie sie im klassischen Azure-Portal ins Textfeld **Anmelde-URL** ein.
+
 	c. Klicken Sie auf **Schließen**.
 
-15. Wählen Sie im klassischen Azure-Portal die **Bestätigung zur Konfiguration des einmaligen Anmeldens** aus, und klicken Sie dann auf **Weiter**.
+
+10. Klicken Sie im klassischen Azure-Portal auf **Weiter**.
+
+
+15. Aktivieren Sie im klassischen Azure-Portal die **Bestätigung zur Konfiguration des einmaligen Anmeldens**, und klicken Sie dann auf **Weiter**.
 
 	![Anwendungen][14]
 
@@ -287,5 +297,6 @@ Weitere Informationen zum Zugriffsbereich finden Sie unter „Einführung in den
 [58]: ./media/active-directory-saas-docusign-tutorial/tutorial_docusign_26.png
 [59]: ./media/active-directory-saas-docusign-tutorial/tutorial_docusign_27.png
 [60]: ./media/active-directory-saas-docusign-tutorial/tutorial_docusign_28.png
+[61]: ./media/active-directory-saas-docusign-tutorial/tutorial_docusign_29.png
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0817_2016-->

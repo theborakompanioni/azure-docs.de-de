@@ -5,7 +5,7 @@
 	keywords="Azure Active Directory Identity Protection, Cloud App Discovery, Verwalten von Anwendungen, Sicherheit, Risiko, Risikostufe, Sicherheitsrisiko, Sicherheitsrichtlinie"
 	documentationCenter=""
 	authors="markusvi"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/17/2016"
+	ms.date="08/16/2016"
 	ms.author="markvi"/>
 
 # Anmeldefunktionen von Azure AD Identity Protection
@@ -27,7 +27,7 @@ Mit Azure Active Directory Identity Protection können Sie:
 
 Die Reaktion des Systems auf diese Probleme hat Auswirkungen auf die Anmeldung eines Benutzers, da die direkt Anmeldung bei der lediglich der Benutzername und das Kennwort eingegeben werden, nicht mehr möglich sein wird. Zusätzliche Schritte sind erforderlich, um einen Benutzer wieder sicher anzumelden.
 
-In diesem Thema erhalten Sie eine Übersicht über die Anmeldungen eines Benutzers für alle Fälle die auftreten können.
+In diesem Thema erhalten Sie einen Überblick über die Anmeldungen eines Benutzers für alle Fälle, die auftreten können.
 
 **Multi-Factor Authentication**
 
@@ -59,7 +59,7 @@ Die Benutzerfreundlichkeit ist für den Wiederherstellungsablauf für kompromitt
 
 Administratoren haben folgende Möglichkeiten:
 
-- Festlegen einer Richtlinie, die es für Benutzer erforderlich macht, ihre Konten für die zusätzliche Sicherheitsüberprüfung einzurichten 
+- Festlegen einer Richtlinie, die es für Benutzer erforderlich macht, ihre Konten für die zusätzliche Sicherheitsüberprüfung einzurichten
 - Zulassen des Überspringens der Multi-Factor Authentication-Registrierung für bis zu 30 Tage, falls Benutzern vor dem Registrieren eine Schonfrist eingeräumt werden soll
 
 **Die Registrierung für die mehrstufige Authentifizierung umfasst drei Schritte:**
@@ -120,7 +120,7 @@ Wenn eine Sicherheitsrichtlinie für das Benutzerrisiko konfiguriert wurde, müs
 
 <br> ![Korrektur](./media/active-directory-identityprotection-flows/101.png "Korrektur") <br>
 
-2.	Der Benutzer muss seine Identität nachweisen, indem er eine Sicherheitsabfrage richtig beantwortet. Wenn der Benutzer für Multi-Factor Authentication registriert ist, kann er die Wiederherstellung selbst durchführen. Hierfür muss der Benutzer mit einem Sicherheitscode einen Roundtripvorgang für seine Telefonnummer durchführen. 
+2.	Der Benutzer muss seine Identität nachweisen, indem er eine Sicherheitsabfrage richtig beantwortet. Wenn der Benutzer für Multi-Factor Authentication registriert ist, kann er die Wiederherstellung selbst durchführen. Hierfür muss der Benutzer mit einem Sicherheitscode einen Roundtripvorgang für seine Telefonnummer durchführen.
 
 <br> ![Korrektur](./media/active-directory-identityprotection-flows/110.png "Korrektur") <br>
 
@@ -154,8 +154,8 @@ Wenn die Anmeldung für einen kompromittierten Benutzer gesperrt ist, kann ein A
 
  
 
-## Weitere Informationen
+## Siehe auch
 
-- [Azure Active Directory Identity Protection](active-directory-identityprotection.md) 
+- [Azure Active Directory Identity Protection](active-directory-identityprotection.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0817_2016-->

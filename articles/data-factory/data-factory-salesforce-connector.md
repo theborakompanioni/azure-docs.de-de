@@ -29,7 +29,7 @@ Azure Data Factory unterstützt derzeit nur das Verschieben von Daten aus Salesf
 ## Assistent zum Kopieren von Daten
 Die einfachste Art, eine Pipeline zu erstellen, die Daten aus Salesforce in einen der unterstützten Senkendatenspeicher kopiert, ist die Verwendung des Assistenten zum Kopieren von Daten. Unter [Tutorial: Erstellen einer Pipeline mit Kopieraktivität mithilfe des Data Factory-Kopier-Assistenten](data-factory-copy-data-wizard-tutorial.md) finden Sie eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mithilfe des Assistenten zum Kopieren von Daten.
 
-Die folgenden Beispiele zeigen JSON-Beispieldefinitionen, die Sie zum Erstellen einer Pipeline mit dem [Azure-Portal](data-factory-copy-activity-tutorial-using-azure-portal.md), mit [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) oder über [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) verwenden können.
+Die folgenden Beispiele zeigen JSON-Beispieldefinitionen, die Sie zum Erstellen einer Pipeline mit dem [Azure-Portal](data-factory-copy-activity-tutorial-using-azure-portal.md), mit [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) oder [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) verwenden können. Darin wird veranschaulicht, wie Sie Daten aus Salesforce in Azure Blob Storage kopieren. Daten können jedoch auch mithilfe der Kopieraktivität in Azure Data Factory in eine beliebige der [hier](data-factory-data-movement-activities.md#supported-data-stores) aufgeführten Senken kopiert werden.
 
 ## Beispiel: Kopieren von Daten aus Salesforce in ein Azure-Blob
 In diesem Beispiel werden stündlich Daten aus Salesforce in ein Azure-Blob kopiert. Die JSON-Eigenschaften, die in diesen Beispielen verwendet werden, werden in den Abschnitten nach den Beispielen beschrieben. Sie können Daten direkt in eine der Senken kopieren, die im Artikel [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md#supported-data-stores) aufgeführt sind, indem Sie die Kopieraktivität in Azure Data Factory verwenden.
@@ -44,7 +44,7 @@ Hier sind die Data Factory-Artefakte angegeben, die Sie zum Implementieren des S
 
 **Verknüpfter Salesforce-Dienst**
 
-In diesem Beispiel wird der verknüpfte **Salesforce**-Dienst verwendet. Im Abschnitt [Verknüpfter Salesforce-Dienst](#salesforce-linked-service-properties) finden Sie die Eigenschaften, die von diesem verknüpften Dienst unterstützt werden. Eine Anleitung zum Zurücksetzen oder Abrufen des Sicherheitstokens finden Sie unter [Get security token](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm) (Abrufen des Sicherheitstokens).
+In diesem Beispiel wird der verknüpfte Dienst **Salesforce** verwendet. Im Abschnitt [Verknüpfter Salesforce-Dienst](#salesforce-linked-service-properties) finden Sie die Eigenschaften, die von diesem verknüpften Dienst unterstützt werden. Eine Anleitung zum Zurücksetzen oder Abrufen des Sicherheitstokens finden Sie unter [Zurücksetzen Ihres Sicherheitstokens](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm).
 
 	{
 		"name": "SalesforceLinkedService",
@@ -105,7 +105,7 @@ Durch Festlegen von **external** auf **true** wird dem Data Factory-Dienst mitge
 
 **Azure-Blob-Ausgabedataset**
 
-Daten werden stündlich in ein neues Blob geschrieben ("frequency": "hour", "interval": 1).
+Daten werden stündlich in ein neues Blob geschrieben (frequency: hour, interval: 1).
 
 	{
 	    "name": "AzureBlobOutput",
@@ -190,7 +190,7 @@ Die folgende Tabelle enthält Beschreibungen der JSON-Elemente, die für den ver
 | Typ | Die type-Eigenschaft muss auf **Salesforce** festgelegt sein. | Ja |
 | username |Geben Sie einen Benutzernamen für das Benutzerkonto an. | Ja |
 | password | Geben Sie ein Kennwort für das Benutzerkonto an. | Ja |
-| securityToken | Geben Sie ein Sicherheitstoken für das Benutzerkonto an. Anweisungen zum Abrufen oder Zurücksetzen eines Sicherheitstokens finden Sie unter [Get security token](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm) (Abrufen des Sicherheitstokens). Allgemeine Informationen zu Sicherheitstoken finden Sie unter [Security and the API](https://developer.salesforce.com/docs/atlas.de-DE.api.meta/api/sforce_api_concepts_security.htm) (Sicherheit und die API). | Ja |
+| securityToken | Geben Sie ein Sicherheitstoken für das Benutzerkonto an. Anweisungen zum Abrufen oder Zurücksetzen eines Sicherheitstokens finden Sie unter [Zurücksetzen Ihres Sicherheitstokens](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm). Allgemeine Informationen zu Sicherheitstoken finden Sie unter [Security and the API](https://developer.salesforce.com/docs/atlas.de-DE.api.meta/api/sforce_api_concepts_security.htm) (Sicherheit und die API). | Ja |
 
 ## Salesforce-Dataseteigenschaften
 
@@ -211,11 +211,11 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren vo
 
 Die Eigenschaften, die im Abschnitt „typeProperties“ der Aktivität verfügbar sind, variieren hingegen bei jedem Aktivitätstyp. Bei der Kopieraktivität variieren sie je nach Typ der Quellen und Senken.
 
-Wenn die Quelle bei der Kopieraktivität den Typ **RelationalSource** aufweist (zu dem Salesforce gehört), sind im typeProperties-Abschnitt die folgenden Eigenschaften verfügbar:
+Wenn die Quelle bei der Kopieraktivität den Typ **RelationalSource** aufweist (dies schließt Salesforce ein), sind im typeProperties-Abschnitt die folgenden Eigenschaften verfügbar:
 
 | Eigenschaft | Beschreibung | Zulässige Werte | Erforderlich |
 | -------- | ----------- | -------------- | -------- |
-| query | Verwendet die benutzerdefinierte Abfrage zum Lesen von Daten. | SQL-92-Abfrage oder Abfrage vom Typ [Salesforce Object Query Language (SOQL)](https://developer.salesforce.com/docs/atlas.de-DE.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm). Beispiel: select * from MyTable\_\_c. | Nein (wenn **tableName** von **dataset** angegeben ist) |
+| query | Verwendet die benutzerdefinierte Abfrage zum Lesen von Daten. | Eine SQL-92-Abfrage oder eine Abfrage vom Typ [Salesforce Object Query Language (SOQL)](https://developer.salesforce.com/docs/atlas.de-DE.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm). Beispiel: select * from MyTable\_\_c. | Nein (wenn **tableName** von **dataset** angegeben ist) |
 
 > [AZURE.IMPORTANT] Der Abschnitt „\_\_c“ von „API Name“ wird für benutzerdefinierte Objekte benötigt.<br> Verwenden Sie SOQL, wenn Sie eine Abfrage angeben, die die **where**-Klausel in der Spalte „DateTime“ enthält. Beispiel: $$Text.Format('SELECT Id, Name, BillingCity FROM Account WHERE LastModifiedDate >= {0:yyyy-MM-ddTHH:mm:ssZ} AND LastModifiedDate < {1:yyyy-MM-ddTHH:mm:ssZ}', WindowStart, WindowEnd), oder eine SQL-Abfrage wie beispielsweise: $$Text.Format('SELECT * FROM Account WHERE LastModifiedDate >= {{ts'{0:yyyy-MM-dd HH:mm:ss}'}} AND LastModifiedDate < {{ts'{1:yyyy-MM-dd HH:mm:ss}'}}', WindowStart, WindowEnd).
 
@@ -259,6 +259,6 @@ URL | String
 [AZURE.INCLUDE [data-factory-structure-for-rectangular-datasets](../../includes/data-factory-structure-for-rectangualr-datasets.md)]
 
 ## Leistung und Optimierung  
-Unter [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-factory-copy-activity-performance.md) werden wichtige Faktoren beschrieben, die sich auf die Leistung der Datenverschiebung (Kopieraktivität) in Azure Data Factory auswirken, sowie verschiedene Möglichkeiten zur Leistungsoptimierung.
+Im [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-factory-copy-activity-performance.md) werden wichtige Faktoren beschrieben, die sich auf die Leistung der Datenverschiebung (Kopieraktivität) in Azure Data Factory auswirken, sowie verschiedene Möglichkeiten zur Leistungsoptimierung.
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0817_2016-->

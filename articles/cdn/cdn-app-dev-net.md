@@ -337,4 +337,6 @@ Bestätigen Sie die Aufforderung, um den Rest des Programms auszuführen.
 
 Weitere Informationen zur Azure CDN-Verwaltungsbibliothek für .NET finden Sie in der [Referenz auf MSDN](https://msdn.microsoft.com/library/mt657769.aspx).
 
-<!---HONumber=AcomDC_0803_2016-->
+Verwalten Sie Ihre CDN-Ressourcen mit [PowerShell](./cdn-manage-powershell.md).
+
+<!---HONumber=AcomDC_0817_2016-->

@@ -1,52 +1,42 @@
-1. Melden Sie sich beim klassischen Azure-Portal an.
+1. Melden Sie sich beim [Azure-Portal][] an.
 
-2. Klicken Sie im linken Navigationsbereich des Portals auf **Service Bus**.
+2. Klicken Sie im linken Navigationsbereich des Portals auf **Neu** > **Enterprise Integration** > **Service Bus**.
 
-3. Klicken Sie im unteren Bereich des Portals auf **Erstellen**.
+4. Geben Sie im Dialogfeld **Namespace erstellen** einen Namen für den Namespace ein. Das System überprüft sofort, ob dieser Name verfügbar ist.
 
-    ![„Erstellen“ wählen][select-create]
-   
-4. Geben Sie im Dialogfeld **Add a new namespace** einen Namen für den Namespace ein. Das System überprüft sofort, ob dieser Name verfügbar ist.
+5. Ist der Name verfügbar, wählen Sie den Tarif („Basic“, „Standard“ oder Premium“) aus.
 
-    ![Namespacename][namespace-name]
-  
-5. Nachdem Sie sichergestellt haben, dass der Namespacename verfügbar ist, wählen Sie das Land oder die Region aus, in dem bzw. der Ihr Namespace gehostet werden soll.
+7. Wählen Sie im Feld **Abonnement** ein Azure-Abonnement aus, unter dem der Namespace erstellt werden soll.
 
-6. Übernehmen Sie für die weiteren Felder im Dialogfeld die Standardwerte (**Messaging** und **Standardstufe**), und klicken Sie anschließend auf das Häkchen für "OK". Ihr Dienstnamespace wird nun erstellt und aktiviert. Ggf. müssen Sie einige Minuten warten, bis die Ressourcen für Ihr Konto durch das System bereitgestellt werden.
+9. Wählen Sie im Feld **Ressourcengruppe** eine vorhandene Ressourcengruppe für den Namespace aus, oder erstellen Sie eine neue Ressourcengruppe.
+
+8. Wählen Sie im Feld **Standort** das Land oder die Region aus, in dem bzw. in der Ihr Namespace gehostet werden soll.
+
+	![Erstellen des Namespaces][create-namespace]
+
+6. Klicken Sie auf die Schaltfläche **Erstellen**. Ihr Dienstnamespace wird nun erstellt und aktiviert. Ggf. müssen Sie einige Minuten warten, bis die Ressourcen für Ihr Konto durch das System bereitgestellt werden.
  
-    ![Erfolgreich erstellt][created-successfully]
+### Abrufen der Verwaltungsanmeldeinformationen
 
-###Abrufen der Anmeldeinformationen
-1. Klicken Sie im linken Navigationsbereich auf den Knoten **Servicebus**, um die Liste verfügbarer Namespaces anzuzeigen:
+1. Klicken Sie in der Liste mit den Namespaces auf den neu erstellten Namespacenamen.
  
-    ![„Service Bus“ wählen][select-service-bus]
-  
-2. Wählen Sie in der angezeigten Liste den Namespace, den Sie gerade erstellt haben:
- 
-    ![„Namespace“ wählen][select-namespace]
- 
-3. Klicken Sie auf **Verbindungsinformationen**.
+3. Klicken Sie auf dem Blatt **Service Bus-Namespace** auf **Freigegebene Zugriffsrichtlinien**.
 
-    ![Verbindungsinformationen][connection-information]
-  
-4. Im Bereich **Zugriff auf die Verbindungsinformationen** finden Sie die Verbindungszeichenfolge, die den SAS-Schlüssel und den Schlüsselnamen enthält.
+4. Klicken Sie auf dem Blatt **Freigegebene Zugriffsrichtlinien** auf **RootManageSharedAccessKey**.
 
-    ![Auf Verbindungsinformationen zugreifen][access-connection-information]
-  
-5. Notieren Sie den Schlüssel oder kopieren Sie ihn in die Zwischenablage.
+	![Verbindungsinformationen][connection-info]
+
+5. Klicken Sie auf dem Blatt **Richtlinie: RootManageSharedAccessKey** neben **Verbindungszeichenfolge – Primärschlüssel** auf die Kopierschaltfläche, um die Verbindungszeichenfolge zur späteren Verwendung in die Zwischenablage zu kopieren.
+
+	![connection-string][connection-string]
 
 <!--Image references-->
 
-[select-create]: ./media/service-bus-create-namespace-portal/select-create.png
-[namespace-name]: ./media/service-bus-create-namespace-portal/namespace-name.png
-[created-successfully]: ./media/service-bus-create-namespace-portal/created-successfully.png
-[select-service-bus]: ./media/service-bus-create-namespace-portal/select-service-bus.png
-[select-namespace]: ./media/service-bus-create-namespace-portal/select-namespace.png
-[connection-information]: ./media/service-bus-create-namespace-portal/connection-information.png
-[access-connection-information]: ./media/service-bus-create-namespace-portal/access-connection-information.png
-
+[create-namespace]: ./media/service-bus-create-namespace-portal/create-namespace.png
+[connection-info]: ./media/service-bus-create-namespace-portal/connection-info.png
+[connection-string]: ./media/service-bus-create-namespace-portal/connection-string.png
 
 <!--Reference style links - using these makes the source content way more readable than using inline links-->
-[classic-portal]: https://manage.windowsazure.com
+[Azure-Portal]: https://portal.azure.com
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0824_2016-->

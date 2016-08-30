@@ -6,14 +6,14 @@
 	 authors="ganganarayanan"
 	 manager="scotthit"
 	 editor=""/>
-	 
+
 <tags
 	 ms.service="azure-supportability"
 	 ms.workload="na"
 	 ms.tgt_pltfrm="na"
 	 ms.devlang="na"
 	 ms.topic="article"
-	 ms.date="03/24/2016"
+	 ms.date="07/25/2016"
 	 ms.author="gangan"/>
 
 # Gewusst wie: Erstellen einer Azure-Supportanfrage
@@ -85,4 +85,4 @@ Wir sind stets offen für Feedback und Vorschläge. Sie können uns gern Ihre [V
 ## Weitere Informationen
 [Häufig gestellte Fragen zum Azure-Support](https://azure.microsoft.com/support/faq)
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0817_2016-->

@@ -13,13 +13,13 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/16/2016" 
+	ms.date="08/15/2016" 
 	ms.author="mandia"/>
 
 
 # BizTalk Services: Sichern und Wiederherstellen
 
-Azure BizTalk Services bieten eine Sicherungs- und Wiederherstellungsfunktion. In diesem Thema wird beschrieben, wie BizTalk Services unter Verwendung des klassischen Azure-Portals gesichert und wiederhergestellt werden.
+Azure BizTalk Services bieten eine Sicherungs- und Wiederherstellungsfunktion. In diesem Thema wird beschrieben, wie BizTalk Services unter Verwendung des klassischen Azure-Portals gesichert und wiederhergestellt wird.
 
 Sie können BizTalk Services auch mithilfe der [BizTalk Services-REST-API](http://go.microsoft.com/fwlink/p/?LinkID=325584) sichern.
 
@@ -58,14 +58,14 @@ Eine Sicherungskopie kann jederzeit erstellt werden und ist komplett benutzerges
 1. Wählen Sie im klassischen Azure-Portal zuerst **BizTalk Services** und dann den BizTalk Service aus, den Sie sichern möchten.
 2. Wählen Sie auf der Registerkarte **Dashboard** unten auf der Seite **Sichern**.
 3. Geben Sie einen Namen für die Sicherung ein. Beispiel: *meinBizTalkService*SK*Datum*.
-4. Wählen Sie ein Blobspeicherkonto aus, und klicken Sie auf das Häkchen, um mit der Sicherung zu beginnen.
+4. Wählen Sie ein Blob-Speicherkonto aus, und klicken Sie auf das Häkchen, um mit der Sicherung zu beginnen.
 
 Sobald die Sicherung abgeschlossen ist, wird im Speicherkonto ein Container mit dem von Ihnen eingegebenen Sicherungsnamen erstellt. Dieser Container enthält die Sicherungskonfiguration Ihres BizTalk Service.
 
 #### <a name="backupschedule"></a>Planen einer Sicherung
 
 1. Klicken Sie im klassischen Azure-Portal auf **BizTalk Services**, wählen Sie den Namen des BizTalk Service aus, für den Sie die Sicherung planen möchten, und klicken Sie anschließend auf die Registerkarte **Konfigurieren**.
-2. Stellen Sie den **Sicherungsstatus** auf **Automatisch** ein. 
+2. Stellen Sie den **Sicherungsstatus** auf **Automatisch** ein.
 3. Wählen Sie das **Speicherkonto** zum Speichern der Sicherung aus, geben Sie unter **Häufigkeit** an, wie oft Sicherungen erstellt werden sollen, und unter **Aufbewahrung in Tagen** deren Aufbewahrungszeit:
 
 	![][AutomaticBU]
@@ -235,4 +235,4 @@ Um Azure BizTalk Services im klassischen Azure-Portal zu erstellen, lesen Sie [K
 [RestoreBizTalkService]: ./media/biztalk-backup-restore/RestoreBizTalkServiceWindow.png
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0817_2016-->

@@ -36,7 +36,7 @@ Wenn die PreferredLocations-Eigenschaft nicht festgelegt ist, werden alle Anford
 
 
 ## .NET SDK
-Das SDK kann ohne Codeänderungen verwendet werden. In diesem Fall sendet das SDK sowohl Lese- als auch Schreibvorgänge an die aktuelle Schreibregion.
+Das SDK kann ohne Codeänderungen verwendet werden. In diesem Fall sendet das SDK automatisch sowohl Lese- als auch Schreibvorgänge an die aktuelle Schreibregion.
 
 Im .NET SDK, Version 1.8 oder höher, besitzt der ConnectionPolicy-Parameter für den DocumentClient-Konstruktor folgende Eigenschaft: Microsoft.Azure.Documents.ConnectionPolicy.PreferredLocations. Diese Eigenschaft weist den Typ „Collection `<string>`“ auf und sollte eine Liste mit Regionsnamen enthalten. Die Zeichenfolgenwerte sind gemäß der Spalte mit den Regionsnamen auf der Seite [Azure-Regionen][regions] formatiert und enthalten keine Leerzeichen vor und nach dem letzten Zeichen.
 
@@ -88,7 +88,7 @@ Im Folgenden finden Sie ein Codebeispiel für NodeJS/Javascript. Python und Java
 
 
 ## REST 
-Sobald ein Datenbankkonto in mehreren Regionen zur Verfügung gestellt wurde, können Clients mithilfe einer GET-Anforderung in folgendem URI die Verfügbarkeit des Kontos abfragen.
+Sobald ein Datenbankkonto in mehreren Regionen zur Verfügung gestellt wurde, können Clients mithilfe einer GET-Anforderung über den folgenden URI die Verfügbarkeit des Kontos abfragen.
 
     https://{databaseaccount}.documents.azure.com/dbs
 
@@ -141,8 +141,8 @@ In den folgenden Artikeln erfahren Sie mehr über die globale Verteilung von Dat
 - [Globale Verteilung von Daten mit DocumentDB](documentdb-distribute-data-globally.md)
 - [Konsistenzebenen](documentdb-consistency-levels.md)
 - [So funktioniert der Durchsatz mit mehreren Regionen](documentdb-manage.md#how-throughput-works-with-multiple-regions)
-- [Hinzufügen von Regionen über das Azure-Portal](documentdb-manage-account.md#addregion)
+- [Hinzufügen von Regionen über das Azure-Portal](documentdb-portal-global-replication.md)
 
 [regions]: https://azure.microsoft.com/regions/
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0817_2016-->

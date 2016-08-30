@@ -13,12 +13,15 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="06/13/2016"
+    ms.date="08/15/2016"
     ms.author="elizapo" />
 
 
 
 # Sichere Apps und Ressourcen in Azure RemoteApp
+
+> [AZURE.IMPORTANT]
+Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148).
 
 Azure RemoteApp bietet Benutzern Zugriff auf zentral verwaltete Windows-Apps, wodurch Sie steuern können, was Ihre Benutzer tun dürfen und was nicht. Dies ist besonders nützlich, wenn Benutzer über ein nicht verwaltetes Gerät eine Verbindung herstellen wollen (z. B. sein persönliches Macbook), und Sie den Benutzerzugriff und die -erfahrung steuern möchten.
 
@@ -46,4 +49,4 @@ Ein weiteres Beispiel ist das Blockieren des Internetzugriffs für eine bestimmt
 - [Richtlinien für Windows Server 2012 R2](https://technet.microsoft.com/library/hh831791.aspx).
 - [Office 2013-Richtlinien](https://technet.microsoft.com/library/cc178969.aspx) (einschließlich[Informationen zum Anpassen der Office-Symbolleiste](https://technet.microsoft.com/library/cc179143.aspx)).
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0817_2016-->

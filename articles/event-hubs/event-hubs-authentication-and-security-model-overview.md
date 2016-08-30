@@ -12,7 +12,7 @@
     ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="na"
-    ms.date="05/03/2016"
+    ms.date="08/16/2016"
     ms.author="sethm;clemensv" />
 
 # Event Hubs-Authentifizierung und -Sicherheitsmodell (Übersicht)
@@ -37,7 +37,7 @@ Alle Token werden mit einem SAS-Schlüssel signiert. Alle Token werden in der Re
 
 ### Erstellen des SAS-Schlüssels
 
-Wenn Sie einen Namespace erstellen, generiert Service Bus einen 256-Bit-SAS-Schlüssel mit dem Namen **RootManageSharedAccessKey**. Dieser Schlüssel erteilt die Rechte zum Senden, Überwachen und Verwalten für den Namespace. Sie können zusätzliche Schlüssel erstellen. Es wird empfohlen, dass Sie einen Schlüssel erzeugen, der Berechtigungen zum Senden an den bestimmten Event Hub erteilt. Für den Rest dieses Themas wird davon ausgegangen, dass Sie diesen Schlüssel `EventHubSendKey` benannt haben.
+Wenn Sie einen Event Hubs-Namespace erstellen, generiert Azure Event Hubs einen 256-Bit-SAS-Schlüssel mit dem Namen **RootManageSharedAccessKey**. Dieser Schlüssel erteilt die Rechte zum Senden, Überwachen und Verwalten für den Namespace. Sie können zusätzliche Schlüssel erstellen. Es wird empfohlen, dass Sie einen Schlüssel erzeugen, der Berechtigungen zum Senden an den bestimmten Event Hub erteilt. Für den Rest dieses Themas wird davon ausgegangen, dass Sie diesen Schlüssel `EventHubSendKey` benannt haben.
 
 Das folgende Beispiel erzeugt beim Erstellen des Event Hubs einen Schlüssel, der nur zum Senden verwendet werden kann:
 
@@ -95,17 +95,17 @@ Wenn ein Token von einem Angreifer gestohlen wird, kann der Angreifer das Gerät
 
 ## Authentifizierung von Back-End-Anwendungen
 
-Um Back-End-Anwendungen zu authentifizieren, die von Geräten generierte Daten nutzen, setzen Event Hubs ein Sicherheitsmodell ähnlich dem Modell ein, das für Service Bus-Themen verwendet wird. Eine Event Hubs-Verbrauchergruppe entspricht einem Abonnement für ein Service Bus-Thema. Ein Client kann eine Verbrauchergruppe erstellen, wenn die Anforderung zum Erstellen der Verbrauchergruppe von einem Token begleitet wird, der Berechtigungen zum Verwalten des Event Hubs gewährt, oder für den Namespace, zu dem das Event Hub gehört. Ein Client kann Daten aus einer Verbrauchergruppe nutzen, wenn die Empfangsanforderung von einem Token begleitet wird, die der Gruppe, dem Event Hub oder dem Namespace, zu dem das Event Hub gehört, Empfangsrechte erteilt.
+Um Back-End-Anwendungen zu authentifizieren, die von Geräten generierte Daten nutzen, setzen Event Hubs ein Sicherheitsmodell ähnlich dem Modell ein, das für Service Bus-Themen verwendet wird. Eine Event Hubs-Consumergruppe entspricht einem Abonnement für ein Service Bus-Thema. Ein Client kann eine Consumergruppe erstellen, wenn die Anforderung zum Erstellen der Consumergruppe von einem Token begleitet wird, der Berechtigungen zum Verwalten des Event Hubs gewährt, oder für den Namespace, zu dem das Event Hub gehört. Ein Client kann Daten aus einer Consumergruppe nutzen, wenn die Empfangsanforderung von einem Token begleitet wird, die der Gruppe, dem Event Hub oder dem Namespace, zu dem das Event Hub gehört, Empfangsrechte erteilt.
 
-Die aktuelle Version des Service Bus unterstützt nicht die SAS-Regeln für einzelne Abonnements. Dasselbe gilt für Event Hubs-Verbrauchergruppen. SAS-Support wird in Zukunft für beide Funktionen hinzugefügt werden.
+Die aktuelle Version des Service Bus unterstützt nicht die SAS-Regeln für einzelne Abonnements. Dasselbe gilt für Event Hubs-Consumergruppen. SAS-Support wird in Zukunft für beide Funktionen hinzugefügt werden.
 
-In Ermangelung einer SAS-Authentifizierung für einzelne Verbrauchergruppen können Sie SAS-Schlüssel nutzen, um alle Verbrauchergruppen mit einem gemeinsamen Schlüssel zu sichern. Dieser Ansatz ermöglicht einer Anwendung, Daten von allen Verbrauchergruppen eines Event Hubs zu verwenden.
+In Ermangelung einer SAS-Authentifizierung für einzelne Consumergruppen können Sie SAS-Schlüssel nutzen, um alle Consumergruppen mit einem gemeinsamen Schlüssel zu sichern. Dieser Ansatz ermöglicht einer Anwendung, Daten von allen Consumergruppen eines Event Hubs zu verwenden.
 
 ### Erstellen von Dienstidentitäten, vertrauenden Seiten und Regeln in ACS
 
-ACS unterstützt mehrere Möglichkeiten, um Dienstidentitäten, vertrauende Seiten und Regeln zu erstellen, aber die einfachste Möglichkeit hierzu ist die Verwendung von [SBAZTool](http://code.msdn.microsoft.com/Authorization-SBAzTool-6fd76d93). Zum Beispiel:
+ACS unterstützt mehrere Möglichkeiten, um Dienstidentitäten, vertrauende Seiten und Regeln zu erstellen, aber die einfachste Möglichkeit hierzu ist die Verwendung von [SBAZTool](http://code.msdn.microsoft.com/Authorization-SBAzTool-6fd76d93). Beispiel:
 
-1. Erstellen eine Dienstidentität für einen **EventHubSender**. Dadurch wird der Name der erstellten Dienstidentität und deren Schlüssel zurückgegeben:
+1. Erstellen eine Dienstidentität für einen **EventHubSender**. Über diesen Vorgang wird der Name der erstellten Dienstidentität und deren Schlüssel zurückgegeben:
 
 	```
 	sbaztool.exe exe -n <namespace> -k <key>  makeid eventhubsender
@@ -117,7 +117,7 @@ ACS unterstützt mehrere Möglichkeiten, um Dienstidentitäten, vertrauende Seit
 	sbaztool.exe -n <namespace> -k <key> grant Send /AuthTestEventHub eventhubsender
 	```
 
-3. Erstellen einer Dienstidentität für einen Empfänger an die Verbrauchergruppe 1:
+3. Erstellen einer Dienstidentität für einen Empfänger an die Consumergruppe 1:
 
 	```
 	sbaztool.exe exe -n <namespace> -k <key> makeid consumergroup1receiver
@@ -129,7 +129,7 @@ ACS unterstützt mehrere Möglichkeiten, um Dienstidentitäten, vertrauende Seit
 	sbaztool.exe -n <namespace> -k <key> grant Listen /AuthTestEventHub/ConsumerGroup1 consumergroup1receiver
 	```
 
-5. Erstellen einer Dienstidentität für einen Empfänger an die **Verbrauchergruppe 2**:
+5. Erstellen einer Dienstidentität für einen Empfänger an die **Consumergruppe 2**:
 
 	```
 	sbaztool.exe exe -n <namespace> -k <key>  makeid consumergroup2receiver
@@ -154,4 +154,4 @@ Weitere Informationen zu Event Hubs finden Sie unter den folgenden Themen:
 [Messaginglösung mit Warteschlange]: ../service-bus/service-bus-dotnet-multi-tier-app-using-service-bus-queues.md
  
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0817_2016-->

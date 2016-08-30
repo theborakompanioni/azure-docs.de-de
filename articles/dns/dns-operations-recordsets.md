@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="05/06/2016"
+   ms.date="08/16/2016"
    ms.author="cherylmc"/>
 
 # Verwalten von DNS-Einträgen und DNS-Ressourceneintragssätzen mit PowerShell
@@ -151,9 +151,9 @@ In diesem Beispiel werden einem vorhandenen Ressourceneintragssatz zwei zusätzl
 
 ## Entfernen eines Eintrags aus einer vorhandenen Datensatzgruppe
 
-Einträge können mithilfe von `Remove-AzureRmDnsRecordConfig` aus einem Ressourceneintragssatz entfernt werden. Beachten Sie, dass der entfernte Eintrag für alle Parameter exakt mit einem vorhandenen Eintrag übereinstimmen muss. Änderungen müssen mit `Set-AzureRmDnsRecordSet` übertragen werden.
+Einträge können mithilfe von `Remove-AzureRmDnsRecordConfig` aus einem Ressourceneintragssatz entfernt werden. Der entfernte Eintrag muss für alle Parameter exakt mit einem vorhandenen Eintrag übereinstimmen. Änderungen müssen mit `Set-AzureRmDnsRecordSet` übertragen werden.
 
-Durch Entfernen des letzten Eintrags aus einer Datensatzgruppe wird die Datensatzgruppe nicht gelöscht. Weitere Informationen finden Sie nachfolgend unter [Löschen eines Ressourceneintragssatzes](#delete-a-record-set).
+Durch Entfernen des letzten Eintrags aus einem Ressourceneintragssatz wird der Ressourceneintragssatz nicht gelöscht. Weitere Informationen finden Sie nachfolgend unter [Löschen eines Ressourceneintragssatzes](#delete-a-record-set).
 
 
 	$rs = Get-AzureRmDnsRecordSet -Name "test-a" -RecordType A -ZoneName contoso.com -ResourceGroupName MyAzureResourceGroup
@@ -237,4 +237,4 @@ Weitere Informationen zu Azure DNS finden Sie unter [Azure DNS – Übersicht](d
 
 Weitere Informationen zu Reverse-DNS-Einträgen finden Sie unter [Mit PowerShell Ihre Reverse-DNS-Einträge für Ihre Dienste verwalten](dns-reverse-dns-record-operations-ps.md).
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0817_2016-->

@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="04/22/2016"
+   ms.date="08/17/2016"
    ms.author="alkohli" />
 
 # Ersetzen des Gehäuses des StorSimple-Geräts
@@ -63,4 +63,4 @@ Führen Sie die folgenden Schritte aus, um das Gehäuse in Ihrem StorSimple-Ger�
 
 Weitere Informationen zum [Austauschen von StorSimple-Hardwarekomponenten](storsimple-hardware-component-replacement.md).
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0817_2016-->

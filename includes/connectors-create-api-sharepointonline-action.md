@@ -9,16 +9,24 @@ Zum Konfigurieren dieser Aktion müssen Sie die folgenden Informationen angeben.
 |Dateiname|Dies ist der Name der Datei, die erstellt wird.|
 |Dateiinhalte|Der Inhalt, der in die Datei geschrieben wird.|
 
-1. Wählen Sie **+ Neuer Schritt** aus, um die Aktion hinzuzufügen. ![SharePoint Online-Aktion – Abbildung 1](./media/connectors-create-api-sharepointonline/action-1.png)
-- Wählen Sie den Link **Aktion hinzufügen** aus. Daraufhin öffnet sich das Suchfeld, mit dem Sie nach der gewünschten Aktion suchen können. In diesem Beispiel sind SharePoint-Aktionen von Interesse. ![SharePoint Online-Aktion – Abbildung 2](./media/connectors-create-api-sharepointonline/action-2.png)
+1. Wählen Sie **+ Neuer Schritt** aus, um die Aktion hinzuzufügen.  
+![SharePoint Online-Aktion – Abbildung 1](./media/connectors-create-api-sharepointonline/action-1.png)  
+- Wählen Sie den Link **Aktion hinzufügen** aus. Daraufhin öffnet sich das Suchfeld, mit dem Sie nach der gewünschten Aktion suchen können. In diesem Beispiel sind SharePoint-Aktionen von Interesse.  
+![SharePoint Online-Aktion – Abbildung 2](./media/connectors-create-api-sharepointonline/action-2.png)  
 - Geben Sie *SharePoint* ein, um nach Aktionen im Zusammenhang mit SharePoint zu suchen.
-- Wählen Sie **SharePoint Online - Datei erstellen** als die auszuführende Aktion aus. **Hinweis**: Sie werden aufgefordert, den Zugriff Ihrer Logik-App auf Ihr SharePoint-Konto zu autorisieren, sofern Sie noch keine Verbindung mit SharePoint Online erstellt haben. ![SharePoint Online-Aktion – Abbildung 3](./media/connectors-create-api-sharepointonline/action-3.png)
-- Das Steuerelement **Datei erstellen** wird geöffnet. ![SharePoint Online-Aktion – Abbildung 4](./media/connectors-create-api-sharepointonline/action-4.png)
-- Wählen Sie **Website-URL** aus, und suchen Sie nach der Website, auf der Sie die Datei erstellen möchten. ![SharePoint Online-Aktion – Abbildung 5](./media/connectors-create-api-sharepointonline/action-5.png)
-- Wählen Sie **Ordnerpfad** aus, und suchen Sie nach dem Ordner, in dem die neue Datei platziert werden soll. ![SharePoint Online-Aktion – Abbildung 6](./media/connectors-create-api-sharepointonline/action-6.png)
-- Wählen Sie das Steuerelement **Dateiname** aus, und geben Sie den Namen der Datei ein, die Sie erstellen möchten. Hier können Sie den Dateinamen direkt eingeben oder Eigenschaften des Triggers verwenden, den Sie zuvor erstellt haben. Hierzu wählen Sie Eigenschaften aus der Liste der **Ausgaben von „Wenn ein neues Element erstellt wird“** aus. Nur diese Liste wird nach der Auswahl des Steuerelements **Dateiname** angezeigt. In dieser exemplarischen Vorgehensweise habe ich „ID“ (die ID des neuen Listenelements) als Namen für die Datei ausgewählt, die mit der Aktion **SharePoint Online - Datei erstellen** erstellt wird. ![SharePoint Online-Aktion – Abbildung 7](./media/connectors-create-api-sharepointonline/action-7.png)
-- Wählen Sie das Steuerelement **Dateiinhalt** aus, und geben Sie den Inhalt ein, der in die Datei geschrieben werden soll, die erstellt wird. Beachten Sie für den Dateiinhalt, dass Sie alle Eigenschaften des Triggers verwenden können, den Sie zuvor erstellt haben. Wählen Sie einfach die Eigenschaften aus der angezeigten Liste aus. Alternativ können Sie den Text für den **Dateiinhalt** direkt in das Steuerelement eingeben. In diesem Beispiel habe ich einige Eigenschaften ausgewählt und Leerzeichen und einen Bindestrich zwischen den Eigenschaften hinzugefügt. ![SharePoint Online-Aktion – Abbildung 8](./media/connectors-create-api-sharepointonline/action-8.png)
-- Speichern Sie die Änderungen am Workflow.
-- Herzlichen Glückwunsch, Sie verfügen nun über eine voll funktionsfähige Logik-App, die ausgelöst wird, wenn einer SharePoint Online-Liste ein neues Element hinzugefügt wird. Die App erstellt dann eine Datei. Dabei werden einige der Eigenschaften des neuen Listenelements verwendet. Durch Erstellen eines neuen Elements in der SharePoint-Liste können Sie sie jetzt testen.
+- Wählen Sie **SharePoint Online - Datei erstellen** als die auszuführende Aktion aus. **Hinweis**: Sie werden aufgefordert, den Zugriff Ihrer Logik-App auf Ihr SharePoint-Konto zu autorisieren, sofern Sie noch keine Verbindung mit SharePoint Online erstellt haben.  
+![SharePoint Online-Aktion – Abbildung 3](./media/connectors-create-api-sharepointonline/action-3.png)  
+- Das Steuerelement **Datei erstellen** wird geöffnet.  
+![SharePoint Online-Aktion – Abbildung 4](./media/connectors-create-api-sharepointonline/action-4.png)  
+- Wählen Sie **Website-URL** aus, und suchen Sie nach der Website, auf der Sie die Datei erstellen möchten.  
+![SharePoint Online-Aktion – Abbildung 5](./media/connectors-create-api-sharepointonline/action-5.png)  
+- Wählen Sie **Ordnerpfad** aus, und suchen Sie nach dem Ordner, in dem die neue Datei platziert werden soll.  
+![SharePoint Online-Aktion – Abbildung 6](./media/connectors-create-api-sharepointonline/action-6.png)  
+- Wählen Sie das Steuerelement **Dateiname** aus, und geben Sie den Namen der Datei ein, die Sie erstellen möchten. Hier können Sie den Dateinamen direkt eingeben oder Eigenschaften des Triggers verwenden, den Sie zuvor erstellt haben. Hierzu wählen Sie Eigenschaften aus der Liste der **Ausgaben von „Wenn ein neues Element erstellt wird“** aus. Nur diese Liste wird nach der Auswahl des Steuerelements **Dateiname** angezeigt. In dieser exemplarischen Vorgehensweise habe ich „ID“ (die ID des neuen Listenelements) als Namen für die Datei ausgewählt, die mit der Aktion **SharePoint Online - Datei erstellen** erstellt wird.  
+![SharePoint Online-Aktion – Abbildung 7](./media/connectors-create-api-sharepointonline/action-7.png)  
+- Wählen Sie das Steuerelement **Dateiinhalt** aus, und geben Sie den Inhalt ein, der in die Datei geschrieben werden soll, die erstellt wird. Beachten Sie für den Dateiinhalt, dass Sie alle Eigenschaften des Triggers verwenden können, den Sie zuvor erstellt haben. Wählen Sie einfach die Eigenschaften aus der angezeigten Liste aus. Alternativ können Sie den Text für den **Dateiinhalt** direkt in das Steuerelement eingeben. In diesem Beispiel habe ich einige Eigenschaften ausgewählt und Leerzeichen und einen Bindestrich zwischen den Eigenschaften hinzugefügt.  
+![SharePoint Online-Aktion – Abbildung 8](./media/connectors-create-api-sharepointonline/action-8.png)  
+- Speichern Sie die Änderungen am Workflow.  
+- Herzlichen Glückwunsch, Sie verfügen nun über eine voll funktionsfähige Logik-App, die ausgelöst wird, wenn einer SharePoint Online-Liste ein neues Element hinzugefügt wird. Die App erstellt dann eine Datei. Dabei werden einige der Eigenschaften des neuen Listenelements verwendet. Durch Erstellen eines neuen Elements in der SharePoint-Liste können Sie sie jetzt testen. 
 
 <!---HONumber=AcomDC_0727_2016-->

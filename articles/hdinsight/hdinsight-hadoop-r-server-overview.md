@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="06/01/2016"
+   ms.date="08/17/2016"
    ms.author="jeffstok"/>
 
 
@@ -55,21 +55,22 @@ In diesen Fällen wird die Funktion über diejenigen Daten(aufgabe)knoten des Cl
 
 ## Operationalisieren eines Modells
 
-Nach Abschluss der Datenmodellierung können Sie das Modell operationalisieren, um sowohl in Azure als auch lokal Vorhersagen über neue Daten treffen zu können. Dieser Prozess wird als „Scoring“ bezeichnet. Nachstehend finden Sie einige Beispiele:
+Nach Abschluss der Datenmodellierung können Sie das Modell operationalisieren, um sowohl in Azure als auch lokal Vorhersagen über neue Daten treffen zu können. Dieser Prozess wird als Bewertung bezeichnet. Nachstehend finden Sie einige Beispiele:
 
-### Scoring in HDInsight
+### Bewertung in HDInsight
 
-Schreiben Sie für das Scoring in HDInsight eine R-Funktion, mit der Ihr Modell aufgerufen wird, um Vorhersagen für eine neue Datendatei zu treffen, die Sie in Ihr Speicherkonto geladen haben. Speichern Sie die Vorhersagen dann wieder im Speicherkonto. Sie können die Routine bedarfsgesteuert auf dem Edgeknoten Ihres Clusters oder mithilfe eines geplanten Auftrags ausführen.
+Schreiben Sie für die Bewertung in HDInsight eine R-Funktion, mit der Ihr Modell aufgerufen wird, um Vorhersagen für eine neue Datendatei zu treffen, die Sie in Ihr Speicherkonto geladen haben. Speichern Sie die Vorhersagen dann wieder im Speicherkonto. Sie können die Routine bedarfsgesteuert auf dem Edgeknoten Ihres Clusters oder mithilfe eines geplanten Auftrags ausführen.
 
-### Scoring in Azure Machine Learning
+### Bewertung in Azure Machine Learning
 
-Verwenden Sie für das Scoring mit einem Azure Machine Learning-Webdienst das [Open Source Azure Machine Learning-R-Paket](http://www.inside-r.org/blogs/2015/11/18/enhancements-azureml-package-connect-r-azureml-studio), um [Ihr Modell als Azure-Webdienst zu veröffentlichen](http://www.r-bloggers.com/deploying-a-car-price-model-using-r-and-azureml/). Verwenden Sie als Nächstes die Funktion in Machine Learning, um eine Benutzeroberfläche für den Webdienst zu erstellen, und rufen Sie den Webdienst dann nach Bedarf für das Scoring auf.
+Verwenden Sie für die Bewertung mit einem Azure Machine Learning-Webdienst das Open Source Azure Machine Learning-R-Paket namens [AzureML](https://cran.r-project.org/web/packages/AzureML/vignettes/getting_started.html), um Ihr Modell als Azure-Webdienst zu veröffentlichen. Der Einfachheit halber ist dieses Paket auf dem Edgeknoten vorinstalliert. Verwenden Sie als Nächstes die Funktion in Machine Learning, um eine Benutzeroberfläche für den Webdienst zu erstellen, und rufen Sie den Webdienst dann nach Bedarf für die Bewertung auf.
 
-Wenn Sie diese Option wählen, müssen Sie zur Verwendung mit dem Webdienst alle ScaleR-Modellobjekte in entsprechende Open Source-Modellobjekte umwandeln. Dies kann mithilfe von ScaleR-Koersionsfunktionen wie `as.randomForest()` für ensemblebasierte Modelle durchgeführt werden.
+Wenn Sie diese Option wählen, müssen Sie zur Verwendung mit dem Webdienst alle ScaleR-Modellobjekte in entsprechende Open Source-Modellobjekte umwandeln. Die Umwandlung kann mithilfe von ScaleR-Koersionsfunktionen wie `as.randomForest()` für ensemblebasierte Modelle durchgeführt werden.
 
-### Lokales Scoring
 
-Um nach der Erstellung Ihres Modells ein lokales Scoring durchzuführen, können Sie das Modell in R serialisieren, herunterladen, deserialisieren und anschließend für das Scoring neuer Daten verwenden. Sie können das Scoring für neue Daten durchführen, indem Sie den weiter oben unter [Scoring in HDInsight](#scoring-in-hdinsight) beschriebenen Ansatz verwenden oder [DeployR](https://deployr.revolutionanalytics.com/) nutzen.
+### Lokale Bewertung
+
+Um nach der Erstellung Ihres Modells eine lokale Bewertung durchzuführen, können Sie das Modell in R serialisieren, herunterladen, deserialisieren und anschließend für die Bewertung neuer Daten verwenden. Sie können die Bewertung für neue Daten durchführen, indem Sie den weiter oben unter [Bewertung in HDInsight](#scoring-in-hdinsight) beschriebenen Ansatz verwenden oder [DeployR](https://deployr.revolutionanalytics.com/) nutzen.
 
 ## Verwalten des Clusters
 
@@ -83,9 +84,9 @@ In diesen Fällen müssen die zusätzlichen Pakete nach dem Erstellen des Cluste
 
 ### Ändern der Hadoop MapReduce-Speichereinstellungen
 
-Ein Cluster kann dahingehend geändert werden, dass er die Speichergröße, die R Server zur Verfügung steht, ändern kann, wenn ein MapReduce-Auftrag ausgeführt wird. Verwenden Sie zum Ändern eines Clusters die Apache Ambari-Benutzeroberfläche, die über das Blatt des Clusters im Azure-Portal verfügbar ist. Informationen zum Zugreifen auf die Ambari-Benutzeroberfläche für Ihren Cluster finden Sie unter [Verwalten von HDInsight-Clustern mithilfe der Ambari-Webbenutzeroberfläche](hdinsight-hadoop-manage-ambari.md).
+Ein Cluster kann dahingehend geändert werden, dass er die Speichergröße, die R Server zur Verfügung steht, ändern kann, wenn ein MapReduce-Auftrag ausgeführt wird. Verwenden Sie zum Ändern eines Clusters die Apache Ambari-Benutzeroberfläche, die über das Blatt des Clusters im Azure-Portal verfügbar ist. Informationen zum Zugriff auf die Ambari-Benutzeroberfläche für Ihren Cluster finden Sie unter [Verwalten von HDInsight-Clustern mithilfe der Ambari-Webbenutzeroberfläche](hdinsight-hadoop-manage-ambari.md).
 
-Sie können den für R Server zur Verfügung stehenden Speicher auch beim Aufrufen von **RxHadoopMR** ändern, indem Sie das Argument „Hadoop switches“ wie folgt verwenden:
+Sie können den für R Server zur Verfügung stehenden Speicher ändern, indem Sie beim Aufruf von **RxHadoopMR** das Argument „Hadoop switches“ wie folgt verwenden:
 
 	hadoopSwitches = "-libjars /etc/hadoop/conf -Dmapred.job.map.memory.mb=6656"  
 
@@ -101,7 +102,7 @@ Da die Hauptknoten redundant sind und nicht alle Datenknoten betroffen sind, wer
 
 ## Informationen zu IDE-Optionen für R Server in einem HDInsight-Cluster
 
-Der Linux-Edgeknoten auf einem HDInsight-Premium-Cluster stellt die Landezone für R-basierte Analysen dar. Nach dem Verbinden mit dem Cluster können Sie die Konsolenschnittstelle für R Server starten, indem Sie **R** in die Linux-Eingabeaufforderung eingeben. Die Verwendung der Konsolenschnittstelle wird verbessert, wenn Sie einen Texteditor für die R-Skriptentwicklung in einem anderen Fenster ausführen und Abschnitte Ihres Skripts nach Bedarf ausschneiden und in die R-Konsole einfügen.
+Der Linux-Edgeknoten auf einem HDInsight-Premium-Cluster stellt die Landezone für R-basierte Analysen dar. Nach der Verbindungsherstellung mit dem Cluster können Sie die Konsolenschnittstelle für R Server starten, indem Sie an der Linux-Eingabeaufforderung **R** eingeben. Die Verwendung der Konsolenschnittstelle wird verbessert, wenn Sie einen Texteditor für die R-Skriptentwicklung in einem anderen Fenster ausführen und Abschnitte Ihres Skripts nach Bedarf ausschneiden und in die R-Konsole einfügen.
 
 Ein anspruchsvolleres Tool für die Entwicklung Ihres R-Skripts ist die R-basierte IDE zur Verwendung auf dem Desktop, z.B. [R Tools for Visual Studio](https://www.visualstudio.com/de-DE/features/rtvs-vs.aspx) (RTVS) von Microsoft. Hierbei handelt es sich um eine Familie von Desktop- und Servertools aus [RStudio](https://www.rstudio.com/products/rstudio-server/). Sie können auch die Eclipse-basierte Anwendung [StatET](http://www.walware.de/goto/statet) von Walware verwenden.
 
@@ -123,4 +124,4 @@ Folgen Sie den nachstehenden Links, um mehr über die Verwendung von R Server mi
 
 - [Azure Storage options for R Server on HDInsight Premium (Azure Storage-Optionen für R Server in HDInsight Premium)](hdinsight-hadoop-r-server-storage.md)
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0817_2016-->

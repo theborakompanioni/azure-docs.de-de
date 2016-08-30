@@ -4,7 +4,7 @@
    description="Enthält Informationen zum VNet-Peering in Azure."
    services="virtual-network"
    documentationCenter="na"
-   authors="narayanannamalai"
+   authors="NarayanAnnamalai"
    manager="jefco"
    editor="tysonn" />
 <tags
@@ -88,4 +88,4 @@ Während der Beurteilungsphase fallen für das VNet-Peering keine Kosten an. Nac
 - Weitere Informationen zu [Netzwerksicherheitsgruppen](virtual-networks-nsg.md)
 - Weitere Informationen zu [benutzerdefinierten Routen und IP-Weiterleitung](virtual-networks-udr-overview.md)
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0824_2016-->

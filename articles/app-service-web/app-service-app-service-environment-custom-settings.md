@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/01/2016"
+	ms.date="08/17/2016"
 	ms.author="stefsch"/>
 
 # Benutzerdefinierte Konfigurationseinstellungen für App Service-Umgebungen
@@ -76,7 +76,7 @@ TLS 1.0 kann mit dem folgenden **clusterSettings**-Eintrag deaktiviert werden:
         ],
 
 ## Ändern der Reihenfolge der TLS-Verschlüsselungssammlung ##
-Eine weitere Frage von Kunden lautet, ob sie die Liste der Verschlüsselungsverfahren ändern können, die von ihrem Server ausgehandelt wird. Dies ist, wie im Folgenden gezeigt, durch Ändern der Einstellung **clusterSettings** möglich. Die Liste der verfügbaren Verschlüsselungssammlungen kann aus [diesem MSDN-Artikel (https://msdn.microsoft.com/library/windows/desktop/aa374757(v=vs.85).aspx)] abgerufen werden.
+Eine weitere Frage von Kunden lautet, ob sie die Liste der Verschlüsselungsverfahren ändern können, die von ihrem Server ausgehandelt wird. Dies ist, wie im Folgenden gezeigt, durch Ändern der Einstellung **clusterSettings** möglich. Die Liste der verfügbaren Verschlüsselungssammlungen kann aus [diesem MSDN-Artikel](https://msdn.microsoft.com/library/windows/desktop/aa374757(v=vs.85).aspx) abgerufen werden.
 
         "clusterSettings": [
             {
@@ -85,7 +85,7 @@ Eine weitere Frage von Kunden lautet, ob sie die Liste der Verschlüsselungsverf
             }
         ],
 
-> [AZURE.WARNING]  Wenn für die Verschlüsselungssammlung falsche Werte festgelegt werden, die SChannel nicht verstehen kann, funktioniert die TLS-Kommunikation mit dem Server ggf. nicht mehr. In diesem Fall müssen Sie den Eintrag *FrontEndSSLCipherSuiteOrder* aus **clusterSettings** entfernen und die aktualisierte ARM-Vorlage übermitteln, um die Standardeinstellungen der Verschlüsselungssammlung wiederherzustellen. Verwenden Sie diese Funktion umsichtig.
+> [AZURE.WARNING]  Wenn für die Verschlüsselungssammlung falsche Werte festgelegt werden, die SChannel nicht verstehen kann, funktioniert die TLS-Kommunikation mit dem Server ggf. nicht mehr. In diesem Fall müssen Sie den Eintrag *FrontEndSSLCipherSuiteOrder* aus **clusterSettings** entfernen und die aktualisierte Resource Manager-Vorlage übermitteln, um die Standardeinstellungen der Verschlüsselungssammlung wiederherzustellen. Verwenden Sie diese Funktion umsichtig.
 
 ## Erste Schritte
 Die Azure-Website mit Resource Manager-Schnellstartvorlagen umfasst eine Vorlage mit der Basisdefinition zum [Erstellen einer App Service-Umgebung](https://azure.microsoft.com/documentation/templates/201-web-app-ase-create/).
@@ -95,4 +95,4 @@ Die Azure-Website mit Resource Manager-Schnellstartvorlagen umfasst eine Vorlage
 
 <!-- IMAGES -->
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0817_2016-->

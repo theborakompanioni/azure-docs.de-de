@@ -14,7 +14,7 @@
     ms.topic="article"
     ms.tgt_pltfrm="na"
 	ms.workload="data-services"
-	ms.date="04/28/2016"
+	ms.date="08/09/2016"
 	ms.author="brohrer;garye" />
 
 # Auswählen von Algorithmen für Microsoft Azure Machine Learning
@@ -237,4 +237,4 @@ Azure Machine Learning umfasst außerdem Zugriff auf ein leistungsfähiges Machi
 [9]: ./media/machine-learning-algorithm-choice/image9.png
 [10]: ./media/machine-learning-algorithm-choice/image10.png
 
-<!----HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0817_2016-->

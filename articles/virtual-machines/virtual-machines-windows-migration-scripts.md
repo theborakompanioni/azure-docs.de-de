@@ -3,7 +3,7 @@
 	description="In diesem Artikel erfahren Sie, wie Sie einen einzelnen klassischen virtuellen Computer mit PowerShell-Skripts für Azure Resource Manager klonen."
 	services="virtual-machines-windows"
 	documentationCenter=""
-	authors="singhkay"
+	authors="singhkays"
 	manager="drewm"
 	editor=""
 	tags="azure-resource-manager"/>
@@ -112,7 +112,7 @@ Die Vorlage erstellt Dateien je nach Vorhandensein von Agent-Erweiterungen für 
 4.  `<ServiceName>-<VMName>-setextensions<optional timestamp>.json`: Eine Reihe von PowerShell-Cmdlets, die ausgeführt werden, um die VM-Agent-Erweiterungen festzulegen.
 4.  `<ServiceName>-<VMName>-copydisks<optional timestamp>.json`: Eine Gruppe von PowerShell-Cmdlets, die zum Kopieren von Datenträgerblobs ausgeführt werden, wenn die Option CopyDisks angegeben ist.
 
-Wenn das Flag „-Deploy“ festgelegt ist, stellt das Cmdlet nach dem Generieren der Dateien die <ServiceName>-<VMName>-setup.json-Vorlage bereit und kopiert die Datenträgerblobs des virtuellen Quellcomputers, wenn der Parameter DiskAction auf CopyDisks festgelegt ist. Anschließend stellt es die <ServiceName>-<VMName>-deploy.json-Vorlage bereit, indem die <ServiceName>-<VMName>-parameters.json-Datei für Parameter verwendet wird. Nach der Bereitstellung des virtuellen Computers wird, falls vorhanden, ein imperatives Skript (für VM-Agent-Erweiterungen) oder ein Skript zum Kopieren der Datenträger ausgeführt.
+Wenn das Flag „-Deploy“ festgelegt ist, stellt das Cmdlet nach dem Generieren der Dateien die <Dienstname>-<VM-Name>-setup.json-Vorlage bereit und kopiert die Datenträgerblobs des virtuellen Quellcomputers, wenn der DiskAction-Parameter auf CopyDisks festgelegt ist. Anschließend stellt es die <Dienstname>-<VM-Name>-deploy.json-Vorlage bereit und verwendet dabei die <Dienstname>-<VM-Name>-parameters.json-Datei für Parameter. Nach der Bereitstellung des virtuellen Computers wird, falls vorhanden, ein imperatives Skript (für VM-Agent-Erweiterungen) oder ein Skript zum Kopieren der Datenträger ausgeführt.
 
 ### Netzwerkdetails
 Für das Cmdlet besteht die Absicht, nicht die klassischen Netzwerkeinstellungen für Resource Manager zu klonen. Die Netzwerkeinrichtungen werden so genutzt, dass das Klonen des virtuellen Computers selbst am einfachsten ist. Folgendes passiert unter den unterschiedlichen Bedingungen:
@@ -120,7 +120,7 @@ Für das Cmdlet besteht die Absicht, nicht die klassischen Netzwerkeinstellungen
 1.  Kein virtuelles Netzwerk für die Zielressourcengruppe
     - Virtueller Quellcomputer befindet sich nicht in einem Subnetz: Ein virtuelles Standardnetzwerk mit dem Adressraum 10.0.0.0/16 wird zusammen mit einem Subnetz mit dem Adressraum 10.0.0.0/22 erstellt.
     - Virtueller Quellcomputer befindet sich in einem Subnetz: Das virtuelle Netzwerk des virtuellen Computers wird erkannt, und die Spezifikation des virtuellen Netzwerks und die Subnetze werden kopiert.
-2.  Die Zielressourcengruppe verfügt über ein virtuelles Netzwerk mit dem Namen `<VM virtual network>arm` (Zeichenfolge „arm“ wird angefügt).
+2.  Die Zielressourcengruppe verfügt über ein virtuelles Netzwerk mit dem Namen `<VM virtual network>arm` (die Zeichenfolge „arm“ wird angefügt).
     - Wenn das virtuelle Netzwerk über ein Subnetz mit dem gleichen Namen und Adressraum verfügt, können Sie es verwenden.
     - Falls kein passendes Subnetz gefunden wird, können Sie nach einem Adressblock der vorhandenen Subnetze mit einer Maske mit 22 Bit suchen und verwenden.
 
@@ -150,7 +150,7 @@ Es gibt einige Unterschiede zwischen dem derzeitigen Klonansatz und der plattfor
 
 **Folgende Bereiche sind durch Klonskripts nicht abgedeckt:**
 
- 1. Beenden eines ausgeführten virtuellen Computers 
+ 1. Beenden eines ausgeführten virtuellen Computers
  2. Ändern von Daten/Datenträgern
  3. Klonen ausgeführter VMs
  4. Automatisches Klonen mehrerer VMs in einem komplexen Szenario
@@ -185,4 +185,4 @@ Das _Add-AzureSMVmToRM_-Cmdlet wurde anhand der folgenden Testfälle überprüft
 ## Hinweise
 1. Wenn mehrere VMs nacheinander mit kurzen Pausen dazwischen geklont werden, kann es für die öffentlichen IP-Adressen aufgrund des Aktualisierungszeitraums für den DNS-Cache zu DNS-Namenskonflikten kommen.
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0817_2016-->

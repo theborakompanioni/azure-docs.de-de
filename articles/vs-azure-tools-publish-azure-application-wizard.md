@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/08/2016"
+   ms.date="08/15/2016"
    ms.author="tarcher" />
 
 # Assistent zur Veröffentlichung einer Azure-Anwendung
@@ -27,7 +27,7 @@ Nachdem Sie eine Webanwendung in Visual Studio entwickelt haben, können Sie die
 
 Bevor Sie Ihre Webanwendung in Azure veröffentlichen können, benötigen Sie ein Microsoft-Konto und ein Azure-Abonnement. Außerdem müssen Sie Ihre Webanwendung einem Azure-Clouddienst zuordnen. Wenn Sie diese Aufgaben bereits erledigt haben, können Sie mit dem nächsten Absatz fortfahren.
 
-1. Verschaffen Sie sich ein Microsoft-Konto und ein Azure-Abonnement. [Hier](https://azure.microsoft.com/pricing/free-trial/) können ein einen Monat lang kostenloses Azure-Abonnement bestellen.
+1. Besorgen Sie sich ein Microsoft-Konto und ein Azure-Abonnement. [Hier](https://azure.microsoft.com/pricing/free-trial/) können Sie ein einen Monat lang kostenloses Azure-Abonnement bestellen.
 
 1. Erstellen Sie einen Clouddienst und ein Speicherkonto in Azure. Hierzu können Sie den Server-Explorer in Visual Studio oder das [klassische Azure-Portal](http://go.microsoft.com/fwlink/?LinkID=213885) verwenden.
 
@@ -43,7 +43,7 @@ Bevor Sie Ihre Webanwendung in Azure veröffentlichen können, benötigen Sie ei
 
 ### So wählen Sie ein Abonnement aus
 
-1. Bevor Sie den Assistenten zum ersten Mal verwenden, müssen Sie sich anmelden. Klicken Sie auf den Link **Anmelden**. Melden Sie sich bei Aufforderung am Azure-Portal an, und geben Sie Ihren Azure-Benutzernamen und Ihr Kennwort an. 
+1. Bevor Sie den Assistenten zum ersten Mal verwenden, müssen Sie sich anmelden. Klicken Sie auf den Link **Anmelden**. Melden Sie sich bei Aufforderung am Azure-Portal an, und geben Sie Ihren Azure-Benutzernamen und Ihr Kennwort an.
 
     ![Dies ist einer der Bildschirme des Veröffentlichungs-Assistenten](./media/vs-azure-tools-publish-azure-application-wizard/IC799159.png)
 
@@ -57,7 +57,7 @@ Bevor Sie Ihre Webanwendung in Azure veröffentlichen können, benötigen Sie ei
 
     >[AZURE.NOTE] A subscription file can contain more than one subscription.
 
-1. Klicken Sie zum Fortfahren auf die Schaltfläche **Weiter**. 
+1. Klicken Sie zum Fortfahren auf die Schaltfläche **Weiter**.
 
     Wenn keine Clouddienste in Ihrem Abonnement vorhanden sind, müssen Sie einen Clouddienst in Azure zum Hosten des Projekts erstellen. Das Dialogfeld **Clouddienst und Speicherkonto erstellen** wird angezeigt.
 
@@ -129,7 +129,7 @@ Sie können die allgemeinen und erweiterten Einstellungen für eine Bereitstellu
 
 1. Wählen Sie **Veröffentlichen**, um Ihre Anwendung zu veröffentlichen. Sie können den Prozessstatus im Fenster **Ausgabe** in Visual Studio überwachen.
 
-## Siehe auch
+## Weitere Informationen
 
 [Vorgehensweise: Migrieren und Veröffentlichen einer Webanwendung in einem Azure-Clouddienst aus Visual Studio](https://msdn.microsoft.com/library/azure/hh420322.aspx)
 
@@ -139,4 +139,4 @@ Sie können die allgemeinen und erweiterten Einstellungen für eine Bereitstellu
 
 [Lokales Testen der Leistung eines Cloud-Diensts](https://msdn.microsoft.com/library/azure/hh369930.aspx)
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0817_2016-->

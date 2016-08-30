@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="big-data"
-	ms.date="07/27/2016"
+	ms.date="08/11/2016"
 	ms.author="jeffstok"/>
 
 
@@ -22,16 +22,16 @@
 
 Erfahren Sie, wie Sie eine Lösung für Stimmungsanalysen zur Analyse sozialer Medien durch die Einbindung von Twitter-Echtzeitereignissen in Event Hubs erstellen können. Sie schreiben eine Stream Analytics-Abfrage, um die Daten zu analysieren, und speichern dann die Ergebnisse zur späteren Durchsicht oder verwenden ein Dashboard, um Einblicke in Echtzeit mit [Power BI](https://powerbi.com/) zu ermöglichen.
 
-Analysetools für soziale Medien können Unternehmen helfen, Thementrends zu verstehen, d. h. Themen und Einstellungen mit einer hohen Anzahl von Beiträgen in sozialen Medien. Für die Stimmungsanalyse – auch als Opinion Mining bezeichnet – werden Analysetools für soziale Medien verwendet, um Einstellungen zu einem Produkt, Meinungen usw. zu bestimmen. Die Twitter-Trendanalyse in Echtzeit ist ein gutes Beispiel, da das Hashtag-Abonnementmodell es Ihnen ermöglicht, bestimmte Schlüsselwörter zu berücksichtigen und eine Stimmungsanalyse für den Feed zu entwickeln.
+Analysetools für soziale Medien können Unternehmen helfen, Trendthemen zu verstehen, d.h. Themen und Einstellungen mit einer hohen Anzahl von Beiträgen in sozialen Medien. Für die Stimmungsanalyse – auch als Opinion Mining bezeichnet – werden Analysetools für soziale Medien verwendet, um Einstellungen zu einem Produkt, Meinungen usw. zu bestimmen. Die Twitter-Trendanalyse in Echtzeit ist ein gutes Beispiel, da das Hashtag-Abonnementmodell es Ihnen ermöglicht, bestimmte Schlüsselwörter zu berücksichtigen und eine Stimmungsanalyse für den Feed zu entwickeln.
 
 ## Szenario – Stimmungsanalyse in Echtzeit
 
-Eine Nachrichtenwebsite ist daran interessiert, der Konkurrenz durch Seiteninhalte mit direkter Relevanz für die Leser voraus zu sein. Sie verwendet soziale Medienanalyse für Themen mit Relevanz für ihre Leser und führt dazu Stimmungsanalysen von Twitter-Daten in Echtzeit durch. Insbesondere werden Echtzeitanalysen des Tweet-Umfangs und der Stimmung im Hinblick auf wichtige Themen benötigt, um zu erkennen, welche Themen sich auf Twitter in Echtzeit zu Trendthemen entwickeln. Im Wesentlichen benötigen sie also ein Analysemodul für Stimmungsanalysen basierend auf diesem Feed in sozialen Medien.
+Eine Nachrichtenwebsite ist daran interessiert, der Konkurrenz durch Seiteninhalte mit direkter Relevanz für die Leser voraus zu sein. Sie verwendet eine Analyse sozialer Medien für Themen mit Relevanz für ihre Leser und führt dazu Stimmungsanalysen von Twitter-Daten in Echtzeit durch. Insbesondere werden Echtzeitanalysen des Tweet-Umfangs und der Stimmung im Hinblick auf wichtige Themen benötigt, um zu erkennen, welche Themen sich auf Twitter in Echtzeit zu Trendthemen entwickeln. Im Wesentlichen benötigen sie also ein Analysemodul für Stimmungsanalysen basierend auf diesem Feed in sozialen Medien.
 
 ## Voraussetzungen
 1.	Twitter-Konto und [OAuth-Zugriffstoken](https://dev.twitter.com/oauth/overview/application-owner-access-tokens)
 2.	[TwitterClient.zip](http://download.microsoft.com/download/1/7/4/1744EE47-63D0-4B9D-9ECF-E379D15F4586/TwitterClient.zip) aus dem Microsoft Download Center
-3.	Optional: Quellcode für Twitter-Client von [GitHub](https://github.com/Azure/azure-stream-analytics/tree/master/DataGenerators/TwitterClient)
+3.	Optional: Quellcode für Twitter-Client von [GitHub](https://aka.ms/azure-stream-analytics-twitterclient)
 
 ## Erstellen einer Event Hub-Eingabe und einer Verbrauchergruppe
 
@@ -64,7 +64,7 @@ Gehen Sie folgendermaßen vor, um die Anwendung einzurichten:
 	Beachten Sie, dass Sie zum Generieren eines Tokens eine leere Anwendung erstellen müssen.
 3.	Ersetzen Sie die Werte EventHubConnectionString und EventHubName in „TwitterClient.exe.config“ durch die Verbindungszeichenfolge und den Namen Ihres Event Hubs. Die zuvor kopierte Verbindungszeichenfolge enthält sowohl die Event Hub-Verbindungszeichenfolge als auch den Namen. Trennen Sie die beiden Angaben also, und geben Sie sie in die richtigen Felder ein.
 4.	*Optional:* Passen Sie die Schlüsselwörter für die Suche an. Standardmäßig sucht diese Anwendung nach „Azure,Skype,XBox,Microsoft,Seattle“. Falls gewünscht, können Sie die Werte für twitter\_keywords in „TwitterClient.exe.config“ anpassen.
-5.	Führen Sie **TwitterClient.exe** aus, um Ihre Anwendung zu starten. Sie sehen nun, wie Ereignisse mit den Werten CreatedAt, Topic und SentimentScore an Ihren Event Hub gesendet werden:
+5.	Führen Sie **TwitterClient.exe** aus, um Ihre Anwendung zu starten. Sie sehen nun, wie Ereignisse mit den CreatedAt-, Topic- und SentimentScore-Werten an Ihren Event Hub gesendet werden:
 
 	![Stimmungsanalyse: SentimentScore-Werte, die an einen Event Hub gesendet werden.](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-twitter-sentiment-output-to-event-hub.png)
 
@@ -92,9 +92,9 @@ Nun, da wir einen Datenstrom von Tweet-Ereignissen haben, können wir einen Stre
 3.	Wählen Sie **EVENT HUB**, und klicken Sie dann auf die rechte Taste.
 4.	Geben Sie die folgenden Werte auf der dritten Seite ein, oder wählen Sie sie aus:
 
-	* **INPUT ALIAS**: Geben Sie einen Anzeigenamen für diese Auftragseingabe ein, wie z. B. TwitterStream. Beachten Sie, dass Sie diesen Namen später in der Abfrage verwenden werden. **EVENT HUB**: Wenn der Event Hub, den Sie erstellt haben, sich in demselben Abonnement wie der Stream Analytics-Auftrag befindet, wählen Sie den Namespace aus, in dem sich der Event Hub befindet.
+	* **INPUT ALIAS**: Geben Sie einen Anzeigenamen für diese Auftragseingabe ein, wie z. B. TwitterStream. Beachten Sie, dass Sie diesen Namen später in der Abfrage verwenden werden. **EVENT HUB**: Wenn der Event Hub, den Sie erstellt haben, sich im gleichen Abonnement wie der Stream Analytics-Auftrag befindet, wählen Sie den Namespace aus, in dem sich der Event Hub befindet.
 
-		Wenn sich Ihr Event Hub in einem anderen Abonnement befindet, wählen Sie **Event Hub aus einem anderen Abonnement verwenden** aus, und geben Sie manuell folgende Informationen ein: **SERVICE BUS-NAMESPACE**, **EVENT HUB-NAME**, **NAME DER EVENT HUB-RICHTLINIE**, **SCHLÜSSEL DER EVENT HUB-RICHTLINIE** und **EVENT HUB-PARTITIONSANZAHL**.
+		Wenn sich Ihr Event Hub in einem anderen Abonnement befindet, wählen Sie **Event Hub aus einem anderen Abonnement verwenden** aus, und geben Sie manuell die Informationen für **SERVICE BUS-NAMESPACE**, **EVENT HUB-NAME**, **NAME DER EVENT HUB-RICHTLINIE**, **SCHLÜSSEL DER EVENT HUB-RICHTLINIE** und **EVENT HUB-PARTITIONSANZAHL** ein.
 
 	* **EVENT HUB-NAME**: Wählen Sie den Namen des Event Hubs aus.
 	* **NAME DER EVENT HUB-RICHTLINIE**: Wählen Sie die Event Hub-Richtlinie aus, die Sie zuvor in diesem Lernprogramm erstellt haben.
@@ -135,9 +135,9 @@ Wir beginnen mit einer einfachen Pass-Through-Abfrage, die alle Felder in einem 
 
 	![Unterhalb der Abfragedefinition angezeigte Ergebnisse](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-sentiment-by-topic.png)
 
-#### Anzahl der Tweets nach Thema: Rollierendes Fenster mit Aggregation
+#### Anzahl der Tweets nach Thema: rollierendes Fenster mit Aggregation
 
-Um die Anzahl der Erwähnungen verschiedener Themen zu vergleichen, nutzen wir ein [TumblingWindow](https://msdn.microsoft.com/library/azure/dn835055.aspx), um alle fünf Sekunden die Anzahl der Erwähnungen abzurufen.
+Um die Anzahl der Erwähnungen verschiedener Themen zu vergleichen, nutzen wir ein [TumblingWindow](https://msdn.microsoft.com/library/azure/dn835055.aspx), um alle fünf Sekunden die Anzahl der Erwähnungen jedes Themas abzurufen.
 
 1.	Ändern Sie die Abfrage im Code-Editor in:
 
@@ -151,9 +151,9 @@ Um die Anzahl der Erwähnungen verschiedener Themen zu vergleichen, nutzen wir e
 
 2.	Klicken Sie im Abfrage-Editor auf **ERNEUT AUSFÜHREN**, um die Ergebnisse der Abfrage anzuzeigen.
 
-#### Identifizieren von Trendthemen: Schiebefenster
+#### Identifizieren von Trendthemen: gleitendes Fenster
 
-Zum Identifizieren von Trendthemen suchen wir nach Themen, die einen Schwellenwert für Erwähnungen in einem bestimmten Zeitraum überschreiten. Für die Zwecke dieses Lernprogramms suchen wir mithilfe eines [SlidingWindow](https://msdn.microsoft.com/library/azure/dn835051.aspx) nach Themen, die in den letzten 5 Sekunden mehr als 20-mal erwähnt werden.
+Zum Identifizieren von Trendthemen suchen wir nach Themen, die einen Schwellenwert für Erwähnungen in einem bestimmten Zeitraum überschreiten. Für die Zwecke dieses Tutorials suchen wir mithilfe eines [SlidingWindow](https://msdn.microsoft.com/library/azure/dn835051.aspx) nach Themen, die in den letzten fünf Sekunden mehr als 20-mal erwähnt werden.
 
 1.	Ändern Sie die Abfrage im Code-Editor in:
 
@@ -168,7 +168,7 @@ Zum Identifizieren von Trendthemen suchen wir nach Themen, die einen Schwellenwe
 
 #### Anzahl der Erwähnungen und Stimmung: Rollierendes Fenster mit Aggregation
 
-Die letzte Abfrage, die wir testen, verwendet ein TumblingWindow, um alle 5 Sekunden für jedes Thema die Anzahl der Erwähnungen sowie Durchschnitt, Minimum, Maximum und die Standardabweichung von der Bewertung der Stimmung abzurufen.
+Die letzte Abfrage, die wir testen, verwendet ein TumblingWindow, um alle fünf Sekunden für jedes Thema die Anzahl der Erwähnungen sowie die Durchschnitts-, Mindest-, Maximal- und Standardabweichung von der Bewertung der Stimmung abzurufen.
 
 1.	Ändern Sie die Abfrage im Code-Editor in:
 
@@ -198,7 +198,7 @@ Befolgen Sie die nachstehenden Schritte zum Erstellen eines Containers für Blob
 3.	Geben Sie die folgenden Werte auf der dritten Seite ein, oder wählen Sie sie aus:
 
 	* **AUSGABEALIAS**: Geben Sie einen Anzeigenamen für diese Auftragsausgabe ein.
-	* **ABONNEMENT**: Befindet sich der Blob-Speicher, den Sie erstellt haben, in demselben Abonnement wie der Stream Analytics-Auftrag, wählen Sie **Storage-Konto aus dem aktuellen Abonnement verwenden**. Wenn sich der Speicher in einem anderen Abonnement befindet, wählen Sie **Storage-Konto von einem anderen Abonnement verwenden** und geben Sie manuell **SPEICHERKONTO**, **SPEICHERKONTOSCHLÜSSEL** und **CONTAINER** ein.
+	* **ABONNEMENT**: Befindet sich der Blobspeicher, den Sie erstellt haben, im gleichen Abonnement wie der Stream Analytics-Auftrag, wählen Sie **Speicherkonto aus dem aktuellen Abonnement verwenden** aus. Wenn sich der Speicher in einem anderen Abonnement befindet, wählen Sie **Speicherkonto von einem anderen Abonnement verwenden** aus, und geben Sie manuell die Informationen für **SPEICHERKONTO**, **SPEICHERKONTOSCHLÜSSEL** und **CONTAINER** ein.
 	* **SPEICHERKONTO**: Wählen Sie den Namen des Speicherkontos.
 	* **CONTAINER**: Wählen Sie den Namen des Containers.
 	* **DATEINAMENPRÄFIX**: Geben Sie ein Präfix ein, das beim Schreiben von Blob-Ausgaben verwendet wird.
@@ -236,4 +236,4 @@ Um Hilfe zu erhalten, nutzen Sie unser [Azure Stream Analytics-Forum](https://so
 - [Referenz zur Azure Stream Analytics-Verwaltungs-REST-API](https://msdn.microsoft.com/library/azure/dn835031.aspx)
  
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0817_2016-->

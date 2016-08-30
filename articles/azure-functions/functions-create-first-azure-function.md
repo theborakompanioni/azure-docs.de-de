@@ -7,7 +7,7 @@
    manager="erikre"
    editor=""
    tags=""
-   />
+/>
 
 <tags
    ms.service="functions"
@@ -15,10 +15,10 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="multiple"
    ms.workload="na"
-   ms.date="05/05/2016"
+   ms.date="08/22/2016"
    ms.author="glenga"/>
 
-# Erstellen Sie Ihre erste Funktion in Azure Functions
+#Erstellen Sie Ihre erste Funktion in Azure Functions
 
 ##Übersicht
 Azure-Funktionen ist eine ereignisgesteuerte On-Demand-Computeumgebung, mit der die vorhandene Azure-Anwendungsplattform um Funktionen zur Implementierung von Code erweitert wird, der von Ereignissen ausgelöst wird, die in anderen Azure-Diensten, SaaS-Produkten sowie in lokalen Systemen auftreten können. Mit Azure-Funktionen werden Ihre Anwendungen basierend auf der Nachfrage skaliert, und Sie zahlen nur für die Ressourcen, die Sie tatsächlich nutzen. Mit Azure Functions können Sie geplante oder ausgelöste Codeeinheiten erstellen, die in verschiedenen Programmiersprachen implementiert wurden. Weitere Informationen zu Azure Functions finden Sie in der [Übersicht zu Azure Functions](functions-overview.md).
@@ -51,17 +51,17 @@ Da der Schnellstart von Azure Functions Funktionscode enthält, können Sie Ihre
 
 2. Scrollen Sie nach unten zum Textfeld **Anforderungstext**, ändern Sie den Wert der Eigenschaft *Name* entsprechend, und klicken Sie anschließend auf **Ausführen**. Wie Sie sehen, wird die Ausführung von einer Test-HTTP-Anforderung ausgelöst, die Informationen werden in die Streamingprotokolle geschrieben, und die „Hello“-Antwort wird in der **Ausgabe** angezeigt.
 
-3. Wenn Sie die Ausführung der gleichen Funktion von einem anderen Fenster oder einer anderen Registerkarte im Browser aus auslösen möchten, kopieren Sie den Wert **Funktions-URL** aus der Registerkarte **Entwickeln**, und fügen Sie ihn in der Adressleiste des Browsers ein. Hängen Sie anschließend den Abfragezeichenfolgewert `&name=yourname` an, und drücken Sie die Eingabetaste. Dabei werden die gleichen Informationen protokolliert, und der Browser zeigt wie zuvor die „Hello“-Antowort an.
+3. Wenn Sie die Ausführung der gleichen Funktion von einem anderen Fenster oder einer anderen Registerkarte im Browser aus auslösen möchten, kopieren Sie den Wert **Funktions-URL** aus der Registerkarte **Entwickeln**, und fügen Sie ihn in der Adressleiste des Browsers ein. Hängen Sie anschließend den Abfragezeichenfolgewert `&name=yourname` an, und drücken Sie die Eingabetaste. Dabei werden die gleichen Informationen protokolliert, und der Browser zeigt wie zuvor die „Hello“-Antwort an.
 
 ##Nächste Schritte
 
-Der Schnellstart zeigt eine sehr einfach Ausführung einer grundlegenden, über HTTP ausgelösten Funktion. Weitere Informationen zur Nutzung von Azure Functions in Ihren Apps finden Sie in den folgenden Themen.
+Der Schnellstart zeigt eine sehr einfache Ausführung einer grundlegenden, über HTTP ausgelösten Funktion. Weitere Informationen zur Nutzung von Azure Functions in Ihren Apps finden Sie in den folgenden Themen.
 
 + [Azure Functions developer reference (Azure Functions-Entwicklerreferenz)](functions-reference.md) Referenz zum Programmieren von Funktionen sowie zum Festlegen von Triggern und Bindungen
 + [Testing Azure Functions (Testen von Azure Functions)](functions-test-a-function.md) Beschreibt verschiedene Tools und Techniken zum Testen Ihrer Funktionen
-+ [How to scale Azure Functions (Skalieren von Azure Functions)](functions-scale.md) Beschreibt die für Azure Functions verfügbaren Servicepläne einschließlich des dynamischen Serviceplans und wie Sie den richtigen Plan finden 
-+ [Was ist Azure App Service?](../app-service/app-service-value-prop-what-is.md) Azure Functions nutzt die Azure App Service-Plattform für Kernfunktionen wie Bereitstellungen, Umgebungsvariablen und Diagnosen. 
++ [How to scale Azure Functions (Skalieren von Azure Functions)](functions-scale.md) Beschreibt die für Azure Functions verfügbaren Servicepläne einschließlich des dynamischen Serviceplans und wie Sie den richtigen Plan finden
++ [Was ist Azure App Service?](../app-service/app-service-value-prop-what-is.md) Azure Functions nutzt die Azure App Service-Plattform für Kernfunktionen wie Bereitstellungen, Umgebungsvariablen und Diagnosen.
 
 [AZURE.INCLUDE [Hinweis zu den ersten Schritten](../../includes/functions-get-help.md)]
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0824_2016-->

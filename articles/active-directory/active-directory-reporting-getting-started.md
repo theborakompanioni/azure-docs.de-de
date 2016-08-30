@@ -156,4 +156,4 @@ Unter der E-Mail-Adresse [aadreportinghelp@microsoft.com](mailto:aadreportinghel
 
 > [AZURE.TIP] Weitere Dokumentationen zu Azure AD Reporting finden Sie unter [Anzeigen von Zugriffs- und Nutzungsberichten](active-directory-view-access-usage-reports.md).
 
-<!---HONumber=AcomDC_0309_2016-->
+<!----HONumber=AcomDC_0309_2016-->

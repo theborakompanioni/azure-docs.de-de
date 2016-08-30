@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="04/27/2016"
+   ms.date="08/17/2016"
    ms.author="alkohli" />
 
 # Konfigurieren von Multipfad-E/A für Ihr StorSimple-Gerät
@@ -21,7 +21,7 @@ Microsoft hat Unterstützung für die Multipfad-E/A-Funktion (Multipath I/O, MPI
 
 Für eine hohe Verfügbarkeit Ihrer StorSimple-Lösung sollte MPIO auf dem StorSimple-Gerät konfiguriert werden. Wenn MPIO auf den Hostservern unter Windows Server 2012 R2 installiert ist, können die Server den Ausfall einer Verknüpfung, des Netzwerks oder einer Schnittstelle tolerieren.
 
-MPIO ist ein optionales Feature und wird unter Windows Server nicht standardmäßig installiert. Diese Funktion sollte als Feature über den Server-Manager installiert werden. In diesem Thema werden die Schritte zum Installieren und Verwenden von MPIO auf einem Host unter Windows Server 2012 R2 beschrieben, der mit einem physischen StorSimple-Gerät verbunden ist.
+MPIO ist ein optionales Feature und wird unter Windows Server nicht standardmäßig installiert. Diese Funktion sollte als Feature über den Server-Manager installiert werden. In diesem Thema werden die Schritte zum Installieren und Verwenden von MPIO auf einem Host unter Windows Server 2012 R2 beschrieben, der mit einem physischen StorSimple-Gerät verbunden ist.
 
 >[AZURE.NOTE] **Dieses Verfahren gilt nur für die StorSimple 8000-Serie. MPIO wird zurzeit auf einem virtuellen StorSimple-Gerät nicht unterstützt.**
 
@@ -101,7 +101,7 @@ Nachdem MPIO unter Windows Server konfiguriert wurde, können auf dem StorSimple
 
 9. Klicken Sie auf **Eigenschaften**. Klicken Sie im Dialogfeld **Eigenschaften** auf **Sitzung hinzufügen**.
 10. Aktivieren Sie im Dialogfeld **Mit Ziel verbinden** das Kontrollkästchen **Multipfad aktivieren**. Klicken Sie auf **Erweitert**.
-11. Gehen Sie im Dialogfeld **Erweiterte Einstellungen** folgendermaßen vor:										
+11. Gehen Sie im Dialogfeld **Erweiterte Einstellungen** folgendermaßen vor:
 	-  Wählen Sie "Microsoft iSCSI-Initiator" in der Dropdownliste **Lokaler Adapter** aus.
 	-  Wählen Sie die IP-Adresse, die dem Host entspricht, in der Dropdownliste **Initiator-IP** aus. In diesem Fall werden zwei Netzwerkschnittstellen auf dem Gerät mit einer einzelnen Netzwerkschnittstelle auf dem Host verbunden. Aus diesem Grund handelt es sich bei dieser Schnittstelle um die gleiche Schnittstelle, die für die erste Sitzung bereitgestellt wurde.
 	-  Wählen Sie die IP-Adresse für die zweite Datenschnittstelle, die auf dem Gerät aktiviert ist, in der Dropdownliste **Zielportal-IP** aus.
@@ -173,4 +173,4 @@ Das folgende Verfahren beschreibt, wie Sitzungen hinzugefügt werden, wenn ein S
 Erfahren Sie mehr zum Thema [Verwenden des StorSimple Manager-Diensts, um eine StorSimple-Gerätekonfiguration zu ändern](storsimple-modify-device-config.md).
  
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0817_2016-->

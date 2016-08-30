@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/16/2016" 
+	ms.date="08/15/2016" 
 	ms.author="mandia"/>
 
 
@@ -23,7 +23,7 @@
 
 Azure BizTalk Services verwendet Ausstellername und -schlüssel von Service Bus und Access Control. Dies gilt insbesondere in folgenden Fällen:
 
-Aufgabe | Welcher Ausstellername und -schlüssel?
+Task | Welcher Ausstellername und -schlüssel?
 --- | ---
 Bereitstellen einer Anwendung in Visual Studio | Access Control-Ausstellername und -schlüssel
 Konfigurieren des Azure BizTalk Services-Portals | Access Control-Ausstellername und -schlüssel
@@ -34,15 +34,15 @@ Dieses Thema beschreibt die notwendigen Schritte zum Abrufen von Ausstellername 
 ## Access Control-Ausstellername und -schlüssel
 Access Control-Ausstellername und -schlüssel werden von den folgenden Komponenten verwendet:
 
-- Ihre in Visual Studio erstellte Azure BizTalk Service-Anwendung: Um Ihre BizTalk Service-Anwendung in Visual Studio für Azure bereitzustellen, müssen Sie Access Control-Ausstellername und -schlüssel eingeben. 
+- Ihre in Visual Studio erstellte Azure BizTalk Service-Anwendung: Um Ihre BizTalk Service-Anwendung in Visual Studio für Azure bereitzustellen, müssen Sie Access Control-Ausstellername und -schlüssel eingeben.
 - Das Azure BizTalk Services-Portal: Wenn Sie einen BizTalk Service erstellen und das BizTalk Services-Portal öffnen, werden Ihr Access Control-Ausstellername und -schlüssel automatisch für Ihre Bereitstellungen mit den gleichen Access Control-Werten registriert.
 
 ### So kopieren Sie Access Control-Ausstellername und -schlüssel und fügen sie ein
 
 1. Melden Sie sich am [klassischen Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=213885) an.
 2. Klicken Sie im linken Navigationsbereich auf **BizTalk Services**.
-3. Wählen Sie Ihren BizTalk Service aus. 
-4. Wählen Sie **Connection Information** in der Taskleiste aus. Dort sind Access Control-Namespace, -Standardaussteller (Ausstellername) und -Standardschlüssel (Ausstellerschlüssel) aufgelistet. Sie können diese Werte kopieren und einfügen.  
+3. Wählen Sie Ihren BizTalk Service aus.
+4. Wählen Sie **Connection Information** in der Taskleiste aus. Dort sind Access Control-Namespace, -Standardaussteller (Ausstellername) und -Standardschlüssel (Ausstellerschlüssel) aufgelistet. Sie können diese Werte kopieren und einfügen.
 
 Zusammenfassung: Ausstellername = Standardaussteller Ausstellerschlüssel = Standardschlüssel
 
@@ -53,7 +53,7 @@ Alternativ können Sie auf **ACS-Verwaltungsportal öffnen** klicken, um die Acc
 2. Klicken Sie im linken Navigationsbereich auf **BizTalk Services**.
 3. Wählen Sie Ihren BizTalk Service aus.
 4. Klicken Sie auf die Schaltfläche "Verbindungsinformationen", und wählen Sie **ACS-Verwaltungsportal öffnen** aus.
-5. Klicken Sie im Portal unter **Diensteinstellungen** auf **Dienstidentitäten**. Hier wird Ihre Dienstidentität angezeigt, die gleichzeitig Ihr Access Control-Ausstellername ist. Klicken Sie auf den Link Ihrer Dienstidentität, um das Kennwort anzuzeigen, das gleichzeitig Ihr Ausstellerschlüssel ist. Diese Werte können kopiert werden.<br/><br/> Unter **Dienstidentitäten** sehen Sie z. B. "owner". Bei "owner" handelt es sich um Ihren Access Control-Ausstellernamen. Wenn Sie auf den "owner"-Link klicken, wird **Kennwort** angezeigt. Wenn Sie auf den Link "Kennwort" klicken, wird der Wert angezeigt. Dieser Kennwortwert ist Ihr Access Controller-Ausstellerschlüssel.  
+5. Klicken Sie im Portal unter **Diensteinstellungen** auf **Dienstidentitäten**. Hier wird Ihre Dienstidentität angezeigt, die gleichzeitig Ihr Access Control-Ausstellername ist. Klicken Sie auf den Link Ihrer Dienstidentität, um das Kennwort anzuzeigen, das gleichzeitig Ihr Ausstellerschlüssel ist. Diese Werte können kopiert werden.<br/><br/> Unter **Dienstidentitäten** sehen Sie z. B. "owner". Bei "owner" handelt es sich um Ihren Access Control-Ausstellernamen. Wenn Sie auf den "owner"-Link klicken, wird **Kennwort** angezeigt. Wenn Sie auf den Link "Kennwort" klicken, wird der Wert angezeigt. Dieser Kennwortwert ist Ihr Access Controller-Ausstellerschlüssel.
 
 Zusammenfassung: Ausstellername = Dienstidentitätsname Ausstellerschlüssel = Kennwortwert
 
@@ -69,10 +69,10 @@ Service Bus-Ausstellername und -schlüssel werden von BizTalk-Adapterdiensten ve
 
 1. Melden Sie sich am [klassischen Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=213885) an.
 2. Klicken Sie im linken Navigationsbereich auf **Service Bus**.
-3. Wählen Sie Ihren Namespace aus. Klicken Sie in der Taskleiste auf **Verbindungsinformationen**: Daraufhin werden **Standardaussteller** (Ausstellername) und **Standardschlüssel** (Ausstellerschlüssel) angezeigt. Diese Werte können kopiert werden.  
+3. Wählen Sie Ihren Namespace aus. Klicken Sie in der Taskleiste auf **Verbindungsinformationen**: Daraufhin werden **Standardaussteller** (Ausstellername) und **Standardschlüssel** (Ausstellerschlüssel) angezeigt. Diese Werte können kopiert werden.
 
-Zusammenfassung: 
-Ausstellername = Standardaussteller 
+Zusammenfassung:  
+Ausstellername = Standardaussteller  
 Ausstellerschlüssel = Standardschlüssel
 
 ## Weiter
@@ -94,4 +94,4 @@ Zusätzliche Azure BizTalk Services-Themen:
 - [BizTalk Services: Drosselung](http://go.microsoft.com/fwlink/p/?LinkID=302282)<br/>
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0817_2016-->

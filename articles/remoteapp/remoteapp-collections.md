@@ -12,12 +12,15 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="article" 
-    ms.date="07/20/2016" 
+    ms.date="08/15/2016" 
     ms.author="elizapo" />
 
 
 
 # Welche Art von Sammlung benötigen Sie für Azure RemoteApp?
+
+> [AZURE.IMPORTANT]
+Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148).
 
 Mit Azure RemoteApp können Sie Apps und Ressourcen auf jedem Gerät für Benutzer freigeben. Zu diesem Zweck werden Sammlungen für die Apps und Ressourcen erstellt, und Sie geben dann diese Sammlungen für Benutzer frei. Es gibt zwei unterschiedliche Sammlungsoptionen mit unterschiedlichen Netzwerk- und Authentifizierungsoptionen – welche ist die richtige für Sie?
 
@@ -35,7 +38,7 @@ Betrachten wir die Überlegungen und Optionen, die Sie berücksichtigen bzw. wä
 
 ## Cloudsammlungen
 - Schnelle Erstellung – Die Sammlung wird schnell bereitgestellt, d. h., die Benutzer erhalten die App in kürzerer Zeit.
-- Sie können eigene Apps bereitstellen oder unsere Apps gemeinsam nutzen. Sie können ein benutzerdefiniertes Image (anhand eines Azure-VM erstellt) oder eines der in Ihrem Abonnement enthaltenen Images verwenden.
+- Sie können eigene Apps bereitstellen oder unsere Apps gemeinsam nutzen. Sie können ein benutzerdefiniertes Image (anhand einer Azure-VM erstellt) oder eines der in Ihrem Abonnement enthaltenen Images verwenden.
 - Sie müssen keine Verbindung zwischen der Sammlung und der lokalen Domäne konfigurieren.
 - Optional können Sie jedoch ein eigenes Azure VNET verwenden, um Zugriff auf Ihre lokale Umgebung für die Datenfreigabe bereitzustellen oder um Nicht-Windows-Authentifizierung bei Ressourcen, z. B. SQL Server (mit Datenbankauthentifizierung), zu verwenden.
 
@@ -91,4 +94,4 @@ Ich denke, ich habe jetzt alles erklärt, was Sie wissen müssen. Jetzt bleibt n
 
 [Erstellen Sie eine Cloudsammlung](remoteapp-create-cloud-deployment.md), oder [erstellen Sie eine Hybrid-Sammlung](remoteapp-create-hybrid-deployment.md) – fangen Sie einfach an.
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0817_2016-->

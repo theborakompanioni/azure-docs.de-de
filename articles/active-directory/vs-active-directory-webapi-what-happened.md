@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Was ist mit dem WebApi-Projekt passiert (verbundene Visual Studio-Dienste für Azure Active Directory)? | Microsoft Azure"
+	pageTitle="Was ist mit dem WebApi-Projekt passiert (verbundene Visual Studio-Dienste für Azure Active Directory)? | Microsoft Azure "
 	description="Beschreibt, was mit der MVC-Projekt-WebApi geschieht, wenn Sie mithilfe von Visual Studio eine Verbindung mit Azure AD herstellen"
   services="active-directory"
 	documentationCenter=""
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="vs-what-happened"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/01/2016"
+	ms.date="08/15/2016"
 	ms.author="tarcher"/>
 
 # Was ist mit dem WebApi-Projekt passiert (verbundene Visual Studio-Dienste für Azure Active Directory)?
@@ -57,7 +57,7 @@ Eine Authentifizierungsstartklasse (**App\_Start/Startup.Auth.cs**) wurde Ihrem 
 Wenn Sie bereits eine Startklasse in Ihrem Projekt verwendet haben, wurde die **Configuration**-Methode so aktualisiert, dass sie einen Aufruf von `ConfigureAuth(app)` enthält. Andernfalls wurde Ihrem Projekt eine Startklasse hinzugefügt.
 
 
-###Die Datei "app.config" oder "web.config" weist neue Konfigurationswerte auf.
+###Ihre Datei app.config oder web.config weist neue Konfigurationswerte auf.
 
 Die folgenden Konfigurationseinträge wurden hinzugefügt.
 ```
@@ -117,4 +117,4 @@ Ihre Azure Active Directory-App wurde aktualisiert und enthält nun die Berechti
 
 [Weitere Informationen zu Azure Active Directory](https://azure.microsoft.com/services/active-directory/)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0817_2016-->

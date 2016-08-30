@@ -12,10 +12,13 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="06/18/2016"
+    ms.date="08/15/2016"
     ms.author="elizapo" />
 
 # Hinzufügen eines Benutzers zu Ihrer Azure RemoteApp-Sammlung
+
+> [AZURE.IMPORTANT]
+Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148).
 
 Damit Ihre Benutzer die Apps in Azure RemoteApp anzeigen und verwenden können, müssen Sie ihnen Zugriff auf Ihre Sammlung gewähren. Dies ist der einfache Teil: Geben Sie auf der Registerkarte **Benutzerzugriff** die Kontoinformationen für den Benutzer ein, und klicken Sie auf das Häkchen.
 
@@ -41,15 +44,15 @@ Diese Tabelle dient als Kurzübersicht zu den für Ihre Sammlung unterstützten 
 |ADsync mit Kennwortsynchronisierung |Ja |Ja |
 |ADsync ohne Kennwortsynchronisierung|	Ja |Nein |
 |ADsync mit AD FS |Ja |Ja |
-|[Von Azure unterstützte Drittidentitätsanbieter](https://msdn.microsoft.com/library/azure/jj679342.aspx) (z. B. Ping) |Ja |Ja|
+|[Von Azure unterstützte Identitätsdrittanbieter](https://msdn.microsoft.com/library/azure/jj679342.aspx) (z.B. Ping) |Ja |Ja|
 |Multi-Factor Authentication |Ja |Ja |
 
 Beachten Sie die [weiteren Informationen](remoteapp-ad.md) zum Konfigurieren von Active Directory für RemoteApp.
 
 
-> [AZURE.NOTE] Azure Active Directory-Benutzer müssen dem Ihrem Abonnement zugeordneten Mandanten angehören. (Sie können Ihr Abonnement im Portal auf der Registerkarte **Einstellungen** anzeigen und bearbeiten. Weitere Informationen finden Sie unter [Ändern des von RemoteApp verwendeten Azure Active Directory-Mandanten](remoteapp-changetenant.md).)
+> [AZURE.NOTE] Die Azure Active Directory-Benutzer müssen dem Mandanten angehören, der Ihrem Abonnement zugeordnet ist. (Sie können Ihr Abonnement im Portal auf der Registerkarte **Einstellungen** anzeigen und bearbeiten. Weitere Informationen finden Sie unter [Ändern des von RemoteApp verwendeten Azure Active Directory-Mandanten](remoteapp-changetenant.md).)
 
 ## Benutzerkontoinformationen für Office 365 ProPlus
-Bei Verwendung des Vorlagenimages von Office 365 ProPlus in Ihrer Sammlung *oder* bei Erstellung eines benutzerdefinierten Images, das Office 365 verwendet, dürfen Sie nur Azure Active Directory-Benutzer hinzufügen, die Office 365-Abonnements für die Standarddomäne Ihres Abonnements haben. Weitere Informationen finden Sie unter [Verwenden von Office 365 mit Azure RemoteApp](remoteapp-o365.md).
+Bei Verwendung des Vorlagenimages von Office 365 ProPlus in Ihrer Sammlung *oder* bei Erstellung eines benutzerdefinierten Images, das Office 365 verwendet, dürfen Sie nur Azure Active Directory-Benutzer hinzufügen, die Office 365-Abonnements für die Standarddomäne Ihres Abonnements haben. Weitere Informationen finden Sie unter [Verwenden von Office 365 mit Azure RemoteApp](remoteapp-o365.md).
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0817_2016-->

@@ -12,10 +12,13 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="05/12/2016"
+    ms.date="08/15/2016"
     ms.author="elizapo" />
 
 # Planen des virtuellen Netzwerks für Azure RemoteApp
+
+> [AZURE.IMPORTANT]
+Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148).
 
 Dieses Dokument beschreibt, wie Sie Ihr virtuelles Azure-Netzwerk (VNET) und das Subnetz für Azure RemoteApp einrichten. Falls Sie noch nicht mit virtuellen Azure-Netzwerken vertraut sind: Dies ist eine Funktion, mit der Sie Ihre Netzwerkinfrastruktur für die Cloud virtualisieren und Hybridlösungen mit Azure und Ihren lokalen Ressourcen erstellen können. Weitere Informationen dazu finden Sie [hier](../virtual-network/virtual-networks-overview.md).
 
@@ -55,4 +58,4 @@ Folgende Aspekte müssen Sie im Subnetz Ihres virtuellen Netzwerks aktivieren:
 
 [Tunnelerzwingung](../vpn-gateway/vpn-gateway-about-forced-tunneling.md) wird jetzt für alle neuen Azure RemoteApp-Sammlungen unterstützt. Die Migration einer vorhandenen Sammlung zur Unterstützung der Tunnelerzwingung wird zurzeit nicht unterstützt. Sie müssen alle vorhandenen Sammlungen löschen, die das mit Azure RemoteApp verknüpfte VNET nutzen, und ein neues virtuelles Netzwerk erstellen, um die Tunnelerzwingung für Ihre Sammlungen zu aktivieren.
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0817_2016-->

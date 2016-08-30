@@ -12,14 +12,14 @@
     ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="na"
-    ms.date="04/14/2016"
+    ms.date="08/16/2016"
     ms.author="sethm" />
 
 # Event Hubs Verfügbarkeit und Support – häufig gestellte Fragen
 
-Event Hubs bietet die umfangreiche Aufnahme, Persistenz und Verarbeitung von Datenereignissen aus Datenquellen mit hohem Durchsatz und/oder Millionen von Geräten. Zusammen mit Service Bus-Warteschlangen und -Topics ermöglicht Event Hubs persistente Befehlszeilen- und Steuerelement-Bereitstellungen für [Internet der Dinge](https://azure.microsoft.com/services/iot-hub/)-Szenarien (IoT).
+Event Hubs bietet umfangreiche Erfassung, Persistenz und Verarbeitung von Datenereignissen aus Datenquellen mit hohem Durchsatz und/oder Millionen von Geräten. Zusammen mit Service Bus-Warteschlangen und -Themen ermöglicht Event Hubs persistente Befehlszeilen- und Steuerelement-Bereitstellungen für [Internet der Dinge](https://azure.microsoft.com/services/iot-hub/)-Szenarien (IoT).
 
-Dieser Artikel bietet Informationen über die Event Hubs-Verfügbarkeit und beantwortet einige häufig gestellte Fragen.
+Dieser Artikel bietet Informationen über die Event Hubs-Verfügbarkeit und beantwortet einige häufig gestellte Fragen:
 
 ## Preisinformationen
 
@@ -33,7 +33,7 @@ Von einem Event Hub genutzte Ereignisse sowie Verwaltungsvorgänge und Kontrolla
 
 ## Was sind Event Hubs-Durchsatzeinheiten?
 
-Event Hubs-Durchsatzeinheiten werden vom Benutzer explizit ausgewählt, entweder über das klassische Azure-Portal oder Event Hubs-Ressourcen-Manager-Vorlagen. Durchsatzeinheiten betreffen alle Event Hubs in einem Service Bus-Namespace, und jede Durchsatzeinheit gibt dem Namespace die Berechtigung für folgende Funktionen:
+Sie wählen die Event Hubs-Durchsatzeinheiten explizit aus, entweder über das Azure-Portal oder mithilfe von Event Hubs-Ressourcen-Manager-Vorlagen. Durchsatzeinheiten betreffen alle Event Hubs in einem Event Hubs-Namespace, und durch jede Durchsatzeinheit erhält der Namespace die Berechtigung für folgende Funktionen:
 
 - Eingangsereignisse bis zu 1 MB pro Sekunde (Ereignisse, die an einen Event Hub gesendet werden), aber nicht mehr als 1.000 Eingangsereignisse, Verwaltungsvorgänge oder Steuer-API-Aufrufe pro Sekunde.
 
@@ -49,7 +49,7 @@ Wenn der gesamte eingehende Durchsatz oder die gesamte eingehende Ereignisrate �
 
 Wenn der gesamte ausgehende Durchsatz oder die gesamte ausgehende Ereignisrate über alle Event Hubs hinweg in einem Namespace das Einheitenkontingent für den aggregierten Durchsatz überschreitet, werden Empfänger gedrosselt und erhalten die Fehlermeldung, dass das Ausgangskontingent überschritten wurde. Eingangs-und Ausgangskontingente werden separat durchgesetzt, sodass kein Absender die Verlangsamung der Nutzung herbeiführen kann und kein Empfänger verhindern kann, dass Ereignisse an einen Event Hub gesendet werden.
 
-Beachten Sie, dass die Auswahl der Durchsatzeinheiten unabhängig von der Anzahl der Event Hubs-Partitionen ist. Während jede Partition einen maximalen Durchsatz von 1 MB pro Sekunde eingehend (bei einem Maximum von 1.000 Ereignissen pro Sekunde) und 2 MB pro Sekunde ausgehend bietet, gibt es keine festen Gebühren für die Partitionen selbst. Die Gebühr ist für die aggregierten Durchsatzeinheiten auf allen Event Hubs in einem Service Bus-Namespace. Mit diesem Muster können Sie genügend Partitionen erstellen, um die erwartete maximale Belastung für die Systeme ohne weitere Kosten pro Durchsatzeinheit zu unterstützen, bis die Ereignisladung im System tatsächlich höhere Durchsatzzahlen erfordert, ohne die Struktur und Architektur Ihrer Systeme ändern zu müssen, während die Belastung des Systems erhöht wird.
+Beachten Sie, dass die Auswahl der Durchsatzeinheiten unabhängig von der Anzahl der Event Hubs-Partitionen ist. Während jede Partition einen maximalen Durchsatz von 1 MB pro Sekunde eingehend (bei einem Maximum von 1.000 Ereignissen pro Sekunde) und 2 MB pro Sekunde ausgehend bietet, gibt es keine festen Gebühren für die Partitionen selbst. Die Gebühr gilt für die aggregierten Durchsatzeinheiten in allen Event Hubs in einem Event Hubs-Namespace. Mit diesem Muster können Sie genügend Partitionen erstellen, um die erwartete maximale Belastung für die Systeme ohne weitere Kosten pro Durchsatzeinheit zu unterstützen, bis die Ereignisladung im System tatsächlich höhere Durchsatzzahlen erfordert, ohne die Struktur und Architektur Ihrer Systeme ändern zu müssen, während die Belastung des Systems erhöht wird.
 
 ## Gibt es eine Beschränkung für die Anzahl der Durchsatzeinheiten, die ausgewählt werden können?
 
@@ -57,7 +57,7 @@ Es gibt ein Kontingent von 20 Durchsatzeinheiten pro Namespace. Sie können ein 
 
 ## Gibt es eine Gebühr für die Beibehaltung von Event Hubs-Ereignissen für mehr als 24 Stunden?
 
-Die Standard-Ebene für Event Hubs erlaubt eine Aufbewahrung von Nachrichten länger als 24 Stunden, maximal 30 Tage. Wenn die Größe der Gesamtmenge der gespeicherten Ereignisse das Speicherkontingent für die Anzahl der ausgewählten Durchsatzeinheiten (84 GB pro Durchsatzeinheit) überschreitet, wird die überschrittene Größe zur veröffentlichten Rate für den Azure-Blob-Speicher in Rechnung gestellt. Das Speicherkontingent in allen Durchsatzeinheiten deckt alle Speicherkosten für die Aufbewahrungsdauer von 24 Stunden (Standard), selbst, wenn die Durchsatzeinheit bis zum maximal erlaubten Eingang verbraucht ist.
+Die Standard-Ebene für Event Hubs erlaubt eine Aufbewahrung von Nachrichten länger als 24 Stunden, maximal 30 Tage. Wenn die Größe der Gesamtanzahl der gespeicherten Ereignisse das Speicherkontingent für die Anzahl der ausgewählten Durchsatzeinheiten (84 GB pro Durchsatzeinheit) überschreitet, wird die überschrittene Größe zur veröffentlichten Rate für den Azure Blob Storage in Rechnung gestellt. Das Speicherkontingent in allen Durchsatzeinheiten deckt alle Speicherkosten für die Aufbewahrungsdauer von 24 Stunden (Standard), selbst, wenn die Durchsatzeinheit bis zum maximal erlaubten Eingang verbraucht ist.
 
 ## Was ist die maximale Beibehaltungsdauer?
 
@@ -69,7 +69,7 @@ Die Gesamtgröße aller gespeicherten Ereignisse, einschließlich des gesamten i
 
 ## Kann ich eine einzelne AMQP-Verbindung zum Senden und Empfangen von Event Hubs und Service Bus-Warteschlangen/-Themen verwenden?
 
-Ja, solange sich alle Event Hubs, Warteschlangen und Themen im selben Service Bus-Namespace befinden. Daher können Sie bidirektionale und vermittelte Verbindungen auf viele Geräte mit Wartezeiten von Sekundenbruchteilen kostengünstig und auf hochgradig skalierbare Weise implementieren.
+Ja, solange sich alle Event Hubs, Warteschlangen und Themen im selben Namespace befinden. Daher können Sie bidirektionale und vermittelte Verbindungen auf zahlreichen Geräten implementieren – mit einer Latenz von Sekundenbruchteilen, kostengünstig und hochgradig skalierbar.
 
 ## Gelten vermittelte Verbindungsgebühren für Event Hubs?
 
@@ -77,7 +77,7 @@ Für Absender fallen Verbindungsgebühren nur an, wenn das AMQP-Protokoll verwen
 
 ## Was ist der Unterschied zwischen den Event Hubs-Ebenen Basic und Standard?
 
-Ereignis-Hubs der Standard-Ebene bieten mehr Features als der Basic-Ebene sowie einigen konkurrierenden Systemen. Zu diesen Features gehören Aufbewahrungszeiträume von mehr als 24 Stunden und die Fähigkeit, eine einzelne AMQP-Verbindung zum Senden von Befehlen an eine große Anzahl von Geräten mit Wartezeiten von Sekundenbruchteilen sowie Telemetriedaten von diesen Geräten an Event Hubs zu senden. Die Liste der Funktionen finden Sie unter [Event Hubs – Preisdetails](https://azure.microsoft.com/pricing/details/event-hubs/)
+Event Hubs im Standard-Tarif bieten mehr Features als der Basic-Tarif sowie einige vergleichbare Systeme. Zu diesen Features gehören Aufbewahrungszeiträume von mehr als 24 Stunden und die Fähigkeit, eine einzelne AMQP-Verbindung zum Senden von Befehlen an eine große Anzahl von Geräten mit einer Latenz von Sekundenbruchteilen sowie Telemetriedaten von diesen Geräten an Event Hubs zu senden. Die Liste der Funktionen finden Sie unter [Event Hubs – Preisdetails](https://azure.microsoft.com/pricing/details/event-hubs/)
 
 ## Geografische Verfügbarkeit
 
@@ -85,12 +85,12 @@ Event Hubs ist in den folgenden Regionen verfügbar:
 
 |geografischer Raum|Regionen|
 |---|---|
-|USA|USA (Zentrum), USA (Osten), USA (Osten) 2, USA (Mitte/Süden), USA (Westen)|
-|Europa|Nordeuropa, Westeuropa|
-|Asien-Pazifik|Ostasien, Südostasien|
-|Japan|Ostjapan, Westjapan|
-|Brasilien|Brasilien Süd|
-|Australien|Ostaustralien, Südostaustralien|
+|USA|„USA, Mitte“, „USA, Osten“, „USA, Osten 2“, „USA, Mitte-Süden“, „USA, Westen“|
+|Europa|„Europa, Norden“, „Europa, Westen“|
+|Asien-Pazifik|„Asien, Osten“, „Asien, Südosten“|
+|Japan|„Japan, Osten“, „Japan, Westen“|
+|Brasilien|Brasilien, Süden|
+|Australien|„Australien, Osten“, „Australien, Südosten“|
 
 ## Support und SLA
 
@@ -110,4 +110,4 @@ Weitere Informationen zu Event Hubs finden Sie in den folgenden Artikeln:
 [Beispielanwendung mit Verwendung von Ereignis-Hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
 [Messaginglösung mit Warteschlange]: ../service-bus/service-bus-dotnet-multi-tier-app-using-service-bus-queues.md
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0817_2016-->

@@ -39,43 +39,11 @@ Wenn Sie mit der Verwendung des Service Bus Relays in Azure beginnen möchten, m
 
 So erstellen Sie einen Dienstnamespace:
 
-1.  Melden Sie sich beim [klassischen Azure-Portal][] an.
-
-2.  Klicken Sie im linken Navigationsbereich des Portals auf **Service Bus**.
-
-3.  Klicken Sie im unteren Bereich des Portals auf **Erstellen**.
-
-	![](./media/service-bus-dotnet-how-to-use-relay/sb-queues-13.png)
-
-4.  Geben Sie im Dialogfeld **Neuen Namespace hinzufügen** einen Namen für den Namespace ein. Das System überprüft sofort, ob dieser Name verfügbar ist.
-
-	![](./media/service-bus-dotnet-how-to-use-relay/sb-queues-04.png)
-
-5.  Wählen Sie nach der Bestätigung, dass der Name für den Namespace verfügbar ist, das Land oder die Region, wo dieser Namespace gehostet werden soll. (Stellen Sie sicher, dass dies dasselbe Land/dieselbe Region ist, in dem/der sie Ihre Rechnerressourcen einsetzen.)
-
-	> [AZURE.IMPORTANT] Wählen Sie *dieselbe Region*, in der Sie auch Ihre Anwendung einsetzen möchten. Dies sorgt für die beste Leistung.
-
-6.	Übernehmen Sie für die weiteren Felder im Dialogfeld die Standardwerte (**Messaging** und **Standardstufe**), und klicken Sie anschließend auf das Häkchen. Ihr Dienstnamespace wird nun erstellt und aktiviert. Ggf. müssen Sie einige Minuten warten, bis die Ressourcen für Ihr Konto durch das System bereitgestellt werden.
-
-	![](./media/service-bus-dotnet-how-to-use-relay/getting-started-multi-tier-27.png)
-
-	Der erstellte Namespace wird anschließend im Portal angezeigt und nach kurzer Zeit aktiviert. Fahren Sie erst fort, wenn der Status als **Aktiv** angezeigt wird.
-
-## Abrufen der Standard-Anmeldeinformationen für den Namespace
-
-Wenn Sie Verwaltungsvorgänge ausführen möchten, z. B. das Erstellen einer Relayverbindung für den neuen Namespace, müssen Sie die SAS-Autorisierungsregel (Shared Access Signature) für den Namespace konfigurieren. Weitere Informationen zu SAS finden Sie unter [SAS-Authentifizierung (Shared Access Signature) mit Service Bus][].
-
-1.  Klicken Sie im linken Navigationsbereich auf den Knoten **Service Bus**, um die Liste verfügbarer Namespaces anzuzeigen. ![](./media/service-bus-dotnet-how-to-use-relay/sb-queues-13.png)
-
-2.  Doppelklicken Sie in der angezeigten Liste auf den Namen des Namespaces, den Sie soeben erstellt haben. ![](./media/service-bus-dotnet-how-to-use-relay/sb-queues-09.png)
-
-3.  Klicken Sie oben auf der Seite auf die Registerkarte **Konfigurieren**.
-
-4.  Wenn ein Service Bus-Namespace bereitgestellt wird, wird standardmäßig eine **SharedAccessAuthorizationRule** erstellt, in der **KeyName** auf **RootManageSharedAccessKey** festgelegt ist. Diese Seite zeigt den Schlüssel sowie die primären und sekundären Schlüssel für die Standardregel an.
+[AZURE.INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
 ## Abrufen des NuGet-Pakets "Service Bus"
 
-Das [Service Bus NuGet-Paket](https://www.nuget.org/packages/WindowsAzure.ServiceBus) stellt die einfachste Möglichkeit zum Abrufen der Service Bus-API und zum Konfigurieren der Anwendung mit allen Service Bus-Abhängigkeiten dar. Gehen sie folgendermaßen vor, um das NuGet-Paket in der Anwendung zu installieren:
+Das [Service Bus-NuGet-Paket](https://www.nuget.org/packages/WindowsAzure.ServiceBus) stellt die einfachste Möglichkeit zum Abrufen der Service Bus-API und zum Konfigurieren der Anwendung mit allen Service Bus-Abhängigkeiten dar. Gehen sie folgendermaßen vor, um das NuGet-Paket in der Anwendung zu installieren:
 
 1.  Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf **Verweise**, und klicken Sie dann auf **NuGet-Pakete verwalten**.
 2.  Suchen Sie nach „Service Bus“, und wählen Sie das Element **Microsoft Azure Service Bus** aus. Klicken Sie auf **Installieren**, um die Installation abzuschließen. Schließen Sie danach das folgende Dialogfeld.
@@ -96,10 +64,10 @@ Bevor Sie die Schritte unten ausführen, richten Sie zunächst mit dem folgenden
 
 ### Erstellen des Diensts
 
-Erstellen Sie zunächst den Dienst selbst. Ein WCF-Dienst besteht aus mindestens drei verschiedenen Teilen:
+Erstellen Sie zunächst den Dienst selbst Ein WCF-Dienst besteht aus mindestens drei verschiedenen Teilen:
 
 -   Definition eines Vertrags, der beschreibt, welche Nachrichten ausgetauscht werden und welche Operationen aufgerufen werden sollen
--   Der Implementierung des genannten Vertrags.
+-   Implementierung des besagten Vertrags
 -   Dem Host, der diesen WCF-Dienst hostet und eine Reihe von Endpunkten bereitstellt.
 
 Die Codebeispiele in diesem Abschnitt beziehen sich auf jede dieser Komponenten.
@@ -133,7 +101,7 @@ class ProblemSolver : IProblemSolver
 
 ### Programmgesteuertes Konfigurieren eines Diensthosts
 
-Nachdem der Vertrag erstellt und die Implementierung durchgeführt wurde, kann nun der Dienst gehostet werden. Das Hosting erfolgt innerhalb eines [System.ServiceModel.ServiceHost](https://msdn.microsoft.com/library/azure/system.servicemodel.servicehost.aspx)-Objekts, das die Verwaltung der Dienstinstanzen übernimmt und die Endpunkte hostet, die auf Nachrichten warten. Der folgende Code konfiguriert den Dienst sowohl mit einem regulären lokalen Endpunkt als auch mit einem Service Bus-Endpunkt, um die Darstellung interner und externer Endpunkte nebeneinander zu veranschaulichen. Ersetzen Sie die Zeichenfolge *namespace* durch Ihren Namespacenamen und *yourKey* durch den SAS-Schlüssel, den Sie im vorherigen Setupschritt erhalten haben.
+Nachdem der Vertrag erstellt und die Implementierung durchgeführt wurde, kann nun der Dienst gehostet werden. Das Hosting erfolgt innerhalb eines [System.ServiceModel.ServiceHost](https://msdn.microsoft.com/library/azure/system.servicemodel.servicehost.aspx)-Objekts, das die Verwaltung der Dienstinstanzen übernimmt und die Endpunkte hostet, die auf Nachrichten warten. Der folgende Code konfiguriert den Dienst sowohl mit einem regulären lokalen Endpunkt als auch mit einem Service Bus-Endpunkt, um interne und externe Endpunkte nebeneinander zu veranschaulichen. Ersetzen Sie die Zeichenfolge *namespace* durch Ihren Namespacenamen und *yourKey* durch den SAS-Schlüssel, den Sie im vorherigen Setupschritt erhalten haben.
 
 ```
 ServiceHost sh = new ServiceHost(typeof(ProblemSolver));
@@ -267,9 +235,8 @@ Nachdem Sie nun mit den Grundlagen des Service Bus Relay-Diensts vertraut sind, 
 - [Übersicht über die Architektur von Azure Service Bus](service-bus-fundamentals-hybrid-solutions.md)
 - Laden Sie Service Bus-Beispiele unter [Azure-Beispiele][] herunter, oder sehen Sie sich die [Übersicht über Service Bus-Beispiele][] an.
 
-  [klassischen Azure-Portal]: http://manage.windowsazure.com
-  [SAS-Authentifizierung (Shared Access Signature) mit Service Bus]: service-bus-shared-access-signature-authentication.md
+  [Shared Access Signature Authentication with Service Bus]: service-bus-shared-access-signature-authentication.md
   [Azure-Beispiele]: https://code.msdn.microsoft.com/site/search?query=service%20bus&f%5B0%5D.Value=service%20bus&f%5B0%5D.Type=SearchText&ac=2
   [Übersicht über Service Bus-Beispiele]: service-bus-samples.md
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0824_2016-->

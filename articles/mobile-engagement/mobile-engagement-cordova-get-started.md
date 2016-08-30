@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-phonegap"
 	ms.devlang="js"
 	ms.topic="hero-article" 
-	ms.date="04/04/2016"
+	ms.date="08/19/2016"
 	ms.author="piyushjo" />
 
 # Erste Schritte mit Azure Mobile Engagement für Cordova/Phonegap
@@ -48,7 +48,7 @@ Wir erstellen eine einfache App mit Cordova, um die Integration zu veranschaulic
 
 ###Erstellen eines neuen Cordova-Projekts
 
-1. Starten Sie das *Terminal*-Fenster auf dem Macintosh-Computer, und geben Sie Folgendes ein, um ein neues Cordova-Projekt auf Grundlage der Standardvorlage zu erstellen. Stellen Sie sicher, dass das Veröffentlichungsprofil, mit dem Sie die iOS-App später bereitstellen, als App-ID. "com.mycompany.myapp" verwendet. 
+1. Starten Sie das *Terminal*-Fenster auf dem Macintosh-Computer, und geben Sie Folgendes ein, um ein neues Cordova-Projekt auf Grundlage der Standardvorlage zu erstellen. Stellen Sie sicher, dass das Veröffentlichungsprofil, mit dem Sie die iOS-App später bereitstellen, als App-ID. "com.mycompany.myapp" verwendet.
 
 		$ cordova create azme-cordova com.mycompany.myapp
 		$ cd azme-cordova
@@ -81,9 +81,9 @@ Wir erstellen eine einfache App mit Cordova, um die Integration zu veranschaulic
 	        --variable AZME_ENABLE_NATIVE_LOG=true|false
 			--variable AZME_ENABLE_PLUGIN_LOG=true|false
 
-*Android Reach Icon* : muss der Name der Ressource ohne Erweiterung oder ziehbares Präfix sein (z. B. "mynotificationicon"), und die Symboldatei muss in Ihr Android-Projekt ("platforms/android/res/drawable") kopiert werden
+*Android Reach Icon* : muss der Name der Ressource ohne Erweiterung oder ziehbares Präfix sein (z. B. "mynotificationicon"), und die Symboldatei muss in Ihr Android-Projekt ("platforms/android/res/drawable") kopiert werden
 
-*iOS Reach Icon* : muss der Name der Ressource mit Erweiterung sein (z. B. "mynotificationicon.png"), und die Symboldatei muss mit XCode (mithilfe des Menüs "Dateien hinzufügen") dem iOS-Projekt hinzugefügt werden
+*iOS Reach Icon* : muss der Name der Ressource mit Erweiterung sein (z. B. "mynotificationicon.png"), und die Symboldatei muss mit XCode (mithilfe des Menüs "Dateien hinzufügen") dem iOS-Projekt hinzugefügt werden
 
 ##<a id="monitor"></a>Aktivieren der Überwachung in Echtzeit
 
@@ -167,7 +167,7 @@ Bearbeiten Sie **www/js/index.js**, um den Aufruf Mobile Engagement hinzuzufüge
 
 **[iOS]**
 
-1. Wir erstellen mit XCode die App und stellen sie auf dem Gerät bereit, um Pushbenachrichtigungen zu testen, da iOS nur Pushbenachrichtigungen an ein echtes Gerät unterstützt. Wechseln Sie zu dem Speicherort, an dem das Cordova-Projekt erstellt wurde, und navigieren Sie zu **...\\platforms\\ios**. Öffnen Sie die systemeigene Datei ".xcodeproj" in XCode. 
+1. Wir erstellen mit XCode die App und stellen sie auf dem Gerät bereit, um Pushbenachrichtigungen zu testen, da iOS nur Pushbenachrichtigungen an ein echtes Gerät unterstützt. Wechseln Sie zu dem Speicherort, an dem das Cordova-Projekt erstellt wurde, und navigieren Sie zu **...\\platforms\\ios**. Öffnen Sie die systemeigene Datei ".xcodeproj" in XCode.
 	
 2. Erstellen Sie die Cordova-App und stellen Sie sie auf dem iOS-Gerät bereit. Verwenden Sie hierzu das Konto, das über das Bereitstellungsprofil mit dem Zertifikat, das Sie gerade in das Mobile Engagement-Portal hochgeladen haben, und die App-ID verfügt, die mit der beim Erstellen der Cordova-App bereitgestellten ID übereinstimmt. Sie können den *Bundle identifier* in der Datei **Resources*-info.plist** in XCode nachschlagen, damit die IDs übereinstimmen.
 
@@ -191,20 +191,20 @@ Wir erstellen jetzt eine einfache Pushbenachrichtigungskampagne, die eine Pushbe
 
 3. Nehmen Sie die Eingaben vor, um Ihre Kampagne **[Android]** zu erstellen.
 	
-	- Geben Sie einen Text für **Name** für die Kampagne an. 
+	- Geben Sie einen Text für **Name** für die Kampagne an.
 	- Wählen Sie unter **Übermittlungstyp** für *Systembenachrichtigung* die Option *Einfach* aus.
 	- Wählen Sie für die **Übermittlungszeit** die Option *Immer* aus.
 	- Geben Sie einen **Titel** für die Benachrichtigung an, der in der ersten Zeile der Pushbenachrichtigung angezeigt wird.
-	- Geben Sie eine **Nachricht** für die Benachrichtigung an, die als Nachrichtentext dient. 
+	- Geben Sie eine **Nachricht** für die Benachrichtigung an, die als Nachrichtentext dient.
 
 	![][11]
 
 4. Nehmen Sie die Eingaben vor, um Ihre Kampagne **[iOS]** zu erstellen.
 
-	- Geben Sie einen Text für **Name** für die Kampagne an. 
+	- Geben Sie einen Text für **Name** für die Kampagne an.
 	- Wählen Sie für die **Übermittlungszeit** die Option *Nur außerhalb der App* aus.
 	- Geben Sie einen **Titel** für die Benachrichtigung an, der in der ersten Zeile der Pushbenachrichtigung angezeigt wird.
-	- Geben Sie eine **Nachricht** für die Benachrichtigung an, die als Nachrichtentext dient. 
+	- Geben Sie eine **Nachricht** für die Benachrichtigung an, die als Nachrichtentext dient.
  
 	![][12]
 
@@ -212,7 +212,7 @@ Wir erstellen jetzt eine einfache Pushbenachrichtigungskampagne, die eine Pushbe
 
 	![][8]
 
-6. [Optional] Sie können auch eine Aktions-URL angeben. Stellen Sie sicher, dass dabei ein URL-Schema verwendet wird, das beim Konfigurieren der Variablen **AZME\_REDIRECT\_URL** des Plug-Ins bereitgestellt wurde, z.B. **myapp://test*.
+6. [Optional] Sie können auch eine Aktions-URL angeben. Stellen Sie sicher, dass dabei ein URL-Schema verwendet wird, das beim Konfigurieren der Variablen **AZME\_REDIRECT\_URL** des Plug-Ins bereitgestellt wurde, z.B. *myapp://test*.
 
 7. Sie haben das Festlegen der Basiskampagne abgeschlossen. Scrollen Sie nun wieder nach unten, und klicken Sie auf die Schaltfläche **Erstellen**, um Ihre Kampagne zu speichern.
 
@@ -237,4 +237,4 @@ Wir erstellen jetzt eine einfache Pushbenachrichtigungskampagne, die eine Pushbe
 [11]: ./media/mobile-engagement-cordova-get-started/campaign-first-params-android.png
 [12]: ./media/mobile-engagement-cordova-get-started/campaign-first-params-ios.png
 
-<!---HONumber=AcomDC_0406_2016-->
+<!----HONumber=AcomDC_0824_2016-->

@@ -203,19 +203,19 @@ Angenommen, Azure SQL enthält die folgenden Daten:
 
 Bei Bereitstellen der obigen Pipeline wird das Azure-Blob wie folgt aufgefüllt:
 
-1.	Datei "mypath/2015/1/1/8/Data.<Guid>.txt" mit Daten 
+1.	Datei „mypath/2015/1/1/8/Data.<GUID>.txt“ mit Daten
 
 		10002345,334,2,2015-01-01 08:24:00.3130000
 		10002345,347,15,2015-01-01 08:24:00.6570000
 		10991568,2,7,2015-01-01 08:56:34.5300000
 
-	**Hinweis:**<Guid> Wird durch eine tatsächliche GUID ersetzt. Beispieldateiname: Data.bcde1348-7620-4f93-bb89-0eed3455890b.txt
-2.	Datei "mypath/2015/1/1/9/Data.<Guid>.txt" mit Daten:
+	**Hinweis:**<GUID> wird durch eine tatsächliche GUID ersetzt. Beispieldateiname: Data.bcde1348-7620-4f93-bb89-0eed3455890b.txt
+2.	Datei „mypath/2015/1/1/9/Data.<GUID>.txt“ mit Daten
 
 		10002345,334,1,2015-01-01 09:13:00.3900000
 		24379245,569,23,2015-01-01 09:25:00.3130000
 		16777799,21,115,2015-01-01 09:47:34.3130000
-3.	Datei "mypath/2015/1/1/10/Data.<Guid>.txt" ohne Daten.
+3.	Datei „mypath/2015/1/1/10/Data.<GUID>.txt“ ohne Daten
 
 
 ## Datenslices, aktiver Zeitraum für die Pipeline und gleichzeitige Sliceausführung
@@ -224,11 +224,11 @@ Im Artikel [Erstellen von Pipelines](data-factory-create-pipelines.md) wurde das
  
 Sie können das Startdatum des aktiven Zeitraums der Pipeline in der Vergangenheit festlegen. Data Factory berechnet anschließend automatisch alle (nachträglich aufgefüllten Datenslices) in der Vergangenheit und beginnt mit ihrer Verarbeitung.
 
-Nachträglich aufgefüllte Datenslices können für eine parallele Ausführung konfiguriert werden. Legen Sie hierzu die Eigenschaft **concurrency** im Abschnitt **policy** der JSON der Aktivität fest, was im Artikel zum [Erstellen von Pipelines](data-factory-create-pipelines.md) erklärt wird.
+Nachträglich aufgefüllte Datenslices können für eine parallele Ausführung konfiguriert werden. Legen Sie hierzu die Eigenschaft **concurrency** im Abschnitt **policy** der JSON der Aktivität fest, wie im Artikel [Erstellen von Pipelines](data-factory-create-pipelines.md) erläutert.
 
 ## Wiederholen fehlerhafter Datenslices und automatische Nachverfolgung von Datenabhängigkeiten
 
-Sie können die Ausführung von Slices umfassend visuell überwachen. Weitere Informationen finden Sie unter **Überwachen und Verwalten von Pipelines mithilfe von** [Blättern im Azure-Portal](data-factory-monitor-manage-pipelines.md) oder [der App „Überwachen und Verwalten“](data-factory-monitor-manage-app.md).
+Sie können die Ausführung von Slices umfassend visuell überwachen. Weitere Informationen finden Sie unter **Überwachen und Verwalten von Pipelines mithilfe von** [Blättern im Azure-Portal](data-factory-monitor-manage-pipelines.md) oder der [App „Überwachung und Verwaltung“](data-factory-monitor-manage-app.md).
 
 Betrachten Sie das folgende Beispiel mit zwei Aktivitäten. Aktivität1 erstellt ein Zeitreihen-Dataset mit Slices als Ausgabe, die als Eingabe von Aktivität2 verwendet wird, um die endgültige Ausgabe des Zeitreihen-Datasets zu erstellen.
 
@@ -239,7 +239,7 @@ Betrachten Sie das folgende Beispiel mit zwei Aktivitäten. Aktivität1 erstellt
 Das obige Diagramm zeigt, dass bei den letzten drei Slices ein Fehler beim Erstellen des Slices "9-10 AM" für **Dataset2** aufgetreten ist. Data Factory verfolgt Abhängigkeiten für das Zeitreihen-Dataset automatisch nach und unterlässt als Ergebnis das Auslösen der Aktivitätsausführung für den nachgelagerten Slice "9-10 AM".
 
 
-Mit den Data Factory-Überwachungs- und Verwaltungstools können Sie die Diagnoseprotokolle detailliert nach dem fehlerhaften Slice durchsuchen, um die Ursache des Problems zu finden und zu beseitigen. Nachdem Sie das Problem behoben haben, können Sie auch ganz einfach die Aktivitätsausführung auslösen, um den fehlerhaften Slice zu erstellen. Weitere Informationen zum Auslösen von Wiederholungen und Grundlegendes zu Statusübergängen für Datenslices finden Sie unter **Überwachen und Verwalten von Pipelines mithilfe von** [Blättern im Azure-Portal](data-factory-monitor-manage-pipelines.md) oder [der App „Überwachen und Verwalten“](data-factory-monitor-manage-app.md).
+Mit den Data Factory-Überwachungs- und Verwaltungstools können Sie die Diagnoseprotokolle detailliert nach dem fehlerhaften Slice durchsuchen, um die Ursache des Problems zu finden und zu beseitigen. Nachdem Sie das Problem behoben haben, können Sie auch ganz einfach die Aktivitätsausführung auslösen, um den fehlerhaften Slice zu erstellen. Weitere Informationen zum Auslösen von Wiederholungen und Grundlegendes zu Statusübergängen für Datenslices finden Sie unter **Überwachen und Verwalten von Pipelines mithilfe von** [Blättern im Azure-Portal](data-factory-monitor-manage-pipelines.md) oder der [App „Überwachung und Verwaltung“](data-factory-monitor-manage-app.md).
 
 Nachdem Sie die Wiederholung ausgelöst haben und der Slice „9-10 AM“ für „Dataset2“ bereit ist, löst Data Factory die Ausführung für den von „9-10 AM“ abhängigen Slice für das endgültige Dataset aus (siehe das nachstehende Diagramm).
 
@@ -252,8 +252,8 @@ Sie können zwei Aktivitäten verketten, indem Sie das Ausgabedataset einer Akti
 
 Betrachten Sie beispielsweise den folgenden Fall:
  
-1.	Die Pipeline P1 verfügt über die Aktivität A1, die das externe Eingabedataset D1 erfordert und das **Ausgabedataset** **D2** generiert.
-2.	Die Pipeline P2 verfügt über die Aktivität A2, die eine **Eingabe** aus dem Dataset **D2** erfordert und das Ausgabedataset D3 generiert.
+1.	Die Pipeline P1 enthält die Aktivität A1, für die das externe Eingabedataset D1 erforderlich ist und die das **Ausgabedataset** **D2** generiert.
+2.	Die Pipeline P2 enthält die Aktivität A2, für die eine **Eingabe** aus dem Dataset **D2** erforderlich ist und die das Ausgabedataset D3 generiert.
  
 In diesem Szenario wird die Aktivität A1 ausgeführt, wenn die externen Daten verfügbar sind und die Häufigkeit für die geplante Verfügbarkeit erreicht ist. Die Aktivität A2 wird ausgeführt, wenn die geplanten Slices von D2 verfügbar werden und die Häufigkeit für die geplante Verfügbarkeit erreicht ist. Wenn ein Fehler in einem der Slices im Dataset D2 auftritt, wird A2 für diesen Slice nicht ausgeführt, bis er verfügbar wird.
 
@@ -282,8 +282,8 @@ CopyActivity2: Eingabe: Dataset3, Dataset2 Ausgabe: Dataset4
 
 Wenn mehrere Eingaben angegeben wurden, wird nur das erste Eingabedataset zum Kopieren der Daten verwendet, die anderen Datasets werden aber als Abhängigkeiten verwendet. CopyActivity2 wird nur ausgeführt, wenn die folgenden Bedingungen erfüllt sind:
 
-- CopyActivity1 wurde erfolgreich abgeschlossen und Dataset2 ist verfügbar. Dieses Dataset wird beim Kopieren von Daten zu Dataset4 nicht verwendet. Es fungiert nur als Terminplanungs-Abhängigkeit für CopyActivity2.   
-- Dataset3 ist verfügbar. Dieses Dataset stellt die Daten dar, die zum Ziel kopiert werden.  
+- CopyActivity1 wurde erfolgreich abgeschlossen und Dataset2 ist verfügbar. Dieses Dataset wird beim Kopieren von Daten zu Dataset4 nicht verwendet. Es fungiert nur als Terminplanungs-Abhängigkeit für CopyActivity2.
+- Dataset3 ist verfügbar. Dieses Dataset stellt die Daten dar, die zum Ziel kopiert werden.
 
 
 
@@ -382,7 +382,7 @@ Das Hive-Skript empfängt durch Verwenden der Variablen **WindowStart** die ents
 		                "scriptPath": "adftutorial\\hivequery.hql",
 		                "scriptLinkedService": "StorageLinkedService",
 		                "defines": {
-		                    "Year": "$$Text.Format('{0:yyyy}',WindowsStart)",
+		                    "Year": "$$Text.Format('{0:yyyy}',WindowStart)",
 		                    "Month": "$$Text.Format('{0:%M}',WindowStart)",
 		                    "Day": "$$Text.Format('{0:%d}',WindowStart)"
 		                }
@@ -534,7 +534,7 @@ Die Hive-Aktivität verwendet zwei Eingaben und erzeugt täglich einen Ausgabesl
 	          "scriptPath": "adftutorial\\hivequery.hql",
 	          "scriptLinkedService": "StorageLinkedService",
 	          "defines": {
-	            "Year": "$$Text.Format('{0:yyyy}',WindowsStart)",
+	            "Year": "$$Text.Format('{0:yyyy}',WindowStart)",
 	            "Month": "$$Text.Format('{0:%M}',WindowStart)",
 	            "Day": "$$Text.Format('{0:%d}',WindowStart)"
 	          }
@@ -626,7 +626,7 @@ Ein Dataset kann als extern gekennzeichnet werden (siehe die nachstehende JSON),
 
 
 ## Pipeline mit einmaliger Ausführung
-Sie können eine Pipeline erstellen und zur regelmäßigen Ausführung (stündlich, täglich usw.) innerhalb der in der Pipelinedefinition angegebenen Start- und Endzeiten planen. Weitere Informationen finden Sie unter [Planen von Aktivitäten](#scheduling-and-execution). Sie können auch eine Pipeline erstellen, die nur einmal ausgeführt wird. Legen Sie zu diesem Zweck die **pipelineMode**-Eigenschaft in der Pipelinedefinition auf **onetime** (einmalig) fest, wie im JSON-Beispiel unten gezeigt. Der Standardwert für diese Eigenschaft lautet **scheduled** (geplant).
+Sie können eine Pipeline erstellen und zur regelmäßigen Ausführung (stündlich, täglich usw.) innerhalb der in der Pipelinedefinition angegebenen Start- und Endzeiten planen. Weitere Informationen finden Sie unter [Planen von Aktivitäten](#scheduling-and-execution). Sie können auch eine Pipeline erstellen, die nur einmal ausgeführt wird. Legen Sie zu diesem Zweck die Eigenschaft **pipelineMode** in der Pipelinedefinition auf **onetime** (einmalig) fest, wie im JSON-Beispiel unten gezeigt. Der Standardwert für diese Eigenschaft lautet **scheduled** (geplant).
 
 	{
 	    "name": "CopyPipeline",
@@ -664,10 +664,10 @@ Sie können eine Pipeline erstellen und zur regelmäßigen Ausführung (stündli
 
 Beachten Sie Folgendes:
  
-- Sie müssen keine Zeiten für **Start** und **Ende** der Pipeline angeben. 
-- Zu diesem Zeitpunkt müssen Sie die Verfügbarkeit der Eingabe- und Ausgabedatasets (Häufigkeit und Intervall) angeben, auch wenn die Werte von Data Factory nicht verwendet werden.  
-- Die Diagrammansicht zeigt einmalig ausgeführte Pipelines nicht an. Dies ist beabsichtigt. 
-- Einmalige Pipelines können nicht aktualisiert werden. Sie können eine einmalige Pipeline klonen, umbenennen, deren Eigenschaften aktualisieren und sie bereitstellen, um eine andere Pipeline zu erstellen. 
+- Sie müssen keine Zeiten für **Start** und **Ende** der Pipeline angeben.
+- Zu diesem Zeitpunkt müssen Sie die Verfügbarkeit der Eingabe- und Ausgabedatasets (Häufigkeit und Intervall) angeben, auch wenn die Werte von Data Factory nicht verwendet werden.
+- Die Diagrammansicht zeigt einmalig ausgeführte Pipelines nicht an. Dies ist beabsichtigt.
+- Einmalige Pipelines können nicht aktualisiert werden. Sie können eine einmalige Pipeline klonen, umbenennen, deren Eigenschaften aktualisieren und sie bereitstellen, um eine andere Pipeline zu erstellen.
 
   
 
@@ -702,4 +702,4 @@ Beachten Sie Folgendes:
 
   
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0817_2016-->
