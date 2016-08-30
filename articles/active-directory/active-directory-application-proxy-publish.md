@@ -101,4 +101,4 @@ Um eine Anwendung zu löschen, wählen Sie eine Anwendung in der Liste aus, und 
 
 Aktuelle Neuigkeiten und Updates finden Sie im [Blog zum Anwendungsproxy](http://blogs.technet.com/b/applicationproxyblog/).
 
-<!---HONumber=AcomDC_0727_2016-->
+<!----HONumber=AcomDC_0727_2016-->
