@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="dotnet"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="05/27/2016"
+	ms.date="08/27/2016"
 	ms.author="rachelap"/>
 
 # Nutzen einer API-App aus JavaScript mit CORS
@@ -284,4 +284,4 @@ Weitere Informationen zu Visual Studio-Features, mit denen die Problembehandlung
 
 In diesem Artikel haben Sie erfahren, wie Sie App Service-CORS-Unterstützung aktivieren, sodass der JavaScript-Clientcode eine API in einer anderen Domäne aufrufen kann. Wenn Sie mehr über API-Apps erfahren möchten, lesen Sie die [Einführung in die Authentifizierung in App Service](../app-service/app-service-authentication-overview.md), und wechseln Sie dann zum Tutorial [Benutzerauthentifizierung für API-Apps](app-service-api-dotnet-user-principal-auth.md).
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0824_2016-->

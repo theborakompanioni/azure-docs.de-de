@@ -12,7 +12,7 @@
  ms.tgt_pltfrm="na"
  ms.devlang="dotnet"
  ms.topic="hero-article"
- ms.date="06/30/2016"
+ ms.date="08/18/2016"
  ms.author="krisragh"/>
 
 # Was ist Azure Scheduler?
@@ -30,7 +30,7 @@ Mehrere Szenarios bieten sich für die Verwendung von Scheduler an. Beispiel:
 
 Mit Scheduler können Sie [Auftragssammlungen](scheduler-concepts-terms.md) programmgesteuert, mithilfe von Skripts und im Portal erstellen, aktualisieren, löschen, anzeigen und verwalten.
 
-## Weitere Informationen
+## Siehe auch
 
  [Konzepte, Terminologie und Entitätshierarchie für Azure Scheduler](scheduler-concepts-terms.md)
 
@@ -50,4 +50,4 @@ Mit Scheduler können Sie [Auftragssammlungen](scheduler-concepts-terms.md) prog
 
  [Ausgehende Authentifizierung von Azure Scheduler](scheduler-outbound-authentication.md)
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0824_2016-->

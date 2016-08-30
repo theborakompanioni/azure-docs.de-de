@@ -3,7 +3,7 @@
    description="Erfahren Sie, wie Sie ein virtuelles Netzwerk mit dem Azure-Portal im Resource Manager erstellen."
    services="virtual-network"
    documentationCenter=""
-   authors="narayanannamalai"
+   authors="NarayanAnnamalai"
    manager="jefco"
    editor=""
    tags="azure-resource-manager"/>
@@ -201,4 +201,4 @@ Führen Sie die folgenden Schritte aus, um mithilfe von PowerShell ein abonnemen
 
 2. Wenn Sie einen Link in einem VNet-Peering entfernen, wird als Zustand für den Peeringlink „Verbindung getrennt“ angezeigt. Bei diesem Status können Sie den Link erst dann wieder neu erstellen, wenn sich der Status des Peeringlinks in „Initiiert“ ändert. Es empfiehlt sich, vor dem erneuten Erstellen des VNet-Peerings beide Links zu entfernen.
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0824_2016-->

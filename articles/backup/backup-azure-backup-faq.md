@@ -14,14 +14,14 @@
 	 ms.tgt_pltfrm="na"
 	 ms.devlang="na"
 	 ms.topic="get-started-article"
-	 ms.date="07/01/2016"
+	 ms.date="08/21/2016"
 	 ms.author="trinadhk; giridham; arunak; markgal; jimpark;"/>
 
 # Azure Backup-Dienst – FAQ
 
 > [AZURE.SELECTOR]
 - [Häufig gestellte Fragen zu Backup für den klassischen Modus](backup-azure-backup-faq.md)
-- [Häufig gestellte Fragen zu Backup für den ARM-Modus](backup-azure-backup-ibiza-faq.md)
+- [Häufig gestellte Fragen zu Backup für den Resource Manager-Modus](backup-azure-backup-ibiza-faq.md)
 
 Dieser Artikel enthält eine Liste mit häufig gestellten Fragen (und den dazugehörigen Antworten) zum Azure Backup-Dienst. In unserer Community erhalten Sie schnell eine Antwort, und wenn eine Frage häufig gestellt wird, fügen wir sie diesem Artikel hinzu. Die Antworten auf Fragen enthalten in der Regel Referenz- bzw. Supportinformationen. Sie können im Disqus-Abschnitt dieses Artikels oder eines verwandten Artikels Fragen zu Azure Backup stellen. Außerdem können Sie Fragen zum Azure Backup-Dienst im [Diskussionsforum](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup) stellen.
 
@@ -51,7 +51,7 @@ Dieser Artikel enthält eine Liste mit häufig gestellten Fragen (und den dazuge
 
 **F5. Gibt es eine Beschränkung hinsichtlich der Anzahl von Sicherungstresoren, die in einem Azure-Abonnement erstellt werden können?** <br/> A5. Ja. Sie können pro Abonnement 25 Tresore erstellen (Stand: Juli 2015). Erstellen Sie ein neues Abonnement, wenn Sie weitere Tresore benötigen.
 
-**F6. Kann ich einen Tresor als Abrechnungseinheit betrachten?** <br/> A6. Zwar besteht die Möglichkeit, eine detaillierte Rechnung für jeden Tresor zu erhalten, es empfiehlt sich aber unbedingt, ein Azure-Abonnement als Abrechnungseinheit zu verwenden. Es ist für alle Dienste konsistent und einfacher zu verwalten.
+**F6. Kann ich einen Tresor als Abrechnungseinheit betrachten?** <br/> A6. Die Möglichkeit, eine detaillierte Rechnung für jeden Tresor zu erhalten, besteht zwar, es empfiehlt sich aber unbedingt, ein Azure-Abonnement als Abrechnungseinheit zu verwenden. Es ist für alle Dienste konsistent und einfacher zu verwalten.
 
 **F7. Gibt es Beschränkungen im Hinblick auf die Anzahl von Servern/Computern, die pro Tresor registriert werden können?** <br/> A7. Ja. Sie können bis zu 50 Computer pro Tresor registrieren. Bei virtuellen Azure-IaaS-Computern liegt die Beschränkung bei 200 VMs pro Tresor. Wenn Sie weitere Computer registrieren müssen, erstellen Sie einen neuen Tresor.
 
@@ -75,7 +75,7 @@ Dieser Artikel enthält eine Liste mit häufig gestellten Fragen (und den dazuge
 
 - Verschlüsselt
 - Komprimiert
-- Mit geringer Dichte
+- Platzsparend
 - Komprimiert und geringe Dichte
 - Feste Links: Nicht unterstützt, werden übersprungen
 - Analysepunkt: Nicht unterstützt, wird übersprungen
@@ -88,9 +88,9 @@ Dieser Artikel enthält eine Liste mit häufig gestellten Fragen (und den dazuge
 
 **F14. Wenn meine Organisation über einen Sicherungstresor verfügt, wie kann ich beim Wiederherstellen der Daten dann die Daten eines Servers von einem anderen Server trennen?**<br/> A14. Alle für denselben Tresor registrierten Server können die Daten wiederherstellen, die von anderen Servern *mit derselben Passphrase* gesichert wurden. Wenn Sie Server verwenden, deren Sicherungsdaten Sie von anderen Servern Ihrer Organisation isolieren möchten, sollten Sie für diese Server eine speziell dafür vorgesehene Passphrase nutzen. So können Sie beispielsweise für die Server der Personalabteilung, für die Server der Buchhaltung und für die Speicherserver jeweils eine eigene Verschlüsselungspassphrase verwenden.
 
-**F15. Kann ich meine Sicherungsdaten zwischen den Abonnements "migrieren"?** <br/> A15: Nein
+**F15. Kann ich meine Sicherungsdaten zwischen den Abonnements „migrieren“?** <br/> A15: Nein
 
-**F16. Kann ich meinen Sicherungstresor zwischen Abonnements "migrieren"?** <br/> A16: Nein. Der Tresor wird auf einer Abonnementstufe erstellt und kann nach seiner Erstellung keinem anderen Abonnement zugewiesen werden.
+**F16. Kann ich meinen Sicherungstresor zwischen Abonnements „migrieren“?** <br/> A16: Nein. Der Tresor wird auf einer Abonnementstufe erstellt und kann nach seiner Erstellung keinem anderen Abonnement zugewiesen werden.
 
 **F17. Funktioniert der Azure Backup-Agent auf einem Server, der die Deduplizierung von Windows Server 2012 verwendet?** <br/> A17: Ja. Der Agent-Dienst konvertiert die deduplizierten Daten bei der Vorbereitung des Sicherungsvorgangs in normale Daten. Anschließend optimiert er die Daten für die Sicherung, verschlüsselt sie und sendet die verschlüsselten Daten an den Onlinesicherungsdienst.
 
@@ -182,7 +182,9 @@ In der folgenden Tabelle wird beschrieben, wie die einzelnen Datenquellengröße
 
 **F3. Wie lang muss der Verschlüsselungsschlüssel zur Verschlüsselung von Sicherungsdaten mindestens sein?** <br/> A3. Der Verschlüsselungsschlüssel sollte mindestens 16 Zeichen lang sein.
 
-**F4. Was geschieht, wenn ich den Schlüssel verlege? Kann ich die Daten wiederherstellen, oder kann Microsoft die Daten wiederherstellen?** <br/> A4. Der Schlüssel zum Verschlüsseln der Sicherungsdaten ist nur am Standort des Kunden vorhanden. Microsoft behält keine Kopie in Azure und hat keinen Zugriff auf den Schlüssel. Wenn der Kunde den Schlüssel verlegt, kann Microsoft die gesicherten Daten nicht wiederherstellen.  
+**F4. Was geschieht, wenn ich den Schlüssel verlege? Kann ich die Daten wiederherstellen, oder kann Microsoft die Daten wiederherstellen?** <br/> A4. Der Schlüssel zum Verschlüsseln der Sicherungsdaten ist nur am Standort des Kunden vorhanden. Microsoft behält keine Kopie in Azure und hat keinen Zugriff auf den Schlüssel. Wenn der Kunde den Schlüssel verlegt, kann Microsoft die gesicherten Daten nicht wiederherstellen.
+
+**F5. Sind die Sicherungsdaten für virtuelle Azure-Computer verschlüsselt?** <br/> A5. Azure Backup basiert auf den Verschlüsselungseinstellungen des virtuellen Azure-Computers für die Sicherungsverschlüsselung. Wenn Ihr virtueller Computer mithilfe von Azure Disk Encryption verschlüsselt ist, verwendet Azure Backup diese Verschlüsselung, um Ihre Daten zu sichern.  
 
 ## Backup-Cache
 
@@ -211,7 +213,7 @@ In der folgenden Tabelle wird beschrieben, wie die einzelnen Datenquellengröße
 - Netzwerkfreigabe oder Wechselmedium: Bei dem Cacheordner muss es sich um einen lokalen Ordner des Servers handeln, die mittels Onlinesicherung gesichert werden soll. Netzwerkspeicherorte oder Wechselmedien wie USB-Laufwerke werden nicht unterstützt.
 - Offlinevolumes: Der Cacheordner muss für die erwartete Sicherung über den Azure Backup-Agent online sein.
 
-**F3. Gibt es nicht unterstützte Cacheordnerattribute?**<br/> A3. Die folgenden Attribute oder Kombinationen dieser Attribute werden für den Cacheordner nicht unterstützt:
+**F3. Gibt es Cacheordnerattribute, die nicht unterstützt werden?**<br/> A3. Die folgenden Attribute oder Kombinationen dieser Attribute werden für den Cacheordner nicht unterstützt:
 
 - Verschlüsselt
 - Dedupliziert
@@ -221,4 +223,4 @@ In der folgenden Tabelle wird beschrieben, wie die einzelnen Datenquellengröße
 
 Damit der Azure Backup-Agent erwartungsgemäß funktioniert, darf weder der Cacheordner noch die Metadaten-VHD die oben angegebenen Attribute besitzen.
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0824_2016-->

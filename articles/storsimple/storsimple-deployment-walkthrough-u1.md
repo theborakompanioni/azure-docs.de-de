@@ -12,7 +12,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="04/20/2016"
+   ms.date="08/17/2016"
    ms.author="alkohli" />
 
 # Bereitstellen lokaler StorSimple-Geräte (Update 1)
@@ -107,7 +107,7 @@ Die folgende Konfigurationsprüfliste für die Bereitstellung enthält die Infor
 
 In den folgenden Abschnitten werden die Konfigurationsvoraussetzungen für den StorSimple Manager-Dienst und das StorSimple-Gerät beschrieben.
 
-### Für den StorSimple Manager-Dienst
+### Für den StorSimple-Manager-Dienst
 
 Stellen Sie Folgendes sicher, bevor Sie beginnen:
 
@@ -142,13 +142,13 @@ Verwenden Sie die folgenden schrittweisen Anweisungen, um Ihr StorSimple-Gerät 
 
 ## Schritt 1: Erstellen eines neuen Diensts
 
-Ein StorSimple Manager-Dienst kann mehrere StorSimple-Geräte verwalten. Führen Sie die folgenden Schritte aus, um einen neuen StorSimple Manager-Dienst zu erstellen.
+Ein StorSimple Manager-Dienst kann mehrere StorSimple-Geräte verwalten. Führen Sie die folgenden Schritte aus, um einen neuen StorSimple-Manager-Dienst zu erstellen.
 
 [AZURE.INCLUDE [storsimple-create-new-service](../../includes/storsimple-create-new-service.md)]
 
 > [AZURE.IMPORTANT] Wenn Sie nicht die automatische Erstellung eines Speicherkontos mit Ihrem Dienst aktiviert haben, müssen Sie mindestens ein Speicherkonto erstellen, nachdem Sie einen Dienst erstellt haben. Dieses Speicherkonto wird beim Erstellen eines Volumecontainers verwendet.
 >
-> * Wenn Sie nicht automatisch ein Speicherkonto erstellt haben, finden Sie unter [Konfigurieren eines neuen Speicherkontos für den Dienst](#configure-a-new-storage-account-for-the-service) ausführliche Anweisungen. 
+> * Wenn Sie nicht automatisch ein Speicherkonto erstellt haben, finden Sie unter [Konfigurieren eines neuen Speicherkontos für den Dienst](#configure-a-new-storage-account-for-the-service) ausführliche Anweisungen.
 > * Wenn Sie die automatische Erstellung eines Speicherkontos aktiviert haben, fahren Sie mit [Schritt 2: Abrufen des Dienstregistrierungsschlüssels](#step-2-get-the-service-registration-key) fort.
 
 ## Schritt 2: Abrufen des Dienstregistrierungsschlüssels
@@ -248,7 +248,7 @@ Die Aktualisierung eines Geräts kann mehrere Stunden dauern. Führen Sie die fo
 
 #### So aktualisieren Sie Ihr Gerät
 
-1.	Klicken Sie auf der Seite **Schnellstart** für das Gerät auf **Geräte**. Wählen Sie das physische Gerät aus, und klicken Sie auf **Wartung** und dann auf **Updates scannen**.  
+1.	Klicken Sie auf der Seite **Schnellstart** für das Gerät auf **Geräte**. Wählen Sie das physische Gerät aus, und klicken Sie auf **Wartung** und dann auf **Updates scannen**.
 
 2.	Für die Suche nach verfügbaren Updates wird ein Auftrag erstellt. Wenn Updates verfügbar sind, ändert sich die Option **Updates scannen** in **Updates installieren**. Klicken Sie auf **Updates installieren**.
 
@@ -290,4 +290,4 @@ Installations- und Konfigurationsanweisungen für MPIO auf einem StorSimple-Ger�
 - Verwenden des [StorSimple-Manager-Diensts](storsimple-manager-service-administration.md) für das Verwalten Ihres StorSimple-Geräts
  
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0824_2016-->

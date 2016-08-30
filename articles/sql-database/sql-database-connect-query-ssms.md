@@ -15,7 +15,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="05/09/2016"
+	ms.date="08/17/2016"
 	ms.author="sstein;carlrab" />
 
 # Herstellen einer Verbindung mit einer SQL-Datenbank mit SQL Server Management Studio und Ausführen einer T-SQL-Beispielabfrage
@@ -25,26 +25,23 @@
 - [SSMS](sql-database-connect-query-ssms.md)
 - [Excel](sql-database-connect-excel.md)
 
-In diesem Artikel werden das Herstellen einer Verbindung mit einer Azure SQL-Datenbank mithilfe der neuesten Version von SQL Server Management Studio (SSMS) und das anschließende Durchführen einer einfachen Abfrage mithilfe von Transact-SQL-Anweisungen (T-SQL) veranschaulicht.
-
-[AZURE.INCLUDE [Anmelden](../../includes/azure-getting-started-portal-login.md)]
+In diesem Artikel wird beschrieben, wie Sie über SQL Server Management Studio (SSMS) eine Verbindung mit einer Azure SQL-Datenbank herstellen. Nach der erfolgreichen Verbindungsherstellung führen wir eine einfache Transact-SQL-Abfrage (T-SQL) aus, um die Kommunikation mit der Datenbank zu überprüfen.
 
 [AZURE.INCLUDE [SSMS-Installation](../../includes/sql-server-management-studio-install.md)]
 
 [AZURE.INCLUDE [SSMS-Verbindung](../../includes/sql-database-sql-server-management-studio-connect-server-principal.md)]
 
-Informationen zur Firewallregeln finden Sie unter [Konfigurieren der Firewalleinstellungen für SQL-Datenbank mit dem Azure-Portal](sql-database-configure-firewall-settings.md).
 
 ## Durchführen von Beispielabfragen
 
-Nachdem Sie eine Verbindung mit Ihrem logischen Server hergestellt haben, können Sie eine Verbindung mit einer Datenbank herstellen und eine Beispielabfrage ausführen.
+Nachdem Sie eine Verbindung mit Ihrem Server hergestellt haben, können Sie eine Verbindung mit einer Datenbank herstellen und eine Beispielabfrage ausführen. Wenn Sie mit dem Schreiben von Abfragen noch nicht vertraut sind, helfen Ihnen die Informationen unter [Schreiben von Transact-SQL-Anweisungen](https://msdn.microsoft.com/library/ms365303.aspx) weiter.
 
-1. Navigieren Sie im **Objekt-Explorer** zu einer Datenbank auf dem Server, für die Sie Berechtigungen besitzen, etwa die Beispieldatenbank **AdventureWorks**.
-2. Klicken Sie mit der rechten Maustaste auf die Datenbank, und wählen Sie dann **Neue Abfrage** aus.
+1. Navigieren Sie im **Objekt-Explorer** zu einer Datenbank auf dem Server, z.B. der Beispieldatenbank **AdventureWorks**.
+2. Klicken Sie mit der rechten Maustaste auf die Datenbank, und wählen Sie dann **Neue Abfrage**:
 
 	![Neue Abfrage Verbinden mit einem SQL-Datenbankserver: SQL Server Management Studio](./media/sql-database-connect-query-ssms/4-run-query.png)
 
-3. Kopieren Sie den folgenden Code, und fügen Sie ihn im Abfragefenster ein.
+3. Fügen Sie im Abfragefenster den folgenden Code ein:
 
 		SELECT
 		CustomerId
@@ -54,7 +51,7 @@ Nachdem Sie eine Verbindung mit Ihrem logischen Server hergestellt haben, könne
 		,CompanyName
 		FROM SalesLT.Customer;
 
-4. Klicken Sie auf die Schaltfläche **Ausführen**. Der folgende Screenshot zeigt eine erfolgreiche Abfrage.
+4. Klicken Sie auf die Schaltfläche **Ausführen**.
 
 	![Erfolgreich. Verbinden mit einem SQL-Datenbankserver: SQL Server Management Studio](./media/sql-database-connect-query-ssms/5-success.png)
 
@@ -64,6 +61,8 @@ Mit T-SQL-Anweisungen können Sie Datenbanken in Azure auf gleiche Weise wie mit
 
 Wenn Sie mit T-SQL nicht vertraut sind, siehe [Tutorial: Schreiben von Transact-SQL-Anweisungen](https://msdn.microsoft.com/library/ms365303.aspx) und [Transact-SQL-Referenz (Datenbankmodul)](https://msdn.microsoft.com/library/bb510741.aspx).
 
-Informationen zu den ersten Schritten zum Erstellen von Datenbankbenutzern und Datenbankbenutzeradministratoren finden Sie unter [Get Started with Azure SQL Database security](sql-database-get-started-security.md) (Erste Schritte bei der Sicherheit für Azure SQL-Datenbanken).
+Informationen zu den ersten Schritten zum Erstellen von Datenbankbenutzern und Datenbankbenutzeradministratoren finden Sie unter [SQL Datenbank-Tutorial: Erstellen von SQL-Datenbankbenutzerkonten für den Zugriff auf und die Verwaltung von Datenbanken über das Azure-Portal](sql-database-get-started-security.md).
 
-<!---HONumber=AcomDC_0525_2016-->
+Weitere Informationen zu SSMS finden Sie unter [Verwenden Sie SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx).
+
+<!---HONumber=AcomDC_0824_2016-->

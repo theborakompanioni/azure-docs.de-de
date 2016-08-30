@@ -43,7 +43,7 @@ Um eine Bestellung zur Verarbeitung zu übermitteln, muss die Front-End-GUI in i
 
 Durch die verwaltete Messaging-Funktion zwischen Web- und mittlerer Ebene werden die Komponenten voneinander entkoppelt. Im Gegensatz zur direkten Kommunikation (z. B. per TCP oder HTTP) verbindet sich die Webebene nicht direkt mit der mittleren Ebene, sondern schiebt Arbeitseinheiten in Form von Nachrichten in Service Bus, wo diese zuverlässig aufbewahrt werden, bis die mittlere Ebene diese konsumieren und verarbeiten kann.
 
-Service Bus bietet zwei Entitäten für das Brokermessaging: Warteschlangen und Themen. Mit Warteschlangen wird jede Nachricht von einem einzelnen Empfänger konsumiert. Themen unterstützen das Veröffentlichungs- und Abonnementsmuster, mit dem jede veröffentlichte Nachricht den für das entsprechende Thema registrierten Abonnements zugänglich gemacht wird. Jedes Abonnement pflegt eine eigene Nachrichten-Warteschlange. Abonnements können mit Filterregeln konfiguriert werden. Diese sorgen dafür, dass nur Nachrichten in der Abonnement-Warteschlange landen, welche die Filterregeln erfüllen. Das folgende Beispiel verwendet Service Bus-Warteschlangen.
+Service Bus bietet zwei Entitäten für das Brokermessaging: Warteschlangen und Themen. Mit Warteschlangen wird jede Nachricht von einem einzelnen Empfänger konsumiert. Themen unterstützen das Veröffentlichungs- und Abonnementmuster, mit dem jede veröffentlichte Nachricht den für das entsprechende Thema registrierten Abonnements zugänglich gemacht wird. Jedes Abonnement pflegt eine eigene Nachrichten-Warteschlange. Abonnements können mit Filterregeln konfiguriert werden. Diese sorgen dafür, dass nur Nachrichten in der Abonnement-Warteschlange landen, welche die Filterregeln erfüllen. Das folgende Beispiel verwendet Service Bus-Warteschlangen.
 
 ![][1]
 
@@ -53,7 +53,7 @@ Dieser Kommunikationsmechanismus bietet verschiedene Vorteile gegenüber direkte
 
 -   **Belastungsausgleich.** In vielen Anwendungen schwankt die Systemlast mit der Zeit, während die Bearbeitungszeit pro Arbeitseinheit normalerweise konstant ist. Durch die Einführung einer Warteschlange zwischen Nachrichtenproducer und Consumer muss der Consumer (Arbeiter) anstatt der Spitzenlast nur die durchschnittliche Last verarbeiten können. Die Tiefe der Warteschlange erhöht und verringert sich mit der eingehenden Last. Dies ermöglicht direkte Einsparungen bei der Infrastruktur, die zur Bearbeitung der Anwendungslast benötigt wird.
 
--   **Lastenausgleich.** Mit zunehmender Last können zusätzliche Arbeitsprozesse zur Verarbeitung der Warteschlange eingesetzt werden. Jede Nachricht wird nur von einem der Workerprozesse verarbeitet. Außerdem ermöglicht dieser entnahmebasierte Lastenausgleich eine optimale Auslastung der Workercomputer, selbst wenn sich deren Rechenleistung stark unterscheidet, da jeder Workercomputer die Nachrichten mit seinem eigenen Maximaldurchsatz aus der Warteschlange entnimmt. Dieses Schema wird auch als *Konkurrierende Consumer* bezeichnet.
+-   **Lastenausgleich.** Mit zunehmender Last können zusätzliche Arbeitsprozesse zur Verarbeitung der Warteschlange eingesetzt werden. Jede Nachricht wird nur von einem der Arbeitsprozesse verarbeitet. Außerdem ermöglicht dieser entnahmebasierte Lastenausgleich eine optimale Auslastung der Workercomputer, selbst wenn sich deren Rechenleistung stark unterscheidet, da jeder Workercomputer die Nachrichten mit seinem eigenen Maximaldurchsatz aus der Warteschlange entnimmt. Dieses Schema wird auch als *Konkurrierende Consumer* bezeichnet.
 
     ![][2]
 
@@ -73,45 +73,11 @@ Bevor Sie mit der Entwicklung von Azure-Anwendungen beginnen können, müssen Si
 
 6.  Nach Abschluss der Installation haben Sie alles zur Hand, was Sie benötigen, um mit der Entwicklung der App zu beginnen. Das SDK enthält Tools, mit denen Sie ganz leicht Azure-Anwendungen in Visual Studio entwickeln können. Wenn Visual Studio nicht installiert ist, wird außerdem die kostenlose Version Visual Studio Express vom SDK installiert.
 
-## Erstellen eines Service Bus-Namespaces
+## Erstellen eines Namespace
 
-Der nächste Schritt ist die Einrichtung des Dienstnamespace und das Abrufen eines SAS (Shared Access Signature)-Schlüssels. Ein Namespace stellt eine Anwendungsgrenze für jede Anwendung bereit, die über Service Bus zur Verfügung steht. Das System generiert einen SAS-Schlüssel, wenn ein Dienstnamespace erstellt wird. Namespace und SAS-Schlüssel bilden gemeinsam die Anmeldeinformationen, mit denen sich der Service Bus bei der Anwendung authentifiziert.
+Der nächste Schritt ist die Einrichtung des Dienstnamespace und das Abrufen eines SAS (Shared Access Signature)-Schlüssels. Ein Namespace stellt eine Anwendungsgrenze für jede Anwendung bereit, die über Service Bus zur Verfügung steht. Das System generiert einen SAS-Schlüssel, wenn ein Namespace erstellt wird. Namespace und SAS-Schlüssel bilden gemeinsam die Anmeldeinformationen, mit denen sich der Service Bus bei der Anwendung authentifiziert.
 
-### Einrichten des Namespace im klassischen Azure-Portal:
-
-1.  Melden Sie sich beim [klassischen Azure-Portal][] an.
-
-2.  Klicken Sie im linken Navigationsbereich des Portals auf **Service Bus**.
-
-3.  Klicken Sie im unteren Bereich des Portals auf **Erstellen**.
-
-    ![][6]
-
-4.  Geben Sie auf der Seite **Neuen Namespace hinzufügen** einen Namen für den Namespace ein. Das System überprüft sofort, ob dieser Name verfügbar ist.
-
-    ![][7]
-
-5.  Wählen Sie nach der Bestätigung, dass der Name für den Namespace verfügbar ist, das Land oder die Region, wo dieser Namespace gehostet werden soll. (Stellen Sie sicher, dass dies dasselbe Land/dieselbe Region ist, in dem/der sie Ihre Rechnerressourcen einsetzen.) Stellen Sie außerdem sicher, dass Sie **Messaging** im Namespace **Typ**-Feld und **Standard** im **Messaging-Ebene**-Feld auswählen.
-
-    > [AZURE.IMPORTANT] Wählen Sie **dieselbe Region**, in der Sie auch Ihre Anwendung bereitstellen möchten. Dies sorgt für die beste Leistung.
-
-6.  Klicken Sie auf das Häkchen „OK“. Ihr Dienstnamespace wird nun erstellt und aktiviert. Eventuell müssen Sie einige Minuten warten, bis die Ressourcen für Ihr Konto bereitgestellt werden.
-
-7.  Klicken Sie im Hauptfenster auf den Namen Ihres Dienstnamespaces.
-
-8. Klicken Sie auf **Verbindungsinformationen**.
-
-9.  Im Bereich **Zugriff auf die Verbindungsinformationen** finden Sie die Verbindungszeichenfolge, die den SAS-Schlüssel und den Schlüsselnamen enthält.
-
-    ![][35]
-
-10.  Notieren Sie diese Anmeldeinformationen, oder kopieren Sie sie in die Zwischenablage.
-
-11. Klicken Sie oben auf derselben Portalseite auf die Registerkarte **Konfigurieren**.
-
-12. Kopieren Sie den Primärschlüssel für die Richtlinie **RootManageSharedAccessKey** in die Zwischenablage, oder fügen Sie ihn in den Editor ein. Sie verwenden diesen Wert später im Tutorial.
-
-	![][36]
+[AZURE.INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
 ## Erstellen einer Webrolle
 
@@ -245,7 +211,7 @@ In diesem Abschnitt erstellen Sie die verschiedenen Seiten, aus denen Ihre Anwen
 
 7.  Klicken Sie auf **Hinzufügen**.
 
-8.  Ändern Sie nun den angezeigten Namen Ihrer Anwendung. Doppelklicken Sie im **Projektmappen-Explorer** auf die Datei **Views\\Shared\\_Layout.cshtml**, um sie im Visual Studio-Editor zu öffnen.
+8.  Ändern Sie nun den angezeigten Namen Ihrer Anwendung. Doppelklicken Sie im **Projektmappen-Explorer** auf die Datei **Views\\Shared\\_Layout.cshtml**, um diese im Visual Studio-Editor zu öffnen.
 
 9.  Ersetzen Sie alle Vorkommnisse von **My ASP.NET Application** mit **LITWARE's Products**.
 
@@ -271,7 +237,7 @@ Sie fügen nun den Code für die Übermittlung von Elementen in die Warteschlang
 
 2.  Geben Sie der Klasse den Namen **QueueConnector.cs**. Klicken Sie auf **Hinzufügen**, um die Klasse zu erstellen.
 
-3.  Sie fügen nun den Code hinzu, der Ihre Verbindungsinformationen kapselt und die Verbindung zur Service Bus-Warteschlange initialisiert. Ersetzen Sie den gesamten Inhalt von „QueueConnector.cs“ durch den folgenden Code, und geben Sie Werte für `your Service Bus namespace` (Ihr Namespacename) und `yourKey` ein. Letzterer ist der **Primärschlüssel**, den Sie in Schritt 12 des Abschnitts „Erstellen eines Service Bus-Namespaces“ über das [klassische Azure-Portal][] abgerufen haben.
+3.  Sie fügen nun den Code hinzu, der Ihre Verbindungsinformationen kapselt und die Verbindung zur Service Bus-Warteschlange initialisiert. Ersetzen Sie den gesamten Inhalt von „QueueConnector.cs“ durch den folgenden Code, und geben Sie Werte für `your Service Bus namespace` (Ihr Namespacename) und `yourKey` ein. Letzterer ist der **Primärschlüssel**, den Sie über das Azure-Portal abgerufen haben.
 
 	```
 	using System;
@@ -360,7 +326,7 @@ Sie fügen nun den Code für die Übermittlung von Elementen in die Warteschlang
 	}
 	```
 
-8.  Aktualisieren Sie die `Submit(OnlineOrder order)`-Methode (Überladung ohne Parameter) wie folgt, um Bestellinformationen an die Warteschlange zu übermitteln.
+8.  Aktualisieren Sie die `Submit(OnlineOrder order)`-Methode (Überladung mit einem Parameter) wie folgt, um Bestellinformationen an die Warteschlange zu übermitteln.
 
 	```
 	public ActionResult Submit(OnlineOrder order)
@@ -446,15 +412,15 @@ Sie werden nun die Workerrolle zur Verarbeitung der übermittelten Nachrichten e
 
 ## Nächste Schritte  
 
-Weitere Informationen zum Service Bus finden Sie in den folgenden Ressourcen:
+Weitere Informationen zum Servicebus finden Sie in den folgenden Ressourcen:
 
-* [Azure-Servicebus][sbmsdn]  
-* [Servicebus-Dienstseite][sbwacom]  
-* [Verwenden von Servicebus-Warteschlangen][sbwacomqhowto]  
+* [Azure-Servicebus][sbmsdn]
+* [Servicebus-Dienstseite][sbwacom]
+* [Verwenden von Servicebus-Warteschlangen][sbwacomqhowto]
 
 Weitere Informationen zu Szenarien mit mehreren Ebenen finden Sie unter:
 
-* [.NET-Anwendungen mit mehreren Ebenen mithilfe von Speichertabellen, Warteschlangen und Blobs][mutitierstorage]  
+* [.NET-Anwendungen mit mehreren Ebenen mithilfe von Speichertabellen, Warteschlangen und Blobs][mutitierstorage]
 
   [0]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-01.png
   [1]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-100.png
@@ -472,10 +438,6 @@ Weitere Informationen zu Szenarien mit mehreren Ebenen finden Sie unter:
 
   [EventHubClient]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.aspx
 
-  [klassische Azure-Portal]: http://manage.windowsazure.com
-  [klassischen Azure-Portal]: http://manage.windowsazure.com
-  [6]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/sb-queues-03.png
-  [7]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/sb-queues-04.png
   [9]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-10.png
   [10]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-11.png
   [11]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-02.png
@@ -493,8 +455,6 @@ Weitere Informationen zu Szenarien mit mehreren Ebenen finden Sie unter:
   [25]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/SBWorkerRoleProperties.png
   [26]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/SBNewWorkerRole.png
   [28]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-40.png
-  [35]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/multi-web-45.png
-  [36]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/service-bus-policies.png
 
   [sbmsdn]: http://msdn.microsoft.com/library/azure/ee732537.aspx
   [sbwacom]: /documentation/services/service-bus/
@@ -502,4 +462,4 @@ Weitere Informationen zu Szenarien mit mehreren Ebenen finden Sie unter:
   [mutitierstorage]: https://code.msdn.microsoft.com/Windows-Azure-Multi-Tier-eadceb36
   
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0824_2016-->

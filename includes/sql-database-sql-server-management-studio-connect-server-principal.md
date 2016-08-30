@@ -1,42 +1,44 @@
 
 
-## Herstellen einer Verbindung mit einer Azure SQL-Datenbank mithilfe einer Prinzipalanmeldung auf Serverebene
+## Herstellen einer Verbindung mit Azure SQL-Datenbank per SQL Server-Authentifizierung
 
-Führen Sie die folgenden Schritte aus, um mit SSMS mithilfe einer Prinzipalanmeldung auf Serverebene eine Verbindung mit der Azure SQL-Datenbank herzustellen.
+In den folgenden Schritten wird beschrieben, wie Sie mit SSMS eine Verbindung mit einem Azure SQL-Server und einer Datenbank herstellen. Wenn Sie keinen Server und keine Datenbank haben, helfen Ihnen die Informationen unter [Erstellen einer SQL-Datenbank in wenigen Minuten](../articles/sql-database/sql-database-get-started.md) bei der Erstellung weiter.
 
-1. Geben Sie im Windows-Suchfeld „Microsoft SQL Server Management Studio“ ein, und klicken Sie dann auf die Desktop-App, um SSMS zu starten.
 
-2. Geben Sie im Fenster „Mit Server verbinden“ die folgenden Informationen ein:
+1. Starten Sie SSMS, indem Sie im Windows-Suchfeld **Microsoft SQL Server Management Studio** eingeben und dann auf die Desktop-App klicken.
 
- - **Servertyp:** Standardmäßig ist „Datenbankmodul“ angegeben. Ändern Sie diesen Wert nicht.
- - **Servername:** Geben Sie den Namen des Servers, auf dem die SQL-Datenbank gehostet wird, im folgenden Format ein: *&lt;Servername>*.**database.windows.net**
- - **Authentifizierungstyp:** Wählen Sie „SQL-Authentifizierung“, wenn Sie gerade die ersten Schritte ausführen. Wenn Sie Active Directory für Ihren logischen SQL-Datenbankserver aktiviert haben, können Sie entweder „Active Directory-Kennwortauthentifizierung“ oder „Integrierte Active Directory-Authentifizierung“ wählen.
- - **Benutzername:** Wenn Sie „SQL-Authentifizierung“ oder „Active Directory-Kennwortauthentifizierung“ gewählt haben, geben Sie den Namen eines Benutzers ein, der Zugriff auf eine Datenbank auf dem Server hat.
- - **Kennwort:** Wenn Sie „SQL-Authentifizierung“ oder „Active Directory-Kennwortauthentifizierung“ gewählt haben, geben Sie das Kennwort für den angegebenen Benutzer ein.
+2. Geben Sie im Fenster **Mit Server verbinden** die folgenden Informationen ein (falls SSMS bereits ausgeführt wird, klicken Sie auf **Verbinden > Datenbankmodul**, um das Fenster **Mit Server verbinden** zu öffnen):
+
+ - **Servertyp**: Standardmäßig ist „Datenbankmodul“ angegeben. Ändern Sie diesen Wert nicht.
+ - **Servername**: Geben Sie den vollqualifizierten Namen Ihres Azure SQL-Datenbankservers im folgenden Format ein: *&lt;Servername>*.**database.windows.net**
+ - **Authentifizierungstyp**: In diesem Artikel wird beschrieben, wie Sie per **SQL Server-Authentifizierung** eine Verbindung herstellen. Ausführliche Informationen zum Herstellen einer Verbindung mit Azure Active Directory finden Sie unter [Herstellen einer Verbindung mithilfe der integrierten Active Directory-Authentifizierung](../articles/sql-database/sql-database-aad-authentication.md#connect-using-active-directory-integrated-authentication), [Herstellen einer Verbindung mithilfe der Active Directory-Kennwortauthentifizierung](../articles/sql-database/sql-database-aad-authentication.md#connect-using-active-directory-password-authentication) und [SSMS support for Azure AD MFA with SQL Database and SQL Data Warehouse](../articles/sql-database/sql-database-ssms-mfa-authentication.md) (SSMS-Unterstützung für Azure AD MFA mit SQL-Datenbank und SQL Data Warehouse).
+ - **Benutzername**: Geben Sie den Namen eines Benutzers mit Zugriff auf eine Datenbank auf dem Server ein (z.B. den Namen des *Serveradministrators*, den Sie beim Erstellen des Servers eingerichtet haben).
+ - **Kennwort**: Geben Sie das Kennwort für den angegebenen Benutzer ein (z.B. das *Kennwort*, das Sie beim Erstellen des Servers eingerichtet haben).
    
-       ![SQL Server Management Studio: Verbinden mit einem SQL-Datenbankserver](./media/sql-database-sql-server-management-studio-connect-server-principal/connect-server-principal-1.png)
+       ![SQL Server Management Studio: Verbinden mit einem SQL-Datenbankserver](./media/sql-database-sql-server-management-studio-connect-server-principal/connect.png)
 
 3. Klicken Sie auf **Verbinden**.
  
-4. Wenn die IP-Adresse des Clients keinen Zugriff auf den logischen SQL-Datenbankserver hat, werden Sie aufgefordert, sich an einem Azure-Konto anzumelden und eine Firewallregel auf Serverebene zu erstellen. Wenn Sie ein Administrator des Azure-Abonnements sind, können Sie auf **Anmelden** klicken, um eine Firewall auf Serverebene zu erstellen. Wenn dies nicht der Fall ist, lassen Sie einen Azure-Administrator eine Firewallregel auf Serverebene erstellen.
- 
-      ![SQL Server Management Studio: Verbinden mit einem SQL-Datenbankserver](./media/sql-database-sql-server-management-studio-connect-server-principal/connect-server-principal-2.png)
- 
-1. Wenn Sie ein Administrator des Azure-Abonnements sind und sich auf der angezeigten Anmeldeseite anmelden müssen, geben Sie die Anmeldeinformationen für Ihr Abonnement an, und melden Sie sich an.
+4. Standardmäßig verfügen neue Server nicht über definierte [Firewallregeln](../articles/sql-database/sql-database-firewall-configure.md), sodass die Verbindungsherstellung für Clients am Anfang blockiert wird. Falls für Ihren Server noch keine Firewallregel eingerichtet wurde, über die Ihre jeweilige IP-Adresse die Verbindung herstellen kann, bietet SSMS Ihnen die Möglichkeit zur Erstellung einer Firewallregel für die Serverebene an.
 
-      ![Anmelden](./media/sql-database-sql-server-management-studio-connect-server-principal/connect-server-principal-3.png)
+    Klicken Sie auf **Anmelden**, und erstellen Sie eine Firewallregel für die Serverebene. Sie müssen ein Azure-Administrator sein, um eine Firewallregel auf Serverebene erstellen zu können.
  
-1. Überprüfen Sie nach der erfolgreichen Anmeldung bei Azure die vorgeschlagene Firewallregel auf Serverebene (Sie können sie ändern, um einen IP-Adressbereich zuzulassen). Klicken Sie anschließend auf **OK**, um die Firewallregel zu erstellen und die Verbindung mit der SQL-Datenbank herzustellen.
+       ![SQL Server Management Studio: Verbinden mit einem SQL-Datenbankserver](./media/sql-database-sql-server-management-studio-connect-server-principal/newfirewallrule.png)
  
-      ![Neue Firewall auf Serverebene](./media/sql-database-sql-server-management-studio-connect-server-principal/connect-server-principal-4.png)
- 
-5. Wenn Sie mit Ihren Anmeldeinformationen Zugriff haben, wird der Objekt-Explorer geöffnet, und Sie können Verwaltungsaufgaben durchführen oder Daten abfragen.
+
+5. Nach der erfolgreichen Herstellung der Verbindung mit Ihrer Azure SQL-Datenbank wird dem **Objekt-Explorer** geöffnet, und Sie können auf die Datenbank zugreifen, um [Verwaltungsaufgaben auszuführen oder Daten abzufragen](../articles/sql-database/sql-database-manage-azure-ssms.md).
  
      ![Neue Firewall auf Serverebene](./media/sql-database-sql-server-management-studio-connect-server-principal/connect-server-principal-5.png)
  
      
 ## Durchführen der Problembehandlung für Verbindungsfehler
 
-Die häufigste Ursache für Verbindungsfehler sind Unregelmäßigkeiten beim Servernamen (Erinnerung: <*Servername*> ist der Name des logischen Servers, nicht der Datenbank), Benutzernamen oder Kennwort sowie das Verbieten der Verbindung durch den Server aus Sicherheitsgründen.
+Der häufigste Grund für Verbindungsfehler sind fehlerhafte Servernamen und Probleme mit der Netzwerkverbindung. Beachten Sie, dass <*Servername*> der Name des Servers und nicht der Datenbank ist und dass Sie den vollqualifizierten Servernamen angeben müssen: `<servername>.database.windows.net`
 
-<!---HONumber=AcomDC_0803_2016-->
+Stellen Sie außerdem sicher, dass der Benutzername und das Kennwort keine Schreibfehler oder zusätzlichen Leerstellen enthalten (bei Benutzernamen wird die Groß-/Kleinschreibung nicht beachtet, aber bei Kennwörtern ist dies der Fall).
+
+Sie können das Protokoll und die Portnummer auch wie folgt explizit mit dem Servernamen festlegen: `tcp:servername.database.windows.net,1433`
+
+Probleme mit der Netzwerkverbindung können ebenfalls zu Verbindungsfehlern und Zeitüberschreitungen führen. Der einfache erneute Versuch, die Verbindung herzustellen (wenn Sie sicher sind, dass Servername, Anmeldeinformationen und Firewallregeln stimmen), kann bereits zum Erfolg führen.
+
+<!---HONumber=AcomDC_0824_2016-->
