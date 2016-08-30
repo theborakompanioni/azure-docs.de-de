@@ -303,4 +303,4 @@ Bei einer erfolgreichen Anmeldung wird die folgende Erfolgsmeldung angezeigt:
 * [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md)
 * [Azure AD Connect und Verbund](active-directory-aadconnectfed-whatis.md)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!----HONumber=AcomDC_0727_2016-->
