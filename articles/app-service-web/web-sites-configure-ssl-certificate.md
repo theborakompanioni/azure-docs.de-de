@@ -36,7 +36,7 @@ Um mit HTTPS eine App zu sichern, die einen benutzerdefinierten Domänennamen ha
 Um Ihren benutzerdefinierten Domänennamen mit HTTPS zu sichern, binden Sie ein benutzerdefiniertes SSL-Zertifikat an diese benutzerdefinierte Domäne in Azure. Vor dem Binden eines benutzerdefinierten Zertifikats müssen Sie die folgenden Schritte ausführen:
 
 - **Konfigurieren Sie die benutzerdefinierte Domäne** – App Service ermöglicht das Hinzufügen eines Zertifikats nur für einen Domänennamen, der bereits in Ihrer App konfiguriert ist. Anweisungen finden Sie unter [Zuordnen eines benutzerdefinierten Domänennamens zu einer Azure-App](web-sites-custom-domain-name.md).
-- **Skalieren Sie zentral hoch bis zur Stufe „Basic“ oder höher ** – App Service-Pläne in unteren Preisstufen unterstützen keine benutzerdefinierten SSL-Zertifikate. Anweisungen finden Sie unter [Zentrales Hochskalieren einer App in Azure](web-sites-scale.md).
+- **Skalieren Sie zentral hoch bis zur Stufe „Basic“ oder höher** – App Service-Pläne in unteren Preisstufen unterstützen keine benutzerdefinierten SSL-Zertifikate. Anweisungen finden Sie unter [Zentrales Hochskalieren einer App in Azure](web-sites-scale.md).
 - **Rufen Sie ein SSL-Zertifikat ab** – wenn Sie nicht bereits über eines verfügen, müssen Sie eines von einer vertrauenswürdigen [Zertifizierungsstelle](http://en.wikipedia.org/wiki/Certificate_authority) (Certificate Authority, CA) abrufen. Das Zertifikat muss die folgenden Anforderungen erfüllen:
 
 	- Es ist von einer vertrauenswürdigen Zertifizierungsstelle (keine privaten CA-Server) signiert.
