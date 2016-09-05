@@ -101,7 +101,7 @@ Microsoft Monitoring Agent verbindet Computer mit Operations Management Suite. W
 
 Befolgen Sie die Anweisungen unter [Verbinden von Windows-Computern mit Log Analytics](../log-analytics/log-analytics-windows-agents.md), um den Agent auf dem lokalen Computer zu installieren. Sie können diesen Vorgang für mehrere Computer wiederholen, um Ihrer Umgebung mehrere Worker hinzuzufügen.
 
-Wenn der Agent erfolgreich mit Operations Management Suite verbunden ist, wird er im Operations Management Suite-Bereich **Einstellungen** auf der Registerkarte **Verbundene Datenquellen** aufgeführt. Sie können sicherstellen, dass der Agent die Automation-Lösung ordnungsgemäß heruntergeladen hat, indem Sie prüfen, ob unter "C:\\Programme\\Microsoft Monitoring Agent\\Agent" ein Ordner namens **AzureAutomationFiles** vorhanden ist. Unter „C:\\Program Files\\Microsoft Monitoring Agent\\Agent\\AzureAutomation\\“ im Unterordner „\*version*“ können Sie die Version des Hybrid Runbook Worker überprüfen.
+Wenn der Agent erfolgreich mit Operations Management Suite verbunden ist, wird er im Operations Management Suite-Bereich **Einstellungen** auf der Registerkarte **Verbundene Datenquellen** aufgeführt. Sie können sicherstellen, dass der Agent die Automation-Lösung ordnungsgemäß heruntergeladen hat, indem Sie prüfen, ob unter "C:\\Programme\\Microsoft Monitoring Agent\\Agent" ein Ordner namens **AzureAutomationFiles** vorhanden ist. Unter „C:\\Program Files\\Microsoft Monitoring Agent\\Agent\\AzureAutomation\\“ im Unterordner „\ *version* “ können Sie die Version des Hybrid Runbook Worker überprüfen.
 
 
 ### 4\. Installieren der Runbookumgebung und Verbindungsherstellung mit Azure Automation
