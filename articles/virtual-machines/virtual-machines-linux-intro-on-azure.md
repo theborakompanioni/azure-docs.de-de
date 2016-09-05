@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Einführung in Linux in Azure | Microsoft Azure"
-	description="Erfahren Sie, wie Sie virtuelle Linux-Computer in Azure verwenden."
+	description="Erfahren Sie, wie Sie virtuelle Linux-Computer auf Azure verwenden."
 	services="virtual-machines-linux"
 	documentationCenter="python"
 	authors="szarkos"
@@ -28,7 +28,7 @@ Wenn Sie mithilfe des klassischen Azure-Portals einen virtuellen Linux-Computer 
 
 
  - Weitere Informationen finden Sie unter [Erstellen eines virtuellen Linux-Computers](virtual-machines-linux-quick-create-cli.md)
- - Siehe [Verwenden von SSH mit Linux in Azure](virtual-machines-linux-ssh-from-linux.md)
+ - Siehe [Verwenden von SSH mit Linux in Azure](virtual-machines-linux-mac-create-ssh-keys.md)
 
 
 ## Erlangen von Superuser-Berechtigungen mit `sudo`
@@ -48,7 +48,7 @@ Azure bietet einen integrierten Paketfilter, der die Konnektivität auf die im k
 
  - Siehe: [Einrichten von Endpunkten für einen virtuellen Computer](virtual-machines-windows-classic-setup-endpoints.md)
 
-Die Linux-Images im Azure-Katalog aktivieren nicht standardmäßig die *iptables*-Firewall. Bei Bedarf kann die Firewall für die Bereitstellung einer zusätzlichen Filterung konfiguriert werden.
+Die Linux-Images im Azure-Katalog aktivieren nicht standardmäßig die *iptables*-Firewall. Nach Wunsch kann die Firewall für eine zusätzliche Filterung konfiguriert werden.
 
 
 ## Hostnamen-Änderungen
@@ -59,7 +59,7 @@ Wenn nach der Bereitstellung eines virtuellen Computers Hostnamenänderungen gew
 
 	# sudo hostname <newname>
 
-Der Azure Linux Agent enthält eine Funktion zur automatischen Erkennung dieser Namensänderung und zur entsprechenden Konfiguration des virtuellen Computers für eine Beibehaltung dieser Änderung und für ihre Veröffentlichung auf DNS-Plattformservern.
+Der Azure Linux-Agent enthält eine Funktion zur automatischen Erkennung dieser Namensänderung und zur entsprechenden Konfiguration des virtuellen Computers für eine Beibehaltung dieser Änderung und für ihre Veröffentlichung auf Plattform-DNS-Servern.
 
  - [Benutzerhandbuch für Azure Linux-Agent](virtual-machines-linux-agent-user-guide.md)
 
@@ -98,4 +98,4 @@ Der Datenträger unter Linux kann vom Kernel den Namen `/dev/sdc` erhalten. Die 
 
  - **Siehe auch:** [Konfigurieren des Software-RAID unter Linux](virtual-machines-linux-configure-raid.md)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0824_2016-->

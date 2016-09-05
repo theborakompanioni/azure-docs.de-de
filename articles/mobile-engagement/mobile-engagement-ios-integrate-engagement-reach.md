@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-ios"
 	ms.devlang="objective-c"
 	ms.topic="article"
-	ms.date="02/29/2016"
+	ms.date="08/19/2016"
 	ms.author="MehrdadMzfr" />
 
 #So integrieren Sie Engagement Reach auf iOS
@@ -72,7 +72,7 @@
 		   return YES;
 		}
 
-### Category
+### Kategorie
 
 Der category-Parameter ist optional, wenn Sie eine Datenpushkampagne erstellen und eine Filterung von Datenpushvorgängen ermöglichen. Dies ist nützlich, wenn Sie unterschiedliche Arten von `Base64`-Daten pushen und vor der Analyse deren Typ ermitteln möchten.
 
@@ -178,7 +178,7 @@ Um das Layout Ihrer anwendungsinternen Benachrichtigungen zu ändern, können Si
 
 Standardmäßig werden anwendungsinterne Benachrichtigungen am unteren Bildschirmrand angezeigt. Wenn Sie eine Anzeige der Benachrichtigungen am oberen Bildschirmrand bevorzugen, bearbeiten Sie die bereitgestellte Datei `AENotificationView.xib`, und ändern Sie die Eigenschaft `AutoSizing` der Hauptansicht, sodass die Benachrichtigungen weiterhin im oberen Bereich der übergeordneten Ansicht angezeigt werden können.
 
-#### Kategorien
+#### Categories
 
 Wenn Sie das bereitgestellte Layout ändern, ändern Sie das Aussehen aller Ihrer Benachrichtigungen. Mithilfe von Kategorien können Sie verschiedene zielgerichtete Layouts (Verhaltensweisen) für Benachrichtigungen definieren. Eine Kategorie kann beim Erstellen einer Reach-Kampagne angegeben werden. Bedenken Sie, dass Sie mithilfe von Kategorien auch Ankündigungen und Umfragen anpassen können (dies wird weiter unten in diesem Dokument beschrieben).
 
@@ -272,7 +272,7 @@ Das Makro `NOTIFICATION_AREA_VIEW_TAG` befindet sich in `AEDefaultNotifier.h`.
 
 Sie können die Dateien `AEDefaultAnnouncementView.xib` und `AEDefaultPollView.xib` ändern, solange Sie die Tagwerte und -typen der vorhandenen Unteransichten beibehalten.
 
-#### Kategorien
+#### Categories
 
 ##### Alternative Layouts
 
@@ -416,4 +416,4 @@ Wie bei der erweiterten Benachrichtigungsanpassung wird empfohlen, sich den Quel
 
 	@end
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0824_2016-->

@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="mobile-xamarin-ios"
     ms.devlang="dotnet"
     ms.topic="article"
-    ms.date="05/10/2016"
+    ms.date="08/22/2016"
     ms.author="donnam"/>
 
 #Herstellen einer Verbindung mit Azure Storage in der Xamarin.Forms-App
@@ -22,7 +22,7 @@
 
 Das Azure Mobile Apps-Client- und -Server-SDK unterstützt die Offlinesynchronisierung von strukturierten Daten mit CRUD-Vorgängen für den Endpunkt „/tables“. Diese Daten werden in der Regel in einer Datenbank oder einem ähnlichen Speicher abgelegt, und häufig ist es nicht möglich, in diesen Datenspeichern umfangreiche Binärdaten effizient zu speichern. Einige Anwendungen verfügen auch über zugehörige Daten, die an einem anderen Ort gespeichert werden (z. B. Blobspeicher, Dateifreigaben). Es ist hilfreich, wenn Sie Zuordnungen zwischen Datensätzen im Endpunkt „/tables“ und anderen Daten erstellen können.
 
-In diesem Thema wird gezeigt, wie Sie der Mobile Apps-Schnellstart-App „todo list“ (Aufgabenliste) Unterstützung für Bilder hinzufügen. Schließen Sie zunächst das Tutorial [Erstellen einer Xamarin.Forms-App] ab.
+In diesem Thema erfahren Sie, wie Sie der Mobile Apps-Schnellstart-App „todo list“ (Aufgabenliste) Unterstützung für Bilder hinzufügen. Schließen Sie zunächst das Tutorial [Erstellen einer Xamarin.Forms-App] ab.
 
 In diesem Tutorial erstellen Sie ein Speicherkonto und fügen Ihrem Back-End für die mobile App eine Verbindungszeichenfolge hinzu. Anschließend fügen Sie eine neue Vererbung vom neuen Mobile Apps-Typ `StorageController<T>` zum Serverprojekt hinzu.
 
@@ -36,7 +36,7 @@ In diesem Tutorial erstellen Sie ein Speicherkonto und fügen Ihrem Back-End fü
 
 ## Erstellen Sie ein Speicherkonto.
 
-1. Erstellen Sie ein Speicherkonto, indem Sie die unter [Erstellen Sie ein Speicherkonto] angegebenen Schritte ausführen. 
+1. Erstellen Sie ein Speicherkonto, indem Sie die unter [Erstellen Sie ein Speicherkonto] angegebenen Schritte ausführen.
 
 2. Navigieren Sie im Azure-Portal zum neu erstellten Speicherkonto, und klicken Sie auf das Symbol **Schlüssel**. Kopieren Sie die **primäre Verbindungszeichenfolge**.
 
@@ -146,7 +146,7 @@ Im folgenden Diagramm sind die Interaktionen zwischen Client und Server dargeste
 
 ###<a name="add-nuget"></a>Hinzufügen von NuGet-Paketen
 
-Klicken Sie mit der rechten Maustaste auf die Projektmappe, und wählen Sie **NuGet-Pakete für Projektmappe verwalten**. Fügen Sie **allen** Projekten der Projektmappe die unten angegebenen NuGet-Pakete hinzu. Vergessen Sie nicht, die Option **Vorabversion einbeziehen** zu aktivieren.
+Klicken Sie mit der rechten Maustaste auf die Projektmappe, und wählen Sie **NuGet-Pakete für Projektmappe verwalten...** aus. Fügen Sie **allen** Projekten der Projektmappe die unten angegebenen NuGet-Pakete hinzu. Vergessen Sie nicht, die Option **Vorabversion einbeziehen** zu aktivieren.
 
   - [Microsoft.Azure.Mobile.Client.Files]
 
@@ -243,7 +243,7 @@ Erstellen Sie eine neue `IPlatform`-Schnittstelle im Hauptprojekt der portablen 
 
 Erstellen Sie eine neue `TodoItemFileSyncHandler`-Klasse im Hauptprojekt der portablen Bibliothek. Diese Klasse enthält Rückrufe vom Azure SDK, um Ihren Code zu benachrichtigen, wenn eine Datei hinzugefügt oder entfernt wird.
 
-Das Azure Mobile Client-SDK speichert keine Dateidaten: Das Client-SDK ruft Ihre Implementierung von `IFileSyncHandler` auf, mit der wiederum bestimmt wird, ob und wie Dateien auf dem lokalen Gerät gespeichert werden.
+Das Azure Mobile Client-SDK speichert eigentlich keine Dateidaten: Das Client-SDK ruft Ihre Implementierung von `IFileSyncHandler` auf, von der wiederum abhängt, ob und wie Dateien auf dem lokalen Gerät gespeichert werden.
 
 1. Fügen Sie die folgenden using-Anweisungen hinzu:
 
@@ -622,7 +622,7 @@ Fügen Sie dem iOS-Projekt plattformspezifischen Code hinzu.
 
 ###<a name="update-windows"></a>Aktualisieren des Windows-Projekts
 
-1. Installieren Sie die Visual Studio-Erweiterung [SQLite für Windows 8.1](http://go.microsoft.com/fwlink/?LinkID=716919). Weitere Informationen finden Sie im Tutorial [Aktivieren der Offlinesynchronisierung für Ihre Windows-App](app-service-mobile-windows-store-dotnet-get-started-offline-data.md). 
+1. Installieren Sie die Visual Studio-Erweiterung [SQLite für Windows 8.1](http://go.microsoft.com/fwlink/?LinkID=716919). Weitere Informationen finden Sie im Tutorial [Aktivieren der Offlinesynchronisierung für Ihre Windows-App](app-service-mobile-windows-store-dotnet-get-started-offline-data.md).
 
 2. Bearbeiten Sie die Datei **Package.appxmanifest**, und aktivieren Sie die Funktion **Webcam**.
 
@@ -734,4 +734,4 @@ In diesem Artikel wird beschrieben, wie Sie die neue Dateiunterstützung im Azur
 [Shared Access Signatures, Teil 1: Grundlagen zum SAS-Modell]: ../storage/storage-dotnet-shared-access-signature-part-1.md
 [Erstellen Sie ein Speicherkonto]: ../storage/storage-create-storage-account.md#create-a-storage-account
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0824_2016-->

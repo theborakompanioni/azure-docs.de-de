@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Gewusst wie: Durchführen von Livestreaming mit lokalen Encodern" 
+	pageTitle="Gewusst wie: Durchführen von Livestreaming mit lokalen Encodern mithilfe von .NET | Microsoft Azure" 
 	description="In diesem Thema wird veranschaulicht, wie mit .NET Live Encoding mit lokalen Encodern durchgeführt wird." 
 	services="media-services" 
 	documentationCenter="" 
@@ -13,10 +13,10 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="ne" 
 	ms.topic="article" 
- 	ms.date="05/05/2016"  
+ 	ms.date="08/19/2016"  
 	ms.author="cenkdin;juliako"/>
 
-#Gewusst wie: Durchführen von Livestreaming mit lokalen Encodern
+#Gewusst wie: Durchführen von Livestreaming mit lokalen Encodern mithilfe von .NET
 
 ##Voraussetzungen
 
@@ -377,7 +377,9 @@ Informationen zum Konfigurieren eines Liveencoders finden Sie unter [Azure Media
 	    }
 	}
 
-##Media Services-Lernpfade
+##Nächster Schritt
+
+Media Services-Lernpfade ansehen
 
 [AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
@@ -385,4 +387,4 @@ Informationen zum Konfigurieren eines Liveencoders finden Sie unter [Azure Media
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0824_2016-->

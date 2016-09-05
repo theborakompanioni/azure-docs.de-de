@@ -12,7 +12,7 @@
  ms.tgt_pltfrm="na"
  ms.devlang="dotnet"
  ms.topic="article"
- ms.date="06/30/2016"
+ ms.date="08/18/2016"
  ms.author="krisragh"/>
 
 # Erstellen komplexer Zeitpläne und erweiterter Serien mit Azure Scheduler  
@@ -197,4 +197,4 @@ Bei den folgenden Zeitplänen wird jeweils davon ausgegangen, dass _interval_ au
 
  [Ausgehende Authentifizierung von Azure Scheduler](scheduler-outbound-authentication.md)
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0824_2016-->

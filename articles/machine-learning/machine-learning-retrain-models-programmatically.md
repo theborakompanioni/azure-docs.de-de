@@ -13,99 +13,157 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/09/2016"
-	ms.author="raymondl;garye"/>
+	ms.date="08/23/2016"
+	ms.author="raymondl;garye;v-donglo"/>
 
 
 #Programmgesteuertes erneutes Trainieren von Machine Learning-Modellen  
 
-Im Rahmen der Operationalisierung der Modelle für das maschinelle Lernen in Azure Machine Learning muss ein Modell trainiert und gespeichert und anschließend zur Erstellung eines Vorhersagewebdiensts verwendet werden. Der Webdienst kann dann in Websites, Dashboards und mobilen Apps genutzt werden.
+Im Rahmen der Operationalisierung von Machine Learning-Modellen in Azure Machine Learning wird Ihr Modell trainiert und gespeichert. Anschließend verwenden Sie es zum Erstellen eines Vorhersagewebdiensts. Der Webdienst kann dann in Websites, Dashboards und mobilen Apps genutzt werden.
 
-Häufig müssen Sie das Modell, das Sie im ersten Schritt erstellt haben, mit den neuen Daten erneut trainieren. Früher war dies nur über die Azure ML-Benutzeroberfläche möglich, aber mit der Einführung der Programmatic Retraining-API können Sie jetzt mithilfe der Retraining-APIs ein Modell programmgesteuert erneut trainieren und den Webdienst mit dem neu trainierten Modell aktualisieren.
+Mithilfe von Machine Learning erstellte Modelle sind in der Regel nicht statisch. Wenn neue Daten verfügbar sind oder der Endkunde der API über eigene Daten verfügt, muss das Modell erneut trainiert werden. Es kann auch vorkommen, dass Sie zum Abrufen einer Teilmenge der Daten Filter anwenden und das Modell erneut trainieren müssen.
 
-In diesem Dokument wird der obige Prozess beschrieben und gezeigt, wie Sie die Retraining-APIs verwenden.
+Das erneute Training kann häufig durchgeführt werden. Mit der API-Funktion für programmgesteuertes erneutes Trainieren können Sie das Modell mithilfe der APIs zum erneuten Trainieren programmgesteuert erneut trainieren und den Webdienst mit dem neu trainierten Modell aktualisieren.
 
-[AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
+In diesem Dokument wird das erneute Trainieren beschrieben und gezeigt, wie Sie die APIs zum erneuten Trainieren verwenden.
 
+## Warum erneut trainieren: Problemdefinition  
 
-##Warum erneut trainieren: Problemdefinition  
-Im Rahmen des ML-Trainingsprozesses wird ein Modell mit einem Satz von Daten trainiert. Die Modelle muss in Szenarien neu trainiert werden, in denen neue Daten verfügbar werden oder in denen der Nutzer der API über eigene Daten zum Trainieren des Modells verfügt oder in denen die Daten gefiltert werden müssen und das Modell mit einer Teilmenge der Daten trainiert werden muss.
+Im Rahmen des ML-Trainingsprozesses wird ein Modell mit einem Satz von Daten trainiert. Mithilfe von Machine Learning erstellte Modelle sind in der Regel nicht statisch. Wenn neue Daten verfügbar sind oder der Nutzer der API über eigene Daten verfügt, muss das Modell erneut trainiert werden. In anderen Szenarien kann es erforderlich sein, zum Abrufen einer Teilmenge der Daten Filter anzuwenden und das Modell erneut zu trainieren.
 
 In diesen Szenarien bietet eine programmgesteuerte API eine komfortable Möglichkeit, mit der Sie oder die Nutzer Ihrer APIs einen Client erstellen können, der das Modell einmalig oder regelmäßig unter Verwendung eigener Daten trainieren kann. Sie können die Ergebnisse des erneuten Trainings dann auswerten und die Webdienst-API aktualisieren, sodass sie das trainierte Modell verwendet.
 
 ##Erneutes Trainieren: Prozess  
-Der Prozess beinhaltet die folgenden Komponenten: ein Trainingsexperiment und ein Vorhersageexperiment, die als Webdienst veröffentlicht werden. Damit ein trainiertes Modells erneut trainiert werden kann, muss das Trainingsexperiment als Webdienst mit der Ausgabe eines trainierten Modells veröffentlicht werden. Dies ermöglicht der API, zum erneuten Trainieren auf das Modell zuzugreifen. Das Einrichten eines erneuten Trainings umfasst die folgenden Schritte:
 
-![][1]
+Der Prozess beinhaltet die folgenden Komponenten: ein Trainingsexperiment und ein Vorhersageexperiment, die als Webdienst veröffentlicht werden. Damit ein trainiertes Modell erneut trainiert werden kann, muss das Trainingsexperiment als Webdienst mit der Ausgabe eines trainierten Modells veröffentlicht werden. Dies ermöglicht der API, zum erneuten Trainieren auf das Modell zuzugreifen.
+
+Das Einrichten eines erneuten Trainings umfasst die folgenden Schritte:
+
+![Übersicht über den Prozess des erneuten Trainings][1]
 
 Diagramm 1: Übersicht über den Prozess des erneuten Trainings
 
-1. *Erstellen eines Trainingsexperiments* Wir verwenden hier das Experiment "Sample 5 (Train, Test, Evaluate for Binary Classification: Adult Dataset)" aus den Azure-ML-Beispielexperimenten als Beispiel. Wie Sie unten sehen können, haben ich das Beispiel etwas vereinfacht, indem ich einige Module entfernt habe. Zudem habe ich das Experiment "Census Model" genannt.
+## Erstellen eines Trainingsexperiments
+ 
+In diesem Beispiel verwenden Sie „Sample 5: Train, Test, Evaluate for Binary Classification: Adult Dataset“ aus den Microsoft Azure Machine Learning-Beispielen.
+	
+So erstellen Sie das Experiment
 
- 	![][2]
+1.	Melden Sie sich bei Microsoft Azure Machine Learning Studio an.
+2.	Klicken Sie in der unteren rechten Ecke des Dashboards auf **Neu**.
+3.	Wählen Sie in den Microsoft-Beispielen das Beispiel 5 aus.
+4.	Wählen Sie zum Umbenennen des Experiments am oberen Rand des Experimentbereichs den Experimentnamen „Sample 5: Train, Test, Evaluate for Binary Classification: Adult Dataset“ aus.
+5.	Geben Sie „Census Model“ ein.
+6.	Klicken Sie am unteren Rand des Experimentbereichs auf **Run**.
+7.	Klicken Sie auf **Set Up Web Service** (Webdienst einrichten), und wählen Sie **Retraining Web Service** (Webdienst für erneutes Training) aus.
 
-	Nachdem wir diese Komponenten haben, können wir am unteren Bildschirmrand auf "Run" (Ausführen) klicken, um dieses Experiment auszuführen.
-2. *Erstellen eines Bewertungsexperiments und Veröffentlichen des Bewertungsexperiments als Webdienst*
+ 	![Anfängliches Experiment][2]
 
-	![][3]
+Diagramm 2: Anfängliches Experiment
 
-	Nachdem die Ausführung des Experiments beendet ist, klicken wir auf „Vorhersageexperiment erstellen“. Wie unten dargestellt, wird daraufhin ein Vorhersageexperiment erstellt. Das Modell wird als trainiertes Modell gespeichert, und es werden Ein- und Ausgabemodule, wie unten gezeigt, für den Webdienst hinzugefügt. Als Nächstes klicken wir auf "Run" (Ausführen).
+## Erstellen eines Bewertungsexperiments und Veröffentlichen des Bewertungsexperiments als Webdienst  
 
-	Nach Abschluss der Ausführung des Experiments wird das Vorhersageexperiment durch Klicken auf „Webdienst veröffentlichen“ veröffentlicht und ein Standardendpunkt erstellt. Das trainierte Modell in diesem Webdienst ist aktualisierbar, wie unten dargestellt. Die Details für diesen Endpunkt werden dann auf dem Bildschirm angezeigt.
-3. *Veröffentlichen des Trainingsexperiments als Webdienst*: Damit das trainierte Modell erneut trainiert werden kann, müssen wir das Trainingsexperiment, das wir in Schritt 1 erstellt haben, als Webdienst veröffentlichen. Dieser Webdienst benötigt ein Webdienst-Ausgabemodul, das mit dem Modul [Train Model][train-model] verbunden ist, um neue trainierte Modelle erzeugen zu können. Klicken Sie auf das Symbol für Experimente im linken Bereich, und klicken Sie dann auf das Experiment namens "Census Model", um wieder zum Trainingsexperiment zurückzukehren.
+Erstellen Sie als Nächstes ein Vorhersageexperiment.
 
-	Wir fügen dem Workflow dann ein Webdienst-Eingabemodul und zwei Webdienst-Ausgabemodule hinzu. Die Webdienst-Ausgabe für "Train Model" liefert uns das neue trainierte Modell. Das mit dem Modul "Evaluate Model" verknüpfte Ausgabemodul gibt die Ausgabe dieses Moduls für das Bewertungsmodell zurück.
+1.	Klicken Sie am unteren Rand des Experimentbereichs auf **Set Up Web Service** (Webdienst einrichten), und wählen Sie **Predictive Web Service** (Vorhersagewebdienst) aus. Dadurch wird das Modell als trainiertes Modell gespeichert, und es werden Ein- und Ausgabemodule für den Webdienst hinzugefügt.
+2.	Klicken Sie auf **Run** (Ausführen).
+3.	Klicken Sie nach der Ausführung des Experiments auf **Deploy Web Service [Classic]** (Webdienst bereitstellen [klassisch]). Dadurch wird das Vorhersageexperiment als klassischer Webdienst bereitgestellt.
 
-	Wir können jetzt auf "Run" (Ausführen) klicken. Nachdem die Ausführung des Experiments abgeschlossen wurde, sollte der resultierende Workflow folgendermaßen aussehen:
+## Bereitstellen des Trainingsexperiments als Trainingswebdienst
 
-	![][4]
+Um das trainierte Modell erneut zu trainieren, müssen Sie das als „Retraining Web Service“ (Webdienst für erneutes Training) erstellte Trainingsexperiment bereitstellen. Dieser Webdienst benötigt ein Webdienst-Ausgabemodul, das mit dem Modul [Train Model][train-model] verbunden ist, um neue trainierte Modelle erzeugen zu können.
 
-	Als Nächstes klicken wir auf die Schaltfläche „Deploy Web Service“ und dann auf „Yes“. Dadurch wird das Trainingsexperiment als Webdienst veröffentlicht, der ein trainiertes Modell und Modellauswertungsergebnisse erzeugt. Das Webdienst-Dashboard wird mit dem API-Schlüssel und der API-Hilfeseite für die Batchausführung angezeigt. Beachten Sie, dass nur die Methode Batch Execution (Batchausführung) zum Erstellen von trainierten Modelle verwendet werden kann.
-4. *Hinzufügen eines neuen Endpunkts* Der Vorhersagewebdienst, den wir oben in Schritt 2 veröffentlicht haben, ist der Standardbewertungsendpunkt. Die Standardendpunkte werden mit dem ursprünglichen Trainings- und Bewertungsexperiment synchronisiert, daher kann ein trainiertes Modell, das einem Standardendpunkt zugeordnet ist, nicht ausgetauscht werden. Zum Erstellen eines neuen Bewertungsendpunkts mit einem aktualisierbaren Modell besuchen Sie das klassische Azure-Portal, und klicken Sie auf "Endpunkt hinzufügen" (nähere Informationen finden Sie [hier](machine-learning-create-endpoint.md)). Sie können auch Bewertungsendpunkte mithilfe des [hier](https://github.com/raymondlaghaeian/AML_EndpointMgmt/blob/master/Program.cs) bereitgestellten Beispielcodes hinzufügen.
+1. Um zum Trainingsexperiment zurückzukehren, klicken Sie im linken Bereich auf das Symbol für Experimente, und klicken Sie dann auf das Experiment namens „Census Model“.
+2. Geben Sie „Web Service“ in das Suchfeld „Search Experiment Items“ (Experimentelemente suchen) ein.
+3. Ziehen Sie ein Modul „Web Service Input“ in den Experimentbereich, und verbinden Sie seine Ausgabe mit dem Modul „Clean Missing Data“ .
+4. Ziehen Sie zwei Module *Web Service Output* in den Experimentbereich. Verbinden Sie die Ausgabe des Moduls *Train Model* mit einem Modul und die Ausgabe des Moduls *Evaluate Model* mit dem anderen Modul. Die Webdienstausgabe für „Train Model“ liefert uns das neue trainierte Modell. Die mit „Evaluate Model“ verknüpfte Ausgabe gibt die Ausgabe dieses Moduls für das Auswertungsmodul zurück.
+5. Klicken Sie auf **Run** (Ausführen).
+6. Klicken Sie am unteren Rand des Experimentbereichs auf **Set Up Web Service** (Webdienst einrichten), und wählen Sie **Retraining Web Service** (Webdienst für erneutes Training) aus. Dadurch wird das Trainingsexperiment als ein Webdienst bereitgestellt, der ein trainiertes Modell und Modellauswertungsergebnisse erzeugt. Das **Dashboard** des Webdiensts wird mit dem API-Schlüssel und der API-Hilfeseite für die Batchausführung angezeigt. Beachten Sie, dass nur die Batchausführungsmethode zum Erstellen von trainierten Modellen verwendet werden kann.
+  
+Nachdem die Ausführung des Experiments abgeschlossen wurde, sollte der resultierende Workflow wie folgt aussehen:
 
-5. *Erneutes Trainieren des Modells mit neuen Daten und BES* Zum erneuten Trainieren des Modells müssen wir die BES-Funktion des Webdiensts aufrufen, den wir oben in Schritt 3 erstellt haben.
+![Resultierender Workflow nach der Ausführung][4]
 
-	Zum Aufrufen der Retraining-APIs erstellen wir eine neue C#-Konsolenanwendung in Visual Studio (Neu > Projekt > Windows-Desktop > Konsolenanwendung).
+Abbildung 3: Resultierender Workflow nach der Ausführung
 
-	Dann kopieren wir den C#-Beispielcode aus der Hilfeseite des Trainingswebdiensts-API für die Batchausführung (der in Schritt 3 oben erstellt wurde) und fügen ihn in die Datei "Program.cs" ein, wobei wir sicherstellen, dass der Namespace intakt bleibt.
+## Hinzufügen eines neuen Endpunkts
+ 
+Der von Ihnen bereitgestellte Vorhersagewebdienst ist der Standardbewertungsendpunkt. Standardendpunkte werden mit den ursprünglichen Trainings- und Bewertungsexperimenten synchronisiert. Daher kann das trainierte Modell für den Standardendpunkt nicht ersetzt werden.
 
-	Beachten Sie, dass der Beispielcode Kommentare enthält, welche auf die Teile des Codes hinweisen, die aktualisiert werden müssen. Wenn Sie den Speicherort "output1" in der Anforderungsnutzlast angeben, muss die Dateierweiterung von "RelativeLocation" in ".ilearner" geändert werden, wie in:
+Gehen Sie wie im Folgenden beschrieben vor, um einen neuen Bewertungsendpunkt für den Vorhersagewebdienst zu erstellen, der mit dem trainierten Modell aktualisiert werden kann:
 
-	```c#
-	Outputs = new Dictionary<string, AzureBlobDataReference>()
-	{
+>[AZURE.NOTE] Achten Sie darauf, dass Sie den Endpunkt dem Vorhersagewebdienst hinzufügen und nicht dem Trainingswebdienst. Wenn Sie sowohl einen Trainings- als auch einen Vorhersagewebdienst korrekt bereitgestellt haben, werden zwei separate Webdienste aufgeführt. Der Vorhersagewebdienst sollte mit „[predictive exp.]“ enden.
+
+1. Melden Sie sich beim [klassischen Azure-Portal](https://manage.windowsazure.com) an.
+2. Klicken Sie im linken Menü auf **Machine Learning**.
+3. Klicken Sie unter „Name“ auf Ihren Arbeitsbereich und dann auf **Web Services**.
+4. Klicken Sie unter „Name“ auf **Census Model [predictive exp.]**.
+5. Klicken Sie unten auf der Seite auf **Endpunkt hinzufügen**. Weitere Informationen zum Hinzufügen von Endpunkten finden Sie unter [Erstellen von Endpunkten](machine-learning-create-endpoint.md).
+
+Sie können Bewertungsendpunkte auch mithilfe des Beispielcodes in diesem [GitHub-Repository](https://github.com/raymondlaghaeian/AML_EndpointMgmt/blob/master/Program.cs) hinzufügen.
+
+## Erneutes Trainieren des Modells mit neuen Daten mithilfe von BES
+
+So rufen Sie die APIs zum erneuten Trainieren auf
+
+1. Erstellen Sie eine neue C#-Konsolenanwendung in Visual Studio (Neu > Projekt > Windows-Desktop > Konsolenanwendung).
+2. Kopieren Sie den C#-Beispielcode von der Hilfeseite der Trainingswebdienst-API für die Batchausführung, und fügen Sie ihn in die Datei „Program.cs“ ein. Achten Sie dabei darauf, dass der Namespace intakt bleibt.
+3. Der Beispielcode enthält Kommentare, die auf die Teile des Codes hinweisen, die Sie aktualisieren müssen.
+4. Wenn Sie den Ausgabespeicherort in der Anforderungsnutzlast angeben, muss die Erweiterung der in *RelativeLocation* angegebenen Datei von „csv“ in „ilearner“ geändert werden. Siehe folgendes Beispiel.
+
+		Outputs = new Dictionary<string, AzureBlobDataReference>()
 		{
-			"output1",
-			new AzureBlobDataReference()
 			{
-				ConnectionString = "DefaultEndpointsProtocol=https;AccountName=mystorageacct;AccountKey=Dx9WbMIThAvXRQWap/aLnxT9LV5txxw==",
-				RelativeLocation = "mycontainer/output1results.ilearner"
-			}
+				"output1",
+				new AzureBlobDataReference()
+				{
+					ConnectionString = "DefaultEndpointsProtocol=https;AccountName=mystorageacct;AccountKey=Dx9WbMIThAvXRQWap/aLnxT9LV5txxw==",
+					RelativeLocation = "mycontainer/output1results.ilearner"
+				}
+			},
 		},
-	},
-	```
-	1. Bereitstellen von Azure-Speicherinformationen Der Beispielcode für BES lädt eine Datei von einem lokalen Laufwerk (z. B. "C:\\temp\\CensusIpnput.csv") in den Azure-Speicher zur Verarbeitung hoch und schreibt die Ergebnisse wieder in den Azure-Speicher.
 
-		Dazu müssen Sie Informationen zum Namen, Schlüssel und Container des Speicherkontos aus dem klassischen Azure-Portal für Ihr Speicherkonto abrufen und den vorliegenden Code entsprechend aktualisieren. Sie müssen auch sicherstellen, dass die Eingabedatei an dem im Code angegebenen Speicherort verfügbar ist.
+>[AZURE.NOTE] Die Namen Ihrer Ausgabespeicherorte können sich abhängig von der Reihenfolge, in der Sie die Ausgabemodule für den Webdienst hinzugefügt haben, von denen in dieser exemplarischen Vorgehensweise unterscheiden. Da Sie dieses Trainingsexperiment mit zwei Ausgaben einrichten, enthalten die Ergebnisse Speicherortinformationen für beide Ausgaben.
 
-		Da wir dieses Trainingsexperiment mit zwei Ausgabemodulen einrichten mussten, müssen auch die Ergebnisse Speicherortinformationen für beide enthalten (siehe unten). "output1" ist die Ausgabe des trainierten Modells, und "output2" ist die Ausgabe des Bewertungsmodells. Beachten Sie auch, dass die Dateierweiterung des Ergebnisses für das trainierte Modul (Output1) ".ilinear" lautet, nicht ".csv".
+### Aktualisieren der Azure Storage-Informationen
 
-		![][6]
+Der BES-Beispielcode lädt eine Datei von einem lokalen Laufwerk (z.B. „C:\\temp\\CensusIpnput.csv“) in Azure Storage hoch, verarbeitet sie und schreibt die Ergebnisse zurück in Azure Storage.
 
-6. *Auswerten der Ergebnisse des erneuten Trainings* Über die Ausgabe des obigen Aufrufs erhalten wir die URL und SAS-Token für den Zugriff auf die Auswertungsergebnisse.
+Zum Durchführen dieser Aufgabe müssen Sie Informationen zum Namen, Schlüssel und Container des Speicherkontos aus dem klassischen Azure-Portal für Ihr Speicherkonto abrufen und die entsprechenden Werte im Code aktualisieren.
 
-	Unter Verwendung der Kombination von BaseLocation, RelativeLocation und SasBlobToken aus den oben genannten Ausgabeergebnissen für „output2“ können wir die Ergebnisse des erneut trainierten Modells anzeigen, indem wir die vollständige URL in die Adressleiste des Browsers einfügen.
+Außerdem müssen Sie sicherstellen, dass die Eingabedatei an dem im Code angegebenen Speicherort verfügbar ist.
 
-	Daran können wir erkennen, ob das neu trainierte Modell gut genug ist, um das vorhandene Modell zu ersetzen.
+![Ausgabe des erneuten Trainings][6]
 
-7. *Aktualisieren des trainierten Modells für den hinzugefügten Endpunkt* Um den Prozess abzuschließen, müssen wir das trainierte Modell des oben in Schritt 4 hinzugefügten neuen Endpunkts aktualisieren.
+Diagramm 4: Ausgabe des erneuten Trainings
 
-	- Wenn Sie den neuen Endpunkt mit dem Azure-Portal hinzugefügt haben, können Sie im Azure-Portal auf den Namen des neuen Endpunkts klicken. Klicken Sie anschließend auf den UpdateResource-Link, um die URL abzurufen, die Sie benötigen, um das Modell des Endpunkts zu aktualisieren.
-	- Wenn Sie den Endpunkt mithilfe des Beispielcodes hinzugefügt haben, enthält die Ausgabe die HelpLocationURL. Kopieren Sie diese URL, und fügen Sie sie in den Browser ein. Klicken Sie dann auf den Link „Ressource aktualisieren“. Kopieren Sie die POST-URL der PATCH-Anforderung (für „newendpoint2“ ist dies z.B. diese PATCH-URL: https://management.azureml.net/workspaces/00bf70534500b34rebfa1843d6/webservices/af3er32ad393852f9b30ac9a35b/endpoints/newendpoint2).
+## Auswerten der Ergebnisse des erneuten Trainings
+ 
+Wenn Sie die Anwendung ausführen, enthält die Ausgabe die URL und das erforderliche SAS-Token für den Zugriff auf die Auswertungsergebnisse.
 
-	Die BES-Funktionsausgabe aus Schritt 5.a enthält die Ergebnisse des erneuten Trainings in „output1“. Darin ist auch der Speicherort des erneut trainierten Modells enthalten. Nun müssen Sie dieses trainierte Modell anwenden und den Bewertungsendpunkt (der in Schritt 4 erstellt wurde) aktualisieren. Der Beispielcode lautet folgendermaßen:
+Sie können die Leistungsergebnisse des erneut trainierten Modells anzeigen, indem Sie *BaseLocation*, *RelativeLocation* und *SasBlobToken* aus den Ausgabeergebnissen für *output2* kombinieren (wie in der obigen Abbildung zur Ausgabe des erneuten Trainings gezeigt) und die vollständige URL in die Adressleiste des Browsers einfügen.
 
-	```C#
+Überprüfen Sie die Ergebnisse, um festzustellen, ob das neu trainierte Modell gut genug ist, um das vorhandene Modell zu ersetzen.
+
+## Aktualisieren des trainierten Modells des hinzugefügten Endpunkts
+
+Um das erneute Training abzuschließen, müssen Sie das trainierte Modell des von Ihnen hinzugefügten neuen Endpunkts aktualisieren.
+
+* Wenn Sie den neuen Endpunkt im Azure-Portal hinzugefügt haben, können Sie im Azure-Portal auf seinen Namen klicken. Klicken Sie anschließend auf den **UpdateResource**-Link, um die URL abzurufen, die Sie benötigen, um das Modell des Endpunkts zu aktualisieren.
+* Wenn Sie den Endpunkt mithilfe des Beispielcodes hinzugefügt haben, ist der Speicherort der Hilfe-URL im Wert *HelpLocationURL* in der Ausgabe angegeben.
+
+So rufen Sie die Pfad-URL ab
+
+1. Kopieren Sie die URL, und fügen Sie sie in Ihren Browser ein.
+2. Klicken Sie auf den Link „Ressource aktualisieren“.
+3. Kopieren Sie die POST-URL der PATCH-Anforderung. Beispiel:
+
+		PATCH URL: https://management.azureml.net/workspaces/00bf70534500b34rebfa1843d6/webservices/af3er32ad393852f9b30ac9a35b/endpoints/newendpoint2
+
+Sie können das trainierte Modell jetzt verwenden, um den zuvor erstellten Bewertungsendpunkt zu aktualisieren.
+
+Der folgende Beispielcode zeigt, wie Sie *BaseLocation*, *RelativeLocation*, *SasBlobToken* und die PATCH-URL zum Aktualisieren des Endpunkts verwenden.
+
 	private async Task OverwriteModel()
 	{
 		var resourceLocations = new
@@ -143,16 +201,28 @@ Diagramm 1: Übersicht über den Prozess des erneuten Trainings
 			}
 		}
 	}
-	```
 
-	Im Endpunkt-Dashboard werden die Werte für "apiKey" und "endpointUrl" für diesen Aufruf angezeigt. Der Parameter „Name“ in „Resources“ sollte mit dem Namen des gespeicherten trainierten Modells im Vorhersageexperiment übereinstimmen.
-	
-	Beachten Sie, dass das SAS-Token nach 1 Stunde (55 Minuten) abläuft. Sie müssen einen GET-Befehl mit der Auftrags-ID ausführen, um ein neues Token abzurufen.
+Der *apiKey* und die *endpointUrl* für den Aufruf werden im Dashboard des Endpunkts angezeigt.
 
-	Nachdem dieser Aufruf erfolgreich ausgeführt wurde, beginnt der neue Endpunkt innerhalb von etwa 15 bis 30 Sekunden damit, das neu trainierte Modell zu verwenden.
+Der Wert des Parameters *Name* in *Resources* sollte mit dem Namen des gespeicherten trainierten Modells im Vorhersageexperiment übereinstimmen. Gehen Sie wie folgt vor, um den Ressourcennamen abzurufen:
+
+1. Melden Sie sich beim [klassischen Azure-Portal](https://manage.windowsazure.com) an.
+2. Klicken Sie im linken Menü auf **Machine Learning**.
+3. Klicken Sie unter „Name“ auf Ihren Arbeitsbereich und dann auf **Web Services**.
+4. Klicken Sie unter „Name“ auf **Census Model [predictive exp.]**.
+5. Klicken Sie auf den neuen Endpunkt, den Sie hinzugefügt haben.
+6. Klicken Sie im Dashboard des Endpunkts auf *Ressource aktualisieren*.
+7. Auf der Dokumentationsseite der API zur Ressourcenaktualisierung für den Webdienst wird der **Ressourcenname** unter **Updatable Resources** (Aktualisierbare Ressourcen) angezeigt.
+
+Wenn Ihr SAS-Token abläuft, bevor Sie die Aktualisierung des Endpunkts abgeschlossen haben, müssen Sie einen GET-Befehl mit der Einzelvorgangs-ID ausführen, um ein neues Token abzurufen.
+
+Nach der erfolgreichen Ausführung des Codes sollte der neue Endpunkt nach ungefähr 30 Sekunden mit der Verwendung des neuen trainierten Modells beginnen.
 
 ##Zusammenfassung  
-Mithilfe der Retraining-APIs können wir das trainierte Modell eines Vorhersagewebdiensts aktualisieren, sodass Szenarien möglich sind, in denen Modelle regelmäßig mit neuen Daten trainiert werden oder Modelle in der Absicht an Kunden verteilt werden, sie das Modell unter Verwendung ihrer eigenen Daten trainieren zu lassen.
+Mithilfe der APIs zum erneuten Trainieren können Sie das trainierte Modell eines Vorhersagewebdiensts aktualisieren und so z.B. folgende Szenarien ermöglichen:
+
+* Regelmäßiges erneutes Trainieren des Modells mit neuen Daten
+* Verteilung eines Modells an Kunden, sodass sie das Modell mit ihren eigenen Daten erneut trainieren können
 
 ## Nächste Schritte
 [Problembehandlung für das erneute Trainieren eines klassischen Azure Machine Learning-Webdiensts](machine-learning-troubleshooting-retraining-models.md)
@@ -168,4 +238,4 @@ Mithilfe der Retraining-APIs können wir das trainierte Modell eines Vorhersagew
 <!-- Module References -->
 [train-model]: https://msdn.microsoft.com/library/azure/5cc7053e-aa30-450d-96c0-dae4be720977/
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0824_2016-->

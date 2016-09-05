@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-android" 
 	ms.devlang="Java" 
 	ms.topic="article" 
-	ms.date="02/25/2016" 
+	ms.date="08/19/2016" 
 	ms.author="piyushjo" />
 
 #Erstellen einer Brücke zwischen Android WebView und dem nativem Mobile Engagement Android SDK
@@ -24,7 +24,7 @@
 
 Einige mobile Apps werden als Hybrid-Apps konzipiert, das heißt, die App selbst wird mit der nativen Android-Entwicklung entwickelt, aber einige oder sogar alle Bildschirme werden in einer Android WebView gerendert. Sie können das Mobile Engagement Android SDK dennoch innerhalb solcher Apps nutzen, und dieses Tutorial zeigt Ihnen, wie das geht. Der unten gezeigte Beispielcode basiert auf [dieser](https://developer.android.com/guide/webapps/webview.html#BindingJavaScript) Android-Dokumentation. Darin wird beschrieben, wie mit diesem dokumentierten Ansatz dieselbe Strategie für häufig verwendete Methoden aus dem Mobile Engagement Android SDK implementiert werden kann, sodass eine WebView aus einer Hybrid-App auch Anforderungen zum Nachverfolgen von Ereignissen, Aufträgen, Fehlern oder App-Informationen initiieren und diese über unser Android SDK weiterreichen kann.
 
-1. Zunächst müssen Sie sicherstellen, dass Sie unser [Erste-Schritte-Tutorial](mobile-engagement-android-get-started.md) zum Integrieren des Mobile Engagement Android SDK in der Hybrid-App durchgeführt haben. Anschließend sieht die Methode `OnCreate` wie folgt aus.  
+1. Zunächst müssen Sie sicherstellen, dass Sie unser [Erste-Schritte-Tutorial](mobile-engagement-android-get-started.md) zum Integrieren des Mobile Engagement Android SDK in der Hybrid-App durchgeführt haben. Anschließend sieht die Methode `OnCreate` wie folgt aus.
     
 		@Override
 	    protected void onCreate(Bundle savedInstanceState) {
@@ -200,10 +200,10 @@ Einige mobile Apps werden als Hybrid-Apps konzipiert, das heißt, die App selbst
 
 8. Beachten Sie die folgenden Hinweise zur oben gezeigten HTML-Datei:
 
-	- 	Sie enthält eine Reihe von Eingabefeldern, in denen Sie Daten als Namen für das Ereignis, den Auftrag, den Fehler oder die AppInfo bereitstellen können. Beim Klicken auf die Schaltfläche daneben erfolgt ein Aufruf an das JavaScript, das schließlich die Methoden aus der Brückendatei aufruft, um diesen Aufruf an das Mobile Engagement Android SDK zu übergeben. 
-	- 	Wir versehen Ereignisse, Aufträge und sogar Fehler mit einigen statischen Zusatzinformationen, um zu veranschaulichen, wie dies zu erreichen wäre. Diese zusätzlichen Informationen werden als JSON-Zeichenfolge gesendet, die (wie in der Datei `WebAppInterface` zu sehen ist) analysiert und in ein Android `Bundle` eingefügt und beim Senden von Ereignissen, Aufträgen und Fehlern übergeben wird. 
-	- 	Ein Mobile Engagement-Auftrag mit dem im Eingabefeld angegebenen Namen wird gestartet, für 10 Sekunden ausgeführt und beendet. 
-	- 	Eine Mobile Engagement-AppInfo oder ein Tag wird mit „customer\_name“ als statischem Schlüssel und mit dem eingegebenen Wert als Wert für das Tag übergeben. 
+	- 	Sie enthält eine Reihe von Eingabefeldern, in denen Sie Daten als Namen für das Ereignis, den Auftrag, den Fehler oder die AppInfo bereitstellen können. Beim Klicken auf die Schaltfläche daneben erfolgt ein Aufruf an das JavaScript, das schließlich die Methoden aus der Brückendatei aufruft, um diesen Aufruf an das Mobile Engagement Android SDK zu übergeben.
+	- 	Wir versehen Ereignisse, Aufträge und sogar Fehler mit einigen statischen Zusatzinformationen, um zu veranschaulichen, wie dies zu erreichen wäre. Diese zusätzlichen Informationen werden als JSON-Zeichenfolge gesendet, die (wie in der Datei `WebAppInterface` zu sehen ist) analysiert und in ein Android `Bundle` eingefügt und beim Senden von Ereignissen, Aufträgen und Fehlern übergeben wird.
+	- 	Ein Mobile Engagement-Auftrag mit dem im Eingabefeld angegebenen Namen wird gestartet, für 10 Sekunden ausgeführt und beendet.
+	- 	Eine Mobile Engagement-AppInfo oder ein Tag wird mit „customer\_name“ als statischem Schlüssel und mit dem eingegebenen Wert als Wert für das Tag übergeben.
  
 9. Wenn Sie die App ausführen, erhalten Sie folgende Ausgabe. Geben Sie jetzt einen Namen für ein Testereignis wie folgt ein, und klicken Sie darunter auf **Send**.
 
@@ -217,4 +217,4 @@ Einige mobile Apps werden als Hybrid-Apps konzipiert, das heißt, die App selbst
 [1]: ./media/mobile-engagement-bridge-webview-native-android/sending-event.png
 [2]: ./media/mobile-engagement-bridge-webview-native-android/event-output.png
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0824_2016-->

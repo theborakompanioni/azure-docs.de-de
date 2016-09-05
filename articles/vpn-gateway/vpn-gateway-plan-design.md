@@ -13,19 +13,19 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="05/16/2016"
+   ms.date="08/19/2016"
    ms.author="cherylmc"/>
 
 # Planung und Entwurf für VPN Gateway
 
-Die Planung und der Entwurf Ihrer standortübergreifenden und VNet-zu-VNet-Verbindungen sind je nach Ihren Netzwerkanforderungen entweder sehr einfach oder recht kompliziert. Dieser Artikel führt Sie durch die grundlegenden Aspekte der Planung und des Entwurfs.
+Die Planung und der Entwurf Ihrer standortübergreifenden und VNet-zu-VNet-Verbindungen sind je nach Ihren Netzwerkanforderungen entweder einfach oder kompliziert. Dieser Artikel erläutert die grundlegenden Aspekte der Planung und des Entwurfs.
 
 ## Planung
 
 
 ### <a name="compare"></a>Optionen der standortübergreifenden Konnektivität
 
-Wenn Sie Ihre lokalen Standorte sicher mit einem virtuellen Netzwerk verbinden möchten, stehen Ihnen drei verschiedene Möglichkeiten zur Verfügung: Standort-zu-Standort, Punkt-zu-Standort und ExpressRoute. Vergleichen Sie die verschiedenen verfügbaren standortübergreifenden Verbindungen. Die von Ihnen gewählte Option kann von einer Vielzahl von Faktoren abhängen:
+Wenn Sie Ihre lokalen Standorte sicher mit einem virtuellen Netzwerk verbinden möchten, stehen Ihnen drei verschiedene Möglichkeiten zur Verfügung: Standort-zu-Standort, Punkt-zu-Standort und ExpressRoute. Vergleichen Sie die verschiedenen verfügbaren standortübergreifenden Verbindungen. Die von Ihnen gewählte Option kann von verschiedenen Faktoren abhängen:
 
 
 - Welche Form von Durchsatz benötigt Ihre Lösung?
@@ -47,7 +47,7 @@ Die folgende Tabelle kann Ihnen dabei helfen, die beste Verbindungsoption für I
 ### <a name="gwrequire"></a>Gatewayanforderungen nach VPN-Typ und SKU
 
 
-Beim Erstellen eines VPN Gateways müssen Sie die gewünschte Gateway-SKU angeben. Es gibt drei VPN-Gateway-SKUs:
+Beim Erstellen eines VPN-Gateways müssen Sie die gewünschte Gateway-SKU angeben. Es gibt drei VPN Gateway-SKUs:
 
 - Basic
 - Standard
@@ -70,7 +70,7 @@ In der folgenden Tabelle sind die Gatewaytypen und der geschätzte zusammengefas
 Die folgende Liste beschreibt den allgemeinen Workflow für die Cloud-Konnektivität:
 
 1.	Entwerfen und planen Sie die Netzwerktopologie, und erstellen Sie eine Liste der Adressräume für alle Netzwerke, die Sie verbinden möchten.
-2.	Erstellen Sie ein virtuelles Azure-Netzwerk. 
+2.	Erstellen Sie ein virtuelles Azure-Netzwerk.
 3.	Erstellen Sie ein VPN-Gateway für das virtuelle Netzwerk.
 4.	Erstellen und konfigurieren Sie Verbindungen mit lokalen Netzwerken oder anderen virtuellen Netzwerken (bei Bedarf).
 5.	Erstellen und konfigurieren Sie eine Punkt-zu-Standort-Verbindung für Ihr Azure-VPN-Gateway (bei Bedarf).
@@ -84,29 +84,25 @@ Sehen Sie sich zunächst die Diagramme im Artikel [Verbindungstopologien](vpn-ga
 
 ### <a name="designbasics"></a>Entwurfsgrundlagen
 
-In den folgenden Abschnitten werden die Grundlagen des VPN-Gateways erläutert. Außerdem sollten Sie die [Einschränkungen der Netzwerkdienste](../articles/azure-subscription-service-limits.md#networking-limits) berücksichtigen.
+In den folgenden Abschnitten werden die Grundlagen von VPN-Gateways erläutert. Berücksichtigen Sie auch die [Einschränkungen für Netzwerkdienste](../articles/azure-subscription-service-limits.md#networking-limits).
 
 
 #### <a name="subnets"></a>Informationen zu Subnetzen
 
-Beim Planen und Entwerfen der für Ihre Umgebung am besten geeigneten Verbindung ist sehr wichtig, die IP-Adressbereiche und Subnetze zu berücksichtigen, die Ihnen zur Verfügung stehen.
+Beim Erstellen von Verbindungen müssen Sie die Adressbereiche für Subnetze berücksichtigen. Es dürfen keine überlappenden Adressbereiche für Subnetze vorhanden sein. Bei überlappenden Subnetzen enthalten ein virtuelles Netzwerk und ein lokaler Standort denselben Adressraum. Dies bedeutet, dass die Netzwerktechniker für Ihre lokalen Netzwerke einen Bereich zur Verwendung für Ihre Azure-IP-Adressräume/-Subnetze zuteilen müssen. Sie benötigen einen Adressraum, der nicht im lokalen Netzwerk verwendet wird.
 
-Sie müssen ein Gatewaysubnetz für Ihr VNet erstellen, um ein VPN Gateway zu konfigurieren. Alle Gatewaysubnetze müssen den Namen „GatewaySubnet“ haben, damit sie einwandfrei funktionieren. Achten Sie darauf, Ihrem Gatewaysubnetz keinen anderen Namen zu geben, und stellen Sie dem Gatewaysubnetz keine virtuellen Computer o. ä. bereit. Weitere Informationen zu Gatewaysubnetzen finden Sie im Abschnitt [Gatewaysubnetz](vpn-gateway-about-vpngateways.md#gwsub) des Artikels „Informationen zu VPN-Gateways“.
+Das Vermeiden von überlappenden Subnetzen ist auch bei der Arbeit mit VNet-zu-VNet-Verbindungen wichtig. Wenn die Subnetze überlappen und eine IP-Adresse sowohl im sendenden als auch im Ziel-VNet vorhanden ist, schlagen VNet-zu-VNet-Verbindungen fehl. Azure kann die Daten nicht an das andere VNet weiterleiten, da die Zieladresse Teil des sendenden VNet ist.
 
-Beim Erstellen von Verbindungen müssen Sie in vielen Fällen sicherstellen, dass sich die Subnetz-Adressbereiche zwischen Ihren Verbindungen nicht überschneiden. Bei überlappenden Subnetzen enthalten ein virtuelles Netzwerk und ein lokaler Standort denselben Adressraum. Dies bedeutet, dass die Netzwerktechniker für Ihre lokalen Netzwerke einen Bereich zur Verwendung für Ihre Azure-IP-Adressräume/Subnetze zuteilen müssen. Sie benötigen einen Adressraum, der nicht im lokalen Netzwerk verwendet wird.
-
-Das Vermeiden von überlappenden Subnetzen ist auch bei der Arbeit mit VNet-zu-VNet-Verbindungen wichtig. Das Erstellen einer VNet-zu-VNet-Verbindung schlägt fehl, wenn die Subnetze überlappen und eine IP-Adresse sowohl im sendenden als auch im Ziel-VNet vorhanden ist. In diesem Fall kann Azure die Daten nicht an das andere VNet weiterleiten, da die Zieladresse Teil des sendenden VNet ist.
-
-
+Für VPN-Gateways ist ein bestimmtes Subnetz erforderlich, ein sogenanntes Gatewaysubnetz. Alle Gatewaysubnetze müssen den Namen „GatewaySubnet“ haben, damit sie einwandfrei funktionieren. Achten Sie darauf, Ihrem Gatewaysubnetz keinen anderen Namen zu geben, und stellen Sie dem Gatewaysubnetz keine virtuellen Computer o. ä. bereit. Weitere Informationen finden Sie unter [Gatewaysubnetze](vpn-gateway-about-vpn-gateway-settings.md#gwsub).
 
 #### <a name="local"></a>Informationen zu Gateways des lokalen Netzwerks
 
-Mit dem Gateway des lokalen Netzwerks ist normalerweise Ihr lokaler Standort gemeint. Beim klassischen Bereitstellungsmodell wurde das Gateway des lokalen Netzwerks als „Lokaler Standort“ bezeichnet. Sie geben dem Gateway des lokalen Netzwerks einen Namen, stellen die öffentliche IP-Adresse des lokalen VPN-Geräts bereit und geben die Adresspräfixe an, die sich am lokalen Standort befinden. Azure sucht unter den Zieladresspräfixen nach Netzwerkdatenverkehr, sieht in der Konfiguration nach, die Sie für das Gateway des lokalen Netzwerks angegeben haben, und leitet die Pakete entsprechend weiter. Sie können diese Adresspräfixe bei Bedarf ändern. Weitere Informationen zu Gateways des lokalen Netzwerks finden Sie im Abschnitt [Gateways des lokalen Netzwerks](vpn-gateway-about-vpngateways.md#lng) des Artikels „Informationen zu VPN-Gateways“.
+Mit dem Gateway des lokalen Netzwerks ist normalerweise Ihr lokaler Standort gemeint. Beim klassischen Bereitstellungsmodell wird das Gateway des lokalen Netzwerks als „Lokaler Netwerkstandort“ bezeichnet. Wenn Sie ein Gateway des lokalen Netzwerks konfigurieren, geben Sie ihm einen Namen, stellen die öffentliche IP-Adresse des lokalen VPN-Geräts bereit und geben die Adresspräfixe an, die sich am lokalen Standort befinden. Azure sucht unter den Zieladresspräfixen nach Netzwerkdatenverkehr, sieht in der Konfiguration nach, die Sie für das Gateway des lokalen Netzwerks angegeben haben, und leitet die Pakete entsprechend weiter. Sie können diese Adresspräfixe bei Bedarf ändern. Weitere Informationen finden Sie unter [Gateways des lokalen Netzwerks](vpn-gateway-about-vpn-gateway-settings.md#lng).
 
 
 #### <a name="gwtype"></a>Informationen zu Gatewaytypen
 
-Das Auswählen des richtigen Gateways für Ihre Topologie ist wichtig. Ihr Gateway funktioniert nicht ordnungsgemäß, wenn Sie den falschen Typ auswählen. Mit dem Gatewaytyp wird angegeben, wie die Verbindung für das Gateway selbst hergestellt wird. Es ist eine erforderliche Konfigurationseinstellung für das Resource Manager-Bereitstellungsmodell.
+Das Auswählen des richtigen Gateways für Ihre Topologie ist wichtig. Wenn Sie den falschen Typ auswählen, funktioniert Ihr Gateway nicht ordnungsgemäß. Mit dem Gatewaytyp wird angegeben, wie die Verbindung für das Gateway selbst hergestellt wird. Es ist eine erforderliche Konfigurationseinstellung für das Resource Manager-Bereitstellungsmodell.
 
 VPN-Gatewaytypen:
 
@@ -125,7 +121,7 @@ Für jede Konfiguration ist ein bestimmter Verbindungstyp erforderlich. Verbindu
 
 #### <a name="vpntype"></a>Informationen zu VPN-Typen
 
-Für jede Konfiguration ist ein bestimmter VPN-Typ erforderlich, damit sie funktioniert. Wenn Sie zwei Konfigurationen kombinieren, z.B. das Erstellen einer Site-to-Site-Verbindung und einer Point-to-Site-Verbindung mit demselben VNET, müssen Sie einen VPN-Typ verwenden, mit dem beide Verbindungsanforderungen erfüllt werden. Bei einer Koexistenz von Point-to-Site- und Site-to-Site-Verbindungen müssen Sie einen routenbasierten VPN-Typ nutzen, wenn Sie das Azure Resource Manager-Bereitstellungsmodell verwenden, bzw. ein dynamisches Gateway, wenn Sie das klassische Bereitstellungsmodell verwenden.
+Für jede Konfiguration ist ein bestimmter VPN-Typ erforderlich. Wenn Sie zwei Konfigurationen kombinieren, z.B. das Erstellen einer Site-to-Site-Verbindung und einer Point-to-Site-Verbindung mit demselben VNET, müssen Sie einen VPN-Typ verwenden, mit dem beide Verbindungsanforderungen erfüllt werden.
 
 [AZURE.INCLUDE [vpn-gateway-vpntype](../../includes/vpn-gateway-vpntype-include.md)]
 
@@ -141,7 +137,7 @@ Zum Konfigurieren einer Standort-zu-Standort-Verbindung benötigen Sie unabhäng
 - Ein mit Azure-VPN-Gateways kompatibles VPN-Gerät
 - Eine öffentlich zugängliche IPv4-IP-Adresse, die sich nicht hinter einem NAT-Gerät befindet
 
-Darüber hinaus müssen Sie im Konfigurieren von VPN-Geräten erfahren sein. Weitere Informationen zu VPN-Geräten finden Sie unter [Informationen zu VPN-Geräten](vpn-gateway-about-vpn-devices.md). Der Artikel zu VPN-Geräten enthält Informationen zu überprüften Geräten, Anforderungen an nicht überprüfte Geräte und Links zu den Dokumenten zur Gerätekonfiguration die einzelnen Geräte, sofern diese verfügbar sind.
+Sie benötigen Erfahrungen beim Konfigurieren Ihres VPN-Geräts, oder Sie müssen eine Person kennen, die das Gerät für Sie konfigurieren kann. Weitere Informationen zu VPN-Geräten finden Sie unter [Informationen zu VPN-Geräten](vpn-gateway-about-vpn-devices.md). Der Artikel zu VPN-Geräten enthält Informationen zu überprüften Geräten, Anforderungen an nicht überprüfte Geräte und Links zu den ggf. verfügbaren Dokumenten zur Gerätekonfiguration.
 
 ### <a name="forcedtunnel"></a>Erwägen der Weiterleitung per Tunnelerzwingung
 
@@ -149,13 +145,11 @@ Für die meisten Konfigurationen können Sie die Tunnelerzwingung konfigurieren.
 
 Ohne die Tunnelerzwingung wird der Internetdatenverkehr Ihrer virtuellen Computer in Azure immer direkt von der Azure-Netzwerkinfrastruktur an das Internet geleitet, ohne dass Sie die Möglichkeit haben, diesen zu überprüfen oder zu überwachen. Nicht autorisierter Zugriff auf das Internet kann potenziell zur Offenlegung von Informationen oder anderen Arten von Sicherheitsverletzungen führen.
 
-Weitere Informationen zum Konfigurieren der Tunnelerzwingung finden Sie unter [Konfigurieren der Tunnelerzwingung mit dem klassischen Bereitstellungsmodell](vpn-gateway-about-forced-tunneling.md) und [Konfigurieren der Tunnelerzwingung mit dem Azure Resource Manager-Bereitstellungsmodell](vpn-gateway-about-forced-tunneling.md).
-
 **Diagramm zur Tunnelerzwingung**
 
 ![Verbindung durch Tunnelerzwingung](./media/vpn-gateway-plan-design/forced-tunnel.png "Tunnelerzwingung")
 
-Eine Verbindung mit erzwungenem Tunneling kann in beiden Bereitstellungsmodellen und mit unterschiedlichen Tools konfiguriert werden. Weitere Informationen finden Sie in der folgenden Tabelle. Wir aktualisieren diese Tabelle, wenn neue Artikel, neue Bereitstellungsmodelle und weitere Tools für diese Konfiguration verfügbar werden. Wenn ein Artikel verfügbar ist, fügen wir in der Tabelle einen direkten Link dazu ein.
+Eine Verbindung mit erzwungenem Tunneling kann in beiden Bereitstellungsmodellen und mit unterschiedlichen Tools konfiguriert werden. Ausführlichere Informationen finden Sie in der Tabelle weiter unten. Wir aktualisieren diese Tabelle, wenn neue Artikel, neue Bereitstellungsmodelle und weitere Tools für diese Konfiguration verfügbar werden. Wenn ein Artikel verfügbar ist, fügen wir in der Tabelle einen direkten Link dazu ein.
 
 [AZURE.INCLUDE [vpn-gateway-table-forcedtunnel](../../includes/vpn-gateway-table-forcedtunnel-include.md)]
 
@@ -163,8 +157,8 @@ Eine Verbindung mit erzwungenem Tunneling kann in beiden Bereitstellungsmodellen
 
 ## Nächste Schritte
 
-In den Artikeln [Häufig gestellte Fragen zu VPN-Gateways](vpn-gateway-vpn-faq.md) und [Informationen zu VPN-Gateways](vpn-gateway-about-vpngateways.md) finden Sie weitere Informationen zur Unterstützung bei Ihrem Entwurf.
+In den Artikeln [Häufig gestellte Fragen zum VPN-Gateway](vpn-gateway-vpn-faq.md) und [Informationen zu VPN Gateway](vpn-gateway-about-vpngateways.md) finden Sie weitere Informationen zur Unterstützung bei Ihrem Entwurf.
 
-Weitere Informationen zu Verbindungstopologien finden Sie unter [Verbindungstopologien](vpn-gateway-topology.md).
+Weitere Informationen zu bestimmten Gatewayeinstellungen finden Sie unter [Informationen zu VPN Gateway-Einstellungen](vpn-gateway-about-vpn-gateway-settings.md).
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0824_2016-->

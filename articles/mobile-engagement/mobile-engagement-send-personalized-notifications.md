@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="all" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/07/2015" 
+	ms.date="08/19/2016" 
 	ms.author="piyushjo" />
 
 #Personalisieren von Benachrichtigungen durch das Einbinden des Benutzernamens
@@ -22,10 +22,10 @@ Wenn Sie versuchen, Benachrichtigungen für Ihre App-Benutzer ansprechender zu g
 
 Sie können die Personalisierung der Benachrichtigungen per Azure Mobile Engagement erreichen, indem Sie die unten angegebenen Schritte ausführen. Darin binden wir den Benutzernamen in die Benachrichtigungen ein. Sie nutzen das Konzept der App-Informationen oder Tags, deren Werte entweder mit den SDKs übergeben werden können, die in die mobile App integriert sind, oder über APIs. Diese App-Informationen oder Tags können dann wie folgt verwendet werden:
 
-1. Zum Ausrichten von Benachrichtigungen auf bestimmte Benutzer anhand der Werte von App-Informationen oder 
-2. Als Platzhalter in den Benachrichtigungen, die durch geräte- oder benutzerbezogene Werte ersetzt werden, während Benachrichtigungen an das Gerät gesendet werden 
+1. Zum Ausrichten von Benachrichtigungen auf bestimmte Benutzer anhand der Werte von App-Informationen oder
+2. Als Platzhalter in den Benachrichtigungen, die durch geräte- oder benutzerbezogene Werte ersetzt werden, während Benachrichtigungen an das Gerät gesendet werden
 
-> [AZURE.IMPORTANT]Beachten Sie, dass die Geschwindigkeit zum Senden von Benachrichtigungen reduziert wird. Dies liegt an dem zusätzlichen Verarbeitungsaufwand, der für das Ersetzen der Werte von App-Informationen für jede Benachrichtigung anfällt.
+> [AZURE.IMPORTANT] Beachten Sie, dass die Geschwindigkeit zum Senden von Benachrichtigungen reduziert wird. Dies liegt an dem zusätzlichen Verarbeitungsaufwand, der für das Ersetzen der Werte von App-Informationen für jede Benachrichtigung anfällt.
 
 ##Registrieren von App-Informationen im Mobile Engagement-Portal
 
@@ -59,7 +59,7 @@ Sie können jetzt Benachrichtigungen senden, indem Sie diesen **user\_name** ver
 
 ![][4]
 
-> [AZURE.NOTE]Alle Benutzer, für die die App-Information „user\_name“ nicht festgelegt ist, erhalten keine Benachrichtigung. Wenn die Benachrichtigungskampagne im Testmodus ausgeführt wird und Sie keine App-Informationen festgelegt haben, senden wir das „?“-Zeichen, um den Platzhalter zu ersetzen.
+> [AZURE.NOTE] Alle Benutzer, für die die App-Information „user\_name“ nicht festgelegt ist, erhalten keine Benachrichtigung. Wenn die Benachrichtigungskampagne im Testmodus ausgeführt wird und Sie keine App-Informationen festgelegt haben, senden wir das „?“-Zeichen, um den Platzhalter zu ersetzen.
 
 2) Wenn von Mobile Engagement ein Gerät zum Senden dieser Benachrichtigung ausgewählt wird, wird diese App-Information geprüft, und der Wert im Platzhalter wird ersetzt. Wenn wir für einen Benutzer beispielsweise `str = "Scott"` festgelegt haben, wird die Geräteregistrierung mit der App-Information **user\_name = SCOTT** für den Benutzer zugeordnet, und dem Benutzer wird außerhalb der App eine Pushbenachrichtigung im folgenden Format angezeigt:
 
@@ -72,4 +72,4 @@ Sie können jetzt Benachrichtigungen senden, indem Sie diesen **user\_name** ver
 [4]: ./media/mobile-engagement-send-personalized-notifications/personal-notification.png
 [5]: ./media/mobile-engagement-send-personalized-notifications/notification.png
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0824_2016-->

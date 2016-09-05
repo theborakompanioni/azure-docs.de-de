@@ -15,7 +15,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/03/2016" 
+	ms.date="08/23/2016" 
 	ms.author="genemi"/>
 
 
@@ -32,15 +32,15 @@ In diesem Thema finden Sie ein Transact-SQL-Codebeispiel, mit dem folgende Aufga
 1. Erstellen einer Tabelle mit Daten zur Veranschaulichung.
 
 2. Erstellen einer Sitzung für ein vorhandenes erweitertes Ereignis (**sqlserver.sql\_statement\_starting**).
- - Das Ereignis ist auf SQL-Anweisungen beschränkt, die eine bestimmte Update-Zeichenfolge enthalten: **statement LIKE '%UPDATE tabEmployee%'**.
- - Senden der Ausgabe des Ereignisses an ein Ziel vom Typ Ringpuffer (**package0.ring\_buffer**).
+	- Das Ereignis ist auf SQL-Anweisungen beschränkt, die eine bestimmte Update-Zeichenfolge enthalten: **statement LIKE '%UPDATE tabEmployee%'**.
+	- Senden der Ausgabe des Ereignisses an ein Ziel vom Typ Ringpuffer (**package0.ring\_buffer**).
 
 3. Starten der Ereignissitzung.
 
 4. Ausgeben einer Reihe einfacher SQL UPDATE-Anweisungen.
 
 5. Ausgeben einer SQL SELECT-Anweisung, um die Ereignisausgabe vom Ringpuffer abzurufen.
- - **sys.dm\_xe\_database\_session\_targets** und andere dynamische Verwaltungssichten (DMVs) werden verknüpft.
+	- **sys.dm\_xe\_database\_session\_targets** und andere dynamische Verwaltungssichten (DMVs) werden verknüpft.
 
 6. Anhalten der Ereignissitzung.
 
@@ -59,16 +59,15 @@ In diesem Thema finden Sie ein Transact-SQL-Codebeispiel, mit dem folgende Aufga
  - Optional können Sie in wenigen Minuten [eine **AdventureWorksLT**-Demodatenbank erstellen](sql-database-get-started.md).
 
 
-- SQL Server Management Studio ("ssms.exe"), Vorschauversion August 2015 oder eine spätere Version. Sie können "ssms.exe" in der neuesten Version über eine der folgenden Methoden herunterladen:
- - [Über einen Link im Thema.](http://msdn.microsoft.com/library/mt238290.aspx)
+- SQL Server Management Studio („ssms.exe“), im Idealfall die aktuelle monatliche Updateversion. Sie können "ssms.exe" in der neuesten Version wie folgt herunterladen:
+ - Im Thema [Herunterladen von SQL Server Management Studio (SSMS)](http://msdn.microsoft.com/library/mt238290.aspx).
  - [Über diesen direkten Link zum Herunterladen.](http://go.microsoft.com/fwlink/?linkid=616025)
- - Microsoft empfiehlt, dass Sie die Datei „ssms.exe“ in regelmäßigen Abständen aktualisieren, zum Beispiel monatlich.
 
 
 ## Codebeispiel
 
 
-Das folgende Codebeispiel für einen Ringpuffer kann mit kleineren Änderungen sowohl für Azure SQL-Datenbank als auch für Microsoft SQL Server ausgeführt werden. Der Unterschied besteht im Vorhandensein des Knotens "\_database" im Namen einiger dynamischer Verwaltungssichten (DMVs) in der FROM-Klausel in Schritt 5. Beispiel:
+Das folgende Codebeispiel für einen Ringpuffer kann mit kleineren Änderungen sowohl für Azure SQL-Datenbank als auch für Microsoft SQL Server ausgeführt werden. Der Unterschied besteht im Vorhandensein des Knotens „\_database“ im Namen einiger dynamischer Verwaltungssichten (DMVs) in der FROM-Klausel in Schritt 5. Beispiel:
 
 - sys.dm\_xe**\_database**\_session\_targets
 - sys.dm\_xe\_session\_targets
@@ -239,7 +238,7 @@ Zum Ausführen des Codebeispiels wurde "ssms.exe" verwendet.
 
 Um die Ergebnisse anzuzeigen, haben wir auf die Zelle unterhalb der Spaltenüberschrift **target\_data\_XML** geklickt.
 
-Anschließend haben wir im Ergebnisbereich auf die Zelle unterhalb der Spaltenüberschrift **target\_data\_XML** geklickt. Dadurch wurde in "ssms.exe" eine weitere Dateiregisterkarte erstellt, auf welcher der Inhalt der Ergebniszelle angezeigt wurde (als XML).
+Anschließend haben wir im Ergebnisbereich auf die Zelle unterhalb der Spaltenüberschrift **target\_data\_XML** geklickt. Mit diesem Klicken wurde in „ssms.exe“ eine weitere Dateiregisterkarte erstellt, auf welcher der Inhalt der Ergebniszelle angezeigt wurde (als XML).
 
 
 Der folgende Block zeigt die Ausgabe. Wenngleich die Ausgabe lang erscheint, umfasst sie lediglich zwei **<event>**-Elemente.
@@ -386,4 +385,4 @@ Weitere Themen mit Codebeispielen für erweiterte Ereignisse finden Sie unter de
 - Code sample for SQL Server: [Find the Objects That Have the Most Locks Taken on Them](http://msdn.microsoft.com/library/bb630355.aspx)
 -->
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0824_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="05/24/2016"
+   ms.date="08/22/2016"
    ms.author="jeffstok"/>
 
 
@@ -28,7 +28,7 @@ In diesem Artikel erfahren Sie, wie Sie mithilfe eines benutzerdefinierten Skrip
 ## Voraussetzungen
 
 * Einen Azure HDInsight-Cluster, auf dem R Server installiert ist. Anweisungen finden Sie unter [Erste Schritte mit R Server in HDInsight (Vorschau)](hdinsight-hadoop-r-server-get-started.md).
-* Einen SSH-Client. Für Linux- und Unix-Distributionen oder Macintosh OS X steht der Befehl `ssh` über das Betriebssystem zur Verfügung. Für Windows wird [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) empfohlen. 
+* Einen SSH-Client. Für Linux- und Unix-Distributionen oder Macintosh OS X steht der Befehl `ssh` über das Betriebssystem zur Verfügung. Für Windows wird [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) empfohlen.
 
 
 ## Installieren von RStudio auf dem Cluster mit einem benutzerdefinierten Skript
@@ -36,29 +36,29 @@ In diesem Artikel erfahren Sie, wie Sie mithilfe eines benutzerdefinierten Skrip
 1. Identifizieren Sie den Edgeknoten des Clusters. Für einen HDInsight-Cluster mit R Server gilt die folgende Namenskonvention für Hauptknoten und Edgeknoten.
 
 	* Hauptknoten: `CLUSTERNAME-ssh.azurehdinsight.net`
-	* Edgeknoten: `r-server.CLUSTERNAME-ssh.azurehdinsight.net` 
+	* Edgeknoten: `R-Server.CLUSTERNAME-ssh.azurehdinsight.net`
 
-3. Greifen Sie unter Verwendung des obigen Namensmusters per SSH auf den Edgeknoten des Clusters zu.
+2. Greifen Sie unter Verwendung des obigen Namensmusters per SSH auf den Edgeknoten des Clusters zu.
  
 	* Wenn Sie die Verbindung von einem Linux-Client aus herstellen, finden Sie weitere Informationen unter [Verbinden mit einem Linux-basierten HDInsight-Cluster](hdinsight-hadoop-linux-use-ssh-unix.md#connect-to-a-linux-based-hdinsight-cluster).
 	* Wenn Sie die Verbindung von einem Windows-Client aus herstellen, finden Sie weitere Informationen unter [Verbinden mit einem Linux-basierten HDInsight-Cluster unter Verwendung von PuTTY](hdinsight-hadoop-linux-use-ssh-windows.md#connect-to-a-linux-based-hdinsight-cluster).
 
-2. Legen Sie sich nach der Verbindungsherstellung als Root-Benutzer im Cluster fest. Verwenden Sie in der SSH-Sitzung den folgenden Befehl:
+3. Legen Sie sich nach der Verbindungsherstellung als Root-Benutzer im Cluster fest. Verwenden Sie in der SSH-Sitzung den folgenden Befehl:
 
 		sudo su -
 
-3. Laden Sie das benutzerdefinierte Skript zum Installieren von RStudio herunter. Verwenden Sie den folgenden Befehl:
+4. Laden Sie das benutzerdefinierte Skript zum Installieren von RStudio herunter. Verwenden Sie den folgenden Befehl:
 
 		wget http://mrsactionscripts.blob.core.windows.net/rstudio-server-community-v01/InstallRStudio.sh
 
-4. Ändern Sie die Berechtigungen in der benutzerdefinierten Skriptdatei, und führen Sie das Skript aus. Verwenden Sie die folgenden Befehle:
+5. Ändern Sie die Berechtigungen in der benutzerdefinierten Skriptdatei, und führen Sie das Skript aus. Verwenden Sie die folgenden Befehle:
 
 		chmod 755 InstallRStudio.sh
 		./InstallRStudio.sh
 
-5. Wenn Sie beim Erstellen eines HDInsight-Clusters mit R Server ein SSH-Kennwort verwendet haben, können Sie diesen Schritt überspringen und mit dem nächsten Schritt fortfahren. Wenn Sie stattdessen einen SSH-Schlüssel zum Erstellen des Clusters verwendet haben, müssen Sie ein Kennwort für Ihren SSH-Benutzer festlegen. Sie benötigen dieses Kennwort bei der Verbindungsherstellung mit RStudio. Führen Sie die folgenden Befehle aus: Wenn Sie aufgefordert werden, das **aktuelle Kerberos-Kennwort** einzugeben, drücken Sie lediglich die **EINGABETASTE**.
+6. Wenn Sie beim Erstellen eines HDInsight-Clusters mit R Server ein SSH-Kennwort verwendet haben, können Sie diesen Schritt überspringen und mit dem nächsten Schritt fortfahren. Wenn Sie stattdessen einen SSH-Schlüssel zum Erstellen des Clusters verwendet haben, müssen Sie ein Kennwort für Ihren SSH-Benutzer festlegen. Sie benötigen dieses Kennwort bei der Verbindungsherstellung mit RStudio. Führen Sie die folgenden Befehle aus: Wenn Sie aufgefordert werden, das **aktuelle Kerberos-Kennwort** einzugeben, drücken Sie lediglich die **EINGABETASTE**. Hinweis: `USERNAME` muss durch einen SSH-Benutzer für Ihren HDInsight-Cluster ersetzt werden.
 
-		passwd remoteuser
+		passwd USERNAME
 		Current Kerberos password:
 		New password:
 		Retype new password:
@@ -71,13 +71,13 @@ In diesem Artikel erfahren Sie, wie Sie mithilfe eines benutzerdefinierten Skrip
 
 	Beenden Sie die SSH-Sitzung.
 
-6. Erstellen Sie einen SSH-Tunnel zum Cluster, indem Sie `localhost:8787` auf dem HDInsight-Cluster dem Clientcomputer zuordnen. Sie müssen einen SSH-Tunnel erstellen, bevor Sie eine neue Browsersitzung öffnen.
+7. Erstellen Sie einen SSH-Tunnel zum Cluster, indem Sie `localhost:8787` im HDInsight-Cluster dem Clientcomputer zuordnen. Sie müssen einen SSH-Tunnel erstellen, bevor Sie eine neue Browsersitzung öffnen.
 
 	* Öffnen Sie auf einem Linux-Client oder auf einem Windows-Client (unter Verwendung von [Cygwin](http://www.redhat.com/services/custom/cygwin/)) eine Terminalsitzung, und verwenden Sie den folgenden Befehl:
 
-			ssh -L localhost:8787:localhost:8787 USERNAME@r-server.CLUSTERNAME-ssh.azurehdinsight.net
+			ssh -L localhost:8787:localhost:8787 USERNAME@R-Server.CLUSTERNAME-ssh.azurehdinsight.net
 			
-		Ersetzen Sie **USERNAME** mit einem SSH-Benutzer für Ihren HDInsight-Cluster und **CLUSTERNAME** mit dem Namen des HDInsight-Clusters.
+		Ersetzen Sie **USERNAME** durch einen SSH-Benutzer für Ihren HDInsight-Cluster und **CLUSTERNAME** durch den Namen des HDInsight-Clusters. Durch Hinzufügen von `-i id_rsa_key` können Sie anstelle eines Kennworts auch einen SSH-Schlüssel verwenden.
 
 	* Erstellen Sie auf einem Windows-Client einen SSH-Tunnel mit PuTTY.
 
@@ -85,23 +85,23 @@ In diesem Artikel erfahren Sie, wie Sie mithilfe eines benutzerdefinierten Skrip
 		2.  Erweitern Sie auf der linken Seite des Dialogfelds im Abschnitt **Category** erst **Connection**, dann **SSH**, und wählen Sie anschließend **Tunnels** aus.
 		3.  Geben Sie die folgenden Informationen in das Formular **Options controlling SSH port forwarding** ein:
 
-			* **Source port**: Der Port auf dem Client, den Sie weiterleiten möchten. Dies kann beispielsweise **8787** sein.
-			* **Destination**: Das Ziel, das dem lokalen Clientcomputer zugeordnet werden muss. Dies kann beispielsweise **localhost:8787** sein.
+			* **Source port**: Der Port auf dem Client, den Sie weiterleiten möchten. Beispiel: **8787**.
+			* **Destination**: Das Ziel, das dem lokalen Clientcomputer zugeordnet werden muss. Beispiel **localhost:8787**.
 
 			![Erstellen eines SSH-Tunnels](./media/hdinsight-hadoop-r-server-install-r-studio/createsshtunnel.png "Erstellen eines SSH-Tunnels")
 
 		4. Klicken Sie auf **Add**, um die Einstellungen hinzuzufügen. Klicken Sie dann auf **Open**, um eine SSH-Verbindung zu öffnen.
 		5. Melden Sie sich bei entsprechender Aufforderung am Server an. Dadurch wird eine SSH-Sitzung eingerichtet und der Tunnel aktiviert.
 
-7. Öffnen Sie einen Webbrowser, und geben Sie basierend auf dem Port, den Sie für den Tunnel eingegeben haben, die folgende URL ein:
+8. Öffnen Sie einen Webbrowser, und geben Sie basierend auf dem Port, den Sie für den Tunnel eingegeben haben, die folgende URL ein:
 
 		http://localhost:8787/ 
 
-8. Sie werden aufgefordert, den SSH-Benutzernamen und das Kennwort zur Verbindungsherstellung mit dem Cluster einzugeben. Wenn Sie beim Erstellen des Clusters einen SSH-Schlüssel verwendet haben, müssen Sie das Kennwort eingeben, das Sie oben in Schritt 5 erstellt haben.
+9. Sie werden aufgefordert, den SSH-Benutzernamen und das Kennwort zur Verbindungsherstellung mit dem Cluster einzugeben. Wenn Sie beim Erstellen des Clusters einen SSH-Schlüssel verwendet haben, müssen Sie das Kennwort eingeben, das Sie oben in Schritt 5 erstellt haben.
 
 	![Verbindungsherstellung mit RStudio](./media/hdinsight-hadoop-r-server-install-r-studio/connecttostudio.png "Erstellen eines SSH-Tunnels")
 
-9. Um zu testen, ob die RStudio-Installation erfolgreich war, können Sie ein Testskript ausführen, mit dem R-basierte MapReduce- und Spark-Aufträge auf dem Cluster ausgeführt werden. Kehren Sie zur SSH-Konsole zurück, und geben Sie die folgenden Befehle ein, um das Testskript zur Ausführung in RStudio herunterzuladen:
+10. Um zu testen, ob die RStudio-Installation erfolgreich war, können Sie ein Testskript ausführen, mit dem R-basierte MapReduce- und Spark-Aufträge auf dem Cluster ausgeführt werden. Kehren Sie zur SSH-Konsole zurück, und geben Sie die folgenden Befehle ein, um das Testskript zur Ausführung in RStudio herunterzuladen:
 
 	* Wenn Sie einen Hadoop-Cluster mit R erstellt haben, verwenden Sie diesen Befehl:
 		
@@ -111,11 +111,13 @@ In diesem Artikel erfahren Sie, wie Sie mithilfe eines benutzerdefinierten Skrip
 
 			wget http://mrsactionscripts.blob.core.windows.net/rstudio-server-community-v01/testhdi_spark.r
 
-10. Sie sollten das heruntergeladene Testskript in RStudio sehen. Doppelklicken Sie auf die Datei, um sie zu öffnen, wählen Sie die Inhalte der Datei aus, und klicken Sie auf **Run**. Die Ausgabe sollte im Bereich **Console** angezeigt werden.
+11. Sie sollten das heruntergeladene Testskript in RStudio sehen. Doppelklicken Sie auf die Datei, um sie zu öffnen, wählen Sie die Inhalte der Datei aus, und klicken Sie auf **Run**. Die Ausgabe sollte im Bereich **Console** angezeigt werden.
  
 	![Testen der Installation](./media/hdinsight-hadoop-r-server-install-r-studio/test-r-script.png "Testen der Installation")
 
-## Weitere Informationen
+Alternativ können Sie `source(testhdi.r)` oder `source(testhdi_spark.r)` eingeben, um das Skript auszuführen.
+
+## Siehe auch
 
 - [Rechenkontextoptionen für R Server auf HDInsight-Clustern](hdinsight-hadoop-r-server-compute-contexts.md)
 
@@ -124,4 +126,4 @@ In diesem Artikel erfahren Sie, wie Sie mithilfe eines benutzerdefinierten Skrip
 
  
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0824_2016-->

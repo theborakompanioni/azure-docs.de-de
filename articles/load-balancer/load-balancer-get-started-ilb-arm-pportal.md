@@ -3,7 +3,7 @@
    description="Erfahren Sie, wie Sie in Resource Manager mit dem Azure-Portal einen internen Lastenausgleich erstellen."
    services="load-balancer"
    documentationCenter="na"
-   authors="joaoma"
+   authors="sdwheeler"
    manager="carmonm"
    editor=""
    tags="azure-service-management"
@@ -15,11 +15,11 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="03/04/2016"
-   ms.author="joaoma" />
+   ms.author="sewhee" />
 
 # Erste Schritte zum Erstellen eines internen Lastenausgleich im Azure-Portal
 
-[AZURE.INCLUDE [load-balancer-get-started-ilb-arm-selectors-include.md](../../includes/load-balancer-get-started-ilb-arm-selectors-include.md)]<BR>[AZURE.INCLUDE [load-balancer-get-started-ilb-intro-include.md](../../includes/load-balancer-get-started-ilb-intro-include.md)]
+[AZURE.INCLUDE [load-balancer-get-started-ilb-arm-selectors-include.md](../../includes/load-balancer-get-started-ilb-arm-selectors-include.md)] <BR> [AZURE.INCLUDE [load-balancer-get-started-ilb-intro-include.md](../../includes/load-balancer-get-started-ilb-intro-include.md)]
 
 [AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-rm-include.md)] [classic deployment model](load-balancer-get-started-ilb-classic-ps.md).
 
@@ -43,28 +43,28 @@ Führen Sie zum Erstellen eines internen Lastenausgleichs über das Azure-Portal
 
 >[AZURE.NOTE] Wenn Sie eine statische IP-Adresse verwenden möchten, müssen Sie eine Adresse für den Lastenausgleich angeben.
     
-7. Geben Sie unter **Ressourcengruppe** den Namen einer neuen Ressourcengruppe für den Lastenausgleich ein, oder klicken Sie auf **Vorhandene auswählen**, und wählen Sie eine vorhandene Ressourcengruppe aus. 
-8. Klicken Sie auf **Erstellen**. 
+7. Geben Sie unter **Ressourcengruppe** den Namen einer neuen Ressourcengruppe für den Lastenausgleich ein, oder klicken Sie auf **Vorhandene auswählen**, und wählen Sie eine vorhandene Ressourcengruppe aus.
+8. Klicken Sie auf **Erstellen**.
 
 ## Konfigurieren von Lastenausgleichsregeln 
 
 Navigieren Sie nach der Erstellung des Lastenausgleichs zur Lastenausgleichsressource, um sie zu konfigurieren. Sie müssen zuerst einen Back-End-Adresspool und einen Test konfigurieren, bevor Sie eine Lastenausgleichsregel konfigurieren.
 
-### Schritt 1
+### Schritt 1
 
 Konfigurieren eines Back-End-Pools:
 
 1. Klicken Sie im Azure-Portal auf **Durchsuchen** > **Lastenausgleichsmodule**, und klicken Sie dann auf den Lastenausgleich, den Sie soeben erstellt haben.
-2. Klicken Sie auf dem Blatt **Einstellungen** auf **Back-End-Pools**. 
+2. Klicken Sie auf dem Blatt **Einstellungen** auf **Back-End-Pools**.
 3. Klicken Sie auf dem Blatt **Tests** auf **Hinzufügen**.
 4. Geben Sie auf dem Blatt **Back-End-Pool hinzufügen** einen **Namen** für den Back-End-Pool ein, und klicken Sie dann auf **OK**.
 
-### Schritt 2 
+### Schritt 2 
 
 Konfigurieren eines Tests:
  
 1. Klicken Sie im Azure-Portal auf **Durchsuchen** > **Lastenausgleichsmodule**, und klicken Sie dann auf den Lastenausgleich, den Sie soeben erstellt haben.
-2. Klicken Sie auf dem Blatt **Einstellungen** auf **Tests**. 
+2. Klicken Sie auf dem Blatt **Einstellungen** auf **Tests**.
 3. Klicken Sie auf dem Blatt **Back-End-Adresspools** auf **Hinzufügen**.
 4. Geben Sie auf dem Blatt **Test hinzufügen** einen **Namen** für den Test ein.
 5. Wählen Sie unter **Protokoll** entweder **HTTP** (für Websites) oder **TCP** (für andere TCP-basierte Anwendungen) aus.
@@ -74,12 +74,12 @@ Konfigurieren eines Tests:
 5. Geben Sie unter **Fehlerschwellenwert** an, wie viele Versuche fehlschlagen sollen, bevor die Back-End-VM als „fehlerhaft“ markiert wird.
 5. Klicken Sie zum Erstellen des Tests auf **OK**.
 
-### Schritt 3
+### Schritt 3
 
 Konfigurieren von Lastenausgleichsregeln:
 
 1. Klicken Sie im Azure-Portal auf **Durchsuchen** > **Lastenausgleichsmodule**, und klicken Sie dann auf den Lastenausgleich, den Sie soeben erstellt haben.
-2. Klicken Sie auf dem Blatt **Einstellungen** auf **Lastenausgleichsregeln**. 
+2. Klicken Sie auf dem Blatt **Einstellungen** auf **Lastenausgleichsregeln**.
 3. Klicken Sie auf dem Blatt **Lastenausgleichsregeln** auf **Hinzufügen**.
 4. Geben Sie auf dem Blatt **Lastenausgleichsregel hinzufügen** einen **Namen** für die Regel ein.
 5. Wählen Sie unter **Protokoll** entweder **HTTP** (für Websites) oder **TCP** (für andere TCP-basierte Anwendungen) aus.
@@ -97,4 +97,4 @@ Konfigurieren von Lastenausgleichsregeln:
 
 [Konfigurieren von TCP-Leerlauftimeout-Einstellungen für den Lastenausgleich](load-balancer-tcp-idle-timeout.md)
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0824_2016-->

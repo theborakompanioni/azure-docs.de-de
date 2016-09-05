@@ -15,28 +15,30 @@
 	ms.topic="reference"
 	ms.tgt_pltfrm="multiple"
 	ms.workload="na"
-	ms.date="05/16/2016"
+	ms.date="08/22/2016"
 	ms.author="chrande"/>
 
 # Trigger und Bindungen für Azure Storage in Azure Functions
+
+[AZURE.INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
 
 Dieser Artikel erläutert das Konfigurieren und Codieren von Azure Storage-Triggern und -Bindungen in Azure Functions.
 
 [AZURE.INCLUDE [Einführung](../../includes/functions-bindings-intro.md)]
 
-## <a id="storagequeuetrigger"></a>Azure Storage-Warteschlangentrigger
+## <a id="storagequeuetrigger"></a> Azure Storage-Warteschlangentrigger
 
 #### „function.json“ für einen Storage-Warteschlangentrigger
 
 Die Datei *function.json* gibt die folgenden Eigenschaften an.
 
-- `name`: Variablenname, der im Funktionscode für die Warteschlange oder Warteschlangennachricht verwendet wird. 
+- `name`: Variablenname, der im Funktionscode für die Warteschlange oder Warteschlangennachricht verwendet wird.
 - `queueName`: Name der abzufragenden Warteschlange. Benennungsregeln für Warteschlangen finden Sie unter [Benennen von Warteschlangen und Metadaten](https://msdn.microsoft.com/library/dd179349.aspx).
-- `connection`: Name einer App-Einstellung, die eine Storage-Verbindungszeichenfolge enthält. Wenn Sie `connection` leer lassen, verwendet der Trigger für die Funktionen-App die standardmäßige Storage-Verbindungszeichenfolge, die von der App-Einstellung AzureWebJobsStorage angegeben wird.
-- `type`: muss auf *queueTrigger* festgelegt werden.
-- `direction`: muss auf *in* festgelegt werden. 
+- `connection`: Name einer App-Einstellung, die eine Storage-Verbindungszeichenfolge enthält. Wenn Sie `connection` leer lassen, verwendet der Trigger für die Funktionen-App die standardmäßige Storage-Verbindungszeichenfolge, die von der App-Einstellung „AzureWebJobsStorage“ angegeben wird.
+- `type`: Muss auf *queueTrigger* festgelegt werden.
+- `direction`: Muss auf *in* festgelegt werden.
 
-Beispiel von *function.json* für einen Storage-Warteschlangentrigger
+Beispiel von *function.json* für einen Storage-Warteschlangentrigger:
 
 ```json
 {
@@ -59,8 +61,8 @@ Die Warteschlangennachricht kann in alle folgenden Typen deserialisiert werden:
 
 * Objekt (aus JSON)
 * String
-* Bytearray 
-* `CloudQueueMessage` (C#) 
+* Bytearray
+* `CloudQueueMessage` (C#)
 
 #### Metadaten für Warteschlangentrigger
 
@@ -114,11 +116,11 @@ Wenn Sie nicht verarbeitbare Nachrichten manuell verarbeiten möchten, können S
 
 Die Datei *function.json* gibt die folgenden Eigenschaften an.
 
-- `name`: Variablenname, der im Funktionscode für die Warteschlange oder Warteschlangennachricht verwendet wird. 
+- `name`: Variablenname, der im Funktionscode für die Warteschlange oder Warteschlangennachricht verwendet wird.
 - `queueName`: Name der Warteschlange. Benennungsregeln für Warteschlangen finden Sie unter [Benennen von Warteschlangen und Metadaten](https://msdn.microsoft.com/library/dd179349.aspx).
-- `connection`: Name einer App-Einstellung, die eine Storage-Verbindungszeichenfolge enthält. Wenn Sie `connection` leer lassen, verwendet der Trigger für die Funktionen-App die standardmäßige Storage-Verbindungszeichenfolge, die von der App-Einstellung AzureWebJobsStorage angegeben wird.
-- `type`: muss auf *queue* festgelegt werden.
-- `direction`: muss auf *out* festgelegt werden. 
+- `connection`: Name einer App-Einstellung, die eine Storage-Verbindungszeichenfolge enthält. Wenn Sie `connection` leer lassen, verwendet der Trigger für die Funktionen-App die standardmäßige Storage-Verbindungszeichenfolge, die von der App-Einstellung „AzureWebJobsStorage“ angegeben wird.
+- `type`: Muss auf *queue* festgelegt werden.
+- `direction`: Muss auf *out* festgelegt werden.
 
 Beispiel von *function.json* für eine Storage-Warteschlangen-Ausgabebindung, die einen Warteschlangentrigger verwendet und eine Warteschlangennachricht schreibt:
 
@@ -150,8 +152,8 @@ Die `queue`-Bindung kann die folgenden Typen in eine Warteschlangennachricht ser
 
 * Objekt (`out T` in C#, erstellt eine Nachricht mit einem NULL-Objekt, wenn der Parameter bei Funktionsbeendigung NULL ist)
 * Zeichenfolge (`out string` in C#, erstellt eine Warteschlangennachricht, wenn der Parameterwert nicht NULL ist, sobald die Funktion beendet wird)
-* Bytearray (`out byte[]` in C#, funktioniert wie Zeichenfolge) 
-* `out CloudQueueMessage` (C#, funktioniert wie Zeichenfolge) 
+* Bytearray (`out byte[]` in C#, funktioniert wie Zeichenfolge)
+* `out CloudQueueMessage` (C#, funktioniert wie Zeichenfolge)
 
 In C# können Sie auch eine Bindung mit `ICollector<T>` oder `IAsyncCollector<T>` erstellen, wobei `T` einer der unterstützten Typen ist.
 
@@ -182,11 +184,11 @@ public static void Run(string myQueueItem, ICollector<string> myQueue, TraceWrit
 
 Die Datei *function.json* gibt die folgenden Eigenschaften an.
 
-- `name`: Variablenname, der im Funktionscode für das Blob verwendet wird. 
+- `name`: Variablenname, der im Funktionscode für das Blob verwendet wird.
 - `path`: Pfad, der den zu überwachenden Container und bei Bedarf ein Blobnamensmuster angibt.
-- `connection`: Name einer App-Einstellung, die eine Storage-Verbindungszeichenfolge enthält. Wenn Sie `connection` leer lassen, verwendet der Trigger für die Funktionen-App die standardmäßige Storage-Verbindungszeichenfolge, die von der App-Einstellung AzureWebJobsStorage angegeben wird.
-- `type`: muss auf *blobTrigger* festgelegt werden.
-- `direction`: muss auf *in* festgelegt werden.
+- `connection`: Name einer App-Einstellung, die eine Storage-Verbindungszeichenfolge enthält. Wenn Sie `connection` leer lassen, verwendet der Trigger für die Funktionen-App die standardmäßige Storage-Verbindungszeichenfolge, die von der App-Einstellung „AzureWebJobsStorage“ angegeben wird.
+- `type`: Muss auf *blobTrigger* festgelegt werden.
+- `direction`: Muss auf *in* festgelegt werden.
 
 Beispiel von *function.json* für einen Storage-Blobtrigger, der Blobs überwacht, die dem Container „samples-workitems“ hinzugefügt werden:
 
@@ -223,7 +225,7 @@ In C#-Funktionen können Sie auch eine Bindung mit einem der folgenden Typen her
 * `CloudBlobDirectory`
 * `IEnumerable<CloudBlockBlob>`
 * `IEnumerable<CloudPageBlob>`
-* Andere von [ICloudBlobStreamBinder](../app-service-web/websites-dotnet-webjobs-sdk-storage-blobs-how-to.md#icbsb) deserialisierte Typen 
+* Andere von [ICloudBlobStreamBinder](../app-service-web/websites-dotnet-webjobs-sdk-storage-blobs-how-to.md#icbsb) deserialisierte Typen
 
 #### C#-Codebeispiel für Blobtrigger
 
@@ -244,7 +246,7 @@ Sie können in der `path`-Eigenschaft ein Blobnamensmuster angeben. Beispiel:
 "path": "input/original-{name}",
 ```
 
-Dieser Pfad findet ein Blob mit dem Namen *original-Blob1.txt* im Container *input*, und der Wert der Variable `name` im Funktionscode lautet `Blob1`.
+Dieser Pfad findet ein Blob mit dem Namen *original-Blob1.txt* im Container *input*, und der Wert der Variablen `name` im Funktionscode lautet `Blob1`.
 
 Ein weiteres Beispiel:
 
@@ -264,7 +266,7 @@ Geben Sie für die `path`-Eigenschaft Folgendes an:
 
 		images/{{20140101}}-{name}
 
-In diesem Beispiel lautet der Wert der Variable `name` *soundfile.mp3*.
+In diesem Beispiel lautet der Wert der Variablen `name` *soundfile.mp3*.
 
 #### BLOB-Zugänge
 
@@ -294,7 +296,7 @@ Die Warteschlangennachricht für nicht verarbeitbare Blobs ist ein JSON-Objekt, 
 
 #### Abfragen von Blobs für große Container
 
-Wenn der Blobcontainer, der vom Trigger überwacht wird, mehr als 10.000 Blobs enthält, überprüft die Functions-Laufzeit Protokolldateien auf neue oder geänderte Blobs. Dieser Vorgang verläuft nicht in Echtzeit. Eine Funktion wird unter Umständen erst mehrere Minuten nach der Bloberstellung oder noch später ausgelöst. Darüber hinaus [werden Speicherprotokolle nach dem Prinzip „Beste Leistung“](https://msdn.microsoft.com/library/azure/hh343262.aspx) erstellt, und es gibt keine Garantie, dass alle Ereignisse erfasst werden. Unter bestimmten Umständen können Protokolle fehlen. Wenn die eingeschränkte Geschwindigkeit und Zuverlässigkeit von Blobtriggern für große Container für Ihre Anwendung nicht akzeptabel sind, empfiehlt es sich, zusammen mit dem Blob eine Warteschlangennachricht zu erstellen und für die Verarbeitung des Blobs anstelle des Blobtriggers einen Warteschlangentrigger zu verwenden.
+Wenn der Blobcontainer, der vom Trigger überwacht wird, mehr als 10.000 Blobs enthält, überprüft die Functions-Laufzeit Protokolldateien auf neue oder geänderte Blobs. Dieser Vorgang verläuft nicht in Echtzeit. Eine Funktion wird unter Umständen erst mehrere Minuten nach der Bloberstellung oder noch später ausgelöst. Darüber hinaus erfolgt das [Erstellen von Storage-Protokollen auf bestmögliche Weise](https://msdn.microsoft.com/library/azure/hh343262.aspx); es gibt jedoch keine Garantie, dass alle Ereignisse erfasst werden. Unter bestimmten Umständen können Protokolle fehlen. Wenn die eingeschränkte Geschwindigkeit und Zuverlässigkeit von Blobtriggern für große Container für Ihre Anwendung nicht akzeptabel sind, empfiehlt es sich, zusammen mit dem Blob eine Warteschlangennachricht zu erstellen und für die Verarbeitung des Blobs anstelle des Blobtriggers einen Warteschlangentrigger zu verwenden.
  
 ## <a id="storageblobbindings"></a> Azure Storage-Blobeingabe- und -ausgabebindungen
 
@@ -302,11 +304,11 @@ Wenn der Blobcontainer, der vom Trigger überwacht wird, mehr als 10.000 Blobs e
 
 Die Datei *function.json* gibt die folgenden Eigenschaften an.
 
-- `name`: Variablenname, der im Funktionscode für das Blob verwendet wird. 
-- `path`: Pfad, der den Container angibt, aus dem das Blob gelesen bzw. in den das Blob geschrieben wird, und bei Bedarf ein Blobnamensmuster angibt.
-- `connection`: Name einer App-Einstellung, die eine Storage-Verbindungszeichenfolge enthält. Wenn Sie `connection` leer lassen, verwendet die Bindung für die Funktionen-App die standardmäßige Storage-Verbindungszeichenfolge, die von der App-Einstellung AzureWebJobsStorage angegeben wird.
-- `type`: muss auf *blob* festgelegt werden.
-- `direction`: muss auf *in* oder *out* festgelegt werden. 
+- `name`: Variablenname, der im Funktionscode für das Blob verwendet wird.
+- `path`: Pfad, der den Container angibt, aus dem das Blob gelesen bzw. in den das Blob geschrieben wird, und ggf. ein Blobnamensmuster angibt.
+- `connection`: Name einer App-Einstellung, die eine Storage-Verbindungszeichenfolge enthält. Wenn Sie `connection` leer lassen, verwendet die Bindung für die Funktionen-App die standardmäßige Storage-Verbindungszeichenfolge, die von der App-Einstellung „AzureWebJobsStorage“ angegeben wird.
+- `type`: Muss auf *blob* festgelegt werden.
+- `direction`: Muss auf *in* oder *out* festgelegt werden.
 
 Beispiel von *function.json* für eine Storage-Blobeingabe- oder -ausgabebindung mit einem Warteschlangentrigger zum Kopieren eines Blobs:
 
@@ -343,8 +345,8 @@ Beispiel von *function.json* für eine Storage-Blobeingabe- oder -ausgabebindung
 
 Die `blob`-Bindung kann in Node.js- oder C#-Funktionen die folgenden Typen serialisieren oder deserialisieren:
 
-* Objekt (`out T` in C# für Ausgabeblob, erstellt ein Blob als NULL-Objekt, wenn der Parameterwert bei Funktionsbeendigung NULL ist)
-* Zeichenfolge (`out string` in C# für Ausgabeblob, erstellt ein Blob nur dann, wenn der Zeichenfolgenparameter bei Rückgabe der Funktion ungleich NULL ist)
+* Objekt (`out T` in C# für Ausgabeblob: erstellt ein Blob als NULL-Objekt, wenn der Parameterwert bei Funktionsbeendigung NULL ist)
+* Zeichenfolge (`out string` in C# für Ausgabeblob: erstellt ein Blob nur dann, wenn der Zeichenfolgenparameter bei Rückgabe der Funktion ungleich NULL ist)
 
 In C#-Funktionen können Sie auch eine Bindung mit einem der folgenden Typen herstellen:
 
@@ -353,8 +355,8 @@ In C#-Funktionen können Sie auch eine Bindung mit einem der folgenden Typen her
 * `Stream`
 * `CloudBlobStream` (nur Ausgabe)
 * `ICloudBlob`
-* `CloudBlockBlob` 
-* `CloudPageBlob` 
+* `CloudBlockBlob`
+* `CloudPageBlob`
 
 #### C#-Codebeispiel für Blobausgabe
 
@@ -374,14 +376,14 @@ public static void Run(string myQueueItem, string myInputBlob, out string myOutp
 
 Die Datei *function.json* gibt die folgenden Eigenschaften an.
 
-- `name`: Variablenname, der im Funktionscode für die Tabellenbindung verwendet wird. 
+- `name`: Variablenname, der im Funktionscode für die Tabellenbindung verwendet wird.
 - `tableName`: Name der Tabelle.
-- `partitionKey` und `rowKey`: werden zusammen verwendet, um eine einzelne Entität in einer C#- oder Node.js-Funktion zu lesen oder um eine einzelne Entität in eine Node.js-Funktion zu schreiben.
-- `take`: maximale Anzahl von Zeilen, die für die Tabelleneingabe in einer Node.js-Funktion gelesen werden sollen.
+- `partitionKey` und `rowKey`: Werden zusammen verwendet, um eine einzelne Entität in einer C#- oder Node.js-Funktion zu lesen oder um eine einzelne Entität in eine Node.js-Funktion zu schreiben.
+- `take`: Maximale Anzahl von Zeilen, die für die Tabelleneingabe in einer Node.js-Funktion gelesen werden sollen.
 - `filter`: OData-Filterausdruck für die Tabelleneingabe in einer Node.js-Funktion.
-- `connection`: Name einer App-Einstellung, die eine Storage-Verbindungszeichenfolge enthält. Wenn Sie `connection` leer lassen, verwendet die Bindung für die Funktionen-App die standardmäßige Storage-Verbindungszeichenfolge, die von der App-Einstellung AzureWebJobsStorage angegeben wird.
-- `type`: muss auf *table* festgelegt werden.
-- `direction`: muss auf *in* oder *out* festgelegt werden. 
+- `connection`: Name einer App-Einstellung, die eine Storage-Verbindungszeichenfolge enthält. Wenn Sie `connection` leer lassen, verwendet die Bindung für die Funktionen-App die standardmäßige Storage-Verbindungszeichenfolge, die von der App-Einstellung „AzureWebJobsStorage“ angegeben wird.
+- `type`: Muss auf *table* festgelegt werden.
+- `direction`: Muss auf *in* oder *out* festgelegt werden.
 
 Das folgende Beispiel von *function.json* verwendet einen Warteschlangentrigger zum Lesen einer einzelnen Tabellenzeile. JSON stellt einen hartcodierten Partitionsschlüsselwert bereit und gibt an, dass der Zeilenschlüssel aus der Warteschlangennachricht stammt.
 
@@ -411,7 +413,7 @@ Das folgende Beispiel von *function.json* verwendet einen Warteschlangentrigger 
 
 #### Für Speichertabelleneingabe und -ausgabe unterstützte Typen
 
-Die `table`-Bindung kann Objekte in Node.js- oder C#-Funktionen serialisieren oder deserialisieren: Die Objekte haben „RowKey“- und „PartitionKey“-Eigenschaften.
+Die `table`-Bindung kann Objekte in Node.js- oder C#-Funktionen serialisieren oder deserialisieren. Die Objekte haben „RowKey“- und „PartitionKey“-Eigenschaften.
 
 In C#-Funktionen können Sie auch eine Bindung mit einem der folgenden Typen herstellen:
 
@@ -605,4 +607,4 @@ module.exports = function (context, myQueueItem) {
 
 [AZURE.INCLUDE [Nächste Schritte](../../includes/functions-bindings-next-steps.md)]
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0824_2016-->

@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.topic="article"
    ms.workload="required"
-   ms.date="12/14/2015"
+   ms.date="08/23/2016"
    ms.author="ruturajd@microsoft.com"/>
 
 
@@ -308,4 +308,4 @@ In diesem Lernprogramm haben Sie gesehen, wie Sie eine häufig verwendete Aufgab
 
 [Beispielskripts für Azure Automation](http://gallery.technet.microsoft.com/scriptcenter/site/search?f[0].Type=User&f[0].Value=SC%20Automation%20Product%20Team&f[0].Text=SC%20Automation%20Product%20Team "Beispielskripts für Azure Automation")
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0824_2016-->

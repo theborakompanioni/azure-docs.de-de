@@ -15,14 +15,16 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/10/2016"
+	ms.date="08/17/2016"
 	ms.author="cjiang"/>
 
 # Grundlegendes zu Azure Marketplace-Gebühren
 Dieser Artikel enthält grundlegende Informationen zu den Gebühren, die für Ihre Marketplace-Bestellungen gelten. Einige Punkte, die beim Prüfen Ihrer Rechnung zu beachten sind, sind die unterschiedlichen Preistypen („Nur Basis“, „Nur Nutzung“ und „Basis und Nutzung“). Beachten Sie, dass jede von Ihnen aufgegebene Marketplace-Bestellung über einen eigenen monatlichen Abrechnungszyklus verfügt. Diese Themen werden unten ausführlich behandelt.
 
+> [AZURE.NOTE] Wenn Sie bei irgendeinem Verfahren in diesem Artikel weitere Hilfe benötigen, [wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), um das Problem schnell zu lösen.
+
 ## Prüfen Ihrer Marketplace-Rechnung
-Nachdem Sie sich am [Azure-Kontoportal](https://account.windowsazure.com/subscriptions/) angemeldet haben, können Sie aktuelle und ältere Rechnungen prüfen und herunterladen.
+Nachdem Sie sich beim [Azure-Kontoportal](https://account.windowsazure.com/subscriptions/) angemeldet haben, können Sie aktuelle und ältere Rechnungen prüfen und herunterladen.
 
 So zeigen Sie eine Rechnung an oder laden sie herunter
 
@@ -66,11 +68,11 @@ Führen Sie die folgenden Schritte aus, um Ihre Zahlungsmethode zu ändern:
     ![Zahlungsmethode ändern](./media/billing-understand-your-azure-marketplace-charges/change-payment-method.jpg)
 
 ## Bestellungsverwaltung
-Auf der Seite mit der Zusammenfassung wird der Link **Bestellung verwalten** angezeigt. Über diesen Link gelangen Sie zu Ihrem Portal, in dem Sie alle Marketplace-Bestellungen anzeigen, die Dienstintegrität verfolgen und Support anfordern können.
+Auf der Übersichtsseite wird der Link **Bestellung verwalten** angezeigt. Über diesen Link gelangen Sie zu Ihrem Portal, in dem Sie alle Marketplace-Bestellungen anzeigen, die Dienstintegrität verfolgen und Support anfordern können.
 
 ![Portal](./media/billing-understand-your-azure-marketplace-charges/portal.jpg)
 
-Klicken Sie zum Anfordern von Support auf die Kachel **Hilfe und Support**. Daraufhin wird die folgende Seite **Hilfe und Support** angezeigt, auf der Sie Folgende Möglichkeiten haben:
+Klicken Sie zum Anfordern von Support auf die Kachel **Hilfe und Support**. Daraufhin wird die folgende Seite **Hilfe und Support** angezeigt, auf der Sie folgende Möglichkeiten haben:
 - Öffnen Sie eine Supportanfrage.
 - Verwalten Sie vorhandene Supportanfragen.
 - Verwalten Sie die Ressourcenintegrität.
@@ -80,7 +82,7 @@ Klicken Sie zum Anfordern von Support auf die Kachel **Hilfe und Support**. Dara
 ## Abrechnungsverlauf
 Ein neues Feature auf der Zusammenfassungsseite ist das Anzeigen von nutzungsbasierten Angeboten, z. B. virtuellen Maschinen. Sie können jetzt sowohl für aktuelle als auch für vergangene Perioden die Nutzungsdaten nach Abrechnungszyklus herunterladen. Klicken Sie zum Anzeigen der Nutzungsdaten auf den Link **Nutzung herunterladen** für den gewünschten Zeitraum.
 
-Wenn Sie die tatsächlich angefallenen Gebühren aufrufen möchten, können Sie auf **Gebühren anzeigen** klicken. Sie werden an ein anderes Portal weitergeleitet, in dem Sie alle Gebühren einschließlich Steuern anzeigen können. Wenn Sie eine Organisations-ID verwenden, ist die Schaltfläche **Gebühren anzeigen** nicht aktiviert, und Sie müssen ein Supportticket erstellen, um eine Zusammenfassung Ihrer Gebühren anzufordern.
+Wenn Sie die tatsächlich angefallenen Gebühren aufrufen möchten, können Sie auf **Gebühren anzeigen** klicken. Sie werden an ein anderes Portal weitergeleitet, in dem Sie alle Gebühren einschließlich Steuern anzeigen können. Wenn Sie eine Organisations-ID verwenden, ist die Schaltfläche **Gebühren anzeigen** nicht aktiviert, und Sie müssen ein Supportticket erstellen, um eine Übersicht über Ihre Gebühren anzufordern.
 
 ![Abrechnungsverlauf](./media/billing-understand-your-azure-marketplace-charges/billing-history.png)
 
@@ -94,8 +96,10 @@ Führen Sie die folgenden Schritte aus, um die tatsächlichen Gebühren anzuzeig
 
     ![Bestellverlauf](./media/billing-understand-your-azure-marketplace-charges/order-history.jpg)
 
-2. Wählen Sie die Bestellung aus, die Sie überprüfen möchten, und klicken Sie dann auf **Details**, um eine Aufstellung Ihrer Gebühren anzuzeigen. Die Aufstellung enthält die Zwischensumme, Steuern und die Gesamtgebühren.
+2. Wählen Sie die Bestellung aus, die Sie überprüfen möchten, und klicken Sie auf **Details**, um eine Aufstellung Ihrer Gebühren anzuzeigen. Die Aufstellung enthält Zwischensumme, Steuern und Gesamtgebühren.
 
     ![Bestelldetails](./media/billing-understand-your-azure-marketplace-charges/order-details.jpg)
 
-<!---HONumber=AcomDC_0803_2016-->
+> [AZURE.NOTE] Wenn Sie weitere Fragen haben, [wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), um das Problem schnell zu lösen.
+
+<!---HONumber=AcomDC_0824_2016-->

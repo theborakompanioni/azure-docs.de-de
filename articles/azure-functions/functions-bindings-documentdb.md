@@ -15,10 +15,12 @@
 	ms.topic="reference"
 	ms.tgt_pltfrm="multiple"
 	ms.workload="na"
-	ms.date="05/16/2016"
-	ms.author="chrande"/>
+	ms.date="08/22/2016"
+	ms.author="chrande; glenga"/>
 
 # DocumentDB-Bindungen in Azure Functions
+
+[AZURE.INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
 
 Dieser Artikel erläutert das Konfigurieren und Codieren von Azure DocumentDB-Bindungen in Azure Functions.
 
@@ -33,12 +35,12 @@ Eingabebindungen können ein Dokument aus einer DocumentDB-Sammlung laden und di
 Die Datei *function.json* stellt die folgenden Eigenschaften bereit:
 
 - `name`: Variablenname, der im Funktionscode für das Dokument verwendet wird.
-- `type`: muss auf „documentdb“ festgelegt werden.
-- `databaseName`: die Datenbank mit dem Dokument.
-- `collectionName`: die Sammlung mit dem Dokument.
-- `id`: die ID des abzurufenden Dokuments. Diese Eigenschaft unterstützt Bindungen wie „{queueTrigger}“, die den Zeichenfolgenwert der Warteschlangennachricht als Dokument-ID verwenden.
-- `connection`: Diese Zeichenfolge muss eine Anwendungseinstellung sein, die auf den Endpunkt Ihres DocumentDB-Kontos festgelegt ist. Wenn Sie Ihr Konto auf der Registerkarte „Integrieren“ auswählen, wird eine neue App-Einstellung mit einem Namen für Sie erstellt, der das folgende Format aufweist: IhrKonto\_DOCUMENTDB. Wenn Sie die App-Einstellung manuell erstellen möchten, muss die tatsächliche Verbindungszeichenfolge im folgenden Format vorliegen: AccountEndpoint=<Endpoint for your account>;AccountKey=<Your primary access key>;.
-- `direction: muss auf *"in"* festgelegt werden.
+- `type`: Muss auf "documentdb" festgelegt werden.
+- `databaseName`: Die Datenbank mit dem Dokument.
+- `collectionName`: Die Sammlung mit dem Dokument.
+- `id`: Die ID des abzurufenden Dokuments. Diese Eigenschaft unterstützt Bindungen wie „{queueTrigger}“, die den Zeichenfolgenwert der Warteschlangennachricht als Dokument-ID verwenden.
+- `connection`: Diese Zeichenfolge muss eine Anwendungseinstellung sein, die auf den Endpunkt Ihres DocumentDB-Kontos festgelegt ist. Wenn Sie Ihr Konto auf der Registerkarte „Integrieren“ auswählen, wird eine neue App-Einstellung mit einem Namen für Sie erstellt, der das folgende Format aufweist: IhrKonto\_DOCUMENTDB. Wenn Sie die App-Einstellung manuell erstellen möchten, muss die eigentliche Verbindungszeichenfolge das folgende Format besitzen: AccountEndpoint=<Endpunkt für Ihr Konto>;AccountKey=<Ihr primärer Zugriffsschlüssel>;.
+- direction: Muss auf *"in"* festgelegt werden.
 
 Beispiel für *function.json*:
  
@@ -78,19 +80,19 @@ Bei Verwendung des oben genannten Beispiels für „function.json“ ruft die Do
 
 ## <a id="docdboutput"></a> Azure DocumentDB-Ausgabebindungen
 
-Ihre Funktionen können JSON-Dokumente mithilfe der Ausgabebindung **Azure DocumentDB-Dokument** in eine Azure DocumentDB-Datenbank schreiben. Weitere Informationen zu Azure DocumentDB erhalten Sie unter [Einführung in DocumentDB](../documentdb/documentdb-introduction.md) und im [Tutorial mit den ersten Schritten](../documentdb/documentdb-get-started.md).
+Ihre Funktionen können JSON-Dokumente mithilfe der Ausgabebindung **Azure DocumentDB-Dokument** in eine Azure DocumentDB-Datenbank schreiben. Weitere Informationen zu Azure DocumentDB erhalten Sie unter [Einführung in DocumentDB](../documentdb/documentdb-introduction.md) sowie im [Tutorial mit den ersten Schritten](../documentdb/documentdb-get-started.md).
 
 #### „function.json“ für DocumentDB-Ausgabebindung
 
 Die Datei „function.json“ stellt die folgenden Eigenschaften bereit:
 
 - `name`: Variablenname, der im Funktionscode für das neue Dokument verwendet wird.
-- `type`: muss auf *"documentdb"* festgelegt werden.
+- `type`: Muss auf *"documentdb"* festgelegt werden.
 - `databaseName`: Datenbank mit der Sammlung, in der das neue Dokument erstellt wird.
 - `collectionName`: Sammlung, in der das neue Dokument erstellt wird.
-- `createIfNotExists`: boolescher Wert, der angibt, ob die Sammlung erstellt werden soll, wenn sie nicht vorhanden ist. Die Standardeinstellung ist *false*. Der Grund hierfür ist, dass Sammlungen mit reserviertem Durchsatz erstellt werden, was sich auf den Preis auswirkt. Weitere Informationen finden Sie in der [Preisübersicht](https://azure.microsoft.com/pricing/details/documentdb/).
-- `connection`: Diese Zeichenfolge muss eine **Anwendungseinstellung** sein, die auf den Endpunkt Ihres DocumentDB-Kontos festgelegt ist. Wenn Sie Ihr Konto auf der Registerkarte **Integrieren** auswählen, wird eine neue App-Einstellung mit einem Namen für Sie erstellt, der das folgende Format aufweist: `yourAccount_DOCUMENTDB`. Wenn Sie die App-Einstellung manuell erstellen möchten, muss die tatsächliche Verbindungszeichenfolge im folgenden Format vorliegen: `AccountEndpoint=<Endpoint for your account>;AccountKey=<Your primary access key>;`. 
-- `direction`: muss auf *"out"* festgelegt werden. 
+- `createIfNotExists`: Boolescher Wert, der angibt, ob die Sammlung erstellt werden soll, wenn sie nicht vorhanden ist. Die Standardeinstellung ist *false*. Der Grund hierfür ist, dass Sammlungen mit reserviertem Durchsatz erstellt werden, was sich auf den Preis auswirkt. Weitere Informationen finden Sie in der [Preisübersicht](https://azure.microsoft.com/pricing/details/documentdb/).
+- `connection`: Diese Zeichenfolge muss eine **Anwendungseinstellung** sein, die auf den Endpunkt Ihres DocumentDB-Kontos festgelegt ist. Wenn Sie Ihr Konto auf der Registerkarte **Integrieren** auswählen, wird eine neue App-Einstellung mit einem Namen im folgenden Format erstellt: `yourAccount_DOCUMENTDB`. Wenn Sie die App-Einstellung manuell erstellen möchten, muss die eigentliche Verbindungszeichenfolge das folgende Format besitzen: `AccountEndpoint=<Endpoint for your account>;AccountKey=<Your primary access key>;`.
+- `direction`: Muss auf *"out"* festgelegt werden.
  
 Beispiel für „function.json“:
 
@@ -189,4 +191,4 @@ Beispielausgabe:
 
 [AZURE.INCLUDE [Nächste Schritte](../../includes/functions-bindings-next-steps.md)]
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0824_2016-->

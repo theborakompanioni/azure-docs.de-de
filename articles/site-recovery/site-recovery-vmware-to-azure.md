@@ -142,7 +142,7 @@ Für die Vorbereitung der Bereitstellung benötigen Sie Folgendes:
 ### Einrichten eines Azure-Speicherkontos
 
 - Sie benötigen ein Standard- oder Premium-Azure-Speicherkonto zum Speichern von Daten, die nach Azure repliziert werden. Das Konto muss sich in derselben Region wie der Recovery Services-Tresor befinden. Richten Sie ein Konto im [ARM-Modus](../storage/storage-create-storage-account.md) oder im [klassischen Modus](../storage/storage-create-storage-account-classic-portal.md) ein (je nachdem, welches Ressourcenmodell Sie für virtuelle Azure-Computer nach dem Failover verwenden möchten).
-- Wenn Sie ein Premium-Konto für replizierte Daten verwenden, müssen Sie ein zusätzliches Standardkonto zum Speichern von Replikationsprotokollen erstellen, in denen laufende Änderungen lokaler Daten erfasst werden.  
+- Wenn Sie ein Premium-Konto für replizierte Daten verwenden, müssen Sie ein zusätzliches Standardkonto zum Speichern von Replikationsprotokollen erstellen, in denen laufende Änderungen lokaler Daten erfasst werden.
 
 ### Vorbereiten eines Kontos für die automatische Ermittlung
 
@@ -325,7 +325,7 @@ Parameter:
 
 	![Konto hinzufügen](./media/site-recovery-vmware-to-azure/credentials1.png)
 
-3. Fügen Sie unter **Kontodetails** das Konto hinzu, das für die automatische Ermittlung verwendet werden soll. Beachten Sie, dass es 15 Minuten oder länger dauern kann, bis der Kontoname im Portal angezeigt wird. Klicken Sie zur sofortigen Aktualisierung auf **Konfigurationsserver** > „Servername“ > **Server aktualisieren**.
+3. Fügen Sie unter **Kontodetails** das Konto hinzu, das für die automatische Ermittlung verwendet werden soll. Beachten Sie, dass es 15 Minuten oder länger dauern kann, bis der Kontoname im Portal angezeigt wird. Klicken Sie zur sofortigen Aktualisierung auf **Konfigurationsserver** > <Servername> > **Server aktualisieren**.
 
 	![Details](./media/site-recovery-vmware-to-azure/credentials2.png)
 
@@ -563,7 +563,7 @@ Oracle Enterprise Linux 6.4, 6.5 (nur 64 Bit) | Microsoft-ASR\_UA\_9.*.0.0\_OL6-
 
 	![Mobilitätsdienst](./media/site-recovery-vmware-to-azure/mobility3.png)
 
-3. Geben Sie unter **Konfigurationsserverdetails** die IP-Adresse des Konfigurationsservers und die Passphrase ein, die beim Ausführen des einheitlichen Setups generiert wurde. Sie können die Passphrase abrufen, indem Sie auf dem Konfigurationsserver **<Site Recovery-Installationsordner>\\home\\sysystems\\bin\\genpassphrase.exe –n** ausführen.
+3. Geben Sie unter **Konfigurationsserverdetails** die IP-Adresse des Konfigurationsservers und die Passphrase ein, die beim Ausführen des einheitlichen Setups generiert wurde. Sie können die Passphrase abrufen, indem Sie auf dem Konfigurationsserver **<Site Recovery-Installationsordner>\\home\\sysystems\\bin\\genpassphrase.exe –v** ausführen.
 
 	![Mobilitätsdienst](./media/site-recovery-vmware-to-azure/mobility6.png)
 
@@ -580,6 +580,14 @@ Hierbei gilt:
 - /InstallLocation: Obligatorisch. Gibt an, wo der Dienst installiert werden soll.
 - /PassphraseFilePath: Obligatorisch. Die Passphrase des Konfigurationsservers.
 - /LogFilePath: Obligatorisch. Der Speicherort für die Setupprotokolldateien.
+
+#### Manuelles Deinstallieren des Mobilitätsdiensts
+
+Der Mobilitätsdienst kann mithilfe der Option „Software“ in der Systemsteuerung oder über die Befehlszeile deinstalliert werden.
+
+Der Befehl zum Deinstallieren des Mobilitätsdiensts mithilfe der Befehlszeile lautet:
+
+	MsiExec.exe /qn /x {275197FC-14FD-4560-A5EB-38217F80CBD1}
 
 
 #### Manuelles Installieren auf einem Linux-Server
@@ -851,4 +859,4 @@ The information in Section B is regarding Third Party Code components that are b
 
 The complete file may be found on the [Microsoft Download Center](http://go.microsoft.com/fwlink/?LinkId=529428). Microsoft reserves all rights not expressly granted herein, whether by implication, estoppel or otherwise.
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0824_2016-->

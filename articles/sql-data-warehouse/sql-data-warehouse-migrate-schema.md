@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="08/08/2016"
+   ms.date="08/17/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
 # Migrieren Ihres Schemas nach SQL Data Warehouse#
@@ -107,8 +107,8 @@ Alternativen:
 - **image**, **text**, **ntext**: varchar/nvarchar (je kleiner, desto besser)
 - **sql\_variant**: Spalte in mehrere Spalten mit starker Typisierung unterteilen
 - **table**: in temporäre Tabellen konvertieren
-- **timestamp**: Code anpassen, sodass datetime2 und die `CURRENT_TIMESTAMP`-Funktion verwendet wird. Beachten Sie, dass Sie "current\_timestamp" nicht als Standardeinschränkung verwenden können und dass der Wert nicht automatisch aktualisiert wird. Wenn Sie rowversion-Werte aus einer Spalte mit timestamp-Typ migrieren müssen, sollten Sie binary(8) oder varbinary(8) für NOT NULL- oder NULL-Zeilenversionswerte verwenden.
-- **Benutzerdefinierte Datentypen**: zurück in systemeigene Typen konvertieren, falls möglich
+- **timestamp**: Code anpassen, sodass „datetime2“ und die `CURRENT_TIMESTAMP`-Funktion verwendet werden. Beachten Sie, dass Sie „current\_timestamp“ nicht als Standardeinschränkung verwenden können. Wenn Sie rowversion-Werte aus einer Spalte mit timestamp-Typ migrieren müssen, sollten Sie „binary(8)“ oder „varbinary(8)“ für NOT NULL- oder NULL-Zeilenversionswerte verwenden.
+- **Benutzerdefinierte Datentypen**: zurück in native Typen konvertieren, falls möglich
 - **xml**: varchar(max) oder kleiner zur Verbesserung der Leistung. Gegebenenfalls in Spalten unterteilen.
 
 Für bessere Leistung anstelle von:
@@ -120,10 +120,10 @@ Teilweise unterstützt:
 
 - Standardeinschränkungen unterstützen nur Literale und Konstanten. Nicht deterministische Ausdrücke oder Funktionen, z. B. `GETDATE()` oder `CURRENT_TIMESTAMP`, werden nicht unterstützt.
 
-> [AZURE.NOTE] Falls Sie PolyBase zum Laden Ihrer Tabellen verwenden, definieren Sie Ihre Tabellen so, dass die maximal mögliche Zeilengröße, einschließlich der vollständigen Länge der Spalten mit variabler Länge, 32.767 Byte nicht überschreitet. Sie können zwar eine Zeile mit Daten variabler Länge definieren, bei der dieser Wert überschritten wird und Reihen mit BCP laden, jedoch können Sie PolyBase gegenwärtig noch nicht verwenden, um diese Daten zu laden. Die PolyBase-Unterstützung für große Zeilen wird bald verfügbar sein. Versuchen Sie außerdem, die Größe Ihrer Spalten mit variabler Länge zu beschränken, um beim Ausführen von Abfragen einen noch besseren Durchsatz zu erzielen.
+> [AZURE.NOTE] Definieren Sie die Tabellen, sodass die maximale Zeilengröße 32.767 Byte nicht überschreitet, wenn PolyBase zum Laden verwendet wird. Sie müssen daran denken, dass die maximale Zeilengröße die vollständige Länge aller Spalten mit variabler Länge umfasst. Zwar können Sie eine Zeile mit variabler Länge definieren, Daten, die diese Angabe überschreiten, können Sie jedoch derzeit nicht mit PolyBase laden. Verwenden Sie als Zwischenlösung BCP, um große Zeilen zu laden. Versuchen Sie schließlich, die Größe Ihrer Spalten mit variabler Länge zu beschränken, um beim Ausführen von Abfragen einen noch besseren Durchsatz zu erzielen.
 
 ## Nächste Schritte
-Nachdem Sie Ihr Datenbankschema erfolgreich in SQLDW migriert haben, können Sie mit den folgenden Artikeln fortfahren:
+Nachdem Sie Ihr Datenbankschema erfolgreich zu SQL Data Warehouse migriert haben, fahren Sie mit den folgenden Artikeln fort:
 
 - [Migrieren Ihrer Daten][]
 - [Migrieren Ihres Codes][]
@@ -142,4 +142,4 @@ Weitere Hinweise zur Entwicklung finden Sie in der [Entwicklungsübersicht][].
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0824_2016-->

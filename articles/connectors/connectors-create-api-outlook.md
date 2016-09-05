@@ -14,18 +14,12 @@ ms.devlang="multiple"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="integration"
-ms.date="04/29/2016"
+ms.date="08/18/2016"
 ms.author="deonhe"/>
 
 # Erste Schritte mit dem Outlook.com-Connector
 
 Über den Outlook.com-Connector können Sie Ihre E-Mail und Ihre Kalender und Kontakte verwalten. Sie können verschiedene Aktionen ausführen, z.B. E-Mails senden, Besprechungen planen, Kontakte hinzufügen usw.
-
-Der Outlook.com-Connector kann verwendet werden in:
-
-- [Logik-Apps](../app-service-logic/app-service-logic-what-are-logic-apps.md)
-- [PowerApps](http://powerapps.microsoft.com)
-- [Flow](http://flow.microsoft.com)
 
 >[AZURE.NOTE] Diese Version des Artikels gilt für die Schemaversion 2015-08-01-preview für Logik-Apps.
 
@@ -78,7 +72,7 @@ Um Logik-Apps mit Outlook.com zu erstellen, müssen Sie zuerst eine **Verbindung
 
 |Eigenschaft| Erforderlich|Beschreibung|
 | ---|---|---|
-|Tokenverschlüsselung|Ja|Angeben der Anmeldeinformationen für Outlook.com|
+|Token|Ja|Angeben der Anmeldeinformationen für Outlook.com|
 Nachdem Sie die Verbindung erstellt haben, können Sie sie zum Ausführen der Aktionen und zum Lauschen auf die in diesem Artikel beschriebenen Trigger verwenden.
 
 >[AZURE.INCLUDE [Schritte zum Herstellen einer Verbindung mit Outlook.com](../../includes/connectors-create-api-outlook.md)]
@@ -86,7 +80,7 @@ Nachdem Sie die Verbindung erstellt haben, können Sie sie zum Ausführen der Ak
 >[AZURE.TIP] Sie können diese Verbindung in anderen Logik-Apps verwenden.
 
 ## Referenz für Outlook.com
-Gilt für Version: 1.0.
+Gilt für Version 1.0.
 
 ## OnUpcomingEvents
 Bei baldigem Start eines anstehenden Ereignisses: Löst einen Workflow aus, wenn ein anstehendes Kalenderereignis beginnt.
@@ -106,9 +100,9 @@ Bei baldigem Start eines anstehenden Ereignisses: Löst einen Workflow aus, wenn
 |202|Vorgang erfolgreich|
 |400|BadRequest|
 |401|Nicht autorisiert|
-|403|Verboten (403)|
+|403|Verboten|
 |500|Interner Serverfehler|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 
 ## GetEmails
@@ -133,9 +127,9 @@ E-Mails abrufen: Ruft E-Mails aus einem Ordner ab.
 |200|Vorgang erfolgreich|
 |400|BadRequest|
 |401|Nicht autorisiert|
-|403|Verboten (403)|
+|403|Verboten|
 |500|Interner Serverfehler|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 
 ## SendEmail
@@ -154,9 +148,9 @@ E-Mail senden: Sendet eine E-Mail.
 |200|Vorgang erfolgreich|
 |400|BadRequest|
 |401|Nicht autorisiert|
-|403|Verboten (403)|
+|403|Verboten|
 |500|Interner Serverfehler|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 
 ## DeleteEmail
@@ -175,9 +169,9 @@ E-Mail löschen: Löscht eine E-Mail nach ID.
 |200|Vorgang erfolgreich|
 |400|BadRequest|
 |401|Nicht autorisiert|
-|403|Verboten (403)|
+|403|Verboten|
 |500|Interner Serverfehler|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 
 ## MarkAsRead
@@ -196,9 +190,9 @@ Als gelesen markieren: Markiert eine E-Mail als gelesen.
 |200|Vorgang erfolgreich|
 |400|BadRequest|
 |401|Nicht autorisiert|
-|403|Verboten (403)|
+|403|Verboten|
 |500|Interner Serverfehler|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 
 ## ReplyTo
@@ -219,9 +213,9 @@ E-Mail beantworten: Antwortet auf eine E-Mail.
 |200|Vorgang erfolgreich|
 |400|BadRequest|
 |401|Nicht autorisiert|
-|403|Verboten (403)|
+|403|Verboten|
 |500|Interner Serverfehler|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 
 ## GetAttachment
@@ -241,9 +235,9 @@ Anlage abrufen: Ruft die Anlage zu einer E-Mail anhand der ID ab.
 |200|Vorgang erfolgreich|
 |400|BadRequest|
 |401|Nicht autorisiert|
-|403|Verboten (403)|
+|403|Verboten|
 |500|Interner Serverfehler|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 
 ## OnNewEmail
@@ -269,9 +263,9 @@ Bei neuer E-Mail: Löst einen Workflow aus, wenn eine neue E-Mail eingeht.
 |202|Zulässig|
 |400|BadRequest|
 |401|Nicht autorisiert|
-|403|Verboten (403)|
+|403|Verboten|
 |500|Interner Serverfehler|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 
 ## SendMailWithOptions
@@ -291,9 +285,9 @@ E-Mail mit Optionen senden: Sendet eine E-Mail mit mehreren Optionen und wartet,
 |201|Abonnement erstellt|
 |400|BadRequest|
 |401|Nicht autorisiert|
-|403|Verboten (403)|
+|403|Verboten|
 |500|Interner Serverfehler|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 
 ## SendApprovalMail
@@ -313,9 +307,9 @@ Genehmigungs-E-Mail senden: Sendet eine Genehmigungs-E-Mail und wartet auf eine 
 |201|Abonnement erstellt|
 |400|BadRequest|
 |401|Nicht autorisiert|
-|403|Verboten (403)|
+|403|Verboten|
 |500|Interner Serverfehler|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 
 ## CalendarGetTables
@@ -329,7 +323,7 @@ Es gibt keine Parameter für diesen Aufruf
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 
 ## CalendarGetItems
@@ -350,7 +344,7 @@ Ereignisse abrufen: Ruft Elemente aus einem Kalender ab.
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 
 ## CalendarPostItem
@@ -368,7 +362,7 @@ Ereignis erstellen: Erstellt ein neues Ereignis
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 
 ## CalendarGetItem
@@ -386,7 +380,7 @@ Ereignis abrufen: Ruft ein bestimmtes Element aus einem Kalender ab.
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 
 ## CalendarDeleteItem
@@ -404,7 +398,7 @@ Ereignis löschen: Löscht ein Kalenderelement.
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 
 ## CalendarPatchItem
@@ -423,7 +417,7 @@ Ereignis aktualisieren: Aktualisiert ein Kalenderelement teilweise.
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 
 ## CalendarGetOnNewItems
@@ -444,7 +438,7 @@ Bei neuen Elementen: Wird ausgelöst, wenn ein neues Kalenderelement erstellt wi
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 
 ## CalendarGetOnUpdatedItems
@@ -465,7 +459,7 @@ Bei aktualisierten Elementen: Wird ausgelöst, wenn ein Kalenderelement geänder
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 
 ## ContactGetTables
@@ -479,7 +473,7 @@ Es gibt keine Parameter für diesen Aufruf
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 
 ## ContactGetItems
@@ -500,7 +494,7 @@ Kontakte abrufen: Ruft Kontakte aus einem Ordner des Typs „Kontakte“ ab.
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 
 ## ContactPostItem
@@ -518,7 +512,7 @@ Kontakt erstellen: Erstellt einen neuen Kontakt.
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 
 ## ContactGetItem
@@ -536,7 +530,7 @@ Kontakt abrufen: Ruft einen bestimmten Kontakt aus einem Ordner „Kontakte“ a
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 
 ## ContactDeleteItem
@@ -554,7 +548,7 @@ Kontakt löschen: Löscht einen Kontakt.
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 
 ## ContactPatchItem
@@ -573,7 +567,7 @@ Kontakt aktualisieren: Aktualisiert einen Kontakt teilweise.
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 
 ## Objektdefinitionen 
@@ -632,7 +626,7 @@ Kontakt aktualisieren: Aktualisiert einen Kontakt teilweise.
 |IsRead|Boolescher Wert|Nein |
 |HasAttachment|Boolescher Wert|Nein |
 |DateTimeReceived|string|Nein |
-|Anlagen|array|Nein |
+|Attachments|array|Nein |
 |From|string|Nein |
 |Cc|string|Nein |
 |Bcc|string|Nein |
@@ -662,9 +656,9 @@ Kontakt aktualisieren: Aktualisiert einen Kontakt teilweise.
 
 | Eigenschaftenname | Datentyp | Erforderlich |
 |---|---|---|
-|Subject|string|Ja |
+|Subject (Antragsteller)|string|Ja |
 |Body|string|Nein |
-|Importance|string|Nein |
+|Priorität|string|Nein |
 |Digest|array|Ja |
 |Attachments|array|Nein |
 |To|string|Ja |
@@ -719,7 +713,7 @@ Kontakt aktualisieren: Aktualisiert einen Kontakt teilweise.
 
 | Eigenschaftenname | Datentyp | Erforderlich |
 |---|---|---|
-|name|string|Nein |
+|Name|string|Nein |
 |title|string|Nein |
 |x-ms-permission|string|Nein |
 |x-ms-capabilities|nicht definiert|Nein |
@@ -766,7 +760,7 @@ Kontakt aktualisieren: Aktualisiert einen Kontakt teilweise.
 | Eigenschaftenname | Datentyp | Erforderlich |
 |---|---|---|
 |NotificationUrl|string|Nein |
-|Message|nicht definiert|Nein |
+|Nachricht|nicht definiert|Nein |
 
 
 
@@ -775,11 +769,11 @@ Kontakt aktualisieren: Aktualisiert einen Kontakt teilweise.
 
 | Eigenschaftenname | Datentyp | Erforderlich |
 |---|---|---|
-|Subject|string|Ja |
+|Subject (Antragsteller)|string|Ja |
 |Options|string|Ja |
 |Body|string|Nein |
-|Importance|string|Nein |
-|Anlagen|array|Nein |
+|Priorität|string|Nein |
+|Attachments|array|Nein |
 |To|string|Ja |
 
 
@@ -802,7 +796,7 @@ Kontakt aktualisieren: Aktualisiert einen Kontakt teilweise.
 | Eigenschaftenname | Datentyp | Erforderlich |
 |---|---|---|
 |NotificationUrl|string|Nein |
-|Message|nicht definiert|Nein |
+|Nachricht|nicht definiert|Nein |
 
 
 
@@ -811,11 +805,11 @@ Kontakt aktualisieren: Aktualisiert einen Kontakt teilweise.
 
 | Eigenschaftenname | Datentyp | Erforderlich |
 |---|---|---|
-|Subject|string|Ja |
+|Subject (Antragsteller)|string|Ja |
 |Options|string|Ja |
 |Body|string|Nein |
-|Importance|string|Nein |
-|Anlagen|array|Nein |
+|Priorität|string|Nein |
+|Attachments|array|Nein |
 |To|string|Ja |
 
 
@@ -838,7 +832,7 @@ Kontakt aktualisieren: Aktualisiert einen Kontakt teilweise.
 
 
 
-### Table
+### Tabelle
 
 
 | Eigenschaftenname | Datentyp | Erforderlich |
@@ -914,4 +908,4 @@ Kontakt aktualisieren: Aktualisiert einen Kontakt teilweise.
 ## Nächste Schritte
 [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0824_2016-->

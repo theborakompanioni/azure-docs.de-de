@@ -12,7 +12,7 @@
     ms.topic="article"
     ms.tgt_pltfrm="NA"
     ms.workload="TBD"
-    ms.date="05/24/2016"
+    ms.date="08/18/2016"
     ms.author="alkohli" />
 
 # Verwalten von Geräten mithilfe von StorSimple-Überwachungsindikatoren   
@@ -23,9 +23,9 @@ Ihr StorSimple-Gerät bietet LEDs (Light-Emitting Diodes) und Alarme, mit denen 
 
 Es gibt drei LED-Statusanzeigen, mit denen der Status eines Moduls gekennzeichnet wird: grün, grün bis rot-bernsteinfarben blinkend oder rot-bernsteinfarben.
 
-- Grüne LEDs weisen auf einen fehlerfreien Betrieb hin.  
-- Grün bis rot-bernsteinfarben blinkende LEDs weisen auf unkritische Bedingungen hin, die möglicherweise einen Benutzereingriff erfordern.  
-- Rot-bernsteinfarbene LEDs zeigen an, dass im Modul ein kritischer Fehler aufgetreten ist.  
+- Grüne LEDs weisen auf einen fehlerfreien Betrieb hin.
+- Grün bis rot-bernsteinfarben blinkende LEDs weisen auf unkritische Bedingungen hin, die möglicherweise einen Benutzereingriff erfordern.
+- Rot-bernsteinfarbene LEDs zeigen an, dass im Modul ein kritischer Fehler aufgetreten ist.
 
 In den folgenden Abschnitten finden Sie Informationen zu den verschiedenen Überwachungsindikator-LEDs, zu deren Positionen am StorSimple-Gerät, zum Gerätestatus für die jeweilige LED-Statusanzeige sowie zu den zugehörigen akustischen Alarmen.
 
@@ -41,7 +41,7 @@ Das vordere Bedienfeld enthält die folgenden Indikatoren:
 2. Betriebsanzeige-LED (grün/rot-bernsteinfarben)
 3. Modulfehleranzeige-LED (EIN rot-bernsteinfarben/AUS)
 4. Logische Fehleranzeige-LED (EIN rot-bernsteinfarben/AUS)
-5. Anzeige der Einheiten-ID  
+5. Anzeige der Einheiten-ID
 
 Der Hauptunterschied zwischen den LEDs des vorderen Bedienfelds am Gerät und am EBOD-Gehäuse ist die **Systemeinheit-ID**, die auf der LED-Anzeige dargestellt wird. Die auf dem Gerät angezeigte Standard-ID der Einheit ist **00**, während die auf dem EBOD-Gehäuse angezeigte Standard-ID der Einheit **01** ist. Auf diese Weise können Sie schnell zwischen dem Gerät und dem EBOD-Gehäuse unterscheiden, wenn das Gerät eingeschaltet wird. Wenn Ihr Gerät ausgeschaltet ist, verwenden Sie die unter dem Thema [Einschalten eines neuen Geräts](storsimple-turn-device-on-or-off.md#turn-on-a-new-device) bereitgestellten Informationen, um das Gerät vom EBOD-Gehäuse zu unterscheiden.
 
@@ -51,17 +51,17 @@ Anhand der folgenden Tabelle können Sie den Status, der über die LEDs auf dem 
 
 |Systemstromversorgung | Modulfehler | Logischer Fehler | Alarm | Status|
 |-------------|---------------|-----------------|-------|-------|
-|Rot-bernsteinfarben | OFF | OFF | N/V | Stromausfall, Betrieb über alternative Stromversorgung, oder die Stromversorgung ist eingeschaltet, und die Controllermodule wurden entfernt.|
-|Grün | ON | ON | N/V | Teststatus für eingeschaltete Stromversorgung des OPS-Bedienfelds (5s)|
+|Rot-bernsteinfarben | OFF | OFF | – | Stromausfall, Betrieb über alternative Stromversorgung, oder die Stromversorgung ist eingeschaltet, und die Controllermodule wurden entfernt.|
+|Grün | EIN | EIN | N/V | Teststatus für eingeschaltete Stromversorgung des OPS-Bedienfelds (5s)|
 |Grün | OFF | OFF | N/V | Eingeschaltet, alle Funktionen einwandfrei|
-|Grün | ON |N/V | PCM-Fehler-LEDs, Lüfterfehler-LEDs | Jeder PCM-Fehler, Lüfterfehler, zu hohe oder zu niedrige Temperatur|
-| Grün | ON | N/V | E/A-Modul-LEDs | Jeder Controllermodulfehler|
-| Grün | ON | N/V | N/V | Gehäuselogikfehler|
-| Grün | Blinken | N/V | Modulstatus-LED am Controllermodul. PCM-Fehler-LEDs, Lüfterfehler-LEDs | Unbekannter Controllermodultyp installiert, I2C-Busfehler, Konfigurationsfehler bei wichtigen Produktdaten des Controllermoduls |
+|Grün | EIN |– | PCM-Fehler-LEDs, Lüfterfehler-LEDs | Jeder PCM-Fehler, Lüfterfehler, zu hohe oder zu niedrige Temperatur|
+| Grün | EIN | N/V | E/A-Modul-LEDs | Jeder Controllermodulfehler|
+| Grün | EIN | – | – | Gehäuselogikfehler|
+| Grün | Blinken | – | Modulstatus-LED am Controllermodul. PCM-Fehler-LEDs, Lüfterfehler-LEDs | Unbekannter Controllermodultyp installiert, I2C-Busfehler, Konfigurationsfehler bei wichtigen Produktdaten des Controllermoduls |
 
 ## Indikator-LEDs der Stromversorgungs- und Kühleinheit   
 
-Die Indikator-LEDs der Stromversorgungs- und Kühleinheit (PCM) befinden sich auf der Rückseite des primären Gehäuses oder EBOD-Gehäuses der einzelnen PCM-Module. In diesem Thema wird die Verwendung der folgenden LEDs zur Überwachung der Zustände Ihres StorSimple-Geräts beschrieben.
+Die Indikator-LEDs der Stromversorgungs- und Kühleinheit (PCM) befinden sich auf der Rückseite des primären Gehäuses oder EBOD-Gehäuses der einzelnen PCM-Module. In diesem Thema wird die Verwendung der folgenden LEDs zur Überwachung des Status Ihres StorSimple-Geräts beschrieben.
 
 - LEDs der Stromversorgungs- und Kühleinheit (PCM) für das primäre Gehäuse
 - LEDs der Stromversorgungs- und Kühleinheit (PCM) für das EBOD-Gehäuse
@@ -74,24 +74,24 @@ Das StorSimple-Gerät verfügt über ein 764-W-PCM-Modul mit zusätzlichem Akku.
 
 LED-Legende:
 
-1. Stromausfall
+1. Stromausfall (Wechselstrom)
 2. Lüfterfehler
 3. Akkufehler
 4. PCM OK
 5. Gleichstromfehler
-6. Akku OK  
+6. Akku OK
 
-Der Status der Stromversorgungs- und Kühleinheit (PCM) wird auf dem LED-Bedienfeld angezeigt. Das LED-Bedienfeld der Stromversorgungs- und Kühleinheit des Geräts verfügt über sechs LEDs. Vier dieser LEDs zeigen den Status der Stromversorgung und des Lüfters an. Die beiden anderen LEDs zeigen den Status des Notfallakkus in der Stromversorgungs- und Kühleinheit an. Sie können den Status der PCM anhand der folgenden Tabellen ermitteln.
+Der Status der Stromversorgungs- und Kühleinheit (PCM) wird auf dem LED-Bedienfeld angezeigt. Das LED-Bedienfeld der Stromversorgungs- und Kühleinheit des Geräts verfügt über sechs LEDs. Vier dieser LEDs zeigen den Status der Stromversorgung und des Lüfters an. Die beiden übrigen LEDs zeigen den Status des Notfallakkus in der Stromversorgungs- und Kühleinheit an. Sie können den Status der Stromversorgungs- und Kühleinheit anhand der folgenden Tabellen ermitteln.
 
 ### PCM-Indikator-LEDs für die Stromversorgung und den Lüfter
 | Status | PCM OK (grün) | Stromausfall (bernsteinfarben) | Lüfterfehler (bernsteinfarben) | Gleichstromfehler (bernsteinfarben) |
 |--------|----------------|-----------------------|------------------|----------------------|
 | Keine Stromversorgung (am Gehäuse) | OFF | OFF | OFF | OFF|
-| Keine Stromversorgung (nur diese PCM) | OFF | ON | OFF | ON |
-| Stromversorgung verfügbar, PCM EIN – OK | ON | OFF | OFF | OFF |
-| PCM-Fehler (Lüfterfehler) | OFF | OFF | ON | N/V |
-| PCM-Fehler (zu hohe Spannung oder Stromstärke) | OFF | ON | ON | ON |
-| PCM (Lüfter außerhalb des Toleranzbereichs) | ON | OFF | OFF | ON |
+| Keine Stromversorgung (nur diese PCM) | OFF | EIN | OFF | EIN |
+| Stromversorgung verfügbar, PCM EIN – OK | EIN | OFF | OFF | OFF |
+| PCM-Fehler (Lüfterfehler) | OFF | OFF | EIN | – |
+| PCM-Fehler (zu hohe Spannung oder Stromstärke) | OFF | EIN | EIN | ON |
+| PCM (Lüfter außerhalb des Toleranzbereichs) | EIN | OFF | OFF | EIN |
 | Standby-Modus | Blinken | OFF | OFF | OFF |
 | PCM-Firmwaredownload | OFF | Blinken | Blinken | Blinken |
 
@@ -100,10 +100,10 @@ Der Status der Stromversorgungs- und Kühleinheit (PCM) wird auf dem LED-Bedienf
 | Status | Akku OK (grün) | Akkufehler (bernsteinfarben) |
 |--------|----------------------|-----------------------|
 | Akku nicht vorhanden | OFF | OFF |
-| Akku vorhanden und aufgeladen | ON | OFF |
+| Akku vorhanden und aufgeladen | EIN | OFF |
 | Akku wird aufgeladen oder zur Wartung entladen | Blinken | OFF |
 | "Leichter" Akkufehler (wiederherstellbar) | OFF | Blinken |
-| "Schwerer" Akkufehler (nicht wiederherstellbar) | OFF | ON |
+| "Schwerer" Akkufehler (nicht wiederherstellbar) | OFF | EIN |
 | Akku deaktiviert | Blinken | OFF |
 
 ## LEDs der Stromversorgungs- und Kühleinheit (PCM) für das EBOD-Gehäuse  
@@ -117,11 +117,11 @@ Sie können den Status der PCM anhand der folgenden Tabelle ermitteln.
 | Status | PCM OK (grün) | Stromausfall (bernsteinfarben) | Lüfterfehler (bernsteinfarben) | Gleichstromfehler (bernsteinfarben) |
 |--------|---------------|------------------------|------------------|----------------------|
 | Keine Stromversorgung (am Gehäuse) | OFF | OFF | OFF | OFF |
-| Keine Stromversorgung (nur diese PCM) | OFF | ON | OFF | ON |
-| Stromversorgung verfügbar, PCM EIN – OK | ON | OFF | OFF | OFF |
-| PCM-Fehler (Lüfterfehler) | OFF | OFF | ON | X |
-| PCM-Fehler (zu hohe Spannung oder Stromstärke) | OFF | ON | ON | ON |
-| PCM (Lüfter außerhalb des Toleranzbereichs) | ON | OFF | OFF | ON |
+| Keine Stromversorgung (nur diese PCM) | OFF | EIN | OFF | EIN |
+| Stromversorgung verfügbar, PCM EIN – OK | EIN | OFF | OFF | OFF |
+| PCM-Fehler (Lüfterfehler) | OFF | OFF | EIN | X |
+| PCM-Fehler (zu hohe Spannung oder Stromstärke) | OFF | EIN | EIN | ON |
+| PCM (Lüfter außerhalb des Toleranzbereichs) | EIN | OFF | OFF | EIN |
 | Standby-Modus | Blinken | OFF | OFF | OFF |
 | PCM-Firmwaredownload | OFF | Blinken | Blinken | Blinken |
 
@@ -163,12 +163,7 @@ Anhand der folgenden Tabelle können Sie ermitteln, ob das EBOD-Controllermodul 
 
 |Status | E/A-Modul OK (grün) | E/A-Modulfehler (bernsteinfarben) | Aktivität am Hostport (grün) |
 |-------|----------------------|-------------------------------|----------------------------|
-| Controllermodul OK | EIN | AUS | - |
-| Controllermodulfehler | AUS | EIN | - |
-| Keine externe Hostportverbindung | - | - | AUS |
-| Externe Hostportverbindung – keine Aktivität | - | - | EIN |
-| Externe Hostportverbindung – Aktivität | - | - | Blinken |
-| Metadatenfehler des Controllermoduls | Blinken | - | - |
+| Controllermodul OK | EIN | AUS | - | | Controllermodulfehler | AUS | EIN | - | | Keine externe Hostportverbindung | - | - | AUS | | Externe Hostportverbindung – keine Aktivität | - | - | EIN | | Externe Hostportverbindung – Aktivität | - | - | Blinken | | Metadatenfehler des Controllermoduls | Blinken | - | - |
 
 ## Indikator-LEDs des Datenträgerlaufwerks am primären und am EBOD-Gehäuse
 
@@ -186,9 +181,9 @@ Anhand der folgenden Tabelle können Sie den Status der einzelnen Datenträgerla
 |-------|--------------------------|----------------------|-------------------------|
 | Kein Laufwerk installiert | OFF | OFF | Keine |
 | Laufwerk installiert und betriebsbereit | Blinken ein/aus bei Aktivität | X | Keine |
-| Identität des SES-Geräts (SCSI Enclosure Services) festgelegt | ON | Blinken eine Sekunde ein/eine Sekunde aus | Keine |
-| Fehlerbit des SES-Geräts festgelegt | ON | ON | Logischer Fehler (rot) |
-| Fehler des Energiesteuerungs-Schaltkreises | OFF | ON | Modulfehler (rot) |
+| Identität des SES-Geräts (SCSI Enclosure Services) festgelegt | EIN | Blinken eine Sekunde ein/eine Sekunde aus | Keine |
+| Fehlerbit des SES-Geräts festgelegt | EIN | EIN | Logischer Fehler (rot) |
+| Fehler des Energiesteuerungs-Schaltkreises | OFF | EIN | Modulfehler (rot) |
 
 ## Akustische Alarme  
 
@@ -201,7 +196,7 @@ Ein StorSimple-Gerät enthält akustische Alarme, die dem primären Gehäuse und
 - Systemfehler
 - Logischer Fehler
 - Stromversorgungsfehler
-- Entfernung einer Stromversorgungs- und Kühleinheit (Power Cooling Module, PCM)  
+- Entfernung einer Stromversorgungs- und Kühleinheit (Power Cooling Module, PCM)
 
 Die verschiedenen Alarmzustände werden in der folgenden Tabelle beschrieben.
 
@@ -217,9 +212,9 @@ Die verschiedenen Alarmzustände werden in der folgenden Tabelle beschrieben.
 
 > [AZURE.NOTE] 
 
->  - Wenn Sie im Alarmzustand S1 die Stummschalttaste nicht innerhalb von zwei Minuten drücken, erfolgt automatisch ein Übergang in den Zustand S2 oder S3.  
->  - Die Alarmzustände S1 bis S4 kehren zu S0 zurück, sobald die Fehlerbedingung behoben wurde.  
->  - Der kritische Fehlerzustand S4 kann aus jedem anderen Zustand erreicht werden.  
+>  - Wenn Sie im Alarmzustand S1 die Stummschalttaste nicht innerhalb von zwei Minuten drücken, erfolgt automatisch ein Übergang in den Zustand S2 oder S3.
+>  - Die Alarmzustände S1 bis S4 kehren zu S0 zurück, sobald die Fehlerbedingung behoben wurde.
+>  - Der kritische Fehlerzustand S4 kann aus jedem anderen Zustand erreicht werden.
 
 Der akustische Alarm kann durch Drücken der Stummschalttaste auf dem OPS-Bedienfeld stumm geschaltet werden. Die automatische Stummschaltung erfolgt nach zwei Minuten, wenn der Stummschalter nicht manuell betrieben wird. Wenn der Alarm stummgeschaltet wird, erfolgen weiterhin kurze, intermittierende Pieptöne, um anzuzeigen, dass weiterhin ein Problem vorliegt. Der Alarm verstummt, wenn alle Probleme behoben sind.
 
@@ -262,4 +257,4 @@ Weitere Informationen zu [StorSimple-Hardwarekomponenten und ihrem Status](stors
 
  
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0824_2016-->

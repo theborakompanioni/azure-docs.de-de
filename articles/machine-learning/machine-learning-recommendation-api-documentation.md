@@ -13,15 +13,18 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/05/2016" 
+	ms.date="08/17/2016" 
 	ms.author="LuisCa"/>
 
 #Azure Machine Learning-Empfehlungs-APIs – Dokumentation
 
-In diesem Dokument werden die Microsoft Azure Machine Learning-APIs für Empfehlungen erläutert.
+In diesem Dokument werden die Microsoft Azure Machine Learning-APIs für Empfehlungen erläutert, die im Marketplace verfügbar sind.
 
 
-[AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
+> Dies ist die Dokumentation zu den alten Empfehlungs-APIs im Datenmarkt, die zum 31.12.2016 eingestellt werden. Sie sollten ab jetzt die [Empfehlungs-API der Cognitive Services](https://www.microsoft.com/cognitive-services/de-DE/recommendations-api) verwenden.
+
+
+[AZURE.INCLUDE [machine-learning-kostenlose-Testversion](../../includes/machine-learning-free-trial.md)]
 
 ##1\. Allgemeine Übersicht
 Dieses Dokument ist eine API-Referenz. Beginnen Sie mit dem Dokument „Azure Machine Learning Recommendation – Quick Start“ (Empfehlungen zu Azure Machine Learning – Schnellstart).
@@ -92,10 +95,10 @@ Es wird eine Anforderung „Modell erstellen“ erstellt.
 
 |	Parametername |	Gültige Werte |
 |:--------			|:--------								|
-|	modelName |	Es sind nur Buchstaben (A-Z, a-z), Zahlen (0-9), Bindestriche (-) und Unterstriche (\_) zulässig.<br>Max. Länge: 20 | 
-| apiVersion | 1.0 | 
-||| 
-| Anforderungstext | NONE |
+|	modelName |	Es sind nur Buchstaben (A-Z, a-z), Zahlen (0-9), Bindestriche (-) und Unterstriche (\_) zulässig.<br>Max. Länge: 20 |
+|	apiVersion | 1,0 |
+|||
+| Anforderungstext | KEINE |
 
 
 **Antwort**:
@@ -278,7 +281,7 @@ Sie können die Modellbeschreibung oder die aktive Build-ID aktualisieren.<br> <
 |	id | Dies ist der eindeutige Bezeichner des Modells (Groß-/Kleinschreibung muss beachtet werden). |
 |	apiVersion | 1,0 |
 |||
-| Anforderungstext | `<ModelUpdateParams xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">`<br>`<Description>New Description</Description>`<br>`<ActiveBuildId>-1</ActiveBuildId>`<br>` </ModelUpdateParams>`<br><br>Beachten Sie, dass die Beschreibung und aktive Build-ID der XML-Tags optional sind. Wenn Sie keine Beschreibung oder aktive Build-ID festlegen möchten, entfernen Sie das gesamte Tag.|
+| Anforderungstext | `<ModelUpdateParams xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">`<br>`<Description>New Description</Description>`<br>`<ActiveBuildId>-1</ActiveBuildId>`<br>` </ModelUpdateParams>`<br><br>Beachten Sie, dass die XML-Tags „Description“ und „ActiveBuildId“ optional sind. Wenn Sie keine Beschreibung oder aktive Build-ID festlegen möchten, entfernen Sie das gesamte Tag.|
 
 **Antwort**:
 
@@ -289,7 +292,7 @@ Löscht ein vorhandenes Modell nach ID.
 
 | HTTP-Methode | URI |
 |:--------|:--------|
-|LÖSCHEN |`<rootURI>/DeleteModel?id=%27<model_id>%27&apiVersion=%271.0%27`<br>Beispiel:<br>`<rootURI>/DeleteModel?id=%271cac7b76-def4-41f1-bc81-29b806adb1de%27&apiVersion=%271.0%27`|
+|DELETE |`<rootURI>/DeleteModel?id=%27<model_id>%27&apiVersion=%271.0%27`<br>Beispiel:<br>`<rootURI>/DeleteModel?id=%271cac7b76-def4-41f1-bc81-29b806adb1de%27&apiVersion=%271.0%27`|
 
 |	Parametername |	Gültige Werte |
 |:--------			|:--------								|
@@ -800,9 +803,9 @@ d5358189-d70f-4e35-8add-34b83b4942b3, Pigs in Heaven
 ##7\. Modellgeschäftsregeln
 
 Diese Regeltypen werden unterstützt:
-- <strong>BlockList</strong>: Mit dieser Funktion können Sie eine Sperrliste mit Elementen erstellen, die nicht in den Empfehlungsergebnissen zurückgegeben werden sollen. 
+- <strong>BlockList</strong>: Mit dieser Funktion können Sie eine Liste der Elemente erstellen, die nicht in den Empfehlungsergebnissen zurückgegeben werden sollen.
 
-- <strong>FeatureBlockList</strong>: Hiermit können Sie Elemente basierend auf den Werten ihrer Funktionen blockieren.
+- <strong>FeatureBlockList</strong>: Hiermit können Sie Elemente basierend auf den Werten ihrer Features blockieren.
 
 *Senden Sie in einer einzelnen Blocklistenregel nicht mehr als 1000 Elemente, um eine Zeitüberschreitung beim Aufruf zu vermeiden. Wenn Sie mehr als 1000 Elemente blockieren müssen, können Sie mehrere Blocklisten aufrufen.*
 
@@ -810,7 +813,7 @@ Diese Regeltypen werden unterstützt:
 
 - <strong>WhiteList</strong>: Hiermit können Sie ausschließlich Empfehlungen aus einer Liste von Elementen vorschlagen.
 
-- <strong>FeatureWhiteList</strong>: Hiermit können Sie ausschließlich Elemente empfehlen, die bestimmte Funktionswerte haben.
+- <strong>FeatureWhiteList</strong>: Hiermit können Sie ausschließlich Elemente empfehlen, die bestimmte Featurewerte haben.
 
 - <strong>PerSeedBlockList</strong>: Mit dieser Funktion können Sie eine Sperrliste pro Startwert erstellen, um für jedes Element eine Liste von Elementen festzulegen, die nicht in den Empfehlungsergebnissen zurückgegeben werden sollen.
 
@@ -887,7 +890,7 @@ OData-XML
 |	apiVersion | 1,0 |
 |||
 | Anforderungstext | 
-<ins>Stellen Sie beim Bereitstellen von Element-IDs für Geschäftsregeln sicher, dass Sie die externe ID des Elements verwenden (die gleiche ID, die Sie in der Katalogdatei verwendet haben)</ins><br> <ins>Zum Hinzufügen einer BlockList-Regel:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>BlockList</Type><Value>{"ItemsToExclude":["2406E770-769C-4189-89DE-1C9283F93A96","3906E110-769C-4189-89DE-1C9283F98888"]}</Value></ApiFilter>`<br><br><ins> <ins>Zum Hinzufügen einer FeatureBlockList-Regel:</ins><br> <br> `<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>FeatureBlockList</Type><Value>{"Name":"Movie_category","Values":["Adult","Drama"]}</Value></ApiFilter>`<br><br><ins> Zum Hinzufügen einer Upsale-Regel:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>Upsale</Type><Value>{"ItemsToUpsale":["2406E770-769C-4189-89DE-1C9283F93A96"],"NumberOfItemsToUpsale":5}</Value></ApiFilter>`<br><br> <ins>Zum Hinzufügen einer WhiteList-Regel:</ins><br> `<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>WhiteList</Type><Value>{"ItemsToInclude":["2406E770-769C-4189-89DE-1C9283F93A96","1116E770-769C-4189-89DE-1C9283F88888"]}</Value></ApiFilter>`<br><br><ins> <ins>Zum Hinzufügen einer FeatureWhiteList-Regel:</ins><br> <br> `<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>FeatureWhiteList</Type><Value>{"Name":"Movie_rating","Values":["PG13"]}</Value></ApiFilter>`<br><br><ins> Zum Hinzufügen einer PerSeedBlockList-Regel:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>PerSeedBlockList</Type><Value>{"SeedItems":["9949"],"ItemsToExclude":["9862","8158","8244"]}</Value></ApiFilter>`|
+<ins>Wenn Sie Element-IDs für Geschäftsregeln bereitstellen, stellen Sie sicher, dass Sie die externe ID des Elements verwenden (dies ist die ID, die Sie in der Katalogdatei verwendet haben)</ins><br> <ins>Hinzufügen einer BlockList-Regel:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>BlockList</Type><Value>{"ItemsToExclude":["2406E770-769C-4189-89DE-1C9283F93A96","3906E110-769C-4189-89DE-1C9283F98888"]}</Value></ApiFilter>`<br><br><ins> <ins>Hinzufügen einer FeatureBlockList-Regel:</ins><br> <br> `<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>FeatureBlockList</Type><Value>{"Name":"Movie_category","Values":["Adult","Drama"]}</Value></ApiFilter>`<br><br><ins> Hinzufügen einer Upsale-Regel:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>Upsale</Type><Value>{"ItemsToUpsale":["2406E770-769C-4189-89DE-1C9283F93A96"],"NumberOfItemsToUpsale":5}</Value></ApiFilter>`<br><br> <ins>Hinzufügen einer WhiteList-Regel:</ins><br> `<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>WhiteList</Type><Value>{"ItemsToInclude":["2406E770-769C-4189-89DE-1C9283F93A96","1116E770-769C-4189-89DE-1C9283F88888"]}</Value></ApiFilter>`<br><br><ins> <ins>Hinzufügen einer FeatureWhiteList-Regel:</ins><br> <br> `<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>FeatureWhiteList</Type><Value>{"Name":"Movie_rating","Values":["PG13"]}</Value></ApiFilter>`<br><br><ins> Hinzufügen einer PerSeedBlockList-Regel:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>PerSeedBlockList</Type><Value>{"SeedItems":["9949"],"ItemsToExclude":["9862","8158","8244"]}</Value></ApiFilter>`|
 
 
 **Antwort**:
@@ -928,7 +931,7 @@ OData-XML
 
 | HTTP-Methode | URI |
 |:--------|:--------|
-|LÖSCHEN |`<rootURI>/DeleteRule?modelId=%27<model_id>%27&filterId=%27<filter_Id>%27&apiVersion=%271.0%27`<br><br>Beispiel:<br>`DeleteRule?modelId=%2724024f7e-b45c-419e-bfa2-dfd947e0d253%27&filterId=%271000011%27&apiVersion=%271.0%27`|
+|DELETE |`<rootURI>/DeleteRule?modelId=%27<model_id>%27&filterId=%27<filter_Id>%27&apiVersion=%271.0%27`<br><br>Beispiel:<br>`DeleteRule?modelId=%2724024f7e-b45c-419e-bfa2-dfd947e0d253%27&filterId=%271000011%27&apiVersion=%271.0%27`|
 
 |	Parametername |	Gültige Werte |
 |:--------			|:--------								|
@@ -946,7 +949,7 @@ HTTP-Statuscode: 200
 
 | HTTP-Methode | URI |
 |:--------|:--------|
-|LÖSCHEN |`<rootURI>/DeleteAllRules?modelId=%27<model_id>%27&apiVersion=%271.0%27`<br><br>Beispiel:<br>`DeleteAllRules?modelId=%2724024f7e-b45c-419e-bfa2-dfd947e0d253%27&apiVersion=%271.0%27`|
+|DELETE |`<rootURI>/DeleteAllRules?modelId=%27<model_id>%27&apiVersion=%271.0%27`<br><br>Beispiel:<br>`DeleteAllRules?modelId=%2724024f7e-b45c-419e-bfa2-dfd947e0d253%27&apiVersion=%271.0%27`|
 
 |	Parametername |	Gültige Werte |
 |:--------			|:--------								|
@@ -973,15 +976,15 @@ Die Katalogdaten müssen das folgende Format aufweisen:
 
 Hinweis: Die maximale Dateigröße beträgt 200 MB.
 
-** Formatdetails **
+**Formatdetails**
 
 | Name | Erforderlich | Typ | Beschreibung |
 |:---|:---|:---|:---|
-| Element-ID |Ja | [A-z], [a-z], [0-9], [\_] &#40;Unterstrich&#41;, [-] &#40;Bindestrich&#41;<br> Max. Länge: 50 | Eindeutiger Bezeichner eines Elements. | 
-| Elementname | Ja | Alle alphanumerischen Zeichen<br> Max. Länge: 255 | Elementname. | 
-| Elementkategorie | Ja | Alle alphanumerischen Zeichen <br> Max. Länge: 255 | Kategorie, zu der dieses Element gehört (z. B. Kochbücher, Drama …). Darf leer sein. | 
-| Beschreibung | Nein, es sei denn, es sind Features vorhanden (darf jedoch leer sein) | Alle alphanumerischen Zeichen <br> Max. Länge: 4000 | Dies ist die Beschreibung des Elements. | 
-| Featureliste | Nein | Alle alphanumerischen Zeichen <br> Max. Länge: 4000; Max. Anzahl von Features: 20 | Dies ist eine kommagetrennte Liste im Format „Featurename=Featurewert“ zum Verbessern der Modellempfehlung; siehe Abschnitt [Erweiterte Themen](#2-advanced-topics). |
+| Element-ID |Ja | [A-z], [a-z], [0-9], [\_] &#40;Unterstrich&#41;, [-] &#40;Binde&#41;<br> Max. Länge: 50 | Dies ist der eindeutige Bezeichner eines Elements. |
+| Item Name | Ja | Alle alphanumerischen Zeichen<br> Max. Länge: 255 | Dies ist der Name des Elements. | 
+| Item Category | Ja | Alle alphanumerischen Zeichen <br> Max. Länge: 255 | Kategorie, zu der dieses Element gehört (z. B. Kochbücher, Drama ...). Darf leer sein. |
+| Beschreibung | Nein, es sei denn, es sind Features vorhanden (darf jedoch leer sein) | Alle alphanumerischen Zeichen<br> Max. Länge: 4000 | Dies ist die Beschreibung des Elements. |
+| Features list | Nein | Alle alphanumerischen Zeichen <br> Max. Länge: 4000; max. Anzahl von Features : 20 | Eine durch Trennzeichen getrennte Liste mit Featurenamen und zugehörigen Featurewerten, die zur Erweiterung der Modellempfehlung verwendet werden können. Siehe Abschnitt [Erweiterte Themen](#2-advanced-topics). |
 
 
 | HTTP-Methode | URI |
@@ -992,10 +995,10 @@ Hinweis: Die maximale Dateigröße beträgt 200 MB.
 |	Parametername |	Gültige Werte |
 |:--------			|:--------								|
 |	modelId |	Dies ist der eindeutige Bezeichner des Modells. |
-| filename | Textbezeichner des Katalogs.<br>Es sind nur Buchstaben (A-Z, a-z), Zahlen (0-9), Bindestriche (-) und Unterstrich (\_) zulässig.<br>Max. Länge: 50 | 
-| apiVersion | 1.0 | 
-||| 
-| Anforderungstext | Beispiel (mit Features):<br/>2406e770-769c-4189-89de-1c9283f93a96,Clara Callan,Book,the book description,author=Richard Wright,publisher=Harper Flamingo Canada,year=2001<br>21bf8088-b6c0-4509-870c-e1c7ac78304a,The Forgetting Room: A Fiction (Byzantium Book),Book,,author=Nick Bantock,publisher=Harpercollins,year=1997<br>3bb5cb44-d143-4bdd-a55c-443964bf4b23,Spadework,Book,,author=Timothy Findley, publisher=HarperFlamingo Canada, year=2001<br>552a1940-21e4-4399-82bb-594b46d7ed54,Restraint of Beasts,Book,the book description,author=Magnus Mills, publisher=Arcade Publishing, year=1998</pre> |
+| filename | Dies ist ein Textbezeichner des Katalogs.<br>Es sind nur Buchstaben (A-Z, a-z), Zahlen (0-9), Bindestriche (-) und Unterstriche (\_) zulässig.<br>Max. Länge: 50 |
+|	apiVersion | 1,0 |
+|||
+| Anforderungstext | Beispiel (mit Features):<br/>2406e770-769c-4189-89de-1c9283f93a96,Clara Callan,Buch,Buchbeschreibung,Autor=Richard Wright,Verlag=Harper Flamingo Canada,Jahr=2001<br>21bf8088-b6c0-4509-870c-e1c7ac78304a,The Forgetting Room: A Fiction (Byzantium Book),Buch,Autor=Nick Bantock,Verlag=Harpercollins,Jahr=1997<br>3bb5cb44-d143-4bdd-a55c-443964bf4b23,Spadework,Buch,Autor=Timothy Findley,Verlag=HarperFlamingo Canada, Jahr=2001<br>552a1940-21e4-4399-82bb-594b46d7ed54,Restraint of Beasts,Buch,Buchbeschreibung,Autor=Magnus Mills, Verlag=Arcade Publishing,Jahr=1998</pre> |
 
 
 **Antwort**:
@@ -1154,10 +1157,10 @@ Die Antwort enthält einen Eintrag pro Katalogelement. Jeder Eintrag enthält di
 
 - `feed/entry/content/properties/InternalId`: Dies ist die interne Katalogelement-ID, die von den Azure Machine Learning-Empfehlungen generiert wurde.
 - `feed/entry/content/properties/Name`: Dies ist der Name des Katalogelements.
-- `feed/entry/content/properties/Rating` – (für künftige Verwendung)
-- `feed/entry/content/properties/Reasoning` – (für künftige Verwendung)
-- `feed/entry/content/properties/Metadata` – (für künftige Verwendung)
-- `feed/entry/content/properties/FormattedRating` – (für künftige Verwendung)
+- `feed/entry/content/properties/Rating` – (zur künftigen Verwendung)
+- `feed/entry/content/properties/Reasoning` – (zur künftigen Verwendung)
+- `feed/entry/content/properties/Metadata` – (zur künftigen Verwendung)
+- `feed/entry/content/properties/FormattedRating` – (zur künftigen Verwendung)
 
 OData-XML
 
@@ -1198,10 +1201,10 @@ In diesem Abschnitt wird gezeigt, wie Nutzungsdaten mithilfe einer Datei hochgel
 |	Parametername |	Gültige Werte |
 |:--------			|:--------								|
 |	modelId |	Dies ist der eindeutige Bezeichner des Modells. |
-| filename | Textbezeichner des Katalogs.<br>Es sind nur Buchstaben (A-Z, a-z), Zahlen (0-9), Bindestriche (-) und Unterstriche (_) zulässig.<br>Max. Länge: 50 | 
-| apiVersion | 1.0 | 
-||| 
-| Anforderungstext | Nutzungsdaten. Format:<br>`<User Id>,<Item Id>[,<Time>,<Event>]`<br><br><table><tr><th>Name</th><th>Obligatorisch</th><th>Typ</th><th>Beschreibung</th></tr><tr><td>Benutzer-ID</td><td>Ja</td><td>[A-z], [a-z], [0-9], [_] &#40;Unterstrich&#41;, [-] &#40;Bindestrich&#41;<br> Max. Länge: 255 </td><td>Eindeutiger Bezeichner eines Benutzers.</td></tr><tr><td>Element-ID</td><td>Ja</td><td>[A-z], [a-z], [0-9], [&#95;] &#40;Unterstrich&#41;, [-] &#40;Bindestrich&#41;<br> Max. Länge: 50</td><td>Eindeutiger Bezeichner eines Elements.</td></tr><tr><td>Zeit</td><td>Nein</td><td>Datum im Format: JJJJ/MM/TTTHH:MM:SS (z. B. 2013/06/20T10:00:00)</td><td>Zeitstempel der Daten.</td></tr><tr><td>Ereignis</td><td>Nein; wenn bereitgestellt, muss auch ein Datum angegeben werden</td><td>Eins der Folgenden:<br>• Click<br>• RecommendationClick<br>• AddShopCart<br>• RemoveShopCart<br>• Purchase</td><td></td></tr></table><br>Max. Dateigröße: 200MB<br><br>Beispiel:<br><pre>149452,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>6360,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>50321,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>71285,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>224450,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>236645,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>107951,1b3d95e2-84e4-414c-bb38-be9cf461c347</pre> |
+| filename | Dies ist ein Textbezeichner des Katalogs.<br>Es sind nur Buchstaben (A-Z, a-z), Zahlen (0-9), Bindestriche (-) und Unterstriche (\_) zulässig.<br>Max. Länge: 50 |
+|	apiVersion | 1,0 |
+|||
+| Anforderungstext | Nutzungsdaten. Format:<br>`<User Id>,<Item Id>[,<Time>,<Event>]`<br><br><table><tr><th>Name</th><th>Obligatorisch</th><th>Typ</th><th>Beschreibung</th></tr><tr><td>Benutzer-ID</td><td>Ja</td><td>[A-z], [a-z], [0-9], [\_] &#40;Unterstrich&#41;, [-] &#40;Bindestrich&#41;<br> Max. Länge: 255 </td><td>Eindeutiger Bezeichner eines Benutzers.</td></tr><tr><td>Element-ID</td><td>Ja</td><td>[A-z], [a-z], [0-9], [&#95;] &#40;Unterstrich&#41;, [-] &#40;Bindestrich&#41;<br> Max. Länge: 50</td><td>Eindeutiger Bezeichner eines Elements.</td></tr><tr><td>Uhrzeit</td><td>Nein</td><td>Datum im Format: JJJJ/MM/TTTHH:MM:SS (z.B. 2013/06/20T10:00:00)</td><td>Uhrzeit der Daten.</td></tr><tr><td>Event</td><td>Nein. Bei Bereitstellung muss auch Datum angegeben werden.</td><td>Eins der folgenden:<br>• Klick<br>• RecommendationClick<br>• AddShopCart<br>• RemoveShopCart<br>• Kauf</td><td></td></tr></table><br>Max. Dateigröße: 200 MB<br><br>Beispiel:<br><pre>149452,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>6360,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>50321,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>71285,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>224450,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>236645,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>107951,1b3d95e2-84e4-414c-bb38-be9cf461c347</pre> |
 
 **Antwort**:
 
@@ -1601,7 +1604,7 @@ Hierdurch wird die angegebene Modellnutzungsdatei gelöscht.
 
 | HTTP-Methode | URI |
 |:--------|:--------|
-|LÖSCHEN |`<rootURI>/DeleteUsageFile?modelId=%27<modelId>%27&fileId=%27<fileId>%27&apiVersion=%271.0%27`<br><br>Beispiel:<br>`<rootURI>/DeleteUsageFile?modelId=%270f86d698-d0f4-4406-a684-d13d22c47a73%27&fileId=%27f2e0b09d-be5c-46b2-9ac2-c7f622e5e1a5%27&apiVersion=%271.0%27`|
+|DELETE |`<rootURI>/DeleteUsageFile?modelId=%27<modelId>%27&fileId=%27<fileId>%27&apiVersion=%271.0%27`<br><br>Beispiel:<br>`<rootURI>/DeleteUsageFile?modelId=%270f86d698-d0f4-4406-a684-d13d22c47a73%27&fileId=%27f2e0b09d-be5c-46b2-9ac2-c7f622e5e1a5%27&apiVersion=%271.0%27`|
 
 | Parametername |	Gültige Werte |
 |:--------			|:--------								|
@@ -1621,7 +1624,7 @@ Hierdurch werden alle Modellnutzungsdateien gelöscht.
 
 | HTTP-Methode | URI |
 |:--------|:--------|
-|LÖSCHEN |`<rootURI>/DeleteAllUsageFiles?modelId=%27<modelId>%27&apiVersion=%271.0%27`<br><br>Beispiel:<br>`<rootURI>/DeleteAllUsageFiles?modelId=%271c1110f8-7d9f-4c64-a807-4c9c5329993a%27&apiVersion=%271.0%27`|
+|DELETE |`<rootURI>/DeleteAllUsageFiles?modelId=%27<modelId>%27&apiVersion=%271.0%27`<br><br>Beispiel:<br>`<rootURI>/DeleteAllUsageFiles?modelId=%271c1110f8-7d9f-4c64-a807-4c9c5329993a%27&apiVersion=%271.0%27`|
 
 | Parametername |	Gültige Werte |
 |:--------			|:--------								|
@@ -1634,10 +1637,8 @@ Hierdurch werden alle Modellnutzungsdateien gelöscht.
 
 HTTP-Statuscode: 200
 
-##10\. Merkmale
-In diesem Abschnitt wird gezeigt, wie Featureinformationen abgerufen werden, z. B. die importierten Features, ihre Werte und ihr Rang, und wann dieser Rang zugeordnet wurde. Features werden als Teil der Katalogdaten importiert, und wenn ein Rangfolgebuild abgeschlossen ist, wird ihnen ein Rang zugeordnet. 
-Der Rang der Features kann sich je nach Nutzungsdatenmuster und Elementtyp ändern. Bei konsistenter Nutzung und konsistenten Elementen dürfte der Rang jedoch nur geringfügigen Schwankungen unterliegen. 
-Der Rang eines Features ist eine nicht-negative Zahl. Die Zahl 0 bedeutet, dass das Feature noch nicht eingestuft wurde (dies ist der Fall, wenn diese API vor dem Abschluss des ersten Rangfolgebuilds aufgerufen wurde). Das Datum, an dem der Rang zugeordnet wurde, wird als Aktualität der Bewertung bezeichnet.
+##10\. Features
+In diesem Abschnitt wird gezeigt, wie Featureinformationen abgerufen werden, z. B. die importierten Features, ihre Werte und ihr Rang, und wann dieser Rang zugeordnet wurde. Features werden als Teil der Katalogdaten importiert, und wenn ein Rangfolgebuild abgeschlossen ist, wird ihnen ein Rang zugeordnet. Der Rang der Features kann sich je nach Nutzungsdatenmuster und Elementtyp ändern. Bei konsistenter Nutzung und konsistenten Elementen dürfte der Rang jedoch nur geringfügigen Schwankungen unterliegen. Der Rang eines Features ist eine nicht-negative Zahl. Die Zahl 0 bedeutet, dass das Feature noch nicht eingestuft wurde (dies ist der Fall, wenn diese API vor dem Abschluss des ersten Rangfolgebuilds aufgerufen wurde). Das Datum, an dem der Rang zugeordnet wurde, wird als Aktualität der Bewertung bezeichnet.
 
 ###10\.1. Featureinformationen abrufen (für den letzten Rangfolgebuild)
 Hierdurch werden Featureinformationen einschließlich Rang für den letzten erfolgreichen Rangfolgebuild abgerufen.
@@ -1816,7 +1817,7 @@ Rangfolgebuilds sind technische Builds, welche die Nützlichkeit Ihrer Features 
 - Rufen Sie den Rang Ihrer Features durch einen Aufruf der [Get Features Info](#101-get-features-info-for-last-rank-build)-API ab.
 - Konfigurieren Sie einen Empfehlungsbuild mit den folgenden Parametern:
 	- `useFeatureInModel`: Auf „True“ festlegen.
-	- `ModelingFeatureList`: Auf eine kommagetrennte Liste mit einer Bewertung von mindestens 2.0 festlegen (je nach den im vorigen Schritt abgerufenen Rängen).
+	- `ModelingFeatureList`: Auf eine durch Trennzeichen getrennte Liste mit Features mit einer Bewertung von 2.0 oder höher festlegen (gemäß den im vorherigen Schritt abgerufenen Rängen).
 	- `AllowColdItemPlacement`: Auf „True“ festlegen.
 	- Optional können Sie `EnableFeatureCorrelation` auf „True“ und `ReasoningFeatureList` auf die Liste der Features festlegen, die Sie bei Erläuterungen verwenden möchten (meist ist das die Featureliste, die beim Modellieren verwendet wird, oder eine Unterliste).
 - Lösen Sie den Empfehlungsbuild mit den konfigurierten Parametern aus.
@@ -1843,24 +1844,24 @@ In der folgenden Tabelle sind die Parameter für Rangfolgebuilds aufgeführt.
 
 |Schlüssel|Beschreibung|Typ|Gültiger Wert|
 |:-----|:----|:----|:---|
-|NumberOfModelIterations | Die Anzahl der Iterationen, die vom Modell ausgeführt werden, beeinflusst die Gesamtrechenzeit sowie die Modellgenauigkeit. Je höher die Anzahl, desto höher die Genauigkeit, aber auch die Rechenzeit.| Ganze Zahl | 10-50 |
-| NumberOfModelDimensions | Die Anzahl der Dimensionen bezieht sich auf die Anzahl der „Features“, die vom Modell in Ihren Daten gesucht werden. Wenn Sie die Anzahl der Dimensionen erhöhen, können Sie die Ergebnisse in kleineren Clustern feiner abstimmen. Durch zu viele Dimensionen wird jedoch verhindert, dass Korrelationen zwischen den Elementen gefunden werden. | Ganze Zahl | 10-40 |
-|ItemCutOffLowerBound| Hierdurch wird die Elementuntergrenze des Kondensators definiert. Siehe Abschnitt „Nutzungskondensator“ oben. | Ganze Zahl | Mindestens 2 (durch 0 wird der Kondensator deaktiviert) |
-|ItemCutOffUpperBound| Hierdurch wird die Elementobergrenze des Kondensators definiert. Siehe Abschnitt „Nutzungskondensator“ oben. | Ganze Zahl | Mindestens 2 (durch 0 wird der Kondensator deaktiviert) |
-|UserCutOffLowerBound| Hierdurch wird die Benutzeruntergrenze des Kondensators definiert. Siehe Abschnitt „Nutzungskondensator“ oben. | Ganze Zahl | Mindestens 2 (durch 0 wird der Kondensator deaktiviert) |
-|UserCutOffUpperBound| Hierdurch wird die Benutzerobergrenze des Kondensators definiert. Siehe Abschnitt „Nutzungskondensator“ oben. | Ganze Zahl | Mindestens 2 (durch 0 wird der Kondensator deaktiviert) |
+|NumberOfModelIterations | Die Anzahl der Iterationen, die vom Modell ausgeführt werden, beeinflusst die Gesamtrechenzeit sowie die Modellgenauigkeit. Je höher die Anzahl, desto höher die Genauigkeit, aber auch die Rechenzeit.| Integer | 10-50 |
+| NumberOfModelDimensions | Die Anzahl der Dimensionen bezieht sich auf die Anzahl der „Features“, die vom Modell in Ihren Daten gesucht werden. Wenn Sie die Anzahl der Dimensionen erhöhen, können Sie die Ergebnisse in kleineren Clustern feiner abstimmen. Durch zu viele Dimensionen wird jedoch verhindert, dass Korrelationen zwischen den Elementen gefunden werden. | Integer | 10-40 |
+|ItemCutOffLowerBound| Hierdurch wird die Elementuntergrenze des Kondensators definiert. Siehe Abschnitt „Nutzungskondensator“ oben. | Integer | Mindestens 2 (durch 0 wird der Kondensator deaktiviert) |
+|ItemCutOffUpperBound| Hierdurch wird die Elementobergrenze des Kondensators definiert. Siehe Abschnitt „Nutzungskondensator“ oben. | Integer | Mindestens 2 (durch 0 wird der Kondensator deaktiviert) |
+|UserCutOffLowerBound| Hierdurch wird die Benutzeruntergrenze des Kondensators definiert. Siehe Abschnitt „Nutzungskondensator“ oben. | Integer | Mindestens 2 (durch 0 wird der Kondensator deaktiviert) |
+|UserCutOffUpperBound| Hierdurch wird die Benutzerobergrenze des Kondensators definiert. Siehe Abschnitt „Nutzungskondensator“ oben. | Integer | Mindestens 2 (durch 0 wird der Kondensator deaktiviert) |
 
 #####11\.1.3. Parameter für Empfehlungsbuilds
 In der folgenden Tabelle sind die Parameter für Empfehlungsbuilds aufgeführt.
 
 |Schlüssel|Beschreibung|Typ|Gültiger Wert|
 |:-----|:----|:----|:---|
-|NumberOfModelIterations | Die Anzahl der Iterationen, die vom Modell ausgeführt werden, beeinflusst die Gesamtrechenzeit sowie die Modellgenauigkeit. Je höher die Anzahl, desto höher die Genauigkeit, aber auch die Rechenzeit.| Ganze Zahl | 10-50 |
-| NumberOfModelDimensions | Die Anzahl der Dimensionen bezieht sich auf die Anzahl der „Features“, die vom Modell in Ihren Daten gesucht werden. Wenn Sie die Anzahl der Dimensionen erhöhen, können Sie die Ergebnisse in kleineren Clustern feiner abstimmen. Durch zu viele Dimensionen wird jedoch verhindert, dass Korrelationen zwischen den Elementen gefunden werden. | Ganze Zahl | 10-40 |
-|ItemCutOffLowerBound| Hierdurch wird die Elementuntergrenze des Kondensators definiert. Siehe Abschnitt „Nutzungskondensator“ oben. | Ganze Zahl | Mindestens 2 (durch 0 wird der Kondensator deaktiviert) |
-|ItemCutOffUpperBound| Hierdurch wird die Elementobergrenze des Kondensators definiert. Siehe Abschnitt „Nutzungskondensator“ oben. | Ganze Zahl | Mindestens 2 (durch 0 wird der Kondensator deaktiviert) |
-|UserCutOffLowerBound| Hierdurch wird die Benutzeruntergrenze des Kondensators definiert. Siehe Abschnitt „Nutzungskondensator“ oben. | Ganze Zahl | Mindestens 2 (durch 0 wird der Kondensator deaktiviert) |
-|UserCutOffUpperBound| Hierdurch wird die Benutzerobergrenze des Kondensators definiert. Siehe Abschnitt „Nutzungskondensator“ oben. | Ganze Zahl | Mindestens 2 (durch 0 wird der Kondensator deaktiviert) |
+|NumberOfModelIterations | Die Anzahl der Iterationen, die vom Modell ausgeführt werden, beeinflusst die Gesamtrechenzeit sowie die Modellgenauigkeit. Je höher die Anzahl, desto höher die Genauigkeit, aber auch die Rechenzeit.| Integer | 10-50 |
+| NumberOfModelDimensions | Die Anzahl der Dimensionen bezieht sich auf die Anzahl der „Features“, die vom Modell in Ihren Daten gesucht werden. Wenn Sie die Anzahl der Dimensionen erhöhen, können Sie die Ergebnisse in kleineren Clustern feiner abstimmen. Durch zu viele Dimensionen wird jedoch verhindert, dass Korrelationen zwischen den Elementen gefunden werden. | Integer | 10-40 |
+|ItemCutOffLowerBound| Hierdurch wird die Elementuntergrenze des Kondensators definiert. Siehe Abschnitt „Nutzungskondensator“ oben. | Integer | Mindestens 2 (durch 0 wird der Kondensator deaktiviert) |
+|ItemCutOffUpperBound| Hierdurch wird die Elementobergrenze des Kondensators definiert. Siehe Abschnitt „Nutzungskondensator“ oben. | Integer | Mindestens 2 (durch 0 wird der Kondensator deaktiviert) |
+|UserCutOffLowerBound| Hierdurch wird die Benutzeruntergrenze des Kondensators definiert. Siehe Abschnitt „Nutzungskondensator“ oben. | Integer | Mindestens 2 (durch 0 wird der Kondensator deaktiviert) |
+|UserCutOffUpperBound| Hierdurch wird die Benutzerobergrenze des Kondensators definiert. Siehe Abschnitt „Nutzungskondensator“ oben. | Integer | Mindestens 2 (durch 0 wird der Kondensator deaktiviert) |
 | Beschreibung | Dies ist eine Beschreibung des Builds. | String | Beliebiger Text, maximal 512 Zeichen |
 | EnableModelingInsights | Hiermit können Sie Metriken zum Empfehlungsmodell verarbeiten. | Boolean | True/False |
 | UseFeaturesInModel | Hier wird angegeben, ob Features verwendet werden können, um das Empfehlungsmodell zu verbessern. | Boolean | True/False |
@@ -1875,8 +1876,8 @@ In der folgenden Tabelle sind die Parameter für Empfehlungsbuilds aufgeführt.
 
 |Schlüssel|Beschreibung|Typ|Gültiger Wert (Standard)|
 |:-----|:----|:----|:---|
-|FbtSupportThreshold | Dies ist ein Maß dafür, wie konservativ das Modell ist. Dies ein Maß für die Grauwerte von Elementen, die bei der Modellierung berücksichtigt werden.| Ganze Zahl | 3-50 (6) |
-|FbtMaxItemSetSize | Begrenzt die Anzahl der Elemente in einem häufigen Satz.| Ganze Zahl | 2-3 (2) |
+|FbtSupportThreshold | Dies ist ein Maß dafür, wie konservativ das Modell ist. Dies ein Maß für die Grauwerte von Elementen, die bei der Modellierung berücksichtigt werden.| Integer | 3-50 (6) |
+|FbtMaxItemSetSize | Begrenzt die Anzahl der Elemente in einem häufigen Satz.| Integer | 2-3 (2) |
 |FbtMinimalScore | Dies ist die Mindestbewertung, die ein häufiger Satz haben muss, um in die zurückgegebenen Ergebnisse eingeschlossen zu werden. Höhere Bewertungen sind besser als niedrigere.| Doppelt | 0 und höher (0) |
 |FbtSimilarityFunction | Definiert die Ähnlichkeitsfunktion, die vom Build verwendet werden soll. „Lift“ fördert Zufall, „Co-occurrence“ fördert Vorhersagbarkeit und „Jaccard“ stellt einen Kompromiss zwischen beiden dar. | String | cooccurrence, lift, jaccard (lift) |
 
@@ -1897,7 +1898,7 @@ In der folgenden Tabelle sind die Parameter für Empfehlungsbuilds aufgeführt.
 | userDescription | Dies ist der Textbezeichner des Katalogs. Beachten Sie, dass Sie bei Verwendung von Leerzeichen diese stattdessen mit "%20" codieren müssen. Siehe Beispiel oben. <br>Max. Länge: 50 |
 | apiVersion | 1,0 |
 |||
-| Anforderungstext | Wenn das Feld leer gelassen wird, wird der Build mit den Standardbuildparametern ausgeführt.<br><br>Wenn Sie die Buildparameter festlegen möchten, senden Sie sie wie im folgenden Beispiel als XML in den Textkörper. (Eine Erläuterung der Parameter finden Sie im Abschnitt „Buildparameter“.)`<NumberOfModelIterations>40</NumberOfModelIterations><NumberOfModelDimensions>20</NumberOfModelDimensions><MinItemAppearance>5</MinItemAppearance><MinUserAppearance>5</MinUserAppearance><EnableModelingInsights>true</EnableModelingInsights><UseFeaturesInModel>false</UseFeaturesInModel><ModelingFeatureList>feature_name_1,feature_name_2,...</ModelingFeatureList><AllowColdItemPlacement>false</AllowColdItemPlacement><EnableFeatureCorrelation>false</EnableFeatureCorrelation><ReasoningFeatureList>feature_name_a,feature_name_b,...</ReasoningFeatureList></BuildParametersList>` |
+| Anforderungstext | Wenn das Feld leer gelassen wird, wird der Build mit den Standardbuildparametern ausgeführt.<br><br>Wenn Sie Buildparameter festlegen möchten, senden Sie diese wie im folgenden Beispiel als XML in den Textkörper. (Eine Erläuterung der Parameter finden Sie im Abschnitt „Buildparameter“.)`<NumberOfModelIterations>40</NumberOfModelIterations><NumberOfModelDimensions>20</NumberOfModelDimensions><MinItemAppearance>5</MinItemAppearance><MinUserAppearance>5</MinUserAppearance><EnableModelingInsights>true</EnableModelingInsights><UseFeaturesInModel>false</UseFeaturesInModel><ModelingFeatureList>feature_name_1,feature_name_2,...</ModelingFeatureList><AllowColdItemPlacement>false</AllowColdItemPlacement><EnableFeatureCorrelation>false</EnableFeatureCorrelation><ReasoningFeatureList>feature_name_a,feature_name_b,...</ReasoningFeatureList></BuildParametersList>` |
 
 **Antwort**:
 
@@ -2214,7 +2215,7 @@ HINWEIS: <br>Aktive Builds können nicht gelöscht werden. Das Modell muss auf e
 
 | HTTP-Methode | URI |
 |:--------|:--------|
-|LÖSCHEN |`<rootURI>/DeleteBuild?buildId=%27<buildId>%27&apiVersion=%271.0%27`<br><br>Beispiel:<br>`<rootURI>/DeleteBuild?buildId=%271500068%27&apiVersion=%271.0%27`|
+|DELETE |`<rootURI>/DeleteBuild?buildId=%27<buildId>%27&apiVersion=%271.0%27`<br><br>Beispiel:<br>`<rootURI>/DeleteBuild?buildId=%271500068%27&apiVersion=%271.0%27`|
 
 |	Parametername |	Gültige Werte |
 |:--------			|:--------								|
@@ -2265,12 +2266,12 @@ In der folgenden Tabelle werden die Werte dargestellt, die von den Schlüsseln r
 
 |Schlüssel|Beschreibung|Typ|Gültiger Wert|
 |:-----|:----|:----|:---|
-|NumberOfModelIterations | Die Anzahl der Iterationen, die vom Modell ausgeführt werden, beeinflusst die Gesamtrechenzeit sowie die Modellgenauigkeit. Je höher die Anzahl, desto höher die Genauigkeit, aber auch die Rechenzeit.| Ganze Zahl | 10-50 |
-| NumberOfModelDimensions | Die Anzahl der Dimensionen bezieht sich auf die Anzahl der „Features“, die vom Modell in Ihren Daten gesucht werden. Wenn Sie die Anzahl der Dimensionen erhöhen, können Sie die Ergebnisse in kleineren Clustern feiner abstimmen. Durch zu viele Dimensionen wird jedoch verhindert, dass Korrelationen zwischen den Elementen gefunden werden. | Ganze Zahl | 10-40 |
-|ItemCutOffLowerBound| Hierdurch wird die Elementuntergrenze des Kondensators definiert. Siehe Abschnitt „Nutzungskondensator“ oben. | Ganze Zahl | Mindestens 2 (durch 0 wird der Kondensator deaktiviert) |
-|ItemCutOffUpperBound| Hierdurch wird die Elementobergrenze des Kondensators definiert. Siehe Abschnitt „Nutzungskondensator“ oben. | Ganze Zahl | Mindestens 2 (durch 0 wird der Kondensator deaktiviert) |
-|UserCutOffLowerBound| Hierdurch wird die Benutzeruntergrenze des Kondensators definiert. Siehe Abschnitt „Nutzungskondensator“ oben. | Ganze Zahl | Mindestens 2 (durch 0 wird der Kondensator deaktiviert) |
-|UserCutOffUpperBound| Hierdurch wird die Benutzerobergrenze des Kondensators definiert. Siehe Abschnitt „Nutzungskondensator“ oben. | Ganze Zahl | Mindestens 2 (durch 0 wird der Kondensator deaktiviert) |
+|NumberOfModelIterations | Die Anzahl der Iterationen, die vom Modell ausgeführt werden, beeinflusst die Gesamtrechenzeit sowie die Modellgenauigkeit. Je höher die Anzahl, desto höher die Genauigkeit, aber auch die Rechenzeit.| Integer | 10-50 |
+| NumberOfModelDimensions | Die Anzahl der Dimensionen bezieht sich auf die Anzahl der „Features“, die vom Modell in Ihren Daten gesucht werden. Wenn Sie die Anzahl der Dimensionen erhöhen, können Sie die Ergebnisse in kleineren Clustern feiner abstimmen. Durch zu viele Dimensionen wird jedoch verhindert, dass Korrelationen zwischen den Elementen gefunden werden. | Integer | 10-40 |
+|ItemCutOffLowerBound| Hierdurch wird die Elementuntergrenze des Kondensators definiert. Siehe Abschnitt „Nutzungskondensator“ oben. | Integer | Mindestens 2 (durch 0 wird der Kondensator deaktiviert) |
+|ItemCutOffUpperBound| Hierdurch wird die Elementobergrenze des Kondensators definiert. Siehe Abschnitt „Nutzungskondensator“ oben. | Integer | Mindestens 2 (durch 0 wird der Kondensator deaktiviert) |
+|UserCutOffLowerBound| Hierdurch wird die Benutzeruntergrenze des Kondensators definiert. Siehe Abschnitt „Nutzungskondensator“ oben. | Integer | Mindestens 2 (durch 0 wird der Kondensator deaktiviert) |
+|UserCutOffUpperBound| Hierdurch wird die Benutzerobergrenze des Kondensators definiert. Siehe Abschnitt „Nutzungskondensator“ oben. | Integer | Mindestens 2 (durch 0 wird der Kondensator deaktiviert) |
 | Beschreibung | Dies ist eine Beschreibung des Builds. | String | Beliebiger Text, maximal 512 Zeichen |
 | EnableModelingInsights | Hiermit können Sie Metriken zum Empfehlungsmodell verarbeiten. | Boolean | True/False |
 | UseFeaturesInModel | Hier wird angegeben, ob Features verwendet werden können, um das Empfehlungsmodell zu verbessern. | Boolean | True/False |
@@ -2447,7 +2448,7 @@ OData-XML
 		</entry>
 	</feed>
 
-##12\. Empfehlungen
+##12\. Empfehlung
 ###12\.1. Abrufen von Elementempfehlungen (für aktiven Build)
 
 Hierdurch werden Empfehlungen des aktiven Builds vom Typ "Recommendation" (Empfehlung) oder "FBT" (Frequently Bought Together, häufig zusammen gekauft) basierend auf einer Liste von Seedelementen (Eingabeelementen) abgerufen.
@@ -2460,7 +2461,7 @@ Hierdurch werden Empfehlungen des aktiven Builds vom Typ "Recommendation" (Empfe
 |:--------			|:--------								|
 | modelId | Dies ist der eindeutige Bezeichner des Modells. |
 | itemIds | Dies ist eine kommagetrennte Liste der Elemente, für die Empfehlungen erstellt werden sollen. <br>Wenn der aktive Build den Typ „FBT“ aufweist, können Sie nur ein Element senden. <br>Max. Länge: 1024 |
-| numberOfResults | Anzahl der erforderlichen Ergebnisse <br>Max.: 150 |
+| numberOfResults | Anzahl der erforderlichen Ergebnisse <br> Max. Wert: 150 |
 | includeMetatadata | Zur zukünftigen Verwendung, stets „false“ |
 | apiVersion | 1,0 |
 
@@ -2472,7 +2473,7 @@ HTTP-Statuscode: 200
 Die Antwort enthält einen Eintrag pro empfohlenem Element. Jeder Eintrag enthält die folgenden Daten:
 - `Feed\entry\content\properties\Id`: ID des empfohlenen Elements.
 - `Feed\entry\content\properties\Name`: Name des Elements.
-- `Feed\entry\content\properties\Rating`: Bewertung der Empfehlung (höhere Werte bedeuten höheres Zutrauen).
+- `Feed\entry\content\properties\Rating`: Bewertung der Empfehlung, höhere Werte bedeuten höheres Zutrauen.
 - `Feed\entry\content\properties\Reasoning`: Empfehlungsargumentation (z.B. Erklärungen für die Empfehlung).
 
 Die folgende Beispielantwort enthält 10 empfohlene Elemente.
@@ -2640,7 +2641,7 @@ Hierdurch werden Empfehlungen eines bestimmten Builds vom Typ „Recommendation�
 |:--------			|:--------								|
 | modelId | Dies ist der eindeutige Bezeichner des Modells. |
 | itemIds | Dies ist eine kommagetrennte Liste der Elemente, für die Empfehlungen erstellt werden sollen. <br>Wenn der aktive Build den Typ „FBT“ aufweist, können Sie nur ein Element senden. <br>Max. Länge: 1024 |
-| numberOfResults | Anzahl der erforderlichen Ergebnisse <br>Max.: 150 |
+| numberOfResults | Anzahl der erforderlichen Ergebnisse <br> Max. Wert: 150 |
 | includeMetatadata | Zur zukünftigen Verwendung, stets „false“
 | buildId | Dies ist die Build-ID, die für diese Empfehlungsanforderung verwendet werden soll. |
 | apiVersion | 1,0 |
@@ -2653,7 +2654,7 @@ HTTP-Statuscode: 200
 Die Antwort enthält einen Eintrag pro empfohlenem Element. Jeder Eintrag enthält die folgenden Daten:
 - `Feed\entry\content\properties\Id`: ID des empfohlenen Elements.
 - `Feed\entry\content\properties\Name`: Name des Elements.
-- `Feed\entry\content\properties\Rating`: Bewertung der Empfehlung (höhere Werte bedeuten höheres Zutrauen).
+- `Feed\entry\content\properties\Rating`: Bewertung der Empfehlung, höhere Werte bedeuten höheres Zutrauen.
 - `Feed\entry\content\properties\Reasoning`: Empfehlungsargumentation (z.B. Erklärungen für die Empfehlung).
 
 Eine Beispielantwort finden Sie unter 12.1.
@@ -2670,7 +2671,7 @@ Hierdurch werden Empfehlungen des aktiven Builds vom Typ "FBT" basierend auf ein
 |:--------			|:--------								|
 | modelId | Dies ist der eindeutige Bezeichner des Modells. |
 | itemId | Element, für das die Empfehlung gilt. <br>Max. Länge: 1024 |
-| numberOfResults | Anzahl der erforderlichen Ergebnisse <br>Max.: 150 |
+| numberOfResults | Anzahl der erforderlichen Ergebnisse <br> Max. Wert: 150 |
 | minimalScore | Die Mindestbewertung, die ein häufiger Satz haben muss, um in die zurückgegebenen Ergebnisse eingeschlossen zu werden. |
 | includeMetatadata | Zur zukünftigen Verwendung, stets „false“ |
 | apiVersion | 1,0 |
@@ -2685,7 +2686,7 @@ Die Antwort umfasst einen Eintrag pro empfohlenem Elementsatz (ein Satz Elemente
 - `Feed\entry\content\properties\Name1`: Name des Elements.
 - `Feed\entry\content\properties\Id2`: ID des zweiten empfohlenen Elements (optional).
 - `Feed\entry\content\properties\Name2`: Name des zweiten Elements (optional).
-- `Feed\entry\content\properties\Rating`: Bewertung der Empfehlung (höhere Werte bedeuten höheres Zutrauen).
+- `Feed\entry\content\properties\Rating`: Bewertung der Empfehlung, höhere Werte bedeuten höheres Zutrauen.
 - `Feed\entry\content\properties\Reasoning`: Empfehlungsargumentation (z.B. Erklärungen für die Empfehlung).
 
 Die folgende Beispielantwort enthält 3 empfohlene Elementsätze.
@@ -2761,7 +2762,7 @@ Hierdurch werden Empfehlungen eines bestimmten Builds vom Typ "FBT" abgerufen.
 |:--------			|:--------								|
 | modelId | Dies ist der eindeutige Bezeichner des Modells. |
 | itemId | Element, für das die Empfehlung gilt. <br>Max. Länge: 1024 |
-| numberOfResults | Anzahl der erforderlichen Ergebnisse <br>Max.: 150 |
+| numberOfResults | Anzahl der erforderlichen Ergebnisse <br> Max. Wert: 150 |
 | minimalScore | Die Mindestbewertung, die ein häufiger Satz haben muss, um in die zurückgegebenen Ergebnisse eingeschlossen zu werden. |
 | includeMetatadata | Zur zukünftigen Verwendung, stets „false“ |
 | buildId | Dies ist die Build-ID, die für diese Empfehlungsanforderung verwendet werden soll. |
@@ -2777,7 +2778,7 @@ Die Antwort umfasst einen Eintrag pro empfohlenem Elementsatz (ein Satz Elemente
 - `Feed\entry\content\properties\Name1`: Name des Elements.
 - `Feed\entry\content\properties\Id2`: ID des zweiten empfohlenen Elements (optional).
 - `Feed\entry\content\properties\Name2`: Name des zweiten Elements (optional).
-- `Feed\entry\content\properties\Rating`: Bewertung der Empfehlung (höhere Werte bedeuten höheres Zutrauen).
+- `Feed\entry\content\properties\Rating`: Bewertung der Empfehlung, höhere Werte bedeuten höheres Zutrauen.
 - `Feed\entry\content\properties\Reasoning`: Empfehlungsargumentation (z.B. Erklärungen für die Empfehlung).
 
 Eine Beispielantwort finden Sie unter 12.3.
@@ -2799,7 +2800,7 @@ Hinweise:
 |	Parametername |	Gültige Werte |
 |:--------			|:--------								|
 | modelId | Dies ist der eindeutige Bezeichner des Modells. |
-| bei der ersten | Dies ist der eindeutige Bezeichner des Benutzers. |
+| userId | Dies ist der eindeutige Bezeichner des Benutzers. |
 | numberOfResults | Dies ist die Anzahl der erforderlichen Ergebnisse. |
 | includeMetatadata | Zur zukünftigen Verwendung, stets „false“ |
 | apiVersion | 1,0 |
@@ -2812,7 +2813,7 @@ HTTP-Statuscode: 200
 Die Antwort enthält einen Eintrag pro empfohlenem Element. Jeder Eintrag enthält die folgenden Daten:
 - `Feed\entry\content\properties\Id`: ID des empfohlenen Elements.
 - `Feed\entry\content\properties\Name`: Name des Elements.
-- `Feed\entry\content\properties\Rating`: Bewertung der Empfehlung (höhere Werte bedeuten höheres Zutrauen).
+- `Feed\entry\content\properties\Rating`: Bewertung der Empfehlung, höhere Werte bedeuten höheres Zutrauen.
 - `Feed\entry\content\properties\Reasoning`: Empfehlungsargumentation (z.B. Erklärungen für die Empfehlung).
 
 Eine Beispielantwort finden Sie unter 12.1.
@@ -2835,7 +2836,7 @@ Hinweise:
 |	Parametername |	Gültige Werte |
 |:--------			|:--------								|
 | modelId | Dies ist der eindeutige Bezeichner des Modells. |
-| bei der ersten | Dies ist der eindeutige Bezeichner des Benutzers. |
+| userId | Dies ist der eindeutige Bezeichner des Benutzers. |
 | itemsIds | Dies ist eine kommagetrennte Liste der Elemente, für die Empfehlungen erstellt werden sollen. Max. Länge: 1024 |
 | numberOfResults | Dies ist die Anzahl der erforderlichen Ergebnisse. |
 | includeMetatadata | Zur zukünftigen Verwendung, stets „false“ |
@@ -2849,7 +2850,7 @@ HTTP-Statuscode: 200
 Die Antwort enthält einen Eintrag pro empfohlenem Element. Jeder Eintrag enthält die folgenden Daten:
 - `Feed\entry\content\properties\Id`: ID des empfohlenen Elements.
 - `Feed\entry\content\properties\Name`: Name des Elements.
-- `Feed\entry\content\properties\Rating`: Bewertung der Empfehlung (höhere Werte bedeuten höheres Zutrauen).
+- `Feed\entry\content\properties\Rating`: Bewertung der Empfehlung, höhere Werte bedeuten höheres Zutrauen.
 - `Feed\entry\content\properties\Reasoning`: Empfehlungsargumentation (z.B. Erklärungen für die Empfehlung).
 
 Eine Beispielantwort finden Sie unter 12.1.
@@ -2870,7 +2871,7 @@ Hinweis: Für einen FBT-Build gibt es keine Benutzerempfehlungen.
 |	Parametername |	Gültige Werte |
 |:--------			|:--------								|
 | modelId | Dies ist der eindeutige Bezeichner des Modells. |
-| bei der ersten | Dies ist der eindeutige Bezeichner des Benutzers. |
+| userId | Dies ist der eindeutige Bezeichner des Benutzers. |
 | numberOfResults | Dies ist die Anzahl der erforderlichen Ergebnisse. |
 | includeMetatadata | Zur zukünftigen Verwendung, stets „false“ |
 | buildId | Dies ist die Build-ID, die für diese Empfehlungsanforderung verwendet werden soll. |
@@ -2884,7 +2885,7 @@ HTTP-Statuscode: 200
 Die Antwort enthält einen Eintrag pro empfohlenem Element. Jeder Eintrag enthält die folgenden Daten:
 - `Feed\entry\content\properties\Id`: ID des empfohlenen Elements.
 - `Feed\entry\content\properties\Name`: Name des Elements.
-- `Feed\entry\content\properties\Rating`: Bewertung der Empfehlung (höhere Werte bedeuten höheres Zutrauen).
+- `Feed\entry\content\properties\Rating`: Bewertung der Empfehlung, höhere Werte bedeuten höheres Zutrauen.
 - `Feed\entry\content\properties\Reasoning`: Empfehlungsargumentation (z.B. Erklärungen für die Empfehlung).
 
 Eine Beispielantwort finden Sie unter 12.1.
@@ -2907,7 +2908,7 @@ Hinweis: Für einen FBT-Build gibt es keine Benutzerempfehlungen.
 |	Parametername |	Gültige Werte |
 |:--------			|:--------								|
 | modelId | Dies ist der eindeutige Bezeichner des Modells. |
-| bei der ersten | Dies ist der eindeutige Bezeichner des Benutzers. |
+| userId | Dies ist der eindeutige Bezeichner des Benutzers. |
 | itemIds | Dies ist eine kommagetrennte Liste der Elemente, für die Empfehlungen erstellt werden sollen. Max. Länge: 1024 |
 | numberOfResults | Dies ist die Anzahl der erforderlichen Ergebnisse. |
 | includeMetatadata | Zur zukünftigen Verwendung, stets „false“ |
@@ -2922,7 +2923,7 @@ HTTP-Statuscode: 200
 Die Antwort enthält einen Eintrag pro empfohlenem Element. Jeder Eintrag enthält die folgenden Daten:
 - `Feed\entry\content\properties\Id`: ID des empfohlenen Elements.
 - `Feed\entry\content\properties\Name`: Name des Elements.
-- `Feed\entry\content\properties\Rating`: Bewertung der Empfehlung (höhere Werte bedeuten höheres Zutrauen).
+- `Feed\entry\content\properties\Rating`: Bewertung der Empfehlung, höhere Werte bedeuten höheres Zutrauen.
 - `Feed\entry\content\properties\Reasoning`: Empfehlungsargumentation (z.B. Erklärungen für die Empfehlung).
 
 Eine Beispielantwort finden Sie unter 12.1.
@@ -2955,8 +2956,8 @@ HTTP-Statuscode: 200
 Die Antwort enthält einen Eintrag pro empfohlenem Element. Jeder Eintrag enthält die folgenden Daten:
 - `Feed\entry\content\properties\Id`: ID des empfohlenen Elements.
 - `Feed\entry\content\properties\Name`: Name des Elements.
-- `Feed\entry\content\properties\Rating`: N/V.
-- `Feed\entry\content\properties\Reasoning`: N/V.
+- `Feed\entry\content\properties\Rating`: Nicht zutreffend.
+- `Feed\entry\content\properties\Reasoning`: Nicht zutreffend.
 
 OData-XML
 
@@ -3049,7 +3050,7 @@ Hierdurch werden alle gelesenen Benachrichtigungen für ein Modell gelöscht.
 
 | HTTP-Methode | URI |
 |:--------|:--------|
-|LÖSCHEN |`<rootURI>/DeleteModelNotifications?modelId=%<model_id>%27&apiVersion=%271.0%27`<br><br>Beispiel:<br>`<rootURI>/DeleteModelNotifications?modelId=%27967136e8-f868-4258-9331-10d567f87fae%27&apiVersion=%271.0%27`|
+|DELETE |`<rootURI>/DeleteModelNotifications?modelId=%<model_id>%27&apiVersion=%271.0%27`<br><br>Beispiel:<br>`<rootURI>/DeleteModelNotifications?modelId=%27967136e8-f868-4258-9331-10d567f87fae%27&apiVersion=%271.0%27`|
 
 
 |	Parametername |	Gültige Werte |
@@ -3068,7 +3069,7 @@ Hierdurch werden alle Benachrichtigungen für alle Modelle gelöscht.
 
 | HTTP-Methode | URI |
 |:--------|:--------|
-|LÖSCHEN |`<rootURI>/DeleteUserNotifications?apiVersion=%271.0%27`|
+|DELETE |`<rootURI>/DeleteUserNotifications?apiVersion=%271.0%27`|
 
 
 |	Parametername |	Gültige Werte |
@@ -3088,4 +3089,4 @@ HTTP-Statuscode: 200
 Dieses Dokument wird so bereitgestellt, wie es ist. Informationen und Stellungnahmen in diesem Dokument einschließlich URLs und anderer Verweise auf Websites können ohne Ankündigung geändert werden.<br><br> Einige der in diesem Dokument dargestellten Beispiele dienen nur zu Illustrationszwecken und sind frei erfunden. Ähnlichkeiten oder Verbindungen sind rein zufällig und nicht beabsichtigt.<br><br> Dieses Dokument gibt Ihnen keinerlei geistige Eigentums- oder anderweitige Rechte an irgendeinem Microsoft-Produkt. Sie dürfen dieses Dokument zu internen Referenzzwecken kopieren und verwenden.<br><br> © 2015 Microsoft. Alle Rechte vorbehalten.
  
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0824_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/12/2016" 
+	ms.date="08/18/2016" 
 	ms.author="sdanie"/>
 
 # Azure Redis Cache – häufig gestellte Fragen
@@ -27,6 +27,7 @@ Wenn Ihre Frage hier nicht aufgeführt wird, informieren Sie uns, und wir helfen
 
 -	Sie können eine Frage im [Diskussionsthread](#comments) am Ende dieser FAQ stellen und mit dem Azure Cache-Team und anderen Mitgliedern der Community über diesen Artikel diskutieren.
 -	Um eine größere Benutzergruppe zu erreichen, können Sie eine Frage im [MSDN-Forum zu Azure Cache](https://social.msdn.microsoft.com/forums/azure/home?forum=azurecache) stellen und mit dem Azure Cache-Team und anderen Mitgliedern der Community diskutieren.
+-	Featureanfragen und Anregungen können an [Azure Redis Cache User Voice](https://feedback.azure.com/forums/169382-cache) gesendet werden.
 -	Sie können auch eine E-Mail an unsere Adresse für [externes Feedback zu Azure Cache](mailto:azurecache@microsoft.com) senden.
 
 ## Azure Redis Cache – Grundlagen
@@ -103,7 +104,8 @@ Aus dieser Tabelle können folgende Schlussfolgerungen gezogen werden.
 | Tarif | Größe | CPU-Kerne | Verfügbare Bandbreite | 1 KB Schlüsselgröße |
 |--------------------------|--------|-----------|--------------------------------------------------------|------------------------------------------|
 | **Standard-Cachegröße** | | | **Megabits pro Sekunde (MBit/s)/Megabyte pro Sekunde (MB/s)** | **Anforderungen pro Sekunde (RPS)** |
-| C0 | 250 MB | Shared | 5 / 0,625 | 600 |
+| C0 | 250 MB | Shared  
+ | 5 / 0,625 | 600 |
 | C1 | 1 GB | 1 | 100 / 12,5 | 12\.200 |
 | C2 | 2,5 GB | 2 | 200 / 25 | 24\.000 |
 | C3 | 6 GB | 4 | 400 / 50 | 49\.000 |
@@ -448,4 +450,4 @@ Weitere Informationen zu den ersten Schritten mit Azure Redis Cache finden Sie u
 
 [Konfigurationseinstellung „minIoThreads“]: https://msdn.microsoft.com/library/vstudio/7w2sway1(v=vs.100).aspx
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0824_2016-->

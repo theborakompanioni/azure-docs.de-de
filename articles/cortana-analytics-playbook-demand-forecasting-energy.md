@@ -30,8 +30,8 @@ In diesem Playbook sind die geschäftlichen und analytischen Richtlinien zusamme
 
 In diesem Dokument werden die geschäftlichen, datenbezogenen und technischen Aspekte der Verwendung von Cortana Intelligence und Azure Machine Learning (AML) zur Implementierung und Bereitstellung von Lösungen für die Vorhersage des Energiebedarfs (Energy Forecasting Solutions) beschrieben. Das Dokument besteht aus drei Hauptteilen:
 
-1. Geschäftliche Aspekte  
-2. Datenaspekte  
+1. Geschäftliche Aspekte
+2. Datenaspekte
 3. Technische Implementierung
 
 Im Teil **Geschäftliche Aspekte** werden die geschäftlichen Aspekte beschrieben, die verinnerlicht und berücksichtigt werden müssen, bevor eine Investitionsentscheidung getroffen wird. Es wird erläutert, wie das vorliegende geschäftliche Problem qualifiziert werden kann, um sicherzustellen, dass Predictive Analytics- und Machine Learning-Maßnahmen wirklich effektiv und anwendbar sind. Im Dokument werden die Grundlagen von Machine Learning und die Nutzung zum Lösen von Problemen bei der Vorhersage des Energiebedarfs erläutert. Es werden die Voraussetzungen und Qualifizierungskriterien anhand eines Anwendungsfalls beschrieben. Als Beispiele werden auch einige Anwendungsfälle und Business Case-Szenarien geschildert.
@@ -85,7 +85,7 @@ In Bezug auf den Energiebedarf ist die kurzfristige Vorhersage der Last (Short T
 -   Lastenausgleich und Verhinderung von Überlastung
 -   Langfristige Vorhersage der Last
 -   Fehler- und Anomalieerkennung
--   Verkürzung/Ausgleich von Spitzen 
+-   Verkürzung/Ausgleich von Spitzen
 
 STLF-Modelle basieren größtenteils auf den Verbrauchsdaten der unmittelbaren Vergangenheit (letzter Tag oder letzte Woche), und die vorhergesagten Temperaturen dienen als wichtige Größe für die Vorhersage. Die Beschaffung einer genauen Temperaturvorhersage für die nächste Stunde oder die nächsten 24 Stunden ist heutzutage kein großes Problem mehr. Diese Modelle sind weniger anfällig für saisonale Muster oder langfristige Verbrauchstrends.
 
@@ -225,7 +225,7 @@ Wir können die Formulierung des Problems als wichtigsten Schritt bezeichnen, de
 Die Formulierung dieser Fragen hilft uns dabei, die richtigen Daten auszuwählen und eine Lösung zu implementieren, die optimal für das vorliegende geschäftliche Problem geeignet ist. Außerdem können wir dann einige wichtige Metriken festlegen, mit denen wir die Leistung des Modells auswerten können. Wie genau sollte die Vorhersage beispielsweise sein, und wie groß ist der Fehlerbereich, der für das Unternehmen noch akzeptabel ist?
 
 ### Datenquellen
-Im modernen Smart Grid werden Daten aus unterschiedlichen Teilen und Komponenten des Netzes erfasst. Diese Daten stellen verschiedene Aspekte des Betriebs und der Nutzung des Stromnetzes dar. In Bezug auf die Vorhersage des Energiebedarfs beschränken wir die Beschreibung auf Datenquellen, die den eigentlichen Energieverbrauch widerspiegeln. Eine wichtige Quelle für den Energieverbrauch sind Smart Meter. Immer mehr Versorgungsunternehmen weltweit stellen Smart Meter für ihre Verbraucher bereit. Mit Smart Metern wird der tatsächliche Stromverbrauch aufgezeichnet, und diese Daten werden ständig zurück an das Versorgungsunternehmen gemeldet. Daten werden erfasst und in festen Intervallen gesendet, die von fünf Minuten bis zu einer Stunde reichen können. Aufwändigere Smart Meter können per Remotezugriff programmiert werden, um den tatsächlichen Verbrauch in einem Haushalt zu steuern und abzustimmen. Smart Meter-Daten sind relativ zuverlässig und enthalten einen Zeitstempel. Somit sind sie ein wichtiger Bestandteil der Vorhersage des Energiebedarfs. Smart Meter-Daten können auf verschiedenen Ebenen der Netztopologie aggregiert (zusammengefasst) werden: Transformator, Unterstation, Region usw.. Anschließend können wir die erforderliche Aggregationsebene wählen, um dafür ein Vorhersagemodell zu erstellen. Wenn ein Versorgerunternehmen beispielsweise die zukünftige Last für die einzelnen Unterstationen des Netzes vorhersagen möchte, können die Daten aller Smart Meter für jede einzelne Unterstation aggregiert und als Eingabe für das Vorhersagemodell verwendet werden. Wir bezeichnen Smart Meter als interne Datenquelle.
+Im modernen Smart Grid werden Daten aus unterschiedlichen Teilen und Komponenten des Netzes erfasst. Diese Daten stellen verschiedene Aspekte des Betriebs und der Nutzung des Stromnetzes dar. In Bezug auf die Vorhersage des Energiebedarfs beschränken wir die Beschreibung auf Datenquellen, die den eigentlichen Energieverbrauch widerspiegeln. Eine wichtige Quelle für den Energieverbrauch sind Smart Meter. Immer mehr Versorgungsunternehmen weltweit stellen Smart Meter für ihre Verbraucher bereit. Mit Smart Metern wird der tatsächliche Stromverbrauch aufgezeichnet, und diese Daten werden ständig zurück an das Versorgungsunternehmen gemeldet. Daten werden erfasst und in festen Intervallen gesendet, die von fünf Minuten bis zu einer Stunde reichen können. Aufwändigere Smart Meter können per Remotezugriff programmiert werden, um den tatsächlichen Verbrauch in einem Haushalt zu steuern und abzustimmen. Smart Meter-Daten sind relativ zuverlässig und enthalten einen Zeitstempel. Somit sind sie ein wichtiger Bestandteil der Vorhersage des Energiebedarfs. Smart Meter-Daten können auf verschiedenen Ebenen der Netztopologie aggregiert (zusammengefasst) werden: Transformator, Unterstation, Region usw. Anschließend können wir die erforderliche Aggregationsebene wählen, um dafür ein Vorhersagemodell zu erstellen. Wenn ein Versorgerunternehmen beispielsweise die zukünftige Last für die einzelnen Unterstationen des Netzes vorhersagen möchte, können die Daten aller Smart Meter für jede einzelne Unterstation aggregiert und als Eingabe für das Vorhersagemodell verwendet werden. Wir bezeichnen Smart Meter als interne Datenquelle.
 
 Eine zuverlässige Vorhersage des Energiebedarfs basiert auch auf anderen externen Datenquellen. Ein wichtiger Faktor, der sich auf den Stromverbrauch auswirkt, ist das Wetter bzw. die Temperatur. Verlaufsdaten weisen auf eine starke Korrelation zwischen der Außentemperatur und dem Stromverbrauch hin. An heißen Sommertagen nutzen Verbraucher ihre Klimaanlagen, und im Winter kommen Heizsysteme vermehrt zum Einsatz. Eine zuverlässige Quelle für Verlaufsdaten zu den Temperaturen am Netzstandort ist daher sehr wichtig. Außerdem wird auch eine genaue Vorhersage der Temperatur als Prädiktor für den Stromverbrauch benötigt.
 
@@ -246,7 +246,7 @@ Die folgende Tabelle enthält Beispiele für ein gut geeignetes Datenformat für
 
 |**Date**|**Time**|**Meter ID**|**Phase 1**|**Phase 2**|**Phase 3**|
 |--------|--------|------------|-----------|-----------|-----------|
-|01\.07.2015|10:00:00|ABC1234 |7,0 |2,1 |5,3 |
+|01\.07.2015|10:00:00|ABC1234 |7\.0 |2\.1 |5,3 |
 |01\.07.2015|10:00:01|ABC1234 |7,1 |2,2 |4,3 |
 |01\.07.2015|10:00:02|ABC1234 |6,0 |2,1 |4,0 |
 
@@ -291,7 +291,7 @@ In diesem Abschnitt sind einige allgemeine Datenfeatures aufgeführt, die in Vor
 -   Fourier-Ausdrücke: Fourier-Ausdrücke sind Gewichtungen, die vom Zeitstempel abgeleitet und verwendet werden, um die Saisonabhängigkeit (Zyklen) von Daten zu erfassen. Da die Daten mehrere Zeitabschnitte umfassen, benötigen wir in der Regel auch mehrere Fourier-Ausdrücke. Bedarfswerte können beispielsweise über jährliche, wöchentliche und tägliche Zyklen verfügen, sodass sich drei Fourier-Ausdrücke ergeben.
 
 **Unabhängige Features der Messung:** Die unabhängigen Features umfassen alle Datenelemente, die wir als Prädiktoren in unserem Modell verwenden möchten. Hierbei schließen wir das abhängige Feature aus, das wir vorhersagen müssen.
--   Verzögerungsfeature: Dies sind zeitversetzte Werte des tatsächlichen Bedarfs. Beim Feature vom Typ „lag 1“ wird der Bedarfswert beispielsweise für die vorherige Stunde (stündliche Daten vorausgesetzt) relativ zum aktuellen Zeitstempel vorgehalten. Auf ähnliche Weise können wir „lag 2“, „lag 3“ usw. hinzufügen. Die tatsächliche Kombination der Verzögerungsfeatures, die verwendet werden, wird während der Modellierungsphase per Auswertung der Modellergebnisse ermittelt.
+-   Verzögerungsfeature: Dies sind zeitversetzte Werte des tatsächlichen Bedarfs. Beim Feature vom Typ „lag 1“ wird der Bedarfswert beispielsweise für die vorherige Stunde (stündliche Daten vorausgesetzt) relativ zum aktuellen Zeitstempel vorgehalten. Auf ähnliche Weise können wir „lag 2“, „lag 3“ usw. hinzufügen. Die tatsächliche Kombination der Verzögerungsfeatures, die verwendet werden, wird während der Modellierungsphase per Auswertung der Modellergebnisse ermittelt.
 -   Langfristiger Trend: Dieses Feature steht für den linearen Bedarfsanstieg von Jahr zu Jahr.
 
 **Abhängiges Feature:** Das abhängige Feature ist die Datenspalte, die von unserem Modell vorhergesagt werden soll. Per [Supervised Machine Learning](https://en.wikipedia.org/wiki/Supervised_learning) (Überwachtes Lernen) müssen wir das Modell zuerst trainieren, indem wir die abhängigen Features verwenden (auch Bezeichnungen („Labels“) genannt). So kann das Modell die Muster in den Daten erlernen, die dem abhängigen Feature zugeordnet sind. Beim Vorhersagen des Energiebedarfs soll normalerweise der tatsächliche Bedarf vorhergesagt werden, und daher wird dies als abhängiges Feature verwendet.
@@ -384,4 +384,4 @@ Im folgenden Diagramm ist eine typische Architektur auf Basis von Cortana Intell
 
 Weitere Informationen zu den einzelnen Komponenten und zur gesamten Architektur finden Sie unter der „Vorlage für Energielösungen“.
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0824_2016-->

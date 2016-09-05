@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/15/2016"
+	ms.date="08/22/2016"
 	ms.author="markvi"/>
 
 # Erste Schritte mit Azure Active Directory Identity Protection und Microsoft Graph
@@ -23,7 +23,7 @@ Microsoft Graph ist der einheitliche API-Endpunkt von Microsoft und stellt die [
 
 Zum Zugreifen auf die Identity Protection-Daten über Microsoft Graph werden drei Schritte ausgeführt:
 
-1. Fügen Sie eine Anwendung mit einem geheimen Clientschlüssel hinzu. 
+1. Fügen Sie eine Anwendung mit einem geheimen Clientschlüssel hinzu.
 
 2. Authentifizieren Sie sich mit diesem geheimen Schlüssel und einigen anderen Informationen bei Microsoft Graph. Sie erhalten ein Authentifizierungstoken.
 
@@ -39,7 +39,7 @@ Bevor Sie beginnen, benötigen Sie Folgendes:
 ## Hinzufügen einer Anwendung mit einem geheimen Clientschlüssel
 
 
-1. Sie müssen sich beim klassischen Azure-Portal als Administrator [anmelden](https://manage.windowsazure.com). 
+1. Sie müssen sich beim klassischen Azure-Portal als Administrator [anmelden](https://manage.windowsazure.com).
 
 1. Klicken Sie im linken Navigationsbereich auf **Active Directory**.
 
@@ -91,7 +91,7 @@ Sie können Ihre Anwendung nun konfigurieren.
 ## Gewähren Ihrer Anwendung die Berechtigung zum Verwenden der API
 
 
-1. Klicken Sie auf der Anwendungsseite im Menü oben auf **Konfigurieren**. 
+1. Klicken Sie auf der Anwendungsseite im Menü oben auf **Konfigurieren**.
 
 	![Erstellen einer Anwendung](./media/active-directory-identityprotection-graph-getting-started/tutorial_general_08.png)
 
@@ -155,12 +155,12 @@ Senden Sie für die Authentifizierung eine POST-Anforderung an `https://login.mi
 
 - resource: “**https://graph.microsoft.com**”
 
-- client\_id: <your client ID>
+- client\_id: <Ihre Client-ID>
 
-- client\_secret: <your key>
+- client\_secret: <Ihr Schlüssel>
 
 
-> [AZURE.NOTE] Sie müssen Werte für die Parameter **client\_id** und **client\_secret** angeben.
+> [AZURE.NOTE] Für die Parameter **client\_id** und **client\_secret** müssen Werte angegeben werden.
 
 Ist die Anforderung erfolgreich, wird ein Authentifizierungstoken zurückgegeben. Erstellen Sie zum Aufrufen der API einen Header mit dem folgenden Parameter:
 
@@ -208,7 +208,7 @@ Hier sehen Sie Beispielcode für das Authentifizieren und Aufrufen der API mit P
 
 Herzlichen Glückwunsch, Sie haben gerade Ihren ersten Aufruf an Microsoft Graph ausgeführt. Sie können nun Identitätsrisikoereignisse abfragen und die Daten nach Bedarf verwenden.
 
-Weitere Informationen zu Microsoft Graph und zum Erstellen von Anwendungen mithilfe der Graph-API finden Sie in der [Dokumentation](https://graph.microsoft.io/docs) sowie auf der Website zu [Microsoft Graph](https://graph.microsoft.io/). Setzen Sie darüber hinaus ein Lesezeichen für die Seite [Azure AD Identity Protection-API](https://graph.microsoft.io/docs/api-reference/beta/resources/identityprotection_root). Auf dieser Seite werden alle in Graph verfügbaren Identity Protection-APIs aufgeführt. Wenn neue Methoden für die Verwendung von Identity Protection über APIs hinzugefügt werden, werden sie auf dieser Seite angezeigt.
+Weitere Informationen zu Microsoft Graph und zum Erstellen von Anwendungen mithilfe der Graph-API finden Sie in der [Dokumentation](https://graph.microsoft.io/docs) sowie auf der Website zu [Microsoft Graph](https://graph.microsoft.io/). Erstellen Sie außerdem ein Lesezeichen für die Seite [Azure AD Identity Protection-API](https://graph.microsoft.io/docs/api-reference/beta/resources/identityprotection_root). Dort werden alle in Graph verfügbaren Identity Protection-APIs aufgeführt. Wenn neue Methoden für die Verwendung von Identity Protection über APIs hinzugefügt werden, werden sie auf dieser Seite angezeigt.
 
 
 ## Zusätzliche Ressourcen
@@ -223,4 +223,4 @@ Weitere Informationen zu Microsoft Graph und zum Erstellen von Anwendungen mithi
 
 - [Azure AD Identity Protection Service Root](https://graph.microsoft.io/docs/api-reference/beta/resources/identityprotection_root)
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0824_2016-->

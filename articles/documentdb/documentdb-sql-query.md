@@ -1,7 +1,7 @@
 <properties 
 	pageTitle="SQL-Syntax und SQL-Abfrage für DocumentDB | Microsoft Azure" 
-	description="Informationen Sie zu SQL-Syntax, Datenbankkonzepten und SQL-Abfragen für DocumentDB, eine NoSQL-Datenbank. SQL kann als JSON-Abfragesprache in DocumentDB verwendet." 
-	keywords="SQL-Syntax, SQL-Abfrage, SQL-Abfragen, JSON-Abfragesprache, Datenbankkonzepte und SQL-Abfragen"
+	description="Informationen zu SQL-Syntax, Datenbankkonzepten und SQL-Abfragen für DocumentDB, eine NoSQL-Datenbank. SQL kann als JSON-Abfragesprache in DocumentDB verwendet." 
+	keywords="SQL-Syntax, SQL-Abfrage, SQL-Abfragen, JSON-Abfragesprache, Datenbankkonzepte und SQL-Abfragen, Aggregatfunktionen"
 	services="documentdb" 
 	documentationCenter="" 
 	authors="arramac" 
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/07/2016" 
+	ms.date="08/22/2016" 
 	ms.author="arramac"/>
 
 # SQL-Abfrage und SQL-Syntax in DocumentDB
@@ -157,9 +157,9 @@ Die nächste Abfrage gibt alle Vornamen von Kindern der Familie zurück, deren I
 
 Beachten Sie einige der bemerkenswerten Aspekte der DocumentDB-Abfragesprache, die wir in den bisherigen Beispielen gesehen haben:
  
--	Da DocumentDB-SQL mit JSON-Werten arbeitet, werden baumförmige Entitäten anstelle von Spalten und Zeilen verarbeitet. Daher können Sie auf Knoten in der Baumstruktur in beliebiger Tiefe verweisen, z. B. `Node1.Node2.Node3…..Nodem`, ähnlich wie relationale SQL mit einem zweiteiligen Verweis auf `<table>.<column>`.   
--	Die strukturierte Abfragesprache arbeitet mit schemalosen Daten. Daher muss das Typsystem dynamisch gebunden werden. Derselbe Ausdruck kann unterschiedliche Typen in unterschiedlichen Dokumenten ergeben. Das Ergebnis einer Abfrage ist ein gültiger JSON-Wert, aber nicht garantiert innerhalb eines festen Schemas.  
--	DocumentDB unterstützt nur strikte JSON-Dokumente. Typsystem und Ausdrücke sind also auf JSON-Typen beschränkt. Weitere Informationen finden Sie unter [JSON-Spezifikation](http://www.json.org/).  
+-	Da DocumentDB-SQL mit JSON-Werten arbeitet, werden baumförmige Entitäten anstelle von Spalten und Zeilen verarbeitet. Daher können Sie auf Knoten in der Baumstruktur in beliebiger Tiefe verweisen, z. B. `Node1.Node2.Node3…..Nodem`, ähnlich wie relationale SQL mit einem zweiteiligen Verweis auf `<table>.<column>`.
+-	Die strukturierte Abfragesprache arbeitet mit schemalosen Daten. Daher muss das Typsystem dynamisch gebunden werden. Derselbe Ausdruck kann unterschiedliche Typen in unterschiedlichen Dokumenten ergeben. Das Ergebnis einer Abfrage ist ein gültiger JSON-Wert, aber nicht garantiert innerhalb eines festen Schemas.
+-	DocumentDB unterstützt nur strikte JSON-Dokumente. Typsystem und Ausdrücke sind also auf JSON-Typen beschränkt. Weitere Informationen finden Sie unter [JSON-Spezifikation](http://www.json.org/).
 -	Eine DocumentDB-Sammlung ist ein schemaloser Container mit JSON-Dokumenten. Die Beziehungen in Datenentitäten innerhalb und zwischen Dokumenten in einer Sammlung werden implizit durch Einschluss erfasst, und nicht durch Beziehungen von primären Schlüsseln und Fremdschlüsseln. Dieser Aspekt ist wichtig angesichts der später in diesem Artikel besprochenen dokumentinternen Verknüpfungen.
 
 ## DocumentDB-Indexierung
@@ -170,7 +170,7 @@ Datenbankindizes dienen zur Ausführung von Abfragen verschiedenster Arten und F
 
 Daher haben wir uns für die Entwicklung des Indexierungs-Untersystems von DocumentDB die folgenden Ziele gesetzt:
 
--	Indizierung von Dokumenten ohne Schema: Das Indizierungsuntersystem benötigt keine Schemainformationen und stellt keinerlei Annahmen über das Schema der Dokumente an. 
+-	Indizierung von Dokumenten ohne Schema: Das Indizierungsuntersystem benötigt keine Schemainformationen und stellt keinerlei Annahmen über das Schema der Dokumente an.
 
 -	Unterstützung für effiziente, umfassende hierarchische und relationale Abfragen: Der Index unterstützt die DocumentDB-Abfragesprache auf effiziente Weise und bietet Unterstützung für hierarchische und relationale Projektionen.
 
@@ -552,7 +552,7 @@ Die folgende Tabelle zeigt die Ergebnisse für Gleichheitsvergleiche in Document
 Für andere Vergleichsoperatoren wie >, >=, !=, < und <= gelten die folgenden Regeln:
 
 -	Vergleiche zwischen zwei unterschiedlichen Typen ergeben Undefined.
--	Vergleiche zwischen zwei Objekten oder zwei Arrays ergeben Undefined.   
+-	Vergleiche zwischen zwei Objekten oder zwei Arrays ergeben Undefined.
 
 Wenn das Ergebnis eines skalaren Ausdrucks im Filter Undefined ist, wird das entsprechende Dokument aus dem Ergebnis ausgeschlossen, da Undefined logisch nicht gleich "true" ist.
 
@@ -864,8 +864,7 @@ Das folgende Beispiel zeigt, wie Sie primitive JSON-Werte zurückgeben können (
 	]
 
 
-###* Operator
-Der Sonderoperator (*) wird unterstützt, um das Dokument unverändert zu projizieren. Wenn dieser Operator verwendet wird, dürfen keine weiteren projizierten Felder existieren. Abfragen wie `SELECT * FROM Families f` sind z. B. gültig, während `SELECT VALUE * FROM Families f ` und `SELECT *, f.id FROM Families f ` nicht gültig sind.
+###* Operator Der Sonderoperator (*) wird unterstützt, um das Dokument unverändert zu projizieren. Wenn dieser Operator verwendet wird, dürfen keine weiteren projizierten Felder existieren. Abfragen wie `SELECT * FROM Families f` sind z. B. gültig, während `SELECT VALUE * FROM Families f ` und `SELECT *, f.id FROM Families f ` nicht gültig sind.
 
 **Abfrage**
 
@@ -1116,7 +1115,7 @@ Beachten Sie zunächst, dass `from_source` für die **JOIN**-Klausel ein Iterato
 
 -	Alle untergeordneten Elemente **c** im Array erweitern.
 -	Kreuzprodukt mit dem Stammknoten des Dokuments **f** mit den einzelnen untergeordneten Elementen **c** anwenden, die im ersten Schritt vereinfacht wurden.
--	Zuletzt wird die Namenseigenschaft des Stammobjekts **f** alleine projiziert. 
+-	Zuletzt wird die Namenseigenschaft des Stammobjekts **f** alleine projiziert.
 
 Das erste Dokument (`AndersenFamily`) enthält nur ein untergeordnetes Element. Daher enthält der Ergebnissatz für dieses Dokument auch nur ein einzelnes Objekt. Das zweite Dokument (`WakefieldFamily`) enthält zwei untergeordnete Elemente. Daher ergibt das Kreuzprodukt ein separates Objekt für jedes untergeordnete Element und das Ergebnis enthält zwei Objekte, je eines pro untergeordnetem Element im Dokument. Die Stammfelder sind in beiden Dokumenten gleich, wie Sie es bei einem Kreuzprodukt erwarten würden.
 
@@ -1201,7 +1200,7 @@ Das nächste Beispiel verwendet einen zusätzlichen Filter für `pet`. Damit wer
 ## JavaScript-Integration
 DocumentDB bietet ein Programmiermodell zur Ausführung JavaScript-basierter Anwendungslogik direkt auf die Sammlungen über gespeicherte Prozeduren und Trigger. Damit ist Folgendes möglich:
 
--	Transaktionale CRUD-Operationen und Abfragen auf Dokumente in einer Sammlung mit hoher Leistung dank der tiefen Integration der JavaScript-Laufzeit direkt im Datenbankmodul. 
+-	Transaktionale CRUD-Operationen und Abfragen auf Dokumente in einer Sammlung mit hoher Leistung dank der tiefen Integration der JavaScript-Laufzeit direkt im Datenbankmodul.
 -	Eine natürliche Modellierung von Kontrollfluss, Variablen-Bereichssteuerung, Zuweisung und Integration der Ausnahmebehandlung für Datenbanktransaktionen. Weitere Informationen zur DocumentDB-Unterstützung für die JavaScript-Integration finden Sie in der Dokumentation für serverseitige JavaScript-Programmierung.
 
 ###Benutzerdefinierte Funktionen (User Defined Functions UDFs)
@@ -2356,6 +2355,18 @@ Das folgende Beispiel zeigt, wie Sie mithilfe von "queryDocuments" in der server
 	        });
 	}
 
+## Aggregatfunktionen
+
+Native Unterstützung für Aggregatfunktionen ist in Arbeit, wenn Sie jedoch bis dahin Zähl- oder Summenfunktionen benötigen, können Sie hierfür verschiedene Methoden einsetzen.
+
+Lesepfad:
+
+- Sie können Aggregatfunktionen ausführen, indem Sie die Daten abrufen und die Zählung lokal durchführen. Verwenden Sie eine einfache Abfrageprojektion wie `SELECT VALUE 1` anstelle eines vollständigen Dokuments wie z.B. `SELECT * FROM c`. Dadurch wird die Anzahl der Dokumente, die auf jeder Ergebnisseite verarbeitet werden, maximiert, wodurch zusätzliche Roundtrips an den Dienst ggf. vermieden werden.
+- Sie können auch eine gespeicherte Prozedur verwenden, um die Netzwerklatenz bei gespeicherten Roundtrips zu minimieren. Ein Beispiel für eine gespeicherte Prozedur, die die Anzahl einer bestimmten Filterabfrage bestimmt, finden Sie unter [Count.js](https://github.com/Azure/azure-documentdb-js-server/blob/master/samples/stored-procedures/Count.js). Die gespeicherte Prozedur ermöglicht es Benutzern, umfangreiche Geschäftslogiken mit Aggregationen effizient zu kombinieren.
+
+Schreibpfad:
+
+- Ein weiteres allgemeines Muster besteht darin, die Ergebnisse im Schreibpfad vorab zu aggregieren. Dies empfiehlt sich insbesondere dann, wenn der Umfang der Leseanforderungen größer ist als der Umfang der Schreibanforderungen. Nach dieser Vorab-Aggregation sind die Ergebnisse über eine einzelne Leseanforderung verfügbar. Eine solche Vorab-Aggregation in DocumentDB wird am besten durchgeführt, indem Sie einen Trigger einrichten, der bei jedem Schreiben ausgelöst wird, und ein Metadatendokument aktualisieren, das die neuesten Ergebnisse für die materialisierte Abfrage enthält. Das Beispiel [UpdateMetadata.js](https://github.com/Azure/azure-documentdb-js-server/blob/master/samples/triggers/UpdateMetadata.js) aktualisiert z.B. „minSize“, „maxSize“ und „totalSize“ des Metadatendokuments für die Sammlung. Das Beispiel kann so erweitert werden, dass die Anzahl, Summe usw. aktualisiert wird.
 
 ##Referenzen
 1.	[Einführung in Azure DocumentDB][introduction]
@@ -2364,8 +2375,8 @@ Das folgende Beispiel zeigt, wie Sie mithilfe von "queryDocuments" in der server
 4.	[DocumentDB-Konsistenzebenen][consistency-levels]
 5.	ANSI SQL 2011 [http://www.iso.org/iso/iso\_catalogue/catalogue\_tc/catalogue\_detail.htm?csnumber=53681](http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=53681)
 6.	JSON [http://json.org/](http://json.org/)
-7.	JavaScript-Spezifikation [http://www.ecma-international.org/publications/standards/Ecma-262.htm](http://www.ecma-international.org/publications/standards/Ecma-262.htm) 
-8.	LINQ [http://msdn.microsoft.com/library/bb308959.aspx](http://msdn.microsoft.com/library/bb308959.aspx) 
+7.	JavaScript-Spezifikation [http://www.ecma-international.org/publications/standards/Ecma-262.htm](http://www.ecma-international.org/publications/standards/Ecma-262.htm)
+8.	LINQ [http://msdn.microsoft.com/library/bb308959.aspx](http://msdn.microsoft.com/library/bb308959.aspx)
 9.	Abfrageauswertungstechniken für große Datenbanken [http://dl.acm.org/citation.cfm?id=152611](http://dl.acm.org/citation.cfm?id=152611)
 10.	Query Processing in Parallel Relational Database Systems, IEEE Computer Society Press, 1994
 11.	Lu, Ooi, Tan, Query Processing in Parallel Relational Database Systems, IEEE Computer Society Press, 1994.
@@ -2378,4 +2389,4 @@ Das folgende Beispiel zeigt, wie Sie mithilfe von "queryDocuments" in der server
 [consistency-levels]: documentdb-consistency-levels.md
  
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0824_2016-->

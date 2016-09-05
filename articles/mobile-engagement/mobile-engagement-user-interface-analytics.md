@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="mobile-multiple"
    ms.workload="mobile"
-   ms.date="11/29/2015"
+   ms.date="08/19/2016"
    ms.author="piyushjo"/>
 
 # Gewusst wie: Analysieren von Verlaufsdaten zu Ihrer Anwendung
@@ -70,7 +70,7 @@ Die Bindungsübersicht wird in der Mitte in mehrere Karten aufgeteilt, die jewei
 5.    Dies ist eine Sparkline des Verlaufs der Bindungswerte. Sie können die Werte in der Vergangenheit prüfen, um sich einen umfassenden Einblick in die Entwicklung zu verschaffen.
 
 
-## Weitere Informationen
+## Siehe auch
 
 - [Konzepte][Link 6]
 - [Handbuch zur Problembehandlung – Dienst][Link 24]
@@ -170,4 +170,4 @@ Die Bindungsübersicht wird in der Mitte in mehrere Karten aufgeteilt, die jewei
 [Link 32]: ../mobile-engagement-how-tos-text-view.md
 [Link 33]: ../mobile-engagement-how-tos-web-view.md
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0824_2016-->

@@ -1,9 +1,9 @@
 <properties
-   pageTitle="Erste Schritte zum Konfigurieren des Lastenausgleichs für Internetverbindungen mit dem Azure-Ressourcen-Manager | Microsoft Azure"
+   pageTitle="Erste Schritte zum Konfigurieren des Lastenausgleichs für Internetverbindungen mit dem Azure-Ressourcen-Manager | Microsoft Azure "
    description="So erstellen Sie Load-Balancer-Regeln, NAT-Regeln und Tests für den Azure-Ressourcen-Manager. Umfassende schrittweise Anleitung zum Erstellen einer Load-Balancer-Ressource."
    services="load-balancer"
    documentationCenter="na"
-   authors="joaoma"
+   authors="sdwheeler"
    manager="carmonm"
    editor="tysonn" />
 <tags
@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="02/09/2016"
-   ms.author="joaoma" />
+   ms.author="sewhee" />
 
 # Erste Schritte zum Konfigurieren des Lastenausgleichs für Internetverbindungen mit dem Azure-Ressourcen-Manager
 
@@ -84,7 +84,7 @@ Erstellen Sie eine neue Ressourcengruppe. (Überspringen Sie diesen Schritt, wen
 
     PS C:\> New-AzureResourceGroup -Name NRP-RG -location "West US"
 
-Der Azure-Ressourcen-Manager erfordert, dass alle Ressourcengruppen einen Speicherort angeben. Dieser wird als Standardspeicherort für Ressourcen in dieser Ressourcengruppe verwendet. Stellen Sie sicher, dass alle Befehle, mit denen ein Load Balancer erstellt wird, die gleiche Ressourcengruppe verwenden.
+Der Azure Resource Manager erfordert, dass alle Ressourcengruppen einen Speicherort angeben. Dieser wird als Standardspeicherort für Ressourcen in dieser Ressourcengruppe verwendet. Stellen Sie sicher, dass alle Befehle, mit denen ein Load Balancer erstellt wird, die gleiche Ressourcengruppe verwenden.
 
 Im oben stehenden Beispiel haben wir eine Ressourcengruppe namens "NRP RG" mit dem Standort "USA, Westen" erstellt.
 
@@ -281,4 +281,4 @@ Verwenden Sie den Befehl „Remove-AzureLoadBalancer“, um den zuvor erstellten
 
 [Konfigurieren von TCP-Leerlauftimeout-Einstellungen für den Lastenausgleich](load-balancer-tcp-idle-timeout.md)
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0824_2016-->

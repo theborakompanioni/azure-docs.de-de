@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Überwachen von Vorgängen mit dem Ressourcen-Manager | Microsoft Azure"
-	description="Verwenden Sie das Überwachungsprotokoll im Ressourcen-Manager, um Benutzeraktionen und Fehler zu überprüfen. Zeigt Azure-Portal, PowerShell, Azure-Befehlszeilenschnittstelle und REST."
+	description="Verwenden Sie das Aktivitätsprotokoll in Resource Manager, um Benutzeraktionen und Fehler zu überprüfen. Zeigt Azure-Portal, PowerShell, Azure-Befehlszeilenschnittstelle und REST."
 	services="azure-resource-manager"
 	documentationCenter=""
 	authors="tfitzmac"
@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/13/2016"
+	ms.date="08/22/2016"
 	ms.author="tomfitz"/>
 
 # Überwachen von Vorgängen mit dem Ressourcen-Manager
 
-Über Überwachungsprotokolle können Sie Folgendes ermitteln:
+Mithilfe von Aktivitätsprotokollen können Sie Folgendes ermitteln:
 
-- Welche Vorgänge auf den Ressourcen in Ihrem Abonnement ausgeführt wurden
+- Welche Vorgänge in den Ressourcen in Ihrem Abonnement ausgeführt wurden
 - Wer den Vorgang initiiert hat (auch wenn die von einem Back-End-Dienst initiierten Vorgänge keinen Benutzer als Aufrufer zurückgeben)
 - Wann der Vorgang abgeschlossen wurde
 - Den Status des Vorgangs
@@ -28,39 +28,35 @@
 
 [AZURE.INCLUDE [resource-manager-audit-limitations](../includes/resource-manager-audit-limitations.md)]
 
-In diesem Thema geht es um Überwachungsvorgänge. Weitere Informationen zur Verwendung der Überwachungsprotokolle für die Problembehandlung bei einer Bereitstellung finden Sie unter [Problembehandlung beim Bereitstellen von Ressourcengruppen in Azure](resource-manager-troubleshoot-deployments-portal.md).
+In diesem Thema geht es um Überwachungsvorgänge. Informationen zur Verwendung der Aktivitätsprotokolle für die Problembehandlung bei einer Bereitstellung finden Sie unter [Problembehandlung beim Bereitstellen von Ressourcengruppen in Azure](resource-manager-troubleshoot-deployments-portal.md).
 
-Sie können Informationen aus den Überwachungsprotokollen über das Azure-Portal, Azure PowerShell, die Azure-Befehlszeilenschnittstelle, die Insights-REST-API oder die [Insights-.NET-Bibliothek](https://www.nuget.org/packages/Microsoft.Azure.Insights/) abrufen.
+Sie können Informationen aus den Aktivitätsprotokollen über das Portal, PowerShell, die Azure-Befehlszeilenschnittstelle, die Insights-REST-API oder die [Insights-.NET-Bibliothek](https://www.nuget.org/packages/Microsoft.Azure.Insights/) abrufen.
 
-## Portal zum Anzeigen von Überwachungsprotokollen
+## Verwenden des Portals zum Anzeigen von Aktivitätsprotokollen
 
-1. Um Überwachungsprotokolle über das Portal anzuzeigen, wählen Sie **Durchsuchen** und **Überwachungsprotokolle**.
+1. Um die Aktivitätsprotokolle im Portal anzuzeigen, wählen Sie **Weitere Dienste** und **Aktivitätsprotokolle** aus.
 
-    ![Überwachungsprotokolle auswählen](./media/resource-group-audit/select-audit-logs.png)
+    ![Aktivitätsprotokolle auswählen](./media/resource-group-audit/select-audit-logs.png)
 
-2. Auf dem Blatt **Überwachungsprotokolle** wird eine Zusammenfassung der aktuellen Vorgänge für alle Ressourcengruppen in Ihrem Abonnement angezeigt. Dazu gehören eine grafische Darstellung der Zeit und des Status der Vorgänge sowie eine Liste der Vorgänge.
+2. Auf dem Blatt **Aktivitätsprotokoll** wird eine Übersicht über die zuletzt ausgeführten Vorgänge für alle Ressourcengruppen in Ihrem Abonnement angezeigt. Die zuletzt ausgeführten Vorgänge werden in Listenform angezeigt.
 
     ![Aktionen anzeigen](./media/resource-group-audit/audit-summary.png)
 
-3. Um eine bestimmte Art von Aktion zu suchen, können Sie filtern, welche Vorgänge auf dem Blatt „Überwachungsprotokolle“ angezeigt werden. Wählen Sie oben auf dem Blatt die Option **Filtern**.
-
-    ![Protokolle filtern](./media/resource-group-audit/filter-logs.png)
-
-4. Auf dem Blatt **Filter** können Sie viele unterschiedliche Bedingungen auswählen, um die Anzahl angezeigter Vorgänge einzuschränken. Beispielsweise können Sie alle Aktionen von einem bestimmten Benutzer über die vergangene Woche anzeigen.
+3. Um die Anzahl der angezeigten Vorgänge zu einzuschränken, wählen Sie verschiedene Bedingungen aus. Die folgende Abbildung zeigt beispielsweise die Felder **Zeitraum** und **Ereignis initiiert von**, die geändert wurden, um die Aktionen anzuzeigen, die von einem bestimmten Benutzer oder einer bestimmten Anwendung im letzten Monat durchgeführt wurden.
 
     ![Filteroptionen festlegen](./media/resource-group-audit/set-filter.png)
 
-Nachdem Sie die Ansicht der Überwachungsprotokolle aktualisiert haben, werden nur die Vorgänge angezeigt, die die angegebene Bedingung erfüllen. Diese Einstellungen werden bis zur nächsten Anzeige der Überwachungsprotokolle beibehalten, daher müssen Sie die Werte möglicherweise ändern, um die Ansicht der Vorgänge wieder zu erweitern.
+4. Wählen Sie **Übernehmen** aus, um die Ergebnisse Ihrer Abfrage anzuzeigen.
 
-Sie können auch automatisch nach einer bestimmten Ressource filtern, indem Sie Überwachungsprotokolle aus dem jeweiligen Ressourcenblatt auswählen. Wählen Sie im Portal die zu überwachende Ressource aus, und wählen Sie **Überwachungsprotokolle**.
+5. Wenn Sie die Abfrage später erneut ausführen möchten, wählen Sie **Speichern** aus, und benennen Sie die Abfrage.
 
-![Ressource überwachen](./media/resource-group-audit/audit-by-resource.png)
+    ![Abfrage speichern](./media/resource-group-audit/save-query.png)
 
-Beachten Sie, dass das Überwachungsprotokoll automatisch über die vergangene Woche nach der ausgewählten Ressource gefiltert wird.
+6. Sie können auch automatisch nach einer bestimmten Ressource oder Ressourcengruppe filtern, indem Sie auf dem Blatt der jeweiligen Ressource bzw. Ressourcengruppe die Option **Aktivitätsprotokoll** auswählen. Beachten Sie, dass das Aktivitätsprotokoll automatisch nach der ausgewählten Ressource gefiltert wird.
 
-![Nach Ressourcen filtern](./media/resource-group-audit/filtered-by-resource.png)
+    ![Nach Ressourcen filtern](./media/resource-group-audit/filtered-by-resource.png)
 
-## PowerShell zum Anzeigen von Überwachungsprotokollen
+## Verwenden von PowerShell zum Anzeigen von Aktivitätsprotokollen
 
 1. Um Protokolleinträge abzurufen, führen Sie den Befehl **Get-AzureRmLog** aus. Wenn Sie die Liste der Einträge filtern möchten, können Sie dem Befehl Parameter hinzufügen. Wenn Sie keine Start- und Endzeit angeben, werden die Einträge der letzten Stunde zurückgegeben. Führen Sie beispielsweise folgenden Befehl aus, um die Vorgänge für eine Ressourcengruppe während der letzten Stunde abzurufen:
 
@@ -100,7 +96,7 @@ Beachten Sie, dass das Überwachungsprotokoll automatisch über die vergangene W
 
         Get-AzureRmLog -ResourceGroup deletedgroup -StartTime (Get-Date).AddDays(-14) -Caller someone@contoso.com
 
-## Azure-Befehlszeilenschnittstelle zum Anzeigen von Überwachungsprotokollen
+## Verwenden der Azure-Befehlszeilenschnittstelle zum Anzeigen von Aktivitätsprotokollen
 
 1. Um Protokolleinträge abzurufen, führen Sie den Befehl **azure group log show** aus.
 
@@ -116,13 +112,13 @@ Beachten Sie, dass das Überwachungsprotokoll automatisch über die vergangene W
 
 ## REST-API zum Anzeigen von Überwachungsprotokollen
 
-Die REST-Vorgänge für die Arbeit mit Überwachungsprotokollen gehören zur [Insights-REST-API](https://msdn.microsoft.com/library/azure/dn931943.aspx). Informationen zum Abrufen von Überwachungsprotokollereignissen finden Sie unter [Auflisten der Verwaltungsereignisse in einem Abonnement](https://msdn.microsoft.com/library/azure/dn931934.aspx).
+Die REST-Vorgänge für die Arbeit mit Aktivitätsprotokollen gehören zur [Insights-REST-API](https://msdn.microsoft.com/library/azure/dn931943.aspx). Informationen zum Abrufen von Aktivitätsprotokollereignissen finden Sie unter [Auflisten der Verwaltungsereignisse in einem Abonnement](https://msdn.microsoft.com/library/azure/dn931934.aspx).
 
 ## Nächste Schritte
 
-- Azure-Überwachungsprotokolle können mit Power BI verwendet werden, um bessere Einblicke zu den Aktionen im Rahmen Ihres Abonnements zu erhalten. Informationen hierzu finden Sie unter [View and analyze Azure Audit Logs in Power BI and more](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/) (Anzeigen und Analysieren von Azure-Überwachungsprotokollen in Power BI und mehr).
+- Azure-Aktivitätsprotokolle können mit Power BI verwendet werden, um bessere Einblicke in die in Ihrem Abonnement ausgeführten Aktionen zu erhalten. Informationen hierzu finden Sie unter [View and analyze Azure Activity Logs in Power BI and more](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/) (Anzeigen und Analysieren von Azure-Aktivitätsprotokollen in Power BI und mehr).
 - Informationen zum Festlegen von Sicherheitsrichtlinien finden Sie unter [Rollenbasierte Access Control in Azure](./active-directory/role-based-access-control-configure.md).
 - Weitere Informationen zu den Befehlen zur Problembehandlung bei Bereitstellungen finden Sie unter [Problembehandlung beim Bereitstellen von Ressourcengruppen in Azure](resource-manager-troubleshoot-deployments-portal.md).
 - Informationen zum Verhindern von Löschvorgängen für eine Ressource für alle Benutzer finden Sie unter [Sperren von Ressourcen mit Azure Resource Manager](resource-group-lock-resources.md).
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0824_2016-->

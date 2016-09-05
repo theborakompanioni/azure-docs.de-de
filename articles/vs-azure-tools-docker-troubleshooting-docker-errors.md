@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
-   ms.date="06/08/2016"
+   ms.date="08/18/2016"
    ms.author="allclark" />
 
 # Problembehandlung bei der Visual Studio Docker-Entwicklung
@@ -21,7 +21,7 @@ Bei der Arbeit mit der Preview-Version von Visual Studio-Tools für Docker könn
 
 ##Fehler beim Konfigurieren der Datei „Program.cs“ zur Docker-Unterstützung
 
-Beim Hinzufügen von Docker-Unterstützung muss `.UseUrls(Environment.GetEnvironmentVariable("ASPNETCORE_SERVER.URLS"))` zu „WebHostBuilder()“ hinzugefügt werden. Wenn die Datei „Program.cs“, die Funktion `Main()` oder eine neue WebHostBuilder-Klasse nicht gefunden wurde, wird eine Warnung angezeigt. `.UseUrls()` ist erforderlich, damit Kestrel den eingehenden Datenverkehr über „localhost“ hinaus überwachen kann, wenn die Ausführung in einem Docker-Container erfolgt. Nach Fertigstellung sieht der typische Code wie folgt aus:
+Beim Hinzufügen von Docker-Unterstützung muss `.UseUrls(Environment.GetEnvironmentVariable("ASPNETCORE_URLS"))` zu „WebHostBuilder()“ hinzugefügt werden. Wenn die `Main()`-Funktion oder eine neue WebHostBuilder-Klasse in `Program.cs` nicht gefunden wurde, wird eine Warnung angezeigt. `.UseUrls()` ist erforderlich, damit Kestrel über „localhost“ hinaus auf eingehenden Datenverkehr lauschen kann, wenn die Ausführung in einem Docker-Container erfolgt. Nach der Fertigstellung sieht der Code üblicherweise wie folgt aus:
 
 ```
 public class Program
@@ -83,21 +83,21 @@ Documents        Libraries        Pictures         desktop.ini
 /wormhole #
 ```
 
-**Hinweis:** *Bei der Arbeit mit Linux-VMs muss im Containerdateisystem die Groß-/Kleinschreibung beachtet werden.*
+> [AZURE.NOTE] Bei der Arbeit mit virtuellen Linux-Computern muss im Containerdateisystem die Groß-/Kleinschreibung beachtet werden.
 
 Wenn Sie den Inhalt nicht anzeigen können, probieren Sie Folgendes:
 
 **Betaversion von Docker für Windows**
-- Überprüfen Sie, ob die Docker für Windows-Desktop-App ausgeführt wird, indem Sie auf der Taskleiste nach dem Walsymbol suchen, das weiß und funktionsbereit angezeigt werden muss.
-- Überprüfen Sie, ob die Volumezuordnung konfiguriert ist, indem Sie mit der rechten Maustaste auf der Taskleiste auf das Walsymbol klicken, „Einstellungen“ auswählen und dann auf **Freigegebene Laufwerke verwalten** klicken.
+- Vergewissern Sie sich, dass die Desktop-App „Docker für Windows“ ausgeführt wird, indem Sie auf der Taskleiste nach dem `moby`-Symbol suchen. Dieses muss weiß dargestellt werden und funktionsbereit sein.
+- Überprüfen Sie, ob die Volumezuordnung konfiguriert ist, indem Sie mit der rechten Maustaste auf der Taskleiste auf das `moby`-Symbol klicken, „Einstellungen“ auswählen und dann auf **Freigegebene Laufwerke verwalten** klicken.
 
 **Docker Toolbox mit VirtualBox**
 
-VirtualBox gibt `C:\Users` standardmäßig als `c:/Users` frei. Falls möglich, verschieben Sie Ihr Projekt unter dieses Verzeichnis. Fügen Sie es andernfalls den [freigegebenen Ordnern](https://www.virtualbox.org/manual/ch04.html#sharedfolders) von VirtualBox manuell hinzu.
+VirtualBox gibt `C:\Users` standardmäßig als `c:/Users` frei. Falls möglich, verschieben Sie Ihr Projekt unter dieses Verzeichnis. Andernfalls können Sie es auch manuell den [freigegebenen Ordnern](https://www.virtualbox.org/manual/ch04.html#sharedfolders) von VirtualBox hinzufügen.
 	
-##Erstellung: Fehler beim Erstellen des Images, Fehler beim Überprüfen der TLS-Verbindung: Der Host wird nicht ausgeführt
+##Erstellung: Fehler beim Erstellen des Images, Fehler beim Überprüfen der TLS-Verbindung: Der Host wird nicht ausgeführt.
 
-- Überprüfen Sie, ob der Docker-Standardhost in Betrieb ist. Siehe dazu den Artikel zum [Konfigurieren des Docker-Clients](./vs-azure-tools-docker-setup.md).
+- Überprüfen Sie, ob der Docker-Standardhost in Betrieb ist. Weitere Informationen finden Sie in [diesem Artikel](./vs-azure-tools-docker-setup.md) unter „Konfigurieren des Docker-Clients“.
 
 ##Verwenden von Microsoft Edge als Standardbrowser
 
@@ -106,10 +106,10 @@ Wenn Sie den Microsoft Edge-Browser verwenden, wird die Website möglicherweise 
 1. Wechseln Sie zu **Internetoptionen**.
     - Unter Windows 10 können Sie `Internet Options` in das Windows-Feld „Ausführen“ eingeben.
     - In Internet Explorer können Sie das Menü **Einstellungen** aufrufen und **Internetoptionen** auswählen.
-1. Klicken Sie auf **Internetoptionen**, sobald diese Option angezeigt wird.
-1. Klicken Sie auf die Registerkarte **Sicherheit**.
+1. Wählen Sie **Internetoptionen** aus, sobald diese Option angezeigt wird.
+1. Wählen Sie die Registerkarte **Sicherheit** aus.
 1. Wählen Sie die Zone **Lokales Intranet** aus.
-1. Klicken Sie auf **Sites**.
+1. Wählen Sie **Sites** aus.
 1. Fügen Sie die IP-Adresse Ihres virtuellen Computers (in diesem Fall der Docker-Host) in der Liste hinzu.
 1. Aktualisieren Sie die Seite in Edge. Die Website sollte nun verfügbar sein und angezeigt werden.
 1. Weitere Informationen zu diesem Problem finden Sie in Scott Hanselmans Blogbeitrag [Microsoft Edge can't see or open VirtualBox-hosted local web sites](http://www.hanselman.com/blog/FixedMicrosoftEdgeCantSeeOrOpenVirtualBoxhostedLocalWebSites.aspx) (Über VirtualBox gehostete lokale Websites können in Microsoft Edge nicht angezeigt oder geöffnet werden).
@@ -119,7 +119,7 @@ Wenn Sie den Microsoft Edge-Browser verwenden, wird die Website möglicherweise 
 
 ###Das Ausführen der App hat zur Folge, dass PowerShell geöffnet, eine Fehlermeldung angezeigt und PowerShell wieder geschlossen wird. Die Browserseite wird nicht geöffnet.
 
-Dabei könnte es sich um einen Fehler während des folgenden Vorgangs handeln: `docker-compose-up`. Führen Sie die folgenden Schritte aus, um den Fehler anzuzeigen:
+Dies kann auf einen Fehler während des `docker-compose-up`-Vorgangs zurückzuführen sein. Führen Sie die folgenden Schritte aus, um den Fehler anzuzeigen:
 
 1. Öffnen Sie die Datei `Properties\launchSettings.json`.
 1. Wechseln Sie zum Docker-Eintrag.
@@ -129,10 +129,10 @@ Dabei könnte es sich um einen Fehler während des folgenden Vorgangs handeln: `
     "commandLineArgs": "-ExecutionPolicy RemoteSigned …”
     ```
 	
-1. Fügen Sie den `-noexit`-Parameter hinzu. Die Zeile sollte nun wie folgt aussehen: Durch diese Änderung bleibt PowerShell geöffnet, sodass Sie den Fehler anzeigen können.
+1. Fügen Sie den `-noexit`-Parameter hinzu. Die Zeile sollte nun wie folgt aussehen: Durch diesen Code bleibt PowerShell geöffnet, sodass Sie sich den Fehler ansehen können.
 
     ```
 	"commandLineArgs": "-noexit -ExecutionPolicy RemoteSigned …”
     ```
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0824_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-ios" 
 	ms.devlang="objective-c" 
 	ms.topic="article" 
-	ms.date="02/25/2016" 
+	ms.date="08/19/2016" 
 	ms.author="piyushjo" />
 
 #Erstellen einer Brücke zwischen iOS WebView und dem nativem Mobile Engagement iOS SDK
@@ -26,12 +26,12 @@ Einige mobile Apps werden als Hybrid-Apps konzipiert, das heißt, die App selbst
 
 Zu diesem Zweck gibt es zwei Ansätze, die jedoch nicht dokumentiert sind:
 
-- Der erste wird unter diesem [Link](http://stackoverflow.com/questions/9826792/how-to-invoke-objective-c-method-from-javascript-and-send-back-data-to-javascrip) beschrieben. Dazu gehört das Registrieren eines `UIWebViewDelegate` in Ihrer Webansicht sowie das Abfangen und sofortige Abbrechen einer Standortänderung in Javascript. 
-- Der zweite Ansatz basiert auf dieser [WWDC 2013-Sitzung](https://developer.apple.com/videos/play/wwdc2013/615). Dieser Ansatz ist sauberer als der erste, und wir werden ihn in dieser Anleitung verwenden. Beachten Sie, dass dieser Ansatz nur für iOS7 und höher funktioniert. 
+- Der erste wird unter diesem [Link](http://stackoverflow.com/questions/9826792/how-to-invoke-objective-c-method-from-javascript-and-send-back-data-to-javascrip) beschrieben. Dazu gehört das Registrieren eines `UIWebViewDelegate` in Ihrer Webansicht sowie das Abfangen und sofortige Abbrechen einer Standortänderung in Javascript.
+- Der zweite Ansatz basiert auf dieser [WWDC 2013-Sitzung](https://developer.apple.com/videos/play/wwdc2013/615). Dieser Ansatz ist sauberer als der erste, und wir werden ihn in dieser Anleitung verwenden. Beachten Sie, dass dieser Ansatz nur für iOS7 und höher funktioniert.
 
 Führen Sie für die iOS-Beispielbrücke die folgenden Schritte aus:
 
-1. Zunächst müssen Sie sicherstellen, dass Sie unser [Erste-Schritte-Tutorial](mobile-engagement-ios-get-started.md) zum Integrieren des Mobile Engagement iOS SDK in der Hybrid-App durchgeführt haben. Optional können Sie auch die Testprotokollierung wie folgt aktivieren, damit die SDK-Methoden angezeigt werden, während wir sie von der WebView aus auslösen. 
+1. Zunächst müssen Sie sicherstellen, dass Sie unser [Erste-Schritte-Tutorial](mobile-engagement-ios-get-started.md) zum Integrieren des Mobile Engagement iOS SDK in der Hybrid-App durchgeführt haben. Optional können Sie auch die Testprotokollierung wie folgt aktivieren, damit die SDK-Methoden angezeigt werden, während wir sie von der WebView aus auslösen.
     
 		- (BOOL)application:(UIApplication ​*)application didFinishLaunchingWithOptions:(NSDictionary *​)launchOptions {
 		   ....
@@ -162,8 +162,8 @@ Führen Sie für die iOS-Beispielbrücke die folgenden Schritte aus:
 
 6. Beachten Sie die folgenden Hinweise zur oben gezeigten Datei **ViewController.m**:
 
-	- In der `loadWebView`-Methode laden wir eine lokale HTML-Datei namens **LocalPage.html**, deren Code wir als Nächstes untersuchen werden. 
-	- In der `webViewDidFinishLoad`-Methode erfassen wir den `JsContext` und ordnen ihn unserer Wrapperklasse zu. Dadurch können wir unsere Wrapper-SDK-Methoden über das Handle **EngagementJs** aus der WebView aufrufen. 
+	- In der `loadWebView`-Methode laden wir eine lokale HTML-Datei namens **LocalPage.html**, deren Code wir als Nächstes untersuchen werden.
+	- In der `webViewDidFinishLoad`-Methode erfassen wir den `JsContext` und ordnen ihn unserer Wrapperklasse zu. Dadurch können wir unsere Wrapper-SDK-Methoden über das Handle **EngagementJs** aus der WebView aufrufen.
 
 7. Erstellen Sie eine Datei namens **LocalPage.html** mit dem folgenden Code:
 
@@ -254,10 +254,10 @@ Führen Sie für die iOS-Beispielbrücke die folgenden Schritte aus:
 
 8. Beachten Sie die folgenden Hinweise zur oben gezeigten HTML-Datei:
 
-	- 	Sie enthält eine Reihe von Eingabefeldern, in denen Sie Daten als Namen für das Ereignis, den Auftrag, den Fehler oder die AppInfo bereitstellen können. Beim Klicken auf die Schaltfläche daneben erfolgt ein Aufruf an das JavaScript, das schließlich die Methoden aus der Brückendatei aufruft, um diesen Aufruf an das Mobile Engagement iOS SDK zu übergeben. 
-	- 	Wir versehen Ereignisse, Aufträge und sogar Fehler mit einigen statischen Zusatzinformationen, um zu veranschaulichen, wie dies zu erreichen wäre. Diese zusätzlichen Informationen werden als JSON-Zeichenfolge gesendet, die (wie in der Datei `EngagementJsExports.m` zu sehen ist) analysiert und beim Senden von Ereignissen, Aufträgen und Fehlern übergeben wird. 
-	- 	Ein Mobile Engagement-Auftrag mit dem im Eingabefeld angegebenen Namen wird gestartet, für 10 Sekunden ausgeführt und beendet. 
-	- 	Eine Mobile Engagement-AppInfo oder ein Tag wird mit „customer\_name“ als statischem Schlüssel und mit dem eingegebenen Wert als Wert für das Tag übergeben. 
+	- 	Sie enthält eine Reihe von Eingabefeldern, in denen Sie Daten als Namen für das Ereignis, den Auftrag, den Fehler oder die AppInfo bereitstellen können. Beim Klicken auf die Schaltfläche daneben erfolgt ein Aufruf an das JavaScript, das schließlich die Methoden aus der Brückendatei aufruft, um diesen Aufruf an das Mobile Engagement iOS SDK zu übergeben.
+	- 	Wir versehen Ereignisse, Aufträge und sogar Fehler mit einigen statischen Zusatzinformationen, um zu veranschaulichen, wie dies zu erreichen wäre. Diese zusätzlichen Informationen werden als JSON-Zeichenfolge gesendet, die (wie in der Datei `EngagementJsExports.m` zu sehen ist) analysiert und beim Senden von Ereignissen, Aufträgen und Fehlern übergeben wird.
+	- 	Ein Mobile Engagement-Auftrag mit dem im Eingabefeld angegebenen Namen wird gestartet, für 10 Sekunden ausgeführt und beendet.
+	- 	Eine Mobile Engagement-AppInfo oder ein Tag wird mit „customer\_name“ als statischem Schlüssel und mit dem eingegebenen Wert als Wert für das Tag übergeben.
  
 9. Wenn Sie die App ausführen, erhalten Sie folgende Ausgabe. Geben Sie jetzt einen Namen für ein Testereignis wie folgt ein, und klicken Sie daneben auf **Send**.
 
@@ -271,4 +271,4 @@ Führen Sie für die iOS-Beispielbrücke die folgenden Schritte aus:
 [1]: ./media/mobile-engagement-bridge-webview-native-ios/sending-event.png
 [2]: ./media/mobile-engagement-bridge-webview-native-ios/event-output.png
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0824_2016-->

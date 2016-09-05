@@ -13,23 +13,23 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/02/2016"
+	ms.date="08/24/2016"
 	ms.author="daleche"/>
 
 
 # Wiederherstellen einer einzelnen Tabelle aus einer Azure SQL-Datenbanksicherung
 
-Es kann Situationen geben, in denen Sie versehentlich einige Daten in einer SQL-Datenbank geändert haben und die einzelne betroffene Tabelle wiederherstellen möchten. In diesem Artikel wird beschrieben, wie Sie eine einzelne Tabelle in einer Datenbank aus einer der [automatisierten Sicherungen](sql-database-automated-backups.md) wiederherstellen, die basierend auf der ausgewählten Leistungsstufe von der Azure SQL-Datenbank erstellt werden.
+Es kann Situationen geben, in denen Sie versehentlich einige Daten in einer SQL-Datenbank geändert haben und die einzelne betroffene Tabelle wiederherstellen möchten. In diesem Artikel wird die Wiederherstellung einer einzelnen Tabelle in einer Datenbank aus einer der [automatischen Sicherungen](sql-database-automated-backups.md) der SQL-Datenbank beschrieben.
 
 ## Vorbereitungsschritte: Benennen Sie die Tabelle um, und stellen Sie eine Kopie der Datenbank wieder her.
 1. Identifizieren Sie die Tabelle in Ihrer Azure SQL-Datenbank, die Sie durch die wiederhergestellte Kopie ersetzen möchten. Verwenden Sie Microsoft SQL Management Studio zum Umbenennen der Tabelle. Benennen Sie die Tabelle beispielsweise in &lt;Tabellenname&gt;\_alt um.
 
 	**Hinweis**: Stellen Sie sicher, dass für die Tabelle, die umbenannt werden soll, keine Aktivitäten ausgeführt werden, um eine Blockierung zu vermeiden. Wenn Probleme auftreten, stellen Sie sicher, dass dieser Schritt während eines Wartungsfensters ausgeführt wird.
 
-2. Stellen Sie eine Sicherung Ihrer Datenbank zu einem Zeitpunkt wieder her, den Sie wiederherstellen möchten. Informationen hierzu finden Sie in den Schritten unter [Point-In-Time-Wiederherstellung](sql-database-recovery-using-backups.md#point-in-time-restore).
+2. Stellen Sie eine Sicherung Ihrer Datenbank mit dem Zustand zu einem von Ihnen gewünschten Zeitpunkt mit den Schritten zur [Point-in-Time-Wiederherstellung](sql-database-recovery-using-backups.md#point-in-time-restore) wieder her.
 
 	**Hinweise**:
-	- Der Name der wiederhergestellten Datenbank erhält das Format „Datenbankname + Zeitstempel“. Beispiel: **Adventureworks2012\_2016-01-01T22-12Z**. Durch diesen Schritt wird der vorhandene Datenbankname auf dem Server nicht überschrieben. Dies ist eine Sicherheitsmaßnahme, durch die der Benutzer die wiederhergestellte Datenbank überprüfen kann, bevor die aktuelle Datenbank gelöscht und die wiederhergestellte Datenbank zum Einsatz in der Produktion umbenannt wird.
+	- Der Name der wiederhergestellten Datenbank erhält das Format „Datenbankname + Zeitstempel“. Beispiel: **Adventureworks2012\_2016-01-01T22-12Z**. Durch diesen Schritt wird der vorhandene Datenbankname auf dem Server nicht überschrieben. Dies ist eine Sicherheitsmaßnahme, die Ihnen die Überprüfung der wiederhergestellten Datenbank ermöglicht, bevor die aktuelle Datenbank gelöscht und die wiederhergestellte Datenbank zum Einsatz in der Produktion umbenannt wird.
 	- Alle Leistungsstufen von Basic bis Premium werden automatisch vom Dienst gesichert. Hierbei variieren die Aufbewahrungszeiten für die Sicherung basierend auf dem Tarif:
 
 | Datenbankwiederherstellung | Basic-Tarif | Standard-Tarife | Premium-Tarife |
@@ -71,4 +71,4 @@ Es kann Situationen geben, in denen Sie versehentlich einige Daten in einer SQL-
 
 [Übersicht: Automatisierte SQL-Datenbanksicherungen](sql-database-automated-backups.md)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0824_2016-->

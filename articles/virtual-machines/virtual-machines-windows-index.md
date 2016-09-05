@@ -66,7 +66,7 @@ Hier finden Sie die gesamte Dokumentation, die Sie zum Erstellen und Verwalten W
 
 [Geplante Wartung für virtuelle Azure-Computer](virtual-machines-windows-planned-maintenance.md)
 
-[Implementierungsrichtlinien für Azure-Infrastrukturdienste](virtual-machines-windows-infrastructure-service-guidelines.md)
+[Implementierungsrichtlinien für Azure-Infrastrukturdienste](virtual-machines-windows-infrastructure-subscription-accounts-guidelines.md)
 
 [Create an availability set for virtual machines (Erstellen einer Verfügbarkeitsgruppe für virtuelle Computer)](virtual-machines-windows-classic-configure-availability.md)
 
@@ -90,7 +90,7 @@ Hier finden Sie die gesamte Dokumentation, die Sie zum Erstellen und Verwalten W
 
 [Verwalten Ihrer virtuellen Computer mithilfe von Azure PowerShell](virtual-machines-windows-classic-manage-psh.md)
 	
-[Herstellen einer Verbindung zwischen klassischen VNets und neuen VNets](../virtual-network/virtual-networks-arm-asm-s2s-howto.md)
+[Herstellen einer Verbindung zwischen klassischen VNets und neuen VNets](../vpn-gateway/vpn-gateway-connect-different-deployment-models-powershell.md)
 	
 [Informationen zum Agent und zu Erweiterungen für virtuelle Computer](virtual-machines-windows-classic-agents-and-extensions.md)
 
@@ -192,4 +192,4 @@ Hier finden Sie die gesamte Dokumentation, die Sie zum Erstellen und Verwalten W
 
 [Behandeln von Problemen beim Neustart oder Ändern der Größe eines vorhandenen virtuellen Windows-Computers in Azure (klassisches Bereitstellungsmodell)](virtual-machines-windows-classic-restart-resize-error-troubleshooting.md)
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0824_2016-->

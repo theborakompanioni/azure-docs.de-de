@@ -15,7 +15,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/11/2016"
+	ms.date="08/24/2016"
 	ms.author="genli"/>
 
 # Ändern der für die Zahlung eines Azure-Abonnements verwendeten Kreditkarte
@@ -26,7 +26,7 @@ Wenn Ihre Kreditkarte verlängert wird und die Kreditkartennummer gleich bleibt,
 
 Wenn sich die Kreditkartennummer infolge von Verlust, Diebstahl oder Ablauf der Gültigkeit ändert, müssen Sie Ihrem Konto die neue Kreditkarte hinzufügen. Dies ist erforderlich, da sich bei Änderung der Kreditkartennummer auch die Kreditkartenprüfnummer ändert.
 
-[AZURE.INCLUDE [support-disclaimer](../includes/support-disclaimer.md)]
+> [AZURE.NOTE] Wenn Sie bei einem Verfahren in diesem Artikel weitere Hilfe benötigen, [wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), um das Problem schnell zu lösen.
 
 ## Bearbeiten von Zahlungsinformationen für eine vorhandene Kreditkarte
 1. Melden Sie sich im [Azure-Kontocenter](https://account.windowsazure.com/Subscriptions) als Kontoadministrator an. Im [Azure-Portal](https://portal.azure.com) können Sie über **Abonnement**>*Abonnementname*>**Verwalten** auf das Kontocenter zugreifen.
@@ -53,6 +53,9 @@ Wenn sich die Kreditkartennummer infolge von Verlust, Diebstahl oder Ablauf der 
 3. Wählen Sie rechts auf der Seite die Option **Zahlungsmethode ändern**.
 4. Klicken Sie auf der Seite **Zahlungsmethode wählen** auf den Dropdownpfeil neben der Kreditkarte, wählen Sie die zu verwendende Kreditkarte aus, und klicken Sie dann auf ![checkbutton](./media/billing-how-to-change-credit-card/checkbutton.png), um das Fenster zu schließen.
 
-> [AZURE.NOTE] Wenn Sie eine Kreditkarte entfernen möchten, die Sie nicht mehr als Azure-Zahlungsmethode verwenden, müssen Sie ein Supportticket übermitteln, um Unterstützung anzufordern. Informationen zum Erstellen eines Supporttickets für das Entfernen einer Kreditkarte finden Sie unter [Erstellen eines Supporttickets bei Problemen mit Azure-Abrechnungen und -Abonnements](billing-how-to-create-billing-support-ticket.md).
+## Entfernen einer Kreditkarte aus dem Konto
+Kreditkarten können nicht von Ihnen selbst aus dem Konto entfernt werden. Wenn Sie eine Kreditkarte entfernen möchten, die Sie nicht mehr als Azure-Zahlungsmethode verwenden, müssen Sie sich [mit dem Support in Verbindung setzen](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
-<!---HONumber=AcomDC_0817_2016-->
+> [AZURE.NOTE] Wenn Sie weitere Fragen haben, [wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), um das Problem schnell zu lösen.
+
+<!---HONumber=AcomDC_0824_2016-->

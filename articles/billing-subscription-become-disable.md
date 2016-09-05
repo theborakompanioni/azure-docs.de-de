@@ -15,12 +15,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/27/2016"
+	ms.date="08/24/2016"
 	ms.author="genli"/>
 
 # Was kann ich tun, wenn mein Azure-Abonnement deaktiviert wird?
 
-Wenn Ihr Abonnement deaktiviert wird, können Sie es mit den Schritten in diesem Artikel erneut aktivieren. Ihr Azure-Abonnement kann aus den folgenden Gründen deaktiviert werden:
+> [AZURE.NOTE] Wenn Sie bei einem Verfahren in diesem Artikel weitere Hilfe benötigen, [wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), um das Problem schnell zu lösen.
+
+Wenn Ihr Abonnement deaktiviert wird, können Sie es mit den Schritten in diesem Artikel erneut aktivieren. Ihr Azure-Abonnement kann aus folgenden Gründen deaktiviert werden:
 
 ## Sie haben Ihr Ausgabenlimit erreicht.
 
@@ -35,9 +37,9 @@ Gehen Sie wie folgt vor, um das Ausgabenlimit zu entfernen:
 3. Wählen Sie ein Abonnement aus.
 
 4. Wird die Meldung *Subscription reached the Spending Limit and has been disabled to prevent charges* (Ihr Abonnement hat das Ausgabenlimit erreicht und wurde deaktiviert, um zu verhindern, dass Kosten anfallen.) angezeigt, klicken Sie darauf.
-	
+
 	Klicken Sie andernfalls im Bereich **Abonnementstatus** auf **Ausgabenlimit entfernen**.
-	
+
 5. Wählen Sie die für Sie geeignete Option aus:
 
 |Option|Effekt|
@@ -71,4 +73,6 @@ Wenn Sie nicht auf das Portal zugreifen können, können Sie auch über die Webs
 
 Weitere Informationen finden Sie unter [Erstellen eines Supporttickets bei Problemen mit Azure-Abrechnungen und -Abonnements](billing-how-to-create-billing-support-ticket.md).
 
-<!---HONumber=AcomDC_0810_2016-->
+> [AZURE.NOTE] Wenn Sie weitere Fragen haben, [wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), um das Problem schnell zu lösen.
+
+<!---HONumber=AcomDC_0824_2016-->

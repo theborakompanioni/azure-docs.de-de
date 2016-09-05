@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/24/2016"
+	ms.date="08/17/2016"
 	ms.author="luisca"/>
 
 # Abrufen von Empfehlungen in Batches
@@ -198,4 +198,4 @@ Im Anschluss sehen Sie eine Beispielausgabe. Zur besseren Übersichtlichkeit zei
 -	Pro Abonnement kann immer nur ein Batchauftrag aufgerufen werden.
 -	Eine Eingabedatei für einen Batchauftrag darf maximal 2 MB groß sein.
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0824_2016-->

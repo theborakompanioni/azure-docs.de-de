@@ -3,7 +3,7 @@
    description="Erfahren Sie, wie Sie die Protokollierung für Warnereignisse und Integritätsteststatus für den Azure-Lastenausgleich aktivieren."
    services="load-balancer"
    documentationCenter="na"
-   authors="joaoma"
+   authors="sdwheeler"
    manager="carmonm"
    editor="tysonn"
    tags="azure-resource-manager"
@@ -15,14 +15,14 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="04/05/2016"
-   ms.author="joaoma" />
+   ms.author="sewhee" />
 
 # Protokollanalysen für den Azure-Lastenausgleich (Vorschau)
 Sie können in Azure verschiedene Protokolltypen verwenden, um den Lastenausgleich zu verwalten und eventuelle Fehler zu beheben. Auf einige dieser Protokolle können Sie über das Portal zugreifen, und alle Protokolle können von einem Azure-Blobspeicher extrahiert und in anderen Tools wie Excel und PowerBI angezeigt werden. In der unten stehenden Liste finden Sie weitere Informationen über die verschiedenen Typen von Protokollen.
 
 
 - **Überwachungsprotokolle:** Sie können [Azure-Überwachungsprotokolle](../../articles/azure-portal/insights-debugging-with-events.md) (ehemals Betriebsprotokolle) verwenden, um alle Vorgänge und deren Status anzuzeigen, die an Ihre Azure-Abonnements übermittelt werden. Überwachungsprotokolle sind standardmäßig aktiviert und können im Azure-Portal angezeigt werden.
-- **Warnereignisprotokolle**: Verwenden Sie dieses Protokoll, um die Warnungen anzuzeigen, die für den Lastenausgleich ausgelöst wurden. Der Status des Lastenausgleichs wird alle fünf Minuten erfasst. Dieses Protokoll wird nur geschrieben, wenn ein Warnereignis für den Lastenausgleich ausgelöst wird.  
+- **Warnereignisprotokolle**: Verwenden Sie dieses Protokoll, um die Warnungen anzuzeigen, die für den Lastenausgleich ausgelöst wurden. Der Status des Lastenausgleichs wird alle fünf Minuten erfasst. Dieses Protokoll wird nur geschrieben, wenn ein Warnereignis für den Lastenausgleich ausgelöst wird.
 - **Integritätstestprotokolle**: Verwenden Sie dieses Protokoll, um den Status von Integritätstests abzurufen und zu überprüfen, wie viele Instanzen im Back-End des Lastenausgleichs online sind und wie viel Prozent der virtuellen Computer Netzwerkdatenverkehr aus dem Lastenausgleich empfangen. Dieses Protokoll wird bei Ereignisänderungen des Teststatus geschrieben.
 
 >[AZURE.WARNING] Protokolle sind nur für Ressourcen verfügbar, die im Ressourcen-Manager-Bereitstellungsmodell bereitgestellt werden. Sie können Protokolle nicht für Ressourcen im klassischen Bereitstellungsmodell verwenden. Für ein besseres Verständnis der beiden Modelle lesen Sie den Artikel [Grundlegendes zur Bereitstellung über den Ressourcen-Manager im Vergleich zur klassischen Bereitstellung](../../articles/resource-manager-deployment-model.md). <BR> Die Protokollanalyse funktioniert derzeit nur für Lastenausgleichsmodule mit Internetzugriff. Diese Einschränkung ist nicht dauerhaft und kann sich jederzeit ändern. Besuchen Sie diese Seite regelmäßig, um über zukünftige Änderungen informiert zu sein.
@@ -128,4 +128,4 @@ Sie müssen eine Verbindung mit Ihrem Speicherkonto herstellen und die JSON-Prot
 - Blogbeitrag [Visualize your Azure Audit Logs with Power BI](http://blogs.msdn.com/b/powerbi/archive/2015/09/30/monitor-azure-audit-logs-with-power-bi.aspx).
 - Blogbeitrag [View and analyze Azure Audit Logs in Power BI and more](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/).
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0824_2016-->

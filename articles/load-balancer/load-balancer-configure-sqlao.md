@@ -3,7 +3,7 @@
    description="Konfigurieren von Lastenausgleich für SQL-AlwaysOn und Verwenden von Powershell zum Erstellen des Lastenausgleichs für die SQL-Implementierung"
    services="load-balancer"
    documentationCenter="na"
-   authors="joaoma"
+   authors="sdwheeler"
    manager="carmonm"
    editor="tysonn" />
 <tags 
@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="03/17/2016"
-   ms.author="joaoma" />
+   ms.author="sewhee" />
 
 # Konfigurieren des Lastenausgleichs für SQL-AlwaysOn
 
@@ -24,7 +24,7 @@ Der Listenername (DNS) wird einer IP-Adresse mit Lastenausgleich zugeordnet, und
 
 Sie können ILB-Unterstützung für SQL Server-AlwaysOn-Endpunkte (Listener) verwenden. Sie steuern den Zugriff auf den Listener und können die IP-Adresse mit Lastenausgleich aus einem bestimmten Subnetz im virtuellen Netzwerk (VNet) auswählen.
 
-Mithilfe von ILB auf dem Listener kann auf den SQL Server-Endpunkt (z. B. Server=tcp:ListenerName,1433;Database=DatabaseName) nur über Folgendes zugegriffen werden:
+Mithilfe von ILB auf dem Listener kann auf den SQL Server-Endpunkt (z. B. Server=tcp:ListenerName,1433;Database=DatabaseName) nur über Folgendes zugegriffen werden:
 
 Dienste und virtuelle Computer im gleichen virtuellen Netzwerk, Dienste und virtuelle Computer aus dem lokalen Netzwerk, Dienste und virtuelle Computer aus verbundenen VNets
 
@@ -36,13 +36,13 @@ Interner Lastenausgleich kann nur über PowerShell konfiguriert werden.
 
 ## Hinzufügen von internem Lastenausgleich zu einem Dienst 
 
-### Schritt 1
+### Schritt 1
 
 Im folgenden Beispiel konfigurieren wir ein virtuelles Netzwerk, das ein Subnetz namens "Subnet-1" enthält:
 
 	Add-AzureInternalLoadBalancer -InternalLoadBalancerName ILB_SQL_AO -SubnetName Subnet-1 -ServiceName SqlSvc
 
-### Schritt 2
+### Schritt 2
 
 Hinzufügen von Endpunkten mit Lastenausgleich für ILB auf jedem virtuellen Computer
 
@@ -57,7 +57,7 @@ Weitere Details zum Erstellen einer SQL AlwaysOn-Instanz finden Sie unter [Using
 
 
 
-## Siehe auch
+## Weitere Informationen
 
 [Erste Schritte zum Konfigurieren des Lastenausgleichs für Internetverbindungen](load-balancer-get-started-internet-arm-ps.md)
 
@@ -68,4 +68,4 @@ Weitere Details zum Erstellen einer SQL AlwaysOn-Instanz finden Sie unter [Using
 [Konfigurieren von TCP-Leerlauftimeout-Einstellungen für den Lastenausgleich](load-balancer-tcp-idle-timeout.md)
  
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0824_2016-->

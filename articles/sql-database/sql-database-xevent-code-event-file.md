@@ -15,7 +15,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/24/2016" 
+	ms.date="08/23/2016" 
 	ms.author="genemi"/>
 
 
@@ -49,10 +49,9 @@ In diesem Thema wird ein Codebeispiel in zwei Phasen vorgestellt:
  - Optional können Sie in wenigen Minuten [eine **AdventureWorksLT**-Demodatenbank erstellen](sql-database-get-started.md).
 
 
-- SQL Server Management Studio ("ssms.exe"), Vorschauversion August 2015 oder eine spätere Version. Sie können "ssms.exe" in der neuesten Version wie folgt herunterladen:
- - Im Thema [Download SQL Server Management Studio](http://msdn.microsoft.com/library/mt238290.aspx) (in englischer Sprache).
+- SQL Server Management Studio („ssms.exe“), im Idealfall die aktuelle monatliche Updateversion. Sie können "ssms.exe" in der neuesten Version wie folgt herunterladen:
+ - Im Thema [Herunterladen von SQL Server Management Studio (SSMS)](http://msdn.microsoft.com/library/mt238290.aspx).
  - [Über diesen direkten Link zum Herunterladen.](http://go.microsoft.com/fwlink/?linkid=616025)
- - Microsoft empfiehlt, dass Sie die Datei "ssms.exe" in regelmäßigen Abständen aktualisieren. In einigen Fällen wird "ssms.exe" monatlich aktualisiert.
 
 
 - Die [Azure PowerShell-Module](http://go.microsoft.com/?linkid=9811175) müssen installiert sein.
@@ -64,7 +63,7 @@ In diesem Thema wird ein Codebeispiel in zwei Phasen vorgestellt:
 
 Dieser PowerShell-Code wird in Phase 1 des zweiphasigen Codebeispiels erstellt.
 
-Das Skript beginnt mit Befehlen zum Bereinigen nach einer möglichen vorherigen Ausführung und ist so konzipiert, dass es erneut ausgeführt werden kann.
+Das Skript beginnt mit Befehlen zum Bereinigen nach einer möglichen vorherigen Ausführung und kann darum erneut ausgeführt werden.
 
 
 
@@ -143,7 +142,7 @@ Select-AzureSubscription -SubscriptionName $subscriptionName
 
 
 '
-Clean-up the old Azure Storage Account after any previous run, 
+Clean up the old Azure Storage Account after any previous run, 
 before continuing this new run.'
 
 
@@ -266,11 +265,11 @@ Beachten Sie die benannten Werte, die beim Beenden des PowerShell-Skripts ausgeg
 ## Phase 2: Transact-SQL-Code zum Verwenden des Azure-Speichercontainers
 
 
-- In Phase 1 dieses Codebeispiels haben Sie ein PowerShell-Skript zum Erstellen eines Azure-Speichercontainers ausgeführt.
+- In Phase 1 dieses Codebeispiels haben Sie ein PowerShell-Skript zum Erstellen eines Azure-Speichercontainers ausgeführt.
 - In Phase 2 muss das folgende Transact-SQL-Skript nun diesen Container verwenden.
 
 
-Das Skript beginnt mit Befehlen zum Bereinigen nach einer möglichen vorherigen Ausführung und ist so konzipiert, dass es erneut ausgeführt werden kann.
+Das Skript beginnt mit Befehlen zum Bereinigen nach einer möglichen vorherigen Ausführung und kann darum erneut ausgeführt werden.
 
 
 Beim Beenden des PowerShell-Skripts wurden einige benannte Werte ausgegeben. Sie müssen das Transact-SQL-Skript so bearbeiten, dass diese Werte verwendet werden. Die Bearbeitungspunkte finden Sie, wenn Sie im Transact-SQL-Skript nach **TODO** suchen.
@@ -569,7 +568,7 @@ Im vorherigen Transact-SQL-Skript wurde die folgende Systemfunktion verwendet, u
 
 Eine Erläuterung der erweiterten Optionen zum Anzeigen von Daten aus erweiterten Ereignissen finden Sie unter:
 
-- [Advanced Viewing of Target Data from Extended Events](http://msdn.microsoft.com/library/mt752502.aspx) (Erweiterte Anzeige von Zieldaten aus erweiterten Ereignissen)
+- [Advanced Viewing of Target Data from Extended Events (Erweiterte Anzeige von Zieldaten aus erweiterten Ereignissen)](http://msdn.microsoft.com/library/mt752502.aspx)
 
 &nbsp;
 
@@ -610,4 +609,4 @@ Image references.
 
 [30_powershell_ise]: ./media/sql-database-xevent-code-event-file/event-file-powershell-ise-b30.png
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0824_2016-->

@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Was ist ein Azure-Pool für elastische Datenbanken? | Microsoft Azure"
+	pageTitle="Was ist ein elastischer Azure-Pool? | Microsoft Azure"
 	description="Verwalten Sie hunderte oder tausende Datenbanken mithilfe eines Pools. Ein Preis für einen Satz Leistungseinheiten kann über den Pool verteilt werden. Verschieben Sie die Datenbanken je nach Wunsch in den oder aus dem Pool."
 	keywords="elastische Datenbank, SQL-Datenbanken"
 	services="sql-database"
@@ -18,7 +18,7 @@
 	ms.tgt_pltfrm="NA"/>
 
 
-# Was ist ein Azure-Pool für elastische Datenbanken?
+# Was ist ein elastischer Azure-Pool?
 
 Elastische Pools stellen eine einfache und kostengünstige Lösung zum Verwalten der Leistungsziele für mehrere Datenbanken mit unterschiedlichsten und unvorhersehbaren Nutzungsmustern dar.
 
@@ -26,11 +26,11 @@ Elastische Pools stellen eine einfache und kostengünstige Lösung zum Verwalten
 
 ## So funktioniert's
 
-Ein weit verbreitetes SaaS-Anwendungsmuster ist das Einzelmandanten-Datenbankmodell: Jeder Kunde erhält eine eigene Datenbank. Jeder Kunde (jede Datenbank) verfügt über nicht vorhersagbare Ressourcenanforderungen für Arbeitsspeicher, E/A und CPU. Wie ordnen Sie bei einer schwankenden Nutzung mit Spitzen- und Tiefstwerten Ressourcen effizient und kostengünstig zu? In der Vergangenheit hatten Sie zwei Optionen: (1) überdimensionierte Bereitstellung der Ressourcen, die sich an der Nutzung zu Spitzenzeiten orientiert (samt der damit verbundenen Kosten) oder (2) unterdimensionierte Bereitstellung, um Kosten einzusparen, zu Lasten von Leistung und Kundenzufriedenheit während der Spitzenzeiten. Elastische Datenbankpools lösen dieses Problem, indem sie sicherstellen, dass die Datenbanken die Leistungsressourcen erhalten, die sie benötigen, und zwar zu genau dem Zeitpunkt, zu dem sie sie benötigen. Sie stellen einen einfachen Ressourcenzuordnungsmechanismus innerhalb eines vorhersagbaren Budgets bereit. Weitere Informationen zu Entwurfsmustern für SaaS-Anwendungen, für die elastische Pools verwendet werden, finden Sie unter [Design Patterns for Multi-tenant SaaS Applications with Azure SQL Database](sql-database-design-patterns-multi-tenancy-saas-applications.md) (Entwurfsmuster für mehrinstanzenfähige SaaS-Anwendungen und Azure SQL-Datenbank).
+Ein weit verbreitetes SaaS-Anwendungsmuster ist das Einzelmandanten-Datenbankmodell: Jeder Kunde erhält eine eigene Datenbank. Jeder Kunde (jede Datenbank) verfügt über nicht vorhersagbare Ressourcenanforderungen für Arbeitsspeicher, E/A und CPU. Wie ordnen Sie bei einer schwankenden Nutzung mit Spitzen- und Tiefstwerten Ressourcen effizient und kostengünstig zu? In der Vergangenheit hatten Sie zwei Optionen: (1) überdimensionierte Bereitstellung der Ressourcen, die sich an der Nutzung zu Spitzenzeiten orientiert (samt der damit verbundenen Kosten) oder (2) unterdimensionierte Bereitstellung, um Kosten einzusparen, zu Lasten von Leistung und Kundenzufriedenheit während der Spitzenzeiten. Elastische Pools lösen dieses Problem, indem sie sicherstellen, dass die Datenbanken die Leistungsressourcen erhalten, die sie benötigen, und zwar genau zu dem Zeitpunkt, zu dem sie sie benötigen. Sie stellen einen einfachen Ressourcenzuordnungsmechanismus innerhalb eines vorhersagbaren Budgets bereit. Weitere Informationen zu Entwurfsmustern für SaaS-Anwendungen, für die elastische Pools verwendet werden, finden Sie unter [Design Patterns for Multi-tenant SaaS Applications with Azure SQL Database](sql-database-design-patterns-multi-tenancy-saas-applications.md) (Entwurfsmuster für mehrinstanzenfähige SaaS-Anwendungen und Azure SQL-Datenbank).
 
 > [AZURE.VIDEO elastic-databases-helps-saas-developers-tame-explosive-growth]
 
-In SQL-Datenbank wird das relative Maß für die Fähigkeit einer Datenbank, mit Ressourcenanforderungen umzugehen, in Datenbanktransaktionseinheiten (Database Transaction Units, DTUs) für einzelne Datenbanken und in elastischen DTUs (eDTUs) für Pools für elastische Datenbanken angegeben. Weitere Informationen zu DTUs und eDTUs finden Sie unter [Einführung in SQL-Datenbank](sql-database-technical-overview.md#understand-dtus).
+In SQL-Datenbank wird das relative Maß für die Fähigkeit einer Datenbank, mit Ressourcenanforderungen umzugehen, in Datenbanktransaktionseinheiten (Database Transaction Units, DTUs) für einzelne Datenbanken und in elastischen DTUs (eDTUs) für elastische Datenbanken in einem elastischen Pool angegeben. Weitere Informationen zu DTUs und eDTUs finden Sie unter [Einführung in SQL-Datenbank](sql-database-technical-overview.md#understand-dtus).
 
 Ein Pool erhält eine festgelegte Anzahl von eDTUs zu einem festen Preis. Im Pool können einzelne Datenbanken die automatische Skalierung innerhalb der angegebenen Parameter flexibel automatisch skalieren. Bei hoher Auslastung kann eine Datenbank mehr eDTUs nutzen, um die Anforderungen zu erfüllen. Datenbanken verbrauchen bei geringerer Auslastung weniger Ressourcen und ohne Auslastung gar keine eDTUs. Durch die Bereitstellung von Ressourcen für den gesamten Pool und nicht nur für einzelne Datenbanken vereinfachen Sie Ihre Verwaltungsaufgaben. Außerdem verfügen Sie über ein vorhersagbares Budget für den Pool.
 
@@ -42,20 +42,17 @@ Und Sie können dem Pool Datenbanken hinzufügen oder Datenbanken aus dem Pool e
 
 ![SQL-Datenbanken, die eDTUs in einem Pool für elastische Datenbanken gemeinsam nutzen][1]
 
-Datenbanken, die für Pools für elastische Datenbanken besonders geeignet sind, weisen in der Regel Zeiträume der Aktivität sowie Zeiträume der Inaktivität auf. Im obigen Beispiel sehen Sie die Aktivität einer einzelnen Datenbank, von vier Datenbanken und schließlich eines Pools für elastische Datenbanken mit 20 Datenbanken. Datenbanken mit veränderlicher Aktivität im Laufe der Zeit eignen sich besonders für elastische Pools, da sie nicht alle zur gleichen Zeit aktiv sind und eDTUs gemeinsam nutzen können. Nicht alle Datenbanken entsprechen jedoch diesem Muster. Datenbanken mit einem konstanteren Ressourcenbedarf eignen sich besser für die Basic-, Standard- und Premium-Dienstebenen, bei denen Ressourcen einzeln zugewiesen werden.
+Datenbanken, die für elastische Pools besonders geeignet sind, weisen in der Regel Zeiträume der Aktivität als auch der Inaktivität auf. Im obigen Beispiel sehen Sie die Aktivität einer einzelnen Datenbank, von 4 Datenbanken und schließlich eines elastischen Pools mit 20 Datenbanken. Datenbanken mit veränderlicher Aktivität im Laufe der Zeit eignen sich besonders für elastische Pools, da sie nicht alle zur gleichen Zeit aktiv sind und eDTUs gemeinsam nutzen können. Nicht alle Datenbanken entsprechen jedoch diesem Muster. Datenbanken mit einem konstanteren Ressourcenbedarf eignen sich besser für die Basic-, Standard- und Premium-Dienstebenen, bei denen Ressourcen einzeln zugewiesen werden.
 
-[Überlegungen zum Preis und zur Leistung eines Pools für elastische Datenbanken](sql-database-elastic-pool-guidance.md)
+[Überlegungen zum Preis und zur Leistung eines elastischen Pools](sql-database-elastic-pool-guidance.md).
 
-
-> [AZURE.NOTE] Pools für elastische Datenbanken sind derzeit als Vorschauversion ausschließlich für Server mit SQL-Datenbank V12 verfügbar.
-
-## eDTUs und Speicherbeschränkungen für elastische Pools und elastische Datenbanken
+## eDTUs und Speicherbeschränkungen für elastische Pools und elastische Datenbanken.
 
 [AZURE.INCLUDE [Tabelle der SQL-Datenbank-Dienstebenen für elastische Datenbanken](../../includes/sql-database-service-tiers-table-elastic-db-pools.md)]
 
 Wenn alle DTUs eines elastischen Pools verwendet werden, erhält jede Datenbank im Pool gleich viel Ressourcen zum Verarbeiten von Abfragen. Der SQL-Datenbank-Dienst bietet eine faire gemeinsame Nutzung von Ressourcen durch Datenbanken, indem gleiche Slices an Computezeit zugesichert werden. Diese faire gemeinsame Nutzung in elastischen Pools ergänzt jegliche Ressourcen, die jeder Datenbank auf andere Weise garantiert werden, wenn das DTU-Minimum pro Datenbank auf einen Wert ungleich null festgelegt ist.
 
-## Eigenschaften von Pools für elastische Datenbanken
+## Eigenschaften elastischer Pools und elastischer Datenbanken
 
 ### Beschränkungen für elastische Pools
 
@@ -106,4 +103,4 @@ Bei Anwendungen, für die umfangreichere Wiederherstellungsanforderungen als bei
 <!--Image references-->
 [1]: ./media/sql-database-elastic-pool/databases.png
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0824_2016-->

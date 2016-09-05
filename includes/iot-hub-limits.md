@@ -14,7 +14,7 @@ Die folgende Tabelle enthält die für IoT Hub-Ressourcen geltenden Grenzwerte:
 | Maximale Anzahl kostenpflichtiger IoT Hubs pro Azure-Abonnement | 10 |
 | Maximale Anzahl kostenloser IoT Hubs pro Azure-Abonnement | 1 |
 | Maximale Anzahl von Geräte-Identitäten,<br/> die bei einem einzelnen Aufruf zurückgegeben wird | 1000 |
-| Maximale Beibehaltungsdauer von IoT Hub-Nachrichten | 7 Tage |
+| Maximale Beibehaltungsdauer von IoT Hub-Nachrichten für D2C-Nachrichten | 7 Tage |
 | Maximale Größe einer Nachricht von einem Gerät an die Cloud | 256 KB |
 | Maximale Größe eines Batches, das vom Gerät an die Cloud gesendet wird | 256 KB |
 | Maximale Anzahl von Nachrichten im Batch, das vom Gerät an die Cloud gesendet wird | 500 |
@@ -37,4 +37,4 @@ Der IoT Hub-Dienst drosselt Anforderungen, wenn die folgenden Kontingente übers
 | C2D-Empfangsvorgänge | 50\.000/Minute/Einheit (für S3), 1.000/Minute/Einheit (für S1 und S2). |
 | Dateiuploadvorgänge | 5\.000 Dateiuploadbenachrichtigungen/Minute/Einheit (S3), 100 Dateiuploadbenachrichtigungen/Minute/Einheit (für S1 und S2). <br/> 10.000 SAS-URIs können gleichzeitig für ein Speicherkonto geöffnet sein.<br/> 10 SAS-URIs/Gerät können gleichzeitig geöffnet sein. |
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0824_2016-->

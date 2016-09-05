@@ -1,5 +1,5 @@
 <properties
-pageTitle="Hinzufügen des Excel-Connectors zu PowerApps Enterprise | Microsoft Azure"
+pageTitle="Hinzufügen des Excel-Connectors | Microsoft Azure"
 description="Übersicht über den Excel-Connector mit REST-API-Parametern"
 services=""    
 documentationCenter=""     
@@ -14,134 +14,137 @@ ms.devlang="na"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="na"
-ms.date="05/18/2016"
+ms.date="08/23/2016"
 ms.author="deonhe"/>
 
 # Erste Schritte mit dem Excel-Connector
 
-Stelen Sie eine Verbindung mit Excel her, um eine Zeile einzufügen, eine Zeile zu löschen und mehr. Der Excel-Connector kann verwendet werden in:
+Derzeit steht in Logic Apps kein Excel-Connector zur Verfügung.
 
-- PowerApps
+## So verwenden Sie Excel-Daten
+Sie können Excel-Daten in einer durch Trennzeichen getrennten Datei (CSV-Datei) in einem Speicherordner speichern (beispielsweise in [OneDrive](connectors-create-api-onedrive.md)). Diese CSV-Datei kann auch mit dem [Flatfile-Connector](../app-service-logic/app-service-logic-enterprise-integration-flatfile.md) verwendet werden.
 
-Mit Excel können Sie folgende Aktionen ausführen:
+<!---
 
-- Fügen Sie den Excel-Connector in PowerApps Enterprise hinzu. Die Benutzer können diesen Connector anschließend in ihren Apps verwenden. 
+There is no Excel connector in Logic Apps. Originally, this topic only referenced PowerApps. Removed all PowerApps references. 
 
-Informationen zum Hinzufügen eines Connectors in PowerApps Enterprise finden Sie unter [Registrieren einer Microsoft-verwalteten API oder einer IT-verwalteten API](../power-apps/powerapps-register-from-available-apis.md).
 
-## Trigger und Aktionen
-Excel bietet die folgenden Aktionen. Es gibt keine Trigger.
+
+Connect to Excel to insert a row, delete a row, and more. 
+
+## Triggers and actions
+Excel includes the following action. There are no triggers. 
 
 |Trigger|Actions|
 |--- | ---|
-|Keine | <ul><li>Zeilen abrufen</li><li>Zeile einfügen</li><li>Zeile löschen</li><li>Zeile abrufen</li><li>Tabellen abrufen</li><li>Zeile aktualisieren</li></ul>
+|None | <ul><li>Get rows</li><li>Insert row</li><li>Delete row</li><li>Get row</li><li>Get tables</li><li>Update row</li></ul>
 
-Alle Connectors unterstützen Daten im JSON- und XML-Format.
+All connectors support data in JSON and XML formats. 
 
-## Swagger-REST-API – Referenz
-Gilt für Version: 1.0.
+## Swagger REST API reference
+Applies to version: 1.0.
 
-### Fügt eine neue Zeile in einer Excel-Tabelle ein.
-```POST: /datasets/{dataset}/tables/{table}/items```
+### Inserts a new row into an Excel table
+```POST: /datasets/{dataset}/tables/{table}/items``` 
 
 
 
-| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
+| Name| Data Type|Required|Located In|Default Value|Description|
 | ---|---|---|---|---|---|
-|dataset|string|Ja|path|(Keine)|Excel-Dateiname|
-|Tabelle|string|Ja|path|(Keine)|Name der Excel-Tabelle|
-|item| |Ja|body|(Keine)|In der angegebenen Excel-Tabelle einzufügende Zeile|
+|dataset|string|yes|path|none|Excel file name|
+|table|string|yes|path|none|Excel table name|
+|item| |yes|body|none|Row to insert into the specified Excel table|
 
 
-### Antwort
+### Response
 
-|Name|Beschreibung|
+|Name|Description|
 |---|---|
 |200|OK|
-|default|Fehler beim Vorgang.|
+|default|Operation Failed.|
 
 
 
 
-### Ruft eine einzelne Zeile aus einer Excel-Tabelle ab
-```GET: /datasets/{dataset}/tables/{table}/items/{id}```
+### Retrieves a single row from an Excel table
+```GET: /datasets/{dataset}/tables/{table}/items/{id}``` 
 
 
 
-| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
+| Name| Data Type|Required|Located In|Default Value|Description|
 | ---|---|---|---|---|---|
-|dataset|string|Ja|path|(Keine)|Excel-Dateiname|
-|Tabelle|string|Ja|path|(Keine)|Name der Excel-Tabelle|
-|id|string|Ja|path|(Keine)|Eindeutiger Bezeichner der abzurufenden Zeile|
+|dataset|string|yes|path|none|Excel file name|
+|table|string|yes|path|none|Excel table name|
+|id|string|yes|path|none|Unique identifier of row to retrieve|
 
 
-### Antwort
+### Response
 
-|Name|Beschreibung|
+|Name|Description|
 |---|---|
 |200|OK|
-|default|Fehler beim Vorgang.|
+|default|Operation Failed.|
 
 
 
 
-### Löscht eine einzelne Zeile aus einer Excel-Tabelle
-```DELETE: /datasets/{dataset}/tables/{table}/items/{id}```
+### Deletes a row from an Excel table
+```DELETE: /datasets/{dataset}/tables/{table}/items/{id}``` 
 
 
 
-| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
+| Name| Data Type|Required|Located In|Default Value|Description|
 | ---|---|---|---|---|---|
-|dataset|string|Ja|path|(Keine)|Excel-Dateiname|
-|Tabelle|string|Ja|path|(Keine)|Name der Excel-Tabelle|
-|id|string|Ja|path|(Keine)|Eindeutiger Bezeichner der zu löschenden Zeile|
+|dataset|string|yes|path|none|Excel file name|
+|table|string|yes|path|none|Excel table name|
+|id|string|yes|path|none|Unique identifier of the row to delete|
 
 
-### Antwort
+### Response
 
-|Name|Beschreibung|
+|Name|Description|
 |---|---|
 |200|OK|
-|default|Fehler beim Vorgang.|
+|default|Operation Failed.|
 
 
 
 
-### Aktualisiert eine vorhandene Zeile in einer Excel-Tabelle
-```PATCH: /datasets/{dataset}/tables/{table}/items/{id}```
+### Updates an existing row in an Excel table
+```PATCH: /datasets/{dataset}/tables/{table}/items/{id}``` 
 
 
 
-| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
+| Name| Data Type|Required|Located In|Default Value|Description|
 | ---|---|---|---|---|---|
-|dataset|string|Ja|path|(Keine)|Excel-Dateiname|
-|Tabelle|string|Ja|path|(Keine)|Name der Excel-Tabelle|
-|id|string|Ja|path|(Keine)|Eindeutiger Bezeichner der zu aktualisierenden Zeile|
-|item| |Ja|body|(Keine)|Zeile mit aktualisierten Werten|
+|dataset|string|yes|path|none|Excel file name|
+|table|string|yes|path|none|Excel table name|
+|id|string|yes|path|none|Unique identifier of the row to update|
+|item| |yes|body|none|Row with updated values|
 
 
-### Antwort
+### Response
 
-|Name|Beschreibung|
+|Name|Description|
 |---|---|
 |200|OK|
-|default|Fehler beim Vorgang.|
+|default|Operation Failed.|
 
 
 
 
-## Objektdefinitionen
+## Object definitions
 
 #### DataSetsMetadata
 
-| Name | Datentyp | Erforderlich|
+| Name | Data Type | Required|
 |---|---|---|
-|tabular|nicht definiert|no|
-|Blob|nicht definiert|no|
+|tabular|not defined|no|
+|blob|not defined|no|
 
 #### TabularDataSetsMetadata
 
-| Name | Datentyp |Erforderlich|
+| Name | Data Type |Required|
 |---|---|---|
 |source|string|no|
 |displayName|string|no|
@@ -151,7 +154,7 @@ Gilt für Version: 1.0.
 
 #### BlobDataSetsMetadata
 
-| Name | Datentyp |Erforderlich|
+| Name | Data Type |Required|
 |---|---|---|
 |source|string|no|
 |displayName|string|no|
@@ -159,53 +162,56 @@ Gilt für Version: 1.0.
 
 #### TableMetadata
 
-| Name | Datentyp |Erforderlich|
+| Name | Data Type |Required|
 |---|---|---|
 |name|string|no|
 |title|string|no|
 |x-ms-permission|string|no|
-|schema|nicht definiert|no|
+|schema|not defined|no|
 
 #### DataSetsList
 
-| Name | Datentyp |Erforderlich|
+| Name | Data Type |Required|
 |---|---|---|
 |value|array|no|
 
 #### DataSet
 
-| Name | Datentyp |Erforderlich|
+| Name | Data Type |Required|
 |---|---|---|
 |Name|string|no|
 |DisplayName|string|no|
 
-#### Tabelle
+#### Table
 
-| Name | Datentyp |Erforderlich|
+| Name | Data Type |Required|
 |---|---|---|
 |Name|string|no|
 |DisplayName|string|no|
 
 #### Item
 
-| Name | Datentyp |Erforderlich|
+| Name | Data Type |Required|
 |---|---|---|
 |ItemInternalId|string|no|
 
 #### TablesList
 
-| Name | Datentyp |Erforderlich|
+| Name | Data Type |Required|
 |---|---|---|
 |value|array|no|
 
 #### ItemsList
 
-| Name | Datentyp |Erforderlich|
+| Name | Data Type |Required|
 |---|---|---|
 |value|array|no|
 
 
-## Nächste Schritte
-[Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md) [Erstellen einer PowerApp](../power-apps/powerapps-get-started-azure-portal.md)
+## Next Steps
+[Create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md)  
 
-<!---HONumber=AcomDC_0525_2016-->
+
+-->
+
+<!---HONumber=AcomDC_0824_2016-->

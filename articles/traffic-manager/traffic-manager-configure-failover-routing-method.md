@@ -3,8 +3,8 @@
    description="In diesem Artikel finden Sie Informationen zum Konfigurieren der Routingmethode für Datenverkehr ";Failover"; in Traffic Manager."
    services="traffic-manager"
    documentationCenter=""
-   authors="joaoma"
-   manager="adinah"
+   authors="sdwheeler"
+   manager="carmonm"
    editor="tysonn" />
 <tags 
    ms.service="traffic-manager"
@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="06/10/2016"
-   ms.author="joaoma" />
+   ms.author="sewhee" />
 
 # Konfigurieren der Routingmethode "Failover"
 
@@ -52,4 +52,4 @@ Beachten Sie, dass Azure Websites unabhängig vom Websitemodus bereits die Funkt
 
  
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0824_2016-->

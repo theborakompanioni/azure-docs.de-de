@@ -3,9 +3,9 @@
    description="Übersicht über die Compute-, Netzwerk- und Speicheressourcenanbieter (CRP, NRP und SRP) für Linux-Anwendungen im Azure Resource Manager-Bereitstellungsmodell"
    services="virtual-machines-linux"
    documentationCenter=""
-   authors="mahthi"
+   authors="tfitzmac"
    manager="timlt"
-   editor=""
+   editor="tysonn"
    tags="azure-resource-manager,azure-service-management"/>
 
 <tags
@@ -14,8 +14,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="vm-linux"
    ms.workload="infrastructure-services"
-   ms.date="04/29/2015"
-   ms.author="mahthi"/>
+   ms.date="08/19/2015"
+   ms.author="tomfitz"/>
 
 # Azure Compute-, Netzwerk- und Speicheranbieter für Linux-Anwendungen unter dem Azure Resource Manager-Bereitstellungsmodell
 
@@ -23,4 +23,4 @@ Wenn das Azure Resource Manager-Bereitstellungsmodell um Compute-, Netzwerk- und
 
 [AZURE.INCLUDE [virtual-machines-common-compare-deployment-models](../../includes/virtual-machines-common-compare-deployment-models.md)]
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0824_2016-->

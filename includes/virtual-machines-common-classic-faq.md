@@ -62,7 +62,7 @@ Sie müssen beim Erstellen des virtuellen Computers das Netzwerk angeben, zu dem
 Sie müssen über Remotedesktopverbindung (virtuelle Windows-Computer) oder SSH (Secure Shell, für virtuelle Linux-Computer) eine Remoteverbindung herstellen, um sich bei dem virtuellen Computer anzumelden. Anweisungen dazu finden Sie unter:
 
 - [Anmelden bei einem virtuellen Computer, auf dem Windows Server ausgeführt wird](../articles/virtual-machines/virtual-machines-windows-classic-connect-logon.md) Es werden maximal zwei gleichzeitige Verbindungen unterstützt, es sei denn, der Server wurde als Host für eine Remotedesktopdienste-Sitzung konfiguriert.
-- [Anmelden bei einem mit Linux betriebenen virtuellen Computer](../articles/virtual-machines/virtual-machines-linux-classic-log-on.md) SSH erlaubt standardmäßig maximal 10 gleichzeitige Verbindungen. Sie können diese Anzahl erhöhen, indem Sie die Konfigurationsdatei bearbeiten.
+- [Anmelden bei einem mit Linux betriebenen virtuellen Computer](../articles/virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md) SSH erlaubt standardmäßig maximal 10 gleichzeitige Verbindungen. Sie können diese Anzahl erhöhen, indem Sie die Konfigurationsdatei bearbeiten.
 
 
 Wenn bei Remotedesktop oder SSH Probleme auftreten, installieren und verwenden Sie die [VMAccess](../articles/virtual-machines/virtual-machines-windows-extensions-features.md)-Erweiterung, um das Problem zu beheben.
@@ -110,7 +110,7 @@ Weitere Details:
 
 ## Kann Azure Antivirenprogramme auf meinen virtuellen Computern ausführen?
 
-Azure bietet verschiedene Optionen für Virenschutz-Softwarelösungen. Ihre Verwaltung ist jedoch Ihnen überlassen. Sie benötigen z. B. möglicherweise ein separates Abonnement für Antischadsoftware und müssen entscheiden, wann Scans ausgeführt und Updates installiert werden. Sie können die Unterstützung für Antiviruslösungen mit einer VM-Erweiterung für Microsoft Antimalware, Symantec Endpoint Protection oder TrendMicro Deep Security Agent beim Erstellen eines virtuellen Windows-Computers oder zu einem späteren Zeitpunkt hinzufügen. Für die Erweiterungen für Symantec und TrendMicro können Sie ein kostenloses Testabonnement für einen begrenzten Zeitraum oder ein vorhandenes Enterprise-Abonnement verwenden. Microsoft Antimalware ist kostenlos. Einzelheiten dazu finden Sie hier:
+Azure bietet verschiedene Optionen für Virenschutz-Softwarelösungen. Ihre Verwaltung ist jedoch Ihnen überlassen. Sie benötigen z.B. möglicherweise ein separates Abonnement für Antischadsoftware und müssen entscheiden, wann Scans ausgeführt und Updates installiert werden. Sie können die Unterstützung für Antiviruslösungen mit einer VM-Erweiterung für Microsoft Antimalware, Symantec Endpoint Protection oder TrendMicro Deep Security Agent beim Erstellen eines virtuellen Windows-Computers oder zu einem späteren Zeitpunkt hinzufügen. Für die Erweiterungen für Symantec und TrendMicro können Sie ein kostenloses Testabonnement für einen begrenzten Zeitraum oder ein vorhandenes Enterprise-Abonnement verwenden. Microsoft Antimalware ist kostenlos. Einzelheiten dazu finden Sie hier:
 
 - [Gewusst wie: Installieren und Konfigurieren von Symantec Endpoint Protection auf einem virtuellen Azure-Computer](http://go.microsoft.com/fwlink/p/?LinkId=404207)
 - [Installieren und Konfigurieren von Trend Micro Deep Security als Dienst auf einem virtuellen Azure-Computer](http://go.microsoft.com/fwlink/p/?LinkId=404206)
@@ -140,7 +140,7 @@ Azure startet Ihren virtuellen Computer in einigen Fällen im Rahmen regelmäßi
 
 Nicht geplante Wartungsereignisse können eintreten, wenn Azure ein schwerwiegendes Hardwareproblem erkennt, das Ihren virtuellen Computer betrifft. Bei ungeplanten Ereignissen migriert Azure den virtuellen Computer automatisch auf einen fehlerfreien Host und startet den virtuellen Computer neu.
 
-Für alle eigenständigen virtuellen Computer (d. h. virtuelle Computer, die nicht Teil einer Verfügbarkeitsgruppe sind) benachrichtigt Azure den Dienstadministrator des Abonnements per E-Mail mindestens eine Woche vor der geplanten Wartung, da die virtuellen Computer während des Updates möglicherweise neu gestartet werden. Bei Anwendungen, die auf den virtuellen Computer ausgeführt werden, kann es zu Ausfällen kommen.
+Für alle eigenständigen virtuellen Computer (d.h. virtuelle Computer, die nicht Teil einer Verfügbarkeitsgruppe sind) benachrichtigt Azure den Dienstadministrator des Abonnements per E-Mail mindestens eine Woche vor der geplanten Wartung, da die virtuellen Computer während des Updates möglicherweise neu gestartet werden. Bei Anwendungen, die auf den virtuellen Computer ausgeführt werden, kann es zu Ausfällen kommen.
 
 Sie können auch über das klassische Azure-Portal oder Azure PowerShell die Neustartprotokolle anzeigen, wenn der Neustart aufgrund einer geplanten Wartung durchgeführt wurde. Weitere Informationen finden Sie unter [Anzeigen von Neustartprotokollen für virtuelle Computer](https://azure.microsoft.com/blog/2015/04/01/viewing-vm-reboot-logs/).
 
@@ -156,4 +156,4 @@ Um Redundanz bereitzustellen, platzieren Sie zwei oder mehr ähnlich konfigurier
 
 [Verschiedene Möglichkeiten zum Erstellen eines virtuellen Windows-Computers](../articles/virtual-machines/virtual-machines-windows-creation-choices.md)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0824_2016-->

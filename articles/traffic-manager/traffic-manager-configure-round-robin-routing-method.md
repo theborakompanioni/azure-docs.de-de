@@ -3,7 +3,7 @@
    description="In diesem Artikel finden Sie Informationen zum Konfigurieren der Lastenausgleichsmethode ";Roundrobin"; für Ihre Traffic Manager-Endpunkte."
    services="traffic-manager"
    documentationCenter=""
-   authors="joaoma"
+   authors="sdwheeler"
    manager="carmonm"
    editor="tysonn" />
 <tags 
@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="03/17/2016"
-   ms.author="joaoma" />
+   ms.author="sewhee" />
 
 # Konfigurieren der Routingmethode "Roundrobin"
 
@@ -52,4 +52,4 @@ Ein gängiges Muster für das Routing von Datenverkehr besteht darin, eine Reihe
 
  
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0824_2016-->

@@ -37,7 +37,7 @@ Azure-Speicherkonten bieten Speicher für Betriebssystem-Datenträger und Datent
 
 ## Wie kann ich auf meinen virtuellen Computer zugreifen?
 
-Sie müssen eine Remoteverbindung mit Secure Shell (SSH) herstellen, um sich beim virtuellen Computer anzumelden. Weitere Informationen zum Herstellen einer Verbindung finden Sie in den Anweisungen [für Windows](virtual-machines-linux-ssh-from-windows.md) oder [für Linux und Mac](virtual-machines-linux-ssh-from-linux.md). SSH erlaubt standardmäßig maximal 10 gleichzeitige Verbindungen. Sie können diese Anzahl erhöhen, indem Sie die Konfigurationsdatei bearbeiten.
+Sie müssen eine Remoteverbindung mit Secure Shell (SSH) herstellen, um sich beim virtuellen Computer anzumelden. Weitere Informationen zum Herstellen einer Verbindung finden Sie in den Anweisungen [für Windows](virtual-machines-linux-ssh-from-windows.md) oder [für Linux und Mac](virtual-machines-linux-mac-create-ssh-keys.md). SSH erlaubt standardmäßig maximal 10 gleichzeitige Verbindungen. Sie können diese Anzahl erhöhen, indem Sie die Konfigurationsdatei bearbeiten.
 
 
 Wenn Probleme auftreten, finden Sie weitere Informationen unter [Problembehandlung für SSH-Verbindungen (Secure Shell)](virtual-machines-linux-troubleshoot-ssh-connection.md).
@@ -58,4 +58,4 @@ Die beiden neuen Regionen „Kanada, Mitte“ und „Kanada, Osten“ werden nic
 
 Nein. Das Hinzufügen einer Netzwerkkarte ist nur zum Zeitpunkt der Erstellung möglich.
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0824_2016-->

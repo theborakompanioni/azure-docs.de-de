@@ -41,12 +41,12 @@ Nachdem Sie einen allgemeinen Entwurf für Ihre Anwendung besitzen, können Sie 
 ## Herunterladen einer vorhandenen Vorlage
 Eine Azure-Ressourcen-Manager-Vorlage definiert alle Azure-Ressourcen, die von Ihrer Anwendung genutzt werden. Es sind bereits einige Vorlagen vorhanden, die Sie direkt im Azure-Portal bereitstellen oder in ein Quellcodeverwaltungssystem mit Ihrem Anwendungscode herunterladen, ändern und speichern können. Führen Sie die unten angegebenen Schritte aus, um eine vorhandene Vorlage herunterzuladen.
 
-1. Sie können die vorhandenen Vorlagen im GitHub-Repository unter [Azure Quickstart Templates](https://github.com/Azure/azure-quickstart-templates/) (Azure-Schnellstartvorlagen) durchsuchen. In der Liste sehen Sie einen Ordner "[201-web-app-sql-database](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-sql-database)". Da viele benutzerdefinierte Anwendungen eine Webanwendung und eine SQL-Datenbank enthalten, wird diese Vorlage im weiteren Verlauf dieses Artikels als Beispiel verwendet, um Ihnen die Nutzung von Vorlagen zu erläutern. Es würde über den Rahmen dieses Artikels hinausgehen, alle von dieser Vorlage erstellten und konfigurierten Elemente vollständig zu erklären. Wenn Sie sie jedoch zum Erstellen echter Umgebungen in Ihrer Organisation verwenden möchten, sollten Sie den Artikel [Bereitstellen einer Web-App mit einer SQL-Datenbank](app-service-web/app-service-web-arm-with-sql-database-provision.md) lesen, um sich umfassend mit dieser Vorlage vertraut zu machen.
-2. Klicken Sie im Ordner „201-web-app-sql-database“ auf die Datei [azuredeploy.json](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-sql-database/azuredeploy.json), um ihren Inhalt anzuzeigen. Dies ist die Azure-Ressourcen-Manager-Vorlagendatei.
-3. Klicken Sie im Anzeigemodus auf die Schaltfläche [Raw](https://github.com/Azure/azure-quickstart-templates/raw/master/201-web-app-sql-database/azuredeploy.json).
+1. Sie können die vorhandenen Vorlagen im GitHub-Repository unter [Azure Quickstart Templates](https://github.com/Azure/azure-quickstart-templates/) (Azure-Schnellstartvorlagen) durchsuchen. In der Liste sehen Sie einen Ordner "[201-web-app-sql-database](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-sql-database)". Da viele benutzerdefinierte Anwendungen eine Webanwendung und eine SQL-Datenbank enthalten, wird diese Vorlage im weiteren Verlauf dieses Artikels als Beispiel verwendet, um Ihnen die Nutzung von Vorlagen zu erläutern. Es würde über den Rahmen dieses Artikels hinausgehen, alle von dieser Vorlage erstellten und konfigurierten Elemente vollständig zu erklären. Wenn Sie sie jedoch zum Erstellen echter Umgebungen in Ihrer Organisation verwenden möchten, sollten Sie den Artikel [Bereitstellen einer Web-App mit einer SQL-Datenbank](app-service-web/app-service-web-arm-with-sql-database-provision.md) lesen, um sich umfassend mit dieser Vorlage vertraut zu machen. Hinweis: Dieser Artikel wurde für die Version von Dezember 2015 der Vorlage [201-web-app-sql-database](https://github.com/Azure/azure-quickstart-templates/tree/3f24f7b7e1e377538d1d548eaa6eab2851a21810/201-web-app-sql-database) geschrieben. Die Links unten, die auf Vorlagen- und Parameterdateien verweisen, beziehen sich auf diese Version der Vorlage.
+2. Klicken Sie im Ordner „201-web-app-sql-database“ auf die Datei [azuredeploy.json](https://github.com/Azure/azure-quickstart-templates/tree/3f24f7b7e1e377538d1d548eaa6eab2851a21810/201-web-app-sql-database/azuredeploy.json), um ihren Inhalt anzuzeigen. Dies ist die Azure-Ressourcen-Manager-Vorlagendatei.
+3. Klicken Sie im Anzeigemodus auf die Schaltfläche [Raw](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/3f24f7b7e1e377538d1d548eaa6eab2851a21810/201-web-app-sql-database/azuredeploy.json).
 4. Wählen Sie mit der Maus den Inhalt dieser Datei aus, und speichern Sie ihn auf Ihrem Computer in einer Datei mit dem Namen „TestApp1-Template.json“.
 5. Untersuchen Sie den Vorlageninhalt, und achten Sie auf Folgendes:
- - Abschnitt **Ressourcen**: In diesem Abschnitt sind die Azure-Ressourcentypen definiert, die von dieser Vorlage erstellt werden. Neben anderen Ressourcentypen erstellt diese Vorlage [Azure-Web-App](app-service-web/app-service-web-overview.md)- und [Azure SQL-Datenbankressourcen](sql-database/sql-database-technical-overview.md). Falls Sie es vorziehen, Web- und SQL-Server in virtuellen Maschinen auszuführen und zu verwalten, können Sie die Vorlage „[iis-2vm-sql-1vm](https://github.com/Azure/azure-quickstart-templates/tree/master/iis-2vm-sql-1vm)“ oder „[lamp-app](https://github.com/Azure/azure-quickstart-templates/tree/master/lamp-app)“ verwenden. Die Anleitung in diesem Artikel basiert aber auf der Vorlage [201-web-app-sql-database](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-sql-database).
+ - Abschnitt **Ressourcen**: In diesem Abschnitt sind die Azure-Ressourcentypen definiert, die von dieser Vorlage erstellt werden. Neben anderen Ressourcentypen erstellt diese Vorlage [Azure-Web-App](app-service-web/app-service-web-overview.md)- und [Azure SQL-Datenbankressourcen](sql-database/sql-database-technical-overview.md). Falls Sie es vorziehen, Web- und SQL-Server auf virtuellen Computern auszuführen und zu verwalten, können Sie die Vorlage „[iis-2vm-sql-1vm](https://github.com/Azure/azure-quickstart-templates/tree/master/iis-2vm-sql-1vm)“ oder „[lamp-app](https://github.com/Azure/azure-quickstart-templates/tree/master/lamp-app)“ verwenden. Die Anleitung in diesem Artikel basiert aber auf der Vorlage [201-web-app-sql-database](https://github.com/Azure/azure-quickstart-templates/tree/3f24f7b7e1e377538d1d548eaa6eab2851a21810/201-web-app-sql-database).
  - Abschnitt **Parameter**: In diesem Abschnitt sind die Parameter definiert, mit denen die einzelnen Ressourcen konfiguriert werden können. Einige der in der Vorlage angegebenen Parameter besitzen defaultValue-Eigenschaften, andere jedoch nicht. Bei der Bereitstellung von Azure-Ressourcen mit einer Vorlage müssen Sie Werte für alle Parameter angeben, die nicht über in der Vorlage angegebene defaultValue-Eigenschaften verfügen. Wenn Sie keine Werte für Parameter mit defaultValue-Eigenschaften angeben, wird der für den defaultValue-Parameter in der Vorlage angegebene Wert verwendet.
 
 Eine Vorlage definiert, welche Azure-Ressourcen erstellt werden und mit welchen Parametern die einzelnen Ressourcen konfiguriert werden können. Weitere Informationen über Vorlagen und über das Entwerfen Ihrer eigenen Vorlagen finden Sie im Artikel [Bewährte Methoden für das Entwerfen von Azure-Ressourcen-Manager-Vorlagen](best-practices-resource-manager-design-templates.md).
@@ -55,14 +55,14 @@ Eine Vorlage definiert, welche Azure-Ressourcen erstellt werden und mit welchen 
 
 Sie möchten wahrscheinlich, dass in jeder Umgebung die *gleichen* Azure-Ressourcen erstellt werden, aber die Konfiguration der Ressourcen soll in jeder Umgebung vermutlich *unterschiedlich* sein. An dieser Stelle kommen Parameterdateien ins Spiel. Erstellen Sie Parameterdateien mit eindeutigen Werten in jeder Umgebung, indem Sie die unten angegebenen Schritte ausführen.
 
-1. Zeigen Sie den Inhalt der Datei [azuredeploy.parameters.json](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-sql-database/azuredeploy.parameters.json) im Ordner „201-web-app-sql-database“ an. Dies ist die Parameterdatei für die Vorlagendatei, die Sie im vorherigen Abschnitt gespeichert haben.
-2. Klicken Sie im Anzeigemodus auf die Schaltfläche [Raw](https://github.com/Azure/azure-quickstart-templates/raw/master/201-web-app-sql-database/azuredeploy.parameters.json).
+1. Zeigen Sie den Inhalt der Datei [azuredeploy.parameters.json](https://github.com/Azure/azure-quickstart-templates/tree/3f24f7b7e1e377538d1d548eaa6eab2851a21810/201-web-app-sql-database/azuredeploy.parameters.json) im Ordner „201-web-app-sql-database“ an. Dies ist die Parameterdatei für die Vorlagendatei, die Sie im vorherigen Abschnitt gespeichert haben.
+2. Klicken Sie im Anzeigemodus auf die Schaltfläche [Raw](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/3f24f7b7e1e377538d1d548eaa6eab2851a21810/201-web-app-sql-database/azuredeploy.parameters.json).
 3. Wählen Sie mit der Maus den Inhalt dieser Datei aus, und speichern Sie ihn unter den folgenden Namen in drei separaten Dateien auf Ihrem Computer:
  - TestApp1-Parameters-Development.json
  - TestApp1-Parameters-Test.json
  - TestApp1-Parameters-Pre-Production.json
 
-3. Bearbeiten Sie die Entwicklungsumgebung-Parameterdatei, die Sie in Schritt 3 erstellt haben, mit einem beliebigen Text- oder JSON-Editor. Ersetzen Sie die Werte, die in der Datei rechts von den Parameterwerten aufgeführt sind, durch die *Werte*, die hier rechts von den **Parametern** angegeben sind:
+3. Bearbeiten Sie die Parameterdatei der Entwicklungsumgebung, die Sie in Schritt 3 erstellt haben, mit einem beliebigen Text- oder JSON-Editor. Ersetzen Sie die Werte, die in der Datei rechts von den Parameterwerten aufgeführt sind, durch die *Werte*, die hier rechts von den **Parametern** angegeben sind:
  - **siteName**: *TestApp1DevApp*
  - **hostingPlanName**: *TestApp1DevPlan*
  - **siteLocation**: *USA, Mitte*
@@ -72,7 +72,7 @@ Sie möchten wahrscheinlich, dass in jeder Umgebung die *gleichen* Azure-Ressour
  - **administratorLoginPassword**: *durch Ihr Kennwort ersetzen*
  - **databaseName**: *testapp1devdb*
 
-4. Bearbeiten Sie die Testumgebung-Parameterdatei, die Sie in Schritt 3 erstellt haben, mit einem beliebigen Text- oder JSON-Editor. Ersetzen Sie die Werte, die in der Datei rechts von den Parameterwerten aufgeführt sind, durch die *Werte*, die hier rechts von den **Parametern** angegeben sind:
+4. Bearbeiten Sie die Parameterdatei der Testumgebung, die Sie in Schritt 3 erstellt haben, mit einem beliebigen Text- oder JSON-Editor. Ersetzen Sie die Werte, die in der Datei rechts von den Parameterwerten aufgeführt sind, durch die *Werte*, die hier rechts von den **Parametern** angegeben sind:
  - **siteName**: *TestApp1TestApp*
  - **hostingPlanName**: *TestApp1TestPla*n
  - **siteLocation**: *USA, Mitte*
@@ -82,7 +82,7 @@ Sie möchten wahrscheinlich, dass in jeder Umgebung die *gleichen* Azure-Ressour
  - **administratorLoginPassword**: *durch Ihr Kennwort ersetzen*
  - **databaseName**: *testapp1testdb*
 
-5. Bearbeiten Sie die Präproduktion-Parameterdatei, die Sie in Schritt 3 erstellt haben, mit einem beliebigen Text- oder JSON-Editor. Ersetzen Sie den gesamten Inhalt der Datei durch Folgendes:
+5. Bearbeiten Sie die Präproduktion-Parameterdatei, die Sie in Schritt 3 erstellt haben, mit einem beliebigen Text- oder JSON-Editor. Ersetzen Sie den gesamten Inhalt der Datei durch Folgendes:
 
 	    {
     	  "$schema" : "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
@@ -129,7 +129,7 @@ In der folgenden Tabelle sind die in der Vorlage angegebenen Standardwerte für 
 
 | Parameter | Standardwert | Wert in der Parameterdatei |
 |---|---|---|
-| **sku** | Kostenlos | Standard |
+| **sku** | Free | Standard |
 | **requestedServiceObjectiveName** | S0 | S1 |
 
 ## Erstellen von Umgebungen
@@ -189,9 +189,9 @@ Um die Ressourcengruppe für die Präproduktionsumgebung zu erstellen, geben Sie
 
 ###Azure-Portal
 
-1. Melden Sie sich am [Azure-Portal](https://portal.azure.com) mit einem [Azure AD](./active-directory/active-directory-how-subscriptions-associated-directory.md)-Konto (auch als Geschäfts-, Schul- oder Unikonto bezeichnet) an. Klicken Sie auf „Neu“ --> „Verwaltung“ --> „Ressourcengruppe“, und geben Sie im Feld für den Ressourcengruppennamen „TestApp1-Development“ ein. Wählen Sie Ihr Abonnement aus, und wählen Sie dann wie in der Abbildung unten dargestellt im Feld „Ressourcengruppenstandort“ die Option „USA, Mitte“. ![Portal](./media/solution-dev-test-environments/rgcreate.png)
+1. Melden Sie sich am [Azure-Portal](https://portal.azure.com) mit einem [Azure AD](./active-directory/active-directory-how-subscriptions-associated-directory.md)-Konto (auch als Geschäfts-, Schul- oder Unikonto bezeichnet) an. Klicken Sie auf „Neu“ --> „Verwaltung“ --> „Ressourcengruppe“, und geben Sie im Feld für den Ressourcengruppennamen „TestApp1-Development“ ein. Wählen Sie Ihr Abonnement aus, und wählen Sie dann wie in der Abbildung unten dargestellt im Feld „Ressourcengruppenstandort“ die Option „USA, Mitte“ aus. ![Portal](./media/solution-dev-test-environments/rgcreate.png)
 2. Klicken Sie auf die Schaltfläche „Erstellen“, um die Ressourcengruppe zu erstellen.
-3. Klicken Sie auf „Durchsuchen“, führen Sie einen Bildlauf nach unten zu den Ressourcengruppen durch, und klicken Sie wie unten dargestellt auf „Ressourcengruppen“. ![Portal](./media/solution-dev-test-environments/rgbrowse.png)
+3. Klicken Sie auf „Durchsuchen“, scrollen Sie in der Liste nach unten zu den Ressourcengruppen, und klicken Sie wie unten dargestellt auf „Ressourcengruppen“. ![Portal](./media/solution-dev-test-environments/rgbrowse.png)
 4. Nach dem Klicken auf „Ressourcengruppen“ wird das Blatt „Ressourcengruppen“ mit Ihrer neuen Ressourcengruppe angezeigt. ![Portal](./media/solution-dev-test-environments/rgview.png)
 5. Erstellen Sie die Ressourcengruppen „TestApp1-Test“ und „TestApp1-Pre-Production“ genauso wie oben die Ressourcengruppe „TestApp1-Development“.
 
@@ -247,7 +247,7 @@ Geben Sie an der Befehlszeilenschnittstelle den folgenden Befehl ein, um der Res
   
 ###PowerShell
 
-Geben Sie an einer Azure PowerShell-Eingabeaufforderung (Version 1.01 oder höher) den folgenden Befehl ein, um für die Ressourcengruppe, die Sie für die Entwicklungsumgebung erstellt haben, Ressourcen bereitzustellen. Ersetzen Sie dabei [path] durch den Pfad zu den Dateien, die Sie in den vorherigen Schritten gespeichert haben.
+Geben Sie an einer Azure PowerShell-Eingabeaufforderung (Version 1.01 oder höher) den folgenden Befehl ein, um für die Ressourcengruppe, die Sie für die Entwicklungsumgebung erstellt haben, Ressourcen bereitzustellen. Ersetzen Sie dabei [path] durch den Pfad zu den Dateien, die Sie in den vorherigen Schritten gespeichert haben.
 
 	New-AzureRmResourceGroupDeployment -ResourceGroupName TestApp1-Development -TemplateFile [path]TestApp1-Template.json -TemplateParameterFile [path]TestApp1-Parameters-Development.json -Name Deployment1 
 
@@ -299,10 +299,10 @@ Während der Entwicklung kann die Konfiguration von Azure-Ressourcen in den unte
 1. Ändern Sie die Umgebungen, indem Sie das [Azure-Portal](https://portal.azure.com) öffnen.
 2. Melden Sie sich mit demselben Konto an, das Sie zum Ausführen der obigen Schritte verwendet haben.
 3. Klicken Sie wie in der folgenden Abbildung gezeigt auf „Durchsuchen“ > „Ressourcengruppen“ (ggf. müssen Sie zu den Ressourcengruppen nach unten scrollen). ![Portal](./media/solution-dev-test-environments/rgbrowse.png)
-4. Nachdem Sie auf „Ressourcengruppen“ geklickt haben (Abbildung oben), wird das Blatt „Ressourcengruppen“ angezeigt. Sie sehen die drei Ressourcengruppen, die Sie im vorherigen Schritt erstellt haben (Abbildung unten). Klicken Sie auf die Ressourcengruppe „TestApp1-Development“. Es wird das Blatt angezeigt, auf dem die von der Vorlage erstellten Ressourcen in der Ressourcengruppenbereitstellung (TestApp1-Development) aufgeführt werden, die Sie in einem vorherigen Schritt durchgeführt haben. Löschen Sie die Web-App-Ressource „TestApp1DevApp“, indem Sie auf dem Ressourcengruppenblatt „TestApp1-Development“ auf „TestApp1DevApp“ klicken und dann auf dem Web-App-Blatt „TestApp1DevApp“ die Option „Löschen“ wählen. ![Portal](./media/solution-dev-test-environments/portal2.png)
-5. Klicken Sie auf "Ja", wenn das Portal Sie auffordert, den Löschvorgang für die Ressource zu bestätigen. Wenn Sie das Ressourcengruppenblatt „TestApp1-Development“ schließen und wieder öffnen, wird die gelöschte Web-App nicht mehr angezeigt. Die Ressourcengruppe zeigt jetzt nicht mehr die vorgesehenen Inhalte. Sie können weiter experimentieren, indem Sie mehrere Ressourcen aus mehreren Ressourcengruppen löschen oder sogar Konfigurationseinstellungen für einige der Ressourcen ändern. Anstatt das Azure-Portal zum Löschen einer Ressource aus einer Ressourcengruppe zu verwenden, können Sie den PowerShell-Befehl [Remove-AzureResource](https://msdn.microsoft.com/library/azure/dn757676.aspx) oder den Befehl „azure resource delete“ aus der CLI einsetzen, um dieselbe Aufgabe auszuführen.
-6. Gehen Sie wie folgt vor, um alle Ressourcen und die für die Ressourcengruppen bestimmten Konfigurationen wieder in den gewünschten Zustand zu versetzen: Stellen Sie die Umgebungen erneut für die Ressourcengruppen bereit, indem Sie die gleichen Befehle wie im Abschnitt [Bereitstellen von Ressourcen in Umgebungen](#deploy-resources-to-environments) verwenden, dabei aber „Deployment1“ durch „Deployment2“ ersetzen.
-7.  Wie im Abschnitt „Zusammenfassung“ des Blatts „TestApp1-Development“ in der Abbildung in Schritt 4 dargestellt, sehen Sie Folgendes: Die Web-App, die Sie im vorherigen Schritt im Portal gelöscht haben, ist wieder vorhanden. Dies gilt auch für andere Ressourcen, die Sie ggf. gelöscht haben. Falls Sie die Konfiguration von Ressourcen geändert haben, können Sie auch überprüfen, ob diese wieder auf die Werte in den Parameterdateien festgelegt wurden. Einer der Vorteile der Bereitstellung Ihrer Umgebungen mit Azure-Ressourcen-Manager-Vorlagen besteht darin, dass Sie die Umgebungen einfach zu einem beliebigen Zeitpunkt in einem bekannten Zustand erneut bereitstellen können.
+4. Nachdem Sie auf „Ressourcengruppen“ geklickt haben (Abbildung oben), wird das Blatt „Ressourcengruppen“ angezeigt. Sie sehen die drei Ressourcengruppen, die Sie im vorherigen Schritt erstellt haben (Abbildung unten). Klicken Sie auf die Ressourcengruppe „TestApp1-Development“. Es wird das Blatt angezeigt, auf dem die von der Vorlage erstellten Ressourcen in der Ressourcengruppenbereitstellung (TestApp1-Development) aufgeführt werden, die Sie in einem vorherigen Schritt durchgeführt haben. Löschen Sie die Web-App-Ressource „TestApp1DevApp“, indem Sie auf dem Ressourcengruppenblatt „TestApp1-Development“ auf „TestApp1DevApp“ klicken und dann auf dem Web-App-Blatt „TestApp1DevApp“ auf die Option „Löschen“ klicken. ![Portal](./media/solution-dev-test-environments/portal2.png)
+5. Klicken Sie auf "Ja", wenn das Portal Sie auffordert, den Löschvorgang für die Ressource zu bestätigen. Wenn Sie das Ressourcengruppenblatt „TestApp1-Development“ schließen und wieder öffnen, wird die gelöschte Web-App nicht mehr angezeigt. Die Ressourcengruppe zeigt jetzt nicht mehr die vorgesehenen Inhalte. Sie können weiter experimentieren, indem Sie mehrere Ressourcen aus mehreren Ressourcengruppen löschen oder sogar Konfigurationseinstellungen für einige der Ressourcen ändern. Anstatt das Azure-Portal zum Löschen einer Ressource aus einer Ressourcengruppe zu verwenden, können Sie den PowerShell-Befehl [Remove-AzureResource](https://msdn.microsoft.com/library/azure/dn757676.aspx) oder den Befehl „azure resource delete“ aus der CLI einsetzen, um diese Aufgabe auszuführen.
+6. Gehen Sie wie folgt vor, um die für die Ressourcengruppen bestimmten Ressourcen und Konfigurationen wieder in den gewünschten Zustand zu versetzen: Stellen Sie die Umgebungen erneut für die Ressourcengruppen bereit, indem Sie die gleichen Befehle wie im Abschnitt [Bereitstellen von Ressourcen in Umgebungen](#deploy-resources-to-environments) verwenden, dabei aber „Deployment1“ durch „Deployment2“ ersetzen.
+7.  Wie im Abschnitt „Zusammenfassung“ des Blatts „TestApp1-Development“ in der Abbildung in Schritt 4 dargestellt, sehen Sie Folgendes: Die Web-App, die Sie im vorherigen Schritt im Portal gelöscht haben, ist wieder vorhanden. Dies gilt auch für andere Ressourcen, die Sie ggf. gelöscht haben. Falls Sie die Konfiguration von Ressourcen geändert haben, können Sie auch überprüfen, ob diese wieder auf die Werte in den Parameterdateien festgelegt wurden. Einer der Vorteile der Bereitstellung Ihrer Umgebungen mit Azure-Ressourcen-Manager-Vorlagen besteht darin, dass Sie die Umgebungen einfach zu einem beliebigen Zeitpunkt in einem bekannten Zustand erneut bereitstellen können.
 8. Wenn Sie in der Abbildung unten auf den Text unter „Letzte Bereitstellung“ klicken, wird ein Blatt angezeigt, auf dem der Bereitstellungsverlauf für die Ressourcengruppe zu sehen ist. Da Sie den Namen "Deployment1" für die erste Bereitstellung und "Deployment2" für die zweite Bereitstellung verwendet haben, gibt es zwei Einträge. Durch Klicken auf eine Bereitstellung wird ein Blatt mit den Ergebnissen für jede Bereitstellung angezeigt. ![Portal](./media/solution-dev-test-environments/portal3.png)
 
 
@@ -329,7 +329,7 @@ Geben Sie an der Befehlszeilenschnittstelle Folgendes ein, um die verbleibenden 
   
 ### PowerShell
 
-Geben Sie an einer Azure PowerShell-Eingabeaufforderung (Version 1.01 oder höher) den unten angegebenen Befehl ein, um die Ressourcengruppe und ihren gesamten Inhalt zu löschen.
+Geben Sie an einer Azure PowerShell-Eingabeaufforderung (Version 1.01 oder höher) den unten angegebenen Befehl ein, um die Ressourcengruppe und ihren gesamten Inhalt zu löschen.
 
 	Remove-AzureRmResourceGroup -Name TestApp1-Development
 
@@ -361,4 +361,4 @@ Jetzt wissen Sie, wie einfach es ist, Entwicklungs- und Testumgebungen zu erstel
 - [Zuweisen von Tags](resource-group-using-tags.md) zu den Ressourcengruppen für jede Umgebung und/oder die einzelnen Ressourcen. Sie können den Ressourcengruppen ein Tag "Environment" hinzufügen und dessen Wert auf den Umgebungsnamen festlegen. Tags können besonders hilfreich sein, wenn Sie Ressourcen zur Abrechnung oder Verwaltung organisieren müssen.
 - Überwachen von Warnungen und Abrechnungen für Ressourcen aus Ressourcengruppen im [Azure-Portal](https://portal.azure.com).
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0824_2016-->

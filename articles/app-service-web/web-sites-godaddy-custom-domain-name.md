@@ -60,14 +60,14 @@ Um Ihre benutzerdefinierte Domäne mit einer Web-App im App Service zu verknüpf
 
 	![Zonendatensatz hinzufügen](./media/web-sites-godaddy-custom-domain-name/godaddy-addzonerecord.png)
 
-	* Wenn Sie einen **A (Host)**-Datensatz hinzufügen, müssen Sie das Feld **Host** entweder auf **@** (dies steht für den Stammdomänennamen wie **contoso.com**,) auf * (ein Platzhalter für den Abgleich von mehreren Unterdomänen) oder auf die zu verwendende Unterdomäne (z. B. **www**) einstellen. Sie müssen das Feld **Zeigt auf** auf die IP-Adresse Ihrer Azure-Web-App festlegen.
+	* Wenn Sie einen Eintrag vom Typ **A (Host)** hinzufügen, müssen Sie das Feld **Host** entweder auf **@** (Stammdomänenname wie **contoso.com**,) auf * (Platzhalter für mehrere Unterdomänen) oder auf die gewünschte Unterdomäne (etwa **www**) festlegen. Das Feld **Zeigt auf** muss auf die IP-Adresse Ihrer Azure-Web-App festgelegt werden.
 
 	* Wenn Sie einen **CNAME (Alias)**-Datensatz hinzufügen, müssen Sie im Feld **Host** die gewünschte Unterdomäne festlegen. Beispiel: **www**. Sie müssen das Feld **Zeigt auf** auf den **.azurewebsites.net**-Domänennamen Ihrer Azure-Web-App festlegen. Beispiel: **contoso.azurwebsites.net**.
 
 5. Klicken Sie auf **Weiteren hinzufügen**.
-6. Wählen Sie **CNAME** als Eintragstyp aus, und geben Sie dann den **Host**-Wert **Awverify** ein und den **Verweist auf**-Wert **Awverify. & Lt; Yourwebappname & Gt;. *.azurewebsites.NET** ein.
+6. Wählen Sie als Eintragstyp die Option **TXT** aus, und geben Sie als Hostwert das Zeichen **@** und unter **Zeigt auf** den Wert **&lt;Name Ihrer Web-App&gt;.azurewebsites.net** ein.
 
-	> [AZURE.NOTE] Dieser CNAME-Datensatz wird von Azure verwendet, um zu überprüfen, ob Sie die Domäne besitzen, die von dem A-Datensatz oder dem ersten CNAME-Eintrag beschrieben wird. Nachdem die Domäne der Web-App im Azure-Portal zugeordnet wurde, kann der **Awverify**-Eintrag entfernt werden.
+	> [AZURE.NOTE] Anhand dieses TXT-Eintrags prüft Azure, ob Sie der Besitzer der Domäne sind, die von dem A-Eintrag oder vom ersten TXT-Eintrag beschrieben wird. Nachdem die Domäne der Web-App im Azure-Portal zugeordnet wurde, kann der TXT-Eintrag entfernt werden.
 
 5. Nachdem Sie die gewünschten Datensätze hinzugefügt oder bearbeitet haben, klicken Sie auf **Finish**, um die Änderungen zu speichern.
 
@@ -79,6 +79,6 @@ Um Ihre benutzerdefinierte Domäne mit einer Web-App im App Service zu verknüpf
 >[AZURE.NOTE] Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie unter [App Service testen](http://go.microsoft.com/fwlink/?LinkId=523751) sofort kostenlos eine kurzlebige Starter-Web-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
 
 ## Änderungen
-* Hinweise zu den Änderungen von Websites zum App Service finden Sie unter: [Azure App Service und vorhandene Azure-Dienste](http://go.microsoft.com/fwlink/?LinkId=529714).
+* Hinweise zu den Veränderungen von Websites zum App Service finden Sie unter: [Azure App Service und vorhandene Azure-Dienste](http://go.microsoft.com/fwlink/?LinkId=529714).
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0824_2016-->

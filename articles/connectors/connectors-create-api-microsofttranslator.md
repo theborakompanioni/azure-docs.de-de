@@ -1,5 +1,5 @@
 <properties
-    pageTitle="Hinzufügen von Microsoft Translator zu PowerApps Enterprise- oder Logik-Apps | Microsoft Azure"
+    pageTitle="Hinzufügen von Microsoft Translator in Logik-Apps | Microsoft Azure"
     description="Übersicht über den Microsoft Translator-Connector mit REST-API-Parametern"
     services=""
     suite=""
@@ -15,28 +15,16 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="05/18/2016"
+   ms.date="08/18/2016"
    ms.author="mandia"/>
 
 # Erste Schritte mit dem Microsoft Translator-Connector
-Stellen Sie eine Verbindung mit Microsoft Translator her, um Text zu übersetzen, eine Sprache zu erkennen und mehr. Der Microsoft Translator-Connector kann in Folgendem verwendet werden:
+Stellen Sie eine Verbindung mit Microsoft Translator her, um Text zu übersetzen, eine Sprache zu erkennen und mehr. Mit Microsoft Translator können Sie folgende Aktionen ausführen:
 
-- Logik-Apps 
-- PowerApps
-
-> [AZURE.SELECTOR]
-- [Logik-Apps](../articles/connectors/connectors-create-api-microsofttranslator.md)
-- [PowerApps Enterprise](../articles/power-apps/powerapps-create-api-microsofttranslator.md)
-
-Mit Microsoft Translator können Sie folgende Aktionen ausführen:
-
-- Erstellen eines Geschäftsworkflows basierend auf den Daten, die von Microsoft Translator abgerufen werden. 
+- Erstellen eines Geschäftsworkflows basierend auf den Daten, die von Microsoft Translator abgerufen werden.
 - Verwenden von Aktionen, um Text zu übersetzen, eine Sprache zu erkennen und mehr. Diese Aktionen erhalten eine Antwort und stellen anschließend die Ausgabe anderen Aktionen zur Verfügung. Wenn beispielsweise eine neue Datei in Dropbox erstellt wird, können Sie den Text in der Datei mit Microsoft Translator in eine andere Sprache übersetzen.
-- Hinzufügen des Microsoft Translator-Connectors zu PowerApps Enterprise. Die Benutzer können diesen Connector anschließend in ihren Apps verwenden. 
 
-Informationen zum Hinzufügen eines Connectors in PowerApps Enterprise finden Sie unter [Registrieren einer Microsoft-verwalteten API oder einer IT-verwalteten API](../power-apps/powerapps-register-from-available-apis.md).
-
-Informationen zum Hinzufügen eines Vorgangs in Logik-Apps finden Sie unter [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md).
+Informationen zum Hinzufügen eines Vorgangs in Logik-Apps finden Sie unter [Erstellen einer Logik-App zum Verbinden von SaaS-Diensten](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
 ## Trigger und Aktionen
 Microsoft Translator umfasst die folgenden Aktionen. Es gibt keine Trigger.
@@ -67,11 +55,11 @@ Erkennt die Ausgangssprache des angegebenen Texts. ```GET: /Detect```
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 
 ### Text-to-Speech    
-Konvertiert einen angegebenen Text als Audiodatenstrom im Wave-Format in eine Sprachausgabe. ```GET: /Speak```
+Konvertiert einen angegebenen Text in eine Sprachausgabe (Audiodatenstrom im Wave-Format). ```GET: /Speak```
 
 | Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
@@ -82,7 +70,7 @@ Konvertiert einen angegebenen Text als Audiodatenstrom im Wave-Format in eine Sp
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 
 ### Text übersetzen    
@@ -99,7 +87,7 @@ Konvertiert einen angegebenen Text als Audiodatenstrom im Wave-Format in eine Sp
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 
 ### Sprachen abrufen    
@@ -111,7 +99,7 @@ Es gibt keine Parameter für diesen Aufruf.
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 
 ### Sprachen für Sprachausgabe abrufen    
@@ -123,7 +111,7 @@ Es gibt keine Parameter für diesen Aufruf.
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 ## Objektdefinitionen
 
@@ -137,13 +125,13 @@ Es gibt keine Parameter für diesen Aufruf.
 
 ## Nächste Schritte
 
-[Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md).
+[Erstellen Sie eine Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
-Gehen Sie zur [Liste der APIs](apis-list.md) zurück.
+Kehren Sie zur [Liste mit den APIs](apis-list.md) zurück.
 
 
 <!--References-->
 [5]: https://datamarket.azure.com/developer/applications/
 [6]: ./media/connectors-create-api-microsofttranslator/register-your-application.png
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0824_2016-->

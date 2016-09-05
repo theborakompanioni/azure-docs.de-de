@@ -13,21 +13,10 @@
 	ms.tgt_pltfrm="powershell" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/19/2016" 
+	ms.date="08/18/2016" 
 	ms.author="tomfitz"/>
 
 # Verwenden von Windows PowerShell mit dem Azure-Ressourcen-Manager
-
-> [AZURE.SELECTOR]
-- [Portal](azure-portal/resource-group-portal.md)
-- [Azure-Befehlszeilenschnittstelle](xplat-cli-azure-resource-manager.md)
-- [Azure PowerShell](powershell-azure-resource-manager.md)
-- [.NET](https://azure.microsoft.com/documentation/samples/resource-manager-dotnet-resources-and-groups/)
-- [Java](https://azure.microsoft.com/documentation/samples/resources-java-manage-resource-group/)
-- [Knoten](https://azure.microsoft.com/documentation/samples/resource-manager-node-resources-and-groups/)
-- [Python](https://azure.microsoft.com/documentation/samples/resource-manager-python-resources-and-groups/)
-- [Ruby](https://azure.microsoft.com/documentation/samples/resource-manager-ruby-resources-and-groups/)
-
 
 Mit dem Azure-Ressourcen-Manager wird ein völlig neuer Denkansatz für Azure-Ressourcen eingeführt. Anstatt einzelne Ressourcen zu erstellen und zu verwalten, können Sie sich eine Komplettlösung vorstellen, zum Beispiel einen Blog, eine Fotogalerie, ein SharePoint-Portal oder ein Wiki. Mithilfe eine Vorlage (einer deklarative Darstellung der Lösung) können Sie eine Ressourcengruppe erstellen, die alle Ressourcen enthält, die Sie zum Unterstützen der Lösung brauchen. Anschließend wird diese Ressourcengruppe als logische Einheit verwaltet und bereitgestellt.
 
@@ -49,10 +38,10 @@ Für dieses Tutorial benötigen Sie Folgendes:
 - Ein Azure-Konto
   + Sie können [ein Azure-Konto kostenlos erstellen](/pricing/free-trial/?WT.mc_id=A261C142F): Sie erhalten ein Guthaben, das Sie zum Ausprobieren zahlungspflichtiger Azure-Dienste nutzen können, und Sie können das Konto selbst dann behalten und die kostenlosen Azure-Dienste wie Websites nutzen, wenn das Guthaben aufgebraucht ist. Ihre Kreditkarte wird nur dann belastet, wenn Sie Ihre Einstellungen explizit ändern und mit einer Zahlung einverstanden sind.
   
-  + Sie können Ihre [Vorteile für MSDN-Abonnenten aktivieren](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F): Ihr MSDN-Abonnement beinhaltet ein monatliches Guthaben, das Sie für zahlungspflichtige Azure-Dienste nutzen können.
-- Azure PowerShell 1.0. Informationen zu dieser Version und ihrer Installation finden Sie unter [Gewusst wie: Installieren und Konfigurieren von Azure PowerShell](powershell-install-configure.md).
+  + Sie können Ihre [Vorteile für MSDN-Abonnenten aktivieren](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F): Ihr MSDN-Abonnement beinhaltet ein monatliches Guthaben, das Sie für zahlungspflichtige Azure-Dienste verwenden können.
+- Azure PowerShell 1.0. Informationen zu dieser Version und ihrer Installation finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](powershell-install-configure.md).
 
-Dieses Lernprogramm richtet sich an PowerShell-Anfänger. Es wird aber vorausgesetzt, dass Sie die grundlegenden Konzepte verstehen, z. B. Module, Cmdlets und Sitzungen.
+Dieses Lernprogramm richtet sich an PowerShell-Anfänger. Es wird aber vorausgesetzt, dass Sie die grundlegenden Konzepte verstehen, z. B. Module, Cmdlets und Sitzungen.
 
 ## Hilfe zu Cmdlets
 
@@ -102,7 +91,7 @@ Wenn Sie über mehrere Abonnements verfügen, geben Sie die Abonnement-ID, die S
 
 ## Erstellen einer Ressourcengruppe
 
-Bevor Sie Ressourcen unter Ihrem Abonnement bereitstellen, müssen Sie eine Ressourcengruppe erstellen, die die Ressourcen enthält.
+Bevor Sie Ressourcen für Ihr Abonnement bereitstellen, müssen Sie eine Ressourcengruppe erstellen, die die Ressourcen enthält.
 
 Um eine Ressourcengruppe zu erstellen, verwenden Sie das Cmdlet **New-AzureRmResourceGroup**.
 
@@ -122,7 +111,7 @@ Ihre Ressourcengruppe wurde erfolgreich erstellt.
 
 ## Bereitstellen der Lösung
 
-In diesem Thema wird nicht gezeigt, wie Sie eine Vorlage erstellen, und nicht die Struktur der Vorlage erläutert. Diese Informationen finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](resource-group-authoring-templates.md) und [Resource Manager-Vorlage – Exemplarische Vorgehensweise](resource-manager-template-walkthrough.md). Sie stellen die vordefinierte Vorlage vom Typ [Bereitstellen einer Web-App mit einer SQL-Datenbank](https://azure.microsoft.com/documentation/templates/201-web-app-sql-database/) über [Azure-Schnellstartvorlagen](https://azure.microsoft.com/documentation/templates/) bereit.
+In diesem Thema wird nicht gezeigt, wie Sie eine Vorlage erstellen, und nicht die Struktur der Vorlage erläutert. Diese Informationen finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](resource-group-authoring-templates.md) und [Resource Manager-Vorlage – Exemplarische Vorgehensweise](resource-manager-template-walkthrough.md). Sie stellen die vordefinierte Vorlage [Bereitstellen einer Web-App mit einer SQL-Datenbank](https://azure.microsoft.com/documentation/templates/201-web-app-sql-database/) über [Azure-Schnellstartvorlagen](https://azure.microsoft.com/documentation/templates/) bereit.
 
 Sie haben Ihre Ressourcengruppe und Ihre Vorlage, weshalb Sie bereit sind, die in Ihrer Vorlage definierte Infrastruktur in der Ressourcengruppe bereitzustellen. Sie stellen Ressourcen mit dem Cmdlet **New-AzureRmResourceGroupDeployment** bereit. Mit der Vorlage werden viele Standardwerte angegeben, die wir später verwenden. Sie müssen also keine Werte für diese Parameter angeben. Die grundlegende Syntax sieht wie folgt aus:
 
@@ -141,7 +130,7 @@ Wenn Sie den Befehl eingeben, werden Sie zur Angabe des fehlenden obligatorische
     (Type !? for Help.)
     administratorLoginPassword: ********
 
-Enthält die Vorlage einen Parameter mit einem Namen, der einem der Parameter im Befehl zum Bereitstellen der Vorlage entspricht (z.B. einen Parameter namens **ResourceGroupName** in der Vorlage, der mit dem Parameter **ResourceGroupName** im Cmdlet [New-AzureRmResourceGroupDeployment](https://msdn.microsoft.com/library/azure/mt679003.aspx) identisch ist), werden Sie aufgefordert, einen Wert für einen Parameter mit dem Postfix **FromTemplate** anzugeben (z.B. **ResourceGroupNameFromTemplate**). Im Allgemeinen sollten Sie diese Verwirrung vermeiden, indem Sie Parametern nicht dieselben Namen wie Parametern für Bereitstellungsvorgänge geben.
+Wenn die Vorlage einen Parameter mit einem Namen enthält, der einem der Parameter im Befehl zum Bereitstellen der Vorlage entspricht (z.B. einen Parameter namens **ResourceGroupName** in der Vorlage, der mit dem Parameter **ResourceGroupName** im Cmdlet [New-AzureRmResourceGroupDeployment](https://msdn.microsoft.com/library/azure/mt679003.aspx) identisch ist), werden Sie aufgefordert, einen Wert für einen Parameter mit dem Postfix **FromTemplate** anzugeben (z.B. **ResourceGroupNameFromTemplate**). Im Allgemeinen sollten Sie diese Verwirrung vermeiden, indem Sie Parametern nicht dieselben Namen wie Parametern für Bereitstellungsvorgänge geben.
 
 Der Befehl wird ausgeführt und gibt Meldungen zurück, während die Ressourcen erstellt werden. Schließlich wird das Ergebnis der Bereitstellung angezeigt.
 
@@ -178,7 +167,7 @@ In wenigen Schritten haben Sie die Ressourcen, die für eine komplexe Website er
 
 ### Protokollieren von Debuginformationen
 
-Beim Bereitstellen einer Vorlage können Sie zusätzliche Informationen zur Anforderung und Antwort protokollieren, indem Sie den Parameter **-DeploymentDebugLogLevel** beim Ausführen von **New-AzureRmResourceGroupDeployment** angeben. Diese Informationen sind für die Behandlung von Bereitstellungsfehlern hilfreich. Der Standardwert lautet **Keine**. Dies bedeutet, dass keine Inhalte von Anforderungen oder Antworten protokolliert werden. Sie können angeben, dass die Inhalte von Anforderungen, Antworten oder beidem protokolliert werden. Weitere Informationen zur Problembehandlung für Bereitstellungen und Protokollierung von Debuginformationen finden Sie unter [Anzeigen von Bereitstellungsvorgängen mit Azure PowerShell](resource-manager-troubleshoot-deployments-powershell.md). Im folgenden Beispiel werden die Inhalte der Anforderung und der Antwort für die Bereitstellung protokolliert.
+Beim Bereitstellen einer Vorlage können Sie zusätzliche Informationen zur Anforderung und Antwort protokollieren, indem Sie den Parameter **-DeploymentDebugLogLevel** beim Ausführen von **New-AzureRmResourceGroupDeployment** angeben. Diese Informationen sind für die Behandlung von Bereitstellungsfehlern hilfreich. Der Standardwert lautet **Keine**. Dies bedeutet, dass keine Inhalte von Anforderungen oder Antworten protokolliert werden. Sie können angeben, dass die Inhalte von Anforderungen, Antworten oder beidem protokolliert werden. Weitere Informationen zur Problembehandlung für Bereitstellungen und Protokollierung von Debuginformationen finden Sie unter [Problembehandlung beim Bereitstellen von Ressourcengruppen mit Azure PowerShell](resource-manager-troubleshoot-deployments-powershell.md). Im folgenden Beispiel werden die Inhalte der Anforderung und der Antwort für die Bereitstellung protokolliert.
 
     New-AzureRmResourceGroupDeployment -ResourceGroupName TestRG1 -DeploymentDebugLogLevel All -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-web-app-sql-database/azuredeploy.json 
 
@@ -203,7 +192,7 @@ Nach dem Erstellen einer Ressourcengruppe können Sie die Cmdlets im Ressourcen-
 		
 		...
 
-	Wenn Sie keinen Ressourcengruppennamen angeben, werden mit dem Cmdlet alle Ressourcengruppen des Abonnements zurückgegeben.
+	Wenn Sie keinen Ressourcengruppennamen angeben, gibt das Cmdlet alle Ressourcengruppen im Abonnement zurück.
 
 - Um die Ressourcen in der Ressourcengruppe abzurufen, verwenden Sie das Cmdlet **Find-AzureRmResource** und den zugehörigen **ResourceGroupNameContains**-Parameter. Ohne Parameter ruft „Find-AzureRmResource“ alle Ressourcen in Ihrem Azure-Abonnement ab.
 
@@ -292,7 +281,7 @@ Führen Sie zum Herunterladen der Vorlage, die für eine bestimmte Bereitstellun
 
 ## Bereitstellungsskript
 
-In den obigen Bereitstellungsbeispielen in diesem Thema wurden nur die individuellen Cmdlets gezeigt, die zum Bereitstellen der Ressourcen für Azure benötigt werden. Im folgenden Beispiel wird ein Bereitstellungsskript gezeigt, mit dem die Ressourcengruppe erstellt wird und die Ressourcen bereitgestellt werden.
+In den oben stehenden Bereitstellungsbeispielen in diesem Thema wurden nur die individuellen Cmdlets gezeigt, die zum Bereitstellen der Ressourcen für Azure benötigt werden. Im folgenden Beispiel wird ein Bereitstellungsskript gezeigt, mit dem die Ressourcengruppe erstellt wird und die Ressourcen bereitgestellt werden.
 
     <#
       .SYNOPSIS
@@ -387,4 +376,4 @@ In den obigen Bereitstellungsbeispielen in diesem Thema wurden nur die individue
 - Ein ausführliches Beispiel für das Bereitstellen eines Projekts finden Sie unter [Vorhersagbares Bereitstellen von Microservices in Azure](app-service-web/app-service-deploy-complex-application-predictably.md).
 - Weitere Informationen zur Problembehandlung bei einer nicht erfolgreichen Bereitstellung finden Sie unter [Problembehandlung beim Bereitstellen von Ressourcengruppen in Azure](./resource-manager-troubleshoot-deployments-powershell.md).
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0824_2016-->

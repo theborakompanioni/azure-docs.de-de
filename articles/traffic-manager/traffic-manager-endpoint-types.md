@@ -3,7 +3,7 @@
    description="In diesem Artikel werden die unterschiedlichen Arten von Endpunkten beschrieben, die mit Azure Traffic Manager verwendet werden können."
    services="traffic-manager"
    documentationCenter=""
-   authors="jtuliani"
+   authors="sdwheeler"
    manager="carmonm"
    editor="tysonn" />
 <tags
@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="06/08/2016"
-   ms.author="jtuliani" />
+   ms.author="sewhee" />
 
 # Traffic Manager-Endpunkte
 
@@ -144,4 +144,4 @@ Im Fall von Web-Apps lassen die Traffic Manager-Azure-Endpunkte es aber nicht zu
 
 - Informationen zu Traffic Manager-[Routingmethoden für Datenverkehr](traffic-manager-routing-methods.md)
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0824_2016-->

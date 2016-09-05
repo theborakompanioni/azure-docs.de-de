@@ -15,7 +15,7 @@
 	ms.tgt_pltfrm="ibiza"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/01/2016"
+	ms.date="08/17/2016"
 	ms.author="cjiang"/>
 
 # Meine Kreditkarte oder Debitkarte wird abgelehnt, wenn ich versuche, mich bei Azure zu registrieren.
@@ -23,7 +23,7 @@ Wenn Ihre Kreditkarte oder Debitkarte abgelehnt wurde, liegt dies möglicherweis
 
 Wenn Sie wirklich eine gültige Kredit- oder Debitkarte verwenden, vergewissern Sie sich, dass die Karte aktiv ist, und Ihre Bank nicht aufgrund ihrer Sicherheitsrichtlinien Onlinetransaktionen blockiert.
 
-[AZURE.INCLUDE [support-disclaimer](../includes/support-disclaimer.md)]
+> [AZURE.NOTE] Wenn Sie bei einem Verfahren in diesem Artikel weitere Hilfe benötigen, [wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), um das Problem schnell zu lösen.
 
 ## Sind Ihre Kredit-/Lastschriftkarten-Informationen richtig und vollständig?
 - Die Kredit-/Lastschriftkarte, die Sie verwenden, sollte in der Dropdownliste für das Land aufgeführt werden, das Sie auswählen. Wenn sie nicht aufgeführt ist, ist sie keine verfügbare Option für Ihr Land.
@@ -32,13 +32,15 @@ Wenn Sie wirklich eine gültige Kredit- oder Debitkarte verwenden, vergewissern 
 - Die Kreditkartenprüfnummer, die Sie eingeben, muss genau mit dem Code übereinstimmen, der auf der Rück- oder Vorderseite der Kredit-/Lastschriftkarte angegeben ist.
 
 ## Versuchen Sie, die kostenlose Azure-Testversion zu aktivieren?
-Das kostenlose Azure-Testversionsangebot ist auf eine einmalige Aktivierung pro Benutzer begrenzt. Wenn Sie bereits zuvor eine kostenlose Testversion mit dieser Kreditkarte aktiviert oder in der Vergangenheit ein Azure-Abonnement besessen haben, das mit dieser Kreditkarte verknüpft war, erlaubt das System Ihnen jetzt nicht, eine kostenlose Testversion zu aktivieren. Nutzen Sie stattdessen einen der anderen verfügbaren, auf der Seite [Microsoft Azure-Angebotsdetails](https://azure.microsoft.com/support/legal/offer-details/) aufgeführten Azure-Pläne.
+Das kostenlose Azure-Testversionsangebot ist auf eine einmalige Aktivierung pro Benutzer begrenzt. Wenn Sie mit dieser Kreditkarte bereits eine kostenlose Testversion aktiviert oder in der Vergangenheit ein mit dieser Kreditkarte verknüpftes Azure-Abonnement besessen haben, können Sie an dieser Stelle keine kostenlose Testversion aktivieren. Nutzen Sie stattdessen einen der anderen verfügbaren, auf der Seite [Microsoft Azure-Angebotsdetails](https://azure.microsoft.com/support/legal/offer-details/) aufgeführten Azure-Pläne.
 
 ## Wünschen Sie andere Zahlungsmöglichkeiten als Kredit- oder Lastschriftkarten?
-Sie können für Ihr Azure-Abonnement auch Zahlungsmethoden per Rechnung nutzen, z.B. Schecks, Scheckzahlungen über Nacht und Überweisungen.
+Sie können für Ihr Azure-Abonnement auch mit rechnungsbasierten Zahlungsmethoden wie Schecks, Scheckzahlungen über Nacht und Überweisungen bezahlen.
 
 Die Rechnungszahlungsoption kann nur von Unternehmen genutzt werden. Diese Option ist nicht für Einzelpersonen als Abonnenten verfügbar. Nachdem Ihr Unternehmen sich auf die Rechnungszahlungsoption festgelegt hat, können Sie nicht mehr zu einer anderen Zahlungsoption wechseln.
 
-Nähere Informationen zum Starten des Prozesses zum Einrichten einer Rechnung finden Sie unter [Azure – Rechnungsstellung](https://azure.microsoft.com/pricing/invoicing/).
+Ausführliche Informationen zur Rechnungseinrichtung finden Sie unter [Azure – Rechnungsstellung](https://azure.microsoft.com/pricing/invoicing/).
 
-<!---HONumber=AcomDC_0803_2016-->
+> [AZURE.NOTE] Wenn Sie weitere Fragen haben, [wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), um das Problem schnell zu lösen.
+
+<!---HONumber=AcomDC_0824_2016-->

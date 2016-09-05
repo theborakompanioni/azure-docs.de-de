@@ -4,7 +4,7 @@
    services=""
    documentationCenter="na"
    authors="adamglick"
-   manager="hongfeig"
+   manager="saladki"
    editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="08/01/2016"
+   ms.date="08/18/2016"
    ms.author="aglick"/>
 
 #Notfallwiederherstellung für in Microsoft Azure erstellte Anwendungen
@@ -71,7 +71,7 @@ Eine andere Möglichkeit ist, Daten an einem alternativen Speicherort zu speiche
 
 ###Ausfall eines abhängigen Diensts
 
-Azure bietet viele Dienste, bei denen regelmäßig Ausfallzeiten auftreten können. Nehmen wir als Beispiel [Azure Redis Cache](https://azure.microsoft.com/services/cache/). Dieser mehrinstanzenfähige Dienst bietet Ihrer Anwendung Funktionen zum Zwischenspeichern. Sie müssen bedenken, was in Ihrer Anwendung passiert, wenn der abhängige Dienst nicht verfügbar ist. Dieses Szenario ist in vielerlei Hinsicht dem Szenario eines Netzwerkausfalls ähnlich. Wenn Sie allerdings jeden Dienst einzeln betrachten, erreichen Sie potenzielle Verbesserungen des globalen Plans.
+Azure bietet viele Dienste, bei denen regelmäßig Ausfallzeiten auftreten können. Nehmen wir als Beispiel [Azure Redis Cache](https://azure.microsoft.com/services/cache/). Dieser mehrinstanzenfähige Dienst bietet Funktionen zum Zwischenspeichern für Ihre Anwendung. Sie müssen bedenken, was in Ihrer Anwendung passiert, wenn der abhängige Dienst nicht verfügbar ist. Dieses Szenario ist in vielerlei Hinsicht dem Szenario eines Netzwerkausfalls ähnlich. Wenn Sie allerdings jeden Dienst einzeln betrachten, erreichen Sie potenzielle Verbesserungen des globalen Plans.
 
 Azure Redis Cache ermöglicht das Zwischenspeichern für Ihre Anwendung in der Clouddienstbereitstellung und bietet Vorteile für die Notfallwiederherstellung. Zunächst wird der Dienst jetzt mit Rollen ausgeführt, die für die Bereitstellung lokal sind. Aus diesem Grund können Sie den Status des Caches als Teil der globalen Verwaltungsprozesse für den Clouddienst besser überwachen und verwalten. Diese Art von Zwischenspeicherung bietet neue Funktionen. Eine der neuen Funktionen ist die hohe Verfügbarkeit für zwischengespeicherte Daten. Dadurch können die zwischengespeicherten Daten beibehalten werden, wenn ein einzelner Knoten ausfällt, da Duplikate auf anderen Knoten vorhanden sind.
 
@@ -305,4 +305,4 @@ Es gibt verschiedene Techniken, mit denen Sie Notfallwiederherstellungspläne te
 
 Dieser Artikel ist Teil einer Reihe von Artikeln mit Fokus auf [Notfallwiederherstellung und hohe Verfügbarkeit für in Microsoft Azure erstellte Anwendungen](./resiliency-disaster-recovery-high-availability-azure-applications.md). Der vorangegangene Artikel dieser Reihe ist [Hohe Verfügbarkeit für in Microsoft Azure erstellte Anwendungen](./resiliency-high-availability-azure-applications.md).
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0824_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-ios"
 	ms.devlang="objective-c"
 	ms.topic="article"
-	ms.date="02/29/2016"
+	ms.date="08/19/2016"
 	ms.author="piyushjo" />
 
 #SDK-Inhalt
@@ -42,4 +42,4 @@ Ordner "`src`"
 
 > Engagement-Ansichtencontroller und Reach-SDK-Quellcode (für erfahrene Benutzer, die Engagement-Klassen an Ihre Anforderungen anpassen möchten).
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0824_2016-->

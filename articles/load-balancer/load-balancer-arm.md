@@ -1,9 +1,9 @@
 <properties
-   pageTitle="Azure-Ressourcen-Manager-Unterstützung für Lastenausgleich – Vorschau | Microsoft Azure"
+   pageTitle="Azure-Ressourcen-Manager-Unterstützung für Lastenausgleich – Vorschau | Microsoft Azure "
    description="Verwenden von PowerShell für den Lastenausgleich mit Azure-Ressourcen-Manager (ARM) in der Vorschau Verwenden von Vorlagen für Lastenausgleich"
    services="load-balancer"
    documentationCenter="na"
-   authors="joaoma"
+   authors="sdwheeler"
    manager="carmonm"
    editor="tysonn" />
 <tags
@@ -13,10 +13,10 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="03/17/2016"
-   ms.author="joaoma" />
+   ms.author="sewhee" />
 
 
-# Unterstützung des Azure-Ressourcen-Managers für Load Balancer 
+# Unterstützung des Azure-Ressourcen-Managers für Load Balancer
 
 Der Azure-Ressourcen-Manager (ARM) ist das neue Verwaltungsframework für Dienste in Azure. Der Azure-Lastenausgleich kann jetzt mithilfe von APIs und Tools auf Basis von Azure-Ressourcen-Manager verwaltet werden.
 
@@ -40,13 +40,14 @@ Mit ARM enthält der Azure-Lastenausgleich die folgenden untergeordneten Ressour
 
 
 ## Schnellstartvorlagen
+
 Mit dem Azure-Ressourcen-Manager können Sie Ihre Anwendungen mit einer deklarativen Vorlage bereitstellen. In einer Vorlage können Sie mehrere Dienste zusammen mit ihren Abhängigkeiten bereitstellen. Sie verwenden die gleiche Vorlage, um Ihre Anwendung während jeder Phase des Anwendungslebenszyklus wiederholt bereitzustellen.
 
 Vorlagen umfassen virtuelle Computer, virtuelle Netzwerke, Verfügbarkeitsgruppen, Netzwerkkarten (NICs), Speicherkonten, Lastenausgleichsmodule, Netzwerk-Sicherheitsgruppen und öffentliche IP-Adressen. Mit Vorlagen können Sie alle erforderlichen Elemente einer komplexen Anwendung mithilfe einer einfachen Datei erstellen, die Sie einchecken und gemeinsam bearbeiten können.
 
 [Weitere Informationen zu Vorlagen](http://go.microsoft.com/fwlink/?LinkId=544798)
 
-[Weitere Informationen zu Netzwerkressourcen](../virtual-network/resource-groups-networking)
+[Weitere Informationen zu Netzwerkressourcen](../virtual-network/resource-groups-networking.md)
 
 Vorlagen, die Azure-Lastenausgleich verwenden, finden Sie in diesem [GitHub-Repository](https://github.com/Azure/azure-quickstart-templates) mit einer Reihe von Communityvorlagen.
 
@@ -76,4 +77,4 @@ Sie können auch einen [Load Balancer mit Internetzugriff erstellen](load-balanc
 
 Wenn es für Ihre Anwendung erforderlich ist, dass Verbindungen mit Servern hinter einem Load Balancer aufrechterhalten werden, informieren Sie sich über [TCP-Leerlauftimeout-Einstellungen für den Load Balancer](load-balancer-tcp-idle-timeout.md). Hier erfahren Sie mehr über das Verhalten von Leerlaufverbindungen bei der Verwendung des Azure-Lastenausgleichs.
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0824_2016-->

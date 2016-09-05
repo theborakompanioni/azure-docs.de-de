@@ -1,6 +1,6 @@
 <properties
    pageTitle="Azure AD Connect: Automatisches Upgrade | Microsoft Azure"
-   description="Dieses Thema beschreibt das integrierte automatische Upgradefeature in Azure AD Connect Sync."
+   description="Dieses Thema beschreibt das integrierte automatische Upgradefeature in der Azure AD Connect-Synchronisierung."
    services="active-directory"
    documentationCenter=""
    authors="AndKjell"
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="06/27/2016"
+   ms.date="08/24/2016"
    ms.author="andkjell"/>
 
 # Azure AD Connect: Automatisches Upgrade
@@ -25,7 +25,7 @@ Noch nie konnten Sie so leicht sicherstellen, dass Ihre Azure AD Connect-Install
 Das automatische Upgrade ist in folgenden Fällen standardmäßig aktiviert:
 
 - Installationen mit Express-Einstellungen und DirSync-Upgrades.
-- Verwendung von SQL Express LocalDB, die bei Express-Einstellungen immer verwendet wird. DirSync mit SQL Express verwendet ebenfalls LocalDB.
+- Verwendung von SQL Express LocalDB (wird bei Express-Einstellungen immer verwendet). DirSync mit SQL Express verwendet ebenfalls LocalDB.
 - Das AD-Konto ist das MSOL\_-Standardkonto, das mit den Express-Einstellungen und DirSync erstellt wird
 - Es sind weniger als 100.000 Objekte im Metaverse enthalten.
 
@@ -39,7 +39,7 @@ Deaktiviert | Das automatische Upgrade ist deaktiviert.
 
 Mit `Set-ADSyncAutoUpgrade` können Sie zwischen **aktiviert** und **deaktiviert** wechseln. Nur das System sollte den Zustand **Ausgesetzt** festlegen.
 
-Das automatische Upgrade verwendet Azure AD Connect Health als Upgrade-Infrastruktur. Damit das automatische Upgrade ordnungsgemäß funktioniert, stellen Sie sicher, dass Sie die URLs im Proxy für **Azure AD Connect Health** gemäß der Beschreibung unter [URLs und IP-Adressbereiche von Office 365](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2) geöffnet haben.
+Das automatische Upgrade verwendet Azure AD Connect Health als Upgrade-Infrastruktur. Damit das automatische Upgrade funktioniert, müssen die URLs im Proxy für **Azure AD Connect Health** wie unter [URLs und IP-Adressbereiche von Office 365](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2) beschrieben geöffnet sein.
 
 Wenn auf dem Server die **Synchronization Service Manager**-Benutzeroberfläche geöffnet ist, wird das Upgrade angehalten, bis die Benutzeroberfläche geschlossen wird.
 
@@ -50,16 +50,18 @@ Ein automatisches Upgrade wird voraussichtlich nicht direkt am Erscheinungstag e
 
 Wenn Sie der Meinung sind, dass ein Fehler vorliegt, führen Sie zuerst `Get-ADSyncAutoUpgrade` aus, um sicherzustellen, dass das automatische Upgrade aktiviert ist.
 
-Starten Sie die Ereignisanzeige, und sehen Sie sich das Ereignisprotokoll für die **Anwendung** an. Fügen Sie einen Ereignisprotokollfilter für die Quelle **Azure AD Connect Upgrade** und den Ereignis-ID-Bereich **300-399** hinzu. ![Ereignisprotokollfilter für das automatische Upgrade](./media/active-directory-aadconnect-feature-automatic-upgrade/eventlogfilter.png)
+Stellen Sie dann sicher, dass Sie die erforderlichen URLs in Ihrem Proxy oder in der Firewall geöffnet haben. Die automatische Aktualisierung verwendet Azure AD Connect Health wie in der [Übersicht](#overview) beschrieben. Wenn Sie einen Proxy verwenden, muss Health für die Verwendung eines [Proxyservers](active-directory-aadconnect-health-agent-install.md#configure-azure-ad-connect-health-agents-to-use-http-proxy) konfiguriert sein. Prüfen Sie auch die [Verbindung von Health](active-directory-aadconnect-health-agent-install.md#test-connectivity-to-azure-ad-connect-health-service) zu Azure AD.
 
-Damit zeigen Sie alle Ereignisprotokolle an, die dem Status für das automatische Upgrade zugeordnet sind. ![Ereignisprotokollfilter für das automatische Upgrade](./media/active-directory-aadconnect-feature-automatic-upgrade/eventlogresult.png)
+Wenn Sie die Verbindung mit Azure AD überprüft haben, prüfen Sie die Ereignisprotokolle. Starten Sie die Ereignisanzeige, und sehen Sie sich das Ereignisprotokoll für die **Anwendung** an. Fügen Sie einen Ereignisprotokollfilter für die Quelle **Azure AD Connect Upgrade** und den Ereignis-ID-Bereich **300-399** hinzu. ![Ereignisprotokollfilter für das automatische Upgrade](./media/active-directory-aadconnect-feature-automatic-upgrade/eventlogfilter.png)
+
+So können Sie alle Ereignisprotokolle anzeigen, die dem Status für das automatische Upgrade zugeordnet sind. ![Ereignisprotokollfilter für das automatische Upgrade](./media/active-directory-aadconnect-feature-automatic-upgrade/eventlogresult.png)
 
 Der Ergebniscode hat ein Präfix mit einer Übersicht über den Status.
 
 Ergebniscodepräfix | Beschreibung
 --- | ---
 Erfolgreich | Das Upgrade der Installation wurde erfolgreich durchgeführt.
-UpgradeAborted | Das Upgrade wurde durch ein temporäres Problem angehalten. Das Upgrade wird erneut versucht, und es wird erwartet, dass es später erfolgreich durchgeführt werden kann.
+UpgradeAborted | Das Upgrade wurde durch ein temporäres Problem angehalten. Das Upgrade wird erneut ausgeführt, und es wird davon ausgegangen, dass es später erfolgreich durchgeführt werden kann.
 UpgradeNotSupported | Die Konfiguration des Systems blockiert das automatische Upgrade. Das Upgrade wird erneut versucht, um zu ermitteln, ob sich der Status ändert. Es ist jedoch damit zu rechnen, dass das Upgrade für das System manuell durchgeführt werden muss.
 
 Im Folgenden finden Sie eine Liste der Meldungen, die am häufigsten angezeigt werden. Es werden nicht alle Meldungen aufgeführt, aber aus den Ergebnismeldungen wird das jeweilige Problem klar.
@@ -85,11 +87,11 @@ UpgradeNotSupportedInvalidPersistedState | Die Installation ist keine Express-Ei
 UpgradeNotSupportedMetaverseSizeExceeeded | Es sind mehr als 100.000 Objekte im Metaverse enthalten.
 UpgradeNotSupportedMultiForestSetup | Sie stellen Verbindungen mit mehr als einer Gesamtstruktur her. Beim Express-Setup wird nur eine Verbindung mit einer Gesamtstruktur hergestellt.
 UpgradeNotSupportedNonLocalDbInstall | Sie verwenden keine SQL Server Express LocalDB-Datenbank.
-UpgradeNotSupportedNonMsolAccount | Das [AD-Connectorkonto](active-directory-aadconnect-accounts-permissions.md#active-directory-account) ist nicht mehr das MSOL\_-Standardkonto.
+UpgradeNotSupportedNonMsolAccount | Das [AD-Connector-Konto](active-directory-aadconnect-accounts-permissions.md#active-directory-account) ist nicht mehr das MSOL\_-Standardkonto.
 UpgradeNotSupportedStagingModeEnabled | Der Server ist auf den [Stagingmodus](active-directory-aadconnectsync-operations.md#staging-mode) festgelegt.
 UpgradeNotSupportedUserWritebackEnabled | Sie haben das Feature [Benutzerrückschreiben](active-directory-aadconnect-feature-preview.md#user-writeback) aktiviert.
 
 ## Nächste Schritte
 Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md).
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0824_2016-->

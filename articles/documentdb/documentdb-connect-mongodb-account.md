@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/31/2016" 
+	ms.date="08/23/2016" 
 	ms.author="stbaro"/>
 
 # Herstellen einer Verbindung mit einem DocumentDB-Konto mit Protokollunterstützung für MongoDB
@@ -24,7 +24,7 @@ Erfahren Sie, wie Sie mithilfe des standardmäßigen URI-Formats für MongoDB-Ve
 ## Abrufen der Informationen zur Verbindungszeichenfolge für das Konto
 
 1. Melden Sie sich in einem neuen Fenster beim [Azure-Portal](https://portal.azure.com) an.
-2. Klicken Sie auf dem Blatt **Alle Einstellungen** auf **Verbindungszeichenfolge**. Klicken Sie zum Navigieren zu **Alle Einstellungen** auf der Navigationsleiste auf **Durchsuchen**, klicken Sie auf **DocumentDB-Konten**, und wählen Sie dann das DocumentDB-Konto mit Protokollunterstützung für MongoDB aus.
+2. Klicken Sie auf der **linken Navigationsleiste** des Blatts „Konto“ auf **Verbindungszeichenfolge**. Zum Blatt **Konto** gelangen Sie, indem Sie auf der Navigationsleiste auf **More Services** (Weitere Dienste) > **DocumentDB (NoSQL)** klicken und anschließend das DocumentDB-Konto mit Protokollunterstützung für MongoDB auswählen.
 
 	![Screenshot des Blatts „Alle Einstellungen“](./media/documentdb-connect-mongodb-account/SettingsBlade.png)
 
@@ -84,4 +84,4 @@ Wie bereits erwähnt, erfordern alle DocumentDB-Konten eine Authentifizierung un
 
  
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0824_2016-->

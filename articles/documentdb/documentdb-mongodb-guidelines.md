@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/31/2016" 
+	ms.date="08/23/2016" 
 	ms.author="stbaro"/>
 
 # Entwicklungsrichtlinien für DocumentDB-Konten mit Protokollunterstützung für MongoDB (Vorschau)
@@ -50,7 +50,7 @@ Die Benutzeroberfläche des Azure-Portals für die für das MongoDB-Protokoll ak
 
 ### CRUD- und Abfragevorgänge
 
-Funktion|Unterstützt|Wird unterstützt|Nicht unterstützt 
+Feature|Unterstützt|Wird unterstützt|Nicht unterstützt 
 ---|---|---|---
 Einfügen|InsertOne| | 
  |InsertMany| | 
@@ -62,17 +62,17 @@ Feld aktualisieren|$inc, $mul, $rename, $set, $unset, $min, $max|$currentDate|
 Array aktualisieren| |-alle-| 
 Bitweise| |-alle-| 
 Isolation| |-alle-| 
-Replace|ReplaceOne| |
+Ersetzen von|ReplaceOne| |
 Löschen|DeleteOne | |
  |DeleteMany| | 
- |Remove| | 
+ |Spalten| | 
 BulkWrite| |bulkWrite()| 
 Vergleich|-alle-| | 
 Logisch|-alle-| | 
 Elementabfrage| |-alle-| 
-Auswertung|$mod|$regex, $text, $where| 
+Auswertung|$mod, $regex |$text, $where| 
 GeoSpatial|2dsphere, 2d, polygon|Alle anderen| 
-Array|$all, $size|$elemMatch| 
+Array|$all, $size, $elemMatch|| 
 Bitweise| |-alle-| 
 Kommentar|-alle-| | 
 Projektion| |-alle-| 
@@ -80,7 +80,7 @@ Projektion| |-alle-|
 
 ### Datenbankbefehle
 
-Funktion|Unterstützt|Wird unterstützt|Nicht unterstützt 
+Feature|Unterstützt|Wird unterstützt|Nicht unterstützt 
 ---|---|---|---
 Aggregation|Count| |aggregate, distinct, group, mapreduce
 GeoSpatial| |-alle-| 
@@ -95,9 +95,9 @@ Diagnose|listDatabases, collStats, dbStats| |Alle anderen
 
 ## Nächste Schritte
 
-- Erfahren Sie, wie Sie [MongoChef](documentdb-mongodb-mongochef.md) mit einem DocumentDB-Konto mit Protokollunterstützung für MongoDB verwenden.
+- Informieren Sie sich über die [Verwendung von MongoChef](documentdb-mongodb-mongochef.md) mit einem DocumentDB-Konto mit Protokollunterstützung für MongoDB.
 - Untersuchen Sie DocumentDB mit Protokollunterstützung für MongoDB anhand von [Beispielen](documentdb-mongodb-samples.md).
 
  
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0824_2016-->

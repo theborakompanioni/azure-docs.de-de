@@ -1,10 +1,10 @@
 
 <properties 
-   pageTitle="Übersicht über Internetlastenausgleich | Microsoft Azure"
+   pageTitle="Übersicht über Internetlastenausgleich | Microsoft Azure "
    description="Übersicht über den Lastenausgleich mit Internetzugriff und die zugehörigen Features. Wie funktioniert ein Lastenausgleich für Azure mithilfe von virtuellen Computern und Clouddiensten."
    services="load-balancer"
    documentationCenter="na"
-   authors="joaoma"
+   authors="sdwheeler"
    manager="carmonm"
    editor="tysonn" />
 <tags 
@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="04/05/2016"
-   ms.author="joaoma" />
+   ms.author="sewhee" />
 
 
 # Internetlastenausgleich zwischen mehreren virtuellen Computern oder Diensten
@@ -48,4 +48,4 @@ Wenn es für Ihre Anwendung erforderlich ist, dass Verbindungen mit Servern hint
 
  
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0824_2016-->

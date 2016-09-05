@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="sqldb-migrate"
-   ms.date="06/07/2016"
+   ms.date="08/24/2016"
    ms.author="carlrab"/>
 
 # Verwenden Sie den SQL Azure-Migrations-Assistenten, um vor der Migration zu Azure SQL-Datenbank Kompatibilitätsprobleme mit SQL Server-Datenbank zu beheben.
@@ -27,11 +27,11 @@ In diesem Artikel erfahren Sie, wie Sie mit dem SQL Azure-Migrations-Assistenten
 
 ## Verwenden des SQL Azure-Migrations-Assistenten
 
-Verwenden Sie den [SQL Azure-Migrations-Assistenten](http://sqlazuremw.codeplex.com/) für das CodePlex-Tool zum Generieren eines T-SQL-Skripts aus einer inkompatiblen Quelldatenbank verwenden, das vom Assistenten dann transformiert wird, um es mit der SQL-Datenbank kompatibel zu machen. Anschließend wird eine Verbindung mit Azure SQL-Datenbank hergestellt, um das Skript auszuführen. Mit diesem Tool werden außerdem Ablaufverfolgungsdateien analysiert, um Kompatibilitätsprobleme zu ermitteln. Das Skript kann mit der Option "Nur Schema" generiert werden oder Daten im BCP-Format enthalten. Weitere Dokumentation, einschließlich einer Schritt-für-Schritt-Anleitung, finden Sie bei CodePlex unter [SQL Azure-Migrations-Assistent](http://sqlazuremw.codeplex.com/).
+Verwenden Sie das CodePlex-Tool des [Azure SQL-Datenbankmigrations-Assistenten](http://sqlazuremw.codeplex.com/) zum Generieren eines T-SQL-Skripts aus einer nicht kompatiblen Quelldatenbank. Dieses Skript wird dann vom Assistenten transformiert, sodass es mit der SQL-Datenbank kompatibel ist. Sie stellen dann eine Verbindung mit Azure SQL-Datenbank her, um das Skript auszuführen. Dieses Tool analysiert auch Ablaufverfolgungsdateien, um Kompatibilitätsprobleme zu ermitteln. Das Skript kann mit der Option "Nur Schema" generiert werden oder Daten im BCP-Format enthalten. Weitere Dokumentation, einschließlich einer Schritt-für-Schritt-Anleitung, finden Sie bei CodePlex unter [SQL Azure-Migrations-Assistent](http://sqlazuremw.codeplex.com/).
 
  ![Diagramm der SAMW-Migration](./media/sql-database-cloud-migrate/02SAMWDiagram.png)
 
-  > [AZURE.NOTE] Beachten Sie, dass nicht jedes inkompatible Schema, das vom Assistenten erkannt werden kann, durch dessen integrierte Transformationen behoben werden kann. Ein inkompatibles Skript, das nicht verarbeitet werden kann, wird als Fehler gemeldet, wobei Kommentare in das generierte Skript eingefügt werden. Falls viele Fehler erkannt werden, sollten Sie entweder Visual Studio oder SQL Server Management Studio nutzen, um die Fehler durchzugehen und zu beheben, die mit dem SQL Server-Migrations-Assistenten nicht behoben werden konnten.
+  > [AZURE.NOTE] Nicht jedes inkompatible Schema, das vom Assistenten erkannt wird, kann durch dessen integrierte Transformationen behoben werden. Ein inkompatibles Skript, das nicht verarbeitet werden kann, wird als Fehler gemeldet, wobei Kommentare in das generierte Skript eingefügt werden. Falls viele Fehler erkannt werden, sollten Sie entweder Visual Studio oder SQL Server Management Studio nutzen, um die Fehler durchzugehen und zu beheben, die mit dem SQL Server-Migrations-Assistenten nicht behoben werden konnten.
 
 ## Nächste Schritte
 
@@ -39,10 +39,10 @@ Verwenden Sie den [SQL Azure-Migrations-Assistenten](http://sqlazuremw.codeplex.
 - [Neueste Version von SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx)
 - [Migrieren einer kompatiblen SQL Server-Datenbank zur SQL-Datenbank](sql-database-cloud-migrate.md#migrate-a-compatible-sql-server-database-to-sql-database)
 
-## Weitere Ressourcen
+## Zusätzliche Ressourcen
 
 - [SQL-Datenbank V12](sql-database-v12-whats-new.md)
 - [Teilweise oder vollständig unterstützte Transact-SQL-Funktionen](sql-database-transact-sql-information.md)
 - [Migrate non-SQL Server databases using SQL Server Migration Assistant (Migrieren von Nicht-SQL Server-Datenbanken mithilfe des SQL Server-Migrations-Assistenten)](http://blogs.msdn.com/b/ssma/)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0824_2016-->

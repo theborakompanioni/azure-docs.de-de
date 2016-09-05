@@ -123,4 +123,4 @@ Keine Änderung der Netzwerkeigenschaften von VM-2 nach dem Failover | VM-1 blei
 
 Nachdem Sie sich mit Netzwerkzuordnung vertraut gemacht haben, können Sie sich mit der [Site Recovery-Bereitstellung beginnen](site-recovery-best-practices.md).
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0824_2016-->

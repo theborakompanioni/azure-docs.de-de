@@ -43,11 +43,12 @@ Wenn alle Elemente vorhanden sind, können Sie diese Hauptschritte zu erneuten T
 3.	Aktualisieren des hinzugefügten Endpunkts über den Bewertungswebdienst mit dem neuen trainierten Modell: Aktualisieren Sie mit dem Beispielcode aus „Programmgesteuertes erneutes Trainieren von Machine Learning-Modellen“ den neuen Endpunkt, den Sie dem Bewertungsmodell mit dem neu trainierten Modell aus dem Trainingswebdienst hinzugefügt haben.
 
 ## Häufige Hindernisse
+
 ### Überprüfen des Vorhandenseins der richtigen PATCH-URL
 
 Die von Ihnen verwendete PATCH-URL muss die dem neuen Bewertungsendpunkt zugeordnete URL sein, den Sie dem Bewertungswebdienst hinzugefügt haben. Es gibt zwei Möglichkeiten, die PATCH-URL zu erhalten:
 
-Option 1: Verwenden von C#
+**Option 1: Verwenden von C#**
 
 Gehen Sie wie folgt vor, um die richtige PATCH-URL abzurufen:
 
@@ -59,14 +60,16 @@ Gehen Sie wie folgt vor, um die richtige PATCH-URL abzurufen:
 3.	Fügen Sie die URL in einen Browser ein, um auf eine Seite zu navigieren, auf der Hilfelinks für den Webdienst angegeben sind.
 4.	Klicken Sie auf den Link **Ressource aktualisieren**, um die Hilfeseite für das Patching zu öffnen.
 
-Option 2: Verwenden des Azure-Portals
+**Option 2: Verwenden des Azure-Portals**
 
 1.	Melden Sie sich beim [klassischen Azure-Portal](https://manage.windowsazure.com) an.
 2.	Öffnen Sie die Registerkarte „Machine Learning“. ![Registerkarte „Machine Learning“][image4]
 3.	Klicken Sie auf den Namen Ihres Arbeitsbereichs und dann auf **Webdienste**.
-4.	Klicken Sie auf den Bewertungswebdienst, den Sie verwenden. (Wenn Sie den Standardnamen des Webdiensts nicht geändert haben, endet er normalerweise auf „[Scoring Exp.]“.)
+4.	Klicken Sie auf den Bewertungswebdienst, den Sie verwenden. (Wenn Sie den Standardnamen des Webdiensts nicht geändert haben, endet er mit „[Scoring Exp.]“.)
 5.	Klicken Sie auf „Endpunkt hinzufügen“.
-6.	Klicken Sie auf den Namen des Endpunkts, nachdem der Endpunkt hinzugefügt wurde. Klicken Sie anschließend auf **Ressource aktualisieren**, um die Hilfeseite für das Patching zu öffnen.
+6.	Klicken Sie nach dem Hinzufügen des Endpunkts auf dessen Namen. Klicken Sie anschließend auf **Ressource aktualisieren**, um die Hilfeseite für das Patching zu öffnen.
+
+>[AZURE.NOTE] Wenn Sie den Endpunkt nicht dem Vorhersagewebdienst, sondern dem Trainingswebdienst hinzugefügt haben, tritt beim Klicken auf den Link **Ressource aktualisieren** der folgende Fehler auf: „Sorry, but this feature is not supported or available in this context. This Web Service has no updatable resources. We apologize for the inconvenience and are working on improving this workflow.“ (Dieses Feature wird in diesem Kontext leider nicht unterstützt oder ist nicht verfügbar. Der Webdienst besitzt keine aktualisierbaren Ressourcen. Wir arbeiten bereits an einer Optimierung dieses Workflows.)
 
 ![Dashboard für neuen Endpunkt][image3]
 
@@ -74,14 +77,14 @@ Die PATCH-Hilfeseite enthält die PATCH-URL, die Sie verwenden müssen, und auß
 
 ![Patch-URL][image5]
 
-
 ### Sicherstellen, dass der richtige Bewertungsendpunkt aktualisiert wird
+
 * Führen Sie das Patching nicht für den Trainingswebdienst durch: Der Patchvorgang muss für den Bewertungswebdienst erfolgen.
 * Führen Sie das Patching nicht für den Standardendpunkt des Webdiensts durch: Der Patchvorgang muss für den neuen Bewertungswebdienst-Endpunkt erfolgen, den Sie hinzugefügt haben.
 
-Sicherstellen, dass der Endpunkt dem richtigen Webdienst hinzugefügt wurde
+Sie können überprüfen, unter welchem Webdienst sich der Endpunkt befindet, indem Sie das klassische Azure-Portal verwenden.
 
-Der Endpunkt, den Sie zum erneuten Trainieren des Modells verwenden, muss sich unter dem Bewertungswebdienst befinden, nicht unter dem Trainingswebdienst. Sie können überprüfen, unter welchem Webdienst sich der Endpunkt befindet, indem Sie das klassische Azure-Portal verwenden.
+>[AZURE.NOTE] Achten Sie darauf, dass Sie den Endpunkt dem Vorhersagewebdienst hinzufügen und nicht dem Trainingswebdienst. Wenn Sie sowohl einen Trainings- als auch einen Vorhersagewebdienst korrekt bereitgestellt haben, werden zwei separate Webdienste aufgeführt. Der Vorhersagewebdienst sollte mit „[predictive exp.]“ enden.
 
 1.	Melden Sie sich beim [klassischen Azure-Portal](https://manage.windowsazure.com) an.
 2.	Öffnen Sie die Registerkarte „Machine Learning“. ![UI für Machine Learning-Arbeitsbereich][image4]
@@ -96,7 +99,6 @@ Der Endpunkt, den Sie zum erneuten Trainieren des Modells verwenden, muss sich u
 2.	Wählen Sie im Menü die Option „Machine Learning“. ![UI für Machine Learning-Region][image4]
 3.	Überprüfen Sie den Speicherort Ihres Arbeitsbereichs.
 
-
 <!-- Image Links -->
 
 [image1]: ./media/machine-learning-troubleshooting-retraining-a-model/ml-studio-tm-connnected-to-web-service-out.png
@@ -106,4 +108,4 @@ Der Endpunkt, den Sie zum erneuten Trainieren des Modells verwenden, muss sich u
 [image5]: ./media/machine-learning-troubleshooting-retraining-a-model/ml-help-page-patch-url.png
 [image6]: ./media/machine-learning-troubleshooting-retraining-a-model/retraining-output.png
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0824_2016-->

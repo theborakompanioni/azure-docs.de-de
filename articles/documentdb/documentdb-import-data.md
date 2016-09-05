@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/05/2016"
+	ms.date="08/23/2016"
 	ms.author="anhoh"/>
 
 # Importieren von Daten in DocumentDB mit dem Datenbank-Migrationstool
@@ -490,4 +490,4 @@ Wählen Sie dann, ob alle, nur die kritischen oder gar keine Fehlermeldungen pro
 
 - Weitere Informationen zu DocumentDB finden Sie im [Lernpfad](https://azure.microsoft.com/documentation/learning-paths/documentdb/).
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0824_2016-->

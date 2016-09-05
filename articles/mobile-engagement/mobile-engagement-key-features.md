@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/01/2016"
+	ms.date="08/19/2016"
 	ms.author="piyushjo" />
 
 # Azure Mobile Engagement – wichtigste Features
@@ -22,19 +22,19 @@ Dieser Artikel bietet eine grobe Übersicht über die wichtigsten Features der M
 
 ## **Allgemein**
 
-- **SDKs für alle wichtigen Plattformen** Für alle wichtigen Plattformen sind SDKs verfügbar – iOS, Android, Universal Windows, Windows Phone Silverlight, Kindle, Cordova. Wir bieten einfach integrierbare SDKs und hilfreiche Dokumentationen, um Ihnen den Einstieg auf jeder Plattform Ihrer Wahl zu ermöglichen. 
+- **SDKs für alle wichtigen Plattformen** Für alle wichtigen Plattformen sind SDKs verfügbar – iOS, Android, Universal Windows, Windows Phone Silverlight, Kindle, Cordova. Wir bieten einfach integrierbare SDKs und hilfreiche Dokumentationen, um Ihnen den Einstieg auf jeder Plattform Ihrer Wahl zu ermöglichen.
 
 - **Separates SaaS-Portal** Bietet einfachen Zugang zum Marketingteam ohne Umweg über das Azure-Verwaltungsportal.
 
 - **Verfügbarkeit von offenen REST-APIs** Zur Integration in und Automatisierung mit CMS/CRM/IT-Systemen, die Open-Platform-APIs verwenden, bieten wir offene REST-APIs und .NET SDKs, die diese APIs verwenden, mit denen eine mühelose Integration in und Automatisierung mit Mobile Engagement möglich ist. [Hier](mobile-engagement-api-authentication.md) finden Sie weitere Informationen.
 
-- **Power BI-Connector verfügbar** Sie können auch die wichtigsten Analysediagramme in einem Power BI-Dashboard anzeigen. Beachten Sie diesen [Leitfaden](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-mobile/).
+- **Power BI-Connector verfügbar** Sie können auch die wichtigsten Analysediagramme in einem Power BI-Dashboard anzeigen. Beachten Sie diesen [Leitfaden](https://powerbi.microsoft.com/de-DE/documentation/powerbi-content-pack-azure-mobile/).
 
 - **Gewährleistung von Sicherheit und Datenschutz** Als Mitglied der Azure-Produktfamilie hält Azure Mobile Engagement alle standardmäßigen bewährten Methoden für Sicherheit und Datenschutz ein, die von einem Cloud-Dienst erwartet werden.
 
 ## **Handlungsrelevante Analyse**
 
-- **Überwachen von Daten in Echtzeit** Sie können Echtzeitanalysen mit unserem Modul „Überwachung“ verfolgen, das Details wie Sitzungen, Ereignisse, Fehler und Abstürze in Echtzeit anzeigt. In diesem [Artikel](mobile-engagement-concepts.md) werden die grundlegenden Konzepte erläutert. 
+- **Überwachen von Daten in Echtzeit** Sie können Echtzeitanalysen mit unserem Modul „Überwachung“ verfolgen, das Details wie Sitzungen, Ereignisse, Fehler und Abstürze in Echtzeit anzeigt. In diesem [Artikel](mobile-engagement-concepts.md) werden die grundlegenden Konzepte erläutert.
 
 	![][1]
 
@@ -164,4 +164,4 @@ Dieser Artikel bietet eine grobe Übersicht über die wichtigsten Features der M
 [27]: ./media/mobile-engagement-key-features/push_emoji.png
 [28]: ./media/mobile-engagement-key-features/push_limits.png
 
-<!----HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0824_2016-->

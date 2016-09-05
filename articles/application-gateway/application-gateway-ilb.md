@@ -12,7 +12,7 @@
    ms.topic="article" 
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services" 
-   ms.date="04/05/2016"
+   ms.date="08/19/2016"
    ms.author="gwallace"/>
 
 # Erstellen eines Application Gateways mit einem internen Lastenausgleich (ILB)
@@ -22,7 +22,7 @@
 - [Resource Manager PowerShell-Schritte](application-gateway-ilb-arm.md)
 
 
-Ein Application Gateway kann mit einer virtuellen IP mit Internetzugriff oder mit einem internen Endpunkt konfiguriert werden, der nicht über das Internet erreichbar ist. Dies wird auch als Endpunkt für internen Lastenausgleich (Internal Load Balancer, ILB) bezeichnet. Das Konfigurieren des Gateways mit einem ILB ist für interne Branchenanwendungen nützlich, die nicht für das Internet verfügbar gemacht werden. Es ist auch hilfreich für die Dienste/Ebenen in einer Anwendung mit mehreren Ebenen, die sich innerhalb einer Sicherheitsgrenze befindet und nicht für das Internet verfügbar gemacht wird, aber dennoch eine Round-Robin-Lastverteilung, Sitzungsbindungen oder SSL-Beendigung erfordert. Dieser Artikel führt Sie durch die Schritte zum Konfigurieren eines Application Gateways mit einem ILB.
+Ein Application Gateway kann mit einer virtuellen IP mit Internetzugriff oder mit einem internen Endpunkt konfiguriert werden, der nicht über das Internet erreichbar ist. Dies wird auch als Endpunkt für internen Lastenausgleich (Internal Load Balancer, ILB) bezeichnet. Das Konfigurieren des Gateways mit einem ILB ist für interne Branchenanwendungen nützlich, die nicht für das Internet verfügbar gemacht werden. Es ist auch hilfreich für Dienste/Ebenen in einer Anwendung mit mehreren Ebenen, die sich innerhalb einer Sicherheitsgrenze befindet und nicht für das Internet verfügbar gemacht wird, aber dennoch eine Roundrobin-Lastverteilung, Sitzungs-Stickiness oder SSL-Beendigung erfordert. Dieser Artikel führt Sie durch die Schritte zum Konfigurieren eines Application Gateways mit einem ILB.
 
 ## Voraussetzungen
 
@@ -31,9 +31,9 @@ Ein Application Gateway kann mit einer virtuellen IP mit Internetzugriff oder mi
 3. Stellen Sie sicher, dass Sie über Back-End-Server im virtuellen Netzwerk verfügen oder dass ihnen eine öffentliche IP-Adresse/VIP zugewiesen ist.
 
 
-Um ein neues Anwendungsgateway zu erstellen, führen Sie die folgenden Schritte in der angegebenen Reihenfolge aus.
+Führen Sie zum Erstellen eines Anwendungsgateways die folgenden Schritte in der angegebenen Reihenfolge aus:
 
-1. [Erstellen eines neuen Application Gateways](#create-a-new-application-gateway)
+1. [Erstellen eines Anwendungsgateways](#create-a-new-application-gateway)
 2. [Konfigurieren des Gateways](#configure-the-gateway)
 3. [Festlegen der Gatewaykonfiguration](#set-the-gateway-configuration)
 4. [Starten des Gateways](#start-the-gateway)
@@ -41,7 +41,7 @@ Um ein neues Anwendungsgateway zu erstellen, führen Sie die folgenden Schritte 
 
 
 
-## Erstellen Sie ein neues Application Gateway:
+## Erstellen eines Anwendungsgateways
 
 **Zum Erstellen des Gateways** verwenden Sie das Cmdlet `New-AzureApplicationGateway` und ersetzen die Werte durch eigene. Beachten Sie, dass die Abrechnung für das Gateway jetzt noch nicht gestartet wird. Die Abrechnung beginnt in einem späteren Schritt, wenn das Gateway erfolgreich gestartet wurde.
 
@@ -55,7 +55,7 @@ Um ein neues Anwendungsgateway zu erstellen, führen Sie die folgenden Schritte 
 
 **Um zu überprüfen**, ob das Gateway erstellt wurde, können Sie das `Get-AzureApplicationGateway`-Cmdlet verwenden.
 
-In diesem Beispiel sind *Description*, *InstanceCount* und *GatewaySize* optionale Parameter. Der Standardwert für *InstanceCount* ist 2, der Maximalwert ist 10. Der Standardwert für *GatewaySize* ist "Medium". "Small" und "Large" sind weitere verfügbare Werte. *Vip* und *DnsName* werden leer angezeigt, da das Gateway noch nicht gestartet wurde. Die Werte werden erstellt, sobald das Gateway ausgeführt wird.
+In diesem Beispiel sind *Description*, *InstanceCount* und *GatewaySize* optionale Parameter. Der Standardwert für *InstanceCount* ist 2, der Maximalwert ist 10. Der Standardwert für *GatewaySize* ist "Medium". "Small" und "Large" sind weitere verfügbare Werte. *Vip* und *DnsName* werden leer angezeigt, da das Gateway noch nicht gestartet wurde. Diese Werte werden erstellt, sobald das Gateway ausgeführt wird.
 
 	PS C:\> Get-AzureApplicationGateway AppGwTest
 
@@ -80,7 +80,7 @@ Eine Anwendungsgatewaykonfiguration besteht aus mehreren Werten. Die Werte könn
 Die Werte sind:
 
 - **Back-End-Serverpool:** Die Liste der IP-Adressen der Back-End-Server. Die aufgelisteten IP-Adressen sollten entweder dem VNet-Subnetz angehören oder eine öffentliche IP-Adresse/VIP sein.
-- **Einstellungen für den Back-End-Serverpool:** Jeder Pool weist Einstellungen wie Port, Protokoll und cookiebasierte Affinität auf. Diese Einstellungen sind an einen Pool gebunden und gelten für alle Server innerhalb des Pools.
+- **Einstellungen für den Back-End-Serverpool:** Für jeden Pool sind Einstellungen wie Port, Protokoll und cookiebasierte Affinität festgelegt. Diese Einstellungen sind an einen Pool gebunden und gelten für alle Server innerhalb des Pools.
 - **Front-End-Port:** Dieser Port ist der öffentliche Port, der im Anwendungsgateway geöffnet ist. Datenverkehr erreicht diesen Port und wird dann an einen der Back-End-Server umgeleitet.
 - **Listener:** Der Listener verfügt über einen Front-End-Port, ein Protokoll (Http oder Https, bei beiden muss die Groß-/Kleinschreibung beachtet werden) und den Namen des SSL-Zertifikats (falls SSL-Auslagerung konfiguriert wird).
 - **Regel:** Mit der Regel werden der Listener und der Back-End-Serverpool gebunden, und es wird definiert, an welchen Back-End-Serverpool der Datenverkehr gesendet werden sollen, wenn er einen bestimmten Listener erreicht. Derzeit wird nur die Regel *basic* unterstützt. Die Regel *basic* ist eine Round-Robin-Lastverteilung.
@@ -96,7 +96,7 @@ Beachten Sie Folgendes:
 
 - Der Wert für *Type* der Front-End-IP-Adresse muss auf "Private" festgelegt werden.
 
-- *StaticIPAddress* muss auf die gewünschte interne IP-Adresse festgelegt werden, an der das Gateway Datenverkehr empfangen wird. Beachten Sie, dass das *StaticIPAddress*-Element optional ist. Wenn es nicht festgelegt ist, wird eine verfügbare interne IP-Adresse aus dem bereitgestellten Subnetz ausgewählt.
+- *StaticIPAddress* muss auf die gewünschte interne IP-Adresse festgelegt werden, an der das Gateway Datenverkehr empfängt. Beachten Sie, dass das *StaticIPAddress*-Element optional ist. Wenn es nicht festgelegt ist, wird eine verfügbare interne IP-Adresse aus dem bereitgestellten Subnetz ausgewählt.
 
 - Der Wert des *Name*-Elements, das für *FrontendIPConfiguration* angegeben wurde, sollte im *FrontendIP*-Element von HTTPListener verwendet werden, um auf "FrontendIPConfiguration" zu verweisen.
 
@@ -212,4 +212,4 @@ Weitere Informationen zu Lastenausgleichsoptionen im Allgemeinen finden Sie unte
 - [Azure-Lastenausgleich](https://azure.microsoft.com/documentation/services/load-balancer/)
 - [Azure Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0824_2016-->

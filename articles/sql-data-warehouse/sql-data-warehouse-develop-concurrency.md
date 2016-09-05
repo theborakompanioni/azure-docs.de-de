@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="08/02/2016"
+   ms.date="08/17/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
 # Parallelitäts- und Workloadverwaltung in SQL Data Warehouse
@@ -26,7 +26,7 @@ In SQL Data Warehouse sind bis zu 1.024 gleichzeitige Verbindungen zulässig. Al
 
 Für Parallelitätslimits gelten zwei Konzepte: *gleichzeitige Abfragen* und *Parallelitätsslots*. Damit eine Abfrage ausgeführt wird, muss dies sowohl innerhalb des Abfrageparallelitätslimits als auch innerhalb der Parallelitätsslotzuordnung erfolgen.
 
-- Bei gleichzeitigen Abfragen geht es um die Anzahl von gleichzeitig ausgeführten Abfragen. SQL Data Warehouse unterstützt bis zu 32 gleichzeitige Abfragen.
+- Bei gleichzeitigen Abfragen geht es um die Anzahl von gleichzeitig ausgeführten Abfragen. SQL Data Warehouse unterstützt bis zu 32 gleichzeitige Abfragen für höhere DWU-Größen.
 - Parallelitätsslots werden basierend auf DWUs zugeordnet. Für jeweils 100 DWUs werden vier Parallelitätsslots bereitgestellt. DW100 beispielsweise ordnet vier Parallelitätsslots zu, DW1000 dagegen 40. Jede Abfrage nutzt mindestens einen Parallelitätsslot, je nach [Ressourcenklasse](#resource-classes) der Abfrage. Abfragen, die in der Ressourcenklasse „smallrc“ ausgeführt werden, nutzen einen Parallelitätsslot. Abfragen, die in einer höheren Ressourcenklasse ausgeführt werden, benötigen mehr Parallelitätsslots.
 
 In der folgenden Tabelle werden die Limits für gleichzeitige Abfragen und Parallelitätsslots der verschiedenen DWU-Größen beschrieben.
@@ -241,7 +241,7 @@ Um es noch einmal zu wiederholen: Die folgenden Anweisungen berücksichtigen Res
 
 ## Ausnahmen von Parallelitätslimits für Abfragen
 
-Einige Abfragen berücksichtigen die Ressourcenklasse nicht, der der Benutzer zugeordnet ist. Diese Ausnahmen von den Parallelitätslimits werden zugelassen, wenn für einen bestimmten Befehl nicht viele Arbeitsspeicherressourcen zur Verfügung stehen. Dies ist häufig der Fall, wenn es sich bei dem Befehl um einen Metadatenvorgang handelt. Ziel dieser Ausnahmen ist es, zu vermeiden, dass Abfragen eine größere Menge an Arbeitsspeicher zugewiesen wird, die diese niemals benötigen. In diesen Fällen wird immer die Standardressourcenklasse (die kleine Ressourcenklasse, „smallrc“) verwendet, unabhängig von der Ressourcenklasse, die dem Benutzer eigentlich zugewiesen ist. Beispielsweise wird `CREATE LOGIN` immer in „smallrc“ ausgeführt. Da zum Ausführen dieses Vorgangs nur sehr wenig Ressourcen erforderlich sind, wäre es nicht sinnvoll, die Abfrage in das Parallelitätsslotmodell aufzunehmen. Es wäre ineffizient, vorab große Mengen an Arbeitsspeicher für diese Aktion zuzuweisen. Durch Ausschließen von `CREATE LOGIN` aus dem Parallelitätsslotmodell kann SQL Data Warehouse sehr viel effizienter arbeiten.
+Einige Abfragen berücksichtigen die Ressourcenklasse nicht, der der Benutzer zugeordnet ist. Diese Ausnahmen von den Parallelitätslimits werden zugelassen, wenn für einen bestimmten Befehl nicht viele Arbeitsspeicherressourcen zur Verfügung stehen. Dies ist häufig der Fall, wenn es sich bei dem Befehl um einen Metadatenvorgang handelt. Ziel dieser Ausnahmen ist es, zu vermeiden, dass Abfragen eine größere Menge an Arbeitsspeicher zugewiesen wird, die diese niemals benötigen. In diesen Fällen wird immer die Standardressourcenklasse (die kleine Ressourcenklasse, „smallrc“) verwendet, unabhängig von der Ressourcenklasse, die dem Benutzer eigentlich zugewiesen ist. Beispielsweise wird `CREATE LOGIN` immer in „smallrc“ ausgeführt. Da zum Ausführen dieses Vorgangs nur sehr wenig Ressourcen erforderlich sind, ist es nicht sinnvoll, die Abfrage in das Parallelitätsslotmodell aufzunehmen. Diese Abfragen sind auch nicht durch das Parallelitätslimit von 32 Benutzern beschränkt. Eine unbegrenzte Anzahl dieser Abfragen kann bis zum Sitzungslimit von 1.024 Sitzungen ausgeführt werden.
 
 Die folgenden Anweisungen berücksichtigen Ressourcenklassen nicht:
 
@@ -428,4 +428,4 @@ Weitere Informationen zum Verwalten von Datenbankbenutzern und der Sicherheit fi
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0824_2016-->

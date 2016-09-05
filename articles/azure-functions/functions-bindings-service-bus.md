@@ -15,31 +15,33 @@
 	ms.topic="reference"
 	ms.tgt_pltfrm="multiple"
 	ms.workload="na"
-	ms.date="05/16/2016"
-	ms.author="chrande"/>
+	ms.date="08/22/2016"
+	ms.author="chrande; glenga"/>
 
-# Azure Functions Service Bus-Trigger und -Bindungen für Warteschlangen und Themen
+# Service Bus-Trigger und -Bindungen für Warteschlangen und Themen in Azure Functions
+
+[AZURE.INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
 
 Dieser Artikel erläutert das Konfigurieren und Codieren von Azure Service Bus-Triggern und -Bindungen in Azure Functions.
 
 [AZURE.INCLUDE [Einführung](../../includes/functions-bindings-intro.md)]
 
-## <a id="sbtrigger"></a> Service Bus-Warteschlangen- oder -Thementrigger
+## <a id="sbtrigger"></a> Service Bus-Trigger für Warteschlangen oder Themen
 
 #### function.json
 
 Die Datei *function.json* gibt die folgenden Eigenschaften an.
 
-- `name`: Variablenname, der im Funktionscode für die Warteschlange oder das Thema bzw. die Warteschlangen- oder Themennachricht verwendet wird. 
+- `name`: Variablenname, der im Funktionscode für die Warteschlange oder das Thema bzw. die Warteschlangen- oder Themennachricht verwendet wird.
 - `queueName`: Name der abzufragenden Warteschlange (nur für Warteschlangentrigger).
 - `topicName`: Name des abzufragenden Themas (nur für Thementrigger).
 - `subscriptionName`: Name des Abonnements (nur für Thementrigger).
-- `connection`: Name einer App-Einstellung, die eine Service Bus-Verbindungszeichenfolge enthält. Die Verbindungszeichenfolge muss für einen Service Bus-Namespace gelten und darf nicht auf eine bestimmte Warteschlange oder ein Thema beschränkt sein. Wenn die Verbindungszeichenfolge keine Verwaltungsrechte hat, legen Sie die `accessRights`-Eigenschaft fest. Wenn Sie `connection` leer lassen, verwendet der Trigger für die Funktionen-App die standardmäßige Service Bus-Verbindungszeichenfolge, die in der App-Einstellung „AzureWebJobsServiceBus“ angegeben wird.
+- `connection`: Name einer App-Einstellung, die eine Service Bus-Verbindungszeichenfolge enthält. Die Verbindungszeichenfolge muss für einen Service Bus-Namespace gelten und darf nicht auf eine bestimmte Warteschlange oder ein Thema beschränkt sein. Wenn die Verbindungszeichenfolge keine Verwaltungsrechte hat, legen Sie die `accessRights`-Eigenschaft fest. Wenn Sie `connection` leer lassen, verwendet der Trigger bzw. die Bindung die standardmäßige Service Bus-Verbindungszeichenfolge für die Funktionen-App, wie in der App-Einstellung AzureWebJobsServiceBus angegeben.
 - `accessRights`: gibt die Zugriffsrechte an, die für die Verbindungszeichenfolge zur Verfügung stehen. Der Standardwert ist `manage`. Legen Sie diese Einstellung auf `listen` fest, wenn Sie eine Verbindungszeichenfolge nutzen, die keine Verwaltungsberechtigungen bietet. Andernfalls versucht die Functions-Laufzeit ggf. erfolglos Vorgänge, die Verwaltungsrechte erfordern.
 - `type`: muss auf *serviceBusTrigger* festgelegt werden.
-- `direction`: muss auf *in* festgelegt werden. 
+- `direction`: Muss auf *in* festgelegt werden.
 
-*Function.json*-Beispiel für einen Service Bus-Warteschlangentriggers
+*function.json*-Beispiel für einen Service Bus-Warteschlangentrigger:
 
 ```json
 {
@@ -79,9 +81,9 @@ module.exports = function(context, myQueueItem) {
 Die Service Bus-Warteschlangennachricht kann in alle folgenden Typen deserialisiert werden:
 
 * Objekt (aus JSON)
-* Zeichenfolge
-* Bytearray 
-* `BrokeredMessage` (C#) 
+* string
+* Bytearray
+* `BrokeredMessage` (C#)
 
 #### <a id="sbpeeklock"></a> PeekLock-Verhalten
 
@@ -93,22 +95,22 @@ Service Bus kümmert sich selbst um die Handhabung nicht verarbeitbarer Nachrich
 
 #### <a id="sbsinglethread"></a> Single-Threading
 
-Die Functions-Laufzeit verarbeitet standardmäßig mehrere Warteschlangennachrichten gleichzeitig. Um die Laufzeit anzuweisen, immer nur eine Warteschlangen- oder Themennachricht gleichzeitig zu verarbeiten, legen Sie `serviceBus.maxConcurrrentCalls` in der Datei *host.json* auf „1“ fest. Informationen zur Datei *host.json* finden Sie in der [Ordnerstruktur](functions-reference.md#folder-structure) im Artikel zur Referenz für Entwickler und unter [host.json](https://github.com/Azure/azure-webjobs-sdk-script/wiki/host.json) im Wiki des WebJobs.Script-Repositorys.
+Die Functions-Laufzeit verarbeitet standardmäßig mehrere Warteschlangennachrichten gleichzeitig. Um die Runtime anzuweisen, immer nur eine Warteschlangen- oder Themennachricht gleichzeitig zu verarbeiten, legen Sie `serviceBus.maxConcurrrentCalls` in der Datei *host.json* auf „1“ fest. Informationen zur Datei *host.json* finden Sie in der [Ordnerstruktur](functions-reference.md#folder-structure) im Artikel zur Referenz für Entwickler und unter [host.json](https://github.com/Azure/azure-webjobs-sdk-script/wiki/host.json) im Wiki des WebJobs.Script-Repositorys.
 
-## <a id="sboutput"></a> Service Bus-Warteschlangen- oder -Themenausgabebindung
+## <a id="sboutput"></a> Service Bus-Ausgabebindung für Warteschlangen oder Themen
 
 #### function.json
 
 Die Datei *function.json* gibt die folgenden Eigenschaften an.
 
-- `name`: Variablenname, der im Funktionscode für die Warteschlange oder Warteschlangennachricht verwendet wird. 
+- `name`: Variablenname, der im Funktionscode für die Warteschlange oder Warteschlangennachricht verwendet wird.
 - `queueName`: Name der abzufragenden Warteschlange (nur für Warteschlangentrigger).
 - `topicName`: Name des abzufragenden Themas (nur für Thementrigger).
 - `subscriptionName`: Name des Abonnements (nur für Thementrigger).
-- `connection`: genau wie für den Service Bus-Trigger.
+- `connection`: ebenso wie für den Service Bus-Trigger.
 - `accessRights`: gibt die Zugriffsrechte an, die für die Verbindungszeichenfolge zur Verfügung stehen. Der Standardwert ist `manage`. Legen Sie diese Einstellung auf `send` fest, wenn Sie eine Verbindungszeichenfolge nutzen, die keine Verwaltungsberechtigungen bietet. Andernfalls versucht die Functions-Laufzeit ggf. erfolglos Vorgänge, die Verwaltungsrechte erfordern, z. B. das Erstellen von Warteschlangen.
 - `type`: muss auf *serviceBus* festgelegt werden.
-- `direction`: muss auf *out* festgelegt werden. 
+- `direction`: Muss auf *out* festgelegt werden.
 
 *function.json*-Beispiel für die Verwendung eines Zeitgebertriggers zum Schreiben von Service Bus-Warteschlangennachrichten:
 
@@ -140,7 +142,7 @@ Azure Functions kann eine Service Bus-Warteschlangennachricht mit einem der folg
 
 * Objekt (erstellt immer eine JSON-Nachricht; erstellt die Nachricht mit einem NULL-Objekt, wenn der Wert bei Funktionsbeendigung NULL ist)
 * Zeichenfolge (eine Nachricht wird erstellt, wenn der Wert bei Funktionsbeendigung nicht NULL ist)
-* Bytearray (funktioniert wie Zeichenfolge) 
+* Bytearray (funktioniert wie Zeichenfolge)
 * `BrokeredMessage` (C#, funktioniert wie Zeichenfolge)
 
 Für das Erstellen mehrerer Nachrichten in einer C#-Funktion können Sie `ICollector<T>` oder `IAsyncCollector<T>` verwenden. Beim Aufrufen der `Add`-Methode wird eine Nachricht erstellt.
@@ -187,4 +189,4 @@ module.exports = function (context, myTimer) {
 
 [AZURE.INCLUDE [Nächste Schritte](../../includes/functions-bindings-next-steps.md)]
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0824_2016-->

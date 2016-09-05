@@ -15,7 +15,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="vm-linux"
    ms.workload="infrastructure"
-   ms.date="06/06/2016"
+   ms.date="08/23/2016"
    ms.author="rasquill"/>
 
 # Auswählen von Linux-VM-Images mit der Azure-CLI
@@ -31,11 +31,11 @@ In diesem Thema wird beschrieben wie Sie Herausgeber, Angebote, SKUs und Version
 | credativ | Debian | 8 | 
 | SUSE | openSUSE | 13\.2 |
 | SUSE | SLES | 12-SP1 |
-| OpenLogic | CentOS | 7\.1 |
+| OpenLogic | CentOS | 7,1 |
 | Canonical | UbuntuServer | 14\.04.4-LTS |
 | CoreOS | CoreOS | Stable |
 
 
 [AZURE.INCLUDE [virtual-machines-common-cli-ps-findimage](../../includes/virtual-machines-common-cli-ps-findimage.md)]
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0824_2016-->

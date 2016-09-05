@@ -3,7 +3,7 @@
    description="Azure-Portal-Aufgaben zum Wiederherstellen einer Azure SQL Data Warehouse-Instanz."
    services="sql-data-warehouse"
    documentationCenter="NA"
-   authors="sonyam"
+   authors="Lakshmi1812"
    manager="barbkess"
    editor=""/>
 
@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
    ms.date="07/18/2016"
-   ms.author="sonyama;barbkess;nicw"/>
+   ms.author="lakshmir;barbkess;sonyama"/>
 
 # Wiederherstellen einer Azure SQL Data Warehouse-Instanz (Portal)
 
@@ -116,4 +116,4 @@ Informationen zu den Geschäftskontinuitätsfunktionen von Azure SQL-Datenbank-E
 <!--Other Web references-->
 [Azure-Portal]: https://portal.azure.com/
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0824_2016-->

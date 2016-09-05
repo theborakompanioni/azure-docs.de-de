@@ -13,59 +13,27 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/08/2016"
+	ms.date="08/22/2016"
 	ms.author="tarcher"/>
 
 #Was ist DevTest Labs?
 
+> [AZURE.NOTE]
+Dieser Artikel ist der erste Teil einer dreiteiligen Reihe:
+> 
+> 1. **[Was ist DevTest Labs?](devtest-lab-overview.md)**
+> 1. [Warum DevTest Labs?](devtest-lab-why.md)
+> 1. [DevTest Labs-Konzepte](devtest-lab-concepts.md)
+
+##Übersicht
 Entwickler und Tester versuchen, die Verzögerungen beim Erstellen und Verwalten ihrer Umgebungen zu beseitigen, indem sie in die Cloud wechseln. Azure löst das Problem von Umgebungsverzögerungen und ermöglicht Self-Service im Rahmen einer neuen, kostengünstigen Struktur. Entwickler und Tester müssen jedoch weiterhin viel Zeit für die Konfiguration ihrer selbst betreuten Umgebungen aufbringen. Darüber hinaus sind Entscheidungsträger unsicher, wie sie die Cloud für eine maximale Kostenersparnis nutzen können, ohne zu großen Verarbeitungsaufwand zu erzeugen.
 
 Azure DevTest Labs ist ein Dienst, der Entwicklern und Testern dabei hilft, Umgebungen in Azure schnell zu erstellen und dabei unnötigen Aufwand zu minimieren und die Kosten unter Kontrolle zu halten. Sie können die neueste Version Ihrer Anwendung testen, indem Sie schnell Windows- und Linux-Umgebungen mit wiederverwendbaren Vorlagen und Artefakten bereitstellen. Integrieren Sie Ihre Bereitstellungspipeline einfach mit DevTest Labs, um Umgebungen bei Bedarf bereitstellen zu können. Skalieren Sie Ihre Auslastungstests zentral hoch, indem Sie mehrere Test-Agents bereitstellen, und erstellen Sie vorab bereitgestellte Umgebungen für Schulungen und Vorführungen.
 
-##Warum DevTest Labs?
-
-DevTest Labs bietet die folgenden Vorteile beim Erstellen, Konfigurieren und Verwalten von Entwickler- und Testumgebungen in der Cloud:
-
-###Self-Service-Bereitstellung für sorgenfreies Arbeiten
-
-DevTest Labs erleichtert die Kostenkontrolle, indem Sie Richtlinien für Ihr Lab festlegen können, z.B. die Anzahl der virtuellen Computer (VM) pro Benutzer und die Anzahl der virtuellen Computer pro Lab. Mit DevTest Labs können Sie außerdem Richtlinien erstellen, um virtuelle Computer automatisch herunterzufahren und zu starten.
-
-###Schnelles Erreichen der Testphase
-
-DevTest Labs ermöglicht Ihnen, Umgebungen mit allen erforderlichen Elementen, die Ihr Team benötigt, um mit der Entwicklung und dem Testen von Anwendungen zu beginnen, im Voraus zu erstellen und bereitzustellen. Übernehmen Sie einfach die Umgebungen, in denen der letzte funktionsfähige Build Ihrer Anwendung installiert ist, und beginnen Sie sofort mit der Arbeit. Um die Erstellung der Umgebung zusätzlich zu beschleunigen und zu vereinfachen, können Sie alternativ auch Container verwenden.
-
-###Einmal erstellen, überall verwenden
-
-Indem Sie Umgebungsvorlagen und -elemente erfassen und innerhalb Ihres Teams oder Ihrer Organisation freigeben, können Sie problemlos Entwicklungs- und Testumgebungen erstellen – und das im Rahmen der Quellcodeverwaltung.
-
-###Lässt sich in Ihre vorhandene Toolkette integrieren
-
-Nutzen Sie unsere sofort einsatzbereiten Plug-Ins oder unsere API, um Entwicklungs-/Testumgebungen direkt über Ihr bevorzugtes CI (Continuous Integration)-Tool, Ihre bevorzugte integrierte Entwicklungsumgebung (IDE) oder Ihre bevorzugte automatisierte Veröffentlichungspipeline bereitzustellen. Darüber hinaus steht Ihnen unser umfassendes Befehlszeilentool zur Verfügung.
-
-##DevTest Labs-Konzepte
-
-Die folgende Liste enthält wichtige DevTest Labs-Konzepte und Definitionen:
-
-**Artefakte** werden zum Bereitstellen und Konfigurieren Ihrer Anwendung nach der Bereitstellung eines virtuellen Computers verwendet. Bei Artefakten kann es sich um Folgendes handeln:
-
-- Tools, die Sie auf dem virtuellen Computer installieren möchten, z. B. Agents, Fiddler oder Visual Studio.
-- Aktionen, die auf dem virtuellen Computer ausgeführt werden sollen, z. B. das Klonen eines Repositorys.
-- Anwendungen, die Sie testen möchten.
-
-Artefakte sind JSON-Dateien auf Grundlage des Azure-Ressourcen-Managers (ARM), die Anweisungen zum Ausführen der Bereitstellung und Übernehmen der Konfiguration enthalten. Weitere Informationen zu ARM finden Sie unter [Übersicht über den Azure-Ressourcen-Manager](../resource-group-overview.md).
-
-**Artefaktrepositorys** sind Git-Repositorys, in denen Artefakte eingecheckt werden. Die gleichen Artefaktrepositorys können mehreren Labs in Ihrer Organisation hinzugefügt werden, sodass sie wiederverwendet und geteilt werden können.
-
-**Basis** ist ein VM-Image, in dem alle Tools und Einstellungen vorinstalliert und konfiguriert sind, sodass Sie schnell einen virtuellen Computer erstellen können. Sie können einen virtuellen Computer bereitstellen, indem Sie eine vorhandene Basis auswählen ein Artefakt hinzufügen, um Ihren Test-Agent zu installieren. Anschließend können Sie dann die bereitgestellte VM als Basis speichern, die dann verwendet werden kann, ohne den Test-Agent bei jeder Bereitstellung der VM erneut installieren zu müssen.
-
-**Formeln** bieten neben Basisimages einen Mechanismus für die schnelle Bereitstellung virtueller Computer. Eine Formel in DevTest Labs ist eine Liste standardmäßiger Eigenschaftswerte, die zum Erstellen eines virtuellen Labcomputers verwendet werden. Mit Formeln können virtuelle Computer mit dem gleichen Satz von Eigenschaften (z.B. Basisimage, VM-Größe, virtuelles Netzwerk und Artefakte) erstellt werden, ohne dass diese Eigenschaften jedes Mal angeben werden müssen. Beim Erstellen eines virtuellen Computers aus einer Formel können die Standardwerte wie vorhanden verwendet oder geändert werden.
-
-**Obergrenzen** sind ein Mechanismus zum Minimieren von unnötiger Ressourcennutzung im Lab. Beispielsweise können Sie eine Obergrenze für die Anzahl der virtuellen Computer festlegen, die pro Benutzer oder in einem Lab erstellt werden können.
-
-**Richtlinien** helfen dabei, die Kosten im Lab zu kontrollieren. Beispielsweise können Sie eine Richtlinie erstellen, um virtuelle Computer automatisch anhand eines definierten Zeitplans herunterzufahren.
+> [AZURE.VIDEO what-is-azure-devtest-labs]
 
 ##Nächste Schritte
 
-Befolgen Sie zum Einstieg in DevTest Labs zunächst das schrittweise Tutorial [Erstellen eines Labs in Azure DevTest Labs](devtest-lab-create-lab.md).
+[Warum DevTest Labs?](devtest-lab-why.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0824_2016-->

@@ -214,7 +214,7 @@ Um den Abschluss des Vorgangs zu überprüfen, führen Sie die Schritte in [Übe
 
 2. Mit den unten stehenden Befehlen rufen Sie das Site Recovery-Netzwerk für den VMM-Quellserver und den VMM-Zielserver ab.
 
-    	$PrimaryNetworks = Get-AzureRmSiteRecoveryNetwork -Server $Servers[0]
+    	$PrimaryNetworks = Get-AzureRmSiteRecoveryNetwork -Server $Servers[0]        
 
 		$RecoveryNetworks = Get-AzureRmSiteRecoveryNetwork -Server $Servers[1]
 
@@ -226,7 +226,30 @@ Um den Abschluss des Vorgangs zu überprüfen, führen Sie die Schritte in [Übe
 
 		New-AzureRmSiteRecoveryNetworkMapping -PrimaryNetwork $PrimaryNetworks[0] -RecoveryNetwork $RecoveryNetworks[0]
 
-## Schritt 6: Aktivieren des Schutzes für virtuelle Computer
+## Schritt 6: Konfigurieren der Speicherzuordnung
+
+1. Mit dem folgenden Befehl wird die Liste der Speicherklassifizierungen in der $storageclassifications-Variablen abgerufen.
+
+		$storageclassifications = Get-AzureRmSiteRecoveryStorageClassification
+
+
+2. Mit den folgenden Befehlen werden die Quellklassifizierung in der $SourceClassificaion-Variablen und die Zielklassifizierung in $TargetClassification-Variablen abgerufen.
+
+    	$SourceClassificaion = $storageclassifications[0]
+
+		$TargetClassification = $storageclassifications[1]
+
+	
+	> [AZURE.NOTE] Die Quell- und Zielklassifizierungen können ein beliebiges Element im Array sein. Über die Ausgabe des folgenden Befehls können Sie den Index der Quell- und Zielklassifizierungen im $storageclassifications-Array ermitteln.
+	
+	> Get-AzureRmSiteRecoveryStorageClassification | Select-Object -Property FriendlyName, Id | Format-Table
+
+
+3. Mit dem folgenden Cmdlet wird eine Zuordnung zwischen der Quellklassifizierung und der Zielklassifizierung erstellt.
+
+		New-AzureRmSiteRecoveryStorageClassificationMapping -PrimaryStorageClassification $SourceClassificaion -RecoveryStorageClassification $TargetClassification
+
+## Schritt 7: Aktivieren des Schutzes für virtuelle Computer
 
 Nach der korrekten Konfiguration der Server, Clouds und Netzwerke können Sie den Schutz für die virtuellen Computer in der Cloud aktivieren.
 
@@ -246,7 +269,7 @@ Nach der korrekten Konfiguration der Server, Clouds und Netzwerke können Sie de
 
 ## Testen der Bereitstellung
 
-Um Ihre Bereitstellung zu testen, können Sie ein Testfailover für einen einzelnen virtuellen Computer durchführen oder einen Wiederherstellungsplan erstellen, der mehrere virtuelle Computer umfasst, und ein Testfailover für diesen Plan durchführen. Das Testfailover simuliert Ihre Failover- und Wiederherstellungsmechanismen in einem isolierten Netzwerk.
+Um Ihre Bereitstellung zu testen, können Sie ein Testfailover für einen einzelnen virtuellen Computer durchführen oder einen Wiederherstellungsplan erstellen, der mehrere virtuelle Computer umfasst, und ein Testfailover für diesen Plan durchführen. Das Test-Failover simuliert Ihre Failover- und Wiederherstellungsmechanismen in einem isolierten Netzwerk.
 
 > [AZURE.NOTE] Sie können im Azure-Portal einen Wiederherstellungsplan für Ihre Anwendung erstellen.
 
@@ -331,4 +354,4 @@ Verwenden Sie die folgenden Befehle zum Überwachen der Aktivität. Beachten Sie
 
 [Erfahren Sie mehr](https://msdn.microsoft.com/library/azure/mt637930.aspx) über Azure Site Recovery mit PowerShell-Cmdlets für Azure Resource Manager.
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0824_2016-->

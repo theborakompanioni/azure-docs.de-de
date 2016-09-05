@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="03/20/2016"
+    ms.date="08/23/2016"
     ms.author="raynew"/>
 
 # Geschäftskontinuität und Notfallwiederherstellung: Azure-Regionspaare
@@ -22,7 +22,7 @@
 
 Azure betreibt Datencenter in mehreren Gebieten auf der ganzen Erde. Bei einem Azure-Gebiet handelt es sich um einen definierten Bereich der Erde, der mindestens eine Azure-Region enthält. Eine Azure-Region ist ein Bereich in einem Gebiet mit mindestens einem Datencenter.
 
-Jede Azure-Region bildet ein Paar mit einer anderen Region innerhalb des gleichen Gebiets (mit Ausnahme von "Brasilien Süd", das ein Paar mit einer Region außerhalb seines Gebiets bildet). Diese Paare werden als Regionspaare bezeichnet.
+Jeder Azure-Region ist innerhalb des gleichen geografischen Gebiets eine andere Region als Regionspartner zugeordnet. Einzige Ausnahme ist „Brasilien, Süden“: Dieser Region ist eine Region außerhalb des geografischen Gebiets zugeordnet.
 
 
 ![Azure-Gebiet](./media/best-practices-availability-paired-regions/GeoRegionDataCenter.png)
@@ -32,25 +32,25 @@ Abbildung 1 – Diagramm von Azure-Regionspaaren
 
 
 | Gebiet | Regionspaare | |
-| :-------------| :-------------   | :-------------   |
+| :-------------| :-------------   | :-------------      |
 | Nordamerika | USA (Mitte/Norden) | USA (Mitte/Süden) |
 | Nordamerika | USA (Ost) | USA (West) |
-| Nordamerika | USA (Ost 2) | USA, Mitte |
+| Nordamerika | USA (Ost 2) | USA, Mitte |
 |Nordamerika | USA, Westen 2 | USA, Westen-Mitte |
 | Europa | Nordeuropa | Westeuropa |
 | Asien | Südostasien | Ostasien |
 | China | Ostchina | Nordchina |
 | Japan | Japan Ost | Japan (Westen) |
 | Brasilien | Brasilien, Süden (1) | USA (Mitte/Süden) |
-| Australien | Australien (Ost) | Australien (Südost)|
+| Australien | Australien (Osten) | Australien (Südosten) |
 | US Government | US Government, Iowa | US Government, Virginia |
-| Indien | Indien (Mitte) | Indien (Süden) |
+| Indien | Indien (Mitte) | Indien, Süden |
 | Kanada | Kanada, Mitte | Kanada, Osten |
 
 
 Tabelle 1: Übersicht über Azure-Regionspaare
 
-> (1) Brasilien, Süden ist besonders, da dieses Gebiet ein Paar mit einer Region außerhalb des eigenen Gebiets bildet. Beachten Sie, dass USA, Mitte/Süden die sekundäre Region von Brasilien, Süden ist, wobei jedoch USA, Mitte/Süden nicht die sekundäre Region von Brasilien, Süden ist.
+> (1) Brasilien, Süden ist besonders, da dieses Gebiet ein Paar mit einer Region außerhalb des eigenen Gebiets bildet. „USA, Süden-Mitte“ fungiert als sekundäre Region von „Brasilien, Süden“, „Brasilien, Süden“ aber nicht als sekundäre Region von „USA, Süden-Mitte“.
 
 Wir empfehlen das Replizieren von Workloads zwischen Regionalpaaren, um von Richtlinien für Isolierung und Verfügbarkeit von Azure zu profitieren. Beispielsweise werden geplante Azure-Systemupdates in Regionspaaren sequenziell (nicht gleichzeitig) bereitgestellt. Das heißt, dass selbst im seltenen Fall eines fehlerhaften Updates beide Regionen nicht gleichzeitig betroffen sind. Darüber hinaus wird im unwahrscheinlichen Fall eines umfassenden Ausfalls die Wiederherstellung mindestens einer Region aus jedem Paar priorisiert.
 
@@ -77,7 +77,7 @@ Wie in Abbildung 2 dargestellt.
 ## Vorteile eines Regionspaars
 Wie in Abbildung 2 dargestellt.
 
-![5Orange](./media/best-practices-availability-paired-regions/5Orange.png) **Physische Isolierung** – Sofern möglich, sollte zwischen Azure-Datencentern in einem Regionspaar eine Entfernung von mindestens 480 km bestehen, was allerdings nicht in allen Gebieten zweckmäßig oder möglich ist. Durch die Trennung physischer Datencenter wird die Wahrscheinlichkeit einer gleichzeitigen Beeinträchtigung beider Regionen durch Naturkatastrophen, politische Unruhen, Stromausfälle oder physische Netzwerkausfälle verringert. Die Isolierung unterliegt den Einschränkungen des jeweiligen Gebiets (Größe, Verfügbarkeit der Energieversorgungs-/Netzwerkinfrastruktur, Vorschriften usw.).
+![5Orange](./media/best-practices-availability-paired-regions/5Orange.png) **Physische Isolierung** – Zwischen Azure-Datencentern in einem Regionspaar sollte nach Möglichkeit eine Entfernung von mindestens 480 km bestehen, was allerdings nicht in allen Gebieten zweckmäßig oder möglich ist. Durch die Trennung physischer Datencenter wird die Wahrscheinlichkeit einer gleichzeitigen Beeinträchtigung beider Regionen durch Naturkatastrophen, politische Unruhen, Stromausfälle oder physische Netzwerkausfälle verringert. Die Isolierung unterliegt den Einschränkungen des jeweiligen Gebiets (Größe, Verfügbarkeit der Energieversorgungs-/Netzwerkinfrastruktur, Vorschriften usw.).
 
 ![6Orange](./media/best-practices-availability-paired-regions/6Orange.png)**Von der Plattform bereitgestellte Replikation** – Einige Dienste, wie z. B. georedundanter Speicher, bieten eine automatische Replikation in das Regionspaar.
 
@@ -88,4 +88,4 @@ Wie in Abbildung 2 dargestellt.
 
 ![9Orange](./media/best-practices-availability-paired-regions/9Orange.png) **Speicherort von Daten** – Eine Region befindet sich innerhalb desselben Gebiets wie ihr Paar (mit Ausnahme von Brasilien, Süden), um steuerliche und rechtliche Anforderungen an den Speicherort von Daten zu erfüllen.
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0824_2016-->

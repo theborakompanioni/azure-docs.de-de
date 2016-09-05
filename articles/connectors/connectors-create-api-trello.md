@@ -14,18 +14,12 @@ ms.devlang="multiple"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="integration"
-ms.date="05/18/2016"
+ms.date="08/18/2016"
 ms.author="deonhe"/>
 
 # Erste Schritte mit dem Trello-Connector
 
-
-
-Der Trello-Connector kann verwendet werden in:
-
-- [Logik-Apps](../app-service-logic/app-service-logic-what-are-logic-apps.md)
-- [PowerApps](http://powerapps.microsoft.com)
-- [Flow](http://flows.microsoft.com)
+Trello bietet Ihnen eine Übersicht über all Ihre beruflichen und privaten Projekte. Dies ist eine einfache, kostenlose, flexible und visuelle Möglichkeit, um Ihre Projekte zu verwalten und alles zu organisieren. Stellen Sie eine Verbindung mit Trello her, um Ihre Boards, Listen und Karten zu verwalten.
 
 >[AZURE.NOTE] Diese Version des Artikels gilt für die Schemaversion 2015-08-01-preview für Logik-Apps.
 
@@ -61,11 +55,11 @@ Sie können auf diese Ereignisse lauschen:
 
 
 ## Herstellen einer Verbindung mit Trello
-Um Logik-Apps mit Trello zu erstellen, müssen Sie zuerst eine **Verbindung** herstellen und anschließend die Details für die folgenden Eigenschaften angeben:
+Um Logik-Apps mit Trello zu erstellen, müssen Sie zuerst eine **Verbindung** erstellen und anschließend die Details für die folgenden Eigenschaften angeben:
 
 |Eigenschaft| Erforderlich|Beschreibung|
 | ---|---|---|
-|Tokenverschlüsselung|Ja|Angeben von Anmeldeinformationen für Trello|
+|Token|Ja|Angeben von Anmeldeinformationen für Trello|
 Nachdem Sie die Verbindung erstellt haben, können Sie sie zum Ausführen der Aktionen und zum Lauschen auf die in diesem Artikel beschriebenen Trigger verwenden.
 
 >[AZURE.INCLUDE [Schritte zum Herstellen einer Verbindung mit Trello](../../includes/connectors-create-api-trello.md)]
@@ -441,7 +435,7 @@ Abrufen von Listen nach ID: Abrufen von Listen nach ID
 |shortLink|string|Nein |
 |badges|nicht definiert|Nein |
 |due|string|Nein |
-|E-Mail|string|Nein |
+|email|string|Nein |
 |shortUrl|string|Nein |
 |subscribed|Boolescher Wert|Nein |
 |url|string|Nein |
@@ -460,7 +454,7 @@ Abrufen von Listen nach ID: Abrufen von Listen nach ID
 |CheckItems|integer|Nein |
 |CheckItemsChecked|integer|Nein |
 |Kommentare|integer|Nein |
-|Anlagen|integer|Nein |
+|Attachments|integer|Nein |
 |Beschreibung|Boolescher Wert|Nein |
 |Due|string|Nein |
 
@@ -497,7 +491,7 @@ Abrufen von Listen nach ID: Abrufen von Listen nach ID
 
 | Eigenschaftenname | Datentyp | Erforderlich |
 |---|---|---|
-|name|string|Nein |
+|Name|string|Nein |
 |desc|string|Nein |
 |closed|Boolescher Wert|Nein |
 |idMembers|string|Nein |
@@ -610,4 +604,4 @@ Abrufen von Listen nach ID: Abrufen von Listen nach ID
 ## Nächste Schritte
 [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0824_2016-->

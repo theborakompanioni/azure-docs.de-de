@@ -4,7 +4,7 @@
    services=""
    documentationCenter="na"
    authors="adamglick"
-   manager="hongfeig"
+   manager="saladki"
    editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="08/01/2016"
+   ms.date="08/18/2016"
    ms.author="aglick"/>
 
 #Checkliste für hohe Verfügbarkeit
@@ -79,4 +79,4 @@ __Was passiert, wenn Sie kein CDN verwenden?__ Wenn Sie kein CDN verwenden, gela
 ##Nächste Schritte:
 Weitere Informationen dazu, wie Sie Ihre Anwendungen für hohe Verfügbarkeit konzipieren, finden Sie unter [Hohe Verfügbarkeit für in Microsoft Azure erstellte Anwendungen](resiliency-high-availability-azure-applications.md).
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0824_2016-->

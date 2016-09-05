@@ -4,7 +4,7 @@ Ein *benutzerdefinierter* virtueller Computer ist ein virtueller Computer, den S
 
 - Mehr Imageoptionen zum Erstellen des virtuellen Computers (VM)
 - Verbinden des virtuellen Computers mit einem virtuellen Netzwerk
-- Hinzufügen des virtuellen Computers zu einem vorhandenen Cloud-Dienst
+- Hinzufügen des virtuellen Computers zu einem vorhandenen Clouddienst
 - Hinzufügen des virtuellen Computers zu einer Verfügbarkeitsgruppe
 
 > [AZURE.IMPORTANT] Wenn Ihr virtueller Computer ein virtuelles Netzwerk verwenden soll, damit Sie sich direkt über den Hostnamen oder über eine lokal eingerichtete Verbindung mit ihm verbinden können, stellen Sie sicher, dass Sie das virtuelle Netzwerk schon dann angeben, wenn Sie den virtuellen Computer erstellen. Ein virtueller Computer kann so konfiguriert werden, dass er nur zu dem Zeitpunkt Teil eines virtuellen Netzwerks werden kann, zu dem er erstellt wird. Weitere Informationen über virtuelle Netzwerke erhalten Sie unter [Überblick über virtuelle Azure-Netzwerke](http://go.microsoft.com/fwlink/p/?LinkID=294063).
@@ -55,7 +55,7 @@ Ein *benutzerdefinierter* virtueller Computer ist ein virtueller Computer, den S
 ##Nächste Schritte##
 Nachdem der virtuelle Computer erstellt wurde, wird er automatisch gestartet. Wenn im Portal der Status "Wird ausgeführt" angezeigt wird, können Sie sich beim virtuellen Computer anmelden. Weitere Anweisungen finden Sie in den folgenden Artikeln:
 
-- [Anmelden bei einem mit Linux betriebenen virtuellen Computer](../articles/virtual-machines/virtual-machines-linux-classic-log-on.md)
+- [Anmelden bei einem mit Linux betriebenen virtuellen Computer](../articles/virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md)
 - [Anmelden bei einem virtuellen Computer, auf dem Windows Server ausgeführt wird](../articles/virtual-machines/virtual-machines-windows-classic-connect-logon.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0824_2016-->
