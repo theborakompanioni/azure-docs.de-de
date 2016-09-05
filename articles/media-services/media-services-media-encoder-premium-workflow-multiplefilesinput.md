@@ -26,7 +26,7 @@ Es gibt Szenarien, in denen Sie Komponenteneigenschaften möglicherweise anpasse
 - Anpassen des XML-Codes von Cliplisten (zum Angeben einer oder mehrerer Quelldateien, einer Kürzung usw.).
 - Überlagern des Eingabevideos mit einem Logobild bei der Codierung des Videos.
 
-Um den **Media Encoder Premium Workflow** zu informieren, dass Sie einige Eigenschaften im Workflow beim Erstellen des Tasks oder Senden mehrerer Eingabedateien ändern, müssen Sie eine Konfigurationszeichenfolge verwenden, die **setRuntimeProperties** und/oder **transcodeSource** enthält. In diesem Thema werden diese beiden Konfigurationselemente erläutert.
+Um den **Media Encoder Premium Workflow** zu informieren, dass Sie einige Eigenschaften im Workflow beim Erstellen des Tasks oder Senden mehrerer Eingabedateien ändern, müssen Sie eine Konfigurationszeichenfolge verwenden, die **setRuntimeProperties** und/oder **transcodeSource** enthält. In diesem Thema wird ihre Verwendung erläutert.
 
 
 ## Syntax der Konfigurationszeichenfolge
@@ -152,7 +152,7 @@ Verbindungen im Workflow:
 
 
 ### Anpassung des Cliplisten-XML-Codes
-Sie können den Cliplisten-XML-Code im Workflow mithilfe von **sourceTranscode** im XML-Code der Konfigurationszeichenfolge zur Laufzeit angeben. Hierfür muss der Pin „Cliplisten-XML-Code“ mit der Komponente „Medienquelle“ im Workflow verbunden werden.
+Sie können den Cliplisten-XML-Code im Workflow zur Laufzeit mithilfe von **transcodeSource** im XML-Code der Konfigurationszeichenfolge angeben. Hierfür muss der Pin „Cliplisten-XML-Code“ mit der Komponente „Medienquelle“ im Workflow verbunden werden.
 
     <?xml version="1.0" encoding="utf-16"?>
       <transcodeRequest>
@@ -432,4 +432,4 @@ Sie können den Beispielworkflow von [GitHub](https://github.com/Azure/azure-med
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0824_2016-->

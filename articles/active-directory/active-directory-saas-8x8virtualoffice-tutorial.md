@@ -47,12 +47,12 @@ Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen 
 
 
 ## Beschreibung des Szenarios
-Ziel dieses Tutorials ist es, das einmalige Anmelden von Azure AD in einer Testumgebung zu testen.
+Ziel dieses Tutorials ist es, das einmalige Anmelden von Microsoft Azure AD in einer Testumgebung zu testen.
 
 Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
 
 1. Hinzufügen von 8x8 Virtual Office über den Katalog
-2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+2. Konfigurieren und Testen der einmaligen Anmeldung von Microsoft Azure AD
 
 
 ## Hinzufügen von 8x8 Virtual Office über den Katalog
@@ -86,32 +86,32 @@ Zum Konfigurieren der Integration von 8x8 Virtual Office in Azure AD müssen Sie
 	![Auswählen der App im Katalog](./media/active-directory-saas-8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_0001.png)
 
 
-##  Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
-Dieser Abschnitt veranschaulicht anhand eines Testbenutzers namens Britta Simon, wie das einmalige Anmelden von Azure AD in 8x8 Virtual Office konfiguriert und getestet wird.
+##  Konfigurieren und Testen der einmaligen Anmeldung von Microsoft Azure AD
+Dieser Abschnitt veranschaulicht anhand eines Testbenutzers namens Britta Simon, wie das einmalige Anmelden von Microsoft Azure AD in 8x8 Virtual Office konfiguriert und getestet wird.
 
 Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in 8x8 Virtual Office als Gegenstück zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in 8x8 Virtual Office muss eine Linkbeziehung eingerichtet werden.
 
 Diese Linkbeziehung wird hergestellt, indem Sie den Benutzernamen in Azure AD als Benutzername in 8x8 Virtual Office zuweisen.
 
-Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit 8x8 Virtual Office müssen die folgenden Schritte ausgeführt werden:
+Zum Konfigurieren und Testen des einmaligen Anmeldens von Microsoft Azure AD mit 8x8 Virtual Office müssen die folgenden Schritte ausgeführt werden:
 
-1. **[Konfigurieren von Azure AD – einmaliges Anmelden](#configuring-azure-ad-single-single-sign-on)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
-2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+1. **[Konfigurieren des einmaligen Anmeldens von Microsoft Azure AD](#configuring-azure-ad-single-single-sign-on)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
+2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)**, um das einmalige Anmelden von Microsoft Azure AD mit dem Testbenutzer Britta Simon zu testen.
 3. **[Erstellen eines 8x8 Virtual Office-Testbenutzers](#creating-a-8x8-virtual-office-test-user)**, um in 8x8 Virtual Office einen Gegenpart von Britta Simon zu erhalten, der mit ihrer Darstellung in Azure AD verknüpft ist.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon das einmalige Anmelden von Microsoft Azure AD zu ermöglichen.
 5. **[Testen der einmaligen Anmeldung](#testing-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
-### Konfigurieren des einmaligen Anmeldens von Azure AD
+### Konfigurieren des einmaligen Anmeldens von Microsoft Azure AD
 
-In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im klassischen Portal und konfigurieren es in Ihrer 8x8 Virtual Office-Anwendung.
+In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Microsoft Azure AD im klassischen Portal und konfigurieren es in Ihrer 8x8 Virtual Office-Anwendung.
 
-**Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit 8x8 Virtual Office die folgenden Schritte aus:**
+**Führen Sie zum Konfigurieren des einmaligen Anmeldens von Microsoft Azure AD mit 8x8 Virtual Office die folgenden Schritte aus:**
 
 1. Klicken Sie im klassischen Portal auf der Anwendungsintegrationsseite für **8x8 Virtual Office** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
 	 
 	![Einmaliges Anmelden konfigurieren][6]
 
-2. Wählen Sie auf der Seite **Wie sollen sich Benutzer bei 8x8 Virtual Office anmelden?** die Option **Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**.
+2. Wählen Sie auf der Seite **Wie sollen sich Benutzer bei 8x8 Virtual Office anmelden?** die Option **Microsoft Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**.
 
 	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_03.png)
 
@@ -129,7 +129,7 @@ In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im klas
 
     a. Klicken Sie auf **Zertifikat herunterladen** und speichern Sie die Datei auf Ihrem Computer.
 
-    b. Klicken Sie auf **Weiter**.
+    b. Klicken Sie auf **Next**.
 
 5. Melden Sie sich bei Ihrem 8x8 Virtual Office-Mandanten als Administrator an.
 6. Wählen Sie im Anwendungsbereich die Option **Virtual Office Account Mgr** (Virtual Office-Konto-Manager) aus.
@@ -185,11 +185,11 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
 2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
 
-3. Klicken Sie im Menü am oberen Rand auf **Benutzer**, um die Benutzerliste anzuzeigen.
+3. Klicken Sie im Menü oben auf **Benutzer**, um die Liste der Benutzer anzuzeigen.
 	
 	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-8x8virtualoffice-tutorial/create_aaduser_03.png)
 
-4. Klicken Sie zum Öffnen des Dialogfelds **Benutzer hinzufügen** auf der Symbolleiste am unteren Rand auf **Benutzer hinzufügen**.
+4. Um das Dialogfeld **Benutzer hinzufügen** zu öffnen, klicken Sie auf der Symbolleiste unten auf **Benutzer hinzufügen**.
 	
 	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-8x8virtualoffice-tutorial/create_aaduser_04.png)
 
@@ -270,7 +270,7 @@ Das Ziel dieses Abschnitts besteht darin, Britta Simon die Verwendung des einmal
 
 ### Testen der einmaligen Anmeldung
 
-Das Ziel dieses Abschnitts ist das Testen Ihrer Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
+In diesem Abschnitt wird die Microsoft Azure AD-Konfiguration für einmaliges Anmelden mithilfe des Zugriffsbereichs getestet.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „8x8 Virtual Office“ klicken, sollten Sie automatisch bei Ihrer 8x8 Virtual Office-Anwendung angemeldet werden.
 
@@ -300,4 +300,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel „8x8 Virtual Office“ klicken, sol
 [204]: ./media/active-directory-saas-8x8virtualoffice-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-8x8virtualoffice-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0824_2016-->

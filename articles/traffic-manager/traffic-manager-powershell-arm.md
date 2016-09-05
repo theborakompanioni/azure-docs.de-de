@@ -1,9 +1,9 @@
 <properties
-   pageTitle="Unterstützung des Azure Resource Manager für Traffic Manager | Microsoft Azure"
+   pageTitle="Unterstützung des Azure Resource Manager für Traffic Manager | Microsoft Azure "
    description="Verwenden von PowerShell für Traffic Manager mit Azure Resource Manager (ARM)"
    services="traffic-manager"
    documentationCenter="na"
-   authors="jtuliani"
+   authors="sdwheeler"
    manager="carmonm"
    editor="tysonn" />
 <tags
@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="03/17/2016"
-   ms.author="jtuliani" />
+   ms.author="sewhee" />
 
 # Unterstützung des Azure Resource Manager für Azure Traffic Manager
 Der Azure-Ressourcen-Manager (ARM) ist das neue Verwaltungsframework für Dienste in Azure. Azure Traffic Manager kann jetzt mithilfe von APIs und Tools auf Basis von Azure-Ressourcen-Manager verwaltet werden.
@@ -79,7 +79,7 @@ Erstellen Sie eine Ressourcengruppe (überspringen Sie diesen Schritt, wenn Sie 
 
 	PS C:\> New-AzureRmResourceGroup -Name MyRG -Location "West US"
 
-Der Azure-Ressourcen-Manager erfordert, dass alle Ressourcengruppen einen Speicherort angeben. Dieser wird als Standardspeicherort für Ressourcen in dieser Ressourcengruppe verwendet. Da alle Traffic Manager-Profilressourcen global und nicht regional sind, hat die Auswahl des Speicherorts für die Ressourcengruppe jedoch keine Auswirkungen auf Azure Traffic Manager.
+Der Azure Resource Manager erfordert, dass alle Ressourcengruppen einen Speicherort angeben. Dieser wird als Standardspeicherort für Ressourcen in dieser Ressourcengruppe verwendet. Da alle Traffic Manager-Profilressourcen global und nicht regional sind, hat die Auswahl des Speicherorts für die Ressourcengruppe jedoch keine Auswirkungen auf Azure Traffic Manager.
 
 ## Erstellen eines Traffic Manager-Profils
 
@@ -309,4 +309,4 @@ Diese Sequenz kann auch weitergeleitet werden:
 [Leistungsüberlegungen zu Traffic Manager](traffic-manager-performance-considerations.md)
  
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0824_2016-->

@@ -44,19 +44,14 @@ Eine speicheroptimierte Tabelle verfügt neben ihrer Standarddarstellung auf ein
 Je nach Workload können Sie mithilfe von In-Memory OLTP einen bis um das 30-fache höheren Transaktionsdurchsatz erreichen.
 
 
-Systemintern kompilierte gespeicherte Prozeduren erfordern weniger Computeranweisungen während der Laufzeit als herkömmliche gespeicherte Prozeduren, die interpretiert werden müssen. Wir haben festgestellt, dass die systeminterne Kompilierung die Zeitdauer gegenüber einer Kompilierung mit Interpretation auf ein Hundertstel verkürzt.
+Systemintern kompilierte gespeicherte Prozeduren erfordern weniger Computeranweisungen während der Laufzeit als herkömmliche gespeicherte Prozeduren, die übersetzt werden müssen. Wir haben festgestellt, dass die systeminterne Kompilierung die Zeitdauer gegenüber einer Kompilierung mit Interpretation auf ein Hundertstel verkürzt.
 
 
 #### In-Memory Analytics 
 
 In-Memory [Analytics](#install_analytics_manuallink) enthält dieses Feature:
 
-- Columnstore-Indizes
-
-
-Ein Columnstore-Index verbessert die Leistung von Abfrageworkloads durch eine außergewöhnliche Komprimierung von Daten.
-
-In anderen Diensten sind Columnstore-Indizes zwingend speicheroptimiert. In der Azure SQL-Datenbank kann ein Columnstore-Index jedoch auf der Festplatte neben den herkömmlichen Tabellen existieren, die er indiziert.
+Columnstore-Indizes verbessern die Leistung von Analysen und Berichtsabfragen.
 
 
 #### Echtzeitanalysen
@@ -77,7 +72,6 @@ Allgemeine Verfügbarkeit:
 Vorschau:
 
 - In-Memory OLTP
-- In-Memory Analytics mit speicheroptimierten Columnstore-Indizes
 - Real-Time Operational Analytics
 
 
@@ -190,8 +184,8 @@ In diesem Abschnitt wird veranschaulicht, wie Sie das praktische Hilfsprogramm *
 
 Für das Ausführen von „ostress.exe“ wird empfohlen, dass Sie Parameterwerte übergeben, die für beide ausgelegt sind:
 
-- Führen Sie eine große Anzahl gleichzeitiger Verbindungen mit z. B. „-n100“ aus.
-- Lassen Sie jede Verbindung eine Schleife Hunderte Male durchlaufen, indem Sie z. B „-r500“ angeben.
+- Führen Sie eine große Anzahl gleichzeitiger Verbindungen mit „-n100“ aus.
+- Lassen Sie jede Verbindung eine Schleife Hunderte Male durchlaufen, indem Sie „-r500“ angeben.
 
 
 Allerdings möchten Sie möglicherweise mit wesentlich kleineren Werten wie „-n10“ und „-r50“ starten, um sicherzustellen, dass alles funktioniert.
@@ -286,7 +280,7 @@ EXECUTE Demo.usp_DemoReset;
 
 2. Kopieren Sie den Text der vorhergehenden „ostress.exe“-Befehlszeile in die Zwischenablage.
 
-3. Ersetzen Sie die <Platzhalter> für die Parameter „-S“, „-U“, „-P“ und „-d“ durch die tatsächlichen Werte.
+3. Ersetzen Sie `<placeholders>` für die Parameter „-S“, „-U“, „-P“ und „-d“ durch die ordnungsgemäßen tatsächlichen Werte.
 
 4. Führen Sie die bearbeitete Befehlszeile in einem RML-Befehlsfenster aus.
 
@@ -319,7 +313,7 @@ EXECUTE Demo.usp_DemoReset;
 
 #### Erwartete Vergleichsergebnisse
 
-Unsere In-Memory-Tests haben für diese einfache Workload eine **9-mal** höhere Leistung ergeben, wenn „ostress“ auf einem virtuellen Azure-Computer ausgeführt wird, der sich in derselben Azure-Region wie die Datenbank befindet.
+Unsere In-Memory-Tests haben für diese einfache Workload eine **9-mal** höhere Leistung ergeben, wenn „ostress“ auf einem virtuellen Azure-Computer ausgeführt wird, der sich in der gleichen Azure-Region wie die Datenbank befindet.
 
 
 
@@ -331,10 +325,7 @@ Unsere In-Memory-Tests haben für diese einfache Workload eine **9-mal** höhere
 ## B. Installieren des In-Memory Analytics-Beispiels
 
 
-In diesem Abschnitt vergleichen Sie die E/A- und Statistikergebnisse mit dem Verwenden eines Columnstore-Indexes im Vergleich mit einem herkömmlichen Index.
-
-
-Columnstore-Indizes sind mit herkömmlichen Indizes logisch identisch, aber physisch unterschiedlich. Ein Columnstore-Index organisiert Daten so, dass sie erheblich komprimiert werden. Dies bietet wesentliche Leistungsverbesserungen.
+In diesem Abschnitt vergleichen Sie die E/A- und Statistikergebnisse mit dem Verwenden eines Columnstore-Indexes im Vergleich mit einem herkömmlichen B-Struktur-Index.
 
 
 Für Echtzeitanalysen einer OLTP-Workload empfiehlt es sich häufig, einen nicht gruppierten Columnstore-Index zu verwenden. Weitere Informationen finden Sie unter [Beschreibung von Columnstore-Indizes](http://msdn.microsoft.com/library/gg492088.aspx).
@@ -475,7 +466,7 @@ SELECT DatabasePropertyEx(DB_NAME(), 'IsXTPSupported');
 ```
 
 
-Wenn die Abfrage **1** zurückgibt, wird In-Memory OLTP in dieser Datenbank sowie allen Datenbankkopien und -wiederherstellungen unterstützt, die auf Basis auf dieser Datenbank erstellt wurden.
+Wenn die Abfrage **1** zurückgibt, wird In-Memory OLTP in dieser Datenbank sowie allen Datenbankkopien und -wiederherstellungen unterstützt, die auf Basis dieser Datenbank erstellt wurden.
 
 
 #### Nur im Premium-Tarif zulässige Objekte
@@ -494,15 +485,15 @@ Wenn eine Datenbank eine der folgenden Arten von In-Memory OLTP-Objekten oder -T
 - Die Verwendung von In-Memory OLTP-Features mit Datenbanken in elastischen Pools wird in der Vorschauversion nicht unterstützt.
  - Gehen Sie folgendermaßen vor, um eine Datenbank, die über In-Memory-OLTP-Objekte verfügt oder verfügte, in einen elastischen Pool zu verschieben:
   - 1. Löschen Sie alle speicheroptimierten Tabellen, Tabellentypen und nativ kompilierten T-SQL-Module in der Datenbank.
-  - 2. Ändern Sie die Dienstebene der Datenbank auf „Standard“. (*Derzeit besteht ein Problem beim Verschieben von Premium-Datenbanken in einen elastischen Pool, wenn die Datenbanken in der Vergangenheit über In-Memory-OLTP-Objekte verfügten. Das Team von Azure DB arbeitet an der Behebung des Problems.)
+  - 2. Ändern Sie die Dienstebene der Datenbank in „Standard“.
   - 3. Verschieben Sie die Datenbank in den elastischen Pool.
 
 - Die Verwendung von In-Memory OLTP mit SQL Data Warehouse wird nicht unterstützt.
  - Das Columnstore-Indexfeature von In-Memory Analytics wird in SQL Data Warehouse unterstützt.
 
-- Der Abfragespeicher erfasst in der Vorschauphase keine Abfragen innerhalb systemintern kompilierter Module, was jedoch künftig der Fall sein kann.
+- Der Abfragespeicher erfasst keine Abfragen innerhalb von systemintern kompilierten Modulen.
 
-- Einige Transact-SQL-Funktionen werden bei In-Memory OLTP nicht unterstützt. Dies gilt sowohl für Microsoft SQL Server als auch Azure SQL-Datenbank. Einzelheiten finden Sie hier:
+- Einige Transact-SQL-Funktionen werden bei In-Memory OLTP nicht unterstützt. Dies gilt sowohl für Microsoft SQL Server als auch Azure SQL-Datenbank. Einzelheiten dazu finden Sie hier:
  - [Transact-SQL-Unterstützung für OLTP im Arbeitsspeicher](http://msdn.microsoft.com/library/dn133180.aspx)
  - [Von In-Memory OLTP nicht unterstützte Transact-SQL-Konstrukte.](http://msdn.microsoft.com/library/dn246937.aspx)
 
@@ -537,4 +528,4 @@ Wenn eine Datenbank eine der folgenden Arten von In-Memory OLTP-Objekten oder -T
 
 - [Überwachen von In-Memory-Speicher](sql-database-in-memory-oltp-monitoring.md) für In-Memory OLTP
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0824_2016-->

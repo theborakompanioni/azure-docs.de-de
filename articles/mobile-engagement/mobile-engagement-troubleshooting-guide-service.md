@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="mobile-multiple"
    ms.workload="mobile" 
-   ms.date="02/29/2016"
+   ms.date="08/19/2016"
    ms.author="piyushjo"/>
 
 # Handbuch zur Problembehandlung bei Dienstproblemen
@@ -56,8 +56,8 @@ Im Folgenden finden Sie mögliche Probleme, die bei der Ausführung von Azure Mo
 4) So testen Sie, ob ein Geräteproblem vorliegt:
 
    - Testen Sie, ob Ihr Gerät mit einer anderen integrierten Azure Mobile Engagement-App eine Verbindung mit Azure Mobile Engagement herstellen kann.
-   - Testen Sie, ob Sie Ereignisse, Aufträge und Abstürze über Ihr Telefon generieren können, die auf der Azure Mobile Engagement-Benutzeroberfläche angezeigt werden. 
-   - Testen Sie, ob Sie Pushbenachrichtigungen von der Azure Mobile Engagement-Benutzeroberfläche basierend auf der Geräte-ID an Ihr Gerät senden können. 
+   - Testen Sie, ob Sie Ereignisse, Aufträge und Abstürze über Ihr Telefon generieren können, die auf der Azure Mobile Engagement-Benutzeroberfläche angezeigt werden.
+   - Testen Sie, ob Sie Pushbenachrichtigungen von der Azure Mobile Engagement-Benutzeroberfläche basierend auf der Geräte-ID an Ihr Gerät senden können.
 
 5) So testen Sie, ob ein Problem mit der App vorliegt:
 
@@ -86,7 +86,7 @@ Im Folgenden finden Sie mögliche Probleme, die bei der Ausführung von Azure Mo
 	- Verwenden Sie ausschließlich den UTF8-Zeichensatz (der ANSI-Zeichensatz wird nicht unterstützt).
     - Verwenden Sie als Trennzeichen ein Komma "," (Sie können über eine Dienstanfrage die Änderung des CSV-Trennzeichens von einem Komma "," in ein anderes Zeichen anfordern, beispielsweise ein Semikolon ";").
     - Verwenden Sie ausschließlich Kleinbuchstaben für die booleschen Werte "true" und "false".
-    - Verwenden Sie eine Datei, die kleiner ist als die maximale Größe von 35 MB.
+    - Verwenden Sie eine Datei, die die maximale Größe von 35 MB nicht übersteigt.
  
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0824_2016-->

@@ -12,7 +12,7 @@
  ms.tgt_pltfrm="na"
  ms.devlang="dotnet"
  ms.topic="article"
- ms.date="06/30/2016"
+ ms.date="08/18/2016"
  ms.author="krisragh"/>
 
 # Scheduler – Einschränkungen und Standardwerte
@@ -27,7 +27,7 @@ Jede Anforderung für den Scheduler-Dienst gibt einen Antwortheader namens **x-m
 
 Wenn bei einer Anforderung kontinuierlich ein Fehler auftritt, obwohl die Anforderung ordnungsgemäß formuliert ist, können Sie den Fehler unter Angabe dieses Werts an Microsoft melden. Geben Sie in Ihrem Bericht den Wert von „x-ms-request-id“, die ungefähre Anforderungszeit, die ID des Abonnements, die Auftragssammlung und/oder den Auftrag sowie die Art des Vorgangs an, den die Anforderung ausgeführt hat.
 
-## Siehe auch
+## Weitere Informationen
 
 
  [Was ist Azure Scheduler?](scheduler-intro.md)
@@ -46,4 +46,4 @@ Wenn bei einer Anforderung kontinuierlich ein Fehler auftritt, obwohl die Anford
 
  [Ausgehende Authentifizierung von Azure Scheduler](scheduler-outbound-authentication.md)
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0824_2016-->

@@ -1,4 +1,3 @@
-
 <properties
 	pageTitle="Kaufen eines benutzerdefinierten Domänennamens für Azure App Service-Web-Apps"
 	description="Erfahren Sie, wie Sie einen benutzerdefinierten Domänennamen für eine Web-App in Azure App Service kaufen."
@@ -19,16 +18,7 @@
 
 # Kaufen und Konfigurieren eines benutzerdefinierten Domänennamens in Azure App Service
 
-> [AZURE.SELECTOR]
-- [Kaufen einer Domäne für Web-Apps](custom-dns-web-site-buydomains-web-app.md)
-- [Web-Apps mit externen Domänen](web-sites-custom-domain-name.md)
-- [Web-Apps mit Traffic Manager](web-sites-traffic-manager-custom-domain-name.md)
-- [GoDaddy](web-sites-godaddy-custom-domain-name.md)
-
-
-
-
-[AZURE.INCLUDE [websites-cloud-services-css-guided-walkthrough](../../includes/websites-cloud-services-css-guided-walkthrough.md)]
+[AZURE.INCLUDE [web-selector](../../includes/websites-custom-domain-selector.md)]
 
 Wenn Sie eine Web-App erstellen, weist Azure dieser eine Unterdomäne von "azurewebsites.NET" zu. Wenn Ihre Web-App beispielsweise **contoso** heißt, lautet die URL **contoso.azurewebsites.net**. Darüber hinaus weist Azure eine virtuelle IP-Adresse zu.
 
@@ -39,8 +29,6 @@ Bei einer Produktions-Web-App sollten Sie Benutzern einen benutzerdefinierten Do
 
 ## Übersicht
 
-> [AZURE.NOTE] Versuchen Sie nicht, den Kauf einer Domäne mithilfe eines Abonnements durchzuführen, dem keine aktive Kreditkarte zugeordnet ist. Dadurch kann das Abonnement deaktiviert werden.
-
 Wenn Sie keinen Domänennamen für Ihre Web-App haben, können Sie diesen im [Azure-Portal](https://portal.azure.com/) auf einfache Weise erwerben. Während des Einkaufsprozesses können Sie festlegen, dass die DNS-Einträge für WWW und die Stammdomäne automatisch Ihrer Web-App zugeordnet werden. Sie können Ihre Domäne auch direkt im Azure-Portal verwalten.
 
 
@@ -48,11 +36,11 @@ Gehen Sie folgendermaßen vor, um Domänennamen zu erwerben und Ihrer Web-App zu
 
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com/) in Ihrem Browser.
 
-2. Klicken Sie auf der Registerkarte **Web-Apps** auf den Namen der Web-App, wählen Sie **Einstellungen** und dann **Benutzerdefinierte Domänen und SSL** aus.
+2. Klicken Sie auf der Registerkarte **Web-Apps** auf den Namen der Web-App, wählen Sie **Einstellungen** aus, und wählen Sie anschließend **Benutzerdefinierte Domänen** aus.
 
 	![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-6.png)
 
-3. Klicken Sie auf dem Blatt **Custom domains and SSL** auf **Buy domains**.
+3. Klicken Sie auf dem Blatt **Benutzerdefinierte Domänen** auf **Domänen erwerben**.
 
 	![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-1.png)
 
@@ -64,7 +52,7 @@ Gehen Sie folgendermaßen vor, um Domänennamen zu erwerben und Ihrer Web-App zu
 
   ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-3.png)
 
-> [AZURE.NOTE] Es ist sehr wichtig, dass Sie alle erforderlichen Felder so genau wie möglich ausfüllen, insbesondere das Feld für die E-Mail-Adresse. Bei Erwerb der Domäne ohne Datenschutz werden Sie möglicherweise dazu aufgefordert, Ihre E-Mail-Adresse zu überprüfen, bevor die Domäne aktiviert wird. In einigen Fällen führen fehlerhafte Daten in den Kontaktinformationen dazu, dass der Domänenkauf fehlschlägt.
+    > [AZURE.NOTE] It is very important that you fill out all required fields with as much accuracy as possible, especially the email address. In case of purchasing the domain without "Privacy protection", you might be asked to verify your email before the domain becomes active. In some cases, incorrect data for contact information will result in failure to purchase domains. 
 
 6. Nun stehen folgende Optionen zur Auswahl:
 
@@ -76,10 +64,9 @@ Gehen Sie folgendermaßen vor, um Domänennamen zu erwerben und Ihrer Web-App zu
 
   ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-2.5.png)
   
-> [AZURE.NOTE] Bei Option C werden DNS- und Hostnamenbindungen automatisch für Sie konfiguriert. Auf diese Weise kann über die benutzerdefinierte Domäne auf die Web-App zugegriffen werden, sobald der Kauf abgeschlossen ist (in einigen Fällen können Verzögerungen bei der DNS-Übertragung auftreten). Falls die Verwaltung der Web-App über Azure Traffic Manager erfolgt, wird keine Option zum Zuweisen der Stammdomäne angezeigt, da A-Einträge nicht mit Traffic Manager funktionieren.
->
->Sie können die für eine Web-App erworbenen Domänen/Unterdomänen jederzeit einer anderen Web-App zuweisen und umgekehrt. Weitere Informationen finden Sie in Schritt 8.
-
+    > [AZURE.NOTE] Option C configures DNS bindings and Hostname bindings automatically for you.  This way, your Web App can be accessed using custom domain as soon as the purchase is complete (baring DNS propagation delays in few cases). In case, your Web App is behind Azure Traffic Manager, you will not see an option to assign root domain, as A-Records do not work with the Traffic Manager. 
+    >
+    >You can always assign the domains/sub-domains purchased through one Web App to another Web App and vice-versa. See step 8 for more details. 
 	
 7. Klicken Sie auf dem Blatt **Buy Domains** auf **Auswählen**. Daraufhin wird das Blatt **Purchase confirmation** mit den Informationen zum Kauf angezeigt. Wenn Sie den rechtlichen Bedingungen zustimmen und auf **Buy** klicken, wird Ihre Bestellung gesendet und Sie können den Einkaufsprozess unter **Notification** überwachen. Der Domänenkauf kann einige Minuten dauern.
 
@@ -91,7 +78,7 @@ Gehen Sie folgendermaßen vor, um Domänennamen zu erwerben und Ihrer Web-App zu
 
 	![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-6.png)
 
-> [AZURE.NOTE] Sie können innerhalb von 5 Tagen auf "Cancel purchase" klicken, um den Kauf unter vollständiger Rückerstattung der Kosten zu stornieren. Nach 5 Tagen wird anstelle von "Cancel purchase" eine Option zum Löschen der Domäne angezeigt. Wenn Sie die Domäne löschen, wird diese ohne Erstattung aus dem Abonnement entfernt und wieder als verfügbare Domäne aufgeführt.
+    > [AZURE.NOTE] Sie können innerhalb von 5 Tagen auf "Cancel purchase" klicken, um den Kauf unter vollständiger Rückerstattung der Kosten zu stornieren. Nach 5 Tagen wird anstelle von "Cancel purchase" eine Option zum Löschen der Domäne angezeigt. Wenn Sie die Domäne löschen, wird diese ohne Erstattung aus dem Abonnement entfernt und wieder als verfügbare Domäne aufgeführt.
 
 Sobald die Konfiguration abgeschlossen ist, wird der benutzerdefinierte Domänenname im Abschnitt **Hostname bindings** Ihrer Web-App aufgeführt.
 
@@ -116,4 +103,4 @@ Wenn Sie die benutzerdefinierte Domäne über das Blatt **Benutzerdefinierte Dom
 - Möglicherweise haben Sie die benutzerdefinierte Domäne zu einem bestimmten Zeitpunkt gelöscht. Überprüfen Sie die Überwachungsprotokolle durch Klicken auf **Einstellungen** > **Überwachungsprotokolle** auf dem Hauptblatt Ihrer App.
 - Das Blatt **Benutzerdefinierte Domänen und SSL**, auf dem Sie suchen, gehört vielleicht zu einer App, die in einem anderen Azure-Abonnement erstellt wurde. Wechseln Sie zu einer anderen App in einem anderen Abonnement, und überprüfen Sie das Blatt **Benutzerdefinierte Domänen und SSL**. Innerhalb des Portals können Sie keine benutzerdefinierten Domänen anzeigen oder verwalten, die in einem anderen Azure-Abonnement erstellt wurden als die App. Wenn Sie jedoch auf dem zu der Domäne gehörenden Blatt **Domäne verwalten** auf **Erweiterte Verwaltung** klicken, werden Sie zur der Website des Domänennamenanbieters weitergeleitet, wo Sie für Apps, die in einem anderen Azure-Abonnement erstellt wurden, [Ihre benutzerdefinierte Domäne wie alle externen Domänen manuell konfigurieren](web-sites-custom-domain-name.md) können.
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0824_2016-->

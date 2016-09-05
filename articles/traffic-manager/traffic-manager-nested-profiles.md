@@ -3,7 +3,7 @@
    description="Dieser Artikel erläutert das Feature der geschachtelten Profile von Azure Traffic Manager."
    services="traffic-manager"
    documentationCenter=""
-   authors="jtuliani"
+   authors="sdwheeler"
    manager="carmonm"
    editor="tysonn" />
 <tags 
@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="05/25/2016"
-   ms.author="jtuliani" />
+   ms.author="sewhee" />
 
 # Geschachtelte Traffic Manager-Profile
 
@@ -29,11 +29,11 @@ Dieser Artikel erläutert anhand einer Reihe von Beispielen, wie geschachtelte T
 
 ## Beispiel 1: Kombinieren des leistungsorientierten Datenverkehrsroutings mit dem gewichteten Datenverkehrsrouting
 
-Angenommen, Ihre Anwendung wurde in mehreren Azure-Region bereitgestellt: USA (Westen), Europa (Westen) und Asien (Osten). Sie verwenden die leistungsorientierte Traffic Manager-Methode für das Datenverkehrsrouting, um den Datenverkehr an die Region zu verteilen, die dem Benutzer am nächsten ist.
+Angenommen, Ihre Anwendung wurde in mehreren Azure-Region bereitgestellt: „USA, Westen“, „Europa, Westen“ und „Asien, Osten“. Sie verwenden die leistungsorientierte Traffic Manager-Methode für das Datenverkehrsrouting, um den Datenverkehr an die Region zu verteilen, die dem Benutzer am nächsten ist.
 
 ![Einzelnes Traffic Manager-Profil][1]
 
-Angenommen, Sie möchten ein Update Ihres Diensts mit einer kleiner Anzahl von Benutzern testen, bevor Sie es in größerem Rahmen einführen. Dafür möchten Sie die gewichtete Methode für das Datenverkehrsrouting verwenden, mit der ein kleiner Prozentsatz des Datenverkehrs an die Testbereitstellung geleitet wird. Mit einem einzigen Profil können Sie das gewichtete und das leistungsbasierte Datenverkehrsrouting nicht miteinander kombinieren. Mit geschachtelten Profilen können Sie beide Methoden verwenden.
+Angenommen, Sie möchten ein Update Ihres Diensts mit einer kleinen Anzahl von Benutzern testen, bevor Sie es in größerem Rahmen einführen. Dafür möchten Sie die gewichtete Methode für das Datenverkehrsrouting verwenden, mit der ein kleiner Prozentsatz des Datenverkehrs an die Testbereitstellung geleitet wird. Mit einem einzigen Profil können Sie das gewichtete und das leistungsbasierte Datenverkehrsrouting nicht miteinander kombinieren. Mit geschachtelten Profilen können Sie beide Methoden verwenden.
 
 So funktioniert es: Angenommen, Sie möchten die neue Bereitstellung in Europa, Westen, testen. Sie richten die Testbereitstellung neben der vorhandenen Produktionsbereitstellung ein und erstellen ein Traffic Manager-Profil nur mit diesen beiden Endpunkten und der gewichteten Methode für das Datenverkehrsrouting. Sie können dieses untergeordnete Profil als Endpunkt zum übergeordneten Profil hinzufügen, das weiterhin die leistungsorientierte Methode für das Datenverkehrsrouting verwendet und auch die anderen globalen Bereitstellungen als Endpunkte enthält.
 
@@ -43,7 +43,7 @@ Das folgende Diagramm veranschaulicht dieses Beispiel:
 
 In dieser Anordnung wird der Datenverkehr, der über das übergeordnete Profil weitergeleitet wird, normal auf die Region verteilt. Innerhalb der Region Europa, Westen, wird der Datenverkehr gemäß den zugeordneten Gewichtungen an die Produktions- bzw. die Testbereitstellung weitergeleitet.
 
-Beachten Sie Folgendes: Wenn das übergeordnete Profil die leistungsorientierte Methode für das Datenverkehrsrouting verwendet, muss der Standort jedes Endpunkts bekannt sein. Bei geschachtelten ebenso wie bei externen Endpunkten muss dieser Standort im Rahmen der Endpunktkonfiguration angegeben werden. Wählen Sie die Ihrer Bereitstellung am nächsten gelegene Azure-Region – als Optionen sind die Azure-Regionen verfügbar, da sie die Standorte sind, die von der Internetlatenztabelle unterstützt werden. Weitere Informationen finden Sie unter [Leistungsorientiere Traffic Manager-Methode für das Datenverkehrsrouting](traffic-manager-routing-methods.md#performance-traffic-routing-method).
+Beachten Sie Folgendes: Wenn das übergeordnete Profil die leistungsorientierte Methode für das Datenverkehrsrouting verwendet, muss der Standort jedes Endpunkts bekannt sein. Bei geschachtelten ebenso wie bei externen Endpunkten muss dieser Standort im Rahmen der Endpunktkonfiguration angegeben werden. Wählen Sie die Ihrer Bereitstellung am nächsten gelegene Azure-Region – als Optionen sind die Azure-Regionen verfügbar, da sie die Standorte sind, die von der Internetlatenztabelle unterstützt werden. Weitere Informationen finden Sie unter [Leistungsorientierte Traffic Manager-Methode für das Datenverkehrsrouting](traffic-manager-routing-methods.md#performance-traffic-routing-method).
 
 ## Beispiel 2: Endpunktüberwachung in geschachtelten Profilen
 
@@ -79,7 +79,7 @@ Sie können dieses Muster für alle Regionen wiederholen und alle drei Endpunkte
 
 ## Beispiel 4: Steuern des leistungsorientierten Datenverkehrsroutings zwischen mehreren Endpunkten in der gleichen Region
 
-Angenommen, die leistungsorientierte Methode für das Datenverkehrsrouting wird in einem Profil mit mehr als einem Endpunkt in einer bestimmten Region (z.B. USA, Westen) verwendet. Standardmäßig wird für diese Region bestimmter Datenverkehr gleichmäßig auf allen verfügbaren Endpunkte in dieser Region verteilt.
+Angenommen, die leistungsorientierte Methode für das Datenverkehrsrouting wird in einem Profil mit mehr als einem Endpunkt in einer bestimmten Region (z.B. USA, Westen) verwendet. Standardmäßig wird für diese Region bestimmter Datenverkehr gleichmäßig auf alle verfügbaren Endpunkte in dieser Region verteilt.
 
 ![Leistungsorientiertes Datenverkehrsrouting mit regionsinterner Verteilung des Datenverkehrs (Standardverhalten)][7]
 
@@ -89,7 +89,7 @@ Diese Standardeinstellung kann mithilfe von geschachtelten Traffic Manager-Profi
 
 ## Beispiel 5: Überwachungseinstellungen pro Endpunkt
 
-Angenommen, Sie verwenden Traffic Manager, um den Datenverkehr nahtlos zwischen einer älteren lokalen Website und einer neuen cloudbasierten Version zu migrieren, die in Azure gehostet wird. Für die ältere Website möchten Sie die Startseite (Pfad „/“) verwenden, um die Integrität der Website zu überwachen. Für die neue cloudbasierte Version implementieren Sie jedoch ein benutzerdefinierte Überwachungsseite, die zusätzliche Überprüfungen (Pfad „/monitor.aspx“) umfasst.
+Angenommen, Sie verwenden Traffic Manager, um den Datenverkehr nahtlos zwischen einer älteren lokalen Website und einer neuen cloudbasierten Version zu migrieren, die in Azure gehostet wird. Für die ältere Website möchten Sie die Startseite (Pfad „/“) verwenden, um die Integrität der Website zu überwachen. Für die neue cloudbasierte Version implementieren Sie jedoch eine benutzerdefinierte Überwachungsseite, die zusätzliche Überprüfungen (Pfad „/monitor.aspx“) umfasst.
 
 ![Traffic Manager-Endpunktüberwachung (Standardverhalten)][9]
 
@@ -161,4 +161,4 @@ Informationen zum [Erstellen eines Traffic Manager-Profils](traffic-manager-mana
 [9]: ./media/traffic-manager-nested-profiles/figure-9.png
 [10]: ./media/traffic-manager-nested-profiles/figure-10.png
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0824_2016-->

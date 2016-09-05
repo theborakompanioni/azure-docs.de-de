@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="mobile-multiple" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="02/29/2016" 
+	ms.date="08/19/2016" 
 	ms.author="piyushjo" />
 
 # Azure Mobile Engagement – API-Integration
 
 In einem automatisierten Marketingsystem erfolgen das Erstellen und Aktivieren der Marketingkampagnen ebenfalls automatisch. Zu diesem Zweck ermöglicht Azure Mobile Engagement auch das Erstellen solcher automatisierten Marketingkampagnen mithilfe von APIs.
 
-Kunden verwenden in der Regel die Mobile Engagement-Front-End-Schnittstelle, um im Rahmen ihrer Marketingkampagnen Ankündigungen/Umfragen u. ä. zu erstellen. Sobald jedoch die Marketingkampagnen ausgereift sind, müssen die in den Back-End-Systemen (z. B. ein CRM-System oder ein CMS-System wie SharePoint) blockierten Daten genutzt werden. So kann eine vollständig automatische Pipeline erstellt werden, die anhand der Daten aus den Back-End-Systemen dynamisch Kampagnen in Mobile Engagement erzeugt.
+Kunden verwenden in der Regel die Mobile Engagement-Front-End-Schnittstelle, um im Rahmen ihrer Marketingkampagnen Ankündigungen/Umfragen u. ä. zu erstellen. Sobald jedoch die Marketingkampagnen ausgereift sind, müssen die in den Back-End-Systemen (z. B. ein CRM-System oder ein CMS-System wie SharePoint) blockierten Daten genutzt werden. So kann eine vollständig automatische Pipeline erstellt werden, die anhand der Daten aus den Back-End-Systemen dynamisch Kampagnen in Mobile Engagement erzeugt.
 
 ![][5]
 
@@ -86,7 +86,7 @@ Dieses Lernprogramm behandelt ein Szenario, in dem ein geschäftlicher SharePoin
         }
 
 ## Mobile Engagement-Integration
-1.  Sobald ein Element gefunden wird, das verarbeitet werden muss, werden die zum Erstellen einer Ankündigung erforderlichen Informationen aus dem Listenelement extrahiert. `CreateAzMECampaign` wird aufgerufen, um die Ankündigung zu erstellen, und anschließend wird `ActivateAzMECampaign` aufgerufen, um sie zu aktivieren. Diese sind im Wesentlichen REST-API-Aufrufe des Mobile Engagement Back-Ends. 
+1.  Sobald ein Element gefunden wird, das verarbeitet werden muss, werden die zum Erstellen einer Ankündigung erforderlichen Informationen aus dem Listenelement extrahiert. `CreateAzMECampaign` wird aufgerufen, um die Ankündigung zu erstellen, und anschließend wird `ActivateAzMECampaign` aufgerufen, um sie zu aktivieren. Diese sind im Wesentlichen REST-API-Aufrufe des Mobile Engagement Back-Ends.
 
 2.  Die Mobile Engagement-REST-APIs erfordern einen **HTTP-Header für die Autorisierung des Basisauthentifizierungsschemas **. Dieser besteht aus der `ApplicationId` und dem `ApiKey`, die Sie im Azure-Portal erhalten. Stellen Sie sicher, dass Sie den Schlüssel aus dem Bereich **API-Schlüssel** und *nicht* aus dem Bereich **SDK-Schlüssel** verwenden.
 
@@ -207,4 +207,4 @@ In diesem Beispiel wurde eine einfache Ankündigungskampagne erstellt, und es wu
 
  
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0824_2016-->

@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/13/2016" 
+	ms.date="08/24/2016" 
 	ms.author="awills"/>
  
 # Fragen – Application Insights für ASP.NET
@@ -27,6 +27,12 @@
 * [Java-Web-Apps](app-insights-java-troubleshoot.md)
 * [Andere Plattformen](app-insights-platforms.md)
 
+*Ich erhalte keine Daten von meinem Server.*
+
+* [Festlegen von Firewallausnahmen](app-insights-ip-addresses.md)
+* [Einrichten eines ASP.NET-Servers](app-insights-monitor-performance-live-website-now.md)
+* [Einrichten eines Java-Servers](app-insights-java-agent.md)
+
 
 ## Kann ich Application Insights mit ... verwenden?
 
@@ -35,7 +41,7 @@
 
 ## Ist es kostenlos?
 
-* Ja, wenn Sie sich für den [Tarif](app-insights-pricing.md) "Free" entscheiden. Sie erhalten Zugriff auf die meisten Funktionen sowie ein großzügiges Datenkontingent. 
+* Ja, wenn Sie sich für den [Tarif](app-insights-pricing.md) "Free" entscheiden. Sie erhalten Zugriff auf die meisten Funktionen sowie ein großzügiges Datenkontingent.
 * Sie müssen Ihre Kreditkartendaten angeben, um sich bei Microsoft Azure registrieren zu können. Es werden jedoch keinerlei Gebühren abgebucht, sofern Sie keinen kostenpflichtigen Azure-Dienst nutzen oder explizit auf einen kostenpflichtigen Tarif aktualisieren.
 * Wenn Ihre App mehr Daten sendet, als in Ihrem Kontingent für den Free-Tarif enthalten sind, wird die Protokollierung eingestellt. In diesem Fall können Sie zu einem kostenpflichtigen Tarif wechseln oder warten, bis das Kontingent am Monatsende zurückgesetzt wird.
 * Daten für die grundlegende Nutzung sowie Sitzungsdaten unterliegen keinen Kontingenten.
@@ -129,7 +135,7 @@ Informationen hierzu finden Sie unter [Datenaufbewahrung und Datenschutz][data].
 
 ## Automation
 
-Sie können [PowerShell-Skripts schreiben](app-insights-powershell.md), um Application Insights-Ressourcen zu erstellen und aktualisieren.
+Sie können [PowerShell-Skripts schreiben](app-insights-powershell.md), um Application Insights-Ressourcen zu erstellen und zu aktualisieren.
 
 ## Weitere Antworten
 
@@ -145,4 +151,4 @@ Sie können [PowerShell-Skripts schreiben](app-insights-powershell.md), um Appli
 
  
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0824_2016-->

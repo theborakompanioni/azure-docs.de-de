@@ -14,18 +14,12 @@ ms.devlang="multiple"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="integration"
-ms.date="05/17/2016"
+ms.date="08/18/2016"
 ms.author="deonhe"/>
 
 # Erste Schritte mit dem OneDrive for Business-Connector
 
-
-
-Der OneDrive for Business-Connector kann verwendet werden in:
-
-- [Logik-Apps](../app-service-logic/app-service-logic-what-are-logic-apps.md)
-- [PowerApps](http://powerapps.microsoft.com)
-- [Flow](http://flows.microsoft.com)
+Stellen Sie eine Verbindung mit OneDrive for Business her und verwalten Sie dort Ihre Dateien. Sie mit den Dateien verschiedene Aktionen ausführen, z.B. Hochladen, Aktualisieren, Abrufen und Löschen.
 
 >[AZURE.NOTE] Diese Version des Artikels gilt für die Schemaversion 2015-08-01-preview für Logik-Apps.
 
@@ -63,11 +57,11 @@ Sie können auf diese Ereignisse lauschen:
 
 
 ## Herstellen einer Verbindung mit OneDrive for Business
-Um Logik-Apps mit OneDrive for Business zu erstellen, müssen Sie zuerst eine **Verbindung** herstellen und anschließend die Details für die folgenden Eigenschaften angeben:
+Um Logik-Apps mit OneDrive for Business zu erstellen, müssen Sie zuerst eine **Verbindung** erstellen und anschließend die Details für die folgenden Eigenschaften angeben:
 
 |Eigenschaft| Erforderlich|Beschreibung|
 | ---|---|---|
-|Tokenverschlüsselung|Ja|Angeben der Anmeldeinformationen für OneDrive for Business|
+|Token|Ja|Angeben der Anmeldeinformationen für OneDrive for Business|
 Nachdem Sie die Verbindung erstellt haben, können Sie sie zum Ausführen der Aktionen und zum Lauschen auf die in diesem Artikel beschriebenen Trigger verwenden.
 
 >[AZURE.INCLUDE [Schritte zum Herstellen einer Verbindung mit OneDrive for Business](../../includes/connectors-create-api-onedriveforbusiness.md)]
@@ -75,7 +69,7 @@ Nachdem Sie die Verbindung erstellt haben, können Sie sie zum Ausführen der Ak
 >[AZURE.TIP] Sie können diese Verbindung in anderen Logik-Apps verwenden.
 
 ## Referenz für OneDrive for Business
-Gilt für Version: 1.0.
+Gilt für Version 1.0.
 
 ## GetFileMetadata
 Dateimetadaten anhand der ID abrufen: Ruft Metadaten einer Datei in OneDrive for Business anhand der ID ab.
@@ -91,7 +85,7 @@ Dateimetadaten anhand der ID abrufen: Ruft Metadaten einer Datei in OneDrive for
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 
 ## UpdateFile
@@ -109,7 +103,7 @@ Datei aktualisieren: Aktualisiert eine Datei auf OneDrive for Business.
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 
 ## DeleteFile
@@ -126,7 +120,7 @@ Datei löschen: Löscht eine Datei aus OneDrive for Business.
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 
 ## GetFileMetadataByPath
@@ -143,7 +137,7 @@ Dateimetadaten anhand des Pfads abrufen: Ruft Metadaten einer Datei in OneDrive 
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 
 ## GetFileContentByPath
@@ -160,7 +154,7 @@ Dateiinhalt anhand des Pfads abrufen: Ruft den Inhalt einer Datei in OneDrive fo
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 
 ## GetFileContent
@@ -177,7 +171,7 @@ Dateiinhalt anhand der ID abrufen: Ruft den Inhalt einer Datei in OneDrive for B
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 
 ## CreateFile
@@ -188,7 +182,7 @@ Datei erstellen: Lädt eine Datei auf OneDrive for Business hoch.
 | Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
 |folderPath|string|Ja|query|(Keine)|Ordnerpfad zum Hochladen der Datei in OneDrive for Business|
-|name|string|Ja|query|(Keine)|Name der Datei, die in OneDrive for Business erstellt werden soll|
+|Name|string|Ja|query|(Keine)|Name der Datei, die in OneDrive for Business erstellt werden soll|
 |body| |Ja|body|(Keine)|Inhalt der Datei, die in OneDrive for Business hochgeladen werden soll|
 
 #### Antwort
@@ -196,7 +190,7 @@ Datei erstellen: Lädt eine Datei auf OneDrive for Business hoch.
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 
 ## CopyFile
@@ -215,7 +209,7 @@ Datei kopieren: Kopiert eine Datei auf OneDrive for Business.
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 
 ## OnNewFile
@@ -232,7 +226,7 @@ Wenn eine Datei erstellt wird: Löst einen Workflow aus, wenn in einem OneDrive 
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 
 ## OnUpdatedFile
@@ -249,7 +243,7 @@ Wenn eine Datei geändert wird: Löst einen Workflow aus, wenn in einem OneDrive
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 
 ## ListFolder
@@ -266,7 +260,7 @@ Dateien in einem Ordner auflisten: Listet die Dateien eines Ordners auf OneDrive
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 
 ## ListRootFolder
@@ -280,7 +274,7 @@ Es gibt keine Parameter für diesen Aufruf
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 
 ## ExtractFolderV2
@@ -299,7 +293,7 @@ Ordner extrahieren: Extrahiert einen Ordner zu OneDrive for Business.
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 
 ## Objektdefinitionen 
@@ -346,7 +340,7 @@ Ordner extrahieren: Extrahiert einen Ordner zu OneDrive for Business.
 |ID|string|Nein |
 |Name|string|Nein |
 |DisplayName|string|Nein |
-|Path|string|Nein |
+|Pfad|string|Nein |
 |LastModified|string|Nein |
 |Size|integer|Nein |
 |MediaType|string|Nein |
@@ -366,4 +360,4 @@ Ordner extrahieren: Extrahiert einen Ordner zu OneDrive for Business.
 ## Nächste Schritte
 [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0824_2016-->

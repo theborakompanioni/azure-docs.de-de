@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-windows-store" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="02/29/2016" 
+	ms.date="08/19/2016" 
 	ms.author="piyushjo" />
 
 #Windows Universal Apps SDK – Inhalt
@@ -47,4 +47,4 @@ Dieser Ordner enthält alle von Mobile Engagement benötigten Ressourcen. Sie k�
 - `EngagementPageOverlay.cs` : Die Overlayseite, die für das Hinzufügen der Engagement-Reach-In-App-Benutzeroberfläche zu ihrem untergeordneten Element verantwortlich ist.
   
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0824_2016-->

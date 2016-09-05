@@ -13,7 +13,7 @@
  ms.topic="article"
  ms.tgt_pltfrm="na"
  ms.workload="na"
- ms.date="05/16/2016"
+ ms.date="08/16/2016"
  ms.author="yurid"/>
 
 [AZURE.INCLUDE [iot-security-ground-up](../../includes/iot-security-ground-up.md)]
@@ -22,8 +22,8 @@
 
 Weitere Informationen zum Schützen Ihrer IoT-Lösung finden Sie hier:
 
-- [IoT – Bewährte Methoden für die Sicherheit][lnk-security-best-practices]
-- [IoT-Sicherheitsarchitektur][lnk-security-architecture]
+- [Internet der Dinge – bewährte Methoden für die Sicherheit][lnk-security-best-practices]
+- [Internet der Dinge – Sicherheitsarchitektur][lnk-security-architecture]
 - [Schützen Ihrer IoT-Bereitstellung][lnk-security-deployment]
 
 Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
@@ -42,4 +42,4 @@ Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 [lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
 [lnk-portal]: iot-hub-manage-through-portal.md
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0824_2016-->

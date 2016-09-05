@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="vm-windows"
    ms.workload="infrastructure"
-   ms.date="06/06/2016"
+   ms.date="08/23/2016"
    ms.author="rasquill"/>
 
 # Erstellen einer Arbeits- oder Schulidentität in Azure Active Directory zur Verwendung mit Windows-VMs
@@ -27,4 +27,4 @@ Aufgrund aktueller Änderungen können Sie Ihr Abonnement jedoch mit jeder Art v
 
 [AZURE.INCLUDE [virtual-machines-common-create-aad-work-id](../../includes/virtual-machines-common-create-aad-work-id.md)]
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0824_2016-->

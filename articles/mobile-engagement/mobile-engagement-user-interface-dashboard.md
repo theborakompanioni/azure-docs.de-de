@@ -13,13 +13,13 @@
    ms.topic="article"
    ms.tgt_pltfrm="mobile-multiple"
    ms.workload="mobile" 
-   ms.date="02/29/2016"
+   ms.date="08/19/2016"
    ms.author="piyushjo"/>
 
 # Anzeigen und Verwalten von Datendiagrammen zu Ihrer Anwendung
 Der Abschnitt "Dashboard" der Benutzeroberfläche erlaubt Kunden das Erstellen angepasster Diagramme, indem zeitsparend genau die gewünschten Informationen bereitgestellt werden, ohne dass diese im Abschnitt "Analyse" gesucht werden müssen. Ein Dashboard zeigt Trends der Anwendung und die Anzahl aktiver Benutzer für die verschiedenen Versionen der Anwendung über einen bestimmten Zeitraum (Stunde/Tag/Woche/Monat/benutzerdefiniert). Die gezeigten Trends basieren auf den letzten sieben Tagen.
 
-### Weitere Informationen
+### Siehe auch
 -  [Handbuch zur Problembehandlung - Analyse][Link 21]
 
 ## Dashboard
@@ -129,4 +129,4 @@ Der Abschnitt "Dashboard" der Benutzeroberfläche erlaubt Kunden das Erstellen a
 [Link 33]: ../mobile-engagement-how-tos-web-view.md
  
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0824_2016-->

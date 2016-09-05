@@ -34,7 +34,7 @@ Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unte
 Um die Azure AD-Integration mit Aravo konfigurieren zu können, benötigen Sie Folgendes:
 
 - Ein Azure AD-Abonnement
-- Ein Aravo-Abonnement, für das einmaliges Anmelden aktiviert ist
+- Ein SSO-fähiges Aravo-Abonnement
 
 
 > [AZURE.NOTE] Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
@@ -47,12 +47,12 @@ Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen 
 
 
 ## Beschreibung des Szenarios
-Ziel dieses Tutorials ist es, das einmalige Anmelden von Azure AD in einer Testumgebung zu testen.
+Ziel dieses Tutorials ist es, das einmalige Anmelden von Microsoft Azure AD in einer Testumgebung zu testen.
 
 Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
 
 1. Hinzufügen von Aravo aus dem Katalog
-2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+2. Konfigurieren und Testen der einmaligen Anmeldung von Microsoft Azure AD
 
 
 ## Hinzufügen von Aravo aus dem Katalog
@@ -86,32 +86,32 @@ Zum Konfigurieren der Integration von Aravo in Azure AD müssen Sie Aravo aus de
 	![Auswählen der App im Katalog](./media/active-directory-saas-aravo-tutorial/tutorial_aravo_0001.png)
 
 
-##  Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
-In diesem Abschnitt soll veranschaulicht werden, wie basierend auf einem Testbenutzer namens „Britta Simon“ das einmalige Anmelden von Azure AD in Aravo konfiguriert und getestet werden kann.
+##  Konfigurieren und Testen der einmaligen Anmeldung von Microsoft Azure AD
+Dieser Abschnitt veranschaulicht anhand eines Testbenutzers namens Britta Simon, wie das einmalige Anmelden von Microsoft Azure AD mit Aravo konfiguriert und getestet wird.
 
 Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in Aravo als Gegenbenutzer zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Aravo muss eine Linkbeziehung eingerichtet werden.
 
 Diese Linkbeziehung wird hergestellt, indem Sie den **Benutzernamen** in Azure AD als Wert dem **Benutzernamen** in Aravo zuweisen.
 
-Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei Aravo müssen Sie die folgenden Bausteine ausführen:
+Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Microsoft Azure AD mit Aravo zu konfigurieren und zu testen:
 
-1. **[Konfigurieren von Azure AD – einmaliges Anmelden](#configuring-azure-ad-single-single-sign-on)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
-2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+1. **[Konfigurieren des einmaligen Anmeldens von Microsoft Azure AD](#configuring-azure-ad-single-single-sign-on)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
+2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)**, um das einmalige Anmelden von Microsoft Azure AD mit dem Testbenutzer Britta Simon zu testen.
 3. **[Erstellen eines Aravo-Testbenutzers](#creating-a-aravo-test-user)**, um eine Entsprechung von Britta Simon in Aravo zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon das einmalige Anmelden von Microsoft Azure AD zu ermöglichen.
 5. **[Testen der einmaligen Anmeldung](#testing-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
-### Konfigurieren des einmaligen Anmeldens von Azure AD
+### Konfigurieren des einmaligen Anmeldens von Microsoft Azure AD
 
-In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im klassischen Portal und konfigurieren das einmalige Anmelden in Ihrer Aravo-Anwendung.
+In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Microsoft Azure AD im klassischen Portal und konfigurieren es in Ihrer Aravo-Anwendung.
 
-**Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in Aravo die folgenden Schritte aus:**
+**Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Microsoft Azure AD mit Aravo zu konfigurieren:**
 
 1. Klicken Sie im klassischen Portal auf der Anwendungsintegrationsseite für **Aravo** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
 	 
 	![Einmaliges Anmelden konfigurieren][6]
 
-2. Wählen Sie auf der Seite **Wie sollen sich Benutzer bei Aravo anmelden?** die Option **Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**.
+2. Wählen Sie auf der Seite **Wie sollen sich Benutzer bei Aravo anmelden?** die Option **Microsoft Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**.
 
 	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-aravo-tutorial/tutorial_aravo_03.png)
 
@@ -133,7 +133,7 @@ In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im klas
 
     a. Klicken Sie auf **Zertifikat herunterladen** und speichern Sie die Datei auf Ihrem Computer.
 
-    b. Klicken Sie auf **Weiter**.
+    b. Klicken Sie auf **Next**.
 
 5. Wenden Sie sich an das Supportteam von Aravo, um SSO (Single Sign-On, einmaliges Anmelden) für Ihre Anwendung konfigurieren zu lassen, und stellen Sie Folgendes bereit:
 
@@ -145,7 +145,7 @@ In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im klas
 
 	- Die **Dienst-URL für einmaliges Abmelden**
 
-6. Wählen Sie im klassischen Portal die Bestätigung zur Konfiguration der einmaligen Anmeldung aus und klicken Sie dann auf **Weiter**.
+6. Wählen Sie im klassischen Portal die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Weiter**.
 
 	![Azure AD – einmaliges Anmelden][10]
 
@@ -172,7 +172,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 	
 	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-aravo-tutorial/create_aaduser_03.png)
 
-4. Um das Dialogfeld **Benutzer hinzufügen** zu öffnen, klicken Sie in der Symbolleiste unten auf **Benutzer hinzufügen**.
+4. Um das Dialogfeld **Benutzer hinzufügen** zu öffnen, klicken Sie auf der Symbolleiste unten auf **Benutzer hinzufügen**.
 	
 	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-aravo-tutorial/create_aaduser_04.png)
 
@@ -249,12 +249,12 @@ Das Ziel dieses Abschnitts besteht darin, Britta Simon die Verwendung des einmal
 
 ### Testen der einmaligen Anmeldung
 
-Das Ziel dieses Abschnitts ist das Testen Ihrer Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
+In diesem Abschnitt wird die Microsoft Azure AD-Konfiguration für einmaliges Anmelden mithilfe des Zugriffsbereichs getestet.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „Aravo“ klicken, sollten Sie automatisch bei Ihrer Aravo-Anwendung angemeldet werden.
 
 
-## Weitere Ressourcen
+## Zusätzliche Ressourcen
 
 * [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)
@@ -279,4 +279,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Aravo“ klicken, sollten Sie auto
 [204]: ./media/active-directory-saas-aravo-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-aravo-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0824_2016-->

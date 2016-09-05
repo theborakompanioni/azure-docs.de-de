@@ -14,13 +14,13 @@
     ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="identity"
-    ms.date="05/16/2016"
+    ms.date="08/23/2016"
     ms.author="curtand"/>
 
 # Was ist Microsoft Azure Active Directory-Lizenzierung?
 
 ##Beschreibung
-Azure Active Directory (Azure AD) ist die IDaaS-Lösung (Identity as a Service) und -Plattform von Microsoft. Azure AD wird in einer Reihe von funktionalen und technischen Versionen angeboten. Diese reichen von Azure AD Free, die mit anderen Microsoft-Diensten wie Office 365, Dynamics, Microsoft Intune und Azure (Azure AD generiert keine Nutzungsgebühren in diesem Modus) verfügbar ist, bis hin zu kostenpflichtigen Versionen von Azure AD wie Enterprise Mobility Suite (EMS), Azure AD Premium und Basic sowie Azure Multi-Factor Authentication (MFA). Wie bei vielen der Microsoft-Onlinedienste werden die meisten kostenpflichtigen Versionen von Azure AD über Berechtigungen pro Benutzer bereitgestellt, wie auch in Office 365, Microsoft Intune und Azure AD. In diesen Fällen entspricht der Erwerb des Diensts einem oder mehreren Abonnements, und jedes Abonnement umfasst die Vorausbezahlung einer Anzahl von Lizenzen in Ihrem Mandanten. Berechtigungen pro Benutzer werden durch Lizenzzuweisung erreicht und erstellen eine Verknüpfung zwischen dem Benutzer und dem Produkt, sodass die Komponenten des Diensts für den Benutzer aktiviert werden und eine der vorausbezahlten Lizenzen nutzt wird.
+Azure Active Directory (Azure AD) ist die IDaaS-Lösung (Identity as a Service) und -Plattform von Microsoft. Azure AD wird in einer Reihe von funktionalen und technischen Versionen angeboten. Diese reichen von Azure AD Free, die mit anderen Microsoft-Diensten wie Office 365, Dynamics, Microsoft Intune und Azure (Azure AD generiert keine Nutzungsgebühren in diesem Modus) verfügbar ist, bis hin zu kostenpflichtigen Versionen von Azure AD wie Enterprise Mobility Suite (EMS), Azure AD Premium und Basic sowie Azure Multi-Factor Authentication (MFA). Wie bei vielen der Microsoft-Onlinedienste werden die meisten kostenpflichtigen Versionen von Azure AD über Berechtigungen pro Benutzer bereitgestellt, wie auch in Office 365, Microsoft Intune und Azure AD. In diesen Fällen entspricht der Erwerb des Diensts einem oder mehreren Abonnements, und jedes Abonnement umfasst eine im Voraus bezahlte Anzahl von Lizenzen in Ihrem Mandanten. Berechtigungen pro Benutzer werden durch Lizenzzuweisung erreicht und erstellen eine Verknüpfung zwischen dem Benutzer und dem Produkt, sodass die Komponenten des Diensts für den Benutzer aktiviert werden und eine der vorausbezahlten Lizenzen nutzt wird.
 
 [Testen Sie Azure AD Premium jetzt.](https://portal.office.com/Signup/Signup.aspx?OfferId=01824d11-5ad8-447f-8523-666b0848b381&ali=1#0)
 
@@ -28,22 +28,22 @@ Azure Active Directory (Azure AD) ist die IDaaS-Lösung (Identity as a Service) 
 
 Einen umfassenden Überblick über die Azure AD-Dienstfunktionen finden Sie unter [Was ist Azure AD?](active-directory-whatis.md). [Erfahren Sie mehr über Azure AD-Servicelevel](https://azure.microsoft.com/support/legal/sla/)
 
-> [AZURE.NOTE]  Nutzungsbasierte Abonnements von Azure sind anders: Sie werden zwar auch in Ihrem Verzeichnis dargestellt, diese Abonnements ermöglichen jedoch das Erstellen von Azure-Ressourcen und deren Abstimmung auf Ihre Zahlungsweise. In diesem Fall ist keine Lizenzanzahl mit dem Abonnement verknüpft. Die Zuordnung von Benutzern zum Abonnement und der Benutzerzugriff zum Verwalten von Abonnementressourcen erfolgt durch die Erteilung von Berechtigungen zum Verarbeiten von Azure-Ressourcen, die dem Abonnement zugeordnet sind.
+> [AZURE.NOTE]  Nutzungsbasierte Abonnements von Azure sind anders: Sie werden zwar auch in Ihrem Verzeichnis dargestellt, diese Abonnements ermöglichen jedoch das Erstellen von Azure-Ressourcen und deren Abstimmung auf Ihre Zahlungsweise. In diesem Fall ist KEINE Lizenzanzahl mit dem Abonnement verknüpft. Die Zuordnung von Benutzern zum Abonnement und der Benutzerzugriff zum Verwalten von Abonnementressourcen erfolgt durch die Erteilung von Berechtigungen zum Verarbeiten von Azure-Ressourcen, die dem Abonnement zugeordnet sind.
 
 
 ##Wie funktioniert die Lizenzierung von Azure AD?
 
 Lizenzbasierte (berechtigungsbasierte) Azure AD-Dienste funktionieren durch die Aktivierung eines Abonnements im Azure AD-Verzeichnis/-Dienstmandanten. Sobald das Abonnement aktiv ist, können Dienstfunktionen von Verzeichnis-/Dienstadministratoren verwaltet und von lizenzierten Benutzern verwendet werden.
 
-Wenn Sie Enterprise Mobility Suite, Azure AD Premium oder Azure AD Basic erwerben oder aktivieren, wird das Verzeichnis mit dem Abonnement aktualisiert, einschließlich der Gültigkeitsdauer und der vorausbezahlten Lizenzen. Ihre Abonnementinformationen, einschließlich Status, nächstes Lebenszyklusereignis und Anzahl der zugewiesenen oder verfügbaren Lizenzen, stehen über das klassische Azure-Portal auf der Registerkarte "Lizenzen" für das jeweilige Verzeichnis zur Verfügung. Dies ist auch der beste Ort für die Verwaltung Ihrer Lizenzzuweisungen.
+Wenn Sie Enterprise Mobility Suite, Azure AD Premium oder Azure AD Basic erwerben oder aktivieren, wird das Verzeichnis mit dem Abonnement aktualisiert, einschließlich der Gültigkeitsdauer und der vorausbezahlten Lizenzen. Ihre Abonnementinformationen, einschließlich Status, nächstes Lebenszyklusereignis und Anzahl der zugewiesenen oder verfügbaren Lizenzen, stehen über das klassische Azure-Portal auf der Registerkarte „Lizenzen“ für das jeweilige Verzeichnis zur Verfügung. Dies ist auch der beste Ort für die Verwaltung Ihrer Lizenzzuweisungen.
 
 Jedes Abonnement umfasst einen oder mehrere Dienstpläne, die jeweils die enthaltene Funktionsebene des Diensttyps abbilden, beispielsweise Azure AD, Azure MFA, Microsoft Intune, Exchange Online und SharePoint Online. Für die Azure AD-Lizenzverwaltung ist keine Verwaltung auf Dienstplanebene erforderlich. Dies ist ein Unterschied zu Office 365, für das dieser erweiterte Konfigurationsmodus zum Verwalten des Zugriffs auf die enthaltenen Dienste benötigt wird. Bei Azure AD erfolgt die Konfiguration im Dienst, um Funktionen zu aktivieren und einzelne Berechtigungen zu verwalten.
 
-Im Allgemeinen werden Azure AD-Abonnementinformationen über das klassische Azure-Portal auf der Registerkarte "Lizenzen" für das jeweilige Verzeichnis verwaltet. Azure AD-Abonnements, mit Ausnahme von Azure AD Premium, werden nicht im Office-Portal angezeigt.
+Im Allgemeinen werden Azure AD-Abonnementinformationen über das klassische Azure-Portal auf der Registerkarte „Lizenzen“ für das jeweilige Verzeichnis verwaltet. Azure AD-Abonnements, mit Ausnahme von Azure AD Premium, werden nicht im Office-Portal angezeigt.
 
-> [AZURE.IMPORTANT] Abonnements von Azure AD Premium und Basic sowie Enterprise Mobility Suite sind auf ihre bereitgestellten Verzeichnisse/Mandanten beschränkt. Abonnements können nicht zwischen Verzeichnissen aufgeteilt oder verwendet werden, um Benutzern Berechtigungen für andere Verzeichnissen zu erteilen. Das Verschieben eines Abonnements zwischen Verzeichnissen ist möglich, erfordert jedoch das Einreichen eines Supporttickets oder im Fall von direkten Käufen die Kündigung und den erneuten Erwerb.
+> [AZURE.IMPORTANT] Azure AD Premium- und Basic-Abonnements sowie Enterprise Mobility Suite-Abonnements sind auf ihre bereitgestellten Verzeichnisse/Mandanten beschränkt. Abonnements können nicht zwischen Verzeichnissen aufgeteilt oder verwendet werden, um Benutzern Berechtigungen in anderen Verzeichnissen zu erteilen. Das Verschieben eines Abonnements zwischen Verzeichnissen ist möglich, erfordert jedoch das Einreichen eines Supporttickets oder im Fall von direkten Käufen die Kündigung und den erneuten Erwerb.
 
-> Beim Kauf von Azure AD oder Enterprise Mobility Suite über ein Abonnement mit Volumenlizenzierung erfolgt die Aktivierung automatisch, wenn die Vereinbarung andere Microsoft Online-Dienste wie Office 365 enthält.
+> Beim Kauf von Azure AD oder Enterprise Mobility Suite über ein Abonnement mit Volumenlizenzierung erfolgt die Aktivierung automatisch, wenn die Vereinbarung andere Microsoft Online-Dienste wie Office 365 enthält.
 
 Kostenpflichtige Azure AD-Funktionen decken das gesamte Verzeichnis ab. Beispiele:
 - Eine gruppenbasierte Zuweisung zu Anwendungen, die für die jeweilige Anwendung aktiviert wird, die Sie verwalten.
@@ -78,7 +78,7 @@ Wie erwähnt, gibt es für Azure AD verschiedene kostenpflichtige Versionen. Die
 | Azure AD Basic | X | X | X | X | <br /> | <br /> |
 
 ###Auswählen von mindestens einer Lizenztestversion
- In allen Fällen können Sie ein Testabonnement von Azure AD Premium oder Enterprise Mobility Suite aktivieren, indem Sie die gewünschte Testversion auf der Registerkarte "Lizenzen" in Ihrem Verzeichnis auswählen. Eine Testversion enthält ein 30-Tage-Abonnement mit 100 Lizenzen.
+ In allen Fällen können Sie ein Testabonnement von Azure AD Premium oder Enterprise Mobility Suite aktivieren, indem Sie die gewünschte Testversion auf der Registerkarte „Lizenzen“ in Ihrem Verzeichnis auswählen. Eine Testversion enthält ein 30-Tage-Abonnement mit 100 Lizenzen.
 
 ![Azure Active Directory-Testlizenzpläne](./media/active-directory-licensing-what-is/trial_plans.png)
 
@@ -109,7 +109,7 @@ Zuweisungsfehler können bei der Azure AD-Lizenzzuweisung auftreten, sind jedoch
 
 ###Anzeigen zugewiesener Lizenzen
 
-Eine zusammenfassende Darstellung der zugewiesenen Lizenzen, einschließlich der verfügbaren und zugewiesenen Lizenzen sowie des nächsten Lebenszyklusereignisses im Abonnement, werden auf der Registerkarte **Lizenzen** angezeigt.
+Eine zusammenfassende Darstellung der zugewiesenen Lizenzen, einschließlich der verfügbaren und zugewiesenen Lizenzen sowie des nächsten Lebenszyklusereignisses im Abonnement, wird auf der Registerkarte **Lizenzen** angezeigt.
 
 ![Anzeigen der Anzahl der zugewiesenen Lizenzen](./media/active-directory-licensing-what-is/view_assigned_licenses.png)
 
@@ -140,4 +140,4 @@ Jetzt sind Sie möglicherweise bereit, einige Funktionen von Azure AD Premium zu
 - [Azure Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication.md)
 - [Direkter Erwerb von Azure AD Premium-Lizenzen](http://aka.ms/buyaadp)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0824_2016-->

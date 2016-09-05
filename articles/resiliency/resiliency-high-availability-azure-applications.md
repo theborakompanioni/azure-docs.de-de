@@ -4,7 +4,7 @@
    services=""
    documentationCenter="na"
    authors="adamglick"
-   manager="hongfeig"
+   manager="saladki"
    editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="08/01/2016"
+   ms.date="08/18/2016"
    ms.author="aglick"/>
 
 #Hohe Verfügbarkeit für in Microsoft Azure erstellte Anwendungen
@@ -143,4 +143,4 @@ Es ist wichtig zu beachten, dass sich die Skalierbarkeit des Clouddiensts direkt
 
 Dieser Artikel ist Teil einer Reihe von Artikeln mit Fokus auf [Notfallwiederherstellung und hohe Verfügbarkeit für in Microsoft Azure erstellte Anwendungen](./resiliency-disaster-recovery-high-availability-azure-applications.md). Der nächste Artikel dieser Reihe ist [Notfallwiederherstellung für in Microsoft Azure erstellte Anwendungen](./resiliency-disaster-recovery-azure-applications.md).
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0824_2016-->

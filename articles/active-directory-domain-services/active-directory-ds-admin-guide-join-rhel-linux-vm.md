@@ -71,7 +71,7 @@ Führen Sie die folgenden Schritte aus, um einen virtuellen RHEL 7-Computer übe
 ## Herstellen einer Remoteverbindung mit dem neu bereitgestellten virtuellen Linux-Computer
 Der virtuelle RHEL 7.2-Computer wurde in Azure bereitgestellt. Die nächste Aufgabe besteht darin, eine Remoteverbindung mit dem virtuellen Computer herzustellen.
 
-**Herstellen einer Verbindung mit dem virtuellen RHEL 7.2-Computer** Folgen Sie den Anweisungen im Artikel [Anmelden bei einem mit Linux betriebenen virtuellen Computer](../virtual-machines/virtual-machines-linux-classic-log-on.md).
+**Herstellen einer Verbindung mit dem virtuellen RHEL 7.2-Computer:** Folgen Sie den Anweisungen im Artikel [Erstellen von SSH-Schlüsseln unter Linux und Mac für Linux-VMs in Azure](../virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md).
 
 Bei den weiteren Schritten wird vorausgesetzt, dass Sie PuTTY als SSH-Client verwenden, um eine Verbindung mit dem virtuellen RHEL-Computer herzustellen. Weitere Informationen finden Sie auf der [PuTTY-Downloadseite](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html).
 
@@ -173,8 +173,8 @@ Informationen finden Sie im Artikel [Problembehandlung beim Domänenbeitritt](ac
 
 
 ## Weitere Informationen
-- [Anmelden bei einem mit Linux betriebenen virtuellen Computer](../virtual-machines/virtual-machines-linux-classic-log-on.md)
+- [Anmelden bei einem mit Linux betriebenen virtuellen Computer](../virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md)
 - [Installing Kerberos](https://access.redhat.com/documentation/de-DE/Red_Hat_Enterprise_Linux/6/html/Managing_Smart_Cards/installing-kerberos.html) (Installieren von Kerberos)
 - [Red Hat Enterprise Linux 7 - Windows Integration Guide](https://access.redhat.com/documentation/de-DE/Red_Hat_Enterprise_Linux/7/html/Windows_Integration_Guide/index.html) (Red Hat Enterprise Linux 7 – Windows-Integrationsleitfaden)
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0824_2016-->

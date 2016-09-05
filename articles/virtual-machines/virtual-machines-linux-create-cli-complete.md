@@ -15,7 +15,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="vm-linux"
    ms.workload="infrastructure"
-   ms.date="06/10/2016"
+   ms.date="08/23/2016"
    ms.author="iainfou"/>
 
 # Erstellen einer vollständigen Linux-Umgebung über die Azure-Befehlszeilenschnittstelle
@@ -35,7 +35,7 @@ Die Umgebung enthält:
 Um diese benutzerdefinierte Umgebung zu erstellen, benötigen Sie die aktuelle [Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md) im Resource Manager-Modus (`azure config mode arm`). Sie benötigen außerdem ein JSON-Analysetool. In diesem Beispiel wird [jq](https://stedolan.github.io/jq/) verwendet.
 
 ## Schnellbefehle
-Sie können die folgenden Schnellbefehle zum Erstellen Ihrer benutzerdefinierten Umgebung verwenden. Weitere Informationen darüber, welche Aufgaben Sie beim Erstellen der Umgebung mit den einzelnen Befehlen ausführen können, finden Sie in der [ausführlichen exemplarischen Vorgehensweise unten](#detailed-walkthrough).
+Sie können die folgenden Schnellbefehle zum Erstellen Ihrer benutzerdefinierten Umgebung verwenden. In der [folgenden ausführlichen exemplarischen Vorgehensweise](#detailed-walkthrough) erfahren Sie, welche Aufgaben Sie beim Erstellen der Umgebung mit den einzelnen Befehlen ausführen können.
 
 Erstellen Sie die Ressourcengruppe:
 
@@ -200,7 +200,7 @@ azure vm create \
     --vnet-name TestVnet \
     --vnet-subnet-name FrontEnd \
     --storage-account-name computeteststore \
-    --image-urn canonical:UbuntuServer:14.04.4-LTS:latest \
+    --image-urn canonical:UbuntuServer:16.04.0-LTS:latest \
     --ssh-publickey-file ~/.ssh/id_rsa.pub \
     --admin-username ops
 ```
@@ -218,7 +218,7 @@ azure vm create \
     --vnet-name TestVnet \
     --vnet-subnet-name FrontEnd \
     --storage-account-name computeteststore \
-    --image-urn canonical:UbuntuServer:14.04.4-LTS:latest \
+    --image-urn canonical:UbuntuServer:16.04.0-LTS:latest \
     --ssh-publickey-file ~/.ssh/id_rsa.pub \
     --admin-username ops
 ```
@@ -307,7 +307,7 @@ data:
 info:    group show command OK
 ```
 
-Wir setzen das Tool [jq](https://stedolan.github.io/jq/) zusammen mit der Azure-CLI-Option `--json` ein, um unsere Ressourcengruppe mit dem Befehl `azure group show` zu überprüfen. (Zur Analyse von JSON können Sie **jsawk** oder eine andere Sprachbibliothek Ihrer Wahl verwenden.)
+Um unsere Ressourcengruppe mit dem Befehl `azure group show` zu überprüfen, setzen wir das Tool [jq](https://stedolan.github.io/jq/) zusammen mit der Azure-CLI-Option `--json` ein. (Zur Analyse von JSON können Sie **jsawk** oder eine andere Sprachbibliothek Ihrer Wahl verwenden.)
 
 ```bash
 azure group show TestRG --json | jq                                                                                      
@@ -525,7 +525,7 @@ data:    FQDN                            : testsubdomain.westeurope.cloudapp.azu
 info:    network public-ip create command OK
 ```
 
-Dies ist außerdem eine Ressource der obersten Ebene, die Sie mit `azure group show` anzeigen können.
+Die öffentliche IP-Adresse ist außerdem eine Ressource der obersten Ebene, die Sie mit `azure group show` anzeigen können.
 
 ```bash
 azure group show TestRG --json | jq '.'
@@ -584,7 +584,7 @@ Ausgabe:
 }
 ```
 
-Sie können mit dem umfassenderen Befehl `azure network public-ip show` auf weitere Ressourcendetails zugreifen, z.B. auf den vollqualifizierten Domänennamen (FQDN) der Unterdomäne. Beachten Sie, dass die öffentliche IP-Adressressource logisch zugeordnet wurde, aber noch keine spezielle Adresse zugewiesen wurde. Hierfür benötigen Sie einen Load Balancer, den wir noch nicht erstellt haben.
+Sie können mit dem umfassenden Befehl `azure network public-ip show` auf weitere Ressourcendetails zugreifen, z.B. auf den vollqualifizierten Domänennamen (FQDN) der Unterdomäne. Die öffentliche IP-Adressressource wurde logisch zugeordnet, aber es wurde noch keine spezielle Adresse zugewiesen. Um eine IP-Adresse zu erhalten, benötigen Sie einen Load Balancer, den wir noch nicht erstellt haben.
 
 ```bash
 azure network public-ip show TestRG TestPIP --json | jq '.'
@@ -610,7 +610,7 @@ Ausgabe:
 ```
 
 ## Erstellen eines Load Balancers und IP-Pools
-Wenn Sie einen Load Balancer erstellen, können sie den Datenverkehr auf mehrere virtuelle Computer verteilen. Dies ist z.B. bei der Ausführung von Webanwendungen möglich. Der Load Balancer gewährleistet zudem Redundanz für Ihre Anwendung, indem mehrere virtuelle Computer ausgeführt werden, die bei der Wartung oder bei hoher Auslastung auf Anforderungen von Benutzern reagieren.
+Wenn Sie einen Load Balancer erstellen, können sie den Datenverkehr auf mehrere virtuelle Computer verteilen. Der Load Balancer gewährleistet zudem Redundanz für Ihre Anwendung, indem mehrere virtuelle Computer ausgeführt werden, die bei der Wartung oder bei hoher Auslastung auf Anforderungen von Benutzern reagieren.
 
 Der Load Balancer wird wie folgt erstellt:
 
@@ -657,7 +657,7 @@ data:    Public IP address id            : /subscriptions/guid/resourceGroups/Te
 info:    network lb frontend-ip create command OK
 ```
 
-Beachten Sie die Verwendung der Option `--public-ip-name` zum Übergeben der zuvor erstellten TestLBPIP-Adresse. Damit wird die öffentliche IP-Adresse dem Load Balancer zugewiesen, sodass die virtuellen Computer über das Internet erreicht werden können.
+Beachten Sie die Verwendung der Option `--public-ip-name` zum Übergeben der zuvor erstellten TestLBPIP-Adresse. Die Zuweisung der öffentlichen IP-Adresse zum Load Balancer ermöglicht Ihnen, die virtuellen Computer über das Internet zu erreichen.
 
 Als Nächstes erstellen wir den zweiten IP-Pool für den Back-End-Datenverkehr:
 
@@ -722,7 +722,7 @@ Ausgabe:
 ```
 
 ## Erstellen der NAT-Regeln für den Load Balancer
-Damit der Datenverkehr durch den Load Balancer fließt, müssen wir NAT-Regeln erstellen, die eingehende oder ausgehende Aktionen angeben. Sie können das verwendete Protokoll angeben und dann wie gewünscht externe Ports internen Ports zuordnen. Wir erstellen für unsere Umgebung einige Regeln, die SSH-Datenverkehr durch den Load Balancer an die virtuellen Computer ermöglichen. Wir richten die TCP-Ports 4222 und 4223 so ein, dass der Datenverkehr an den TCP-Port 22 auf den virtuellen Computern geleitet wird (die wir später erstellen):
+Damit der Datenverkehr durch den Load Balancer fließt, müssen wir NAT-Regeln erstellen, die eingehende oder ausgehende Aktionen angeben. Sie können das verwendete Protokoll angeben und dann wie gewünscht externe Ports internen Ports zuordnen. Wir erstellen für unsere Umgebung einige Regeln, die SSH-Datenverkehr durch den Load Balancer an die virtuellen Computer ermöglichen. Wir richten die TCP-Ports 4222 und 4223 so ein, dass der Datenverkehr auf den virtuellen Computern (die wir später erstellen) an den TCP-Port 22 geleitet wird:
 
 ```bash
 azure network lb inbound-nat-rule create -g TestRG -l TestLB -n VM1-SSH -p tcp -f 4222 -b 22
@@ -754,7 +754,7 @@ Wiederholen Sie dies für die zweite NAT-Regel für SSH:
 azure network lb inbound-nat-rule create -g TestRG -l TestLB -n VM2-SSH -p tcp -f 4223 -b 22
 ```
 
-Wir erstellen auch eine NAT-Regel für den TCP-Port 80 und binden die Regel in die IP-Pools ein. Wenn wir dies tun, anstatt die Regel einzeln auf den virtuellen Computern einzubinden, können wir VMs einfach dem IP-Pool hinzufügen oder daraus entfernen. Der Load Balancer passt dann automatisch den Fluss des Datenverkehrs an:
+Wir erstellen auch eine NAT-Regel für den TCP-Port 80 und binden die Regel in die IP-Pools ein. Wenn wir die Regel in den IP-Pool einbinden, anstatt die Regel einzeln auf den virtuellen Computern einzubinden, können wir VMs einfach dem IP-Pool hinzufügen oder daraus entfernen. Der Load Balancer passt dann automatisch den Fluss des Datenverkehrs an:
 
 ```bash
 azure network lb rule create -g TestRG -l TestLB -n WebRule -p tcp -f 80 -b 80 \
@@ -807,7 +807,7 @@ data:    Number of probes                : 4
 info:    network lb probe create command OK
 ```
 
-Hier haben wir ein Intervall von 15 Sekunden für die Integritätstests angegeben. Bei maximal vier Tests (1 Minute) können Fehler auftreten, bevor der Load Balancer feststellt, dass der Host nicht mehr funktionsfähig ist.
+Hier haben wir ein Intervall von 15 Sekunden für unsere Integritätstests angegeben. Bei maximal vier Tests (in 1 Minute) können Fehler auftreten, bevor der Load Balancer feststellt, dass der Host nicht mehr funktionsfähig ist.
 
 ## Überprüfen des Load Balancers
 Jetzt ist die Load Balancer-Konfiguration abgeschlossen. Folgende Schritte haben Sie ausgeführt:
@@ -816,7 +816,7 @@ Jetzt ist die Load Balancer-Konfiguration abgeschlossen. Folgende Schritte haben
 2. Dann erstellten Sie einen Front-End-IP-Adresspool und wiesen ihm eine öffentliche IP-Adresse zu.
 3. Anschließend erstellten Sie einen Back-End-IP-Adresspool, mit dem virtuelle Computer eine Verbindung herstellen können.
 4. Danach haben Sie NAT-Regeln für den SSH-Datenverkehr für die virtuellen Computer zu Verwaltungszwecken sowie eine Regel für den TCP-Port 80 für die Web-App erstellt.
-5. Schließlich haben Sie einen Integritätstest zur regelmäßigen Überprüfung der virtuellen Computer hinzugefügt. Dies stellt sicher, dass Benutzer nicht versuchen, auf einen virtuellen Computer zuzugreifen, der nicht mehr funktioniert bzw. keine Inhalte mehr liefert.
+5. Schließlich haben Sie einen Integritätstest zur regelmäßigen Überprüfung der virtuellen Computer hinzugefügt. Dieser Integritätstest stellt sicher, dass Benutzer nicht versuchen, auf einen virtuellen Computer zuzugreifen, der nicht mehr funktioniert bzw. keine Inhalte mehr liefert.
 
 So sieht Ihr Load Balancer nun aus:
 
@@ -978,7 +978,7 @@ data:
 info:    network nic create command OK
 ```
 
-Sie können die Details sehen, wenn Sie die Ressource direkt untersuchen. Verwenden Sie dazu den Befehl `azure network nic show`:
+Sie können die Details sehen, wenn Sie die Ressource direkt untersuchen. Untersuchen Sie die Ressource mithilfe des `azure network nic show`-Befehls:
 
 ```bash
 azure network nic show TestRG LB-NIC1 --json | jq '.'
@@ -1054,7 +1054,7 @@ azure network nsg rule create --protocol tcp --direction inbound --priority 1001
     --destination-port-range 80 --access allow -g TestRG -a TestNSG -n HTTPRule
 ```
 
-> [AZURE.NOTE] Die eingehende Regel ist ein Filter für eingehende Netzwerkverbindungen. In diesem Beispiel binden wir die NSG an die virtuelle NIC der virtuellen Computer. Dies bedeutet, dass alle Anforderungen an Port 22 über die NIC auf dem virtuellen Computer übergeben werden. Dies ist eine Regel über eine Netzwerkverbindung, und nicht über einen Endpunkt wie in klassischen Bereitstellungen. Dies bedeutet, dass Sie zum Öffnen eines Ports `--source-port-range` auf „*“ (Standardwert) festgelegt lassen müssen, um eingehende Anforderungen von **jedem** anfordernden Port zu akzeptieren. Ports sind in der Regel dynamisch.
+> [AZURE.NOTE] Die eingehende Regel ist ein Filter für eingehende Netzwerkverbindungen. In diesem Beispiel binden wir die NSG an die virtuelle NIC der virtuellen Computer. Dies bedeutet, dass alle Anforderungen an Port 22 über die NIC auf dem virtuellen Computer übergeben werden. Dies ist eine Eingangsregel über eine Netzwerkverbindung und nicht über einen Endpunkt wie in klassischen Bereitstellungen. Zum Öffnen eines Ports müssen Sie die Festlegung von `--source-port-range` auf „*“ (Standardwert) beibehalten, um eingehende Anforderungen von **jedem** anfordernden Port zu akzeptieren. Ports sind in der Regel dynamisch.
 
 ## Binden an die Netzwerkkarte
 
@@ -1085,12 +1085,12 @@ Weitere Informationen finden Sie unter [Verwalten der Verfügbarkeit virtueller 
 
 Sie haben die Speicher- und Netzwerkressourcen zur Unterstützung von über das Internet erreichbaren virtuellen Computern erstellt. Wir erstellen jetzt diese virtuellen Computer und schützen sie mit einem SSH-Schlüssel ohne Kennwort. In diesem Fall erstellen wir eine Ubuntu-VM basierend auf dem aktuellen LTS-Stand. Wir ermitteln diese Imageinformationen per `azure vm image list`. Dies wird unter [Suchen nach Azure VM-Images](virtual-machines-linux-cli-ps-findimage.md) beschrieben.
 
-Wir haben ein Image mithilfe des Befehls `azure vm image list westeurope canonical | grep LTS` ausgewählt. In diesem Fall verwenden wir `canonical:UbuntuServer:14.04.4-LTS:14.04.201604060`. Für das letzte Feld übergeben wir `latest`, sodass in Zukunft immer die letzten Builds abgerufen werden. (Die Zeichenfolge, die wir verwenden, ist `canonical:UbuntuServer:14.04.4-LTS:14.04.201604060`).
+Wir haben ein Image mithilfe des Befehls `azure vm image list westeurope canonical | grep LTS` ausgewählt. In diesem Fall verwenden wir `canonical:UbuntuServer:16.04.0-LTS:16.04.201608150`. Für das letzte Feld übergeben wir `latest`, sodass in Zukunft immer die letzten Builds abgerufen werden. (Die Zeichenfolge, die wir verwenden, ist `canonical:UbuntuServer:16.04.0-LTS:16.04.201608150`).
 
 Der nächste Schritt ist allen Benutzern vertraut, die mit **ssh-keygen -t rsa -b 2048** bereits ein Paar aus einem öffentlichen und einem privaten SSH-RSA-Schlüssel unter Linux oder Mac erstellt haben. Wenn sich in Ihrem `~/.ssh`-Verzeichnis keine Zertifikatsschlüsselpaare befinden, können Sie sie erstellen:
 
 - Automatisch mithilfe der Option `azure vm create --generate-ssh-keys`.
-- Manuell mithilfe [der Anweisungen zur Selbsterstellung](virtual-machines-linux-ssh-from-linux.md).
+- Manuell mithilfe [der Anweisungen zur Selbsterstellung](virtual-machines-linux-mac-create-ssh-keys.md).
 
 Alternativ können Sie mit der --admin-Kennwortmethode Ihre SSH-Verbindungen nach der Erstellung des virtuellen Computers authentifizieren. Diese Methode ist in der Regel weniger sicher.
 
@@ -1107,7 +1107,7 @@ azure vm create \
     --vnet-name TestVnet \
     --vnet-subnet-name FrontEnd \
     --storage-account-name computeteststore \
-    --image-urn canonical:UbuntuServer:14.04.4-LTS:latest \
+    --image-urn canonical:UbuntuServer:16.04.0-LTS:latest \
     --ssh-publickey-file ~/.ssh/id_rsa.pub \
     --admin-username ops
 ```
@@ -1117,8 +1117,8 @@ Ausgabe:
 ```bash
 info:    Executing command vm create
 + Looking up the VM "TestVM1"
-info:    Verifying the public key SSH file: /home/ifoulds/.ssh/id_rsa.pub
-info:    Using the VM Size "Standard_A1"
+info:    Verifying the public key SSH file: /home/ahmet/.ssh/id_rsa.pub
+info:    Using the VM Size "Standard_DS1"
 info:    The [OS, Data] Disk or image configuration requires storage account
 + Looking up the storage account computeteststore
 + Looking up the availability set "TestAvailSet"
@@ -1144,17 +1144,11 @@ The authenticity of host '[testlb.westeurope.cloudapp.azure.com]:4222 ([xx.xx.xx
 ECDSA key fingerprint is 94:2d:d0:ce:6b:fb:7f:ad:5b:3c:78:93:75:82:12:f9.
 Are you sure you want to continue connecting (yes/no)? yes
 Warning: Permanently added '[testlb.westeurope.cloudapp.azure.com]:4222,[xx.xx.xx.xx]:4222' (ECDSA) to the list of known hosts.
-Welcome to Ubuntu 14.04.4 LTS (GNU/Linux 3.19.0-58-generic x86_64)
+Welcome to Ubuntu 16.04.1 LTS (GNU/Linux 4.4.0-34-generic x86_64)
 
- * Documentation:  https://help.ubuntu.com/
-
-  System information as of Wed Apr 27 23:44:06 UTC 2016
-
-  System load: 0.37              Memory usage: 5%   Processes:       81
-  Usage of /:  37.3% of 1.94GB   Swap usage:   0%   Users logged in: 0
-
-  Graph this data and manage this system at:
-    https://landscape.canonical.com/
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
 
   Get cloud support with Ubuntu Advantage Cloud Guest:
     http://www.ubuntu.com/business/services/cloud
@@ -1163,13 +1157,15 @@ Welcome to Ubuntu 14.04.4 LTS (GNU/Linux 3.19.0-58-generic x86_64)
 0 updates are security updates.
 
 
-
 The programs included with the Ubuntu system are free software;
 the exact distribution terms for each program are described in the
 individual files in /usr/share/doc/*/copyright.
 
 Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
 applicable law.
+
+To run a command as administrator (user "root"), use "sudo <command>".
+See "man sudo_root" for details.
 
 ops@TestVM1:~$
 ```
@@ -1187,7 +1183,7 @@ azure vm create \
     --vnet-name TestVnet \
     --vnet-subnet-name FrontEnd \
     --storage-account-name computeteststore \
-    --image-urn canonical:UbuntuServer:14.04.4-LTS:latest \
+    --image-urn canonical:UbuntuServer:16.04.0-LTS:latest \
     --ssh-publickey-file ~/.ssh/id_rsa.pub \
     --admin-username ops
 ```
@@ -1204,29 +1200,29 @@ Ausgabe:
 info:    Executing command vm show
 + Looking up the VM "TestVM1"
 + Looking up the NIC "LB-NIC1"
-data:    Id                              :/subscriptions/8fa5cd83-7fbb-431a-af16-4a20dede8802/resourceGroups/testrg/providers/Microsoft.Compute/virtualMachines/TestVM1
+data:    Id                              :/subscriptions/guid/resourceGroups/TestRG/providers/Microsoft.Compute/virtualMachines/TestVM1
 data:    ProvisioningState               :Succeeded
 data:    Name                            :TestVM1
 data:    Location                        :westeurope
 data:    Type                            :Microsoft.Compute/virtualMachines
 data:
 data:    Hardware Profile:
-data:      Size                          :Standard_A1
+data:      Size                          :Standard_DS1
 data:
 data:    Storage Profile:
 data:      Image reference:
 data:        Publisher                   :canonical
 data:        Offer                       :UbuntuServer
-data:        Sku                         :14.04.4-LTS
+data:        Sku                         :16.04.0-LTS
 data:        Version                     :latest
 data:
 data:      OS Disk:
 data:        OSType                      :Linux
-data:        Name                        :cli1cca1d20a1dcf56c-os-1461800591317
+data:        Name                        :clib45a8b650f4428a1-os-1471973896525
 data:        Caching                     :ReadWrite
 data:        CreateOption                :FromImage
 data:        Vhd:
-data:          Uri                       :https://computeteststore.blob.core.windows.net/vhds/cli1cca1d20a1dcf56c-os-1461800591317.vhd
+data:          Uri                       :https://computeteststore.blob.core.windows.net/vhds/clib45a8b650f4428a1-os-1471973896525.vhd
 data:
 data:    OS Profile:
 data:      Computer Name                 :TestVM1
@@ -1238,13 +1234,13 @@ data:    Network Profile:
 data:      Network Interfaces:
 data:        Network Interface #1:
 data:          Primary                   :true
-data:          MAC Address               :00-0D-3A-20-F8-8B
+data:          MAC Address               :00-0D-3A-24-D4-AA
 data:          Provisioning State        :Succeeded
 data:          Name                      :LB-NIC1
 data:          Location                  :westeurope
 data:
 data:    AvailabilitySet:
-data:      Id                            :/subscriptions/guid/resourceGroups/testrg/providers/Microsoft.Compute/availabilitySets/TESTAVAILSET
+data:      Id                            :/subscriptions/guid/resourceGroups/TestRG/providers/Microsoft.Compute/availabilitySets/TESTAVAILSET
 data:
 data:    Diagnostics Profile:
 data:      BootDiagnostics Enabled       :true
@@ -1252,19 +1248,20 @@ data:      BootDiagnostics StorageUri    :https://computeteststore.blob.core.win
 data:
 data:      Diagnostics Instance View:
 info:    vm show command OK
+
 ```
 
 
 ## Exportieren der Umgebung als Vorlage
-Nachdem Sie nun diese Umgebung erstellt haben, möchten Sie vielleicht eine weitere Entwicklungsumgebung mit den gleichen Parametern oder eine entsprechende Produktionsumgebung erstellen. Der Resource Manager verwendet die JSON-Vorlagen, die alle Parameter für Ihre Umgebung definieren. Dies bedeutet, dass Sie ganze Umgebungen durch Verweisen auf diese JSON-Vorlage erstellen können. Sie können [JSON-Vorlagen entweder manuell erstellen](../resource-group-authoring-templates.md) oder einfach eine vorhandene Umgebung exportieren, um eine JSON-Vorlage zu erstellen:
+Nachdem Sie nun diese Umgebung erstellt haben, möchten Sie vielleicht eine weitere Entwicklungsumgebung mit den gleichen Parametern oder eine entsprechende Produktionsumgebung erstellen. Der Resource Manager verwendet die JSON-Vorlagen, die alle Parameter für Ihre Umgebung definieren. Sie erstellen ganze Umgebungen durch Verweisen auf diese JSON-Vorlage. Sie können [JSON-Vorlagen entweder manuell erstellen](../resource-group-authoring-templates.md) oder einfach eine vorhandene Umgebung exportieren, um eine JSON-Vorlage zu erstellen:
 
 ```bash
 azure group export TestRG
 ```
 
-Auf diese Weise wird die `TestRG.json`-Datei in Ihrem aktuellen Arbeitsverzeichnis erstellt. Wenn Sie eine neue Umgebung aus dieser Vorlage erstellen, werden Sie aufgefordert, alle Ressourcennamen, beispielsweise die Namen für Load Balancer, Netzwerkschnittstellen, virtuelle Computer usw. einzugeben. Diese können Sie in Ihre Vorlagendatei eintragen, indem Sie `-p` oder `--includeParameterDefaultValue` dem Befehl `azure group export` hinzufügen, der zuvor gezeigt wurde. Bearbeiten Sie die JSON-Vorlage zum Angeben der Ressourcennamen, oder [erstellen Sie eine Datei „parameters.json“](../resource-group-authoring-templates.md#parameters), die die Ressourcennamen angibt.
+Dieser Befehl erstellt die `TestRG.json`-Datei in Ihrem aktuellen Arbeitsverzeichnis. Wenn Sie eine Umgebung aus dieser Vorlage erstellen, werden Sie aufgefordert, alle Ressourcennamen, beispielsweise die Namen für Load Balancer, Netzwerkschnittstellen oder virtuelle Computer einzugeben. Sie können diese Namen in Ihre Vorlagendatei eintragen, indem Sie die Parameter `-p` oder `--includeParameterDefaultValue` dem Befehl `azure group export` hinzufügen, der zuvor gezeigt wurde. Bearbeiten Sie die JSON-Vorlage zum Angeben der Ressourcennamen, oder [erstellen Sie eine Datei „parameters.json“](../resource-group-authoring-templates.md#parameters), die die Ressourcennamen angibt.
 
-Erstellen Sie wie folgt eine neue Umgebung aus Ihrer Vorlage:
+Erstellen Sie wie folgt eine Umgebung aus Ihrer Vorlage:
 
 ```bash
 azure group deployment create -f TestRG.json -g NewRGFromTemplate
@@ -1276,4 +1273,4 @@ Möglicherweise möchten Sie [weitere Informationen zum Bereitstellen von Vorlag
 
 Sie können jetzt beginnen, mit mehreren Netzwerkkomponenten und VMs zu arbeiten. Sie können diese Beispielumgebung nutzen, um Ihre Anwendung mithilfe der hier eingeführten zentralen Komponenten zu erstellen.
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0824_2016-->

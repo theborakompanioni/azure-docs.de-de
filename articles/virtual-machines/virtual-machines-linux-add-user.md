@@ -15,13 +15,13 @@
 		ms.tgt_pltfrm="vm-linux"
 		ms.devlang="na"
 		ms.topic="article"
-		ms.date="03/04/2016"
+		ms.date="08/18/2016"
 		ms.author="v-livech"
 />
 
 # Hinzufügen eines Benutzers zu einer Azure-VM
 
-Bei jeder neu gestarteten Linux-VM ist eine der ersten Aufgaben die Erstellung eines neuen Benutzers. In diesem Artikel sind die Schritte für das Erstellen eines sudo-Benutzerkontos, das Festlegen des Kennworts, das Hinzufügen von öffentlichen SSH-Schlüsseln und das Verwenden von `visudo` für die Nutzung von sudo ohne Kennwort ausführlich beschrieben.
+Eine der ersten Aufgaben jeder neu gestarteten Linux-VM ist die Erstellung eines neuen Benutzers. In diesem Artikel sind die Schritte für das Erstellen eines sudo-Benutzerkontos, das Festlegen des Kennworts, das Hinzufügen von öffentlichen SSH-Schlüsseln und das Verwenden von `visudo` für die Nutzung von sudo ohne Kennwort ausführlich beschrieben.
 
 Voraussetzungen: [Ein Azure-Konto](https://azure.microsoft.com/pricing/free-trial/), [öffentliche und private SSH-Schlüssel](virtual-machines-linux-mac-create-ssh-keys.md), eine Azure-Ressourcengruppe und die Azure-Befehlszeilenschnittstelle, die installiert und mit `azure config mode arm` in den Azure Resource Manager-Modus geschaltet wurde.
 
@@ -29,23 +29,23 @@ Voraussetzungen: [Ein Azure-Konto](https://azure.microsoft.com/pricing/free-tria
 
 ```bash
 # Add a new user on RedHat family distros
-bill@slackware$ sudo useradd -G wheel exampleUser
+sudo useradd -G wheel exampleUser
 
 # Add a new user on Debian family distros
-bill@slackware$ sudo useradd -G sudo exampleUser
+sudo useradd -G sudo exampleUser
 
 # Set a password
-bill@slackware$ sudo passwd exampleUser
+sudo passwd exampleUser
 Enter new UNIX password:
 Retype new UNIX password:
 passwd: password updated successfully
 
 # Copy the SSH Public Key to the new user
-bill@slackware$ ssh-copy-id -i ~/.ssh/id_rsa exampleuser@exampleserver
+ssh-copy-id -i ~/.ssh/id_rsa exampleuser@exampleserver
 
 # Change sudoers to allow no password
 # Execute visudo as root to edit the /etc/sudoers file
-bill@slackware$ visudo
+visudo
 
 # On RedHat family distros uncomment this line:
 ## Same thing without a password
@@ -67,20 +67,20 @@ bill@slackware$ visudo
 bill@slackware$ ssh -i ~/.ssh/id_rsa exampleuser@exampleserver
 
 # Verify sudo access
-exampleuser@exampleserver$ sudo top
+sudo top
 ```
 
 ## Ausführliche exemplarische Vorgehensweise
 
 ### Einführung
 
-Eine der ersten und häufigsten Aufgaben bei einem Server ist das Hinzufügen eines Benutzerkontos. Stammanmeldungen sollten immer deaktiviert werden, und auch das Stammkonto selbst sollte niemals mit dem Linux-Server verwendet werden, sondern nur sudo. Die richtige Vorgehensweise für die Verwaltung und Nutzung von Linux besteht darin, einen neuen Benutzer zu erstellen und diesem Benutzer mit sudo dann Berechtigungen für die Stammeskalation zu gewähren.
+Eine der ersten und häufigsten Aufgaben bei einem Server ist das Hinzufügen eines Benutzerkontos. Stammanmeldungen sollten deaktiviert werden, und das Stammkonto selbst sollte nicht mit dem Linux-Server verwendet werden, sondern nur sudo. Bei richtiger Verwaltung und Nutzung von Linux gewähren Sie einem Benutzer mit sudo Berechtigungen für die Stammeskalation.
 
-Hierfür verwenden wir den Befehl `useradd`, mit dem `/etc/passwd`, `/etc/shadow`, `/etc/group` und `/etc/gshadow` geändert werden, um den neuen Linux-Benutzer zu erstellen. Wir fügen dem Befehl `useradd` ein Befehlszeilenflag hinzu, um den neuen Benutzer auch der richtigen sudo-Gruppe unter Linux hinzuzufügen. Mit `useradd` wird zwar ein Eintrag unter `/etc/passwd` erstellt, aber für das neue Benutzerkonto wird kein Kennwort vergeben. Wir erstellen ein Anfangskennwort für den neuen Benutzer, indem wir den einfachen Befehl `passwd` verwenden. Im letzten Schritt ändern wir die sudo-Regeln, damit der Benutzer Befehle mit sudo-Berechtigungen ausführen kann, ohne für jeden Befehl ein Kennwort eingeben zu müssen. Da sich der Benutzer mit dem Schlüsselpaar aus öffentlichem und privatem Schlüssel angemeldet hat, gehen wir davon aus, dass das Benutzerkonto vor Angreifern sicher ist, und lassen den sudo-Zugriff ohne Kennwort zu.
+Mit dem Befehl `useradd` fügen wir der Linux-VM-Benutzerkonten hinzu. Ausführen von `useradd` ändert `/etc/passwd`, `/etc/shadow`, `/etc/group` und `/etc/gshadow`. Wir fügen dem Befehl `useradd` ein Befehlszeilenflag hinzu, um den neuen Benutzer auch der richtigen sudo-Gruppe unter Linux hinzuzufügen. Mit `useradd` wird zwar ein Eintrag unter `/etc/passwd` erstellt, aber für das neue Benutzerkonto wird kein Kennwort vergeben. Wir erstellen ein Anfangskennwort für den neuen Benutzer, indem wir den einfachen Befehl `passwd` verwenden. Im letzten Schritt ändern wir die sudo-Regeln, damit der Benutzer Befehle mit sudo-Berechtigungen ausführen kann, ohne für jeden Befehl ein Kennwort eingeben zu müssen. Mit der Anmeldung mit dem privaten Schlüssel gehen wir davon aus, dass das Benutzerkonto vor Angreifern sicher ist, und lassen den sudo-Zugriff ohne Kennwort zu.
 
 ### Hinzufügen eines einzelnen sudo-Benutzers zu einer Azure-VM
 
-Melden Sie sich mit SSH-Schlüsseln an der Azure-VM an. Falls Sie den Zugriff mit einem öffentlichen SSH-Schlüssel noch nicht eingerichtet haben, sollten Sie zuerst den Artikel [Using Public Key Authentication with Azure](http://link.to/article) (Verwenden der Authentifizierung mit öffentlichem Schlüssel für Azure) durcharbeiten.
+Melden Sie sich mit SSH-Schlüsseln bei der Azure-VM an. Falls Sie den Zugriff mit einem öffentlichen SSH-Schlüssel noch nicht eingerichtet haben, sollten Sie zuerst den Artikel [Using Public Key Authentication with Azure](http://link.to/article) (Verwenden der Authentifizierung mit öffentlichem Schlüssel für Azure) durcharbeiten.
 
 Mit dem Befehl `useradd` werden die folgenden Aufgaben durchgeführt:
 
@@ -95,18 +95,18 @@ Mit dem Befehlszeilenflag `-G` wird das neue Benutzerkonto der richtigen Linux-G
 
 ```bash
 # On RedHat family distros
-bill@slackware$ sudo useradd -G wheel exampleUser
+sudo useradd -G wheel exampleUser
 
 # On Debian family distros
-bill@slackware$ sudo useradd -G sudo exampleUser
+sudo useradd -G sudo exampleUser
 ```
 
 #### Festlegen eines Kennworts
 
-Mit dem Befehl `useradd` wird der neue Benutzer erstellt und `/etc/passwd` und `/etc/gpasswd` jeweils ein Eintrag hinzugefügt, aber das Kennwort wird nicht festgelegt. Dies führen wir nun mit dem Befehl `passwd` durch.
+Mit dem Befehl `useradd` wird der neue Benutzer erstellt und `/etc/passwd` und `/etc/gpasswd` jeweils ein Eintrag hinzugefügt, aber das Kennwort wird nicht festgelegt. Das Kennwort wird dem Eintrag mit dem Befehl `passwd` hinzugefügt.
 
 ```bash
-bill@slackware$ sudo passwd exampleUser
+sudo passwd exampleUser
 Enter new UNIX password:
 Retype new UNIX password:
 passwd: password updated successfully
@@ -116,21 +116,21 @@ Wir verfügen jetzt über einen Benutzer mit sudo-Berechtigungen auf dem Server.
 
 ### Hinzufügen des öffentlichen SSH-Schlüssels zum neuen Benutzerkonto
 
-Verwenden Sie auf Ihrem Computer den Befehl `ssh-copy-id` mit dem neuen Kennwort, das Sie gerade festgelegt haben.
+Verwenden Sie auf Ihrem Computer den Befehl `ssh-copy-id` mit dem neuen Kennwort.
 
 ```bash
-bill@slackware$ ssh-copy-id -i ~/.ssh/id_rsa exampleuser@exampleserver
+ssh-copy-id -i ~/.ssh/id_rsa exampleuser@exampleserver
 ```
 
 ### Verwenden von visudo, um die sudo-Nutzung ohne Kennwort zu ermöglichen
 
-Beim Verwenden von `visudo` zum Bearbeiten der Datei `/etc/sudoers` werden einige Schutzebenen festgelegt, um zu verhindern, dass diese sehr wichtige Datei geändert wird. Wenn `visudo` ausgeführt wird, wird die Datei `/etc/sudoers` gesperrt. So wird sichergestellt, dass während der aktiven Bearbeitung keine anderen Personen Änderungen vornehmen können. Die Datei `/etc/sudoers` wird von `visudo` auch auf Fehler untersucht, wenn Sie versuchen, sie zu speichern oder zu beenden. Hiermit wird dafür gesorgt, dass Sie keine fehlerhafte sudoers-Datei im System zurücklassen können.
+Beim Verwenden von `visudo` zum Bearbeiten der Datei `/etc/sudoers` werden einige Schutzebenen festgelegt, um zu verhindern, dass diese wichtige Datei geändert wird. Wenn `visudo` ausgeführt wird, wird die Datei `/etc/sudoers` gesperrt. So wird sichergestellt, dass während der aktiven Bearbeitung kein anderer Benutzer Änderungen vornehmen kann. Die Datei `/etc/sudoers` wird von `visudo` auch auf Fehler untersucht, wenn Sie versuchen, sie zu speichern oder zu beenden, sodass Sie keine beschädigte sudo-Datei speichern können.
 
 Es befinden sich bereits Benutzer in der richtigen Standardgruppe für den sudo-Zugriff. Jetzt aktivieren wir diese Gruppen, um sudo ohne Kennwort zu verwenden.
 
 ```bash
 # Execute visudo as root to edit the /etc/sudoers file
-bill@slackware$ visudo
+visudo
 
 # On RedHat family distros uncomment this line:
 ## Same thing without a password
@@ -152,10 +152,10 @@ bill@slackware$ visudo
 
 ```bash
 # Verify the SSH keys & User account
-bill@slackware$ ssh -i ~/.ssh/id_rsa exampleuser@exampleserver
+ssh -i ~/.ssh/id_rsa exampleuser@exampleserver
 
 # Verify sudo access
-exampleuser@exampleserver$ sudo top
+sudo top
 ```
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0824_2016-->

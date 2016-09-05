@@ -14,32 +14,31 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="05/18/2016"
+   ms.date="08/18/2016"
    ms.author="mandia"/>
 
 # Erste Schritte mit dem Facebook-Connector
-Verbinden Sie sich mit Facebook, um z. B. die Chronik zu ergänzen oder einen Seitenfeed abzurufen. Der Facebook-Connector kann verwendet werden in:
-
-- Logik-Apps (in diesem Thema erläutert)
-- PowerApps (eine vollständige Liste finden Sie in der [PowerApps-Verbindungsliste](https://powerapps.microsoft.com/tutorials/connections-list/))
+Verbinden Sie sich mit Facebook, um z. B. die Chronik zu ergänzen oder einen Seitenfeed abzurufen.
 
 >[AZURE.NOTE] Diese Version des Artikels gilt für die Schemaversion 2015-08-01-preview für Logik-Apps.
 
 
 Facebook ermöglicht Folgendes:
 
-- Erstellen eines Geschäftsworkflows basierend auf den Daten, die aus Facebook abgerufen werden. 
+- Erstellen eines Geschäftsworkflows basierend auf den Daten, die aus Facebook abgerufen werden.
 - Verwenden eines Triggers, wenn ein neuer Beitrag empfangen wird.
-- Verwenden von Aktionen, die z. B. die Chronik ergänzen oder einen Seitenfeed abrufen. Diese Aktionen erhalten eine Antwort und stellen anschließend die Ausgabe anderen Aktionen zur Verfügung. Wenn ein neuer Beitrag in Ihrer Chronik vorhanden ist, können Sie diesen Beitrag per Push an Ihren Twitter-Feed übertragen. 
+- Verwenden von Aktionen, die z. B. die Chronik ergänzen oder einen Seitenfeed abrufen. Diese Aktionen erhalten eine Antwort und stellen anschließend die Ausgabe anderen Aktionen zur Verfügung. Wenn ein neuer Beitrag in Ihrer Chronik vorhanden ist, können Sie diesen Beitrag per Push an Ihren Twitter-Feed übertragen.
 
-Informationen zum Hinzufügen eines Vorgangs in Logik-Apps finden Sie unter [Erstellen einer Logik-App zum Verbinden von SaaS-Diensten](../app-service-logic/app-service-logic-create-a-logic-app.md).
+
+
+Informationen zum Hinzufügen eines Vorgangs in Logik-Apps finden Sie unter [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
 ## Trigger und Aktionen
 Der Facebook-Connector weist die folgenden Trigger und Aktionen auf.
 
 | Trigger | Aktionen|
 | --- | --- |
-| <ul><li>Wenn ein neuer Beitrag in meiner Chronik vorhanden ist</li></ul> |<ul><li>Feed aus meiner Chronik abrufen</li><li>Beitrag meiner Chronik hinzufügen</li><li>Wenn ein neuer Beitrag in meiner Chronik vorhanden ist</li><li>Seitenfeed abrufen</li><li>Benutzerchronik abrufen</li><li>Beitrag der Seite hinzufügen</li></ul>
+| <ul><li>When there is a new post on my timeline</li></ul> (Wenn ein neuer Beitrag in meiner Chronik vorhanden ist) |<ul><li>Feed aus meiner Chronik abrufen</li><li>Beitrag meiner Chronik hinzufügen</li><li>Wenn ein neuer Beitrag in meiner Chronik vorhanden ist</li><li>Seitenfeed abrufen</li><li>Benutzerchronik abrufen</li><li>Beitrag der Seite hinzufügen</li></ul>
 
 Alle Connectors unterstützen Daten im JSON- und XML-Format.
 
@@ -47,7 +46,7 @@ Alle Connectors unterstützen Daten im JSON- und XML-Format.
 Wenn Sie diesen Connector Ihren Logik-Apps hinzufügen, müssen Sie ihnen das Herstellen einer Verbindung mit Ihrem Facebook-Konto erlauben.
 
 1. Melden Sie sich bei Ihrem Facebook-Konto an.
-2. Wählen Sie **Autorisieren** aus, um zu erlauben, dass Ihre Logik-Apps sich mit Ihrer Facebook-Präsenz verbinden und diese nutzen. 
+2. Wählen Sie **Autorisieren** aus, um zuzulassen, dass Ihre Logik-Apps eine Verbindung mit Ihrem Facebook-Konto herstellen und es nutzen.
 
 >[AZURE.INCLUDE [Schritte zum Herstellen einer Verbindung mit Facebook](../../includes/connectors-create-api-facebook.md)]
 
@@ -72,11 +71,11 @@ Ruft die Feeds aus der Chronik des angemeldeten Benutzers ab. ```GET: /me/feed``
 |200|OK|
 |400|Ungültige Anforderung|
 |500|Interner Serverfehler|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 
 ### Beitrag meiner Chronik hinzufügen
-Senden einer Statusnachricht an die Chronik des angemeldeten Benutzers. ```POST: /me/feed```
+Sendet eine Statusnachricht an die Chronik des angemeldeten Benutzers. ```POST: /me/feed```
 
 | Name|Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
@@ -88,11 +87,11 @@ Senden einer Statusnachricht an die Chronik des angemeldeten Benutzers. ```POST:
 |200|OK|
 |400|Ungültige Anforderung|
 |500|Interner Serverfehler|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 
 ### Wenn ein neuer Beitrag in meiner Chronik vorhanden ist
-Löst einen neuen Datenfluss aus, wenn ein neuer Beitrag in der Chronik des angemeldeten Benutzers vorhanden ist. ```GET: /trigger/me/feed```
+Löst einen neuen Ablauf aus, wenn ein neuer Beitrag in der Chronik des angemeldeten Benutzers vorhanden ist. ```GET: /trigger/me/feed```
 
 Es gibt keine Parameter.
 
@@ -102,7 +101,7 @@ Es gibt keine Parameter.
 |200|OK|
 |400|Ungültige Anforderung|
 |500|Interner Serverfehler|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 
 ### Seitenfeed abrufen
@@ -121,7 +120,7 @@ Ruft Beiträge aus dem Feed einer angegebenen Seite ab. ```GET: /{pageId}/feed``
 |200|OK|
 |400|Ungültige Anforderung|
 |500|Interner Serverfehler|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 
 ### Chronik des Benutzers abrufen
@@ -129,7 +128,7 @@ Ruft Beiträge aus der Chronik eines Benutzers ab. ```GET: /{userId}/feed```
 
 | Name|Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
-|bei der ersten|string|Ja|path|(Keine) |ID des Benutzers, dessen Chronik abgerufen werden soll.|
+|userId|string|Ja|path|(Keine) |ID des Benutzers, dessen Chronik abgerufen werden soll.|
 |limit|integer|no|query|(Keine) |Maximale Anzahl von Beiträgen, die abgerufen werden sollen|
 |durch|string|no|query|(Keine) |Beschränken Sie die Liste der Beiträge auf jene mit angefügtem Speicherort.|
 |filter|string|no|query| (Keine)|Rufen Sie nur Beiträge ab, die einen bestimmten Streamfilter entsprechen.|
@@ -141,11 +140,11 @@ Ruft Beiträge aus der Chronik eines Benutzers ab. ```GET: /{userId}/feed```
 |200|OK|
 |400|Ungültige Anforderung|
 |500|Interner Serverfehler|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 
 ### An Seite senden
-Nachricht als angemeldeter Benutzer an eine Facebook-Seite senden. ```POST: /{pageId}/feed```
+Veröffentlicht als angemeldeter Benutzer eine Nachricht auf einer Facebook-Seite. ```POST: /{pageId}/feed```
 
 | Name|Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
@@ -158,7 +157,7 @@ Nachricht als angemeldeter Benutzer an eine Facebook-Seite senden. ```POST: /{pa
 |200|OK|
 |400|Ungültige Anforderung|
 |500|Interner Serverfehler|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 
 ## Objektdefinitionen
@@ -192,18 +191,18 @@ Das Profil kann ein Benutzer, eine Seite, Anwendung oder Gruppe sein.
 |is\_published|Boolescher Wert|no|
 |link|string|no|
 |message|string|no|
-|name|string|no|
+|Name|string|no|
 |object\_id|string|no|
 |picture|string|no|
 |place|nicht definiert|no|
 |privacy|nicht definiert|no|
 |Eigenschaften|array|no|
-|Quelle|string|no|
+|source|string|no|
 |status\_type|string|no|
 |story|string|no|
 |targeting|nicht definiert|no|
 |auf fest|array|no|
-|type|string|no|
+|Typ|string|no|
 |updated\_time|string|no|
 |with\_tags|nicht definiert|no|
 
@@ -216,7 +215,7 @@ Das Profil kann ein Benutzer, eine Seite, Anwendung oder Gruppe sein.
 |created\_time|string|no|
 |from|nicht definiert|no|
 |message|string|no|
-|type|string|no|
+|Typ|string|no|
 
 #### AdminItem
 
@@ -229,7 +228,7 @@ Das Profil kann ein Benutzer, eine Seite, Anwendung oder Gruppe sein.
 
 |Eigenschaftenname | Datentyp |Erforderlich|
 |---|---|---|
-|name|string|no|
+|Name|string|no|
 |Text|string|no|
 |href|string|no|
 
@@ -240,7 +239,7 @@ Das Profil kann ein Benutzer, eine Seite, Anwendung oder Gruppe sein.
 |message|string|Ja|
 |link|string|no|
 |picture|string|no|
-|name|string|no|
+|Name|string|no|
 |caption|string|no|
 |description|string|no|
 |place|string|no|
@@ -255,7 +254,7 @@ Das Profil kann ein Benutzer, eine Seite, Anwendung oder Gruppe sein.
 |message|string|Ja|
 |link|string|no|
 |picture|string|no|
-|name|string|no|
+|Name|string|no|
 |caption|string|no|
 |description|string|no|
 |actions|array|no|
@@ -290,7 +289,7 @@ Das Profil kann ein Benutzer, eine Seite, Anwendung oder Gruppe sein.
 |id|string|no|
 |first\_name|string|no|
 |last\_name|string|no|
-|name|string|no|
+|Name|string|no|
 |gender|string|no|
 |about|string|no|
 
@@ -298,7 +297,7 @@ Das Profil kann ein Benutzer, eine Seite, Anwendung oder Gruppe sein.
 
 |Eigenschaftenname | Datentyp |Erforderlich|
 |---|---|---|
-|name|string|no|
+|Name|string|no|
 |link|string|no|
 
 #### TargetItem
@@ -334,7 +333,7 @@ Mitglieder dieser Gruppen wird dieser Beitrag wahrscheinlich angezeigt. Bei ande
 |Eigenschaftenname | Datentyp |Erforderlich|
 |---|---|---|
 |id|string|no|
-|name|string|no|
+|Name|string|no|
 |overall\_rating|number|no|
 |location|nicht definiert|no|
 
@@ -347,7 +346,7 @@ Mitglieder dieser Gruppen wird dieser Beitrag wahrscheinlich angezeigt. Bei ande
 |latitude|number|no|
 |located\_in|string|no|
 |longitude|number|no|
-|name|string|no|
+|Name|string|no|
 |region|string|no|
 |state|string|no|
 |street|string|no|
@@ -370,7 +369,7 @@ Mitglieder dieser Gruppen wird dieser Beitrag wahrscheinlich angezeigt. Bei ande
 |link|string|no|
 |picture|string|no|
 |image\_hash|string|no|
-|name|string|no|
+|Name|string|no|
 |description|string|no|
 
 #### PostPhotoRequest
@@ -422,7 +421,7 @@ Mitglieder dieser Gruppen wird dieser Beitrag wahrscheinlich angezeigt. Bei ande
 |Eigenschaftenname | Datentyp |Erforderlich|
 |---|---|---|
 |id|string|Ja|
-|name|string|Ja|
+|Name|string|Ja|
 |start\_time|string|no|
 |end\_time|string|no|
 |timezone|string|no|
@@ -436,4 +435,4 @@ Mitglieder dieser Gruppen wird dieser Beitrag wahrscheinlich angezeigt. Bei ande
 
 [Erstellen Sie eine Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0824_2016-->

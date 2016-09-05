@@ -3,7 +3,7 @@
    description="In diesem Artikel erfahren Sie, worum es sich bei Traffic Manager handelt und ob Traffic Manager die richtige Datenverkehrsrouting-Lösung für Ihre Anwendung ist."
    services="traffic-manager"
    documentationCenter=""
-   authors="jtuliani"
+   authors="sdwheeler"
    manager="carmonm"
    editor="tysonn" />
 <tags 
@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="06/09/2016"
-   ms.author="jtuliani" />
+   ms.author="sewhee" />
 
 # Was ist Traffic Manager?
 
@@ -33,7 +33,7 @@ Traffic Manager unterstützt Sie bei folgenden Aufgaben:
 - **Verbessern der Reaktionsfähigkeit hochleistungsfähiger Anwendungen**: Azure ermöglicht die Ausführung von Clouddiensten oder Websites in Datencentern auf der ganzen Welt. Traffic Manager kann die Reaktionsfähigkeit Ihrer Anwendungen verbessern und Endbenutzer an den Endpunkt mit der niedrigsten Netzwerklatenz für den Client weiterleiten.
 - **Ausführen von Upgrades oder Dienstwartungsarbeiten ohne Ausfallzeiten**: Upgrades und andere geplante Wartungsarbeiten für Ihre Anwendungen können ohne Ausfallzeiten für Endbenutzer durchgeführt werden. Hierzu wird der Datenverkehr während der Wartung von Traffic Manager an andere Endpunkte weitergeleitet.
 - **Kombinieren von lokalen und cloudbasierten Anwendung**: Traffic Manager unterstützt externe, Azure-fremde Endpunkte und kann somit in Hybridszenarien mit cloudbasierten und lokalen Bereitstellungen wie „Erweiterung in die Cloud“, „Migration in die Cloud“ und „Failover in die Cloud“ verwendet werden.
-- **Verteilen des Datenverkehrs für umfangreiche, komplexe Bereitstellungen**: Datenverkehrsrouting-Methoden können mit [geschachtelten Traffic Manager-Profilen](traffic-manager-nested-profiles.md) zu komplexen und flexiblen Datenverkehrsrouting-Konfigurationen kombiniert werden, die auch den Anforderungen umfangreicher und komplexer Bereitstellungen gerecht werden. 
+- **Verteilen des Datenverkehrs für umfangreiche, komplexe Bereitstellungen**: Datenverkehrsrouting-Methoden können mit [geschachtelten Traffic Manager-Profilen](traffic-manager-nested-profiles.md) zu komplexen und flexiblen Datenverkehrsrouting-Konfigurationen kombiniert werden, die auch den Anforderungen umfangreicher und komplexer Bereitstellungen gerecht werden.
 
 [AZURE.INCLUDE [load-balancer-compare-tm-ag-lb-include.md](../../includes/load-balancer-compare-tm-ag-lb-include.md)]
 
@@ -48,4 +48,4 @@ Traffic Manager unterstützt Sie bei folgenden Aufgaben:
 - [Erstellen Sie ein Traffic Manager-Profil](traffic-manager-manage-profiles.md).
  
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0824_2016-->

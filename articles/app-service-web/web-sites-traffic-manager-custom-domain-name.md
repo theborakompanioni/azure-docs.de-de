@@ -41,7 +41,7 @@ Dieser Artikel enthält allgemeine Anweisungen zur Verwendung eines benutzerdefi
 <a name="bkmk_configurecname"></a>
 ## Hinzufügen eines DNS-Datensatzes zu Ihrer benutzerdefinierten Domäne
 
-> [AZURE.NOTE] Wenn Sie eine Domäne über Azure App Service-Web-Apps erworben haben, überspringen Sie die folgenden Schritte, und lesen Sie den letzten Schritt des Artikels zum [Erwerb einer Domäne für Web-Apps](custom-dns-web-site-buydomains-web-app.md).
+> [AZURE.NOTE] Wenn Sie eine Domäne über Azure App Service-Web-Apps erworben haben, überspringen Sie die folgenden Schritte, und lesen Sie den letzten Schritt des Artikels zum [Erwerb einer Domäne für Web-Apps](custom-dns-web-site-buydomains-web-app.md).
 
 Um Ihrer benutzerdefinierten Domäne eine Web-App in Azure App Services zuzuweisen, müssen Sie in der DNS-Tabelle für Ihre benutzerdefinierte Domäne mithilfe der von der Domänenregistrierungsstelle bereitgestellten Tools einen neuen Eintrag hinzufügen. Gehen Sie wie folgt vor, um die DNS-Tools zu suchen und zu verwenden:
 
@@ -53,9 +53,9 @@ Um Ihrer benutzerdefinierten Domäne eine Web-App in Azure App Services zuzuweis
 	* Auf der Seite werden **CNAME-Datensätze** angegeben oder Sie finden ein Dropdownmenü, aus dem Sie die Art des Datensatzes auswählen können. Möglicherweise werden auch andere Datensätze wie **A-Datensätze** und **MX-Datensätze** aufgeführt. In manchen Fällen werden CNAME-Datensätze anderweitig bezeichnet, z. B. als **Alias-Datensatz**.
 	* Auf der Seite werden außerdem Felder angezeigt, über die Sie über einen **Hostnamen** oder **Domainnamen** eine **Zuweisung** zu einem anderen Domainnamen vornehmen können.
 
-1. Jede Registrierungsstelle ist spezifisch, generell weisen Sie jedoch *von* Ihrem benutzerdefinierten Domänennamen (z. B. **contoso.com**) *zum* Traffic Manager-Domänennamen (**contoso.trafficmanager.net**) zu, der für Ihre Web-App verwendet wird.
+1. Jede Registrierungsstelle ist spezifisch, generell weisen Sie jedoch *von* Ihrem benutzerdefinierten Domänennamen (z. B. **contoso.com**) *zum* Traffic Manager-Domänennamen (**contoso.trafficmanager.net**) zu, der für Ihre Web-App verwendet wird.
 
-> [AZURE.NOTE] Wenn ein Datensatz bereits verwendet wird und Sie Ihre Apps präemptiv an ihn binden müssen, weisen Sie alternativ **awverify.contoso.com** zu **contoso.trafficmanager.net** zu.
+> [AZURE.NOTE] Wenn ein Datensatz bereits verwendet wird und Sie Ihre Apps präemptiv an ihn binden müssen, erstellen Sie einen TXT-Eintrag für die Zuordnung von **awverify.contoso.com** zu **contoso.trafficmanager.net**.
 
 1. Speichern Sie die Änderungen, sobald Sie die DNS-Datensätze in Ihrer Registrierung hinzugefügt oder geändert haben.
 
@@ -72,4 +72,4 @@ Weitere Informationen finden Sie im [Node.js Developer Center](/develop/nodejs/)
 
 [AZURE.INCLUDE [app-service-web-try-app-service](../../includes/app-service-web-try-app-service.md)]
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0824_2016-->

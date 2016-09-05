@@ -53,9 +53,9 @@ Es gibt drei Arten der Erkennung:
 
 ## Nächste Schritte
 
-Die proaktive Diagnose ist vollkommen automatisch. Vielleicht möchten Sie aber weitere Warnungen einrichten?
+Proaktive Erkennungen sind vollkommen automatisch. Vielleicht möchten Sie aber weitere Warnungen einrichten?
 
 * [Einrichten von Warnungen in Application Insights](app-insights-alerts.md)
 * [Verfügbarkeitswebtests](app-insights-monitor-web-app-availability.md)
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0824_2016-->

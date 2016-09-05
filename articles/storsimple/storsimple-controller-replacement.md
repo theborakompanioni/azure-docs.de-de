@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="05/31/2016"
+   ms.date="08/17/2016"
    ms.author="alkohli" />
 
 # Ersetzen des Controllermoduls auf dem StorSimple-Gerät
@@ -148,7 +148,7 @@ Dieser Workflow ist erforderlich, wenn beide Controller in Ihrem Microsoft Azure
 
     2. Warten Sie, bis das Gerät vollständig heruntergefahren wurde. Alle LEDs an der Rückseite des Geräts sind deaktiviert.
 
-2. Entfernen Sie alle Netzwerkkabel, die mit den Datenanschlüssen verbunden sind. Wenn Sie das Modell 8600 verwenden, entfernen Sie auch die SAS-Kabel, die das primäre Gehäuse mit dem EBOD-Gehäuse verbinden.
+2. Entfernen Sie alle Netzwerkkabel, die mit den Datenanschlüssen verbunden sind. Wenn Sie ein Modell 8600 verwenden, entfernen Sie auch die SAS-Kabel, die das primäre Gehäuse mit dem EBOD-Gehäuse verbinden.
 
 3. Entfernen Sie beide Controller aus dem StorSimple-Gerät. Weitere Informationen finden Sie unter [Entfernen eines Controllers](#remove-a-controller).
 
@@ -156,7 +156,7 @@ Dieser Workflow ist erforderlich, wenn beide Controller in Ihrem Microsoft Azure
 
 5. Während die Logik zum Austauschen im Hintergrund ausgeführt wird, schließen Sie die Kabel wieder an. Achten Sie darauf, alle Kabel genau auf die gleiche Weise zu verbinden wie vor dem Austausch. Ausführliche Anleitungen für Ihr Modell finden Sie im Abschnitt zur Geräteverkabelung unter [Installieren des StorSimple 8100-Geräts](storsimple-8100-hardware-installation.md) oder [Installieren des StorSimple 8600-Geräts](storsimple-8600-hardware-installation.md).
 
-6. Schalten Sie das StorSimple-Geräte ein. Bei Verwendung eines 8600-Modells:
+6. Schalten Sie das StorSimple-Geräte ein. Wenn Sie ein Modell 8600 verwenden:
 
     1. Stellen Sie sicher, dass das EBOD-Gehäuse zuerst eingeschaltet wird.
 
@@ -266,4 +266,4 @@ Wenn diese LED blinkt, ist der Controller aktiv, und der andere Controller befin
 
 Weitere Informationen zum [Austauschen von StorSimple-Hardwarekomponenten](storsimple-hardware-component-replacement.md).
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0824_2016-->

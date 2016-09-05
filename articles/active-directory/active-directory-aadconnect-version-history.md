@@ -4,7 +4,7 @@
    services="active-directory"
    documentationCenter=""
    authors="AndKjell"
-   manager="stevenpo"
+   manager="femila"
    editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="06/02/2016"
+   ms.date="08/23/2016"
    ms.author="andkjell"/>
 
 # Azure AD Connect: Versionsveröffentlichungsverlauf
@@ -28,7 +28,7 @@ Thema |
 --------- | --------- |
 Schritte zum Upgrade von Azure AD Connect | Verschiedene Methoden zum [Aktualisieren von einer früheren Version auf die aktuelle Version](active-directory-aadconnect-upgrade-previous-version.md) von Azure AD Connect.
 Erforderliche Berechtigungen | Die zum Anwenden eines Updates erforderlichen Berechtigungen sind unter [Konten und Berechtigungen](active-directory-aadconnect-accounts-permissions.md#upgrade) aufgeführt.
-Herunterladen| [Azure AD Connect herunterladen](http://go.microsoft.com/fwlink/?LinkId=615771)
+Download| [Azure AD Connect herunterladen](http://go.microsoft.com/fwlink/?LinkId=615771)
 
 ## 1\.1.189.0
 Veröffentlicht im Juni 2016
@@ -134,7 +134,7 @@ Veröffentlicht im November 2015
 **Neue Vorschaufeatures:**
 
 - [Azure AD Connect Health für die Synchronisierung](active-directory-aadconnect-health-sync.md)
-- Unterstützung für die Kennwortsynchronisierung mit [Azure AD-Domänendiensten](active-directory-get-started.md)
+- Unterstützung für die Kennwortsynchronisierung mit [Azure AD-Domänendiensten](active-directory-passwords-getting-started.md#enable-users-to-reset-or-change-their-ad-passwords)
 
 **Neues unterstütztes Szenario:**
 
@@ -270,7 +270,7 @@ Veröffentlicht im Oktober 2014
 
 **Neue Features:**
 
-- Synchronisierung von Kennwörtern von mehreren lokalen AD mit Azure AD.
+- Synchronisierung von Kennwörtern von mehreren lokalen AD-Instanzen mit Azure AD.
 - Lokalisierte Benutzeroberfläche für die Installation für alle Windows Server-Sprachen.
 
 **Upgrade von AADSync 1.0 GA**
@@ -293,4 +293,4 @@ Veröffentlicht im September 2014
 ## Nächste Schritte
 Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md).
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0824_2016-->

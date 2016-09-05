@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="06/17/2016"
+   ms.date="08/22/2016"
    ms.author="barbkess;sonyama"/>
 
 # Systemsichten
@@ -58,6 +58,14 @@
 - [sys.dm\_pdw\_wait\_stats](http://msdn.microsoft.com/library/mt203909.aspx)
 - [sys.dm\_pdw\_waits](http://msdn.microsoft.com/library/mt203909.aspx)
 
+## In SQL Data Warehouse verwendbare SQL Server-DMVs
+
+Die folgenden DMVs gelten für SQL Data Warehouse, müssen jedoch ausgeführt werden, indem eine Verbindung mit der **master**-Datenbank hergestellt wird.
+
+- [sys.database\_service\_objectives](https://msdn.microsoft.com/library/mt712619.aspx)
+- [sys.dm\_operation\_status](https://msdn.microsoft.com/library/dn270022.aspx)
+- [sys.fn\_helpcollations()](https://msdn.microsoft.com/library/ms187963.aspx)
+
 ## SQL Server-Katalogsichten
 
 - [sys.all\_columns](http://msdn.microsoft.com/library/ms177522.aspx)
@@ -81,7 +89,6 @@
 - [sys.database\_role\_members](http://msdn.microsoft.com/library/ms189780.aspx)
 - [sys.databases](http://msdn.microsoft.com/library/ms178534.aspx)
 - [sys.default\_constraints](http://msdn.microsoft.com/library/ms173758.aspx)
-- [sys.extended\_properties](http://msdn.microsoft.com/library/ms177541.aspx)
 - [sys.external\_data\_sources](http://msdn.microsoft.com/library/dn935019.aspx)
 - [sys.external\_file\_formats](http://msdn.microsoft.com/library/dn935025.aspx)
 - [sys.external\_tables](http://msdn.microsoft.com/library/dn935029.aspx)
@@ -236,4 +243,4 @@ Weitere Referenzinformationen finden Sie unter [SQL Data Warehouse-Referenz – 
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0824_2016-->

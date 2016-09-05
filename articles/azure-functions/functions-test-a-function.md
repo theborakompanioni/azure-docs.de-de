@@ -15,7 +15,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="multiple"
    ms.workload="na"
-   ms.date="03/30/2016"
+   ms.date="08/19/2016"
    ms.author="wesmc"/>
 
 # Testen von Azure Functions
@@ -28,7 +28,7 @@ In diesem Tutorial werden verschiedene Ansätze für das Testen von Funktionen e
 
 In diesem Tutorial verwenden wir hauptsächlich eine leicht abgeänderte Version der Vorlage für die **Node.js-Funktion „HTTPTrigger“**, die beim Erstellen einer neuen Funktion verfügbar ist. Wenn Sie Hilfe zum Erstellen einer neuen Funktion benötigen, finden Sie im [Tutorial „Erstellen Sie Ihre erste Funktion in Azure Functions“](functions-create-first-azure-function.md) entsprechende Informationen. Wählen Sie beim Erstellen der Testfunktion im [Azure-Portal] einfach die Vorlage für die **Node.js-Funktion „HTTPTrigger“**.
 
-Die Standardvorlage für die Funktion ist im Grunde eine Hello World-Funktion, den Namen aus dem Anforderungstext oder dem Abfragezeichenfolgen-Parameter `name=<your name>` zurückgibt. Wir aktualisieren den Code, sodass Sie auch den Namen und eine Adresse als JSON-Inhalte im Anforderungstext bereitstellen können. Die Funktion gibt diese Informationen dann an den Client zurück, wenn sie verfügbar sind.
+Die Standardvorlage für die Funktion ist im Grunde eine Hello World-Funktion, die den Namen aus dem Anforderungstext oder dem Abfragezeichenfolgen-Parameter `name=<your name>` zurückgibt. Wir aktualisieren den Code, sodass Sie auch den Namen und eine Adresse als JSON-Inhalte im Anforderungstext bereitstellen können. Die Funktion gibt diese Informationen dann an den Client zurück, wenn sie verfügbar sind.
 
 Aktualisieren Sie die Funktion mit dem folgenden Code, der für Tests verwendet wird:
 
@@ -135,8 +135,8 @@ Postman wird als Tool zum Testen der meisten Funktionen empfohlen. Informationen
 
 > [AZURE.TIP] Verwenden Sie den REST-Client, mit dem Sie vertraut sind. Hier sind einige Alternativen zu Postman:
 > 
-> * [Fiddler](http://www.telerik.com/fiddler)  
-> * [Paw](https://luckymarmot.com/paw)  
+> * [Fiddler](http://www.telerik.com/fiddler)
+> * [Paw](https://luckymarmot.com/paw)
 
 So testen die Funktion mit einem Anforderungstext in Postman:
 
@@ -238,7 +238,7 @@ Um diesen Ansatz zu veranschaulichen, erstellen wir zunächst eine Warteschlange
 > [AZURE.NOTE] Wenn Sie den Namen einer anderen Warteschlange verwenden, stellen Sie sicher, dass der angegebene Name den Regeln für das [Benennen von Warteschlangen und Metadaten](https://msdn.microsoft.com/library/dd179349.aspx) entspricht. Andernfalls erhalten Sie den Statuscode „HTTP 400“ (Ungültige Anforderung).
 
 1. Klicken Sie im [Azure-Portal] für Ihre Functions-App auf **Neue Funktion** > **QueueTrigger - C#**.
-2. Geben Sie den Namen der Warteschlange ein, die von der Warteschlangenfunktion überwacht werden soll. 
+2. Geben Sie den Namen der Warteschlange ein, die von der Warteschlangenfunktion überwacht werden soll.
 
 		queue-newusers 
 
@@ -439,4 +439,4 @@ In Browserfenster für die Warteschlangenfunktion wird die Verarbeitung der einz
 
 [Azure-Portal]: https://portal.azure.com
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0824_2016-->

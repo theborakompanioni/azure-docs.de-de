@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="05/04/2016"
+	ms.date="08/22/2016"
 	ms.author="mahender"/>
 
 # So konfigurieren Sie Ihre App Service-Anwendung zur Verwendung der Azure Active Directory-Anmeldung
@@ -57,11 +57,11 @@ Sie können Konfigurationseinstellungen auch manuell bereitstellen Dies ist die 
 
 5. Klicken Sie auf **Add an application my organization is developing**.
 
-6. Geben Sie im Add Application-Assistenten einen **Namen** für Ihre Anwendung ein und klicken Sie auf den Typ **Web Application And/Or Web API**. Klicken Sie dann auf Continue.
+6. Geben Sie im Add Application-Assistenten einen **Namen** für Ihre Anwendung ein und klicken Sie auf den Typ **Web Application And/Or Web API**. Klicken Sie dann auf "Weiter".
 
-7. Fügen Sie in das Feld **Anmelde-URL** die zuvor kopierte URL der Anwendung ein. Geben Sie dieselbe URL in das Feld **App-ID-URI** ein. Klicken Sie dann auf Continue.
+7. Fügen Sie in das Feld **Anmelde-URL** die zuvor kopierte URL der Anwendung ein. Geben Sie dieselbe URL in das Feld **App-ID-URI** ein. Klicken Sie dann auf "Weiter".
 
-8. Nachdem die Anwendung hinzugefügt wurde, klicken Sie auf die Registerkarte **Konfigurieren**. Ändern Sie unter **Einmaliges Anmelden** die **Antwort-URL** in die URL Ihrer Anwendung mit angehängtem Pfad _/.auth/login/aad/callback_. Beispiel: `https://contoso.azurewebsites.net/.auth/login/aad/callback`. Stellen Sie sicher, dass Sie das HTTPS-Schema verwenden.
+8. Nachdem die Anwendung hinzugefügt wurde, klicken Sie auf die Registerkarte **Konfigurieren**. Legen Sie unter **Einmaliges Anmelden** die **Antwort-URL** auf die URL Ihrer Anwendung fest, und hängen Sie den Pfad _/.auth/login/aad/callback_ an. Beispiel: `https://contoso.azurewebsites.net/.auth/login/aad/callback`. Stellen Sie sicher, dass Sie das HTTPS-Schema verwenden.
 
     ![][3]
 
@@ -99,9 +99,9 @@ Mit Azure Active Directory können Sie auch systemeigene Clients registrieren. S
 
 3. Klicken Sie auf **Von meiner Organisation entwickelte Anwendung hinzufügen**.
 
-4. Geben Sie im Assistenten zum Hinzufügen von Anwendungen einen **Namen** für Ihre Anwendung ein, und klicken Sie auf den Typ **Systemeigene Clientanwendung**. Klicken Sie dann auf Continue.
+4. Geben Sie im Assistenten zum Hinzufügen von Anwendungen einen **Namen** für Ihre Anwendung ein, und klicken Sie auf den Typ **Systemeigene Clientanwendung**. Klicken Sie dann auf "Weiter".
 
-5. Geben Sie im Feld **Umleitungs-URI** den _/.auth/login/done_-Endpunkt Ihrer Website mittels des HTTPS-Schemas ein. Dieser Wert sollte etwa so aussehen: \__https://contoso.azurewebsites.net/.auth/login/done_. Wenn Sie eine Windows-Anwendung erstellen, verwenden Sie stattdessen die [Paket-SID](app-service-mobile-dotnet-how-to-use-client-library.md#package-sid) als URI.
+5. Geben Sie im Feld **Umleitungs-URI** den _/.auth/login/done_-Endpunkt Ihrer Website mittels des HTTPS-Schemas ein. Dieser Wert sollte etwa so aussehen: \_https://contoso.azurewebsites.net/.auth/login/done_. Wenn Sie eine Windows-Anwendung erstellen, verwenden Sie stattdessen die [Paket-SID](app-service-mobile-dotnet-how-to-use-client-library.md#package-sid) als URI.
 
 6. Nachdem die systemeigene Anwendung hinzugefügt wurde, klicken Sie auf die Registerkarte **Konfigurieren**. Suchen Sie die **Client-ID** und notieren Sie sich den Wert.
 
@@ -131,4 +131,4 @@ Sie haben nun eine systemeigene Clientanwendung mit Zugriff auf Ihre App Service
 [Klassischen Azure-Portal]: https://manage.windowsazure.com/
 [alternative method]: #advanced
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0824_2016-->

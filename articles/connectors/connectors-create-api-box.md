@@ -14,24 +14,21 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="05/18/2016"
+   ms.date="08/18/2016"
    ms.author="mandia"/>
 
 # Erste Schritte mit dem Box-Connector
-Verbinden Sie sich mit Box, um Dateien zu erstellen, zu löschen usw. Der Box-Connector kann verwendet werden in:
-
-- Logik-Apps (in diesem Thema erläutert)
-- PowerApps (eine vollständige Liste finden Sie in der [PowerApps-Verbindungsliste](https://powerapps.microsoft.com/tutorials/connections-list/))
+Verbinden Sie sich mit Box, um Dateien zu erstellen, zu löschen usw.
 
 >[AZURE.NOTE] Diese Version des Artikels gilt für die Schemaversion 2015-08-01-preview für Logik-Apps.
 
 Box ermöglicht Folgendes:
 
-- Erstellen eines Geschäftsworkflows basierend auf den Daten, die aus Box abgerufen werden. 
+- Erstellen eines Geschäftsworkflows basierend auf den Daten, die aus Box abgerufen werden.
 - Verwenden von Triggern, wenn eine Datei erstellt oder aktualisiert wird.
 - Verwenden von Aktionen, um eine Datei zu kopieren, zu löschen usw. Diese Aktionen erhalten eine Antwort und stellen anschließend die Ausgabe anderen Aktionen zur Verfügung. Wenn z. B. in Box eine Datei geändert wird, können Sie diese Datei auswählen und mithilfe von Office 365 per E-Mail senden.
 
-Informationen zum Hinzufügen eines Vorgangs in Logik-Apps finden Sie unter [Erstellen einer Logik-App zum Verbinden von SaaS-Diensten](../app-service-logic/app-service-logic-create-a-logic-app.md).
+Informationen zum Hinzufügen eines Vorgangs in Logik-Apps finden Sie unter [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
 ## Trigger und Aktionen
 Box weist die folgenden Trigger und Aktionen auf.
@@ -60,18 +57,18 @@ Lädt eine Datei in Box hoch. ```POST: /datasets/default/files```
 | Name|Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
 |folderPath|string|Ja|query|Keine |Ordnerpfad zum Hochladen der Datei in Box|
-|name|string|Ja|query|Keine |Name der Datei, die in Box erstellt werden soll|
+|Name|string|Ja|query|Keine |Name der Datei, die in Box erstellt werden soll|
 |body|string(binary) |Ja|body|Keine |Inhalt der Datei, die in Box hochgeladen werden soll|
 
 #### Antwort
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 
 ### Wenn eine Datei erstellt wird
-Löst einen Datenfluss aus, wenn in einem Box-Ordner eine neue Datei erstellt wird. ```GET: /datasets/default/triggers/onnewfile```
+Löst einen Ablauf aus, wenn in einem Box-Ordner eine neue Datei erstellt wird. ```GET: /datasets/default/triggers/onnewfile```
 
 | Name|Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
@@ -81,7 +78,7 @@ Löst einen Datenfluss aus, wenn in einem Box-Ordner eine neue Datei erstellt wi
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 
 ### Datei kopieren
@@ -97,7 +94,7 @@ Kopiert eine Datei in Box. ```POST: /datasets/default/copyFile```
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 
 ### Datei löschen
@@ -112,11 +109,11 @@ Löscht eine Datei aus Box. ```DELETE: /datasets/default/files/{id}```
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 
 ### Archiv in Ordner extrahieren
-Extrahiert eine Archivdatei in einen Ordner in Box (Beispiel: .zip). ```POST: /datasets/default/extractFolderV2```
+Extrahiert eine Archivdatei in einen Ordner in Box (Beispiel: ZIP). ```POST: /datasets/default/extractFolderV2```
 
 | Name|Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
@@ -128,11 +125,11 @@ Extrahiert eine Archivdatei in einen Ordner in Box (Beispiel: .zip). ```POST: /d
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 
 ### Dateiinhalt anhand der ID abrufen
-Ruft Dateiinhalte mithilfe der ID aus Box ab. ```GET: /datasets/default/files/{id}/content```
+Ruft Dateiinhalte anhand der ID aus Box ab. ```GET: /datasets/default/files/{id}/content```
 
 | Name|Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
@@ -142,11 +139,11 @@ Ruft Dateiinhalte mithilfe der ID aus Box ab. ```GET: /datasets/default/files/{i
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 
 ### Dateiinhalt anhand des Pfads abrufen
-Ruft Dateiinhalte mithilfe des Pfads aus Box ab. ```GET: /datasets/default/GetFileContentByPath```
+Ruft Dateiinhalte anhand des Pfads aus Box ab. ```GET: /datasets/default/GetFileContentByPath```
 
 | Name|Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
@@ -156,11 +153,11 @@ Ruft Dateiinhalte mithilfe des Pfads aus Box ab. ```GET: /datasets/default/GetFi
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 
 ### Dateimetadaten anhand der ID abrufen
-Ruft Dateimetadaten aus Box mithilfe der Datei-ID ab. ```GET: /datasets/default/files/{id}```
+Ruft Dateimetadaten anhand der Datei-ID aus Box ab. ```GET: /datasets/default/files/{id}```
 
 | Name|Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
@@ -170,11 +167,11 @@ Ruft Dateimetadaten aus Box mithilfe der Datei-ID ab. ```GET: /datasets/default/
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 
 ### Dateimetadaten anhand des Pfads abrufen
-Ruft Dateimetadaten aus Box mithilfe des Pfads ab. ```GET: /datasets/default/GetFileByPath```
+Ruft Dateimetadaten anhand des Pfads aus Box ab. ```GET: /datasets/default/GetFileByPath```
 
 | Name|Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
@@ -184,7 +181,7 @@ Ruft Dateimetadaten aus Box mithilfe des Pfads ab. ```GET: /datasets/default/Get
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 
 ### Datei aktualisieren
@@ -199,11 +196,11 @@ Aktualisiert eine Datei in Box. ```PUT: /datasets/default/files/{id}```
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 
 ### Wenn eine Datei geändert wird
-Löst einen Datenfluss aus, wenn in einem Box-Ordner eine Datei geändert wird. ```GET: /datasets/default/triggers/onupdatedfile```
+Löst einen Ablauf aus, wenn in einem Box-Ordner eine Datei geändert wird. ```GET: /datasets/default/triggers/onupdatedfile```
 
 | Name|Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
@@ -213,7 +210,7 @@ Löst einen Datenfluss aus, wenn in einem Box-Ordner eine Datei geändert wird. 
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 
 ## Objektdefinitionen
@@ -250,7 +247,7 @@ Löst einen Datenfluss aus, wenn in einem Box-Ordner eine Datei geändert wird. 
 |ID|string|no|
 |Name|string|no|
 |DisplayName|string|no|
-|Path|string|no|
+|Pfad|string|no|
 |LastModified|string|no|
 |Größe|integer|no|
 |MediaType|string|no|
@@ -260,6 +257,6 @@ Löst einen Datenfluss aus, wenn in einem Box-Ordner eine Datei geändert wird. 
 
 ## Nächste Schritte
 
-[Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md).
+[Erstellen Sie eine Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
-<!----HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0824_2016-->

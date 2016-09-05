@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="TBD"
-   ms.date="05/25/2016"
+   ms.date="08/17/2016"
    ms.author="alkohli" />
 
 # Konfigurieren von CHAP für Ihr StorSimple-Gerät
@@ -156,7 +156,7 @@ Bei der bidirektionalen Authentifizierung muss das Ziel den Initiator und der In
 
 	4. Aktivieren Sie das Kontrollkästchen **Wechselseitige Authentifizierung ausführen**.
 
-		![Erweiterte Einstellungen (wechselseitige Authentifizierung)](./media/storsimple-configure-chap/IC740950.png)
+		![Erweiterte Einstellungen (gegenseitige Authentifizierung)](./media/storsimple-configure-chap/IC740950.png)
 
 	5. Klicken Sie auf **OK**, um die CHAP-Konfiguration abzuschließen.
 	 
@@ -198,4 +198,4 @@ Mit den folgenden Schritten können Sie überprüfen, ob CHAP verwendet wird.
 
 - Erfahren Sie mehr zum [Verwenden Ihres StorSimple-Geräts mithilfe des StorSimple Manager-Diensts](storsimple-manager-service-administration.md).
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0824_2016-->

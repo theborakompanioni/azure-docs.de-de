@@ -1,21 +1,21 @@
-<properties 
+<properties
    pageTitle="Erstellen eines internen Load Balancers im klassischen Bereitstellungsmodell mithilfe der Azure-Befehlszeilenschnittstelle | Microsoft Azure"
    description="Erfahren Sie, wie Sie einen internen Load Balancer im klassischen Bereitstellungsmodell mithilfe der Azure-Befehlszeilenschnittstelle erstellen."
    services="load-balancer"
    documentationCenter="na"
-   authors="joaoma"
-   manager="carolz"
+   authors="sdwheeler"
+   manager="carmonm"
    editor=""
    tags="azure-service-management"
 />
-<tags  
+<tags
    ms.service="load-balancer"
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="02/09/2016"
-   ms.author="joaoma" />
+   ms.author="sewhee" />
 
 # Erste Schritte zum Erstellen eines internen Load Balancers (klassisch) mithilfe der Azure-Befehlszeilenschnittstelle
 
@@ -53,7 +53,7 @@ Anhand der folgenden Anleitung erstellen Sie auf der Grundlage des oben beschrie
 		info:    New mode is asm
 
 
-## Erstellen eines Endpunkts und einer Load Balancer-Gruppe 
+## Erstellen eines Endpunkts und einer Load Balancer-Gruppe
 
 Das Szenario setzt die virtuellen Computer „DB1“ und „DB2“ in einem Clouddienst namens „mytestcloud“ voraus. Beide virtuelle Computer verwenden ein virtuelles Netzwerk namens „my testvnet“ mit dem Subnetz „subnet-1“.
 
@@ -62,7 +62,7 @@ Dieses Handbuch erstellt eine interne Load Balancer-Gruppe, die Port 1433 als p
 Dies ist ein häufiges Szenario, bei dem sich die virtuellen SQL-Computer im Back-End befinden und über einen internen Load Balancer sichergestellt wird, dass die Datenbankserver nicht direkt über eine öffentliche IP-Adresse offen gelegt werden.
 
 
-### Schritt 1 
+### Schritt 1
 
 Erstellen Sie einen internen Load Balancer mit `azure network service internal-load-balancer add`.
 
@@ -73,7 +73,7 @@ Verwendete Parameter:
 **-r:** Clouddienstname<BR> **-n:** interner Load Balancer-Name<BR> **-t:** Subnetzname (dasselbe Subnetz wie für die dem Load Balancer hinzugefügten virtuellen Computer)<BR> **-a:** (optional) statische private IP-Adresse<BR>
 
 Weitere Informationen finden Sie unter `azure service internal-load-balancer --help`.
- 
+
 Sie können die Eigenschaften des internen Load Balancers mithilfe des Befehls `azure service internal-load-balancer list` *Clouddienstname* überprüfen.
 
 Dies ist ein Beispiel für die Ausgabe:
@@ -87,7 +87,7 @@ Dies ist ein Beispiel für die Ausgabe:
 	info:    service internal-load-balancer list command OK
 
 
-## Schritt 2 
+## Schritt 2
 
 Sie konfigurieren die interne Load Balancer-Gruppe, wenn Sie den ersten Endpunkt hinzufügen. Sie ordnen den Endpunkt, den virtuellen Computer und den Testport der internen Load Balancer-Gruppe in diesem Schritt zu.
 
@@ -98,11 +98,11 @@ Verwendete Parameter:
 **-k:** Port des lokalen virtuellen Computers<BR> **-t:** Testport<BR> **-r:** Testprotokoll <BR> **-e:** Testintervall in Sekunden <BR> **-f:** Timeoutintervall in Sekunden <BR> **-i:** Name des internen Load Balancers <BR>
 
 
-## Schritt 3 
+## Schritt 3
 
 Überprüfen Sie die Load Balancer-Konfiguration mithilfe von `azure vm show` *Name des virtuellen Computers*.
 
-	azure vm show DB1 
+	azure vm show DB1
 
 Ausgabe:
 
@@ -132,7 +132,7 @@ Ausgabe:
 	data:    Network Endpoints 0 name "PowerShell"
 	data:    Network Endpoints 0 port 5986
 	data:    Network Endpoints 0 protocol "tcp"
-	data:    Network Endpoints 0 virtualIPAddress "137.116.64.107"	
+	data:    Network Endpoints 0 virtualIPAddress "137.116.64.107"
 	data:    Network Endpoints 0 enableDirectServerReturn false
 	data:    Network Endpoints 1 localPort 3389
 	data:    Network Endpoints 1 name "Remote Desktop"
@@ -158,7 +158,7 @@ Ausgabe:
 
 Sie können mithilfe von `azure vm endpoint create` einen Remotedesktop-Endpunkt erstellen, um für einen bestimmten virtuellen Computer Netzwerkdatenverkehr von einem öffentlichen Port an einen lokalen Port weiterzuleiten.
 
-	azure vm endpoint create web1 54580 -k 3389 
+	azure vm endpoint create web1 54580 -k 3389
 
 
 ## Entfernen eines virtuellen Computers aus einem Load Balancer
@@ -179,4 +179,4 @@ Weitere Informationen finden Sie unter `azure vm endpoint --help`.
 
 [Konfigurieren von TCP-Leerlauftimeout-Einstellungen für den Lastenausgleich](load-balancer-tcp-idle-timeout.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0824_2016-->

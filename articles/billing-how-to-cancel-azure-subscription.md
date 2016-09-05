@@ -15,12 +15,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/11/2016"
+	ms.date="08/24/2016"
 	ms.author="genli"/>
 
 # Kündigung Ihres Azure-Abonnements
 
->[AZURE.NOTE] Bei Azure-Supportplänen mit 6-monatiger Laufzeit bleiben die finanziellen Verpflichtungen für die Dauer der Laufzeit bestehen. Eine Kündigung vor Ablauf der Laufzeit entbindet den Kunden nicht von verbleibenden Zahlungsverpflichtungen, und Vorauszahlungen werden nicht erstattet. Wenn Sie Ihr Abonnement versehentlich gekündigt haben und es erneut aktivieren möchten, können Sie sich an den [Azure-Support](billing-how-to-create-billing-support-ticket.md) wenden.
+>[AZURE.NOTE] Bei Azure-Supportplänen mit 6-monatiger Laufzeit bleiben die finanziellen Verpflichtungen für die Dauer der Laufzeit bestehen. Eine Kündigung vor Ablauf der Laufzeit entbindet den Kunden nicht von verbleibenden Zahlungsverpflichtungen, und Vorauszahlungen werden nicht erstattet. Wenn Sie Ihr Abonnement versehentlich gekündigt haben und es wieder aktivieren möchten, können Sie sich an den [Azure-Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) wenden.
+
+> [AZURE.NOTE] Wenn Sie bei einem Verfahren in diesem Artikel weitere Hilfe benötigen, [wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), um das Problem schnell zu lösen.
 
 Wenn Sie Ihr Abonnement kündigen, werden alle Ihre Dienste sofort gelöscht. Stellen Sie sicher, dass Sie die Daten, die Sie speichern möchten, sichern, bevor Sie kündigen.
 
@@ -30,4 +32,6 @@ Wenn Sie Ihr Abonnement kündigen, werden alle Ihre Dienste sofort gelöscht. St
 4. Wählen Sie **Ja, mein Abonnement kündigen**. </br> ![cancelbox](.\media\billing-how-to-cancel-azure-subscription\cancelbox.png)
 5. Klicken Sie auf ![checkbutton](.\media\billing-how-to-cancel-azure-subscription\checkbutton.png), um das Dialogfenster zu schließen und zu Ihrer Abonnementseite zurückkehren.
 
-<!---HONumber=AcomDC_0817_2016-->
+> [AZURE.NOTE] Wenn Sie weitere Fragen haben, [wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), um das Problem schnell zu lösen.
+
+<!---HONumber=AcomDC_0824_2016-->

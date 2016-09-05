@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/02/2016" 
+	ms.date="08/24/2016" 
 	ms.author="awills"/>
  
 # Überwachen von Abhängigkeiten, Ausnahmen und Ausführungszeiten in Java-Web-Apps
@@ -23,9 +23,9 @@ Wenn Sie [Ihre Java-Web-App mit Application Insights instrumentiert haben][java]
 
 
 * **Abhängigkeiten**: Daten über Aufrufe der Anwendung an andere Komponenten, einschließlich:
- * **REST-Aufrufe** über "HttpClient", "OkHttp" und "RestTemplate" (Spring).
- * **Redis**-Aufrufe über den Jedis-Client. Wenn der Aufruf länger als 10 s dauert, wird der Agent auch die Argumente des Aufrufs abrufen.
- * **[JDBC-Aufrufe](http://docs.oracle.com/javase/7/docs/technotes/guides/jdbc/)**: MySQL, SQL Server, PostgreSQL, SQLite, Oracle DB oder Apache Derby DB. Aufrufe von "executeBatch" werden unterstützt. Wenn bei MySQL und PostgreSQL der Aufruf länger als 10 s dauert, meldet der Agent dem Abfrageplan. 
+ * **REST-Aufrufe** über „HttpClient“, „OkHttp“ und „RestTemplate“ (Spring).
+ * **Redis**-Aufrufe über den Jedis-Client. Wenn der Aufruf länger als zehn Sekunden dauert, ruft der Agent auch die Argumente des Aufrufs ab.
+ * **[JDBC-Aufrufe](http://docs.oracle.com/javase/7/docs/technotes/guides/jdbc/)**: MySQL, SQL Server, PostgreSQL, SQLite, Oracle DB oder Apache Derby DB. Aufrufe von "executeBatch" werden unterstützt. Für MySQL und PostgreSQL gilt: Wenn der Aufruf länger als zehn Sekunden dauert, wird der Abfrageplan gemeldet.
 * **Abgefangene Ausnahmen**: Daten zu Ausnahmen, die vom Code verarbeitet werden.
 * **Methodenausführungszeit**: Daten über die Zeit, die zum Ausführen bestimmter Methoden benötigt wird.
 
@@ -59,11 +59,11 @@ Legen Sie den Inhalt der XML-Datei fest. Bearbeiten Sie das folgende Beispiel, u
         
         <!-- Collect remote dependency data -->
         <BuiltIn enabled="true">
-           <!-- Disable Redis or alter threshold call duration above which arguments will be sent.
+           <!-- Disable Redis or alter threshold call duration above which arguments are sent.
                Defaults: enabled, 10000 ms -->
            <Jedis enabled="true" thresholdInMS="1000"/>
            
-           <!-- Set SQL query duration above which query plan will be reported (MySQL, PostgreSQL). Default is 10000 ms. -->
+           <!-- Set SQL query duration above which query plan is reported (MySQL, PostgreSQL). Default is 10000 ms. -->
            <MaxStatementQueryLimitInMS>1000</MaxStatementQueryLimitInMS>
         </BuiltIn>
 
@@ -90,11 +90,11 @@ Legen Sie den Inhalt der XML-Datei fest. Bearbeiten Sie das folgende Beispiel, u
 
 Sie müssen für einzelne Methoden die Berichtausnahmen und Methodenzeiten aktivieren.
 
-Standardmäßig ist `reportExecutionTime` "true" und `reportCaughtExceptions` "false".
+`reportExecutionTime` ist standardmäßig „true“, `reportCaughtExceptions` ist standardmäßig „false“.
 
 ## Anzeigen der Daten
 
-In der Application Insights-Ressource werden aggregierte Remoteabhängigkeiten und Methodenausführungszeiten [auf der Kachel "Leistung"][metrics] angezeigt.
+In der Application Insights-Ressource werden aggregierte Remoteabhängigkeiten und Methodenausführungszeiten [auf der Kachel „Leistung“][metrics] angezeigt.
 
 Um nach den einzelnen Instanzen der Abhängigkeits-, Ausnahmen- und Methodenberichte zu suchen, öffnen Sie die [Suche][diagnostic].
 
@@ -104,7 +104,8 @@ Um nach den einzelnen Instanzen der Abhängigkeits-, Ausnahmen- und Methodenberi
 
 ## Fragen? Probleme?
 
-[Problembehandlung für Java](app-insights-java-troubleshoot.md)
+* Sie sehen keine Daten? [Festlegen von Firewallausnahmen](app-insights-ip-addresses.md)
+* [Problembehandlung für Java](app-insights-java-troubleshoot.md)
 
 
 
@@ -122,4 +123,4 @@ Um nach den einzelnen Instanzen der Abhängigkeits-, Ausnahmen- und Methodenberi
 
  
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0824_2016-->

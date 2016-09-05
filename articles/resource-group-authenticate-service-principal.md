@@ -23,15 +23,15 @@
 - [Azure-Befehlszeilenschnittstelle](resource-group-authenticate-service-principal-cli.md)
 - [Portal](resource-group-create-service-principal-portal.md)
 
-Wenn eine Ihrer Anwendungen oder eines Ihrer Skripts Zugriff auf Ressourcen benötigt, möchten Sie diesen Prozess wahrscheinlich nicht unter den Anmeldeinformationen eines Benutzers ausführen. Der Benutzer hat unter Umständen andere Berechtigungen als Sie dem Prozess zuweisen möchten, und die Aufgaben des Benutzers können sich unter Umständen ändern. Stattdessen können Sie für die Anwendung eine Identität erstellen, die Anmeldeinformationen für die Authentifizierung und Rollenzuweisungen enthält. Die Anwendung meldet sich bei jeder Ausführung mit dieser Identität an. In diesem Thema erfahren Sie, wie Sie mithilfe von [Azure PowerShell](powershell-install-configure.md) alles einrichten, was Sie benötigen, um eine Anwendung unter eigenen Anmeldeinformationen und einer eigenen Identität auszuführen.
+Wenn eine Ihrer Anwendungen oder eines Ihrer Skripts Zugriff auf Ressourcen benötigt, möchten Sie diesen Prozess wahrscheinlich nicht unter den Anmeldeinformationen eines Benutzers ausführen. Der Benutzer hat unter Umständen andere Berechtigungen als Sie dem Prozess zuweisen möchten, und die Aufgaben des Benutzers können sich unter Umständen ändern. Stattdessen können Sie für die Anwendung eine Identität erstellen, die Anmeldeinformationen für die Authentifizierung und Rollenzuweisungen enthält. Die Anwendung meldet sich bei jeder Ausführung mit dieser Identität an. In diesem Thema erfahren Sie, wie Sie mithilfe von [Azure PowerShell](powershell-install-configure.md) alle Komponenten und Einstellungen einrichten, die Sie benötigen, um eine Anwendung mit eigenen Anmeldeinformationen und einer eigenen Identität auszuführen.
 
-Dazu erstellen Sie in diesem Artikel zwei Objekte: die AD-Anwendung (Active Directory) und den Dienstprinzipal. Die AD-Anwendung enthält die Anmeldeinformationen (eine Anwendungs-ID und ein Kennwort oder Zertifikat). Der Dienstprinzipal enthält die Rollenzuweisung. Über die AD-Anwendung können Sie viele Dienstprinzipale erstellen. Dieses Thema konzentriert sich auf eine Anwendung mit nur einem Mandanten, wobei die Anwendung nur zur Ausführung in einer einzelnen Organisation vorgesehen ist. Anwendungen mit nur einem Mandanten werden in der Regel für innerhalb Ihrer Organisation ausgeführte Branchenanwendungen verwendet. Falls Ihre Anwendung in mehreren Organisationen ausführbar sein muss, können Sie auch Anwendungen mit mehreren Mandanten erstellen. Anwendungen mit mehreren Mandanten werden üblicherweise für SaaS-Anwendungen (Software-as-a-Service) verwendet. Informationen zum Einrichten einer Anwendung mit mehreren Mandanten finden Sie im [Entwicklerhandbuch für die Autorisierung mit der Azure Resource Manager-API](resource-manager-api-authentication.md).
+Dazu erstellen Sie in diesem Artikel zwei Objekte: die AD-Anwendung (Active Directory) und den Dienstprinzipal. Die AD-Anwendung enthält die Anmeldeinformationen (eine Anwendungs-ID und ein Kennwort oder Zertifikat). Der Dienstprinzipal enthält die Rollenzuweisung. Über die AD-Anwendung können Sie viele Dienstprinzipale erstellen. Dieses Thema konzentriert sich auf eine Anwendung mit nur einem Mandanten, die nur zur Ausführung in einer einzigen Organisation vorgesehen ist. Anwendungen mit nur einem Mandanten werden in der Regel für innerhalb Ihrer Organisation ausgeführte Branchenanwendungen verwendet. Falls Ihre Anwendung in mehreren Organisationen ausführbar sein muss, können Sie auch Anwendungen mit mehreren Mandanten erstellen. Anwendungen mit mehreren Mandanten werden üblicherweise für SaaS-Anwendungen (Software-as-a-Service) verwendet. Informationen zum Einrichten einer Anwendung mit mehreren Mandanten finden Sie im [Entwicklerhandbuch für die Autorisierung mit der Azure Resource Manager-API](resource-manager-api-authentication.md).
 
 Für die Verwendung von Active Directory müssen Sie mit zahlreichen Konzepten vertraut sein. Eine ausführlichere Erläuterung zu Anwendungen und Dienstprinzipalen finden Sie unter [Anwendungsobjekte und Dienstprinzipalobjekte](./active-directory/active-directory-application-objects.md). Weitere Informationen zur Active Directory-Authentifizierung finden Sie unter [Authentifizierungsszenarien für Azure AD](./active-directory/active-directory-authentication-scenarios.md).
 
 Mit Azure PowerShell stehen Ihnen für die Authentifizierung Ihrer AD-Anwendung zwei Optionen zur Verfügung:
 
- - Kennwort
+ - password
  - Zertifikat
 
 Wenn Sie sich nach dem Einrichten Ihrer AD-Anwendung über ein anderes Programmierframework (wie Python, Ruby oder Node.js) bei Azure anmelden möchten, ist die Kennwortauthentifizierung wahrscheinlich die beste Option. Setzen Sie sich mit den Beispielen für die Authentifizierung in den unterschiedlichen Frameworks im Abschnitt [Beispielanwendungen](#sample-applications) auseinander, bevor Sie sich für ein Kennwort oder für ein Zertifikat entscheiden.
@@ -44,11 +44,11 @@ Bei jeder Anmeldung als Dienstprinzipal müssen Sie die Mandanten-ID des Verzeic
 
         Add-AzureRmAccount
 
-2. Wenn Sie nur über ein einzelnes Abonnement verfügen, können Sie Folgendes verwenden:
+2. Wenn Sie nur über ein einziges Abonnement verfügen, können Sie Folgendes verwenden:
 
         $tenant = (Get-AzureRmSubscription).TenantId
     
-     Wenn Sie über mehrere Abonnements verfügen, geben Sie das für die AD-App vorgesehene Abonnement an. Wählen Sie das Abonnement aus, unter dem sich Active Directory befindet. Weitere Informationen finden Sie unter [Verwalten Ihres Azure AD-Verzeichnisses](./active-directory/active-directory-administer.md).
+     Wenn Sie über mehrere Abonnements verfügen, geben Sie das für die AD-App vorgesehene Abonnement an. Wählen Sie das Abonnement aus, in dem sich Ihr Active Directory befindet. Weitere Informationen finden Sie unter [Verwalten Ihres Azure AD-Verzeichnisses](./active-directory/active-directory-administer.md).
 
         $tenant = (Get-AzureRmSubscription -SubscriptionName "Contoso Default").TenantId
 
@@ -88,7 +88,7 @@ Dieser Abschnitt enthält die Schritte zum Erstellen der AD-Anwendung und des Di
 
         New-AzureRmRoleAssignment -RoleDefinitionName Reader -ServicePrincipalName $azureAdApplication.ApplicationId.Guid
 
-Das ist alles! AD-Anwendung und Dienstprinzipal sind eingerichtet. Im nächsten Abschnitt erfahren Sie, wie Sie sich mit den Anmeldeinformationen über Azure PowerShell anmelden. Wenn Sie die Anmeldeinformationen dagegen in Ihrer Codeanwendung verwenden möchten, müssen in diesem Thema nicht weiterlesen. In diesem Fall können Sie sich in den [Beispielanwendungen](#sample-applications) Beispiele für die Anmeldung mit Anwendungs-ID und Kennwort ansehen.
+Das ist alles! AD-Anwendung und Dienstprinzipal sind eingerichtet. Im nächsten Abschnitt erfahren Sie, wie Sie sich mit den Anmeldeinformationen über PowerShell anmelden. Wenn Sie die Anmeldeinformationen jedoch in Ihrer Codeanwendung verwenden möchten, müssen Sie mit diesem Thema nicht fortfahren. In diesem Fall können Sie sich in den [Beispielanwendungen](#sample-applications) Beispiele für die Anmeldung mit Anwendungs-ID und Kennwort ansehen.
 
 ### Bereitstellen von Anmeldeinformationen über PowerShell
 
@@ -149,7 +149,7 @@ Dieser Abschnitt enthält die Schritte zum Erstellen einer AD-Anwendung und eine
 
 4. Erstellen Sie eine Anwendung im Verzeichnis.
 
-        $azureAdApplication = New-AzureRmADApplication -DisplayName "exampleapp" -HomePage "https://www.contoso.org" -IdentifierUris "https://www.contoso.org/example" -KeyValue $keyValue -KeyType AsymmetricX509Cert -EndDate $cert.NotAfter -StartDate $cert.NotBefore      
+        $azureAdApplication = New-AzureRmADApplication -DisplayName "exampleapp" -HomePage "https://www.contoso.org" -IdentifierUris "https://www.contoso.org/example" -CertValue $keyValue -EndDate $cert.NotAfter -StartDate $cert.NotBefore      
         
     Untersuchen Sie das neue Anwendungsobjekt.
 
@@ -228,4 +228,4 @@ Die folgenden Beispielanwendungen veranschaulichen die Anmeldung als Dienstprinz
   
 - Ausführliche Schritte zum Integrieren einer Anwendung in Azure zur Verwaltung von Ressourcen finden Sie im [Entwicklerhandbuch für die Autorisierung mit der Azure Resource Manager-API](resource-manager-api-authentication.md).
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0824_2016-->

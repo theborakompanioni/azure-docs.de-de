@@ -42,7 +42,7 @@ Wenn Sie nicht über eine Unternehmenslösung verfügen, ist ein selbstsignierte
 
     	makecert -sky exchange -r -n "CN=CertificateName" -pe -a sha1 -len 2048 -ss My "CertificateName.cer"
 
-4. Das selbstsignierte Zertifikat wird zum Erstellen von Clientzertifikaten verwendet. Wenn Sie die CER-Datei für das selbstsignierte Zertifikat im Rahmen der Punkt-zu-Standort-Konfiguration hochladen, teilen Sie Azure mit, dass die Zertifikate, die von Clientcomputern verwendet werden, vertrauenswürdig sind.<br><br>Jeder Computer mit einem installierten Clientzertifikat, der mit den richtigen VPN-Clienteinstellungen konfiguriert ist, kann eine Punkt-zu-Standort-Verbindung mit Ihrem virtuellen Netzwerk herstellen. Aus diesem Grund müssen Sie sicherstellen, dass Clientzertifikate nur bei Bedarf generiert und installiert werden und dass dieses selbstsignierte Zertifikat gesichert und sicher gespeichert wird.
+4. Das selbstsignierte Zertifikat wird zum Erstellen von Clientzertifikaten verwendet. Wenn Sie die CER-Datei für das selbstsignierte Zertifikat im Rahmen der Punkt-zu-Standort-Konfiguration hochladen, teilen Sie Azure mit, dass die Zertifikate, die von Clientcomputern verwendet werden, vertrauenswürdig sind.<br><br>Jeder Computer mit einem installierten Clientzertifikat, der mit den richtigen VPN-Clienteinstellungen konfiguriert ist, kann eine Punkt-zu-Standort-Verbindung mit Ihrem virtuellen Netzwerk herstellen. Aus diesem Grund müssen Sie sicherstellen, dass Clientzertifikate nur bei Bedarf generiert und installiert werden und dass dieses selbstsignierte Zertifikat gesichert und sicher gespeichert wird. Bei Bedarf können Sie später dieses selbstsignierte Zertifikat auf einem anderen Computer installieren und weitere Clientzertifikate generieren oder die CER-Datei exportieren.
  
 
 ## Erstellen und Installieren von Clientzertifikaten
@@ -98,4 +98,4 @@ Setzen Sie die Punkt-zu-Standort-Konfiguration fort.
 - Schritte für das Bereitstellungsmodell **Resource Manager** finden Sie unter [Konfigurieren einer Punkt-zu-Standort-VPN-Verbindung mit einem virtuellen Netzwerk mithilfe von PowerShell](vpn-gateway-howto-point-to-site-rm-ps.md).
 - Schritte für das **klassische** Bereitstellungsmodell finden Sie unter [Konfigurieren einer Punkt-zu-Standort-VPN-Verbindung mit einem VNet](vpn-gateway-point-to-site-create.md).
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0824_2016-->

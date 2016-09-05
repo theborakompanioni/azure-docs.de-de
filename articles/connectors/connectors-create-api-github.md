@@ -14,18 +14,12 @@ ms.devlang="multiple"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="integration"
-ms.date="05/17/2016"
+ms.date="08/18/2016"
 ms.author="deonhe"/>
 
 # Erste Schritte mit dem GitHub-Connector
 
-
-
-Der GitHub-Connector kann verwendet werden in:
-
-- [Logik-Apps](../app-service-logic/app-service-logic-what-are-logic-apps.md)
-- [PowerApps](http://powerapps.microsoft.com)
-- [Flow](http://flows.microsoft.com)
+GitHub ist ein webbasierter Hostingdienst für Git-Repositorys. Er bietet alle Funktionen von Git zur Kontrolle von verteilten Überarbeitungen und zur Quellcodeverwaltung sowie eigene Features.
 
 >[AZURE.NOTE] Diese Version des Artikels gilt für die Schemaversion 2015-08-01-preview für Logik-Apps.
 
@@ -54,11 +48,11 @@ Sie können auf diese Ereignisse lauschen:
 
 
 ## Herstellen einer Verbindung mit GitHub
-Um Logik-Apps mit GitHub zu erstellen, müssen Sie zuerst eine **Verbindung** herstellen und anschließend die Details für die folgenden Eigenschaften angeben:
+Um Logik-Apps mit GitHub zu erstellen, müssen Sie zuerst eine **Verbindung** erstellen und anschließend die Details für die folgenden Eigenschaften angeben:
 
 |Eigenschaft| Erforderlich|Beschreibung|
 | ---|---|---|
-|Tokenverschlüsselung|Ja|Angeben der Anmeldeinformationen für GitHub|
+|Token|Ja|Angeben der Anmeldeinformationen für GitHub|
 Nachdem Sie die Verbindung erstellt haben, können Sie sie zum Ausführen der Aktionen und zum Lauschen auf die in diesem Artikel beschriebenen Trigger verwenden.
 
 >[AZURE.INCLUDE [Schritte zum Herstellen einer Verbindung mit GitHub](../../includes/connectors-create-api-github.md)]
@@ -179,4 +173,4 @@ Es gibt keine Parameter für diesen Aufruf
 ## Nächste Schritte
 [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0824_2016-->

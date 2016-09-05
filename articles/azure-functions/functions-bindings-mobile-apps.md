@@ -20,11 +20,13 @@
 
 # Mobile Apps-Bindungen in Azure Functions
 
+[AZURE.INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
+
 Dieser Artikel erläutert das Konfigurieren und Codieren von Azure Mobile Apps-Bindungen in Azure Functions.
 
 [AZURE.INCLUDE [Einführung](../../includes/functions-bindings-intro.md)]
 
-Mit mobilen Azure App Service-Apps können Sie Tabellenendpunkt-Daten auf mobilen Clients verfügbar machen. Dieselben Tabellendaten können sowohl in Eingabe- als auch in Ausgabebindungen in Azure Functions verwendet werden. Da ein dynamisches Schema unterstützt wird, eignet sich eine mobile Node.js-Back-End-App besonders zum Verfügbarmachen von Tabellendaten für die Verwendung mit Ihren Funktionen. Das dynamische Schema ist standardmäßig aktiviert und sollte in einer mobilen Produktions-App deaktiviert werden. Weitere Informationen zu Tabellenendpunkten in einem Node.js-Back-End finden Sie unter [Übersicht: Tabellenvorgänge](../app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#TableOperations). In Mobile Apps unterstützt das Node.js-Back-End das portalinterne Durchsuchen und Bearbeiten von Tabellen. Weitere Informationen finden Sie im Abschnitt zur [portalinternen Bearbeitung](../app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#in-portal-editing) im Thema „Node.js SDK“. Beim Verwenden einer mobilen .NET-Back-End-App mit Azure Functions müssen Sie das Datenmodell entsprechend den Anforderungen der Funktion manuell aktualisieren. Weitere Informationen zu Tabellenendpunkten in einer mobilen .NET-Back-End-App finden Sie unter [Gewusst wie: Definieren eines Tabellencontrollers](../app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#define-table-controller) im Thema „.NET-Back-End-SDK“.
+Mit mobilen Azure App Service-Apps können Sie Tabellenendpunkt-Daten auf mobilen Clients verfügbar machen. Dieselben Tabellendaten können sowohl in Eingabe- als auch in Ausgabebindungen in Azure Functions verwendet werden. Da ein dynamisches Schema unterstützt wird, eignet sich eine mobile Node.js-Back-End-App besonders zum Verfügbarmachen von Tabellendaten für die Verwendung mit Ihren Funktionen. Das dynamische Schema ist standardmäßig aktiviert und sollte in einer mobilen Produktions-App deaktiviert werden. Weitere Informationen zu Tabellenendpunkten in einem Node.js-Back-End finden Sie unter [Übersicht: Tabellenvorgänge](../app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#TableOperations). In Mobile Apps unterstützt das Node.js-Back-End das portalinterne Durchsuchen und Bearbeiten von Tabellen. Weitere Informationen finden Sie im Abschnitt zur [portalinternen Bearbeitung](../app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#in-portal-editing) im Thema „Node.js SDK“. Beim Verwenden einer mobilen .NET-Back-End-App mit Azure Functions müssen Sie das Datenmodell entsprechend den Anforderungen der Funktion manuell aktualisieren. Weitere Informationen zu Tabellenendpunkten in einer mobilen .NET-Back-End-App finden Sie unter [Vorgehensweise: Definieren eines Tabellencontrollers](../app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#define-table-controller) im Thema „.NET-Back-End-SDK“.
 
 ## Erstellen einer Umgebungsvariablen für Ihre Back-End-URL für mobile Apps
 
@@ -34,15 +36,15 @@ Für Mobile Apps-Bindungen müssen Sie derzeit eine Umgebungsvariable erstellen,
 
 So legen Sie diese URL als Umgebungsvariable in Ihrer Funktions-App fest:
 
-1. Klicken Sie in Ihrer Funktions-App im [Azure Functions-Portal](https://functions.azure.com/signin) auf **Funktions-App-Einstellungen** > **Zu App Service-Einstellungen wechseln**. 
+1. Klicken Sie in Ihrer Funktionen-App im [Azure Functions-Portal](https://functions.azure.com/signin) auf **Function app settings** (Funktionen-App-Einstellungen) > **Go to App Service settings** (Zu App Service-Einstellungen wechseln).
 
 	![Funktions-App-Einstellungenblatt](./media/functions-bindings-mobile-apps/functions-app-service-settings.png)
 
-2. Klicken Sie in Ihrer Funktions-App auf **Alle Einstellungen**, scrollen Sie nach unten zu **Anwendungseinstellungen**, und geben Sie dann unter **App-Einstellungen** einen neuen **Namen** für die Umgebungsvariable ein, fügen Sie die URL in **Wert** ein, wobei Sie das HTTPS-Schema verwenden, klicken Sie dann auf **Speichern**, und schließen Sie das Funktions-App-Blatt im Functions-Portal.
+2. Klicken Sie in Ihrer Funktionen-App auf **Alle Einstellungen**, scrollen Sie nach unten zu **Anwendungseinstellungen**, und geben Sie dann unter **App-Einstellungen** einen neuen **Namen** für die Umgebungsvariable ein, fügen Sie die URL in **Wert** ein, wobei Sie das HTTPS-Schema verwenden, klicken Sie dann auf **Speichern**, und schließen Sie das Funktionen-App-Blatt im Functions-Portal.
 
 	![Hinzufügen einer App-Einstellung zu einer Umgebungsvariablen](./media/functions-bindings-mobile-apps/functions-app-add-app-setting.png)
 
-Nun können Sie diese neue Umgebungsvariable als Feld *connection* in Ihren Bindungen festlegen.
+Nun können Sie diese neue Umgebungsvariable als *Verbindungsfeld* in Ihren Bindungen festlegen.
 
 ## <a id="mobiletablesapikey"></a> Verwenden Sie einen API-Schlüssel, um den Zugriff auf Ihre Mobile Apps-Tabellenendpunkte zu schützen.
 
@@ -167,4 +169,4 @@ Dieses Node.js-Codebeispiel fügt einen neuen Datensatz mit einer *text*-Eigensc
 
 [AZURE.INCLUDE [Nächste Schritte](../../includes/functions-bindings-next-steps.md)]
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0824_2016-->

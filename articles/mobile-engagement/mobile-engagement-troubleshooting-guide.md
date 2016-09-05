@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="mobile-multiple"
    ms.workload="mobile" 
-   ms.date="02/26/2016"
+   ms.date="08/19/2016"
    ms.author="piyushjo"/>
 
 # Azure Mobile Engagement – Handbuch zur Problembehandlung
@@ -118,7 +118,7 @@ Wenn Sie das Problem nicht selbst beheben können, haben Sie folgende Möglichke
 	- App-ID
 	- Kampagnen-ID (für Probleme bei Pushbenachrichtigungen)
 	- Geräte-ID
-	- Mobile Engagement SDK-Version (z. B. „Android SDK v2.1.0“)
+	- Mobile Engagement SDK-Version (z. B. „Android SDK v2.1.0“)
 	- Fehlerdetails mit der genauen Fehlermeldung und dem Fehlerszenario
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0824_2016-->

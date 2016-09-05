@@ -4,7 +4,7 @@
    services=""
    documentationCenter="na"
    authors="adamglick"
-   manager="hongfeig"
+   manager="saladki"
    editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="08/01/2016"
+   ms.date="08/18/2016"
    ms.author="aglick"/>
 
 #Technischer Leitfaden zur Resilienz in Azure – Wiederherstellung nach Datenbeschädigung oder versehentlichem Löschen
@@ -24,7 +24,7 @@ Teil eines zuverlässigen Plans für Geschäftskontinuität sind Maßnahmen für
 
 Verwenden Sie [Azure Backup](https://azure.microsoft.com/services/backup/), um Ihre virtuellen Azure-Computer (manchmal auch als Infrastructure-as-a-Service-VMs bezeichnet) vor Anwendungsfehlern oder versehentlichem Löschen zu schützen. Mit Azure Backup können Sie über mehrere VM-Datenträger hinweg konsistente Sicherungen erstellen. Darüber hinaus kann der Sicherungstresor über Regionen hinweg repliziert werden, um bei Ausfall einer Region eine Wiederherstellung zu ermöglichen.
 
-##Storage
+##Speicher
 
 Beachten Sie, dass Azure Storage zwar Datenresilienz durch automatisierte Replikate sicherstellt, dies jedoch Ihren Anwendungscode (oder Entwickler/Benutzer) nicht vor Datenbeschädigung durch versehentliches oder unbeabsichtigtes Löschen, Aktualisieren usw. schützt. Um Datengenauigkeit bei Anwendungs- oder Benutzerfehlern zu gewährleisten, sind weitergehende Methoden erforderlich – beispielsweise das Kopieren der Daten an einen sekundären Speicherort mit einem Überwachungsprotokoll. Entwickler können von den Vorteilen der [Blob-Momentaufnahmefunktion](https://msdn.microsoft.com/library/azure/ee691971.aspx) profitieren, mit der sie schreibgeschützte Momentaufnahmen von Blobinhalten erstellen können. Diese kann als Grundlage für eine Datengenauigkeitslösung für Azure Storage-Blobs dienen.
 
@@ -45,7 +45,7 @@ Für die Azure SQL-Datenbank stehen Ihnen mehrere Optionen für [Geschäftskonti
 
 ###Sichern der SQL-Datenbank
 
-Zeitpunktsicherungen für die Microsoft Azure SQL-Datenbank erfolgen durch das [Kopieren Ihrer Azure SQL-Datenbank](../sql-database/sql-database-copy.md). Mit diesem Befehl können Sie auf dem gleichen logischen Datenbankserver oder auf einem anderen Server eine transaktionskonsistente Kopie einer Datenbank erstellen. Die Datenbankkopie ist in beiden Fällen voll funktionsfähig und vollkommen unabhängig von der Quelldatenbank. Jede erstellte Kopie stellt eine Option für die Zeitpunktwiederherstellung dar. Sie können den Zustand der Datenbank vollständig wiederherstellen, indem Sie der neuen Datenbank den Namen der Quelldatenbank geben. Alternativ können Sie mithilfe von Transact-SQL-Abfragen eine bestimmte Teilmenge von Daten aus der neuen Datenbank wiederherstellen. Weitere Informationen zur SQL-Datenbank finden Sie unter [Geschäftskontinuität für die Cloud und Notfallwiederherstellung für Datenbanken mit SQL-Datenbank](../sql-database/sql-database-business-continuity.md).
+Zeitpunktsicherungen für die Microsoft Azure SQL-Datenbank erfolgen durch das [Kopieren Ihrer Azure SQL-Datenbank](../sql-database/sql-database-copy.md). Mit diesem Befehl können Sie auf dem gleichen logischen Datenbankserver oder auf einem anderen Server eine transaktionskonsistente Kopie einer Datenbank erstellen. Die Datenbankkopie ist in beiden Fällen voll funktionsfähig und vollkommen unabhängig von der Quelldatenbank. Jede erstellte Kopie stellt eine Option für die Zeitpunktwiederherstellung dar. Sie können den Zustand der Datenbank vollständig wiederherstellen, indem Sie der neuen Datenbank den Namen der Quelldatenbank geben. Alternativ können Sie mithilfe von Transact-SQL-Abfragen eine bestimmte Teilmenge von Daten aus der neuen Datenbank wiederherstellen. Weitere Informationen zu SQL-Datenbank finden Sie in der [Übersicht über die Geschäftskontinuität mit Azure SQL-Datenbank](../sql-database/sql-database-business-continuity.md).
 
 ###Sichern von SQL Server auf Virtual Machines
 
@@ -60,27 +60,33 @@ Für Azure Websites und Azure Mobile Services müssen Sie die zugeordneten Daten
 ##Prüflisten für Datenbeschädigung oder versehentliches Löschen
 
 ##Prüfliste – Virtual Machines
-  1. Lesen Sie den Abschnitt [Virtual Machines](#virtual-machines) in diesem Dokument.
+
+  1. Lesen Sie den Abschnitt zu Virtual Machines in diesem Dokument.
   2. Sichern und verwalten Sie die VM-Datenträger mit Azure Backup (oder Ihrem eigenen Sicherungssystem unter Verwendung von Azure-Blobspeicher und VHD-Momentaufnahmen).
 
 ##Prüfliste – Speicher
-  1. Lesen Sie den Abschnitt [Speicher](#storage) in diesem Dokument.
+
+  1. Lesen Sie den Abschnitt zu Storage in diesem Dokument.
   2. Erstellen Sie regelmäßig Sicherungen wichtiger Speicherressourcen.
   3. Verwenden Sie ggf. die Momentaufnahmefunktion für Blobs.
 
 ##Prüfliste – Datenbank
-  1. Lesen Sie den Abschnitt [Datenbank](#database) in diesem Dokument.
+
+  1. Lesen Sie den Abschnitt zur Datenbank in diesem Dokument.
   2. Erstellen Sie mit dem Befehl zum Kopieren von Datenbanken Zeitpunktsicherungen.
 
 ##Prüfliste – Sicherung von SQL Server auf Virtual Machines
-  1. Lesen Sie den Abschnitt [Sicherung von SQL Server auf Virtual Machines](#sql-server-on-virtual-machines-backup) in diesem Dokument.
+
+  1. Lesen Sie den Abschnitt zur Sicherung von SQL Server auf Virtual Machines in diesem Dokument.
   2. Verwenden Sie die üblichen Sicherungs- und Wiederherstellungsverfahren.
   3. Erstellen Sie eine verzögerte Protokollversandsitzung.
 
 ##Prüfliste – Web-Apps
+
   1. Sichern und verwalten Sie die zugeordnete Datenbank, falls vorhanden.
 
 ##Prüfliste – Media Services
+
   1. Sichern und verwalten Sie die zugeordneten Speicherressourcen.
 
 ##Weitere Informationen
@@ -89,6 +95,6 @@ Weitere Informationen zu den Sicherungs- und Wiederherstellungsfeatures in Azure
 
 ##Nächste Schritte
 
-Dieser Artikel ist Teil einer Serie mit dem Schwerpunkt [Technischer Leitfaden zur Resilienz in Azure](./resiliency-technical-guidance.md). Weitere Ressourcen zu Resilienz, Notfallwiederherstellung und hoher Verfügbarkeit finden Sie im technischen Leitfaden zur Resilienz in Azure unter [Weitere Ressourcen](./resiliency-technical-guidance.md#additional-resources).
+Dieser Artikel gehört zu einer Reihe von Artikeln, die als [Technischer Leitfaden zur Resilienz in Azure](./resiliency-technical-guidance.md) dienen. Weitere Ressourcen zu Resilienz, Notfallwiederherstellung und hoher Verfügbarkeit finden Sie im technischen Leitfaden zur Resilienz in Azure unter [Weitere Ressourcen](./resiliency-technical-guidance.md#additional-resources).
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0824_2016-->

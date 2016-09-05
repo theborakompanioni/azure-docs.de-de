@@ -16,7 +16,7 @@
 	ms.date="05/10/2016" 
 	ms.author="sethm"/>
 
-# Verwenden von AMQP 1.0 mit der .NET-Programmierschnittstelle für Service Bus
+# Verwendung von AMQP 1.0 mit der .NET-Programmierstelle für Servicebus
 
 AMQP (Advanced Message Queuing Protocol) 1.0 ist ein effizientes, zuverlässiges Messagingprotokoll auf Wire-Ebene, mit dem Sie robuste und plattformübergreifende Messaginganwendungen erstellen können.
 
@@ -26,7 +26,7 @@ In diesem Artikel wird erklärt, wie Sie die Brokermessagingfunktionen (Wartesch
 
 ## Erste Schritte mit Service Bus
 
-In diesem Artikel wird davon ausgegangen, dass Sie bereits einen Service Bus-Namespace haben, der eine Warteschlange mit dem Namen "queue1" enthält. Falls nicht, können Sie den Namespace und die Warteschlange im [klassischen Azure-Portal](http://manage.windowsazure.com) erstellen. Weitere Informationen zum Erstellen von Namespaces und Warteschlangen für Service Bus finden Sie unter [Verwenden von Service Bus-Warteschlangen](service-bus-dotnet-get-started-with-queues.md).
+In diesem Artikel wird davon ausgegangen, dass Sie bereits einen Service Bus-Namespace haben, der eine Warteschlange mit dem Namen "queue1" enthält. Falls nicht, können Sie den Namespace und die Warteschlange im [Azure-Portal][] erstellen. Weitere Informationen zum Erstellen von Namespaces und Warteschlangen für Service Bus finden Sie unter [Verwenden von Service Bus-Warteschlangen](service-bus-dotnet-get-started-with-queues.md).
 
 ## Herunterladen des Servicebus-SDKs
 
@@ -34,7 +34,7 @@ Unterstützung für AMQP 1.0 ist für die Servicebus-SDK-Version 2.1 oder eine h
 
 ## Programmieren von .NET-Anwendungen
 
-Mithilfe eines dedizierten SOAP-basierten Protokolls kommuniziert die Servicebus .NET-Clientbibliothek standardmäßig mit dem Servicebus-Dienst. Wenn Sie anstatt des Standardprotokolls AMQP 1.0 verwenden möchten, ist eine explizite Konfiguration der Verbindungszeichenfolge für Servicebus erforderlich, die im nächsten Abschnitt beschrieben wird. Mit Ausnahme dieser Änderung bleibt der Anwendungscode bei Verwenden von AMQP 1.0 grundsätzlich unverändert.
+Mithilfe eines dedizierten SOAP-basierten Protokolls kommuniziert die .NET-Clientbibliothek von Service Bus standardmäßig mit dem Service Bus-Dienst. Wenn Sie anstatt des Standardprotokolls AMQP 1.0 verwenden möchten, ist eine explizite Konfiguration der Verbindungszeichenfolge für Servicebus erforderlich, die im nächsten Abschnitt beschrieben wird. Mit Ausnahme dieser Änderung bleibt der Anwendungscode bei Verwenden von AMQP 1.0 grundsätzlich unverändert.
 
 In der aktuellen Version gibt es ein paar API-Features, die bei Verwendung von AMQP nicht unterstützt werden. Diese nicht unterstützten Features sind weiter unten im Abschnitt [Nicht unterstützte Features und Einschränkungen](#unsupported-features-and-restrictions) aufgeführt. Darüber hinaus haben einige der erweiterten Konfigurationseinstellungen eine unterschiedliche Bedeutung, wenn AMQP zum Einsatz kommt. Keine dieser Einstellungen wird in diesem Artikel verwendet. Weitere Informationen finden Sie in der [Übersicht zu Service Bus mit AMQP](service-bus-amqp-dotnet.md#unsupported-features-restrictions-and-behavioral-differences).
 
@@ -63,7 +63,7 @@ Beim Wert der Einstellung **Microsoft.ServiceBus.ConnectionString** handelt es s
 Endpoint=sb://[namespace].servicebus.windows.net;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=[SAS key];TransportType=Amqp
 ```
 
-`[namespace]` und `[SAS key]` werden aus dem [klassischen Azure-Portal][] bezogen. Weitere Informationen finden Sie unter [Verwenden von Service Bus-Warteschlangen][].
+`[namespace]` und `[SAS key]` werden aus dem [Azure-Portal][] bezogen. Weitere Informationen finden Sie unter [Verwenden von Service Bus-Warteschlangen][].
 
 Wenn AMQP zum Einsatz kommt, wird `;TransportType=Amqp` an die Verbindungszeichenfolge angehängt, sodass die Clientbibliothek angewiesen wird, mithilfe von AMQP 1.0 eine Verbindung mit Service Bus herzustellen.
 
@@ -291,23 +291,6 @@ Received message with JMSMessageID = ID:acbca67f03c346de9b7893026f97ddeb
 exit
 ```
 
-## Nicht unterstützte Funktionen und Einschränkungen
-
-Die folgenden Funktionen der .NET-Servicebus-API werden bei der Verwendung von AMQP aktuell nicht unterstützt:
-
-* Transaktionen
-* Senden mithilfe eines Übertragungsziels
-* Empfangen per Nachrichtensequenznummer
-* Durchsuchen von Nachrichten und Sitzungen
-* Sitzungsstatus
-* Batchbasierte APIs
-* Skaliertes Empfangen
-* Ändern der Laufzeit für die Abonnementregeln
-* Verlängern der Sitzungssperre
-* Einige geringfügige Unterschiede bezüglich des Verhaltens
-
-Weitere Informationen finden Sie im in der [Übersicht über Service Bus mit AMQP](service-bus-amqp-dotnet.md). Dieser Artikel enthält eine detaillierte Liste der nicht unterstützten APIs.
-
 ## Zusammenfassung
 
 In diesem Artikel wurde gezeigt, wie Sie mithilfe von AMQP 1.0 und der .NET-API für Service Bus von .NET aus auf die Brokermessagingfunktionen für Service Bus (Warteschlangen und Themen veröffentlichen/abonnieren) zugreifen.
@@ -322,6 +305,6 @@ Nachdem Sie sich einen Überblick über Service Bus und AMQP mit .NET verschafft
 * [Verwenden der JMS-Programmierschnittstelle (Java Message Service) mit Service Bus & AMQP 1.0](service-bus-java-how-to-use-jms-api-amqp.md)
 * [Verwenden von Service Bus-Warteschlangen](service-bus-dotnet-get-started-with-queues.md)
  
-[klassischen Azure-Portal]: https://manage.windowsazure.com
+[Azure-Portal]: https://portal.azure.com
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0824_2016-->

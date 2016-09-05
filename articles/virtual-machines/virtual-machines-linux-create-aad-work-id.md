@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="vm-linux"
    ms.workload="infrastructure"
-   ms.date="06/06/2016"
+   ms.date="08/23/2016"
    ms.author="rasquill"/>
 
 # Erstellen von Arbeits- oder Schulidentitäten in Azure Active Directory für die Verwendung mit Linux-VMs
@@ -27,4 +27,4 @@ Aufgrund aktueller Änderungen können Sie Ihr Abonnement jedoch mit jeder Art v
 
 [AZURE.INCLUDE [virtual-machines-common-create-aad-work-id](../../includes/virtual-machines-common-create-aad-work-id.md)]
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0824_2016-->

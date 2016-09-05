@@ -1,21 +1,21 @@
-<properties 
+<properties
    pageTitle="Erstellen eines internen Load Balancers im klassischen Bereitstellungsmodell mithilfe von PowerShell | Microsoft Azure"
    description="Hier erfahren Sie, wie Sie mithilfe von PowerShell einen internen Load Balancer im klassischen Bereitstellungsmodell erstellen."
    services="load-balancer"
    documentationCenter="na"
-   authors="joaoma"
-   manager="carolz"
+   authors="sdwheeler"
+   manager="carmonm"
    editor=""
    tags="azure-service-management"
 />
-<tags  
+<tags
    ms.service="load-balancer"
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="02/09/2016"
-   ms.author="joaoma" />
+   ms.author="sewhee" />
 
 # Erste Schritte zum Erstellen eines internen Load Balancers (klassisch) mithilfe von PowerShell
 
@@ -116,7 +116,7 @@ Die folgenden Befehle konfigurieren eine neue ILB-Instanz mit dem Namen **ILBset
 
 	$svc="mytestcloud"
 	$ilb="ilbset"
-	Add-AzureInternalLoadBalancer -ServiceName $svc -InternalLoadBalancerName $ilb 
+	Add-AzureInternalLoadBalancer -ServiceName $svc -InternalLoadBalancerName $ilb
 	$prot="tcp"
 	$locport=1433
 	$pubport=1433
@@ -181,4 +181,4 @@ Um weitere Informationen zu ILB-Cmdlets zu erhalten, führen Sie die folgenden B
 
 [Konfigurieren von TCP-Leerlauftimeout-Einstellungen für den Lastenausgleich](load-balancer-tcp-idle-timeout.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0824_2016-->

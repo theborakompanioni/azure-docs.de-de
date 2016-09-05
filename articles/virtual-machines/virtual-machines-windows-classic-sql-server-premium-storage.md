@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="05/04/2016"
+	ms.date="08/19/2016"
 	ms.author="jroth"/>
 
 # Verwenden von Azure Premium-Speicher mit SQL Server auf virtuellen Computern
@@ -350,12 +350,12 @@ Hier erstellen Sie den virtuellen Computer aus dem Image und fügen zwei Premium
 
 > [AZURE.NOTE] Lesen Sie bei vorhandenen Bereitstellungen zunächst den Abschnitt [Voraussetzungen](#prerequisites-for-premium-storage) dieses Themas.
 
-Es gibt verschiedene Überlegungen für SQL Server-Bereitstellungen, die keine AlwaysOn-Verfügbarkeitsgruppen verwenden. Wenn Sie keine AlwaysOn-Funktionen benötigen und über einen eigenständigen SQL Server verfügen, können Sie ein Upgrade auf Storage Premium durchführen, indem Sie einen neuen Clouddienst und ein neues Speicherkonto verwenden. Betrachten Sie die folgenden Optionen:
+Es gibt verschiedene Überlegungen für SQL Server-Bereitstellungen, die keine Always On-Verfügbarkeitsgruppen verwenden. Wenn Sie keine AlwaysOn-Funktionen benötigen und über einen eigenständigen SQL Server verfügen, können Sie ein Upgrade auf Storage Premium durchführen, indem Sie einen neuen Clouddienst und ein neues Speicherkonto verwenden. Betrachten Sie die folgenden Optionen:
 
 - **Erstellen einer neuen SQL Server-VM**. Sie können einen neuen virtuellen SQL Server-Computer erstellen, der ein Premium-Speicherkonto verwendet, wie dies unter "Neue Bereitstellungen" dokumentiert ist. Erstellen Sie anschließend eine Sicherung der SQL Server-Konfiguration und -Benutzerdatenbanken, und stellen Sie sie wieder her. Die Anwendung muss aktualisiert werden, um auf den neuen SQL Server zu verweisen, wenn intern oder extern auf diesen zugegriffen wird. Sie müssen alle "out of db"-Objekte kopieren, als ob Sie eine parallele (SxS) SQL Server-Migration ausführen. Dies umfasst Objekte, wie z. B. Anmeldenamen, Zertifikate und Verbindungsserver.
 - **Migrieren eines vorhandenen SQL Server-VM**. Dies erfordert, dass die virtuellen SQL Server-Computer offline geschaltet und anschließend an einen neuen Clouddienst übertragen werden, einschließlich des Kopierens aller angefügten virtuellen Festplatten zum Premium-Speicherkonto. Wenn der virtuelle Computer online geschaltet wird, verweist die Anwendung wie zuvor auf den Serverhostnamen. Denken Sie daran, dass sich die Größe des vorhandenen Datenträgers auf die Leistungsmerkmale auswirkt. Beispielsweise wird ein 400-GB-Datenträger auf einen P20 aufgerundet. Wenn Sie wissen, dass Sie diese Datenträgerleistung nicht benötigen, können Sie den virtuellen Computer als DS-Serie-VM neu erstellen und virtuelle Premium-Speicher-VHDs mit den erforderlichen Größen-/Leistungs-Spezifikationen anfügen. Anschließend können Sie die SQL-Datenbankdateien trennen und neu verbinden.
 
-> [AZURE.NOTE] Beim Kopieren der VHD-Datenträger sollten Sie sich über die Größe bewusst sein. Der Premium-Speicher-Datenträgertyp wird anhand der Größe festgelegt, die wiederum auch die Datenträgerleistung bestimmt. Azure wird auf die nächstliegende Größe aufgerundet, sodass ein 400-GB-Datenträger als P20 eingestuft wird. Abhängig von den bestehenden E/A-Anforderungen der Betriebssystem-VHD müssen Sie dadurch möglicherweise nicht zu einem Premium-Speicherkonto migrieren.
+> [AZURE.NOTE] Beim Kopieren der VHD-Datenträger sollten Sie sich der Größe bewusst sein. Der Storage Premium-Datenträgertyp wird anhand der Größe festgelegt, die wiederum auch die Datenträgerleistung bestimmt. Azure wird auf die nächstliegende Größe aufgerundet, sodass ein 400-GB-Datenträger als P20 eingestuft wird. Abhängig von den bestehenden E/A-Anforderungen der Betriebssystem-VHD müssen Sie dadurch möglicherweise nicht zu einem Premium-Speicherkonto migrieren.
 
 Wenn auf den SQL Server extern zugegriffen wird, ändert sich die Clouddienst-VIP. Außerdem müssen Sie die Endpunkt-, ACL- und DNS-Einstellungen aktualisieren.
 
@@ -363,7 +363,7 @@ Wenn auf den SQL Server extern zugegriffen wird, ändert sich die Clouddienst-V
 
 > [AZURE.NOTE] Lesen Sie bei vorhandenen Bereitstellungen zunächst den Abschnitt [Voraussetzungen](#prerequisites-for-premium-storage) dieses Themas.
 
-In diesem Abschnitt betrachten wir zunächst die Interaktion von AlwaysOn mit Azure-Netzwerken. Anschließend werden Migrationen anhand von zwei Szenarios erläutert: Migrationen, in denen eine Ausfallzeit toleriert werden kann, und Migrationen mit minimaler Ausfallzeit.
+In diesem Abschnitt betrachten wir zunächst die Interaktion von Always On mit Azure-Netzwerken. Anschließend werden Migrationen anhand von zwei Szenarios erläutert: Migrationen, in denen eine Ausfallzeit toleriert werden kann, und Migrationen mit minimaler Ausfallzeit.
 
 Lokale SQL Server AlwaysOn-Verfügbarkeitsgruppen verwenden einen lokalen Listener, der einen virtuellen DNS-Namen mit einer IP-Adresse registriert, die von einem oder mehreren SQL Server-Computern gemeinsam verwendet wird. Wenn Clients eine Verbindung herstellen, werden sie über die Listener-IP-Adresse an den primären SQL Server-Computer weitergeleitet. Dies ist der Server, der die AlwaysOn-IP-Adressressource zu diesem Zeitpunkt besitzt.
 
@@ -395,8 +395,8 @@ Sie sollten Zeit für die Durchführung manueller Failover- und Chaostests auf d
 
 ![DeploymentUseAlways On2][7]
 
-> [AZURE.NOTE] Sie sollten alle SQL Server-Instanzen beenden, in denen Speicherpools verwendet werden, bevor die Überprüfung ausgeführt wird.
-##### Schritte auf oberer Ebene:
+> [AZURE.NOTE] Sie sollten alle SQL Server-Instanzen beenden, in denen Speicherpools verwendet werden, bevor die Überprüfung ausgeführt wird.
+##### Allgemeine Schritte
 
 1. Erstellen Sie zwei neue SQL Server im neuen Clouddienst mit angefügtem Premium-Speicher.
 1. Kopieren Sie VOLLSTÄNDIGE Sicherungen, und stellen Sie sie mit **NORECOVERY** wieder her.
@@ -409,7 +409,7 @@ Sie sollten Zeit für die Durchführung manueller Failover- und Chaostests auf d
 1. Fügen Sie neue Knoten zum Cluster hinzu, und führen Sie eine vollständige Überprüfung durch.
 1. Sobald die Überprüfung erfolgreich abgeschlossen wurde, starten Sie alle SQL Server-Dienste.
 1. Sichern Sie die Transaktionsprotokolle, und stellen Sie die Benutzerdatenbanken wieder her.
-1. Fügen Sie neue Knoten der AlwaysOn-Verfügbarkeitsgruppe hinzu, und speichern Sie die Replikation in **Syncronous**.
+1. Fügen Sie der Always On-Verfügbarkeitsgruppe neue Knoten hinzu, und speichern Sie die Replikation in **Synchronous**.
 1. Fügen Sie die IP-Adressressource des neuen ILB/ELB des Clouddiensts über PowerShell für AlwaysOn hinzu. Nehmen Sie als Grundlage das Beispiel mit mehreren Standorten im [Anhang](#appendix-migrating-a-multisite-alwayson-cluster-to-premium-storage). Legen Sie in den Windows-Clustern die **Mögliche Besitzer** der Ressource **IP-Adresse** auf die neuen Knoten fest. Weitere Informationen finden Sie im Abschnitt "Hinzufügen einer IP-Adressressource im gleichen Subnetz" im [Anhang](#appendix-migrating-a-multisite-alwayson-cluster-to-premium-storage).
 1. Führen Sie ein Failover zu einem der neuen Knoten aus.
 1. Legen Sie die neuen Knoten als automatische Failoverpartner fest, und testen Sie die Failoverfunktionalität.
@@ -486,7 +486,7 @@ Eine Strategie für minimale Ausfallzeiten ist die sekundäre Verwendung einer v
 	- Führen Sie die Migration außerhalb von geplanten Azure-Wartungen aus.
 	- Stellen Sie sicher, dass Sie das Clusterquorum ordnungsgemäß konfiguriert haben.
 
-##### Schritte auf oberer Ebene:
+##### Allgemeine Schritte
 
 In diesem Dokument ist kein vollständiges End-to-End-Beispiel dargestellt. Im [Anhang](#appendix-migrating-a-multisite-alwayson-cluster-to-premium-storage) finden Sie jedoch weitere Informationen zur Durchführung eines solchen Beispiels.
 
@@ -498,7 +498,7 @@ In diesem Dokument ist kein vollständiges End-to-End-Beispiel dargestellt. Im [
 - Konfigurieren Sie die ILB/ELB, und fügen Sie Endpunkte hinzu.
 - Aktualisieren Sie den Listener mit einem der folgenden Verfahren:
 	- Offlineschalten der Gruppe „AlwaysOn“ und Aktualisieren des AlwaysOn-Listeners mit der neuen ILB/ELB-IP-Adresse.
-	- Oder Hinzufügen der IP-Adressressource des neuen Clouddienst-ILB/ELB mithilfe von PowerShell in Windows-Clustern. Festlegen der möglichen Besitzer der IP-Adressressource auf den migrierten Knoten, SQL2, und Festlegen als OR-Abhängigkeit im Netzwerknamen. Weitere Informationen finden Sie im Abschnitt "Hinzufügen einer IP-Adressressource im gleichen Subnetz" im [Anhang](#appendix-migrating-a-multisite-alwayson-cluster-to-premium-storage).
+	- Die Alternative ist das Hinzufügen der IP-Adressressource des neuen Clouddienst-ILB/ELB mithilfe von PowerShell in Windows-Clustern. Festlegen der möglichen Besitzer der IP-Adressressource auf den migrierten Knoten, SQL2, und Festlegen als OR-Abhängigkeit im Netzwerknamen. Weitere Informationen finden Sie im Abschnitt "Hinzufügen einer IP-Adressressource im gleichen Subnetz" im [Anhang](#appendix-migrating-a-multisite-alwayson-cluster-to-premium-storage).
 - Überprüfen Sie die DNS-Konfiguration/-Weitergabe an die Clients.
 - Migrieren Sie die SQL1-VM, und führen Sie die Schritte 2 bis 4 durch.
 - Wenn Sie die Schritte 5ii verwenden, fügen Sie SQL1 als möglichen Besitzer für die hinzugefügte IP-Adressressource hinzu.
@@ -535,7 +535,7 @@ Die Ausfallzeit besteht in der Zeit für das Failover zum alternativen DC und zu
 
 Bei diesem Szenario wird davon ausgegangen, dass Sie Ihre Installation dokumentiert haben und wissen, wie der Speicher zugeordnet wurde, um Änderungen in Bezug auf die optimalen Cacheeinstellungen vorzunehmen.
 
-##### Schritte auf oberer Ebene:
+##### Allgemeine Schritte
 ![Multisite2][10]
 
 - Machen Sie das lokale/alternative Azure-DC zum primären DC für SQL Server und zum Partner für automatische Failover (AFP).
@@ -551,7 +551,7 @@ Bei diesem Szenario wird davon ausgegangen, dass Sie Ihre Installation dokumenti
 
 ## Anhang: Migrieren eines AlwaysOn-Clusters mit mehreren Standorten zu Storage Premium
 
-Im weiteren Verlauf dieses Themas finden Sie ein ausführliches Beispiel zum Konvertieren eines AlwaysOn-Clusters mit mehreren Standorten in Storage Premium. Weiterhin wird der Listener so konvertiert, das er statt eines externen Lastenausgleichs (ELB) einen internen Lastenausgleich (ILB) verwendet.
+Im weiteren Verlauf dieses Themas finden Sie ein ausführliches Beispiel zum Konvertieren eines Always On-Clusters mit mehreren Standorten in Storage Premium. Weiterhin wird der Listener so konvertiert, das er statt eines externen Lastenausgleichs (ELB) einen internen Lastenausgleich (ILB) verwendet.
 
 ### Environment
 
@@ -567,7 +567,7 @@ In diesem Beispiel wird die Umstellung von einem ELB zu einem ILB veranschaulich
 
 ![Anhang2][12]
 
-### Vorbereitungsschritte: Verbinden mit dem Abonnement
+### Vorbereitungsschritte: Herstellen der Verbindung mit dem Abonnement
 
     Add-AzureAccount
 
@@ -628,7 +628,7 @@ Der problemlose Übergang hängt von der Verwendung und Aktualisierung von DNS a
 - Name des virtuellen Netzwerks (VNN) – Dies ist der DNS-Name, mit dem der Client bei der Verbindung mit SQL Server über AlwaysOn eine Verbindung herstellt.
 - IP-Adressressource – Dies ist die IP-Adresse, die mit dem VNN verknüpft ist. Es können mehrere vorhanden sein und in einer Konfiguration für mehrere Standorte gibt es eine IP-Adresse pro Standort/Subnetz.
 
-Beim Herstellen einer Verbindung mit SQL Server ruft der SQL Server-Clienttreiber die mit dem Listener verbundenen DNS-Datensätze ab und versucht, eine Verbindung mit jeder IP-Adresse, die mit AlwaysOn verknüpft ist, herzustellen. Im Folgenden werden einige Faktoren besprochen, die dies beeinflussen können.
+Beim Herstellen einer Verbindung mit SQL Server ruft der SQL Server-Clienttreiber die mit dem Listener verbundenen DNS-Datensätze ab und versucht, eine Verbindung mit jeder IP-Adresse, die mit Always On verknüpft ist, herzustellen. Im Folgenden werden einige Faktoren besprochen, die dies beeinflussen können.
 
 Die Anzahl der gleichzeitigen DNS-Datensätze, die dem Listenernamen zugeordnet sind, hängt nicht nur von der Anzahl der zugeordneten IP-Adressen ab, sondern von der Einstellung „RegisterAllIpProviders“ im Failovercluster für die AlwaysOn-VNN-Ressource.
 
@@ -675,7 +675,7 @@ Weitere Informationen zu den obigen Einstellungen finden Sie unter [Erstellen od
 
 #### Schritt 5: Clusterquorum-Einstellungen
 
-Da Sie mindestens einen SQL Server offline schalten, sollten Sie die Clusterquorum-Einstellung ändern. Wenn Sie FSW (File Share Witnes) mit zwei Knoten verwenden, sollten Sie die Quorum-Einstellung so festlegen, dass Knotenmehrheit zugelassen und dynamische Abstimmungen verwendet werden. Dies ermöglicht das Aufrechterhalten eines einzelnen Knotens.
+Da Sie mindestens eine SQL Server-Instanz offline schalten, sollten Sie die Clusterquorum-Einstellung ändern. Wenn Sie FSW (File Share Witness) mit zwei Knoten verwenden, sollten Sie die Quorum-Einstellung so festlegen, dass Knotenmehrheit zugelassen und dynamische Abstimmungen verwendet werden. Dies ermöglicht das Aufrechterhalten eines einzelnen Knotens.
 
 
     Set-ClusterQuorum -NodeMajority  
@@ -1091,7 +1091,7 @@ Informationen zu einzelnen Blobs: #Check individual blob status Get-AzureStorage
 
 #### Schritt 23: Failovertest
 
-Lassen Sie jetzt den migrierten Knoten mit dem lokalen AlwaysOn-Knoten synchronisieren. Versetzen Sie ihn in den Modus für synchrone Replikation, und warten Sie, bis die Synchronisierung abgeschlossen ist. Führen Sie anschließend ein Failover vom lokalen zum ersten migrierten Knoten aus, bei dem es sich um den AFP handelt. Nach Abschluss dieses Vorgangs machen Sie den letzten migrierten Knoten zum AFP.
+Lassen Sie jetzt den migrierten Knoten mit dem lokalen Always On-Knoten synchronisieren. Versetzen Sie ihn in den Modus für synchrone Replikation, und warten Sie, bis die Synchronisierung abgeschlossen ist. Führen Sie anschließend ein Failover vom lokalen zum ersten migrierten Knoten aus, bei dem es sich um den AFP handelt. Nach Abschluss dieses Vorgangs machen Sie den letzten migrierten Knoten zum AFP.
 
 Sie sollten zwischen allen Knoten Failover- und Chaostests durchführen, um sicherzustellen, dass die Failover ordnungsgemäß funktionieren und in angemessener Zeit durchgeführt werden.
 
@@ -1104,11 +1104,11 @@ Nachdem Sie die migrierten sekundären Replikate online geschaltet und die neue 
 
 Informationen zum Hinzufügen einer IP-Adresse finden Sie im [Anhang](#appendix-migrating-a-multisite-alwayson-cluster-to-premium-storage) in Schritt 14.
 
-1. Ändern Sie für die aktuelle IP-Adressressource den möglichen Besitzer in "Existing Primary SQL Server" – im Beispiel unten "dansqlams4":
+1. Ändern Sie für die aktuelle IP-Adressressource den möglichen Besitzer in „Existing Primary SQL Server“ – im Beispiel unten „dansqlams4“:
 
 	![Anhang13][23]
 
-1. Ändern Sie für die neue IP-Adressressource den möglichen Besitzer in "Migrated secondary SQL Server" – im Beispiel unten "dansqlams5":
+1. Ändern Sie für die neue IP-Adressressource den möglichen Besitzer in „Migrated secondary SQL Server“ – im Beispiel unten „dansqlams5“:
 
 	![Anhang14][24]
 
@@ -1148,4 +1148,4 @@ Informationen zum Hinzufügen einer IP-Adresse finden Sie im [Anhang](#appendix-
 [24]: ./media/virtual-machines-windows-classic-sql-server-premium-storage/10_Appendix_14.png
 [25]: ./media/virtual-machines-windows-classic-sql-server-premium-storage/10_Appendix_15.png
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0824_2016-->

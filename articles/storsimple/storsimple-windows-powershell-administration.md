@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="05/24/2016"
+   ms.date="08/18/2016"
    ms.author="alkohli@microsoft.com" />
 
 # Verwenden von Windows PowerShell für StorSimple zum Verwalten eines StorSimple-Geräts
@@ -106,13 +106,13 @@ Sie können zwischen folgenden Einstellungen wählen:
 
 2. **Anmelden am Peercontroller mit Vollzugriff** Diese Option ist im Wesentlichen mit Option 1 identisch. Sie können jedoch eine Verbindung (mit den richtigen Anmeldeinformationen) mit dem **SSAdminConsole**-Runspace auf dem Peercontroller herstellen. Da ein StorSimple-Gerät für hohe Verfügbarkeit mit zwei Controllern in einer Aktiv/Passiv-Konfiguration betrieben wird, bezieht sich Peer auf den anderen Controller im Gerät, auf das Sie über die serielle Konsole zugreifen. Ähnlich wie Option 1 kann diese Option auch verwendet werden, um dem Microsoft-Support den Zugriff auf den uneingeschränkten Runspace auf einem Peercontroller zu erlauben.
 
-3. **Herstellen einer Verbindung mit beschränktem Zugriff** Diese Option wird für den Zugriff auf die Windows PowerShell-Benutzeroberfläche im eingeschränkten Modus verwendet. Sie werden nicht zur Eingabe von Anmeldeinformationen für den Zugriff aufgefordert. Diese Option stellt eine Verbindung mit einem eingeschränkteren Runspace im Vergleich zu den Optionen 1 und 2 her. Einige der Aufgaben, die über Option 1 verfügbar sind, die in diesem Runspace nicht ausgeführt werden können:
+3. **Herstellen einer Verbindung mit beschränktem Zugriff** Diese Option wird für den Zugriff auf die Windows PowerShell-Benutzeroberfläche im eingeschränkten Modus verwendet. Sie werden nicht zur Eingabe von Anmeldeinformationen für den Zugriff aufgefordert. Diese Option stellt eine Verbindung mit einem eingeschränkteren Runspace im Vergleich zu den Optionen 1 und 2 her. Einige der Aufgaben, die über Option 1 verfügbar sind, die in diesem Runspace **nicht* ausgeführt werden können:
 
 	- Zurücksetzen auf die Werkseinstellungen
 	- Ändern des Kennworts
 	- Aktivieren oder Deaktivieren des Supportzugriffs
 	- Anwenden von Updates
-	- Installieren von Hotfixes 
+	- Installieren von Hotfixes
 												
 
 	>[AZURE.NOTE] **Dies ist die bevorzugte Option, wenn Sie das Administratorkennwort für das Gerät vergessen haben und keine Verbindung über Option 1 oder 2 herstellen können.**
@@ -192,9 +192,9 @@ Sie können die Hilfe in der Windows PowerShell-Schnittstelle problemlos aktuali
 1. Geben Sie nach der Installation der Hilfedateien Folgendes ein: `Get-Help Get-Command`. Dadurch wird eine Liste mit Cmdlets angezeigt, für die Hilfe verfügbar ist.
 
 
->[AZURE.NOTE] Wenn Sie eine Liste aller verfügbaren Cmdlets in einem der Runspaces abrufen möchten, melden Sie sich bei der entsprechenden Menüoption an, und führen dann das Cmdlet `Get-Command` aus.
+>[AZURE.NOTE] Wenn Sie eine Liste aller verfügbaren Cmdlets in einem der Runspaces abrufen möchten, melden Sie sich bei der entsprechenden Menüoption an, und führen Sie dann das Cmdlet `Get-Command` aus.
 
 ## Nächste Schritte
 Wenn Probleme auf Ihrem StorSimple-Gerät bei einem der zuvor genannten Workflows auftreten, konsultieren Sie die [Tools zur Problembehandlung für StorSimple-Bereitstellungen](storsimple-troubleshoot-deployment.md#tools-for-troubleshooting-storsimple-deployments).
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0824_2016-->

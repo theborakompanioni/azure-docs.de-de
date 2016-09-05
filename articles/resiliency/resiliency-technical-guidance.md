@@ -4,7 +4,7 @@
    services=""
    documentationCenter="na"
    authors="adamglick"
-   manager="hongfeig"
+   manager="saladki"
    editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="08/01/2016"
+   ms.date="08/18/2016"
    ms.author="aglick"/>
 
 #Technischer Leitfaden zur Resilienz in Azure
@@ -61,4 +61,4 @@ Die Informationen sind in folgende Artikel gegliedert:
 
 Dieser Artikel gehört zu einer Reihe von Artikeln, die als technischer Leitfaden zur Resilienz in Azure fungieren. Wenn Sie an anderen Artikeln dieser Serie interessiert sind, ist [Wiederherstellung nach lokalen Fehlern](resiliency-technical-guidance-recovery-local-failures.md) ein guter Einstiegspunkt.
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0824_2016-->

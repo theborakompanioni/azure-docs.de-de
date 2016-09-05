@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-xamarin-ios"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="05/05/2016"
+	ms.date="08/19/2016"
 	ms.author="wesmc"/>
 
 # Hinzufügen von Pushbenachrichtigungen zu Ihrer Xamarin iOS-App
@@ -50,7 +50,7 @@ Um Ihre App für das Senden von Benachrichtigungen zu konfigurieren, erstellen S
 
 Ihr Dienst ist jetzt so konfiguriert, dass er mit Pushbenachrichtigungen unter iOS arbeitet.
 
-##Aktualisieren des Serverprojekts für das Senden von Pushbenachrichtigungen
+##Aktualisieren des Serverprojekts zum Senden von Pushbenachrichtigungen
 
 [AZURE.INCLUDE [app-service-mobile-update-server-project-for-push-template](../../includes/app-service-mobile-update-server-project-for-push-template.md)]
 
@@ -156,4 +156,4 @@ Sie haben dieses Lernprogramm erfolgreich abgeschlossen.
 
 <!-- URLs. -->
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0824_2016-->

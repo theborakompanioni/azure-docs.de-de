@@ -118,7 +118,7 @@ Wie bereits zuvor erwähnt, kann die aktive Georeplikation nicht nur über das A
 |---|-----------|
 |[Create or Update Database (createMode=Restore)](https://msdn.microsoft.com/library/azure/mt163685.aspx)|Erstellt oder aktualisiert eine primäre oder sekundäre Datenbank oder stellt diese wieder her.|
 |[Get Create or Update Database Status](https://msdn.microsoft.com/library/azure/mt643934.aspx)|Ruft den Status während eines Erstellungsvorgangs ab.|
-|[Set Secondary Database as Primary (Planned Failover)r](https://msdn.microsoft.com/ibrary/azure/mt575007.aspx)|Stuft eine sekundäre Datenbank in einer Georeplikationspartnerschaft zur neuen primären Datenbank hoch.|
+|[Set Secondary Database as Primary (Planned Failover)](https://msdn.microsoft.com/ibrary/azure/mt575007.aspx)|Stuft eine sekundäre Datenbank in einer Georeplikationspartnerschaft zur neuen primären Datenbank hoch.|
 |[Set Secondary Database as Primary (Unplanned Failover)](https://msdn.microsoft.com/library/azure/mt582027.aspx)|Erzwingt ein Failover zur sekundären Datenbank und legt die sekundäre Datenbank als primäre fest.|
 |[Get Replication Links](https://msdn.microsoft.com/library/azure/mt600929.aspx)|Ruft alle Replikationsverknüpfungen für eine angegebene SQL-Datenbank in einer Georeplikationspartnerschaft ab. Es werden die Informationen abgerufen, die in der Katalogsicht „sys.geo\_replication\_links“ sichtbar sind.|
 |[Get Replication Link](https://msdn.microsoft.com/library/azure/mt600778.aspx)|Ruft eine spezifische Replikationsverknüpfung für eine angegebene SQL-Datenbank in einer Georeplikationspartnerschaft ab. Es werden die Informationen abgerufen, die in der Katalogsicht „sys.geo\_replication\_links“ sichtbar sind.|
@@ -133,4 +133,4 @@ Wie bereits zuvor erwähnt, kann die aktive Georeplikation nicht nur über das A
 - Informationen zum Verwenden automatisierter Sicherungen für die Wiederherstellung finden Sie unter [Wiederherstellen einer Datenbank aus vom Dienst initiierten Sicherungen](sql-database-recovery-using-backups.md).
 - Informationen zum Verwenden automatisierter Sicherungen für die Archivierung finden Sie unter [Datenbankkopie](sql-database-copy.md).
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0824_2016-->

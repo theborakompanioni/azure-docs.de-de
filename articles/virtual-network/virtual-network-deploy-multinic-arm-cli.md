@@ -88,7 +88,7 @@ Sie können das verwendete Bash-Skript ungekürzt [hier](https://raw.githubuserc
 		                --name $backendSubnetName|grep Id)"
 		subnetId=${subnetId#*/}
 
->[AZURE.TIP] Der erste Befehl oben verwendet [grep](http://tldp.org/LDP/Bash-Beginners-Guide/html/sect_04_02.html) (Artikel in englischer Sprache) und [Zeichenkettenmanipulation](http://tldp.org/LDP/abs/html/string-manipulation.html) (Artikel in englischer Sprache), insbesondere Substringentfernung.
+	>[AZURE.TIP] Der erste Befehl oben verwendet [grep](http://tldp.org/LDP/Bash-Beginners-Guide/html/sect_04_02.html) (Artikel in englischer Sprache) und [Zeichenkettenmanipulation](http://tldp.org/LDP/abs/html/string-manipulation.html) (Artikel in englischer Sprache), insbesondere Substringentfernung.
 
 4. Rufen Sie die ID für die `NSG-RemoteAccess`-NSG ab. Dieser Schritt ist erforderlich, da sich die mit dieser NSG verknüpften Netzwerkschnittstellenkarten in einer anderen Ressourcengruppe befinden.
 
@@ -330,4 +330,4 @@ Führen Sie das Skript aus, nachdem sie es heruntergeladen und angepasst haben, 
 		info:    Updating VM "DB2"
 		info:    vm disk attach-new command OK
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0824_2016-->

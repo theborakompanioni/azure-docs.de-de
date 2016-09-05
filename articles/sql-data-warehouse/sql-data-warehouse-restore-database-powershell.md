@@ -3,7 +3,7 @@
    description="PowerShell-Aufgaben zum Wiederherstellen einer Azure SQL Data Warehouse-Instanz."
    services="sql-data-warehouse"
    documentationCenter="NA"
-   authors="sonyam"
+   authors="Lakshmi1812"
    manager="barbkess"
    editor=""/>
 
@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
    ms.date="07/18/2016"
-   ms.author="sonyama;barbkess"/>
+   ms.author="lakshmir;barbkess;sonyama"/>
 
 # Wiederherstellen einer Azure SQL Data Warehouse-Instanz (PowerShell)
 
@@ -32,7 +32,7 @@ In diesem Artikel erfahren Sie, wie Sie eine Azure SQL Data Warehouse-Instanz mi
 
 ### Installieren von PowerShell
 
-Damit Sie Azure PowerShell mit SQL Data Warehouse verwenden können, müssen Sie Azure PowerShell Version 1.0 oder höher installieren. Sie können die Version überprüfen, indem Sie **Get-Module -ListAvailable -Name AzureRM** ausführen. Die neueste Version können Sie über den [Microsoft-Webplattform-Installer][] installieren. Weitere Informationen zum Installieren der neuesten Version finden Sie unter [Installieren und Konfigurieren von Azure PowerShell][].
+Damit Sie Azure PowerShell mit SQL Data Warehouse verwenden können, müssen Sie Azure PowerShell Version 1.0 oder höher installieren. Sie können die Version überprüfen, indem Sie **Get-Module -ListAvailable -Name AzureRM** ausführen. Sie können die neueste Version installieren, indem Sie sie über [Microsoft Web Platform Installer][] herunterladen. Weitere Informationen zum Installieren der neuesten Version finden Sie unter [Installieren und Konfigurieren von Azure PowerShell][].
 
 ## Wiederherstellen einer aktiven oder angehaltenen Datenbank
 
@@ -169,6 +169,6 @@ Informationen zu den Geschäftskontinuitätsfunktionen von Azure SQL-Datenbank-E
 
 <!--Other Web references-->
 [Azure Portal]: https://portal.azure.com/
-[Microsoft-Webplattform-Installer]: https://aka.ms/webpi-azps
+[Microsoft Web Platform Installer]: https://aka.ms/webpi-azps
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0824_2016-->

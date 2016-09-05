@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/17/2016"
+	ms.date="08/18/2016"
 	ms.author="nitinme"/>
 
 
@@ -22,7 +22,11 @@
 
 ## Versionshinweise zu R Server in HDInsight vom 17.08.2016
 
-• R Server 8.0.5: Diese Version dient hauptsächlich der Fehlerbehebung. Weitere Informationen finden Sie in den [Versionsanmerkungen zu R Server](https://msdn.microsoft.com/microsoft-r/notes/r-server-notes). • AzureML-Paket auf dem Edgeknoten: [Dieses R-Paket](https://cran.r-project.org/web/packages/AzureML/vignettes/getting_started.html) ermöglicht das Veröffentlichen und Nutzen von R-Modellen als Azure ML-Webdienst. Weitere Informationen finden Sie im Abschnitt [Operationalisieren eines Modells](hdinsight-hadoop-r-server-overview.md#operationalize-a-model) des Artikels [Übersicht über R Server in HDInsight (Vorschau)](hdinsight-hadoop-r-server-overview.md). • Linux-Abhängigkeiten der [100 populärsten R-Pakete](https://github.com/metacran/cranlogs): Diese Linux-Paketabhängigkeiten sind jetzt vorinstalliert. • Option zur Verwendung des CRAN-Repositorys beim Hinzufügen von R-Paketen zu Datenknoten. Weitere Informationen finden Sie im Abschnitt [Installieren von R-Paketen](hdinsight-hadoop-r-server-get-started.md#install-r-packages) des Artikels[Erste Schritte mit R Server in HDInsight (Vorschau)](hdinsight-hadoop-r-server-get-started.md). • Verbesserte Zuverlässigkeit der R Server-Bereitstellung beim Erstellen von Clustern.
+- R Server 8.0.5: Diese Version dient hauptsächlich der Fehlerbehebung. Weitere Informationen finden Sie in den [Versionsanmerkungen zu R Server](https://msdn.microsoft.com/microsoft-r/notes/r-server-notes).
+- AzureML-Paket auf dem Edgeknoten: [Dieses R-Paket](https://cran.r-project.org/web/packages/AzureML/vignettes/getting_started.html) ermöglicht das Veröffentlichen und Nutzen von R-Modellen als Azure ML-Webdienst. Weitere Informationen finden Sie im Abschnitt [Operationalisieren eines Modells](hdinsight-hadoop-r-server-overview.md#operationalize-a-model) des Artikels [Übersicht über R Server in HDInsight (Vorschau)](hdinsight-hadoop-r-server-overview.md).
+- Linux-Abhängigkeiten der [100 populärsten R-Pakete](https://github.com/metacran/cranlogs): Diese Linux-Paketabhängigkeiten sind jetzt vorinstalliert.
+- Option zur Verwendung des CRAN-Repositorys beim Hinzufügen von R-Paketen zu Datenknoten. Weitere Informationen finden Sie im Abschnitt [Installieren von R-Paketen](hdinsight-hadoop-r-server-get-started.md#install-r-packages) des Artikels [Erste Schritte mit R Server in HDInsight (Vorschau)](hdinsight-hadoop-r-server-get-started.md).
+- Verbesserte Zuverlässigkeit der R Server-Bereitstellung beim Erstellen von Clustern.
 
 
 ## Hinweise zur HDInsight-Version vom 01.08.2016
@@ -78,7 +82,7 @@ Die vollständigen Versionsnummern für mit dieser Version bereitgestellte Linux
 
 |HDI |HDI-Clusterversion |HDP |HDP Build |
 |----|----------------------|----|------------|
-|3\.2 |3\.2.1000.0.7864996 |2.2 |2\.2.9.1-11 |
+|3\.2 |3\.2.1000.0.7864996 |2\.2 |2\.2.9.1-11 |
 |3\.3 |3\.3.1000.0.7864996 |2\.3 |2\.3.3.1-18 |
 |3\.4 |3\.4.1000.0.7861906 |2\.4 |2\.4.2.0 |
 
@@ -89,14 +93,15 @@ Die vollständigen Versionsnummern für mit dieser Version bereitgestellte Windo
 |2\.1 |2\.1.10.977.2413853 |1\.3 |1\.3.12.0-01795|
 |3\.0 |3\.0.6.977.2413853 |2,0 |2\.0.13.0-2117 |
 |3\.1 |3\.1.4.977.2413853 |2\.1 |2\.1.16.0-2374 |
-|3\.2 |3\.2.7.977.2413853 |2.2 |2\.2.9.1-11 |
+|3\.2 |3\.2.7.977.2413853 |2\.2 |2\.2.9.1-11 |
 |3\.3 |3\.3.0.977.2413853 |2\.3 |2\.3.3.1-21 |
 
 Diese Version enthält die folgenden Updates.
 
 | Titel | Beschreibung | Betroffener Bereich (z. B. Dienst, Komponente oder SDK) | Clustertyp (z.B. Spark, Hadoop, HBase oder Storm) | JIRA (falls zutreffend) |
 |-------------------------------------------------|------------------------------------------------------|---------------------------------------------------------|-----------------------------------------------------|----------------------|
-| [HDInsight-Tools für IntelliJ](hdinsight-apache-spark-intellij-tool-plugin.md) | Das IntelliJ IDEA-Plug-In für HDInsight Spark-Cluster ist jetzt in das Azure-Toolkit für IntelliJ integriert. Es unterstützt die Azure SDK-Version 2.9.1, neuesten Java SDKs und bietet alle Features des eigenständigen HDInsight-Plug-Ins für IntelliJ.| Tools | Spark| – |
+| [HDInsight-Tools für IntelliJ](hdinsight-apache-spark-intellij-tool-plugin.md) | Das IntelliJ IDEA-Plug-In für HDInsight Spark-Cluster ist jetzt in das Azure-Toolkit für IntelliJ integriert. Es unterstützt die Azure SDK-Version 2.9.1, neuesten Java SDKs und bietet alle Features des eigenständigen HDInsight-Plug-Ins für IntelliJ.| Tools | Spark| –  
+|
 | [HDInsight-Tools für Eclipse](hdinsight-apache-spark-eclipse-tool-plugin.md) | Das Azure-Toolkit für Eclipse unterstützt nun HDInsight Spark-Cluster. Es bietet die folgenden Features. <ul><li>Müheloses Erstellen und Schreiben einer Spark-Anwendung in Scala und Java mit erstklassiger Erstellungsunterstützung für IntelliSense, automatischer Formatierung, Fehlerüberprüfung usw.</li><li>Lokales Testen der Spark-Anwendung.</li><li>Übermitteln von Aufträgen an HDInsight Spark-Cluster und Abrufen der Ergebnisse.</li><li>Anmelden bei Azure und Zugreifen auf alle Spark-Cluster, die Ihren Azure-Abonnements zugeordnet sind.</li><li>Wechseln zu allen zugeordneten Speicherressourcen Ihres HDInsight Spark-Clusters.</li></ul>| Tools | Spark| N/V
 
 Ab dieser Version wurde die Patchingrichtlinie für Gastbetriebssysteme für Linux-basierte HDInsight-Cluster geändert. Ziel der neuen Richtlinie ist es, die aufgrund von Patching erforderlichen Neustarts erheblich zu reduzieren. Im Rahmen der neuen Richtlinie werden Patches für virtuelle Computer in Linux-Clustern weiterhin jeden Montag oder Donnerstag ab 0:00 Uhr UTC schrittweise auf allen Knoten in jedem Cluster aufgespielt. Die einzelnen virtuellen Computer werden jedoch nur noch maximal alle 30 Tage aufgrund von Patchingvorgängen für das Gastbetriebssystem neu gestartet. Auch der erste Neustart eines neu erstellten Clusters erfolgt nicht früher als 30 Tage nach Erstellungsdatum des Clusters.
@@ -634,7 +639,7 @@ Diese Version enthält die folgenden Updates.
 
 Die vollständigen Versionsnummern für mit dieser Version bereitgestellte HDInsight-Cluster:
 
-* HDInsight 2.1.10.537.1486660 (HDP 1.3.12.0-01795 unverändert)
+* HDInsight 2.1.10.537.1486660 (HDP 1.3.12.0-01795 – unverändert)
 * HDInsight 3.0.6.537.1486660 (HDP 2.0.13.0-2117 – unverändert)
 * HDInsight 3.1.3.537.1486660 (HDP 2.1.12.0-2329 – unverändert)
 * HDInsight 3.2.3.537.1486660 (HDP 2.2.2.2-4)
@@ -790,7 +795,7 @@ Diese Version enthält die folgenden Updates.
 
 <tr>
 <td>Aktualisierung von Python auf 2.7.8</td>
-<td>Python wurde in HDInsight-Clustern auf Python 2.7.8 aktualisiert, das einige wichtige sicherheitsrelevante  Korrekturen für HDInsight-Versionen 2.1, 3.0, 3.1 und 3.2 enthält.</td>
+<td>Python wurde in HDInsight-Clustern auf Python 2.7.8 aktualisiert, das einige wichtige sicherheitsrelevante Korrekturen für HDInsight-Versionen 2.1, 3.0, 3.1 und 3.2 enthält.</td>
 <td>Dienst</td>
 <td>Alle</td>
 <td>N/V</td>
@@ -970,7 +975,7 @@ Diese Version enthält die folgenden Updates.
 
 <tr>
 <td>Fehlerbehebungen</td>
-<td>Es wurden verschiedene geringfügige Fehlerbehebungen für HDInsight-Dienste vorgenommen. Es werden keine  Änderungen an kundenorientiertem Verhalten erwartet.</td>
+<td>Es wurden verschiedene geringfügige Fehlerbehebungen für HDInsight-Dienste vorgenommen. Es werden keine Änderungen an kundenorientiertem Verhalten erwartet.</td>
 <td>Dienst</td>
 <td>Alle</td>
 <td>N/V</td>
@@ -1002,7 +1007,7 @@ Diese Version enthält die folgenden Updates.
 
 <tr>
 <td>Fehlerbehebungen</td>
-<td>Es wurden verschiedene geringfügige Fehlerbehebungen für HDInsight-Dienste vorgenommen. Es werden keine  Änderungen an kundenorientiertem Verhalten erwartet.</td>
+<td>Es wurden verschiedene geringfügige Fehlerbehebungen für HDInsight-Dienste vorgenommen. Es werden keine Änderungen an kundenorientiertem Verhalten erwartet.</td>
 <td>Dienst</td>
 <td>Alle</td>
 <td>N/V</td>
@@ -1684,4 +1689,4 @@ Versionshinweise zu den HDPs (Hortonworks Data Platforms), die von den Versionen
 [hdinsight-r-scripts]: ../hdinsight-hadoop-r-scripts/
  
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0824_2016-->

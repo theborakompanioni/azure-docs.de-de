@@ -19,7 +19,7 @@
 
 # Verwenden des Laufwerks D als Datenlaufwerk auf einer Windows-VM 
 
-Wenn Sie für Ihre Anwendung Laufwerk D zum Speichern der Daten verwenden müssen, können Sie diese Anweisungen befolgen, um für den temporären Datenträger einen anderen Laufwerkbuchstaben zu verwenden. Verwenden Sie niemals den temporären Datenträger zum Speichern von Daten, die Sie behalten müssen.
+Wenn Ihre Anwendung Laufwerk D zum Speichern der Daten verwenden muss, können Sie diese Anweisungen befolgen, um für den temporären Datenträger einen anderen Laufwerkbuchstaben zu verwenden. Verwenden Sie niemals den temporären Datenträger zum Speichern von Daten, die Sie behalten müssen.
 
 Wenn Sie die Größe eines virtuellen Computers ändern oder diesen **Beenden (Zuordnung aufheben)**, kann dies das Verschieben des virtuellen Computers auf einen neuen Hypervisor auslösen. Ein geplantes oder ungeplantes Wartungsereignis kann ebenfalls diese Neuanordnung auslösen. In diesem Szenario wird dem temporären Datenträger der erste verfügbare Laufwerkbuchstabe zugewiesen. Wenn Sie eine Anwendung nutzen, für die speziell das Laufwerk D: erforderlich ist, müssen Sie diese Schritte ausführen. Sie verschieben die Datei „pagefile.sys“ vorübergehend, fügen einen neuen Datenträger an und weisen ihm den Buchstaben D zu und verschieben die Datei „pagefile.sys“ dann wieder zurück auf das temporäre Laufwerk. Nachdem der Vorgang abgeschlossen ist, wird D: von Azure nicht zurückgenommen, wenn die VM auf einen anderen Hypervisor verschoben wird.
 
@@ -32,12 +32,12 @@ Weitere Informationen zur Verwendung des temporären Datenträgers in Azure find
 Zunächst müssen Sie den Datenträger an den virtuellen Computer anfügen.
 
 - Informationen zur Verwendung des Portals finden Sie unter [Anfügen eines Datenträgers für Daten im Azure-Portal](virtual-machines-windows-attach-disk-portal.md).
-- Informationen zur Verwendung des klassischen Portals finden Sie unter [Anfügen eines Datenträgers an einen virtuellen Windows-Computer](virtual-machines-windows-classic-attach-disk.md). 
+- Informationen zur Verwendung des klassischen Portals finden Sie unter [Anfügen eines Datenträgers an einen virtuellen Windows-Computer](virtual-machines-windows-classic-attach-disk.md).
 
 
 ## Temporäres Verschieben von „pagefile.sys“ zu Laufwerk C
 
-1. Stellen Sie eine Verbindung mit dem virtuellen Computer her. 
+1. Stellen Sie eine Verbindung mit dem virtuellen Computer her.
 
 2. Klicken Sie mit der rechten Maustaste auf das **Startmenü**, und wählen Sie **System**.
 
@@ -79,8 +79,8 @@ Zunächst müssen Sie den Datenträger an den virtuellen Computer anfügen.
 8. Wählen Sie unter dem Laufwerkbuchstaben Laufwerk **E**, und klicken Sie dann auf **OK**.
 
 > [AZURE.NOTE] Wenn Ihr virtueller Computer über andere Datenträger oder Laufwerke verfügt, weisen Sie mit der gleichen Methode die Laufwerkbuchstaben der anderen Datenträger und Laufwerke zu. Sie möchten, dass die Datenträgerkonfiguration wie folgt aussieht:
->- C: Betriebssystemdatenträger  
->- D: Datenträger für Daten  
+>- C: Betriebssystemdatenträger
+>- D: Datenträger für Daten
 >- E: Temporärer Datenträger
 
 
@@ -111,4 +111,4 @@ Zunächst müssen Sie den Datenträger an den virtuellen Computer anfügen.
 ## Nächste Schritte
 - Sie können den Speicher erhöhen, der für den virtuellen Computer verfügbar ist, indem Sie [einen zusätzlichen Datenträger anfügen](virtual-machines-windows-attach-disk-portal.md).
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0824_2016-->

@@ -3,14 +3,17 @@
    description="In diesem Artikel wird erläutert, wie Sie mit Traffic Manager-Profilen arbeiten."
    services="traffic-manager"
    documentationCenter="na"
-   authors="joaoma"
+   authors="sdwheeler"
    manager="carmonm"
    editor="tysonn" />
-<tags  ms.service="traffic-manager" ms.devlang="na" ms.topic="article" ms.tgt_pltfrm="na" ms.workload="infrastructure-services"
-   
+<tags 
+   ms.service="traffic-manager"
+   ms.devlang="na"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="infrastructure-services"   
    ms.date="06/10/2016"
-
-   ms.author="joaoma" />
+   ms.author="sewhee" />
 
 # Deaktivieren, Aktivieren oder Löschen eines Profils
 
@@ -35,7 +38,7 @@ Sie können ein vorhandenes Traffic Manager-Profil so deaktivieren, dass keine B
 
 
 1. Ändern Sie den DNS-Ressourceneintrag auf dem Internet-DNS-Server so, dass er nicht mehr einen CNAME-Ressourceneintrag verwendet, der auf den Domänennamen Ihres Traffic Manager-Profils verweist.
-1. Wählen Sie das Profil aus, das Sie löschen möchten. Um das Profil auf der Seite "Traffic Manager" auszuwählen, markieren Sie das Profil, 
+1. Wählen Sie das Profil aus, das Sie löschen möchten. Um das Profil auf der Seite "Traffic Manager" auszuwählen, markieren Sie das Profil,
 1. indem Sie auf die Spalte neben dem Profil klicken. Klicken Sie nicht auf den Namen des Profils oder den Pfeil neben dem Namen, da Sie dadurch zur Einstellungsseite für das Profil gelangen.
 1. Klicken Sie nach Auswahl des Profils am unteren Rand der Seite auf "Löschen".
 
@@ -51,4 +54,4 @@ Sie können ein vorhandenes Traffic Manager-Profil so deaktivieren, dass keine B
 
 [Problembehandlung beim Status „Heruntergestuft“ in Traffic Manager](traffic-manager-troubleshooting-degraded.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0824_2016-->

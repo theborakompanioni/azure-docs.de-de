@@ -4,7 +4,7 @@
    services="virtual-machines,virtual-network,storage"
    documentationCenter="saponazure"
    authors="hermanndms"
-   manager="juergent"
+   manager="timlt"
    editor=""
    tags="azure-resource-manager"
    keywords=""/>
@@ -166,4 +166,4 @@ Wenn Sie Gnome Desktop für die Installation eines vollständigen SAP-Demosystem
 
 Es gibt eine Supporteinschränkung von Oracle unter Linux in virtualisierten Umgebungen. Dies ist zwar kein Azure-spezifisches Thema, jedoch müssen Sie damit vertraut sein. In öffentlichen Clouds wie Azure unterstützt SAP Oracle unter SUSE oder Red Hat nicht. Um dieses Thema zu diskutieren, wenden Sie sich bitte direkt an Oracle.
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0824_2016-->

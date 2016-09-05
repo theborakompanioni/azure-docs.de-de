@@ -13,7 +13,7 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="data-services" 
-    ms.date="05/16/2016" 
+    ms.date="08/08/2016" 
     ms.author="arramac"/>
     
 # Arbeiten mit Geodaten in Azure DocumentDB
@@ -276,6 +276,8 @@ Kurz gesagt, die Geometrie wird von geodätischen Koordinaten auf eine 2D-Ebene 
 
 Wenn Sie eine Indizierungsrichtlinie angeben, die einen räumlichen Index für "/*" (alle Pfade) enthält, werden alle in der Sammlung gefundenen Punkte für effiziente räumliche Abfragen (ST\_WITHIN und ST\_DISTANCE) indiziert. Räumliche Indizes haben keinen Genauigkeitswert und verwenden stets einen Standardwert für die Genauigkeit.
 
+>[AZURE.NOTE] DocumentDB unterstützt die automatische Indizierung von Punkten, Polygonen (private Vorschau) und LineStrings (private Vorschau). Wenn Sie Zugriff auf diese Vorschau erhalten möchten, senden Sie eine E-Mail an askdocdb@microsoft.com, oder kontaktieren Sie uns über den Azure-Support.
+
 Der folgende JSON-Ausschnitt zeigt eine Indizierungsrichtlinie mit aktivierter räumlicher Indizierung, d. h. dass alle in Dokumenten für räumliche Abfragen gefundenen GeoJSON-Punkte indiziert werden. Wenn Sie die Indizierungsrichtlinie im Azure-Portal ändern, können Sie die folgende JSON für die Indizierungsrichtlinie angeben, um die räumliche Indizierung für Ihre Sammlung zu aktivieren.
 
 **JSON-Sammlungsindizierungsrichtlinie mit aktivierter räumlicher Indizierung**
@@ -346,4 +348,4 @@ Nachdem Sie die ersten Schritte mit räumlichen Daten in DocumentDB ausgeführt 
 - Weitere Informationen zu [DocumentDB-Abfragen](documentdb-sql-query.md)
 - Weitere Informationen zu [DocumentDB-Indizierungsrichtlinien](documentdb-indexing-policies.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0824_2016-->

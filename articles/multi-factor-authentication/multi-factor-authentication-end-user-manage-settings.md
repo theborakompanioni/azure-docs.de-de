@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/04/2016" 
+	ms.date="08/22/2016" 
 	ms.author="billmath"/>
 
 # Beheben von Problemen mit Azure Multi-Factor Authentication
@@ -30,7 +30,7 @@ Die folgende Informationen sollen Ihnen helfen, einige der häufigsten Probleme,
 - [Ich habe ein neues Telefon und muss meine Telefonnummer ändern](#i-have-a-new-phone-and-need-to-change-my-phone-number)
 - [Ich empfange keinen Code auf meinem Telefon](#i-am-not-receiving-a-code-or-a-call-on-my-phone)
 - [App-Kennwörter funktionieren nicht](#app-passwords-are-not-working)
-- [Wie entferne ich Azure Authenticator von meinem alten Gerät, und wie wechsle ich zu einem neuen?](#how-do-i-clean-up-azure-authenticator-from-my-old-device-and-move-to-a-new-one)
+- [Wie kann ich Microsoft Authenticator von meinem alten Gerät entfernen und zu einem neuen Gerät wechseln?](#how-do-i-clean-up-microsoft-authenticator-from-my-old-device-and-move-to-a-new-one)
 - [Ich konnte keine Lösung für mein Problem finden](#i-didnt-find-an-answer-to-my-problem)
 
 ##Korrelations-ID-Fehler
@@ -147,7 +147,7 @@ Zunächst müssen Sie Folgendes sicherstellen:
 - Wenn Sie das Empfangen von Überprüfungscodes per Textnachricht auf Ihrem Mobiltelefon ausgewählt haben, vergewissern Sie sich, dass Ihr Tarif und Gerät die Übermittlung von Textnachrichten unterstützen. Übertragungsgeschwindigkeit und Verfügbarkeit können je nach Region und Dienstanbieter variieren. Stellen Sie auch sicher, dass das Mobilfunksignal stark genug ist, um diese Codes zu empfangen.
 - Wenn Sie das Empfangen einer Überprüfung über die mobile App gewählt haben, stellen Sie sicher, dass das Mobilfunksignal stark genug ist. Beachten Sie auch, dass Übertragungsgeschwindigkeit und Verfügbarkeit je nach Region und Dienstanbieter variieren können.
 
-Bei Smartphones wird empfohlen, die [Azure Authenticator-App](multi-factor-authentication-azure-authenticator.md) zu nutzen.
+Bei Smartphones wird empfohlen, die [Azure Authenticator-App](multi-factor-authentication-microsoft-authenticator.md) zu nutzen.
 
 Sie können vom Empfang von Überprüfungscodes per Textnachrichten zum Empfang per mobiler App wechseln, indem Sie beim Anmelden **Andere Überprüfungsoption verwenden** auswählen.
 
@@ -162,8 +162,8 @@ Falls Sie zuvor einen Ersatzanschluss konfiguriert haben, wird empfohlen, den Vo
 ##App-Kennwörter funktionieren nicht
 Stellen Sie zunächst sicher, dass Sie das App-Kennwort richtig eingegeben haben. Wenn es weiterhin nicht funktioniert, versuchen Sie, sich anzumelden, und [erstellen Sie ein neues App-Kennwort](multi-factor-authentication-end-user-app-passwords.md). Wenn dies nicht funktioniert, bitten Sie den Administrator, [Ihre vorhandenen App-Kennwörter zu löschen](multi-factor-authentication-manage-users-and-devices.md#delete-users-existing-app-passwords). Erstellen Sie anschließend ein neues, und nutzen Sie dieses.
 
-##Wie entferne ich Azure Authenticator von meinem alten Gerät, und wie wechsle ich zu einem neuen?
-Wenn Sie die App von Ihrem Gerät deinstallieren oder das Gerät auf die Werkseinstellungen zurücksetzen, wird die Aktivierung im Back-End nicht entfernt. Befolgen Sie die Schritte unter [Wechseln zu einem neuen Gerät](multi-factor-authentication-azure-authenticator.md#how-to-move-to-the-new-azure-authenticator-app).
+##Wie kann ich Microsoft Authenticator von meinem alten Gerät entfernen und zu einem neuen Gerät wechseln?
+Wenn Sie die App von Ihrem Gerät deinstallieren oder das Gerät auf die Werkseinstellungen zurücksetzen, wird die Aktivierung im Back-End nicht entfernt. Befolgen Sie die Schritte unter [Wechseln zu einem neuen Gerät](multi-factor-authentication-microsoft-authenticator.md#how-to-move-to-the-new-microsoft-authenticator-app).
 
 ##Ich konnte keine Lösung für mein Problem finden
 Wenn Sie auf dieser Seite keine Lösung für Ihr Problem finden, können Sie eine Frage in den [Azure AD-Foren](https://social.msdn.microsoft.com/forums/azure/home?forum=WindowsAzureAD) stellen, [die Microsoft Knowledge Base (KB) durchsuchen](https://www.microsoft.com/de-DE/Search/result.aspx?q=azure%20active%20directory%20connect&form=mssupport) oder den [Support kontaktieren](https://support.microsoft.com/de-DE).
@@ -172,4 +172,4 @@ Außerdem können Sie Ihren Administrator oder die Person, die Multi-Factor Auth
 
 Geben Sie abschließend bitte detailliertes Feedback auf dieser Seite ab, damit wir diese Seite aktualisieren und durch weitere Informationen verbessern können.
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0824_2016-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article" 
-	ms.date="08/04/2016"
+	ms.date="08/22/2016"
 	ms.author="billmath"/>
 
 # Was ist Azure Multi-Factor Authentication?
@@ -47,8 +47,8 @@ Azure Multi-Factor Authentication ist eine benutzerfreundliche, skalierbare und 
 :-------------: | :-------------: | :-------------: | :-------------: |
 **Benutzerfreundlich**|**Skalierbar**|**Immer geschützt**|**Zuverlässig**
 
-- **Benutzerfreundlich**: Azure Multi-Factor Authentication ist einfach einzurichten und zu verwenden. Der zusätzliche Schutz, der mit Azure Multi-Factor Authentication einhergeht, ermöglicht Benutzern, ihre eigenen Geräte zu verwenden und zu verwalten, und in vielen Fällen ist die Einrichtung mit wenigen Klicks erledigt.
-- **Skalierbar**: Azure Multi-Factor Authentication nutzt Cloudfunktionen und integriert sich nahtlos in Ihr lokales Active Directory und benutzerdefinierte Anwendungen. Dieser Schutz wirkt sich sogar auf Ihre umfangreichen unternehmenswichtigen Szenarios aus.
+- **Benutzerfreundlich**: Die Multi-Factor Authentication von Azure ist einfach einzurichten und zu verwenden. Der zusätzliche Schutz, der mit Azure Multi-Factor Authentication einhergeht, ermöglicht Benutzern, ihre eigenen Geräte zu verwenden und zu verwalten, und in vielen Fällen ist die Einrichtung mit wenigen Klicks erledigt.
+- **Skalierbar**: Die Multi-Factor Authentication von Azure nutzt Cloudfunktionen und integriert sich nahtlos in Ihr lokales Active Directory und benutzerdefinierte Anwendungen. Dieser Schutz wirkt sich sogar auf Ihre umfangreichen unternehmenswichtigen Szenarios aus.
 - **Immer geschützt**: Azure Multi-Factor Authentication bietet sichere Authentifizierung unter Verwendung der strengsten Branchenstandards.
 - **Zuverlässig**: Wir garantieren 99,9 % Verfügbarkeit für Azure Multi-Factor Authentication. Der Dienst gilt als nicht verfügbar, wenn keine Authentifizierungsanforderungen für die Multi-Factor Authentication empfangen oder verarbeitet werden können.
 
@@ -84,8 +84,8 @@ Wenn ein Benutzer sich anmeldet, wird eine zusätzliche Bestätigung an den Benu
 ------------- | ------------- |
 Telefonanruf | Es wird ein automatisierter Anruf an das Smartphone des Benutzers ausgelöst. Der Benutzer bestätigt den Anmeldevorgang durch Drücken der #-Taste. Dadurch wird der Überprüfungsprozess abgeschlossen. Statt der #-Taste kann bei dieser Option wahlweise die Eingabe eines vorher festgelegten Codes verlangt werden.
 Textnachricht | Eine Textnachricht mit einem sechsstelligen Code wird an das Smartphone des Benutzers gesendet. Dieser Code muss eingegeben werden, um die Überprüfung abzuschließen.
-Benachrichtigung über mobile App | Es wird eine Überprüfungsanforderung an das Smartphone des Benutzers gesendet. Der Benutzer bestätigt die Anforderung in der mobilen App, um die Überprüfung abzuschließen. Diese Variante wird verwendet, wenn Benutzer das Senden einer App-Benachrichtigung als primäre Überprüfungsmethode ausgewählt haben. Wenn Benutzer eine Anforderung erhalten, obwohl sie derzeit keinen Anmeldevorgang durchführen, können sie diese als Betrugsversuch melden.
-Überprüfungscode in der mobilen App | Es wird ein Überprüfungscode an die mobile App auf dem Smartphone des Benutzers gesendet. Diese Variante wird verwendet, wenn Benutzer das Senden eines Überprüfungscodes als primäre Überprüfungsmethode ausgewählt haben.
+Benachrichtigung über mobile App | Es wird eine Überprüfungsanforderung an das Smartphone des Benutzers gesendet. Der Benutzer bestätigt die Anforderung in der mobilen App, um die Überprüfung abzuschließen. Diese Variante wird verwendet, wenn Benutzer das Senden einer App-Benachrichtigung als primäre Überprüfungsmethode ausgewählt haben. Wenn Benutzer eine Anforderung erhalten, obwohl sie derzeit keinen Anmeldevorgang durchführen, können sie dies als Betrugsversuch melden.</li><br><p> Die Microsoft Authenticator-App ist für [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071), [Android](http://go.microsoft.com/fwlink/?Linkid=825072) und [iOS](http://go.microsoft.com/fwlink/?Linkid=825073) verfügbar.
+Überprüfungscode in der mobilen App | Es wird ein Überprüfungscode an die mobile App auf dem Smartphone des Benutzers gesendet. Diese Variante wird verwendet, wenn Benutzer das Senden eines Überprüfungscodes als primäre Überprüfungsmethode ausgewählt haben.</li><br><p> Die Microsoft Authenticator-App ist für [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071), [Android](http://go.microsoft.com/fwlink/?Linkid=825072) und [iOS](http://go.microsoft.com/fwlink/?Linkid=825073) verfügbar.
 
 
 ## Verfügbare Versionen von Azure Multi-Factor Authentication
@@ -101,7 +101,7 @@ Azure Multi-Factor Authentication | Azure Multi-Factor Authentication bietet von
 In der folgenden Tabelle werden die Funktionen aufgeführt, die in den verschiedenen Versionen von Azure Multi-Factor Authentication verfügbar sind.
 
 
-Funktion | Multi-Factor Authentication für Office 365 (in Office 365-SKUs enthalten)|Multi-Factor Authentication für Azure-Administratoren (enthalten in Azure-Abonnement) | Azure Multi-Factor Authentication (enthalten in Azure AD Premium und Enterprise Mobility Suite)
+Feature | Multi-Factor Authentication für Office 365 (in Office 365-SKUs enthalten)|Multi-Factor Authentication für Azure-Administratoren (enthalten in Azure-Abonnement) | Azure Multi-Factor Authentication (enthalten in Azure AD Premium und Enterprise Mobility Suite)
 ------------- | :-------------: |:-------------: |:-------------: |
 Administratoren können Konten mit MFA schützen.| * | * (nur für Azure-Administratorkonten verfügbar)|*
 Mobile App als zweiter Faktor|* | * | *
@@ -134,8 +134,8 @@ Wenn Sie nicht nur die für Office 365-Benutzer und Azure-Administratoren verfü
 Wenn Sie einen Azure Multi-Factor Authentication-Anbieter verwenden, sind zwei Nutzungsmodelle verfügbar, die über Ihr Azure-Abonnement abgerechnet werden:
 
 
-- **Pro Benutzer**. Diese Option ist für Unternehmen geeignet, die Multi-Factor Authentication für eine feste Anzahl von Mitarbeitern aktivieren möchten, die regelmäßig eine Authentifizierung benötigen.
-- **Pro Authentifizierung**. Diese Option ist für Unternehmen geeignet, die Multi-Factor Authentication für eine große Gruppe externer Benutzer aktivieren möchten, die seltener oder unregelmäßig eine Authentifizierung benötigen.
+- **Pro Benutzer**. Diese Option ist für Unternehmen geeignet, die die Multi-Factor Authentication für eine feste Anzahl von Mitarbeitern aktivieren möchten, die die Authentifizierung regelmäßig benötigen.
+- **Pro Authentifizierung**. Diese Option ist für Unternehmen geeignet, die die Multi-Factor Authentication für eine große Gruppe externer Benutzer aktivieren möchten, die die Authentifizierung seltener oder unregelmäßig benötigen.
 
 Azure Multi-Factor Authentication umfasst auswählbare Überprüfungsmethoden für die Cloud und für Server. Dies bedeutet, dass Sie auswählen können, welche Methoden für Ihre Benutzer zur Verwendung mit Multi-Factor Authentication verfügbar sind. Diese Funktion befindet sich derzeit in der öffentlichen Vorschau für die Cloudversion von Multi-Factor Authentication. Weitere Informationen finden Sie unter [Auswählbare Überprüfungsmethoden](multi-factor-authentication-whats-next.md#selectable-verification-methods).
 
@@ -209,4 +209,4 @@ Sie haben nun ermittelt, ob Sie Multi-Factor Authentication in der Cloud oder de
 
 <center> [![Cloud](./media/multi-factor-authentication-get-started/cloud2.png)](multi-factor-authentication-get-started-cloud.md) &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;[![Proofup](./media/multi-factor-authentication-get-started/server2.png)](multi-factor-authentication-get-started-server.md) &#160;&#160;&#160;&#160;&#160; </center>
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0824_2016-->

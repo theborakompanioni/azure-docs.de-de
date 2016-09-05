@@ -76,7 +76,7 @@ Wenn das Ziel für keins der Null- oder der VNETLocal-Präfixe gilt, würde es d
 
 Wenn die Routingtabelle zwei identische Präfixe aufweist, gilt folgende Präferenzreihenfolge, basierend auf dem Routenattribut "source":
 
-1.	<leer> = Eine benutzerdefinierte Route, die der Tabelle manuell hinzugefügt wurde.
+1.	„VirtualAppliance“ = Eine benutzerdefinierte Route, die der Tabelle manuell hinzugefügt wurde.
 2.	"VPNGateway" = Eine dynamische Route (BGP bei Verwendung in Hybridnetzwerken), die durch ein dynamisches Netzwerkprotokoll hinzugefügt wurde. Diese Routen können sich im Lauf der Zeit ändern, da das dynamische Protokoll Änderungen im Peernetzwerk automatisch widerspiegelt.
 3.	"Default" = Die Systemrouten, das lokale VNet und die statischen Einträge, wie in der Routingtabelle oben gezeigt.
 
@@ -941,4 +941,4 @@ Wenn Sie eine Beispielanwendung für dieses und weitere DMZ-Beispiele installier
 [HOME]: ../best-practices-network-security.md
 [SampleApp]: ./virtual-networks-sample-app.md
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0824_2016-->

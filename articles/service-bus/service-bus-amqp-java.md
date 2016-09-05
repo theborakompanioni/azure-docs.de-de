@@ -82,11 +82,11 @@ amqps://[username]:[password]@[namespace].servicebus.windows.net
 
 | Name | Bedeutung | | | | |
 |---------------|--------------------------------------------------------------------------------|---|---|---|---|
-| `[namespace]` | Der Service Bus-Namespace, der aus dem [klassischen Azure-Portal][] abgerufen wird. | | | | |
-| `[username]` | Der Service Bus-Ausstellername, der aus dem [klassischen Azure-Portal][] abgerufen wird. | | | | |
-| `[password]` | Die URL-codierte Form des Service Bus-Ausstellerschlüssels, der aus dem [klassischen Azure-Portal][] abgerufen wird. | | | | |
+| `[namespace]` | Der Service Bus-Namespace, der aus dem [Azure-Portal][] abgerufen wird. | | | | |
+| `[username]` | Der Service Bus-Ausstellername, der aus dem [Azure-Portal][] abgerufen wird. | | | | |
+| `[password]` | Die URL-codierte Form des Service Bus-Ausstellerschlüssels, der aus dem [Azure-Portal][] abgerufen wird. | | | | |
 
-> [AZURE.NOTE] Sie müssen das Kennwort manuell URL-codieren. Ein nützliches URL-Codierungshilfsprogramm ist unter [http://www.w3schools.com/tags/ref\_urlencode.asp](http://www.w3schools.com/tags/ref_urlencode.asp) verfügbar.
+> [AZURE.NOTE] Sie müssen das Kennwort manuell als URL codieren. Ein nützliches URL-Codierungshilfsprogramm ist unter [http://www.w3schools.com/tags/ref\_urlencode.asp](http://www.w3schools.com/tags/ref_urlencode.asp) verfügbar.
 
 Angenommen, die aus dem Azure-Portal abgerufenen Informationen lauten wie folgt:
 
@@ -121,8 +121,8 @@ Beachten Sie Folgendes:
 
 - Der `[physical\name]`-Wert kann eine Service Bus-Warteschlange oder ein Service Bus-Thema sein.
 - Beim Empfang von einem Service Bus-Themenabonnement sollte der in JNDI angegebene physische Name dem Themennamen entsprechen. Der Abonnementname wird bei der Erstellung des Abonnements im JMS-Anwendungscode angegeben.
-- Es ist auch möglich, ein Service Bus-Themenabonnement als JMS-Warteschlange zu behandeln. Dieser Ansatz hat mehrere Vorteile: für Warteschlangen und Themenabonnements kann derselbe Empfängercode verwendet werden, und alle Adressinformationen (die Namen von Themen und Abonnements) werden in die "Properties"-Datei offengelegt.
-- Damit ein Service Bus-Themenabonnement als eine JMS-Warteschlange behandelt wird, muss der Eintrag in der "Properties"-Datei dieses Format haben: `queue.[jndi\_name] = [topic\_name]/Subscriptions/[subscription\_name]`.|
+- Es ist auch möglich, ein Service Bus-Themenabonnement als JMS-Warteschlange zu behandeln. Dieser Ansatz hat mehrere Vorteile: Für Warteschlangen und Themenabonnements kann derselbe Empfängercode verwendet werden, und alle Adressinformationen (die Namen von Themen und Abonnements) werden in die properties-Datei offengelegt.
+- Damit ein Service Bus-Themenabonnement als JMS-Warteschlange behandelt wird, muss der Eintrag in der properties-Datei dieses Format aufweisen: `queue.[jndi\_name] = [topic\_name]/Subscriptions/[subscription\_name]`.|
 
 Zum Definieren eines logischen JMS-Ziels namens "TOPIC", das dem Service Bus-Thema namens "topic1" zugeordnet ist, muss der Eintrag in der "Properties"-Datei wie folgt aussehen:
 
@@ -153,7 +153,7 @@ producer.send(message);
 
 ### Empfangen von Nachrichten mithilfe von JMS
 
-Der folgende Code veranschaulicht, wie Sie eine Nachricht von einem Service Bus-Themenabonnement empfangen. Es wird davon ausgegangen, dass `SBCONNECTIONFACTORY` und TOPIC, wie im vorherigen Abschnitt beschrieben, in der Konfigurationsdatei **servicebus.properties** definiert sind. Außerdem wird vorausgesetzt, dass der Abonnementname `subscription1` lautet.
+Der folgende Code veranschaulicht, wie Sie eine Nachricht aus einem Service Bus-Themenabonnement empfangen. Es wird davon ausgegangen, dass `SBCONNECTIONFACTORY` und TOPIC, wie im vorherigen Abschnitt beschrieben, in der Konfigurationsdatei **servicebus.properties** definiert sind. Außerdem wird vorausgesetzt, dass der Abonnementname `subscription1` lautet.
 
 ```
 Hashtable<String, String> env = new Hashtable<String, String>(); 
@@ -179,7 +179,7 @@ Die JMS-Spezifikation definiert, wie der Ausnahmevertrag der API-Methoden und An
 -   Registrieren Sie einen **ExceptionListener** mit der JMS-Verbindung mithilfe von **connection.setExceptionListener**. Dadurch kann ein Client asynchron über ein Problem benachrichtigt werden. Diese Benachrichtigung ist besonders wichtig für Verbindungen, die nur Nachrichten nutzen, da sie ansonsten keine andere Möglichkeit haben zu erfahren, dass ihre Verbindung ausgefallen ist. Der **ExceptionListener** wird aufgerufen, wenn es ein Problem mit der zugrunde liegenden AMQP-Verbindung, Sitzung oder dem Link gibt. In diesem Fall muss die Anwendung die Objekte **JMS Connection**, **Session**, **MessageProducer** und **MessageConsumer** von Grund auf neu erstellen.
 
 -   Um dafür zu sorgen, dass eine Nachricht vom einem **MessageProducer** erfolgreich an eine Service Bus-Entität gesendet wurde, stellen Sie sicher, dass die Anwendung mit festgelegter Systemeigenschaft **sync\_publish** konfiguriert wurde. Starten Sie dazu das Programm mit der Java VM-Option **-Dqpid.sync\_publish=true**, die Sie beim Starten der Anwendung über die Befehlszeile festlegen. Durch Festlegen dieser Option wird die Bibliothek so konfiguriert, dass keine Rückgabe aus dem Sendeaufruf erfolgt, bis die Bestätigung empfangen wird, dass die Nachricht von Service Bus akzeptiert wurde. Wenn ein Problem während des Sendevorgangs auftritt, wird eine **JMSException** ausgelöst. Es gibt zwei mögliche Ursachen:
-	1. Wenn das Problem vorliegt, weil Service Bus die bestimmte gesendete Nachricht zurückweist, wird eine **MessageRejectedException**-Ausnahme ausgelöst. Dieser Fehler ist entweder vorübergehend oder beruht auf einem Problem mit der Nachricht. Die empfohlene Vorgehensweise ist, den Vorgang mit einer Backofflogik zu wiederholen. Wenn das Problem weiterhin besteht, sollte die Nachricht mit einem lokal protokollierten Fehler verworfen werden. In dieser Situation besteht keine Notwendigkeit zum erneuten Erstellen der Objekte **JMS Connection**, **Session** oder **MessageProducer**. 
+	1. Wenn das Problem vorliegt, weil Service Bus die bestimmte gesendete Nachricht zurückweist, wird eine **MessageRejectedException**-Ausnahme ausgelöst. Dieser Fehler ist entweder vorübergehend oder beruht auf einem Problem mit der Nachricht. Die empfohlene Vorgehensweise ist, den Vorgang mit einer Backofflogik zu wiederholen. Wenn das Problem weiterhin besteht, sollte die Nachricht mit einem lokal protokollierten Fehler verworfen werden. In dieser Situation besteht keine Notwendigkeit zum erneuten Erstellen der Objekte **JMS Connection**, **Session** oder **MessageProducer**.
 	2. Wenn das Problem dadurch verursacht wird, dass Service Bus den AMQP-Link schließt, wird eine **InvalidDestinationException**-Ausnahme ausgelöst. Der Grund kann ein vorübergehendes Problem oder das Löschen der Nachrichtenentität sein. In beiden Fällen müssen die Objekte **JMS Connection**, **Session** und **MessageProducer** neu erstellt werden. Wenn die Fehlerbedingung vorübergehend war, wird dieser Vorgang schließlich erfolgreich sein. Wenn die Entität gelöscht wurde, ist der Fehler permanent.
 
 ## Übertragen von Nachrichten zwischen .NET und JMS
@@ -313,12 +313,12 @@ if (message.Properties.Keys.Count > 0)
 
 Die folgende Tabelle zeigt, wie die JMS-Eigenschaftstypen den .NET-Eigenschaftstypen zugeordnet sind.
 
-| JMS-Eigenschaftstyp | .NET-Eigenschaftstyp |
+| JMS-Eigenschaftstyp | .NET-Eigenschaftentyp |
 |-------------------|--------------------|
 | Byte | sbyte |
 | Integer | int |
 | Float | float |
-| Double | double |
+| Doppelt | double |
 | Boolean | bool |
 | String | string |
 
@@ -362,24 +362,24 @@ Die folgende Tabelle zeigt, wie die .NET-Eigenschaftstypen den JMS-Eigenschaftst
 
 | .NET-Eigenschaftstyp | JMS-Eigenschaftstyp | Hinweise |
 |--------------------|-------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| byte | UnsignedByte | - | 
-| sbyte | Byte | - | 
-| char | Character | - | 
-| short | Short | - | 
-| ushort | UnsignedShort | - | 
-| int | Integer | - | 
-| uint | UnsignedInteger | - | 
-| long | Long | - | 
-| ulong | UnsignedLong | - | 
-| float | Float | - | 
-| double | Double | - | 
-| decimal | BigDecimal | - | 
-| bool | Boolean | - | 
-| Guid | UUID | - | 
-| string | String | - | 
-| DateTime | Date | - | 
-| DateTimeOffset | DescribedType | DateTimeOffset.UtcTicks zugeordnet zum AMQP-Typ:<type name=”datetime-offset” class=restricted source=”long”> <descriptor name=”com.microsoft:datetime-offset” /></type> | 
-| TimeSpan | DescribedType | Timespan.Ticks zugeordnet zum AMQP-Typ:<type name=”timespan” class=restricted source=”long”> <descriptor name=”com.microsoft:timespan” /></type> | 
+| byte | UnsignedByte | - |
+| sbyte | Byte | - |
+| char | Character | - |
+| short | Short | - |
+| ushort | UnsignedShort | - |
+| int | Integer | - |
+| uint | UnsignedInteger | - |
+| long | Long | - |
+| ulong | UnsignedLong | - |
+| float | Float | - |
+| double | Double | - |
+| decimal | BigDecimal | - |
+| bool | Boolean | - |
+| Guid | UUID | - |
+| string | String | - |
+| DateTime | Date | - |
+| DateTimeOffset | DescribedType | DateTimeOffset.UtcTicks zugeordnet zum AMQP-Typ:<type name=”datetime-offset” class=restricted source=”long”> <descriptor name=”com.microsoft:datetime-offset” /></type> |
+| TimeSpan | DescribedType | Timespan.Ticks zugeordnet zum AMQP-Typ:<type name=”timespan” class=restricted source=”long”> <descriptor name=”com.microsoft:timespan” /></type> |
 | Uri | DescribedType | Uri.AbsoluteUri zugeordnet zum AMQP-Typ:<type name=”uri” class=restricted source=”string”> <descriptor name=”com.microsoft:uri” /></type> |
 
 ### Standardheader
@@ -390,31 +390,31 @@ Die folgenden Tabellen zeigen, wie die JMS-Standardheader und [BrokeredMessage][
 
 | JMS | Service Bus .NET | Hinweise |
 |------------------|--------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| JMSCorrelationID | Message.CorrelationID | - | 
-| JMSDeliveryMode | Derzeit nicht verfügbar | Service Bus unterstützt nur dauerhafte Nachrichten. z. B. DeliveryMode.PERSISTENT, unabhängig davon, was angegeben wird. | 
-| JMSDestination | Message.To | - | 
-| JMSExpiration | Message. TimeToLive | Conversion | 
-| JMSMessageID | Message.MessageID | Standardmäßig wird die JMSMessageID in binärer Form in der AMQP-Nachricht codiert. Beim Empfang einer binären Nachrichten-ID wird die .NET-Clientbibliothek basierend auf den Unicode-Werten der Bytes in eine Zeichenfolgendarstellung konvertiert. Damit die JMS-Bibliothek Zeichenfolgennachrichten-IDs verwendet, fügen Sie die Zeichenfolge "binary-messageid=false" an die Abfrageparameter von "JNDI ConnectionURL" an. Beispiel: “amqps://[username]:[password]@[namespace].servicebus.windows.net? binary-messageid=false”. | 
-| JMSPriority | Derzeit nicht verfügbar. | Service Bus unterstützt keine Nachrichtenpriorität. | 
-| JMSRedelivered | Derzeit nicht verfügbar | - | 
-| JMSReplyTo | Message. ReplyTo | - | 
-| JMSTimestamp | Message.EnqueuedTimeUtc | Conversion | 
+| JMSCorrelationID | Message.CorrelationID | - |
+| JMSDeliveryMode | Derzeit nicht verfügbar | Service Bus unterstützt nur dauerhafte Nachrichten. z. B. DeliveryMode.PERSISTENT, unabhängig davon, was angegeben wird. |
+| JMSDestination | Message.To | - |
+| JMSExpiration | Message. TimeToLive | Conversion |
+| JMSMessageID | Message.MessageID | Standardmäßig wird die JMSMessageID in binärer Form in der AMQP-Nachricht codiert. Beim Empfang einer binären Nachrichten-ID wird die .NET-Clientbibliothek basierend auf den Unicode-Werten der Bytes in eine Zeichenfolgendarstellung konvertiert. Damit die JMS-Bibliothek Zeichenfolgennachrichten-IDs verwendet, fügen Sie die Zeichenfolge "binary-messageid=false" an die Abfrageparameter von "JNDI ConnectionURL" an. Beispiel: “amqps://[username]:[password]@[namespace].servicebus.windows.net? binary-messageid=false”. |
+| JMSPriority | Derzeit nicht verfügbar. | Service Bus unterstützt keine Nachrichtenpriorität. |
+| JMSRedelivered | Derzeit nicht verfügbar | - |
+| JMSReplyTo | Message. ReplyTo | - |
+| JMSTimestamp | Message.EnqueuedTimeUtc | Conversion |
 | JMSType | Message.Properties[“jms-type”] | - |
 
 #### .NET-API von Service Bus zu JMS
 
 | Service Bus .NET | JMS | Hinweise |
 |-------------------------|------------------|-------------------------|
-| ContentType | - | Derzeit nicht verfügbar | 
-| CorrelationId | JMSCorrelationID | - | 
-| EnqueuedTimeUtc | JMSTimestamp | Conversion | 
-| Label | – | Derzeit nicht verfügbar | 
-| MessageId | JMSMessageID | - | 
-| ReplyTo | JMSReplyTo | - | 
-| ReplyToSessionId | – | Derzeit nicht verfügbar | 
-| ScheduledEnqueueTimeUtc | – | Derzeit nicht verfügbar | 
-| SessionId | – | Derzeit nicht verfügbar | 
-| TimeToLive | JMSExpiration | Conversion | 
+| ContentType | - | Derzeit nicht verfügbar |
+| CorrelationId | JMSCorrelationID | - |
+| EnqueuedTimeUtc | JMSTimestamp | Conversion |
+| Label | – | Derzeit nicht verfügbar |
+| MessageId | JMSMessageID | - |
+| ReplyTo | JMSReplyTo | - |
+| ReplyToSessionId | – | Derzeit nicht verfügbar |
+| ScheduledEnqueueTimeUtc | – | Derzeit nicht verfügbar |
+| SessionId | – | Derzeit nicht verfügbar |
+| TimeToLive | JMSExpiration | Conversion |
 | To | JMSDestination | - |
 
 ## Nicht unterstützte Funktionen und Einschränkungen
@@ -427,7 +427,7 @@ Bei der Verwendung von JMS über AMQP 1.0 mit Service Bus gelten die folgenden E
 
 -   **MessageSelector**-Objekte werden nicht unterstützt.
 
--   Temporäre Ziele, z. B. **TemporaryQueue** und **TemporaryTopic**, werden ebenso wie die **QueueRequestor**- und **TopicRequestor**-APIs, die diese verwenden, nicht unterstützt.
+-   Temporäre Ziele, z.B. **TemporaryQueue** und **TemporaryTopic**, werden ebenso wie die **QueueRequestor**- und **TopicRequestor**-APIs, die diese verwenden, nicht unterstützt.
 
 -   Von Transaktionen betroffene Sitzungen werden nicht unterstützt.
 
@@ -444,6 +444,6 @@ Möchten Sie mehr erfahren? Nutzen Sie die folgenden Links:
 [BrokeredMessage]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.aspx
 
 [Übersicht über Service Bus AMQP]: service-bus-amqp-overview.md
-[klassischen Azure-Portal]: http://manage.windowsazure.com
+[Azure-Portal]: https://portal.azure.com
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0824_2016-->

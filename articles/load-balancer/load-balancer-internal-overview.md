@@ -1,26 +1,26 @@
 
-<properties 
+<properties
    pageTitle="Übersicht über internen Lastenausgleich | Microsoft Azure"
    description="Übersicht über den internen Lastenausgleich und seine Funktionen. Funktionsweise eines Lastenausgleichs für Azure und mögliche Szenarios zum Konfigurieren interner Endpunkte"
    services="load-balancer"
    documentationCenter="na"
-   authors="joaoma"
-   manager="adinah"
+   authors="sdwheeler"
+   manager="carmonm"
    editor="tysonn" />
-<tags 
+<tags
    ms.service="load-balancer"
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="03/17/2016"
-   ms.author="joaoma" />
+   ms.author="sewhee" />
 
 
 # Interner Lastenausgleich (Übersicht)
 
 Der interne Lastenausgleich (ILB) stellt eine Sicherheitsverbesserung gegenüber dem aktuellen Lastenausgleich in Azure dar. Zugriff auf den ILB kann nur über Ressourcen im Clouddienst oder über VPN für den Zugriff auf die Azure-Infrastruktur erfolgen.
-			
+
 Die Infrastruktur schränkt den Zugriff ein und erstellt eine Vertrauensgrenze zwischen virtuellen IP-Adressen mit Lastenausgleich und Clouddienst oder einem virtuellen Netzwerk, und sie wird nie direkt einem Internetendpunkt verfügbar gemacht. Dies ermöglicht die Ausführung interner Line-of-Business-Anwendungen in Azure und Zugriff in der Cloud oder lokal.
 
 ## Szenarios für den internen Load Balancer
@@ -31,22 +31,22 @@ Der interne Azure-Lastenausgleich (ILB) ermöglicht Lastenausgleich zwischen vir
 
 ILB aktiviert die folgenden neuen Arten des Lastenausgleichs:
 
-- Innerhalb eines Clouddiensts von virtuellen Computern zu einer Gruppe von virtuellen Computern, die sich im selben Clouddienst befinden (siehe Abbildung 1).
+- Innerhalb eines Clouddiensts von virtuellen Computern zu einer Gruppe von virtuellen Computern, die sich im selben Clouddienst befinden (siehe Abbildung 1).
 
-- In einem virtuellen Netzwerk von virtuellen Computern im virtuellen Netzwerk zu einer Gruppe von virtuellen Computern im selben Clouddienst des virtuellen Netzwerks (siehe Abbildung 2).
+- In einem virtuellen Netzwerk von virtuellen Computern im virtuellen Netzwerk zu einer Gruppe von virtuellen Computern im selben Clouddienst des virtuellen Netzwerks (siehe Abbildung 2).
 
-- In einem standortübergreifenden virtuellen Netzwerk von lokalen Computern zu einer Gruppe von virtuellen Computern im selben Clouddienst des virtuellen Netzwerks (siehe Abbildung 3).
+- In einem standortübergreifenden virtuellen Netzwerk von lokalen Computern zu einer Gruppe von virtuellen Computern im selben Clouddienst des virtuellen Netzwerks (siehe Abbildung 3).
 
 Der vorhandene Azure-Lastenausgleich bietet nur Lastenausgleich zwischen internetbasierten Computern und virtuellen Computern in einem Clouddienst. ILB ermöglicht neue Funktionen zum Hosten von virtuellen Computern in Azure.
 
 - Internetanwendungen mit mehreren Ebenen, bei denen die Back-End-Ebenen keine Internetanbindung haben, jedoch Lastenausgleich für Datenverkehr für die mit dem Internet verbundene Ebene erfordern.
-- Lastenausgleich für Branchenanwendungen (LOB-Anwendungen), die in Azure gehostet werden, ohne dass zusätzliche Hardware oder Software für den Lastenausgleich erforderlich ist. Einbeziehen von lokalen Servern in die Gruppe der Computer, für deren Datenverkehr Lastenausgleich stattfindet. 
+- Lastenausgleich für Branchenanwendungen (LOB-Anwendungen), die in Azure gehostet werden, ohne dass zusätzliche Hardware oder Software für den Lastenausgleich erforderlich ist. Einbeziehen von lokalen Servern in die Gruppe der Computer, für deren Datenverkehr Lastenausgleich stattfindet.
 - In den folgenden Abschnitten werden diese Konfigurationen ausführlich beschrieben.
 
 ## Anwendungen mit mehreren Ebenen mit Internetanbindung
 
 
-Die Webebene verfügt über Endpunkte mit Internetanbindung für Internetclients und ist Teil einer Gruppe mit Lastenausgleich. Der Lastenausgleich verteilt den eingehenden Datenverkehr von Webclients für TCP-Port 443 (HTTPS) an den Webserver.
+Die Webebene verfügt über Endpunkte mit Internetanbindung für Internetclients und ist Teil einer Gruppe mit Lastenausgleich. Der Lastenausgleich verteilt den eingehenden Datenverkehr von Webclients für TCP-Port 443 (HTTPS) an den Webserver.
 
 Die Datenbankserver befinden sich hinter einem ILB-Endpunkt, den die Webserver zur Speicherung verwenden. Dieser Datenbankdienst-Endpunkt mit Lastenausgleich, für dessen Datenverkehr Lastenausgleich auf den Datenbankservern in der ILB-Gruppe ausgeführt wird.
 
@@ -90,6 +90,4 @@ Ein weiteres Szenario für LOB ist ein Standort-zu-Standort-VPN mit dem virtuell
 
 [Konfigurieren von TCP-Leerlauftimeout-Einstellungen für den Lastenausgleich](load-balancer-tcp-idle-timeout.md)
 
- 
-
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0824_2016-->

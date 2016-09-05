@@ -13,20 +13,20 @@
 	ms.tgt_pltfrm="mobile-windows-phone" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="05/03/2016" 
+	ms.date="08/19/2016" 
 	ms.author="piyushjo" />
 
 #Integration von Windows Phone Silverlight Engagement-SDK
 
 > [AZURE.SELECTOR] 
-- [Windows Universal](mobile-engagement-windows-store-integrate-engagement.md) 
-- [Windows Phone Silverlight](mobile-engagement-windows-phone-integrate-engagement.md) 
-- [iOS](mobile-engagement-ios-integrate-engagement.md) 
-- [Android](mobile-engagement-android-integrate-engagement.md) 
+- [Windows Universal](mobile-engagement-windows-store-integrate-engagement.md)
+- [Windows Phone Silverlight](mobile-engagement-windows-phone-integrate-engagement.md)
+- [iOS](mobile-engagement-ios-integrate-engagement.md)
+- [Android](mobile-engagement-android-integrate-engagement.md)
 
 Dieses Verfahren beschreibt die einfachste Möglichkeit zum Aktivieren der Azure Mobile Engagement-Funktionen zur Analyse und Überwachung in Ihrer Windows Phone Silverlight-Anwendung.
 
-Die folgenden Schritte sind ausreichend, um den Bericht von Protokollen zu aktivieren, die zur Berechnung aller Statistiken zu Benutzern, Sitzungen, Aktivitäten, Abstürzen und technischen Informationen notwendig sind. Der Bericht von Protokollen, die zum Berechnen weiterer Statistiken wie Ereignisse, Fehler und Aufträge erforderlich sind, muss manuell über die Engagement-API ausgeführt werden (Informationen hierzu finden Sie unten unter [Verwenden der erweiterten Mobile Engagement-Tagging-API in Ihrer Windows Phone Silverlight-App](mobile-engagement-windows-phone-use-engagement-api.md) unten), da diese Statistiken anwendungsabhängig sind.
+Die folgenden Schritte sind ausreichend, um den Bericht von Protokollen zu aktivieren, die zur Berechnung aller Statistiken zu Benutzern, Sitzungen, Aktivitäten, Abstürzen und technischen Informationen notwendig sind. Der Bericht mit Protokollen, die zum Berechnen weiterer Statistiken wie Ereignissen, Fehlern und Aufträgen erforderlich sind, muss manuell über die Engagement-API ausgeführt werden, da diese Statistiken anwendungsabhängig sind. (Informationen hierzu finden Sie weiter unten unter [Verwenden der erweiterten Mobile Engagement-Tagging-API in Ihrer Windows Phone Silverlight-App](mobile-engagement-windows-phone-use-engagement-api.md)).
 
 ##Unterstützte Versionen
 
@@ -191,7 +191,7 @@ Diese Methoden werden von innerhalb der Methode `OnNavigatedTo` Ihrer Seite aufg
 
 Wenn Sie Ihre `PhoneApplicationPage`-Klassen nicht überladen möchten oder können, können Sie stattdessen Ihre Aktivitäten durch direktes Aufrufen der `EngagementAgent`-Methoden starten.
 
-Es empfiehlt sich, `StartActivity` innerhalb Ihrer Methode `OnNavigatedTo` von PhoneApplicationPage aufzurufen.
+Es empfiehlt sich, `StartActivity` innerhalb Ihrer `OnNavigatedTo`-Methode von „PhoneApplicationPage“ aufzurufen.
 
 		protected override void OnNavigatedTo(NavigationEventArgs e)
 		{
@@ -247,4 +247,4 @@ Der Burst-Modus verlängert leicht die Akkulaufzeit, wirkt sich jedoch auf den E
 > [AZURE.WARNING] Der Burstschwellenwert kann nicht auf einen Zeitraum von weniger als einer Sekunde konfiguriert werden. Wenn Sie dies versuchen, zeigt das SDK eine Ablaufverfolgung mit einem Fehler an und setzt den Wert automatisch auf den Standardwert von 0 Sekunden zurück. Dadurch wird ausgelöst, dass das SDK die Protokolle in Echtzeit meldet.
  
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0824_2016-->

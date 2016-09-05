@@ -3,7 +3,7 @@
    description="Hier erfahren Sie, wie Sie im Ressourcen-Manager mithilfe von PowerShell einen Load Balancer mit Internetzugriff erstellen."
    services="load-balancer"
    documentationCenter="na"
-   authors="joaoma"
+   authors="sdwheeler"
    manager="carmonm"
    editor=""
    tags="azure-resource-manager"
@@ -15,7 +15,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="04/05/2016"
-   ms.author="joaoma" />
+   ms.author="sewhee" />
 
 # Erste Schritte zum Erstellen eines Load Balancers mit Internetzugriff im Ressourcen-Manager unter Verwendung von PowerShell
 
@@ -308,4 +308,4 @@ Verwenden Sie den Befehl `Remove-AzureLoadBalancer`, um den zuvor erstellten Loa
 
 [Konfigurieren von TCP-Leerlauftimeout-Einstellungen für den Lastenausgleich](load-balancer-tcp-idle-timeout.md)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0824_2016-->

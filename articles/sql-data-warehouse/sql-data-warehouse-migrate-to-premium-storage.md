@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="08/11/2016"
+   ms.date="08/19/2016"
    ms.author="nicw;barbkess;sonyama"/>
 
 # Details zur Migration zu Storage Premium
@@ -22,7 +22,7 @@ Für SQL Data Warehouse wurde vor Kurzem [Storage Premium eingeführt, um die Le
 Wenn Sie mehr als ein Data Warehouse verwenden, ermitteln Sie anhand des unten angegebenen [Zeitplans für die automatische Migration][], wann die einzelnen Migrationen durchgeführt werden.
 
 ## Bestimmen des Speichertyps
-Wenn Sie ein Data Warehouse vor den unten angegebenen Terminen erstellt haben, verwenden Sie derzeit Storage Standard. Für jedes Data Warehouse in Storage Standard, das der automatischen Migration unterliegt, wird außerdem im [Azure-Portal][] oben im Blatt „Data Warehouse“ ein Hinweis mit folgendem Inhalt angezeigt: „ *Ein bevorstehendes Upgrade auf Storage Premium ist mit Ausfallzeiten verbunden. Erfahren Sie mehr ->* .“
+Wenn Sie ein Data Warehouse vor den unten angegebenen Terminen erstellt haben, verwenden Sie derzeit Storage Standard. Für jedes Data Warehouse in Storage Standard, das der automatischen Migration unterliegt, wird außerdem im [Azure-Portal][] oben im Blatt „Data Warehouse“ ein Hinweis mit folgendem Inhalt angezeigt: „*Ein bevorstehendes Upgrade auf Storage Premium ist mit Ausfallzeiten verbunden. Erfahren Sie mehr ->*.“
 
 | **Region** | **Vor diesem Datum erstelltes DW** |
 | :------------------ | :-------------------------------- |
@@ -91,13 +91,13 @@ Automatische Migrationen finden zwischen 18:00 Uhr und 06:00 Uhr (Ortszeit in de
 | Japan Ost | 10\. August 2016 | 24\. August 2016 |
 | Japan (Westen) | Noch nicht festgelegt | Noch nicht festgelegt |
 | USA (Mitte/Norden) | Noch nicht festgelegt | Noch nicht festgelegt |
-| Nordeuropa | 10\. August 2016 | 24\. August 2016 |
-| USA Süd Mitte | 23\. Juni 2016 | 2\. Juli 2016 |
+| Nordeuropa | 10\. August 2016 | 31\. August 2016 |
+| USA (Mitte/Süden) | 23\. Juni 2016 | 2\. Juli 2016 |
 | Südostasien | 23\. Juni 2016 | 1\. Juli 2016 |
 | Westeuropa | 23\. Juni 2016 | 8\. Juli 2016 |
-| USA, Westen-Mitte | 14\. August 2016 | 28\. August 2016 |
+| USA, Westen-Mitte | 14\. August 2016 | 31\. August 2016 |
 | USA (West) | 23\. Juni 2016 | 7\. Juli 2016 |
-| USA, Westen 2 | 14\. August 2016 | 28\. August 2016 |
+| USA, Westen 2 | 14\. August 2016 | 31\. August 2016 |
 
 ## Selbst durchgeführte Migration zu Storage Premium
 Wenn Sie steuern möchten, wann genau Ihr Data Warehouse nicht verfügbar sein wird, können Sie die folgenden Schritte ausführen, um ein vorhandenes Data Warehouse von Storage Standard zu Storage Premium zu migrieren. Falls Sie sich für die selbst durchgeführte Migration entscheiden, müssen Sie diesen Vorgang vor Beginn der automatischen Migration in dieser Region durchführen. So vermeiden Sie das Risiko, dass die automatische Migration einen Konflikt verursacht (siehe [Zeitplan für die automatische Migration][]).
@@ -187,4 +187,4 @@ Wenn Probleme mit Ihrem Data Warehouse auftreten, können Sie [ein Supportticket
 [Storage Premium eingeführt, um die Leistung besser vorhersagen zu können]: https://azure.microsoft.com/de-DE/blog/azure-sql-data-warehouse-introduces-premium-storage-for-greater-performance/
 [Azure-Portal]: https://portal.azure.com
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0824_2016-->

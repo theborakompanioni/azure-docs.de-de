@@ -5,9 +5,9 @@
 - [Aktivieren oder Deaktivieren einer Rolle](../articles/active-directory/active-directory-privileged-identity-management-how-to-activate-role.md)
 - [Ändern oder Anzeigen der Standardaktivierungseinstellungen für eine Rolle](../articles/active-directory/active-directory-privileged-identity-management-how-to-change-default-settings.md)
 - [Konfigurieren von Sicherheitswarnungen](../articles/active-directory/active-directory-privileged-identity-management-how-to-configure-security-alerts.md)
-- [Starten einer Sicherheitsüberprüfung](../articles/active-directory/active-directory-privileged-identity-management-how-to-start-security-review.md)
-- [Ausführen einer Sicherheitsüberprüfung](../articles/active-directory/active-directory-privileged-identity-management-how-to-perform-security-review.md)
+- [Starten einer Zugriffsüberprüfung](../articles/active-directory/active-directory-privileged-identity-management-how-to-start-security-review.md)
+- [Durchführen einer Zugriffsüberprüfung](../articles/active-directory/active-directory-privileged-identity-management-how-to-perform-security-review.md)
 - [Erfordern von MFA](../articles/active-directory/active-directory-privileged-identity-management-how-to-require-mfa.md)
 - [Verwenden des Überwachungsprotokolls](../articles/active-directory/active-directory-privileged-identity-management-how-to-use-audit-log.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0824_2016-->

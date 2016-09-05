@@ -12,7 +12,7 @@
  ms.tgt_pltfrm="na"
  ms.devlang="dotnet"
  ms.topic="article"
- ms.date="06/30/2016"
+ ms.date="08/16/2016"
  ms.author="krisragh"/>
 
 
@@ -56,11 +56,11 @@ Ein Beispiel sehen Sie im folgenden Diagramm: Azure Scheduler wendet die Wiederh
 
 ![][2]
 
-Beachten Sie, dass die gleiche Wiederholungsrichtlinie sowohl für die ursprüngliche Aktion als auch für die alternative Fehleraktion gilt. Der Aktionstyp der alternativen Fehleraktion kann sich auch vom Aktionstyp der Hauptaktion unterscheiden. So kann die Fehleraktion beispielsweise eine Speicherwarteschlangen-, Service Bus-Warteschlangen- oder Service Bus-Topic-Aktion mit Fehlerprotokollierung sein, obwohl die Hauptaktion einen HTTP-Endpunkt aufruft.
+Beachten Sie, dass die gleiche Wiederholungsrichtlinie sowohl für die ursprüngliche Aktion als auch für die alternative Fehleraktion gilt. Der Aktionstyp der alternativen Fehleraktion kann sich auch vom Aktionstyp der Hauptaktion unterscheiden. So kann die Fehleraktion beispielsweise eine Speicherwarteschlangen-, Service Bus-Warteschlangen- oder Service Bus-Themenaktion mit Fehlerprotokollierung sein, obwohl die Hauptaktion einen HTTP-Endpunkt aufruft.
 
 Weitere Informationen zum Konfigurieren eines alternativen Endpunkts finden Sie unter [errorAction](scheduler-concepts-terms.md#action-and-erroraction).
 
-## Siehe auch
+## Weitere Informationen
 
  [Was ist Azure Scheduler?](scheduler-intro.md)
 
@@ -85,4 +85,4 @@ Weitere Informationen zum Konfigurieren eines alternativen Endpunkts finden Sie 
 
 [2]: ./media/scheduler-high-availability-reliability/scheduler-high-availability-reliability-image2.png
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0824_2016-->

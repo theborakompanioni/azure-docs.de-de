@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-android"
 	ms.devlang="Java"
 	ms.topic="article"
-	ms.date="05/10/2016"
+	ms.date="08/19/2016"
 	ms.author="piyushjo" />
 
 #Integrieren von Engagement Reach unter Android
@@ -155,7 +155,7 @@ Dann können Sie die Rückruffunktionen `onDataPushStringReceived` und `onDataPu
 			  }
 			}
 
-### Category
+### Kategorie
 
 Der category-Parameter ist optional, wenn Sie eine Datenpushkampagne erstellen und eine Filterung von Datenpushvorgängen ermöglichen. Dies ist hilfreich, wenn Sie über verschiedene Übertragungsempfänger verfügen, die unterschiedliche Datenpushtypen verarbeiten, oder Sie verschiedene Arten von `Base64`-Daten per Push übertragen und dabei vor der Analyse ihren Typ ermitteln möchten.
 
@@ -249,7 +249,7 @@ Wenn Sie die bereitgestellten Layouts ändern, verändern Sie das Aussehen Ihrer
 
 Sie müssen beim Initialisieren der Anwendung einen Aufruf hinzufügen, um einen Kategoriehandler für Ihre Benachrichtigungen zu registrieren.
 
-> [AZURE.IMPORTANT] Bevor Sie fortfahren, finden Sie Informationen zur Warnung zum „android:process“-Attribut „<android-sdk-engagement-process> “ unter „Integrieren von Engagement unter Android“.
+> [AZURE.IMPORTANT] Informieren Sie sich unter „Integrieren von Engagement unter Android“ über die Warnung zum android:process-Attribut „<android-sdk-engagement-process>“, bevor Sie den Vorgang fortsetzen.
 
 Im folgenden Beispiel wird angenommen, dass Sie die vorherige Warnung bestätigt haben und eine Unterklasse von `EngagementApplication` verwenden:
 
@@ -425,7 +425,7 @@ Wenn Sie diese ändern möchten, müssen Sie die `EngagementDefaultNotifier.prep
 
 Durch die Erweiterung von `EngagementDefaultNotifier` können Sie `onNotificationPrepared` außer Kraft setzen, um die Benachrichtigung zu ändern, die von der Standardimplementierung vorbereitet wurde.
 
-Zum Beispiel:
+Beispiel:
 
 			@Override
 			protected boolean onNotificationPrepared(Notification notification, EngagementReachInteractiveContent content)
@@ -511,7 +511,7 @@ Diese Dateien haben zwei allgemeine Layouts für den Titel- und den unteren Bere
 
 In einer Umfrage werden das Fragenlayout und ihre Optionen dynamisch durch mehrfache Verwendung der `engagement_question.xml`-Layoutdatei für die Fragen und der `engagement_choice.xml`-Datei für die Optionen gefüllt.
 
-#### Kategorien
+#### Categories
 
 ##### Alternative Layouts
 
@@ -644,4 +644,4 @@ Wenn Sie aufgerufen `actionContent(this)` und dann die Aktivität beendet haben,
 [Google Cloud Messaging]: http://developer.android.com/guide/google/gcm/index.html
 [Amazon Device Messaging]: https://developer.amazon.com/sdk/adm.html
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0824_2016-->

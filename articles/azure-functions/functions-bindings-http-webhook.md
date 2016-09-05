@@ -15,10 +15,12 @@
 	ms.topic="reference"
 	ms.tgt_pltfrm="multiple"
 	ms.workload="na"
-	ms.date="05/16/2016"
+	ms.date="08/22/2016"
 	ms.author="chrande"/>
 
 # HTTP- und Webhookbindungen in Azure Functions
+
+[AZURE.INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
 
 Dieser Artikel erläutert das Konfigurieren und Codieren von HTTP- und Webhooktriggern und -Bindungen in Azure Functions.
 
@@ -30,17 +32,17 @@ Die Datei *function.json* enthält Eigenschaften, die die Anforderung und die An
 
 Eigenschaften für die HTTP-Anforderung:
 
-- `name`: der Variablenname, der im Funktionscode für das Anforderungsobjekt (oder bei Node.js-Funktionen im Anforderungstext) verwendet wird.
-- `type`: muss auf *httpTrigger* festgelegt werden.
-- `direction`: muss auf *in* festgelegt werden. 
-- `webHookType`: Für Webhooktrigger sind gültige Werte *github*, *slack* und *genericJson*. Für einen HTTP-Trigger, der kein WebHook ist, legen Sie diese Eigenschaft auf eine leere Zeichenfolge fest. Weitere Informationen zu Webhooks finden Sie im folgenden Abschnitt zu [Webhooktriggern](#webhook-triggers).
-- `authLevel`: betrifft Webhooktrigger nicht. Legen Sie den Wert auf „function“ fest, um einen API-Schlüssel zu verlangen, auf „anonymous“, um die Anforderung eines API-Schlüssels aufzuheben, oder auf „admin“, um den Master-API-Schlüssel zu verlangen. Weitere Informationen finden Sie weiter unten unter [API-Schlüssel](#apikeys).
+- `name`: Der Variablenname, der im Funktionscode für das Anforderungsobjekt (oder bei Node.js-Funktionen im Hauptteil der Anforderung) verwendet wird.
+- `type`: Muss auf *httpTrigger* festgelegt werden.
+- `direction`: Muss auf *in* festgelegt werden.
+- `webHookType`: Gültige Werte für Webhook-Trigger sind *github*, *slack* und *genericJson*. Für einen HTTP-Trigger, der kein WebHook ist, legen Sie diese Eigenschaft auf eine leere Zeichenfolge fest. Weitere Informationen zu Webhooks finden Sie weiter unten im Abschnitt [WebHook-Trigger](#webhook-triggers).
+- `authLevel`: Für Webhook-Trigger nicht relevant. Legen Sie den Wert auf „function“ fest, um einen API-Schlüssel zu verlangen, auf „anonymous“, um die Anforderung eines API-Schlüssels aufzuheben, oder auf „admin“, um den Master-API-Schlüssel zu verlangen. Weitere Informationen finden Sie weiter unten unter [API-Schlüssel](#apikeys).
 
 Eigenschaften für die HTTP-Antwort:
 
 - `name`: Variablenname, der im Funktionscode für das Antwortobjekt verwendet wird.
-- `type`: muss auf *http* festgelegt werden.
-- `direction`: muss auf *out* festgelegt werden. 
+- `type`: Muss auf *http* festgelegt werden.
+- `direction`: Muss auf *out* festgelegt werden.
  
 Beispiel für *function.json*:
 
@@ -84,7 +86,7 @@ Zum Auslösen einer Funktion senden Sie eine HTTP-Anforderung an eine URL, die e
 
 ## API-Schlüssel
 
-Standardmäßig muss eine HTTP-Anforderung einen API-Schlüssel aufweisen, um eine HTTP- oder WebHook-Funktion auszulösen. Der Schlüssel kann in einer Abfragezeichenfolgen-Variable mit dem Namen `code` oder in einem `x-functions-key`-HTTP-Header enthalten sein. Für andere Funktionen als Webhooks können Sie angeben, dass kein API-Schlüssel erforderlich ist, indem Sie in der Datei *function.json* die `authLevel`-Eigenschaft auf „anonymous“ festlegen.
+Standardmäßig muss eine HTTP-Anforderung einen API-Schlüssel aufweisen, um eine HTTP- oder WebHook-Funktion auszulösen. Der Schlüssel kann in einer Abfragezeichenfolgen-Variablen namens `code` oder in einem `x-functions-key`-HTTP-Header enthalten sein. Für andere Funktionen als WebHook können Sie angeben, dass kein API-Schlüssel erforderlich ist, indem Sie in der Datei *function.json* die `authLevel`-Eigenschaft auf „anonymous“ festlegen.
 
 Sie finden API-Schlüsselwerte im Ordner *D:\\home\\data\\Functions\\secrets* im Dateisystem der Funktionen-App. Der Hauptschlüssel und der Funktionsschlüssel werden in der Datei *host.json* festgelegt, wie im folgenden Beispiel gezeigt.
 
@@ -201,4 +203,4 @@ module.exports = function (context, data) {
 
 [AZURE.INCLUDE [Nächste Schritte](../../includes/functions-bindings-next-steps.md)]
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0824_2016-->

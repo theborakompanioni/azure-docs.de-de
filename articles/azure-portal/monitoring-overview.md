@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Überblick über die Überwachung in Microsoft Azure | Microsoft Azure"
-	description="Allgemeiner Überblick über die Überwachung und Diagnose in Azure sowie über das Senden von Warnungen an Systeme außerhalb von Azure."
+	description="Eine allgemeine Übersicht über die Überwachung und Diagnose in Microsoft Azure mit Warnungen, Webhooks, automatischer Skalierung und mehr."
 	authors="rboucher"
 	manager=""
 	editor=""
@@ -138,4 +138,4 @@ Weitere Informationen
 - [Problembehandlung für Azure Storage](../storage/storage-e2e-troubleshooting.md): Lösen Sie Probleme mit Speicherblobs, -tabellen oder -warteschlangen.
 - [Log Analytics](https://azure.microsoft.com/documentation/services/log-analytics/) und die [Operations Management Suite](https://www.microsoft.com/cloud-platform/operations-management-suite)
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0824_2016-->

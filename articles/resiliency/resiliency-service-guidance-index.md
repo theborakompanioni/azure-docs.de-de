@@ -4,7 +4,7 @@
    services=""
    documentationCenter="na"
    authors="adamglick"
-   manager="hongfeig"
+   manager="saladki"
    editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="08/01/2016"
+   ms.date="08/18/2016"
    ms.author="aglick"/>
 
 # Leitfaden zur Resilienz von Diensten in Microsoft Azure
@@ -33,9 +33,9 @@ Die Entwurfsleitfäden bieten Anleitungen zu Design und Architektur und stellen 
 | [Speicher](https://azure.microsoft.com/services/storage/ "Azure Storage") | [link](../storage/storage-disaster-recovery-guidance.md "Azure Storage – Leitfaden zur Notfallwiederherstellung") | Nicht verfügbar. |
 | [SQL-Datenbanken](https://azure.microsoft.com/services/sql-database/ "Azure SQL-Datenbanken") | [link](../sql-database/sql-database-disaster-recovery.md "Azure SQL-Datenbanken – Leitfaden zur Notfallwiederherstellung") | [link](../sql-database/sql-database-business-continuity-design.md "Azure SQL-Datenbanken – Entwurfsleitfaden") |
 | [Virtuelle Computer](https://azure.microsoft.com/services/virtual-machines/ "Azure Virtual Machines") | [link](../virtual-machines/virtual-machines-disaster-recovery-guidance.md "Azure Virtual Machines – Leitfaden zur Notfallwiederherstellung") | Nicht verfügbar. |
-| [Virtuelles Netzwerk](https://azure.microsoft.com/services/virtual-network/ "Azure Virtual Network") | [link](../virtual-network/virtual-network-disaster-recovery-guidance.md "Azure Virtual Network – Leitfaden zur Notfallwiederherstellung") | Nicht verfügbar. |
+| [Virtuelles Netzwerk](https://azure.microsoft.com/services/virtual-network/ "Virtuelles Azure-Netzwerk") | [link](../virtual-network/virtual-network-disaster-recovery-guidance.md "Azure Virtual Network – Leitfaden zur Notfallwiederherstellung") | Nicht verfügbar. |
 
 ##Nächste Schritte
 Wenn Sie allgemeinere Informationen zu Systemen und Lösungen suchen, lesen Sie den Artikel [Notfallwiederherstellung und hohe Verfügbarkeit für in Microsoft Azure erstellte Anwendungen](https://aka.ms/drtechguide).
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0824_2016-->

@@ -37,11 +37,7 @@ Nach Klicken auf die Einstellung „Verschlüsselung“ können Sie Storage Serv
 
 ##Verfügbarkeit
 
-Für Storage Standard ist dieses Feature derzeit in den Regionen „Australien, Südosten“, „Kanada, Mitte“, „Kanada, Osten“, „USA, Mitte“, „Asien, Osten“ „USA, Osten“, „USA, Osten 2“, „USA, Norden-Mitte“, „Europa, Norden“, „USA, Süden-Mitte“, „Asien, Südosten“, „Europa, Westen“ und „USA, Westen“ verfügbar.
-
-Für Storage Premium ist dieses Feature derzeit in den Regionen „Australien, Südosten“, „Kanada, Mitte“, „Kanada, Osten“, „USA, Mitte“, „Asien, Osten“ „USA, Osten“, „USA, Osten 2“, „Japan, Osten“, „USA, Norden-Mitte“, „Europa, Norden“, „USA, Süden-Mitte“, „Asien, Südosten“ und „USA, Westen“ verfügbar.
-
-Wenn wir dieses Feature in weiteren Regionen einführen, werden wir dieses Dokument entsprechend aktualisieren.
+Diese Funktion ist derzeit in allen Regionen für Storage Standard und Storage Premium verfügbar.
 
 ##Verschlüsselungsszenarien
 
@@ -61,7 +57,7 @@ Die öffentliche Vorschau hat folgende Einschränkungen:
 
 -   Vorhandene Daten – SSE verschlüsselt nur nach Aktivierung der Verschlüsselung neu erstellte Daten. Wenn Sie z.B. ein neues Resource Manager-Speicherkonto erstellen, jedoch keine Verschlüsselung aktivieren, und dann Blobs oder archivierte VHDs in das Speicherkonto hochladen und SSE aktivieren, werden diese Blobs nicht verschlüsselt, sofern sie nicht neu geschrieben oder kopiert werden.
 
--   Unterstützung für Marketplace – Aktivieren der Verschlüsselung von virtuellen Computern, die über den Marketplace mittels (Azure-Portal) [https://portal.azure.com], PowerShell und Azure-Befehlszeilenschnittstelle erstellt werden. Das VHD-Basisimage bleibt unverschlüsselt. Allerdings werden alle Schreibvorgänge verschlüsselt, die nach Erstellen der VM stattfinden.
+-   Unterstützung für Marketplace – Aktivieren der Verschlüsselung von virtuellen Computern, die über den Marketplace mittels [Azure-Portal](https://portal.azure.com), PowerShell und Azure-Befehlszeilenschnittstelle erstellt werden. Das VHD-Basisimage bleibt unverschlüsselt. Allerdings werden alle Schreibvorgänge verschlüsselt, die nach Erstellen der VM stattfinden.
 
 -   Tabellen, Warteschlangen und Dateidaten werden nicht verschlüsselt.
 
@@ -229,4 +225,4 @@ A: Bitte wenden Sie sich in allen Angelegenheiten, die Storage Service Encryptio
 
 Azure Storage bietet einen umfassenden Satz von Sicherheitsfunktionen, die Entwicklern das Erstellen sicherer Anwendungen ermöglichen. Weitere Informationen finden Sie im [Azure Storage-Sicherheitsleitfaden](storage-security-guide.md).
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0824_2016-->

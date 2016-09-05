@@ -99,7 +99,7 @@ In diesem Abschnitt erfahren Sie, wie Sie die Windows-VM generalisieren, damit s
 
 	Sie können die URL Ihres Image aus der JSON-Dateivorlage abrufen. Suchen Sie den Abschnitt **resources** > **storageProfile** > **osDisk** > **image** > **uri**, um den vollständigen Pfad zu Ihrem Image zu finden. Die URL des Image sieht wie folgt aus: `https://<storageAccountName>.blob.core.windows.net/system/Microsoft.Compute/Images/<imagesContainer>/<templatePrefix-osDisk>.xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.vhd`.
 	
-	Sie können den URI auch im Portal überprüfen. Das Image wird in ein Blob mit dem Namen **system** in Ihrem Speicherkonto kopiert.
+	Sie können den URI auch im Portal überprüfen. Das Image wird in einen Container mit dem Namen **system** in Ihrem Speicherkonto kopiert.
 
 2. Erstellen Sie eine Variable für den Pfad zum Bild.
 
@@ -210,4 +210,4 @@ Anschließend müsste der neu erstellte virtuelle Computer im [Azure-Portal](htt
 
 Informationen zum Verwalten des neuen virtuellen Computers mit Azure PowerShell finden Sie unter [Verwalten von virtuellen Computern mit Azure Resource Manager und PowerShell](virtual-machines-windows-ps-manage.md).
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0824_2016-->

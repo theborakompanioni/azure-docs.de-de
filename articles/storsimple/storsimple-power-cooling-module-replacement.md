@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="05/25/2016"
+   ms.date="08/18/2016"
    ms.author="alkohli" />
 
 # Austauschen eines Moduls für Stromversorgung und Kühlung eines StorSimple-Geräts
@@ -59,7 +59,7 @@ Gehen Sie entsprechend der folgenden Anleitung vor, wenn Sie ein Modul für Stro
 
      - Ist ein Lüfter in PCM 1 ausgefallen, leuchtet die Status-LED von **Kühlung 0 für PCM 0** oder **Kühlung 1 für PCM 0** rot.
 
-2. Suchen Sie auf der Rückseite des primären Gehäuses nach dem ausgefallenen PCM. Ist das Gerät ein Modell vom Typ 8600, ermitteln Sie das primäre Gehäuse anhand der Systemidentifikationsnummer, die in der LED-Anzeige auf dem vorderen Bedienfeld angezeigt wird. Die auf dem primären Gehäuse angezeigte Standardgerätekennung ist **00**, während die auf dem EBOD-Gehäuse angezeigte Standardgerätekennung **01** ist. In der folgenden Abbildung und Tabelle wird das vordere Bedienfeld der LED-Anzeige erläutert.
+2. Suchen Sie auf der Rückseite des primären Gehäuses nach dem ausgefallenen PCM. Ist das Gerät ein Modell 8600, ermitteln Sie das primäre Gehäuse anhand der Systemidentifikationsnummer, die in der LED-Anzeige auf dem vorderen Bedienfeld angezeigt wird. Die auf dem primären Gehäuse angezeigte Standardgerätekennung ist **00**, während die auf dem EBOD-Gehäuse angezeigte Standardgerätekennung **01** ist. In der folgenden Abbildung und Tabelle wird das vordere Bedienfeld der LED-Anzeige erläutert.
 
     ![Gerätekennung auf dem Bedienfeld auf der Vorderseite](./media/storsimple-power-cooling-module-replacement/IC740991.png)
 
@@ -155,4 +155,4 @@ Folgen Sie diesen Anweisungen, um ein PCM in Ihrem StorSimple-Gerät einzubauen.
 
 Weitere Informationen zum [Austauschen von StorSimple-Hardwarekomponenten](storsimple-hardware-component-replacement.md).
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0824_2016-->

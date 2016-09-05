@@ -3,7 +3,7 @@
    description="In diesem Artikel wird beschrieben, wie Traffic Manager die Endpunktüberwachung und das automatische Endpunktfailover verwendet, um Azure-Kunden bei der Bereitstellung von Anwendungen mit hoher Verfügbarkeit zu unterstützen."
    services="traffic-manager"
    documentationCenter=""
-   authors="jtuliani"
+   authors="sdwheeler"
    manager="carmonm"
    editor="tysonn" />
 <tags
@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="07/01/2016"
-   ms.author="jtuliani" />
+   ms.author="sewhee" />
 
 # Traffic Manager-Endpunktüberwachung und -failover
 
@@ -57,7 +57,7 @@ Der Überwachungsstatus von Endpunkten ist eine Einstellung, die von Traffic Man
 |---|---|---|---|
 |Deaktiviert|Aktiviert|Inaktiv|Das Profil wurde vom Benutzer deaktiviert. Der Endpunktstatus kann immer noch „Aktiviert“ lauten, aber der Profilstatus („Deaktiviert“) hat Vorrang. Endpunkte in deaktivierten Profilen werden nicht überwacht und in DNS-Antworten nicht einbezogen, und es wird eine NXDOMAIN-Antwort zurückgegeben.|
 |&lt;any&gt;|Deaktiviert|Deaktiviert|Der Endpunkt wurde vom Benutzer deaktiviert. Ein Endpunkt mit dem Status „Deaktiviert“ wird nicht überwacht. Der Endpunkt kann nicht in DNS-Antworten einbezogen werden und daher auch keinen Datenverkehr empfangen.|
-|Aktiviert|Aktiviert|Online|Der Endpunkt wird überwacht und ist fehlerfrei. Der Endpunkt kann in DNS-Antworten einbezogen werden und Datenverkehr empfangen.|
+|Aktiviert|Aktiviert|Online-|Der Endpunkt wird überwacht und ist fehlerfrei. Der Endpunkt kann in DNS-Antworten einbezogen werden und Datenverkehr empfangen.|
 |Aktiviert|Aktiviert|Heruntergestuft|Bei Integritätsprüfungen im Rahmen der Endpunktüberwachung werden Fehler erkannt. Der Endpunkt kann nicht in DNS-Antworten einbezogen werden und daher auch keinen Datenverkehr empfangen.|
 |Aktiviert|Aktiviert|CheckingEndpoint|Der Endpunkt wird überwacht, die Ergebnisse der ersten Überprüfung wurden aber noch nicht empfangen. Dies ist ein vorübergehender Status, der üblicherweise eintritt, wenn Sie dem Profil gerade einen neuen Endpunkt hinzugefügt haben oder wenn Sie gerade einen Endpunkt oder ein Profil aktiviert haben. Ein Endpunkt in diesem Status kann in DNS-Antworten einbezogen werden und Datenverkehr empfangen.|
 |Aktiviert|Aktiviert|Beendet|Der Clouddienst oder die Web-App, auf den bzw. die der Endpunkt zeigt, wird nicht ausgeführt. Überprüfen Sie die Einstellungen des Clouddiensts oder der Web-App. Ein Endpunkt mit dem Status „Beendet“ wird nicht überwacht. Der Endpunkt kann nicht in DNS-Antworten einbezogen werden und daher auch keinen Datenverkehr empfangen.|
@@ -70,7 +70,7 @@ Der Überwachungsstatus von Profilen ist das Ergebnis einer Kombination aus den 
 |---|---|---|---|
 |Deaktiviert|&lt;any&gt; oder ein Profil ohne definierte Endpunkte.|Deaktiviert|Das Profil wurde vom Benutzer deaktiviert.|
 |Aktiviert|Der Status mindestens eines Endpunkts lautet „Heruntergestuft“.|Heruntergestuft|Das ist eine Kennzeichnung, die Kundenaktion erforderlich macht. Überprüfen Sie die einzelnen Endpunkt-Statuswerte, um zu ermitteln, für welche Endpunkte weitere Aufmerksamkeit erforderlich ist.|
-|Aktiviert|Der Status mindestens eines Endpunkts lautet „Online“. Kein Endpunkt weist den Status „Heruntergestuft“ auf.|Online|Der Dienst akzeptiert Datenverkehr, und es ist keine Kundenaktion erforderlich.|
+|Aktiviert|Der Status mindestens eines Endpunkts lautet „Online“. Kein Endpunkt weist den Status „Heruntergestuft“ auf.|Online-|Der Dienst akzeptiert Datenverkehr, und es ist keine Kundenaktion erforderlich.|
 |Aktiviert|Der Status mindestens eines Endpunkts lautet „CheckingEndpoint“. Es befinden sich keine Endpunkte in den Status „Online“ oder „Heruntergestuft“.|CheckingEndpoints|Übergangsstatus. Tritt normalerweise auf, wenn ein Profil gerade erstellt oder aktiviert wurde und die Endpunktintegrität zum ersten Mal überprüft wird.|
 |Aktiviert|Der Status aller im Profil definierten Endpunkte ist „Deaktiviert“ oder „Beendet“, oder im Profil wurden keine Endpunkte definiert.|Inaktiv|Es sind keine Endpunkte aktiv, das Profil ist jedoch weiterhin aktiviert.|
 
@@ -175,4 +175,4 @@ Informieren Sie sich über das [Erstellen eines Traffic Manager-Profils](traffic
 
 [Problembehandlung beim Status „Heruntergestuft“](traffic-manager-troubleshooting-degraded.md) auf einem Traffic Manager-Endpunkt.
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0824_2016-->

@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="05/24/2016"
+   ms.date="08/18/2016"
    ms.author="alkohli" />
 
 # Beheben von Problemen mit der Bereitstellung von StorSimple-Geräten
@@ -31,7 +31,7 @@ Wenn bei der ersten Bereitstellung des Geräts ein Problem auftritt, berücksich
 
 - Wenn Sie Probleme mit einem physischen Gerät beheben, stellen Sie sicher, dass die Hardware so installiert und konfiguriert ist, wie unter [Installieren des StorSimple 8100-Geräts](storsimple-8100-hardware-installation.md) oder [Installieren des StorSimple 8600-Geräts](storsimple-8600-hardware-installation.md) beschrieben.
 - Überprüfen Sie die Voraussetzungen für die Bereitstellung. Stellen Sie sicher, dass alle erforderlichen Informationen aus der [Konfigurationsprüfliste für die Bereitstellung](storsimple-deployment-walkthrough.md#deployment-configuration-checklist) vorliegen.
-- Überprüfen Sie die StorSimple-Versionshinweise, um festzustellen, ob das Problem dort beschrieben wird. Die Versionshinweise enthalten Problemumgehungen für bekannte Installationsprobleme. 
+- Überprüfen Sie die StorSimple-Versionshinweise, um festzustellen, ob das Problem dort beschrieben wird. Die Versionshinweise enthalten Problemumgehungen für bekannte Installationsprobleme.
 
 Während der Bereitstellung der Geräte treten die meisten Probleme im Zusammenhang mit der Ausführung des Setup-Assistenten sowie der Registrierung des Geräts über Windows PowerShell für StorSimple auf. (Windows PowerShell für StorSimple wird verwendet, um das StorSimple-Gerät zu registrieren und zu konfigurieren. Weitere Informationen zur Geräteregistrierung finden Sie unter [Schritt 3: Konfigurieren und Registrieren des Geräts über Windows PowerShell für StorSimple](storsimple-deployment-walkthrough.md#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple)).
 
@@ -41,7 +41,7 @@ In den folgenden Abschnitten erhalten Sie Hilfestellung bei Problemen, die bei d
 
 In den folgenden Schritten werden die Schritte des Setup-Assistenten zusammengefasst. Ausführliche Informationen zum Setup finden Sie unter [Bereitstellen lokaler StorSimple-Geräte](storsimple-deployment-walkthrough.md).
 
-1. Führen Sie das Cmdlet [Invoke-HcsSetupWizard](https://technet.microsoft.com/library/dn688135.aspx) aus, um den Setup-Assistenten zu starten, der Sie durch die verbleibenden Schritte führt. 
+1. Führen Sie das Cmdlet [Invoke-HcsSetupWizard](https://technet.microsoft.com/library/dn688135.aspx) aus, um den Setup-Assistenten zu starten, der Sie durch die verbleibenden Schritte führt.
 2. Konfigurieren des Netzwerks: im Setup-Assistenten können Sie die Netzwerkeinstellungen für die DATA 0-Netzwerkschnittstelle auf dem StorSimple-Gerät konfigurieren. Dies umfasst die folgenden Einstellungen:
   - Virtuelle IP-Adresse (VIP), Subnetzmaske und Gateway – Das Cmdlet [Set HcsNetInterface](https://technet.microsoft.com/library/dn688161.aspx) wird im Hintergrund ausgeführt. Dieses Cmdlet konfiguriert IP-Adresse, Subnetzmaske und Gateway für die DATA 0-Netzwerkschnittstelle auf dem StorSimple-Gerät.
   - Primärer DNS-Server – das Cmdlet [Set HcsDnsClientServerAddress](https://technet.microsoft.com/library/dn688172.aspx) wird im Hintergrund ausgeführt. Konfiguriert die DNS-Einstellungen für Ihre StorSimple-Lösung.
@@ -61,12 +61,12 @@ Die folgenden Tabellen enthalten häufige Fehler, die auftreten können, wenn Si
 
 - die erforderlichen Netzwerkeinstellungen konfigurieren .
 - die optionalen Webproxy-Einstellungen konfigurieren.
-- die Kennwörter für den Geräteadministrator und für den StorSimple-Momentaufnahme-Manager einrichten. 
-- das Gerät registrieren. 
+- die Kennwörter für den Geräteadministrator und für den StorSimple-Momentaufnahme-Manager einrichten.
+- das Gerät registrieren.
 
 ## Fehler während der erforderlichen Netzwerkeinstellungen
 
-| Nr.| Fehlermeldung | Mögliche Ursachen | Empfohlene Maßnahme |
+| Nein.| Fehlermeldung | Mögliche Ursachen | Empfohlene Maßnahme |
 | ---| ------------- | --------------- | ------------------ |
 | 1 | Invoke-HcsSetupWizard: Dieser Befehl kann nur auf dem aktiven Controller ausgeführt werden. | Die Konfiguration wurde für den passiven Controller ausgeführt.| Führen Sie diesen Befehl auf dem aktiven Controller aus. Weitere Informationen finden Sie unter [Identifizieren eines aktiven Controllers auf Ihrem Gerät](storsimple-controller-replacement.md#identify-the-active-controller-on-your-device).|
 | 2 | Invoke-HcsSetupWizard: Gerät ist nicht bereit. | Es gibt Probleme mit der DATA 0-Netzwerkverbindung.| Überprüfen Sie die physische DATA 0-Netzwerkkonnektivität.|
@@ -78,9 +78,9 @@ Die folgenden Tabellen enthalten häufige Fehler, die auftreten können, wenn Si
 
 ## Fehler während der optionalen Webproxyeinstellungen
 
-| Nr.| Fehlermeldung | Mögliche Ursachen | Empfohlene Maßnahme |
+| Nein.| Fehlermeldung | Mögliche Ursachen | Empfohlene Maßnahme |
 | ---| ------------- | --------------- | ------------------ |
-| 1 | Invoke-HcsSetupWizard: Ungültiger Parameter (Ausnahme von HRESULT: 0x80070057) | Einer der Parameter für die Proxyeinstellungen ist ungültig.| Der URI wird nicht im richtigen Format bereitgestellt. Verwenden Sie das folgende Format: http://*<IP address or FQDN of the web proxy server>*:*<TCP port number>* |
+| 1 | Invoke-HcsSetupWizard: Ungültiger Parameter (Ausnahme von HRESULT: 0x80070057) | Einer der Parameter für die Proxyeinstellungen ist ungültig.| Der URI wird nicht im richtigen Format bereitgestellt. Verwenden Sie das folgende Format: http://*<IP-Adresse oder FQDN des Webproxyservers>*:*<TCP-Portnummer>* |
 | 2 | Invoke-HcsSetupWizard: RPC-Server nicht verfügbar (Ausnahme von HRESULT: 0x800706ba) | Im Folgenden sind die Hauptursachen aufgeführt:<ol><li>Der Cluster ist nicht aktiv.</li><li>Der passive Controller kann nicht mit dem aktiven Controller kommunizieren, und der Befehl wird vom passiven Controller ausgeführt.</li></ol> | Je nach Hauptursache:<ol><li>[Wenden Sie sich an den Microsoft Support](storsimple-contact-microsoft-support.md), um sicherzustellen, dass der Cluster aktiv ist.</li><li>Führen Sie den Befehl auf dem aktiven Controller aus. Wenn Sie den Befehl auf dem passiven Controller ausführen möchten, müssen Sie sicherstellen, dass der passive Controller mit dem aktiven Controller kommunizieren kann. Sie müssen sich an den [Microsoft Support](storsimple-contact-microsoft-support.md) wenden, wenn diese Verbindung beeinträchtigt ist.</li></ol> |
 | 3 | Invoke-HcsSetupWizard: RPC-Serverfehler (Ausnahme von HRESULT: 0x800706be) | Cluster ist nicht verfügbar. | [Wenden Sie sich an den Microsoft Support](storsimple-contact-microsoft-support.md), um sicherzustellen, dass der Cluster aktiv ist.|
 | 4 | Invoke-HcsSetupWizard: Clusterressource wurde nicht gefunden (Ausnahme von HRESULT: 0x8007138f) | Die Clusterressource wurde nicht gefunden. Dies kann auftreten, wenn die Installation fehlerhaft verlaufen ist. | Möglicherweise müssen Sie das Gerät auf die werksseitigen Standardeinstellungen zurücksetzen. [Wenden Sie sich an den Microsoft Support](storsimple-contact-microsoft-support.md), um eine Clusterressource zu erstellen.|
@@ -96,17 +96,17 @@ Stellen Sie sicher, dass Ihre Kennwörter die folgenden Anforderungen erfüllen:
 
 - Ihr Kennwort muss zwischen 8 und 15 Zeichen lang sein.
 - Ihr StorSimple-Momentaufnahme-Manager-Kennwort sollte 14 oder 15 Zeichen lang sein.
-- Kennwörter sollten 3 von 4 folgenden Zeichentypen enthalten: Kleinbuchstaben, Großbuchstaben, Zahlen und Sonderzeichen. 
+- Kennwörter sollten 3 von 4 folgenden Zeichentypen enthalten: Kleinbuchstaben, Großbuchstaben, Zahlen und Sonderzeichen.
 - Ihr Kennwort muss sich von den letzten 24 Kennwörtern unterscheiden.
 
 Bedenken Sie außerdem, dass die Kennwörter jedes Jahr ablaufen und erst geändert werden können, nachdem das Gerät erfolgreich registriert wurde. Wenn die Registrierung aus irgendeinem Grund fehlschlägt, werden die Kennwörter nicht geändert. Weitere Informationen zum Einrichten der Kennwörter für den Geräteadministrator und für den StorSimple Snapshot Manager finden Sie unter [Verwenden des StorSimple Manager-Diensts, um StorSimple-Kennwörter zu ändern](storsimple-change-passwords.md).
 
 Beim Einrichten der Geräteadministrator- und StorSimple-Momentaufnahme-Manager-Kennwörter können einer oder mehrere der folgenden Fehler auftreten.
 
-| Nr.| Fehlermeldung | Empfohlene Maßnahme |
+| Nein.| Fehlermeldung | Empfohlene Maßnahme |
 | ---| ------------- | ------------------ | 
 | 1 | Das Kennwort überschreitet die maximale Länge. |Verwenden Sie ein Kennwort, das die folgenden Anforderungen erfüllt:<ul><li>Ihr Geräteadministratorkennwort muss zwischen 8 und 15 Zeichen lang sein.</li><li>Ihr StorSimple-Momentaufnahme-Manager-Kennwort muss 14 oder 15 Zeichen lang sein.</li></ul> | 
-| 2 | Das Kennwort erfüllt nicht die erforderliche Länge. | Verwenden Sie ein Kennwort, das die folgenden Anforderungen erfüllt:<ul><li>Ihr Geräteadministratorkennwort muss zwischen 8 und 15 Zeichen lang sein.</li><li>Ihr StorSimple-Momentaufnahme-Manager-Kennwort muss 14 oder 15 Zeichen lang sein.</lu></ul> |
+| 2 | Das Kennwort erfüllt nicht die erforderliche Länge. | Verwenden Sie ein Kennwort, das die folgenden Anforderungen erfüllt:<ul><li>Ihr Kennwort für den Geräteadministrator muss zwischen 8 und 15 Zeichen lang sein.</li><li>Ihr Kennwort für den StorSimple Snapshot Manager muss 14 oder 15 Zeichen lang sein.</lu></ul> |
 | 3 | Das Kennwort muss Kleinbuchstaben enthalten. | Kennwörter sollten drei der folgenden vier Zeichentypen enthalten: Kleinbuchstaben, Großbuchstaben, Zahlen und Sonderzeichen. Stellen Sie sicher, dass Ihr Kennwort diese Anforderungen erfüllt. |
 | 4 | Das Kennwort muss Zahlen enthalten. | Kennwörter sollten drei der folgenden vier Zeichentypen enthalten: Kleinbuchstaben, Großbuchstaben, Zahlen und Sonderzeichen. Stellen Sie sicher, dass Ihr Kennwort diese Anforderungen erfüllt. |
 | 5 | Das Kennwort muss Sonderzeichen enthalten. | Kennwörter sollten drei der folgenden vier Zeichentypen enthalten: Kleinbuchstaben, Großbuchstaben, Zahlen und Sonderzeichen. Stellen Sie sicher, dass Ihr Kennwort diese Anforderungen erfüllt. |
@@ -128,7 +128,7 @@ Sie können die Kennwörter im klassischen Azure-Portal über den StorSimple Man
 
 Der StorSimple-Manager-Dienst in Microsoft Azure wird zur Registrierung des Geräts verwendet. Während der Geräteregistrierung können eines oder mehrere der folgenden Probleme auftreten.
 
-| Nr.| Fehlermeldung | Mögliche Ursachen | Empfohlene Maßnahme |
+| Nein.| Fehlermeldung | Mögliche Ursachen | Empfohlene Maßnahme |
 | ---| ------------- | --------------- | ------------------ |
 | 1 | Fehler 350027: Fehler bei der Registrierung des Geräts im StorSimple-Manager. | | Warten Sie einige Minuten, und versuchen Sie es dann erneut. Wenn das Problem weiterhin besteht, [wenden Sie sich an den Microsoft Support](storsimple-contact-microsoft-support.md).|
 | 2 | Fehler 350013: Fehler bei der Registrierung des Geräts. Dies kann aufgrund falscher Dienstregistrierungsschlüssel auftreten. | | Registrieren Sie das Gerät erneut mit dem korrekten Dienstregistrierungsschlüssel. Weitere Informationen finden Sie unter [Abrufen des Dienstregistrierungsschlüssels](storsimple-manage-service.md#get-the-service-registration-key). |
@@ -142,10 +142,10 @@ Der StorSimple-Manager-Dienst in Microsoft Azure wird zur Registrierung des Ger�
 
 ## Tools zur Problembehandlung für StorSimple-Bereitstellungen
 
-StorSimple umfasst mehrere Tools, mit denen sich Probleme mit der StorSimple-Lösung beheben lassen. Das umfasst:
+StorSimple umfasst mehrere Tools, mit denen sich Probleme mit der StorSimple-Lösung beheben lassen. Diese umfassen:
 
-- Supportpakete und Geräteprotokolle 
-- Cmdlets, die speziell für die Problembehandlung entwickelt wurden 
+- Supportpakete und Geräteprotokolle
+- Cmdlets, die speziell für die Problembehandlung entwickelt wurden
 
 ## Für die Problembehandlung verfügbare Supportpakete und Geräteprotokolle
 
@@ -161,16 +161,16 @@ Ein Supportpaket enthält alle relevanten Protokolle, die das Microsoft Support-
 
 4. Die entschlüsselten Protokolle des Supportpakets haben das ETW/ETVX-Format. Sie können die folgenden Schritte ausführen, um diese Dateien in der Windows-Ereignisanzeige anzuzeigen:
   1. Führen Sie den Befehl **eventvwr** auf dem Windows-Client aus. Dadurch wird die Ereignisanzeige gestartet.
-  2. Klicken Sie im Bereich **Aktionen** auf **Gespeichertes Protokoll öffnen**, und zeigen Sie auf die Protokolldateien im ETVX/ETW-Format (das Supportpaket). Die Datei kann jetzt angezeigt werden. Nach dem Öffnen der Datei können Sie die Datei als Text speichern, indem Sie mit der rechten Maustaste klicken.
+  2. Klicken Sie im Bereich **Aktionen** auf **Gespeichertes Protokoll öffnen**, und zeigen Sie auf die Protokolldateien im ETVX/ETW-Format (das Supportpaket). Die Datei kann jetzt angezeigt werden. Nach dem Öffnen der Datei können Sie die Datei als Text speichern, indem Sie mit der rechten Maustaste auf die Datei klicken.
    
-    > [AZURE.IMPORTANT] Sie können auch das Cmdlet **Get-WinEvent** verwenden, um diese Datei in Windows PowerShell zu öffnen. Weitere Informationen finden Sie in der Windows PowerShell-Cmdlet-Referenzdokumentation unter [Get-WinEvent](https://technet.microsoft.com/library/hh849682.aspx).
+    > [AZURE.IMPORTANT] Sie können auch das Cmdlet **Get-WinEvent** verwenden, um diese Dateien in Windows PowerShell zu öffnen. Weitere Informationen finden Sie in der Windows PowerShell-Cmdlet-Referenzdokumentation unter [Get-WinEvent](https://technet.microsoft.com/library/hh849682.aspx).
 
 5. Wenn die Protokolle in der Ereignisanzeige geöffnet sind, suchen Sie nach den folgenden Protokollen, die Probleme im Zusammenhang mit der Gerätekonfiguration enthalten:
 
   - hcs\_pfconfig/Operational Log
   - hcs\_pfconfig/Config
 
-6. Suchen Sie in den Protokolldateien nach Zeichenfolgen im Zusammenhang mit den Cmdlets, die vom Setup-Assistenten aufgerufen wurden. Eine Liste der Cmdlets finden Sie unter [Schritte bei der erstmaligen Ausführung des Setup-Assistenten](#first-time-setup-wizard-process). 
+6. Suchen Sie in den Protokolldateien nach Zeichenfolgen im Zusammenhang mit den Cmdlets, die vom Setup-Assistenten aufgerufen wurden. Eine Liste der Cmdlets finden Sie unter [Schritte bei der erstmaligen Ausführung des Setup-Assistenten](#first-time-setup-wizard-process).
 
 7. Wenn Sie die Ursache des Problems nicht ermitteln können, wenden Sie sich für die nächsten Schritte [an den Microsoft Support](storsimple-contact-microsoft-support.md). Führen Sie die Schritte unter [Erstellen einer Supportanfrage](storsimple-contact-microsoft-support.md#create-a-support-request) aus, wenn Sie den Microsoft Support kontaktieren.
 
@@ -178,7 +178,7 @@ Ein Supportpaket enthält alle relevanten Protokolle, die das Microsoft Support-
 
 Verwenden Sie die folgenden Windows PowerShell-Cmdlets, um Verbindungsfehler zu erkennen.
 
-- `Get-NetAdapter`: Verwenden Sie dieses Cmdlet, um den Status der Netzwerkschnittstellen zu ermitteln. 
+- `Get-NetAdapter`: Verwenden Sie dieses Cmdlet, um den Status der Netzwerkschnittstellen zu ermitteln.
 
 - `Test-Connection`: Verwenden Sie dieses Cmdlet, um die Netzwerkkonnektivität innerhalb und außerhalb des Netzwerks zu überprüfen.
 
@@ -200,7 +200,7 @@ Beim Konfigurieren von Netzwerkschnittstellen für eine erste Gerätebereitstell
 
 ### So zeigen Sie eine Liste aller Netzwerkadapter auf Ihrem Gerät an
 
-1. Starten Sie Windows PowerShell für StorSimple, und geben Sie `Get-NetAdapter` ein. 
+1. Starten Sie Windows PowerShell für StorSimple, und geben Sie `Get-NetAdapter` ein.
 
 2. Verwenden Sie die Ausgabe des Cmdlets `Get-NetAdapter` und die folgenden Richtlinien, um den Status der Netzwerkschnittstelle festzustellen.
   - Wenn die Schnittstelle aktiviert ist und fehlerfrei funktioniert, wird der Status **IfIndex** als **Up** angezeigt.
@@ -306,8 +306,8 @@ Verwenden Sie das Cmdlet `Test-HcsmConnection` für ein Gerät, das bereits verb
 
 4. Überprüfen Sie das ACS-Token (Access Control Service). Wenn eine Webausnahme ausgelöst wird, könnte dies auf ein Gatewayproblem, fehlende Proxyauthentifizierung, einen falschen DNS oder einen Authentifizierungsfehler zurückzuführen sein. Es werden möglicherweise die folgenden Fehler angezeigt:
 
-   - ErrorCode.CiSApplianceGateway – weist auf eine HttpStatusCode.BadGateway-Ausnahme hin: Der Namensauflösungsdienst konnte den Hostnamen nicht auflösen. 
-   - ErrorCode.CiSApplianceProxy – weist auf eine HttpStatusCode.ProxyAuthenticationRequired-Ausnahme (HTTP-Statuscode 407) hin: Der Client konnte nicht beim Proxyserver authentifiziert werden. 
+   - ErrorCode.CiSApplianceGateway – weist auf eine HttpStatusCode.BadGateway-Ausnahme hin: Der Namensauflösungsdienst konnte den Hostnamen nicht auflösen.
+   - ErrorCode.CiSApplianceProxy – weist auf eine HttpStatusCode.ProxyAuthenticationRequired-Ausnahme (HTTP-Statuscode 407) hin: Der Client konnte nicht beim Proxyserver authentifiziert werden.
    - ErrorCode.CiSApplianceDNSError – weist auf eine WebExceptionStatus.NameResolutionFailure-Ausnahme hin: Der Namensauflösungsdienst konnte den Hostnamen nicht auflösen.
    - ErrorCode.CiSApplianceACSError – gibt an, dass der Dienst einen Authentifizierungsfehler zurückgegeben hat, während eine Verbindung vorliegt.
    
@@ -316,7 +316,7 @@ Verwenden Sie das Cmdlet `Test-HcsmConnection` für ein Gerät, das bereits verb
 5. Überprüfen Sie die Verbindung des Cloud-Diensts. Wenn der Dienst eine Webausnahme auslöst, werden möglicherweise die folgenden Fehler angezeigt:
 
   - ErrorCode.CiSApplianceGateway – weist auf eine HttpStatusCode.BadGateway-Ausnahme hin: Ein zwischengeschalteter Proxyserver hat von einem anderen Proxy oder dem ursprünglichen Server eine ungültige Anforderung erhalten.
-  - ErrorCode.CiSApplianceProxy – weist auf eine HttpStatusCode.ProxyAuthenticationRequired-Ausnahme (HTTP-Statuscode 407) hin: Der Client konnte nicht beim Proxyserver authentifiziert werden. 
+  - ErrorCode.CiSApplianceProxy – weist auf eine HttpStatusCode.ProxyAuthenticationRequired-Ausnahme (HTTP-Statuscode 407) hin: Der Client konnte nicht beim Proxyserver authentifiziert werden.
   - ErrorCode.CiSApplianceDNSError – weist auf eine WebExceptionStatus.NameResolutionFailure-Ausnahme hin: Der Namensauflösungsdienst konnte den Hostnamen nicht auflösen.
   - ErrorCode.CiSApplianceACSError – gibt an, dass der Dienst einen Authentifizierungsfehler zurückgegeben hat, während eine Verbindung vorliegt.
   
@@ -545,18 +545,18 @@ Der Fehler kann eine der folgenden Ursachen haben:
  
 3. Überprüfen Sie die Integrität der Netzwerkschnittstelle:
 
-   - Verwenden Sie das Cmdlet "Get-NetAdapter", um den Status der Netzwerkschnittstellen für DATA 0 zu ermitteln. 
-   - Wenn der Link nicht funktioniert, zeigt der Status **IfIndex** an, dass die Schnittstelle ausgefallen ist. Sie müssen dann die Netzwerkverbindung zwischen Anschluss des Geräts und Switch überprüfen. Sie müssen außerdem fehlerhafte Kabel ausfindig machen. 
+   - Verwenden Sie das Cmdlet "Get-NetAdapter", um den Status der Netzwerkschnittstellen für DATA 0 zu ermitteln.
+   - Wenn der Link nicht funktioniert, zeigt der Status **IfIndex** an, dass die Schnittstelle ausgefallen ist. Sie müssen dann die Netzwerkverbindung zwischen Anschluss des Geräts und Switch überprüfen. Sie müssen außerdem fehlerhafte Kabel ausfindig machen.
    - Wenn Sie vermuten, dass der DATA 0-Anschluss am aktiven Controller einen Fehler verursacht hat, können Sie dies nachprüfen, indem Sie eine Verbindung mit dem DATA 0-Anschluss an Controller 1 herstellen. Um dies zu bestätigen, trennen Sie das Netzwerkkabel von der Rückseite des Geräts von Controller 0, schließen das Kabel an Controller 1 an und führen dann das Cmdlet "Get-NetAdapter" erneut aus. Wenn der DATA 0-Anschluss an einem Controller einen Fehler verursacht, [wenden Sie sich für die nächsten Schritte an den Microsoft-Support](storsimple-contact-microsoft-support.md). Möglicherweise müssen Sie den Controller in Ihrem System ersetzen.
  
 4. Überprüfen Sie die Verbindung mit dem Switch:
-   - Stellen Sie sicher, dass die DATA 0-Netzwerkschnittstellen an Controller 0 und Controller 1 im primären Gehäuse sich im gleichen Subnetz befinden. 
-   - Überprüfen Sie den Hub oder Router. In der Regel sollten Sie beide Controller mit dem gleichen Hub oder Router verbinden. 
+   - Stellen Sie sicher, dass die DATA 0-Netzwerkschnittstellen an Controller 0 und Controller 1 im primären Gehäuse sich im gleichen Subnetz befinden.
+   - Überprüfen Sie den Hub oder Router. In der Regel sollten Sie beide Controller mit dem gleichen Hub oder Router verbinden.
    - Stellen Sie sicher, dass die für die Verbindung verwendeten Switches über DATA 0 für beide Controller im gleichen vLAN verfügen.
    
 5. Ausschließen etwaiger Benutzerfehler:
 
-  - Führen Sie den Setup-Assistenten erneut aus (führen Sie **Invoke-HcsSetupWizard**) aus, und geben Sie die Werte erneut ein, um sicherzustellen, dass keine Fehler vorliegen. 
+  - Führen Sie den Setup-Assistenten erneut aus (führen Sie **Invoke-HcsSetupWizard**) aus, und geben Sie die Werte erneut ein, um sicherzustellen, dass keine Fehler vorliegen.
   - Überprüfen Sie den verwendeten Registrierungsschlüssel. Der gleiche Registrierungsschlüssel kann für die Verbindung mehrerer Geräte mit dem StorSimple-Manager-Dienst verwendet werden. Verwenden Sie das Verfahren in [Abrufen des Dienstregistrierungsschlüssels](storsimple-manage-service.md#get-the-service-registration-key), um sicherzustellen, dass Sie den richtigen Registrierungsschlüssel nutzen.
 
     > [AZURE.IMPORTANT] Wenn Sie mehrere Dienste ausführen, müssen Sie sicherstellen, dass der Registrierungsschlüssel für den entsprechenden Dienst verwendet wird, um das Gerät zu registrieren. Wenn Sie ein Gerät mit dem falschen StorSimple-Manager-Dienst registriert haben, wenden Sie sich für die nächsten Schritte [an den Microsoft Support](storsimple-contact-microsoft-support.md). Sie müssen das Gerät möglicherweise auf die Werkseinstellungen zurücksetzen (kann zu Datenverlusten führen), um anschließend eine Verbindung mit dem gewünschten Dienst herzustellen.
@@ -577,4 +577,4 @@ Informationen zur [Problembehandlung bei einem betriebsbereiten Gerät](storsimp
 [1]: https://technet.microsoft.com/library/dd379547(v=ws.10).aspx
 [2]: https://technet.microsoft.com/library/dd392266(v=ws.10).aspx
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0824_2016-->

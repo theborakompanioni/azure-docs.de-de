@@ -82,7 +82,7 @@ Richten Sie zunächst die Logik-App ein, die mit der vorkonfigurierten Lösung v
     }
     ```
     
-    Hinweis: Sie können die URL des HTTP-Post-Befehls kopieren, nachdem Sie die Logik-App gespeichert haben. Doch müssen Sie zuerst eine Aktion hinzufügen.
+    > [AZURE.NOTE] Sie können die URL für den HTTP-Post-Befehl kopieren, nachdem Sie die Logik-App gespeichert haben. Zuvor muss jedoch eine Aktion hinzugefügt werden.
 
 8. Klicken Sie unter Ihrem manuellen Trigger auf __+ Neuer Schritt __. Klicken Sie dann auf **Aktion hinzufügen**.
 
@@ -182,4 +182,4 @@ Nachdem Sie eine Logik-App zum Verbinden der vorkonfigurierten Lösung mit einem
 [lnk-localdeploy]: https://github.com/Azure/azure-iot-remote-monitoring/blob/master/Docs/local-deployment.md
 [lnk-clouddeploy]: https://github.com/Azure/azure-iot-remote-monitoring/blob/master/Docs/cloud-deployment.md
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0824_2016-->
