@@ -34,7 +34,8 @@ Zur Verwendung von Azure Machine Learning-Empfehlungen müssen Sie die folgenden
 * Importieren von Katalogdaten – Kataloge enthalten Metadateninformationen zu den Elementen.
 * Importieren von Nutzungsdaten – Nutzungsdaten können auf zwei Arten (oder beide Arten) hochgeladen werden:
 	* Durch Hochladen einer Datei, die die Verwendung von Daten enthält.
-	* Durch das Senden von Ereignissen zur Datenerfassung. In der Regel laden Sie eine Nutzungsdatei hoch, damit Sie ein erstes Empfehlungsmodell (bootstrap) erstellen und dieses verwenden können, bis das System über das Datenerfassungsformat ausreichend Daten gesammelt hat.
+	* Durch das Senden von Ereignissen zur Datenerfassung.
+	In der Regel laden Sie eine Nutzungsdatei hoch, damit Sie ein erstes Empfehlungsmodell (bootstrap) erstellen und dieses verwenden können, bis das System über das Datenerfassungsformat ausreichend Daten gesammelt hat.
 * Entwickeln eines Empfehlungsmodells – Dies ist ein asynchroner Vorgang, in dem das Empfehlungssystem anhand aller Nutzungsdaten ein Empfehlungsmodell erstellt. Dieser Vorgang dauert einige Minuten oder mehrere Stunden, je nach Größe der Daten und der Build-Konfigurationsparameter. Beim Auslösen des Builds erhalten Sie eine Build-ID. Überprüfen Sie anhand dieser ID, wann der Buildprozess beendet wurde, bevor Sie beginnen, die Empfehlungen zu nutzen.
 * Empfehlungen nutzen – Sie erhalten Empfehlungen für ein bestimmtes Element oder eine Liste von Elementen.
 
@@ -101,7 +102,8 @@ Erstellen einer Anforderung „Modell erstellen“:
 
 HTTP-Statuscode: 200
 
-- `feed/entry/content/properties/id` - Enthält die Modell-ID. **Hinweis**: Bei der Modell-ID muss die Groß-/Kleinschreibung beachtet werden.
+- `feed/entry/content/properties/id` - Enthält die Modell-ID.
+**Hinweis**: Bei der Modell-ID muss die Groß-/Kleinschreibung beachtet werden.
 
 OData-XML
 
@@ -679,7 +681,8 @@ Die folgende Beispielantwort enthält 10 empfohlene Elemente:
 	</feed>
 
 ###Aktualisieren des Modells
-Sie können die Modellbeschreibung oder die aktive Build-ID aktualisieren. *Aktive Build-ID*: Jeder Build für jedes Modell weist eine „Build-ID“ auf. Die aktive Build-ID ist der erste erfolgreich erstellte Build jedes neuen Modells. Wenn Sie über eine aktive Build-ID verfügen und für das gleiche Modell zusätzliche Builds erstellen, müssen Sie die aktive Build-ID gegebenenfalls ausdrücklich als Standard-Build-ID festlegen. Wenn Sie Empfehlungen nutzen und die zu verwendende Build-ID nicht definieren, wird automatisch der Standardbuild verwendet.
+Sie können die Modellbeschreibung oder die aktive Build-ID aktualisieren.
+*Aktive Build-ID*: Jeder Build für jedes Modell weist eine „Build-ID“ auf. Die aktive Build-ID ist der erste erfolgreich erstellte Build jedes neuen Modells. Wenn Sie über eine aktive Build-ID verfügen und für das gleiche Modell zusätzliche Builds erstellen, müssen Sie die aktive Build-ID gegebenenfalls ausdrücklich als Standard-Build-ID festlegen. Wenn Sie Empfehlungen nutzen und die zu verwendende Build-ID nicht definieren, wird automatisch der Standardbuild verwendet.
 
 Wenn ein Empfehlungsmodell in der Produktion verwendet wird, können mit diesem Mechanismus neue Modelle erstellt und getestet werden, bevor sie in der Produktion verwendet werden.
 
@@ -711,7 +714,10 @@ OData-XML
 	</feed>
 
 ##Rechtliche Hinweise
-Dieses Dokument wird so bereitgestellt, wie es ist. Informationen und Stellungnahmen in diesem Dokument, einschließlich URLs und anderer Verweise auf Internetwebsites, können ohne vorherige Ankündigung geändert werden. Einige der in diesem Dokument dargestellten Beispiele dienen nur zu Illustrationszwecken und sind frei erfunden. Keine Ähnlichkeit oder Verbindung ist beabsichtigt und ist rein zufällig. Dieses Dokument gibt Ihnen keinerlei geistige Eigentums- oder anderweitige Rechte an irgendeinem Microsoft-Produkt. Sie dürfen dieses Dokument zu internen Referenzzwecken kopieren und verwenden. © 2014 Microsoft. Alle Rechte vorbehalten.
+Dieses Dokument wird so bereitgestellt, wie es ist. Informationen und Stellungnahmen in diesem Dokument, einschließlich URLs und anderer Verweise auf Internetwebsites, können ohne vorherige Ankündigung geändert werden.
+Einige der in diesem Dokument dargestellten Beispiele dienen nur zu Illustrationszwecken und sind frei erfunden. Keine Ähnlichkeit oder Verbindung ist beabsichtigt und ist rein zufällig.
+Dieses Dokument gibt Ihnen keinerlei geistige Eigentums- oder anderweitige Rechte an irgendeinem Microsoft-Produkt. Sie dürfen dieses Dokument zu internen Referenzzwecken kopieren und verwenden.
+© 2014 Microsoft. Alle Rechte vorbehalten.
  
 
 <!---HONumber=AcomDC_0824_2016-->

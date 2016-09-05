@@ -31,7 +31,7 @@ Die Microsoft Authenticator-App ist für [Windows Phone](http://go.microsoft.com
 ![Einrichtung](./media/multi-factor-authentication-end-user-first-time-mobile-app/mobileapp.png)
 
 - Wählen Sie "Benachrichtigung" oder "Einmalkennwort" aus, und klicken Sie auf "Einrichten".
-- Starten Sie die Microsoft Authenticator-App auf dem Smartphone, auf dem die App installiert ist, und tippen Sie auf „Barcode einlesen“. Informationen zum Hinzufügen eines Kontos, das bereits über Azure MFA oder ein Drittanbieterkonto verfügt, finden Sie unter [Manuelles Hinzufügen eines Kontos](#adding-an-account-manually).
+- Starten Sie die Azure Authenticator-App auf dem Mobiltelefon, auf dem die App installiert ist, und tippen Sie auf "Barcode einlesen". Informationen zum Hinzufügen eines Kontos, das bereits über Azure MFA oder ein Drittanbieterkonto verfügt, finden Sie unter <a href="#Manuelles">Manuelles Hinzufügen eines Kontos</a>.
 
 ![Einrichtung](./media/multi-factor-authentication-end-user-first-time-mobile-app/scan.png)
 
@@ -54,7 +54,7 @@ Die Microsoft Authenticator-App ist für [Windows Phone](http://go.microsoft.com
 - Klicken Sie auf Done.
 
 
-## Manuelles Hinzufügen eines Kontos
+<h2 id="Manuelles">Manuelles Hinzufügen eines Kontos</h2>
 Wenn Sie ein Konto manuell hinzufügen möchten, wählen Sie die Schaltfläche zum manuellen Eingeben des Kontos aus.
 
 ![Einrichtung](./media/multi-factor-authentication-end-user-first-time-mobile-app/addaccount.png)

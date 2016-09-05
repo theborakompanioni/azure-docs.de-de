@@ -31,11 +31,11 @@ So zeigen Sie eine Rechnung an oder laden sie herunter
 1. Melden Sie sich mit Ihrer Organisations-ID am Azure-Kontoportal an.
 2. Klicken Sie auf **Marketplace**. Es wird eine vollständige Liste mit allen Marketplace-Bestellungen angezeigt, die über Ihr Azure-Konto aufgegeben wurden. Sie sehen, dass die Bestellungen nach Namen und ID des übergeordneten Azure-Abonnements gruppiert sind.
 
-    ![Marketplace-Bestellungen](./media/billing-understand-your-azure-marketplace-charges/marketplace-orders.png)
+	![Marketplace-Bestellungen](./media/billing-understand-your-azure-marketplace-charges/marketplace-orders.png)
 
 3. Wenn Sie auf eine der angezeigten Bestellungen klicken, gelangen Sie zur Zusammenfassung dieser Bestellung für den aktuellen Abrechnungszyklus. Eine Beschreibung der unterschiedlichen Preismodelle finden Sie unter [Häufig gestellte Fragen zum Marketplace](https://azure.microsoft.com/marketplace/faq/).
 
-    ![Bestellübersicht](./media/billing-understand-your-azure-marketplace-charges/order-summary.png)
+	![Bestellübersicht](./media/billing-understand-your-azure-marketplace-charges/order-summary.png)
 
 Die Zusammenfassung enthält zu jedem Auftrag folgende Informationen:
 - Preis
@@ -61,11 +61,11 @@ Führen Sie die folgenden Schritte aus, um Ihre Zahlungsmethode zu ändern:
 
 1. Klicken Sie auf **Zahlungsweise ändern**.
 
-    ![Abonnements](./media/billing-understand-your-azure-marketplace-charges/subscriptions.jpg)
+	![Abonnements](./media/billing-understand-your-azure-marketplace-charges/subscriptions.jpg)
 
 2. Wählen Sie die Zahlungsmethode aus, zu der Sie wechseln möchten. Bei der Option **Zahlung per** können Sie Ihre Kreditkarte auswählen. Bei der Option **Neue Zahlungsmethode hinzufügen** können Sie eine neue Kreditkarte hinzufügen.
 
-    ![Zahlungsmethode ändern](./media/billing-understand-your-azure-marketplace-charges/change-payment-method.jpg)
+	![Zahlungsmethode ändern](./media/billing-understand-your-azure-marketplace-charges/change-payment-method.jpg)
 
 ## Bestellungsverwaltung
 Auf der Übersichtsseite wird der Link **Bestellung verwalten** angezeigt. Über diesen Link gelangen Sie zu Ihrem Portal, in dem Sie alle Marketplace-Bestellungen anzeigen, die Dienstintegrität verfolgen und Support anfordern können.
@@ -94,11 +94,11 @@ Führen Sie die folgenden Schritte aus, um die tatsächlichen Gebühren anzuzeig
 
     Beachten Sie Folgendes: Wenn Sie versuchen, im Portal für die Abrechnungs- und Kontoverwaltung auf die Rohdaten der Nutzung zuzugreifen, müssen Sie sich an den Support wenden. Klicken Sie hierfür unten auf der Seite auf den Link „Support“.
 
-    ![Bestellverlauf](./media/billing-understand-your-azure-marketplace-charges/order-history.jpg)
+	![Bestellverlauf](./media/billing-understand-your-azure-marketplace-charges/order-history.jpg)
 
 2. Wählen Sie die Bestellung aus, die Sie überprüfen möchten, und klicken Sie auf **Details**, um eine Aufstellung Ihrer Gebühren anzuzeigen. Die Aufstellung enthält Zwischensumme, Steuern und Gesamtgebühren.
 
-    ![Bestelldetails](./media/billing-understand-your-azure-marketplace-charges/order-details.jpg)
+	![Bestelldetails](./media/billing-understand-your-azure-marketplace-charges/order-details.jpg)
 
 > [AZURE.NOTE] Wenn Sie weitere Fragen haben, [wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), um das Problem schnell zu lösen.
 

@@ -74,7 +74,8 @@ storedProcedureParameters | Geben Sie Werte für Parameter der gespeicherten Pro
 		CREATE CLUSTERED INDEX ClusteredID ON dbo.sampletable(Id);
 		GO
 
-	"Id" ist der eindeutige Bezeichner, und die Spalte "datetimestamp" enthält das Datum und die Uhrzeit, zu der die entsprechende ID generiert wird. ![Beispieldaten](./media/data-factory-stored-proc-activity/sample-data.png)
+	"Id" ist der eindeutige Bezeichner, und die Spalte "datetimestamp" enthält das Datum und die Uhrzeit, zu der die entsprechende ID generiert wird.
+	![Beispieldaten](./media/data-factory-stored-proc-activity/sample-data.png)
 
 2. Erstellen Sie die folgende **gespeicherte Prozedur**, die Daten in **sampletable** einfügt.
 

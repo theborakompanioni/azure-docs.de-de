@@ -890,7 +890,18 @@ OData-XML
 |	apiVersion | 1,0 |
 |||
 | Anforderungstext | 
-<ins>Wenn Sie Element-IDs für Geschäftsregeln bereitstellen, stellen Sie sicher, dass Sie die externe ID des Elements verwenden (dies ist die ID, die Sie in der Katalogdatei verwendet haben)</ins><br> <ins>Hinzufügen einer BlockList-Regel:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>BlockList</Type><Value>{"ItemsToExclude":["2406E770-769C-4189-89DE-1C9283F93A96","3906E110-769C-4189-89DE-1C9283F98888"]}</Value></ApiFilter>`<br><br><ins> <ins>Hinzufügen einer FeatureBlockList-Regel:</ins><br> <br> `<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>FeatureBlockList</Type><Value>{"Name":"Movie_category","Values":["Adult","Drama"]}</Value></ApiFilter>`<br><br><ins> Hinzufügen einer Upsale-Regel:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>Upsale</Type><Value>{"ItemsToUpsale":["2406E770-769C-4189-89DE-1C9283F93A96"],"NumberOfItemsToUpsale":5}</Value></ApiFilter>`<br><br> <ins>Hinzufügen einer WhiteList-Regel:</ins><br> `<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>WhiteList</Type><Value>{"ItemsToInclude":["2406E770-769C-4189-89DE-1C9283F93A96","1116E770-769C-4189-89DE-1C9283F88888"]}</Value></ApiFilter>`<br><br><ins> <ins>Hinzufügen einer FeatureWhiteList-Regel:</ins><br> <br> `<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>FeatureWhiteList</Type><Value>{"Name":"Movie_rating","Values":["PG13"]}</Value></ApiFilter>`<br><br><ins> Hinzufügen einer PerSeedBlockList-Regel:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>PerSeedBlockList</Type><Value>{"SeedItems":["9949"],"ItemsToExclude":["9862","8158","8244"]}</Value></ApiFilter>`|
+<ins>Wenn Sie Element-IDs für Geschäftsregeln bereitstellen, stellen Sie sicher, dass Sie die externe ID des Elements verwenden (dies ist die ID, die Sie in der Katalogdatei verwendet haben)</ins><br>
+<ins>Hinzufügen einer BlockList-Regel:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>BlockList</Type><Value>{"ItemsToExclude":["2406E770-769C-4189-89DE-1C9283F93A96","3906E110-769C-4189-89DE-1C9283F98888"]}</Value></ApiFilter>`<br><br><ins> <ins>
+Hinzufügen einer FeatureBlockList-Regel:</ins><br>
+<br>
+`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>FeatureBlockList</Type><Value>{"Name":"Movie_category","Values":["Adult","Drama"]}</Value></ApiFilter>`<br><br><ins> 
+Hinzufügen einer Upsale-Regel:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>Upsale</Type><Value>{"ItemsToUpsale":["2406E770-769C-4189-89DE-1C9283F93A96"],"NumberOfItemsToUpsale":5}</Value></ApiFilter>`<br><br> 
+<ins>Hinzufügen einer WhiteList-Regel:</ins><br> 
+`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>WhiteList</Type><Value>{"ItemsToInclude":["2406E770-769C-4189-89DE-1C9283F93A96","1116E770-769C-4189-89DE-1C9283F88888"]}</Value></ApiFilter>`<br><br><ins> 
+<ins>Hinzufügen einer FeatureWhiteList-Regel:</ins><br>
+<br> 
+`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>FeatureWhiteList</Type><Value>{"Name":"Movie_rating","Values":["PG13"]}</Value></ApiFilter>`<br><br><ins>
+Hinzufügen einer PerSeedBlockList-Regel:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>PerSeedBlockList</Type><Value>{"SeedItems":["9949"],"ItemsToExclude":["9862","8158","8244"]}</Value></ApiFilter>`|
 
 
 **Antwort**:
@@ -1352,7 +1363,8 @@ In diesem Abschnitt wird gezeigt, wie Ereignisse in Echtzeit an Azure Machine Le
   		</EventData>
 		</Event>
 
-**Antwort**: HTTP-Statuscode: 200
+**Antwort**: 
+HTTP-Statuscode: 200
 
 ###9\.2. Modellnutzungsdateien auflisten
 Hierdurch werden von allen Modellnutzungsdateien Metadaten abgerufen. Die Nutzungsdateien werden Seite für Seite abgerufen. Jede Seite enthält 100 Elemente. Wenn Sie Elemente in einem bestimmten Index abrufen möchten, können Sie den Parameter „$skip odata“ verwenden. Beispiel: Wenn Sie Elemente ab Position 100 abrufen möchten, fügen Sie der Anforderung den Parameter „$skip=100“ hinzu.
@@ -1638,7 +1650,9 @@ Hierdurch werden alle Modellnutzungsdateien gelöscht.
 HTTP-Statuscode: 200
 
 ##10\. Features
-In diesem Abschnitt wird gezeigt, wie Featureinformationen abgerufen werden, z. B. die importierten Features, ihre Werte und ihr Rang, und wann dieser Rang zugeordnet wurde. Features werden als Teil der Katalogdaten importiert, und wenn ein Rangfolgebuild abgeschlossen ist, wird ihnen ein Rang zugeordnet. Der Rang der Features kann sich je nach Nutzungsdatenmuster und Elementtyp ändern. Bei konsistenter Nutzung und konsistenten Elementen dürfte der Rang jedoch nur geringfügigen Schwankungen unterliegen. Der Rang eines Features ist eine nicht-negative Zahl. Die Zahl 0 bedeutet, dass das Feature noch nicht eingestuft wurde (dies ist der Fall, wenn diese API vor dem Abschluss des ersten Rangfolgebuilds aufgerufen wurde). Das Datum, an dem der Rang zugeordnet wurde, wird als Aktualität der Bewertung bezeichnet.
+In diesem Abschnitt wird gezeigt, wie Featureinformationen abgerufen werden, z. B. die importierten Features, ihre Werte und ihr Rang, und wann dieser Rang zugeordnet wurde. Features werden als Teil der Katalogdaten importiert, und wenn ein Rangfolgebuild abgeschlossen ist, wird ihnen ein Rang zugeordnet. 
+Der Rang der Features kann sich je nach Nutzungsdatenmuster und Elementtyp ändern. Bei konsistenter Nutzung und konsistenten Elementen dürfte der Rang jedoch nur geringfügigen Schwankungen unterliegen. 
+Der Rang eines Features ist eine nicht-negative Zahl. Die Zahl 0 bedeutet, dass das Feature noch nicht eingestuft wurde (dies ist der Fall, wenn diese API vor dem Abschluss des ersten Rangfolgebuilds aufgerufen wurde). Das Datum, an dem der Rang zugeordnet wurde, wird als Aktualität der Bewertung bezeichnet.
 
 ###10\.1. Featureinformationen abrufen (für den letzten Rangfolgebuild)
 Hierdurch werden Featureinformationen einschließlich Rang für den letzten erfolgreichen Rangfolgebuild abgerufen.
@@ -2929,7 +2943,8 @@ Die Antwort enthält einen Eintrag pro empfohlenem Element. Jeder Eintrag enthä
 Eine Beispielantwort finden Sie unter 12.1.
 
 ##13\. Nutzungsverlauf eines Benutzers
-Nachdem ein Empfehlungsmodell entwickelt wurde, ermöglicht es das System, den Verlauf eines Benutzers (also die mit einem bestimmten Benutzer verknüpften Elemente) abzurufen, der für den Build verwendet wurde. Mit dieser API kann der Nutzungsverlauf abgerufen werden.
+Nachdem ein Empfehlungsmodell entwickelt wurde, ermöglicht es das System, den Verlauf eines Benutzers (also die mit einem bestimmten Benutzer verknüpften Elemente) abzurufen, der für den Build verwendet wurde. 
+Mit dieser API kann der Nutzungsverlauf abgerufen werden.
 
 Hinweis: Der Nutzungsverlauf ist zurzeit nur für Empfehlungsbuilds verfügbar.
 
@@ -3086,7 +3101,10 @@ HTTP-Statuscode: 200
 
 
 ##15\. Rechtliche Hinweise
-Dieses Dokument wird so bereitgestellt, wie es ist. Informationen und Stellungnahmen in diesem Dokument einschließlich URLs und anderer Verweise auf Websites können ohne Ankündigung geändert werden.<br><br> Einige der in diesem Dokument dargestellten Beispiele dienen nur zu Illustrationszwecken und sind frei erfunden. Ähnlichkeiten oder Verbindungen sind rein zufällig und nicht beabsichtigt.<br><br> Dieses Dokument gibt Ihnen keinerlei geistige Eigentums- oder anderweitige Rechte an irgendeinem Microsoft-Produkt. Sie dürfen dieses Dokument zu internen Referenzzwecken kopieren und verwenden.<br><br> © 2015 Microsoft. Alle Rechte vorbehalten.
+Dieses Dokument wird so bereitgestellt, wie es ist. Informationen und Stellungnahmen in diesem Dokument einschließlich URLs und anderer Verweise auf Websites können ohne Ankündigung geändert werden.<br><br> 
+Einige der in diesem Dokument dargestellten Beispiele dienen nur zu Illustrationszwecken und sind frei erfunden. Ähnlichkeiten oder Verbindungen sind rein zufällig und nicht beabsichtigt.<br><br> 
+Dieses Dokument gibt Ihnen keinerlei geistige Eigentums- oder anderweitige Rechte an irgendeinem Microsoft-Produkt. Sie dürfen dieses Dokument zu internen Referenzzwecken kopieren und verwenden.<br><br> 
+© 2015 Microsoft. Alle Rechte vorbehalten.
  
 
 <!---HONumber=AcomDC_0824_2016-->
