@@ -31,7 +31,8 @@ Wenn das Blatt „B2C-Funktionen“ an Ihr Startmenü angeheftet ist, sehen Sie 
 
 Sie können auf das Blatt auch zugreifen, indem Sie im [Azure-Portal](https://portal.azure.com/) im linken Navigationsbereich auf **Durchsuchen** und dann auf **Azure AD B2C** klicken.
 
-> [AZURE.IMPORTANT] Sie müssen als globaler Administrator des B2C-Mandanten festgelegt sein, um auf das Blade mit den B2C-Features zugreifen zu können. Globale Administratoren anderer Mandanten oder Benutzer von Mandanten haben keinen Zugriff. Mit dem Mandantenumschalter in der oberen rechten Ecke des Azure-Portals können Sie zu Ihrem B2C-Mandanten wechseln.
+> [AZURE.IMPORTANT] 
+Sie müssen als globaler Administrator des B2C-Mandanten festgelegt sein, um auf das Blade mit den B2C-Features zugreifen zu können. Globale Administratoren anderer Mandanten oder Benutzer von Mandanten haben keinen Zugriff. Mit dem Mandantenumschalter in der oberen rechten Ecke des Azure-Portals können Sie zu Ihrem B2C-Mandanten wechseln.
 
 ## Registrieren einer Anwendung
 

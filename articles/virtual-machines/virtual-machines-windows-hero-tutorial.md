@@ -139,7 +139,7 @@ Damit Ihre VM eingehenden Datenverkehr über Port 80 akzeptiert, müssen Sie der
 
 	![Screenshot der Einstellungen des virtuellen Computers für die Netzwerkschnittstellen](./media/virtual-machines-windows-hero-tutorial/network-interface.png)
 
-4. Klicken Sie in der ** Zusammenfassung** für die Netzwerkschnittstelle auf die **Netzwerksicherheitsgruppe**.
+4. Klicken Sie in der **Zusammenfassung** für die Netzwerkschnittstelle auf die **Netzwerksicherheitsgruppe**.
 
 	![Screenshot des Abschnitts „Zusammenfassung“ für die Netzwerkschnittstelle](./media/virtual-machines-windows-hero-tutorial/select-nsg.png)
 

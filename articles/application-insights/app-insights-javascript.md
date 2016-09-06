@@ -177,7 +177,7 @@ Klicken Sie auf eine beliebige Zeile, um besondere Details anzuzeigen.
 
 > [AZURE.NOTE] Wenn Sie den Filter „Browser“ auf dem Blatt löschen, werden sowohl die Serverabhängigkeiten als auch die AJAX-Abhängigkeiten in diese Diagramme eingebunden. Klicken Sie auf „Standard wiederherstellen“, um den Filter neu zu konfigurieren.
 
-Führen Sie zum **Ausführen eines Drilldowns für fehlgeschlagene Ajax-Aufrufe ** einen Bildlauf nach unten zum Raster mit den Abhängigkeitsfehlern aus, und klicken Sie anschließend auf eine Zeile, um bestimmte Instanzen anzuzeigen.
+Führen Sie zum **Ausführen eines Drilldowns für fehlgeschlagene Ajax-Aufrufe** einen Bildlauf nach unten zum Raster mit den Abhängigkeitsfehlern aus, und klicken Sie anschließend auf eine Zeile, um bestimmte Instanzen anzuzeigen.
 
 ![](./media/app-insights-javascript/37.png)
 

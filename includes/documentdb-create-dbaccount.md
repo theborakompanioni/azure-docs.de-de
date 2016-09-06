@@ -18,7 +18,7 @@
 	
     - Aktivieren Sie das Kontrollkästchen **An das Dashboard anheften**, um komfortabel auf Ihr Konto und die später erstellten Ressourcen zugreifen zu können.
 
-4.	Klicken Sie nach der Konfiguration der Optionen für das neue DocumentDB-Konto auf **Erstellen**. Der Status der Bereitstellung kann im Startmenü überwacht werden.![Screenshot der Kachel "Erstellen" im Startmenü – Online-Datenbankersteller](./media/documentdb-create-dbaccount/create-nosql-db-databases-json-tutorial-3.png)
+4.	Klicken Sie nach der Konfiguration der Optionen für das neue DocumentDB-Konto auf **Erstellen**. Der Status der Bereitstellung kann im Startmenü überwacht werden. ![Screenshot der Kachel "Erstellen" im Startmenü – Online-Datenbankersteller](./media/documentdb-create-dbaccount/create-nosql-db-databases-json-tutorial-3.png)
 
 	Sie können den Status auch über den Hub "Benachrichtigungen" überwachen.
 
