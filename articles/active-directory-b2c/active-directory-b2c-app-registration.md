@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="07/22/2016"
+	ms.date="08/30/2016"
 	ms.author="swkrish"/>
 
 
@@ -39,11 +39,14 @@ Sie können auf das Blatt auch zugreifen, indem Sie im [Azure-Portal](https://po
 2. Klicken Sie oben auf dem Blatt auf **+Hinzufügen**.
 3. Geben Sie einen Namen für die Anwendung ein, der die Funktion der Anwendung für Kunden beschreibt. Sie könnten z. B. „Contoso B2C-App“ eingeben.
 4. Wenn Sie eine webbasierte Anwendung entwickeln, stellen Sie den Schalter **Web-App/Web-API einschließen** auf **Ja**. Die **Antwort-URLs** sind Endpunkte, an denen Azure AD B2C von Ihrer Anwendung angeforderte Token zurückgibt. Geben Sie z. B. Folgendes ein: `https://localhost:44321/`. Falls Ihre Webanwendung auch eine durch Azure AD B2C geschützte Web-API aufruft, wird darüber hinaus die Erstellung eines **geheimen Anwendungsschlüssels** empfohlen. Klicken Sie dazu auf die Schaltfläche **Schlüssel generieren**.
+
+    > [AZURE.NOTE] **Geheime Anwendungsschlüssel** sind wichtige Sicherheitsanmeldeinformationen, die entsprechend geschützt werden müssen.
+
 5. Wenn Sie eine mobile Anwendung entwickeln, stellen Sie den Schalter **Systemeigenen Client einschließen** auf **Ja**. Notieren Sie sich den standardmäßigen **Umleitungs-URI**, der automatisch für Sie erstellt wurde.
 6. Klicken Sie auf **Erstellen**, um Ihre Anwendung zu registrieren.
-7. Klicken Sie auf die soeben erstellte Anwendung, und notieren Sie sich die global eindeutige **Anwendungsclient-ID**, die Sie später in Ihrem Code verwenden.
+7. Klicken Sie auf die soeben erstellte Anwendung, und notieren Sie sich die global eindeutige **Anwendungsclient-ID** zur späteren Verwendung in Ihrem Code.
 
-> [AZURE.NOTE] **Geheime Anwendungsschlüssel** sind wichtige Sicherheitsanmeldeinformationen, die entsprechend geschützt werden sollten.
+> [AZURE.IMPORTANT] Über das Blatt „B2C-Funktionen“ erstellte Anwendungen müssen am gleichen Ort verwaltet werden. Mit PowerShell oder über ein anderes Portal bearbeitete B2C-Anwendungen werden nicht mehr unterstützt und können voraussichtlich nicht mehr mit Azure Active Directory B2C verwendet werden.
 
 ## Erstellen einer Schnellstart-App
 
@@ -51,4 +54,4 @@ Nachdem Sie nun über eine bei Azure AD B2C registrierte Anwendung verfügen, k
 
 [AZURE.INCLUDE [active-directory-v2-quickstart-table](../../includes/active-directory-b2c-quickstart-table.md)]
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0831_2016-->

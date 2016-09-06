@@ -13,7 +13,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="08/24/2016"
+   ms.date="08/26/2016"
    ms.author="yurid"/>
 
 # Festlegen von Sicherheitsrichtlinien in Azure Security Center
@@ -38,7 +38,13 @@ Sicherheitsrichtlinien können für jedes Abonnement oder jede Ressourcengruppe 
 
     ![Aktivieren von Datensammlung](./media/security-center-policies/security-center-policies-fig2-ga.png)
 
-4. Stellen Sie sicher, dass die Option **Collect data from virtual machines** auf **Ein** festgelegt ist. Diese Option aktiviert automatische Protokollsammlung für vorhandene und neue Ressourcen.
+	Auf diesem Blatt stehen folgende Optionen zur Verfügung:
+	- **Präventionsrichtlinie**: Mithilfe dieser Option können Sie Richtlinien auf Abonnement- oder Ressourcengruppenebene konfigurieren.
+	- **E-Mail-Benachrichtigung**: Eine E-Mail-Benachrichtigung wird pro Tag beim erstmaligen Auftreten einer Warnung und nur für Warnungen mit hohem Schweregrad gesendet. E-Mail-Optionen können nur für Abonnementrichtlinien konfiguriert werden. Weitere Informationen zum Konfigurieren der E-Mail-Benachrichtigung finden Sie unter [Bereitstellen von Sicherheitskontaktinformationen in Azure Security Center](security-center-provide-security-contact-details.md).
+	- **Tarif**: Verwenden Sie diese Option, um über die Tarifauswahl ein Upgrade vorzunehmen. Weitere Informationen zu den Preisoptionen finden Sie auf der [Security Center-Seite](https://azure.microsoft.com/pricing/details/security-center/).
+
+	
+4.  Stellen Sie sicher, dass die Option **Collect data from virtual machines** auf **Ein** festgelegt ist. Diese Option aktiviert automatische Protokollsammlung für vorhandene und neue Ressourcen.
 
     >[AZURE.NOTE] Es empfiehlt sich, die Datensammlung für alle Ihre Abonnements zu aktivieren, damit die Sicherheitsüberwachung für alle vorhandenen und neuen virtuellen Computer verfügbar ist. Wird Datensammlung aktiviert, wird der Überwachungs-Agent installiert. Wenn Sie Datensammlung momentan von diesem Standort nicht aktivieren möchten, können Sie dies später über die Integritäts- und Empfehlungsansichten tun. Sie können die Datensammlung auch nur für das Abonnement oder für ausgewählte virtuelle Computer aktivieren. Weitere Informationen zu den unterstützten virtuellen Computern finden Sie unter [Azure Security Center – häufig gestellte Fragen](security-center-faq.md).
 
@@ -100,4 +106,4 @@ In diesem Dokument haben Sie erfahren, wie Sie Sicherheitsrichtlinien in Azure S
 - [Azure Security Center – Häufig gestellte Fragen](security-center-faq.md): Hier finden Sie häufig gestellte Fragen zur Verwendung des Diensts.
 - [Azure Security Blog](http://blogs.msdn.com/b/azuresecurity/) (Blog zur Azure-Sicherheit): Hier finden Sie Blogbeiträge zur Sicherheit und Compliance von Azure.
 
-<!----HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->

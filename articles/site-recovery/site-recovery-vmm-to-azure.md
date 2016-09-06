@@ -114,12 +114,16 @@ Sie benötigen ein Azure-Netzwerk, mit dem die nach dem Failover erstellten Azur
 - Richten Sie das Azure-Netzwerk im [Resource Manager-Modus](../virtual-network/virtual-networks-create-vnet-arm-pportal.md) oder im [klassischen Modus](../virtual-network/virtual-networks-create-vnet-classic-pportal.md) ein (je nachdem, welches Ressourcenmodell Sie für virtuelle Azure-Computer nach dem Failover verwenden möchten).
 - Wir empfehlen Ihnen, ein Netzwerk einzurichten, bevor Sie beginnen. Falls Sie es nicht tun, müssen Sie diesen Schritt während der Site Recovery-Bereitstellung ausführen.
 
+> [AZURE.NOTE] [Migration of networks](../resource-group-move-resources.md) zwischen Ressourcengruppen im gleichen Abonnement oder zwischen verschiedenen Abonnements wird nicht unterstützt für Netzwerke, die für die Site Recovery-Bereitstellung verwendet werden.
+
 
 ### Einrichten eines Azure-Speicherkontos
 
 - Sie benötigen ein standardmäßiges Azure-Speicherkonto für Daten, die in Azure repliziert werden. Das Konto muss sich in derselben Region wie der Recovery Services-Tresor befinden.
 - Richten Sie ein Konto im [Resource Manager-Modus](../storage/storage-create-storage-account.md) oder im [klassischen Modus](../storage/storage-create-storage-account-classic-portal.md) ein (je nachdem, welches Ressourcenmodell Sie für virtuelle Azure-Computer nach dem Failover verwenden möchten).
 - Es wird empfohlen, ein Konto einzurichten, bevor Sie beginnen. Falls Sie es nicht tun, müssen Sie diesen Schritt während der Site Recovery-Bereitstellung ausführen.
+
+> [AZURE.NOTE] [Migration of storage accounts](../resource-group-move-resources.md) zwischen Ressourcengruppen im gleichen Abonnement oder zwischen verschiedenen Abonnements wird nicht unterstützt für Speicherkonten, die für die Site Recovery-Bereitstellung verwendet werden.
 
 ### Vorbereiten des VMM-Servers
 
@@ -144,7 +148,7 @@ Sie müssen die Netzwerkzuordnung während der Site Recovery-Bereitstellung einr
 ## Erstellen eines Recovery Services-Tresors
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Klicken Sie auf **Neu** > **Verwaltung** > **Recovery Services**. Alternativ dazu können Sie auf **Durchsuchen** > **Recovery Services**-Tresore > **Hinzufügen** klicken.
+2. Klicken Sie auf **Neu** > **Verwaltung** > **Recovery Services**. Alternativ können Sie auf **Durchsuchen** > **Recovery Services-Tresore** > **Hinzufügen** klicken.
 
 	![Neuer Tresor](./media/site-recovery-vmm-to-azure/new-vault3.png)
 
@@ -189,11 +193,11 @@ Installieren Sie den Azure Site Recovery-Anbieter auf dem VMM-Server, und regist
 
 	![Quelle einrichten](./media/site-recovery-vmm-to-azure/set-source1.png)
 
-2. Klicken Sie unter **Prepare source** (Quelle vorbereiten) auf **+ VMM**, um einen VMM-Server hinzuzufügen.
+2. Klicken Sie unter **Quelle vorbereiten** auf **+ VMM**, um einen VMM-Server hinzuzufügen.
 
 	![Quelle einrichten](./media/site-recovery-vmm-to-azure/set-source2.png)
 
-3. Stellen Sie im Blatt **Server hinzufügen** sicher, dass unter **Servertyp** der Eintrag **System Center-VMM-Server** angezeigt wird und dass der VMM-Server die [Voraussetzungen und URL-Anforderungen](#on-premises-prerequisites) erfüllt.
+3. Vergewissern Sie sich auf dem Blatt **Server hinzufügen**, dass unter **Servertyp** der Eintrag **System Center-VMM-Server** angezeigt wird und dass der VMM-Server die [Voraussetzungen und URL-Anforderungen](#on-premises-prerequisites) erfüllt.
 4. Laden Sie die Installationsdatei für den Azure Site Recovery-Anbieter herunter.
 5. Laden Sie den Registrierungsschlüssel herunter. Sie benötigen diese Angaben beim Ausführen des Setups. Der Schlüssel ist nach der Erstellung fünf Tage lang gültig.
 
@@ -380,8 +384,8 @@ Site Recovery verfügt über einen Capacity Planner, der Sie dabei unterstützt,
 - Sammeln Sie Informationen zu Ihrer Replikationsumgebung, z.B. VMs, Datenträger pro VM und Speicher pro Datenträger.
 - Schätzen Sie die tägliche Änderungsrate für replizierte Daten. Zur Unterstützung können Sie den [Capacity Planner für Hyper-V-Replikat](https://www.microsoft.com/download/details.aspx?id=39057) verwenden.
 
-1.	Klicken Sie auf **Herunterladen**, um das Tool herunterzuladen, und führen Sie es anschließend aus. Lesen Sie sich den [zum Tool gehörigen Artikel](site-recovery-capacity-planner.md) durch.
-2.	Wählen Sie anschließend unter **Haben Sie den Capacity Planner ausgeführt?** die Option **Ja**.
+1.	Klicken Sie auf **Herunterladen**, um das Tool herunterzuladen, und führen Sie es anschließend aus. Lesen Sie sich den [entsprechenden Artikel](site-recovery-capacity-planner.md) durch.
+2.	Wählen Sie anschließend unter **Haben Sie den Capacity Planner ausgeführt?** die Option **Ja** aus.
 
 	![Kapazitätsplanung](./media/site-recovery-vmm-to-azure/gs-capacity-planning.png)
 
@@ -567,4 +571,4 @@ Hier wird beschrieben, wie Sie die Konfigurationseinstellungen, den Status und d
 
 Nachdem die Bereitstellung eingerichtet wurde und ausgeführt wird, können Sie sich über die unterschiedlichen Failoverarten [informieren](site-recovery-failover.md).
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->

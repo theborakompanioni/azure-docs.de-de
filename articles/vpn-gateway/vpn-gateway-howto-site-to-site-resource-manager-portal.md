@@ -1,6 +1,6 @@
 <properties
    pageTitle="Erstellen eines virtuellen Netzwerks mit einer Site-to-Site-VPN-Verbindung mit dem Azure Resource Manager und dem Azure-Portal | Microsoft Azure"
-   description="Es wird beschrieben, wie Sie ein VNet mit dem Resource Manager-Modell erstellen und dafür eine Verbindung mit dem lokalen Netzwerk über eine S2S-VPN Gateway-Verbindung herstellen."
+   description="Hier wird beschrieben, wie Sie ein VNet mit dem Resource Manager-Bereitstellungsmodell erstellen und dafür eine Verbindung mit dem lokalen Netzwerk über eine S2S-VPN Gateway-Verbindung herstellen."
    services="vpn-gateway"
    documentationCenter="na"
    authors="cherylmc"
@@ -14,10 +14,10 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="08/22/2016"
+   ms.date="08/31/2016"
    ms.author="cherylmc"/>
 
-# Erstellen eines VNet mit Site-to-Site-VPN-Verbindung über das Azure-Portal und Azure Resource Manager
+# Erstellen eines VNet mit einer Standort-zu-Standort-Verbindung über das Azure-Portal
 
 > [AZURE.SELECTOR]
 - [Azure-Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
@@ -25,7 +25,7 @@
 - [PowerShell – Resource Manager](vpn-gateway-create-site-to-site-rm-powershell.md)
 
 
-In diesem Artikel wird das Erstellen eines virtuellen Netzwerks und das Herstellen einer Site-to-Site-VPN-Verbindung mit Ihrem lokalen Netzwerk mithilfe des Azure Resource Manager-Bereitstellungsmodells und des Azure-Portals beschrieben.
+In diesem Artikel wird das Erstellen eines virtuellen Netzwerks und das Herstellen einer Standort-zu-Standort-VPN-Verbindung mit Ihrem lokalen Netzwerk mithilfe des **Azure Resource Manager-Bereitstellungsmodells** und des Azure-Portals beschrieben. Site-to-Site-Verbindungen können für standortübergreifende Konfigurationen und Hybridkonfigurationen verwendet werden.
 
 ![Diagramm](./media/vpn-gateway-howto-site-to-site-resource-manager-portal/s2srmportal.png)
 
@@ -154,4 +154,4 @@ Sie können Ihre VPN-Verbindung entweder im Portal oder mithilfe von PowerShell 
 
 - Informationen zu BGP finden Sie in der [Übersicht über BGP](vpn-gateway-bgp-overview.md) und unter [Konfigurieren von BGP](vpn-gateway-bgp-resource-manager-ps.md).
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->

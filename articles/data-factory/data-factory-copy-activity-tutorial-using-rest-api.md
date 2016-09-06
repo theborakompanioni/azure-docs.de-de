@@ -42,7 +42,7 @@ In diesem Artikel werden nicht alle Komponenten der Data Factory-REST-API behand
 	1. Erstellen Sie eine Webanwendung mit dem Namen **ADFCopyTutorialApp** in Azure Active Directory.
 	2. Beschaffen Sie die **Client-ID** und den **geheimen Schlüssel**.
 	3. Beschaffen Sie die **Mandanten-ID**.
-	4. Weisen Sie die Anwendung **ADFCopyTutorialApp** der Rolle **Data Factory-Mitwirkender** zu.
+	4. Weisen Sie die Anwendung **ADFCopyTutorialApp** der Rolle **Mitwirkender von Data Factory** zu.
 - Installieren Sie [Azure PowerShell](../powershell-install-configure.md).
 - Starten Sie **PowerShell**, und führen Sie den folgenden Befehl aus. Lassen Sie Azure PowerShell bis zum Ende dieses Tutorials geöffnet. Wenn Sie PowerShell schließen und erneut öffnen, müssen Sie die Befehle erneut ausführen.
 	1. Führen Sie den folgenden Befehl aus, und geben Sie den Benutzernamen und das Kennwort ein, den bzw. das Sie bei der Anmeldung beim Azure-Portal verwendet haben:
@@ -298,7 +298,7 @@ In diesem Schritt erstellen Sie eine Azure Data Factory mit dem Namen **ADFCopyT
 		$results = Invoke-Command -scriptblock $cmd;
 3. Zeigen Sie die Ergebnisse an. Wenn die Erstellung der Data Factory erfolgreich war, wird der JSON-Code für die Data Factory unter **Ergebnisse** angezeigt. Andernfalls sehen Sie eine Fehlermeldung.
 
-		$results
+		Write-Host $results
 
 Beachten Sie Folgendes:
  
@@ -339,7 +339,7 @@ In diesem Schritt verknüpfen Sie Ihr Azure Storage-Konto mit Ihrer Data Factory
 		$results = Invoke-Command -scriptblock $cmd;
 3. Zeigen Sie die Ergebnisse an. Wenn die Erstellung des verknüpften Diensts erfolgreich war, wird der JSON-Code für den verknüpften Dienst unter **Ergebnisse** angezeigt. Andernfalls sehen Sie eine Fehlermeldung.
   
-		$results
+		Write-Host $results
 
 ### Erstellen eines mit Azure SQL verknüpften Diensts
 In diesem Schritt verknüpfen Sie die Azure SQL-Datenbank mit Ihrer Data Factory. In diesem Tutorial verwenden Sie die gleiche Azure SQL-Datenbank zum Speichern der Ausgabedaten.
@@ -352,7 +352,7 @@ In diesem Schritt verknüpfen Sie die Azure SQL-Datenbank mit Ihrer Data Factory
 		$results = Invoke-Command -scriptblock $cmd;
 3. Zeigen Sie die Ergebnisse an. Wenn die Erstellung des verknüpften Diensts erfolgreich war, wird der JSON-Code für den verknüpften Dienst unter **Ergebnisse** angezeigt. Andernfalls sehen Sie eine Fehlermeldung.
   
-		$results
+		Write-Host $results
 
 ## Erstellen von Datasets
 
@@ -404,7 +404,7 @@ In diesem Schritt erstellen Sie ein Dataset namens **AzureBlobInput**, das auf e
 		$results = Invoke-Command -scriptblock $cmd;
 3. Zeigen Sie die Ergebnisse an. Wenn die Erstellung des Datasets erfolgreich war, wird der JSON-Code für das Dataset unter **Ergebnisse** angezeigt. Andernfalls sehen Sie eine Fehlermeldung.
   
-		$results
+		Write-Host $results
 
 ### Erstellen des Ausgabedatasets
 In diesem Schritt erstellen Sie eine Ausgabetabelle namens **AzureSqlOutput**. Dieses Dataset verweist auf eine SQL-Tabelle (**emp**) in der durch **AzureSqlLinkedService** dargestellten Azure SQL-Datenbank. Die Pipeline kopiert Daten aus dem Eingabeblob in die Tabelle **emp**.
@@ -417,7 +417,7 @@ In diesem Schritt erstellen Sie eine Ausgabetabelle namens **AzureSqlOutput**. D
 		$results = Invoke-Command -scriptblock $cmd;
 3. Zeigen Sie die Ergebnisse an. Wenn die Erstellung des Datasets erfolgreich war, wird der JSON-Code für das Dataset unter **Ergebnisse** angezeigt. Andernfalls sehen Sie eine Fehlermeldung.
   
-		$results 
+		Write-Host $results 
 
 ## Erstellen der Pipeline
 In diesem Schritt erstellen Sie eine Pipeline mit einer **Kopieraktivität**, für die **AzureBlobInput** als Eingabe und **AzureSqlOutput** als Ausgabe verwendet wird.
@@ -430,7 +430,7 @@ In diesem Schritt erstellen Sie eine Pipeline mit einer **Kopieraktivität**, f�
 		$results = Invoke-Command -scriptblock $cmd;
 3. Zeigen Sie die Ergebnisse an. Wenn die Erstellung des Datasets erfolgreich war, wird der JSON-Code für das Dataset unter **Ergebnisse** angezeigt. Andernfalls sehen Sie eine Fehlermeldung.
 
-		$results
+		Write-Host $results
 
 **Glückwunsch!** Sie haben die Erstellung einer Azure Data Factory mit einer Pipeline, die Daten aus Azure Blob Storage in Azure SQL-Datenbank kopiert, erfolgreich abgeschlossen.
 
@@ -493,4 +493,4 @@ In diesem Tutorial haben Sie mit der REST-API eine Azure Data Factory erstellt, 
 [sql-management-studio]: ../sql-database/sql-database-manage-azure-ssms.md
  
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->

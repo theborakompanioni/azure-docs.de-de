@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="08/09/2016"
+	ms.date="08/24/2016"
 	ms.author="sdanie"/>
 
 # Schützen Ihrer API mithilfe von Aufruflimits in Azure API Management
 
 In diesem Leitfaden wird gezeigt, wie einfach Sie Ihre Back-End-API schützen können, indem Sie Richtlinien für Aufruflimits und Kontingente mithilfe von API Management konfigurieren.
 
-In diesem Tutorial erstellen Sie ein kostenloses API-Testprodukt, das bis zu zehn Aufrufe pro Minute und maximal 200 Aufrufe pro Woche der API mithilfe der Richtlinien [Aufrufrate nach Abonnement einschränken](https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRate) und [Nutzungskontingent nach Abonnement festlegen](https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuota) erlaubt. Anschließend veröffentlichen Sie die API und testen die Richtlinie für das Aufruflimit.
+In diesem Tutorial erstellen Sie ein kostenloses API-Testprodukt, das es Entwicklern auf der Grundlage der Richtlinien [Aufrufrate nach Abonnement einschränken](https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRate) und [Nutzungskontingent nach Abonnement festlegen](https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuota) ermöglicht, bis zu zehn Aufrufe pro Minute und maximal 200 Aufrufe pro Woche an Ihre API zu richten. Anschließend veröffentlichen Sie die API und testen die Richtlinie für das Aufruflimit.
 
 Informationen zu fortgeschritteneren Drosselungsszenarien mithilfe der Richtlinien [rate-limit-by-key](https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRateByKey) und [quota-by-key](https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuotaByKey) finden Sie unter [Erweiterte Anforderungsbegrenzung mit Azure API Management](api-management-sample-flexible-throttling.md).
 
@@ -48,11 +48,11 @@ Geben Sie im Feld **Titel** **Kostenlose Testversion** ein.
 
 Geben Sie in das Textfeld **Beschreibung** Folgendes ein: **Abonnenten können bis zu 10 Aufrufe pro Minute und bis zu 200 Aufrufe pro Woche ausführen, danach wird der Zugriff verweigert.**
 
-Produkte in API Management können geschützt oder offen sein. Geschützte Produkte müssen abonniert werden, bevor sie verwendet werden können. Offene Produkte können ohne Abonnement genutzt werden. Stellen Sie sicher, dass die Option **Abonnement erforderlich** ausgewählt ist, um ein geschütztes Produkt zu erstellen, das abonniert werden muss. Dies ist die Standardeinstellung.
+Produkte in API Management können geschützt oder offen sein. Geschützte Produkte müssen abonniert werden, bevor sie verwendet werden können. Offene Produkte können ohne Abonnement genutzt werden. Vergewissern Sie sich, dass die Option **Abonnement erforderlich** ausgewählt ist, um ein geschütztes Produkt zu erstellen, das abonniert werden muss. Dies ist die Standardeinstellung.
 
-Wenn Sie möchten, dass ein Administrator Abonnements für dieses Produkt prüfen und ablehnen oder akzeptieren muss, wählen Sie die Option **Abonnementgenehmigung erforderlich**. Wenn das Kontrollkästchen nicht aktiviert ist, werden Abonnements automatisch genehmigt. In diesem Beispiel werden Abonnements automatisch genehmigt, wählen Sie dieses Kontrollkästchen also nicht.
+Wenn Sie möchten, dass ein Administrator Abonnementanfragen für dieses Produkt prüfen und ablehnen oder akzeptieren muss, aktivieren Sie das Kontrollkästchen **Abonnementgenehmigung erforderlich**. Wenn das Kontrollkästchen nicht aktiviert ist, werden Abonnements automatisch genehmigt. In diesem Beispiel werden Abonnements automatisch genehmigt. Lassen Sie das Kontrollkästchen also deaktiviert.
 
-Wenn Sie zulassen möchten, dass Entwicklerkonten das neue Produkt mehrfach abonnieren, wählen Sie das Kontrollkästchen **Mehrere gleichzeitige Abonnements zulassen**. In diesem Lernprogramm werden keine gleichzeitigen Abonnements verwendet, lassen Sie daher das Kontrollkästchen deaktiviert.
+Wenn Sie zulassen möchten, dass Entwicklerkonten das neue Produkt mehrfach abonnieren, aktivieren Sie das Kontrollkästchen **Mehrere gleichzeitige Abonnements zulassen**. In diesem Tutorial werden keine gleichzeitigen Abonnements verwendet. Lassen Sie das Kontrollkästchen daher deaktiviert.
 
 Geben Sie alle Werte ein und klicken Sie auf **Speichern**, um das Produkt zu erstellen.
 
@@ -120,7 +120,7 @@ Die Produkt "Kostenloser Test" soll bis zu 10 Aufrufe pro Minute erlauben. Geben
 	<rate-limit calls="10" renewal-period="60">
 	</rate-limit>
 
-Um die Richtlinie **Nutzungskontingent pro Abonnement** zu konfigurieren, platzieren Sie Ihren Cursor direkt unterhalb des neu erstellten **rate-limit**-Elements innerhalb des **inbound**-Elements, und klicken Sie dann auf den Pfeil links neben **Nutzungskontingent pro Abonnement einstellen**.
+Um die Richtlinie **Nutzungskontingent pro Abonnement** zu konfigurieren, platzieren Sie Ihren Cursor innerhalb des **inbound**-Elements direkt unterhalb des neu erstellten **rate-limit**-Elements, und klicken Sie dann auf den Pfeil links neben **Nutzungskontingent pro Abonnement einstellen**.
 
 	<quota calls="number" bandwidth="kilobytes" renewal-period="seconds">
 	<api name="name" calls="number" bandwidth="kilobytes">
@@ -195,11 +195,11 @@ Wählen Sie **Kostenlose Testversion** und klicken Sie dann auf **Abonnieren**.
 
 ![Abonnement hinzufügen][api-management-add-subscription]
 
->[AZURE.NOTE] In diesem Lernprogramm werden keine gleichzeitigen Abonnements für das Produkt "Kostenloser Test" aktiviert. Wenn Sie diese Option aktivieren, werden Sie zur Angabe des Abonnements aufgefordert, wie im folgenden Beispiel gezeigt.
+>[AZURE.NOTE] In diesem Tutorial sind für das Produkt „Kostenlose Testversion“ keine gleichzeitigen Abonnements aktiviert. Wenn Sie diese Option aktivieren, werden Sie zur Angabe des Abonnements aufgefordert, wie im folgenden Beispiel gezeigt.
 
 ![Abonnement hinzufügen][api-management-add-subscription-multiple]
 
-Nach dem Klicken auf **Abonnieren** wird das Produkt in der Liste **Abonnement** für den Benutzer angezeigt.
+Nach dem Klicken auf **Abonnieren** wird das Produkt in der Abonnementliste für den Benutzer angezeigt.
 
 ![Abonnement hinzugefügt][api-management-subscription-added]
 
@@ -217,11 +217,11 @@ Klicken Sie auf **GET Resource** und anschließend auf **Ausprobieren**.
 
 ![Konsole öffnen][api-management-open-console]
 
-Behalten Sie die Standard-Parameterwerte bei und wählen Sie Ihren Abonnementschlüssel für das Produkt "Kostenloser Test" aus.
+Behalten Sie die standardmäßigen Parameterwerte bei, und wählen Sie Ihren Abonnementschlüssel für das Produkt „Kostenlose Testversion“ aus.
 
 ![Abonnementschlüssel][api-management-select-key]
 
->[AZURE.NOTE] Falls Sie mehrere Abonnements haben, stellen Sie sicher, dass Sie den Schlüssel für **Kostenloser Test** auswählen. Andernfalls treten die in den vorherigen Schritten konfigurierten Richtlinien nicht in Kraft.
+>[AZURE.NOTE] Falls Sie mehrere Abonnements haben, achten Sie darauf, den Schlüssel für **Kostenlose Testversion** auszuwählen. Andernfalls treten die in den vorherigen Schritten konfigurierten Richtlinien nicht in Kraft.
 
 Klicken Sie auf **Senden**, und sehen Sie sich dann die Antwort an. Beachten Sie den **Antwortstatus** von **200 OK**.
 
@@ -237,7 +237,6 @@ Wenn das Aufruflimit von 10 Aufrufen pro Minute aktiv ist, werden nachfolgende A
 
 ## <a name="next-steps"> </a>Nächste Schritte
 
--	Lesen Sie die anderen Themen im Lernprogramm [Erste Schritte bei der erweiterten API-Konfiguration][].
 -	Das folgende Video zeige eine Demo zum Festlegen von Aufruflimits und Kontingenten.
 
 > [AZURE.VIDEO rate-limits-and-quotas]
@@ -288,9 +287,8 @@ Wenn das Aufruflimit von 10 Aufrufen pro Minute aktiv ist, werden nachfolgende A
 [Publish the product]: #publish-product
 [Subscribe a developer account to the product]: #subscribe-account
 [Call an operation and test the rate limit]: #test-rate-limit
-[Erste Schritte bei der erweiterten API-Konfiguration]: api-management-get-started-advanced.md
 
 [Limit call rate]: https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRate
 [Set usage quota]: https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuota
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0831_2016-->
