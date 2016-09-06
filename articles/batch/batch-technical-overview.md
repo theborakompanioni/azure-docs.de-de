@@ -71,7 +71,8 @@ Ihre Anwendungen und Dienste können direkte REST-API-Aufrufe ausgeben und/oder 
 | **Batch REST (in englischer Sprache)** | [MSDN][batch_rest] | – | [MSDN][batch_rest] |
 | **Batch .NET** | [MSDN][api_net] | [NuGet][api_net_nuget] | [GitHub][api_sample_net] |
 | **Batch Python** | [readthedocs.io][api_python] | [PyPI][api_python_pypi] |[GitHub][api_sample_python] |
-| **Batch Node.js** | [github.io][api_nodejs] | [npm][api_nodejs_npm] | - | | **Batch Java** (Vorschau) | [github.io][api_java] | [Maven][api_java_jar] | [GitHub][api_sample_java] |
+| **Batch Node.js** | [github.io][api_nodejs] | [npm][api_nodejs_npm] | - |
+| **Batch Java** (Vorschau) | [github.io][api_java] | [Maven][api_java_jar] | [GitHub][api_sample_java] |
 
 ### Batch-Ressourcenverwaltung
 
