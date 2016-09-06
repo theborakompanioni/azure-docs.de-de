@@ -193,7 +193,7 @@ Führen Sie die folgenden Schritte aus, um die heruntergeladene Azure-Ressourcen
 
 ### Schritt 1
 
-Wenn Sie die Azure-CLI noch nie verwendet haben, lesen Sie den Artikel [Installieren der Azure-CLI](../xplat-cli-install.md), und befolgen Sie die Anweisungen bis zu dem Punkt, an dem Sie Ihr Azure-Konto und Ihr Abonnement auswählen.
+Wenn Sie die Azure-CLI noch nie verwendet haben, lesen Sie den Artikel [Installieren der Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md), und befolgen Sie die Anweisungen bis zu dem Punkt, an dem Sie Ihr Azure-Konto und Ihr Abonnement auswählen.
 ### Schritt 2
 
 Führen Sie den Befehl **azure config mode** aus, um in den Ressourcen-Manager-Modus zu wechseln, wie unten dargestellt.
