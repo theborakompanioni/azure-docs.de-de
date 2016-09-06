@@ -12,7 +12,7 @@
     ms.workload="search"
     ms.topic="get-started-article"
     ms.tgt_pltfrm="na"
-    ms.date="08/15/2016"
+    ms.date="08/29/2016"
     ms.author="brjohnst"/>
 
 # Abfragen des Azure Search-Index mit dem .NET SDK
@@ -162,4 +162,4 @@ ID: 2   Base rate: 79.99        Description: Cheapest hotel in town     Descript
 
 Der obige Beispielcode verwendet die Konsole zum Ausgeben von Suchergebnissen. Sie müssen ebenso Suchergebnisse in Ihrer eigenen Anwendung anzeigen. Ein Beispiel zum Rendern von Suchergebnissen in einer ASP.NET MVC-basierten Webanwendung finden Sie [hier auf GitHub](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetSample).
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0831_2016-->

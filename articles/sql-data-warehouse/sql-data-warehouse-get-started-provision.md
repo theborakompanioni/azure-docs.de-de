@@ -14,7 +14,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="07/23/2016"
+   ms.date="08/25/2016"
    ms.author="barbkess;lodipalm;sonyama"/>
 
 # Erstellen einer Azure SQL Data Warehouse-Instanz
@@ -60,9 +60,11 @@ Zunächst benötigen Sie Folgendes:
 
     - **Quelle auswählen**: Klicken Sie auf **Quelle auswählen** > **Beispiel**. Azure füllt die Option **Beispiel auswählen** automatisch mit AdventureWorksDW auf.
 
+> [AZURE.NOTE] Die Standardsortierung für eine SQL Data Warehouse-Instanz ist „SQL\_Latin1\_General\_CP1\_CI\_AS“. Sollten Sie eine andere Sortierung benötigen, können Sie die Datenbank mithilfe von [T-SQL][] mit einer anderen Sortierung erstellen.
+
 4. Klicken Sie auf **Erstellen**, um Ihre SQL Data Warehouse-Instanz zu erstellen.
 
-5. Warten Sie einige Minuten. Wenn Ihr Data Warehouse bereit ist, sollten Sie zurück zum [Azure-Portal](https://portal.azure.com) gelangen. Sie finden Ihr SQL Data Warehouse in Ihrem Dashboard unter den SQL-Datenbanken oder in der Ressourcengruppe, mit der Sie es erstellt haben.
+5. Warten Sie einige Minuten. Wenn Ihre Data Warehouse-Instanz bereit ist, wird wieder das [Azure-Portal](https://portal.azure.com) angezeigt. Sie finden Ihr SQL Data Warehouse in Ihrem Dashboard unter den SQL-Datenbanken oder in der Ressourcengruppe, mit der Sie es erstellt haben.
 
     ![Portalansicht](./media/sql-data-warehouse-get-started-provision/database-portal-view.png)
 
@@ -70,25 +72,26 @@ Zunächst benötigen Sie Folgendes:
 
 ## Nächste Schritte
 
-Nachdem Sie eine SQL Data Warehouse-Instanz erstellt haben, können Sie eine [Verbindung](./sql-data-warehouse-connect-overview.md) herstellen und Abfragen durchführen.
+Nachdem Sie eine SQL Data Warehouse-Instanz erstellt haben, können Sie eine [Verbindung herstellen](./sql-data-warehouse-connect-overview.md) und Abfragen durchführen.
 
 Um Daten in SQL Data Warehouse zu laden, lesen Sie [Laden von Daten in SQL Data Warehouse](./sql-data-warehouse-overview-load.md).
 
 Wenn Sie versuchen, eine vorhandene Datenbank zu SQL Data Warehouse zu migrieren, lesen Sie die [Übersicht über die Migration](./sql-data-warehouse-overview-migrate.md), oder verwenden Sie das [Migrationshilfsprogramm ](./sql-data-warehouse-migrate-migration-utility.md).
 
-Firewall-Regeln können auch mithilfe von Transact-SQL konfiguriert werden. Weitere Informationen finden Sie unter [sp\_set\_firewall\_rule][] und [sp\_set\_database\_firewall\_rule][].
+Firewall-Regeln können auch mithilfe von Transact-SQL konfiguriert werden. Weitere Informationen finden Sie unter [sp\_set\_firewall\_rule][] sowie unter [sp\_set\_database\_firewall\_rule][].
 
-Es ist auch empfehlenswert, sich über die [Bewährten Methoden][] zu informieren.
+Außerdem sollten Sie sich mit den [bewährten Methoden][] vertraut machen.
 
 <!--Article references-->
 [Erstellen eines logischen Azure SQL-Datenbankservers mit dem Azure-Portal]: ../sql-database/sql-database-get-started.md#create-an-azure-sql-database-logical-server
 [Create an Azure SQL Database logical server with PowerShell]: ../sql-database/sql-database-get-started-powershell.md#database-setup-create-a-resource-group-server-and-firewall-rule
 [resource groups]: ../resource-group-template-deploy-portal.md
-[Bewährten Methoden]: sql-data-warehouse-best-practices.md
+[bewährten Methoden]: sql-data-warehouse-best-practices.md
 [DWU]: sql-data-warehouse-overview-what-is.md#data-warehouse-units
 [Abonnement]: ../azure-glossary-cloud-terminology.md#subscription
 [resource group]: ../azure-glossary-cloud-terminology.md#resource-group
-
+[T-SQL]: ./sql-data-warehouse-get-started-create-database-tsql.md
+ 
 <!--MSDN references-->
 [sp\_set\_firewall\_rule]: https://msdn.microsoft.com/library/dn270017.aspx
 [sp\_set\_database\_firewall\_rule]: https://msdn.microsoft.com/library/dn270010.aspx
@@ -99,4 +102,4 @@ Es ist auch empfehlenswert, sich über die [Bewährten Methoden][] zu informiere
 [Kostenlose Azure-Testversion]: https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F
 [MSDN-Azure-Gutschriften]: https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0831_2016-->

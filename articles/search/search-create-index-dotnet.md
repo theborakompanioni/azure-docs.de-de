@@ -14,7 +14,7 @@
     ms.workload="search"
     ms.topic="get-started-article"
     ms.tgt_pltfrm="na"
-    ms.date="05/31/2016"
+    ms.date="08/29/2016"
     ms.author="brjohnst"/>
 
 # Erstellen eines Azure Search-Index mit dem .NET SDK
@@ -123,4 +123,4 @@ serviceClient.Indexes.Delete("hotels");
 ## Weiter
 Nach dem Erstellen eines Azure Search-Indexes können Sie [Ihre Inhalte in den Index hochladen](search-what-is-data-import.md) und mit dem Durchsuchen der Daten beginnen.
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0831_2016-->

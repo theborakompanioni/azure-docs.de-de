@@ -26,7 +26,7 @@
 
 
 
-Der Dienst Azure Site Recovery unterstützt Ihre Strategie für Geschäftskontinuität und Notfallwiederherstellung, indem Replikation, Failover und Wiederherstellung virtueller Computer und physischer Server aufeinander abgestimmt werden. Computer können in Azure oder in einem sekundären lokalen Datencenter repliziert werden. Eine kurze Übersicht über das Gesamtthema finden Sie unter [Was ist Azure Site Recovery?](site-recovery-overview.md).
+Der Dienst Azure Site Recovery unterstützt Ihre Strategie für Geschäftskontinuität und Notfallwiederherstellung, indem Replikation, Failover und Wiederherstellung virtueller Computer und physischer Server aufeinander abgestimmt werden. Computer können in Azure oder in einem sekundären lokalen Datencenter repliziert werden. Eine kurze Übersicht über das Gesamtthema finden Sie unter [Was ist Azure Site Recovery?](site-recovery-overview.md)
 
 ## Übersicht
 
@@ -50,7 +50,7 @@ In Azure benötigen Sie Folgendes:
 
 **Voraussetzung** | **Details**
 --- | ---
-**Azure-Konto**| Sie benötigen ein [Microsoft Azure](https://azure.microsoft.com/)-Konto. Für den Einstieg steht eine [kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/) zur Verfügung. Weitere Informationen zu den Preisen für Site Recovery finden Sie [hier](https://azure.microsoft.com/pricing/details/site-recovery/).
+**Azure-Konto**| Sie benötigen ein [Microsoft Azure](https://azure.microsoft.com/)-Konto. Für den Einstieg steht eine [kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/) zur Verfügung. Weitere Informationen zu den Preisen für Site Recovery erhalten Sie [hier](https://azure.microsoft.com/pricing/details/site-recovery/).
 **Azure-Speicher** | Sie benötigen ein Azure-Speicherkonto, um replizierte Daten zu speichern. Replizierte Daten werden im Azure-Speicher gespeichert, und virtuelle Azure-Computer werden bei einem Failover hochgefahren. <br/><br/>Sie benötigen ein [standardmäßiges georedundantes Speicherkonto](../storage/storage-redundancy.md#geo-redundant-storage). Das Konto muss sich in der gleichen Region wie der Site Recovery-Dienst befinden und dem gleichen Abonnement zugeordnet sein. Beachten Sie, dass eine Replikation in Storage Premium-Konten derzeit nicht unterstützt wird und nicht verwendet werden sollte.<br/><br/>Informationen zu Azure Storage finden Sie [hier](../storage/storage-introduction.md).
 **Azure-Netzwerk** | Sie benötigen ein virtuelles Azure-Netzwerk, mit dem die virtuellen Azure-Computer eine Verbindung herstellen, wenn ein Failover stattfindet. Das virtuelle Azure-Netzwerk muss sich in der gleichen Region wie der Site Recovery-Tresor befinden.
 
@@ -89,7 +89,7 @@ Bereiten Sie die Netzwerkzuordnung wie folgt vor:
 ## Schritt 1: Erstellen eines Site Recovery-Tresors
 
 1. Melden Sie sich über den VMM-Server, den Sie registrieren möchten, beim [Verwaltungsportal](https://portal.azure.com) an.
-2. Klicken Sie auf **Data Services** > **Recovery Services** > **Site Recovery-Tresor**.
+2. Klicken Sie auf **Data Services** > **Recovery Services** > **Site Recovery-Tresor**.
 3. Klicken Sie auf **Neu erstellen** > **Schnellerfassung**.
 4. Geben Sie unter **Name** einen Anzeigenamen ein, über den der Tresor identifiziert wird.
 5. Wählen Sie unter **Region** die geografische Region für den Tresor aus. Eine Liste mit den unterstützten Regionen finden Sie in den [Preisdetails zu Azure Site Recovery](https://azure.microsoft.com/pricing/details/site-recovery/) unter „Geografische Verfügbarkeit“.
@@ -150,7 +150,7 @@ Generieren Sie einen Registrierungsschlüssel im Tresor. Nachdem Sie den Azure S
 		- *.backup.windowsazure.com
 		- *.blob.core.windows.net
 		- *.store.core.windows.net
-	- Lassen Sie die unter [IP-Bereiche des Azure-Rechenzentrums](https://www.microsoft.com/download/confirmation.aspx?id=41653) angegebenen IP-Adressen sowie das HTTPS-Protokoll (443) zu. Fügen Sie die IP-Adressbereiche der zu verwendenden Azure-Region sowie die IP-Adressbereiche der westlichen USA einer Positivliste hinzu.
+	- Lassen Sie die unter [IP-Bereiche des Azure-Rechenzentrums](https://www.microsoft.com/download/confirmation.aspx?id=41653) angegebenen IP-Adressen sowie das HTTPS-Protokoll (443) zu. Fügen Sie die IP-Adressbereiche der zu verwendenden Azure-Region sowie die IP-Adressbereiche der westlichen USA einer Positivliste hinzu.
 	- Wenn Sie einen benutzerdefinierten Proxy verwenden, wird ein ausführendes VMM-Konto (DRAProxyAccount) automatisch mit den angegebenen Proxyanmeldeinformationen erstellt. Konfigurieren Sie den Proxyserver so, dass dieses Konto erfolgreich authentifiziert werden kann. In der VMM-Konsole können die Einstellungen des ausführenden VMM-Kontos geändert werden. Zu diesem Zweck öffnen Sie den Arbeitsbereich **Einstellungen**, erweitern Sie **Sicherheit**, klicken Sie auf **Ausführende Konten**, und ändern Sie das Kennwort für DRAProxyAccount. Sie müssen den VMM-Dienst neu starten, damit diese Einstellung wirksam wird.
 
 
@@ -170,7 +170,7 @@ Nach der Registrierung werden die Metadaten vom VMM-Server von Azure Site Recove
 
 ### Installation über die Befehlszeile
 
-Der Azure Site Recovery-Anbieter kann auch über die folgende Befehlszeile installiert werden. Mit dieser Methode kann der Anbieter in Server Core für Windows Server 2012 R2 installiert werden.
+Der Azure Site Recovery-Anbieter kann auch über die folgende Befehlszeile installiert werden. Mit dieser Methode kann der Anbieter in Server Core für Windows Server 2012 R2 installiert werden.
 
 1. Laden Sie die Installationsdatei und den Registrierungsschlüssel des Anbieters in einen Ordner herunter. Beispiel: C:\\ASR.
 2. Beenden Sie den System Center Virtual Machine Manager-Dienst.
@@ -191,7 +191,7 @@ Der Azure Site Recovery-Anbieter kann auch über die folgende Befehlszeile insta
 Die Parameter lauten wie folgt:
 
  - **/Credentials**: erforderlicher Parameter zum Angeben des Speicherorts der Registrierungsschlüsseldatei.
- - **/FriendlyName**: erforderlicher Parameter für den Namen des Hyper-V-Hostservers, der im Azure Site Recovery-Portal angezeigt wird.
+ - **/FriendlyName**: erforderlicher Parameter für den Namen des Hyper-V-Hostservers, der im Azure Site Recovery-Portal angezeigt wird.
  - **/EncryptionEnabled**: optionaler Parameter, um anzugeben, ob Sie Ihre virtuellen Computer in Azure verschlüsseln möchten (Verschlüsselung im ruhenden Zustand). Der Dateiname muss die Erweiterung **.pfx** haben.
  - **/proxyAddress**: optionaler Parameter, der die Adresse des Proxyservers angibt.
  - **/proxyport**: optionaler Parameter, der den Port des Proxyservers angibt.
@@ -205,6 +205,8 @@ Die Parameter lauten wie folgt:
 2. Erstellen Sie ein Konto mit aktivierter geografischer Replikation. Es muss sich in der gleichen Region wie der Azure Site Recovery-Dienst befinden und dem gleichen Abonnement zugeordnet sein.
 
 	![Speicherkonto](./media/site-recovery-vmm-to-azure-classic/storage.png)
+
+> [AZURE.NOTE] [Migration of storage accounts](../resource-group-move-resources.md) zwischen Ressourcengruppen im gleichen Abonnement oder zwischen verschiedenen Abonnements wird nicht unterstützt für Speicherkonten, die für die Site Recovery-Bereitstellung verwendet werden.
 
 ## Schritt 5: Installieren des Azure Recovery Services-Agent
 
@@ -230,7 +232,7 @@ Sie können den Microsoft Azure Recovery Services-Agent auch mit dem folgenden B
 
     marsagentinstaller.exe /q /nu
 
-## Schritt 6: Konfigurieren der Cloudschutzeinstellungen
+## Schritt 6: Konfigurieren der Cloudschutzeinstellungen
 
 Nachdem Sie den VMM-Server registriert haben, können Sie Schutzeinstellungen für die Clouds konfigurieren. Sie haben bei der Installation des Anbieters die Option **Cloud-Daten mit Tresor synchronisieren** aktiviert. Deshalb werden alle Clouds auf dem VMM-Server im Tresor auf der Registerkarte <b>Geschützte Elemente</b> angezeigt.
 
@@ -268,6 +270,8 @@ Nachdem Sie die Einstellungen gespeichert haben, wird ein Auftrag zum Nachverfol
 
 Wenn das Zielnetzwerk mehrere Subnetze enthält und eines dieser Subnetze denselben Namen besitzt wie das Subnetz des virtuellen Quellcomputers, dann wird der virtuelle Replikatcomputer nach einem Failover mit diesem Zielsubnetz verbunden. Gibt es kein Zielsubnetz mit einem übereinstimmenden Namen, wird der virtuelle Computer mit dem ersten Subnetz im Netzwerk verbunden.
 
+> [AZURE.NOTE] [Migration of networks](../resource-group-move-resources.md) zwischen Ressourcengruppen im gleichen Abonnement oder zwischen verschiedenen Abonnements wird nicht unterstützt für Netzwerke, die für die Site Recovery-Bereitstellung verwendet werden.
+
 ## Schritt 8: Aktivieren des Schutzes für virtuelle Computer
 
 Nach der korrekten Konfiguration von Servern, Clouds und Netzwerken können Sie den Schutz für die virtuellen Computer in der Cloud aktivieren. Beachten Sie Folgendes:
@@ -280,12 +284,12 @@ Nach der korrekten Konfiguration von Servern, Clouds und Netzwerken können Sie 
 	![Eigenschaften des virtuellen Computers ändern](./media/site-recovery-vmm-to-azure-classic/enable-existing.png)
 
 
-1. Klicken Sie zum Aktivieren des Schutzes auf der Registerkarte **Virtuelle Computer** der Cloud, in der sich der virtuelle Computer befindet, auf **Schutz aktivieren** > **Virtuelle Computer hinzufügen**.
+1. Klicken Sie zum Aktivieren des Schutzes auf der Registerkarte **Virtuelle Computer** in der Cloud, in der sich der virtuelle Computer befindet, auf **Schutz aktivieren** > **Virtuelle Computer hinzufügen**.
 2. Wählen Sie aus der Liste der virtuellen Computer in der Cloud denjenigen aus, den Sie schützen möchten.
 
 	![Aktivieren des Schutzes für virtuelle Computer](./media/site-recovery-vmm-to-azure-classic/select-vm.png)
 
-	Auf der Registerkarte **Aufträge** können Sie den Fortschritt der Aktion **Schutz aktivieren** und der ersten Replikation verfolgen. Nachdem der Auftrag **Schutz abschließen** ausgeführt wurde, ist der virtuelle Computer bereit für Failover. Nach dem Aktivieren des Schutzes und der Replikation der virtuellen Computer können Sie die virtuellen Computer in Azure sehen.
+	Auf der Registerkarte **Aufträge** können Sie den Fortschritt der Aktion **Schutz aktivieren** sowie die erste Replikation verfolgen. Nachdem der Auftrag **Schutz abschließen** ausgeführt wurde, ist der virtuelle Computer bereit zum Failover. Nach dem Aktivieren des Schutzes und der Replikation der virtuellen Computer können Sie die virtuellen Computer in Azure sehen.
 
 
 	![Schutzauftrag für virtuellen Computer](./media/site-recovery-vmm-to-azure-classic/vm-jobs.png)
@@ -301,15 +305,15 @@ Nach der korrekten Konfiguration von Servern, Clouds und Netzwerken können Sie 
 
 
 
-- **Anzahl der Netzwerkadapter auf dem virtuellen Zielcomputer**: Die Anzahl der Netzwerkadapter hängt von der Größe ab, die Sie für den virtuellen Zielcomputer angeben. Überprüfen Sie in den [Spezifikationen für virtuelle Computer](../virtual-machines/virtual-machines-linux-sizes.md#size-tables), wie viele Adapter von virtuellen Computern einer bestimmten Größe unterstützt werden. Wenn Sie die Größe für einen virtuellen Computer ändern und die Einstellungen speichern, wird die Anzahl der Netzwerkadapter beim nächsten Öffnen der Seite **Konfigurieren** geändert. Die Anzahl der Netzwerkadapter der virtuellen Zielmaschinen entspricht der Mindestzahl an Netzwerkadaptern auf virtuellen Quellmaschinen und der Höchstzahl an Netzwerkadaptern, die von der ausgewählten Größe der virtuellen Maschine unterstützt werden:
+- **Anzahl von Netzwerkadaptern auf dem virtuellen Zielcomputer:** Die Anzahl von Netzwerkadaptern hängt von der Größe ab, die Sie für den virtuellen Zielcomputer angeben. Überprüfen Sie in den [Spezifikationen für virtuelle Computer](../virtual-machines/virtual-machines-linux-sizes.md#size-tables), wie viele Adapter von virtuellen Computern einer bestimmten Größe unterstützt werden. Wenn Sie die Größe für einen virtuellen Computer ändern und die Einstellungen speichern, wird die Anzahl der Netzwerkadapter beim nächsten Öffnen der Seite **Konfigurieren** geändert. Die Anzahl der Netzwerkadapter der virtuellen Zielmaschinen entspricht der Mindestzahl an Netzwerkadaptern auf virtuellen Quellmaschinen und der Höchstzahl an Netzwerkadaptern, die von der ausgewählten Größe der virtuellen Maschine unterstützt werden:
 
 	- Wenn die Anzahl der Netzwerkkarten des Quellcomputers maximal der Anzahl der Netzwerkkarten entspricht, die für die Größe des Zielcomputers zulässig ist, hat der Zielcomputer die gleiche Anzahl von Netzwerkkarten wie der Quellcomputer.
 	- Wenn die Anzahl der Netzwerkadapter für den virtuellen Quellcomputer die maximal zulässige Anzahl für die Größe des Zielcomputers übersteigt, wird die Anzahl verwendet, die maximal für die Größe des Zielcomputers zulässig ist.
 	- Wenn beispielsweise ein Quellcomputer zwei Netzwerkadapter besitzt und der Zielcomputer aufgrund seiner Größe vier Netzwerkadapter unterstützt, erhält der Zielcomputer zwei Netzwerkadapter. Wenn der Quellcomputer dagegen zwei Netzwerkadapter besitzt und der Zielcomputer aufgrund seiner Größe nur einen Adapter unterstützt, erhält der Zielcomputer nur einen Adapter.
 
-- **Netzwerk des virtuellen Zielcomputers**: Das Netzwerk, mit dem der virtuelle Computer eine Verbindung herstellt, wird durch die Netzwerkzuordnung des virtuellen Quellcomputers bestimmt. Wenn die virtuelle Quellmaschine über mehrere Netzwerkadapter verfügt und Quellnetzwerke verschiedenen Netzwerken im Ziel zugeordnet sind, müssen Sie zwischen den Zielnetzwerken wählen.
-- **Subnetz der einzelnen Netzwerkadapter**: Sie können für jeden Netzwerkadapter das Subnetz auswählen, mit dem der virtuelle Computer, auf dem ein Failover ausgeführt wird, eine Verbindung herstellt.
-- **Ziel-IP-Adresse**: Wenn der Netzwerkadapter des virtuellen Quellcomputers für die Verwendung statischer IP-Adressen konfiguriert ist, können Sie die IP-Adresse für den virtuellen Zielcomputer angeben. Verwenden Sie dieses Feature, um die IP-Adresse einer virtuellen Quellmaschine nach einem Failover beizubehalten. Wenn keine IP-Adresse angegeben wird, erhält der Netzwerkadapter beim Failover eine beliebige verfügbare IP-Adresse. Wenn die Ziel-IP-Adresse angegeben ist, sie aber bereits von einer anderen virtuellen Maschine in Azure verwendet wird, tritt beim Failover ein Fehler auf.
+- **Netzwerk des virtuellen Zielcomputers:** Das Netzwerk, mit dem der virtuelle Computer eine Verbindung herstellt, wird durch die Netzwerkzuordnung des virtuellen Quellcomputers bestimmt. Wenn die virtuelle Quellmaschine über mehrere Netzwerkadapter verfügt und Quellnetzwerke verschiedenen Netzwerken im Ziel zugeordnet sind, müssen Sie zwischen den Zielnetzwerken wählen.
+- **Subnetz der einzelnen Netzwerkadapter:** Sie können für jeden Netzwerkadapter das Subnetz auswählen, mit dem der virtuelle Computer, auf dem ein Failover ausgeführt wird, eine Verbindung herstellt.
+- **Ziel-IP-Adresse:** Wenn der Netzwerkadapter des virtuellen Quellcomputers für die Verwendung statischer IP-Adressen konfiguriert ist, können Sie die IP-Adresse für den virtuellen Zielcomputer angeben. Verwenden Sie dieses Feature, um die IP-Adresse einer virtuellen Quellmaschine nach einem Failover beizubehalten. Wenn keine IP-Adresse angegeben wird, erhält der Netzwerkadapter beim Failover eine beliebige verfügbare IP-Adresse. Wenn die Ziel-IP-Adresse angegeben ist, sie aber bereits von einer anderen virtuellen Maschine in Azure verwendet wird, tritt beim Failover ein Fehler auf.
 
 	![Ändern der Netzwerkeigenschaften](./media/site-recovery-vmm-to-azure-classic/multi-nic.png)
 
@@ -332,14 +336,10 @@ Das Testfailover simuliert Ihre Failover- und Wiederherstellungsmechanismen in e
 
 	![Wiederherstellungsplan erstellen](./media/site-recovery-vmm-to-azure-classic/recovery-plan1.png)
 
-2. Wählen Sie auf der Seite **Virtuelle Computer auswählen** die virtuellen Computer aus, die dem Wiederherstellungsplan hinzugefügt werden sollen. Diese virtuellen Computer werden der Standardgruppe (Group) des Wiederherstellungsplans hinzugefügt.
-3. 
-4. 
-5. 1. Maximal 100 virtuelle Computer wurden in einem einzelnen Wiederherstellungsplan getestet.
+2. Wählen Sie auf der Seite **Virtuelle Computer auswählen** die virtuellen Computer aus, die dem Wiederherstellungsplan hinzugefügt werden sollen. Diese virtuellen Computer werden der Standardgruppe des Wiederherstellungsplans (Gruppe 1) hinzugefügt. Maximal 100 virtuelle Computer wurden in einem einzelnen Wiederherstellungsplan getestet.
 
-	- Wenn Sie die Eigenschaften der virtuellen Computer überprüfen möchten, bevor Sie sie dem Plan hinzufügen, klicken Sie auf den virtuellen Computer auf der Eigenschaftenseite der Cloud, in der er sich befindet. Sie können auch die Eigenschaften des virtuellen Computers in der VMM-Konsole konfigurieren.
-	- Für alle angezeigten virtuellen Computer wurde die Schutzfunktion aktiviert. Die Liste enthält sowohl virtuelle Computer, die für den Schutz aktiviert wurden und deren erste Replikation abgeschlossen ist, als auch solche, die für den Schutz aktiviert wurden, deren erste Replikation jedoch noch aussteht. Nur virtuelle Computer, deren erste Replikation abgeschlossen ist, können im Rahmen eines Wiederherstellungsplans ein Failover durchführen.
-
+- Wenn Sie die Eigenschaften der virtuellen Computer überprüfen möchten, bevor Sie sie dem Plan hinzufügen, klicken Sie auf den virtuellen Computer auf der Eigenschaftenseite der Cloud, in der er sich befindet. Sie können auch die Eigenschaften des virtuellen Computers in der VMM-Konsole konfigurieren.
+- Für alle angezeigten virtuellen Computer wurde die Schutzfunktion aktiviert. Die Liste enthält sowohl virtuelle Computer, die für den Schutz aktiviert wurden und deren erste Replikation abgeschlossen ist, als auch solche, die für den Schutz aktiviert wurden, deren erste Replikation jedoch noch aussteht. Nur virtuelle Computer, deren erste Replikation abgeschlossen ist, können im Rahmen eines Wiederherstellungsplans ein Failover durchführen.
 
 	![Wiederherstellungsplan erstellen](./media/site-recovery-vmm-to-azure-classic/select-rp.png)
 
@@ -370,7 +370,7 @@ Gehen Sie folgendermaßen vor, um ein Testfailover durchzuführen:
 6. Nach dem Failover können Sie das Testreplikat des virtuellen Computers im Azure-Portal sehen. Wenn Sie den Zugriff auf virtuelle Computer aus Ihrem lokalen Netzwerk eingerichtet haben, können Sie eine Remotedesktopverbindung mit dem virtuellen Computer herstellen. Gehen Sie wie folgt vor:
 
     1. Prüfen Sie, ob die virtuellen Computer erfolgreich starten.
-    2. Wenn Sie nach dem Failover eine Verbindung mit dem virtuellen Computer in Azure über Remote Desktop herstellen möchten, aktivieren Sie die Remote Desktop-Verbindung auf dem virtuellen Computer, bevor Sie das Test-Failover ausführen. Außerdem müssen Sie der virtuellen Maschine einen RDP-Endpunkt hinzufügen. Hierzu können Sie ein Azure Automation-Runbook[](site-recovery-runbook-automation.md) verwenden.
+    2. Wenn Sie nach dem Failover eine Verbindung mit dem virtuellen Computer in Azure über Remote Desktop herstellen möchten, aktivieren Sie die Remote Desktop-Verbindung auf dem virtuellen Computer, bevor Sie das Test-Failover ausführen. Außerdem müssen Sie der virtuellen Maschine einen RDP-Endpunkt hinzufügen. Hierzu können Sie ein Azure Automation-Runbook[](site-recovery-runbook-automation.md) verwenden.
     3. Falls Sie nach dem Failover über eine öffentliche IP-Adresse eine Remotedesktopverbindung mit dem virtuellen Computer in Azure herstellen, achten Sie darauf, dass keine Domänenrichtlinien vorhanden sind, die dies verhindern.
 
 7.  Gehen Sie nach dem Test wie folgt vor:
@@ -381,4 +381,4 @@ Gehen Sie folgendermaßen vor, um ein Testfailover durchzuführen:
 
 Informieren Sie sich über das [Einrichten von Wiederherstellungsplänen](site-recovery-create-recovery-plans.md) und über [Failover](site-recovery-failover.md).
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0831_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="05/25/2016"
+	ms.date="08/26/2016"
 	ms.author="rachelap"/>
 
 # Web-Apps – Übersicht
@@ -62,4 +62,4 @@ Zunächst müssen Sie Beispielcode für eine neue Web-App in App-Service bereits
 
 Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie unter [App Service testen](http://go.microsoft.com/fwlink/?LinkId=523751) sofort kostenlos eine kurzlebige Starter-Web-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0831_2016-->

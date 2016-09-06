@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="java"
 	ms.topic="get-started-article"
-	ms.date="06/01/2016"
+	ms.date="08/31/2016"
 	ms.author="rachelap"/>
 
 # Erstellen und Bereitstellen einer Java-API-App in Azure App Service
@@ -24,7 +24,7 @@ In diesem Lernprogramm erfahren Sie, wie Sie eine Java-Anwendung erstellen und m
 
 ## Voraussetzungen
 
-1. [Java Developer Kit 8] \(oder höher)
+1. [Java Developer Kit 8] (oder höher)
 1. [Maven] auf dem Entwicklungscomputer
 1. [Git] auf dem Entwicklungscomputer
 1. Ein kostenpflichtiges Abonnement für oder eine [kostenlose Testversion] von [Microsoft Azure]
@@ -338,4 +338,4 @@ Weitere Informationen zum Verwenden von Java in Azure finden Sie im [Java Develo
 [copy-git-repo-url]: ./media/app-service-api-java-api-app/copy-git-repo-url.png
 [postman-calling-azure-contacts]: ./media/app-service-api-java-api-app/postman-calling-azure-contacts.png
 
-<!----HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0831_2016-->

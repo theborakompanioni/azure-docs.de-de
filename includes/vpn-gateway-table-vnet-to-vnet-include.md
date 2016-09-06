@@ -6,6 +6,4 @@
 
 (+) bedeutet, dass diese Bereitstellungsmethode nur für VNets in demselben Abonnement verfügbar ist.<br> (*) bedeutet partielle Unterstützung.
 
-VNet-Peering – derzeit als Vorschauversion – ist für bestimmte Bereitstellungsmodelle und Konfigurationen verfügbar. Weitere Informationen finden Sie im Artikel [VNet-Peering](../articles/virtual-network/virtual-network-peering-overview.md).
-
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0831_2016-->

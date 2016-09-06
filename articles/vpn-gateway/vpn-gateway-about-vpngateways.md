@@ -19,9 +19,11 @@
 # Informationen zu VPN Gateway
 
 
-Das VPN Gateway umfasst eine Sammlung von Einstellungen, die zum Senden von Netzwerkdatenverkehr zwischen virtuellen Netzwerken und lokalen Standorten verwendet werden. Das VPN Gateway wird für Standort-zu-Standort-, Punkt-zu-Standort- und ExpressRoute-Verbindungen verwendet. Außerdem dient das VPN Gateway zum Senden von Datenverkehr zwischen mehreren virtuellen Netzwerken in Azure (VNET-zu-VNET).
+VPN Gateway umfasst eine Sammlung von Ressourcen, die beim Senden von Netzwerkdatenverkehr zwischen virtuellen Netzwerken und lokalen Standorten verwendet werden. Gateways werden für Site-to-Site-, Point-to-Site- und ExpressRoute-Verbindungen verwendet. Außerdem dient das VPN Gateway zum Senden von Datenverkehr zwischen mehreren virtuellen Netzwerken in Azure (VNET-zu-VNET).
 
-Jedes virtuelle Netzwerk kann nur über ein Gateway für ein virtuelles Netzwerk verfügen. Um eine Verbindung zu erstellen, fügen Sie das Gateway für ein virtuelles Netzwerk einem VNet hinzu und konfigurieren weitere Einstellungen für das VPN Gateway. In einigen Fällen handelt es sich bei der erstellten Verbindung um eine VPN-Verbindung. In anderen Fällen ist für die Konfiguration kein VPN erforderlich. Die Sammlung der Einstellungen wird unabhängig davon, ob für die Verbindung ein VPN benötigt wird, als „VPN Gateway“ bezeichnet.
+Um eine Verbindung zu erstellen, fügen Sie einem VNet ein virtuelles Netzwerkgateway hinzu und konfigurieren weitere VPN Gateway-Ressourcen sowie die dazugehörigen Einstellungen. Ein virtuelles Netzwerk kann pro Gatewaytyp immer nur über ein einzelnes virtuelles Netzwerkgateway verfügen. So können Sie beispielsweise ein virtuelles Netzwerkgateway mit „-GatewayType Vpn“ und ein virtuelles Netzwerkgateway mit „-GatewayType ExpressRoute“ verwenden.
+
+Informationen zu Gatewayanforderungen finden Sie [hier](vpn-gateway-about-vpn-gateway-settings.md#requirements). Informationen zum voraussichtlichen aggregierten Durchsatz finden Sie [hier](vpn-gateway-about-vpn-gateway-settings.md#aggthroughput). Preisinformationen finden Sie unter [VPN Gateway Preise](https://azure.microsoft.com/pricing/details/vpn-gateway). Abonnements und dienstspezifische Grenzwerte finden Sie unter [Grenzwerte für Netzwerke](../articles/azure-subscription-service-limits.md#networking-limits).
 
 Beim Konfigurieren des VPN Gateways richtet sich die verwendete Anleitung nach dem Bereitstellungsmodell, das Sie bei der Erstellung Ihres virtuellen Netzwerks genutzt haben. Wenn Sie Ihr VNET beispielsweise mit dem klassischen Bereitstellungsmodell erstellt haben, verwenden Sie die Richtlinien und Anleitungen für das klassische Bereitstellungsmodell, um die Einstellungen für das VPN Gateway zu erstellen und zu konfigurieren. Weitere Informationen finden Sie unter [Grundlagen des Resource Manager- und klassischen Bereitstellungsmodells](../resource-manager-deployment-model.md).
 
@@ -34,7 +36,10 @@ Die folgenden Abschnitte enthalten Tabellen, in denen die folgenden Informatione
 
 Nutzen Sie die Grafiken und Beschreibungen als Hilfe beim Auswählen der Konfigurationstopologie, die Ihre Anforderungen erfüllt. Die Diagramme zeigen die grundlegenden Topologien, aber Sie können auch komplexere Topologien erstellen, indem Sie die Diagramme als Anhaltspunkte verwenden. Jede Konfiguration basiert auf den Einstellungen für das VPN Gateway, die Sie ausgewählt haben.
 
-Da das VPN Gateway eine Sammlung von Einstellungen umfasst, können Sie einige Einstellungen mit einem Tool konfigurieren und dann zu einem anderen Tool wechseln. Derzeit ist es nicht möglich, alle Einstellungen für das VPN Gateway im Azure-Portal zu konfigurieren. In den Anleitungen in den Artikeln der einzelnen Konfigurationen ist angegeben, ob ein bestimmtes Tool benötigt wird. Wenn Sie mit dem klassischen Bereitstellungsmodell arbeiten, empfiehlt es sich, vorerst das klassische Portal oder PowerShell zu verwenden. Informationen zu den einzelnen verfügbaren Einstellungen finden Sie unter [About VPN Gateway settings](vpn-gateway-about-vpn-gateway-settings.md) (Informationen zu VPN Gateway-Einstellungen).
+### Konfigurieren von VPN Gateway-Einstellungen
+
+Da es sich bei VPN Gateway um eine Sammlung von Ressourcen handelt, können Sie einige Ressourcen mit einem Tool konfigurieren und dann zu einem anderen Tool wechseln und damit andere Ressourceneinstellungen konfigurieren. Derzeit können nicht alle VPN Gateway-Ressourceneinstellungen über das Azure-Portal konfiguriert werden. In den Anleitungen in den Artikeln der einzelnen Konfigurationen ist angegeben, ob ein bestimmtes Tool benötigt wird. Wenn Sie mit dem klassischen Bereitstellungsmodell arbeiten, empfiehlt es sich, vorerst das klassische Portal oder PowerShell zu verwenden. Informationen zu den einzelnen verfügbaren Einstellungen finden Sie unter [About VPN Gateway settings](vpn-gateway-about-vpn-gateway-settings.md) (Informationen zu VPN Gateway-Einstellungen).
+
 
 
 ## Site-to-Site und Multi-Site
@@ -77,14 +82,15 @@ Die verbundenen VNets können wie folgt angeordnet sein:
 
 In Azure sind zurzeit zwei Bereitstellungsmodelle verfügbar: klassisches Modell und Resource Manager-Modell. Wenn Sie Azure seit einiger Zeit verwenden, verfügen Sie wahrscheinlich über Azure-VMs und Instanzrollen, die in einem klassischen VNet ausgeführt werden. Ihre neueren VMs und Rolleninstanzen werden möglicherweise in einem in Resource Manager erstellten VNet ausgeführt. Sie können eine Verbindung zwischen den VNets erstellen, damit die Ressourcen in einem VNet direkt mit Ressourcen im anderen VNet kommunizieren können.
 
-### VNet-Peering
-
-Unter Umständen können Sie das VNet-Peering verwenden, um Ihre Verbindung zu erstellen, solange die Konfiguration Ihres virtuellen Netzwerks bestimmte Anforderungen erfüllt. Beim VNet-Peering wird kein Gateway für das virtuelle Netzwerk verwendet. Das [VNet-Peering](../virtual-network/virtual-network-peering-overview.md) befindet sich derzeit in der Vorschauphase.
-
 
 ### Bereitstellungsmodelle und -methoden
 
 [AZURE.INCLUDE [vpn-gateway-table-vnet-to-vnet](../../includes/vpn-gateway-table-vnet-to-vnet-include.md)]
+
+### VNet-Peering
+
+Unter Umständen können Sie das VNet-Peering verwenden, um Ihre Verbindung zu erstellen, solange die Konfiguration Ihres virtuellen Netzwerks bestimmte Anforderungen erfüllt. Beim VNet-Peering wird kein Gateway für das virtuelle Netzwerk verwendet. Das [VNet-Peering](../virtual-network/virtual-network-peering-overview.md) befindet sich derzeit in der Vorschauphase.
+
 
 
 ## Punkt-zu-Standort
@@ -108,7 +114,9 @@ Weitere Informationen über ExpressRoute finden Sie unter [ExpressRoute – Tech
 
 ## Parallel bestehende Site-to-Site- und ExpressRoute-Verbindungen
 
-ExpressRoute ist eine direkte, dedizierte Verbindung aus Ihrem WAN mit Microsoft Services (einschließlich Azure), die nicht über das öffentliche Internet verläuft. Site-to-Site-VPN-Datenverkehr wird verschlüsselt über das öffentliche Internet gesendet. Die Möglichkeit, Site-to-Site-VPN- und ExpressRoute-Verbindungen für dasselbe virtuelle Netzwerk zu konfigurieren, hat mehrere Vorteile. Sie können eine Site-to-Site-VPN-Verbindung als sicheren Failoverpfad für ExpressRoute konfigurieren oder für die Verbindung mit Websites nutzen, die nicht Teil Ihres Netzwerks, aber über ExpressRoute verbunden sind.
+ExpressRoute ist eine direkte, dedizierte Verbindung aus Ihrem WAN mit Microsoft Services (einschließlich Azure), die nicht über das öffentliche Internet verläuft. Site-to-Site-VPN-Datenverkehr wird verschlüsselt über das öffentliche Internet gesendet. Die Möglichkeit, Site-to-Site-VPN- und ExpressRoute-Verbindungen für dasselbe virtuelle Netzwerk zu konfigurieren, hat mehrere Vorteile.
+
+Sie können eine Site-to-Site-VPN-Verbindung als sicheren Failoverpfad für ExpressRoute konfigurieren oder für die Verbindung mit Websites nutzen, die nicht Teil Ihres Netzwerks, aber über ExpressRoute verbunden sind. Diese Konfiguration erfordert zwei virtuelle Netzwerkgateways für das gleiche virtuelle Netzwerk: eins mit „-GatewayType Vpn“ und eins mit „-GatewayType ExpressRoute“.
 
 
 ![Gleichzeitig bestehende Verbindungen](./media/vpn-gateway-about-vpngateways/demoer.png "expressroute-site2site")
@@ -131,4 +139,4 @@ Verbinden Sie Ihren lokalen Standort mit einem VNet. Weitere Informationen finde
 
  
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->

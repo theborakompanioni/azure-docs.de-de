@@ -85,10 +85,10 @@ Zu den [verfügbaren Parametern](https://github.com/Microsoft/ApplicationInsight
     // Send telemetry immediately without batching.
     // Remember to remove this when no longer required, as it
     // can affect browser performance.
-    enableDebug: true,
+    enableDebug: boolean,
 
     // Don't log browser exceptions.
-    disableExceptionTracking: true,
+    disableExceptionTracking: boolean,
 
     // Don't log ajax calls.
     disableAjaxTracking: boolean,
@@ -177,7 +177,7 @@ Klicken Sie auf eine beliebige Zeile, um besondere Details anzuzeigen.
 
 > [AZURE.NOTE] Wenn Sie den Filter „Browser“ auf dem Blatt löschen, werden sowohl die Serverabhängigkeiten als auch die AJAX-Abhängigkeiten in diese Diagramme eingebunden. Klicken Sie auf „Standard wiederherstellen“, um den Filter neu zu konfigurieren.
 
-Führen Sie zum **Ausführen eines Drilldowns für fehlgeschlagene Ajax-Aufrufe ** einen Bildlauf nach unten zum Raster mit den Abhängigkeitsfehlern aus, und klicken Sie anschließend auf eine Zeile, um bestimmte Instanzen anzuzeigen.
+Führen Sie zum **Ausführen eines Drilldowns für fehlgeschlagene Ajax-Aufrufe** einen Bildlauf nach unten zum Raster mit den Abhängigkeitsfehlern aus, und klicken Sie anschließend auf eine Zeile, um bestimmte Instanzen anzuzeigen.
 
 ![](./media/app-insights-javascript/37.png)
 
@@ -249,4 +249,4 @@ Möchten Sie herausfinden, wofür die Benutzer Ihre App verwenden?
 * [Benutzerdefinierte Ereignisse und Metriken](app-insights-api-custom-events-metrics.md)
 * [Erstellen-Messen-Lernen](app-insights-overview-usage.md)
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->

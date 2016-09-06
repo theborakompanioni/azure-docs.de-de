@@ -162,7 +162,7 @@ Sie müssen [einige ausgehende Ports](app-insights-ip-addresses.md#outgoing-port
   * Öffnen Sie die "Diagnosesuche" (die Kachel "Search"), um einzelne Ereignisse anzuzeigen. Ereignisse werden häufig in der Diagnosesuche angezeigt, bevor Aggregatdaten in den Diagrammen dargestellt werden.
   * Öffnen Sie den Statusmonitor, und wählen Sie Ihre Anwendung auf der linken Seite aus. Prüfen Sie, ob für diese Anwendung Diagnosemeldungen im Abschnitt mit den Konfigurationsbenachrichtigungen vorliegen:
 
-  ![](./media/app-insights-monitor-performance-live-website-now/appinsights-status-monitor-diagnostics-message.png)
+  ![Öffnen Sie das Blatt „Leistung“, um die Anforderung, Antwortzeit, Abhängigkeiten und andere Daten anzuzeigen.](./media/app-insights-monitor-performance-live-website-now/appinsights-status-monitor-diagnostics-message.png)
 
   * Stellen Sie sicher, dass die Firewall Ihres Servers ausgehenden Datenverkehr an die oben aufgeführten Ports erlaubt.
   * Wenn auf dem Server eine Meldung über "unzureichende Berechtigungen" angezeigt wird, versuchen Sie Folgendes:
@@ -300,4 +300,4 @@ Wenn sich die Web-App in Azure befindet und Sie Ihre Ressourcen mit einer Azure 
 [roles]: app-insights-resources-roles-access-control.md
 [usage]: app-insights-web-track-usage.md
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->

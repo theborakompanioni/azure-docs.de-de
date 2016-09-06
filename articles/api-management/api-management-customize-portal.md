@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="08/09/2016"
+	ms.date="08/24/2016"
 	ms.author="sdanie"/>
 
 # Anpassen des Entwicklerportals in Azure API Management
@@ -78,7 +78,7 @@ Klicken Sie auf die Willkommensseite, um den Inhalt zu bearbeiten, der auf der S
 
 ## <a name="next-steps"> </a>Nächste Schritte
 
--	Lesen Sie die anderen Themen im Lernprogramm [Erste Schritte bei der erweiterten API-Konfiguration][].
+-	Erfahren Sie, wie Sie den Inhalt von Enwicklerportalseiten mithilfe von [Entwicklerportalvorlagen](api-management-developer-portal-templates.md) anpassen.
 
 [Change the text/logo in the page headers]: #change-page-headers
 [Change the styling of the headers]: #change-headers-styling
@@ -95,8 +95,7 @@ Klicken Sie auf die Willkommensseite, um den Inhalt zu bearbeiten, der auf der S
 [api-management-customization-manage-content]: ./media/api-management-customize-portal/api-management-customization-manage-content.png
 
 
-[Erste Schritte bei der erweiterten API-Konfiguration]: api-management-get-started-advanced.md
 [bootstrap]: http://getbootstrap.com/
 [LESS-Variablen]: http://getbootstrap.com/css/
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0831_2016-->

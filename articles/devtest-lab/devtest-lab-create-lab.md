@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="06/01/2016"
+	ms.date="08/25/2016"
 	ms.author="tarcher"/>
 
 # Erstellen eines Labs in Azure DevTest Labs
@@ -46,11 +46,13 @@ Zum Erstellen eines Labs benötigen Sie Folgendes:
 
     ![Erstellen eines Lab-Blatts](./media/devtest-lab-create-lab/create-devtestlab-blade.png)
 
+[AZURE.INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
+
 ## Nächste Schritte
 
 Nachdem das Lab erstellt wurde, sollten Sie ggf. die folgenden Schritte ausführen:
 
-- [Sicherer Zugriff auf ein Lab](devtest-lab-add-devtest-user.md)
+- [Sicherstellen des Zugriffs auf ein Lab](devtest-lab-add-devtest-user.md).
 
 - [Festlegen von Labrichtlinien](devtest-lab-set-lab-policy.md).
 
@@ -58,6 +60,6 @@ Nachdem das Lab erstellt wurde, sollten Sie ggf. die folgenden Schritte ausführ
 
 - [Erstellen benutzerdefinierter Artefakte für Ihre VMs](devtest-lab-artifact-author.md).
 
-- [Hinzufügen einer VM mit Artefakten zu einem Lab](devtest-lab-add-vm-with-artifacts.md)
+- [Hinzufügen eines virtuellen Computers mit Artefakten zu einem Lab](devtest-lab-add-vm-with-artifacts.md).
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0831_2016-->

@@ -67,7 +67,7 @@ Einige der folgenden Ressourcen – Konten, Computeknoten, Pools, Aufträge, Tas
 
 ## Konto
 
-Ein Batch-Konto ist eine eindeutig identifizierte Entität innerhalb des Batch-Diensts. Die gesamte Verarbeitung ist einem Batch-Konto zugeordnet. Beim Ausführen von Vorgängen mit dem Batch-Dienst benötigen Sie sowohl den Kontonamen als auch einen der dazugehörigen Kontoschlüssel. Sie können ein [Azure Batch-Konto im Azure-Portal erstellen und verwalten](batch-account-create-portal.md).
+Ein Batch-Konto ist eine eindeutig identifizierte Entität innerhalb des Batch-Diensts. Die gesamte Verarbeitung ist einem Batch-Konto zugeordnet. Beim Ausführen von Vorgängen mit dem Batch-Dienst benötigen Sie sowohl den Kontonamen als auch einen der dazugehörigen Kontoschlüssel. Sie können [über das Azure-Portal ein Azure Batch-Konto erstellen](batch-account-create-portal.md).
 
 ## Computeknoten
 
@@ -518,4 +518,4 @@ Wenn bei einigen Ihrer Tasks Fehler auftreten, kann Ihre Batch-Clientanwendung o
 
 [vm_marketplace]: https://azure.microsoft.com/marketplace/virtual-machines/
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->
