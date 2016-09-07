@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="04/26/2016"
+   ms.date="08/23/2016"
    ms.author="curtand"/>
 
 # Verwaltung von Verwaltungseinheiten in Azure AD - Öffentliche Vorschau
@@ -37,4 +37,4 @@ Weitere Informationen zu Softwareanforderungen und der Installation des Azure AD
 ## Nächste Schritte
 [Azure Active Directory-Editionen](active-directory-editions.md)
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0824_2016-->

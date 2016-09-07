@@ -4,7 +4,7 @@
    services=""
    documentationCenter="na"
    authors="adamglick"
-   manager="hongfeig"
+   manager="saladki"
    editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="08/01/2016"
+   ms.date="08/18/2016"
    ms.author="aglick"/>
 
 #Technischer Leitfaden zur Resilienz in Azure – Wiederherstellung nach lokalen Ausfällen in Azure
@@ -160,23 +160,23 @@ Anwendungen, die unter Azure erstellt werden, profitieren von Plattformfunktione
 
 ###Service Bus
 
-Um die Risiken durch einen vorübergehenden Ausfall von Azure Service Bus zu minimieren, können Sie eine dauerhafte clientseitige Warteschlange erstellen. Diese Warteschlange verwendet vorübergehend einen alternativen, lokalen Speichermechanismus, um Nachrichten zu speichern, die der Service Bus-Warteschlange nicht hinzugefügt werden können. Die Anwendung kann entscheiden, wie die temporär gespeicherten Nachrichten verarbeitet werden sollen, nachdem der Dienst wiederhergestellt wurde. Weitere Informationen finden Sie unter [Bewährte Methoden für Leistungsoptimierungen mithilfe von Service Bus-Brokermessaging](../service-bus/service-bus-performance-improvements.md) und [Service Bus (Notfallwiederherstellung)](./resiliency-technical-guidance-recovery-loss-azure-region.md#service-bus).
+Um die Risiken durch einen vorübergehenden Ausfall von Azure Service Bus zu minimieren, können Sie eine dauerhafte clientseitige Warteschlange erstellen. Diese Warteschlange verwendet vorübergehend einen alternativen, lokalen Speichermechanismus, um Nachrichten zu speichern, die der Service Bus-Warteschlange nicht hinzugefügt werden können. Die Anwendung kann entscheiden, wie die temporär gespeicherten Nachrichten verarbeitet werden sollen, nachdem der Dienst wiederhergestellt wurde. Weitere Informationen finden Sie unter [Bewährte Methoden für Leistungsoptimierungen mithilfe von Service Bus-Brokermessaging](../service-bus/service-bus-performance-improvements.md) sowie unter [Service Bus (Notfallwiederherstellung)](./resiliency-technical-guidance-recovery-loss-azure-region.md#other-azure-platform-services).
 
 ###Mobile Services
 
 Es gibt zwei Überlegungen zur Verfügbarkeit für Azure Mobile Services. Erstens: Sichern Sie regelmäßig die SQL-Datenbank-Instanz, die mit Ihrem mobilen Dienst verknüpft ist. Zweitens: Sichern Sie die Skripts für den mobilen Dienst. Weitere Informationen finden Sie unter [Notfallwiederherstellung mobiler Dienste](../mobile-services/mobile-services-disaster-recovery.md).
 
-Bei einem temporären Ausfall von Mobile Services müssen Sie möglicherweise vorübergehend ein alternatives Azure-Rechenzentrum verwenden. Weitere Informationen finden Sie unter [Mobile Services (Notfallwiederherstellung)](./resiliency-technical-guidance-recovery-loss-azure-region.md#mobile-services).
+Bei einem temporären Ausfall von Mobile Services müssen Sie möglicherweise vorübergehend ein alternatives Azure-Rechenzentrum verwenden. Weitere Informationen finden Sie unter [Mobile Services (Notfallwiederherstellung)](./resiliency-technical-guidance-recovery-loss-azure-region.md#other-azure-platform-services).
 
 ###HDInsight
 
-Die mit Azure HDInsight verknüpften Daten werden standardmäßig in Azure Blob Storage gespeichert. Azure Storage stellt Eigenschaften für hohe Verfügbarkeit und Dauerhaftigkeit für Blob Storage bereit. Die Verarbeitung über mehrere Knoten hinweg, die für Hadoop MapReduce-Aufträge erforderlich ist, erfolgt auf einem vorübergehenden Hadoop Distributed File System (HDFS), das bei Bedarf für HDInsight bereitgestellt wird. Die Ergebnisse eines MapReduce-Auftrags werden standardmäßig auch in Azure Blob Storage gespeichert, sodass die verarbeiteten Daten dauerhaft und hoch verfügbar sind, nachdem die Bereitstellung des Hadoop-Clusters aufgehoben wurde. Weitere Informationen finden Sie unter [HDInsight (Notfallwiederherstellung)](./resiliency-technical-guidance-recovery-loss-azure-region.md#hdinsight).
+Die mit Azure HDInsight verknüpften Daten werden standardmäßig in Azure Blob Storage gespeichert. Azure Storage stellt Eigenschaften für hohe Verfügbarkeit und Dauerhaftigkeit für Blob Storage bereit. Die Verarbeitung über mehrere Knoten hinweg, die für Hadoop MapReduce-Aufträge erforderlich ist, erfolgt auf einem vorübergehenden Hadoop Distributed File System (HDFS), das bei Bedarf für HDInsight bereitgestellt wird. Die Ergebnisse eines MapReduce-Auftrags werden standardmäßig auch in Azure Blob Storage gespeichert, sodass die verarbeiteten Daten dauerhaft und hoch verfügbar sind, nachdem die Bereitstellung des Hadoop-Clusters aufgehoben wurde. Weitere Informationen finden Sie unter [HDInsight (Notfallwiederherstellung)](./resiliency-technical-guidance-recovery-loss-azure-region.md#other-azure-platform-services).
 
 ##Prüflisten für lokale Fehler
 
 ###Cloud Services
 
-  1. Lesen Sie den Abschnitt [Cloud Services](#cloud-services) in diesem Dokument.
+  1. Lesen Sie den Abschnitt zu Cloud Services in diesem Dokument.
   2. Konfigurieren Sie mindestens zwei Instanzen für jede Rolle.
   3. Speichern Sie den Status in einem permanenten Speicher, nicht in Rolleninstanzen.
   4. Verarbeiten Sie das StatusCheck-Ereignis richtig.
@@ -187,40 +187,40 @@ Die mit Azure HDInsight verknüpften Daten werden standardmäßig in Azure Blob 
 
 ###Virtual Machines
 
-  1. Lesen Sie den Abschnitt [Virtual Machines](#virtual-machines) in diesem Dokument.
+  1. Lesen Sie den Abschnitt zu Virtual Machines in diesem Dokument.
   2. Verwenden Sie Laufwerk D nicht zum dauerhaften Speichern.
   3. Gruppieren Sie Computer einer Dienstebene in einer Verfügbarkeitsgruppe.
   4. Konfigurieren Sie den Lastenausgleich und optionale Tests.
 
 ###Speicher
 
-  1. Lesen Sie den Abschnitt [Speicher](#storage) in diesem Dokument.
+  1. Lesen Sie den Abschnitt zu Storage in diesem Dokument.
   2. Verwenden Sie mehrere Speicherkonten, wenn Daten oder Bandbreite das Kontingent überschreiten.
 
 ###SQL-Datenbank
 
-  1. Lesen Sie den Abschnitt [SQL-Datenbank](#sql-database) in diesem Dokument.
+  1. Lesen Sie den Abschnitt zu SQL-Datenbank in diesem Dokument.
   2. Implementieren Sie eine Wiederholungsrichtlinie zum Verarbeiten von vorübergehenden Fehlern.
   3. Verwenden Sie Partitionierung/Sharding als Strategie zum horizontalen Hochskalieren.
 
 ###SQL Server auf virtuellen Computern
 
-  1. Lesen Sie den Abschnitt [SQL Server auf Virtual Machines](#sql-server-on-virtual-machines) in diesem Dokument.
+  1. Lesen Sie den Abschnitt zu SQL Server auf Virtual Machines in diesem Dokument.
   2. Befolgen Sie die vorherigen Empfehlungen für Virtual Machines.
   3. Verwenden Sie die Hochverfügbarkeitsfunktionen von SQL Server, z.B. AlwaysOn.
 
 ###Service Bus
 
-  1. Lesen Sie den Abschnitt [Service Bus](#service-bus) in diesem Dokument.
+  1. Lesen Sie den Abschnitt zu Service Bus in diesem Dokument.
   2. Erstellen Sie ggf. eine dauerhafte clientseitige Warteschlange.
 
 ###HDInsight
 
-  1. Lesen Sie den Abschnitt [HDInsight](#hdinsight) in diesem Dokument.
+  1. Lesen Sie den Abschnitt zu HDInsight in diesem Dokument.
   2. Es sind keine zusätzlichen Schritte erforderlich, um die Verfügbarkeit bei lokalen Fehlern sicherzustellen.
 
 ##Nächste Schritte
 
 Dieser Artikel gehört zu einer Reihe von Artikeln, die als [Technischer Leitfaden zur Resilienz in Azure](./resiliency-technical-guidance.md) dienen. Der nächste Artikel dieser Reihe ist [Wiederherstellung nach einer regionsweiten Dienstunterbrechung](./resiliency-technical-guidance-recovery-loss-azure-region.md).
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0824_2016-->

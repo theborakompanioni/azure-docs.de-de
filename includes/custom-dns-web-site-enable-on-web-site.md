@@ -1,27 +1,25 @@
 Nachdem die Datensätze für Ihren Domänennamen weitergegeben wurden, müssen Sie sie Ihrer Web-App zuweisen. Verwenden Sie die folgenden Schritte, um die Domänennamen mit dem Webbrowser zu aktivieren.
 
-> [AZURE.NOTE] Es kann einige Zeit dauern, bis die CNAME-Einträge, die in den vorherigen Schritten erstellt wurden, über das DNS-System weitergegeben werden. Sie können den Domänennamen Ihrer Web-App erst dann hinzufügen, nachdem CNAME weitergegeben wurde. Wenn Sie einen A-Datensatz verwenden, können Sie den Domänennamen des A-Datensatzes erst dann der Web-App hinzufügen, wenn der im vorigen Schritt erstellte CNAME **awverify** weitergegeben wurde.
+> [AZURE.NOTE] Es kann einige Zeit dauern, bis die TXT-Einträge, die in den vorherigen Schritten erstellt wurden, über das DNS-System weitergegeben werden. Sie können den Domänennamen Ihrer Web-App erst hinzufügen, nachdem der TXT-Eintrag weitergegeben wurde. Wenn Sie einen A-Eintrag verwenden, können Sie den Domänennamen des A-Eintrags erst dann der Web-App hinzufügen, wenn der im vorherigen Schritt erstellte TXT-Eintrag weitergegeben wurde.
 >
-> Mithilfe eines Services wie <a href="http://www.digwebinterface.com/">http://www.digwebinterface.com/</a> können Sie überprüfen, ob der CNAME verfügbar ist.
+> Mithilfe eines Diensts wie <a href="http://www.digwebinterface.com/">http://www.digwebinterface.com/</a> können Sie überprüfen, ob der TXT-Eintrag verfügbar ist.
 
-1. Öffnen Sie in Ihrem Browser das [Azure-Portal](https://portal.azure.com).
+1. Öffnen Sie das [Azure-Portal](https://portal.azure.com) in Ihrem Browser.
 
-2. Klicken Sie auf der Registerkarte **Web-Apps** auf den Namen der Web-App, wählen Sie **Einstellungen** und dann **Benutzerdefinierte Domänen und SSL** aus.
+2. Klicken Sie auf der Registerkarte **Web-Apps** auf den Namen der Web-App, und wählen Sie **Benutzerdefinierte Domänen** aus.
 
 	![](./media/custom-dns-web-site/dncmntask-cname-6.png)
 
-3. Klicken Sie auf dem Blatt **Benutzerdefinierte Domänen und SSL** auf **Externe Domänen verwenden**.
+3. Klicken Sie auf dem Blatt **Benutzerdefinierte Domänen** auf **Hostnamen hinzufügen**.
+	
+4. Verwenden Sie die Textfelder **Hostname**, um die Domänennamen einzugeben, die dieser Web-App zugeordnet werden sollen.
 
-	![](./media/custom-dns-web-site/dncmntask-cname-7.png)
+	![](./media/custom-dns-web-site/add-custom-domain.png)
 
-4. Verwenden Sie die Textfelder **DOMÄNENNAMEN**, um die Domänennamen einzugeben, die dieser Web-App zugewiesen werden sollen.
+6.  Klicken Sie auf **Überprüfen**.
 
-	![](./media/custom-dns-web-site/dncmntask-cname-8.png)
-
-5. Klicken Sie auf **Speichern**, um die Domänennamenkonfiguration zu speichern.
-
-	Sobald die Konfiguration abgeschlossen ist, wird der benutzerdefinierte Domänenname im Abschnitt **Hostnamenbindungen** Ihrer Web-App aufgeführt.
+7.  Nach dem Klicken auf **Überprüfen** startet Azure den Workflow zur Domänenüberprüfung. Dieser Workflow überprüft den Domänenbesitz sowie die Verfügbarkeit des Hostnamens und meldet die erfolgreiche Durchführung oder erstellt einen detaillierten Fehlerbericht mit Empfehlungen, wie der Fehler behoben werden kann.
 
 Jetzt sollten Sie den benutzerdefinierten Domänennamen in Ihren Browser eingeben können und und auf diese Weise erfolgreich zu Ihrer Web-App gelangen.
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0824_2016-->

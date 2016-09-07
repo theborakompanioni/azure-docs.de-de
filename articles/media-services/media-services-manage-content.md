@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/22/2016"  
+	ms.date="08/17/2016"  
 	ms.author="juliako"/>
 
 
@@ -24,7 +24,7 @@ In diesem Thema wird veranschaulicht, wie Sie mit dem klassischen Azure-Portal M
 
 In diesem Thema wird erläutert, wie Sie die folgenden Inhaltsvorgänge direkt über das Portal durchführen können:
 
-- Anzeigen von Inhaltsinformationen wie Veröffentlichungsstatus, veröffentlichte URL, Größe, Datum/Uhrzeit der letzten Aktualisierung und ob das Medienobjekt verschlüsselt ist.
+- Anzeigen von Inhaltsinformationen wie Veröffentlichungsstatus, veröffentlichte URL, Größe, Datum/Uhrzeit der letzten Aktualisierung und ob das Medienobjekt verschlüsselt ist
 - Hochladen neuer Inhalte
 - Indizieren von Inhalten
 - Codieren von Inhalten
@@ -46,12 +46,12 @@ In diesem Thema wird erläutert, wie Sie die folgenden Inhaltsvorgänge direkt �
 
 	![Dialogfeld "Inhalte hochladen"][uploadcontent]
 
-5. Klicken Sie im Dialogfeld "Inhalte hochladen" auf das Häkchen, um die Datei und den Inhaltsnamen zu akzeptieren.
-6. Das Hochladen beginnt, und Sie können den Fortschritt unten im Portal verfolgen.
+5. Klicken Sie im Dialogfeld "Inhalte hochladen" auf den Häkchenknopf, um die Datei und den Inhaltsnamen zu akzeptieren.
+6. Der Upload wird gestartet. Sie können den Fortschritt unten im Portal verfolgen.
 
 	![Auftragsstatus][status]
 
-Wenn der Upload abgeschlossen ist, wird in der Liste "Inhalt" das neue Medienobjekt aufgeführt. Entsprechend der Namenskonvention wird "**-Source**" an das Ende gehängt, damit neue Inhalte als Quellinhalte für Codieraufgaben erfasst werden können.
+Wenn der Upload abgeschlossen ist, wird das neue Medienobjekt in der Liste „Inhalt“ aufgeführt. Entsprechend der Namenskonvention wird „**-Source**“ an das Ende angehängt, damit neue Inhalte als Quellinhalte für Codieraufgaben erfasst werden können.
 
 ![Inhaltsseite][contentpage]
 
@@ -67,7 +67,10 @@ Mit dem Azure Media Indexer können Sie die Inhalte Ihrer Mediendateien durchsuc
 
 Die folgenden Schritte veranschaulichen, wie Sie das klassische Azure-Portal verwenden, um die Inhalte zu indizieren.
 
-1. Wählen Sie die Datei aus, die Sie indizieren möchten. Wenn die Indizierung für diesen Dateityp unterstützt wird, wird die Schaltfläche "Prozess" unten auf der Inhaltsseite aktiviert.
+1. Wählen Sie die Datei aus, die Sie indizieren möchten.
+
+	Wenn die Indizierung für diesen Dateityp unterstützt wird, wird die Schaltfläche „Prozess“ unten auf der Inhaltsseite aktiviert.
+	
 1. Klicken Sie auf die Schaltfläche „Prozess“.
 2. Wählen Sie im Dialogfeld **Prozess** den **Azure Media Indexer**-Prozessor aus.
 3. Anschließend füllen Sie im Dialogfeld "Prozess" die Informationen zu **Titel** und **Beschreibung** der Eingabe-Mediendatei aus.
@@ -85,32 +88,33 @@ Um digitale Videos über das Internet zu übermitteln, müssen Sie die Medien ko
 
 Bei der Arbeit mit Azure Media Services ist eines der häufigsten Szenarios das Streaming mit adaptiver Bitrate an Clients. Beim Streaming mit adaptiver Bitrate kann der Client während der Videodarstellung abhängig von der aktuellen Netzwerkbandbreite, CPU-Auslastung und anderen Faktoren auf einen Stream mit höherer oder niedrigerer Bitrate wechseln. Von Media Services werden die folgenden Streamingtechnologien mit adaptiver Bitrate unterstützt: HTTP Live Streaming (HLS), Smooth Streaming, MPEG DASH und HDS (nur mit Adobe PrimeTime/Access-Lizenz).
 
-Media Services bietet dynamische Paketerstellung zum Übermitteln Ihrer MP4-Dateien mit adaptiver Bitrate oder Smooth Streaming-codierten Inhalte in Streamingformaten, die von Media Services unterstützt werden (MPEG DASH, HLS, Smooth Streaming, HDS), ohne dass Sie diese Streamingformate erneut verpacken müssen.
+Media Services bietet dynamische Paketerstellung zum Übermitteln Ihrer MP4-Dateien mit adaptiver Bitrate oder Smooth Streaming-codierter Inhalte in Streamingformaten, die von Media Services unterstützt werden (MPEG DASH, HLS, Smooth Streaming, HDS), ohne dass Sie diese Streamingformate erneut verpacken müssen.
 
 Um die dynamische Paketerstellung nutzen zu können, müssen Sie folgende Schritte ausführen:
 
 - Codieren Ihrer Zwischendatei (Quelle) in einen Satz von MP4-Dateien oder Smooth Streaming-Dateien mit adaptiver Bitrate (die Codierungsschritte werden weiter unten in diesem Lernprogramm beschrieben)
 - Abrufen von mindestens einer On-Demand-Streamingeinheit für den Streamingendpunkt, von dem aus Sie die Bereitstellung Ihrer Inhalte planen. Weitere Informationen finden Sie unter [Skalieren von reservierten Einheiten für bedarfsgesteuertes Streaming](media-services-manage-origins.md#scale_streaming_endpoints/).
 
-Mit der dynamischen Paketerstellung müssen Sie die Dateien nur in einem Speicherformat speichern und bezahlen. Media Services erstellt und verarbeitet die entsprechende Antwort basierend auf Anforderungen von einem Client.
+Mit der dynamischen Paketerstellung müssen Sie die Dateien nur in einem einzelnen Speicherformat speichern und bezahlen. Media Services erstellt und verarbeitet die entsprechende Antwort basierend auf Anforderungen von einem Client.
 
-Beachten Sie, dass die reservierten Einheiten für On-Demand-Streaming Ihnen zusätzlich zur dynamischen Paketerstellung auch eine dedizierte Ausgangskapazität bereitstellen, die in Schritten von 200 Mbit/s erworben werden kann. Standardmäßig wird das bedarfsgesteuerte Streaming in einem Modell mit einer gemeinsam genutzten Instanz konfiguriert, für das Serverressourcen (z. B. Rechen- und Ausgangskapazität usw.) mit allen anderen Benutzern gemeinsam genutzt werden. Um den Durchsatz des bedarfsgesteuerten Streamings zu erhöhen, sollten Sie reservierte Einheiten für On-Demand Streaming kaufen.
+Zusätzlich zur dynamischen Paketerstellung ermöglichen Ihnen die reservierten Einheiten für On-Demand-Streaming auch die Bereitstellung einer dedizierten Ausgangskapazität, die in Schritten von 200 Mbit/s erworben werden kann. Standardmäßig wird das bedarfsgesteuerte Streaming in einem Modell mit einer gemeinsam genutzten Instanz konfiguriert, für das Serverressourcen (z.B. Rechen- oder Ausgangskapazität) mit allen anderen Benutzern gemeinsam genutzt werden. Um den Durchsatz des bedarfsgesteuerten Streamings zu erhöhen, sollten Sie reservierte Einheiten für On-Demand Streaming kaufen.
 
 Dieser Abschnitt beschreibt die Schritte, die Sie ausführen können, um Ihre Inhalte mit Media Encoder Standard im klassischen Azure-Portal zu codieren.
 
 1.  Wählen Sie die Datei aus, die Sie codieren möchten.
 
-  Wenn die Codierung für diesen Dateityp unterstützt wird, wird die Schaltfläche "Prozess" unten auf der Inhaltsseite aktiviert.
-4. Wählen Sie im Dialogfeld **Prozess** den **Media Encoder Standard**-Prozessor aus.
-5. Wählen Sie eine der **Codierungskonfigurationen** aus.
+	Wenn die Codierung für diesen Dateityp unterstützt wird, wird die Schaltfläche „Prozess“ unten auf der Inhaltsseite aktiviert.
 
-![Prozess2][process2]
+2. Wählen Sie im Dialogfeld **Prozess** den **Media Encoder Standard**-Prozessor aus.
+3. Wählen Sie eine der **Codierungskonfigurationen** aus.
+
+	![Prozess2][process2]
 
 
-Im Thema [Vordefinierte für MWS (Media Encoder-Standard)](https://msdn.microsoft.com/library/mt269960) werden die einzelnen Voreinstellungen näher beschrieben.
+	Im Thema [Aufgabenvoreinstellungen für den Azure Media Encoder](https://msdn.microsoft.com/library/mt269960) werden die einzelnen Voreinstellungen näher beschrieben.
 
-5. Anschließend geben Sie den gewünschten Anzeigenamen für den Inhalt ein oder übernehmen den Standardnamen. Klicken Sie anschließend auf das Häkchen, um den Codiervorgang zu starten. Den Fortschritt des Vorgangs können Sie unten im Portal verfolgen.
-6. Klicken Sie auf "OK".
+4. Anschließend geben Sie den gewünschten Anzeigenamen für den Inhalt ein oder übernehmen den Standardnamen. Klicken Sie anschließend auf das Häkchen, um den Codiervorgang zu starten. Den Fortschritt des Vorgangs können Sie unten im Portal verfolgen.
+5. Klicken Sie auf "OK".
 
 Nach Abschluss der Codierung enthält die Inhaltsseite die codierte Datei.
 
@@ -148,7 +152,7 @@ Siehe auch:
 
 ###Übersicht
 
-Um Ihren Benutzern eine URL für das Streaming bzw. Herunterladen des Inhalts angeben zu können, müssen Sie zunächst das Medienobjekt "veröffentlichen", indem Sie einen Locator erstellen. Locator ermöglichen den Zugriff auf Dateien im Medienobjekt. Media Services unterstützt zwei Locator-Typen: OnDemandOrigin-Locator zum Streamen von Medien (z. B. MPEG DASH, HLS oder Smooth Streaming) und Access Signature (SAS)-Locator zum Herunterladen von Mediendateien.
+Um Ihren Benutzern eine URL für das Streaming bzw. Herunterladen des Inhalts angeben zu können, müssen Sie zunächst das Medienobjekt "veröffentlichen", indem Sie einen Locator erstellen. Locators ermöglichen den Zugriff auf Dateien im Medienobjekt. Media Services unterstützt zwei Locator-Typen: OnDemandOrigin-Locator zum Streamen von Medien (z. B. MPEG DASH, HLS oder Smooth Streaming) und Access Signature (SAS)-Locator zum Herunterladen von Mediendateien.
 
 Wenn Sie Ihre Medienobjekte über das klassische Azure-Verwaltungsportal veröffentlichen, werden die Locators für Sie erstellt und eine OnDemandOrigin-basierte URL (wenn Ihr Medienobjekt eine ISM-Datei enthält) oder eine SAS-URL bereitgestellt.
 
@@ -164,14 +168,14 @@ Um eine HLS-Streaming-URL zu erstellen, fügen Sie "(format=m3u8-aapl)" an die U
 
 	{streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=m3u8-aapl)
 
-Um eine MPEG DASH-Streaming-URL zu erstellen, fügen Sie "(format=mpd-time-csf)" an die URL an.
+Um eine MPEG DASH-Streaming-URL zu erstellen, fügen Sie „(format=mpd-time-csf)“ an die URL an.
 
 	{streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=mpd-time-csf)
 
 
 Locator verfügen über ein Ablaufdatum. Wenn Sie Medienobjekte über das Portal veröffentlichen, werden Locator mit einem Ablaufdatum von 100 Jahren erstellt.
 
->[AZURE.NOTE] Die vor März 2015 über das Portal erstellten Locator weisen ein Ablaufdatum von zwei Jahren auf.
+>[AZURE.NOTE] Ein vor März 2015 über das Portal erstellter Locator weist ein Ablaufdatum von zwei Jahren auf.
 
 Verwenden Sie zum Aktualisieren des Ablaufdatums für einen Locator die [REST](http://msdn.microsoft.com/library/azure/hh974308.aspx#update_a_locator)- oder [.NET](http://go.microsoft.com/fwlink/?LinkID=533259)-APIs. Wenn Sie das Ablaufdatum eines SAS-Locators aktualisieren, ändert sich auch die URL.
 
@@ -222,4 +226,4 @@ Folgende Überlegungen sollten berücksichtigt werden:
 [encrypt]: ./media/media-services-manage-content/media-services-encrypt-content.png
 [AMSPlayer]: ./media/media-services-manage-content/media-services-portal-player.png
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0824_2016-->

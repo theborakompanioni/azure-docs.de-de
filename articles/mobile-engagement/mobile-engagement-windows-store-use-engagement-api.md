@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-windows-store" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="05/03/2016" 
+	ms.date="08/19/2016" 
 	ms.author="piyushjo" />
 
 #Verwenden der Engagement-API auf der universellen Windows-Plattform
@@ -36,13 +36,13 @@ In den folgenden Abschnitten werden die [Mobile Engagement-Konzepte](mobile-enga
 
 Eine *Aktivität* ist normalerweise einer Seite der Anwendung zugeordnet, d. h. die *Aktivität* beginnt, wenn die Seite angezeigt wird, und wird beendet, wenn die Seite geschlossen wird: Dies ist der Fall, wenn das Engagement-SDK unter Verwendung der `EngagementPage`-Klasse integriert worden ist.
 
-*Aktivitäten* können aber auch manuell mithilfe der Engagement-API gesteuert werden. Auf diese Weise kann eine bestimmte Seite in mehrere Teile unterteilt werden, um weitere Informationen über die Verwendung dieser Seite zu erhalten (z. B. um zu erfahren, wie oft und wie lange Dialoge innerhalb dieser Seite verwendet werden).
+*Aktivitäten* können aber auch manuell mithilfe der Engagement-API gesteuert werden. Auf diese Weise können Sie eine bestimmte Seite in mehrere Teile unterteilen, um weitere Informationen zur Verwendung dieser Seite zu erhalten und etwa zu erfahren, wie oft und wie lange Dialogfelder im Rahmen dieser Seite verwendet werden.
 
 ##Berichterstellung für Aktivitäten
 
 ### Benutzer startet eine neue Aktivität
 
-#### Verweis
+#### Referenz
 
 			void StartActivity(string name, Dictionary<object, object> extras = null)
 
@@ -56,7 +56,7 @@ Sie müssen jedes Mal `StartActivity()` aufrufen, wenn sich die Benutzeraktivit�
 
 ### Der Benutzer beendet seine aktuelle Aktivität
 
-#### Referenz-
+#### Referenz
 
 			void EndActivity()
 
@@ -70,7 +70,7 @@ Damit werden die Aktivität und die Sitzung beendet. Sie sollten diese Methode n
 
 ### Starten eines Auftrags
 
-#### Referenz-
+#### Referenz
 
 			void StartJob(string name, Dictionary<object, object> extras = null)
 
@@ -89,7 +89,7 @@ Sie können den Auftrag verwenden, um bestimmte Aufgaben eine Zeit lang nachzuve
 
 ### Beenden eines Auftrags
 
-#### Verweis
+#### Referenz
 
 			void EndJob(string name)
 
@@ -112,7 +112,7 @@ Es gibt drei Arten von Ereignissen:
 
 ### Eigenständige Ereignisse
 
-#### Verweis
+#### Referenz
 
 			void SendEvent(string name, Dictionary<object, object> extras = null)
 
@@ -124,7 +124,7 @@ Eigenständige Ereignisse können außerhalb des Kontexts einer Sitzung auftrete
 
 ### Sitzungsereignisse
 
-#### Verweis
+#### Referenz
 
 			void SendSessionEvent(string name, Dictionary<object, object> extras = null)
 
@@ -148,7 +148,7 @@ Sitzungsereignisse werden normalerweise verwendet, um die Aktionen eines Benutze
 
 ### Auftragsereignisse
 
-#### Referenz-
+#### Referenz
 
 			void SendJobEvent(string eventName, string jobName, Dictionary<object, object> extras = null)
 
@@ -160,7 +160,7 @@ Auftragsereignisse werden normalerweise verwendet, um die Aktionen eines Benutze
 
 ##Melden von Fehlern
 
-Es gibt drei Arten von Fehlern:
+Es gibt drei Fehlertypen:
 
 -   Eigenständige Fehler
 -   Sitzungsfehler
@@ -168,7 +168,7 @@ Es gibt drei Arten von Fehlern:
 
 ### Eigenständige Fehler
 
-#### Referenz-
+#### Referenz
 
 			void SendError(string name, Dictionary<object, object> extras = null)
 
@@ -180,7 +180,7 @@ Im Gegensatz zu Sitzungsfehlern können eigenständige Fehler außerhalb des Kon
 
 ### Sitzungsfehler
 
-#### Verweis
+#### Referenz
 
 			void SendSessionError(string name, Dictionary<object, object> extras = null)
 
@@ -192,7 +192,7 @@ Sitzungsfehler werden normalerweise zum Melden der Fehler verwendet, die Auswirk
 
 ### Auftragsfehler
 
-#### Referenz-
+#### Referenz
 
 			void SendJobError(string errorName, string jobName, Dictionary<object, object> extras = null)
 
@@ -208,7 +208,7 @@ Der Agent stellt zwei Methoden für den Umgang mit Abstürzen zur Verfügung.
 
 ### Senden einer Ausnahme
 
-#### Verweis
+#### Referenz
 
 			void SendCrash(Exception e, bool terminateSession = false)
 
@@ -226,7 +226,7 @@ Wenn Sie dies tun, werden die Sitzung und die Aufträge direkt nach dem Senden d
 
 ### Senden Sie eine nicht behandelte Ausnahme
 
-#### Verweis
+#### Referenz
 
 			void SendCrash(Exception e)
 
@@ -329,7 +329,7 @@ Extras sind beschränkt auf **1024** Zeichen pro Aufruf.
 
 Sie können Nachverfolgungsinformationen (oder beliebige andere anwendungsspezifische Informationen) manuell mithilfe der SendAppInfo()-Funktion melden.
 
-Beachten Sie, dass diese Informationen inkrementell gesendet werden können: Nur der letzte Wert für einen bestimmten Schlüssel wird für ein bestimmtes Gerät gespeichert. Verwenden Sie wie bei Ereignisextras ein Wörterbuch <Objekt, Objekt>, um Informationen anzufügen.
+Beachten Sie, dass diese Daten inkrementell gesendet werden können: Nur der letzte Wert für einen bestimmten Schlüssel wird für ein bestimmtes Gerät gespeichert. Verwenden Sie wie bei Ereignisextras ein Dictionary<Objekt, Objekt>-Element, um Daten anzufügen.
 
 ### Beispiel
 
@@ -353,9 +353,9 @@ Das bedeutet, dass Schlüssel mit mindestens einem Buchstaben, gefolgt von Buchs
 
 #### Größe
 
-Anwendungsinformationen sind beschränkt auf **1024** Zeichen pro Aufruf.
+Anwendungsinformationen sind auf **1024** Zeichen pro Aufruf beschränkt.
 
-Im vorherigen Beispiel enthält das an den Server gesendete JSON 44 Zeichen:
+Im vorherigen Beispiel enthält die an den Server gesendete JSON 44 Zeichen:
 
 			{"birthdate":"1983-12-07","gender":"female"}
 
@@ -368,4 +368,4 @@ Das SDK kann zum Erzeugen von Testprotokollen in der IDE-Konsole konfiguriert we
 			EngagementAgent.Instance.Init();
  
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0824_2016-->

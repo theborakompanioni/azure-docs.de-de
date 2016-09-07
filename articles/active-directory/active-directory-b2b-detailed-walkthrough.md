@@ -96,4 +96,4 @@ Weitere Artikel zur Azure AD B2B-Zusammenarbeit:
 - [Aktuelle Einschränkungen der Vorschau](active-directory-b2b-current-preview-limitations.md)
 - [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](active-directory-apps-index.md)
 
-<!----HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0831_2016-->

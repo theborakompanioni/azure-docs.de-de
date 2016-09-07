@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/06/2016"
+	ms.date="08/17/2016"
 	ms.author="genli"/>
 
 # Hinzufügen oder Ändern von Azure-Administratorrollen
@@ -29,11 +29,13 @@ In Microsoft Azure stehen drei verschiedene Administratorrollen zur Verfügung:
 
 > [AZURE.NOTE] Die rollenbasierte Zugriffssteuerung in Azure Active Directory (RBAC, Role-based Access Control) ermöglicht es, Benutzer mehreren Rollen hinzuzufügen. Weitere Informationen finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure Active Directory](./active-directory/role-based-access-control-configure.md).
 
+> [AZURE.NOTE] Wenn Sie bei irgendeinem Verfahren in diesem Artikel weitere Hilfe benötigen, [wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), um das Problem schnell zu lösen.
+
 ## Hinzufügen eines Administrators für ein Abonnement
 
 **Azure-Portal**
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com) an.
 
 2. Wählen Sie im Hub-Menü die Option **Abonnement** und anschließend *das Abonnement aus, auf das der Administrator zugreifen soll*.
 
@@ -47,7 +49,7 @@ In Microsoft Azure stehen drei verschiedene Administratorrollen zur Verfügung:
 	![newselectrole](./media/billing-add-change-azure-subscription-administrator/newselectrole.png)
 
 	**Hinweis**
-	- Die Besitzerrolle verfügt über die gleichen Zugriffsrechte wie der Co-Administrator. Diese Rolle verfügt über kein Zugriffsrecht für das [Azure-Kontocenter](https://account.windowsazure.com/subscriptions).
+	- Die Besitzerrolle verfügt über die gleichen Zugriffsrechte wie der Co-Administrator. Diese Rolle verfügt nicht über Zugriffsrechte für das [Azure-Kontocenter](https://account.windowsazure.com/subscriptions).
 	- Die Besitzer, die Sie über das [Azure-Portal](https://portal.azure.com) hinzugefügt haben, können im [klassischen Azure-Portal](https://manage.windowsazure.com) keine Dienste verwalten.
 
 5. Geben Sie die E-Mail-Adresse des Benutzers ein, den Sie als Besitzer hinzufügen möchten, klicken Sie auf den Benutzer, und klicken Sie dann auf **Auswählen**.
@@ -73,7 +75,7 @@ Die folgende E-Mail-Adresse kann als Co-Administrator hinzugefügt werden:
 
 ### Begrenzungen und Einschränkungen
 
- * Jedes Azure-Abonnement ist einem Azure AD-Verzeichnis zugeordnet (das auch als Standardverzeichnis bezeichnet wird). Um das Standardverzeichnis zu finden, dem das Abonnement zugeordnet ist, wählen Sie im [klassischen Azure-Portal](https://manage.windowsazure.com/) die Option **Einstellungen** > **Abonnements** aus. Überprüfen Sie dort die Abonnement-ID, und suchen dann das Standardverzeichnis.
+ * Jedes Azure-Abonnement ist einem Azure AD-Verzeichnis zugeordnet (das auch als Standardverzeichnis bezeichnet wird). Um das Standardverzeichnis zu finden, dem das Abonnement zugeordnet ist, wählen Sie im [klassischen Azure-Portal](https://manage.windowsazure.com/) die Optionen **Einstellungen** > **Abonnements** aus. Überprüfen Sie dort die Abonnement-ID, und suchen Sie dann das Standardverzeichnis.
 
  * Wenn Sie mit einem Microsoft-Konto angemeldet sind, können Sie nur andere Microsoft-Konten oder Benutzer innerhalb des Standardverzeichnisses als Co-Administrator hinzufügen.
 
@@ -90,7 +92,7 @@ Die folgende E-Mail-Adresse kann als Co-Administrator hinzugefügt werden:
 
 Nur der Kontoadministrator kann den Dienstadministrator für ein Abonnement ändern.
 
-1. Melden Sie sich mithilfe des Kontoadministrators beim [Azure-Kontocenter](https://account.windowsazure.com/subscriptions) an.
+1. Melden Sie sich als Kontoadministrator beim [Azure-Kontocenter](https://account.windowsazure.com/subscriptions) an.
 
 2. Wählen Sie das Abonnement aus, das Sie ändern möchten.
 
@@ -108,10 +110,12 @@ Informationen zum Übertragen des Besitzes des Azure-Kontos auf ein anderes Kont
 
 ## Nächste Schritte
 
-* Informationen dazu, wie der Zugriff auf Ressourcen in Microsoft Azure gesteuert wird, finden Sie unter [Grundlegendes zum Zugriff auf Ressourcen in Azure](./active-directory/active-directory-understanding-resource-access.md).
+* Informationen dazu, wie der Zugriff auf Ressourcen in Microsoft Azure gesteuert wird, finden Sie unter [Grundlegendes zum Zugriff auf Ressourcen in Azure](./active-directory/active-directory-understanding-resource-access.md)
 
-* Weitere Informationen zur Beziehung zwischen Azure Active Directory und Ihrem Azure-Abonnement finden Sie unter [Beziehung zwischen Azure-Abonnements und Azure Active Directory](./active-directory/active-directory-how-subscriptions-associated-directory.md).
+* Weitere Informationen zur Beziehung zwischen Azure Active Directory und Ihrem Azure-Abonnement finden Sie unter [Beziehung zwischen Azure-Abonnements und Azure Active Directory](./active-directory/active-directory-how-subscriptions-associated-directory.md)
 
 * Weitere Informationen zu Azure Active Directory und Ihrem Azure-Abonnement finden Sie unter [Zuweisen von Administratorrollen in Azure Active Directory](./active-directory/active-directory-assign-admin-roles.md).
 
-<!---HONumber=AcomDC_0803_2016-->
+> [AZURE.NOTE] Wenn Sie weitere Fragen haben, [wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), um das Problem schnell zu lösen.
+
+<!---HONumber=AcomDC_0824_2016-->

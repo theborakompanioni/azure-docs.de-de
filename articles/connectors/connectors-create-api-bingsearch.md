@@ -1,5 +1,5 @@
 <properties
-    pageTitle="Hinzufügen des Bing-Suche-Connectors zu PowerApps oder Logik-Apps | Microsoft Azure"
+    pageTitle="Hinzufügen des Bing-Suche-Connectors in Logik-Apps | Microsoft Azure"
     description="Übersicht über den Bing-Suche-Connector mit REST-API-Parametern"
     services=""
     suite=""
@@ -15,34 +15,21 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="05/18/2016"
+   ms.date="08/18/2016"
    ms.author="mandia"/>
 
 # Erste Schritte mit dem Bing-Suche-Connector 
-Verbinden Sie sich mit der Bing-Suche, um Nachrichten, Videos und mehr zu suchen. Der Bing-Suche-Connector kann in Folgendem verwendet werden:
+Verbinden Sie sich mit der Bing-Suche, um Nachrichten, Videos und mehr zu suchen. Die Bing-Suche ermöglicht Folgendes:
 
-- Logik-Apps 
-- PowerApps
-
-> [AZURE.SELECTOR]
-- [Logik-Apps](../articles/connectors/connectors-create-api-bingsearch.md)
-- [PowerApps Enterprise](../articles/power-apps/powerapps-create-api-bingsearch.md)
-
-
-Die Bing-Suche ermöglicht Folgendes:
-
-- Erstellen eines Geschäftsworkflows basierend auf den Daten, die aus einer Suche abgerufen werden. 
+- Erstellen eines Geschäftsworkflows basierend auf den Daten, die aus einer Suche abgerufen werden.
 - Verwenden von Aktionen, um Bilder, Nachrichten und mehr zu suchen. Diese Aktionen erhalten eine Antwort und stellen anschließend die Ausgabe anderen Aktionen zur Verfügung. Sie können z. B. ein Video suchen und dann Twitter verwenden, um das Video in einem Twitter-Feed zu posten.
-- Hinzufügen des Bing-Suche-Connectors zu PowerApps Enterprise. Die Benutzer können diesen Connector anschließend in ihren Apps verwenden. 
 
-Informationen zum Hinzufügen eines Connectors in PowerApps Enterprise finden Sie unter [Registrieren einer Microsoft-verwalteten API oder einer IT-verwalteten API](../power-apps/powerapps-register-from-available-apis.md).
-
-Informationen zum Hinzufügen eines Vorgangs in Logik-Apps finden Sie unter [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md).
+Informationen zum Hinzufügen eines Vorgangs in Logik-Apps finden Sie unter [Erstellen einer Logik-App zum Verbinden von SaaS-Diensten](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
 ## Trigger und Aktionen
 Die Bing-Suche bietet die folgenden Aktionen. Es gibt keine Trigger.
 
-Trigger | Aktionen
+Trigger | Actions
 --- | ---
 Keine | <ul><li>Web durchsuchen</li><li>Videos suchen</li><li>Bilder suchen</li><li>Nachrichten suchen</li><li>Verwandte Informationen suchen</li><li>Schreibweisen suchen</li><li>Alles suchen</li></ul>
 
@@ -70,7 +57,7 @@ Ruft Websites aus einer Bing-Suche ab. ```GET: /Web```
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 
 ### Videos suchen 
@@ -85,14 +72,14 @@ Ruft Videos aus einer Bing-Suche ab. ```GET: /Video```
 |market|string|no|query|(Keine) |Markt oder Region zum Eingrenzen der Suche (Beispiel: de-DE)|
 |longitude|number|no|query|(Keine) |Längengrad (Ost-West-Koordinate) zum Eingrenzen der Suche (Beispiel: 47,603450)|
 |latitude|number|no|query|(Keine) |Breitengrad (Nord-Süd-Koordinate) zum Eingrenzen der Suche (Beispiel: -122,329696)|
-|videoFilters|string|no|query|(Keine) |Filtern Sie die Suche basierend auf Größe, Aspekt, Farbe, Format, Gesicht und einer beliebigen Kombination dieser Angaben. Gültige Werte: <ul><li>Duration:Short</li><li>Duration:Medium</li><li>Duration:Long</li><li>Aspect:Standard</li><li>Aspect:Widescreen</li><li>Resolution:Low</li><li>Resolution:Medium</li><li>Resolution:High</li></ul> <br/><br/>Beispiel: „Duration:Short+Resolution:High“|
+|videoFilters|string|no|query|(Keine) |Filtern Sie die Suche basierend auf Größe, Aspekt, Farbe, Format, Gesicht und einer beliebigen Kombination dieser Angaben. Gültige Werte: <ul><li>Duration:Short</li><li>Duration:Medium</li><li>Duration:Long</li><li>Aspect:Standard</li><li>Aspect:Widescreen</li><li>Resolution:Low</li><li>Resolution:Medium</li><li>Resolution:High</li></ul> <br/><br/>Beispiel: Duration:Short+Resolution:High|
 |videoSortBy|string|no|query|(Keine) |Sortierreihenfolge für Ergebnisse. Gültige Werte: <ul><li>Date</li><li>Relevance</li></ul> <p>Die Sortierung nach Datum erfolgt absteigend.</p>|
 
 #### Antwort
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 
 ### Bilder suchen    
@@ -107,13 +94,13 @@ Ruft Bilder aus einer Bing-Suche ab. ```GET: /Image```
 |market|string|no|query|(Keine) |Markt oder Region zum Eingrenzen der Suche (Beispiel: de-DE)|
 |longitude|number|no|query| (Keine)|Längengrad (Ost-West-Koordinate) zum Eingrenzen der Suche (Beispiel: 47,603450)|
 |latitude|number|no|query|(Keine) |Breitengrad (Nord-Süd-Koordinate) zum Eingrenzen der Suche (Beispiel: -122,329696)|
-|imageFilters|string|no|query|(Keine) |Filtern Sie die Suche basierend auf Größe, Aspekt, Farbe, Format, Gesicht und einer beliebigen Kombination dieser Angaben. Gültige Werte: <ul><li>Size:Small</li><li>Size:Medium</li><li>Size:Large</li><li>Size:Width:[Width]</li><li>Size:Height:[Height]</li><li>Aspect:Square</li><li>Aspect:Wide</li><li>Aspect:Tall</li><li>Color:Color</li><li>Color:Monochrome</li><li>Style:Photo</li><li>Style:Graphics</li><li>Face:Face</li><li>Face:Portrait</li><li>Face:Other</li></ul><br/><br/>Beispiel: „Size:Small+Aspect:Square“|
+|imageFilters|string|no|query|(Keine) |Filtern Sie die Suche basierend auf Größe, Aspekt, Farbe, Format, Gesicht und einer beliebigen Kombination dieser Angaben. Gültige Werte: <ul><li>Size:Small</li><li>Size:Medium</li><li>Size:Large</li><li>Size:Width:[Breite]</li><li>Size:Height:[Höhe]</li><li>Aspect:Square</li><li>Aspect:Wide</li><li>Aspect:Tall</li><li>Color:Color</li><li>Color:Monochrome</li><li>Style:Photo</li><li>Style:Graphics</li><li>Face:Face</li><li>Face:Portrait</li><li>Face:Other</li></ul><br/><br/>Beispiel: Size:Small+Aspect:Square|
 
 #### Antwort
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 
 ### Nachrichten suchen    
@@ -130,17 +117,17 @@ Ruft neue Ergebnisse aus einer Bing-Suche ab. ```GET: /News```
 |latitude|number|no|query|(Keine) |Breitengrad (Nord-Süd-Koordinate) zum Eingrenzen der Suche (Beispiel: -122,329696)|
 |newsSortBy|string|no|query| (Keine)|Sortierreihenfolge für Ergebnisse. Gültige Werte: <ul><li>Date</li><li>Relevance</li></ul> <p>Die Sortierung nach Datum erfolgt absteigend.</p>|
 |newsCategory|string|no|query| |Kategorie von Nachrichten zum Eingrenzen der Suche (Beispiel: rt\_Business)|
-|newsLocationOverride|string|no|query|(Keine) |Erkennung des Standorts durch Bing außer Kraft setzen. Dieser Parameter gilt nur für den Markt „de-DE“. Das Format für die Eingabe ist: US./<state /> (Beispiel: „US.WA“)|
+|newsLocationOverride|string|no|query|(Keine) |Erkennung des Standorts durch Bing außer Kraft setzen. Dieser Parameter gilt nur für den Markt „de-DE“. Eingabeformat: US./<Bundesstaat/> (Beispiel: US.WA)|
 
 #### Antwort
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 
 ### Schreibweisen suchen    
-Ruft Rechtschreibvorschläge ab. ```GET: /SpellingSuggestions```
+Ruft Vorschläge für Schreibweisen ab. ```GET: /SpellingSuggestions```
 
 | Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
@@ -156,7 +143,7 @@ Ruft Rechtschreibvorschläge ab. ```GET: /SpellingSuggestions```
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 
 ### Verwandte Informationen suchen    
@@ -176,7 +163,7 @@ Ruft verwandte Suchergebnisse aus einer Bing-Suche ab. ```GET: /RelatedSearch```
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 
 ### Alles suchen    
@@ -192,18 +179,18 @@ Ruft alle Websites, Videos, Bilder usw. aus einer Bing-Suche ab. ```GET: /Compos
 |longitude|number|no|query|(Keine) |Längengrad (Ost-West-Koordinate) zum Eingrenzen der Suche (Beispiel: 47,603450)|
 |latitude|number|no|query|(Keine) |Breitengrad (Nord-Süd-Koordinate) zum Eingrenzen der Suche (Beispiel: -122,329696)|
 |webFileType|string|no|query|(Keine) |Dateityp zum Eingrenzen der Suche (Beispiel: DOC)|
-|videoFilters|string|no|query|(Keine) |Filtern Sie die Suche basierend auf Größe, Aspekt, Farbe, Format, Gesicht und einer beliebigen Kombination dieser Angaben. Gültige Werte: <ul><li>Duration:Short</li><li>Duration:Medium</li><li>Duration:Long</li><li>Aspect:Standard</li><li>Aspect:Widescreen</li><li>Resolution:Low</li><li>Resolution:Medium</li><li>Resolution:High</li></ul> <br/><br/>Beispiel: „Duration:Short+Resolution:High“|
+|videoFilters|string|no|query|(Keine) |Filtern Sie die Suche basierend auf Größe, Aspekt, Farbe, Format, Gesicht und einer beliebigen Kombination dieser Angaben. Gültige Werte: <ul><li>Duration:Short</li><li>Duration:Medium</li><li>Duration:Long</li><li>Aspect:Standard</li><li>Aspect:Widescreen</li><li>Resolution:Low</li><li>Resolution:Medium</li><li>Resolution:High</li></ul> <br/><br/>Beispiel: Duration:Short+Resolution:High|
 |videoSortBy|string|no|query|(Keine) |Sortierreihenfolge für Ergebnisse. Gültige Werte: <ul><li>Date</li><li>Relevance</li></ul> <p>Die Sortierung nach Datum erfolgt absteigend.</p>|
-|imageFilters|string|no|query|(Keine) |Filtern Sie die Suche basierend auf Größe, Aspekt, Farbe, Format, Gesicht und einer beliebigen Kombination dieser Angaben. Gültige Werte: <ul><li>Size:Small</li><li>Size:Medium</li><li>Size:Large</li><li>Size:Width:[Width]</li><li>Size:Height:[Height]</li><li>Aspect:Square</li><li>Aspect:Wide</li><li>Aspect:Tall</li><li>Color:Color</li><li>Color:Monochrome</li><li>Style:Photo</li><li>Style:Graphics</li><li>Face:Face</li><li>Face:Portrait</li><li>Face:Other</li></ul><br/><br/>Beispiel: „Size:Small+Aspect:Square“|
+|imageFilters|string|no|query|(Keine) |Filtern Sie die Suche basierend auf Größe, Aspekt, Farbe, Format, Gesicht und einer beliebigen Kombination dieser Angaben. Gültige Werte: <ul><li>Size:Small</li><li>Size:Medium</li><li>Size:Large</li><li>Size:Width:[Breite]</li><li>Size:Height:[Höhe]</li><li>Aspect:Square</li><li>Aspect:Wide</li><li>Aspect:Tall</li><li>Color:Color</li><li>Color:Monochrome</li><li>Style:Photo</li><li>Style:Graphics</li><li>Face:Face</li><li>Face:Portrait</li><li>Face:Other</li></ul><br/><br/>Beispiel: Size:Small+Aspect:Square|
 |newsSortBy|string|no|query|(Keine) |Sortierreihenfolge für Ergebnisse. Gültige Werte: <ul><li>Date</li><li>Relevance</li></ul> <p>Die Sortierung nach Datum erfolgt absteigend.</p>|
 |newsCategory|string|no|query|(Keine) |Kategorie von Nachrichten zum Eingrenzen der Suche (Beispiel: rt\_Business)|
-|newsLocationOverride|string|no|query|(Keine) |Erkennung des Standorts durch Bing außer Kraft setzen. Dieser Parameter gilt nur für den Markt „de-DE“. Das Format für die Eingabe ist: US./<state /> (Beispiel: „US.WA“)|
+|newsLocationOverride|string|no|query|(Keine) |Erkennung des Standorts durch Bing außer Kraft setzen. Dieser Parameter gilt nur für den Markt „de-DE“. Eingabeformat: US./<Bundesstaat/> (Beispiel: US.WA)|
 
 #### Antwort
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 
 ## Objektdefinitionen
@@ -296,6 +283,6 @@ Ruft alle Websites, Videos, Bilder usw. aus einer Bing-Suche ab. ```GET: /Compos
 
 [Erstellen Sie eine Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
-Gehen Sie zur [Liste der APIs](apis-list.md) zurück.
+Kehren Sie zur [Liste mit den APIs](apis-list.md) zurück.
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0824_2016-->

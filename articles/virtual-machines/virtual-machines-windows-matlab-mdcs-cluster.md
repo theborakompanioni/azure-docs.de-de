@@ -4,7 +4,7 @@
    services="virtual-machines-windows"
    documentationCenter=""
    authors="mscurrell"
-   manager="asutton"
+   manager="timlt"
    editor=""/>
 
 <tags
@@ -29,9 +29,9 @@ Durch die Verwendung virtueller Azure-Computer können Sie MATLAB Distributed Co
 
 ## Voraussetzungen
 
-* **Clientcomputer**: Sie benötigen einen Windows-basierten Clientcomputer für die Kommunikation mit Azure und dem MATLAB Distributed Computing Server-Cluster nach der Bereitstellung. 
+* **Clientcomputer**: Sie benötigen einen Windows-basierten Clientcomputer für die Kommunikation mit Azure und dem MATLAB Distributed Computing Server-Cluster nach der Bereitstellung.
 
-* **Azure PowerShell**: Lesen Sie den Artikel [Installieren und konfigurieren Sie Azure PowerShell](../powershell-install-configure), um zu erfahren, wie Sie Azure PowerShell auf Ihrem Clientcomputer installieren.
+* **Azure PowerShell**: Lesen Sie den Artikel [Installieren und konfigurieren Sie Azure PowerShell](../powershell-install-configure.md), um zu erfahren, wie Sie Azure PowerShell auf Ihrem Clientcomputer installieren.
 
 * **Azure-Abonnement**: Falls Sie über kein Abonnement verfügen, können Sie in wenigen Minuten ein [kostenloses Konto](https://azure.microsoft.com/free/) einrichten. Bei größeren Clustern empfiehlt sich die Verwendung eines Abonnements mit nutzungsbasierter Bezahlung oder einer anderen Kaufoption.
 
@@ -46,14 +46,14 @@ Durch die Verwendung virtueller Azure-Computer können Sie MATLAB Distributed Co
 
 Zur Verwendung virtueller Azure-Computer für MATLAB Distributed Computing Server-Cluster müssen im Allgemeinen folgende Schritte ausgeführt werden. Ausführliche Informationen finden Sie in der Begleitdokumentation der Schnellstartvorlage und Skripts auf [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/matlab-cluster).
 
-1. **Erstellen eines VM-Basisimages**  
-    * Laden Sie die MATLAB Distributed Computing Server-Software auf diesen virtuellen Computer herunter, und installieren Sie sie. 
+1. **Erstellen eines VM-Basisimages**
+    * Laden Sie die MATLAB Distributed Computing Server-Software auf diesen virtuellen Computer herunter, und installieren Sie sie.
 
     >[AZURE.NOTE]Dieser Vorgang kann mehrere Stunden dauern, muss aber nur einmal für jede verwendete MATLAB-Version ausgeführt werden.
     
 2. **Erstellen mindestens eines Clusters**
-    * Erstellen Sie auf der Grundlage des VM-Basisimages einen Cluster (entweder mithilfe des bereitgestellten PowerShell-Skripts oder mithilfe der Schnellstartvorlage).   
-    * Mit dem bereitgestellten PowerShell-Skript können Sie Cluster aufführen, anhalten, fortsetzen und löschen. 
+    * Erstellen Sie auf der Grundlage des VM-Basisimages einen Cluster (entweder mithilfe des bereitgestellten PowerShell-Skripts oder mithilfe der Schnellstartvorlage).
+    * Mit dem bereitgestellten PowerShell-Skript können Sie Cluster aufführen, anhalten, fortsetzen und löschen.
  
 ## Clusterkonfigurationen 
 
@@ -65,7 +65,7 @@ MATLAB-Clientknoten, MATLAB-Auftragsplaner-Knoten und MATLAB Distributed Computi
 
 ![Clustertopologie](./media/virtual-machines-windows-matlab-mdcs-cluster/mdcs_cluster.png)
 
-* Stellen Sie zum Verwenden des Clusters eine Remotedesktopverbindung mit dem Clientknoten her. Der Clientknoten führt den MATLAB-Client aus. 
+* Stellen Sie zum Verwenden des Clusters eine Remotedesktopverbindung mit dem Clientknoten her. Der Clientknoten führt den MATLAB-Client aus.
 
 * Der Clientknoten verfügt über eine Dateifreigabe, auf die alle Worker zugreifen können.
 
@@ -82,8 +82,8 @@ Genau wie bei anderen Arten von MATLAB Distributed Computing Server-Clustern mus
 
 ## Nächste Schritte
 
-* Weitere Informationen zum Bereitstellen und Verwalten von MATLAB Distributed Computing Server-Clustern in Azure finden Sie im [GitHub-Repository](https://github.com/Azure/azure-quickstart-templates/tree/master/matlab-cluster) mit den Vorlagen und Skripts. 
+* Weitere Informationen zum Bereitstellen und Verwalten von MATLAB Distributed Computing Server-Clustern in Azure finden Sie im [GitHub-Repository](https://github.com/Azure/azure-quickstart-templates/tree/master/matlab-cluster) mit den Vorlagen und Skripts.
 
 * Auf der [MathWorks-Website](http://www.mathworks.com/) finden Sie eine ausführliche Dokumentation für MATLAB und MATLAB Distributed Computing Server.
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0824_2016-->

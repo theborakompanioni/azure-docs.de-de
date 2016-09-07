@@ -49,6 +49,9 @@ Für die Unternehmensintegration werden unterstützt diese Branchenstandards unt
 - Visual Studio 2015 zum Erstellen von Zuordnungen und Schemas
 - [Microsoft Azure Logic Apps Enterprise Integration Tools for Visual Studio 2015 2.0](https://aka.ms/vsmapsandschemas)
 
+## Probieren Sie es selbst aus
+Versuchen Sie es doch einfach mal. Klicken Sie [hier](https://github.com/Azure/azure-quickstart-templates/tree/master/201-logic-app-as2-send-receive), um eigene, voll funktionsfähige AS2-Logik-Apps mit Sende- und Empfangsfunktionen unter Verwendung der B2B-Features von Logic Apps bereitzustellen.
+
 ## Weitere Informationen:
 - [Vereinbarungen](./app-service-logic-enterprise-integration-agreements.md "Informationen zu Vereinbarungen zur Unternehmensintegration")
 - [B2B-Szenarien (Business-to-Business)](./app-service-logic-enterprise-integration-b2b.md "Informationen zum Erstellen von Logik-Apps mit B2B-Features")
@@ -61,4 +64,4 @@ Für die Unternehmensintegration werden unterstützt diese Branchenstandards unt
 - [Überprüfung von XML-Nachrichten](./app-service-logic-enterprise-integration-xml.md "Informationen zum Überprüfen von XML-Nachrichten mit Logik-Apps")
 - [XML-Transformation](./app-service-logic-enterprise-integration-transform.md "Informationen zu Zuordnungen für die Unternehmensintegration")
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0824_2016-->

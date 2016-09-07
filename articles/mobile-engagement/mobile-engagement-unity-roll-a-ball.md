@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="03/25/2016"
+	ms.date="08/19/2016"
 	ms.author="piyushjo" />
 
 #<a id="unity-roll-a-ball"></a>Erstellen eines Unity Roll-a-Ball-Spiels
@@ -23,7 +23,7 @@ Dieses Tutorial zeigt die wichtigsten Schritte für ein leicht abgewandeltes [Tu
 ### Einrichten des Spiels
 Die folgenden Schritte stammen aus dem [Unity-Tutorial](https://unity3d.com/learn/tutorials/projects/roll-a-ball/set-up?playlist=17141).
 
-1. Öffnen Sie den **Unity-Editor**, und klicken Sie auf **New**. 
+1. Öffnen Sie den **Unity-Editor**, und klicken Sie auf **New**.
 	
 	![][51]
 	
@@ -82,7 +82,7 @@ Die folgenden Schritte stammen aus dem [Unity-Tutorial](https://unity3d.com/lear
 ### Bewegen des Players
 Die folgenden Schritte stammen aus dem [Unity-Tutorial](https://unity3d.com/learn/tutorials/projects/roll-a-ball/moving-the-player?playlist=17141).
 
-1. Fügen Sie dem **Player**-Objekt eine **RigidBody**-Komponente hinzu. 
+1. Fügen Sie dem **Player**-Objekt eine **RigidBody**-Komponente hinzu.
 
 	![][13]
 
@@ -125,8 +125,8 @@ Die folgenden Schritte stammen aus dem [Unity-Tutorial](https://unity3d.com/lear
 ### Bewegen der Kamera
 Die folgenden Schritte stammen aus dem [Unity-Tutorial](https://unity3d.com/learn/tutorials/projects/roll-a-ball/moving-the-camera?playlist=17141). Mit diesen Schritten wird die **Main Camera** an das **Player**-Objekt gebunden.
 
-1. Setzen Sie **Transform.Position** auf X = 0, Y = 10,5, Z = -10.  
-2. Setzen Sie **Transform.Rotation** auf X = 45, Y = 0, Z = 0.  
+1. Setzen Sie **Transform.Position** auf X = 0, Y = 10,5, Z = -10.
+2. Setzen Sie **Transform.Rotation** auf X = 45, Y = 0, Z = 0.
 
 	![][16]
 
@@ -192,7 +192,7 @@ Die folgenden Schritte stammen aus dem [Unity-Tutorial](https://unity3d.com/lear
 ### Erstellen von sammelbaren Objekten
 Die folgenden Schritte stammen aus dem [Unity-Tutorial](https://unity3d.com/learn/tutorials/projects/roll-a-ball/creating-collectables?playlist=17141). Erstellen Sie nun einige gut aussehenden Objekte, die einen Satz an sammelbaren Objekten bilden, die das Player Ball-Objekt „sammeln“ muss, indem es mit ihnen zusammenstößt.
 
-1. Erstellen Sie ein neues 3D-Objekt über **3D Object > Cube**, und geben Sie ihm den Namen „Pickup“. 
+1. Erstellen Sie ein neues 3D-Objekt über **3D Object > Cube**, und geben Sie ihm den Namen „Pickup“.
 
 2. Passen Sie die Werte für **Transform > Rotation** und **Transform > Scale** des Pickup-Objekts an.
 
@@ -244,7 +244,7 @@ Die folgenden Schritte stammen aus dem [Unity-Tutorial](https://unity3d.com/lear
 ### Sammeln der Pickup-Objekte
 Die folgenden Schritte stammen aus dem [Unity-Tutorial](https://unity3d.com/learn/tutorials/projects/roll-a-ball/collecting-pick-up-objects?playlist=17141). Aktualisieren Sie den Player, damit er die Pickup-Objekte „sammeln“ kann, indem er mit ihnen zusammenstößt.
 
-1. Öffnen Sie das an das Player-Objekt angefügte **PlayerController**-Skript zur Bearbeitung, und aktualisieren Sie es folgendermaßen:  
+1. Öffnen Sie das an das Player-Objekt angefügte **PlayerController**-Skript zur Bearbeitung, und aktualisieren Sie es folgendermaßen:
 
 		using UnityEngine;
 		using System.Collections;
@@ -374,4 +374,4 @@ In diesem Tutorial wird die Erstellung eines einfachen Spiels mit Unity vorgeste
 	
 	
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0824_2016-->

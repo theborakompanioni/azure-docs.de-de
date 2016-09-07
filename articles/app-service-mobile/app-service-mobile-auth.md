@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="05/05/2016"
+	ms.date="08/22/2016"
 	ms.author="mahender"/>
 
 # Authentifizierung und Autorisierung in Azure Mobile Apps
 
 ## Was ist App Service-Authentifizierung/Autorisierung?
 
-> [AZURE.NOTE] Dieses Thema wird in ein kombiniertes Thema zur [Authentifizierung und Autorisierung in App Service](../app-service/app-service-authentication-overview.md) geändert, in dem Web-Apps, mobile Apps und API-Apps gemeinsam behandelt werden.
+> [AZURE.NOTE] Dieses Thema wird in ein kombiniertes Thema zur [Authentifizierung und Autorisierung in App Service](../app-service/app-service-authentication-overview.md) überführt, in dem Web-Apps, mobile Apps und API-Apps gemeinsam behandelt werden.
 
 App Service-Authentifizierung/Autorisierung ist ein Feature, das einer Anwendung die Anmeldung von Benutzern ermöglicht, ohne das Codeänderungen am Back-End der App erforderlich werden. Es stellt eine einfache Möglichkeit zum Schutz Ihrer Anwendung und für die Arbeit mit benutzerspezifischen Daten bereit.
 
@@ -56,13 +56,13 @@ Sobald das Back-End entsprechend konfiguriert ist, können Sie Ihren Client für
 
 ### Funktionsweise der Authentifizierung ohne ein Anbieter-SDK
 
-Wenn Sie kein Anbieter-SDK einrichten möchten, können Sie Mobile Apps erlauben, die Anmeldung für Sie auszuführen. Das Mobile Apps-Client-SDK öffnet eine Webansicht für den Anbieter Ihrer Wahl und schließt die Anmeldung ab. Gelegentlich wird dies in Blogs und Foren als „Serverfluss“ oder „servergesteuerter Datenfluss“ bezeichnet, da der Server die Anmeldung verwaltet und das Client-SDK das Anbieter-Token nie empfängt.
+Wenn Sie kein Anbieter-SDK einrichten möchten, können Sie Mobile Apps erlauben, die Anmeldung für Sie auszuführen. Das Mobile Apps-Client-SDK öffnet eine Webansicht für den Anbieter Ihrer Wahl und schließt die Anmeldung ab. Dies wird in Blogs und Foren gelegentlich als „Serverfluss“ oder „servergesteuerter Datenfluss“ bezeichnet, da der Server die Anmeldung verwaltet und das Client-SDK das Anbieter-Token nie empfängt.
 
 Der zum Starten dieses Datenflusses benötigte Code wird im Tutorial zur Authentifizierung für die einzelnen Plattformen behandelt. Am Ende des Datenflusses verfügt das Client-SDK über ein App Service-Token, und das Token wird automatisch an alle Anfragen an das Back-End angefügt.
 
 ### Funktionsweise der Authentifizierung mit einem Anbieter-SDK
 
-Die Verwendung eines Anbieter-SDKs ermöglicht der Anmeldeumgebung, auf der die App ausgeführt wird, enger mit der Betriebssystemplattform zu interagieren. Dadurch erhalten Sie außerdem ein Anbietertoken und bestimmte Benutzerinformationen auf dem Client, was die Nutzung von Graph-APIs und die Anpassung der Benutzerumgebung wesentlich vereinfacht. Gelegentlich wird dies in Blogs und Foren als „Clientfluss“ oder „clientgesteuerter Datenfluss“ bezeichnet, da Code auf dem Client die Anmeldung verarbeitet und der Clientcode Zugriff auf ein Anbieter-Token erhält.
+Die Verwendung eines Anbieter-SDKs ermöglicht eine bessere Zusammenarbeit zwischen der Anmeldeumgebung und dem Plattformbetriebssystem, unter dem die App ausgeführt wird. Dadurch erhalten Sie außerdem ein Anbietertoken und bestimmte Benutzerinformationen auf dem Client, was die Nutzung von Graph-APIs und die Anpassung der Benutzerumgebung wesentlich vereinfacht. Gelegentlich wird dies in Blogs und Foren als „Clientfluss“ oder „clientgesteuerter Datenfluss“ bezeichnet, da Code auf dem Client die Anmeldung verarbeitet und der Clientcode Zugriff auf ein Anbieter-Token erhält.
 
 Sobald ein Anbietertoken abgerufen wurde, muss es zur Überprüfung an App Service gesendet werden. Am Ende des Datenflusses verfügt das Client-SDK über ein App Service-Token, und das Token wird automatisch an alle Anfragen an das Back-End angefügt. Der Entwickler kann bei Bedarf auch einen Verweis auf das Anbietertoken speichern.
 
@@ -104,4 +104,4 @@ Wenn Sie ein anderes Identitätssystem als die hier beschriebenen verwenden möc
 [Konfigurieren Ihrer App Service-Anwendung zur Verwendung der Microsoft-Kontoanmeldung]: app-service-mobile-how-to-configure-microsoft-authentication.md
 [Konfigurieren Ihrer App Service-Anwendung zur Verwendung der Twitter-Anmeldung]: app-service-mobile-how-to-configure-twitter-authentication.md
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0824_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="mobile-multiple"
    ms.workload="mobile" 
-   ms.date="02/29/2016"
+   ms.date="08/19/2016"
    ms.author="piyushjo"/>
 
 # Handbuch zur Problembehandlung bei Push und Reach
@@ -74,7 +74,7 @@ Im Folgenden finden Sie mögliche Probleme, die beim Senden von Informationen du
 - Es werden keine serverseitigen Daten protokolliert, wenn Sie die Schaltfläche zum Testen von Pushvorgängen verwenden. Daten werden nur für reale Pushkampagnen protokolliert.
 - Um das Problem zu isolieren, führen Sie eine Testkampagne, eine simulierte Kampagne und eine reale Kampagne aus, da jede dieser Kampagnentypen leicht anders funktioniert.
 - Die geplante Zeitdauer von App-internen und zeitunabhängigen Kampagnen kann die Anzahl der Übermittlungen beeinflussen, da eine Kampagne nur an Benutzer übermittelt wird, die während der Durchführung der Kampagne die App geöffnet haben (und an Benutzer, die in den Geräteeinstellungen das App-externe Empfangen von Benachrichtigungen festgelegt haben).
-- Aufgrund der unterschiedlichen Behandlung von App-externen Benachrichtigungen unter Android und iOS lassen sich die Pushstatistiken für die Android- und iOS-Version Ihrer Anwendung schwierig vergleichen. Android bietet mehr Benachrichtigungsinformationen auf Betriebssystemebene als iOS. Android meldet, wenn eine systemeigene Benachrichtigung empfangen wird, auf sie geklickt wird oder wenn sie in der Mitteilungszentrale gelöscht wird, iOS meldet dies jedoch nur, wenn auf die Benachrichtigung geklickt wird. 
+- Aufgrund der unterschiedlichen Behandlung von App-externen Benachrichtigungen unter Android und iOS lassen sich die Pushstatistiken für die Android- und iOS-Version Ihrer Anwendung schwierig vergleichen. Android bietet mehr Benachrichtigungsinformationen auf Betriebssystemebene als iOS. Android meldet, wenn eine systemeigene Benachrichtigung empfangen wird, auf sie geklickt wird oder wenn sie in der Mitteilungszentrale gelöscht wird, iOS meldet dies jedoch nur, wenn auf die Benachrichtigung geklickt wird.
 - Der Hauptgrund für die Differenz zwischen der Anzahl der Pushvorgänge und der Anzahl der Übermittlungsvorgänge für Reach-Kampagnen ist die unterschiedliche Zählung von App-internen und App-externen Benachrichtigungen. App-interne Benachrichtigungen werden von Mobile Engagement gehandhabt, während App-externe Benachrichtigungen von der Mitteilungszentrale des Betriebssystems auf dem Gerät gehandhabt werden.
 
 ## Zielgruppenadressierung für Pushvorgänge
@@ -88,7 +88,7 @@ Im Folgenden finden Sie mögliche Probleme, die beim Senden von Informationen du
 ### Ursachen
 
 - Stellen Sie sicher, dass Sie Infotags der App über die Azure Mobile Engagement-Benutzeroberfläche oder -API hochgeladen haben.
-- Eine Drosselung der Pushgeschwindigkeit oder des Pushkontingents auf Anwendungsebene oder eine Einschränkung der Zielgruppe auf Kampagnenebene kann dazu führen, dass eine Person ein bestimmtes Pushereignis nicht empfängt, wenn sie andere Ihrer Kriterien für die Zielgruppenadressierung erfüllt. 
+- Eine Drosselung der Pushgeschwindigkeit oder des Pushkontingents auf Anwendungsebene oder eine Einschränkung der Zielgruppe auf Kampagnenebene kann dazu führen, dass eine Person ein bestimmtes Pushereignis nicht empfängt, wenn sie andere Ihrer Kriterien für die Zielgruppenadressierung erfüllt.
 - Das Festlegen einer "Sprache" unterscheidet sich von einer Zielgruppenadressierung basierend auf Land oder Gebietsschema. Diese wiederum unterscheidet sich von einer Zielgruppenadressierung basierend auf Geolocation nach Telefon- oder GPS-Standort.
 - Die Nachricht in der "Standardsprache" wird an beliebige Kunden gesendet, die ihr Gerät nicht auf eine der alternativen Sprachen eingestellt haben, die Sie angeben.
 
@@ -110,4 +110,4 @@ Im Folgenden finden Sie mögliche Probleme, die beim Senden von Informationen du
 
  
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0824_2016-->

@@ -6,11 +6,11 @@
 
      ![Markieren von Ressourcen mit Name-Wert-Paaren](./media/resource-manager-tag-resources/tag-resources.png)
 
-1. Um die Taxonomie von Tags im Portal anzuzeigen, wählen Sie **Durchsuchen** und **Tags** aus.
+1. Um die Taxonomie von Tags im Portal anzuzeigen, wählen Sie **Weitere Dienste** und **Tags** aus.
 
      ![Suchen von Markierungen über den Browse-Hub](./media/resource-manager-tag-resources/browse-tags.png)
 
-1. Sie sehen eine Zusammenfassung der Tags in Ihrem Abonnement.
+1. Sie sehen eine Übersicht über die Tags in Ihrem Abonnement.
 
      ![Alle Tags anzeigen](./media/resource-manager-tag-resources/tag-taxonomy.png)
 
@@ -22,4 +22,4 @@
 
      ![Anheften von Markierungen am das Startmenü](./media/resource-manager-tag-resources/show-pinned-tag.png)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0824_2016-->

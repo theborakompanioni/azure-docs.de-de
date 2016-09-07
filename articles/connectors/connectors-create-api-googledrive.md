@@ -1,5 +1,5 @@
 <properties
-    pageTitle="Hinzufügen des Google Drive-Connectors zu PowerApps oder Logik-Apps | Microsoft Azure"
+    pageTitle="Hinzufügen des Google Drive-Connectors in Logik-Apps | Microsoft Azure"
     description="Übersicht über den Google Drive-Connector mit REST-API-Parametern"
     services=""
     suite=""
@@ -15,34 +15,22 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="05/18/2016"
+   ms.date="08/18/2016"
    ms.author="mandia"/>
 
 # Erste Schritte mit dem Google Drive-Connector
-Verbinden Sie sich mit Google Drive, um Dateien zu erstellen, Zeilen abzurufen usw. Der Google Drive-Connector kann in Folgendem verwendet werden:
+Verbinden Sie sich mit Google Drive, um Dateien zu erstellen, Zeilen abzurufen usw. Google Drive ermöglicht Folgendes:
 
-- Logik-Apps 
-- PowerApps
-
-> [AZURE.SELECTOR]
-- [Logik-Apps](../articles/connectors/connectors-create-api-googledrive.md)
-- [PowerApps Enterprise](../articles/power-apps/powerapps-create-api-googledrive.md)
-
-Google Drive ermöglicht Folgendes:
-
-- Erstellen eines Geschäftsworkflows basierend auf den Daten, die aus einer Suche abgerufen werden. 
+- Erstellen eines Geschäftsworkflows basierend auf den Daten, die aus einer Suche abgerufen werden.
 - Verwenden von Aktionen, um Bilder, Nachrichten und mehr zu suchen. Diese Aktionen erhalten eine Antwort und stellen anschließend die Ausgabe anderen Aktionen zur Verfügung. Sie können z. B. ein Video suchen und dann Twitter verwenden, um das Video in einem Twitter-Feed zu posten.
-- Fügen Sie den Google Drive-Connector zu PowerApps Enterprise hinzu. Die Benutzer können diesen Connector anschließend in ihren Apps verwenden. 
 
-Informationen zum Hinzufügen eines Connectors in PowerApps Enterprise finden Sie unter [Registrieren einer Microsoft-verwalteten API oder einer IT-verwalteten API](../power-apps/powerapps-register-from-available-apis.md).
-
-Informationen zum Hinzufügen eines Vorgangs in Logik-Apps finden Sie unter [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md).
+Informationen zum Hinzufügen eines Vorgangs in Logik-Apps finden Sie unter [Erstellen einer Logik-App zum Verbinden von SaaS-Diensten](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
 
 ## Trigger und Aktionen
 Google Drive bietet die folgenden Aktionen. Es gibt keine Trigger.
 
-Trigger | Aktionen
+Trigger | Actions
 --- | ---
 Keine | <ul><li>Datei erstellen</li><li>Zeile einfügen</li><li>Datei kopieren</li><li>Datei löschen</li><li>Zeile löschen</li><li>Archiv in Ordner extrahieren</li><li>Dateiinhalt anhand der ID abrufen</li><li>Dateiinhalt anhand des Pfads abrufen</li><li>Dateimetadaten anhand der ID abrufen</li><li>Dateimetadaten anhand des Pfads abrufen</li><li>Zeile abrufen</li><li>Datei aktualisieren</li><li>Zeile aktualisieren</li></ul>
 
@@ -69,14 +57,14 @@ Lädt eine Datei in Google Drive hoch. ```POST: /datasets/default/files```
 | Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
 |folderPath|string|Ja|query|(Keine) |Ordnerpfad zum Hochladen der Datei in Google Drive|
-|name|string|Ja|query|(Keine) |Name der Datei, die in Google Drive erstellt werden soll|
+|Name|string|Ja|query|(Keine) |Name der Datei, die in Google Drive erstellt werden soll|
 |body|string(binary) |Ja|body| (Keine)|Inhalt der Datei, die in Google Drive hochgeladen werden soll|
 
 #### Antwort
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 
 ### Zeile einfügen    
@@ -85,14 +73,14 @@ Fügt eine Zeile in eine Google-Tabelle ein. ```POST: /datasets/{dataset}/tables
 | Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
 |dataset|string|Ja|path| (Keine)|Eindeutiger Bezeichner der Datei mit der Google-Tabelle|
-|Tabelle|string|Ja|path|(Keine) |Eindeutige ID des Arbeitsblatts|
+|table|string|Ja|path|(Keine) |Eindeutige ID des Arbeitsblatts|
 |item|ItemInternalId: string |Ja|body|(Keine) |In der angegebenen Tabelle einzufügende Zeile|
 
 #### Antwort
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 
 ### Datei kopieren    
@@ -108,7 +96,7 @@ Kopiert eine Datei in Google Drive. ```POST: /datasets/default/copyFile```
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 
 ### Datei löschen    
@@ -122,7 +110,7 @@ Löscht eine Datei aus Google Drive. ```DELETE: /datasets/default/files/{id}```
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 
 ### Zeile löschen    
@@ -131,14 +119,14 @@ Löscht eine Zeile aus einer Google-Tabelle. ```DELETE: /datasets/{dataset}/tabl
 | Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
 |dataset|string|Ja|path|(Keine) |Eindeutiger Bezeichner der Datei mit der Google-Tabelle|
-|Tabelle|string|Ja|path|(Keine) |Eindeutige ID des Arbeitsblatts|
+|table|string|Ja|path|(Keine) |Eindeutige ID des Arbeitsblatts|
 |id|string|Ja|path|(Keine) |Eindeutiger Bezeichner der zu löschenden Zeile|
 
 #### Antwort
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 
 ### Archiv in Ordner extrahieren    
@@ -154,7 +142,7 @@ Extrahiert eine Archivdatei in einen Ordner in Google Drive (Beispiel: ZIP). ```
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 
 ### Dateiinhalt anhand der ID abrufen    
@@ -168,7 +156,7 @@ Ruft den Inhalt der Datei anhand der ID aus Google Drive ab. ```GET: /datasets/d
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 
 ### Dateiinhalt anhand des Pfads abrufen    
@@ -182,11 +170,11 @@ Ruft den Inhalt der Datei anhand des Pfads aus Google Drive ab. ```GET: /dataset
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 
 ### Dateimetadaten anhand der ID abrufen    
-Ruft Dateimetadaten aus Google Drive anhand der ID ab. ```GET: /datasets/default/files/{id}```
+Ruft Dateimetadaten anhand der ID aus Google Drive ab. ```GET: /datasets/default/files/{id}```
 
 | Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
@@ -196,7 +184,7 @@ Ruft Dateimetadaten aus Google Drive anhand der ID ab. ```GET: /datasets/default
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 
 ### Dateimetadaten anhand des Pfads abrufen    
@@ -210,7 +198,7 @@ Ruft Dateimetadaten anhand des Pfads aus Google Drive ab. ```GET: /datasets/defa
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 
 ### Zeile abrufen    
@@ -219,14 +207,14 @@ Ruft eine einzelne Zeile aus einer Google-Tabelle ab. ```GET: /datasets/{dataset
 | Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
 |dataset|string|Ja|path|(Keine) |Eindeutiger Bezeichner der Datei mit der Google-Tabelle|
-|Tabelle|string|Ja|path|(Keine) |Eindeutige ID des Arbeitsblatts|
+|table|string|Ja|path|(Keine) |Eindeutige ID des Arbeitsblatts|
 |id|string|Ja|path| (Keine)|Eindeutiger Bezeichner der abzurufenden Zeile|
 
 #### Antwort
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 
 ### Datei aktualisieren    
@@ -241,7 +229,7 @@ Aktualisiert eine Datei in Google Drive. ```PUT: /datasets/default/files/{id}```
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 
 ### Zeile aktualisieren    
@@ -250,7 +238,7 @@ Aktualisiert eine Zeile in einer Google-Tabelle. ```PATCH: /datasets/{dataset}/t
 | Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
 |dataset|string|Ja|path|(Keine) |Eindeutiger Bezeichner der Datei mit der Google-Tabelle|
-|Tabelle|string|Ja|path| (Keine)|Eindeutige ID des Arbeitsblatts|
+|table|string|Ja|path| (Keine)|Eindeutige ID des Arbeitsblatts|
 |id|string|Ja|path|(Keine) |Eindeutiger Bezeichner der zu aktualisierenden Zeile|
 |item|ItemInternalId: string |Ja|body|(Keine) |Zeile mit aktualisierten Werten|
 
@@ -258,7 +246,7 @@ Aktualisiert eine Zeile in einer Google-Tabelle. ```PATCH: /datasets/{dataset}/t
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 
 ## Objektdefinitionen
@@ -295,7 +283,7 @@ Aktualisiert eine Zeile in einer Google-Tabelle. ```PATCH: /datasets/{dataset}/t
 |ID|string|no|
 |Name|string|no|
 |DisplayName|string|no|
-|Path|string|no|
+|Pfad|string|no|
 |LastModified|string|no|
 |Größe|integer|no|
 |MediaType|string|no|
@@ -307,7 +295,7 @@ Aktualisiert eine Zeile in einer Google-Tabelle. ```PATCH: /datasets/{dataset}/t
 
 |Eigenschaftenname | Datentyp |Erforderlich|
 |---|---|---|
-|name|string|no|
+|Name|string|no|
 |title|string|no|
 |x-ms-permission|string|no|
 |schema|nicht definiert|no|
@@ -342,7 +330,7 @@ Aktualisiert eine Zeile in einer Google-Tabelle. ```PATCH: /datasets/{dataset}/t
 
 [Erstellen Sie eine Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
-Gehen Sie zur [Liste der APIs](apis-list.md) zurück.
+Kehren Sie zur [Liste mit den APIs](apis-list.md) zurück.
 
 
 <!--References-->
@@ -355,4 +343,4 @@ Gehen Sie zur [Liste der APIs](apis-list.md) zurück.
 [13]: ./media/connectors-create-api-googledrive/configure-consent-screen.png
 [14]: ./media/connectors-create-api-googledrive/create-client-id.png
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0824_2016-->

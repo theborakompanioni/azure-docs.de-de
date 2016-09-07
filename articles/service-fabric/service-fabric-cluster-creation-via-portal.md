@@ -1,228 +1,333 @@
+
 <properties
-   pageTitle="Erstellen eines Service Fabric-Clusters im Azure-Portal | Microsoft Azure"
-   description="Erstellen Sie einen Service Fabric-Cluster im Azure-Portal."
+   pageTitle="Erstellen eines sicheren Service Fabric-Clusters über das Azure-Portal | Microsoft Azure"
+   description="Dieser Artikel beschreibt, wie Sie über das Azure-Portal und mithilfe von Azure Key Vault einen sicheren Service Fabric-Cluster in Azure erstellen."
    services="service-fabric"
    documentationCenter=".net"
-   authors="ChackDan"
+   authors="chackdan"
    manager="timlt"
-   editor=""/>
+   editor="vturecek"/>
 
 <tags
    ms.service="service-fabric"
    ms.devlang="dotnet"
    ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="05/02/2016"
-   ms.author="chackdan"/>
+   ms.tgt_pltfrm="NA"
+   ms.workload="NA"
+   ms.date="08/19/2016"
+   ms.author="vturecek"/>
+
+# Erstellen eines Service Fabric-Clusters in Azure über das Azure-Portal
+
+> [AZURE.SELECTOR]
+- [Azure Resource Manager](service-fabric-cluster-creation-via-arm.md)
+- [Azure-Portal](service-fabric-cluster-creation-via-portal.md)
+
+Diese Schrittanleitung führt Sie durch die Einrichtung eines sicheren Service Fabric-Clusters in Azure über das Azure-Portal. In diesem Leitfaden werden die folgenden Schritte behandelt:
+
+ - Einrichten von Key Vault zum Verwalten von Schlüsseln für die Sicherheit von Clustern.
+ - Erstellen eines gesicherten Cluster in Azure über das Azure-Portal.
+ - Authentifizieren von Administratoren mithilfe von Zertifikaten.
+
+>[AZURE.NOTE] Um erweiterte Sicherheitsoptionen zu nutzen, wie z.B. Benutzerauthentifizierung mit Azure Active Directory und Zertifikate für die Anwendungssicherheit, [erstellen Sie Ihren Cluster mithilfe von Azure Resource Manager][create-cluster-arm].
+
+Ein sicherer Cluster ist ein Cluster, der nicht autorisierten Zugriff auf Verwaltungsvorgänge verhindert, wie z.B. das Bereitstellen, Aktualisieren und Löschen von Anwendungen, Diensten und den darin enthaltenen Daten. Ein unsicherer Cluster ist ein Cluster, mit dem jeder Benutzer jederzeit eine Verbindung herstellen kann, um Verwaltungsvorgänge auszuführen. Die Erstellung eines unsicheren Clusters ist zwar möglich, allerdings **wird dringend empfohlen, einen sicheren Cluster zu erstellen**. Ein unsicherer Cluster **kann nicht zu einem späteren Zeitpunkt gesichert werden**. Stattdessen muss ein neuer Cluster erstellt werden.
+
+## Anmelden an Azure
+In diesem Leitfaden wird [Azure PowerShell][azure-powershell] verwendet. Wenn Sie eine neue PowerShell-Sitzung starten, melden Sie sich bei Ihrem Azure-Konto an, und wählen Sie Ihr Abonnement aus, bevor Sie Azure-Befehle ausführen.
+
+Melden Sie sich bei Ihrem Azure-Konto an:
+
+```powershell
+Login-AzureRmAccount
+```
+
+Wählen Sie Ihr Abonnement aus:
+
+```powershell
+Get-AzureRmSubscription
+Set-AzureRmContext -SubscriptionId <guid>
+```
+
+## Einrichten von Key Vault
+
+Dieser Teil des Leitfadens führt Sie durch die Erstellung eines Schlüsseltresors für einen Service Fabric-Cluster in Azure und für Service Fabric-Anwendungen. Eine vollständige Anleitung zu Key Vault finden Sie unter [Erste Schritte mit dem Azure-Schlüsseltresor][key-vault-get-started].
+
+Service Fabric verwendet X.509-Zertifikate, um einen Cluster zu sichern. Zertifikate für Service Fabric-Cluster in Azure werden in Azure Key Vault verwaltet. Wenn ein Cluster in Azure bereitgestellt wird, ruft der für die Erstellung von Service Fabric-Clustern zuständige Azure-Ressourcenanbieter Zertifikate aus dem Schlüsseltresor ab und installiert sie auf den virtuellen Clustercomputern.
+
+Das folgende Diagramm veranschaulicht die Beziehung zwischen dem Schlüsseltresor, einem Service Fabric-Cluster und dem Azure-Ressourcenanbieter, der beim Erstellen eines Clusters die in Key Vault gespeicherten Zertifikate verwendet:
+
+![Zertifikatinstallation][cluster-security-cert-installation]
+
+### Erstellen einer Ressourcengruppe
+
+Der erste Schritt besteht darin, eine neue Ressourcengruppe speziell für den Schlüsseltresor zu erstellen. Es empfiehlt sich, den Schlüsseltresor in eine eigene Ressourcengruppe einzufügen, sodass Sie Compute- und Speicherressourcengruppen – wie z.B. die Ressourcengruppe, in der sich Ihr Service Fabric-Cluster befindet – entfernen können, ohne dass Ihre Schlüssel und geheimen Schlüssel verloren gehen. Die Ressourcengruppe, die Ihren Schlüsseltresor enthält, muss sich in der gleichen Region befinden wie der Cluster, der den Tresor verwendet.
+
+```powershell
+
+	PS C:\Users\vturecek> New-AzureRmResourceGroup -Name mycluster-keyvault -Location 'West US'
+	WARNING: The output object type of this cmdlet will be modified in a future release.
+	
+	ResourceGroupName : mycluster-keyvault
+	Location          : westus
+	ProvisioningState : Succeeded
+	Tags              :
+	ResourceId        : /subscriptions/<guid>/resourceGroups/mycluster-keyvault
+
+```
+
+### Erstellen eines Schlüsseltresors 
+
+Erstellen Sie einen Schlüsseltresor in der neuen Ressourcengruppe. Der Schlüsseltresor **muss für die Bereitstellung aktiviert sein**, damit der Service Fabric-Ressourcenanbieter Zertifikate daraus abrufen und diese auf Clusterknoten installieren kann:
+
+```powershell
+
+	PS C:\Users\vturecek> New-AzureRmKeyVault -VaultName 'myvault' -ResourceGroupName 'mycluster-keyvault' -Location 'West US' -EnabledForDeployment
+	
+	
+	Vault Name                       : myvault
+	Resource Group Name              : mycluster-keyvault
+	Location                         : West US
+	Resource ID                      : /subscriptions/<guid>/resourceGroups/mycluster-keyvault/providers/Microsoft.KeyVault/vaults/myvault
+	Vault URI                        : https://myvault.vault.azure.net
+	Tenant ID                        : <guid>
+	SKU                              : Standard
+	Enabled For Deployment?          : False
+	Enabled For Template Deployment? : False
+	Enabled For Disk Encryption?     : False
+	Access Policies                  :
+	                                   Tenant ID                :    <guid>
+	                                   Object ID                :    <guid>
+	                                   Application ID           :
+	                                   Display Name             :    
+	                                   Permissions to Keys      :    get, create, delete, list, update, import, backup, restore
+	                                   Permissions to Secrets   :    all
+	
+	
+	Tags                             :
+```
+
+Wenn Sie bereits über einen Schlüsseltresor verfügen, können Sie diesen über die Azure-Befehlszeilenschnittstelle für die Bereitstellung aktivieren:
+
+```cli
+> azure login
+> azure account set "your account"
+> azure config mode arm 
+> azure keyvault list
+> azure keyvault set-policy --vault-name "your vault name" --enabled-for-deployment true
+```
 
 
-# Erstellen eines Service Fabric-Clusters im Azure-Portal
+## Hinzufügen von Zertifikaten zum Schlüsseltresor
 
-Auf dieser Seite erhalten Sie Informationen zum Einrichten eines Service Fabric-Clusters. Ihr Abonnement muss ausreichend Kerne zum Bereitstellen der virtuellen IaaS-Computer umfassen, aus denen dieser Cluster bestehen soll.
+Zertifikate werden in Service Fabric zur Authentifizierung und Verschlüsselung verwendet, um verschiedene Aspekte eines Clusters und der zugehörigen Anwendungen zu sichern. Weitere Informationen zur Verwendung von Zertifikaten in Service Fabric finden Sie unter [Szenarien für die Clustersicherheit in Service Fabric][service-fabric-cluster-security].
 
+### Cluster- und Serverzertifikat (erforderlich) 
 
-## Suchen nach der Service Fabric-Clusterressource
+Dieses Zertifikat wird benötigt, um einen Cluster zu sichern und nicht autorisierte Zugriffe auf den Cluster zu verhindern. Es sorgt auf unterschiedliche Weise für Clustersicherheit:
+ 
+ - **Clusterauthentifizierung**: Authentifiziert die Kommunikation zwischen Knoten für einen Clusterverbund. Nur Knoten, die ihre Identität mit diesem Zertifikat nachweisen können, dürfen dem Cluster beitreten.
+ - **Serverauthentifizierung**: Authentifiziert die Verwaltungsendpunkte des Clusters bei einem Verwaltungsclient, sodass der Verwaltungsclient weiß, dass die Kommunikation tatsächlich aus dem Cluster stammt. Dieses Zertifikat stellt auch SSL für die HTTPS-Verwaltungs-API und für Service Fabric Explorer über HTTPS bereit.
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
+Für diese Zwecke muss das Zertifikat die folgenden Anforderungen erfüllen:
 
-2. Klicken Sie auf **+ Neu**, um eine neue Ressourcenvorlage hinzuzufügen. Suchen Sie Ihre Vorlage im **Marketplace** unter **Alles**. Sie heißt **Service Fabric Cluster**.
+ - Das Zertifikat muss einen privaten Schlüssel enthalten.
+ - Das Zertifikat muss für den Schlüsselaustausch erstellt werden und in eine PFX-Datei (Persönlicher Informationsaustausch) exportiert werden können.
+ - Der Name des Antragstellers für das Zertifikat muss der Domäne entsprechen, über die auf den Service Fabric-Cluster zugegriffen wird. Dies ist erforderlich, damit SSL für die HTTPS-Verwaltungsendpunkte des Clusters und für Service Fabric Explorer bereitgestellt werden kann. Für die Domäne `.cloudapp.azure.com` können Sie kein SSL-Zertifikat von einer Zertifizierungsstelle beziehen. Sie benötigen einen benutzerdefinierten Domänennamen für Ihren Cluster. Wenn Sie ein Zertifikat von einer Zertifizierungsstelle anfordern, muss der Name des Antragstellers für das Zertifikat dem benutzerdefinierten Domänennamen entsprechen, der für Ihren Cluster verwendet wird.
 
-    a. Klicken Sie in der obersten Ebene auf **Marketplace**.
+### Clientauthentifizierungszertifikate
 
-    b. Geben Sie unter **Alles** „Fabric“ ein, und drücken Sie die EINGABETASTE. Manchmal funktioniert der automatische Filter nicht. Drücken Sie daher in jedem Fall die EINGABETASTE. ![Screenshot der Suche nach der Service Fabric-Clustervorlage im Azure-Portal.][SearchforServiceFabricClusterTemplate]
+Zusätzliche Clientzertifikate authentifizieren Administratoren für Clusterverwaltungsaufgaben. Service Fabric verfügt über zwei Zugriffsebenen: **Administrator** und **Schreibgeschützter Benutzer**. Es sollte mindestens ein einzelnes Zertifikat für den Administratorzugriff verwendet werden. Um weiteren Zugriff auf Benutzerebene zu ermöglichen, muss ein separates Zertifikat bereitgestellt werden. Weitere Informationen zu Zugriffsrollen finden Sie unter [Rollenbasierte Zugriffssteuerung für Service Fabric-Clients][service-fabric-cluster-security-roles].
 
-3. Wählen Sie **Service Fabric-Cluster** aus der Liste aus.
+Clientauthentifizierungszertifikate müssen nicht in Key Vault hochgeladen werden, damit sie in Service Fabric funktionieren. Diese Zertifikate müssen nur für Administratoren bereitgestellt werden, die für die Clusterverwaltung autorisiert sind.
 
-4. Wechseln Sie zum Blatt **Service Fabric-Cluster**, und klicken Sie auf **Erstellen**.
+>[AZURE.NOTE] Zur Authentifizierung von Clients für Clusterverwaltungsvorgänge wird Azure Active Directory empfohlen. Um Azure Active Directory verwenden zu können, müssen Sie [den Cluster mithilfe von Azure Resource Manager erstellen][create-cluster-arm].
 
-5. Ihnen wird nun ein Blatt **Service Fabric-Cluster erstellen** angezeigt, auf dem 4 Schritte aufgeführt sind.
+### Anwendungszertifikate (optional)
 
-## Schritt 1: Grundeinstellungen
+Zum Zweck der Anwendungssicherheit kann eine beliebige Anzahl zusätzlicher Zertifikate in einem Cluster installiert werden. Bevor Sie den Cluster erstellen, betrachten Sie die verschiedenen Szenarien zur Anwendungssicherheit, in denen ein Zertifikat auf den Knoten installiert werden muss, beispielsweise:
+
+ - Verschlüsselung und Entschlüsselung von Anwendungskonfigurationswerten
+ - Knotenübergreifende Verschlüsselung von Daten während der Replikation
+
+Anwendungszertifikate können nicht konfiguriert werden, wenn Sie einen Cluster über das Azure-Portal erstellen. Um Anwendungszertifikate während der Einrichtung eines Clusters zu konfigurieren, müssen Sie [den Cluster mithilfe von Azure Resource Manager erstellen][create-cluster-arm]. Sie können dem Cluster nach der Erstellung auch Anwendungszertifikate hinzufügen.
+
+### Formatieren von Zertifikaten für die Verwendung durch einen Azure-Ressourcenanbieter
+
+Private Schlüsseldateien (.pfx) können direkt über Key Vault hinzugefügt und verwendet werden. Für den Azure-Ressourcenanbieter müssen Schlüssel jedoch in einem bestimmten JSON-Format gespeichert werden, das die PFX-Datei, eine Base64-codierte Zeichenfolge und das Kennwort für den privaten Schlüssel enthält. Um diese Anforderungen zu erfüllen, müssen die Schlüssel in einer JSON-Zeichenfolge platziert und dann als *geheime Schlüssel* im Schlüsseltresor gespeichert werden.
+
+Um diesen Prozess zu vereinfachen, ist ein PowerShell-Modul [auf GitHub verfügbar][service-fabric-rp-helpers]. Gehen Sie zur Verwendung des Moduls wie folgt vor:
+
+ 1. Laden Sie den gesamten Inhalt des Repositorys in ein lokales Verzeichnis herunter.
+ 2. Importieren Sie das Modul in Ihr PowerShell-Fenster:
+
+  ```powershell
+  PS C:\Users\vturecek> Import-Module "C:\users\vturecek\Documents\ServiceFabricRPHelpers\ServiceFabricRPHelpers.psm1"
+  ```
+     
+Der Befehl `Invoke-AddCertToKeyVault` in diesem PowerShell-Modul formatiert einen privaten Zertifikatschlüssel automatisch in eine JSON-Zeichenfolge und lädt diese in Key Vault hoch. Verwenden Sie diesen Befehl, um das Clusterzertifikat und weitere zusätzliche Anwendungszertifikate zum Schlüsseltresor hinzuzufügen. Wiederholen Sie diesen Schritt einfach für alle weiteren Zertifikate, die Sie in Ihrem Cluster installieren möchten.
+
+```powershell
+PS C:\Users\vturecek> Invoke-AddCertToKeyVault -SubscriptionId <guid> -ResourceGroupName mycluster-keyvault -Location "West US" -VaultName myvault -CertificateName mycert -Password "<password>" -UseExistingCertificate -ExistingPfxFilePath "C:\path\to\mycertkey.pfx"
+	
+	Switching context to SubscriptionId <guid>
+	Ensuring ResourceGroup mycluster-keyvault in West US
+	WARNING: The output object type of this cmdlet will be modified in a future release.
+	Using existing valut myvault in West US
+	Reading pfx file from C:\path\to\key.pfx
+	Writing secret to myvault in vault myvault
+	
+	
+Name  : CertificateThumbprint
+Value : <value>
+
+Name  : SourceVault
+Value : /subscriptions/<guid>/resourceGroups/mycluster-keyvault/providers/Microsoft.KeyVault/vaults/myvault
+
+Name  : CertificateURL
+Value : https://myvault.vault.azure.net:443/secrets/mycert/4d087088df974e869f1c0978cb100e47
+
+```
+
+Dies sind alle Voraussetzungen des Schlüsseltresors für die Konfiguration einer Resource Manager-Vorlage für Service Fabric-Cluster, die Zertifikate für die Knotenauthentifizierung, die Sicherheit und Authentifizierung von Verwaltungsendpunkten sowie weitere Sicherheitsfeatures für Anwendungen installiert, die X.509-Zertifikate verwenden. An diesem Punkt sollten Sie über folgendes Setup in Azure verfügen:
+
+ - Schlüsseltresor-Ressourcengruppe
+   - Schlüsseltresor
+     - Authentifizierungszertifikat für den Clusterserver
+
+## Erstellen eines Clusters im Azure-Portal
+
+### Suchen nach der Service Fabric-Clusterressource
+
+![Suche nach der Service Fabric-Clustervorlage im Azure-Portal.][SearchforServiceFabricClusterTemplate]
+
+ 1. Melden Sie sich auf dem [Azure-Portal][azure-portal] an.
+
+ 2. Klicken Sie auf **Neu**, um eine neue Ressourcenvorlage hinzuzufügen. Suchen Sie Ihre Service Fabric Cluster-Vorlage im **Marketplace** unter **Alles**.
+
+ 3. Wählen Sie **Service Fabric-Cluster** aus der Liste aus.
+
+ 4. Wechseln Sie zum Blatt **Service Fabric-Cluster**, und klicken Sie auf **Erstellen**.
+
+ 5. Ihnen wird nun ein Blatt **Service Fabric-Cluster erstellen** angezeigt, auf dem vier Schritte aufgeführt sind.
+
+#### 1\. Grundlagen
+
+![Screenshot der Erstellung einer neuen Ressourcengruppe.][CreateRG]
 
 Auf dem Blatt mit den Grundeinstellungen müssen die grundlegenden Details für Ihren Cluster angegeben werden.
 
-1. Geben Sie den Namen Ihres Clusters ein.
+ 1. Geben Sie den Namen Ihres Clusters ein.
 
-2. Wählen Sie einen **Benutzernamen** und **Kennwort** für den VM-Remotedesktop.
+ 2. Geben Sie einen **Benutzernamen** und ein **Kennwort** für Remotedesktop für die virtuellen Computer.
 
-3. Stellen Sie sicher, dass Sie das gewünschte **Abonnement** auswählen, für das Ihr Cluster bereitgestellt werden soll. Dies ist besonders wichtig, wenn Sie über mehrere Abonnements verfügen.
+ 3. Stellen Sie sicher, dass Sie das gewünschte **Abonnement** auswählen, in dem Ihr Cluster bereitgestellt werden soll. Dies ist besonders wichtig, wenn Sie über mehrere Abonnements verfügen.
 
-4. Erstellen Sie eine **neue Ressourcengruppe** mit demselben Namen wie der Cluster, damit Sie sie später einfach finden können. Das ist besonders hilfreich, wenn Sie Änderungen an Ihrer Bereitstellung vornehmen oder Ihren Cluster löschen.
+ 4. Erstellen Sie eine neue **Ressourcengruppe**. Verwenden Sie für die Ressourcengruppe den gleichen Namen wie für den Cluster, um sie später einfacher wiederzufinden. Das ist besonders dann hilfreich, wenn Sie Änderungen an Ihrer Bereitstellung vornehmen oder Ihren Cluster löschen möchten.
 
     >[AZURE.NOTE] Auch wenn Sie eine vorhandene Ressourcengruppe verwenden können, empfiehlt es sich, eine neue Ressourcengruppe zu erstellen. So können Sie leichter die Cluster löschen, die Sie nicht mehr benötigen.
 
- 	![Screenshot der Erstellung einer neuen Ressourcengruppe.][CreateRG]
+ 5. Wählen Sie die **Region** aus, in der Sie den Cluster erstellen möchten. Sie müssen die gleiche Region verwenden, in der sich Ihr Schlüsseltresor befindet.
+
+#### 2\. Clusterkonfiguration
+
+![Erstellen eines Knotentyps][CreateNodeType]
+
+Konfigurieren Sie die Clusterknoten. Knotentypen definieren die Größe, die Anzahl und die Eigenschaften der virtuellen Computer. Der Cluster kann über mehrere Knotentypen verfügen. Der primäre Knotentyp (der erste, den Sie im Portal definieren), muss jedoch über mindestens fünf virtuelle Computer verfügen, da dies der Knotentyp ist, in dem Service Fabric-Systemdienste platziert werden. Sie müssen keine **Platzierungseigenschaften** konfigurieren, da automatisch die standardmäßige NodeTypeName-Platzierungseigenschaft hinzugefügt wird.
+
+   >[AZURE.NOTE] Ein gängiges Szenario für mehrere Knotentypen ist eine Anwendung, die einen Front-End-Dienst und einen Back-End-Dienst enthält. Der Front-End-Dienst soll auf kleineren virtuellen Computern (VM-Größen wie z.B. D2) ausgeführt werden, auf denen Ports für das Internet geöffnet sind. Der Back-End-Dienst soll auf größeren virtuellen Computern (VM-Größen wie z.B. D4, D6, D15 usw.) platziert werden, auf denen keine Ports für das Internet geöffnet sind.
+
+ 1. Wählen Sie einen Namen für Ihren Knotentyp aus (ein bis zwölf Zeichen, nur Buchstaben und Zahlen).
+
+ 2. Die **Mindestgröße** von VMs für den primären Knotentyp hängt von der **Dauerhaftigkeitsstufe** ab, die Sie für den Cluster wählen. Der Standardwert für die Dauerhaftigkeitsstufe ist „Bronze“. Weitere Informationen zur Dauerhaftigkeit finden Sie unter [Auswählen der Zuverlässigkeits- und Dauerhaftigkeitsmerkmale für Service Fabric-Cluster][service-fabric-cluster-capacity].
+
+ 3. Wählen Sie die VM-Größe und den gewünschten Tarif aus. VMs der D-Serie verfügen über SSDs (Solid-State Drives) und werden für zustandsbehaftete Anwendungen sehr empfohlen.
+
+ 4. Die **Mindestanzahl** von VMs für den primären Knotentyp hängt von der **Zuverlässigkeitsstufe** ab, die Sie für den Cluster wählen. Der Standardwert für die Zuverlässigkeitsstufe ist „Silber“. Weitere Informationen zur Zuverlässigkeit finden Sie unter [Auswählen der Zuverlässigkeits- und Dauerhaftigkeitsmerkmale für Service Fabric-Cluster][service-fabric-cluster-capacity].
+
+ 5. Wählen Sie die Anzahl von VMs für den Knotentyp aus. Sie können die Anzahl von VMs auf einem Knotentyp später zentral hoch- oder herunterskalieren, beim primären Knotentyp wird die Mindestanzahl jedoch durch die gewählte Zuverlässigkeitsstufe bestimmt. Andere Knotentypen können über mindestens einen virtuellen Computer verfügen.
+
+ 6. Konfigurieren Sie benutzerdefinierte Endpunkte. In diesem Feld können Sie eine durch Trennzeichen getrennte Liste der Ports eingeben, die Sie über den Azure Load Balancer verfügbar machen möchten, damit Ihre Anwendungen auf das öffentliche Internet zugreifen können. Wenn Sie z.B. die Bereitstellung einer Webanwendung in Ihrem Cluster planen, geben Sie hier „80“ ein, um Datenverkehr in Ihren Cluster über Port 80 zuzulassen. Weitere Informationen zu Endpunkten finden Sie unter [Kommunikation mit Anwendungen][service-fabric-connect-and-communicate-with-services].
+
+ 7. Konfigurieren der **Diagnose** für Cluster. Die Diagnose ist standardmäßig in Ihrem Cluster aktiviert, um die Behebung von Problemen in Ihrem Cluster zu vereinfachen. Zum Deaktivieren der Diagnose ändern Sie den **Status** in **Aus**. Das Ausschalten der Diagnose wird **nicht** empfohlen.
 
 
-5. Wählen Sie einen **Standort** aus der Dropdownliste aus. Der Standardwert ist **USA, Westen**. Klicken Sie auf "OK".
-
-## Schritt 2: Konfigurieren des Clusters
-
-10. Zunächst soll erläutert werden, was ein **Knotentyp** ist. Der Knotentyp kann als Äquivalent zu Rollen in Clouddiensten betrachtet werden. Knotentypen definieren die Größe, die Anzahl und die Eigenschaften der virtuellen Computer. Der Cluster kann über mehrere Knotentypen verfügen. Der primäre Knotentyp (der erste, den Sie im Portal definieren), muss jedoch mindestens fünf VMs aufweisen. Dies ist der Knotentyp, auf dem Service Fabric-Systemdienste platziert werden. Berücksichtigen Sie Folgendes, wenn Sie Ihre Anforderungen im Hinblick auf mehrere Knotentypen ermitteln.
-
-	* Die Anwendung, die bereitgestellt werden soll, umfasst einen Front-End-Dienst und einen Back-End-Dienst. Der Front-End-Dienst soll auf kleineren VMs (VM-Größen wie D2) ausgeführt werden, und die VMs weisen Ports auf, die für das Internet geöffnet sind. Der rechenintensive Back-End-Dienst soll auf größeren VMs (VM-Größen wie D4, D6, D15 usw.) platziert werden, die nicht über Internetzugriff verfügen.
-
-	* Auch wenn beide Dienste auf einem Knotentyp verwendet werden können, wird empfohlen, sie in einen Cluster mit zwei Knotentypen zu platzieren. Jeder Knotentyp kann unterschiedliche Eigenschaften aufweisen, wie Internetkonnektivität, VM-Größe und Anzahl der virtuellen Computer, die unabhängig voneinander skaliert werden können.
-
-	* Definieren Sie zuerst einen Knotentyp, der mindestens fünf virtuelle Computer umfasst. Die anderen Knotentypen können über mindestens einen virtuellen Computer verfügen.
-
-13.  So konfigurieren Sie Ihren Knotentyp:
-
-	a. Wählen Sie einen Namen für Ihren Knotentyp aus (ein bis zwölf Zeichen, nur Buchstaben und Zahlen).
-
-	b. Die Mindestgröße von VMs für den primären Knotentyp hängt von der Dauerhaftigkeitsstufe ab, die Sie für den Cluster wählen. Der Standardwert für die Dauerhaftigkeitsstufe ist „Bronze“. Weitere Informationen zum [Auswählen der Zuverlässigkeits- und Dauerhaftigkeitsmerkmale für Service Fabric-Cluster](service-fabric-cluster-capacity.md).
-
-	b. Wählen Sie die VM-Größe und den Tarif aus. Standardmäßig ist D4 Standard ausgewählt. Wenn Sie diesen Cluster jedoch nur zum Testen Ihrer Anwendung verwenden, können Sie auch D2 oder kleinere virtuelle Computer auswählen.
-
-	c. Die Mindestanzahl von VMs für den primären Knotentyp hängt von der Zuverlässigkeitsstufe ab, die Sie für den Cluster wählen. Der Standardwert für die Zuverlässigkeitsstufe ist „Silber“. Erfahren Sie mehr über das [Auswählen der Service Fabric-Clusterzuverlässigkeit und -dauerhaftigkeit](service-fabric-cluster-capacity.md).
-
-	c. Wählen Sie die Anzahl von VMs für den Knotentyp aus. Sie können die Anzahl von VMs auf einem Knotentyp später zentral hoch- oder herunterskalieren, beim primären Knotentyp wird die Mindestanzahl jedoch durch die gewählte Zuverlässigkeitsstufe bestimmt. Andere Knotentypen können über mindestens einen virtuellen Computer verfügen.
-
-
-  	![Screenshot der Erstellung eines Knotentyps.][CreateNodeType]
-
-9. Wenn Sie Ihre Anwendungen sofort im Cluster bereitstellen möchten, fügen Sie Ports, die Sie für Ihre Anwendungen öffnen möchten, auf einem Knotentyp **Anwendungsports** (oder auf den von Ihnen erstellten Knotentypen) hinzu. Sie können dem Knotentyp später Ports hinzufügen, indem Sie den Lastenausgleich ändern, der diesem Knoten zugeordnet ist. (Fügen Sie einen Test hinzu, und fügen Sie den Test dann den Lastenausgleichsregeln hinzu.) Das gestaltet sich nun es etwas einfacher, da die erforderlichen Tests und Regeln dem Lastenausgleich durch die Portalautomatisierung hinzugefügt werden.
-
-	a. Sie finden die Anwendungsports in Ihren Dienstmanifesten, die im Anwendungspaket enthalten sind. Rufen Sie Ihre Anwendungen auf, öffnen Sie die Dienstmanifeste, und notieren Sie alle Eingabeendpunkte, die Ihre Anwendung zum Kommunizieren mit der Außenwelt benötigt.
-
-	b. Fügen Sie im Feld **Anwendungseingabe-Endpunkte** alle Ports (durch Kommas getrennt) hinzu. Der Endpunkt der TCP-Client-Verbindung ist standardmäßig 19000, sodass Sie keinen angegeben müssen. Für die Beispielanwendung „WordCount“ muss beispielsweise Port 83 geöffnet sein. Sie finden dies im Anwendungspaket in der Datei „servicemanifest.xml“. (Es gibt möglicherweise mehrere Dateien des Namens „servicemanifest.xml“.)
-
-    c. Die meisten Beispielanwendungen verwenden Port 80 und 8081. Fügen Sie diese also hinzu, wenn Sie Beispiele in diesem Cluster bereitstellen möchten. ![Ports][Ports]
-
-10. Sie müssen keine **Platzierungseigenschaften** konfigurieren, da vom System eine standardmäßige Platzierungseigenschaft „NodeTypeName“ hinzugefügt wird. Wenn die Anwendung dies erfordert, können Sie weitere hinzufügen.
-
-11. Sie müssen keine **Kapazitätseigenschaften** konfigurieren. Dies wird jedoch empfohlen, da Sie diese in Ihren Anwendungen verwenden können, um Informationen zur Last an das System zu übermitteln. So kann Einfluss auf die Vorgänge zur Platzierung und zum Ressourcenausgleich genommen werden, die das System im Service Fabric-Cluster ausführt. Weitere Informationen zum Service Fabric-Ressourcenausgleich finden Sie in [diesem Dokument](service-fabric-cluster-resource-manager-architecture.md).
-
-12. Führen Sie die oben beschriebenen Schritte für alle Knotentypen aus.
-
-14. Konfigurieren der **Diagnose** für Cluster. Die Diagnose ist standardmäßig in Ihrem Cluster aktiviert, um die Behebung von Problemen in Ihrem Cluster zu vereinfachen. Zum Deaktivieren der Diagnose ändern Sie den **Status** in **Aus**. Das Ausschalten der Diagnose wird **nicht** empfohlen.
-
-15. Optional: Festlegen der **Service Fabric-Clustereinstellungen** Mit dieser fortgeschrittenen Option können Sie die Standardeinstellungen für den Service Fabric-Cluster ändern. Es wird empfohlen, die Standardeinstellungen unverändert zu lassen, wenn Ihre Anwendung oder Ihr Cluster nicht unbedingt eine Änderung erfordert.
-
-## Schritt 3: Konfigurieren der Sicherheitseinstellungen
-
-Sicherheitsszenarien und -konzepte finden Sie unter [Service Fabric cluster security (Service Fabric-Clustersicherheit)](service-fabric-cluster-security.md). Zu diesem Zeitpunkt unterstützt Service Fabric das Absichern von Clustern nur über ein X509-Zertifikat. Informationen zur Vorgehensweise finden Sie unter [Secure a Service Fabric cluster on Azure using certificates](service-fabric-secure-azure-cluster-with-certs.md) (Sichern von Service Fabric-Clustern in Azure mithilfe von Zertifikaten).
-
-Die Cluster-Sicherung ist optional, wird jedoch dringend empfohlen. Wenn Sie Ihren Cluster nicht schützen möchten, wählen Sie für **Sicherheitsmodus** die Option **Unsicher** aus. Hinweis: Ein unsicherer Cluster kann zu einem späteren Zeitpunkt **nicht** in einen sicheren Cluster aktualisiert werden.
+#### 3\. Sicherheit
 
 ![Screenshot der Sicherheitskonfigurationen im Azure-Portal.][SecurityConfigs]
 
+Der letzte Schritt besteht darin, Zertifikatinformationen bereitzustellen, um den Cluster mithilfe der zuvor erstellen Schlüsseltresor- und Zertifikatinformationen zu sichern.
 
-## Schritt 4: Abschließen der Clustererstellung
+ 1. Füllen Sie die Felder für das primäre Zertifikat mit der Ausgabe des PowerShell-Befehls `Invoke-AddCertToKeyVault` auf, den Sie zum Hochladen des **Clusterzertifikats** in den Schlüsseltresor verwendet haben.
+
+```powershell
+Name  : CertificateThumbprint
+Value : <value>
+
+Name  : SourceVault
+Value : /subscriptions/<guid>/resourceGroups/mycluster-keyvault/providers/Microsoft.KeyVault/vaults/myvault
+
+Name  : CertificateURL
+Value : https://myvault.vault.azure.net:443/secrets/mycert/4d087088df974e869f1c0978cb100e47
+```
+
+ 2. Aktivieren Sie das Kontrollkästchen **Erweiterte Einstellungen konfigurieren**, um Clientzertifikate für den **Verwaltungsclient** und den **schreibgeschützten Client** einzugeben. Geben Sie in diesen Feldern ggf. einfach den Fingerabdruck des Verwaltungsclientzertifikats und den Fingerabdruck des Benutzerzertifikats für den schreibgeschützten Client ein. Wenn Administratoren versuchen, eine Verbindung mit dem Cluster herzustellen, erhalten sie nur dann Zugriff, wenn sie über ein Zertifikat mit einem Fingerabdruck verfügen, der mit den hier eingegebenen Fingerabdruckwerten übereinstimmt.
+
+
+#### 4\. Zusammenfassung
+
+![Screenshot des Startmenüs mit der Anzeige „Service Fabric-Cluster wird bereitgestellt“.][Notifications]
 
 Um die Erstellung des Clusters abzuschließen, klicken Sie auf **Zusammenfassung**, um die bereitgestellten Konfigurationen anzuzeigen, oder laden Sie die Azure Resource Manager-Vorlage herunter, die zur Bereitstellung des Clusters verwendet werden soll. Nachdem Sie die Pflichteinstellungen angegeben haben, wird die Schaltfläche **OK** aktiviert. Klicken Sie auf diese Schaltfläche, um den Vorgang zur Clustererstellung zu starten.
 
 Sie können den Verlauf der Erstellung in den Benachrichtigungen finden. (Klicken Sie auf das Glockensymbol in der Nähe der Statusleiste am oberen rechten Bildschirmrand.) Wenn Sie beim Erstellen des Clusters auf **An Startmenü anheften** geklickt haben, wird im **Startmenü** der Hinweis **Service Fabric-Cluster wird bereitgestellt** angezeigt.
 
-![Screenshot des Startmenüs mit der Anzeige „Service Fabric-Cluster wird bereitgestellt“.][Notifications]
+### Anzeigen des Clusterstatus
 
-## Anzeigen des Clusterstatus
+![Screenshot der Clusterdetails im Dashboard.][ClusterDashboard]
 
 Sobald der Cluster erstellt wurde, können Sie Ihren Cluster im Portal überprüfen.
 
-1. Wechseln Sie zu **Durchsuchen**, und klicken Sie auf **Service Fabric-Cluster**.
+ 1. Wechseln Sie zu **Durchsuchen**, und klicken Sie auf **Service Fabric-Cluster**.
 
-2. Suchen Sie Ihren Cluster, und klicken Sie darauf. ![Screenshot der Suche nach dem Cluster im Portal.][BrowseCluster]
+ 2. Suchen Sie Ihren Cluster, und klicken Sie darauf.
 
-3. Sie können jetzt die Details Ihres Clusters, einschließlich der öffentlichen IP-Adresse, im Dashboard anzeigen. Wenn Sie die Maus über **Öffentliche IP-Adresse des Clusters** bewegen, wird eine Zwischenablage angezeigt, in die Sie die Adresse kopieren können, indem Sie hinein klicken. ![Screenshot der Clusterdetails im Dashboard.][ClusterDashboard]
+ 3. Jetzt sehen Sie die Details Ihres Clusters im Dashboard, einschließlich des öffentlichen Endpunkts des Clusters und eines Links zu Service Fabric Explorer.
 
-  Der Abschnitt **Knotenmonitor** auf dem Dashboardblatt des Clusters gibt die Anzahl von virtuellen Computern an, die fehlerfrei bzw. fehlerhaft sind. Weitere Informationen zur Clusterintegrität finden Sie unter [Service Fabric health model introduction (Einführung in die Service Fabric-Integritätsüberwachung)](service-fabric-health-introduction.md).
+Der Abschnitt **Knotenmonitor** auf dem Dashboardblatt des Clusters gibt die Anzahl von virtuellen Computern an, die fehlerfrei bzw. fehlerhaft sind. Weitere Informationen zur Clusterintegrität finden Sie unter [Einführung in die Service Fabric-Integritätsüberwachung][service-fabric-health-introduction].
 
->[AZURE.NOTE] Um Verfügbarkeit sicherzustellen und den Zustand beizubehalten, muss eine bestimmte Anzahl von Knoten in einem Service Fabric-Cluster stets in Betrieb sein. Dies wird auch als „Aufrechterhalten eines Quorums“ bezeichnet. Daher ist es üblicherweise nicht sicher, alle Computer innerhalb des Clusters herunterzufahren, sofern Sie nicht zunächst eine [vollständige Sicherung des Zustands](service-fabric-reliable-services-backup-restore.md) durchgeführt haben.
-
-## Herstellen einer Verbindung mit dem Cluster und Bereitstellen einer Anwendung
-
-Nach Abschluss der Clustereinrichtung können Sie jetzt eine Verbindung herstellen und mit dem Bereitstellen von Anwendungen beginnen. Starten Sie Windows PowerShell auf einem Computer, auf dem Sie das Service Fabric SDK installiert haben. Führen Sie zum Herstellen einer Verbindung mit dem Cluster einen der folgenden PowerShell-Befehle aus, je nachdem, ob sie einen sicheren oder einen unsicheren Cluster erstellt haben:
-
-### Herstellen einer Verbindung mit einem unsicheren Cluster
-
-```powershell
-Connect-serviceFabricCluster -ConnectionEndpoint <Cluster FQDN>:19000 -KeepAliveIntervalInSec 10
-```
-
-### Herstellen einer Verbindung mit einem sicheren Cluster
-
-1. Führen Sie die folgenden Befehle aus, um das Zertifikat auf dem Computer einzurichten, den Sie zum Ausführen des PowerShell-Befehls „Connect-serviceFabricCluster“ verwenden möchten.
-
-    ```powershell
-    Import-PfxCertificate -Exportable -CertStoreLocation Cert:\CurrentUser\My `
-            -FilePath C:\docDemo\certs\DocDemoClusterCert.pfx `
-            -Password (ConvertTo-SecureString -String test -AsPlainText -Force)
-    ```
-
-2. Führen Sie den folgenden PowerShell-Befehl aus, um eine Verbindung mit einem sicheren Cluster herzustellen. Die Zertifikatdetails entsprechen Ihren Angaben im Portal.
-
-    ```powershell
-    Connect-serviceFabricCluster -ConnectionEndpoint <Cluster FQDN>:19000 `
-              -KeepAliveIntervalInSec 10 `
-              -X509Credential -ServerCertThumbprint <Certificate Thumbprint> `
-              -FindType FindByThumbprint -FindValue <Certificate Thumbprint> `
-              -StoreLocation CurrentUser -StoreName My
-    ```
-
-    Beispielsweise sollte der obige PowerShell-Befehl ähnlich wie der Folgende aussehen:
-
-    ```powershell
-    Connect-serviceFabricCluster -ConnectionEndpoint sfcluster4doc.westus.cloudapp.azure.com:19000 `
-              -KeepAliveIntervalInSec 10 `
-              -X509Credential -ServerCertThumbprint C179E609BBF0B227844342535142306F3913D6ED `
-              -FindType FindByThumbprint -FindValue C179E609BBF0B227844342535142306F3913D6ED `
-              -StoreLocation CurrentUser -StoreName My
-    ```
-
-### Bereitstellen Ihrer App
-Nachdem Sie die Verbindung hergestellt haben, führen Sie die folgenden Befehle zum Bereitstellen der Anwendung aus. Ersetzen Sie dabei die angezeigten Pfade durch die entsprechenden Pfade auf Ihrem Computer. Im folgenden Beispiel wird die Beispielanwendung zur Wortzählung bereitgestellt:
-
-1. Kopieren Sie das Paket in den Cluster, mit dem Sie zuvor eine Verbindung hergestellt haben.
-
-    ```powershell
-    $applicationPath = "C:\VS2015\WordCount\WordCount\pkg\Debug"
-    ```
-
-    ```powershell
-    Copy-ServiceFabricApplicationPackage -ApplicationPackagePath $applicationPath -ApplicationPackagePathInImageStore "WordCount" -ImageStoreConnectionString fabric:ImageStore
-    ```
-2. Registrieren Sie ihren Anwendungstyp bei Service Fabric.
-
-    ```powershell
-    Register-ServiceFabricApplicationType -ApplicationPathInImageStore "WordCount"
-    ```
-
-3. Erstellen Sie eine neue Instanz auf dem soeben registrierten Anwendungstyp.
-
-    ```powershell
-    New-ServiceFabricApplication -ApplicationName fabric:/WordCount -ApplicationTypeName WordCount -ApplicationTypeVersion 1.0.0.0
-    ```
-
-4. Öffnen Sie jetzt den gewünschten Browser, und stellen Sie eine Verbindung mit dem Endpunkt her, auf dem die Anwendung lauscht. Bei der Beispielanwendung WordCount sieht die URL wie folgt aus:
-
-    http://sfcluster4doc.westus.cloudapp.azure.com:31000
-
-<!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
+>[AZURE.NOTE] Um Verfügbarkeit sicherzustellen und den Zustand beizubehalten, muss eine bestimmte Anzahl von Knoten in einem Service Fabric-Cluster stets in Betrieb sein. Dies wird auch als „Aufrechterhalten eines Quorums“ bezeichnet. Daher ist es üblicherweise nicht sicher, alle Computer innerhalb des Clusters herunterzufahren, sofern Sie nicht zunächst eine [vollständige Sicherung des Zustands][service-fabric-reliable-services-backup-restore] durchgeführt haben.
 
 ## Herstellen einer Remoteverbindung mit einer Instanz der VM-Skalierungsgruppe oder einem Clusterknoten
 
-Für jeden Knotentyp, den Sie in Ihrem Cluster angeben, wird jeweils eine VM-Skalierungsgruppe eingerichtet. Weitere Informationen finden Sie unter [Herstellen einer Remoteverbindung mit einer VM-Skalierungsgruppeninstanz oder einem Clusterknoten](service-fabric-cluster-nodetypes.md#remote-connect-to-a-vm-scale-set-instance-or-a-cluster-node).
+Für jeden Knotentyp, den Sie in Ihrem Cluster angeben, wird jeweils eine VM-Skalierungsgruppe eingerichtet. Weitere Informationen finden Sie unter [Herstellen einer Remoteverbindung mit einer VM-Skalierungsgruppeninstanz oder einem Clusterknoten][remote-connect-to-a-vm-scale-set].
 
 ## Nächste Schritte
 
-Machen Sie sich nach dem Erstellen eines Clusters mit dem Schützen des Clusters und der Bereitstellung von Apps vertraut:
-- [Verwalten von Service Fabric-Anwendungen in Visual Studio](service-fabric-manage-application-in-visual-studio.md)
-- [Service Fabric-Clustersicherheit](service-fabric-cluster-security.md)
-- [Einführung in das Service Fabric-Integritätsmodell](service-fabric-health-introduction.md)
+Sie verfügen jetzt über einen sicheren Cluster, der Zertifikate zur Verwaltungsauthentifizierung verwendet. Als Nächstes [stellen Sie eine Verbindung mit dem Cluster her](service-fabric-connect-to-secure-cluster.md), und erfahren, wie Sie [geheime Anwendungsschlüssel verwalten](service-fabric-application-secret-management.md).
 
+
+<!-- Links -->
+[azure-powershell]: https://azure.microsoft.com/documentation/articles/powershell-install-configure/
+[service-fabric-rp-helpers]: https://github.com/ChackDan/Service-Fabric/tree/master/Scripts/ServiceFabricRPHelpers
+[azure-portal]: https://portal.azure.com/
+[key-vault-get-started]: ../key-vault/key-vault-get-started.md
+[create-cluster-arm]: https://manage.windowsazure.com
+[service-fabric-cluster-security]: service-fabric-cluster-security.md
+[service-fabric-cluster-security-roles]: service-fabric-cluster-security-roles.md
+[service-fabric-cluster-capacity]: service-fabric-cluster-capacity.md
+[service-fabric-connect-and-communicate-with-services]: service-fabric-connect-and-communicate-with-services.md
+[service-fabric-health-introduction]: service-fabric-health-introduction.md
+[service-fabric-reliable-services-backup-restore]: service-fabric-reliable-services-backup-restore.md
+[remote-connect-to-a-vm-scale-set]: service-fabric-cluster-nodetypes.md#remote-connect-to-a-vm-scale-set-instance-or-a-cluster-node
 
 <!--Image references-->
 [SearchforServiceFabricClusterTemplate]: ./media/service-fabric-cluster-creation-via-portal/SearchforServiceFabricClusterTemplate.png
 [CreateRG]: ./media/service-fabric-cluster-creation-via-portal/CreateRG.png
 [CreateNodeType]: ./media/service-fabric-cluster-creation-via-portal/NodeType.png
-[Ports]: ./media/service-fabric-cluster-creation-via-portal/ports.png
-[SFConfigurations]: ./media/service-fabric-cluster-creation-via-portal/SFConfigurations.png
 [SecurityConfigs]: ./media/service-fabric-cluster-creation-via-portal/SecurityConfigs.png
 [Notifications]: ./media/service-fabric-cluster-creation-via-portal/notifications.png
-[BrowseCluster]: ./media/service-fabric-cluster-creation-via-portal/browse.png
 [ClusterDashboard]: ./media/service-fabric-cluster-creation-via-portal/ClusterDashboard.png
-[SecureConnection]: ./media/service-fabric-cluster-creation-via-portal/SecureConnection.png
+[cluster-security-cert-installation]: ./media/service-fabric-cluster-creation-via-arm/cluster-security-cert-installation.png
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0824_2016-->

@@ -15,10 +15,12 @@
 	ms.topic="reference"
 	ms.tgt_pltfrm="multiple"
 	ms.workload="na"
-	ms.date="05/16/2016"
-	ms.author="chrande"/>
+	ms.date="08/22/2016"
+	ms.author="chrande; glenga"/>
 
 # Azure Functions-Trigger mit Timer
+
+[AZURE.INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
 
 Dieser Artikel erläutert das Konfigurieren von Triggern mit Timer in Azure Functions. Trigger mit Timer rufen Funktionen anhand eines Zeitplans einmalig oder wiederholt auf.
 
@@ -26,7 +28,7 @@ Dieser Artikel erläutert das Konfigurieren von Triggern mit Timer in Azure Func
 
 ## „function.json“ für Trigger mit Timer
 
-Die Datei *function.json* enthält einen Zeitplanausdruck.
+Die Datei *function.json* enthält einen Zeitplanausdruck. Der folgende Zeitplan führt die Funktion beispielsweise einmal pro Minute aus:
 
 ```json
 {
@@ -46,9 +48,11 @@ Der Trigger mit Timer übernimmt automatisch das horizontale Hochskalieren über
 
 ## Format des Zeitplanausdrucks
 
-Der Zeitplanausdruck ist ein [CRON-Ausdruck](http://en.wikipedia.org/wiki/Cron#CRON_expression) mit sechs Feldern: {Sekunde} {Minute} {Stunde} {Tag} {Monat} {Wochentag}. In vielen Dokumenten mit CRON-Ausdrücken, die online zu finden sind, wird das Feld {Sekunde} ausgelassen. Wenn Sie daher aus einem dieser Dokumente kopieren, müssen Sie das zusätzliche Feld berücksichtigen.
+Der Zeitplanausdruck ist ein [CRON-Ausdruck](http://en.wikipedia.org/wiki/Cron#CRON_expression) mit sechs Feldern: `{second} {minute} {hour} {day} {month} {day of the week}`.
 
-Hier sind einige Beispiele für Zeitplanausdrücke aufgeführt.
+In vielen der online verfügbaren CRON-Ausdrücke wird das Feld „{second}“ (Sekunde) weggelassen. Wenn Sie also etwas aus einem dieser Dokumente kopieren, ist eine entsprechende Anpassung erforderlich, um das zusätzliche Feld zu berücksichtigen.
+
+Im Anschluss finden Sie weitere Beispiele für Zeitplanausdrücke:
 
 Alle 5 Minuten auslösen:
 
@@ -56,10 +60,34 @@ Alle 5 Minuten auslösen:
 "schedule": "0 */5 * * * *"
 ```
 
-So erfolgt die Auslösung alle zwei Stunden
+Einmal zu jeder vollen Stunde auslösen:
+
+```json
+"schedule": "0 0 * * * *",
+```
+
+Einmal alle zwei Stunden auslösen:
 
 ```json
 "schedule": "0 0 */2 * * *",
+```
+
+Zwischen 9:00 und 17:00 Uhr jeweils einmal pro Stunde auslösen:
+
+```json
+"schedule": "0 0 9-17 * * *",
+```
+
+Täglich um 9:30 Uhr auslösen:
+
+```json
+"schedule": "0 30 9 * * *",
+```
+
+Werktags um 9:30 Uhr auslösen:
+
+```json
+"schedule": "0 30 9 * * 1-5",
 ```
 
 ## C#-Codebeispiel für Trigger mit Timer
@@ -77,4 +105,4 @@ public static void Run(TimerInfo myTimer, TraceWriter log)
 
 [AZURE.INCLUDE [Nächste Schritte](../../includes/functions-bindings-next-steps.md)]
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0824_2016-->

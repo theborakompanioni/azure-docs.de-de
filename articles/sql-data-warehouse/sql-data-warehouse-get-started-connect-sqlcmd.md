@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="07/22/2016"
+   ms.date="08/30/2016"
    ms.author="mausher;barbkess;sonyama"/>
 
 # Abfragen von Azure SQL Data Warehouse (sqlcmd)
@@ -24,17 +24,11 @@
 - [Visual Studio](sql-data-warehouse-query-visual-studio.md)
 - [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md)
 
-In dieser exemplarischen Vorgehensweise wird das Befehlszeilenprogramm sqlcmd verwendet, um ein Azure SQL Data Warehouse abzufragen.
-
-## Voraussetzungen
-
-Für dieses Lernprogramm ist Folgendes erforderlich:
-
--  [sqlcmd.exe][]. Informationen zum Herunterladen finden Sie unter [Microsoft Befehlszeilenprogramme 11 für SQL Server][]. Dafür ist unter Umständen auch [Microsoft ODBC-Treiber 11 für SQL Server Windows][] erforderlich.
+In dieser exemplarischen Vorgehensweise wird das Befehlszeilenprogramm [sqlcmd][] verwendet, um ein Azure SQL Data Warehouse abzufragen.
 
 ## 1\. Verbinden
 
-Öffnen Sie zur Nutzung von sqlcmd zuerst die Befehlseingabeaufforderung, und geben Sie **sqlcmd** gefolgt von der Verbindungszeichenfolge für Ihre SQL Data Warehouse-Datenbank ein. Die Verbindungszeichenfolge muss die folgenden Parameter enthalten:
+Öffnen Sie zur Nutzung von [sqlcmd][] zuerst die Befehlseingabeaufforderung, und geben Sie **sqlcmd** gefolgt von der Verbindungszeichenfolge für Ihre SQL Data Warehouse-Datenbank ein. Die Verbindungszeichenfolge muss die folgenden Parameter enthalten:
 
 + **Server (-S)**: Server in Form von `<`Servername`>`.database.windows.net
 + **Datenbank (-D)**: Datenbankname.
@@ -73,18 +67,16 @@ sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@sswor
 
 ## Nächste Schritte
 
-Ausführliche Informationen zu den in sqlcmd verfügbaren Optionen finden Sie in der [Dokumentation zu sqlcmd][sqlcmd.exe].
+Ausführliche Informationen zu den in sqlcmd verfügbaren Optionen finden Sie in der [Dokumentation zu sqlcmd][sqlcmd].
 
 <!--Image references-->
 
 <!--Article references-->
 
 <!--MSDN references--> 
-[sqlcmd.exe]: https://msdn.microsoft.com/library/ms162773.aspx
-[Microsoft ODBC-Treiber 11 für SQL Server Windows]: https://www.microsoft.com/download/details.aspx?id=36434
-[Microsoft Befehlszeilenprogramme 11 für SQL Server]: http://go.microsoft.com/fwlink/?LinkId=321501
+[sqlcmd]: https://msdn.microsoft.com/library/ms162773.aspx
 [Azure portal]: https://portal.azure.com
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0831_2016-->

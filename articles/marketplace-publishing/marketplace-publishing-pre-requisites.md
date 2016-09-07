@@ -13,7 +13,7 @@
   ms.topic="article"
   ms.tgt_pltfrm="Azure"
   ms.workload="na"
-  ms.date="08/01/2016"
+  ms.date="08/18/2016"
   ms.author="hascipio"/>
 
 # Allgemeine Voraussetzungen für das Erstellen eines Angebots für den Azure Marketplace
@@ -42,12 +42,21 @@ Administratoren des Veröffentlichungsportals können die anderen Mitglieder des
 7. Verwenden Sie für die Developer Center-Registrierung kein Konto, das einer einzelnen Person zugeordnet ist. Dies ist empfehlenswert, damit keine Abhängigkeit von einer einzelnen Person besteht.
 8. Falls bei der Developer Center-Registrierung Probleme auftreten, lösen Sie mit diesem [Link](https://developer.microsoft.com/de-DE/windows/support) ein Ticket.
 
+## Schritte zum Löschen eines Co-Admins im Veröffentlichungsportal
+**Administratoren** können mithilfe der folgenden Schritte einen Co-Admin löschen.
+
+1. Melden Sie sich mit der Admin-E-Mail-ID beim Veröffentlichungsportal an.
+2. Wählen Sie unter **Herausgeber** Ihr Konto aus, und navigieren Sie zu **Administratoren** > **Co-Admins** (Co-Administratoren).
+3. Klicken Sie neben dem zu löschenden Co-Admin auf die Schaltfläche **X**, wie auf dem folgenden Screenshot zu sehen:
+
+    ![Abbildung](media/marketplace-publishing-pre-requisites/imgDeleteAdmin_03.png)
+
 > [AZURE.IMPORTANT] Die Eingabe von Steuer- und Bankdaten für Ihr Unternehmen ist nicht erforderlich, wenn Sie ausschließlich kostenlose Angebote (oder Bring Your Own License) veröffentlichen.
 
 > Um beginnen zu können, muss die Unternehmensregistrierung abgeschlossen werden. Während das Unternehmen die Steuer- und Bankdaten im Microsoft Developer-Konto bearbeitet, können die Entwickler bereits damit beginnen, das VM-Image im [Veröffentlichungsportal](https://publish.windowsazure.com) zu erstellen, es zu zertifizieren und in der Azure-Stagingumgebung zu testen. Die endgültige Genehmigung Ihres Verkäuferkontos wird erst beim letzten Schritt für die Veröffentlichung Ihres Angebot im Azure Marketplace benötigt.
 
 ## Erwerben eines Azure-Abonnements mit nutzungsbasierter Bezahlung
-Dieses Abonnement basiert auf einer nutzungsbasierten Bezahlung und wird zum Erstellen Ihrer VM-Images und zum Bereitstellen der Images im [Azure Marketplace](https://azure.microsoft.com/marketplace/) verwendet. Wenn Sie noch kein Abonnement besitzen, registrieren Sie sich hier: https://account.windowsazure.com/signup?offer=ms-azr-0003p
+Dieses Abonnement basiert auf einer nutzungsbasierten Bezahlung und wird zum Erstellen Ihrer VM-Images und zum Bereitstellen der Images im [Azure Marketplace](https://azure.microsoft.com/marketplace/) verwendet. Wenn Sie noch kein Abonnement besitzen, können Sie sich hier registrieren: https://account.windowsazure.com/signup?offer=ms-azr-0003p
 
 ## Verkäuferländer
 > [AZURE.WARNING]
@@ -59,7 +68,7 @@ Nachdem die nicht technischen Voraussetzungen erfüllt sind, geht es als Nächst
 - [Technische Voraussetzungen für das Erstellen eines VM-Images für den Azure Marketplace](marketplace-publishing-vm-image-creation-prerequisites.md)
 - [Technische Voraussetzungen für das Erstellen einer Lösungsvorlage für den Azure Marketplace](marketplace-publishing-solution-template-creation-prerequisites.md)
 
-## Weitere Informationen
+## Siehe auch
 - [Erste Schritte: Veröffentlichen eines Angebots im Azure Marketplace](marketplace-publishing-getting-started.md)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0824_2016-->

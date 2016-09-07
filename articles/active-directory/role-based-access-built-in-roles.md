@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="kgremban"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="identity"
-	ms.date="05/20/2016"
+	ms.date="08/25/2016"
 	ms.author="kgremban"/>
 
 #RBAC: Integrierte Rollen
@@ -42,12 +42,12 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 | [Mitwirkender von New Relic APM-Konto](#new-relic-apm-account-contributor) | Kann New Relic Application Performance Management-Konten und -Anwendungen verwalten |
 | [Besitzer](#owner) | Kann alles verwalten, einschließlich des Zugriffs |
 | [Leser](#reader) | Kann alles anzeigen, jedoch keine Änderungen vornehmen |
-| [Mitwirkender von Redis-Cache](#redis-cache-contributor]) | Kann Redis-Caches verwalten |
+| [Mitwirkender von Redis-Cache](#redis-cache-contributor) | Kann Redis-Caches verwalten |
 | [Mitwirkender von Zeitplanungsauftragssammlung](#scheduler-job-collections-contributor) | Kann Zeitplanungsauftragssammlungen verwalten |
 | [Mitwirkender von Suchdienst](#search-service-contributor) | Kann Suchdienste verwalten |
 | [Sicherheits-Manager](#security-manager) | Kann Sicherheitskomponenten, Sicherheitsrichtlinien und virtuelle Maschinen verwalten |
 | [Mitwirkender von SQL DB](#sql-db-contributor) | Kann SQL-Datenbanken verwalten, jedoch nicht die zugehörigen sicherheitsbezogenen Richtlinien |
-| [SQL-Sicherheits-Manager](#sql-security-manager) | Kann die sicherheitsbezogenen Richtlinien von SQL-Servern und SQL-Datenbanken verwalten |
+| [SQL-Sicherheits-Manager](#sql-security-manager) | Kann die sicherheitsbezogenen Richtlinien von SQL-Server-Instanzen und SQL-Datenbanken verwalten |
 | [Mitwirkender von SQL Server](#sql-server-contributor) | Kann SQL-Server und SQL-Datenbanken verwalten, jedoch nicht die zugehörigen sicherheitsbezogenen Richtlinien |
 | [Mitwirkender von klassischem Speicherkonto](#classic-storage-account-contributor) | Kann klassische Speicherkonten verwalten |
 | [Mitwirkender von Speicherkonto](#storage-account-contributor) | Kann Speicherkonten verwalten |
@@ -59,7 +59,7 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 | [Mitwirkender von Website](#website-contributor) | Kann Websites verwalten, jedoch nicht die Webpläne, mit denen sie verbunden sind |
 
 ## Rollenberechtigungen
-Die folgenden Tabellen beschreiben die spezifischen Berechtigungen der einzelnen Rollen. Dazu gehören **actions**, die Berechtigungen erteilen, und **notactions**, die sie einschränken.
+Die folgenden Tabellen beschreiben die spezifischen Berechtigungen der einzelnen Rollen. Dazu gehören **Actions**, die Berechtigungen erteilen, und **NotActions**, die sie einschränken.
 
 ### Mitwirkender des API-Verwaltungsdienstes
 Kann API-Verwaltungsdienste verwalten
@@ -147,8 +147,8 @@ Kann alles außer den Zugriff verwalten
 
 | **NotActions** ||
 | ------- | ------ |
+| Microsoft.Authorization/*/Delete | Rollen und Rollenzuweisungen können nicht gelöscht werden. |  
 | Microsoft.Authorization/*/Write | Rollen und Rollenzuweisungen können nicht erstellt werden. |
-| Microsoft.Authorization/*/Delete | Rollen und Rollenzuweisungen können nicht gelöscht werden. |
 
 ### Mitwirkender von Data Factory
 Kann Data Factorys verwalten
@@ -183,7 +183,7 @@ Kann alles anzeigen sowie virtuelle Maschinen verbinden, starten, neu starten un
 | Microsoft.DevTestLab/labs/policySets/evaluatePolicies/action | Auswerten von Labrichtlinien |
 | Microsoft.Network/loadBalancers/backendAddressPools/join/action | Verknüpfen eines Back-End-Adresspools für Load Balancer |
 | Microsoft.Network/loadBalancers/inboundNatRules/join/action | Verknüpfen einer eingehenden NAT-Regel für Load Balancer |
-| Microsoft.Network/networkInterfaces/*/read | Lesen der Eigenschaften einer Netzwerkschnittstelle (z. B. alle Load Balancer, zu denen die Netzwerkschnittstelle gehört) |
+| Microsoft.Network/networkInterfaces/*/read | Lesen der Eigenschaften einer Netzwerkschnittstelle (z.B. alle Load Balancer, zu denen die Netzwerkschnittstelle gehört) |
 | Microsoft.Network/networkInterfaces/join/action | Verknüpfen eines virtuellen Computers mit einer Netzwerkschnittstelle |
 | Microsoft.Network/networkInterfaces/read | Lesen von Netzwerkschnittstellen |
 | Microsoft.Network/networkInterfaces/write | Schreiben in Netzwerkschnittstellen |
@@ -260,7 +260,7 @@ Kann alles anzeigen, jedoch keine Änderungen vornehmen
 
 | **Aktionen** ||
 | ------- | ------ |
-| **/read | Lesen von Ressourcen aller Typen mit Ausnahme geheimer Schlüssel |
+| */Lesen | Lesen von Ressourcen aller Typen mit Ausnahme geheimer Schlüssel |
 
 ### Mitwirkender von Redis-Cache
 Kann Redis-Caches verwalten
@@ -284,7 +284,8 @@ Kann Zeitplanungsauftragssammlungen verwalten
 | Microsoft.Insights/alertRules/* | Erstellen und Verwalten von Warnungsregeln |
 | Microsoft.ResourceHealth/availabilityStatuses/read | Lesen des Status der Ressourcen |
 | Microsoft.Resources/deployments/* | Erstellen und Verwalten von Ressourcengruppenbereitstellungen |
-| Microsoft.Resources/subscriptions/resourceGroups/read | Lesen von Ressourcengruppen | Microsoft.Scheduler/jobcollections/* | Erstellen und Verwalten von Auftragssammlungen |
+| Microsoft.Resources/subscriptions/resourceGroups/read | Lesen von Ressourcengruppen |  
+| Microsoft.Scheduler/jobcollections/* | Erstellen und Verwalten von Auftragssammlungen |
 | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 
 ### Mitwirkender von Suchdienst
@@ -296,11 +297,12 @@ Kann Suchdienste verwalten
 | Microsoft.Insights/alertRules/* | Erstellen und Verwalten von Warnungsregeln |
 | Microsoft.ResourceHealth/availabilityStatuses/read | Lesen des Status der Ressourcen |
 | Microsoft.Resources/deployments/* | Erstellen und Verwalten von Ressourcengruppenbereitstellungen |
-| Microsoft.Resources/subscriptions/resourceGroups/read | Lesen von Ressourcengruppen | Microsoft.Search/searchServices/* | Erstellen und Verwalten von Suchdiensten |
+| Microsoft.Resources/subscriptions/resourceGroups/read | Lesen von Ressourcengruppen |  
+| Microsoft.Search/searchServices/* | Erstellen und Verwalten von Suchdiensten |
 | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 
 ### Sicherheits-Manager
-Kann Sicherheitskomponenten, Sicherheitsrichtlinien und virtuelle Computer verwalten
+Kann Sicherheitskomponenten, Sicherheitsrichtlinien und virtuelle Maschinen verwalten
 
 | **Aktionen** ||
 | ------- | ------ |
@@ -311,7 +313,8 @@ Kann Sicherheitskomponenten, Sicherheitsrichtlinien und virtuelle Computer verwa
 | Microsoft.Insights/alertRules/* | Erstellen und Verwalten von Warnungsregeln |
 | Microsoft.ResourceHealth/availabilityStatuses/read | Lesen des Status der Ressourcen |
 | Microsoft.Resources/deployments/* | Erstellen und Verwalten von Ressourcengruppenbereitstellungen |
-| Microsoft.Resources/subscriptions/resourceGroups/read | Lesen von Ressourcengruppen | Microsoft.Security/* | Erstellen und Verwalten von Sicherheitskomponenten und -richtlinien |
+| Microsoft.Resources/subscriptions/resourceGroups/read | Lesen von Ressourcengruppen |  
+| Microsoft.Security/* | Erstellen und Verwalten von Sicherheitskomponenten und -richtlinien |
 | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 
 ### Mitwirkender von SQL DB
@@ -323,7 +326,8 @@ Kann SQL-Datenbanken verwalten, jedoch nicht die zugehörigen sicherheitsbezogen
 | Microsoft.Insights/alertRules/* | Erstellen und Verwalten von Warnungsregeln |
 | Microsoft.ResourceHealth/availabilityStatuses/read | Lesen des Status der Ressourcen |
 | Microsoft.Resources/deployments/* | Erstellen und Verwalten von Ressourcengruppenbereitstellungen |
-| Microsoft.Resources/subscriptions/resourceGroups/read | Lesen von Ressourcengruppen | Microsoft.Sql/servers/databases/* | Erstellen und Verwalten von SQL-Datenbanken |
+| Microsoft.Resources/subscriptions/resourceGroups/read | Lesen von Ressourcengruppen |
+| Microsoft.Sql/servers/databases/* | Erstellen und Verwalten von SQL-Datenbanken |
 | Microsoft.Sql/servers/read | Lesen von SQL Server |
 | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 
@@ -331,13 +335,14 @@ Kann SQL-Datenbanken verwalten, jedoch nicht die zugehörigen sicherheitsbezogen
 | ------- | ------ |
 | Microsoft.Sql/servers/databases/auditingPolicies/* | Kann keine Überwachungsrichtlinien bearbeiten |
 | Microsoft.Sql/servers/databases/auditingSettings/* | Überwachungsrichtlinien können nicht bearbeiten werden |
+| Microsoft.Sql/servers/databases/auditRecords/read | Kann keine Überwachungsdatensätze lesen |
 | Microsoft.Sql/servers/databases/connectionPolicies/* | Kann keine Verbindungsrichtlinien bearbeiten |
 | Microsoft.Sql/servers/databases/dataMaskingPolicies/* | Kann keine Datenmaskierungsrichtlinien bearbeiten |
 | Microsoft.Sql/servers/databases/securityAlertPolicies/* | Richtlinien für Sicherheitswarnungen können nicht bearbeitet werden |
 | Microsoft.Sql/servers/databases/securityMetrics/* | Kann keine Sicherheitsmetriken bearbeiten |
 
 ### SQL-Sicherheits-Manager
-Kann die sicherheitsbezogenen Richtlinien von SQL-Servern und SQL-Datenbanken verwalten
+Kann die sicherheitsbezogenen Richtlinien von SQL-Server-Instanzen und SQL-Datenbanken verwalten
 
 | **Aktionen** ||
 | ------- | ------ |
@@ -345,10 +350,12 @@ Kann die sicherheitsbezogenen Richtlinien von SQL-Servern und SQL-Datenbanken ve
 | Microsoft.Insights/alertRules/* | Erstellen und Verwalten von Insights-Warnungsregeln |
 | Microsoft.ResourceHealth/availabilityStatuses/read | Lesen des Status der Ressourcen |
 | Microsoft.Resources/deployments/* | Erstellen und Verwalten von Ressourcengruppenbereitstellungen |
-| Microsoft.Resources/subscriptions/resourceGroups/read | Lesen von Ressourcengruppen | Microsoft.Sql/servers/auditingPolicies/* | Erstellen und Verwalten von SQL Server-Überwachungsrichtlinien |
+| Microsoft.Resources/subscriptions/resourceGroups/read | Lesen von Ressourcengruppen |
+| Microsoft.Sql/servers/auditingPolicies/* | Erstellen und Verwalten von SQL Server-Überwachungsrichtlinien |
 | Microsoft.Sql/servers/auditingSettings/* | Erstellen und Verwalten von SQL Server-Überwachungseinstellungen |
 | Microsoft.Sql/servers/databases/auditingPolicies/* | Erstellen und Verwalten von Überwachungsrichtlinien von SQL Server-Datenbanken |
 | Microsoft.Sql/servers/databases/auditingSettings/* | Erstellen und Verwalten von Überwachungseinstellungen von SQL Server-Datenbanken |
+| Microsoft.Sql/servers/databases/auditRecords/read | Lesen von Überwachungsdatensätzen |
 | Microsoft.Sql/servers/databases/connectionPolicies/* | Erstellen und Verwalten von Verbindungsrichtlinien von SQL Server-Datenbanken |
 | Microsoft.Sql/servers/databases/dataMaskingPolicies/* | Erstellen und Verwalten von Datenmaskierungsrichtlinien von SQL Server-Datenbanken |
 | Microsoft.Sql/servers/databases/read | Lesen von SQL-Datenbanken |
@@ -370,7 +377,8 @@ Kann SQL-Server und SQL-Datenbanken verwalten, jedoch nicht die zugehörigen sic
 | Microsoft.Insights/alertRules/* | Erstellen und Verwalten von Insights-Warnungsregeln |
 | Microsoft.ResourceHealth/availabilityStatuses/read | Lesen des Status der Ressourcen |
 | Microsoft.Resources/deployments/* | Erstellen und Verwalten von Ressourcengruppenbereitstellungen |
-| Microsoft.Resources/subscriptions/resourceGroups/read | Lesen von Ressourcengruppen | Microsoft.Sql/servers/* | Erstellen und Verwalten von SQL-Servern |
+| Microsoft.Resources/subscriptions/resourceGroups/read | Lesen von Ressourcengruppen |
+| Microsoft.Sql/servers/* | Erstellen und Verwalten von SQL-Servern |
 | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 
 | **NotActions** ||
@@ -379,6 +387,7 @@ Kann SQL-Server und SQL-Datenbanken verwalten, jedoch nicht die zugehörigen sic
 | Microsoft.Sql/servers/auditingSettings/* | SQL Server-Überwachungseinstellungen können nicht bearbeitet werden |
 | Microsoft.Sql/servers/databases/auditingPolicies/* | Kann keine Überwachungsrichtlinien von SQL Server-Datenbanken bearbeiten |
 | Microsoft.Sql/servers/databases/auditingSettings/* | Überwachungseinstellungen von SQL Server-Datenbanken können nicht bearbeitet werden |
+| Microsoft.Sql/servers/databases/auditRecords/read | Kann keine Überwachungsdatensätze lesen |
 | Microsoft.Sql/servers/databases/connectionPolicies/* | Kann keine Verbindungsrichtlinien von SQL Server-Datenbanken bearbeiten |
 | Microsoft.Sql/servers/databases/dataMaskingPolicies/* | Kann keine Datenmaskierungsrichtlinien von SQL Server-Datenbanken bearbeiten |
 | Microsoft.Sql/servers/databases/securityAlertPolicies/* | Richtlinien für Sicherheitswarnungen von SQL Server-Datenbanken können nicht bearbeitet werden |
@@ -395,10 +404,11 @@ Kann klassische Speicherkonten verwalten
 | Microsoft.Insights/alertRules/* | Erstellen und Verwalten von Insights-Warnungsregeln |
 | Microsoft.ResourceHealth/availabilityStatuses/read | Lesen des Status der Ressourcen |
 | Microsoft.Resources/deployments/* | Erstellen und Verwalten von Ressourcengruppenbereitstellungen |
-| Microsoft.Resources/subscriptions/resourceGroups/read | Lesen von Ressourcengruppen | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
+| Microsoft.Resources/subscriptions/resourceGroups/read | Lesen von Ressourcengruppen |  
+| Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 
 ### Mitwirkender von Speicherkonto
-Ermöglicht die Verwaltung von Speicherkonten, aber nicht den Zugriff darauf.
+Kann Speicherkonten verwalten, aber nicht den Zugriff darauf
 
 | **Aktionen** ||
 | ------- | ------ |
@@ -407,7 +417,8 @@ Ermöglicht die Verwaltung von Speicherkonten, aber nicht den Zugriff darauf.
 | Microsoft.Insights/diagnosticSettings/* | Verwalten der Diagnoseeinstellungen |
 | Microsoft.ResourceHealth/availabilityStatuses/read | Lesen des Status der Ressourcen |
 | Microsoft.Resources/deployments/* | Erstellen und Verwalten von Ressourcengruppenbereitstellungen |
-| Microsoft.Resources/subscriptions/resourceGroups/read | Lesen von Ressourcengruppen | Microsoft.Storage/storageAccounts/* | Erstellen und Verwalten von Speicherkonten |
+| Microsoft.Resources/subscriptions/resourceGroups/read | Lesen von Ressourcengruppen |  
+| Microsoft.Storage/storageAccounts/* | Erstellen und Verwalten von Speicherkonten |
 | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 
 ### Benutzerzugriffsadministrator
@@ -415,7 +426,7 @@ Kann den Benutzerzugriff auf Azure-Ressourcen verwalten
 
 | **Aktionen** ||
 | ------- | ------ |
-| */read | Lesen von Ressourcen aller Typen, mit Ausnahme geheimer Schlüssel | 
+| */Lesen | Lesen von Ressourcen aller Typen mit Ausnahme geheimer Schlüssel |
 | Microsoft.Authorization/* | Verwalten der Autorisierung |
 | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 
@@ -439,7 +450,8 @@ Kann klassische virtuelle Computer verwalten, jedoch nicht das virtuelle Netzwer
 | Microsoft.Insights/alertRules/* | Erstellen und Verwalten von Insights-Warnungsregeln |
 | Microsoft.ResourceHealth/availabilityStatuses/read | Lesen des Status der Ressourcen |
 | Microsoft.Resources/deployments/* | Erstellen und Verwalten von Ressourcengruppenbereitstellungen |
-| Microsoft.Resources/subscriptions/resourceGroups/read | Lesen von Ressourcengruppen | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
+| Microsoft.Resources/subscriptions/resourceGroups/read | Lesen von Ressourcengruppen |
+| Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 
 ### Mitwirkender von virtuellen Computern
 Kann virtuelle Computer verwalten, jedoch nicht das virtuelle Netzwerk oder Speicherkonto, mit dem sie verbunden sind
@@ -467,7 +479,8 @@ Kann virtuelle Computer verwalten, jedoch nicht das virtuelle Netzwerk oder Spei
 | Microsoft.Network/virtualNetworks/subnets/join/action | Verknüpfen von Subnetzen in virtuellen Netzwerken |
 | Microsoft.ResourceHealth/availabilityStatuses/read | Lesen des Status der Ressourcen |
 | Microsoft.Resources/deployments/* | Erstellen und Verwalten von Ressourcengruppenbereitstellungen |
-| Microsoft.Resources/subscriptions/resourceGroups/read | Lesen von Ressourcengruppen | Microsoft.Storage/storageAccounts/listKeys/action | Auflisten von Speicherkontoschlüsseln |
+| Microsoft.Resources/subscriptions/resourceGroups/read | Lesen von Ressourcengruppen |  
+| Microsoft.Storage/storageAccounts/listKeys/action | Auflisten von Speicherkontoschlüsseln |
 | Microsoft.Storage/storageAccounts/read | Lesen von Speicherkonten |
 | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 
@@ -481,7 +494,8 @@ Kann klassische virtuelle Netzwerke und reservierte IP-Adressen verwalten
 | Microsoft.Insights/alertRules/* | Erstellen und Verwalten von Insights-Warnungsregeln |
 | Microsoft.ResourceHealth/availabilityStatuses/read | Lesen des Status der Ressourcen |
 | Microsoft.Resources/deployments/* | Erstellen und Verwalten von Ressourcengruppenbereitstellungen |
-| Microsoft.Resources/subscriptions/resourceGroups/read | Lesen von Ressourcengruppen | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
+| Microsoft.Resources/subscriptions/resourceGroups/read | Lesen von Ressourcengruppen |  
+| Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 
 ### Mitwirkender von Webplan
 Kann Webpläne verwalten
@@ -492,7 +506,8 @@ Kann Webpläne verwalten
 | Microsoft.Insights/alertRules/* | Erstellen und Verwalten von Insights-Warnungsregeln |
 | Microsoft.ResourceHealth/availabilityStatuses/read | Lesen des Status der Ressourcen |
 | Microsoft.Resources/deployments/* | Erstellen und Verwalten von Ressourcengruppenbereitstellungen |
-| Microsoft.Resources/subscriptions/resourceGroups/read | Lesen von Ressourcengruppen | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
+| Microsoft.Resources/subscriptions/resourceGroups/read | Lesen von Ressourcengruppen |  
+| Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 | Microsoft.Web/serverFarms/* | Erstellen und Verwalten von Serverfarmen |
 
 ### Mitwirkender von Website
@@ -505,17 +520,18 @@ Kann Websites verwalten, jedoch nicht die Webpläne, mit denen sie verbunden sin
 | Microsoft.Insights/components/* | Erstellen und Verwalten von Insights-Komponenten |
 | Microsoft.ResourceHealth/availabilityStatuses/read | Lesen des Status der Ressourcen |
 | Microsoft.Resources/deployments/* | Erstellen und Verwalten von Ressourcengruppenbereitstellungen |
-| Microsoft.Resources/subscriptions/resourceGroups/read | Lesen von Ressourcengruppen | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
+| Microsoft.Resources/subscriptions/resourceGroups/read | Lesen von Ressourcengruppen |  
+| Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 | Microsoft.Web/certificates/* | Erstellen und Verwalten von Websitezertifikaten |
 | Microsoft.Web/listSitesAssignedToHostName/read | Lesen von Websites, die einem Hostnamen zugewiesen sind |
 | Microsoft.Web/serverFarms/join/action | Verknüpfen von Serverfarmen |
 | Microsoft.Web/serverFarms/read | Lesen von Serverfarmen |
 | Microsoft.Web/sites/* | Erstellen und Verwalten von Websites |
 
-## Weitere Informationen
-- [Rollenbasierte Zugriffssteuerung:](role-based-access-control-configure.md) Erste Schritte mit RBAC im Azure-Portal.
-- [Benutzerdefinierte Rollen in Azure RBAC:](role-based-access-control-custom-roles.md) Erfahren Sie, wie Sie benutzerdefinierte Rollen entsprechend Ihren Zugriffsanforderungen erstellen.
-- [Erstellen eines Verlaufsberichts zu Zugriffsänderungen:](role-based-access-control-access-change-history-report.md) Verfolgen Sie das Ändern von Rollenzuweisungen in RBAC nach.
+## Siehe auch
+- [Rollenbasierte Zugriffssteuerung](role-based-access-control-configure.md): Erste Schritte mit RBAC im Azure-Portal.
+- [Benutzerdefinierte Rollen in Azure RBAC](role-based-access-control-custom-roles.md): Erfahren Sie, wie Sie benutzerdefinierte Rollen entsprechend Ihren Zugriffsanforderungen erstellen.
+- [Erstellen eines Verlaufsberichts zu Zugriffsänderungen:](role-based-access-control-access-change-history-report.md) Verfolgen Sie Änderungen an Rollenzuweisungen in RBAC.
 - [Problembehandlung bei rollenbasierter Zugriffssteuerung:](role-based-access-control-troubleshooting.md) Sehen Sie sich Vorschläge zur Behebung häufig auftretender Probleme an.
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0824_2016-->

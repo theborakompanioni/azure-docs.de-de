@@ -14,18 +14,13 @@ ms.devlang="multiple"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="integration"
-ms.date="05/17/2016"
+ms.date="08/18/2016"
 ms.author="deonhe"/>
 
 # Erste Schritte mit dem MailChimp-Connector
 
+MailChimp ist ein SaaS-Dienst, mit dem Unternehmen E-Mail-Marketingaktivitäten verwalten und automatisieren können. Dazu gehört auch das Senden von Marketing-E-Mails und automatisierten Nachrichten sowie das Durchführen zielgruppenspezifischer Kampagnen.
 
-
-Der MailChimp-Connector kann verwendet werden in:
-
-- [Logik-Apps](../app-service-logic/app-service-logic-what-are-logic-apps.md)
-- [PowerApps](http://powerapps.microsoft.com)
-- [Flow](http://flows.microsoft.com)
 
 >[AZURE.NOTE] Diese Version des Artikels gilt für die Schemaversion 2015-08-01-preview für Logik-Apps.
 
@@ -57,18 +52,18 @@ Sie können auf diese Ereignisse lauschen:
 
 
 ## Herstellen einer Verbindung mit MailChimp
-Um Logik-Apps mit MailChimp zu erstellen, müssen Sie zuerst eine **Verbindung** herstellen und anschließend die Details für die folgenden Eigenschaften angeben:
+Um Logik-Apps mit MailChimp zu erstellen, müssen Sie zuerst eine **Verbindung** erstellen und anschließend die Details für die folgenden Eigenschaften angeben:
 
 |Eigenschaft| Erforderlich|Beschreibung|
 | ---|---|---|
-|Tokenverschlüsselung|Ja|Angeben der Anmeldeinformationen für MailChimp|
+|Token|Ja|Angeben der Anmeldeinformationen für MailChimp|
 
 >[AZURE.INCLUDE [Schritte zum Herstellen einer Verbindung mit MailChimp](../../includes/connectors-create-api-mailchimp.md)]
 
 >[AZURE.TIP] Sie können diese Verbindung in anderen Logik-Apps verwenden.
 
 ## Referenz für MailChimp
-Gilt für Version: 1.0.
+Gilt für Version 1.0.
 
 ## newcampaign
 Neue Kampagne: Erstellen einer neuen Kampagne auf Grundlage eines Kampagnentyps, einer Empfängerliste und der Kampagneneinstellungen (Betreffzeile, Titel, „from\_name“ und „reply\_to“)
@@ -234,7 +229,7 @@ Es gibt keine Parameter für diesen Aufruf
 
 | Eigenschaftenname | Datentyp | Erforderlich |
 |---|---|---|
-|type|string|Ja |
+|Typ|string|Ja |
 |recipients|nicht definiert|Ja |
 |settings|nicht definiert|Ja |
 |variate\_settings|nicht definiert|Nein |
@@ -490,7 +485,7 @@ Es gibt keine Parameter für diesen Aufruf
 
 | Eigenschaftenname | Datentyp | Erforderlich |
 |---|---|---|
-|name|string|Ja |
+|Name|string|Ja |
 |contact|nicht definiert|Ja |
 |permission\_reminder|string|Ja |
 |use\_archive\_bar|Boolescher Wert|Nein |
@@ -526,7 +521,7 @@ Es gibt keine Parameter für diesen Aufruf
 |from\_name|string|Ja |
 |from\_email|string|Ja |
 |subject|string|Nein |
-|Sprache|string|Ja |
+|language|string|Ja |
 
 
 
@@ -599,7 +594,7 @@ Es gibt keine Parameter für diesen Aufruf
 |status|string|Ja |
 |merge\_fields|nicht definiert|Nein |
 |interests|string|Nein |
-|Sprache|string|Nein |
+|language|string|Nein |
 |VIP|Boolescher Wert|Nein |
 |location|nicht definiert|Nein |
 |email\_address|string|Ja |
@@ -645,7 +640,7 @@ Es gibt keine Parameter für diesen Aufruf
 |timestamp\_opt|string|Nein |
 |member\_rating|integer|Nein |
 |last\_changed|string|Nein |
-|Sprache|string|Nein |
+|language|string|Nein |
 |VIP|Boolescher Wert|Nein |
 |email\_client|string|Nein |
 |location|nicht definiert|Nein |
@@ -696,7 +691,7 @@ Es gibt keine Parameter für diesen Aufruf
 |status|string|Ja |
 |merge\_fields|nicht definiert|Nein |
 |interests|string|Nein |
-|Sprache|string|Nein |
+|language|string|Nein |
 |VIP|Boolescher Wert|Nein |
 |location|nicht definiert|Nein |
 
@@ -732,7 +727,7 @@ Es gibt keine Parameter für diesen Aufruf
 |timestamp\_opt|string|Nein |
 |member\_rating|integer|Nein |
 |last\_changed|string|Nein |
-|Sprache|string|Nein |
+|language|string|Nein |
 |VIP|Boolescher Wert|Nein |
 |email\_client|string|Nein |
 |location|nicht definiert|Nein |
@@ -744,4 +739,4 @@ Es gibt keine Parameter für diesen Aufruf
 ## Nächste Schritte
 [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0824_2016-->

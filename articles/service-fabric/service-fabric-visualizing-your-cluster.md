@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/07/2016"
+   ms.date="08/22/2016"
    ms.author="seanmck"/>
 
 # Visualisieren Ihres Clusters mit Service Fabric Explorer
@@ -24,7 +24,7 @@ Service Fabric-Explorer ist ein webbasiertes Tool zum Untersuchen und Verwalten 
 
 Wenn Sie die Anweisungen zum [Vorbereiten Ihrer Entwicklungsumgebung](service-fabric-get-started.md) befolgt haben, können Sie Service Fabric-Explorer auf dem lokalen Cluster starten, indem Sie zu http://localhost:19080/Explorer navigieren.
 
->[AZURE.NOTE] Wenn Sie Internet Explorer mit Service Fabric-Explorer zum Verwalten eines Remoteclusters verwenden, müssen Sie einige Internet Explorer-Einstellungen konfigurieren. Wechseln Sie zu **Extras** > **Einstellungen der Kompatibilitätsansicht**, und deaktivieren Sie **Intranetsites in Kompatibilitätsansicht anzeigen**, um sicherzustellen, dass alle Informationen richtig geladen werden.
+>[AZURE.NOTE] Wenn Sie Internet Explorer mit Service Fabric-Explorer zum Verwalten eines Remoteclusters verwenden, müssen Sie einige Internet Explorer-Einstellungen konfigurieren. Um sicherzustellen, dass alle Informationen richtig geladen werden, wechseln Sie zu **Extras** > **Einstellungen der Kompatibilitätsansicht**, und deaktivieren Sie **Intranetsites in Kompatibilitätsansicht anzeigen**.
 
 ## Grundlegendes zum Layout von Service Fabric-Explorer
 
@@ -56,7 +56,7 @@ Auf jeder Ebene der Struktur werden im Hauptbereich relevante Informationen zum 
 
 Die Knotenansicht zeigt das physische Layout des Clusters. Für einen Knoten können Sie überprüfen, für welche Anwendungen Code auf dem Knoten bereitgestellt wurde. Genauer gesagt können Sie anzeigen, welche Replikate derzeit darauf ausgeführt werden.
 
-## Aktionen
+## Actions
 
 Service Fabric-Explorer bietet eine schnelle Möglichkeit zum Aufrufen von Aktionen für die Knoten, Anwendungen und Dienste in Ihrem Cluster.
 
@@ -64,18 +64,18 @@ Um beispielsweise eine Anwendungsinstanz zu löschen, wählen Sie einfach die An
 
 ![Löschen einer Anwendung in Service Fabric-Explorer][sfx-delete-application]
 
->[AZURE.TIP] Die gleichen Aktionen können aus der Strukturansicht ausgeführt werden, indem auf die Auslassungspunkte neben jedem Element geklickt wird.
+>[AZURE.TIP] Sie können die gleichen Aktionen ausführen, indem Sie auf die Auslassungspunkte neben jedem Element klicken.
 
 In der folgenden Tabelle sind die für jede Entität verfügbaren Aktionen aufgeführt:
 
 | **Entität** | **Aktion** | **Beschreibung** |
 | ------ | ------ | ----------- |
 | Anwendungstyp | Bereitstellung des Typs aufheben | Entfernt das Anwendungspaket aus dem Imagespeicher des Clusters. Dabei müssen zunächst alle Anwendungen dieses Typs entfernt werden. |
-| Anwendung | Anwendung löschen | Löscht die Anwendung, einschließlich aller Dienste und Zustände (sofern vorhanden). |
+| Anwendung | Anwendung löschen | Löscht die Anwendung, einschließlich aller Dienste und zugehörigen Zustände (sofern vorhanden). |
 | Dienst | Dienst löschen | Löscht den Dienst und seinen Zustand (sofern vorhanden). |
 | Knoten | Aktivieren | Aktiviert den Knoten. |
-|| Deaktivieren (anhalten) | Hält den Knoten im aktuellen Zustand an. Die Dienste werden weiterhin ausgeführt, Service Fabric verschiebt jedoch nur dann Elemente proaktiv in oder aus dem Dienst, wenn dies zur Vermeidung von Ausfällen oder Dateninkonsistenzen erforderlich ist. Diese Aktion wird normalerweise zum Aktivieren von Debuggingdiensten auf einem bestimmten Knoten verwendet, um sicherzustellen, dass sie während der Überprüfung nicht verschoben werden. |
-|| Deaktivieren (neu starten) | Ermöglicht das sichere Verschieben aller In-Memory-Dienste von einem Knoten und schließt dauerhafte Dienste. Wird in der Regel verwendet, wenn die Hostprozesse oder Hostcomputer neu gestartet werden müssen. |
+|| Deaktivieren (anhalten) | Hält den Knoten im aktuellen Zustand an. Die Dienste werden weiterhin ausgeführt, Service Fabric verschiebt jedoch nur dann Elemente proaktiv in oder aus einem Dienst, wenn dies zur Vermeidung von Ausfällen oder Dateninkonsistenzen erforderlich ist. Diese Aktion wird normalerweise zum Aktivieren von Debuggingdiensten auf einem bestimmten Knoten verwendet, um sicherzustellen, dass sie während der Überprüfung nicht verschoben werden. |
+|| Deaktivieren (neu starten) | Verschiebt alle In-Memory-Dienste sicher aus einem Knoten und schließt dauerhafte Dienste. Wird in der Regel verwendet, wenn die Hostprozesse oder Hostcomputer neu gestartet werden müssen. |
 || Deaktivieren (Daten entfernen) | Ermöglicht das sichere Schließen aller auf dem Knoten ausgeführten Dienste, nachdem ausreichend Ersatzreplikate erstellt wurden. Wird in der Regel verwendet, wenn ein Knoten (oder zumindest sein Speicher) dauerhaft außer Betrieb genommen wird. |
 || Knotenzustand entfernen | Entfernt die Replikatinformationen eines Knotens aus dem Cluster. Wird in der Regel verwendet, wenn ein Knoten, auf dem bereits ein Fehler aufgetreten ist, als nicht mehr wiederherstellbar gilt. |
 
@@ -83,7 +83,11 @@ Da viele Aktionen destruktiv sind, werden Sie aufgefordert, den Vorgang zu best�
 
 >[AZURE.TIP] Jede Aktion, die mit Service Fabric-Explorer ausgeführt werden kann, kann auch mithilfe von PowerShell oder einer REST-API ausgeführt werden, um die Automation zu ermöglichen.
 
+Sie können Service Fabric Explorer auch verwenden, um neue Anwendungsinstanzen für einen bestimmten Anwendungstyp und eine bestimmte Anwendungsversion zu erstellen. Wählen Sie in der Strukturansicht den gewünschten Anwendungstyp aus, und klicken Sie dann neben der im rechten Bereich angezeigten gewünschten Version auf den Link **App-Instanz erstellen**.
 
+![Erstellen einer Anwendung in Service Fabric Explorer][sfx-create-app-instance]
+
+>[AZURE.NOTE] Anwendungsinstanzen, die über Service Fabric Explorer erstellt wurden, können zurzeit nicht parametrisiert werden. Sie werden mit standardmäßigen Parameterwerten erstellt.
 
 ## Herstellen einer Verbindung mit einem Service Fabric-Remotecluster
 
@@ -99,9 +103,9 @@ Die vollständige URL steht auch im Cluster Essentials-Bereich des Azure-Portal 
 
 ### Herstellen einer Verbindung mit einem sicheren Cluster
 
-Sie können den Clientzugriff auf Ihren Service Fabric-Cluster entweder mit [Zertifikaten](service-fabric-cluster-security.md) oder mit [Azure Active Directory (AAD)](service-fabric-cluster-security-client-auth-with-aad.md) steuern.
+Sie können den Clientzugriff auf Ihren Service Fabric-Cluster entweder mit Zertifikaten oder über Azure Active Directory (AAD) steuern.
 
-Wenn Sie versuchen, eine Verbindung mit Service Fabric Explorer auf einem sicheren Cluster herzustellen, müssen Sie entweder ein Clientzertifikat bereitstellen oder sich mithilfe von AAD anmelden. Die Vorgehensweise hängt von dem für die Verwaltungsendpunkte des Clusters eingerichteten Sicherheitstyp ab.
+Wenn Sie versuchen, eine Verbindung mit Service Fabric Explorer auf einem sicheren Cluster herzustellen, müssen Sie entweder ein Clientzertifikat bereitstellen oder sich mithilfe von AAD anmelden, je nach Konfiguration des Clusters.
 
 ## Nächste Schritte
 
@@ -115,5 +119,6 @@ Wenn Sie versuchen, eine Verbindung mit Service Fabric Explorer auf einem sicher
 [sfx-application-tree]: ./media/service-fabric-visualizing-your-cluster/SfxApplicationTree.png
 [sfx-service-essentials]: ./media/service-fabric-visualizing-your-cluster/SfxServiceEssentials.png
 [sfx-delete-application]: ./media/service-fabric-visualizing-your-cluster/SfxDeleteApplication.png
+[sfx-create-app-instance]: ./media/service-fabric-visualizing-your-cluster/SfxCreateAppInstance.png
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0824_2016-->

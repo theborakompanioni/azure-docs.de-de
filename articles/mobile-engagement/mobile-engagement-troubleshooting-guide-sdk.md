@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="mobile-multiple"
    ms.workload="mobile" 
-   ms.date="02/29/2016"
+   ms.date="08/19/2016"
    ms.author="piyushjo"/>
 
 # Handbuch zur Problembehandlung bei der SDK-Integration
@@ -31,8 +31,8 @@ Im Folgenden finden Sie mögliche Probleme, die bei der Integration von Azure Mo
 
 ### Ursachen
 
-- Die meisten Probleme in Bezug auf das Azure Mobile Engagement-SDK äußern sich durch einen Fehler in Ihrer Anwendung (beispielsweise Fehler bei der Erfassung von Benutzeroberflächendaten, Pushfehler, Fehler mit erweiterten Funktionen, API-Fehler, Anwendungsabstürze oder scheinbare Dienstausfälle).  
-- Wenn eine bestimmte Funktion von Azure Mobile Engagement noch nie in Ihrer App funktioniert hat, müssen Sie eine Integration durchführen. 
+- Die meisten Probleme in Bezug auf das Azure Mobile Engagement-SDK äußern sich durch einen Fehler in Ihrer Anwendung (beispielsweise Fehler bei der Erfassung von Benutzeroberflächendaten, Pushfehler, Fehler mit erweiterten Funktionen, API-Fehler, Anwendungsabstürze oder scheinbare Dienstausfälle).
+- Wenn eine bestimmte Funktion von Azure Mobile Engagement noch nie in Ihrer App funktioniert hat, müssen Sie eine Integration durchführen.
 - Wenn eine bestimmte Funktion von Azure Mobile Engagement funktioniert hat, aber jetzt Fehler auftreten, müssen Sie möglicherweise mit dem Azure Mobile Engagement-SDK ein Upgrade auf die neueste Version durchführen. Denken Sie daran, dass es unterschiedliche Versionen des Azure Mobile Engagement-SDK für jede von Azure Mobile Engagement unterstützte Plattform gibt (Android, iOS, Windows und Windows Phone).
 
 #### SDK-Integration
@@ -47,7 +47,7 @@ Im Folgenden finden Sie mögliche Probleme, die bei der Integration von Azure Mo
 
 **Weitere Informationen:**
 
-- [SDK-Dokumentation – Handbücher zur Integration][Link 5] 
+- [SDK-Dokumentation – Handbücher zur Integration][Link 5]
 - [Handbuch zur Problembehandlung - Push][Link 23]
 
 #### SDK-Upgrade
@@ -57,7 +57,7 @@ Im Folgenden finden Sie mögliche Probleme, die bei der Integration von Azure Mo
 
 **Weitere Informationen:**
 
-- [SDK-Dokumentation – Versionshinweise](http://go.microsoft.com/fwlink/?LinkId= 525554) 
+- [SDK-Dokumentation – Versionshinweise](http://go.microsoft.com/fwlink/?LinkId= 525554)
 - [SDK-Dokumentation – Handbücher zu Upgrades](http://go.microsoft.com/fwlink/?LinkId= 525554)
 
 #### Weitere SDK-Probleme
@@ -77,15 +77,15 @@ Im Folgenden finden Sie mögliche Probleme, die bei der Integration von Azure Mo
 ### Ursachen
 
 - Viele Probleme mit Azure Mobile Engagement, die bei der erweiterten Codierung auftreten, werden durch fehlerhaften plattformspezifischen Code verursacht, der nicht in direktem Zusammenhang mit Azure Mobile Engagement steht. Neben der Azure Mobile Engagement-Dokumentation müssen Sie auch die Dokumentation für die Plattform zu Rate ziehen, für die Sie entwickeln (Android, iOS, Web, Windows und Windows Phone).
-- Eine nicht ordnungsgemäße Konfiguration von "categories" verhindert das Verlinken aus einer Benachrichtigung mit einem anderen Speicherort, entweder App-intern oder App-extern (nur Android). 
+- Eine nicht ordnungsgemäße Konfiguration von "categories" verhindert das Verlinken aus einer Benachrichtigung mit einem anderen Speicherort, entweder App-intern oder App-extern (nur Android).
 - Wenn Sie "UIKit.framework" in Ihrem iOS-Code auf "optional" setzen, wird ein "Symbol nicht gefunden"-Fehler angezeigt und/oder es kommt auf älteren iOS-Geräten zu einem Absturz (nur iOS).
 - Abgelaufene Zertifikate oder Zertifikate, die nicht die richtige DEV- oder Prod-Version des Zertifikats verwenden, verursachen Pushfehler (nur iOS).
 - Es gelten einige Plattformeinschränkungen, die Azure Mobile Engagement nicht steuern kann (beispielsweise die Funktionsweise von System Center für App-externe Pushes in Android und iOS).
 - Azure Mobile Engagement veröffentlicht als Referenz eine vollständige Liste der internen Pakete, die von Azure Mobile Engagement für iOS und Android verwendet werden. Beachten Sie, dass einige Funktionen von Azure Mobile Engagement plattformspezifisch sind (Android, iOS, Web, Windows und Windows Phone).
 
-### Weitere Informationen
+### Siehe auch
 
- - [Handbuch zur Problembehandlung - Push][Link 23] 
+ - [Handbuch zur Problembehandlung - Push][Link 23]
  - [SDK-Dokumentation – Versionshinweise][Link 5]
  - [SDK-Dokumentation – Handbücher zu Upgrades][Link 5]
 
@@ -100,7 +100,7 @@ Im Folgenden finden Sie mögliche Probleme, die bei der Integration von Azure Mo
 - Sie können die Geräte-ID Ihres Testgeräts ermitteln und dieselbe Aktion ausführen, die bei einem Endbenutzer zum Absturz Ihrer Anwendung führt, um die Ursache des Absturzes zu identifizieren.
 - Bekannte Probleme mit dem Azure Mobile Engagement-SDK, die zu Abstürzen der Anwendungen führen, können manchmal durch ein Upgrade auf die neueste SDK-Version behoben werden. Lesen Sie daher die Versionshinweise zu Ihrer Plattform, wenn Sie Abstürze untersuchen.
 
-### Weitere Informationen
+### Siehe auch
 
 - [SDK-Dokumentation – Versionshinweise][Link 5]
 - [SDK-Dokumentation – Handbücher zu Upgrades][Link 5]
@@ -112,7 +112,7 @@ Im Folgenden finden Sie mögliche Probleme, die bei der Integration von Azure Mo
 
 ### Ursachen
 
-- App Stores blockieren gelegentlich Apps, bei denen bestimmte Funktionen aktiviert sind (Apple Store verhindert die Verwendung von IDFV in Apps im Store, und GooglePlay Store verhindert die Freigabe von Anwendungsinformationen zwischen Apps). 
+- App Stores blockieren gelegentlich Apps, bei denen bestimmte Funktionen aktiviert sind (Apple Store verhindert die Verwendung von IDFV in Apps im Store, und GooglePlay Store verhindert die Freigabe von Anwendungsinformationen zwischen Apps).
 - Prüfen Sie die Versionshinweise zu Ihrer Plattform und dem aktuellen SDK, wenn Sie Probleme beim Hochladen einer App in den Store haben.
 
 <!--Link references-->
@@ -147,4 +147,4 @@ Im Folgenden finden Sie mögliche Probleme, die bei der Integration von Azure Mo
 [Link 29]: mobile-engagement-user-interface-reach-content.md
  
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0824_2016-->

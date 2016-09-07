@@ -46,7 +46,7 @@ Bei der erweiterten Bereitstellung handelt es sich um ein umfangreiches Update. 
 - **Keine Infrastruktur-VMs in Azure**: Daten werden direkt auf ein Azure-Speicherkonto repliziert. Außerdem ist für die Replikation und das Failover keine Einrichtung von Infrastruktur-VMs (Konfigurationsserver, Masterzielserver) erforderlich, wie es bei der Legacybereitstellung der Fall war.
 - **Einheitliche Installation**: Ein einziger Installationsvorgang ermöglicht eine einfache Einrichtung mit Skalierbarkeit für lokale Komponenten.
 - **Sichere Bereitstellung**: Der gesamte Datenverkehr wird verschlüsselt, und die Replikationsverwaltungskommunikation wird über HTTPS 443 übermittelt.
-- **Wiederherstellungspunkte**: Unterstützung für absturz- und anwendungskonsistente Wiederherstellungspunkte in Windows-und Linux-Umgebungen sowie Unterstützung für Konfigurationen mit Einzel-VM- und Multi-VM-Konsistenz.
+- **Wiederherstellungspunkte**: Unterstützung für absturz- und anwendungskonsistente Wiederherstellungspunkte in Windows- und Linux-Umgebungen sowie Unterstützung für Konfigurationen mit Einzel-VM- und Multi-VM-Konsistenz.
 - **Testfailover**: Unterstützung für ein unterbrechungsfreies Testfailover auf Azure ohne Beeinträchtigung der Produktion oder Unterbrechung der Replikation.
 - **Ungeplantes Failover**: Unterstützung für ein ungeplantes Failover auf Azure mit einer erweiterten Option zum automatischen Herunterfahren von virtuellen Computern vor dem Failover.
 - **Failback**: Das integrierte Failback, das nur die Deltaänderungen zurück auf den lokalen Standort repliziert.
@@ -59,7 +59,7 @@ Bei der erweiterten Bereitstellung handelt es sich um ein umfangreiches Update. 
 - VMware-Administratoren können für die auf virtuellen VMware-Computern ausgeführten geschäftlichen Workloads und Anwendungen einen externen Schutz in Azure konfigurieren. Servermanager können lokale physische Windows- und Linux-Server in Azure replizieren.
 - Über die Azure Site Recovery-Konsole können Sie die Vorgänge für Replikation, Failover und Wiederherstellung einfach und zentral einrichten und verwalten.
 - Wenn Sie virtuelle VMware-Computer replizieren, die von einem vCenter-Server verwaltet werden, kann Site Recovery diese virtuellen Computer automatisch ermitteln. Wenn sich Computer auf einem ESXi-Host befinden, ermittelt Site Recovery die virtuellen Computer auf dem Host.
-- Führen Sie einfache Failovers von der lokalen Infrastruktur zu Azure aus, und führen Sie ein Failback (Wiederherstellung) von Azure zu VMware-VM-Servern am lokalen Standort durch. 
+- Führen Sie einfache Failovers von der lokalen Infrastruktur zu Azure aus, und führen Sie ein Failback (Wiederherstellung) von Azure zu VMware-VM-Servern am lokalen Standort durch.
 - Konfigurieren Sie Wiederherstellungspläne, die Anwendungsworkloads von verschiedenen Computern in Gruppen zusammenfassen. Sie können für diese Pläne ein Failover durchführen. Site Recovery sorgt dann für die Konsistenz zwischen den verschiedenen virtuellen Computern (Multi-VM-Konsistenz). Dadurch können die Computer, die die gleichen Workloads ausführen, gemeinsam an einem konsistenten Datenpunkt wiederhergestellt werden.
 
 
@@ -201,7 +201,7 @@ In den folgenden Tabellen werden die Voraussetzungen für die Bereitstellung die
 
 **Voraussetzung** | **Details**
 --- | ---
-**Azure-Konto**| Sie benötigen ein [Microsoft Azure](https://azure.microsoft.com/)-Konto. Für den Einstieg steht eine [kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/) zur Verfügung. Erfahren Sie mehr über die [Preise für Site Recovery](https://azure.microsoft.com/pricing/details/site-recovery/).
+**Azure-Konto**| Sie benötigen ein [Microsoft Azure](https://azure.microsoft.com/)-Konto. Für den Einstieg steht eine [kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/) zur Verfügung. Weitere Informationen zu den Preisen für Site Recovery erhalten Sie [hier](https://azure.microsoft.com/pricing/details/site-recovery/).
 **Azure-Speicher** | Sie benötigen ein Azure-Speicherkonto, um replizierte Daten zu speichern. Replizierte Daten werden im Azure-Speicher gespeichert, und virtuelle Azure-Computer werden bei einem Failover hochgefahren. <br/><br/>Sie benötigen ein [standardmäßiges georedundantes Speicherkonto](../storage/storage-redundancy.md#geo-redundant-storage). Das Konto muss sich in der gleichen Region wie der Site Recovery-Dienst befinden und dem gleichen Abonnement zugeordnet sein. Beachten Sie, dass die Replikation auf Storage Premium-Konten derzeit nicht unterstützt wird und nicht verwendet werden sollte.<br/><br/>Das Verschieben von Speicherkonten, die mit dem [neuen Azure-Portal](../storage/storage-create-storage-account.md) über Ressourcengruppen hinweg erstellt wurden, wird nicht unterstützt. Erfahren Sie mehr über [Azure Storage](../storage/storage-introduction.md).<br/><br/>
 **Azure-Netzwerk** | Sie benötigen ein virtuelles Azure-Netzwerk, mit dem die virtuellen Azure-Computer eine Verbindung herstellen, wenn ein Failover stattfindet. Das virtuelle Azure-Netzwerk muss sich in der gleichen Region befinden wie der Site Recovery-Tresor.<br/><br/>Beachten Sie: Nach einem Failover auf Azure benötigen Sie zum Ausführen eines Failbacks eine VPN-Verbindung (oder Azure ExpressRoute) zwischen dem Azure-Netzwerk und dem lokalen Standort.
 
@@ -287,7 +287,7 @@ Wenn Sie virtuelle VMware-Computer replizieren möchten, installieren Sie die fo
 6. Geben Sie unter **Interneteinstellungen** an, wie der auf dem Konfigurationsserver ausgeführte Anbieter eine Internetverbindung mit Azure Site Recovery herstellen soll.
 
 	- Wenn die Verbindung über den derzeit auf dem Computer eingerichteten Proxy hergestellt werden soll, wählen Sie **Mit vorhandenen Proxyeinstellungen verbinden** aus.
-	- Wenn der Anbieter eine direkte Verbindung herstellen soll, wählen Sie **Ohne Proxy direkt verbinden** aus.
+	- Wenn der Anbieter eine direkte Verbindung herstellt, wählen Sie **Ohne Proxy direkt verbinden** aus.
 	- Falls für den vorhandenen Proxy eine Authentifizierung erforderlich ist oder Sie für die Anbieterverbindung einen benutzerdefinierten Proxy verwenden möchten, wählen Sie **Mit benutzerdefinierten Proxyeinstellungen verbinden** aus.
 		- Bei einem benutzerdefinierten Proxy müssen Sie die Adresse, den Port und Anmeldeinformationen eingeben.
 		- Bei Verwendung eines Proxys sollten Sie die folgenden URLs bereits zugelassen haben:
@@ -328,7 +328,7 @@ Wenn Sie virtuelle VMware-Computer replizieren möchten, installieren Sie die fo
 
 
 
-12.  Überprüfen Sie unter **Zusammenfassung** die angezeigten Informationen, und klicken Sie auf **Installieren**. Nach Abschluss der Installation wird eine Passphrase generiert. Diese benötigen Sie bei der Aktivierung der Replikation, kopieren Sie sie daher und bewahren Sie sie an einem sicheren Ort auf.
+12.  Lesen Sie die unter **Zusammenfassung** angezeigten Informationen, und klicken Sie auf **Installieren**. Nach Abschluss der Installation wird eine Passphrase generiert. Diese benötigen Sie bei der Aktivierung der Replikation, kopieren Sie sie daher und bewahren Sie sie an einem sicheren Ort auf.
 
 	![Zusammenfassung](./media/site-recovery-vmware-to-azure-classic/combined-wiz10.png)
 
@@ -498,7 +498,7 @@ Die Installationsprogramme stehen unter „C:\\Programme (x86)\\Microsoft Azure 
 Quellbetriebssystem | Installationsdatei für den Mobilitätsdienst
 --- | ---
 Windows Server (nur 64 Bit) | Microsoft-ASR\_UA\_9.*.0.0_Windows_* release.exe
-CentOS 6.4, 6.5, 6.6 (nur 64 Bit) | Microsoft-ASR\_UA\_9.*.0.0\_RHEL6-64\_*release.tar.gz 
+CentOS 6.4, 6.5, 6.6 (nur 64 Bit) | Microsoft-ASR\_UA\_9.*.0.0\_RHEL6-64\_*release.tar.gz
 SUSE Linux Enterprise Server 11 SP3 (nur 64 Bit) | Microsoft-ASR\_UA\_9.*.0.0\_SLES11-SP3-64\_*release.tar.gz
 Oracle Enterprise Linux 6.4, 6.5 (nur 64 Bit) | Microsoft-ASR\_UA\_9.*.0.0\_OL6-64\_*release.tar.gz
 
@@ -528,6 +528,14 @@ Hierbei gilt:
 - /InstallLocation: Obligatorisch. Gibt an, wo der Dienst installiert werden soll.
 - /PassphraseFilePath: Obligatorisch. Gibt die Passphrase des Konfigurationsservers an.
 - /LogFilePath: Obligatorisch. Gibt den Speicherort für die Setupprotokolldateien an.
+
+#### Manuelles Deinstallieren des Mobilitätsdiensts
+
+Der Mobilitätsdienst kann mithilfe der Option „Software“ in der Systemsteuerung oder über die Befehlszeile deinstalliert werden.
+
+Der Befehl zum Deinstallieren des Mobilitätsdiensts mithilfe der Befehlszeile lautet:
+
+	MsiExec.exe /qn /x {275197FC-14FD-4560-A5EB-38217F80CBD1}
 
 #### Ändern der IP-Adresse des Verwaltungsservers
 
@@ -774,7 +782,7 @@ Der Prozessserver kann virtuelle Computer auf einem vCenter-Server automatisch e
 
 **Rolle** | **Details** | **Berechtigungen**
 --- | --- | ---
-Rolle „Azure\_Site\_Recovery“ | Ermittlung von virtuellen VMware-Computern |Weisen Sie diese Berechtigungen für den vCenter-Server zu:<br/><br/>Datenspeicher -> Speicher belegen, Datenspeicher durchsuchen, Low-Level-Dateivorgänge, Datei entfernen, Virtuelle Computerdateien aktualisieren<br/><br/>Netzwerk -> Netzwerk zuweisen<br/><br/>Ressource -> Virtuellen Computer zu Ressourcenpool zuweisen, Ausgeschalteten virtuellen Computer migrieren, Eingeschalteten virtuellen Computer migrieren<br/><br/>Aufgaben -> Aufgabe erstellen, Aufgabe aktualisieren<br/><br/>Virtueller Computer -> Konfiguration<br/><br/>Virtueller Computer -> Interaktion -> Frage beantworten, Geräteverbindung, CD-Medien konfigurieren, Diskettenmedien konfigurieren, Ausschalten, Einschalten, VMware-Tools installieren<br/><br/>Virtueller Computer -> Inventar -> Erstellen, Registrieren, Registrierung aufheben<br/><br/>Virtueller Computer -> Bereitstellung -> Download virtueller Computer zulassen, Upload von Dateien virtueller Computer zulassen<br/><br/>Virtueller Computer -> Momentaufnahmen -> Momentaufnahmen entfernen
+Rolle „Azure\_Site\_Recovery“ | Ermittlung von virtuellen VMware-Computern |Weisen Sie die folgenden Berechtigungen für den vCenter-Server zu:<br/><br/>Datastore -> Allocate space, Browse datastore, Low level file operations, Remove file, Update virtual machine files<br/><br/>Network -> Network assign<br/><br/>Resource -> Assign virtual machine to resource pool, Migrate powered off virtual machine, Migrate powered on virtual machine<br/><br/>Tasks -> Create task, update task<br/><br/>Virtual machine -> Configuration<br/><br/>Virtual machine -> Interact -> Answer question, Device connection, Configure CD media, Configure floppy media, Power off, Power on, VMware tools install<br/><br/>Virtual machine -> Inventory -> Create, Register, Unregister<br/><br/>Virtual machine -> Provisioning -> Allow virtual machine download, Allow virtual machine files upload<br/><br/>Virtual machine -> Snapshots -> Remove snapshots
 vCenter-Benutzerrolle | Ermittlung von virtuellen VMware-Computern/Failover ohne Herunterfahren der Quell-VM | Weisen Sie die folgenden Berechtigungen für den vCenter-Server zu:<br/><br/>Rechenzentrumsobjekt –> An untergeordnetes Objekt weitergeben, Rolle=Schreibgeschützt <br/><br/>Der Benutzer wird auf Rechenzentrumsebene zugewiesen und hat daher Zugriff auf alle Objekte im Rechenzentrum. Wenn Sie den Zugriff einschränken möchten, weisen Sie den untergeordneten Objekten (ESX-Hosts, Datenspeicher, virtuelle Computer und Netzwerke) die Rolle **Kein Zugriff** mit der Berechtigung **An untergeordnetes Objekt weitergeben** zu.
 vCenter-Benutzerrolle | Failover und Failback | Weisen Sie die folgenden Berechtigungen für den vCenter-Server zu:<br/><br/>Rechenzentrumsobjekt –> An untergeordnetes Objekt weitergeben, Rolle=Azure\_Site\_Recovery<br/><br/>Der Benutzer wird auf Rechenzentrumsebene zugewiesen und hat daher Zugriff auf alle Objekte im Rechenzentrum. Wenn Sie den Zugriff einschränken möchten, weisen Sie den untergeordneten Objekten (ESX-Hosts, Datenspeicher, virtuelle Computer und Netzwerke) die Rolle **Kein Zugriff** mit der Berechtigung **An untergeordnetes Objekt weitergeben** zu.  
 
@@ -796,4 +804,4 @@ The complete file may be found on the [Microsoft Download Center](http://go.micr
 
 [Erfahren Sie mehr über das Failback](site-recovery-failback-azure-to-vmware-classic.md), um Computer, die per Failover nach Azure verschoben wurden, wieder in der lokalen Umgebung auszuführen.
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0824_2016-->

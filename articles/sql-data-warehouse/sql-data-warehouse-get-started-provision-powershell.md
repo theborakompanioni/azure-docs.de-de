@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="08/16/2016"
+   ms.date="08/25/2016"
    ms.author="lodipalm;barbkess;sonyama"/>
 
 # Erstellen von SQL Data Warehouse mithilfe von PowerShell
@@ -23,7 +23,7 @@
 - [TSQL](sql-data-warehouse-get-started-create-database-tsql.md)
 - [PowerShell](sql-data-warehouse-get-started-provision-powershell.md)
 
-In diesem Artikel erfahren Sie, wie Sie ein SQL Data Warehouse mithilfe von PowerShell erstellen.
+In diesem Artikel erfahren Sie, wie Sie eine SQL Data Warehouse-Instanz mithilfe von PowerShell erstellen.
 
 ## Voraussetzungen
 
@@ -34,7 +34,7 @@ Zunächst benötigen Sie Folgendes:
 - **Ressourcengruppe:** Verwenden Sie entweder die gleiche Ressourcengruppe wie Ihre Azure SQL Server-Instanz, oder lesen Sie die Informationen zum [Erstellen einer neuen Ressourcengruppe][].
 - **PowerShell-Version 1.0.3 oder höher:** Sie können die Version überprüfen, indem Sie **Get-Module -ListAvailable -Name Azure** ausführen. Die neueste Version können Sie über den [Microsoft-Webplattform-Installer][] installieren. Weitere Informationen zum Installieren der neuesten Version finden Sie unter [Installieren und Konfigurieren von Azure PowerShell][].
 
-> [AZURE.NOTE] Wenn Sie ein neues SQL Data Warehouse erstellen, wird dadurch unter Umständen auch ein neuer abrechenbarer Dienst erstellt. Unter [SQL Data Warehouse – Preise][] finden Sie weitere Informationen zu den Preisen.
+> [AZURE.NOTE] Wenn Sie eine SQL Data Warehouse-Instanz erstellen, wird unter Umständen auch ein neuer abrechenbarer Dienst erstellt. Unter [SQL Data Warehouse – Preise][] finden Sie weitere Informationen zu den Preisen.
 
 ## Erstellen eines SQL Data Warehouse
 
@@ -51,21 +51,27 @@ Zunächst benötigen Sie Folgendes:
 	Get-AzureRmSubscription	-SubscriptionName "MySubscription" | Select-AzureRmSubscription
 	```
 
-4.  Erstellen Sie eine Datenbank. In diesem Beispiel wird eine neue Datenbank mit dem Namen „mynewsqldw“ mit der Dienstzielebene „DW400“ auf dem Server „sqldwserver1“ erstellt, der sich in der Ressourcengruppe „mywesteuroperesgp1“ befindet.
+4.  Erstellen Sie eine Datenbank. In diesem Beispiel wird eine Datenbank namens „mynewsqldw“ mit der Dienstzielebene „DW400“ auf dem Server „sqldwserver1“ erstellt, der sich in der Ressourcengruppe „mywesteuroperesgp1“ befindet.
 
 	```Powershell
-	New-AzureRmSqlDatabase -RequestedServiceObjectiveName "DW400" -DatabaseName "mynewsqldw" -ServerName "sqldwserver1" -ResourceGroupName "mywesteuroperesgp1" -Edition "DataWarehouse"
+	New-AzureRmSqlDatabase -RequestedServiceObjectiveName "DW400" -DatabaseName "mynewsqldw" -ServerName "sqldwserver1" -ResourceGroupName "mywesteuroperesgp1" -Edition "DataWarehouse" -CollationName "SQL_Latin1_General_CP1_CI_AS" -MaxSizeBytes 10995116277760
 	```
 
-Die für das Cmdlet erforderlichen Parameter sind:
+Erforderliche Parameter:
 
 - **RequestedServiceObjectiveName**: die angeforderte [DWU][]-Menge. Unterstützte Werte: DW100, DW200, DW300, DW400, DW500, DW600, DW1000, DW1200, DW1500, DW2000, DW3000 und DW6000.
 - **DatabaseName**: der Name des SQL Data Warehouse, das Sie erstellen.
 - **ServerName**: der Name des Servers, den Sie für die Erstellung verwenden (muss V12 sein).
 - **ResourceGroupName**: die Ressourcengruppe, die Sie verwenden. Verwenden Sie zum Abrufen der in Ihrem Abonnement verfügbaren Ressourcengruppen das Cmdlet „Get-AzureResource“.
-- **Edition**: Sie müssen die Edition auf "Data Warehouse" festlegen, um ein SQL Data Warehouse zu erstellen.
+- **Edition**: Muss für die Erstellung einer SQL Data Warehouse-Instanz auf „Data Warehouse“ festgelegt werden.
 
-Weitere Informationen zu den Parameteroptionen finden Sie unter [Create Database (Azure SQL Data Warehouse)][]. Die Befehlsreferenz finden Sie unter [New-AzureRmSqlDatabase][].
+Optionale Parameter:
+
+- **CollationName**: Ohne Angabe wird die Standardsortierung „SQL\_Latin1\_General\_CP1\_CI\_AS“ verwendet. Die Sortierung kann für eine Datenbank nicht geändert werden.
+- **MaxSizeBytes**: Die maximale Größe einer Datenbank beträgt standardmäßig 10 GB.
+
+
+Weitere Informationen zu den Parameteroptionen finden Sie unter [New-AzureRmSqlDatabase][] sowie unter [CREATE DATABASE (Azure SQL Data Warehouse)][].
 
 ## Nächste Schritte
 
@@ -93,7 +99,7 @@ Weitere Informationen zur programmgesteuerten Verwaltung von SQL Data Warehouse 
 <!--MSDN references--> 
 [MSDN]: https://msdn.microsoft.com/library/azure/dn546722.aspx
 [New-AzureRmSqlDatabase]: https://msdn.microsoft.com/library/mt619339.aspx
-[Create Database (Azure SQL Data Warehouse)]: https://msdn.microsoft.com/library/mt204021.aspx
+[CREATE DATABASE (Azure SQL Data Warehouse)]: https://msdn.microsoft.com/library/mt204021.aspx
 
 <!--Other Web references-->
 [Microsoft-Webplattform-Installer]: https://aka.ms/webpi-azps
@@ -101,4 +107,4 @@ Weitere Informationen zur programmgesteuerten Verwaltung von SQL Data Warehouse 
 [Kostenlose Azure-Testversion]: https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F
 [MSDN-Azure-Gutschriften]: https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0831_2016-->

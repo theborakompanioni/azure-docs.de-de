@@ -29,7 +29,7 @@ Zum Aktualisieren Ihres [Azure Linux-Agents](https://github.com/Azure/WALinuxAge
 
 <br>
 
-> [AZURE.NOTE] Wenn Sie diese Aufgabe von einem Windows-Computer ausführen, können Sie mit PuTTY eine SSH-Verbindung mit dem Linux-Computer herstellen. Weitere Informationen finden Sie unter [Anmelden bei einem virtuellen Computer, auf dem Linux ausgeführt wird](virtual-machines-linux-classic-log-on.md).
+> [AZURE.NOTE] Wenn Sie diese Aufgabe von einem Windows-Computer ausführen, können Sie mit PuTTY eine SSH-Verbindung mit dem Linux-Computer herstellen. Weitere Informationen finden Sie unter [Anmelden bei einem virtuellen Computer, auf dem Linux ausgeführt wird](virtual-machines-linux-mac-create-ssh-keys.md).
 
 Linux-Distributionen mit Azure-Unterstützung haben das Azure Linux Agent-Paket in ihren Repositorys. Bitte überprüfen Sie dies und installieren Sie nach Möglichkeit die neueste Version aus dem Distrbutions-Repository zuerst.
 
@@ -159,4 +159,4 @@ Sie sehen, dass die Azure Linux Agent-Version auf die neue Version aktualisiert 
 
 Weitere Informationen zum Azure Linux-Agent finden Sie in der [Azure Linux-Agent-Infodatei](https://github.com/Azure/WALinuxAgent).
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0824_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-html"
 	ms.devlang="javascript"
 	ms.topic="article"
-	ms.date="05/23/2016"
+	ms.date="08/22/2016"
 	ms.author="ggailey"/>
 
 # Verwenden der Apache Cordova-Clientbibliothek für Azure Mobile Apps
@@ -55,7 +55,7 @@ Mehrere Apache Cordova-Anwendungen verwenden eine Loopback-Funktion, um Abläufe
 2. Wählen Sie **Alle Ressourcen** oder **App Services** aus, und klicken Sie dann auf den Namen Ihrer mobilen App.
 3. Klicken Sie auf **Tools**.
 4. Klicken Sie im Menü ÜBERWACHEN auf **Ressourcen-Explorer**, dann klicken Sie auf **Start**. Ein neues Fenster oder eine Registerkarte wird geöffnet.
-5. Erweitern Sie die Knoten **Konfiguration**, **Authentifzierungseinstellungen** Ihrer Website im linken Navigationsbereich.
+5. Erweitern Sie im linken Navigationsbereich die Knoten **Konfiguration** und **Authentifizierungseinstellungen** für Ihre Website.
 6. Klicken Sie auf **Bearbeiten**.
 7. Suchen Sie nach dem Element allowedExternalRedirectUrls. Es ist auf NULL festgelegt. Ändern Sie es wie folgt:
 
@@ -137,4 +137,4 @@ Verwenden Sie das Notification Hubs SDK zum Senden von Pushbenachrichtigungen vo
 [cordova-plugin-inappbrowser]: https://www.npmjs.com/package/cordova-plugin-inappbrowser
 [Dokumentation „Query-Objekt“]: https://msdn.microsoft.com/de-DE/library/azure/jj613353.aspx
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0824_2016-->

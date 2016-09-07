@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/08/2016"
+	ms.date="08/24/2016"
 	ms.author="johnkem"/>
 
 # Übersicht über Azure-Diagnoseprotokolle
@@ -26,11 +26,12 @@ Im Anschluss sind einige Verwendungsmöglichkeiten für Diagnoseprotokolle aufge
 
 - Diagnoseprotokolle können zur Überwachung oder manuellen Überprüfung in einem **Speicherkonto** gespeichert werden. Mithilfe der **Diagnoseeinstellungen** können Sie eine Aufbewahrungsdauer (in Tagen) angeben.
 - Sie können Diagnoseprotokolle zur Erfassung durch einen Drittanbieterdienst oder durch eine benutzerdefinierte Analyselösung wie PowerBI [an **Event Hubs** streamen](monitoring-stream-diagnostic-logs-to-event-hubs.md).
+- Diagnoseprotokolle können mit [OMS Log Analytics](../log-analytics/log-analytics-azure-storage-json.md) analysiert werden.
 
 ## Diagnoseeinstellungen
 Diagnoseprotokolle für computefremde Ressourcen werden mithilfe von Diagnoseeinstellungen konfiguriert. In den **Diagnoseeinstellungen** für ein Ressourcensteuerelement können Sie Folgendes festlegen:
 
-- Wohin Diagnoseprotokolle gesendet werden sollen (Speicherkonto, Event Hubs und/oder OMS)
+- Wohin Diagnoseprotokolle gesendet werden sollen (Speicherkonto, Event Hubs und/oder OMS Log Analytics)
 - Welche Protokollkategorien gesendet werden sollen
 - Wie lange die einzelnen Protokollkategorien in einem Speicherkonto aufbewahrt werden sollen. Bei Angabe einer Aufbewahrungsdauer von null Tagen werden die Protokolle dauerhaft aufbewahrt. Wenn Aufbewahrungsrichtlinien festgelegt werden, aber das Speichern von Protokollen in einem Speicherkonto deaktiviert ist (etwa, wenn nur die Event Hubs- oder die OMS-Option aktiviert ist), werden die Aufbewahrungsrichtlinien ignoriert.
 
@@ -107,5 +108,6 @@ Das Schema für Diagnoseprotokolle variiert abhängig von der Ressource und der 
 ## Nächste Schritte
 - [Streamen von Diagnoseprotokollen an **Event Hubs**](monitoring-stream-diagnostic-logs-to-event-hubs.md)
 - [Ändern der Diagnoseeinstellungen mithilfe der Insights-REST-API](https://msdn.microsoft.com/library/azure/dn931931.aspx)
+- [Analysieren der Protokolle mit OMS Log Analytics](../log-analytics/log-analytics-azure-storage-json.md)
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0824_2016-->

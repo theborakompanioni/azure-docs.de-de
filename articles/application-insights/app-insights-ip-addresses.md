@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="Von Application Insights verwendete IP-Adressen | Microsoft Azure"
-	description="Liste statischer Adressen" 
+	description="Für Application Insights erforderliche Serverfirewallausnahmen" 
 	services="application-insights"
     documentationCenter=".net"
 	authors="alancameronwills" 
@@ -12,12 +12,12 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/30/2016" 
+	ms.date="08/24/2016" 
 	ms.author="awills"/>
  
 # Von Application Insights verwendete IP-Adressen
 
-Der Dienst [Visual Studio Application Insights](app-insights-overview.md) verwendet eine Reihe von IP-Adressen, die Sie ggf. kennen müssen – etwa, wenn Sie eine App überwachen, die hinter einer Firewall ausgeführt wird.
+Der Dienst [Visual Studio Application Insights](app-insights-overview.md) verwendet eine Reihe von IP-Adressen. Diese müssen Ihnen gegebenenfalls bekannt sein, wenn die überwachte App hinter einer Firewall gehostet wird.
 
 > [AZURE.NOTE] Diese Adressen sind zwar statisch, müssen jedoch unter Umständen gelegentlich geändert werden.
 
@@ -46,11 +46,11 @@ In der Serverfirewall müssen einige ausgehende Ports geöffnet werden, damit da
 
 Diese Liste kann sich von Zeit zu Zeit ändern.
 
-## Availability
+## Verfügbarkeitstests
 
-Diese Liste enthält die Adressen, von denen aus [Verfügbarkeitswebtests](app-insights-monitor-web-app-availability.md) durchgeführt werden.
+Diese Liste enthält die Adressen, von denen aus [Verfügbarkeitswebtests](app-insights-monitor-web-app-availability.md) durchgeführt werden. Wenn Sie Webtests für Ihre App durchführen möchten, Ihr Webserver aber auf die Versorgung bestimmter Clients beschränkt ist, müssen Sie eingehenden Datenverkehr von unseren Verfügbarkeitstestservern zulassen.
 
-Öffnen Sie Port 80 (http) und 443 (https).
+Öffnen Sie die Ports 80 (HTTP) und 443 (HTTPS) für eingehenden Datenverkehr von folgenden Adressen:
 
 ```
 
@@ -184,4 +184,4 @@ Diese Liste enthält die Adressen, von denen aus [Verfügbarkeitswebtests](app-i
 
  
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0824_2016-->

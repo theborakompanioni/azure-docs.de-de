@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="mobile-multiple"
    ms.workload="mobile" 
-   ms.date="02/29/2016"
+   ms.date="08/19/2016"
    ms.author="piyushjo"/>
 
 # Handbuch zur Problembehandlung bei APIs
@@ -29,11 +29,11 @@ Im Folgenden finden Sie mögliche Probleme, die auftreten können, wenn Administ
 
 - Syntaxfehler:
     - Stellen Sie durch Prüfen der Syntax der jeweiligen API sicher, dass die Option zur Verfügung steht.
-    - Ein häufiger Fehler bei der API-Verwendung besteht darin, dass Reach-API und Push-API verwechselt werden (die meisten Aufgaben sollten nicht mit der Push-API, sondern mit der Reach-API ausgeführt werden). 
+    - Ein häufiger Fehler bei der API-Verwendung besteht darin, dass Reach-API und Push-API verwechselt werden (die meisten Aufgaben sollten nicht mit der Push-API, sondern mit der Reach-API ausgeführt werden).
     - Ein weiterer häufiger Fehler bei der SDK-Integration und der API-Verwendung ist der, dass SDK- und API-Schlüssel verwechselt werden.
-    - Skripts, die eine Verbindung zu den APIs herstellen, müssen mindestens alle 10 Minuten Daten senden, ansonsten kommt es zu einer Zeitüberschreitung (besonders häufig in API-Überwachungsskripts, die auf Daten prüfen). Um Zeitüberschreitungen zu verhindern, sollte Ihr Skript alle 10 Minuten ein XMPP-Pingsignal senden, um die Verbindung mit dem Server aufrechtzuerhalten.
+    - Skripts, die eine Verbindung zu den APIs herstellen, müssen mindestens alle 10 Minuten Daten senden, ansonsten kommt es zu einer Zeitüberschreitung (besonders häufig in API-Überwachungsskripts, die auf Daten prüfen). Um Zeitüberschreitungen zu verhindern, sollte Ihr Skript alle 10 Minuten ein XMPP-Pingsignal senden, um die Verbindung mit dem Server aufrechtzuerhalten.
 
-### Weitere Informationen
+### Siehe auch
  
 - [API-Dokumentation][Link 4]
 - [Informationen zum XMPP-Protokoll](http://xmpp.org/extensions/xep-0199.html)
@@ -47,7 +47,7 @@ Im Folgenden finden Sie mögliche Probleme, die auftreten können, wenn Administ
 
 - Wenn Sie dieselbe Aktion über die Azure Mobile Engagement-Benutzeroberfläche ausführen können, wurde diese Funktion von Azure Mobile Engagement mit dem SDK ordnungsgemäß integriert.
 
-### Weitere Informationen
+### Siehe auch
  
 - [Dokumentation zur Benutzeroberfläche][Link 1]
  
@@ -80,7 +80,7 @@ Im Folgenden finden Sie mögliche Probleme, die auftreten können, wenn Administ
         503        Analytics not available yet (the requested information is not computed yet for an application).
         504        The server was not able to handle your request in a reasonable time (if you make multiple calls to an API very quickly, try to make one call at a time and spread the calls out over time).
 
-### Weitere Informationen
+### Siehe auch
 
 - [API-Dokumentation – detaillierte Fehlerinformationen zu jeder API][Link 4]
  
@@ -94,7 +94,7 @@ Im Folgenden finden Sie mögliche Probleme, die auftreten können, wenn Administ
 - In der Azure Mobile Engagement-Benutzeroberfläche werden viele Elemente deaktiviert, wenn sie nicht ordnungsgemäß integriert wurden. Bei der API hingegen treten nur "stille" Fehler (ohne Fehlermeldung) auf. Testen Sie deshalb mithilfe der Benutzeroberfläche, ob dieselbe Funktionalität dort korrekt arbeitet.
 - Azure Mobile Engagement und viele weitere Funktionen von Azure Mobile Engagement müssen einzeln mit dem SDK in Ihre App integriert werden, bevor sie genutzt werden können.
 
-### Weitere Informationen
+### Siehe auch
 
 - [Handbuch zur Problembehandlung – SDK][Link 25]
  
@@ -130,4 +130,4 @@ Im Folgenden finden Sie mögliche Probleme, die auftreten können, wenn Administ
 [Link 29]: mobile-engagement-user-interface-reach-content.md
  
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0824_2016-->

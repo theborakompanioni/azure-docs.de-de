@@ -101,7 +101,7 @@ Zweitens benötigen Sie ein Image. Informationen zur Suche eines Images mit der 
 | PublisherName | Angebot | Sku | Version |
 |:---------------------------------|:-------------------------------------------|:---------------------------------|:--------------------|
 | OpenLogic | CentOS | 7 | 7\.0.201503 |
-| OpenLogic | CentOS | 7\.1 | 7\.1.201504 |
+| OpenLogic | CentOS | 7,1 | 7\.1.201504 |
 | CoreOS | CoreOS | Beta | 647\.0.0 |
 | CoreOS | CoreOS | Stable | 633\.1.0 |
 | MicrosoftDynamicsNAV | DynamicsNAV | 2015 | 8\.0.40459 |
@@ -1240,7 +1240,7 @@ Suchen Sie dann nach "myVM1":
 
 ## <a id="log-on-to-a-linux-based-virtual-machine"></a>Aufgabe: Anmelden bei einem Linux-basierten virtuellen Computer
 
-In der Regel sind Linux-Computer über SSH verbunden. Weitere Informationen finden Sie unter [Verwenden von SSH mit Linux auf Azure](../articles/virtual-machines/virtual-machines-linux-ssh-from-linux.md).
+In der Regel sind Linux-Computer über SSH verbunden. Weitere Informationen finden Sie unter [Verwenden von SSH mit Linux auf Azure](../articles/virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md).
 
 ## <a id="stop-a-virtual-machine"></a>Aufgabe: Anhalten eines virtuellen Computers
 
@@ -1278,4 +1278,4 @@ Viele weitere Verwendungsbeispiele für die Azure-Befehlszeilenschnittstelle mit
 
 Weitere Vorlagen finden Sie unter [Azure-Schnellstartvorlagen](https://azure.microsoft.com/documentation/templates/) und [Erstellen von Anwendungsframeworks mithilfe von Vorlagen](../articles/virtual-machines/virtual-machines-linux-app-frameworks.md).
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0824_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="dotnet" 
 	ms.topic="hero-article" 
-	ms.date="06/09/2016" 
+	ms.date="08/25/2016" 
 	ms.author="sdanie"/>
 
 # Verwenden von Azure Redis Cache
@@ -73,7 +73,7 @@ In den Schritten in diesem Abschnitt wird die Ausführung allgemeiner Aufgaben m
 -   [Arbeiten mit .NET-Objekten im Cache](#work-with-net-objects-in-the-cache)
 
 <a name="connect-to-cache"></a>
-## Herstellen einer Verbindung mit dem Cache
+## Verbindungsaufbau zum Cache
 
 Um programmseitig mit dem Cache arbeiten zu können, benötigen Sie eine Referenz auf den Cache. Fügen Sie die folgende Zeile oben in jeder Datei hinzu, in der Sie mithilfe des „StackExchange.Redis“-Clients auf einen Azure Redis Cache zugreifen möchten:
 
@@ -286,4 +286,4 @@ Nachdem Sie sich nun mit den Grundlagen vertraut gemacht haben, lesen Sie die fo
 
 [Funktionsweise von Anwendungs- und Verbindungszeichenfolgen]: http://azure.microsoft.com/blog/2013/07/17/windows-azure-web-sites-how-application-strings-and-connection-strings-work/
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0831_2016-->

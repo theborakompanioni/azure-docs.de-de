@@ -106,7 +106,7 @@ Vor dem Erstellen einer virtuellen Maschine benötigen Sie eine Ressourcengruppe
 		    --subnet-id $subnetId \
 		    --public-ip-name $pipName
 
->[AZURE.TIP] Der erste Befehl oben verwendet [grep](http://tldp.org/LDP/Bash-Beginners-Guide/html/sect_04_02.html) (Artikel in englischer Sprache) und [Zeichenkettenmanipulation](http://tldp.org/LDP/abs/html/string-manipulation.html) (Artikel in englischer Sprache), insbesondere Substringentfernung.
+	>[AZURE.TIP] Der erste Befehl oben verwendet [grep](http://tldp.org/LDP/Bash-Beginners-Guide/html/sect_04_02.html) (Artikel in englischer Sprache) und [Zeichenkettenmanipulation](http://tldp.org/LDP/abs/html/string-manipulation.html) (Artikel in englischer Sprache), insbesondere Substringentfernung.
 
 5. Erstellen Sie ein Speicherkonto zum Hosten des VM-Betriebssystemlaufwerks.
 
@@ -227,4 +227,4 @@ Nachdem Sie die erforderlichen Änderungen vorgenommen und sich mit dem Skript v
 		info:    Creating VM "WEB1"
 		info:    vm create command OK
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0824_2016-->

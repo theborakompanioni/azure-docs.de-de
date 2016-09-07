@@ -166,11 +166,20 @@ Sie können nach Speicherwarteschlangenlänge skalieren, wobei es sich um die An
 
 Sie können dies im Azure-Portal auf dem Blatt **Einstellungen** konfigurieren. Für VM-Skalierungsgruppen können Sie die Einstellung für die automatische Skalierung in der ARM-Vorlage aktualisieren, sodass *metricName* als *ApproximateMessageCount* verwendet wird und die ID der Speicherwarteschlange als *metricResourceUri* übergeben wird.
 
+Bei einem klassischen Speicherkonto würde die metricTrigger-Einstellung für die automatische Skalierung Folgendes enthalten:
 
 ```
 "metricName": "ApproximateMessageCount",
  "metricNamespace": "",
  "metricResourceUri": "/subscriptions/s1/resourceGroups/rg1/providers/Microsoft.ClassicStorage/storageAccounts/mystorage/services/queue/queues/mystoragequeue"
+ ```
+
+Bei einem (nicht klassischen) Speicherkonto würde metricTrigger Folgendes enthalten:
+
+```
+"metricName": "ApproximateMessageCount",
+"metricNamespace": "",
+"metricResourceUri": "/subscriptions/s1/resourceGroups/rg1/providers/Microsoft.Storage/storageAccounts/mystorage/services/queue/queues/mystoragequeue"
 ```
 
 ## Häufig verwendete Service Bus-Metriken
@@ -187,4 +196,4 @@ Für VM-Skalierungsgruppen können Sie die Einstellung für die automatische Ska
 
 >[AZURE.NOTE] Für Service Bus gibt es das Konzept einer Ressourcengruppe nicht, Azure Resource Manager erstellt jedoch eine Standardressourcengruppe pro Region. Die Ressourcengruppe hat in der Regel das Format „Default-ServiceBus-[Region]“. Beispiel: „Default-ServiceBus-EastUS“, „Default-ServiceBus-WestUS“, „Default-ServiceBus-AustraliaEast“ usw.
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0824_2016-->

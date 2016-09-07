@@ -13,7 +13,7 @@
   ms.tgt_pltfrm="mobile-multiple"
   ms.devlang="dotnet"
   ms.topic="article"
-  ms.date="05/10/2016"
+  ms.date="08/22/2016"
   ms.author="donnam"/>
 
 # Client- und Serverversionsverwaltung in Mobile Apps und Mobile Services
@@ -40,13 +40,13 @@ POST https://service.azurewebsites.net/tables/TodoItem?ZUMO-API-VERSION=2.0.0
 
 ## Deaktivieren der Versionsüberprüfung
 
-Sie können die Versionsüberprüfung deaktivieren, indem Sie den Wert **true** für die App-Einstellung **MS\_SkipVersionCheck** festlegen. Geben Sie dies entweder in der Datei „web.config“ oder im Abschnitt mit den Anwendungseinstellungen im Azure-Portal an.
+Sie können die Versionsüberprüfung deaktivieren, indem Sie den Wert **true** für die App-Einstellung **MS\_SkipVersionCheck** festlegen. Die Angabe kann entweder in der Datei „web.config“ oder im Azure-Portal im Abschnitt mit den Anwendungseinstellungen vorgenommen werden.
 
-> [AZURE.NOTE] Es gibt einige Änderungen des Verhaltens zwischen Mobile Services und Mobile Apps, vor allem in den Bereichen der Offlinesynchronisierung, Authentifizierung und Pushbenachrichtigungen. Sie sollten die Versionsüberprüfung nur deaktivieren, nachdem Sie mit umfassenden Tests sichergestellt haben, dass diese Änderungen des Verhaltens nicht zu Problemen bei den Funktionen der App führen.
+> [AZURE.NOTE] Es gibt einige Änderungen des Verhaltens zwischen Mobile Services und Mobile Apps, vor allem in den Bereichen der Offlinesynchronisierung, Authentifizierung und Pushbenachrichtigungen. Sie sollten die Versionsüberprüfung erst deaktivieren, wenn Sie sich durch umfassende Tests vergewissert haben, dass diese Änderungen des Verhaltens nicht zu Problemen mit den Funktionen Ihrer App führen.
 
 ## Zusammenfassung der Kompatibilität für alle Versionen
 
-Im Diagramm unten ist die Kompatibilität zwischen allen Client- und Servertypen dargestellt. Ein Back-End ist entweder als Mobile **Services** oder Mobile **Apps** klassifiziert. Dies richtet sich nach dem verwendeten Server-SDK.
+Im Diagramm unten ist die Kompatibilität zwischen allen Client- und Servertypen dargestellt. Ein Back-End ist entweder als **Mobile Services** oder als **Mobile Apps** klassifiziert. Ausschlaggebend ist hierbei das verwendete Server-SDK.
 
 | | **Mobile Services** – Node.js oder .NET | **Mobile Apps** – Node.js oder .NET |
 | ----------                | -----------------------             |   ----------------              |
@@ -79,8 +79,8 @@ Hinweis: Die Mobile Services-Client-SDKs senden *keinen* Headerwert für `ZUMO-A
 
 | Serverplattform | Version | Akzeptierter Versionsheader |
 | ---------------- | ------------------------------------------------------------                                                   | ----------------------- |
-| .NET | [WindowsAzure.MobileServices.Backend.* Version 1.0.x](https://www.nuget.org/packages/WindowsAzure.MobileServices.Backend/) | **Kein Versionsheader**|
-| Node.js | (demnächst verfügbar) | **Kein Versionsheader** |
+| .NET | [WindowsAzure.MobileServices.Backend.* Version 1.0.x](https://www.nuget.org/packages/WindowsAzure.MobileServices.Backend/) | **Kein Versionsheader** |
+| Node.js | (In Kürze verfügbar) | **Kein Versionsheader** |
 
 <!-- TODO: add Node npm version -->
 
@@ -138,4 +138,4 @@ Die Versionsüberprüfung ist in den folgenden Versionen des Server-SDK enthalte
 [Mobile App Server SDK]: http://www.nuget.org/packages/microsoft.azure.mobile.server
 [Migrieren eines Mobile Service zu Azure App Service]: app-service-mobile-migrating-from-mobile-services.md
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0824_2016-->

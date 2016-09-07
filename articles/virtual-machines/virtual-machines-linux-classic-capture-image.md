@@ -33,7 +33,7 @@ Diese Schritte setzen voraus, dass Sie bereits mithilfe des klassischen Bereitst
 
 ## Erfassen des virtuellen Computers
 
-1. Stellen Sie über einen SSH-Client Ihrer Wahl eine [Verbindung mit dem virtuellen Computer](virtual-machines-linux-classic-log-on.md) her.
+1. Stellen Sie über einen SSH-Client Ihrer Wahl eine [Verbindung mit dem virtuellen Computer](virtual-machines-linux-mac-create-ssh-keys.md) her.
 
 2. Geben Sie im SSH-Fenster den folgenden Befehl ein. Beachten Sie, dass die Ausgabe von `waagent` je nach Version dieses Hilfsprogramms geringfügig abweichen kann:
 
@@ -57,7 +57,7 @@ Diese Schritte setzen voraus, dass Sie bereits mithilfe des klassischen Bereitst
 
 	>[AZURE.NOTE] Bei den nächsten Schritten wird davon ausgegangen, dass Sie [die Azure-Befehlszeilenschnittstelle auf dem Clientcomputer installiert haben](../xplat-cli-install.md). Die folgenden Schritte können Sie auch im [klassischen Azure-Portal][] ausführen.
 
-5. Öffnen Sie auf dem Clientcomputer die Azure-CLI, und melden Sie sich bei Ihrem Azure-Abonnement an. Weitere Informationen hierzu finden Sie unter [Herstellen einer Verbindung mit einem Azure-Abonnement von der Azure-CLI](../xplat-cli-connect.md).
+5. Öffnen Sie auf dem Clientcomputer die Azure-CLI, und melden Sie sich bei Ihrem Azure-Abonnement an. Weitere Informationen hierzu finden Sie unter [Herstellen einer Verbindung mit einem Azure-Abonnement von der Azure-Befehlszeilenschnittstelle](../xplat-cli-connect.md).
 
 6. Stellen Sie sicher, dass der Dienstverwaltungsmodus aktiviert ist:
 
@@ -96,4 +96,4 @@ Das Image kann jetzt zum Erstellen virtueller Computer verwendet werden. Sie kö
 [How to Attach a Data Disk to a Virtual Machine]: virtual-machines-windows-classic-attach-disk.md
 [Erstellen eines benutzerdefinierten virtuellen Linux-Computers]: virtual-machines-linux-classic-create-custom.md
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0824_2016-->

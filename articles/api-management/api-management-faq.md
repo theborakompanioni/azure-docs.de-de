@@ -38,6 +38,7 @@ In diesem Artikel erhalten Sie Antworten auf häufig gestellte Fragen sowie Info
 -	[Kann ich eine API Management-Dienstinstanz mithilfe einer ARM-Vorlage erstellen?](#can-i-create-an-api-management-service-instance-using-an-arm-template)
 -	[Kann ich ein selbstsigniertes SSL-Zertifikat für ein Back-End verwenden?](#can-i-use-a-self-signed-ssl-certificate-for-a-backend)
 -	[Warum erhalte ich einen Authentifizierungsfehler, wenn ich versuche, das GIT-Repository zu klonen?](#why-am-i-getting-authentication-failure-when-i-try-to-clone-the-git-repository)
+-	[Kann API Management mit ExpressRoute verwendet werden?](#does-api-management-work-with-express-route)
 
 
 ### Wie kann ich dem API Management-Team eine Frage stellen?
@@ -150,4 +151,8 @@ Ja. Führen Sie folgende Schritte aus:
 
 Wenn Sie die GIT-Anmeldeinformationsverwaltung verwenden oder versuchen, das Repository über Visual Studio zu klonen, tritt möglicherweise ein bekanntes Problem mit dem Windows-Dialogfeld für die Anmeldeinformationen auf: Da die Kennwortlänge auf 127 Zeichen begrenzt ist, wird das von uns generierte Kennwort abgeschnitten. Wir arbeiten daran, das Kennwort zu verkürzen. Verwenden Sie vorerst GIT Bash für Klonvorgänge.
 
-<!---HONumber=AcomDC_0810_2016-->
+### Kann API Management mit ExpressRoute verwendet werden?
+
+Ja.
+
+<!---HONumber=AcomDC_0824_2016-->

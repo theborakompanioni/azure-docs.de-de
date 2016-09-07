@@ -9,8 +9,7 @@ Bevor Sie einen Datenträger von einer VM trennen können, müssen Sie die LUN-N
 
 1. 	Öffnen Sie die Azure-Befehlszeilenschnittstelle, und [stellen Sie eine Verbindung mit Ihrem Azure-Abonnement her](../articles/xplat-cli-connect.md). Stellen Sie sicher, dass Sie sich im Azure Service Management-Modus (`azure config mode asm`) befinden.
 
-2. 	Bestimmen Sie die Ihrer VM angefügten Datenträger, indem Sie `azure vm disk list
-	<virtual-machine-name>` aufrufen:
+2. 	Bestimmen Sie die an Ihren virtuellen Computer angefügten Datenträger, indem Sie `azure vm disk list <virtual-machine-name>` aufrufen:
 
 		$azure vm disk list UbuntuVM
 		info:    Executing command vm disk list
@@ -28,9 +27,9 @@ Bevor Sie einen Datenträger von einer VM trennen können, müssen Sie die LUN-N
 
 ## Entfernen von Betriebssystemverweisen auf den Datenträger
 
-Bevor Sie die Verbindung des Datenträgers mit dem Linux-Gastsystem trennen, sollten Sie alle ungenutzten Partitionen auf dem Datenträger identifizieren und sicherstellen, dass das Betriebssystem nicht versucht, diese nach einem Neustart erneut bereitzustellen. Mit diesen Schritten wird die Konfiguration rückgängig gemacht, die Sie beim [Anfügen](../articles/virtual-machines-linux-classic-attach-disk.md) des Datenträgers vermutlich vorgenommen haben.
+Bevor Sie den Datenträger vom Linux-Gast trennen, müssen Sie sicherstellen, dass keine Partition auf dem Datenträger verwendet wird. Stellen Sie sicher, dass das Betriebssystem nicht versucht, die Datenträger nach dem Neustart erneut einzubinden. Mit diesen Schritten wird die Konfiguration rückgängig gemacht, die Sie beim [Anfügen](../articles/virtual-machines/virtual-machines-linux-classic-attach-disk.md) des Datenträgers vermutlich vorgenommen haben.
 
-1. Verwenden Sie den `lsscsi`-Befehl, um die Datenträger-ID zu ermitteln.`lsscsi` kann entweder über `yum install lsscsi` (für auf Red Hat basierende Distributionen) oder über `apt-get install lsscsi` (für auf Debian basierende Distributionen) installiert werden. Sie finden die gesuchte Datenträger-ID, indem Sie die obige LUN-Nummer verwenden. Die letzte Zahl im Tupel in jeder Zeile ist die LUN. Im folgenden Beispiel wird LUN 0 _/dev/sdc_ zugeordnet.
+1. Verwenden Sie den `lsscsi`-Befehl, um die Datenträger-ID zu ermitteln.`lsscsi` kann entweder über `yum install lsscsi` (für auf Red Hat basierende Distributionen) oder über `apt-get install lsscsi` (für auf Debian basierende Distributionen) installiert werden. Sie finden die gesuchte Datenträger-ID, indem Sie die LUN (Logical Unit Number, logische Gerätenummer) verwenden. Die letzte Zahl im Tupel in jeder Zeile ist die LUN. Im folgenden Beispiel wird LUN 0 _/dev/sdc_ zugeordnet.
 
 			ops@TestVM:~$ lsscsi
 			[1:0:0:0]    cd/dvd  Msft     Virtual CD/ROM   1.0   /dev/sr0
@@ -97,4 +96,4 @@ Nachdem Sie die LUN-Nummer des Datenträgers ermittelt und die Betriebssystemver
 
 Der getrennte Datenträger verbleibt im Speicher, ist jedoch nicht mehr an einen virtuellen Computer angefügt.
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0824_2016-->

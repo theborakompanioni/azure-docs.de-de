@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="08/09/2016"
+	ms.date="08/24/2016"
 	ms.author="sdanie"/>
 
 # Verwalten Ihrer ersten API in Azure API Management
@@ -186,7 +186,7 @@ Der Abschnitt **Analyse** enthält die folgenden vier Registerkarten:
 
 ## <a name="next-steps"> </a>Nächste Schritte
 
--	Lesen Sie die anderen Themen im Lernprogramm [Erste Schritte bei der erweiterten API-Konfiguration][].
+- Erfahren Sie, wie Sie Ihre API mit [Aufruflimits](api-management-howto-product-with-rules.md) schützen können.
 
 [Kostenlose Azure-Testversion]: http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=api_management_hero_a
 
@@ -205,7 +205,6 @@ Der Abschnitt **Analyse** enthält die folgenden vier Registerkarten:
 [Konfigurieren von Benachrichtigungen und E-Mail-Vorlagen in Azure API Management]: api-management-howto-configure-notifications.md
 [Responses]: api-management-howto-add-operations.md#responses
 [How create and publish a product]: api-management-howto-add-products.md
-[Erste Schritte bei der erweiterten API-Konfiguration]: api-management-get-started-advanced.md
 [API Management-Preise]: http://azure.microsoft.com/pricing/details/api-management/
 
 [klassischen Azure-Portal]: https://manage.windowsazure.com/
@@ -245,4 +244,4 @@ Der Abschnitt **Analyse** enthält die folgenden vier Registerkarten:
 [api-management-]: ./media/api-management-get-started/api-management-.png
 [api-management-]: ./media/api-management-get-started/api-management-.png
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0831_2016-->

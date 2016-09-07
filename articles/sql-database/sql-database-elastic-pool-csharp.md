@@ -14,7 +14,7 @@
     ms.topic="article"
     ms.tgt_pltfrm="powershell"
     ms.workload="data-management"
-    ms.date="05/03/2016"
+    ms.date="08/18/2016"
     ms.author="sstein"/>
 
 # C&#x23;-Datenbankentwicklung: Erstellen und Konfigurieren eines Pools für elastische Datenbanken für SQL-Datenbank
@@ -51,13 +51,13 @@ Rufen Sie die erforderlichen Verwaltungsbibliotheken ab, indem Sie die folgenden
 
 Bevor Sie die SQL-Entwicklung mit C# beginnen, müssen Sie einige Aufgaben im Azure-Portal ausführen. Ermöglichen Sie zunächst der Anwendung den Zugriff auf die REST-API, indem Sie die erforderliche Authentifizierung einrichten.
 
-Die [REST-APIs des Azure-Ressourcen-Managers](https://msdn.microsoft.com/library/azure/dn948464.aspx) verwenden Azure Active Directory zur Authentifizierung und nicht die Zertifikate, die von den früheren REST-APIs für die Azure-Dienstverwaltung verwendet wurden.
+Die [REST-APIs des Azure Resource-Managers](https://msdn.microsoft.com/library/azure/dn948464.aspx) verwenden Azure Active Directory zur Authentifizierung und nicht die Zertifikate, die vom früheren klassischen Bereitstellungsmodell verwendet wurden.
 
-Zur Authentifizierung der Clientanwendung basierend auf dem aktuellen Benutzer, müssen Sie die Anwendung zuerst in der AAD-Domäne registrieren, die dem Abonnement zugeordnet ist, unter dem die Azure-Ressourcen erstellt wurden. Wenn das Azure-Abonnement mit einem Microsoft-Konto anstelle eines Geschäfts-, Schul- oder Unikontos erstellt wurde, verfügen Sie bereits über eine AAD-Standarddomäne. Die Anwendung kann im [klassischen Portal](https://manage.windowsazure.com/) registriert werden.
+Zur Authentifizierung der Clientanwendung müssen Sie die Anwendung zuerst in der AAD-Domäne registrieren, die dem Abonnement zugeordnet ist, unter dem die Azure-Ressourcen erstellt wurden. Wenn das Azure-Abonnement mit einem Microsoft-Konto anstelle eines Geschäfts-, Schul- oder Unikontos erstellt wurde, verfügen Sie bereits über eine AAD-Standarddomäne. Registrieren Sie die Anwendung im [klassischen Portal](https://manage.windowsazure.com/).
 
-Um eine neue Anwendung zu erstellen und im richtigen Active Directory zu registrieren, führen Sie die folgenden Schritte aus:
+Um eine Anwendung zu erstellen und im richtigen Active Directory zu registrieren, führen Sie die folgenden Schritte aus:
 
-1. Führen Sie im Menü auf der linken Seite einen Bildlauf durch, um den Dienst **Active Directory** zu suchen und zu öffnen.
+1. Suchen Sie den **Active Directory**-Dienst, und öffnen Sie ihn.
 
     ![C#-SQL-Datenbankentwicklung: Active Directory-Einrichtung][1]
 
@@ -69,7 +69,7 @@ Um eine neue Anwendung zu erstellen und im richtigen Active Directory zu registr
 
     ![Klicken Sie auf „Anwendungen“.][5]
 
-4. Klicken Sie auf **HINZUFÜGEN**, um eine neue Anwendung zu erstellen.
+4. Klicken Sie auf **HINZUFÜGEN**, um eine Anwendung zu erstellen.
 
     ![Klicken Sie auf die Schaltfläche „Hinzufügen“: Erstellen Sie eine C#-Anwendung.][6]
 
@@ -104,7 +104,7 @@ Um eine neue Anwendung zu erstellen und im richtigen Active Directory zu registr
 Der Domänenname ist für den Code erforderlich. Es folgt eine einfache Möglichkeit zum Ermitteln des richtigen Domänennamens:
 
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com).
-2. Zeigen Sie auf Ihren Namen in der oberen rechten Ecke, und notieren Sie sich die Domäne, die im Popupfenster angezeigt wird. Ersetzen Sie **domain.onmicrosoft.com** im folgenden Codeausschnitt durch den Wert für Ihr Konto.
+2. Zeigen Sie auf Ihren Namen in der oberen rechten Ecke, und notieren Sie sich die Domäne, die im Popupfenster angezeigt wird. Ersetzen Sie **domain.onmicrosoft.com** im Codeausschnitt durch den Wert für Ihr Konto.
 
     ![Domänenname ermitteln][3]
 
@@ -117,7 +117,7 @@ Weitere Informationen zur Verwendung von Azure Active Directory zur Authentifizi
 
 ### Abrufen des Zugriffstokens für den aktuellen Benutzer
 
-Die Clientanwendung muss das Zugriffstoken der Anwendung für den aktuellen Benutzer abrufen. Wenn der Code zum ersten Mal von einem Benutzer ausgeführt wird, wird er aufgefordert, seine Benutzeranmeldeinformationen einzugeben, und das resultierende Token wird lokal im Cache gespeichert. Bei nachfolgenden Ausführungen wird das Token aus dem Cache abgerufen, und der Benutzer wird nur zur Anmeldung aufgefordert, wenn das Token abgelaufen ist.
+Die Clientanwendung muss das Zugriffstoken der Anwendung für den aktuellen Benutzer abrufen. Wenn der Code zum ersten Mal ausgeführt wird, werden Sie aufgefordert, Ihre Benutzeranmeldeinformationen einzugeben, und das resultierende Token wird lokal im Cache gespeichert. Bei nachfolgenden Ausführungen wird das Token aus dem Cache abgerufen, und Sie werden nur zur Anmeldung aufgefordert, wenn das Token abgelaufen ist.
 
 
     private static AuthenticationResult GetAccessToken()
@@ -206,7 +206,7 @@ Im folgenden Beispiel wird eine Serverfirewallregel erstellt, die den Zugriff au
 
 
 
-Damit andere Azure-Dienste auf einen Server zugreifen können, fügen Sie eine Firewallregel hinzu, und setzen Sie sowohl "StartIpAddress" als auch "EndIpAddress" auf "0.0.0.0". Beachten Sie, dass dadurch Azure-Datenverkehr aus *jedem* Azure-Abonnement auf den Server zugreifen kann.
+Damit andere Azure-Dienste auf einen Server zugreifen können, fügen Sie eine Firewallregel hinzu, und setzen Sie sowohl „StartIpAddress“ als auch „EndIpAddress“ auf „0.0.0.0“. Beachten Sie, dass Azure-Datenverkehr so aus *jedem* Azure-Abonnement auf den Server zugreifen kann.
 
 
 ## Erstellen einer Datenbank
@@ -555,7 +555,7 @@ Das folgende Beispiel führt alle Datenbanken in einem Pool auf:
 
 
 
-## Zusätzliche Ressourcen
+## Weitere Ressourcen
 
 
 [SQL-Datenbank](https://azure.microsoft.com/documentation/services/sql-database/)
@@ -573,4 +573,4 @@ Das folgende Beispiel führt alle Datenbanken in einem Pool auf:
 [8]: ./media/sql-database-elastic-pool-csharp/add-application2.png
 [9]: ./media/sql-database-elastic-pool-csharp/clientid.png
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0824_2016-->

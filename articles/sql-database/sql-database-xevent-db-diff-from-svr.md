@@ -15,7 +15,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/07/2016"
+	ms.date="08/23/2016"
 	ms.author="genemi"/>
 
 
@@ -76,7 +76,7 @@ In verwandten Themen werden zwei Codebeispiele geboten:
 
 - [Code des Ringpufferziels für erweiterte Ereignisse in SQL-Datenbank](sql-database-xevent-code-ring-buffer.md)
  - Kurzes einfaches Transact-SQL-Skript.
- - Wir betonen im Codebeispielthema, dass wenn Sie mit dem Ringpufferziel fertig sind, Sie dessen Ressourcen durch Ausführen der Anweisung "alter-drop `ALTER EVENT SESSION ... ON DATABASE DROP TARGET ...;`" freigeben müssen. Später können Sie eine weitere Ringpufferinstanz durch `ALTER EVENT SESSION ... ON DATABASE ADD TARGET ...` hinzufügen.
+ - Wir betonen im Codebeispielthema, dass Sie die Ressourcen des Ringpufferziels durch Ausführen der Anweisung „alter-drop `ALTER EVENT SESSION ... ON DATABASE DROP TARGET ...;`“ freigeben müssen, wenn Sie damit fertig sind. Später können Sie eine weitere Ringpufferinstanz durch `ALTER EVENT SESSION ... ON DATABASE ADD TARGET ...` hinzufügen.
 
 
 - [Code des Ziels "Ereignisdatei" für erweiterte Ereignisse in SQL-Datenbank](sql-database-xevent-code-event-file.md)
@@ -133,7 +133,7 @@ Azure SQL-Datenbank hat [dynamische Verwaltungsansichten (DMVs)](http://msdn.mic
 In Microsoft SQL Server werden ähnliche Katalogsichten ohne den Teil *\_database* des Namens benannt, wie z. B.:
 
 
-- **sys.dm\_xe\_sessions** anstatt <br/>**sys.dm\_xe\_database\_sessions**.
+- **sys.dm\_xe\_sessions** anstelle des Namens<br/>**sys.dm\_xe\_database\_sessions**.
 
 
 ### DMVs, die Azure SQL-Datenbank und Microsoft SQL Server gemeinsam haben
@@ -217,7 +217,7 @@ Sie benötigen die Berechtigung **Control** für die Datenbank, um eine **CREATE
 ### Speichercontainerautorisierungen
 
 
-Das SAS-Token, das Sie für Ihren Azure Storage-Container generieren, muss **rwl** für die Berechtigungen angeben. Dies bietet die folgenden Berechtigungen:
+Das SAS-Token, das Sie für Ihren Azure Storage-Container generieren, muss **rwl** für die Berechtigungen angeben. Der Wert **rwl** bietet die folgenden Berechtigungen:
 
 
 - Lesen
@@ -266,7 +266,7 @@ Beim Ziel **Ereignisdatei** können Netzwerklatenz oder -fehler auftreten, währ
 - [Jonathan Kehayias' Blogbeiträge zu erweiterten Ereignissen in Microsoft SQL Server](http://www.sqlskills.com/blogs/jonathan/category/extended-events/)
 
 
-Anderen Codebeispielthemen für erweiterte Ereignisse finden Sie unter den folgenden Links. Allerdings müssen Sie routinemäßig alle Beispiele dahingehend prüfen, ob das Beispiel für Microsoft SQL Server oder Azure SQL-Datenbank gilt. Dann können Sie entscheiden, ob kleinere Änderungen erforderlich sind, um das Beispiel auszuführen.
+Weitere Themen mit Codebeispielen für erweiterte Ereignisse finden Sie unter den folgenden Links. Allerdings müssen Sie routinemäßig alle Beispiele dahingehend prüfen, ob das Beispiel für Microsoft SQL Server oder Azure SQL-Datenbank gilt. Dann können Sie entscheiden, ob kleinere Änderungen erforderlich sind, um das Beispiel auszuführen.
 
 
 <!--
@@ -276,4 +276,4 @@ Anderen Codebeispielthemen für erweiterte Ereignisse finden Sie unter den folge
 - Code sample for SQL Server: [Find the Objects That Have the Most Locks Taken on Them](http://msdn.microsoft.com/library/bb630355.aspx)
 -->
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0824_2016-->

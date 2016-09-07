@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="vm-windows"
    ms.workload="na"
-   ms.date="05/24/2016"
+   ms.date="08/08/2016"
    ms.author="golive"/>
 
 # Anwendungsbeispiel: Fortlaufende Bereitstellung auf virtuellen Computern mit Automation DSC und Chocolatey
@@ -33,7 +33,7 @@ Nachdem diese beiden Kernprozesse eingerichtet wurden, ist es nur noch ein klein
 
 ## Übersicht über die Komponenten
 
-Paket-Manager, z. B. [apt-get](https://en.wikipedia.org/wiki/Advanced_Packaging_Tool), sind in der Linux-Welt recht bekannt, aber dies gilt nicht so sehr für die Windows-Welt. [Chocolatey](https://chocolatey.org/) ist hierfür ein Beispiel, und der [Blog](http://www.hanselman.com/blog/IsTheWindowsUserReadyForAptget.aspx) von Scott Hanselman zu diesem Thema stellt eine gute Einführung dar. Zusammenfassend lässt sich sagen, dass Sie mit Chocolatey Pakete über die Befehlszeile aus einem zentralen Paketrepository auf einem Windows-System installieren können. Sie können ein eigenes Repository erstellen und verwalten, und Chocolatey kann Pakete aus allen Repositorys installieren, die Sie angeben.
+Paket-Manager, z. B. [apt-get](https://en.wikipedia.org/wiki/Advanced_Packaging_Tool), sind in der Linux-Welt recht bekannt, aber dies gilt nicht so sehr für die Windows-Welt. [Chocolatey](https://chocolatey.org/) ist ein Beispiel hierfür, und der [Blog](http://www.hanselman.com/blog/IsTheWindowsUserReadyForAptget.aspx) von Scott Hanselman zu diesem Thema stellt eine gute Einführung dar. Zusammenfassend lässt sich sagen, dass Sie mit Chocolatey Pakete über die Befehlszeile aus einem zentralen Paketrepository auf einem Windows-System installieren können. Sie können ein eigenes Repository erstellen und verwalten, und Chocolatey kann Pakete aus allen Repositorys installieren, die Sie angeben.
 
 Desired State Configuration (DSC) ([Übersicht](https://technet.microsoft.com/library/dn249912.aspx)) ist ein PowerShell-Tool, mit dem Sie die gewünschte Konfiguration für einen Computer deklarieren können. Beispielsweise können Sie angeben, dass Sie „Chocolatey installieren, IIS installieren, Port 80 öffnen und Version 1.0.0 Ihrer Website installieren“ möchten. Diese Konfiguration wird dann mit dem lokalen Konfigurations-Manager (LCM) für DSC implementiert. Ein DSC-Pullserver enthält ein Repository mit Konfigurationen für Ihre Computer. Der LCM jedes Computers checkt sich regelmäßig ein, um zu überprüfen, ob die Konfiguration mit der gespeicherten Konfiguration übereinstimmt. Es kann entweder der Status gemeldet werden, oder es kann versucht werden, den Computer wieder auf den Stand der gespeicherten Konfiguration zu bringen. Sie können die gespeicherte Konfiguration auf dem Pullserver bearbeiten, um einen Computer oder eine Gruppe von Computern auf den Stand der geänderten Konfiguration zu bringen.
 
@@ -75,10 +75,12 @@ Der PowerShell-Katalog wird genutzt, um DSC-Ressourcen in Ihrem Azure Automation
 
 ![PowerShell-Katalog-Beispiel](./media/automation-dsc-cd-chocolatey/xNetworking.PNG)
 
+Ein weiteres Verfahren, das dem Azure-Portal erst kürzlich hinzugefügt wurde, ermöglicht das Abrufen neuer Module mittels Pull oder das Aktualisieren bereits vorhandener Module. Klicken Sie auf die Ressource „Automation-Konto“, auf die Kachel „Assets“ und schließlich auf die Kachel „Module“. Über das Symbol „Katalog durchsuchen“ können die Liste mit den im Katalog enthaltenen Modulen aufrufen, Details anzeigen und letztlich einen Import in Ihr Automation-Konto durchführen. Dadurch können Sie Ihre Module von Zeit zu Zeit problemlos auf den neuesten Stand bringen. Das Importfeature überprüft zudem Abhängigkeiten mit anderen Modulen, um zu gewährleisten, dass alles synchron ist.
+
 Es gibt auch eine manuelle Vorgehensweise. Die Ordnerstruktur eines PowerShell-Integrationsmoduls für einen Windows-Computer unterscheidet sich etwas von der Ordnerstruktur, die von Azure Automation erwartet wird. Hierfür ist es erforderlich, dass Sie eine kleine Optimierung vornehmen. Dies ist aber nicht schwierig und muss nur einmal pro Ressource durchgeführt werden (es sei denn, Sie möchten später ein Upgrade durchführen). Weitere Informationen zum Erstellen von PowerShell-Integrationsmodulen finden Sie im Artikel [Erstellen von Integrationsmodulen für Azure Automation](https://azure.microsoft.com/blog/authoring-integration-modules-for-azure-automation/).
 
 -   Installieren Sie das Modul, das Sie auf Ihrer Arbeitsstation benötigen, wie folgt:
-    -   Installieren Sie [Windows Management Framework, Version 5](http://aka.ms/wmf5latest) (unter Windows 10 nicht erforderlich).
+    -   Installieren Sie [Windows Management Framework 5.0](http://aka.ms/wmf5latest) (unter Windows 10 nicht erforderlich).
     -   `Install-Module –Name MODULE-NAME` <— Ruft das Modul aus dem PowerShell-Katalog ab.
 -   Kopieren Sie den Modulordner unter `c:\Program Files\WindowsPowerShell\Modules\MODULE-NAME` in einen temporären Ordner.
 -   Löschen Sie Beispiele und Dokumentation aus dem Hauptordner.
@@ -167,7 +169,7 @@ Für jedes Paket, das Sie im Paketrepository ablegen, benötigen Sie ein Nuspec-
 
 ## Schritt 6: Zusammenfügen des Gesamtbilds
 
-Jedes Mal, wenn eine Version den Qualitätssicherungstest besteht und für die Bereitstellung genehmigt wird, wird das Pakt erstellt, und nuspec und nupkg werden aktualisiert und auf dem NuGet-Server bereitgestellt. Darüber hinaus muss die Konfiguration (Schritt 4 oben) aktualisiert werden, damit sie mit der neuen Versionsnummer übereinstimmt. Sie muss an den Pullserver gesendet und kompiliert werden. Ab diesem Punkt liegt es an den virtuellen Computern, die von dieser Konfiguration abhängig sind, das Update abzurufen und zu installieren. Diese Updates sind einfach und umfassen nur ein oder zwei PowerShell-Codezeilen. Im Fall von Visual Studio Team Services sind einige davon in Buildaufgaben gekapselt, die in einem Build miteinander verkettet werden können. Dieser [Artikel](https://www.visualstudio.com/de-DE/get-started/build/build-your-app-vs) enthält hierzu weitere Details. In diesem [GitHub-Repository](https://github.com/Microsoft/vso-agent-tasks) finden Sie Details zu den verschiedenen verfügbaren Buildaufgaben.
+Jedes Mal, wenn eine Version den Qualitätssicherungstest besteht und für die Bereitstellung genehmigt wird, wird das Pakt erstellt, und nuspec und nupkg werden aktualisiert und auf dem NuGet-Server bereitgestellt. Darüber hinaus muss die Konfiguration (Schritt 4 oben) aktualisiert werden, damit sie mit der neuen Versionsnummer übereinstimmt. Sie muss an den Pullserver gesendet und kompiliert werden. Ab diesem Punkt liegt es an den virtuellen Computern, die von dieser Konfiguration abhängig sind, das Update abzurufen und zu installieren. Diese Updates sind einfach und umfassen nur ein oder zwei PowerShell-Codezeilen. Im Fall von Visual Studio Team Services sind einige davon in Buildaufgaben gekapselt, die in einem Build miteinander verkettet werden können. Dieser [Artikel](https://www.visualstudio.com/de-DE/docs/alm-devops-feature-index#continuous-delivery) enthält hierzu weitere Details. In diesem [GitHub-Repository](https://github.com/Microsoft/vso-agent-tasks) finden Sie Details zu den verschiedenen verfügbaren Buildaufgaben.
 
 ## Hinweise
 
@@ -185,4 +187,4 @@ Den vollständigen Quellcode für dieses Anwendungsbeispiel finden Sie in [diese
 - [Azure Automation DSC-Cmdlets](https://msdn.microsoft.com/library/mt244122.aspx)
 - [Integrieren von Computern für die Verwaltung durch Azure Automation DSC](automation-dsc-onboarding.md)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0824_2016-->

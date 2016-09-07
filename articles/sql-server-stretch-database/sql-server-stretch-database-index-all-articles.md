@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/25/2016"
+	ms.date="08/21/2016"
 	ms.author="DouglasL"/>
 
 
@@ -60,8 +60,8 @@ Dieses Thema führt alle Themen mit direktem Bezug zum **SQL Server Stretch-Date
 
 | &nbsp; | Titel | Beschreibung |
 | --: | :-- | :-- |
-| 12 | [Aktivieren von Transparent Data Encryption (TDE) für SQL Server Stretch-Datenbank über Azure](sql-server-stretch-database-encryption-tde.md) | Aktivieren von Transparent Data Encryption (TDE) für SQL Server Stretch-Datenbank über Azure |
-| 13 | [Aktivieren von Transparent Data Encryption (TDE) für SQL Server Stretch-Datenbank über Azure](sql-server-stretch-database-tde-tsql.md) | Aktivieren von Transparent Data Encryption (TDE) für SQL Server Stretch-Datenbank über Azure T-SQL |
+| 12 | [Aktivieren von Transparent Data Encryption (TDE) für eine Stretch-Datenbank in Azure](sql-server-stretch-database-encryption-tde.md) | Aktivieren von Transparent Data Encryption (TDE) für SQL Server Stretch-Datenbank über Azure |
+| 13 | [Aktivieren von Transparent Data Encryption (TDE) für eine Stretch-Datenbank in Azure (Transact-SQL)](sql-server-stretch-database-tde-tsql.md) | Aktivieren von Transparent Data Encryption (TDE) für SQL Server Stretch-Datenbank über Azure T-SQL |
 
 
 
@@ -72,4 +72,4 @@ Dieses Thema führt alle Themen mit direktem Bezug zum **SQL Server Stretch-Date
 | 14 | [Sichern von Stretch-fähigen Datenbanken](sql-server-stretch-database-backup.md) | Erfahren Sie mehr über das Sichern von Stretch-fähigen Datenbanken. |
 | 15 | [Wiederherstellen von Stretch-fähigen Datenbanken](sql-server-stretch-database-restore.md) | Erfahren Sie mehr über das Wiederherstellen von Stretch-fähigen Datenbanken. |
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0824_2016-->

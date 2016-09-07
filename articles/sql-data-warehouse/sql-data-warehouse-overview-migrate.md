@@ -13,14 +13,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="05/31/2016"
+   ms.date="08/17/2016"
    ms.author="barbkess;jrj;sonyama"/>
 
 # Migrieren Ihrer Lösung nach SQL Data Warehouse
 
-SQL Data Warehouse ist ein verteiltes Datenbanksystem, das elastisch gemäß Ihren Anforderungen skaliert wird. Damit sowohl die Leistung als auch die Skalierbarkeit gewährleistet werden können, wurden nicht alle Funktionen von SQL Server in SQL Data Warehouse implementiert. In den folgenden Themen zur Migration werden wichtige Faktoren für die Migration Ihrer Lösung nach SQL Data Warehouse angesprochen. Beim Auslegen von Data Warehouses auf Skalierung kommen andere Designmuster zum Tragen, sodass herkömmliche Ansätzen nicht immer optimal sind. Möglicherweise stellen Sie fest, dass Sie Ihre Lösung anpassen müssen, um die durch SQL Data Warehouse bereitgestellte verteilte Plattform voll nutzen zu können.
+SQL Data Warehouse ist ein verteiltes Datenbanksystem, das elastisch gemäß Ihren Anforderungen skaliert wird. Damit sowohl die Leistung als auch die Skalierbarkeit gewährleistet werden können, wurden nicht alle Funktionen von SQL Server in SQL Data Warehouse implementiert. In den folgenden Themen zur Migration werden wichtige Faktoren für die Migration Ihrer Lösung zu SQL Data Warehouse angesprochen. Beim Auslegen von Data Warehouses auf Skalierung kommen andere Designmuster zum Tragen, sodass herkömmliche Ansätzen nicht immer optimal sind. Möglicherweise stellen Sie fest, dass Sie Ihre vorhandene Lösung anpassen müssen, um die durch SQL Data Warehouse bereitgestellte verteilte Plattform vollständig nutzen zu können.
 
-Außerdem sollten Sie berücksichtigen, dass SQL Data Warehouse eine Plattform ist, die auf Microsoft Azure basiert. Daher kann es auch zu Ihrer Migration gehören, Ihre Daten in die Cloud zu übertragen. Datenübertragung ist ein eigenständiges Thema und sollte sorgfältig überdacht werden, vor allem angesichts wachsender Datenmengen. Die Datenübertragung ist auch nicht mit dem Laden von Daten zu verwechseln, das wiederum ein getrenntes Thema ist.
+Außerdem sollten Sie berücksichtigen, dass SQL Data Warehouse eine Plattform ist, die auf Microsoft Azure basiert. Daher kann es auch zu Ihrer Migration gehören, Ihre Daten in die Cloud zu übertragen. Datenübertragung ist ein eigenständiges Thema und sollte sorgfältig überdacht werden, vor allem angesichts wachsender Datenmengen. Datenübertragung und das Laden von Daten sind getrennte Themen.
 
 ## Hinweise zur Migration
 Lesen Sie vor der Migration unbedingt diese Artikel, um sicherzustellen, dass Sie einige der Produktunterschiede und der grundlegenden Konzepte verstehen.
@@ -34,7 +34,7 @@ Weitere Hinweise zur Entwicklung finden Sie in der [Entwicklungsübersicht][].
 
 Noch mehr Informationen finden Sie in der [Transact-SQL-Referenz][].
 
-Sehen Sie sich außerdem die [Übersicht zum Laden][] an, die verschiedene Optionen zum Laden von Daten erläutert und schrittweise Anleitungen enthält.
+Sehen Sie sich außerdem die [Übersicht über das Laden][] an. Dieser Artikel beschreibt verschiedene Optionen zum Laden von Daten und enthält eine ausführliche Anleitung.
 
 <!--Image references-->
 
@@ -44,7 +44,7 @@ Sehen Sie sich außerdem die [Übersicht zum Laden][] an, die verschiedene Optio
 [Migrieren Ihres Codes]: sql-data-warehouse-migrate-code.md
 
 [Entwicklungsübersicht]: sql-data-warehouse-overview-develop.md
-[Übersicht zum Laden]: sql-data-warehouse-overview-load.md
+[Übersicht über das Laden]: sql-data-warehouse-overview-load.md
 [Transact-SQL-Referenz]: sql-data-warehouse-overview-reference.md
 
 <!--MSDN references-->
@@ -52,4 +52,4 @@ Sehen Sie sich außerdem die [Übersicht zum Laden][] an, die verschiedene Optio
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0824_2016-->

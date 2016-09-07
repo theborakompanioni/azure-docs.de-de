@@ -4,7 +4,7 @@
    services="virtual-machines-linux"
    documentationCenter="virtual-machines"
    authors="kmouss"
-   manager="drewm"
+   manager="timlt"
    editor=""/>
 
 <tags
@@ -52,10 +52,10 @@ So aktivieren Sie die Überwachung für eine Azure-VM.
 
 [Azure.Note] Sie können von Version 2.0 zu neueren Versionen wechseln, wenn diese verfügbar werden.
 
-Weitere Informationen zur Konfiguration von Überwachungsmetriken und Beispielen finden Sie im Dokument - **[Using Linux Diagnostic Extension to Monitor Linux VM’s performance and diagnostic data](virtual-machines-linux-diagnostic-extension/) (Verwenden der Linux-Diagnoseerweiterung zum Überwachen der Leistung und Diagnosedaten von Linux-VMs).
+Weitere Informationen zur Konfiguration von Überwachungsmetriken und Beispielen finden Sie im Dokument - **[Verwenden der Linux-Diagnoseerweiterung zur Überwachung der Leistungs- und Diagnosedaten einer Linux-VM](virtual-machines-linux-classic-diagnostic-extension.md).
 
 <!--Image references-->
 [1]: ./media/virtual-machines-linux-vm-monitoring/portal-enable-disable.png
  
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0824_2016-->

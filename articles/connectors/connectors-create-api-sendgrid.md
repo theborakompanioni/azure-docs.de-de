@@ -14,18 +14,12 @@ ms.devlang="multiple"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="integration"
-ms.date="05/17/2016"
+ms.date="08/18/2016"
 ms.author="deonhe"/>
 
 # Erste Schritte mit dem SendGrid-Connector
 
-
-
-Der SendGrid-Connector kann verwendet werden in:
-
-- [Logik-Apps](../app-service-logic/app-service-logic-what-are-logic-apps.md)
-- [PowerApps](http://powerapps.microsoft.com)
-- [Flow](http://flows.microsoft.com)
+Mit dem SendGrid-Verbindungsanbieter können Sie E-Mails senden und Empfängerlisten verwalten.
 
 >[AZURE.NOTE] Diese Version des Artikels gilt für die Schemaversion 2015-08-01-preview für Logik-Apps.
 
@@ -35,7 +29,7 @@ Erstellen Sie zu Beginn eine Logik-App, wie unter [Erstellen einer Logik-App](..
 
 Der SendGrid-Connector kann als Aktion verwendet werden. Er verfügt über Trigger. Alle Connectors unterstützen Daten im JSON- und XML-Format.
 
- Der SendGrid-Connector verfügt über die folgenden Aktionen und/oder Trigger:
+ Der SendGrid-Connector verfügt über die folgenden Aktionen: Es gibt keine Trigger.
 
 ### SendGrid-Aktionen
 Sie können diese Aktionen ausführen:
@@ -44,15 +38,10 @@ Sie können diese Aktionen ausführen:
 |--- | ---|
 |[SendEmail](connectors-create-api-sendgrid.md#sendemail)|Sendet eine E-Mail über die SendGrid-API (maximal 10.000 Empfänger).|
 |[AddRecipientToList](connectors-create-api-sendgrid.md#addrecipienttolist)|Fügt einer Empfängerliste einen einzelnen Empfänger hinzu.|
-### SendGrid-Trigger
-Sie können auf diese Ereignisse lauschen:
-
-|Trigger | Beschreibung|
-|--- | ---|
 
 
 ## Herstellen einer Verbindung mit SendGrid
-Um Logik-Apps mit SendGrid zu erstellen, müssen Sie zuerst eine **Verbindung** herstellen und anschließend die Details für die folgenden Eigenschaften angeben:
+Um Logik-Apps mit SendGrid zu erstellen, müssen Sie zuerst eine **Verbindung** erstellen und anschließend die Details für die folgenden Eigenschaften angeben:
 
 |Eigenschaft| Erforderlich|Beschreibung|
 | ---|---|---|
@@ -66,7 +55,7 @@ Um Logik-Apps mit SendGrid zu erstellen, müssen Sie zuerst eine **Verbindung** 
 Nachdem Sie die Verbindung erstellt haben, können Sie sie zum Ausführen der Aktionen und zum Lauschen auf die in diesem Artikel beschriebenen Trigger verwenden.
 
 ## Referenz für SendGrid
-Gilt für Version: 1.0.
+Gilt für Version 1.0.
 
 ## SendEmail
 E-Mail senden: Sendet eine E-Mail über die SendGrid-API (maximal 10.000 Empfänger).
@@ -192,4 +181,4 @@ Empfänger zu Liste hinzufügen: Fügt einer Empfängerliste einen einzelnen Emp
 ## Nächste Schritte
 [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0824_2016-->

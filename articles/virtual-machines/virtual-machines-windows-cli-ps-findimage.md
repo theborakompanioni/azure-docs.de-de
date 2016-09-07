@@ -15,12 +15,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="vm-windows"
    ms.workload="infrastructure"
-   ms.date="06/06/2016"
+   ms.date="08/23/2016"
    ms.author="rasquill"/>
 
 # Navigieren zu und Auswählen von Images virtueller Windows-Computer in Azure mithilfe von PowerShell oder der Befehlszeilenschnittstelle
 
-In diesem Thema wird beschrieben wie Sie Herausgeber von VM-Images sowie entsprechende Angebote, SKUs und Versionen für jeden Ort finden, an dem Sie Bereitstellungen ins Auge fassen. Beispielsweise sind einige der häufig verwendeten Windows-VM-Images:
+In diesem Thema wird beschrieben, wie Sie Herausgeber von VM-Images sowie entsprechende Angebote, SKUs und Versionen für jeden Ort finden, an dem Sie Bereitstellungen ins Auge fassen. Beispielsweise sind einige der häufig verwendeten Windows-VM-Images:
 
 ## Tabelle mit häufig verwendeten Windows-Images
 
@@ -41,4 +41,4 @@ In diesem Thema wird beschrieben wie Sie Herausgeber von VM-Images sowie entspre
 
 [AZURE.INCLUDE [virtual-machines-common-cli-ps-findimage](../../includes/virtual-machines-common-cli-ps-findimage.md)]
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0824_2016-->

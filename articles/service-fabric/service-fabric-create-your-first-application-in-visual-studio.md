@@ -18,7 +18,7 @@
 
 # Erstellen Ihrer ersten Azure Service Fabric-Anwendung in Visual Studio
 
-Das Service Fabric-SDK enthält ein Add-In für Visual Studio, das Vorlagen und Tools zum Erstellen, Bereitstellen und Debuggen von Service Fabric-Anwendungen bietet. In diesem Thema werden Sie durch den Prozess der Erstellung Ihrer ersten Anwendung in Visual Studio geführt.
+Das Service Fabric-SDK enthält ein Add-In für Visual Studio, das Vorlagen und Tools zum Erstellen, Bereitstellen und Debuggen von Service Fabric-Anwendungen bietet. In diesem Thema werden Sie durch die Erstellung Ihrer ersten Anwendung in Visual Studio geführt.
 
 ## Voraussetzungen
 
@@ -123,6 +123,7 @@ Da jetzt eine Anwendung vorhanden ist, können Sie versuchen, sie auszuführen.
 - Informieren Sie sich, wie Sie einen [Cluster in Azure](service-fabric-cluster-creation-via-portal.md) oder einen [eigenständigen Cluster in Windows](service-fabric-cluster-creation-for-windows-server.md) erstellen.
 - Versuchen Sie, einen Dienst zu erstellen, indem Sie das Programmiermodell [Reliable Services](service-fabric-reliable-services-quick-start.md) oder [Reliable Actors](service-fabric-reliable-actors-get-started.md) verwenden.
 - Erfahren Sie, wie Sie Ihre Dienste über ein [Webdienst-Front-End](service-fabric-add-a-web-frontend.md) im Internet verfügbar machen können.
+- Machen Sie eine [praktische Übung](https://msdnshared.blob.core.windows.net/media/2016/07/SF-Lab-Part-I.docx), und erstellen Sie einen zustandslosen Dienst, konfigurieren sie Überwachungs- und Integritätsberichte, und führen Sie ein Anwendungsupgrade durch.
 
 <!-- Image References -->
 
@@ -138,4 +139,4 @@ Da jetzt eine Anwendung vorhanden ist, können Sie versuchen, sie auszuführen.
 [diagnostic-events-viewer-detail-post-failover]: ./media/service-fabric-create-your-first-application-in-visual-studio/diagnostic-events-viewer-detail-post-failover.png
 [sfe-delete-application]: ./media/service-fabric-create-your-first-application-in-visual-studio/sfe-delete-application.png
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0831_2016-->

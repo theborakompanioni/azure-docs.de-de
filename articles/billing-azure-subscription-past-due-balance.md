@@ -15,11 +15,13 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/22/2016"
+	ms.date="08/17/2016"
 	ms.author="genli"/>
 
 # Warum haben Sie eine Benachrichtigung erhalten, dass Ihr Azure-Abonnement einen überfälligen Saldo aufweist?
 Wenn Sie der Kontoadministrator für das Azure-Abonnement sind und Ihre Zahlung nicht rechtzeitig erfolgt ist, erhalten Sie eine E-Mail-Benachrichtigung über Ihren überfälligen Saldo, oder unter [https://account.windowsazure.com](https://account.windowsazure.com) oder [https://portal.azure.com](https://portal.azure.com) wird eine Warnung angezeigt.
+
+> [AZURE.NOTE] Wenn Sie bei einem Verfahren in diesem Artikel weitere Hilfe benötigen, [wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), um das Problem schnell zu lösen.
 
 Wenn wir Ihre Zahlung aus irgendeinem Grund nicht bearbeiten können, erhalten Sie möglicherweise eine E-Mail, deren Inhalt ähnlich wie folgt lautet:
 
@@ -45,4 +47,6 @@ Anweisungen zum Ändern der Zahlungsmethode in Azure finden Sie unter [Ändern d
 
 > [AZURE.NOTE] Wenn Ihr Abonnement deaktiviert wird, können Sie es mit den Schritten des folgenden Artikels wieder aktivieren: [Was kann ich tun, wenn mein Abonnement deaktiviert wird?](billing-subscription-become-disable.md)
 
-<!---HONumber=AcomDC_0810_2016-->
+> [AZURE.NOTE] Wenn Sie weitere Fragen haben, [wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), um das Problem schnell zu lösen.
+
+<!---HONumber=AcomDC_0824_2016-->

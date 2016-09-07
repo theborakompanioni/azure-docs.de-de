@@ -1,6 +1,6 @@
 <properties
-pageTitle="Verwenden des SharePoint Online-Connectors in Ihren Logik-Apps oder PowerApps | Microsoft Azure"
-description="Erste Schritte mit dem SharePoint Online-Connector für Azure App Service in Ihren Logik-Apps und PowerApps."
+pageTitle="Verwenden des SharePoint Online-Connectors in Ihren Logik-Apps | Microsoft Azure"
+description="Erste Schritte mit dem SharePoint Online-Connector für Azure App Service in Ihren Logik-Apps."
 services=""    
 documentationCenter=""     
 authors="msftman"    
@@ -14,7 +14,7 @@ ms.devlang="na"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="na"
-ms.date="07/18/2016"
+ms.date="08/18/2016"
 ms.author="deonhe"/>
 
 # Erste Schritte mit dem SharePoint Online-Connector 
@@ -23,12 +23,8 @@ Der SharePoint-Connector bietet eine Methode zum Arbeiten mit Listen in SharePoi
 
 >[AZURE.NOTE] Diese Version des Artikels gilt für die Schemaversion 2015-08-01-preview für Logik-Apps.
 
-SharePoint ermöglicht Folgendes:
 
-* Erstellen von Logik-Apps
-* Erstellen von PowerApps
-
-Informationen zum Hinzufügen eines Vorgangs in Logik-Apps finden Sie unter [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md).
+Informationen zum Hinzufügen eines Vorgangs in Logik-Apps finden Sie unter [Erstellen einer Logik-App zum Verbinden von SaaS-Diensten](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
 ## Trigger und Aktionen
 
@@ -66,25 +62,24 @@ Sie können auf diese Ereignisse lauschen:
 
 
 ## Herstellen einer Verbindung mit SharePoint
-Stellen Sie zum Verwenden des SharePoint-Connectors zunächst eine **Verbindung** her, und geben Sie anschließend die Details für diese Eigenschaften an:
+Erstellen Sie zum Verwenden des SharePoint-Connectors zunächst eine **Verbindung**, und geben Sie anschließend die Details für die folgenden Eigenschaften an:
 
 |Eigenschaft| Erforderlich|Beschreibung|
 | ---|---|---|
-|Tokenverschlüsselung|Ja|Bereitstellen von SharePoint-Anmeldeinformationen|
+|Token|Ja|Bereitstellen von SharePoint-Anmeldeinformationen|
 
 Um eine Verbindung mit **SharePoint Online** herzustellen, müssen Sie Ihre Identität (Benutzername und Kennwort, Smartcard-Anmeldeinformationen usw.) für SharePoint Online bereitstellen. Nachdem Sie authentifiziert wurden, können Sie den SharePoint Online-Connector in Ihrer Logik-App verwenden.
 
-Führen Sie im Designer der Logik-App die folgenden Schritte aus, um sich bei SharePoint anzumelden und die **Verbindung** zu erstellen, die Sie in Ihrer Logik-App verwenden können:
+Führen Sie im Designer der Logik-App die folgenden Schritte aus, um sich bei SharePoint anzumelden und die **Verbindung** für Ihre Logik-App zu erstellen:
 
-1. Geben Sie in das Suchfeld „SharePoint“ ein, und warten Sie, bis die Suche alle Einträge mit „SharePoint“ im Namen zurückgibt: ![SharePoint konfigurieren][1]
-2. Wählen Sie **SharePoint Online – Wenn eine Datei erstellt wird** aus.
-3. Wählen Sie **Bei SharePoint Online anmelden**: ![SharePoint konfigurieren][2]
+1. Geben Sie „SharePoint“ in das Suchfeld ein, und warten Sie, bis die Suche alle Einträge mit „SharePoint“ im Namen zurückgegeben hat: ![SharePoint konfigurieren][1]
+2. Wählen Sie **SharePoint Online - When a file is created** (SharePoint Online – Wenn eine Datei erstellt wird) aus.
+3. Wählen Sie **Sign in to SharePoint Online** (Bei SharePoint Online anmelden) aus: ![SharePoint konfigurieren][2]
 4. Geben Sie Ihre SharePoint-Anmeldeinformationen ein, um sich bei SharePoint zu authentifizieren. ![SharePoint konfigurieren][3]
-5. Nach Abschluss der Authentifizierung werden Sie zu Ihrer Logik-App umgeleitet, damit Sie diese vervollständigen können. Dazu konfigurieren Sie das SharePoint-Dialogfeld **Wenn eine Datei erstellt wird**. ![SharePoint konfigurieren][4]
+5. Nach Abschluss der Authentifizierung werden Sie zu Ihrer Logik-App umgeleitet, damit Sie diese vervollständigen können. Dazu konfigurieren Sie das SharePoint-Dialogfeld **When a file is created** (Wenn eine Datei erstellt wird). ![SharePoint konfigurieren][4]
 6. Sie können dann weitere Trigger und Aktionen hinzufügen, die Sie benötigen, um Ihre Logik-App abzuschließen.
-7. Speichern Sie Ihre Arbeit durch Auswählen von **Speichern** in der Menüleiste oben.
+7. Wählen Sie auf der oberen Menüleiste die Option **Speichern** aus, um Ihre Arbeit zu speichern.
 
->[AZURE.TIP] Sie können diese Verbindung in anderen Logik- oder PowerApps verwenden.
 
 ## REST-API-Referenz für SharePoint
 #### Diese Dokumentation gilt für Version 1.0.
@@ -106,7 +101,7 @@ Führen Sie im Designer der Logik-App die folgenden Schritte aus, um sich bei Sh
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 ------
 
 
@@ -128,7 +123,7 @@ Führen Sie im Designer der Logik-App die folgenden Schritte aus, um sich bei Sh
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 ------
 
 
@@ -149,7 +144,7 @@ Führen Sie im Designer der Logik-App die folgenden Schritte aus, um sich bei Sh
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 ------
 
 
@@ -170,7 +165,7 @@ Führen Sie im Designer der Logik-App die folgenden Schritte aus, um sich bei Sh
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 ------
 
 
@@ -191,7 +186,7 @@ Führen Sie im Designer der Logik-App die folgenden Schritte aus, um sich bei Sh
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 ------
 
 
@@ -212,7 +207,7 @@ Führen Sie im Designer der Logik-App die folgenden Schritte aus, um sich bei Sh
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 ------
 
 
@@ -226,7 +221,7 @@ Führen Sie im Designer der Logik-App die folgenden Schritte aus, um sich bei Sh
 | ---|---|---|---|---|---|
 |dataset|string|Ja|path|(Keine)|SharePoint-Website-URL. Beispiel: http://contoso.sharepoint.com/sites/mysite|
 |folderPath|string|Ja|query|(Keine)|Der Pfad zum Ordner|
-|name|string|Ja|query|(Keine)|Name der Datei|
+|Name|string|Ja|query|(Keine)|Name der Datei|
 |body| |Ja|body|(Keine)|Der Inhalt der Datei|
 
 
@@ -235,7 +230,7 @@ Führen Sie im Designer der Logik-App die folgenden Schritte aus, um sich bei Sh
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 ------
 
 
@@ -248,8 +243,8 @@ Führen Sie im Designer der Logik-App die folgenden Schritte aus, um sich bei Sh
 | Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
 |dataset|string|Ja|path|(Keine)|SharePoint-Website-URL. Beispiel: http://contoso.sharepoint.com/sites/mysite|
-|Quelle|string|Ja|query|(Keine)|Pfad zur Quelldatei|
-|Ziel|string|Ja|query|(Keine)|Pfad zur Zieldatei|
+|source|string|Ja|query|(Keine)|Pfad zur Quelldatei|
+|destination|string|Ja|query|(Keine)|Pfad zur Zieldatei|
 |overwrite|Boolescher Wert|no|query|false|Soll die vorhandene Datei überschrieben werden oder nicht?|
 
 
@@ -258,7 +253,7 @@ Führen Sie im Designer der Logik-App die folgenden Schritte aus, um sich bei Sh
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 ------
 
 
@@ -279,7 +274,7 @@ Führen Sie im Designer der Logik-App die folgenden Schritte aus, um sich bei Sh
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 ------
 
 
@@ -300,7 +295,7 @@ Führen Sie im Designer der Logik-App die folgenden Schritte aus, um sich bei Sh
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 ------
 
 
@@ -313,8 +308,8 @@ Führen Sie im Designer der Logik-App die folgenden Schritte aus, um sich bei Sh
 | Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
 |dataset|string|Ja|path|(Keine)|SharePoint-Website-URL. Beispiel: http://contoso.sharepoint.com/sites/mysite|
-|Quelle|string|Ja|query|(Keine)|Pfad zur Quelldatei|
-|Ziel|string|Ja|query|(Keine)|Pfad zum Zielordner|
+|source|string|Ja|query|(Keine)|Pfad zur Quelldatei|
+|destination|string|Ja|query|(Keine)|Pfad zum Zielordner|
 |overwrite|Boolescher Wert|no|query|false|Soll die vorhandene Datei überschrieben werden oder nicht?|
 
 
@@ -323,7 +318,7 @@ Führen Sie im Designer der Logik-App die folgenden Schritte aus, um sich bei Sh
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 ------
 
 
@@ -336,7 +331,7 @@ Führen Sie im Designer der Logik-App die folgenden Schritte aus, um sich bei Sh
 | Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
 |dataset|string|Ja|path|(Keine)|SharePoint-Website-URL (Beispiel: http://contoso.sharepoint.com/sites/mysite)|
-|Tabelle|string|Ja|path|(Keine)|Name der SharePoint-Liste|
+|table|string|Ja|path|(Keine)|Name der SharePoint-Liste|
 |$skip|integer|no|query|(Keine)|Anzahl der zu überspringenden Einträge (Standardeinstellung = 0)|
 |$top|integer|no|query|(Keine)|Maximale Anzahl abzurufender Einträge (Standardeinstellung = 256)|
 |$filter|string|no|query|(Keine)|Eine ODATA-Filterabfrage zum Einschränken der Anzahl der Einträge|
@@ -348,7 +343,7 @@ Führen Sie im Designer der Logik-App die folgenden Schritte aus, um sich bei Sh
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 ------
 
 
@@ -361,7 +356,7 @@ Führen Sie im Designer der Logik-App die folgenden Schritte aus, um sich bei Sh
 | Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
 |dataset|string|Ja|path|(Keine)|SharePoint-Website-URL (Beispiel: http://contoso.sharepoint.com/sites/mysite)|
-|Tabelle|string|Ja|path|(Keine)|Name der SharePoint-Liste|
+|table|string|Ja|path|(Keine)|Name der SharePoint-Liste|
 |$skip|integer|no|query|(Keine)|Anzahl der zu überspringenden Einträge (Standardeinstellung = 0)|
 |$top|integer|no|query|(Keine)|Maximale Anzahl abzurufender Einträge (Standardeinstellung = 256)|
 |$filter|string|no|query|(Keine)|Eine ODATA-Filterabfrage zum Einschränken der Anzahl der Einträge|
@@ -373,7 +368,7 @@ Führen Sie im Designer der Logik-App die folgenden Schritte aus, um sich bei Sh
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 ------
 
 
@@ -386,7 +381,7 @@ Führen Sie im Designer der Logik-App die folgenden Schritte aus, um sich bei Sh
 | Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
 |dataset|string|Ja|path|(Keine)|SharePoint-Website-URL (Beispiel: http://contoso.sharepoint.com/sites/mysite)|
-|Tabelle|string|Ja|path|(Keine)|Name der SharePoint-Liste|
+|table|string|Ja|path|(Keine)|Name der SharePoint-Liste|
 |item| |Ja|body|(Keine)|Zu erstellendes Element|
 
 
@@ -395,7 +390,7 @@ Führen Sie im Designer der Logik-App die folgenden Schritte aus, um sich bei Sh
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 ------
 
 
@@ -408,7 +403,7 @@ Führen Sie im Designer der Logik-App die folgenden Schritte aus, um sich bei Sh
 | Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
 |dataset|string|Ja|path|(Keine)|SharePoint-Website-URL (Beispiel: http://contoso.sharepoint.com/sites/mysite)|
-|Tabelle|string|Ja|path|(Keine)|Name der SharePoint-Liste|
+|table|string|Ja|path|(Keine)|Name der SharePoint-Liste|
 |id|integer|Ja|path|(Keine)|Eindeutiger Bezeichner des abzurufenden Elements|
 
 
@@ -417,7 +412,7 @@ Führen Sie im Designer der Logik-App die folgenden Schritte aus, um sich bei Sh
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 ------
 
 
@@ -430,7 +425,7 @@ Führen Sie im Designer der Logik-App die folgenden Schritte aus, um sich bei Sh
 | Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
 |dataset|string|Ja|path|(Keine)|SharePoint-Website-URL (Beispiel: http://contoso.sharepoint.com/sites/mysite)|
-|Tabelle|string|Ja|path|(Keine)|Name der SharePoint-Liste|
+|table|string|Ja|path|(Keine)|Name der SharePoint-Liste|
 |id|integer|Ja|path|(Keine)|Eindeutiger Bezeichner des zu löschenden Elements|
 
 
@@ -439,7 +434,7 @@ Führen Sie im Designer der Logik-App die folgenden Schritte aus, um sich bei Sh
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 ------
 
 
@@ -452,7 +447,7 @@ Führen Sie im Designer der Logik-App die folgenden Schritte aus, um sich bei Sh
 | Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
 |dataset|string|Ja|path|(Keine)|SharePoint-Website-URL (Beispiel: http://contoso.sharepoint.com/sites/mysite)|
-|Tabelle|string|Ja|path|(Keine)|Name der SharePoint-Liste|
+|table|string|Ja|path|(Keine)|Name der SharePoint-Liste|
 |id|integer|Ja|path|(Keine)|Eindeutiger Bezeichner des zu aktualisierenden Elements|
 |item| |Ja|body|(Keine)|Element mit geänderten Eigenschaften|
 
@@ -462,14 +457,14 @@ Führen Sie im Designer der Logik-App die folgenden Schritte aus, um sich bei Sh
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 ------
 
 
 
 ## Objektdefinitionen: 
 
- **DataSetsMetadata:**
+ **DataSetsMetadata**:
 
 Erforderliche Eigenschaften für DataSetsMetadata:
 
@@ -477,7 +472,7 @@ Erforderliche Eigenschaften für DataSetsMetadata:
 Keine der Eigenschaften ist erforderlich.
 
 
-**Alle Eigenschaften:**
+**Alle Eigenschaften**:
 
 
 | Name | Datentyp |
@@ -487,7 +482,7 @@ Keine der Eigenschaften ist erforderlich.
 
 
 
- **TabularDataSetsMetadata:**
+ **TabularDataSetsMetadata**:
 
 Erforderliche Eigenschaften für TabularDataSetsMetadata:
 
@@ -495,12 +490,12 @@ Erforderliche Eigenschaften für TabularDataSetsMetadata:
 Keine der Eigenschaften ist erforderlich.
 
 
-**Alle Eigenschaften:**
+**Alle Eigenschaften**:
 
 
 | Name | Datentyp |
 |---|---|
-|Quelle|string|
+|source|string|
 |displayName|string|
 |urlEncoding|string|
 |tableDisplayName|string|
@@ -508,7 +503,7 @@ Keine der Eigenschaften ist erforderlich.
 
 
 
- **BlobDataSetsMetadata:**
+ **BlobDataSetsMetadata**:
 
 Erforderliche Eigenschaften für BlobDataSetsMetadata:
 
@@ -516,12 +511,12 @@ Erforderliche Eigenschaften für BlobDataSetsMetadata:
 Keine der Eigenschaften ist erforderlich.
 
 
-**Alle Eigenschaften:**
+**Alle Eigenschaften**:
 
 
 | Name | Datentyp |
 |---|---|
-|Quelle|string|
+|source|string|
 |displayName|string|
 |urlEncoding|string|
 
@@ -535,7 +530,7 @@ Erforderliche Eigenschaften für BlobMetadata:
 Keine der Eigenschaften ist erforderlich.
 
 
-**Alle Eigenschaften:**
+**Alle Eigenschaften**:
 
 
 | Name | Datentyp |
@@ -543,7 +538,7 @@ Keine der Eigenschaften ist erforderlich.
 |ID|string|
 |Name|string|
 |DisplayName|string|
-|Path|string|
+|Pfad|string|
 |LastModified|string|
 |Größe|integer|
 |MediaType|string|
@@ -553,7 +548,7 @@ Keine der Eigenschaften ist erforderlich.
 
 
 
- **Object:**
+ **Object**:
 
 Erforderliche Eigenschaften für „Object“:
 
@@ -561,7 +556,7 @@ Erforderliche Eigenschaften für „Object“:
 Keine der Eigenschaften ist erforderlich.
 
 
-**Alle Eigenschaften:**
+**Alle Eigenschaften**:
 
 
 | Name | Datentyp |
@@ -569,7 +564,7 @@ Keine der Eigenschaften ist erforderlich.
 
 
 
- **TableMetadata:**
+ **TableMetadata**:
 
 Erforderliche Eigenschaften für TableMetadata:
 
@@ -577,7 +572,7 @@ Erforderliche Eigenschaften für TableMetadata:
 Keine der Eigenschaften ist erforderlich.
 
 
-**Alle Eigenschaften:**
+**Alle Eigenschaften**:
 
 
 | Name | Datentyp |
@@ -589,7 +584,7 @@ Keine der Eigenschaften ist erforderlich.
 
 
 
- **DataSetsList:**
+ **DataSetsList**:
 
 Erforderliche Eigenschaften für DataSetsList:
 
@@ -606,7 +601,7 @@ Keine der Eigenschaften ist erforderlich.
 
 
 
- **DataSet:**
+ **DataSet**:
 
 Erforderliche Eigenschaften für DataSet:
 
@@ -614,7 +609,7 @@ Erforderliche Eigenschaften für DataSet:
 Keine der Eigenschaften ist erforderlich.
 
 
-**Alle Eigenschaften:**
+**Alle Eigenschaften**:
 
 
 | Name | Datentyp |
@@ -642,7 +637,7 @@ Keine der Eigenschaften ist erforderlich.
 
 
 
- **Item:**
+ **Item**:
 
 Erforderliche Eigenschaften für „Item“:
 
@@ -650,7 +645,7 @@ Erforderliche Eigenschaften für „Item“:
 Keine der Eigenschaften ist erforderlich.
 
 
-**Alle Eigenschaften:**
+**Alle Eigenschaften**:
 
 
 | Name | Datentyp |
@@ -659,7 +654,7 @@ Keine der Eigenschaften ist erforderlich.
 
 
 
- **ItemsList:**
+ **ItemsList**:
 
 Erforderliche Eigenschaften für ItemsList:
 
@@ -667,7 +662,7 @@ Erforderliche Eigenschaften für ItemsList:
 Keine der Eigenschaften ist erforderlich.
 
 
-**Alle Eigenschaften:**
+**Alle Eigenschaften**:
 
 
 | Name | Datentyp |
@@ -676,7 +671,7 @@ Keine der Eigenschaften ist erforderlich.
 
 
 
- **TablesList:**
+ **TablesList**:
 
 Erforderliche Eigenschaften für TablesList:
 
@@ -684,7 +679,7 @@ Erforderliche Eigenschaften für TablesList:
 Keine der Eigenschaften ist erforderlich.
 
 
-**Alle Eigenschaften:**
+**Alle Eigenschaften**:
 
 
 | Name | Datentyp |
@@ -693,7 +688,7 @@ Keine der Eigenschaften ist erforderlich.
 
 
 ## Nächste Schritte
-[Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md) [Erstellen einer Power-App](../power-apps/powerapps-get-started-azure-portal.md)
+[Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
 [1]: ../../includes/media/connectors-create-api-sharepointonline/connectionconfig1.png
 [2]: ../../includes/media/connectors-create-api-sharepointonline/connectionconfig2.png
@@ -701,4 +696,4 @@ Keine der Eigenschaften ist erforderlich.
 [4]: ../../includes/media/connectors-create-api-sharepointonline/connectionconfig4.png
 [5]: ../../includes/media/connectors-create-api-sharepointonline/connectionconfig5.png
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0824_2016-->

@@ -170,7 +170,7 @@ PS C:\> Add-AzureRmLogAlertRule -Name backupFailedAlert -Location "East US" -Res
 
 **ResourceId**: Sie erhalten die ResourceId über die Überwachungsprotokolle. Die ResourceId ist eine URL, die in der Spalte „Ressource“ der Vorgangsprotokolle angegeben ist.
 
-**OperationName** : OperationName hat das Format „Microsoft.RecoveryServices/recoveryServicesVault/*EventName*“, wobei *EventName* wie folgt lauten kann:<br/>
+**OperationName** : OperationName hat das Format „Microsoft.RecoveryServices/recoveryServicesVault/ *EventName* “, wobei *EventName* wie folgt lauten kann:<br/>
 - Register <br/>
 - Unregister <br/>
 - ConfigureProtection <br/>
@@ -190,7 +190,7 @@ PS C:\> Add-AzureRmLogAlertRule -Name backupFailedAlert -Location "East US" -Res
 
 **CustomEmail**: Geben Sie die benutzerdefinierte E-Mail-Adresse an, an die eine Warnungsbenachrichtigung gesendet werden soll.
 
-**SendToServiceOwners**: Mit dieser Option werden Warnungsbenachrichtigungen an alle Administratoren und Co-Administratoren des Abonnements gesendet. Sie kann im **New-AzureRmAlertRuleEmail**-Cmdlet verwendet werden.
+**SendToServiceOwners**: Mit dieser Option werden Warnungsbenachrichtigungen an alle Administratoren und Co-Administratoren des Abonnements gesendet. Sie kann im **New-AzureRmAlertRuleEmail** -Cmdlet verwendet werden.
 
 ### Einschränkungen für Warnungen
 Ereignisbasierte Warnungen unterliegen den folgenden Einschränkungen:

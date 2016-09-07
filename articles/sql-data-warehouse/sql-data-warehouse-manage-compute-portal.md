@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="06/01/2016"
+   ms.date="08/22/2016"
    ms.author="barbkess;sonyama"/>
 
 # Verwalten von Computeleistung in Azure SQL Data Warehouse (Azure-Portal)
@@ -34,7 +34,7 @@ Diese Sammlung von Tasks verwendet das Azure-Portal für folgende Aufgaben:
 - Anhalten von Computeressourcen
 - Fortsetzen von Computeressourcen
 
-Informationen hierzu finden Sie in der [Übersicht über das Verwalten von Computeleistung][].
+Weitere Informationen finden Sie unter [Verwalten von Computeleistung in Azure SQL Data Warehouse (Übersicht)][].
 
 <a name="scale-performance-bk"></a> <a name="scale-compute-bk"></a>
 
@@ -64,7 +64,7 @@ So ändern Sie Computeressourcen
 
 So halten Sie eine Datenbank an
 
-1. Öffnen Sie das [Azure-Portal][], und öffnen Sie Ihre Datenbank. Beachten Sie, dass der Status **Online** lautet. 
+1. Öffnen Sie das [Azure-Portal][], und öffnen Sie Ihre Datenbank. Beachten Sie, dass der Status **Online** lautet.
 
     ![Onlinestatus][6]
 
@@ -72,7 +72,7 @@ So halten Sie eine Datenbank an
 
     ![Anhalten bestätigen][7]
 
-1. Während die Datenbank von SQL Data Warehouse gestartet wird, lautet der Status „Wird angehalten“.
+1. Während die Datenbank von SQL Data Warehouse gestartet wird, lautet der Status **Wird angehalten**.
 2. Wenn der Status **Angehalten** lautet, ist der Anhaltevorgang abgeschlossen, und Ihnen werden keine DWUs mehr in Rechnung gestellt.
 
     ![Anhaltestatus][4]
@@ -81,9 +81,9 @@ So halten Sie eine Datenbank an
 
 ## Fortsetzen von Computeressourcen
 
-[AZURE.INCLUDE [Beschreibung des Fortsetzens in SQL Data Warehouse](../../includes/sql-data-warehouse-resume-description.md)]So setzen Sie eine Datenbank fort
+[AZURE.INCLUDE [Beschreibung des Fortsetzens in SQL Data Warehouse](../../includes/sql-data-warehouse-resume-description.md)] So setzen Sie eine Datenbank fort
 
-1. Öffnen Sie das [Azure-Portal][], und öffnen Sie Ihre Datenbank. Beachten Sie, dass der Status **Angehalten** lautet. 
+1. Öffnen Sie das [Azure-Portal][], und öffnen Sie Ihre Datenbank. Beachten Sie, dass der Status **Angehalten** lautet.
 
     ![Datenbank anhalten][4]
 
@@ -112,7 +112,7 @@ Weitere Informationen finden Sie unter [Verwaltungsübersicht][].
 
 <!--Article references-->
 [Verwaltungsübersicht]: ./sql-data-warehouse-overview-manage.md
-[Übersicht über das Verwalten von Computeleistung]: ./sql-data-warehouse-manage-compute-overview.md
+[Verwalten von Computeleistung in Azure SQL Data Warehouse (Übersicht)]: ./sql-data-warehouse-manage-compute-overview.md
 
 <!--MSDN references-->
 
@@ -121,4 +121,4 @@ Weitere Informationen finden Sie unter [Verwaltungsübersicht][].
 
 [Azure-Portal]: http://portal.azure.com/
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0824_2016-->

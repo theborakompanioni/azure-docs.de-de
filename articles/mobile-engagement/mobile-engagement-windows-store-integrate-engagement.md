@@ -13,16 +13,16 @@
 	ms.tgt_pltfrm="mobile-windows-store" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="05/03/2016" 
+	ms.date="08/19/2016" 
 	ms.author="piyushjo" />
 
 # Windows Universal-Apps Engagement SDK-Integration
 
 > [AZURE.SELECTOR] 
-- [Universal Windows](mobile-engagement-windows-store-integrate-engagement.md) 
-- [Windows Phone Silverlight](mobile-engagement-windows-phone-integrate-engagement.md) 
-- [iOS](mobile-engagement-ios-integrate-engagement.md) 
-- [Android](mobile-engagement-android-integrate-engagement.md) 
+- [Universal Windows](mobile-engagement-windows-store-integrate-engagement.md)
+- [Windows Phone Silverlight](mobile-engagement-windows-phone-integrate-engagement.md)
+- [iOS](mobile-engagement-ios-integrate-engagement.md)
+- [Android](mobile-engagement-android-integrate-engagement.md)
 
 Dieses Verfahren beschreibt die einfachste Möglichkeit zum Aktivieren der Engagement-Funktionen zur Analyse und Überwachung in Ihrer Windows Universal-Anwendung.
 
@@ -34,7 +34,7 @@ Das Mobile Engagement-SDK für Windows Universal-Apps kann nur in Windows-Runtim
 
 -   Windows 8
 -   Windows 8.1
--   Windows Phone 8.1
+-   Windows Phone 8,1
 -   Windows 10 (Desktop- und Mobile-Familien)
 
 > [AZURE.NOTE] Informationen für Windows Phone Silverlight finden Sie im [Windows Universal Silverlight-Integrationsverfahren](mobile-engagement-windows-phone-integrate-engagement.md).
@@ -54,7 +54,7 @@ NuGet stellt automatisch die SDK-Ressourcen im `Resources`-Ordner im Stammverzei
 NuGet stellt die SDK-Ressourcen in Ihrer UWP-Anwendung noch nicht automatisch bereit. Sie müssen dies manuell durchführen, bis die Bereitstellung von Ressourcen in NuGet wieder eingeführt wird:
 
 1.  Öffnen Sie den Datei-Explorer.
-2.  Navigieren Sie zum folgenden Speicherort (wobei **x.x.x** für die Version des Engagements steht, das Sie installieren): *%USERPROFILE%\\.nuget\\packages\\MicrosoftAzure.MobileEngagement\**x.x.x** \\content\\win81*
+2.  Navigieren Sie zum folgenden Speicherort (wobei **x.x.x** für die Engagement-Version steht, das Sie installieren): *%USERPROFILE%\\.nuget\\packages\\MicrosoftAzure.MobileEngagement\**x.x.x**\\content\\win81*
 3.  Ziehen Sie den **Ressourcen**-Ordner per Drag-und-Drop aus dem Datei-Explorer in das Stammverzeichnis des Projekts in Visual Studio.
 4.  Wählen Sie in Visual Studio Ihr Projekt aus, und aktivieren Sie das Symbol **Alle Dateien anzeigen** über dem **Projektmappen-Explorer**.
 5.  Einige Dateien sind nicht im Projekt enthalten. Um die Dateien in einem Vorgang zu importieren, klicken Sie mit der rechten Maustaste auf den **Ressourcen**-Ordner, und wählen Sie **Aus Projekt ausschließen** aus. Klicken Sie dann mit der rechten Maustaste erneut auf den **Ressourcen**-Ordner, und wählen Sie **Zu Projekt hinzufügen** aus, um den gesamten Ordner wieder einzuschließen. Alle Dateien aus dem **Ressourcen**-Ordner sind jetzt im Projekt enthalten.
@@ -283,4 +283,4 @@ Der Burst-Modus verlängert leicht die Akkulaufzeit, wirkt sich jedoch auf den E
 [NuGet website]: http://docs.nuget.org/docs/start-here/overview
  
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0824_2016-->

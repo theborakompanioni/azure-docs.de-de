@@ -15,21 +15,21 @@
    ms.topic="article"
    ms.tgt_pltfrm="vm-windows"
    ms.workload="na"
-   ms.date="04/18/2016"
+   ms.date="08/24/2016"
    ms.author="zachal"/>
 
 # Einführung in den Handler der Azure-Erweiterung zum Konfigurieren des gewünschten Zustands #
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
-Der Azure VM-Agent und die dazugehörigen Erweiterungen sind Teil der Microsoft Azure-Infrastrukturdienste. VM-Erweiterungen sind Softwarekomponenten zur Erweiterung der VM-Funktionen und vereinfachen verschiedene VM-Verwaltungsvorgänge. So können Sie beispielsweise mit der VMAccess-Erweiterung das Kennwort eines Administrators zurücksetzen oder mit der Erweiterung für benutzerdefinierte Skripts ein Skript auf dem virtuellen Computer ausführen.
+Der Azure VM-Agent und die dazugehörigen Erweiterungen sind Teil der Microsoft Azure-Infrastrukturdienste. VM-Erweiterungen sind Softwarekomponenten, die die VM-Funktionalität erweitern und verschiedene Verwaltungsvorgänge für virtuelle Computer vereinfachen. Die VMAccess-Erweiterung kann z.B. verwendet werden, um ein Administratorkennwort zurückzusetzen, oder die benutzerdefinierte Skripterweiterung kann zur Ausführung eines Skripts auf dem virtuellen Computer verwendet werden.
 
 In diesem Artikel wird die PowerShell-Erweiterung zum Konfigurieren des gewünschten Zustands (Desired State Configuration, DSC) für virtuelle Azure-Computer als Teil des Azure PowerShell SDKs vorgestellt. Sie können neue Cmdlets verwenden, um eine PowerShell DSC-Konfiguration auf einen virtuellen Azure-Computer, der über die PowerShell DSC-Erweiterung verfügt, hochzuladen und anzuwenden. Die PowerShell DSC-Erweiterung richtet einen Aufruf an PowerShell DSC, um die empfangene DSC-Konfiguration auf dem virtuellen Computer in Kraft zu setzen. Diese Funktion steht auch über das Azure-Portal zur Verfügung.
 
 ## Voraussetzungen ##
 **Lokaler Computer** Für die Interaktion mit der Erweiterung für virtuelle Azure-Computer müssen Sie entweder das Azure-Portal oder das Azure PowerShell SDK verwenden.
 
-**Gast-Agent** Der virtuelle Azure-Computer, der mit der DSC-Konfiguration konfiguriert wird, muss über ein Betriebssystem verfügen, das Version 4.0 oder 5.0 von Windows Management Framework (WMF) unterstützt. Die vollständige Liste der unterstützten Betriebssystemversionen finden Sie im Versionsverlauf der DSC-Erweiterung.
+**Gast-Agent** Der virtuelle Azure-Computer, der mit der DSC-Konfiguration konfiguriert wird, muss über ein Betriebssystem verfügen, das Version 4.0 oder 5.0 von Windows Management Framework (WMF) unterstützt. Die vollständige Liste der unterstützten Betriebssystemversionen finden Sie im [Versionsverlauf der DSC-Erweiterung](https://blogs.msdn.microsoft.com/powershell/2014/11/20/release-history-for-the-azure-dsc-extension/).
 
 ## Begriffe und Konzepte ##
 Für dieses Handbuch müssen Sie mit folgenden Konzepten vertraut sein:
@@ -50,13 +50,13 @@ Wenn die Erweiterung zum ersten Mal aufgerufen wird, wird ein Installationsvorga
 2. Bei Angabe der Eigenschaft `wmfVersion` wird die entsprechende WMF-Version installiert (es sei denn, sie ist nicht mit dem Betriebssystem des virtuellen Computers kompatibel).
 3. Ohne Angabe der Eigenschaft `wmfVersion` wird die neueste geeignete WMF-Version installiert.
 
-Die WMF-Installation erfordert einen Neustart. Nach dem Neustart lädt die Erweiterung die in der Eigenschaft `modulesUrl` angegebene ZIP-Datei herunter. Befindet sich der Speicherort im Azure-Blob Storage, kann in der Eigenschaft `sasToken` ein SAS-Token für den Dateizugriff angegeben werden. Nachdem die ZIP-Datei heruntergeladen und entpackt wurde, wird durch Ausführen der in `configurationFunction` definierten Konfigurationsfunktion die MOF-Datei generiert. Anschließend führt die Erweiterung `Start-DscConfiguration -Force` für die generierte MOF-Datei aus. Die Erweiterung erfasst die Ausgabe und schreibt sie in den Azure-Statuskanal. Ab diesem Punkt behandelt der DSC-LCM die Überwachung und Korrektur wie gewohnt.
+Die WMF-Installation erfordert einen Neustart. Nach dem Neustart lädt die Erweiterung die in der Eigenschaft `modulesUrl` angegebene ZIP-Datei herunter. Befindet sich der Speicherort im Azure-Blobspeicher, kann in der Eigenschaft `sasToken` ein SAS-Token für den Dateizugriff angegeben werden. Nachdem die ZIP-Datei heruntergeladen und entpackt wurde, wird durch Ausführen der in `configurationFunction` definierten Konfigurationsfunktion die MOF-Datei generiert. Anschließend führt die Erweiterung `Start-DscConfiguration -Force` für die generierte MOF-Datei aus. Die Erweiterung erfasst die Ausgabe und schreibt sie in den Azure-Statuskanal. Ab diesem Punkt behandelt der DSC-LCM die Überwachung und Korrektur wie gewohnt.
 
 ## PowerShell-Cmdlets ##
 
-PowerShell-Cmdlets können mit ARM oder ASM zum Verpacken, Veröffentlichen und Überwachen der Bereitstellung von DSC-Erweiterungen verwendet werden. Bei den im Anschluss aufgeführten Cmdlets handelt es sich um ASM-Module, „Azure“ kann jedoch durch „AzureRM“ ersetzt werden, um das ARM-Modell zu verwenden. Beispiel: `Publish-AzureVMDscConfiguration` verwendet ASM, `Publish-AzureRmVMDscConfiguration` verwendet ARM.
+PowerShell-Cmdlets können mit ARM oder ASM zum Verpacken, Veröffentlichen und Überwachen der Bereitstellung von DSC-Erweiterungen verwendet werden. Bei den im Anschluss aufgeführten Cmdlets handelt es sich um ASM-Module, „Azure“ kann jedoch durch „AzureRM“ ersetzt werden, um das ARM-Modell zu verwenden. `Publish-AzureVMDscConfiguration` verwendet z.B. ASM, wobei `Publish-AzureRmVMDscConfiguration` ARM verwendet.
 
-`Publish-AzureVMDscConfiguration` durchsucht eine Konfigurationsdatei nach abhängigen DSC-Ressourcen und erstellt eine ZIP-Datei mit der Konfiguration und erforderlichen DSC-Ressourcen für deren Inkraftsetzung. Mithilfe des Parameters `-ConfigurationArchivePath` kann das Paket lokal erstellt werden. Andernfalls wird die ZIP-Datei im Azure-Blob Storage veröffentlicht und durch ein SAS-Token geschützt.
+`Publish-AzureVMDscConfiguration` durchsucht eine Konfigurationsdatei nach abhängigen DSC-Ressourcen und erstellt eine ZIP-Datei mit der Konfiguration und erforderlichen DSC-Ressourcen für deren Inkraftsetzung. Mithilfe des Parameters `-ConfigurationArchivePath` kann das Paket auch lokal erstellt werden. Andernfalls wird die ZIP-Datei im Azure-Blobspeicher veröffentlicht und durch ein SAS-Token geschützt.
 
 Bei der durch dieses Cmdlet erstellten ZIP-Datei befindet sich das PS1-Skript im Stammverzeichnis des Archivordners. Der Modulordner für Ressourcen wird im Archivordner platziert.
 
@@ -64,31 +64,31 @@ Bei der durch dieses Cmdlet erstellten ZIP-Datei befindet sich das PS1-Skript im
 
 `Get-AzureVMDscExtension` ruft den DSC-Erweiterungsstatus eines bestimmten virtuellen Computers ab.
 
-`Get-AzureVMDscExtensionStatus` ruft den Status der DSC-Konfiguration ab, die durch den DSC-Erweiterungshandler auf einem virtuellen Computer oder für eine Gruppe von virtuellen Computern in Kraft gesetzt wurde.
+`Get-AzureVMDscExtensionStatus` ruft den Status der DSC-Konfiguration ab, die durch den DSC-Erweiterungs-Handler in Kraft gesetzt wurde. Diese Aktion kann auf einem einzelnen virtuellen Computer oder einer Gruppe virtueller Computer ausgeführt werden.
 
-`Remove-AzureVMDscExtension` entfernt den Erweiterungshandler von einem bestimmten virtuellen Computer. Dies bewirkt **nicht** die Entfernung der Konfiguration, die Deinstallation von WMF oder eine Änderung der angewendeten Einstellungen auf dem virtuellen Computer. Es wird lediglich der Erweiterungshandler entfernt.
+`Remove-AzureVMDscExtension` entfernt den Erweiterungs-Handler von einem bestimmten virtuellen Computer. Dieses Cmdlet bewirkt **nicht** die Entfernung der Konfiguration, die Deinstallation von WMF oder eine Änderung der angewendeten Einstellungen auf dem virtuellen Computer. Es wird lediglich der Erweiterungshandler entfernt.
 
 **Wichtige Unterschiede zwischen ASM- und ARM-Cmdlets**
 
 - ARM-Cmdlets sind synchron. ASM-Cmdlets sind asynchron.
 - ResourceGroupName, VMName, ArchiveStorageAccountName, Version und Location sind jeweils neue erforderliche Parameter.
-- ArchiveResourceGroupName ist ein neuer optionaler Parameter für ARM. Diesen können Sie angeben, wenn Ihr Speicherkonto nicht der Ressourcengruppe angehört, in der der virtuelle Computer erstellt wird.
+- ArchiveResourceGroupName ist ein neuer optionaler Parameter für ARM. Diesen Parameter können Sie angeben, wenn Ihr Speicherkonto nicht der Ressourcengruppe angehört, in der der virtuelle Computer erstellt wird.
 - ConfigurationArchive heißt bei ARM ArchiveBlobName.
 - ContainerName heißt bei ARM ArchiveContainerName.
 - StorageEndpointSuffix heißt bei ARM ArchiveStorageEndpointSuffix.
-- Für ARM wurde der Switch „AutoUpdate“ hinzugefügt, um die automatische Aktualisierung des Erweiterungshandlers auf die neueste Version zu ermöglichen, sobald diese verfügbar ist. Hierdurch wird der virtuelle Computer unter Umständen neu gestartet, wenn eine neue WMF-Version veröffentlicht wird. 
+- Für ARM wurde der Switch „AutoUpdate“ hinzugefügt, um die automatische Aktualisierung des Erweiterungshandlers auf die neueste Version zu ermöglichen, sobald diese verfügbar ist. Hierdurch wird der virtuelle Computer unter Umständen neu gestartet, wenn eine neue WMF-Version veröffentlicht wird.
 
 
 ## Funktionen des Azure-Portals ##
 Navigieren Sie zu einem klassischen virtuellen Computer. Klicken Sie unter „Einstellungen“ > „Allgemein“ auf „Erweiterungen“. Ein neuer Bereich wird erstellt. Klicken Sie auf „Hinzufügen“, und wählen Sie „PowerShell DSC“ aus.
 
-Nehmen Sie im Portal die erforderlichen Eingaben vor. **Konfigurationsmodule oder -skript**: Dies ist ein Pflichtfeld. Erfordert eine PS1-Datei mit einem Konfigurationsskript oder eine ZIP-Datei mit einem PS1-Konfigurationsskript am Verzeichnisstamm und allen abhängigen Ressourcen in Modulordnern innerhalb der ZIP. Die Datei kann mithilfe des Cmdlets `Publish-AzureVMDscConfiguration -ConfigurationArchivePath` aus dem Azure PowerShell SDK erstellt werden. Die ZIP-Datei wird in Ihren Benutzer-Blob Storage hochgeladen und durch ein SAS-Token geschützt.
+Das Portal benötigt Eingabe. **Konfigurationsmodule oder -skript**: Dies ist ein Pflichtfeld. Erfordert eine PS1-Datei mit einem Konfigurationsskript oder eine ZIP-Datei mit einem PS1-Konfigurationsskript am Verzeichnisstamm und allen abhängigen Ressourcen in Modulordnern innerhalb der ZIP. Die Datei kann mithilfe des Cmdlets `Publish-AzureVMDscConfiguration -ConfigurationArchivePath` aus dem Azure PowerShell SDK erstellt werden. Die ZIP-Datei wird in Ihren Benutzer-Blobspeicher hochgeladen und durch ein SAS-Token geschützt.
 
-**PSD1-Konfigurationsdatendatei**: Dies ist ein optionales Feld. Wenn Ihre Konfiguration eine Konfigurationsdatendatei in PSD1 erfordert, wählen Sie mithilfe dieses Felds eine solche Datei aus, und laden Sie sie in Ihren Benutzer-Blob Storage hoch, wo sie durch ein SAS-Token geschützt wird.
+**PSD1-Konfigurationsdatendatei**: Dies ist ein optionales Feld. Wenn Ihre Konfiguration eine Konfigurationsdatendatei in PSD1 erfordert, wählen Sie mithilfe dieses Felds eine solche Datei aus, und laden Sie sie in Ihren Benutzer-Blobspeicher hoch, wo sie durch ein SAS-Token geschützt wird.
  
-**Modulspezifischer Konfigurationsname**: .PS1-Dateien können mehrere Konfigurationsfunktionen besitzen. Geben Sie den Namen des PS1-Konfigurationsskripts ein – gefolgt von '' und dem Namen der Konfigurationsfunktion. Wenn der Name des PS1-Skripts z.B. „configuration.ps1“ und die Konfiguration „IisInstall“ lautet, geben Sie Folgendes ein: `configuration.ps1\IisInstall`
+**Modulspezifischer Konfigurationsname**: PS1-Dateien können mehrere Konfigurationsfunktionen besitzen. Geben Sie den Namen des PS1-Konfigurationsskripts ein – gefolgt von '' und dem Namen der Konfigurationsfunktion. Wenn der Name des PS1-Skripts z.B. „configuration.ps1“ und die Konfiguration „IisInstall“ lautet, geben Sie Folgendes ein: `configuration.ps1\IisInstall`
 
-**Konfigurationsargumente**: Falls die Konfigurationsfunktion Argumente akzeptiert, geben Sie diese hier im folgenden Format ein: `argumentName1=value1,argumentName2=value2`. Hierbei handelt es sich um ein anderes Format als bei den Konfigurationsargumenten, die von PowerShell-Cmdlets oder ARM-Vorlagen akzeptiert werden.
+**Konfigurationsargumente**: Falls die Konfigurationsfunktion Argumente akzeptiert, geben Sie diese hier im folgenden Format ein: `argumentName1=value1,argumentName2=value2`. Hierbei handelt es sich um ein anderes Format als bei den Konfigurationsargumenten, die von PowerShell-Cmdlets oder Resource Manager-Vorlagen akzeptiert werden.
 
 ## Erste Schritte ##
 
@@ -108,7 +108,7 @@ configuration IISInstall
 }
 ```
 
-In den folgenden Schritten wird das Skript „IisInstall.ps1“ dann auf dem angegebenen virtuellen Computer platziert, die Konfiguration wird ausgeführt, und der Status wird gemeldet.
+In den folgenden Schritten wird das Skript „IisInstall.ps1“ auf dem angegebenen virtuellen Computer platziert, die Konfiguration ausgeführt und der Status gemeldet.
  
 ```powershell
 #Azure PowerShell cmdlets are required
@@ -144,4 +144,4 @@ Weitere Funktionen, die Sie mit PowerShell DSC verwalten können, finden Sie, in
 
 Ausführliche Informationen zum Übergeben von sensiblen Parametern an Konfigurationen finden Sie unter [Übergeben von Anmeldeinformationen an den Azure DSC-Erweiterungs-Handler](virtual-machines-windows-extensions-dsc-credentials.md).
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0824_2016-->

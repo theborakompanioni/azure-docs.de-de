@@ -26,6 +26,7 @@ Für das Azure Application Gateway wird ein Load Balancer auf Schicht 7 (Anwend
 - [Azure Resource Manager PowerShell](application-gateway-create-gateway-arm.md)
 - [Klassische Azure PowerShell](application-gateway-create-gateway.md)
 - [Azure Resource Manager-Vorlage](application-gateway-create-gateway-arm-template.md)
+- [Azure-Befehlszeilenschnittstelle](application-gateway-create-gateway-cli.md)
 
 <BR>
 
@@ -74,7 +75,7 @@ Sie können die vorhandene Azure-Ressourcen-Manager-Vorlage herunterladen, um ei
 	| **backendaddress2** | IP-Adresse des zweiten Webservers |
 
 
->[AZURE.IMPORTANT] Azure-Ressourcen-Manager-Vorlagen, die in GitHub verwaltet werden, können sich im Laufe der Zeit ändern. Überprüfen Sie die Vorlage stets, bevor Sie sie verwenden.
+	>[AZURE.IMPORTANT] Azure-Ressourcen-Manager-Vorlagen, die in GitHub verwaltet werden, können sich im Laufe der Zeit ändern. Überprüfen Sie die Vorlage stets, bevor Sie sie verwenden.
 
 6. Überprüfen Sie den Inhalt unter **resources**, und beachten Sie Folgendes:
 
@@ -147,8 +148,6 @@ Wählen Sie aus, welches Azure-Abonnement Sie verwenden möchten.<BR>
 Erstellen Sie bei Bedarf eine Ressourcengruppe mit dem Cmdlet **New-AzureResourceGroup**. Im folgenden Beispiel erstellen Sie eine neue Ressourcengruppe mit dem Namen AppgatewayRG in der Region „USA, Osten“.
 
 	New-AzureRmResourceGroup -Name AppgatewayRG -Location "East US"
-		VERBOSE: 5:38:49 PM - Created resource group 'AppgatewayRG' in location 'eastus'
-
 
 		ResourceGroupName : AppgatewayRG
 		Location          : eastus
@@ -194,7 +193,7 @@ Führen Sie die folgenden Schritte aus, um die heruntergeladene Azure-Ressourcen
 
 ### Schritt 1
 
-Wenn Sie die Azure-CLI noch nie verwendet haben, lesen Sie den Artikel [Installieren der Azure-CLI](../xplat-cli-install.md), und befolgen Sie die Anweisungen bis zu dem Punkt, an dem Sie Ihr Azure-Konto und Ihr Abonnement auswählen.
+Wenn Sie die Azure-CLI noch nie verwendet haben, lesen Sie den Artikel [Installieren der Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md), und befolgen Sie die Anweisungen bis zu dem Punkt, an dem Sie Ihr Azure-Konto und Ihr Abonnement auswählen.
 ### Schritt 2
 
 Führen Sie den Befehl **azure config mode** aus, um in den Ressourcen-Manager-Modus zu wechseln, wie unten dargestellt.
@@ -293,4 +292,4 @@ Weitere Informationen zu Lastenausgleichsoptionen im Allgemeinen finden Sie unte
 - [Azure-Lastenausgleich](https://azure.microsoft.com/documentation/services/load-balancer/)
 - [Azure Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->

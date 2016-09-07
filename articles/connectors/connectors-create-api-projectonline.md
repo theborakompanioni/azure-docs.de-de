@@ -14,18 +14,12 @@ ms.devlang="multiple"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="integration"
-ms.date="05/16/2016"
+ms.date="08/18/2016"
 ms.author="deonhe"/>
 
 # Erste Schritte mit dem Project Online-Connector
 
 Project Online ist eine flexible Onlinelösung von Microsoft für das für Projektportfoliomanagement (PPM) und die tägliche Arbeit. Project Online wird über Office 365 bereitgestellt und verschafft Organisationen einen schnellen Zugang zu leistungsfähigen Projektmanagementfunktionen. So können sie kurzfristig Projekte und Investitionen in Projektportfolios planen, priorisieren und steuern – an fast jedem Ort und auf nahezu jedem Gerät.
-
-Der Project Online-Connector kann verwendet werden in:
-
-- [Logik-Apps](../app-service-logic/app-service-logic-what-are-logic-apps.md)
-- [PowerApps](http://powerapps.microsoft.com)
-- [Flow](http://flow.microsoft.com)
 
 >[AZURE.NOTE] Diese Version des Artikels gilt für die Schemaversion 2015-08-01-preview für Logik-Apps.
 
@@ -60,18 +54,18 @@ Sie können auf diese Ereignisse lauschen:
 
 
 ## Herstellen einer Verbindung mit Project Online
-Um Logik-Apps mit Project Online zu erstellen, müssen Sie zuerst eine **Verbindung** herstellen und anschließend die Details für die folgenden Eigenschaften angeben:
+Um Logik-Apps mit Project Online zu erstellen, müssen Sie zuerst eine **Verbindung** erstellen und anschließend die Details für die folgenden Eigenschaften angeben:
 
 |Eigenschaft| Erforderlich|Beschreibung|
 | ---|---|---|
-|Tokenverschlüsselung|Ja|Angeben der Anmeldeinformationen für Project Online|
+|Token|Ja|Angeben der Anmeldeinformationen für Project Online|
 
 >[AZURE.INCLUDE [Schritte zum Herstellen einer Verbindung mit Project Online](../../includes/connectors-create-api-projectonline.md)]
 
 >[AZURE.TIP] Sie können diese Verbindung in anderen Logik-Apps verwenden.
 
 ## Referenz für Project Online
-Gilt für Version: 1.0.
+Gilt für Version 1.0.
 
 ## OnNewProject
 Wenn ein neues Projekt erstellt wird: Löst einen Workflow aus, sobald ein neues Projekt erstellt wird.
@@ -216,7 +210,7 @@ Neue Ressource erstellen: Erstellt eine Enterprise-Ressource auf Ihrer Project O
 | Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
 |siteUrl|string|Ja|query|(Keine)|Stamm-URL Ihrer Projektwebsite (Beispiel: https://sampletenant.sharepoint.com/teams/sampleteam)|
-|resource| |Ja|body|(Keine)|Neue Enterprise-Ressource, die dem Projekt hinzugefügt werden soll|
+|Ressource| |Ja|body|(Keine)|Neue Enterprise-Ressource, die dem Projekt hinzugefügt werden soll|
 
 #### Antwort
 
@@ -458,7 +452,7 @@ Projekt einchecken und veröffentlichen: Checkt ein vorhandenes Projekt auf Ihre
 | Eigenschaftenname | Datentyp | Erforderlich |
 |---|---|---|
 |Name|string|Ja |
-|Notes|string|Nein |
+|Hinweise|string|Nein |
 |Start|string|Nein |
 |Duration|string|Nein |
 
@@ -473,7 +467,7 @@ Projekt einchecken und veröffentlichen: Checkt ein vorhandenes Projekt auf Ihre
 |Code|string|Nein |
 |CostAccrual|integer|Nein |
 |CostCenter|string|Nein |
-|Created|string|Nein |
+|Erstellt|string|Nein |
 |DefaultBookingType|integer|Nein |
 |Email|string|Nein |
 |ExternalId|string|Nein |
@@ -524,4 +518,4 @@ Projekt einchecken und veröffentlichen: Checkt ein vorhandenes Projekt auf Ihre
 ## Nächste Schritte
 [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0824_2016-->

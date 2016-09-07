@@ -25,7 +25,7 @@ Unterstützung für AMQP 1.0 ist im Service Bus SDK ab Version 2.1 verfügbar. S
 
 ## Konfigurieren von .NET-Anwendungen für das Verwenden von AMQP 1.0
 
-Mithilfe eines dedizierten SOAP-basierten Protokolls kommuniziert die .NET-Clientbibliothek von Service Bus standardmäßig mit dem Service Bus-Dienst. Wenn Sie anstatt des Standardprotokolls AMQP 1.0 verwenden möchten, ist eine explizite Konfiguration der Service Bus-Verbindungszeichenfolge erforderlich, die im nächsten Abschnitt beschrieben wird. Mit Ausnahme dieser Änderung bleibt der Anwendungscode bei Verwenden von AMQP 1.0 grundsätzlich unverändert.
+Mithilfe eines dedizierten SOAP-basierten Protokolls kommuniziert die .NET-Clientbibliothek von Service Bus standardmäßig mit dem Service Bus-Dienst. Wenn Sie anstatt des Standardprotokolls AMQP 1.0 verwenden möchten, ist eine explizite Konfiguration der Service Bus-Verbindungszeichenfolge erforderlich, die im nächsten Abschnitt beschrieben wird. Abgesehen von dieser Änderung bleibt der Anwendungscode bei Verwendung von AMQP 1.0 unverändert.
 
 In der aktuellen Version gibt es ein paar API-Features, die bei Verwendung von AMQP nicht unterstützt werden. Diese nicht unterstützten Features sind weiter unten im Abschnitt [Nicht unterstützte Features, Einschränkungen und Verhaltensunterschiede](#unsupported-features-restrictions-and-behavioral-differences) aufgeführt. Darüber hinaus haben einige der erweiterten Konfigurationseinstellungen eine unterschiedliche Bedeutung, wenn AMQP zum Einsatz kommt.
 
@@ -45,7 +45,7 @@ Beim Wert der Einstellung `Microsoft.ServiceBus.ConnectionString` handelt es sic
 
 	Endpoint=sb://[namespace].servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=[SAS key];TransportType=Amqp
 
-`[namespace]` und `SharedAccessKey` werden aus dem [klassischen Azure-Portal][] bezogen. Weitere Informationen finden Sie unter [Verwenden von Azure Service Bus-Warteschlangen][].
+`[namespace]` und `SharedAccessKey` werden aus dem [Azure-Portal][] bezogen. Weitere Informationen finden Sie unter [Verwenden von Azure Service Bus-Warteschlangen][].
 
 Wenn Sie AMQP verwenden, fügen Sie `;TransportType=Amqp` an die Verbindungszeichenfolge an. Diese Notation weist die Clientbibliothek an, die Verbindung mit Service Bus über AMQP 1.0 herzustellen.
 
@@ -59,7 +59,7 @@ Um die Interoperabilität mit Nicht-.NET-Clients zu erleichtern, verwenden Sie n
 
 | .NET Body-Objekttyp | Zugeordneter AMQP-Typ | AMQP Body-Abschnittstyp |
 |--------------------------------|-------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|
-| bool | boolean | AMQP Value |
+| bool | Boolescher Wert | AMQP Value |
 | byte | ubyte | AMQP Value |
 | ushort | ushort | AMQP Value |
 | uint | uint | AMQP Value |
@@ -73,7 +73,7 @@ Um die Interoperabilität mit Nicht-.NET-Clients zu erleichtern, verwenden Sie n
 | decimal | decimal128 | AMQP Value |
 | char | char | AMQP Value |
 | DateTime | timestamp | AMQP Value |
-| Guid | uuid | AMQP Value |
+| GUID | uuid | AMQP Value |
 | byte | binary | AMQP Value |
 | string | string | AMQP Value |
 | System.Collections.IList | list | AMQP Value: Diese Auflistung kann nur Elemente enthalten, die in dieser Tabelle definiert sind. |
@@ -82,7 +82,7 @@ Um die Interoperabilität mit Nicht-.NET-Clients zu erleichtern, verwenden Sie n
 | Uri | Beschriebene Zeichenfolge (siehe die folgende Tabelle) | AMQP Value |
 | DateTimeOffset | Lange Beschreibung (siehe die folgende Tabelle) | AMQP Value |
 | TimeSpan | Lange Beschreibung (siehe die folgende Tabelle) | AMQP Value |
-| Stream | binary | AMQP Data (können mehrere sein). Die "Data"-Abschnitte enthalten die rohen Bytes, die aus dem "Stream"-Objekt gelesen. |
+| Datenstrom | binary | AMQP Data (können mehrere sein). Die "Data"-Abschnitte enthalten die rohen Bytes, die aus dem "Stream"-Objekt gelesen. |
 | Other Object | binary | AMQP Data (können mehrere sein). Enthält die serialisierten Binärdaten des Objekts, das "DataContractSerializer" oder einen von der Anwendung bereitgestellten Serialisierer verwendet. |
 
 | .NET-Typ | Zugeordneter beschriebener AMQP-Typ | Hinweise |
@@ -124,7 +124,7 @@ Die .NET-APIs machen mehrere Einstellungen zum Steuern des Verhaltens des AMQP-P
 Möchten Sie mehr erfahren? Nutzen Sie die folgenden Links:
 
 - [Übersicht über Service Bus AMQP]
-- [AMQP 1.0-Unterstützung für partitionierte Warteschlangen und Themen von Service Bus]
+- [AMQP 1.0-Unterstützung für partitionierte Warteschlangen und Themen von Service Bus]
 - [AMQP in Service Bus für Windows Server]
 
   [Verwenden von Azure Service Bus-Warteschlangen]: service-bus-dotnet-get-started-with-queues.md
@@ -134,9 +134,9 @@ Möchten Sie mehr erfahren? Nutzen Sie die folgenden Links:
   [Microsoft.ServiceBus.Messaging.MessagingFactory.CreateMessageSender(System.String,System.String)]: https://msdn.microsoft.com/library/azure/jj657703.aspx
   [OperationTimeout]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagingfactorysettings.operationtimeout.aspx
 [NuGet]: http://nuget.org/packages/WindowsAzure.ServiceBus/
-[klassischen Azure-Portal]: http://manage.windowsazure.com
+[Azure-Portal]: https://portal.azure.com
 [Übersicht über Service Bus AMQP]: service-bus-amqp-overview.md
-[AMQP 1.0-Unterstützung für partitionierte Warteschlangen und Themen von Service Bus]: service-bus-partitioned-queues-and-topics-amqp-overview.md
+[AMQP 1.0-Unterstützung für partitionierte Warteschlangen und Themen von Service Bus]: service-bus-partitioned-queues-and-topics-amqp-overview.md
 [AMQP in Service Bus für Windows Server]: https://msdn.microsoft.com/library/dn574799.aspx
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0824_2016-->

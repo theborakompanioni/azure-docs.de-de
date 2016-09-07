@@ -1,6 +1,6 @@
 <properties
    pageTitle="Sicherheitsverwaltung in Azure | Microsoft Azure"
-   description="In diesem Artikel werden Schritte zur Erweiterung der Remotesicherheitsverwaltung beim Verwalten von Microsoft Azure-Umgebungen erläutert, darunter auch Clouddienste, Virtual Machines und benutzerdefinierte Anwendungen."
+   description=" In diesem Artikel werden Schritte zur Erweiterung der Remotesicherheitsverwaltung beim Verwalten von Microsoft Azure-Umgebungen erläutert, darunter auch Clouddienste, Virtual Machines und benutzerdefinierte Anwendungen."
    services="security"
    documentationCenter="na"
    authors="TerryLanfear"
@@ -13,14 +13,14 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/26/2016"
+   ms.date="08/25/2016"
    ms.author="terrylan"/>
 
 # Sicherheitsverwaltung in Azure
 
-Azure-Abonnenten können ihre Cloudumgebungen über mehrere Geräte verwalten, z.B. Arbeitsstationen für die Verwaltung, Entwickler-PCs und sogar geeignete Endbenutzergeräte, die über die aufgabenspezifischen Berechtigungen verfügen. In einigen Fällen werden Administratorfunktionen über webbasierte Konsolen ausgeführt, z.B. das [Azure-Portal](https://azure.microsoft.com/features/azure-portal/). In anderen Fällen können auch direkte Verbindungen mit Azure von lokalen Systemen über Virtual Private Networks (VPNs), Terminal Services, Clientanwendungsprotokolle oder (programmgesteuert) die Azure-Dienstverwaltungs-API (SMAPI) bestehen. Außerdem können Clientendpunkte entweder Mitglied einer Domäne oder isoliert und unverwaltet sein, z.B. Tablets oder Smartphones.
+Azure-Abonnenten können ihre Cloudumgebungen über verschiedene Geräte verwalten. Hierzu zählen etwa Arbeitsstationen für die Verwaltung, Entwickler-PCs und sogar geeignete Endbenutzergeräte, die über die aufgabenspezifischen Berechtigungen verfügen. In einigen Fällen werden Administratorfunktionen über webbasierte Konsolen ausgeführt, z.B. das [Azure-Portal](https://azure.microsoft.com/features/azure-portal/). In anderen Fällen können auch direkte Verbindungen mit Azure von lokalen Systemen über Virtual Private Networks (VPNs), Terminal Services, Clientanwendungsprotokolle oder (programmgesteuert) die Azure-Dienstverwaltungs-API (SMAPI) bestehen. Außerdem können Clientendpunkte entweder Mitglied einer Domäne oder isoliert und unverwaltet sein, z.B. Tablets oder Smartphones.
 
-Obwohl diese vielen Zugriffs- und Verwaltungsfunktionen einen umfassenden Satz von Optionen bieten, kann diese Variabilität für eine Cloudbereitstellung ein erhebliches Risiko darstellen und es erschweren, Verwaltungsaktionen zu verwalten, nachzuverfolgen und zu überwachen. Diese Variabilität kann auch mit Sicherheitsbedrohungen verbunden sein, wenn nicht regulierter Zugriff auf Clientendpunkte besteht, die zum Verwalten von Clouddiensten verwendet werden. Die Verwendung allgemeiner oder persönlicher Arbeitsstationen zum Entwickeln und Verwalten einer Infrastruktur führt zu unvorhersagbaren Bedrohungsvektoren, z.B. in Bezug auf das Surfen im Web (z.B. Watering Hole-Angriffe) oder E-Mails (z.B. Social Engineering und Phishing).
+Dank mehrerer Zugriffs- und Verwaltungsfunktionen stehen zwar vielfältige Optionen zur Verfügung, diese Vielfalt kann aber auch ein erhebliches Risiko für eine Cloudbereitstellung darstellen. Administrative Aktionen lassen sich dadurch unter Umständen schwerer verwalten, nachvollziehen und überprüfen. Diese Variabilität kann auch mit Sicherheitsbedrohungen verbunden sein, wenn nicht regulierter Zugriff auf Clientendpunkte besteht, die zum Verwalten von Clouddiensten verwendet werden. Die Verwendung allgemeiner oder persönlicher Arbeitsstationen zum Entwickeln und Verwalten einer Infrastruktur geht mit unberechenbaren Bedrohungsvektoren einher. Hierzu zählen beispielsweise das Surfen im Web (etwa Watering Hole-Angriffe) oder E-Mails (etwa Social Engineering und Phishing).
 
 ![][1]
 
@@ -65,7 +65,7 @@ Mit dem Konsolidieren von Zugriffsressourcen und dem Entfernen nicht verwalteter
 
 In Azure werden Sicherheitsmechanismen als Hilfe für Administratoren bereitgestellt, die Azure-Clouddienste und virtuelle Azure-Computer verwalten. Diese Mechanismen sind:
 
-- Authentifizierung und [rollenbasierte Zugriffssteuerung](../active-directory/role-based-access-control-configure.md)
+- Authentifizierung und [rollenbasierte Zugriffssteuerung](../active-directory/role-based-access-control-configure.md).
 - Überwachung, Protokollierung und Auditing
 - Zertifikate und verschlüsselte Kommunikation
 - Webverwaltungsportal
@@ -197,11 +197,11 @@ Gehen Sie nicht davon aus, dass andere gängige Sicherheitsanforderungen nicht e
 
 | Nicht empfohlene Vorgehensweise | Empfohlene Vorgehensweise |
 | ----- | ----- |
-| Senden Sie Anmeldeinformationen für den Administratorzugriff oder andere geheime Daten (z.B. SSL- oder Verwaltungszertifikate) nicht per E-Mail. | Sorgen Sie für Vertraulichkeit, indem Sie Kontonamen und Kennwörter mündlich mitteilen (aber nicht per Voicemail), eine Remoteinstallation von Client-/Serverzertifikaten durchführen (per verschlüsselter Sitzung), Downloads von einer geschützten Freigabe durchführen oder diese Daten per Hand mit Wechselmedien verteilen. |
+| Senden Sie Anmeldeinformationen für den Administratorzugriff oder andere geheime Daten (wie etwa SSL- oder Verwaltungszertifikate) nicht per E-Mail. | Sorgen Sie für Vertraulichkeit, indem Sie Kontonamen und Kennwörter mündlich mitteilen (aber nicht per Voicemail), eine Remoteinstallation von Client-/Serverzertifikaten durchführen (per verschlüsselter Sitzung), Downloads von einer geschützten Freigabe durchführen oder diese Daten per Hand mit Wechselmedien verteilen. |
 | | Verwalten Sie die Lebenszyklen Ihrer Verwaltungszertifikate proaktiv. |
 | Speichern Sie Kontokennwörter nicht unverschlüsselt oder ohne Hashing im Anwendungsspeicher (z.B. in Tabellen, auf SharePoint-Websites oder auf Dateifreigaben). | Stellen Sie Prinzipien für die Sicherheitsverwaltung und Richtlinien für die Erhöhung der Systemsicherheit auf, und wenden Sie sie auf Ihre Entwicklungsumgebung an. |
 | | Verwenden Sie die Anheftungsregeln des Zertifikats [Enhanced Mitigation Experience Toolkit 5.5](https://technet.microsoft.com/security/jj653751), um den richtigen Zugriff auf Azure SSL/TLS-Websites sicherzustellen. |
-| Vermeiden Sie es, Konten und Kennwörter für mehrere Administratoren freizugeben oder Kennwörter für mehrere Benutzerkonten und Dienste zu verwenden. Dies gilt besonders für soziale Medien oder andere nicht administrative Aktivitäten. | Erstellen Sie ein dediziertes Microsoft-Konto, um Ihr Azure-Abonnement zu verwalten, also ein Konto, das nicht für persönliche E-Mails verwendet wird. |
+| Vermeiden Sie es, Konten und Kennwörter für mehrere Administratoren freizugeben oder Kennwörter für mehrere Benutzerkonten und Dienste zu verwenden. Dies gilt besonders für soziale Medien oder andere nicht administrative Aktivitäten. | Erstellen Sie ein dediziertes Microsoft-Konto, um Ihr Azure-Abonnement zu verwalten (also ein Konto, das nicht für private E-Mails verwendet wird). |
 | Senden Sie Konfigurationsdateien nicht per E-Mail. | Konfigurationsdateien und -profile sollten von einer vertrauenswürdigen Quelle installiert werden (z.B. einem verschlüsselten USB-Laufwerk), und nicht über einen Mechanismus, der leicht kompromittiert werden kann, z.B. E-Mail. |
 | Verwenden Sie keine unsicheren oder einfachen Anmeldekennwörter. | Erzwingen Sie Richtlinien für sichere Kennwörter, Ablaufzyklen (obligatorische Änderung bei der ersten Nutzung), Konsolentimeouts und automatische Kontosperrungen. Verwenden Sie ein Verwaltungssystem für Clientkennwörter mit Multi-Factor Authentication für den Zugriff auf den Kennworttresor. |
 | Machen Sie Verwaltungsports nicht im Internet verfügbar. | Sperren Sie Azure-Ports und IP-Adressen, um den Verwaltungszugriff zu beschränken. Weitere Informationen finden Sie im Whitepaper zur [Azure-Netzwerksicherheit](http://download.microsoft.com/download/4/3/9/43902EC9-410E-4875-8800-0788BE146A3D/Windows%20Azure%20Network%20Security%20Whitepaper%20-%20FINAL.docx). |
@@ -247,4 +247,4 @@ Die folgenden Ressourcen enthalten allgemeinere Informationen zu Azure und verwa
 [3]: ./media/azure-security-management/hardened-workstation-enabled-with-hyper-v.png
 [4]: ./media/azure-security-management/hardened-workstation-using-windows-to-go-on-a-usb-flash-drive.png
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0831_2016-->

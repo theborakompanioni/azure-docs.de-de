@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-multiple" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="03/01/2016" 
+	ms.date="08/19/2016" 
 	ms.author="piyushjo" />
 
 #Zugreifen auf Azure Mobile Engagement-Dienst-APIs mit dem .NET SDK
@@ -24,7 +24,7 @@ Auf ähnliche Weise haben wir ein .NET SDK erstellt, das Ihnen die Interaktion m
 
 Dieses Beispiel führt die Reihe von Schritten auf, die zum Verwenden des .NET SDK befolgt werden müssen:
 
-1. Sie müssen zunächst mithilfe von Azure Active Directory die Authentifizierung für Ihre APIs einrichten, wie [hier](mobile-engagement-api-authentication.md#authentication) beschrieben. Nach Abschluss dieser Schritte verfügen Sie über gültige Werte für **SubscriptionId**, **TenantId**, **ApplicationId** und **Secret**. 
+1. Sie müssen zunächst mithilfe von Azure Active Directory die Authentifizierung für Ihre APIs einrichten, wie [hier](mobile-engagement-api-authentication.md#authentication) beschrieben. Nach Abschluss dieser Schritte verfügen Sie über gültige Werte für **SubscriptionId**, **TenantId**, **ApplicationId** und **Secret**.
 
 2. Wir verwenden eine einfache Windows-Konsolen-App, um die Arbeit mit dem .NET SDK anhand des Szenarios zum Erstellen einer Ankündigungskampagne zu demonstrieren. Öffnen Sie daher Visual Studio, und erstellen Sie eine **Konsolenanwendung**.
 
@@ -122,4 +122,4 @@ Dieses Beispiel führt die Reihe von Schritten auf, die zum Verwenden des .NET S
 
 [1]: ./media/mobile-engagement-dotnet-sdk-service-api/include-prerelease.png
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0824_2016-->

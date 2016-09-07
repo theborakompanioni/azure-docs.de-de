@@ -30,7 +30,7 @@ Hier finden Sie die gesamte Dokumentation, die Sie zum Erstellen und Verwalten L
 - [Häufig gestellte Fragen zu virtuellen Azure-Computern, die mit dem klassischen Bereitstellungsmodell erstellt wurden](virtual-machines-linux-classic-faq.md)
 - [Informationen zu Images für virtuelle Computer](virtual-machines-linux-classic-about-images.md)
 - [Hochladen Ihres eigenen Distro-Images](virtual-machines-linux-classic-create-upload-vhd.md) (plus Anweisungen zum Verwenden einer [unterstützten Azure-Distribution](virtual-machines-linux-endorsed-distros.md))
-- [Anmelden bei einem virtuellen Linux-Computer über das klassische Azure-Portal](virtual-machines-linux-classic-log-on.md)
+- [Anmelden bei einem virtuellen Linux-Computer über das klassische Azure-Portal](virtual-machines-linux-mac-create-ssh-keys.md)
 
 ## Einrichtung
 
@@ -71,7 +71,7 @@ Hier finden Sie die gesamte Dokumentation, die Sie zum Erstellen und Verwalten L
 
 
 ## Planung
-- [Implementierungsrichtlinien für Azure-Infrastrukturdienste](virtual-machines-linux-infrastructure-service-guidelines.md)
+- [Implementierungsrichtlinien für Azure-Infrastrukturdienste](virtual-machines-linux-infrastructure-subscription-accounts-guidelines.md)
 - [Auswählen von Linux-Benutzernamen](virtual-machines-linux-usernames.md)
 - [Konfigurieren einer Verfügbarkeitsgruppe für virtuelle Computer im klassischen Bereitstellungsmodell](virtual-machines-linux-classic-configure-availability.md)
 - [Gewusst wie: Planen der Wartung auf virtuellen Azure-Computern](virtual-machines-linux-planned-maintenance-schedule.md)
@@ -87,7 +87,7 @@ Hier finden Sie die gesamte Dokumentation, die Sie zum Erstellen und Verwalten L
 
 ## Verwaltung
 
-- [SSH](virtual-machines-linux-ssh-from-linux.md)
+- [SSH](virtual-machines-linux-mac-create-ssh-keys.md)
 - [Zurücksetzen von Kennwörtern oder SSH-Eigenschaften für Linux](virtual-machines-linux-classic-reset-access.md)
 - [Verwenden von Root](virtual-machines-linux-use-root-privileges.md)
 
@@ -189,4 +189,4 @@ Dieser Bereich ist recht umfangreich und ändert sich sehr schnell. Sie sollten 
 
 - [Packer-Plug-In für Azure](https://github.com/msopentech/packer-azure)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0824_2016-->
