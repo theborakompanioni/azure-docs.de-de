@@ -1,6 +1,6 @@
 <properties
    pageTitle="Verwenden von SSH-Schlüsseln mit Linux-basiertem Hadoop unter Linux, Unix oder OS X | Microsoft Azure"
-   description="Auf das Linux-basierte HDInsight können Sie über Secure Shell (SSH) zugreifen. Dieses Dokument enthält Informationen zur Verwendung von SSH mit HDInsight auf Linux-, Unix- oder OS X-Clients."
+   description=" Auf das Linux-basierte HDInsight können Sie über Secure Shell (SSH) zugreifen. Dieses Dokument enthält Informationen zur Verwendung von SSH mit HDInsight auf Linux-, Unix- oder OS X-Clients."
    services="hdinsight"
    documentationCenter=""
    authors="Blackmist"
@@ -14,7 +14,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="06/14/2016"
+   ms.date="08/30/2016"
    ms.author="larryfr"/>
 
 #Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X
@@ -25,7 +25,9 @@
 
 [Secure Shell (SSH)](https://en.wikipedia.org/wiki/Secure_Shell) ermöglicht die Remoteausführung von Vorgängen in Linux-basierten HDInsight-Clustern über eine Befehlszeilenschnittstelle. Dieses Dokument enthält Informationen zur Verwendung von SSH mit HDInsight auf Linux-, Unix- oder OS X-Clients.
 
-> [AZURE.NOTE] Bei den Schritten in diesem Artikel wird davon ausgegangen, dass Sie einen Linux-, Unix- oder OS X-Client verwenden. Obwohl diese Schritte auf einem Windows-Client ausgeführt werden können, wenn Sie ein Paket installiert haben, das `ssh` und `ssh-keygen` (z. B. Git für Windows) bereitstellt, wird empfohlen, dass Windows-Clients die Schritte unter [Verwenden von SSH mit Linux-basiertem HDInsight (Hadoop) unter Windows](hdinsight-hadoop-linux-use-ssh-windows.md) befolgen.
+> [AZURE.NOTE] Bei den Schritten in diesem Artikel wird davon ausgegangen, dass Sie einen Linux-, Unix- oder OS X-Client verwenden. Diese Schritte können auf einem Windows-basierten Client ausgeführt werden, wenn Sie ein Paket installiert haben, das `ssh` und `ssh-keygen` bereitstellt. Ein Beispiel hierfür wäre etwa [Bash on Ubuntu on Windows](https://msdn.microsoft.com/commandline/wsl/about).
+>
+> Falls auf Ihrem Windows-basierten Client keine SSH installiert ist, informieren Sie sich anhand der Schritte unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Windows](hdinsight-hadoop-linux-use-ssh-windows.md) über die Installation und Verwendung von PuTTY.
 
 ##Voraussetzungen
 
@@ -33,7 +35,7 @@
 
 * Ein zeitgemäßer Webbrowser, der HTML5 unterstützt.
 
-ODER
+OR
 
 * [Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md).
 
@@ -118,11 +120,11 @@ Weitere Informationen zur Verwendung dieses Befehls finden Sie unter [Benutzerde
 
 Geben Sie in einer Terminalsitzung den SSH-Befehl ein, um die Verbindung mit dem Hauptknoten des Clusters herzustellen, indem Sie Adresse und den Benutzernamen angeben:
 
-* **SSH-Adresse** – Für das Herstellen einer Verbindung mit einem Cluster mithilfe von SSH stehen zwei Adressen zur Verfügung:
+* **SSH-Adresse**: Für die Verbindungsherstellung mit einem Cluster per SSH stehen zwei Adressen zur Verfügung:
 
-    * **Verbindung mit dem Hauptknoten herstellen:** Der Clustername, gefolgt von **-ssh.azurehdinsight.net**. Beispiel: **mycluster-ssh.azurehdinsight.net**.
+    * **Verbindungsherstellung mit dem Hauptknoten:** Der Clustername, gefolgt von **-ssh.azurehdinsight.net**. Beispiel: **mycluster-ssh.azurehdinsight.net**.
     
-    * **Verbindung mit dem Edgeknoten herstellen:** Wenn Sie einen R Server-Cluster in HDInsight besitzen, enthält der Cluster auch einen Edgeknoten, auf den mithilfe von **RServer.CLUSTERNAME.ssh.azurehdinsight.net** zugegriffen werden kann. Dabei steht __CLUSTERNAME__ für den Namen des Clusters.
+    * **Verbindungsherstellung mit dem Edgeknoten:** Wenn Sie über einen R Server-Cluster in HDInsight verfügen, enthält der Cluster auch einen Edgeknoten, auf den mithilfe von **RServer.CLUSTERNAME.ssh.azurehdinsight.net** zugegriffen werden kann. Dabei steht __CLUSTERNAME__ für den Namen des Clusters.
 
 * **Benutzername**: Der SSH-Benutzername, den Sie bei der Erstellung des Clusters angegeben haben.
 
@@ -245,4 +247,4 @@ Nachdem Sie jetzt wissen, wie die Authentifizierung mithilfe eines SSH-Schlüsse
 
 [preview-portal]: https://portal.azure.com/
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0831_2016-->

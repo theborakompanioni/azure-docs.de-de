@@ -4,7 +4,7 @@
 	documentationCenter=""
 	description="Erfahren Sie, wie Sie die Azure-Diagnose auf einer virtuellen Azure-Maschine unter Windows mithilfe von PowerShell aktivieren"
 	authors="sbtron"
-	manager=""
+ 	manager="timlt"
 	editor=""/>
 
 <tags
@@ -201,4 +201,4 @@ Die Konfiguration muss mit Folgendem aktualisiert werden:
 - Weitere Anleitungen zur Verwendung von Azure-Diagnosefunktionen und zu anderen Techniken zur Problembehandlung finden Sie unter [Aktivieren der Azure-Diagnose in Azure Cloud Services](../cloud-services/cloud-services-dotnet-diagnostics.md).
 - Im [Diagnosekonfigurationsschema](https://msdn.microsoft.com/library/azure/mt634524.aspx) werden die verschiedenen Optionen der XML-Konfigurationen für die Diagnoseerweiterung erläutert.
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0824_2016-->

@@ -27,7 +27,7 @@
 
 In diesem Artikel erfahren Sie, wie Sie HTTPS für Web-Apps, Back-Ends für mobile Apps oder API-Apps, die einen benutzerdefinierten Domänennamen verwenden, in [Azure App Service](../app-service/app-service-value-prop-what-is.md) aktivieren. Es wird nur die Serverauthentifizierung behandelt. Wenn Sie gegenseitige Authentifizierung (einschließlich Clientauthentifizierung) benötigen, finden Sie entsprechende Informationen unter [Konfigurieren der gegenseitigen TLS-Authentifizierung für eine Web-App](app-service-web-configure-tls-mutual-auth.md).
 
-Um mit HTTPS eine App zu sichern, die einen benutzerdefinierten Domänennamen hat, fügen Sie ein Zertifikat für diesen Domänennamen hinzu. Standardmäßig schützt Azure die **\*.azurewebsites.net**-Platzhalterdomäne mit einem einzigen SSL-Zertifikat, damit Ihre Clients bereits unter **https://*&lt;appname>*. azurewebsites.net** auf Ihre App zugreifen können. Aber wenn Sie eine benutzerdefinierte Domäne verwenden möchten, wie z.B. **contoso.com**, **www.contoso.com** und **\*.contoso.com**, kann das Standardzertifikat diese nicht sichern. Darüber hinaus ist das Standardzertifikat wie alle [Platzhalterzertifikate](https://casecurity.org/2014/02/26/pros-and-cons-of-single-domain-multi-domain-and-wildcard-certificates/) nicht so sicher wie die Verwendung einer benutzerdefinierten Domäne und eines Zertifikats für diese benutzerdefinierte Domäne.
+Um mit HTTPS eine App zu sichern, die einen benutzerdefinierten Domänennamen hat, fügen Sie ein Zertifikat für diesen Domänennamen hinzu. Standardmäßig schützt Azure die ***.azurewebsites.net**-Platzhalterdomäne mit einem einzigen SSL-Zertifikat, damit Ihre Clients bereits unter **https://*&lt;appname>*. azurewebsites.net** auf Ihre App zugreifen können. Aber wenn Sie eine benutzerdefinierte Domäne verwenden möchten, wie z.B. **contoso.com**, **www.contoso.com** und ***.contoso.com**, kann das Standardzertifikat diese nicht sichern. Darüber hinaus ist das Standardzertifikat wie alle [Platzhalterzertifikate](https://casecurity.org/2014/02/26/pros-and-cons-of-single-domain-multi-domain-and-wildcard-certificates/) nicht so sicher wie die Verwendung einer benutzerdefinierten Domäne und eines Zertifikats für diese benutzerdefinierte Domäne.
 
 >[AZURE.NOTE] Hilfe erhalten Sie jederzeit in den [Azure-Foren](https://azure.microsoft.com/support/forums/) von den Azure-Experten. Wenn Sie persönlicheren Support wünschen, rufen Sie den [Azure-Support](https://azure.microsoft.com/support/options/) auf, und klicken Sie auf **Support erhalten**.
 
@@ -423,26 +423,22 @@ Bevor Sie fortfahren, lesen Sie den Abschnitt [Was Sie alles benötigen](#bkmk_d
 - Sie haben eine benutzerdefinierte Domäne, die Ihrer Azure-App zugeordnet ist;
 - Ihre App wird im Tarif **Basic** oder höher ausgeführt, und
 - Sie haben ein SSL-Zertifikat für die benutzerdefinierte Domäne, das von einer Zertifizierungsstelle ausgestellt wurde.
- 
-1.	Wechseln Sie im [Azure-Portal](https://portal.azure.com) zu dem Blatt **Benutzerdefinierte Domänen und SSL** Ihrer App.
 
-7.	Klicken Sie auf **Mehr** > **Zertifikate hochladen**.
 
-	![](./media/web-sites-configure-ssl-certificate/sslupload.png)
+1. Öffnen Sie in Ihrem Browser das **[Azure-Portal](https://portal.azure.com/)**.
+2.	Klicken Sie auf der Seite links auf die Option **App Service**.
+3.	Klicken Sie auf den Namen Ihrer App, der Sie dieses Zertifikat zuweisen möchten.
+4.	Klicken Sie unter **Einstellungen** auf **SSL-Zertifikate**.
+5.	Klicken Sie auf **Zertifikat hochladen**.
+6.	Wählen Sie die PFX-Datei, die Sie in [Schritt 1](#bkmk_getcert) exportiert haben, und geben Sie das Kennwort an, das Sie zuvor erstellt haben. Klicken Sie anschließend auf **Hochladen**, um das Zertifikat hochzuladen. Ihr hochgeladenes Zertifikat sollte nun auf dem Blatt **SSL-Zertifikat** angezeigt werden.
+7. Klicken Sie im Abschnitt **SSL-Bindungen** auf **Bindung hinzufügen**.
+8. Wählen Sie auf dem Blatt **Add SSL Binding** (SSL-Bindung hinzufügen) mithilfe der Dropdownlisten den Domänennamen, der mit SSL geschützt werden soll, sowie das zu verwendende Zertifikat aus. Sie können auch auswählen, ob das SSL auf Basis der **[Servernamensanzeige](http://en.wikipedia.org/wiki/Server_Name_Indication)** (Server Name Indication, SNI) oder ein IP-basiertes SSL verwendet werden soll.
 
-8.	Wählen Sie die PFX-Datei, die Sie in [Schritt 1](#bkmk_getcert) exportiert haben, und geben Sie das Kennwort an, das Sie zuvor erstellt haben. Klicken Sie dann auf **Speichern**, um das Zertifikat hochzuladen. Jetzt sollte Ihr hochgeladenes Zertifikat im Blatt **Benutzerdefinierte Domänen und SSL** angezeigt werden.
+    ![Bild von SSL-Bindungen einfügen](./media/web-sites-configure-ssl-certificate/sslbindings.png)
 
-	![](./media/web-sites-configure-ssl-certificate/sslcertview.png)
-
-9. Wählen Sie im Abschnitt **SSL-Bindungen** den Domänennamen und das SSL-Zertifikat, die zusammengebunden werden. Sie können auch auswählen, ob SNI-basiertes oder IP-basiertes SSL verwendet werden soll.
-
-	![](./media/web-sites-configure-ssl-certificate/sslbindcert.png)
-
-	* **IP-basiertes SSL** bindet ein Zertifikat mit einem Domänennamen einer dedizierten öffentlichen IP-Adresse der App an den Domänennamen. Es ist die herkömmliche Methode der SSL-Bindungen, und App Service erstellt eine dedizierte IP-Adresse für die Bindung.
-
-	* [**SNI-basiertes SSL**](https://en.wikipedia.org/wiki/Server_Name_Indication) ermöglicht Bindungen mehrerer Zertifikate an mehrere Domänen. Die meisten modernen Browser (einschließlich Internet Explorer, Chrome, Firefox und Safari) unterstützen SNI, ältere Browser hingegen möglicherweise nicht.
- 
-10. Klicken Sie zum Fertigstellen auf **Speichern**.
+       • Bei IP-basiertem SSL wird ein Zertifikat mit einem Domänennamen verknüpft, indem die dedizierte öffentliche IP-Adresse des Servers dem Domänennamen zugeordnet wird. Voraussetzung dafür ist, dass jeder mit Ihrem Dienst verknüpfte Domänenname (contoso.com, fabricam.com usw.) eine dedizierte IP-Adresse hat. Dies ist die herkömmliche Methode, SSL-Zertifikate einem Webserver zuzuordnen. • SNI-basiertes SSL ist eine Erweiterung für SSL und **[Transport Layer Security](http://en.wikipedia.org/wiki/Transport_Layer_Security)** (TLS). Dabei können mehrere Domänen die gleiche IP-Adresse gemeinsam nutzen, während jede Domäne über eigene Sicherheitszertifikate verfügt. Die meisten modernen Browser (einschließlich Internet Explorer, Chrome, Firefox und Opera) unterstützen SNI, ältere Browser hingegen möglicherweise nicht. Weitere Informationen über SNI finden Sie im Wikipedia-Artikel **[Server Name Indication](http://en.wikipedia.org/wiki/Server_Name_Indication)** (Servernamensanzeige).
+     
+9. Klicken Sie auf **Bindung hinzufügen**, um die Änderungen zu speichern und SSL zu aktivieren.
 
 ## Schritt 3: Ändern Sie Ihre Domänennamenzuordnung (nur IP-basiertes SSL).
 
@@ -450,9 +446,9 @@ Wenn Sie nur **SNI SSL**-Bindungen verwenden, überspringen Sie diesen Abschnitt
 
 - Sie [haben einen A-Eintrag verwendet, um Ihre benutzerdefinierte Domäne Ihrer Azure-App zuzuordnen](web-sites-custom-domain-name.md#a), und Sie haben soeben eine Bindung gemäß **IP-basiertem SSL** hinzugefügt. In diesem Szenario müssen Sie den vorhandenen A-Eintrag wie folgt neu zuordnen, sodass er auf die dedizierte IP-Adresse zeigt:
 
-	1. Nach der Konfiguration einer Bindung gemäß IP-basiertem SSL finden Sie die neue IP-Adresse auf dem Blatt **Einstellungen** > **Eigenschaften** Ihrer App (die virtuelle IP-Adresse, die auf dem Blatt **Externe Domänen einreichen** angezeigt wird, ist möglicherweise nicht aktuell):
+	1. Nach der Konfiguration einer IP-basierten SSL-Bindung wird Ihrer App eine dedizierte IP-Adresse zugewiesen. Diese IP-Adresse befindet sich auf der Seite **Benutzerdefinierte Domäne** unter den Einstellungen Ihrer App (direkt über dem Abschnitt **Hostnamen**). Sie ist als **Externe IP-Adresse** angegeben.
     
-	    ![Virtuelle IP-Adresse](./media/web-sites-configure-ssl-certificate/staticip.png)
+	    ![Virtuelle IP-Adresse](./media/web-sites-configure-ssl-certificate/virtual-ip-address.png)
 
 	2. [Ordnen Sie den A-Eintrag für Ihren benutzerdefinierten Domänennamen dieser neuen IP-Adresse neu zu](web-sites-custom-domain-name.md#a).
 
@@ -551,4 +547,4 @@ Weitere Informationen zum IIS-URL-Rewrite-Modul finden Sie unter der Dokumentati
 [certwiz3]: ./media/web-sites-configure-ssl-certificate/waws-certwiz3.png
 [certwiz4]: ./media/web-sites-configure-ssl-certificate/waws-certwiz4.png
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0824_2016-->

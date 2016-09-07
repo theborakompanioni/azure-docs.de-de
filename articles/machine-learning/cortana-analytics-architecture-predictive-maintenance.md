@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/14/2016"
+	ms.date="08/19/2016"
 	ms.author="garye" />
 
 # Architektur der Cortana Intelligence-Lösungsvorlage zum Vorhersagen des Wartungsbedarfs in der Luft- und Raumfahrt sowie weiteren Branchen
@@ -26,4 +26,4 @@ Eine Version des Diagramms in voller Größe können Sie hier herunterladen: [Ar
 
 [image]: ./media/cortana-analytics-architecture-predictive-maintenance/ca-topologies-maintenance-prediction.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0824_2016-->

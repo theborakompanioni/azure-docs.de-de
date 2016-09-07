@@ -14,18 +14,12 @@ ms.devlang="multiple"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="integration"
-ms.date="05/17/2016"
+ms.date="08/18/2016"
 ms.author="deonhe"/>
 
 # Erste Schritte mit dem Wunderlist-Connector
 
-
-
-Der Wunderlist-Connector kann verwendet werden in:
-
-- [Logik-Apps](../app-service-logic/app-service-logic-what-are-logic-apps.md)
-- [PowerApps](http://powerapps.microsoft.com)
-- [Flow](http://flows.microsoft.com)
+Wunderlist ist gleichzeitig eine Aufgabenliste und ein Aufgabenmanager und erleichtert es Menschen, ihren Alltag zu meistern. Ob Sie eine Einkaufsliste mit Ihrem Partner teilen, an einem Projekt arbeiten oder Ihren Urlaub planen – Wunderlist hilft Ihnen dabei, Ihre Aufgaben zu notieren, sie zu teilen und zu erledigen. Dabei übernimmt Wunderlist die Synchronisierung zwischen Telefon, Tablet und Computer – die Aufgaben sind auf allen Geräten sofort zur Hand.
 
 >[AZURE.NOTE] Diese Version des Artikels gilt für die Schemaversion 2015-08-01-preview für Logik-Apps.
 
@@ -81,11 +75,11 @@ Sie können auf diese Ereignisse lauschen:
 
 
 ## Herstellen einer Verbindung mit Wunderlist
-Um Logik-Apps mit Wunderlist zu erstellen, müssen Sie zuerst eine **Verbindung** herstellen und anschließend die Details für die folgenden Eigenschaften angeben:
+Um Logik-Apps mit Wunderlist zu erstellen, müssen Sie zuerst eine **Verbindung** erstellen und anschließend die Details für die folgenden Eigenschaften angeben:
 
 |Eigenschaft| Erforderlich|Beschreibung|
 | ---|---|---|
-|Tokenverschlüsselung|Ja|Angeben der Anmeldeinformationen für Wunderlist|
+|Token|Ja|Angeben der Anmeldeinformationen für Wunderlist|
 Nachdem Sie die Verbindung erstellt haben, können Sie sie zum Ausführen der Aktionen und zum Lauschen auf die in diesem Artikel beschriebenen Trigger verwenden.
 
 
@@ -95,7 +89,7 @@ Nachdem Sie die Verbindung erstellt haben, können Sie sie zum Ausführen der Ak
 >[AZURE.TIP] Sie können diese Verbindung in anderen Logik-Apps verwenden.
 
 ## Referenz für Wunderlist
-Gilt für Version: 1.0.
+Gilt für Version 1.0.
 
 ## TriggerTaskDue
 Wenn eine Aufgabe fällig ist: Löst einen neuen Workflow aus, sobald eine Aufgabe in der Liste fällig ist.
@@ -178,7 +172,7 @@ Liste erstellen: Erstellt eine Liste.
 |Name|Beschreibung|
 |---|---|
 |200|Vorgang erfolgreich|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 
 ## ListTasks
@@ -226,7 +220,7 @@ Teilaufgaben abrufen: Ruft Teilaufgaben aus einer bestimmten Liste oder einer be
 | ---|---|---|---|---|---|
 |list\_id|integer|Ja|query|(Keine)|ID der Liste|
 |task\_id|integer|no|query|(Keine)|ID der Aufgabe|
-|completed|Boolescher Wert|no|query|(Keine)|Abgeschlossen|
+|abgeschlossen|Boolescher Wert|no|query|(Keine)|Abgeschlossen|
 
 #### Antwort
 
@@ -360,7 +354,7 @@ Erinnerung festlegen: Legt eine Erinnerung fest.
 |Name|Beschreibung|
 |---|---|
 |200|Vorgang erfolgreich|
-|default|Fehler beim Vorgang.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 
 ## RetrieveFiles
@@ -711,7 +705,7 @@ Erinnerung löschen: Löscht eine bestimmte Erinnerung.
 
 
 
-### Comment
+### Kommentar
 
 
 | Eigenschaftenname | Datentyp | Erforderlich |
@@ -808,7 +802,7 @@ Erinnerung löschen: Löscht eine bestimmte Erinnerung.
 |list\_id|integer|Ja |
 |task\_id|integer|Ja |
 |title|string|Ja |
-|completed|Boolescher Wert|Nein |
+|abgeschlossen|Boolescher Wert|Nein |
 
 
 
@@ -904,4 +898,4 @@ Erinnerung löschen: Löscht eine bestimmte Erinnerung.
 ## Nächste Schritte
 [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0824_2016-->

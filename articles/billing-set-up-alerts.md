@@ -10,27 +10,27 @@
 	/>
 
 <tags
-	ms.service="multiple"
-	ms.workload="multiple"
+	ms.service="billing"
+	ms.workload="na"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/17/2016"
+	ms.date="08/18/2016"
 	ms.author="vikdesai"/>
 
 # Einrichten von Abrechnungswarnungen für Microsoft Azure-Abonnements
 
 Machen Sie sich Gedanken darum, wie viel Sie jeden Monat für Ihr Azure-Abonnement ausgeben? Wenn Sie der Kontoadministrator für ein Azure-Abonnement sind, können Sie den Dienst für Azure-Abrechnungswarnungen zum Erstellen von benutzerdefinierten Abrechnungswarnungen verwenden, mit dem Sie Abrechnungsaktivitäten für Ihre Azure-Konten überwachen und verwalten können.
 
-Dieser Dienst ist ein Vorschaudienst, daher müssen Sie sich zunächst dafür registrieren – besuchen Sie dazu die <a href="https://account.windowsazure.com/PreviewFeatures">Funktionsvorschauseite</a> im Azure-Kontoverwaltungsportal.
+Dieser Dienst ist ein Vorschaudienst, daher müssen Sie sich zunächst für den Dienst registrieren. Besuchen Sie die [Seite mit den Vorschaufeatures](https://account.windowsazure.com/PreviewFeatures) im Azure-Kontoverwaltungsportal, um dieses Feature zu aktivieren.
 
 ## Festlegen des Schwellenwerts für Warnungen und von E-Mail-Empfängern
 
-Nachdem Sie die E-Mail-Bestätigung erhalten haben, dass der Abrechnungsdienst für Ihr Abonnement aktiviert ist, besuchen Sie die <a href="https://account.windowsazure.com/Subscriptions">Abonnementseite</a> im Kontoportal. Klicken Sie auf das zu überwachende Abonnement, und klicken Sie dann auf **Benachrichtigungen**.
+Nachdem Sie die E-Mail-Bestätigung erhalten haben, dass der Abrechnungsdienst für Ihr Abonnement aktiviert ist, besuchen Sie die [Abonnementseite](https://account.windowsazure.com/Subscriptions) im Kontoportal. Klicken Sie auf das zu überwachende Abonnement, und klicken Sie dann auf **Benachrichtigungen**.
 
 ![][Image1]
 
-Klicken Sie dann auf **Benachrichtigung hinzufügen**, um die erste Benachrichtigung zu erstellen. Sie können bis zu fünf Abrechnungswarnungen pro Abonnement mit unterschiedlichem Schwellenwert und mit jeweils bis zu zwei E-Mail-Empfängern einrichten.
+Klicken Sie dann auf **Benachrichtigung hinzufügen**, um die erste Benachrichtigung zu erstellen. Sie können bis zu fünf Abrechnungswarnungen pro Abonnement mit unterschiedlichen Schwellenwerten und mit jeweils bis zu zwei E-Mail-Empfängern einrichten.
 
 ![][Image2]
 
@@ -48,4 +48,4 @@ Nach dem Einrichten von Warnungen werden diese im Account Center aufgelistet. Zu
 [Image2]: ./media/azure-billing-set-up-alerts/billingalert2.png
 [Image3]: ./media/azure-billing-set-up-alerts/billingalerts3.png
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0824_2016-->

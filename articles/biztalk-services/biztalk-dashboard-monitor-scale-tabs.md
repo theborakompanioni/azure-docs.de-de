@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/16/2016" 
+	ms.date="08/23/2016" 
 	ms.author="mandia"/>
 
 
@@ -221,7 +221,7 @@ Man spricht hier von "Rollover-Schlüsseln". Der Zweck ist, zwischen dem Primär
 </table>
 
 
-## Überwachen
+## Monitor
 Gilt nicht für die Free Edition.
 
 Wenn Sie den Namen Ihres BizTalk Service auswählen, steht die Registerkarte "Überwachen" mit folgendem Inhalt zur Verfügung:
@@ -362,4 +362,4 @@ Nun, da Sie mit den verschiedenen Registerkarten vertraut sind, können Sie mehr
 [EnabledMetric]: ./media/biztalk-dashboard-monitor-scale-tabs/WABS_EnabledMetric.png
  
 
-<!-----HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0824_2016-->

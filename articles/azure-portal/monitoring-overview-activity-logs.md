@@ -29,7 +29,7 @@ Hier sind einige Verwendungsmöglichkeiten für das Aktivitätsprotokoll aufgef�
 - Abfragen und Anzeigen des Protokolls im **Azure-Portal**
 - Abfragen per REST-API, PowerShell-Cmdlet oder CLI
 - [Erstellen einer E-Mail- oder Webhookwarnung, die ein Aktivitätsprotokoll auslöst](./insights-auditlog-to-webhook-email.md)
-- Speichern unter einem **Speicherkonto** für die Archivierung oder manuelle Untersuchung. Sie können die Aufbewahrungsdauer (in Tagen) mithilfe von **Protokollprofilen** angeben.
+- [Speichern unter einem **Speicherkonto** zur Archivierung oder manuellen Untersuchung](./monitoring-archive-activity-log.md) Sie können die Aufbewahrungsdauer (in Tagen) mithilfe von **Protokollprofilen** angeben.
 - Analysieren in PowerBI mit dem [**Power BI-Inhaltspaket**](https://powerbi.microsoft.com/de-DE/documentation/powerbi-content-pack-azure-audit-logs/)
 - [Streamen zur Erfassung durch einen Drittanbieterdienst oder durch eine benutzerdefinierte Analyselösung wie Power BI an einen **Event Hub**](./monitoring-stream-activity-logs-event-hubs.md)
 
@@ -54,7 +54,7 @@ Sie können das Aktivitätsprotokoll an einen Event Hub streamen oder in einem S
     ![Schaltfläche „Exportieren“ im Portal](./media/monitoring-overview-activity-logs/activity-logs-portal-export.png)
 3. Auf dem angezeigten Blatt können Sie Folgendes auswählen: die Regionen, für die Sie Ereignisse exportieren möchten, das Speicherkonto, in dem Sie Ereignisse speichern möchten (und die Anzahl von Tagen für die Aufbewahrung dieser Ereignisse im Speicher), und den Service Bus-Namespace, unter dem ein Event Hub zum Streamen dieser Ereignisse erstellt werden soll.
 
-    ![Blatt „Aktivitätsprotokoll exportieren“](./media/monitoring-overview-activity-logs/activity-logs-portal-export-blade.png)
+    ![Blatt zum Exportieren des Aktivitätsprotokolls](./media/monitoring-overview-activity-logs/activity-logs-portal-export-blade.png)
 4. Klicken Sie auf **Speichern**, um die Einstellungen zu speichern. Die Einstellungen werden sofort auf Ihr Abonnement angewendet.
 
 ### Konfigurieren von Protokollprofilen mit den Azure PowerShell-Cmdlets
@@ -221,6 +221,6 @@ Jedes Ereignis im Aktivitätsprotokoll verfügt über ein JSON-Blob dieser Art:
 
 ## Nächste Schritte
 - [Weitere Informationen zum Aktivitätsprotokoll (bisher „Überwachungsprotokolle“)](../resource-group-audit.md)
-- [Stream the Azure Activity Log to Event Hubs](./monitoring-stream-activity-logs-event-hubs.md) (Streamen des Azure-Aktivitätsprotokolls auf Event Hubs)
+- [Stream the Azure Activity Log to Event Hubs (Streamen des Azure-Aktivitätsprotokolls auf Event Hubs)](./monitoring-stream-activity-logs-event-hubs.md)
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0824_2016-->

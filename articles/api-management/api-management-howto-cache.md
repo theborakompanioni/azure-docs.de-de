@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="08/09/2016"
+	ms.date="08/24/2016"
 	ms.author="sdanie"/>
 
 # Hinzufügen der Zwischenspeicherung zum Verbessern der Leistung in Azure API Management
@@ -129,7 +129,6 @@ Geben Sie **25** in das Feld **param2** ein, und klicken Sie dann auf **HTTP Get
 
 ## <a name="next-steps"> </a>Nächste Schritte
 
--	Lesen Sie die anderen Themen im Lernprogramm [Erste Schritte bei der erweiterten API-Konfiguration][].
 -	Weitere Informationen zu Richtlinien für die Zwischenspeicherung finden Sie unter [Richtlinien für die Zwischenspeicherung][] in der [Richtlinienreferenz für API Management][].
 -	Informationen zum Zwischenspeichern von Elementen nach Schlüssel mithilfe von Richtlinienausdrücken finden Sie unter [Benutzerdefiniertes Zwischenspeichern in Azure API Management](api-management-sample-cache-by-key.md).
 
@@ -151,7 +150,6 @@ Geben Sie **25** in das Feld **param2** ein, und klicken Sie dann auf **HTTP Get
 [Add APIs to a product]: api-management-howto-add-products.md#add-apis
 [Publish a product]: api-management-howto-add-products.md#publish-product
 [Erste Schritte mit Azure API Management]: api-management-get-started.md
-[Erste Schritte bei der erweiterten API-Konfiguration]: api-management-get-started-advanced.md
 
 [Richtlinienreferenz für API Management]: https://msdn.microsoft.com/library/azure/dn894081.aspx
 [Richtlinien für die Zwischenspeicherung]: https://msdn.microsoft.com/library/azure/dn894086.aspx
@@ -163,4 +161,4 @@ Geben Sie **25** in das Feld **param2** ein, und klicken Sie dann auf **HTTP Get
 [Call an operation and test the caching]: #test-operation
 [Next steps]: #next-steps
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0831_2016-->

@@ -250,6 +250,8 @@ Bevor Sie eine Cordova-App unter iOS mit Visual Studio ausführen können, müss
 
 Vergewissern Sie sich, dass Sie die App für iOS erstellen können. Die Schritte im Einrichtungsleitfaden sind erforderlich, um die Erstellung für iOS in Visual Studio durchzuführen. Falls Sie nicht über einen Macintosh-Computer verfügen, können Sie für iOS den remotebuild-Agent unter einem Dienst wie MacInCloud nutzen. Weitere Informationen finden Sie unter [Build and simulate a Cordova iOS app in the cloud](http://taco.visualstudio.com/de-DE/docs/build_ios_cloud/) (Erstellen und Simulieren einer Cordova-iOS-App in der Cloud).
 
+>[AZURE.NOTE] Zur Verwendung des Push-Plug-Ins unter iOS wird mindestens XCode 7 benötigt.
+
 ####Suchen nach der ID zur Verwendung als App-ID
 
 Öffnen Sie vor dem Registrieren Ihrer App für Pushbenachrichtigungen die Datei „config.xml“ in Ihrer Cordova-App, suchen Sie im Widgetelement nach dem Attributwert `id`, und kopieren Sie ihn zur späteren Verwendung. Im folgenden XML-Code lautet die ID `io.cordova.myapp7777777`.
@@ -320,7 +322,7 @@ Um die Store-Optionen in Visual Studio zu nutzen, wählen Sie in der Liste mit d
 
 Öffnen Sie den Konfigurations-Designer (per Klick mit der rechten Maustaste auf die Datei „config.xml“ und Auswahl von **Designer anzeigen**), und wählen Sie die Registerkarte **Windows** und unter **Windows-Zielversion** dann **Windows 10** aus.
 
-	>[AZURE.NOTE] If you are using a Cordova version prior to Cordova 5.1.1 (6.1.1 recommended), you must also set the Toast Capable flag to true in config.xml.
+>[AZURE.NOTE] Bei Verwendung einer Cordova-Version vor Cordova 5.1.1 (6.1.1 wird empfohlen) müssen Sie in „config.xml“ auch das Flag „Toastfähig“ auf „true“ festlegen.
 
 Öffnen Sie die Datei „build.json“, um Pushbenachrichtigungen in Ihren Standardbuilds (Debugbuilds) zu unterstützen. Kopieren Sie die „Releasekonfiguration“ in Ihre Debugkonfiguration.
 
@@ -384,4 +386,4 @@ Erfahren Sie, wie Sie die SDKs nutzen,
 [ASP.NET Server-SDK]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
 [Node.js Server-SDK]: app-service-mobile-node-backend-how-to-use-server-sdk.md
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0824_2016-->

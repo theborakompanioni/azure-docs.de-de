@@ -12,16 +12,16 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/02/2016" 
+	ms.date="08/24/2016" 
 	ms.author="awills"/>
  
 # collectd: Unix-Leistungsmetriken in Application Insights
 
 *Application Insights befindet sich in der Vorschau.*
 
-Um Leistungsmetriken für Unix-Systeme in [Application Insights](app-insights-overview.md) zu untersuchen, installieren Sie[collectd](http://collectd.org/) zusammen mit dem entsprechenden Application Insights-Plug-In. Diese Open Source-Lösung sammelt eine Vielzahl von System- und Netzwerkstatistiken.
+Um Leistungsmetriken für Unix-Systeme in [Application Insights](app-insights-overview.md) zu untersuchen, installieren Sie [collectd](http://collectd.org/) zusammen mit dem entsprechenden Application Insights-Plug-In. Diese Open Source-Lösung sammelt verschiedene System- und Netzwerkstatistiken.
 
-In der Regel verwenden Sie collectd, wenn Sie [Ihren Java-Webdienst bereits mithilfe von Application Insights instrumentiert haben][java], sodass mehr Daten zur Verfügung stehen, um Ihnen beim Verbessern der Leistung Ihrer App oder beim Diagnostizieren von Problemen zu helfen.
+collectd wird üblicherweise verwendet, wenn Sie [Ihren Java-Webdienst bereits mit Application Insights instrumentiert haben][java]. Die Lösung liefert weitere Daten, auf deren Grundlage Sie die Leistung Ihrer Anwendung verbessern oder Probleme diagnostizieren können.
 
 ![Beispieldiagramme](./media/app-insights-java-collectd/sample.png)
 
@@ -31,7 +31,7 @@ In der Regel verwenden Sie collectd, wenn Sie [Ihren Java-Webdienst bereits mith
 
 Kopieren Sie den Instrumentationsschlüssel, der die Ressource identifiziert.
 
-![Durchsuchen Sie alle, öffnen Sie die Ressource, und wählen Sie dann in der Dropdownliste "Essentials" den Instrumentationsschlüssel aus, und kopieren Sie ihn](./media/app-insights-java-collectd/02-props.png)
+![Durchsuchen Sie alle Ressourcen, öffnen Sie Ihre Ressource, wählen Sie in der Dropdownliste „Essentials“ den Instrumentationsschlüssel aus, und kopieren Sie ihn.](./media/app-insights-java-collectd/02-props.png)
 
 
 
@@ -86,7 +86,7 @@ Er ist Teil der Beispielkonfigurationsdatei:
     </Plugin>
 . ...
 
-Konfigurieren Sie andere [collectd-Plug-Ins](https://collectd.org/wiki/index.php/Table_of_Plugins), die eine Vielzahl von Daten aus verschiedenen Quellen sammeln können.
+Konfigurieren Sie andere [collectd-Plug-Ins](https://collectd.org/wiki/index.php/Table_of_Plugins), die verschiedenste Daten aus unterschiedlichen Quellen sammeln können.
 
 Starten Sie collectd gemäß dem [Handbuch](https://collectd.org/wiki/index.php/First_steps) neu.
 
@@ -101,7 +101,7 @@ Standardmäßig werden die Metriken für alle Hostcomputer aggregiert, von denen
 
 ## So schließen Sie den Upload bestimmter Statistiken aus
 
-Standardmäßig sendet das Application Insights-Plug-In alle Daten, die von allen aktivierten "lesenden" collectd-Plug-Ins gesammelt wurden.
+Standardmäßig sendet das Application Insights-Plug-In alle Daten, die von allen aktivierten collectd-Lese-Plug-Ins gesammelt wurden.
 
 So schließen Sie Daten von bestimmten Plug-Ins oder Datenquellen aus:
 
@@ -121,6 +121,7 @@ Trennen Sie Direktiven mit einem Zeilenumbruch.
 *Daten werden im Portal nicht angezeigt.*
 
 * Öffnen Sie [Search][diagnostic], um zu überprüfen, ob die Rohereignisse angekommen sind. Manchmal dauert es länger, bis sie im Metrik-Explorer angezeigt werden.
+* Gegebenenfalls müssen Sie [Firewallausnahmen für ausgehende Daten festlegen](app-insights-ip-addresses.md).
 * Aktivieren Sie die Ablaufverfolgung im Application Insights-Plug-In. Fügen Sie diese Zeile in `<Plugin ApplicationInsightsWriter>` hinzu:
  *  `SDKLogger true`
 * Öffnen Sie ein Terminal, und starten Sie collectd im ausführlichen Modus, um alle gemeldeten Probleme anzuzeigen:
@@ -143,4 +144,4 @@ Trennen Sie Direktiven mit einem Zeilenumbruch.
 
  
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0824_2016-->

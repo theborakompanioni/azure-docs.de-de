@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="05/24/2016"
+   ms.date="08/17/2016"
    ms.author="alkohli" />
 
 # Austauschen des EBOD-Controllers eines StorSimple-Geräts
@@ -89,7 +89,7 @@ Im folgenden Verfahren sowie in der Tabelle wird erläutert, wie ein EBOD-Contro
 
     ![Stromverkabelung des 4 HE-Geräts](./media/storsimple-ebod-controller-replacement/IC770723.png)
 
-    **Abbildung 4** Erneutes Anschließen der Kabel
+    **Abbildung 4**. Erneutes Anschließen der Kabel
 
     |Bezeichnung|Beschreibung|
     |:----|:----------|
@@ -107,4 +107,4 @@ Im folgenden Verfahren sowie in der Tabelle wird erläutert, wie ein EBOD-Contro
 
 Erfahren Sie mehr zum [Austauschen von StorSimple-Hardwarekomponenten](storsimple-hardware-component-replacement.md).
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0824_2016-->

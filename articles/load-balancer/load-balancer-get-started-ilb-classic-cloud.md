@@ -1,21 +1,21 @@
-<properties 
+<properties
    pageTitle="Erfahren Sie, wie Sie einen internen Lastenausgleich für Clouddienste im klassischen Bereitstellungsmodell erstellen | Microsoft Azure"
    description="Hier erfahren Sie, wie Sie mithilfe von PowerShell einen internen Lastenausgleich im klassischen Bereitstellungsmodell erstellen."
    services="load-balancer"
    documentationCenter="na"
-   authors="joaoma"
-   manager="carolz"
+   authors="sdwheeler"
+   manager="carmonm"
    editor=""
    tags="azure-service-management"
 />
-<tags  
+<tags
    ms.service="load-balancer"
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="02/09/2016"
-   ms.author="joaoma" />
+   ms.author="sewhee" />
 
 # Erste Schritte zum Erstellen eines internen Lastenausgleichs (klassisch) für Clouddienste
 
@@ -91,4 +91,4 @@ Der Lastenausgleich für den Netzwerkdatenverkehr erfolgt für eingehende Anford
 
 [Konfigurieren von TCP-Leerlauftimeout-Einstellungen für den Lastenausgleich](load-balancer-tcp-idle-timeout.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0824_2016-->

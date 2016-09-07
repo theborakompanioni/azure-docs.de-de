@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="06/20/2016"
+   ms.date="08/19/2016"
    ms.author="alkohli" />
 
 # Einführung in das StorSimple Virtual Array
@@ -23,7 +23,7 @@ Willkommen beim Microsoft Azure StorSimple Virtual Array. Hierbei handelt es sic
 
 In dieser Übersicht geht es um das Virtual Array.
 
-- Eine Übersicht über StorSimple-Geräte der 8000er Serie finden Sie unter [StorSimple 8000er Serie: Hybridcloud-Lösung](storsimple-overview.md). 
+- Eine Übersicht über StorSimple-Geräte der 8000er Serie finden Sie unter [StorSimple 8000er Serie: Hybridcloud-Lösung](storsimple-overview.md).
 
 - Informationen zu den Geräten der StorSimple 5000/7000er Serie finden Sie unter [StorSimple-Onlinehilfe](http://onlinehelp.storsimple.com/).
 
@@ -31,10 +31,10 @@ Das Virtual Array unterstützt das iSCSI- oder Server Message Block-Protokoll (S
 
 In der folgenden Tabelle sind die wichtigen Features des Virtual Array zusammengefasst.
 
-| Funktion | Virtual Array |
+| Feature | Virtual Array |
 | ------- | ------------- |
 |Installationsanforderungen | Verwendung der Virtualisierungsinfrastruktur (Hyper-V oder VMware)|
-| Availability | Einzelner Knoten |
+| Verfügbarkeit | Einzelner Knoten |
 | Gesamtkapazität (einschließlich Cloud) |Bis zu 64 TB nutzbare Kapazität pro virtuellem Gerät |
 | Lokale Kapazität | 390 GB bis 6,4 TB nutzbare Kapazität pro virtuellem Gerät (Bereitstellung von Datenträger-Speicherplatz im Bereich 500 GB bis 8 TB erforderlich)|
 | Systemeigene Protokolle | iSCSI oder SMB |
@@ -45,7 +45,8 @@ In der folgenden Tabelle sind die wichtigen Features des Virtual Array zusammeng
 | Leistung | Variiert je nach zugrunde liegender Infrastruktur |
 | Datenmobilität | Wiederherstellung auf demselben Gerät oder Wiederherstellung auf Elementebene (Dateiserver) |
 | Speicherebenen | Lokale Hypervisor-Speicherung und Cloud |
-| Freigabe- oder Volumegröße |Mehrstufig: bis zu 20 TB; Lokal: bis zu 2 TB |
+| Freigabegröße |Mehrstufig: bis zu 20 TB; Lokal: bis zu 2 TB |
+| Volumegröße |Mehrstufig: bis zu 5 TB; lokal: bis zu 500 GB |
 | Momentaufnahmen | Absturzkonsistenz |
 | Wiederherstellung auf Elementebene | Ja, Benutzer können von Freigaben wiederherstellen |
 
@@ -55,7 +56,7 @@ StorSimple verbindet Benutzer und Server in wenigen Minuten mit Azure-Speicher �
 
 In der folgenden Tabelle sind einige wichtige Vorteile der Virtual Array-Lösung aufgeführt.
 
-| Funktion | Vorteil |
+| Feature | Vorteil |
 |---------|---------|
 | Transparente Integration | Das Virtual Array unterstützt das iSCSI- oder SMB-Protokoll. Die Datenverschiebung zwischen der lokalen und der Cloudebene erfolgt nahtlos und transparent für den Benutzer.|
 | Reduzierte Speicherkosten | Mit StorSimple stellen Sie ausreichend lokalen Speicher bereit, um die aktuellen Anforderungen für sehr häufig verwendete heiße Daten zu erfüllen. Wenn die Speicheranforderungen steigen, ordnet StorSimple kalte Daten im kostengünstigen Cloudspeicher an. Die Daten werden vor dem Senden an die Cloud dedupliziert und komprimiert, um die Speicheranforderungen und -kosten noch weiter zu reduzieren.|
@@ -87,15 +88,15 @@ Das Virtual Array unterstützt die folgenden Szenarien für den Schutz der Daten
 
 - **Wiederherstellung von Volumes oder Freigaben:** Verwenden Sie die Wiederherstellung als neuen Workflow zum Wiederherstellen eines Volumes oder einer Freigabe. Nutzen Sie diesen Ansatz, um das gesamte Volume oder die Freigabe wiederherzustellen.
 - **Wiederherstellung auf Elementebene:** Freigaben ermöglichen den vereinfachten Zugriff auf die letzten Sicherungen. Sie können eine einzelne Datei leicht über einen speziellen Ordner mit der Bezeichnung „.backup“ in der Cloud wiederherstellen. Diese Wiederherstellungsfunktion ist benutzergesteuert, und es ist kein Eingreifen des Administrators erforderlich.
-- **Notfallwiederherstellung:** Verwenden Sie die Failoverfunktion, um alle Volumes oder Freigaben auf einem neuen Virtual Array wiederherzustellen. Sie erstellen ein neues Virtual Array und registrieren es beim StorSimple Manager-Dienst. Anschließend führen Sie das Failover für das ursprüngliche Virtual Array durch. Das neue Virtual Array übernimmt dann die bereitgestellten Ressourcen. 
+- **Notfallwiederherstellung:** Verwenden Sie die Failoverfunktion, um alle Volumes oder Freigaben auf einem neuen Virtual Array wiederherzustellen. Sie erstellen ein neues Virtual Array und registrieren es beim StorSimple Manager-Dienst. Anschließend führen Sie das Failover für das ursprüngliche Virtual Array durch. Das neue Virtual Array übernimmt dann die bereitgestellten Ressourcen.
 
 ## Virtual Array-Komponenten
 
 Das Virtual Array umfasst die folgenden Komponenten:
 
-- [Virtual Array:](#virtual-array) ein Hybrid-Cloudspeichergerät basierend auf einem virtuellen Computer, der in Ihrer virtualisierten Umgebung oder im Hypervisor bereitgestellt wird.  
-- [StorSimple Manager-Dienst:](#storsimple-manager-service) eine Erweiterung des klassischen Azure-Portals, mit der Sie ein oder mehrere StorSimple-Geräte über eine zentrale Webschnittstelle verwalten können, auf die Zugriff von verschiedenen geografischen Standorten aus besteht. Sie können den StorSimple Manager-Dienst verwenden, um Dienste zu erstellen und zu verwalten, Geräte und Warnungen anzuzeigen und zu verwalten und Volumes, Freigaben und vorhandene Momentaufnahmen zu verwalten.
-- [Lokale Webbenutzeroberfläche:](#local-web-user-interface) eine webbasierte UI, die zum Konfigurieren des Geräts verwendet wird. So kann die Verbindung mit dem lokalen Netzwerk hergestellt werden, und anschließend kann das Gerät beim StorSimple Manager-Dienst registriert werden. 
+- [Virtual Array:](#virtual-array) ein Hybrid-Cloudspeichergerät basierend auf einem virtuellen Computer, der in Ihrer virtualisierten Umgebung oder im Hypervisor bereitgestellt wird.
+- [StorSimple Manager-Dienst:](#storsimple-manager-service) eine Erweiterung des klassischen Azure-Portals, mit der Sie ein oder mehrere StorSimple-Geräte über eine zentrale Webschnittstelle verwalten können, auf die Zugriff von verschiedenen geografischen Standorten möglich ist. Sie können den StorSimple Manager-Dienst verwenden, um Dienste zu erstellen und zu verwalten, Geräte und Warnungen anzuzeigen und zu verwalten und Volumes, Freigaben und vorhandene Momentaufnahmen zu verwalten.
+- [Lokale Webbenutzeroberfläche:](#local-web-user-interface) eine webbasierte UI, die zum Konfigurieren des Geräts verwendet wird. So kann die Verbindung mit dem lokalen Netzwerk hergestellt werden, und anschließend kann das Gerät beim StorSimple Manager-Dienst registriert werden.
 - [Befehlszeilenschnittstelle:](#command-line-interface) eine Windows PowerShell-Schnittstelle, die Sie zum Starten einer Supportsitzung auf dem Virtual Array verwenden können. In den folgenden Abschnitten wird jede dieser Komponenten ausführlicher beschrieben. Es wird zudem erläutert, wie die Lösung Daten anordnet, Speicher zuweist sowie die Speicherverwaltung und den Schutz von Daten vereinfacht.
 
 ### Virtual Array
@@ -107,9 +108,9 @@ Das Virtual Array ist als Modell verfügbar, das heruntergeladen werden kann. Da
 Das Virtual Array bietet die folgenden Features:
 
 - Es ist kostengünstig. Es nutzt Ihre vorhandene Virtualisierungsinfrastruktur und kann auf Ihrem vorhandenen Hyper-V- oder VMware-Hypervisor bereitgestellt werden.
-- Es befindet sich im Rechenzentrum und kann als iSCSI-Server oder Dateiserver konfiguriert werden. 
+- Es befindet sich im Rechenzentrum und kann als iSCSI-Server oder Dateiserver konfiguriert werden.
 - Es ist in die Cloud integriert.
-- Sicherungen werden in der Cloud gespeichert, um die Notfallwiederherstellung und Wiederherstellung auf Elementebene zu vereinfachen. 
+- Sicherungen werden in der Cloud gespeichert, um die Notfallwiederherstellung und Wiederherstellung auf Elementebene zu vereinfachen.
 - Sie können Updates auf das Virtual Array anwenden, wie Sie dies auch für ein physisches Gerät durchführen.
 
 >[AZURE.NOTE] Ein Virtual Array kann nicht erweitert werden. Daher ist es wichtig, ausreichend Speicherplatz bereitzustellen, wenn Sie das virtuelle Gerät erstellen.
@@ -118,7 +119,7 @@ Das Virtual Array bietet die folgenden Features:
 
 Microsoft Azure StorSimple stellt eine webbasierte Benutzeroberfläche (den StorSimple-Manager-Dienst) zur Verfügung, die die zentrale Verwaltung des Datencenters und Cloudspeichers ermöglicht. Mithilfe des StorSimple-Manager-Diensts können Sie die folgenden Aufgaben ausführen:
 
-- Verwalten von mehreren StorSimple Virtual Arrays über einen zentralen Dienst 
+- Verwalten von mehreren StorSimple Virtual Arrays über einen zentralen Dienst
 - Konfigurieren und Verwalten von Sicherheitseinstellungen für StorSimple-Geräte (Die Verschlüsselung in der Cloud richtet sich nach den Microsoft Azure-APIs.)
 - Konfigurieren der Anmeldeinformationen und Eigenschaften für das Speicherkonto
 - Konfigurieren und Verwalten der Volumes oder Freigaben
@@ -144,9 +145,9 @@ Mit der integrierten Windows PowerShell-Schnittstelle können Sie eine Supportsi
 
 Zusätzlich zum Virtual Array und anderen Komponenten nutzt die StorSimple-Lösung die folgende Softwaretechnologie, um den schnellen Zugriff auf wichtige Daten zu ermöglichen, den Speicherverbrauch zu verringern und auf dem Virtual Array gespeicherte Daten zu schützen:
 
-- [Automatische Speicherstaffelung](#automatic-storage-tiering) 
+- [Automatische Speicherstaffelung](#automatic-storage-tiering)
 - [Lokale Freigaben und Volumes](#locally-pinned-shares-and-volumes)
-- [Deduplizierung und Komprimierung für in der Cloud angeordnete oder gesicherte Daten](#deduplication-and-compression-for-data-tiered/backed-up-to-the-cloud) 
+- [Deduplizierung und Komprimierung für in der Cloud angeordnete oder gesicherte Daten](#deduplication-and-compression-for-data-tiered/backed-up-to-the-cloud)
 - [Geplante und bedarfsgesteuerte Sicherungen](#scheduled-and-on-demand-backups)
 
 ### Automatische Speicherstaffelung
@@ -184,4 +185,4 @@ Mit StorSimple-Features zum Schutz der Daten können Sie bedarfsgesteuerte Siche
 
 Erfahren Sie, wie Sie das [Virtual Array-Portal vorbereiten](storsimple-ova-deploy1-portal-prep.md).
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0824_2016-->

@@ -16,7 +16,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="03/03/2016"
+   ms.date="08/19/2016"
    ms.author="gwallace" />
 
 # Systemüberwachung des Application Gateways – Übersicht
@@ -34,7 +34,7 @@ Beispiel: Sie konfigurieren Ihr Application Gateway für die Verwendung der Back
 
 Wenn die Standardüberprüfung für Server A fehlschlägt, entfernt das Application Gateway sie aus dem Back-End-Pool, und der Netzwerkdatenverkehr an diesen Server wird angehalten. Die Standardüberprüfung führt weiterhin alle 30 Sekunden eine Überprüfung für Server A aus. Wenn Server A erfolgreich auf eine Anforderung einer standardmäßigen Integritätsüberprüfung antwortet, wird er dem Back-End-Pool wieder als fehlerfrei hinzugefügt, und der Datenverkehr an den Server startet erneut.
 
-Der Standardtest untersucht nur http://127.0.0.1:<port>, um den Integritätsstatus zu bestimmen. Wenn Sie die Integritätsüberprüfung für eine benutzerdefinierte URL konfigurieren oder andere Einstellungen ändern möchten, müssen Sie benutzerdefinierte Überprüfungen wie unten beschrieben verwenden.
+Der Standardtest untersucht nur http://127.0.0.1:\<port>, um den Integritätsstatus zu bestimmen. Wenn Sie die Integritätsüberprüfung für eine benutzerdefinierte URL konfigurieren oder andere Einstellungen ändern möchten, müssen Sie benutzerdefinierte Überprüfungen wie unten beschrieben verwenden.
 
 ### Einstellungen für die standardmäßige Integritätsüberprüfung
 
@@ -67,4 +67,4 @@ Benutzerdefinierte Überprüfungen ermöglichen Ihnen eine präzisere Kontrolle 
 
 Nachdem Sie sich mit der Systemüberwachung von Application Gateway vertraut gemacht haben, können Sie einen [benutzerdefinierten Integritätstest](application-gateway-create-probe-ps.md) für Azure Resource Manager oder einen [benutzerdefinierten Integritätstest](application-gateway-create-probe-classic-ps.md) für das klassische Azure-Bereitstellungsmodell konfigurieren.
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0824_2016-->

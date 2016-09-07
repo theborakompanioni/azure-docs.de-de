@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="mobile-multiple"
    ms.workload="mobile" 
-   ms.date="02/29/2016"
+   ms.date="08/19/2016"
    ms.author="piyushjo"/>
 
 # Erste Schritte bei der Verwendung und Verwaltung von Push-Vorgängen, um Ihre Endbenutzern zu erreichen.
@@ -21,7 +21,7 @@
 Sobald das SDK vollständig in Ihrer App integriert ist, können Sie erste Schritte mit dem Abschnitt „Reichweite“ der Benutzeroberfläche machen, um Pushbenachrichtigungen an die Benutzer Ihrer App zu senden.
 
 ## Ausführen der ersten Pushbenachrichtigungskampagne
--    Bestätigen Sie, dass Reach mit dem SDK in Ihrer App integriert ist. 
+-    Bestätigen Sie, dass Reach mit dem SDK in Ihrer App integriert ist.
 -    Wählen Sie Ihre Anwendung.
  
 ![First1][1]
@@ -44,7 +44,7 @@ Sobald das SDK vollständig in Ihrer App integriert ist, können Sie erste Schri
 
 -    Sie können einen Titel für die Benachrichtigung eingeben (optional).
 -    Geben Sie den Inhalt der Nachricht ein.
--    Sie können ein Bild hochladen. Beachten Sie, dass die Dateigröße 32.768 Bytes nicht überschreiten darf.
+-    Sie können ein Bild hochladen. Beachten Sie, dass die Dateigröße 32.768 Bytes nicht überschreiten darf.
 -    Zudem haben Sie die Möglichkeit, weitere Optionen auszuwählen, aber im Rahmen dieses Lernprogramms, werden diese später gezeigt.
 
 -    Wählen Sie als Inhaltstyp „Nur Benachrichtigung“ aus.
@@ -111,8 +111,8 @@ Die Personalisierung funktioniert durch Ersetzen einer Markierung durch ein App-
 
 Der Übermittlungsmodus für „Nur außerhalb App“ stellt Pushbenachrichtigungen bereit, wenn die Anwendung geschlossen ist. Dies ist die Standard-Pushbenachrichtigung. Wenn Sie die Option für „Nur außerhalb App“ auswählen, müssen Sie bereits die Zertifikate von der Plattform bereitgestellt haben, auf der Ihre Anwendung aufsetzt (APNS oder GCM).
 
-### Weitere Informationen
--  [Apple-Pushbenachrichtigungsdienst – Zertifikate](http://developer.apple.com/library/mac/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/ApplePushService/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW9), Google Cloud Messaging – Zertifikate](http://developer.android.com/google/gcm/index.html) 
+### Siehe auch
+-  [Apple-Pushbenachrichtigungsdienst – Zertifikate](http://developer.apple.com/library/mac/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/ApplePushService/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW9), Google Cloud Messaging – Zertifikate](http://developer.android.com/google/gcm/index.html)
 
 ### Übermittlungsmodus für „Nur in App“
 ![Differenzieren3][17]
@@ -127,7 +127,7 @@ Sie können den Übermittlungsmodus für „Immer“ auswählen, um sicherzustel
 ![Planen1][18]
 
 Angenommen, es ist der 21. März und Sie haben eine Ankündigung zu machen, die für den 22. März um Mitternacht geplant ist. Sie müssen für eine Pushbenachrichtigung nicht direkt vor dem Gerät sitzen! Sie können den Sendezeitpunkt für eine Benachrichtigung auf die Minute genau planen.
--    Deaktivieren Sie das Kontrollkästchen „Keine“, und wählen Sie eine Startzeit aus. 
+-    Deaktivieren Sie das Kontrollkästchen „Keine“, und wählen Sie eine Startzeit aus.
 -    Wählen Sie das gewünschte Datum und die Uhrzeit zum Starten der Pushkampagne aus.
 
 ### Planen des Kampagnenendes
@@ -148,7 +148,7 @@ Die Kontrollkästchen „Keine“ sind standardmäßig aktiviert. Das bedeutet, 
 ### Was ist eine Textansicht?
 ![Textansicht1][21]
 
-Eine Textansicht ist ein Popupfenster mit Textinhalt. Dieses Popupfenster wird angezeigt, nachdem der Benutzer auf die Pushbenachrichtigung geklickt hat. Eine Textansicht ermöglicht es Ihnen, dem Benutzer weitere Inhalte anzuzeigen. Das bietet Ihnen auch die Möglichkeit, einen Aktionsaufruf darzustellen, z. B. den Wechsel zu einer Seite der App, die Umleitung zu einem Store, das Öffnen einer Webseite, das Senden einer E-Mail, das Starten einer geografischen Suche usw.
+Eine Textansicht ist ein Popupfenster mit Textinhalt. Dieses Popupfenster wird angezeigt, nachdem der Benutzer auf die Pushbenachrichtigung geklickt hat. Eine Textansicht ermöglicht es Ihnen, dem Benutzer weitere Inhalte anzuzeigen. Das bietet Ihnen auch die Möglichkeit, einen Aktionsaufruf darzustellen, z. B. den Wechsel zu einer Seite der App, die Umleitung zu einem Store, das Öffnen einer Webseite, das Senden einer E-Mail, das Starten einer geografischen Suche usw.
 
 ### Beispiel: Textansicht
 -    Erstellen Sie Ihre Pushbenachrichtigungskampagne im Bereich „Reach“, und weisen Sie der Kampagne einen Namen zu.
@@ -168,7 +168,7 @@ Eine Textansicht ist ein Popupfenster mit Textinhalt. Dieses Popupfenster wird a
 
 -    Geben Sie den Titel ein, der am oberen Rand der Nachricht angezeigt wird.
 -    Geben Sie den Hauptinhalt der Textansicht ein.
--    Geben Sie den Inhalt ein, der auf der Aktionsschaltfläche angezeigt wird (mithilfe einer Aktionsschaltfläche kann die Anwendung eine bestimmte Aktion ausführen, z. B. eine Seite der Anwendung öffnen, zu einem App-Store oder einer beliebigen anderen Ressource weiterleiten, die Sie bereitstellen können).
+-    Geben Sie den Inhalt ein, der auf der Aktionsschaltfläche angezeigt wird (mithilfe einer Aktionsschaltfläche kann die Anwendung eine bestimmte Aktion ausführen, z. B. eine Seite der Anwendung öffnen, zu einem App-Store oder einer beliebigen anderen Ressource weiterleiten, die Sie bereitstellen können).
 -    Geben Sie den Inhalt ein, der auf der Schaltfläche zum Beenden angezeigt wird (wenn Sie auf die Schaltfläche zum Beenden klicken, wird die Textansicht geschlossen).
  
 -    Erstellen Sie Ihre Pushbenachrichtigungskampagne, damit sie in der Kampagnenliste angezeigt wird.
@@ -190,7 +190,7 @@ Eine Textansicht ist ein Popupfenster mit Textinhalt. Dieses Popupfenster wird a
 ### Was ist eine Webansicht?
 ![Webansicht1][28]
 
-Eine Webansicht ist ein Popupfenster mit Webinhalt. Dieses Popupfenster wird angezeigt, nachdem der Benutzer auf die Pushbenachrichtigung geklickt hat. Eine Webansicht ermöglicht es Ihnen, dem Benutzer weitere Interaktionen zu ermöglichen. Das bietet Ihnen auch die Möglichkeit, einen Aktionsaufruf darzustellen, z. B. die Umleitung zu einem App-Store, das Öffnen einer Webseite, das Senden einer E-Mail, das Starten einer geografischen Suche usw.
+Eine Webansicht ist ein Popupfenster mit Webinhalt. Dieses Popupfenster wird angezeigt, nachdem der Benutzer auf die Pushbenachrichtigung geklickt hat. Eine Webansicht ermöglicht es Ihnen, dem Benutzer weitere Interaktionen zu ermöglichen. Das bietet Ihnen auch die Möglichkeit, einen Aktionsaufruf darzustellen, z. B. die Umleitung zu einem App-Store, das Öffnen einer Webseite, das Senden einer E-Mail, das Starten einer geografischen Suche usw.
 
 ### Beispiel: Webansicht
 -    Erstellen Sie Ihre Pushkampagne im Bereich „Reach“, und weisen Sie der Kampagne einen Namen zu.
@@ -217,7 +217,7 @@ Eine Webansicht ist ein Popupfenster mit Webinhalt. Dieses Popupfenster wird ang
 -    Geben Sie den Titel ein, der am oberen Rand der Nachricht angezeigt wird (optional).
 -    Geben Sie hier Ihren HTML-Code ein.
 -    Klicken Sie auf die Schaltfläche für die Bearbeitung im Quellmodus, um die Edition zu wechseln und das Layout zu betrachten.
--    Geben Sie den Inhalt ein, der auf der Aktionsschaltfläche angezeigt wird (mithilfe einer Aktionsschaltfläche kann die Anwendung eine bestimmte Aktion ausführen, z. B. eine Seite der Anwendung öffnen, zu einem Store oder einer beliebigen anderen Ressource weiterleiten, die Sie bereitstellen können).
+-    Geben Sie den Inhalt ein, der auf der Aktionsschaltfläche angezeigt wird (mithilfe einer Aktionsschaltfläche kann die Anwendung eine bestimmte Aktion ausführen, z. B. eine Seite der Anwendung öffnen, zu einem Store oder einer beliebigen anderen Ressource weiterleiten, die Sie bereitstellen können).
 -    Geben Sie den Inhalt ein, der auf der Schaltfläche zum Beenden angezeigt wird (wenn Sie auf die Schaltfläche zum Beenden klicken, wird die Webansicht geschlossen).
  
 -    Ergebnis
@@ -297,4 +297,4 @@ Eine Webansicht ist ein Popupfenster mit Webinhalt. Dieses Popupfenster wird ang
 [Link 33]: ../mobile-engagement-how-tos-web-view.md
  
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0824_2016-->

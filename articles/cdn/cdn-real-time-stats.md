@@ -66,7 +66,7 @@ Das Diagramm **Statuscodes** gibt an, wie oft bestimmte HTTP-Antwortcodes im aus
 
 > [AZURE.TIP]  Eine Beschreibung der einzelnen HTTP-Statuscodeoptionen finden Sie unter [Azure CDN HTTP Status Codes](https://msdn.microsoft.com/library/mt759238.aspx) (Azure CDN-HTTP-Statuscodes).
 
-Eine Liste mit den HTTP-Statuscodes wird direkt über dem Diagramm angezeigt. Diese Liste gibt jeden Statuscode an, der im Liniendiagramm enthalten sein kann, sowie die aktuelle Anzahl der Vorkommen pro Sekunde für den jeweiligen Statuscode. Standardmäßig wird für jeden Statuscode in dem Diagramm eine Linie angezeigt. Sie können jedoch auch nur die Statuscodes überwachen, die besondere Bedeutung für Ihre CDN-Konfiguration haben. Überprüfen Sie hierzu die gewünschten Statuscodes, und löschen Sie alle anderen Optionen. Klicken Sie anschließend auf **Diagramm aktualisieren**.
+Eine Liste mit den HTTP-Statuscodes wird direkt über dem Diagramm angezeigt. Diese Liste gibt jeden Statuscode an, der im Liniendiagramm enthalten sein kann, sowie die aktuelle Anzahl der Vorkommen pro Sekunde für den jeweiligen Statuscode. Standardmäßig wird für jeden Statuscode in dem Diagramm eine Linie angezeigt. Sie können jedoch auch nur die Statuscodes überwachen, die besonderen Bedeutung für Ihre CDN-Konfiguration haben. Überprüfen Sie hierzu die gewünschten Statuscodes, und löschen Sie alle anderen Optionen. Klicken Sie anschließend auf **Diagramm aktualisieren**.
 
 Sie können protokollierte Daten für einen bestimmten Statuscode vorübergehend ausblenden. Klicken Sie in der Legende direkt unterhalb des Diagramms auf den Statuscode, den Sie ausblenden möchten. Der Statuscode wird im Diagramm sofort ausgeblendet. Wenn Sie erneut auf den Statuscode klicken, wird die Option wieder angezeigt.
 
@@ -90,7 +90,8 @@ Dieses Diagramm gibt an, wie viele Verbindungen mit den Edgeservern hergestellt 
 
 ## Nächste Schritte
 
-- Informieren Sie sich ausführlicher über [erweiterte HTTP-Berichte](cdn-advanced-http-reports.md).
-- Analysieren von [Verwendungsmustern](cdn-analyze-usage-patterns.md)
+- Benachrichtigungen mit [Echtzeitwarnungen in Azure CDN](cdn-real-time-alerts.md)
+- Ausführlichere Informationen zu [erweiterten HTTP-Berichten](cdn-advanced-http-reports.md)
+- Analyse von [Verwendungsmustern](cdn-analyze-usage-patterns.md)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0824_2016-->

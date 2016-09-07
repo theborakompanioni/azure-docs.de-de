@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/19/2016"
+   ms.date="08/18/2016"
    ms.author="tomfitz"/>
 
 # Erstellen einer Active Directory-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff mithilfe des Portals
@@ -26,7 +26,7 @@
 
 Bei Verwendung einer Anwendung, die auf Ressourcen zugreifen oder diese ändern muss, müssen Sie eine Active Directory-Anwendung (AD) einrichten und ihr die erforderlichen Berechtigungen zuweisen. In diesem Thema erfahren Sie, wie diese Schritte über das Portal ausgeführt werden. Derzeit müssen Sie das klassische Portal verwenden, um eine neue Active Directory-Anwendung zu erstellen, und dann zum Azure-Portal wechseln, um der Anwendung eine Rolle zuzuweisen.
 
-> [AZURE.NOTE] Unter Umständen ist es für Sie einfacher, die AD-Anwendung und den Dienstprinzipal über die [PowerShell](resource-group-authenticate-service-principal.md) oder die [Azure-Befehlszeilenschnittstelle](resource-group-authenticate-service-principal-cli.md) einzurichten. Dies gilt besonders, wenn Sie für die Authentifizierung ein Zertifikat verwenden möchten. In diesem Thema wird die Verwendung eines Zertifikats nicht beschrieben.
+> [AZURE.NOTE] Unter Umständen ist es für Sie einfacher, die AD-Anwendung und den Dienstprinzipal über die [PowerShell](resource-group-authenticate-service-principal.md) oder die [Azure-Befehlszeilenschnittstelle](resource-group-authenticate-service-principal-cli.md) einzurichten. Dies gilt besonders, wenn Sie für die Authentifizierung ein Zertifikat verwenden möchten. Dieses Thema beschreibt nicht die Verwendung eines Zertifikats.
 
 Eine Erläuterung der Active Directory-Konzepte finden Sie unter [Anwendungsobjekte und Dienstprinzipalobjekte](./active-directory/active-directory-application-objects.md). Weitere Informationen zur Active Directory-Authentifizierung finden Sie unter [Authentifizierungsszenarien für Azure AD](./active-directory/active-directory-authentication-scenarios.md).
 
@@ -36,23 +36,23 @@ Ausführliche Schritte zum Integrieren einer Anwendung in Azure zur Verwaltung v
 
 1. Melden Sie sich über das [klassische Portal](https://manage.windowsazure.com/) bei Ihrem Azure-Konto an.
 
+2. Stellen Sie sicher, dass Sie das Active Directory-Standardverzeichnis für Ihr Abonnement kennen. Sie können nur Zugriff für Anwendungen gewähren, die sich im selben Verzeichnis wie Ihr Abonnement befinden. Wählen Sie **Einstellungen** aus, und suchen Sie den Namen des mit Ihrem Abonnement verknüpften Verzeichnisses. Weitere Informationen finden Sie unter [Beziehung zwischen Azure-Abonnements und Azure Active Directory](./active-directory/active-directory-how-subscriptions-associated-directory.md).
+   
+     ![Standardverzeichnis suchen](./media/resource-group-create-service-principal-portal/show-default-directory.png)
+
 2. Wählen Sie im linken Bereich **Active Directory** aus.
 
      ![Active Directory auswählen](./media/resource-group-create-service-principal-portal/active-directory.png)
      
-3. Wählen Sie das Active Directory aus, das Sie zum Erstellen der neuen Anwendung nutzen möchten. Wenn Sie über mehr als eine Active Directory-Instanz verfügen, ist es in der Regel empfehlenswert, die Anwendung in dem Verzeichnis zu erstellen, in dem sich Ihr Abonnement befindet. Sie können nur Anwendungen im selben Verzeichnis wie Ihr Abonnement den Zugriff auf Ressourcen in Ihrem Abonnement gewähren.
+3. Wählen Sie das Active Directory aus, das Sie zum Erstellen der Anwendung nutzen möchten. Wenn Sie über mehr als eine Active Directory-Instanz verfügen, erstellen Sie die Anwendung im Standardverzeichnis für Ihr Abonnement.
 
      ![Verzeichnis wählen](./media/resource-group-create-service-principal-portal/active-directory-details.png)
      
-    Wenn Sie das Verzeichnis für Ihr Abonnement ermitteln müssen, wählen Sie **Einstellungen** aus, und suchen Sie nach dem Namen des Verzeichnisses.
-   
-     ![Standardverzeichnis suchen](./media/resource-group-create-service-principal-portal/show-default-directory.png)
-
-3. Klicken Sie auf **Anwendungen**, um die Anwendungen in Ihrem Verzeichnis anzuzeigen.
+3. Wählen Sie **Anwendungen** aus, um die Anwendungen in Ihrem Verzeichnis anzuzeigen.
 
      ![Anwendungen anzeigen](./media/resource-group-create-service-principal-portal/view-applications.png)
 
-4. Wenn Sie in diesem Verzeichnis zuvor noch keine Anwendung erstellt haben, sollten Sie eine Abbildung ähnlich dieser hier sehen. Klicken Sie auf **EINE ANWENDUNG HINZUFÜGEN**
+4. Wenn Sie in diesem Verzeichnis bisher noch keine Anwendung erstellt haben, sollten Sie eine Anzeige ähnlich der folgenden sehen. Wählen Sie **EINE ANWENDUNG HINZUFÜGEN** aus.
 
      ![Anwendung hinzufügen](./media/resource-group-create-service-principal-portal/create-application.png)
 
@@ -60,15 +60,15 @@ Ausführliche Schritte zum Integrieren einer Anwendung in Azure zur Verwaltung v
 
      ![Hinzufügen](./media/resource-group-create-service-principal-portal/add-icon.png)
 
-5. Wählen Sie den Anwendungstypen aus, den Sie erstellen möchten. Wählen Sie im Rahmen dieses Tutorials **Eine von meinem Unternehmen entwickelte Anwendung hinzufügen** aus.
+5. Wählen Sie den Anwendungstypen aus, den Sie erstellen möchten. Wählen Sie für dieses Tutorial **Eine von meinem Unternehmen entwickelte Anwendung hinzufügen** aus.
 
      ![neue Anwendung](./media/resource-group-create-service-principal-portal/what-do-you-want-to-do.png)
 
-6. Geben Sie einen Namen für die Anwendung ein, und wählen Sie den Typ der Anwendung aus, die Sie erstellen möchten. Erstellen Sie im Rahmen dieses Tutorials eine **WEBANWENDUNG UND/ODER WEB-API**, und klicken Sie auf die Schaltfläche „Weiter“. Bei Verwendung von **SYSTEMEIGENE CLIENTANWENDUNG** entsprechen die restlichen Schritte in diesem Artikel nicht der tatsächlichen Vorgehensweise.
+6. Geben Sie einen Namen für die Anwendung ein, und wählen Sie den Typ der Anwendung aus, die Sie erstellen möchten. Erstellen Sie für dieses Tutorial eine **WEBANWENDUNG UND/ODER WEB-API**, und klicken Sie auf die Schaltfläche „Weiter“. Wenn Sie **NATIVE CLIENTANWENDUNG** auswählen, entsprechen die restlichen Schritte in diesem Artikel nicht der tatsächlichen Vorgehensweise.
 
      ![Anwendung benennen](./media/resource-group-create-service-principal-portal/tell-us-about-your-application.png)
 
-7. Tragen Sie die Eigenschaften Ihrer Anwendung ein. Geben Sie für die **ANMELDE-URL** die URL einer Website an, die Ihre Anwendung beschreibt. Das Vorhandensein der Website wird nicht überprüft. Geben Sie für die **APP-ID URI ** die URI an, die Ihre Anwendung identifiziert.
+7. Tragen Sie die Eigenschaften Ihrer Anwendung ein. Geben Sie für die **ANMELDE-URL** den URI einer Website an, die Ihre Anwendung beschreibt. Das Vorhandensein der Website wird nicht überprüft. Geben Sie für die **APP-ID URI ** die URI an, die Ihre Anwendung identifiziert.
 
      ![Anwendungseigenschaften](./media/resource-group-create-service-principal-portal/app-properties.png)
 
@@ -76,9 +76,9 @@ Sie haben Ihre Anwendung erstellt.
 
 ## Abrufen der Client-ID und des Authentifizierungsschlüssels
 
-Beim programmgesteuerten Anmelden benötigen Sie die ID für Ihre Anwendung. Wenn die Anwendung unter ihren eigenen Anmeldeinformationen ausgeführt wird, benötigen Sie außerdem einen Authentifizierungsschlüssel.
+Beim programmgesteuerten Anmelden benötigen Sie die ID für Ihre Anwendung. Wenn die Anwendung mit ihren eigenen Anmeldeinformationen ausgeführt wird, benötigen Sie außerdem einen Authentifizierungsschlüssel.
 
-1. Klicken Sie auf die Registrierkarte **Konfigurieren**, um das Kennwort für Ihre Anwendung zu konfigurieren.
+1. Wählen Sie die Registrierkarte **Konfigurieren** aus, um das Kennwort für Ihre Anwendung zu konfigurieren.
 
      ![Anwendung konfigurieren](./media/resource-group-create-service-principal-portal/application-configure.png)
 
@@ -86,21 +86,21 @@ Beim programmgesteuerten Anmelden benötigen Sie die ID für Ihre Anwendung. Wen
   
      ![Client-ID](./media/resource-group-create-service-principal-portal/client-id.png)
 
-3. Wenn die Anwendung unter eigenen Anmeldeinformationen ausgeführt wird, navigieren Sie nach unten zum Abschnitt **Schlüssel**, und wählen Sie den gewünschten Gültigkeitszeitraum für Ihr Kennwort aus.
+3. Wenn die Anwendung mit ihren eigenen Anmeldeinformationen ausgeführt wird, navigieren Sie nach unten zum Abschnitt **Schlüssel**, und wählen Sie den gewünschten Gültigkeitszeitraum für Ihr Kennwort aus.
 
-     ![Schlüssel](./media/resource-group-create-service-principal-portal/create-key.png)
+     ![keys](./media/resource-group-create-service-principal-portal/create-key.png)
 
 4. Wählen Sie **Speichern** aus, um Ihren Schlüssel zu erstellen.
 
      ![speichern](./media/resource-group-create-service-principal-portal/save-icon.png)
 
-     Der gespeicherte Schlüssel wird angezeigt, sodass Sie ihn kopieren können. Sie können den Schlüssel später nicht mehr abrufen. Sie sollten ihn also jetzt kopieren.
+     Der gespeicherte Schlüssel wird angezeigt, sodass Sie ihn kopieren können. Kopieren Sie den Schlüssel jetzt, da Sie ihn später nicht mehr abrufen können.
 
      ![gespeicherter Schlüssel](./media/resource-group-create-service-principal-portal/save-key.png)
 
 ## Abrufen der Mandanten-ID
 
-Beim programmgesteuerten Anmelden müssen Sie mit Ihrer Authentifizierungsanforderung die Mandanten-ID übergeben. Bei Web-Apps und Web-API-Apps können Sie die Mandanten-ID abrufen, indem Sie unten auf der Seite **Endpunkte anzeigen** auswählen und die ID wie weiter unten gezeigt abrufen.
+Beim programmgesteuerten Anmelden müssen Sie mit Ihrer Authentifizierungsanforderung die Mandanten-ID übergeben. Bei Web-Apps und Web-API-Apps können Sie die Mandanten-ID abrufen, indem Sie unten auf der Seite **Endpunkte anzeigen** auswählen und die ID wie im der folgenden Abbildung gezeigt abrufen.
 
    ![Mandanten-ID](./media/resource-group-create-service-principal-portal/save-tenant.png)
 
@@ -114,7 +114,7 @@ Oder mit der Azure-Befehlszeilenschnittstelle:
 
 ## Festlegen der delegierten Berechtigungen
 
-Wenn Ihre Anwendung im Auftrag eines angemeldeten Benutzers auf Ressourcen zugreift, müssen Sie der Anwendung die delegierten Berechtigungen für den Zugriff auf andere Anwendungen gewähren. Dieser Schritt wird auf der Registerkarte **Konfigurieren** im Abschnitt **Berechtigungen für andere Anwendungen** ausgeführt. Eine delegierte Berechtigung ist standardmäßig bereits für die Azure Active Directory-Instanz aktiviert. Lassen Sie diese delegierte Berechtigung unverändert.
+Wenn Ihre Anwendung im Auftrag eines angemeldeten Benutzers auf Ressourcen zugreift, müssen Sie der Anwendung die delegierten Berechtigungen für den Zugriff auf andere Anwendungen gewähren. Sie gewähren diesen Zugriff auf der Registerkarte **Konfigurieren** im Abschnitt **Berechtigungen für andere Anwendungen**. Eine delegierte Berechtigung ist standardmäßig bereits für die Azure Active Directory-Instanz aktiviert. Lassen Sie diese delegierte Berechtigung unverändert.
 
 1. Wählen Sie **Anwendung hinzufügen** aus.
 
@@ -122,29 +122,33 @@ Wenn Ihre Anwendung im Auftrag eines angemeldeten Benutzers auf Ressourcen zugre
 
       ![App auswählen](./media/resource-group-create-service-principal-portal/select-app.png)
 
-3. Aktivieren Sie in der Dropdownliste für delegierte Berechtigungen das Kontrollkästchen **Access Azure Service Management as organization** (Auf Azure-Dienstverwaltung als Organisation zugreifen).
+3. Aktivieren Sie in der Dropdownliste für delegierte Berechtigungen das Kontrollkästchen **Als Organisation auf Azure-Dienstverwaltung zugreifen**.
 
       ![Berechtigung auswählen](./media/resource-group-create-service-principal-portal/select-permissions.png)
 
 4. Speichern Sie die Änderungen.
 
-## Konfigurieren einer mehrinstanzenfähigen Anwendung
-
-Wenn Benutzer aus anderen Azure Active Directory-Instanzen ihre Zustimmung für die Anwendung geben und sich bei ihr anmelden können, müssen Sie die Mehrinstanzenfähigkeit aktivieren. Legen Sie auf der Registerkarte **Konfigurieren** für **Anwendung ist mehrinstanzenfähig** die Option **Ja** fest.
-
-![mehrinstanzenfähig](./media/resource-group-create-service-principal-portal/multi-tenant.png)
-
 ## Zuweisen einer Anwendung zur Rolle
 
-Wenn Ihre Anwendung mit ihren eigenen Anmeldeinformationen ausgeführt wird, müssen Sie die Anwendung einer Rolle zuweisen. Sie müssen entscheiden, welche Rolle die geeigneten Berechtigungen für die Anwendung darstellt. Informationen zu verfügbaren Rollen finden Sie unter [RBAC: Integrierte Rollen](./active-directory/role-based-access-built-in-roles.md).
+Wenn Ihre Anwendung mit ihren eigenen Anmeldeinformationen ausgeführt wird, müssen Sie die Anwendung einer Rolle zuweisen. Entscheiden Sie, welche Rolle die geeigneten Berechtigungen für die Anwendung darstellt. Informationen zu verfügbaren Rollen finden Sie unter [RBAC: Integrierte Rollen](./active-directory/role-based-access-built-in-roles.md).
 
-Für die Rollenzuweisung benötigen Sie `Microsoft.Authorization/*/Write`-Zugriff. Dieser wird über die Rolle [Besitzer](./active-directory/role-based-access-built-in-roles.md#owner) oder [Benutzerzugriffsadministrator](./active-directory/role-based-access-built-in-roles.md#user-access-administrator) gewährt.
+Um einer Anwendung eine Rolle zuzuweisen, müssen Sie über die richtigen Berechtigungen verfügen. Für die Rollenzuweisung benötigen Sie `Microsoft.Authorization/*/Write`-Zugriff. Dieser wird über die Rolle [Besitzer](./active-directory/role-based-access-built-in-roles.md#owner) oder [Benutzerzugriffsadministrator](./active-directory/role-based-access-built-in-roles.md#user-access-administrator) gewährt. Die Rolle „Mitwirkender“ verfügt nicht über die richtigen Zugriffsrechte.
 
-Sie können den Umfang auf Abonnement-, Ressourcengruppen- oder Ressourcenebene festlegen. Die Berechtigungen werden in niedrigere Umfangsebenen übernommen (wird der Leserrolle für eine Ressourcengruppe beispielsweise eine Anwendung hinzugefügt, kann sie die Ressourcengruppe und alle darin enthaltenen Ressourcen lesen).
+Sie können den Umfang auf Abonnement-, Ressourcengruppen- oder Ressourcenebene festlegen. Berechtigungen werden von niedrigeren Ebenen mit geringerem Umfang geerbt. Wenn z.B. der Leserolle für eine Ressourcengruppe eine Anwendung hinzugefügt wird, kann diese Rolle die Ressourcengruppe und alle darin enthaltenen Ressourcen lesen.
 
 1. Zum Zuweisen der Anwendung an eine Rolle wechseln Sie vom klassischen Portal zum [Azure-Portal](https://portal.azure.com).
 
-1. Navigieren Sie im Portal zur Umfangsebenene, der Sie die Anwendung zuweisen möchten. Für dieses Thema können Sie zu einer Ressourcengruppe navigieren und auf dem Blatt der Ressourcengruppe das Symbol **Zugriff** wählen.
+1. Überprüfen Sie Ihre Berechtigungen, um sicherzustellen, dass Sie den Dienstprinzipal einer Rolle zuweisen können. Wählen Sie **Meine Berechtigungen** für Ihr Konto.
+
+    ![Meine Berechtigungen auswählen](./media/resource-group-create-service-principal-portal/my-permissions.png)
+
+1. Zeigen Sie die zugewiesenen Berechtigungen für Ihr Konto an. Wie bereits erwähnt, müssen Sie zur Rolle „Besitzer“ oder zur Rolle „Benutzerzugriffsadministrator“ gehören oder über eine benutzerdefinierte Rolle verfügen, die Schreibzugriff für „Microsoft.Authorization“ gewährt. Die folgende Abbildung zeigt ein Konto, das der Rolle „Mitwirkender“ für das Abonnement zugewiesen wurde – dies sind keine adäquaten Berechtigungen, um eine Anwendung zu einer Rolle zuzuweisen.
+
+    ![Meine Berechtigungen anzeigen](./media/resource-group-create-service-principal-portal/show-permissions.png)
+
+     Wenn Sie nicht über die erforderlichen Berechtigungen zum Gewähren des Zugriffs auf eine Anwendung verfügen, muss Ihr Abonnementadministrator Sie zur Rolle „Benutzerzugriffsadministrator“ hinzufügen, oder es muss ein Administrator den Zugriff auf die Anwendung gewähren.
+
+1. Navigieren Sie zur Bereichsebene, der Sie die Anwendung zuweisen möchten. Für dieses Thema können Sie zu einer Ressourcengruppe navigieren und auf dem Blatt der Ressourcengruppe die Option **Zugriffssteuerung** auswählen.
 
      ![Benutzer auswählen](./media/resource-group-create-service-principal-portal/select-users.png)
 
@@ -166,9 +170,8 @@ Sie können den Umfang auf Abonnement-, Ressourcengruppen- oder Ressourcenebene 
 
 6. Wählen Sie **OK**, um das Zuweisen der Rolle abzuschließen. Jetzt sollten Sie Ihre Anwendung in der Liste der Benutzer sehen, die einer Rolle für die Ressourcengruppe zugewiesen sind.
 
-     ![einblenden](./media/resource-group-create-service-principal-portal/show-app.png)
 
-Weitere Informationen zum Zuweisen von Benutzern und Anwendungen zu Rollen über das Portal finden Sie unter [Verwalten des Zugriffs über das Azure-Verwaltungsportal](role-based-access-control-configure.md#manage-access-using-the-azure-management-portal).
+Weitere Informationen zum Zuweisen von Benutzern und Anwendungen zu Rollen über das Portal finden Sie unter [Verwenden von Rollenzuweisungen zum Verwalten Ihrer Azure-Abonnementressourcen](role-based-access-control-configure.md#manage-access-using-the-azure-management-portal).
 
 ## Beispielanwendungen
 
@@ -176,28 +179,28 @@ Die folgenden Beispielanwendungen veranschaulichen die Anmeldung als Dienstprinz
 
 **.NET**
 
-- [Deploy an SSH Enabled VM with a Template with .NET](https://azure.microsoft.com/documentation/samples/resource-manager-dotnet-template-deployment/) (Bereitstellen eines SSH-fähigen virtuellen Computers mit einer Vorlage mit .NET)
-- [Manage Azure resources and resource groups with .NET](https://azure.microsoft.com/documentation/samples/resource-manager-dotnet-resources-and-groups/) (Verwalten von Azure-Ressourcen und -Ressourcengruppen mit .NET)
+- [Deploy an SSH Enabled VM with a Template with .NET (Bereitstellen eines SSH-fähigen virtuellen Computers mit einer Vorlage mit .NET)](https://azure.microsoft.com/documentation/samples/resource-manager-dotnet-template-deployment/)
+- [Manage Azure resources and resource groups with .NET (Verwalten von Azure-Ressourcen und -Ressourcengruppen mit .NET)](https://azure.microsoft.com/documentation/samples/resource-manager-dotnet-resources-and-groups/)
 
 **Java**
 
-- [Getting Started with Resources - Deploy Using ARM Template - in Java](https://azure.microsoft.com/documentation/samples/resources-java-deploy-using-arm-template/) (Erste Schritte mit Ressourcen – Bereitstellen mithilfe einer Azure Resource Manager-Vorlage – in Java)
-- [Getting Started with Resources - Manage Resource Group - in Java](https://azure.microsoft.com/documentation/samples/resources-java-manage-resource-group//) (Erste Schritte mit Ressourcen – Verwalten von Ressourcengruppen – in Java)
+- [Getting Started with Resources - Deploy Using ARM Template - in Java (Erste Schritte mit Ressourcen – Bereitstellen mithilfe einer Azure Resource Manager-Vorlage – in Java)](https://azure.microsoft.com/documentation/samples/resources-java-deploy-using-arm-template/)
+- [Getting Started with Resources - Manage Resource Group - in Java (Erste Schritte mit Ressourcen – Verwalten von Ressourcengruppen – in Java)](https://azure.microsoft.com/documentation/samples/resources-java-manage-resource-group//)
 
 **Python**
 
-- [Deploy an SSH Enabled VM with a Template in Python](https://azure.microsoft.com/documentation/samples/resource-manager-python-template-deployment/) (Bereitstellen eines SSH-fähigen virtuellen Computers mit einer Vorlage in Python)
-- [Manage Azure resources and resource groups with Python](https://azure.microsoft.com/documentation/samples/resource-manager-python-resources-and-groups/) (Verwalten von Azure-Ressourcen und -Ressourcengruppen mit Python)
+- [Deploy an SSH Enabled VM with a Template in Python (Bereitstellen eines SSH-fähigen virtuellen Computers mit einer Vorlage in Python)](https://azure.microsoft.com/documentation/samples/resource-manager-python-template-deployment/)
+- [Manage Azure resources and resource groups with Python (Verwalten von Azure-Ressourcen und -Ressourcengruppen mit Python)](https://azure.microsoft.com/documentation/samples/resource-manager-python-resources-and-groups/)
 
 **Node.js**
 
-- [Deploy an SSH Enabled VM with a Template in Node.js](https://azure.microsoft.com/documentation/samples/resource-manager-node-template-deployment/) (Bereitstellen eines SSH-fähigen virtuellen Computers mit einer Vorlage in Node.js)
-- [Manage Azure resources and resource groups with Node.js](https://azure.microsoft.com/documentation/samples/resource-manager-node-resources-and-groups/) (Verwalten von Azure-Ressourcen und -Ressourcengruppen mit Node.js)
+- [Deploy an SSH Enabled VM with a Template in Node.js (Bereitstellen eines SSH-fähigen virtuellen Computers mit einer Vorlage in Node.js)](https://azure.microsoft.com/documentation/samples/resource-manager-node-template-deployment/)
+- [Manage Azure resources and resource groups with Node.js (Verwalten von Azure-Ressourcen und -Ressourcengruppen mit Node.js)](https://azure.microsoft.com/documentation/samples/resource-manager-node-resources-and-groups/)
 
 **Ruby**
 
-- [Deploy an SSH Enabled VM with a Template in Ruby](https://azure.microsoft.com/documentation/samples/resource-manager-ruby-template-deployment/) (Bereitstellen eines SSH-fähigen virtuellen Computers mit einer Vorlage in Ruby)
-- [Manage Azure resources and resource groups with Ruby](https://azure.microsoft.com/documentation/samples/resource-manager-ruby-resources-and-groups/) (Verwalten von Azure-Ressourcen und -Ressourcengruppen mit Ruby)
+- [Deploy an SSH Enabled VM with a Template in Ruby (Bereitstellen eines SSH-fähigen virtuellen Computers mit einer Vorlage in Ruby)](https://azure.microsoft.com/documentation/samples/resource-manager-ruby-template-deployment/)
+- [Manage Azure resources and resource groups with Ruby (Verwalten von Azure-Ressourcen und -Ressourcengruppen mit Ruby)](https://azure.microsoft.com/documentation/samples/resource-manager-ruby-resources-and-groups/)
 
 
 ## Nächste Schritte
@@ -205,4 +208,4 @@ Die folgenden Beispielanwendungen veranschaulichen die Anmeldung als Dienstprinz
 - Informationen zum Festlegen von Sicherheitsrichtlinien finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure](./active-directory/role-based-access-control-configure.md).
 - Eine Videodemo dieser Schritte finden Sie unter [Aktivieren der programmgesteuerten Verwaltung einer Azure-Ressource mit Azure Active Directory](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Enabling-Programmatic-Management-of-an-Azure-Resource-with-Azure-Active-Directory).
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0824_2016-->

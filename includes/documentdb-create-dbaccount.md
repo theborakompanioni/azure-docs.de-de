@@ -1,9 +1,9 @@
-1.	Melden Sie sich online beim [Microsoft Azure-Portal](https://portal.azure.com/) an.
-2.	Klicken Sie in der Indexleiste auf **Neu**, klicken Sie auf **Daten und Speicher** und dann auf **Azure DocumentDB**.
+1.	Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com/) an.
+2.	Klicken Sie auf der Navigationsleiste auf **Neu**, klicken Sie auf **Daten und Speicher**, und klicken Sie anschließend auf **DocumentDB (NoSQL)**.
 
-	![Screenshot des Azure-Portals bei Erstellen einer Datenbank, markiert sind die Schaltfläche „Neu“ sowie „Daten und Speicher“ auf dem Blatt „Erstellen“ und „Azure DocumentDB“ auf dem Blatt „Daten und Speicher“](./media/documentdb-create-dbaccount/create-nosql-db-databases-json-tutorial-1.png)
+	![Screenshot des Azure-Portals mit Hervorhebung von „Weitere Dienste“ und „DocumentDB (NoSQL)“](./media/documentdb-create-dbaccount/create-nosql-db-databases-json-tutorial-1.png)
 
-3. Geben Sie auf dem Blatt **Neues DocumentDB-Konto** die gewünschte Konfiguration für das DocumentDB-Konto an.
+3. Geben Sie auf dem Blatt **Neues Konto** die gewünschte Konfiguration für das DocumentDB-Konto an.
 
 	![Screenshot des Blatts "Neue DocumentDB"](./media/documentdb-create-dbaccount/create-nosql-db-databases-json-tutorial-2.png)
 
@@ -18,7 +18,7 @@
 	
     - Aktivieren Sie das Kontrollkästchen **An das Dashboard anheften**, um komfortabel auf Ihr Konto und die später erstellten Ressourcen zugreifen zu können.
 
-4.	Klicken Sie nach der Konfiguration der Optionen für das neue DocumentDB-Konto auf **Erstellen**. Der Status der Bereitstellung kann im Startmenü überwacht werden.![Screenshot der Kachel "Erstellen" im Startmenü – Online-Datenbankersteller](./media/documentdb-create-dbaccount/create-nosql-db-databases-json-tutorial-3.png)
+4.	Klicken Sie nach der Konfiguration der Optionen für das neue DocumentDB-Konto auf **Erstellen**. Der Status der Bereitstellung kann im Startmenü überwacht werden. ![Screenshot der Kachel "Erstellen" im Startmenü – Online-Datenbankersteller](./media/documentdb-create-dbaccount/create-nosql-db-databases-json-tutorial-3.png)
 
 	Sie können den Status auch über den Hub "Benachrichtigungen" überwachen.
 
@@ -26,7 +26,7 @@
 
 	![Screenshot des Benachrichtigungs-Hubs, der zeigt, dass das DocumentDB-Konto erfolgreich erstellt und in einer Ressourcengruppe bereitgestellt wurde – Benachrichtigung für Online-Datenbankersteller](./media/documentdb-create-dbaccount/create-nosql-db-databases-json-tutorial-5.png)
 
-5.	Nachdem das DocumentDB-Konto erstellt wurde, kann es mit den Standardeinstellungen im Onlineportal verwendet werden. Beachten Sie, dass die Standardkonsistenz des DocumentDB-Kontos auf **Sitzung** eingestellt ist. Sie können die Einstellung für die Standardkonsistenz anpassen, indem Sie im Menü auf **Standardkonsistenz** klicken. Weitere Informationen zu den Konsistenzebenen von DocumentDB finden Sie unter [Konsistenzebenen in DocumentDB](../articles/azure-portal/resource-group-portal.md).
+5.	Nach dem Erstellen steht das DocumentDB-Konto mit den Standardeinstellungen zur Verfügung. Beachten Sie, dass die Standardkonsistenz des DocumentDB-Kontos auf **Sitzung** eingestellt ist. Sie können die Standardkonsistenz anpassen, indem Sie im Ressourcenmenü auf **Standardkonsistenz** klicken. Weitere Informationen zu den Konsistenzebenen von DocumentDB finden Sie unter [Konsistenzebenen in DocumentDB](../articles/azure-portal/resource-group-portal.md).
 
     ![Screenshot des Blatts "Ressourcengruppe" – Anwendungsentwicklung beginnen](./media/documentdb-create-dbaccount/create-nosql-db-databases-json-tutorial-6.png)
 
@@ -36,4 +36,4 @@
 [Next steps]: #NextSteps
 [documentdb-manage]: ../articles/documentdb/documentdb-manage.md
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0831_2016-->

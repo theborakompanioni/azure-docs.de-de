@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/04/2016" 
+	ms.date="08/22/2016" 
 	ms.author="billmath"/>
 
 # Der Anmeldevorgang mit Azure Multi-Factor Authentication
@@ -29,11 +29,11 @@ Der Anmeldevorgang hängt davon ab, wie Sie sich anmelden und Multi-Factor Authe
 Vorgehensweise|Beschreibung
 :------------- | :------------- | 
 [Anmeldung mit Mobil- oder Bürotelefon](#signing-in-with-mobile-or-office-phone) | Beschreibt die Anmeldung mit einem Mobil- oder Bürotelefon.
-[Anmelden mit der mobilen App über eine Benachrichtigung](#signing-in-with-the-mobile-app-using-notification) | Beschreibt die Anmeldung bei der mobilen App mit einer Benachrichtigung.
-[Anmelden mit der mobilen App über einen Überprüfungscode](#signing-in-with-the-mobile-app-using-verification-code)|Beschreibt die Anmeldung bei der mobilen App mit einem Überprüfungscode.
+[Anmelden mit der Microsoft Authenticator-App über eine Benachrichtigung](#signing-in-with-the-microsoft-authenticator-app-using-notification) | Beschreibt die benachrichtigungsbasierte Anmeldung mit der Microsoft Authenticator-App.
+[Anmelden mit der Microsoft Authenticator-App über einen Überprüfungscode](#signing-in-with-the-microsoft-authenticator-app-using-verification-code)|Beschreibt die prüfcodebasierte Anmeldung mit der Microsoft Authenticator-App.
 [Anmelden mit einer alternativen Methode](#signing-in-with-an-alternate-method)|Hier erfahren Sie, was Sie erwartet, wenn Sie eine alternative Methode verwenden möchten.
 
-<h2 id="1">Anmeldung mit Mobil- oder Bürotelefon</h2>
+## Anmeldung mit Mobil- oder Bürotelefon
 
 Im Folgenden wird der Vorgang für Multi-Factor Authentication mit dem Büro- oder Mobiltelefon beschrieben.
 
@@ -50,11 +50,11 @@ Im Folgenden wird der Vorgang für Multi-Factor Authentication mit dem Büro- od
 
 - Sie sollten jetzt angemeldet sein.</li>
 
-<h2 id="2">Anmelden mit der mobilen App über eine Benachrichtigung</h2>
+## Anmelden mit der Microsoft Authenticator-App über eine Benachrichtigung
 
-Die folgenden Informationen beschreiben die Verwendung von Multi-Factor Authentication mit der mobilen App, wenn Sie eine Benachrichtigung erhalten.
+Die folgenden Informationen beschreiben die Verwendung der Multi-Factor Authentication mit der Microsoft Authenticator-App über eine an Sie gesendete Benachrichtigung.
 
-### So melden Sie sich mit einer Benachrichtigung an, die an Ihre mobile App gesendet wurde
+### So melden Sie sich mit der Microsoft Authenticator-App über eine Benachrichtigung an
 
 - Melden Sie sich mit Ihrem Benutzernamen und Kennwort bei einer Anwendung oder einem Dienst wie Office 365 an.
 - Sie erhalten eine Benachrichtigung von Microsoft.
@@ -70,25 +70,25 @@ Die folgenden Informationen beschreiben die Verwendung von Multi-Factor Authenti
 - Sie sollten jetzt angemeldet sein.
 
 
-<h2 id="3">Anmelden mit der mobilen App über einen Überprüfungscode</h2>
+## Anmelden mit der Microsoft Authenticator-App über einen Überprüfungscode
 
-Im Folgenden wird der Vorgang für Multi-Factor Authentication mit der mobilen App beschrieben, wenn Sie sie mit einem Bestätigungscode verwenden.
+Im Folgenden wird der Vorgang für die Multi-Factor Authentication mit der Microsoft Authenticator-App unter Verwendung eines Überprüfungscodes beschrieben.
 
-### So melden Sie sich mit einem Bestätigungscode bei der mobilen App an
+### So melden Sie sich mit der Microsoft Authenticator-App über einen Überprüfungscode an
 
 - Melden Sie sich mit Ihrem Benutzernamen und Kennwort bei einer Anwendung oder einem Dienst wie Office 365 an.
 - Sie werden von Microsoft aufgefordert, einen Bestätigungscode einzugeben.
 
 ![Eingeben des Überprüfungscodes](./media/multi-factor-authentication-end-user-signin-app-verify/verify.png)
 
-- Öffnen Sie die Azure Authenticator-App auf Ihrem Mobiltelefon, und geben Sie den Code bei der Anmeldung im Feld ein.
+- Öffnen Sie die Microsoft Authenticator-App auf Ihrem Smartphone, und geben Sie den Code bei der Anmeldung in das entsprechende Feld ein.
 
 ![Abrufen des Codes](./media/multi-factor-authentication-end-user-signin-app-verify/phone.png)
 
 - Sie sollten jetzt angemeldet sein.
 
 
-<h2 id="4">Anmelden mit einer alternativen Methode</h2>
+## Anmelden mit einer alternativen Methode
 
 
 Im folgenden Abschnitt erfahren Sie, wie Sie sich über eine alternative Methode anmelden, wenn die primäre Methode nicht verfügbar ist.
@@ -104,4 +104,4 @@ Im folgenden Abschnitt erfahren Sie, wie Sie sich über eine alternative Methode
 
  
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0824_2016-->

@@ -12,15 +12,16 @@
    ms.topic="article" 
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="07/19/2016"
+   ms.date="08/18/2016"
    ms.author="cherylmc"/>
 
 # ExpressRoute-Workflows für die Verbindungsbereitstellung und Verbindungszustände
+
 Auf dieser Seite erhalten Sie einen Überblick über die Workflows zur Dienstbereitstellung und Routingkonfiguration.
 
 ![](./media/expressroute-workflows/expressroute-circuit-workflow.png)
 
-Die folgende Abbildung und die zugehörigen Schritte zeigen die Aufgaben, die Sie zum vollständigen Bereitstellen einer ExpressRoute-Verbindung ausführen müssen.
+Die folgende Abbildung und die dazugehörigen Schritte veranschaulichen die Aufgaben, die zum vollständigen Bereitstellen einer ExpressRoute-Verbindung ausgeführt werden müssen.
 
 1. Verwenden Sie PowerShell, um eine ExpressRoute-Verbindung zu konfigurieren. Ausführlichere Anweisungen finden Sie im Artikel [Erstellen von ExpressRoute-Verbindungen](expressroute-howto-circuit-classic.md).
 
@@ -28,17 +29,18 @@ Die folgende Abbildung und die zugehörigen Schritte zeigen die Aufgaben, die Si
 
 3. Stellen Sie sicher, dass die Verbindung erfolgreich eingerichtet wurde, indem Sie den Bereitstellungszustand der ExpressRoute-Verbindung mithilfe von PowerShell überprüfen.
 
-4. Konfigurieren Sie Routingdomänen. Wenn Ihr Konnektivitätsanbieter Layer 3 für Sie verwaltet, konfiguriert er das Routing für Ihre Verbindung. Wenn Ihr Konnektivitätsanbieter nur Layer 2-Dienste anbietet, müssen Sie das Routing gemäß den Richtlinien auf den Seiten [Routinganforderungen](expressroute-routing.md) und [Routingkonfiguration](expressroute-howto-routing-classic.md) konfigurieren.
+4. Konfigurieren Sie Routingdomänen. Wenn Ihr Konnektivitätsanbieter Layer 3 für Sie verwaltet, konfiguriert er das Routing für Ihre Verbindung. Wenn Ihr Konnektivitätsanbieter nur Layer 2-Dienste anbietet, müssen Sie das Routing gemäß den Richtlinien auf den Seiten [Routinganforderungen](expressroute-routing.md) und [Routingkonfiguration](expressroute-howto-routing-classic.md) konfigurieren.
 
 	-  Privates Azure-Peering aktivieren – Sie müssen dieses Peering aktivieren, um eine Verbindung mit virtuellen Computern/Clouddiensten herzustellen, die in virtuellen Netzwerken bereitgestellt werden.
 	-  Öffentliches Azure-Peering aktivieren – sie müssen das öffentliche Azure-Peering aktivieren, wenn Sie eine Verbindung mit Azure-Diensten herstellen möchten, die unter öffentlichen IP-Adressen gehostet werden. Dies ist eine Voraussetzung, damit auf Azure-Ressourcen zugegriffen werden kann, wenn Sie das Standardrouting für privates Azure-Peering aktiviert haben.
-	-  Microsoft-Peering aktivieren – Sie müssen das Microsoft-Peering aktivieren, um auf Office 365 und CRM-Onlinedienste zugreifen zu können.
+	-  Microsoft-Peering aktivieren – Sie müssen das Microsoft-Peering aktivieren, um auf Office 365 und CRM-Onlinedienste zugreifen zu können.
 	
 	>[AZURE.IMPORTANT] Verwenden Sie für die Verbindung mit Microsoft unbedingt einen anderen Proxy/Edge als für das Internet. Wenn Sie denselben Edge für ExpressRoute und das Internet verwenden, führt das zu asymmetrischem Routing und Konnektivitätsausfällen für Ihr Netzwerk.
 
-	![](./media/expressroute-workflows/expressroute-routing-workflow.png)
+	![](./media/expressroute-workflows/routing-workflow.png)
 
-5. Verknüpfen von virtuellen Netzwerken mit ExpressRoute-Verbindungen – Sie können virtuelle Netzwerke mit Ihrer ExpressRoute-Verbindung verknüpfen. Führen Sie die Schritte zum [Verknüpfen von VNets](expressroute-howto-linkvnet-arm.md) mit Ihrer Verbindung aus. Diese VNets können sich im gleichen Azure-Abonnement wie die ExpressRoute-Verbindung oder in einem anderen Abonnement befinden.
+
+5. Verknüpfen von virtuellen Netzwerken mit ExpressRoute-Verbindungen – Sie können virtuelle Netzwerke mit Ihrer ExpressRoute-Verbindung verknüpfen. Führen Sie die Schritte zum [Verknüpfen von VNets](expressroute-howto-linkvnet-arm.md) mit Ihrer Verbindung aus. Diese VNets können sich im gleichen Azure-Abonnement wie die ExpressRoute-Verbindung oder aber in einem anderen Abonnement befinden.
 
 
 ## Bereitstellungszustände von ExpressRoute-Verbindungen
@@ -58,7 +60,7 @@ In diesem Abschnitt sind die möglichen Zustände für eine ExpressRoute-Verbind
 
 #### Zum Zeitpunkt der Erstellung:
 
-Die ExpressRoute-Verbindung weist den unten beschriebenen Zustand auf, wenn Sie das PowerShell-Cmdlet zum Erstellen der ExpressRoute-Verbindung ausführen.
+Die ExpressRoute-Verbindung weist den folgenden Zustand auf, wenn Sie das PowerShell-Cmdlet zum Erstellen der ExpressRoute-Verbindung ausführen.
 
 	ServiceProviderProvisioningState : NotProvisioned
 	Status                           : Enabled
@@ -66,7 +68,7 @@ Die ExpressRoute-Verbindung weist den unten beschriebenen Zustand auf, wenn Sie 
 
 #### Der Konnektivitätsanbieter stellt die Verbindung gerade bereit:
 
-Die ExpressRoute-Verbindung weist den unten beschriebenen Zustand auf, wenn Sie den Dienstschlüssel an den Konnektivitätsanbieter übergeben und der Anbieter den Bereitstellungsprozess gestartet hat.
+Die ExpressRoute-Verbindung weist den folgenden Zustand auf, wenn Sie den Dienstschlüssel an den Konnektivitätsanbieter übergeben und der Anbieter den Bereitstellungsprozess gestartet hat.
 
 	ServiceProviderProvisioningState : Provisioning
 	Status                           : Enabled
@@ -74,16 +76,16 @@ Die ExpressRoute-Verbindung weist den unten beschriebenen Zustand auf, wenn Sie 
 
 #### Der Konnektivitätsanbieter hat die Bereitstellung abgeschlossen:
 
-Die ExpressRoute-Verbindung weist den unten beschriebenen Zustand auf, sobald der Konnektivitätsanbieter die Bereitstellung abgeschlossen hat.
+Die ExpressRoute-Verbindung weist den folgenden Zustand auf, sobald der Konnektivitätsanbieter die Bereitstellung abgeschlossen hat.
 
 	ServiceProviderProvisioningState : Provisioned
 	Status                           : Enabled
 
-Die Verbindung kann nur im Zustand „Provisioned“ und „Enabled“ verwendet werden. Wenn Sie einen Layer 2-Anbieter nutzen, können Sie das Routing für Ihre Verbindung nur konfigurieren, wenn sie sich in diesem Zustand befindet.
+Die Verbindung kann nur im Zustand „Provisioned“ und „Enabled“ verwendet werden. Wenn Sie einen Layer 2-Anbieter nutzen, können Sie das Routing für Ihre Verbindung nur konfigurieren, wenn sie sich in diesem Zustand befindet.
 
 #### Die Bereitstellung wird zuerst aufseiten von Microsoft initiiert:
 
-Die ExpressRoute-Verbindung weist den unten beschriebenen Zustand auf, sobald Sie das PowerShell-Cmdlet zum Löschen der ExpressRoute-Verbindung ausführen.
+Die ExpressRoute-Verbindung weist den folgenden Zustand auf, wenn Sie das PowerShell-Cmdlet zum Löschen der ExpressRoute-Verbindung ausführen.
 
 	ServiceProviderProvisioningState : Provisioned
 	Status                           : Disabling
@@ -92,7 +94,7 @@ Sie müssen sich an Ihren Konnektivitätsanbieter wenden, wenn Sie die Bereitste
 
 #### Die Aufhebung der Bereitstellung wird aufseiten des Service Providers initiiert:
 
-Wenn Sie den Service Provider aufgefordert haben, zuerst die Bereitstellung der ExpressRoute-Verbindung aufzuheben, weist die Verbindung den unten beschriebenen Zustand auf, wenn der Service Provider den Prozess zur Bereitstellungsaufhebung abgeschlossen hat.
+Wenn Sie den Service Provider aufgefordert haben, zuerst die Bereitstellung der ExpressRoute-Verbindung aufzuheben, weist die Verbindung den folgenden Zustand auf, wenn der Service Provider den Prozess zur Bereitstellungsaufhebung abgeschlossen hat.
 
 
 	ServiceProviderProvisioningState : NotProvisioned
@@ -120,4 +122,4 @@ Wenn der Zustand der angekündigten öffentlichen Präfixe *validation needed* l
 	- [Konfigurieren des Routings](expressroute-howto-routing-arm.md)
 	- [Verknüpfen eines VNet mit einer ExpressRoute-Verbindung](expressroute-howto-linkvnet-arm.md)
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0824_2016-->

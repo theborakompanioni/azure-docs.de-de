@@ -15,10 +15,12 @@
 	ms.topic="reference"
 	ms.tgt_pltfrm="multiple"
 	ms.workload="na"
-	ms.date="05/27/2016"
+	ms.date="08/22/2016"
 	ms.author="wesmc"/>
 
 # Event Hub-Bindungen für Azure Functions
+
+[AZURE.INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
 
 Dieser Artikel erläutert das Konfigurieren und Codieren von [Azure Event Hub](../event-hubs/event-hubs-overview.md)-Bindungen für Azure Functions. Azure Functions unterstützt Auslöse- und Ausgabebindungen für Azure Event Hubs.
 
@@ -31,13 +33,13 @@ Ein Azure Event Hub-Trigger kann verwendet werden, um auf ein Ereignis zu reagie
 
 #### function.json für Event Hub-Triggerbindung
 
-Die Datei *function.json* für einen Azure Event Hub-Trigger legt die folgenden Eigenschaften fest:
+Die Datei *function.json* für einen Azure Event Hub-Trigger gibt die folgenden Eigenschaften an:
 
 - `type`: Muss auf *eventHubTrigger* festgelegt werden.
 - `name`: Variablenname, der im Funktionscode für die Event Hub-Nachricht verwendet wird.
 - `direction`: Muss auf *in* festgelegt werden.
-- `path`: Der Name des Event Hubs.
-- `connection`: Der Name einer App-Einstellung, die die Zeichenfolge für die Verbindung mit dem Namespace enthält, in dem sich der Event Hub befindet. Kopieren Sie diese Verbindungszeichenfolge, indem Sie auf die Schaltfläche **Verbindungsinformationen** für den Namespace, nicht den Event Hub selbst klicken. Diese Verbindungszeichenfolge muss mindestens über Leseberechtigungen verfügen, um den Trigger zu aktivieren.
+- `path`: Name des Event Hubs.
+- `connection`: Name einer App-Einstellung, die die Zeichenfolge für die Verbindung mit dem Namespace enthält, in dem sich der Event Hub befindet. Kopieren Sie diese Verbindungszeichenfolge, indem Sie für den Namespace (nicht für den eigentlichen Event Hub) auf die Schaltfläche **Verbindungsinformationen** klicken. Diese Verbindungszeichenfolge muss mindestens über Leseberechtigungen verfügen, um den Trigger zu aktivieren.
 
 		{
 		  "bindings": [
@@ -79,12 +81,12 @@ Mit einer Azure Event Hub-Ausgabebindung werden Ereignisse in einen Event Hub-Er
 
 #### function.json für Event Hub-Ausgabebindung
 
-Die Datei *function.json* für eine Azure Event Hub-Ausgabebindung legt die folgenden Eigenschaften fest:
+Die Datei *function.json* für eine Azure Event Hub-Ausgabebindung gibt die folgenden Eigenschaften an:
 
 - `type`: Muss auf *eventHub* festgelegt werden.
 - `name`: Variablenname, der im Funktionscode für die Event Hub-Nachricht verwendet wird.
-- `path`: Der Name des Event Hubs.
-- `connection`: Der Name einer App-Einstellung, die die Zeichenfolge für die Verbindung mit dem Namespace enthält, in dem sich der Event Hub befindet. Kopieren Sie diese Verbindungszeichenfolge, indem Sie auf die Schaltfläche **Verbindungsinformationen** für den Namespace, nicht den Event Hub selbst klicken. Diese Verbindungszeichenfolge muss über Sendeberechtigungen zum Senden der Nachricht an den Event Hub-Datenstrom verfügen.
+- `path`: Name des Event Hubs.
+- `connection`: Name einer App-Einstellung, die die Zeichenfolge für die Verbindung mit dem Namespace enthält, in dem sich der Event Hub befindet. Kopieren Sie diese Verbindungszeichenfolge, indem Sie für den Namespace (nicht für den eigentlichen Event Hub) auf die Schaltfläche **Verbindungsinformationen** klicken. Diese Verbindungszeichenfolge muss über Sendeberechtigungen zum Senden der Nachricht an den Event Hub-Datenstrom verfügen.
 - `direction`: Muss auf *out* festgelegt werden.
 
 	    {
@@ -134,4 +136,4 @@ Der folgende Node.js-Beispielfunktionscode veranschaulicht das Schreiben eines E
 
 [AZURE.INCLUDE [Nächste Schritte](../../includes/functions-bindings-next-steps.md)]
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0824_2016-->

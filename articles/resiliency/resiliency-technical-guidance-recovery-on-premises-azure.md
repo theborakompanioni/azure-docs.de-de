@@ -4,7 +4,7 @@
    services=""
    documentationCenter="na"
    authors="adamglick"
-   manager="hongfeig"
+   manager="saladki"
    editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="08/01/2016"
+   ms.date="08/18/2016"
    ms.author="aglick"/>
 
 #Technischer Leitfaden zur Resilienz in Azure: Wiederherstellung eines lokalen Rechenzentrums in Azure
@@ -79,22 +79,23 @@ Weitere Informationen finden Sie unter [Hohe Verfügbarkeit und Notfallwiederher
 
 ###Netzwerk
 
-  1. Lesen Sie den Abschnitt [Netzwerk](#networking) in diesem Dokument.
+  1. Lesen Sie den Netzwerkabschnitt in diesem Dokument.
   2. Verwenden Sie Virtual Network, um eine sichere Verbindung zwischen dem lokalen System und der Cloud herzustellen.
 
 ###Compute
 
-  1. Lesen Sie den Abschnitt [Compute](#compute) in diesem Dokument.
+  1. Lesen Sie den Abschnitt zu Compute in diesem Dokument.
   2. Verschieben Sie virtuelle Computer zwischen Hyper-V und Azure.
 
 ###Speicher
-  1. Lesen Sie den Abschnitt [Speicher](#storage) in diesem Dokument.
+
+  1. Lesen Sie den Abschnitt zu Storage in diesem Dokument.
   2. Nutzen Sie StorSimple-Dienste für Cloudspeicher.
   3. Verwenden Sie den Azure Backup-Dienst.
 
 ###Datenbank
 
-  1. Lesen Sie den Abschnitt [Datenbank](#database) in diesem Dokument.
+  1. Lesen Sie den Abschnitt zur Datenbank in diesem Dokument.
   2. Verwenden Sie ggf. SQL Server auf virtuellen Azure-Computern als Sicherung.
   3. Richten Sie AlwaysOn-Verfügbarkeitsgruppen ein.
   4. Konfigurieren Sie die zertifikatbasierte Datenbankspiegelung.
@@ -103,6 +104,6 @@ Weitere Informationen finden Sie unter [Hohe Verfügbarkeit und Notfallwiederher
 
 ##Nächste Schritte
 
-Dieser Artikel gehört zu einer Reihe von Artikeln, die als [Technischer Leitfaden zur Resilienz in Azure](./resiliency-technical-guidance.md) fungieren. Im nächsten Artikel dieser Reihe geht es um die [Wiederherstellung nach Datenbeschädigung oder unbeabsichtigtem Löschen](./resiliency-technical-guidance-recovery-data-corruption.md).
+Dieser Artikel gehört zu einer Reihe von Artikeln, die als [Technischer Leitfaden zur Resilienz in Azure](./resiliency-technical-guidance.md) dienen. Im nächsten Artikel dieser Reihe geht es um die [Wiederherstellung nach Datenbeschädigung oder unbeabsichtigtem Löschen](./resiliency-technical-guidance-recovery-data-corruption.md).
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0824_2016-->

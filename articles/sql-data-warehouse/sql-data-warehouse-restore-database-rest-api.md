@@ -3,7 +3,7 @@
    description="REST-API-Aufgaben zum Wiederherstellen einer Azure SQL Data Warehouse-Instanz."
    services="sql-data-warehouse"
    documentationCenter="NA"
-   authors="sonyama"
+   authors="Lakshmi1812"
    manager="barbkess"
    editor=""/>
 
@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
    ms.date="07/18/2016"
-   ms.author="sonyama;barbkess"/>
+   ms.author="lakshmir;barbkess;sonyama"/>
 
 # Wiederherstellen einer Azure SQL Data Warehouse-Instanz (REST-API)
 
@@ -78,4 +78,4 @@ Informationen zu den Geschäftskontinuitätsfeatures von Azure SQL-Datenbank-Edi
 [Azure Portal]: https://portal.azure.com/
 [Microsoft Web Platform Installer]: https://aka.ms/webpi-azps
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0824_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="08/11/2016"
+   ms.date="08/19/2016"
    ms.author="nicw;barbkess;sonyama"/>
 
 # Details zur Migration zu Storage Premium
@@ -91,13 +91,13 @@ Automatische Migrationen finden zwischen 18:00 Uhr und 06:00 Uhr (Ortszeit in de
 | Japan Ost | 10\. August 2016 | 24\. August 2016 |
 | Japan (Westen) | Noch nicht festgelegt | Noch nicht festgelegt |
 | USA (Mitte/Norden) | Noch nicht festgelegt | Noch nicht festgelegt |
-| Nordeuropa | 10\. August 2016 | 24\. August 2016 |
-| USA Süd Mitte | 23\. Juni 2016 | 2\. Juli 2016 |
+| Nordeuropa | 10\. August 2016 | 31\. August 2016 |
+| USA (Mitte/Süden) | 23\. Juni 2016 | 2\. Juli 2016 |
 | Südostasien | 23\. Juni 2016 | 1\. Juli 2016 |
 | Westeuropa | 23\. Juni 2016 | 8\. Juli 2016 |
-| USA, Westen-Mitte | 14\. August 2016 | 28\. August 2016 |
+| USA, Westen-Mitte | 14\. August 2016 | 31\. August 2016 |
 | USA (West) | 23\. Juni 2016 | 7\. Juli 2016 |
-| USA, Westen 2 | 14\. August 2016 | 28\. August 2016 |
+| USA, Westen 2 | 14\. August 2016 | 31\. August 2016 |
 
 ## Selbst durchgeführte Migration zu Storage Premium
 Wenn Sie steuern möchten, wann genau Ihr Data Warehouse nicht verfügbar sein wird, können Sie die folgenden Schritte ausführen, um ein vorhandenes Data Warehouse von Storage Standard zu Storage Premium zu migrieren. Falls Sie sich für die selbst durchgeführte Migration entscheiden, müssen Sie diesen Vorgang vor Beginn der automatischen Migration in dieser Region durchführen. So vermeiden Sie das Risiko, dass die automatische Migration einen Konflikt verursacht (siehe [Zeitplan für die automatische Migration][]).
@@ -147,19 +147,41 @@ Mit der Änderung zu Storage Premium haben wir auch die Anzahl von Datenbank-Blo
 -- Schritt 1: Erstellen der Tabelle zum Steuern der Indexneuerstellung
 -- Ausführung als Benutzer unter „mediumrc“ oder höher
 --------------------------------------------------------------------------------
-create table sql\_statements WITH (distribution = round\_robin) as select 'alter index all on ' + s.name + '.' + t.NAME + ' rebuild;' as statement, row\_number() over (order by s.name, t.name) as sequence from sys.schemas s inner join sys.tables t on s.schema\_id = t.schema\_id where is\_external = 0 ; go
+create table sql_statements
+WITH (distribution = round_robin)
+as select 
+    'alter index all on ' + s.name + '.' + t.NAME + ' rebuild;' as statement,
+    row_number() over (order by s.name, t.name) as sequence
+from 
+    sys.schemas s
+    inner join sys.tables t
+        on s.schema_id = t.schema_id
+where
+    is_external = 0
+;
+go
  
 --------------------------------------------------------------------------------
 -- Schritt 2: Ausführen von Indexneuerstellungen: Wenn das Skript fehlschlägt, kann der unten angegebene Code erneut ausgeführt werden, um ab dem letzten Punkt fortzufahren.
 -- Ausführung als Benutzer unter „mediumrc“ oder höher
 --------------------------------------------------------------------------------
 
-declare @nbr\_statements int = (select count(*) from sql\_statements) declare @i int = 1 while(@i <= @nbr\_statements) begin declare @statement nvarchar(1000)= (select statement from sql\_statements where sequence = @i) print cast(getdate() as nvarchar(1000)) + ' Executing... ' + @statement exec (@statement) delete from sql\_statements where sequence = @i set @i += 1 end;
+declare @nbr_statements int = (select count(*) from sql_statements)
+declare @i int = 1
+while(@i <= @nbr_statements)
+begin
+      declare @statement nvarchar(1000)= (select statement from sql_statements where sequence = @i)
+      print cast(getdate() as nvarchar(1000)) + ' Executing... ' + @statement
+      exec (@statement)
+      delete from sql_statements where sequence = @i
+      set @i += 1
+end;
 go
 -------------------------------------------------------------------------------
 -- Schritt 3: Bereinigen der in Schritt 1 erstellten Tabelle
 --------------------------------------------------------------------------------
-drop table sql\_statements; go
+drop table sql_statements;
+go
 ````
 
 Wenn Probleme mit Ihrem Data Warehouse auftreten, können Sie [ein Supportticket erstellen][] und als möglichen Grund „Migration zu Storage Premium“ angeben.
@@ -187,4 +209,4 @@ Wenn Probleme mit Ihrem Data Warehouse auftreten, können Sie [ein Supportticket
 [Storage Premium eingeführt, um die Leistung besser vorhersagen zu können]: https://azure.microsoft.com/de-DE/blog/azure-sql-data-warehouse-introduces-premium-storage-for-greater-performance/
 [Azure-Portal]: https://portal.azure.com
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0824_2016-->

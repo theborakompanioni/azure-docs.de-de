@@ -14,13 +14,13 @@
 	ms.tgt_pltfrm="ibiza"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/30/2016"
+	ms.date="08/17/2016"
 	ms.author="cjiang"/>
 
 # Behandeln von Problemen bei der Registrierung bei Azure
 In diesem Artikel erfahren Sie, wie Sie die Ursachen gängiger Probleme bei der Registrierung bei Azure beheben.
 
-> [AZURE.NOTE] Wenn Sie beim Lesen dieses Artikels feststellen, dass Sie weitere Hilfe benötigen, können Sie Azure-Experten im [MSDN Azure-Forum oder im Stack Overflow-Forum](https://azure.microsoft.com/support/forums/) Fragen stellen. Alternativ dazu haben Sie die Möglichkeit, auf der [Azure-Supportwebsite](http://go.microsoft.com/fwlink/?linkid=544831&clcid=0x409) einen Azure-Supportfall zu melden. Informationen zur Nutzung von Azure-Support finden Sie unter [Microsoft Azure-Support-FAQ](https://azure.microsoft.com/support/faq/).
+> [AZURE.NOTE] Wenn Sie bei irgendeinem Verfahren in diesem Artikel weitere Hilfe benötigen, [wenden Sie sich an den Support](http://go.microsoft.com/fwlink/?linkid=544831&clcid=0x409), um das Problem schnell zu lösen.
 
 ## Ich erhalte bei der Eingabe meiner Daten für die Registrierung eine Fehlermeldung.
 Sind die Kontoprofilinformationen richtig? Ihre Profildetails dienen zum Generieren von Kontoauszügen, weshalb Sie für eine erfolgreiche Registrierung Ihre Daten fehlerfrei eingeben müssen. Beispiele für falsch ausgefüllte Felder sind:
@@ -53,7 +53,7 @@ Stellen Sie sicher, dass die bei der Registrierung angegebene Zahlungsmethode f�
 - Akzeptierte Anbieter von Kredit- und Lastschriftkarten variieren je nach Land.
 
 Vorschläge:
-- Häufige Ursachen bei Problemen während der Anmeldung mit einer Kreditkarte finden Sie im Artikel [Meine Kreditkarte wird nicht akzeptiert, wenn ich versuche, mich für Azure zu registrieren](billing-credit-card-fails-during-azure-sign-up.md).
+- Häufige Ursachen für Probleme während der Anmeldung mit einer Kreditkarte finden Sie im Artikel [Meine Kreditkarte wird nicht akzeptiert, wenn ich versuche, mich für Azure zu registrieren](billing-credit-card-fails-during-azure-sign-up.md).
 
 ## Ich kann kein Azure-Vorteilsprogramm wie MSDN, BizSpark, BizSparkPlus oder MPN aktivieren.
 Vergewissern Sie sich über Ihren Vorteilsprogrammkanal, ob Sie zum Aktivieren des gewählten Plans berechtigt sind:
@@ -67,7 +67,7 @@ Vergewissern Sie sich über Ihren Vorteilsprogrammkanal, ob Sie zum Aktivieren d
   - Melden Sie sich beim [BizSpark-Portal](https://www.microsoft.com/bizspark/default.aspx#start-two) an, und überprüfen Sie Ihren Berechtigungsstatus für BizSpark und BizSpark Plus. Wenn Sie Ihren Status nicht überprüfen können, wenden Sie sich an den BizSpark-Support, indem Sie eine [E-Mail an das BizSpark-Team senden](mailto:bizspark@microsoft.com?subject=BizSpark%20Support&body=Thank%20you%20for%20contacting%20BizSpark.%20Please%20provide%20as%20much%20of%20the%20following%20information%20as%20possible,%20as%20it%20will%20help%20expedite%20our%20response%20to%20you.%0aContact%20name:%0aStartup%20name:%0aMicrosoft%20Account/Live%20ID:%0aSpecific%20description%20of%20issue%20experienced%20or%20question:%0a%0aThank%20you,%0a%0aThe%20BizSpark%20Team).
 
 Vorschläge:
-- Wenn Sie versucht haben, ein neues Vorteilsabonnement zu aktivieren, und bei der Registrierung ein Fehler auftritt, überprüfen Sie auf der [Seite zu Azure-Abonnements](http://account.windowsazure.com/Subscriptions), ob die Einrichtung des Abonnements abgeschlossen wurde. Es dauert ein paar Minuten, bis Ihr Abonnement als aktiv angezeigt wird. Sobald Ihr Abonnement aktiviert wurde, erhalten Sie eine E-Mail. Wenn Ihr Abonnementstatus mehr als vier Minuten „Ausstehend“ ist, [kontaktieren Sie den Azure-Support ](http://go.microsoft.com/fwlink/?linkid=544831&clcid=0x409), um Unterstützung zu erhalten.
+- Wenn Sie versucht haben, ein neues Vorteilsabonnement zu aktivieren und bei der Registrierung ein Fehler auftritt, überprüfen Sie auf der [Azure-Abonnementseite](http://account.windowsazure.com/Subscriptions), ob die Einrichtung des Abonnements abgeschlossen wurde. Es dauert ein paar Minuten, bis Ihr Abonnement als aktiv angezeigt wird. Sobald Ihr Abonnement aktiviert wurde, erhalten Sie eine E-Mail. Wenn Ihr Abonnementstatus länger als vier Minuten „Ausstehend“ lautet, [kontaktieren Sie den Azure-Support ](http://go.microsoft.com/fwlink/?linkid=544831&clcid=0x409), um Unterstützung zu erhalten.
 
 ## Ich kann kein neues Azure In Open-Abonnement aktivieren.
 Sie benötigen einen gültigen OSA-Schlüssel, dem mindestens ein Azure in Open-Token zugeordnet ist, um ein neues Azure in Open-Abonnement zu aktivieren.
@@ -81,4 +81,6 @@ Haben Sie in der Vergangenheit bereits ein Azure-Abonnement verwendet? Die Verei
 Vorschläge:
 - Wenn Sie in der Vergangenheit bereits ein Azure-Abonnement aktiviert haben und bei der Aktivierung der kostenlosen Testversion ein Fehler auftritt, erwägen Sie den Kauf eines Abonnements mit nutzungsbasierter Bezahlung. Sie sind ggf. auch für ein Vorteilsangebot berechtigt. Weitere Informationen (abgesehen vom Plan „Kostenlose Azure-Testversion“) finden Sie auf der [Seite mit den Microsoft Azure-Angebotsdetails](https://azure.microsoft.com/support/legal/offer-details/). Beachten Sie, dass für Vorteilspläne bestimmte Voraussetzungen erfüllt sein müssen.
 
-<!---HONumber=AcomDC_0803_2016-->
+> [AZURE.NOTE] Wenn Sie weitere Fragen haben, [wenden Sie sich an den Support](http://go.microsoft.com/fwlink/?linkid=544831&clcid=0x409), um das Problem schnell zu lösen.
+
+<!---HONumber=AcomDC_0824_2016-->

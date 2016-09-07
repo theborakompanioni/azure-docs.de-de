@@ -14,13 +14,15 @@
 	ms.tgt_pltfrm="ibiza"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/20/2016"
+	ms.date="08/17/2016"
 	ms.author="cjiang"/>
 
 # Verwenden Ihres vorhandenen Office 365-Kontos mit Ihrem Azure-Abonnement (oder umgekehrt)
 Szenario: Sie verfügen bereits über ein Office 365-Abonnement und wünschen ein Azure-Abonnement, möchten jedoch das vorhandene Office 365-Benutzerkonto (bzw. die Benutzerkonten) für Ihr Azure-Abonnement verwenden. Alternativ sind Sie Azure-Abonnent und wünschen ein Office 365-Abonnement für die Benutzer in Ihrem vorhandenen Azure Active Directory. In diesem Artikel erfahren Sie, wie einfach beides zu erreichen ist.
 
 > [AZURE.NOTE] Dieser Artikel gilt nicht für Enterprise Agreement-Kunden (EA).
+
+> [AZURE.NOTE] Wenn Sie bei irgendeinem Verfahren in diesem Artikel weitere Hilfe benötigen, [wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), um das Problem schnell zu lösen.
 
 ## Kurzanleitung
 
@@ -78,7 +80,7 @@ Jetzt sind Sie soweit. Sie sehen, dass im Azure-Portal die gleichen Benutzer im 
 <a id="s2"></a>
 ### Szenario 2: Azure-Benutzer planen, Office 365 zu kaufen
 
-In diesem Szenario ist Kelley Wall eine Benutzerin mit einem Azure-Abonnement unter dem Konto admin@contoso.onmicrosoft.com. Kelley möchte Office 365 abonnieren und das gleiche Verzeichnis verwenden, über das sie bereits für Azure verfügt.
+In diesem Szenario ist Kelley Wall eine Benutzerin mit einem Azure-Abonnement im Konto admin@contoso.onmicrosoft.com. Kelley möchte Office 365 abonnieren und das gleiche Verzeichnis verwenden, über das sie bereits für Azure verfügt.
 
 >[AZURE.NOTE] Damit Sie ein Office 365-Abonnement erhalten können, muss das Konto, das Sie zum Anmelden verwenden, in Ihrem Azure AD-Mandanten Mitglied der Rolle „Globaler Administrator“ oder „Abrechnungsadministrator“ sein. [Erfahren Sie, wie Sie die Rolle Ihres Azure Active Directory kennen lernen](#how-to-know-your-role-in-your-azure-active-directory)
 
@@ -114,7 +116,7 @@ Jetzt sind Sie soweit. Sie sehen, dass im Office 365 Admin Center die gleichen B
 
 ### So lernen Sie Ihre Rolle in Ihrem Azure Active Directory kennen
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
+1. Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com/) an.
 2. Klicken Sie auf **Durchsuchen** und dann auf **Active Directory**.
 
 	![azure-portal-browse-ad](./media/billing-use-existing-office-365-account-azure-subscription/7-azure-portal-browse-ad.png)
@@ -129,7 +131,7 @@ Jetzt sind Sie soweit. Sie sehen, dass im Office 365 Admin Center die gleichen B
 	![azure-portal-user-identity](./media/billing-use-existing-office-365-account-azure-subscription/18-azure-portal-user-identity.png)
 
 ## Hintergrundinformationen
-Office 365 und Azure verwenden den Azure Active Directory-Dienst (AAD) zum Verwalten von Benutzern und Abonnements. Betrachten Sie ein Azure-Verzeichnis als Container, in dem Sie Benutzer und Abonnements gruppieren können. Damit Sie für Ihre Microsoft Azure- und Office 365-Abonnements das gleiche Benutzerkonto verwenden können, müssen Sie sicherstellen, dass die Abonnements in dem gleichen Verzeichnis erstellt werden.
+Office 365 und Azure verwenden den Azure Active Directory-Dienst (AAD) zum Verwalten von Benutzern und Abonnements. Betrachten Sie ein Azure-Verzeichnis als Container, in dem Sie Benutzer und Abonnements gruppieren können. Damit Sie für Ihre Microsoft Azure- und Office 365-Abonnements das gleiche Benutzerkonto verwenden können, müssen Sie sicherstellen, dass die Abonnements im gleichen Verzeichnis erstellt werden.
 
 - Ein Abonnement wird in einem Verzeichnis erstellt, nicht umgekehrt.
 - Benutzer gehören zu Verzeichnissen, nicht umgekehrt.
@@ -145,6 +147,8 @@ Weitere Informationen finden Sie unter [Beziehung zwischen Azure-Abonnements und
 - Office 365-Abonnements gehören dem Verzeichnis selbst. Benutzer im Verzeichnis können Vorgänge an diesen Abonnements ausführen, wenn sie über die erforderlichen Berechtigungen verfügen.
 
 ##Nächste Schritte
-Es gibt ein ähnliches Szenario, in dem Sie das Azure-Abonnement und das Office 365-Abonnement in der Vergangenheit separat erworben haben und aus dem Azure-Abonnement auf den Office 365-Mandanten zugreifen möchten. Informationen hierzu finden Sie unter [Associate an Office 365 tenant with an Azure subscription](billing-add-office-365-tenant-to-azure-subscription.md) (Zuordnen eines Office 365-Mandanten zu einem Azure-Abonnement).
+Es gibt ein ähnliches Szenario, in dem Sie das Azure-Abonnement und das Office 365-Abonnement in der Vergangenheit separat erworben haben und aus dem Azure-Abonnement auf den Office 365-Mandanten zugreifen möchten. Informationen hierzu finden Sie unter [Zuordnen eines Office 365-Mandanten zu einem Azure-Abonnement](billing-add-office-365-tenant-to-azure-subscription.md).
 
-<!---HONumber=AcomDC_0803_2016-->
+> [AZURE.NOTE] Wenn Sie weitere Fragen haben, [wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), um das Problem schnell zu lösen.
+
+<!---HONumber=AcomDC_0824_2016-->

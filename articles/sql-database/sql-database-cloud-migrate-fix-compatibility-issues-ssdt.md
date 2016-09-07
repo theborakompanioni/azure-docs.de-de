@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="sqldb-migrate"
-   ms.date="06/07/2016"
+   ms.date="08/24/2016"
    ms.author="carlrab"/>
 
 # Migrieren einer SQL Server-Datenbank zu Azure SQL-Datenbank mithilfe von SQL Server Data Tools für Visual Studio 
@@ -29,7 +29,7 @@ In diesem Artikel erfahren Sie, wie Sie mit SQL Server Data Tools für Visual St
 
 ## Verwenden von SQL Server Data Tools für Visual Studio
 
-Verwenden Sie SQL Server Data Tools für Visual Studio (SSDT), um das Datenbankschema zur Analyse in ein Visual Studio-Datenbankprojekt zu importieren. Für die Analyse muss SQL-Datenbank V12 als Zielplattform angegeben und das Projekt erstellt werden. Wenn der Erstellungsvorgang erfolgreich ist, ist die Datenbank kompatibel. Wenn der Buildvorgang fehlschlägt, können Sie die Fehler in SSDT (oder einem anderen Tool, das in diesem Thema erläutert wird) beheben. Wenn sich das Projekt erfolgreich erstellen lässt, können Sie es als Kopie der Quelldatenbank veröffentlichen und die Daten anschließend unter Verwendung des Datenvergleichsfeatures von SSDT aus der Quelldatenbank in die Azure SQL V12-kompatible Datenbank kopieren. Sie können diese aktualisierte Datenbank dann migrieren. Um diese Option verwenden zu können, laden Sie die [neueste Version von SSDT](https://msdn.microsoft.com/library/mt204009.aspx) herunter.
+Verwenden Sie SQL Server Data Tools für Visual Studio (SSDT), um das Datenbankschema zur Analyse in ein Visual Studio-Datenbankprojekt zu importieren. Für die Analyse muss SQL-Datenbank V12 als Zielplattform angegeben und das Projekt erstellt werden. Wenn der Erstellungsvorgang erfolgreich ist, ist die Datenbank kompatibel. Wenn der Buildvorgang fehlschlägt, können Sie die Fehler in SSDT (oder einem anderen Tool, das in diesem Thema erläutert wird) beheben. Nachdem das Projekt erfolgreich erstellt wurde, können Sie es in einer Kopie der Quelldatenbank wieder veröffentlichen. Dann können Sie die Daten mit dem Datenvergleichsfeature in SSDT aus der Quelldatenbank in die Azure SQL V12-kompatible Datenbank kopieren. Sie können diese aktualisierte Datenbank dann migrieren. Um diese Option verwenden zu können, laden Sie die [neueste Version von SSDT](https://msdn.microsoft.com/library/mt204009.aspx) herunter.
 
   ![Diagramm der VSSSDT-Migration](./media/sql-database-cloud-migrate/03VSSSDTDiagram.png)
 
@@ -41,7 +41,7 @@ Verwenden Sie SQL Server Data Tools für Visual Studio (SSDT), um das Datenbanks
     
 	![Neues Projekt](./media/sql-database-migrate-visualstudio-ssdt/02MigrateSSDT.png)
    
-2.	Legen Sie die Importeinstellungen auf **Import application-scoped objects only** fest. Deaktivieren Sie die Optionen zum Importieren der folgenden Anmeldungsverweise, Berechtigungen und Datenbankeinstellungen.
+2.	Legen Sie die Importeinstellungen auf **Import application-scoped objects only** fest. Deaktivieren Sie die Optionen zum Importieren des Folgenden: Anmeldungsverweise, Berechtigungen und Datenbankeinstellungen.
 
     ![alt text](./media/sql-database-migrate-visualstudio-ssdt/03MigrateSSDT.png)
 
@@ -49,7 +49,7 @@ Verwenden Sie SQL Server Data Tools für Visual Studio (SSDT), um das Datenbanks
 
     ![alt text](./media/sql-database-migrate-visualstudio-ssdt/04MigrateSSDT.png)
 
-4.	Klicken Sie in Visual Studio im Projektmappen-Explorer mit der rechten Maustaste auf das Datenbankprojekt, und wählen Sie "Eigenschaften" aus. Dadurch wird die Seite **Projekteinstellungen** geöffnet, auf der Sie die Zielplattform auf "Microsoft Azure SQL Database V12" festlegen.
+4.	Klicken Sie in Visual Studio im Projektmappen-Explorer mit der rechten Maustaste auf das Datenbankprojekt, und wählen Sie „Eigenschaften“ aus. Dadurch wird die Seite **Projekteinstellungen** geöffnet, auf der Sie als Zielplattform „Microsoft Azure SQL Database V12“ konfigurieren sollten.
     
     ![alt text](./media/sql-database-migrate-visualstudio-ssdt/05MigrateSSDT.png)
     
@@ -62,14 +62,16 @@ Verwenden Sie SQL Server Data Tools für Visual Studio (SSDT), um das Datenbanks
 	![alt text](./media/sql-database-migrate-visualstudio-ssdt/07MigrateSSDT.png)
     
 ## Beheben von Kompatibilitätsproblemen mit SQL Server Data Tools für Visual Studio        
-  
+    
 1.	Doppelklicken Sie auf das erste Skript, um es in einem Abfragefenster zu öffnen, auszukommentieren und dann auszuführen. ![alt text](./media/sql-database-migrate-visualstudio-ssdt/08MigrateSSDT.png)
 
-2.	Wiederholen Sie diesen Vorgang für jedes Skript mit Inkompatibilitäten mit, bis kein Fehler mehr vorhanden ist. ![alt text](./media/sql-database-migrate-visualstudio-ssdt/09MigrateSSDT.png)  
- 
-3.	Wenn alle Fehler in der Datenbank behoben wurden, klicken Sie mit der rechten Maustaste auf das Projekt, und wählen Sie **Veröffentlichen** aus, um die Datenbank als Kopie der Quelldatenbank zu erstellen und zu veröffentlichen. (Es wird dringend empfohlen, zumindest zu Beginn eine Kopie zu verwenden.)
+2.	Wiederholen Sie diesen Vorgang für jedes Skript mit Inkompatibilitäten, bis kein Fehler mehr vorhanden ist.
+
+	![alt text](./media/sql-database-migrate-visualstudio-ssdt/09MigrateSSDT.png)
+    
+3.	Wenn die Datenbank fehlerfrei ist, klicken Sie mit der rechten Maustaste auf das Projekt, und wählen Sie **Veröffentlichen**. Damit wird die Datenbank in einer Kopie der Quelldatenbank erstellt und veröffentlicht (Sie sollten, zumindest zu Beginn, eine Kopie verwenden).
  - Vor der Veröffentlichung sollten Sie in Abhängigkeit von der Quell-SQL Server-Version (älter als SQL Server 2014) die Zielplattform für das Projekt zum Aktivieren der Bereitstellung zurücksetzen.
- - Wenn Sie eine ältere SQL Server-Datenbank migrieren, dürfen Sie keine Features in das Projekt einführen,die nicht vom Quell-SQL Server unterstützt werden, es sei denn, Sie migrieren zuerst die Datenbank in eine neuere Version von SQL Server.
+ - Wenn Sie eine ältere SQL Server-Datenbank migrieren, führen Sie keine Features in das Projekt ein, die nicht von der Quell-SQL Server-Instanz unterstützt werden, es sei denn, Sie migrieren die Datenbank zu einer neueren Version von SQL Server.
 
     	![alt text](./media/sql-database-migrate-visualstudio-ssdt/10MigrateSSDT.png)    
     
@@ -92,10 +94,10 @@ Verwenden Sie SQL Server Data Tools für Visual Studio (SSDT), um das Datenbanks
 - [Neueste Version von SSDT](https://msdn.microsoft.com/library/mt204009.aspx)
 - [Neueste Version von SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx)
 
-## Weitere Ressourcen
+## Zusätzliche Ressourcen
 
 - [SQL-Datenbank V12](sql-database-v12-whats-new.md)
 - [Teilweise oder vollständig unterstützte Transact-SQL-Funktionen](sql-database-transact-sql-information.md)
 - [Migrate non-SQL Server databases using SQL Server Migration Assistant (Migrieren von Nicht-SQL Server-Datenbanken mithilfe des SQL Server-Migrations-Assistenten)](http://blogs.msdn.com/b/ssma/)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0824_2016-->

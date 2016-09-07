@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="get-started-article"
-	ms.date="06/22/2016" 
+	ms.date="08/30/2016" 
 	ms.author="juliako"/>
 
 
@@ -21,14 +21,12 @@
 
 In diesem Tutorial werden Sie durch die Schritte des Azure-Portals zum Erstellen eines **Kanals** geführt, der für eine Pass-Through-Bereitstellung konfiguriert ist.
 
-Azure Media Services im Azure-Portal befindet sich derzeit in der Vorschauphase.
-
 
 ##Voraussetzungen
 
 Zum Abschließen dieses Lernprogramms müssen folgende Voraussetzungen erfüllt sein:
 
-- Ein Azure-Konto. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
+- Ein Azure-Konto. Ausführliche Informationen finden Sie unter [Einen Monat kostenlos testen](https://azure.microsoft.com/pricing/free-trial/).
 - Media Services-Konto. Informationen zum Erstellen eines Media Services-Kontos finden Sie unter [Erstellen eines Media Services Kontos](media-services-create-account.md).
 - Eine Webcam. Beispielsweise den [Telestream Wirecast-Encoder](http://www.telestream.net/wirecast/overview.htm).
 
@@ -53,7 +51,7 @@ In den folgenden Schritten werden Aufgaben beschrieben, die beim Erstellen von g
 	Die Erfassungs-URL wird vom Liveencoder verwendet, um den Datenstrom an den Kanal zu senden.
 1. Rufen Sie die Vorschau-URL des Kanals ab.
 
-	Verwenden Sie diese URL, um sicherzustellen, dass der Livedatenstrom ordnungsgemäß vom Kanal empfangen wird.
+	Verwenden Sie diese URL, um sicherzustellen, dass der Livestream ordnungsgemäß vom Kanal empfangen wird.
 
 3. Erstellen Sie ein Liveereignis/-programm.
 
@@ -87,7 +85,7 @@ Gehen Sie wie folgt vor, um die Anzahl von Einheiten zu erstellen und zu ändern
 
 	Das Fenster **DEFAULT STREAMING ENDPOINT DETAILS** (DETAILS ZUM STANDARD-STREAMINGENDPUNKT) wird angezeigt.
 
-3. Die Anzahl von Streamingeinheiten können Sie mit dem Schieberegler **Streamingeinheiten** angeben.
+3. Die Anzahl von Streamingeinheiten kann mithilfe des Schiebereglers **Streamingeinheiten** angegeben werden.
 
 	![Streamingeinheiten](./media/media-services-portal-vod-get-started/media-services-streaming-units.png)
 
@@ -117,7 +115,7 @@ Wenn Sie die archivierten Inhalte beibehalten möchten, diese aber nicht für da
 
 ###So erstellen Sie mit dem Portal einen Kanal 
 
-In diesem Abschnitt wird gezeigt, wie Sie die Option **Schnellerfassung** zum Erstellen eines Pass-Through-Kanals verwenden.
+In diesem Abschnitt erfahren Sie, wie Sie mithilfe der Option **Schnellerfassung** einen Pass-Through-Kanal erstellen.
 
 Weitere Informationen zu Pass-Through-Kanälen finden Sie unter [Livestreaming mit lokalen Encodern, die Multi-Bitrate-Datenströme erstellen](media-services-live-streaming-with-onprem-encoders.md).
 
@@ -129,14 +127,14 @@ Weitere Informationen zu Pass-Through-Kanälen finden Sie unter [Livestreaming m
 
 3. Klicken Sie auf **Schnellerfassung**, um einen Pass-Through-Kanal mit dem RTMP-Erfassungsprotokoll zu erstellen.
 
-	Das Fenster **CREATE A NEW CHANNEL** (NEUEN KANAL ERSTELLEN) wird angezeigt.
+	Das Fenster **EINEN NEUEN KANAL ERSTELLEN** wird angezeigt.
 4. Geben Sie dem neuen Kanal einen Namen, und klicken Sie auf **Erstellen**.
 
 	Der Pass-Through-Kanal mit dem RTMP-Erfassungsprotokoll wird erstellt.
 
 	Der Kanal führt auch das Hinzufügen, Starten und Veröffentlichen eines standardmäßigen Liveereignisses bzw. Programms durch. Das Ereignis wird mit einem Archivierungsfenster von acht Stunden konfiguriert.
 
-	Um weitere Ereignisse hinzuzufügen, klicken Sie auf die Schaltfläche **Liveereignis**.
+	Klicken Sie zum Hinzufügen weiterer Ereignisse auf die Schaltfläche **Liveereignis**.
 
 ##Abrufen von Erfassungs-URLs
 
@@ -163,7 +161,7 @@ Weitere Informationen zu Pass-Through-Kanälen finden Sie unter [Livestreaming m
 
 Auch nach dem Beenden und Löschen des Ereignisses können die Benutzer archivierte Inhalte als bedarfsgesteuertes Video streamen, solange das Medienobjekt nicht gelöscht wurde. Medienobjekte können nicht gelöscht werden, wenn sie von Ereignissen verwendet werden. Zuerst muss das betreffende Ereignis gelöscht werden.
 
-Wählen Sie zum Verwalten der Objekte die Option **Einstellung**, und klicken Sie auf **Ressourcen**.
+Wählen Sie zum Verwalten der Objekte die Option **Einstellung** aus, und klicken Sie auf **Ressourcen**.
 
 ![Objekte](./media/media-services-portal-passthrough-get-started/media-services-assets.png)
 
@@ -175,4 +173,4 @@ Wählen Sie zum Verwalten der Objekte die Option **Einstellung**, und klicken Si
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!----HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0831_2016-->

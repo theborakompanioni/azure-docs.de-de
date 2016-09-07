@@ -77,9 +77,9 @@ Sie benötigen die IP-Adresse Ihrer Azure-App, um einen benutzerdefinierten Dom�
 
 2.	Klicken Sie im linken Menü auf **App Services**.
 
-4.	Klicken Sie auf Ihre App und dann auf **Einstellungen** > **Benutzerdefinierte Domänen und SSL** > **Externe Domänen einreichen**.
+4.	Klicken Sie auf Ihre App und anschließend auf **Benutzerdefinierte Domänen**.
 
-6.  Notieren Sie sich die IP-Adresse.
+6.  Notieren Sie sich die IP-Adresse über dem Hostnamenabschnitt:
 
     ![Zuordnen eines benutzerdefinierten Domänennamens mit A-Eintrag: Abrufen der IP-Adresse für Ihre Azure App Service-App](./media/web-sites-custom-domain-name/virtual-ip-address.png)
 
@@ -99,7 +99,7 @@ Melden Sie sich bei Ihrer Domänenregistrierungsstelle an, und verwenden Sie die
 <a name="a"></a>
 ### Erstellen eines A-Eintrags
 
-Zum Verwenden eines A-Eintrags für die Zuordnung zur IP-Adresse Ihrer Azure-App müssen Sie sowohl einen A-Eintrag als auch einen CNAME-Eintrag erstellen. Der A-Eintrag gilt für die eigentliche DNS-Auflösung, und der CNAME-Eintrag gilt für Azure, um zu bestätigen, dass sich der benutzerdefinierte Domänenname in Ihrem Besitz befindet.
+Wenn Sie der IP-Adresse Ihrer Azure-App einen A-Eintrag zuordnen möchten, müssen Sie sowohl einen A-Eintrag als auch einen TXT-Eintrag erstellen. Der A-Eintrag wird für die eigentliche DNS-Auflösung benötigt. Der TXT-Eintrag bestätigt gegenüber Azure, dass Sie der Besitzer des benutzerdefinierten Domänennamens sind.
 
 Konfigurieren Sie Ihren A-Eintrag wie folgt (@ steht normalerweise für die Stammdomäne):
  
@@ -126,28 +126,28 @@ Konfigurieren Sie Ihren A-Eintrag wie folgt (@ steht normalerweise für die Stam
   </tr>
 </table>
 
-Für Ihren zusätzlichen CNAME-Eintrag wird die Konvention für die Zuordnung von „awverify.&lt;*Unterdomäne*>.&lt;*Stammdomäne*>“ zu „awverify.&lt;*Unterdomäne*>.azurewebsites.net“ übernommen. Konfigurieren Sie Ihren CNAME-Eintrag wie folgt:
+Für Ihren zusätzlichen TXT-Eintrag wird die Konvention der Zuordnung von „&lt;*Unterdomäne*>.&lt;*Stammdomäne*>“ zu „&lt;*Unterdomäne*>.azurewebsites.net“ übernommen. Konfigurieren Sie Ihren TXT-Eintrag wie folgt:
 
 <table cellspacing="0" border="1">
   <tr>
     <th>FQDN-Beispiel</th>
-    <th>CNAME-Host</th>
-    <th>CNAME-Wert</th>
+    <th>TXT-Host</th>
+    <th>TXT-Wert</th>
   </tr>
   <tr>
     <td>contoso.com (Stammdomäne)</td>
-    <td>awverify</td>
-    <td>awverify.&lt;<i>App-Name</i>>.azurewebsites.net</td>
+    <td>@</td>
+    <td>&lt;<i>App-Name</i>>.azurewebsites.net</td>
   </tr>
   <tr>
     <td>www.contoso.com (Unterdomäne)</td>
-    <td>awverify.www</td>
-    <td>awverify.&lt;<i>App-Name</i>>.azurewebsites.net</td>
+    <td>www</td>
+    <td>&lt;<i>App-Name</i>>.azurewebsites.net</td>
   </tr>
   <tr>
     <td>*.contoso.com (Platzhalter)</td>
-    <td>awverify</td>
-    <td>awverify.&lt;<i>App-Name</i>>.azurewebsites.net</td>
+    <td>*</td>
+    <td>&lt;<i>App-Name</i>>.azurewebsites.net</td>
   </tr>
 </table>
 
@@ -181,23 +181,27 @@ Konfigurieren Sie Ihren CNAME-Eintrag wie folgt (@ steht normalerweise für die 
 <a name="enable"></a>
 ## Schritt 3: Aktivieren des benutzerdefinierten Domänennamens für Ihre App
 
-Auf dem Blatt **Externe Domänen einreichen** im Azure-Portal (siehe [Schritt 1](#vip)) müssen Sie den vollqualifizierten Domänennamen (FQDN) Ihrer benutzerdefinierten Domäne der Liste hinzufügen.
+Auf dem Blatt **Benutzerdefinierte Domänen** im Azure-Portal (siehe [Schritt 1](#vip)) müssen Sie der Liste den vollqualifizierten Domänennamen (Fully-Qualified Domain Name, FQDN) Ihrer benutzerdefinierten Domäne hinzufügen.
 
 1.	Melden Sie sich am [Azure-Portal](https://portal.azure.com) an, falls Sie dies noch nicht getan haben.
 
 2.	Klicken Sie im Azure-Portal im linken Menü auf **App Services**.
 
-4.	Klicken Sie auf Ihre App und dann auf **Einstellungen** > **Benutzerdefinierte Domänen und SSL** > **Externe Domänen einreichen**.
+3.	Klicken Sie auf Ihre App und anschließend auf **Benutzerdefinierte Domänen** > **Hostnamen hinzufügen**.
 
-2.	Fügen Sie den FQDN der benutzerdefinierten Domäne der Liste hinzu (z.B. **www.contoso.com**).
+4.	Fügen Sie den FQDN der benutzerdefinierten Domäne der Liste hinzu (z.B. **www.contoso.com**).
 
     ![Zuordnen eines benutzerdefinierten Domänennamens zu einer Azure-App: Hinzufügen zur Liste der Domänennamen](./media/web-sites-custom-domain-name/add-custom-domain.png)
 
     >[AZURE.NOTE] Azure wird versucht, den Domänennamen zu überprüfen, den Sie hier verwenden. Stellen Sie sicher, dass es der gleiche Domänenname ist, für den Sie in [Schritt 2](#createdns) einen DNS-Eintrag erstellt haben.
 
-6.  Klicken Sie auf **Speichern**.
+5.  Klicken Sie auf **Überprüfen**.
 
-7.  Nachdem Azure Ihren neuen benutzerdefinierten Domänennamen konfiguriert hat, können Sie in einem Browser zum benutzerdefinierten Domänennamen navigieren. Der Browser sollte Ihre Azure-App öffnen. Das bedeutet, dass der benutzerdefinierte Domänenname richtig konfiguriert wurde.
+6.  Nach dem Klicken auf **Überprüfen** startet Azure den Workflow zur Domänenüberprüfung. Dieser Workflow überprüft den Domänenbesitz sowie die Verfügbarkeit des Hostnamens und meldet die erfolgreiche Durchführung oder erstellt einen detaillierten Fehlerbericht mit Empfehlungen, wie der Fehler behoben werden kann.
+
+7.  Nach erfolgreicher Überprüfung wird die Schaltfläche **Hostnamen hinzufügen** aktiv, und Sie können den Hostnamen zuweisen. Navigieren Sie in einem Browser zu Ihrer benutzerdefinierten Domäne. Ihre App sollte nun mit Ihrem benutzerdefinierten Domänennamen ausgeführt werden.
+
+8.  Nachdem Azure Ihren neuen benutzerdefinierten Domänennamen konfiguriert hat, können Sie in einem Browser zum benutzerdefinierten Domänennamen navigieren. Der Browser sollte Ihre Azure-App öffnen. Das bedeutet, dass der benutzerdefinierte Domänenname richtig konfiguriert wurde.
 
 <a name="verify"></a>
 ## Überprüfen der DNS-Verteilung
@@ -219,4 +223,4 @@ Erfahren Sie, wie Sie Ihren benutzerdefinierten Domänennamen mit HTTPS sichern,
 <!-- Images -->
 [subdomain]: media/web-sites-custom-domain-name/azurewebsites-subdomain.png
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0824_2016-->

@@ -4,7 +4,7 @@
 	services="virtual-machines-windows"
 	documentationCenter=""
 	authors="singhkays"
-	manager="drewm"
+	manager="timlt"
 	editor=""
 	tags="azure-resource-manager"/>
 
@@ -185,4 +185,4 @@ Das _Add-AzureSMVmToRM_-Cmdlet wurde anhand der folgenden Testfälle überprüft
 ## Hinweise
 1. Wenn mehrere VMs nacheinander mit kurzen Pausen dazwischen geklont werden, kann es für die öffentlichen IP-Adressen aufgrund des Aktualisierungszeitraums für den DNS-Cache zu DNS-Namenskonflikten kommen.
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0824_2016-->

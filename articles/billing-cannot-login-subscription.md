@@ -15,12 +15,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/30/2016"
+	ms.date="08/17/2016"
 	ms.author="genli"/>
 
 # Ich kann mich nicht anmelden, um mein Azure-Abonnement zu verwalten
 
-> [AZURE.NOTE] Wenn Sie beim Lesen dieses Artikels feststellen, dass Sie weitere Hilfe benötigen, können Sie Azure-Experten im [MSDN Azure-Forum oder im Stack Overflow-Forum](https://azure.microsoft.com/support/forums/) Fragen stellen. Alternativ dazu haben Sie die Möglichkeit, auf der [Azure-Supportwebsite](http://go.microsoft.com/fwlink/?linkid=544831&clcid=0x409) einen Azure-Supportfall zu melden. Informationen zur Nutzung von Azure-Support finden Sie unter [Microsoft Azure-Support-FAQ](https://azure.microsoft.com/support/faq/).
+> [AZURE.NOTE] Wenn Sie bei irgendeinem Verfahren in diesem Artikel weitere Hilfe benötigen, [wenden Sie sich an den Support](http://go.microsoft.com/fwlink/?linkid=544831&clcid=0x409), um das Problem schnell zu lösen.
 
 Dieser Artikel hilft Ihnen bei der Problembehandlung einiger häufiger Ursachen bei Anmeldeproblemen.
 
@@ -54,4 +54,6 @@ Nachdem es jetzt möglich ist, sich bei Azure mit einem Organisationskonto anzum
 
 Versuchen Sie, den Cache und Cookies zu löschen, den Internet Explorer-Modus „InPrivate-Browsen“ zu verwenden und einen anderen Browser zu nutzen.
 
-<!---HONumber=AcomDC_0803_2016-->
+> [AZURE.NOTE] Wenn Sie weitere Fragen haben, [wenden Sie sich an den Support](http://go.microsoft.com/fwlink/?linkid=544831&clcid=0x409), um das Problem schnell zu lösen.
+
+<!---HONumber=AcomDC_0824_2016-->

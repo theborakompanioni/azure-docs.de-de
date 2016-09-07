@@ -19,8 +19,8 @@
 
 # Gewusst wie: Migrieren von Logik-Apps zur Schemaversion 2015-08-01-preview
 
-Um Ihre vorhandenen Logik-Apps in das neue Schema zu verschieben, führen Sie folgende Schritte aus:
-1. Öffnen Sie Ihre Logik-App im Azure-Portal.
+Um Ihre vorhandenen Logik-Apps in das neue Schema zu verschieben, führen Sie folgende Schritte aus:  
+1. Öffnen Sie Ihre Logik-App im Azure-Portal.  
 2. Klicken Sie auf „Schema aktualisieren“.
 
 ![API-Symbol][step1]

@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/13/2016"
+   ms.date="08/18/2016"
    ms.author="alkohli" />
 
 # Sichere Installation und Verwendung des StorSimple-Geräts
@@ -34,7 +34,7 @@ Die folgenden Symbole finden Sie in den Sicherheitsvorkehrungen, die beachtet we
 |![Symbol "Stromschlag"](./media/storsimple-safety/IC740882.png) **Elektrischer Schlag** |Hochspannung|
 |![Symbol "Schwergewicht"](./media/storsimple-safety/IC740883.png) **Schwergewicht**| |
 |![Symbol "Keine durch Benutzer zu wartenden Teile"](./media/storsimple-safety/IC740879.png) **Keine durch Benutzer zu wartenden Teile**|Zugriff nur bei ausreichender Schulung.|
-|![Symbol "Sicherheitshinweis lesen"](./media/storsimple-safety/IC740885.png)**Lesen Sie zunächst alle Anweisungen**| |
+|![Symbol "Sicherheitshinweis lesen"](./media/storsimple-safety/IC740885.png)**Alle Anleitungen zuvor lesen**| |
 |![Symbol "Kippgefahr"](./media/storsimple-safety/IC740886.png)**Kippgefahr**| |
 
 
@@ -143,7 +143,7 @@ Für den ordnungsgemäßen Betrieb Ihrer Geräte und um Schäden am Produkt zu v
 
 ![Symbol "Hinweis"](./media/storsimple-safety/IC740881.png) **HINWEIS:**
 
-Beachten Sie die folgenden, auf ESD bezogene Vorsichtsmaßnahmen.
+Beachten Sie die folgenden, auf ESD bezogenen Vorsichtsmaßnahmen.
 
 - Stellen Sie sicher, dass Sie ein geeignetes Ableitband oder einen geeigneten Ableitriemen installiert und überprüft haben.
 
@@ -179,4 +179,4 @@ Nachdem Sie diese Sicherheitshinweise gelesen haben, ist der nächste Schritt, d
 
 - Wenn es sich um ein 8600-Gerät handelt, navigieren Sie zu [Installieren des StorSimple 8600-Geräts](storsimple-8600-hardware-installation.md).
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0824_2016-->

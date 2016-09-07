@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="curtand"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -13,13 +13,13 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="identity"
-	ms.date="05/10/2016"
+	ms.date="08/23/2016"
 	ms.author="curtand"/>
 
 
 # Was ist die Self-Service-Registrierung für Azure?
 
-In diesem Thema werden der Self-Service-Registrierungsvorgang und das Übernehmen eines DNS-Domänennamens erläutert.
+Dieses Thema erläutert den Self-Service-Registrierungsvorgang und das Übernehmen eines DNS-Domänennamens.
 
 ## Gründe für das Verwenden der Self-Service-Registrierung
 
@@ -52,7 +52,7 @@ Ein Administrator, der Besitzer des DNS-Domänennamens eines nicht verwalteten A
 #### Verzeichnis
 
 - Für die Domäne wird ein Azure Active Directory-Verzeichnis erstellt (ein Verzeichnis pro Domäne).
-- Das Verzeichnis der Azure AD-Verzeichnisse hat keinen globalen Administrator.
+- Das Azure AD-Verzeichnis hat keinen globalen Administrator.
 
 #### Benutzer
 
@@ -149,7 +149,7 @@ Sie haben verschiedene Möglichkeiten zum Ausführen einer Domänenüberprüfung
 	Schritt |	Zu verwendendes Cmdlet
 	-------	| -------------
 	Erstellen eines Objekts mit Anmeldeinformationen | Get-Credential
-	Herstellen einer Verbindung mit Azure AD | Connect-MsolService
+	Mit Azure AD verbinden | Connect-MsolService
 	Abrufen einer Liste von Domänen | Get-MsolDomain
 	Erstellen einer Abfrage | Get-MsolDomainVerificationDns
 	Erstellen eines DNS-Eintrags | Erfolgt auf Ihrem DNS-Server
@@ -219,9 +219,9 @@ Im folgenden Flussdiagramm werden die verschiedenen Kombinationen für diese Par
 
 Weitere Informationen und Beispiele zum Verwenden dieser Parameter finden Sie unter [Set-MsolCompanySettings](https://msdn.microsoft.com/library/azure/dn194127.aspx).
 
-## Siehe auch
+## Weitere Informationen
 
--  [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure/)
+-  [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md)
 
 -  [Azure PowerShell](https://msdn.microsoft.com/library/azure/jj156055.aspx)
 
@@ -232,4 +232,4 @@ Weitere Informationen und Beispiele zum Verwenden dieser Parameter finden Sie un
 <!--Image references-->
 [1]: ./media/active-directory-self-service-signup/SelfServiceSignUpControls.png
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0824_2016-->

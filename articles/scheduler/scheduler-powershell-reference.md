@@ -12,7 +12,7 @@
  ms.tgt_pltfrm="na"
  ms.devlang="dotnet"
  ms.topic="article"
- ms.date="06/30/2016"
+ ms.date="08/18/2016"
  ms.author="krisragh"/>
 
 # Scheduler – PowerShell-Cmdlets-Referenz
@@ -35,7 +35,7 @@ In der folgenden Tabelle sind die wichtigsten Cmdlets in Azure Scheduler beschri
 |**[Set-AzureSchedulerStorageQueueJob](https://msdn.microsoft.com/library/azure/dn722476.aspx)**|Aktualisiert einen Scheduler-Auftrag, der über eine Speicheraktion verfügt.|
 
 
-## Siehe auch
+## Weitere Informationen
 
 
  [Was ist Azure Scheduler?](scheduler-intro.md)
@@ -54,4 +54,4 @@ In der folgenden Tabelle sind die wichtigsten Cmdlets in Azure Scheduler beschri
 
  [Ausgehende Authentifizierung von Azure Scheduler](scheduler-outbound-authentication.md)
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0824_2016-->

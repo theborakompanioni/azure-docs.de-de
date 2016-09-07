@@ -23,7 +23,7 @@ Das [**Azure-Aktivitätsprotokoll**](./monitoring-overview-activity-logs.md) kan
 Im Anschluss finden Sie eine kleine Auswahl von Verwendungsmöglichkeiten für das Streamen des Aktivitätsprotokolls:
 
 - **Streamen an Protokollierungs- und Telemetriesysteme von Drittanbietern:** Event Hubs-Streaming entwickelt sich mehr und mehr zum Mechanismus für die Weiterreichung des Aktivitätsprotokolls an SIEMs und Protokollanalyselösungen von Drittanbietern.
-- **Erstellen einer benutzerdefinierter Telemetrie- und Protokollierungsplattform:** Event Hubs ermöglicht dank des hochgradig skalierbaren Veröffentlichen/Abonnieren-Konzepts eine flexible Erfassung des Aktivitätsprotokolls. Dies ist interessant, wenn Sie bereits über eine benutzerdefinierte Telemetrieplattform verfügen oder eine solche Plattform erstellen möchten. Informationen zur Verwendung von Event Hubs für eine globale Telemetrieplattform finden Sie in der [Anleitung von Dan Rosanova](https://azure.microsoft.com/documentation/videos/build-2015-designing-and-sizing-a-global-scale-telemetry-platform-on-azure-event-Hubs/).
+- **Erstellen einer benutzerdefinierter Telemetrie- und Protokollierungsplattform:** Event Hubs ermöglicht dank des hochgradig skalierbaren Veröffentlichen/Abonnieren-Konzepts eine flexible Erfassung des Aktivitätsprotokolls. Dies ist interessant, wenn Sie bereits über eine benutzerdefinierte Telemetrieplattform verfügen oder eine solche Plattform erstellen möchten. [Informationen zur Verwendung von Event Hubs für eine globale Telemetrieplattform finden Sie in der Anleitung von Dan Rosanova.](https://azure.microsoft.com/documentation/videos/build-2015-designing-and-sizing-a-global-scale-telemetry-platform-on-azure-event-Hubs/)
 
 ## Aktivieren des Aktivitätsprotokollstreamings
 Das Aktivitätsprotokollstreaming kann entweder programmgesteuert oder über das Portal aktiviert werden. In beiden Fällen wählen Sie einen Service Bus-Namespace aus. (Falls noch kein Namespace vorhanden ist, müssen Sie einen erstellen.) Der ausgewählte Namespace fungiert als Ziel für die Event Hub-Erstellung (falls Sie das Aktivitätsprotokoll zum ersten Mal streamen) oder für das Streaming (falls Sie das Aktivitätsprotokoll bereits an diesen Namespace gestreamt haben), und die Richtlinie definiert die Berechtigungen für den Streamingmechanismus. Für das Streaming an Event Hubs werden aktuell Verwaltungs-, Lese- und Sendeberechtigungen benötigt. Sie können freigegebene Zugriffsrichtlinien für Ihren Service Bus-Namespace im klassischen Portal auf der Registerkarte „Konfigurieren“ erstellen oder ändern. Wenn Sie dem Protokollprofil für das Aktivitätsprotokoll das Streaming-Feature hinzufügen möchten, muss der Client in der Service Bus-Autorisierungsregel über die ListKey-Berechtigung verfügen.
@@ -71,7 +71,8 @@ Die Service Bus-Regel-ID (ServiceBusRuleId) ist eine Zeichenfolge im folgenden F
 Das Schema für das Aktivitätsprotokoll finden Sie [hier](./monitoring-overview-activity-logs.md). Jedes Ereignis ist ein Array mit JSON-Blobs, die als Datensätze bezeichnet werden.
 
 ## Nächste Schritte
+- [Archivieren Sie das Aktivitätsprotokoll mithilfe eines Speicherkontos.](./monitoring-archive-activity-log.md)
 - [Lesen Sie die Übersicht über das Azure-Aktivitätsprotokoll.](./monitoring-overview-activity-logs.md)
 - [Richten Sie eine Warnung ein, die auf einem Aktivitätsprotokollereignis basiert.](./insights-auditlog-to-webhook-email.md)
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0824_2016-->

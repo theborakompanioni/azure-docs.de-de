@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="08/01/2016"
+   ms.date="08/18/2016"
    ms.author="hascipio"/>
 
 # Erstellen eines Microsoft-Entwicklerkontos
@@ -172,7 +172,7 @@ Wenn Sie als Co-Admin dem Veröffentlichungsportal hinzugefügt werden, können 
 
   > [AZURE.TIP] Die Teilnahmerichtlinien werden auf der [Azure-Website](https://azure.microsoft.com/support/legal/marketplace/participation-policies/) beschrieben.
 
-## Schritte zum Hinzufügen eines Co-Admins im Veröffentlichungsportal
+## 4\. Schritte zum Hinzufügen eines Co-Admins im Veröffentlichungsportal
 **Wenn Sie Administrator sind**, können Sie mit den folgenden Schritten einen Co-Admin hinzufügen.
 
 >[AZURE.NOTE] **Für die neuen Benutzer:** Bevor Sie einen Co-Admin im Veröffentlichungsportal hinzufügen, stellen Sie, dass Sie mindestens eine Anwendung im Veröffentlichungsportal erstellt haben. Dies ist erforderlich, da die Registerkarte **HERAUSGEBER** nur nach der Erstellung mindestens einer Anwendung im Veröffentlichungsportal angezeigt wird.
@@ -184,6 +184,15 @@ Wenn Sie als Co-Admin dem Veröffentlichungsportal hinzugefügt werden, können 
 5. Navigieren Sie zu „Herausgeber“ > wählen Sie Ihr Konto > „Administratoren“ > fügen Sie den Co-Admin hinzu (siehe Screenshot unten)
 
   ![Abbildung](media/marketplace-publishing-accounts-creation-registration/imgAddAdmin_05.png)
+
+## 5\. Schritte zum Löschen eines Co-Admins im Veröffentlichungsportal
+**Administratoren** können mithilfe der folgenden Schritte einen Co-Admin löschen.
+
+1. Melden Sie sich mit der Admin-E-Mail-ID beim Veröffentlichungsportal an.
+2. Wählen Sie unter **Herausgeber** Ihr Konto aus, und navigieren Sie zu **Administratoren** > **Co-Admins** (Co-Administratoren).
+3. Klicken Sie neben dem zu löschenden Co-Admin auf die Schaltfläche **X**, wie auf dem folgenden Screenshot zu sehen:
+
+    ![Abbildung](media/marketplace-publishing-accounts-creation-registration/imgDeleteAdmin_03.png)
 
 ## Nächste Schritte
 Nach der Erstellung und Registrierung Ihres Kontos sollten Sie nun sicherstellen, dass Sie alle nicht technischen Voraussetzungen für die Veröffentlichung Ihres Angebots erfüllen. Lesen Sie sich hierzu [Nicht technische Voraussetzungen](marketplace-publishing-pre-requisites.md) durch.
@@ -218,4 +227,4 @@ Nach der Erstellung und Registrierung Ihres Kontos sollten Sie nun sicherstellen
 [link-devsvc-prereq]: marketplace-publishing-dev-service-creation-prerequisites.md
 [link-pushstaging]: marketplace-publishing-push-to-staging.md
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0824_2016-->

@@ -122,7 +122,7 @@ Nachdem Sie nun alle Komponenten eingerichtet haben, können Sie den virtuellen 
 
         $cred = Get-Credential -Message "Type the name and password of the local administrator account."
         
-    Das Kennwort muss 12 bis 123 Zeichen lang sein und mindestens einen Kleinbuchstaben, einen Großbuchstaben, eine Zahl und ein Sonderzeichen enthalten.
+    Das Kennwort muss acht bis 123 Zeichen lang sein und zur Erfüllung der Komplexitätsanforderungen drei der folgenden Elemente enthalten: Kleinbuchstabe, Großbuchstabe, Ziffer und Sonderzeichen. Weitere Informationen finden Sie unter den [Anforderungen für Benutzernamen und Kennwörter](virtual-machines-windows-faq.md#what-are-the-username-requirements-when-creating-a-vm).
         
 2. Ersetzen Sie den Wert von **$vmName** durch den Namen des virtuellen Computers. Erstellen Sie die Variable und die Konfiguration des virtuellen Computers.
 
@@ -140,13 +140,13 @@ Nachdem Sie nun alle Komponenten eingerichtet haben, können Sie den virtuellen 
 
         $vm = Set-AzureRmVMSourceImage -VM $vm -PublisherName MicrosoftWindowsServer -Offer WindowsServer -Skus 2012-R2-Datacenter -Version "latest"
         
-    Weitere Informationen zur Auswahl von Images finden Sie unter [Navigieren zu und Auswählen von Images virtueller Windows-Computer in Azure mithilfe von PowerShell oder der Befehlszeilenschnittstelle](virtual-machines-windows-cli-ps-findimage.md).
+    Weitere Informationen zum Auswählen von Images finden Sie unter [Navigieren zu und Auswählen von Images virtueller Windows-Computer in Azure mithilfe von PowerShell oder der Befehlszeilenschnittstelle](virtual-machines-windows-cli-ps-findimage.md).
         
 5. Fügen Sie die erstellte Netzwerkschnittstelle der Konfiguration hinzu.
 
         $vm = Add-AzureRmVMNetworkInterface -VM $vm -Id $nic.Id
         
-6. Ersetzen Sie den Wert von **$blobPath** durch den gespeicherten Pfad und Dateinamen, den die virtuelle Festplatte verwendet. Die virtuelle Festplattendatei wird normalerweise in einem Container gespeichert, z.B. **vhds/WindowsVMosDisk.vhd**. Erstellen Sie die Variablen.
+6. Ersetzen Sie den Wert von **$blobPath** durch den gespeicherten Pfad und Dateinamen, den die virtuelle Festplatte verwendet. Die virtuelle Festplattendatei wird normalerweise in einem Container gespeichert (Beispiel: **vhds/WindowsVMosDisk.vhd**). Erstellen Sie die Variablen.
 
         $blobPath = "vhds/WindowsVMosDisk.vhd"
         $osDiskUri = $storageAcc.PrimaryEndpoints.Blob.ToString() + $blobPath
@@ -168,8 +168,8 @@ Nachdem Sie nun alle Komponenten eingerichtet haben, können Sie den virtuellen 
                                   
 ## Nächste Schritte
 
-- Falls bei der Bereitstellung Probleme aufgetreten sind, können Sie beispielsweise mit dem Artikel [Problembehandlung beim Bereitstellen von Ressourcengruppen mit dem Azure-Portal](../resource-manager-troubleshoot-deployments-portal.md) fortfahren.
-- Informationen zum Verwalten des gerade erstellten virtuellen Computers finden Sie unter [Verwalten von virtuellen Computern mit Azure Resource Manager und PowerShell](virtual-machines-windows-ps-manage.md).
-- Nutzen Sie die Vorteile der Erstellung eines virtuellen Computers per Vorlage, indem Sie sich die Informationen unter [Erstellen eines virtuellen Windows-Computers mit einer Resource Manager-Vorlage](virtual-machines-windows-ps-template.md) durchlesen.
+- Falls bei der Bereitstellung Probleme aufgetreten sind, empfiehlt sich unter Umständen die Lektüre des Artikels [Problembehandlung beim Bereitstellen von Ressourcengruppen mit dem Azure-Portal](../resource-manager-troubleshoot-deployments-portal.md).
+- Informationen zum Verwalten des soeben erstellten virtuellen Computers finden Sie unter [Verwalten von virtuellen Computern mit Azure Resource Manager und PowerShell](virtual-machines-windows-ps-manage.md).
+- Nutzen Sie die Vorteile der vorlagenbasierten Erstellung virtueller Computer, indem Sie sich die Informationen unter [Erstellen eines virtuellen Windows-Computers mit einer Resource Manager-Vorlage](virtual-machines-windows-ps-template.md) durchlesen.
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0831_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="NA" 
 	ms.devlang="multiple" 
 	ms.topic="article" 
-	ms.date="05/04/2016" 
+	ms.date="08/19/2016" 
 	ms.author="wesmc"/>
 
 #Azure Notification Hubs - Diagnoserichtlinien
@@ -36,10 +36,10 @@ Azure Notification Hubs muss sich selbst im Kontext der Anwendung des Entwickler
  
 	a) Stellen Sie sicher, dass der Name des Benachrichtigungshubs (ohne Tippfehler) an folgenden Stellen identisch ist:
 
-	- Dort, wo aus dem Client registriert wird 
-	- Dort, wo Benachrichtigungen aus dem Back-End gesendet werden  
-	- Dort, wo Sie die PNS-Anmeldeinformationen konfiguriert haben 
-	- Für die Person, deren SAS-Anmeldeinformationen Sie im Client und im Back-End konfiguriert haben 
+	- Dort, wo aus dem Client registriert wird
+	- Dort, wo Benachrichtigungen aus dem Back-End gesendet werden
+	- Dort, wo Sie die PNS-Anmeldeinformationen konfiguriert haben
+	- Für die Person, deren SAS-Anmeldeinformationen Sie im Client und im Back-End konfiguriert haben
 		
 	b) Stellen Sie sicher, dass Sie die richtigen SAS-Konfigurationszeichenfolgen im Client und im Anwendungs-Back-End verwenden. Als Faustregel gilt, dass Sie **DefaultListenSharedAccessSignature** im Client und **DefaultFullSharedAccessSignature** im Anwendungs-Back-End verwenden müssen (wodurch die Berechtigung erteilt wird, Benachrichtigungen an den NH senden zu können).
 
@@ -206,7 +206,7 @@ Diese Meldung gibt entweder an, dass im Benachrichtigungshub ungültige Anmeldei
 Ausführlichere Informationen finden Sie hier:
 
 - [Programmgesteuerter Telemetriezugriff]
-- [Telemetriezugriff über APIs – Beispiel] 
+- [Telemetriezugriff über APIs – Beispiel]
 
 > [AZURE.NOTE] Mehrere telemetriebezogene Funktionen wie **Registrierungen exportieren/importieren**, **Telemetriezugriff über APIs** usw. sind nur auf der Stufe „Standard“ verfügbar. Wenn Sie versuchen, diese Funktionen zu verwenden, wenn Sie sich auf der Stufe „Free“ oder „Basic“ befinden, erhalten Sie hierzu eine Ausnahmemeldung, sofern Sie das SDK verwenden, und einen HTTP-Fehler 403 (Verboten), sofern Sie die Funktionen direkt über die REST-APIs verwenden. Vergewissern Sie sich, dass Sie über das klassische Azure-Portal in den Tarif „Standard“ gewechselt sind.
 
@@ -242,4 +242,4 @@ Ausführlichere Informationen finden Sie hier:
 
  
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0824_2016-->

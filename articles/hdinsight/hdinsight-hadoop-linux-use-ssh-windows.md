@@ -14,7 +14,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="06/14/2016"
+   ms.date="08/30/2016"
    ms.author="larryfr"/>
 
 #Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Windows
@@ -26,6 +26,8 @@
 [Secure Shell (SSH)](https://en.wikipedia.org/wiki/Secure_Shell) ermöglicht die Remoteausführung von Vorgängen in Linux-basierten HDInsight-Clustern über eine Befehlszeilenschnittstelle. Dieses Dokument enthält Informationen zum Herstellen einer Verbindung von Windows-Clients mit HDInsight über den PuTTY SSH-Client.
 
 > [AZURE.NOTE] Für die Schritte in diesem Artikel wird davon ausgegangen, dass Sie einen Windows-Client verwenden. Wenn Sie einen Linux-, Unix- oder OS X-Client verwenden, finden Sie entsprechende Informationen unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](hdinsight-hadoop-linux-use-ssh-unix.md).
+>
+> Wenn Sie über Windows 10 verfügen und [Bash on Ubuntu on Windows](https://msdn.microsoft.com/commandline/wsl/about) verwenden, können Sie die Schritte aus dem Dokument [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](hdinsight-hadoop-linux-use-ssh-unix.md) verwenden.
 
 ##Voraussetzungen
 
@@ -33,7 +35,7 @@
 
 * Ein zeitgemäßer Webbrowser, der HTML5 unterstützt.
 
-ODER
+OR
 
 * [Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md).
 
@@ -127,7 +129,7 @@ Weitere Informationen zur Verwendung dieses Befehls finden Sie unter [Benutzerde
 
     * __Hauptknotenadresse:__ Wenn Sie eine Verbindung mit dem Hauptknoten des Clusters herstellen möchten, verwenden Sie den Clusternamen und **-ssh.azurehdinsight.net**. Beispiel: **mycluster-ssh.azurehdinsight.net**.
     
-    * __Edgeknotenadresse:__ Wenn Sie eine Verbindung mit einer R Server-Instanz in einem HDInsight-Cluster herstellen möchten, können Sie mithilfe der Adresse __RServer.CLUSTERNAME.ssh.azurehdinsight.net__ eine Verbindung mit dem R Server-Edgeknoten herstellen. Dabei steht CLUSTERNAME für den Namen Ihres Clusters. Beispiel: __RServer.mycluster.ssh.azurehdinsight.net__
+    * __Edgeknotenadresse:__ Wenn Sie eine Verbindung mit einer R Server-Instanz in einem HDInsight-Cluster herstellen möchten, können Sie mithilfe der Adresse __RServer.CLUSTERNAME.ssh.azurehdinsight.net__ eine Verbindung mit dem R Server-Edgeknoten herstellen. Dabei steht „CLUSTERNAME“ für den Namen Ihres Clusters. Beispiel: __RServer.mycluster.ssh.azurehdinsight.net__
 
 	![PuTTY-Oberfläche mit eingegebener SSH-Adresse](./media/hdinsight-hadoop-linux-use-ssh-windows/puttyaddress.png)
 
@@ -235,4 +237,4 @@ Nachdem Sie jetzt wissen, wie die Authentifizierung mithilfe eines SSH-Schlüsse
 
 [preview-portal]: https://portal.azure.com/
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0831_2016-->

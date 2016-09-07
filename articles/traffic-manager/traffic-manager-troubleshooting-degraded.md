@@ -3,7 +3,7 @@
    description="Problembehandlung bei Traffic Manager-Profilen, bei denen der Status ";Heruntergestuft"; angezeigt wird."
    services="traffic-manager"
    documentationCenter=""
-   authors="kwill-MSFT"
+   authors="sdwheeler"
    manager="carmonm"
    editor="joaoma" />
 
@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="03/17/2016"
-   ms.author="joaoma" />
+   ms.author="sewhee" />
 
 # Problembehandlung beim Status "Heruntergestuft" in Traffic Manager
 
@@ -35,9 +35,9 @@ Auf der Registerkarte "Endpunkte" dieses Profils können Sie sehen, dass für ei
 
 - Bei HTTPs-Tests werden Zertifikatfehler ignoriert.
  
-- Der eigentliche Inhalt des Testpfads ist unerheblich, solange eine Antwort "200" zurückgegeben wird. Wenn der eigentliche Websiteinhalt keine Antwort "200" zurückgibt (d. h., wenn über die ASP-Seiten eine Umleitung an eine ACS-Anmeldeseite oder eine andere CNAME-URL erfolgt), besteht eine gängige Methode darin, den Pfad beispielsweise auf "/favicon.ico" festzulegen.
+- Der eigentliche Inhalt des Testpfads ist unerheblich, solange eine Antwort "200" zurückgegeben wird. Wenn der eigentliche Websiteinhalt keine Antwort "200" zurückgibt (d. h., wenn über die ASP-Seiten eine Umleitung an eine ACS-Anmeldeseite oder eine andere CNAME-URL erfolgt), besteht eine gängige Methode darin, den Pfad beispielsweise auf "/favicon.ico" festzulegen.
  
-- Es wird empfohlen, den Testpfad mit ausreichender Logik festzulegen, sodass ermittelt werden kann, ob die Website aktiv oder inaktiv ist. Durch Festlegen des Pfads im Beispiel oben auf "/favicon.ico" wird lediglich getestet, ob "w3wp.exe" antwortet, jedoch nicht, ob die Website fehlerfrei ist. Besser wäre es, den Pfad beispielsweise auf "/Probe.aspx" festzulegen und in "Probe.aspx" ausreichend Logik einzufügen, dass ermittelt wird, ob die Website fehlerfrei ist (d. h. Überprüfen der Leistungsindikatoren, um sicherzustellen, dass keine CPU-Auslastung von 100 % vorliegt oder keine große Anzahl an fehlerhaften Anforderungen empfangen wird; oder Zugreifen auf Ressourcen wie z. B. den Datenbank- oder Sitzungszustand, um sicherzustellen, dass die Anwendungslogik funktioniert usw.).
+- Es wird empfohlen, den Testpfad mit ausreichender Logik festzulegen, sodass ermittelt werden kann, ob die Website aktiv oder inaktiv ist. Durch Festlegen des Pfads im Beispiel oben auf "/favicon.ico" wird lediglich getestet, ob "w3wp.exe" antwortet, jedoch nicht, ob die Website fehlerfrei ist. Besser wäre es, den Pfad beispielsweise auf "/Probe.aspx" festzulegen und in "Probe.aspx" ausreichend Logik einzufügen, dass ermittelt wird, ob die Website fehlerfrei ist (d. h. Überprüfen der Leistungsindikatoren, um sicherzustellen, dass keine CPU-Auslastung von 100 % vorliegt oder keine große Anzahl an fehlerhaften Anforderungen empfangen wird; oder Zugreifen auf Ressourcen wie z. B. den Datenbank- oder Sitzungszustand, um sicherzustellen, dass die Anwendungslogik funktioniert usw.).
  
 - Wenn alle Endpunkte in einem Profil heruntergestuft sind, behandelt Traffic Manager alle Endpunkte als fehlerfrei und leitet den Datenverkehr an alle Endpunkte weiter. Dadurch wird sichergestellt, dass ein potenzielles Problem im Testmechanismus, das zu fälschlicherweise fehlerhaften Testergebnissen führt, nicht auch zu einem vollständigen Ausfall des Diensts führt.
 
@@ -80,4 +80,4 @@ Wenn bei dem Test das HTTPs-Protokoll verwendet wird, sollten Sie in Wget den Pa
 [Azure Traffic Manager-Cmdlets](http://go.microsoft.com/fwlink/p/?LinkId=400769)
  
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0824_2016-->

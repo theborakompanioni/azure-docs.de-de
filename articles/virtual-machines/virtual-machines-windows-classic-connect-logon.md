@@ -22,7 +22,7 @@
 
 Im klassischen Azure-Portal können Sie über die Schaltfläche **Verbinden** eine Remotedesktopsitzung starten und sich bei einem virtuellen Windows-Computer anmelden.
 
-Möchten Sie eine Verbindung mit einem virtuellen Linux-Computer herstellen? Siehe [Anmelden bei einem mit Linux betriebenen virtuellen Computer](virtual-machines-linux-classic-log-on.md).
+Möchten Sie eine Verbindung mit einem virtuellen Linux-Computer herstellen? Siehe [Anmelden bei einem mit Linux betriebenen virtuellen Computer](virtual-machines-linux-mac-create-ssh-keys.md).
 
 Erfahren Sie, wie Sie [diese Schritte über das neue Azure-Portal ausführen](virtual-machines-windows-connect-logon.md).
 
@@ -43,7 +43,7 @@ Hier finden Sie ein Video mit einer exemplarischen Vorgehensweise für die Schri
 
 3. Klicken Sie in der Befehlsleiste am unteren Rand der Seite auf **Verbinden**.
 
-	![Anmelden beim virtuellen Computer](./media/virtual-machines-windows-classic-connect-logon/connectwindows.png)
+	![Melden Sie sich beim virtuellen Computer an.](./media/virtual-machines-windows-classic-connect-logon/connectwindows.png)
 	
 > [AZURE.TIP] Wenn die Schaltfläche **Verbinden** nicht verfügbar ist, finden Sie weitere Informationen in den Tipps zur Problembehandlung am Ende dieses Artikels.
 
@@ -58,4 +58,4 @@ Hier finden Sie ein Video mit einer exemplarischen Vorgehensweise für die Schri
 
 Wenn die Tipps nicht funktionieren oder nicht das Gesuchte sind, finden Sie entsprechende Informationen unter [Problembehandlung bei Remotedesktopverbindungen mit einem Windows-basierten virtuellen Azure-Computer](virtual-machines-windows-troubleshoot-rdp-connection.md). Dieser Artikel führt Sie durch die Diagnose und Behebung von häufigen Problemen.
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0824_2016-->

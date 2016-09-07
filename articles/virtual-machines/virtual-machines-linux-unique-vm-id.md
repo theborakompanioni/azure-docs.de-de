@@ -4,7 +4,7 @@
    services="virtual-machines-linux"
    documentationCenter="virtual-machines"
    authors="kmouss"
-   manager="drewm"
+   manager="timlt"
    editor=""/>
 
 <tags
@@ -37,7 +37,7 @@ Weitere Informationen finden Sie unter [Create a Virtual Machine](virtual-machin
 ## Herstellen der Verbindung zur VM
  
 
-Weitere Informationen finden Sie unter [SSH von Linux](virtual-machines-linux-ssh-from-linux.md).
+Weitere Informationen finden Sie unter [SSH von Linux](virtual-machines-linux-mac-create-ssh-keys.md).
 
 
 ## Abfragen einer eindeutigen VM-ID
@@ -55,6 +55,6 @@ Aufgrund der Big-Endian-Byte-Reihenfolge wird die tatsächliche eindeutige VM-ID
     DA 56 05 09 – FA D4 – 4f 76 - A9F1-63614EDA019A
     
     
-Die eindeutige Azure VM-ID kann in verschiedenen Szenarios verwendet werden (je nachdem, ob die VM in Azure oder lokal ausgeführt wird). Darüber hinaus unterstützt es Ihre Lizenzierung, Ihre Berichterstattung oder Ihre allgemeinen Nachverfolgungsanforderungen, die Sie möglicherweise auf Ihren Azure-IaaS-Bereitstellungen haben. Viele unabhängige Softwareanbieter, die Anwendungen in Azure erstellen und zertifizieren, müssen eine Azure VM möglicherweise während ihres gesamten Lebenszyklus identifizieren und feststellen können, ob die VM in Azure, lokal oder auf einem anderen Cloudanbieter ausgeführt wird. Dieser Plattformbezeichner kann z.B. helfen, herauszufinden, ob die Software ordnungsgemäß lizenziert ist. Außerdem kann er VM-Daten ihrer Quelle zuzuordnen, um so z.B. beim Festlegen der richtigen Metriken für die richtige Plattform zu unterstützen, oder diese Metriken u.a. nachzuverfolgen und zuzuordnen.
+Die eindeutige Azure VM-ID kann in verschiedenen Szenarios verwendet werden (je nachdem, ob die VM in Azure oder lokal ausgeführt wird). Darüber hinaus unterstützt es Ihre Lizenzierung, Ihre Berichterstattung oder Ihre allgemeinen Nachverfolgungsanforderungen, die Sie möglicherweise auf Ihren Azure-IaaS-Bereitstellungen haben. Viele unabhängige Softwareanbieter, die Anwendungen in Azure erstellen und zertifizieren, müssen eine Azure VM möglicherweise während ihres gesamten Lebenszyklus identifizieren und feststellen können, ob die VM in Azure, lokal oder auf einem anderen Cloudanbieter ausgeführt wird. Dieser Plattformbezeichner kann z.B. helfen, herauszufinden, ob die Software ordnungsgemäß lizenziert ist. Außerdem kann er VM-Daten ihrer Quelle zuordnen, um so z.B. beim Festlegen der richtigen Metriken für die richtige Plattform zu unterstützen, oder diese Metriken u.a. nachzuverfolgen und zuzuordnen.
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0824_2016-->

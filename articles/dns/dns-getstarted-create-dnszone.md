@@ -23,7 +23,7 @@
 - [PowerShell](dns-getstarted-create-dnszone.md)
 - [Azure-Befehlszeilenschnittstelle](dns-getstarted-create-dnszone-cli.md)
 
-In diesem Artikel werden die einzelnen Schritte zum Erstellen einer DNS-Zone mithilfe der Befehlszeilenschnittstelle erläutert. Die DNS-Zone kann auch mithilfe von PowerShell oder über das Azure-Portal erstellt werden.
+In diesem Artikel werden die einzelnen Schritte zum Erstellen einer DNS-Zone mithilfe von PowerShell erläutert. Die DNS-Zone kann auch mithilfe der Befehlszeilenschnittstelle oder über das Azure-Portal erstellt werden.
 
 [AZURE.INCLUDE [dns-create-zone-about](../../includes/dns-create-zone-about-include.md)]
 
@@ -88,7 +88,7 @@ Dieser Schritt kann übersprungen werden, wenn Sie eine vorhandene Ressourcengru
 
 ## Schritt 3: Registrieren
 
-Der Azure DNS-Dienst wird vom Ressourcenanbieter "Microsoft.Network" verwaltet. Ihr Azure-Abonnement muss für die Verwendung dieses Ressourcenanbieters registriert werden, um Azure DNS verwenden zu können. Dieser Schritt muss einmal für jedes Abonnement ausgeführt werden.
+Der Azure DNS-Dienst wird vom Ressourcenanbieter "Microsoft.Network" verwaltet. Ihr Azure-Abonnement muss für die Verwendung dieses Ressourcenanbieters registriert werden, bevor Sie Azure DNS verwenden können. Dieser Schritt muss für jedes Abonnement einmal ausgeführt werden.
 
 	Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network
 
@@ -148,7 +148,7 @@ Ressourceneintragssätze am Stamm (oder *Apex*) einer DNS-Zone verwenden **@** a
 
 ## Test
 
-Sie können Ihre DNS-Zone mit DNS-Tools wie nslookup, dig oder mit dem [PowerShell-Cmdlet „Resolve-DnsName“](https://technet.microsoft.com/library/jj590781.aspx) testen.
+Sie können Ihre DNS-Zone mit DNS-Tools wie nslookup, dig oder mit dem [PowerShell-Cmdlet Resolve-DnsName](https://technet.microsoft.com/library/jj590781.aspx) testen.
 
 Wenn Sie Ihre Domäne noch nicht delegiert haben, um die neue Zone in Azure DNS zu verwenden, müssen Sie die DNS-Abfrage direkt auf einen der Namenserver für die Zone leiten. Die Namenserver für die Zone sind in den NS-Einträgen enthalten, die von `Get-AzureRmDnsRecordSet` (oben) aufgelistet werden. Ersetzen Sie im folgenden Befehl die Werte durch die für Ihre Zone ordnungsgemäßen Werte.
 
@@ -174,4 +174,4 @@ Wenn Sie Ihre Domäne noch nicht delegiert haben, um die neue Zone in Azure DNS 
 
 Nach dem Erstellen einer DNS-Zone müssen [Ressourceneintragssätze und Einträge](dns-getstarted-create-recordset.md) zum Auflösen von Namen für Ihre Internetdomäne erstellt werden.
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0824_2016-->

@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/24/2016"
+   ms.date="08/18/2016"
    ms.author="alkohli" />
 
 # Verwalten von Zugriffssteuerungsdatensätzen mithilfe des StorSimple Manager-Diensts
@@ -23,13 +23,13 @@ Mit Zugriffssteuerungsdatensätzen (Access Control Record, ACR) können Sie ange
 
 In diesem Tutorial werden die folgenden häufig durchgeführten ACR-bezogenen Aufgaben erläutert:
 
-- Hinzufügen von Zugriffssteuerungsdatensätzen 
-- Bearbeiten von Zugriffssteuerungsdatensätzen 
-- Löschen von Zugriffssteuerungsdatensätzen 
+- Hinzufügen von Zugriffssteuerungsdatensätzen
+- Bearbeiten von Zugriffssteuerungsdatensätzen
+- Löschen von Zugriffssteuerungsdatensätzen
 
 > [AZURE.IMPORTANT] 
 > 
-> - Achten Sie beim Zuweisen eines ACR zu einem Volume darauf, dass dabei nicht gleichzeitig von mehreren nicht gruppierten Hosts auf das Volume zugegriffen wird, da dadurch das Volume beschädigt werden könnte. 
+> - Achten Sie beim Zuweisen eines ACR zu einem Volume darauf, dass dabei nicht gleichzeitig von mehreren nicht gruppierten Hosts auf das Volume zugegriffen wird, da dadurch das Volume beschädigt werden könnte.
 > - Stellen Sie beim Löschen eines ACR von einem Volume sicher, dass der entsprechende Host nicht auf das Volume zugreift, da das Löschen zu einer Unterbrechung des Lese-/ Schreibzugriff führen kann.
 
 ## Hinzufügen von Zugriffssteuerungsdatensätzen
@@ -95,4 +95,4 @@ Führen Sie die folgenden Schritte aus, um einen Zugriffssteuerungsdatensatz zu 
 - Erfahren Sie mehr zum [Verwenden Ihres StorSimple-Geräts mithilfe des StorSimple Manager-Diensts](storsimple-manager-service-administration.md).
  
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0824_2016-->

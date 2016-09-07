@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/06/2016"
+	ms.date="08/22/2016"
 	ms.author="markvi"/>
 
 # Von Azure Active Directory Identity Protection erkannte Sicherheitsrisiken 
@@ -58,8 +58,8 @@ Ausführliche Informationen finden Sie unter [Azure AD Privileged Identity Manag
 
 
 
-## Weitere Informationen
+## Siehe auch
 
  - [Azure Active Directory Identity Protection](active-directory-identityprotection.md)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0824_2016-->

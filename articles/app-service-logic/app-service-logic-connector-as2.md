@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration" 
-   ms.date="04/20/2016"
+   ms.date="08/23/2016"
    ms.author="rajram"/>
 
 # Erste Schritte mit dem AS2-Connector und das Hinzufügen zur Logik-App
@@ -29,7 +29,7 @@ Ein Trigger startet eine neue Instanz basierend auf einem bestimmten Ereignis wi
 
 Der AS2-Connector kann als ein Trigger oder eine Aktion in einer Logik-App verwendet werden und unterstützt Daten im JSON- und XML-Format. Der AS2-Connector verfügt über folgende Trigger und Aktionen:
 
-Trigger | Aktionen
+Trigger | Actions
 --- | ---
 Empfangen und decodieren | Codieren und senden
 
@@ -99,7 +99,7 @@ Archivierung aktivieren | Boolescher Wert | Bestimmt, ob die ausgehende Nachrich
 
 Die Aktion gibt bei erfolgreichem Abschluss einen HTTP 200-Antwortcode zurück.
 
-## Mehr mit Ihrem Connector machen
+## Optimale Nutzung Ihres Connectors
 Sie können Ihre [AS2-Nachrichten archivieren](app-service-logic-archive-as2-messages.md).
 
 Mehr zu Logik-Apps erfahren Sie unter [Was sind Logik-Apps?](app-service-logic-what-are-logic-apps.md).
@@ -122,4 +122,4 @@ Sie können auch Leistungsstatistiken überprüfen und die Sicherheit zum Connec
 [9]: ./media/app-service-logic-connector-as2/EncodeAndSendInput.PNG
 [10]: ./media/app-service-logic-connector-as2/EncodeAndSendConfigured.PNG
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0824_2016-->

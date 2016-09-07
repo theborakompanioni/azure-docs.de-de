@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/02/2016"
+	ms.date="08/19/2016"
 	ms.author="garye"/>
 
 # Konvertieren eines Machine Learning-Trainingsexperiments in ein Vorhersageexperiment
@@ -24,7 +24,7 @@ Sobald Sie ein *Trainingsexperiment* zum Trainieren Ihres Vorhersageanalysemodel
 
 Durch die Konvertierung in ein Vorhersageexperiment wird das trainierte Modell darauf vorbereitet, als Webdienst bereitgestellt zu werden. Benutzer des Webdiensts senden Eingabedaten an das Modell, und das Modell sendet Vorhersageergebnisse zurück. Während der Konvertierung in ein Vorhersageexperiment sollten Sie daher berücksichtigen, wie das Modell aus Ihrer Sicht erwartungsgemäß von anderen Benutzern verwendet wird.
 
-[AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
+[AZURE.INCLUDE [machine-learning-kostenlose-Testversion](../../includes/machine-learning-free-trial.md)]
 
 Der Prozess der Konvertierung eines Trainingsexperiments in ein Vorhersageexperiment umfasst drei Schritte:
 
@@ -37,7 +37,7 @@ Der Prozess der Konvertierung eines Trainingsexperiments in ein Vorhersageexperi
 Nachdem Sie das Experiment ausgeführt haben (mit der Schaltfläche **AUSFÜHREN** am unteren Rand der Experimentbereichs), führen Sie mit der Schaltfläche **Webdienst einrichten** Schaltfläche (wählen Sie die Option **Vorhersagewebdienst**) die drei Schritte zum Konvertieren Ihres Trainingsexperiment in ein Vorhersageexperiment durch:
 
 1.	Dabei wird das trainierte Modell als Modul im Abschnitt **Trained Models** der Modulpalette (links neben dem Experimentbereich) gespeichert, dann werden der Machine Learning-Algorithmus und die [Train Model][train-model]-Module durch das gespeicherte Modell ersetzt.
-2.	Module, die offensichtlich nicht erforderlich sind, werden entfernt. In unserem Beispiel gehören dazu die Module [Split][split], zweites [Score Model][score-model] und [Evaluate Model][evaluate-model].
+2.	Module, die offensichtlich nicht erforderlich sind, werden entfernt. In unserem Beispiel gehören dazu die Module [Split Data][split], zweites [Score Model][score-model] und [Evaluate Model][evaluate-model].
 3.	Webdiensteingabe- und -ausgabemodule werden erstellt und in den Standardpositionen Ihres Experiments eingefügt.
 
 Das folgende Experiment trainiert z. B. ein Boosted Decision Tree-Zwei-Klassen-Modell mit Beispiel-Erhebungsdaten:
@@ -96,7 +96,7 @@ In einigen Fällen empfiehlt es sich, dem Benutzer des Webdiensts das Ändern de
 
 Ein typisches Beispiel ist das Einrichten des [Import Data][import-data]-Moduls, damit die Benutzer des bereitgestellten Webdiensts beim Zugreifen auf den Webdienst eine andere Datenquelle angeben können. Ein weiteres Beispiel ist die Konfiguration des [Export Data][export-data]-Moduls, damit ein anderes Ziel angegeben werden kann.
 
-Sie können Web Service-Parameter definieren und einem oder mehreren Modulparametern zuordnen, und Sie können angeben, ob diese erforderlich oder optional sind. Der Benutzer des Webdiensts kann dann beim Zugreifen auf den Dienst Werte für diese Parameter angeben – die Aktionen des Moduls werden dann entsprechend angepasst.
+Sie können Webdienstparameter definieren und einem oder mehreren Modulparametern zuordnen, und Sie können angeben, ob diese Parameter erforderlich oder optional sind. Der Benutzer des Webdiensts kann dann beim Zugreifen auf den Dienst Werte für diese Parameter angeben. Das Verhalten des Moduls wird dann entsprechend angepasst.
 
 Weitere Informationen über Webdienst-Parameter finden Sie unter [Verwenden von Azure Machine Learning Webdienst-Parametern][webserviceparameters]
 
@@ -131,4 +131,4 @@ Weitere Informationen zum vollständigen Bereitstellungsprozess finden Sie unter
 [train-model]: https://msdn.microsoft.com/library/azure/5cc7053e-aa30-450d-96c0-dae4be720977/
 [export-data]: https://msdn.microsoft.com/library/azure/7a391181-b6a7-4ad4-b82d-e419c0d6522c/
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0824_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="mobile-multiple"
    ms.workload="mobile" 
-   ms.date="02/29/2016"
+   ms.date="08/19/2016"
    ms.author="piyushjo"/>
 
 
@@ -46,44 +46,44 @@ Sie können auf der Benutzeroberfläche im Abschnitt "Reichweite" eine neue Push
 - Test: Kann gleichzeitig an alle Sprachen gesendet werden
  
 ### Unterstützte Sprachen:
-- Arabisch (Ar) 
-- Bulgarisch (bg) 
-- Katalanisch (ca) 
-- Chinesisch (zh) 
-- Kroatisch (hr) 
-- Tschechisch (cs) 
-- Dänisch (da) 
-- Niederländisch (nl) 
-- Englisch (en) 
-- Finnisch (fi) 
-- Französisch (fr) 
-- Deutsch (de) 
-- Griechisch (el) 
-- Hebräisch (he) 
-- Hindi (hi) 
-- Ungarisch (hu) 
-- Indonesisch (id) 
-- Italienisch (it) 
-- Japanisch (ja) 
-- Koreanisch (ko) 
-- Lettisch (lv) 
-- Litauisch (lt) 
-- Malaiisch (Makrosprache) (ms) 
-- Norwegisch, Bokmål (nb) 
-- Polnisch (pl) 
-- Portugiesisch (pt) 
-- Rumänisch (ro) 
-- Russisch (ru) 
-- Serbisch (sr) 
-- Slowakisch (sk) 
-- Slowenisch (sl) 
-- Spanisch (es) 
-- Schwedisch (sv) 
-- Tagalog (tl) 
-- Thai (th) 
-- Türkisch (tr) 
-- Ukrainisch (uk) 
-- Vietnamesisch (vi) 
+- Arabisch (Ar)
+- Bulgarisch (bg)
+- Katalanisch (ca)
+- Chinesisch (zh)
+- Kroatisch (hr)
+- Tschechisch (cs)
+- Dänisch (da)
+- Niederländisch (nl)
+- Englisch (en)
+- Finnisch (fi)
+- Französisch (fr)
+- Deutsch (de)
+- Griechisch (el)
+- Hebräisch (he)
+- Hindi (hi)
+- Ungarisch (hu)
+- Indonesisch (id)
+- Italienisch (it)
+- Japanisch (ja)
+- Koreanisch (ko)
+- Lettisch (lv)
+- Litauisch (lt)
+- Malaiisch (Makrosprache) (ms)
+- Norwegisch, Bokmål (nb)
+- Polnisch (pl)
+- Portugiesisch (pt)
+- Rumänisch (ro)
+- Russisch (ru)
+- Serbisch (sr)
+- Slowakisch (sk)
+- Slowenisch (sl)
+- Spanisch (es)
+- Schwedisch (sv)
+- Tagalog (tl)
+- Thai (th)
+- Türkisch (tr)
+- Ukrainisch (uk)
+- Vietnamesisch (vi)
  
 ## Kampagne
 Im Abschnitt "Kampagne" können Sie den Namen und die Kategorie der Kampagne festlegen. Sie können auch planen, den Zielgruppenabschnitt einer Pushkampagne zu ignorieren und stattdessen diese Kampagne über die Reichweite-API (und einige Elemente der untergeordneten Push-API) zu senden. Kategorien können mit einer benutzerdefinierten Benachrichtigungsvorlage verwendet werden, um App-interne Benachrichtigungen basierend auf vordefinierten Einstellungen zu steuern. Über die Reichweite-API können Sie eine Liste Ihrer vorhandenen "Kategorien" abrufen.
@@ -98,7 +98,7 @@ Im Abschnitt "Kampagne" können Sie den Namen und die Kategorie der Kampagne fes
 - Zielgruppe ignorieren, Push wird Benutzern über die API gesendet: Alle
  
 ## Benachrichtigung
-Im Abschnitt "Benachrichtigung" können Sie grundlegende Einstellungen für Ihren Pushvorgang festlegen, z. B.: Den Titel des Pushvorgangs, die Nachricht, ein App-internes Bild der App oder ob sie abweisbar ist. Viele Benachrichtigungseinstellungen sind spezifisch für die Plattform Ihres Geräts. Sie können auswählen, ob Ihr Pushvorgang "App-intern" oder "App-extern" oder in beiden Formen gesendet wird. (Beachten Sie, dass Benutzer auf der Betriebssystemebene ihrer Geräte Pushvorgänge "abonnieren" bzw. diese "Abonnements kündigen" können. Azure Mobile Engagement hat keine Möglichkeit, diese Einstellung außer Kraft zu setzen. Beachten Sie außerdem, dass die Reichweite-API Pushvorgänge "App-intern" und "App-extern" verarbeitet. Die Push-API kann verwendet werden, um auch App-externe Pushvorgänge zu verarbeiten.) Pushvorgänge können mit Bildern oder HTML-Inhalt angepasst werden, einschließlich Deep Links zum Verknüpfen mit Elementen außerhalb Ihrer App oder mit einer anderen Stelle in Ihrer App (Intent-Kategorien von Android-SDK 2.1.0 oder höher erforderlich). Sie können das Symbol oder iOS-Badge ändern und entweder Text oder Webinhalte (ein Popup mit HTML-Inhalt, URL-Link zu einer anderen Stelle innerhalb oder außerhalb der App) senden. Sie können Android-Geräte auch bei der Pushbenachrichtigung klingeln oder vibrieren lassen. (Denken Sie daran, dass Sie die ordnungsgemäßen SDK-Berechtigungen in Ihrer Android-Manifestdatei benötigen, damit ein Gerät klingelt oder vibriert.) Derzeit gibt es keinen Standard für Android-Bilder in Übergrößen, da die Bildschirmgrößen auf jedem Gerät anders sind, aber 400x100-Bilder funktionieren bei nahezu jeder Bildschirmgröße.
+Im Abschnitt "Benachrichtigung" können Sie grundlegende Einstellungen für Ihren Pushvorgang festlegen, z. B.: Den Titel des Pushvorgangs, die Nachricht, ein App-internes Bild der App oder ob sie abweisbar ist. Viele Benachrichtigungseinstellungen sind spezifisch für die Plattform Ihres Geräts. Sie können auswählen, ob Ihr Pushvorgang "App-intern" oder "App-extern" oder in beiden Formen gesendet wird. (Beachten Sie, dass Benutzer auf der Betriebssystemebene ihrer Geräte Pushvorgänge "abonnieren" bzw. diese "Abonnements kündigen" können. Azure Mobile Engagement hat keine Möglichkeit, diese Einstellung außer Kraft zu setzen. Beachten Sie außerdem, dass die Reichweite-API Pushvorgänge "App-intern" und "App-extern" verarbeitet. Die Push-API kann verwendet werden, um auch App-externe Pushvorgänge zu verarbeiten.) Pushvorgänge können mit Bildern oder HTML-Inhalt angepasst werden, einschließlich Deep Links zum Verknüpfen mit Elementen außerhalb Ihrer App oder mit einer anderen Stelle in Ihrer App (Intent-Kategorien von Android-SDK 2.1.0 oder höher erforderlich). Sie können das Symbol oder iOS-Badge ändern und entweder Text oder Webinhalte (ein Popup mit HTML-Inhalt, URL-Link zu einer anderen Stelle innerhalb oder außerhalb der App) senden. Sie können Android-Geräte auch bei der Pushbenachrichtigung klingeln oder vibrieren lassen. (Denken Sie daran, dass Sie die ordnungsgemäßen SDK-Berechtigungen in Ihrer Android-Manifestdatei benötigen, damit ein Gerät klingelt oder vibriert.) Derzeit gibt es keinen Standard für Android-Bilder in Übergrößen, da die Bildschirmgrößen auf jedem Gerät anders sind, aber 400x100-Bilder funktionieren bei nahezu jeder Bildschirmgröße.
 
 ### Übermittlungstypen:
 -    Nur App-extern: die Benachrichtigung wird übermittelt, wenn der Benutzer die Anwendung nicht verwendet.
@@ -116,7 +116,7 @@ Im Abschnitt "Benachrichtigung" können Sie grundlegende Einstellungen für Ihre
 ## Inhalt
 Im Abschnitt "Inhalt" können Sie den Inhalt Ihrer Ankündigungen, Umfragen, Datenpushes und Kacheln (nur Windows Phone) ändern. Die Einstellung "Inhalt" von Pushkampagnen ist spezifisch für den Typ der Kampagne.
 
-### Weitere Informationen
+### Siehe auch
 - [Dokumentation zur Benutzeroberfläche – Reichweite – Pushübertragung von Inhalten][Link 29]
  
 ![Reichweitenkampagne5][24]
@@ -130,7 +130,7 @@ Im Abschnitt "Zielgruppe" können Sie eine Standardliste von Elementen zum Besch
 - Maximal sollten nicht mehr als vier Kampagnen gleichzeitig gestartet werden.
 - Übertragen Sie den Push nur an Ihre aktiven Benutzer (Kontrollkästchen "Nur Benutzer erfassen, die über systemeigenen Push erreicht werden können" und "Nur aktive Benutzer erfassen"), damit nur die Benutzer, die die App noch installiert haben und nutzen, durchsucht werden müssen. Nachdem die Zielgruppe definiert wurde, können Sie auf die Schaltfläche "Simulieren" klicken, um herauszufinden, wie viele Benutzer diesen Push empfangen. Dadurch wird die Anzahl bekannter Benutzer berechnet, die potenziell zu dieser Zielgruppe gehören (hierbei handelt es sich um eine Schätzung, die auf einer Zufallsstichprobe von Benutzern basiert). Denken Sie daran, dass Benutzer, die die Anwendung deinstalliert haben, ebenfalls Teil dieser Zielgruppe sind, aber nicht erreicht werden können.
 
-### Weitere Informationen
+### Siehe auch
 - [Dokumentation zur Benutzeroberfläche – Reichweite – Neue Pushkriterien][Link 28]
 
 ![Reichweitenkampagne6][25]
@@ -151,8 +151,8 @@ Sie können im Abschnitt "Zeitraum" festlegen, wann der Push gesendet werden sol
 
 > Hinweis: Kampagnen ohne Enddatum können Pushes lokal zwischenspeichern und sie weiter anzeigen, nachdem Sie Kampagnen manuell abgeschlossen haben. Um dieses Verhalten zu vermeiden, geben Sie eine spezifische Endzeit für Kampagnen an.
 
-### Weitere Informationen
-- [Reichweite – Vorgehensweisen – Zeitplanung][Link 3] 
+### Siehe auch
+- [Reichweite – Vorgehensweisen – Zeitplanung][Link 3]
  
 ![Reichweitenkampagne8][27]
 
@@ -163,7 +163,7 @@ Sie können im Abschnitt "Zeitraum" festlegen, wann der Push gesendet werden sol
 Sie können im Abschnitt "Test" diesen Pushvorgang an Ihr eigenes Testgerät senden, bevor Sie die Kampagne speichern. Wenn Sie bestimmte Sprachen für diese Kampagne konfiguriert haben, können Sie den Push in der jeweiligen Sprache testen. Sie können ein Testgerät in "Mein Konto" einrichten.
 > Hinweis: Es werden keine serverseitigen Daten protokolliert, wenn Sie die Schaltfläche zum Testen von Pushvorgängen verwenden. Daten werden nur für reale Pushkampagnen protokolliert.
 
-### Weitere Informationen
+### Siehe auch
 - [Dokumentation zur Benutzeroberfläche – Mein Konto][Link 14]
  
 ![Reichweitenkampagne9][28]
@@ -260,4 +260,4 @@ Sie können im Abschnitt "Test" diesen Pushvorgang an Ihr eigenes Testgerät sen
 [Link 29]: mobile-engagement-user-interface-reach-content.md
  
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0824_2016-->

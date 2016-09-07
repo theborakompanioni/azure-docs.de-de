@@ -24,23 +24,10 @@ Azure Functions nutzen einige wichtige gemeinsame technische Konzepte und Kompon
 
 In diesem Artikel wird davon ausgegangen, dass Sie die [Übersicht zu Azure Functions](functions-overview.md) gelesen haben und mit [WebJobs SDK-Konzepten wie Triggern, Bindungen und der JobHost-Laufzeit](../app-service-web/websites-dotnet-webjobs-sdk.md) vertraut sind. Azure Functions basiert auf dem WebJobs SDK
 
-## Funktion
 
-Ein *Funktion* ist das primäre Konzept in Azure Functions. Sie schreiben Code in der Sprache Ihrer Wahl und speichern die Codedatei(en) sowie eine Konfigurationsdatei im gleichen Ordner. Die Konfiguration erfolgt in JSON, und die Datei heißt `function.json`. Es wird eine Vielzahl von Sprachen unterstützt, und für jede Sprache gibt es leicht voneinander abweichende Optionen, die sich für die jeweilige Sprache am besten eignen. Beispiel für eine Ordnerstruktur:
+## Funktionscode
 
-```
-mynodefunction
-| - function.json
-| - index.js
-| - node_modules
-| | - ... packages ...
-| - package.json
-mycsharpfunction
-| - function.json
-| - run.csx
-```
-
-## function.json und Bindungen
+Ein *Funktion* ist das primäre Konzept in Azure Functions. Sie schreiben Code in der Sprache Ihrer Wahl und speichern die Codedatei(en) sowie eine Konfigurationsdatei im gleichen Ordner. Die Konfiguration erfolgt in JSON, und die Datei heißt `function.json`. Es wird eine Vielzahl von Sprachen unterstützt, und für jede Sprache gibt es leicht voneinander abweichende Optionen, die sich für die jeweilige Sprache am besten eignen.
 
 Die Datei `function.json` enthält die für eine Funktion spezifische Konfiguration, einschließlich der Bindungen. Die Runtime liest diese Datei, um zu ermitteln, welche Ereignisse ausgelöst, welche Daten beim Funktionsaufruf eingeschlossen und wohin die Daten gesendet werden müssen, die von der Funktion selbst übergeben werden.
 
@@ -69,33 +56,19 @@ In der Eigenschaft `bindings` werden sowohl Trigger als auch Bindungen konfiguri
 |`direction`|'in', 'out'| Gibt an, ob die Bindung zum Empfangen von Daten in der Funktion oder zum Senden von Daten aus der Funktion dient.
 | `name` | string | Der Name, der für die gebundenen Daten in der Funktion verwendet wird. Bei C# ist dies ein Argumentname, in JavaScript ist es der Schlüssel in einer Schlüssel-Wert-Liste.
 
+## Funktionen-App
+
+Eine Funktionen-App besteht aus einer oder mehreren individuellen Funktionen, die zusammen vom Azure App Service verwaltet werden. Der Tarif, die kontinuierliche Bereitstellung und die Laufzeitversion sind für alle Funktionen in einer Funktionen-App gleich. Funktionen, die in mehreren Sprachen geschrieben wurden, können dieselbe Funktionen-App nutzen. Eine Funktionen-App ist somit eine Möglichkeit, mit der Sie Ihre Funktionen organisieren und kollektiv verwalten können.
+
 ## Runtime (Skripthost und Webhost)
 
-Die Runtime, die auch als Skripthost bezeichnet wird, ist der zugrunde liegende WebJobs SDK-Host, der auf Ereignisse lauscht, Daten sammelt und sendet und letztendlich den Code ausführt.
+Die Runtime bzw. der Skripthost ist der zugrunde liegende WebJobs SDK-Host, der auf Ereignisse lauscht, Daten sammelt und sendet und letztendlich den Code ausführt.
 
 Um HTTP-Trigger zu ermöglichen, gibt es auch einen Webhost, der in Produktionsszenarien vor dem Skripthost platziert ist. Auf diese Weise kann der Skripthost vom Front-End-Datenverkehr isoliert werden, der vom Webhost verwaltet wird.
 
 ## Ordnerstruktur
 
-Ein Skripthost verweist auf einen Ordner, der eine Konfigurationsdatei und ein oder mehrere Funktionen enthält.
-
-```
-parentFolder (for example, wwwroot in a function app)
- | - host.json
- | - mynodefunction
- | | - function.json
- | | - index.js
- | | - node_modules
- | | | - ... packages ...
- | | - package.json
- | - mycsharpfunction
- | | - function.json
- | | - run.csx
-```
-
-Die Datei *host.json* enthält die für den Skripthost spezifische Konfiguration und befindet sich im übergeordneten Ordner. Informationen zu den verfügbaren Einstellungen finden Sie unter [host.json](https://github.com/Azure/azure-webjobs-sdk-script/wiki/host.json) im Wiki zum WebJobs.Script-Repository.
-
-Jede Funktion verfügt über einen Ordner, der die Codedateien, *function.json* sowie weitere Abhängigkeiten enthält.
+[AZURE.INCLUDE [functions-folder-structure](../../includes/functions-folder-structure.md)]
 
 Wenn Sie ein Projekt einrichten, um Funktionen für eine Funktionen-App in Azure App Service bereitzustellen, können Sie diese Ordnerstruktur als Sitecode behandeln. Sie können vorhandene Tools, wie z.B. die fortlaufende Integration und Bereitstellung, oder benutzerdefinierte Bereitstellungsskripts verwenden, um eine Paketinstallation zur Bereitstellungszeit oder eine Codetranspilierung umzusetzen.
 
@@ -113,17 +86,17 @@ Funktionen-Apps basieren auf App Service. Daher stehen alle [für Standard-Web-A
 
 3. Klicken Sie auf **Tools**.
 
-4. Klicken Sie unter **Entwickeln** auf **Visual Studio Team Services**.
+4. Klicken Sie unter **Entwickeln** auf **Visual Studio Online**.
 
 5. **Aktivieren** Sie diese Option, wenn sie noch nicht aktiviert ist, und klicken Sie auf **Los**.
 
-	Nachdem Visual Studio Team Services geladen wurde, sehen Sie die Datei *host.json* und die Funktionenordner unter *wwwroot*.
+	Nachdem Visual Studio Online geladen wurde, sehen Sie die Datei *host.json* und die Funktionenordner unter *wwwroot*.
 
 6. Öffnen Sie die Dateien, um Sie zu bearbeiten, oder laden Sie Dateien per Drag & Drop von Ihrem Entwicklungscomputer hoch.
 
 #### So verwenden Sie den SCM-Endpunkt (Kudu) der Funktionen-App
 
-1. Navigieren Sie zu: `https://<function_app_name>.scm.azurewebsites.net`.
+1. Navigieren Sie zu `https://<function_app_name>.scm.azurewebsites.net`.
 
 2. Klicken Sie auf **Debugkonsole > CMD**.
 
@@ -137,9 +110,13 @@ Funktionen-Apps basieren auf App Service. Daher stehen alle [für Standard-Web-A
 
 2. Wenn Sie mit der Website der Funktionen-App verbunden sind, kopieren Sie die aktualisierte Datei *host.json* in `/site/wwwroot`, oder kopieren Sie Funktionsdateien in `/site/wwwroot/<function_name>`.
 
+#### Verwenden der kontinuierlichen Bereitstellung
+
+Befolgen Sie die Anweisungen im Thema [Continuous deployment for Azure Functions](functions-continuous-deployment.md) (Kontinuierliche Bereitstellung für Azure Functions).
+
 ## Parallele Ausführung
 
-Wenn die Auslösung mehrerer Ereignisse schneller erfolgt als die Runtime einer Singlethreadfunktion sie verarbeiten kann, kann die Runtime die Funktion mehrmals parallel aufrufen. Wenn eine Funktionen-App den [dynamischen Serviceplan](functions-scale.md#dynamic-service-plan) verwendet, kann die App automatisch horizontal auf bis zu zehn gleichzeitige Instanzen hochskaliert werden. Jede Instanz der Funktionen-App – unabhängig davon, ob die App im dynamischen Serviceplan oder einem regulären [App Service-Plan](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md) ausgeführt wird – kann dann gleichzeitige Funktionsaufrufe über mehrere Threads parallel verarbeiten. Die maximale Anzahl gleichzeitiger Funktionsaufrufe in jeder Instanz der Funktionen-App variiert je nach Größe des Arbeitsspeichers der Funktionen-App.
+Wenn die Auslösung mehrerer Ereignisse schneller erfolgt als die Runtime einer Singlethreadfunktion sie verarbeiten kann, kann die Runtime die Funktion mehrmals parallel aufrufen. Wenn eine Funktionen-App den [dynamischen Serviceplan](functions-scale.md#dynamic-service-plan) verwendet, kann die App automatisch horizontal hochskaliert werden. Jede Instanz der Funktionen-App – unabhängig davon, ob die App im dynamischen Serviceplan oder einem regulären [App Service-Plan](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md) ausgeführt wird – kann dann gleichzeitige Funktionsaufrufe über mehrere Threads parallel verarbeiten. Die maximale Anzahl gleichzeitiger Funktionsaufrufe in jeder Instanz der Funktionen-App variiert je nach Größe des Arbeitsspeichers der Funktionen-App.
 
 ## Azure Functions Pulse  
 
@@ -174,4 +151,4 @@ Weitere Informationen finden Sie in den folgenden Ressourcen:
 * [Trigger und Bindungen in Azure Functions](functions-triggers-bindings.md)
 * [Azure Functions: The Journey](https://blogs.msdn.microsoft.com/appserviceteam/2016/04/27/azure-functions-the-journey/) im Blog des Azure App Service-Teams. Überblick, wie Azure Functions entwickelt wurde.
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0824_2016-->

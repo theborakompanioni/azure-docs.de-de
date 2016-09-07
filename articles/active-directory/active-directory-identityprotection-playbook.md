@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/06/2016"
+	ms.date="08/22/2016"
 	ms.author="markvi"/>
 
 #Azure Active Directory Identity Protection-Playbook 
@@ -43,7 +43,7 @@ Bei dieser Art von Risikoereignis werden Benutzer identifiziert, die sich erfolg
 **Führen Sie die folgende Schritte aus, um eine Anmeldung über eine anonyme IP-Adresse zu simulieren,**:
 
 1.	Laden Sie den [Tor Browser](https://www.torproject.org/projects/torbrowser.html.en) herunter.
-2.	Navigieren Sie mit dem Torbrowser zu [https://myapps.microsoft.com](https://myapps.microsoft.com).   
+2.	Navigieren Sie mit dem Torbrowser zu [https://myapps.microsoft.com](https://myapps.microsoft.com).
 3.	Geben Sie die Anmeldeinformationen des Kontos ein, das im Bericht **Anmeldungen von anonymen IP-Adressen** enthalten sein soll.
 
 Die Anmeldung wird auf dem Identity Protection Dashboard innerhalb von fünf Minuten angezeigt.
@@ -63,7 +63,7 @@ Um unbekannte Standorte zu simulieren, müssen Sie sich von einem Ort und mit ei
 
 **Gehen Sie folgendermaßen vor, um eine Anmeldung von einem unbekannten Ort zu simulieren**:
 
-1.	Wählen Sie ein Konto aus, das bereits über einen Anmeldeverlauf von mindestens 14 Tagen verfügt. 
+1.	Wählen Sie ein Konto aus, das bereits über einen Anmeldeverlauf von mindestens 14 Tagen verfügt.
 
 2.	Entscheiden Sie sich für eine der folgenden Optionen:
 	
@@ -78,7 +78,7 @@ Das Simulieren des unmöglichen Ortswechsels ist schwierig, da der Algorithmus e
 
 **Führen Sie die folgenden Schritte aus, um einen unmöglichen Ortswechsel zu einen atypischen Ort zu simulieren**:
 
-1.	Navigieren Sie mit Ihrem Standardbrowser zu [https://myapps.microsoft.com](https://myapps.microsoft.com).  
+1.	Navigieren Sie mit Ihrem Standardbrowser zu [https://myapps.microsoft.com](https://myapps.microsoft.com).
 
 2.	Geben Sie die Anmeldeinformationen des Kontos ein, für das Sie ein Risikoereignis vom Typ „Unmöglicher Ortswechsel“ generieren möchten.
 
@@ -96,7 +96,7 @@ Sicherheitsrisiken sind Schwachstellen in einer Azure AD-Umgebung, die von einem
 
 -	Azure AD [Multi-Factor Authentication?](../multi-factor-authentication/multi-factor-authentication.md)
 -	Azure AD [Cloud App Discovery](active-directory-cloudappdiscovery-whatis.md)
--	Azure AD [Privileged Identity Management](active-directory-privileged-identity-management-configure.md) 
+-	Azure AD [Privileged Identity Management](active-directory-privileged-identity-management-configure.md)
 
 
 
@@ -146,17 +146,17 @@ Sicherheitsrisiken sind Schwachstellen in einer Azure AD-Umgebung, die von einem
 
 4.	Klicken Sie im Blatt **Portaleinstellungen** unter **Sicherheitsregeln** auf **Anmelderisiko**.
 
-5.	Wählen Sie im Blatt **Anmelderisiko** unter **Regel aktivieren** die Option **Ein**.
+5.	Wählen Sie auf dem Blatt **Anmelderisiko** unter **Regel aktivieren** die Option **Ein** aus.
 
 7.	Wählen Sie eine der folgenden Optionen:
 
-    a. Wählen Sie unter **Anmeldung blockieren** die Option **Mittel**, um die Blockierung durchzuführen.
+    a. Wählen Sie unter **Anmeldung blockieren** die Option **Mittel** aus, um die Blockierung zu aktivieren.
 
-    b. Wählen Sie zum Erzwingen der Änderung in ein sicheres Kennwort unter **Erfordere mehrstufige Authentifizierung** die Option **Mittel**.
+    b. Wählen Sie zum Erzwingen der Änderung in ein sicheres Kennwort unter **Erfordert mehrstufige Authentifizierung** die Option **Mittel**.
 
 8.	Wählen Sie unter „Anmeldung blockieren“ die Option „Mittel“, um die Blockierung durchzuführen.
 
-9.	Wählen Sie zum Erzwingen von mehrstufiger Authentifizierung unter **Erfordere mehrstufige Authentifizierung** die Option **Mittel**.
+9.	Wählen Sie zum Erzwingen der Multi-Factor Authentication unter **Erfordert mehrstufige Authentifizierung** die Option **Mittel**.
 
 10.	Klicken Sie auf **Speichern**.
 
@@ -165,8 +165,8 @@ Sicherheitsrisiken sind Schwachstellen in einer Azure AD-Umgebung, die von einem
 <br> ![Playbook](./media/active-directory-identityprotection-playbook/200.png "Playbook") <br>
 
 
-## Weitere Informationen
+## Siehe auch
 
  - [Azure Active Directory Identity Protection](active-directory-identityprotection.md)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0824_2016-->

@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="04/05/2016"
+   ms.date="08/18/2016"
    ms.author="gwallace"/>
 
 # Routing auf URL-Pfadbasis – Übersicht
@@ -25,7 +25,7 @@ Anforderungen für http://contoso.com/video* werden an VideoServerPool weitergel
 
 ## urlPathMap-Konfigurationselement
 
-Mit dem urlPathMap-Element werden Pfadmuster für Zuordnungen zu Back-End-Serverpools angegeben. Dies ist der Codeausschnitt des urlPathMap-Elements aus der Vorlagendatei.
+Mit dem urlPathMap-Element werden Pfadmuster für Zuordnungen zu Back-End-Serverpools angegeben. Im Folgenden finden Sie den Codeausschnitt des urlPathMap-Elements aus der Vorlagendatei.
 
 	"urlPathMaps": [
 	{
@@ -58,9 +58,9 @@ Mit dem urlPathMap-Element werden Pfadmuster für Zuordnungen zu Back-End-Server
 	}
 	
 
->[AZURE.NOTE] pathPattern: Eine Liste der abzustimmenden Pfadmuster. Jedes muss mit „/“ beginnen, und ein „*“ ist nur am Ende nach „/“ zulässig. Die Zeichenfolge, die für den Pfadabgleicher bereitgestellt wird, enthält keinen Text nach dem ersten „?“ oder „#“, und diese Zeichen sind hier nicht zulässig.
+>[AZURE.NOTE] PathPattern: Diese Einstellung ist eine Liste der abzustimmenden Pfadmuster. Jedes muss mit „/“ beginnen, und ein „*“ ist nur am Ende nach „/“ zulässig. Die Zeichenfolge, die für den Pfadabgleicher bereitgestellt wird, enthält keinen Text nach dem ersten „?“ oder „#“, und diese Zeichen sind hier nicht zulässig.
 
-Weitere Informationen erhalten Sie in einer [ARM-Vorlage mit URL-basiertem Routing](https://azure.microsoft.com/documentation/templates/201-application-gateway-url-path-based-routing).
+Weitere Informationen erhalten Sie in einer [Resource Manager-Vorlage mit URL-basiertem Routing](https://azure.microsoft.com/documentation/templates/201-application-gateway-url-path-based-routing).
 
 ## PathBasedRouting-Regel
 
@@ -84,6 +84,6 @@ RequestRoutingRule vom Typ PathBasedRouting wird verwendet, um einen Listener an
 	
 ## Nächste Schritte 
 
-Nachdem Sie sich mit dem URL-basierten Inhaltsrouting vertraut gemacht haben, können Sie mit [Erstellen eines Application Gateways mit URL-basiertem Routing](application-gateway-create-url-route-arm-ps.md) fortfahren, um ein Application Gateway mit URL-Routingregeln zu erstellen.
+Nachdem Sie sich mit dem URL-basierten Inhaltsrouting vertraut gemacht haben, können Sie mit [Erstellen eines Anwendungsgateways mit URL-basiertem Routing](application-gateway-create-url-route-portal.md) fortfahren, um ein Anwendungsgateway mit URL-Routingregeln zu erstellen.
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0824_2016-->

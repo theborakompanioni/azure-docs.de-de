@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-windows-store" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="02/29/2016" 
+	ms.date="08/19/2016" 
 	ms.author="piyushjo" />
 
 # Windows Universal-Apps Reach SDK-Integration
@@ -59,7 +59,7 @@ Engagement bietet zwei Möglichkeiten, die Reach-In-App-Banner und Interstitiala
 Die Wahl zwischen den beiden Integrationen kann so zusammengefasst werden:
 
 -   Sie können die Overlayintegration auswählen, wenn Ihre Seiten bereits von Agent `EngagementPage` erben; es geht nur darum, in Ihren Seiten `EngagementPage` durch `EngagementPageOverlay` und `xmlns:engagement="using:Microsoft.Azure.Engagement"` durch `xmlns:engagement="using:Microsoft.Azure.Engagement.Overlay"` zu ersetzen.
--   Sie können die manuelle Integration von Webansichten auswählen, wenn Sie die Reach-Benutzeroberfläche genau innerhalb Ihrer Seiten platzieren möchten, oder wenn Sie Ihren Seiten keine weitere Vererbungsebene hinzufügen möchten. 
+-   Sie können die manuelle Integration von Webansichten auswählen, wenn Sie die Reach-Benutzeroberfläche genau innerhalb Ihrer Seiten platzieren möchten, oder wenn Sie Ihren Seiten keine weitere Vererbungsebene hinzufügen möchten.
 
 ### Überlagerungsintegration
 
@@ -334,4 +334,4 @@ Um dieses Protokoll nun zu verwenden, bearbeiten Sie `App.xaml.cs` mit der `OnAc
 			  #endregion
  
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0824_2016-->
