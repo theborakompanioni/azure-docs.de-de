@@ -21,7 +21,7 @@ Die gute Nachricht ist, dass sämtliche Ihnen schon bekannten Methoden, Prinzipi
 -   Überwachung und Protokollierung müssen ordnungsgemäß implementiert sein, um Bedrohungen durch Nicht-Abweisbarkeit zu verringern.
 -   Authentifizierung und Autorisierung sollten mithilfe auf der Plattform verfügbarer bewährter Mechanismen implementiert werden, um Bedrohungen durch Identitätsfälschungen und Berechtigungserhöhungen zu verhindern.
 
-Eine vollständige Liste von Bedrohungen, Angriffen, Schwachstellen und Gegenmaßnahmen finden Sie in "patterns & practices" unter [Cheat Sheet: Web Application Security Frame](http://msdn.microsoft.com/library/ff649461.aspx) (in englischer Sprache) und unter [Security Guidance for Applications Index](http://msdn.microsoft.com/library/ff650760.aspx) (in englischer Sprache).
+Eine vollständige Liste von Bedrohungen, Angriffen, Schwachstellen und Gegenmaßnahmen finden Sie in "patterns & practices" unter [Cheat Sheet: Web Application Security Frame](http://msdn.microsoft.com/library/ff649461.aspx) \(in englischer Sprache) und unter [Security Guidance for Applications Index](http://msdn.microsoft.com/library/ff650760.aspx) \(in englischer Sprache).
 
 In der Cloud unterscheiden sich die Mechanismen für Authentifizierung und Zugriffsteuerung stark von solchen, die für vor Ort vorhandene Anwendungen zur Verfügung stehen. Für Cloudanwendungen werden wesentlich mehr Authenthifizierungs- und Zugriffsoptionen angeboten. Dies kann zu Verwirrung und in der Folge zu mangelhaften Implementierungen führen. Noch mehr Verwirrung entsteht, wenn definiert werden soll, was eine Cloudanwendung ist. Die Anwendung könnte beispielsweise in der Cloud bereitgestellt werden, während ihr Authentifizierungsmechanismus über Active Directory erfolgt. Andererseits könnte die Anwendung lokal bereitgestellt werden, während die Authentifizierungsmechanismen in der Cloud liegen (z. B. über Azure Active Directory Access Control (vormals Access Control Service oder ACS)).
 
@@ -61,30 +61,30 @@ Die beste Gegenmaßnahme gegen einen Angriff besteht darin, die von der Plattfor
 **Windows Identity Foundation (WIF).** WIF ist eine .NET-Laufzeitbibliothek, die in .NET Framework 4.5 enthalten ist (sie steht außerdem als separater Download für .NET 3.5/4.0 zur Verfügung). WIF leistet die Schwerarbeit für Behandlungsprotokolle wie WS-Federation und WS-Trust und für Tokenbehandlung wie SAML. Daher müssen Sie keinen allzu komplexen sicherheitsbezogenen Code in Ihre Anwendung schreiben. In den folgenden Ressourcen finden Sie detaillierte Informationen über WIF:
 
 -   [Beispiele für Windows Identity Foundation 4.5](http://code.msdn.microsoft.com/site/search?f%5B0%5D.Type=SearchText&f%5B0%5D.Value=wif&f%5B1%5D.Type=Topic&f%5B1%5D.Value=claims-based%20authentication) im MSDN-Codekatalog.
--   [Windows Identity Foundation 4.5-Tools for Visual Studio 11 Beta](http://visualstudiogallery.msdn.microsoft.com/e21bf653-dfe1-4d81-b3d3-795cb104066e) im MSDN-Codekatalog (in englischer Sprache).
--   [Windows Identity Foundation-Laufzeit (.Net 3.5/4.0)](http://www.microsoft.com/download/details.aspx?id=17331) auf MSDN (in englischer Sprache).
--   [Beispiele für Windows Identity Foundation 3.5/4.0 und Vorlagen für Visual Studio 2008/2010](http://www.microsoft.com/download/details.aspx?displaylang=en&id=4451) auf MSDN (in englischer Sprache).
+-   [Windows Identity Foundation 4.5-Tools for Visual Studio 11 Beta](http://visualstudiogallery.msdn.microsoft.com/e21bf653-dfe1-4d81-b3d3-795cb104066e) im MSDN-Codekatalog \(in englischer Sprache).
+-   [Windows Identity Foundation-Laufzeit (.Net 3.5/4.0)](http://www.microsoft.com/download/details.aspx?id=17331) auf MSDN \(in englischer Sprache).
+-   [Beispiele für Windows Identity Foundation 3.5/4.0 und Vorlagen für Visual Studio 2008/2010](http://www.microsoft.com/download/details.aspx?displaylang=en&id=4451) auf MSDN \(in englischer Sprache).
 
 **Azure AD Access Control (vormals ACS genannt)**. Microsoft Azure AD Access Control ist ein Clouddienst, der den Sicherheitstokendienst (STS) bereitstellt und einen Verband mit verschiedenen Identitätsanbietern (IdPs), firmeneigenem Active Directory oder Internet-IdPs wie Windows Live ID/Microsoft-Konto, Facebook, Google, Yahoo! und OpenID 2.0 ermöglicht. In den folgenden Ressourcen finden Sie ausführliche Informationen zu Azure AD Access Control:
 
 -   [Access Control Service 2.0](http://msdn.microsoft.com/library/gg429786.aspx) 
 -   [Szenarien und Lösungen mit ACS](http://msdn.microsoft.com/library/gg185920.aspx)
 -   [ACS – Vorgehensweisen](http://msdn.microsoft.com/library/windowsazure/gg185939.aspx)
--   [A Guide to Claims-Based Identity and Access Control](http://msdn.microsoft.com/library/ff423674.aspx) (in englischer Sprache)
--   [Identity Developer Training Kit](http://www.microsoft.com/download/details.aspx?id=14347) (in englischer Sprache)
--   [MSDN-hosted Identity Developer Training Course](http://msdn.microsoft.com/IdentityTrainingCourse) (in englischer Sprache)
+-   [A Guide to Claims-Based Identity and Access Control](http://msdn.microsoft.com/library/ff423674.aspx) \(in englischer Sprache)
+-   [Identity Developer Training Kit](http://www.microsoft.com/download/details.aspx?id=14347) \(in englischer Sprache)
+-   [MSDN-hosted Identity Developer Training Course](http://msdn.microsoft.com/IdentityTrainingCourse) \(in englischer Sprache)
 
 **Active Directory-Verbunddienste (AD FS).**Active Directory-Verbunddienste (AD FS) 2.0 unterstützt Ansprüche unterstützende Identitätslösungen mit Windows Server- und Active Directory-Technologie. AD-FS 2.0 unterstützt die WS-Trust-, WS-Federation- und SAML-Protokolle. In den folgenden Ressourcen finden Sie detaillierte Informationen über AD FS:
 
--   [AD FS 2.0 Content Map](http://social.technet.microsoft.com/wiki/contents/articles/2735.ad-fs-2-0-content-map.aspx) (in englischer Sprache)
--   [Web SSO Design][Web SSO Design] (in englischer Sprache)
--   [Federated Web SSO Design][Federated Web SSO Design] (in englischer Sprache)
+-   [AD FS 2.0 Content Map](http://social.technet.microsoft.com/wiki/contents/articles/2735.ad-fs-2-0-content-map.aspx) \(in englischer Sprache)
+-   [Web SSO Design][Web SSO Design] \(in englischer Sprache)
+-   [Federated Web SSO Design][Federated Web SSO Design] \(in englischer Sprache)
 
 **Azure Shared Access Signatures** (in englischer Sprache) Shared Access Signatures ermöglicht Ihnen die Feinabstimmung des Zugriffs auf eine Blob- oder Containerressource. In den folgenden Ressourcen finden Sie detaillierte Informationen über Shared Access Signatures:
 
--   [Managing Access to Blobs and Containers](http://msdn.microsoft.com/library/ee393343.aspx) (in englischer Sprache)
--   [New Storage Feature: Shared Access Signatures](http://blog.smarx.com/posts/new-storage-feature-signed-access-signatures) (in englischer Sprache)
--   [Shared Access Signatures Are Easy These Days](http://blog.smarx.com/posts/shared-access-signatures-are-easy-these-days) (in englischer Sprache)
+-   [Managing Access to Blobs and Containers](http://msdn.microsoft.com/library/ee393343.aspx) \(in englischer Sprache)
+-   [New Storage Feature: Shared Access Signatures](http://blog.smarx.com/posts/new-storage-feature-signed-access-signatures) \(in englischer Sprache)
+-   [Shared Access Signatures Are Easy These Days](http://blog.smarx.com/posts/shared-access-signatures-are-easy-these-days) \(in englischer Sprache)
 
 ##Szenarienübersicht
 
@@ -170,10 +170,10 @@ Beachten Sie das folgende Diagramm (WIF ist optional):
 In den folgenden Ressourcen finden Sie Hinweise zum Implementieren dieses Szenarios:
 
 -   [Vorgehensweise: Konfigurieren der Vertrauensstellung zwischen ACS und dem WCF-Dienst mithilfe symmetrischer Schlüssel](http://msdn.microsoft.com/library/gg185958.aspx)
--   [How To: Authenticate to a REST WCF Service Deployed to Azure Using ACS](http://msdn.microsoft.com/library/hh289317.aspx) (in englischer Sprache)
+-   [How To: Authenticate to a REST WCF Service Deployed to Azure Using ACS](http://msdn.microsoft.com/library/hh289317.aspx) \(in englischer Sprache)
 -   [Codebeispiel: ASP.NET-Webdienst](http://msdn.microsoft.com/library/gg983271.aspx)
 -   [Windows Phone 7-Anwendung](http://msdn.microsoft.com/library/gg983271.aspx)
--   [REST WCF With SWT Token Issued By Azure Access Control Service (ACS)](http://code.msdn.microsoft.com/REST-WCF-With-SWT-Token-123d93c0) (in englischer Sprache)
+-   [REST WCF With SWT Token Issued By Azure Access Control Service (ACS)](http://code.msdn.microsoft.com/REST-WCF-With-SWT-Token-123d93c0) \(in englischer Sprache)
 
 ###WCF (REST)-Dienst mit Live ID/Microsoft-Konto, Facebook, Google, Yahoo!, Open ID
 
@@ -189,12 +189,12 @@ Beachten Sie das folgende Diagramm (WIF ist optional und wird daher nicht gezeig
 
 In den folgenden Ressourcen finden Sie Hinweise zum Implementieren dieses Szenarios:
 
--   [How To: Authenticate to a REST WCF Service Deployed to Azure Using ACS](http://msdn.microsoft.com/library/hh289317.aspx) (in englischer Sprache)
+-   [How To: Authenticate to a REST WCF Service Deployed to Azure Using ACS](http://msdn.microsoft.com/library/hh289317.aspx) \(in englischer Sprache)
 -   [Vorgehensweise: Konfigurieren von Google als Identitätsanbieter](http://msdn.microsoft.com/library/gg185976.aspx)
 -   [Vorgehensweise: Konfigurieren von Facebook als Identitätsanbieter](http://msdn.microsoft.com/library/gg185919.aspx)
 -   [Vorgehensweise: Konfigurieren von Yahoo! als Identitätsanbieter](http://msdn.microsoft.com/library/gg185977.aspx)
 -  [ Codebeispiel: Windows Phone 7-Anwendung](http://msdn.microsoft.com/library/gg983271.aspx)
--   [REST WCF With SWT Token Issued By Azure Access Control Service (ACS)](http://code.msdn.microsoft.com/REST-WCF-With-SWT-Token-123d93c0) (in englischer Sprache)
+-   [REST WCF With SWT Token Issued By Azure Access Control Service (ACS)](http://code.msdn.microsoft.com/REST-WCF-With-SWT-Token-123d93c0) \(in englischer Sprache)
 
 
 ###ASP.NET-Webanwendung für den REST WCF-Dienst mit freigegebenem SWT-Token
@@ -214,7 +214,7 @@ In den folgenden Ressourcen finden Sie Hinweise zum Implementieren dieses Szenar
 -   [Vorgehensweise: Konfigurieren von Google als Identitätsanbieter](http://msdn.microsoft.com/library/gg185976.aspx)
 -   [Vorgehensweise: Konfigurieren von Facebook als Identitätsanbieter](http://msdn.microsoft.com/library/gg185919.aspx)
 -   [Vorgehensweise: Konfigurieren von Yahoo! als Identitätsanbieter](http://msdn.microsoft.com/library/gg185977.aspx)
--   [ASP.NET Web App To REST WCF Service Delegation Using Shared SWT Token](http://code.msdn.microsoft.com/ASPNET-Web-App-To-REST-WCF-b2b95f82) (in englischer Sprache)
+-   [ASP.NET Web App To REST WCF Service Delegation Using Shared SWT Token](http://code.msdn.microsoft.com/ASPNET-Web-App-To-REST-WCF-b2b95f82) \(in englischer Sprache)
 
 ###Autorisierung über rollenbasierte Zugriffssteuerung (RBAC) in Ansprüche unterstützenden Anwendungen und Diensten
 
@@ -244,8 +244,8 @@ In den folgenden Ressourcen finden Sie Hinweise zum Implementieren dieses Szenar
 
 -   [Vorgehensweise: Implementieren von RBAC (Role Based Access Control, rollenbasierte Zugriffssteuerung) in einer Ansprüche unterstützenden ASP.NET-Anwendung mithilfe von WIF und ACS](http://msdn.microsoft.com/library/gg185914.aspx)
 -   [Vorgehensweise: Implementieren von Tokentransformationslogik mithilfe von Regeln](http://msdn.microsoft.com/library/gg185955.aspx)
--   [Authorization With RoleManager For Claims Aware (WIF) ASP.NET Web Applications](http://blogs.msdn.com/b/alikl/archive/2010/11/18/authorization-with-rolemanager-for-claims-aware-wif-asp-net-web-applications.aspx) (in englischer Sprache)
--   Code Sample: Using Claims In IsInRole in [Windows Identity Foundation SDK](http://www.microsoft.com/downloads/details.aspx?FamilyID=c148b2df-c7af-46bb-9162-2c9422208504) (in englischer Sprache)
+-   [Authorization With RoleManager For Claims Aware (WIF) ASP.NET Web Applications](http://blogs.msdn.com/b/alikl/archive/2010/11/18/authorization-with-rolemanager-for-claims-aware-wif-asp-net-web-applications.aspx) \(in englischer Sprache)
+-   Code Sample: Using Claims In IsInRole in [Windows Identity Foundation SDK](http://www.microsoft.com/downloads/details.aspx?FamilyID=c148b2df-c7af-46bb-9162-2c9422208504) \(in englischer Sprache)
 
 ###Anspruchsbasierte Autorisierung in Ansprüche unterstützenden Anwendungen und Diensten
 
@@ -259,7 +259,7 @@ In den folgenden Ressourcen finden Sie Hinweise zum Implementieren dieses Szenar
 
 -   [Vorgehensweise: Implementieren von Tokentransformationslogik mithilfe von Regeln](http://msdn.microsoft.com/library/gg185955.aspx)
 -   [Vorgehensweise: Implementieren von Anspruchsautorisierung in einer Ansprüche unterstützenden ASP.NET-Anwendung mithilfe von WIF und ACS](http://msdn.microsoft.com/library/gg185907.aspx)
--   Code Sample: Claims based Authorization in [Windows Identity Foundation SDK](http://www.microsoft.com/downloads/details.aspx?FamilyID=c148b2df-c7af-46bb-9162-2c9422208504) (in englischer Sprache)
+-   Code Sample: Claims based Authorization in [Windows Identity Foundation SDK](http://www.microsoft.com/downloads/details.aspx?FamilyID=c148b2df-c7af-46bb-9162-2c9422208504) \(in englischer Sprache)
 
 
 ##Azure Storage-Dienstidentität und Zugriffsszenarien
@@ -274,9 +274,9 @@ Achten Sie besonders auf den sicheren Umgang mit dem Daten, um eine Offenlegung 
 
 In den folgenden Ressourcen finden Sie Hinweise zum Lösen dieses Szenarios:
 
--   [Managing Access to Blobs and Containers](http://msdn.microsoft.com/library/ee393343.aspx) (in englischer Sprache)
--   [New Storage Feature: Shared Access Signatures](http://blog.smarx.com/posts/new-storage-feature-signed-access-signatures) (in englischer Sprache)
--   [Shared Access Signatures Are Easy These Days](http://blog.smarx.com/posts/shared-access-signatures-are-easy-these-days) (in englischer Sprache)
+-   [Managing Access to Blobs and Containers](http://msdn.microsoft.com/library/ee393343.aspx) \(in englischer Sprache)
+-   [New Storage Feature: Shared Access Signatures](http://blog.smarx.com/posts/new-storage-feature-signed-access-signatures) \(in englischer Sprache)
+-   [Shared Access Signatures Are Easy These Days](http://blog.smarx.com/posts/shared-access-signatures-are-easy-these-days) \(in englischer Sprache)
 
 
 ## Azure SQL-Datenbankidentität und Zugriffsszenarien
@@ -354,8 +354,8 @@ Verwenden Sie zum Lösen dieses Szenarios die Delegierung "OAuth". Benutzer werd
 
 In den folgenden Ressourcen finden Sie Hinweise zum Lösen dieses Szenarios:
 
--   [OAuth Web Client Example](http://go.microsoft.com/fwlink/?LinkId=219162) (in englischer Sprache)
--   [OAuth Rich Client Example](http://go.microsoft.com/fwlink/?LinkId=219163) (in englischer Sprache)
+-   [OAuth Web Client Example](http://go.microsoft.com/fwlink/?LinkId=219162) \(in englischer Sprache)
+-   [OAuth Rich Client Example](http://go.microsoft.com/fwlink/?LinkId=219163) \(in englischer Sprache)
 
 ###Anwendungszugriff auf das Marketplace-API
 
@@ -368,7 +368,7 @@ Detaillierte Informationen über das Implementieren der Authentifizierung finden
 In den folgenden Ressourcen finden Sie Hinweise zum Lösen dieses Szenarios:
 
 -   [Anwendungs-Publishing-Kit herunterladen](http://go.microsoft.com/fwlink/?LinkId=221323)
--   [Introduction to Azure Marketplace for Applications](https://datamarket.azure.com/) (in englischer Sprache)
+-   [Introduction to Azure Marketplace for Applications](https://datamarket.azure.com/) \(in englischer Sprache)
 
 ##Sicherheitsknöpfe
 
@@ -376,14 +376,14 @@ In diesem Abschnitt werden Sicherheitsköpfe für Windows Identity Foundation un
 
 ###Windows Identity Foundation
 
-Im folgenden werden wichtige Sicherheitsknöpfe von WIF aufgeführt. Die unten stehenden Informationen sind ein Auszug aus [Überlegungen zum Entwurf](http://msdn.microsoft.com/library/ee517298.aspx) und [Windows Identity Foundation (WIF) Security for ASP.NET Web Applications - Threats & CountermeasuresWindows Identity Foundation (WIF) Security for ASP.NET Web Applications - Threats & Countermeasures](http://blogs.msdn.com/b/alikl/archive/2010/12/02/windows-identity-foundation-wif-security-for-asp-net-web-applications-threats-amp-countermeasures.aspx) (in englischer Sprache).
+Im folgenden werden wichtige Sicherheitsknöpfe von WIF aufgeführt. Die unten stehenden Informationen sind ein Auszug aus [Überlegungen zum Entwurf](http://msdn.microsoft.com/library/ee517298.aspx) und [Windows Identity Foundation (WIF) Security for ASP.NET Web Applications - Threats & CountermeasuresWindows Identity Foundation (WIF) Security for ASP.NET Web Applications - Threats & Countermeasures](http://blogs.msdn.com/b/alikl/archive/2010/12/02/windows-identity-foundation-wif-security-for-asp-net-web-applications-threats-amp-countermeasures.aspx) \(in englischer Sprache).
 
 -   **IssuerNameRegistry**. Legt vertrauenswürdige Sicherheitstokendienste (STS) fest. Vergewissern Sie sich, dass nur vertrauenswürdige STSs aufgeführt werden.
 -   **cookieHandler requireSsl="true"**. Legt fest, ob Sitzungs-Cookies über das SSL-Protokoll übertragen werden.
 -   **wsFederation's requireHttps="true"**. Legt fest ob die Kommunikation des Verbundprotokolls mit dem Identitätsanbieter über das SSL-Protokoll erfolgt.
 -   **tokenReplayDetection enabled="true"**. Legt fest ob die Funktion zur Erkennung einer Tokenwiedergabe aktiv ist. Achten Sie darauf, dass diese Funktion Serveraffinität verursacht, da sie lokale Kopien verwendeter Token verwaltet.
 -   **audienceUris**. Legt das Zielpublikum für das Token fest. Wenn Ihre Anwendung ein Token erhält, das nicht für sie gedacht war, wird es von WIF abgelehnt.
--   **requestValidation** und **httpRuntime requestValidationType**. Aktiviert/deaktiviert die ASP.NET-Validierungsfunktion. Siehe Anleitungen unter [Windows Identity Foundation (WIF): A Potentially Dangerous Request.Form Value Was Detected from the Client](http://social.technet.microsoft.com/wiki/contents/articles/1725.windows-identity-foundation-wif-a-potentially-dangerous-request-form-value-was-detected-from-the-client-wresult-t-requestsecurityto.aspx) (in englischer Sprache)
+-   **requestValidation** und **httpRuntime requestValidationType**. Aktiviert/deaktiviert die ASP.NET-Validierungsfunktion. Siehe Anleitungen unter [Windows Identity Foundation (WIF): A Potentially Dangerous Request.Form Value Was Detected from the Client](http://social.technet.microsoft.com/wiki/contents/articles/1725.windows-identity-foundation-wif-a-potentially-dangerous-request-form-value-was-detected-from-the-client-wresult-t-requestsecurityto.aspx) \(in englischer Sprache)
 
 ###Azure AD Access Control
 
@@ -411,20 +411,20 @@ Alle in diesem Thema umrissenen Szenarien und Lösungen sind gültig, wenn die A
 
 ##Ressourcen
 
--   [Identity Developer Training Kit](http://go.microsoft.com/fwlink/?LinkId=214555) (in englischer Sprache)
--   [MSDN-hosted Identity Developer Training Course](http://go.microsoft.com/fwlink/?LinkId=214561) (in englischer Sprache)
--   [A Guide to Claims-based Identity and Access Control](http://go.microsoft.com/fwlink/?LinkId=214562) (in englischer Sprache)
+-   [Identity Developer Training Kit](http://go.microsoft.com/fwlink/?LinkId=214555) \(in englischer Sprache)
+-   [MSDN-hosted Identity Developer Training Course](http://go.microsoft.com/fwlink/?LinkId=214561) \(in englischer Sprache)
+-   [A Guide to Claims-based Identity and Access Control](http://go.microsoft.com/fwlink/?LinkId=214562) \(in englischer Sprache)
 -   [Access Control Service](http://msdn.microsoft.com/library/windowsazure/gg429786.aspx)
 -   [ACS – Vorgehensweisen](http://msdn.microsoft.com/library/windowsazure/gg185939.aspx)
--   [Secure Azure Web Role ASP.NET Web Application Using Access Control Service v2.0](http://social.technet.microsoft.com/wiki/contents/articles/2590.aspx) (in englischer Sprache)
--   [Azure AD Access Control Service (ACS) Academy Videos](http://social.technet.microsoft.com/wiki/contents/articles/2777.aspx) (in englischer Sprache)
--   [Microsoft Security Development Lifecycle](http://www.microsoft.com/security/sdl/default.aspx) (in englischer Sprache)
--   [SDL Threat Modeling Tool 3.1.8](http://www.microsoft.com/download/en/details.aspx?displaylang=en&id=2955) (in englischer Sprache)
--   [Security and Privacy Blogs](http://www.microsoft.com/about/twc/en/us/blogs.aspx) (in englischer Sprache)
--   [Security Response Center](http://www.microsoft.com/security/msrc/default.aspx) (in englischer Sprache)
--   [Security Intelligence Report](http://www.microsoft.com/security/sir/) (in englischer Sprache)
--   [Security Development Lifecycle](http://www.microsoft.com/security/sdl/default.aspx) (in englischer Sprache)
--   [Security Developer Center (MSDN)](http://msdn.microsoft.com/security/) (in englischer Sprache)
+-   [Secure Azure Web Role ASP.NET Web Application Using Access Control Service v2.0](http://social.technet.microsoft.com/wiki/contents/articles/2590.aspx) \(in englischer Sprache)
+-   [Azure AD Access Control Service (ACS) Academy Videos](http://social.technet.microsoft.com/wiki/contents/articles/2777.aspx) \(in englischer Sprache)
+-   [Microsoft Security Development Lifecycle](http://www.microsoft.com/security/sdl/default.aspx) \(in englischer Sprache)
+-   [SDL Threat Modeling Tool 3.1.8](http://www.microsoft.com/download/en/details.aspx?displaylang=en&id=2955) \(in englischer Sprache)
+-   [Security and Privacy Blogs](http://www.microsoft.com/about/twc/en/us/blogs.aspx) \(in englischer Sprache)
+-   [Security Response Center](http://www.microsoft.com/security/msrc/default.aspx) \(in englischer Sprache)
+-   [Security Intelligence Report](http://www.microsoft.com/security/sir/) \(in englischer Sprache)
+-   [Security Development Lifecycle](http://www.microsoft.com/security/sdl/default.aspx) \(in englischer Sprache)
+-   [Security Developer Center (MSDN)](http://msdn.microsoft.com/security/) \(in englischer Sprache)
 
 
 [01]: ./media/SecurityRX/01_SecuringTheApplication.gif

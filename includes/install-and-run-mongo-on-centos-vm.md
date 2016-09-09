@@ -25,7 +25,7 @@ Diese schrittweise Anleitung erläutert die Installation und Ausführung von Mon
 		$ sudo mkdir -p /srv/datadrive/data
 		$ sudo chown `id -u` /srv/datadrive/data
 
-	Weitere Informationen zur Installation von MongoDB auf Linux finden Sie unter [Quickstart Unix][QuickstartUnix] (in englischer Sprache).
+	Weitere Informationen zur Installation von MongoDB auf Linux finden Sie unter [Quickstart Unix][QuickstartUnix] \(in englischer Sprache).
 
 5. Führen Sie zum Starten der Datenbank aus:
 
