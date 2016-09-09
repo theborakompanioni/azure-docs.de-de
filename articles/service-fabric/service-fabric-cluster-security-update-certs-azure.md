@@ -44,11 +44,11 @@ Klicken Sie auf **Zertifikat**. Eine Bereitstellung wird gestartet, und eine bla
 
 Nach erfolgreichem Abschluss der Bereitstellung können Sie entweder das primäre oder sekundäre Zertifikat verwenden, um Verwaltungsvorgänge auf dem Cluster auszuführen.
 
-![Screenshot des Verlaufs der Zertifikatbereitstellung][SecurityConfigurations\_03]
+![Screenshot des Verlaufs der Zertifikatbereitstellung][SecurityConfigurations_03]
 
 Dieser Screenshot zeigt, wie das Blatt „Sicherheit“ nach Abschluss der Bereitstellung aussieht.
 
-![Screenshot des Zertifikatfingerabdrucks nach der Bereitstellung][SecurityConfigurations\_08]
+![Screenshot des Zertifikatfingerabdrucks nach der Bereitstellung][SecurityConfigurations_08]
 
 
 Sie können nun das neue Zertifikat verwenden, das Sie gerade hinzugefügt haben, um eine Verbindung mit dem Cluster herzustellen und Vorgänge darauf auszuführen.
@@ -208,6 +208,10 @@ Lesen Sie die folgenden Artikel, um weitere Informationen zur Clusterverwaltung 
 
 
 <!--Image references-->
-[SecurityConfigurations_02]: ./media/service-fabric-cluster-security-update-certs-azure/SecurityConfigurations_02.png [SecurityConfigurations_03]: ./media/service-fabric-cluster-security-update-certs-azure/SecurityConfigurations_03.png [SecurityConfigurations_05]: ./media/service-fabric-cluster-security-update-certs-azure/SecurityConfigurations_05.png [SecurityConfigurations_08]: ./media/service-fabric-cluster-security-update-certs-azure/SecurityConfigurations_08.png
+[SecurityConfigurations_02]: ./media/service-fabric-cluster-security-update-certs-azure/SecurityConfigurations_02.png
+[SecurityConfigurations_03]: ./media/service-fabric-cluster-security-update-certs-azure/SecurityConfigurations_03.png
+[SecurityConfigurations_05]: ./media/service-fabric-cluster-security-update-certs-azure/SecurityConfigurations_05.png
+[SecurityConfigurations_08]: ./media/service-fabric-cluster-security-update-certs-azure/SecurityConfigurations_08.png
 
 <!---HONumber=AcomDC_0817_2016-->
+
