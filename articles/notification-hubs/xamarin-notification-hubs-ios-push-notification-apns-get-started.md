@@ -243,7 +243,7 @@ In diesem Abschnitt senden Sie Pushbenachrichtigungen mithilfe einer einfachen .
 
 5. Drücken Sie die Taste F5, um die App auszuführen. Nach wenigen Sekunden sollte auf Ihrem Gerät eine Pushbenachrichtigung angezeigt werden. Stellen Sie unabhängig davon, ob Sie WLAN oder ein Mobilfunknetz nutzen, sicher, dass Sie auf dem Gerät über eine aktive Internetverbindung verfügen.
 
-Sie finden alle möglichen Nutzlasten im [Apple Local and Push Notification Programming Guide] (in englischer Sprache).
+Sie finden alle möglichen Nutzlasten im [Apple Local and Push Notification Programming Guide] \(in englischer Sprache).
 
 ####(Optional) Senden von Benachrichtigungen aus einem mobilen Service
 
