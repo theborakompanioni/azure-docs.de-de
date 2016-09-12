@@ -37,7 +37,7 @@ Azure verhindert, dass Sie ein Zertifikat entfernen, während es verwendet wird.
 
 Solange das Zertifikat nicht verwendet wird, können Sie das PowerShell-Cmdlet [Remove-AzureCertificate](https://msdn.microsoft.com/library/azure/mt589145.aspx) zum Entfernen eines Zertifikats verwendet.
 
-### Ich verfüge über abgelaufene Zertifikate namens „Windows Azure Service Management for Extensions“.
+### Ich verfüge über abgelaufene Zertifikate namens "Microsoft Azure Service Management for Extensions“.
 
 Diese Zertifikate werden erstellt, wenn dem Clouddienst eine Erweiterung hinzugefügt wird, wie etwa die Remotedesktoperweiterung. Diese Zertifikate werden nur zum Verschlüsseln und Entschlüsseln der privaten Konfiguration der Erweiterung verwendet. Es spielt keine Rolle, ob diese Zertifikate ablaufen. Das Ablaufdatum wird nicht geprüft.
 

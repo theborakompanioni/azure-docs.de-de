@@ -198,7 +198,7 @@ ImageReference imageReference = new ImageReference(
 
 ## Liste mit VM-Images
 
-In der folgenden Tabelle ist angegeben, welche Marketplace-VM-Images zum Zeitpunkt der Aktualisierung dieses Artikels mit den verfügbaren Batch-Knoten-Agents kompatibel waren. Dabei ist zu beachten, dass diese Liste nicht final ist, da Images und Knoten-Agents jederzeit hinzugefügt oder entfernt werden können. Es wird empfohlen, für die Batch-Anwendungen und -Dienste immer [list\_node\_agent\_skus][py_list_skus] (Python) und [ListNodeAgentSkus][net_list_skus] (Batch .NET) zu verwenden, um die aktuell verfügbaren SKUs zu bestimmen und eine Auswahl zu treffen.
+In der folgenden Tabelle ist angegeben, welche Marketplace-VM-Images zum Zeitpunkt der Aktualisierung dieses Artikels mit den verfügbaren Batch-Knoten-Agents kompatibel waren. Dabei ist zu beachten, dass diese Liste nicht final ist, da Images und Knoten-Agents jederzeit hinzugefügt oder entfernt werden können. Es wird empfohlen, für die Batch-Anwendungen und -Dienste immer [list\_node\_agent\_skus][py_list_skus] \(Python) und [ListNodeAgentSkus][net_list_skus] \(Batch .NET) zu verwenden, um die aktuell verfügbaren SKUs zu bestimmen und eine Auswahl zu treffen.
 
 > [AZURE.WARNING] Die folgende Liste kann sich jederzeit ändern. Verwenden Sie immer die in den Batch-APIs verfügbaren Methoden **zum Auflisten von Knoten-Agent-SKUs**, um die kompatiblen virtuellen Computer und Knoten-Agent-SKUs aufzulisten und eine Auswahl zu treffen, wenn Sie Batch-Aufträge ausführen.
 

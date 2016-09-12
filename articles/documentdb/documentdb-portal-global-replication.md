@@ -72,7 +72,7 @@ Informationen zur Funktionsweise der globalen Datenreplikation in DocumentDB fin
 <!--Reference style links - using these makes the source content way more readable than using inline links-->
 [bcdr]: https://azure.microsoft.com/documentation/articles/best-practices-availability-paired-regions/
 [consistency]: https://azure.microsoft.com/documentation/articles/documentdb-consistency-levels/
-[azureregions]: https://azure.microsoft.com/de-DE/regions/#services
-[offers]: https://azure.microsoft.com/de-DE/pricing/details/documentdb/
+[azureregions]: https://azure.microsoft.com/regions/#services
+[offers]: https://azure.microsoft.com/pricing/details/documentdb/
 
 <!---HONumber=AcomDC_0831_2016-->

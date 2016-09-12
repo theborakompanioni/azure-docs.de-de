@@ -80,7 +80,7 @@ Sie benötigen Folgendes zum Bearbeiten dieses Lernprogramms:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
-2. Klicken Sie im linken Menü auf **App Services** > **& Lt;*App-Name*>** > **Authentifizierung/Autorisierung**.
+2. Klicken Sie im linken Menü auf **App Services** > **&lt;*App-Name*>** > **Authentifizierung/Autorisierung**.
 
 	![](./media/web-sites-dotnet-lob-application-azure-ad/5-app-service-authentication.png)
 

@@ -307,7 +307,7 @@ Mit Anwendungspaketen können Sie Ihre Kunden dabei unterstützen, die passende 
 
 ## Nächste Schritte
 
-* Die [Batch-REST-API][api_rest] unterstützt auch die Arbeit mit Anwendungspaketen. Unter [Add a pool to an account][rest_add_pool] (Hinzufügen eines Pools zu einem Konto) finden Sie unter dem Element [applicationPackageReferences][rest_add_pool_with_packages] beispielsweise Informationen zum Angeben von zu installierenden Paketen mithilfe der REST-API. Ausführliche Informationen zum Abrufen von Anwendungsinformationen mit der Batch-REST-API finden Sie unter [Clientanwendungen][rest_applications].
+* Die [Batch-REST-API][api_rest] unterstützt auch die Arbeit mit Anwendungspaketen. Unter [Add a pool to an account][rest_add_pool] \(Hinzufügen eines Pools zu einem Konto) finden Sie unter dem Element [applicationPackageReferences][rest_add_pool_with_packages] beispielsweise Informationen zum Angeben von zu installierenden Paketen mithilfe der REST-API. Ausführliche Informationen zum Abrufen von Anwendungsinformationen mit der Batch-REST-API finden Sie unter [Clientanwendungen][rest_applications].
 
 * Informieren Sie sich über das programmgesteuerte [Verwalten von Azure Batch-Konten und -Kontingenten mit Batch Management .NET](batch-management-dotnet.md). Die [Batch Management .NET][api_net_mgmt]-Bibliothek kann Features zum Erstellen und Löschen von Konten für Ihre Batch-Anwendung oder Ihren Dienst aktivieren.
 

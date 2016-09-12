@@ -32,7 +32,7 @@ Lesen Sie vor der Migration unbedingt diese Artikel, um sicherzustellen, dass Si
 
 ## Nächste Schritte
 
-Das CAT (Customer Advisory Team) bietet auch einige hervorragende SQL Data Warehouse-Anleitungen, die es in Blogs veröffentlicht. Der Artikel [Migrating data to Azure SQL Data Warehouse in practice][] (Migrieren von Daten zu Azure SQL Data Warehouse in der Praxis) bietet Ihnen eine zusätzliche Anleitung zur Migration.
+Das CAT (Customer Advisory Team) bietet auch einige hervorragende SQL Data Warehouse-Anleitungen, die es in Blogs veröffentlicht. Der Artikel [Migrating data to Azure SQL Data Warehouse in practice][] \(Migrieren von Daten zu Azure SQL Data Warehouse in der Praxis) bietet Ihnen eine zusätzliche Anleitung zur Migration.
 
 <!--Image references-->
 

@@ -71,7 +71,7 @@ Auf der [FAQ-Seite](expressroute-faqs.md) finden Sie weitere Informationen zu un
 
 In der folgenden Tabelle werden die drei Routingdomänen verglichen.
 
-||**Privates Peering**|**Öffentliches Peering**|**Microsoft-Peering**|
+|**Privates Peering**|**Öffentliches Peering**|**Microsoft-Peering**|
 |---|---|---|---|
 |**Max. Anzahl von unterstützten Präfixen pro Peering**|Standardmäßig 4.000, bei ExpressRoute Premium 10.000|200|200|
 |**Unterstützte IP-Adressbereiche**|Jede gültige IPv4-Adresse innerhalb des WANs.|Öffentliche IPv4-Adressen in Ihrem Besitz oder im Besitz des Konnektivitätsanbieters.|Öffentliche IPv4-Adressen in Ihrem Besitz oder im Besitz des Konnektivitätsanbieters.|

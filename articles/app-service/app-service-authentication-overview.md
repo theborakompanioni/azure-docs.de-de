@@ -26,7 +26,7 @@ App Service nutzt die Verbundidentität. Dabei werden Kontenspeicherung und Benu
 
 Mit folgenden Tutorials können Sie sofort loslegen:
 
-- [Hinzufügen der Authentifizierung zu Ihrer iOS-App][iOS] (oder [Android], [Windows], [Xamarin.iOS], [Xamarin.Android], [Xamarin.Forms] oder [Cordova])
+- [Hinzufügen der Authentifizierung zu Ihrer iOS-App][iOS] \(oder [Android], [Windows], [Xamarin.iOS], [Xamarin.Android], [Xamarin.Forms] oder [Cordova])
 - [Benutzerauthentifizierung für API-Apps in Azure App Service][apia-user]
 - [Erste Schritte mit Azure App Service – Teil 2][web-getstarted]
 
@@ -115,7 +115,7 @@ In den folgenden Tutorials erfahren Sie, wie Sie App Service für die Verwendung
 - [Konfigurieren Ihrer App Service-Anwendung zur Verwendung der Microsoft-Kontoanmeldung][MSA]
 - [Konfigurieren Ihrer App Service-Anwendung zur Verwendung der Twitter-Anmeldung][Twitter]
 
-Wenn Sie keines der hier beschriebenen Identitätssysteme verwenden möchten, können Sie die [Vorschau der Unterstützung der benutzerdefinierten Authentifizierung im Mobile Apps-.NET-Server-SDK][custom-auth] (geeignet für Web-Apps, mobile Apps und API-Apps) nutzen.
+Wenn Sie keines der hier beschriebenen Identitätssysteme verwenden möchten, können Sie die [Vorschau der Unterstützung der benutzerdefinierten Authentifizierung im Mobile Apps-.NET-Server-SDK][custom-auth] \(geeignet für Web-Apps, mobile Apps und API-Apps) nutzen.
 
 ### Webanwendungen
 In den folgenden Tutorials erfahren Sie, wie Sie die Authentifizierung einer Webanwendung hinzufügen:

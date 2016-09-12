@@ -42,11 +42,11 @@ In diesem Thema sind einige häufige Fragen zur Problembehandlung aufgeführt, d
 | Problem | Lösung |
 | :----------------------------------| :---------------------------------------------- |
 | Behandlung von Problemen mit der Abfrageleistung | Wenn Sie die Problembehandlung für eine bestimmte Abfrage durchführen möchten, sollten Sie sich zunächst über das [Untersuchen der Ausführung von Abfragen][] informieren.|
-| Schlechte Abfrageleistung und Planung ist häufig das Ergebnis fehlender Statistiken | Die häufigste Ursache für schlechte Leistung ist das Fehlen von Statistiken für Ihre Tabellen. Ausführliche Informationen dazu, wie Sie Statistiken erstellen und warum sie für die Leistung wichtig sind, finden Sie unter [Managing statistics on tables in SQL Data Warehouse][Statistics] (Verwalten von Statistiken für Tabellen in SQL Data Warehouse).|
+| Schlechte Abfrageleistung und Planung ist häufig das Ergebnis fehlender Statistiken | Die häufigste Ursache für schlechte Leistung ist das Fehlen von Statistiken für Ihre Tabellen. Ausführliche Informationen dazu, wie Sie Statistiken erstellen und warum sie für die Leistung wichtig sind, finden Sie unter [Managing statistics on tables in SQL Data Warehouse][Statistics] \(Verwalten von Statistiken für Tabellen in SQL Data Warehouse).|
 | Geringe Parallelität/Abfragen in der Warteschlange | Das Verständnis der [Workloadverwaltung][] ist wichtig, damit Sie wissen, wie Sie die Speicherbelegung und die Parallelität abwägen sollen.|
 | Implementieren von bewährten Methoden | Wenn Sie die Leistung bei Ihren Abfragen verbessern möchten, ist der Artikel [Bewährte Methoden für SQL Data Warehouse][] ein idealer Ausgangspunkt.|
 | Verbessern der Leistung mit der Skalierung | Mitunter besteht der Weg zum Verbessern der Leistung einfach darin, den Abfragen mehr Computeleistung hinzuzufügen, indem Sie Ihr [SQL Data Warehouse skalieren][].|
-| Schlechte Leistung aufgrund von schlechter Indexqualität | Es kann vorkommen, dass sich Abfragen verlangsamen, weil eine [schlechte Qualität der Columnstore-Indizes][] vorliegt. Weitere Informationen finden Sie unter [Rebuild indexes to improve segment quality][] (Neuerstellen von Indizes zum Verbessern der Segmentqualität).|
+| Schlechte Leistung aufgrund von schlechter Indexqualität | Es kann vorkommen, dass sich Abfragen verlangsamen, weil eine [schlechte Qualität der Columnstore-Indizes][] vorliegt. Weitere Informationen finden Sie unter [Rebuild indexes to improve segment quality][] \(Neuerstellen von Indizes zum Verbessern der Segmentqualität).|
 
 ## Systemverwaltung
 
@@ -129,7 +129,7 @@ Wenn Sie bisher keine Lösung für Ihr Problem gefunden haben, können Sie folge
 <!--MSDN references-->
 [sys.database\_principals]: https://msdn.microsoft.com/library/ms187328.aspx
 [CREATE FUNCTION]: https://msdn.microsoft.com/library/mt203952.aspx
-[sqlcmd]: https://azure.microsoft.com/de-DE/documentation/articles/sql-data-warehouse-get-started-connect-sqlcmd/
+[sqlcmd]: https://azure.microsoft.com/documentation/articles/sql-data-warehouse-get-started-connect-sqlcmd/
 
 <!--Other Web references-->
 [Blogs]: https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/

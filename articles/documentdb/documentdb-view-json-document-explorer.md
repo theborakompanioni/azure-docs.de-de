@@ -29,7 +29,7 @@ Beachten Sie, dass der Dokument-Explorer für DocumentDB-Konten mit Protokollunt
 
 2. Klicken Sie im Ressourcenmenü auf **Dokument-Explorer**.
  
-	![Screenshot des Dokument-Explorer-Befehls](./media/documentdb-view-JSON-document-explorer/documentexplorercommand.png)
+	![Screenshot des Dokument-Explorer-Befehls](./media/documentdb-view-json-document-explorer/documentexplorercommand.png)
 
     Die Dropdownlisten **Datenbanken** und **Sammlungen** auf dem Blatt **Dokument-Explorer** werden auf der Grundlage des Kontexts, in dem Sie den Dokument-Explorer starten, automatisch aufgefüllt.
 

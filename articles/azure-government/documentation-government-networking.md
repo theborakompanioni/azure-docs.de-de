@@ -39,7 +39,7 @@ Damit Netzwerkdienste Azure Government-Kundenanwendungen und -Lösungen unterst�
 
 Alle Kunden, die eine Architektur mit privaten Verbindungen nutzen, müssen überprüfen, ob für die Kundenverbindung mit dem GN/I-Edgerouter-Abgrenzungspunkt (Gateway Network/Internet) für Azure Government eine entsprechende Implementierung durchgeführt und beibehalten wird. Dementsprechend muss Ihre Organisation die Netzwerkverbindung zwischen Ihrer lokalen Umgebung und dem GN/C-Edgerouter-Abgrenzungspunkt (Gateway Network/Customer) für Azure Government einrichten.
 
-ExpressRoute ist allgemein in Azure Government verfügbar. Weitere Informationen (u.a. zu Partnern und Peeringstandorten) finden Sie in der <a href="https://azure.microsoft.com/de-DE/documentation/services/expressroute/">öffentlichen Dokumentation zu ExpressRoute</a>.
+ExpressRoute ist allgemein in Azure Government verfügbar. Weitere Informationen (u.a. zu Partnern und Peeringstandorten) finden Sie in der <a href="https://azure.microsoft.com/documentation/services/expressroute/">öffentlichen Dokumentation zu ExpressRoute</a>.
 
 Weitere Informationen und Updates erhalten Sie, indem Sie den <a href="https://blogs.msdn.microsoft.com/azuregov/">Microsoft Azure Government-Blog</a> abonnieren.
 

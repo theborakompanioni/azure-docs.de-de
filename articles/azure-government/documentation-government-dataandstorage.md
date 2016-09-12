@@ -28,7 +28,7 @@ Die folgenden Informationen geben Aufschluss über die Abgrenzung von Azure Gove
 |--------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Daten, die in einem Azure Storage-Produkt eingegeben, gespeichert und verarbeitet werden, können Exportbestimmungen unterliegende Daten enthalten. Statische Authentifikatoren wie Kennwörter und Smartcard-PINs für den Zugriff auf Komponenten der Azure-Plattform. Private Schlüssel von Zertifikaten, die für die Verwaltung von Komponenten der Azure-Plattform verwendet werden. Andere Sicherheitsinformationen/geheime Schlüssel, wie etwa Zertifikate, Verschlüsselungsschlüssel, Hauptschlüssel und Speicherschlüssel, die in Azure-Diensten gespeichert sind. | Azure Storage-Metadaten dürfen keine den Exportbestimmungen unterliegenden Daten enthalten. Zu diesen Metadaten gehören alle Konfigurationsdaten, die beim Erstellen und Verwalten des Speicherprodukts eingegeben werden. Geben Sie keine regulierten/kontrollierten Daten in die folgenden Felder ein: Ressourcengruppen, Deployment names (Bereitstellungsnamen), Ressourcennamen, Resourcentags.  
 
-Weitere Informationen finden Sie in der <a href=https://azure.microsoft.com/de-de/documentation/services/storage/>öffentlichen Azure Storage-Dokumentation</a>.
+Weitere Informationen finden Sie in der <a href=https://azure.microsoft.com/documentation/services/storage/>öffentlichen Azure Storage-Dokumentation</a>.
 
 Weitere Informationen und Updates erhalten Sie, indem Sie den <a href="https://blogs.msdn.microsoft.com/azuregov/">Microsoft Azure Government-Blog</a> abonnieren.
 
@@ -42,7 +42,7 @@ Die folgenden Informationen geben Aufschluss über die Abgrenzung von Azure Gove
 
 SQL-Datenbank V11 ist allgemein in Azure Government verfügbar.
 
-Zusätzliche Anleitungen zur Konfiguration der Metadatensichtbarkeit und bewährte Methoden für den Schutz finden Sie unter <a href="https://msdn.microsoft.com/de-DE/library/bb510589.aspx">Sicherheitscenter für SQL Server-Datenbankmodul und Azure SQL-Datenbank</a> und in der <a href="https://azure.microsoft.com/de-DE/documentation/services/sql-database/">öffentlichen Dokumentation zu Azure SQL-Datenbank</a>.
+Zusätzliche Anleitungen zur Konfiguration der Metadatensichtbarkeit und bewährte Methoden für den Schutz finden Sie unter <a href="https://msdn.microsoft.com/de-DE/library/bb510589.aspx">Sicherheitscenter für SQL Server-Datenbankmodul und Azure SQL-Datenbank</a> und in der <a href="https://azure.microsoft.com/documentation/services/sql-database/">öffentlichen Dokumentation zu Azure SQL-Datenbank</a>.
 
 Weitere Informationen und Updates erhalten Sie, indem Sie den <a href="https://blogs.msdn.microsoft.com/azuregov/">Microsoft Azure Government-Blog</a> abonnieren.
 
