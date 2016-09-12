@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="08/01/2016"
+   ms.date="08/30/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
 # Verteilen von Tabellen in SQL Data Warehouse
@@ -137,24 +137,28 @@ Verteilungsspalten können nicht aktualisiert werden. Wählen Sie daher eine Spa
 
 ### Auswählen der Verteilungsspalte mit gleichmäßiger Datenverteilung
 
-Da ein verteiltes System nur so schnell wie die langsamste Verteilung ist, ist es wichtig, die Arbeit gleichmäßig auf die Verteilungen aufzuteilen. So erzielen Sie für das System eine ausgewogene Ausführung. Die Verteilung der Arbeit auf ein verteiltes System richtet sich danach, wo sich die Daten für die einzelnen Verteilungen befinden. Daher ist es sehr wichtig, die richtige Verteilungsspalte für die Verteilung der Daten auszuwählen, damit jede Verteilung über die gleiche Menge an Arbeit verfügt und die gleiche Zeit für deren Abarbeitung benötigt. Wenn die Arbeit im System gut verteilt ist, wird dies als ausgewogene Ausführung bezeichnet. Falls die Daten im System nicht gleichmäßig verteilt und nicht ausgewogen sind, wird dies als **Datenschiefe** bezeichnet.
+Da ein verteiltes System nur so schnell wie die langsamste Verteilung ist, ist es wichtig, die Arbeit gleichmäßig auf die Verteilungen aufzuteilen. So erzielen Sie für das System eine ausgewogene Ausführung. Die Verteilung der Arbeit auf ein verteiltes System richtet sich danach, wo sich die Daten für die einzelnen Verteilungen befinden. Daher ist es sehr wichtig, die richtige Verteilungsspalte für die Verteilung der Daten auszuwählen, damit jede Verteilung über die gleiche Menge an Arbeit verfügt und die gleiche Zeit für deren Abarbeitung benötigt. Wenn die Arbeit gut über das System verteilt ist, sind die Daten gleichmäßig über die Verteilungen hinweg verteilt. Wenn Daten nicht gleichmäßig verteilt, bezeichnen wir dies als **Datenschiefe**.
 
 Beachten Sie beim Auswählen der Verteilungsspalte Folgendes, um Daten gleichmäßig zu verteilen und Datenschiefe zu vermeiden:
 
 1. Wählen Sie eine Spalte aus, die eine hohe Zahl von unterschiedlichen Werten enthält.
-2. Vermeiden Sie die Verteilung von Daten auf Spalten mit einer hohen Häufigkeit von wenigen Werten oder einer hohen Häufigkeit von Nullen.
-3. Vermeiden Sie die Verteilung von Daten auf Datumsspalten.
-4. Vermeiden Sie die Verteilung auf Spalten mit weniger als 60 Werten.
+2. Vermeiden Sie die Verteilung von Daten auf Spalten mit wenigen verschiedenen Werten.
+3. Vermeiden Sie die Verteilung von Daten auf Spalten mit sehr vielen NULL-Werten.
+4. Vermeiden Sie die Verteilung von Daten auf Datumsspalten.
 
-Da jeder Wert per Hashverteilung einer von 60 Verteilungen zugeordnet wird, empfiehlt sich zur Erzielung einer gleichmäßigen Verteilung die Auswahl einer Spalte, die einen hohen Eindeutigkeitsfaktor aufweist und deutlich mehr als 60 eindeutige Werte enthält. Stellen Sie sich einen Extremfall vor, in dem eine Spalte nur 40 eindeutige Werte enthält. Wenn diese Spalte als Verteilungsschlüssel ausgewählt wird, werden die Daten dieser Tabelle nur auf einen Teil des Systems verteilt, und 20 Verteilungen enthalten keine Daten und werden nicht an der Verarbeitung beteiligt. Die anderen 40 Verteilungen haben dagegen mehr Arbeit zu verrichten, als wenn die Daten gleichmäßig auf 60 Verteilungen aufgeteilt werden.
+Da jeder Wert per Hashverteilung einer von 60 Verteilungen zugeordnet wird, empfiehlt sich zur Erzielung einer gleichmäßigen Verteilung die Auswahl einer Spalte, die einen hohen Eindeutigkeitsfaktor aufweist und mehr als 60 eindeutige Werte enthält. Stellen Sie sich einen Fall vor, in dem eine Spalte nur 40 eindeutige Werte enthält. Wenn diese Spalte als Verteilungsschlüssel ausgewählt wird, werden die Daten dieser Tabelle in maximal 40 Verteilungen untergebracht, sodass 20 Verteilungen keine Daten enthalten und nicht an der Verarbeitung beteiligt werden. Die anderen 40 Verteilungen haben dagegen mehr Arbeit zu verrichten, als wenn die Daten gleichmäßig auf 60 Verteilungen aufgeteilt werden. Dieses Szenario ist ein Beispiel für Datenschiefe.
 
-Wenn Sie eine Tabelle nach einer Spalte mit einem hohem Anteil von Nullen verteilen, werden alle Nullwerte derselben Verteilung zugeordnet. Diese Verteilung muss dann mehr Arbeit als die anderen Verteilungen verrichten, was zu einer Verlangsamung des gesamten Systems führt. Die Verteilung nach einer Datumsspalte kann zu einer Verarbeitungsschiefe führen, wenn bei Abfragen das Datum eine wichtige Rolle spielt und nur einige Datumsangaben an einer Abfrage beteiligt sind.
+Im MPP-System wartet jeder Abfrageschritt, bis alle Verteilungen ihren Anteil an der Arbeit abgeschlossen haben. Wenn eine Verteilung mehr Arbeit ausführt als andere, dann werden die Ressourcen der anderen Verteilungen im Wesentlichen für das Warten auf die ausgelastete Verteilung verschwendet. Wenn die Arbeit nicht gleichmäßig über alle Verteilungen verteilt ist, bezeichnen wir dies als **Verarbeitungsschiefe**. Verarbeitungsschiefe führt dazu, dass Abfragen langsamer ausgeführt werden als dann, wenn die Workload gleichmäßig auf die Verteilungen verteilt werden kann. Datenschiefe führt zu Verarbeitungsschiefe.
+
+Vermeiden Sie die Verteilung auf Spalten, die in hohem Maße NULL-Werte zulassen, da alle NULL-Werte in der gleichen Verteilung untergebracht werden. Die Verteilung auf eine Datumsspalte kann auch zu Verarbeitungsschiefe führen, da alle Daten für ein bestimmtes Datum in der gleichen Verteilung untergebracht werden. Wenn mehrere Benutzer Abfragen ausführen, die alle nach dem gleichen Datum filtern, übernimmt 1 der 60 Verteilungen die gesamte Arbeit, da ein bestimmtes Datum nur in einer einzigen Verteilung untergebracht wird. In diesem Szenario werden die Abfragen wahrscheinlich 60 Mal langsamer ausgeführt, als wenn die Daten gleichmäßig über alle Verteilungen verteilt wären.
 
 Falls keine guten Kandidatenspalten vorhanden sind, können Sie sich für die Roundrobin-Verteilungsmethode entscheiden.
 
 ### Auswählen einer Verteilungsspalte zur Reduzierung von Datenverschiebungen
 
-Das Reduzieren von Datenverschiebungen durch das Auswählen der richtigen Verteilungsspalte ist eine der wichtigsten Strategien zum Optimieren der Leistung Ihrer SQL Data Warehouse-Instanz. Zu einer Datenverschiebung kommt es meist, wenn Tabellen verknüpft oder Aggregationen durchgeführt werden. Spalten, die in `JOIN`, `GROUP BY`, `DISTINCT`, `OVER` und `HAVING`-Klauseln verwendet werden, sind **gute** Kandidaten für die Hashverteilung. Spalten in der `WHERE`-Klausel sind dagegen **keine** guten Kandidaten für die Hashverteilung, da sie die für die Abfrage zur Verfügung stehenden Verteilungen beschränken.
+Das Reduzieren von Datenverschiebungen durch das Auswählen der richtigen Verteilungsspalte ist eine der wichtigsten Strategien zum Optimieren der Leistung Ihrer SQL Data Warehouse-Instanz. Zu einer Datenverschiebung kommt es meist, wenn Tabellen verknüpft oder Aggregationen durchgeführt werden. Spalten, die in `JOIN`-, `GROUP BY`-, `DISTINCT`-, `OVER`- und `HAVING`-Klauseln verwendet werden, sind **gute** Kandidaten für die Hashverteilung.
+
+Spalten in der `WHERE`-Klausel sind dagegen **keine** guten Kandidaten für die Hashverteilung, da sie die für die Abfrage zur Verfügung stehenden Verteilungen beschränken und so Verarbeitungsschiefe hervorrufen. Ein gutes Beispiel für eine Spalte, die zur Verteilung attraktiv erscheint, aber oft Verarbeitungsschiefe hervorrufen kann, ist eine Datumsspalte.
 
 Grundsätzlich gilt: Wenn Sie über zwei große Faktentabellen verfügen, die häufig an einer Verknüpfung beteiligt sind, erzielen Sie die besten Ergebnisse mit einer Verteilung, die auf einer der Verknüpfungsspalten basiert. Wenn Sie über eine Tabelle verfügen, die nie mit einer anderen großen Faktentabelle verknüpft wird, können Sie Spalten verwenden, die häufig in der `GROUP BY`-Klausel vorkommen.
 
@@ -314,4 +318,4 @@ Eine Übersicht über bewährte Methoden finden Sie unter [Bewährte Methoden f�
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0831_2016-->

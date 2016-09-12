@@ -18,11 +18,11 @@
 
 # Migrieren von Orchestrator zu Azure Automation (Beta)
 
-Runbooks in [System Center Orchestrator](http://technet.microsoft.com/library/hh237242.aspx) basieren auf Aktivitäten der Integrationspakete, die speziell für Orchestrator geschrieben wurden, während Runbooks in Azure Automation auf Windows PowerShell basieren. [Grafische Runbooks](automation-runbook-types#graphical-runbooks) in Azure Automation haben ein ähnliches Aussehen wie Orchestrator-Runbooks, die enthaltenen Aktivitäten repräsentieren PowerShell-Cmdlets, untergeordnete Runbooks und Objekte.
+Runbooks in [System Center Orchestrator](http://technet.microsoft.com/library/hh237242.aspx) basieren auf Aktivitäten der Integrationspakete, die speziell für Orchestrator geschrieben wurden, während Runbooks in Azure Automation auf Windows PowerShell basieren. [Grafische Runbooks](automation-runbook-types.md#graphical-runbooks) in Azure Automation haben ein ähnliches Aussehen wie Orchestrator-Runbooks, die enthaltenen Aktivitäten repräsentieren PowerShell-Cmdlets, untergeordnete Runbooks und Objekte.
 
 Das [System Center Orchestrator Migration Toolkit](http://www.microsoft.com/download/details.aspx?id=47323&WT.mc_id=rss_alldownloads_all) umfasst Tools, die Sie beim Konvertieren von Runbooks von Orchestrator nach Azure Automation unterstützen. Zusätzlich zur Konvertierung der Runbooks selbst müssen Sie die Integrationspakete mit den von Runbooks verwendeten Aktivitäten mithilfe von Windows PowerShell-Cmdlets in Integrationsmodule konvertieren.
 
-Nachfolgend wird das grundlegende Verfahren zum Konvertieren von Orchestrator-Runbooks nach Azure Automation gezeigt. Jeder dieser Schritte wird in den nachstehenden Abschnitten ausführlich beschrieben.
+Nachfolgend wird das grundlegende Verfahren zum Konvertieren von Orchestrator-Runbooks in Azure Automation gezeigt. Jeder dieser Schritte wird in den nachstehenden Abschnitten ausführlich beschrieben.
 
 1.  Laden Sie das [System Center Orchestrator Migration Toolkit](http://www.microsoft.com/download/details.aspx?id=47323&WT.mc_id=rss_alldownloads_all) herunter, das die in diesem Artikel beschriebenen Tools und Module enthält.
 2.  Importieren Sie das [Modul mit Standardaktivitäten](#standard-activities-module) in Azure Automation. Dieses umfasst konvertierte Versionen der standardmäßigen Orchestrator-Aktivitäten, die von konvertierten Runbooks verwendet werden können.
@@ -96,7 +96,7 @@ Die Syntax für **ConvertFrom-SCORunbook** lautet wie folgt:
 
 - RunbookPath – Pfad zur Exportdatei mit den zu konvertierenden Runbooks.
 - Modul – Durch Trennzeichen getrennte Liste der Integrationsmodule mit Aktivitäten in den Runbooks.
-- OutputFolder – Pfad zum Ordner, in dem konvertierte grafische Runbooks erstellt werden. 
+- OutputFolder – Pfad zum Ordner, in dem konvertierte grafische Runbooks erstellt werden.
 
 
 Der folgende Beispielbefehl konvertiert die Runbooks in eine Exportdatei namens **MyRunbooks.ois\_export**. Diese Runbooks verwenden Active Directory und Data Protection Manager-Integrationspakete.
@@ -108,7 +108,7 @@ Der folgende Beispielbefehl konvertiert die Runbooks in eine Exportdatei namens 
 
 Der Runbook Converter erstellt die folgenden Protokolldateien am gleichen Speicherort wie das konvertierte Runbook. Wenn die Dateien bereits vorhanden sind, werden sie mit den Informationen aus der letzten Konvertierung überschrieben.
 
-| Datei | Inhalt: |
+| File | Inhalt: |
 |:---|:---|
 | Runbook Converter - Progress.log | Ausführliche Konvertierungsschritte einschließlich Informationen für jede erfolgreich konvertierte Aktivität und Warnung für jede nicht konvertierte Aktivität. |
 | Runbook Converter - Summary.log | Zusammenfassung der letzten Konvertierung einschließlich Warnungen und Folgeaufgaben, die Sie durchführen müssen, z. B. Erstellen einer Variablen für das konvertierte Runbook. |
@@ -158,6 +158,7 @@ Runbooks in Orchestrator starten andere Runbooks mit der Aktivität **Runbook au
 - [Service Management Automation](https://technet.microsoft.com/library/dn469260.aspx)
 - [Hybrid-Runbook-Worker](automation-hybrid-runbook-worker.md)
 - [Orchestrator-Standardaktivitäten](http://technet.microsoft.com/library/hh403832.aspx)
+- [Download System Center Orchestrator Migration Toolkit](https://www.microsoft.com/de-DE/download/details.aspx?id=47323) (Herunterladen des System Center Orchestrator Migration Toolkit)
  
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0831_2016-->

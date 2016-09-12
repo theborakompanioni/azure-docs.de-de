@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="tbd"
-	ms.date="05/22/2016"
+	ms.date="08/19/2016"
 	ms.author="garye" />
 
 
@@ -265,15 +265,15 @@ Beim Erstellen eines Batchauftrags für Ihren Azure Machine Learning-Dienstendpu
 
 * **Input**: ein Blobverweis auf den Speicherort der Eingabe des Batchauftrags.
 * **GlobalParameters**: eine Gruppe globaler Parameter, die für ein Experiment definiert werden können. Ein Azure Machine Learning-Experiment kann erforderliche und optionale Parameter haben, die die Ausführung des Diensts individuell anpassen. Außerdem wird vom Aufrufer erwartet, ggf. alle benötigten Parameter bereitzustellen. Diese Parameter werden als eine Auflistung von Schlüssel-Wert-Paaren angegeben.
-* **Outputs**: wenn für den Dienst eine oder mehrere Ausgaben definiert sind, kann der Aufrufer beliebig viele an einen Azure-Blobspeicherort umleiten. Dadurch können Sie die Ausgaben des Dienst an einem gewünschten Speicherort und unter einem vorhersagbaren Namen speichern, da ansonsten der Name des Ausgabeblobs zufällig generiert wird. 
+* **Outputs**: wenn für den Dienst eine oder mehrere Ausgaben definiert sind, kann der Aufrufer beliebig viele an einen Azure-Blobspeicherort umleiten. Dadurch können Sie die Ausgaben des Dienst an einem gewünschten Speicherort und unter einem vorhersagbaren Namen speichern, da ansonsten der Name des Ausgabeblobs zufällig generiert wird.
 
     Der Dienst erwartet, dass der Inhalt der Ausgabe basierend auf seinem Typ in unterstützten Formaten gespeichert wird:
   - Datasetausgaben können als **.csv, .tsv, .arff** gespeichert werden.
   - Ausgaben trainierter Modelle können als **.ilearner** gespeichert werden.
 
-  Die Überschreibungen des Ausgabespeicherorts werden als Auflistung von *<output name  blob reference>*-Paaren angegeben, in denen der *output name* der benutzerdefinierte Name eines bestimmten Ausgabeknotens ist (der auch auf der API-Hilfeseite des Diensts angezeigt wird). *blob reference* ist ein Verweis auf einen Azure-Blobspeicherort, an den die Ausgabe umgeleitet werden soll.
+  Die Überschreibungen des Ausgabespeicherorts werden als Auflistung von *<Ausgabename, Blobverweis>*-Paaren angegeben, in denen der *Ausgabename* der benutzerdefinierte Name eines bestimmten Ausgabeknotens ist (der auch auf der API-Hilfeseite des Diensts angezeigt wird). *Blobverweis* ist der Verweis auf einen Azure-Blobspeicherort, an den die Ausgabe umgeleitet werden soll.
 
-Diese Auftragserstellungsparameter können je nach Art Ihres Diensts optional sein. Dienste ohne definierten Eingabeknoten erfordern z. B. nicht, das an sie ein *Input*-Parameter übergeben wird. Die Überschreibungsfunktion für den Ausgabespeicherort ist gänzlich optional, da Ausgaben andernfalls im Standardspeicherkonto gespeichert werden, das für Ihren Azure Machine Learning-Arbeitsbereich eingerichtet wurde. Nachstehend wird ein Beispiel einer Anforderungsnutzlast für einen Dienst als an die REST-API übergeben gezeigt, bei dem nur die Eingabe-Informationen übergeben werden:
+Diese Auftragserstellungsparameter können je nach Art Ihres Diensts optional sein. Dienste ohne definierten Eingabeknoten erfordern z.B. nicht, dass ein *Input*-Parameter an sie übergeben wird. Die Überschreibungsfunktion für den Ausgabespeicherort ist gänzlich optional, da Ausgaben andernfalls im Standardspeicherkonto gespeichert werden, das für Ihren Azure Machine Learning-Arbeitsbereich eingerichtet wurde. Nachstehend wird ein Beispiel einer Anforderungsnutzlast für einen Dienst als an die REST-API übergeben gezeigt, bei dem nur die Eingabe-Informationen übergeben werden:
 
 **Beispiel für eine Anforderung**
 
@@ -297,11 +297,11 @@ Die Antwort auf die Batchauftragserstellungs-API ist die eindeutige Auftrags-ID,
 
 **2. Starten eines Batchausführungsauftrags**
 
-Ein erstellter Batchauftrag wird innerhalb des Systems registriert und erhält den Zustand *Not started*. Um tatsächlich die Ausführung des Auftrags zu planen, rufen Sie die **start**-API auf, die auf der API-Hilfeseite des Dienstendpunkts beschrieben ist, und geben die Auftrags-ID an, die vergeben wurde, als der Auftrag erstellt wurde.
+Beim Erstellen eines Batchauftrags wird dieser im System registriert und in den Zustand *Nicht gestartet* versetzt. Um die Ausführung des Auftrags zu planen, rufen Sie die **start**-API auf, die auf der API-Hilfeseite der Dienstendpunkts beschrieben ist, und geben die Auftrags-ID an, die beim Erstellen des Auftrags vergeben wurde.
 
 **3. Abrufen des Status eines Batchausführungsauftrags**
 
-Sie können jederzeit den Status Ihres asynchronen Batchauftrags abfragen, indem Sie die Auftrags-ID an die „GetJobStatus“-API übergeben. Die API-Antwort enthält einen Indikator für den aktuellen Status des Auftrags sowie die tatsächlichen Ergebnisse des Batchauftrags, wenn der Vorgang erfolgreich abgeschlossen wurde. Bei einem Fehler werden weitere Informationen über die tatsächlichen Gründe für den Fehler in der Eigenschaft *Details* zurückgegeben (siehe die folgende Abbildung):
+Sie können jederzeit den Status Ihres asynchronen Batchauftrags abfragen, indem Sie die Auftrags-ID an die „GetJobStatus“-API übergeben. Die API-Antwort enthält einen Indikator für den aktuellen Status des Auftrags sowie die tatsächlichen Ergebnisse des Batchauftrags, wenn der Vorgang erfolgreich abgeschlossen wurde. Bei einem Fehler werden weitere Informationen über die tatsächlichen Gründe für den Fehler in der Eigenschaft *Details* zurückgegeben, wie in der folgenden Abbildung veranschaulicht:
 
 **Antwortnutzlast**
 
@@ -319,7 +319,7 @@ Der *StatusCode* kann wie folgt lauten:
 * Abgebrochen
 * Abgeschlossen
 
-Die Eigenschaft *Ergebnisse* wird nur aufgefüllt, wenn der Auftrag erfolgreich abgeschlossen wurde (andernfalls ist er **null**). Wenn der Auftrag abgeschlossen wurde und für den Dienst mindestens ein Ausgabeknoten definiert ist, werden die Ergebnisse als Auflistung von Paaren von *[Ausgabename, Blobverweis]* zurückgegeben, für die der Blobverweis ein SAS-schreibgeschützter Verweis auf das Blob mit dem tatsächlichen Ergebnis ist.
+Die Eigenschaft *Ergebnisse* wird nur aufgefüllt, wenn der Auftrag erfolgreich abgeschlossen wurde (andernfalls ist er **null**). Wenn der Auftrag abgeschlossen wurde und für den Dienst mindestens ein Ausgabeknoten definiert ist, werden die Ergebnisse als Auflistung von *[Ausgabename, Blobverweis]*-Paaren zurückgegeben, in der der Blobverweis ein schreibgeschützter SAS-Verweis auf das Blob mit dem tatsächlichen Ergebnis ist.
 
 **Beispiel für eine Antwort**
 
@@ -353,7 +353,7 @@ Ein Batchauftrag, der ausgeführt wird, kann jederzeit abgebrochen werden, indem
 
 #### Verwenden des BES SDK
 
-Das [BES SDK NuGet-Paket](http://www.nuget.org/packages/Microsoft.Azure.MachineLearning/) bietet Funktionen, die das Aufrufen von BES zur Bewertung im Batchmodus vereinfachen. Um das NuGet-Paket zu installieren, wählen Sie in Visual Studio unter **Tools** den **NuGet-Paket-Manager** aus und klicken dann auf **Paket-Manager-Konsole**.
+Das [BES SDK NuGet-Paket](http://www.nuget.org/packages/Microsoft.Azure.MachineLearning/) bietet Funktionen, die das Aufrufen von BES zur Bewertung im Batchmodus vereinfachen. Um das NuGet-Paket zu installieren, wählen Sie in Visual Studio im Menü **Tools** den **NuGet-Paket-Manager** aus und klicken dann auf **Paket-Manager-Konsole**.
 
 Azure Machine Learning-Experimente, die als Webdienste bereitgestellt werden, können Webdienst-Eingabemodule einschließen. Dies bedeutet, dass sie erwarten, dass die Eingabe über den Webdienstaufruf in Form eines Verweises auf einen Blobspeicherort bereitgestellt wird. Es gibt auch die Möglichkeit, kein Webdienst-Eingabemodul zu verwenden und stattdessen ein **Import Data**-Modul zu nutzen. In diesem Fall liest das **Import Data**-Modul in der Regel Daten aus einer SQL-Datenbank, indem zur Laufzeit Daten mithilfe einer Abfrage abgerufen werden. Webdienst-Parameter können verwendet werden, um dynamisch auf andere Server oder Tabellen usw. zu verweisen. Das SDK unterstützt beide dieser Muster.
 
@@ -488,7 +488,7 @@ Im folgenden Codebeispiel wird veranschaulicht, wie Sie einen Batchauftrag anhan
 	}
 
 #### Beispielcode in Java für BES
-Der Batchausführungsdienst REST-API akzeptiert die JSON, die aus einem Verweis auf eine Eingabebeispiel-CSV- und eine Ausgabebeispiel-CSV-Datei – wie unten dargestellt – besteht, und erstellt in Azure ML einen Auftrag zur Ausführung der Batchvorhersagen. Sie können den gesamten Code in [Github](https://github.com/nk773/AzureML_BESApp/tree/master/src/azureml_besapp) anzeigen. Dieses Java-Beispiel erfordert die [Apache-HTTP-Clientbibliothek](https://hc.apache.org/downloads.cgi).
+Der Batchausführungsdienst REST-API akzeptiert die JSON, die aus einem Verweis auf eine Eingabebeispiel-CSV- und eine Ausgabebeispiel-CSV-Datei – wie unten dargestellt – besteht, und erstellt in Azure ML einen Auftrag zur Ausführung der Batchvorhersagen. Sie finden den gesamten Code in [GitHub](https://github.com/nk773/AzureML_BESApp/tree/master/src/azureml_besapp). Dieses Java-Beispiel erfordert die [Apache-HTTP-Clientbibliothek](https://hc.apache.org/downloads.cgi).
 
 
 	{ "GlobalParameters": {}, 
@@ -632,20 +632,20 @@ Der Batchausführungsdienst REST-API akzeptiert die JSON, die aus einem Verweis 
 	    }
 	    
 ###Andere Programmierumgebungen
-Sie können den Code auch in vielen anderen Sprachen generieren, indem Sie ein Swagger-Dokument aus der API-Hilfeseite verwenden und die Anweisungen auf der Website [swagger.io](http://swagger.io/) befolgen. Wechseln Sie zu [swagger.io](http://swagger.io/swagger-codegen/), und befolgen Sie die Anweisungen zum Herunterladen von Swagger-Code, Java und Apache Maven. Hier ist die Zusammenfassung der Anweisungen zum Einrichten von Swagger für andere Programmierumgebungen.
+Sie können den Code auch in vielen anderen Sprachen generieren, indem Sie ein Swagger-Dokument von der API-Hilfeseite verwenden und die Anweisungen auf der Website [swagger.io](http://swagger.io/) befolgen. Wechseln Sie zu [swagger.io](http://swagger.io/swagger-codegen/), und befolgen Sie die Anweisungen zum Herunterladen von Swagger-Code, Java und Apache Maven. Hier ist die Zusammenfassung der Anweisungen zum Einrichten von Swagger für andere Programmierumgebungen.
 
 * Stellen Sie sicher, dass Java 7 oder höher installiert ist.
-* Installieren Sie Apache Maven (unter Ubuntu können Sie *apt-get install mvn* verwenden)
+* Installieren Sie Apache Maven (unter Ubuntu können Sie *apt-get install mvn* verwenden).
 * Rufen Sie Github für Swagger auf, und laden Sie das Swagger-Projekt als ZIP-Datei herunter
 * Entzippen Sie Swagger
-* Erstellen Sie die Swagger-Tools durch Ausführen von *mvn package* im Swagger-Quellverzeichnis
+* Erstellen Sie die Swagger-Tools durch Ausführen von *mvn package* aus dem Swagger-Quellverzeichnis.
 
 Jetzt können Sie beliebige Swagger-Tools verwenden. Hier sind die Anweisungen, um Java-Clientcode zu generieren.
 
-* Rufen Sie die Azure ML-API-Hilfeseite auf (Beispiel [hier](https://studio.azureml.net/apihelp/workspaces/afbd553b9bac4c95be3d040998943a4f/webservices/4dfadc62adcc485eb0cf162397fb5682/endpoints/26a3afce1767461ab6e73d5a206fbd62/jobs))
+* Rufen Sie die Azure ML-API-Hilfeseite auf ([hier](https://studio.azureml.net/apihelp/workspaces/afbd553b9bac4c95be3d040998943a4f/webservices/4dfadc62adcc485eb0cf162397fb5682/endpoints/26a3afce1767461ab6e73d5a206fbd62/jobs) finden Sie ein Beispiel).
 * Suchen Sie die URL für „swagger.json“ für Azure ML-REST-APIs (zweitletztes Aufzählungszeichen oben auf der API-Hilfeseite)
-* Klicken Sie auf den Link zum Swagger-Dokument (Beispiel [hier](https://management.azureml.net/workspaces/afbd553b9bac4c95be3d040998943a4f/webservices/4dfadc62adcc485eb0cf162397fb5682/endpoints/26a3afce1767461ab6e73d5a206fbd62/apidocument))
-* Verwenden Sie den folgenden Befehl, wie in der [Readme-Datei von Swagger](https://github.com/swagger-api/swagger-codegen/blob/master/README.md) gezeigt, zum Generieren von Clientcode
+* Klicken Sie auf den Link zum Swagger-Dokument ([hier](https://management.azureml.net/workspaces/afbd553b9bac4c95be3d040998943a4f/webservices/4dfadc62adcc485eb0cf162397fb5682/endpoints/26a3afce1767461ab6e73d5a206fbd62/apidocument) finden Sie ein Beispiel).
+* Verwenden Sie den folgenden Befehl, wie in der [Readme-Datei von Swagger](https://github.com/swagger-api/swagger-codegen/blob/master/README.md) gezeigt, um den Clientcode zu generieren.
 
 **Beispielbefehlszeile zum Generieren von Clientcode**
 
@@ -654,7 +654,7 @@ Jetzt können Sie beliebige Swagger-Tools verwenden. Hier sind die Anweisungen, 
 	fb62b56f29fc4ba4b8a8f900c9b89584/services/26a3afce1767461ab6e73d5a206fbd62/swagger.json\
 	 -l java -o /home/username/sample
 
-* Kombinieren Sie die Werte in den Feldern „host“, „basePath“ und „/swagger.JSON“ im Beispiel einer unten gezeigten Swagger-[API-Hilfeseite](https://management.azureml.net/workspaces/afbd553b9bac4c95be3d040998943a4f/webservices/4dfadc62adcc485eb0cf162397fb5682/endpoints/26a3afce1767461ab6e73d5a206fbd62/apidocument), um die in der obigen Befehlszeile verwendete Swagger-URL zu erstellen
+* Kombinieren Sie die Werte in den Feldern „host“, „basePath“ und „/swagger.json“ im unten gezeigten Beispiel einer Swagger-[API-Hilfeseite](https://management.azureml.net/workspaces/afbd553b9bac4c95be3d040998943a4f/webservices/4dfadc62adcc485eb0cf162397fb5682/endpoints/26a3afce1767461ab6e73d5a206fbd62/apidocument), um die in der obigen Befehlszeile verwendete Swagger-URL zu erstellen.
 
 **Beispiel-API-Hilfeseite**
 
@@ -685,4 +685,4 @@ Jetzt können Sie beliebige Swagger-Tools verwenden. Hier sind die Anweisungen, 
 	        "operationId": "getSwaggerDocument",
 	        
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0831_2016-->

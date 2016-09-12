@@ -14,20 +14,18 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/24/2016"
+	ms.date="08/30/2016"
 	ms.author="anhoh"/>
 
 # Schreiben, Bearbeiten und Ausführen von SQL-Abfragen für DocumentDB mit dem Abfrage-Explorer 
 
 Dieser Artikel enthält eine Übersicht über den Abfrage-Explorer von [Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/). Hierbei handelt es sich um ein Tool im Azure-Portal, mit dem Sie SQL-Abfragen für eine [DocumentDB-Sammlung](documentdb-create-collection.md) schreiben und bearbeiten und darauf anwenden können.
 
-1. Klicken Sie in der Navigationsleiste im Azure-Portal auf **DocumentDB-Konten**. Wenn **DocumentDB-Konten** nicht sichtbar ist, klicken Sie auf **Durchsuchen** und dann auf **DocumentDB-Konten**.
+1. Klicken Sie im Azure-Portal in der Navigationsleiste auf **DocumentDB (NoSQL)**. Wenn **DocumentDB (NoSQL)** nicht angezeigt wird, klicken Sie auf **Weitere Dienste** und dann auf **DocumentDB (NoSQL)**.
 
-2. Klicken Sie oben im Blatt **DocumentDB-Konto** auf **Abfrage-Explorer**.
+2. Klicken Sie im Ressourcenmenü auf **Abfrage-Explorer**.
 
 	![Screenshot: Azure-Portal mit hervorgehobenem Abfrage-Explorer](./media/documentdb-query-collections-query-explorer/queryexplorercommand.png)
-
-    >[AZURE.NOTE] Der Abfrage-Explorer wird auch auf den Blättern für Datenbanken und Sammlungen angezeigt.
 
 3. Wählen Sie auf dem Blatt **Abfrage-Explorer** in den Dropdownlisten die **Datenbanken** und **Sammlungen** aus, die abgefragt werden sollen, und geben Sie die auszuführende Abfrage ein.
 
@@ -49,13 +47,13 @@ Standardmäßig zeigt der Abfrage-Explorer die Ergebnisse in Gruppen von jeweils
 
 ![Screenshot des Abfrage-Explorers – Seitennummerierung](./media/documentdb-query-collections-query-explorer/queryresultspagination.png)
 
-Um erfolgreiche Abfragen zu erhalten, enthält der Bereich **Informationen** Kennzahlen, z. B. die Anforderungskosten, die Anzahl von Roundtrips der Abfrage und den aktuell angezeigten Ergebnissatz. Sie erfahren auch, ob weitere Ergebnisse vorhanden sind, die – wie bereits erwähnt – über den Befehl **Nächste Seite** angezeigt werden können.
+Um erfolgreiche Abfragen zu erhalten, enthält der Bereich **Informationen** Kennzahlen, z.B. die Anforderungskosten, die Anzahl von Roundtrips der Abfrage und den aktuell angezeigten Ergebnissatz. Sie erfahren auch, ob weitere Ergebnisse vorhanden sind, die – wie bereits erwähnt – über den Befehl **Nächste Seite** angezeigt werden können.
 
 ![Screenshot der Abfrage-Explorers – Abfrageinformationen](./media/documentdb-query-collections-query-explorer/queryinformation.png)
 
 ## Verwenden mehrerer Abfragen
 
-Wenn Sie mehrere Abfragen verwenden und schnell zwischen den Abfragen wechseln möchten, können Sie alle Abfragen in das Abfragetextfeld im Blatt **Abfrage-Explorer** eingeben und dann die Abfrage markieren, die Sie ausführen möchten. Klicken Sie anschließend auf **Abfrage ausführen**, um die Ergebnisse anzuzeigen.
+Wenn Sie mehrere Abfragen verwenden und schnell zwischen den Abfragen wechseln möchten, können Sie alle Abfragen im Blatt **Abfrage-Explorer** in das Abfragetextfeld eingeben und dann die Abfrage markieren, die Sie ausführen möchten. Klicken Sie anschließend auf **Abfrage ausführen**, um die Ergebnisse anzuzeigen.
 
 ![Screenshot: Schreiben mehrerer SQL-Abfragen im Abfrage-Explorer (SQL-Abfrage-Editor) und Markieren und Ausführen einzelner Abfragen](./media/documentdb-query-collections-query-explorer/queryexplorerhighlightandrun.png)
 
@@ -79,4 +77,4 @@ Der Abfrage-Explorer im Azure-Portal ist nur eine Möglichkeit, um SQL-Abfragen 
 
 Weitere Informationen zur DocumentDB-SQL-Grammatik, die im Abfrage-Explorer unterstützt wird, finden Sie im Artikel [SQL-Abfrage und SQL-Syntax](documentdb-sql-query.md), oder drucken Sie sich den [Spickzettel für SQL-Abfragen](documentdb-sql-query-cheat-sheet.md) aus. Sie können auch experimentieren, indem Sie auf den [Query Playground](https://www.documentdb.com/sql/demo) zugreifen, um Abfragen online mit einem Beispieldataset zu testen.
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0831_2016-->

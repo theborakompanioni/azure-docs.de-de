@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-multiple"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/07/2016"
+	ms.date="08/24/2016"
 	ms.author="iainfou"/>
 
 
@@ -30,7 +30,7 @@ Wenn Sie über ein vorhandenes Abonnement von Trend Micro für eine lokale Lösu
 
 ## Installieren von Deep Security Agent auf einem neuen virtuellen Computer
 
-Mit dem [klassischen Azure-Portal](http://manage.windowsazure.com) können Sie den VM-Agent und die Trend Micro-Sicherheitserweiterung installieren, wenn Sie die Option **Aus Katalog** zum Erstellen des virtuellen Computers verwenden. Die Verwendung dieses Ansatzes ist eine einfache Möglichkeit, einen Schutz von Trend Micro hinzuzufügen, wenn Sie einen einzelnen virtuellen Computer erstellen.
+Mit dem [klassischen Azure-Portal](http://manage.windowsazure.com) können Sie den VM-Agent und die Trend Micro-Sicherheitserweiterung installieren, wenn Sie die Option **Aus Katalog** zum Erstellen des virtuellen Computers verwenden. Wenn Sie einen einzelnen virtuellen Computer erstellen, ist die Verwendung des Portals eine einfache Möglichkeit, den Trend Micro-Schutz hinzuzufügen.
 
 Die Option **Aus Katalog** öffnet einen Assistenten, der Ihnen beim Einrichten des virtuellen Computers hilft. Sie verwenden die letzte Seite des Assistenten zum Installieren des VM-Agents und der Trend Micro-Sicherheitserweiterung. Allgemeine Anweisungen dazu finden Sie unter [Erstellen eines virtuellen Windows-Computers im klassischen Azure-Portal](virtual-machines-windows-classic-tutorial.md). Führen Sie auf der letzten Seite des Assistenten Folgendes aus:
 
@@ -44,9 +44,9 @@ Die Option **Aus Katalog** öffnet einen Assistenten, der Ihnen beim Einrichten 
 
 ## Installieren von Deep Security Agent auf einem vorhandenen virtuellen Computer
 
-Dafür benötigen Sie Folgendes:
+Um den Agent auf einem vorhandenen virtuellen Computer zu installieren, benötigen Sie Folgendes:
 
-- Das Azure PowerShell-Modul Version 0.8.2 oder höher muss auf Ihrem lokalen Computer installiert sein. Sie können die installierte Version von Azure PowerShell mit dem Befehl **Get-Module azure | format-table version** überprüfen. Anweisungen und einen Link zur neuesten Version finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
+- Das Azure PowerShell-Modul Version 0.8.2 oder höher muss auf Ihrem lokalen Computer installiert sein. Sie können die installierte Version von Azure PowerShell mit dem Befehl **Get-Module azure | format-table version** überprüfen. Anweisungen und einen Link zur neuesten Version finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md). Melden Sie sich mit `Add-AzureAccount` bei Ihrem Azure-Abonnement an.
 
 - Der VM-Agent muss auf dem virtuellen Zielcomputer installiert sein.
 
@@ -86,4 +86,4 @@ Es dauert einige Minuten, bis der Agent gestartet wird, wenn er installiert ist.
 [Anmelden bei einem virtuellen Computer, auf dem Windows Server ausgeführt wird]: virtual-machines-windows-classic-connect-logon.md
 [Azure-VM-Erweiterungen und -Features]: http://go.microsoft.com/fwlink/p/?linkid=390493&clcid=0x409
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0831_2016-->

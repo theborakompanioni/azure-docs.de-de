@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="Leistungsebenen in DocumentDB | Microsoft Azure" 
-	description="Erfahren Sie, wie Sie mithilfe von Leistungsebenen in DocumentDB den Durchsatz pro Sammlung reservieren können." 
-	services="documentdb" 
-	authors="mimig1" 
-	manager="jhubbard" 
-	editor="monicar" 
+<properties
+	pageTitle="Leistungsebenen in DocumentDB | Microsoft Azure"
+	description="Erfahren Sie, wie Sie mithilfe von Leistungsebenen in DocumentDB den Durchsatz pro Sammlung reservieren können."
+	services="documentdb"
+	authors="mimig1"
+	manager="jhubbard"
+	editor="monicar"
 	documentationCenter=""/>
 
-<tags 
-	ms.service="documentdb" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/27/2016" 
+<tags
+	ms.service="documentdb"
+	ms.workload="data-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/26/2016"
 	ms.author="mimig"/>
 
 # Leistungsebenen in DocumentDB
@@ -109,13 +109,13 @@ Weitere Informationen zu Preisänderungen in Verbindung mit benutzerdefiniertem 
 
       ![Screenshot des Blatts „Datenbank“ mit einer S1-Sammlung](./media/documentdb-performance-levels/documentdb-change-performance-S1.png)
 
-4. Klicken Sie auf dem Blatt **Sammlungen** auf der oberen Leiste auf **Einstellungen**.
+4. Klicken Sie auf dem Blatt **Sammlungen** auf **Weiter** und dann auf der oberen Leiste auf **Einstellungen**.
 5. Klicken Sie auf dem Blatt **Einstellungen** auf **Tarif**. Die voraussichtlichen monatlichen Kosten für die einzelnen Tarife werden auf dem Blatt **Tarif auswählen** angezeigt. Klicken Sie für den Wechsel zu benutzerdefiniertem Durchsatz auf **Standard** und anschließend zum Speichern der Änderung auf **Auswählen**.
 
       ![Screenshot der DocumentDB-Blätter „Einstellungen“ und „Preisstufe auswählen“](./media/documentdb-performance-levels/documentdb-change-performance.png)
 
 6. Auf dem Blatt **Einstellungen** wurde der **Tarif** in **Standard** geändert, und im Feld **Durchsatz (RU/s)** wird als Standardwert „400“ angezeigt. Legen Sie den Durchsatz auf einen Wert zwischen 400 und 10.000 [Anforderungseinheiten](documentdb-request-units.md)/Sekunde (RU/s) fest. Die **Preiszusammenfassung** am unteren Rand der Seite wird automatisch aktualisiert, um eine Schätzung der monatlichen Kosten anzugeben. Klicken Sie zum Speichern der Änderungen auf **OK**.
-    
+
 	![Screenshot des Blatts „Einstellungen“, der veranschaulicht, wo Sie den Durchsatzwert ändern können](./media/documentdb-performance-levels/documentdb-change-performance-set-thoughput.png)
 
 7. Auf dem Blatt **Datenbank** können Sie den neuen Durchsatz der Sammlung überprüfen.
@@ -137,17 +137,17 @@ Nachstehend finden Sie einen Codeausschnitt zum Ändern des Angebotsdurchsatzes 
 		              .Where(r => r.ResourceLink == collection.SelfLink)    
 		              .AsEnumerable()
 		              .SingleOrDefault();
-	                          
+
 	// Set the throughput to 5000 request units per second
 	offer = new OfferV2(offer, 5000);
-	                    
+
 	//Now persist these changes to the database by replacing the original resource
 	await client.ReplaceOfferAsync(offer);
 
 	// Set the throughput to S2
 	offer = new Offer(offer);
 	offer.OfferType = "S2";
-	                    
+
 	//Now persist these changes to the database by replacing the original resource
 	await client.ReplaceOfferAsync(offer);
 
@@ -172,14 +172,14 @@ Wenn Sie bereits benutzerdefinierte Leistung nutzen, können Sie den Durchsatz d
 4. Klicken Sie auf dem Blatt **Sammlungen** auf der oberen Leiste auf **Einstellungen**.
 5. Erhöhen Sie auf dem Blatt **Einstellungen** den Wert im Feld **Durchsatz (RU/Sekunde)**, und klicken Sie dann auf **OK**, um die Änderung zu speichern. Das Feld **Preiszusammenfassung** unten auf dem Blatt wird in die neuen geschätzten monatlichen Kosten dieser Sammlung in einer einzelnen Region geändert.
 
-    ![Screenshot des Blatts „Einstellungen“ mit hervorgehobenem Feld „Durchsatz“ und Preiszusammenfassung](./media/documentdb-performance-levels/documentdb-change-throughput.png)
- 
+    ![Screenshot des Blatts „Einstellungen“ mit hervorgehobenem Feld „Durchsatz“ und Preiszusammenfassung](./media/documentdb-performance-levels/documentdb-change-performance-set-thoughput.png)
+
 Wenn Sie nicht sicher sind, um wie viel Sie den Durchsatz erhöhen sollten, siehe [Schätzen der Durchsatzanforderungen](documentdb-request-units.md#estimating-throughput-needs) und [Rechner für Anforderungseinheiten](https://www.documentdb.com/capacityplanner).
 
 ## Nächste Schritte
 
 Weitere Informationen zu Preisen und der Datenverwaltung mit Azure DocumentDB finden Sie in folgenden Ressourcen:
- 
+
 - [DocumentDB-Preise](https://azure.microsoft.com/pricing/details/documentdb/)
 - [Verwalten der DocumentDB-Kapazität](documentdb-manage.md)
 - [Modellieren von Daten in DocumentDB](documentdb-modeling-data.md)
@@ -193,4 +193,4 @@ Im Artikel [Leistungs- und Skalierungstests mit Azure DocumentDB](documentdb-per
 [1]: ./media/documentdb-performance-levels/documentdb-change-collection-performance7-9.png
 [2]: ./media/documentdb-performance-levels/documentdb-change-collection-performance10-11.png
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0831_2016-->

@@ -20,7 +20,7 @@
 
 Mit der VPN-Unterstützung von API Management können Sie Ihr API Management-Gateway mit einer Azure Virtual Network-Instanz (klassisch) verbinden. Auf diese Weise können Ihre API Management-Kunden eine sichere Verbindung mit ihren Back-End-Webdiensten herstellen, die lokal vorliegen oder auf die aus anderen Gründen nicht über das öffentliche Internet zugegriffen werden kann.
 
->[AZURE.NOTE] Azure API Management arbeitet mit klassischen VNETs. Informationen zum Erstellen eines klassischen VNET finden Sie unter [Erstellen eines virtuellen Netzwerks (klassisch) über das Azure-Portal](../virtual-network/virtual-networks-create-vnet-classic-pportal.md). Informationen zum Herstellen einer Verbindung von klassischen VNETs mit ARM-VNETS finden Sie unter [Herstellen einer Verbindung zwischen klassischen VNets und neuen VNets](../virtual-network/virtual-networks-arm-asm-s2s.md).
+>[AZURE.NOTE] Azure API Management arbeitet mit klassischen VNETs. Informationen zum Erstellen eines klassischen VNET finden Sie unter [Erstellen eines virtuellen Netzwerks (klassisch) über das Azure-Portal](../virtual-network/virtual-networks-create-vnet-classic-pportal.md). Informationen zum Herstellen einer Verbindung von klassischen VNETs mit ARM-VNETS finden Sie unter [Herstellen einer Verbindung zwischen klassischen VNets und neuen VNets](../vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md).
 
 ## <a name="enable-vpn"> </a>Aktivieren von VPN-Verbindungen
 
@@ -62,6 +62,9 @@ Beim Hosten einer API Management-Dienstinstanz in einem VNET werden die in der f
 | 6381, 6382, 6383 | Eingehend/ausgehend | UDP | API Management-Abhängigkeiten von Redis Cache | VIRTUAL\_NETWORK/VIRTUAL\_NETWORK |
 | 445 | Ausgehend | TCP | API Management-Abhängigkeit von Azure File Share für GIT | VIRTUAL\_NETWORK/INTERNET |
 
+## <a name="custom-dns"> </a>Setup eines benutzerdefinierten DNS-Servers
+
+API Management hängt von einer Reihe von Azure-Diensten ab. Wenn eine API Management-Dienstinstanz in einem VNET gehostet wird, in dem ein benutzerdefinierter DNS-Server verwendet wird, muss sie Hostnamen dieser Azure-Dienste auflösen können. Orientieren Sie sich beim benutzerdefinierten DNS-Setup an [diesen](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-using-your-own-dns-server) Anweisungen.
 
 ## <a name="related-content"> </a>Verwandte Inhalte
 
@@ -82,4 +85,4 @@ Beim Hosten einer API Management-Dienstinstanz in einem VNET werden die in der f
 [Erstellen eines virtuellen Netzwerks mit einer Standort-zu-Standort-VPN-Verbindung mit dem klassischen Azure-Portal]: ../vpn-gateway/vpn-gateway-site-to-site-create.md
 [Verwenden des API-Inspektors zur Verfolgung von Aufrufen in Azure API Management]: api-management-howto-api-inspector.md
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0831_2016-->

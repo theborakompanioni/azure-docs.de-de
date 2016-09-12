@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/22/2016"
+	ms.date="08/29/2016"
 	ms.author="markusvi;andkjell"/>
 
 
@@ -33,11 +33,12 @@ Thema | Inhalt und Relevanz
 [Technische Konzepte ](active-directory-aadconnectsync-technical-concepts.md) | Eine Kurzversion des Themas zur Architektur mit einer kurzen Erklärung der verwendeten Ausdrücke.
 [Topologien für Azure AD Connect](active-directory-aadconnect-topologies.md) | Beschreibt die verschiedenen Topologien und Szenarien, die vom Synchronisierungsmodul unterstützt werden.
 **Benutzerdefinierte Konfiguration** |
-[Running the installation wizard again](active-directory-aadconnectsync-installation-wizard.md) (Erneutes Ausführen des Installations-Assistenten) | Erläutert die Optionen, die Ihnen beim erneuten Ausführen des Azure AD Connect-Installations-Assistenten zur Verfügung stehen.
+[Running the installation wizard again (Erneutes Ausführen des Installations-Assistenten)](active-directory-aadconnectsync-installation-wizard.md) | Erläutert die Optionen, die Ihnen beim erneuten Ausführen des Azure AD Connect-Installations-Assistenten zur Verfügung stehen.
 [Grundlegendes zur Standardkonfiguration](active-directory-aadconnectsync-understanding-default-configuration.md)| Beschreibt die Standardregeln und die Standardkonfiguration. Außerdem wird beschrieben, wie die Regeln zusammenarbeiten, damit die Standardszenarien funktionieren.
 [Grundlegendes zu Benutzern und Kontakten](active-directory-aadconnectsync-understanding-users-and-contacts.md) | Ist die Fortsetzung des vorherigen Themas und beschreibt, wie die Konfiguration für Benutzer und Kontakte zusammen funktioniert, insbesondere in einer Umgebung mit mehreren Gesamtstrukturen.
 [Ändern der Standardkonfiguration](active-directory-aadconnectsync-change-the-configuration.md) | Führt Sie durch die Schritte, die erforderlich sind, um eine allgemeine Konfigurationsänderung an Attributflüssen vorzunehmen.
-[Grundlegendes zu Ausdrücken für die deklarative Bereitstellung](active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md) | Es wird ausführlich beschrieben, wie das Konfigurationsmodell funktioniert und wie die Syntax für die Ausdruckssprache verwendet wird.
+[Understanding Declarative Provisioning](active-directory-aadconnectsync-understanding-declarative-provisioning.md) (Grundlegendes zur deklarativen Bereitstellung)| Beschreibt das als deklarative Bereitstellung bezeichnete Konfigurationsmodell.
+[Grundlegendes zu Ausdrücken für die deklarative Bereitstellung](active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md) | Beschreibt die Syntax für die bei der deklarativen Bereitstellung verwendete Ausdruckssprache.
 [Bewährte Methoden zum Ändern der Standardkonfiguration](active-directory-aadconnectsync-best-practices-changing-default-configuration.md) | Einschränkungen bei der Unterstützung und bei Änderungen der Standardkonfiguration.
 [Konfigurieren der Filterung](active-directory-aadconnectsync-configure-filtering.md) | Beschreibt die verschiedenen Optionen zum Begrenzen der Objekte, die mit Azure AD synchronisiert werden, und enthält eine Schrittanleitung für die Konfiguration dieser Optionen.
 **Features und Szenarien** |
@@ -63,4 +64,4 @@ Thema | Inhalt und Relevanz
 
 * [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md)
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->

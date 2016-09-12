@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-linux"
 	ms.workload="na"
-	ms.date="06/03/2016"
+	ms.date="08/26/2016"
 	ms.author="marsma" />
 
 # Bereitstellen von Linux-Computeknoten in Azure Batch-Pools
@@ -198,7 +198,7 @@ ImageReference imageReference = new ImageReference(
 
 ## Liste mit VM-Images
 
-In der folgenden Tabelle ist angegeben, welche Marketplace-VM-Images zum Zeitpunkt der Erstellung dieses Dokuments mit den verfügbaren Batch-Knoten-Agents kompatibel waren. Dabei ist zu beachten, dass diese Liste nicht final ist, da Images und Knoten-Agents jederzeit hinzugefügt oder entfernt werden können. Es wird empfohlen, für die Batch-Anwendungen und -Dienste immer [list\_node\_agent\_skus][py_list_skus] \(Python) und [ListNodeAgentSkus][net_list_skus] \(Batch .NET) zu verwenden, um die aktuell verfügbaren SKUs zu bestimmen und eine Auswahl zu treffen.
+In der folgenden Tabelle ist angegeben, welche Marketplace-VM-Images zum Zeitpunkt der Aktualisierung dieses Artikels mit den verfügbaren Batch-Knoten-Agents kompatibel waren. Dabei ist zu beachten, dass diese Liste nicht final ist, da Images und Knoten-Agents jederzeit hinzugefügt oder entfernt werden können. Es wird empfohlen, für die Batch-Anwendungen und -Dienste immer [list\_node\_agent\_skus][py_list_skus] \(Python) und [ListNodeAgentSkus][net_list_skus] \(Batch .NET) zu verwenden, um die aktuell verfügbaren SKUs zu bestimmen und eine Auswahl zu treffen.
 
 > [AZURE.WARNING] Die folgende Liste kann sich jederzeit ändern. Verwenden Sie immer die in den Batch-APIs verfügbaren Methoden **zum Auflisten von Knoten-Agent-SKUs**, um die kompatiblen virtuellen Computer und Knoten-Agent-SKUs aufzulisten und eine Auswahl zu treffen, wenn Sie Batch-Aufträge ausführen.
 
@@ -209,19 +209,20 @@ In der folgenden Tabelle ist angegeben, welche Marketplace-VM-Images zum Zeitpun
 | Canonical | UbuntuServer | 14\.04.2-LTS | neueste | batch.node.ubuntu 14.04 |
 | Canonical | UbuntuServer | 14\.04.3-LTS | neueste | batch.node.ubuntu 14.04 |
 | Canonical | UbuntuServer | 14\.04.4-LTS | neueste | batch.node.ubuntu 14.04 |
-| Canonical | UbuntuServer | 15\.10 | neueste | batch.node.debian 8 |
+| Canonical | UbuntuServer | 14\.04.5-LTS | neueste | batch.node.ubuntu 14.04 |
 | Canonical | UbuntuServer | 16\.04.0-LTS | neueste | batch.node.ubuntu 16.04 |
 | Credativ | Debian | 8 | neueste | batch.node.debian 8 |
 | OpenLogic | CentOS | 7,0 | neueste | batch.node.centos 7 |
 | OpenLogic | CentOS | 7,1 | neueste | batch.node.centos 7 |
-| OpenLogic | CentOS | 7,2 | neueste | batch.node.centos 7 |
 | OpenLogic | CentOS-HPC | 7\.1 | neueste | batch.node.centos 7 |
+| OpenLogic | CentOS | 7,2 | neueste | batch.node.centos 7 |
 | Oracle | Oracle-Linux | 7\.0 | neueste | batch.node.centos 7 |
-| SUSE | SLES | 12 | neueste | batch.node.opensuse 42.1 |
-| SUSE | SLES | 12-SP1 | neueste | batch.node.opensuse 42.1 |
-| SUSE | SLES-HPC | 12 | neueste | batch.node.opensuse 42.1 |
 | SUSE | openSUSE | 13\.2 | neueste | batch.node.opensuse 13.2 |
 | SUSE | openSUSE-Leap | 42\.1 | neueste | batch.node.opensuse 42.1 |
+| SUSE | SLES-HPC | 12 | neueste | batch.node.opensuse 42.1 |
+| SUSE | SLES | 12-SP1 | neueste | batch.node.opensuse 42.1 |
+| microsoft-ads | standard-data-science-vm | standard-data-science-vm | neueste | batch.node.windows amd64 |
+| microsoft-ads | linux-data-science-vm | linuxdsvm | neueste | batch.node.centos 7 |
 | MicrosoftWindowsServer | Windows Server | 2008-R2-SP1 | neueste | batch.node.windows amd64 |
 | MicrosoftWindowsServer | Windows Server | 2012-Datacenter | neueste | batch.node.windows amd64 |
 | MicrosoftWindowsServer | Windows Server | 2012-R2-Datacenter | neueste | batch.node.windows amd64 |
@@ -234,31 +235,54 @@ Während der Entwicklung oder bei der Fehlerbehebung ist es unter Umständen erf
 Mit dem folgenden Python-Codeausschnitt wird ein Benutzer für jeden Knoten eines Pools erstellt, der für eine Remoteverbindung erforderlich ist. Anschließend werden die SSH-Verbindungsinformationen (Secure Shell) für die einzelnen Knoten ausgegeben.
 
 ```python
+import datetime
 import getpass
+import azure.batch.batch_service_client as batch
+import azure.batch.batch_auth as batchauth
+import azure.batch.models as batchmodels
+
+# Specify your own account credentials
+batch_account_name = ''
+batch_account_key = ''
+batch_account_url = ''
+
+# Specify the ID of an existing pool containing Linux nodes
+# currently in the 'idle' state
+pool_id = ''
 
 # Specify the username and prompt for a password
-username = "linuxuser"
+username = 'linuxuser'
 password = getpass.getpass()
 
-# Create the user that will be added to each node
-# in the pool
+# Create a BatchClient
+credentials = batchauth.SharedKeyCredentials(
+    batch_account_name,
+    batch_account_key
+)
+batch_client = batch.BatchServiceClient(
+        credentials,
+        base_url=batch_account_url
+)
+
+# Create the user that will be added to each node in the pool
 user = batchmodels.ComputeNodeUser(username)
 user.password = password
 user.is_admin = True
-user.expiry_time = (datetime.datetime.today() + datetime.timedelta(days=30)).isoformat()
+user.expiry_time = \
+    (datetime.datetime.today() + datetime.timedelta(days=30)).isoformat()
 
 # Get the list of nodes in the pool
-nodes = client.compute_node.list(pool_id)
+nodes = batch_client.compute_node.list(pool_id)
 
 # Add the user to each node in the pool and print
 # the connection information for the node
 for node in nodes:
     # Add the user to the node
-    client.compute_node.add_user(pool_id, node.id, user)
+    batch_client.compute_node.add_user(pool_id, node.id, user)
 
     # Obtain SSH login information for the node
-    login = client.compute_node.get_remote_login_settings(pool_id,
-                                                          node.id)
+    login = batch_client.compute_node.get_remote_login_settings(pool_id,
+                                                                node.id)
 
     # Print the connection info for the node
     print("{0} | {1} | {2} | {3}".format(node.id,
@@ -295,7 +319,7 @@ In den anderen [Python-Codebeispielen][github_samples_py] im Repository [azure-b
 
 ### Batch-Forum
 
-Das [Azure Batch-Forum][forum] auf der MSDN-Website eignet sich hervorragend, um Informationen zu Batch zu erhalten und Fragen zu diesem Dienst zu stellen. Lesen Sie die hilfreichen Beiträge, und posten Sie selber Fragen, die während der Erstellung Ihrer Batch-Lösungen auftreten.
+Das [Azure Batch-Forum][forum] auf MSDN eignet sich hervorragend, um Informationen zu Batch zu erhalten und Fragen zu diesem Dienst zu stellen. Lesen Sie die hilfreichen Beiträge, und posten Sie selber Fragen, die während der Erstellung Ihrer Batch-Lösungen auftreten.
 
 [api_net]: http://msdn.microsoft.com/library/azure/mt348682.aspx
 [api_net_mgmt]: https://msdn.microsoft.com/library/azure/mt463120.aspx
@@ -327,4 +351,4 @@ Das [Azure Batch-Forum][forum] auf der MSDN-Website eignet sich hervorragend, um
 
 [1]: ./media/batch-application-packages/app_pkg_01.png "Übersichtsdiagramm für Anwendungspakete"
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0831_2016-->

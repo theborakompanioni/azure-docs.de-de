@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
    ms.workload="NA"
-	ms.date="07/14/2016"
+	ms.date="08/29/2016"
 	ms.author="sstein" />
 
 # Übersicht: Aktive Georeplikation in Azure SQL-Datenbank
@@ -39,6 +39,9 @@ Das Failover auf eine sekundäre Datenbank können Sie auf folgende Weise ausfü
 - [Failover: im Azure-Portal](sql-database-geo-replication-failover-portal.md)
 - [Failover: mit PowerShell](sql-database-geo-replication-failover-powershell.md)
 - [Failover: mit T-SQL](sql-database-geo-replication-failover-transact-sql.md)
+
+Stellen Sie nach dem Failover sicher, dass die Authentifizierungsanforderungen für Ihren Server und Ihre Datenbank auf der neuen primären konfiguriert sind. Weitere Informationen finden Sie unter [Verwalten der Sicherheit der Azure SQL-Datenbank nach der Notfallwiederherstellung](sql-database-geo-replication-security-config.md).
+
 
 Das Feature „Aktive Georeplikation“ implementiert einen Mechanismus zum Bereitstellen von Datenbankredundanz innerhalb derselben Microsoft Azure-Region bzw. verschiedenen Regionen (Georedundanz). Bei aktiver Georeplikation werden Transaktionen mit ausgeführtem Commit aus einer Datenbank asynchron in bis zu vier Kopien der Datenbank auf verschiedene Server repliziert. Hierfür wird die Read Commited-Momentaufnahmeisolation (Read Committed Snapshot Isolation, RCSI) verwendet. Wenn die aktive Georeplikation konfiguriert ist, wird auf dem angegebenen Server eine sekundäre Datenbank erstellt. Die ursprüngliche Datenbank wird zur primären Datenbank. Die primäre Datenbank repliziert Transaktionen mit ausgeführtem Commit asynchron in alle sekundären Datenbanken. Wenngleich die sekundäre Datenbank stets ein wenig hinter der primären Datenbank zurückliegt, wird garantiert, dass die sekundären Daten im Hinblick auf Transaktionen stets konsistent mit Änderungen sind, für die in der primären Datenbank ein Commit erfolgt ist.
 
@@ -132,5 +135,6 @@ Wie bereits zuvor erwähnt, kann die aktive Georeplikation nicht nur über das A
 - Informationen über automatisierte Sicherungen von Azure SQL-Datenbanken finden Sie unter [Übersicht: Automatisierte SQL-Datenbanksicherungen](sql-database-automated-backups.md).
 - Informationen zum Verwenden automatisierter Sicherungen für die Wiederherstellung finden Sie unter [Wiederherstellen einer Datenbank aus vom Dienst initiierten Sicherungen](sql-database-recovery-using-backups.md).
 - Informationen zum Verwenden automatisierter Sicherungen für die Archivierung finden Sie unter [Datenbankkopie](sql-database-copy.md).
+- Weitere Informationen zu Authentifizierungsanforderungen für einen neuen primären Server und die Datenbank finden Sie unter [Verwalten der Sicherheit der Azure SQL-Datenbank nach der Notfallwiederherstellung](sql-database-geo-replication-security-config.md).
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->

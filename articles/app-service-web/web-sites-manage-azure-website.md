@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/27/2016" 
+	ms.date="08/24/2016" 
 	ms.author="rachelap"/>
 
 # Verwalten einer Web-App in Azure App Service
@@ -97,4 +97,4 @@ Wenn Sie Visual Studio Team Services verwenden, können Sie die fortlaufende Ber
 
   
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0831_2016-->

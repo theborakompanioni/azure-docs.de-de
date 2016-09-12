@@ -13,13 +13,13 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="07/11/2016"
+   ms.date="08/25/2016"
    ms.author="ryanwi"/>
 
 # Allgemeine Ausnahmen und Fehler bei der Arbeit mit FabricClient-APIs
 Mit [FabricClient](https://msdn.microsoft.com/library/system.fabric.fabricclient.aspx)-APIs können Cluster- und Anwendungsadministratoren administrative Aufgaben für eine Service Fabric-Anwendung, einen Dienst oder Cluster ausführen. Dazu zählen z. B. Anwendungsbereitstellung, Upgrade und Entfernung, Überprüfung der Integrität eines Clusters oder Testen eines Diensts. Anwendungsentwickler und Clusteradministratoren können die FabricClient-APIs verwenden, um Tools zum Verwalten der Service Fabric-Cluster und -Anwendungen zu entwickeln.
 
-Viele verschiedene Vorgänge können mit FabricClient ausgeführt werden. Jede Methode kann Ausnahmen für Fehler aufgrund von falschen Eingaben, Laufzeitfehlern oder vorübergehenden Infrastrukturproblemen auslösen. Bitte entnehmen Sie der API-Referenzdokumentation, welche Ausnahmen von bestimmten Methoden ausgelöst werden. Einige Ausnahmen können jedoch von verschiedenen [FabricClient](https://msdn.microsoft.com/library/system.fabric.fabricclient.aspx)-APIs ausgelöst werden. Die folgende Tabelle enthält die Ausnahmen, die alle FabricClient-APIs gemeinsam haben.
+Viele verschiedene Vorgänge können mit FabricClient ausgeführt werden. Jede Methode kann Ausnahmen für Fehler aufgrund von falschen Eingaben, Laufzeitfehlern oder vorübergehenden Infrastrukturproblemen auslösen. Bitte entnehmen Sie der API-Referenzdokumentation, welche Ausnahmen von bestimmten Methoden ausgelöst werden. Einige Ausnahmen können jedoch von verschiedenen [FabricClient](https://msdn.microsoft.com/library/system.fabric.fabricclient.aspx)-APIs ausgelöst werden. Die folgende Tabelle enthält die Ausnahmen, die für alle FabricClient-APIs gelten.
 
 |Ausnahme| Grund für Auslösung|
 |---------|:-----------|
@@ -31,7 +31,7 @@ Viele verschiedene Vorgänge können mit FabricClient ausgeführt werden. Jede M
 
 Einige häufige [FabricErrorCode](https://msdn.microsoft.com/library/system.fabric.fabricerrorcode.aspx)-Fehler, die in einer [FabricException](https://msdn.microsoft.com/library/system.fabric.fabricexception.aspx) zurückgegeben werden können:
 
-|Fehler| Bedingung|
+|Error| Bedingung|
 |---------|:-----------|
 |CommunicationError|Ein Kommunikationsfehler verursachte das Fehlschlagen des Vorgangs – wiederholen Sie den Vorgang.|
 |InvalidCredentialType|Der Anmeldeinformationstyp ist ungültig.|
@@ -44,4 +44,4 @@ Einige häufige [FabricErrorCode](https://msdn.microsoft.com/library/system.fabr
 |InvalidSubjectName|Der Antragstellername ist ungültig.|
 |InvalidAllowedCommonNameList|Das Format der Zeichenfolge der Liste allgemeiner Namen ist ungültig. Es sollte eine durch Trennzeichen getrennte Liste sein.|
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0831_2016-->

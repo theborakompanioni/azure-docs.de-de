@@ -22,11 +22,11 @@ In diesem Artikel wird beschrieben, wie Sie eine Azure Resource Manager-Vorlage 
 
 Weitere Informationen zum Erstellen von Vorlagen finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen][].
 
-Die vollständige Vorlage finden Sie unter [Service Bus auth rule template][] (Service Bus-Autorisierungsregelvorlage) auf GitHub.
+Die vollständige Vorlage finden Sie unter [Service Bus auth rule template][] \(Service Bus-Autorisierungsregelvorlage) auf GitHub.
 
 >[AZURE.NOTE] Die folgenden Azure Resource Manager-Vorlagen sind zum Download und zur Bereitstellung verfügbar.
 >
->-    [Erstellen eines Service Bus-Namespace mit Event Hub und einer Consumergruppe mithilfe einer Azure Resource Manager-Vorlage](service-bus-resource-manager-namespace-event-hub.md)
+>-    [Create an Event Hubs namespace with an Event Hub and consumer group (Erstellen eines Event Hubs-Namespace mit einem Event Hub und einer Consumergruppe)](../event-hubs/event-hubs-resource-manager-namespace-event-hub.md)
 >-    [Create a Service Bus namespace and a queue using an Azure Resource Manager template (Erstellen eines Service Bus-Namespace und einer Warteschlange mit einer Azure Resource Manager-Vorlage)](service-bus-resource-manager-namespace-queue.md)
 >-    [Create a Service Bus namespace with topic and subscription using an Azure Resource Manager template (Erstellen eines Service Bus-Namespace mit Thema und Abonnement mit einer Azure Resource Manager-Vorlage)](service-bus-resource-manager-namespace-topic.md)
 >-    [Erstellen eines Service Bus-Namespaces](service-bus-resource-manager-namespace.md)
@@ -177,4 +177,4 @@ Da Sie nun Ressourcen mit Azure Resource Manager erstellt und bereitgestellt hab
   [Using the Azure CLI for Mac, Linux, and Windows with Azure Resource Management]: ../xplat-cli-azure-resource-manager.md
   [Service Bus auth rule template]: https://github.com/Azure/azure-quickstart-templates/blob/master/301-servicebus-create-authrule-namespace-and-queue/
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0831_2016-->

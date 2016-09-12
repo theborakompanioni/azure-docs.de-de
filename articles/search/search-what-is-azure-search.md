@@ -11,7 +11,7 @@
 	ms.workload="search"
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
-	ms.date="05/31/2016"
+	ms.date="08/29/2016"
 	ms.author="ashmaka"/>
 
 # Was ist Azure Search?
@@ -83,4 +83,4 @@ Testen Sie Azure Search noch heute! Wenn Sie bereits über ein Azure-Konto verf�
 
 Falls Sie noch kein Azure-Konto besitzen, können Sie ganz ohne Registrierung eine kostenlose, 60-minütige Sitzung ausprobieren. Wählen Sie unter [Azure App Service testen](http://go.microsoft.com/fwlink/p/?LinkId=618214) die Option „Web-App“ aus. Wählen Sie anschließend die Vorlage „ASP.NET + Azure Search Site“ aus.
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0831_2016-->

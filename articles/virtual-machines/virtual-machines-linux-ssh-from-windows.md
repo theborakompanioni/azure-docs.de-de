@@ -14,7 +14,7 @@ description="Erfahren Sie, wie Sie SSH-Schlüssel auf einem Windows-Computer ers
 	ms.tgt_pltfrm="vm-linux" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/15/2016" 
+	ms.date="08/29/2016" 
 	ms.author="rasquill"/>
 
 #Verwenden von SSH mit Windows in Azure
@@ -161,11 +161,11 @@ Die einfachste Lösung ist, die Umgebungsvariable `OPENSSL_CONF` festzulegen. De
 
 	![linuxputtyconfig](./media/virtual-machines-linux-ssh-from-windows/linuxputtyconfig.png)
 
-4.	Klicken Sie auf der Registerkarte "Verbindung" auf "SSH > Auth", um Ihren Schlüssel zu wählen, und anschließend auf **Öffnen**. Das auszufüllende Feld finden Sie auf dem Screenshot unten:
+4.	Klicken Sie auf der Registerkarte „Verbindung“ auf „SSH > Auth“, um Ihren privaten Schlüssel zu wählen, und anschließend auf **Öffnen**. Das auszufüllende Feld finden Sie auf dem Screenshot unten:
 
 	![linuxputtyprivatekey](./media/virtual-machines-linux-ssh-from-windows/linuxputtyprivatekey.png)
 
 5.	Klicken Sie auf **Öffnen**, um die Verbindung mit Ihrem virtuellen Computer herzustellen.
  
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->

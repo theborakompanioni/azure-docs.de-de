@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="06/08/2016"
+   ms.date="08/24/2016"
    ms.author="magoedte;bwren" />
 
 # Runbookausgabe und -meldungen in Azure Automation
@@ -21,7 +21,7 @@ Die meisten Azure Automation-Runbooks haben eine Ausgabe, z. B. eine Fehlermeld
 
 Die folgende Tabelle enthält eine kurze Beschreibung der einzelnen Datenströme und erläutert ihr Verhalten im Azure-Verwaltungsportal beim Ausführen veröffentlichter Runbooks und [Testen von Runbooks](automation-testing-runbook.md). Ausführlichere Informationen zu den verschiedenen Datenströmen finden Sie in den nachfolgenden Abschnitten.
 
-| Stream | Beschreibung | Veröffentlicht | Test|
+| Datenstrom | Beschreibung | Veröffentlicht | Test|
 |:---|:---|:---|:---|
 |Ausgabe|Objekte, die von anderen Runbooks genutzt werden.|Wird in den Auftragsverlauf geschrieben.|Wird im Testausgabebereich angezeigt.|
 |Warnung|Für den Benutzer vorgesehene Warnmeldung.|Wird in den Auftragsverlauf geschrieben.|Wird im Testausgabebereich angezeigt.|
@@ -48,30 +48,43 @@ Sehen Sie sich folgendes Beispielrunbook an:
 
 	Workflow Test-Runbook
 	{
-	   Write-Verbose "Verbose outside of function"
-	   Write-Output "Output outside of function"
-	   $functionOutput = Test-Function
+        Write-Verbose "Verbose outside of function" -Verbose
+        Write-Output "Output outside of function"
+        $functionOutput = Test-Function
+        $functionOutput
 
-	   Function Test-Function
-	   {
-	      Write-Verbose "Verbose inside of function"
-	      Write-Output "Output inside of function"
-	   }
-	}
+    Function Test-Function
+     {
+        Write-Verbose "Verbose inside of function" -Verbose
+        Write-Output "Output inside of function"
+      }
+    }
+
 
 Der Ausgabedatenstrom für den Runbookauftrag würde wie folgt aussehen:
 
-	Output outside of function
+	Output inside of function
+    Output outside of function
 
 Der ausführliche Datenstrom für den Runbookauftrag würde wie folgt aussehen:
 
 	Verbose outside of function
 	Verbose inside of function
 
+Nach dem Veröffentlichen und vor dem Starten des Runbooks müssen Sie die ausführliche Protokollierung in den Runbookeinstellungen aktivieren, um die ausführliche Datenstromausgabe abzurufen.
+
 ### Deklarieren des Ausgabedatentyps
 
 Ein Workflow kann den Datentyp seiner Ausgabe mit dem [OutputType-Attribut](http://technet.microsoft.com/library/hh847785.aspx) angeben. Dieses Attribut hat zur Laufzeit keinerlei Auswirkung, gibt dem Runbookautor zur Entwurfszeit aber Auskunft über die erwartete Ausgabe des Runbooks. Mit der Weiterentwicklung des Toolsets für Runbooks wird die Deklaration der Ausgabedatentypen zur Entwurfszeit zunehmend an Bedeutung gewinnen. Daher empfiehlt es sich, diese Deklaration in alle von Ihnen erstellten Runbooks einzuschließen.
 
+Hier sehen Sie einige Beispiele für Ausgabetypen:
+
+-	System.String
+-	System. Int32
+-	System.Collections.Hashtable
+-	Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine
+
+  
 Das folgende Beispielrunbook gibt ein Zeichenfolgenobjekt aus und enthält eine Deklaration des Ausgabetyps. Wenn Ihr Runbook ein Array eines bestimmten Typs ausgibt, sollten Sie trotzdem den Typ angeben und kein Array des Typs.
 
 	Workflow Test-Runbook
@@ -81,6 +94,25 @@ Das folgende Beispielrunbook gibt ein Zeichenfolgenobjekt aus und enthält eine 
 	   $output = "This is some string output."
 	   Write-Output $output
 	}
+
+Um einen Ausgabetyp in grafischen oder grafischen PowerShell-Workflow-Runbooks zu deklarieren, wählen Sie die Menüoption **Ein- und Ausgabe** und geben Sie den Namen des Ausgabetyps ein. Verwenden Sie zur einfachen Identifizierung bei Verweisen von einem übergeordneten Runbook den vollständigen .NET-Klassennamen. So sind alle Eigenschaften dieser Klasse im Datenbus im Runbook verfügbar und Sie erhalten ein hohes Maß an Flexibilität, wenn Sie diese für bedingte Logik, Protokollierung und Verweise als Werte für andere Aktivitäten im Runbook verwenden.<br> ![Option für Runbookeingabe und -ausgabe](media/automation-runbook-output-and-messages/runbook-menu-input-and-output-option.png)
+
+Im folgenden Beispiel demonstrieren zwei grafische Runbooks diese Funktion. Beim Anwenden des modularen Runbook-Entwurfsmodells fungiert ein Runbook als die *Authentifizierungs-Runbook-Vorlage* zur Verwaltung der Authentifizierung mit Azure unter Verwendung des ausführenden Kontos. Unser zweites Runbook, das in der Regel die grundlegende Logik zum Automatisieren eines bestimmten Szenarios ausführen würde, führt in diesem Fall die *Authentifizierungs-Runbook-Vorlage* aus und zeigt die Ergebnisse in Ihrem **Test**-Ausgabebereich an. Unter normalen Umständen würde dieses Runbook etwas gegen eine Ressource ausführen, die die Ausgabe des untergeordneten Runbooks nutzt.
+
+Hier sehen Sie die grundlegende Logik des **AuthenticateTo Azure**-Runbooks.<br> ![Beispiel für Authentifizierung einer Runbook-Vorlage](media/automation-runbook-output-and-messages/runbook-authentication-template.png).
+
+Es enthält den Ausgabetyp *Microsoft.Azure.Commands.Profile.Models.PSAzureContext*, der die Eigenschaften des Authentifizierungsprofils zurückgibt.<br> ![Beispiel für Runbook-Ausgabetyp](media/automation-runbook-output-and-messages/runbook-input-and-output-add-blade.png)
+
+Bei diesem sehr unkomplizierten Runbook muss ein Konfigurationselement aufgerufen werden. Die letzte Aktivität führt das **Write-Output**-Cmdlet aus und schreibt die Profildaten auf eine $\_-Variable mit einem PowerShell-Ausdruck für den **Inputobject** -Parameter, der für das Cmdlet erforderlich ist.
+
+Das zweite Runbook in diesem Beispiel mit dem Namen *Test-ChildOutputType* verfügt einfach über zwei Aktivitäten.<br> ![Beispiel für Runbook vom Typ „untergeordnete Ausgabe“](media/automation-runbook-output-and-messages/runbook-display-authentication-results-example.png)
+
+Die erste Aktivität ruft das **AuthenticateTo-Azure**-Runbook auf und die zweite Aktivität führt das **Write-Verbose**-Cmdlet mit der **Datenquelle** von **Aktivitätsausgabe** aus, und der Wert für **Feldpfad** lautet **Context.Subscription.SubscriptionName**, was die Kontextausgabe des **AuthenticateTo-Azure**-Runbooks festlegt.<br> ![Write-Verbose-Cmdlet-Parameter-Datenquelle](media/automation-runbook-output-and-messages/runbook-write-verbose-parameters-config.png)
+
+Die entstandene Ausgabe ist der Name des Abonnements.<br> ![Test-ChildOutputType- Runbookergebnisse](media/automation-runbook-output-and-messages/runbook-test-childoutputtype-results.png)
+
+Ein Hinweis über das Verhalten des Steuerelements „Ausgabetyp“: Wenn Sie einen Wert im Feld „Ausgabetyp“ im Blatt mit den Eigenschaften für Eingabe und Ausgabe eingeben, müssen Sie nach dem Eingeben außerhalb des Steuerelements klicken, damit die Eingabe vom Steuerelement erkannt werden kann.
+
 
 ## Nachrichtendatenströme
 
@@ -190,7 +222,7 @@ Sie können im oben angezeigten Screenshot sehen, dass bei aktivierter ausführl
 
 ## Nächste Schritte
 
-- Weitere Informationen zum Ausführen von Runbooks, zum Überwachen von Runbookaufträgen sowie weitere technische Details finden Sie unter [Verfolgen eines Runbookauftrags](automation-runbook-execution.md).
+- Weitere Informationen zum Ausführen von Runbooks, zum Überwachen von Runbookaufträgen sowie andere technische Details finden Sie unter [Verfolgen eines Runbookauftrags](automation-runbook-execution.md).
 - Informationen zum Entwerfen und Verwenden von untergeordneten Runbooks finden Sie unter [Untergeordnete Runbooks in Azure Automation](automation-child-runbooks.md).
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0831_2016-->

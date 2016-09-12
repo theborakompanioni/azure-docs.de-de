@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/02/2016"
+	ms.date="08/30/2016"
 	ms.author="rachelap"/>
 
 # Metadaten in App Service-API-Apps für die API-Ermittlung und Codegenerierung 
@@ -60,4 +60,4 @@ Ein Schritt-für-Schritt-Tutorial mit Anleitungen zum Erstellen, Bereitstellen u
 
 Wenn Sie Azure API Management mit API-Apps verwenden, können Sie Ihre API mithilfe von Swagger-Metadaten in API Management importieren. Weitere Informationen finden Sie unter [Importieren einer API-Definition mit Operationen in Azure API Management](../api-management/api-management-howto-import-api.md).
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0831_2016-->

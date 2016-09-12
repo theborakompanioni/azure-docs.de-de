@@ -15,13 +15,15 @@
     ms.tgt_pltfrm="vm-linux"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="04/29/2016"
+    ms.date="08/30/2016"
     ms.author="v-livech"
 />
 
 # Verwalten von Benutzern, SSH und Überprüfen oder Reparieren von Datenträgern auf Azure-Linux-VMs mit der VMAccess-Erweiterung
 
-Dieser Artikel veranschaulicht die Verwendung der VMAcesss-VM-Erweiterung [(Github)](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess), um einen Datenträger zu überprüfen oder zu reparieren, den Benutzerzugriff zurückzusetzen, Benutzerkonten zu verwalten oder die SSHD-Konfiguration unter Linux zurückzusetzen. Dieser Artikel erfordert [ein Azure-Konto](https://azure.microsoft.com/pricing/free-trial/), [SSH-Schlüssel](virtual-machines-linux-mac-create-ssh-keys.md), eine Azure-Linux-VM, und dass die Azure-Befehlszeilenschnittstelle installiert ist und mithilfe von `azure config mode arm` in den ARM-Modus umgeschaltet wurde.
+Dieser Artikel veranschaulicht die Verwendung der Azure-VMAcesss-Erweiterung zum Überprüfen oder Reparieren eines Datenträgers, Zurücksetzen des Benutzerzugriffs, Verwalten von Benutzerkonten oder Zurücksetzen der SSHD-Konfiguration unter Linux.
+
+Voraussetzungen: [Ein Azure-Konto](https://azure.microsoft.com/pricing/free-trial/), [öffentliche und private SSH-Schlüssel](virtual-machines-linux-mac-create-ssh-keys.md) und die mit `azure config mode arm` installierte und in den Resource Manager-Modus geschaltete Azure-Befehlszeilenschnittstelle.
 
 ## Schnellbefehle
 
@@ -30,14 +32,31 @@ Es gibt zwei Möglichkeiten, VMAccess auf Ihren virtuellen Linux-Computern zu ve
 - Verwenden der Azure-Befehlszeilenschnittstelle und der erforderlichen Parameter.
 - Verwenden von JSON-Rohdatendateien, die VMAccess verarbeitet und dann darauf reagiert.
 
-Für den Schnellbefehlsabschnitt verwenden wir die `azure vm reset-access`-Methode mit der Azure-Befehlszeilenschnittstelle. Ersetzen Sie in den folgenden Befehlsbeispielen die Werte zwischen &lt; und &gt; durch die Werte aus Ihrer eigenen Umgebung.
+Für den Schnellbefehlsabschnitt verwenden wir die `azure vm reset-access`-Methode mit der Azure-Befehlszeilenschnittstelle. Ersetzen Sie in den folgenden Befehlsbeispielen die Werte, die „example“ enthalten, durch die Werte aus Ihrer eigenen Umgebung.
+
+## Erstellen einer Ressourcengruppe und Linux-VM
+
+```bash
+azure group create resourcegroupexample westus
+```
+
+```bash
+azure vm quick-create \
+-M ~/.ssh/id_rsa.pub \
+-u userexample \
+-g resourcegroupexample \
+-l westus \
+-y Linux \
+-n debianexamplevm \
+-Q Debian
+```
 
 ## Zurücksetzen des Stammkennworts
 
 So setzen Sie das Stammkennwort zurück:
 
 ```bash
-azure vm reset-access -g <resource group> -n <vm name> -u root -p <examplePassword>
+azure vm reset-access -g exampleResourceGroup -n exampleVMName -u root -p examplenewPassword
 ```
 
 ## SSH-Schlüsselrücksetzung
@@ -45,21 +64,21 @@ azure vm reset-access -g <resource group> -n <vm name> -u root -p <examplePasswo
 So setzen Sie den SSH-Schlüssel eines Nichtstammbenutzers zurück:
 
 ```bash
-azure vm reset-access -g <resource group> -n <vm name> -u <exampleUser> -M <~/.ssh/azure_id_rsa.pub>
+azure vm reset-access -g exampleResourceGroup -n exampleVMName -u userexample -M ~/.ssh/id_rsa.pub
 ```
 
 ## Erstellen eines Benutzers
 
-So erstellen Sie einen neuen Benutzer:
+So erstellen Sie einen Benutzer:
 
 ```bash
-azure vm reset-access -g <resource group> -n <vm name> -u <exampleNewUserName> -p <examplePassword>
+azure vm reset-access -g exampleResourceGroup -n exampleVMName -u userexample -p examplePassword
 ```
 
-## Entfernen eines Benutzers
+## Benutzer entfernen
 
 ```bash
-azure vm reset-access -g <resource group> -n <vm name> -R <exampleNewUserName>
+azure vm reset-access -g exampleResourceGroup -n exampleVMName -R userexample
 ```
 
 ## Zurücksetzen von SSHD
@@ -67,7 +86,7 @@ azure vm reset-access -g <resource group> -n <vm name> -R <exampleNewUserName>
 So setzen Sie die SSHD-Konfiguration zurück:
 
 ```bash
-azure vm reset-access -g <resource group> -n <vm name> -r
+azure vm reset-access -g exampleResourceGroup -n exampleVMName -r
 ```
 
 
@@ -75,15 +94,15 @@ azure vm reset-access -g <resource group> -n <vm name> -r
 
 ### VMAccess-definiert:
 
-Der Datenträger auf Ihrer Linux-VM zeigt Fehler an. Aus irgendeinem Grund haben Sie das Stammkennwort für Ihre Linux-VM zurückgesetzt oder Ihren privaten SSH-Schlüssel versehentlich gelöscht. Wenn so etwas in dunkler Vorzeit im Rechenzentrum geschah, mussten Sie dorthin fahren, Ihren Handabdruck scannen lassen, um die Tür zu entriegeln, in den Käfig gelangen und den KVM-Switch knacken, um an die Serverkonsole zu gelangen. Stellen Sie sich die Azure-VMAccess-Erweiterung als diesen KVM-Switch vor, mit dem Sie Zugriff auf die Konsole haben, um den Zugriff auf Linux zurückzusetzen oder Wartung auf Datenträgerebene durchzuführen.
+Der Datenträger auf Ihrer Linux-VM zeigt Fehler an. Aus irgendeinem Grund haben Sie das Stammkennwort für Ihre Linux-VM zurückgesetzt oder Ihren privaten SSH-Schlüssel versehentlich gelöscht. Wenn dies früher zu Rechenzentrumszeiten geschah, mussten Sie dorthin fahren und den KVM öffnen, um an die Serverkonsole zu gelangen. Stellen Sie sich die Azure-VMAccess-Erweiterung als diesen KVM-Switch vor, mit dem Sie Zugriff auf die Konsole haben, um den Zugriff auf Linux zurückzusetzen oder Wartung auf Datenträgerebene durchzuführen.
 
-Für die ausführliche exemplarische Vorgehensweise verwenden wir die Langform von VMAccess, die unformatierte JSON-Rohdateien verwendet. Diese VMAccess-JSON-Dateien können auch aus Azure-Vorlagen heraus aufgerufen werden.
+Für die ausführliche exemplarische Vorgehensweise verwenden wir die Langform von VMAccess, die unformatierte JSON-Dateien verwendet. Diese VMAccess-JSON-Dateien können auch aus Azure-Vorlagen heraus aufgerufen werden.
 
 ### Verwenden von VMAccess zum Überprüfen oder Reparieren des Datenträgers einer Linux-VM
 
-Mit VMAccess können Sie eine FSCK-Prüfung auf dem Datenträger Ihrer Linux-VM ausführen. Sie können den Datenträger überprüfen und reparieren, wenn Sie Fehler finden.
+Mit VMAccess können Sie eine FSCK-Prüfung auf dem Datenträger Ihrer Linux-VM ausführen. Sie können auch eine Überprüfung des Datenträgers und eine Reparatur mithilfe von VMAccess durchführen.
 
-Um den Datenträger zu überprüfen und zu reparieren, verwenden Sie dieses VMAccess-Skript:
+So überprüfen und reparieren Sie den Datenträger mit diesem VMAccess-Skript:
 
 `disk_check_repair.json`
 
@@ -148,7 +167,7 @@ VMAccessForLinux Microsoft.OSTCExtensions * \
 
 VMAccess ist ein Python-Skript, mit dem Sie Benutzer auf Ihrer Linux-VM ohne Anmeldung und Verwendung von Sudo- oder Stammkonto verwalten können.
 
-Verwenden Sie zum Erstellen eines neuen Benutzers dieses VMAccess-Skript:
+Verwenden Sie zum Erstellen eines Benutzers dieses VMAccess-Skript:
 
 `create_new_user.json`
 
@@ -168,7 +187,7 @@ VMAccessForLinux Microsoft.OSTCExtensions * \
 --private-config-path create_new_user.json
 ```
 
-Verwenden Sie zum Erstellen eines neuen Benutzers dieses VMAccess-Skript:
+So erstellen Sie einen Benutzer:
 
 `remove_user.json`
 
@@ -186,9 +205,9 @@ VMAccessForLinux Microsoft.OSTCExtensions * \
 --private-config-path remove_user.json
 ```
 
-### Verwenden von VMAccess beim Zurücksetzen der SSHD-Konfiguration unter Linux
+### Verwenden von VMAccess beim Zurücksetzen der SSHD-Konfiguration
 
-Wenn Sie Änderungen an der SSHD-Konfiguration der Linux-VMs vornehmen und die SSH-Verbindung vor dem Überprüfen der Änderungen schließen, können Sie vielleicht keine SSH-Verbindung mehr herstellen. Mit VMAccess kann die SSHD-Konfiguration auf einen als funktionierend bekannten Zustand zurückgesetzt werden.
+Wenn Sie Änderungen an der SSHD-Konfiguration der Linux-VMs vornehmen und die SSH-Verbindung vor dem Überprüfen der Änderungen schließen, können Sie vielleicht keine SSH-Verbindung mehr herstellen. Mit VMAccess kann die SSHD-Konfiguration ohne Anmeldung über SSH auf einen als funktionierend bekannten Zustand zurückgesetzt werden.
 
 Verwenden Sie zum Zurücksetzen der SSHD-Konfiguration dieses VMAccess-Skript:
 
@@ -208,4 +227,14 @@ VMAccessForLinux Microsoft.OSTCExtensions * \
 --private-config-path reset_sshd.json
 ```
 
-<!---HONumber=AcomDC_0803_2016-->
+## Nächste Schritte
+
+Die Aktualisierung von Linux mit Azure-VMAccess-Erweiterungen ist eine Methode, Änderungen an einer ausgeführten Linux-VM vorzunehmen. Sie können auch Tools wie Cloud-Init und Azure-Vorlagen zum Ändern Ihrer Linux-VM beim Start verwenden.
+
+[Informationen zu Erweiterungen und Features für virtuelle Computer](virtual-machines-linux-extensions-features.md)
+
+[Erstellen von Azure Resource Manager-Vorlagen mit Linux-VM-Erweiterungen](virtual-machines-linux-extensions-authoring-templates.md)
+
+[Verwenden von Cloud-Init zum Anpassen einer Linux-VM während der Erstellung](virtual-machines-linux-using-cloud-init.md)
+
+<!---HONumber=AcomDC_0831_2016-->

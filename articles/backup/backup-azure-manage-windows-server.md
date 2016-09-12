@@ -279,11 +279,15 @@ A2. Eine Warnung wird innerhalb von fünf Minuten nach dem Azure Backup-Fehler a
 
 **F3. Kann es vorkommen, dass eine E-Mail nicht gesendet wird, wenn Benachrichtigungen konfiguriert sind?**
 
-A3. Wenn stündliche Benachrichtigungen konfiguriert wurden und eine Warnung ausgelöst und innerhalb dieser Stunde gelöst wird, wird keine E-Mail gesendet.
+A3. Nachfolgend sind Fälle aufgeführt, in denen die Benachrichtigung nicht gesendet wird, um das Warnungsaufkommen zu verringern:
+
+   - Stündliche Benachrichtigungen wurden konfiguriert, und eine Warnung wird ausgelöst und innerhalb dieser Stunde gelöst.
+   - Der Auftrag wird abgebrochen.
+   - Bei der zweiten Sicherung tritt ein Fehler auf, da der ursprüngliche Sicherungsauftrag ausgeführt wird.
 
 ## Nächste Schritte
 - [Wiederherstellen von Windows-Servern oder Windows-Clients aus Azure](backup-azure-restore-windows-server.md)
 - Weitere Informationen zu Azure Backup finden Sie unter [Azure Backup – Übersicht](backup-introduction-to-azure-backup.md).
 - Besuchen Sie das [Azure Backup-Forum](http://go.microsoft.com/fwlink/p/?LinkId=290933).
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0831_2016-->

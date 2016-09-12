@@ -72,7 +72,7 @@ Azure Application Gateway überprüft die Integrität der Back-End-Instanzen aut
 
 ## Konfigurieren und Verwalten
 
-Sie können ein Application Gateway mithilfe von REST-APIs und PowerShell-Cmdlets erstellen und verwalten.
+Sie können ein Anwendungsgateway mit REST-APIs, PowerShell-Cmdlets oder mit dem [Azure-Portal](https://portal.azure.com/) erstellen und verwalten.
 
 
 ## Nächste Schritte
@@ -81,4 +81,4 @@ Nachdem Sie sich mit Anwendungsgateways vertraut gemacht haben, können Sie [ein
 
 Weitere Informationen zum Erstellen eines Anwendungsgateways mit URL-basiertem Inhaltsrouting finden Sie unter [Erstellen eines Anwendungsgateways mit URL-basiertem Routing](application-gateway-create-url-route-arm-ps.md).
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0831_2016-->

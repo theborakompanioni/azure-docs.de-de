@@ -13,16 +13,28 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/17/2016" 
+	ms.date="08/26/2016" 
 	ms.author="spelluru"/>
 
 # Versionshinweise für Datenverwaltungsgateway
+Eine Herausforderung für die moderne Datenintegration ist das nahtlose Verschieben von Daten zwischen lokalen Speicherorten und der Cloud. Dank Data Factory verläuft diese Integration mit dem Datenverwaltungsgateway nahtlos. Es handelt sich um einen Agent, den Sie lokal installieren können, um eine hybride Datenverschiebung zu ermöglichen.
 
-Eine Herausforderung für die moderne Datenintegration ist das nahtlose Verschieben von Daten zwischen lokalen Speicherorten und der Cloud. Dank Data Factory verläuft diese Integration mit dem Datenverwaltungsgateway nahtlos. Es handelt sich um einen Agent, den Sie lokal installieren können, um die Hybriddatenverschiebung zu ermöglichen.
+In den folgenden Artikeln finden Sie ausführliche Informationen zum Datenverwaltungsgateway und zu dessen Verwendung:
 
-Weitere Informationen finden Sie in den Artikeln [Verschieben von Daten zwischen lokalen Quellen und der Cloud mit Azure Data Factory](data-factory-move-data-between-onprem-and-cloud.md) und [Datenverwaltungsgateway](data-factory-data-management-gateway.md).
+- [Gateway zur Datenverwaltung](data-factory-data-management-gateway.md)
+- [Verschieben von Daten zwischen lokalen Quellen und der Cloud mit Azure Data Factory](data-factory-move-data-between-onprem-and-cloud.md)
 
-## AKTUELLE VERSION (2.1.6040.1)
+## Aktuelle Version (2.2.6072.1)
+
+- Unterstützt das Festlegen eines HTTP-Proxys für das Gateway mithilfe des Gatewaykonfigurations-Managers. Wenn der HTTP-Proxy konfiguriert ist, erfolgt der Zugriff auf Azure-Blobs, Azure-Tabellen, Azure Data Lake und DocumentDB über diesen Proxy.
+- Unterstützt die Verarbeitung von Kopfzeilen für TextFormat beim Kopieren von Daten aus und nach Azure-Blobs, Azure Data Lake Store, lokalem Dateisystem und lokalem HDFS.
+- Unterstützt das Kopieren von Daten aus Anfüge- und Seitenblobs zusätzlich zu den bereits unterstützten Blockblobs.
+- Führt den neuen Gatewaystatus **Online (begrenzt)** ein, der darauf hinweist, dass die Hauptfunktion des Gateways funktioniert, nicht jedoch die Unterstützung des interaktiven Betriebs für den Kopier-Assistenten.
+- Erweitert die Stabilität der Gatewayregistrierung mithilfe von Registrierungsschlüsseln.
+
+## Frühere Versionen
+
+## 2\.1.6040.1
 
 - Der DB2-Treiber ist jetzt im Gatewayinstallationspaket enthalten. Sie müssen ihn nicht separat installieren.
 - Der DB2-Treiber unterstützt nun z/OS und DB2 für i (AS/400) sowie die bereits unterstützten Plattformen (Linux, Unix und Windows).
@@ -30,16 +42,14 @@ Weitere Informationen finden Sie in den Artikeln [Verschieben von Daten zwischen
 - Unterstützt das Kopieren von Daten in kalte bzw. heiße Blobspeicher (und umgekehrt) sowie das bereits unterstützte allgemeine Speicherkonto.
 - Ermöglicht die Verbindung mit einer lokalen SQL Server-Instanz über ein Gateway mit Remoteanmeldeberechtigungen.
 
-## Frühere Versionen
-
 ## 2\.0.6013.1
 
 - Sie können die Sprache/Kultur auswählen, die von einem Gateway während der manuellen Installation verwendet werden soll.
-- Wenn das Gateway nicht wie erwartet funktioniert, können Sie Gatewayprotokolle der letzten 7 Tage an Microsoft senden, um die Behebung des Problems zu erleichtern. Wenn das Gateway nicht mit dem Clouddienst verbunden ist, können Sie Gatewayprotokolle speichern und archivieren.
+- Wenn das Gateway nicht wie erwartet funktioniert, können Sie Gatewayprotokolle der letzten sieben Tage an Microsoft senden, um die Behebung des Problems zu erleichtern. Wenn das Gateway nicht mit dem Clouddienst verbunden ist, können Sie Gatewayprotokolle speichern und archivieren.
 - Verbesserte Benutzeroberfläche für Gatewaykonfigurations-Manager:
 	- Der Gatewaystatus ist auf der Registerkarte „Start“ besser sichtbar.
 	- Neu organisierte und vereinfachte Steuerelemente.
-- Sie können Daten aus einem anderen Speicher als einem Azure-Blob über Polybase und ein Stagingblob mithilfe des [in der Vorschauphase befindlichen codelosen Kopiertools](data-factory-copy-data-wizard-tutorial.md) in Azure SQL Data Warehouse kopieren. Unter [Gestaffeltes Kopieren](data-factory-copy-activity-performance.md#staged-copy) finden Sie allgemeine Details zu diesem Feature.
+- Sie können Daten aus einem Speicher mithilfe des [in der Vorschau befindlichen codefreien Kopiertools](data-factory-copy-data-wizard-tutorial.md) kopieren. Unter [Gestaffeltes Kopieren](data-factory-copy-activity-performance.md#staged-copy) finden Sie allgemeine Details zu diesem Feature.
 - Sie können das Datenverwaltungsgateway nutzen, um Daten direkt aus einer lokalen SQL Server-Datenbank in Azure Machine Learning zu erfassen.
 - Leistungsverbesserungen
 	- Verbessern der Leistung beim Anzeigen des Schemas bzw. einer Vorschau im Vergleich zu SQL Server im in der Vorschauphase befindlichen codelosen Kopiertool.
@@ -53,7 +63,7 @@ Weitere Informationen finden Sie in den Artikeln [Verschieben von Daten zwischen
 
 - Die maximale Größe des Gatewayereignisprotokolls wurde von 1 MB auf 40 MB erhöht.
 - Wenn während der automatischen Aktualisierung des Gateways ein Neustart erforderlich ist, wird ein Warnungsdialogfeld angezeigt. Sie können auswählen, ob das Gateway jetzt oder zu einem späteren Zeitpunkt neugestartet werden soll.
-- Wenn bei der automatischen Aktualisierung ein Fehler auftritt, versucht das Gatewayinstallationsprogramm maximal 3-mal, die automatische Aktualisierung zu wiederholen.
+- Wenn bei der automatischen Aktualisierung ein Fehler auftritt, versucht das Gatewayinstallationsprogramm höchstens dreimal, die automatische Aktualisierung zu wiederholen.
 - Leistungsverbesserungen
 	- Verbessern Sie die Leistung beim Laden großer Tabellen von lokalen Servern in Kopierszenarieren ohne Code.
 - Fehlerbehebungen
@@ -165,9 +175,4 @@ Weitere Informationen finden Sie in den Artikeln [Verschieben von Daten zwischen
 
 - Keine Änderungen, die Azure Data Factory-Szenarien betreffen.
 
-## Fragen/Antworten
-
-### Warum versucht der Datenquellen-Manager, eine Verbindung mit dem Gateway herzustellen?
-Dies ist ein Sicherheitsdesign, bei dem Sie nur lokale Datenquellen für den Cloudzugriff in Ihrem Unternehmensnetzwerk konfigurieren können. Ihre Anmeldeinformationen gelangen nicht an Orte außerhalb Ihrer Unternehmensfirewall. Stellen Sie sicher, dass Ihr Computer den Computer erreichen kann, auf dem das Gateway installiert ist.
-
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0831_2016-->

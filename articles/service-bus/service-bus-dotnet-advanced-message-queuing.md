@@ -291,6 +291,15 @@ Received message with JMSMessageID = ID:acbca67f03c346de9b7893026f97ddeb
 exit
 ```
 
+## Nicht unterstützte Funktionen und Einschränkungen
+
+Die folgenden Funktionen der .NET-Servicebus-API werden bei der Verwendung von AMQP aktuell nicht unterstützt:
+
+ * Transaktionen
+ * Senden mithilfe eines Übertragungsziels
+
+Weitere Informationen finden Sie unter [Nicht unterstützte Features, Einschränkungen und Verhaltensunterschiede](service-bus-amqp-dotnet.md#unsupported-features-restrictions-and-behavioral-differences).
+
 ## Zusammenfassung
 
 In diesem Artikel wurde gezeigt, wie Sie mithilfe von AMQP 1.0 und der .NET-API für Service Bus von .NET aus auf die Brokermessagingfunktionen für Service Bus (Warteschlangen und Themen veröffentlichen/abonnieren) zugreifen.
@@ -307,4 +316,4 @@ Nachdem Sie sich einen Überblick über Service Bus und AMQP mit .NET verschafft
  
 [Azure-Portal]: https://portal.azure.com
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->

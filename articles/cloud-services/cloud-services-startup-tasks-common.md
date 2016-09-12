@@ -175,6 +175,10 @@ Fügen Sie folgende Startaufgabe in der Datei [ServiceDefinition.csdef] hinzu.
 
 Fügen Sie diesen Befehl in der Datei **startup.cmd** hinzu:
 
+    @echo off
+    @echo Installing "IPv4 Address and Domain Restrictions" feature 
+    powershell -ExecutionPolicy Unrestricted -command "Install-WindowsFeature Web-IP-Security"
+    @echo Unlocking configuration for "IPv4 Address and Domain Restrictions" feature 
     %windir%\system32\inetsrv\AppCmd.exe unlock config -section:system.webServer/security/ipSecurity
 
 Dadurch wird die Batchdatei **startup.cmd** bei jeder Initialisierung der Webrolle ausgeführt, sodass der erforderliche **ipSecurity**-Abschnitt entsperrt wird.
@@ -487,4 +491,4 @@ Führen Sie das [Erstellen und Bereitstellen](cloud-services-how-to-create-deplo
 [LocalResources]: https://msdn.microsoft.com/library/azure/gg557552.aspx#LocalResources
 [RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0831_2016-->

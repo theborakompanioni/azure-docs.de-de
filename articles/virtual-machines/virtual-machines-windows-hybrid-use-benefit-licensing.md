@@ -18,7 +18,7 @@
 
 # Azure-Vorteil bei Hybridnutzung für Windows Server
 
-Sie können für Kunden, die Windows Server mit Software Assurance verwenden, lokale Windows Server-Lizenzen in Azure übertragen und virtuelle Computer mit Windows Server in Azure zu geringeren Kosten ausführen. Durch den Azure-Vorteil bei Hybridnutzung können Sie virtuelle Windows Server-Computer in Azure ausführen und müssen nur die Grundgebühr für die Computekapazität bezahlen. Weitere Informationen finden Sie auf der [Lizenzierungsseite für den Azure-Vorteil bei Hybridnutzung](https://azure.microsoft.com/pricing/hybrid-use-benefit/). In diesem Artikel wird die Bereitstellung von virtuellen Windows Server-Computern in Azure erläutert, durch die dieser Lizenzierungsvorteil genutzt werden kann.
+Sie können für Kunden, die Windows Server mit Software Assurance verwenden, lokale Windows Server-Lizenzen in Azure übertragen und virtuelle Computer mit Windows Server in Azure zu geringeren Kosten ausführen. Durch den Azure-Vorteil bei Hybridnutzung können Sie virtuelle Windows Server-Computer in Azure ausführen und müssen nur die Grundgebühr für die Computekapazität bezahlen. Weitere Informationen finden Sie auf der [Lizenzierungsseite für den Azure-Vorteil bei Hybridnutzung](https://azure.microsoft.com/pricing/hybrid-use-benefit/). In diesem Artikel wird die Bereitstellung von virtuellen Windows Server-Computern in Azure zur Nutzung dieses Lizenzierungsvorteils erläutert.
 
 > [AZURE.NOTE] Sie können keine Azure Marketplace-Images verwenden, um virtuelle Windows Server-Computer bereitzustellen, und dabei den Azure-Vorteil bei Hybridnutzung nutzen. Sie müssen Ihre virtuellen Computer mit PowerShell- oder Resource Manager-Vorlagen bereitstellen, um die virtuellen Computer ordnungsgemäß als für die rabattierte Grundgebühr für Computekapazität berechtigt zu registrieren.
 
@@ -29,11 +29,11 @@ Es gibt einige Voraussetzungen, um den Azure-Vorteil bei Hybridnutzung für virt
 - Windows Server-VHD wurde in Azure Storage hochgeladen.
 
 ### Installieren von Azure PowerShell
-Unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md) finden Sie Informationen dazu, wie Sie die neueste Version von Azure PowerShell installieren, das gewünschte Abonnement auswählen und sich bei Ihrem Azure-Konto anmelden. Auch wenn Sie Ihre virtuellen Computer mit Resource Manager-Vorlagen bereitstellen möchten, muss Azure PowerShell installiert sein, um die Windows Server-VHD hochladen zu können (siehe den nächsten Schritt weiter unten).
+Stellen Sie sicher, dass Sie die [neueste Azure PowerShell-Version installiert und konfiguriert](../powershell-install-configure.md) haben. Auch wenn Sie Ihre virtuellen Computer mit Resource Manager-Vorlagen bereitstellen möchten, muss Azure PowerShell installiert sein, um die Windows Server-VHD hochladen zu können (siehe nächsten Schritt weiter unten).
 
 ### Hochladen einer Windows Server-VHD
 
-Für die Bereitstellung eines virtuellen Windows Server-Computers in Azure müssen Sie zunächst eine virtuelle Festplatte erstellen, die den Windows Server-Basisbuild enthält. Diese virtuelle Festplatte muss entsprechend über Sysprep vorbereitet werden, bevor Sie sie in Azure hochladen. Informieren Sie sich über die [VHD-Anforderungen und den Sysprep-Prozess](./virtual-machines-windows-upload-image.md). Weitere Informationen finden Sie auch unter [Sysprep Support for Server Roles](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles) (Sysprep-Unterstützung für Serverrollen). Nachdem Sie die virtuelle Festplatte vorbereitet haben, laden Sie sie mit dem `Add-AzureRmVhd`-Cmdlet wie folgt in Ihr Azure-Storage-Konto hoch:
+Für die Bereitstellung eines virtuellen Windows Server-Computers in Azure müssen Sie zunächst eine virtuelle Festplatte erstellen, die den Windows Server-Basisbuild enthält. Diese virtuelle Festplatte muss entsprechend über Sysprep vorbereitet werden, bevor Sie sie in Azure hochladen. Informieren Sie sich über die [VHD-Anforderungen und den Sysprep-Prozess](./virtual-machines-windows-upload-image.md). Weitere Informationen finden Sie auch unter [Sysprep Support for Server Roles](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles) (Sysprep-Unterstützung für Serverrollen). Sichern Sie den virtuellen Computer vor dem Ausführen von Sysprep. Nachdem Sie die virtuelle Festplatte vorbereitet haben, laden Sie sie mit dem `Add-AzureRmVhd`-Cmdlet wie folgt in Ihr Azure Storage-Konto hoch:
 
 ```
 Add-AzureRmVhd -ResourceGroupName MyResourceGroup -Destination "https://mystorageaccount.blob.core.windows.net/vhds/myvhd.vhd" -LocalFilePath 'C:\Path\To\myvhd.vhd'
@@ -43,7 +43,7 @@ Add-AzureRmVhd -ResourceGroupName MyResourceGroup -Destination "https://mystorag
 
 Informieren Sie sich auch über das [Hochladen der VHD in Azure](./virtual-machines-windows-upload-image.md#upload-the-vm-image-to-your-storage-account).
 
-> [AZURE.TIP] Der vorliegende Artikel konzentriert sich auf die Bereitstellung von virtuellen Windows Server-Computern, Sie können auf diese Weise jedoch auch virtuelle Windows-Clientcomputer bereitstellen. Ersetzen Sie in den folgenden Beispielen entsprechend `Server` durch `Client`.
+> [AZURE.TIP] Thema dieses Artikels ist die Bereitstellung von Windows Server-VMs. Sie können auch Windows-Client-VMs in gleicher Weise bereitstellen. Ersetzen Sie in den folgenden Beispielen entsprechend `Server` durch `Client`.
 
 ## Schnellstartanleitung für das Bereitstellen eines virtuellen Computers über PowerShell
 Beim Bereitstellen des virtuellen Windows Server-Computers über PowerShell ist ein zusätzlicher Parameter für `-LicenseType` vorhanden. Nachdem Sie die virtuelle Festplatte in Azure hochgeladen haben, erstellen Sie einen neuen virtuellen Computer mit `New-AzureRmVM` und geben den Lizenzierungstyp wie folgt an:
@@ -72,7 +72,7 @@ Sobald Sie den virtuellen Computer über die PowerShell- oder Resource Manager-B
 Get-AzureRmVM -ResourceGroup MyResourceGroup -Name MyVM
 ```
 
-Eine Ausgabe ähnlich der folgenden wird angezeigt.
+Die Ausgabe sieht in etwa wie folgt aus:
 
 ```
 Type                     : Microsoft.Compute/virtualMachines
@@ -165,4 +165,4 @@ Erfahren Sie mehr zur [Lizenzierung für den Azure-Vorteil bei Hybridnutzung](ht
 
 Erfahren Sie mehr zum [Verwenden von Resource Manager-Vorlagen](../resource-group-overview.md).
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0831_2016-->

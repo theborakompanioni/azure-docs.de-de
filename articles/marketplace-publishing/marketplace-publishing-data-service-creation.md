@@ -13,10 +13,13 @@
       ms.topic="article"
       ms.tgt_pltfrm="na"
       ms.workload="na"
-      ms.date="06/28/2016"
+      ms.date="08/26/2016"
       ms.author="hascipio; avikova" />
 
 # Leitfaden für die Veröffentlichung von Datendiensten im Azure Marketplace
+
+>[AZURE.IMPORTANT] **Derzeit integrieren wir keine neuen Herausgeber von Datendiensten mehr. Für neue Datendienste wird keine Auflistung genehmigt.** Wenn Sie eine SaaS-Geschäftsanwendung haben, die Sie auf AppSource veröffentlichen möchten, finden Sie [hier](https://appsource.microsoft.com/partners) weitere Informationen. Wenn Sie eine IaaS-Anwendung oder einen Dienst für Entwickler auf Azure Marketplace veröffentlichen möchten, finden Sie [hier](https://azure.microsoft.com/marketplace/programs/certified/) weitere Informationen.
+
 Nach Abschluss von Schritt 1 [Erstellen und Registrieren eines Kontos](marketplace-publishing-accounts-creation-registration.md) haben wir Sie durch [Allgemeine, nicht technische Voraussetzungen](marketplace-publishing-pre-requisites.md) und [Technische Voraussetzungen](marketplace-publishing-data-service-creation-prerequisites.md) eines Datendienstangebots im Azure Marketplace geleitet. Jetzt führen wir Sie durch die Schritte, die Sie im [Veröffentlichungsportal][link-pubportal] zum Erstellen eines Datendienstangebots für den Azure Marketplace durchlaufen.
 
 ## 1\. Melden Sie sich beim Veröffentlichungsportal an.
@@ -49,7 +52,7 @@ Klicken Sie auf die Registerkarte **Exemplarische Vorgehensweise**, und informie
 
 Jedes Angebot kann mehrere Pläne enthalten. Die Mindestanzahl liegt bei einem (1) Plan. Wenn Endbenutzer Ihr Angebot abonnieren, bedeutet dies, dass sie einen Plan des Angebots abonnieren. Durch jeden Plan wird definiert, auf welche Weise Endbenutzer den Dienst verwenden können.
 
-Derzeit unterstützt Azure Marketplace nur das transaktionsbasierte monatliche Abonnementmodell für Data Services. Die Endbenutzer entrichten also eine monatliche Gebühr, die sich nach dem Tarif des abonnierten Plan richtet. Sie können daraufhin jeden Monat die Anzahl von Transaktionen nutzen, die durch den Plan vorgegeben ist.
+Derzeit unterstützt Azure Marketplace nur das transaktionsbasierte monatliche Abonnementmodell für Data Services. Die Endbenutzer entrichten also eine monatliche Gebühr, die sich nach dem Tarif des abonnierten Plans richtet. Sie können daraufhin jeden Monat die Anzahl von Transaktionen nutzen, die durch den Plan vorgegeben ist.
 
 Eine Transaktion entspricht grundsätzlich der Anzahl von Datensätzen, die Ihr Datendienst basierend auf der an den Dienst gesendeten Abfrage zurückgibt. Der Standardwert ist 100. Die Anzahl von Transaktionen, die im Rahmen jeder Abfrage zurückgegeben werden, entspricht der Anzahl der Datensätze geteilt durch 100 und gerundet auf die nächste ganze Zahl.
 
@@ -89,7 +92,7 @@ Die Azure Marketplace Service-Ebene ist dafür zuständig, die Anzahl der von de
 
 > [AZURE.IMPORTANT] Endbenutzer können nur eine kostenlose Testversion erwerben, wenn sie ein Zahlungsmittel, z. B. eine Kreditkarte oder einen Enterprise Agreement, eingerichtet haben.
 
-> Nach Ablauf der 1-monatigen kostenlosen Testversion beginnt Azure Marketplace mit der Berechnung von Gebühren in Höhe des bei Abschluss des Abonnements geltenden Tarifs, sofern der Kunde nicht die Stornierung des Abonnements eingeleitet hat. Der Endbenutzer erhält darüber hinaus keine gesonderte Benachrichtigung.
+> Nach Ablauf der einmonatigen kostenlosen Testversion beginnt Azure Marketplace mit der Berechnung von Gebühren in Höhe des bei Abschluss des Abonnements geltenden Tarifs, sofern der Kunde nicht die Stornierung des Abonnements eingeleitet hat. Der Endbenutzer erhält darüber hinaus keine gesonderte Benachrichtigung.
 
 |Frage|Bedeutung|
 |----|----|
@@ -145,4 +148,4 @@ Nachdem Sie nun Ihr Datendienstangebot erstellt haben, stellen Sie sicher, dass 
 
 [link-pubportal]: https://publish.windowsazure.com
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0831_2016-->

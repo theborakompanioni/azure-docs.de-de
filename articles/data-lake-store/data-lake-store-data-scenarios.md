@@ -40,7 +40,7 @@ Dies steht für kleinere Datasets, die zum Erstellen von Prototypen einer Big Da
 | Datenquelle | Erfassen Sie mit |
 |--------------------|----------------------------------------------------------------------------------------|
 | Lokalem Computer | <ul> <li>[Azure-Portal](/data-lake-store-get-started-portal.md)</li> <li>[Azure PowerShell](data-lake-store-get-started-powershell.md)</li> <li>[Plattformübergreifende Azure-CLI](data-lake-store-get-started-cli.md)</li> <li>[Verwendung von Data Lake-Tools für Visual Studio](../data-lake-analytics/data-lake-analytics-data-lake-tools-get-started.md#upload-source-data-files) </li></ul> |
-| Azure Storage-Blob | <ul> <li>[Azure Data Factory](../data-factory/data-factory-azure-datalake-connector.md#sample-copy-data-from-azure-blob-to-azure-data-lake-store)</li> <li>[AdlCopy-Tool](data-lake-store-copy-data-azure-storage-blob.md)</li> </ul> |
+| Azure Storage-Blob | <ul> <li>[Azure Data Factory](../data-factory/data-factory-azure-datalake-connector.md#sample-copy-data-from-azure-blob-to-azure-data-lake-store)</li> <li>[AdlCopy-Tool](data-lake-store-copy-data-azure-storage-blob.md)</li><li>[DistCp, ausgeführt auf HDInsight-Clustern](data-lake-store-copy-data-wasb-distcp.md)</li> </ul> |
 
  
 ### Streamingdaten
@@ -49,9 +49,9 @@ Diese Daten können von verschiedenen Quellen wie Anwendungen, Geräten, Sensore
 
 Folgende Tools können Sie verwenden:
  
-* [Azure Stream Analytics](../stream-analytics-data-lake-output): In Event Hubs erfasste Ereignisse können mithilfe einer Azure Data Lake-Speicherausgabe in Azure Data Lake geschrieben werden.
-* [Azure HDInsight Storm](../hdinsight/hdinsight-storm-write-data-lake-store.md): Daten aus dem Storm-Cluster können direkt in den Data Lake-Speicher geschrieben werden.
-* [EventProcessorHost](../event-hubs/event-hubs-csharp-ephcs-getstarted.md#receive-messages-with-eventprocessorhost): Sie können Ereignisse von Event Hubs empfangen und dann mit dem [Data Lake Store .NET SDK](data-lake-store-get-started-net-sdk.md) in den Data Lake-Speicher schreiben.
+* [Azure Stream Analytics](../stream-analytics-data-lake-output): In Event Hubs erfasste Ereignisse können mithilfe einer Azure Data Lake Store-Ausgabe in Azure Data Lake geschrieben werden.
+* [Azure HDInsight Storm](../hdinsight/hdinsight-storm-write-data-lake-store.md): Daten aus dem Storm-Cluster können direkt in Data Lake Store geschrieben werden.
+* [EventProcessorHost](../event-hubs/event-hubs-csharp-ephcs-getstarted.md#receive-messages-with-eventprocessorhost): Sie können Ereignisse von Event Hubs empfangen und dann mit dem [Data Lake Store .NET SDK](data-lake-store-get-started-net-sdk.md) in Data Lake Store schreiben.
 
 ### Relationale Daten
 
@@ -87,17 +87,17 @@ Große Datenmengen können in vorhandenen Hadoop-Clustern oder lokal auf Compute
 | Vorgehensweise | Details | Vorteile | Überlegungen |
 |-----------|---------|--------------|-----------------|
 | Verwenden Sie Azure Data Factory (ADF), um Daten direkt aus Hadoop-Clustern in den Azure Data Lake-Speicher zu kopieren. | [ADF unterstützt HDFS als Datenquelle.](../data-factory/data-factory-hdfs-connector.md) | ADF bietet sofortige Unterstützung für HDFS und erstklassige End-to-End-Verwaltung und -Überwachung. | Ein Datenverwaltungsgateway muss lokal oder im IaaS-Cluster bereitgestellt werden. |
-| Exportieren Sie Daten in Form von Dateien aus Hadoop. Kopieren Sie die Dateien dann mit einem geeigneten Mechanismus in den Azure Data Lake-Speicher. | Sie können Dateien mit folgenden Verfahren in einen Azure Data Lake-Speicher kopieren: <ul><li>[Azure PowerShell für Windows-Betriebssysteme](data-lake-store-get-started-powershell.md)</li><li>[Plattformübergreifende Azure-Befehlszeilenschnittstelle für Nicht-Windows-Betriebssysteme](data-lake-store-get-started-cli.md)</li><li>Benutzerdefinierte App mit einem beliebigen Data Lake-Speicher-SDK</li></ul> | Lässt sich schnell einrichten. Benutzerdefinierte Uploads sind möglich. | Der Prozess erfordert mehrere Schritte und verschiedene Technologien. Da die Tools benutzerdefiniert sind, werden Verwaltung und Überwachung im Lauf der Zeit schwierig. |
-| Verwenden Sie Distcp, um Daten von Hadoop in Azure Storage zu kopieren. Kopieren Sie die Daten dann mit einem geeigneten Mechanismus von Azure Storage in den Azure Data Lake-Speicher. | Sie können Daten mit folgenden Verfahren von Azure Storage in den Data Lake-Speicher kopieren: <ul><li>[Azure Data Factory](../data-factory/data-factory-data-movement-activities.md)</li><li>[AdlCopy-Tool](data-lake-store-copy-data-azure-storage-blob.md)</li><li>[Apache DistCp, ausgeführt auf HDInsight-Clustern](data-lake-store-copy-data-wasb-distcp.md)</li></ul>| Sie können Open Source-Tools verwenden. | Der Prozess erfordert mehrere Schritte und verschiedene Technologien. |
+| Exportieren Sie Daten in Form von Dateien aus Hadoop. Kopieren Sie die Dateien dann mit einem geeigneten Mechanismus in den Azure Data Lake-Speicher. | Sie können Dateien mit folgenden Verfahren in Azure Data Lake Store kopieren: <ul><li>[Azure PowerShell für Windows-Betriebssysteme](data-lake-store-get-started-powershell.md)</li><li>[Plattformübergreifende Azure-Befehlszeilenschnittstelle für Nicht-Windows-Betriebssysteme](data-lake-store-get-started-cli.md)</li><li>Benutzerdefinierte App mit einem beliebigen Data Lake Store-SDK</li></ul> | Lässt sich schnell einrichten. Benutzerdefinierte Uploads sind möglich. | Der Prozess erfordert mehrere Schritte und verschiedene Technologien. Da die Tools benutzerdefiniert sind, werden Verwaltung und Überwachung im Lauf der Zeit schwierig. |
+| Verwenden Sie Distcp, um Daten von Hadoop in Azure Storage zu kopieren. Kopieren Sie die Daten dann mit einem geeigneten Mechanismus von Azure Storage in den Azure Data Lake-Speicher. | Sie können Daten mit folgenden Verfahren von Azure Storage in Data Lake Store kopieren: <ul><li>[Azure Data Factory](../data-factory/data-factory-data-movement-activities.md)</li><li>[AdlCopy-Tool](data-lake-store-copy-data-azure-storage-blob.md)</li><li>[Apache DistCp, ausgeführt auf HDInsight-Clustern](data-lake-store-copy-data-wasb-distcp.md)</li></ul>| Sie können Open Source-Tools verwenden. | Der Prozess erfordert mehrere Schritte und verschiedene Technologien. |
 
 ### Sehr große Datasets
 
 Das Hochladen von Datasets im Bereich mehrerer Terabyte kann mithilfe der oben beschriebenen Methoden manchmal langsam und kostspielig sein. In solchen Fällen können Sie die folgenden Optionen verwenden:
 
-* **Verwenden Sie Azure ExpressRoute.** Azure ExpressRoute ermöglicht Ihnen, private Verbindungen zwischen Azure-Rechenzentren und Ihrer lokalen Infrastruktur zu erstellen. Dies ist eine zuverlässige Option zur Übertragung großer Datenmengen. Weitere Informationen finden Sie in der [Dokumentation zu ExpressRoute ](../expressroute/expressroute-introduction.md).
+* **Verwenden von Azure ExpressRoute**. Azure ExpressRoute ermöglicht Ihnen, private Verbindungen zwischen Azure-Rechenzentren und Ihrer lokalen Infrastruktur zu erstellen. Dies ist eine zuverlässige Option zur Übertragung großer Datenmengen. Weitere Informationen finden Sie in der [Dokumentation zu Azure ExpressRoute](../expressroute/expressroute-introduction.md).
 
 
-* **Offline-Datenupload.** Wenn Azure ExpressRoute aus irgendeinem Grund nicht verwendet werden kann, können Sie über den [Azure Import/Export-Dienst](../storage/storage-import-export-service.md) Festplatten mit Ihren Daten an ein Azure-Rechenzentrum senden. Ihre Daten werden zunächst in Azure Storage-Blobs hochgeladen. Anschließend können Sie mit [Azure Data Factory](../data-factory/data-factory-azure-datalake-connector.md#sample-copy-data-from-azure-blob-to-azure-data-lake-store) oder dem [AdlCopy-Tool](data-lake-store-copy-data-azure-storage-blob.md) Daten aus Azure Storage-Blobs in Data Lake Store kopieren.
+* **Offline-Datenupload**. Wenn Azure ExpressRoute aus irgendeinem Grund nicht verwendet werden kann, können Sie über den [Azure Import/Export-Dienst](../storage/storage-import-export-service.md) Festplattenlaufwerke mit Ihren Daten an ein Azure-Rechenzentrum senden. Ihre Daten werden zunächst in Azure Storage-Blobs hochgeladen. Anschließend können Sie mit [Azure Data Factory](../data-factory/data-factory-azure-datalake-connector.md#sample-copy-data-from-azure-blob-to-azure-data-lake-store) oder dem [AdlCopy-Tool](data-lake-store-copy-data-azure-storage-blob.md) Daten aus Azure Storage-Blobs in Data Lake Store kopieren.
 
 	>[AZURE.NOTE] Wenn Sie den Import-/Export-Dienst verwenden, sollte die Größe der Dateien auf den Datenträgern, die Sie an das Azure-Rechenzentrum senden, nicht größer als 200 GB sein.
 
@@ -142,7 +142,7 @@ Sie können eine Kombination von Diensten verwenden, um visuelle Darstellungen d
 
 ![Visualisieren von Daten im Data Lake-Speicher](./media/data-lake-store-data-scenarios/visualize-data.png "Visualisieren von Daten im Data Lake-Speicher")
 
-* Sie können beginnen, indem Sie [Daten mithilfe von Azure Data Factory aus dem Data Lake-Speicher in Azure SQL Data Warehouse verschieben](../data-factory/data-factory-data-movement-activities.md#supported-data-stores).
+* Sie können beginnen, indem Sie [Daten mithilfe von Azure Data Factory aus Data Lake Store nach Azure SQL Data Warehouse verschieben](../data-factory/data-factory-data-movement-activities.md#supported-data-stores).
 * Danach können Sie [Power BI in Azure SQL Data Warehouse integrieren](../sql-data-warehouse/sql-data-warehouse-integrate-power-bi.md), um eine visuelle Darstellung der Daten zu erstellen.
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0831_2016-->

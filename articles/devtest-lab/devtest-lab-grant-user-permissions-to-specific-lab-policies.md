@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/08/2016"
+	ms.date="08/25/2016"
 	ms.author="tarcher"/>
 
 # Gewähren von Benutzerberechtigungen für bestimmte Labrichtlinien
@@ -28,9 +28,9 @@ Wie im Artikel [Rollenbasierte Access Control in Azure](../active-directory/role
 
 In DevTest Labs ist eine Richtlinie ein Ressourcentyp, der die RBAC-Aktion **Microsoft.DevTestLab/labs/policySets/policies/** ermöglicht. Jede Labrichtlinie ist eine Ressource im Richtlinienressourcentyp und kann als Bereich einer RBAC-Rolle zugewiesen werden.
 
-Um Benutzern beispielsweise Lese-/Schreibberechtigungen für die Richtlinie **Zulässige VM-Größen** zu erteilen, erstellen Sie eine benutzerdefinierte Rolle, die mit der Aktion **Microsoft.DevTestLab/labs/policySets/policies/*** arbeitet, und weisen dieser benutzerdefinierten Rolle anschließend im Bereich von **Microsoft.DevTestLab/labs/policySets/policies/AllowedVmSizesInLab** entsprechende Benutzer zu.
+Um Benutzern beispielsweise Lese-/Schreibberechtigungen für die Richtlinie** Zulässige VM-Größen** zu erteilen, erstellen Sie eine benutzerdefinierte Rolle, die mit der Aktion **Microsoft.DevTestLab/labs/policySets/policies/*** arbeitet, und weisen dieser benutzerdefinierten Rolle anschließend im Bereich von **Microsoft.DevTestLab/labs/policySets/policies/AllowedVmSizesInLab** die entsprechenden Benutzer zu.
 
-Weitere Informationen zu benutzerdefinierten Rollen in RBAC finden Sie im Abschnitt [Benutzerdefinierte Rollen in Azure RBAC](../active-directory/role-based-access-control-configure.md#custom-roles-in-azure-rbac) im Artikel [Rollenbasierte Access Control in Azure](../active-directory/role-based-access-control-configure.md).
+Weitere Informationen zu benutzerdefinierten Rollen in RBAC finden Sie im Abschnitt [Benutzerdefinierte Rollen in Azure RBAC](../active-directory/role-based-access-control-configure.md#custom-roles-in-azure-rbac) im Artikel [Rollenbasierte Zugriffssteuerung in Azure](../active-directory/role-based-access-control-configure.md).
 
 ##Erstellen einer benutzerdefinierten Labrolle mithilfe von PowerShell
 Lesen Sie zuerst den folgenden Artikel, der erklärt, wie Sie die Azure PowerShell-Cmdlets installieren und konfigurieren: [https://azure.microsoft.com/blog/azps-1-0-pre](https://azure.microsoft.com/blog/azps-1-0-pre).
@@ -70,7 +70,7 @@ Im folgenden Beispiel lautet die **ObjectId** des Benutzers *SomeUser* 05DEFF7B-
     -----------                    ----                           --------
     someuser@hotmail.com                                          05DEFF7B-0AC3-4ABF-B74D-6A72CD5BF3F3
 
-Sobald Sie über die **ObjectId** für den Benutzer und einen Namen für die benutzerdefinierte Rolle verfügen, können Sie dem Benutzer diese Rolle mit dem **New-AzureRmRoleAssignment**-Cmdlet zuweisen:
+Sobald Sie über die **ObjectId** für den Benutzer und den Namen einer benutzerdefinierte Rolle verfügen, können Sie dem Benutzer diese Rolle mit dem **New-AzureRmRoleAssignment**-Cmdlet zuweisen:
 
     PS C:\>New-AzureRmRoleAssignment -ObjectId 05DEFF7B-0AC3-4ABF-B74D-6A72CD5BF3F3 -RoleDefinitionName "Policy Contributor" -Scope /subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroupName>/providers/Microsoft.DevTestLab/labs/<LabName>/policySets/policies/AllowedVmSizesInLab
 
@@ -81,11 +81,13 @@ Im vorherigen Beispiel wird die **AllowedVmSizesInLab**-Richtlinie verwendet. Si
 - AllowedVmSizesInLab
 - LabVmsShutdown
 
+[AZURE.INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
+
 ## Nächste Schritte
 
 Nachdem Sie Benutzerberechtigungen für bestimmte Labrichtlinien gewährt haben, finden Sie im Folgenden Informationen zu den nächsten möglichen Schritten:
 
-- [Sicherer Zugriff auf ein Lab](devtest-lab-add-devtest-user.md)
+- [Sicherer Zugriff auf ein Lab](devtest-lab-add-devtest-user.md).
 
 - [Festlegen von Labrichtlinien](devtest-lab-set-lab-policy.md).
 
@@ -93,6 +95,6 @@ Nachdem Sie Benutzerberechtigungen für bestimmte Labrichtlinien gewährt haben,
 
 - [Erstellen benutzerdefinierter Artefakte für Ihre VMs](devtest-lab-artifact-author.md).
 
-- [Hinzufügen einer VM mit Artefakten zu einem Lab](devtest-lab-add-vm-with-artifacts.md)
+- [Hinzufügen einer VM mit Artefakten zu einem Lab](devtest-lab-add-vm-with-artifacts.md).
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0831_2016-->

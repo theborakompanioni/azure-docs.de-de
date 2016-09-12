@@ -13,10 +13,12 @@
       ms.topic="article"
       ms.tgt_pltfrm="na"
       ms.workload="na"
-      ms.date="01/04/2016"
+      ms.date="08/26/2016"
       ms.author="hascipio; avikova" />
 
 # Zuordnen eines vorhandenen Webdiensts zu OData über CSDL
+
+>[AZURE.IMPORTANT] **Derzeit integrieren wir keine neuen Herausgeber von Datendiensten mehr. Für neue Datendienste wird keine Auflistung genehmigt.** Wenn Sie eine SaaS-Geschäftsanwendung haben, die Sie auf AppSource veröffentlichen möchten, finden Sie [hier](https://appsource.microsoft.com/partners) weitere Informationen. Wenn Sie eine IaaS-Anwendung oder einen Dienst für Entwickler auf Azure Marketplace veröffentlichen möchten, finden Sie [hier](https://azure.microsoft.com/marketplace/programs/certified/) weitere Informationen.
 
 Dieser Artikel enthält eine Übersicht darüber, wie eine CSDL für die Zuordnung eines vorhandenen Diensts zu einem kompatiblen OData-Dienst verwendet wird. Dabei wird die Erstellung des Zuordnungsdokuments (CSDL) erläutert, das die vom Client über einen Dienstaufruf gesendete Eingabeanforderung und die über einen kompatiblen OData-Feed an den Client zurückgesendeten Ausgabe(daten) transformiert. Microsoft Azure Marketplace macht die Dienste mithilfe des OData-Protokolls für Endbenutzer verfügbar. Dienste, die von Inhaltsanbietern (Datenbesitzern) verfügbar gemacht werden, werden in einer Vielzahl von Formaten wie REST, SOAP usw. zur Verfügung gestellt.
 
@@ -129,7 +131,7 @@ Im Folgenden ein CSDL-Beispiel: (Kopieren Sie die folgende Beispiel-CSDL, fügen
 
 **Begriffe:** Beziehung der CSDL-Begriffe zu PPUI-Begriffen ([Publishing Portal](https://publish.windowsazure.com)-UI).
 - Der „Title“ des Angebots in der PPUI bezieht sich auf MyWebOffer.
-- „MyCompany“ in der PPUI bezieht sich auf den **Anzeigenamen des Herausgebers** in der [Microsoft Developer Center](http://dev.windows.com/registration?accountprogram=azure)-UI.
+- „MyCompany“ auf der PPUI bezieht sich auf den **Anzeigenamen des Herausgebers** auf der [Microsoft Developer Center](http://dev.windows.com/registration?accountprogram=azure)-UI.
 - API bezieht sich auf einen Web- oder Datendienst (einen Plan in der PPUI).
 
 **Hierarchie:** Ein Unternehmen (Inhaltsanbieter) besitzt Angebote mit Plänen. Dabei handelt es sich um Dienste, die in einer API aufgeführt sind.
@@ -308,4 +310,4 @@ Stellt eine Verbindung mit einem Dienst her, der eine Datenbanktabelle oder -sic
 - Wenn Sie an Beispielen interessiert sind, lesen Sie den Artikel [Beispiele für die OData-Zuordnung im Datendienst](marketplace-publishing-data-service-creation-odata-mapping-examples.md), um Beispielcode kennenzulernen sowie Codesyntax und Kontext zu verstehen.
 - Um zum vorgeschriebenen Pfad für die Veröffentlichung eines Datendiensts im Azure Marketplace zurückzukehren, lesen Sie den Artikel [Leitfaden zum Veröffentlichen von Datendiensten](marketplace-publishing-data-service-creation.md).
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0831_2016-->

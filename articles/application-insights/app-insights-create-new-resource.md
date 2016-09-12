@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Erstellen einer neuen Application Insights-Ressource" 
+	pageTitle="Erstellen einer neuen Application Insights-Ressource | Microsoft Azure" 
 	description="Richten Sie Application Insights-Überwachung für eine neue Liveanwendung ein. Web-basierter Ansatz." 
 	services="application-insights" 
     documentationCenter=""
@@ -12,10 +12,10 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/02/2016" 
+	ms.date="08/26/2016" 
 	ms.author="awills"/>
 
-# Erstellen einer neuen Application Insights-Ressource
+# Erstellen einer Application Insights-Ressource
 
 Visual Studio Application Insights zeigt Daten über Ihre Anwendung in einer Microsoft Azure-*Ressource* an. Die Erstellung einer neuen Ressource gehört daher zur [Einrichtung von Application Insights, um eine neue Anwendung zu überwachen][start]. In vielen Fällen kann dies automatisch über die IDE erfolgen. Diese Methode wird nach Möglichkeit empfohlen. In einigen Fällen wird eine Ressource jedoch manuell erstellt.
 
@@ -25,11 +25,11 @@ Nach dem Erstellen der Ressource erhalten Sie den Instrumentationsschlüssel und
 
 Wenn Sie noch kein [Microsoft-Konto besitzen, erstellen Sie jetzt eins](http://live.com). (Wenn Sie Dienste wie Outlook.com, OneDrive, Windows Phone oder XBox Live verwenden, besitzen Sie bereits ein Microsoft-Konto.)
 
-Außerdem benötigen Sie ein [Microsoft Azure](http://azure.com)-Abonnement. Wenn Ihr Team oder Ihre Organisation über ein Azure-Abonnement verfügt, kann der Besitzer Sie anhand Ihrer Windows Live-ID hinzufügen.
+Außerdem benötigen Sie ein [Microsoft Azure](http://azure.com)-Abonnement. Wenn Ihr Team oder Ihre Organisation über ein Azure-Abonnement verfügt, kann der Besitzer Sie anhand Ihrer Windows Live ID hinzufügen.
 
 Sie können jedoch auch ein neues Abonnement erstellen. Mit dem kostenlosen Konto können Sie alle Funktionen von Azure testen. Nachdem der Testzeitraum abgelaufen ist, finden Sie möglicherweise das Abonnement mit nutzungsbasierter Bezahlung geeignet, da Ihnen kostenlose Dienste nicht in Rechnung gestellt werden.
 
-Wenn Sie Zugang zu einem Abonnement besitzen, melden Sie sich über Ihre Live-ID unter [http://portal.azure.com](https://portal.azure.com) bei Application Insights an.
+Wenn Sie Zugang zu einem Abonnement besitzen, melden Sie sich über Ihre Live ID unter [http://portal.azure.com](https://portal.azure.com) bei Application Insights an.
 
 
 ## Erstellen einer Application Insights-Ressource
@@ -40,7 +40,7 @@ Fügen Sie unter [portal.azure.com](https://portal.azure.com) eine neue Applicat
 ![Klicken Sie auf "Neu > Application Insights"](./media/app-insights-create-new-resource/01-new.png)
 
 
-* **Anwendungstyp** bestimmt den Inhalt des Blatts "Übersicht" und die im [Metrik-Explorer][metrics] verfügbaren Eigenschaften. Wenn Ihr App-Typ nicht angezeigt wird, wählen Sie einen der Webtypen für Webseiten und einen der Telefontypen für andere Geräte aus.
+* **Anwendungstyp** bestimmt den Inhalt des Blatts "Übersicht" und die im [Metrik-Explorer][metrics] verfügbaren Eigenschaften. Wird Ihr App-Typ nicht angezeigt, wählen Sie ASP.NET.
 * **Ressourcengruppe** ist eine benutzerfreundliche Möglichkeit zum Verwalten von Eigenschaften wie der Zugriffssteuerung. Wenn Sie bereits andere Azure-Ressourcen erstellt haben, können Sie diese neue Ressource in derselben Gruppe platzieren.
 * **Abonnement** ist Ihr Zahlungskonto in Azure.
 * **Speicherort** ist der Ort, an dem Ihre Daten aufbewahrt werden. Dieser kann derzeit nicht geändert werden.
@@ -55,7 +55,7 @@ Um bei der nächsten Anmeldung bei Azure dorthin zurückzugelangen, suchen Sie i
 
 Der Instrumentationsschlüssel identifiziert die Ressource, die Sie erstellt haben. Sie müssen ihn an das SDK übergeben.
 
-![Klicken Sie auf "Essentials", klicken Sie auf "Instrumentationsschlüssel", STRG+C](./media/app-insights-create-new-resource/02-props.png)
+![Klicken Sie auf "Essentials", klicken Sie auf den Instrumentierungsschlüssel, STRG+C.](./media/app-insights-create-new-resource/02-props.png)
 
 ## Installieren des SDK in Ihrer App
 
@@ -78,7 +78,12 @@ Klicken Sie nach einigen Sekunden auf "Aktualisieren", wenn Sie mehr Daten erwar
 
 Sie können ein [PowerShell-Skript](app-insights-powershell-script-create-resource.md) schreiben, um eine Ressource automatisch zu erstellen.
 
+## Nächste Schritte
 
+* [Erstellen eines Dashboards](app-insights-dashboards.md)
+* [Diagnosesuche](app-insights-diagnostic-search.md)
+* [Untersuchen von Metriken](app-insights-metrics-explorer.md)
+* [Schreiben von Analytics-Abfragen](app-insights-analytics.md)
 
 
 <!--Link references-->
@@ -90,4 +95,4 @@ Sie können ein [PowerShell-Skript](app-insights-powershell-script-create-resour
 
  
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0831_2016-->

@@ -139,10 +139,14 @@ Für die Vorbereitung der Bereitstellung benötigen Sie Folgendes:
 - [Informieren Sie sich](../vpn-gateway/vpn-gateway-site-to-site-create.md) über die unterstützten Bereitstellungsmodelle für VPN-Standort-zu-Standort-Verbindungen und über das [Einrichten einer Verbindung](../vpn-gateway/vpn-gateway-site-to-site-create.md#create-your-virtual-network).
 - Alternativ dazu können Sie [Azure ExpressRoute](../expressroute/expressroute-introduction.md) einrichten. [Informieren Sie sich](../expressroute/expressroute-howto-vnet-portal-classic.md) über das Einrichten eines Azure-Netzwerks mit ExpressRoute.
 
+> [AZURE.NOTE] [Migration of networks](../resource-group-move-resources.md) zwischen Ressourcengruppen im gleichen Abonnement oder zwischen verschiedenen Abonnements wird für Netzwerke nicht unterstützt, die für die Site Recovery-Bereitstellung verwendet werden.
+
 ### Einrichten eines Azure-Speicherkontos
 
 - Sie benötigen ein Standard- oder Premium-Azure-Speicherkonto zum Speichern von Daten, die nach Azure repliziert werden. Das Konto muss sich in derselben Region wie der Recovery Services-Tresor befinden. Richten Sie ein Konto im [ARM-Modus](../storage/storage-create-storage-account.md) oder im [klassischen Modus](../storage/storage-create-storage-account-classic-portal.md) ein (je nachdem, welches Ressourcenmodell Sie für virtuelle Azure-Computer nach dem Failover verwenden möchten).
-- Wenn Sie ein Premium-Konto für replizierte Daten verwenden, müssen Sie ein zusätzliches Standardkonto zum Speichern von Replikationsprotokollen erstellen, in denen laufende Änderungen lokaler Daten erfasst werden.
+- Wenn Sie ein Premium-Konto für replizierte Daten verwenden, müssen Sie ein zusätzliches Standardkonto zum Speichern von Replikationsprotokollen erstellen, in denen laufende Änderungen lokaler Daten erfasst werden.  
+
+> [AZURE.NOTE] [Migration of storage accounts](../resource-group-move-resources.md) zwischen Ressourcengruppen im gleichen Abonnement oder zwischen verschiedenen Abonnements wird für Speicherkonten nicht unterstützt, die für die Site Recovery-Bereitstellung verwendet werden.
 
 ### Vorbereiten eines Kontos für die automatische Ermittlung
 
@@ -859,4 +863,4 @@ The information in Section B is regarding Third Party Code components that are b
 
 The complete file may be found on the [Microsoft Download Center](http://go.microsoft.com/fwlink/?LinkId=529428). Microsoft reserves all rights not expressly granted herein, whether by implication, estoppel or otherwise.
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->

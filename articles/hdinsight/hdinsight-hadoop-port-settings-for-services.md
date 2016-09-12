@@ -13,7 +13,7 @@ ms.devlang="na"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="big-data"
-ms.date="06/14/2016"
+ms.date="08/30/2016"
 ms.author="larryfr"/>
 
 # Von HDInsight verwendete Ports und URIs
@@ -34,7 +34,7 @@ Um für weitere Computer den Beitritt zum virtuellen Netzwerk durchzuführen, m�
 
 Alle Knoten eines HDInsight-Clusters befinden sich in einem Azure Virtual Network, und darauf kann aus dem Internet nicht direkt zugegriffen werden. Ein öffentliches Gateway ermöglicht den Internetzugriff auf die folgenden Ports, die für alle HDInsight-Clustertypen gleich sind:
 
-| Dienst | Port | Protokoll | Beschreibung |
+| Dienst | Port | Protocol | Beschreibung |
 | ---- | ---------- | -------- | ----------- | ----------- |
 | sshd | 22 | SSH | Verbindet Clients mit sshd auf dem Hauptknoten 0. Siehe [Verwenden von SSH mit Linux-basiertem HDInsight](hdinsight-hadoop-linux-use-ssh-windows.md). |
 | sshd | 22 | SSH | Verbindet Clients mit sshd auf dem Edgeknoten (nur HDInsight Premium). Siehe [Erste Schritte mit R Server in HDInsight](hdinsight-hadoop-r-server-get-started.md). |
@@ -47,7 +47,7 @@ Alle Knoten eines HDInsight-Clusters befinden sich in einem Azure Virtual Networ
 
 Für spezielle Clustertypen ist Folgendes verfügbar:
 
-| Dienst | Port | Protokoll |Clustertyp | Beschreibung |
+| Dienst | Port | Protocol |Clustertyp | Beschreibung |
 | ------------ | ---- |  ----------- | --- | ----------- |
 | Stargate | 443 | HTTPS | HBase | HBase-REST-API. Siehe [Erste Schritte mit HBase](hdinsight-hbase-tutorial-get-started-linux.md). |
 | Livy | 443 | HTTPS | Spark | Spark-REST-API. Siehe [Remoteübermittlung von Spark-Aufträgen mithilfe von Livy](hdinsight-apache-spark-livy-rest-interface.md). |
@@ -64,9 +64,11 @@ Alle Dienste, die im Internet öffentlich verfügbar gemacht werden, müssen aut
 
 ## Nicht öffentliche Ports
 
+> [AZURE.NOTE] Einige Dienste stehen nur bei bestimmten Clustertypen zur Verfügung. HBase beispielsweise ist nur bei HBase-Clustertypen verfügbar.
+
 ### HDFS-Ports
 
-| Dienst | Knoten | Port | Protokoll | Beschreibung |
+| Dienst | Knoten | Port | Protocol | Beschreibung |
 | ------- | ------- | ---- | -------- | ----------- | 
 | NameNode-Webbenutzeroberfläche | Hauptknoten | 30070 | HTTPS | Webbenutzeroberfläche zum Anzeigen des aktuellen Status |
 | NameNode-Metadatendienst | Hauptknoten | 8020 | IPC | Dateisystem-Metadaten 
@@ -74,9 +76,10 @@ Alle Dienste, die im Internet öffentlich verfügbar gemacht werden, müssen aut
 | DataNode | Alle Workerknoten | 30010 | &nbsp; | Datenübertragung |
 | DataNode | Alle Workerknoten | 30020 | IPC | Metadatenvorgänge |
 | Sekundärer NameNode | Hauptknoten | 50090 | HTTP | Prüfpunkt für NameNode-Metadaten |
+
 ### YARN-Ports
 
-| Dienst | Knoten | Port | Protokoll | Beschreibung |
+| Dienst | Knoten | Port | Protocol | Beschreibung |
 | ------- | ------- | ---- | -------- | ----------- |
 | Resource Manager-Webbenutzeroberfläche | Hauptknoten | 8088 | HTTP | Webbenutzeroberfläche für Resource Manager |
 | Resource Manager-Webbenutzeroberfläche | Hauptknoten | 8090 | HTTPS | Webbenutzeroberfläche für Resource Manager |
@@ -90,7 +93,7 @@ Alle Dienste, die im Internet öffentlich verfügbar gemacht werden, müssen aut
 
 ### Hive-Ports
 
-| Dienst | Knoten | Port | Protokoll | Beschreibung |
+| Dienst | Knoten | Port | Protocol | Beschreibung |
 | ------- | ------- | ---- | -------- | ----------- |
 | HiveServer2 | Hauptknoten | 10001 | Thrift | Dienst für die programmgesteuerte Verbindungsherstellung mit Hive (Thrift/JDBC) |
 | HiveServer | Hauptknoten | 10000 | Thrift | Dienst für die programmgesteuerte Verbindungsherstellung mit Hive (Thrift/JDBC) |
@@ -98,13 +101,13 @@ Alle Dienste, die im Internet öffentlich verfügbar gemacht werden, müssen aut
 
 ### WebHCat-Ports
 
-| Dienst | Knoten | Port | Protokoll | Beschreibung |
+| Dienst | Knoten | Port | Protocol | Beschreibung |
 | ------- | ------- | ---- | -------- | ----------- |
 | WebHCat-Server | Hauptknoten | 30111 | HTTP | Web-API zusätzlich zu HCatalog und anderen Hadoop-Diensten |
 
 ### MapReduce-Ports
 
-| Dienst | Knoten | Port | Protokoll | Beschreibung |
+| Dienst | Knoten | Port | Protocol | Beschreibung |
 | ------- | ------- | ---- | -------- | ----------- |
 | JobHistory | Hauptknoten | 19888 | HTTP | MapReduce JobHistory-Webbenutzeroberfläche |
 | JobHistory | Hauptknoten | 10020 | &nbsp; | MapReduce JobHistory-Server |
@@ -112,25 +115,32 @@ Alle Dienste, die im Internet öffentlich verfügbar gemacht werden, müssen aut
 
 ### Oozie
 
-| Dienst | Knoten | Port | Protokoll | Beschreibung |
+| Dienst | Knoten | Port | Protocol | Beschreibung |
 | ------- | ------- | ---- | -------- | ----------- |
 | Oozie-Server | Hauptknoten | 11000 | HTTP | URL für Oozie-Dienst |
 | Oozie-Server | Hauptknoten | 11001 | HTTP | Port für Oozie-Verwaltung |
 
 ### Ambari-Metriken
 
-| Dienst | Knoten | Port | Protokoll | Beschreibung |
+| Dienst | Knoten | Port | Protocol | Beschreibung |
 | ------- | ------- | ---- | -------- | ----------- |
 | TimeLine (Anwendungsverlauf) | Hauptknoten | 6188 | HTTP | Webbenutzeroberfläche des TimeLine-Diensts |
 | TimeLine (Anwendungsverlauf) | Hauptknoten | 30200 | RPC | Webbenutzeroberfläche des TimeLine-Diensts |
 
 ### HBase-Ports
 
-| Dienst | Knoten | Port | Protokoll | Beschreibung |
+| Dienst | Knoten | Port | Protocol | Beschreibung |
 | ------- | ------- | ---- | -------- | ----------- |
 | HMaster | Hauptknoten | 16000 | &nbsp; | &nbsp; |
 | HMaster-Info-Webbenutzeroberfläche | Hauptknoten | 16010 | HTTP | Port für die HBase-Master-Webbenutzeroberfläche |
 | Regionsserver | Alle Workerknoten | 16020 | &nbsp; | &nbsp; |
 | &nbsp; | &nbsp; | 2181 | &nbsp; | Port, der von Clients für die Verbindungsherstellung mit ZooKeeper verwendet wird |
 
-<!---HONumber=AcomDC_0713_2016-->
+### Kafka-Ports
+
+| Dienst | Knoten | Port | Protocol | Beschreibung |
+| ------- | ------- | ---- | -------- | ----------- |
+| Broker | Workerknoten | 9092 | [Kafka Wire Protocol](http://kafka.apache.org/protocol.html) | Für die Clientkommunikation |
+| &nbsp; | Zookeeper-Knoten | 2181 | &nbsp; | Port, der von Clients für die Verbindungsherstellung mit Zookeeper verwendet wird |
+
+<!---HONumber=AcomDC_0831_2016-->

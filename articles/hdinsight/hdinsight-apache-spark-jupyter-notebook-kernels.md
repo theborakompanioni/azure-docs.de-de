@@ -14,13 +14,13 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/25/2016" 
+	ms.date="08/25/2016" 
 	ms.author="nitinme"/>
 
 
 # Verfügbare Kernels für Jupyter Notebooks mit Apache Spark-Clustern unter HDInsight (Linux)
 
-Apache Spark-Cluster unter HDInsight (Linux) beinhalten Jupyter Notebooks, die Sie zum Testen Ihrer Anwendungen verwenden können. Ein Kernel ist ein Programm, das ausgeführt wird und Ihren Code interpretiert. HDInsight Spark-Cluster bieten zwei Kernel, die Sie für Jupyter Notebook verwenden können. Dies sind:
+Apache Spark-Cluster unter HDInsight (Linux) beinhalten Jupyter Notebooks, die Sie zum Testen Ihrer Anwendungen verwenden können. Ein Kernel ist ein Programm, das ausgeführt wird und Ihren Code interpretiert. HDInsight Spark-Cluster bieten zwei Kernel, die Sie für Jupyter Notebook verwenden können. Diese sind wie folgt:
 
 1. **PySpark** (für in Python geschriebene Anwendungen)
 2. **Spark** (für in Scala geschriebene Anwendungen)
@@ -85,7 +85,9 @@ Die Verwendung der neuen Kernel bringt einige Vorteile mit sich.
 	| delete | `%%delete -f -s <session number>` | Löscht eine bestimmte Sitzung des aktuellen Livy-Endpunkts. Beachten Sie, dass Sie die Sitzung, die für den Kernel selbst initiiert wird, nicht löschen können. |
 	| cleanup | `%%cleanup -f` | Löscht alle Sitzungen für den aktuellen Livy-Endpunkt, einschließlich dieser Notebook-Sitzung. Das Force-Flag „-f“ ist obligatorisch |
 
-3. **Automatische Visualisierung**. Der **Pyspark**-Kernel visualisiert automatisch die Ausgabe der Hive- und SQL-Abfragen. Sie können zwischen verschiedenen Arten von Visualisierungen wählen, inklusive Tabelle, Kreis-, Linie-, Flächen- und Balkendiagramm.
+	>[AZURE.NOTE] Zusätzlich zu den Magics, die durch den PySpark-Kernel hinzugefügt werden, können Sie auch die [integrierten IPython-Magics](https://ipython.org/ipython-doc/3/interactive/magics.html#cell-magics) verwenden, einschließlich `%%sh`. Sie können das Magic `%%sh` verwenden, um Skripts und Codeblöcke auf dem Clusterhauptknoten auszuführen.
+
+3. **Automatische Visualisierung**. Der **Pyspark**-Kernel visualisiert automatisch die Ausgabe von Hive- und SQL-Abfragen. Sie können zwischen verschiedenen Arten von Visualisierungen wählen, inklusive Tabelle, Kreis-, Linie-, Flächen- und Balkendiagramm.
 
 ## Mit %%sql-Magic unterstützte Parameter
 
@@ -94,10 +96,10 @@ Die Verwendung der neuen Kernel bringt einige Vorteile mit sich.
 | Parameter | Beispiel | Beschreibung |
 |-----------|---------------------------------|--------------|
 | -o | `-o <VARIABLE NAME>` | Verwenden Sie diesen Parameter, um das Ergebnis der Abfrage im %%local-Python-Kontext als [Pandas](http://pandas.pydata.org/)-Dataframe beizubehalten. Der Name der Datenrahmenvariablen ist der Variablenname, den Sie angeben. |
-| -q | `-q` | Verwenden Sie diese Option, um die Visualisierungen für die Zelle auszuschalten. Wenn Sie den Inhalt einer Zelle nicht automatisch visualisieren, sondern einfach als Dataframe erfassen möchten, verwenden Sie `-q -o <VARIABLE>`. Wenn Sie Visualisierungen deaktivieren möchten, ohne die Ergebnisse zu erfassen (z. B. für das Ausführen einer SQL-Abfrage mit Nebeneffekten, wie z. B. einer `CREATE TABLE`-Anweisung), verwenden Sie einfach `-q` ohne Angabe eines `-o`-Arguments. |
+| -q | `-q` | Verwenden Sie diese Option, um die Visualisierungen für die Zelle auszuschalten. Wenn Sie den Inhalt einer Zelle nicht automatisch visualisieren, sondern einfach als Dataframe erfassen möchten, verwenden Sie `-q -o <VARIABLE>`. Wenn Sie Visualisierungen deaktivieren möchten, ohne die Ergebnisse zu erfassen (z.B. zum Ausführen einer SQL-Abfrage mit Nebeneffekten, wie etwa einer `CREATE TABLE`-Anweisung), verwenden Sie einfach `-q` ohne Angabe eines `-o`-Arguments. |
 | -m | `-m <METHOD>` | Dabei ist **METHOD** entweder **take** oder **sample** (der Standardwert ist **take**). Wenn die Methode **take** ist, wählt der Kernel Elemente von der obersten Position des Resultdatasets gemäß MAXROWS (weiter unten in dieser Tabelle beschrieben). Wenn die Methode **sample** ist, wählt der Kernel nach dem Zufallsprinzip Elemente des Datasets gemäß des `-r`-Parameters, der in dieser Tabelle beschrieben wird. |
-| -r | `-r <FRACTION>` | Hier ist **FRACTION** eine Gleitkommazahl zwischen 0,0 und 1,0. Wenn die Beispielmethode für die SQL-Abfrage `sample` ist, dann wählt der Kernel nach dem Zufallsprinzip den angegebenen Bruchteil der Elemente des Resultsets für Sie aus. Wenn Sie z. B. eine SQL-Abfrage mit den Argumenten `-m sample -r 0.01` ausführen, wird 1 % der Ergebniszeilen nach dem Zufallsprinzip entnommen. |
-| -n | `-n <MAXROWS>` | **MAXROWS** ist ein Ganzzahlwert. Der Kernel schränkt die Anzahl der Ausgabezeilen auf **MAXROWS** ein. Wenn **MAXROWS** eine negative Zahl ist, z. B. **-1**, dann ist die Anzahl der Zeilen im Resultset nicht begrenzt. |
+| -r | `-r <FRACTION>` | Hier ist **FRACTION** eine Gleitkommazahl zwischen 0,0 und 1,0. Wenn die Methode für die SQL-Abfrage `sample` ist, dann wählt der Kernel nach dem Zufallsprinzip den angegebenen Bruchteil der Elemente des Resultsets aus. Wenn Sie z.B. eine SQL-Abfrage mit den Argumenten `-m sample -r 0.01` ausführen, wird 1% der Ergebniszeilen nach dem Zufallsprinzip entnommen. |
+| -n | `-n <MAXROWS>` | **MAXROWS** ist ein Ganzzahlwert. Der Kernel schränkt die Anzahl der Ausgabezeilen auf **MAXROWS** ein. Wenn **MAXROWS** eine negative Zahl ist, z.B. **-1**, dann ist die Anzahl der Zeilen im Resultset nicht begrenzt. |
 
 **Beispiel:**
 
@@ -106,9 +108,9 @@ Die Verwendung der neuen Kernel bringt einige Vorteile mit sich.
 
 Die obige Anweisung führt Folgendes aus:
 
-* Wählt alle Datensätze aus **hivesampletable**.
+* Wählt alle Datensätze aus **hivesampletable** aus.
 * Da wir -q verwenden, wird die automatische Visualisierung deaktiviert.
-* Da wir `-m sample -r 0.1 -n 500` verwenden, werden nach dem Zufallsprinzip 10 % der Zeilen in „hivesampletable“ ausgewählt und die Größe des Resultsets auf 500 Zeilen beschränkt.
+* Da wir `-m sample -r 0.1 -n 500` verwenden, werden nach dem Zufallsprinzip 10% der Zeilen in „hivesampletable“ ausgewählt, und die Größe des Resultsets wird auf 500 Zeilen beschränkt.
 * Da wir `-o query2` verwendet haben, wird schließlich auch die Ausgabe in einem Dataframe namens **query2** gespeichert.
 	
 
@@ -128,7 +130,7 @@ Sie können das Notebook **00 - [READ ME FIRST] Spark Magic Kernel Features** im
 
 ## Wo werden die Notebooks gespeichert?
 
-Jupyter Notebooks werden in dem Speicherkonto gespeichert, das mit dem Cluster unter dem Ordner **/HdiNotebooks** verknüpft ist. Der Zugriff auf Notebooks, Textdateien und Ordner, die Sie in Jupyter erstellen, erfolgt von WASB aus. Wenn Sie z. B. Jupyter verwenden, um einen Ordner **myfolder** und ein Notebook **myfolder/mynotebook.ipynb** zu erstellen, können Sie auf dieses Notebook unter `wasbs:///HdiNotebooks/myfolder/mynotebook.ipynb` zugreifen. Das gilt auch umgekehrt, d. h. wenn Sie ein Notebook direkt in Ihr Speicherkonto unter `/HdiNotebooks/mynotebook1.ipynb` hochladen, ist das Notebook auch von Jupyter aus sichtbar. Die Notebooks verbleiben im Speicherkonto, auch nachdem der Cluster gelöscht wurde.
+Jupyter Notebooks werden in dem Speicherkonto gespeichert, das mit dem Cluster unter dem Ordner **/HdiNotebooks** verknüpft ist. Der Zugriff auf Notebooks, Textdateien und Ordner, die Sie in Jupyter erstellen, erfolgt von WASB aus. Wenn Sie z.B. Jupyter verwenden, um einen Ordner **myfolder** und ein Notebook **myfolder/mynotebook.ipynb** zu erstellen, können Sie auf dieses Notebook unter `wasbs:///HdiNotebooks/myfolder/mynotebook.ipynb` zugreifen. Das gilt auch umgekehrt, d.h. wenn Sie ein Notebook direkt in Ihr Speicherkonto unter `/HdiNotebooks/mynotebook1.ipynb` hochladen, ist das Notebook auch von Jupyter aus sichtbar. Die Notebooks verbleiben im Speicherkonto, auch nachdem der Cluster gelöscht wurde.
 
 Die Art, in der Notebooks im Speicherkonto gespeichert werden, ist mit HDFS kompatibel. Wenn Sie also eine SSH-Verbindung mit dem Cluster herstellen, können Sie Dateiverwaltungsbefehle wie die folgenden verwenden:
 
@@ -137,7 +139,7 @@ Die Art, in der Notebooks im Speicherkonto gespeichert werden, ist mit HDFS komp
 	hdfs dfs –copyFromLocal example.ipynb /HdiNotebooks   # Upload a notebook example.ipynb to the root folder so it’s visible from Jupyter
 
 
-Falls Probleme beim Zugriff auf das Speicherkonto für den Cluster auftreten, werden die Notebooks ebenfalls im Hauptknoten gespeichert `/var/lib/jupyter`.
+Falls Probleme beim Zugriff auf das Speicherkonto für den Cluster auftreten, werden die Notebooks ebenfalls auf dem Hauptknoten `/var/lib/jupyter` gespeichert.
 
 ## Unterstützte Browser
 Für HDInsight Spark-Cluster ausgeführte Jupyter Notebooks werden nur von Google Chrome unterstützt.
@@ -188,4 +190,4 @@ Die neuen Kernels befinden sich in der Entwicklungsphase und werden mit der Zeit
 
 * [Track and debug jobs running on an Apache Spark cluster in HDInsight (Nachverfolgen und Debuggen von Aufträgen in einem Apache Spark-Cluster unter HDInsight)](hdinsight-apache-spark-job-debugging.md)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0831_2016-->

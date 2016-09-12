@@ -1,49 +1,66 @@
 <properties
- pageTitle="Verwenden von Logik-App-Vorlagen in Azure App Service | Microsoft Azure"
+ pageTitle="Logik-App-Vorlagen | Microsoft Azure"
  description="Erfahren Sie, wie Sie zuvor erstellte Logik-App-Vorlagen verwenden, die Ihnen beim Einstieg helfen."
  authors="kevinlam1"
  manager="dwrede"
  editor=""
- services="logic-apps"
+ services="app-service\logic"
  documentationCenter=""/>
 
 <tags
-	ms.service="logic-apps"
+	ms.service="app-service-logic"
 	ms.workload="integration"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/31/2016"
+	ms.date="08/24/2016"
 	ms.author="klam"/>
 
-# Verwenden von Logik-App-Vorlagen
+# Logik-App-Vorlagen
 
->[AZURE.NOTE] Diese Version des Artikels gilt für die Logik-Apps-Schemaversion 2014-12-01-preview.
+## Verwenden von Logik-App-Vorlagen
 
-Bei Logik-App-Vorlagen handelt es sich um eine Gruppe von geordneten, vorgefertigten Logik-Apps, mit denen Sie schnell in die Erstellung eigener Integrationsanwendungen einsteigen können.
+Eine Logik-App-Vorlage ist eine vorgefertigte Logik-App, mit der Sie schnell mit dem Erstellen Ihrer eigenen Workflows beginnen können.
 
-Diese Vorlagen zeigen, wie einige der vielen Connector im Marketplace verwendet werden. Außerdem eignen sich die Vorlagen gut, um verschiedene Muster kennenzulernen, die mit Logik-Apps erstellt werden können. Sie können diese Vorlagen unverändert nutzen oder Ihrem Szenario anpassen.
+Diese Vorlagen eignen sich gut, um verschiedene Muster kennenzulernen, die mit Logik-Apps erstellt werden können. Sie können diese Vorlagen unverändert nutzen oder Ihrem Szenario anpassen.
 
-Rufen Sie zum Einstieg in die Verwendung einer Logik-App-Vorlage den Marketplace auf, suchen Sie nach „Logik-App-Vorlage“, und wählen Sie dann eine der Logik-App-Vorlagen aus der geordneten Liste. Oder wählen Sie beim Erstellen einer neuen Logik-App „Trigger und Aktionen“ und aus dem Satz von Logik-App-Vorlagen im Designer eine Vorlage aus.
+## Übersicht über die verfügbaren Vorlagen
 
-## Verfügbare Beispielvorlagen
+Auf der Logik-App-Plattform wurden bereits zahlreiche Vorlagen veröffentlicht. Einige Beispielkategorien sowie die darin aufgeführten Connectorarten sind nachfolgend aufgeführt.
 
-### SaaS- und Cloud-Vorlagen
-Beispiele für die Integration verschiedener SaaS-Connectors. Hier finden Sie verschiedene Beispiele für die Integration von Salesforce, Box, SharePoint und anderen Diensten.
+### Enterprise Cloud-Vorlagen
+Vorlagen für die Integration von Dynamics CRM, Salesforce, Box, Azure Blob und anderen Connectors für die Anforderungen Ihrer Unternehmenscloud. Mit diesen Vorlagen können Sie beispielsweise Ihre Leads organisieren und Ihre Unternehmensdateidaten sichern.
 
-### BizTalk-Vorlagen
-Konfigurationen für BizTalk VETR-Pipelines (überprüfen, extrahieren, transformieren, weiterleiten) sowie EDIFACT-, X12- und AS2-Nachrichtenverarbeitung.
+### Enterprise Integration Pack-Vorlagen
+Konfigurationen von VETER-Pipelines (validate, extract, transform, enrich, route: überprüfen, extrahieren, transformieren, erweitern, weiterleiten) die ein X12 EDI-Dokument über AS2 erhalten und in XML umwandeln sowie X12 und AS2-Nachrichten verarbeiten.
 
-### Vorlagen für Nachrichtenweiterleitung
-Muster für die Nachrichtenweiterleitung einschließlich synchronem Request-Response, Weiterleitung von Nachrichten über verschiedene Protokolle hinweg und inhaltsbasierter Weiterleitung.
+### Vorlagen für Protokollmuster
+Diese Vorlagen bestehen aus Logik-Apps, die Protokollmuster wie die Anforderungsantwort über HTTP sowie Integrationen über FTP und SFTP enthalten. Verwenden Sie diese im vorhandenen Zustand oder als Grundlage für die Erstellung komplexerer Protokollmuster.
 
-### DevOps-Vorlagen
-Automatisierte Prozesse zur Verarbeitung von allgemeinen Azure-Prozeduren, die Sie möglicherweise in der Regel manuell ausführen oder für die Sie benutzerdefinierten Code schreiben mussten. Es gibt Vorlagen, die die Verwendung von wiederkehrenden Prozessen behandeln, wie z. B. Neustart eines virtuellen Computer an jedem Wochenende oder Benachrichtigungen beim Hinzufügen neuer RBAC-Benutzer zu einer Ressource.
+### Persönliche Produktivitätsvorlagen
+Vorlagen zum Steigern der persönlichen Produktivität enthalten Vorlagen, mit denen Sie tägliche Erinnerungen festlegen, Arbeitslisten für wichtige Arbeitsaufgaben erstellen und langwierige Aufgaben so automatisieren, dass nur noch die Genehmigung des Benutzers benötigt wird.
 
 ### Vorlagen für die Cloud für Consumer
-Einfache Vorlagen für die Integration in soziale Netzwerkdienste, wie z. B. Twitter, Yammer und E-Mail. Dies können ausgezeichnete Produktivitäts-Anwendungen sein, die fortwährend auf Aktualisierungen überwachen und Aktionen ausführen, wenn neue Elemente verfügbar sind.
+Einfache Vorlagen für die Integration in Social Media Services wie Twitter, Slack und E-Mail, mit denen Sie Marketing-Initiativen in sozialen Medien verstärken können. Dazu zählen auch Vorlagen zum Cloudkopieren, mit denen Sie die Produktivität steigern, da Sie die Zeit für wiederkehrende Aufgaben sparen.
 
-Nachdem Sie eine der Vorlagen ausgewählt haben, führen Sie die Bereitstellungsschritte wie beim Erstellen Ihrer eigenen Logik-App aus. Die einzelnen Schritte werden unter [Erstellen einer Logik-App zum Verbinden von SaaS-Diensten](app-service-logic-create-a-logic-app.md) beschrieben.
- 
+## Erstellen einer Logik-App mithilfe einer Vorlage 
 
-<!---HONumber=AcomDC_0803_2016-->
+Um mit der Verwendung von Logik-App-Vorlagen zu beginnen, wechseln Sie zum Logik-App-Designer. Wenn Sie den Designer über eine vorhandene Logik-App öffnen, wird die Logik-App automatisch in Ihrer Designeransicht geladen. Wenn Sie jedoch eine neue Logik-App erstellen, sehen Sie den folgenden Bildschirm. ![](../../includes/media/app-service-logic-templates/template7.png)
+
+In diesem Bildschirm können Sie wahlweise mit einer leeren Logik-App oder einer vorgefertigten Vorlage beginnen. Wenn Sie eine der Vorlagen auswählen, erhalten Sie weitere Informationen darüber. In diesem Beispiel verwenden wir die Vorlage *When a new file is created in Dropbox, copy it to OneDrive* (Wenn eine neue Datei in Dropbox erstellt wird, in OneDrive kopieren). ![](../../includes/media/app-service-logic-templates/template2.png)
+
+Wenn Sie die Vorlage verwenden möchten, wählen Sie einfach die Schaltfläche *Verwenden der Vorlage*. Je nachdem, welche Connectors die Vorlage verwendet, werden Sie zur Anmeldung bei Ihren Konten aufgefordert. Wenn Sie zuvor bereits eine Verbindung zu diesen Connectors hergestellt haben, können Sie wie folgt fortfahren. ![](../../includes/media/app-service-logic-templates/template3.png)
+
+Wenn die Verbindung hergestellt wurde und Sie *Weiter* ausgewählt haben, wird die Logik-App in der Designeransicht geöffnet. ![](../../includes/media/app-service-logic-templates/template4.png)
+
+Im obigen Beispiel sind (wie bei vielen Vorlagen) einige der erforderlichen Eigenschaftsfelder in den Connectors ausgefüllt. Jedoch muss möglicherweise noch ein Wert eingegeben werden, bevor die Logik-App ordnungsgemäß bereitgestellt werden kann. Wenn Sie versuchen, sie ohne Ausfüllen der Pflichtfelder bereitzustellen, wird eine Fehlermeldung angezeigt.
+
+Wenn Sie in die Vorlagenansicht zurückkehren möchten, wählen Sie die Schaltfläche *Vorlagen* in der oberen Navigationsleiste. Wenn Sie zur Vorlagenansicht zurückwechseln, werden nicht gespeicherte Fortschritte verworfen. Bevor Sie zur Vorlagenansicht zurückwechseln, werden Sie mit einer Meldung davor gewarnt. ![](../../includes/media/app-service-logic-templates/template5.png)
+
+## Bereitstellen einer Logik-App aus einer Vorlage
+
+Wenn Sie Ihre Vorlage geladen und alle gewünschten Änderungen vorgenommen haben, wählen Sie die Schaltfläche „Speichern“ in der oberen linken Ecke. So wird Ihre Logik-App gespeichert veröffentlicht. ![](../../includes/media/app-service-logic-templates/template6.png)
+
+Wenn Sie weitere Informationen über das Hinzufügen weiterer Schritte zu einer vorhandenen Logik-App-Vorlage oder das Bearbeiten im Allgemeinen wünschen, können Sie unter [Erstellen einer Logik-App](app-service-logic-create-a-logic-app.md) mehr erfahren.
+
+<!---HONumber=AcomDC_0831_2016-->

@@ -18,7 +18,6 @@
 
 # Verwalten benutzerdefinierter Azure DevTest Labs-Images zum Erstellen virtueller Computer
 
-## Übersicht
 Nachdem Sie [ein Lab erstellt](devtest-lab-create-lab.md) haben, können Sie [diesem Lab virtuelle Computer (VMs) hinzufügen](devtest-lab-add-vm-with-artifacts.md). Wenn Sie einen virtuellen Computer erstellen, geben Sie eine *Basis* an, was entweder ein *benutzerdefiniertes Image* oder *Marketplace-Image* sein kann. In diesem Artikel erfahren Sie, wie Sie [ein benutzerdefiniertes Image aus einer VHD erstellen](#create-a-custom-image-from-a-vhd), damit Sie anschließend aus diesem benutzerdefinierten Image einen virtuellen Computer erstellen können. Darüber hinaus können Sie auch [aus einem virtuellen Computer ein benutzerdefiniertes Image erstellen](#create-a-custom-image-from-a-vm), um anschließend schnell einen virtuellen Computer erstellen zu können.
 
 ## Erstellen eines benutzerdefinierten Images aus einer VHD-Datei
@@ -28,7 +27,7 @@ In diesem Abschnitt erfahren Sie, wie Sie ein benutzerdefiniertes Image aus eine
 
 1. Melden Sie sich auf dem [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) an.
 
-1. Wählen Sie **Durchsuchen**, und wählen Sie anschließend in der Liste **DevTest Labs** aus.
+1. Wählen Sie **Durchsuchen** und dann in der Liste **DevTest Labs**.
 
 1. Wählen Sie in der Liste der Labs das gewünschte Lab aus.
 
@@ -99,6 +98,8 @@ Wenn Sie über einen bereits konfigurierten virtuellen Computer verfügen, könn
 
 1. Wählen Sie **OK**, wenn Sie mit der Erstellung des benutzerdefinierten Images fertig sind.
 
+[AZURE.INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
+
 ## Verwandte Blogbeiträge
 
 - [Custom images or formulas? (Benutzerdefinierte Images oder Formeln?)](https://blogs.msdn.microsoft.com/devtestlab/2016/04/06/custom-images-or-formulas/)
@@ -108,4 +109,4 @@ Wenn Sie über einen bereits konfigurierten virtuellen Computer verfügen, könn
 
 Nachdem Sie ein benutzerdefiniertes Image zum Erstellen eines virtuellen Computers hinzugefügt haben, besteht der nächste Schritt darin, [Ihrem Lab einen virtuellen Computer hinzuzufügen](./devtest-lab-add-vm-with-artifacts.md).
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->

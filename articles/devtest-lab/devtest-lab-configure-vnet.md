@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/01/2016"
+	ms.date="08/25/2016"
 	ms.author="tarcher"/>
 
 # Konfigurieren eines virtuellen Netzwerks für ein Lab
@@ -65,8 +65,10 @@ Die folgenden Schritte führen Sie durch das Hinzufügen eines vorhandenen virtu
 
 1. Jetzt ist das virtuelle Netzwerk konfiguriert und kann beim Erstellen eines neuen virtuellen Computers ausgewählt werden. Dies wird im Artikel [Hinzufügen einer VM mit Artefakten zu einem Lab](devtest-lab-add-vm-with-artifacts.md) erläutert.
 
+[AZURE.INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
+
 ## Nächste Schritte
 
 Nachdem Sie Ihrem Lab die gewünschten virtuellen Netzwerke hinzugefügt haben, besteht der nächste Schritt darin, [Ihrem Lab einen virtuellen Computer hinzuzufügen](devtest-lab-add-vm-with-artifacts.md).
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0831_2016-->

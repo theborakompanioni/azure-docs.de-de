@@ -14,7 +14,7 @@
   ms.tgt_pltfrm="na"
   ms.devlang="na"
   ms.topic="article"
-  ms.date="05/10/2016"
+  ms.date="08/22/2016"
   ms.author="jimpark;trinadhk;pullabhk; markgal"/>
 
 # Vorbereiten der Sicherung von Workloads per Azure Backup Server
@@ -169,7 +169,7 @@ Azure Backup Server muss mit dem Azure Backup-Dienst verbunden sein, um erfolgre
 
 Gleichzeitig muss das Azure-Abonnement einen fehlerfreien Zustand aufweisen. Um den Status Ihres Abonnements zu ermitteln und es zu verwalten, melden Sie sich beim [Abonnementportal](https://account.windowsazure.com/Subscriptions) an.
 
-Nachdem Sie den Status der Azure-Verbindung und des Azure-Abonnements kennen, können Sie anhand der Tabelle unten ermitteln, welche Auswirkungen mit einer Sicherungs-/Wiederherstellungsfunktion verbunden sind.
+Wenn Sie den Status der Azure-Verbindung und des Azure-Abonnements kennen, können Sie anhand der folgenden Tabelle ermitteln, welche Auswirkungen sie auf die Sicherungs-/Wiederherstellungsfunktion hat.
 
 | Verbindungszustand | Azure-Abonnement | Sicherung auf Azure| Sicherung auf einen Datenträger | Wiederherstellung von Azure | Wiederherstellung von einem Datenträger |
 | -------- | ------- | --------------------- | ------------------- | --------------------------- | ----------------------- |
@@ -189,7 +189,7 @@ Wenn Sie über eine Firewall oder einen Proxy verfügen, die bzw. der den Zugrif
 - *.microsoftonline.com
 - *.windows.net
 
-Nach dem Wiederherstellen der Verbindung mit Azure für den Azure Backup Server-Computer wird anhand des Azure-Abonnementstatus ermittelt, welche Vorgänge durchgeführt werden können. Die obige Tabelle enthält Details zu den Vorgängen, die nach dem „Verbinden“ des Computers zulässig sind.
+Nach dem Wiederherstellen der Verbindung mit Azure für den Azure Backup Server-Computer wird anhand des Azure-Abonnementstatus ermittelt, welche Vorgänge ausgeführt werden können. Die obige Tabelle enthält Details zu den Vorgängen, die nach dem „Verbinden“ des Computers zulässig sind.
 
 ### Behandeln von Abonnementstatus
 
@@ -214,4 +214,4 @@ In den folgenden Artikeln finden Sie zusätzliche Informationen zum Workloadschu
 - [SharePoint Server-Sicherung](backup-azure-backup-sharepoint.md)
 - [Sicherung eines anderen Servers](backup-azure-alternate-dpm-server.md)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0831_2016-->

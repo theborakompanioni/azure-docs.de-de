@@ -99,8 +99,6 @@ Die folgenden Features der .NET-API von Service Bus werden bei Verwendung von AM
 
 -   Senden mithilfe eines Übertragungsziels
 
--   Skaliertes Empfangen
-
 Es gibt bei Verwenden von AMQP im Vergleich zum Standardprotokoll auch einige kleine Unterschiede beim Verhalten der .NET-API von Service Bus:
 
 -   Die [OperationTimeout][] -Eigenschaft wird ignoriert.
@@ -139,4 +137,4 @@ Möchten Sie mehr erfahren? Nutzen Sie die folgenden Links:
 [AMQP 1.0-Unterstützung für partitionierte Warteschlangen und Themen von Service Bus]: service-bus-partitioned-queues-and-topics-amqp-overview.md
 [AMQP in Service Bus für Windows Server]: https://msdn.microsoft.com/library/dn574799.aspx
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->

@@ -77,7 +77,7 @@ Dies sind die wichtigsten Schritte des Tokendienstmusters:
 
 Der Tokendienst kann die Gültigkeitsdauer für das Token wie gewünscht festlegen. Wenn das Token abläuft, trennt IoT Hub die Geräteverbindung. Das Gerät muss dann ein neues Token vom Tokendienst anfordern. Wenn Sie eine kurze Ablaufzeit verwenden, erhöht sich die Last für das Gerät und den Tokendienst gleichermaßen.
 
-Damit ein Gerät eine Verbindung mit Ihrem Hub herstellen kann, müssen Sie es der IoT Hub-Geräteidentitätsregistrierung hinzufügen – auch wenn das Gerät für die Verbindung ein Token und keinen Geräteschlüssel verwendet. Aus diesem Grund können Sie weiterhin die Zugriffssteuerung pro Gerät nutzen, indem Sie Geräteidentitäten in der [IoT Hub-Identitätsregistrierung][lnk-devguide-identityregistry] aktivieren oder deaktivieren, wenn sich das Gerät mit einem Token authentifiziert. Dies verringert die Risiken der Verwendung von Token mit langen Ablaufzeiten.
+Damit ein Gerät eine Verbindung mit Ihrem Hub herstellen kann, müssen Sie es der IoT Hub-Geräteidentitätsregistrierung hinzufügen – auch wenn das Gerät für die Verbindung ein Token und keinen Geräteschlüssel verwendet. Aus diesem Grund können Sie weiterhin die Zugriffssteuerung pro Gerät nutzen, indem Sie Geräteidentitäten in der [IoT Hub-Identitätsregistrierung][lnk-devguide-identityregistry] aktivieren oder deaktivieren, wenn sich das Gerät mit einem Token authentifiziert. Dies verringert die Risiken der Verwendung von Token mit langen Ablaufzeiten.
 
 ### Vergleich mit einem benutzerdefinierten Gateway
 
@@ -138,4 +138,4 @@ Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 [lnk-sas-token]: iot-hub-sas-tokens.md
 [lnk-securing]: iot-hub-security-ground-up.md
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0831_2016-->

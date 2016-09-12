@@ -13,11 +13,11 @@
    ms.tgt_pltfrm="na"
    ms.devlang="na"
    ms.topic="article"
-   ms.date="06/27/2016"
+   ms.date="08/31/2016"
    ms.author="andkjell"/>
 
 # Azure AD Connect Sync: Grundlagen der Architektur
-In diesem Thema wird die grundlegende Architektur für Azure AD Connect Sync beschrieben. In vielen Punkten ähnelt sie den Vorgängern MIIS 2003, ILM 2007 und FIM 2010. Azure AD Connect Sync ist die Weiterentwicklung dieser Technologien. Wenn Sie sich mit einer dieser früheren Technologien auskennen, wird Ihnen auch der Inhalt dieses Themas vertraut sein. Dieses Thema ist für Sie auch geeignet, falls Sie sich mit der Synchronisierung noch nicht auskennen. Es ist jedoch nicht erforderlich, alle Details dieses Themas zu kennen, um erfolgreich Anpassungen an Azure AD Connect Sync (in diesem Thema als „Synchronisierungsmodul“ bezeichnet) vornehmen zu können.
+In diesem Thema wird die grundlegende Architektur für Azure AD Connect Sync beschrieben. In vielen Punkten ähnelt sie den Vorgängern MIIS 2003, ILM 2007 und FIM 2010. Azure AD Connect Sync ist die Weiterentwicklung dieser Technologien. Wenn Sie sich mit einer dieser früheren Technologien auskennen, wird Ihnen auch der Inhalt dieses Themas vertraut sein. Dieses Thema ist für Sie auch geeignet, falls Sie sich mit der Synchronisierung noch nicht auskennen. Es ist jedoch nicht erforderlich, alle Details dieses Themas zu kennen, um erfolgreich Anpassungen an Azure AD Connect Sync (in diesem Thema als „Synchronisierungsmodul“ bezeichnet) vornehmen zu können.
 
 ## Architektur
 Das Synchronisierungsmodul erstellt eine integrierte Ansicht der Objekte, die in mehreren verbundenen Datenquellen gespeichert sind, und verwaltet die Identitätsinformationen in diesen Datenquellen. Diese integrierte Ansicht wird anhand der Identitätsinformationen ermittelt, die aus verbundenen Datenquellen abgerufen werden, sowie mit einer Gruppe von Regeln, mit denen die Verarbeitung dieser Informationen bestimmt wird.
@@ -35,7 +35,7 @@ Daten können in beide Richtungen fließen, aber nicht in beide Richtungen gleic
 
 Zum Konfigurieren eines Connectors geben Sie die Objekttypen an, die Sie synchronisieren möchten. Mit dem Angeben der Objekttypen wird der Bereich der Objekte definiert, die in den Synchronisierungsvorgang einbezogen sind. Der nächste Schritt ist das Auswählen der Attribute, die synchronisiert werden sollen. Dies wird als Aufnahmeliste für Attribute bezeichnet. Diese Einstellungen können als Reaktion auf Änderungen Ihrer Geschäftsregeln jederzeit geändert werden. Wenn Sie den Azure AD Connect-Installations-Assistenten verwenden, werden diese Einstellungen für Sie konfiguriert.
 
-Um Objekte auf eine verbundene Datenquelle zu exportieren, muss die Aufnahmeliste für Attribute mindestens die Attribute enthalten, die zum Erstellen eines bestimmten Objekttyps in einer verbundenen Datenquelle erforderlich sind. Das Attribut **sAMAccountName** muss beispielsweise in die Aufnahmeliste für Attribute eingefügt werden, um ein Benutzerobjekt nach Active Directory zu exportieren. Der Grund ist, dass für alle Benutzerobjekte in Active Directory das Attribut **sAMAccountName** definiert sein muss. Diese Aufgabe wird vom Installations-Assistenten ebenfalls für Sie übernommen.
+Um Objekte auf eine verbundene Datenquelle zu exportieren, muss die Aufnahmeliste für Attribute mindestens die Attribute enthalten, die zum Erstellen eines bestimmten Objekttyps in einer verbundenen Datenquelle erforderlich sind. Das Attribut **sAMAccountName** muss beispielsweise in die Aufnahmeliste für Attribute eingefügt werden, um ein Benutzerobjekt nach Active Directory zu exportieren. Der Grund ist, dass für alle Benutzerobjekte in Active Directory das Attribut **sAMAccountName** definiert sein muss. Diese Konfiguration wird ebenfalls vom Installations-Assistenten für Sie vorgenommen.
 
 Wenn die verbundene Datenquelle zum Organisieren von Objekten strukturelle Komponenten nutzt, z. B. Partitionen oder Container, können Sie die Bereiche in der verbundenen Datenquelle begrenzen, die für eine bestimmte Lösung verwendet werden.
 
@@ -98,7 +98,7 @@ Die folgende Abbildung zeigt, wie Sie ein Exportobjekt erstellen, indem Sie Iden
 
 ![Arch4](./media/active-directory-aadconnectsync-understanding-architecture/arch4.png)
 
-Das Synchronisierungsmodul bestätigt den Export des Objekts, indem das Objekt erneut aus der verbundenen Datenquelle importiert wird. Exportobjekte werden zu Importobjekten, sobald das Synchronisierungsmodul diese im Rahmen des nächsten Importvorgangs von der verbundenen Datenquelle empfängt.
+Das Synchronisierungsmodul bestätigt den Export des Objekts, indem das Objekt erneut aus der verbundenen Datenquelle importiert wird. Exportobjekte werden zu Importobjekten, wenn das Synchronisierungsmodul diese im Rahmen des nächsten Importvorgangs von der verbundenen Datenquelle empfängt.
 
 ### Platzhalter
 Das Synchronisierungsmodul verwendet zum Speichern von Objekten einen flachen Namespace. Für einige verbundene Datenquellen, z. B. Active Directory, wird aber ein hierarchischer Namespace verwendet. Beim Transformieren von Informationen aus einem hierarchischen Namespace in einen flachen Namespace nutzt das Synchronisierungsmodul Platzhalter, um die Hierarchie zu erhalten.
@@ -129,7 +129,7 @@ Ein einzelnes Connectorbereichsobjekt kann nur mit einem einzelnen Metaverseobje
 
 Die Verknüpfungsbeziehung zwischen dem Stagingobjekt und einem Metaverseobjekt ist dauerhafter Art und kann nur mit Regeln entfernt werden, die Sie angeben.
 
-Ein getrenntes Objekt ist ein Stagingobjekt, das nicht mit einem Metaverseobjekt verknüpft ist. Die Attributwerte eines getrennten Objekts werden im Metaverse nicht weiter verarbeitet. Dies bedeutet, dass die Attributwerte des entsprechenden Objekts in der verbundenen Datenquelle vom Synchronisierungsmodul nicht aktualisiert werden.
+Ein getrenntes Objekt ist ein Stagingobjekt, das nicht mit einem Metaverseobjekt verknüpft ist. Die Attributwerte eines getrennten Objekts werden im Metaverse nicht weiter verarbeitet. Die Attributwerte des entsprechenden Objekts in der verbundenen Datenquelle werden vom Synchronisierungsmodul nicht aktualisiert.
 
 Indem Sie getrennte Objekte verwenden, können Sie Identitätsinformationen im Synchronisierungsmodul speichern und zu einem späteren Zeitpunkt verarbeiten. Das Beibehalten eines Stagingobjekts als getrenntes Objekt im Connectorbereich hat viele Vorteile. Da das System die erforderlichen Informationen zu diesem Objekt schon bereitgestellt hat, ist es nicht erforderlich, während des nächsten Importvorgangs von der verbundenen Datenquelle erneut eine Darstellung dieses Objekts zu erstellen. So verfügt das Synchronisierungsmodul immer über eine vollständige Momentaufnahme der verbundenen Datenquelle. Dies gilt auch, wenn gerade keine Verbindung mit der verbundenen Datenquelle besteht. Getrennte Objekte können in verknüpfte Objekte konvertiert werden (und umgekehrt). Dies hängt von den Regeln ab, die Sie angeben.
 
@@ -155,7 +155,7 @@ Die folgende Abbildung zeigt, wo die einzelnen Prozesse stattfinden, wenn Identi
 ### Importvorgang
 Während des Importvorgangs wertet das Synchronisierungsmodul Aktualisierungen der Identitätsinformationen aus. Das Synchronisierungsmodul vergleicht die von der verbundenen Datenquelle empfangenen Identitätsinformationen mit den Identitätsinformationen zu einem Stagingobjekt und ermittelt, ob für das Stagingobjekt Updates erforderlich sind. Falls das Stagingobjekt mit neuen Daten aktualisiert werden muss, wird das Stagingobjekt mit der Kennzeichnung „Import steht aus“ versehen.
 
-Indem Stagingobjekte vor der Synchronisierung im Connectorbereich bereitgestellt werden, kann das Synchronisierungsmodul nur die Identitätsinformationen verarbeiten, die sich geändert haben. Dies hat folgende wichtige Vorteile:
+Indem Stagingobjekte vor der Synchronisierung im Connectorbereich bereitgestellt werden, kann das Synchronisierungsmodul nur die Identitätsinformationen verarbeiten, die sich geändert haben. Dieser Prozess hat folgende Vorteile:
 
 - **Effiziente Synchronisierung**: Die Datenmenge, die während der Synchronisierung verarbeitet wird, wird verringert.
 - **Effiziente Neusynchronisierung**: Sie können ändern, wie das Synchronisierungsmodul die Identitätsinformationen verarbeitet, ohne für das Synchronisierungsmodul erneut eine Verbindung mit der Datenquelle herzustellen.
@@ -172,8 +172,8 @@ Wenn das Synchronisierungsmodul ein Stagingobjekt ermittelt, das dem im Connecto
 
 Stagingobjekte mit aktualisierten Daten werden mit der Kennzeichnung „Import steht aus“ versehen. Es sind verschiedene Arten von ausstehenden Importen verfügbar. Je nach Ergebnis des Importvorgangs verfügt ein Stagingobjekt im Connectorbereich über einen der folgenden ausstehenden Importtypen:
 
-- **Keine**: Es sind keine Änderungen von Attributen des Stagingobjekts verfügbar. Vom Synchronisierungsmodul wird dies nicht als „Import steht aus“ gekennzeichnet.
-- **Hinzufügen**: Das Stagingobjekt ist ein neues Importobjekt im Connectorbereich. Vom Synchronisierungsmodul wird dies als ausstehender Import zur weiteren Verarbeitung im Metaverse gekennzeichnet.
+- **Keine**: Es sind keine Änderungen von Attributen des Stagingobjekts verfügbar. Vom Synchronisierungsmodul wird dieser Typ nicht als „Import steht aus“ gekennzeichnet.
+- **Hinzufügen**: Das Stagingobjekt ist ein neues Importobjekt im Connectorbereich. Vom Synchronisierungsmodul wird dieser Typ als ausstehender Import zur weiteren Verarbeitung im Metaverse gekennzeichnet.
 - **Aktualisieren**: Das Synchronisierungsmodul findet ein entsprechendes Stagingobjekt im Connectorbereich und kennzeichnet es als ausstehenden Import, sodass die Aktualisierungen der Attribute im Metaverse verarbeitet werden können. Die Aktualisierungen umfassen auch die Umbenennung von Objekten.
 - **Löschen**: Das Synchronisierungsmodul findet ein entsprechendes Stagingobjekt im Connectorbereich und kennzeichnet es als ausstehenden Import, damit das verknüpfte Objekt gelöscht werden kann.
 - **Löschen/Hinzufügen**: Das Synchronisierungsmodul findet ein entsprechendes Stagingobjekt im Connectorbereich, aber die Objekttypen stimmen nicht überein. In diesem Fall wird eine Änderung vom Typ „Löschen/Hinzufügen“ bereitgestellt. Bei einer Änderung vom Typ „Löschen/Hinzufügen“ wird für das Synchronisierungsmodul angegeben, dass eine vollständige Neusynchronisierung dieses Objekts durchgeführt werden muss. Der Grund ist, dass für dieses Objekt andere Regelsätze gelten, wenn sich der Objekttyp ändert.
@@ -212,7 +212,7 @@ Der Importattributfluss tritt für alle Importobjekte auf, die über neue Daten 
 
 **Ausgehende Synchronisierung**
 
-Bei der ausgehenden Synchronisierung werden Exportobjekte aktualisiert, wenn ein Metaverseobjekt geändert, aber nicht gelöscht wird. Das Ziel der ausgehenden Synchronisierung besteht darin zu ermitteln, ob für Änderungen an Metaverseobjekten Aktualisierungen von Stagingobjekten in den Connectorbereichen erforderlich sind. In einigen Fällen kann sich aufgrund der Änderungen die Anforderung ergeben, dass Stagingobjekte in allen Connectorbereichen aktualisiert werden. Stagingobjekte, die geändert werden, werden als „Export steht aus“ gekennzeichnet und so zu Exportobjekten. Diese Exportobjekte werden anschließend während des Exportvorgangs an die verbundene Datenquelle übertragen.
+Bei der ausgehenden Synchronisierung werden Exportobjekte aktualisiert, wenn ein Metaverseobjekt geändert, aber nicht gelöscht wird. Das Ziel der ausgehenden Synchronisierung besteht darin zu ermitteln, ob für Änderungen an Metaverseobjekten Aktualisierungen von Stagingobjekten in den Connectorbereichen erforderlich sind. In einigen Fällen kann sich aufgrund der Änderungen die Anforderung ergeben, dass Stagingobjekte in allen Connectorbereichen aktualisiert werden. Stagingobjekte, die geändert werden, werden als „Export steht aus“ gekennzeichnet und so zu Exportobjekten. Diese Exportobjekte werden später während des Exportvorgangs an die verbundene Datenquelle übertragen.
 
 Die ausgehende Synchronisierung besteht aus drei Vorgängen:
 
@@ -247,11 +247,11 @@ Das Synchronisierungsmodul speichert Statusinformationen zum Export und Import f
 
 ![Arch7](./media/active-directory-aadconnectsync-understanding-architecture/arch7.png)
 
-Wenn das Synchronisierungsmodul beispielsweise Attribut C mit dem Wert 5 in eine verbundene Datenquelle exportiert, wird im Exportstatusspeicher „C=5“ abgelegt. Jeder weitere Export für dieses Objekt führt zu einem Versuch, „C=5“ erneut in die verbundene Datenquelle zu exportieren, da vom Synchronisierungsmodul angenommen wird, dass dieser Wert nicht dauerhaft auf das Objekt angewendet wurde (es sei denn, von der verbundenen Datenquelle wurde vor Kurzem ein anderer Wert importiert). Der Exportspeicher wird gelöscht, sobald C=5 während eines Importvorgangs für das Objekt empfangen wird.
+Wenn das Synchronisierungsmodul beispielsweise Attribut C mit dem Wert 5 in eine verbundene Datenquelle exportiert, wird im Exportstatusspeicher „C=5“ abgelegt. Jeder weitere Export für dieses Objekt führt zu einem Versuch, „C=5“ erneut in die verbundene Datenquelle zu exportieren, da vom Synchronisierungsmodul angenommen wird, dass dieser Wert nicht dauerhaft auf das Objekt angewendet wurde (es sei denn, von der verbundenen Datenquelle wurde vor Kurzem ein anderer Wert importiert). Der Exportspeicher wird gelöscht, wenn C=5 während eines Importvorgangs für das Objekt empfangen wird.
 
 ## Nächste Schritte
 Weitere Informationen zur Konfiguration der [Azure AD Connect-Synchronisierung](active-directory-aadconnectsync-whatis.md).
 
 Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md).
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0831_2016-->

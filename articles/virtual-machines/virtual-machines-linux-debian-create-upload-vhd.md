@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/09/2016"
+	ms.date="08/24/2016"
 	ms.author="szark"/>
 
 
@@ -36,14 +36,14 @@ In diesem Abschnitt wird davon ausgegangen, dass Sie bereits ein Debian Linux-Be
 
 ## Verwenden von azure-manage zum Erstellen von Debian-VHDs
 
-Zum Generieren von Debian-VHDs für Azure sind Tools verfügbar, z.B. die [azure-manage](https://gitlab.credativ.com/de/azure-manage)-Skripts von [Credativ](http://www.credativ.com/). Dies ist der empfohlene Ansatz, mit dem vermieden werden kann, ein Image von Grund auf neu zu erstellen. Wenn Sie beispielsweise eine Debian 8-VHD erstellen möchten, führen Sie die folgenden Befehle aus, um azure-manage (und Abhängigkeiten) herunterzuladen und das Skript „azure\_build\_image“ auszuführen:
+Zum Generieren von Debian-VHDs für Azure sind Tools verfügbar, z.B. die [azure-manage](https://github.com/credativ/azure-manage)-Skripts von [credativ](http://www.credativ.com/). Dies ist der empfohlene Ansatz, mit dem vermieden werden kann, ein Image von Grund auf neu zu erstellen. Wenn Sie beispielsweise eine Debian 8-VHD erstellen möchten, führen Sie die folgenden Befehle aus, um azure-manage (und Abhängigkeiten) herunterzuladen und das Skript „azure\_build\_image“ auszuführen:
 
 	# sudo apt-get update
 	# sudo apt-get install git qemu-utils mbr kpartx debootstrap
 
 	# sudo apt-get install python3-pip
 	# sudo pip3 install azure-storage azure-servicemanagement-legacy pytest pyyaml
-	# git clone https://gitlab.credativ.com/de/azure-manage.git
+	# git clone https://github.com/credativ/azure-manage.git
 	# cd azure-manage
 	# sudo pip3 install .
 
@@ -60,7 +60,7 @@ Zum Generieren von Debian-VHDs für Azure sind Tools verfügbar, z.B. die [azure
 
 4. Bearbeiten Sie die Datei `/etc/default/grub` und ändern Sie den **GRUB\_CMDLINE\_LINUX**-Parameter wie folgt, um zusätzliche Kernelparameter für Azure einzubinden.
 
-        GRUB_CMDLINE_LINUX="console=tty0 console=ttyS0,115200 earlyprintk=ttyS0,115200 rootdelay=30"
+        GRUB_CMDLINE_LINUX="console=tty0 console=ttyS0,115200n8 earlyprintk=ttyS0,115200 rootdelay=30"
 
 5. Erstellen Sie Grub neu und führen Sie Folgendes aus:
 
@@ -110,4 +110,4 @@ Zum Generieren von Debian-VHDs für Azure sind Tools verfügbar, z.B. die [azure
 
 Sie können jetzt mit Ihrer Debian-VHD-Datei neue virtuelle Azure-Computer in Azure erstellen. Wenn Sie die VHD-Datei zum ersten Mal in Azure hochladen, führen Sie die Schritte 2 und 3 in [Erstellen und Hochladen einer virtuellen Festplatte, die das Linux-Betriebssystem enthält](virtual-machines-linux-classic-create-upload-vhd.md) aus.
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0831_2016-->

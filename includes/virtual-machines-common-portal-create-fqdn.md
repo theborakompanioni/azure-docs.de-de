@@ -6,11 +6,11 @@ Im Artikel wird vorausgesetzt, dass Sie sich im Portal bei Ihrem Abonnement ange
 
     ![IP-Ressource suchen](./media/virtual-machines-common-portal-create-fqdn/locatePublicIP.PNG)
 
-2.  Beachten Sie, dass der DNS-Name für die öffentliche IP-Adresse leer ist. Klicken Sie für das Blatt mit der öffentlichen IP auf **Alle Einstellungen**.
+2.  Beachten Sie, dass der DNS-Name für die öffentliche IP-Adresse leer ist. Klicken Sie für das Blatt „Öffentliche IP-Adresse“ auf **Konfiguration**.
 
     ![Einstellungen IP](./media/virtual-machines-common-portal-create-fqdn/settingsIP.PNG)
 
-3.  Öffnen Sie in den Einstellungen für die öffentliche IP die Registerkarte **Konfiguration**. Geben Sie den gewünschten DNS-Namen ein, und **speichern** Sie diese Konfiguration.
+3.  Geben Sie den gewünschten DNS-Namen ein, und **speichern** Sie diese Konfiguration.
 
     ![DNS-Name eingeben](./media/virtual-machines-common-portal-create-fqdn/dnsNameLabel.PNG)
 
@@ -20,4 +20,4 @@ Im Artikel wird vorausgesetzt, dass Sie sich im Portal bei Ihrem Abonnement ange
 
     ![FQDN wird erstellt](./media/virtual-machines-common-portal-create-fqdn/fqdnCreated.PNG)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0831_2016-->

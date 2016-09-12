@@ -12,7 +12,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="cache-redis"
 	ms.workload="tbd"
-	ms.date="08/18/2016"
+	ms.date="08/25/2016"
 	ms.author="sdanie" />
 
 # Gewusst wie: Konfigurieren von Azure Redis Cache
@@ -56,9 +56,9 @@ Die Einstellungen im Abschnitt **Support und Problembehandlung** bieten Optionen
 
 ![Support und Problembehandlung](./media/cache-configure/redis-cache-support-troubleshooting.png)
 
-Klicken Sie auf **Problembehandlung**, um gängige Probleme und Strategien zu deren Behebung anzuzeigen.
+Klicken Sie auf **Diagnose und Problembehandlung**, um gängige Probleme und Strategien zu deren Behebung anzuzeigen.
 
-Klicken Sie auf **Überwachungsprotokolle**, um in Ihrem Cache ausgeführte Aktionen anzuzeigen. Sie können auch filtern, um diese Ansicht zum Einbeziehen anderer Ressourcen zu erweitern. Weitere Informationen zum Arbeiten mit Überwachungsprotokollen finden Sie unter [Anzeigen von Ereignissen und Überwachungsprotokollen](../azure-portal/insights-debugging-with-events.md) und [Überwachen von Vorgängen mit Resource Manager](../resource-group-audit.md). Weitere Informationen zum Überwachen von Azure Redis Cache-Ereignissen finden Sie unter [Vorgänge und Warnungen](cache-how-to-monitor.md#operations-and-alerts).
+Klicken Sie auf **Aktivitätsprotokoll**, um in Ihrem Cache ausgeführte Aktionen anzuzeigen. Sie können auch filtern, um diese Ansicht zum Einbeziehen anderer Ressourcen zu erweitern. Weitere Informationen zum Arbeiten mit Überwachungsprotokollen finden Sie unter [Anzeigen von Ereignissen und Überwachungsprotokollen](../azure-portal/insights-debugging-with-events.md) und [Überwachen von Vorgängen mit Resource Manager](../resource-group-audit.md). Weitere Informationen zum Überwachen von Azure Redis Cache-Ereignissen finden Sie unter [Vorgänge und Warnungen](cache-how-to-monitor.md#operations-and-alerts).
 
 Die Informationen zur **Ressourcenintegrität** dienen zum Überwachen Ihrer Ressource und informieren Sie darüber, ob sie wie erwartet ausgeführt wird. Weitere Informationen zum Azure Resource Health-Dienst finden Sie in der [Übersicht über Azure Resource Health](../resource-health/resource-health-overview.md).
 
@@ -409,4 +409,4 @@ Informationen zum Verschieben von Ressourcen zwischen Ressourcengruppen und zwis
 ## Nächste Schritte
 -	Weitere Informationen zum Verwenden von Redis-Befehlen finden Sie unter [Wie führe ich Redis-Befehle aus?](cache-faq.md#how-can-i-run-redis-commands).
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->

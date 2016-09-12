@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/01/2016"
+	ms.date="08/25/2016"
 	ms.author="tarcher"/>
 
 # Hinzufügen einer VM mit Artefakten zu einem Lab
@@ -64,7 +64,7 @@ In diesem Artikel wird die Erstellung eines virtuellen Computers in Ihrem Lab mi
 
 1. Wählen Sie **Artefakte**, und wählen Sie aus der Liste der Artefakte die Artefakte aus, die Sie dem Basisimage hinzufügen möchten, und konfigurieren Sie sie. **Hinweis:** Wenn Sie noch nicht mit DevTest Labs oder dem Konfigurieren von Artefakten vertraut sind, fahren Sie mit dem Abschnitt [Hinzufügen eines vorhandenen Artefakts zu einer VM](#add-an-existing-artifact-to-a-vm) fort, und kehren Sie dann hierher zurück.
 
-1. Wenn Sie die ARM-Vorlage anzeigen oder kopieren möchten, fahren Sie mit dem Abschnitt [Speichern der ARM-Vorlage](#save-arm-template) fort, und kehren Sie anschließend hierher zurück.
+1. Wenn Sie die Azure Resource Manager-Vorlage anzeigen oder kopieren möchten, fahren Sie mit dem Abschnitt [Speichern der Azure Resource Manager-Vorlage](#save-arm-template) fort, und kehren Sie anschließend hierher zurück.
 
 1. Wählen Sie **Erstellen**, um den angegebene virtuellen Computer dem Lab hinzuzufügen.
 
@@ -116,9 +116,9 @@ Die folgenden Schritte veranschaulichen das Anzeigen oder Ändern der Parameter 
 
 1. Wählen Sie **OK**, um das Blatt **Ausgewählte Artefakte** zu schließen.
 
-## Speichern der ARM-Vorlage
+## Speichern der Azure Resource Manager-Vorlage
 
-Eine ARM-Vorlage bietet eine deklarative Möglichkeit zum Definieren einer wiederholbaren Bereitstellung. Mit den folgenden Schritte wird erläutert, wie die ARM-Vorlage für die zu erstellende VM gespeichert wird. Nach dem Speichern können Sie die ARM-Vorlage zum [Bereitstellen neuer VMs mit Azure PowerShell](../resource-group-overview.md#template-deployment) nutzen.
+Eine Azure Resource Manager-Vorlage bietet eine deklarative Möglichkeit zum Definieren einer wiederholbaren Bereitstellung. Die folgenden Schritte erläutern, wie die Azure Resource Manager-Vorlage für den zu erstellenden virtuellen Computer gespeichert wird. Nach dem Speichern können Sie die Azure Resource Manager-Vorlage zum [Bereitstellen neuer virtueller Computer mit Azure PowerShell](../resource-group-overview.md#template-deployment) nutzen.
 
 1. Wählen Sie auf dem Blatt **Lab-VM** die Option **ARM-Vorlage anzeigen**.
 
@@ -134,10 +134,12 @@ Eine ARM-Vorlage bietet eine deklarative Möglichkeit zum Definieren einer wiede
 
 1. Speichern Sie die Datei für eine spätere Verwendung.
 
+[AZURE.INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
+
 ## Nächste Schritte
 
 - Nach der Erstellung des virtuellen Computers können Sie **Verbinden** auf dem Blatt des virtuellen Computers wählen, um eine Verbindung mit dem virtuellen Computer herzustellen.
 - Informieren Sie sich über das [Erstellen von benutzerdefinierten Artefakten für Ihre DevTest Lab-VM](devtest-lab-artifact-author.md).
-- Untersuchen Sie den [DevTest Labs-ARM-Katalog mit Schnellstartvorlagen](https://github.com/Azure/azure-devtestlab/tree/master/ARMTemplates).
+- Erkunden Sie den [DevTest Labs-ARM-Katalog mit Schnellstartvorlagen](https://github.com/Azure/azure-devtestlab/tree/master/ARMTemplates).
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0831_2016-->

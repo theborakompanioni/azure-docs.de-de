@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="07/26/2016"
+   ms.date="08/31/2016"
    ms.author="alkohli"/>
 
 # StorSimple-Software, hohe Verfügbarkeit und Netzwerkanforderungen
@@ -45,7 +45,7 @@ Die folgenden Softwareanforderungen gelten für Speicherclients, die auf das Sto
 
 Die folgenden Sofwareanforderungen gelten für die optionalen StorSimple-Komponenten (StorSimple Snapshot Manager und StorSimple-Adapter für SharePoint).
 
-| Komponente | Hostplattform | Weitere Anforderungen/Hinweise |
+| Component | Hostplattform | Weitere Anforderungen/Hinweise |
 | --------------------------- | ---------------- | ------------- |
 | StorSimple Snapshot Manager | Windows Server 2008R2 SP1, 2012, 2012R2 | Die Verwendung für StorSimple Snapshot Manager unter Windows Server ist für die Sicherung/Wiederherstellung von gespiegelten dynamischen Datenträgern und für alle anwendungskonsistenten Sicherungen erforderlich.<br> StorSimple Snapshot Manager wird nur unter Windows Server 2008 R2 SP1 (64 Bit), Windows 2012 R2 und Windows Server 2012 unterstützt.<ul><li>Wenn Sie Window Server 2012 verwenden, müssen Sie .NET 3.5 - 4.5 installieren, bevor Sie StorSimple Snapshot Manager installieren.</li><li>Wenn Sie Windows Server 2008 R2 SP1 verwenden, müssen Sie Windows Management Framework 3.0 installieren, bevor Sie StorSimple Snapshot Manager installieren.</li></ul> |
 | StorSimple-Adapter für SharePoint | Windows Server 2008R2 SP1, 2012, 2012R2 |<ul><li>StorSimple-Adapter für SharePoint wird nur unter SharePoint 2010 und SharePoint 2013 unterstützt.</li><li>RBS erfordert SQL Server Enterprise Edition, Version 2008 R2 oder 2012.</li></ul>|
@@ -81,13 +81,24 @@ Es empfiehlt sich, die Firewallregeln für den ausgehenden Verkehr basierend auf
 
 > [AZURE.NOTE] Die Geräte-(Quellen-)IPs sollten immer für alle aktivierten Netzwerkschnittstellen eingerichtet sein. Die Ziel-IPs sollten in den [ IP-Bereich des Azure-Rechenzentrums](https://www.microsoft.com/de-DE/download/confirmation.aspx?id=41653) festgelegt werden.
 
-
+#### URL-Muster für Azure-Portal
 | URL-Muster | Komponente/Funktionalität | Geräte-IPs |
 |------------------------------------------------------------------|---------------------------------------------------------------|-----------------------------------------|
 | `https://*.storsimple.windowsazure.com/*`<br>`https://*.accesscontrol.windows.net/*`<br>`https://*.servicebus.windows.net/*` | StorSimple Manager-Dienst<br>Access Control Service<br>Azure Service Bus| Cloudaktivierte Netzwerkschnittstellen |
 |`https://*.backup.windowsazure.com`|Geräteregistrierung| Nur DATA 0|
 |`http://crl.microsoft.com/pki/*`<br>`http://www.microsoft.com/pki/*`|Zertifikatswiderruf |Cloudaktivierte Netzwerkschnittstellen |
 | `https://*.core.windows.net/*` <br>`https://*.data.microsoft.com`<br>`http://*.msftncsi.com` | Azure-Speicherkonten und Überwachung | Cloudaktivierte Netzwerkschnittstellen |
+| `http://*.windowsupdate.microsoft.com`<br>`https://*.windowsupdate.microsoft.com`<br>`http://*.update.microsoft.com`<br> `https://*.update.microsoft.com`<br>`http://*.windowsupdate.com`<br>`http://download.microsoft.com`<br>`http://wustat.windows.com`<br>`http://ntservicepack.microsoft.com`| Microsoft Update-Server<br> | Feste IPs des Controllers |
+| `http://*.deploy.akamaitechnologies.com` |Akamai CDN |Feste IPs des Controllers |
+| `https://*.partners.extranet.microsoft.com/*` | Supportpaket | Cloudaktivierte Netzwerkschnittstellen |
+
+#### URL-Muster für Azure Government-Portal
+| URL-Muster | Komponente/Funktionalität | Geräte-IPs |
+|------------------------------------------------------------------|---------------------------------------------------------------|-----------------------------------------|
+| `https://*.storsimple.windowsazure.us/*`<br>`https://*.accesscontrol.usgovcloudapi.net/*`<br>`https://*.servicebus.usgovcloudapi.net/*` | StorSimple Manager-Dienst<br>Access Control Service<br>Azure Service Bus| Cloudaktivierte Netzwerkschnittstellen |
+|`https://*.backup.windowsazure.us`|Geräteregistrierung| Nur DATA 0|
+|`http://crl.microsoft.com/pki/*`<br>`http://www.microsoft.com/pki/*`|Zertifikatswiderruf |Cloudaktivierte Netzwerkschnittstellen |
+| `https://*.core.usgovcloudapi.net/*` <br>`https://*.data.microsoft.com`<br>`http://*.msftncsi.com` | Azure-Speicherkonten und Überwachung | Cloudaktivierte Netzwerkschnittstellen |
 | `http://*.windowsupdate.microsoft.com`<br>`https://*.windowsupdate.microsoft.com`<br>`http://*.update.microsoft.com`<br> `https://*.update.microsoft.com`<br>`http://*.windowsupdate.com`<br>`http://download.microsoft.com`<br>`http://wustat.windows.com`<br>`http://ntservicepack.microsoft.com`| Microsoft Update-Server<br> | Feste IPs des Controllers |
 | `http://*.deploy.akamaitechnologies.com` |Akamai CDN |Feste IPs des Controllers |
 | `https://*.partners.extranet.microsoft.com/*` | Supportpaket | Cloudaktivierte Netzwerkschnittstellen |
@@ -280,4 +291,4 @@ Lesen Sie sich diese bewährten Methoden sorgfältig durch, um eine hohe Verfüg
 <!--Reference links-->
 [1]: https://technet.microsoft.com/library/cc731844(v=WS.10).aspx
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0831_2016-->

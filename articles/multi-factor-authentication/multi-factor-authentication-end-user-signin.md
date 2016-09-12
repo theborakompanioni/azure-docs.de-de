@@ -62,10 +62,11 @@ Die folgenden Informationen beschreiben die Verwendung der Multi-Factor Authenti
 ![Microsoft sendet Benachrichtigung](./media/multi-factor-authentication-end-user-signin-app-notify/notify.png)
 
 
-- Rufen Sie die Benachrichtigung auf Ihrem Mobiltelefon auf, und tippen Sie auf die Schaltfläche "Überprüfen".
+- Rufen Sie die Benachrichtigung auf Ihrem Mobiltelefon auf, und tippen Sie auf die Schaltfläche "Überprüfen". Wenn Ihr Unternehmen eine PIN anfordert, werden Sie hier zur Eingabe gebeten.
 
 ![Überprüfen](./media/multi-factor-authentication-end-user-signin-app-notify/phone.png)
 
+![Einrichtung](./media/multi-factor-authentication-end-user-first-time-mobile-app/scan3.png)
 
 - Sie sollten jetzt angemeldet sein.
 
@@ -84,6 +85,8 @@ Im Folgenden wird der Vorgang für die Multi-Factor Authentication mit der Micro
 - Öffnen Sie die Microsoft Authenticator-App auf Ihrem Smartphone, und geben Sie den Code bei der Anmeldung in das entsprechende Feld ein.
 
 ![Abrufen des Codes](./media/multi-factor-authentication-end-user-signin-app-verify/phone.png)
+
+
 
 - Sie sollten jetzt angemeldet sein.
 
@@ -104,4 +107,4 @@ Im folgenden Abschnitt erfahren Sie, wie Sie sich über eine alternative Methode
 
  
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->

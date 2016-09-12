@@ -41,7 +41,7 @@ DirSyncFeature | Kommentar
 
 Nachdem Sie ein Feature aktiviert haben, kann es nicht wieder deaktiviert werden.
 
->[AZURE.NOTE] Seit dem 22. August 2016 ist das Feature *Resilienz bei doppelten Attributen* für neue Azure AD-Verzeichnisse standardmäßig aktiviert. Dieses Feature wird auch für Verzeichnisse freigegeben und aktiviert, die vor diesem Datum erstellt wurden. Sie erhalten eine E-Mail-Benachrichtigung, wenn dieses Feature für Ihr Verzeichnis aktiviert wird.
+>[AZURE.NOTE] Seit dem 24. August 2016 ist das Feature *Resilienz bei doppelten Attributen* für neue Azure AD-Verzeichnisse standardmäßig aktiviert. Dieses Feature wird auch für Verzeichnisse freigegeben und aktiviert, die vor diesem Datum erstellt wurden. Sie erhalten eine E-Mail-Benachrichtigung, wenn dieses Feature für Ihr Verzeichnis aktiviert wird.
 
 Die folgenden Einstellungen werden von Azure AD Connect konfiguriert und können von `Set-MsolDirSyncFeature` nicht geändert werden:
 
@@ -98,4 +98,4 @@ Nach Aktivierung dieses Features bleiben vorhandene userPrincipalName-Werte unve
 - [Azure AD Connect-Synchronisierung](active-directory-aadconnectsync-whatis.md)
 - [Integrieren Ihrer lokalen Identitäten in Azure Active Directory](active-directory-aadconnect.md)
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->

@@ -14,10 +14,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="08/02/2016"
+   ms.date="08/29/2016"
    ms.author="larryfr"/>
 
-#Ausführen von Hive-Abfragen mit Hadoop in HDInsight mithilfe von PowerShell
+# Ausführen von MapReduce-Aufträgen mit Hadoop in HDInsight mithilfe von PowerShell
 
 [AZURE.INCLUDE [mapreduce-selector](../../includes/hdinsight-selector-use-mapreduce.md)]
 
@@ -25,7 +25,7 @@ Dieses Dokument enthält ein Beispiel zur Verwendung von Azure PowerShell zum Au
 
 ##<a id="prereq"></a>Voraussetzungen
 
-Damit Sie die in diesem Artikel aufgeführten Schritte ausführen können, benötigen Sie Folgendes:
+Um die in diesem Artikel aufgeführten Schritte auszuführen, benötigen Sie Folgendes:
 
 - **Einen Azure HDInsight-Cluster (Hadoop in HDInsight), der auf Windows oder Linux basiert**
 
@@ -124,7 +124,7 @@ Die folgenden Schritte veranschaulichen, wie diese Cmdlets zum Ausführen eines 
 
 		.\mapreducejob.ps1
     
-    Wenn Sie das Skript ausführen, werden Sie möglicherweise zur Authentifizierung des Azure-Abonnements aufgefordert Sie werden außerdem aufgefordert, den HTTPS-/Administratorkontonamen und das Kennwort für den HDInsight-Cluster bereitzustellen.
+    Wenn Sie das Skript ausführen, werden Sie möglicherweise zur Authentifizierung des Azure-Abonnements aufgefordert. Sie werden außerdem aufgefordert, den HTTPS-/Administratorkontonamen und das Kennwort für den HDInsight-Cluster bereitzustellen.
 
 3. Nach Abschluss des Auftrags sollten Sie eine Ausgabe ähnlich der folgenden erhalten:
 
@@ -183,4 +183,4 @@ Informationen zu anderen Möglichkeiten, wie Sie mit Hadoop in HDInsight arbeite
 
 * [Verwenden von Pig mit Hadoop in HDInsight](hdinsight-use-pig.md)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0831_2016-->

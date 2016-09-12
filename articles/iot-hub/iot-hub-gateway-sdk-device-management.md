@@ -68,20 +68,20 @@ Zum Ausführen dieses Beispiels müssen Sie ein benutzerdefiniertes Image für d
 
 Bevor Sie beginnen, sollten Sie sicherstellen, dass Sie Ihr Edison Board mit dem Drahtlosnetzwerk verbinden können. Um Ihr Edison Board einzurichten, müssen Sie es mit einem Hostcomputer verbinden. Später verwenden Sie den Hostcomputer, um das Edison Board mit dem erstellten benutzerdefinierten Image zu aktualisieren. Intel stellt eine Reihe von Anleitungen für die ersten Schritte bereit, z.B. auch für die folgenden Betriebssysteme:
 
-- [Get Started with the Intel Edison Development Board on Windows 64-bit][lnk-setup-win64] (Erste Schritte mit dem Intel Edison Development Board unter Windows 64-Bit).
-- [Get Started with the Intel Edison Development Board on Windows 32-bit][lnk-setup-win32] (Erste Schritte mit dem Intel Edison Development Board unter Windows 32-Bit).
-- [Getting Started with the Intel® Edison Board on Linux][lnk-setup-linux] (Erste Schritte mit dem Intel® Edison Board unter Linux).
+- [Get Started with the Intel Edison Development Board on Windows 64-bit][lnk-setup-win64] \(Erste Schritte mit dem Intel Edison Development Board unter Windows 64-Bit).
+- [Get Started with the Intel Edison Development Board on Windows 32-bit][lnk-setup-win32] \(Erste Schritte mit dem Intel Edison Development Board unter Windows 32-Bit).
+- [Getting Started with the Intel® Edison Board on Linux][lnk-setup-linux] \(Erste Schritte mit dem Intel® Edison Board unter Linux).
 
 Um das Edison Board einzurichten und sich damit vertraut zu machen, ist es ratsam, alle Schritte in diesen Artikeln auszuführen, jedoch mit Ausnahme von:
 
 - Flashing the latest firmware (Aktualisieren der Firmware). Sie aktualisieren die Firmware im Rahmen dieses Tutorials, sodass Sie diesen Schritt nicht vorher ausführen müssen.
 - Auch der letzte Schritt „Choose IDE“ (Auswählen der IDE) ist für das aktuelle Tutorial nicht erforderlich.
 
-Nachdem Sie das Edison Board eingerichtet und die benötigten Treiber auf dem Hostcomputer installiert haben, sollten Sie sicherstellen, dass Sie mit einem seriellen Terminal eine Verbindung mit dem Edison Board herstellen können. Die Seite [Setting up a serial terminal][lnk-serial-connection] (Einrichten eines seriellen Terminals) auf der Intel-Website enthält Links zu Einrichtungsanleitungen für Hostbetriebssysteme, z.B. Windows und Linux.
+Nachdem Sie das Edison Board eingerichtet und die benötigten Treiber auf dem Hostcomputer installiert haben, sollten Sie sicherstellen, dass Sie mit einem seriellen Terminal eine Verbindung mit dem Edison Board herstellen können. Die Seite [Setting up a serial terminal][lnk-serial-connection] \(Einrichten eines seriellen Terminals) auf der Intel-Website enthält Links zu Einrichtungsanleitungen für Hostbetriebssysteme, z.B. Windows und Linux.
 
 Außerdem müssen Sie folgende Aufgaben durchführen:
 
-- [Erstellen Sie einen IoT Hub][lnk-create-hub] unter Ihrem Azure-Abonnement. Sie benötigen für dieses Tutorial den Namen des Hubs. Wenn Sie nicht bereits über ein Azure-Abonnement verfügen, können Sie ein [kostenloses Konto erstellen][lnk-free-trial].
+- [Erstellen Sie einen IoT Hub][lnk-create-hub] in Ihrem Azure-Abonnement. Sie benötigen für dieses Tutorial den Namen des Hubs. Wenn Sie nicht bereits über ein Azure-Abonnement verfügen, können Sie ein [kostenloses Konto erstellen][lnk-free-trial].
 - Fügen Sie Ihrem IoT Hub drei Geräte hinzu (**GW-ble1-demo**, **GW-ble2-demo** und **GW-device**), und notieren Sie sich die IDs und Geräteschlüssel. Sie können die Tools [Geräte-Explorer oder iothub-explorer][lnk-explorer-tools] verwenden, um diese Geräte dem im vorherigen Schritt erstellten IoT Hub hinzuzufügen und die zugehörigen Schlüssel abzurufen. Sie verwenden zwei dieser Geräte (**GW-ble1-demo** und **GW-ble2-demo**) als simulierte BLE-Geräte, die mit dem Gateway verbunden sind, und ein Gerät (**GW-device**) zum Identifizieren des Edison-Gatewaygeräts als Geräteverwaltungsclient, den Sie über Ihren IoT Hub verwalten können.
 
 ### Vorbereiten der Buildumgebung und Sicherstellen, dass ein benutzerdefiniertes Image erstellt werden kann
@@ -90,7 +90,7 @@ Zum Erstellen eines benutzerdefinierten Image für das Edison Board benötigen S
 
 > [AZURE.NOTE] Die Ausführung des Skripts, mit dem das benutzerdefinierte Image erstellt wird, kann auf einem Computer mit vier CPU-Kernen bis zu sechs Stunden dauern. Sie können diesen Zeitraum verringern, indem Sie einen leistungsfähigeren Computer mit mehr CPU-Kernen verwenden.
 
-Für die Schritte in diesem Abschnitt haben wir die folgenden Artikel herangezogen: [Intel Edison Board Support Package][lnk-inteledison-bsp] (Intel Edison Board-Supportpaket), [Manually Building Yocto Images for the Intel Edison Board from Source][lnk-hackgnar] (Manuelles Erstellen von Yocto-Images für das Intel Edison Board an der Quelle) und [Creating a Custom Linux Kernel for the Edison (release 2.1)][lnk-shawnhymel] (Erstellen eines benutzerdefinierten Linux-Kernels für Edison (Version 2.1)).
+Für die Schritte in diesem Abschnitt haben wir die folgenden Artikel herangezogen: [Intel Edison Board Support Package][lnk-inteledison-bsp] \(Intel Edison Board-Supportpaket), [Manually Building Yocto Images for the Intel Edison Board from Source][lnk-hackgnar] \(Manuelles Erstellen von Yocto-Images für das Intel Edison Board an der Quelle) und [Creating a Custom Linux Kernel for the Edison (release 2.1)][lnk-shawnhymel] \(Erstellen eines benutzerdefinierten Linux-Kernels für Edison (Version 2.1)).
 
 1. Melden Sie sich an Ihrem Ubuntu 14.04-Computer an, und führen Sie den folgenden Befehl in Ihrem Ordner „home“ aus, um das Edison-Quellpaket herunterzuladen:
     
@@ -425,4 +425,4 @@ Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 [lnk-dmui]: iot-hub-device-management-ui-sample.md
 [lnk-portal]: iot-hub-manage-through-portal.md
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0831_2016-->

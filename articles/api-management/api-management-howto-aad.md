@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/09/2016" 
+	ms.date="08/24/2016" 
 	ms.author="sdanie"/>
 
 # Autorisieren von Entwicklerkonten mithilfe von Active Directory in Azure API Management
@@ -211,7 +211,6 @@ Der Benutzer ist jetzt beim Entwicklerportal für Ihre API Management-Dienstinst
 [Add APIs to a product]: api-management-howto-add-products.md#add-apis
 [Publish a product]: api-management-howto-add-products.md#publish-product
 [Erste Schritte mit der Azure API-Verwaltung]: api-management-get-started.md
-[Get started with advanced API configuration]: api-management-get-started-advanced.md
 [API Management policy reference]: api-management-policy-reference.md
 [Caching policies]: api-management-policy-reference.md#caching-policies
 [Erstellen einer API-Verwaltungsinstanz]: api-management-get-started.md#create-service-instance
@@ -228,4 +227,4 @@ Der Benutzer ist jetzt beim Entwicklerportal für Ihre API Management-Dienstinst
 
 [Anmelden beim Entwicklerportal mit einem Azure Active Directory-Konto]: #Log-in-to-the-Developer-portal-using-an-Azure-Active-Directory-account
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0831_2016-->

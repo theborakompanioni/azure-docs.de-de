@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/09/2016" 
+	ms.date="08/24/2016" 
 	ms.author="sdanie"/>
 
 # Sichern von Back-End-Diensten über eine Clientzertifikatauthentifizierung in Azure API Management
@@ -122,14 +122,13 @@ Informieren Sie sich im folgenden Video, welche anderen Möglichkeiten zum Absic
 [Add APIs to a product]: api-management-howto-add-products.md#add-apis
 [Publish a product]: api-management-howto-add-products.md#publish-product
 [Erste Schritte mit Azure API Management]: api-management-get-started.md
-[Get started with advanced API configuration]: api-management-get-started-advanced.md
 [API Management policy reference]: api-management-policy-reference.md
 [Caching policies]: api-management-policy-reference.md#caching-policies
 [Erstellen einer API Management-Dienstinstanz]: api-management-get-started.md#create-service-instance
 
 [Azure API Management-REST-API-Zertifikatsentität]: http://msdn.microsoft.com/library/azure/dn783483.aspx
 [WebApp-GraphAPI-DotNet]: https://github.com/AzureADSamples/WebApp-GraphAPI-DotNet
-[Ausführliche Informationen zum Konfigurieren der Zertifikatauthentifizierung in Azure WebSites finden Sie in diesem Artikel]: https://azure.microsoft.com/de-DE/documentation/articles/app-service-web-configure-tls-mutual-auth/
+[Ausführliche Informationen zum Konfigurieren der Zertifikatauthentifizierung in Azure WebSites finden Sie in diesem Artikel]: https://azure.microsoft.com/documentation/articles/app-service-web-configure-tls-mutual-auth/
 
 [Prerequisites]: #prerequisites
 [Upload a client certificate]: #step1
@@ -141,4 +140,4 @@ Informieren Sie sich im folgenden Video, welche anderen Möglichkeiten zum Absic
 
  
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0831_2016-->

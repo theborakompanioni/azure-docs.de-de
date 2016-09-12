@@ -26,7 +26,7 @@ Um einen virtuellen Windows-Computer aus einem lokalen Speicherort in Azure hoch
 
 Stellen Sie sicher, dass die Windows-VHD auf dem lokalen Server ordnungsgemäß funktioniert. Beheben Sie alle Probleme auf dem virtuellen Computer selbst, bevor Sie versuchen, ihn zu konvertieren oder in Azure hochzuladen.
 
-Wenn Sie Ihren virtuellen Datenträger in das für Azure erforderliche Format konvertieren müssen, verwenden Sie eine der in den folgenden Abschnitten beschriebenen Methoden.
+Wenn Sie Ihren virtuellen Datenträger in das für Azure erforderliche Format konvertieren müssen, verwenden Sie eine der in den folgenden Abschnitten beschriebenen Methoden. Sichern Sie den virtuellen Computer vor dem Ausführen von Prozessen zur Konvertierung virtueller Datenträger oder Sysprep.
 
 ### Konvertieren mithilfe des Hyper-V-Managers
 - Öffnen Sie den Hyper-V-Manager, und wählen Sie auf der linken Seite Ihren lokalen Computer aus. Klicken Sie im Menü darüber auf **Aktion** > **Datenträger bearbeiten**.
@@ -66,7 +66,7 @@ Wenn Sie über ein Windows-VM-Image im [VMDK-Dateiformat](https://en.wikipedia.o
 3. Konfigurieren Sie die Datenträger-SAN-Richtlinie als [Onlineall](https://technet.microsoft.com/library/gg252636.aspx):
 
 	```
-	dispart san policy=onlineall
+	diskpart san policy=onlineall
 	```
 
 4. Verwenden Sie die koordinierte Weltzeit (UTC, Coordinated Universal Time) für Windows, und legen Sie den Starttyp des Windows-Zeitdiensts (w32time) auf **Automatisch** fest:
@@ -287,6 +287,7 @@ Wenn Sie über ein Windows-VM-Image im [VMDK-Dateiformat](https://en.wikipedia.o
 
 	- [Erstellen eines VM-Images aus einem vorhandenen virtuellen Azure-Computer mithilfe des Resource Manager-Bereitstellungsmodells](virtual-machines-windows-capture-image.md)
 	- [Erstellen eines VM-Images aus einem vorhandenen virtuellen Azure-Computer mithilfe des klassischen Bereitstellungsmodells](virtual-machines-windows-classic-capture-image.md)
+	- [Sysprep-Unterstützung für Serverrollen](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)
 
 
 ## Empfohlene zusätzliche Konfigurationen
@@ -320,4 +321,4 @@ Die folgenden Einstellungen wirken sich nicht auf das Hochladen von VHDs aus. Es
 
 - [Hochladen eines Windows-VM-Images an Azure für Resource Manager-Bereitstellungen](virtual-machines-windows-upload-image.md)
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0831_2016-->

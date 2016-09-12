@@ -223,6 +223,8 @@ In diesem Fall fragt die untere Vorlage nach:
 - einem Domänennamen, den Externe verwenden können
 - einer Ubuntu-Server-Versionsnummer, die jedoch nur eine aus einer Liste akzeptiert
 
+Weitere Informationen finden Sie unter den [Anforderungen für Benutzernamen und Kennwörter](virtual-machines-linux-faq.md#what-are-the-username-requirements-when-creating-a-vm).
+
 Sobald Sie diese Werte eingegeben haben, können Sie eine Gruppe erstellen und die Vorlage in Ihrem Azure-Abonnement bereitstellen.
 
     {
@@ -1278,4 +1280,4 @@ Viele weitere Verwendungsbeispiele für die Azure-Befehlszeilenschnittstelle mit
 
 Weitere Vorlagen finden Sie unter [Azure-Schnellstartvorlagen](https://azure.microsoft.com/documentation/templates/) und [Erstellen von Anwendungsframeworks mithilfe von Vorlagen](../articles/virtual-machines/virtual-machines-linux-app-frameworks.md).
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->

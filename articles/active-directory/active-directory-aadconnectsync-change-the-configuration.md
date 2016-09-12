@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/23/2016"
+	ms.date="08/26/2016"
 	ms.author="andkjell"/>
 
 
@@ -111,7 +111,7 @@ Einige Attribute in Active Directory weisen im Schema mehrere Werte auf, obwohl 
 Falls das Attribut einen Wert besitzt, wird in diesem Ausdruck das erste Element (Item) im Attribut genommen, die voran- und nachgestellten Leerzeichen (Trim) werden entfernt, und die ersten 448 Zeichen (Left) der Zeichenfolge werden beibehalten.
 
 ### Verhindern des „Fließens“ eines Attributs
-Hintergrundinformationen zum Szenario in diesem Abschnitt finden Sie unter [Steuern des Attributflussprozesses](#control-the-attribute-flow-process).
+Hintergrundinformationen zum Szenario in diesem Abschnitt finden Sie unter [Steuern des Attributflussprozesses](active-directory-aadconnectsync-understanding-declarative-provisioning.md#control-the-attribute-flow-process).
 
 Es gibt zwei Möglichkeiten, wie Sie dafür sorgen, dass ein Attribut nicht „fließt“ (also nicht übertragen wird). Die erste Option befindet sich im Installations-Assistenten und ermöglicht es Ihnen, [ausgewählte Attribute zu entfernen](active-directory-aadconnect-get-started-custom.md#azure-ad-app-and-attribute-filtering). Diese Option funktioniert, wenn Sie das Attribut vorher noch nie synchronisiert haben. Falls Sie aber bereits mit der Synchronisierung dieses Attributs begonnen haben und es danach mit diesem Feature entfernen, beendet das Synchronisierungsmodul die Verwaltung des Attributs, und die vorhandenen Werte verbleiben in Azure AD.
 
@@ -124,31 +124,9 @@ Bei Fabrikam haben wir festgestellt, dass einige der Attribute, die wir mit der 
 - Speichern Sie die Synchronisierungsregel. Starten Sie **Synchronisierungsdienst**, suchen Sie nach dem Connector, und wählen Sie **Ausführen** und **Vollständige Synchronisierung**. Dadurch werden alle Attributflüsse neu berechnet.
 - Stellen Sie sicher, dass die beabsichtigten Änderungen exportiert werden sollen, indem Sie den Connectorbereich durchsuchen. ![Gestaffeltes Löschen](./media/active-directory-aadconnectsync-change-the-configuration/deletetobeexported.png)
 
-## Erweitertes Konzept
-
-### Steuern des Attributflussprozesses
-Wenn mehrere eingehende Synchronisierungsregeln konfiguriert sind, die zu demselben Metaverseattribut beitragen, bestimmt die Rangfolge, welche Regel angewendet wird. Die Synchronisierungsregel mit der höchsten Rangfolge (dem niedrigsten numerischen Wert) trägt den Wert bei. Gleiches gilt für ausgehende Regeln. Die Synchronisierungsregel mit der höchsten Rangfolge trägt den Wert zum verbundenen Verzeichnis bei.
-
-In einigen Fällen trägt die Synchronisierungsregel keinen Wert bei, sondern bestimmt, wie andere Regeln sich verhalten sollen. In diesem Fall werden einige spezielle Literale verwendet.
-
-Bei eingehenden Synchronisierungsregeln kann das Literal **NULL** verwendet werden, um anzugeben, dass der Attributfluss keinen Wert beiträgt. Eine andere Regel mit niedrigerer Rangfolge kann einen Wert beitragen. Wenn keine Regel einen Wert beiträgt, wird das Metaverseattribut entfernt. Wenn bei einer ausgehenden Regel **NULL** der endgültige Wert nach der Verarbeitung aller Synchronisierungsregeln ist, wird der Wert im verbundenen Verzeichnis entfernt.
-
-Das Literal **AuthoritativeNull** ähnelt **NULL**, jedoch mit dem Unterschied, dass keine Regeln mit niedrigerer Rangfolge einen Wert beitragen können.
-
-Ein Attributfluss kann auch **IgnoreThisFlow** verwenden. Dieses Literal ähnelt NULL, da es angibt, dass kein beizutragender Wert vorhanden ist. Der Unterschied besteht darin, dass ein bereits vorhandener Wert im Ziel nicht entfernt wird. Es ist, als hätte es den Attributfluss nie gegeben.
-
-Beispiel:
-
-In *Out to AD – User Exchange hybrid* (Aus nach AD – Benutzer Exchange Hybrid) finden Sie folgenden Fluss: `IIF([cloudSOAExchMailbox] = True,[cloudMSExchSafeSendersHash],IgnoreThisFlow)` Dieser Ausdruck ist wie folgt zu lesen: Wenn sich das Postfach des Benutzers in Azure AD befindet, fließt das Attribut von Azure AD nach AD. Andernfalls fließt nichts zurück nach Active Directory. In diesem Fall wird der vorhandene Wert in AD beibehalten.
-
-### ImportedValue
-Die Funktion „ImportedValue“ unterscheidet sich von allen anderen Funktionen, da der Attributname in Anführungszeichen statt in eckige Klammern eingeschlossen werden muss: `ImportedValue("proxyAddresses")`.
-
-Üblicherweise verwendet ein Attribut während der Synchronisierung den erwarteten Wert, selbst wenn er noch nicht exportiert wurde oder während des Exports ein Fehler empfangen wurde („top of the tower“). Bei einer eingehenden Synchronisierung wird vorausgesetzt, dass ein Attribut, das ein verbundenes Verzeichnis noch nicht erreicht hat, dieses schließlich erreicht. In einigen Fällen ist es wichtig, nur Werte zu synchronisieren, die vom verbundenen Verzeichnis bestätigt wurden („hologram and delta import tower“).
-
-Ein Beispiel für diese Funktion finden Sie in der vordefinierten Synchronisierungsregel *In from AD – User Common from Exchange* (Ein von AD – Benutzer allgemein aus Exchange). In Hybrid Exchange sollte der von Exchange Online hinzugefügte Wert nur synchronisiert werden, wenn der erfolgreiche Export des Werts bestätigt wurde: `proxyAddresses` <- `RemoveDuplicates(Trim(ImportedValue("proxyAddresses")))`
-
 ## Nächste Schritte
+
+Erfahren Sie mehr über die [deklarative Bereitstellung](active-directory-aadconnectsync-understanding-declarative-provisioning.md) und die in den Synchronisierungsregeln verfügbaren Optionen.
 
 Weitere Informationen zu [Ausdrücken für die deklarative Bereitstellung](active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md).
 
@@ -156,4 +134,4 @@ Weitere Informationen zur Konfiguration der [Azure AD Connect-Synchronisierung](
 
 Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md).
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->

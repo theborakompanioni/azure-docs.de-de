@@ -13,16 +13,19 @@
       ms.topic="article"
       ms.tgt_pltfrm="na"
       ms.workload="na"
-      ms.date="06/29/2016"
+      ms.date="08/26/2016"
       ms.author="hascipio; avikova" />
 
 # Grundlegende Informationen zum Knotenschema zum Zuordnen eines vorhandenen Webdiensts zu OData über CSDL
+
+>[AZURE.IMPORTANT] **Derzeit integrieren wir keine neuen Herausgeber von Datendiensten mehr. Für neue Datendienste wird keine Auflistung genehmigt.** Wenn Sie eine SaaS-Geschäftsanwendung haben, die Sie auf AppSource veröffentlichen möchten, finden Sie [hier](https://appsource.microsoft.com/partners) weitere Informationen. Wenn Sie eine IaaS-Anwendung oder einen Dienst für Entwickler auf Azure Marketplace veröffentlichen möchten, finden Sie [hier](https://azure.microsoft.com/marketplace/programs/certified/) weitere Informationen.
+
 Dieses Dokument verdeutlicht die Knotenstruktur für die Zuordnung eines OData-Protokolls zu CSDL. Ein wichtiger Aspekt ist, dass die Knotenstruktur aus wohlgeformtem XML-Code besteht. Darum können Sie das Schema von Stamm, übergeordnetem und untergeordnetem Element anwenden, wenn Sie die OData-Zuordnung entwerfen.
 
 ## Ignorierte Elemente
 Im Folgenden werden die CSDL-Elemente (XML-Knoten) auf hoher Ebene aufgeführt, die während des Imports von Metadaten des Webdiensts nicht vom Azure Marketplace-Back-End verwendet werden. Sie können vorhanden sein, werden aber ignoriert.
 
-| Element | Umfang |
+| Element | Scope (Umfang) |
 |----|----|
 | Using-Element | Knoten, untergeordnete Knoten und alle Attribute |
 | Documentation-Element | Knoten, untergeordnete Knoten und alle Attribute |
@@ -54,12 +57,12 @@ Im Folgenden werden die zusätzlichen Attribute (oder Ergänzungen von Attribute
 **ReturnType** *(optional)* – Gibt den Typ der Elemente an, die vom URI zurückgegeben werden. Verwenden Sie dieses Attribut nicht, wenn die Funktion keinen Wert zurückgibt. Folgende Typen werden unterstützt:
 
  - **Collection (<Entitätstypname>)**: Gibt eine Auflistung definierter Entitätstypen an. Der Name ist im Name-Attribut des Knotens "EntityType" vorhanden. Ein Beispiel ist "Collection (WXC. HourlyResult)".
- - **Raw (<MIME-Typ>)**: Gibt ein unformatiertes Dokument/einen unformatierten Blob an, das bzw. der an den Benutzer zurückgegeben wird. Ein Beispiel ist "Raw(image/jpeg)". Andere Beispiele:
+ - **Raw (<MIME-Typ>)**: Gibt ein unformatiertes Dokument/Blob an, das an den Benutzer zurückgegeben wird. Ein Beispiel ist "Raw(image/jpeg)". Andere Beispiele:
 
   - ReturnType="Raw(text/plain)"
   - ReturnType="Collection(sage.DeleteAllUsageFilesEntity)"*
 
-**d:Paging**: Gibt an, wie Auslagern durch die REST-Ressource ausgeführt wird. Die Parameterwerte werden in geschweiften Klammern verwendet, z. B. page={$page}&itemsperpage={$size}. Die verfügbaren Optionen sind:
+**d:Paging** – Gibt an, wie Auslagern durch die REST-Ressource ausgeführt wird. Die Parameterwerte werden in geschweiften Klammern verwendet, z. B. page={$page}&itemsperpage={$size}. Die verfügbaren Optionen sind:
 
 - **None**: Auslagern ist nicht verfügbar
 - **Skip**: Auslagern wird über logisches "Skip" und "Take" (oben) ausgedrückt. "Skip" springt über M Elemente, und "Take" gibt dann die nächsten N Elemente zurück. Parameterwert: "$skip"
@@ -143,7 +146,7 @@ Zusätzliche untergeordnete (nicht in der CSDL-Dokumentation behandelte) Knoten 
 
 Dieser Knoten stellt einen Parameter dar, der als Teil der URI-Vorlage/des Anforderungstexts verfügbar gemacht wird, der im Knoten "FunctionImport" angegeben wurde.
 
-Eine sehr hilfreiche Dokumentseite mit näheren Informationen über den Knoten „Parameter-Element“ finden Sie [hier](http://msdn.microsoft.com/library/ee473431.aspx). (Verwenden Sie die Dropdownliste **Andere Versionen**, um ggf. eine andere Version zum Anzeigen der Dokumentation auszuwählen.) *Beispiel:* `<Parameter Name="Query" Nullable="false" Mode="In" Type="String" d:Description="Query" d:SampleValues="Rudy Duck" d:EncodeParameterValue="true" MaxLength="255" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Identity"/>`
+Eine sehr hilfreiche Dokumentationsseite mit näheren Informationen zum Knoten „Parameter-Element“ finden Sie [hier](http://msdn.microsoft.com/library/ee473431.aspx). (Verwenden Sie die Dropdownliste **Andere Versionen**, um ggf. eine andere Version zum Anzeigen der Dokumentation auszuwählen.) *Beispiel:* `<Parameter Name="Query" Nullable="false" Mode="In" Type="String" d:Description="Query" d:SampleValues="Rudy Duck" d:EncodeParameterValue="true" MaxLength="255" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Identity"/>`
 
 | Parameterattribut | Ist erforderlich | Wert |
 |----|----|----|
@@ -169,7 +172,7 @@ Folgende Attribute wurden der CSDL-Spezifikation hinzugefügt:
 
 Dieser Knoten entspricht einem der Typen, die dem Endbenutzer über den Marketplace zurückgegeben werden. Er enthält auch die Zuordnung aus der Ausgabe, die vom Inhaltsanbieterdienst an die Werte zurückgegeben wird, die an den Endbenutzer zurückgegeben werden.
 
-Nähere Informationen über diesen Knoten finden Sie [hier](http://msdn.microsoft.com/library/bb399206.aspx). (Verwenden Sie die Dropdownliste **Andere Versionen**, um ggf. eine andere Version zum Anzeigen der Dokumentation auszuwählen.)
+Nähere Informationen zu diesem Knoten finden Sie [hier](http://msdn.microsoft.com/library/bb399206.aspx). (Verwenden Sie die Dropdownliste **Andere Versionen**, um ggf. eine andere Version zum Anzeigen der Dokumentation auszuwählen.)
 
 | Attributname | Ist erforderlich | Wert |
 |----|----|----|
@@ -258,9 +261,9 @@ Die folgenden Parameter- und Eigenschaftstypen werden unterstützt. (Groß-/Klei
 | Byte | 8-Bit-Ganzzahlwert ohne Vorzeichen|
 |DateTime| Stellt Datum und Uhrzeit mit Werten zwischen 00:00:00 Uhr, 1. Januar 1753 n. Chr. bis 23:59:59 Uhr, 31. Dezember 9999 n. Chr. dar.|
 |Decimal | Stellt numerische Werte mit fester Genauigkeit und Dezimalstellenanzahl dar. Dieser Typ kann numerische Werte zwischen -10^255 + 1 und +10^255 - 1 beschreiben.|
-| Double | Stellt eine Gleitkommazahl mit 15 Stellen Genauigkeit dar, die Werte im ungefähren Bereich von ± 2,23e - 308 bis ±1,79e + 308 darstellen kann. **Verwenden Sie "Decimal", um Probleme beim Exportieren nach Excel zu vermeiden.**|
+| Doppelt | Stellt eine Gleitkommazahl mit 15 Stellen Genauigkeit dar, die Werte im ungefähren Bereich von ± 2,23e - 308 bis ±1,79e + 308 darstellen kann. **Verwenden Sie "Decimal", um Probleme beim Exportieren nach Excel zu vermeiden.**|
 | Single | Stellt eine Gleitkommazahl mit 7 Stellen Genauigkeit dar, die Werte im ungefähren Bereich von ±1,18e - 38 bis ±3,40e + 38 darstellen kann.|
-|Guid |Stellt einen eindeutigen 16-Byte-Bezeichnerwert (128 Bit) dar. |
+|GUID |Stellt einen eindeutigen 16-Byte-Bezeichnerwert (128 Bit) dar. |
 |Int16|Stellt einen 16-Bit-Ganzzahlwert mit Vorzeichen dar. |
 |Int32|Stellt einen 32-Bit-Ganzzahlwert mit Vorzeichen dar. |
 |Int64|Stellt einen 64-Bit-Ganzzahlwert mit Vorzeichen dar. |
@@ -272,4 +275,4 @@ Die folgenden Parameter- und Eigenschaftstypen werden unterstützt. (Groß-/Klei
 - Wenn Sie an Beispielen interessiert sind, lesen Sie den Artikel [Beispiele für die OData-Zuordnung im Datendienst](marketplace-publishing-data-service-creation-odata-mapping-examples.md), um Beispielcode kennen zu lernen und Codesyntax und Kontext zu verstehen.
 - Um zum vorgeschriebenen Pfad für die Veröffentlichung eines Datendiensts im Azure Marketplace zurückzukehren, lesen Sie den Artikel [Leitfaden zum Veröffentlichen von Datendiensten](marketplace-publishing-data-service-creation.md).
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0831_2016-->

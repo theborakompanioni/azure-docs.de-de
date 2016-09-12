@@ -14,14 +14,14 @@
      ms.topic="article"
      ms.tgt_pltfrm="na"
      ms.workload="na"
-     ms.date="06/07/2016"
+     ms.date="08/25/2016"
      ms.author="dobett"/>
 
 # Verwenden dynamischer Telemetriedaten mit der vorkonfigurierten Lösung für die Remoteüberwachung
 
 ## Einführung
 
-Die an die vorkonfigurierte Lösung für die Remoteüberwachung gesendeten dynamischen Telemetriedaten lassen sich visualisieren. Die simulierten Geräte, die mit der vorkonfigurierten Lösung bereitgestellt werden, senden Telemetriedaten zu Temperatur und Feuchtigkeit, die Sie im Dashboard visualisieren können. Wenn Sie die vorhandenen simulierten Geräte anpassen, neue simulierte Geräte erstellen oder physische Geräte mit der vorkonfigurierten Lösung verbinden, können Sie andere Telemetriewerte wie Außentemperatur, U/min. oder Windgeschwindigkeit senden. Sie können diese zusätzlichen Telemetriedaten dann im Dashboard visualisieren.
+Die an die vorkonfigurierte Lösung für die Remoteüberwachung gesendeten dynamischen Telemetriedaten lassen sich visualisieren. Die simulierten Geräte, die mit der vorkonfigurierten Lösung bereitgestellt werden, senden Telemetriedaten zu Temperatur und Luftfeuchtigkeit, die Sie im Dashboard visualisieren können. Wenn Sie die vorhandenen simulierten Geräte anpassen, neue simulierte Geräte erstellen oder physische Geräte mit der vorkonfigurierten Lösung verbinden, können Sie andere Telemetriewerte wie Außentemperatur, U/min. oder Windgeschwindigkeit senden. Sie können diese zusätzlichen Telemetriedaten dann im Dashboard visualisieren.
 
 Dieses Tutorial verwendet ein einfaches simuliertes Node.js-Gerät, das Sie problemlos anpassen können, um mit dynamischen Telemetriedaten zu experimentieren.
 
@@ -36,7 +36,7 @@ Sie können dieses Tutorial unter allen Betriebssystemen durcharbeiten, die die 
 
 ## Konfigurieren des simulierten Node.js-Geräts
 
-1. Klicken Sie im Dashboard für die Remoteüberwachung auf **+ Gerät hinzufügen**, und fügen Sie ein neues benutzerdefiniertes Gerät hinzu. Notieren Sie sich den IoT Hub-Hostnamen, die Geräte-ID und den Geräteschlüssel. Sie benötigen diese Informationen im weiteren Verlauf dieses Tutorials, wenn Sie die Geräteclientanwendung „remote\_monitoring.js“ vorbereiten.
+1. Klicken Sie im Dashboard für die Remoteüberwachung auf **+ Gerät hinzufügen**, und fügen Sie ein benutzerdefiniertes Gerät hinzu. Notieren Sie sich den IoT Hub-Hostnamen, die Geräte-ID und den Geräteschlüssel. Sie benötigen diese Informationen im weiteren Verlauf dieses Tutorials, wenn Sie die Geräteclientanwendung „remote\_monitoring.js“ vorbereiten.
 
 2. Stellen Sie sicher, dass auf dem Entwicklungscomputer mindestens die Node.js-Version 0.12.x installiert ist. Führen Sie an einer Eingabeaufforderung oder in der Shell `node --version` aus, um die Version zu überprüfen. Informationen zur Verwendung eines Paket-Managers zum Installieren von Node.js unter Linux finden Sie unter [Installieren von Node.js mithilfe eines Paket-Managers][node-linux].
 
@@ -59,7 +59,7 @@ Sie können dieses Tutorial unter allen Betriebssystemen durcharbeiten, die die 
     HostName={your IoT Hub hostname};DeviceId={your device id};SharedAccessKey={your device key}
     ```
 
-    Wenn der IoT Hub-Hostname **contoso** und die Geräte-ID **mydevice** lautet, ergibt sich folgende Verbindungszeichenfolge:
+    Wenn der IoT Hub-Hostname **contoso** und die Geräte-ID **mydevice** lautet, sieht Ihre Verbindungszeichenfolge folgendermaßen aus:
 
     ```
     var connectionString = "HostName=contoso.azure-devices.net;DeviceId=mydevice;SharedAccessKey=2s ... =="
@@ -84,13 +84,13 @@ Wenn Sie das simulierte Node.js-Gerät auswählen, das Sie im vorherigen Abschni
 
 Die Remoteüberwachungslösung erkennt automatisch die zusätzlichen Telemetriedaten zur Außentemperatur und fügt sie dem Diagramm im Dashboard hinzu.
 
-## Hinzufügen eines neuen Telemetriedatentyps
+## Hinzufügen eines Telemetriedatentyps
 
 Der nächste Schritt besteht im Ersetzen der vom simulierten Node.js-Gerät generierten Telemetriedaten durch eine neue Menge von Werten:
 
 1. Beenden Sie das simulierte Node.js-Gerät durch Eingabe von **STRG+C** an der Eingabeaufforderung oder in der Shell.
 
-2. In der Datei „remote\_monitoring.js“ sehen Sie die Basisdatenwerte für die vorhandenen Telemetriedaten für Temperatur, Luftfeuchtigkeit und Außentemperatur. Fügen Sie für **rpm** (U/min.) einen neuen Basisdatenwert hinzu:
+2. In der Datei „remote\_monitoring.js“ sehen Sie die Basisdatenwerte für die vorhandenen Telemetriedaten für Temperatur, Luftfeuchtigkeit und Außentemperatur. Fügen Sie für **rpm** (U/Min.) folgendermaßen einen Basisdatenwert hinzu:
 
     ```
     // Sensors data
@@ -100,7 +100,7 @@ Der nächste Schritt besteht im Ersetzen der vom simulierten Node.js-Gerät gene
     var rpm = 200;
     ```
 
-3. Das simulierte Node.js-Gerät generiert Telemetriedaten durch Hinzufügen einer zufälligen Erhöhung zu den Stammdatenwerten mithilfe der **generateRandomIncrement**-Funktion in der Datei „remote\_monitoring.js“. Randomisieren Sie den Wert **rpm**, indem Sie hinter der vorhandenen Randomisierung eine Codezeile hinzufügen:
+3. Das simulierte Node.js-Gerät verwendet die **generateRandomIncrement**-Funktion in der Datei „remote\_monitoring.js“, um eine zufällige Erhöhung zu den Basisdatenwerten hinzuzufügen. Randomisieren Sie den Wert **rpm**, indem Sie hinter der vorhandenen Randomisierung eine Codezeile hinzufügen:
 
     ```
     temperature += generateRandomIncrement();
@@ -135,7 +135,7 @@ Der nächste Schritt besteht im Ersetzen der vom simulierten Node.js-Gerät gene
 
 ## Anpassen der Dashboardanzeige
 
-Die Nachricht **Device-Info** kann Metadaten zur Telemetrie enthalten, die das Gerät an IoT Hub senden kann. Diese Metadaten können die Telemetriedaten angeben, die das Gerät sendet. Ändern Sie den Wert **deviceMetaData** in der Datei „remote\_monitoring.js“ so, dass eine Definition von **Telemetry** auf die Definition von **Commands** folgt, was im folgenden Codeausschnitt gezeigt wird (setzen Sie unbedingt ein `,` hinter die Definition von **Commands**):
+Die Nachricht **Device-Info** kann Metadaten zur Telemetrie enthalten, die das Gerät an IoT Hub senden kann. Diese Metadaten können die Telemetriedaten angeben, die das Gerät sendet. Ändern Sie den Wert **deviceMetaData** in der Datei „remote\_monitoring.js“ so, dass eine Definition von **Telemetry** auf die Definition von **Commands** folgt. Der folgende Codeausschnitt zeigt die **Commands**-Definition (setzen Sie unbedingt ein `,` hinter die Definition von **Commands**):
 
 ```
 'Commands': [{
@@ -166,9 +166,9 @@ Die Nachricht **Device-Info** kann Metadaten zur Telemetrie enthalten, die das G
 }]
 ```
 
-> [AZURE.NOTE] Die Remoteüberwachungslösung unterscheidet beim Vergleichen der Metadatendefinition mit Daten im Telemetriedatenstrom keine Groß-/Kleinschreibung.
+> [AZURE.NOTE] Die Remoteüberwachungslösung unterscheidet beim Vergleichen der Metadatendefinition mit Daten im Telemetriedatenstrom nicht zwischen Groß- und Kleinschreibung.
 
-Durch Hinzufügen der Definition **Telemetry**, wie im obigen Beispiel, ändert sich nicht das Verhalten des Dashboards. Allerdings können die Metadaten auch das **DisplayName**-Attribut enthalten, um die Anzeige im Dashboard anzupassen. Aktualisieren Sie die Metadatendefinition von **Telemetry** wie folgt:
+Durch Hinzufügen der **Telemetry**-Definition, wie vorherigen Codeausschnitt gezeigt, ändert sich nicht das Verhalten des Dashboards. Allerdings können die Metadaten auch ein **DisplayName**-Attribut enthalten, um die Anzeige im Dashboard anzupassen. Aktualisieren Sie die Metadatendefinition von **Telemetry** wie im folgenden Codeausschnitt gezeigt:
 
 ```
 'Telemetry': [
@@ -194,13 +194,13 @@ Der folgende Screenshot zeigt, wie sich durch diese Änderung am Dashboard die D
 
 ![Anpassen der Diagrammlegende][image4]
 
-> [AZURE.NOTE] Sie müssen möglicherweise das Node.js-Gerät auf der Seite **Geräte** im Dashboard deaktivieren und aktivieren, damit die Änderung sofort wirksam wird.
+> [AZURE.NOTE] Sie müssen möglicherweise das Node.js-Gerät auf der Seite **Geräte** im Dashboard deaktivieren und dann aktivieren, damit die Änderung sofort angezeigt wird.
 
 ## Filtern der Telemetrietypen
 
-Standardmäßig zeigt das Diagramm im Dashboard jede Datenreihe im Telemetriedatenstrom an. Mithilfe der Metadaten zu **Device-Info** können Sie die Anzeige bestimmter Telemetrietypen im Diagramm unterdrücken.
+Standardmäßig zeigt das Diagramm im Dashboard jede Datenreihe im Telemetriedatenstrom an. Mithilfe der **Device-Info**-Metadaten können Sie die Anzeige bestimmter Telemetrietypen im Diagramm unterdrücken.
 
-Damit im Diagramm nur die Telemetriedaten zu Temperatur und Feuchtigkeit angezeigt werden, entfernen Sie **ExternalTemperature** wie folgt aus den Metadaten zu **Device-Info** **Telemetry**:
+Damit im Diagramm nur die Telemetriedaten zu Temperatur und Luftfeuchtigkeit angezeigt werden, entfernen Sie **ExternalTemperature** wie folgt aus den Metadaten zu **Device-Info** **Telemetry**:
 
 ```
 'Telemetry': [
@@ -226,13 +226,13 @@ Damit im Diagramm nur die Telemetriedaten zu Temperatur und Feuchtigkeit angezei
 
 ![Filtern der Telemetriedaten im Dashboard][image5]
 
-Beachten Sie, dass dies nur die Darstellung des Diagramms betrifft. Die Datenwerte von **ExternalTemperature** werden weiterhin gespeichert und für die Back-End-Verarbeitung zur Verfügung gestellt.
+Diese Änderung wirkt sich nur auf die Darstellung des Diagramms aus. Die Datenwerte für **ExternalTemperature** werden weiterhin gespeichert und für die Back-End-Verarbeitung zur Verfügung gestellt.
 
-> [AZURE.NOTE] Sie müssen möglicherweise das Node.js-Gerät auf der Seite **Geräte** im Dashboard deaktivieren und aktivieren, damit die Änderung sofort wirksam wird.
+> [AZURE.NOTE] Sie müssen möglicherweise das Node.js-Gerät auf der Seite **Geräte** im Dashboard deaktivieren und dann aktivieren, damit die Änderung sofort angezeigt wird.
 
 ## Fehlerbehandlung
 
-Um einen Datenstrom im Diagramm anzuzeigen, muss dessen **Typ** in den Metadaten zu **Device-Info** mit dem Datentyp der Telemetriewerte übereinstimmen. Wenn beispielsweise die Metadaten angeben, dass der **Typ** von Feuchtigkeitsdaten **int** ist, und **double** im Telemetriedatenstrom gefunden wird, werden die Telemetriedaten zur Feuchtigkeit nicht im Diagramm gezeigt. Allerdings werden die Werte für **Humidity** weiterhin gespeichert und für die Back-End-Verarbeitung zur Verfügung gestellt.
+Um einen Datenstrom im Diagramm anzuzeigen, muss dessen **Typ** in den Metadaten zu **Device-Info** mit dem Datentyp der Telemetriewerte übereinstimmen. Wenn beispielsweise die Metadaten angeben, dass der **Typ** der Luftfeuchtigkeitsdaten **int** ist, und **double** im Telemetriedatenstrom gefunden wird, werden die Telemetriedaten zur Luftfeuchtigkeit nicht im Diagramm gezeigt. Allerdings werden die **Humidity**-Werte weiterhin gespeichert und für die Back-End-Verarbeitung zur Verfügung gestellt.
 
 ## Nächste Schritte
 
@@ -251,4 +251,4 @@ Sie wissen nun, wie Sie dynamische Telemetriedaten verwenden. Weitere Informatio
 [node-linux]: https://github.com/nodejs/node-v0.x-archive/wiki/Installing-Node.js-via-package-manager
 [lnk-github-repo]: https://github.com/Azure/azure-iot-sdks
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0831_2016-->

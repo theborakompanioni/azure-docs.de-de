@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-linux"
 	ms.workload="infrastructure-services"
-	ms.date="01/04/2016"
+	ms.date="08/29/2016"
 	ms.author="rasquill"/>
 
 # Verwenden der Docker-VM-Erweiterung aus der Azure-Befehlszeilenschnittstelle (Azure-CLI)
@@ -176,4 +176,4 @@ Der Docker-Daemon auf dem Host ist so konfiguriert, dass er Clientverbindungen a
  
 [Erste Schritte mit Docker und Compose zum Definieren und Ausführen einer Anwendung mit mehreren Containern auf einem virtuellen Azure-Computer]: virtual-machines-linux-docker-compose-quickstart.md
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0831_2016-->

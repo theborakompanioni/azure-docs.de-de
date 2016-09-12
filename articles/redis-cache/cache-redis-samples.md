@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="multiple" 
 	ms.topic="article" 
-	ms.date="06/09/2016" 
+	ms.date="08/30/2016" 
 	ms.author="sdanie"/>
 
 # Azure Redis Cache – Beispiele 
 
-Dieses Thema enthält eine Liste von Azure Redis Cache-Beispielen für Szenarien wie z. B. das Herstellen einer Verbindung mit einem Cache, das Lesen und Schreiben von Daten in und aus einem Cache und die Verwendung der ASP.NET Redis Cache-Anbieter. Einige der Beispiele sind herunterladbare Projekte und einige bieten eine schrittweise Anleitung und Codeausschnitte, ohne mit einem herunterladbaren Projekt verknüpft zu sein.
+Dieses Thema enthält eine Liste von Azure Redis Cache-Beispielen für Szenarien wie z.B. das Herstellen einer Verbindung mit einem Cache, das Lesen und Schreiben von Daten in und aus einem Cache und die Verwendung der ASP.NET Redis Cache-Anbieter. Einige der Beispiele sind herunterladbare Projekte und einige bieten eine schrittweise Anleitung und Codeausschnitte, ohne mit einem herunterladbaren Projekt verknüpft zu sein.
 
 ## Hello World-Beispiele
 
@@ -74,4 +74,4 @@ Das Beispiel [Retwis](https://github.com/SyntaxC4-MSFT/retwis) ist die Hello-Wor
 
 Das Beispiel [Bandbreitenüberwachung](https://github.com/JonCole/SampleCode/tree/master/BandWidthMonitor) ermöglicht die Überwachung der auf dem Client genutzten Bandbreite. Um die Bandbreite zu messen, führen Sie das Beispiel auf dem Cacheclientcomputer aus, rufen Sie den Cache auf, und beobachten Sie die durch das Beispiel gemeldete Bandbreite.
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0831_2016-->

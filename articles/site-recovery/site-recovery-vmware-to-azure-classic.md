@@ -236,6 +236,8 @@ Richten Sie ein Azure-Netzwerk ein, damit die virtuellen Azure-Computer nach dem
 
 [Erfahren Sie mehr](../virtual-network/virtual-networks-overview.md) über Azure-Netzwerke.
 
+> [AZURE.NOTE] [Migration of networks](../resource-group-move-resources.md) zwischen Ressourcengruppen im gleichen Abonnement oder zwischen verschiedenen Abonnements wird für Netzwerke nicht unterstützt, die für die Site Recovery-Bereitstellung verwendet werden.
+
 ## Schritt 3: Installieren der VMware-Komponenten
 
 Wenn Sie virtuelle VMware-Computer replizieren möchten, installieren Sie die folgenden VMware-Komponenten auf dem Verwaltungsserver:
@@ -599,7 +601,7 @@ So fügen Sie Computer einer Schutzgruppe hinzu:
 
 4. Wählen Sie unter **Zielressourcen angeben** das Speicherkonto aus, das für die Replikation verwendet werden soll, und wählen Sie aus, ob die Einstellungen für alle Workloads verwendet werden sollen. Beachten Sie, dass Premium-Speicherkonten derzeit nicht unterstützt werden.
 
-	>[AZURE.NOTE] Eine Verschiebung von mit dem [neuen Azure-Portal](../storage/storage-create-storage-account.md) erstellten Speicherkonten über Ressourcengruppen hinweg wird nicht unterstützt.
+	>[AZURE.NOTE] 1. Eine Verschiebung von mit dem [neuen Azure-Portal](../storage/storage-create-storage-account.md) erstellten Speicherkonten über Ressourcengruppen hinweg wird nicht unterstützt. 2. [Die Migration von Speicherkonten](../resource-group-move-resources.md) zwischen Ressourcengruppen im gleichen Abonnement oder zwischen verschiedenen Abonnements wird für Speicherkonten nicht unterstützt, die für die Site Recovery-Bereitstellung verwendet werden.
 
 	![Schutz aktivieren](./media/site-recovery-vmware-to-azure-classic/enable-protection3.png)
 
@@ -804,4 +806,4 @@ The complete file may be found on the [Microsoft Download Center](http://go.micr
 
 [Erfahren Sie mehr über das Failback](site-recovery-failback-azure-to-vmware-classic.md), um Computer, die per Failover nach Azure verschoben wurden, wieder in der lokalen Umgebung auszuführen.
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->

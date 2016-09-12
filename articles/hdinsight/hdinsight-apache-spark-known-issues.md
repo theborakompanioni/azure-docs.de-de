@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/06/2016" 
+	ms.date="08/25/2016" 
 	ms.author="nitinme"/>
 
 # Bekannte Probleme bei Apache Spark-Clustern unter HDInsight (Linux)
@@ -29,8 +29,8 @@ Wenn Livy neu gestartet wird, während noch eine interaktive Sitzung (von Ambari
 
 Gehen Sie wie folgt vor, um das Problem zu umgehen:
 
-1. Greifen Sie per SSH auf den Stammknoten zu. 
-2. Führen Sie den folgenden Befehl aus, um die Anwendungs-IDs der interaktiven Aufträge zu ermitteln, die über Livy gestartet wurden. 
+1. Greifen Sie per SSH auf den Stammknoten zu.
+2. Führen Sie den folgenden Befehl aus, um die Anwendungs-IDs der interaktiven Aufträge zu ermitteln, die über Livy gestartet wurden.
 
         yarn application –list
 
@@ -56,10 +56,10 @@ Wenn „hdiuser“ einen Auftrag mit „spark-submit“ übermittelt, tritt der 
 
 **Lösung:**
  
-1. Fügen Sie „hdiuser“ der Hadoop-Gruppe hinzu. 
-2. Erteilen Sie nach der Clustererstellung 777-Berechtigungen für „/var/log/spark“. 
-3. Aktualisieren Sie den Spark-Protokollspeicherort mit Ambari auf ein Verzeichnis mit 777-Berechtigungen.  
-4. Führen Sie „spark-submit“ als sudo aus.  
+1. Fügen Sie „hdiuser“ der Hadoop-Gruppe hinzu.
+2. Erteilen Sie nach der Clustererstellung 777-Berechtigungen für „/var/log/spark“.
+3. Aktualisieren Sie den Spark-Protokollspeicherort mit Ambari auf ein Verzeichnis mit 777-Berechtigungen.
+4. Führen Sie „spark-submit“ als sudo aus.
 
 ## Probleme im Zusammenhang mit Jupyter Notebooks
 
@@ -104,7 +104,7 @@ Wenn dem Spark-Cluster nicht genügend Ressourcen zur Verfügung stehen, tritt b
 
 2. Starten Sie das Notebook, das Sie starten wollten, neu. Nun sollten genügend Ressourcen für die Sitzungserstellung verfügbar sein.
 
-##Weitere Informationen
+##Siehe auch
 
 * [Übersicht: Apache Spark in Azure HDInsight](hdinsight-apache-spark-overview.md)
 
@@ -146,4 +146,4 @@ Wenn dem Spark-Cluster nicht genügend Ressourcen zur Verfügung stehen, tritt b
 
 * [Track and debug jobs running on an Apache Spark cluster in HDInsight (Nachverfolgen und Debuggen von Aufträgen in einem Apache Spark-Cluster unter HDInsight)](hdinsight-apache-spark-job-debugging.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0831_2016-->

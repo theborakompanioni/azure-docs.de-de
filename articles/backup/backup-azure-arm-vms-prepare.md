@@ -47,6 +47,7 @@ Bitte machen Sie sich vor der Vorbereitung der Umgebung mit den Einschränkungen
 - Die Sicherung von virtuellen Computern mit mehr als 16 Datenträgern wird nicht unterstützt.
 - Die Sicherung von virtuellen Computern mit einer reservierten IP-Adresse und ohne definierten Endpunkt wird nicht unterstützt.
 - Das Sichern von virtuellen Linux-Computern mit Docker-Erweiterung wird nicht unterstützt.
+- Im Netzwerk bereitgestellte und an den virtuellen Computer angefügte Laufwerke werden nicht in die Sicherungsdaten einbezogen.
 - Das Ersetzen eines vorhandenen virtuellen Computers während der Wiederherstellung wird nicht unterstützt. Wenn Sie versuchen, die VM wiederherzustellen, obwohl die VM vorhanden ist, wird die Wiederherstellung nicht ausgeführt.
 - Regionsübergreifende Sicherungs- und Wiederherstellungsvorgänge werden nicht unterstützt.
 - Sie können virtuelle Computer in allen öffentlichen Regionen von Azure sichern (siehe [Checkliste](https://azure.microsoft.com/regions/#services) der unterstützten Regionen). Wenn die gewünschte Region derzeit nicht unterstützt wird, wird sie bei der Erstellung des Tresors in der Dropdownliste nicht angezeigt.
@@ -322,4 +323,4 @@ Ihre Umgebung ist jetzt für das Sichern Ihres virtuellen Computers vorbereitet.
 - [Planen der Sicherungsinfrastruktur für virtuelle Computer](backup-azure-vms-introduction.md)
 - [Verwalten der Sicherung virtueller Computer](backup-azure-manage-vms.md)
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->

@@ -13,10 +13,13 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="01/04/2016"
+   ms.date="08/26/2016"
    ms.author="hascipio; avikova" />
 
 # Testen des Datendienstangebots im Staging
+
+>[AZURE.IMPORTANT] **Derzeit integrieren wir keine neuen Herausgeber von Datendiensten mehr. Für neue Datendienste wird keine Auflistung genehmigt.** Wenn Sie eine SaaS-Geschäftsanwendung haben, die Sie auf AppSource veröffentlichen möchten, finden Sie [hier](https://appsource.microsoft.com/partners) weitere Informationen. Wenn Sie eine IaaS-Anwendung oder einen Dienst für Entwickler auf Azure Marketplace veröffentlichen möchten, finden Sie [hier](https://azure.microsoft.com/marketplace/programs/certified/) weitere Informationen.
+
 Nach Abschluss der ersten beiden Schritte zum [Erstellen Ihres Microsoft-Developer-Kontos](marketplace-publishing-accounts-creation-registration.md) und zum [Erstellen des Datendienstangebots im Veröffentlichungsportal](marketplace-publishing-data-service-creation.md) können Sie Ihr Angebot im Azure Marketplace verfügbar machen. Dieses Thema führt Sie durch den ersten Zwischenschritt namens „Staging“.
 
 In der Stagingumgebung wird Ihr Angebot in einem privaten "Sandkasten" bereitgestellt, in dem Sie es testen und seine Funktionalität vor der Veröffentlichung überprüfen können. Das Angebot wird in der Stagingumgebung genau wie bei einem Kunden angezeigt, der es bereitgestellt hat.
@@ -50,7 +53,7 @@ Der nächste Bildschirm zeigt durch das unten gelb markierte Symbol „In Bearbe
 
 Nach Abschluss der Übertragung in die Stagingumgebung wird die Animation des Symbols „In Bearbeitung“ beendet, und der Status wird in „Bereitgestellt“ geändert. Sie können das Angebot jetzt testen.
 
-## Schritt 2. Testen des bereitgestellten Angebots im DataMarket
+## Schritt 2: Testen des bereitgestellten Angebots im DataMarket
 
 Klicken Sie auf den Link hinter dem Text **See Your service offer at ...**, um den Bildschirm anzuzeigen, der Abonnenten angezeigt wird, wenn Ihr Angebot in die Produktionsumgebung wechselt und im DataMarket verfügbar ist.
 
@@ -86,4 +89,4 @@ Wenn Sie mit den Ergebnissen zufrieden und bereit für die Veröffentlichung Ihr
 ## Weitere Informationen
 - [Erste Schritte: Veröffentlichen eines Angebots im Azure Marketplace](marketplace-publishing-getting-started.md)
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0831_2016-->

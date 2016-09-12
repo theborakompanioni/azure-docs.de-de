@@ -81,14 +81,14 @@ Sie können sowohl leere Datenträger, als auch Datenträger mit Daten an Ihre v
 5. Geben Sie bei Aufforderung **p** ein, um die Partition als primäre Partition festzulegen. Geben Sie **1** ein, um sie zur ersten Partition zu machen, und drücken Sie die Eingabetaste, um den Standardwert für den Zylinder zu übernehmen. Bei einigen Systemen werden unter Umständen anstelle des Zylinders die Standardwerte des ersten und letzten Abschnitts angezeigt. Sie können diese Standardeinstellungen auch übernehmen.
 
 
-	![Partition erstellen](./media/virtual-machines-linux-classic-attach-disk/fdisknewpartition.png)
+	![Partition erstellen](./media/virtual-machines-linux-classic-attach-disk/fdisknewpartdetails.png)
 
 
 
 6. Geben Sie **p** ein, um die Details zum Datenträger anzuzeigen, der gerade partitioniert wird.
 
 
-	![Informationen zum Datenträger auflisten](./media/virtual-machines-linux-classic-attach-disk/fdisknewpartition.png)
+	![Informationen zum Datenträger auflisten](./media/virtual-machines-linux-classic-attach-disk/fdiskpartitiondetails.png)
 
 
 
@@ -152,9 +152,9 @@ Sie können sowohl leere Datenträger, als auch Datenträger mit Daten an Ihre v
 		# sudo umount /datadrive
 		# sudo mount /datadrive
 
-	Wenn der Befehl `mount` zu einem Fehler führt, prüfen Sie die Datei "/etc/fstab" auf korrekte Syntax. Wenn zusätzliche Datenlaufwerke oder Partitionen erstellt werden, müssen Sie diese ebenfalls einzeln in „/etc/fstab“ einfügen.
+	Wenn der Befehl `mount` zu einem Fehler führt, prüfen Sie die Datei "/etc/fstab" auf korrekte Syntax. Wenn zusätzliche Datenlaufwerke oder Partitionen erstellt werden, fügen Sie diese ebenfalls einzeln in „/etc/fstab“ ein.
 
-	Das Laufwerk muss beschreibbar sein. Sie erreichen dies mit folgendem Befehl:
+	Machen Sie das Laufwerk mit folgendem Befehl beschreibbar:
 
 		# sudo chmod go+w /datadrive
 
@@ -198,4 +198,4 @@ Informieren Sie sich in den folgenden Artikeln ausführlicher über das Verwende
 [Agent]: virtual-machines-linux-agent-user-guide.md
 [Logon]: virtual-machines-linux-mac-create-ssh-keys.md
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->

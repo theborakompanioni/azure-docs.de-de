@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="Überprüfen des Auftragsfortschritts im klassischen Azure-Portal" 
-	description="Informationen über das Verfolgen des Auftragsfortschritts im klassischen Azure-Portal" 
+	pageTitle="Überwachen des Codierauftragsstatus mithilfe des Azure-Portals" 
+	description="Dieses Tutorial führt Sie durch die Schritte zur Überwachung des Auftragsstatus mithilfe des Azure-Portals." 
 	services="media-services" 
 	documentationCenter="" 
 	authors="juliako" 
@@ -13,25 +13,33 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/22/2016"  
+	ms.date="08/29/2016"  
 	ms.author="juliako"/>
 
-#Vorgehensweise: Prüfen des Auftragsfortschritts
+#Überwachen des Codierauftragsstatus mithilfe des Azure-Portals
 
 > [AZURE.SELECTOR]
 - [Portal](media-services-portal-check-job-progress.md)
 - [.NET](media-services-check-job-progress.md)
 - [REST](media-services-rest-check-job-progress.md)
 
-##Überprüfen des Auftragsstatus im Portal
+## Übersicht
 
-1. Klicken Sie im [klassischen Azure-Portal](http://go.microsoft.com/fwlink/?LinkID=256666&clcid=0x409) auf **Media Services** und dann auf den Media Services-Kontonamen.
-2. Wählen Sie die Seite **AUFTRÄGE** aus.
+> [AZURE.NOTE] Sie benötigen ein Azure-Konto, um dieses Lernprogramm auszuführen. Weitere Informationen finden Sie unter [Kostenloses Azure-Testkonto](https://azure.microsoft.com/pricing/free-trial/).
 
-	Auf der Seite können Sie den Status aller Aufträge anzeigen. Außerdem können Sie nach Status, Uhrzeit oder Auftrags-ID filtern.
+Beim Ausführen von Aufträgen ist es nützlich, deren Fortschritt verfolgen zu können.
 
-	![CheckStatus][checkstatus]
+Klicken Sie zum Überwachen des Codierauftragsstatus auf **Einstellungen** (oben auf der Seite), und wählen Sie dann **Aufträge** aus.
 
+![Aufträge](./media/media-services-portal-vod-get-started/media-services-jobs.png)
+
+Sie können auf den Auftrag klicken, um weitere Details anzuzeigen.
+
+![Aufträge](./media/media-services-portal-vod-get-started/media-services-job-progress2.png)
+
+##Nächste Schritte
+
+Nach der Codierung eines Auftrags können Sie Ihre Medienobjekte, wie [hier](media-services-portal-publish.md) beschrieben, veröffentlichen und wiedergeben.
 
 ##Media Services-Lernpfade
 
@@ -41,13 +49,4 @@
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-
-##Nächster Schritt
-
-Veröffentlichen des Inhalts. Weitere Informationen finden Sie unter [Codieren von Medienobjekten](media-services-manage-content.md#publish).
-
-
-[checkstatus]: ./media/media-services-portal-check-job-progress/media-services-monitor-job-progress.png
- 
-
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0831_2016-->

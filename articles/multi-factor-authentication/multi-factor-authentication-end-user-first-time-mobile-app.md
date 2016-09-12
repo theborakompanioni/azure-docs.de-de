@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/22/2016" 
+	ms.date="08/30/2016" 
 	ms.author="billmath"/>
 
 # Verwenden einer mobilen App als Kontaktmethode mit Azure Multi-Factor Authentication
@@ -22,20 +22,26 @@ Wenn Sie die Microsoft Authenticator-App als primäre Kontaktmethode verwenden m
 
 Die Microsoft Authenticator-App ist für [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071), [Android](http://go.microsoft.com/fwlink/?Linkid=825072) und [iOS](http://go.microsoft.com/fwlink/?Linkid=825073) verfügbar.
 
-## So verwenden Sie eine mobile App als Kontaktmethode
+## Verwenden von Microsoft Authenticator als Kontaktmethode
 
 
-- Wählen Sie in der Dropdownliste "Mobile App" aus.
+- Wählen Sie auf der Seite „Zusätzliche Sicherheitsüberprüfung“ in der Dropdownliste „Mobile App“ aus.
 
 
 ![Einrichtung](./media/multi-factor-authentication-end-user-first-time-mobile-app/mobileapp.png)
 
 - Wählen Sie "Benachrichtigung" oder "Einmalkennwort" aus, und klicken Sie auf "Einrichten".
-- Starten Sie die Azure Authenticator-App auf dem Mobiltelefon, auf dem die App installiert ist, und tippen Sie auf "Barcode einlesen". Informationen zum Hinzufügen eines Kontos, das bereits über Azure MFA oder ein Drittanbieterkonto verfügt, finden Sie unter <a href="#Manuelles">Manuelles Hinzufügen eines Kontos</a>.
+- Starten Sie die Microsoft Authenticator-App auf dem Smartphone, auf dem die App installiert ist, und tippen Sie auf „+“, um ein neues Konto hinzuzufügen. Geben Sie anschließend an, dass Sie ein Geschäfts-, Schul- oder Unikonto hinzufügen möchten, über das der QR-Codescanner gestartet wird. Wenn die Kamera nicht ordnungsgemäß funktioniert, können Sie die Informationen zu Ihrem Unternehmen manuell eingeben. [Manuelles Hinzufügen eines Kontos](#adding-an-account-manually).
+
+![Einrichtung](./media/multi-factor-authentication-end-user-first-time-mobile-app/scan4.png)
 
 ![Einrichtung](./media/multi-factor-authentication-end-user-first-time-mobile-app/scan.png)
 
-- Scannen Sie das Bild mit dem Barcode, das im Bildschirm "Mobile App konfigurieren" angezeigt wird. Klicken Sie auf "Fertig", um den Bildschirm mit dem Barcode zu schließen. Wenn der Barcode nicht gescannt werden kann, können Sie die Informationen manuell eingeben.
+- Scannen Sie das Bild mit dem QR-Code, das auf dem Bildschirm „Mobile App konfigurieren“ angezeigt wird. Klicken Sie auf „Fertig“, um den Bildschirm mit dem QR-Code zu schließen.
+
+![Einrichtung](./media/multi-factor-authentication-end-user-first-time-mobile-app/scan2.png)
+
+- Wenn der QR-Code nicht gescannt werden kann, können Sie die Informationen manuell eingeben.
 
 ![Einrichtung](./media/multi-factor-authentication-end-user-first-time-mobile-app/barcode.png)
 
@@ -43,7 +49,12 @@ Die Microsoft Authenticator-App ist für [Windows Phone](http://go.microsoft.com
 
 ![Einrichtung](./media/multi-factor-authentication-end-user-first-time-mobile-app/verify.png)
 
-- Klicken Sie auf "Schließen". Die Überprüfung sollte jetzt erfolgreich abgeschlossen sein.
+- In einigen Unternehmen wird bei der Überprüfung eine PIN angefordert.
+
+![Einrichtung](./media/multi-factor-authentication-end-user-first-time-mobile-app/scan3.png)
+
+
+- Sobald dies abgeschlossen ist, können Sie auf „Schließen“ klicken. Die Überprüfung sollte jetzt erfolgreich abgeschlossen sein.
 - Jetzt sollten Sie Ihre Mobiltelefonnummer eingeben, falls Sie einmal keinen Zugang zu Ihrer mobilen App mehr haben.
 - Wählen Sie Ihr Land aus der Dropdownliste aus, und geben Sie im Feld neben dem Land Ihre Mobiltelefonnummer ein. Klicken Sie auf Weiter.
 - Ihre Kontaktmethode ist nun eingerichtet. Als Nächstes richten Sie App-Kennwörter für Nicht-Browser-Apps wie Outlook 2010 oder früher ein. Wenn Sie solche Apps nicht verwenden, klicken Sie auf **Fertig**. Fahren Sie andernfalls mit dem nächsten Schritt fort.
@@ -54,23 +65,22 @@ Die Microsoft Authenticator-App ist für [Windows Phone](http://go.microsoft.com
 - Klicken Sie auf Done.
 
 
-<h2 id="Manuelles">Manuelles Hinzufügen eines Kontos</h2>
+## Manuelles Hinzufügen eines Kontos
 Wenn Sie ein Konto manuell hinzufügen möchten, wählen Sie die Schaltfläche zum manuellen Eingeben des Kontos aus.
 
 ![Einrichtung](./media/multi-factor-authentication-end-user-first-time-mobile-app/addaccount.png)
+
+
+![Einrichtung](./media/multi-factor-authentication-end-user-first-time-mobile-app/addaccount2.png)
 
 Wenn Sie ein Konto besitzen, das bereits über Azure MFA verfügt, geben Sie den Code und die URL ein, die auf der Seite mit dem Barcode bereitgestellt werden. Diese werden in der mobilen App in den Feldern für Code und URL eingegeben. Dadurch wird die Aktivierung gestartet.
 
 ![Einrichtung](./media/multi-factor-authentication-end-user-first-time-mobile-app/barcode2.png)
 
-Sobald der Vorgang abgeschlossen ist, klicken Sie auf die Schaltfläche zur Kontaktaufnahme. Dadurch wird eine Benachrichtigung oder ein Überprüfungscode an Ihr Mobiltelefon gesendet. Klicken Sie auf "Überprüfen". Befolgen Sie zum Abschluss die oben aufgeführten Schritte, beginnend mit Schritt 6.
+Sobald der Vorgang abgeschlossen ist, klicken Sie auf die Schaltfläche zur Kontaktaufnahme. Dadurch wird eine Benachrichtigung oder ein Überprüfungscode an Ihr Mobiltelefon gesendet. Klicken Sie auf "Überprüfen".
 
-Wenn Sie ein Drittanbieterkonto mit der mobilen App verwenden, geben Sie den Kontonamen und den Sicherheitsschlüssel in die entsprechenden Textfelder ein, und aktivieren Sie anschließend das Konto. Sobald Sie das Konto überprüft haben, befolgen Sie die oben aufgeführten Schritte, beginnend mit Schritt 6.
-
-
-![Einrichtung](./media/multi-factor-authentication-end-user-first-time-mobile-app/add3rdparty.png)
 
 
  
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->
