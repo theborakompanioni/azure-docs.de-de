@@ -140,7 +140,7 @@ Dokument-Explorer unterstützt die Sammelerfassung von einem oder mehreren JSON-
 
 3. Sobald Sie mit der Auswahl fertig sind, klicken Sie auf die Schaltfläche **Hochladen**. Die Dokumente werden automatisch zum Dokument-Explorer-Raster hinzugefügt, und die Hochladeergebnisse werden angezeigt, während der Prozess weiterläuft. Importfehler werden für einzelne Dateien gemeldet.
 
-	![Screenshot des Dokument-Explorers – Sammelerfassungsergebnisse](./media/documentdb-view-JSON-document-explorer/uploaddocument3.png)
+	![Screenshot des Dokument-Explorers – Sammelerfassungsergebnisse](./media/documentdb-view-json-document-explorer/uploaddocument3.png)
 
 4. Sobald der Vorgang abgeschlossen ist, können Sie bis zu 100 weitere Dokumente auswählen, die Sie hochladen möchten.
 

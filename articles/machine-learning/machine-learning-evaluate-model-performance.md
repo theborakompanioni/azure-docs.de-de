@@ -72,7 +72,7 @@ Das Bestimmtheitsmaß, das auch als "R-Quadrat" notiert wird, ist ebenfalls eine
 Abbildung 2. Auswertungskennzahlen bei der linearen Regression.
 
 ###Verwenden der Kreuzvalidierung###
-Wie bereits zuvor erwähnt, können Sie mit dem Modul [Cross Validate Model][cross-validate-model] automatisch wiederholte Trainings-, Bewertungs- und Auswertungsvorgänge durchführen. In diesem Fall benötigen Sie lediglich ein Dataset, ein untrainiertes Modell und das Modul [Cross Validate Model][cross-validate-model
+Wie bereits zuvor erwähnt, können Sie mit dem Modul [Cross Validate Model][cross-validate-model] automatisch wiederholte Trainings-, Bewertungs- und Auswertungsvorgänge durchführen. In diesem Fall benötigen Sie lediglich ein Dataset, ein untrainiertes Modell und das Modul [Cross Validate Model][cross-validate-model]
 \(siehe Abbildung unten). Beachten Sie, dass Sie in den Eigenschaften des Moduls [Cross Validate Model][cross-validate-model] für die Spalte "Label" den Wert *price* festlegen müssen.
 
 ![Kreuzvalidierung eines Regressionsmodells.](media/machine-learning-evaluate-model-performance/3.png)
