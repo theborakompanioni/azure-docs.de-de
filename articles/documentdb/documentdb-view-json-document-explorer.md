@@ -41,7 +41,7 @@ Beachten Sie, dass der Dokument-Explorer für DocumentDB-Konten mit Protokollunt
 
     Auf dem Blatt **Dokument** wird ein kurzer JSON-Codeausschnitt bereitgestellt.
 
-	![Screenshot des Dokument-Explorers – Erstellen der Dokumentumgebung, in der Sie JSON-Code anzeigen und bearbeiten können](./media/documentdb-view-JSON-document-explorer/createdocument.png)
+	![Screenshot des Dokument-Explorers – Erstellen der Dokumentumgebung, in der Sie JSON-Code anzeigen und bearbeiten können](./media/documentdb-view-json-document-explorer/createdocument.png)
 
 2. Geben bzw. fügen Sie auf dem Blatt **Dokument** den Inhalt des JSON-Dokuments ein, das Sie erstellen möchten. Klicken Sie anschließend auf **Speichern**, um Ihr Dokument per Commit an die Datenbank und die Sammlung zu übergeben, die auf dem Blatt **Dokument-Explorer** angegeben sind.
 
