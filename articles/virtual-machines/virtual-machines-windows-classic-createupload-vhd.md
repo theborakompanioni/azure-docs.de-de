@@ -32,13 +32,13 @@ In diesem Artikel wird davon ausgegangen, dass Sie über Folgendes verfügen:
 
 - **[Microsoft Azure PowerShell](../powershell-install-configure.md)** – Sie haben das Microsoft Azure PowerShell-Modul installiert und für die Verwendung Ihres Abonnements konfiguriert.
 
-- **Eine VHD-Datei** – ein unterstütztes Windows-Betriebssystem, das in einer VHD-Datei gespeichert und einem virtuellen Computer angefügt ist. Sie sollten auch prüfen, ob die auf der virtuellen Festplatte ausgeführten Serverrollen von Sysprep unterstützt werden. Weitere Informationen finden Sie unter [Sysprep Support for Server Roles](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles) (Sysprep-Unterstützung für Serverrollen).
+- **Eine VHD-Datei** – ein unterstütztes Windows-Betriebssystem, das in einer VHD-Datei gespeichert und einem virtuellen Computer angefügt ist. Prüfen Sie auch, ob die auf der virtuellen Festplatte ausgeführten Serverrollen von Sysprep unterstützt werden. Weitere Informationen finden Sie unter [Sysprep Support for Server Roles](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles) (Sysprep-Unterstützung für Serverrollen).
 
 > [AZURE.IMPORTANT] Das VHDX-Format wird in Microsoft Azure nicht unterstützt. Sie können den Datenträger mit dem Hyper-V-Manager oder dem [Convert-VHD-Cmdlet](http://technet.microsoft.com/library/hh848454.aspx) in das VHD-Format konvertieren. Ausführliche Informationen finden Sie in diesem [Blogbeitrag](http://blogs.msdn.com/b/virtual_pc_guy/archive/2012/10/03/using-powershell-to-convert-a-vhd-to-a-vhdx.aspx).
 
 ## Schritt 1: Vorbereiten der VHD-Datei 
 
-Bevor Sie die VHD-Datei nach Azure hochladen, muss sie mit dem Sysprep-Tool generalisiert werden. Durch diesen Vorgang wird die VHD-Datei auf eine Verwendung als Image vorbereitet. Weitere Informationen zu Sysprep finden Sie unter [How to Use Sysprep: An Introduction](http://technet.microsoft.com/library/bb457073.aspx) (in englischer Sprache).
+Bevor Sie die VHD-Datei nach Azure hochladen, muss sie mit dem Sysprep-Tool generalisiert werden. Durch diesen Vorgang wird die VHD-Datei auf eine Verwendung als Image vorbereitet. Weitere Informationen zu Sysprep finden Sie unter [How to Use Sysprep: An Introduction](http://technet.microsoft.com/library/bb457073.aspx) (in englischer Sprache). Sichern Sie den virtuellen Computer vor dem Ausführen von Sysprep.
 
 Führen Sie auf dem virtuellen Computer, auf dem das Betriebssystem installiert wurde, die folgende Prozedur aus:
 
@@ -104,4 +104,4 @@ Fügen Sie das Image mit dem Cmdlet [Add-AzureVMImage](https://msdn.microsoft.co
 
 Sie können nun mit dem Image, das Sie hochgeladen haben, [einen benutzerdefinierten virtuellen Computer erstellen](virtual-machines-windows-classic-createportal.md).
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0831_2016-->

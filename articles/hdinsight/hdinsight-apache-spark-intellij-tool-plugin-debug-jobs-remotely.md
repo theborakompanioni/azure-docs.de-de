@@ -1,6 +1,6 @@
  <properties
-	pageTitle="Verwenden des HDInsight-Plug-Ins für IntelliJ IDEA zum Remotedebuggen von Anwendungen, die in HDInsight Spark-Clustern ausgeführt werden | Microsoft Azure"
-	description="Erfahren Sie, wie Sie das HDInsight-Plug-In für IntelliJ IDEA zum Remotedebuggen von Anwendungen verwenden, die in HDInsight Spark-Clustern ausgeführt werden."
+	pageTitle="Verwenden der HDInsight-Tools im Azure-Toolkit für IntelliJ zum Remotedebuggen von Anwendungen, die in HDInsight Spark-Clustern ausgeführt werden | Microsoft Azure"
+	description="Erfahren Sie, wie Sie die HDInsight-Tools im Azure-Toolkit für IntelliJ zum Remotedebuggen von Anwendungen verwenden, die in HDInsight Spark-Clustern ausgeführt werden."
 	services="hdinsight"
 	documentationCenter=""
 	authors="nitinme"
@@ -14,13 +14,13 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/25/2016"
+	ms.date="08/26/2016"
 	ms.author="nitinme"/>
 
 
-# Verwenden des HDInsight-Tools-Plug-Ins für IntelliJ IDEA zum Remotedebuggen von Spark-Anwendungen im HDInsight Spark-Cluster unter Linux
+# Verwenden der HDInsight-Tools im Azure-Toolkit für IntelliJ zum Remotedebuggen von Spark-Anwendungen im HDInsight Spark-Cluster unter Linux
 
-Dieser Artikel enthält eine Schritt-für-Schritt-Anleitung zur Verwendung des HDInsight-Tools-Plug-Ins für IntelliJ IDEA, um einen Spark-Auftrag im HDInsight Spark-Cluster zu senden und dann über den Desktopcomputer per Remotezugriff zu debuggen. Hierzu müssen Sie die folgenden allgemeinen Schritte ausführen:
+Dieser Artikel enthält eine Schrittanleitung zur Verwendung der HDInsight-Tools im Azure-Toolkit für IntelliJ, um einen Spark-Auftrag im HDInsight Spark-Cluster zu senden und dann über den Desktopcomputer per Remotezugriff zu debuggen. Hierzu müssen Sie die folgenden allgemeinen Schritte ausführen:
 
 1. Erstellen Sie ein Azure Virtual Network vom Typ „Standort zu Standort“ oder „Punkt zu Standort“. Für die Schritte in diesem Dokument wird vorausgesetzt, dass Sie ein Standort-zu-Standort-Netzwerk verwenden.
 
@@ -42,7 +42,7 @@ Dieser Artikel enthält eine Schritt-für-Schritt-Anleitung zur Verwendung des H
  
 * IntelliJ IDEA. In diesem Artikel wird die Version 15.0.1 verwendet. Das Installationspaket finden Sie [hier](https://www.jetbrains.com/idea/download/).
  
-* HDInsight-Tools-Plug-In für IntelliJ IDEA: Das HDInsight-Tools-Plug-In für IntelliJ IDEA ist als Teil des Azure-Toolkits für IntelliJ verfügbar. Anweisungen zum Installieren des Azure-Toolkits finden Sie unter [Installieren des Azure Toolkit für IntelliJ](../azure-toolkit-for-intellij-installation.md).
+* HDInsight-Tools im Azure-Toolkit für IntelliJ. Die HDInsight-Tools für IntelliJ sind als Teil des Azure-Toolkits für IntelliJ verfügbar. Anweisungen zum Installieren des Azure-Toolkits finden Sie unter [Installieren des Azure Toolkit für IntelliJ](../azure-toolkit-for-intellij-installation.md).
  
 * Beim Ausführen der Spark Scala-Anwendung für das Remotedebuggen auf einem Windows-Computer erhalten Sie ggf. eine Ausnahme wie unter [SPARK-2356](https://issues.apache.org/jira/browse/SPARK-2356) beschrieben, die aufgrund der unter Windows fehlenden Datei „WinUtils.exe“ ausgelöst wird. Um diesen Fehler zu umgehen, müssen Sie [die ausführbare Datei hier herunterladen](http://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe) und an einem Speicherort wie **C:\\WinUtils\\bin** speichern. Fügen Sie anschließend die Umgebungsvariable **HADOOP\_HOME** hinzu, und setzen Sie den Wert der Variablen auf **C\\WinUtils**.
 
@@ -97,7 +97,7 @@ Sie sollten auch einen Apache Spark-Cluster unter Azure HDInsight erstellen, der
 
 7. Wiederholen Sie die Schritte auch für den anderen Hauptknoten.
 
-## Schritt 4: Erstellen einer Spark Scala-Anwendung mit dem HDInsight IntelliJ IDEA-Plug-In und Konfigurieren für das Remotedebuggen
+## Schritt 4: Erstellen einer Spark Scala-Anwendung mit den HDInsight-Tools im Azure-Toolkit für IntelliJ und Konfigurieren für das Remotedebuggen
 
 1. Starten Sie IntelliJ IDEA, und erstellen Sie ein neues Projekt. Wählen Sie im Dialogfeld für das neue Projekt Folgendes aus, und klicken Sie anschließend auf **Weiter**:
 
@@ -105,7 +105,7 @@ Sie sollten auch einen Apache Spark-Cluster unter Azure HDInsight erstellen, der
 
 	* Wählen Sie im linken Bereich **HDInsight** aus.
 	* Wählen Sie im rechten Bereich **Spark on HDInsight (Scala)** aus.
-	* Klicken Sie auf **Weiter**.
+	* Klicken Sie auf **Next**.
 
 2. Geben Sie im nächsten Fenster die Projektdetails an.
 
@@ -126,7 +126,7 @@ Sie sollten auch einen Apache Spark-Cluster unter Azure HDInsight erstellen, der
 	1. Klicken Sie im Menü **Datei** auf **Projektstruktur**.
 	2. Klicken Sie im Dialogfeld **Projektstruktur** auf **Artefakte**, um das Standardartefakt anzuzeigen, das erstellt wird.
 
-		![JAR-Datei erstellen](./media/hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely/default-artifact.png)
+		![Erstellen einer JAR-Datei](./media/hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely/default-artifact.png)
 
 	Sie können auch eigene Artefakte erstellen, indem Sie auf das in der Abbildung oben hervorgehobene **+**-Symbol klicken.
 
@@ -328,9 +328,9 @@ Sie sollten auch einen Apache Spark-Cluster unter Azure HDInsight erstellen, der
 
 ### Tools und Erweiterungen
 
-* [Verwenden des HDInsight-Tools-Plug-Ins für IntelliJ IDEA zum Erstellen und Übermitteln von Spark Scala-Anwendungen](hdinsight-apache-spark-intellij-tool-plugin.md)
+* [Verwenden der HDInsight-Tools im Azure-Toolkit für IntelliJ zum Erstellen und Übermitteln von Spark Scala-Anwendungen](hdinsight-apache-spark-intellij-tool-plugin.md)
 
-* [Use HDInsight Tools Plugin for Eclipse to create Spark applications](hdinsight-apache-spark-eclipse-tool-plugin.md) (Verwenden des HDInsight-Tools-Plug-Ins für Eclipse zum Erstellen von Spark-Anwendungen)
+* [Verwenden der HDInsight-Tools im Azure-Toolkit für Eclipse zum Erstellen von Spark-Anwendungen](hdinsight-apache-spark-eclipse-tool-plugin.md)
 
 * [Verwenden von Zeppelin-Notebooks mit einem Spark-Cluster in HDInsight](hdinsight-apache-spark-use-zeppelin-notebook.md)
 
@@ -346,4 +346,4 @@ Sie sollten auch einen Apache Spark-Cluster unter Azure HDInsight erstellen, der
 
 * [Track and debug jobs running on an Apache Spark cluster in HDInsight (Nachverfolgen und Debuggen von Aufträgen in einem Apache Spark-Cluster unter HDInsight)](hdinsight-apache-spark-job-debugging.md)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0831_2016-->

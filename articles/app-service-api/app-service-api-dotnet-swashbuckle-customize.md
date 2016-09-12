@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="dotnet" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/22/2016" 
+	ms.date="08/29/2016" 
 	ms.author="rachelap"/>
 
 # Anpassen von mit Swashbuckle generierten API-Definitionen 
@@ -250,4 +250,4 @@ Den entsprechenden Code finden Sie in [diesem GitHub-Repository](https://github.
 In diesem Artikel wurde erläutert, wie die Generierung von Vorgangs-IDs und von gültigen Antwortcodes in Swashbuckle angepasst werden kann. Weitere Informationen finden Sie unter [Swashbuckle auf GitHub](https://github.com/domaindrivendev/Swashbuckle).
  
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0831_2016-->

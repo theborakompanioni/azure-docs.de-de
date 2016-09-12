@@ -31,7 +31,7 @@ In diesem Thema werden allgemeine Einschränkungen und Leitlinien für Azure SQL
 
 ## SQL Server-Agent/-Aufträge
 
-Microsoft Azure SQL-Datenbank unterstützt nicht den SQL Server-Agent und keine SQL Server-Agent-Aufträge. Sie können jedoch den SQL Server-Agent in Ihrer lokalen SQL Server-Instanz ausführen und mit Microsoft Azure SQL-Datenbank verbinden.
+Microsoft Azure SQL-Datenbank unterstützt keinen SQL Server-Agent, Sie können jedoch elastische Aufträge in einer oder vielen Datenbanken ausführen. Weitere Informationen zu elastischen Aufträgen finden Sie unter [Elastische Aufträge](sql-database-elastic-jobs-overview.md).
 
 ## Unterstützung der SQL Server-Sortierung
 
@@ -63,4 +63,4 @@ Darüber hinaus dürfen Anmelde- und Benutzernamen nicht das Zeichen „\\“ en
 
 - Informationen zur Verfügbarkeit von Treibern und Unterstützung für SQL-Datenbank finden Sie unter [Verbindungsbibliotheken für SQL-Datenbank und SQL Server](sql-database-libraries.md).
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0831_2016-->

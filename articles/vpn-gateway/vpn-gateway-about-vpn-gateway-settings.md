@@ -13,14 +13,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="08/17/2016"
+   ms.date="08/29/2016"
    ms.author="cherylmc" />
 
 # Informationen zu VPN Gateway-Einstellungen
 
-Das VPN Gateway umfasst eine Sammlung von Einstellungen, die zum Senden von Netzwerkdatenverkehr zwischen virtuellen Netzwerken und lokalen Standorten verwendet werden. Über VPN Gateway können Sie auch den Datenverkehr zwischen den VNets in Azure senden. In den Abschnitten in diesem Artikel werden die Einstellungen beschrieben, die sich auf das VPN Gateway beziehen.
+VPN Gateway umfasst eine Sammlung von Ressourcen, die beim Senden von Netzwerkdatenverkehr zwischen virtuellen Netzwerken und lokalen Standorten verwendet werden. Über VPN Gateway können Sie auch den Datenverkehr zwischen den VNets in Azure senden. In den Abschnitten in diesem Artikel werden die Ressourcen und Einstellungen beschrieben, die sich auf das VPN Gateway beziehen.
 
-Manchmal ist es hilfreich, die verfügbaren Konfigurationen mithilfe von Verbindungsdiagrammen anzuzeigen. Diagramme zum Bereitstellen der Konfigurationen finden Sie im Abschnitt [Informationen zu VPN Gateway-Verbindungen](vpn-gateway-topology.md) des Artikels.
+Vielleicht finden Sie es hilfreich, die verfügbaren Konfigurationen mithilfe von Verbindungsdiagrammen anzuzeigen. Diagramme, die das Bereitstellen der Konfigurationen zeigen, finden Sie im Artikel [Informationen zu VPN Gateway](vpn-gateway-about-vpngateways.md).
 
 
 ## <a name="gwsku"></a>Gateway-SKUs
@@ -49,7 +49,7 @@ In der folgenden Tabelle sind die Gatewaytypen und der geschätzte zusammengefas
 
 ## <a name="gwtype"></a>Gatewaytypen
 
-Mit dem Gatewaytyp wird angegeben, wie das Gateway die Verbindung hergestellt. Es ist eine erforderliche Konfigurationseinstellung für das Resource Manager-Bereitstellungsmodell. Verwechseln Sie den Gatewaytyp nicht mit dem VPN-Typ, mit dem der Typ der Weiterleitung für Ihr VPN angegeben wird. Die verfügbaren Werte für `-GatewayType` lauten:
+Mit dem Gatewaytyp wird angegeben, wie das Gateway die Verbindung hergestellt. Es ist eine erforderliche Konfigurationseinstellung für das Resource Manager-Bereitstellungsmodell. Jedes virtuelle Netzwerk kann nur über ein einziges virtuelles Netzwerkgateway jedes Typs verfügen. Die verfügbaren Werte für `-GatewayType` lauten:
 
 - VPN
 - ExpressRoute
@@ -133,7 +133,7 @@ Zusätzliche technische Ressourcen und spezielle Syntaxanforderungen bei der Ver
 
 ## Nächste Schritte
 
-Weitere Informationen zu verfügbaren Verbindungskonfigurationen finden Sie unter [Informationen zu VPN Gateway](vpn-gateway-topology.md).
+Weitere Informationen zu verfügbaren Verbindungskonfigurationen finden Sie unter [Informationen zu VPN Gateway](vpn-gateway-about-vpngateways.md).
 
 
 
@@ -143,4 +143,4 @@ Weitere Informationen zu verfügbaren Verbindungskonfigurationen finden Sie unte
 
  
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->

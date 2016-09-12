@@ -13,16 +13,16 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/22/2016" 
+	ms.date="08/19/2016" 
 	ms.author="bradsev;garye" />
 
 
 # Auswerten der Modellleistung in Azure Machine Learning
 
-In diesem Thema wird veranschaulicht, wie die Leistung eines Modells in Azure Machine Learning Studio ausgewertet wird. Zudem werden die für diese Aufgabe verfügbaren Kennzahlen kurz erläutert. Es werden drei häufig eingesetzte Szenarios des beaufsichtigten Lernens vorgestellt:
+Dieses Thema veranschaulicht, wie die Leistung eines Modells in Azure Machine Learning Studio ausgewertet wird, und erläutert die für diese Aufgabe verfügbaren Metriken. Es werden drei häufig eingesetzte Szenarios des beaufsichtigten Lernens vorgestellt:
 
 * Regression
-* Binäre Klassifizierung 
+* Binäre Klassifizierung
 * Multiklassenklassifizierung
 
 [AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
@@ -189,4 +189,4 @@ Abbildung 13: Ergebnisse der Kreuzvalidierung eines Modells für die Multiklass
 [two-class-logistic-regression]: https://msdn.microsoft.com/library/azure/b0fd7660-eeed-43c5-9487-20d9cc79ed5d/
  
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0831_2016-->

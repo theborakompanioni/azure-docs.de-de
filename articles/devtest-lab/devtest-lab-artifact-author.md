@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/01/2016"
+	ms.date="08/25/2016"
 	ms.author="tarcher"/>
 
 #Erstellen von benutzerdefinierten Artefakten für Ihre DevTest Labs-VM
@@ -120,12 +120,14 @@ Erstellen Sie Ihr benutzerdefiniertes Artefakt anhand der nachstehend aufgeführ
 
 1. Fügen Sie das Artefaktrepository dem Lab hinzu. Weitere Informationen hierzu finden Sie im Artikel [Hinzufügen eines Git-Artefaktrepositorys zu einem Lab](devtest-lab-add-artifact-repo.md).
 
+[AZURE.INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
+
 ## Verwandte Blogbeiträge
-- [How to troubleshoot failing Artifacts in AzureDevTestLabs](http://www.visualstudiogeeks.com/blog/DevOps/How-to-troubleshoot-failing-artifacts-in-AzureDevTestLabs) (Gewusst wie: Problembehandlung für fehlerhafte Artefakte in AzureDevTestLabs)
-- [Join a VM to existing AD Domain using ARM template in Azure Dev Test Lab](http://www.visualstudiogeeks.com/blog/DevOps/Join-a-VM-to-existing-AD-domain-using-ARM-template-AzureDevTestLabs) (Hinzufügen eines virtuellen Computers zu einer vorhandenen AD-Domäne mithilfe einer ARM-Vorlage in Azure Dev Test Lab)
+- [How to troubleshoot failing Artifacts in AzureDevTestLabs (Gewusst wie: Problembehandlung für fehlerhafte Artefakte in AzureDevTestLabs)](http://www.visualstudiogeeks.com/blog/DevOps/How-to-troubleshoot-failing-artifacts-in-AzureDevTestLabs)
+- [Join a VM to existing AD Domain using ARM template in Azure Dev Test Lab (Hinzufügen eines virtuellen Computers zu einer vorhandenen AD-Domäne mithilfe einer ARM-Vorlage in Azure Dev Test Lab)](http://www.visualstudiogeeks.com/blog/DevOps/Join-a-VM-to-existing-AD-domain-using-ARM-template-AzureDevTestLabs)
 
 ## Nächste Schritte
 
-- Erfahren Sie, wie Sie einem [Lab ein Git-Artefaktrepository hinzufügen](devtest-lab-add-artifact-repo.md).
+- Erfahren Sie, wie Sie einem [ein Git-Artefaktrepository zu einem Lab hinzufügen](devtest-lab-add-artifact-repo.md).
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0831_2016-->

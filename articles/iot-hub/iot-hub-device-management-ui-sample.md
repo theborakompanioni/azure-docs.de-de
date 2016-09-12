@@ -13,12 +13,12 @@
  ms.topic="article"
  ms.tgt_pltfrm="na"
  ms.workload="na"
- ms.date="06/08/2016"
+ ms.date="08/25/2016"
  ms.author="dobett"/>
 
 # Erkunden der Azure IoT Hub-Geräteverwaltung mithilfe der Beispielbenutzeroberfläche
 
-Über die Interaktion mit der Beispielbenutzeroberfläche für die Geräteverwaltung können Sie sich mit den Konzepten und Möglichkeiten vertraut machen, die in den Artikeln zur Azure-Geräteverwaltung ([Übersicht][lnk-dm-overview] und [Erste Schritte][lnk-get-started]) behandelt werden. Dieser Artikel begleitet Sie durch die drei wesentlichen Geräteverwaltungskonzepte (*Gerätezwilling*, *Geräteabfragen* und *Geräteaufträge*) entsprechend der Darstellung der Beispiel-Webbenutzeroberfläche für die Geräteverwaltung.
+Über die Interaktion mit der Beispielbenutzeroberfläche für die Geräteverwaltung können Sie sich mit den Konzepten und Möglichkeiten vertraut machen, die in den Artikeln zur Azure IoT Hub-Geräteverwaltung ([Übersicht][lnk-dm-overview] und [Erste Schritte][lnk-get-started]) behandelt werden. Dieser Artikel begleitet Sie durch die drei wesentlichen Geräteverwaltungskonzepte (*Gerätezwilling*, *Geräteabfragen* und *Geräteaufträge*) entsprechend der Darstellung der Beispiel-Webbenutzeroberfläche für die Geräteverwaltung.
 
 Entwickler, die eine eigene interaktive Geräteverwaltungsumgebung einrichten möchten, können eine Verzweigung der Beispielcodebasis für die Benutzeroberfläche erstellen und als Grundlage eines benutzerdefinierten Projekts nutzen. Sie können den vollständigen Projektcode und die Infodateien durchgehen, in denen zusätzliche Entwicklerfunktionen im GitHub-Repository [Azure IoT device management UI][lnk-dm-github] detailliert vorgestellt werden.
 
@@ -34,7 +34,7 @@ Wenn Sie das Tutorial „Erste Schritte“ abgeschlossen haben, wird auf Ihrem T
 
 ## Standardansicht für Geräte
 
-Die Standardstartseite der Beispielbenutzeroberfläche für die Geräteverwaltung ist die Ansicht **Geräte**, die die 5 folgenden Komponenten enthält:
+Die Standardstartseite der Beispielbenutzeroberfläche für die Geräteverwaltung ist die Ansicht **Geräte**, die die folgenden fünf Komponenten enthält:
 
 ![][1]
 
@@ -50,9 +50,9 @@ Die Standardstartseite der Beispielbenutzeroberfläche für die Geräteverwaltun
 
 6.  *Geräteraster*: Zeigt alle bei Ihrer IoT Hub-Instanz registrierten Geräte mit den Standardeigenschaften (**Geräte-ID**, **Status** und **Tags**).
 
-Im Artikel [Überblick über die Azure IoT Hub-Geräteverwaltung][lnk-dm-overview] wurde das Konzept *Gerätezwilling* eingeführt, das ein physisches (oder simuliertes) Gerät in Azure IoT Hub darstellt. Im Geräteraster können Sie in der Geräteliste die registrierten Geräte auswählen, um den Gerätezwilling für das jeweilige Gerät anzuzeigen und zu bearbeiten.
+Im Artikel [Überblick über die Azure IoT Hub-Geräteverwaltung][lnk-dm-overview] wurde das Konzept *Gerätezwilling* eingeführt, das ein physisches (oder simuliertes) Gerät in Azure IoT Hub darstellt. Im Geräteraster können Sie in der Geräteliste ein beliebiges registriertes Gerät auswählen, um den Gerätezwilling für dieses Gerät anzuzeigen und zu bearbeiten.
 
-Wechseln Sie zur Detailansicht Ihres ersten simulierten Geräts **Device11-7ce4a850**, indem Sie die entsprechende Gerätezeile auswählen und dann auf die Schaltfläche **Bearbeiten** klicken (Sie können auch auf die Zeile doppelklicken oder die Geräte-ID in das Suchfeld eingeben).
+Um diese Detailansicht Ihres ersten simulierten Geräts (**Device11-7ce4a850**) anzuzeigen, wählen Sie die entsprechende Zeile mit dem Gerät aus. Klicken Sie dann auf die Schaltfläche **Bearbeiten** (Sie können auch auf die Zeile doppelklicken oder die Geräte-ID in das Suchfeld eingeben).
 
 Sie sehen nun die vollständige Darstellung der Gerätezwillingskomponenten, in der Sie, wie nachstehend erläutert, Eigenschaften mit Schreibzugriff aktualisieren und andere Gerätevorgänge ausführen können:
 
@@ -60,7 +60,7 @@ Sie sehen nun die vollständige Darstellung der Gerätezwillingskomponenten, in 
 
 1.  **Gerätezwilling bearbeiten**: Hier finden Sie die Umschaltfläche **Aktiviert/Deaktiviert** für das Gerät.
 
-2.  **Diensteigenschaften**: Dies schließt **Tags** von Geräten ein.
+2.  **Diensteigenschaften**: Diese Option schließt **Tags** von Geräten ein.
 
 3.  **Geräteeigenschaften**: Klicken Sie hierauf, um diesen Abschnitt aufzuklappen.
 
@@ -104,10 +104,10 @@ Sie haben soeben einen einzelnen übergeordneten Auftrag erstellt, der drei unte
 
 ![][8]
 
-Durch Aktualisieren dieses Bildschirms nach einigen Augenblicken ändert sich der Status des übergeordneten Auftrags und der drei untergeordneten Aufträge in **Abgeschlossen**, was bedeutet, dass die Neustartvorgänge erfolgreich waren und von den simulierten Geräten bestätigt wurden. Bestimmen Sie anhand der Spalte **Geräte-ID**, welche Aufträge welchen Geräten zugeordnet sind.
+Aktualisieren Sie diesen Bildschirm nach einigen Augenblicken – der Status des übergeordneten Auftrags und der drei untergeordneten Aufträge hat sich in **Abgeschlossen** geändert. Die neuen Statuswerte zeigen an, dass die Neustartvorgänge erfolgreich durchgeführt und von den simulierten Geräten bestätigt wurden. Bestimmen Sie anhand der Spalte **Geräte-ID**, welche Aufträge welchen Geräten zugeordnet sind.
 
 
-> [AZURE.NOTE] Wenn die untergeordneten Aufträge den Status „Fehler“ zurückgeben, prüfen Sie, ob die simulierten Geräte noch immer auf Ihrem Testsystem ausgeführt werden. Falls nicht, führen Sie das Skript „simulate.bat“ oder „simulate.sh“ erneut aus, und wiederholen Sie die zuvor beschriebenen Schritte des Auftrags zum Neustarten von Geräten.
+> [AZURE.NOTE] Wenn die untergeordneten Aufträge den Status „Fehler“ zurückgeben, prüfen Sie, ob die simulierten Geräte noch immer auf Ihrem Testsystem ausgeführt werden. Falls nicht, führen Sie das Skript „simulate.bat“ oder „simulate.sh“ erneut aus, und wiederholen Sie die im vorherigen Abschnitt beschriebenen Schritte des Auftrags zum Neustarten von Geräten.
 
 ## Nächste Schritte
 
@@ -152,4 +152,4 @@ Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 [lnk-portal]: iot-hub-manage-through-portal.md
 [lnk-securing]: iot-hub-security-ground-up.md
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0831_2016-->

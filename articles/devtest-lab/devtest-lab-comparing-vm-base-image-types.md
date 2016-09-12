@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/08/2016"
+	ms.date="08/25/2016"
 	ms.author="tarcher"/>
 
 # Vergleich zwischen benutzerdefinierten Images und Formeln in DevTest Labs
@@ -42,8 +42,10 @@ Formeln stellen eine dynamische Möglichkeit bereit, um virtuelle Computer mithi
 **Nachteile**
 - Die Erstellung eines virtuellen Computers aus einer Formel dauert länger als die Erstellung eines virtuellen Computers aus einem benutzerdefinierten Image.
 
+[AZURE.INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
+
 ## Verwandte Blogbeiträge
 
-- [Custom images or formulas?](https://blogs.msdn.microsoft.com/devtestlab/2016/04/06/custom-images-or-formulas/) (Benutzerdefinierte Images oder Formeln?)
+- [Custom images or formulas? (Benutzerdefinierte Images oder Formeln?)](https://blogs.msdn.microsoft.com/devtestlab/2016/04/06/custom-images-or-formulas/)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0831_2016-->

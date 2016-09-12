@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Bereitstellen von Streaminginhalten über Media Services" 
+	pageTitle="Veröffentlichen von Azure Media Services-Inhalten mit REST" 
 	description="Erfahren Sie, wie Sie einen Locator erstellen, der zum Generieren einer Streaming-URL verwendet wird. Der Code verwendet die REST-API." 
 	authors="Juliako" 
 	manager="erikre" 
@@ -13,21 +13,21 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/22/2016"
+	ms.date="08/30/2016"
 	ms.author="juliako"/>
 
 
-#Gewusst wie: Bereitstellen von Streaminginhalten
+# Veröffentlichen von Azure Media Services-Inhalten mit REST
 
 > [AZURE.SELECTOR]
 - [.NET](media-services-deliver-streaming-content.md)
 - [REST](media-services-rest-deliver-streaming-content.md)
-- [Portal](media-services-manage-content.md#publish)
+- [Portal](media-services-portal-publish.md)
 
 ##Übersicht
 
 
-Sie können einen MP4-Satz mit adaptiver Bitrate streamen, indem Sie einen OnDemand-Streaminglocator und eine Streaming-URL erstellen. Im Thema [Codieren eines Medienobjekts](media-services-rest-encode-asset.md) wird die Codierung in einen MP4-Satz mit adaptiver Bitrate erläutert. Wenn Ihr Inhalt verschlüsselt ist, konfigurieren Sie vor dem Erstellen eines Locators die Bereitstellungsrichtlinie für Medienobjekte (wie in [diesem](media-services-rest-configure-asset-delivery-policy.md) Thema beschrieben).
+Sie können einen MP4-Satz mit adaptiver Bitrate streamen, indem Sie einen OnDemand-Streaminglocator und eine Streaming-URL erstellen. Im Thema [Codieren eines Medienobjekts](media-services-rest-encode-asset.md) wird die Codierung in einen MP4-Satz mit adaptiver Bitrate erläutert. Wenn Ihr Inhalt verschlüsselt ist, konfigurieren Sie vor dem Erstellen eines Locators die Bereitstellungsrichtlinie für Medienobjekte (wie in [diesem Thema](media-services-rest-configure-asset-delivery-policy.md) beschrieben).
 
 Sie können auch einen OnDemand-Streaminglocator zum Erstellen von URLs verwenden, die auf MP4-Dateien verweisen, die progressiv heruntergeladen werden können.
 
@@ -187,8 +187,8 @@ Beispiel:
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-##Weitere Informationen
+##Siehe auch
 
 [Konfigurieren der Übermittlungsrichtlinie für Medienobjekte](media-services-rest-configure-asset-delivery-policy.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0831_2016-->

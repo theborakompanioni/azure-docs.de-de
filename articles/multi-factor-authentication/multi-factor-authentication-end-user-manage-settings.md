@@ -147,7 +147,7 @@ Zunächst müssen Sie Folgendes sicherstellen:
 - Wenn Sie das Empfangen von Überprüfungscodes per Textnachricht auf Ihrem Mobiltelefon ausgewählt haben, vergewissern Sie sich, dass Ihr Tarif und Gerät die Übermittlung von Textnachrichten unterstützen. Übertragungsgeschwindigkeit und Verfügbarkeit können je nach Region und Dienstanbieter variieren. Stellen Sie auch sicher, dass das Mobilfunksignal stark genug ist, um diese Codes zu empfangen.
 - Wenn Sie das Empfangen einer Überprüfung über die mobile App gewählt haben, stellen Sie sicher, dass das Mobilfunksignal stark genug ist. Beachten Sie auch, dass Übertragungsgeschwindigkeit und Verfügbarkeit je nach Region und Dienstanbieter variieren können.
 
-Bei Smartphones wird empfohlen, die [Azure Authenticator-App](multi-factor-authentication-microsoft-authenticator.md) zu nutzen.
+Wenn Sie ein Smartphone haben, wird empfohlen, die Microsoft Authenticator-App zu verwenden, die für [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071), [Android](http://go.microsoft.com/fwlink/?Linkid=825072) und [IOS](http://go.microsoft.com/fwlink/?Linkid=825073) verfügbar ist.
 
 Sie können vom Empfang von Überprüfungscodes per Textnachrichten zum Empfang per mobiler App wechseln, indem Sie beim Anmelden **Andere Überprüfungsoption verwenden** auswählen.
 
@@ -172,4 +172,4 @@ Außerdem können Sie Ihren Administrator oder die Person, die Multi-Factor Auth
 
 Geben Sie abschließend bitte detailliertes Feedback auf dieser Seite ab, damit wir diese Seite aktualisieren und durch weitere Informationen verbessern können.
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->

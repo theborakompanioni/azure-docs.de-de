@@ -3,7 +3,7 @@
 	description="Erfahren Sie mehr über die verfügbaren Richtlinien zum Konfigurieren von API Management." 
 	services="api-management" 
 	documentationCenter="" 
-	authors="steved0x" 
+	authors="vladvino" 
 	manager="erikre" 
 	editor=""/>
 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/09/2016" 
-	ms.author="sdanie"/>
+	ms.date="08/29/2016" 
+	ms.author="apimpm"/>
 
 # Richtlinienreferenz für Azure API Management
 
@@ -36,12 +36,14 @@ Richtlinienausdrücke können als Attributwerte oder Textwerte in einer beliebig
 	-	[Ablaufsteuerung][] – Bedingte Anwendung von Richtlinienanweisungen basierend auf den Ergebnissen der Auswertung von booleschen [Ausdrücken][].
 	-	[Anforderung weiterleiten][] – leitet die Anforderung an den Back-End-Dienst.
 	-	[Protokoll an Event Hub][] – sendet Nachrichten im angegebenen Format an ein von einem [Protokollierungstool](https://msdn.microsoft.com/library/azure/mt592020.aspx#Logger) definiertes Nachrichtenziel.
+	-	[Wiederholen](https://msdn.microsoft.com/de-DE/library/dn894085.aspx#Retry) – Wiederholt die Ausführung der eingeschlossenen Richtlinienanweisungen, falls und bis die Bedingung erfüllt ist. Die Ausführung wird mit den angegebenen Zeitintervallen und bis zur angegebenen Anzahl der Wiederholungsversuche wiederholt.
 	-	[Zurückgegebene Antwort](https://msdn.microsoft.com/library/azure/dn894085.aspx#ReturnResponse) – bricht die Pipeline-Ausführung ab und gibt die angegebene Antwort unmittelbar an den Aufrufer zurück.
 	-	[Unidirektionale Anforderung senden](https://msdn.microsoft.com/library/azure/dn894085.aspx#SendOneWayRequest) – sendet eine Anforderung an die angegebene URL, ohne auf eine Antwort zu warten.
 	-	[Sendeanforderung](https://msdn.microsoft.com/library/azure/dn894085.aspx#SendRequest) – sendet eine Anforderung an die angegebene URL.
 	-	[Anforderungsmethode festlegen](https://msdn.microsoft.com/library/azure/dn894085.aspx#SetRequestMethod) – dient der Vornahme von Änderungen der HTTP-Anforderungsmethode.
 	-	[Statuscode festlegen](https://msdn.microsoft.com/library/azure/dn894085.aspx#SetStatus) – ändert den HTTP-Statuscode auf den angegebenen Wert.
 	-	[Variable festlegen][] – Speichert einen Wert in einer benannten [Kontextvariable][], um später darauf zugreifen zu können.
+	-	[Ablaufverfolgung](https://msdn.microsoft.com/de-DE/library/dn894085.aspx#Trace) – Fügt eine Zeichenfolge in der Ausgabe für den [API-Inspektor](../api-management/api-management-howto-api-inspector.md) hinzu.
 	-	[Warten](https://msdn.microsoft.com/library/azure/dn894085.aspx#Wait): Wartet darauf, dass eingeschlossene Richtlinien für „Send request“ (Sendeanforderung), „Get value from cache“ (Wert aus dem Cache abrufen) oder „Control flow“ (Ablaufsteuerung) abgeschlossen werden, bevor der Vorgang fortgesetzt wird.
 -	[Authentifizierungsrichtlinien][]
 	-	[Standardauthentifizierung][] – Authentifizierung mit einem Back-End-Dienst unter Verwendung der Standardauthentifizierung.
@@ -51,6 +53,7 @@ Richtlinienausdrücke können als Attributwerte oder Textwerte in einer beliebig
 	-	[In Cache ablegen][] – Cacheantwort gemäß der angegebenen Konfiguration für die Cachesteuerung.
 	-	[Get value from cache (Wert aus dem Cache abrufen)](https://msdn.microsoft.com/library/azure/dn894086.aspx#GetFromCacheByKey) – ruft ein zwischengespeichertes Element nach Schlüssel ab.
 	-	[Store value in cache (Wert im Cache speichern)](https://msdn.microsoft.com/library/azure/dn894086.aspx#StoreToCacheByKey) – speichert ein Element im Cache auf Basis des Schlüssels.
+	-	[Wert aus dem Cache entfernen](https://msdn.microsoft.com/de-DE/library/dn894086.aspx#RemoveCacheByKey) – Entfernt ein Element im Cache nach Schlüssel.
 -	[Domänenübergreifende Richtlinien][]
 	-	[Domänenübergreifende Aufrufe zulassen][] – Erlaubt API-Aufrufe aus browserbasierten Clients, die Adobe Flash und Microsoft Silverlight verwenden.
 	-	[CORS][] – Fügt Unterstützung für Cross-Origin Resource Sharing (CORS) zu einer Operation oder einer API hinzu, um domänenübergreifende Aufrufe aus browserbasierten Clients zu ermöglichen.
@@ -119,4 +122,4 @@ Weitere Informationen zu Richtlinienausdrücken finden Sie im folgenden Video.
 
  
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0831_2016-->

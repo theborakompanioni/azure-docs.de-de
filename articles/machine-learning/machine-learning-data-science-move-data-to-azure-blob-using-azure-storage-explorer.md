@@ -13,22 +13,19 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/14/2016"
+	ms.date="08/31/2016"
 	ms.author="bradsev" />
 
 # Verschieben von Daten in den und aus dem Azure-Blobspeicher mithilfe des Azure-Speicher-Explorers
 
-Azure Storage Explorer ist ein kostenloses Windows-Tool zum Prüfen und Ändern der Daten in einem Azure-Speicherkonto. Dieses Thema beschreibt dessen Verwendung zum Hoch- und Herunterladen von Daten aus Azure Blob Storage. Das Tool kann von [Azure Storage-Explorer](http://storageexplorer.com/) heruntergeladen werden.
+Der Azure-Speicher-Explorer ist ein kostenloses Tool von Microsoft, das Ihnen das Arbeiten mit Azure Storage-Daten unter Windows, MacOS und Linux ermöglicht. Dieses Thema beschreibt Verwendung des Tools zum Hoch- und Herunterladen von Daten aus einem Azure-Blobspeicher. Das Tool kann von der Seite [Microsoft Azure Storage Explorer](http://storageexplorer.com/) heruntergeladen werden.
 
 Nachstehend finden Sie Links zu Anleitungen für Technologien zum Verschieben von Daten in den und aus dem Azure-BLOB-Speicher:
  
 [AZURE.INCLUDE [blob-storage-tool-selector](../../includes/machine-learning-blob-storage-tool-selector.md)]
- 
-&nbsp;
+
  
 > [AZURE.NOTE] Wenn Sie einen virtuellen Computer verwenden, der mit den von den [virtuellen Data Science-Computern in Azure](machine-learning-data-science-virtual-machines.md) bereitgestellten Skripts eingerichtet wurde, ist der Azure-Speicher-Explorer bereits auf dem virtuellen Computer installiert.
- 
-&nbsp;
  
 > [AZURE.NOTE] Eine umfassende Einführung in Azure-Blobspeicher finden Sie unter [Grundlagen zu Azure-Blobspeicher](../storage/storage-dotnet-how-to-use-blobs.md) und [Azure-Blobdienst](https://msdn.microsoft.com/library/azure/dd179376.aspx).
 
@@ -36,8 +33,9 @@ Nachstehend finden Sie Links zu Anleitungen für Technologien zum Verschieben vo
 
 In diesem Dokument wird davon ausgegangen, dass Sie über ein Azure-Abonnement, ein Speicherkonto und den zugehörigen Speicherschlüssel für dieses Konto verfügen. Bevor Sie Daten hoch- und herunterladen können, müssen Sie den Namen Ihres Azure-Speicherkontos und den Kontoschlüssel kennen.
 
-- Informationen zum Einrichten eines Azure-Abonnements finden Sie unter [Kostenlose 1-Monat-Testversion](https://azure.microsoft.com/pricing/free-trial/).
-- Anleitungen zum Erstellen eines Speicherkontos und zum Abrufen von Konto- und Schlüsselinformationen finden Sie unter [Informationen zu Azure-Speicherkonten](../storage/storage-create-storage-account.md).
+- Informationen zum Einrichten eines Azure-Abonnements finden Sie unter [Kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/).
+- Anleitungen zum Erstellen eines Speicherkontos und zum Abrufen von Konto- und Schlüsselinformationen finden Sie unter [Informationen zu Azure-Speicherkonten](../storage/storage-create-storage-account.md). Notieren Sie sich den Zugriffsschlüssel für Ihr Speicherkonto, da Sie diesen Schlüssel benötigen, um über das Tool Azure-Speicher-Explorer eine Verbindung mit dem Konto herzustellen.
+- Der Azure-Speicher-Explorer kann von der Seite [Microsoft Azure Storage Explorer](http://storageexplorer.com/) heruntergeladen werden. Übernehmen Sie während der Installation die Standardwerte.
 
 
 <a id="explorer"></a>
@@ -45,16 +43,14 @@ In diesem Dokument wird davon ausgegangen, dass Sie über ein Azure-Abonnement, 
 
 Die folgenden Schritte beschreiben das Hoch- und Herunterladen von Daten mithilfe von Azure Storage Explorer.
 
-1.  Starten von Azure Storage Explorer 
-2.  Wenn das Speicherkonto, auf das Sie zugreifen möchten, noch nicht in Azure Storage Explorer hinzugefügt wurde, klicken Sie auf die Schaltfläche "Add Account", um das Konto hinzuzufügen. Wenn es bereits hinzugefügt wurde, wählen Sie das Konto aus der Dropdownliste "--Wählen Sie ein Speicherkonto aus--" aus. ![Arbeitsbereich erstellen][1] <br>
-3. Geben Sie den Speicherkontonamen und den Speicherkontoschlüssel ein, und klicken Sie dann auf "Add Storage Account". Sie können mehrere Speicherkonten hinzufügen. Jedes Konto wird auf einer Registerkarte angezeigt. Die Container unter diesem Speicherkonto werden im linken Bereich angezeigt. Wählen Sie einen Container aus, um die Blobs im Container im rechten Bereich anzuzeigen. ![Arbeitsbereich erstellen][2] <br> ![Arbeitsbereich erstellen][3] <br>
-4. Sie laden Daten hoch, indem Sie auf die Schaltfläche "Upload" klicken. Wählen Sie eine oder mehrere Dateien aus dem Dateisystem zum Hochladen aus, und klicken Sie auf "Öffnen", um mit dem Hochladen der Dateien zu beginnen.
-5. Sie laden Daten herunter, indem Sie das Blob im entsprechenden Container auswählen und dann auf die Schaltfläche "Download" klicken.
+1.  Starten Sie den Microsoft Azure-Speicher-Explorer.
+2.  Um den Assistenten **Bei Ihrem Konto anmelden...** zu öffnen, wählen Sie das Symbol **Azure-Kontoeinstellungen** und dann die Option **Konto hinzufügen** aus, und geben Sie Ihre Anmeldeinformationen ein.![](./media/machine-learning-data-science-move-data-to-azure-blob-using-azure-storage-explorer/add-an-azure-store-account.png)
+3.  Um den Assistenten **Verbindung mit Azure-Speicher herstellen** zu öffnen, wählen Sie das Symbol **Verbindung mit Azure-Speicher herstellen** aus.![](./media/machine-learning-data-science-move-data-to-azure-blob-using-azure-storage-explorer/connect-to-azure-storage-1.png)
+4. Geben Sie den Zugriffsschlüssel Ihres Azure-Speicherkontos in den Assistenten **Verbindung mit Azure-Speicher herstellen** ein, und klicken Sie dann auf **Weiter**.![](./media/machine-learning-data-science-move-data-to-azure-blob-using-azure-storage-explorer/connect-to-azure-storage-2.png)
+5. Geben Sie im Feld **Kontoname** den Namen des Speicherkontos ein, und wählen Sie **Weiter** aus.![](./media/machine-learning-data-science-move-data-to-azure-blob-using-azure-storage-explorer/attach-external-storage.png)
+6. Das hinzugefügte Speicherkonto sollte jetzt aufgeführt werden. Um in einem Speicherkonto einen Blobcontainer zu erstellen, klicken Sie mit der rechten Maustaste auf den Knoten **Blobcontainer** in diesem Konto, wählen Sie die Option **Blobcontainer erstellen** aus, und geben Sie einen Namen ein.
+7. Um Daten in einen Container hochzuladen, wählen Sie den Zielcontainer aus, und klicken Sie auf die Schaltfläche **Hochladen**.![](./media/machine-learning-data-science-move-data-to-azure-blob-using-azure-storage-explorer/storage-accounts.png)
+8. Klicken Sie auf die Schaltfläche **...** rechts neben dem Feld **Dateien**, wählen Sie aus dem Dateisystem eine oder mehrere Dateien zum Hochladen aus, und klicken Sie auf **Hochladen**, um mit dem Hochladen der Dateien zu beginnen.![](./media/machine-learning-data-science-move-data-to-azure-blob-using-azure-storage-explorer/upload-files-to-blob.png)
+7. Um Daten herunterzuladen, wählen Sie das Blob im entsprechenden Container aus und klicken auf **Herunterladen**.![](./media/machine-learning-data-science-move-data-to-azure-blob-using-azure-storage-explorer/download-files-from-blob.png)
 
-<!-- Images -->
-
-[1]: ./media/machine-learning-data-science-move-azure-blob/data-science-process-uploading-data-to-blob-storage-img1.png
-[2]: ./media/machine-learning-data-science-move-azure-blob/data-science-process-uploading-data-to-blob-storage-img2.png
-[3]: ./media/machine-learning-data-science-move-azure-blob/data-science-process-uploading-data-to-blob-storage-img3.png
-
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0831_2016-->

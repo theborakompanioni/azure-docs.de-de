@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="08/19/2016"
+   ms.date="08/24/2016"
    ms.author="nicw;barbkess;sonyama"/>
 
 # Details zur Migration zu Storage Premium
@@ -47,9 +47,9 @@ Wenn Sie ein Data Warehouse vor den unten angegebenen Terminen erstellt haben, v
 | USA (Mitte/Süden) | 27\. Mai 2016 |
 | Südostasien | 24\. Mai 2016 |
 | Westeuropa | 25\. Mai 2016 |
-| USA, Westen-Mitte | Storage Premium noch nicht verfügbar |
+| USA, Westen-Mitte | 26\. August 2016 |
 | USA (West) | 26\. Mai 2016 |
-| USA, Westen 2 | Storage Premium noch nicht verfügbar |
+| USA, Westen 2 | 26\. August 2016 |
 
 ## Details zur automatischen Migration
 Standardmäßig migrieren wir Ihre Datenbank zwischen 18:00 und 06:00 Uhr Ortszeit Ihrer Region, und zwar während des unten angegebenen [Zeitplans für die automatische Migration][]. Während der Migration kann Ihr vorhandenes Data Warehouse nicht genutzt werden. Die Migration dauert ca. eine Stunde pro TB an gespeicherten Daten pro Data Warehouse. Außerdem stellen wir sicher, dass während der automatischen Migration keine Kosten für Sie anfallen.
@@ -133,7 +133,7 @@ ALTER DATABASE CurrentDatabasename MODIFY NAME = NewDatabaseName;
 >	-  Firewall rules at the **Database** level need to be readded.  Firewall rules at the **Server** level are not be impacted.
 
 ## Nächste Schritte
-Mit der Änderung zu Storage Premium haben wir auch die Anzahl von Datenbank-Blobdateien in der zugrunde liegenden Architektur Ihrer Data Warehouse-Instanz erhöht. Falls Leistungsprobleme auftreten, empfehlen wir, die gruppierten Columnstore-Indizes mit dem folgenden Skript neu zu erstellen. Das Skript erzwingt, dass einige Ihrer Daten in den zusätzlichen Blobs gespeichert werden. Wenn Sie keine Maßnahmen ergreifen, werden die Daten im Laufe der Zeit auf natürliche Weise verteilt, sobald Sie weitere Daten in die Data Warehouse-Tabellen laden.
+Mit der Änderung zu Storage Premium haben wir auch die Anzahl von Datenbank-Blobdateien in der zugrunde liegenden Architektur Ihrer Data Warehouse-Instanz erhöht. Um die Leistungsvorteile dieser Änderung zu maximieren, empfehlen wir Ihnen, die gruppierten Columnstore-Indizes mit dem folgenden Skript neu zu erstellen. Das Skript erzwingt, dass einige Ihrer Daten in den zusätzlichen Blobs gespeichert werden. Wenn Sie keine Maßnahmen ergreifen, werden die Daten im Laufe der Zeit auf natürliche Weise verteilt, sobald Sie weitere Daten in die Data Warehouse-Tabellen laden.
 
 **Voraussetzungen:**
 
@@ -147,42 +147,19 @@ Mit der Änderung zu Storage Premium haben wir auch die Anzahl von Datenbank-Blo
 -- Schritt 1: Erstellen der Tabelle zum Steuern der Indexneuerstellung
 -- Ausführung als Benutzer unter „mediumrc“ oder höher
 --------------------------------------------------------------------------------
-create table sql_statements
-WITH (distribution = round_robin)
-as select 
-    'alter index all on ' + s.name + '.' + t.NAME + ' rebuild;' as statement,
-    row_number() over (order by s.name, t.name) as sequence
-from 
-    sys.schemas s
-    inner join sys.tables t
-        on s.schema_id = t.schema_id
-where
-    is_external = 0
-;
-go
+create table sql\_statements WITH (distribution = round\_robin) as select 'alter index all on ' + s.name + '.' + t.NAME + ' rebuild;' as statement, row\_number() over (order by s.name, t.name) as sequence from sys.schemas s inner join sys.tables t on s.schema\_id = t.schema\_id where is\_external = 0 ; go
  
 --------------------------------------------------------------------------------
 -- Schritt 2: Ausführen von Indexneuerstellungen: Wenn das Skript fehlschlägt, kann der unten angegebene Code erneut ausgeführt werden, um ab dem letzten Punkt fortzufahren.
 -- Ausführung als Benutzer unter „mediumrc“ oder höher
 --------------------------------------------------------------------------------
 
-declare @nbr_statements int = (select count(*) from sql_statements)
-declare @i int = 1
-while(@i <= @nbr_statements)
-begin
-      declare @statement nvarchar(1000)= (select statement from sql_statements where sequence = @i)
-      print cast(getdate() as nvarchar(1000)) + ' Executing... ' + @statement
-      exec (@statement)
-      delete from sql_statements where sequence = @i
-      set @i += 1
-end;
+declare @nbr\_statements int = (select count(*) from sql\_statements) declare @i int = 1 while(@i <= @nbr\_statements) begin declare @statement nvarchar(1000)= (select statement from sql\_statements where sequence = @i) print cast(getdate() as nvarchar(1000)) + ' Executing... ' + @statement exec (@statement) delete from sql\_statements where sequence = @i set @i += 1 end;
 go
 -------------------------------------------------------------------------------
 -- Schritt 3: Bereinigen der in Schritt 1 erstellten Tabelle
 --------------------------------------------------------------------------------
-drop table sql_statements;
-go
-````
+drop table sql\_statements; go ````
 
 Wenn Probleme mit Ihrem Data Warehouse auftreten, können Sie [ein Supportticket erstellen][] und als möglichen Grund „Migration zu Storage Premium“ angeben.
 
@@ -209,4 +186,4 @@ Wenn Probleme mit Ihrem Data Warehouse auftreten, können Sie [ein Supportticket
 [Storage Premium eingeführt, um die Leistung besser vorhersagen zu können]: https://azure.microsoft.com/de-DE/blog/azure-sql-data-warehouse-introduces-premium-storage-for-greater-performance/
 [Azure-Portal]: https://portal.azure.com
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->

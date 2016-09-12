@@ -75,7 +75,7 @@ In der folgenden Tabelle werden die drei Routingdomänen verglichen.
 |---|---|---|---|
 |**Max. Anzahl von unterstützten Präfixen pro Peering**|Standardmäßig 4.000, bei ExpressRoute Premium 10.000|200|200|
 |**Unterstützte IP-Adressbereiche**|Jede gültige IPv4-Adresse innerhalb des WANs.|Öffentliche IPv4-Adressen in Ihrem Besitz oder im Besitz des Konnektivitätsanbieters.|Öffentliche IPv4-Adressen in Ihrem Besitz oder im Besitz des Konnektivitätsanbieters.|
-|**Anforderungen für AS-Nummern**|Private und öffentliche AS-Nummern. Sie müssen die öffentliche AS-Nummer besitzen. | Private und öffentliche AS-Nummern. Sie müssen allerdings den Besitz öffentlicher IP-Adressen nachweisen.| Private und öffentliche AS-Nummern. Sie müssen allerdings den Besitz öffentlicher IP-Adressen nachweisen.|
+|**Anforderungen für AS-Nummern**|Private und öffentliche AS-Nummern. Wenn Sie eine öffentliche AS-Nummer verwenden möchten, muss diese in Ihrem Besitz sein. | Private und öffentliche AS-Nummern. Sie müssen allerdings den Besitz öffentlicher IP-Adressen nachweisen.| Private und öffentliche AS-Nummern. Sie müssen allerdings den Besitz öffentlicher IP-Adressen nachweisen.|
 |**IP-Adressen der Routingschnittstelle**|RFC1918 und öffentliche IP-Adressen|In Routingregistrierungen für Sie registrierte öffentliche IP-Adressen.| In Routingregistrierungen für Sie registrierte öffentliche IP-Adressen.|
 |**MD5-Hash-Unterstützung**| Ja|Ja|Ja|
 
@@ -85,11 +85,11 @@ Wenn Sie sich für alle drei Peeringsitzungen entscheiden, müssen Sie über dre
 
 ## Nächste Schritte
 
-- Einen Dienstanbieter finden. Informationen finden Sie unter [ExpressRoute-Dienstanbieter und -Standorte](expressroute-locations.md).
+- Suchen Sie nach einem Service Provider. Informationen finden Sie unter [ExpressRoute-Dienstanbieter und -Standorte](expressroute-locations.md).
 - Stellen Sie sicher, dass alle Voraussetzungen erfüllt sind. Informationen finden Sie unter [ExpressRoute-Voraussetzungen](expressroute-prerequisites.md).
 - Konfigurieren Sie Ihre ExpressRoute-Verbindung.
 	- [Erstellen einer ExpressRoute-Verbindung](expressroute-howto-circuit-classic.md)
 	- [Konfigurieren des Routings (Verbindungspeerings)](expressroute-howto-routing-classic.md)
 	- [Verknüpfen eines VNet mit einer ExpressRoute-Verbindung](expressroute-howto-linkvnet-classic.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0831_2016-->

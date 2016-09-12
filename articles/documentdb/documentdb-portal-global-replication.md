@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/15/2016"
+	ms.date="08/26/2016"
 	ms.author="mimig"/>
 
 # Ausführen einer globalen DocumentDB-Datenbankreplikation mit dem Azure-Portal
@@ -31,11 +31,10 @@ DocumentDB ist in den meisten [Azure-Regionen][azureregions] verfügbar. Nachdem
 
 1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) in der Navigationsleiste auf **DocumentDB-Konten**.
 2. Wählen Sie auf dem Blatt **DocumentDB-Konto** das zu ändernde Datenbankkonto aus.
-3. Klicken Sie auf dem Kontoblatt im Menü auf **Regionen hinzufügen/entfernen**. ![Hinzufügen von Regionen über „DocumentDB-Konto“ > „Einstellungen“ > „Regionen hinzufügen/entfernen“][1]
+3. Klicken Sie auf dem Kontoblatt im Menü auf **Regionen hinzufügen/entfernen**.
+4. Wählen Sie auf dem Blatt **Regionen hinzufügen/entfernen** die Regionen aus, die Sie hinzufügen oder entfernen möchten, und klicken Sie dann auf **OK**. Für das Hinzufügen von Regionen entstehen Kosten. Weitere Informationen hierzu finden Sie auf der Seite mit [Preisinformationen](https://azure.microsoft.com/pricing/details/documentdb/) sowie im Artikel [Globale Verteilung von Daten mit DocumentDB](documentdb-distribute-data-globally.md).
 
-5. Wählen Sie auf dem Blatt **Regionen hinzufügen/entfernen** die Regionen aus, die Sie hinzufügen oder entfernen möchten, und klicken Sie dann auf **OK**. Für das Hinzufügen von Regionen entstehen Kosten. Weitere Informationen hierzu finden Sie auf der Seite mit [Preisinformationen](https://azure.microsoft.com/pricing/details/documentdb/) sowie im Artikel [Globale Verteilung von Daten mit DocumentDB](documentdb-distribute-data-globally.md).
-
-    ![Hinzufügen oder Entfernen von Regionen per Klick auf die Regionen auf der Karte][2]
+    ![Hinzufügen oder Entfernen von Regionen per Klick auf die Regionen auf der Karte][1]
 
 ### Auswählen von globalen Datenbankregionen
 
@@ -54,9 +53,9 @@ While all regions associated with your DocumentDB database account can serve rea
 1. In the **DocumentDB Account** blade, select the database account to modify.
 2. In the account blade, if the **All Settings** blade is not already opened, click **All Settings**.
 3. In the **All Settings** blade, click **Write Region Priority**.
-    ![Change the write region under DocumentDB Account > Settings > Add/Remove Regions][3]
+    ![Change the write region under DocumentDB Account > Settings > Add/Remove Regions][2]
 4. Click and drag regions to order the list of regions. The first region in the list of regions is the active write region.
-    ![Change the write region by reordering the region list under DocumentDB Account > Settings > Change Write Regions][4]
+    ![Change the write region by reordering the region list under DocumentDB Account > Settings > Change Write Regions][3]
 -->
 
 ## <a id="next"></a>Nächste Schritte
@@ -66,10 +65,9 @@ Informationen dazu, wie Sie die Konsistenz Ihres global replizierten Kontos verw
 Informationen zur Funktionsweise der globalen Datenreplikation in DocumentDB finden Sie unter [Globale Verteilung von Daten mit DocumentDB](documentdb-distribute-data-globally.md). Informationen zur programmgesteuerten Datenbankreplikation in mehreren Regionen finden Sie unter [Entwickeln mit regionsübergreifenden DocumentDB-Konten](documentdb-developing-with-multiple-regions.md).
 
 <!--Image references-->
-[1]: ./media/documentdb-portal-global-replication/documentdb-account-blade.png
-[2]: ./media/documentdb-portal-global-replication/documentdb-add-region.png
-[3]: ./media/documentdb-portal-global-replication/documentdb_change_write_region-1.png
-[4]: ./media/documentdb-portal-global-replication/documentdb_change_write_region-2.png
+[1]: ./media/documentdb-portal-global-replication/documentdb-add-region.png
+[2]: ./media/documentdb-portal-global-replication/documentdb_change_write_region-1.png
+[3]: ./media/documentdb-portal-global-replication/documentdb_change_write_region-2.png
 
 <!--Reference style links - using these makes the source content way more readable than using inline links-->
 [bcdr]: https://azure.microsoft.com/documentation/articles/best-practices-availability-paired-regions/
@@ -77,4 +75,4 @@ Informationen zur Funktionsweise der globalen Datenreplikation in DocumentDB fin
 [azureregions]: https://azure.microsoft.com/de-DE/regions/#services
 [offers]: https://azure.microsoft.com/de-DE/pricing/details/documentdb/
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0831_2016-->

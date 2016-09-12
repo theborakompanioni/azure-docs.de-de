@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="08/11/2016"
+   ms.date="08/25/2016"
    ms.author="ryanwi"/>
 
 # Übersicht über Service Fabric-Terminologie
@@ -90,4 +90,4 @@ Weitere Informationen zu Service Fabric:
 - [Gründe für einen Microservice-Ansatz zum Erstellen von Anwendungen](service-fabric-overview-microservices.md)
 - [Anwendungsszenarien](service-fabric-application-scenarios.md)
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0831_2016-->

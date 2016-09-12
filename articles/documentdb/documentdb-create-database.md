@@ -14,29 +14,29 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/15/2016" 
+	ms.date="08/25/2016" 
 	ms.author="mimig"/>
 
 # So erstellen Sie über das Azure-Portal eine Datenbank für DocumentDB
 
 Um Microsoft Azure DocumentDB zu verwenden, müssen Sie über ein [DocumentDB-Konto](documentdb-create-account.md), eine Datenbank, eine Sammlung und Dokumente verfügen. In diesem Thema wird beschrieben, wie Sie eine Datenbank für DocumentDB im Microsoft Azure-Portal erstellen. Informationen zum Erstellen einer Datenbank mit einem der SDKs finden Sie unter [Weitere Methoden zum Erstellen einer DocumentDB-Datenbank](#other-ways-to-create-a-documentdb-database).
 
-1.  Klicken Sie im [Azure-Portal](https://portal.azure.com/) in der Navigationsleiste auf **DocumentDB-Konten**. Wenn **DocumentDB-Konten** nicht angezeigt wird, klicken Sie auf **Weitere Dienste** und dann auf **DocumentDB-Konten**.
+1.  Klicken Sie im [Azure-Portal](https://portal.azure.com/) in der Navigationsleiste auf **DocumentDB (NoSQL)**. Wenn **DocumentDB (NoSQL)** nicht angezeigt wird, klicken Sie auf **Weitere Dienste** und dann auf **DocumentDB (NoSQL)**.
 
 
     ![Screenshot zur Erstellung einer Datenbank mit DocumentDB-Konten auf dem Blatt „Durchsuchen“ und einem DocumentDB-Konto auf dem Blatt „DocumentDB-Konten“](./media/documentdb-create-database/docdb-database-creation-1-2.png)
 
-2.  Wählen Sie auf dem Blatt**DocumentDB-Konten** das Konto aus, in dem Sie die NoSQL-Datenbank hinzufügen möchten. Wenn keine Konten aufgeführt sind, müssen Sie [ein DocumentDB-Konto erstellen](documentdb-create-account.md).
+2.  Wählen Sie auf dem Blatt **DocumentDB (NoSQL)** das Konto aus, in dem Sie die DocumentDB-NoSQL-Datenbank hinzufügen möchten. Wenn keine Konten aufgeführt sind, müssen Sie [ein DocumentDB-Konto erstellen](documentdb-create-account.md).
 
 3. Klicken Sie auf dem Blatt **DocumentDB-Konto** auf **Datenbank hinzufügen**.
 
     ![Screenshot zur Erstellung einer Datenbank mit der Schaltfläche „Datenbank hinzufügen“, dem Feld „ID“ und der Schaltfläche „OK“](./media/documentdb-create-database/docdb-database-creation-3-5.png)
 
-4. Geben Sie auf dem Blatt **Datenbank hinzufügen** die ID für Ihre neue Datenbank ein. Wenn der Name überprüft wurde, wird im **ID**-Feld ein grünes Häkchen angezeigt.
+4. Geben Sie auf dem Blatt **Datenbank hinzufügen** die ID für Ihre neue Datenbank ein. Wenn der Name überprüft wurde, wird im **ID**-Feld ein grünes Häkchen angezeigt. Klicken Sie dann auf **OK**.
 
-5. Klicken Sie am unteren Bildschirmrand auf **OK**, um die neue Datenbank zu erstellen.
+    ![Screenshot zur Erstellung einer Datenbank mit der Schaltfläche „Datenbank hinzufügen“, dem Feld „ID“ und der Schaltfläche „OK“](./media/documentdb-create-database/docdb-database-creation-4.png)
 
-6. Die neue Datenbank wird im Fokus **Datenbanken** des Blatts **DocumentDB-Konto** angezeigt.
+5. Die neue Datenbank wird im Fokus **Datenbanken** des Blatts **DocumentDB-Konto** angezeigt.
  
 	![Screenshot der neuen Datenbank auf dem Blatt "DocumentDB-Konto"](./media/documentdb-create-database/docdb-database-creation-6.png)
 
@@ -52,4 +52,4 @@ Sobald die Sammlung erstellt ist, können Sie mithilfe des Dokument-Explorers im
 
 Wenn eine Sammlung Dokumente enthält, können Sie in [DocumentDB SQL](documentdb-sql-query.md) an den Dokumenten [Abfragen ausführen](documentdb-sql-query.md#executing-sql-queries), indem Sie den [Abfrage-Explorer](documentdb-query-collections-query-explorer.md) im Portal, die [REST-API](https://msdn.microsoft.com/library/azure/dn781481.aspx) oder eines der [SDKs](documentdb-sdk-dotnet.md) verwenden.
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0831_2016-->

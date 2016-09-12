@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.topic="article"
     ms.devlang="na"
-	ms.date="07/24/2016"
+	ms.date="08/30/2016"
 	ms.author="swkrish"/>
 
 # Azure Active Directory B2C: Erstellen eines Azure AD B2C-Mandanten
@@ -22,7 +22,7 @@ Zum Einstieg in Microsoft Azure Active Directory (Azure AD) B2C führen Sie die
 
 ## Schritt 1: Registrieren für ein Azure-Abonnement
 
-Wenn Sie bereits über ein Azure-Abonnement verfügen, überspringen Sie diesen Schritt. Andernfalls registrieren Sie sich für ein [Azure-Abonnement](../active-directory/sign-up-organization.md), um Zugriff auf Azure AD B2C zu erhalten.
+Wenn Sie bereits über ein Azure-Abonnement verfügen, überspringen Sie diesen Schritt. Andernfalls registrieren Sie sich für ein [Azure-Abonnement](../active-directory/sign-up-organization.md), um Zugriff auf Azure AD B2C zu erhalten.
 
 ## Schritt 2: Erstellen eines Azure AD B2C-Mandanten
 
@@ -42,7 +42,7 @@ Führen Sie die folgenden Schritte aus, um einen neuen Azure AD B2C-Mandanten zu
 6. Der Mandant wird jetzt erstellt und in der Active Directory-Erweiterung aufgeführt. Außerdem werden Sie als globaler Administrator des Mandanten festgelegt. Sie können bei Bedarf weitere globale Administratoren hinzufügen.
 
     > [AZURE.IMPORTANT]
-	Wenn Sie einen B2C-Mandanten für eine Produktions-App verwenden möchten, lesen Sie den Artikel zum [Vergleich zwischen Produktionsmandanten und B2C-Vorschaumandanten](active-directory-b2c-reference-tenant-type.md).
+	Wenn Sie einen B2C-Mandanten für eine Produktions-App verwenden möchten, lesen Sie den Artikel zum [Vergleich zwischen Produktionsmandanten und B2C-Vorschaumandanten](active-directory-b2c-reference-tenant-type.md). Beachten Sie, dass beim Löschen eines vorhandenen B2C-Mandanten und erneuten Erstellen mit demselben Domänennamen bekannte Probleme auftreten. Sie müssen einen B2C-Mandanten mit einem anderen Domänennamen erstellen.
 
 ## Schritt 3: Navigieren zum Blatt „B2C-Funktionen“ im Azure-Portal
 
@@ -79,4 +79,4 @@ Um die Auffindbarkeit zu verbessern, haben wir eine Verknüpfung zum Blatt „B2
 
 Informationen zum Registrieren einer Anwendung in Azure AD B2C und zum Erstellen einer Schnellstartanwendung finden Sie unter [Azure Active Directory B2C: Registrieren der Anwendung](active-directory-b2c-app-registration.md).
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0831_2016-->

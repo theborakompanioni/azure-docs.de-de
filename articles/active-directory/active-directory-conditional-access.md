@@ -14,7 +14,7 @@
 	ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="identity" 
-	ms.date="08/17/2016"
+	ms.date="08/25/2016"
 	ms.author="markvi"/>
 
 
@@ -82,7 +82,7 @@ Richtlinien können basierend auf den folgenden Anforderungen festgelegt werden:
 
 - **Kompatible Geräte**: Sie können eine Richtlinie festlegen, um den Zugriff auf Geräte zu beschränken, die vom Verwaltungssystem im Verzeichnis als **kompatibel** gekennzeichnet wurden. Diese Richtlinie stellt sicher, dass nur Geräten der Zugriff gewährt wird, die Sicherheitsrichtlinien erfüllen, wie z.B. das Erzwingen der Dateiverschlüsselung auf einem Gerät. Diese Richtlinie kann verwendet werden, um den Zugriff über folgende Geräte zu beschränken:
 
-    - **In die Windows-Domäne eingebundene Geräte**, die von System Center Configuration Manager 2016 in einer hybriden Konfiguration verwaltet werden.
+    - **In die Windows-Domäne eingebundene Geräte**, die von System Center Configuration Manager (Current Branch) in einer hybriden Konfiguration verwaltet werden.
 
     - **Mobile Arbeits- oder persönliche Geräte unter Windows 10**, die über Microsoft Intune oder ein unterstütztes MDM-Drittanbietersystem verwaltet werden.
 
@@ -125,4 +125,4 @@ In der folgenden Inhaltszuordnung werden Dokumente aufgeführt, in denen Sie wei
 - [Häufig gestellte Fragen zum bedingten Zugriff](active-directory-conditional-faqs.md)
 - [Technische Referenz](active-directory-conditional-access-technical-reference.md)
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0831_2016-->

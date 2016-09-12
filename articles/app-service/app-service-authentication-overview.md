@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="04/25/2016"
+	ms.date="08/29/2016"
 	ms.author="mahender"/>
 
 # Authentifizierung und Autorisierung in Azure App Service
@@ -139,6 +139,18 @@ Informationen zur Verwendung des clientgesteuerten Flusses für Azure Active Dir
 - [Verwenden der Active Directory-Authentifizierungsbibliothek für Android][ADAL-Android]
 - [Verwenden der Active Directory-Authentifizierungsbibliothek für Windows und Xamarin][ADAL-dotnet]
 
+Informationen zur Verwendung des clientgesteuerten Flusses für Facebook finden Sie in den folgenden Ressourcen:
+
+- [Verwenden des Facebook-SDK für iOS](../app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md#facebook-sdk)
+
+Informationen zur Verwendung des clientgesteuerten Flusses für Twitter finden Sie in den folgenden Ressourcen:
+
+- [Verwenden von Twitter Fabric für iOS](../app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md#twitter-fabric)
+
+Informationen zur Verwendung des clientgesteuerten Flusses für Google finden Sie in den folgenden Ressourcen:
+
+- [Verwenden des Google-Anmelde-SDK für iOS](../app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md#google-sdk)
+
 ### API-Anwendungen
 In den folgenden Tutorials erfahren Sie, wie Sie Ihre API-Apps schützen können:
 
@@ -178,4 +190,4 @@ In den folgenden Tutorials erfahren Sie, wie Sie Ihre API-Apps schützen können
 [ADAL-iOS]: ../app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md#adal
 [ADAL-dotnet]: ../app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library.md#adal
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0831_2016-->

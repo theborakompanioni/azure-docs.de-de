@@ -90,7 +90,7 @@ Der iKey wird auch in Webseiten Ihrer App in dem [Skript verwendet, das Sie auf 
     // Modify this part:
     }({instrumentationKey:  
       // Generate from server property:
-      @Microsoft.ApplicationInsights.Extensibility.
+      "@Microsoft.ApplicationInsights.Extensibility.
          TelemetryConfiguration.Active.InstrumentationKey"
     }) // ...
 
@@ -127,4 +127,4 @@ Sie benötigen die Instrumentierungsschlüssel aller Ressourcen, an die Ihre App
 
  
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0831_2016-->

@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="08/17/2016"
+   ms.date="08/23/2016"
    ms.author="alkohli" />
 
 # Ein- und Ausschalten von StorSimple-Geräten 
@@ -189,39 +189,13 @@ Ein ausgeführtes StorSimple-Gerät muss möglicherweise heruntergefahren werden
 
 ### Gerät mit primärem Gehäuse <a name="8100a"> 
 
-Zurzeit gibt es keine Möglichkeit, ein ausgeführtes StorSimple-Gerät über das klassische Azure-Portal herunterzufahren. Ein solches Gerät kann nur über Windows PowerShell für StorSimple heruntergefahren werden. Um das Gerät ordnungsgemäß und kontrolliert herunterzufahren, öffnen Sie Windows PowerShell für StorSimple, und führen Sie die unten stehenden Schritte aus.
+Ordnungsgemäß und kontrolliert herunterfahren können Sie das Gerät über das klassische Azure-Portal oder Windows PowerShell für StorSimple.
 
 >[AZURE.IMPORTANT] Schalten Sie ein ausgeführtes Gerät nicht über den Netzschalter auf der Geräterückseite aus.
 >
 >Bevor Sie das Gerät herunterfahren, vergewissern Sie sich, dass alle Gerätekomponenten fehlerfrei funktionieren. Navigieren Sie im klassischen Azure-Portal zu **Geräte** > **Wartung** > **Hardwarestatus**, und überprüfen Sie, ob der Status für alle Komponenten grün ist. Dies ist nur der Fall, wenn das System einwandfrei funktioniert. Wenn das System heruntergefahren wird, um eine fehlerhafte Komponente auszutauschen, wird für die jeweilige Komponente unter **Hardwarestatus** der Fehlerstatus (rot) oder der heruntergestufte Status (gelb) angezeigt.
 
-Sie können über die serielle Gerätekonsole oder über Windows PowerShell-Remoting auf Windows PowerShell für StorSimple zugreifen. Führen Sie in Windows PowerShell für StorSimple die folgenden Schritte zum Herunterfahren eines ausgeführten Geräts aus.
-
-#### So fahren Sie ein ausgeführtes Gerät herunter
-
-1. Stellen Sie eine Verbindung mit der seriellen Gerätekonsole her.
-
-2. Überprüfen Sie im angezeigten Menü, ob es sich bei dem Controller, mit dem die Verbindung besteht, um den **Standbycontroller** handelt. Sollte es sich nicht um den Standbycontroller handeln, trennen Sie die Verbindung, und stellen Sie eine Verbindung mit dem anderen Controller her.
-
-3. Wählen Sie im Menü der seriellen Konsole **Option 1** aus, um sich mit Vollzugriff beim Standbycontroller anzumelden.
-
-4. Geben Sie an der Eingabeaufforderung Folgendes ein:
-
-    `Stop-HCSController`
-
-    Dadurch wird der aktuelle Standbycontroller heruntergefahren.
-
-    >[AZURE.IMPORTANT] Warten Sie, bis der Controller vollständig heruntergefahren ist, bevor Sie mit dem nächsten Schritt fortfahren.
-
-5. Überprüfen Sie auf der Rückseite des Geräts, ob der Controller vollständig heruntergefahren ist. Die Controllerfehler-LED sollte dauerhaft rot leuchten.
-
-6. Stellen Sie über die serielle Konsole eine Verbindung zum aktiven Controller her, und führen Sie die gleichen Schritte aus, um diesen herunterzufahren.
-
-7. Nachdem die beiden Controller vollständig heruntergefahren wurden, sollten die Status-LEDs für beide Controller rot blinken.
-
-8. Wenn Sie das Gerät nun vollständig herunterfahren müssen, bringen Sie die Netzschalter an beiden PCMs in die Position OFF.
-
-9. Stellen Sie sicher, dass das Gerät vollständig heruntergefahren ist, indem Sie sich vergewissern, dass alle LEDs auf der Rückseite des Geräts erloschen sind.
+Nachdem Sie auf Windows PowerShell für StorSimple oder das klassische Azure-Portal zugegriffen haben, führen Sie die Schritte in [Herunterfahren eines StorSimple-Geräts](storsimple-manage-device-controller.md#shut-down-a-storsimple-device) aus.
 
 ### Gerät mit EBOD-Gehäuse <a name="8600a">
 
@@ -229,7 +203,7 @@ Sie können über die serielle Gerätekonsole oder über Windows PowerShell-Remo
 
 #### So fahren Sie ein ausgeführtes Gerät mit EBOD-Gehäuse herunter
 
-1. Führen Sie alle unter [Gerät nur mit primärem Gehäuse](#8100a) beschriebenen Schritte aus.
+1. Führen Sie alle unter [Herunterfahren eines StorSimple-Geräts](storsimple-manage-device-controller.md#shut-down-a-storsimple-device) aufgeführten Schritte für das primäre Gehäuse aus.
 
 2. Nachdem das primäre Gehäuse heruntergefahren wurde, fahren Sie das EBOD-Gehäuse herunter, indem Sie beide PCM-Schalter ausschalten.
 
@@ -241,4 +215,4 @@ Sie können über die serielle Gerätekonsole oder über Windows PowerShell-Remo
 
 [Kontaktieren Sie den Microsoft-Support](storsimple-contact-microsoft-support.md), wenn beim Einschalten oder Herunterfahren eines StorSimple-Geräts Probleme auftreten.
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0831_2016-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/15/2016"
+	ms.date="08/24/2016"
 	ms.author="anhoh"/>
 
 # Verwalten eines DocumentDB-Kontos
@@ -23,19 +23,18 @@ Erfahren Sie, wie Sie globale Konsistenz festlegen, mit Schlüsseln arbeiten und
 
 ## <a id="consistency"></a>Verwalten von DocumentDB-Konsistenzeinstellungen
 
-Die Auswahl der richtigen Konsistenzebene richtet sich nach der Semantik Ihrer Anwendung. Sie sollten sich mit den Konsistenzebenen in DocumentDB vertraut machen: [Verwenden von Konsistenzebenen zum Maximieren der Verfügbarkeit und Leistung in DocumentDB][consistency]. DocumentDB bietet auf jeder für Ihr Datenbankkonto verfügbare Konsistenzebene bestimmte Garantien für Konsistenz, Verfügbarkeit und Leistung. Wenn Sie Ihr Datenbankkonto mit der Konsistenzebene „Strong“ konfigurieren, sind Ihre Daten auf eine einzige Azure-Region beschränkt und dürfen nicht global verfügbar sein. Auf den gelockerten Konsistenzebenen dagegen – „Bounded Staleness“, „Session“ und „Eventual“ – können Sie Ihrem Datenbankkonto eine beliebige Anzahl von Azure-Regionen zuordnen. Die folgenden einfachen Schritte zeigen Ihnen, wie Sie die Standardkonsistenzebene für Ihr Datenbankkonto auswählen.
+Die Auswahl der richtigen Konsistenzebene richtet sich nach der Semantik Ihrer Anwendung. Sie sollten sich mit den Konsistenzebenen in DocumentDB vertraut machen – lesen Sie [Verwenden von Konsistenzebenen zum Maximieren der Verfügbarkeit und Leistung in DocumentDB][consistency]. DocumentDB bietet auf jeder für Ihr Datenbankkonto verfügbaren Konsistenzebene bestimmte Garantien für Konsistenz, Verfügbarkeit und Leistung. Wenn Sie Ihr Datenbankkonto mit der Konsistenzebene „Strong“ konfigurieren, sind Ihre Daten auf eine einzige Azure-Region beschränkt und dürfen nicht global verfügbar sein. Auf den gelockerten Konsistenzebenen dagegen – „Bounded Staleness“, „Session“ und „Eventual“ – können Sie Ihrem Datenbankkonto eine beliebige Anzahl von Azure-Regionen zuordnen. Die folgenden einfachen Schritte zeigen Ihnen, wie Sie die Standardkonsistenzebene für Ihr Datenbankkonto auswählen.
 
 ### So legen Sie die Standardkonsistenz für ein DocumentDB-Konto fest
 
 1. Greifen Sie im [Azure-Portal](https://portal.azure.com/) auf Ihr DocumentDB-Konto zu.
 2. Klicken Sie auf dem Kontoblatt auf **Standardkonsistenz**.
-3. Wählen Sie auf dem Blatt **Standardkonsistenz** die neue Konsistenzebene aus, und klicken Sie auf **OK**. 
-![Standardkonsistenz - Sitzung][5]
+3. Wählen Sie im Blatt **Standardkonsistenz** die neue Konsistenzebene aus, und klicken Sie auf **Speichern**. ![Standardkonsistenz - Sitzung][5]
 
 ## <a id="keys"></a>Anzeigen, Kopieren und erneutes Generieren von Zugriffsschlüsseln
 Wenn Sie ein DocumentDB-Konto erstellen, generiert der Dienst zwei Hauptzugriffsschlüssel, die für die Authentifizierung verwendet werden können, wenn der Zugriff auf das DocumentDB-Konto erfolgt. Durch Bereitstellen von zwei Zugriffsschlüsseln ermöglicht DocumentDB Ihnen das erneute Generieren der Schlüssel ohne Unterbrechung des Zugriffs auf das DocumentDB-Konto.
 
-Greifen Sie im [Microsoft Azure-Portal](https://portal.azure.com/) über das Blatt **DocumentDB-Konto** auf das Blatt **Schlüssel** zu, um die für den Zugriff auf Ihr DocumentDB-Konto verwendeten Schlüssel anzuzeigen, zu kopieren und neu zu generieren.
+Greifen Sie im [Azure-Portal](https://portal.azure.com/) über das Ressourcenmenü im Blatt **DocumentDB-Konto** auf das Blatt **Schlüssel** zu, um die für den Zugriff auf Ihr DocumentDB-Konto verwendeten Schlüssel anzuzeigen, zu kopieren und neu zu generieren.
 
 ![Screenshot mit Azure-Portal, Blatt „Schlüssel“](./media/documentdb-manage-account/keys.png)
 
@@ -43,7 +42,7 @@ Greifen Sie im [Microsoft Azure-Portal](https://portal.azure.com/) über das Bla
 
 Auf diesem Blatt stehen außerdem schreibgeschützte Schlüssel zur Verfügung. Lesevorgänge und Abfragen sind schreibgeschützte Vorgänge, während das Erstellen, Löschen und Ersetzen Schreib- und Lesevorgänge sind.
 
-### Anzeigen und Kopieren eines Zugriffsschlüssels im Azure-Portal
+### Kopieren eines Zugriffsschlüssels im Azure-Portal
 
 Klicken Sie im Blatt **Schlüssel** rechts neben dem Schlüssel, den Sie kopieren möchten, auf die Schaltfläche **Kopieren**.
 
@@ -60,11 +59,12 @@ Falls Sie über Webanwendungen oder Cloud-Dienste verfügen, die das DocumentDB-
 1. Aktualisieren Sie den Zugriffsschlüssel im Anwendungscode, damit er auf den sekundären Zugriffsschlüssel des DocumentDB-Kontos verweist.
 2. Generieren Sie den primären Zugriffsschlüssel für Ihr DocumentDB-Konto neu. Greifen Sie im [Azure-Portal](https://portal.azure.com/) auf Ihr DocumentDB-Konto zu.
 3. Klicken Sie auf dem Blatt **DocumentDB-Konto** auf **Schlüssel**.
-4. Klicken Sie auf dem Blatt **Schlüssel** auf den Befehl **Primären Zugriffsschlüssel neu generieren**, und klicken Sie dann auf **OK**, um das Generieren eines neuen Schlüssels zu bestätigen. ![Erneutes Generieren von Zugriffsschlüsseln](./media/documentdb-manage-account/regenerate-keys.png)
+4. Klicken Sie auf dem Blatt **Schlüssel** auf die Regenerierungsschaltfläche, und klicken Sie dann auf **OK**, um das Generieren eines neuen Schlüssels zu bestätigen. ![Erneutes Generieren von Zugriffsschlüsseln](./media/documentdb-manage-account/regenerate-keys.png)
 
 5. Sobald Sie sichergestellt haben, dass der neue Schlüssel verwendet werden kann (etwa 5 Minuten nach der erneuten Erzeugung), aktualisieren Sie den Zugriffsschlüssel im Anwendungscode, damit er auf den neuen primären Zugriffsschlüssel verweist.
-6. Generieren Sie den sekundären Zugriffsschlüssel neu. 
-![Erneutes Generieren von Zugriffsschlüsseln](./media/documentdb-manage-account/regenerate-secondary-key.png)
+6. Generieren Sie den sekundären Zugriffsschlüssel neu.
+
+    ![Erneutes Generieren von Zugriffsschlüsseln](./media/documentdb-manage-account/regenerate-secondary-key.png)
 
 
 > [AZURE.NOTE] Die Bereitstellung eines neu generierten Schlüssels kann einige Minuten dauern, bevor Sie damit auf Ihr DocumentDB-Konto zugreifen können.
@@ -103,4 +103,4 @@ Weitere Informationen zu DocumentDB finden Sie in der Azure DocumentDB-Dokumenta
 [azureregions]: https://azure.microsoft.com/de-DE/regions/#services
 [offers]: https://azure.microsoft.com/de-DE/pricing/details/documentdb/
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0831_2016-->

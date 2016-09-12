@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/18/2016"
+   ms.date="08/25/2016"
    ms.author="ryanwi"/>
 
 # Herstellen einer Verbindung mit einem sicheren Cluster
@@ -21,7 +21,7 @@ Wenn ein Client eine Verbindung mit einem Service Fabric-Clusterknoten herstellt
 
 Um die Kommunikation zwischen einem Client und einem Clusterknoten mit Zertifikatssicherheit zu schützen, müssen Sie zuerst das Clientzertifikat beziehen und im persönlichen Speicher (My) auf dem lokalen Computer oder im Personal-Speicher des aktuellen Benutzers installieren. Sie benötigen außerdem den Fingerabdruck des Serverzertifikats, damit der Cluster vom Client authentifiziert werden kann.
 
-Führen Sie das folgende PowerShell-Cmdlet aus, um das Clientzertifikat auf dem Computer einzurichten, auf dem Sie auf den Cluster zugreifen werden.
+Führen Sie das folgende PowerShell-Cmdlet aus, um das Clientzertifikat auf dem Computer einzurichten, auf dem Sie auf den Cluster zugreifen.
 
 ```powershell
 Import-PfxCertificate -Exportable -CertStoreLocation Cert:\CurrentUser\My `
@@ -50,7 +50,7 @@ Connect-ServiceFabricCluster -ConnectionEndpoint <Cluster FQDN>:19000 `
           -StoreLocation CurrentUser -StoreName My
 ```
 
-Beispielsweise sollte der obige PowerShell-Befehl ähnlich wie der Folgende aussehen. *ServerCertThumbprint* ist der Fingerabdruck des Serverzertifikats, das auf den Clusterknoten installiert ist. *FindValue* ist der Fingerabdruck des Clientzertifikats des Administrators.
+Beispielsweise sollte der obige PowerShell-Befehl ähnlich wie der folgende aussehen. *ServerCertThumbprint* ist der Fingerabdruck des Serverzertifikats, das auf den Clusterknoten installiert ist. *FindValue* ist der Fingerabdruck des Clientzertifikats des Administrators.
 
 ```powershell
 Connect-ServiceFabricCluster -ConnectionEndpoint clustername.westus.cloudapp.azure.com:19000 `
@@ -61,7 +61,7 @@ Connect-ServiceFabricCluster -ConnectionEndpoint clustername.westus.cloudapp.azu
 ```
 
 ## Herstellen einer Verbindung mit einem sicheren Cluster mit den FabricClient-APIs
-Der folgende [FabricClient](https://msdn.microsoft.com/library/system.fabric.fabricclient.aspx). Die Knoten im Cluster müssen über gültige Zertifikate verfügen, deren gemeinsamer Name oder DNS-Name im SAN in der [RemoteCommonNames](https://msdn.microsoft.com/library/azure/system.fabric.x509credentials.remotecommonnames.aspx)-Eigenschaft angezeigt wird, die auf [FabricClient](https://msdn.microsoft.com/library/system.fabric.fabricclient.aspx) festgelegt ist. Dies ermöglicht die gegenseitige Authentifizierung zwischen dem Client und dem Clusterknoten.
+Der folgende [FabricClient](https://msdn.microsoft.com/library/system.fabric.fabricclient.aspx). Die Knoten im Cluster müssen über gültige Zertifikate verfügen, deren allgemeiner Name oder DNS-Name im SAN in der [RemoteCommonNames](https://msdn.microsoft.com/library/azure/system.fabric.x509credentials.remotecommonnames.aspx)-Eigenschaft angezeigt wird, die auf [FabricClient](https://msdn.microsoft.com/library/system.fabric.fabricclient.aspx) festgelegt ist. Dadurch wird die gegenseitige Authentifizierung zwischen dem Client und dem Clusterknoten ermöglicht.
 
 ```csharp
 string clientCertThumb = "71DE04467C9ED0544D021098BCD44C71E183414E";
@@ -115,4 +115,4 @@ static X509Credentials GetCredentials(string clientCertThumb, string serverCertT
 - [Einführung in das Service Fabric-Integritätsmodell](service-fabric-health-introduction.md)
 - [Anwendungssicherheit und RunAs](service-fabric-application-runas-security.md)
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0831_2016-->

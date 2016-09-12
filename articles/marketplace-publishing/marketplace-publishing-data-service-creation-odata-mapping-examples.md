@@ -13,10 +13,12 @@
       ms.topic="article"
       ms.tgt_pltfrm="na"
       ms.workload="na"
-      ms.date="01/04/2016"
+      ms.date="08/26/2016"
       ms.author="hascipio; avikova" />
 
 # Beispiele für das Zuordnen eines vorhandenen Webdiensts zu OData über CSDLs
+
+>[AZURE.IMPORTANT] **Derzeit integrieren wir keine neuen Herausgeber von Datendiensten mehr. Für neue Datendienste wird keine Auflistung genehmigt.** Wenn Sie eine SaaS-Geschäftsanwendung haben, die Sie auf AppSource veröffentlichen möchten, finden Sie [hier](https://appsource.microsoft.com/partners) weitere Informationen. Wenn Sie eine IaaS-Anwendung oder einen Dienst für Entwickler auf Azure Marketplace veröffentlichen möchten, finden Sie [hier](https://azure.microsoft.com/marketplace/programs/certified/) weitere Informationen.
 
 ## Beispiel: FunctionImport für "rohe" Daten wurde mithilfe von "POST" zurückgegeben
 Verwenden Sie POST-Rohdaten zum Erstellen einer neuen Unterordnung und zum Zurückgeben seiner serverdefinierten URL (Speicherort) oder zum Aktualisieren eines Teils der Unterordnung in der serverdefinierten URL. Dabei ist die Unterordnung ein Datenstrom, d. h. unstrukturiert, wie beispielsweise eine Textdatei. Beachten Sie, dass POST ohne Speicherort nicht idempotent ist.
@@ -155,4 +157,4 @@ Verwenden Sie mit GET „Implementieren von RESTful-Paging“ für die Daten. Da
 - Wenn Sie mehr über bestimmte Knoten und ihre Parameter erfahren möchten, lesen Sie den Artikel [OData-Zuordnungsknoten für Datendienste](marketplace-publishing-data-service-creation-odata-mapping-nodes.md). Dort finden Sie Definitionen und Erläuterungen, Beispiele und Kontext für Anwendungsfälle.
 - Um zum vorgeschriebenen Pfad für die Veröffentlichung eines Datendiensts im Azure Marketplace zurückzukehren, lesen Sie den Artikel [Leitfaden zum Veröffentlichen von Datendiensten](marketplace-publishing-data-service-creation.md).
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0831_2016-->

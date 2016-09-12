@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/23/2016"
+	ms.date="08/29/2016"
 	ms.author="markusvi;andkjell"/>
 
 
@@ -70,28 +70,18 @@ Folgende Operatoren können verwendet werden:
 - **Logischer Ausdruck**: && (and), || (or)
 - **Auswertungsreihenfolge**: ( )
 
-Operatoren werden von links nach rechts ausgewertet und haben bei der Auswertung die gleiche Priorität. Dies bedeutet, dass der Multiplikator (\*) nicht vor der Subtraktion (-) ausgewertet wird. „2*(5+3)“ ist nicht dasselbe wie „2\*5+3“. Die Klammern werden verwendet, um die Reihenfolge der Auswertung zu ändern, wenn die Auswertungsreihenfolge von links nach rechts nicht geeignet ist.
+Operatoren werden von links nach rechts ausgewertet und haben bei der Auswertung die gleiche Priorität. Dies bedeutet, dass der Multiplikator (*) nicht vor der Subtraktion (-) ausgewertet wird. „2*(5+3)“ ist nicht dasselbe wie „2*5+3“. Die Klammern werden verwendet, um die Reihenfolge der Auswertung zu ändern, wenn die Auswertungsreihenfolge von links nach rechts nicht geeignet ist.
 
 ## Mehrwertige Attribute
-
-### Attributflüsse für mehrwertige Attribute
 Die Funktionen können sowohl für einwertige als auch für mehrwertige Attribute verwendet werden. Bei mehrwertigen Attributen wird die Funktion für jeden Wert ausgeführt, und auf alle Werte wird die gleiche Funktion angewendet.
 
 Beispiel: `Trim([proxyAddresses])` – Führt eine Trim-Funktion für jeden Wert im Attribut „proxyAddress“ aus. `Word([proxyAddresses],1,"@") & "@contoso.com"` – Ersetzt für jeden Wert mit dem @-Zeichen die Domäne durch „@contoso.com“. `IIF(InStr([proxyAddresses],"SIP:")=1,NULL,[proxyAddresses])` – Sucht nach der SIP-Adresse und entfernt sie aus den Werten.
 
-### Zusammenführen von Attributwerten
-In den Attributflüssen ist eine Einstellung verfügbar, mit der Sie ermitteln können, ob mehrwertige Attribute aus mehreren verschiedenen Connectors zusammengeführt werden sollten. Beim Standardwert **Update** wird die Synchronisierungsregel mit der höchsten Rangfolge angewendet.
-
-![Zusammenführungstypen](./media/active-directory-aadconnectsync-understanding-declarative-provisioning-expressions/mergetype.png)
-
-Weitere Einstellungen sind **Merge** und **MergeCaseInsensitive**. Mit diesen Optionen können Sie Werte aus unterschiedlichen Quellen zusammenführen. Sie können beispielsweise das Attribut „member“ oder „proxyAddresses“ aus mehreren unterschiedlichen Gesamtstrukturen zusammenführen. Wenn Sie diese Option verwenden, müssen alle Synchronisierungsregeln im Bereich für ein Objekt denselben Zusammenführungstyp aufweisen. Es ist nicht möglich, den Zusammenführungstyp **Update** für einen Connector und **Merge** für einen anderen festzulegen. Wenn Sie es versuchen, wird eine Fehlermeldung ausgegeben.
-
-Der Unterschied zwischen **Merge** und **MergeCaseInsensitive** ist die Verarbeitung doppelter Attributwerte. Das Synchronisierungsmodul stellt sicher, dass keine doppelten Werte in das Zielattribut eingefügt werden. Bei **MergeCaseInsensitive** werden auch keine doppelten Werte eingefügt, bei denen sich nur die Groß-/Kleinschreibung unterscheidet. Beispielsweise werden nicht sowohl „SMTP:bob@contoso.com“ als auch „smtp:bob@contoso.com“ im Zielattribut vorhanden sein. **Merge** überprüft nur die genauen Werte. Daher ist es möglich, dass mehrere Werte vorhanden sind, bei denen sich nur die Groß-/Kleinschreibung unterscheidet.
-
-Die Option **Replace** entspricht **Update**, wird aber nicht verwendet.
-
 ## Weitere Ressourcen
 
-[Azure AD Connect-Synchronisierung: Funktionsreferenz](active-directory-aadconnectsync-functions-reference.md) [Azure AD Connect-Synchronisierung: Grundlagen und Anpassung der Synchronisierung](active-directory-aadconnectsync-whatis.md) [Integrieren Ihrer lokalen Identitäten in Azure Active Directory](active-directory-aadconnect.md)
+- [Azure AD Connect sync: Understanding Declarative Provisioning](active-directory-aadconnectsync-understanding-declarative-provisioning.md) (Azure AD Connect-Synchronisierung: Grundlegendes zur deklarativen Bereitstellung)
+- [Azure AD Connect-Synchronisierung: Funktionsreferenz](active-directory-aadconnectsync-functions-reference.md)
+- [Azure AD Connect-Synchronisierung: Anpassen von Synchronisierungsoptionen](active-directory-aadconnectsync-whatis.md)
+- [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md)
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->

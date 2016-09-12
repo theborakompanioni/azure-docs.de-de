@@ -21,6 +21,14 @@ In diesem Artikel werden einige häufig gestellte Fragen zu Microsoft Azure Clou
 
 ## Zertifikate
 
+### Wo soll ich mein Zertifikat installieren?
+
+- **My** Anwendungszertifikat mit privatem Schlüssel (*.pfx, *.p12)
+
+- **CA** Alle Zwischenzertifikate werden in diesem Speicher gespeichert (Richtlinien und Sub-Zertifizierungsstellen)
+
+- **ROOT** Ihre Hauptzertifikate der Stammzertifizierungsstelle werden hier im Speicher für Zertifikate der Stammzertifizierungsstelle gespeichert
+
 ### Ich kann ein abgelaufenes Zertifikat nicht entfernen.
 
 Azure verhindert, dass Sie ein Zertifikat entfernen, während es verwendet wird. Sie müssen entweder die Bereitstellung löschen, die das Zertifikat verwendet, oder die Bereitstellung mit einem anderen oder einem erneuerten Zertifikat aktualisieren.
@@ -41,13 +49,7 @@ Das liegt wahrscheinlich an einem von Ihnen verwendeten Tool wie etwa Visual Stu
 
 Wenn die Instanz des virtuellen Computers zyklisch ausgeführt wird, gehen alle lokalen Änderungen verloren. Verwenden Sie eine [Startaufgabe](cloud-services-startup-tasks.md), um Zertifikate bei jedem Start der Rolle auf dem virtuellen Computer zu installieren.
 
-### Wo soll ich mein Zertifikat installieren?
 
-**My** Anwendungszertifikat mit privatem Schlüssel (*.pfx, *.p12)
-
-**CA** Alle Zwischenzertifikate werden in diesem Speicher gespeichert (Richtlinien und Sub-Zertifizierungsstellen)
-
-**ROOT** Ihre Hauptzertifikate der Stammzertifizierungsstelle werden hier im Speicher für Zertifikate der Stammzertifizierungsstelle gespeichert
 
 ## Problembehandlung
 
@@ -55,4 +57,4 @@ Wenn die Instanz des virtuellen Computers zyklisch ausgeführt wird, gehen alle 
 
 Stellen Sie zunächst sicher, dass die Instanz des virtuellen Computers, für den Sie die IP reservieren möchten, eingeschaltet ist. Vergewissern Sie sich anschließend, dass Sie reservierte IPs für Staging- und Produktionsbereitstellungen verwenden. Ändern Sie die Einstellungen **nicht**, während ein Upgrade der Bereitstellung durchgeführt wird.
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->

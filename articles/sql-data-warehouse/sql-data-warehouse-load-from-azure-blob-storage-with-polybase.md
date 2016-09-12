@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="08/16/2016"
+   ms.date="08/25/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
 
@@ -249,7 +249,7 @@ CREATE TABLE [cso].[FactOnlineSales]       WITH (DISTRIBUTION = HASH([ProductKey
 
 ### 4\.3 Verfolgen des Ladeprozesses
 
-Sie können den Ladefortschritt mithilfe der dynamischen Verwaltungsansicht (Dynamic Management View, DMV) `[sys].[dm_pdw_exec_requests]` verfolgen.
+Sie können den Ladefortschritt mithilfe der dynamischen Verwaltungsansicht (Dynamic Management View, DMV) verfolgen.
 
 ```sql
 -- To see all requests
@@ -257,9 +257,31 @@ SELECT * FROM sys.dm_pdw_exec_requests;
 
 -- To see a particular request identified by its label
 SELECT * FROM sys.dm_pdw_exec_requests as r;
-WHERE r.label = 'CTAS : Load [cso].[DimProduct]             '
-      OR r.label = 'CTAS : Load [cso].[FactOnlineSales]        '
+WHERE r.[label] = 'CTAS : Load [cso].[DimProduct]             '
+      OR r.[label] = 'CTAS : Load [cso].[FactOnlineSales]        '
 ;
+
+-- To track bytes and files
+SELECT
+    r.command,
+    s.request_id,
+    r.status,
+    count(distinct input_name) as nbr_files, 
+    sum(s.bytes_processed)/1024/1024 as gb_processed
+FROM
+    sys.dm_pdw_exec_requests r
+    inner join sys.dm_pdw_dms_external_work s
+        on r.request_id = s.request_id
+WHERE 
+    r.[label] = 'CTAS : Load [cso].[DimProduct]             '
+    OR r.[label] = 'CTAS : Load [cso].[FactOnlineSales]        '
+GROUP BY
+    r.command,
+    s.request_id,
+    r.status
+ORDER BY
+    nbr_files desc,
+    gb_processed desc;
 ```
 
 ## 5\. Optimieren der Columnstore-Komprimierung
@@ -343,8 +365,6 @@ JOIN    [cso].[DimProduct]      AS p ON f.[ProductKey] = p.[ProductKey]
 GROUP BY p.[BrandName]
 ```
 
-Genießen Sie die Datenabfrage mit SQL Data Warehouse.
-
 ## Nächste Schritte
 Verwenden Sie das Skript unter [Entwurfsentscheidungen und Programmiertechniken für SQL Data Warehouse][], um die vollständigen Contoso Retail-Data Warehouse-Daten zu laden.
 
@@ -370,4 +390,4 @@ Verwenden Sie das Skript unter [Entwurfsentscheidungen und Programmiertechniken 
 [Microsoft Download Center]: http://www.microsoft.com/download/details.aspx?id=36433
 [Laden des kompletten Contoso Retail-Data Warehouse]: https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/contoso-data-warehouse/readme.md
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0831_2016-->

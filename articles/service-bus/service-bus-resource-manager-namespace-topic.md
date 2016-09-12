@@ -29,7 +29,7 @@ Die vollständige Vorlage finden Sie unter [Service Bus namespace with topic and
 >-    [Create a Service Bus authorization rule for namespace and queue using an Azure Resource Manager template (Erstellen einer Service Bus-Autorisierungsregel für Namespace und Warteschlange mit einer Azure Resource Manager-Vorlage)](service-bus-resource-manager-namespace-auth-rule.md)
 >-    [Create a Service Bus namespace and a queue using an Azure Resource Manager template (Erstellen eines Service Bus-Namespace und einer Warteschlange mit einer Azure Resource Manager-Vorlage)](service-bus-resource-manager-namespace-queue.md)
 >-    [Erstellen eines Service Bus-Namespaces](service-bus-resource-manager-namespace.md)
->-    [Create a Service Bus namespace with an Event Hub and consumer group (Erstellen eines Service Bus-Namespace mit einem Event Hub und einer Consumergruppe)](service-bus-resource-manager-namespace-event-hub.md)
+>-    [Create an Event Hubs namespace with an Event Hub and consumer group (Erstellen eines Event Hubs-Namespace mit einem Event Hub und einer Consumergruppe)](../event-hubs/event-hubs-resource-manager-namespace-event-hub.md)
 >
 >Um die neuesten Vorlagen zu finden, rufen Sie den Katalog [Azure-Schnellstartvorlagen][] auf, und suchen Sie nach „Service Bus“.
 
@@ -160,4 +160,4 @@ Da Sie nun Ressourcen mit Azure Resource Manager erstellt und bereitgestellt hab
   [Using the Azure CLI for Mac, Linux, and Windows with Azure Resource Management]: ../xplat-cli-azure-resource-manager.md
   [Service Bus namespace with topic and subscription]: https://github.com/Azure/azure-quickstart-templates/blob/master/201-servicebus-create-topic-and-subscription/
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0831_2016-->

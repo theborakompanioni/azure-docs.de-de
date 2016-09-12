@@ -14,41 +14,22 @@
 	ms.tgt_pltfrm="vm-multiple"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/07/2016"
+	ms.date="08/24/2016"
 	ms.author="iainfou"/>
 
 # Installieren und Konfigurieren von Symantec Endpoint Protection auf einem virtuellen Windows-Computer
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
 
-In diesem Artikel wird beschrieben, wie der Symantec Endpoint Protection-Client auf einem neuen oder vorhandenen virtuellen Windows Server-Computer installiert und konfiguriert wird. Dies ist der vollständige Client, der Dienste wie Viren- und Spywareschutz, Firewall und Eindringschutz enthält.
-
-Der Client wird als Sicherheitserweiterung durch die Verwendung des VM Agent installiert. Auf einem neuen virtuellen Computer installieren Sie den Agent zusammen mit dem Endpunktclient. Auf einem vorhandenen virtuellen Computer ohne den VM Agent müssen Sie den Agent zunächst herunterladen und installieren. Dieser Artikel deckt beide Situationen ab.
+In diesem Artikel wird beschrieben, wie der Symantec Endpoint Protection-Client auf einem vorhandenen virtuellen Windows Server-Computer installiert und konfiguriert wird. Dies ist der vollständige Client, der Dienste wie Viren- und Spywareschutz, Firewall und Eindringschutz enthält. Der Client wird als Sicherheitserweiterung durch die Verwendung des VM Agent installiert.
 
 Wenn Sie über ein vorhandenes Abonnement von Symantec für eine lokale Lösung verfügen, können Sie es zum Schützen Ihrer virtuellen Azure-Computer verwenden. Wenn Sie noch kein Kunde sind, können Sie sich für ein Testabonnement registrieren. Weitere Informationen über diese Lösung finden Sie unter [Symantec Endpoint Protection on Microsoft's Azure platform][Symantec] (Symantec Endpoint Protection auf der Azure-Plattform von Microsoft) (in englischer Sprache). Diese Seite enthält auch Links zu Lizenzierungsinformationen und Anweisungen für das Installieren des Clients, wenn Sie bereits Symantec-Kunde sind.
-
-## Installieren von Symantec Endpoint Protection auf einem neuen virtuellen Computer
-
-Mit dem [klassischen Azure-Portal][Portal] können Sie den VM-Agent und die Symantec-Sicherheitserweiterung installieren, wenn Sie die Option **Aus Katalog** zum Erstellen des virtuellen Computers verwenden. Die Verwendung dieses Ansatzes ist eine einfache Möglichkeit, einen Schutz von Symantec hinzuzufügen, wenn Sie einen einzelnen virtuellen Computer erstellen.
-
-Die Option **Aus Katalog** öffnet einen Assistenten, der Ihnen beim Einrichten des virtuellen Computers hilft. Sie verwenden die letzte Seite des Assistenten zum Installieren des VM-Agents und der Symantec-Sicherheitserweiterung.
-
-Allgemeine Anweisungen dazu finden Sie unter [Erstellen eines virtuellen Windows Server-Computers][Create]. Wenn Sie zur letzten Seite des Assistenten gelangen:
-
-1.	Unter VM-Agent müsste **VM-Agent installieren** bereits aktiviert sein.
-
-2.	Aktivieren Sie **Symantec Endpoint Protection** unter „Sicherheitserweiterungen“.
-
-
-	![Installieren des VM-Agents und des Endpoint Protection-Clients](./media/virtual-machines-windows-classic-install-symantec/InstallVMAgentandSymantec.png)
-
-3.	Klicken Sie auf das Häkchen unten auf der Seite, um den virtuellen Computer zu erstellen.
 
 ## Installieren von Symantec Endpoint Protection auf einem vorhandenen virtuellen Computer
 
 Bevor Sie beginnen, benötigen Sie Folgendes:
 
-- Das Azure PowerShell-Modul, Version 0.8.2 oder höher, muss auf Ihrem Arbeitscomputer installiert sein. Sie können die installierte Version von Azure PowerShell mit dem Befehl **Get-Module azure | format-table version** überprüfen. Anweisungen und einen Link zur neuesten Version finden Sie unter [Gewusst wie: Installieren und Konfigurieren von Azure PowerShell][PS]. Stellen Sie sicher, dass Sie bei Ihrem Azure-Abonnement angemeldet sind.
+- Das Azure PowerShell-Modul, Version 0.8.2 oder höher, muss auf Ihrem Arbeitscomputer installiert sein. Sie können die installierte Version von Azure PowerShell mit dem Befehl **Get-Module azure | format-table version** überprüfen. Anweisungen und einen Link zur neuesten Version finden Sie unter [Gewusst wie: Installieren und Konfigurieren von Azure PowerShell][PS]. Melden Sie sich mit `Add-AzureAccount` bei Ihrem Azure-Abonnement an.
 
 - Der VM-Agent muss auf dem virtuellen Azure-Computer ausgeführt werden.
 
@@ -97,4 +78,4 @@ So überprüfen Sie, ob die Symantec-Sicherheitserweiterung installiert wurde un
 
 [Ext]: http://go.microsoft.com/fwlink/p/?linkid=390493
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0831_2016-->

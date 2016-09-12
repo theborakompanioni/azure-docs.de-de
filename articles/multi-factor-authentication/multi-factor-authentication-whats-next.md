@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/22/2016" 
+	ms.date="08/30/2016" 
 	ms.author="billmath"/>
 
 # Konfigurieren von Azure Multi-Factor Authentication
@@ -57,7 +57,7 @@ Die Betrugswarnung kann so konfiguriert und eingerichtet werden, dass Ihre Benut
 In Microsofts Standardansage wird der Benutzer aufgefordert, zum Senden einer Betrugswarnung die Zeichenfolge „0#“ einzugeben. Wenn Sie einen anderen Code als „0“ verwenden, müssen Sie eine benutzerdefinierte Ansage mit den passenden Anweisungen aufnehmen.
 
 
-<center>![Cloud](./media/multi-factor-authentication-whats-next/fraud.png)</center>
+![Cloud](./media/multi-factor-authentication-whats-next/fraud.png)
 
 ### Melden einer Betrugswarnung
 Eine Betrugswarnung kann auf zwei Arten gemeldet werden. Entweder über die mobile App oder telefonisch.
@@ -71,7 +71,10 @@ Eine Betrugswarnung kann auf zwei Arten gemeldet werden. Entweder über die mobi
 3. Klicken Sie auf "Betrug melden".
 4. Klicken Sie in der App auf "Schließen".
 
-<center>![Cloud](./media/multi-factor-authentication-whats-next/report1.png)</center>
+![Cloud](./media/multi-factor-authentication-whats-next/report1.png)
+
+
+![Cloud](./media/multi-factor-authentication-whats-next/fraud2.png)
 
 ### Melden einer Betrugswarnung per Telefon
 
@@ -376,4 +379,4 @@ Methode|Beschreibung
 9. Klicken Sie auf "Speichern".
 10. Klicken Sie auf "Schließen".
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->

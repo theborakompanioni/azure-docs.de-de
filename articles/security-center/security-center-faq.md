@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/26/2016"
+   ms.date="08/26/2016"
    ms.author="terrylan"/>
 
 # Azure Security Center – Häufig gestellte Fragen
@@ -31,7 +31,11 @@ Azure Security Center wird mit Ihrem Microsoft Azure-Abonnement aktiviert und ü
 ## Abrechnung
 
 ### Wie funktioniert die Abrechnung für Azure Security Center?
-Informationen hierzu finden Sie unter [Security Center – Preise](https://azure.microsoft.com/pricing/details/security-center/).
+Security Center wird in zwei Tarifen angeboten: Free und Standard.
+
+Mit dem Free-Tarif können Sie Sicherheitsrichtlinien festlegen und Sicherheitshinweise, Incidents und Empfehlungen empfangen, die Ihnen beim Konfigurieren der erforderlichen Steuerelemente helfen. Mit dem Free-Tarif können Sie zudem den Sicherheitsstatus Ihrer Azure-Ressourcen und der in Ihrem Azure-Abonnement integrierten Partnerlösungen überwachen.
+
+Der Standard-Tarif bietet die Funktionen des Free-Tarifs und zusätzlich erweiterte Erkennungsfunktionen: Informationen zu Bedrohungen, Verhaltensanalysen, Absturzanalysen und Anomalieerkennung. Eine kostenlose 90-Tage-Testversion des Standard-Tarifs ist verfügbar. Wenn Sie ein Upgrade durchführen möchten, wählen Sie in der [Sicherheitsrichtlinie](security-center-policies.md#setting-security-policies-for-subscriptions) die Tarifoption aus. Weitere Informationen finden Sie auf der [Preisseite](https://azure.microsoft.com/pricing/details/security-center/).
 
 ## Datensammlung
 
@@ -39,17 +43,17 @@ Security Center sammelt Daten von Ihren virtuellen Computern, um den Sicherheits
 
 ### Wie deaktiviere ich Datensammlung?
 
-Die Option **Datensammlung** kann für ein Abonnement jederzeit in der Sicherheitsrichtlinie deaktiviert werden. ([Melden Sie sich beim Azure-Portal an](https://portal.azure.com), und wählen Sie nacheinander **Durchsuchen**, **Security Center** und **Sicherheitsrichtlinie** aus.) Wenn Sie ein Abonnement auswählen, wird ein neues Blatt geöffnet, auf dem Sie die Option **Datensammlung** deaktivieren können. Wählen Sie im oberen Menüband die Option **Agents löschen** aus, um die Agents von vorhandenen virtuellen Computern zu entfernen.
+Die **Datensammlung** kann für ein Abonnement jederzeit in der Sicherheitsrichtlinie deaktiviert werden. ([Melden Sie sich beim Azure-Portal an](https://portal.azure.com), und wählen Sie nacheinander **Durchsuchen**, **Security Center** und **Richtlinie** aus.) Wenn Sie ein Abonnement auswählen, wird ein neues Blatt geöffnet, auf dem Sie die Option **Datensammlung** deaktivieren können. Wählen Sie im oberen Menüband die Option **Agents löschen** aus, um die Agents von vorhandenen virtuellen Computern zu entfernen.
 
 > [AZURE.NOTE] Sicherheitsrichtlinien können auf der Ebene des Azure-Abonnements und der Ressourcengruppe festgelegt werden. Zum Deaktivieren der Datensammlung muss allerdings ein Abonnement ausgewählt werden.
 
 ### Wie aktiviere ich die Datensammlung?
-Sie können Datensammlung für Ihre Azure-Abonnements in der Sicherheitsrichtlinie aktivieren. Um die Datensammlung zu aktivieren, [melden Sie sich beim Azure-Portal an](https://portal.azure.com), und wählen Sie nacheinander **Durchsuchen**, **Security Center** und **Richtlinie** aus. Legen Sie **Datensammlung** auf **Ein** fest, und konfigurieren Sie die Speicherkonten, in denen Sie die gesammelten Daten anzeigen möchten (siehe die Frage [Wo werden meine Daten gespeichert?](#where-is-my-data-stored)). Wenn **Datensammlung** aktiviert ist, werden automatisch Sicherheitskonfigurations- und Ereignisinformationen von allen virtuellen Computern gesammelt, die im Abonnement unterstützt werden.
+Sie können Datensammlung für Ihre Azure-Abonnements in der Sicherheitsrichtlinie aktivieren. Um die Datensammlung zu aktivieren, [melden Sie sich beim Azure-Portal an](https://portal.azure.com), und wählen Sie nacheinander **Durchsuchen**, **Security Center** und **Richtlinie** aus. Legen Sie **Datensammlung** auf **Ein** fest, und konfigurieren Sie die Speicherkonten, in denen Sie die gesammelten Daten anzeigen möchten (siehe die Frage [Wo werden meine Daten gespeichert?](#where-is-my-data-stored)). Wenn **Datensammlung** aktiviert ist, werden automatisch Sicherheitskonfigurations- und Ereignisinformationen von allen unterstützten virtuellen Computern im Abonnement gesammelt.
 
-> [AZURE.NOTE] Sicherheitsrichtlinien können auf der Ebene des Azure-Abonnements und der Ressourcengruppe festgelegt werden, die Konfiguration von Datensammlung erfolgt jedoch nur auf Abonnementebene.
+> [AZURE.NOTE] Sicherheitsrichtlinien können auf der Ebene des Azure-Abonnements und der Ressourcengruppe festgelegt werden, die Konfiguration der Datensammlung erfolgt jedoch nur auf Abonnementebene.
 
 ### Was passiert, wenn die Datensammlung aktiviert wird?
-Datensammlung wird über den Azure-Überwachungs-Agent und die Azure-Erweiterung für Sicherheitsüberwachung aktiviert. Die Azure-Erweiterung für die Sicherheitsüberwachung sucht nach verschiedenen sicherheitsrelevanten Konfigurationen und sendet diese in [ETW-Ablaufverfolgungen](https://msdn.microsoft.com/library/windows/desktop/bb968803.aspx) (Event Tracing for Windows, Ereignisablaufverfolgung für Windows). Außerdem erstellt das Betriebssystem Einträge im Ereignisprotokoll. Der Azure-Überwachungs-Agent liest Ereignisprotokolleinträge und ETW-Ablaufverfolgungen und kopiert diese zur Analyse in Ihr Speicherkonto. Dies ist das Speicherkonto, das Sie in der Sicherheitsrichtlinie konfiguriert haben. Weitere Informationen über das Speicherkonto finden Sie in der Farge [Wo werden meine Daten gespeichert?](#where-is-my-data-stored)
+Datensammlung wird über den Azure-Überwachungs-Agent und die Azure-Erweiterung für Sicherheitsüberwachung aktiviert. Die Azure-Erweiterung für die Sicherheitsüberwachung sucht nach verschiedenen sicherheitsrelevanten Konfigurationen und sendet diese in [Ereignisablaufverfolgungen für Windows](https://msdn.microsoft.com/library/windows/desktop/bb968803.aspx) (ETW, Event Tracing for Windows). Außerdem erstellt das Betriebssystem Einträge im Ereignisprotokoll. Der Azure-Überwachungs-Agent liest Ereignisprotokolleinträge und ETW-Ablaufverfolgungen und kopiert diese zur Analyse in Ihr Speicherkonto. Dies ist das Speicherkonto, das Sie in der Sicherheitsrichtlinie konfiguriert haben. Weitere Informationen über das Speicherkonto finden Sie in der Farge [Wo werden meine Daten gespeichert?](#where-is-my-data-stored)
 
 ### Wirkt sich der Überwachungs-Agent oder die Erweiterung für Sicherheitsüberwachung auf die Leistung meiner Server aus?
 Der Agent und die Erweiterung beanspruchen eine äußerst geringe Menge von Systemressourcen und sollten nur eine geringe Auswirkung auf die Leistung haben.
@@ -57,7 +61,7 @@ Der Agent und die Erweiterung beanspruchen eine äußerst geringe Menge von Syst
 ### Wo werden meine Daten gespeichert?
 Wählen Sie für jede Region, in der Sie virtuelle Computer ausführen, ein Speicherkonto, in dem Daten dieser virtuellen Computer gespeichert werden. Dies macht es einfach für Sie, Daten aus Datenschutz- und Datenhoheitszwecken im selben geografischen Gebiet zu speichern. Das Speicherkonto für ein Abonnement wählen Sie in der Sicherheitsrichtlinie aus. ([Melden Sie sich beim Azure-Portal an](https://portal.azure.com), und wählen Sie nacheinander **Durchsuchen**, **Security Center** und **Richtlinie** aus.) Wenn Sie auf ein Abonnement klicken, wird ein neues Blatt geöffnet. Klicken Sie auf **Speicherkonten wählen**, um eine Region auszuwählen.
 
-> [AZURE.NOTE] Sicherheitsrichtlinien können auf der Ebene von Azure-Abonnement und Ressourcengruppe festgelegt werden. Die Auswahl einer Region für Ihr Speicherkonten erfolgt jedoch nur auf Abonnementebene.
+> [AZURE.NOTE] Sicherheitsrichtlinien können auf der Ebene des Azure-Abonnements und der Ressourcengruppe festgelegt werden. Die Auswahl einer Region für Ihr Speicherkonto erfolgt jedoch nur auf Abonnementebene.
 
 Weitere Informationen zu Azure-Speicher und zu Speicherkonten finden Sie unter [Speicherdokumentation](https://azure.microsoft.com/documentation/services/storage/) und [Informationen zu Azure-Speicherkonten](../storage/storage-create-storage-account.md).
 
@@ -71,7 +75,7 @@ Beispielsweise haben Ressourcen, die für Entwicklungs- oder Testzwecke verwende
 > [AZURE.NOTE] Bei einem Konflikt zwischen der Richtlinie auf Abonnementebene und der Richtlinie auf Ressourcengruppenebene hat die Richtlinie auf Ressourcengruppenebene Vorrang.
 
 ### Wie kann ich eine Sicherheitsrichtlinie ändern?
-Sicherheitsrichtlinien können für jedes Abonnement oder jede Ressourcengruppe konfiguriert werden. Um eine Sicherheitsrichtlinie auf Abonnementebene oder Ressourcengruppenebene zu ändern, müssen Sie der Besitzer des Abonnements oder ein Mitwirkender sein.
+Sicherheitsrichtlinien können für jedes Abonnement oder jede Ressourcengruppe konfiguriert werden. Um eine Sicherheitsrichtlinie auf Abonnementebene oder Ressourcengruppenebene zu ändern, müssen Sie der Besitzer oder ein Mitwirkender des Abonnements sein.
 
 Weitere Informationen dazu, wie eine Sicherheitsrichtlinie konfiguriert wird, finden Sie unter [Festlegen von Sicherheitsrichtlinien in Azure Security Center](security-center-policies.md).
 
@@ -105,14 +109,27 @@ Das Security Center ist ein Azure-Dienst, der die Azure-Umgebung des Kunden stä
 ### Wie werden Berechtigungen in Azure Security Center behandelt?
 Azure Security Center unterstützt rollenbasierten Zugriff. Weitere Informationen zur rollenbasierten Zugriffssteuerung (RBAC) in Azure finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure Active Directory](../active-directory/role-based-access-control-configure.md).
 
-Wenn ein Benutzer Azure Security Center öffnet, werden nur Empfehlungen und Warnungen angezeigt, die sich auf die Ressourcen beziehen, auf die der Benutzer Zugriff hat. Dies bedeutet, dass ein Benutzer nur Elemente sieht, die sich auf Ressourcen beziehen, für die ihm für das Abonnement oder die Ressourcengruppe, zu der eine Ressource gehört, die Rolle „Besitzer“, „Mitwirkender“ oder „Leser“ zugeordnet ist.
+Wenn ein Benutzer Security Center öffnet, werden nur Empfehlungen und Warnungen angezeigt, die sich auf die Ressourcen beziehen, auf die der Benutzer Zugriff hat. Dies bedeutet, dass ein Benutzer nur Elemente sieht, die sich auf Ressourcen beziehen, für die ihm für das Abonnement oder die Ressourcengruppe, zu der eine Ressource gehört, die Rolle „Besitzer“, „Mitwirkender“ oder „Leser“ zugeordnet ist.
 
-Damit Sie eine Sicherheitsrichtlinie bearbeiten können, müssen Sie ein Besitzer oder Mitwirkender des Abonnements sein.
+Folgendes gilt:
+
+- **Damit Sie eine Sicherheitsrichtlinie bearbeiten können**, müssen Sie ein Besitzer oder Mitwirkender des Abonnements sein.
+- **Damit Sie eine Empfehlung anwenden können**, müssen Sie ein Besitzer oder Mitwirkender des Abonnements sein.
+- **Damit Sie den Sicherheitsstatus für alle Ihre Abonnements anzeigen können**, müssen Sie ein Besitzer, Mitwirkender oder Leser (IT-Administrator, Sicherheitsteam) der Abonnements sein.
+- **Damit Sie den Sicherheitsstatus Ihrer Ressourcen anzeigen können**, müssen Sie ein Besitzer, Mitwirkender oder Leser (DevOps) der Ressourcengruppe sein.
+
+### Welche Azure-Ressourcen werden von Azure Security Center überwacht?
+Azure Security Center überwacht die folgenden Azure-Ressourcen:
+
+- Virtuelle Computer (auch Clouddienste)
+- Virtuelle Azure-Netzwerke
+- Azure SQL-Dienst
+- Partnerlösungen, die in Ihr Azure-Abonnement integriert sind, z.B. die Firewall einer Webanwendung
 
 ## Virtual Machines
 
 ### Welche Typen von virtuellen Maschinen werden unterstützt?
-Die Überwachung der Sicherheitsintegrität und entsprechende Empfehlungen sind für virtuelle Computer (virtual machines, VMs) verfügbar, die mit dem [klassischen Bereitstellungsmodell oder mit dem Resource Manager-Bereitstellungsmodell](../azure-classic-rm.md) erstellt wurden.
+Die Überwachung der Sicherheitsintegrität und entsprechende Empfehlungen sind für virtuelle Computer (VMs) verfügbar, die mit dem [klassischen Bereitstellungsmodell oder mit dem Resource Manager-Bereitstellungsmodell](../azure-classic-rm.md) erstellt wurden.
 
 Unterstützte Windows-VMs:
 
@@ -124,10 +141,22 @@ Unterstützte Linux-VMs:
 
 - Ubuntu-Versionen 12.04, 14.04, 15.10, 16.04
 - Debian-Versionen 7, 8
-- CentOS-Versionen 6.\*, 7.*
-- Red Hat Enterprise Linux-Versionen (RHEL) 6.\*, 7.*
-- SUSE Linux Enterprise Server-Versionen (SLES) 11.\*, 12.*
+- CentOS-Versionen 6.*, 7.*
+- Red Hat Enterprise Linux-Versionen (RHEL) 6.*, 7.*
+- SUSE Linux Enterprise Server-Versionen (SLES) 11.*, 12.*
 
-VMs, die in einem Clouddienst ausgeführt werden, werden ebenfalls unterstützt. Es werden nur Clouddienst-Webrollen und -Workerrollen überwacht, die in Produktionsslots ausgeführt werden. Weitere Informationen zum Clouddienst finden Sie unter [Übersicht über Cloud Services](../cloud-services/cloud-services-choose-me.md).
+VMs, die in einem Clouddienst ausgeführt werden, werden ebenfalls unterstützt. Es werden nur Clouddienst-Webrollen und -Workerrollen überwacht, die in Produktionsslots ausgeführt werden. Weitere Informationen zum Clouddienst finden Sie unter [Sollte ich mich für Clouddienste oder für eine andere Lösung entscheiden?](../cloud-services/cloud-services-choose-me.md).
 
-<!---HONumber=AcomDC_0727_2016-->
+### Warum erkennt Azure Security Center die Antischadsoftware nicht, die auf meiner Azure-VM ausgeführt wird?
+
+Azure Security Center erkennt nur Antischadsoftware, die über Azure-Erweiterungen installiert wurde. Security Center kann z.B. Antischadsoftware nicht erkennen, die auf einem Image vorinstalliert war, das Sie bereitgestellt haben, oder Antischadsoftware, die Sie auf Ihren virtuellen Computern über Ihre eigenen Prozesse installiert haben (z.B. Systeme für die Konfigurationsverwaltung).
+
+### Warum erhalte ich die Meldung „Fehlende Überprüfungsdaten“ für meinen virtuellen Computer?
+
+Es kann einige Zeit dauern (in der Regel weniger als eine Stunde), Überprüfungsdaten aufzufüllen, nachdem die Datensammlung in Azure Security Center aktiviert wurde. Überprüfungen werden für virtuelle Computer, die beendet wurden, nicht aufgefüllt.
+
+### Warum erhalte ich die Meldung „VM-Agent fehlt“?
+
+Der VM-Agent muss auf virtuellen Computern installiert sein, um die Datensammlung zu aktivieren. Der VM-Agent wird standardmäßig für virtuelle Maschinen installiert, die vom Azure Marketplace bereitgestellt werden. Informationen zum Installieren des VM-Agents auf anderen virtuellen Computern finden Sie im Blogbeitrag [VM Agent and Extensions](https://azure.microsoft.com/blog/vm-agent-and-extensions-part-2/) (VM-Agent und Erweiterungen).
+
+<!---HONumber=AcomDC_0831_2016-->

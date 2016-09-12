@@ -526,7 +526,7 @@ In diesem Schritt erstellen Sie Datasets zur Darstellung von Eingabe- und Ausgab
 		        "linkedServiceName": "AzureStorageLinkedService",
 		        "typeProperties": {
 		            "fileName": "{slice}.txt",
-		            "folderPath": "adftutorial/customactivityoutput",
+		            "folderPath": "adftutorial/customactivityoutput/",
 		            "partitionedBy": [
 		                {
 		                    "name": "slice",
@@ -615,7 +615,7 @@ In diesem Schritt erstellen Sie Datasets zur Darstellung von Eingabe- und Ausgab
 
 	- **Concurrency** ist auf **2** festgelegt, sodass zwei Slices parallel von zwei virtuellen Computern im Azure Batch-Pool verarbeitet werden.
 	- Im Abschnitt "activities" gibt es eine Aktivität vom Typ **DotNetActivity**.
-	- **AssemblyName** wird auf den Namen der DLL (**MyActivities.dll**) festgelegt.
+	- **AssemblyName** wird auf den Namen der DLL festgelegt: **MyDotnetActivity.dll**.
 	- **EntryPoint** wird auf **MyDotNetActivityNS.MyDotNetActivity** festgelegt.
 	- **PackageLinkedService** ist auf **AzureStorageLinkedService** festgelegt, das auf den Blobspeicher verweist, der die ZIP-Datei mit der benutzerdefinierten Aktivität enthält. Wenn Sie für die Eingabe- und Ausgabedateien und die ZIP-Datei mit der benutzerdefinierten Aktivität unterschiedliche Azure-Speicherkonten verwenden, wird ein weiterer verknüpfter Azure Storage-Dienst erstellt. Dieser Artikel setzt voraus, dass Sie das gleiche Azure Storage-Konto verwenden.
 	- **PackageFile** wird auf **customactivitycontainer/MyCustomActivity.zip** festgelegt. Das entspricht dem Format: containerforthezip/nameofthezip.zip.
@@ -896,4 +896,4 @@ Beispiel | Aktion der benutzerdefinierten Aktivität
 
 [image-data-factory-download-logs-from-custom-activity]: ./media/data-factory-use-custom-activities/DownloadLogsFromCustomActivity.png
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->

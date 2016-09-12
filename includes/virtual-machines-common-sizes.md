@@ -69,155 +69,174 @@ Mit * gekennzeichnete ACUs verwenden die Intel® Turbo-Technologie, um die CPU-F
 
 In den folgenden Tabellen sind die Größe und die von den einzelnen Größen bereitgestellte Kapazität aufgeführt.
 
-* Die Speicherkapazität wird unter Verwendung von 1024^3 Bytes als Maßeinheit für GB dargestellt. Dies wird manchmal als Gibibyte oder Binärdefinition (bzw. Definition zur Basis 2) bezeichnet. Denken Sie beim Vergleichen von Größen, die andere Basissysteme verwenden, jedoch daran, dass eine als Binärwert angegebene Größe möglicherweise kleiner als ein Dezimalwert zur Basis 10 erscheint (z.B. 1 GB), das Binärsystem jedoch mehr Kapazität als das Dezimalsystem bietet, da 1024^3 größer als 1000^3 ist.
+* Speicherkapazität wird in GiB-Einheiten oder 1.024^3 Bytes angezeigt. Beachten Sie beim Vergleich von in GB (1.000^3 Bytes) gemessenen Datenträgern mit in GiB (1.024^3) gemessenen Datenträgern, dass die in GiB angegebenen Kapazitätszahlen kleiner erscheinen können. Beispiel: 1.023 GiB = 1.098,4 GB.
+
+* Der Datenträgerdurchsatz wird in E/A-Vorgängen pro Sekunde (Input/Output Operations Per Second, IOPS) und MB/s gemessen, wobei MB/s = 10^6 Bytes/Sekunde beträgt.
+
+* Datenträger können mit oder ohne Cache betrieben werden. Beim Datenträgerbetrieb mit Cache ist der Hostcachemodus auf **ReadOnly** oder **ReadWrite** festgelegt. Beim Datenträgerbetrieb ohne Cache ist der Hostcachemodus auf **None** festgelegt.
+
 
 * Bei der maximalen Netzwerkbandbreite handelt es sich um die maximale aggregierte Bandbreite, die pro VM-Typ zugewiesen wurde. Die maximale Bandbreite dient als Orientierungshilfe bei der Wahl des richtigen VM-Typs, um sicherzustellen, dass ausreichend Netzwerkkapazität verfügbar ist. Bei einem Wechsel zu „niedrig“, „mittel“, „hoch“ oder „sehr hoch“ ändert sich der Durchsatz entsprechend. Die tatsächliche Netzwerkleistung hängt von zahlreichen Faktoren ab. Hierzu zählen beispielsweise die Netzwerk- und Anwendungslast und die Netzwerkeinstellungen der Anwendung.
 
 
 ## A-Serie
 
-|Größe |CPU-Kerne|Arbeitsspeicher|Netzwerkkarten (max.)|Maximale Datenträgergröße|Max. Datenträger (jeweils 1023 GB)|Max. IOPS (500 pro Datenträger)| Maximale Netzwerkbandbreite |
-|---|---|---|---|---|---|---|---|
-|Standard\_A0 |1|768 MB|1| Temporär = 20 GB |1|1 x 500| niedrig |
-|Standard\_A1 |1|1,75 GB|1|Temporär = 70 GB |2|2 x 500| mittel |
-|Standard\_A2 |2|3,5 GB|1|Temporär = 135 GB |4|4 x 500| mittel |
-|Standard\_A3 |4|7 GB|2|Temporär = 285 GB |8|8 x 500| hoch |
-|Standard\_A4 |8|14 GB|4|Temporär = 605 GB |16|16 x 500| hoch |
-|Standard\_A5 |2|14 GB|1|Temporär = 135 GB |4|4 x 500| mittel |
-|Standard\_A6 |4|28 GB|2|Temporär = 285 GB |8|8 x 500| hoch |
-|Standard\_A7 |8|56 GB|4|Temporär = 605 GB |16|16 x 500| hoch |
+| Größe | CPU-Kerne | Arbeitsspeicher: GiB | Größe des lokalen Datenträgers: GiB | Max. Anzahl Datenträger | Max. Datenträger-Datendurchsatz: IOPS | Maximale Anzahl NICs/Netzwerkbandbreite |
+|-------------|-----------|--------------|-----------------------|----------------|--------------------|-----------------------|
+| Standard\_A0 | 1 | 0,768 | 20 | 1 | 1 x 500 | 1/niedrig |
+| Standard\_A1 | 1 | 1,75 | 70 | 2 | 2 x 500 | 1/moderat |
+| Standard\_A2 | 2 | 3,5 GB | 135 | 4 | 4 x 500 | 1/moderat |
+| Standard\_A3 | 4 | 7 | 285 | 8 | 8 x 500 | 2/hoch |
+| Standard\_A4 | 8 | 14 | 605 | 16 | 16 x 500 | 4/hoch |
+| Standard\_A5 | 2 | 14 | 135 | 4 | 4 x 500 | 1/moderat |
+| Standard\_A6 | 4 | 28 | 285 | 8 | 8 x 500 | 2/hoch |
+| Standard\_A7 | 8 | 56 | 605 | 16 | 16 x 500 | 4/hoch |
 
-
-
+<br>
 ## A-Serie: Rechenintensive Instanzen
 
 Informationen und Überlegungen zum Verwenden dieser Größen finden Sie unter [Informationen zu den rechenintensiven A8-, A9-, A10- und A11-Instanzen](../articles/virtual-machines/virtual-machines-windows-a8-a9-a10-a11-specs.md).
 
-|Größe |CPU-Kerne|Arbeitsspeicher|Netzwerkkarten (max.)|Maximale Datenträgergröße|Max. Datenträger (jeweils 1023 GB)|Max. IOPS (500 pro Datenträger)| Maximale Netzwerkbandbreite |
-|---|---|---|---|---|---|---|---|
-|Standard\_A8|8|56 GB|2| Temporär = 382 GB |16|16 x 500| hoch |
-|Standard\_A9|16|112 GB|4| Temporär = 382 GB |16|16 x 500| sehr hoch |
-|Standard\_A10|8|56 GB|2| Temporär = 382 GB |16|16 x 500| hoch |
-|Standard\_A11|16|112 GB|4| Temporär = 382 GB |16|16 x 500| sehr hoch |
 
+| Größe | CPU-Kerne | Arbeitsspeicher: GiB | Größe des lokalen Datenträgers: GiB | Max. Anzahl Datenträger | Max. Datenträger-Datendurchsatz: IOPS | Maximale Anzahl NICs/Netzwerkbandbreite |
+|--------------|-----------|--------------|-----------------------|----------------|--------------------|-----------------------|
+| Standard\_A8 | 8 | 56 | 382 | 16 | 16 x 500 | 2/hoch |
+| Standard\_A9 | 16 | 112 | 382 | 16 | 16 x 500 | 4/sehr hoch |
+| Standard\_A10 | 8 | 56 | 382 | 16 | 16 x 500 | 2/hoch |
+| Standard\_A11 | 16 | 112 | 382 | 16 | 16 x 500 | 4/sehr hoch |
+
+<br>
 ## D-Serie
 
-|Größe |CPU-Kerne|Arbeitsspeicher|Netzwerkkarten (max.)|Maximale Datenträgergröße|Max. Datenträger (jeweils 1023 GB)|Max. IOPS (500 pro Datenträger)| Maximale Netzwerkbandbreite |
-|---|---|---|---|---|---|---|---|
-|Standard\_D1 |1|3,5 GB|1|Temporär (SSD) =50 GB |2|2 x 500| mittel |
-|Standard\_D2 |2|7 GB|2|Temporär (SSD) = 100 GB |4|4 x 500| hoch |
-|Standard\_D3 |4|14 GB|4|Temporär (SSD) = 200 GB |8|8 x 500| hoch |
-|Standard\_D4 |8|28 GB|8|Temporär (SSD) = 400 GB |16|16 x 500| hoch |
-|Standard\_D11 |2|14 GB|2|Temporär (SSD) = 100 GB |4|4 x 500| hoch |
-|Standard\_D12 |4|28 GB|4|Temporär (SSD) = 200 GB |8|8 x 500| hoch |
-|Standard\_D13 |8|56 GB|8|Temporär (SSD) = 400 GB |16|16 x 500| hoch |
-|Standard\_D14 |16|112 GB|8|Temporär (SSD) = 800 GB |32|32 x 500| sehr hoch |
 
+| Größe | CPU-Kerne | Arbeitsspeicher: GiB | Größe des lokalen Datenträgers: GiB | Max. Anzahl Datenträger | Max. Datenträger-Datendurchsatz: IOPS | Maximale Anzahl NICs/Netzwerkbandbreite |
+|--------------|-----------|--------------|----------------------|----------------|--------------------|-----------------------|
+| Standard\_D1 | 1 | 3,5 | 50 | 2 | 2 x 500 | 1/moderat |
+| Standard\_D2 | 2 | 7 | 100 | 4 | 4 x 500 | 2/hoch |
+| Standard\_D3 | 4 | 14 | 200 | 8 | 8 x 500 | 4/hoch |
+| Standard\_D4 | 8 | 28 | 400 | 16 | 16 x 500 | 8/hoch |
+| Standard\_D11 | 2 | 14 | 100 | 4 | 4 x 500 | 2/hoch |
+| Standard\_D12 | 4 | 28 | 200 | 8 | 8 x 500 | 4/hoch |
+| Standard\_D13 | 8 | 56 | 400 | 16 | 16 x 500 | 8/hoch |
+| Standard\_D14 | 16 | 112 | 800 | 32 | 32 x 500 | 8/sehr hoch |
 
+<br>
 ## Dv2-Serie
 
-|Größe |CPU-Kerne|Arbeitsspeicher|Netzwerkkarten (max.)|Maximale Datenträgergröße|Max. Datenträger (jeweils 1023 GB)|Max. IOPS (500 pro Datenträger)| Maximale Netzwerkbandbreite |
-|---|---|---|---|---|---|---|---|
-|Standard\_D1\_v2 |1|3,5 GB|1|Temporär (SSD) =50 GB |2|2 x 500| mittel |
-|Standard\_D2\_v2 |2|7 GB|2|Temporär (SSD) = 100 GB |4|4 x 500| hoch |
-|Standard\_D3\_v2 |4|14 GB|4|Temporär (SSD) = 200 GB |8|8 x 500| hoch |
-|Standard\_D4\_v2 |8|28 GB|8|Temporär (SSD) = 400 GB |16|16 x 500| hoch |
-|Standard\_D5\_v2 |16|56 GB|8|Temporär (SSD) = 800 GB |32|32 x 500| äußerst hoch |
-|Standard\_D11\_v2 |2|14 GB|2|Temporär (SSD) = 100 GB |4|4 x 500| hoch |
-|Standard\_D12\_v2 |4|28 GB|4|Temporär (SSD) = 200 GB |8|8 x 500| hoch |
-|Standard\_D13\_v2 |8|56 GB|8|Temporär (SSD) = 400 GB |16|16 x 500| hoch |
-|Standard\_D14\_v2 |16|112 GB|8|Temporär (SSD) = 800 GB |32|32 x 500| äußerst hoch |
-|Standard\_D15\_v2 |20|140 GB|8|Temporär (SSD) = 1 TB |40|40 x 500| äußerst hoch |
+| Größe | CPU-Kerne | Arbeitsspeicher: GiB | Größe des lokalen Datenträgers: GiB | Max. Anzahl Datenträger | Max. Datenträger-Datendurchsatz: IOPS | Maximale Anzahl NICs/Netzwerkbandbreite |
+|-----------------|-----------|--------------|----------------------|----------------|--------------------|-----------------------|
+| Standard\_D1\_v2 | 1 | 3,5 | 50 | 2 | 2 x 500 | 1/moderat |
+| Standard\_D2\_v2 | 2 | 7 | 100 | 4 | 4 x 500 | 2/hoch |
+| Standard\_D3\_v2 | 4 | 14 | 200 | 8 | 8 x 500 | 4/hoch |
+| Standard\_D4\_v2 | 8 | 28 | 400 | 16 | 16 x 500 | 8/hoch |
+| Standard\_D5\_v2 | 16 | 56 | 800 | 32 | 32 x 500 | 8/äußerst hoch |
+| Standard\_D11\_v2 | 2 | 14 | 100 | 4 | 4 x 500 | 2/hoch |
+| Standard\_D12\_v2 | 4 | 28 | 200 | 8 | 8 x 500 | 4/hoch |
+| Standard\_D13\_v2 | 8 | 56 | 400 | 16 | 16 x 500 | 8/hoch |
+| Standard\_D14\_v2 | 16 | 112 | 800 | 32 | 32 x 500 | 8/äußerst hoch |
+| Standard\_D15\_v2 | 20 | 140 | 1\.000 | 40 | 40 x 500 | 8/äußerst hoch |
 
-
+<br>
 ## DS-Serie*
 
-|Größe |CPU-Kerne|Arbeitsspeicher|Netzwerkkarten (max.)|Maximale Datenträgergröße|Max. Datenträger (jeweils 1023 GB)|Cachegröße (GB)|Max. Datenträger-IOPS &amp; Bandbreite| Maximale Netzwerkbandbreite |
-|---|---|---|---|---|---|---|---|---|
-|Standard\_DS1 |1|3,5|1|Lokales SSD-Laufwerk = 7 GB |2|43| 3\.200, 32 MB pro Sekunde | mittel |
-|Standard\_DS2 |2|7|2|Lokales SSD-Laufwerk = 14 GB |4|86| 6\.400, 64 MB pro Sekunde | hoch |
-|Standard\_DS3 |4|14|4|Lokales SSD-Laufwerk = 28 GB |8|172| 12\.800, 128 MB pro Sekunde | hoch |
-|Standard\_DS4 |8|28|8|Lokales SSD-Laufwerk = 56 GB |16|344| 25\.600, 256 MB pro Sekunde | hoch |
-|Standard\_DS11 |2|14|2|Lokales SSD-Laufwerk = 28 GB |4|72| 6\.400, 64 MB pro Sekunde | hoch |
-|Standard\_DS12 |4|28|4|Lokales SSD-Laufwerk = 56 GB |8|144| 12\.800, 128 MB pro Sekunde | hoch |
-|Standard\_DS13 |8|56|8|Lokales SSD-Laufwerk = 112 GB |16|288| 25\.600, 256 MB pro Sekunde | hoch |
-|Standard\_DS14 |16|112|8|Lokales SSD-Laufwerk = 224 GB |32|576| 51\.200, 512 MB pro Sekunde | sehr hoch |
 
-*Die bei einer DS-Serie möglichen Höchstwerte für E/A-Vorgänge pro Sekunde (IOPS) und Durchsatz (Bandbreite) werden durch die Größe des Datenträgers beeinflusst. Nähere Informationen finden Sie unter [Premium-Speicher: Hochleistungsspeicher für Arbeitslasten auf virtuellen Azure-Computern](../articles/storage/storage-premium-storage.md).
+| Größe | CPU-Kerne | Arbeitsspeicher: GiB | Größe des lokalen Datenträgers: GiB | Max. Anzahl Datenträger | Maximaler Datenträgerdurchsatz mit Cache: IOPS / MB/s (Cachegröße in GiB) | Maximaler Datenträgerdurchsatz ohne Cache: IOPS / MB/s | Maximale Anzahl NICs/Netzwerkbandbreite |
+|---------------|-----------|--------------|--------------------------------|----------------|--------------------------------------------|----------------------------------------------|-----------------------|
+| Standard\_DS1 | 1 | 3,5 | 7 | 2 | 4\.000/32 (42) | 3\.200/32 | 1/moderat |
+| Standard\_DS2 | 2 | 7 | 14 | 4 | 8\.000/64 (86) | 6\.400/64 | 2/hoch |
+| Standard\_DS3 | 4 | 14 | 28 | 8 | 16\.000/128 (172) | 12\.800/128 | 4/hoch |
+| Standard\_DS4 | 8 | 28 | 56 | 16 | 32\.000/256 (344) | 25\.600/256 | 8/hoch |
+| Standard\_DS11 | 2 | 14 | 28 | 4 | 8\.000/64 (72) | 6\.400/64 | 2/hoch |
+| Standard\_DS12 | 4 | 28 | 56 | 8 | 16\.000/128 (144) | 12\.800/128 | 4/hoch |
+| Standard\_DS13 | 8 | 56 | 112 | 16 | 32\.000/256 (288) | 25\.600/256 | 8/hoch |
+| Standard\_DS14 | 16 | 112 | 224 | 32 | 64\.000/512 (576) | 51\.200/512 | 8/sehr hoch |
+
+MB/s = 10^6 Bytes pro Sekunde.
+
+* Der mit einer VM der DS-Serie maximal mögliche Datenträgerdurchsatz (IOPS oder MB/s) kann durch Anzahl, Größe und Striping der angefügten Datenträger beschränkt werden. Nähere Informationen finden Sie unter [Premium-Speicher: Hochleistungsspeicher für Arbeitslasten auf virtuellen Azure-Computern](../articles/storage/storage-premium-storage.md).
 
 
+
+<br>
 ## DSv2-Serie*
 
-|Größe |CPU-Kerne|Arbeitsspeicher|Netzwerkkarten (max.)|Maximale Datenträgergröße|Max. Datenträger (jeweils 1023 GB)|Cachegröße (GB)|Max. Datenträger-IOPS &amp; Bandbreite| Maximale Netzwerkbandbreite |
-|---|---|---|---|---|---|---|---|---|
-|Standard\_DS1\_v2 |1|3,5|1|Lokales SSD-Laufwerk = 7 GB |2|43| 3\.200 48 MB pro Sekunde | mittel |
-|Standard\_DS2\_v2 |2|7|2|Lokales SSD-Laufwerk = 14 GB |4|86| 6\.400 96 MB pro Sekunde | hoch |
-|Standard\_DS3\_v2 |4|14|4|Lokales SSD-Laufwerk = 28 GB |8|172| 12\.800 192 MB pro Sekunde | hoch |
-|Standard\_DS4\_v2 |8|28|8|Lokales SSD-Laufwerk = 56 GB |16|344| 25\.600 384 MB pro Sekunde | hoch |
-|Standard\_DS5\_v2 |16|56|8|Lokales SSD-Laufwerk = 112 GB |32|688| 51\.200 768 MB pro Sekunde | äußerst hoch |
-|Standard\_DS11\_v2 |2|14|2|Lokales SSD-Laufwerk = 28 GB |4|72| 6\.400 96 MB pro Sekunde | hoch |
-|Standard\_DS12\_v2 |4|28|4|Lokales SSD-Laufwerk = 56 GB |8|144| 12\.800 192 MB pro Sekunde | hoch |
-|Standard\_DS13\_v2 |8|56|8|Lokales SSD-Laufwerk = 112 GB |16|288| 25\.600 384 MB pro Sekunde | hoch |
-|Standard\_DS14\_v2 |16|112|8|Lokales SSD-Laufwerk = 224 GB |32|576| 51\.200 768 MB pro Sekunde | äußerst hoch |
-|Standard\_DS15\_v2 |20|140 GB|8|Lokales SSD-Laufwerk = 280 GB |40| 720|64\.000 960 MB pro Sekunde | äußerst hoch |
+
+| Größe | CPU-Kerne | Arbeitsspeicher: GiB | Größe des lokalen SSD-Datenträgers: GiB | Max. Anzahl Datenträger | Maximaler Datenträgerdurchsatz mit Cache: IOPS / MB/s (Cachegröße in GiB) | Maximaler Datenträgerdurchsatz ohne Cache: IOPS / MB/s | Maximale Anzahl NICs/Netzwerkbandbreite |
+|------------------|-----------|--------------|---------------------------|----------------|-------------------------------------------------|-------------------------------------------------|------------------------------|
+| Standard\_DS1\_v2 | 1 | 3,5 | 7 | 2 | 4\.000/32 (43) | 3\.200/48 | 4 moderat |
+| Standard\_DS2\_v2 | 2 | 7 | 14 | 4 | 8\.000/64 (86) | 6\.400/96 | 2 hoch |
+| Standard\_DS3\_v2 | 4 | 14 | 28 | 8 | 16\.000/128 (172) | 12\.800/192 | 4 hoch |
+| Standard\_DS4\_v2 | 8 | 28 | 56 | 16 | 32\.000/256 (344) | 25\.600/384 | 8 hoch |
+| Standard\_DS5\_v2 | 16 | 56 | 112 | 32 | 64\.000/512 (688) | 51\.200/768 | 8 äußerst hoch |
+| Standard\_DS11\_v2 | 2 | 14 | 28 | 4 | 8\.000/64 (72) | 6\.400/96 | 2 hoch |
+| Standard\_DS12\_v2 | 4 | 28 | 56 | 8 | 16\.000/128 (144) | 12\.800/192 | 4 hoch |
+| Standard\_DS13\_v2 | 8 | 56 | 112 | 16 | 32\.000/256 (288) | 25\.600/384 | 8 hoch |
+| Standard\_DS14\_v2 | 16 | 112 | 224 | 32 | 64\.000/512 (576) | 51\.200/768 | 8 äußerst hoch |
+| Standard\_DS15\_v2 | 20 | 140 GB | 280 | 40 | 80\.000/640 (720) | 64\.000/960 | 8 äußerst hoch |
+
+MB/s = 10^6 Bytes pro Sekunde.
+
+* Der mit einer VM der DSv2-Serie maximal mögliche Datenträgerdurchsatz (IOPS oder MB/s) kann durch Anzahl, Größe und Striping der angefügten Datenträger beschränkt werden. Nähere Informationen finden Sie unter [Premium-Speicher: Hochleistungsspeicher für Arbeitslasten auf virtuellen Azure-Computern](../articles/storage/storage-premium-storage.md).
 
 
-*Die bei einer DS-Serie möglichen Höchstwerte für E/A-Vorgänge pro Sekunde (IOPS) und Durchsatz (Bandbreite) werden durch die Größe des Datenträgers beeinflusst. Nähere Informationen finden Sie unter [Premium-Speicher: Hochleistungsspeicher für Arbeitslasten auf virtuellen Azure-Computern](../articles/storage/storage-premium-storage.md).
-
-
+<br>
 ## F-Serie
 
 
-| Größe | CPU-Kerne | Arbeitsspeicher | Netzwerkkarten (max.) | Datenträgergröße | Max. Datenträger (jeweils 1023 GB) | Max. IOPS (500 pro Datenträger) | Maximale Netzwerkbandbreite |
-|--------------|-----------|--------|------------|-------------------------|--------------------------|--------------------------|-------------|
-| Standard\_F1 | 1 | 2 GB | 1 | Temporär (SSD) = 16 GB | 2 | 2 x 500 | mittel |
-| Standard\_F2 | 2 | 4 GB | 2 | Temporär (SSD) = 32 GB | 4 | 4 x 500 | hoch |
-| Standard\_F4 | 4 | 8 GB | 4 | Temporär (SSD) = 64 GB | 8 | 8 x 500 | hoch |
-| Standard\_F8 | 8 | 16 GB | 8 | Temporär (SSD) = 128 GB | 16 | 16 x 500 | hoch |
-| Standard\_F16 | 16 | 32 GB | 8 | Temporär (SSD) = 256 GB | 32 | 32 x 500 | äußerst hoch |
+| Größe | CPU-Kerne | Arbeitsspeicher: GiB | Größe des lokalen SSD-Datenträgers: GiB | Max. Anzahl Datenträger | Max. Datenträger-Datendurchsatz: IOPS | Maximale Anzahl NICs/Netzwerkbandbreite |
+|--------------|-----------|--------------|----------------------|----------------|--------------------|-----------------------|
+| Standard\_F1 | 1 | 2 | 16 | 2 | 2 x 500 | 1/moderat |
+| Standard\_F2 | 2 | 4 | 32 | 4 | 4 x 500 | 2/hoch |
+| Standard\_F4 | 4 | 8 | 64 | 8 | 8 x 500 | 4/hoch |
+| Standard\_F8 | 8 | 16 | 128 | 16 | 16 x 500 | 8/hoch |
+| Standard\_F16 | 16 | 32 | 256 | 32 | 32 x 500 | 8/äußerst hoch |
 
-
-
+<br>
 ## Fs-Serie*
 
-| Größe | CPU-Kerne | Arbeitsspeicher | Netzwerkkarten (max.) | Datenträgergröße | Max. Datenträger (jeweils 1023 GB) | Cachegröße (GB) | Max. Datenträger-IOPS & Bandbreite | Maximale Netzwerkbandbreite |
-|---------------|-----------|--------|------------|------------------------|-----------|-----------|----------------------------|------------|
-| Standard\_F1s | 1 | 2 | 1 | Lokales SSD-Laufwerk = 4 GB | 2 | 12 | 3\.200 48 MB pro Sekunde | mittel |
-| Standard\_F2s | 2 | 4 | 2 | Lokales SSD-Laufwerk = 8 GB | 4 | 24 | 6\.400 96 MB pro Sekunde | hoch |
-| Standard\_F4s | 4 | 8 | 4 | Lokales SSD-Laufwerk = 16 GB | 8 | 48 | 12\.800 192 MB pro Sekunde | hoch |
-| Standard\_F8s | 8 | 16 | 8 | Lokales SSD-Laufwerk = 32 GB | 16 | 96 | 25\.600 384 MB pro Sekunde | hoch |
-| Standard\_F16s | 16 | 32 | 8 | Lokales SSD-Laufwerk = 64 GB | 32 | 192 | 51\.200 768 MB pro Sekunde | äußerst hoch |
+| Größe | CPU-Kerne | Arbeitsspeicher: GiB | Größe des lokalen SSD-Datenträgers: GiB | Max. Anzahl Datenträger | Maximaler Datenträgerdurchsatz mit Cache: IOPS / MB/s (Cachegröße in GiB) | Maximaler Datenträgerdurchsatz ohne Cache: IOPS / MB/s | Maximale Anzahl NICs/Netzwerkbandbreite |
+|---------------|-------|-----|----------|--------|------------------------------|---------------------------------|---------------|
+| Standard\_F1s | 1 | 2 | 4 | 2 | 4\.000/32 (12) | 3\.200/48 | 1/moderat |
+| Standard\_F2s | 2 | 4 | 8 | 4 | 8\.000/64 (24) | 6\.400/96 | 2/hoch |
+| Standard\_F4s | 4 | 8 | 16 | 8 | 16\.000/128 (48) | 12\.800/192 | 4/hoch |
+| Standard\_F8s | 8 | 16 | 32 | 16 | 32\.000/256 (96) | 25\.600/384 | 8/hoch |
+| Standard\_F16s | 16 | 32 | 64 | 32 | 64\.000/512 (192) | 51\.200/768 | 8/äußerst hoch |
+
+MB/s = 10^6 Bytes pro Sekunde.
+
+* Der mit einer VM der Fs-Serie maximal mögliche Datenträgerdurchsatz (IOPS oder MB/s) kann durch Anzahl, Größe und Striping der angefügten Datenträger beschränkt werden. Nähere Informationen finden Sie unter [Premium-Speicher: Hochleistungsspeicher für Arbeitslasten auf virtuellen Azure-Computern](../articles/storage/storage-premium-storage.md).
 
 
-
-*Die bei einer Fs-Serie möglichen Höchstwerte für E/A-Vorgänge pro Sekunde (IOPS) und Durchsatz (Bandbreite) werden durch die Größe des Datenträgers beeinflusst. Nähere Informationen finden Sie unter [Premium-Speicher: Hochleistungsspeicher für Arbeitslasten auf virtuellen Azure-Computern](../articles/storage/storage-premium-storage.md).
-
-
-
-
-
+<br>
 ## G-Serie
 
-|Größe |CPU-Kerne|Arbeitsspeicher|Netzwerkkarten (max.)|Maximale Datenträgergröße|Max. Datenträger (jeweils 1023 GB)|Max. IOPS (500 pro Datenträger)| Maximale Netzwerkbandbreite |
-|---|---|---|---|---|---|---|---|
-|Standard\_G1 |2|28 GB|1|Lokales SSD-Laufwerk = 384 GB |4|4 x 500| hoch |
-|Standard\_G2 |4|56 GB|2|Lokales SSD-Laufwerk = 768 GB |8|8 x 500| hoch |
-|Standard\_G3 |8|112 GB|4|Lokales SSD-Laufwerk = 1.536 GB |16|16 x 500| sehr hoch | 
-|Standard\_G4 |16|224 GB|8|Lokales SSD-Laufwerk = 3.072 GB |32|32 x 500| äußerst hoch |
-|Standard\_G5 |32|448 GB|8|Lokales SSD-Laufwerk = 6.144 GB |64| 64 x 500 | äußerst hoch |
+| Größe | CPU-Kerne | Arbeitsspeicher: GiB | Größe des lokalen SSD-Datenträgers: GiB | Max. Anzahl Datenträger | Max. Datenträger-Datendurchsatz: IOPS | Maximale Anzahl NICs/Netzwerkbandbreite |
+|-------------|-----------|--------------|----------------------|----------------|--------------------|-----------------------|
+| Standard\_G1 | 2 | 28 | 384 | 4 | 4 x 500 | 1/hoch |
+| Standard\_G2 | 4 | 56 | 768 | 8 | 8 x 500 | 2/hoch |
+| Standard\_G3 | 8 | 112 | 1\.536 | 16 | 16 x 500 | 4/sehr hoch |
+| Standard\_G4 | 16 | 224 | 3\.072 | 32 | 32 x 500 | 8/äußerst hoch |
+| Standard\_G5 | 32 | 448 | 6\.144 | 64 | 64 x 500 | 8/äußerst hoch |
 
 
 
+<br>
+## GS-Serie*
 
-## GS-Serie
 
-|Größe |CPU-Kerne|Arbeitsspeicher|Netzwerkkarten (max.)|Maximale Datenträgergröße|Max. Datenträger (jeweils 1023 GB)|Cachegröße (GB)|Max. Datenträger-IOPS &amp; Bandbreite| Maximale Netzwerkbandbreite |
-|---|---|---|---|---|---|---|---|---|
-|Standard\_GS1|2|28|1|Lokales SSD-Laufwerk = 56 GB |4|264| 5\.000, 125 MB pro Sekunde | hoch |
-|Standard\_GS2|4|56|2|Lokales SSD-Laufwerk = 112 GB |8|528| 10\.000, 250 MB pro Sekunde | hoch | 
-|Standard\_GS3|8|112|4|Lokales SSD-Laufwerk = 224 GB |16|1056| 20\.000, 500 MB pro Sekunde | sehr hoch |
-|Standard\_GS4|16|224|8|Lokales SSD-Laufwerk = 448 GB |32|2112| 40\.000, 1.000 MB pro Sekunde | äußerst hoch |
-|Standard\_GS5|32|448|8|Lokales SSD-Laufwerk = 896 GB |64|4224| 80\.000, 2.000 MB pro Sekunde | äußerst hoch |
+| Größe | CPU-Kerne | Arbeitsspeicher: GiB | Größe des lokalen SSD-Datenträgers: GiB | Max. Anzahl Datenträger | Maximaler Datenträgerdurchsatz mit Cache: IOPS / MB/s (Cachegröße in GiB) | Maximaler Datenträgerdurchsatz ohne Cache: IOPS / MB/s | Maximale Anzahl NICs/Netzwerkbandbreite |
+|--------------|-----------|--------------|---------------------------|--------------------------------|----------------|--------------------------------------------|----------------------------------------------|-----------------------|
+| Standard\_GS1 | 2 | 28 | 56 | 4 | 10\.000/100 (264) | 5\.000 / 125 | 1/hoch |
+| Standard\_GS2 | 4 | 56 | 528 | 8 | 20\.000/200 (528) | 10\.000/250 | 2/hoch |
+| Standard\_GS3 | 8 | 112 | 1\.056 | 16 | 40\.000/400 (1.056) | 20\.000/500 | 4/sehr hoch |
+| Standard\_GS4 | 16 | 224 | 2\.112 | 32 | 80\.000/800 (2.112) | 40\.000/1.000 | 8/äußerst hoch |
+| Standard\_GS5 | 32 | 448 | 4\.224 | 64 | 160\.000/1.600 (4.224) | 80\.000/2.000 | 8/äußerst hoch |
+
+MB/s = 10^6 Bytes pro Sekunde.
+
+* Der mit einer VM der GS-Serie maximal mögliche Datenträgerdurchsatz (IOPS oder MB/s) kann durch Anzahl, Größe und Striping der angefügten Datenträger beschränkt werden.
+
+
 
 ## N-Serie (Vorschau)
 
@@ -228,11 +247,11 @@ Die NC- und NV-Größen werden auch als GPU-fähige Instanzen bezeichnet. Dabei 
 Die NV-Instanzen werden durch Tesla M60 GPUs von NVIDIA und NVIDIA GRID unterstützt und ermöglichen für Desktops beschleunigte Anwendungen und virtuelle Desktops, sodass die Kunden ihre Daten oder Simulationen visualisieren können. Benutzer können ihre grafikintensiven Workflows auf den NV-Instanzen visualisieren, um überlegene Grafikfunktionen zu erhalten, und darüber hinaus Workloads mit einfacher Genauigkeit ausführen, z.B. Codierung und Rendering. Tesla M60 bietet 4096 CUDA-Kerne als duale GPU mit bis zu 36 Datenströmen mit 1080p H.264.
 
 
-| Größe | Kerne | GPU | Arbeitsspeicher | Datenträger |
-|------|-------|----------------|--------|-------------|
-| Standard\_NV6 | 6 | 1 x NVIDIA M60 | 56 GB | 380 GB SSD |
-| Standard\_NV12 | 12 | 2 x NVIDIA M60 | 112 GB | 680 GB SSD |
-| Standard\_NV24 | 24 | 4 x NVIDIA M60 | 224 GB | 1440 GB SSD | 
+| Größe | CPU-Kerne | Arbeitsspeicher: GiB | Größe des lokalen SSD-Datenträgers: GiB | GPU |
+|---------------|-----------|--------------|---------------------------|----------------|
+| Standard\_NV6 | 6 | 56 | 380 | 1 x NVIDIA M60 |
+| Standard\_NV12 | 12 | 112 | 680 | 2 x NVIDIA M60 |
+| Standard\_NV24 | 24 | 224 | 1\.440 | 4 x NVIDIA M60 |
 
 
 
@@ -241,11 +260,13 @@ Die NV-Instanzen werden durch Tesla M60 GPUs von NVIDIA und NVIDIA GRID unterst�
 Die NC-Instanzen werden durch Tesla K80 von NVIDIA unterstützt. Benutzer können Daten jetzt wesentlich schneller analysieren, indem sie CUDA für Anwendungen zur Energieuntersuchung, Absturzsimulationen, Rendering mit Raytracing, Deep Learning und mehr verwenden. Tesla K80 bietet 4992 CUDA-Kerne als duale GPU mit einer Leistung von bis zu 2,91 Teraflops mit doppelter Genauigkeit und bis zu 8,93 Teraflops mit einfacher Genauigkeit.
 
 
-| Größe | Kerne | GPU | Arbeitsspeicher | Datenträger |
-|------|-------|----------------|--------|-------------|
-| Standard\_NC6 | 6 | 1 x NVIDIA K80 | 56 GB | 380 GB SSD |
-| Standard\_NC12 | 12 | 2 x NVIDIA K80 | 112 GB | 680 GB SSD |
-| Standard\_NC24 | 24 | 4 x NVIDIA K80 | 224 GB | 1440 GB SSD |
+| Größe | CPU-Kerne | Arbeitsspeicher: GiB | Größe des lokalen SSD-Datenträgers: GiB | GPU |
+|---------------|-----------|--------------|---------------------------|----------------|
+| Standard\_NC6 | 6 | 56 | 380 | 1 x NVIDIA K80 |
+| Standard\_NC12 | 12 | 112 | 680 | 2 x NVIDIA K80 |
+| Standard\_NC24 | 24 | 224 | 1\.440 | 4 x NVIDIA K80 |
+
+
 
 ## Hinweise: Standard\_A0 – A4 mit Befehlszeilenschnittstelle (CLI) und PowerShell 
 
@@ -264,4 +285,4 @@ Im klassischen Bereitstellungsmodell unterscheiden sich einige VM-Größennamen 
 - Erfahren Sie mehr über [Einschränkungen für Azure-Abonnements und -Dienste, Kontingente und Einschränkungen](../articles/azure-subscription-service-limits.md).
 - Erfahren Sie mehr über [rechenintensive A8-, A9-, A10- und A11-Instanzen](../articles/virtual-machines/virtual-machines-windows-a8-a9-a10-a11-specs.md) für Workloads wie etwa High-Performance Computing (HPC).
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0831_2016-->

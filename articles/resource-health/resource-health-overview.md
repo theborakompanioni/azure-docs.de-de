@@ -36,11 +36,11 @@ Es gibt zwei Möglichkeiten, um auf die Dienste von Resource Health zuzugreifen.
 Das Blatt „Ressourcenintegrität“ im Azure-Portal enthält ausführliche Informationen zur Integrität der Ressource sowie empfohlene Aktionen, die je nach der derzeitigen Integrität der Ressource variieren. Dieses Blatt eignet sich am besten zum Abfragen der Ressourcenintegrität, da es den Zugriff auf andere Ressourcen im Portal erlaubt. Wie bereits erwähnt, variieren die empfohlenen Aktionen auf dem Blatt „Ressourcenintegrität“ je nach der derzeitigen Integrität:
 
 * Fehlerfreie Ressourcen: Da kein Problem erkannt wurde, das sich auf die Integrität der Ressource auswirken könnte, geht es bei den Aktionen vor allem um die Unterstützung der Problembehandlung. Beispielsweise ist der direkte Zugriff auf das Blatt „Problembehandlung“ möglich, auf dem Kunden eine Anleitung zur Behebung häufiger Probleme finden.
-* Fehlerhafte Ressource: Für Probleme, die von Azure verursacht werden, werden auf dem Blatt Aktionen angezeigt, die von Microsoft zum Wiederherstellen der Ressource durchgeführt wurden bzw. werden. Für Probleme, die durch vom Benutzer initiierte Aktionen verursacht werden, wird auf dem Blatt eine Liste mit Aktionen aufgeführt, mit denen Kunden das Problem beheben und die Ressource wiederherstellen können.  
+* Fehlerhafte Ressource: Für Probleme, die von Azure verursacht werden, werden auf dem Blatt Aktionen angezeigt, die von Microsoft zum Wiederherstellen der Ressource durchgeführt wurden bzw. werden. Für Probleme, die durch vom Benutzer initiierte Aktionen verursacht werden, wird auf dem Blatt eine Liste mit Aktionen aufgeführt, mit denen Kunden das Problem beheben und die Ressource wiederherstellen können.
 
 Nachdem Sie sich am Azure-Portal angemeldet haben, haben Sie zwei Möglichkeiten zum Zugreifen auf das Blatt „Ressourcenintegrität“:
 
-####Öffnen des Blatts „Ressource“
+###Öffnen des Blatts „Ressource“
 Öffnen Sie das Blatt „Ressource“ für eine bestimmte Ressource. Klicken Sie auf dem Blatt „Einstellungen“, das neben dem Blatt „Ressource“ geöffnet wird, auf „Ressourcenintegrität“, um das Blatt „„Ressourcenintegrität““ zu öffnen.
 
 ![Blatt „Ressourcenintegrität“](./media/resource-health-overview/resourceBladeAndResourceHealth.png)
@@ -58,31 +58,6 @@ Wenn Sie auf die Kachel klicken, wird das Blatt „Ressourcenintegrität“ für
 
 ![Kachel „Ressourcenintegrität“](./media/resource-health-overview/resourceHealthTile.png)
 
-### API für Ressourcenintegrität
-Zusätzlich zur Benutzeroberfläche des Azure-Portals gibt es auch eine Gruppe von APIs, die zum Abfragen der Ressourcenintegrität verwendet werden kann. Die verfügbaren APIs ermöglichen Benutzern das Abfragen der aktuellen Integrität aller Ressourcen in einem Abonnement oder in einer Ressourcengruppe bzw. der Integrität einer einzelnen Ressource.
-
-Eine andere API ermöglicht Benutzern das Abfragen des Integritätsverlaufs einer einzelnen Ressource. Die Antwort ist eine Sammlung der Ressourcenintegritätstatus der letzten 14 Tage. Wenn die Ressource ggf. von einem Ausfall beeinträchtigt wurde, enthält der Integritätsstatus eine Anmerkung namens „serviceImpactingEvents“ mit weiteren Details zum Ausfall.
-
-Bevor die API zum Abfragen der Ressourcenintegrität verwendet werden kann, muss das Abonnement beim Dienst registriert werden, indem eine POST-Anforderung an die folgende URL gesendet wird: volume
- 
-        //Register the subscription with the Resource health resource provider
-        https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.ResourceHealth/register?api-version=2015-01-01
-        
-Unten sind Beispiele zum Aufrufen der API für die Ressourcenintegrität angegeben.
-
-        // GET health of all resources in a subscription:
-        https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.ResourceHealth/availabilityStatuses?api-version=2015-01-01
-        
-        //GET health of all resources in a resource group:
-        https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.ResourceHealth/availabilityStatuses?api-version=2015-01-01
-        
-        //GET the health of a single resource:
-        https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider}/{resource-type}/{resource-name}/providers/Microsoft.ResourceHealth/availabilityStatuses/current?api-version=2015-01-01
-        
-        //GET the historical health of a single resource:
-        https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider}/{resource-type}/{resource-name}/providers/Microsoft.ResourceHealth/availabilityStatuses?api-version=2015-01-01
-
-
 ## Was bedeutet der angezeigte Status der Ressourcenintegrität?
 Es gibt vier verschiedene Integritätsstatus, die für die Ressource angezeigt werden können.
 
@@ -95,9 +70,9 @@ Der Dienst hat auf der Plattform keine Probleme erkannt, die sich auf die Verfü
 
 In diesem Fall hat der Dienst ein fortlaufendes Problem auf der Plattform erkannt, das sich auf die Verfügbarkeit der Ressource auswirkt. Ein Beispiel hierfür ist, dass der Knoten, auf dem die VM ausgeführt wurde, unerwartet neu gestartet wurde. Dies wird durch ein rotes Warnsymbol angezeigt. Zusätzliche Informationen zum Problem werden im mittleren Bereich des Blatts angezeigt, z.B.:
 
-1.	Aktionen von Microsoft zum Wiederherstellen der Ressource 
+1.	Aktionen von Microsoft zum Wiederherstellen der Ressource
 2.	Ausführliche Zeitachse des Problems, einschließlich der erwarteten Behebungsdauer
-3.	Liste mit empfohlenen Aktionen für Benutzer 
+3.	Liste mit empfohlenen Aktionen für Benutzer
 
 ![Ressource ist nicht verfügbar](./media/resource-health-overview/Unavailable.png)
 
@@ -132,4 +107,4 @@ Die Ressourcenintegrität meldet den Status der SQL-Datenbank, nicht von SQL Ser
 ## Feedback
 Wir sind stets offen für Feedback und Vorschläge. Sie können uns gern Ihre [Vorschläge](https://feedback.azure.com/forums/266794-support-feedback) senden. Außerdem erreichen Sie uns über [Twitter](https://twitter.com/azuresupport) oder die [MSDN-Foren](https://social.msdn.microsoft.com/Forums/azure).
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0831_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/14/2016" 
+	ms.date="08/30/2016" 
 	ms.author="stefsch"/>
 
 # Implementieren einer mehrstufigen Sicherheitsarchitektur mit App Service-Umgebungen
@@ -30,7 +30,7 @@ Das nachfolgende Diagramm zeigt eine Beispielarchitektur mit einer WebAPI-basier
 
 Die grünen Pluszeichen weisen darauf hin, dass die Netzwerksicherheitsgruppe im Subnetz, das „apiase“ enthält, eingehende Aufrufe von den Upstream-Web-Apps sowie Aufrufe der App an sich selbst zulässt. Die gleiche Netzwerksicherheitsgruppe verweigert jedoch explizit den Zugriff durch allgemeinen eingehenden Datenverkehr aus dem Internet.
 
-Im weiteren Verlauf dieses Themas werden die Schritte erläutert, die zum Konfigurieren der Netzwerksicherheitsgruppe in dem Subnetz erforderlich sind, das „apiase“ enthält.
+Im weiteren Verlauf dieses Themas werden die Schritte erläutert, die zum Konfigurieren der Netzwerksicherheitsgruppe in dem Subnetz mit „apiase“ erforderlich sind.
 
 ## Festlegen des Netzwerkverhaltens ##
 Um zu ermitteln, welche Netzwerksicherheitsregeln erforderlich sind, müssen Sie festlegen, welche Netzwerkclients auf die App Service-Umgebung mit der API-App zugreifen können und welche Clients blockiert werden.
@@ -41,7 +41,7 @@ Da [Netzwerksicherheitsgruppen][NetworkSecurityGroups] auf Subnetze angewendet u
 - **Muss die Back-End-API-App sich selbst aufrufen?** Ein Aspekt, der nicht selten übersehen wird, ist ein Szenario, in dem die Back-End-Anwendung sich selbst aufrufen muss. Wenn sich die Back-End-API-Anwendung in einer App Service-Umgebung selbst aufrufen muss, wird auch dies als „Internetaufruf“ behandelt. In der Beispielarchitektur muss zu diesem Zweck auch der Zugriff von der ausgehenden IP-Adresse der App Service-Umgebung „apiase“ gewährt werden.
 
 ## Einrichten der Netzwerksicherheitsgruppe ##
-Sobald die ausgehenden IP-Adressen bekannt sind, besteht der nächste Schritt darin, eine Netzwerksicherheitsgruppe zu erstellen und einzurichten. Da App Service-Umgebungen zurzeit nur in virtuellen „v1“-Netzwerken unterstützt werden, erfolgt die [Konfiguration der Netzwerksicherheitsgruppe][NetworkSecurityGroupsClassic] mithilfe der klassischen Einrichtung von Netzwerksicherheitsgruppen in PowerShell.
+Sobald die ausgehenden IP-Adressen bekannt sind, besteht der nächste Schritt darin, eine Netzwerksicherheitsgruppe zu erstellen und einzurichten. Netzwerksicherheitsgruppen können sowohl für Resource Manager-basierte virtuelle Netzwerke als auch für klassische virtuelle Netzwerke erstellt werden. Die folgenden Beispiele veranschaulichen das Erstellen und Konfigurieren einer NSG in einem klassischen virtuellen Netzwerk mit PowerShell.
 
 In der Beispielarchitektur befinden sich die Umgebungen in der Region „USA, Süden-Mitte“, daher wird in dieser Region eine leere Netzwerksicherheitsgruppe erstellt:
 
@@ -89,13 +89,13 @@ Nach Anwendung der Netzwerksicherheitsgruppe auf das Subnetz sind Aufrufe an die
 
 
 ## Zusätzliche Links und Informationen ##
-Alle Artikel und Anleitungen zu App Service-Umgebungen stehen in der [Dokumentation zu App Service-Umgebungen](../app-service/app-service-app-service-environments-readme.md) zur Verfügung.
+Alle Artikel und Anleitungen zu App Service-Umgebungen stehen in der [Dokumentation zur App Service-Umgebung](../app-service/app-service-app-service-environments-readme.md) zur Verfügung.
 
-Konfigurieren von [Netzwerksicherheitsgruppen][NetworkSecurityGroupsClassic] in klassischen virtuellen Netzwerken.
+Informationen zu [Netzwerksicherheitsgruppen](../virtual-network/virtual-networks-nsg.md)
 
-Informationen zu [ausgehenden IP-Adressen][NetworkArchitecture] und App Service-Umgebungen.
+Informationen zu [ausgehenden IP-Adressen][NetworkArchitecture] und App Service-Umgebungen
 
-In einer App Service-Umgebung verwendete [Netzwerkports][InboundTraffic].
+In App Service-Umgebungen verwendete [Netzwerkports][InboundTraffic]
 
 [AZURE.INCLUDE [app-service-web-whats-changed](../../includes/app-service-web-whats-changed.md)]
 
@@ -104,11 +104,10 @@ In einer App Service-Umgebung verwendete [Netzwerkports][InboundTraffic].
 <!-- LINKS -->
 [NetworkSecurityGroups]: https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/
 [NetworkArchitecture]: https://azure.microsoft.com/documentation/articles/app-service-app-service-environment-network-architecture-overview/
-[NetworkSecurityGroupsClassic]: https://azure.microsoft.com/documentation/articles/virtual-networks-create-nsg-classic-ps/
-[InboundTraffic]: https://azure.microsoft.com/documentation/articles/app-service-app-service-environment-control-inbound-traffic/
+[InboundTraffic]: https://azure.microsoft.com/de-DE/documentation/articles/app-service-app-service-environment-control-inbound-traffic/
 
 <!-- IMAGES -->
 [ConceptualArchitecture]: ./media/app-service-app-service-environment-layered-security/ConceptualArchitecture-1.png
 [NSGConfiguration]: ./media/app-service-app-service-environment-layered-security/NSGConfiguration-1.png
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0831_2016-->

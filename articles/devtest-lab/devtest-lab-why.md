@@ -44,8 +44,10 @@ Indem Sie Umgebungsvorlagen und -elemente erfassen und innerhalb Ihres Teams ode
 
 Nutzen Sie unsere sofort einsatzbereiten Plug-Ins oder unsere API, um Entwicklungs-/Testumgebungen direkt über Ihr bevorzugtes CI (Continuous Integration)-Tool, Ihre bevorzugte integrierte Entwicklungsumgebung (IDE) oder Ihre bevorzugte automatisierte Veröffentlichungspipeline bereitzustellen. Darüber hinaus steht Ihnen unser umfassendes Befehlszeilentool zur Verfügung.
 
+[AZURE.INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
+
 ##Nächste Schritte
 
 [DevTest Labs-Konzepte](devtest-lab-concepts.md)
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->

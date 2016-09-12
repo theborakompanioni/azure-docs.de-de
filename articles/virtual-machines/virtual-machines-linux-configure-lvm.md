@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-linux" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/06/2016" 
+	ms.date="08/24/2016" 
 	ms.author="szark"/>
 
 
@@ -89,7 +89,7 @@ In diesem Handbuch wird davon ausgegangen, dass Sie über drei angefügte Datent
 
 ## Hinzufügen des neuen Laufwerks zu "/etc/fstab"
 
-**Achtung:** Eine fehlerhafte Bearbeitung der Datei /etc/fstab kann dazu führen, dass das System sich nicht mehr starten lässt. Wenn Sie sich nicht sicher sind, finden Sie in der Dokumentation der Distribution Informationen zur korrekten Bearbeitung dieser Datei. Außerdem wird empfohlen, ein Backup der Datei /etc/fstab zu erstellen, bevor Sie sie bearbeiten.
+**Achtung:** Eine fehlerhafte Bearbeitung der Datei /etc/fstab kann dazu führen, dass das System sich nicht mehr starten lässt. Wenn Sie sich nicht sicher sind, finden Sie in der Dokumentation der Verteilung Informationen zur korrekten Bearbeitung dieser Datei. Außerdem wird empfohlen, ein Backup der Datei /etc/fstab zu erstellen, bevor Sie sie bearbeiten.
 
 1. Erstellen Sie den gewünschten Bereitstellungspunkt für das neue Dateisystem, zum Beispiel:
 
@@ -132,4 +132,4 @@ In diesem Handbuch wird davon ausgegangen, dass Sie über drei angefügte Datent
 
 		/dev/data-vg01/data-lv01  /data  ext4  defaults,nobootwait  0  2
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0831_2016-->

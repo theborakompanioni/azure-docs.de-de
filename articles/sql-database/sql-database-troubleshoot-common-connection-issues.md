@@ -13,15 +13,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/02/2016"
+	ms.date="08/31/2016"
 	ms.author="daleche"/>
 
 # Beheben von Verbindungsproblemen mit der Azure SQL-Datenbank
 
-Wenn keine Verbindung zur Azure SQL-Datenbank hergestellt werden kann, erhalten Sie [Fehlermeldungen](sql-database-develop-error-messages.md). Bei diesem Artikel handelt es sich um eine zentrale Informationsquelle, die Sie bei der Behebung von Verbindungsproblemen mit der Azure SQL-Datenbank unterstützt. In dem Artikel werden [die häufigsten Ursachen](#cause) von Verbindungsproblemen dargestellt, [ein Tool zur Problembehandlung](#try-the-troubleshooter-for-azure-sql-database-connectivity-issues) empfohlen, das Sie bei der Ermittlung des Problems unterstützt, sowie Problembehandlungsschritte zur Behebung von [vorübergehenden Fehlern](#troubleshoot-transient-errors) und [dauerhaften oder nicht vorübergehenden Fehlern](#troubleshoot-the-persistent-errors) bereitgestellt. Zudem werden [alle relevanten Artikel zu Verbindungsproblemen mit der Azure SQL-Datenbank](#all-topics-for-azure-sql-database-connection-problems) aufgelistet.
+Wenn keine Verbindung zur Azure SQL-Datenbank hergestellt werden kann, erhalten Sie [Fehlermeldungen](sql-database-develop-error-messages.md). Bei diesem Artikel handelt es sich um eine zentrale Informationsquelle, die Sie bei der Behebung von Problemen mit der Verbindung mit Azure SQL-Datenbank unterstützt. In dem Artikel werden [die häufigsten Ursachen](#cause) von Verbindungsproblemen dargestellt, [ein Tool zur Problembehandlung](#try-the-troubleshooter-for-azure-sql-database-connectivity-issues) empfohlen, das Sie bei der Ermittlung des Problems unterstützt, sowie Problembehandlungsschritte zur Behebung von [vorübergehenden Fehlern](#troubleshoot-transient-errors) und [dauerhaften oder nicht vorübergehenden Fehlern](#troubleshoot-the-persistent-errors) bereitgestellt. Zudem werden [alle relevanten Artikel zu Verbindungsproblemen mit der Azure SQL-Datenbank](#all-topics-for-azure-sql-database-connection-problems) aufgelistet.
 
-Führen Sie bei Verbindungsproblemen die in diesem Artikel beschriebenen Schritte zur Problembehandlung aus.
-[AZURE.INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
+Führen Sie bei Verbindungsproblemen die in diesem Artikel beschriebenen Schritte zur Problembehandlung aus. [AZURE.INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
 ## Ursache
 
@@ -66,9 +65,9 @@ Wenn die Anwendung dauerhaft keine Verbindung mit der Azure SQL-Datenbank herste
 3.	Überprüfen Sie die Verbindungszeichenfolge und andere Verbindungseinstellungen. Siehe im Thema [Verbindungsprobleme](sql-database-connectivity-issues.md#connections-to-azure-sql-database) den Abschnitt „Verbindungszeichenfolge“.
 4.	Überprüfen Sie im Dashboard den Dienststatus. Wenn Sie glauben, dass es sich um einen regionalen Ausfall handelt, finden Sie unter [Wiederherstellen nach einem Ausfall](sql-database-disaster-recovery.md) Schritte zum Wiederherstellen in einer neuen Region.
 
-## Alle Themen zu Azure SQL-Datenbankverbindungsproblemen
+## Alle Themen zu Problemen mit der Verbindung mit Azure SQL-Datenbank
 
-Die folgende Tabelle enthält alle Themen im Zusammenhang mit Verbindungsproblemen, die sich direkt auf den Azure SQL-Datenbankdienst beziehen.
+Die folgende Tabelle enthält alle Themen im Zusammenhang mit Verbindungsproblemen, die sich direkt auf den Dienst Azure SQL-Datenbank beziehen.
 
 
 | &nbsp; | Titel | Beschreibung |
@@ -88,12 +87,12 @@ Die folgende Tabelle enthält alle Themen im Zusammenhang mit Verbindungsproblem
 
 - [Behandlung von Leistungsproblemen mit der Azure SQL-Datenbank](sql-database-troubleshoot-performance.md)
 - [Behandlung von Berechtigungsproblemen mit der Azure SQL-Datenbank](sql-database-troubleshoot-permissions.md)
-- [Alle Themen für den Azure SQL-Datenbankdienst](sql-database-index-all-articles.md)
+- [Alle Themen für den Dienst Azure SQL-Datenbank](sql-database-index-all-articles.md)
 - [Durchsuchen der Dokumentation zu Microsoft Azure](http://azure.microsoft.com/search/documentation/)
 - [Anzeigen der neuesten Updates zum Azure SQL-Datenbankdienst](http://azure.microsoft.com/updates/?service=sql-database)
 
 
-## Weitere Ressourcen
+## Zusätzliche Ressourcen
 
 - [Übersicht über die Entwicklung von SQL-Datenbanken](sql-database-develop-overview.md)
 - [Allgemeiner Leitfaden zur Behandlung vorübergehender Fehler](../best-practices-retry-general.md)
@@ -101,4 +100,4 @@ Die folgende Tabelle enthält alle Themen im Zusammenhang mit Verbindungsproblem
 - [Der Lernpfad für die Verwendung der Azure SQL-Datenbank](https://azure.microsoft.com/documentation/learning-paths/sql-database-training-learn-sql-database)
 - [Der Lernpfad für die Verwendung elastischer Datenbankfeatures und -tools](https://azure.microsoft.com/documentation/learning-paths/sql-database-elastic-scale)
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0831_2016-->

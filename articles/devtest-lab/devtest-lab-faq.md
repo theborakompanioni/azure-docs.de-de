@@ -13,12 +13,22 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/05/2016"
+	ms.date="08/29/2016"
 	ms.author="tarcher"/>
 
 # Häufig gestellte Fragen zu DevTest Labs
 
 In diesem Artikel werden einige der am häufigsten gestellten Fragen zu DevTest Labs beantwortet.
+
+## Was kann ich tun, wenn meine Frage hier nicht beantwortet wird?
+Wenn Ihre Frage hier nicht aufgeführt wird, informieren Sie uns, und wir helfen Ihnen dabei, eine Antwort zu finden.
+
+- Stellen Sie eine Frage im [Disqus-Thread](#comments) am Ende dieser FAQ, und diskutieren Sie mit dem Azure Cache-Team und anderen Mitgliedern der Community über diesen Artikel.
+- Um eine größere Benutzergruppe zu erreichen, stellen Sie eine Frage im [MSDN-Forum zu Azure DevTest Labs](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureDevTestLabs), und diskutieren mit dem Azure DevTest Labs-Team und anderen Mitgliedern der Community.
+- Um ein neues Feature vorzuschlagen, übermitteln Sie Ihre Anfragen und Ideen in [Azure DevTest Labs User Voice](https://feedback.azure.com/forums/320373-azure-devtest-labs).
+
+## Erste Schritte
+- [Wie beginne ich mit der Verwendung von DevTest Labs?](http://go.microsoft.com/fwlink/?LinkID=627034&clcid=0x409)
 
 ## Allgemein
 - [Warum sollte ich DevTest Labs verwenden?](#why-should-i-use-devtest-labs)
@@ -113,9 +123,9 @@ Wenn Sie VSTS verwenden, ist eine [Azure DevTest Labs-Erweiterung für Aufgaben]
 
 Die folgenden Blogbeiträge enthalten Anleitungen und Informationen zur Verwendung der VSTS-Erweiterung:
  
-- [Azure DevTest Labs – VSTS extension](https://blogs.msdn.microsoft.com/devtestlab/2016/06/15/azure-devtest-labs-vsts-extension/) (Azure DevTest Labs – VSTS-Erweiterung)
-- [Deploying a new VM in an existing AzureDevTestLab from VSTS](http://www.visualstudiogeeks.com/blog/DevOps/Deploy-New-VM-To-Existing-AzureDevTestLab-From-VSTS) (Bereitstellen einer neuen VM in einem vorhandenen AzureDevTestLab über VSTS)
-- [Using VSTS Release Management for Continuous Deployments to AzureDevTestLabs](http://www.visualstudiogeeks.com/blog/DevOps/Use-VSTS-ReleaseManagement-to-Deploy-and-Test-in-AzureDevTestLabs) (Verwenden der VSTS-Releaseverwaltung für kontinuierliche Bereitstellungen in AzureDevTestLabs)
+- [Azure DevTest Labs – VSTS extension (Azure DevTest Labs – VSTS-Erweiterung)](https://blogs.msdn.microsoft.com/devtestlab/2016/06/15/azure-devtest-labs-vsts-extension/)
+- [Deploying a new VM in an existing AzureDevTestLab from VSTS (Bereitstellen einer neuen VM in einem vorhandenen AzureDevTestLab über VSTS)](http://www.visualstudiogeeks.com/blog/DevOps/Deploy-New-VM-To-Existing-AzureDevTestLab-From-VSTS)
+- [Using VSTS Release Management for Continuous Deployments to AzureDevTestLabs (Verwenden der VSTS-Releaseverwaltung für kontinuierliche Bereitstellungen in AzureDevTestLabs)](http://www.visualstudiogeeks.com/blog/DevOps/Use-VSTS-ReleaseManagement-to-Deploy-and-Test-in-AzureDevTestLabs)
  
 Für andere CI/CD-Toolketten können alle der oben genannten Szenarien, die mit der Erweiterung für VSTS-Aufgaben möglich sind, auf ähnliche Weise durch die Bereitstellung von [Azure Resource Manager-Vorlagen](https://github.com/Azure/azure-devtestlab/tree/master/ARMTemplates) mit [Azure PowerShell-Cmdlets](../resource-group-template-deploy.md) und [.NET SDKs](https://www.nuget.org/packages/Microsoft.Azure.Management.DevTestLabs/) umgesetzt werden. Sie können auch [REST-APIs für DevTest Labs](http://aka.ms/dtlrestapis) zur Integration in Ihre Toolkette verwenden.
 
@@ -161,7 +171,7 @@ Artefakte sind anpassbare Elemente, die verwendet werden können, um die neueste
 Wir haben ein [Github-Repository mit Azure Resource Manager-Vorlagen für Labs](https://github.com/Azure/azure-devtestlab/tree/master/ARMTemplates). Jede dieser Vorlagen enthält einen Link, auf den Sie klicken können, um das DevTest Labs-Lab unter Ihrem eigenen Azure-Abonnement bereitzustellen.
  
 ### Warum werden all meine VMs in verschiedenen Ressourcengruppen mit willkürlichen Namen erstellt? Kann ich diese Ressourcengruppen umbenennen oder ändern? 
-Ressourcengruppen werden auf diese Weise erstellt, damit DevTest Labs die Benutzerberechtigungen und den Zugriff auf virtuelle Computer verwalten kann. Wir arbeiten daran, diese Funktion zu verbessern und die Flexibilität zu erhöhen, Sie können die Ressourcengruppen jedoch wie gewünscht umbenennen. Es wird empfohlen, VMs nicht in andere Ressourcengruppen zu verschieben, da dadurch versehentlich Berechtigungen geändert werden können.
+Ressourcengruppen werden auf diese Weise erstellt, damit DevTest Labs die Benutzerberechtigungen und den Zugriff auf virtuelle Computer verwalten kann. Sie können einen virtuellen Computer zwar in eine andere Ressourcengruppe verschieben, dies wird jedoch nicht empfohlen. Wir arbeiten daran, diese Situation zu verbessern, um mehr Flexibilität zu ermöglichen.
  
 ### Wie viele Labs kann ich unter demselben Abonnement erstellen? 
 Es gibt keine bestimmte Beschränkung für die Anzahl von Labs, die pro Abonnement erstellt werden können, die verwendeten Ressourcen sind jedoch pro Abonnement begrenzt. Weitere Informationen finden Sie bei Bedarf in den Artikeln zu den [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../azure-subscription-service-limits.md) und zum [Erhöhen dieser Limits](https://azure.microsoft.com/blog/azure-limits-quotas-increase-requests).
@@ -175,4 +185,4 @@ Im Blogbeitrag [How to troubleshoot failing Artifacts in AzureDevTestLabs](http:
 ### Warum wird mein vorhandenes virtuelles Netzwerk nicht korrekt gespeichert?  
 Möglicherweise enthält der Name des virtuellen Netzwerks Punkte. Wenn dies der Fall ist, können Sie die Punkte entfernen oder durch Bindestriche ersetzen und dann noch einmal versuchen, das virtuelle Netzwerk zu speichern.
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0831_2016-->

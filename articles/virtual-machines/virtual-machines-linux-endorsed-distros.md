@@ -15,7 +15,7 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/13/2016"
+	ms.date="08/24/2016"
 	ms.author="szark"/>
 
 
@@ -29,7 +29,7 @@ Die Linux-Images im Azure-Katalog oder Marketplace werden von verschiedenen Part
 
 ## Unterstützte Verteilungen und Versionen ##
 
-In der folgenden Tabelle finden Sie die auf Azure unterstützten Linux-Verteilungen und -Versionen.
+In der folgenden Tabelle finden Sie die auf Azure unterstützten Linux-Verteilungen und -Versionen. Weitere Informationen finden Sie unter [Unterstützung für Linux-Images in Microsoft Azure](https://support.microsoft.com/de-DE/kb/2941892).
 
 Die Treiber für die Linux-Integrationsdienste (Linux Integration Services, LIS) für Hyper-V und Azure sind Kernelmodule, die Microsoft direkt für den Linux-Upstream-Kernel bereitstellt. Die LIS-Treiber sind entweder standardmäßig in den Kernel der Verteilung integriert oder stehen für ältere RHEL/CentOS-basierte Verteilungen [hier](http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) als separater Download zur Verfügung. Weitere Informationen zu LIS-Treibern finden Sie [in diesem Artikel](virtual-machines-linux-create-upload-generic.md#linux-kernel-requirements).
 
@@ -37,7 +37,7 @@ Der Azure Linux-Agent ist bereits in den Images im Azure-Katalog vorinstalliert 
 
 Verteilung|Version|Treiber|Agent
 ---|---|---|---
-CentOS von OpenLogic | CentOS 6.3+, 7.0+ | CentOS 6.3:[LIS-Download](http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409)<p>CentOS 6.4+: Im Kernel | Paket: Im [OpenLogic-Repository](http://olcentgbl.trafficmanager.net/openlogic/6/openlogic/x86_64/RPMS/) unter „WALinuxAgent“ <br/>Quellcode: [GitHub](https://github.com/Azure/WALinuxAgent)
+CentOS by OpenLogic | CentOS 6.3+, 7.0+ | CentOS 6.3:[LIS-Download](http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409)<p>CentOS 6.4+: Im Kernel | Paket: Im [OpenLogic-Repository](http://olcentgbl.trafficmanager.net/openlogic/6/openlogic/x86_64/RPMS/) unter „WALinuxAgent“ <br/>Quellcode: [GitHub](https://github.com/Azure/WALinuxAgent)
 [CoreOS](https://coreos.com/docs/running-coreos/cloud-providers/azure/) | 494\.4.0+ | Im Kernel | Quellcode: [GitHub](https://github.com/coreos/coreos-overlay/tree/master/app-emulation/wa-linux-agent)
 Debian | Debian 7.9+, 8.2+ | Im Kernel | Paket: Im Repository unter „waagent“ <br/>Quellcode: [GitHub](https://github.com/Azure/WALinuxAgent)
 Oracle Linux | 6\.4+, 7.0+ | Im Kernel | Paket: Im Repository unter „WALinuxAgent“ <br/>Quellcode: [GitHub](http://go.microsoft.com/fwlink/p/?LinkID=250998)
@@ -89,4 +89,4 @@ Engineering und Open Community Governance von Canonical steigern den Erfolg von 
 
 Mit Entwicklern und Engineering Centers überall auf der Welt ist Canonical hervorragend positioniert, um Partnerschaften mit Hardwareherstellern, Inhaltsanbietern und Softwareentwicklern einzugehen, um Ubuntu-Lösungen auf den Markt zu bringen – von PCs bis hin zu Servern und portablen Geräten.
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0831_2016-->

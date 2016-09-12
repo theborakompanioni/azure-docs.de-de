@@ -33,7 +33,7 @@ In diesem Artikel wird gezeigt, wie Sie Azure PowerShell zum Erstellen eines gen
 
 ## Vorbereiten der Quell-VM 
 
-In diesem Abschnitt erfahren Sie, wie Sie die Windows-VM generalisieren, damit sie als Image verwendet werden kann.
+In diesem Abschnitt erfahren Sie, wie Sie die Windows-VM generalisieren, damit sie als Image verwendet werden kann. Sichern Sie den virtuellen Computer vor dem Ausführen von Sysprep.
 
 > [AZURE.WARNING] Sie können sich nicht per RDP an der VM anmelden, nachdem sie generalisiert wurde, da bei diesem Prozess alle Benutzerkonten entfernt werden. Die Änderungen können nicht rückgängig gemacht werden.
 
@@ -210,4 +210,4 @@ Anschließend müsste der neu erstellte virtuelle Computer im [Azure-Portal](htt
 
 Informationen zum Verwalten des neuen virtuellen Computers mit Azure PowerShell finden Sie unter [Verwalten von virtuellen Computern mit Azure Resource Manager und PowerShell](virtual-machines-windows-ps-manage.md).
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->

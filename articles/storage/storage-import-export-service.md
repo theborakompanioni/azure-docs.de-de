@@ -40,7 +40,6 @@ Sie können diesen Dienst in folgenden Szenarien verwenden:
 - Sicherung: Erstellen Sie Sicherungen Ihrer lokalen Daten für die Speicherung im Azure-Blobspeicher.
 - Datenwiederherstellung: Stellen Sie große Datenmengen wieder her, die im Blobspeicher gespeichert sind, und lassen Sie sie an Ihren lokalen Standort schicken.
 
-
 ## Voraussetzungen
 
 In diesem Abschnitt sind die Voraussetzungen aufgeführt, die für diesen Dienst erforderlich sind. Lesen Sie sich diese Informationen sorgfältig durch, bevor Sie Ihre Laufwerke verschicken.
@@ -115,7 +114,7 @@ Unterstützte Standorte für die Verschickung:
 
 - USA (Ost)
 
-- USA (Westen)
+- USA (West)
 
 - USA (Ost) 2
 
@@ -213,7 +212,7 @@ Auftragsstatus|Beschreibung
 Wird erstellt|Ihr Auftrag wurde erstellt, aber Sie haben Ihre Versandinformationen noch nicht angegeben.
 Versand|Ihr Auftrag wurde erstellt, und Sie haben Ihre Versandinformationen angegeben. **Hinweis**: Nachdem die Festplatte an das Azure-Rechenzentrum geliefert wurde, kann als Status vorerst noch „Versand“ angezeigt werden. Wenn der Dienst mit dem Kopieren der Daten beginnt, ändert sich der Status in „Übertragung wird ausgeführt“. Falls Sie einen genaueren Status für Ihre Festplatte angezeigt bekommen möchten, können Sie die Import/Export-REST-API verwenden. 
 Übertragung wird ausgeführt|Ihre Daten werden von Ihrem Laufwerk (bei einem Importauftrag) oder auf Ihr Laufwerk (bei einem Exportauftrag) übertragen.
-Wird verpackt|Die Übertragung Ihrer Daten ist abgeschlossen, und Ihre Festplatte wird für den Rückversand vorbereitet.
+Verpackung|Die Übertragung Ihrer Daten ist abgeschlossen, und Ihre Festplatte wird für den Rückversand vorbereitet.
 Abgeschlossen|Ihre Festplatte wurde an Sie zurückgeschickt.
 
 ### Verarbeitungsdauer des Auftrags 
@@ -322,7 +321,7 @@ Ausführlichere Schritt-für-Schritt-Anleitungen finden Sie unter [Beispielworkf
 
 	Falls Sie Ihre Nachverfolgungsnummer haben, können Sie Ihren Kurierdienst in der Liste auswählen und die Nummer eingeben.
 
-	Wenn Sie noch keine Tracking-Nummer haben, wählen Sie **Ich werde die Versanddaten für diesen Importauftrag an, sobald ich mein Paket verschickt habe**, und schließen Sie den Importprozess ab.
+	Wenn Sie noch keine Tracking-Nummer haben, wählen Sie **I will provide my shipping information for this import job once I have shipped my package**, und schließen Sie den Importprozess ab.
 
 6. Um Ihre Nachverfolgungsnummer einzugeben, nachdem Sie das Paket verschickt haben, kehren Sie zur Seite **Import/Export** für Ihr Speicherkonto im klassischen Portal zurück, wählen Sie den Auftrag in der Liste aus, und klicken Sie auf **Versandinformationen**. Navigieren Sie durch den Assistenten und geben Sie Ihre Nachverfolgungsnummer in Schritt 2 ein.
 
@@ -360,11 +359,11 @@ Zur Vorbereitung von Laufwerken für einen Exportauftrag werden folgende Vorabpr
 
 	Auswahl|Blob-Pfad|Beschreibung
 	---|---|---
-	Beginnt mit|/|Exportiert alle Blobs im Speicherkonto
-	Beginnt mit|/$root/|Exportiert alle Blobs im Stammcontainer
-	Beginnt mit|/book|Exportiert alle Blobs in allen Containern mit dem Präfix **book**
+	Starts With|/|Exportiert alle Blobs im Speicherkonto
+	Starts With|/$root/|Exportiert alle Blobs im Stammcontainer
+	Starts With|/book|Exportiert alle Blobs in allen Containern mit dem Präfix **book**
 	Beginnt mit|/music/|Exportiert alle Blobs im Container **music**
-	Beginnt mit|/music/love|Exportiert alle Blobs im Container **music**, die mit dem Präfix **love** beginnen
+	Starts With|/music/love|Exportiert alle Blobs im Container **music**, die mit dem Präfix **love** beginnen
 	Entspricht|$root/logo.bmp|Exportiert das Blob **logo.bmp** im Stammcontainer
 	Entspricht|videos/story.mp4|Exportiert das Blob **story.mp4** im Container **videos**
 
@@ -401,9 +400,12 @@ Sehen Sie sich unten den Abschnitt mit den häufig gestellten Fragen an. Darin w
 
 ## Häufig gestellte Fragen ##
 
+
 **Wie lange dauert das Kopieren meiner Daten, nachdem meine Festplatten im Rechenzentrum angekommen sind?**
 
 Die Kopierdauer variiert in Abhängigkeit von verschiedenen Faktoren wie Auftragstyp, Typ und Größe der kopierten Daten, Größe der bereitgestellten Festplatten und vorhandene Workload. Je nach diesen Faktoren kann der Vorgang zwischen zwei Tagen und zwei Wochen dauern. Daher ist es schwierig, einen allgemeinen Schätzwert zu nennen. Der Dienst versucht, Ihren Auftrag zu optimieren, indem nach Möglichkeit mehrere Festplatten parallel kopiert werden. Sie können sich gern an uns wenden, falls Sie für einen zeitkritischen Import- oder Exportauftrag eine Schätzung benötigen.
+
+**Wann sollte der Import/Export-Dienst von Azure verwendet werden?** Erwägen Sie, den Import/Export-Dienst von Azure einzusetzen, wenn das Hoch- oder Herunterladen über das Netzwerk grob geschätzt mehr als 7 Tage dauern wird. Die Dauer können Sie mit einem beliebigen Onlinetaschenrechner berechnen, oder Sie können den Rechner [herunterladen](https://github.com/Azure-Samples/storage-dotnet-import-export-job-management/archive/master.zip), der sich in unserem Azure Import/Export-REST-API-Beispiel im Azure-Beispielrepository unter [Data Transfer Speed Calculator](https://github.com/Azure-Samples/storage-dotnet-import-export-job-management/blob/master/DataTransferSpeedCalculator.html) (Rechner zum Berechnen der Datenübertragungsgeschwindigkeit) befindet. Dies ist keine genaue Berechnung, sondern nur eine ungefähre Angabe.
 
 **Kann ich den Azure Import/Export-Dienst mit einem Resource Manager-Speicherkonto verwenden?**
 
@@ -501,4 +503,6 @@ Informationen hierzu finden Sie unter [Workflow zur Offlinesicherung in Azure Ba
 
 - [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](storage-use-azcopy.md)
 
-<!---HONumber=AcomDC_0727_2016-->
+- [Azure Import/Export-REST-API-Beispiel](https://azure.microsoft.com/documentation/samples/storage-dotnet-import-export-job-management/)
+
+<!---HONumber=AcomDC_0831_2016-->

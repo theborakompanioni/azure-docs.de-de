@@ -223,4 +223,4 @@ Die mit Azure HDInsight verknüpften Daten werden standardmäßig in Azure Blob 
 
 Dieser Artikel gehört zu einer Reihe von Artikeln, die als [Technischer Leitfaden zur Resilienz in Azure](./resiliency-technical-guidance.md) dienen. Der nächste Artikel dieser Reihe ist [Wiederherstellung nach einer regionsweiten Dienstunterbrechung](./resiliency-technical-guidance-recovery-loss-azure-region.md).
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->

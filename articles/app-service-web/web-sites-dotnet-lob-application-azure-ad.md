@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="Erstellen einer .NET MVC-Web-App in Azure App Service mit Azure Active Directory-Authentifizierung" 
-	description="Erfahren Sie, wie Sie eine ASP.NET MVC-Branchenanwendung in Azure App Service erstellen, die mit Azure Active Directory authentifiziert wird." 
+	pageTitle="Erstellen einer Azure-Branchen-App mit Azure Active Directory-Authentifizierung | Microsoft Azure" 
+	description="Erfahren Sie, wie Sie eine ASP.NET MVC-Branchen-App in Azure App Service erstellen, die mit Azure Active Directory authentifiziert wird." 
 	services="app-service\web, active-directory" 
 	documentationCenter=".net" 
 	authors="cephalin" 
@@ -13,16 +13,14 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="web" 
-	ms.date="02/29/2016" 
+	ms.date="08/31/2016" 
 	ms.author="cephalin"/>
 
-# Erstellen einer .NET MVC-Web-App in Azure App Service mit Azure Active Directory-Authentifizierung #
+# Erstellen einer Azure-Branchen-App mit Azure Active Directory-Authentifizierung #
 
-In diesem Artikel erfahren Sie, wie Sie eine ASP.NET MVC-Branchenanwendung in [Azure App Service-Web-Apps](http://go.microsoft.com/fwlink/?LinkId=529714) mit [Azure Active Directory](/services/active-directory/) als Identitätsanbieter erstellen. Außerdem erfahren Sie, wie Sie die [Azure Active Directory Graph-Clientbibliothek](http://blogs.msdn.com/b/aadgraphteam/archive/2014/06/02/azure-active-directory-graph-client-library-1-0-publish.aspx) zum Abfragen von Verzeichnisdaten in der Anwendung verwenden.
+In diesem Artikel erfahren Sie, wie Sie eine .NET-Branchen-App in [Azure App Service-Web-Apps](http://go.microsoft.com/fwlink/?LinkId=529714) mithilfe der Funktion [Authentifizierung/Autorisierung](../app-service/app-service-authentication-overview.md) erstellen. Außerdem lernen Sie, wie Sie die [Azure Active Directory Graph-API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog) zum Abfragen von Verzeichnisdaten in der Anwendung verwenden.
 
-Der verwendete Azure Active Directory-Mandant kann ein reines Azure-Verzeichnis haben oder mit Ihrem lokalen Active Directory (AD) synchronisiert sein, um für lokale oder Remote-Mitarbeiter die Möglichkeit einer einmaligen Anmeldung zu schaffen.
-
->[AZURE.NOTE] Für Azure App Service-Web-Apps können Sie eine Authentifizierung für einen Azure Active Directory-Mandanten mit wenigen Mausklicks konfigurieren. Weitere Informationen finden Sie unter [Verwenden von Active Directory für die Authentifizierung in Azure App Service](web-sites-authentication-authorization.md).
+Der Azure Active Directory-Mandant, den Sie verwenden, kann ein reines Azure-Verzeichnis sein. Er kann aber auch [mit Ihrem lokalen Active Directory synchronisiert sein](../active-directory/active-directory-aadconnect.md), um das einmalige Anmelden für lokale und Remote-Worker zu ermöglichen. In diesem Artikel wird das Standardverzeichnis für Ihr Azure-Konto verwendet.
 
 <a name="bkmk_build"></a>
 ## Was Sie erstellen ##
@@ -30,362 +28,361 @@ Der verwendete Azure Active Directory-Mandant kann ein reines Azure-Verzeichnis 
 Sie erstellen eine einfache Branchenanwendung für Create-Read-Update-Delete (CRUD) in App Service-Web-Apps, die Arbeitsaufgaben mit folgenden Features erfasst:
 
 - Authentifizieren von Benutzern mit Azure Active Directory
-- Implementieren von Funktionen zum An- und Abmelden
-- Verwenden von `[Authorize]` zum Autorisieren von Benutzern für verschiedene CRUD-Aktionen
-- Abfragen von Azure Active Directory-Daten mit der [Azure Active Directory Graph-API](http://msdn.microsoft.com/library/azure/hh974476.aspx)
-- Verwenden von [Microsoft.Owin](http://www.asp.net/aspnet/overview/owin-and-katana/an-overview-of-project-katana) (anstelle von Windows Identity Foundation, WIF). Dies ist das künftige ASP.NET und lässt sich wesentlich einfacher als WIF für die Authentifizierung und Autorisierung einrichten.
+- Abfragen von Verzeichnisbenutzern und -gruppen mit der [Azure Active Directory Graph-API](http://msdn.microsoft.com/library/azure/hh974476.aspx)
+
+Wenn Sie rollenbasierte Zugriffskontrolle (RBAC) für Ihre Branchen-App in Azure benötigen, finden Sie unter [Nächster Schritt](#next) weitere Informationen.
 
 <a name="bkmk_need"></a>
-## Was Sie benötigen ##
+## Erforderliches Element ##
 
 [AZURE.INCLUDE [free-trial-note](../../includes/free-trial-note.md)]
-
->[AZURE.NOTE] Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie unter [App Service testen](http://go.microsoft.com/fwlink/?LinkId=523751) sofort kostenlos eine kurzlebige Starter-Web-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
 
 Sie benötigen Folgendes zum Bearbeiten dieses Lernprogramms:
 
 - Einen Azure Active Directory-Mandanten mit Benutzern in verschiedenen Gruppen
 - Berechtigungen zum Erstellen von Anwendungen auf dem Azure Active Directory-Mandanten
-- Visual Studio 2013 oder höher
-- [Azure SDK 2.8.1](http://go.microsoft.com/fwlink/p/?linkid=323510&clcid=0x409) oder höher
+- Visual Studio 2013, Update 4 (oder höher)
+- [Azure SDK 2.8.1 oder höher](https://azure.microsoft.com/downloads/)
 
-<a name="bkmk_sample"></a>
-## Verwenden der Beispielanwendung für die Vorlage der Branchenanwendung ##
-
-Die Beispielanwendung in diesem Tutorial ([WebApp-RoleClaims-DotNet](https://github.com/Azure-Samples/active-directory-dotnet-webapp-roleclaims)) wurde vom Azure Active Directory-Team erstellt und kann ohne Weiteres als Vorlage zum Erstellen neuer Branchenanwendungen verwendet werden. Sie hat die folgenden integrierten Features:
-
-- Verwendet [OpenID Connect](http://openid.net/connect/) zur Authentifizierung mit Azure Active Directory
-- Enthält einen `TaskTracker`-Beispielcontroller, der veranschaulicht, wie Sie verschiedene Rollen für bestimmte Aktionen in einer Anwendung autorisieren können, einschließlich der standardmäßigen Verwendung von `[Authorize]`. 
-- Es handelt sich um eine mehrinstanzenfähige Anwendung mit vordefinierten Rollen, die Sie sofort Ihren Benutzern und Gruppen zuweisen können. 
-
-<a name="bkmk_run" />
-## Ausführen der Beispielanwendung ##
-
-1.	Klonen Sie die Beispielprojektmappe unter [WebApp-RoleClaims-DotNet](https://github.com/Azure-Samples/active-directory-dotnet-webapp-roleclaims), oder laden Sie sie in Ihr lokales Verzeichnis herunter.
-
-2.	Befolgen Sie die Anweisungen unter [How To Run The Sample as a Single Tenant App](https://github.com/Azure-Samples/active-directory-dotnet-webapp-roleclaims#how-to-run-the-sample-as-a-single-tenant-app) (Ausführen des Beispiels als Einzelinstanz-App, in englischer Sprache), um die Azure Active Directory-Anwendung und das Projekt einzurichten. Achten Sie darauf, dass Sie alle Anweisungen befolgen, um die Anwendung von einer mehrinstanzenfähigen Anwendung in eine Einzelinstanzanwendung zu konvertieren.
-
-3.	Klicken Sie in der Ansicht [Klassisches Azure-Portal](https://manage.windowsazure.com) für Ihre Azure Active Directory-Anwendung, die Sie gerade erstellt haben, auf die Registerkarte **BENUTZER**. Weisen Sie die gewünschten Benutzer anschließend den gewünschten Rollen zu.
-
-	>[AZURE.NOTE] Wenn Sie den Gruppen zusätzlich zu Benutzern Rollen zuweisen möchten, müssen Sie für Ihren Azure Active Directory-Mandanten ein Upgrade auf [Azure Active Directory Premium](/pricing/details/active-directory/) durchführen. Wenn auf der klassischen Portaloberfläche Ihrer Anwendung die Registerkarte **BENUTZER** anstelle der Registerkarte **BENUTZER UND GRUPPEN angezeigt wird, können Sie Azure Active Directory Premium ausprobieren, indem Sie auf die Registerkarte **LIZENZEN** Ihres Azure Active Directory-Mandanten zugreifen.
-
-3.	Nachdem Sie mit dem Konfigurieren der Anwendung fertig sind, geben Sie in Visual Studio `F5` ein, um die ASP.NET-Anwendung auszuführen.
-
-4.	Klicken Sie nach dem Laden der Anwendung auf **Anmelden**, und melden Sie sich als Benutzer an, der im klassischen Azure-Portal über die Administratorrolle verfügt.
-
-5.	Wenn Sie die Azure Active Directory-Anwendung richtig konfiguriert und die entsprechenden Einstellungen in der Datei "Web.config" festgelegt haben, werden Sie an die Anmeldung umgeleitet. Melden Sie sich einfach mit dem Konto an, das Sie zum Erstellen der Azure Active Directory-Anwendung im klassischen Azure-Portal verwendet haben. Dies ist der standardmäßige Besitzer der Azure Active Directory-Anwendung.
-	
 <a name="bkmk_deploy"></a>
-## Bereitstellen der Beispielanwendung in App Service-Web-Apps
+## Erstellen und Bereitstellen einer Web-App in Azure ##
 
-Sie veröffentlichen nun die Anwendung in einer Web-App in Azure App Service. Die Datei [README.md](https://github.com/Azure-Samples/active-directory-dotnet-webapp-roleclaims/blob/master/README.md) enthält bereits Anweisungen für die Bereitstellung in App Services-Web-Apps, aber dadurch wird auch die Konfiguration für Ihre lokale Debugumgebung aufgehoben. Ich zeige Ihnen, wie eine Bereitstellung unter Beibehaltung der Debugkonfiguration möglich ist.
+1. Klicken Sie in Visual Studio auf **Datei** > **Neu** > **Projekt**.
 
-1. Klicken Sie mit der rechten Maustaste auf Ihr Projekt, und wählen Sie **Veröffentlichen**.
+2. Wählen Sie **ASP.NET-Webanwendung**, benennen Sie das Projekt, und klicken Sie auf **OK**.
 
-	![](./media/web-sites-dotnet-lob-application-azure-ad/publish-app.png)
+3. Wählen Sie die Vorlage **MVC** aus, und ändern Sie die Authentifizierung in **Keine Authentifizierung**. Vergewissern Sie sich, dass **In der Cloud hosten** ausgewählt ist, und klicken Sie auf **OK**.
 
-2. Wählen Sie **Microsoft Azure-Web-Apps**.
+	![](./media/web-sites-dotnet-lob-application-azure-ad/1-create-mvc-no-authentication.png)
 
-3. Wenn Sie sich nicht bei Azure angemeldet haben, klicken Sie auf **Konto hinzufügen**, und verwenden Sie zum Anmelden das Microsoft-Konto für Ihr Azure-Abonnement.
+4. Klicken Sie im Dialogfeld **App Service erstellen** auf **Konto hinzufügen** (wählen Sie anschließend **Konto hinzufügen** in der Dropdownliste), und melden Sie sich bei Ihrem Azure-Konto an.
 
-4. Klicken Sie nach der Anmeldung auf **Neu**, um eine neue Web-App in Azure zu erstellen.
+5. Nach der Anmeldung können Sie Ihre Web-App konfigurieren. Erstellen Sie eine Ressourcengruppe und einen neuen App Service-Plan, indem Sie jeweils auf die Schaltfläche **Neu** klicken. Klicken Sie auf **Explore additional services** (Zusätzliche Dienste erkunden), um fortzufahren.
 
-5. Füllen Sie in **Hosting** alle erforderlichen Felder aus.
+	![](./media/web-sites-dotnet-lob-application-azure-ad/2-create-app-service.png)
 
-	![](./media/web-sites-dotnet-lob-application-azure-ad/4-create-website.png)
+6. Klicken Sie auf der Registerkarte **Dienste** auf **+**, um Ihrer App eine SQL-Datenbank hinzuzufügen.
 
-5. Sie benötigen eine Datenbankverbindung, damit diese Anwendung Rollenzuordnungen zwischengespeicherte Token und eine Anwendungsdaten speichern kann. Klicken Sie im Dialogfeld **App Service erstellen** auf **Dienste**. Klicken Sie neben **SQL-Datenbank** auf das Pluszeichen, um eine neue Datenbank hinzuzufügen.
+	![](./media/web-sites-dotnet-lob-application-azure-ad/3-add-sql-database.png)
 
-	![](./media/web-sites-dotnet-lob-application-azure-ad/4-create-database.png)
+7. Klicken Sie unter **SQL-Datenbank konfigurieren** auf **Neu**, um eine SQL Server-Instanz zu erstellen.
 
-5. Wählen Sie im Dialogfeld **SQL-Datenbank konfigurieren** einen Server aus, oder erstellen Sie einen. Legen Sie anschließend einen Namen fest, und klicken Sie auf **OK**.
+8. Konfigurieren Sie unter **SQL Server konfigurieren** Ihre SQL Server-Instanz. Klicken Sie dann auf **OK**, **OK** und **Erstellen**, um mit der App-Erstellung in Azure zu beginnen.
 
-	 ![](./media/web-sites-dotnet-lob-application-azure-ad/4-config-database.png)
+9. Unter **Aktivität von Azure App Service**, sehen Sie, wenn die App-Erstellung abgeschlossen ist. Klicken Sie auf **Publish &lt;*appname*> to this Web App now** (<App-Name> jetzt in dieser Web-App veröffentlichen) und anschließend auf **Veröffentlichen**.
 
-6. Klicken Sie auf **Erstellen**. Nachdem die Web-App erstellt wurde, wird das Dialogfeld **Web veröffentlichen** geöffnet.
+	Wenn Visual Studio dies abgeschlossen hat, wird die veröffentlichte App im Browser geöffnet.
 
-7. Ändern Sie **http** unter **Ziel-URL** in **https**. Kopieren Sie die gesamte URL in einen Text-Editor. Sie werden sie später verwenden. Klicken Sie auf **Weiter**.
+	![](./media/web-sites-dotnet-lob-application-azure-ad/4-published-shown-in-browser.png)
 
-	![](./media/web-sites-dotnet-lob-application-azure-ad/5-change-to-https.png)
+<a name="bkmk_auth"></a>
+## Konfigurieren von Authentifizierung und Verzeichniszugriff
 
-8. Deaktivieren Sie das Kontrollkästchen **Unternehmensauthentifizierung aktivieren**.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
-	![](./media/web-sites-dotnet-lob-application-azure-ad/6-enable-code-first-migrations.png)
+2. Klicken Sie im linken Menü auf **App Services** > **& Lt;*App-Name*>** > **Authentifizierung/Autorisierung**.
 
-8. Erweitern Sie **RoleClaimContext**, und wählen Sie **Code First-Migrationen ausführen (wird beim Öffnen der Anwendung ausgeführt)**. [Code First-Migrationen](https://msdn.microsoft.com/data/jj591621.aspx) dienen als Unterstützung beim Aktualisieren des Datenbankschemas Ihrer App in Azure, wenn Sie später zusätzliche Code First-Datenmodelle definieren.
+	![](./media/web-sites-dotnet-lob-application-azure-ad/5-app-service-authentication.png)
 
-9. Um das Veröffentlichen im Web fortzusetzen, klicken Sie nicht auf **Veröffentlichen**, sondern auf **Schließen**. Klicken Sie auf **Ja**, um die Änderungen am Veröffentlichungsprofil zu speichern.
+3. Aktivieren Sie die Azure Active Directory-Authentifizierung, indem Sie auf **Ein** > **Azure Active Directory** > **Express** > **OK** klicken.
 
-2. Navigieren Sie im [klassischen Azure-Portal](https://manage.windowsazure.com) zu Ihrem Azure Active Directory-Mandanten, und klicken Sie auf die Registerkarte **Anwendungen**.
+	![](./media/web-sites-dotnet-lob-application-azure-ad/6-authentication-express.png)
 
-2. Klicken Sie unten auf der Seite auf **Hinzufügen**.
+4. Klicken Sie in der Befehlsleiste auf **Speichern**.
 
-2. Klicken Sie auf **Add an application my organization is developing**.
+	![](./media/web-sites-dotnet-lob-application-azure-ad/7-authentication-save.png)
 
-3. Wählen Sie **Webanwendung und/oder Web-API**.
+    Nachdem die Authentifizierungseinstellungen erfolgreich gespeichert wurden, versuchen Sie erneut, im Browser zu Ihrer App zu navigieren. Die Standardeinstellungen erzwingen die Authentifizierung für die gesamte App. Wenn Sie noch nicht angemeldet sind, werden Sie zu einer Anmeldeseite umgeleitet. Nach der Anmeldung sehen Sie, dass Ihre App durch HTTPS geschützt ist. Als Nächstes müssen Sie den Zugriff auf Verzeichnisdaten aktivieren.
 
-4. Benennen Sie die Anwendung, und klicken Sie auf **Weiter**.
+5. Navigieren Sie zum [klassischen Portal](https://manage.windowsazure.com).
 
-5. Legen Sie unter "App-Eigenschaften" die Option **URL für Anmeldung** auf die Web-App-URL fest, die Sie zuvor gespeichert haben (z. B. `https://<site-name>.azurewebsites.net/`), und legen Sie **APP-ID-URI** auf `https://<aad-tenanet-name>/<app-name>` fest. Klicken Sie danach auf **Abschließen**.
+6. Klicken Sie im linken Menü auf **Active Directory** > **Standardverzeichnis** > **Anwendungen** > **&lt;*App-Name*>**.
 
-	![](./media/web-sites-dotnet-lob-application-azure-ad/7-app-properties.png)
+	![](./media/web-sites-dotnet-lob-application-azure-ad/8-find-aad-application.png)
 
-2.	Aktualisieren Sie das Anwendungsmanifest nach Erstellung der Anwendung, wie Sie dies bereits gemäß den Anweisungen unter [Define your Application Roles](https://github.com/Azure-Samples/active-directory-dotnet-webapp-roleclaims#step-2-define-your-application-roles) (Definieren der Anwendungsrollen, in englischer Sprache) durchgeführt haben.
+	Dies ist die Azure Active Directory-Anwendung, die App Service für Sie erstellt hat, um die Funktion „Autorisierung /Authentifizierung“ zu aktivieren.
 
-3.	Klicken Sie in der Ansicht des [klassischen Azure-Portals](https://manage.windowsazure.com) für Ihre Azure Active Directory-Anwendung, die Sie gerade erstellt haben, auf die Registerkarte **BENUTZER**. Weisen Sie die gewünschten Benutzer anschließend den gewünschten Rollen zu.
+7. Klicken Sie auf **Benutzer** und **Gruppen**, um sicherzustellen, dass im Verzeichnis mehrere Benutzer und Gruppen vorhanden sind. Erstellen Sie andernfalls einige Testbenutzer und -gruppen.
 
-6. Klicken Sie auf die Registerkarte **KONFIGURIEREN**.
+	![](./media/web-sites-dotnet-lob-application-azure-ad/9-create-users-groups.png)
 
-7. Erstellen Sie unter **Schlüssel** einen neuen Schlüssel, indem Sie in der Dropdownliste die Option **1 Jahr** auswählen.
+7. Klicken Sie auf **Konfigurieren**, um diese Anwendung zu konfigurieren.
 
-8. Wählen Sie unter **Berechtigungen für andere Anwendungen** für den Eintrag **Azure Active Directory** in der Dropdownliste **Delegierte Berechtigungen** die Optionen **Anmelden und Benutzerprofil lesen** und **Verzeichnisdaten lesen** aus.
+8. Scrollen Sie nach unten zum Abschnitt **Schlüssel**, und fügen Sie einen Schlüssel hinzu, indem Sie eine Dauer auswählen. Klicken Sie anschließend auf **Delegierte Berechtigungen**, und wählen Sie **Verzeichnisdaten lesen**. Klicken Sie auf **Speichern**.
 
-	> [AZURE.NOTE] Die genauen Berechtigungen, die Sie hier benötigen, hängen von der gewünschten Funktionalität Ihrer Anwendung ab. Für einige Berechtigungen muss die Rolle **Globaler Administrator** festgelegt werden. Die von diesem Lernprogramm benötigten Berechtigungen erfordern jedoch nur die Rolle **Benutzer**.
+	![](./media/web-sites-dotnet-lob-application-azure-ad/10-configure-aad-application.png)
 
-9.  Klicken Sie auf **Speichern**.
+8. Wenn Sie Ihre Einstellungen gespeichert haben, scrollen Sie wieder nach oben zum Abschnitt **Schlüssel**, und klicken Sie auf die Schaltfläche **Kopieren**, um den Clientschlüssel zu kopieren.
 
-10.  Bevor Sie die gespeicherte Konfigurationsseite verlassen, kopieren Sie die folgenden Informationen in einen Text-Editor.
+	![](./media/web-sites-dotnet-lob-application-azure-ad/11-get-app-key.png)
 
-	-	Client-ID
-	-	Schlüssel (Wenn Sie die Seite verlassen, können Sie den Schlüssel nicht mehr sehen)
+	>[AZURE.IMPORTANT] Wenn Sie diese Seite jetzt verlassen, können Sie auf diesen Clientschlüssel nie wieder zugreifen.
 
-11. Öffnen Sie in Visual Studio die Datei **Web.Release.config** in Ihrem Projekt. Fügen Sie den folgenden XML-Code in das `<configuration>`-Tag ein, und ersetzen Sie den Wert der einzelnen Schlüssel durch die Informationen, die Sie für die neue Azure Active Directory-Anwendung gespeichert haben.
+9. Als Nächstes müssen Sie Ihre Web-App mit diesem Schlüssel konfigurieren. Melden Sie sich mit Ihrem Azure-Konto beim [Azure-Ressourcen-Explorer](https://resources.azure.com) an.
+
+10. Klicken Sie oben auf der Seite auf **Lese-/Schreibberechtigung**, um im Azure-Ressourcen-Explorer Änderungen vorzunehmen.
+
+	![](./media/web-sites-dotnet-lob-application-azure-ad/12-resource-manager-writable.png)
+
+11. Suchen Sie die Authentifizierungseinstellungen für Ihre App unter subscriptions > **&lt;*subscriptionname*>** > **resourceGroups** > **&lt;*resourcegroupname*>** > **providers** > **Microsoft.Web** > **sites** > **&lt;*appname*>** > **config** > **authsettings** auf.
+
+12. Klicken Sie auf **Bearbeiten**.
+
+	![](./media/web-sites-dotnet-lob-application-azure-ad/13-edit-authsettings.png)
+
+13. Legen Sie im Bearbeitungsbereich die Eigenschaften `clientSecret` und `additionalLoginParams` wie folgt fest.
+
+		...
+		"clientSecret": "<client key from the Azure Active Directory application>",
+		...
+		"additionalLoginParams": ["response_type=code id_token", "resource=https://graph.windows.net"],
+		...
+
+14. Klicken Sie oben auf **Put**, um Ihre Änderungen zu übermitteln.
+
+	![](./media/web-sites-dotnet-lob-application-azure-ad/14-edit-parameters.png)
+
+14. Testen Sie nun, ob Sie über das Autorisierungstoken verfügen, um auf die Azure Active Directory Graph-API zuzugreifen. Ändern Sie hierfür „~\\Controllers\\HomeController.cs“, um die folgende `Index()`-Aktionsmethode zu verwenden:
 	<pre class="prettyprint">
-	&lt;appSettings>
-	   &lt;add key="ida:ClientId" value="<mark>[e.g. 82692da5-a86f-44c9-9d53-2f88d52b478b]</mark>" xdt:Transform="SetAttributes" xdt:Locator="Match(key)" />
-	   &lt;add key="ida:AppKey" value="<mark>[e.g. rZJJ9bHSi/cYnYwmQFxLYDn/6EfnrnIfKoNzv9NKgbo=]</mark>" xdt:Transform="SetAttributes" xdt:Locator="Match(key)" />
-	   &lt;add key="ida:PostLogoutRedirectUri" value="<mark>[e.g. https://mylobapp.azurewebsites.net/]</mark>" xdt:Transform="SetAttributes" xdt:Locator="Match(key)" />
-	&lt;/appSettings></pre>
+	public ActionResult Index()
+	{
+		return <mark>Content(Request.Headers["X-MS-TOKEN-AAD-ACCESS-TOKEN"]);</mark>
+	}
+	</pre>
 
-	Stellen Sie sicher, dass der Wert von "ida:PostLogoutRedirectUri" mit einem Schrägstrich "/" endet.
+15. Veröffentlichen Sie Ihre Änderungen, indem Sie mit der rechten Maustaste auf das Projekt und anschließend auf **Veröffentlichen** klicken. Klicken Sie im Dialogfeld erneut auf **Veröffentlichen**.
 
-1. Klicken Sie mit der rechten Maustaste auf Ihr Projekt, und wählen Sie **Veröffentlichen**.
+	![](./media/web-sites-dotnet-lob-application-azure-ad/15-publish-token-code.png)
 
-2. Klicken Sie auf **Veröffentlichen**, um die Anwendung in der Azure App Service-Web-App zu veröffentlichen.
+	Wenn auf Ihrer App-Startseite nun ein Zugriffstoken angezeigt wird, kann Ihre App auf die Azure Active Directory Graph-API zugreifen. Alle Änderungen an „~\\Controllers\\HomeController.cs“ können wieder rückgängig gemacht werden.
 
-Wenn Sie fertig sind, sind zwei Azure Active Directory-Anwendungen im klassischen Azure-Portal konfiguriert, eine für Ihre Debugumgebung in Visual Studio und eine für die veröffentlichte Web-App in Azure. Während des Debuggens werden die App-Einstellungen in der Datei "Web.config" verwendet, damit die **Debug**-Konfiguration in Azure Active Directory funktioniert. Bei der Veröffentlichung (standardmäßig wird die **Release**-Konfiguration veröffentlicht) wird eine transformierte Datei "Web.config" hochgeladen, welche die geänderten App-Einstellungen der Datei "Web.Release.config" enthält.
-
-Wenn Sie die veröffentlichte Web-App dem Debugger anfügen möchten (Sie müssen Debugsymbole Ihres Codes in der veröffentlichten Web-App hochladen), können Sie einen Klon der Debugkonfiguration für das Debuggen von Azure erstellen, jedoch mit einer eigenen benutzerdefinierten "Web.config"-Transformation (z. B. "Web.AzureDebug.config"), welche die Azure Active Directory-Einstellungen der Datei "Web.Release.config" verwendet. Auf diese Weise können Sie eine statische Konfiguration in verschiedenen Umgebungen beibehalten.
+Nun können Sie Ihre Verzeichnisdaten für weitere Aktionen nutzen.
 
 <a name="bkmk_crud"></a>
-## Hinzufügen von Branchenfunktionen zur Beispielanwendung
+## Hinzufügen von Branchenfunktionen zur Anwendung
 
-In diesem Teil des Lernprogramms erfahren Sie, wie Sie die gewünschte Branchenfunktionalität basierend auf der Beispielanwendung erstellen. Sie erstellen einen einfachen CRUD-Arbeitsaufgaben-Tracker ähnlich dem TaskTracker-Controller, der jedoch das standardmäßige CRUD-Gerüst und -Entwurfsmuster verwendet. Außerdem verwenden Sie die enthaltene Datei "Scripts\\AadPickerLibrary.js", um Ihre Anwendung mit Daten aus der Azure Active Directory Graph-API zu ergänzen.
+Jetzt erstellen Sie einen einfachen CRUD-Arbeitsaufgaben-Tracker.
 
-5.	Erstellen Sie im Ordner „Models“ ein neues [Code First](http://www.asp.net/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application)-Modell namens „WorkItem.cs“, und ersetzen Sie den Code durch den folgenden Code:
+5.	Erstellen Sie im Ordner „~\\Models“ eine neue Klassendatei namens „WorkItem.cs“, und ersetzen Sie `public class WorkItem {...}` durch den folgenden Code:
 
 		using System.ComponentModel.DataAnnotations;
-		
-		namespace WebApp_RoleClaims_DotNet.Models
+
+		public class WorkItem
 		{
-		    public class WorkItem
-		    {
-		        [Key]
-		        public int ItemID { get; set; }
-		        public string AssignedToID { get; set; }
-		        public string AssignedToName { get; set; }
-		        public string Description { get; set; }
-		        public WorkItemStatus Status { get; set; }
-		    }
-		
-		    public enum WorkItemStatus
-		    {
-		        Open, 
-		        Investigating, 
-		        Resolved, 
-		        Closed
-		    }
+			[Key]
+			public int ItemID { get; set; }
+			public string AssignedToID { get; set; }
+			public string AssignedToName { get; set; }
+			public string Description { get; set; }
+			public WorkItemStatus Status { get; set; }
 		}
 
-6.	Öffnen Sie die Datei „DAL\\RoleClaimContext.cs“, und fügen Sie den hervorgehobenen Code hinzu:
-	<pre class="prettyprint">
-	public class RoleClaimContext : DbContext
-	{
-	    public RoleClaimContext() : base("RoleClaimContext") { }
-	
-	    public DbSet&lt;Task> Tasks { get; set; }
-	    <mark>public DbSet&lt;WorkItem> WorkItems { get; set; }</mark>
-	    public DbSet&lt;TokenCacheEntry> TokenCacheEntries { get; set; }
-	}</pre>
+		public enum WorkItemStatus
+		{
+			Open,
+			Investigating,
+			Resolved,
+			Closed
+		}
 
 7.	Erstellen Sie das Projekt, damit das neue Modell für die Gerüstlogik in Visual Studio zugänglich ist.
 
-8.	Fügen Sie dem Ordner "Controllers" das neue Gerüstelement `WorkItemsController` hinzu. Klicken Sie dazu mit der rechten Maustaste auf **Controllers**, zeigen Sie auf **Hinzufügen**, und wählen Sie **Neues Gerüstelement**.
+8.	Fügen Sie das neue Gerüstelement `WorkItemsController` zum Ordner „~\\Controllers“ hinzu (klicken Sie mit der rechten Maustaste auf **Controller**, zeigen Sie auf **Hinzufügen**, und wählen Sie **Neues Gerüstelement**).
 
-9.	Wählen Sie **MVC 5-Controller mit Ansichten per Entity Framework**, und klicken Sie auf **Hinzufügen**.
+9.	Wählen Sie **MVC 5-Controller mit Ansichten per Entity Framework**, und klicken Sie auf **Hinzufügen**.
 
-10.	Wählen Sie das soeben erstellte Modell aus, und klicken Sie auf **Hinzufügen**.
+10.	Wählen Sie das Modell, das Sie erstellt haben, klicken Sie auf **+** und **Hinzufügen**, um einen Datenkontext hinzuzufügen, und klicken Sie anschließend auf **Hinzufügen**.
 
-	![](./media/web-sites-dotnet-lob-application-azure-ad/8-add-scaffolded-controller.png)
+	![](./media/web-sites-dotnet-lob-application-azure-ad/16-add-scaffolded-controller.png)
 
-9.	Öffnen der Datei "Controllers\\WorkItemsController.cs"
+9.	Öffnen Sie „~\\Controllers\\WorkItemsController.cs“.
 
-11. Fügen Sie den jeweiligen Aktionen unten die hervorgehobenen [Authorize]-Dekorationen hinzu.
-	<pre class="prettyprint">
-	...
-	
-	<mark>[Authorize(Roles = "Admin, Observer, Writer, Approver")]</mark>
-	public class WorkItemsController : Controller
-	{
-		...
-	
-	    <mark>[Authorize(Roles = "Admin, Writer")]</mark>
-	    public ActionResult Create()
-	    ...
-	
-	    <mark>[Authorize(Roles = "Admin, Writer")]</mark>
-	    public async Task&lt;ActionResult> Create([Bind(Include = "ItemID,AssignedToID,AssignedToName,Description,Status")] WorkItem workItem)
-	    ...
-	
-	    <mark>[Authorize(Roles = "Admin, Writer")]</mark>
-	    public async Task&lt;ActionResult> Edit(int? id)
-	    ...
-	
-	    <mark>[Authorize(Roles = "Admin, Writer")]</mark>
-	    public async Task&lt;ActionResult> Edit([Bind(Include = "ItemID,AssignedToID,AssignedToName,Description,Status")] WorkItem workItem)
-	    ...
-	
-	    <mark>[Authorize(Roles = "Admin, Writer, Approver")]</mark>
-	    public async Task&lt;ActionResult> Delete(int? id)
-	    ...
-	
-	    <mark>[Authorize(Roles = "Admin, Writer, Approver")]</mark>
-	    public async Task&lt;ActionResult> DeleteConfirmed(int id)
-	    ...
-	}</pre>
+13.	Am Anfang der Methode `Create()` und `Edit(int? id)` fügen Sie den folgenden Code hinzu, damit einige Variablen später für JavaScript verfügbar sind. `Ctrl`+`.` dient zur Behebung von Fehlern bei der Namensauflösung.
 
-	Da Sie die Rollenzuordnungen auf der Benutzeroberfläche des klassischen Azure-Portals vornehmen, müssen Sie lediglich sicherstellen, dass jede Aktion die richtigen Rollen autorisiert.
+		ViewData["token"] = Request.Headers["X-MS-TOKEN-AAD-ACCESS-TOKEN"];
+		ViewData["tenant"] =
+			ClaimsPrincipal.Current.Claims
+			.Where(c => c.Type == "http://schemas.microsoft.com/identity/claims/tenantid")
+			.Select(c => c.Value).SingleOrDefault();
 
 	> [AZURE.NOTE] Bei einigen Aktionen haben Sie vielleicht die Dekoration <code>[ValidateAntiForgeryToken]</code> bemerkt. Aufgrund des Verhaltens, das von [Brock Allen](https://twitter.com/BrockLAllen) unter [MVC 4, AntiForgeryToken and Claims](http://brockallen.com/2012/07/08/mvc-4-antiforgerytoken-and-claims/) (MVC 4, AntiForgeryToken und Ansprüche) beschrieben wurde, ist aus folgenden Gründen eventuell keine Fälschungsschutz-Überprüfung für Ihren HTTP POST möglich:
-	> + Azure Active Directory sendet kein vom Fälschungsschutztoken standardmäßig erforderliches http://schemas.microsoft.com/accesscontrolservice/2010/07/claims/identityprovider.
-	> + Wenn Azure Active Directory mit AD FS synchronisiert ist, sendet die AD FS-Vertrauensstellung standardmäßig ebenfalls nicht den http://schemas.microsoft.com/accesscontrolservice/2010/07/claims/identityprovider-Anspruch, Sie können AD FS jedoch manuell zum Senden dieses Anspruchs konfigurieren. Mit diesen Dingen können Sie sich im nächsten Schritt befassen.
 
-12.  Fügen Sie in der Datei „App\_Start\\Startup.Auth.cs“ der `ConfigureAuth`-Methode die folgende Codezeile hinzu. Klicken Sie mit der rechten Maustaste jeweils auf einen Fehler zur Namensauflösung, um ihn zu beheben.
+	> - Azure Active Directory sendet kein vom Fälschungsschutztoken standardmäßig erforderliches http://schemas.microsoft.com/accesscontrolservice/2010/07/claims/identityprovider.
+	> - Wenn Azure Active Directory mit AD FS synchronisiert ist, sendet die AD FS-Vertrauensstellung standardmäßig ebenfalls nicht den http://schemas.microsoft.com/accesscontrolservice/2010/07/claims/identityprovider-Anspruch, Sie können AD FS jedoch manuell zum Senden dieses Anspruchs konfigurieren.
+
+	> Mit diesen Themen werden Sie sich im nächsten Schritt befassen.
+
+12.  Fügen Sie in „~\\Global.asax“ die folgende Codezeile in der Methode `Application_Start()` hinzu. `Ctrl`+`.` dient zur Behebung von Fehlern bei der Namensauflösung.
 
 		AntiForgeryConfig.UniqueClaimTypeIdentifier = ClaimTypes.NameIdentifier;
 	
-	Mit `ClaimTypes.NameIdentifies` wird der Anspruch `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier` angegeben, der von Azure Active Directory nicht bereitgestellt wird. Da Sie nun die Autorisierung vorgenommen haben (die gewiss nicht lange gedauert hat), können Sie sich der eigentlichen Funktionalität der Aktionen zuwenden.
+	Mit `ClaimTypes.NameIdentifies` wird der Anspruch `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier` angegeben, der von Azure Active Directory nicht bereitgestellt wird.
 
-13.	Fügen Sie unter Create() und Edit() den folgenden Code hinzu, um einige Variablen später in JavaScript zur Verfügung zu stellen. Klicken Sie mit der rechten Maustaste jeweils auf einen Fehler zur Namensauflösung, um ihn zu beheben.
-
-        ViewData["token"] = AcquireToken(ClaimsPrincipal.Current.FindFirst(Globals.ObjectIdClaimType).Value);
-        ViewData["tenant"] = ConfigHelper.Tenant;
-
-13.	Da die `AcquireToken()`-Methode noch nicht definiert ist, müssen Sie sie jetzt in der `WorkItemsController`-Klasse definieren. Klicken Sie mit der rechten Maustaste jeweils auf einen Fehler zur Namensauflösung, um ihn zu beheben.
-
-        static string AcquireToken(string userObjectId)
-        {
-            ClientCredential cred = new ClientCredential(ConfigHelper.ClientId, ConfigHelper.AppKey);
-            Claim tenantIdClaim = ClaimsPrincipal.Current.FindFirst(Globals.TenantIdClaimType);
-            AuthenticationContext authContext = new AuthenticationContext(String.Format(CultureInfo.InvariantCulture, ConfigHelper.AadInstance, tenantIdClaim.Value), new TokenDbCache(userObjectId));
-            AuthenticationResult result = authContext.AcquireTokenSilent(ConfigHelper.GraphResourceId, cred, new UserIdentifier(userObjectId, UserIdentifierType.UniqueId));
-            return result.AccessToken;
-        }
-		
-14.	Suchen Sie in "Views\\WorkItems\\Create.cshtml" (einem automatisch erstellten Gerüstelement) die Hilfsmethode `Html.BeginForm`, und ändern Sie sie folgendermaßen:
-	<pre class="prettyprint">@using (Html.BeginForm(<mark>"Create", "WorkItems", FormMethod.Post, new { id = "main-form" }</mark>))
+14.	Suchen Sie in „~Views\\WorkItems\\Create.cshtml“ (einem automatisch erstellten Gerüstelement) die Hilfsmethode `Html.BeginForm`, und nehmen Sie die hervorgehobenen Änderungen vor:
+	<pre class="prettyprint">
+	@model WebApplication1.Models.WorkItem
+	
+	@{
+		ViewBag.Title = "Create";
+	}
+	
+	&lt;h2>Create&lt;/h2>
+	
+	@using (Html.BeginForm(<mark>"Create", "WorkItems", FormMethod.Post, new { id = "main-form" }</mark>)) 
 	{
-	    @Html.AntiForgeryToken()
+		@Html.AntiForgeryToken()
 	
-	    &lt;div class="form-horizontal">
-	        &lt;h4>WorkItem&lt;/h4>
-	        &lt;hr />
-	        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+		&lt;div class="form-horizontal">
+			&lt;h4>WorkItem&lt;/h4>
+			&lt;hr />
+			@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+			&lt;div class="form-group">
+				@Html.LabelFor(model => model.AssignedToID, htmlAttributes: new { @class = "control-label col-md-2" })
+				&lt;div class="col-md-10">
+					@Html.EditorFor(model => model.AssignedToID, new { htmlAttributes = new { @class = "form-control"<mark>, @type = "hidden"</mark> } })
+					@Html.ValidationMessageFor(model => model.AssignedToID, "", new { @class = "text-danger" })
+				&lt;/div>
+			&lt;/div>
 	
-	        &lt;div class="form-group">
-	            &lt;div class="col-md-10">
-	                @Html.EditorFor(model => model.AssignedToID, new { htmlAttributes = new { @class = "form-control"<mark>, @type="hidden"</mark> } })
-	                @Html.ValidationMessageFor(model => model.AssignedToID, "", new { @class = "text-danger" })
-	            &lt;/div>
-	        &lt;/div>
+			&lt;div class="form-group">
+				@Html.LabelFor(model => model.AssignedToName, htmlAttributes: new { @class = "control-label col-md-2" })
+				&lt;div class="col-md-10">
+					@Html.EditorFor(model => model.AssignedToName, new { htmlAttributes = new { @class = "form-control" } })
+					@Html.ValidationMessageFor(model => model.AssignedToName, "", new { @class = "text-danger" })
+				&lt;/div>
+			&lt;/div>
 	
-	        &lt;div class="form-group">
-	            @Html.LabelFor(model => model.AssignedToName, htmlAttributes: new { @class = "control-label col-md-2" })
-	            &lt;div class="col-md-10">
-	                @Html.EditorFor(model => model.AssignedToName, new { htmlAttributes = new { @class = "form-control" } })
-	                @Html.ValidationMessageFor(model => model.AssignedToName, "", new { @class = "text-danger" })
-	            &lt;/div>
-	        &lt;/div>
+			&lt;div class="form-group">
+				@Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+				&lt;div class="col-md-10">
+					@Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+					@Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+				&lt;/div>
+			&lt;/div>
 	
-	        &lt;div class="form-group">
-	            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
-	            &lt;div class="col-md-10">
-	                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
-	                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
-	            &lt;/div>
-	        &lt;/div>
+			&lt;div class="form-group">
+				@Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
+				&lt;div class="col-md-10">
+					@Html.EnumDropDownListFor(model => model.Status, htmlAttributes: new { @class = "form-control" })
+					@Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+				&lt;/div>
+			&lt;/div>
 	
-	        &lt;div class="form-group">
-	            @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
-	            &lt;div class="col-md-10">
-	                @Html.EnumDropDownListFor(model => model.Status, htmlAttributes: new { @class = "form-control" })
-	                @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
-	            &lt;/div>
-	        &lt;/div>
+			&lt;div class="form-group">
+				&lt;div class="col-md-offset-2 col-md-10">
+					&lt;input type="submit" value="Create" class="btn btn-default"<mark> id="submit-button"</mark> />
+				&lt;/div>
+			&lt;/div>
+		&lt;/div>
+	}
 	
-	        &lt;div class="form-group">
-	            &lt;div class="col-md-offset-2 col-md-10">
-	                &lt;input type="submit" value="Create" class="btn btn-default" <mark>id="submit-button"</mark> />
-	            &lt;/div>
-	        &lt;/div>
-	    &lt;/div>
+	&lt;div>
+		@Html.ActionLink("Back to List", "Index")
+	&lt;/div>
 	
-	    <mark>&lt;script>
-	            // Code für Personen-/Gruppenauswahl
-	            var maxResultsPerPage = 14;
-	            var input = document.getElementById("AssignedToName");
-	            var token = "@ViewData["token"]";
-	            var tenant = "@ViewData["tenant"]";
+	@section Scripts {
+		@Scripts.Render("~/bundles/jqueryval")
+		<mark>&lt;script>
+			// Code für Personen-/Gruppenauswahl
+			var maxResultsPerPage = 14;
+			var input = document.getElementById("AssignedToName");
 	
-	            var picker = new AadPicker(maxResultsPerPage, input, token, tenant);
+			var token = "@ViewData["token"]";
+			var tenant = "@ViewData["tenant"]";
 	
-	            // Übermitteln Sie den ausgewählten Benutzer bzw. die Gruppe für die Zuweisung.
-	            $("#submit-button").click({ picker: picker }, function () {
-	                if (!picker.Selected())
-	                    return;
-	                $("#main-form").get()[0].elements["AssignedToID"].value = picker.Selected().objectId;
-	            });
-	    &lt;/script></mark>
+			var picker = new AadPicker(maxResultsPerPage, input, token, tenant);
 	
-	}</pre>
+			// Übermitteln Sie den ausgewählten Benutzer bzw. die Gruppe für die Zuweisung.
+			$("#submit-button").click({ picker: picker }, function () {
+				if (!picker.Selected())
+					return;
+				$("#main-form").get()[0].elements["AssignedToID"].value = picker.Selected().objectId;
+			});
+		&lt;/script></mark>
+	}
+	</pre>
+	
+	Beachten Sie, dass `token` und `tenant` vom Objekt `AadPicker` für Azure Active Directory Graph-API verwendet werden. `AadPicker` fügen Sie später hinzu.
 
-	Im Skript ruft das AadPicker-Objekt die [Azure Active Directory Graph-API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog) auf, um nach Benutzern und Gruppen zu suchen, die für die Eingabe eine Übereinstimmung ergeben.
+15. Nehmen Sie die gleichen Änderungen bei „~\\Views\\WorkItems\\Edit.cshtml“ vor.
 
-15. Öffnen Sie die [Paket-Manager-Konsole](http://docs.nuget.org/Consume/Package-Manager-Console), und führen Sie **Enable-Migrations –EnableAutomaticMigrations** aus. Ähnlich wie die Option, die Sie beim Veröffentlichen der App unter Azure gewählt haben, dient dieser Befehl der Aktualisierung des Datenbankschemas Ihrer App in [LocalDB](https://msdn.microsoft.com/library/hh510202.aspx), wenn Sie das Debuggen in Visual Studio durchführen.
+15. Das Objekt `AadPicker` wird in einem Skript definiert, das Sie Ihrem Projekt hinzufügen müssen. Klicken Sie mit der rechten Maustaste auf den Ordner „~\\Scripts“, zeigen Sie auf **Hinzufügen**, und klicken Sie auf die **JavaScript-Datei**. Geben Sie `AadPickerLibrary` als Dateinamen ein, und klicken Sie auf **OK**.
 
-15. Führen Sie die App nun im Visual Studio-Debugger aus, oder veröffentlichen Sie sie erneut in App Service-Web-Apps. Melden Sie sich als Anwendungsbesitzer an, und navigieren Sie zu `https://<webappname>.azurewebsites.net/WorkItems/Create`. Sie sehen, dass Sie in der Dropdownliste einen Azure Active Directory-Benutzer oder eine -Gruppe auswählen können oder etwas eingeben können, um die Liste zu filtern.
+16. Kopieren Sie den Inhalt von [hier](https://raw.githubusercontent.com/cephalin/active-directory-dotnet-webapp-roleclaims/master/WebApp-RoleClaims-DotNet/Scripts/AadPickerLibrary.js) in „~\\Scripts\\AadPickerLibrary.js“.
 
-	![](./media/web-sites-dotnet-lob-application-azure-ad/9-create-workitem.png)
+	Im Skript ruft das `AadPicker`-Objekt die Azure Active Directory Graph-[API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog) auf, um nach Benutzern und Gruppen zu suchen, die für die Eingabe eine Übereinstimmung ergeben.
 
-16. Füllen Sie den Rest des Formulars aus, und klicken Sie auf **Erstellen**. Die Seite "~/WorkItems/Index" zeigt jetzt die neu erstellte Arbeitsaufgabe an. Darüber hinaus sehen Sie im Screenshot unten, dass ich die Spalte `AssignedToID` in der Datei "Views\\WorkItems\\Index.cshtml" entfernt habe.
+17. „~\\Scripts\\AadPickerLibrary.js“ verwendet auch das [jQuery UI Autocomplete Widget](https://jqueryui.com/autocomplete/). Sie müssen Ihrem Projekt jetzt jQuery UI hinzufügen. Klicken Sie mit der rechten Maustaste auf das Projekt, und klicken Sie auf **NuGet-Pakete verwalten**.
 
-	![](./media/web-sites-dotnet-lob-application-azure-ad/10-workitem-index.png)
+18. Klicken Sie im NuGet-Paket-Manager auf „Durchsuchen“, geben Sie in der Suchleiste **Jquery Ui** ein, und klicken Sie auf **jQuery.UI.Combined**.
 
-11.	Nehmen Sie jetzt entsprechende Änderungen an der Ansicht **Bearbeiten** vor. Nehmen Sie in der Datei "Views\\WorkItems\\Edit.cshtml" die Änderungen an der `Html.BeginForm`-Hilfsmethode vor, die mit den Änderungen an "Views\\WorkItems\\Create.cshtml" im vorherigen Schritt identisch sind (ersetzen Sie "Create" im oben hervorgehobenen Code durch "Edit").
+	![](./media/web-sites-dotnet-lob-application-azure-ad/17-add-jquery-ui-nuget.png)
 
-Das ist alles!
+19. Klicken Sie im rechten Bereich auf **Installieren** und anschließend auf **OK**, um den Vorgang fortzusetzen.
 
-Nachdem Sie die Autorisierungen und die Branchenfunktionalität für die verschiedenen Aktionen im „WorkItems“-Controller konfiguriert haben, können Sie versuchen, sich als Benutzer mit unterschiedlichen Anwendungsrollen anzumelden. Sie sehen dann, wie die Anwendung reagiert.
+19. Öffnen Sie „~\\App\_Start\\BundleConfig.cs“, und nehmen Sie die folgenden hervorgehobenen Änderungen vor:
+	<pre class="prettyprint">
+	public static void RegisterBundles(BundleCollection bundles)
+	{
+		bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
+					"~/Scripts/jquery-{version}.js"<mark>,
+					"~/Scripts/jquery-ui-{version}.js",
+					"~/Scripts/AadPickerLibrary.js"</mark>));
+	
+		bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
+					"~/Scripts/jquery.validate*"));
+	
+		// Use the development version of Modernizr to develop with and learn from. Then, when you're
+		// ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
+		bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
+					"~/Scripts/modernizr-*"));
+	
+		bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
+					"~/Scripts/bootstrap.js",
+					"~/Scripts/respond.js"));
+	
+		bundles.Add(new StyleBundle("~/Content/css").Include(
+					"~/Content/bootstrap.css",
+					"~/Content/site.css"<mark>,
+					"~/Content/themes/base/jquery-ui.css"</mark>));
+	}
+	</pre>
 
-![](./media/web-sites-dotnet-lob-application-azure-ad/11-edit-unauthorized.png)
+	Es gibt leistungsfähigere Möglichkeiten, mit denen Sie JavaScript und CSS-Dateien in Ihrer App verwalten können. Verwenden Sie der Einfachheit halber aber nur die Bündel, die mit jeder Ansicht geladen werden.
+
+20. Veröffentlichen Sie nun Ihre Änderungen. Klicken Sie mit der rechten Maustaste auf Ihr Projekt, und wählen Sie **Veröffentlichen**.
+
+21. Klicken Sie auf **Einstellungen**, stellen Sie sicher, dass eine Verbindungszeichenfolge für die SQL-Datenbank vorhanden ist, wählen Sie **Datenbank aktualisieren**, um das Schema Ihres Modells zu ändern, und klicken Sie auf **Veröffentlichen**.
+
+	![](./media/web-sites-dotnet-lob-application-azure-ad/18-publish-crud-changes.png)
+
+22. Navigieren Sie im Browser zu „https://&lt;*appname*>.azurewebsites.net/workitems“, und klicken Sie auf **Neu erstellen**.
+
+23. Klicken Sie in das Feld **AssignedToName**. Nun werden Ihnen Benutzer und Gruppen Ihres Azure Active Directory-Mandanten in einer Dropdownliste angezeigt. Sie können zum Filtern etwas eingeben, oder mithilfe der Tasten `Up` oder `Down` bzw. durch Klicken den Benutzer oder die Gruppe auswählen.
+
+	![](./media/web-sites-dotnet-lob-application-azure-ad/19-use-aadpicker.png)
+
+24. Klicken Sie zum Speichern der Änderungen auf **Erstellen**. Klicken Sie anschließend auf **Bearbeiten**, und Sie beobachten das gleiche Verhalten bei der erstellten Arbeitsaufgabe.
+
+Herzlichen Glückwunsch, Sie führen nun eine Branchen-App in Azure mit Verzeichniszugriff aus! Graph-API bietet Ihnen noch viele weitere Möglichkeiten. Weitere Informationen finden Sie unter [Azure AD Graph API reference](https://msdn.microsoft.com/library/azure/ad/graph/api/api-catalog) (Azure AD Graph-API-Referenz).
+
+<a name="next"></a>
+## Nächster Schritt
+
+Wenn Sie für Ihre Branchen-App rollenbasierte Zugriffskontrolle (RBAC, role-based aceess control) benötigen, hat das Azure Active Directory-Team unter [Azure AD Graph API reference](https://github.com/Azure-Samples/active-directory-dotnet-webapp-roleclaims) (Azure AD Graph-API-Referenz) ein Beispiel für Sie bereitgestellt. Dort erfahren Sie, wie Sie Rollen für Ihre Azure Active Directory-Anwendung aktivieren, und Benutzer mit der Dekoration `[Authorize]` autorisieren.
+
+Wenn Ihre Branchen-App Zugriff auf lokale Daten benötigt, finden Sie unter [Zugreifen auf lokale Ressourcen über Hybridverbindungen in Azure App Service](web-sites-hybrid-connection-get-started.md) weitere Informationen.
 
 <a name="bkmk_resources"></a>
 ## Weitere Ressourcen
 
-- [Schützen der Anwendung durch SSL und das Authorize-Attribut](web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md#protect-the-application-with-ssl-and-the-authorize-attribute)
-- [Verwenden von Active Directory für die Authentifizierung in Azure App Service](web-sites-authentication-authorization.md)
-- [Erstellen einer .NET MVC-Web-App in Azure App Service mit AD FS-Authentifizierung](web-sites-dotnet-lob-application-adfs.md)
+- [Authentifizierung und Autorisierung in Azure App Service](../app-service/app-service-authentication-overview.md)
+- [Authentifizieren mit lokaler Active Directory-Instanz in Ihrer Azure-App](web-sites-authentication-authorization.md)
+- [Erstellen einer .NET MVC-Web-App in Azure App Service mit Azure Active Directory-Authentifizierung](web-sites-dotnet-lob-application-adfs.md)
+- [App Service Auth and the Azure AD Graph API](https://cgillum.tech/2016/03/25/app-service-auth-aad-graph-api/) (App Service-Authentifizierung und Azure AD Graph-API)
 - [Microsoft Azure Active Directory – Beispiele und Dokumentation](https://github.com/AzureADSamples)
-- [Blog von Vittorio Bertocci](http://blogs.msdn.com/b/vbertocci/)
-- [Migrate a VS2013 Web Project From WIF to Katana (Migrieren eines VS2013-Webprojekts von WIF nach Katana, in englischer Sprache)](http://www.cloudidentity.com/blog/2014/09/15/MIGRATE-A-VS2013-WEB-PROJECT-FROM-WIF-TO-KATANA/)
-- [Azure's new Hybrid Connections not your father's #hybridCloud (Die neuen Hybridverbindungen von Azure – not your father's #hybridCloud, Video in englischer Sprache)](/documentation/videos/new-hybrid-connections-not-your-fathers-hybridcloud/)
-- [Ähnlichkeiten zwischen Active Directory und Azure AD](http://technet.microsoft.com/library/dn518177.aspx)
-- [DirSync mit einmaligem Anmelden](http://technet.microsoft.com/library/dn441213.aspx)
 - [Unterstützte Token- und Anspruchstypen](http://msdn.microsoft.com/library/azure/dn195587.aspx)
 
-[AZURE.INCLUDE [app-service-web-whats-changed](../../includes/app-service-web-whats-changed.md)]
+[Protect the Application with SSL and the Authorize Attribute]: web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md#protect-the-application-with-ssl-and-the-authorize-attribute
 
-[AZURE.INCLUDE [app-service-web-try-app-service](../../includes/app-service-web-try-app-service.md)]
- 
-
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0831_2016-->

@@ -1,6 +1,6 @@
 <properties
    pageTitle="Überwachen von mit Resource Manager bereitgestellten Sicherungen virtueller Computer | Microsoft Azure"
-   description="Es wird beschrieben, wie Sie Ereignisse und Warnungen von Sicherungen virtueller Computer überwachen, die mit Resource Manager bereitgestellt werden."
+   description="Es wird beschrieben, wie Sie Ereignisse und Warnungen von Sicherungen virtueller Computer überwachen, die mit Resource Manager bereitgestellt werden. Senden Sie E-Mails basierend auf Warnungen."
    services="backup"
    documentationCenter="dev-center-name"
    authors="markgalioto"
@@ -13,12 +13,14 @@ ms.workload="storage-backup-recovery"
 ms.tgt_pltfrm="na"
 ms.devlang="na"
 ms.topic="article"
-ms.date="08/11/2016"
+ms.date="08/25/2016"
 ms.author="trinadhk; giridham;"/>
 
 # Überwachen von Warnungen für Sicherungen von virtuellen Azure-Computern
 
-Warnungen sind Antworten des Diensts mit dem Hinweis, dass ein Ereignisschwellenwert erreicht oder überschritten wurde. Informationen zur zeitlichen Entstehung von Problemen können sehr wichtig sein, um die Geschäftskosten gering zu halten. Auftretende Warnungen halten sich normalerweise nicht an einen Zeitplan, und daher ist es wichtig zu wissen, wann die Warnungen auftreten. Im Dashboard des Tresors werden auf der Kachel „Sicherungswarnungen“ Ereignisse der Ebenen „Kritisch“ und „Warnung“ angezeigt. In den Einstellungen der Sicherungswarnungen können Sie alle Ereignisse anzeigen. Aber was ist zu tun, wenn eine Warnung bei der Arbeit an einem anderen Problem auftritt? Wenn Sie nicht wissen, wann die Warnung auftritt, kann dies nur ein unbedeutender Vorfall sein, oder es kann zu einer Kompromittierung von Daten kommen. Stellen Sie wie folgt sicher, dass die richtigen Personen über eine Warnung benachrichtigt werden: Konfigurieren Sie den Dienst so, dass beim Auftreten Warnungsbenachrichtigungen per E-Mail gesendet werden. Weitere Informationen zum Einrichten von E-Mail-Benachrichtigungen finden Sie unter [Konfigurieren von Benachrichtigungen](backup-azure-monitor-vms.md#configure-notifications).
+Warnungen sind Antworten des Diensts mit dem Hinweis, dass ein Ereignisschwellenwert erreicht oder überschritten wurde. Informationen zur zeitlichen Entstehung von Problemen können sehr wichtig sein, um die Geschäftskosten gering zu halten. Auftretende Warnungen halten sich normalerweise nicht an einen Zeitplan, und daher ist es wichtig informiert zu werden, sobald die Warnungen auftreten. Beispiel: Wenn bei einem Sicherungs- oder Wiederherstellungsauftrag ein Fehler auftritt, wird innerhalb von fünf Minuten nach Auftreten des Fehlers eine Warnung gesendet. Im Dashboard des Tresors werden auf der Kachel „Sicherungswarnungen“ Ereignisse der Ebenen „Kritisch“ und „Warnung“ angezeigt. In den Einstellungen der Sicherungswarnungen können Sie alle Ereignisse anzeigen. Aber was ist zu tun, wenn eine Warnung bei der Arbeit an einem anderen Problem auftritt? Wenn Sie nicht wissen, wann die Warnung auftritt, kann dies nur ein unbedeutender Vorfall sein, oder es kann zu einer Kompromittierung von Daten kommen. Stellen Sie wie folgt sicher, dass die richtigen Personen über eine Warnung benachrichtigt werden: Konfigurieren Sie den Dienst so, dass beim Auftreten Warnungsbenachrichtigungen per E-Mail gesendet werden. Weitere Informationen zum Einrichten von E-Mail-Benachrichtigungen finden Sie unter [Konfigurieren von Benachrichtigungen](backup-azure-monitor-vms.md#configure-notifications).
+
+## Wie finde ich Informationen zu den Warnungen?
 
 Sie müssen das Blatt „Sicherungswarnungen“ öffnen, um Informationen zu dem Ereignis anzuzeigen, das eine Warnung ausgelöst hat. Es gibt zwei Möglichkeiten, das Blatt „Sicherungswarnungen“ zu öffnen: über die Kachel „Sicherungswarnungen“ im Dashboard des Tresors oder über das Blatt „Warnungen und Ereignisse“.
 
@@ -72,6 +74,15 @@ So richten Sie E-Mail-Benachrichtigungen für Warnungen ein
 5. Wählen Sie unter **Schweregrad** mindestens eine Ebene aus, bei der die E-Mail-Benachrichtigung ausgelöst werden soll.
 
 6. Klicken Sie auf **Speichern**.
+
+### Gibt es Fälle, in denen keine E-Mail gesendet wird, auch wenn Benachrichtigungen konfiguriert wurden?
+
+Es gibt Situationen, in denen keine Warnung gesendet wird, obwohl die Benachrichtigungen richtig konfiguriert wurden. In den folgenden Situationen werden keine E-Mail-Benachrichtigungen gesendet:
+
+- Für Benachrichtigungen wurde die stündliche Übersicht konfiguriert, und eine Warnung wird ausgelöst und innerhalb dieser Stunde gelöst.
+- Der Auftrag wird abgebrochen.
+- Ein Sicherungsauftrag wird ausgelöst und schlägt dann fehl, und ein weiterer Sicherungsauftrag wird ausgeführt.
+- Ein geplanter Sicherungsauftrag für einen im Resource Manager-Modus aktivierten virtuellen Computer wird gestartet, der virtuelle Computer ist jedoch nicht mehr vorhanden.
 
 ## Anpassen der Ansicht von Ereignissen
 
@@ -170,7 +181,7 @@ PS C:\> Add-AzureRmLogAlertRule -Name backupFailedAlert -Location "East US" -Res
 
 **ResourceId**: Sie erhalten die ResourceId über die Überwachungsprotokolle. Die ResourceId ist eine URL, die in der Spalte „Ressource“ der Vorgangsprotokolle angegeben ist.
 
-**OperationName** : OperationName hat das Format „Microsoft.RecoveryServices/recoveryServicesVault/ *EventName* “, wobei *EventName* wie folgt lauten kann:<br/>
+**OperationName** : OperationName hat das Format „Microsoft.RecoveryServices/recoveryServicesVault/*EventName*“, wobei *EventName* wie folgt lauten kann:<br/>
 - Register <br/>
 - Unregister <br/>
 - ConfigureProtection <br/>
@@ -190,7 +201,7 @@ PS C:\> Add-AzureRmLogAlertRule -Name backupFailedAlert -Location "East US" -Res
 
 **CustomEmail**: Geben Sie die benutzerdefinierte E-Mail-Adresse an, an die eine Warnungsbenachrichtigung gesendet werden soll.
 
-**SendToServiceOwners**: Mit dieser Option werden Warnungsbenachrichtigungen an alle Administratoren und Co-Administratoren des Abonnements gesendet. Sie kann im **New-AzureRmAlertRuleEmail** -Cmdlet verwendet werden.
+**SendToServiceOwners**: Mit dieser Option werden Warnungsbenachrichtigungen an alle Administratoren und Co-Administratoren des Abonnements gesendet. Sie kann im **New-AzureRmAlertRuleEmail**-Cmdlet verwendet werden.
 
 ### Einschränkungen für Warnungen
 Ereignisbasierte Warnungen unterliegen den folgenden Einschränkungen:
@@ -220,4 +231,4 @@ Eine umfassende Beschreibung der Ereignis-, Vorgangs- und Überwachungsprotokoll
 
 Informationen zum erneuten Erstellen eines virtuellen Computers über einen Wiederherstellungspunkt finden Sie unter [Wiederherstellen virtueller Azure-Computer](backup-azure-restore-vms.md). Informationen zum Schutz Ihrer virtuellen Computer finden Sie unter [First look: Back up VMs to a Recovery Services vault](backup-azure-vms-first-look-arm.md) (Einführung: Sichern von VMs in einem Recovery Services-Tresor). Informationen zu den Verwaltungsaufgaben für VM-Sicherungen finden Sie im Artikel [Verwalten der Sicherungen von virtuellen Azure-Computern](backup-azure-manage-vms.md).
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0831_2016-->

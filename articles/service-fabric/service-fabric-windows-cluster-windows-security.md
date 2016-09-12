@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="06/14/2016"
+   ms.date="08/25/2016"
    ms.author="ryanwi"/>
 
 
@@ -25,7 +25,7 @@ Um den unbefugten Zugriff auf einen Service Fabric-Cluster zu verhindern, müsse
 Sie sollten sich die Sicherheitsauswahl für die Knoten-zu-Knoten-Sicherheit sorgfältig überlegen, da eine Clusteraktualisierung von einer Sicherheitsauswahl zur anderen nicht möglich ist. Für eine Änderung der Sicherheitsauswahl ist eine vollständige Neuerstellung des Clusters erforderlich.
 
 ## Konfigurieren der Windows-Sicherheit
-Die Beispieldatei *ClusterConfig.Windows.JSON* für die Konfiguration, die mit dem Paket [Microsoft.Azure.ServiceFabric.WindowsServer.<version>.zip](http://go.microsoft.com/fwlink/?LinkId=730690) für den eigenständigen Cluster heruntergeladen wurde, enthält eine Vorlage zum Konfigurieren der Windows-Sicherheit. Die Windows-Sicherheit wird im Abschnitt **Eigenschaften** konfiguriert:
+Die Beispieldatei *ClusterConfig.Windows.JSON* für die Konfiguration, die mit dem Paket [Microsoft.Azure.ServiceFabric.WindowsServer.<Version>.zip](http://go.microsoft.com/fwlink/?LinkId=730690) für den eigenständigen Cluster heruntergeladen wurde, enthält eine Vorlage zum Konfigurieren der Windows-Sicherheit. Die Windows-Sicherheit wird im Abschnitt **Eigenschaften** konfiguriert:
 
 ```
 "security": {
@@ -51,7 +51,7 @@ Die Beispieldatei *ClusterConfig.Windows.JSON* für die Konfiguration, die mit d
 |Identity|Die Clientidentität, ein Domänenbenutzer.|
 |IsAdmin|„true“ gibt an, dass der Domänenbenutzer über Administratorclientzugriff verfügt, und „false“ gibt an, dass Benutzerclientzugriff besteht.|
 
-[Knoten-zu-Knoten-Sicherheit](service-fabric-cluster-security.md#node-to-node-security) wird konfiguriert, indem **ClusterIdentity** verwendet wird. Um Vertrauensstellungen zwischen Knoten erstellen zu können, müssen die Knoten über das Vorhandensein des jeweils anderen Knotens informiert sein. Dies kann auf zwei Arten erreicht werden: Geben Sie das gruppenverwaltete Dienstkonto an, das alle Knoten im Cluster enthält, oder geben Sie die Domänenknotenidentitäten aller Knoten im Cluster an. Wir empfehlen Ihnen dringend, den Ansatz [Gruppenverwaltete Dienstkonten](https://technet.microsoft.com/library/hh831782.aspx) zu verwenden. Dies gilt besonders für größere Cluster (mehr als zehn Knoten) oder für Cluster, die sich voraussichtlich vergrößern oder verkleinern. Bei diesem Ansatz können Knoten dem gruppenverwalteten Dienstkonto hinzugefügt oder daraus entfernt werden, ohne dass Änderungen am Clustermanifest erforderlich sind. Für diesen Ansatz ist keine Erstellung einer Domänengruppe erforderlich, für die Clusteradministratoren die Zugriffsrechte zum Hinzufügen und Entfernen von Mitgliedern gewährt wurden. Weitere Informationen finden Sie unter [Erste Schritte mit gruppenverwalteten Dienstkonten](http://technet.microsoft.com/library/jj128431.aspx).
+[Knoten-zu-Knoten-Sicherheit](service-fabric-cluster-security.md#node-to-node-security) wird konfiguriert, indem **ClusterIdentity** verwendet wird. Um Vertrauensstellungen zwischen Knoten erstellen zu können, müssen die Knoten über das Vorhandensein des jeweils anderen Knotens informiert sein. Dies kann auf zwei Arten erreicht werden: Geben Sie das gruppenverwaltete Dienstkonto an, das alle Knoten im Cluster enthält, oder geben Sie die Domänenknotenidentitäten aller Knoten im Cluster an. Wir empfehlen Ihnen dringend, den Ansatz der [gruppenverwalteten Dienstkonten](https://technet.microsoft.com/library/hh831782.aspx) zu verwenden. Dies gilt besonders für größere Cluster (mehr als zehn Knoten) oder für Cluster, die sich voraussichtlich vergrößern oder verkleinern. Bei diesem Ansatz können Knoten dem gruppenverwalteten Dienstkonto hinzugefügt oder daraus entfernt werden, ohne dass Änderungen am Clustermanifest erforderlich sind. Für diesen Ansatz ist keine Erstellung einer Domänengruppe erforderlich, für die Clusteradministratoren die Zugriffsrechte zum Hinzufügen und Entfernen von Mitgliedern gewährt wurden. Weitere Informationen finden Sie unter [Erste Schritte mit gruppenverwalteten Dienstkonten](http://technet.microsoft.com/library/jj128431.aspx).
 
 Die [Client-zu-Knoten-Sicherheit](service-fabric-cluster-security.md#client-to-node-security) wird mit **ClientIdentities** konfiguriert. Um die Vertrauensstellung zwischen einem Client und dem Cluster herzustellen, müssen Sie den Cluster so konfigurieren, dass ermittelt werden kann, welche Clientidentitäten vertrauenswürdig sind. Dies ist auf zwei Arten möglich: Geben Sie die Domänengruppenbenutzer oder die Domänenknotenbenutzer an, die eine Verbindung herstellen können. Service Fabric unterstützt zwei unterschiedliche Zugriffsberechtigungstypen für Clients, die mit einem Service Fabric-Cluster verbunden sind: Administrator und Benutzer. Die Zugriffssteuerung ermöglicht es dem Clusteradministrator, den Zugriff auf bestimmte Arten von Clustervorgängen für verschiedene Gruppen von Benutzern einzuschränken, wodurch die Sicherheit des Clusters erhöht wird. Administratoren haben vollständigen Zugriff auf Verwaltungsfunktionen (einschließlich Lese-/Schreibzugriff). Benutzer haben standardmäßig nur Lesezugriff auf Verwaltungsfunktionen (z. B. Abfragefunktionen) sowie die Möglichkeit, Anwendungen und Dienste aufzulösen.
 
@@ -79,4 +79,4 @@ Weitere Informationen zur Knoten-zu-Knoten-Sicherheit, Client-zu-Knoten-Sicherhe
 
 Beispiele für die Herstellung der Verbindung mit PowerShell oder FabricClient finden Sie unter [Herstellen einer Verbindung mit einem sicheren Cluster](service-fabric-connect-to-secure-cluster.md).
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0831_2016-->

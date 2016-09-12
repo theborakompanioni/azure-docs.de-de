@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/01/2016"
+	ms.date="08/25/2016"
 	ms.author="tarcher"/>
 
 # Hinzufügen eines Git-Artefaktrepositorys zu einem Lab
@@ -51,7 +51,7 @@ Um Ihrem Lab ein GitHub-Artefaktrepository hinzuzufügen, rufen Sie zunächst di
 
 ###Verbinden Ihres Labs mit dem GitHub-Repository
 
-1. Melden Sie sich beim [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) an.
+1. Melden Sie sich auf dem [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) an.
 
 1. Wählen Sie **Durchsuchen** und dann in der Liste **DevTest Labs**.
 
@@ -117,8 +117,10 @@ Um Ihrem Lab ein Visual Studio Git-Artefaktrepository hinzuzufügen, rufen Sie z
     3. Geben Sie das gespeicherte **Persönliche Zugriffstoken** für das Artefaktrepository ein.
     4. Wählen Sie **Speichern** aus.
 
-## Verwandte Blogbeiträge
-- [How to troubleshoot failing Artifacts in AzureDevTestLabs](http://www.visualstudiogeeks.com/blog/DevOps/How-to-troubleshoot-failing-artifacts-in-AzureDevTestLabs) (Gewusst wie: Problembehandlung für fehlerhafte Artefakte in AzureDevTestLabs)
-- [Join a VM to existing AD Domain using ARM template in Azure Dev Test Lab](http://www.visualstudiogeeks.com/blog/DevOps/Join-a-VM-to-existing-AD-domain-using-ARM-template-AzureDevTestLabs) (Hinzufügen eines virtuellen Computers zu einer vorhandenen AD-Domäne mithilfe einer ARM-Vorlage in Azure Dev Test Lab)
+[AZURE.INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
-<!---HONumber=AcomDC_0803_2016-->
+## Verwandte Blogbeiträge
+- [How to troubleshoot failing Artifacts in AzureDevTestLabs (Gewusst wie: Problembehandlung für fehlerhafte Artefakte in AzureDevTestLabs)](http://www.visualstudiogeeks.com/blog/DevOps/How-to-troubleshoot-failing-artifacts-in-AzureDevTestLabs)
+- [Join a VM to existing AD Domain using ARM template in Azure Dev Test Lab (Hinzufügen eines virtuellen Computers zu einer vorhandenen AD-Domäne mithilfe einer ARM-Vorlage in Azure Dev Test Lab)](http://www.visualstudiogeeks.com/blog/DevOps/Join-a-VM-to-existing-AD-domain-using-ARM-template-AzureDevTestLabs)
+
+<!---HONumber=AcomDC_0831_2016-->

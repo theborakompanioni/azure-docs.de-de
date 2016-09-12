@@ -31,7 +31,7 @@ Entscheidungen:
 
 Aufgaben:
 
-- Legen Sie die Affixe fest, die Sie für die Ressourcen nutzen werden, um Konsistenz zu gewährleisten.
+- Legen Sie die Affixe fest, die Sie für die Ressourcen nutzen, um Konsistenz zu gewährleisten.
 - Legen Sie die Namen der Speicherkonten fest. Beachten Sie dabei, dass diese global eindeutig sein müssen.
 - Dokumentieren Sie die zu verwendende Benennungskonvention, und geben Sie diese an alle beteiligten Parteien weiter, um Konsistenz zwischen den Bereitstellungen zu gewährleisten.
 
@@ -39,9 +39,9 @@ Aufgaben:
 
 Es sollte eine geeignete Benennungskonvention vorhanden sein, bevor Sie mit der Entwicklung in Azure beginnen. Durch eine Benennungskonvention wird sichergestellt, dass alle Ressourcen vorhersagbare Namen haben, die den Verwaltungsaufwand für diese Ressourcen senken.
 
-Sie können auch einen bestimmten Satz von Benennungskonventionen für Ihre gesamte Organisation oder für ein bestimmtes Azure-Abonnement oder -Konto anwenden. Es ist zwar einfach, für Einzelpersonen innerhalb von Organisationen implizite Regeln für die Arbeit mit Azure-Ressourcen einzurichten, bei der Arbeit eines Teams an einem Projekt in Azure ist dieses Modell jedoch nicht gut geeignet.
+Sie können auch einen bestimmten Satz von Benennungskonventionen für Ihre gesamte Organisation oder für ein bestimmtes Azure-Abonnement oder -Konto anwenden. Es ist zwar einfach, für Einzelpersonen innerhalb von Organisationen implizite Regeln für die Arbeit mit Azure-Ressourcen einzurichten, doch Sie müssen eine Skalierung für die Zusammenarbeit von Teams in Azure durchführen können.
 
-Sie sollten den Satz von Benennungskonventionen im Voraus vereinbaren. Es gibt einige Überlegungen hinsichtlich Benennungskonventionen, die für alle Regelsätze gelten.
+Vereinbaren Sie im Voraus den Satz von Benennungskonventionen. Es gibt einige Überlegungen hinsichtlich Benennungskonventionen, die für alle Regelsätze gelten.
 
 ## Affixe
 
@@ -60,7 +60,7 @@ Affixe können auf verschiedene Aspekte verweisen, die die entsprechenden Ressou
 | Aspekt | Beispiele | Hinweise |
 |:-------------------------------------|:-----------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------|
 | Environment | dev, stg, prod | Abhängig von Zweck und Name der jeweiligen Umgebung. |
-| Standort | usw (USA Westen), use (USA Osten 2) | Abhängig von der Region des Datencenters oder der Region der Organisation. |
+| Ort | usw (USA Westen), use (USA Osten 2) | Abhängig von der Region des Datencenters oder der Region der Organisation. |
 | Azure-Komponente, -Dienst oder -Produkt | „Rg“ für Ressourcengruppe, „VNet“ für virtuelles Netzwerk | Je nach Produkt, das die Ressource unterstützt. |
 | Rolle | db, app, web | Abhängig von der Rolle des virtuellen Computers. |
 | Instanz | 01, 02, 03 usw. | Für Ressourcen, die mehr als eine Instanz besitzen. Beispielsweise Webserver mit Lastenausgleich in einem Clouddienst. |
@@ -70,11 +70,11 @@ Beim Einrichten der Benennungskonventionen sollten Sie sicherstellen, dass diese
 
 ## Datumsangaben
 
-In vielen Fällen ist es wichtig, das Datum der Erstellung anhand des Namens einer Ressource bestimmen zu können. Wir empfehlen das Datumsformat JJJJMMTT. Durch dieses Format wird sichergestellt, dass nicht nur das vollständige Datum aufgezeichnet wird, sondern auch zwei Ressourcen gleichzeitig alphabetisch und chronologisch sortiert werden, deren Namen sich nur durch das Datum unterscheiden.
+In vielen Fällen ist es wichtig, das Datum der Erstellung anhand des Namens einer Ressource bestimmen zu können. Wir empfehlen das Datumsformat JJJJMMTT. Durch dieses Format wird sichergestellt, dass nicht nur das vollständige Datum aufgezeichnet wird, sondern auch zwei Ressourcen alphabetisch und chronologisch sortiert werden, deren Namen sich nur durch das Datum unterscheiden.
 
 ## Benennen von Ressourcen
 
-Sie sollten die einzelnen Ressourcentypen in der Benennungskonvention definieren, die Regeln für die Zuweisung von Namen für die erstellten Ressourcen enthalten sollte. Diese Regeln sollten auf alle Ressourcentypen angewendet werden, z. B.:
+Definieren Sie die einzelnen Ressourcentypen in der Benennungskonvention, die Regeln für die Zuweisung von Namen für die erstellten Ressourcen enthalten sollte. Diese Regeln sollten auf alle Ressourcentypen angewendet werden, z. B.:
 
 - Abonnements
 - Konten
@@ -92,7 +92,7 @@ Sie sollten aussagekräftige Namen verwenden, sodass der Name genügend Informat
 
 ## Computernamen
 
-Wenn Sie einen virtuellen Computer (VM) erstellen, ist für Microsoft Azure ein VM-Name aus bis zu 15 Zeichen erforderlich, der für den Ressourcennamen verwendet wird. Azure verwendet den gleichen Namen für das Betriebssystem, das auf dem virtuellen Computer installiert ist. Allerdings können diese Namen nicht immer identisch sein.
+Wenn Sie einen virtuellen Computer (VM) erstellen, ist für Azure ein VM-Name aus bis zu 64 Zeichen erforderlich, der für den Ressourcennamen verwendet wird. Azure verwendet den gleichen Namen für das Betriebssystem, das auf dem virtuellen Computer installiert ist. Allerdings können diese Namen nicht immer identisch sein.
 
 Falls ein virtueller Computer aus einer VHD-Imagedatei erstellt wird, die bereits ein Betriebssystem enthält, kann sich der Name des virtuellen Computers in Azure vom Computernamen des Betriebssystems des virtuellen Computers unterscheiden. Da dies zusätzliche Probleme bei der Verwaltung virtueller Computer verursachen kann, wird davon abgeraten. Geben Sie der Ressource des virtuellen Azure-Computers den gleichen Computernamen, den Sie dem Betriebssystem dieses virtuellen Computers zuweisen.
 
@@ -110,4 +110,4 @@ Für die Benennung von Speicherkonten gelten spezielle Regeln. Sie können nur K
 ## Nächste Schritte
 [AZURE.INCLUDE [virtual-machines-linux-infrastructure-guidelines-next-steps](../../includes/virtual-machines-linux-infrastructure-guidelines-next-steps.md)]
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0831_2016-->

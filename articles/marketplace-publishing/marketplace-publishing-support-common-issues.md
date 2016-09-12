@@ -29,7 +29,7 @@ Im Folgenden erfahren Sie, wie Sie eine Gutschrift oder Rückerstattung im Auftr
 
   ![1\_RequestRefund][1]
 
-  1. Navigieren Sie zu den Supportseiten.
+  1. Navigieren zu den Supportseiten hier: [https://support.microsoft.com/de-DE/getsupport?tenant=ClassicCommercial&locale=de-DE&supportregion=de-DE&pesid=15635&sd=&oaspworkflow=start\_1.0.0.0&wf=0&ccsid=635562546535117884](https://support.microsoft.com/de-DE/getsupport?tenant=ClassicCommercial&locale=de-DE&supportregion=de-DE&pesid=15635&sd=&oaspworkflow=start_1.0.0.0&wf=0&ccsid=635562546535117884).
   2. Wählen Sie in der Dropdownliste **Problemtyp** den Eintrag **Kundenverwaltung** aus.
   3. Wählen Sie im Feld **Kategorie** die Option **Genehmigen oder Anfordern einer Rückerstattung für Kunden** aus.
   4. Klicken Sie auf **Anfrage starten**.
@@ -120,4 +120,4 @@ Wenn Sie Ihr Herausgeberprofil aktualisieren möchten, kann dies über das Micro
 [7]: ./media/marketplace-publishing-support-common-issues/acctdetails.png
 [8]: ./media/marketplace-publishing-support-common-issues/manageadmins.png
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0831_2016-->

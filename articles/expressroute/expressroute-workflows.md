@@ -12,7 +12,7 @@
    ms.topic="article" 
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="08/18/2016"
+   ms.date="08/29/2016"
    ms.author="cherylmc"/>
 
 # ExpressRoute-Workflows für die Verbindungsbereitstellung und Verbindungszustände
@@ -50,7 +50,7 @@ Jede ExpressRoute-Verbindung hat zwei Zustände:
 - Bereitstellungszustand des Service Providers
 - Status
 
-Der Status gibt den Bereitstellungszustand von Microsoft an. Diese Eigenschaft kann einen der folgenden Zustände aufweisen: *Enabled*, *Enabling* oder *Disabling*. Die ExpressRoute-Verbindung muss sich im aktivierten Zustand befinden, damit Sie sie verwenden können.
+Der Status gibt den Bereitstellungszustand von Microsoft an. Diese Eigenschaft wird auf „Aktiviert“ festgelegt, wenn Sie eine ExpressRoute-Verbindung erstellen.
 
 Der Bereitstellungszustand des Konnektivitätsanbieters gibt den Zustand aufseiten des Konnektivitätsanbieters an. Mögliche Zustände: *NotProvisioned*, *Provisioning* oder *Provisioned*. Die ExpressRoute-Verbindung muss den Zustand „Provisioned“ aufweisen, damit Sie sie verwenden können.
 
@@ -83,24 +83,18 @@ Die ExpressRoute-Verbindung weist den folgenden Zustand auf, sobald der Konnekti
 
 Die Verbindung kann nur im Zustand „Provisioned“ und „Enabled“ verwendet werden. Wenn Sie einen Layer 2-Anbieter nutzen, können Sie das Routing für Ihre Verbindung nur konfigurieren, wenn sie sich in diesem Zustand befindet.
 
-#### Die Bereitstellung wird zuerst aufseiten von Microsoft initiiert:
+#### Der Konnektivitätsanbieter hebt die Verbindungsbereitstellung auf:
 
-Die ExpressRoute-Verbindung weist den folgenden Zustand auf, wenn Sie das PowerShell-Cmdlet zum Löschen der ExpressRoute-Verbindung ausführen.
-
-	ServiceProviderProvisioningState : Provisioned
-	Status                           : Disabling
-
-Sie müssen sich an Ihren Konnektivitätsanbieter wenden, wenn Sie die Bereitstellung der ExpressRoute-Verbindung aufheben möchten. **Wichtig:** Microsoft erhebt weiterhin Gebühren für die Verbindung, bis Sie mithilfe des PowerShell-Cmdlets die Bereitstellung der Verbindung aufheben.
-
-#### Die Aufhebung der Bereitstellung wird aufseiten des Service Providers initiiert:
-
-Wenn Sie den Service Provider aufgefordert haben, zuerst die Bereitstellung der ExpressRoute-Verbindung aufzuheben, weist die Verbindung den folgenden Zustand auf, wenn der Service Provider den Prozess zur Bereitstellungsaufhebung abgeschlossen hat.
+Wenn Sie den Dienstanbieter aufgefordert haben, die Bereitstellung der ExpressRoute-Verbindung aufzuheben, weist die Verbindung den folgenden Zustand auf, wenn der Dienstanbieter den Prozess der Bereitstellungsaufhebung abgeschlossen hat.
 
 
 	ServiceProviderProvisioningState : NotProvisioned
 	Status                           : Enabled
 
-Sie können sie bei Bedarf erneut aktivieren oder PowerShell-Cmdlets ausführen, um die Verbindung zu löschen. **Wichtig:** Microsoft erhebt weiterhin Gebühren für die Verbindung, bis Sie mithilfe des PowerShell-Cmdlets die Bereitstellung der Verbindung aufheben.
+
+Sie können sie bei Bedarf erneut aktivieren oder PowerShell-Cmdlets ausführen, um die Verbindung zu löschen.
+
+>[AZURE.IMPORTANT] Wenn Sie ein PowerShell-Cmdlet zum Löschen der Verbindung ausführen, während sich ServiceProviderProvisioningState im Status „Bereitstellung“ oder „Bereitgestellt“ befindet, tritt ein Fehler auf. Arbeiten Sie mit Ihrem Konnektivitätsanbieter zusammen, um zuerst die Bereitstellung der ExpressRoute-Verbindung aufzuheben, und löschen Sie dann die Verbindung. Microsoft erhebt weiterhin Gebühren für die Verbindung, bis Sie die Verbindung mithilfe des PowerShell-Cmdlets löschen.
 
 
 ## Konfigurationszustand der Routingsitzung
@@ -122,4 +116,4 @@ Wenn der Zustand der angekündigten öffentlichen Präfixe *validation needed* l
 	- [Konfigurieren des Routings](expressroute-howto-routing-arm.md)
 	- [Verknüpfen eines VNet mit einer ExpressRoute-Verbindung](expressroute-howto-linkvnet-arm.md)
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->

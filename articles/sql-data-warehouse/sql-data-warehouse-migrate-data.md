@@ -13,18 +13,18 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="08/16/2016"
+   ms.date="08/25/2016"
    ms.author="lodipalm;barbkess;sonyama"/>
 
 # Migrieren von Daten
 Daten können aus unterschiedlichen Quellen und mithilfe verschiedener Tools in Ihr SQL Data Warehouse verschoben werden. Zum Erreichen dieses Ziels können die ADF-Kopieraktivität, SSIS und bcp verwendet werden. Mit zunehmender Menge der Daten empfiehlt es sich jedoch, den Vorgang der Datenmigration in verschiedene Schritte aufzugliedern. Dies bietet Ihnen die Möglichkeit, die einzelnen Schritte im Hinblick auf Leistung und Belastbarkeit zu optimieren und so eine reibungslose Datenmigration zu gewährleisten.
 
-In diesem Artikel werden zunächst einfache Migrationsszenarios der ADF-Kopieraktivität sowie von SSIS und bcp erörtert. Dann wird detaillierter erläutert, wie die Migration optimiert werden kann.
+In diesem Artikel werden zunächst einfache Migrationsszenarien der ADF-Kopieraktivität sowie von SSIS und bcp erörtert. Dann wird detaillierter erläutert, wie die Migration optimiert werden kann.
 
 ## Azure Data Factory (ADF)-Kopieraktivität
-[ADF Copy][] ist Teil von [Azure Data Factory][]. Mithilfe der ADF-Kopieraktivität können Sie Ihre Daten in Flatfiles im lokalen Speicher, in Remoteflatfiles im Azure-Blob-Speicher oder direkt in SQL Data Warehouse exportieren.
+Die [ADF-Kopieraktivität][] ist Teil von [Azure Data Factory][]. Mithilfe der ADF-Kopieraktivität können Sie Ihre Daten in Flatfiles im lokalen Speicher, in Remoteflatfiles im Azure-Blob-Speicher oder direkt in SQL Data Warehouse exportieren.
 
-Wenn sich Ihre Daten in Flatfiles befinden, müssen Sie sie zuerst in den Azure-Blob-Speicher übertragen. Erst dann können Sie sie in SQL Data Warehouse laden. Sobald die Daten in den Azure-Blobspeicher übertragen wurden, können Sie [ADF Copy][] erneut verwenden, um die Daten in das SQL Data Warehouse zu übertragen.
+Wenn sich Ihre Daten in Flatfiles befinden, müssen Sie sie zuerst in den Azure-Blobspeicher übertragen. Erst dann können Sie sie in SQL Data Warehouse laden. Nachdem die Daten in den Azure-Blob-Speicher übertragen wurden, können Sie sie dann wieder mithilfe der [ADF-Kopieraktivität][] in SQL Data Warehouse übertragen.
 
 Auch PolyBase stellt eine leistungsstarke Möglichkeit zum Laden der Daten dar. Allerdings bedeutet dies, dass statt einem zwei Tools verwendet werden. Wenn Ihr Schwerpunkt auf der besten Leistung liegt, sollten Sie PolyBase verwenden. Wenn Sie nur ein Tool verwenden möchten (und die Daten nicht allzu umfangreich sind), ist ADF die beste Lösung für Sie.
 
@@ -72,10 +72,10 @@ Ein SQLDW-Datenmigrationsprozess kann wirksam in drei separate Schritte untertei
 2. Übertragen der Daten in Azure
 3. Laden der Daten in die SQLDW-Zieldatenbank
 
-Jeder Schritt kann einzeln optimiert werden, sodass ein stabiler, neustartfähiger und flexibler Migrationsprozess entsteht, durch den die Leistung in jedem Schritt maximiert wird.
+Jeder Schritt kann einzeln optimiert werden, sodass ein stabiler, neustartfähiger und flexibler Migrationsprozess entsteht, der die Leistung in jedem Schritt maximiert.
 
 ## Optimieren des Ladens von Daten
-Betrachten wir diese Schritte zunächst in der umgekehrten Reihenfolge: Daten können am schnellsten über PolyBase geladen werden. Für die Optimierung eines über PolyBase durchgeführten Ladevorgangs müssen in den vorhergehenden Schritten bestimmte Voraussetzungen gegeben sein. Daher ist es am besten, sich hiermit im Voraus vertraut zu machen. Sie lauten wie folgt:
+Betrachten wir diese Schritte zunächst in der umgekehrten Reihenfolge: Daten können am schnellsten über PolyBase geladen werden. Für die Optimierung eines über PolyBase durchgeführten Ladevorgangs müssen in den vorhergehenden Schritten bestimmte Voraussetzungen gegeben sein. Machen Sie sich am besten im Voraus damit vertraut. Sie lauten wie folgt:
 
 1. Codierung der Datendateien
 2. Format der Datendateien
@@ -118,7 +118,7 @@ Die Verwendung von [ExpressRoute][] bietet folgende Vorteile:
 Interessiert? Weitere Informationen und Preise finden Sie in der [ExpressRoute-Dokumentation][].
 
 ### Azure Import/Export-Dienst
-Der Azure Import/Export-Dienst ist ein Datenübertragungsprozess zur Übertragung umfangreicher (GB++) und sehr umfangreicher (TB++) Datenmengen in Azure. Dabei werden Ihre Daten auf Datenträger geschrieben und an ein Azure-Rechenzentrum versendet. Der Inhalt der Datenträger wird dann in Ihrem Auftrag in Azure-Blob-Speicher geladen.
+Der Azure Import/Export-Dienst ist ein Datenübertragungsprozess zur Übertragung umfangreicher (GB++) und sehr umfangreicher (TB++) Datenmengen in Azure. Dabei werden Ihre Daten auf Datenträger geschrieben und an ein Azure-Rechenzentrum versendet. Der Inhalt der Datenträger wird dann in Ihrem Auftrag in Azure-Blobspeicher geladen.
 
 Allgemeine Übersicht über den Import- und Exportprozess:
 
@@ -173,6 +173,7 @@ Weitere Informationen zur Migration finden Sie unter [Migrieren Ihrer Lösung na
 
 <!--Article references-->
 [AZCopy]: ../storage/storage-use-azcopy.md
+[ADF-Kopieraktivität]: ../data-factory/data-factory-data-movement-activities.md
 [Azure Data Factory Editor – Beispiele]: ../data-factory/data-factory-samples.md
 [ADF Copy examples]: ../data-factory/data-factory-copy-activity-tutorial-using-visual-studio.md
 [Entwicklungsübersicht]: sql-data-warehouse-overview-develop.md
@@ -194,4 +195,4 @@ Weitere Informationen zur Migration finden Sie unter [Migrieren Ihrer Lösung na
 [ADO.NET-Zieladapter]: https://msdn.microsoft.com/library/bb934041.aspx
 [SSIS-Dokumentation]: https://msdn.microsoft.com/library/ms141026.aspx
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0831_2016-->

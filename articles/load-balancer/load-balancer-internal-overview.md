@@ -13,35 +13,25 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="03/17/2016"
+   ms.date="08/25/2016"
    ms.author="sewhee" />
 
 
 # Interner Lastenausgleich (Übersicht)
 
-Der interne Lastenausgleich (ILB) stellt eine Sicherheitsverbesserung gegenüber dem aktuellen Lastenausgleich in Azure dar. Zugriff auf den ILB kann nur über Ressourcen im Clouddienst oder über VPN für den Zugriff auf die Azure-Infrastruktur erfolgen.
-
-Die Infrastruktur schränkt den Zugriff ein und erstellt eine Vertrauensgrenze zwischen virtuellen IP-Adressen mit Lastenausgleich und Clouddienst oder einem virtuellen Netzwerk, und sie wird nie direkt einem Internetendpunkt verfügbar gemacht. Dies ermöglicht die Ausführung interner Line-of-Business-Anwendungen in Azure und Zugriff in der Cloud oder lokal.
+Im Gegensatz zum Lastenausgleichsmodul für Internetzugriff funktioniert der Internal Load Balancer (ILB) nur für Ressourcen innerhalb des Clouddiensts oder für Ressourcen, die über VPN auf die Azure-Infrastruktur zugreifen. Die Infrastruktur schränkt den Zugriff auf die virtuellen IP-Adressen mit Lastenausgleich eines Clouddiensts oder eines virtuellen Netzwerks ein, sodass diese nie direkt für einen Internetendpunkt verfügbar gemacht werden. Dies ermöglicht die Ausführung interner Branchenanwendungen in Azure und den Zugriff auf diese Anwendungen in der Cloud oder über lokale Ressourcen.
 
 ## Szenarios für den internen Load Balancer
 
-Sie können den ILB in zahlreichen neuen Konfigurationen verwenden, darunter die folgenden:
-
 Der interne Azure-Lastenausgleich (ILB) ermöglicht Lastenausgleich zwischen virtuellen Computern in einem Clouddienst oder virtuellen Netzwerk mit regionalem Umfang. Informationen zur Verwendung und Konfiguration virtueller Netzwerke mit regionalem Umfang finden Sie unter [Regionale virtuelle Netzwerke](https://azure.microsoft.com/blog/2014/05/14/regional-virtual-networks/) im Azure-Blog. Vorhandene virtuelle Netzwerke, die für eine Affinitätsgruppe konfiguriert wurden, können kein ILB verwenden.
 
-ILB aktiviert die folgenden neuen Arten des Lastenausgleichs:
+ILB ermöglicht die folgenden Szenarien:
 
 - Innerhalb eines Clouddiensts von virtuellen Computern zu einer Gruppe von virtuellen Computern, die sich im selben Clouddienst befinden (siehe Abbildung 1).
-
 - In einem virtuellen Netzwerk von virtuellen Computern im virtuellen Netzwerk zu einer Gruppe von virtuellen Computern im selben Clouddienst des virtuellen Netzwerks (siehe Abbildung 2).
-
 - In einem standortübergreifenden virtuellen Netzwerk von lokalen Computern zu einer Gruppe von virtuellen Computern im selben Clouddienst des virtuellen Netzwerks (siehe Abbildung 3).
-
-Der vorhandene Azure-Lastenausgleich bietet nur Lastenausgleich zwischen internetbasierten Computern und virtuellen Computern in einem Clouddienst. ILB ermöglicht neue Funktionen zum Hosten von virtuellen Computern in Azure.
-
 - Internetanwendungen mit mehreren Ebenen, bei denen die Back-End-Ebenen keine Internetanbindung haben, jedoch Lastenausgleich für Datenverkehr für die mit dem Internet verbundene Ebene erfordern.
 - Lastenausgleich für Branchenanwendungen (LOB-Anwendungen), die in Azure gehostet werden, ohne dass zusätzliche Hardware oder Software für den Lastenausgleich erforderlich ist. Einbeziehen von lokalen Servern in die Gruppe der Computer, für deren Datenverkehr Lastenausgleich stattfindet.
-- In den folgenden Abschnitten werden diese Konfigurationen ausführlich beschrieben.
 
 ## Anwendungen mit mehreren Ebenen mit Internetanbindung
 
@@ -72,10 +62,13 @@ Für Datenverkehr von Clients im lokalen Netzwerk wird in einer Gruppe von LOB-S
 
 Der Clientcomputer hat Zugriff auf eine IP-Adresse des Azure-VPN-Diensts mit Punkt-zu-Standort-VPN. Er lässt die Verwendung der LOB-Anwendung zu, die hinter dem ILB-Endpunkt gehostet wird.
 
+Abbildung 3
 
 ![Interner Lastenausgleich mit Punkt-zu-Standort-VPN](./media/load-balancer-internal-overview/IC744148.png)
 
 Ein weiteres Szenario für LOB ist ein Standort-zu-Standort-VPN mit dem virtuellen Netzwerk, in dem der ILB-Endpunkt konfiguriert ist. Dies ermöglicht lokalen Netzwerkdatenverkehr zum ILB-Endpunkt.
+
+Abbildung 4
 
 ![Interner Lastenausgleich mit Standort-zu-Standort-VPN](./media/load-balancer-internal-overview/IC744150.png)
 
@@ -90,4 +83,4 @@ Ein weiteres Szenario für LOB ist ein Standort-zu-Standort-VPN mit dem virtuell
 
 [Konfigurieren von TCP-Leerlauftimeout-Einstellungen für den Lastenausgleich](load-balancer-tcp-idle-timeout.md)
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->

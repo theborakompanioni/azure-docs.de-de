@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Kopieren/Verschieben von Azure-Blobdatasets | Azure Data Factory" 
+	pageTitle="Kopieren von Daten in und aus Azure Blob Storage | Azure Data Factory" 
 	description="Hier erfahren Sie, wie Sie Blobdaten in Azure Data Factory kopieren. Verwenden Sie unser Beispiel zum Kopieren von Daten aus Azure-Blobspeicher in die Azure SQL-Datenbank (und umgekehrt)." 
     keywords="Blobdaten, Azure-Blobkopie"
 	services="data-factory" 
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/22/2016" 
+	ms.date="08/25/2016" 
 	ms.author="spelluru"/>
 
 # Verschieben von Daten in einen und aus einem Azure-Blob mithilfe von Azure Data Factory
@@ -38,7 +38,7 @@ Dieses Beispiel zeigt Folgendes:
 4.	Ein [Ausgabedataset](data-factory-create-datasets.md) des Typs [AzureSqlTable](data-factory-azure-sql-connector.md#azure-sql-dataset-type-properties)
 4.	Eine [Pipeline](data-factory-create-pipelines.md) mit Kopieraktivität, die [BlobSource](#azure-blob-copy-activity-type-properties) und [SqlSink](data-factory-azure-sql-connector.md#azure-sql-copy-activity-type-properties) verwendet
 
-Im Beispiel werden Zeitreihendaten aus einem Azure-Blob stündlich in eine Tabelle in einer Azure SQL-Datenbank kopiert. Die bei diesen Beispielen verwendeten JSON-Eigenschaften werden in den Abschnitten beschrieben, die auf die Beispiele folgen.
+Im Beispiel werden Zeitreihendaten aus einem Azure-Blob stündlich in eine Azure SQL-Tabelle kopiert. Die bei diesen Beispielen verwendeten JSON-Eigenschaften werden in den Abschnitten beschrieben, die auf die Beispiele folgen.
 
 **Mit Azure SQL verknüpfter Dienst:**
 
@@ -210,7 +210,7 @@ Dieses Beispiel zeigt Folgendes:
 4.	Eine [Pipeline](data-factory-create-pipelines.md) mit Kopieraktivität, die [SqlSource](data-factory-azure-sql-connector.md#azure-sql-copy-activity-type-properties) und [BlobSink](#azure-blob-copy-activity-type-properties) verwendet
 
 
-Im Beispiel werden Zeitreihendaten aus einer Tabelle in einer Azure SQL-Datenbank stündlich in einen Azure-Blob kopiert. Die bei diesen Beispielen verwendeten JSON-Eigenschaften werden in den Abschnitten beschrieben, die auf die Beispiele folgen.
+Im Beispiel werden Zeitreihendaten aus einer Azure SQL-Tabelle stündlich in einen Azure-Blob kopiert. Die bei diesen Beispielen verwendeten JSON-Eigenschaften werden in den Abschnitten beschrieben, die auf die Beispiele folgen.
 
 **Mit Azure SQL verknüpfter Dienst:**
 
@@ -433,7 +433,7 @@ Im Beispiel oben werden Jahr, Monat, Tag und Uhrzeit von SliceStart in separate 
 
 
 ## Eigenschaften des Azure-Blob-Kopieraktivitätstyps  
-Eine vollständige Liste der Abschnitte und Eigenschaften zum Definieren von Aktivitäten finden Sie im Artikel [Erstellen von Pipelines](data-factory-create-pipelines.md). Eigenschaften wie Name, Beschreibung, Eingabe- und Ausgabetabellen, verschiedene Richtlinien usw. sind für alle Arten von Aktivitäten verfügbar.
+Eine vollständige Liste der Abschnitte und Eigenschaften zum Definieren von Aktivitäten finden Sie im Artikel [Erstellen von Pipelines](data-factory-create-pipelines.md). Eigenschaften wie Name, Beschreibung, Eingabe- und Ausgabedatasets und Richtlinien sind für alle Arten von Aktivitäten verfügbar.
 
 Eigenschaften im Abschnitt „typeProperties“ der Aktivität können dagegen je nach Aktivitätstyp variieren. Für die Kopieraktivität variieren die Eigenschaften je nach Art der Quellen und Senken.
 
@@ -441,17 +441,34 @@ Eigenschaften im Abschnitt „typeProperties“ der Aktivität können dagegen j
 
 | Eigenschaft | Beschreibung | Zulässige Werte | Erforderlich |
 | -------- | ----------- | -------------- | -------- | 
-| treatEmptyAsNull | Gibt an, ob Null oder eine leere Zeichenfolge als NULL-Wert behandelt wird. <br/><br/>Wenn die Eigenschaft **quoteChar** angegeben ist, kann eine in Anführungszeichen gesetzte leere Zeichenfolge mit dieser Eigenschaft auch als NULL-Wert behandelt werden. | TRUE (Standardwert) <br/>FALSE | Nein |
-| skipHeaderLineCount | Gibt an, wie viele Zeilen übersprungen werden müssen. Nur anwendbar, wenn das Eingabedataset **TextFormat** verwendet. | Ganzzahl zwischen "0" und "Max". | Nein | 
 | recursive | Gibt an, ob die Daten rekursiv aus den Unterordnern oder nur aus dem angegebenen Ordner gelesen werden. | True (Standardwert), False | Nein | 
-
 
 **BlobSink** unterstützt die folgenden Eigenschaften im Abschnitt **typeProperties**:
 
 | Eigenschaft | Beschreibung | Zulässige Werte | Erforderlich |
 | -------- | ----------- | -------------- | -------- |
-| blobWriterAddHeader | Gibt an, ob der Header der Spaltendefinitionen hinzugefügt werden soll. | TRUE<br/>FALSE (Standard) | Nein |
 | copyBehavior | Definiert das Verhalten beim Kopieren, wenn die Quelle "BlobSource" oder "FileSystem" ist. | **PreserveHierarchy:** Behält die Dateihierarchie im Zielordner bei. Der relative Pfad der Quelldatei zum Quellordner entspricht dem relativen Pfad der Zieldatei zum Zielordner.<br/><br/>**FlattenHierarchy**: Alle Dateien aus dem Quellordner befinden sich in der ersten Ebene des Zielordners. Für die Zieldateien wird ein automatisch ein Name erzeugt. <br/><br/>**MergeFiles** (Standardwert): Führt alle Dateien aus dem Quellordner in einer Datei zusammen. Wenn der Datei-/Blob-Name angegeben wurde, entspricht der Name dem angegebenen Namen, andernfalls dem automatisch generierten Dateinamen. | Nein |
+
+**BlobSource** unterstützt darüber hinaus die beiden folgenden Eigenschaften, die demnächst ausgemustert werden.
+
+- **treatEmptyAsNull**: Gibt an, ob Null oder eine leere Zeichenfolge als NULL-Wert behandelt wird.
+- **skipHeaderLineCount**: Gibt an, wie viele Zeilen übersprungen werden müssen. Nur anwendbar, wenn das Eingabedataset „TextFormat“ verwendet.
+
+**BlobSink** unterstützt die folgende Eigenschaft, die demnächst ausgemustert wird.
+
+- **blobWriterAddHeader**: Gibt an, ob beim Schreiben in ein Ausgabedataset ein Header der Spaltendefinitionen hinzugefügt werden soll.
+
+Datasets unterstützen jetzt die folgenden Eigenschaften, die die gleichen Funktionen implementieren: **treatEmptyAsNull**, **skipLineCount**, **firstRowAsHeader**.
+
+Die folgende Tabelle enthält Anweisungen zur Verwendung der neuen Dataseteigenschaften anstelle der Blobquellen-/Senkeneigenschaften, die demnächst ausgemustert werden.
+
+| Eigenschaft der Kopieraktivität | Dataseteigenschaft |
+| :---------------------- | :---------------- | 
+| „skipHeaderLineCount“ für „BlobSource“ | „skipLineCount“ und „firstRowAsHeader“. Zeilen werden zunächst übersprungen. Anschließend wird die erste Zeile als Header gelesen. |
+| „treatEmptyAsNull“ für „BlobSource“ | „treatEmptyAsNull“ für Eingabedataset |
+| „blobWriterAddHeader“ für „BlobSink“ | „firstRowAsHeader“ für Ausgabedataset | 
+
+Ausführliche Informationen zu diesen Eigenschaften finden Sie im Abschnitt [Angeben von „TextFormat“](#specifying-textformat).
 
 ### Beispiele für "recursive" und "copyBehavior"
 Dieser Abschnitt beschreibt das resultierende Verhalten des Kopiervorgangs für verschiedene Kombinationen von rekursiven und CopyBehavior-Werten.
@@ -475,6 +492,6 @@ false | mergeFiles | Für einen Quellordner „Ordner1“ mit der folgenden Stru
 [AZURE.INCLUDE [data-factory-column-mapping](../../includes/data-factory-column-mapping.md)]
 
 ## Leistung und Optimierung  
-Der Artikel [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-factory-copy-activity-performance.md) beschreibt wichtige Faktoren, die sich auf die Leistung der Datenverschiebung (Kopieraktivität) in Azure Data Factory auswirken, sowie verschiedene Möglichkeiten zur Leistungsoptimierung.
+Im Artikel [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-factory-copy-activity-performance.md) werden wichtige Faktoren beschrieben, die sich auf die Leistung der Datenverschiebung (Kopieraktivität) in Azure Data Factory auswirken, sowie verschiedene Möglichkeiten zur Leistungsoptimierung.
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->

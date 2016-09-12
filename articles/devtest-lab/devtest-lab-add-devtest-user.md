@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/23/2016"
+	ms.date="08/25/2016"
 	ms.author="tarcher"/>
 
 # Hinzufügen von Besitzern und Benutzern zu einem Lab
@@ -103,4 +103,6 @@ Um einen DevTest Labs-Benutzer zum Lab hinzuzufügen, gehen Sie folgendermaßen 
 
 1. Auf dem Blatt **Benutzer** werden die hinzugefügten Rollen und Benutzer angezeigt.
 
-<!---HONumber=AcomDC_0824_2016-->
+[AZURE.INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
+
+<!---HONumber=AcomDC_0831_2016-->

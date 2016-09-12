@@ -182,12 +182,11 @@ Parameter:
 
 ## Schritt 4: Erstellen eines Azure-Speicherkontos 
 
-1. Wählen Sie unter **Ressourcen vorbereiten** die Option **Speicherkonto erstellen** aus, um ein Azure-Speicherkonto zu erstellen, sofern noch nicht vorhanden. Für das Konto muss Georeplikation aktiviert sein. Es muss sich in der gleichen Region befinden wie der Azure Site Recovery-Tresor und dem gleichen Abonnement zugeordnet sein.
+1. Wählen Sie unter **Ressourcen vorbereiten** die Option **Speicherkonto erstellen** aus, um ein Azure-Speicherkonto zu erstellen, sofern noch nicht vorhanden. Für das Konto muss Georeplikation aktiviert sein. Es muss sich in der gleichen Region befinden wie der Azure Site Recovery-Tresor und dem gleichen Abonnement zugeordnet sein.
 
 	![Speicherkonto erstellen](./media/site-recovery-hyper-v-site-to-azure-classic/create-resources.png)
 
->[AZURE.NOTE] Eine Verschiebung von mit dem [neuen Azure-Portal](../storage/storage-create-storage-account.md) erstellten Speicherkonten über Ressourcengruppen hinweg wird nicht unterstützt.
-
+>[AZURE.NOTE] 1. Eine Verschiebung von mit dem [neuen Azure-Portal](../storage/storage-create-storage-account.md) erstellten Speicherkonten über Ressourcengruppen hinweg wird nicht unterstützt. 2. [Die Migration von Speicherkonten](../resource-group-move-resources.md) zwischen Ressourcengruppen im gleichen Abonnement oder zwischen verschiedenen Abonnements wird für Speicherkonten nicht unterstützt, die für die Site Recovery-Bereitstellung verwendet werden.
 
 ## Schritt 5: Erstellen und Konfigurieren von Schutzgruppen
 
@@ -195,7 +194,7 @@ Schutzgruppen sind logische Gruppen virtueller Computer, für die die gleichen S
 
 1. Klicken Sie in **Schutzgruppen erstellen und konfigurieren** auf **Schutzgruppe erstellen**. Falls nicht alle Voraussetzungen erfüllt sind, erscheint eine entsprechende Meldung. Klicken Sie auf **Details anzeigen**, um weitere Informationen zu erhalten.
 
-2. Fügen Sie auf der Registerkarte **Schutzgruppen** eine neue Schutzgruppe hinzu. Geben Sie einen Namen, den Hyper-V-Quellstandort, das Ziel in **Azure**, den Namen Ihres Azure Site Recovery-Abonnements und das Azure-Speicherkonto an.
+2. Fügen Sie auf der Registerkarte **Schutzgruppen** eine neue Schutzgruppe hinzu. Geben Sie einen Namen, den Hyper-V-Quellstandort, das Ziel in **Azure**, den Namen Ihres Azure Site Recovery-Abonnements und das Azure-Speicherkonto an.
 
 	![Schutzgruppe](./media/site-recovery-hyper-v-site-to-azure-classic/protection-group.png)
 
@@ -243,6 +242,8 @@ Fügen Sie einer Schutzgruppe virtuelle Computer hinzu, um sie zu schützen.
 		- **Azure-Netzwerk**: Geben Sie das Failover-Zielnetzwerk für den virtuellen Computer an. Wenn der virtuelle Computer mehrere Netzwerkadapter besitzt, müssen alle Adapter mit dem gleichen Azure-Netzwerk verbunden werden.
 		- **Subnetz**: Wählen Sie für jeden Netzwerkadapter des virtuellen Computers das Subnetz im Azure-Netzwerk aus, mit dem der Computer nach einem Failover eine Verbindung herstellen soll.
 		- **Ziel-IP-Adresse**: Wenn der Netzwerkadapter der virtuellen Quellmaschine für die Verwendung einer statischen IP-Adresse konfiguriert ist, können Sie die IP-Adresse für die virtuelle Zielmaschine angeben, um sicherzustellen, dass die Maschine nach dem Failover die gleiche IP-Adresse besitzt. Wenn Sie keine IP-Adresse angeben, wird beim Failover eine der verfügbaren Adressen zugewiesen. Wenn Sie eine Adresse angeben, die bereits verwendet wird, ist das Failover nicht erfolgreich.
+		
+        > [AZURE.NOTE] [Migration of networks](../resource-group-move-resources.md) zwischen Ressourcengruppen im gleichen Abonnement oder zwischen verschiedenen Abonnements wird für Netzwerke nicht unterstützt, die für die Site Recovery-Bereitstellung verwendet werden.
 
 		![Konfigurieren der Eigenschaften virtueller Computer](./media/site-recovery-hyper-v-site-to-azure-classic/multiple-nic.png)
 
@@ -265,11 +266,11 @@ Wenn Sie ein Testfailover durchführen möchten, ohne ein Azure-Netzwerk anzugeb
 Für ein Testfailover mit einem Azure-Zielnetzwerk müssen Sie ein neues Azure-Netzwerk erstellen, das von Ihrem Azure-Produktionsnetzwerk isoliert ist (Standardverhalten bei der Erstellung eines neuen Netzwerks in Azure). Unter [Ausführen eines Testfailovers](site-recovery-failover.md#run-a-test-failover) finden Sie weitere Details.
 
 
-Um Ihre Replikation und Netzwerkbereitstellung vollständig zu testen, müssen Sie die Infrastruktur einrichten, damit die replizierte virtuelle Maschine wie erwartet funktioniert. Eine Möglichkeit ist: Richten Sie eine virtuelle Maschine als Domänencontroller mit DNS ein, und replizieren Sie sie in Azure. Verwenden Sie Site Recovery für die Erstellung im Testnetzwerk, indem Sie ein Testfailover ausführen. Weitere Informationen zu den Testfailover-Aspekten für Active Directory finden Sie [hier](site-recovery-active-directory.md#considerations-for-test-failover).
+Um Ihre Replikation und Netzwerkbereitstellung vollständig zu testen, müssen Sie die Infrastruktur einrichten, damit die replizierte virtuelle Maschine wie erwartet funktioniert. Eine Möglichkeit ist: Richten Sie eine virtuelle Maschine als Domänencontroller mit DNS ein, und replizieren Sie sie in Azure. Verwenden Sie Site Recovery für die Erstellung im Testnetzwerk, indem Sie ein Testfailover ausführen. Weitere Informationen zu den Überlegungen zum Testfailover für Active Directory finden Sie [hier](site-recovery-active-directory.md#considerations-for-test-failover).
 
 Führen Sie das Testfailover wie folgt aus:
 
->[AZURE.NOTE] Um beim Durchführen eines Failovers in Azure die bestmögliche Leistung zu erzielen, sollten Sie sicherstellen, dass Sie den Azure-Agent auf dem geschützten Computer installiert haben. Dies fördert das schnellere Starten und ist hilfreich für die Diagnose bei Problemen. Sie finden den Linux-Agent [hier](https://github.com/Azure/WALinuxAgent) und den Windows-Agent [hier](http://go.microsoft.com/fwlink/?LinkID=394789).
+>[AZURE.NOTE] Um beim Durchführen eines Failovers in Azure die bestmögliche Leistung zu erzielen, sollten Sie sicherstellen, dass Sie den Azure-Agent auf dem geschützten Computer installiert haben. Dies fördert das schnellere Starten und ist hilfreich für die Diagnose bei Problemen. Den Linux-Agent finden Sie [hier](https://github.com/Azure/WALinuxAgent), den Windows-Agent [hier](http://go.microsoft.com/fwlink/?LinkID=394789).
 
 1. Wählen Sie auf der Registerkarte **Wiederherstellungspläne** den gewünschten Wiederherstellungsplan aus, und klicken Sie auf **Testfailover**.
 2. Wählen Sie auf der Seite **Testfailover bestätigen** den Eintrag **Kein** oder ein bestimmtes Azure-Netzwerk aus. Beachten Sie, dass ein Testfailover bei Auswahl von **Kein** zwar prüft, ob der virtuelle Computer ordnungsgemäß zu Azure repliziert wurde, die Konfiguration des Replikationsnetzwerks wird jedoch nicht geprüft.
@@ -299,4 +300,4 @@ Führen Sie das Testfailover wie folgt aus:
 
 Wenn die Bereitstellung eingerichtet ist und ausgeführt wird, informieren Sie sich über [Failover](site-recovery-failover.md).
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0831_2016-->

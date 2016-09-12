@@ -3,7 +3,7 @@
 	description="Azure Machine Learning-Empfehlungen – JavaScript-Integration – Dokumentation" 
 	services="machine-learning" 
 	documentationCenter="" 
-	authors="AharonGumnik" 
+	authors="LuisCabrer" 
 	manager="paulettm" 
 	editor="cgronlun"/>
 
@@ -13,14 +13,17 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="javascript" 
 	ms.topic="article" 
-	ms.date="05/03/2016" 
+	ms.date="08/24/2016" 
 	ms.author="luisca"/>
 
 # Azure Machine Learning-Empfehlungen – JavaScript-Integration
 
+> Dies ist die Dokumentation zu den alten Recommendations-APIs im Datenmarkt, die zum 31.12.2016 eingestellt werden. Verwenden Sie ab sofort die [Recommentations-API von Cognitive Services](https://www.microsoft.com/cognitive-services/de-DE/recommendations-api).
+
+
 Dieses Dokument beschreibt die Integration Ihrer Website mithilfe von JavaScript. JavaScript ermöglicht es Ihnen, Datensammlungsereignisse zu senden und Empfehlungen zu nutzen, nachdem Sie ein Empfehlungsmodell erstellt haben. Alle Vorgänge, die über JS erfolgen, können auch von der Serverseite her erfolgen.
 
-[AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
+[AZURE.INCLUDE [machine-learning-kostenlose-Testversion](../../includes/machine-learning-free-trial.md)]
 
 ##1\. Allgemeine Übersicht
 Die Integration Ihrer Website in Azure ML-Empfehlungen umfasst zwei Phasen:
@@ -133,9 +136,7 @@ Oder mit optionalen Daten:
 
 
 ####3\.2.3. Addshopcart-Ereignis
-Dieses Ereignis sollte verwendet werden, wenn der Benutzer ein Element zum Einkaufswagen hinzufügt.
-
-Parameter:
+Dieses Ereignis sollte verwendet werden, wenn der Benutzer ein Element zum Einkaufswagen hinzufügt. Parameter:
 * event (Zeichenfolge, erforderlich) – „addshopcart“
 * item (Zeichenfolge, erforderlich) – eindeutiger Bezeichner des Elements
 * itemName (Zeichenfolge, optional) – der Name des Elements
@@ -167,8 +168,7 @@ Dieses Ereignis sollte verwendet werden, wenn der Benutzer seinen Einkaufswagen 
 
 Parameter:
 * event (Zeichenfolge) – „purchase“
-* items ( Purchased ) – Array mit einem Eintrag für jedes gekaufte Element.<br><br>
-Format für „Purchased“:
+* items ( Purchased ) – Array mit einem Eintrag für jeden gekauften Artikel.<br><br> Format für „Purchased“:
 	* item (Zeichenfolge) – eindeutiger Bezeichner des Elements
 	* count (Ganzzahl oder Zeichenfolge) – Anzahl der gekauften Elemente.
 	* price (Gleitkommazahl oder Zeichenfolge) – optionales Feld – der Preis des Elements.
@@ -187,11 +187,7 @@ Dieses Ereignis sollte nach der Benutzeranmeldung auf Ihrer Website verwendet we
 
 Parameter:
 * event (Zeichenfolge) – „userlogin“
-* user (Zeichenfolge) – eindeutige Identifikation des Benutzers.
-		<script>
-			if (typeof AzureMLRecommendationsEvent=="undefined") { AzureMLRecommendationsEvent = ; }
-			AzureMLRecommendationsEvent.push({event: "userlogin", user: “ABCD10AA” });
-		</script>
+* user (Zeichenfolge) – eindeutige Identifikation des Benutzers. <script> if (typeof AzureMLRecommendationsEvent=="undefined") { AzureMLRecommendationsEvent = ; } AzureMLRecommendationsEvent.push({event: "userlogin", user: “ABCD10AA” }); </script>
 
 ##4\. Nutzen von Empfehlungen über JavaScript
 Der Code, der die Empfehlung nutzt, wird durch ein JavaScript-Ereignis von der Client-Webseite ausgelöst. Die Antwort mit der Empfehlung enthält die Ids der empfohlenen Elemente, deren Namen und ihre Bewertungen. Es empfiehlt sich, diese Option nur für eine Listenanzeige der empfohlenen Elemente zu verwenden. Eine komplexere Aufbereitung (wie z. B. das Hinzufügen von Metadaten des Elements) sollte in der serverseitigen Integration erledigt werden.
@@ -229,4 +225,4 @@ Beispiel: Mit dem folgenden Code werden acht Empfehlungen für das Element "64f6
 [3]: ./media/machine-learning-recommendation-api-javascript-integration/Drawing3.png
  
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0831_2016-->

@@ -94,7 +94,7 @@ Nachdem Sie die Supportanfrage übermittelt haben, wird sich der Azure-Support m
 
 ## Verwandte Themen
 
-* [Erstellen und Verwalten eines Azure Batch-Kontos](batch-account-create-portal.md)
+* [Erstellen und Verwalten eines Azure Batch-Kontos im Azure-Portal](batch-account-create-portal.md)
 
 * [Übersicht über Azure Batch-Features](batch-api-basics.md)
 
@@ -106,4 +106,4 @@ Nachdem Sie die Supportanfrage übermittelt haben, wird sich der Azure-Support m
 
 [account_quotas]: ./media/batch-quota-limit/accountquota_portal.PNG
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0831_2016-->

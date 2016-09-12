@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/31/2016"
+   ms.date="08/25/2016"
    ms.author="spyros;sethm" />
 
 # Benachrichtigen von Benutzern über Daten von Sensoren oder anderen Systemen
@@ -44,7 +44,7 @@ Sobald die Event Hub-Überwachung eine Nachricht erkennt, löst sie einen Proze
 Der Code in diesem Beispiel zeigt lediglich, wie Sie Event Hubs überwachen und externe Messaging-Dienste aufrufen, falls Sie Ihrer Anwendung diese Funktion hinzufügen möchten. Diese Lösung ist als Beispiel für Entwickler konzipiert. Unternehmensanforderungen wie Redundanz, Failover, Neustart bei Ausfall usw. werden hier nicht berücksichtigt. Umfassendere Lösungen für Produktionsumgebungen finden Sie hier:
 
 - Verwenden von Connectors oder Pushbenachrichtigungen mit [Azure Logik-Apps](../app-service-logic/app-service-logic-connectors-list.md)
-- Verwenden von [Azure Notification Hubs](https://msdn.microsoft.com/library/azure/jj927170.aspx) gemäß Beschreibung im Blog [Broadcast push notifications to millions of mobile devices using Azure Notification Hubs](http://weblogs.asp.net/scottgu/broadcast-push-notifications-to-millions-of-mobile-devices-using-windows-azure-notification-hubs) 
+- Verwenden von [Azure Notification Hubs](https://msdn.microsoft.com/library/azure/jj927170.aspx) gemäß Beschreibung im Blog [Broadcast push notifications to millions of mobile devices using Azure Notification Hubs](http://weblogs.asp.net/scottgu/broadcast-push-notifications-to-millions-of-mobile-devices-using-windows-azure-notification-hubs)
 
 ## Nächste Schritte
 
@@ -82,4 +82,4 @@ Besuchen Sie die folgende Seite, um die Lösung bereitzustellen und Benutzer auf
 [1]: ./media/event-hubs-sensors-notify-users/event-hubs-sensor-alert.png
 [2]: ./media/event-hubs-sensors-notify-users/event-hubs-erp-alert.png
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0831_2016-->

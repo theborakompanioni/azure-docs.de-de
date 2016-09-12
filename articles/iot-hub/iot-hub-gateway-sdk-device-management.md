@@ -81,7 +81,7 @@ Nachdem Sie das Edison Board eingerichtet und die benötigten Treiber auf dem Ho
 
 Außerdem müssen Sie folgende Aufgaben durchführen:
 
-- [Erstellen Sie einen IoT Hub][lnk-create-hub] unter Ihrem Azure-Abonnement. Sie benötigen für dieses Tutorial den Namen des Hubs. Wenn Sie nicht bereits über ein Azure-Abonnement verfügen, können Sie ein [kostenloses Konto erstellen][lnk-free-trial].
+- [Erstellen Sie einen IoT Hub][lnk-create-hub] in Ihrem Azure-Abonnement. Sie benötigen für dieses Tutorial den Namen des Hubs. Wenn Sie nicht bereits über ein Azure-Abonnement verfügen, können Sie ein [kostenloses Konto erstellen][lnk-free-trial].
 - Fügen Sie Ihrem IoT Hub drei Geräte hinzu (**GW-ble1-demo**, **GW-ble2-demo** und **GW-device**), und notieren Sie sich die IDs und Geräteschlüssel. Sie können die Tools [Geräte-Explorer oder iothub-explorer][lnk-explorer-tools] verwenden, um diese Geräte dem im vorherigen Schritt erstellten IoT Hub hinzuzufügen und die zugehörigen Schlüssel abzurufen. Sie verwenden zwei dieser Geräte (**GW-ble1-demo** und **GW-ble2-demo**) als simulierte BLE-Geräte, die mit dem Gateway verbunden sind, und ein Gerät (**GW-device**) zum Identifizieren des Edison-Gatewaygeräts als Geräteverwaltungsclient, den Sie über Ihren IoT Hub verwalten können.
 
 ### Vorbereiten der Buildumgebung und Sicherstellen, dass ein benutzerdefiniertes Image erstellt werden kann
@@ -425,4 +425,4 @@ Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 [lnk-dmui]: iot-hub-device-management-ui-sample.md
 [lnk-portal]: iot-hub-manage-through-portal.md
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0831_2016-->

@@ -13,12 +13,12 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="storage-backup-recovery"
-	ms.date="06/13/2016"
+	ms.date="08/31/2016"
 	ms.author="pratshar"/>
 
 # Schützen von Active Directory und DNS mit Azure Site Recovery
 
-Unternehmensanwendungen, z. B. SharePoint, Dynamics AX und SAP, basieren auf einer AD- und DNS-Infrastruktur, um richtig funktionieren zu können. Wenn Sie eine Notfallwiederherstellungs-Lösung für Anwendungen erstellen, müssen Sie daran denken, dass Sie Active Directory und DNS vorrangig vor den anderen Anwendungskomponenten schützen und wiederherstellen müssen, um sicherzustellen, dass Vorgänge richtig ablaufen, wenn ein Notfall eintritt.
+Für Unternehmensanwendungen, z.B. SharePoint, Dynamics AX und SAP, ist eine Active Directory- und DNS-Infrastruktur erforderlich, damit sie richtig funktionieren. Wenn Sie eine Notfallwiederherstellungs-Lösung für Anwendungen erstellen, müssen Sie daran denken, dass Sie Active Directory und DNS vorrangig vor den anderen Anwendungskomponenten schützen und wiederherstellen müssen, um sicherzustellen, dass Vorgänge richtig ablaufen, wenn ein Notfall eintritt.
 
 Site Recovery ist ein Azure-Dienst, der Notfallwiederherstellung durch Koordinierung von Replikation, Failover und Wiederherstellung virtueller Computer bietet. Site Recovery unterstützt eine Reihe von Replikationsszenarien, um für virtuelle Computer und Anwendungen konsistenten Schutz und ein reibungsloses Failover in privaten/öffentlichen Clouds bzw. in Clouds von Hostern zu bieten.
 
@@ -34,7 +34,7 @@ Wenn nur eine geringe Anzahl von Anwendungen und ein einzelner Domänencontrolle
 
 ### Option 2:
 
-Bei einer großen Anzahl von Anwendungen und mehreren Domänencontrollern in der Umgebung, oder wenn Sie das gleichzeitige Failover verschiedener Anwendungen planen, empfehlen wir Ihnen, zusätzlich zum Replizieren des virtuellen Computers, auf dem sich der Domänencontroller befindet, mit Site Recovery auch die Einrichtung eines zusätzlichen Domänencontrollers am Zielstandort (Azure oder ein sekundäres lokales Datencenter).
+Bei einer großen Anzahl von Anwendungen und mehreren Domänencontrollern in der Umgebung, oder wenn Sie das gleichzeitige Failover verschiedener Anwendungen planen, empfehlen wir Ihnen, zusätzlich zum Replizieren des virtuellen Computers, auf dem sich der Domänencontroller befindet, mit Site Recovery auch die Einrichtung eines zusätzlichen Domänencontrollers am Zielstandort (Azure oder ein sekundäres lokales Rechenzentrum).
 
 >[AZURE.NOTE] Auch wenn Sie Option-2 implementieren, müssen Sie für ein Testfailover dennoch den Domänencontroller mit Site Recovery replizieren. Weitere Informationen finden Sie unter [Überlegungen zum Test-Failover](#considerations-for-test-failover).
 
@@ -88,9 +88,9 @@ Die meisten Anwendungen sind auch auf einen funktionierenden Domänencontroller 
 
 >[AZURE.NOTE] Die IP-Adresse, die einem virtuellen Computer während eines Testfailovers zugeordnet wird, entspricht der IP-Adresse, die dieser bei einem geplanten oder ungeplanten Failover erhalten würde, sofern die IP-Adresse im Testfailover-Netzwerk verfügbar ist. Andernfalls erhält der virtuelle Computer eine andere, im Testfailover-Netzwerk verfügbare IP-Adresse.
 
-4. Führen Sie auf dem virtuellen Computer mit dem Domänencontroller ein Testfailover im isolierten Netzwerk aus.
+4. Führen Sie auf dem virtuellen Computer mit dem Domänencontroller ein Testfailover im isolierten Netzwerk aus. Verwenden Sie den neuesten verfügbaren anwendungskonsistenten Wiederherstellungspunkt des virtuellen Computers mit dem Domänencontroller, um das Testfailover durchzuführen.
 5. Führen Sie ein Testfailover für den Anwendungswiederherstellungsplan aus.
-6. Markieren Sie nach Abschluss des Tests das Testfailover des Auftrags für den virtuellen Computer mit dem Domänencontroller und den Wiederherstellungsplan im Site Recovery-Portal auf der Registerkarte **Aufträge** als „Abgeschlossen“.
+6. Markieren Sie nach Abschluss des Tests den Testfailoverauftrag für den virtuellen Computer mit dem Domänencontroller und für den Wiederherstellungsplan im Site Recovery-Portal auf der Registerkarte **Aufträge** als „Abgeschlossen“.
 
 ### DNS und Domänencontroller auf unterschiedlichen Computern
 
@@ -121,4 +121,4 @@ Sie können einen neuen DNS-Server verwenden und alle erforderlichen Zonen erste
 
 Lesen Sie [Welche Workloads können mit Azure Site Recovery geschützt werden?](../site-recovery/site-recovery-workload.md), um weitere Informationen über den Schutz von Unternehmensworkloads mit Azure Site Recovery zu erhalten.
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0831_2016-->

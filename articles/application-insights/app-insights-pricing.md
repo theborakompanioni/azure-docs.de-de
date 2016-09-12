@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/22/2016" 
+	ms.date="08/27/2016" 
 	ms.author="awills"/>
 
 # Verwalten von Preisen und Kontingenten für Application Insights
@@ -77,7 +77,7 @@ Wenn die Anwendung mehr als das monatliche Kontingent sendet, haben Sie folgende
 * Sie unternehmen nichts. Sitzungsdaten weiterhin aufgezeichnet, aber andere Daten werden in der Diagnosesuche oder im Metrik-Explorer nicht aufgeführt.
 
 
-### Wie viele Daten sende ich?
+## Wie viele Daten sende ich?
 
 Das Diagramm im unteren Bereich des Blatts mit der Preisübersicht zeigt das Datenpunktvolumen Ihrer Anwendung gruppiert nach Datenpunkttypen an. (Sie können dieses Diagramm auch im Metrik-Explorer erstellen.)
 
@@ -86,6 +86,8 @@ Das Diagramm im unteren Bereich des Blatts mit der Preisübersicht zeigt das Dat
 Klicken Sie auf das Diagramm, um weitere Details einzublenden, oder ziehen Sie den Mauszeiger darüber, und klicken Sie auf „(+)“, um einen Zeitraum im Detail anzuzeigen.
 
 Das Diagramm zeigt die Menge der Daten, die der Application Insights-Dienst nach der [Stichprobenerstellung](app-insights-sampling.md) empfängt.
+
+Wenn das Datenvolumen Ihr monatliches Kontingent erreicht, wird eine Anmerkung im Diagramm angezeigt.
 
 
 ## Datenrate
@@ -112,7 +114,7 @@ Tritt eine Drosselung auf, erhalten Sie zur Warnung eine Benachrichtigung über 
 * Oder fügen Sie im Metrik-Explorer ein neues Diagramm hinzu, und wählen Sie **Datenpunktvolumen** als Metrik aus. Aktivieren Sie "Gruppierung", und gruppieren Sie nach **Datentyp**.
 
 
-### Tipps zur Reduzierung der Datenrate
+## So verringern Sie die Datenrate
 
 Wenn Begrenzungsdrosselungen auftreten, können Sie verschiedene Schritte ausführen:
 
@@ -124,16 +126,30 @@ Wenn Begrenzungsdrosselungen auftreten, können Sie verschiedene Schritte ausfü
 
 ## Stichproben
 
-Die [Stichprobenerstellung](app-insights-sampling.md) ist eine Methode, die Rate, mit der Telemetriedaten an Ihre App gesendet werden, zu verringern. Gleichzeitig soll die Möglichkeit erhalten bleiben, bei Diagnosesuchläufen relevante Ereignisse zu ermitteln und korrekte Ereigniszahlen zu erhalten. Die Stichprobenerstellung unterstützt Sie dabei, innerhalb Ihres monatlichen Kontingents zu bleiben.
-
-Es gibt verschiedene Formen der Stichprobenerstellung. Wir empfehlen die [adaptive Stichprobenerstellung](app-insights-sampling.md), bei der die Menge der an Ihre App gesendeten Telemetriedaten automatisch angepasst wird. Die Stichprobenerstellung findet im SDK Ihrer Web-App statt, sodass der Telemetriedatenverkehr im Netzwerk verringert wird. Sie können die Stichprobenerstellung nutzen, wenn Sie .NET Framework für Ihre Web-App verwenden: Installieren Sie einfach die neueste (Beta-) Version des SDK.
-
-Alternativ können Sie auf dem Blatt „Kontingente und Preise“ die *Erfassungs-Stichprobenerstellung* festlegen. Diese Form der Stichprobenerstellung arbeitet an dem Punkt, an dem Telemetriedaten von Ihrer App den Application Insights-Dienst erreichen. Diese Art der Stichprobenerstellung wirkt sich nicht auf die Menge der Telemetriedaten aus, die von Ihrer App gesendet werden, verringert jedoch die Menge der Daten, die vom Dienst beibehalten werden.
-
-![Klicken Sie im Blatt „Kontingent und Preise“ auf die Kachel „Stichproben“, und wählen Sie eine Einheit für die Stichprobenerstellung.](./media/app-insights-pricing/04.png)
+Die [Stichprobenerstellung](app-insights-sampling.md) ist eine Methode, die Rate, mit der Telemetriedaten an Ihre App gesendet werden, zu verringern. Gleichzeitig soll die Möglichkeit erhalten bleiben, bei Diagnosesuchläufen relevante Ereignisse zu ermitteln und korrekte Ereigniszahlen zu erhalten.
 
 Die Stichprobenerstellung ist eine effektive Möglichkeit, die Gebühren zu senken und innerhalb Ihres monatlichen Kontingents zu bleiben. Der Stichprobenalgorithmus behält Elemente in Bezug auf die Telemetrie bei, sodass Sie beispielsweise in Search die Anforderung ermitteln können, die in Beziehung zu einer bestimmten Ausnahme steht. Der Algorithmus behält außerdem korrekte Zahlenwerte bei, sodass Sie im Metrik-Explorer die richtigen Werte für Anforderungsraten, Ausnahmeraten und weitere Messwerte sehen.
 
+Es gibt verschiedene Formen der Stichprobenerstellung.
+
+* Beim ASP.NET-SDK wird standardmäßig die [adaptive Stichprobenerstellung](app-insights-sampling.md) verwendet, bei der die Menge der an Ihre App gesendeten Telemetriedaten automatisch angepasst wird. Die Stichprobenerstellung erfolgt im SDK Ihrer Web-App automatisch, sodass der Telemetriedatenverkehr im Netzwerk verringert wird.
+* Die *Erfassungs-Stichprobenerstellung* stellt eine Alternative dar, die an dem Punkt arbeitet, an dem Telemetriedaten von Ihrer App den Application Insights-Dienst erreichen. Diese Art der Stichprobenerstellung wirkt sich nicht auf die Menge der Telemetriedaten aus, die von Ihrer App gesendet werden, verringert jedoch die Menge der Daten, die vom Dienst beibehalten werden. Damit können Sie das Kontingent verringern, das von Telemetriedaten von Browsern und anderen SDKs beansprucht wird.
+
+Konfigurieren Sie zum Festlegen der Erfassungs-Stichprobenerstellung die Einstellung auf dem Blatt „Kontingent und Preise“:
+
+![Klicken Sie im Blatt „Kontingent und Preise“ auf die Kachel „Stichproben“, und wählen Sie eine Einheit für die Stichprobenerstellung.](./media/app-insights-pricing/04.png)
+
+> [AZURE.WARNING] Der auf der Kachel „Beibehaltene Stichproben“ angegebene Wert gibt nur den Wert an, den Sie für die Erfassungs-Stichprobenerstellung festgelegt haben. Er zeigt nicht den Stichproben-Prozentsatz, der im SDK in Ihrer App angewendet wird.
+> 
+> Falls für die eingehenden Telemetriedaten bereits im SDK Stichproben erstellt wurden, wird die Erfassungs-Stichprobenerstellung nicht angewendet.
+ 
+Verwenden Sie etwa folgende [Analytics-Abfrage](app-insights-analytics.md), um den tatsächlichen Stichproben-Prozentsatz unabhängig davon zu ermitteln, wo er angewendet wird:
+
+    requests | where timestamp > ago(1d)
+    | summarize 100/avg(itemCount) by bin(timestamp, 1h) 
+    | render areachart 
+
+In jedem beibehaltenen Datensatz gibt `itemCount` die Anzahl ursprünglicher Datensätze an, die der Datensatz darstellt (Anzahl zuvor verworfener Datensätze + 1).
 
 ## Anzeigen der Rechnung für Ihr Azure-Abonnement
 
@@ -165,4 +181,4 @@ Sollte Ihre Anwendung diese Grenzwerte überschreiten, können Sie Ihre Daten au
 
  
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0831_2016-->

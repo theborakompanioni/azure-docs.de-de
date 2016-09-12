@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/27/2016" 
+	ms.date="08/25/2016" 
 	ms.author="mimig"/>
 
 # Steigern der Leistung Ihres DocumentDB-Kontos
@@ -25,12 +25,12 @@ Führen Sie die hier beschriebenen Schritte durch, um den Durchsatz für Ihr Azu
 ## Umstellen auf benutzerdefinierte Leistung im Azure-Portal
 
 1. Navigieren Sie in Ihrem Browser zum [**Azure-Portal**](https://portal.azure.com).
-2. Klicken Sie auf **Durchsuchen** > **DocumentDB-Konten**, und wählen Sie das zu ändernde DocumentDB-Konto aus.
+2. Klicken Sie auf **Durchsuchen** > **DocumentDB (NoSQL)**, und wählen Sie das zu ändernde DocumentDB-Konto aus.
 3. Wählen Sie im Fokus **Datenbanken** die zu ändernde Datenbank und anschließend auf dem Blatt **Datenbank** die Sammlung mit dem S1-Tarif aus.
 
       ![Screenshot des Blatts „Datenbank“ mit einer S1-Sammlung](./media/documentdb-supercharge-your-account/documentdb-change-performance-S1.png)
 
-4. Klicken Sie auf dem Blatt **Sammlungen** auf der oberen Leiste auf **Einstellungen**.
+4. Klicken Sie auf dem Blatt **Sammlung** auf **Weitere** und dann auf **Einstellungen**.
 5. Klicken Sie auf dem Blatt **Einstellungen** auf **Tarif**. Die voraussichtlichen monatlichen Kosten für die einzelnen Tarife werden angezeigt. Klicken Sie auf dem Blatt **Preisstufe auswählen** auf **Standard** und anschließend auf **Auswählen**, um die Änderung zu speichern.
 
       ![Screenshot der DocumentDB-Blätter „Einstellungen“ und „Preisstufe auswählen“](./media/documentdb-supercharge-your-account/documentdb-change-performance.png)
@@ -51,4 +51,4 @@ Weitere Informationen zu Änderungen in Verbindung mit benutzerdefiniertem und v
 
 Wenn Sie feststellen, dass Sie einen höheren Durchsatz (größer als 10.000 RU/s) oder mehr Speicher (größer als 10 GB) benötigen, können Sie eine partitionierte Sammlung erstellen. Weitere Informationen zum Erstellen einer partitionierten Sammlung finden Sie unter [So erstellen Sie eine DocumentDB-Sammlung über das Azure-Portal](documentdb-create-collection.md).
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0831_2016-->

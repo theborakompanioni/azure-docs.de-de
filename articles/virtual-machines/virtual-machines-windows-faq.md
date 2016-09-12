@@ -38,7 +38,7 @@ Azure-Speicherkonten bieten Speicher für Betriebssystem-Datenträger und Datent
 
 ## Wie kann ich auf meinen virtuellen Computer zugreifen?
 
-Sie müssen eine Remoteverbindung über Remotedesktopverbindung (Remote Desktop Connection, RDP) für einen virtuellen Windows-Computer herstellen. Anweisungen dazu finden Sie unter [Gewusst wie: Herstellen einer Verbindung mit einem virtuellen Azure-Computer unter Windows und Anmelden auf diesem Computer](virtual-machines-windows-connect-logon.md). Es werden maximal zwei gleichzeitige Verbindungen unterstützt, es sei denn, der Server wurde als Sitzungshost für Remotedesktopdienste konfiguriert.
+Richten Sie eine Remoteverbindung über Remotedesktopverbindung (Remote Desktop Connection, RDP) für einen virtuellen Windows-Computer ein. Anweisungen dazu finden Sie unter [Gewusst wie: Herstellen einer Verbindung mit einem virtuellen Azure-Computer unter Windows und Anmelden auf diesem Computer](virtual-machines-windows-connect-logon.md). Es werden maximal zwei gleichzeitige Verbindungen unterstützt, es sei denn, der Server wurde als Sitzungshost für Remotedesktopdienste konfiguriert.
 
 
 Wenn Probleme mit Remotedesktop auftreten, finden Sie weitere Informationen unter [Problembehandlung bei Remotedesktopverbindungen mit einem Windows-basierten virtuellen Azure-Computer](virtual-machines-windows-troubleshoot-rdp-connection.md).
@@ -47,7 +47,7 @@ Wenn Sie mit Hyper-V vertraut sind, suchen Sie möglicherweise nach einem ähnli
 
 ## Kann ich den temporären Datenträger (standardmäßig Laufwerk „D:“) verwenden, um Daten zu speichern?
 
-Sie sollten keinen temporären Datenträger zum Speichern von Daten verwenden. Dieser dient nur als temporärer Speicher, sodass das Risiko eines Verlusts von Daten besteht, die nicht wiederhergestellt werden können. Dies kann vorkommen, wenn ein virtueller Computer auf einen anderen Host verschoben wird. Gründe für das Verschieben eines virtuellen Computers sind eine Änderung Größe des virtuellen Computers, Aktualisieren des Hosts oder ein Hardwarefehler auf dem Host.
+Verwenden Sie den temporären Datenträger nicht zum Speichern von Daten. Dieser dient nur als temporärer Speicher, sodass das Risiko eines Verlusts von Daten besteht, die nicht wiederhergestellt werden können. Wenn ein virtueller Computer auf einen anderen Host verschoben wird, kann Datenverlust auftreten. Gründe für das Verschieben eines virtuellen Computers sind eine Änderung Größe des virtuellen Computers, Aktualisieren des Hosts oder ein Hardwarefehler auf dem Host.
 
 Wenn eine Anwendung den Laufwerkbuchstaben „D:“ benötigt, können Sie die Laufwerkbuchstaben neu zuweisen, damit der temporäre Datenträger einen anderen Buchstaben als „D:“ verwendet. Anweisungen finden Sie unter [Ändern des Datenträgerbuchstabens des temporären Windows-Datenträgers](virtual-machines-windows-classic-change-drive-letter.md).
 
@@ -83,4 +83,62 @@ Ja. Unter [Erstellen eines virtuellen Linux-Computers in Azure mithilfe des Port
 
 Nein. Das Hinzufügen einer Netzwerkkarte ist nur zum Zeitpunkt der Erstellung möglich.
 
-<!---HONumber=AcomDC_0817_2016-->
+## Gibt es Anforderungen an den Computernamen?
+
+Ja. Der Computername kann maximal 15 Zeichen lang sein. Weitere Informationen zur Benennung von Ressourcen finden Sie unter [Benennungsrichtlinien für die Infrastruktur](virtual-machines-windows-infrastructure-naming-guidelines.md).
+
+## Welche Anforderungen an den Benutzernamen gelten beim Erstellen eines virtuellen Computers?
+
+Benutzernamen können maximal 20 Zeichen lang sein und dürfen nicht mit einem Punkt („.“) enden.
+
+Die folgenden Benutzernamen sind nicht zulässig:
+
+<table>
+	<tr>
+		<td style="text-align:center">administrator </td><td style="text-align:center"> admin </td><td style="text-align:center"> user </td><td style="text-align:center"> user1</td>
+	</tr>
+	<tr>
+		<td style="text-align:center">test </td><td style="text-align:center"> user2 </td><td style="text-align:center"> test1 </td><td style="text-align:center"> user3</td>
+	</tr>
+	<tr>
+		<td style="text-align:center">admin1 </td><td style="text-align:center"> 1 </td><td style="text-align:center"> 123 </td><td style="text-align:center"> a</td>
+	</tr>
+	<tr>
+		<td style="text-align:center">actuser  </td><td style="text-align:center"> adm </td><td style="text-align:center"> admin2 </td><td style="text-align:center"> aspnet</td>
+	</tr>
+	<tr>
+		<td style="text-align:center">Sichern </td><td style="text-align:center"> console </td><td style="text-align:center"> david </td><td style="text-align:center"> guest</td>
+	</tr>
+	<tr>
+		<td style="text-align:center">john </td><td style="text-align:center"> owner </td><td style="text-align:center"> root </td><td style="text-align:center"> server</td>
+	</tr>
+	<tr>
+		<td style="text-align:center">sql </td><td style="text-align:center"> support </td><td style="text-align:center"> support_388945a0 </td><td style="text-align:center"> sys</td>
+	</tr>
+	<tr>
+		<td style="text-align:center">test2 </td><td style="text-align:center"> test3 </td><td style="text-align:center"> user4 </td><td style="text-align:center"> user5</td>
+	</tr>
+</table>
+
+## Welche Anforderungen an das Kennwort gelten beim Erstellen eines virtuellen Computers?
+
+Kennwörter müssen 8 bis 123 Zeichen lang sein und 3 der 4 folgenden Komplexitätsanforderungen erfüllen:
+
+- Kleinbuchstaben
+- Großbuchstaben
+- Eine Ziffer
+- Ein Sonderzeichen (Übereinstimmung mit regulärem Ausdruck [\\W\_])
+
+Die folgenden Kennwörter sind nicht zulässig:
+
+Die folgenden Kennwörter sind nicht zulässig
+<table>
+	<tr>
+		<td style="text-align:center">abc@123</td><td style="text-align:center">P@$$w0rd</td><td style="text-align:center">P@ssw0rd</td><td style="text-align:center">P@ssword123</td><td style="text-align:center">Pa$$word</td>
+	</tr>
+	<tr>
+		<td style="text-align:center">pass@word1</td><td style="text-align:center">Password!</td><td style="text-align:center">Password1</td><td style="text-align:center">Password22</td><td style="text-align:center">iloveyou!</td>
+	</tr>
+</table>
+
+<!---HONumber=AcomDC_0831_2016-->

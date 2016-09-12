@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/29/2016" 
+	ms.date="08/25/2016" 
 	ms.author="stbaro"/>
 
 # Verwenden von MongoChef mit einem DocumentDB-Konto mit Protokollunterstützung für MongoDB
@@ -30,7 +30,7 @@ Führen Sie die folgenden Schritte aus, um dem Verbindungs-Manager von MongoChef
 
 1. Rufen Sie anhand der [hier](documentdb-connect-mongodb-account.md) bereitgestellten Anweisungen die Verbindungsinformationen für Ihr DocumentDB-Konto mit Protokollunterstützung für MongoDB ab.
 
-	![Screenshot des Blatts „Verbindungszeichenfolge“](./media/documentdb-connect-mongodb-account/ConnectionStringBlade.png)
+	![Screenshot des Blatts „Verbindungszeichenfolge“](./media/documentdb-mongodb-mongochef/ConnectionStringBlade.png)
 
 2. Klicken Sie auf **Connect** (Verbinden), um den Verbindungs-Manager zu öffnen, und klicken Sie anschließend auf **New Connection** (Neue Verbindung).
 
@@ -132,4 +132,4 @@ Führen Sie die folgenden Schritte aus, um Datenbanken, Sammlungen und Dokumente
 
  
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0831_2016-->

@@ -53,9 +53,9 @@ Führen Sie zum Erstellen der Routingtabelle und der für das Front-End-Subnetz 
 		info:    network route-table create command OK
 
 	Parameter:
-	- **-g (oder --resource-group)**. Name der Ressourcengruppe, in der die NSG erstellt wird. In diesem Szenario *TestRG*.
-	- **-l (oder --location)**. Azure-Region, in der die neue NSG erstellt wird. In diesem Szenario *westus*.
-	- **-n (oder --name)**. Name der neuen NSG. In diesem Szenario *NSG-FrontEnd*.
+	- **-g (or --resource-group)**. Name der Ressourcengruppe, in der die UDR erstellt wird. In diesem Szenario *TestRG*.
+	- **-l (oder --location)**. Azure-Region, in der die neue UDR erstellt wird. In diesem Szenario *westus*.
+	- **-n (oder --name)**. Name der neuen UDR. In diesem Szenario *UDR-FrontEnd*.
 
 4. Führen Sie den Befehl **`azure network route-table route create`** aus, um in der oben erstellten Routingtabelle eine Route zu erstellen, die sämtlichen an das Back-End-Subnetz (192.168.2.0/24) gerichteten Datenverkehr an den virtuellen Computer **FW1** (192.168.0.4) umleitet.
 
@@ -199,4 +199,4 @@ Führen Sie zum Aktivieren der IP-Weiterleitung in der von **FW1** verwendeten N
 
 	- **-f (oder --enable-ip-forwarding)**. *true* oder *false*.
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0831_2016-->

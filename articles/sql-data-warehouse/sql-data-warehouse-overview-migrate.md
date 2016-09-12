@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="08/17/2016"
+   ms.date="08/30/2016"
    ms.author="barbkess;jrj;sonyama"/>
 
 # Migrieren Ihrer Lösung nach SQL Data Warehouse
@@ -23,6 +23,7 @@ SQL Data Warehouse ist ein verteiltes Datenbanksystem, das elastisch gemäß Ihr
 Außerdem sollten Sie berücksichtigen, dass SQL Data Warehouse eine Plattform ist, die auf Microsoft Azure basiert. Daher kann es auch zu Ihrer Migration gehören, Ihre Daten in die Cloud zu übertragen. Datenübertragung ist ein eigenständiges Thema und sollte sorgfältig überdacht werden, vor allem angesichts wachsender Datenmengen. Datenübertragung und das Laden von Daten sind getrennte Themen.
 
 ## Hinweise zur Migration
+
 Lesen Sie vor der Migration unbedingt diese Artikel, um sicherzustellen, dass Sie einige der Produktunterschiede und der grundlegenden Konzepte verstehen.
 
 - [Migrieren Ihres Schemas][]
@@ -30,11 +31,8 @@ Lesen Sie vor der Migration unbedingt diese Artikel, um sicherzustellen, dass Si
 - [Migrieren Ihres Codes][]
 
 ## Nächste Schritte
-Weitere Hinweise zur Entwicklung finden Sie in der [Entwicklungsübersicht][].
 
-Noch mehr Informationen finden Sie in der [Transact-SQL-Referenz][].
-
-Sehen Sie sich außerdem die [Übersicht über das Laden][] an. Dieser Artikel beschreibt verschiedene Optionen zum Laden von Daten und enthält eine ausführliche Anleitung.
+Das CAT (Customer Advisory Team) bietet auch einige hervorragende SQL Data Warehouse-Anleitungen, die es in Blogs veröffentlicht. Der Artikel [Migrating data to Azure SQL Data Warehouse in practice][] (Migrieren von Daten zu Azure SQL Data Warehouse in der Praxis) bietet Ihnen eine zusätzliche Anleitung zur Migration.
 
 <!--Image references-->
 
@@ -43,13 +41,11 @@ Sehen Sie sich außerdem die [Übersicht über das Laden][] an. Dieser Artikel b
 [Migrieren Ihrer Daten]: sql-data-warehouse-migrate-data.md
 [Migrieren Ihres Codes]: sql-data-warehouse-migrate-code.md
 
-[Entwicklungsübersicht]: sql-data-warehouse-overview-develop.md
-[Übersicht über das Laden]: sql-data-warehouse-overview-load.md
-[Transact-SQL-Referenz]: sql-data-warehouse-overview-reference.md
 
 <!--MSDN references-->
 
 
 <!--Other Web references-->
+[Migrating data to Azure SQL Data Warehouse in practice]: https://blogs.msdn.microsoft.com/sqlcat/2016/08/18/migrating-data-to-azure-sql-data-warehouse-in-practice/
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->

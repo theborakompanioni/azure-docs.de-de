@@ -302,7 +302,7 @@ if let newItem = oldItem.mutableCopy() as? NSMutableDictionary {
 
 Geben Sie alternativ die Zeilen-ID und das aktualisierte Feld ein:
 
-**Objective-C:**
+**Objective-C**:
 
 ```
 [table update:@{@"id":@"custom-id", @"text":"my EDITED item"} completion:^(NSDictionary *result, NSError *error) {
@@ -358,7 +358,7 @@ table.delete(newItem as [NSObject: AnyObject]) { (itemId, error) in
 
 Geben Sie alternativ eine Zeilen-ID ein, um das Element zu löschen:
 
-**Objective-C:**
+**Objective-C**:
 
 ```
 [table deleteWithId:@"37BBF396-11F0-4B39-85C8-B319C729AF6D" completion:^(id itemId, NSError *error) {
@@ -430,7 +430,7 @@ client.invokeAPI("sendEmail",
 
 Um Vorlagen zu registrieren, übergeben Sie einfach die Vorlagen mit Ihrer **client.push registerDeviceToken**-Methode in Ihrer Client-App.
 
-**Objective-C:**
+**Objective-C**:
 
 ```
 [client.push registerDeviceToken:deviceToken template:iOSTemplate completion:^(NSError *error) {
@@ -502,7 +502,7 @@ if (error.code == MSErrorPreconditionFailed) {
 
 ## <a name="adal"></a>Gewusst wie: Authentifizieren von Benutzern mit der Active Directory-Authentifizierungsbibliothek
 
-Nutzen Sie die Active Directory-Authentifizierungsbibliothek (Active Directory Authentication Library, ADAL), um Benutzer mithilfe von Azure Active Directory bei Ihrer Anwendung anzumelden. Dies wird aufgrund der besseren Bedienbarkeit und der Möglichkeit, zusätzliche Anpassungen vorzunehmen, den `loginAsync()`-Methoden häufig vorgezogen.
+Nutzen Sie die Active Directory-Authentifizierungsbibliothek (Active Directory Authentication Library, ADAL), um Benutzer mithilfe von Azure Active Directory bei Ihrer Anwendung anzumelden. Dies wird aufgrund der besseren Bedienbarkeit und der Möglichkeit, zusätzliche Anpassungen vorzunehmen, der `loginWithProvider:completion:`-Methode häufig vorgezogen.
 
 1. Konfigurieren Sie Ihr mobiles App-Back-End für die AAD-Anmeldung, indem Sie die im Tutorial [So konfigurieren Sie Ihre App Service-Anwendung zur Verwendung der Azure Active Directory-Anmeldung](app-service-mobile-how-to-configure-active-directory-authentication.md) beschriebenen Schritte ausführen. Schließen Sie auch den optionalen Schritt zur Registrierung einer nativen Clientanwendung ab. Bei iOS ist es empfehlenswert (aber nicht erforderlich), den Umleitungs-URI im Format `<app-scheme>://<bundle-id>` anzugeben. Weitere Einzelheiten finden Sie in der [Schnellstartanleitung für die ADAL unter iOS](active-directory-devquickstarts-ios.md#em1-determine-what-your-redirect-uri-will-be-for-iosem).
 
@@ -562,7 +562,7 @@ und der Pod:
 	}
 
 
-**Swift**:
+**Swift:**
 
 	// add the following imports to your bridging header:
 	//		#import <ADALiOS/ADAuthenticationContext.h>
@@ -591,7 +591,7 @@ und der Pod:
 
 ## <a name="facebook-sdk"></a>Gewusst wie: Authentifizieren von Benutzern mit dem Facebook-SDK für iOS
 
-Mithilfe des Facebook-SDKs für iOS können Sie Benutzer über Facebook bei Ihrer App anmelden. Dies wird aufgrund der besseren Bedienbarkeit und der Möglichkeit, zusätzliche Anpassungen vorzunehmen, den `loginAsync()`-Methoden häufig vorgezogen.
+Mithilfe des Facebook-SDKs für iOS können Sie Benutzer über Facebook bei Ihrer App anmelden. Dies wird aufgrund der besseren Bedienbarkeit und der Möglichkeit, zusätzliche Anpassungen vorzunehmen, der `loginWithProvider:completion:`-Methode häufig vorgezogen.
 
 1. Konfigurieren Sie Ihr mobiles App-Back-End für die Facebook-Anmeldung, indem Sie die im Tutorial [Konfigurieren Ihrer App Service-Anwendung zur Verwendung der Facebook-Anmeldung](app-service-mobile-how-to-configure-facebook-authentication.md) beschriebenen Schritte ausführen.
 
@@ -669,7 +669,7 @@ Mithilfe des Facebook-SDKs für iOS können Sie Benutzer über Facebook bei Ihre
 
 ## <a name="twitter-fabric"></a>Gewusst wie: Authentifizieren von Benutzern mit Twitter Fabric für iOS
 
-Mithilfe von Fabric für iOS können Sie Benutzer über Twitter bei Ihrer App anmelden. Dies wird aufgrund der besseren Bedienbarkeit und der Möglichkeit, zusätzliche Anpassungen vorzunehmen, den `loginAsync()`-Methoden häufig vorgezogen.
+Mithilfe von Fabric für iOS können Sie Benutzer über Twitter bei Ihrer App anmelden. Dies wird aufgrund der besseren Bedienbarkeit und der Möglichkeit, zusätzliche Anpassungen vorzunehmen, der `loginWithProvider:completion:`-Methode häufig vorgezogen.
 
 1. Konfigurieren Sie Ihr mobiles App-Back-End für die Twitter-Anmeldung, indem Sie die im Tutorial [Konfigurieren Ihrer App Service-Anwendung zur Nutzung der Twitter-Anmeldung](app-service-mobile-how-to-configure-twitter-authentication.md) beschriebenen Schritte ausführen.
 
@@ -725,7 +725,7 @@ Mithilfe von Fabric für iOS können Sie Benutzer über Twitter bei Ihrer App an
 	    }];
 	}
 
-**Swift**:
+**Swift:**
 
 	import TwitterKit
 	// ...
@@ -741,6 +741,68 @@ Mithilfe von Fabric für iOS können Sie Benutzer über Twitter bei Ihrer App an
 		}
 	}
 
+## <a name="google-sdk"></a>Gewusst wie: Authentifizieren von Benutzern mit dem Google-Anmelde-SDK für iOS
+
+Mithilfe des Google-Anmelde-SDKs für iOS können Sie Benutzer über ein Google-Konto bei Ihrer Anwendung anmelden. Dies wird aufgrund der besseren Bedienbarkeit und der Möglichkeit, zusätzliche Anpassungen vorzunehmen, der `loginWithProvider:completion:`-Methode häufig vorgezogen.
+
+1. Konfigurieren Sie Ihr mobiles App-Back-End für die Google-Anmeldung, indem Sie die im Tutorial [Konfigurieren Ihrer App Service-Anwendung zur Nutzung der Google-Anmeldung](app-service-mobile-how-to-configure-google-authentication.md) beschriebenen Schritte ausführen.
+
+2. Installieren Sie das Google-SDK für iOS, indem Sie die Schritte in der Dokumentation [Google Sign-In for iOS - Start integrating](https://developers.google.com/identity/sign-in/ios/start-integrating) (Google-Anmeldung für iOS: Beginnen mit der Integration) ausführen. Sie können den Abschnitt „Authenticate with a Backend Server“ (Authentifizieren bei einem Back-End-Server) überspringen, da dieser Schritt von App Service ausgeführt wird.
+
+3. Fügen Sie gemäß der verwendeten Sprache zusätzlich zum Code Folgendes zur `signIn:didSignInForUser:withError:`-Methode des Delegaten hinzu:
+
+**Objective-C**:
+
+	    NSDictionary *payload = @{
+	                              @"id_token":user.authentication.idToken,
+	                              @"authorization_code":user.serverAuthCode
+	                              };
+	    
+	    [client loginWithProvider:@"google" token:payload completion:^(MSUser *user, NSError *error) {
+	        // ...
+	    }];
+
+**Swift:**
+
+		let payload: [String: String] = ["id_token": user.authentication.idToken, "authorization_code": user.serverAuthCode]
+		client.loginWithProvider("google", token: payload) { (user, error) in
+			// ...
+		}
+
+4. Fügen Sie zudem Folgendes zu `application:didFinishLaunchingWithOptions:` im App-Delegaten hinzu. Ersetzen Sie dabei „SERVER\_CLIENT\_ID“ durch die gleiche ID, die Sie zum Konfigurieren von App Service in Schritt 1 verwendet haben.
+
+**Objective-C**:
+
+ 		[GIDSignIn sharedInstance].serverClientID = @"SERVER_CLIENT_ID";
+ 
+ 
+ **Swift:**
+ 
+		GIDSignIn.sharedInstance().serverClientID = "SERVER_CLIENT_ID"
+
+ 
+ 5. Fügen Sie gemäß der verwendeten Sprache folgenden Code zu Ihrer Anwendung in einem UIViewController-Element hinzu, das das `GIDSignInUIDelegate`-Protokoll implementiert. Beachten Sie, dass der Benutzer vor der erneuten Anmeldung abgemeldet wird. Er muss zwar seine Anmeldeinformationen nicht erneut eingeben, aber dennoch wird ein Zustimmungsdialogfeld angezeigt. Dies ist erforderlich, um einen neuen Serverauthentifizierungscode abzurufen, der in einem vorherigen Schritt benötigt wird. Rufen Sie diese Methode nur auf, wenn das Sitzungstoken abgelaufen ist.
+ 
+ **Objective-C**:
+
+		#import <Google/SignIn.h>
+		// ...
+		- (void)authenticate
+		{
+			    [GIDSignIn sharedInstance].uiDelegate = self;
+				[[GIDSignIn sharedInstance] signOut];
+			    [[GIDSignIn sharedInstance] signIn];
+ 		}
+ 
+ **Swift:**
+ 	
+		// ...
+		func authenticate() {
+			GIDSignIn.sharedInstance().uiDelegate = self
+			GIDSignIn.sharedInstance().signOut()
+			GIDSignIn.sharedInstance().signIn()
+		}
+ 		
 <!-- Anchors. -->
 
 [What is Mobile Services]: #what-is
@@ -792,4 +854,4 @@ Mithilfe von Fabric für iOS können Sie Benutzer über Twitter bei Ihrer App an
 [CLI to manage Mobile Services tables]: ../virtual-machines-command-line-tools.md#Mobile_Tables
 [Conflict-Handler]: mobile-services-ios-handling-conflicts-offline-data.md#add-conflict-handling
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0831_2016-->

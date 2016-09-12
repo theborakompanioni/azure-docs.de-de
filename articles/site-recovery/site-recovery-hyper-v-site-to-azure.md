@@ -77,7 +77,7 @@ In Azure benötigen Sie für die Bereitstellung dieses Szenarios Folgendes:
 
 **Voraussetzung** | **Details**
 --- | ---
-**Azure-Konto**| Sie benötigen ein [Microsoft Azure](http://azure.microsoft.com/)-Konto. Für den Einstieg steht eine [kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/) zur Verfügung. Erfahren Sie mehr über die [Preise für Site Recovery](https://azure.microsoft.com/pricing/details/site-recovery/). 
+**Azure-Konto**| Sie benötigen ein [Microsoft Azure](http://azure.microsoft.com/)-Konto. Für den Einstieg steht eine [kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/) zur Verfügung. Weitere Informationen zu den Preisen für Site Recovery erhalten Sie [hier](https://azure.microsoft.com/pricing/details/site-recovery/). 
 **Azure-Speicher** | Sie benötigen ein Standardspeicherkonto. Hierfür können Sie ein LRS- oder GRS-Speicherkonto verwenden. Wir empfehlen Ihnen die Verwendung von GRS, damit Resilienz für die Daten besteht, wenn es zu einem regionalen Ausfall kommt oder wenn die primäre Region nicht wiederhergestellt werden kann. [Weitere Informationen](../storage/storage-redundancy.md). Das Konto muss sich in derselben Region wie der Recovery Services-Tresor befinden.<br/><br/> Storage Premium wird nicht unterstützt.<br/><br/> Replizierte Daten werden in Azure Storage gespeichert, und virtuelle Azure-Computer werden erstellt, wenn ein Failover durchgeführt wird.<br/><br/> [Erfahren Sie mehr](../storage/storage-introduction.md) über Azure Storage.
 **Azure-Netzwerk** | Sie benötigen ein virtuelles Azure-Netzwerk, mit dem die virtuellen Azure-Computer eine Verbindung herstellen, wenn ein Failover stattfindet. Das virtuelle Azure-Netzwerk muss sich in derselben Region wie der Recovery Services-Tresor befinden. 
 
@@ -113,6 +113,7 @@ Richten Sie ein Azure-Netzwerk ein. Sie benötigen dies, damit die nach dem Fail
 - Richten Sie das Azure-Netzwerk im [ARM-Modus](../virtual-network/virtual-networks-create-vnet-arm-pportal.md) oder im [klassischen Modus](../virtual-network/virtual-networks-create-vnet-classic-pportal.md) ein (je nachdem, welches Ressourcenmodell Sie für virtuelle Azure-Computer nach dem Failover verwenden möchten).
 - Wir empfehlen Ihnen, ein Netzwerk einzurichten, bevor Sie beginnen. Falls Sie es nicht tun, müssen Sie diesen Schritt während der Site Recovery-Bereitstellung ausführen.
 
+> [AZURE.NOTE] [Migration of networks](../resource-group-move-resources.md) zwischen Ressourcengruppen im gleichen Abonnement oder zwischen verschiedenen Abonnements wird für Netzwerke nicht unterstützt, die für die Site Recovery-Bereitstellung verwendet werden.
 
 ### Einrichten eines Azure-Speicherkontos
 
@@ -120,13 +121,15 @@ Richten Sie ein Azure-Netzwerk ein. Sie benötigen dies, damit die nach dem Fail
 - Je nach Ressourcenmodell, das Sie für Azure-VMs nach dem Failover verwenden möchten, richten Sie ein Konto im [ARM-Modus](../storage/storage-create-storage-account.md) oder im [klassischen Modus](../storage/storage-create-storage-account-classic-portal.md) ein.
 - Es wird empfohlen, ein Speicherkonto einzurichten, bevor Sie beginnen. Falls Sie es nicht tun, müssen Sie diesen Schritt während der Site Recovery-Bereitstellung ausführen. Die Konten müssen sich in derselben Region wie der Recovery Services-Tresor befinden.
 
+> [AZURE.NOTE] [Migration of storage accounts](../resource-group-move-resources.md) zwischen Ressourcengruppen im gleichen Abonnement oder zwischen verschiedenen Abonnements wird für Speicherkonten nicht unterstützt, die für die Site Recovery-Bereitstellung verwendet werden.
+
 ### Vorbereiten der Hyper-V-Hosts
 
 - Stellen Sie sicher, dass die Hyper-V-Hosts die [Voraussetzungen](#on-premises-prerequisites) erfüllen.
 
 ### Erstellen eines Recovery Services-Tresors
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com) an.
 2. Klicken Sie auf **Neu** > **Verwaltung** > **Sicherung und Site Recovery (OMS)**. Alternativ können Sie auf **Durchsuchen** > **Recovery Services-Tresore** > **Hinzufügen** klicken.
 
 	![Neuer Tresor](./media/site-recovery-hyper-v-site-to-azure/new-vault3.png)
@@ -158,7 +161,7 @@ Wählen Sie aus, was Sie replizieren möchten und wohin die Daten repliziert wer
 
 	![Ziele wählen](./media/site-recovery-hyper-v-site-to-azure/choose-goals.png)
 
-3. Wählen Sie unter **Schutzziel** die Option **In Azure** und dann **Ja, mit Hyper-V** aus. Wählen Sie **No** (Nein) aus, um zu bestätigen, dass Sie VMM nicht verwenden. Klicken Sie dann auf **OK**.
+3. Wählen Sie unter **Schutzziel** die Option **To Azure** (Zu Azure) und dann **Yes, with Hyper-V** (Ja, mit Hyper-V) aus. Wählen Sie **Nein** aus, um zu bestätigen, dass Sie VMM nicht verwenden. Klicken Sie dann auf **OK**.
 
 	![Ziele wählen](./media/site-recovery-hyper-v-site-to-azure/choose-goals2.png)
 
@@ -168,16 +171,16 @@ Wählen Sie aus, was Sie replizieren möchten und wohin die Daten repliziert wer
 Richten Sie den Hyper-V-Standort ein, installieren Sie den Azure Site Recovery-Anbieter und den Azure Recovery Services-Agent auf Hyper-V-Hosts, und registrieren Sie die Hosts im Tresor.
 
 
-1. Klicken Sie auf **Schritt 2: Bereiten Sie die Infrastruktur vor** > **Quelle**. Klicken Sie auf **+Hyper-V Site** (+Hyper-V-Standort), um einen neuen Hyper-V-Standort als Container für Ihre Hyper-V-Hosts oder -Cluster hinzuzufügen.
+1. Klicken Sie auf **Schritt 2: Infrastruktur vorbereiten** > **Quelle**. Klicken Sie auf **+Hyper-V-Standort**, um einen neuen Hyper-V-Standort als Container für Ihre Hyper-V-Hosts oder -Cluster hinzuzufügen.
 
 	![Quelle einrichten](./media/site-recovery-hyper-v-site-to-azure/set-source1.png)
 
-2. Geben Sie im Blatt **Hyper-V-Standort erstellen** einen Namen für den Standort an. Klicken Sie dann auf **OK**. Wählen Sie den Standort aus, den Sie gerade erstellt haben.
+2. Geben Sie auf dem Blatt **Hyper-V-Standort erstellen** einen Namen für den Standort an. Klicken Sie dann auf **OK**. Wählen Sie den Standort aus, den Sie gerade erstellt haben.
 
 	![Quelle einrichten](./media/site-recovery-hyper-v-site-to-azure/set-source2.png)
 
-3. Klicken Sie auf **+ Hyper-V Server**, um dem Standort einen Server hinzuzufügen.
-4. Vergewissern Sie sich, dass unter **Server hinzufügen** > **Servertyp** **Hyper-V Server** angezeigt wird. Stellen Sie sicher, dass der Hyper-V Server, den Sie hinzufügen möchten, die [Voraussetzungen](#on-premises-prerequisites) erfüllt und auf die angegebenen URLs zugreifen kann.
+3. Klicken Sie auf **+Hyper-V Server**, um dem Standort einen Server hinzuzufügen.
+4. Vergewissern Sie sich, dass unter **Server hinzufügen** > **Servertyp** als Typ **Hyper-V Server** angezeigt wird. Stellen Sie sicher, dass der Hyper-V-Server, den Sie hinzufügen möchten, die [Voraussetzungen](#on-premises-prerequisites) erfüllt und auf die angegebenen URLs zugreifen kann.
 4. Laden Sie die Installationsdatei für den Azure Site Recovery-Anbieter herunter. Führen Sie diese Datei aus, um sowohl den Anbieter als auch den Recovery Services-Agent auf jedem Hyper-V-Host zu installieren.
 5. Laden Sie den Registrierungsschlüssel herunter. Sie benötigen diese Angaben beim Ausführen des Setups. Der Schlüssel ist nach der Erstellung fünf Tage lang gültig.
 
@@ -196,9 +199,9 @@ Richten Sie den Hyper-V-Standort ein, installieren Sie den Azure Site Recovery-A
 
 4\. Geben Sie unter **Proxyeinstellungen** an, wie der Anbieter, der auf dem Server installiert wird, eine Internetverbindung mit Azure Site Recovery herstellt.
 
-- Wenn der Anbieter eine direkte Verbindung herstellen soll, wählen Sie **Connect directly without a proxy** (Ohne Proxy direkt verbinden) aus.
-- Wenn die Verbindung über einen derzeit auf dem Server eingerichteten Proxy hergestellt werden soll, wählen Sie **Connect with existing proxy settings** (Mit vorhandenen Proxyeinstellungen verbinden) aus.
-- Wenn für den vorhandenen Proxy eine Authentifizierung erforderlich ist oder Sie für die Anbieterverbindung einen benutzerdefinierten Proxy verwenden möchten, wählen Sie **Connect with custom proxy settings** (Mit benutzerdefinierten Proxyeinstellungen verbinden) aus.
+- Wenn der Anbieter eine direkte Verbindung herstellt, wählen Sie **Ohne Proxy direkt verbinden** aus.
+- Wenn die Verbindung über einen derzeit auf dem Server eingerichteten Proxy hergestellt werden soll, wählen Sie **Mit vorhandenen Proxyeinstellungen verbinden** aus.
+- Wenn für den vorhandenen Proxy eine Authentifizierung erforderlich ist oder Sie für die Anbieterverbindung einen benutzerdefinierten Proxy verwenden möchten, wählen Sie **Mit benutzerdefinierten Proxyeinstellungen verbinden** aus.
 - Bei einem benutzerdefinierten Proxy müssen Sie die Adresse, den Port und Anmeldeinformationen eingeben.
 - Stellen Sie sicher, dass die in den [Voraussetzungen](#on-premises-prerequisites) beschriebenen URLs vom Proxy zugelassen werden, falls Sie einen verwenden.
 
@@ -242,7 +245,7 @@ Geben Sie das Azure-Speicherkonto, das für die Replikation verwendet werden sol
 
 	![Speicher](./media/site-recovery-hyper-v-site-to-azure/select-target.png)
 
-4.	Wenn Sie noch kein Speicherkonto erstellt haben und dies per ARM nachholen möchten, können Sie auf **+Speicherkonto** klicken, um diesen Vorgang gleich durchzuführen. Geben Sie auf dem Blatt **Speicherkonto erstellen** einen Kontonamen, einen Typ, ein Abonnement und einen Standort an. Das Konto sollte sich an demselben Standort wie der Recovery Services-Tresor befinden.
+4.	Wenn Sie noch kein Speicherkonto erstellt haben und dies mit ARM nachholen möchten, klicken Sie auf **+Speicherkonto**, um diesen Vorgang gleich durchzuführen. Geben Sie auf dem Blatt **Speicherkonto erstellen** einen Kontonamen, einen Typ, ein Abonnement und einen Standort an. Das Konto sollte sich an demselben Standort wie der Recovery Services-Tresor befinden.
 
 	![Speicher](./media/site-recovery-hyper-v-site-to-azure/gs-createstorage.png)
 
@@ -300,7 +303,7 @@ Sie können den Capacity Planner verwenden, um die Bandbreite zu berechnen, die 
 
 	![Bandbreite einschränken](./media/site-recovery-hyper-v-site-to-azure/throttle2.png)
 
-Sie können auch das Cmdlet [Set-OBMachineSetting](https://technet.microsoft.com/library/hh770409.aspx) verwenden, um die Drosselung festzulegen. Hier ist ein Beispiel angegeben:
+Sie können auch das Cmdlet [Set-OBMachineSetting](https://technet.microsoft.com/library/hh770409.aspx) verwenden, um die Drosselung festzulegen. Hier ein Beispiel:
 
     $mon = [System.DayOfWeek]::Monday 
     $tue = [System.DayOfWeek]::Tuesday
@@ -343,7 +346,7 @@ Aktivieren Sie die Replikation jetzt wie folgt:
 
 	![Replikation aktivieren](./media/site-recovery-hyper-v-site-to-azure/enable-replication7.png)
 
-Sie können den Fortschritt des Auftrags **Schutz aktivieren** unter **Einstellungen** > **Aufträge** > **Site Recovery-Aufträge** verfolgen. Nachdem der Auftrag **Schutz abschließen** ausgeführt wurde, ist der Computer bereit für das Failover.
+Sie können den Fortschritt des Auftrags **Schutz aktivieren** unter **Einstellungen** > **Aufträge** > **Site Recovery-Aufträge** verfolgen. Nachdem der Auftrag Schutz abschließen ausgeführt wurde, ist der Computer bereit für das Failover.
 
 ### Anzeigen und Verwalten von VM-Eigenschaften
 
@@ -464,6 +467,6 @@ Hier wird beschrieben, wie Sie die Konfigurationseinstellungen, den Status und d
 
 ## Nächste Schritte
 
-Nachdem die Bereitstellung eingerichtet wurde und ausgeführt wird, [informieren](site-recovery-failover.md) Sie sich über die unterschiedlichen Failoverarten.
+Nachdem die Bereitstellung eingerichtet wurde und ausgeführt wird, können Sie sich über die unterschiedlichen Failoverarten [informieren](site-recovery-failover.md).
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0831_2016-->
