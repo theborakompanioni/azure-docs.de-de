@@ -19,7 +19,9 @@
 
 # Verwenden des Azure-Tabellenspeichers mit Node.js
 
-[AZURE.INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)] <br/> [AZURE.INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-tables.md)]
+[AZURE.INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
+<br/>
+[AZURE.INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-tables.md)]
 
 ## Übersicht
 
@@ -441,4 +443,4 @@ Weitere Informationen finden Sie in den folgenden Ressourcen.
   [Node.js-Web-App mit Azure-Tabellenspeicherdienst]: ../storage-nodejs-use-table-storage-web-site.md
   [Create and deploy a Node.js application to an Azure website]: ../web-sites-nodejs-develop-deploy-mac.md
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0817_2016--->
