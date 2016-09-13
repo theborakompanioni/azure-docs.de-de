@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="hero-article"
-	ms.date="08/29/2016"
+	ms.date="09/01/2016"
 	ms.author="anhoh"/>
 
 # NoSQL-Tutorial: Erstellen einer DocumentDB-C#-Konsolenanwendung
@@ -25,7 +25,7 @@
 
 Willkommen beim NoSQL-Tutorial für das Azure DocumentDB .NET SDK! Nachdem Sie das Schnellstartprojekt abgerufen oder das Tutorial absolviert haben, verfügen Sie über eine Konsolenanwendung zum Erstellen und Abfragen von DocumentDB-Ressourcen.
 
-- **[Schnellstart](#quickstart)**: Laden Sie das Beispielprojekt herunter, und geben Sie Ihre Verbindungsinformationen an. So verfügen Sie in weniger als fünf Minuten über eine verwendungsbereite DocumentDB-App.
+- **[Schnellstart](#quickstart)**: Laden Sie das Beispielprojekt herunter, und geben Sie Ihre Verbindungsinformationen an. So verfügen Sie in weniger als zehn Minuten über eine verwendungsbereite DocumentDB-App.
 - **[Tutorial](#tutorial)**: Erstellen Sie die Schnellstart-App von Grund auf in 30 Minuten.
 
 ## Voraussetzungen
@@ -36,7 +36,7 @@ Willkommen beim NoSQL-Tutorial für das Azure DocumentDB .NET SDK! Nachdem Sie d
 
 ## Schnellstart
 
-1. Laden Sie das Beispielprojekt von [GitHub](https://github.com/Azure-Samples/documentdb-dotnet-getting-started-quickstart/archive/master.zip) herunter.
+1. Laden Sie die ZIP-Datei mit dem Beispielprojekt von [GitHub](https://github.com/Azure-Samples/documentdb-dotnet-getting-started-quickstart/archive/master.zip) herunter, oder klonen Sie das Repository [documentdb-dotnet-getting-started-quickstart](https://github.com/Azure-Samples/documentdb-dotnet-getting-started-quickstart).
 2. [Erstellen Sie ein DocumentDB-Konto](documentdb-create-account.md) über das Azure-Portal.
 3. Ersetzen Sie in der Datei „App.config“ die Werte für „EndpointUri“ und „PrimaryKey“ durch Werte aus dem [Azure-Portal](https://portal.azure.com/). Klicken Sie hierzu auf dem Blatt **DocumentDB (NoSQL)** auf **Kontoname** und anschließend im Ressourcenmenü auf **Schlüssel**. ![Screenshot der Werte „EndpointUri“ und „PrimaryKey“, die in „App.config“ ersetzt werden müssen](./media/documentdb-get-started-quickstart/nosql-tutorial-documentdb-keys.png)
 4. Erstellen Sie das Projekt. Im Konsolenfenster können Sie verfolgen, wie die neuen Ressourcen erstellt, abgefragt und anschließend bereinigt werden.
@@ -599,4 +599,4 @@ Glückwunsch! Sie haben dieses NoSQL-Tutorial abgeschlossen und verfügen über 
 [documentdb-manage]: documentdb-manage.md
 [keys]: media/documentdb-get-started-quickstart/nosql-tutorial-keys.png
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0907_2016-->

@@ -86,7 +86,7 @@ Weitere Informationen zu Azure Mobile Apps finden Sie in unserem [Lernpfad]. Wei
 [DocumentDB]: ../documentdb/documentdb-get-started.md
 [Authentifizierungsfeatures]: ./app-service-mobile-auth.md
 [Datenfeatures]: ./app-service-mobile-offline-data-sync.md
-[Pushbenachrichtigungsfeatures]: ../notification-hubs/notification-hubs-overview.md
+[Pushbenachrichtigungsfeatures]: ../notification-hubs/notification-hubs-push-notification-overview.md
 [iOS]: ./app-service-mobile-ios-how-to-use-client-library.md
 [Android]: ./app-service-mobile-android-how-to-use-client-library.md
 [Windows]: ./app-service-mobile-dotnet-how-to-use-client-library.md
@@ -100,6 +100,6 @@ Weitere Informationen zu Azure Mobile Apps finden Sie in unserem [Lernpfad]. Wei
 [virtuelle Netzwerke]: ../app-service-web/web-sites-integrate-with-vnet.md
 [ExpressRoute]: ../app-service/app-service-app-service-environment-network-configuration-expressroute.md
 [App Service-Umgebungen]: ../app-service-web/app-service-app-service-environment-intro.md
-[Lernpfad]: https://azure.microsoft.com/documentation/learning-paths/appservice-mobileapps/
+[Lernpfad]: https://azure.microsoft.com/de-DE/documentation/learning-paths/appservice-mobileapps/
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0907_2016-->

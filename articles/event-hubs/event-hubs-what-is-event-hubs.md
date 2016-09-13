@@ -30,8 +30,6 @@ Event Hubs ist ein Dienst zur Ereignisverarbeitung, der große Mengen an Ereigni
 
 Weitere Beispiele für die Funktionen von Event Hubs sind Verhaltensanalysen in mobilen Apps, Verkehrsinformationen von Webfarmen, Ereignisaufzeichnungen in Konsolenspielen oder von Industriemaschinen oder verbundenen Fahrzeugen erfasste Telemetriedaten.
 
-Im Gegensatz zu [Service Bus-Warteschlangen und -Themen](../service-bus/service-bus-messaging-overview.md) konzentriert sich Event Hubs auf das Bereitstellen von skalierter Verarbeitung von Nachrichtendatenströmen. Event Hubs-Funktionen unterscheiden sich von Service Bus-Themen beispielsweise darin, dass sie für Szenarios mit hohem Durchsatz und hoher Ereignisverarbeitung optimiert sind. Daher sind in Event Hubs einige der Nachrichtenfunktionen, die für [Themen](../service-bus/service-bus-fundamentals-hybrid-solutions.md#topics) verfügbar sind, nicht direkt implementiert. Wenn Sie diese Funktionen benötigen, sind Themen weiterhin die beste Wahl.
-
 ## Nächste Schritte
 
 Ausführliche Informationen zu Event Hubs finden Sie unter den folgenden Themen:
@@ -45,4 +43,4 @@ Ausführliche Informationen zu Event Hubs finden Sie unter den folgenden Themen:
 [Lernprogramm zu Event Hubs]: event-hubs-csharp-ephcs-getstarted.md
 [Beispielanwendung zur Verwendung von Event Hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0907_2016-->

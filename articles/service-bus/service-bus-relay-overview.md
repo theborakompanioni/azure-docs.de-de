@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Übersicht über Service Bus-Relaymessaging | Microsoft Azure"
+	pageTitle="Übersicht über Service Bus Relay | Microsoft Azure"
 	description="Übersicht über Service Bus Relay"
 	services="service-bus"
 	documentationCenter=".net"
@@ -13,13 +13,13 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="multiple"
 	ms.topic="get-started-article"
-	ms.date="05/06/2016"
+	ms.date="09/01/2016"
 	ms.author="sethm"/>
 
 
-# Service Bus-Relaymessaging
+# Übersicht über Service Bus Relay
 
-Die zentrale Komponente von Service Bus ist ein zentralisierter (aber hinsichtlich der Leistung hochgradig ausgeglichener) Relaydienst, der Ihnen die Erstellung von Hybridanwendungen ermöglicht, die sowohl in einem Azure-Rechenzentrum als auch in Ihrer eigenen lokalen Unternehmensumgebung ausgeführt werden. Der Relaydienst unterstützt eine Vielzahl verschiedener Transportprotokolle und Webdienststandards. Dies schließt SOAP, WS-* und sogar REST ein. Der Service Bus-Relaydienst unterstützt Ihre Hybridanwendungen, indem er Ihnen die Möglichkeit bietet, WCF-Dienste (Windows Communication Foundation), die sich in einem Unternehmensnetzwerk befinden, sicher in der öffentlichen Cloud bereitzustellen, ohne dass eine Firewallverbindung geöffnet werden muss oder intrusive Änderungen an der unternehmensinternen Netzwerkinfrastruktur erforderlich werden.
+Eine wichtige Komponente von Service Bus ist ein zentralisierter (aber mit starkem Lastenausgleich) *Relaydienst*, der Ihnen die Erstellung von Hybridanwendungen ermöglicht, die sowohl in einem Azure-Datencenter als auch in Ihrer eigenen lokalen Unternehmensumgebung ausgeführt werden. Das Service Bus Relay unterstützt eine Vielzahl verschiedener Transportprotokolle und Webdienststandards. Dies schließt SOAP, WS-* und sogar REST ein. Der Relaydienst unterstützt Ihre Hybridanwendungen, indem er Ihnen die Möglichkeit bietet, WCF-Dienste (Windows Communication Foundation) in einem Unternehmensnetzwerk sicher in der öffentlichen Cloud bereitzustellen, ohne dass eine Firewallverbindung geöffnet werden muss oder tiefgreifende Änderungen an der unternehmensinternen Netzwerkinfrastruktur erforderlich werden.
 
 ![Relaykonzepte](./media/service-bus-relay-overview/sb-relay-01.png)
 
@@ -31,11 +31,11 @@ Sie initiieren die Verbindung zwischen dem lokalen Dienst und dem Relaydienst mi
 
 ## Nächste Schritte
 
-Weitere Informationen zu Service Bus Relay finden Sie in den folgenden Themen:
+Weitere Informationen zum Service Bus Relay finden Sie in den folgenden Themen:
 
 - [Übersicht über die Architektur von Azure Service Bus](service-bus-fundamentals-hybrid-solutions.md)
 - [Verwenden des Service Bus Relay-Diensts](service-bus-dotnet-how-to-use-relay.md)
 
  
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0907_2016-->

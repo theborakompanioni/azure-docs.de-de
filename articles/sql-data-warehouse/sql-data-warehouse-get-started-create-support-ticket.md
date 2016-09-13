@@ -13,8 +13,8 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="07/18/2016"
-   ms.author="sonyam;barbkess;sonyama"/>
+   ms.date="09/01/2016"
+   ms.author="sonyama;barbkess"/>
 
 # Gewusst wie: Erstellen eines Supporttickets für SQL Data Warehouse
  
@@ -38,7 +38,7 @@ Bei Problemen mit Ihrer Instanz von SQL Data Warehouse ist es ratsam, ein Suppor
 
     ![Typ der Anfrage](./media/sql-data-warehouse-get-started-create-support-ticket/request-type.png)
     
-    >[AZURE.NOTE]  Standardmäßig verfügt jeder SQL-Server (z.B. myserver.database.windows.net) über ein **DTU-Kontingent** in Höhe von 45.000. Bei diesem Kontingentwert handelt es sich einfach um ein Sicherheitslimit. Sie können Ihr Kontingent erhöhen, indem Sie ein Supportticket erstellen und als Anfragetyp *Kontingent* wählen. Zum Berechnen Ihrer DTU-Anforderungen müssen Sie wissen, dass für 100 [DWUs][] von SQL Data Warehouse jeweils 750 DTUs verbraucht werden. Mit dem Standardkontingent von 45.000 können Sie also maximal eine Erstellung mit DW6000 (45.000/750) durchführen oder mehrere kleinere Datenbanken mit niedrigeren DWU-Werten verwenden. Wenn Sie beispielsweise zwei DW6000-Einheiten auf einem SQL-Server hosten möchten, sollten Sie ein DTU-Kontingent in Höhe von 90.000 anfordern. Sie können den aktuellen DTU-Verbrauch im Portal auf dem Blatt „SQL-Server“ anzeigen. Sowohl angehaltene als auch nicht angehaltene Datenbanken werden in das DTU-Kontingent eingerechnet.
+    >[AZURE.NOTE]  Standardmäßig verfügt jeder SQL-Server (z.B. myserver.database.windows.net) über ein **DTU-Kontingent** in Höhe von 45.000. Bei diesem Kontingentwert handelt es sich einfach um ein Sicherheitslimit. Sie können Ihr Kontingent erhöhen, indem Sie ein Supportticket erstellen und als Anfragetyp *Kontingent* wählen. Multiplizieren Sie zum Berechnen Ihrer DTU-Anforderungen die Anzahl der insgesamt benötigten [DWUs][] mit 7,5. Wenn Sie beispielsweise zwei DW6000-Einheiten auf einer SQL Server-Instanz hosten möchten, sollten Sie ein DTU-Kontingent in Höhe von 90.000 anfordern. Sie können den aktuellen DTU-Verbrauch im Portal auf dem Blatt „SQL-Server“ anzeigen. Sowohl angehaltene als auch nicht angehaltene Datenbanken werden in das DTU-Kontingent eingerechnet.
 
 5. Wählen Sie das **Abonnement** aus, unter dem die Datenbank mit dem gemeldeten Problem gehostet wird.
 
@@ -103,4 +103,4 @@ Außerdem können Sie sich auch an der SQL Data Warehouse-Community unter [Stack
 [Stack Overflow]: https://stackoverflow.com/questions/tagged/azure-sqldw/
 [Azure SQL Data Warehouse-MSDN-Forum]: https://social.msdn.microsoft.com/Forums/home?forum=AzureSQLDataWarehouse/
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0907_2016-->

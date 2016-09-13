@@ -12,7 +12,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="08/29/2016"
+   ms.date="09/07/2016"
    ms.author="cherylmc" />
 
 # ExpressRoute-Partner und Peeringstandorte
@@ -31,7 +31,7 @@ Wenn Sie mit mindestens einem ExpressRoute-Standort innerhalb der geopolitischen
 |---|---|---|
 |**Nordamerika**|USA, Osten; USA, Westen; USA, Osten 2; USA, Mitte; USA, Süden-Mitte; USA, Norden-Mitte; Kanada, Mitte; Kanada, Osten|Atlanta, Chicago, Dallas, Las Vegas+, Los Angeles, New York, Seattle, Silicon Valley, Washington DC, Montreal+, Quebec City+, Toronto|
 |**Südamerika**|Brasilien Süd|Sao Paulo|
-|**Europa**|Nordeuropa, Westeuropa|Amsterdam, Dublin, London, Newport(Wales)+, Paris|
+|**Europa**|Europa, Norden, Europa, Westen, Großbritannien Westen, Großbritannien Süden|Amsterdam, Dublin, London, Newport(Wales)+, Paris|
 |**Asien**|Ostasien, Südostasien|Hongkong, Singapur|
 |**Japan**|Japan West, Japan Ost|Osaka, Tokio|
 |**Australien**|Südostaustralien, Ostaustralien|Melbourne, Sydney|
@@ -83,7 +83,7 @@ Konnektivität zwischen geopolitischen Regionen wird bei der ExpressRoute-Standa
 | **MTN** | Unterstützt | Unterstützt | London |
 | **NEXTDC** | Unterstützt | Unterstützt | Melbourne, Sydney |
 | **NTT Communications** | Unterstützt | Unterstützt | London, Los Angeles, Osaka, Tokio |
-| **[Orange](http://www.orange-business.com/en/products/business-vpn-galerie)** | Unterstützt | Unterstützt | Amsterdam, Hongkong, London, Silicon Valley, Singapur, Washington, D.C. |
+| **[Orange](http://www.orange-business.com/en/products/business-vpn-galerie)** | Unterstützt | Unterstützt | Amsterdam, Hongkong, London, Silicon Valley, Singapur, Sydney, Washington DC |
 | **PCCW Global Limited** | Unterstützt | Unterstützt | Hongkong |
 | **[SingTel](http://info.singtel.com/about-us/news-releases/singtel-provide-secure-private-access-microsoft-azure-public-cloud)** | Unterstützt | Unterstützt | Singapur |
 | **SoftBank** | Unterstützt | Unterstützt | Osaka, Tokio | 
@@ -171,4 +171,4 @@ Je nach Ihrer Netzwerkgröße kann das Aktivieren privater Verbindungen für Ihr
 <!--Image References-->
 [0]: ./media/expressroute-locations/expressroute-locations-map.png "Standortkarte"
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0907_2016-->

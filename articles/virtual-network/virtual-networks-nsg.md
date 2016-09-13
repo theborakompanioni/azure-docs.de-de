@@ -42,8 +42,8 @@ NSG-Regeln haben die folgenden Eigenschaften:
 |**Protokoll**|Protokoll entsprechend der Regel|TCP, UDP oder *|Wenn Sie das Protokoll mit * angeben, schließt dies ICMP (nur Ost-West-Datenverkehr) sowie UDP und TCP ein. Auf diese Weise können Sie u. U. die Anzahl der benötigten Regeln reduzieren.<br/>Gleichzeitig kann die Angabe von * zu allgemein sein. Verwenden Sie diesen Ansatz deshalb nur, wenn er wirklich nötig ist.|
 |**Quellportbereich**|Quellportbereich entsprechend der Regel|Eine einzelne Portnummer von 1 bis 65535, ein Portbereich (z.B. 1-65635) oder * (für alle Ports)|Quellports könnte kurzlebig sein. Sofern Ihr Clientprogramm keinen bestimmten Port nutzt, verwenden Sie in den meisten Fällen „*“.<br/>Versuchen Sie, weitestgehend mit Portbereichen zu arbeiten, um die Anzahl von notwendigen Regeln zu reduzieren.<br/>Mehrere Ports oder Portbereiche können nicht mit Kommas gruppiert werden.
 |**Zielportbereich**|Zielportbereich entsprechend der Regel|Eine einzelne Portnummer von 1 bis 65535, ein Portbereich (z.B. 1-65535) oder * (für alle Ports)|Versuchen Sie, weitestgehend mit Portbereichen zu arbeiten, um die Anzahl von notwendigen Regeln zu reduzieren.<br/>Mehrere Ports oder Portbereiche können nicht mit Kommas gruppiert werden.
-|**Quelladresspräfix**|Quelladresspräfix oder -tag entsprechend der Regel|Eine einzelne IP-Adresse (z. B. 10.10.10.10), ein IP-Subnetz (z. B. 192.168.1.0/24), ein [Standardtag](#Default-Tags) oder * (für alle Adressen)|Verwenden Sie nach Möglichkeit Bereiche, Standard-Tags und *, um die Anzahl von Regeln zu reduzieren.|
-|**Zieladresspräfix**|Zieladresspräfix oder -tag entsprechend der Regel|Eine einzelne IP-Adresse (z. B. 10.10.10.10), ein IP-Subnetz (z. B. 192.168.1.0/24), ein [Standardtag](#Default-Tags) oder * (für alle Adressen)|Verwenden Sie nach Möglichkeit Bereiche, Standard-Tags und *, um die Anzahl von Regeln zu reduzieren.|
+|**Quelladresspräfix**|Quelladresspräfix oder -tag entsprechend der Regel|Eine einzelne IP-Adresse (z. B. 10.10.10.10), ein IP-Subnetz (z. B. 192.168.1.0/24), ein [Standardtag](#default-tags) oder * (für alle Adressen)|Verwenden Sie nach Möglichkeit Bereiche, Standard-Tags und *, um die Anzahl von Regeln zu reduzieren.|
+|**Zieladresspräfix**|Zieladresspräfix oder -tag entsprechend der Regel|Eine einzelne IP-Adresse (z. B. 10.10.10.10), ein IP-Subnetz (z. B. 192.168.1.0/24), ein [Standardtag](#default-tags) oder * (für alle Adressen)|Verwenden Sie nach Möglichkeit Bereiche, Standard-Tags und *, um die Anzahl von Regeln zu reduzieren.|
 |**Richtung**|Richtung des Datenverkehrs entsprechend der Regel|Eingehend oder ausgehend|Die Regeln für eingehenden und ausgehenden Datenverkehr werden getrennt verarbeitet, abhängig von der Richtung.|
 |**Priority**|Regeln werden in der Reihenfolge ihrer Priorität überprüft. Sobald eine Regel erfüllt ist, werden keine Übereinstimmungen mit weiteren Regeln gesucht.|Eine Zahl zwischen 100 und 4096|Vergeben Sie beim Erstellen von Regeln die Prioritäten am besten jeweils in Hunderterschritten, damit noch Platz für später hinzukommende Regeln bleibt, die von der Priorität her zwischen die bestehenden Regeln eingeordnet werden müssen.|
 |**Access**|Typ des Zugriffs bei Übereinstimmung mit der Regel|Zulassen oder verweigern|Beachten Sie, dass ein Paket verworfen wird, wenn keine Zulassungsregel dafür gefunden wird.|
@@ -124,13 +124,13 @@ Sie können NSGs mit den verschiedenen unten aufgeführten Tools im klassischen 
 
 |Bereitstellungstool|Klassisch|Ressourcen-Manager|
 |---|---|---|
-|Klassisches Portal|![Nein][red]|![Nein][red]|
-|Azure-Portal|![Ja][green]|[](virtual-networks-create-nsg-arm-pportal.md)![Ja][green]|
-|PowerShell|[](virtual-networks-create-nsg-classic-ps.md)![Ja][green]|[](virtual-networks-create-nsg-arm-ps.md)![Ja][green]|
-|Azure-Befehlszeilenschnittstelle|[](virtual-networks-create-nsg-classic-cli.md)![Ja][green]|[](virtual-networks-create-nsg-arm-cli.md)![Ja][green]|
-|ARM-Vorlage|![Nein][red]|[](virtual-networks-create-nsg-arm-template.md)![Ja][green]|
+|Klassisches Portal|![Nein](./media/virtual-network-nsg-overview/red.png)|![Nein](./media/virtual-network-nsg-overview/red.png)|
+|Azure-Portal|![Ja](./media/virtual-network-nsg-overview/green.png)|[![Ja][green]](virtual-networks-create-nsg-arm-pportal.md)|
+|PowerShell|[![Ja][green]](virtual-networks-create-nsg-classic-ps.md)|[![Ja][green]](virtual-networks-create-nsg-arm-ps.md)|
+|Azure-Befehlszeilenschnittstelle|[![Ja][green]](virtual-networks-create-nsg-classic-cli.md)|[![Ja][green]](virtual-networks-create-nsg-arm-cli.md)|
+|ARM-Vorlage|![Nein](./media/virtual-network-nsg-overview/red.png)|[![Ja][green]](virtual-networks-create-nsg-arm-template.md)|
 
-|**Schlüssel**|![Ja][green] Unterstützt. Klicken Sie, um den Artikel aufzurufen.|![Nein][red] Nicht unterstützt.|
+|**Schlüssel**|![Ja](./media/virtual-network-nsg-overview/green.png) Unterstützt.|![Nein](./media/virtual-network-nsg-overview/red.png) Nicht unterstützt.|
 |---|---|---|
 
 ## Planung
@@ -250,7 +250,7 @@ Die Anforderungen 1–6 (außer 3) beschränken sich alle auf Subnetzräume. Die
 
 |Regel|Access|Priority|Quelladressbereich|Quellport|Zieladressbereich|Zielport|Protocol|
 |---|---|---|---|---|---|---|---|
-|RDP aus dem Internet zulassen|Zulassen|100|INTERNET|*|\*|3389|TCP|
+|RDP aus dem Internet zulassen|Zulassen|100|INTERNET|*|*|3389|TCP|
 
 >[AZURE.NOTE] Beachten Sie, dass der Quelladressbereich für dieser Regel **Internet** ist und nicht die VIP des Load Balancers; der Quellport ist ***** und nicht 500001. Verwechseln Sie NAT-Regeln und Lastenausgleichsregeln nicht mit NSG-Regeln. Die NSG-Regeln beziehen sich immer auf die ursprüngliche Quelle und das endgültige Ziel des Datenverkehrs, **NICHT** auf den zwischen beiden liegenden Load Balancer.
 
@@ -260,7 +260,7 @@ Die Anforderungen 1–6 (außer 3) beschränken sich alle auf Subnetzräume. Die
 
 |Regel|Access|Priority|Quelladressbereich|Quellport|Zieladressbereich|Zielport|Protocol|
 |---|---|---|---|---|---|---|---|
-|RDP von FrontEnd zulassen|Zulassen|100|192\.168.1.0/24|*|\*|3389|TCP|
+|RDP von FrontEnd zulassen|Zulassen|100|192\.168.1.0/24|*|*|3389|TCP|
 
 ### NSG für die Datenbankzugriffs-Netzwerkkarten in „BackEnd“
 
@@ -268,7 +268,7 @@ Die Anforderungen 1–6 (außer 3) beschränken sich alle auf Subnetzräume. Die
 
 |Regel|Access|Priority|Quelladressbereich|Quellport|Zieladressbereich|Zielport|Protocol|
 |---|---|---|---|---|---|---|---|
-|SQL von FrontEnd zulassen|Zulassen|100|192\.168.1.0/24|*|\*|1433|TCP|
+|SQL von FrontEnd zulassen|Zulassen|100|192\.168.1.0/24|*|*|1433|TCP|
 
 Da einige der oben aufgeführten NSGs einzelnen Netzwerkkarten zugeordnet werden müssen, müssen Sie dieses Szenario als Ressourcen-Manager-Bereitstellung bereitstellen. Beachten Sie, wie der Regeln für die Subnetz- und Netzwerkkartenebene je nach Notwendigkeit kombiniert werden.
 
@@ -282,4 +282,4 @@ Da einige der oben aufgeführten NSGs einzelnen Netzwerkkarten zugeordnet werden
 [yellow]: ./media/virtual-network-nsg-overview/yellow.png
 [red]: ./media/virtual-network-nsg-overview/red.png
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0907_2016-->

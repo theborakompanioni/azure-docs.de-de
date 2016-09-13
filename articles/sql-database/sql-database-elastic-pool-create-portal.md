@@ -29,13 +29,13 @@ In diesem Artikel wird beschrieben, wie Sie im [Azure-Portal](https://portal.azu
 
 Sie können einem Server mehrere Pools hinzufügen, aber es ist nicht möglich, Datenbanken von verschiedenen Servern in demselben Pool zusammenzufassen. Zum Erstellen eines Pools benötigen Sie mindestens eine Datenbank auf einem V12-Server. Falls Sie keinen Server dieser Art besitzen, helfen Ihnen die Informationen unter [Erstellen einer ersten Azure SQL-Datenbank](sql-database-get-started.md) weiter. Sie können einen Pool mit nur einer Datenbank erstellen, aber Pools sind erst mit mehreren Datenbanken kosteneffizient. Weitere Informationen finden Sie unter [Überlegungen zum Preis und zur Leistung eines Pools für elastische Datenbanken](sql-database-elastic-pool-guidance.md).
 
-> [AZURE.NOTE] Pools sind nur mit SQL-Datenbank-V12-Servern verfügbar. Wenn Sie Datenbanken auf einem V11-Server installiert haben, können Sie auf einem V12-Server [mit einem PowerShell-Skript die für einen Pool geeigneten Kandidaten ermitteln](sql-database-elastic-pool-database-assessment-powershell.md) und dann in einem Schritt [mit PowerShell ein Upgrade auf V12 ausführen und einen Pool erstellen](sql-database-upgrade-server-powershell.md).
+> [AZURE.NOTE] Elastische Pools sind in allen Azure-Regionen allgemein verfügbar, mit Ausnahme von „USA, Norden-Mitte“ und „Indien, Westen“. Dort befinden sie sich derzeit in der Vorschauphase. Die allgemeine Verfügbarkeit von elastischen Pools in diesen Regionen wird so bald wie möglich bereitgestellt. Elastische Pools unterstützen zurzeit keine Datenbanken mit [In-Memory-OLTP oder In-Memory-Analysen](sql-database-in-memory.md).
 
 ## Schritt 1: Erstellen eines neuen Pools
 
-In diesem Artikel wird gezeigt, wie Sie aus einem im Portal vorhandenen Blatt **Server** einen neuen Pool erstellen. Dies ist die einfachste Möglichkeit, um vorhandene Datenbanken in einen Pool zu verschieben.
+In diesem Artikel wird gezeigt, wie Sie aus einem im Portal vorhandenen Serverblatt einen neuen Pool erstellen. Dies ist die einfachste Möglichkeit, um vorhandene Datenbanken in einen Pool zu verschieben.
 
-> [AZURE.NOTE] Es spielt keine Rolle, ob Sie bereits über einen Server verfügen: Sie können einen neuen Pool auch über das Blatt **Elastische SQL-Pools** erstellen. (Klicken Sie links im Portal unterhalb der Liste auf **Durchsuchen** **>** **Elastische SQL-Pools**.) Wenn Sie auf dem Blatt **Elastische SQL-Pools** auf **+ Hinzufügen** klicken, werden die Schritte zum Erstellen eines neuen Servers während des Workflows zur Bereitstellung des Pools angezeigt.
+> [AZURE.NOTE] Es spielt keine Rolle, ob Sie bereits über einen Server verfügen: Sie können einen neuen Pool auch über das Blatt **Elastische SQL-Pools** erstellen. (Klicken Sie links im Portal unterhalb der Liste auf **Durchsuchen** **>** **Elastische SQL-Pools**.) Wenn Sie auf dem Blatt **Elastische SQL-Pools** auf **+ Hinzufügen** klicken, werden die Schritte zum Erstellen eines neuen Servers während des Workflows zur Poolbereitstellung angezeigt.
 
 1. Klicken Sie im [Azure-Portal](http://portal.azure.com/) unterhalb der Liste auf der linken Seite auf **Durchsuchen** **>** **Computer mit SQL Server** und dann auf den Server mit den Datenbanken, die Sie einem Pool hinzufügen möchten.
 2. Klicken Sie auf **Neuer Pool**.
@@ -73,7 +73,7 @@ Klicken Sie nach dem Festlegen des Tarifs auf „Pool konfigurieren“. Hier fü
 
     ![Hinzufügen von Datenbanken](./media/sql-database-elastic-pool-create-portal/add-databases.png)
 
-    Wenn die von Ihnen verwendeten Datenbanken über ausreichend Telemetriedaten zur bisherigen Nutzung verfügen, werden der Graph **Geschätzte eDTU- und GB-Nutzung** und das Balkendiagramm **Tatsächliche eDTU-Nutzung** aktualisiert. Diese helfen Ihnen dabei, Konfigurationsentscheidungen zu treffen. Außerdem erhalten Sie vom Dienst unter Umständen eine Empfehlungsnachricht zur richtigen Dimensionierung des Pools. Siehe [Dynamische Empfehlungen](#dynamic-recommendations).
+    Wenn die von Ihnen verwendeten Datenbanken über ausreichend Telemetriedaten zur bisherigen Nutzung verfügen, werden der Graph **Estimated eDTU and GB usage** (Geschätzte eDTU- und GB-Nutzung) und das Balkendiagramm **Actual eDTU usage** (Tatsächliche eDTU-Nutzung) aktualisiert. Diese helfen Ihnen dabei, Konfigurationsentscheidungen zu treffen. Außerdem erhalten Sie vom Dienst unter Umständen eine Empfehlungsnachricht zur richtigen Dimensionierung des Pools. Siehe [Dynamische Empfehlungen](#dynamic-recommendations).
 
 3. Verwenden Sie die Steuerelemente auf der Seite **Pool konfigurieren**, um die Einstellungen zu untersuchen und den Pool zu konfigurieren. Weitere Details zu den Grenzwerten für die einzelnen Dienstebenen finden Sie unter [Beschränkungen für elastische Pools](sql-database-elastic-pool.md#edtu-and-storage-limits-for-elastic-pools-and-elastic-databases), und eine ausführliche Anleitung zur Größenanpassung eines Pools finden Sie unter [Wo sollte ein Pool für elastische Datenbanken verwendet werden?](sql-database-elastic-pool-guidance.md). Weitere Informationen zu Einstellungen für Pools finden Sie unter [Eigenschaften von Pools für elastische Datenbanken](sql-database-elastic-pool.md#elastic-database-pool-properties).
 
@@ -113,4 +113,4 @@ Nach dem Hinzufügen von Datenbanken zum Pool werden Empfehlungen basierend auf 
 - [Verwalten eines elastischen SQL-Datenbankpools mit C#](sql-database-elastic-pool-manage-csharp.md)
 - [Übersicht über Features für elastische Datenbanken](sql-database-elastic-scale-introduction.md)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0907_2016-->

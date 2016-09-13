@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="Verwenden des klassischen Azure-Portals, um Kanäle zu erstellen, von denen eine Livecodierung von Single-Bitrate- zu Multi-Bitrate-Datenströmen vorgenommen wird" 
-	description="In diesem Lernprogramm werden Sie durch die Schritte zum Erstellen eines Kanals über das klassische Azure-Portal geführt, von dem ein Single-Bitrate-Livedatenstrom empfangen und in einen Multi-Bitrate-Datenstrom codiert wird." 
+	pageTitle="Gewusst wie: Livestreaming mit Azure Media Services zum Erstellen von Datenströmen mit Mehrfachbitrate im Azure-Portal | Microsoft Azure" 
+	description="In diesem Lernprogramm werden Sie durch die Schritte zum Erstellen eines Kanals über das Azure-Portal geführt, von dem ein Single-Bitrate-Livedatenstrom empfangen und in einen Multi-Bitrate-Datenstrom codiert wird." 
 	services="media-services" 
 	documentationCenter="" 
 	authors="juliako,anilmur" 
@@ -13,11 +13,11 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="get-started-article"
-	ms.date="06/22/2016"
+	ms.date="09/06/2016"
 	ms.author="juliako"/>
 
 
-#Verwenden des klassischen Azure-Portals, um Kanäle zu erstellen, von denen eine Livecodierung von Single-Bitrate- zu Multi-Bitrate-Datenströmen vorgenommen wird
+#Gewusst wie: Livestreaming mit Azure Media Services zum Erstellen von Datenströmen mit Mehrfachbitrate im Azure-Portal
 
 > [AZURE.SELECTOR]
 - [Portal](media-services-portal-creating-live-encoder-enabled-channel.md)
@@ -43,206 +43,168 @@ Im Folgenden werden grundlegende Schritte zum Erstellen allgemeiner Livestreamin
 1. Rufen Sie die Erfassungs-URL des Kanals ab.
 
 	Die Erfassungs-URL wird vom Liveencoder verwendet, um den Datenstrom an den Kanal zu senden.
-1. Rufen Sie die Vorschau-URL des Kanals ab. 
+1. Rufen Sie die Vorschau-URL des Kanals ab.
 
-	Verwenden Sie diese URL, um sicherzustellen, dass der Livedatenstrom ordnungsgemäß vom Kanal empfangen wird.
+	Verwenden Sie diese URL, um sicherzustellen, dass der Livestream ordnungsgemäß vom Kanal empfangen wird.
 
-3. Erstellen Sie ein Programm (dadurch wird auch ein Medienobjekt erstellt).
-1. Veröffentlichen Sie das Programm (dadurch wird ein OnDemand-Locator für das zugehörige Medienobjekt erstellt).  
+3. Erstellen Sie ein Ereignis/Programm (dadurch wird auch ein Asset erstellt).
+1. Veröffentlichen Sie das Ereignis (dadurch wird ein OnDemand-Locator für das zugehörige Asset erstellt).
 
 	Stellen Sie sicher, dass auf dem Streamingendpunkt, von dem Sie Inhalte streamen möchten, mindestens eine für das Streaming reservierte Einheit verfügbar ist.
-1. Wenn Sie zum Starten von Streaming und Archivierung bereit sind, starten Sie das Programm.
+1. Wenn Sie zum Starten von Streaming und Archivierung bereit sind, starten Sie das Ereignis.
 2. Optional kann vom Liveencoder eine Ankündigung gestartet werden. Die Ankündigung wird in den Ausgabedatenstrom eingefügt.
-1. Sie können das Programm und damit das Streaming und die Archivierung des Ereignisses jederzeit beenden.
-1. Löschen Sie das Programm (und optional das Medienobjekt).   
+1. Sie können das Ereignis und damit das Streaming und die Archivierung des Ereignisses jederzeit beenden.
+1. Löschen Sie das Ereignis (und optional das Asset).
 
 ##Dieses Lernprogramm umfasst folgende Punkte
 
-In diesem Lernprogramm wird das klassische Azure-Portal verwendet, um die folgenden Aufgaben auszuführen:
+In diesem Lernprogramm wird das Azure-Portal verwendet, um die folgenden Aufgaben auszuführen:
 
 2.  Konfigurieren von Streamingendpunkten
 3.  Erstellen eines Kanals, der zum Ausführen von Livecodierung aktiviert ist
 1.  Abrufen der Erfassungs-URL, um sie dem Liveencoder bereitzustellen Diese URL wird vom Liveencoder verwendet, um den Datenstrom in den Kanal zu leiten.
-1.  Erstellen eines Programms (und eines Medienobjekts)
-1.  Veröffentlichen des Medienobjekts und Abrufen von Streaming-URLs  
-1.  Wiedergeben Ihrer Inhalte 
+1.  Erstellen eines Ereignisses/Programms (und eines Assets)
+1.  Veröffentlichen des Medienobjekts und Abrufen von Streaming-URLs
+1.  Wiedergeben Ihrer Inhalte
 2.  Bereinigen
 
 ##Voraussetzungen
 Zum Abschließen dieses Lernprogramms müssen folgende Voraussetzungen erfüllt sein:
 
-- Um dieses Lernprogramm abzuschließen, benötigen Sie ein Azure-Konto. Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
+- Sie benötigen ein Azure-Konto, um dieses Lernprogramm auszuführen. Wenn Sie noch kein Konto haben, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
 - Media Services-Konto. Informationen zum Erstellen eines Media Services-Kontos finden Sie unter [Konto erstellen](media-services-create-account.md).
 - Sie benötigen eine Webcam und einen Encoder, von dem ein Single-Bitrate-Livedatenstrom gesendet wird.
 
-##Konfigurieren von Streamingendpunkten mithilfe des Portals
+##Konfigurieren von Streamingendpunkten 
 
-Wenn Sie mit Azure Media Services arbeiten, besteht eines der häufigsten Szenarien darin, Streaming mit adaptiver Bitrate an Ihre Clients zu übermitteln. Mit Adaptive Bitrate Streaming kann der Client während der Videodarstellung auf einen höheren oder niedrigeren Bitraten-Stream wechseln, basierend auf der aktuellen Netzwerkbandbreite, CPU-Auslastung und anderen Faktoren. Von Media Services werden die folgenden Streamingtechnologien mit adaptiver Bitrate unterstützt: HTTP Live Streaming (HLS), Smooth Streaming, MPEG DASH und HDS (nur mit Adobe PrimeTime/Access-Lizenz).
+Media Services umfasst die dynamische Paketerstellung, bei der Sie MP4-Dateien mit variablen Bitraten in den folgenden Streamingformaten bereitstellen können: MPEG DASH, HLS, Smooth Streaming oder HDS. Hierbei ist es nicht erforderlich, diese Streamingformate erneut zu verpacken. Mit der dynamischen Paketerstellung müssen Sie die Dateien nur in einem Speicherformat speichern und bezahlen. Media Services erstellt und verarbeitet die entsprechende Antwort basierend auf Anforderungen von einem Client.
 
-Beim Arbeiten mit Livestreaming wird ein Livedatenstrom mit mehreren Bitraten von einem lokalen Liveencoder (im Beispielfall Wirecast) in den Kanal geleitet. Wenn der Datenstrom durch einen Benutzer angefordert wird, so wird der Quelldatenstrom durch dynamische Paketerstellung in die angeforderte Bitrate (HLS, DASH oder Smooth) umgewandelt.
+Um die dynamische Paketerstellung nutzen zu können, ist mindestens eine Streamingeinheit für den Streamingendpunkt erforderlich, aus dem die Inhalte geliefert werden sollen.
 
-Um die dynamische Paketerstellung nutzen zu können, ist mindestens eine Streamingeinheit für den **Streamingendpunkt** erforderlich, aus dem die Inhalte geliefert werden sollen.
+Gehen Sie wie folgt vor, um die Anzahl von Einheiten zu erstellen und zu ändern, die für das Streaming reserviert sind:
 
-Um die Anzahl der Einheiten zu ändern, die für das Streaming reserviert sind, gehen Sie folgendermaßen vor:
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
+1. Klicken Sie im Fenster **Einstellungen** auf **Streamingendpunkte**.
 
-1. Klicken Sie im [klassischen Azure-Portal](https://manage.windowsazure.com/) auf **Media Services**. Klicken Sie anschließend auf den Namen des Media Service
+2. Klicken Sie auf den Standard-Streamingendpunkt.
 
-2. Wählen Sie die Seite STREAMING-ENDPUNKTE aus. Klicken Sie anschließend auf den Streaming-Endpunkt, den Sie ändern möchten.
+	Das Fenster **DEFAULT STREAMING ENDPOINT DETAILS** (DETAILS ZUM STANDARD-STREAMINGENDPUNKT) wird angezeigt.
 
-3. Um die Anzahl der Streaming-Einheiten anzugeben, wählen Sie die Registerkarte SKALIERUNG aus und verschieben anschließend den Schieberegler für die **reservierte Kapazität**.
+3. Die Anzahl von Streamingeinheiten kann mithilfe des Schiebereglers **Streamingeinheiten** angegeben werden.
 
-	![Skalierungsseite](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-origin-scale.png)
+	![Streamingeinheiten](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-streaming-units.png)
 
-4. Klicken Sie auf die Schaltfläche "Speichern", um die Änderungen zu speichern.
+4. Klicken Sie auf die Schaltfläche **Speichern**, um die Änderungen zu speichern.
 
-	Das Zuordnen neuer Einheiten dauert etwa 20 Minuten.
+	>[AZURE.NOTE]Es kann bis zu 20 Minuten dauern, bis die Zuordnung neuer Einheiten abgeschlossen ist.
 
-	 
-	>[AZURE.NOTE] Aktuell kann das Streaming bis zu eine Stunde lang deaktiviert werden, wenn Sie einen positiven Wert für die Streamingeinheiten zurück auf null setzen.
-	>
-	> Die höchste für den 24-Stunden-Zeitraum angegebene Anzahl an Einheiten wird zum Berechnen der Kosten verwendet. Informationen zu den Preisen finden Sie unter [Media Services – Preisübersicht](http://go.microsoft.com/fwlink/?LinkId=275107).
-
- 
 ##Erstellen eines KANALS
 
-1.	Klicken Sie im [klassischen Azure-Portal](http://manage.windowsazure.com/) auf Media Services und dann auf den Media Services-Kontonamen.
-2.	Wählen Sie die Seite KANÄLE aus.
-3.	Klicken Sie auf „Hinzufügen“, um einen neuen Kanal hinzuzufügen.
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) auf „Media Services“ und dann auf den Media Services-Kontonamen.
+2. Wählen Sie **Livestreaming**.
+3. Wählen Sie **Benutzerdefiniert erstellen**. Mit dieser Option können Sie einen Kanal erstellen, der für Live Encoding aktiviert ist.
 
-Wählen Sie **Standard** als Codierungstyp aus. Mit diesem Typen geben Sie an, dass Sie einen Kanal erstellen möchten, der für Livecodierung aktiviert ist. Dies bedeutet, dass der eingehende Single-Bitrate-Datenstrom an den Kanal gesendet und mithilfe angegebener Liveencodereinstellungen in einen Multi-Bitrate-Datenstrom codiert wird. Weitere Informationen finden Sie unter [Arbeiten mit Kanälen, die zum Ausführen von Livecodierung mit Azure Media Services aktiviert wurden](media-services-manage-live-encoder-enabled-channels.md).
+	![Erstellen eines Kanals](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-create-channel.png)
+	
+4. Klicken Sie auf **Einstellungen**.
+	
+	1.  Wählen Sie den Kanaltyp **Live Encoding**. Mit diesem Typen geben Sie an, dass Sie einen Kanal erstellen möchten, der für Livecodierung aktiviert ist. Dies bedeutet, dass der eingehende Single-Bitrate-Datenstrom an den Kanal gesendet und mithilfe angegebener Liveencodereinstellungen in einen Multi-Bitrate-Datenstrom codiert wird. Weitere Informationen finden Sie unter [Livestreaming mit Azure Media Services zum Erstellen von Datenströmen mit Mehrfachbitrate](media-services-manage-live-encoder-enabled-channels.md). Klicken Sie auf OK.
+	2. Geben Sie den Namen eines Kanals an.
+	3. Klicken Sie unten auf dem Bildschirm auf „OK“.
+	
+5. Wählen Sie die Registerkarte **Erfassen**.
 
-![standard0][standard0]
+	1. Auf dieser Seite können Sie ein Streamingprotokoll auswählen. Für den Kanaltyp **Live Encoding** stehen folgende gültige Protokolloptionen zur Verfügung:
+		
+		- Fragmentiertes Single-Bitrate-MP4 (Smooth Streaming)
+		- Single-Bitrate-RTMP
+		- RTP (MPEG-TS): MPEG-2-Transportdatenstrom über RTP
+		
+		Ausführliche Informationen zu den einzelnen Protokollen finden Sie unter [Livestreaming mit Azure Media Services zum Erstellen von Datenströmen mit Mehrfachbitrate](media-services-manage-live-encoder-enabled-channels.md).
+	
+		Sie können die Protokolloption nicht ändern, während der Kanal oder seine zugehörigen Ereignisse bzw. Programme ausgeführt werden. Wenn Sie andere Protokolle benötigen, erstellen Sie für jedes Streamingprotokoll einen separaten Kanal.
 
-Beim Codierungstyp **Standard** gibt es die folgenden gültigen Erfassungsprotokolloptionen:
+	2. Sie können IP-Einschränkungen auf die Erfassung anwenden.
+	
+		Sie können die IP-Adressen definieren, die zum Erfassen von Videos in diesem Kanal zugelassen sind. Zulässige IP-Adressen können als eine einzelne IP-Adresse (z. B. „10.0.0.1“), als IP-Adressbereich mithilfe einer IP-Adresse und einer CIDR-Subnetzmaske (z.B. „10.0.0.1/22“) oder als IP-Adressbereich mithilfe einer IP-Adresse und einer Subnetzmaske in punktierter Dezimalschreibweise (z.B. „10.0.0.1(255.255.252.0)“) angegeben werden.
 
-- Fragmentiertes Single-Bitrate-MP4 (Smooth Streaming)
-- Single-Bitrate-RTMP
-- RTP (MPEG-TS): MPEG-2-Transportdatenstrom über RTP
+		Wenn keine IP-Adressen angegeben werden und keine Regeldefinition vorhanden ist, so ist keine IP-Adresse zulässig. Um alle IP-Adressen zuzulassen, erstellen Sie eine Regel und legen 0.0.0.0/0 fest.
 
-Ausführliche Informationen zu den einzelnen Protokollen finden Sie unter [Arbeiten mit Kanälen, die zum Ausführen von Livecodierung mit Azure Media Services aktiviert wurden](media-services-manage-live-encoder-enabled-channels.md).
+6. Wenden Sie auf der Registerkarte **Vorschau** die IP-Einschränkung auf die Vorschau an.
+7. Geben Sie auf der Registerkarte **Codierung** die Codierungsvoreinstellung an.
 
-![standard1][standard1]
-
-Sie können das Eingabeprotokoll nicht ändern, während der Kanal oder seine zugehörigen Programme ausgeführt werden. Wenn Sie andere Protokolle benötigen, erstellen Sie für jedes Eingabeprotokoll einen separaten Kanal.
-
-Auf der Seite **Werbung – Konfiguration** können Sie eine Quelle für AD-Markersignale angeben. Wenn Sie das Portal verwenden, können Sie nur den Wert „API“ auswählen. Dies bedeutet, dass vom Liveencoder im Kanal eine asynchrone AD-Marker-API überwacht werden soll. Wenn Sie das Portal verwenden, können Sie nur den Wert „API“ auswählen.
-
-Weitere Informationen finden Sie unter [Arbeiten mit Kanälen, die zum Ausführen von Livecodierung mit Azure Media Services aktiviert wurden](media-services-manage-live-encoder-enabled-channels.md).
-
-![standard2][standard2]
-
-Auf der Seite **Codierungsvoreinstellungen** können Sie Systemvoreinstellungen auswählen. Derzeit ist die einzige Systemvoreinstellung, die Sie auswählen können, **Default 720p**.
-
-![standard3][standard3]
-
-Auf der Seite **Kanalerstellung** können Sie die IP-Adressen definieren, die zum Veröffentlichen von Videos in diesem Kanal zugelassen sind. Zulässige IP-Adressen können als eine einzelne IP-Adresse (z. B. „10.0.0.1“), als IP-Adressbereich mithilfe einer IP-Adresse und einer CIDR-Subnetzmaske (z. B. „10.0.0.1/22“) oder als IP-Adressbereich mithilfe einer Subnetzmaske in punktierter Dezimalschreibweise (z. B. „10.0.0.1(255.255.252.0)“) angegeben werden.
-
-Wenn keine IP-Adressen angegeben werden und keine Regeldefinition vorhanden ist, so ist keine IP-Adresse zulässig. Um alle IP-Adressen zuzulassen, erstellen Sie eine Regel und legen „0.0.0.0/0“ fest.
-
-
-![standard4][standard4]
+	Derzeit ist die einzige Systemvoreinstellung, die Sie auswählen können, **Default 720p**. Öffnen Sie ein Microsoft-Support-Ticket, um eine benutzerdefinierte Voreinstellung anzugeben. Geben Sie anschließend den Namen der für Sie erstellten Voreinstellung ein.
 
 >[AZURE.NOTE] Derzeit kann der Kanalstart bis zu 30 Minuten dauern. Das Zurücksetzen des Kanals kann bis zu 5 Minuten dauern.
 
-Nachdem Sie den Kanal erstellt haben, können Sie die Registerkarte **ENCODER** auswählen, um die Konfigurationen Ihrer Kanäle anzusehen. Sie können auch Werbespots und Slates verwalten.
+Nachdem Sie den Kanal erstellt haben, können Sie auf den Kanal klicken und **Einstellungen** auswählen, um die Konfigurationen Ihrer Kanäle anzusehen.
 
-![standard5][standard5]
-
-Weitere Informationen finden Sie unter [Arbeiten mit Kanälen, die zum Ausführen von Livecodierung mit Azure Media Services aktiviert wurden](media-services-manage-live-encoder-enabled-channels.md).
+Weitere Informationen finden Sie unter [Livestreaming mit Azure Media Services zum Erstellen von Datenströmen mit Mehrfachbitrate](media-services-manage-live-encoder-enabled-channels.md).
 
 
 ##Abrufen von Erfassungs-URLs
 
 Wenn der Kanal erstellt wurde, können Sie Erfassungs-URLs abrufen, die Sie dem Liveencoder bereitstellen. Diese URLs werden vom Encoder zur Eingabe eines Livedatenstroms verwendet.
 
-![readychannel](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-ready-channel.png)
-
-
 ![ingesturls](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-ingest-urls.png)
 
 
-##Erstellen und Verwalten von Programmen
+##Erstellen und Verwalten von Ereignissen
 
 ###Übersicht
 
-Einem Kanal sind Programme zugeordnet, mit denen Sie das Veröffentlichen und Speichern von Segmenten in einem Livedatenstrom steuern können. Die Programme werden von den Kanälen verwaltet. Die Beziehung zwischen Kanal und Programm ähnelt herkömmlichen Medien, bei denen ein Kanal einen konstanten Inhaltsdatenstrom aufweist und ein Programm auf ein zeitlich festgelegtes Ereignis in diesem Kanal ausgerichtet ist.
+Einem Kanal sind Ereignisse/Programme zugeordnet, mit denen Sie das Veröffentlichen und Speichern von Segmenten in einem Livedatenstrom steuern können. Kanäle verwalten Ereignisse/Programme. Die Beziehung zwischen Kanal und Programm ähnelt herkömmlichen Medien, bei denen ein Kanal einen konstanten Stream von Inhalten aufweist und ein Programm auf ein zeitlich festgelegtes Ereignis in diesem Kanal ausgerichtet ist.
 
-Über die Länge des **Archivierungsfensters** können Sie die Anzahl der Stunden angeben, für die Sie den aufgezeichneten Inhalt des Programms beibehalten möchten. Es können Werte zwischen mindestens 5 Minuten und höchstens 25 Stunden eingestellt werden. Von der Länge des Archivierungsfensters wird außerdem bestimmt, wie lange von Clients von der aktuellen Liveposition aus maximal rückwärts gesucht werden kann. Programme können über die angegebene Zeitspanne laufen. Inhalte, die über das Zeitfenster hinausgehen, werden jedoch fortlaufend verworfen. Durch den Wert dieser Eigenschaft wird außerdem festgelegt, wie lange Clientmanifeste wachsen können.
+Über die Länge des **Archivierungsfensters** können Sie die Anzahl der Stunden angeben, für die Sie den aufgezeichneten Inhalt des Ereignisses beibehalten möchten. Es können Werte zwischen mindestens 5 Minuten und höchstens 25 Stunden eingestellt werden. Von der Länge des Archivierungsfensters wird außerdem bestimmt, wie lange von Clients von der aktuellen Liveposition aus maximal rückwärts gesucht werden kann. Ereignisse können über die angegebene Zeitspanne laufen. Inhalte, die über das Zeitfenster hinausgehen, werden jedoch fortlaufend verworfen. Durch den Wert dieser Eigenschaft wird außerdem festgelegt, wie lange Clientmanifeste wachsen können.
 
-Jedes Programm ist mit einem Medienobjekt verknüpft. Zum Veröffentlichen des Programms müssen Sie einen OnDemand-Locator für das zugehörige Medienobjekt erstellen. Mithilfe dieses Locators können Sie eine Streaming-URL erstellen, die Sie Ihren Kunden bereitstellen können.
+Jedes Ereignis ist mit einem Asset verknüpft. Zum Veröffentlichen des Ereignisses müssen Sie einen OnDemand-Locator für das zugehörige Medienobjekt erstellen. Mithilfe dieses Locators können Sie eine Streaming-URL erstellen, die Sie Ihren Kunden bereitstellen können.
 
-Ein Kanal unterstützt bis zu drei gleichzeitig ausgeführte Programme, sodass Sie mehrere Archive desselben eingehenden Datenstroms erstellen können. Auf diese Weise können Sie verschiedene Teile eines Ereignisses nach Bedarf veröffentlichen und archivieren. Beispielsweise könnte Ihre Geschäftsanforderung darin bestehen, 6 Stunden eines Programms zu archivieren, jedoch nur die letzten 10 Minuten zu senden. Dazu müssen Sie zwei Programme erstellen, die gleichzeitig ausgeführt werden. Ein Programm wird auf die Archivierung von 6 Stunden des Ereignisses festgelegt. Dieses Programm wird jedoch nicht veröffentlicht. Das andere Programm wird auf die Archivierung von 10 Minuten festgelegt. Dieses Programm wird veröffentlicht.
+Ein Kanal unterstützt bis zu drei gleichzeitig ausgeführte Ereignisse, sodass Sie mehrere Archive desselben eingehenden Datenstroms erstellen können. Auf diese Weise können Sie verschiedene Teile eines Ereignisses nach Bedarf veröffentlichen und archivieren. Beispielsweise könnte Ihre Geschäftsanforderung darin bestehen, sechs Stunden eines Ereignisses zu archivieren, jedoch nur die letzten zehn Minuten zu senden. Dazu müssen Sie zwei Ereignisse erstellen, die gleichzeitig ausgeführt werden. Ein Ereignis wird auf die Archivierung von sechs Stunden des Ereignisses festgelegt. Dieses Programm wird jedoch nicht veröffentlicht. Das andere Ereignis wird auf die Archivierung von zehn Minuten festgelegt. Dieses Programm wird veröffentlicht.
 
 Verwenden Sie vorhandene Programme nicht erneut für nachfolgende Ereignisse. Erstellen und starten Sie stattdessen für jedes Ereignis ein neues Programm.
 
-Wenn Sie zum Starten von Streaming und Archivierung bereit sind, starten Sie das Programm. Sie können das Programm und damit das Streaming und die Archivierung des Ereignisses jederzeit beenden.
+Wenn Sie zum Starten von Streaming und Archivierung bereit sind, starten Sie ein Ereignis bzw. Programm. Sie können das Ereignis und damit das Streaming und die Archivierung des Ereignisses jederzeit beenden.
 
-Zum Löschen von archivierten Inhalten beenden und löschen Sie das Programm und löschen anschließend das zugehörige Medienobjekt. Medienobjekte können nicht gelöscht werden, wenn sie von Programmen verwendet werden. Zuerst muss das betreffende Programm gelöscht werden.
+Zum Löschen von archivierten Inhalten beenden und löschen Sie das Ereignis und löschen anschließend das zugehörige Medienobjekt. Assets können nicht gelöscht werden, wenn sie vom Ereignis verwendet werden. Zuerst muss das betreffende Ereignis gelöscht werden.
 
-Auch nach dem Beenden und Löschen des Programms können die Benutzer archivierte Inhalte als bedarfsgesteuertes Video streamen, solange das Medienobjekt nicht gelöscht wurde.
+Auch nach dem Beenden und Löschen des Ereignisses können die Benutzer archivierte Inhalte als bedarfsgesteuertes Video streamen, solange das Medienobjekt nicht gelöscht wurde.
 
 Wenn Sie die archivierten Inhalte beibehalten möchten, diese aber nicht für das Streaming verfügbar sein sollen, löschen Sie den Streaminglocator.
 
-###Erstellen, Starten und Beenden von Programmen
+###Erstellen, Starten und Beenden von Ereignissen
 
 Wenn der Datenstrom in den Kanal gelangt, können Sie das Streamingereignis starten, indem Sie ein Medienobjekt, ein Programm und einen Streaminglocator erstellen. Dadurch wird der Datenstrom archiviert und über den Streamingendpunkt für die Zuschauer verfügbar gemacht.
 
 Es gibt zwei Möglichkeiten, das Ereignis zu starten:
 
-1. Klicken Sie auf der Seite **KANAL** auf **HINZUFÜGEN**, um ein neues Programm hinzuzufügen.
+1. Klicken Sie auf der Seite **Kanal** auf **Live Event** (Liveereignis), um ein neues Ereignis hinzuzufügen.
 
-	Geben Sie Folgendes an: Name des Programms, Name des Medienobjekts, Archivfenster, Verschlüsselungsoption.
+	Geben Sie Folgendes an: Name des Ereignisses, Name des Assets, Archivfenster, Verschlüsselungsoption.
 	
 	![createprogram](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-create-program.png)
 	
-	Wenn Sie das Kontrollkästchen **Dieses Programm jetzt veröffentlichen** aktiviert gelassen haben, werden das Programm und die VERÖFFENTLICHUNGS-URLs erstellt.
+	Wenn Sie das Kontrollkästchen **Publish this event now** (Dieses Ereignis jetzt veröffentlichen) aktiviert gelassen haben, werden das Ereignis und die VERÖFFENTLICHUNGS-URLs erstellt.
 	
-	Wenn das Streaming des Programms gestartet werden soll, klicken Sie auf **START**.
+	Sie können auf **Start** klicken, wenn Sie bereit zum Streamen des Ereignisses sind.
 
-	Wenn Sie das Programm gestartet haben, können Sie auf WIEDERGABE klicken, um die Wiedergabe der Inhalte zu starten.
+	Wenn Sie das Ereignis gestartet haben, können Sie auf **Watch** (Ansehen) klicken, um die Wiedergabe der Inhalte zu starten.
 
+2. Alternativ können Sie einfach auf der Seite **Kanal** auf die Schaltfläche **Go Live** (Live schalten) klicken. Dadurch erstellen Sie ein Standardasset, ein Programm und einen Streaminglocator.
 
-	![createdprogram](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-created-program.png)
+	Das Ereignis hat den Namen **default**, und das Archivfenster ist auf acht Stunden festgelegt.
 
-2. Alternativ können Sie einfach auf der Seite **KANAL** auf die Schaltfläche **STREAMING STARTEN** klicken. Dadurch erstellen Sie ein Medienobjekt, ein Programm und einen Streaminglocator.
+Sie können das veröffentlichte Ereignis auf der Seite **Live event** (Liveereignis) ansehen.
 
-	Das Programm hat den Namen „DefaultProgram“, und das Archivfenster ist auf 1 Stunde festgelegt.
-
-	Sie können das veröffentlichte Programm auf der Seite KANAL wiedergeben.
-
-	![channelpublish](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-channel-play.png)
+Wenn Sie auf **Off Air** (Deaktivieren) klicken, werden alle Liveereignisse beendet.
 
 
-Wenn Sie auf der Seite **KANAL** auf **STREAMING BEENDEN** klicken, wird das Standardprogramm beendet und gelöscht. Das Medienobjekt bleibt erhalten, und Sie können es auf der Seite **INHALT** veröffentlichen bzw. die Veröffentlichung aufheben.
+##Ansehen des Ereignisses
 
-Wenn Sie zur Seite **INHALT** wechseln, sehen Sie die Ressourcen, die für Ihre Programme erstellt wurden.
+Klicken Sie zum Überwachen des Ereignisses im Azure-Portal auf **Überwachen**, oder kopieren Sie die Streaming-URL, und verwenden Sie einen Player Ihrer Wahl.
+ 
+![Erstellt](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-play-event.png)
 
-![contentasset](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-content-assets.png)
-
-
-##Wiedergeben von Inhalten
-
-Um Ihren Benutzern eine URL bereitzustellen, die zum Streamen Ihrer Inhalte verwendet werden kann, müssen Sie Ihr Medienobjekt zunächst „veröffentlichen“ wie im vorigen Abschnitt beschrieben, indem Sie einen Locator erstellen (wenn Sie ein Medienobjekt mithilfe des Portals veröffentlichen, werden die Locators automatisch erstellt). Locators ermöglichen den Zugriff auf Dateien im Medienobjekt.
-
-Je nach dem Streamingprotokoll, das zum Wiedergeben Ihrer Inhalte verwendet werden soll, müssen Sie möglicherweise die URL ändern, die Sie über den Link **URL VERÖFFENTLICHEN** des Kanals/Programms erhalten haben.
-
-Durch dynamische Paketerstellung wird der Livedatenstrom in das angegebene Protokoll gepackt.
-
-Eine Streaming-URL, mit der Sie Smooth Streaming-Medienobjekte wiedergeben können, weist standardmäßig das folgende Format auf:
-
-	{streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest
-
-Um eine HLS-Streaming-URL zu erstellen, fügen Sie „(format=m3u8-aapl)“ an die URL an.
-
-	{streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=m3u8-aapl)
-
-Um eine MPEG DASH-Streaming-URL zu erstellen, fügen Sie „(format=mpd-time-csf)“ an die URL an.
-
-	{streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=mpd-time-csf)
-
-Weitere Informationen zum Bereitstellen von Inhalten finden Sie unter [Bereitstellen von Inhalten](media-services-deliver-content-overview.md).
-
-Sie können Smooth Stream mit dem [AMS Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html) wiedergeben oder iOS- und Android-Geräte verwenden, um HLS Version 3 wiederzugeben.
+Das Liveereignis konvertiert Ereignisse automatisch in On-Demand-Inhalt, wenn es beendet wird.
 
 ##Bereinigen
 
@@ -252,6 +214,13 @@ Wenn die Streamingereignisse beendet sind und Sie die zuvor bereitgestellten Res
 - Beenden Sie den Kanal. Wenn der Kanal beendet ist, fallen keine Kosten an. Wenn Sie den Kanal erneut starten, weist er die gleiche Erfassungs-URL auf, damit Sie den Encoder nicht erneut konfigurieren müssen.
 - Sie können Ihren Streamingendpunkt beenden, sofern Sie das Archiv Ihres Liveereignisses nicht als bedarfsgesteuerten Datenstrom bereitstellen möchten. Durch Kanäle im angehaltenen Zustand fallen keine Kosten an.
   
+##Anzeigen von archivierten Inhalten
+
+Auch nach dem Beenden und Löschen des Ereignisses können die Benutzer archivierte Inhalte als bedarfsgesteuertes Video streamen, solange das Medienobjekt nicht gelöscht wurde. Medienobjekte können nicht gelöscht werden, wenn sie von Ereignissen verwendet werden. Zuerst muss das betreffende Ereignis gelöscht werden.
+
+Wählen Sie zum Verwalten der Objekte die Option **Einstellung** aus, und klicken Sie auf **Ressourcen**.
+
+![Objekte](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-assets.png)
 
 ##Überlegungen
 
@@ -259,7 +228,9 @@ Wenn die Streamingereignisse beendet sind und Sie die zuvor bereitgestellten Res
 - Stellen Sie sicher, dass auf dem Streamingendpunkt, von dem Sie Inhalte streamen möchten, mindestens eine für das Streaming reservierte Einheit verfügbar ist.
 
 
-##Media Services-Lernpfade
+##Nächster Schritt
+
+Überprüfen Sie die Media Services-Lernpfade.
 
 [AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
@@ -267,13 +238,6 @@ Wenn die Streamingereignisse beendet sind und Sie die zuvor bereitgestellten Res
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
+ 
 
-
-[standard0]: ./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-create-channel-standard0.png
-[standard1]: ./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-create-channel-standard1.png
-[standard2]: ./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-create-channel-standard2.png
-[standard3]: ./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-create-channel-standard3.png
-[standard4]: ./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-create-channel-standard4.png
-[standard5]: ./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-create-channel-standard_encode.png
-
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0907_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="07/28/2016"
+	ms.date="09/01/2016"
 	ms.author="mandia"/>
 
 
@@ -35,9 +35,7 @@ Name | Beschreibung
 [Bing-Übersetzer](https://azure.microsoft.com/marketplace/partners/bing/microsofttranslator/) | Für Übersetzungen von Text in eine andere Sprache in Bing.
 [HTTP](app-service-logic-connector-http.md) | Der HTTP-Listener öffnet einen Endpunkt, der als HTTP-Server fungiert und auf eingehende HTTP- oder HTTPS-Anforderungen lauscht. Die HTTP-Aktion erfordert keine API-App und wird nativ innerhalb der Logik-Apps unterstützt.
 [Microsoft Office 365](app-service-logic-connector-office365.md) | Der Office 365-Connector kann über Ihr Office 365-Konto E-Mails senden und empfangen sowie Ihren Kalender und Ihre Kontakte verwalten.
-[QuickBooks](app-service-logic-connector-quickbooks.md) | Mit diesem Connector können Sie verschiedene Aufgaben ausführen, u. a. unterschiedliche Entitäten aus Intuit QuickBooks erstellen, aktualisieren und abfragen, beispielsweise Kunden, Artikel, Rechnungen und so weiter.
-[Slack](app-service-logic-connector-slack.md) | Herstellen einer Verbindung mit Slack und Veröffentlichen von Nachrichten auf Slack-Kanälen.
-[Warten](app-service-logic-connector-wait.md) | Verwenden Sie diesen Connector, um die Ausführung der App zu verzögern. Die App kann für einen bestimmten Zeitraum oder bis zu einem Ereignis an einem bestimmten Zeitpunkt verzögert werden.
+[Puffer](app-service-logic-connector-slack.md) | Herstellen einer Verbindung mit Slack und Veröffentlichen von Nachrichten auf Slack-Kanälen.
 
 
 ## Enterprise-Integrationsconnectors
@@ -61,9 +59,6 @@ Name | Beschreibung
 [Informix](app-service-logic-connector-informix.md) | Stellt lokal und auf einem virtuellen Azure-Computer unter einem Windows-Betriebssystem eine Verbindung mit einer IBM Informix-Datenbank her. Er kann Befehlen der Informix Structured Query Language Web-API- und OData-API-Vorgänge zuordnen.<br/><br/>Keine Trigger. Aktionen umfassen die Auswahl von Tabellen, das Einfügen, Aktualisieren und Löschen sowie benutzerdefinierte Anweisungen.<br/><br/>Lokal oder mit VPN oder Azure kann ExpressRoute verwendet werden. Dieser Connector enthält auch einen Microsoft-Client für DRDA zum Herstellen einer Verbindung mit einem Informix-Server über ein TCP/IP-Netzwerk.
 [Microsoft SQL Server](app-service-logic-connector-sql.md) | Stellt eine Verbindung mit dem lokalen SQL Server oder einer Azure SQL-Datenbank her. Sie können Einträge in einer SQL-Datenbanktabelle erstellen, aktualisieren, abrufen und löschen.
 MQ | Stellt lokal und auf einem virtuellen Azure-Computer unter einem Windows-Betriebssystem eine Verbindung mit einem IBM WebSphere MQ-Server, Version 8, her. Bei lokaler Verwendung können VPN- oder Azure ExpressRoute-Verbindungen verwendet werden. Der Connector enthält außerdem den Microsoft-Client für MQ.<br/><br/>Keine Trigger. Keine Aktionen.<br/><br/>**Hinweis** Kann derzeit nicht mit Logic Apps verwendet werden.
-[Oracle-Datenbank](app-service-logic-connector-oracle.md) | Stellt eine Verbindung mit der lokalen Oracle-Datenbank her und kann Einträge in einer Datenbanktabelle erstellen, aktualisieren, abrufen und löschen.
-[POP3](app-service-logic-connector-pop3.md) (Post Office Protocol)| Stellt eine Verbindung mit einem POP3-Server her, um E-Mails mit Anlagen abzurufen.
-[SAP](app-service-logic-connector-sap.md) | Stellt eine Verbindung mit einem lokalen SAP-Server her, ruft RFCs, BAPIs und tRFCs auf und sendet IDOCs.
 
 ## Connectors als Trigger
 Mehrere Connectors bieten Trigger für Logik-Apps. Diese Trigger haben zwei Typen:
@@ -80,4 +75,4 @@ Connectors können innerhalb Ihrer Logik-App auch als Aktionen verwendet werden.
 ## Weitere Informationen zu Connectors und API-Apps
 [Was sind Connectors und BizTalk-API-Apps?](app-service-logic-what-are-biztalk-api-apps.md) [Verwenden des Hybrid Connection Managers in Azure App Service](app-service-logic-hybrid-connection-manager.md) [Verwalten und Überwachen integrierter API-Apps und Connectors](app-service-logic-monitor-your-connectors.md)
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0907_2016-->

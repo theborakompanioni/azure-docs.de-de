@@ -27,13 +27,13 @@
 - [Azure-Befehlszeilenschnittstelle](data-lake-store-get-started-cli.md)
 - [Node.js](data-lake-store-manage-use-nodejs.md)
 
-Erfahren Sie, wie Sie mithilfe des .NET SDK für Azure Data Lake-Speicher ein Azure Data Lake-Konto erstellen und grundlegende Vorgänge ausführen, z. B. Ordner erstellen, Datendateien hoch- und herunterladen, Ihr Konto löschen usw. Weitere Informationen über Data Lake finden Sie unter [Übersicht über Azure Data Lake-Speicher](data-lake-store-overview.md).
+Erfahren Sie, wie Sie mithilfe des [.NET SDK für Azure Data Lake Store](https://msdn.microsoft.com/library/mt581387.aspx) ein Azure Data Lake-Konto erstellen und grundlegende Vorgänge ausführen, z.B. Ordner erstellen, Datendateien hoch- und herunterladen, Ihr Konto löschen usw. Weitere Informationen über Data Lake finden Sie unter [Übersicht über Azure Data Lake-Speicher](data-lake-store-overview.md).
 
 ## Voraussetzungen
 
 * Visual Studio 2013 oder 2015 Die folgenden Anweisungen verwenden Visual Studio 2015.
 * **Ein Azure-Abonnement**. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
-* **Aktiviertes Azure-Abonnement** für die öffentliche Vorschauversion des Data Lake-Speichers. Weitere Informationen finden Sie in den [Anweisungen](data-lake-store-get-started-portal.md#signup).
+* **Aktiviertes Azure-Abonnement** für die öffentliche Vorschauversion von Data Lake Store. Weitere Informationen finden Sie in den [Anweisungen](data-lake-store-get-started-portal.md#signup).
 * **Erstellen einer Azure Active Directory-Anwendung**. Zur Authentifizierung mithilfe von Azure Active Directory stehen Ihnen zwei Möglichkeiten zur Verfügung: **interaktiv** und **nicht interaktiv**. Je nach der gewählten Authentifizierung gelten unterschiedliche Voraussetzungen.
 	* **Interaktive Authentifizierung** (die in diesem Artikel verwendet wird) – Sie müssen in Azure Active Directory eine **native Clientanwendung** erstellen. Nach dem Erstellen der Anwendung rufen Sie die folgenden Werte ab, die mit der Anwendung in Zusammenhang stehen.
 		- Abrufen von **Client-ID** und **Umleitungs-URI** für die Anwendung
@@ -44,7 +44,7 @@ Erfahren Sie, wie Sie mithilfe des .NET SDK für Azure Data Lake-Speicher ein Az
 		- Festlegen der delegierten Berechtigungen
 		- Weisen Sie die Azure Active Directory-Anwendung einer Rolle zu. Die Rolle kann sich auf der Ebene des Bereichs befinden, auf der Sie die Berechtigung für die Azure Active Directory-Anwendung gewähren möchten. Beispielsweise können Sie die Anwendung auf Abonnementebene oder auf der Ebene einer Ressourcengruppe zuweisen.
 
-	Anweisungen dazu, wie Sie diese Werte abrufen, Berechtigungen festlegen und Rollen zuweisen können, finden Sie unter [Erstellen einer Active Directory-Anwendung und eines Dienstprinzipals mithilfe des Portals](../resource-group-create-service-principal-portal.md).
+	Anweisungen dazu, wie Sie diese Werte abrufen, Berechtigungen festlegen und Rollen zuweisen, finden Sie unter [Erstellen einer Active Directory-Anwendung und eines Dienstprinzipals mithilfe des Portals](../resource-group-create-service-principal-portal.md).
 
 ## Erstellen einer .NET-Anwendung
 
@@ -122,15 +122,15 @@ Erfahren Sie, wie Sie mithilfe des .NET SDK für Azure Data Lake-Speicher ein Az
 			}
 		}
 
-In den restlichen Abschnitten dieses Artikels erfahren Sie, wie Sie die verfügbaren .NET-Methoden verwenden, um Vorgänge wie das Authentifizieren von Benutzern, Erstellen eines Data Lake-Speicherkontos, Hochladen von Dateien usw. durchzuführen. Ein vollständiges Beispiel zur Verwendung von Data Lake-Speicher finden Sie unten im [Anhang](#appendix-sample-code) dieses Artikels.
+In den restlichen Abschnitten dieses Artikels erfahren Sie, wie Sie die verfügbaren .NET-Methoden verwenden, um Vorgänge wie das Authentifizieren von Benutzern, Erstellen eines Data Lake-Speicherkontos, Hochladen von Dateien usw. durchzuführen. Ein vollständiges Beispiel zur Verwendung von Data Lake Store finden Sie im [Anhang](#appendix-sample-code) am Ende dieses Artikels.
 
 ## Authentifizieren des Benutzers
 
 Es gibt zwei Möglichkeiten für die Authentifizierung mit Azure Active Directory:
 
-* **Interaktiv**: Ein Benutzer meldet sich über die Anwendung an. Diese Option wird in der `AuthenticateUser`-Methode im folgenden Codeausschnitt implementiert.
+* **Interaktiv:** Ein Benutzer meldet sich über die Anwendung an. Diese Option wird in der `AuthenticateUser`-Methode im folgenden Codeausschnitt implementiert.
 
-* **Nicht interaktiv**: Hierbei stellt die Anwendung eigene Anmeldeinformationen bereit. Diese Option wird in der `AuthenticateAppliaction`-Methode im folgenden Codeausschnitt implementiert.
+* **Nicht interaktiv:** Hierbei stellt die Anwendung eigene Anmeldeinformationen bereit. Diese Option wird in der `AuthenticateAppliaction`-Methode im folgenden Codeausschnitt implementiert.
 
 ### Interaktive Authentifizierung
 
@@ -170,7 +170,7 @@ Im folgenden Codeausschnitt wird eine `AuthenticateApplication`-Methode veransch
 	
 ## Erstellen eines Data Lake-Speicherkontos
 
-Im folgenden Codeausschnitt wird eine `CreateAccount`-Methode veranschaulicht, die Sie zum Erstellen eines Data Lake-Speicherkontos verwenden können.
+Im folgenden Codeausschnitt wird eine `CreateAccount`-Methode veranschaulicht, die Sie zum Erstellen eines Data Lake Store-Kontos verwenden können.
 
 	// Create Data Lake Store account
     public static void CreateAccount()
@@ -179,9 +179,9 @@ Im folgenden Codeausschnitt wird eine `CreateAccount`-Methode veranschaulicht, d
         _adlsClient.Account.Create(_resourceGroupName, _adlsAccountName, adlsParameters);
     } 
 
-## Auflisten aller Data Lake-Speicherkonten in einem Abonnement
+## Auflisten aller Data Lake Store-Konten in einem Abonnement
 
-Im folgenden Codeausschnitt wird eine `ListAdlStoreAccounts`-Methode veranschaulicht, die Sie zum Auflisten aller Data Lake-Speicherkonten in einem Azure-Abonnement verwenden können.
+Im folgenden Codeausschnitt wird eine `ListAdlStoreAccounts`-Methode veranschaulicht, die Sie zum Auflisten aller Data Lake Store-Konten in einem Azure-Abonnement verwenden können.
 
 	// List all ADLS accounts within the subscription
 	public static List<DataLakeStoreAccount> ListAdlStoreAccounts()
@@ -200,7 +200,7 @@ Im folgenden Codeausschnitt wird eine `ListAdlStoreAccounts`-Methode veranschaul
 
 ## Erstellen eines Verzeichnisses
 
-Im folgenden Codeausschnitt wird eine `CreateDirectory`-Methode veranschaulicht, die Sie zum Erstellen eines Verzeichnisses in einem Data Lake-Speicherkonto verwenden können.
+Im folgenden Codeausschnitt wird eine `CreateDirectory`-Methode veranschaulicht, die Sie zum Erstellen eines Verzeichnisses in einem Data Lake Store-Konto verwenden können.
 
 	// Create a directory
     public static void CreateDirectory(string path)
@@ -210,7 +210,7 @@ Im folgenden Codeausschnitt wird eine `CreateDirectory`-Methode veranschaulicht,
 
 ## Hochladen einer Datei in den Data Lake-Speicher
 
-Im folgenden Codeausschnitt wird eine `UploadFile`-Methode veranschaulicht, die Sie zum Hochladen von Dateien in ein Data Lake-Speicherkonto verwenden können.
+Im folgenden Codeausschnitt wird eine `UploadFile`-Methode veranschaulicht, die Sie zum Hochladen von Dateien in ein Data Lake Store-Konto verwenden können.
 
 	// Upload a file
     public static void UploadFile(string srcFilePath, string destFilePath, bool force = true)
@@ -221,9 +221,11 @@ Im folgenden Codeausschnitt wird eine `UploadFile`-Methode veranschaulicht, die 
         uploader.Execute();
     }
 
+„DataLakeStoreUploader“ unterstützt rekursive Upload- und Downloadvorgänge zwischen einem lokalen Datei- bzw. Ordnerpfad und Data Lake Store.
+
 ## Abrufen von Datei- oder Verzeichnisinformationen
 
-Im folgenden Codeausschnitt wird eine `GetItemInfo`-Methode veranschaulicht, die Sie zum Abrufen von Informationen zu einer Datei oder einem Verzeichnis im Data Lake-Speicher verwenden können.
+Im folgenden Codeausschnitt wird eine `GetItemInfo`-Methode veranschaulicht, die Sie zum Abrufen von Informationen zu einer Datei oder einem Verzeichnis in Data Lake Store verwenden können.
 
 	// Get file or directory info
     public static FileStatusProperties GetItemInfo(string path)
@@ -233,7 +235,7 @@ Im folgenden Codeausschnitt wird eine `GetItemInfo`-Methode veranschaulicht, die
 
 ## Auflisten von Dateien oder Verzeichnissen
 
-Im folgenden Codeausschnitt wird eine `ListItem`-Methode veranschaulicht, die Sie zum Auflisten der Dateien und Verzeichnisse in einem Data Lake-Speicherkonto verwenden können.
+Im folgenden Codeausschnitt wird eine `ListItem`-Methode veranschaulicht, die Sie zum Auflisten der Dateien und Verzeichnisse in einem Data Lake Store-Konto verwenden können.
 	
 	// List files and directories
     public static List<FileStatusProperties> ListItems(string directoryPath)
@@ -253,7 +255,7 @@ Im folgenden Codeausschnitt wird eine `ConcatenateFiles`-Methode veranschaulicht
 
 ## Anfügen an eine Datei
 
-Im folgenden Codeausschnitt wird eine `AppendToFile`-Methode veranschaulicht, die Sie zum Anfügen von Daten an eine bereits im Data Lake-Speicherkonto gespeicherte Datei verwenden können.
+Im folgenden Codeausschnitt wird eine `AppendToFile`-Methode veranschaulicht, die Sie zum Anfügen von Daten an eine bereits im Data Lake Store-Konto gespeicherte Datei verwenden können.
 
 	// Append to file
     public static void AppendToFile(string path, string content)
@@ -265,7 +267,7 @@ Im folgenden Codeausschnitt wird eine `AppendToFile`-Methode veranschaulicht, di
 
 ## Herunterladen einer Datei
 
-Im folgenden Codeausschnitt wird eine `DownloadFile`-Methode veranschaulicht, die Sie zum Herunterladen einer Datei aus einem Data Lake-Speicherkonto verwenden können.
+Im folgenden Codeausschnitt wird eine `DownloadFile`-Methode veranschaulicht, die Sie zum Herunterladen einer Datei aus einem Data Lake Store-Konto verwenden können.
 
 	// Download file
     public static void DownloadFile(string srcPath, string destPath)
@@ -280,7 +282,7 @@ Im folgenden Codeausschnitt wird eine `DownloadFile`-Methode veranschaulicht, di
 
 ## Löschen eines Data Lake-Speicherkontos
 
-Im folgenden Codeausschnitt wird eine `DeleteAccount`-Methode veranschaulicht, die Sie zum Löschen eines Data Lake-Speicherkontos verwenden können.
+Im folgenden Codeausschnitt wird eine `DeleteAccount`-Methode veranschaulicht, die Sie zum Löschen eines Data Lake Store-Kontos verwenden können.
 
 	// Delete account
     public static void DeleteAccount()
@@ -525,5 +527,7 @@ Stellen Sie abschließend sicher, dass der hier angegebene lokale Pfad und der D
 - [Sichern von Daten in Data Lake-Speicher](data-lake-store-secure-data.md)
 - [Verwenden von Azure Data Lake Analytics mit Data Lake-Speicher](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 - [Verwenden von Azure HDInsight mit Data Lake-Speicher](data-lake-store-hdinsight-hadoop-use-portal.md)
+- [Data Lake Store .NET SDK Reference](https://msdn.microsoft.com/library/mt581387.aspx) (Referenz zum Data Lake Store .NET SDK)
+- [Data Lake Store REST Reference](https://msdn.microsoft.com/library/mt693424.aspx) (Data Lake Store-REST-Referenz)
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0907_2016-->
