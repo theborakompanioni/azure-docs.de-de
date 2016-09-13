@@ -13,8 +13,8 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="08/30/2016"
-   ms.author="mausher;barbkess;sonyama"/>
+   ms.date="09/06/2016"
+   ms.author="barbkess;sonyama"/>
 
 # Abfragen von Azure SQL Data Warehouse (sqlcmd)
 
@@ -32,9 +32,12 @@ In dieser exemplarischen Vorgehensweise wird das Befehlszeilenprogramm [sqlcmd][
 
 + **Server (-S)**: Server in Form von `<`Servername`>`.database.windows.net
 + **Datenbank (-D)**: Datenbankname.
++ **Bezeichner in Anführungszeichen aktivieren (-I)**: Bezeichner müssen in Anführungszeichen eingeschlossen sein, um die Verbindung mit einer SQL Data Warehouse-Instanz herzustellen.
+
+Zur Verwendung der SQL Server-Authentifizierung müssen Sie die Parameter für Benutzername und Kennwort hinzufügen:
+
 + **Benutzer (-U):** Serverbenutzer im Format `<`Benutzer`>`
 + **Kennwort (-P)**: Das Kennwort des Benutzers.
-+ **Bezeichner in Anführungszeichen aktivieren (-I)**: Bezeichner müssen in Anführungszeichen eingeschlossen sein, um die Verbindung mit einer SQL Data Warehouse-Instanz herzustellen.
 
 Die Verbindungszeichenfolge kann beispielsweise wie folgt aussehen:
 
@@ -42,7 +45,17 @@ Die Verbindungszeichenfolge kann beispielsweise wie folgt aussehen:
 C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@ssword -I
 ```
 
-> [AZURE.NOTE] Die Option „-I“, mit der Bezeichner in Anführungszeichen aktiviert werden, ist derzeit erforderlich, um eine Verbindung mit SQL Data Warehouse herzustellen.
+Um die in Azure Active Directory integrierte Authentifizierung verwenden zu können, müssen Sie die Azure Active Directory-Parameter hinzufügen:
+
++ **Azure Active Directory-Authentifizierung (-G):** Azure Active Directory für die Authentifizierung verwenden
+
+Die Verbindungszeichenfolge kann beispielsweise wie folgt aussehen:
+
+```sql
+C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -G -I
+```
+
+> [AZURE.NOTE] Sie müssen [Azure Active Directory-Authentifizierung aktivieren](sql-data-warehouse-authentication.md), um die Authentifizierung mithilfe von Active Directory zu ermöglichen.
 
 ## 2\. Abfrage
 
@@ -79,4 +92,4 @@ Ausführliche Informationen zu den in sqlcmd verfügbaren Optionen finden Sie in
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0907_2016-->

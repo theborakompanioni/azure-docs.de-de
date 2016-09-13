@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="get-started-article" 
-	ms.date="07/28/2016" 
+	ms.date="09/01/2016" 
 	ms.author="mandia"/>
 
 # Was sind Connectors und BizTalk-API-Apps?
@@ -35,7 +35,7 @@ Unter [App Service-Preise](https://azure.microsoft.com/pricing/details/app-servi
 
 
 ## Hybrid-Connectors 
-Die Hybrid-Connectors ermöglichen eine weitere Integration in Enterprise-Anwendungen wie [SAP](app-service-logic-connector-sap.md), [Oracle](app-service-logic-connector-oracle.md), [DB2](app-service-logic-connector-db2.md), [Informix](app-service-logic-connector-informix.md) und WebSphere MQ.
+Die Hybrid-Connectors ermöglichen eine weitere Integration in Unternehmensanwendungen wie [DB2](app-service-logic-connector-db2.md), [Informix](app-service-logic-connector-informix.md) WebSphere MQ.
 
 ## EAI- und EDI-Dienste
 Das Entwickeln geschäftskritischer Apps erfordert mehr als bloß Konnektivität. Basierend auf der branchenweit führenden Integrationsplattform von Microsoft - BizTalk Server - bieten BizTalk-API-Apps erweiterte Integrationsmöglichkeiten, die einfach in Ihre Web-, mobilen und Logik-Apps eingeklinkt werden können. Zu diesen Integrationsfunktionen zählen [Überprüfen](app-service-logic-xml-validator.md), [Extrahieren](app-service-logic-xpath-extract.md), [Transformieren](app-service-logic-transform-xml-documents.md), [Encoder](app-service-logic-connector-jsonencoder.md), [Handelspartnerverwaltung](app-service-logic-connector-tpm.md) sowie Unterstützung für EDI-Formate wie [X12](app-service-logic-connector-x12.md), [EDIFACT](app-service-logic-connector-edifact.md) und [AS2](app-service-logic-connector-as2.md).
@@ -50,4 +50,4 @@ Geschäftsregeln umfassen die Richtlinien und Entscheidungen, welche Geschäftsp
 Eine vollständige Liste der Connectors und API-Apps, die in den einzelnen Kategorien wie den Standardconnectors, BizTalk-EAI, Premiumconnectors usw. enthalten sind, finden Sie unter [Liste mit Connectors und API-Apps](app-service-logic-connectors-list.md).
  
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0907_2016-->

@@ -1,7 +1,7 @@
 <properties
 	pageTitle="Active Directory-Verbunddienste in Azure | Microsoft Azure"
 	description="In diesem Dokument wird beschrieben, wie Sie AD FS in Azure bereitstellen, um eine hohe Verfügbarkeit zu erzielen."
-    keywords="Einführung in AD FS, Azure, Azure AD Connect-Übersicht, AD FS in Azure, IaaS, AD FS"
+    keywords="AD FS in Azure bereitstellen, Azure ADFS bereitstellen, Azure ADFS, Azure AD FS, ADFS bereitstellen, AD FS bereitstellen, ADFS in Azure, ADFS in Azure bereitstellen, AD FS in Azure bereitstellen , ADFS Azure, Einführung in AD FS, Azure, AD FS in Azure, IaaS, ADFS, ADFS in Azure verschieben"
 	services="active-directory"
 	documentationCenter=""
 	authors="anandyadavmsft"
@@ -302,5 +302,6 @@ Bei einer erfolgreichen Anmeldung wird die folgende Erfolgsmeldung angezeigt:
 
 * [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md)
 * [Azure AD Connect und Verbund](active-directory-aadconnectfed-whatis.md)
+* [Gebietsübergreifende, hochverfügbare AD FS-Bereitstellung in Azure mit Azure Traffic Manager](active-directory-adfs-in-azure-with-azure-traffic-manager.md)
 
-<!----HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0907_2016-->

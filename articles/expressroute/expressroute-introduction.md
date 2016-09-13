@@ -75,7 +75,7 @@ ExpressRoute-Verbindungen ermöglichen den Zugriff auf die folgenden Dienste:
 
 - Microsoft Azure-Dienste
 - Microsoft Office 365-Dienste
-- Microsoft CRM Online-Dienste 
+- Microsoft CRM Online-Dienste
  
 Auf der Seite [ExpressRoute – FAQ](expressroute-faqs.md) finden Sie eine ausführliche Liste mit den Diensten, die per ExpressRoute unterstützt werden.
 
@@ -118,9 +118,9 @@ Sie haben die Möglichkeit, die ExpressRoute-Verbindungsbandbreite zu erhöhen (
 
 Sie können ein Abrechnungsmodell auswählen, das für Sie am besten geeignet ist. Wählen Sie zwischen den unten aufgeführten Abrechnungsmodellen. Weitere Details finden Sie auf der Seite [ExpressRoute – FAQ](expressroute-faqs.md).
 
-- **Datenflatrate**: Die ExpressRoute-Verbindung wird basierend auf einer monatlichen Gebühr abgerechnet, und alle eingehenden und ausgehenden Datenübertragungen sind kostenlos enthalten. 
+- **Datenflatrate**: Die ExpressRoute-Verbindung wird basierend auf einer monatlichen Gebühr abgerechnet, und alle eingehenden und ausgehenden Datenübertragungen sind kostenlos enthalten.
 - **Datentaktung**: Die ExpressRoute-Verbindung wird basierend auf einer monatlichen Gebühr abgerechnet. Alle eingehenden Datenübertragungen sind kostenlos. Ausgehende Datenübertragungen werden pro GB der Datenübertragung in Rechnung gestellt. Die Datenübertragungsraten variieren je nach Region.
-- **ExpressRoute Premium-Add-On**: ExpressRoute Premium ist ein Add-On über die ExpressRoute-Verbindung. Mit dem ExpressRoute Premium-Add-On werden die folgenden Funktionen bereitgestellt: 
+- **ExpressRoute Premium-Add-On**: ExpressRoute Premium ist ein Add-On über die ExpressRoute-Verbindung. Mit dem ExpressRoute Premium-Add-On werden die folgenden Funktionen bereitgestellt:
 	- Erhöhte Routengrenzwerte für öffentliches und privates Azure-Peering von 4.000 Routen auf 10.000 Routen.
 	- Globale Konnektivität für Dienste. Eine ExpressRoute-Verbindung, die in einer beliebigen Region (ausgenommen nationale Clouds) erstellt wird, verfügt über Zugriff auf Ressourcen aller anderen Regionen weltweit. Beispielsweise kann auf ein virtuelles Netzwerk, das in Westeuropa erstellt wird, über eine ExpressRoute-Verbindung zugegriffen werden, die im Silicon Valley bereitgestellt wird.
 	- Erhöhte Anzahl von VNet-Links pro ExpressRoute-Verbindung von 10 auf einen höheren Grenzwert, je nach Bandbreite der Verbindung.
@@ -136,4 +136,4 @@ Sie können ein Abrechnungsmodell auswählen, das für Sie am besten geeignet is
 	- [Konfigurieren des Routings](expressroute-howto-routing-classic.md)
 	- [Verknüpfen eines VNet mit einer ExpressRoute-Verbindung](expressroute-howto-linkvnet-classic.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0907_2016-->

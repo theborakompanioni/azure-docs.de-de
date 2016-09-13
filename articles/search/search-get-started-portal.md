@@ -14,7 +14,7 @@
 	ms.workload="search" 
 	ms.topic="hero-article" 
 	ms.tgt_pltfrm="na" 
-	ms.date="05/17/2016" 
+	ms.date="08/29/2016" 
 	ms.author="heidist"/>
 
 # Erste Schritte mit Azure Search im Portal
@@ -30,8 +30,8 @@ Im Tutorial wird die Verwendung einer [Azure DocumentDB-Beispieldatenbank](#apdx
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
 2. Öffnen Sie das Service-Dashboard des Azure-Suchdiensts. Im Anschluss finden Sie einige Möglichkeiten, um zum Dashboard zu gelangen.
-	- Klicken Sie auf der Navigationsleiste auf **Suchdienste**. In der Navigationsleiste werden alle Dienste angegeben, die unter Ihrem Abonnement bereitgestellt werden. Wenn ein Suchdienst definiert wurde, wird in der Liste der Eintrag **Suchdienste** angezeigt.
-	- Klicken Sie auf der Navigationsleiste auf **Durchsuchen**, und geben Sie im Suchfeld „search“ ein, um eine Liste mit allen Suchdiensten zu generieren, die für Ihre Abonnements erstellt wurden.
+	- Klicken Sie auf der Navigationsleiste auf **Suchdienste**. Auf der Navigationsleiste werden alle Dienste angegeben, die unter Ihrem Abonnement bereitgestellt werden. Wenn ein Suchdienst definiert wurde, wird in der Liste der Eintrag **Suchdienste** angezeigt.
+	- Klicken Sie auf der Navigationsleiste auf **Durchsuchen**, und geben Sie im Suchfeld „Suche“ ein, um eine Liste mit allen Suchdiensten zu generieren, die für Ihre Abonnements erstellt wurden.
 
 ## Überprüfen des Speicherplatzes
 
@@ -72,13 +72,13 @@ Klicken Sie im Assistenten auf **Index**, und sehen Sie sich die Entwurfsoberfl�
 
 Die Felder und Datentypen sind zwar konfiguriert, aber Sie müssen trotzdem Attribute zuweisen. Die Kontrollkästchen oben in der Liste der Felder sind *Indexattribute*, mit denen die Verwendung des Felds gesteuert wird.
 
-- **Abrufbar** bedeutet, dass es in der Liste mit den Suchergebnissen angezeigt wird. Sie können einzelne Felder kennzeichnen, indem Sie dieses Kontrollkästchen deaktivieren, um sie aus den Suchergebnissen auszuschließen, z. B. wenn Felder nur in Filterausdrücken verwendet werden. 
-- Mit **Filterbar**, **Sortierbar** und **Facettenreich** wird angegeben, ob ein Feld in einer Filter-, Sortier- oder Facettennavigationsstruktur verwendet werden kann. 
-- **Durchsuchbar** bedeutet, dass ein Feld in die Volltextsuche einbezogen wird. Zeichenfolgen können normalerweise durchsucht werden. Numerische Felder und boolesche Felder werden häufig als „Nicht durchsuchbar“ markiert. 
+- **Abrufbar** bedeutet, dass es in der Liste mit den Suchergebnissen angezeigt wird. Sie können einzelne Felder kennzeichnen, indem Sie dieses Kontrollkästchen deaktivieren, um sie aus den Suchergebnissen auszuschließen, z. B. wenn Felder nur in Filterausdrücken verwendet werden.
+- Mit **Filterbar**, **Sortierbar** und **Facettenreich** wird angegeben, ob ein Feld in einer Filter-, Sortier- oder Facettennavigationsstruktur verwendet werden kann.
+- **Durchsuchbar** bedeutet, dass ein Feld in die Volltextsuche einbezogen wird. Zeichenfolgen können normalerweise durchsucht werden. Numerische Felder und boolesche Felder werden häufig als „Nicht durchsuchbar“ markiert.
 
 Markieren Sie für die Felder im Index vor dem Verlassen der Seite die Verwendung der folgenden Optionen (Abrufbar, Durchsuchbar usw.). Die meisten Felder sind abrufbar. Die meisten Zeichenfolgenfelder sind durchsuchbar (Sie müssen den Schlüssel nicht durchsuchbar machen). Einige Felder, z. B. „genre“, „orderableOnline“, „rating“ und „tags“, sind auch filterbar, sortierbar und facettenreich.
 	
-Feld | Typ | Optionen |
+Feld | Typ | Options |
 ------|------|---------|
 id | Edm.String | |
 albumTitle | Edm.String | Abrufbar, durchsuchbar |
@@ -183,4 +183,4 @@ Sie sollten eine JSON-Ausgabe zurückerhalten, die mit der Dokumentnummer 386 b
 [6]: ./media/search-get-started-portal/AzureSearch-GetStart-IndexerList.png
 [7]: ./media/search-get-started-portal/search-data-import-wiz-btn.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0907_2016-->

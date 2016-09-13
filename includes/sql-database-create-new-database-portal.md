@@ -13,14 +13,14 @@ articles/sql-database/sql-database-get-started-tutorial.md
 Führen Sie im Azure-Portal folgende Schritte aus, um auf einem neuen oder bereits vorhandenen logischen Azure SQL-Datenbankserver eine neue Azure SQL-Datenbank zu erstellen.
 
 1. Stellen Sie eine Verbindung mit dem [Azure-Portal](http://portal.azure.com) her (sofern noch keine Verbindung besteht).
-2. Klicken Sie auf **Neu**, geben Sie **SQL-Datenbank** ein, und klicken Sie anschließend auf **SQL-Datenbank (neue Datenbank)**.
+2. Klicken Sie auf **Neu**, geben Sie **SQL-Datenbank** ein, und klicken Sie anschließend auf **SQL Database (new database)** (SQL-Datenbank (neue Datenbank)).
 
      ![Neue Datenbank](./media/sql-database-create-new-database-portal/sql-database-create-new-database-portal-1.png)
 
-3. Klicken Sie auf „SQL-Datenbank (neue Datenbank)“.
+3. Klicken Sie auf **SQL Database (new database)** (SQL-Datenbank (neue Datenbank)).
 
      ![Neue Datenbank](./media/sql-database-create-new-database-portal/sql-database-create-new-database-portal-2.png)
-   
+
 4. Klicken Sie auf **Erstellen**, um eine neue Datenbank im SQL-Datenbankdienst zu erstellen.
 
      ![Neue Datenbank](./media/sql-database-create-new-database-portal/sql-database-create-new-database-portal-3.png)
@@ -28,18 +28,18 @@ Führen Sie im Azure-Portal folgende Schritte aus, um auf einem neuen oder berei
 5. Geben Sie Werte für die folgenden Servereigenschaften ein:
 
  - Datenbankname
- - Abonnement (Nur relevant, wenn Sie über mehrere Abonnements verfügen.)
- - Ressourcengruppe (Verwenden Sie zum Einstieg die Ressourcengruppe des logischen Servers.)
- - Auswählen der Quelle (Sie können eine leere Datenbank, Beispieldaten oder eine Azure-Datenbanksicherung auswählen. Unter den Links am Ende dieses Artikels finden Sie Informationen zum Migrieren einer lokalen SQL Server-Datenbank und zum Laden von Daten per BCP.)
- - Server (Ein neuer oder bereits vorhandener logischer Server.)
- - Serveradministratorkennwort
+ - Abonnement: Dies ist nur relevant, wenn Sie über mehrere Abonnements verfügen.
+ - Ressourcengruppe: Verwenden Sie zum Einstieg die Ressourcengruppe des logischen Servers.
+ - Quelle auswählen: Wählen Sie eine leere Datenbank, Beispieldaten oder eine Datenbanksicherung aus. Informationen zum Migrieren einer lokalen SQL Server-Datenbank oder zum Laden von Daten mithilfe des BCP-Befehlszeilentools finden Sie unter den Links am Ende dieses Artikels.
+ - Server: Ein neuer oder bereits vorhandener logischer Server
+ - Serveradministratoranmeldung
  - Kennwort
- - Tarif (Behalten Sie zum Einstieg den Standardwert „S0“ bei.)
- - Sortierung (Nur relevant bei Verwendung einer leeren Datenbank.)
+ - Tarif: Behalten Sie zum Einstieg den Standardwert „S0“ bei.
+ - Sortierung: Diese Option ist nur relevant, wenn eine leere Datenbank ausgewählt wurde.
 
-        ![new database](./media/sql-database-create-new-database-portal/sql-database-create-new-database-portal-4.png)
+        ![New database](./media/sql-database-create-new-database-portal/sql-database-create-new-database-portal-4.png)
 
-6.  Klicken Sie auf **Erstellen**. Im Infobereich wird auf den Beginn der Bereitstellung hingewiesen.
+6.  Klicken Sie auf **Create**. Im Infobereich wird auf den Beginn der Bereitstellung hingewiesen.
 
      ![Neue Datenbank](./media/sql-database-create-new-database-portal/sql-database-create-new-database-portal-5.png)
 
@@ -47,4 +47,4 @@ Führen Sie im Azure-Portal folgende Schritte aus, um auf einem neuen oder berei
 
      ![Neue Datenbank](./media/sql-database-create-new-database-portal/sql-database-create-new-database-portal-6.png)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0907_2016-->

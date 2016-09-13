@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Konfigurieren einer Punkt-zu-Standort-VPN-Verbindung mit einem virtuellen Netzwerk mithilfe des Resource Manager-Bereitstellungsmodells | Microsoft Azure"
-   description="Stellen Sie eine sichere Verbindung mit Ihrem Azure Virtual Network durch Erstellen einer Punkt-zu-Standort-VPN-Verbindung her."
+   pageTitle="Konfigurieren einer Point-to-Site-VPN-Gatewayverbindung mit einem virtuellen Netzwerk mithilfe des Resource Manager-Bereitstellungsmodells | Microsoft Azure"
+   description="Stellen Sie eine sichere Verbindung mit Ihrem Azure Virtual Network her, indem Sie eine P2S-VPN-Gatewayverbindung herstellen."
    services="vpn-gateway"
    documentationCenter="na"
    authors="cherylmc"
@@ -65,7 +65,7 @@ Für diese Konfiguration verwenden wir die folgenden Werte: Wir legen die Variab
 
 - Stellen Sie sicher, dass Sie über ein Azure-Abonnement verfügen. Wenn Sie noch kein Azure-Abonnement haben, können Sie Ihre [MSDN-Abonnentenvorteile](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) aktivieren oder sich für ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/) registrieren.
 	
-- Installieren Sie die Azure Resource Manager PowerShell-Cmdlets (1.0.2 oder höher). Weitere Informationen zur Installation der PowerShell-Cmdlets finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
+- Installieren Sie die Azure Resource Manager PowerShell-Cmdlets (1.0.2 oder höher). Weitere Informationen zur Installation der PowerShell-Cmdlets finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md). Bei der Verwendung von PowerShell für diese Konfiguration müssen Sie PowerShell als Administrator ausführen.
 
 ## <a name="declare"></a>Teil 1 – Anmelden und Festlegen von Variablen
 
@@ -176,15 +176,24 @@ Clients, die mithilfe von P2S eine Verbindung mit Azure herstellen, benötigen e
 
 	![VPN-Client](./media/vpn-gateway-howto-point-to-site-rm-ps/vpn.png "VPN-Client")
 
-## <a name="cc"></a>Teil 6 – Installieren des Clientzertifikats
-	
-Generieren und installieren Sie die Clientzertifikate (*.pfx), die aus dem Stammzertifikat auf den Clientcomputern erstellt werden. Sie können eine beliebige Installationsmethode verwenden, mit der Sie vertraut sind.
+## <a name="cc"></a>Teil 6: Generieren des Clientzertifikats
 
-Wenn Sie ein selbstsigniertes Stammzertifikat verwenden und mit der Erstellung eines Clientzertifikats nicht vertraut sind, finden Sie in [diesem Artikel](vpn-gateway-certificates-point-to-site.md) weitere Informationen. Erstellen Sie bei Verwendung einer Unternehmenslösung die Clientzertifikate mit dem gängigen Namenswertformat „name@ihredomäne.com“, und verwenden Sie nicht das NetBIOS-Format „Domänenname\\Benutzername“.
+Generieren Sie als Nächstes die Clientzertifikate. Sie können entweder ein eindeutiges Zertifikat für jeden Client generieren, mit dem eine Verbindung hergestellt wird, oder Sie können dasselbe Zertifikat für mehrere Clients verwenden. Der Vorteil beim Generieren von eindeutigen Clientzertifikaten besteht darin, dass Sie bei Bedarf ein einzelnes Zertifikat widerrufen können. Falls überall dasselbe Clientzertifikat verwendet wird und Sie das Zertifikat für einen Client widerrufen müssen, müssen Sie sonst neue Zertifikate für alle Clients generieren und installieren, die das Zertifikat für die Authentifizierung verwenden.
 
-Per Doppelklick auf die PFX-Datei können Sie ein Clientzertifikat direkt auf einem Computer installieren.
+- Generieren Sie bei Verwendung einer Unternehmenszertifikatlösung ein Clientzertifikat mit dem gängigen Namenswertformat „name@ihredomäne.com“, und verwenden Sie nicht das NetBIOS-Format „DOMÄNE\\Benutzername“.
 
-## Teil 7 – Verbinden mit Azure
+- Wenn Sie ein selbstsigniertes Zertifikat verwenden, helfen Ihnen die Informationen zum Generieren eines Clientzertifikats unter [Arbeiten mit selbstsignierten Stammzertifikaten für P2S-Konfigurationen](vpn-gateway-certificates-point-to-site.md) weiter.
+
+## Teil 7: Installieren des Clientzertifikats
+
+Installieren Sie auf jedem Computer, den Sie mit dem virtuellen Netzwerk verbinden möchten, ein Clientzertifikat. Ein Clientzertifikat wird für die Authentifizierung benötigt. Sie können die Installation des Clientzertifikats automatisieren oder manuell durchführen. In den folgenden Schritten wird das manuelle Exportieren und Installieren des Clientzertifikats beschrieben.
+
+1. Sie können *certmgr.msc* zum Exportieren eines Clientzertifikats verwenden. Klicken Sie mit der rechten Maustaste auf das Clientzertifikat, das Sie exportieren möchten, klicken Sie auf **Alle Aufgaben** und anschließend auf **Exportieren**.
+2. Exportieren Sie das Clientzertifikat mit dem privaten Schlüssel. Dies ist eine *PFX*-Datei. Vergessen Sie nicht, sich das Kennwort (Schlüssel) zu notieren oder zu merken, das Sie für dieses Zertifikat festgelegt haben.
+3. Kopieren Sie die *PFX*-Datei auf den Clientcomputer. Doppelklicken Sie auf dem Clientcomputer auf die *PFX*-Datei, um sie zu installieren. Geben Sie das Kennwort ein, wenn Sie dazu aufgefordert werden. Ändern Sie den Speicherort der Installation nicht.
+
+
+## Teil 8: Verbinden mit Azure
 
 1. Um eine Verbindung mit Ihrem VNet herzustellen, navigieren Sie auf dem Clientcomputer zu „VPN-Verbindungen“ und suchen nach der VPN-Verbindung, die Sie erstellt haben. Sie hat den gleichen Namen wie das virtuelle Netzwerk. Klicken Sie auf **Verbinden**. Möglicherweise wird eine Popupmeldung angezeigt, die sich auf die Verwendung des Zertifikats bezieht. Klicken Sie in diesem Fall auf **Weiter**, um erhöhte Rechte zu verwenden.
 
@@ -196,7 +205,7 @@ Per Doppelklick auf die PFX-Datei können Sie ein Clientzertifikat direkt auf ei
 
 	![VPN-Client 3](./media/vpn-gateway-howto-point-to-site-rm-ps/connected.png "VPN-Clientverbindung 2")
 
-## Teil 8 – Überprüfen der Verbindung
+## Teil 9: Überprüfen der Verbindung
 
 1. Um sicherzustellen, dass die VPN-Verbindung aktiv ist, öffnen Sie eine Eingabeaufforderung mit Administratorrechten, und führen Sie *Ipconfig/all* aus.
 
@@ -302,4 +311,4 @@ Sie können ein Clientzertifikat reaktivieren, indem Sie den Fingerabdruck aus d
 
 Sie können Ihrem virtuellen Netzwerk einen virtuellen Computer hinzufügen. Für diese Schritte finden Sie Informationen unter [Erstellen eines virtuellen Computers](../virtual-machines/virtual-machines-windows-hero-tutorial.md).
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0907_2016-->
