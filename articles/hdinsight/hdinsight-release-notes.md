@@ -478,7 +478,7 @@ Diese Version enthält die folgenden Updates.
 <td>Hortonworks-Versionshinweise für diese Version sind <a href="http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.1.15-Win/bk_releasenotes_HDP-Win/content/ch_relnotes-HDP-2.1.15.html" target="_blank">hier</a> verfügbar.</td>
 <td>HDP</td>
 <td>Alle</td>
-<td>–</td>
+<td>N/V</td>
 </tr>
 
 </table>
@@ -544,7 +544,7 @@ Diese Version enthält die folgenden Updates.
 <td>Diese Version behebt Fehler im Zusammenhang mit der Clusterbereitstellung.</td>
 <td>Dienst</td>
 <td>Alle Clustertypen</td>
-<td>–</td>
+<td>N/V</td>
 </tr>
 
 </table>
@@ -590,7 +590,7 @@ Diese Version enthält die folgenden Updates.
 <td>Dieses Update setzt Hbase- und Storm-Cluster zurück, sodass die gleichen Werte aus YARN-Konfigurationen wie für Hadoop-Cluster verwendet werden. Die Parität wird für alle Clustertypen zurückgesetzt.</td>
 <td>HDP</td>
 <td>Hadoop, Hbase, Storm</td>
-<td>–</td>
+<td>N/V</td>
 </tr>
 
 </table>
@@ -630,7 +630,7 @@ Diese Version enthält die folgenden Updates.
 <td>Der Treiber auf die von SQL Server unterstützte Version in sqljdbc_4.1.5605.100 aktualisiert.</td>
 <td>Metastore</td>
 <td>Alle</td>
-<td>–</td>
+<td>N/V</td>
 </tr>
 </table>
 
@@ -781,7 +781,7 @@ Diese Version enthält die folgenden Updates.
 <td>Programmgesteuerte Unterstützung für das Aktivieren oder Deaktivieren der RDP-Anmeldeinformationen in Windows-Clustern.</td>
 <td>SDK</td>
 <td>Alle</td>
-<td>–</td>
+<td>N/V</td>
 </tr>
 
 <tr>
@@ -837,7 +837,7 @@ Diese Version enthält die folgenden Updates.
 <td>HDInsight Version 3.2 wird aktualisiert, sodass die neueste Version von Azure Storage-SDK für Java verwendet wird. Diese enthält mehrere wichtige Fehlerbehebungen für die aktuelle Version 0.6.0.</td>
 <td>HDP</td>
 <td>Alle</td>
-<td>–</td>
+<td>N/V</td>
 </tr>
 
 <tr>
@@ -921,7 +921,7 @@ Diese Version enthält die folgenden Updates.
 <td>Hadoop 2.6/HDP2.2 ist in HDInsight 3.2-Clustern verfügbar. Es enthält wichtige Updates für alle Open Source-Komponenten. Weitere Informationen finden Sie unter „Neuerungen in HDInsight“ und <a href ="http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.2.0/HDP_2.2.0_Release_Notes_20141202_version/index.html" target="_blank">Versionshinweise zu HDP 2.2.0.0</a>.</td>
 <td>Open-Source-Software</td>
 <td>Alle</td>
-<td>–</td>
+<td>N/V</td>
 </tr>
 
 <tr>
@@ -945,7 +945,7 @@ Diese Version enthält die folgenden Updates.
 <td>Azure HDInsight ist für weitere VM-Typen und Größen verfügbar. HDInsight-Cluster können jetzt die für allgemeine Zwecke konzipierten Größen A2 bis A7, Knoten der D-Serie mit Solid-State-Laufwerken (SSDs) und mit um 60&#160;% schnelleren Prozessoren sowie die Größen A8 und A9 mit InfiniBand-Unterstützung für schnelle Netzwerkverbindungen nutzen.</td>
 <td>Dienst</td>
 <td>Alle</td>
-<td>–</td>
+<td>N/V</td>
 </tr>
 
 <tr>
@@ -953,7 +953,7 @@ Diese Version enthält die folgenden Updates.
 <td>Sie können die Anzahl der Datenknoten für einen ausgeführten HDInsight-Cluster ändern, ohne ihn zu löschen oder neu zu erstellen. Derzeit haben nur Cluster vom Typ Hadoop-Abfrage und Apache Storm diese Fähigkeit, aber Cluster vom Typ Apache HBase werden ebenfalls bald unterstützt werden. Weitere Informationen finden Sie unter „Verwalten von HDInsight-Clustern“.</td>
 <td>Dienst</td>
 <td>Hadoop, Storm</td>
-<td>–</td>
+<td>N/V</td>
 </tr>
 
 <tr>
@@ -961,7 +961,7 @@ Diese Version enthält die folgenden Updates.
 <td>In Visual Studio wurden die Tools für Apache Storm vervollständigt und die Tools für Apache Hive aktualisiert, um Anweisungsvervollständigung, lokale Überprüfung und verbesserte Unterstützung für das Remotedebuggen zu bieten. Weitere Informationen finden Sie unter „Erste Schritte mit den HDInsight Hadoop-Tools für Visual Studio“.</td>
 <td>Tools</td>
 <td>Hadoop</td>
-<td>–</td>
+<td>N/V</td>
 </tr>
 
 <tr>
@@ -1031,7 +1031,7 @@ Diese Version enthält die folgenden Updates.
 </td>
 <td>Open-Source-Software</td>
 <td>HBase</td>
-<td>–</td>
+<td>N/V</td>
 </tr>
 
 </table>
@@ -1112,7 +1112,7 @@ Apache Mahout ist eine Apache Hadoop-Bibliothek für maschinelles Lernen. Mahout
 <td><p>Diese Größenkonfiguration gilt für automatisch konvertierte Map-Verknüpfungen. Der Wert steht für die Summe der Größen von Tabellen, die in Hashmaps konvertiert werden können und in den Arbeitsspeicher passen. Bei einer früheren Version wurde der Wert vom Standardwert 10&#160;MB auf 128&#160;MB erhöht. Der neue Wert von 128&#160;MB führte jedoch zu Auftragsfehlern aufgrund unzureichenden Arbeitsspeichers. In dieser Version wird der Standardwert wieder auf 10&#160;MB zurückgesetzt. Kunden können je nach Ihren Abfragen und Tabellengröße diesen Wert weiterhin während der Clustererstellung überschreiben. Weitere Informationen zu dieser Einstellung und dazu, wie Sie sie überschreiben, finden Sie unter <a href="http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.0.0.2/ds_Hive/optimize-joins.html#JoinOptimization-OptimizeAutoJoinConversion" target="_blank">Optimize Auto Join Conversion (Optimieren der automatischen Verknüpfungskonvertierung)</a> in der Hortonworks-Dokumentation. </p></td>
 <td>Hive</td>
 <td>Hadoop, Hbase</td>
-<td>–</td>
+<td>N/V</td>
 </tr>
 
 </table>
@@ -1257,7 +1257,7 @@ Diese Version enthält die folgenden Aktualisierungen von Komponenten.
 <td>Fähigkeit zum programmgesteuerten Aufzählen von Anwendungen, die in Ihren Clustern ausgeführt wurden, und zum Herunterladen relevanter anwendungs- oder containerspezifischer Protokolle zum Beheben von Fehlern in problematischen Anwendungen.</td>
 <td>SDK</td>
 <td>Hadoop</td>
-<td>–</td>
+<td>N/V</td>
 </tr>
 
 <tr>
