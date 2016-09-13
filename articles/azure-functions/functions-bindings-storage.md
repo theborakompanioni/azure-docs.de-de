@@ -274,7 +274,7 @@ Die Azure Functions-Laufzeit stellt sicher, dass Blobtriggerfunktionen für ein 
 
 Blobbelege werden in einem Container mit dem Namen *azure-webjobs-hosts* in dem Azure-Speicherkonto gespeichert, das in der Verbindungszeichenfolge "AzureWebJobsStorage" angegeben ist. Ein Blobbeleg enthält die folgenden Informationen:
 
-* Die Funktion, die für das Blob aufgerufen wurde („*{Funktionen-App-Name}*.Functions.*{Funktionsname}*“, Beispiel: „functionsf74b96f7.Functions.CopyBlob“)
+* Die Funktion, die für das Blob aufgerufen wurde („ *{Funktionen-App-Name}* .Functions. *{Funktionsname}* “, Beispiel: „functionsf74b96f7.Functions.CopyBlob“)
 * Der Containername
 * Blobtyp ("BlockBlob" oder "PageBlob")
 * Blobname

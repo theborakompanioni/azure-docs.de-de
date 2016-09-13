@@ -1,6 +1,6 @@
 **Ressource**|**Standardlimit**|**Maximales Limit**
 ---|---|---
-Kerne pro Batch-Konto|20|–<sup>1</sup>
+Kerne pro Batch-Konto|20|N/V<sup>1</sup>
 Aufträge und Auftragszeitpläne<sup>2</sup> pro Batch-Konto|20|10\.000
 Pools pro Batch-Konto|20|5\.000
 
