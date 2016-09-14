@@ -3,7 +3,7 @@
    description="Power BI Embedded, Hinzufügen interaktiver Power BI-Berichte zu Ihrer Business Intelligence-Anwendung"
    services="power-bi-embedded"
    documentationCenter=""
-   authors="minewiskan"
+   authors="mgblythe"
    manager="NA"
    editor=""
    tags=""/>
@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="NA"
    ms.workload="powerbi"
    ms.date="07/05/2016"
-   ms.author="owend"/>
+   ms.author="mblythe"/>
 
 # Erste Schritte mit Microsoft Power BI Embedded
 
@@ -76,7 +76,7 @@ Mit **Power BI Desktop** stellen Sie eine Verbindung mit der Datenquelle her, in
 
 Im Folgenden werden die Unterschiede zwischen der Verwendung des **Importvorgangs** und der Verwendung von **DirectQuery** aufgeführt.
 
-|Importieren | DirectQuery
+|Import | DirectQuery
 |---|---
 |Tabellen, Spalten *und Daten* werden in **Power BI Desktop** importiert oder kopiert. Bei der Arbeit mit Visualisierungen fragt **Power BI Desktop** eine Kopie der Daten ab. Um Änderungen anzuzeigen, die ggf. an den zugrunde liegenden Daten vorgenommen wurden, müssen Sie ein Dataset aktualisieren bzw. ein vollständiges aktuelles Dataset importieren.|Nur *Tabellen und Spalten* werden in **Power BI Desktop** importiert oder kopiert. Bei der Arbeit mit Visualisierungen fragt **Power BI Desktop** die zugrunde liegende Datenquelle ab. Dies bedeutet, dass die angezeigten Daten immer aktuell sind.
 
@@ -96,9 +96,9 @@ In den obigen Schritten haben Sie eine Arbeitsbereichssammlung und Ihren ersten 
 
   -	Sicheres Einbetten eines Berichts
 
-## Siehe auch
+## Weitere Informationen
 - [Erste Schritte mit dem Beispiel](power-bi-embedded-get-started-sample.md)
 - [Authentifizieren und Autorisieren mit Power BI Embedded](power-bi-embedded-app-token-flow.md)
 - [Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/)
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0907_2016-->

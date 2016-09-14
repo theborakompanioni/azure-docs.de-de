@@ -100,8 +100,7 @@ Diese Version enthält die folgenden Updates.
 
 | Titel | Beschreibung | Betroffener Bereich (z. B. Dienst, Komponente oder SDK) | Clustertyp (z.B. Spark, Hadoop, HBase oder Storm) | JIRA (falls zutreffend) |
 |-------------------------------------------------|------------------------------------------------------|---------------------------------------------------------|-----------------------------------------------------|----------------------|
-| [HDInsight-Tools für IntelliJ](hdinsight-apache-spark-intellij-tool-plugin.md) | Das IntelliJ IDEA-Plug-In für HDInsight Spark-Cluster ist jetzt in das Azure-Toolkit für IntelliJ integriert. Es unterstützt die Azure SDK-Version 2.9.1, neuesten Java SDKs und bietet alle Features des eigenständigen HDInsight-Plug-Ins für IntelliJ.| Tools | Spark| –  
-|
+| [HDInsight-Tools für IntelliJ](hdinsight-apache-spark-intellij-tool-plugin.md) | Das IntelliJ IDEA-Plug-In für HDInsight Spark-Cluster ist jetzt in das Azure-Toolkit für IntelliJ integriert. Es unterstützt die Azure SDK-Version 2.9.1, neuesten Java SDKs und bietet alle Features des eigenständigen HDInsight-Plug-Ins für IntelliJ.| Tools | Spark| N/V  |
 | [HDInsight-Tools für Eclipse](hdinsight-apache-spark-eclipse-tool-plugin.md) | Das Azure-Toolkit für Eclipse unterstützt nun HDInsight Spark-Cluster. Es bietet die folgenden Features. <ul><li>Müheloses Erstellen und Schreiben einer Spark-Anwendung in Scala und Java mit erstklassiger Erstellungsunterstützung für IntelliSense, automatischer Formatierung, Fehlerüberprüfung usw.</li><li>Lokales Testen der Spark-Anwendung.</li><li>Übermitteln von Aufträgen an HDInsight Spark-Cluster und Abrufen der Ergebnisse.</li><li>Anmelden bei Azure und Zugreifen auf alle Spark-Cluster, die Ihren Azure-Abonnements zugeordnet sind.</li><li>Wechseln zu allen zugeordneten Speicherressourcen Ihres HDInsight Spark-Clusters.</li></ul>| Tools | Spark| N/V
 
 Ab dieser Version wurde die Patchingrichtlinie für Gastbetriebssysteme für Linux-basierte HDInsight-Cluster geändert. Ziel der neuen Richtlinie ist es, die aufgrund von Patching erforderlichen Neustarts erheblich zu reduzieren. Im Rahmen der neuen Richtlinie werden Patches für virtuelle Computer in Linux-Clustern weiterhin jeden Montag oder Donnerstag ab 0:00 Uhr UTC schrittweise auf allen Knoten in jedem Cluster aufgespielt. Die einzelnen virtuellen Computer werden jedoch nur noch maximal alle 30 Tage aufgrund von Patchingvorgängen für das Gastbetriebssystem neu gestartet. Auch der erste Neustart eines neu erstellten Clusters erfolgt nicht früher als 30 Tage nach Erstellungsdatum des Clusters.
@@ -163,9 +162,9 @@ Diese Version enthält die folgenden Updates.
 | Titel | Beschreibung | Betroffener Bereich (z. B. Dienst, Komponente oder SDK) | Clustertyp (z. B. Hadoop, HBase oder Storm) | JIRA (falls zutreffend) |
 |-------------------------------------------------|------------------------------------------------------|---------------------------------------------------------|-----------------------------------------------------|----------------------|
 | Probleme beim Upgrade des benutzerdefinierten Metastores für HDI 3.4 | Die Erstellung eines Clusters schlug fehl, wenn Sie einen benutzerdefinierten Metastore verwendet haben, der zuvor für eine niedrigere Version eines anderen HDInsight-Clusters verwendet wurde. Der Grund dafür lag in einem Skriptfehler beim Upgrade, der nun behoben wurde.| Clustererstellung | Alle | N/V
-| Wiederherstellung nach Livy-Absturz | Resilienz des Auftragsstatus für jeden über Livy gesendeten Auftrag. | Zuverlässigkeit | Spark unter Linux| –
+| Wiederherstellung nach Livy-Absturz | Resilienz des Auftragsstatus für jeden über Livy gesendeten Auftrag. | Zuverlässigkeit | Spark unter Linux| N/V
 | Hohe Verfügbarkeit von Jupyter-Inhalten | Ermöglicht das Speichern und Laden von Jupyter Notebook-Inhalten auf und von dem mit dem Cluster verknüpften Speicherkonto. Weitere Informationen finden Sie unter [Verfügbare Kernels für Jupyter Notebooks](hdinsight-apache-spark-jupyter-notebook-kernels.md).| Notebooks | Spark unter Linux| N/V
-| Entfernen von hiveContext in Jupyter Notebooks | Verwenden Sie `%%sql`-Magic anstelle von `%%hive`-Magic. „sqlContext“ entspricht „hiveContext“. Weitere Informationen finden Sie unter [Verfügbare Kernels für Jupyter Notebooks](hdinsight-apache-spark-jupyter-notebook-kernels.md).| Notebooks | Spark-Cluster unter Linux| –
+| Entfernen von hiveContext in Jupyter Notebooks | Verwenden Sie `%%sql`-Magic anstelle von `%%hive`-Magic. „sqlContext“ entspricht „hiveContext“. Weitere Informationen finden Sie unter [Verfügbare Kernels für Jupyter Notebooks](hdinsight-apache-spark-jupyter-notebook-kernels.md).| Notebooks | Spark-Cluster unter Linux| N/V
 | Einstellung des Supports für ältere Versionen von Spark | Die ältere Version Spark 1.3.1 wird zum 31.05. aus dem Dienst entfernt. | Dienst | Spark-Cluster unter Windows | N/V
 
 ## Hinweise für die HDInsight-Version vom 29.03.2016
@@ -209,7 +208,7 @@ Diese Version enthält die folgenden Updates.
 
 | Titel | Beschreibung | Betroffener Bereich (z. B. Dienst, Komponente oder SDK) | Clustertyp (z. B. Hadoop, HBase oder Storm) | JIRA (falls zutreffend) |
 |-------------------------------------------------|------------------------------------------------------|---------------------------------------------------------|-----------------------------------------------------|----------------------|
-| Aktualisierte Versionen von HDInsight aller HDInsight-Cluster | Dieses Version bietet aktualisierte Versionen von HDInsight für alle HDInsight-Cluster.| Dienst | Alle| –
+| Aktualisierte Versionen von HDInsight aller HDInsight-Cluster | Dieses Version bietet aktualisierte Versionen von HDInsight für alle HDInsight-Cluster.| Dienst | Alle| N/V
 
 
 ## Hinweise für die HDInsight-Version vom 10.03.2016
@@ -229,7 +228,7 @@ Diese Version enthält die folgenden Updates.
 
 | Titel | Beschreibung | Betroffener Bereich (z. B. Dienst, Komponente oder SDK) | Clustertyp (z. B. Hadoop, HBase oder Storm) | JIRA (falls zutreffend) |
 |-------------------------------------------------|------------------------------------------------------|---------------------------------------------------------|-----------------------------------------------------|----------------------|
-| Aktualisierte Versionen von HDInsight aller HDInsight-Cluster | Dieses Version bietet aktualisierte Versionen von HDInsight für alle HDInsight-Cluster.| Dienst | Alle| –
+| Aktualisierte Versionen von HDInsight aller HDInsight-Cluster | Dieses Version bietet aktualisierte Versionen von HDInsight für alle HDInsight-Cluster.| Dienst | Alle| N/V
 
 ## Hinweise für die HDInsight-Version vom 27.01.2016
 
@@ -248,7 +247,7 @@ Diese Version enthält die folgenden Updates.
 
 | Titel | Beschreibung | Betroffener Bereich (z. B. Dienst, Komponente oder SDK) | Clustertyp (z. B. Hadoop, HBase oder Storm) | JIRA (falls zutreffend) |
 |-------------------------------------------------|------------------------------------------------------|---------------------------------------------------------|-----------------------------------------------------|----------------------|
-| Aktualisierte Versionen von HDInsight aller HDInsight-Cluster | Dieses Version bietet aktualisierte Versionen von HDInsight für alle HDInsight-Cluster.| Dienst | Alle| –
+| Aktualisierte Versionen von HDInsight aller HDInsight-Cluster | Dieses Version bietet aktualisierte Versionen von HDInsight für alle HDInsight-Cluster.| Dienst | Alle| N/V
 
 ## Hinweise für die HDInsight-Version vom 02.12.2015
 
@@ -322,7 +321,7 @@ Diese Version enthält die folgenden Updates.
 | Titel | Beschreibung | Betroffener Bereich (z. B. Dienst, Komponente oder SDK) | Clustertyp (z. B. Hadoop, HBase oder Storm) | JIRA (falls zutreffend) |
 |-------------------------------------------------|------------------------------------------------------|---------------------------------------------------------|-----------------------------------------------------|----------------------|
 | HDP-Standardversion in HDP 2.2 geändert | Die Standardversion für HDInsight-Windows-Cluster wird in HDP 2.2 geändert. HDInsight-Version 3.2 (HDP 2.2) ist seit Februar 2015 allgemein verfügbar. Bei dieser Änderung wird die Standardversion des Clusters nur umgekehrt, sofern keine explizite Auswahl getroffen wurde, als der Cluster mit dem Azure-Portal, über PowerShell-Cmdlets oder das SDK bereitgestellt wurde. | Dienst | Alle| N/V |
-|Änderungen am Namensformat des virtuellen Computers zur Bereitstellung mehrerer HDInsight-Komponenten auf Linux-Clustern in einem einzelnen Virtual Network | Die Unterstützung für die Bereitstellung mehrerer HDInsight-Linux-Cluster in einem einzelnen virtuellen Netzwerk wird in dieser Version hinzugefügt. Hierbei hat sich das Format der Namen von virtuellen Computern im Cluster von headnode*, workernode* und zookeepernode* in hn*, wn* bzw. zk* geändert. Es ist keine empfohlene Vorgehensweise, eine direkte Abhängigkeit vom Format der Namen virtueller Computer zu verwenden, da sie Änderungen unterliegt. Verwenden Sie „hostname -f“ auf dem lokalen Computer oder Ambari-APIs, um die Liste mit den Hosts zu bestimmen, sowie die Zuordnung von Komponenten zu Hosts. Weitere Informationen finden Sie unter [https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/hosts.md](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/hosts.md) und [https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/host-components.md](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/host-components.md). | Dienst | HDInsight-Cluster unter Linux | – |
+|Änderungen am Namensformat des virtuellen Computers zur Bereitstellung mehrerer HDInsight-Komponenten auf Linux-Clustern in einem einzelnen Virtual Network | Die Unterstützung für die Bereitstellung mehrerer HDInsight-Linux-Cluster in einem einzelnen virtuellen Netzwerk wird in dieser Version hinzugefügt. Hierbei hat sich das Format der Namen von virtuellen Computern im Cluster von headnode*, workernode* und zookeepernode* in hn*, wn* bzw. zk* geändert. Es ist keine empfohlene Vorgehensweise, eine direkte Abhängigkeit vom Format der Namen virtueller Computer zu verwenden, da sie Änderungen unterliegt. Verwenden Sie „hostname -f“ auf dem lokalen Computer oder Ambari-APIs, um die Liste mit den Hosts zu bestimmen, sowie die Zuordnung von Komponenten zu Hosts. Weitere Informationen finden Sie unter [https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/hosts.md](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/hosts.md) und [https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/host-components.md](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/host-components.md). | Dienst | HDInsight-Cluster unter Linux | N/V |
 | Konfigurationsänderungen | Für HDInsight 3.1-Cluster sind jetzt die folgenden Konfigurationen aktiviert: <ul><li>tez.yarn.ats.enabled und yarn.log.server.url. So können der Anwendungszeitachsenserver und der Protokollserver als Server für Protokolle dienen.</li></ul>Für HDInsight 3.2-Cluster wurden die folgenden Konfigurationen geändert: <ul><li>mapreduce.fileoutputcommitter.algorithm.version wurde auf 2 festgelegt. Dies ermöglicht die Verwendung der Version V2 von FileOutputCommitter.</li></ul> | Dienst | Alle | N/V |
 
 
@@ -340,7 +339,7 @@ Diese Version enthält die folgenden Updates.
 
 | Titel | Beschreibung | Betroffener Bereich (z. B. Dienst, Komponente oder SDK) | Clustertyp (z. B. Hadoop, HBase oder Storm) | JIRA (falls zutreffend) |
 |-------------------------------------------------|------------------------------------------------------|---------------------------------------------------------|-----------------------------------------------------|----------------------|
-| Aktualisierte Versionen von HDInsight aller HDInsight-Cluster | In dieser Version wurden HDInsight-Versionen aktualisiert | Dienst | Alle| – |
+| Aktualisierte Versionen von HDInsight aller HDInsight-Cluster | In dieser Version wurden HDInsight-Versionen aktualisiert | Dienst | Alle| N/V |
 
 ## Hinweise für die HDInsight-Version vom 31.07.2015
 
@@ -391,7 +390,7 @@ Diese Version enthält die folgenden Updates.
 
 | Titel | Beschreibung | Betroffener Bereich (z. B. Dienst, Komponente oder SDK) | Clustertyp (z. B. Hadoop, HBase oder Storm) | JIRA (falls zutreffend) |
 |-------------------------------------------------|------------------------------------------------------|---------------------------------------------------------|-----------------------------------------------------|----------------------|
-| Aktualisierte HDP-Versionen für HDInsight 3.2-Cluster | Mit dieser Version stellt HDInsight 3.2 HDP 2.2.6.1-0012 bereit. | Dienst | Alle | – |
+| Aktualisierte HDP-Versionen für HDInsight 3.2-Cluster | Mit dieser Version stellt HDInsight 3.2 HDP 2.2.6.1-0012 bereit. | Dienst | Alle | N/V |
 
 
 ## Hinweise für die HDInsight-Version vom 06.26.2015
@@ -479,7 +478,7 @@ Diese Version enthält die folgenden Updates.
 <td>Hortonworks-Versionshinweise für diese Version sind <a href="http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.1.15-Win/bk_releasenotes_HDP-Win/content/ch_relnotes-HDP-2.1.15.html" target="_blank">hier</a> verfügbar.</td>
 <td>HDP</td>
 <td>Alle</td>
-<td>–</td>
+<td>N/V</td>
 </tr>
 
 </table>
@@ -545,7 +544,7 @@ Diese Version enthält die folgenden Updates.
 <td>Diese Version behebt Fehler im Zusammenhang mit der Clusterbereitstellung.</td>
 <td>Dienst</td>
 <td>Alle Clustertypen</td>
-<td>–</td>
+<td>N/V</td>
 </tr>
 
 </table>
@@ -591,7 +590,7 @@ Diese Version enthält die folgenden Updates.
 <td>Dieses Update setzt Hbase- und Storm-Cluster zurück, sodass die gleichen Werte aus YARN-Konfigurationen wie für Hadoop-Cluster verwendet werden. Die Parität wird für alle Clustertypen zurückgesetzt.</td>
 <td>HDP</td>
 <td>Hadoop, Hbase, Storm</td>
-<td>–</td>
+<td>N/V</td>
 </tr>
 
 </table>
@@ -631,7 +630,7 @@ Diese Version enthält die folgenden Updates.
 <td>Der Treiber auf die von SQL Server unterstützte Version in sqljdbc_4.1.5605.100 aktualisiert.</td>
 <td>Metastore</td>
 <td>Alle</td>
-<td>–</td>
+<td>N/V</td>
 </tr>
 </table>
 
@@ -782,7 +781,7 @@ Diese Version enthält die folgenden Updates.
 <td>Programmgesteuerte Unterstützung für das Aktivieren oder Deaktivieren der RDP-Anmeldeinformationen in Windows-Clustern.</td>
 <td>SDK</td>
 <td>Alle</td>
-<td>–</td>
+<td>N/V</td>
 </tr>
 
 <tr>
@@ -838,7 +837,7 @@ Diese Version enthält die folgenden Updates.
 <td>HDInsight Version 3.2 wird aktualisiert, sodass die neueste Version von Azure Storage-SDK für Java verwendet wird. Diese enthält mehrere wichtige Fehlerbehebungen für die aktuelle Version 0.6.0.</td>
 <td>HDP</td>
 <td>Alle</td>
-<td>–</td>
+<td>N/V</td>
 </tr>
 
 <tr>
@@ -922,7 +921,7 @@ Diese Version enthält die folgenden Updates.
 <td>Hadoop 2.6/HDP2.2 ist in HDInsight 3.2-Clustern verfügbar. Es enthält wichtige Updates für alle Open Source-Komponenten. Weitere Informationen finden Sie unter „Neuerungen in HDInsight“ und <a href ="http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.2.0/HDP_2.2.0_Release_Notes_20141202_version/index.html" target="_blank">Versionshinweise zu HDP 2.2.0.0</a>.</td>
 <td>Open-Source-Software</td>
 <td>Alle</td>
-<td>–</td>
+<td>N/V</td>
 </tr>
 
 <tr>
@@ -946,7 +945,7 @@ Diese Version enthält die folgenden Updates.
 <td>Azure HDInsight ist für weitere VM-Typen und Größen verfügbar. HDInsight-Cluster können jetzt die für allgemeine Zwecke konzipierten Größen A2 bis A7, Knoten der D-Serie mit Solid-State-Laufwerken (SSDs) und mit um 60&#160;% schnelleren Prozessoren sowie die Größen A8 und A9 mit InfiniBand-Unterstützung für schnelle Netzwerkverbindungen nutzen.</td>
 <td>Dienst</td>
 <td>Alle</td>
-<td>–</td>
+<td>N/V</td>
 </tr>
 
 <tr>
@@ -954,7 +953,7 @@ Diese Version enthält die folgenden Updates.
 <td>Sie können die Anzahl der Datenknoten für einen ausgeführten HDInsight-Cluster ändern, ohne ihn zu löschen oder neu zu erstellen. Derzeit haben nur Cluster vom Typ Hadoop-Abfrage und Apache Storm diese Fähigkeit, aber Cluster vom Typ Apache HBase werden ebenfalls bald unterstützt werden. Weitere Informationen finden Sie unter „Verwalten von HDInsight-Clustern“.</td>
 <td>Dienst</td>
 <td>Hadoop, Storm</td>
-<td>–</td>
+<td>N/V</td>
 </tr>
 
 <tr>
@@ -962,7 +961,7 @@ Diese Version enthält die folgenden Updates.
 <td>In Visual Studio wurden die Tools für Apache Storm vervollständigt und die Tools für Apache Hive aktualisiert, um Anweisungsvervollständigung, lokale Überprüfung und verbesserte Unterstützung für das Remotedebuggen zu bieten. Weitere Informationen finden Sie unter „Erste Schritte mit den HDInsight Hadoop-Tools für Visual Studio“.</td>
 <td>Tools</td>
 <td>Hadoop</td>
-<td>–</td>
+<td>N/V</td>
 </tr>
 
 <tr>
@@ -1032,7 +1031,7 @@ Diese Version enthält die folgenden Updates.
 </td>
 <td>Open-Source-Software</td>
 <td>HBase</td>
-<td>–</td>
+<td>N/V</td>
 </tr>
 
 </table>
@@ -1113,7 +1112,7 @@ Apache Mahout ist eine Apache Hadoop-Bibliothek für maschinelles Lernen. Mahout
 <td><p>Diese Größenkonfiguration gilt für automatisch konvertierte Map-Verknüpfungen. Der Wert steht für die Summe der Größen von Tabellen, die in Hashmaps konvertiert werden können und in den Arbeitsspeicher passen. Bei einer früheren Version wurde der Wert vom Standardwert 10&#160;MB auf 128&#160;MB erhöht. Der neue Wert von 128&#160;MB führte jedoch zu Auftragsfehlern aufgrund unzureichenden Arbeitsspeichers. In dieser Version wird der Standardwert wieder auf 10&#160;MB zurückgesetzt. Kunden können je nach Ihren Abfragen und Tabellengröße diesen Wert weiterhin während der Clustererstellung überschreiben. Weitere Informationen zu dieser Einstellung und dazu, wie Sie sie überschreiben, finden Sie unter <a href="http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.0.0.2/ds_Hive/optimize-joins.html#JoinOptimization-OptimizeAutoJoinConversion" target="_blank">Optimize Auto Join Conversion (Optimieren der automatischen Verknüpfungskonvertierung)</a> in der Hortonworks-Dokumentation. </p></td>
 <td>Hive</td>
 <td>Hadoop, Hbase</td>
-<td>–</td>
+<td>N/V</td>
 </tr>
 
 </table>
@@ -1258,7 +1257,7 @@ Diese Version enthält die folgenden Aktualisierungen von Komponenten.
 <td>Fähigkeit zum programmgesteuerten Aufzählen von Anwendungen, die in Ihren Clustern ausgeführt wurden, und zum Herunterladen relevanter anwendungs- oder containerspezifischer Protokolle zum Beheben von Fehlern in problematischen Anwendungen.</td>
 <td>SDK</td>
 <td>Hadoop</td>
-<td>–</td>
+<td>N/V</td>
 </tr>
 
 <tr>
@@ -1690,3 +1689,4 @@ Versionshinweise zu den HDPs (Hortonworks Data Platforms), die von den Versionen
  
 
 <!---HONumber=AcomDC_0824_2016-->
+

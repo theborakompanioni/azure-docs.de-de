@@ -32,7 +32,7 @@ Diese Azure Resource Manager-Vorlagen für Service Bus und Event Hubs sind zum D
 - [Create a Service Bus namespace and a queue using an Azure Resource Manager template (Erstellen eines Service Bus-Namespace und einer Warteschlange mit einer Azure Resource Manager-Vorlage)](service-bus-resource-manager-namespace-queue.md)
 - [Create a Service Bus namespace with topic and subscription using an Azure Resource Manager template (Erstellen eines Service Bus-Namespace mit Thema und Abonnement mit einer Azure Resource Manager-Vorlage)](service-bus-resource-manager-namespace-topic.md)
 - [Create a Service Bus authorization rule for namespace and queue using an Azure Resource Manager template (Erstellen einer Service Bus-Autorisierungsregel für Namespace und Warteschlange mit einer Azure Resource Manager-Vorlage)](service-bus-resource-manager-namespace-auth-rule.md)
-- [Create a Service Bus namespace with an Event Hub and consumer group (Erstellen eines Service Bus-Namespace mit einem Event Hub und einer Consumergruppe)](service-bus-resource-manager-namespace-event-hub.md)
+- [Create an Event Hubs namespace with an Event Hub and consumer group (Erstellen eines Event Hubs-Namespace mit einem Event Hub und einer Consumergruppe)](../event-hubs/event-hubs-resource-manager-namespace-event-hub.md)
 
 ## Bereitstellen mit PowerShell
 
@@ -154,13 +154,13 @@ Führen Sie an einer PowerShell-Eingabeaufforderung den folgenden Befehl aus:
 Login-AzureRmAccount
 ```
 
-Sie werden aufgefordert, sich bei Ihrem Azure-Konto anzumelden. Führen Sie nach der Anmeldung den folgenden Befehl aus, um Ihre verfügbaren Abonnements anzuzeigen:
+Sie werden aufgefordert, sich bei Ihrem Azure-Konto anzumelden. Führen Sie nach der Anmeldung den folgenden Befehl aus, um Ihre verfügbaren Abonnements anzuzeigen.
 
 ```
 Get-AzureRMSubscription
 ```
 
-Dieser Befehl gibt eine Liste der verfügbaren Azure-Abonnements zurück. Wählen Sie ein Abonnement für die aktuelle Sitzung aus, indem Sie folgenden Befehl ausführen. Ersetzen Sie `<YourSubscriptionId>` durch die GUID des Azure-Abonnements, das Sie verwenden möchten:
+Dieser Befehl gibt eine Liste der verfügbaren Azure-Abonnements zurück. Wählen Sie ein Abonnement für die aktuelle Sitzung aus, indem Sie folgenden Befehl ausführen. Ersetzen Sie `<YourSubscriptionId>` durch die GUID des Azure-Abonnements, das Sie verwenden möchten.
 
 ```
 Set-AzureRmContext -SubscriptionID <YourSubscriptionId>
@@ -168,7 +168,7 @@ Set-AzureRmContext -SubscriptionID <YourSubscriptionId>
 
 ### Festlegen der Ressourcengruppe
 
-Wenn noch keine Ressourcengruppe vorhanden ist, erstellen Sie mit dem Befehl **New-AzureRmResourceGroup** eine neue Ressourcengruppe. Geben Sie den Namen der gewünschten Ressourcengruppe und den gewünschten Speicherort ein. Zum Beispiel:
+Wenn noch keine Ressourcengruppe vorhanden ist, erstellen Sie mit dem Befehl **New-AzureRmResourceGroup** eine neue Ressourcengruppe. Geben Sie den Namen der gewünschten Ressourcengruppe und den gewünschten Speicherort ein. Beispiel:
 
 ```
 New-AzureRmResourceGroup -Name MyDemoRG -Location "West US"
@@ -253,4 +253,4 @@ Sie haben nun den grundlegenden Workflow und die grundlegenden Befehle für die 
 [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen]: ../resource-group-template-deploy.md
 [Katalog mit Azure-Schnellstartvorlagen]: https://azure.microsoft.com/documentation/templates/?term=service+bus
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0831_2016-->

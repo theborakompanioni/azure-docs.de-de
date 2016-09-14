@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/30/2016"
+	ms.date="08/30/2016"
 	ms.author="ashwink"/>
 
 # Azure Insights – PowerShell-Schnellstartbeispiele
@@ -25,7 +25,7 @@ Sofern dies noch nicht geschehen ist, richten Sie PowerShell auf Ihrem Computer 
 
 ## Beispiele in diesem Artikel
 
-Mit den Beispielen in diesem Artikel wird veranschaulicht, wie Sie Azure Insights-Cmdlets verwenden können. Die vollständige Liste der Azure Insights-Cmdlets (Überwachung) finden Sie unter [Azure Insights-Cmdlets](https://msdn.microsoft.com/library/mt282452.aspx).
+Mit den Beispielen in diesem Artikel wird veranschaulicht, wie Sie Azure Insights-Cmdlets verwenden können. Die vollständige Liste der Azure Insights-PowerShell-Cmdlets (Überwachung) finden Sie unter [Azure Insights-Cmdlets](https://msdn.microsoft.com/library/azure/mt282452#40v=azure.200#41.aspx).
 
 
 ## Anmelden und Verwenden von Abonnements
@@ -384,4 +384,4 @@ Aktivieren der Diagnoseeinstellung mit Aufbewahrung für eine bestimmte Protokol
 Set-AzureRmDiagnosticSetting -ResourceId /subscriptions/s1/resourceGroups/insights-integration/providers/Microsoft.Network/networkSecurityGroups/viruela1 -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/sakteststorage -Categories NetworkSecurityGroupEvent -Enable $true -RetentionEnabled $true -RetentionInDays 90
 ```
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0831_2016-->

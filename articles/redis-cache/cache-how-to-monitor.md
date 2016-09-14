@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/15/2016" 
+	ms.date="08/30/2016" 
 	ms.author="sdanie"/>
 
 # Überwachen von Azure Redis Cache
@@ -24,7 +24,7 @@ Wenn die Cachediagnose aktiviert ist, werden ca. alle 30 Sekunden Metriken für
 
 Cachemetriken werden mithilfe des Redis-Befehls [INFO](http://redis.io/commands/info) gesammelt. Weitere Informationen zu den verschiedenen für die Cachemetriken verwendeten INFO-Werte finden Sie unter [Verfügbare Metriken und Berichtsintervalle](#available-metrics-and-reporting-intervals).
 
-Zum Anzeigen von Cachemetriken klicken Sie auf [Durchsuchen](cache-configure.md) im [Azure-Portal](https://portal.azure.com), um zu Ihrer Cache-Instanz zu navigieren. Sie können auf dem Blatt **Redis-Metriken** auf Metriken für Azure Redis Cache-Instanzen zugreifen.
+Zum Anzeigen von Cachemetriken klicken Sie auf [Durchsuchen](cache-configure.md#configure-redis-cache-settings) im [Azure-Portal](https://portal.azure.com), um zu Ihrer Cache-Instanz zu navigieren. Sie können auf dem Blatt **Redis-Metriken** auf Metriken für Azure Redis Cache-Instanzen zugreifen.
 
 ![Redis-Metriken][redis-cache-redis-metrics-blade]
 
@@ -56,9 +56,9 @@ Wenn die Diagnoseeinstellungen konfiguriert sind, klicken Sie auf **Speichern**,
 
 >[AZURE.IMPORTANT] Für Caches innerhalb derselben Region und desselben Abonnements gelten die gleichen Speichereinstellungen für Diagnosedaten. Wenn die Konfiguration geändert wird (durch Aktivieren/Deaktivieren der Diagnose oder Ändern des Speicherkontos), gilt diese Änderung für alle Caches dieses Abonnements in dieser Region.
 
-Um die gespeicherten Metriken anzuzeigen, untersuchen Sie die Tabellen in Ihrem Speicherkonto, deren Namen mit `WADMetrics` beginnen. Weitere Informationen zum Zugriff auf die gespeicherten Metriken außerhalb des Azure-Portals finden Sie im Beispiel [Access Redis Cache Monitoring data](https://github.com/rustd/RedisSamples/tree/master/CustomMonitoring) (in englischer Sprache).
+Um die gespeicherten Metriken anzuzeigen, untersuchen Sie die Tabellen in Ihrem Speicherkonto, deren Namen mit `WADMetrics` beginnen. Weitere Informationen zum Zugriff auf die gespeicherten Metriken außerhalb des Azure-Portals finden Sie im Beispiel [Zugriff auf Redis Cache-Überwachungsdaten](https://github.com/rustd/RedisSamples/tree/master/CustomMonitoring).
 
->[AZURE.NOTE] Im Azure-Portal werden nur Metriken angezeigt, die im ausgewählten Speicherkonto gespeichert sind. Wenn Sie das Speicherkonto ändern, sind die Daten im zuvor konfigurierten Speicherkonto weiterhin verfügbar, werden im Azure-Portal jedoch nicht angezeigt.
+>[AZURE.NOTE] Im Azure-Portal werden nur Metriken angezeigt, die im ausgewählten Speicherkonto gespeichert sind. Wenn Sie das Speicherkonto ändern, sind die Daten im zuvor konfigurierten Speicherkonto weiterhin zum Download verfügbar, werden im Azure-Portal jedoch nicht angezeigt.
 
 ## Verfügbare Metriken und Berichtsintervalle
 
@@ -138,23 +138,23 @@ Premium-Caches, für die [Clustering](cache-how-to-premium-clustering.md) aktivi
 
 In jedem Überwachungsdiagramm werden die Metriken auf oberster Ebene für den Cache sowie die Metriken für jeden Shard im Cache angezeigt.
 
-![Überwachen][redis-cache-premium-monitor]
+![Monitor][redis-cache-premium-monitor]
 
 Bei Bewegen der Maus über die Datenpunkte werden die Details für den jeweiligen Zeitpunkt angezeigt.
 
-![Überwachen][redis-cache-premium-point-summary]
+![Monitor][redis-cache-premium-point-summary]
 
 Größere Werte sind in der Regel die Aggregatwerte für den Cache, während die kleineren Werte die einzelnen Metriken für den Shard darstellen. Beachten Sie, dass es bei diesem Beispiel drei Shards gibt und dass die Cachetreffer gleichmäßig auf die Shards verteilt sind.
 
-![Überwachen][redis-cache-premium-point-shard]
+![Monitor][redis-cache-premium-point-shard]
 
 Zum Anzeigen weiterer Details klicken Sie auf das Diagramm, um auf dem Blatt **Metrik** eine erweiterte Ansicht einzublenden.
 
-![Überwachen][redis-cache-premium-chart-detail]
+![Monitor][redis-cache-premium-chart-detail]
 
 Standardmäßig zeigt jedes Diagramm den Cacheleistungsindikator der obersten Ebene sowie die Leistungsindikatoren für die einzelnen Shards. Sie können diese auf dem Blatt **Diagramm bearbeiten** anpassen.
 
-![Überwachen][redis-cache-premium-edit]
+![Monitor][redis-cache-premium-edit]
 
 Weitere Informationen zu den verfügbaren Leistungsindikatoren finden Sie unter [Verfügbare Metriken und Berichtsintervalle](#available-metrics-and-reporting-intervals).
 
@@ -296,4 +296,4 @@ Informationen zum Anzeigen der Metriken und zum Anpassen der einzelnen Diagramme
 
 [redis-cache-redis-metrics-blade]: ./media/cache-how-to-monitor/redis-cache-redis-metrics-blade.png
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0831_2016-->

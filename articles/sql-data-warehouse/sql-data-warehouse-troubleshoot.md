@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="08/16/2016"
+   ms.date="08/30/2016"
    ms.author="sonyama;barbkess"/>
 
 # Problembehandlung bei Azure SQL Data Warehouse
@@ -24,9 +24,11 @@ In diesem Thema sind einige häufige Fragen zur Problembehandlung aufgeführt, d
 
 | Problem | Lösung |
 | :----------------------------------| :---------------------------------------------- |
-| CTAIP-Fehler | Dieser Fehler kann auftreten, wenn zwar eine Anmeldung für die SQL Server-Masterdatenbank erstellt wurde, dies jedoch in der SQL Data Warehouse-Datenbank unterlassen wurde. Lesen Sie den [Übersichtsartikel zur Sicherheit][], wenn dieser Fehler auftritt. In diesem Artikel wird erläutert, wie Sie zunächst eine Anmeldung für die Masterdatenbank erstellen und anschließend in der SQL Data Warehouse-Datenbank einen Benutzer erstellen.|
+| Fehler bei der Anmeldung für den Benutzer 'NT-AUTORITÄT\\ANONYME ANMELDUNG'. (Microsoft SQL Server, Fehler: 18456) | Dieser Fehler tritt auf, wenn ein AAD-Benutzer versucht, eine Verbindung mit der Masterdatenbank herzustellen, aber nicht über einen Masterdatenbank-Benutzer verfügt. Zum Beheben dieses Problems geben Sie entweder das SQL Data Warehouse an, mit dem Sie gerade eine Verbindung herstellen möchten, oder fügen Sie den Benutzer der Masterdatenbank hinzu. Weitere Informationen finden Sie im Artikel [Sichern einer Datenbank in SQL Data Warehouse][].|
+|Der Serverprinzipal „MeinBenutzername“ kann unter dem aktuellen Sicherheitskontext nicht auf die Datenbank „Master“ zugreifen. Standardbenutzerdatenbank kann nicht geöffnet werden. Anmeldefehler. Fehler bei der Anmeldung für den Benutzer 'MeinBenutzername'. (Microsoft SQL Server, Fehler: 916) | Dieser Fehler tritt auf, wenn ein AAD-Benutzer versucht, eine Verbindung mit der Masterdatenbank herzustellen, aber nicht über einen Masterdatenbank-Benutzer verfügt. Zum Beheben dieses Problems geben Sie entweder das SQL Data Warehouse an, mit dem Sie gerade eine Verbindung herstellen möchten, oder fügen Sie den Benutzer der Masterdatenbank hinzu. Weitere Informationen finden Sie im Artikel [Sichern einer Datenbank in SQL Data Warehouse][].|
+| CTAIP-Fehler | Dieser Fehler kann auftreten, wenn zwar eine Anmeldung für die SQL Server-Masterdatenbank erstellt wurde, dies jedoch in der SQL Data Warehouse-Datenbank unterlassen wurde. Lesen Sie den [Übersichtsartikel zur Sicherheit][], wenn dieser Fehler auftritt. In diesem Artikel wird erläutert, wie Sie zunächst eine Anmeldung und einen Benutzer für die Masterdatenbank erstellen und anschließend in der SQL Data Warehouse-Datenbank einen Benutzer erstellen.|
 | Von der Firewall blockiert |Azure SQL-Datenbanken sind durch Firewalls auf Server- und Datenbankebene geschützt, um sicherzustellen, dass nur bekannte IP-Adressen Zugriff auf eine Datenbank haben. Firewalls sind standardmäßig sicher. Sie müssen daher eine IP-Adresse oder einen Adressbereich explizit aktivieren, bevor Sie eine Verbindung herstellen können. Führen Sie die Schritte im Abschnitt [Erstellen einer neuen Azure SQL-Firewall auf Serverebene][] des Artikels [Erstellen einer Azure SQL Data Warehouse-Instanz][] aus, um Ihre Firewall für den Zugriff zu konfigurieren.|
-| Verbindung mit Tool oder Treiber kann nicht hergestellt werden | Für SQL Data Warehouse wird empfohlen, [Visual Studio 2013 oder 2015][] zum Abfragen von Daten zu verwenden. Für die Clientkonnektivität wird [SQL Server Native Client 10/11 (ODBC)][] empfohlen.|
+| Verbindung mit Tool oder Treiber kann nicht hergestellt werden | Für SQL Data Warehouse wird empfohlen, [SSMS][], [SSDT für Visual Studio 2015][] oder [sqlcmd][] zum Abfragen von Daten zu verwenden. Weitere Informationen zu Treibern und zum Herstellen einer Verbindung mit SQL Data Warehouse finden Sie in den Artikeln [Treiber für Azure SQL Data Warehouse][] und [Verbinden mit Azure SQL Data Warehouse][].|
 
 
 ## Tools
@@ -40,11 +42,11 @@ In diesem Thema sind einige häufige Fragen zur Problembehandlung aufgeführt, d
 | Problem | Lösung |
 | :----------------------------------| :---------------------------------------------- |
 | Behandlung von Problemen mit der Abfrageleistung | Wenn Sie die Problembehandlung für eine bestimmte Abfrage durchführen möchten, sollten Sie sich zunächst über das [Untersuchen der Ausführung von Abfragen][] informieren.|
-| Schlechte Abfrageleistung und Planung ist häufig das Ergebnis fehlender Statistiken | Die häufigste Ursache für schlechte Leistung ist das Fehlen von Statistiken für Ihre Tabellen. Ausführliche Informationen dazu, wie Sie Statistiken erstellen und warum sie für die Leistung wichtig sind, finden Sie unter [Managing statistics on tables in SQL Data Warehouse][Statistics] (Verwalten von Statistiken für Tabellen in SQL Data Warehouse).|
+| Schlechte Abfrageleistung und Planung ist häufig das Ergebnis fehlender Statistiken | Die häufigste Ursache für schlechte Leistung ist das Fehlen von Statistiken für Ihre Tabellen. Ausführliche Informationen dazu, wie Sie Statistiken erstellen und warum sie für die Leistung wichtig sind, finden Sie unter [Managing statistics on tables in SQL Data Warehouse][Statistics] \(Verwalten von Statistiken für Tabellen in SQL Data Warehouse).|
 | Geringe Parallelität/Abfragen in der Warteschlange | Das Verständnis der [Workloadverwaltung][] ist wichtig, damit Sie wissen, wie Sie die Speicherbelegung und die Parallelität abwägen sollen.|
 | Implementieren von bewährten Methoden | Wenn Sie die Leistung bei Ihren Abfragen verbessern möchten, ist der Artikel [Bewährte Methoden für SQL Data Warehouse][] ein idealer Ausgangspunkt.|
 | Verbessern der Leistung mit der Skalierung | Mitunter besteht der Weg zum Verbessern der Leistung einfach darin, den Abfragen mehr Computeleistung hinzuzufügen, indem Sie Ihr [SQL Data Warehouse skalieren][].|
-| Schlechte Leistung aufgrund von schlechter Indexqualität | Es kann vorkommen, dass sich Abfragen verlangsamen, weil eine [schlechte Qualität der Columnstore-Indizes][] vorliegt. Weitere Informationen finden Sie unter [Rebuild indexes to improve segment quality][] (Neuerstellen von Indizes zum Verbessern der Segmentqualität).|
+| Schlechte Leistung aufgrund von schlechter Indexqualität | Es kann vorkommen, dass sich Abfragen verlangsamen, weil eine [schlechte Qualität der Columnstore-Indizes][] vorliegt. Weitere Informationen finden Sie unter [Rebuild indexes to improve segment quality][] \(Neuerstellen von Indizes zum Verbessern der Segmentqualität).|
 
 ## Systemverwaltung
 
@@ -72,7 +74,6 @@ In diesem Thema sind einige häufige Fragen zur Problembehandlung aufgeführt, d
 | MERGE-Anweisung wird nicht unterstützt | Siehe [MERGE-Problemumgehungen][].|
 | Einschränkungen für gespeicherte Prozeduren | In „Gespeicherte Prozeduren in SQL Data Warehouse“ werden unter [Einschränkungen][] einige Einschränkungen für gespeicherte Prozeduren beschrieben.|
 | UDFs unterstützen keine SELECT-Anweisungen | Dies ist eine aktuelle Beschränkung unserer benutzerdefinierten Funktionen (User-Defined Functions, UDFs). Informationen zur unterstützten Syntax finden Sie unter [CREATE FUNCTION][]. |
-'<--LocComment: Seite "Einschränkungen" nicht gefunden. Ich habe versucht, den Link in den Artikelverweisen zu reparieren. -->'
 
 ## Nächste Schritte
 
@@ -90,7 +91,12 @@ Wenn Sie bisher keine Lösung für Ihr Problem gefunden haben, können Sie folge
 <!--Image references-->
 
 <!--Article references-->
+[Sichern einer Datenbank in SQL Data Warehouse]: ./sql-data-warehouse-overview-manage-security.md
 [Übersichtsartikel zur Sicherheit]: ./sql-data-warehouse-overview-manage-security.md
+[SSMS]: https://msdn.microsoft.com/library/mt238290.aspx
+[SSDT für Visual Studio 2015]: ./sql-data-warehouse-install-visual-studio.md
+[Treiber für Azure SQL Data Warehouse]: ./sql-data-warehouse-connection-strings.md
+[Verbinden mit Azure SQL Data Warehouse]: ./sql-data-warehouse-connect-overview.md
 [Erstellen eines Supporttickets]: ./sql-data-warehouse-get-started-create-support-ticket.md
 [SQL Data Warehouse skalieren]: ./sql-data-warehouse-manage-compute-overview.md
 [DWU]: ./sql-data-warehouse-overview-what-is.md#data-warehouse-units
@@ -98,7 +104,6 @@ Wenn Sie bisher keine Lösung für Ihr Problem gefunden haben, können Sie folge
 [Untersuchen der Ausführung von Abfragen]: ./sql-data-warehouse-manage-monitor.md
 [Erstellen einer Azure SQL Data Warehouse-Instanz]: ./sql-data-warehouse-get-started-provision.md
 [Erstellen einer neuen Azure SQL-Firewall auf Serverebene]: ./sql-data-warehouse-get-started-provision.md#create-a-new-azure-sql-server-level-firewall
-[Visual Studio 2013 oder 2015]: ./sql-data-warehouse-query-visual-studio.md
 [Bewährte Methoden für SQL Data Warehouse]: ./sql-data-warehouse-best-practices.md
 [Tabellengrößen]: ./sql-data-warehouse-tables-overview.md#table-size-queries
 [Nicht unterstützte Tabellenfunktionen]: ./sql-data-warehouse-tables-overview.md#unsupported-table-features
@@ -117,14 +122,14 @@ Wenn Sie bisher keine Lösung für Ihr Problem gefunden haben, können Sie folge
 [UPDATE-Problemumgehungen]: ./sql-data-warehouse-develop-ctas.md#ansi-join-replacement-for-update-statements
 [DELETE-Problemumgehungen]: ./sql-data-warehouse-develop-ctas.md#ansi-join-replacement-for-delete-statements
 [MERGE-Problemumgehungen]: ./sql-data-warehouse-develop-ctas.md#replace-merge-statements
-[Einschränkungen]: /sql-data-warehouse-develop-stored-procedures.md#limitations
+[Einschränkungen]: ./sql-data-warehouse-develop-stored-procedures.md#limitations
 [Authentifizierung in Azure SQL Data Warehouse]: ./sql-data-warehouse-authentication.md
 [Umgehen der UTF-8-Anforderung von PolyBase]: ./sql-data-warehouse-load-polybase-guide.md#working-around-the-polybase-utf-8-requirement
 
 <!--MSDN references-->
-[SQL Server Native Client 10/11 (ODBC)]: https://msdn.microsoft.com/library/ms131415.aspx
 [sys.database\_principals]: https://msdn.microsoft.com/library/ms187328.aspx
 [CREATE FUNCTION]: https://msdn.microsoft.com/library/mt203952.aspx
+[sqlcmd]: https://azure.microsoft.com/documentation/articles/sql-data-warehouse-get-started-connect-sqlcmd/
 
 <!--Other Web references-->
 [Blogs]: https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/
@@ -135,4 +140,4 @@ Wenn Sie bisher keine Lösung für Ihr Problem gefunden haben, können Sie folge
 [Twitter]: https://twitter.com/hashtag/SQLDW
 [Videos]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0831_2016-->

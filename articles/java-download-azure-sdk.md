@@ -32,7 +32,7 @@ Nachdem Sie die ZIP-Datei auf Ihren Computer heruntergeladen haben, extrahieren 
 
 * Konfigurieren Sie den **Build Path** für das Java-Projekt in Eclipse, sodass er den Pfad der JAR-Dateien enthält.
 
-Ausführliche Informationen zum Einrichten des Buildpfads in Eclipse finden Sie im Artikel [Java Build Path] (in englischer Sprache) auf der Eclipse-Website.
+Ausführliche Informationen zum Einrichten des Buildpfads in Eclipse finden Sie im Artikel [Java Build Path] \(in englischer Sprache) auf der Eclipse-Website.
 
 **Hinweis:** Informationen zur Lizenz und weitere Informationen finden Sie in den Dateien „license.txt“ und „ThirdPartyNotices.txt“ in der ZIP-Datei.
 
@@ -40,7 +40,7 @@ Ausführliche Informationen zum Einrichten des Buildpfads in Eclipse finden Sie 
 
 ### Schritt 1: Einrichten des Projekts für die Verwendung von Maven zum Erstellen
 
-Informationen zum Erstellen von Maven-Projekten in Eclipse, die die Azure-Bibliotheken für Java verwenden, finden Sie im Artikel [Getting Started with Azure Management Libraries for Java][maven-getting-started] (in englischer Sprache).
+Informationen zum Erstellen von Maven-Projekten in Eclipse, die die Azure-Bibliotheken für Java verwenden, finden Sie im Artikel [Getting Started with Azure Management Libraries for Java][maven-getting-started] \(in englischer Sprache).
 
 ### Schritt 2: Konfigurieren Ihrer Maven-Einstellungen mit den erforderlichen Abhängigkeiten
 
@@ -96,7 +96,7 @@ Nachdem das Projekt für die Verwendung von Maven für die Erstellung konfigurie
 
 ## Installieren des Azure-Toolkits für Eclipse
 
-Dieser Abschnitt enthält grundlegende Informationen zum Installieren des Azure-Toolkits für Eclipse. Weitere Informationen finden Sie unter [Installing the Azure Toolkit for Eclipse] (in englischer Sprache).
+Dieser Abschnitt enthält grundlegende Informationen zum Installieren des Azure-Toolkits für Eclipse. Weitere Informationen finden Sie unter [Installing the Azure Toolkit for Eclipse] \(in englischer Sprache).
 
 ### Voraussetzungen
 
@@ -120,7 +120,7 @@ Im Azure-Toolkit für Eclipse wird die aktuelle Version des Azure SDK verwendet.
 
 [Creating a Hello World Application for Azure in Eclipse (in englischer Sprache)]
 
-Weitere Informationen zum Verwenden von Azure mit Java finden Sie im [Azure Java Developer Center] (in englischer Sprache).
+Weitere Informationen zum Verwenden von Azure mit Java finden Sie im [Azure Java Developer Center] \(in englischer Sprache).
 
 <!-- URL List -->
 

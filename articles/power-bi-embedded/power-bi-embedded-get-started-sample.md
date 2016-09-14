@@ -36,17 +36,17 @@ Richten wir zunächst Schritt für Schritt die Visual Studio-Entwicklungsumgebun
 
 1. Laden Sie das Beispiel [Power BI Embedded – Integrate a report into a web app](http://go.microsoft.com/fwlink/?LinkId=761493) (Integrieren eines Berichts in eine Web-App) von GitHub herunter, und extrahieren Sie die Datei.
 
-2. Öffnen Sie **PowerBI embedded.sln** in Visual Studio.
+2. Öffnen Sie **PowerBI embedded.sln** in Visual Studio. Möglicherweise müssen Sie den Befehl **Update-Package** in der NuGet-Paket-Manager-Konsole ausführen, um die Pakete zu aktualisieren, die in dieser Lösung verwendet werden.
 
 3. Erstellen Sie die Projektmappe.
 
 4. Führen Sie die Konsolen-App **ProvisionSample** aus. In der Beispiel-App-Konsole stellen Sie einen Arbeitsbereich bereit und importieren eine PBIX-Datei.
 
-5. Wählen Sie zum Bereitstellen eines neuen Arbeitsbereichs die fünfte Option (**Provision a new workspace in an existing workspace collection**; Bereitstellen eines neuen Arbeitsbereichs in einer vorhandenen Arbeitsbereichssammlung) aus.
+5. Wählen Sie zum Bereitstellen eines neuen **Arbeitsbereichs** die fünfte Option (**Provision a new workspace in an existing workspace collection** (Bereitstellen eines neuen Arbeitsbereichs in einer vorhandenen Arbeitsbereichssammlung)) aus.
 
     ![](media\powerbi-embedded-get-started-sample\console-option-5.png)
 
-6. Geben Sie den Namen Ihrer **Arbeitsbereichssammlung** und den **Zugriffsschlüssel** ein. Sie können diese im **Azure-Portal** abrufen. Weitere Informationen zum Abrufen Ihres Zugriffsschlüssels finden Sie unter [Anzeigen von Power BI-API-Zugriffsschlüsseln](power-bi-embedded-get-started-sample.md#view-access-keys) in „Erste Schritte mit Microsoft Power BI Embedded“.
+6. Geben Sie den Namen Ihrer **Arbeitsbereichssammlung** und den **Zugriffsschlüssel** ein. Sie finden diese Angaben im **Azure-Portal**. Weitere Informationen zum Abrufen Ihres **Zugriffsschlüssels** finden Sie unter [Anzeigen von Power BI-API-Zugriffsschlüsseln](power-bi-embedded-get-started-sample.md#view-access-keys) in „Erste Schritte mit Microsoft Power BI Embedded“.
 
     ![](media\powerbi-embedded-get-started-sample\azure-portal.png)
 
@@ -74,7 +74,7 @@ Jetzt haben Sie einen Power BI-PBIX-Bericht in Ihren **Arbeitsbereich** importie
 Das Beispiel für die Web-App ist ein Beispieldashboard, das die in den **Arbeitsbereich** importierten Berichte rendert. So konfigurieren Sie das Web-App-Beispiel
 
 1. Klicken Sie in der Visual Studio-Projektmappe **PowerBI-embedded** mit der rechten Maustaste auf die Webanwendung **EmbedSample**, und wählen Sie **Als Startprojekt festlegen**.
-2. Bearbeiten Sie in **web.config** in der Webanwendung **EmbedSample** die App-Einstellungen (**appSettings**): **AccessKey**, **WorkspaceCollection** und **WorkspaceId**.
+2. Bearbeiten Sie in **web.config** in der Webanwendung **EmbedSample** die **appSettings**: **AccessKey**, **WorkspaceCollection**-Name und **WorkspaceId**.
 
     ```
     <appSettings>
@@ -86,7 +86,7 @@ Das Beispiel für die Web-App ist ein Beispieldashboard, das die in den **Arbeit
     ```
 3. Führen Sie die Webanwendung **EmbedSample** aus.
 
-Nach dem Ausführen der Webanwendung **EmbedSample** enthält der Navigationsbereich auf der linken Seite ein Menü namens **Reports** (Berichte). Erweitern Sie zum Anzeigen des importierten Berichts den Eintrag **Reports** (Berichte), und klicken Sie auf einen Bericht. Wenn Sie das [PBIX-Beispiel „Retail Analysis“](http://go.microsoft.com/fwlink/?LinkID=780547) importiert haben, sieht die Beispiel-Web-App wie folgt aus:
+Nach dem Ausführen der Webanwendung **EmbedSample** enthält der Navigationsbereich auf der linken Seite ein Menü **Berichte**. Erweitern Sie zum Anzeigen des importierten Berichts den Eintrag **Berichte**, und klicken Sie auf einen Bericht. Wenn Sie das [PBIX-Beispiel „Retail Analysis“](http://go.microsoft.com/fwlink/?LinkID=780547) importiert haben, sieht die Beispiel-Web-App wie folgt aus:
 
 ![](media\powerbi-embedded-get-started-sample\power-bi-embedded-sample-left-nav.png)
 
@@ -98,7 +98,7 @@ Nachdem Sie auf einen Bericht geklickt haben, sieht die Webanwendung **EmbedSamp
 ## Untersuchen des Beispielcodes
 Bei dem Beispiel für **Microsoft Power BI Embedded** handelt es sich um ein Beispiel für eine Dashboard-Web-App, das zeigt, wie Sie **Power BI-Berichte** in Ihre App integrieren. Dabei werden die bewährten Methoden anhand eines MVC-Entwurfsmusters (Model-View-Controller) veranschaulicht. In diesem Abschnitt werden Teile des Beispielcodes hervorgehoben, die Sie innerhalb der Web-App-Projektmappe **PowerBI-embedded** untersuchen können. Das MVC-Muster (Model-View-Controller) trennt die Modellierung der Domäne, die Präsentation und die Aktionen basierend auf der Benutzereingabe in drei separate Klassen: „Model“, „View“ und „Control“. Weitere Informationen zu MVC finden Sie unter [Learn About ASP.NET](http://www.asp.net/mvc) (Informationen zu ASP.NET).
 
-Der Beispielcode für **Microsoft Power BI Embedded** ist wie folgt unterteilt: Jeder Abschnitt enthält den Dateinamen in der Projektmappe „PowerBI-embedded.sln“, damit Sie den Code im Beispiel leicht finden können.
+Der Beispielcode für **Microsoft Power BI Embedded** ist wie folgt unterteilt. Jeder Abschnitt enthält den Dateinamen in der Projektmappe „PowerBI-embedded.sln“, damit Sie den Code im Beispiel leicht finden können.
 
 > [AZURE.NOTE] Dieser Abschnitt ist eine Zusammenfassung des Beispielcodes, die zeigt, wie der Code geschrieben wurde. Laden Sie die Projektmappe „PowerBI-embedded.sln“ in Visual Studio, um das vollständige Beispiel anzuzeigen.
 
@@ -245,4 +245,4 @@ $filter={tableName/fieldName}%20eq%20'{fieldValue}'
 - [Häufige Microsoft Power BI Embedded-Szenarios](power-bi-embedded-scenarios.md)
 - [Authentifizieren und Autorisieren in Power BI Embedded](power-bi-embedded-app-token-flow.md)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0831_2016-->

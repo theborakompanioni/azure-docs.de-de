@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Überwachen von Anforderungen, Nutzung und Speicher in DocumentDB | Microsoft Azure"
-	description="Erfahren Sie, wie Sie Ihr DocumentDB-Konto anhand von Leistungsmetriken (z. B. Anforderungen und Serverfehler) und Nutzungsmetriken (z. B. Speicherbelegung) überwachen."
+	description="Erfahren Sie, wie Sie Ihr DocumentDB-Konto anhand von Leistungsmetriken (z. B. Anforderungen und Serverfehler) und Nutzungsmetriken (z. B. Speicherbelegung) überwachen."
 	services="documentdb"
 	documentationCenter=""
 	authors="mimig1"
@@ -13,26 +13,25 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/10/2016"
+	ms.date="08/25/2016"
 	ms.author="mimig"/>
 
 # Überwachen von Anforderungen, Nutzung und Speicher in DocumentDB
 
-Sie können Ihre Azure DocumentDB-Konten im [Microsoft Azure-Portal](https://portal.azure.com/) überwachen. Für jedes DocumentDB-Konto sind sowohl Leistungsmetriken (wie Anforderungen und Serverfehler) als auch Nutzungsmetriken (wie belegter Speicher) verfügbar.
+Sie können Ihre Azure DocumentDB-Konten im [Azure-Portal](https://portal.azure.com/) überwachen. Für jedes DocumentDB-Konto sind sowohl Leistungsmetriken (wie Anforderungen und Serverfehler) als auch Nutzungsmetriken (wie belegter Speicher) verfügbar.
 
 ## Anzeigen von Leistungsmetriken im Portal 
-1.	Öffnen Sie das [Azure-Portal](https://portal.azure.com/) in einem neuen Fenster, und klicken Sie nacheinander auf **Durchsuchen** und **DocumentDB-Konten**. Klicken Sie anschließend auf den Namen des DocumentDB-Kontos, dessen Leistungsmetriken Sie anzeigen möchten.
-2.	Innerhalb des Bereichs **Überwachung** sehen Sie standardmäßig Folgendes:
+1.	Öffnen Sie das [Azure-Portal](https://portal.azure.com/) in einem neuen Fenster, und klicken Sie nacheinander auf **Weitere Dienste** und **DocumentDB (NoSQL)**. Klicken Sie anschließend auf den Namen des DocumentDB-Kontos, dessen Leistungsmetriken Sie anzeigen möchten.
+2.	Der Fokus **Überwachung** zeigt standardmäßig folgende Kacheln an:
 	*	Gesamtanforderungen des aktuellen Tags.
-	*	Gesamtanzahl der [Anforderungseinheiten](documentdb-request-units.md) (Request Units, RUs), die am aktuellen Tag verwendet wurden.
 	*	Verwendeter Speicher.
 
-	Wenn in der Tabelle die Meldung **Keine Daten verfügbar** angezeigt wird, finden Sie im Abschnitt [Problembehandlung](#troubleshooting) entsprechende Informationen.
+	Wenn die Tabelle **Keine Daten verfügbar** anzeigt, und Sie glauben, dass Ihre Datenbank Daten enthält, nutzen Sie den Abschnitt [Problembehandlung](#troubleshooting).
 
-	![Screenshot des Überwachungsbereichs, in dem die Gesamtzahl der Anforderungen des aktuellen Tages und die Speichernutzung angezeigt werden](./media/documentdb-monitor-accounts/documentdb-total-requests-and-usage.png)
+	![Screenshot des Fokus „Überwachung“, in dem die Gesamtzahl der Anforderungen und die Speichernutzung angezeigt werden](./media/documentdb-monitor-accounts/documentdb-total-requests-and-usage.png)
 
 
-3.	Wenn Sie auf die Kachel **Anforderungen**, **RUs gesamt** oder **Speicher** klicken, wird das detaillierte Blatt **Metrik** geöffnet.
+3.	Wenn Sie auf die Kachel **Anforderungen** oder **Speicher** klicken, wird das detaillierte Blatt **Metrik** geöffnet.
 4.	Das Blatt **Metrik** zeigt Details zu den ausgewählten Metriken. Im oberen Bereich des Blatts befindet sich ein Diagramm der pro Stunde erfassten Anforderungen. Darunter befindet sich eine Tabelle, die Aggregierungswerte für gedrosselte Anforderungen und Anforderungen gesamt zeigt. Das Fenster „Metrik“ zeigt auch eine Liste von Warnung, die definiert wurden. Sie ist gefiltert nach den im aktuellen Fenster „Metrik“ anzeigten Metriken (wenn Sie eine Reihe von Warnungen haben, dann werden auf diese Weise hier nur die relevanten gezeigt).
 
 	![Screenshot des Blatts „Metrik“ mit gedrosselten Anforderungen](./media/documentdb-monitor-accounts/documentdb-metric-blade.png)
@@ -65,15 +64,13 @@ Im Azure-Portal können Sie nebeneinander stehende Metrikdiagramme erstellen.
 Sie können diesen Bereich jetzt wie jeden anderen Metrikbereich behandeln und ihn sowie die dort angezeigte Zeitspanne anpassen. Auf diese Weise können Sie zwei verschiedene Metrikdiagramme gleichzeitig nebeneinander anzeigen. ![Screenshot des Diagramms "Anforderungen insgesamt" und des Diagramms "Anforderungen insgesamt – letzte Stunde"](./media/documentdb-monitor-accounts/madocdb8.png)
 
 ## Einrichten von Warnungen im Portal
-1.	Klicken Sie im [Azure-Portal](https://portal.azure.com/) auf **Durchsuchen**, dann auf **DocumentDB-Konten** und anschließend auf den Namen des DocumentDB-Kontos, für das Sie Warnungen zu Leistungsmetriken einrichten möchten.
+1.	Klicken Sie im [Azure-Portal](https://portal.azure.com/) auf **Weitere Dienste**, dann auf **DocumentDB (NoSQL)** und anschließend auf den Namen des DocumentDB-Kontos, für das Sie Warnungen zu Leistungsmetriken einrichten möchten.
 
-2.	Wenn das Blatt **Alle Einstellungen** nicht geöffnet ist, klicken Sie oben links auf den Befehl **Einstellungen**, um das Blatt zu öffnen. ![Screenshot des Befehls „Einstellungen“ auf dem Datenbankkontoblatt](./media/documentdb-monitor-accounts/madocdb10.png)
+2.	Klicken Sie im Ressourcenmenü auf **Warnungsregeln**, um das Blatt „Warnungsregeln“ zu öffnen. ![Screenshot des ausgewählten Warnungsregelnteils](./media/documentdb-monitor-accounts/madocdb10.5.png)
 
-3.	Klicken Sie auf dem Blatt **Alle Einstellungen** auf **Warnungsregeln**, um das Blatt „Warnungsregeln“ zu öffnen. ![Screenshot des ausgewählten Warnungsregelnteils](./media/documentdb-monitor-accounts/madocdb10.5.png)
+3.	Klicken Sie auf dem Blatt **Warnungsregeln** auf **Warnung hinzufügen**. ![Screenshot des Blatts "Warnungsregeln" mit hervorgehobener Schaltfläche "Warnung hinzufügen"](./media/documentdb-monitor-accounts/madocdb11.png)
 
-4.	Klicken Sie auf dem Blatt "Warnungsregeln" auf **Warnung hinzufügen**.![Screenshot des Blatts "Warnungsregeln" mit hervorgehobener Schaltfläche "Warnung hinzufügen"](./media/documentdb-monitor-accounts/madocdb11.png)
-
-5.	Legen Sie im Fenster **Warnungsregel hinzufügen** Folgendes fest:
+4.	Legen Sie im Fenster **Warnungsregel hinzufügen** Folgendes fest:
 	*	Den Namen der Warnungsregel, die Sie einrichten möchten.
 	*	Eine Beschreibung der neuen Warnungsregel.
 	*	Die Metrik für die Warnungsregel.
@@ -82,7 +79,7 @@ Sie können diesen Bereich jetzt wie jeden anderen Metrikbereich behandeln und i
 	*	Weitere E-Mail-Adressen für Warnbenachrichtigungen. ![Screenshot des Blatts "Warnungsregel hinzufügen"](./media/documentdb-monitor-accounts/madocdb12.png)
 
 ## Programmgesteuertes Überwachen von DocumentDB
-Die im Portal für Konten verfügbaren Metriken, z. B. für die Speichernutzung von Konten und die Gesamtzahl der Anforderungen, stehen über die DocumentDB-APIs nicht zur Verfügung. Sie können jedoch mithilfe der DocumentDB-APIs die Nutzungsdaten auf Sammlungsebene abrufen. Gehen Sie zum Abrufen von Daten auf Sammlungsebene wie folgt vor:
+Die im Portal für Konten verfügbaren Metriken, z. B. für die Speichernutzung von Konten und die Gesamtzahl der Anforderungen, stehen über die DocumentDB-APIs nicht zur Verfügung. Sie können jedoch mithilfe der DocumentDB-APIs die Nutzungsdaten auf Sammlungsebene abrufen. Gehen Sie zum Abrufen von Daten auf Sammlungsebene wie folgt vor:
 
 - Führen Sie zur Verwendung der REST-API [einen GET-Befehl für die Sammlung](https://msdn.microsoft.com/library/mt489073.aspx) aus. Die Kontingent- und Nutzungsinformationen für die Sammlung werden in den Headern „x-ms-resource-quota“ und „x-ms-resource-usage“ in der Antwort zurückgegeben.
 - Verwenden Sie für das .NET SDK die Methode [DocumentClient.ReadDocumentCollectionAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.readdocumentcollectionasync.aspx), die eine [ResourceResponse](https://msdn.microsoft.com/library/dn799209.aspx) mit mehreren Nutzungseigenschaften zurückgibt, z.B. **CollectionSizeUsage**, **DatabaseUsage**, **DocumentUsage** sowie weitere Eigenschaften.
@@ -98,7 +95,7 @@ Abfragen zum Abrufen einzelner Metriken verwenden das folgende Format:
 Weitere Informationen finden Sie unter [Retrieving Resource Metrics via the Azure Insights API](https://blogs.msdn.microsoft.com/cloud_solution_architect/2016/02/23/retrieving-resource-metrics-via-the-azure-insights-api/) (Abrufen von Ressourcenmetriken über die Azure Insights-API).
 
 ## Problembehandlung
-Wenn in den Überwachungskacheln die Meldung **Keine Daten verfügbar** angezeigt wird und Sie unlängst in der Datenbank Anforderungen durchgeführt oder Daten hinzugefügt haben, können Sie die Kacheln so ändern, dass die letzte Nutzung angezeigt wird.
+Wenn in den Überwachungskacheln die Meldung **Keine Daten verfügbar** angezeigt wird, und Sie unlängst in der Datenbank Anforderungen durchgeführt oder Daten hinzugefügt haben, können Sie die Kacheln so ändern, dass die letzte Nutzung angezeigt wird.
 
 ### Bearbeiten einer Kachel zum Aktualisieren der aktuellen Daten
 1.	Klicken Sie zum Anpassen der in einem bestimmten Detail angezeigten Metriken mit der rechten Maustaste auf das Diagramm, um das Blatt **Metrik** zu öffnen, und klicken Sie dann auf **Diagramm bearbeiten**. ![Screenshot der Steuerelemente auf dem Blatt „Metrik“ mit hervorgehobener Option „Diagramm bearbeiten“](./media/documentdb-monitor-accounts/madocdb3.png)
@@ -111,4 +108,4 @@ Wenn in den Überwachungskacheln die Meldung **Keine Daten verfügbar** angezeig
 ## Nächste Schritte
 Weitere Informationen zur Kapazität von DocumentDB finden Sie unter [Verwalten der Kapazität von DocumentDB](documentdb-manage.md).
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0831_2016-->

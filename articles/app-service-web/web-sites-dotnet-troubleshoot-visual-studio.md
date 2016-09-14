@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="04/28/2016" 
+	ms.date="08/29/2016" 
 	ms.author="rachelap"/>
 
 # Problembehandlung von Web-Apps in Azure App Service in Visual Studio
@@ -51,7 +51,7 @@ Visual Studio bietet Zugriff auf einen Teil der Web-App-Verwaltungsfunktionen un
 
 1. Falls Sie noch nicht mit Visual Studio in Azure angemeldet sind, klicken Sie auf die Schaltfläche **Mit Azure verbinden** im **Server-Explorer**.
 
-	Als Alternative können Sie ein Verwaltungszertifikat installieren, das den Zugriff auf Ihr Konto ermöglicht. Falls Sie ein Zertifikat installieren möchten, klicken Sie im **Server-Explorer** mit der rechten Maustaste auf den Knoten **Azure**, und wählen Sie im Kontextmenü **Abonnements verwalten und filtern** aus. Klicken Sie im Dialogfeld **Azure-Abonnements verwalten** auf die Registerkarte **Zertifikate** und dann auf **Importieren**. Befolgen Sie die Anweisungen zum Herunterladen und Importieren einer Abonnementdatei (auch *.publishsettings*-Datei genannt) für Ihr Azure-Konto.
+	Als Alternative können Sie ein Verwaltungszertifikat installieren, das den Zugriff auf Ihr Konto ermöglicht. Falls Sie ein Zertifikat installieren möchten, klicken Sie im **Server-Explorer** mit der rechten Maustaste auf den Knoten **Azure**, und klicken Sie im Kontextmenü auf **Abonnements verwalten und filtern**. Klicken Sie im Dialogfeld **Azure-Abonnements verwalten** auf die Registerkarte **Zertifikate** und dann auf **Importieren**. Befolgen Sie die Anweisungen zum Herunterladen und Importieren einer Abonnementdatei (auch *.publishsettings*-Datei genannt) für Ihr Azure-Konto.
 
 	> [AZURE.NOTE]
 	Wenn Sie eine Abonnementdatei herunterladen, sollten Sie diese in einem Ordner außerhalb Ihrer Quellcodeverzeichnisse speichern (beispielsweise im Ordner "Downloads") und nach Abschluss des Importvorgangs löschen. Böswillige Benutzer, die Zugriff auf die Abonnementdatei erlangen, können Ihre Azure-Services bearbeiten, erstellen und löschen.
@@ -94,7 +94,7 @@ Häufig ist der einfachste Weg für die Suche nach der Fehlerursache die Aktivie
 
 1. Erweitern Sie in **Server-Explorer** den Knoten **Azure**, erweitern Sie **App Service**, erweitern Sie die Ressourcengruppe, in der sich Ihre Web-App befindet, und erweitern Sie anschließend den Knoten für Ihre Web-App.
 
-	Daraufhin werden Knoten angezeigt, mit denen Sie Zugriff auf die Inhalts- und Protokolldateien der Web-App erhalten.
+	Daraufhin werden Knoten angezeigt, über die Sie auf die Inhalts- und Protokolldateien der Web-App zugreifen können.
 
 2. Erweitern Sie den Knoten **Dateien** und doppelklicken Sie auf die Datei *Web.config*.
 
@@ -417,7 +417,7 @@ Die Registerkarte **Azure-Protokolle** im **Ausgabefenster** enthält verschiede
 Diese Schaltflächen bieten die folgenden Funktionen:
 
 * Löschen des **Ausgabefensters**.
-* Aktivieren bzw. deaktivieren des Zeilenumbruchs.
+* Aktivieren bzw. Deaktivieren des Zeilenumbruchs.
 * Starten bzw. Stoppen der Protokollüberwachung.
 * Angeben, welche Protokolle überwacht werden sollen.
 * Herunterladen von Protokollen.
@@ -568,7 +568,7 @@ Speicherkonten bieten mehr Speicherplatz und längere Aufbewahrungszeiten für P
 
 8. Klicken Sie in Visual Studio auf der Registerkarte **Protokolle** im Fenster **Azure-Web-App** unter **Diagnosezusammenfassung** auf **Aktualisieren**.
 
-	![Klicken Sie auf Aktualisieren](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-refreshstorage.png)
+	![Klicken Sie auf "Aktualisieren".](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-refreshstorage.png)
 
 	Im Bereich **Diagnosezusammenfassung** werden standardmäßig die Protokolle der vergangenen 15 Minuten angezeigt. Sie können das Zeitintervall ändern, um weitere Protokolleinträge anzuzeigen.
 
@@ -728,4 +728,4 @@ Die Microsoft TechNet-Website enthält einen Abschnitt zum Thema [Ablaufverfolgu
 [GetStartedWJ]: websites-dotnet-webjobs-sdk.md
  
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0831_2016-->

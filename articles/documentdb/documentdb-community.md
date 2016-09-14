@@ -13,7 +13,7 @@
   ms.topic="article"
   ms.tgt_pltfrm="na"
   ms.workload="data-services"
-  ms.date="08/17/2016"
+  ms.date="08/30/2016"
   ms.author="andrl"/>
 
 # Communityportal
@@ -210,7 +210,7 @@ Sie können über aktuelle DocumentDB-Nachrichten und -Features auf dem Laufende
 
 | Schulungspartner | Beschreibung |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| [![Microsoft Virtual Academy](./media/documentdb-community/mva.png)](https://www.microsoftvirtualacademy.com/de-DE/training-courses/developing-solutions-with-azure-documentdb-10554) | [**Microsoft Virtual Academy**](https://www.microsoftvirtualacademy.com/de-DE/training-courses/developing-solutions-with-azure-documentdb-10554) bietet Ihnen Schulungen von den Personen an, die an der Entwicklung von Azure DocumentDB beteiligt sind. |
+| [![Microsoft Virtual Academy](./media/documentdb-community/mva.png)](https://mva.microsoft.com/de-DE/training-courses/deploying-web-apps-to-azure-app-service-16629) | [**Microsoft Virtual Academy**](https://mva.microsoft.com/de-DE/training-courses/deploying-web-apps-to-azure-app-service-16629) bietet Ihnen Schulungen von den Personen an, die an der Entwicklung von Azure DocumentDB beteiligt sind. |
 | [![Pluralsight](./media/documentdb-community/pluralsight.png)](http://www.pluralsight.com/courses/azure-documentdb-introduction) | [**Pluralsight**](http://www.pluralsight.com/courses/azure-documentdb-introduction) ist ein wichtiger Microsoft-Partner, der Azure-Schulungen anbietet. Wenn Sie MSDN-Abonnent sind, können Sie Ihre Abonnementleistungen nutzen, um Zugang zu einer Microsoft Azure-Schulung zu erhalten. |
 | [![OpsGility](./media/documentdb-community/opsgility.png)](https://www.opsgility.com/courses/player/introduction_to_azure_documentdb) | [**OpsGility**](https://www.opsgility.com/courses/player/introduction_to_azure_documentdb) bietet umfassende technische Schulungen zu Microsoft Azure an. Lassen Sie sich vor Ort von Schulungsleitern oder über einen Remote-Klassenraum von in der Branche anerkannten Trainern weiterbilden. |
 
@@ -268,4 +268,4 @@ Assistent | Bild
 
 Möchten Sie ein DocumentDB-Genie werden? Wenngleich es nicht unbedingt ein bestimmtes Kriterium gibt, das erfüllt sein muss, um ein DocumentDB-Genie zu werden, bewerten wir u. a. den Einfluss der Beiträge des Kandidaten zu Onlineforen wie StackOverflow und MSDN, Wikis, Online-Inhalten, Konferenzen, Benutzergruppen, Podcasts, Websites, Blogs und sozialen Medien sowie Artikeln und Büchern. [Senden uns eine E-Mail](mailto:askdocdb@microsoft.com), um sich selbst oder jemand anderen vorzuschlagen.
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0831_2016-->

@@ -28,20 +28,20 @@ Dies sind die Grenzwerte für eine einzelne HTTP-Anforderung und/oder einen Conn
 
 #### Timeout
 
-|Name|Begrenzung|Notes|
+|Name|Begrenzung|Hinweise|
 |----|----|----|
 |Anforderungstimeout|1 Minute|Bei Bedarf können ein [asynchrones Muster](app-service-logic-create-api-app.md) oder eine [Until-Schleife](app-service-logic-loops-and-scopes.md) zur Kompensation verwendet werden.|
 
 #### Nachrichtengröße
 
-|Name|Begrenzung|Notes|
+|Name|Begrenzung|Hinweise|
 |----|----|----|
 |Nachrichtengröße|50 MB|Einige Connectors und APIs verfügen unter Umständen nicht über eine Unterstützung von 50 MB. Ein Anforderungstrigger unterstützt bis zu 25 MB.|
 |Grenzwert für die Auswertung von Ausdrücken|131\.072 Zeichen|`@concat()`, `@base64()`, `string` dürfen nicht länger sein.|
 
 #### Wiederholungsrichtlinie
 
-|Name|Begrenzung|Notes|
+|Name|Begrenzung|Hinweise|
 |----|----|----|
 |Wiederholungsversuche|4|Konfiguration mit dem [Parameter für die Wiederholungsrichtlinie](https://msdn.microsoft.com/de-DE/library/azure/mt643939.aspx) möglich.|
 |Maximale Wiederholungsverzögerung|1 Stunde|Konfiguration mit dem [Parameter für die Wiederholungsrichtlinie](https://msdn.microsoft.com/de-DE/library/azure/mt643939.aspx) möglich.|
@@ -51,7 +51,7 @@ Dies sind die Grenzwerte für eine einzelne HTTP-Anforderung und/oder einen Conn
 
 Dies sind die Grenzwerte für eine einzelne Ausführung der Logik-App.
 
-|Name|Begrenzung|Notes|
+|Name|Begrenzung|Hinweise|
 |----|----|----|
 |Ausführungsdauer|90 Tage||
 |Aufbewahrungsdauer im Speicher|90 Tage|Gilt ab der Startzeit der Ausführung.|
@@ -63,9 +63,9 @@ Dies sind die Grenzwerte für eine einzelne Ausführung der Logik-App.
 
 Dies sind die Grenzwerte für eine einzelne Ausführung der Logik-App.
 
-|Name|Begrenzung|Notes|
+|Name|Begrenzung|Hinweise|
 |----|----|----|
-|ForEach-Elemente|10\.000|Bei Bedarf können Sie die [Abfrageaktion](../connectors/connectors-native-query.md) verwenden, um größere Arrays zu filtern.|
+|ForEach-Elemente|5\.000|Bei Bedarf können Sie die [Abfrageaktion](../connectors/connectors-native-query.md) verwenden, um größere Arrays zu filtern.|
 |Until-Iterationen|10\.000||
 |SplitOn-Elemente|10\.000||
 |ForEach-Parallelität|20|Sie können ein sequenzielles ForEach-Element festlegen, indem Sie `"operationOptions": "Sequential"` der `foreach`-Aktion hinzufügen.|
@@ -75,7 +75,7 @@ Dies sind die Grenzwerte für eine einzelne Ausführung der Logik-App.
 
 Dies sind die Grenzwerte für eine einzelne Instanz der Logik-App.
 
-|Name|Begrenzung|Notes|
+|Name|Begrenzung|Hinweise|
 |----|----|----|
 |Trigger pro Sekunde|100|Bei Bedarf können Workflows auf mehrere Apps verteilt werden.|
 
@@ -83,7 +83,7 @@ Dies sind die Grenzwerte für eine einzelne Instanz der Logik-App.
 
 Dies sind die Grenzwerte für eine einzelne Logik-App-Definition.
 
-|Name|Begrenzung|Notes|
+|Name|Begrenzung|Hinweise|
 |----|----|----|
 |Aktionen in ForEach|1|Bei Bedarf können Sie geschachtelte Workflows als Erweiterung hinzufügen.|
 |Aktionen pro Workflow|60|Bei Bedarf können Sie geschachtelte Workflows als Erweiterung hinzufügen.|
@@ -107,8 +107,8 @@ Aufrufe, die direkt über eine Logik-App durchgeführt werden (also per [HTTP](.
 
 |Logik-App-Region|Ausgehende IP-Adresse|
 |-----|----|
-|Australien (Ost)|40\.126.251.213|
-|Australien (Südost)|40\.127.80.34|
+|Australien (Osten)|40\.126.251.213|
+|Australien (Südosten)|40\.127.80.34|
 |Brasilien Süd|191\.232.38.129|
 |Indien (Mitte)|104\.211.98.164|
 |USA (Mitte)|40\.122.49.51|
@@ -121,7 +121,7 @@ Aufrufe, die direkt über eine Logik-App durchgeführt werden (also per [HTTP](.
 |Nordeuropa|104\.45.93.9|
 |USA (Mitte/Süden)|104\.214.70.191|
 |Südostasien|13\.76.231.68|
-|Indien (Süden)|104\.211.227.225|
+|Indien, Süden|104\.211.227.225|
 |Westeuropa|40\.115.50.13|
 |Indien, Westen|104\.211.161.203|
 |USA (West)|104\.40.51.248|
@@ -134,4 +134,4 @@ Aufrufe, die direkt über eine Logik-App durchgeführt werden (also per [HTTP](.
 - [Sie können Geschäftsprozesse mit Logik-Apps automatisieren.](http://channel9.msdn.com/Events/Build/2016/T694)
 - [Erfahren Sie, wie Sie Ihre Systeme in Logik-Apps integrieren.](http://channel9.msdn.com/Events/Build/2016/P462)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0831_2016-->

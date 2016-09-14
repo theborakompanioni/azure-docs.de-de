@@ -8,7 +8,7 @@ Serverinstanztyp|Shared|Shared|Dediziert<sup>3</sup>|Dediziert<sup>3</sup>|Dediz
 Speicher<sup>5</sup>|1 GB<sup>5</sup>|1 GB<sup>5</sup>|10 GB<sup>5</sup>|50 GB<sup>5</sup>|500 GB<sup>4,5</sup></p>
 CPU-Zeit (kurz)<sup>6</sup>|3 Minuten|3 Minuten|Unbegrenzt, [normal zu bezahlen](https://azure.microsoft.com/pricing/details/app-service/)</a>|Unbegrenzt, normal zu bezahlen|Unbegrenzt, normal zu bezahlen
 CPU-Zeit (Tag)<sup>6</sup>|60 Minuten|240 Minuten|Unbegrenzt, [normal zu bezahlen](https://azure.microsoft.com/pricing/details/app-service/)</a>|Unbegrenzt, normal zu bezahlen|Unbegrenzt, normal zu bezahlen
-Arbeitsspeicher (1 Stunde)|1024 MB pro App Service-Plan|1024 MB pro App|N/V|–|N/V
+Arbeitsspeicher (1 Stunde)|1024 MB pro App Service-Plan|1024 MB pro App|N/V|N/V|N/V
 Bandbreite|165 MB|Unbegrenzt, Preise für [Dateiübertragungen](https://azure.microsoft.com/pricing/details/data-transfers/) gelten|Unbegrenzt, Preise für Dateiübertragungen gelten|Unbegrenzt, Preise für Dateiübertragungen gelten|Unbegrenzt, Preise für Dateiübertragungen gelten
 Anwendungsarchitektur|32 Bit|32 Bit|32 Bit/64 Bit|32 Bit/64 Bit|32 Bit/64 Bit
 Websockets pro Instanz<sup>7</sup>|5|35|350|Unbegrenzt|Unbegrenzt
@@ -39,5 +39,6 @@ SLA||<p>|99,9 %|99,95 %<sup>10</sup>|99,95 %<sup>10</sup>
 <sup>10</sup>Die SLA von 99,95 % gilt für Bereitstellungen mit mehreren Instanzen, bei denen Azure Traffic Manager für Failover konfiguriert ist.  
 
 <!---HONumber=AcomDC_0803_2016-->
+
 
 

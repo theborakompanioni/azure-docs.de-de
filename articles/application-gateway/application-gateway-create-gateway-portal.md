@@ -26,7 +26,7 @@ Azure Application Gateway verwendet einen Load Balancer auf der Schicht 7 (Anwe
 - [Azure Resource Manager PowerShell](application-gateway-create-gateway-arm.md)
 - [Klassische Azure PowerShell](application-gateway-create-gateway.md)
 - [Azure Resource Manager-Vorlage](application-gateway-create-gateway-arm-template.md)
-
+- [Azure-Befehlszeilenschnittstelle](application-gateway-create-gateway-cli.md)
 
 <BR>
 
@@ -57,7 +57,7 @@ Für Azure Application Gateway ist ein eigenes Subnetz erforderlich. Stellen Sie
 
 Navigieren Sie zum Azure-Portal, klicken Sie auf **Neu** > **Netzwerk** > **Application Gateway**.
 
-![Neues Anwendungsgateway erstellen][1]
+![Erstellen eines Anwendungsgateways][1]
 
 ### Schritt 2
 
@@ -66,10 +66,10 @@ Geben Sie anschließend die allgemeinen Informationen zum Anwendungsgateway an. 
 Folgende Informationen werden für die Grundeinstellungen benötigt:
 
 - **Name**: der Name für das Anwendungsgateway.
-- **SKU-Größe**: Dies ist die Größe des Anwendungsgateways. Sie haben die Wahl zwischen niedriger, mittlerer und hoher Nutzungsdauer.
+- **SKU-Größe:** Diese Einstellung gibt die Größe des Anwendungsgateways an. Sie haben die Wahl zwischen drei Größen: klein, mittel und groß.
 - **Anzahl von Instanzen**: die Anzahl von Instanzen. Dieser Wert sollte zwischen 2 und 10 liegen.
-- **Ressourcengruppe**: die Ressourcengruppe, zu der das Anwendungsgateway gehört. Hierbei kann es sich um eine vorhandene oder um eine neue Ressourcengruppe handeln.
-- **Standort**: die Region für das Anwendungsgateway. Dieser Standort ist mit dem Standort der Ressourcengruppe identisch. *Dies ist wichtig, da das virtuelle Netzwerk und die öffentliche IP den gleichen Standort wie das Gateway aufweisen müssen*.
+- **Ressourcengruppe:** die Ressourcengruppe, zu der das Anwendungsgateway gehört. Hierbei kann es sich um eine vorhandene oder um eine neue Ressourcengruppe handeln.
+- **Standort:** Die Region für das Anwendungsgateway. Dieser Standort ist mit dem Standort der Ressourcengruppe identisch. *Der Standort ist wichtig, da das virtuelle Netzwerk und die öffentliche IP den gleichen Standort wie das Gateway aufweisen müssen.*
 
 ![Blatt mit Grundeinstellungen][2]
 
@@ -141,7 +141,7 @@ Nachdem das Anwendungsgateway erstellt wurde, navigieren Sie im Portal zu diesem
 
 ![Application Gateway – Ressourcenansicht][10]
 
-Auf diese Weise wird ein einfaches Anwendungsgateway mit Standardeinstellungen für Listener, Back-End-Pool, Back-End-HTTP-Einstellungen und Regeln erstellt. Nach der erfolgreichen Bereitstellung können Sie diese Einstallungen an Ihre Anforderungen anpassen.
+Mit diesen Schritten wird ein einfaches Anwendungsgateway mit Standardeinstellungen für Listener, Back-End-Pool, Back-End-HTTP-Einstellungen und Regeln erstellt. Nach der erfolgreichen Bereitstellung können Sie diese Einstallungen an Ihre Anforderungen anpassen.
 
 ## Nächste Schritte
 
@@ -162,4 +162,4 @@ Unter [Konfigurieren der SSL-Auslagerung](application-gateway-ssl-arm.md) wird b
 [10]: ./media/application-gateway-create-gateway-portal/figure10.png
 [scenario]: ./media/application-gateway-create-gateway-portal/scenario.png
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0831_2016-->

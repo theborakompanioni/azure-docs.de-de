@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/28/2016"
+	ms.date="08/30/2016"
 	ms.author="anhoh"/>
 
 # Anzeigen, Bearbeiten, Erstellen und Hochladen von JSON-Dokumenten mithilfe von DocumentDB-Dokument-Explorer
@@ -25,17 +25,13 @@ Beachten Sie, dass der Dokument-Explorer für DocumentDB-Konten mit Protokollunt
 
 ## Starten von Dokument-Explorer
 
-1. Klicken Sie im Azure-Portal in der Navigationsleiste auf **DocumentDB-Konten**. Wenn **DocumentDB-Konten** nicht sichtbar ist, klicken Sie auf **Durchsuchen** und dann auf **DocumentDB-Konten**.
+1. Klicken Sie im Azure-Portal in der Navigationsleiste auf **DocumentDB (NoSQL)**. Wenn **DocumentDB (NoSQL)** nicht angezeigt wird, klicken Sie auf **Weitere Dienste** und dann auf **DocumentDB (NoSQL)**.
 
-2. Klicken Sie am oberen Rand des Blatts **DocumentDB-Konto** auf **Dokument-Explorer**.
+2. Klicken Sie im Ressourcenmenü auf **Dokument-Explorer**.
  
 	![Screenshot des Dokument-Explorer-Befehls](./media/documentdb-view-json-document-explorer/documentexplorercommand.png)
 
- 	>[AZURE.NOTE] Der Abfrage-Explorer wird auch auf den Blättern für Datenbanken und Sammlungen angezeigt.
-
     Die Dropdownlisten **Datenbanken** und **Sammlungen** auf dem Blatt **Dokument-Explorer** werden auf der Grundlage des Kontexts, in dem Sie den Dokument-Explorer starten, automatisch aufgefüllt.
-
-	![Screenshot des Dokument-Explorers – Blatt](./media/documentdb-view-json-document-explorer/documentexplorerinitial.png)
 
 ## Erstellen eines Dokuments
 
@@ -152,7 +148,15 @@ Dokument-Explorer unterstützt die Sammelerfassung von einem oder mehreren JSON-
 
 Der Dokument-Explorer im Azure-Portal ist nur eine Möglichkeit zur Verwendung von Dokumenten in DocumentDB. Für die Arbeit mit Dokumenten können Sie auch die [REST-API](https://msdn.microsoft.com/library/azure/mt489082.aspx) oder die [Client-SDKs](documentdb-sdk-dotnet.md) verwenden. Beispielcode finden Sie unter [.NET SDK-Dokumentbeispiele](documentdb-dotnet-samples.md#document-examples) sowie unter [Node.js SDK-Dokumentbeispiele](documentdb-nodejs-samples.md#document-examples).
 
-Wenn Sie Dateien aus einer anderen Quelle (JSON-Dateien, MongoDB, SQL Server, CSV-Dateien, Azure Table Storage, Amazon DynamoDB oder HBase) importieren oder migrieren müssen, können Sie das DocumentDB-[Datenmigrationstool](documentdb-import-data.md) nutzen, um Ihre Daten schnell in DocumentDB zu importieren.
+Wenn Sie Dateien aus einer anderen Quelle (JSON-Dateien, MongoDB, SQL Server, CSV-Dateien, Azure-Tabellenspeicher, Amazon DynamoDB oder HBase) importieren oder migrieren müssen, können Sie das DocumentDB-[Datenmigrationstool](documentdb-import-data.md) nutzen, um Ihre Daten schnell in DocumentDB zu importieren.
+
+## Problembehandlung
+
+**Symptom**: Dokument-Explorer gibt **Keine Dokumente gefunden** zurück.
+
+**Lösung**: Stellen Sie sicher, dass Sie das richtige Abonnement sowie die richtige Datenbank und Sammlung, wo die Dokumente eingefügt wurden, ausgewählt haben. Überprüfen Sie außerdem, ob Sie innerhalb Ihrer Durchsatzkontingente arbeiten. Wenn Sie bei maximalem Durchsatz arbeiten und gedrosselt werden, senken Sie die Anwendungsnutzung, um unterhalb des Maximaldurchsatzes für die Sammlung zu arbeiten.
+
+**Erklärung**: Das Portal ist eine Anwendung wie jede andere, die Aufrufe an Ihre DocumentDB-Datenbank und Sammlung richtet. Wenn Ihre Anfragen derzeit aufgrund von Aufrufen von einer separaten Anwendung gedrosselt sind, kann das Portal auch gedrosselt werden, sodass Ressourcen nicht im Portal angezeigt werden. Um das Problem zu lösen, beheben Sie die Ursache für den hohen Durchsatz, und aktualisieren Sie dann das Portalblatt. Informationen zum Messen und Senken der Durchsatznutzung finden Sie im Abschnitt [Durchsatz](documentdb-performance-tips.md#throughput) des Artikels [Leistungstipps](documentdb-performance-tips.md).
 
 ## Nächste Schritte
 
@@ -160,4 +164,4 @@ Weitere Informationen zur im Dokument-Explorer unterstützten DocumentDB-SQL-Gra
 
 Der [Lernpfad](https://azure.microsoft.com/documentation/learning-paths/documentdb/) ist ebenfalls eine hilfreiche Ressource, um mehr über DocumentDB zu erfahren.
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0831_2016-->

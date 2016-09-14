@@ -59,29 +59,16 @@ Zwischengespeicherte Datasets können in der Vorschau verwendet werden. Allerdin
 
 ![](media\powerbi-embedded-whats-is\app-tokens.png)
 
-### Token zur Anwendungsauthentifizierung
-
 **Token zur Anwendungsauthentifizierung (App-Token)** dienen zum Authentifizieren bei **Microsoft Power BI Embedded**. Es gibt drei Typen von **App-Token**:
 
 1.	Bereitstellungstoken: Werden bei der Bereitstellung eines neuen **Arbeitsbereichs** in einer **Arbeitsbereichssammlung** verwendet.
-2.	Entwicklungstoken: Werden bei direkten Aufrufen an die **Power BI-REST-APIs** verwendet.
+2.	Entwicklungstoken: Werden bei direkten Aufrufen der **Power BI-REST-APIs** verwendet.
 3.	Einbettungstoken: Werden bei Aufrufen zum Rendern eines Berichts im eingebetteten IFrame verwendet.
 
-Diese Token werden für die verschiedenen Phasen Ihrer Interaktionen mit **Microsoft Power BI Embedded** verwendet. Die Token sind so konzipiert, dass Sie über Ihre App Berechtigungen an Power BI delegieren können.
+Diese Token werden für die verschiedenen Phasen Ihrer Interaktionen mit **Microsoft Power BI Embedded** verwendet. Die Token sind so konzipiert, dass Sie über Ihre App Berechtigungen an Power BI delegieren können. Weitere Informationen finden Sie unter [Authentifizieren und Autorisieren mit Power BI Embedded](power-bi-embedded-app-token-flow.md).
 
-### Generieren von App-Token
-
-Mit den für die Vorschau bereitgestellten SDKs können Sie Token erstellen. Zunächst rufen Sie eine der Create\_\_\_Token()-Methoden auf. Danach rufen Sie die Generate()-Methode mit dem Zugriffsschlüssel auf, der aus der **Arbeitsbereichssammlung** abgerufen wurde. Die grundlegenden Create-Methoden für Token werden in der Microsoft.PowerBI.Security.PowerBIToken-Klasse definiert und lauten wie folgt:
-
--	[CreateProvisionToken](https://msdn.microsoft.com/library/mt670218.aspx)
--	[CreateDevToken](https://msdn.microsoft.com/library/mt670215.aspx)
--	[CreateReportEmbedToken](https://msdn.microsoft.com/library/mt710366.aspx)
-
-Ein Beispiel zum Verwenden von [CreateProvisionToken](https://msdn.microsoft.com/library/mt670218.aspx) und [CreateDevToken](https://msdn.microsoft.com/library/mt670215.aspx) finden Sie unter [Erste Schritte mit dem Beispiel zu Microsoft Power BI Embedded](power-bi-embedded-get-started-sample.md).
-
-
-## Siehe auch
+## Weitere Informationen
 - [Häufige Microsoft Power BI Embedded-Szenarios](power-bi-embedded-scenarios.md)
 - [Erste Schritte mit Microsoft Power BI Embedded](power-bi-embedded-get-started.md)
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0831_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/17/2016"
+	ms.date="08/26/2016"
 	ms.author="sumedhb;aglick"/>
 
 
@@ -43,7 +43,7 @@ Es gibt verschiedene Einschränkungen, die Sie kennen sollten:
  * Aufheben der Umschließung
  * Überprüfen
  * Signieren
- * Sicherung
+ * Sichern
 * Sobald auf ein Failover ein Failback erfolgt ist, stehen alle Anforderungstypen (d.h. Lese- ___und___ Schreibanforderungen) wieder zur Verfügung.
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0831_2016-->

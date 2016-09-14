@@ -13,16 +13,16 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/22/2016" 
+	ms.date="08/19/2016" 
 	ms.author="bradsev;garye" />
 
 
 # Auswerten der Modellleistung in Azure Machine Learning
 
-In diesem Thema wird veranschaulicht, wie die Leistung eines Modells in Azure Machine Learning Studio ausgewertet wird. Zudem werden die für diese Aufgabe verfügbaren Kennzahlen kurz erläutert. Es werden drei häufig eingesetzte Szenarios des beaufsichtigten Lernens vorgestellt:
+Dieses Thema veranschaulicht, wie die Leistung eines Modells in Azure Machine Learning Studio ausgewertet wird, und erläutert die für diese Aufgabe verfügbaren Metriken. Es werden drei häufig eingesetzte Szenarios des beaufsichtigten Lernens vorgestellt:
 
 * Regression
-* Binäre Klassifizierung 
+* Binäre Klassifizierung
 * Multiklassenklassifizierung
 
 [AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
@@ -72,7 +72,8 @@ Das Bestimmtheitsmaß, das auch als "R-Quadrat" notiert wird, ist ebenfalls eine
 Abbildung 2. Auswertungskennzahlen bei der linearen Regression.
 
 ###Verwenden der Kreuzvalidierung###
-Wie bereits zuvor erwähnt, können Sie mit dem Modul [Cross Validate Model][cross-validate-model] automatisch wiederholte Trainings-, Bewertungs- und Auswertungsvorgänge durchführen. In diesem Fall benötigen Sie lediglich ein Dataset, ein untrainiertes Modell und das Modul [Cross Validate Model][cross-validate-model] (siehe Abbildung unten). Beachten Sie, dass Sie in den Eigenschaften des Moduls [Cross Validate Model][cross-validate-model] für die Spalte "Label" den Wert *price* festlegen müssen.
+Wie bereits zuvor erwähnt, können Sie mit dem Modul [Cross Validate Model][cross-validate-model] automatisch wiederholte Trainings-, Bewertungs- und Auswertungsvorgänge durchführen. In diesem Fall benötigen Sie lediglich ein Dataset, ein untrainiertes Modell und das Modul [Cross Validate Model][cross-validate-model]
+\(siehe Abbildung unten). Beachten Sie, dass Sie in den Eigenschaften des Moduls [Cross Validate Model][cross-validate-model] für die Spalte "Label" den Wert *price* festlegen müssen.
 
 ![Kreuzvalidierung eines Regressionsmodells.](media/machine-learning-evaluate-model-performance/3.png)
 
@@ -165,7 +166,7 @@ Führen Sie das Experiment aus, und klicken Sie auf den Ausgabeport des Moduls [
 Abbildung 11. Auswertungsergebnisse der Multiklassenklassifizierung.
 
 ###Verwenden der Kreuzvalidierung###
-Wie bereits zuvor erwähnt, können Sie mit dem Modul [Cross Validate Model][cross-validate-model] automatisch wiederholte Trainings-, Bewertungs- und Auswertungsvorgänge durchführen. Sie benötigen ein Dataset, ein untrainiertes Modell und das Modul [Cross Validate Model][cross-validate-model] (siehe Abbildung unten). Und wieder müssen Sie die Spalte "Label" des Moduls [Cross Evaluate Model][cross-validate-model] angeben (in diesem Fall Spaltenindex "5"). Nach dem Ausführen des Experiments und dem Klicken auf den rechten Ausgabeport des Moduls [Cross Validate Model][cross-validate-model] können Sie die Kennzahlwerte sowie den Mittelwert und die Standardabweichung für die einzelnen Aufteilungen überprüfen. Die hier aufgeführten Kennzahlen sind denen sehr ähnlich, die zuvor im Beispiel für die binäre Klassifizierung erörtert wurden. Beachten Sie jedoch, dass bei der Multiklassenklassifizierung die Berechnung der Fälle "Richtig positiv/negativ" und "Falsch positiv/negativ" jeweils pro Klasse erfolgt und dass keine allgemeine positive oder negative Klasse vorhanden ist. Wenn beispielsweise die Präzision oder die Sensitivität der Klasse "Iris-setosa" berechnet wird, wird davon ausgegangen, dass es sich dabei um die positive Klasse handelt und dass alle anderen Klassen negativ sind.
+Wie bereits zuvor erwähnt, können Sie mit dem Modul [Cross Validate Model][cross-validate-model] automatisch wiederholte Trainings-, Bewertungs- und Auswertungsvorgänge durchführen. Sie benötigen ein Dataset, ein untrainiertes Modell und das Modul [Cross Validate Model][cross-validate-model] \(siehe Abbildung unten). Und wieder müssen Sie die Spalte "Label" des Moduls [Cross Evaluate Model][cross-validate-model] angeben \(in diesem Fall Spaltenindex "5"). Nach dem Ausführen des Experiments und dem Klicken auf den rechten Ausgabeport des Moduls [Cross Validate Model][cross-validate-model] können Sie die Kennzahlwerte sowie den Mittelwert und die Standardabweichung für die einzelnen Aufteilungen überprüfen. Die hier aufgeführten Kennzahlen sind denen sehr ähnlich, die zuvor im Beispiel für die binäre Klassifizierung erörtert wurden. Beachten Sie jedoch, dass bei der Multiklassenklassifizierung die Berechnung der Fälle "Richtig positiv/negativ" und "Falsch positiv/negativ" jeweils pro Klasse erfolgt und dass keine allgemeine positive oder negative Klasse vorhanden ist. Wenn beispielsweise die Präzision oder die Sensitivität der Klasse "Iris-setosa" berechnet wird, wird davon ausgegangen, dass es sich dabei um die positive Klasse handelt und dass alle anderen Klassen negativ sind.
  
 ![Kreuzvalidierung eines Modells für die Multiklassenklassifizierung.](media/machine-learning-evaluate-model-performance/12.png)
 
@@ -189,4 +190,4 @@ Abbildung 13: Ergebnisse der Kreuzvalidierung eines Modells für die Multiklass
 [two-class-logistic-regression]: https://msdn.microsoft.com/library/azure/b0fd7660-eeed-43c5-9487-20d9cc79ed5d/
  
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0831_2016-->

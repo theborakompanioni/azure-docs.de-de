@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="sqldb-migrate"
-   ms.date="06/07/2016"
+   ms.date="08/24/2016"
    ms.author="carlrab"/>
 
 # Migrieren von SQL Server-Datenbank auf SQL-Datenbank mit dem Assistenten zum Bereitstellen einer Datenbank unter Microsoft Azure-Datenbank
@@ -48,11 +48,17 @@ Mit dem Assistenten zum Bereitstellen einer Datenbank unter Microsoft Azure in S
 
 	!["Bereitstellen in Azure" aus dem Menü "Aufgaben"](./media/sql-database-cloud-migrate/MigrateUsingDeploymentWizard00.png)
 
-5.	Geben Sie den **neuen Datenbanknamen** für denselben an, legen Sie **Edition von Microsoft Azure SQL-Datenbank** ([Dienstebene](sql-database-service-tiers.md)), **Maximale Datenbankgröße**, **Serviceziel** (Leistungsebene) und **Temporärer Dateiname** für die [BACPAC](https://msdn.microsoft.com/library/ee210546.aspx#Anchor_4)-Datei fest, die vom Assistenten während des Migrationsprozesses erstellt wird.
+5.	Geben Sie Folgendes für die [BACPAC](https://msdn.microsoft.com/library/ee210546.aspx#Anchor_4) -Datei an, die dieser Assistent während der Migration erstellt:
 
-	![Exporteinstellungen](./media/sql-database-cloud-migrate/MigrateUsingDeploymentWizard02.png)
+ - Den **neuen Datenbanknamen**
+ - Die **Edition von Microsoft Azure SQL-Datenbank** ([Dienstebene](sql-database-service-tiers.md))
+ - Die **maximale Datenbankgröße**
+ - Das **Dienstziel** (Leistungsstufe)
+ - Den **temporären Dateinamen**
 
-6.	Schließen Sie den Assistenten zum Migrieren der Datenbank ab. Je nach Größe und Komplexität der Datenbank kann die Bereitstellung wenige Minuten bis viele Stunden dauern. Wenn dieser Assistent Kompatibilitätsprobleme erkennt, werden auf dem Bildschirm Fehler angezeigt und die Migration wird nicht fortgesetzt. Eine Anleitung zum Beheben von Problemen mit der Datenbankkompatibilität finden Sie unter [Beheben von Problemen mit der Datenbankkompatibilität](sql-database-cloud-migrate-fix-compatibility-issues.md).
+    ![Exporteinstellungen](./media/sql-database-cloud-migrate/MigrateUsingDeploymentWizard02.png)
+
+6.	Schließen Sie den Assistenten ab. Je nach Größe und Komplexität der Datenbank kann die Bereitstellung wenige Minuten bis viele Stunden dauern. Wenn dieser Assistent Kompatibilitätsprobleme erkennt, werden auf dem Bildschirm Fehler angezeigt, und die Migration wird nicht fortgesetzt. Eine Anleitung zum Beheben von Problemen mit der Datenbankkompatibilität finden Sie unter [Beheben von Problemen mit der Datenbankkompatibilität](sql-database-cloud-migrate-fix-compatibility-issues.md).
 
 7.	Stellen Sie mit dem Objekt-Explorer eine Verbindung mit der migrierten Datenbank auf Ihrem Azure SQL-Datenbankserver her.
 8.	Zeigen Sie über das Azure-Portal Ihre Datenbank und deren Eigenschaften an.
@@ -62,10 +68,10 @@ Mit dem Assistenten zum Bereitstellen einer Datenbank unter Microsoft Azure in S
 - [Neueste Version von SSDT](https://msdn.microsoft.com/library/mt204009.aspx)
 - [Neueste Version von SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx)
 
-## Weitere Ressourcen
+## Zusätzliche Ressourcen
 
 - [SQL-Datenbank V12](sql-database-v12-whats-new.md)
 - [Teilweise oder vollständig unterstützte Transact-SQL-Funktionen](sql-database-transact-sql-information.md)
 - [Migrate non-SQL Server databases using SQL Server Migration Assistant (Migrieren von Nicht-SQL Server-Datenbanken mithilfe des SQL Server-Migrations-Assistenten)](http://blogs.msdn.com/b/ssma/)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0831_2016-->

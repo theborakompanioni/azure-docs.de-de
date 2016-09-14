@@ -20,14 +20,14 @@
 > [AZURE.SELECTOR]
 - [Übersicht über das Tutorial](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 - [Verwenden des Data Factory-Editors](data-factory-copy-activity-tutorial-using-azure-portal.md)
-- [Mithilfe von PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
+- [Verwenden von PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
 - [Verwenden von Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
 - [Verwenden der REST-API](data-factory-copy-activity-tutorial-using-rest-api.md)
 - [Verwenden des Kopier-Assistenten](data-factory-copy-data-wizard-tutorial.md)
 
-In diesem Tutorial verwenden Sie den Data Factory-Kopier-Assistenten, um eine Pipeline mit einer Kopieraktivität in einer Data Factory zu erstellen. Zuerst erstellen Sie eine Data Factory mit dem Azure-Portal. Anschließend verwenden Sie den Kopier-Assistenten, um verknüpfte Data Factory-Dienste, Datasets und eine Pipeline mit einer Kopieraktivität zu erstellen, mit der Daten aus einer Azure Blob Storage-Einheit in eine Azure SQL-Datenbank kopiert werden.
+In diesem Tutorial verwenden Sie den Data Factory-Kopier-Assistenten, um eine Pipeline mit einer Kopieraktivität in einer Data Factory zu erstellen. Zuerst erstellen Sie eine Data Factory mit dem Azure-Portal. Anschließend verwenden Sie den Kopier-Assistenten, um verknüpfte Data Factory-Dienste, Datasets und eine Pipeline mit einer Kopieraktivität zu erstellen, mit der Daten aus einem Azure-Blobspeicher in eine Azure SQL-Datenbank kopiert werden. Ausführliche Informationen zur Kopieraktivität finden Sie im Artikel [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md).
 
-> [AZURE.IMPORTANT] Lesen Sie sich den Artikel [Übersicht über das Tutorial](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) durch, und führen Sie die vorbereitenden Schritte aus, bevor Sie mit diesem Tutorial beginnen.
+> [AZURE.IMPORTANT] Lesen Sie den Artikel [Übersicht über das Tutorial](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md), und führen Sie die vorbereitenden Schritte aus, bevor Sie mit diesem Tutorial beginnen.
 
 ## Erstellen einer Data Factory
 In diesem Schritt erstellen Sie im Azure-Portal eine Azure Data Factory namens **ADFTutorialDataFactory**.
@@ -57,7 +57,7 @@ In diesem Schritt erstellen Sie im Azure-Portal eine Azure Data Factory namens *
 	> [AZURE.NOTE] Der Name der Data Factory kann in Zukunft als DNS-Name registriert und so öffentlich sichtbar werden.
 
 9. Klicken Sie auf der linken Seite auf **BENACHRICHTIGUNGEN**, und suchen Sie nach Benachrichtigungen zum Erstellungsprozess. Klicken Sie auf **X**, um das Blatt **Benachrichtigungen** zu schließen, falls es geöffnet ist.
-10. Nach Abschluss der Erstellung wird das Blatt **DATA FACTORY** wie unten dargestellt angezeigt:
+10. Nach Abschluss der Erstellung wird das Blatt **DATA FACTORY** wie in der folgenden Abbildung dargestellt angezeigt:
 
     ![Data Factory-Startseite](./media/data-factory-copy-data-wizard-tutorial/getstarted-data-factory-home-page.png)
 
@@ -73,7 +73,7 @@ In diesem Schritt erstellen Sie im Azure-Portal eine Azure Data Factory namens *
 	3. Klicken Sie auf **Next**.
 
 	![Kopiertool – Seite „Eigenschaften“](./media/data-factory-copy-data-wizard-tutorial/copy-tool-properties-page.png)
-3. Klicken Sie auf der Seite **Quelldatenspeicher** auf die Kachel **Azure Blob Storage**. Sie können diese Seite verwenden, um den Quelldatenspeicher für die Kopieraufgabe anzugeben. Sie können einen verknüpften Datenspeicherdienst verwenden oder einen neuen Datenspeicher angeben. Klicken Sie zum Verwenden eines vorhandenen verknüpften Diensts auf **ÜBER VORHANDENE VERKNÜPFTE DIENSTE**, und wählen Sie den richtigen verknüpften Dienst aus.
+3. Klicken Sie auf der Seite **Quelldatenspeicher** auf die Kachel **Azure Blob Storage**. Sie können diese Seite verwenden, um den Quelldatenspeicher für die Kopieraufgabe anzugeben. Sie können einen verknüpften Datenspeicherdienst verwenden oder einen neuen Datenspeicher angeben. Klicken Sie zum Verwenden eines vorhandenen verknüpften Diensts auf **FROM EXISTING LINKED SERVICES** (ÜBER VORHANDENE VERKNÜPFTE DIENSTE), und wählen Sie den richtigen verknüpften Dienst aus.
 
 	![Kopiertool – Seite „Quelldatenspeicher“](./media/data-factory-copy-data-wizard-tutorial/copy-tool-source-data-store-page.png)
 5. Auf der Seite **Azure Blob Storage-Konto angeben**:
@@ -102,11 +102,11 @@ In diesem Schritt erstellen Sie im Azure-Portal eine Azure Data Factory namens *
 
 	![Kopiertool – Tabellenzuordnung](./media/data-factory-copy-data-wizard-tutorial/copy-tool-table-mapping-page.png)
 10. Klicken Sie auf der Seite **Schemazuordnung** auf **Weiter**.
-11. Überprüfen Sie die Informationen auf der Seite **Zusammenfassung**, und klicken Sie auf **Fertig stellen**. Es werden zwei verknüpfte Dienste, zwei Datasets (Eingabe und Ausgabe) und eine Pipeline in der Data Factory erstellt (von der aus Sie den Kopier-Assistenten gestartet haben).
+11. Überprüfen Sie die Informationen auf der Seite **Zusammenfassung**, und klicken Sie auf **Fertig stellen**. Der Assistent erstellt zwei verknüpfte Dienste, zwei Datasets (Eingabe und Ausgabe) und eine Pipeline in der Data Factory erstellt (von der aus Sie den Kopier-Assistenten gestartet haben).
 12. Klicken Sie auf der Seite **Bereitstellung erfolgreich** auf **Zum Überwachen der Kopierpipeline hier klicken**.
 
 	![Kopiertool – Bereitstellung erfolgreich](./media/data-factory-copy-data-wizard-tutorial/copy-tool-deployment-succeeded.png)
-13. Verwenden Sie die Anleitung unter [Überwachen und Verwalten der Pipeline mit der Überwachungs-App](data-factory-monitor-manage-app.md), um zu erfahren, wie Sie die gerade erstellte Pipeline überwachen können.
+13. Verwenden Sie die Anleitung unter [Überwachen und Verwalten der Pipeline mit der Überwachungs-App](data-factory-monitor-manage-app.md), um zu erfahren, wie Sie die erstellte Pipeline überwachen können.
 
 	![Überwachungs-App](./media/data-factory-copy-data-wizard-tutorial/monitoring-app.png)
  
@@ -120,4 +120,4 @@ In diesem Schritt erstellen Sie im Azure-Portal eine Azure Data Factory namens *
 | [Datasets](data-factory-create-datasets.md) | Dieser Artikel enthält Informationen zu Datasets in Azure Data Factory.
 | [Überwachen und Verwalten von Pipelines mit der Überwachungs-App](data-factory-monitor-manage-app.md) | In diesem Artikel wird das Überwachen, Verwalten und Debuggen von Pipelines mit der App für die Überwachung und Verwaltung beschrieben. 
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0907_2016-->

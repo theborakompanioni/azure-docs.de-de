@@ -24,6 +24,8 @@ Es gibt mehrere Features und Funktionen von Azure Active Directory (Azure AD) B2
 
 Wenn während der [Erstellung eines Azure AD B2C-Mandanten](active-directory-b2c-get-started.md) Probleme auftreten, hilft Ihnen die Anleitung unter [Erstellen eines Azure Active Directory (Azure AD)-Mandanten oder eines Azure AD B2C-Mandanten – Probleme und Lösungen](active-directory-b2c-support-create-directory.md) weiter.
 
+Beachten Sie, dass beim Löschen eines vorhandenen B2C-Mandanten und erneuten Erstellen mit demselben Domänennamen bekannte Probleme auftreten. Sie müssen einen B2C-Mandanten mit einem anderen Domänennamen erstellen.
+
 ## Hinweis zu B2C-Mandantenkontingenten
 
 Standardmäßig ist die Anzahl von Benutzern in einem B2C-Mandanten auf 50.000 Benutzer begrenzt. Wenn Sie das Kontingent für den B2C-Mandanten erhöhen möchten, sollten Sie sich an den Support wenden.
@@ -34,7 +36,7 @@ Die Standard-Bestätigungs-E-Mail ist mit dem Microsoft-Branding versehen. Diese
 
 ## Einschränkungen für Anwendungen
 
-Die unten angegebenen Arten von Anwendungen werden in Azure AD B2C derzeit nicht unterstützt. Eine Beschreibung der unterstützten Arten von Anwendungen finden Sie unter [Azure AD B2C: Anwendungstypen](active-directory-b2c-apps.md).
+Die unten angegebenen Arten von Anwendungen werden in Azure AD B2C derzeit nicht unterstützt. Eine Beschreibung der unterstützten Anwendungstypen finden Sie unter [Azure AD B2C: Anwendungstypen](active-directory-b2c-apps.md).
 
 ### Single-Page-Anwendungen (JavaScript)
 
@@ -42,7 +44,7 @@ Viele moderne Anwendungen verfügen über ein SPA-Front-End (Single-Page-Anwendu
 
 ### Daemons/serverseitige Anwendungen
 
-Anwendungen, die lang andauernde Prozesse enthalten oder ohne Benutzereingriff arbeiten, benötigen auch die Möglichkeit, auf sichere Ressourcen wie Web-APIs zuzugreifen. Diese Anwendungen können mithilfe der App-Identität (anstelle der delegierten Endkundenidentität) sowie über den [OAuth 2.0-Ablauf für Clientanmeldeinformationen](active-directory-b2c-reference-protocols.md#oauth2-client-credentials-grant-flow) die Authentifizierung durchführen und Token abrufen. Dieser Ablauf ist in Azure AD B2C noch nicht verfügbar. Vorläufig können Anwendungen erst Token erhalten, nachdem ein interaktiver Endkunden-Anmeldeablauf stattgefunden hat.
+Anwendungen, die lang andauernde Prozesse enthalten oder ohne Benutzereingriff arbeiten, benötigen auch die Möglichkeit, auf sichere Ressourcen wie Web-APIs zuzugreifen. Diese Anwendungen können mithilfe der App-Identität (anstelle der delegierten Endkundenidentität) im [OAuth 2.0-Ablauf für Clientanmeldeinformationen](active-directory-b2c-reference-protocols.md#oauth2-client-credentials-grant-flow) die Authentifizierung durchführen und Token abrufen. Dieser Ablauf ist in Azure AD B2C noch nicht verfügbar. Vorläufig können Anwendungen erst Token erhalten, nachdem ein interaktiver Endkunden-Anmeldeablauf stattgefunden hat.
 
 ### Eigenständige Web-APIs
 
@@ -58,9 +60,9 @@ Dieses Szenario der verketteten Web-API kann mithilfe der Berechtigung für Anme
 
 Die Gruppe der von Microsoft unterstützten Bibliotheken, die mit Azure AD B2C verwendet werden können, ist zurzeit noch sehr beschränkt. Es ist Unterstützung für .NET-basierte Web-Apps und Dienste sowie für NodeJS-Web-Apps und -Dienste verfügbar. Außerdem ist eine Vorschauversion der .NET-Clientbibliothek (MSAL) vorhanden, die mit Azure AD B2C in Windows-Apps und anderen .NET-Apps verwendet werden kann.
 
-Derzeit werden noch keine Bibliotheken für andere Sprachen oder Plattformen unterstützt, z.B. iOS und Android. Wenn Sie die Erstellung auf einer anderen Plattform als den oben beschriebenen durchführen möchten, empfehlen wir Ihnen die Verwendung eines Open-Source-SDK. Bei Bedarf finden Sie hierzu weitere Informationen unter [OAuth 2.0- und OpenID Connect-Protokollreferenz](active-directory-b2c-reference-protocols.md). Azure AD B2C implementiert OAuth und OpenID Connect, um es zu ermöglichen, dass eine generische OAuth- oder OpenID Connect-Bibliothek für die Integration verwendet wird.
+Derzeit werden noch keine Bibliotheken für andere Sprachen oder Plattformen unterstützt, z.B. iOS und Android. Wenn Sie die Erstellung auf einer anderen Plattform als den oben beschriebenen durchführen möchten, empfehlen wir Ihnen die Verwendung eines Open Source-SDK. Bei Bedarf finden Sie hierzu weitere Informationen unter [OAuth 2.0- und OpenID Connect-Protokollreferenz](active-directory-b2c-reference-protocols.md). Azure AD B2C implementiert OAuth und OpenID Connect, um es zu ermöglichen, dass eine generische OAuth- oder OpenID Connect-Bibliothek für die Integration verwendet wird.
 
-In unseren iOS- und Android-Schnellstart-Tutorials werden Open-Source-Bibliotheken genutzt, die wir auf Kompatibilität mit Azure AD B2C getestet haben. Alle Schnellstart-Tutorials stehen im Abschnitt [Erste Schritte](active-directory-b2c-overview.md#getting-started) zur Verfügung.
+In unseren iOS- und Android-Schnellstart-Tutorials werden Open-Source-Bibliotheken genutzt, die wir auf Kompatibilität mit Azure AD B2C getestet haben. Alle Schnellstarttutorials stehen im Abschnitt [Erste Schritte](active-directory-b2c-overview.md#getting-started) zur Verfügung.
 
 ## Einschränkung für Protokolle
 
@@ -94,7 +96,7 @@ Wenn Sie das Kennwort für einen Endkunden mit einem lokalen Konto im klassische
 
 ## Probleme beim Erstellen eines benutzerdefinierten Attributs
 
-Ein [über das Azure-Portal hinzugefügtes benutzerdefiniertes Attribut](active-directory-b2c-reference-custom-attr.md) wird nicht sofort in Ihrem B2C Mandanten erstellt. Das benutzerdefinierte Attribut muss in mindestens einer Ihrer Richtlinien verwendet werden, damit es in Ihrem B2C-Mandanten erstellt und über die Graph-API verfügbar wird.
+Ein [über das Azure-Portal hinzugefügtes benutzerdefiniertes Attribut](active-directory-b2c-reference-custom-attr.md) wird nicht sofort in Ihrem B2C-Mandanten erstellt. Das benutzerdefinierte Attribut muss in mindestens einer Ihrer Richtlinien verwendet werden, damit es in Ihrem B2C-Mandanten erstellt und über die Graph-API verfügbar wird.
 
 ## Probleme beim Überprüfen einer Domäne im klassischen Azure-Portal
 
@@ -107,4 +109,4 @@ Anforderungen an Anmelderichtlinien (bei aktiviertem MFA) führen in Safari-Brow
 - Verwenden Sie die anstelle der Anmelderichtlinie die Richtlinie für Registrierung oder Anmeldung.
 - Verringern Sie die Anzahl der in Ihrer Richtlinie angeforderten **Anwendungsansprüche**.
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0831_2016-->

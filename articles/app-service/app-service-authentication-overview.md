@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="04/25/2016"
+	ms.date="08/29/2016"
 	ms.author="mahender"/>
 
 # Authentifizierung und Autorisierung in Azure App Service
@@ -26,7 +26,7 @@ App Service nutzt die Verbundidentität. Dabei werden Kontenspeicherung und Benu
 
 Mit folgenden Tutorials können Sie sofort loslegen:
 
-- [Hinzufügen der Authentifizierung zu Ihrer iOS-App][iOS] (oder [Android], [Windows], [Xamarin.iOS], [Xamarin.Android], [Xamarin.Forms] oder [Cordova])
+- [Hinzufügen der Authentifizierung zu Ihrer iOS-App][iOS] \(oder [Android], [Windows], [Xamarin.iOS], [Xamarin.Android], [Xamarin.Forms] oder [Cordova])
 - [Benutzerauthentifizierung für API-Apps in Azure App Service][apia-user]
 - [Erste Schritte mit Azure App Service – Teil 2][web-getstarted]
 
@@ -115,7 +115,7 @@ In den folgenden Tutorials erfahren Sie, wie Sie App Service für die Verwendung
 - [Konfigurieren Ihrer App Service-Anwendung zur Verwendung der Microsoft-Kontoanmeldung][MSA]
 - [Konfigurieren Ihrer App Service-Anwendung zur Verwendung der Twitter-Anmeldung][Twitter]
 
-Wenn Sie keines der hier beschriebenen Identitätssysteme verwenden möchten, können Sie die [Vorschau der Unterstützung der benutzerdefinierten Authentifizierung im Mobile Apps-.NET-Server-SDK][custom-auth] (geeignet für Web-Apps, mobile Apps und API-Apps) nutzen.
+Wenn Sie keines der hier beschriebenen Identitätssysteme verwenden möchten, können Sie die [Vorschau der Unterstützung der benutzerdefinierten Authentifizierung im Mobile Apps-.NET-Server-SDK][custom-auth] \(geeignet für Web-Apps, mobile Apps und API-Apps) nutzen.
 
 ### Webanwendungen
 In den folgenden Tutorials erfahren Sie, wie Sie die Authentifizierung einer Webanwendung hinzufügen:
@@ -138,6 +138,18 @@ Informationen zur Verwendung des clientgesteuerten Flusses für Azure Active Dir
 - [Verwenden der Active Directory-Authentifizierungsbibliothek für iOS][ADAL-iOS]
 - [Verwenden der Active Directory-Authentifizierungsbibliothek für Android][ADAL-Android]
 - [Verwenden der Active Directory-Authentifizierungsbibliothek für Windows und Xamarin][ADAL-dotnet]
+
+Informationen zur Verwendung des clientgesteuerten Flusses für Facebook finden Sie in den folgenden Ressourcen:
+
+- [Verwenden des Facebook-SDK für iOS](../app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md#facebook-sdk)
+
+Informationen zur Verwendung des clientgesteuerten Flusses für Twitter finden Sie in den folgenden Ressourcen:
+
+- [Verwenden von Twitter Fabric für iOS](../app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md#twitter-fabric)
+
+Informationen zur Verwendung des clientgesteuerten Flusses für Google finden Sie in den folgenden Ressourcen:
+
+- [Verwenden des Google-Anmelde-SDK für iOS](../app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md#google-sdk)
 
 ### API-Anwendungen
 In den folgenden Tutorials erfahren Sie, wie Sie Ihre API-Apps schützen können:
@@ -178,4 +190,4 @@ In den folgenden Tutorials erfahren Sie, wie Sie Ihre API-Apps schützen können
 [ADAL-iOS]: ../app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md#adal
 [ADAL-dotnet]: ../app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library.md#adal
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0831_2016-->

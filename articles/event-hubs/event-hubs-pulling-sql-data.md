@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/31/2016"
+   ms.date="08/25/2016"
    ms.author="spyros;sethm" />
 
 # Übertragen von Daten per Pull aus SQL in einen Azure Event Hub
@@ -34,12 +34,12 @@ Nach dem Lesen der Konfigurationsdatei verfällt die Anwendung in eine Schleife 
 
 1. Die Anwendung basiert auf der Annahme, dass die SQL-Tabelle von einem externen Prozess aktualisiert wird und dass Sie nur die Updates an einen Event Hub senden möchten.
 2. Die SQL-Tabelle muss über ein Feld mit einer eindeutigen und sich erhöhenden Zahl verfügen, z. B. eine Datensatznummer. Dies kann einfach ein Feld namens „Id“ oder ein anderer Wert sein, der sich beim Hinzufügen von Datensätzen zur Datenbank erhöht, z. B. „Creation\_time“ oder „Sequence\_number“. Die Anwendung erkennt und speichert den Wert des Felds bei jeder Iteration. In jedem nachfolgenden Durchlauf der Schleife fragt die Anwendung im Wesentlichen die Tabelle nach allen Datensätzen ab, in denen der Wert dieses Felds den Wert übersteigt, der beim letzten Durchlaufen der Schleife erkannt wurde. Diesen letzten Wert bezeichnen wir als „Offset“.
-3. Die Anwendung erstellt beim Start eine Tabelle „TableOffsets“, um die Offsets zu speichern. Die Tabelle wird mit der Abfrage „CreateOffsetTableQuery“ erstellt, die in der Konfigurationsdatei definiert ist. 
+3. Die Anwendung erstellt beim Start eine Tabelle „TableOffsets“, um die Offsets zu speichern. Die Tabelle wird mit der Abfrage „CreateOffsetTableQuery“ erstellt, die in der Konfigurationsdatei definiert ist.
 4. Es gibt mehrere Abfragen für die Arbeit mit der Offsettabelle, die in der Konfigurationsdatei als „OffsetQuery“, „UpdateOffsetQuery“ und „InsertOffsetQuery“ definiert sind. Sie sollten diese nicht ändern.
-5. Die in der Konfigurationsdatei definierte Abfrage „DataQuery“ ist die Abfrage, die ausgeführt wird, um Datensätze per Pull aus der SQL-Tabelle abzurufen. Zu Optimierungszwecken ist sie zurzeit auf die ersten 1.000 Datensätze in jedem Schleifendurchlauf eingeschränkt. Wenn der Datenbank seit der letzten Abfrage beispielsweise 25.000 Datensätze hinzugefügt wurden, kann die Ausführung der Abfrage eine Weile dauern. Durch die Begrenzung der Abfrage auf 1.000 Datensätze pro Durchlauf werden die Abfragen viel schneller ausgeführt. Durch die Auswahl der ersten 1.000 werden einfach aufeinander folgende Batches von 1.000 Datensätze per Push an den Event Hub übertragen.    
+5. Die in der Konfigurationsdatei definierte Abfrage „DataQuery“ ist die Abfrage, die ausgeführt wird, um Datensätze per Pull aus der SQL-Tabelle abzurufen. Zu Optimierungszwecken ist sie zurzeit auf die ersten 1.000 Datensätze in jedem Schleifendurchlauf eingeschränkt. Wenn der Datenbank seit der letzten Abfrage beispielsweise 25.000 Datensätze hinzugefügt wurden, kann die Ausführung der Abfrage eine Weile dauern. Durch die Begrenzung der Abfrage auf 1.000 Datensätze pro Durchlauf werden die Abfragen viel schneller ausgeführt. Durch die Auswahl der ersten 1.000 werden einfach aufeinander folgende Batches von 1.000 Datensätze per Push an den Event Hub übertragen.
 
 ## Nächste Schritte
 
 Zum Bereitstellen der Lösung klonen Sie die Anwendung SqlToEventHub, oder laden Sie sie herunter, bearbeiten Sie die Datei „App.config“, erstellen Sie die Anwendung, und veröffentlichen Sie sie. Nachdem Sie die Anwendung veröffentlicht haben, können Sie deren Ausführung im klassischen Azure-Portal unter Cloud Services verfolgen und die bei Ihrem Event Hub eingehenden Ereignisse überwachen. Beachten Sie, dass die Häufigkeit von zwei Dingen abhängt: der Aktualisierungshäufigkeit der SQL-Tabelle und dem Intervall, das Sie in der Konfigurationsdatei für die Anwendung angegeben haben.
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0831_2016-->

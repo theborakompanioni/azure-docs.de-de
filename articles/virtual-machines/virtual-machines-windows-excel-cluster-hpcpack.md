@@ -14,12 +14,12 @@
  ms.topic="article"
  ms.tgt_pltfrm="vm-windows"
  ms.workload="big-compute"
- ms.date="05/25/2016"
+ ms.date="08/25/2016"
  ms.author="danlep"/>
 
-# Erste Schritte mit einem HPC Pack-Cluster in Azure zum Ausführen von Excel- und SOA-Workloads
+# Erste Schritte mit Excel- und SOA-Workloads in einem HPC Pack-Cluster in Azure
 
-In diesem Artikel erfahren Sie, wie Sie einen Microsoft HPC Pack-Cluster mithilfe einer Azure-Schnellstartvorlage oder optional eines Azure PowerShell-Bereitstellungsskripts für Azure-Infrastrukturdienste (IaaS) bereitstellen. Hierzu werden VM-Images aus Azure Marketplace verwendet, die für die Ausführung von Microsoft Excel- oder SOA-Workloads mit HPC Pack konzipiert sind. Mit dem Cluster können Sie einfache Excel-HPC- und SOA-Dienste über einen lokalen Clientcomputer ausführen. Zu den Excel-HPC-Diensten zählen die Abladung von Excel-Arbeitsmappen sowie benutzerdefinierte Funktionen (User-Defined Functions, UDFs) von Excel.
+In diesem Artikel erfahren Sie, wie Sie einen Microsoft HPC Pack-Cluster mithilfe einer Azure-Schnellstartvorlage oder optional eines Azure PowerShell-Bereitstellungsskripts für Azure-VMs bereitstellen. Der Cluster verwendet VM-Images aus Azure Marketplace, die für die Ausführung von Microsoft Excel- oder SOA-Workloads mit HPC Pack konzipiert sind. Mit dem Cluster können Sie einfache Excel-HPC- und SOA-Dienste über einen lokalen Clientcomputer ausführen. Zu den Excel-HPC-Diensten zählen die Abladung von Excel-Arbeitsmappen sowie benutzerdefinierte Funktionen (User-Defined Functions, UDFs) von Excel.
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
@@ -29,22 +29,22 @@ Das folgende Diagramm gibt einen allgemeinen Überblick über den zu erstellende
 
 ## Voraussetzungen
 
-*   **Clientcomputer**: Sie benötigen einen Windows-basierten Clientcomputer, um das Azure PowerShell-Clusterbereitstellungsskript auszuführen (sofern Sie diese Bereitstellungsmethode verwenden) und Excel- und SOA-Beispielaufträge an den Cluster zu übermitteln.
+*   **Clientcomputer**: Sie benötigen einen Windows-basierten Clientcomputer, um Excel- und SOA-Beispielaufträge an den Cluster zu übermitteln. Außerdem benötigen Sie einen Windows-Computer, um die Clusterbereitstellungsskripts von Azure PowerShell auszuführen (wenn Sie diese Bereitstellungsmethode auswählen), und ein
 
-*   **Azure-Abonnement** – Wenn Sie über kein Azure-Abonnement verfügen, können Sie in wenigen Minuten ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/) einrichten.
+*   **Azure-Abonnement** – wenn Sie über kein Azure-Abonnement verfügen, können Sie in wenigen Minuten ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/) einrichten.
 
-*   **Kernkontingent** – Unter Umständen muss das Kontingent für die Kerne erhöht werden. Dies gilt insbesondere, wenn Sie mehrere Clusterknoten mit Multicore-VM-Größen bereitstellen. Beachten Sie bei Verwendung einer Azure-Schnellstartvorlage, dass das Kernkontingent im Ressourcen-Manager pro Azure-Region gilt und gegebenenfalls in einer bestimmten Region erhöht werden muss. Weitere Informationen finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../azure-subscription-service-limits.md). Um ein Kontingent zu erhöhen, können Sie kostenlos [eine Anfrage an den Onlinekundensupport richten](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/).
+*   **Kernkontingent** – Unter Umständen muss das Kontingent für die Kerne erhöht werden. Dies gilt insbesondere, wenn Sie mehrere Clusterknoten mit Multicore-VM-Größen bereitstellen. Wenn Sie eine Azure-Schnellstartvorlage verwenden, gilt das Kernekontingent im Resource Manager pro Azure-Region. In diesem Fall müssen Sie möglicherweise das Kontingent in einer bestimmten Region erhöhen. Weitere Informationen finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../azure-subscription-service-limits.md). Um ein Kontingent zu erhöhen, können Sie kostenlos [eine Anfrage an den Onlinekundensupport richten](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/).
 
-*   **Microsoft Office-Lizenz** – Wenn Sie Serverknoten mit einem Marketplace HPC Pack-VM-Image mit Microsoft Excel bereitstellen, wird eine 30-Tage-Evaluierungsversion von Microsoft Excel Professional Plus 2013 auf den Serverknoten installiert. Nach Ablauf des Evaluierungszeitraums müssen Sie eine gültige Lizenz für Microsoft Office bereitstellen, um Excel zu aktivieren, damit Sie weiterhin Workloads ausführen können. Weitere Informationen finden Sie unter [Excel-Aktivierung](#excel-activation) weiter unten in diesem Artikel.
+*   **Microsoft Office-Lizenz**: Wenn Sie Serverknoten mit einem Marketplace HPC Pack-VM-Image mit Microsoft Excel bereitstellen, wird eine 30-Tage-Evaluierungsversion von Microsoft Excel Professional Plus 2013 installiert. Nach Ablauf des Evaluierungszeitraums müssen Sie eine gültige Lizenz für Microsoft Office bereitstellen, um Excel zu aktivieren, damit Sie weiterhin Workloads ausführen können. Weitere Informationen finden Sie unter [Excel-Aktivierung](#excel-activation) weiter unten in diesem Artikel.
 
 
 ## Schritt 1: Einrichten eines HPC Pack-Clusters in Azure
 
-Wir zeigen Ihnen zwei Methoden für die Clustereinrichtung. Bei der ersten kommen eine Azure-Schnellstartvorlage und das Azure-Portal zum Einsatz, bei der zweiten wird ein Azure PowerShell-Bereitstellungsskript verwendet.
+Wir zeigen Ihnen zwei Optionen für die Clustereinrichtung. Bei der ersten kommen eine Azure-Schnellstartvorlage und das Azure-Portal zum Einsatz, bei der zweiten wird ein Azure PowerShell-Bereitstellungsskript verwendet.
 
 
-### Mit einer Schnellstartvorlage
-Verwenden Sie eine Azure-Schnellstartvorlage, um schnell und einfach einen HPC Pack-Cluster im Azure-Portal bereitzustellen. Wenn Sie die Vorlage im Vorschauportal öffnen, wird eine einfache Benutzeroberfläche angezeigt, über die Sie die Einstellungen für Ihren Cluster angeben können. Gehen Sie wie folgt vor:
+### Option 1. Mit einer Schnellstartvorlage
+Verwenden Sie eine Azure-Schnellstartvorlage, um schnell und einfach einen HPC Pack-Cluster im Azure-Portal bereitzustellen. Wenn Sie die Vorlage im Portal öffnen, erscheint eine einfache Benutzeroberfläche, über die Sie die Einstellungen für Ihren Cluster angeben können. Gehen Sie wie folgt vor:
 
 >[AZURE.TIP]Verwenden Sie ggf. eine [Azure Marketplace-Vorlage](https://portal.azure.com/?feature.relex=*%2CHubsExtension#create/microsofthpc.newclusterexcelcn), die einen ähnlichen Cluster speziell für Excel-Workloads erstellt. Die Schritte unterscheiden sich geringfügig von den folgenden.
 
@@ -56,23 +56,23 @@ Verwenden Sie eine Azure-Schnellstartvorlage, um schnell und einfach einen HPC 
 
 3.  Führen Sie im Portal die folgenden Schritte aus, um die Parameter für die HPC-Clustervorlage einzugeben:
 
-    a. Geben Sie auf der Seite **Parameter** Werte für die Vorlagenparameter ein. (Klicken Sie auf das Symbol neben einer Einstellung, um Hilfeinformationen anzuzeigen.) Der Bildschirm weiter unten zeigt Beispielwerte. In diesem Beispiel erstellen wir einen neuen HPC Pack-Cluster namens *hpc01* in der Domäne *hpc.local* mit einem Haupt- und zwei Serverknoten. Die Serverknoten werden auf der Grundlage eines HPC Pack-VM-Image erstellt, das auch Microsoft Excel beinhaltet.
+    a. Geben Sie auf der Seite **Parameter** Werte für die Vorlagenparameter ein, bzw. ändern Sie sie. (Klicken Sie auf das Symbol neben einer Einstellung, um Hilfeinformationen anzuzeigen.) Der Bildschirm weiter unten zeigt Beispielwerte. In diesem Beispiel erstellen wir einen Cluster namens *hpc01* in der Domäne *hpc.local* mit einem Haupt- und zwei Serverknoten. Die Serverknoten werden auf der Grundlage eines HPC Pack-VM-Image erstellt, das auch Microsoft Excel beinhaltet.
 
     ![Parameter eingeben][parameters]
 
-    >[AZURE.NOTE]Der virtuelle Computer für den Hauptknoten wird automatisch auf der Grundlage des [neuesten Marketplace-Image](https://azure.microsoft.com/marketplace/partners/microsoft/hpcpack2012r2onwindowsserver2012r2/) von HPC Pack 2012 R2 für Windows Server 2012 R2 erstellt. Aktuell basiert das Image auf HPC Pack 2012 R2 Update 3.
+    >[AZURE.NOTE]Der virtuelle Computer für den Hauptknoten wird automatisch auf der Grundlage des [neuesten Marketplace-Image](https://azure.microsoft.com/marketplace/partners/microsoft/hpcpack2012r2onwindowsserver2012r2/) von HPC Pack 2012 R2 für Windows Server 2012 R2 erstellt. Aktuell basiert das Image auf HPC Pack 2012 R2 Update 3.
     >
-    >Die virtuellen Computer für die Serverknoten werden auf der Grundlage des neuesten Image der ausgewählten Serverknotenfamilie erstellt. Wählen Sie die Option **ComputeNodeWithExcel** aus, um das neueste HPC Pack-Serverknotenimage mit einer Evaluierungsversion von Microsoft Excel Professional Plus 2013 zu erhalten. Wenn Sie einen Cluster für allgemeine SOA-Sitzungen oder für die Abladung von Excel-UDFs bereitstellen möchten, wählen Sie die Option **ComputeNode** (ohne Installation von Excel) aus.
+    >Die virtuellen Computer für die Serverknoten werden auf der Grundlage des neuesten Image der ausgewählten Serverknotenfamilie erstellt. Wählen Sie die Option **ComputeNodeWithExcel** aus, um das neueste HPC Pack-Serverknotenimage mit einer Evaluierungsversion von Microsoft Excel Professional Plus 2013 zu erhalten. Um einen Cluster für allgemeine SOA-Sitzungen oder für die Abladung von Excel-UDFs bereitzustellen, wählen Sie die Option **ComputeNode** (ohne Installation von Excel) aus.
 
     b. Wählen Sie das Abonnement aus.
 
-    c. Erstellen Sie eine neue Ressourcengruppe für den Cluster (beispielsweise *hpc01RG*).
+    c. Erstellen Sie eine Ressourcengruppe für den Cluster (beispielsweise *hpc01RG*).
 
     d. Wählen Sie einen Ort für die Ressourcengruppe (beispielsweise „USA, Mitte“).
 
-    e. Lesen Sie die rechtlichen Bedingungen. Klicken Sie auf **Erstellen**, sofern Sie den Bedingungen zustimmen. Legen Sie die Werte für die Vorlage fest, und klicken Sie anschließend auf **Erstellen**.
+    e. Lesen Sie die rechtlichen Bedingungen. Klicken Sie auf **Erwerben**, sofern Sie den Bedingungen zustimmen. Legen Sie die Werte für die Vorlage fest, und klicken Sie anschließend auf **Erstellen**.
 
-4.  Wenn die Bereitstellung nach etwa 30 Minuten abgeschlossen ist, exportieren Sie die Clusterzertifikatsdatei aus dem Clusterhauptknoten. Dieses öffentliche Zertifikat wird in einem späteren Schritt zur serverseitigen Authentifizierung für eine sichere HTTP-Bindung auf dem Clientcomputer importiert.
+4.  Wenn die Bereitstellung nach etwa 30 Minuten abgeschlossen ist, exportieren Sie die Clusterzertifikatsdatei aus dem Clusterhauptknoten. Dieses öffentliche Zertifikat importieren Sie in einem späteren Schritt zur serverseitigen Authentifizierung für eine sichere HTTP-Bindung auf dem Clientcomputer .
 
     a. Stellen Sie über das Azure-Portal eine Remotedesktopverbindung mit dem Hauptknoten her.
 
@@ -82,7 +82,7 @@ Verwenden Sie eine Azure-Schnellstartvorlage, um schnell und einfach einen HPC 
 
     ![Zertifikat exportieren][cert]
 
-### Mit dem HPC Pack-IaaS-Bereitstellungsskript
+### Option 2. Mit dem HPC Pack-IaaS-Bereitstellungsskript
 
 Das HPC Pack-IaaS-Bereitstellungsskript ist eine weitere vielseitige Bereitstellungsmethode für HPC Pack-Cluster. Es erstellt einen Cluster im klassischen Bereitstellungsmodell, während die Vorlage das Azure Resource Manager-Bereitstellungsmodell verwendet. Das Skript ist außerdem mit einem Abonnement im Azure Global- oder Azure China-Dienst kompatibel.
 
@@ -140,11 +140,11 @@ Das HPC Pack-IaaS-Bereitstellungsskript ist eine weitere vielseitige Bereitstel
 
 **Hinweise zur Konfigurationsdatei**
 
-* Der Wert für **VMName** des Hauptknotens **MUSS** exakt dem Wert für **ServiceName** entsprechen, oder der SOA-Aufträge können nicht ausgeführt werden.
+* Der Wert für **VMName** des Hauptknotens **MUSS** dem Wert für **ServiceName** entsprechen, oder SOA-Aufträge können nicht ausgeführt werden.
 
 * Geben Sie unbedingt **EnableWebPortal** an, damit das Hauptknotenzertifikat generiert und exportiert wird.
 
-* Die Datei gibt das PowerShell-Nachkonfigurationsskript „PostConfig.ps1“ zum Konfigurieren bestimmter Einstellungen des Hauptknotens an. Es richtet beispielsweise die Verbindungszeichenfolge für den Azure-Speicher ein, entfernt die Serverknotenrolle aus dem Hauptknoten und schaltet alle Knoten bei der Bereitstellung online. Beispielskript:
+* Die Datei gibt ein Post-Konfigurations-PowerShell-Skript „PostConfig.ps1“ an, das auf dem Hauptknoten ausgeführt wird. Das folgende Beispielskript konfiguriert die Azure-Speicher-Verbindungszeichenfolge, entfernt die Serverknotenrolle vom Hauptknoten und bringt alle Knoten bei deren Bereitstellung online.
 
 ```
     # add the HPC Pack powershell cmdlets
@@ -184,38 +184,42 @@ Das HPC Pack-IaaS-Bereitstellungsskript ist eine weitere vielseitige Bereitstel
     cd E:\IaaSClusterScript
     ```
     
-3.  Führen Sie den folgenden Befehl aus, um den HPC Pack-Cluster bereitzustellen. In diesem Beispiel wird davon ausgegangen, dass sich die Konfigurationsdatei unter „E:\\HPCDemoConfig.xml“ befindet.
+3.  Um den HPC Pack-Cluster bereitzustellen, führen Sie den folgenden Befehl aus. In diesem Beispiel wird davon ausgegangen, dass sich die Konfigurationsdatei unter „E:\\HPCDemoConfig.xml“ befindet.
 
     ```
     .\New-HpcIaaSCluster.ps1 –ConfigFile E:\HPCDemoConfig.xml –AdminUserName MyAdminName
     ```
 
-Das HPC Pack-Bereitstellungsskript wird ausgeführt. Dieser Vorgang kann eine Weile dauern. Durch das Skript wird unter anderem das Clusterzertifikat exportiert, heruntergeladen und auf dem Clientcomputer im Ordner „Dokumente“ des aktuellen Benutzers gespeichert. Das Skript generiert eine Meldung wie die folgende: In einem anderen Schritt wird das Zertifikat dann in den entsprechenden Zertifikatspeicher importiert.
+Das HPC Pack-Bereitstellungsskript wird ausgeführt. Dieser Vorgang kann eine Weile dauern. Durch das Skript wird unter anderem das Clusterzertifikat exportiert, heruntergeladen und auf dem Clientcomputer im Ordner „Dokumente“ des aktuellen Benutzers gespeichert. Das Skript generiert eine Meldung wie die folgende. In einem anderen Schritt wird das Zertifikat dann in den entsprechenden Zertifikatspeicher importiert.
     
     You have enabled REST API or web portal on HPC Pack head node. Please import the following certificate in the Trusted Root Certification Authorities certificate store on the computer where you are submitting job or accessing the HPC web portal:
     C:\Users\hpcuser\Documents\HPCWebComponent_HPCExcelHN004_20150707162011.cer
 
-## Schritt 2. Abladen von Excel-Arbeitsmappen und Ausführen von UDFs über einen lokalen Client
+## Schritt 2: Abladen von Excel-Arbeitsmappen und Ausführen von UDFs über einen lokalen Client
 
 ### Excel-Aktivierung
 
-Wenn Sie das ComputeNodeWithExcel-VM-Image für Produktionsworkloads verwenden, müssen Sie eine gültige Microsoft Office-Lizenz angeben, um Excel auf den Serverknoten zu aktivieren. Andernfalls läuft die Evaluierungsversion von Excel innerhalb von 30 Tagen ab, und bei der Ausführung der Excel-Arbeitsmappen würde ständig der Ausnahmefehler „COMException“ (0x800AC472) auftreten. Wenn dies der Fall ist, melden Sie sich bei dem Hauptknoten an und nehmen Sie eine Clusrun-Ausführung von `%ProgramFiles(x86)%\Microsoft Office\Office15\OSPPREARM.exe` für alle Excel-Serverknoten mit HPC Cluster Manager vor.
+Wenn Sie das ComputeNodeWithExcel-VM-Image für Produktionsworkloads verwenden, müssen Sie eine gültige Microsoft Office-Lizenz angeben, um Excel auf den Serverknoten zu aktivieren. Andernfalls läuft die Evaluierungsversion von Excel nach 30 Tagen ab, und bei der Ausführung der Excel-Arbeitsmappen würde der Ausnahmefehler „COMException“ (0x800AC472) auftreten.
+
+Sie können Excel für einen weiteren Evaluierungszeitraum von 30 Tagen neu aktivieren: Melden Sie sich bei dem Hauptknoten an, und nehmen Sie eine Clusrun-Ausführung von `%ProgramFiles(x86)%\Microsoft Office\Office15\OSPPREARM.exe` für alle Excel-Serverknoten mit HPC Cluster Manager vor. Sie können maximal zwei Mal neu aktivieren. Danach müssen Sie einen gültigen Lizenzschlüssel für Office bereitstellen.
+
+Die auf dem VM-Image installierte Edition von Office Professional Plus 2013 ist eine Volumenedition mit einem Generic Volume License Key (GVLK). Sie können sie über Schlüsselverwaltungsdienst (Key Management Service, KMS)/Aktivierung über Active Directory (Active Directory-Based Activation, AD-BA) oder Mehrfachaktivierungsschlüssel (Multiple Activation Key, MAK) aktivieren.
+
+    * To use KMS/AD-BA, use an existing KMS server or set up a new one by using the Microsoft Office 2013 Volume License Pack. (If you want to, set up the server on the head node.) Then, activate the KMS host key via the Internet or telephone. Then clusrun `ospp.vbs` to set the KMS server and port and activate Office on all the Excel compute nodes. 
     
-Damit steht Excel für eine weitere Evaluierungszeit von 30 Tagen zur Verfügung. Diese Möglichkeit können Sie maximal zweimal nutzen. Danach müssen Sie einen gültigen Lizenzschlüssel für Office bereitstellen.
+    * To use MAK, first clusrun `ospp.vbs` to input the key and then activate all the Excel compute nodes via the Internet or telephone. 
 
-Die auf diesem VM-Image installierte Version von Office Professional Plus 2013 ist eine Volumenedition mit generischem Volumenlizenzschlüssel (Generic Volume License Key, GVLK), die über Schlüsselverwaltungsdienst (Key Management Service, KMS)/Aktivierung über Active Directory (Active Directory-Based Activation, AD BA) oder Mehrfachaktivierungsschlüssel (Multiple Activation Key, MAK) aktiviert werden kann. Um KMS/AD-BA zu verwenden, setzen Sie einen vorhandenen KMS-Server ein, oder richten Sie einen neuen mithilfe des Microsoft Office 2013-Volumenlizenzpakets ein (auf dem Hauptknoten möglich). Aktivieren Sie dann den KMS-Host-Schlüssel über das Internet oder telefonisch. Nehmen Sie dann eine Clusrun-Ausführung von `ospp.vbs` vor, um den KMS-Server und den Port einzurichten und Office auf allen Excel-Serverknoten zu aktivieren. Nehmen Sie zur Verwendung von MAK zuerst eine Clusrun-Ausführung von `ospp.vbs` vor, und aktivieren Sie dann alle Excel-Serverknoten über das Internet oder telefonisch.
-
->[AZURE.NOTE]Retail Product Keys für Office Professsional Plus 2013 können mit diesem VM-Image nicht verwendet werden. Wenn Sie über gültige Schlüssel und Installationsmedien für andere Office- oder Excel-Editionen als diese Office Professional Plus 2013-Volumenedition verfügen, können Sie auch diese Volumenedition deinstallieren und die Edition installieren, über die Sie verfügen. Der neu installierte Excel-Serverknoten kann als benutzerdefiniertes VM-Image zur Verwendung in einer skalierten Bereitstellung erfasst werden.
+>[AZURE.NOTE]Retail Product Keys für Office Professsional Plus 2013 können mit diesem VM-Image nicht verwendet werden. Wenn Sie über gültige Schlüssel und Installationsmedien für andere Office- oder Excel-Editionen als diese Office Professional Plus 2013-Volumenedition verfügen, können Sie sie stattdessen verwenden. Deinstallieren Sie zunächst diese Volumenedition, und installieren Sie die Edition, die Sie besitzen. Der neu installierte Excel-Serverknoten kann als benutzerdefiniertes VM-Image zur Verwendung in einer skalierten Bereitstellung erfasst werden.
 
 ### Abladen von Excel-Arbeitsmappen
 
-Führen Sie die folgenden Schritte durch, um eine Excel-Arbeitsmappe für die Ausführung auf dem HPC Pack-Cluster in Azure abzuladen. Hierzu muss Excel 2010 oder 2013 bereits auf dem Clientcomputer installiert sein.
+Führen Sie die folgenden Schritte durch, um eine Excel-Arbeitsmappe für die Ausführung auf dem HPC Pack-Cluster in Azure abzuladen. Hierzu muss Excel 2010 oder 2013 bereits auf dem Clientcomputer installiert sein.
 
-1. Verwenden Sie eine der Methoden aus Schritt 1, um einen HPC Pack-Cluster mit dem Excel-Serverknotenimage bereitzustellen. Besorgen Sie sich die Clusterzertifikatsdatei (CER-Datei) sowie den Clusterbenutzernamen und das Kennwort.
+1. Verwenden Sie eine der Optionen aus Schritt 1, um einen HPC Pack-Cluster mit dem Excel-Serverknotenimage bereitzustellen. Besorgen Sie sich die Clusterzertifikatsdatei (CER-Datei) sowie den Clusterbenutzernamen und das Kennwort.
 
 2. Importieren Sie auf dem Clientcomputer das Clusterzertifikat unter „Cert:\\<Aktueller Benutzer>\\Root“.
 
-3. Vergewissern Sie sich, dass Excel installiert ist. Erstellen Sie auf dem Clientcomputer in dem Verzeichnis, in dem sich auch die Datei „Excel.exe“ befindet, eine Datei mit der Bezeichnung „Excel.exe.config“ und dem folgenden Inhalt. Dadurch wird sichergestellt, dass das Excel-COM-Add-In für HPC Pack 2012 R2 erfolgreich geladen wird.
+3. Vergewissern Sie sich, dass Excel installiert ist. Erstellen Sie auf dem Clientcomputer in dem Verzeichnis, in dem sich auch die Datei „Excel.exe“ befindet, eine Datei mit der Bezeichnung „Excel.exe.config“ und dem folgenden Inhalt. Dieser Schritt stellt sicher, dass das Excel-COM-Add-In für HPC Pack 2012 R2 erfolgreich geladen wird.
 
     ```
     <?xml version="1.0"?>
@@ -226,13 +230,13 @@ Führen Sie die folgenden Schritte durch, um eine Excel-Arbeitsmappe für die Au
     </configuration>
     ```
     
-4.	Laden Sie die gesamte [HPC Pack 2012 R2 Update 3-Installation](http://www.microsoft.com/download/details.aspx?id=49922) herunter, und installieren Sie den HPC Pack-Client. Alternativ können Sie auch die [HPC Pack 2012 R2 Update 3-Clienthilfsprogramme](https://www.microsoft.com/download/details.aspx?id=49923) und die entsprechende weitervertreibbare Visual C++ 2010-Komponente für Ihren Computer ([x64](http://www.microsoft.com/download/details.aspx?id=14632) oder [x86](https://www.microsoft.com/download/details.aspx?id=5555)) herunterladen und installieren.
+4.	Richten Sie den Client zum Übermitteln von Aufträgen an den HPC Pack-Cluster ein. Eine Option ist, die vollständige [HPC Pack 2012 R2 Update 3-Installation](http://www.microsoft.com/download/details.aspx?id=49922) herunterzuladen und den HPC Pack-Client zu installieren. Alternativ können Sie auch die [HPC Pack 2012 R2 Update 3-Clienthilfsprogramme](https://www.microsoft.com/download/details.aspx?id=49923) und die entsprechende weitervertreibbare Visual C++ 2010-Komponente für Ihren Computer ([x64](http://www.microsoft.com/download/details.aspx?id=14632) oder [x86](https://www.microsoft.com/download/details.aspx?id=5555)) herunterladen und installieren.
 
-5.	In diesem Beispiel verwenden wir eine Excel-Beispielarbeitsmappe namens „ConvertiblePricing\_Complete.xlsb“, die Sie [hier](https://www.microsoft.com/de-DE/download/details.aspx?id=2939) herunterladen können.
+5.	In diesem Beispiel verwenden wir eine Excel-Beispielarbeitsmappe namens „ConvertiblePricing\_Complete.xlsb“. Sie können es [hier](https://www.microsoft.com/de-DE/download/details.aspx?id=2939) herunterladen.
 
 6.	Kopieren Sie die Excel-Arbeitsmappe in einen Ordner (beispielsweise „D:\\Excel\\Run“).
 
-7.	Öffnen Sie die Excel-Arbeitsmappe. Klicken Sie auf dem Menüband **Entwickeln** auf **COM-Add-Ins**, und vergewissern Sie sich, dass das HPC Pack-Excel-COM-Add-In erfolgreich geladen wurde (siehe folgende Abbildung).
+7.	Öffnen Sie die Excel-Arbeitsmappe. Klicken Sie auf dem Menüband **Entwickeln** auf **COM-Add-Ins**, und vergewissern Sie sich, dass das HPC Pack-Excel-COM-Add-In erfolgreich geladen wurde.
 
     ![Excel-Add-In für HPC Pack][addin]
 
@@ -257,19 +261,19 @@ Führen Sie die folgenden Schritte durch, um eine Excel-Arbeitsmappe für die Au
     HPCExcelClient.OpenSession headNode:=HPC_ClusterScheduler, remoteWorkbookPath:=HPCWorkbookPath, UserName:="hpc\azureuser", Password:="<YourPassword>"
 ```
 
-9.	Kopieren Sie die Excel-Arbeitsmappe in ein Uploadverzeichnis (beispielsweise „D:\\Excel\\Upload“). Orientieren Sie sich dabei an der Angabe in der Konstanten „HPC\_DependsFiles“ aus dem VBA-Makro.
+9.	Kopieren Sie die Excel-Arbeitsmappe in ein Uploadverzeichnis, z.B. „D:\\Excel\\Upload“. Dieses Verzeichnis wird im VBA-Makro in der HPC\_DependsFiles-Konstante angegeben.
 
-10.	Klicken Sie auf dem Arbeitsblatt auf die Schaltfläche **Cluster**, um die Arbeitsmappe auf dem Azure-IaaS-Cluster auszuführen.
+10.	Um die Arbeitsmappe auf dem Azure-Cluster auszuführen, klicken Sie auf dem Arbeitsblatt auf die Schaltfläche **Cluster**.
 
 ### Ausführen von Excel-UDFs
 
-Wenn Sie Excel-UDFs verwenden möchten, führen Sie zur Einrichtung des Clientcomputers die weiter oben angegebenen Schritte 1 bis 3 durch. Für Excel-UDFs muss die Excel-Anwendung nicht auf den Serverknoten installiert sein. Sie können in Schritt 1 also anstelle des Serverknotenimage mit Excel ein normales Serverknotenimage auswählen.
+Wenn Sie Excel-UDFs verwenden möchten, führen Sie zur Einrichtung des Clientcomputers die weiter oben angegebenen Schritte 1 bis 3 durch. Für Excel-UDFs muss die Excel-Anwendung nicht auf den Serverknoten installiert sein. Wählen Sie also beim Erstellen des Clusterserverknotens ein normales Serverknotenimage anstelle des Serverknotenimages von Excel.
 
->[AZURE.NOTE] Im Clusterconnector-Dialogfeld von Excel 2010 und 2013 sind maximal 34 Zeichen zulässig. Längere Clusternamen wie etwa „hpcexcelhn01.southeastasia.cloudapp.azure.com“ passen nicht in das Dialogfeld. Dies kann folgendermaßen umgangen werden: Legen Sie im Dialogfeld als Name des Clusterhauptknotens eine computerweite Variable wie etwa *CCP\_IAASHN* mit dem Wert des langen Clusternamens und der Eingabe *%CCP\_IAASHN%* fest.
+>[AZURE.NOTE] Im Clusterconnector-Dialogfeld von Excel 2010 und 2013 sind maximal 34 Zeichen zulässig. Sie verwenden dieses Dialogfeld, um den Cluster anzugeben, der die UDFs ausführt. Längere Clusternamen (z.B. „hpcexcelhn01.southeastasia.cloudapp.azure.com“) passen nicht in das Dialogfeld. Die Problemumgehung besteht darin, eine computerweite Variable, z.B. *CCP\_IAASHN*, mit dem Wert des langen Namens des Clusters festzulegen. Geben Sie dann *%CCP\_IAASHN%* im Dialogfeld als Namen des Clusterhauptknotens ein.
 
 Führen Sie nach erfolgreicher Bereitstellung des Clusters die folgenden Schritte durch, um eine integrierte Beispiel-Excel-UDF auszuführen. Wenn Sie angepasste Excel-UDFs benötigen, sehen Sie sich [diese Ressourcen](http://social.technet.microsoft.com/wiki/contents/articles/1198.windows-hpc-and-microsoft-excel-resources-for-building-cluster-ready-workbooks.aspx) an, um die XLLs zu erstellen und auf dem IaaS-Cluster bereitzustellen.
 
-1.	Öffnen Sie eine neue Excel-Arbeitsmappe. Klicken Sie auf dem Menüband **Entwickeln** auf **Add-Ins**. Klicken Sie im Dialogfeld auf **Durchsuchen**, navigieren Sie zum Ordner „%CCP\_HOME%Bin\\XLL32“, und wählen Sie das Beispiel „ClusterUDF32.xll“ aus. Wenn ClusterUDF32 auf dem Clientcomputer nicht vorhanden ist, können Sie es aus dem Ordner "%CCP\_HOME%Bin\\XLL32" auf dem Hauptknoten kopieren.
+1.	Öffnen Sie eine neue Excel-Arbeitsmappe. Klicken Sie auf dem Menüband **Entwickeln** auf **Add-Ins**. Klicken Sie im Dialogfeld auf **Durchsuchen**, navigieren Sie zum Ordner „%CCP\_HOME%Bin\\XLL32“, und wählen Sie das Beispiel „ClusterUDF32.xll“ aus. Wenn ClusterUDF32 auf dem Clientcomputer nicht vorhanden ist, kopieren Sie es aus dem Ordner „%CCP\_HOME%Bin\\XLL32“ auf dem Hauptknoten.
 
     ![UDF auswählen][udf]
 
@@ -277,23 +281,23 @@ Führen Sie nach erfolgreicher Bereitstellung des Clusters die folgenden Schritt
 
     ![UDF konfigurieren][options]
 
-3.	Klicken Sie auf die Zelle mit dem Wert „=XllGetComputerNameC()“, und drücken Sie die EINGABETASTE, um die UDF-Berechnung auf dem IaaS-Cluster auszuführen. Die Funktion ruft den Namen des Hauptknotens ab, auf dem die UDF ausgeführt wird. Bei der erstmaligen Ausführung erscheint ein Dialogfeld, in dem der Benutzer zur Eingabe von Benutzername und Kennwort für die IaaS-Clusterverbindung aufgefordert wird.
+3.	Um die UDF-Berechnung auf dem Cluster auszuführen, klicken Sie auf die Zelle mit dem Wert „=XllGetComputerNameC()“, und drücken Sie die EINGABETASTE. Die Funktion ruft einfach den Namen des Serverknotens ab, auf dem die UDF ausgeführt wird. Bei der erstmaligen Ausführung erscheint ein Dialogfeld, in dem der Benutzer zur Eingabe von Benutzername und Kennwort für die IaaS-Clusterverbindung aufgefordert wird.
 
     ![UDF ausführen][run]
 
-    Wenn Berechnungen für eine große Anzahl von Zellen durchzuführen sind, drücken Sie STRG+ALT+UMSCHALT+F9, um die Berechnung für alle Zellen durchzuführen.
+    Wenn Berechnungen für viele Zellen durchzuführen sind, drücken Sie STRG+ALT+UMSCHALT+F9, um die Berechnung für alle Zellen durchzuführen.
 
-## Schritt 3. Ausführen einer SOA-Workload über einen lokalen Client
+## Schritt 3: Ausführen einer SOA-Workload über einen lokalen Client
 
-Wenn Sie auf dem HPC Pack-IaaS-Cluster allgemeine SOA-Anwendungen ausführen möchten, stellen Sie zunächst mit einer der Methoden aus Schritt 1 den IaaS-Cluster bereit, und verwenden Sie dabei ein generisches Serverknotenimage. (Excel wird auf den Serverknoten nicht benötigt.) Führen Sie dann die folgenden Schritte durch:
+Um allgemeine SOA-Anwendungen auf dem HPC Pack-IaaS-Cluster auszuführen, wenden Sie zuerst eine der Methoden in Schritt 1 zur Bereitstellung des Clusters an. Geben Sie in diesem Fall ein generisches Serverknotenimage an, da Sie Excel auf den Serverknoten nicht benötigen. Führen Sie dann die folgenden Schritte durch:
 
 1. Rufen Sie das Clusterzertifikat ab, und importieren Sie es anschließend auf dem Clientcomputer unter „Cert:\\<Aktueller Benutzer>\\Root“.
 
-2. Installieren Sie das [HPC Pack 2012 R2 Update 3 SDK](http://www.microsoft.com/download/details.aspx?id=49921) und die [HPC Pack 2012 R2 Update 3-Clienthilfsprogramme](https://www.microsoft.com/download/details.aspx?id=49923), um SOA-Clientanwendungen entwickeln und ausführen zu können.
+2. Installieren Sie das [HPC Pack 2012 R2 Update 3-SDK](http://www.microsoft.com/download/details.aspx?id=49921) und die [HPC Pack 2012 R2 Update 3-Clienthilfsprogramme](https://www.microsoft.com/download/details.aspx?id=49923). Diese Tools ermöglichen Ihnen, SOA-Clientanwendungen zu entwickeln und auszuführen.
 
 3. Laden Sie den [Beispielcode](https://www.microsoft.com/download/details.aspx?id=41633) „HelloWorldR2“ herunter. Öffnen Sie „HelloWorldR2.sln“ in Visual Studio 2010 oder 2012.
 
-4. Erstellen Sie zuerst das EchoService-Projekt, und stellen Sie den Dienst auf dem IaaS-Cluster bereit. Gehen Sie dabei auf die gleiche Weise vor wie bei der Bereitstellung auf einem lokalen Cluster. Ausführliche Schritte finden Sie in der Infodatei in „HelloWordR2“. Ändern Sie „HelloWorldR2“ und andere Projekte wie weiter unten beschrieben, und stellen Sie sie bereit, um die SOA-Clientanwendungen zu erstellen, die über einen lokalen Clientcomputer auf einem Azure IaaS-Cluster ausgeführt werden.
+4. Erstellen Sie zuerst das EchoService-Projekt. Stellen Sie dann den Dienst auf dem IaaS-Cluster bereit. Gehen Sie dabei auf die gleiche Weise vor wie bei der Bereitstellung auf einem lokalen Cluster. Ausführliche Schritte finden Sie in der Infodatei in „HelloWordR2“. Ändern und erstellen Sie „HelloWorldR2“ und andere Projekte wie im folgenden Abschnitt beschrieben, um die SOA-Clientanwendungen zu generieren, die auf einem Azure IaaS-Cluster ausgeführt werden.
 
 ### Verwenden der HTTP-Bindung mit einer Azure-Speicherwarteschlange
 
@@ -340,7 +344,7 @@ binding.Security.Message.ClientCredentialType = BasicHttpMessageCredentialType.U
 
 ###Verwenden der HTTP-Bindung ohne Azure-Speicherwarteschlange
 
-Legen Sie das Flag „UseAzureQueue“ in „SessionStartInfo“ explizit auf „false“ fest.
+Um die HTTP-Bindung ohne Azure-Speicherwarteschlange zu verwenden, müssen Sie das Flag UseAzureQueue in der SessionStartInfo explizit auf „False“ festlegen.
 
 ```
     info.UseAzureQueue = false;
@@ -348,7 +352,7 @@ Legen Sie das Flag „UseAzureQueue“ in „SessionStartInfo“ explizit auf �
 
 ### Verwenden der NetTcp-Bindung
 
-Bei Verwendung der NetTcp-Bindung wird eine ähnliche Konfiguration verwendet wie bei der Verbindungsherstellung mit einem lokalen Cluster. Auf dem virtuellen Computer für den Hauptknoten müssen einige Endpunkte geöffnet werden. Wenn Sie das HPC Pack-IaaS-Bereitstellungsskript z. B. verwendet haben, um den Cluster zu erstellen, legen Sie die Endpunkte im klassischen Azure-Portal wie folgt fest.
+Bei Verwendung der NetTcp-Bindung wird eine ähnliche Konfiguration verwendet wie bei der Verbindungsherstellung mit einem lokalen Cluster. Auf dem virtuellen Computer für den Hauptknoten müssen einige Endpunkte geöffnet werden. Wenn Sie z.B. das HPC Pack-IaaS-Bereitstellungsskript verwendet haben, um den Cluster zu erstellen, legen Sie die Endpunkte wie folgt im klassischen Azure-Portal fest.
 
 
 1. Beenden Sie den virtuellen Computer.
@@ -382,4 +386,4 @@ Für die SOA-Clientanwendung muss lediglich der Hauptname auf den vollständigen
 [endpoint]: ./media/virtual-machines-windows-excel-cluster-hpcpack/endpoint.png
 [udf]: ./media/virtual-machines-windows-excel-cluster-hpcpack/udf.png
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0831_2016-->

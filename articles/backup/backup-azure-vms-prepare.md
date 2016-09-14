@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/03/2016"
+	ms.date="08/26/2016"
 	ms.author="trinadhk; jimpark; markgal;"/>
 
 
@@ -39,6 +39,7 @@ Wenn Sie wissen, dass diese Bedingungen in Ihrer Umgebung bereits erfüllt sind,
 
 - Die Sicherung von virtuellen Computern mit mehr als 16 Datenträgern wird nicht unterstützt.
 - Die Sicherung von virtuellen Computern mit einer reservierten IP-Adresse und ohne definierten Endpunkt wird nicht unterstützt.
+- Im Netzwerk bereitgestellte und an den virtuellen Computer angefügte Laufwerke werden nicht in die Sicherungsdaten einbezogen.
 - Das Ersetzen eines vorhandenen virtuellen Computers während der Wiederherstellung wird nicht unterstützt. Löschen Sie zuerst den vorhandenen virtuellen Computer und alle zugeordneten Datenträger, und stellen Sie dann die Daten aus der Sicherung wieder her.
 - Regionsübergreifende Sicherungs- und Wiederherstellungsvorgänge werden nicht unterstützt.
 - Die Sicherung von virtuellen Computern mithilfe des Azure Backup-Diensts wird in allen öffentlichen Azure-Regionen unterstützt (Informationen hierzu finden Sie in der [Liste der Azure-Regionen](https://azure.microsoft.com/regions/#services)). Wenn die gewünschte Region derzeit nicht unterstützt wird, wird sie bei der Erstellung des Tresors in der Dropdownliste nicht angezeigt.
@@ -59,7 +60,7 @@ In der Abbildung sind die Beziehungen zwischen den verschiedenen Azure Backup-En
 
 So erstellen Sie einen Sicherungstresor
 
-1. Melden Sie sich beim [Azure-Portal](http://manage.windowsazure.com/) an.
+1. Melden Sie sich auf dem [Azure-Portal](http://manage.windowsazure.com/) an.
 
 2. Klicken Sie im Azure-Portal auf **Neu** > **Hybridintegration** > **Sicherung**. Wenn Sie auf **Sicherung** klicken, wechseln Sie automatisch zum klassischen Portal (siehe Abbildung nach dem Hinweis).
 
@@ -92,7 +93,7 @@ So erstellen Sie einen Sicherungstresor
 
 Um die VM-Momentaufnahmen zu verwalten, benötigt die Sicherungserweiterung eine Verbindung mit den öffentlichen Azure-IP-Adressen. Ohne die richtige Internetverbindung tritt bei diesen HTTP-Anforderungen des virtuellen Computers ein Timeout auf, und der Sicherungsvorgang funktioniert nicht. Wenn in Ihrer Bereitstellung Zugriffseinschränkungen aktiv sind (z.B. über eine Netzwerksicherheitsgruppe [NSG]), wählen Sie eine der folgenden Optionen für die Bereitstellung eines freien Pfades für den Sicherungsdatenverkehr:
 
-- [Whitelist der Azure-Datencenter-IP-Bereiche](http://www.microsoft.com/de-DE/download/details.aspx?id=41653) – Im Artikel finden Sie Anweisungen zum Erstellen einer Whitelist der IP-Adressen.
+- [Whitelist der IP-Bereiche der Azure-Rechenzentren](http://www.microsoft.com/de-DE/download/details.aspx?id=41653): Im Artikel finden Sie Anweisungen zum Erstellen einer Whitelist der IP-Adressen.
 - Stellen Sie einen HTTP-Proxyserver zum Weiterleiten des Datenverkehrs bereit.
 
 Bei der Entscheidung, welche Option Sie verwenden, müssen Sie die Kompromisse zwischen Verwaltbarkeit, differenzierter Kontrolle und Kosten abwägen.
@@ -104,7 +105,7 @@ Bei der Entscheidung, welche Option Sie verwenden, müssen Sie die Kompromisse z
 
 ### Aufnehmen der IP-Bereiche des Azure-Rechenzentrums in eine Positivliste
 
-Ausführliche Informationen zur Aufnahme der Azure-Datencenter-IP-Bereiche in eine Whitelist und Anweisungen finden Sie auf der [Azure-Website](http://www.microsoft.com/de-DE/download/details.aspx?id=41653).
+Ausführliche Informationen und Anweisungen zur Aufnahme der IP-Bereiche der Azure-Rechenzentren in eine Whitelist finden Sie auf der [Azure-Website](http://www.microsoft.com/de-DE/download/details.aspx?id=41653).
 
 ### Verwenden eines HTTP-Proxys für die Sicherung von virtuellen Computern
 Beim Sichern eines virtuellen Computers werden die Befehle für die Momentaufnahmenverwaltung von der Sicherungserweiterung auf der VM per HTTPS-API an Azure Storage gesendet. Leiten Sie den Verkehr der Sicherungserweiterung über den HTTP-Proxy, da dies die einzige Komponente ist, die für den Zugriff auf das öffentliche Internet konfiguriert ist.
@@ -153,7 +154,7 @@ Wenn Sie einen Proxyserver auf einem aktuellen Benutzerkonto (keinem lokalen Sys
 
 ######Für Linux-Computer
 
-Fügen Sie die folgende Zeile der ```/etc/environment```-Datei hinzu:
+Fügen Sie der Datei ```/etc/environment``` die folgende Zeile hinzu:
 
 ```
 http_proxy=http://<proxy IP>:<proxy port>
@@ -172,7 +173,7 @@ HttpProxy.Port=<proxy port>
 
     ![Firewall öffnen](./media/backup-azure-vms-prepare/firewall-01.png)
 
-2. Klicken Sie im Dialogfeld „Windows-Firewall“ mit der rechten Maustaste auf **Eingehende Regeln**, und klicken Sie auf **Neue Regel...**.
+2. Klicken Sie im Dialogfeld „Windows-Firewall“ mit der rechten Maustaste auf **Eingangsregeln**, und klicken Sie auf **Neue Regel...**.
 
     ![Neue Regel erstellen](./media/backup-azure-vms-prepare/firewall-02.png)
 
@@ -194,7 +195,7 @@ HttpProxy.Port=<proxy port>
 
 Geben Sie an einer Azure PowerShell-Eingabeaufforderung den folgenden Befehl ein:
 
-Der folgende Befehl fügt der NSG eine Ausnahme hinzu. Diese Ausnahme lässt TCP-Datenverkehr von allen Ports unter 10.0.0.5 an alle Internetadressen über Port 80 (HTTP) oder 443 (HTTPS) zu. Falls Sie einen bestimmten Port im öffentlichen Internet benötigen, müssen Sie diesen Port auch ```-DestinationPortRange``` hinzufügen.
+Der folgende Befehl fügt der NSG eine Ausnahme hinzu. Diese Ausnahme lässt TCP-Datenverkehr von allen Ports unter 10.0.0.5 an alle Internetadressen über Port 80 (HTTP) oder 443 (HTTPS) zu. Falls Sie einen bestimmten Port im öffentlichen Internet benötigen, müssen Sie diesen Port auch zu ```-DestinationPortRange``` hinzufügen.
 
 ```
 Get-AzureNetworkSecurityGroup -Name "NSG-lockdown" |
@@ -238,4 +239,4 @@ Ihre Umgebung ist jetzt für das Sichern Ihres virtuellen Computers vorbereitet.
 - [Planen der Sicherungsinfrastruktur für virtuelle Computer](backup-azure-vms-introduction.md)
 - [Verwalten der Sicherung virtueller Computer](backup-azure-manage-vms.md)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0831_2016-->

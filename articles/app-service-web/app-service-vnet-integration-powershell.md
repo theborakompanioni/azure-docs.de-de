@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/07/2016"
+	ms.date="08/29/2016"
 	ms.author="ccompy"/>
 
 # Verbinden Ihrer App mit Ihrem virtuellen Netzwerk mithilfe von PowerShell #
@@ -57,7 +57,7 @@ Das klassische virtuelle Netzwerk muss zum gleichen Abonnement gehören wie der 
 
 	Login-AzureRmAccount
 
-Dieser Befehl öffnet eine Eingabeaufforderung zur Eingabe Ihrer Azure-Anmeldeinformationen. Nachdem Sie sich angemeldet haben, verwenden Sie einen der folgenden Befehle zur Auswahl des Abonnements, das Sie verwenden möchten. Sie müssen das Abonnement verwenden, zum dem Ihr virtuelles Netzwerk und der App Service-Plan gehören.
+Dieser Befehl öffnet eine Eingabeaufforderung zur Eingabe Ihrer Azure-Anmeldeinformationen. Nachdem Sie sich angemeldet haben, verwenden Sie einen der folgenden Befehle zur Auswahl des Abonnements, das Sie verwenden möchten. Sie müssen das Abonnement verwenden, zu dem Ihr virtuelles Netzwerk und der App Service-Plan gehören.
 
 	Select-AzureRmSubscription –SubscriptionName [WebAppSubscriptionName]
 
@@ -500,7 +500,7 @@ Kopieren Sie das folgende Skript, und speichern Sie es in einer Datei. Sie müss
 
 		    Write-Host "Creating App association to VNET"
 		    $propertiesObject = @{
-		     "vnetResourceId" = "/subscriptions/$($subscriptionId)/resourceGroups/$($vnet.ResourceGroupName)/providers/Microsoft.Network/virtualNetworks/$($vnetName)"
+		     "vnetResourceId" = "/subscriptions/$($subscriptionId)/resourceGroups/$($vnet.ResourceGroupName)/providers/Microsoft.Network/virtualNetworks/$($vnet.Name)"
 		    }
 
 		    $virtualNetwork = New-AzureRmResource -Location $location -Properties $PropertiesObject -ResourceName "$($webAppName)/$($vnet.Name)" -ResourceType "Microsoft.Web/sites/virtualNetworkConnections" -ApiVersion 2015-08-01 -ResourceGroupName $resourceGroupName -Force
@@ -725,4 +725,4 @@ Auch wenn das Skript „delete“ anzeigt, wird nicht das virtuelle Netzwerk gel
 [createvpngateway]: http://azure.microsoft.com/documentation/articles/vpn-gateway-point-to-site-create/
 [azureportal]: http://portal.azure.com
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0831_2016-->

@@ -12,12 +12,12 @@
 	ms.tgt_pltfrm="ibiza"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="08/10/2016"
+	ms.date="09/07/2016"
 	ms.author="awills"/>
 
 # Überwachen der Verfügbarkeit und Reaktionsfähigkeit von Websites
 
-Nachdem Sie die Webanwendung für einen beliebigen Host bereitgestellt haben, können Sie Webtests einrichten, um die Verfügbarkeit und Reaktionsfähigkeit zu überwachen. [Visual Studio Application Insights](app-insights-overview.md) sendet regelmäßig Webanforderungen von verschiedenen Punkten rund um die Welt und benachrichtigt Sie, wenn Ihre Anwendung langsam oder gar nicht reagiert.
+Nachdem Sie die Web-App oder Website für einen beliebigen Server bereitgestellt haben, können Sie Webtests einrichten, um die Verfügbarkeit und Reaktionsfähigkeit zu überwachen. [Visual Studio Application Insights](app-insights-overview.md) sendet regelmäßig Webanforderungen von verschiedenen Punkten auf der ganzen Welt an Ihre Anwendung. Sie werden benachrichtigt, wenn Ihre Anwendung langsam oder gar nicht reagiert.
 
 ![Beispiel für Webtest](./media/app-insights-monitor-web-app-availability/appinsights-10webtestresult.png)
 
@@ -25,32 +25,29 @@ Sie können für jeden HTTP- oder HTTPS-Endpunkt, der über das öffentliche Int
 
 Es gibt zwei Arten von Webtests:
 
-* [URL-Pingtest](#set-up-a-url-ping-test): Dies ist ein einfacher Test, den Sie im Azure-Portal erstellen können.
+* [URL-Pingtest](#create): Dies ist ein einfacher Test, den Sie im Azure-Portal erstellen können.
 * [Mehrstufiger Webtest](#multi-step-web-tests): Diesen Test erstellen Sie in Visual Studio Ultimate oder Visual Studio Enterprise und laden ihn in das Portal hoch.
 
 Sie können bis zu zehn Webtests pro Anwendungsressource erstellen.
 
+## <a name="create"></a>1. Erstellen einer Ressource für Ihre Testberichte
 
-## Einrichten eines URL-Pingtests
-
-### <a name="create"></a>1. Erstellen Sie eine neue Ressource?
-
-Überspringen Sie diesen Schritt, wenn Sie bereit eine [Application Insights-Ressource][start] für diese Anwendung eingerichtet haben und die Verfügbarkeitsdaten am gleichen Ort angezeigt werden sollen.
+Überspringen Sie diesen Schritt, wenn Sie bereits eine [Application Insights-Ressource][start] für diese Anwendung eingerichtet haben und die Verfügbarkeitsberichte am gleichen Ort angezeigt werden sollen.
 
 Melden Sie sich bei [Microsoft Azure](http://azure.com) an, wechseln Sie zum [Azure-Portal](https://portal.azure.com), und erstellen Sie eine Application Insights-Ressource.
 
 ![Neu > Application Insights](./media/app-insights-monitor-web-app-availability/11-new-app.png)
 
-Das Blatt „Übersicht“ für die neue Ressource wird geöffnet. Dieses Blatt können Sie jederzeit im [Azure-Portal](https://portal.azure.com) suchen, indem Sie auf **Durchsuchen** klicken.
+Klicken Sie auf **All resources** (Alle Ressourcen), um das Blatt „Übersicht“ für die neue Ressource zu öffnen.
 
-### <a name="setup"></a>2. Erstellen eines Webtests
+## <a name="setup"></a>2. Erstellen eines URL-Pingtests
 
 Suchen Sie in der Application Insights-Ressource nach der Kachel "Verfügbarkeit". Klicken Sie darauf, um das Blatt "Webtests" für Ihre Anwendung zu öffnen, und fügen Sie einen Webtest hinzu.
 
 ![Mindestens die URL der Website eintragen](./media/app-insights-monitor-web-app-availability/13-availability.png)
 
 - **Die URL** muss vom öffentlichen Internet aus sichtbar sein. Sie kann auch eine Abfragezeichenfolge enthalten, sodass Sie beispielsweise Ihre Datenbank abfragen können. Wenn die URL in eine Umleitung aufgelöst wird, werden bis zu 10 Umleitungen verfolgt.
-- **Abhängige Anforderungen analysieren**: Bilder, Skripts, Styledateien und andere Ressourcen der Seite werden als Teil des Tests angefordert. Der Test schlägt fehl, wenn alle diese Ressourcen innerhalb des Zeitlimits für den gesamten Test nicht erfolgreich heruntergeladen werden können.
+- **Abhängige Anforderungen analysieren**: Bilder, Skripts, Formatdateien und andere Ressourcen der Seite werden als Teil des Tests angefordert, und die aufgezeichnete Antwortzeit beinhaltet diese Zeiten. Der Test schlägt fehl, wenn alle diese Ressourcen innerhalb des Zeitlimits für den gesamten Test nicht erfolgreich heruntergeladen werden können.
 - **Wiederholungen aktivieren**: Wenn der Test fehlschlägt, wird er nach kurzer Zeit wiederholt. Nur wenn drei aufeinander folgende Versuche scheitern, wird ein Fehler gemeldet. Nachfolgende Tests werden dann in der üblichen Häufigkeit ausgeführt. Die Wiederholung wird bis zum nächsten Erfolg vorübergehend eingestellt. Diese Regel wird an jedem Teststandort unabhängig angewendet. (Diese Einstellung wird empfohlen. Im Durchschnitt verschwinden ca. 80 % der Fehler bei einer Wiederholung.)
 - **Testhäufigkeit**: Legt fest, wie oft der Test von jedem Teststandort aus ausgeführt wird. Mit einer Frequenz von fünf Minuten und fünf Teststandorten wird Ihre Website im Durchschnitt jede Minute getestet.
 - **Teststandorte** sind die Orte, von denen aus unsere Server Webanforderungen an Ihre URL senden. Wählen Sie mehrere aus, damit Sie Probleme mit der Website von Netzwerkproblemen unterscheiden können. Sie können bis zu 16 Standorte auswählen.
@@ -68,14 +65,14 @@ Suchen Sie in der Application Insights-Ressource nach der Kachel "Verfügbarkeit
 
     Sie können einen [Webhook](../azure-portal/insights-webhooks-alerts.md) einrichten, der bei einer Warnung aufgerufen wird. (Beachten Sie aber, dass Abfrageparameter derzeit nicht als Eigenschaften übergeben werden.)
 
-#### Testen weiterer URLs
+### Testen weiterer URLs
 
 Fügen Sie weitere Tests hinzu. Neben dem Testen der Startseite können Sie auch sicherstellen, dass die Datenbank ausgeführt wird, indem Sie eine Such-URL testen.
 
 
-### <a name="monitor"></a>3. Anzeigen von Verfügbarkeitsberichten
+## <a name="monitor"></a>3. Anzeigen der Webtestergebnisse
 
-Klicken Sie nach 1 bis 2 Minuten auf dem Blatt "Verfügbarkeit/Webtests" auf **Aktualisieren**. (Die Aktualisierung erfolgt nicht automatisch.)
+Nach ein bis zwei Minuten werden Ergebnisse angezeigt.
 
 ![Ergebnisübersicht im Startblatt](./media/app-insights-monitor-web-app-availability/14-availSummary.png)
 
@@ -83,13 +80,6 @@ Klicken Sie auf einen beliebigen Balken im Übersichtsdiagramm, um eine detailli
 
 In diesen Diagrammen werden die Ergebnisse für alle Webtests dieser Anwendung kombiniert.
 
-#### Komponenten Ihrer Webseite
-
-Bilder, Stylesheets, Skripts und andere statische Komponenten der Webseite, die Sie testen, werden als Teil des Tests angefordert.
-
-Die aufgezeichnete Reaktionszeit ist der Zeitaufwand für das vollständige Laden aller Komponenten.
-
-Wenn eine Komponente nicht geladen werden kann, wird der Test als fehlgeschlagenen markiert.
 
 ## <a name="failures"></a>Wenn Sie Fehler finden ...
 
@@ -333,4 +323,4 @@ Nach Abschluss des Tests werden die Antwortzeiten und Erfolgsraten angezeigt.
 [qna]: app-insights-troubleshoot-faq.md
 [start]: app-insights-overview.md
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0907_2016-->

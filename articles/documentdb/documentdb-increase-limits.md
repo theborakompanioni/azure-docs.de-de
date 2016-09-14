@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/14/2016"
+	ms.date="08/25/2016"
 	ms.author="anhoh"/>
 
 # Anfordern von erhöhten DocumentDB-Kontolimits
@@ -35,15 +35,15 @@ In der folgenden Tabelle sind die DocumentDB-Kontingente beschrieben: Kontingent
 ##<a id="RequestQuotaIncrease"></a>Anfordern einer Kontingentanpassung
 Die folgenden Schritte zeigen, wie Sie eine Kontingentanpassung anfordern.
 
-1. Klicken Sie im [Azure-Portal](https://portal.azure.com) auf **Durchsuchen** und dann auf **Hilfe & Support**.
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com) auf **Weitere Dienste** und dann auf **Hilfe & Support**.
 
 	![Screenshot: Start von Hilfe & Support](media/documentdb-increase-limits/helpsupport.png)
 
-2. Klicken Sie auf dem Blatt **Hilfe und Support** auf **Supportanfrage erstellen**.
+2. Klicken Sie auf dem Blatt **Hilfe und Support** auf **Neue Supportanfrage**.
 
 	![Screenshot der Erstellung eines Supporttickets](media/documentdb-increase-limits/getsupport.png)
 
-3. Klicken Sie im Blatt **Neue Supportanfrage** auf **Grundlagen**. Legen Sie anschließend **Problemtyp** als **Kontingent** fest, und wählen Sie für **Abonnement** Ihr Abonnement, das Ihr DocumentDB-Konto hostet. Legen Sie **Kontingenttyp** als **DocumentDB** und **Supportplan** als **Kontingentsupport – enthalten** fest. Klicken Sie anschließend auf **Next**.
+3. Klicken Sie im Blatt **Neue Supportanfrage** auf **Grundlagen**. Legen Sie anschließend **Problemtyp** als **Kontingent** fest, und wählen Sie **Abonnement** für Ihr Abonnement, das Ihr DocumentDB-Konto hostet. Legen Sie **Kontingenttyp** als **DocumentDB** und **Supportplan** als **Kontingentsupport – enthalten** fest. Klicken Sie dann auf **Weiter**.
 
 	![Screenshot des Anforderungstyps für das Supportticket](media/documentdb-increase-limits/supportrequest1.png)
 
@@ -53,8 +53,6 @@ Die folgenden Schritte zeigen, wie Sie eine Kontingentanpassung anfordern.
 
 5. Geben Sie abschließend Ihre Kontaktinformationen auf dem Blatt **Kontaktinformationen** ein, und klicken Sie auf **Erstellen**.
 
-	![Screenshot der Ressourcenauswahl für das Supportticket](media/documentdb-increase-limits/supportrequest3.png)
-
 Sobald das Supportticket erstellt wurde, sollten Sie per E-Mail eine Supportanforderungsnummer erhalten. Sie können die Supportanforderung auch anzeigen, indem Sie auf dem Blatt **Hilfe & Support** auf **Supportanforderungen verwalten** klicken.
 
 ![Screenshot des Blatts für Supportanforderungen](media/documentdb-increase-limits/supportrequest4.png)
@@ -63,4 +61,4 @@ Sobald das Supportticket erstellt wurde, sollten Sie per E-Mail eine Supportanfo
 ##<a name="NextSteps"></a> Nächste Schritte
 - Um weitere Informationen zu DocumentDB zu erhalten, klicken Sie [hier](http://azure.com/docdb).
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0831_2016-->

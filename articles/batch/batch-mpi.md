@@ -13,12 +13,12 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows"
 	ms.workload="big-compute"
-	ms.date="06/03/2016"
+	ms.date="08/29/2016"
 	ms.author="marsma" />
 
 # Verwendung von Tasks mit mehreren Instanzen zum Ausführen von MPI-Anwendungen (Message Passing Interface) in Azure Batch
 
-Tasks mit mehreren Instanzen dienen zum gleichzeitigen Ausführen eines Azure Batch-Tasks auf mehreren Computeknoten, um High Performance Computing-Szenarien wie MPI-Anwendungen (Message Passing Interface) zu ermöglichen. In diesem Artikel erfahren Sie, wie mithilfe der [Batch .NET][api_net]-Bibliothek Tasks mit mehreren Instanzen ausgeführt werden.
+Tasks mit mehreren Instanzen ermöglichen die Ausführung eines Azure Batch-Tasks auf mehreren Computeknoten gleichzeitig. Diese Tasks machen High Performance Computing-Szenarien wie Message Passing Interface-Anwendungen (MPI) in Batch möglich. In diesem Artikel erfahren Sie, wie mithilfe der [Batch .NET][api_net]-Bibliothek Tasks mit mehreren Instanzen ausgeführt werden.
 
 ## Task mit mehreren Instanzen – Übersicht
 
@@ -30,8 +30,8 @@ Wenn Sie einen Task mit Einstellungen für mehrere Instanzen an einen Auftrag ü
 
 1. Der Batch-Dienst teilt den Task automatisch in einen **Primärtask** und mehrere **Subtasks** auf. Batch plant dann die Ausführung des Primärtasks und der Subtasks auf den Computeknoten des Pools.
 2. Sowohl der Primärtask als auch die Subtasks laden alle **gemeinsamen Ressourcendateien** herunter, die Sie in den Einstellungen für mehreren Instanzen angeben.
-3. Nachdem die gemeinsamen Ressourcendateien heruntergeladen wurden, wird der **Koordinationsbefehl**, den Sie in den Einstellungen für mehreren Instanzen angeben, vom Primärtask und den Subtasks ausgeführt. Dieser Koordinationsbefehl wird in der Regel zum Starten einen Hintergrunddiensts (z. B. `smpd.exe` von [Microsoft MPI][msmpi_msdn]) verwendet und kann auch sicherstellen, dass die Knoten zum Verarbeiten von Nachrichten zwischen den Knoten bereit sind.
-4. Wenn der Koordinationsbefehl vom Primärtask und allen Subtasks erfolgreich abgeschlossen wurde, wird die **Befehlszeile** des Tasks mit mehreren Instanzen (der „Anwendungsbefehl“) *nur* vom **Primärtask ausgeführt**. In einer [MS MPI][msmpi_msdn]-basierten Lösung führen Sie hier Ihre MPI-fähige Anwendung mit `mpiexec.exe` aus.
+3. Nachdem die gemeinsamen Ressourcendateien heruntergeladen wurden, wird der in den Einstellungen für mehrere Instanzen angegebene **Koordinationsbefehl** vom Primärtask und von den Subtasks ausgeführt. Dieser Koordinationsbefehl wird in der Regel zum Starten einen Hintergrunddiensts (z. B. `smpd.exe` von [Microsoft MPI][msmpi_msdn]) verwendet und kann auch sicherstellen, dass die Knoten zum Verarbeiten von Nachrichten zwischen den Knoten bereit sind.
+4. Wenn der Koordinationsbefehl vom Primärtask und von allen Subtasks erfolgreich abgeschlossen wurde, wird die **Befehlszeile** des Tasks mit mehreren Instanzen (der „Anwendungsbefehl“) *nur* vom **Primärtask** ausgeführt. In einer [MS MPI][msmpi_msdn]-basierten Lösung führen Sie hier Ihre MPI-fähige Anwendung mit `mpiexec.exe` aus.
 
 > [AZURE.NOTE] Obwohl er sich funktional unterscheidet, ist der „Task mit mehreren Instanzen“ kein eindeutiger Tasktyp wie [StartTask][net_starttask] oder [JobPreparationTask][net_jobprep]. Der Task mit mehreren Instanzen ist einfach eine standardmäßiger Batch-Task ([CloudTask][net_task] in Batch .NET), dessen Einstellungen für mehrere Instanzen konfiguriert wurden. In diesem Artikel bezeichnen wir sie als **Task mit mehreren Instanzen**.
 
@@ -53,13 +53,13 @@ myCloudPool.InterComputeNodeCommunicationEnabled = true;
 myCloudPool.MaxTasksPerComputeNode = 1;
 ```
 
-Darüber hinaus werden Tasks mit mehreren Instanzen *nur* auf Knoten in **Pools, die nach dem 14. Dezember 2015 erstellt wurden**, ausgeführt.
+Darüber hinaus werden Tasks mit mehreren Instanzen *nur* auf Knoten in **Pools ausgeführt, die nach dem 14. Dezember 2015 erstellt wurden**.
 
 > [AZURE.TIP] Wenn Sie in Ihrem Batch-Pool [Computeknoten der Größe A8 oder A9](../virtual-machines/virtual-machines-windows-a8-a9-a10-a11-specs.md) verwenden, kann die MPI-Anwendung das hochleistungsfähige RDMA-Netzwerk (Remote Direct Memory Access) mit geringer Latenz von Azure nutzen. Die vollständige Liste der für Batch-Pools verfügbaren Computeknotengrößen finden Sie unter [Größen für Clouddienste](./../cloud-services/cloud-services-sizes-specs.md).
 
 ### Verwenden eines StartTask für die Installation der MPI-Anwendung
 
-Zum Ausführen von MPI-Anwendungen mit einem Task mit mehreren Instanzen müssen Sie zunächst die MPI-Software auf den Computeknoten im Pool verfügbar machen. Dies ist der ideale Zeitpunkt, um einen [StartTask][net_starttask] zu verwenden, der immer ausgeführt wird, wenn ein Knoten mit einem Pool verknüpft oder neu gestartet wird. Dieser Codeausschnitt erstellt einen StartTask, der das MS-MPI-Setuppaket als [Ressourcendatei][net_resourcefile] festlegt, sowie die Befehlszeile, die ausgeführt wird, nachdem die Ressourcendatei auf den Knoten heruntergeladen wurde.
+Zum Ausführen von MPI-Anwendungen mit einem Task mit mehreren Instanzen müssen Sie zunächst die MPI-Software auf den Computeknoten im Pool verfügbar machen. Dies ist der ideale Zeitpunkt, um einen [StartTask][net_starttask] zu verwenden, der immer ausgeführt wird, wenn ein Knoten mit einem Pool verknüpft oder neu gestartet wird. Dieser Codeausschnitt erstellt einen Starttask, der das MS-MPI-Setuppaket als [Ressourcendatei][net_resourcefile] festlegt, sowie die Befehlszeile, die ausgeführt wird, nachdem die Ressourcendatei auf den Knoten heruntergeladen wurde.
 
 ```csharp
 // Create a StartTask for the pool which we use for installing MS-MPI on
@@ -118,9 +118,9 @@ int numberOfNodes = 10;
 myMultiInstanceTask.MultiInstanceSettings = new MultiInstanceSettings(numberOfNodes);
 ```
 
-## Koordinations- und Anwendungsbefehle
+## Koordinationsbefehl
 
-Der **Koordinationsbefehl** wird vom Primärtask und den Subtasks ausgeführt. Nachdem der Primärtask und die Subtasks die Ausführung des Koordinationsbefehls abgeschlossen haben, wird die Befehlszeile des Tasks mit mehreren Instanzen *nur* vom Primärtask ausgeführt. Wir bezeichnen diese Befehlszeile zur Unterscheidung vom Koordinationsbefehl als **Anwendungsbefehl**.
+Der **Koordinationsbefehl** wird vom Primärtask und den Subtasks ausgeführt.
 
 Der Aufruf des Koordinationsbefehls führt zu einer Blockierung – Batch führt den Anwendungsbefehl erst dann aus, wenn der Koordinationsbefehl für alle Subtasks erfolgreich zurückgegeben wurde. Der Koordinationsbefehl sollte daher alle erforderlichen Hintergrunddienste starten, sicherstellen, dass sie einsatzbereit sind, und dann beendet werden. Dieser Koordinationsbefehl für eine Lösung mit MS-MPI Version 7 startet z. B. den SMPD-Dienst auf dem Knoten und wird dann beendet:
 
@@ -130,23 +130,51 @@ cmd /c start cmd /c ""%MSMPI_BIN%\smpd.exe"" -d
 
 Beachten Sie die Verwendung von `start` in diesem Koordinationsbefehl. Dies ist erforderlich, da die `smpd.exe`-Anwendung nicht sofort nach der Ausführung zurückgegeben wird. Ohne die Verwendung des [start][cmd_start]-Befehls würde der Koordinationsbefehl nicht zurückgegeben und würde daher die Ausführung des Anwendungsbefehls blockieren.
 
-Der **Anwendungsbefehl**, die für den Task mit mehreren Instanzen angegebene Befehlszeile, wird *nur* vom Primärtask ausgeführt. In MS-MPI-Anwendungen ist dies die Ausführung Ihrer MPI-fähigen Anwendung mit `mpiexec.exe`. Hier sehen Sie ist z. B. einen Anwendungsbefehl für eine Lösung mit MS-MPI Version 7:
+## Anwendungsbefehl
+
+Nachdem der Primärtask und die Subtasks die Ausführung des Koordinationsbefehls abgeschlossen haben, wird die Befehlszeile des Tasks mit mehreren Instanzen *nur* vom Primärtask ausgeführt. Wir bezeichnen dies zur Unterscheidung vom Koordinationsbefehl als **Anwendungsbefehl**.
+
+Verwenden Sie bei MS-MPI-Anwendungen den Anwendungsbefehl, um Ihre MPI-fähige Anwendung mit `mpiexec.exe` auszuführen. Hier sehen Sie ist z. B. einen Anwendungsbefehl für eine Lösung mit MS-MPI Version 7:
 
 ```
 cmd /c ""%MSMPI_BIN%\mpiexec.exe"" -c 1 -wdir %AZ_BATCH_TASK_SHARED_DIR% MyMPIApplication.exe
 ```
 
+>[AZURE.NOTE] Da die Datei `mpiexec.exe` von MS-MPI standardmäßig die Variable `CCP_NODES` verwendet (siehe [Umgebungsvariablen](#environment-variables)), wird sie in der obigen Beispielbefehlszeile der Anwendung ausgeschlossen.
+
+## Umgebungsvariablen
+
+Diese Umgebungsvariablen stehen auf dem Computeknoten für Anwendungen und Skripts zur Verfügung, die von dem Anwendungsbefehl des Primärtasks ausgeführt werden:
+
+* `CCP_NODES`
+
+  * **Verfügbarkeit:** CloudServiceConfiguration- und VirtualMachineConfiguration-Pools
+  * **Format:** `numNodes<space>nodeIP<space>numCores<space>`
+  * **Beispiel:** `2 10.0.0.4 1 10.0.0.5 1`
+
+* `AZ_BATCH_NODE_LIST`
+
+  * **Verfügbarkeit:** CloudServiceConfiguration- und VirtualMachineConfiguration-Pools
+  * **Format:** `nodeIP;nodeIP`
+  * **Beispiel:** `10.0.0.4;10.0.0.5`
+
+* `AZ_BATCH_HOST_LIST`
+
+  * **Verfügbarkeit:** VirtualMachineConfiguration-Pools
+  * **Format:** `nodeIP,nodeIP`
+  * **Beispiel:** `10.0.0.4,10.0.0.5`
+
 ## Ressourcendateien
 
-Es gibt zwei Sätze von Ressourcendateien, die bei Tasks mit mehreren Instanzen in berücksichtigt werden müssen: **gemeinsame Ressourcendateien**, die von *allen* Tasks (Primärtask und Subtasks) heruntergeladen werden, und die **Ressourcendateien** für den Task mit mehreren Instanzen selbst, die *nur vom Primärtask* heruntergeladen werden.
+Es gibt zwei Sätze von Ressourcendateien, die bei Tasks mit mehreren Instanzen berücksichtigt werden müssen: **gemeinsame Ressourcendateien**, die von *allen* Tasks (Primärtask und Subtasks) heruntergeladen werden, und die **Ressourcendateien** für den Task mit mehreren Instanzen selbst, die *nur vom Primärtask* heruntergeladen werden.
 
-In den Einstellungen für mehrere Instanzen eines Tasks können Sie eine oder mehrere **gemeinsame Ressourcendateien** angeben. Diese gemeinsamen Ressourcendateien werden vom Primärtask und den Subtasks aus [Azure Storage](./../storage/storage-introduction.md) in das freigegebene Verzeichnis des Tasks aller Knoten heruntergeladen. Sie können mithilfe der `AZ_BATCH_TASK_SHARED_DIR`-Umgebungsvariable über Anwendungs- und Koordinationsbefehlszeilen auf das freigegebene Verzeichnis eines Tasks zugreifen.
+In den Einstellungen für mehrere Instanzen eines Tasks können Sie eine oder mehrere **gemeinsame Ressourcendateien** angeben. Diese gemeinsamen Ressourcendateien werden vom Primärtask und von den Subtasks aus [Azure Storage](./../storage/storage-introduction.md) in das freigegebene Verzeichnis des Tasks aller Knoten heruntergeladen. Sie können mithilfe der `AZ_BATCH_TASK_SHARED_DIR`-Umgebungsvariablen über Anwendungs- und Koordinationsbefehlszeilen auf das freigegebene Verzeichnis eines Tasks zugreifen.
 
 Ressourcendateien, die Sie für den Task mit mehreren Instanzen selbst festlegen, werden *nur* vom Primärtask in das Arbeitsverzeichnis `AZ_BATCH_TASK_WORKING_DIR` des Tasks heruntergeladen – die Subtasks laden die für den Task mit mehreren Instanzen angegebenen Ressourcendateien nicht herunter.
 
-Der Primärtask und die Subtasks, die auf einem Knoten ausgeführt werden, haben Zugriff auf die Inhalte von `AZ_BATCH_TASK_SHARED_DIR`. Ein Beispiel für das freigegebene Verzeichnis eines Tasks ist `tasks/mybatchjob/job-1/mymultiinstancetask/`. Der Primärtask und jeder Subtask verfügen außerdem über auch über ein Arbeitsverzeichnis, das nur für diesen Task mithilfe der Umgebungsvariable `AZ_BATCH_TASK_WORKING_DIR` zugänglich ist
+Der Primärtask und alle Subtasks, die auf einem Knoten ausgeführt werden, haben Zugriff auf die Inhalte von `AZ_BATCH_TASK_SHARED_DIR`. Ein Beispiel für das freigegebene Verzeichnis eines Tasks ist `tasks/mybatchjob/job-1/mymultiinstancetask/`. Der Primärtask und jeder Subtask verfügen außerdem über ein Arbeitsverzeichnis, das nur für diesen Task mithilfe der Umgebungsvariablen `AZ_BATCH_TASK_WORKING_DIR` zugänglich ist.
 
-Beachten Sie, dass in den Codebeispielen in diesem Artikel keine Ressourcendateien für den Task mit mehreren Instanzen selbst angegeben sind, nur für den StartTask des Pools und die [CommonResourceFiles][net_multiinsance_commonresfiles] der Einstellungen für mehreren Instanzen.
+Beachten Sie, dass in den Codebeispielen in diesem Artikel keine Ressourcendateien für den Task mit mehreren Instanzen selbst angegeben sind, nur für den Starttask des Pools und [CommonResourceFiles][net_multiinsance_commonresfiles] der Einstellungen für mehrere Instanzen.
 
 > [AZURE.IMPORTANT] Verwenden Sie immer die Umgebungsvariablen `AZ_BATCH_TASK_SHARED_DIR` und `AZ_BATCH_TASK_WORKING_DIR`, um in Ihren Befehlszeilen auf diese Verzeichnisse zu verweisen. Versuchen Sie nicht, die Pfade manuell zu erstellen.
 
@@ -158,7 +186,7 @@ Wenn beispielsweise einer der Subtasks fehlschlägt und mit einem Rückgabecode 
 
 Wenn Sie einen Task mit mehreren Instanzen löschen, werden der Primärtask und alle Subtasks ebenfalls vom Batch-Dienst gelöscht. Alle Subtaskverzeichnisse und die Dateien darin werden genau wie bei einem Standardtask von den Computeknoten gelöscht.
 
-[TaskConstraints][net_taskconstraints] für einen Task mit mehreren Instanzen, z. B. die [MaxTaskRetryCount][net_taskconstraint_maxretry]- [MaxWallClockTime][net_taskconstraint_maxwallclock]- und [RetentionTime][net_taskconstraint_retention]-Eigenschaften werden berücksichtigt, da sie für einen Standardtask angegeben sind und für den Primärtask sowie alle Subtasks gelten. Wenn Sie die [RetentionTime][net_taskconstraint_retention]-Eigenschaft jedoch nach dem Hinzufügen des Tasks mit mehreren Instanzen zum Auftrag ändern, wird diese Änderung nur für den Primärtask übernommen. Alle Subtasks verwenden weiterhin die ursprüngliche [RetentionTime][net_taskconstraint_retention]-Eigenschaft.
+[TaskConstraints][net_taskconstraints] für einen Task mit mehreren Instanzen, z.B. die [MaxTaskRetryCount][net_taskconstraint_maxretry]- [MaxWallClockTime][net_taskconstraint_maxwallclock]- und [RetentionTime][net_taskconstraint_retention]-Eigenschaften werden berücksichtigt, da sie für einen Standardtask angegeben sind und für den Primärtask sowie alle Subtasks gelten. Wenn Sie die [RetentionTime][net_taskconstraint_retention]-Eigenschaft jedoch nach dem Hinzufügen des Tasks mit mehreren Instanzen zum Auftrag ändern, wird diese Änderung nur für den Primärtask übernommen. Alle Subtasks verwenden weiterhin die ursprüngliche [RetentionTime][net_taskconstraint_retention]-Eigenschaft.
 
 In der Liste der aktuellen Tasks eines Computeknotens wird die ID eines Subtasks angezeigt, wenn der aktuelle Task Teil eines Tasks mit mehreren Instanzen war.
 
@@ -166,7 +194,7 @@ In der Liste der aktuellen Tasks eines Computeknotens wird die ID eines Subtasks
 
 Zum Abrufen von Informationen zu Subtasks mithilfe der Batch-Bibliothek für .NET rufen Sie die [CloudTask.ListSubtasks][net_task_listsubtasks]-Methode auf. Diese Methode gibt Informationen zu allen Subtasks sowie zum Computeknoten zurück, auf dem die Tasks ausgeführt wurden. Anhand dieser Informationen können Sie u. a. das Stammverzeichnis, die Pool-ID, den aktuellen Zustand und den Exitcode der einzelnen Subtasks bestimmen. Diese Informationen können Sie in Kombination mit der [PoolOperations.GetNodeFile][poolops_getnodefile]-Methode zum Abrufen der Dateien des Subtasks verwenden. Beachten Sie, dass diese Methode keine Informationen für den Primärtask (ID 0) zurückgibt.
 
-> [AZURE.NOTE] Sofern nicht anders angegeben, gelten Batch .NET-Methoden, die für den [CloudTask][net_task] mit mehreren Instanzen selbst angewendet werden, *nur* für den Primärtask. Wenn Sie z. B. die [CloudTask.ListNodeFiles][net_task_listnodefiles]-Methode für einen Task mit mehreren Instanzen aufrufen, werden nur die Dateien des Primärtasks zurückgegeben.
+> [AZURE.NOTE] Sofern nicht anders angegeben, gelten Batch .NET-Methoden, die für den [CloudTask][net_task] mit mehreren Instanzen selbst angewendet werden, *nur* für den Primärtask. Wenn Sie beispielsweise die [CloudTask.ListNodeFiles][net_task_listnodefiles]-Methode für einen Task mit mehreren Instanzen aufrufen, werden nur die Dateien des Primärtasks zurückgegeben.
 
 Der folgende Codeausschnitt zeigt das Abrufen von Informationen zu Subtasks sowie das Anfordern von Dateiinhalten von den Knoten, auf denen sie ausgeführt werden.
 
@@ -209,7 +237,7 @@ await subtasks.ForEachAsync(async (subtask) =>
 
 ## Nächste Schritte
 
-- Es empfiehlt sich, eine einfache MS-MPI-Anwendung zu erstellen, die zum Testen von Tasks mit mehreren Instanzen in Batch verwendet wird. Der Blogartikel [How to compile and run a simple MS-MPI program (Kompilieren und Ausführen eines einfachen MS-MPI-Programms][msmpi_howto] des Microsoft HPC- und Azure Batch-Teams enthält eine exemplarische Vorgehensweise zum Erstellen einer einfachen MPI-Anwendung mithilfe von MS-MPI.
+- Es empfiehlt sich, eine einfache MS-MPI-Anwendung zu erstellen, die zum Testen von Tasks mit mehreren Instanzen in Batch verwendet wird. Der Blogartikel [How to compile and run a simple MS-MPI program][msmpi_howto] \(Kompilieren und Ausführen eines einfachen MS-MPI-Programms) des Microsoft HPC- und Azure Batch-Teams enthält eine exemplarische Vorgehensweise zum Erstellen einer einfachen MPI-Anwendung mithilfe von MS-MPI.
 
 - Aktuelle Informationen zu MS-MPI finden Sie auf der Seite [Microsoft MPI][msmpi_msdn] auf MSDN.
 
@@ -247,4 +275,4 @@ await subtasks.ForEachAsync(async (subtask) =>
 
 [1]: ./media/batch-mpi/batch_mpi_01.png "Mehrere Instanzen – Übersicht"
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0831_2016-->

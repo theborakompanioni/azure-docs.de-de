@@ -39,7 +39,7 @@ Die folgenden Schritte führen Sie durch die Erstellung einer einfachen ASP.NET 
 
 ## 3\. Verwenden des PowerShell-Skripts „DockerTask.ps1“ 
 
-1.  Öffnen Sie eine PowerShell-Eingabeaufforderung für das Stammverzeichnis des Projekts. 
+1.  Öffnen Sie eine PowerShell-Eingabeaufforderung für das Stammverzeichnis des Projekts.
 
     ```
     PS C:\Src\WebApplication1>
@@ -64,7 +64,7 @@ Die folgenden Schritte führen Sie durch die Erstellung einer einfachen ASP.NET 
     > [AZURE.NOTE] Wenn Sie die Betaversion von Docker verwenden, lassen Sie das -Machine-Argument aus.
     > 
     > ```
-    > PS C:\Src\WebApplication1> .\Docker\DockerTask.ps1 -Build -Environment Release -Machine mydockerhost
+    > PS C:\Src\WebApplication1> .\Docker\DockerTask.ps1 -Build -Environment Release 
     > ```  
 
 
@@ -77,7 +77,7 @@ Die folgenden Schritte führen Sie durch die Erstellung einer einfachen ASP.NET 
     > [AZURE.NOTE] Wenn Sie die Betaversion von Docker verwenden, lassen Sie das -Machine-Argument aus.
     > 
     > ```
-    > PS C:\Src\WebApplication1> .\Docker\DockerTask.ps1 -Run -Environment Release -Machine mydockerhost
+    > PS C:\Src\WebApplication1> .\Docker\DockerTask.ps1 -Run -Environment Release 
     > ```
 
 	Nach Abschluss von Docker sollten etwa folgende Ergebnisse angezeigt werden:
@@ -89,4 +89,4 @@ Die folgenden Schritte führen Sie durch die Erstellung einer einfachen ASP.NET 
 [2]: ./media/vs-azure-tools-docker-hosting-web-apps-in-docker/launch-application.png
 [3]: ./media/vs-azure-tools-docker-hosting-web-apps-in-docker/view-application.png
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0831_2016-->

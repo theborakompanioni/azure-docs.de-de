@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="02/09/2016"
+   ms.date="08/25/2016"
    ms.author="sewhee" />
 
 # Mehrere VIPs pro Clouddienst
@@ -37,7 +37,7 @@ Sie können PowerShell verwenden, um die vom Clouddienst verwendeten virtuellen 
 
 Zum derzeitigen Zeitpunkt ist die Multi-VIP-Funktionalität auf die folgenden Szenarios beschränkt:
 
-- **Nur IaaS**. Sie können Multi-VIP nur für Clouddienste aktivieren, die virtuelle Computer enthalten. Sie können Multi-VIP nicht in PaaS-Szenarios mit Rolleninstanzen verwenden.
+- **Nur IaaS**. Sie können Multi-VIP nur für Clouddienste aktivieren, die virtuelle Computer enthalten. Sie können Multi-VIP nicht in PaaS-Szenarien mit Rolleninstanzen verwenden.
 - **Nur PowerShell**. Sie können Multi-VIP nur mithilfe von PowerShell verwalten.
 
 >[AZURE.IMPORTANT] Diese Einschränkungen sind nicht dauerhaft und können sich jederzeit ändern. Besuchen Sie diese Seite regelmäßig, um über zukünftige Änderungen informiert zu sein.
@@ -160,4 +160,4 @@ Sie können den Lastenausgleich auch zur Verwendung einer anderen VIP aktualisie
 
 [Reservierte IP-REST-APIs](https://msdn.microsoft.com/library/azure/dn722420.aspx)
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->

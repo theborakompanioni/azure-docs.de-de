@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Bereitstellen von Streaminginhalten über Media Services" 
+	pageTitle="Veröffentlichen von Azure Media Services-Inhalten mit .NET" 
 	description="Erfahren Sie, wie Sie einen Locator erstellen, der zum Generieren einer Streaming-URL verwendet wird. Die Codebeispiele sind in C# geschrieben und verwenden das Media Services SDK für .NET." 
 	authors="juliako" 
 	manager="erikre" 
@@ -13,16 +13,16 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/22/2016"
+	ms.date="08/30/2016"
 	ms.author="juliako"/>
 
 
-#Gewusst wie: Bereitstellen von Streaminginhalten
+# Veröffentlichen von Azure Media Services-Inhalten mit .NET
  
 > [AZURE.SELECTOR]
 - [REST](media-services-rest-deliver-streaming-content.md)
 - [.NET](media-services-deliver-streaming-content.md)
-- [Portal](media-services-manage-content.md#publish)
+- [Portal](media-services-portal-publish.md)
 
 ##Übersicht
 
@@ -167,8 +167,8 @@ Im folgenden Code werden .NET SDK-Erweiterungsmethoden aufgerufen, durch die ein
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-##Siehe auch
+##Weitere Informationen
 
 [Herunterladen von Assets](media-services-deliver-asset-download.md) [Konfigurieren der Übermittlungsrichtlinie für Medienobjekte](media-services-dotnet-configure-asset-delivery-policy.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0831_2016-->

@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="vm-linux"
    ms.workload="infrastructure-services"
-   ms.date="06/07/2016"
+   ms.date="08/29/2016"
    ms.author="kyliel"/>
 
 # Erstellen und Hochladen einer FreeBSD-VHD in Azure
@@ -132,7 +132,7 @@ Sie benötigen ein Speicherkonto in Azure, um eine VHD-Datei hochladen zu könne
 
 4. Füllen Sie die Felder wie folgt aus:
 
-	- Geben Sie unter **URL** einen Unterdomänennamen ein, der in der Speicherkonto-URL verwendet werden soll. Die Eingabe kann zwischen drei und 24 Zahlen und Kleinbuchstaben enthalten. Dieser Name wird zum Hostnamen in der URL, die zum Adressieren von Azure Blob Storage-, Azure Queue Storage- oder Azure Table Storage-Ressourcen für das Abonnement verwendet wird.
+	- Geben Sie unter **URL** einen Unterdomänennamen ein, der in der Speicherkonto-URL verwendet werden soll. Die Eingabe kann zwischen drei und 24 Zahlen und Kleinbuchstaben enthalten. Dieser Name wird zum Hostnamen in der URL, die zum Adressieren von Azure-Blobspeicher-, Azure-Warteschlangenspeicher- oder Azure-Tabellenspeicherressourcen für das Abonnement verwendet wird.
 
 	- Wählen Sie im Dropdownmenü **Region/Affinitätsgruppe** die **Region oder Affinitätsgruppe** für das Speicherkonto aus. Mit einer Affinitätsgruppe können Sie Ihre Clouddienste und Speicher im gleichen Rechenzentrum platzieren.
 
@@ -228,4 +228,4 @@ Nach dem Hochladen der VHD-Datei können Sie sie als Image zu der Ihrem Abonneme
 
 	![FreeBSD-Image in Azure](./media/virtual-machines-linux-classic-freebsd-create-upload-vhd/freebsdimageinazure.png)
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0831_2016-->

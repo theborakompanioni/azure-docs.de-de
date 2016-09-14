@@ -14,8 +14,8 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/29/2016"
-	ms.author="v-vlivech"/>
+	ms.date="08/26/2016"
+	ms.author="v-livech"/>
 
 # Deaktivieren von SSH-Kennwörtern auf Ihrer Linux-VM durch Konfigurieren von SSHD
 
@@ -43,7 +43,7 @@ Für diesen Artikel ist es sehr wichtig, dass Sie eine Anmeldung bei Ihrer Linux
 
 ## Voraussetzungen
 
-- [Erstellen von SSH-Schlüsseln unter Linux und Mac für Linux-VMs in Azure](link)
+- [Erstellen von SSH-Schlüsseln unter Linux und Mac für Linux-VMs in Azure](virtual-machines-linux-mac-create-ssh-keys.md)
 - Azure-Konto
   - [Anmeldung für kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/)
   - [Azure-Portal](http://portal.azure.com)
@@ -145,4 +145,4 @@ username@macbook$ sudo service sshd restart
 
 Kennwörter sind jetzt auf Ihrer VM deaktiviert, sodass sie vor Brute-Force-Kennwortanmeldeversuchen geschützt ist. Da nur SSH-Schlüssel zulässig sind, können Sie sich schneller und viel sicherer anmelden.
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0831_2016-->

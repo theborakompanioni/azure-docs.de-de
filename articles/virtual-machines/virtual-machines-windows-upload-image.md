@@ -33,7 +33,7 @@ In diesem Artikel wird davon ausgegangen, dass Sie über Folgendes verfügen:
 
 - **Virtueller Windows-Computer**: Virtuelle Computer können mit verschiedensten Tools lokal erstellt werden. Informationen hierzu finden Sie beispielsweise unter [Installieren der Hyper-V-Rolle und Konfigurieren eines virtuellen Computers](http://technet.microsoft.com/library/hh846766.aspx). Informationen zu den in Azure unterstützen Windows-Betriebssystemen finden Sie unter [Microsoft-Serversoftwaresupport für virtuelle Microsoft Azure-Computer](https://support.microsoft.com/kb/2721672).
 
-- Stellen Sie sicher, dass die auf dem virtuellen Computer ausgeführten Serverrollen Sysprep unterstützen. Weitere Informationen finden Sie unter [Sysprep Support for Server Roles](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles) (Sysprep-Unterstützung für Serverrollen).
+- Stellen Sie sicher, dass die auf dem virtuellen Computer ausgeführten Serverrollen Sysprep unterstützen. Weitere Informationen finden Sie unter [Sysprep Support for Server Roles](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles) (Sysprep-Unterstützung für Serverrollen). Sichern Sie den virtuellen Computer vor dem Ausführen von Sysprep.
 
 
 ## Sicherstellen, dass für den virtuellen Computer das richtige Dateiformat verwendet wird
@@ -254,4 +254,4 @@ Anschließend müsste der neu erstellte virtuelle Computer im [Azure-Portal](htt
 
 Informationen zum Verwalten des neuen virtuellen Computers mithilfe von Azure PowerShell finden Sie unter [Verwalten von virtuellen Azure-Computern mit Resource Manager und PowerShell](virtual-machines-windows-ps-manage.md).
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0831_2016-->

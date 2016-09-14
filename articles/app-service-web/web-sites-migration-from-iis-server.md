@@ -96,7 +96,7 @@ In diesem Abschnitt werden Sie schrittweise durch ein Beispiel zum Migrieren ein
 
 12.	Klicken Sie auf **Migration starten** , um die Migration zu starten. Sie werden zu Azure umgeleitet, um sich bei Ihrem Konto anzumelden. Es ist wichtig, dass Sie sich mit einem Konto anmelden, das über ein aktives Azure-Abonnement verfügt. Wenn Sie nicht über ein Azure-Konto verfügen, können Sie sich [hier](https://azure.microsoft.com/pricing/free-trial/?WT.srch=1&WT.mc_ID=SEM_) für eine kostenlose Testversion anmelden.
 
-13.	Wählen Sie das Mandantenkonto, das Azure-Abonnement und die Region aus, die für die migrierten Azure Web-Apps und Datenbanken verwendet werden sollen, und klicken Sie dann auf **Migration starten**. Sie können die zu migrierenden Websites später auswählen.
+13.	Wählen Sie das Mandantenkonto, das Azure-Abonnement und die Region aus, die für die migrierten Azure-Web-Apps und -Datenbanken verwendet werden sollen, und klicken Sie dann auf **Migration starten**. Sie können die zu migrierenden Websites später auswählen.
 
 	![](./media/web-sites-migration-from-iis-server/choose-tenant-account.png)
 
@@ -135,4 +135,4 @@ In diesem Abschnitt werden Sie schrittweise durch ein Beispiel zum Migrieren ein
 * Hinweise zu den Änderungen von Websites zum App Service finden Sie unter: [Azure App Service und vorhandene Azure-Dienste](http://go.microsoft.com/fwlink/?LinkId=529714).
  
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0831_2016-->

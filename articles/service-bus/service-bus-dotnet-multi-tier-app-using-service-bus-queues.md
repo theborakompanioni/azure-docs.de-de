@@ -12,8 +12,8 @@
 	ms.workload="tbd"
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
-	ms.topic="hero-article"
-	ms.date="05/27/2016"
+	ms.topic="get-started-article"
+	ms.date="09/01/2016"
 	ms.author="sethm"/>
 
 # .NET-Anwendungen mit mehreren Ebenen unter Verwendung von Azure Service Bus-Warteschlangen
@@ -462,4 +462,4 @@ Weitere Informationen zu Szenarien mit mehreren Ebenen finden Sie unter:
   [mutitierstorage]: https://code.msdn.microsoft.com/Windows-Azure-Multi-Tier-eadceb36
   
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0907_2016-->

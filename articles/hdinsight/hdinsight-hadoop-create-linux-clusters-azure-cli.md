@@ -14,7 +14,7 @@
    	ms.topic="article"
    	ms.tgt_pltfrm="na"
    	ms.workload="big-data"
-   	ms.date="06/13/2016"
+   	ms.date="08/30/2016"
    	ms.author="larryfr"/>
 
 #Erstellen von Linux-basierten Clustern in HDInsight mithilfe der Azure-Befehlszeilenschnittstelle
@@ -42,7 +42,7 @@ Anhand der Schritte in diesem Dokument werden Sie durch die Erstellung eines neu
 
 ##Anmelden bei Ihrem Azure-Abonnement
 
-Führen Sie die Schritte aus, die unter [Herstellen einer Verbindung mit einem Azure-Abonnement von der Azure Befehlszeilenschnittstelle (Azure CLI)](../xplat-cli-connect.md) dokumentiert sind, und stellen Sie eine Verbindung mit Ihrem Abonnement über die __login__-Methode her.
+Führen Sie die Schritte aus, die unter [Herstellen einer Verbindung mit einem Azure-Abonnement von der Azure Befehlszeilenschnittstelle (Azure-CLI)](../xplat-cli-connect.md) dokumentiert sind, und stellen Sie über die __login__-Methode eine Verbindung mit Ihrem Abonnement her.
 
 ##Erstellen eines Clusters
 
@@ -62,8 +62,8 @@ Die folgenden Schritte müssen in einer Befehlszeilen-, Shell- oder Terminalsitz
 
         azure group create groupname location
         
-    * Ersetzen Sie __groupname__ durch einen eindeutigen Gruppenamen. 
-    * Ersetzen Sie __location__ durch die geografische Region, in der die Gruppe erstellt werden soll. 
+    * Ersetzen Sie __groupname__ durch einen eindeutigen Gruppenamen.
+    * Ersetzen Sie __location__ durch die geografische Region, in der die Gruppe erstellt werden soll.
     
         Eine Liste der gültigen Speicherorte können Sie mithilfe des Befehls `azure locations list` erzeugen. Verwenden Sie anschließend einen der Speicherorte aus der Spalte __Name__.
 
@@ -72,7 +72,7 @@ Die folgenden Schritte müssen in einer Befehlszeilen-, Shell- oder Terminalsitz
         azure storage account create -g groupname --sku-name RAGRS -l location --kind Storage storagename
         
      * Ersetzen Sie __groupname__ durch den Namen der im vorherigen Schritt erstellten Gruppe:
-     * Ersetzen Sie __location__ durch den gleichen Speicherort, den Sie im vorherigen Schritt verwendet haben. 
+     * Ersetzen Sie __location__ durch den gleichen Speicherort, den Sie im vorherigen Schritt verwendet haben.
      * Ersetzen Sie __storagename__ durch einen eindeutigen Namen für das Speicherkonto.
      
      > [AZURE.NOTE] Verwenden Sie `azure storage account create -h`, um sich in der Hilfe zu diesem Befehl weitere Informationen zu den verwendeten Parametern anzeigen zu lassen.
@@ -93,7 +93,7 @@ Die folgenden Schritte müssen in einer Befehlszeilen-, Shell- oder Terminalsitz
     * Ersetzen Sie __groupname__ durch den Namen der Ressourcengruppe.
     * Ersetzen Sie __location__ durch den gleichen Speicherort, den Sie in den vorherigen Schritten verwendet haben.
     * Ersetzen Sie __storagename__ durch den Namen des Speicherkontos.
-    * Ersetzen Sie __storagekey__ durch den Schlüssel, den Sie im vorherigen Schritt abgerufen haben. 
+    * Ersetzen Sie __storagekey__ durch den Schlüssel, den Sie im vorherigen Schritt abgerufen haben.
     * Verwenden Sie für den `--defaultStorageContainer`-Parameter den gleichen Namen wie für den Cluster.
     * Ersetzen Sie __admin__ und __httppassword__ durch den Namen und das Kennwort, die Sie beim Zugriff auf den Cluster über HTTPS verwenden möchten.
     * Ersetzen Sie __sshuser__ und __sshuserpassword__ durch den Benutzernamen und das Kennwort, die Sie beim Zugriff auf den Cluster über SSH verwenden möchten.
@@ -121,4 +121,4 @@ Nachdem Sie einen HDInsight-Cluster erfolgreich mithilfe der Azure-Befehlszeilen
 * [Verwenden von Python-Komponenten in Storm in HDInsight](hdinsight-storm-develop-python-topology.md)
 * [Bereitstellen und Überwachen von Topologien mit Storm in HDInsight](hdinsight-storm-deploy-monitor-topology-linux.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0831_2016-->

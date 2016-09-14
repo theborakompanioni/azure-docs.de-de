@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/24/2016"
+	ms.date="08/30/2016"
 	ms.author="swkrish"/>
 
 # Azure Active Directory B2C: Vergleich zwischen B2C-Produktionsmandanten und -Vorschaumandanten
@@ -47,7 +47,7 @@ Mit Produktionsmandanten können mehrere Hundertmillionen Endkundenidentitäten 
 Wenn Sie während des Vorschauzeitraums von Azure AD B2C einen B2C-Mandanten erstellt haben, ist die Wahrscheinlichkeit hoch, dass der **Mandantentyp** auf **Preview tenant** (Vorschaumandant) festgelegt ist. In diesem Fall können Sie Ihren Mandanten NUR für Entwicklungs- und Testzwecke verwenden, und NICHT für Produktions-Apps.
 
 > [AZURE.IMPORTANT]
-Es ist kein Migrationspfad von einem B2C-Vorschaumandanten zu einem B2C-Produktionsmandanten vorhanden.
+Es ist kein Migrationspfad von einem B2C-Vorschaumandanten zu einem B2C-Produktionsmandanten vorhanden. Beachten Sie, dass beim Löschen eines B2C-Vorschaumandanten und erneuten Erstellen eines B2C-Produktionsmandanten mit demselben Domänennamen bekannte Probleme auftreten. Sie müssen einen B2C-Produktionsmandanten mit einem anderen Domänennamen erstellen.
 
 ![Screenshot eines Vorschaumandanten](./media/active-directory-b2c-reference-tenant-type/preview-b2c-tenant.png)
 
@@ -55,8 +55,10 @@ Es ist kein Migrationspfad von einem B2C-Vorschaumandanten zu einem B2C-Produkti
 
 Azure AD B2C ist derzeit außerhalb von Nordamerika NICHT allgemein verfügbar. Sie haben aber die Möglichkeit, Produktionsmandanten zu Entwicklungs- und Testzwecken in einem der folgenden Länder oder Regionen zu erstellen und zu verwenden: Algerien, Ägypten, Aserbaidschan, Bahrain, Belarus, Belgien, Bulgarien, Dänemark, Deutschland, Estland, Finnland, Frankreich, Griechenland, Irland, Island, Israel, Italien, Jordanien, Kasachstan, Katar, Kenia, Kroatien, Kuwait, Lettland, Libanon, Liechtenstein, Litauen, Luxemburg, Malta, Marokko, Mazedonien (ehem. jugoslawische Republik), Montenegro, Niederlande, Nigeria, Norwegen, Oman, Österreich, Pakistan, Polen, Portugal, Rumänien, Russland, Saudi-Arabien, Schweden, Schweiz, Serbien, Slowakei, Slowenien, Spanien, Südafrika, Tschechische Republik, Tunesien, Türkei, Ukraine, Ungarn, Vereinigte Arabische Emirate, Vereinigtes Königreich und Zypern.
 
+Sobald Azure AD B2C die allgemeine Verfügbarkeit in den oben genannten Ländern oder Regionen ankündigt, können Sie diese Produktionsmandanten weiterhin verwenden und Ihre Produktions-Apps ohne Datenverlust freischalten.
+
 ## Verfügbarkeit von B2C-Mandanten
 
 In den folgenden Ländern oder Regionen sind B2C-Mandanten derzeit nicht verfügbar: Afghanistan, Argentinien, Australien, Brasilien, Chile, Ecuador, Hongkong, Indien, Indonesien, Irak, Japan, Kolumbien, Malaysia, Neuseeland, Paraguay, Peru, Philippinen, Singapur, Sri Lanka, Südkorea, Taiwan, Thailand, Uruguay und Venezuela. Diese Länder sollen in Zukunft eingebunden werden.
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0831_2016-->

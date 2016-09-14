@@ -80,7 +80,7 @@ Die folgende Liste beschreibt den allgemeinen Workflow für die Cloud-Konnektivi
 
 ### <a name="topologies"></a>Verbindungstopologien
 
-Sehen Sie sich zunächst die Diagramme im Artikel [Verbindungstopologien](vpn-gateway-topology.md) an. Der Artikel enthält grundlegende Diagramme, die Bereitstellungsmodelle für jede Topologie (Resource Manager oder klassisch) und Informationen dazu, welche Bereitstellungstools Sie für Ihre Konfiguration verwenden können.
+Sehen Sie sich zunächst die Diagramme im Artikel [Informationen zu VPN Gateway](vpn-gateway-about-vpngateways.md) an. Der Artikel enthält grundlegende Diagramme, die Bereitstellungsmodelle für jede Topologie (Resource Manager oder klassisch) und Informationen dazu, welche Bereitstellungstools Sie für Ihre Konfiguration verwenden können.
 
 ### <a name="designbasics"></a>Entwurfsgrundlagen
 
@@ -161,4 +161,4 @@ In den Artikeln [Häufig gestellte Fragen zum VPN-Gateway](vpn-gateway-vpn-faq.m
 
 Weitere Informationen zu bestimmten Gatewayeinstellungen finden Sie unter [Informationen zu VPN Gateway-Einstellungen](vpn-gateway-about-vpn-gateway-settings.md).
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->
