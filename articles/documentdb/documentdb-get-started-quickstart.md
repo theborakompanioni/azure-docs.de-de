@@ -81,7 +81,7 @@ Fügen Sie zunächst in der Datei "Program.cs" am Anfang der C#-Anwendung folgen
 
 > [AZURE.IMPORTANT] Um dieses NoSQL-Tutorial abzuschließen, müssen Sie die oben genannten Abhängigkeiten hinzufügen.
 
-Fügen Sie diese beiden Konstanten und Ihre *Client*variable nun unter der öffentlichen *Program*-Klasse hinzu.
+Fügen Sie diese beiden Konstanten und Ihre *Client* variable nun unter der öffentlichen *Program* -Klasse hinzu.
 
 	public class Program
 	{
