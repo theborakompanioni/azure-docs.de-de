@@ -172,7 +172,8 @@ Alle Versionen des Azure DocumentDB-SDK für .NET vor Version **1.0.0** werden a
 | [1\.9.4](#1.9.4) | 24. August 2016 |--- 
 | [1\.9.3](#1.9.3) | 15. August 2016 |--- 
 | [1\.9.2](#1.9.2) | 23. Juli 2016 |--- 
-| 1.9.1 | Veraltet |--- | 1.9.0 | Veraltet |--- 
+| 1.9.1 | Veraltet |--- 
+| 1.9.0 | Veraltet |--- 
 | [1\.8.0](#1.8.0) | 14. Juni 2016 |--- 
 | [1\.7.1](#1.7.1) | 06. Mai 2016 |--- 
 | [1\.7.0](#1.7.0) | 26. April 2016 |--- 
@@ -200,4 +201,4 @@ Alle Versionen des Azure DocumentDB-SDK für .NET vor Version **1.0.0** werden a
 
 Weitere Informationen zu DocumentDB finden Sie auf der Seite zum Dienst [Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/).
 
-<!---HONumber=AcomDC_0824_2016-->
+<!----HONumber=AcomDC_0824_2016-->
