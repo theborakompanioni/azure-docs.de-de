@@ -646,7 +646,8 @@ Alle virtuellen Computer in Azure müssen mit einem virtuellen Netzwerk verbunde
 
 Weitere Informationen finden Sie in [diesem Artikel][resource-groups-networking] und auf [dieser Seite](https://azure.microsoft.com/documentation/services/virtual-network/).
 
-[comment]: <> (MShermannd TODO Couldn't find an article which includes the OpenLDAP topic + ARM; ) [comment]: <> (MSSedusch <https://channel9.msdn.com/Blogs/Open/Load-balancing-highly-available-Linux-services-on-Windows-Azure-OpenLDAP-and-MySQL>)
+[comment]: <> (MShermannd TODO Couldn't find an article which includes the OpenLDAP topic + ARM; ) 
+[comment]: <> (MSSedusch <https://channel9.msdn.com/Blogs/Open/Load-balancing-highly-available-Linux-services-on-Windows-Azure-OpenLDAP-and-MySQL>)
 
 > [AZURE.NOTE] Standardmäßig können Sie nach der Bereitstellung eines virtuellen Computers die Konfiguration des virtuellen Netzwerks nicht mehr ändern. Die TCP/IP-Einstellungen müssen dem Azure-DHCP-Server überlassen werden. Das Standardverhalten ist die dynamische IP-Zuweisung.
 
@@ -680,7 +681,11 @@ Die obige Abbildung zeigt zwei Azure-Abonnements mit IP-Adressunterbereichen, di
 #### Punkt-zu-Standort-VPN
 Punkt-zu-Standort-VPN erfordert, dass jeder Clientcomputer eine Verbindung mit dem eigenen VPN in Azure herstellt. Für die SAP-Szenarios, die wir betrachten, ist die Punkt-zu-Standort-Konnektivität nicht geeignet. Aus diesem Grund werden keine weiteren Angaben zur Punkt-zu-Standort-VPN-Konnektivität gemacht.
 
-[comment]: <> (MSSedusch -- More information can be found here) [comment]: <> (MShermannd TODO Link no longer valid; But ARM is anyway not supported - see next link below) [comment]: <> (MSSedusch -- <http://msdn.microsoft.com/library/azure/dn133798.aspx>.) [comment]: <> (MShermannd TODO Point to Site not supported yet with ARM ) [comment]: <> (MSSedusch -- <https://azure.microsoft.com/documentation/articles/vpn-gateway-point-to-site-create/>)
+[comment]: <> (MSSedusch -- More information can be found here) 
+[comment]: <> (MShermannd TODO Link no longer valid; But ARM is anyway not supported - see next link below) 
+[comment]: <> (MSSedusch -- <http://msdn.microsoft.com/library/azure/dn133798.aspx>.) 
+[comment]: <> (MShermannd TODO Point to Site not supported yet with ARM ) 
+[comment]: <> (MSSedusch -- <https://azure.microsoft.com/documentation/articles/vpn-gateway-point-to-site-create/>)
 
 #### VPN mit mehreren Standorten
 Azure bietet jetzt auch die Möglichkeit zum Erstellen von VPN-Konnektivität mit mehreren Standorten für ein Azure-Abonnement. Zuvor war ein einzelnes Abonnement auf eine Standort-zu-Standort-VPN-Verbindung beschränkt. Diese Einschränkung wurde mit VPN-Verbindungen mit mehreren Standorten für ein einzelnes Abonnement aufgehoben. Dadurch können mehrere Azure-Regionen für ein bestimmtes Abonnement über standortübergreifende Konfigurationen genutzt werden.
@@ -758,7 +763,8 @@ Das Azure-Portal ist eine von drei Schnittstellen für die Verwaltung von Azure-
  
 ![Übersicht der virtuellen Computer im Microsoft Azure-Portal][planning-guide-figure-800]
 
-[comment]: <> (MSSedusch * <https://azure.microsoft.com/documentation/articles/virtual-networks-create-vnet-arm-pportal/>) [comment]: <> (MSSedusch * <https://azure.microsoft.com/documentation/articles/virtual-machines-windows-tutorial/>)
+[comment]: <> (MSSedusch * <https://azure.microsoft.com/documentation/articles/virtual-networks-create-vnet-arm-pportal/>)
+[comment]: <> (MSSedusch * <https://azure.microsoft.com/documentation/articles/virtual-machines-windows-tutorial/>)
 
 Verwaltung und Konfiguration einer VM-Instanz können im Azure-Portal erfolgen.
 
@@ -769,7 +775,9 @@ Das Azure-Portal bietet grundlegende Funktionen für die Bereitstellung und Konf
 * Hochladen von VHDs in Azure
 * Kopieren von VMs
 
-[comment]: <> (MShermannd TODO what about automation service for SAP VMs ? ) [comment]: <> (MSSedusch deployment of multiple VMs os meanwhile possible) [comment]: <> (MSSedusch Also any type of automation regarding deployment is not possible with the Azure portal. Tasks such as scripted deployment of multiple VMs is not possible via the Azure Portal.)
+[comment]: <> (MShermannd TODO what about automation service for SAP VMs ? )
+[comment]: <> (MSSedusch deployment of multiple VMs os meanwhile possible)
+[comment]: <> (MSSedusch Also any type of automation regarding deployment is not possible with the Azure portal. Tasks such as scripted deployment of multiple VMs is not possible via the Azure Portal.)
 
 ### Verwaltung mit Microsoft Azure PowerShell-Cmdlets
 Windows PowerShell ist ein leistungsfähiges und erweiterbares Framework, das gerade von Kunden, die eine größere Anzahl von Systemen in Azure bereitstellen, sehr geschätzt wird. Nach der Installation der PowerShell-Cmdlets auf einem Desktop, Laptop oder einer dedizierten Verwaltungsstation können die Cmdlets remote ausgeführt werden.
@@ -1930,4 +1938,4 @@ Hier die wichtigsten Punkte der hohen Verfügbarkeit für SAP-Systeme in Azure:
 * Das Sichern von SAP-Dialoginstanzen ist nicht sinnvoll, da es bei einfachen Dialoginstanzen in der Regel schneller geht, sie erneut bereitzustellen.
 * Es ist empfehlenswert, den virtuellen Computer, der das globale Verzeichnis des SAP-Systems enthält, einschließlich aller Profile der unterschiedlichen Instanzen zu sichern. Dies sollte beispielsweise mit der Windows-Sicherung oder unter Linux mit "tar" durchgeführt werden. Aufgrund von Unterschieden zwischen Windows Server 2008 (R2) und Windows Server 2012 (R2) ist die Sicherung mit den neueren Windows Server-Versionen einfacher. Es wird daher empfohlen, Windows Server 2012 (R2) als Windows-Gastbetriebssystem ausgeführt.
 
-<!---HONumber=AcomDC_0824_2016-->
+<!----HONumber=AcomDC_0824_2016-->

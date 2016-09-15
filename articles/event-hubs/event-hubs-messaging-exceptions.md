@@ -56,7 +56,8 @@ In der folgenden Tabelle werden die Typen von Messagingausnahmen, ihre Ursachen 
 | [TransactionSizeExceededException](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.transactionsizeexceededexception_methods.aspx) | Die Transaktion umfasst zu viele Vorgänge. | Reduzieren Sie die Anzahl der Vorgänge, die Teil dieser Transaktion sind. | Eine Wiederholung hilft nicht. |
 | [MessagingEntityDisabledException](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagingentitydisabledexception.aspx) | Es wurde ein Laufzeitvorgang für eine deaktivierte Entität angefordert. | Aktivieren Sie die Entität. | Eine Wiederholung kann helfen, wenn die Entität in der Zwischenzeit aktiviert wurde. |
 | [MessageSizeExceededException](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagesizeexceededexception.aspx) | Eine Nachrichtennutzlast überschreitet den Grenzwert von 256 KB. Beachten Sie, dass der Grenzwert von 256 KB für die Gesamtgröße der Nachricht gilt, zu der auch Systemeigenschaften und .NET-Mehraufwand gehören. | Reduzieren Sie die Größe der Nachrichtennutzlast, und wiederholen Sie den Vorgang. | Eine Wiederholung hilft nicht. |
-| [TransactionException](https://msdn.microsoft.com/library/system.transactions.transactionexception.aspx) | Die Ambient-Transaktion (*Transaction.Current*) ist ungültig. Sie wurde möglicherweise abgeschlossen oder abgebrochen. Die innere Ausnahme kann zusätzliche Informationen bereitstellen. | | Ein Wiederholungsversuch ist nicht hilfreich. | - | [TransactionInDoubtException](https://msdn.microsoft.com/library/system.transactions.transactionindoubtexception.aspx) | Es wurde versucht, einen Vorgang für eine unsichere Transaktion auszuführen, oder es wurde versucht, ein Commit für die Transaktion auszuführen, und die Transaktion wurde unsicher. | Die Anwendung muss diese Ausnahme (als Sonderfall) behandeln, da für die Transaktion u.U. bereits ein Commit ausgeführt wurde. | - |
+| [TransactionException](https://msdn.microsoft.com/library/system.transactions.transactionexception.aspx) | Die Ambient-Transaktion (*Transaction.Current*) ist ungültig. Sie wurde möglicherweise abgeschlossen oder abgebrochen. Die innere Ausnahme kann zusätzliche Informationen bereitstellen. | | Ein Wiederholungsversuch ist nicht hilfreich. | - 
+| [TransactionInDoubtException](https://msdn.microsoft.com/library/system.transactions.transactionindoubtexception.aspx) | Es wurde versucht, einen Vorgang für eine unsichere Transaktion auszuführen, oder es wurde versucht, ein Commit für die Transaktion auszuführen, und die Transaktion wurde unsicher. | Die Anwendung muss diese Ausnahme (als Sonderfall) behandeln, da für die Transaktion u.U. bereits ein Commit ausgeführt wurde. | - |
 
 ## QuotaExceededException
 
@@ -86,4 +87,4 @@ Es gibt zwei häufige Ursachen für diesen Fehler: eine falsche Konfiguration od
 
 Die vollständige Referenz zu den .NET-APIs für Service Bus und Event Hubs finden Sie in der [Azure-Referenz auf MSDN](https://msdn.microsoft.com/library/azure/mt419900.aspx).
 
-<!---HONumber=AcomDC_0824_2016-->
+<!----HONumber=AcomDC_0824_2016-->

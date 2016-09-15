@@ -74,4 +74,8 @@ fetch(url, { headers: headers })
 
 Der Abruf ist als npm-Paket oder zum Download im Browser von CDNJS verfügbar. Sie können auch JQuery oder eine andere AJAX-API zum Abrufen der Informationen verwenden. Daten werden als JSON-Objekt empfangen.
 
-<!---HONumber=AcomDC_0615_2016-->
+
+<!-- URLs. -->
+[Hinzufügen von Authentifizierung zu Ihrer App]: app-service-mobile-cordova-get-started-users.md
+
+<!----HONumber=AcomDC_0615_2016-->
