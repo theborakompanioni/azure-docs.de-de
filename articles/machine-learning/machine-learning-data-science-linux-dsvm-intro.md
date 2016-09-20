@@ -247,7 +247,7 @@ Die VM enthält einige Machine Learning-Tools und -Algorithmen, die vorkompilier
 * **CNTK** (Computational Network Toolkit von Microsoft Research): Ein Deep Learning-Toolkit.
 * **Vowpal Wabbit**: Ein Algorithmus für schnelles Onlinelernen.
 * **xgboost**: Tool mit optimierten Boosted Tree-Algorithmen.
-* **Python**: Anaconda Python wird als Paket mit Machine Learning-Algorithmen für Bibliotheken wie Scikit-learn bereitgestellt. Sie können andere Bibliotheken installieren, indem Sie „pip install“ ausführen.
+* **Python**: Anaconda Python wird als Paket mit Machine Learning-Algorithmen für Bibliotheken wie Scikit-learn bereitgestellt. Sie können andere Bibliotheken installieren, indem Sie den `pip install`-Befehl verwenden.
 * **R**: Für R ist eine umfassende Bibliothek mit Machine Learning-Funktionen verfügbar. Einige Bibliotheken sind vorinstalliert, z.B. lm, glm, randomForest und rpart. Sie können andere Bibliotheken installieren, indem Sie Folgendes ausführen:
 
 		install.packages(<lib name>)
@@ -344,4 +344,4 @@ Informieren Sie sich weiter:
 * Erfahren Sie, wie Sie mithilfe des [Team Data Science-Prozesses](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) systematisch vollständige Analyselösungen erstellen.
 * Öffnen Sie den [Cortana Analytics-Katalog](http://gallery.cortanaanalytics.com), um Anwendungsbeispiele der Cortana Analytics Suite für die Bereiche Machine Learning und Datenanalysen zu erhalten.
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0907_2016-->

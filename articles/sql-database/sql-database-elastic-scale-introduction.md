@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="05/27/2016"
+    ms.date="09/06/2016"
     ms.author="ddove"/>
 
 # Horizontales Hochskalieren mit Azure SQL-Datenbank
@@ -33,10 +33,10 @@ Die Datenbankfarbe symbolisiert Schemas. Datenbanken mit der gleichen Farbe verw
 1. Eine Reihe von **Azure SQL-Datenbanken** werden von Azure unter Verwendung einer Shardingarchitektur gehostet.
 2. Die **Clientbibliothek für elastische Datenbanken** dient zum Verwalten einer Shardgruppe.
 3. Eine Teilmenge der Datenbanken wird einem **Pool für elastische Datenbanken** zugewiesen. (Siehe [Was ist ein Pool?](sql-database-elastic-pool.md)).
-4. Ein **Auftrag für die elastische Datenbank** führt T-SQL-Skripts für alle Datenbanken aus.
+4. Ein **Auftrag für elastische Datenbanken** wird geplant ausgeführt, oder Ad-hoc-T-SQL-Skripts werden für alle Datenbanken ausgeführt.
 5. Mit dem **Split-Merge-Tool** werden Daten zwischen Shards verschoben.
 6. Mit der **Abfrage für elastische Datenbanken** können Sie eine Abfrage für alle Datenbanken in der Shardgruppe erstellen.
-7. Mit **Elastische Transaktionen** können Sie Transaktionen ausführen, die sich über mehrere Datenbanken erstrecken. 
+7. Mit **Elastische Transaktionen** können Sie Transaktionen ausführen, die sich über mehrere Datenbanken erstrecken.
 
 
 ![Tools für elastische Datenbanken][1]
@@ -109,4 +109,4 @@ Einzelheiten zum Pool für elastische Datenbanken finden Sie unter [Überlegunge
 [3]: ./media/sql-database-elastic-scale-introduction/overview.png
 [4]: ./media/sql-database-elastic-scale-introduction/single_v_multi_tenant.png
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0907_2016-->

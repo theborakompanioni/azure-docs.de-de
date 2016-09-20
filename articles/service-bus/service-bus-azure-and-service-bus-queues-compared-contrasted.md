@@ -227,30 +227,6 @@ In diesem Abschnitt werden die von Azure-Warteschlangen und Service Bus-Wartesch
 
 - Namen von Service Bus-Warteschlangen können bis zu 260 Zeichen lang sein und verfügen über weniger restriktive Benennungsregeln. Namen von Service Bus-Warteschlangen dürfen Buchstaben, Ziffern, Punkte, Bindestriche und Unterstriche enthalten.
 
-## Leistung
-
-In diesem Abschnitt werden Azure-Warteschlangen und Service Bus-Warteschlangen im Hinblick auf die Leistung verglichen.
-
-|Vergleichskriterien|Azure-Warteschlangen|Service Bus-Warteschlangen|
-|---|---|---|
-|Maximaler Durchsatz|**Bis zu 2.000 Nachrichten pro Sekunde**<br/><br/>(basierend auf Vergleichstests mit Nachrichten von 1 KB)|**Bis zu 2.000 Nachrichten pro Sekunde**<br/><br/>(basierend auf Vergleichstests mit Nachrichten von 1 KB)|
-|Durchschnittliche Latenz|**10 ms**<br/><br/>(mit deaktiviertem [TCP Nagle-Algorithmus](http://blogs.msdn.com/b/windowsazurestorage/archive/2010/06/25/nagle-s-algorithm-is-not-friendly-towards-small-requests.aspx))|**20–25 ms**|
-|Begrenzungsverhalten|**Bei HTTP 503-Code ablehnen**<br/><br/>(Begrenzte Anforderungen sind nicht abrechenbar.)|**Mit Ausnahme/HTTP 503 ablehnen**<br/><br/>(Begrenzte Anforderungen sind nicht abrechenbar.)|
-
-### Zusätzliche Informationen
-
-- Eine einzelne Azure-Warteschlange kann bis zu 2.000 Transaktionen pro Sekunde verarbeiten. Eine Transaktion ist ein **Put**-, **Get**-, oder **Delete**-Vorgang. Das Senden einer einzelnen Nachricht an eine Warteschlange (**Put**) wird als eine Transaktion gezählt, während der Empfang einer Nachricht häufig ein zweistufiger Vorgang ist, der den Abruf (**Get**) gefolgt von einer Anforderung zum Entfernen der Nachricht aus der Warteschlange (**Delete**) umfasst. Folglich werden i. d. R. zwei Transaktionen ausgeführt, um eine Nachricht erfolgreich aus einer Warteschlange zu entfernen. Das Abrufen mehrerer Nachrichten in einem Batch kann die negativen Auswirkungen verringern, da Sie bis zu 32 Nachrichten mithilfe von **Get** in einer Transaktion abrufen können, gefolgt von einem **Delete**-Vorgang für jede dieser Nachrichten. Damit ein besserer Durchsatz erzielt wird, können Sie mehrere Warteschlangen erstellen (ein Speicherkonto kann uneingeschränkt viele Warteschlangen aufweisen).
-
-- Wenn die Anwendung den maximalen Durchsatz für eine Azure-Warteschlange erreicht, wird normalerweise die Antwort „HTTP 503 – Server ausgelastet“ vom Warteschlangendienst zurückgegeben. In diesem Fall sollte die Anwendung die Wiederholungslösung mit exponentieller Backoffverzögerung auslösen.
-
-- Die Latenz von Azure-Warteschlangen beträgt durchschnittlich 10 Millisekunden, wenn kleine Nachrichten (unter 10 KB) von einem gehosteten Dienst behandelt werden, der sich am selben Ort (bzw. derselben Region) wie das Speicherkonto befindet.
-
-- Sowohl von Azure-Warteschlangen als auch von Service Bus-Warteschlangen wird das Begrenzungsverhalten erzwungen, indem Anforderungen an eine begrenzte Warteschlange angelehnt werden. Begrenzte Anforderungen werden jedoch von keiner der Warteschlangen als abrechenbar behandelt.
-
-- Verwenden Sie mehrere Service Bus-Warteschlangen, um einen höheren Durchsatz zu erzielen. Weitere Informationen zur Leistungsoptimierung mit Service Bus finden Sie unter [Bewährte Methoden für Leistungsoptimierungen mithilfe von Service Bus-Brokermessaging](service-bus-performance-improvements.md).
-
-- Sobald der maximale Durchsatz für eine Service Bus-Warteschlange erreicht ist, wird (bei Verwendung der .NET-API für Messaging) eine [ServerBusyException](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.serverbusyexception.aspx)-Antwort bzw. (bei Verwendung der REST-API) eine HTTP 503-Antwort an den Warteschlangenclient zurückgegeben. Diese weisen darauf hin, dass die Warteschlange gedrosselt wird.
-
 ## Authentifizierung und Autorisierung
 
 In diesem Abschnitt werden die von Azure-Warteschlangen und Service Bus-Warteschlangen unterstützten Autorisierungsfunktionen erläutert.
@@ -304,7 +280,7 @@ Die folgenden Artikel enthalten weitere Anleitungen und Informationen zur Verwen
 - [Verwenden von Servicebus-Warteschlangen](service-bus-dotnet-get-started-with-queues.md)
 - [Verwenden des Warteschlangenspeicherdiensts](../storage/storage-dotnet-how-to-use-queues.md)
 - [Bewährte Methoden für Leistungsoptimierungen mithilfe von Service Bus-Brokermessaging](service-bus-performance-improvements.md)
-- [Introducing Queues and Topics in Azure Service Bus (Einführung in Warteschlangen und Themen in Azure Service Bus, in englischer Sprache)](http://www.code-magazine.com/article.aspx?quickid=1112041)
+- [Introducing Queues and Topics in Azure Service Bus](http://www.code-magazine.com/article.aspx?quickid=1112041) (Einführung in Warteschlangen und Themen in Azure Service Bus)
 - [The Developer's Guide to Service Bus (Entwicklerhandbuch für Service Bus, in englischer Sprache)](http://www.cloudcasts.net/devguide/)
 - [Azure Storage Architecture (Azure Storage-Architektur, in englischer Sprache)](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
 - [Using the Queuing Service in Azure (Verwenden des Warteschlangendiensts in Azure, in englischer Sprache)](http://www.developerfusion.com/article/120197/using-the-queuing-service-in-windows-azure/)
@@ -314,4 +290,4 @@ Die folgenden Artikel enthalten weitere Anleitungen und Informationen zur Verwen
 [klassischen Azure-Portals]: http://manage.windowsazure.com
  
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0907_2016-->

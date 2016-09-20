@@ -21,12 +21,10 @@
 > [AZURE.SELECTOR]
 - [Sicherheitsübersicht](sql-data-warehouse-overview-manage-security.md)
 - [Bedrohungserkennung](sql-data-warehouse-security-threat-detection.md)
-- [Verschlüsselung (Portal)](sql-data-warehouse-encryption-tde.md)
-- [Verschlüsselung (T-SQL)](sql-data-warehouse-encryption-tde-tsql.md)
 - [Übersicht über die Überwachung](sql-data-warehouse-auditing-overview.md)
 - [Überwachung für Vorgängerversionsclients](sql-data-warehouse-auditing-downlevel-clients.md)
-
-
+- [Transparent Data Encryption (Portal)](sql-data-warehouse-encryption-tde.md)
+- [Transparent Data Encryption (T-SQL)](sql-data-warehouse-encryption-tde-tsql.md)
 
 Dieser Artikel beschreibt die Grundlagen zum Sichern der Azure SQL Data Warehouse-Datenbank. Insbesondere erhalten Sie in diesem Artikel erste Informationen über Ressourcen zum Einschränken des Zugriffs, zum Schützen von Daten und zum Überwachen von Aktivitäten in einer Datenbank.
 
@@ -34,10 +32,9 @@ Dieser Artikel beschreibt die Grundlagen zum Sichern der Azure SQL Data Warehous
 
 Verbindungssicherheit bezieht sich darauf, auf welche Weise Sie die Verbindungen zu Ihrer Datenbank mithilfe von Firewall-Regeln und Verbindungsverschlüsselung einschränken und sichern.
 
-Firewall-Regeln werden vom Server und der Datenbank verwendet, um Verbindungsversuche von IP-Adressen abzuwehren, die nicht explizit der weißen Liste hinzugefügt wurden. Damit von Ihrer Anwendung oder von der öffentlichen IP-Adresse Ihres Clientcomputers aus Verbindungen hergestellt werden können, müssen Sie zuerst über das klassische Azure-Portal, über REST-API oder PowerShell eine Firewallregel auf Serverebene erstellen. Eine bewährte Methode besteht darin, die von der Server-Firewall zugelassenen IP-Adressbereiche so weit wie möglich einzuschränken. Um von Ihrem lokalen Computer aus auf Azure SQL Data Warehouse zuzugreifen, stellen Sie sicher, dass die Firewall im Netzwerk und auf dem lokalen Computer eine ausgehende Kommunikation an TCP-Port 1433 zulässt. Weitere Informationen finden Sie unter [Azure SQL-Datenbankfirewall][], [sp\_set\_firewall\_rule][] und [sp\_set\_database\_firewall\_rule][].
+Firewall-Regeln werden vom Server und der Datenbank verwendet, um Verbindungsversuche von IP-Adressen abzuwehren, die nicht explizit der weißen Liste hinzugefügt wurden. Damit von Ihrer Anwendung oder von der öffentlichen IP-Adresse Ihres Clientcomputers aus Verbindungen hergestellt werden können, müssen Sie zuerst über das Azure-Portal, über REST-API oder PowerShell eine Firewallregel auf Serverebene erstellen. Eine bewährte Methode besteht darin, die von der Server-Firewall zugelassenen IP-Adressbereiche so weit wie möglich einzuschränken. Um von Ihrem lokalen Computer aus auf Azure SQL Data Warehouse zuzugreifen, stellen Sie sicher, dass die Firewall im Netzwerk und auf dem lokalen Computer eine ausgehende Kommunikation an TCP-Port 1433 zulässt. Weitere Informationen finden Sie unter [Azure SQL-Datenbankfirewall][], [sp\_set\_firewall\_rule][] und [sp\_set\_database\_firewall\_rule][].
 
-Verbindungen mit SQL Data Warehouse können verschlüsselt werden, indem Sie den Verschlüsselungsmodus in der Verbindungszeichenfolge festlegen. Die Syntax zum Aktivieren der Verschlüsselung für die Verbindung variiert je nach Protokoll. Um Ihre Verbindungszeichenfolge festzulegen, navigieren Sie im Azure-Portal zu Ihrer Datenbank. Klicken Sie unter *Essentials* auf *Datenbank-Verbindungszeichenfolgen anzeigen*.
-
+Verbindungen mit Ihrem SQL Data Warehouse sind standardmäßig verschlüsselt. Das Ändern von Verbindungseinstellungen zum Deaktivieren der Verschlüsselung wird ignoriert.
 
 ## Authentifizierung
 
@@ -125,4 +122,4 @@ Informationen und Beispiele zum Herstellen einer Verbindung mit SQL Data Warehou
 <!--Other Web references-->
 [Rollenbasierte Zugriffssteuerung im Azure-Portal]: https://azure.microsoft.com/documentation/articles/role-based-access-control-configure
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0907_2016-->

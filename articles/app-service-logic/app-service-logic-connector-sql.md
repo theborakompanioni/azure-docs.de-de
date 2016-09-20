@@ -13,14 +13,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration"
-   ms.date="03/16/2016"
+   ms.date="09/01/2016"
    ms.author="sameerch"/>
 
 
 # Erste Schritte mit dem Microsoft SQL-Connector und das Hinzufügen zur Logik-App
->[AZURE.NOTE] Diese Version des Artikels gilt für die Logik-Apps-Schemaversion 2014-12-01-preview. Um die Schemaversion 2015-08-01-preview aufzurufen, klicken Sie auf [SQL Azure-API](../connectors/create-api-sqlazure.md).
+>[AZURE.NOTE] Diese Version des Artikels gilt für die Logik-Apps-Schemaversion 2014-12-01-preview. Um die Schemaversion 2015-08-01-preview aufzurufen, klicken Sie auf [SQL Azure-API](../connectors/connectors-create-api-sqlazure.md).
 
-Stellen Sie eine Verbindung mit einem lokalen SQL Server oder einer Azure SQL-Datenbank her, um Informationen oder Daten zu erstellen oder zu ändern. Connectors können in Logik-Apps als Teil eines "Workflows" verwendet werden, um Daten abzurufen, zu verarbeiten oder per Pushvorgang zu übermitteln. Wenn Sie den SQL-Connector im Workflow verwenden, können Sie eine Vielzahl von Szenarios umsetzen. Dazu zählen z. B.:
+Stellen Sie eine Verbindung mit einem lokalen SQL Server oder einer Azure SQL-Datenbank her, um Informationen oder Daten zu erstellen oder zu ändern. Connectors können in Logik-Apps als Teil eines "Workflows" verwendet werden, um Daten abzurufen, zu verarbeiten oder per Pushvorgang zu übermitteln. Wenn Sie den SQL-Connector im Workflow verwenden, können Sie eine Vielzahl von Szenarios umsetzen. Dazu zählen z. B.:
 
 - Machen Sie einen Teil der Daten in der SQL-Datenbank mithilfe einer Web- oder mobilen Anwendung verfügbar.
 - Einfügen von Daten in eine SQL-Datenbanktabelle zum Speichern. Sie können z. B. Mitarbeiterdatensätze eingeben, Aufträge aktualisieren, usw..
@@ -35,7 +35,7 @@ Der SQL-Connector kann als ein Trigger oder eine Aktion in einer Logik-App verwe
 
 Der SQL-Connector verfügt über folgende Trigger und Aktionen:
 
-Trigger | Aktionen
+Trigger | Actions
 --- | ---
 Umfragedaten | <ul><li>In die Tabelle einfügen</li><li>Tabelle aktualisieren</li><li>Aus der Tabelle auswählen</li><li>Aus der Tabelle löschen</li><li>Aufrufen der gespeicherten Prozedur</li></ul>
 
@@ -91,30 +91,24 @@ Der **Abruf der Datenabfrage** wird nur ausgeführt, wenn die Datenabfrage nach 
 		(SELECT Id FROM [Order] WHERE OrderStatus = 'ProcessedForCollection' ORDER BY Id DESC)
 
 ### Den Trigger hinzufügen
-1. Beim Erstellen oder Bearbeiten einer Logik-App wählen Sie den SQL-Connector als Trigger aus. Dadurch werden die verfügbaren Trigger aufgelistet: **Poll Data (JSON)** und **Poll Data (XML)**:  
-![][5]
+1. Beim Erstellen oder Bearbeiten einer Logik-App wählen Sie den SQL-Connector als Trigger aus. Dadurch werden die verfügbaren Trigger aufgelistet: **Poll Data (JSON)** und **Poll Data (XML)**: ![][5]
 
 2. Wählen Sie den Trigger **Poll Data (JSON)** aus, geben Sie die Häufigkeit an, und klicken Sie auf ✓: ![][6]
 
-3. Der Trigger wird jetzt in der Logik-App als konfiguriert angezeigt. Die Ausgaben des Triggers werden angezeigt und können in nachfolgenden Aktionen als Eingabe verwendet werden:
- ![][7]
+3. Der Trigger wird jetzt in der Logik-App als konfiguriert angezeigt. Die Ausgaben des Triggers werden angezeigt und können in nachfolgenden Aktionen als Eingabe verwendet werden: ![][7]
 
 ## Verwenden des Connectors als Aktion
 Mithilfe unseres einfachen Logik-App-Szenarios, das Daten aus einer SQL-Tabelle abruft, die Daten dann einer anderen Tabelle hinzufügt und anschließend aktualisiert.
 
 Für die Verwendung des SQL-Connectors als Aktion geben Sie den Namen der Tabellen und/oder gespeicherte Prozeduren ein, die Sie schon bei der Erstellung des SQL-Connectors eingegeben haben:
 
-1. Fügen Sie nach dem Trigger (oder wählen Sie "Diese Logik manuell ausführen") den aus dem Katalog erstellten SQL-Connector hinzu. Wählen Sie eine der Einfügeaktionen aus, z. B. *Insert Into TempEmployeeDetails (JSON)*:
- ![][8]
+1. Fügen Sie nach dem Trigger (oder wählen Sie "Diese Logik manuell ausführen") den aus dem Katalog erstellten SQL-Connector hinzu. Wählen Sie eine der Einfügeaktionen aus, z. B. *Insert Into TempEmployeeDetails (JSON)*: ![][8]
 
-2. Geben Sie die einzufügenden Eingabewerte des Datensatzes ein, und klicken Sie auf ✓:
- ![][9]
+2. Geben Sie die einzufügenden Eingabewerte des Datensatzes ein, und klicken Sie auf ✓: ![][9]
 
-3. Wählen Sie aus dem Katalog denselben SQL-Connector aus, den Sie erstellt haben. Wählen Sie als Aktion die Updateaktion für die gleiche Tabelle aus, z. B. *Update EmployeeDetails*:
- ![][11]
+3. Wählen Sie aus dem Katalog denselben SQL-Connector aus, den Sie erstellt haben. Wählen Sie als Aktion die Updateaktion für die gleiche Tabelle aus, z. B. *Update EmployeeDetails*: ![][11]
 
-4. Geben Sie die Eingabewerte für die Updateaktion ein, und klicken Sie auf ✓:
- ![][12]
+4. Geben Sie die Eingabewerte für die Updateaktion ein, und klicken Sie auf ✓: ![][12]
 
 Sie können die Logik-App testen, indem Sie in der abgefragten Tabelle einen neuen Datensatz hinzufügen.
 
@@ -142,7 +136,7 @@ App Service verwendet den Hybrid-Konfigurations-Manager, um sicher eine Verbindu
 Informationen finden Sie unter [Hybrid Connection Manager konfigurieren](app-service-logic-hybrid-connection-manager.md).
 
 
-## Mehr mit Ihrem Connector machen
+## Optimale Nutzung Ihres Connectors
 Nachdem der Connector nun erstellt ist, können Sie ihn mit Logik-App in einem Geschäftsworkflow hinzufügen. Informationen finden Sie unter [Was sind Logik-Apps?](app-service-logic-what-are-logic-apps.md).
 
 Anzeigen der Swagger-REST-API-Referenz unter [Referenz zu Connectors und API-Apps](http://go.microsoft.com/fwlink/p/?LinkId=529766).
@@ -161,4 +155,4 @@ Sie können auch Leistungsstatistiken überprüfen und die Sicherheit zum Connec
 [11]: ./media/app-service-logic-connector-sql/LogicApp7.png
 [12]: ./media/app-service-logic-connector-sql/LogicApp8.png
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0907_2016-->

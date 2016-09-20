@@ -656,12 +656,12 @@ In vielen Fällen können Batchprozesse Berichte nach einem definierten Zeitplan
 
 ## Weitere Informationen
 - [Microsoft Azure-Speicher: Überwachung, Diagnose und Problembehandlung](./storage/storage-monitoring-diagnosing-troubleshooting.md)
-- [Azure: Telemetry Basics and Troubleshooting](http://social.technet.microsoft.com/wiki/contents/articles/18146.windows-azure-telemetry-basics-and-troubleshooting.aspx) (Telemetriegrundlagen und Problembehandlung)
+- [Azure: Telemetry Basics and Troubleshooting (Telemetriegrundlagen und Problembehandlung)](http://social.technet.microsoft.com/wiki/contents/articles/18146.windows-azure-telemetry-basics-and-troubleshooting.aspx)
 - [Aktivieren der Diagnose in Azure Cloud Services und Virtual Machines](./cloud-services/cloud-services-dotnet-diagnostics.md)
 - [Azure Redis Cache](https://azure.microsoft.com/services/cache/), [Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) und [HDInsight](https://azure.microsoft.com/services/hdinsight/)
 - [Verwenden von Service Bus-Warteschlangen](./service-bus/service-bus-dotnet-get-started-with-queues.md)
 - [SQL Server-Business Intelligence in Azure Virtual Machines](./virtual-machines/virtual-machines-windows-classic-ps-sql-bi.md)
 - [Empfangen von Warnbenachrichtigungen](./azure-portal/insights-receive-alert-notifications.md) und [Nachverfolgen der Dienstintegrität](./azure-portal/insights-service-health.md)
-- [Application Insights](./application-insights/app-insights-get-started.md)
+- [Application Insights](./application-insights/app-insights-overview.md)
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0907_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/07/2016"
+	ms.date="09/01/2016"
 	ms.author="jeedes"/>
 
 
@@ -27,14 +27,14 @@ Die Integration von Jive in Azure AD bietet die folgenden Vorteile:
 - Sie können es Benutzern ermöglichen, sich mit ihrem Azure AD-Konto automatisch bei Jive anzumelden (Sigle Sign-On, SSO; einmaliges Anmelden).
 - Sie können Ihre Konten an einem zentralen Ort verwalten – im klassischen Azure-Portal.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
 ## Voraussetzungen
 
 Um die Azure AD-Integration mit Jive konfigurieren zu können, benötigen Sie Folgendes:
 
 - Ein Azure AD-Abonnement
-- Ein SSO-fähiges Jive-Abonnement
+- Ein Jive-Abonnement, für das einmaliges Anmelden aktiviert ist
 
 
 > [AZURE.NOTE] Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
@@ -129,7 +129,7 @@ Das Ziel dieses Abschnitts besteht darin, das einmalige Anmelden von Azure AD im
 
     a. Klicken Sie auf **Zertifikat herunterladen** und speichern Sie die Datei auf Ihrem Computer.
 
-    b. Klicken Sie auf **Weiter**.
+    b. Klicken Sie auf **Next**.
 
 
 5. Melden Sie sich bei Ihrem Jive-Mandanten als Administrator an.
@@ -140,7 +140,7 @@ Das Ziel dieses Abschnitts besteht darin, das einmalige Anmelden von Azure AD im
 
 	a. Wählen auf der Registerkarte **Allgemein** die Option **Aktiviert** aus.
 
-	b. Klicken Sie auf die Schaltfläche **Save all saml settings** (Alle Saml-Einstellungen speichern).
+	b. Klicken Sie auf die Schaltfläche **Save all saml settings** (Alle SAML-Einstellungen speichern).
 
 7. Navigieren Sie zur Registerkarte **Idp Metadata** (IDP-Metadaten).
 
@@ -254,7 +254,7 @@ Der folgende Screenshot zeigt ein Beispiel für das entsprechende Dialogfeld in 
 
 3.  Klicken Sie auf der Bestätigungsseite auf das Häkchen, um die Konfiguration zu speichern.
   
-Sie können nun ein Testkonto erstellen und nach 10 Minuten überprüfen, ob das Konto mit „Jive.com“ synchronisiert wurde.
+Sie können nun ein Testkonto erstellen und nach 10 Minuten überprüfen, ob das Konto mit „Jive.com“ synchronisiert wurde.
 
 
 
@@ -281,7 +281,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 4. Wählen Sie in der Benutzerliste **Britta Simon** aus.
 
-5. Klicken Sie auf der Symbolleiste am unteren Rand auf **Zuweisen**.
+5. Klicken Sie auf der Symbolleiste unten auf **Zuweisen**.
 
 	![Benutzer zuweisen][205]
 
@@ -317,4 +317,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Jive“ klicken, sollten Sie autom
 [204]: ./media/active-directory-saas-jive-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-jive-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0907_2016-->

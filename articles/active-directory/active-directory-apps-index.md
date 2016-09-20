@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/20/2016"
-	ms.author="markvi;liviodlc"/>
+	ms.date="09/02/2016"
+	ms.author="markvi"/>
 
 #Artikelindex für die Anwendungsverwaltung in Azure Active Directory
 
@@ -70,7 +70,7 @@ Um das einmalige Anmelden für Anwendungen zu ermöglichen, die den Verbund nich
 | :---: | --- |
 | Eine Einführung in die Funktionsweise des kennwortbasierten einmaligen Anmeldens und eine kurze technische Übersicht | [Kennwortbasiertes einmaliges Anmelden mit Azure AD](active-directory-appssoaccess-whatis.md#password-based-single-sign-on) |
 | Eine Übersicht über die Szenarien im Zusammenhang mit der Kontofreigabe und Problemlösungen mit Azure AD | [Freigeben von Konten in Azure AD](active-directory-sharing-accounts.md) |
-| Automatisches Ändern des Kennworts für bestimmte Apps in regelmäßigen Intervallen | [Automatisiertes Kennwortrollover (Vorschau)](http://blogs.technet.com/b/ad/archive/2015/02/20/azure-ad-automated-password-roll-over-for-facebook-twitter-and-linkedin-now-in-preview.aspx0) |
+| Automatisches Ändern des Kennworts für bestimmte Apps in regelmäßigen Intervallen | [Automatisiertes Kennwortrollover (Vorschau)](https://blogs.technet.microsoft.com/enterprisemobility/2015/02/20/azure-ad-automated-password-roll-over-for-facebook-twitter-and-linkedin-now-in-preview/) |
 | Handbücher zur Bereitstellung und Problembehandlung für die Internet Explorer-Version der Azure AD-Erweiterung zur Kennwortverwaltung | [Bereitstellen der Zugriffsbereichserweiterung für Internet Explorer mit der Gruppenrichtlinie](active-directory-saas-ie-group-policy.md)<br /><br />[Problembehandlung in der Zugriffsbereichserweiterung für Internet Explorer](active-directory-saas-ie-troubleshooting.md) |
 
 Das kennwortbasierte einmalige Anmelden steht für alle Editionen von Azure AD für bis zu zehn Apps pro Benutzer zur Verfügung. [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) unterstützt eine unbegrenzte Anzahl von Anwendungen. Wenn Ihre Organisation [Azure AD Basic](https://azure.microsoft.com/pricing/details/active-directory/) oder [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) verwendet, können Sie [den Zugriff auf Anwendungen mithilfe von Gruppen zuweisen](#managing-access-to-applications). Automatisiertes Kennwortrollover ist ein Feature von [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/).
@@ -218,7 +218,7 @@ Azure Active Directory bietet mehrere Berichte und Warnungen, mit denen Sie den 
 
 Um herauszufinden, welche Berichte in verschiedenen Editionen von Azure Active Directory enthalten sind, [klicken Sie hier](active-directory-view-access-usage-reports.md#report-editions).
 
-##Weitere Informationen
+##Siehe auch
 
 [Was ist Azure Active Directory?](active-directory-whatis.md)
 
@@ -228,4 +228,4 @@ Um herauszufinden, welche Berichte in verschiedenen Editionen von Azure Active D
 
 [Azure Multi-Factor Authentication](https://azure.microsoft.com/services/multi-factor-authentication/)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0907_2016-->

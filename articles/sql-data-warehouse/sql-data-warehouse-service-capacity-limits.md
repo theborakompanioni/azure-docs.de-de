@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="08/25/2016"
+   ms.date="09/01/2016"
    ms.author="sonyama;barbkess;jrj"/>
 
 # Kapazitätsgrenzen von SQL Data Warehouse
@@ -24,8 +24,9 @@ Die folgenden Tabellen erhalten die maximalen Werte, die für verschiedene Kompo
 ## Workloadverwaltung
 
 | Kategorie | Beschreibung | Maximum |
-| :------------------ | :------------------------------------------- | :----------------- |
-| [Data Warehouse-Einheiten (DWU)][]| Compute, Arbeitsspeicher und E/A-Ressourcen | 6000 |
+| :------------------ | :------------------------------------------------ | :----------------- |
+| [Data Warehouse-Einheiten (DWU)][]| Max. DWUs für ein einzelnes SQL Data Warehouse | 6000 |
+| [Data Warehouse-Einheiten (DWU)][]| Max. DWUs für eine einzelne SQL Server-Instanz | Standardmäßig 6.000<br/><br/> Standardmäßig verfügt jede SQL Server-Instanz (z.B. myserver.database.windows.net) über ein DTU-Kontingent in Höhe von 45.000, das bis zu 6.000 DWUs zulässt. Bei diesem Kontingentwert handelt es sich einfach um ein Sicherheitslimit. Sie können Ihr Kontingent erhöhen, indem Sie [ein Supportticket erstellen][] und als Anfragetyp *Kontingent* wählen. Multiplizieren Sie zum Berechnen Ihrer DTU-Anforderungen die Anzahl der insgesamt benötigten DWUs mit 7,5. Sie können den aktuellen DTU-Verbrauch im Portal auf dem Blatt „SQL-Server“ anzeigen. Sowohl angehaltene als auch nicht angehaltene Datenbanken werden in das DTU-Kontingent eingerechnet. |
 | Datenbankverbindung | Gleichzeitig geöffnete Sitzungen | 1\.024<br/><br/>Wir unterstützen maximal 1.024 aktive Verbindungen, wobei jede Verbindung gleichzeitig Anforderungen an eine SQL Data Warehouse-Datenbank übermitteln kann. Beachten Sie, dass die Anzahl der Abfragen, die tatsächlich gleichzeitig ausgeführt werden können, begrenzt ist. Wenn der Grenzwert überschritten wird, gelangt die Anforderung in eine interne Warteschlange, in der sie auf die Verarbeitung wartet.|
 | Datenbankverbindung | Maximaler Arbeitsspeicher für vorbereitete Anweisungen | 20 MB |
 | [Workloadverwaltung][] | Maximale Anzahl gleichzeitiger Abfragen | 32<br/><br/> SQL Data Warehouse führt standardmäßig bis zu 32 gleichzeitige Abfragen durch und reiht verbleibende Abfragen in die Warteschlange ein.<br/><br/>Der Grad an Parallelität kann sich verringern, wenn Benutzer einer höheren Ressourcenklasse zugewiesen werden oder SQL Data Warehouse mit einer niedrigen DWU konfiguriert ist. Einige Abfragen, wie DMV-Abfragen, dürfen immer ausgeführt werden.|
@@ -46,8 +47,6 @@ Die folgenden Tabellen erhalten die maximalen Werte, die für verschiedene Kompo
 | Tabelle | Zeichen pro Partitionsbegrenzungswert.| 4000 |
 | Index | Nicht gruppierte Indizes pro Tabelle. | 999<br/><br/>Gilt nur für Rowstore-Tabellen.|
 | Index | Gruppierte Indizes pro Tabelle. | 1<br><br/>Gilt für Rowstore- und Columnstore-Tabellen.|
-| Index | Zeilen in einer Rowgroup eines Columnstore-Indexes | 1\.024<br/><br/>Jeder Columnstore-Index wird in Form von mehreren Columnstore-Indizes implementiert. Beachten Sie, dass beim Einfügen von 1.024 Zeilen in einen SQL Data Warehouse-Columnstore-Index die Zeilen nicht alle in dieselbe Rowgroup übertragen werden.|
-| Index | Parallele Erstellung gruppierter Columnstore-Indizes. | 32<br/><br/>Gilt, wenn alle gruppierten Columnstore-Indizes jeweils für verschiedene Tabellen erstellt werden. Pro Tabelle ist nur das Erstellen eines gruppierten Columnstore-Index zulässig. Zusätzliche Anforderungen werden in eine Warteschlange gestellt.|
 | Index | Größe des Indexschlüssels. | 900 Bytes<br/><br/>Gilt nur für Rowstore-Indizes.<br/><br/>Indizes für „varchar“-Spalten mit einer maximalen Größe von mehr als 900 Bytes können erstellt werden, wenn die vorhandenen Daten in den Spalten bei der Indexerstellung nicht größer als 900 Bytes sind. Anschließende auf die Spalten angewendete INSERT- oder UPDATE-Anweisungen, die bewirken, dass die Gesamtgröße 900 Bytes überschreitet, haben allerdings keinen Erfolg.|
 | Index | Schlüsselspalten pro Index. | 16<br/><br/>Gilt nur für Rowstore-Indizes. Gruppierte Columnstore-Indizes enthalten alle Spalten.|
 | Statistiken | Größe der kombinierten Spaltenwerte. | 900 Bytes. |
@@ -107,9 +106,10 @@ Weitere Referenzinformationen finden Sie unter [SQL Data Warehouse-Referenz – 
 [Workloadverwaltung]: ./sql-data-warehouse-develop-concurrency.md
 [Tempdb]: ./sql-data-warehouse-tables-temporary.md
 [Datentyp]: ./sql-data-warehouse-tables-data-types.md
+[ein Supportticket erstellen]: /sql-data-warehouse-get-started-create-support-ticket.md
 
 <!--MSDN references-->
 [Zeilenüberlauf bei Daten über 8 KB]: https://msdn.microsoft.com/library/ms186981.aspx
 [Interner Fehler: ein Ausdrucksdienstelimit wurde erreicht.]: https://support.microsoft.com/kb/913050
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0907_2016-->

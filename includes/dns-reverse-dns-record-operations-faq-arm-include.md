@@ -7,7 +7,7 @@ Ja. Sobald Sie die Reverse-DNS-Eigenschaft für Ihre öffentliche IP-Adresse fes
 ### Wird für meine öffentlichen IP-Adressen ein Standard-Reverse-DNS-Eintrag erstellt?
 Nein. Reverse-DNS ist eine optionale Funktion. Es werden keine Standard-DNS-Einträge erstellt, wenn Sie keine konfigurieren.
 ### Wie sieht das Format für den vollqualifizierten Domänennamen (FQDN) aus?
-FQDNs werden aufsteigend angegeben und müssen einen Punkt am Ende haben (z. B. „app1.contoso.com.“).
+FQDNs werden aufsteigend angegeben und müssen einen Punkt am Ende haben (z. B. „app1.contoso.com.“).
 ### Was passiert bei Fehlern bei den Überprüfungen der Reverse-DNS, die ich angegeben habe?
 Wo ein Fehler bei der Überprüfung der Reverse-DNS auftaucht, erfolgt ein Fehler beim Dienstverwaltungsvorgang. Korrigieren Sie bitte den Reverse-DNS-Wert entsprechend den Anforderungen, und versuchen Sie es erneut.
 ### Kann ich für meine Azure-Website Reverse-DNS verwalten?
@@ -20,5 +20,7 @@ Nein. Um umgekehrte DNS-Einträge für Ihre öffentlichen IP-Adressen zu verwend
 Nein. Azure unterstützt das Weiterdelegieren von ARPA-Zonen nicht. Azure hostet die ARPA-Zonen für alle verfügbaren IP-Adressen und ermöglicht es Kunden, innerhalb dieser ARPA-Zonen Reverse-DNS-Einträge zu erstellen.
 ### Kann ich ARPA-Zonen für meine ISP-zugewiesenen IP-Blöcke in Azure DNS hosten?
 Nein. Azure DNS unterstützt derzeit keine Reverse-DNS-Einträge in den DNS-Zonen von Kunden.
+### Kann ich aus Azure Compute Services heraus E-Mails an externe Domänen senden?
+Nein. Wie [hier](https://blogs.msdn.microsoft.com/mast/2016/04/04/sending-e-mail-from-azure-compute-resource-to-external-domains/) beschrieben wird, unterstützen Azure Compute Services das Senden von E-Mails an externe Domänen nicht.
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0907_2016-->

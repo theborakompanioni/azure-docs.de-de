@@ -78,7 +78,7 @@ In diesem Abschnitt wird ein Teil des Codes der Schnellstart-App erörtert. Wenn
 Für den Zugriff auf Daten aus SQL Azure-Tabellen definieren Sie Clientdatenklassen, die den Tabellen im Mobile App-Back-End entsprechen. Für die Beispiele in diesem Thema wird eine Tabelle mit dem Namen *ToDoItem* verwendet, die folgende Spalten hat:
 
 - id
-- text
+- Text
 - complete
 
 Das entsprechend typisierte clientseitige Objekt sieht wie folgt aus:
@@ -398,7 +398,7 @@ Beachten Sie, dass beim Verketten von Methoden die *where*-Methode und Prädikat
 
 ##<a name="inserting"></a>Einfügen von Daten in das Back-End
 
-Der folgende Code zeigt, wie Sie neue Zeilen in eine Tabelle einfügen können.
+Der folgende Code zeigt, wie Sie eine neue Zeile in eine Tabelle einfügen können.
 
 Zunächst instanziieren Sie ein Objekt der *ToDoItem*-Klasse und setzen dessen Eigenschaften.
 
@@ -678,7 +678,7 @@ Nutzen Sie die Active Directory-Authentifizierungsbibliothek (Active Directory A
 
 ## Hinzufügen von Pushbenachrichtigungen zur App
 
-In der [Übersicht](../notification-hubs/notification-hubs-overview.md#integration-with-app-service-mobile-apps) erfahren Sie, wie Microsoft Azure Notification Hubs eine Vielzahl von Pushbenachrichtigungen unterstützt.
+In der [Übersicht](../notification-hubs/notification-hubs-push-notification-overview.md#integration-with-app-service-mobile-apps) erfahren Sie, wie Microsoft Azure Notification Hubs eine Vielzahl von Pushbenachrichtigungen unterstützt.
 
 In [diesem Tutorial](app-service-mobile-android-get-started-push.md) wird bei jedem Einfügen eines Datensatzes eine Pushbenachrichtigung gesendet.
 
@@ -837,4 +837,4 @@ Sie können diese allgemeine Methode immer dann verwenden, wenn Sie mit komplexe
 [Get started with authentication]: app-service-mobile-android-get-started-users.md
 [Erste Schritte mit Authentifizierungen]: app-service-mobile-android-get-started-users.md
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0907_2016-->

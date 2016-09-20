@@ -14,8 +14,8 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/11/2016"
-	ms.author="genli"/>
+	ms.date="09/01/2016"
+	ms.author="glimoli;genli"/>
 
 # Vorbereiten einer Windows-VHD für das Hochladen in Azure
 Um einen virtuellen Windows-Computer aus einem lokalen Speicherort in Azure hochzuladen, müssen Sie die virtuelle Festplatte (Virtual Hard Disk, VHD) ordnungsgemäß vorbereiten. Es gibt eine Reihe von Schritten, die Sie ausführen sollten, bevor Sie eine VHD in Azure hochladen. Die Ausführung von `sysprep` ist ein allgemeiner Prozess, aber nur ein Schritt bei der Generalisierung eines Images. Dieser Artikel zeigt Ihnen, wie Sie eine Windows-VHD für das Hochladen in Microsoft Azure vorbereiten.
@@ -34,7 +34,7 @@ Wenn Sie Ihren virtuellen Datenträger in das für Azure erforderliche Format ko
 	- Wählen Sie auf dem nächsten Bildschirm **Konvertieren** aus.
 		- Wenn Sie eine VHDX konvertieren müssen, wählen Sie **VHD** aus, und klicken Sie auf **Weiter**.
 		- Wenn Sie einen dynamischen Datenträger konvertieren müssen, wählen Sie **Feste Größe** aus, und klicken Sie auf **Weiter**.
-		
+
 	- Navigieren Sie zu **Pfad für die neue VHD-Datei**, und wählen Sie den Pfad aus.
 	- Klicken Sie zum Abschluss auf **Fertig stellen**.
 
@@ -93,17 +93,17 @@ Wenn Sie über ein Windows-VM-Image im [VMDK-Dateiformat](https://en.wikipedia.o
 
 	sc config iphlpsvc start= auto
 
-	sc config PolicyAgent start= manual
+	sc config PolicyAgent start= demand
 
 	sc config LSM start= auto
 
-	sc config netlogon start= manual
+	sc config netlogon start= demand
 
-	sc config netman start= manual
+	sc config netman start= demand
 
-	sc config NcaSvc start= manual
+	sc config NcaSvc start= demand
 
-	sc config netprofm start= manual
+	sc config netprofm start= demand
 
 	sc config NlaSvc start= auto
 
@@ -113,11 +113,11 @@ Wenn Sie über ein Windows-VM-Image im [VMDK-Dateiformat](https://en.wikipedia.o
 
 	sc config RpcEptMapper start= auto
 
-	sc config termService start= manual
+	sc config termService start= demand
 
 	sc config MpsSvc start= auto
 
-	sc config WinHttpAutoProxySvc start= manual
+	sc config WinHttpAutoProxySvc start= demand
 
 	sc config LanmanWorkstation start= auto
 
@@ -205,25 +205,25 @@ Wenn Sie über ein Windows-VM-Image im [VMDK-Dateiformat](https://en.wikipedia.o
 	- Ausgehend
 
 	```
-	netsh advfirewall firewall set rule dir=in name="Network Discovery (LLMNR-UDP-Out)" new enable=yes
+	netsh advfirewall firewall set rule dir=out name="Network Discovery (LLMNR-UDP-Out)" new enable=yes
 
-	netsh advfirewall firewall set rule dir=in name="Network Discovery (NB-Datagram-Out)" new enable=yes
+	netsh advfirewall firewall set rule dir=out name="Network Discovery (NB-Datagram-Out)" new enable=yes
 
-	netsh advfirewall firewall set rule dir=in name="Network Discovery (NB-Name-Out)" new enable=yes
+	netsh advfirewall firewall set rule dir=out name="Network Discovery (NB-Name-Out)" new enable=yes
 
-	netsh advfirewall firewall set rule dir=in name="Network Discovery (Pub-WSD-Out)" new enable=yes
+	netsh advfirewall firewall set rule dir=out name="Network Discovery (Pub-WSD-Out)" new enable=yes
 
-	netsh advfirewall firewall set rule dir=in name="Network Discovery (SSDP-Out)" new enable=yes
+	netsh advfirewall firewall set rule dir=out name="Network Discovery (SSDP-Out)" new enable=yes
 
-	netsh advfirewall firewall set rule dir=in name="Network Discovery (UPnPHost-Out)" new enable=yes
+	netsh advfirewall firewall set rule dir=out name="Network Discovery (UPnPHost-Out)" new enable=yes
 
-	netsh advfirewall firewall set rule dir=in name="Network Discovery (UPnP-Out)" new enable=yes
+	netsh advfirewall firewall set rule dir=out name="Network Discovery (UPnP-Out)" new enable=yes
 
-	netsh advfirewall firewall set rule dir=in name="Network Discovery (WSD Events-Out)" new enable=yes
+	netsh advfirewall firewall set rule dir=out name="Network Discovery (WSD Events-Out)" new enable=yes
 
-	netsh advfirewall firewall set rule dir=in name="Network Discovery (WSD EventsSecure-Out)" new enable=yes
+	netsh advfirewall firewall set rule dir=out name="Network Discovery (WSD EventsSecure-Out)" new enable=yes
 
-	netsh advfirewall firewall set rule dir=in name="Network Discovery (WSD-Out)" new enable=yes
+	netsh advfirewall firewall set rule dir=out name="Network Discovery (WSD-Out)" new enable=yes
 	```
 
 
@@ -233,17 +233,15 @@ Wenn Sie über ein Windows-VM-Image im [VMDK-Dateiformat](https://en.wikipedia.o
 13. Stellen Sie sicher, dass die Einstellungen für die Startkonfigurationsdaten (Boot Configuration Data, BCD) den folgenden entsprechen:
 
 	```
-	bcdedit /set {bootmgr} device partition=<Boot Partition>
-
 	bcdedit /set {bootmgr} integrityservices enable
 
-	bcdedit /set {default} device partition=<OS Partition>
+	bcdedit /set {default} device partition=C:
 
 	bcdedit /set {default} integrityservices enable
 
 	bcdedit /set {default} recoveryenabled Off
 
-	bcdedit /set {default} osdevice partition=<OS Partition>
+	bcdedit /set {default} osdevice partition=C:
 
 	bcdedit /set {default} bootstatuspolicy IgnoreAllFailures
 	```
@@ -321,4 +319,4 @@ Die folgenden Einstellungen wirken sich nicht auf das Hochladen von VHDs aus. Es
 
 - [Hochladen eines Windows-VM-Images an Azure für Resource Manager-Bereitstellungen](virtual-machines-windows-upload-image.md)
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0907_2016-->

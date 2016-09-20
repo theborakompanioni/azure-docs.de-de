@@ -14,14 +14,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/27/2016"
+	ms.date="09/02/2016"
 	ms.author="jgao"/>
 
 #Verwenden von Sqoop mit Hadoop in HDInsight
 
 [AZURE.INCLUDE [Sqoop-Auswahl](../../includes/hdinsight-selector-use-sqoop.md)]
 
-Erfahren Sie, wie Sqoop in HDInsight zum Importieren und Exportieren zwischen HDInsight-Cluster und Azure SQL-Datenbank oder SQL Server-Datenbank verwendet werden kann.
+Erfahren Sie, wie Sqoop in HDInsight zum Importieren und Exportieren zwischen HDInsight-Cluster und Azure SQL-Datenbank oder SQL Server-Datenbank verwendet werden kann.
 
 Während Hadoop die beste Wahl für die Verarbeitung unstrukturierter und halbstrukturierter Daten wie z. B. Protokolle und Dateien ist, besteht oft auch Bedarf für die Verarbeitung strukturierter Daten, die in relationalen Datenbanken gespeichert werden.
 
@@ -62,23 +62,23 @@ Zunächst exportieren Sie *sample.log* und *hivesampletable* in die Azure SQL-Da
 
 ## Erstellen von Cluster und SQL-Datenbank
 
-In diesem Abschnitt wird gezeigt, wie Sie einen Cluster und die SQL-Datenbankschemas zum Ausführen des Tutorials mit dem Azure-Portal und einer ARM-Vorlage erstellen. Wenn Sie Azure PowerShell bevorzugen, helfen Ihnen die Informationen in [Anhang A](#appendix-a---a-powershell-sample) weiter.
+In diesem Abschnitt wird gezeigt, wie Sie mit dem Azure-Portal und einer Azure Resource Manager-Vorlage einen Cluster und die SQL-Datenbankschemas erstellen, die Sie zum Ausführen des Tutorials benötigen. Wenn Sie Azure PowerShell bevorzugen, helfen Ihnen die Informationen in [Anhang A](#appendix-a---a-powershell-sample) weiter.
 
-1. Klicken Sie auf die folgende Abbildung, um eine ARM-Vorlage im Azure-Portal zu öffnen.
+1. Klicken Sie auf das folgende Bild, um eine Resource Manager-Vorlage im Azure-Portal zu öffnen.
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Fusesqoop%2Fcreate-linux-based-hadoop-cluster-in-hdinsight-and-sql-database.json" target="_blank"><img src="https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/documentation/articles/hdinsight-hbase-tutorial-get-started-linux/20160201111850/deploy-to-azure.png" alt="Deploy to Azure"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Fusesqoop%2Fcreate-linux-based-hadoop-cluster-in-hdinsight-and-sql-database.json" target="_blank"><img src="https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/de-DE/documentation/articles/hdinsight-hbase-tutorial-get-started-linux/20160201111850/deploy-to-azure.png" alt="Deploy to Azure"></a>
     
-    Die ARM-Vorlage befindet sich in einem öffentlichen Blobcontainer: *https://hditutorialdata.blob.core.windows.net/usesqoop/create-linux-based-hadoop-cluster-in-hdinsight-and-sql-database.json*.
+    Die Resource Manager-Vorlage befindet sich in einem öffentlichen Blobcontainer: *https://hditutorialdata.blob.core.windows.net/usesqoop/create-linux-based-hadoop-cluster-in-hdinsight-and-sql-database.json*.
     
-    Die ARM-Vorlage ruft ein bacpac-Paket auf, um die Tabellenschemas der SQL-Datenbank bereitzustellen. Das BACPAC-Paket befindet sich ebenfalls in einem öffentlichen Blobcontainer (https://hditutorialdata.blob.core.windows.net/usesqoop/SqoopTutorial-2016-2-23-11-2.bacpac). Wenn Sie einen privaten Container für die bacpac-Dateien verwenden möchten, verwenden Sie die folgenden Werte in der Vorlage:
+    Die Resource Manager-Vorlage ruft ein bacpac-Paket auf, um die Tabellenschemas in der SQL-Datenbank bereitzustellen. Das BACPAC-Paket befindet sich ebenfalls in einem öffentlichen Blobcontainer (https://hditutorialdata.blob.core.windows.net/usesqoop/SqoopTutorial-2016-2-23-11-2.bacpac). Wenn Sie einen privaten Container für die bacpac-Dateien verwenden möchten, verwenden Sie die folgenden Werte in der Vorlage:
     
         "storageKeyType": "Primary",
         "storageKey": "<TheAzureStorageAccountKey>",
     
 2. Geben Sie auf dem Blatt "Parameter" Folgendes ein:
 
-    - **ClusterName**: Geben Sie einen Namen für den Hadoop-Cluster ein, den Sie erstellen möchten.
-    - **Clusteranmeldename und -kennwort**: Der Standardname für die Anmeldung lautet „admin“.
+    - **Clustername**: Geben Sie einen Namen für den Hadoop-Cluster ein, den Sie erstellen möchten.
+    - **Cluster-Benutzername und -Kennwort**: Der Standardname für die Anmeldung lautet „admin“.
     - **SSH-Benutzername und -Kennwort**.
     - **Anmeldename und Kennwort für den SQL-Datenbankserver**.
 
@@ -89,7 +89,7 @@ In diesem Abschnitt wird gezeigt, wie Sie einen Cluster und die SQL-Datenbanksch
     |Servername der Azure SQL-Datenbank|<ClusterName>dbserver|
     |Azure SQL-Datenbankname|<ClusterName>db|
     
-    Bitte notieren Sie diese Werte. Sie werden diese später im Lernprogramm benötigen.
+    Bitte notieren Sie diese Werte. Sie werden diese später im Tutorial benötigen.
     
 3\. Klicken Sie auf **OK**, um die Parameter zu speichern.
 
@@ -97,7 +97,7 @@ In diesem Abschnitt wird gezeigt, wie Sie einen Cluster und die SQL-Datenbanksch
 
 5\. Klicken Sie auf **Rechtliche Bedingungen** und dann auf **Erstellen**.
 
-6\. Klicken Sie auf **Erstellen**. Daraufhin wird eine neue Kachel mit der Bezeichnung "Bereitstellung für Vorlagenbereitstellung wird gesendet" angezeigt. Das Erstellen des Clusters und der SQL-Datenbank dauert ca. 20 Minuten.
+6\. Klicken Sie auf **Erstellen**. Daraufhin wird eine neue Kachel mit der Bezeichnung "Bereitstellung für Vorlagenbereitstellung wird gesendet" angezeigt. Das Erstellen des Clusters und der SQL-Datenbank dauert ca. 20 Minuten.
 
 Wenn Sie die vorhandene Azure SQL-Datenbank oder Microsoft SQL Server verwenden möchten:
 
@@ -149,12 +149,12 @@ Nun wissen Sie, wie Sqoop verwendet haben. Weitere Informationen finden Sie unte
 - [Hochladen von Daten in HDInsight][hdinsight-upload-data]\: Andere Methoden zum Hochladen von Daten in HDInsight/Azure Blob-Speicher.
 
 
-## Anhang A – PowerShell-Beispiel
+## Anhang A – PowerShell-Beispiel
 
 Im PowerShell-Beispiel werden die folgenden Schritte ausgeführt:
 
 1. Stelle Sie eine Verbindung zu Azure her.
-2. Erstellen Sie eine Azure-Ressourcengruppe. Weitere Informationen finden Sie unter [Verwenden von Windows PowerShell mit dem Azure-Ressourcen-Manager](../powershell-azure-resource-manager.md).
+2. Erstellen Sie eine Azure-Ressourcengruppe. Weitere Informationen finden Sie unter [Verwenden von Windows PowerShell mit dem Azure Resource Manager](../powershell-azure-resource-manager.md).
 3. Erstellen Sie einen Azure SQL-Datenbank-Server, eine Azure SQL-Datenbank und zwei Tabellen.
 
 	Wenn Sie stattdessen SQL Server verwenden, verwenden Sie die folgenden Anweisungen, um die Tabellen zu erstellen:
@@ -189,7 +189,7 @@ Im PowerShell-Beispiel werden die folgenden Schritte ausgeführt:
 
 5. Verarbeiten Sie die Quelldatei vorab.
 
-	In diesem Lernprogramm exportieren Sie die Protokolldatei log4j (eine getrennte Datei) und eine Hive-Tabelle in eine Azure SQL-Datenbank. Der Name der getrennten Datei lautet */example/data/sample.log*. In diesem Lernprogramm haben wir Ihnen bereits einige Beispiele für log4j-Protokolle gezeigt. In der Protokolldatei existieren einige Leerzeilen und einige Zeilen, die ungefähr wie folgt aussehen:
+	In diesem Tutorial exportieren Sie die Protokolldatei log4j (eine getrennte Datei) und eine Hive-Tabelle in eine Azure SQL-Datenbank. Der Name der getrennten Datei lautet */example/data/sample.log*. In diesem Tutorial haben wir Ihnen bereits einige Beispiele für log4j-Protokolle gezeigt. In der Protokolldatei existieren einige Leerzeilen und einige Zeilen, die ungefähr wie folgt aussehen:
 	
 		java.lang.Exception: 2012-02-03 20:11:35 SampleClass2 [FATAL] unrecoverable system problem at id 609774657
 			at com.osa.mocklogger.MockLogger$2.run(MockLogger.java:83)
@@ -629,4 +629,4 @@ Im PowerShell-Beispiel werden die folgenden Schritte ausgeführt:
 
 [sqoop-user-guide-1.4.4]: https://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0907_2016-->

@@ -109,14 +109,14 @@ Ein Attributfluss kann auch **IgnoreThisFlow** verwenden. Dieses Literal ähnelt
 
 Beispiel:
 
-In *Out to AD – User Exchange hybrid* (Aus nach AD – Benutzer Exchange Hybrid) finden Sie folgenden Fluss: `IIF([cloudSOAExchMailbox] = True,[cloudMSExchSafeSendersHash],IgnoreThisFlow)` Dieser Ausdruck ist wie folgt zu lesen: Wenn sich das Postfach des Benutzers in Azure AD befindet, fließt das Attribut von Azure AD nach AD. Andernfalls fließt nichts zurück nach Active Directory. In diesem Fall wird der vorhandene Wert in AD beibehalten.
+In *Out to AD – User Exchange hybrid* (Ausgehend nach AD – Benutzer Exchange Hybrid) finden Sie folgenden Fluss: `IIF([cloudSOAExchMailbox] = True,[cloudMSExchSafeSendersHash],IgnoreThisFlow)` Dieser Ausdruck ist wie folgt zu lesen: Wenn sich das Postfach des Benutzers in Azure AD befindet, fließt das Attribut von Azure AD nach AD. Andernfalls fließt nichts zurück nach Active Directory. In diesem Fall wird der vorhandene Wert in AD beibehalten.
 
 ### ImportedValue
 Die Funktion „ImportedValue“ unterscheidet sich von allen anderen Funktionen, da der Attributname in Anführungszeichen statt in eckige Klammern eingeschlossen werden muss: `ImportedValue("proxyAddresses")`.
 
 Üblicherweise verwendet ein Attribut während der Synchronisierung den erwarteten Wert, selbst wenn er noch nicht exportiert wurde oder während des Exports ein Fehler empfangen wurde („top of the tower“). Bei einer eingehenden Synchronisierung wird vorausgesetzt, dass ein Attribut, das ein verbundenes Verzeichnis noch nicht erreicht hat, dieses schließlich erreicht. In einigen Fällen ist es wichtig, nur Werte zu synchronisieren, die vom verbundenen Verzeichnis bestätigt wurden („hologram and delta import tower“).
 
-Ein Beispiel für diese Funktion finden Sie in der vordefinierten Synchronisierungsregel *In from AD – User Common from Exchange* (Ein von AD – Benutzer allgemein aus Exchange). In Hybrid Exchange sollte der von Exchange Online hinzugefügte Wert nur synchronisiert werden, wenn der erfolgreiche Export des Werts bestätigt wurde: `proxyAddresses` <- `RemoveDuplicates(Trim(ImportedValue("proxyAddresses")))`
+Ein Beispiel für diese Funktion finden Sie in der vordefinierten Synchronisierungsregel *In from AD – User Common from Exchange* (Eingehend von AD – Benutzer allgemein aus Exchange). In Hybrid Exchange sollte der von Exchange Online hinzugefügte Wert nur synchronisiert werden, wenn der erfolgreiche Export des Werts bestätigt wurde: `proxyAddresses` <- `RemoveDuplicates(Trim(ImportedValue("proxyAddresses")))`
 
 ## Rangfolge
 Wenn mehrere Synchronisierungsregeln versuchen, den gleichen Attributwert für das Ziel beizutragen, wird mit dem Rangfolgenwert bestimmt, welcher Wert Vorrang hat. Die Regel mit der höchsten Rangfolge (dem niedrigsten numerischen Wert) trägt in einem Konflikt das Attribut bei.
@@ -132,12 +132,20 @@ Wenn Sie über mehrere Objekte im gleichen Connectorbereich mit demselben Metave
 
 In diesem Szenario müssen Sie den Bereich der Synchronisierungsregeln ändern, sodass sich verschiedene Synchronisierungsregeln im Bereich der Quellobjekte befinden. Damit können Sie eine andere Rangfolge definieren. ![Mehrere Objekte mit demselben Metaverse-Objekt verbunden](./media/active-directory-aadconnectsync-understanding-declarative-provisioning/multiple2.png)
 
-## Weitere Ressourcen
+## Nächste Schritte
 
-- [Azure AD Connect-Synchronisierung: Ändern der Standardkonfiguration](active-directory-aadconnectsync-change-the-configuration.md)
-- [Azure AD Connect-Synchronisierung: Grundlegendes zu Ausdrücken für die deklarative Bereitstellung](active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md)
-- [Azure AD Connect-Synchronisierung: Funktionsreferenz](active-directory-aadconnectsync-functions-reference.md)
-- [Azure AD Connect-Synchronisierung: Anpassen von Synchronisierungsoptionen](active-directory-aadconnectsync-whatis.md)
+- Weitere Informationen zur Ausdruckssprache finden Sie unter [Grundlegendes zu Ausdrücken für die deklarative Bereitstellung](active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md).
+- Unter [Grundlegendes zur Standardkonfiguration](active-directory-aadconnectsync-understanding-default-configuration.md) wird die standardmäßige Verwendung der deklarativen Bereitstellung veranschaulicht.
+- Unter [Ändern der Standardkonfiguration](active-directory-aadconnectsync-change-the-configuration.md) wird beschrieben, wie Sie mit der deklarativen Bereitstellung eine praktische Änderung vornehmen.
+- Unter [Grundlegendes zu Benutzern und Kontakten](active-directory-aadconnectsync-understanding-users-and-contacts.md) erfahren Sie, wie Benutzer und Kontakte zusammenarbeiten.
+
+**Übersichtsthemen**
+
+- [Azure AD Connect-Synchronisierung: Grundlagen und Anpassung der Synchronisierung](active-directory-aadconnectsync-whatis.md)
 - [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md)
 
-<!---HONumber=AcomDC_0831_2016-->
+**Referenzthemen**
+
+- [Azure AD Connect-Synchronisierung: Funktionsreferenz](active-directory-aadconnectsync-functions-reference.md)
+
+<!---HONumber=AcomDC_0907_2016-->

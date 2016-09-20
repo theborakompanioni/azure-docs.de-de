@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/29/2016"
+	ms.date="09/01/2016"
 	ms.author="juliako"/>
 
 # Ändern Sie den Typ reservierter Einheiten
@@ -27,7 +27,7 @@
 
 ## Übersicht
 
-Weitere Informationen zum Skalieren der Medienverarbeitung finden Sie in dieser [Übersicht](media-services-scale-media-processing-overview.md).
+>[AZURE.IMPORTANT] Lesen Sie unbedingt das [Übersichtsthema](media-services-scale-media-processing-overview.md), um weitere Informationen zum Skalieren der Medienverarbeitung zu erhalten.
 
 ## Skalieren der Medienverarbeitung
 
@@ -57,4 +57,4 @@ Führen Sie folgende Schritte aus, um den Typ reservierter Einheiten und die Anz
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0907_2016-->

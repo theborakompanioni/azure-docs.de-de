@@ -12,20 +12,27 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/28/2016"
+	ms.date="09/01/2016"
 	ms.author="awills"/>
 
 # Überwachen der Leistung der Azure-Web-App
 
-Im [Azure-Portal](https://portal.azure.com) können Sie festlegen, dass Statistiken und Details zu den Anwendungsabhängigkeiten in Ihren [Azure-Web-Apps](../app-service-web/app-service-web-overview.md) oder [virtuellen Computern](../virtual-machines/virtual-machines-linux-about.md) gesammelt werden.
+Im [Azure-Portal](https://portal.azure.com) können Sie eine Anwendungsleistungsüberwachung für [Azure-Web-Apps](../app-service-web/app-service-web-overview.md) oder [virtuelle Computer](../virtual-machines/virtual-machines-linux-about.md) einrichten. Leistungsüberwachungslösungen instrumentieren Ihre App zum Senden aktivitätsbezogener Telemetriedaten. Anhand der Metriken und Telemetriedaten können Sie dann Probleme diagnostizieren, die Leistung verbessern und die Nutzung untersuchen.
 
-Azure unterstützt die Überwachung der Anwendungsleistung (Application Performance Monitoring, APM) durch die Nutzung von Erweiterungen. Diese Erweiterungen werden in Ihrer Anwendung installiert und geben die gesammelten Daten an die Überwachungsdienste zurück.
+## Laufzeit oder Buildzeit
 
-**Application Insights** und **New Relic** sind zwei der zur Verfügung stehenden Erweiterungen zur Leistungsüberwachung. Um sie zu verwenden, müssen Sie einen Agent zur Laufzeit installieren. Application Insights bietet auch die Option zum Erstellen des Codes mit einem SDK. Mit dem SDK können Sie Code schreiben, um die Auslastung und Leistung Ihrer Anwendung genauer zu überwachen.
+Zum Konfigurieren der Überwachung kann die App auf zwei Arten instrumentiert werden:
 
-## Application Insights
+* **Laufzeit:** Sie können eine Erweiterung für die Leistungsüberwachung auswählen, wenn Ihre Web-App bereits live geschaltet wurde. Die App muss dazu nicht neu erstellt oder erneut installiert werden. Sie erhalten einen Standardsatz von Paketen zur Überwachung von Antwortzeiten, Erfolgsraten, Ausnahmen, Abhängigkeiten und Ähnlichem.
 
-### (Optional) Neuerstellen der App mit dem SDK...
+    **Application Insights** und **New Relic** sind zwei der zur Verfügung stehenden Erweiterungen für die Leistungsüberwachung zur Laufzeit.
+ 
+* **Buildzeit:** Sie können ein Paket in der App installieren, die Sie gerade entwickeln. Diese Option ist wesentlich flexibler. Neben den gleichen Standardpaketen können Sie auch Code schreiben, um die Telemetrie anzupassen oder Ihre eigenen Telemetriedaten zu senden. Sie können bestimmte Aktivitäten protokollieren oder Ereignisse gemäß der Semantik Ihrer App-Domäne erfassen.
+
+    **Application Insights** stellt Buildzeitpakete bereit.
+
+
+## Erstellen der App mit dem Application Insights-Paket
 
 Application Insights kann durch Installieren eines SDK in Ihrer App eine detailliertere Telemetrie bereitstellen.
 
@@ -44,9 +51,9 @@ Sie können die Telemetrie testen, indem Sie die App auf dem Entwicklungscompute
 
 Das SDK stellt eine API bereit, sodass Sie eine [benutzerdefinierte Telemetrie schreiben](../application-insights/app-insights-api-custom-events-metrics.md) können, um die Verwendung nachzuverfolgen.
 
-### ...oder manuelles Einrichten einer Ressource
+### Manuelles Einrichten einer Ressource
 
-Wenn Sie das SDK nicht in Visual Studio hinzugefügt haben, müssen Sie die Application Insights-Ressource in Azure einrichten, unter der die Telemetriedaten gespeichert, analysiert und angezeigt werden.
+Wenn Sie das SDK nicht in Visual Studio hinzugefügt haben, müssen Sie in Azure eine Application Insights-Ressource einrichten, unter der die Telemetriedaten gespeichert, analysiert und angezeigt werden.
 
 ![Klicken Sie auf „Hinzufügen“ > „Entwicklerdienste“ > „Application Insights“. Wählen Sie den App-Typ „ASP.NET“ aus.](./media/insights-perf-analytics/01-new.png)
 
@@ -83,25 +90,25 @@ Oder wenn Sie einen virtuellen Computer verwenden:
 
     Beachten Sie den Link „...“ zum Öffnen aller Eigenschaften.
 
-    Sie können [Suchen anpassen](../application-insights/app-insights-diagnostic-search.md).
+    Sie können [Suchvorgänge anpassen](../application-insights/app-insights-diagnostic-search.md).
 
-Verwenden Sie für das leistungsfähigere Durchsuchen von Telemetriedaten die [Analytics-Abfragesprache](../application-insights/app-insights-analytics-tour.md).
+Verwenden Sie die [Analytics-Abfragesprache](../application-insights/app-insights-analytics-tour.md), um Telemetriedaten noch effizienter zu durchsuchen.
 
 
 ## Fragen und Antworten
 
 Wie erreiche ich, dass Daten an eine andere Application Insights-Ressource gesendet werden?
 
-* *Bei Hinzufügung von Application Insights zum Code in Visual Studio:* Klicken Sie mit der rechten Maustaste auf das Projekt, und wählen Sie **Application Insights > Konfigurieren** und dann die gewünschte Ressource. Sie erhalten die Möglichkeit, eine neue Ressource zu erstellen. Führen Sie die Neuerstellung und dann die erneute Bereitstellung durch.
-* *Alternative:* Öffnen Sie in Azure das Steuerungsblatt der Web-App und dann **Extras > Erweiterungen**. Löschen Sie die Application Insights-Erweiterung. Öffnen Sie **Extras > Leistung**, und wählen Sie „Hier klicken“, „Application Insights“ und dann die gewünschte Ressource. (Wenn Sie eine neue Application Insights-Ressource erstellen möchten, sollten Sie dies zuerst durchführen.)
+* *Vorgehensweise, wenn Sie Application Insights Ihrem Code in Visual Studio hinzugefügt haben:* Klicken Sie mit der rechten Maustaste auf das Projekt, und wählen Sie **Application Insights > Konfigurieren** und dann die gewünschte Ressource aus. Sie erhalten die Möglichkeit, eine neue Ressource zu erstellen. Führen Sie die Neuerstellung und dann die erneute Bereitstellung durch.
+* *Alternative:* Öffnen Sie in Azure das Steuerungsblatt der Web-App und dann **Extras > Erweiterungen**. Löschen Sie die Application Insights-Erweiterung. Öffnen Sie **Extras > Leistung**, und wählen Sie „Hier klicken“ > „Application Insights“ und dann die gewünschte Ressource aus. (Wenn Sie eine neue Application Insights-Ressource erstellen möchten, sollten Sie dies zuerst durchführen.)
 
 
 ## Nächste Schritte
 
-* [Überwachen von Dienstintegritätsmetriken](insights-how-to-customize-monitoring.md), um sicherzustellen, dass Ihr Dienst verfügbar und reaktionsfähig ist.
-* [Aktivieren von Überwachung und Diagnose](insights-how-to-use-diagnostics.md), um detaillierte Hochfrequenzmetriken zu Ihrem Dienst zu sammeln.
-* [Empfangen von Warnbenachrichtigungen](insights-receive-alert-notifications.md), wenn ein Vorgangsereignis auftritt oder Metriken einen Schwellenwert überschreiten.
-* Verwenden von [Application Insights für JavaScript-Apps und Webseiten](../application-insights/app-insights-web-track-usage.md), um die Clienttelemetriedaten über die Browser zu erhalten, mit denen auf eine Webseite zugegriffen wird.
-* [Einrichten von Verfügbarkeitswebtests](../application-insights/app-insights-monitor-web-app-availability.md), um benachrichtigt zu werden, wenn Ihre Website nicht verfügbar ist.
+* [Überwachen von Dienstintegritätsmetriken](insights-how-to-customize-monitoring.md), um sicherzustellen, dass Ihr Dienst verfügbar und reaktionsfähig ist
+* [Aktivieren von Überwachung und Diagnose](insights-how-to-use-diagnostics.md), um detaillierte Hochfrequenzmetriken zu Ihrem Dienst zu sammeln
+* [Empfangen von Warnbenachrichtigungen](insights-receive-alert-notifications.md), wenn ein Vorgangsereignis auftritt oder Metriken einen Schwellenwert überschreiten
+* Verwenden von [Application Insights für JavaScript-Apps und Webseiten](../application-insights/app-insights-web-track-usage.md), um Clienttelemetriedaten von den Browsern zu erhalten, mit denen auf eine Webseite zugegriffen wird
+* [Einrichten von Verfügbarkeitswebtests](../application-insights/app-insights-monitor-web-app-availability.md), um benachrichtigt zu werden, wenn Ihre Website nicht verfügbar ist
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0907_2016-->

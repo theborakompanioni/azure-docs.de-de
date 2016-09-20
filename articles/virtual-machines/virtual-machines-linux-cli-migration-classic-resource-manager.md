@@ -58,8 +58,26 @@ Wechseln Sie nun in den `asm`-Modus der Befehlszeilenschnittstelle.
 
 	azure config mode asm
 
+## Schritt 3: Sicherstellen, dass Sie über genügend Kerne in virtuellen Azure Resource Manager-Computern in der Azure-Region Ihrer aktuellen Bereitstellung oder Ihres VNET verfügen
 
-## Schritt 3: Option 1 – Migrieren von virtuellen Computern in einem Clouddienst 
+Für diesen Schritt müssen in den `arm`-Modus wechseln. Führen Sie dazu den folgenden Befehl aus.
+
+```
+azure config mode arm
+```
+
+Mit dem folgenden CLI-Befehl können Sie Ihre aktuelle Anzahl an Kernen in Azure Resource Manager überprüfen. Weitere Informationen zu Kernkontingenten finden Sie unter [Grenzwerte und Azure Resource Manager](../articles/azure-subscription-service-limits.md#limits-and-the-azure-resource-manager).
+
+```
+azure vm list-usage -l "<Your VNET or Deployment's Azure region"
+```
+
+Sobald Sie diesen Schritt überprüft haben, können Sie zurück in den `asm`-Modus wechseln.
+
+	azure config mode asm
+
+
+## Schritt 4: Option 1 – Migrieren von virtuellen Computern in einem Clouddienst 
 
 Rufen Sie mithilfe des folgenden Befehls die Liste mit den Clouddiensten auf, und wählen Sie anschließend den zu migrierenden Clouddienst aus. Beachten Sie: Falls sich die virtuellen Computer im Clouddienst in einem virtuellen Netzwerk befinden oder über Web-/Workerrollen verfügen, wird eine Fehlermeldung zurückgegeben.
 
@@ -83,7 +101,7 @@ Nach der Vorbereitung können Sie sich in der ausführlichen Ausgabe über den M
 
 	azure vm show <vmName> -vv
 
-Überprüfen Sie die Konfiguration der vorbereiteten Ressourcen mithilfe der Befehlszeilenschnittstelle oder im Azure-Portal. Wenn Sie noch nicht für die Migration bereit sind und zum vorherigen Zustand zurückkehren möchten, verwenden Sie den folgenden Befehl.
+Überprüfen Sie die Konfiguration der vorbereiteten Ressourcen mithilfe der Befehlszeilenschnittstelle oder im Azure-Portal. Wenn Sie noch nicht für die Migration bereit sind und zum alten Zustand zurückkehren möchten, verwenden Sie den folgenden Befehl.
 
 	azure service deployment abort-migration <serviceName> <deploymentName>
 
@@ -93,7 +111,7 @@ Wenn die vorbereitete Konfiguration in Ordnung ist, können Sie den Vorgang fort
 
 
 	
-## Schritt 3: Option 2 – Migrieren von virtuellen Computern in einem virtuellen Netzwerk
+## Schritt 4: Option 2 – Migrieren von virtuellen Computern in einem virtuellen Netzwerk
 
 Wählen Sie das virtuelle Netzwerk aus, das Sie migrieren möchten. Beachten Sie: Falls das virtuelle Netzwerk Web-/Workerrollen oder virtuelle Computer mit nicht unterstützten Konfigurationen enthält, tritt ein Validierungsfehler auf.
 
@@ -105,7 +123,7 @@ Die Ausgabe sieht in etwa wie folgt aus:
 
 ![Screenshot der Befehlszeile, in dem der gesamte Name des virtuellen Netzwerks hervorgehoben ist.](./media/virtual-machines-linux-cli-migration-classic-resource-manager/vnet.png)
 
-Im obigen Beispiel ist **virtualNetworkName** der gesamte Name **Group classicubuntu16 classicubuntu16**.
+Im obigen Beispiel ist **virtualNetworkName** der vollständige Name **Group classicubuntu16 classicubuntu16**.
 
 Bereiten Sie das gewünschte virtuelle Netzwerk mithilfe des folgenden Befehls für die Migration vor.
 
@@ -119,7 +137,7 @@ Wenn die vorbereitete Konfiguration in Ordnung ist, können Sie den Vorgang fort
 
 	azure network vnet commit-migration <virtualNetworkName>
 
-## Schritt 4: Migrieren eines Speicherkontos
+## Schritt 5: Migrieren eines Speicherkontos
 
 Sobald Sie mit der Migration der virtuellen Computer fertig sind, sollten Sie das Speicherkonto migrieren.
 
@@ -140,4 +158,4 @@ Wenn die vorbereitete Konfiguration in Ordnung ist, können Sie den Vorgang fort
 - [Plattformgestützte Migration von IaaS-Ressourcen aus dem klassischen Bereitstellungsmodell zu Resource Manager](virtual-machines-windows-migration-classic-resource-manager.md)
 - [Ausführliche technische Informationen zur plattformgestützten Migration vom klassischen Bereitstellungsmodell zu Azure Resource Manager](virtual-machines-windows-migration-classic-resource-manager-deep-dive.md)
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0907_2016-->

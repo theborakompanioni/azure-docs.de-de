@@ -63,6 +63,7 @@ Daher sollten Sie gegebenenfalls überlegen, wie hoch Ihre Azure-Ressourcengrupp
 - [Media Services](#media-services-limits)
 - [Mobile Engagement](#mobile-engagement-limits)
 - [Mobile Services](#mobile-services-limits)
+- [Überwachung](#monitoring-limits)
 - [Multi-Factor Authentication](#multi-factor-authentication)
 - [Netzwerk](#networking-limits)
 - [Notification Hubs-Dienst](#notification-hub-service-limits)
@@ -219,6 +220,10 @@ Detailliertere Informationen zu anderen Grenzwerten, einschließlich Dokumentgr�
 
 [AZURE.INCLUDE [mobile-services-limits](../includes/mobile-services-limits.md)]
 
+### Überwachung von Grenzwerten
+
+[AZURE.INCLUDE [monitoring-limits](../includes/monitoring-limits.md)]
+
 ### Grenzwerte für den Notification Hubs-Dienst
 
 [AZURE.INCLUDE [notification-hub-limits](../includes/notification-hub-limits.md)]
@@ -305,4 +310,4 @@ Einschränkungen für SQL-Datenbanken finden Sie unter [Ressourceneinschränkung
 
 [Größen für Cloud Services](cloud-services/cloud-services-sizes-specs.md)
 
-<!----HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0907_2016-->

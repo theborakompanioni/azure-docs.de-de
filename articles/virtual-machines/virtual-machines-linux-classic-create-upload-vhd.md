@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/14/2016"
+	ms.date="09/01/2016"
 	ms.author="iainfou"/>
 
 # Erstellen und Hochladen einer virtuellen Festplatte, die das Linux-Betriebssystem enthält
@@ -38,7 +38,7 @@ In diesem Artikel wird davon ausgegangen, dass Sie über die folgenden Elemente 
 <a id="prepimage"> </a>
 ## Schritt 1: Vorbereiten des hochzuladenden Images
 
-Azure unterstützt eine Vielzahl von Linux-Distributionen (siehe [Unterstützte Distributionen](virtual-machines-linux-endorsed-distros.md)). Die folgenden Artikel führen Sie durch die Vorbereitung der verschiedenen Linux-Distributionen, die in Azure unterstützt werden. Nachdem Sie die Schritte in den folgenden Leitfäden ausgeführt haben, verfügen Sie über eine VHD-Datei, die in Azure hochgeladen werden kann:
+Azure unterstützt eine Vielzahl von Linux-Distributionen (siehe [Unterstützte Distributionen](virtual-machines-linux-endorsed-distros.md)). Die folgenden Artikel führen Sie durch die Vorbereitung der verschiedenen Linux-Distributionen, die in Azure unterstützt werden. Nachdem Sie die Schritte in den folgenden Leitfäden ausgeführt haben, kehren Sie hierher zurück, sobald Sie über eine VHD-Datei verfügen, die in Azure hochgeladen werden kann:
 
 - **[CentOS-basierte Verteilungen](virtual-machines-linux-create-upload-centos.md)**
 - **[Debian Linux](virtual-machines-linux-debian-create-upload-vhd.md)**
@@ -71,7 +71,9 @@ Zum Hochladen der VHD-Datei benötigen Sie ein Speicherkonto. Sie können ein vo
 Verwenden Sie die Azure-Befehlszeilenschnittstelle zum Hochladen des Images mithilfe des folgenden Befehls:
 
 ```bash
-azure vm image create <ImageName> --blob-url <BlobStorageURL>/<YourImagesFolder>/<VHDName> --os Linux <PathToVHDFile>
+azure vm image create <ImageName> `
+	--blob-url <BlobStorageURL>/<YourImagesFolder>/<VHDName> `
+	--os Linux <PathToVHDFile>
 ```
 
 Im vorherigen Beispiel:
@@ -84,14 +86,17 @@ Im vorherigen Beispiel:
 Im Folgenden finden Sie ein vollständiges Beispiel:
 
 ```bash
-azure vm image create UbuntuLTS --blob-url https://teststorage.blob.core.windows.net/vhds/UbuntuLTS.vhd --os Linux /home/ahmet/UbuntuLTS.vhd
+azure vm image create UbuntuLTS `
+	--blob-url https://teststorage.blob.core.windows.net/vhds/UbuntuLTS.vhd `
+	--os Linux /home/ahmet/UbuntuLTS.vhd
 ```
 
 ## Schritt 4: Virtuellen Computer über das Image erstellen
 Sie erstellen einen virtuellen Computer mit `azure vm create` auf die gleiche Weise wie einen normalen virtuellen Computer. Geben Sie den Namen an, den Sie Ihrem Image im vorherigen Schritt gegeben haben. Im folgenden Beispiel verwenden wir den Namen des **UbuntuLTS**-Image, den Sie im vorherigen Schritt vergeben haben:
 
 ```bash
-azure vm create --userName ops --password P@ssw0rd! --vm-size Small --ssh --location "West US" "DeployedUbuntu" UbuntuLTS
+azure vm create --userName ops --password P@ssw0rd! --vm-size Small --ssh `
+	--location "West US" "DeployedUbuntu" UbuntuLTS
 ```
 
 Um Ihre eigenen virtuellen Computer zu erstellen, geben Sie Ihren eigenen Benutzernamen + Kennwort, Speicherort, DNS-Namen und Imagenamen an.
@@ -104,4 +109,4 @@ Weitere Informationen finden Sie unter [Befehle der Azure-Befehlszeilenschnittst
 [Step 2: Prepare the connection to Azure]: #connect
 [Step 3: Upload the image to Azure]: #upload
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0907_2016-->

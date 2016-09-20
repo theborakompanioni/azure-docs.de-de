@@ -3,7 +3,7 @@
    description="Häufig gestellte Fragen zu Power BI Embedded"
    services="power-bi-embedded"
    documentationCenter=""
-   authors="minewiskan"
+   authors="mgblythe"
    manager="NA"
    editor=""
    tags=""/>
@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="NA"
    ms.workload="powerbi"
    ms.date="07/05/2016"
-   ms.author="owend"/>
+   ms.author="mblythe"/>
 
 # Häufig gestellte Fragen zu Power BI Embedded
 
@@ -112,9 +112,9 @@ Auf der [Power BI Embedded-Dokumentationsseite](http://go.microsoft.com/fwlink/?
 
 Sie können jetzt kostenlos beginnen! Wenn Sie ein Azure-Abonnement besitzen, können Sie Power BI Embedded jetzt direkt über das Azure-Portal bereitstellen. Sie können auch ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) erstellen. Sobald Sie den Power BI Embedded-Dienst bereitgestellt haben, können Sie Power BI-REST-APIs problemlos direkt nutzen oder das Developer SDK auf [GitHub](http://go.microsoft.com/fwlink/?LinkID=746472) verwenden. Es werden Beispiele für die Nutzung des Developer SDK bereitgestellt.
 
-## Weitere Informationen
+## Siehe auch
 
 - [Was ist Microsoft Power BI Embedded?](power-bi-embedded-what-is-power-bi-embedded.md)
 - [Erste Schritte mit Microsoft Power BI Embedded](power-bi-embedded-get-started.md)
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0907_2016-->

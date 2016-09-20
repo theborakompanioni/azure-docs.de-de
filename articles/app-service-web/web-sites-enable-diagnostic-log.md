@@ -40,7 +40,7 @@ Sie können die folgenden Protokollarten aktivieren oder deaktivieren:
 
 ### Anwendungsdiagnose
 
-Mit der Option "Application Diagnostics" können Sie die von einer Webanwendung erzeugten Informationen erfassen. ASP.NET-Anwendungen können die Klasse [System.Diagnostics.Trace](http://msdn.microsoft.com/library/36hhw2t6.aspx) verwenden, um Informationen im Anwendungs-Diagnoseprotokoll aufzuzeichnen. Zum Beispiel:
+Mit der Option "Application Diagnostics" können Sie die von einer Webanwendung erzeugten Informationen erfassen. ASP.NET-Anwendungen können die Klasse [System.Diagnostics.Trace](http://msdn.microsoft.com/library/36hhw2t6.aspx) verwenden, um Informationen im Anwendungs-Diagnoseprotokoll aufzuzeichnen. Beispiel:
 
 	System.Diagnostics.Trace.TraceError("If you're seeing this, something bad happened");
 
@@ -121,14 +121,14 @@ Zum Herunterladen der Protokolldateien mit der Azure-Befehlszeilenschnittstelle 
 
 Damit werden die Protokolle für die Web-App namens 'webappname' in der Datei **diagnostics.zip** im aktuellen Verzeichnis gespeichert.
 
-> [AZURE.NOTE] Wenn Sie die Azure-Befehlszeilenschnittstelle (Azure-CLI) nicht installiert oder nicht für Ihr Azure-Abonnement konfiguriert haben, lesen Sie unter [Verwenden der plattformübergreifenden Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md) weiter.
+> [AZURE.NOTE] Wenn Sie die Azure-Befehlszeilenschnittstelle (Azure-CLI) nicht installiert oder nicht für Ihr Azure-Abonnement konfiguriert haben, lesen Sie unter [Installieren der Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md) weiter.
 
 ## Vorgehensweise: Anzeigen von Protokollen in Application Insights
 
 Visual Studio Application Insights bietet Tools zum Filtern und Suchen von Protokollen sowie zu Korrelation der Protokolle mit Anforderungen und anderen Ereignissen.
 
 1. Fügen Sie Ihrem Projekt in Visual Studio Application Insights SDK hinzu.
- * Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt, und wählen Sie "Application Insights hinzufügen" aus. Sie werden durch Schritte geführt, zu denen auch die Erstellung einer Application Insights-Ressource gehört. [Weitere Informationen](../application-insights/app-insights-start-monitoring-app-health-usage.md)
+ * Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt, und wählen Sie "Application Insights hinzufügen" aus. Sie werden durch Schritte geführt, zu denen auch die Erstellung einer Application Insights-Ressource gehört. [Weitere Informationen](../application-insights/app-insights-asp-net.md)
 2. Fügen Sie Ihrem Projekt das Ablaufverfolgungs-Listener-Paket hinzu.
  * Klicken Sie mit der rechten Maustaste auf Ihr Projekt, und wählen Sie "NuGet-Pakete verwalten" aus. Wählen Sie `Microsoft.ApplicationInsights.TraceListener` [Weitere Informationen](../application-insights/app-insights-asp-net-trace-logs.md) aus
 3. Laden Sie das Projekt hoch, und führen sie es zum Generieren von Protokolldaten aus.
@@ -180,7 +180,7 @@ Um bestimmte Protokolltypen wie HTTP zu filtern, verwenden Sie den Parameter **-
 
 	azure site log tail webappname --path http
 
-> [AZURE.NOTE] Wenn Sie die Azure-Befehlszeilenschnittstelle nicht installiert oder nicht für Ihr Azure-Abonnement konfiguriert haben, lesen Sie unter [Verwenden der plattformübergreifenden Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md) weiter.
+> [AZURE.NOTE] Wenn Sie die Azure-Befehlszeilenschnittstelle nicht installiert oder nicht für Ihr Azure-Abonnement konfiguriert haben, lesen Sie unter [Installieren der Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md) weiter.
 
 ##<a name="understandlogs"></a> Vorgehensweise: Verstehen von Diagnoseprotokollen
 
@@ -207,8 +207,8 @@ Bei der Protokollierung im Tabellenspeicher werden zusätzliche Eigenschaften ve
 Eigenschaftenname|Wert/Format
 ---|---
 PartitionKey|Datum/Zeit des Ereignisses im Format JJJJMMTTHH
-RowKey|Ein GUID-Wert, der das Element eindeutig identifiziert
-Timestamp|Datum und Zeit des Auftretens des Ereignisses
+Zeilenschlüssel|Ein GUID-Wert, der das Element eindeutig identifiziert
+Zeitstempel|Datum und Zeit des Auftretens des Ereignisses
 EventTickCount|Datum und Zeit des Auftretens des Ereignisses im Tick-Format (höhere Präzision)
 ApplicationName|Der Name der Web-App
 Ebene|Ereignistyp (z. B. Info, Warnung, Fehler)
@@ -216,7 +216,7 @@ EventId|Die Ereignis-ID<p><p>Bei fehlender Angabe standardmäßig 0
 InstanceId|Instanz der Web-App, in der das Ereignis auftrat
 Pid|Prozess-ID
 Tid|Thread-ID des Threads, der das Ereignis erzeugt hat
-Message|Meldung zu den Ereignisdetails
+Nachricht|Meldung zu den Ereignisdetails
 
 __Blob-Speicher__
 
@@ -224,15 +224,15 @@ Bei der Protokollierung in einem Blob-Speicher werden die Daten im CSV-Format (d
 
 Eigenschaftenname|Wert/Format
 ---|---
-Date|Datum und Zeit des Auftretens des Ereignisses
-Level|Ereignistyp (z. B. Info, Warnung, Fehler)
+Datum|Datum und Zeit des Auftretens des Ereignisses
+Ebene|Ereignistyp (z. B. Info, Warnung, Fehler)
 ApplicationName|Der Name der Web-App
 InstanceId|Instanz der Web-App, in der das Ereignis auftrat
 EventTickCount|Datum und Zeit des Auftretens des Ereignisses im Tick-Format (höhere Präzision)
 EventId|Die Ereignis-ID<p><p>Bei fehlender Angabe standardmäßig 0
 Pid|Prozess-ID
 Tid|Thread-ID des Threads, der das Ereignis erzeugt hat
-Message|Meldung zu den Ereignisdetails
+Nachricht|Meldung zu den Ereignisdetails
 
 In einem Blob gespeicherte Daten sehen in etwa wie folgt aus:
 
@@ -270,4 +270,4 @@ Webserverprotokolle werden im [erweiterten W3C-Protokolldateiformat](http://msdn
 * Hinweise zu den Veränderungen des neuen Portals gegenüber dem alten finden Sie unter [Referenz zur Navigation im Azure-Portal](http://go.microsoft.com/fwlink/?LinkId=529715).
  
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0907_2016-->

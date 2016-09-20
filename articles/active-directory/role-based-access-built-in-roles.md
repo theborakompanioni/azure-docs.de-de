@@ -34,7 +34,7 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 | [Mitwirkender von BizTalk](#biztalk-contributor) | Kann BizTalk-Dienste verwalten |
 | [Mitwirkender von ClearDB-MySQL-DB](#cleardb-mysql-db-contributor) | Kann ClearDB MySQL-Datenbanken verwalten |
 | [Mitwirkender](#contributor) | Kann alles außer den Zugriff verwalten |
-| [Mitwirkender von Data Factory](#data-factory-contributor) | Kann Data Factorys verwalten |
+| [Mitwirkender von Data Factory](#data-factory-contributor) | Kann Data Factorys und darin enthaltene untergeordnete Ressourcen erstellen und verwalten. |
 | [DevTest Labs-Benutzer](#devtest-labs-user) | Kann alles anzeigen sowie virtuelle Maschinen verbinden, starten, neu starten und herunterfahren |
 | [Mitwirkender von DocumentDB-Konto](#documentdb-account-contributor) | Kann DocumentDB-Konten verwalten |
 | [Mitwirkender von Intelligent Systems-Konto](#intelligent-systems-account-contributor) | Kann Intelligent Systems-Konten verwalten |
@@ -151,12 +151,12 @@ Kann alles außer den Zugriff verwalten
 | Microsoft.Authorization/*/Write | Rollen und Rollenzuweisungen können nicht erstellt werden. |
 
 ### Mitwirkender von Data Factory
-Kann Data Factorys verwalten
+Erstellt und verwaltet Data Factorys und darin enthaltene untergeordnete Ressourcen.
 
 | **Aktionen** ||
 | ------- | ------ |
 | Microsoft.Authorization/*/read | Lesen von Rollen und Rollenzuweisungen |
-| Microsoft.DataFactory/dataFactories/* | Verwalten von Data Factorys |
+| Microsoft.DataFactory/dataFactories/* | Erstellen und Verwalten von Data Factorys und darin enthaltenen untergeordneten Ressourcen. |
 | Microsoft.Insights/alertRules/* | Erstellen und Verwalten von Warnungsregeln |
 | Microsoft.ResourceHealth/availabilityStatuses/read | Lesen des Status der Ressourcen |
 | Microsoft.Resources/deployments/* | Erstellen und Verwalten von Ressourcengruppenbereitstellungen |
@@ -534,4 +534,4 @@ Kann Websites verwalten, jedoch nicht die Webpläne, mit denen sie verbunden sin
 - [Erstellen eines Verlaufsberichts zu Zugriffsänderungen:](role-based-access-control-access-change-history-report.md) Verfolgen Sie Änderungen an Rollenzuweisungen in RBAC.
 - [Problembehandlung bei rollenbasierter Zugriffssteuerung:](role-based-access-control-troubleshooting.md) Sehen Sie sich Vorschläge zur Behebung häufig auftretender Probleme an.
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0907_2016-->

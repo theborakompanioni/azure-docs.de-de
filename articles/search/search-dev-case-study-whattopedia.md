@@ -12,7 +12,7 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="search" 
-	ms.date="05/17/2016" 
+	ms.date="08/29/2016" 
 	ms.author="heidist"/>
 
 # Azure Search-Fallstudie für Entwickler
@@ -117,8 +117,8 @@ Den Prototyp haben wir dann wie folgt erstellt.
 **Entwickeln eines Suchindexerauftrags – Windows-Konsole**
 
 1. Einlesen aller Wiederverkäufer aus der Datenbank.
-2. Aufrufen der Azure-Suchdienst-API, um Wiederverkäufer einzeln hochzuladen (siehe http://msdn.microsoft.com/library/azure/dn798930.aspx)).
-3. Festlegen einer Eigenschaft in der Datenbank, die angibt, dass der Wiederverkäufer für die inkrementelle Indizierung indiziert ist. Wir haben dazu ein „indexer“-Feld hinzugefügt, in dem der Indexstatus jedes Profils gespeichert wird (indiziert oder nicht indiziert). 
+2. Aufrufen der Azure-Suchdienst-API, um Wiederverkäufer einzeln hochzuladen (siehe http://msdn.microsoft.com/library/azure/dn798930.aspx).
+3. Festlegen einer Eigenschaft in der Datenbank, die angibt, dass der Wiederverkäufer für die inkrementelle Indizierung indiziert ist. Wir haben dazu ein „indexer“-Feld hinzugefügt, in dem der Indexstatus jedes Profils gespeichert wird (indiziert oder nicht indiziert).
 
 Nähere Informationen hierzu finden Sie im Anhang mit dem Codeausschnitt, durch den der Indexerauftrag erstellt wird.
 
@@ -421,4 +421,4 @@ Der folgende Code erstellt den Indexer, der im Abschnitt über die Erstellung de
 [Link 3 to another azure.microsoft.com documentation topic]: ../storage-whatis-account.md
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0907_2016-->

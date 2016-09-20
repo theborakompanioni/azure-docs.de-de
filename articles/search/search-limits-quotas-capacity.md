@@ -14,14 +14,14 @@
 	ms.workload="search"
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
-	ms.date="06/03/2016"
+	ms.date="08/03/2016"
 	ms.author="heidist"/>
 
 # Grenzwerte für den Azure Search-Dienst
 
 Die Höchstwerte für Speicher, Workloads und Mengen von Indizes, Dokumenten und anderen Objekten hängen davon ab, ob Sie Azure Search zum **Free**-, **Basic**- oder **Standard**-Tarif hinzufügen.
 
-- **Free** ist ein gemeinsamer mehrinstanzfähiger Dienst, der Teil Ihres Azure-Abonnements ist. Es handelt sich um eine Option für vorhandene Abonnenten ohne zusätzliche Kosten, die es Ihnen ermöglicht, den Dienst zu testen, bevor Sie sich für spezifische Ressourcen anmelden. 
+- **Free** ist ein gemeinsamer mehrinstanzfähiger Dienst, der Teil Ihres Azure-Abonnements ist. Es handelt sich um eine Option für vorhandene Abonnenten ohne zusätzliche Kosten, die es Ihnen ermöglicht, den Dienst zu testen, bevor Sie sich für spezifische Ressourcen anmelden.
 - **Basic** bietet spezifische Computerressourcen für Produktionsworkloads mit geringerem Umfang.
 - **Standard** wird auf dedizierten Computern ausgeführt. Sie bieten höhere Speicher- und Verarbeitungskapazität auf jeder Stufe, einschließlich der Mindestkonfiguration. Standard ist in vier Ebenen verfügbar: S1, S2, S3 und S3 High Density (S3 HD). S3 und S3 HD befinden sich derzeit in der Vorschau und werden in der Vorschauphase zu einem um 50% reduzierten Preis angeboten.
 
@@ -67,7 +67,7 @@ Um die Dokumentgröße niedrig zu halten, achten Sie darauf, nicht abfragbare Da
 
 Ressource|Kostenlos|Basic|S1|S2|S3 (Vorschau)|S3 HD (Vorschau)
 ---|---|---|---|----|---|----
-QPS|–|~3 pro Replikat|~15 pro Replikat|~60 pro Replikat|>60 pro Replikat|>60 pro Replikat
+QPS|N/V|~3 pro Replikat|~15 pro Replikat|~60 pro Replikat|>60 pro Replikat|>60 pro Replikat
 
 Abfragen pro Sekunde (Queries Per Second, QPS) ist ein ungefährer Wert, der auf Heuristik basiert, mit simulierten und tatsächlichen Kundenworkloads zum Ableiten der geschätzten Werte. Der genaue QPS-Durchsatz variiert abhängig von Ihren Daten und der Art der Abfrage.
 
@@ -97,4 +97,4 @@ API-Schlüssel werden für die Dienstauthentifizierung verwendet. Es gibt zwei A
 - Maximal 2 Administratorschlüssel pro Dienst
 - Maximal 50 Abfrageschlüssel pro Dienst
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0907_2016-->

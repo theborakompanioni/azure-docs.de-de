@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/07/2016"
+	ms.date="09/02/2016"
 	ms.author="jgao"/>
 
 # Verwalten von Hadoop-Clustern in HDInsight mit .NET SDK
@@ -39,7 +39,7 @@ Sie müssen die folgenden Nuget-Pakete installieren:
     Install-Package Microsoft.Azure.Management.ResourceManager -Pre
 	Install-Package Microsoft.Azure.Management.HDInsight
 
-Das folgende Codebeispiel veranschaulicht, wie Sie sich mit Azure verbinden, bevor Sie HDInsight-Cluster unter Ihrem Azure-Abonnement verwalten können.
+Das folgende Codebeispiel veranschaulicht, wie Sie eine Verbindung mit Azure herstellen, bevor Sie HDInsight-Cluster unter Ihrem Azure-Abonnement verwalten können.
 
     using System;
     using Microsoft.Azure;
@@ -289,4 +289,4 @@ Siehe [Hochladen von Daten in HDInsight][hdinsight-upload-data].
 [hdinsight-upload-data]: hdinsight-upload-data.md
 [hdinsight-flight]: hdinsight-analyze-flight-delay-data.md
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0907_2016-->

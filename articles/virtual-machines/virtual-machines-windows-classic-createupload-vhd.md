@@ -104,4 +104,4 @@ Fügen Sie das Image mit dem Cmdlet [Add-AzureVMImage](https://msdn.microsoft.co
 
 Sie können nun mit dem Image, das Sie hochgeladen haben, [einen benutzerdefinierten virtuellen Computer erstellen](virtual-machines-windows-classic-createportal.md).
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0907_2016-->

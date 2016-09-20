@@ -52,7 +52,7 @@ Um die Azure Storage-iOS-Bibliothek zu verwenden, müssen Sie zunächst die Fram
 
 1. Laden Sie zuerst das [azure-storage-ios-repo](https://github.com/azure/azure-storage-ios) herunter, oder klonen Sie es.
 
-2. Wechseln Sie zu *azure-storage-ios* -> *Lib* -> *Azure Storage-Client-Bibliothek*, und öffnen Sie `AZSClient.xcodeproj` in Xcode.
+2. Wechseln Sie zu *azure-storage-ios* -> *Lib* -> *Azure Storage-Client-Bibliothek*, und öffnen Sie `AZSClient.xcodeproj` in Xcode.
 
 3. Ändern Sie oben links in Xcode das aktive Schema von "Azure Storage-Client Library" in "Framework".
 
@@ -82,50 +82,7 @@ Sie müssen die folgende Import-Anweisung in die Datei einschließen, in der Sie
     // Include the following import statement to use blob APIs.
     #import <AZSClient/AZSClient.h>
 
-## Konfigurieren der Anwendung für den Zugriff auf Blob-Speicher
-
-Es gibt zwei Möglichkeiten, um Ihre Anwendung für den Zugriff auf die Storage-Dienste zu authentifizieren:
-
-- Gemeinsam verwendeter Schlüssel: Verwenden Sie den gemeinsam verwendeten Schlüssel nur für Testzwecke.
-- Shared Access Signature (SAS): Verwenden Sie SAS für Produktionsanwendungen.
-
-### Gemeinsam verwendeter Schlüssel
-Bei der Authentifizierung mit gemeinsam verwendetem Schlüssel nutzt die Anwendung Ihren Kontonamen und Kontoschlüssel, um auf die Storage-Dienste zuzugreifen. Für eine schnelle Demonstration, wie Sie Blobspeicher mit iOS verwenden können, wird in diesen ersten Schritten die Authentifizierung mit gemeinsam verwendetem Schlüssel verwendet.
-
-> [AZURE.WARNING (Only use Shared Key authentication for testing purposes!) ] Ihr Kontoname und Kontoschlüssel, mit denen Sie vollständigen Lese-/Schreibzugriff auf das zugehörige Storage-Konto erhalten, werden an alle Personen verteilt, die Ihre App herunterladen. Diese Vorgehensweise wird **nicht** empfohlen, da das Risiko besteht, dass Ihr Schlüssel durch nicht vertrauenswürdige Clients beeinträchtigt werden kann.
-
-Wenn Sie die Authentifizierung mit gemeinsam verwendetem Schlüssel nutzen, erstellen Sie eine Verbindungszeichenfolge. Die Verbindungszeichenfolge besteht aus:
-
-- dem **DefaultEndpointsProtocol** – Sie können zwischen HTTP oder HTTPS wählen. Die Verwendung von HTTPS wird jedoch unbedingt empfohlen.
-- dem **Kontonamen** – der Name Ihres Storage-Kontos
-- dem **Kontoschlüssel** – Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem Speicherkonto, und klicken Sie auf das Symbol **Schlüssel**, um diese Informationen zu erhalten. Wenn Sie das [klassische Azure-Portal](https://manage.windowsazure.com) verwenden, navigieren Sie zu Ihrem Speicherkonto im Portal und klicken Sie auf **Zugriffsschlüssel verwalten**.
-
-Und so sieht es in Ihrer Anwendung aus:
-
-    // Create a storage account object from a connection string.
-    AZSCloudStorageAccount *account = [AZSCloudStorageAccount accountFromConnectionString:@"DefaultEndpointsProtocol=https;AccountName=your_account_name_here;AccountKey=your_account_key_here" error:&accountCreationError];
-
-### Shared Access Signatures (SAS)
-Die empfohlene Methode für eine iOS-Anwendung zum Authentifizieren einer Anforderung durch einen Client an den Blobspeicher ist die Nutzung einer Shared Access Signature (SAS). SAS ermöglicht es Ihnen, dem Client mit einem angegebenen Satz von Berechtigungen für einen bestimmten Zeitraum Zugriff auf eine Ressource zu gewähren. Als Speicherkontobesitzer müssen Sie eine SAS für Ihre iOS-Clients erstellen. Zum Generieren der SAS sollten Sie wahrscheinlich einen separaten Dienst schreiben, der die SAS generiert, die an Ihre Clients verteilt werden. Zu Testzwecken können Sie mit dem Microsoft Azure-Speicher-Explorer eine SAS erstellen. Bei der Erstellung der SAS können Sie das Zeitintervall angeben, in dem die SAS gültig ist, sowie die Berechtigungen, die die SAS dem Client erteilt.
-
-Das folgende Beispiel zeigt die Verwendung des Microsoft Azure-Speicher-Explorers zum Erstellen einer SAS.
-
-1. Wenn Sie es nicht bereits getan haben, [installieren Sie den Microsoft Azure-Speicher-Explorer](http://storageexplorer.com).
-
-2. Verbinden mit Ihrem Abonnement
-
-3. Klicken Sie auf das Speicherkonto und auf die Registerkarte „Aktionen“ unten links. Klicken Sie auf „Shared Access Signature abrufen“, um eine „Verbindungszeichenfolge“ für Ihre SAS zu generieren.
-
-4. Hier ist ein Beispiel für eine SAS-Verbindungszeichenfolge, die Lese- und Schreibberechtigungen auf Dienst-, Container- und Objektebene für den Blobdienst des Speicherkontos gewährt.
-
-        SharedAccessSignature=sv=2015-04-05&ss=b&srt=sco&sp=rw&se=2016-07-21T18%3A00%3A00Z&sig=3ABdLOJZosCp0o491T%2BqZGKIhafF1nlM3MzESDDD3Gg%3D;BlobEndpoint=https://youraccount.blob.core.windows.net
-
-6. In der iOS-Anwendung erhalten Sie jetzt einen Verweis auf Ihr Konto, indem Sie die Verbindungszeichenfolge folgendermaßen verwenden:
-
-		// Get a reference to your Storage account
-    	AZSCloudStorageAccount *account = [AZSCloudStorageAccount accountFromConnectionString:@"SharedAccessSignature=sv=2015-04-05&ss=b&srt=sco&sp=rw&se=2016-07-21T18%3A00%3A00Z&sig=3ABdLOJZosCp0o491T%2BqZGKIhafF1nlM3MzESDDD3Gg%3D;BlobEndpoint=https://youraccount.blob.core.windows.net" error:&accountCreationError];
-
-Wie Sie sehen, machen Sie den Kontonamen und Kontoschlüssel in der iOS-Anwendung nicht verfügbar, wenn Sie eine SAS verwenden. Weitere Informationen zu SAS erhalten Sie unter [Shared Access Signatures: Grundlagen zum SAS-Modell](storage-dotnet-shared-access-signature-part-1.md).
+[AZURE.INCLUDE [storage-mobile-authentication-guidance](../../includes/storage-mobile-authentication-guidance.md)]
 
 ## Asynchrone Vorgänge
 > [AZURE.NOTE] Alle Methoden, die eine Anforderung für den Dienst ausführen, sind asynchrone Vorgänge. In den Codebeispielen werden Sie feststellen, dass diese Methoden einen Abschlusshandler haben. Der Code im Abschlusshandler wird **nach** Abschluss der Anforderung ausgeführt. Der Code nach dem Abschlusshandler wird **während** der Anforderung ausgeführt.
@@ -342,7 +299,7 @@ Das folgende Beispiel zeigt den Download eines Blobs in ein NSString-Objekt.
         }];
     }
 
-## Löschen eines Blobs
+## Löschen eines BLOBs
 
 Das folgende Beispiel zeigt den Löschvorgang eines Blobs.
 
@@ -412,4 +369,4 @@ Da Sie jetzt die Verwendung von Blobspeicher in iOS kennen, folgen Sie diesen Li
 
 Stellen Sie Fragen zu dieser Bibliothek in unserem [MSDN Azure-Forum](http://social.msdn.microsoft.com/Forums/windowsazure/home?forum=windowsazuredata) oder unter [Stack Overflow](http://stackoverflow.com/questions/tagged/windows-azure-storage+or+windows-azure-storage+or+azure-storage-blobs+or+azure-storage-tables+or+azure-table-storage+or+windows-azure-queues+or+azure-storage-queues+or+azure-storage-emulator+or+azure-storage-files). Richten Sie Vorschläge für Azure Storage-Features an [Feedback zu Azure Storage](https://feedback.azure.com/forums/217298-storage/).
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0907_2016-->

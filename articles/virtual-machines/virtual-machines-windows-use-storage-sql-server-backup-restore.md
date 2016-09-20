@@ -3,7 +3,7 @@
 	description="Erfahren Sie, wie Sie SQL Server in Azure Storage sichern. Erläutert die Vorteile der Sicherung von SQL-Datenbanken in Azure Storage."
 	services="virtual-machines-windows"
 	documentationCenter=""
-	authors="rothja"
+	authors="MikeRayMSFT"
 	manager="jhubbard"
 	tags="azure-service-management"/>
 
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
 	ms.date="07/22/2016"
-	ms.author="jroth"/>
+	ms.author="mikeray"/>
 
 # Verwenden von Azure Storage für SQL Server-Sicherung und -Wiederherstellung
 
@@ -56,7 +56,7 @@ Die folgenden Azure-Komponenten werden bei einer Sicherung im Azure-Blobspeicher
 
 Die folgenden SQL Server-Komponenten werden bei einer Sicherung im Azure-Blobspeicherdienst verwendet.
 
-| Komponente | Beschreibung |
+| Component | Beschreibung |
 |---------------------|-------------------------------|
 | **URL** | Eine URL gibt einen Uniform Resource Identifier (URI) zu einer eindeutigen Sicherungsdatei an. Die URL dient zur Angabe des Speicherorts und Namens der SQL Server-Sicherungsdatei. Die URL darf nicht lediglich auf einen Container, sondern muss auf einen tatsächlichen Blob verweisen. Wenn das Blob nicht vorhanden ist, wird es erstellt. Das Angeben eines vorhandenen Blobs führt zu einem Fehler bei BACKUP – es sei denn, die Option > WITH FORMAT wird angegeben. Hier sehen Sie ein Beispiel einer URL, die Sie im BACKUP-Befehl angeben können: **http[s]://[storageaccount].blob.core.windows.net/[container]/[FILENAME.bak]**. HTTPS wird empfohlen, ist jedoch nicht erforderlich. |
 | **Credential** | Die Informationen, die zum Herstellen einer Verbindung zum Azure-Blob-Speicherdienst und zum Authentifizieren bei diesem erforderlich sind, werden als Anmeldeinformationen gespeichert. Damit SQL Server Sicherungen in einen Azure-Blob schreiben oder daraus wiederherstellen kann, müssen SQL Server-Anmeldeinformationen erstellt werden. Weitere Informationen finden Sie unter [CREATE CREDENTIAL (Transact-SQL)](https://msdn.microsoft.com/library/ms189522.aspx). |
@@ -78,4 +78,4 @@ Wenn Probleme auftreten, lesen Sie das Thema [SQL Server-URL-Sicherung – bewä
 
 Weitere Sicherungs- und Wiederherstellungsoptionen für SQL Server finden Sie unter [Sicherung und Wiederherstellung für SQL Server auf virtuellen Azure-Computern](../virtual-machines/virtual-machines-windows-sql-backup-recovery.md).
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0907_2016-->

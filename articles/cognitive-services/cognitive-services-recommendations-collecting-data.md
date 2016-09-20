@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/31/2016"
+	ms.date="09/06/2016"
 	ms.author="luisca"/>
 
 #  Erfassen von Daten zum Trainieren Ihres Modells #
@@ -45,9 +45,9 @@ Ohne Features:
 
 Mit Features:
 
-    AAA04294,Office Language Pack Online DwnLd,Office, softwaretype=productivity, compatibility=Windows
-    BAB04303,Minecraft DwnLd,Games, softwaretype=gaming, compatibility=iOS, agegroup=all
-    C9F00168,Kiruna Flip Cover,Accessories, compatibility=lumia, hardwaretype=mobile
+    AAA04294,Office Language Pack Online DwnLd,Office,, softwaretype=productivity, compatibility=Windows
+    BAB04303,Minecraft DwnLd,Games, softwaretype=gaming,, compatibility=iOS, agegroup=all
+    C9F00168,Kiruna Flip Cover,Accessories, compatibility=lumia,, hardwaretype=mobile
 
 #### Formatdetails
 
@@ -78,6 +78,25 @@ Falls das Modul Informationen zu dieser Violine besitzt (etwa, dass es sich um e
 
 Features werden als Teil der Katalogdaten importiert, und wenn ein Rangfolgebuild abgeschlossen ist, wird ihnen ein Rang (die Bedeutung des Features im Modell) zugeordnet. Der Rang der Features kann sich je nach Nutzungsdatenmuster und Artikeltyp ändern. Bei konsistenter Nutzung und konsistenten Elementen dürfte der Rang jedoch nur geringfügigen Schwankungen unterliegen. Der Rang eines Features ist eine nicht-negative Zahl. Die Zahl 0 bedeutet, dass das Feature noch nicht eingestuft wurde (dies ist der Fall, wenn diese API vor dem Abschluss des ersten Rangfolgebuilds aufgerufen wurde). Das Datum, an dem der Rang zugeordnet wurde, wird als Aktualität der Bewertung bezeichnet.
 
+
+###Features sind kategorisch.
+
+Daher sollten Sie Features erstellen, die einer Kategorie ähneln. Beispielsweise ist Preis = 9.34 ist kein kategorisches Feature. Andererseits ist ein Feature wie PriceRange = Under5Dollars ein kategorisches Feature. Ein häufiger Fehler besteht darin, den Namen des Artikels als Feature zu verwenden. Dadurch wäre der Name eines Artikels eindeutig und somit keine Kategorie beschreiben. Stellen Sie sicher, dass die Features Kategorien darstellen.
+
+
+###Wie viele/welche Features soll ich verwenden?
+
+
+Empfehlungsbuilds unterstützen die Entwicklung von Modellen mit bis zu 20 Features. Sie könnten den Artikeln in Ihrem Katalog mehr als 20 Features zuweisen, jedoch müssen Sie ein Rangfolgebuild verwenden und können nur die Features mit hoher Rangfolge auswählen. (Ein Features mit einem Rang ab 2.0 gilt als sehr gut!).
+
+
+###Wann werden Features tatsächlich verwendet?
+
+Features werden vom Modell verwendet, wenn nicht genügend Transaktionsdaten vorhanden sind, um Empfehlungen zu Transaktionsinformationen bereitzustellen. Daher haben Features die größte Auswirkung auf „kalte Artikel“ – Artikel mit wenigen Transaktionen. Wenn alle Artikel über ausreichende Transaktionsinformationen verfügen, müssen Sie nicht Ihr Modell mit Features erweitern.
+
+
+###Verwenden von Produktfeatures
+
 Wenn Sie Features als Teil Ihres Builds verwenden möchten, müssen Sie folgende Schritte ausführen:
 
 1. Sicherstellen, dass Ihr Katalog beim Hochladen Features enthält
@@ -85,6 +104,9 @@ Wenn Sie Features als Teil Ihres Builds verwenden möchten, müssen Sie folgende
 2. Auslösen eines Rangfolgebuilds. Dadurch wird eine Analyse der Bedeutung/des Rangs der einzelnen Features ausgeführt.
 
 3. Auslösen eines Empfehlungsbuilds. Legen Sie dabei die folgenden Buildparameter fest: Legen Sie „useFeaturesInModel“ und „allowColdItemPlacement“ auf TRUE und für „modelingFeatureList“ die kommagetrennte Liste mit Features fest, die Sie zum Optimieren Ihres Modells verwenden möchten. Weitere Informationen finden Sie unter [Recommendations build type parameters](https://westus.dev.cognitive.microsoft.com/docs/services/Recommendations.V4.0/operations/56f30d77eda5650db055a3d0) (Parameter für Empfehlungsbuilds).
+
+
+
 
 
 ## Nutzungsdaten ##
@@ -129,4 +151,4 @@ Nach einer guten Faustregel sollten die meisten Artikel in mindestens 20 Transak
 
 Nach der Erstellung eines Modells können Sie eine [Offlineauswertung](cognitive-services-recommendations-buildtypes.md) ausführen, um die wahrscheinliche Leistung Ihres Modells zu überprüfen.
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0907_2016-->

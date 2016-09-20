@@ -44,7 +44,7 @@ Durch die Unterstützung von Pushbenachrichtigungen in Azure haben Sie Zugriff a
 	+ **Password**: Ein UITextField mit dem Platzhaltertext *Enter Password*, direkt unter dem Textfeld "Username" und durch den linken und rechten Rand und die Anordnung unter dem Textfeld "Username" beschränkt. Aktivieren Sie die Option **Secure Text Entry** im Attribute Inspector unter *Return Key*.
 	+ **Log in**: Ein bezeichneter UIButton direkt unter dem Textfeld "Password". Deaktivieren Sie die Option **Enabled** im Attributes Inspector unter *Control-Content*.
 	+ **WNS**: Bezeichnung und Switch, um das Senden der Benachrichtigung an den Windows-Benachrichtigungsdienst zu aktivieren, wenn er auf dem Hub eingerichtet wurde. Siehe dazu das Lernprogramm [Erste Schritte für Windows](notification-hubs-windows-store-dotnet-get-started.md).
-	+ **GCM**: Bezeichnung und Switch, um das Senden der Benachrichtigung an Google Cloud Messaging zu aktivieren, wenn es auf dem Hub eingerichtet wurde. Siehe dazu das Lernprogramm [Erste Schritte für Android](notification-hubs-android-get-started.md).
+	+ **GCM**: Bezeichnung und Switch, um das Senden der Benachrichtigung an Google Cloud Messaging zu aktivieren, wenn es auf dem Hub eingerichtet wurde. Siehe dazu das Lernprogramm [Erste Schritte für Android](notification-hubs-android-push-notification-google-gcm-get-started.md).
 	+ **APNS**: Bezeichnung und Switch, um das Senden der Benachrichtigung an den Apple Platform Notification Service zu aktivieren.
 	+ **Recipient Username**: Ein UITextField mit dem Platzhaltertext *Recipient username tag*, direkt unter der GCM-Bezeichnung und durch den linken und rechten Rand und die Anordnung unter der GCM-Bezeichnung beschränkt.
 
@@ -262,7 +262,7 @@ Durch die Unterstützung von Pushbenachrichtigungen in Azure haben Sie Zugriff a
 
 		@end
 
-	Der vorstehende Code implementiert die im Artikel [Registrieren von App-Back-End aus](notification-hubs-registration-management.md#registration-management-from-a-backend) erläuterte Logik unter Verwendung von NSURLSession zum Durchführen von REST-Aufrufen an das App-Back-End und von NSUserDefaults zum lokalen Speichern der vom Notification Hub zurückgegebenen registrationId.
+	Der vorstehende Code implementiert die im Artikel [Registrieren von App-Back-End aus](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend) erläuterte Logik unter Verwendung von NSURLSession zum Durchführen von REST-Aufrufen an das App-Back-End und von NSUserDefaults zum lokalen Speichern der vom Notification Hub zurückgegebenen registrationId.
 
 	Beachten Sie, dass die Eigenschaft **authorizationHeader** dieser Klasse festgelegt werden muss, damit die Klasse ordnungsgemäß funktioniert. Diese Eigenschaft wird von der **ViewController**-Klasse nach der Anmeldung festgelegt.
 
@@ -465,4 +465,4 @@ Durch die Unterstützung von Pushbenachrichtigungen in Azure haben Sie Zugriff a
 [3]: ./media/notification-hubs-aspnet-backend-ios-notify-users/notification-hubs-ios-notify-users-registered.png
 [4]: ./media/notification-hubs-aspnet-backend-ios-notify-users/notification-hubs-ios-notify-users-enter-msg.png
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0907_2016-->

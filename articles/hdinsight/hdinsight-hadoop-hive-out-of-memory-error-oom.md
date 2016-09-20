@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="big-data"
-	ms.date="05/18/2016"
+	ms.date="09/02/2016"
 	ms.author="rashimg;jgao"/>
 
 # Beheben eines „Nicht genügend Arbeitsspeicher“-Fehlers (Out of Memory, OOM) mit Hive-Arbeitsspeichereinstellungen in Hadoop in Azure HDInsight
@@ -122,4 +122,4 @@ Basierend auf diesen Einstellungen wurde die Abfrage in weniger als zehn Minuten
 
 Eine OOM-Fehlermeldung zu erhalten, bedeutet nicht unbedingt, dass der Container zu klein ist. Konfigurieren Sie stattdessen die Einstellungen für den Arbeitsspeicher, sodass die Heapgröße erhöht wird und mindestens 80 % der Größe des Containerspeichers entspricht.
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0907_2016-->

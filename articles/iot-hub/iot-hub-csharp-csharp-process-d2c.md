@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Verarbeiten von D2C-Nachrichten mit IoT Hub | Microsoft Azure"
+	pageTitle="Verarbeiten von D2C-Nachrichten mit IoT Hub (.Net) | Microsoft Azure"
 	description="In diesem Tutorial werden nützliche Verfahren zum Verarbeiten von Gerät-zu-Cloud-Nachrichten (Device-to-Cloud, D2C) mit IoT Hub beschrieben."
 	services="iot-hub"
 	documentationCenter=".net"
@@ -16,7 +16,9 @@
      ms.date="07/19/2016"
      ms.author="dobett"/>
 
-# Tutorial: Verarbeiten von D2C-Nachrichten mit IoT Hub
+# Tutorial: Verarbeiten von D2C-Nachrichten mit IoT Hub mithilfe von .Net
+
+[AZURE.INCLUDE [iot-hub-selector-process-d2c](../../includes/iot-hub-selector-process-d2c.md)]
 
 ## Einführung
 
@@ -24,7 +26,7 @@ Azure IoT Hub ist ein vollständig verwalteter Dienst, der eine zuverlässige un
 
 Dieses Tutotrial baut auf dem Code des Tutotrials [Erste Schritte mit IoT Hub] auf und veranschaulicht zwei skalierbare Muster, die Sie zum Verarbeiten von D2C-Nachrichten verwenden können:
 
-- Die zuverlässige Speicherung von Nachrichten von einem Gerät an die Cloud in [Azur Blob Storage]. Ein sehr häufiges Szenario ist die *Cold Path*-Analyse, in der Sie Telemetriedaten in Blobs speichern, um sie als Eingabe für Analyseprozesse zu verwenden. Diese Prozesse können von Tools wie z.B. [Azure Data Factory] oder dem [HDInsight (Hadoop)]-Stapel gesteuert werden.
+- Die zuverlässige Speicherung von Nachrichten von einem Gerät an die Cloud in [Azur Blob Storage]. Ein häufiges Szenario ist die *Cold Path*-Analyse, in der Sie Telemetriedaten in Blobs speichern, um sie als Eingabe für Analyseprozesse zu verwenden. Diese Prozesse können von Tools wie z.B. [Azure Data Factory] oder dem [HDInsight (Hadoop)]-Stapel gesteuert werden.
 
 - Zuverlässige Verarbeitung von *interaktiven* D2C-Nachrichten: D2C-Nachrichten sind interaktiv, wenn es sich um unmittelbare Auslöser für eine Reihe von Aktionen im Anwendungs-Back-End handelt. Beispielsweise könnte ein Gerät eine Alarmnachricht senden, die das Einfügen eines Tickets in ein CRM-System auslöst. Im Gegensatz dazu werden *Datenpunktnachrichten* einfach in ein Analysemodul eingegeben. Temperaturtelemetriedaten von einem Gerät, die zur späteren Analyse gespeichert werden, sind beispielsweise Datenpunktnachrichten.
 
@@ -37,13 +39,13 @@ Service Bus stellt die zuverlässige Verarbeitung von interaktiven Nachrichten s
 
 > [AZURE.NOTE] Eine **EventProcessorHost**-Instanz ist nur eine Möglichkeit, interaktive Nachrichten zu verarbeiten. Weitere Optionen sind [Azure Service Fabric][lnk-service-fabric] und [Azure Stream Analytics][lnk-stream-analytics].
 
-Am Ende dieses Tutorials führen Sie drei Windows-Konsolenapps aus:
+Am Ende dieses Tutorials führen Sie drei Windows-Konsolen-Apps aus:
 
 * **SimulatedDevice**, eine geänderte Version der im Tutorial [Erste Schritte mit IoT Hub] erstellten App, die jede Sekunde Datenpunkt-D2C-Nachrichten und alle 10 Sekunden interaktive D2C-Nachrichten sendet. Für diese App wird das AMQPS-Protokoll für die Kommunikation mit IoT Hub verwendet.
 * **ProcessDeviceToCloudMessages** verwendet die [EventProcessorHost]-Klasse zum Abrufen von Nachrichten aus dem Event Hubs-kompatiblen Endpunkt. Dann speichert sie zuverlässig Datenpunktnachrichten in Azure-Blobspeicher und leitet interaktive Nachrichten an eine Service Bus-Warteschlange weiter.
 * **ProcessD2CInteractiveMessages** entfernt die interaktiven Nachrichten aus der Service Bus-Warteschlange.
 
-> [AZURE.NOTE] IoT Hub verfügt über SDK-Unterstützung für zahlreiche Geräteplattformen und Sprachen, z.B. C, Java und JavaScript. Schritt-für-Schritt-Anleitungen zum Ersetzen des simulierten Geräts in diesem Tutorial durch ein physisches Gerät und allgemeine Informationen zum Verbinden von Geräten mit einem IoT Hub finden Sie im [Azure IoT Developer Center].
+> [AZURE.NOTE] IoT Hub verfügt über SDK-Unterstützung für zahlreiche Geräteplattformen und Sprachen, z.B. C, Java und JavaScript. Anleitungen zum Ersetzen des simulierten Geräts in diesem Tutorial durch ein physisches Gerät und Informationen zum Verbinden von Geräten mit einem IoT Hub finden Sie im [Azure IoT Developer Center].
 
 Dieses Tutorial kann direkt auf andere Möglichkeiten zum Verarbeiten von Event Hubs-kompatiblen Nachrichten übertragen werden, z.B. Projekte vom Typ [HDInsight (Hadoop)]. Weitere Informationen finden Sie unter [Entwicklungsleitfaden für Azure IoT Hub – Gerät an Cloud].
 
@@ -80,7 +82,7 @@ In diesem Abschnitt ändern Sie die simulierte Geräteanwendung, die Sie im Tuto
     }
     ```
 
-    Diese Methode ähnelt der **SendDeviceToCloudMessagesAsync**-Methode im Projekt **SimulatedDevice**. Der einzige Unterschied besteht darin, dass Sie jetzt die Systemeigenschaft **MessageId** und eine Benutzereigenschaft **messageType** festlegen. Der Code weist der Eigenschaft **MessageId** einen global eindeutigen Bezeichner (GUID) zu. Der Service Bus kann damit Nachrichten, die er empfängt, deduplizieren. Im Beispiel wird die Eigenschaft **messageType** verwendet, um interaktive Nachrichten von Datenpunktnachrichten zu unterscheiden. Die Anwendung übergibt diese Informationen in Nachrichteneigenschaften anstatt im Nachrichtentext. Auf diese Weise muss der Ereignisprozessor zum Nachrichtenrouting nicht die gesamte Nachricht deserialisieren.
+    Diese Methode ähnelt der **SendDeviceToCloudMessagesAsync**-Methode im Projekt **SimulatedDevice**. Der einzige Unterschied besteht darin, dass Sie jetzt die Systemeigenschaft **MessageId** und eine Benutzereigenschaft **messageType** festlegen. Der Code weist der Eigenschaft **MessageId** einen global eindeutigen Bezeichner (GUID) zu. Der Service Bus kann mit diesem Bezeichner Nachrichten, die er empfängt, deduplizieren. Im Beispiel wird die Eigenschaft **messageType** verwendet, um interaktive Nachrichten von Datenpunktnachrichten zu unterscheiden. Die Anwendung übergibt diese Informationen in Nachrichteneigenschaften anstatt im Nachrichtentext. Auf diese Weise muss der Ereignisprozessor zum Nachrichtenrouting nicht die gesamte Nachricht deserialisieren.
 
     > [AZURE.NOTE] Es ist wichtig, die **MessageId** zur Deduplizierung interaktiver Nachrichten im Gerätecode zu erstellen. Zeitweise Netzwerkkommunikation oder andere Fehler könnten dazu führen, dass mehrere Neuübertragungen der gleichen Nachricht von diesem Gerät erfolgen. Sie können anstelle einer GUID auch eine semantische Nachrichten-ID verwenden, z.B. einen Hash der relevanten Nachrichtendatenfelder.
 
@@ -96,22 +98,22 @@ In diesem Abschnitt ändern Sie die simulierte Geräteanwendung, die Sie im Tuto
 
 In diesem Abschnitt erstellen Sie eine Windows-Konsolen-App, die D2C-Nachrichten von IoT Hub verarbeitet. IoT Hub macht einen mit [Event Hubs] kompatiblen Endpunkt verfügbar, der einer Anwendung das Lesen von D2C-Nachrichten ermöglicht. In diesem Tutorial wird die [EventProcessorHost]-Klasse verwendet, um die Nachrichten in einer Konsolen-App zu verarbeiten. Weitere Informationen zum Verarbeiten von Nachrichten von Event Hubs finden Sie im Tutorial [Erste Schritte mit Event Hubs].
 
-Die größte Herausforderung beim Implementieren der zuverlässigen Speicherung von Datenpunktnachrichten oder der Weiterleitung von interaktiven Nachrichten besteht darin, dass der Nachrichtenconsumer für die Event Hubs-Ereignisverarbeitung Prüfpunkte für den Status bereitstellen muss. Darüber hinaus sollten Sie beim Lesen von Event Hubs Prüfpunkte für große Batches festlegen, um einen hohen Durchsatz zu erzielen. Hieraus ergibt sich die Möglichkeit einer doppelten Verarbeitung für eine große Zahl von Nachrichten, wenn ein Fehler vorliegt und Sie zum vorherigen Prüfpunkt zurückkehren. In diesem Tutorial wird veranschaulicht, wie Azure-Speicherschreibvorgänge und Service Bus-Deduplizierungsfenster mit **EventProcessorHost**-Prüfpunkten synchronisiert werden.
+Die Herausforderung beim Implementieren der zuverlässigen Speicherung von Datenpunktnachrichten oder der Weiterleitung von interaktiven Nachrichten besteht darin, dass die Ereignisverarbeitung davon abhängt, dass der Nachrichtenconsumer Prüfpunkte für den Status bereitstellt. Darüber hinaus sollten Sie beim Lesen von Event Hubs Prüfpunkte für große Batches festlegen, um einen hohen Durchsatz zu erzielen. Hieraus ergibt sich die Möglichkeit einer doppelten Verarbeitung für eine große Zahl von Nachrichten, wenn ein Fehler vorliegt und Sie zum vorherigen Prüfpunkt zurückkehren. In diesem Tutorial lernen Sie, wie Azure-Speicherschreibvorgänge und Service Bus-Deduplizierungsfenster mit **EventProcessorHost**-Prüfpunkten synchronisiert werden.
 
-Um Nachrichten zuverlässig in den Azure-Speicher zu schreiben, wird im Beispiel das Feature für den individuellen Block-Commit von [Blockblobs][Azure Block Blobs] verwendet. Der Ereignisprozessor akkumuliert Nachrichten im Arbeitsspeicher, bis es an der Zeit ist, einen Prüfpunktvorgang bereitzustellen (z.B. nachdem der akkumulierte Nachrichtenpuffer die maximale Blockgröße von 4 MB erreicht hat oder nachdem das Service Bus-Deduplizierungszeitfenster abgelaufen ist). Vor dem Prüfpunkt führt der Code für den Blob dann einen Commit für einen neuen Block durch.
+Um Nachrichten zuverlässig in den Azure-Speicher zu schreiben, wird im Beispiel das Feature für den individuellen Block-Commit von [Blockblobs][Azure Block Blobs] verwendet. Der Ereignisprozessor sammelt Nachrichten im Arbeitsspeicher, bis der Zeitpunkt gekommen ist, einen Prüfpunkt bereitzustellen. Dies ist z.B. der Fall, wenn der Puffer, der die gesammelten Nachrichten enthält, die maximale Blockgröße von 4MB erreicht, oder nach dem Verstreichen des Zeitfensters zur Service Bus-Deduplizierung. Vor dem Prüfpunkt führt der Code für den Blob dann einen Commit für einen neuen Block durch.
 
-Der Ereignisprozessor nutzt Event Hubs-Nachrichten-Offsets als Block-IDs. Dies ermöglicht eine Überprüfung der Deduplizierung vor dem Ausführen eines Commits für den neuen Block an den Speicher, und ein etwaiger Konflikt zwischen dem Commit eines Blocks und dem Prüfpunkt wird verhindert.
+Der Ereignisprozessor nutzt Event Hubs-Nachrichten-Offsets als Block-IDs. Dieser Mechanismus ermöglicht dem Ereignisprozessor eine Überprüfung der Deduplizierung vor dem Ausführen eines Commits für den neuen Block an den Speicher, und ein etwaiger Konflikt zwischen dem Commit eines Blocks und dem Prüfpunkt wird verhindert.
 
 > [AZURE.NOTE] In diesem Tutorial wird ein einzelnes Speicherkonto zum Schreiben aller Nachrichten verwendet, die von IoT Hub abgerufen werden. Informationen dazu, ob Sie in Ihrer Lösung mehrere Azure Storage-Konten benötigen, finden Sie in den [Richtlinien zur Azure Storage-Skalierbarkeit].
 
-Die Anwendung nutzt die Service Bus-Deduplizierungsfunktion, um beim Verarbeiten interaktiver Nachrichten Duplikate zu vermeiden. Das simulierte Gerät versieht jede interaktive Nachricht mit einer eindeutigen **MessageId**. Dadurch kann Service Bus sicherstellen, dass im angegebenen Zeitfenster für die Deduplizierung nicht zwei Nachrichten mit der gleichen **MessageId** an die Empfänger übertragen werden. Diese Deduplizierung sorgt zusammen mit der Abschlusssemantik pro Nachricht von Service Bus-Warteschlangen dafür, dass die zuverlässige Verarbeitung von interaktiven Nachrichten vereinfacht wird.
+Die Anwendung nutzt die Service Bus-Deduplizierungsfunktion, um beim Verarbeiten interaktiver Nachrichten Duplikate zu vermeiden. Das simulierte Gerät versieht jede interaktive Nachricht mit einer eindeutigen **MessageId**. Mit diesen IDs kann Service Bus sicherstellen, dass im angegebenen Zeitfenster für die Deduplizierung nicht zwei Nachrichten mit der gleichen **MessageId** an die Empfänger übertragen werden. Diese Deduplizierung sorgt zusammen mit der Abschlusssemantik pro Nachricht von Service Bus-Warteschlangen dafür, dass die zuverlässige Verarbeitung von interaktiven Nachrichten vereinfacht wird.
 
-Um sicherzustellen, dass Nachrichten nicht außerhalb des Deduplizierungsfensters erneut übermittelt werden, wird der **EventProcessorHost**-Prüfpunktmechanismus im Code mit dem Deduplizierungsfenster der Service Bus-Warteschlange synchronisiert. Hierzu wird mindestens einmal bei jedem Ablauf des Deduplizierungsfensters (in diesem Tutorial nach einer Stunde) ein Prüfpunkt erzwungen.
+Um sicherzustellen, dass Nachrichten nicht außerhalb des Deduplizierungsfensters erneut übermittelt werden, wird der **EventProcessorHost**-Prüfpunktmechanismus im Code mit dem Deduplizierungsfenster der Service Bus-Warteschlange synchronisiert. Für diese Synchronisierung wird mindestens einmal bei jedem Ablauf des Deduplizierungsfensters (in diesem Tutorial nach einer Stunde) ein Prüfpunkt erzwungen.
 
 > [AZURE.NOTE] In diesem Tutorial wird eine einzelne partitionierte Service Bus-Warteschlange verwendet, um alle interaktiven Nachrichten zu verarbeiten, die von IoT Hub abgerufen werden. Weitere Informationen zur Erfüllung der Skalierbarkeitsanforderungen Ihrer Lösung mithilfe von Service Bus-Warteschlangen finden Sie in der [Dokumentation zu Azure Service Bus].
 
 ### Bereitstellen eines Azure-Speicherkontos und einer Service Bus-Warteschlange
-Zum Verwenden der [EventProcessorHost]-Klasse müssen Sie über ein Azure-Speicherkonto verfügen, damit von **EventProcessorHost** Prüfpunktinformationen erfasst werden können. Sie können ein vorhandenes Speicherkonto verwenden oder mithilfe der Anweisungen unter [Informationen zu Azure Storage] ein neues Konto erstellen. Notieren Sie sich die Verbindungszeichenfolge für das Speicherkonto.
+Zum Verwenden der [EventProcessorHost]-Klasse müssen Sie über ein Azure Storage-Konto verfügen, damit **EventProcessorHost** Prüfpunktinformationen erfassen kann. Sie können ein vorhandenes Speicherkonto verwenden oder mithilfe der Anweisungen unter [Informationen zu Azure Storage] ein neues Konto erstellen. Notieren Sie sich die Verbindungszeichenfolge für das Speicherkonto.
 
 > [AZURE.NOTE] Stellen Sie beim Kopieren und Einfügen der Speicherkonto-Verbindungszeichenfolge sicher, dass keine Leerzeichen aufgenommen werden.
 
@@ -131,15 +133,15 @@ Sie benötigen außerdem eine Service Bus-Warteschlange, um die zuverlässige Ve
 
 ### Erstellen des Ereignisprozessors
 
-1. Klicken Sie in der aktuellen Visual Studio-Projektmappe auf **Datei** > **Hinzufügen** > **Neues Projekt**, um mit der Projektvorlage **Konsolenanwendung** ein neues Visual C#-Windows-Projekt zu erstellen. Stellen Sie sicher, dass .NET-Framework-Version 4.5.1 oder höher verwendet wird. Geben Sie dem Projekt den Namen **ProcessDeviceToCloudMessages**, und klicken Sie auf **OK**.
+1. Klicken Sie in der aktuellen Visual Studio-Projektmappe auf **Datei** > **Hinzufügen** > **Neues Projekt**, um mit der Projektvorlage **Konsolenanwendung** ein Visual C#-Windows-Projekt zu erstellen. Stellen Sie sicher, dass .NET-Framework-Version 4.5.1 oder höher verwendet wird. Geben Sie dem Projekt den Namen **ProcessDeviceToCloudMessages**, und klicken Sie auf **OK**.
 
     ![Neues Projekt in Visual Studio][10]
 
-2. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt **ProcessDeviceToCloudMessages**, und klicken Sie dann auf **NuGet-Pakete verwalten**. Das Dialogfeld **NuGet-Paket-Manager** wird angezeigt.
+2. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt **ProcessDeviceToCloudMessages**, und klicken Sie dann auf **Nuget-Pakete verwalten**. Das Dialogfeld **Nuget-Paket-Manager** wird angezeigt.
 
-3. Suchen Sie nach **WindowsAzure.ServiceBus**, klicken Sie auf **Installieren**, und akzeptieren Sie die Nutzungsbedingungen. Daraufhin wird das [Azure Service Bus-NuGet-Paket](https://www.nuget.org/packages/WindowsAzure.ServiceBus) mit allen Abhängigkeiten heruntergeladen und installiert, und dem Projekt wird ein Verweis auf das Paket hinzugefügt.
+3. Suchen Sie nach **WindowsAzure.ServiceBus**, klicken Sie auf **Installieren**, und akzeptieren Sie die Nutzungsbedingungen. Mit diesem Vorgang wird das [Azure Service Bus-Nuget-Paket](https://www.nuget.org/packages/WindowsAzure.ServiceBus) mit allen Abhängigkeiten heruntergeladen und installiert, und dem Projekt wird ein Verweis auf das Paket hinzugefügt.
 
-4. Suchen Sie nach **Microsoft Azure Service Bus Event Hub – EventProcessorHost**, klicken Sie auf **Installieren**, und akzeptieren Sie die Nutzungsbedingungen. Daraufhin wird das NuGet-Paket [Azure Service Bus Event Hub - EventProcessorHost](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost) mit allen Abhängigkeiten heruntergeladen und installiert, und dem Projekt wird ein Verweis auf das Paket hinzugefügt.
+4. Suchen Sie nach **Microsoft Azure Service Bus Event Hub – EventProcessorHost**, klicken Sie auf **Installieren**, und akzeptieren Sie die Nutzungsbedingungen. Mit diesem Vorgang wird das Nuget-Paket [Azure Service Bus Event Hub - EventProcessorHost](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost) mit allen Abhängigkeiten heruntergeladen und installiert, und dem Projekt wird ein Verweis auf das Paket hinzugefügt.
 
 5. Klicken Sie mit der rechten Maustaste auf das Projekt **ProcessDeviceToCloudMessages**, klicken Sie auf **Hinzufügen**, und klicken Sie dann auf **Klasse**. Geben Sie der neuen Klasse den Namen **StoreEventProcessor**, und klicken Sie auf **OK**, um die Klasse zu erstellen.
 
@@ -294,11 +296,11 @@ Sie benötigen außerdem eine Service Bus-Warteschlange, um die zuverlässige Ve
 
     Die **OpenAsync**-Methode initialisiert die **currentBlockInitOffset**-Variable. Diese dient zum Nachverfolgen des aktuellen Offsets der ersten Nachricht, die von diesem Ereignisprozessor gelesen wird. Denken Sie daran, dass jeder Prozessor für eine bestimmte Partition verantwortlich ist.
 
-    Mit der **ProcessEventsAsync**-Methode wird ein Nachrichtenbatch von IoT Hub empfangen und wie folgt verarbeitet: Interaktive Nachrichten werden an die Service Bus-Warteschlange gesendet, und Datenpunktnachrichten werden an den Arbeitsspeicherpuffer mit dem Namen **toAppend** angefügt. Falls der Arbeitsspeicherpuffer das Blocklimit von 4 MB erreicht oder die Service Bus-Deduplizierungszeitfenster seit dem letzten Prüfpunkt abgelaufen sind (in diesem Tutorial eine Stunde), wird ein Prüfpunkt ausgelöst.
+    Mit der **ProcessEventsAsync**-Methode wird ein Nachrichtenbatch von IoT Hub empfangen und wie folgt verarbeitet: Interaktive Nachrichten werden an die Service Bus-Warteschlange gesendet, und Datenpunktnachrichten werden an den Arbeitsspeicherpuffer mit dem Namen **toAppend** angefügt. Falls der Arbeitsspeicherpuffer das Limit von 4MB erreicht oder die Deduplizierungszeitfenster abgelaufen sind (in diesem Tutorial eine Stunde nach einem Prüfpunkt), löst die Anwendung einen Prüfpunkt aus.
 
     Mit der **AppendAndCheckpoint**-Methode wird zuerst eine Block-ID für den anzufügenden Block generiert. Für Azure Storage müssen alle Block-IDs die gleiche Länge besitzen. Die Methode füllt den Offset daher mit führenden Nullen auf: `currentBlockInitOffset.ToString("0000000000000000000000000")`. Wenn ein Block mit dieser ID im Blob bereits vorhanden ist, überschreibt die Methode ihn mit dem aktuellen Inhalt des Puffers.
 
-    > [AZURE.NOTE] Um den Code zu vereinfachen, wird in diesem Tutorial eine einzelne Blob-Datei pro Partition zum Speichern von Nachrichten verwendet. Für eine echte Lösung würde das „File Rolling“ implementiert werden, indem zusätzliche Dateien erstellt werden, wenn ein bestimmter Zeitraum verstrichen ist oder wenn sie eine bestimmte Größe erreichen (ein Azure-Blockblob kann maximal 195 GB groß sein).
+    > [AZURE.NOTE] Um den Code zu vereinfachen, wird in diesem Tutorial eine einzelne Blob-Datei pro Partition zum Speichern von Nachrichten verwendet. Für eine echte Lösung würde das „File Rolling“ implementiert werden, indem zusätzliche Dateien erstellt werden, wenn ein bestimmter Zeitraum verstrichen ist oder wenn sie eine bestimmte Größe erreichen. Denken Sie daran, dass ein Azure-Blockblob höchstens 195GB Daten enthalten kann.
 
 8. Fügen Sie am Anfang der **Program**-Klasse die folgenden **using**-Anweisung hinzu:
 
@@ -306,7 +308,7 @@ Sie benötigen außerdem eine Service Bus-Warteschlange, um die zuverlässige Ve
     using Microsoft.ServiceBus.Messaging;
     ```
 
-9. Ändern Sie die **Main**-Methode in der **Program**-Klasse wie unten gezeigt. Ersetzen Sie die IoT Hub-Verbindungszeichenfolge **iothubowner** (aus dem Tutorial [Erste Schritte mit IoT Hub]), die Speicherverbindungszeichenfolge und die Service Bus-Verbindungszeichenfolge durch Berechtigungen zum **Senden** für die Warteschlange mit dem Namen **d2ctutorial**:
+9. Ändern Sie die **Main**-Methode in der **Program**-Klasse wie folgt. Ersetzen Sie **{iot hub connection string}** mit der **iothubowner**-Verbindungszeichenfolge aus dem Tutorial [Erste Schritte mit Azure IoT Hub für .NET] . Ersetzen Sie die Speicherverbindungszeichenfolge durch die Verbindungszeichenfolge, die Sie zu Beginn dieses Abschnitts notiert haben. Ersetzen Sie die Service Bus-Verbindungszeichenfolge mit **Senden**-Berechtigungen für die Warteschlange mit dem Namen **d2ctutorial**, die Sie zu Beginn dieses Abschnitts notiert haben:
 
     ```
     static void Main(string[] args)
@@ -332,11 +334,11 @@ Sie benötigen außerdem eine Service Bus-Warteschlange, um die zuverlässige Ve
 ## Empfangen von interaktiven Nachrichten
 In diesem Abschnitt schreiben Sie eine Windows-Konsolen-App, die interaktive Nachrichten aus der Service Bus-Warteschlange empfängt. Weitere Informationen zum Erstellen einer Lösung mit Service Bus finden Sie unter [.NET-Anwendungen mit mehreren Ebenen unter Verwendung von Azure Service Bus-Warteschlangen][].
 
-1. Erstellen Sie in der aktuellen Visual Studio-Projektmappe mithilfe der Projektvorlage **Konsolenanwendung** ein neues Visual C#-Windows-Projekt. Geben Sie dem Projekt den Namen **ProcessD2CInteractiveMessages**.
+1. Erstellen Sie in der aktuellen Visual Studio-Projektmappe mithilfe der Projektvorlage **Konsolenanwendung** ein Visual C#-Windows-Projekt. Geben Sie dem Projekt den Namen **ProcessD2CInteractiveMessages**.
 
-2. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt **ProcessD2CInteractiveMessages**, und klicken Sie dann auf **NuGet-Pakete verwalten**. Das Fenster **NuGet-Paket-Manager** wird angezeigt.
+2. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt **ProcessD2CInteractiveMessages**, und klicken Sie dann auf **Nuget-Pakete verwalten**. Dieser Vorgang zeigt das Fenster **Nuget-Paket-Manager** an.
 
-3. Suchen Sie nach **WindowsAzure.ServiceBus**, klicken Sie auf **Installieren**, und akzeptieren Sie die Nutzungsbedingungen. Daraufhin wird [Azure Service Bus](https://www.nuget.org/packages/WindowsAzure.ServiceBus) mit allen Abhängigkeiten heruntergeladen, installiert und mit einem Verweis versehen.
+3. Suchen Sie nach **WindowsAzure.ServiceBus**, klicken Sie auf **Installieren**, und akzeptieren Sie die Nutzungsbedingungen. Mit diesem Vorgang wird [Azure Service Bus](https://www.nuget.org/packages/WindowsAzure.ServiceBus) mit allen Abhängigkeiten heruntergeladen, installiert und mit einem Verweis versehen.
 
 4. Fügen Sie am Anfang der Datei **Program.cs** die folgenden **using**-Anweisungen hinzu:
 
@@ -390,7 +392,7 @@ Sie können jetzt die Anwendung ausführen.
 
   ![Drei Konsolenanwendungen][50]
 
-> [AZURE.NOTE] Um Aktualisierungen in Ihrer Blobdatei sehen zu können, müssen Sie unter Umständen für die Konstante **MAX\_BLOCK\_SIZE** in der **StoreEventProcessor**-Klasse einen niedrigeren Wert festlegen (beispielsweise **1024**). Dies liegt daran, dass es bei den mit dem simulierten Gerät gesendeten Daten einige Zeit dauert, bis die Blockgröße erreicht wird. Bei einer kleineren Blockgröße müssen Sie nicht so lange warten, bis das Blob erstellt und aktualisiert wird. Allerdings sorgt die Verwendung einer höheren Blockgröße für eine bessere Skalierbarkeit der Anwendung.
+> [AZURE.NOTE] Um Aktualisierungen in Ihrer Blobdatei sehen zu können, müssen Sie unter Umständen für die Konstante **MAX\_BLOCK\_SIZE** in der **StoreEventProcessor**-Klasse einen niedrigeren Wert festlegen (beispielsweise **1.024**). Diese Änderung ist nützlich, weil es bei den mit dem simulierten Gerät gesendeten Daten einige Zeit dauert, bis die Blockgröße erreicht wird. Bei einer kleineren Blockgröße müssen Sie nicht so lange warten, bis das Blob erstellt und aktualisiert wird. Allerdings sorgt die Verwendung einer höheren Blockgröße für eine bessere Skalierbarkeit der Anwendung.
 
 ## Nächste Schritte
 
@@ -425,6 +427,7 @@ Weitere Informationen zum Entwickeln von Lösungen mit IoT Hub finden Sie im [Io
 [Dokumentation zu Azure Service Bus]: https://azure.microsoft.com/documentation/services/service-bus/
 
 [IoT Hub-Entwicklerhandbuch]: iot-hub-devguide.md
+[Erste Schritte mit Azure IoT Hub für .NET]: iot-hub-csharp-csharp-getstarted.md
 [Erste Schritte mit IoT Hub]: iot-hub-csharp-csharp-getstarted.md
 [Azure IoT Developer Center]: https://azure.microsoft.com/develop/iot
 [lnk-service-fabric]: https://azure.microsoft.com/documentation/services/service-fabric/
@@ -447,4 +450,4 @@ Weitere Informationen zum Entwickeln von Lösungen mit IoT Hub finden Sie im [Io
 [lnk-c2d]: iot-hub-csharp-csharp-process-d2c.md
 [lnk-suite]: https://azure.microsoft.com/documentation/suites/iot-suite/
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0907_2016-->

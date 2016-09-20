@@ -118,7 +118,7 @@ Wenn Ihre Anwendung im Auftrag eines angemeldeten Benutzers auf Ressourcen zugre
 
 1. Wählen Sie **Anwendung hinzufügen** aus.
 
-2. Wählen Sie in der Liste die **Azure-Dienstverwaltungs-API** aus. Klicken Sie dann auf das Symbol zum Fertigstellen.
+2. Wählen Sie in der Liste die **Windows Azure-Dienstverwaltungs-API** aus. Klicken Sie dann auf das Symbol zum Fertigstellen.
 
       ![App auswählen](./media/resource-group-create-service-principal-portal/select-app.png)
 
@@ -208,4 +208,4 @@ Die folgenden Beispielanwendungen veranschaulichen die Anmeldung als Dienstprinz
 - Informationen zum Festlegen von Sicherheitsrichtlinien finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure](./active-directory/role-based-access-control-configure.md).
 - Eine Videodemo dieser Schritte finden Sie unter [Aktivieren der programmgesteuerten Verwaltung einer Azure-Ressource mit Azure Active Directory](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Enabling-Programmatic-Management-of-an-Azure-Resource-with-Azure-Active-Directory).
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0907_2016-->

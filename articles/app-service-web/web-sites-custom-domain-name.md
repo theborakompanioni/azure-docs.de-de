@@ -126,7 +126,7 @@ Konfigurieren Sie Ihren A-Eintrag wie folgt (@ steht normalerweise für die Stam
   </tr>
 </table>
 
-Für Ihren zusätzlichen TXT-Eintrag wird die Konvention der Zuordnung von „&lt;*Unterdomäne*>.&lt;*Stammdomäne*>“ zu „&lt;*Unterdomäne*>.azurewebsites.net“ übernommen. Konfigurieren Sie Ihren TXT-Eintrag wie folgt:
+Für Ihren zusätzlichen TXT-Eintrag wird die Konvention der Zuordnung von „&lt;*Unterdomäne*>.&lt;*Stammdomäne*>“ zu „&lt;*App-Name*>.azurewebsites.net“ übernommen. Konfigurieren Sie Ihren TXT-Eintrag wie folgt:
 
 <table cellspacing="0" border="1">
   <tr>
@@ -203,6 +203,32 @@ Auf dem Blatt **Benutzerdefinierte Domänen** im Azure-Portal (siehe [Schritt 1]
 
 8.  Nachdem Azure Ihren neuen benutzerdefinierten Domänennamen konfiguriert hat, können Sie in einem Browser zum benutzerdefinierten Domänennamen navigieren. Der Browser sollte Ihre Azure-App öffnen. Das bedeutet, dass der benutzerdefinierte Domänenname richtig konfiguriert wurde.
 
+> [AZURE.NOTE] Wenn der DNS-Eintrag bereits verwendet wird (wie beispielsweise in einem Szenario mit einer aktiven Domäne, die Datenverkehr bereitstellt) und Sie zur Domänenüberprüfung Ihre Web-App präemptiv an den Eintrag binden müssen, erstellen Sie einfach TXT-Einträge (siehe Bespiele in der folgenden Tabelle). Für Ihren zusätzlichen TXT-Eintrag wird die Konvention der Zuordnung von „&lt;*Unterdomäne*>.&lt;*Stammdomäne*>“ zu „&lt;*App-Name*>.azurewebsites.net“ übernommen.
+> <table cellspacing="0" border="1">
+>   <tr>
+>     <th>FQDN-Beispiel</th>
+>     <th>TXT-Host</th>
+>     <th>TXT-Wert</th>
+>   </tr>
+>   <tr>
+>     <td>contoso.com (Stammdomäne)</td>
+>     <td>awverify.contoso.com</td>
+>     <td>&lt;<i>App-Name</i>>.azurewebsites.net</td>
+>   </tr>
+>   <tr>
+>     <td>www.contoso.com (Unterdomäne)</td>
+>     <td>awverify.www.contoso.com</td>
+>     <td>&lt;<i>App-Name</i>>.azurewebsites.net</td>
+>   </tr>
+>     <tr>
+>     <td>*.contoso.com (Unterdomäne)</td>
+>     <td>awverify.*.contoso.com</td>
+>     <td>&lt;<i>App-Name</i>>.azurewebsites.net</td>
+>   </tr>
+> </table>
+Wechseln Sie nach der Erstellung dieses DNS-Eintrags zurück zum Azure-Portal, und fügen Sie den benutzerdefinierten Domänennamen zu Ihrer Web-App hinzu.
+ 
+
 <a name="verify"></a>
 ## Überprüfen der DNS-Verteilung
 
@@ -223,4 +249,4 @@ Erfahren Sie, wie Sie Ihren benutzerdefinierten Domänennamen mit HTTPS sichern,
 <!-- Images -->
 [subdomain]: media/web-sites-custom-domain-name/azurewebsites-subdomain.png
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0907_2016-->

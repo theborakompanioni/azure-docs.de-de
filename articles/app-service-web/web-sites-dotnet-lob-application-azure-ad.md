@@ -13,7 +13,7 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="web" 
-	ms.date="08/31/2016" 
+	ms.date="09/01/2016" 
 	ms.author="cephalin"/>
 
 # Erstellen einer Azure-Branchen-App mit Azure Active Directory-Authentifizierung #
@@ -29,6 +29,7 @@ Sie erstellen eine einfache Branchenanwendung für Create-Read-Update-Delete (CR
 
 - Authentifizieren von Benutzern mit Azure Active Directory
 - Abfragen von Verzeichnisbenutzern und -gruppen mit der [Azure Active Directory Graph-API](http://msdn.microsoft.com/library/azure/hh974476.aspx)
+- Verwenden der ASP.NET MVC-Vorlage *Keine Authentifizierung*
 
 Wenn Sie rollenbasierte Zugriffskontrolle (RBAC) für Ihre Branchen-App in Azure benötigen, finden Sie unter [Nächster Schritt](#next) weitere Informationen.
 
@@ -80,7 +81,7 @@ Sie benötigen Folgendes zum Bearbeiten dieses Lernprogramms:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
-2. Klicken Sie im linken Menü auf **App Services** > **&lt;*App-Name*>** > **Authentifizierung/Autorisierung**.
+2. Klicken Sie im linken Menü auf **App Services** > **& Lt;*App-Name*>** > **Authentifizierung/Autorisierung**.
 
 	![](./media/web-sites-dotnet-lob-application-azure-ad/5-app-service-authentication.png)
 
@@ -142,19 +143,11 @@ Sie benötigen Folgendes zum Bearbeiten dieses Lernprogramms:
 
 	![](./media/web-sites-dotnet-lob-application-azure-ad/14-edit-parameters.png)
 
-14. Testen Sie nun, ob Sie über das Autorisierungstoken verfügen, um auf die Azure Active Directory Graph-API zuzugreifen. Ändern Sie hierfür „~\\Controllers\\HomeController.cs“, um die folgende `Index()`-Aktionsmethode zu verwenden:
-	<pre class="prettyprint">
-	public ActionResult Index()
-	{
-		return <mark>Content(Request.Headers["X-MS-TOKEN-AAD-ACCESS-TOKEN"]);</mark>
-	}
-	</pre>
+14. Um zu überprüfen, ob Sie das Autorisierungstoken für den Zugriff auf die Azure Active Directory Graph-API besitzen, navigieren Sie einfach zu **https://&lt;*appname*>.azurewebsites.net/.auth/me** in Ihrem Browser. Wenn Sie alles richtig konfiguriert haben, sollten Sie die `access_token`-Eigenschaft in der JSON-Antwort sehen.
 
-15. Veröffentlichen Sie Ihre Änderungen, indem Sie mit der rechten Maustaste auf das Projekt und anschließend auf **Veröffentlichen** klicken. Klicken Sie im Dialogfeld erneut auf **Veröffentlichen**.
+	Der `~/.auth/me`-URL-Pfad wird über die App-Authentifizierung/Autorisierung verwaltet und enthält alle Informationen im Zusammenhang mit der authentifizierten Sitzung. Weitere Informationen finden Sie unter [Authentifizierung und Autorisierung in Azure App Service](../app-service/app-service-authentication-overview.md).
 
-	![](./media/web-sites-dotnet-lob-application-azure-ad/15-publish-token-code.png)
-
-	Wenn auf Ihrer App-Startseite nun ein Zugriffstoken angezeigt wird, kann Ihre App auf die Azure Active Directory Graph-API zugreifen. Alle Änderungen an „~\\Controllers\\HomeController.cs“ können wieder rückgängig gemacht werden.
+	>[AZURE.NOTE] Für `access_token` ist eine Ablaufdauer festgelegt. Allerdings bietet die App-Authentifizierung/Autorisierung eine Funktion zur Aktualisierung von Token mit `~/.auth/refresh`. Weitere Informationen zur Verwendung finden Sie im Abschnitt zum [App Service-Tokenspeicher](https://cgillum.tech/2016/03/07/app-service-token-store/).
 
 Nun können Sie Ihre Verzeichnisdaten für weitere Aktionen nutzen.
 
@@ -194,29 +187,6 @@ Jetzt erstellen Sie einen einfachen CRUD-Arbeitsaufgaben-Tracker.
 10.	Wählen Sie das Modell, das Sie erstellt haben, klicken Sie auf **+** und **Hinzufügen**, um einen Datenkontext hinzuzufügen, und klicken Sie anschließend auf **Hinzufügen**.
 
 	![](./media/web-sites-dotnet-lob-application-azure-ad/16-add-scaffolded-controller.png)
-
-9.	Öffnen Sie „~\\Controllers\\WorkItemsController.cs“.
-
-13.	Am Anfang der Methode `Create()` und `Edit(int? id)` fügen Sie den folgenden Code hinzu, damit einige Variablen später für JavaScript verfügbar sind. `Ctrl`+`.` dient zur Behebung von Fehlern bei der Namensauflösung.
-
-		ViewData["token"] = Request.Headers["X-MS-TOKEN-AAD-ACCESS-TOKEN"];
-		ViewData["tenant"] =
-			ClaimsPrincipal.Current.Claims
-			.Where(c => c.Type == "http://schemas.microsoft.com/identity/claims/tenantid")
-			.Select(c => c.Value).SingleOrDefault();
-
-	> [AZURE.NOTE] Bei einigen Aktionen haben Sie vielleicht die Dekoration <code>[ValidateAntiForgeryToken]</code> bemerkt. Aufgrund des Verhaltens, das von [Brock Allen](https://twitter.com/BrockLAllen) unter [MVC 4, AntiForgeryToken and Claims](http://brockallen.com/2012/07/08/mvc-4-antiforgerytoken-and-claims/) (MVC 4, AntiForgeryToken und Ansprüche) beschrieben wurde, ist aus folgenden Gründen eventuell keine Fälschungsschutz-Überprüfung für Ihren HTTP POST möglich:
-
-	> - Azure Active Directory sendet kein vom Fälschungsschutztoken standardmäßig erforderliches http://schemas.microsoft.com/accesscontrolservice/2010/07/claims/identityprovider.
-	> - Wenn Azure Active Directory mit AD FS synchronisiert ist, sendet die AD FS-Vertrauensstellung standardmäßig ebenfalls nicht den http://schemas.microsoft.com/accesscontrolservice/2010/07/claims/identityprovider-Anspruch, Sie können AD FS jedoch manuell zum Senden dieses Anspruchs konfigurieren.
-
-	> Mit diesen Themen werden Sie sich im nächsten Schritt befassen.
-
-12.  Fügen Sie in „~\\Global.asax“ die folgende Codezeile in der Methode `Application_Start()` hinzu. `Ctrl`+`.` dient zur Behebung von Fehlern bei der Namensauflösung.
-
-		AntiForgeryConfig.UniqueClaimTypeIdentifier = ClaimTypes.NameIdentifier;
-	
-	Mit `ClaimTypes.NameIdentifies` wird der Anspruch `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier` angegeben, der von Azure Active Directory nicht bereitgestellt wird.
 
 14.	Suchen Sie in „~Views\\WorkItems\\Create.cshtml“ (einem automatisch erstellten Gerüstelement) die Hilfsmethode `Html.BeginForm`, und nehmen Sie die hervorgehobenen Änderungen vor:
 	<pre class="prettyprint">
@@ -287,8 +257,11 @@ Jetzt erstellen Sie einen einfachen CRUD-Arbeitsaufgaben-Tracker.
 			var maxResultsPerPage = 14;
 			var input = document.getElementById("AssignedToName");
 	
-			var token = "@ViewData["token"]";
-			var tenant = "@ViewData["tenant"]";
+			// Zugriffstoken aus Anforderungsheader und Mandanten-ID aus Anspruchsidentität
+			var token = "@Request.Headers["X-MS-TOKEN-AAD-ACCESS-TOKEN"]";
+			var tenant ="@(System.Security.Claims.ClaimsPrincipal.Current.Claims
+							.Where(c => c.Type == "http://schemas.microsoft.com/identity/claims/tenantid")
+							.Select(c => c.Value).SingleOrDefault())";
 	
 			var picker = new AadPicker(maxResultsPerPage, input, token, tenant);
 	
@@ -303,7 +276,20 @@ Jetzt erstellen Sie einen einfachen CRUD-Arbeitsaufgaben-Tracker.
 	</pre>
 	
 	Beachten Sie, dass `token` und `tenant` vom Objekt `AadPicker` für Azure Active Directory Graph-API verwendet werden. `AadPicker` fügen Sie später hinzu.
-
+	
+	>[AZURE.NOTE] Sie können auch `token` und `tenant` mit `~/.auth/me` vom Client abrufen, aber dazu wäre ein weiterer Serveraufruf erforderlich. Beispiel:
+	>  
+    >     $.ajax({
+    >         dataType: "json",
+    >         url: "/.auth/me",
+    >         success: function (data) {
+    >             var token = data[0].access_token;
+    >             var tenant = data[0].user_claims
+    >                             .find(c => c.typ === 'http://schemas.microsoft.com/identity/claims/tenantid')
+    >                             .val;
+    >         }
+    >     });
+	
 15. Nehmen Sie die gleichen Änderungen bei „~\\Views\\WorkItems\\Edit.cshtml“ vor.
 
 15. Das Objekt `AadPicker` wird in einem Skript definiert, das Sie Ihrem Projekt hinzufügen müssen. Klicken Sie mit der rechten Maustaste auf den Ordner „~\\Scripts“, zeigen Sie auf **Hinzufügen**, und klicken Sie auf die **JavaScript-Datei**. Geben Sie `AadPickerLibrary` als Dateinamen ein, und klicken Sie auf **OK**.
@@ -350,6 +336,17 @@ Jetzt erstellen Sie einen einfachen CRUD-Arbeitsaufgaben-Tracker.
 
 	Es gibt leistungsfähigere Möglichkeiten, mit denen Sie JavaScript und CSS-Dateien in Ihrer App verwalten können. Verwenden Sie der Einfachheit halber aber nur die Bündel, die mit jeder Ansicht geladen werden.
 
+12. Fügen Sie dann in „~\\Global.asax“ die folgende Codezeile in der Methode `Application_Start()` hinzu. `Ctrl`+`.` dient zur Behebung von Fehlern bei der Namensauflösung.
+
+		AntiForgeryConfig.UniqueClaimTypeIdentifier = ClaimTypes.NameIdentifier;
+	
+	> [AZURE.NOTE] Sie benötigen diese Codezeile, weil die Standard-MVC-Vorlage bei einigen der Aktionen die Dekoration <code>[ValidateAntiForgeryToken]</code> verwendet. Aufgrund des Verhaltens, das von [Brock Allen](https://twitter.com/BrockLAllen) unter [MVC 4, AntiForgeryToken and Claims](http://brockallen.com/2012/07/08/mvc-4-antiforgerytoken-and-claims/) (MVC 4, AntiForgeryToken und Ansprüche) beschrieben wurde, ist aus folgenden Gründen eventuell keine Fälschungsschutz-Überprüfung für Ihren HTTP POST möglich:
+
+	> - Azure Active Directory sendet kein vom Fälschungsschutztoken standardmäßig erforderliches http://schemas.microsoft.com/accesscontrolservice/2010/07/claims/identityprovider.
+	> - Wenn Azure Active Directory mit AD FS synchronisiert ist, sendet die AD FS-Vertrauensstellung standardmäßig ebenfalls nicht den http://schemas.microsoft.com/accesscontrolservice/2010/07/claims/identityprovider-Anspruch, Sie können AD FS jedoch manuell zum Senden dieses Anspruchs konfigurieren.
+
+	> Mit `ClaimTypes.NameIdentifies` wird der Anspruch `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier` angegeben, der von Azure Active Directory nicht bereitgestellt wird.
+
 20. Veröffentlichen Sie nun Ihre Änderungen. Klicken Sie mit der rechten Maustaste auf Ihr Projekt, und wählen Sie **Veröffentlichen**.
 
 21. Klicken Sie auf **Einstellungen**, stellen Sie sicher, dass eine Verbindungszeichenfolge für die SQL-Datenbank vorhanden ist, wählen Sie **Datenbank aktualisieren**, um das Schema Ihres Modells zu ändern, und klicken Sie auf **Veröffentlichen**.
@@ -379,10 +376,10 @@ Wenn Ihre Branchen-App Zugriff auf lokale Daten benötigt, finden Sie unter [Zug
 - [Authentifizierung und Autorisierung in Azure App Service](../app-service/app-service-authentication-overview.md)
 - [Authentifizieren mit lokaler Active Directory-Instanz in Ihrer Azure-App](web-sites-authentication-authorization.md)
 - [Erstellen einer .NET MVC-Web-App in Azure App Service mit Azure Active Directory-Authentifizierung](web-sites-dotnet-lob-application-adfs.md)
-- [App Service Auth and the Azure AD Graph API](https://cgillum.tech/2016/03/25/app-service-auth-aad-graph-api/) (App Service-Authentifizierung und Azure AD Graph-API)
+- [App Service Auth and the Azure AD Graph API (App Service-Authentifizierung und Azure AD Graph-API)](https://cgillum.tech/2016/03/25/app-service-auth-aad-graph-api/)
 - [Microsoft Azure Active Directory – Beispiele und Dokumentation](https://github.com/AzureADSamples)
 - [Unterstützte Token- und Anspruchstypen](http://msdn.microsoft.com/library/azure/dn195587.aspx)
 
 [Protect the Application with SSL and the Authorize Attribute]: web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md#protect-the-application-with-ssl-and-the-authorize-attribute
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0907_2016-->

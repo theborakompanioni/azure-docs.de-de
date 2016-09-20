@@ -15,7 +15,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-management"
-   ms.date="08/24/2016"
+   ms.date="09/01/2016"
    ms.author="rickbyh"/>
 
 # SQL-Datenbank-Authentifizierung und -Autorisierung: Gewähren von Zugriff 
@@ -40,7 +40,7 @@ Bei der Erstellung einer logischen SQL-Instanz wird ein einzelnes Anmeldekonto e
 Ein Azure Active Directory-Konto kann auch als Administrator konfiguriert werden. Bei diesem Konto kann es sich um einen individuellen Azure AD-Benutzer oder eine Azure AD-Gruppe mit mehreren Azure AD-Benutzern handeln. Die Konfiguration eines Azure AD-Administrators ist optional. Ein Azure AD-Administrator muss aber konfiguriert werden, wenn Sie die Windows-Authentifizierung für Azure AD-Konten zum Herstellen der Verbindung mit SQL-Datenbank verwenden möchten. Weitere Informationen zur Konfiguration des Azure Active Directory-Zugriffs finden Sie unter [Herstellen einer Verbindung mit SQL-Datenbank oder SQL Data Warehouse unter Verwendung der Azure Active Directory-Authentifizierung](sql-database-aad-authentication.md) und [SSMS support for Azure AD MFA with SQL Database and SQL Data Warehouse](sql-database-ssms-mfa-authentication.md) (SSMS-Unterstützung für Azure AD MFA mit SQL-Datenbank und SQL Data Warehouse).
 
 ### Konfigurieren der Firewall
-Wenn eine Firewall auf Serverebene konfiguriert wird, können für das Azure SQL-Datenbank-Abonnentenkonto und das Azure Active Directory-Konto Verbindungen mit der virtuellen Masterdatenbank und allen Benutzerdatenbanken hergestellt werden. Die Firewall auf Serverebene kann über das Portal konfiguriert werden. Nachdem eine Verbindung hergestellt wurde, können auch weitere Firewallregeln für die Serverebene konfiguriert werden, indem die Transact-SQL-Anweisung [sp\_set\_firewall\_rule](https://msdn.microsoft.com/library/dn270017.aspx) verwendet wird. Weitere Informationen zur Konfiguration der Firewall finden Sie unter [Konfigurieren einer Firewall für die Azure SQL-Datenbank mit dem Azure-Portal](sql-database-configure-firewall-settings.md).
+Wenn eine Firewall auf Serverebene konfiguriert wird, können für das Azure SQL-Datenbank-Abonnentenkonto und das Azure Active Directory-Konto Verbindungen mit der Masterdatenbank und allen Benutzerdatenbanken hergestellt werden. Die Firewall auf Serverebene kann über das Portal konfiguriert werden. Nachdem eine Verbindung hergestellt wurde, können auch weitere Firewallregeln für die Serverebene konfiguriert werden, indem die Transact-SQL-Anweisung [sp\_set\_firewall\_rule](https://msdn.microsoft.com/library/dn270017.aspx) verwendet wird. Weitere Informationen zur Konfiguration der Firewall finden Sie unter [Konfigurieren einer Firewall für die Azure SQL-Datenbank mit dem Azure-Portal](sql-database-configure-firewall-settings.md).
 
 ### Administrator-Zugriffspfad
 
@@ -161,4 +161,4 @@ Es gibt mehr als 100 Berechtigungen, die in SQL-Datenbank individuell gewährt o
 
 [Sicherheitscenter für SQL Server-Datenbankmodul und Azure SQL-Datenbank](https://msdn.microsoft.com/library/bb510589.aspx)
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0907_2016-->

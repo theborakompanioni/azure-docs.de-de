@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration"
-   ms.date="05/31/2016"
+   ms.date="09/01/2016"
    ms.author="stepsic"/>
 
 # JavaScript-API-App
@@ -23,7 +23,7 @@
 Die JavaScript-API-App bietet Ihnen eine gute Möglichkeit, einfache JavaScript-Ausdrücke auszuführen, *während Ihre Logik-App ausgeführt wird*.
 
 ## Wann sollten Sie diese API-App verwenden?
-Das Hauptszenario für diese API-App ist, wenn der Lebenszyklus des Codes, den Sie schreiben, mit der Logik-App identisch sein soll und der Code in *keinem* anderen Szenario aufgerufen werden soll.
+Das Hauptszenario für diese API-App ist, wenn der Lebenszyklus des Codes, den Sie schreiben, mit der Logik-App identisch sein soll und der Code in *keinem*anderen Szenario aufgerufen werden soll.
 
 Wenn Sie jedoch einen wiederverwendbaren Codeausschnitt erstellen möchten, der einen von der Logik-App unabhängigen Lebenszyklus aufweist, sollten Sie die WebJobs-API-App verwenden, um einfache Codeausdrücke zu schreiben und über Ihre Logik-App aufzurufen.
 
@@ -89,7 +89,7 @@ return Attachments.map(function(obj){var a = obj.Content; a.FileName = obj.Name;
 
 Die Aktion gibt das JSON-Objekt zurück, das Sie von Ihrer Funktion zurückgegeben haben. So können Sie in der Yammer-API-App auf `@body('javascriptapi')` für die **Attachments**-Eigenschaft verweisen.
 
-## Mehr mit Ihrem Connector machen
+## Optimale Nutzung Ihres Connectors
 Nachdem der Connector nun erstellt ist, können Sie ihn mit einer Logik-App in einem Geschäftsworkflow hinzufügen. Informationen finden Sie unter [Was sind Logik-Apps?](app-service-logic-what-are-logic-apps.md).
 
  
@@ -99,4 +99,4 @@ Nachdem der Connector nun erstellt ist, können Sie ihn mit einer Logik-App in e
 <!--Links -->
 [Creating a Logic app]: app-service-logic-create-a-logic-app.md
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0907_2016-->

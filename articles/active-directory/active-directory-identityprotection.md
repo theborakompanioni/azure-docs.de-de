@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/25/2016"
+	ms.date="09/07/2016"
 	ms.author="markvi"/>
 
 #Azure Active Directory Identity Protection 
@@ -24,9 +24,6 @@ Azure Active Directory Identity Protection ist ein Sicherheitsdienst, der eine u
 ## Einschränkungen der aktuellen Vorschau
 Dieser Abschnitt enthält eine Liste von Einschränkungen der aktuellen Vorschau von Azure Active Directory Identity Protection.
 
-### Einschränkungen für Land und Region
-
-Die Vorschau von Azure Active Directory Identity Protection ist zurzeit nur für Verzeichnisse verfügbar, deren **Land oder Region** laut Wert in den **USA** liegt. <br><br> ![Korrektur](./media/active-directory-identityprotection/222.png "Korrektur")
 
 
 ### Identity Protection und Verbunddomänen
@@ -102,8 +99,7 @@ Einige dieser Risikoereignisse sind über die Berichte zu anomalen Aktivitäten 
 | Anmeldungen von infizierten Geräten | Anmeldungen von möglicherweise infizierten Geräten |
 | Anmeldungen von anonymen IP-Adressen | Anmeldungen von unbekannten Quellen |
 | Anmeldungen von IP-Adressen mit verdächtigen Aktivitäten |	Anmeldungen von IP-Adressen mit verdächtigen Aktivitäten |
-| Anmeldungen von unbekannten Standorten | - |
-| Sperr-Ereignisse (nicht Teil der öffentlichen Vorschau) | - |
+| Anmeldungen von unbekannten Standorten | - | | Sperr-Ereignisse (nicht Teil der öffentlichen Vorschau) | - |
 
 Die folgenden Azure AD-Berichte zu anomalen Aktivitäten sind nicht als Risikoereignisse in Azure AD Identity Protection enthalten und daher auch nicht über Identity Protection verfügbar. Diese Berichte sind im Azure-Verwaltungsportal noch enthalten, aber sie werden nach und nach eingestellt, da sie durch Risikoereignisse in Identity Protection ersetzt werden.
 
@@ -257,7 +253,7 @@ Gehen Sie beim Festlegen der Richtlinie wie folgt vor:
 
 - Verwenden Sie während des anfänglichen Rollouts der Richtlinie (oder wenn Sie die Auswirkungen für Endbenutzer verringern möchten) den Schwellenwert **Hoch**.
 
-- Verwenden Sie den Schwellenwert **Niedrig**, falls für Ihre Organisation eine höhere Sicherheitsebene erforderlich ist. Wenn Sie den Schwellenwert **Niedrig** auswählen, erhöht sich der Aufwand für die Benutzer bei der Anmeldung, aber die Sicherheit wird erhöht.
+- Verwenden Sie den Schwellenwert **Niedrig**, falls für Ihre Organisation eine höhere Sicherheitsebene erforderlich ist. Wenn Sie für den Schwellenwert **Niedrig** auswählen, erhöht sich der Aufwand für die Benutzer bei der Anmeldung, aber die Sicherheit wird erhöht.
 
 Die empfohlene Standardvorgehensweise für die meisten Organisationen ist die Konfiguration einer Regel für den Schwellenwert **Mittel**, um eine gute Balance zwischen Benutzerfreundlichkeit und Sicherheit zu erzielen.
 
@@ -416,4 +412,4 @@ Eine Übersicht über die zugehörige Benutzeroberfläche finden Sie unter:
  - [Azure Active Directory Identity Protection – Glossar](active-directory-identityprotection-glossary.md)
  - [Erste Schritte mit Azure Active Directory Identity Protection und Microsoft Graph](active-directory-identityprotection-graph-getting-started.md)
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0907_2016-->

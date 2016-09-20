@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="Stichprobenerstellung, Filterung und Vorverarbeitung im Application Insights-SDK" 
-	description="Schreiben Sie Plug-Ins für das SDK, um die Telemetriedaten vor dem Senden der an das Application Insights-Portal zu filtern, aus diesen Stichproben zu erstellen oder ihnen Eigenschaften hinzuzufügen." 
+	pageTitle="Filterung und Vorverarbeitung im Application Insights-SDK | Microsoft Azure" 
+	description="Schreiben Sie Telemetrieprozessoren und Telemetrieinitialisierer für das SDK, um die Daten zu filtern oder ihnen Eigenschaften hinzuzufügen, bevor die Telemetriedaten an das Application Insights-Portal gesendet werden." 
 	services="application-insights"
     documentationCenter="" 
 	authors="beckylino" 
@@ -12,10 +12,10 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="multiple" 
 	ms.topic="article" 
-	ms.date="05/19/2016" 
+	ms.date="08/30/2016" 
 	ms.author="borooji"/>
 
-# Stichprobenerstellung, Filterung und Vorverarbeitung von Telemetriedaten im Application Insights-SDK
+# Filterung und Vorverarbeitung von Telemetriedaten im Application Insights-SDK
 
 *Application Insights befindet sich in der Vorschau.*
 
@@ -23,58 +23,16 @@ Sie können Plug-Ins für das Application Insights SDK schreiben und konfigurier
 
 Derzeit sind diese Features für das ASP.NET-SDK verfügbar.
 
-* Durch das [Erstellen von Stichproben](#sampling) verringert sich der Umfang der Telemetriedaten, ohne Statistiken zu verfälschen. Zusammengehörige Datenpunkte werden dabei zusammengehalten, sodass Sie bei der Diagnose von Problemen zwischen diesen navigieren können. Im Portal wird die Gesamtanzahl multipliziert, um eine Kompensation der Stichproben zu erreichen.
-* Durch das [Filtern](#filtering) können Sie Telemetriedaten im SDK auswählen oder ändern, bevor sie an den Server gesendet werden. Sie können beispielsweise den Umfang der Telemetriedaten verringern, indem Sie Anforderungen von Robots ausschließen. Dies stellt ein grundlegenderes Verfahren zur Senkung des Datenverkehrs dar als das Erstellen von Stichproben. Sie können so besser steuern, was übertragen wird. Jedoch müssen Sie beachten, dass dies Auswirkungen auf die Statistik hat – wenn Sie z. B. alle erfolgreichen Anforderungen herausfiltern.
-* Auch das [Hinzufügen von Eigenschaften](#add-properties) zu beliebigen von der App gesendeten Telemetriedaten, einschließlich Telemetriedaten von Standardmodulen, ist möglich. Sie könnten z. B. berechnete Werte hinzufügen oder Versionsnummern, nach denen Sie die Daten im Portal filtern.
+* Durch das [Erstellen von Stichproben](app-insights-sampling.md) verringert sich der Umfang der Telemetriedaten, ohne Statistiken zu verfälschen. Zusammengehörige Datenpunkte werden dabei zusammengehalten, sodass Sie bei der Diagnose von Problemen zwischen diesen navigieren können. Im Portal wird die Gesamtanzahl multipliziert, um eine Kompensation der Stichproben zu erreichen.
+* Durch das [Filtern mit Telemetrieprozessoren](#filtering) können Sie Telemetriedaten im SDK auswählen oder ändern, bevor sie an den Server gesendet werden. Sie können beispielsweise den Umfang der Telemetriedaten verringern, indem Sie Anforderungen von Robots ausschließen. Filtern stellt jedoch ein grundlegenderes Verfahren zur Senkung des Datenverkehrs dar als das Erstellen von Stichproben. Sie können so besser steuern, was übertragen wird. Jedoch müssen Sie beachten, dass dies Auswirkungen auf die Statistik hat – wenn Sie z. B. alle erfolgreichen Anforderungen herausfiltern.
+* [Telemetrieinitialisierer fügen Eigenschaften](#add-properties) zu beliebigen von der App gesendeten Telemetriedaten hinzu, einschließlich Telemetriedaten von Standardmodulen. Sie könnten z. B. berechnete Werte hinzufügen oder Versionsnummern, nach denen Sie die Daten im Portal filtern.
 * Die [SDK-API](app-insights-api-custom-events-metrics.md) wird zum Senden benutzerdefinierter Ereignisse und Metriken verwendet.
+
 
 Vorbereitung:
 
-* Installieren Sie das [Application Insights-SDK für ASP.NET v2](app-insights-asp-net.md) in Ihrer App. 
+* Installieren Sie das [Application Insights-SDK für ASP.NET v2](app-insights-asp-net.md) in Ihrer App.
 
-
-## Stichproben
-
-Bei der [Erstellung von Stichproben](app-insights-sampling.md) handelt es sich um die empfohlene Methode zum Reduzieren des Datenverkehrs bei gleichzeitig präzisen Statistiken. Der Filter wählt verwandte Elemente, damit Sie zwischen den Elementen in der Diagnose navigieren können. Ereigniszähler werden im metrischen Explorer angepasst, um die gefilterten Elemente zu kompensieren.
-
-* Es wird die adaptive Stichprobenerstellung empfohlen. Bei dieser Methode wird der Stichproben-Prozentsatz automatisch angepasst, um ein bestimmtes Volumen an Anforderungen zu erreichen. Derzeit nur für serverseitige Telemetrie bei ASP.NET verfügbar. 
-* Die [Stichprobenerstellung mit festem Prozentsatz](app-insights-sampling.md) steht ebenfalls zur Verfügung. Dabei geben Sie den Stichproben-Prozentsatz an. Verfügbar für ASP.NET-Web-App-Code und JavaScript-Webseiten. Client und Server synchronisieren ihre Stichprobenerstellung, sodass Sie in der Suche zwischen den verwandten Seitenaufrufen und Anforderungen navigieren können.
-* Die Erfassungs-Stichprobenerstellung wird ausgeführt, wenn die Telemetriedaten beim Application Insights-Portal empfangen werden, sodass sie unabhängig vom verwendeten SDK verwendet werden können. Damit wird zwar nicht der Telemetriedatenverkehr im Netzwerk reduziert, aber der Verarbeitungs- und der Speicheraufwand in Application Insights. Nur die beibehaltenen Telemetriedaten werden auf Ihr monatliches Kontingent angerechnet. 
-
-### So aktivieren Sie die Erfassungs-Stichprobenerstellung
-
-Öffnen Sie auf der Leiste „Einstellungen“ das Blatt „Kontingente und Preise“. Klicken Sie auf „Sampling“, und wählen Sie einen Stichprobenverhältnis aus.
-
-Die Erfassung wird nicht ausgeführt, wenn das SDK eine adaptive Stichprobenerstellung oder eine Stichprobenerstellung mit festem Prozentsatz ausführt. Solange der Stichproben-Prozentsatz im SDK unter 100% liegt, wird die Einstellung für die Erfassungs-Stichprobenerstellung ignoriert.
-
-### So aktivieren Sie die adaptive Stichprobenerstellung
-
-**Aktualisieren Sie die NuGet-Pakete Ihres Projekts** auf die neueste *Vorabversion* von Application Insights: Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt, wählen Sie „NuGet-Pakete verwalten“ aus, aktivieren Sie **Vorabversion einschließen**, und suchen Sie nach „Microsoft.ApplicationInsights.Web“.
-
-In [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) können Sie den maximalen Prozentsatz an Telemetriedaten angeben, den der Anpassungsalgorithmus als Ziel anstreben soll:
-
-    <MaxTelemetryItemsPerSecond>5</MaxTelemetryItemsPerSecond>
-
-### Stichprobenerstellung auf Clientseite
-
-Um eine Stichprobenerstellung mit festem Prozentsatz für die Daten von Webseiten zu erreichen, fügen Sie in den eingefügten [Application Insights-Codeausschnitt](app-insights-javascript.md) (üblicherweise auf einer Masterseite wie etwa „\_Layout.cshtml“) eine zusätzliche Zeile ein:
-
-*JavaScript*
-
-```JavaScript
-
-	}({ 
-
-	samplingPercentage: 10.0, 
-
-	instrumentationKey:...
-	}); 
-```
-
-* Legen Sie einen Prozentsatz fest (in diesem Beispiel „10“), der „100/N“ entspricht. Dabei steht N für eine Ganzzahl. Beispiele: 50 (=100/2), 33,33 (=100/3), 25 (=100/4) oder 10 (=100/10). 
-* Wenn Sie auch auf dem Server die [Stichprobenerstellung mit festem Prozentsatz](app-insights-sampling.md) aktivieren, wird die Stichprobenerstellung zwischen Client und Server synchronisiert, sodass Sie in der Suche zwischen den verwandten Seitenaufrufen und Anforderungen navigieren können.
-
-[Erfahren Sie mehr über Sampling](app-insights-sampling.md).
 
 <a name="filtering"></a>
 ## Filtern: ITelemetryProcessor
@@ -85,13 +43,13 @@ Zum Filtern von Telemetriedaten schreiben Sie einen Telemetrie-Prozessor und reg
 
 > [AZURE.WARNING] Die Filterung der vom SDK gesendeten Telemetriedaten mithilfe von Prozessoren kann die im Portal angezeigten Statistiken verfälschen und die Nachverfolgung verwandter Elemente erschweren.
 > 
-> Verwenden Sie stattdessen [Sampling](#sampling).
+> Verwenden Sie stattdessen [Sampling](app-insights-sampling.md).
 
 ### Erstellen eines Telemetrieprozessors
 
 1. Vergewissern Sie sich, dass in Ihrem Projekt das Application Insights-SDK in Version 2.0.0 oder höher verwendet wird. Klicken Sie im Visual Studio-Projektmappen-Explorer mit der rechten Maustaste auf das Projekt, und wählen Sie „NuGet-Pakete verwalten“ aus. Aktivieren Sie im NuGet-Paket-Manager „Microsoft.ApplicationInsights.Web“.
 
-1. Implementieren Sie zum Erstellen eines Filters „ITelemetryProcessor“. Hierbei handelt es sich um einen weiteren Erweiterungspunkt wie Telemetriemodul, Telemetrieinitiliasierer und Telemetriekanal.
+1. Implementieren Sie zum Erstellen eines Filters „ITelemetryProcessor“. Hierbei handelt es sich um einen weiteren Erweiterungspunkt wie Telemetriemodul, Telemetrieinitialisierer und Telemetriekanal.
 
     Beachten Sie, dass Telemetrieprozessoren eine Verarbeitungskette erstellen. Beim Instanziieren eines Telemetrieprozessors übergeben Sie einen Link an den nächsten Prozessor in der Kette. Wenn ein Telemetriedatenpunkt an die Verarbeitungsmethode übergeben wird, führt er seine Aufgaben aus und ruft dann den nächsten Telemetrieprozessor in der Kette auf.
 
@@ -140,7 +98,7 @@ Zum Filtern von Telemetriedaten schreiben Sie einen Telemetrie-Prozessor und reg
     
 
     ```
-2. Fügen Sie Folgendes in „ApplicationInsights.config“ ein: 
+2. Fügen Sie Folgendes in „ApplicationInsights.config“ ein:
 
 ```XML
 
@@ -153,7 +111,7 @@ Zum Filtern von Telemetriedaten schreiben Sie einen Telemetrie-Prozessor und reg
 
 ```
 
-(Beachten Sie, dass dies der gleiche Abschnitt ist, in dem Sie einen Filter für die Stichprobe initialisieren).
+(Dies ist der gleiche Abschnitt, in dem Sie einen Filter für die Stichprobe initialisieren.).
 
 Sie können durch die Bereitstellung von öffentlich benannten Eigenschaften in Ihrer Klasse Zeichenfolgenwerte aus der .config-Datei übergeben.
 
@@ -380,6 +338,112 @@ Was ist der Unterschied zwischen Telemetrieprozessoren und Telemetrieinitialisie
 * Mit Telemetrieprozessoren können Sie ein Telemetrieelement vollständig ersetzen oder verwerfen.
 * Telemetrieprozessoren verarbeiten keine Telemetrie von Leistungsindikatoren.
 
+
+
+## Persistenzkanal 
+
+Wenn Ihre Apps in einem Kontext ausgeführt werden, in dem nicht immer eine Internetverbindung oder nur eine langsame Internetverbindung verfügbar ist, erwägen Sie die Verwendung eines Persistenzkanals anstelle des standardmäßigen In-Memory-Kanals.
+
+Der standardmäßige In-Memory-Kanal verliert alle Telemetriedaten, die nicht vor dem Schließen der App gesendet wurden. Wenngleich Sie mithilfe von `Flush()` versuchen können, alle im Puffer verbleibenden Daten zu senden, gehen dennoch Daten verloren, wenn keine Internetverbindung besteht oder wenn die App heruntergefahren wird, bevor die Übertragung abgeschlossen ist.
+
+Im Gegensatz dazu puffert der Persistenzkanal Telemetriedaten in einer Datei, bevor diese an das Portal gesendet werden. `Flush()` stellt sicher, dass Daten in der Datei gespeichert werden. Wenn beim Schließen der App keine Daten gesendet werden, verbleiben diese in der Datei. Wenn die App erneut gestartet wird, werden die Daten gesendet, sofern eine Internetverbindung besteht. Daten werden so lange in der Datei gesammelt, bis eine Internetverbindung verfügbar ist.
+
+### Verwenden des Persistenzkanals
+
+1. Importieren Sie das NuGet-Paket [Microsoft.ApplicationInsights.PersistenceChannel](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PersistenceChannel/1.2.3).
+2. Fügen Sie diesen Code an geeigneter Stelle für die Initialisierung in Ihre App ein:
+ 
+    ```C# 
+
+      using Microsoft.ApplicationInsights.Channel;
+      using Microsoft.ApplicationInsights.Extensibility;
+      ...
+
+      // Set up 
+      TelemetryConfiguration.Active.InstrumentationKey = "YOUR INSTRUMENTATION KEY";
+ 
+      TelemetryConfiguration.Active.TelemetryChannel = new PersistenceChannel();
+    
+    ``` 
+3. Verwenden Sie `telemetryClient.Flush()`, bevor Ihre App geschlossen wird. So stellen Sie sicher, dass die Daten entweder an das Portal gesendet oder in der Datei gespeichert werden.
+
+    Beachten Sie, dass Flush() synchron für den Persistenzkanal, aber asynchron für andere Kanäle ist.
+
+ 
+Der Persistenzkanal ist für Geräteszenarien optimiert, in denen die Anwendung relativ wenige Ereignisse generiert und die Internetverbindung häufig unzuverlässig ist. Dieser Kanal schreibt Ereignisse zunächst in zuverlässigen Speicher auf den Datenträger zurück und versucht dann, die Daten zu senden.
+
+#### Beispiel
+
+Angenommen, Sie möchten Ausnahmefehler überwachen. Sie abonnieren das `UnhandledException`-Ereignis. Im Rückruf schließen Sie einen Flush-Befehl ein und stellen so sicher, dass die Telemetriedaten dauerhaft gespeichert werden.
+ 
+```C# 
+
+AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException; 
+ 
+... 
+ 
+private void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e) 
+{ 
+    ExceptionTelemetry excTelemetry = new ExceptionTelemetry((Exception)e.ExceptionObject); 
+    excTelemetry.SeverityLevel = SeverityLevel.Critical; 
+    excTelemetry.HandledAt = ExceptionHandledAt.Unhandled; 
+ 
+    telemetryClient.TrackException(excTelemetry); 
+ 
+    telemetryClient.Flush(); 
+} 
+
+``` 
+
+Wenn die App geschlossen wird, sehen Sie eine Datei in `%LocalAppData%\Microsoft\ApplicationInsights`, die die komprimierten Ereignisse enthält.
+ 
+Beim nächsten Start der Anwendung prüft der Kanal diese Datei und sendet die Telemetriedaten, sofern möglich, an Application Insights.
+
+#### Testbeispiel
+
+```C#
+
+using Microsoft.ApplicationInsights;
+using Microsoft.ApplicationInsights.Channel;
+using Microsoft.ApplicationInsights.Extensibility;
+
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Send data from the last time the app ran
+            System.Threading.Thread.Sleep(5 * 1000);
+
+            // Set up persistence channel
+
+            TelemetryConfiguration.Active.InstrumentationKey = "YOUR KEY";
+            TelemetryConfiguration.Active.TelemetryChannel = new PersistenceChannel();
+
+            // Send some data
+
+            var telemetry = new TelemetryClient();
+
+            for (var i = 0; i < 100; i++)
+            {
+                var e1 = new Microsoft.ApplicationInsights.DataContracts.EventTelemetry("persistenceTest");
+                e1.Properties["i"] = "" + i;
+                telemetry.TrackEvent(e1);
+            }
+
+            // Make sure it's persisted before we close
+            telemetry.Flush();
+        }
+    }
+}
+
+```
+
+
+Den Code für den Persistenzkanal finden Sie auf [GitHub](https://github.com/Microsoft/ApplicationInsights-dotnet/tree/v1.2.3/src/TelemetryChannels/PersistenceChannel).
+
+
 ## Referenz
 
 * [API-Übersicht](app-insights-api-custom-events-metrics.md)
@@ -397,11 +461,9 @@ Was ist der Unterschied zwischen Telemetrieprozessoren und Telemetrieinitialisie
 ## <a name="next"></a>Nächste Schritte
 
 
-[Durchsuchen von Ereignissen und Protokollen][diagnostic]
-
-[Beispiele und exemplarische Vorgehensweisen](app-insights-code-samples.md)
-
-[Problembehandlung][qna]
+* [Durchsuchen von Ereignissen und Protokollen][diagnostic]
+* [Stichproben](app-insights-sampling.md)
+* [Problembehandlung][qna]
 
 
 <!--Link references-->
@@ -421,4 +483,4 @@ Was ist der Unterschied zwischen Telemetrieprozessoren und Telemetrieinitialisie
 
  
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0907_2016-->

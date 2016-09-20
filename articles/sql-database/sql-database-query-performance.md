@@ -22,10 +22,7 @@
 Das Verwalten und Abstimmen der Leistung von relationalen Datenbanken ist eine anspruchsvolle Aufgabe, die ein erhebliches Maß an Wissen und Zeit erfordert. Mithilfe von Query Performance Insight können Sie den Zeitaufwand für die Problembehandlung der Datenbankleistung reduzieren. Dieses Tool stellt Folgendes bereit:
 
 - Tiefere Einblicke in den Verbrauch von Datenbankressourcen (DTU).
-- Informationen zu Abfragen mit der höchsten CPU-Auslastung, für die unter Umständen eine Leistungssteigerung erzielt werden kann.
-  - CPU
-  - Duration
-  - Anzahl von Ausführungen
+- Die häufigsten Abfragen nach den Werten von CPU-Nutzung/Dauer/Ausführungshäufigkeit, bei denen unter Umständen eine Leistungssteigerung erzielt werden kann.
 - Die Fähigkeit, die Details einer Abfrage, den Abfragetext und den Verlauf der Ressourcenverwendung anzuzeigen.
 - Anmerkungen zur Leistungsoptimierung, die die vom [Azure SQL-Datenbankratgeber](sql-database-advisor.md) ausgeführten Aktionen zeigen.
 
@@ -244,4 +241,4 @@ Um weitere Empfehlungen zur Verbesserung der Leistung Ihrer SQL-Datenbank zu erh
 [8]: ./media/sql-database-query-performance/qds-off.png
 [9]: ./media/sql-database-query-performance/qds-button.png
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0907_2016-->

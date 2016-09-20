@@ -18,7 +18,7 @@
 
 # High Density-Hosting in Azure App Service#
 
-Wenn Sie Azure App Service verwenden, wird Ihre Anwendung von der ihr zugeordneten Kapazität entkoppelt. Dabei wird auf zwei Konzepte zurückgegriffen:
+Wenn Sie App Service verwenden, wird Ihre Anwendung von der ihr zugeordneten Kapazität entkoppelt. Dabei wird auf zwei Konzepte zurückgegriffen:
 
 - **Die Anwendung:** Stellt die App und ihre Laufzeitkonfiguration dar. Sie enthält beispielsweise die Version von .NET, die von der Laufzeit geladen werden soll, die App-Einstellungen usw.
 
@@ -101,4 +101,4 @@ Führen Sie zum Konfigurieren des High Density-Hosting für Ihre Apps die folgen
 
 1. Die Anzahl der Worker kann pro Standort unabhängig konfiguriert werden, um nach Bedarf zusätzliche Ressourcen zur Verfügung zu stellen. Beispielsweise kann für einen Standort mit hoher Nutzung für **numberOfWorkers** der Wert **3** festgelegt werden, um mehr Verarbeitungskapazität für die App bereitzustellen, während bei weniger stark genutzten Standorten **numberOfWorkers** auf **1** festgelegt wird.
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0907_2016-->

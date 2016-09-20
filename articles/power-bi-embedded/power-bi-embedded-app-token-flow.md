@@ -3,7 +3,7 @@
    description="Authentifizieren und Autorisieren mit Power BI Embedded"
    services="power-bi-embedded"
    documentationCenter=""
-   authors="minewiskan"
+   authors="mgblythe"
    manager="NA"
    editor=""
    tags=""/>
@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="NA"
    ms.workload="powerbi"
    ms.date="07/26/2016"
-   ms.author="owend"/>
+   ms.author="mblythe"/>
 
 # Authentifizieren und Autorisieren mit Power BI Embedded
 
@@ -88,9 +88,9 @@ Nachdem **Power BI Embedded** einen Bericht an den Benutzer geschickt hat, kann 
 
 ![](media\powerbi-embedded-get-started-sample\sample-web-app.png)
 
-## Siehe auch
+## Weitere Informationen
 - [Erste Schritte mit dem Beispiel zu Microsoft Power BI Embedded](power-bi-embedded-get-started-sample.md)
 - [Häufige Microsoft Power BI Embedded-Szenarios](power-bi-embedded-scenarios.md)
 - [Erste Schritte mit Microsoft Power BI Embedded](power-bi-embedded-get-started.md)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0907_2016-->

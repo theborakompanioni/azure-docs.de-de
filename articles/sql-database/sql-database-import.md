@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Importieren einer BACPAC-Datei zum Erstellen einer neuen Azure SQL-Datenbank | Microsoft Azure"
-	description="Erstellen Sie eine neue Azure SQL-Datenbank, indem Sie eine vorhandene BACPAC-Datei importieren."
+	pageTitle="Importieren einer BACPAC-Datei zum Erstellen einer Azure SQL-Datenbank | Microsoft Azure"
+	description="Erstellen Sie eine Azure SQL-Datenbank, indem Sie eine vorhandene BACPAC-Datei importieren."
 	services="sql-database"
 	documentationCenter=""
 	authors="stevestein"
@@ -10,14 +10,14 @@
 <tags
 	ms.service="sql-database"
 	ms.devlang="NA"
-	ms.date="07/09/2016"
+	ms.date="08/31/2016"
 	ms.author="sstein"
 	ms.workload="data-management"
 	ms.topic="article"
 	ms.tgt_pltfrm="NA"/>
 
 
-# Importieren einer BACPAC-Datei zum Erstellen einer neuen Azure SQL-Datenbank
+# Importieren einer BACPAC-Datei zum Erstellen einer Azure SQL-Datenbank
 
 
 **Einzeldatenbank**
@@ -28,7 +28,7 @@
 - [SSMS](sql-database-cloud-migrate-compatible-import-bacpac-ssms.md)
 - [SqlPackage](sql-database-cloud-migrate-compatible-import-bacpac-sqlpackage.md)
 
-Dieser Artikel enthält Anweisungen zum Erstellen einer neuen Azure SQL-Datenbank aus einer BACPAC-Datei mithilfe des [Azure-Portals](https://portal.azure.com).
+Dieser Artikel enthält Anweisungen zum Erstellen einer Azure SQL-Datenbank aus einer BACPAC-Datei mithilfe des [Azure-Portals](https://portal.azure.com).
 
 Ein „BACPAC“ ist eine BACPAC-Datei, die ein Datenbankschema und Daten enthält. Die Datenbank wird aus einer BACPAC-Datei erstellt, die aus einem Azure-Speicherblobcontainer importiert wurde. Wenn im Azure-Speicher keine BACPAC-Datei vorhanden ist, können Sie eine erstellen, indem Sie die in [Erstellen und Exportieren der BACPAC-Datei einer Azure SQL-Datenbank](sql-database-export.md) beschriebenen Schritte ausführen.
 
@@ -42,10 +42,10 @@ Zum Importieren einer SQL-­Datenbank aus einer BACPAC-Datei benötigen Sie Folg
 - Einen Azure SQL-Datenbank V12-Server Wenn Sie nicht über einen Server der Version 12 verfügen, erstellen Sie ihn anhand der Schritte in dem Artikel [Erstellen der ersten Azure SQL-Datenbank](sql-database-get-started.md).
 - Eine BACPAC-Datei der Datenbank, die Sie in einen Blobcontainer eines [Azure Storage-Kontos (Standard)](../storage/storage-create-storage-account.md) importieren möchten.
 
-***Wichtig:*** Verwenden Sie beim Importieren einer BACPAC-Datei aus Azure-Blobspeicher den Standardspeicher. Das Importieren einer BACPAC-Datei aus dem Premiumspeicher wird nicht unterstützt.
+> [AZURE.IMPORTANT] Verwenden Sie beim Importieren einer BACPAC-Datei aus Azure-Blobspeicher den Standardspeicher. Das Importieren einer BACPAC-Datei aus dem Premiumspeicher wird nicht unterstützt.
 
 
-## Auswählen des Servers, der die Datenbank enthalten soll
+## Auswählen des Servers zum Hosten der Datenbank
 
 Öffnen Sie das Blatt „SQL Server“:
 
@@ -103,4 +103,4 @@ Durch Klicken auf **Erstellen** wird eine Anforderung zum Importieren der Datenb
 [5]: ./media/sql-database-import/import-history.png
 [6]: ./media/sql-database-import/import-status.png
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0907_2016-->

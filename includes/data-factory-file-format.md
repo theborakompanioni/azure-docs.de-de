@@ -44,9 +44,9 @@ Um "escapeChar" anstelle von "quoteChar" zu verwenden, ersetzen Sie die Zeile mi
 
 ### Szenarien für die Verwendung von firstRowAsHeader und skipLineCount
 
-- Sie kopieren Daten aus einer Quelle, bei der es sich nicht um eine Datei handelt, in eine Textdatei und möchten eine Kopfzeile mit den Schemametadaten (z.B. ein SQL-Schema) hinzufügen. Legen Sie für dieses Szenario firstRowAsHeader im Ausgabedataset als „true“ fest.
-- Sie kopieren aus einer Textdatei mit einer Kopfzeile in eine Senke, bei der es sich nicht um eine Datei handelt, und möchten diese Zeile löschen. Legen Sie firstRowAsHeader im Eingabedataset als „true“ fest.
-- Sie kopieren aus einer Textdatei und möchten einige Zeilen am Anfang überspringen, bei denen es sich weder um Daten- noch um Kopfzeilen handelt. Geben Sie skipLineCount mit der Anzahl von Zeilen an, die übersprungen werden sollen. Wenn der Rest der Datei eine Kopfzeile enthält, können Sie auch firstRowAsHeader angeben. Wenn sowohl skipLineCount und firstRowAsHeader angegeben sind, werden erst die Zeilen übersprungen und dann die Kopfzeileninformationen aus der Eingabedatei gelesen.
+- Sie kopieren Daten aus einer Quelle, bei der es sich nicht um eine Datei handelt, in eine Textdatei und möchten eine Kopfzeile mit den Schemametadaten (z.B. ein SQL-Schema) hinzufügen. Legen Sie für dieses Szenario **firstRowAsHeader** im Ausgabedataset als „true“ fest.
+- Sie kopieren aus einer Textdatei mit einer Kopfzeile in eine Senke, bei der es sich nicht um eine Datei handelt, und möchten diese Zeile löschen. Legen Sie **firstRowAsHeader** im Eingabedatenset als „true“ fest.
+- Sie kopieren aus einer Textdatei und möchten einige Zeilen am Anfang überspringen, bei denen es sich weder um Daten- noch um Kopfzeilen handelt. Geben Sie **skipLineCount** mit der Anzahl von Zeilen an, die übersprungen werden sollen. Wenn der Rest der Datei eine Kopfzeile enthält, können Sie auch **firstRowAsHeader** angeben. Wenn sowohl **skipLineCount** und **firstRowAsHeader** angegeben sind, werden erst die Zeilen übersprungen und dann die Kopfzeileninformationen aus der Eingabedatei gelesen.
 
 ### Angeben von "AvroFormat"
 Wenn das Format auf "AvroFormat" festgelegt ist, müssen Sie im Abschnitt "Format" innerhalb des Abschnitts "typeProperties" keine Eigenschaften angeben. Beispiel:
@@ -251,4 +251,4 @@ Beachten Sie Folgendes:
 -	Komplexe Datentypen werden nicht unterstützt (STRUCT, MAP, LIST, UNION).
 -	Für die ORC-Datei stehen drei [mit der Komprimierung zusammenhängende Optionen](http://hortonworks.com/blog/orcfile-in-hdp-2-better-compression-better-performance/) zur Verfügung: NONE, ZLIB, SNAPPY. Data Factory unterstützt das Lesen von Daten aus ORC-Dateien in jedem der oben genannten komprimierten Formate. Zum Lesen der Daten wird der Komprimierungscodec in den Metadaten verwendet. Beim Schreiben in eine ORC-Datei wählt Data Factory hingegen ZLIB (Standardeinstellung für ORC). Derzeit gibt es keine Option zum Überschreiben dieses Verhaltens.
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0907_2016-->

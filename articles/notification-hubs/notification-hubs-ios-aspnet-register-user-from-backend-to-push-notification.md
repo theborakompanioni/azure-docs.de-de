@@ -19,7 +19,7 @@
 # Registrieren des aktuellen Benutzers für Pushbenachrichtigungen mit ASP.NET
 
 > [AZURE.SELECTOR]
-- [iOS](notification-hubs-ios-aspnet-register-user-push-notifications.md)
+- [iOS](notification-hubs-ios-aspnet-register-user-from-backend-to-push-notification.md)
 
 
 
@@ -236,4 +236,4 @@ Nun haben Sie die Client-App aktualisiert und können zum Thema [Benachrichtigen
 
 [Erste Schritte mit Notification Hubs]: /manage/services/notification-hubs/get-started-notification-hubs-ios
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0907_2016-->

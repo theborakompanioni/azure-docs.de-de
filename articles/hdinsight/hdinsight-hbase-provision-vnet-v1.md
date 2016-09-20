@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="05/27/2016"
+   ms.date="09/02/2016"
    ms.author="jgao"/>
 
 # Bereitstellen von HBase-Clustern im virtuellen Azure-Netzwerk
@@ -34,7 +34,7 @@ Mit der Integration in virtuelle Netzwerke können HBase-Cluster im selben virtu
 - Möglichkeit einer höheren Sicherheit bei der Verarbeitung sensibler Informationen ohne exponierten öffentlichen Endpunkt.
 
 ##Voraussetzungen
-Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
+Bevor Sie mit diesem Tutorial beginnen können, benötigen Sie Folgendes:
 
 - **Ein Azure-Abonnement**. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 
@@ -57,13 +57,13 @@ Vor der Bereitstellung eines HBase-Clusters müssen Sie ein virtuelles Azure-Net
 
 1. Melden Sie sich beim [klassischen Azure-Portal][azure-portal] an.
 2. Klicken Sie links unten auf **NEU**, klicken Sie auf **NETWORK SERVICES**, auf **VIRTUAL NETWORK** und dann auf **SCHNELLERFASSUNG**.
-3. Geben Sie die folgenden Werte ein, oder wählen Sie sie aus:
+3. Geben Sie folgende Werte ein bzw. wählen diese aus:
 
 	- **Name** – Name des virtuellen Netzwerks.
-	- **Adressraum** – Wählen Sie einen Adressraum für das virtuelle Netzwerk, der groß genug ist, um Adressen für alle Knoten im Cluster zur Verfügung zu stellen. Andernfalls schlägt die Bereitstellung fehl. Für dieses Lernprogramm haben Sie die Wahl zwischen den drei verfügbaren Optionen.
-	- **Maximale Anzahl virtueller Computer** – Wählen Sie einen Wert für die maximale Anzahl virtueller Computer aus. Dieser Wert bestimmt die Anzahl möglicher Hosts (VM), die in dem Adressbereich erstellt werden können. Für dieses Lernprogramm ist **4096 [CIDR: /20]** ausreichend.
+	- **Adressraum** – Wählen Sie einen Adressraum für das virtuelle Netzwerk, der groß genug ist, um Adressen für alle Knoten im Cluster zur Verfügung zu stellen. Andernfalls schlägt die Bereitstellung fehl. Für dieses Tutorial haben Sie die Wahl zwischen den drei verfügbaren Optionen.
+	- **Maximale Anzahl virtueller Computer** – Wählen Sie einen Wert für die maximale Anzahl virtueller Computer aus. Dieser Wert bestimmt die Anzahl möglicher Hosts (VM), die in dem Adressbereich erstellt werden können. Für dieses Tutorial ist **4096 [CIDR: /20]** ausreichend.
 	- **Speicherort** – Der Speicherort muss derselbe sein wie der des zu erstellenden HBase-Clusters.
-	- **DNS-Server** – In diesem Lernprogramm wird ein interner von Azure bereitgestellter DNS-Server (Domain Name System) verwendet. Daher können Sie **Kein** auswählen. Erweiterte Netzwerkkonfigurationen mit benutzerdefinierten DNS-Servern werden ebenfalls unterstützt. Ausführliche Anleitungen finden Sie unter [Namensauflösung (DNS)](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
+	- **DNS-Server** – In diesem Tutorial wird ein interner von Azure bereitgestellter DNS-Server (Domain Name System) verwendet. Daher können Sie **Kein** auswählen. Erweiterte Netzwerkkonfigurationen mit benutzerdefinierten DNS-Servern werden ebenfalls unterstützt. Ausführliche Anleitungen finden Sie unter [Namensauflösung (DNS)](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
 4. Klicken Sie unten rechts auf **VIRTUELLES NETZWERK ERSTELLEN**. Der Name des neuen virtuellen Netzwerks wird in der Liste angezeigt. Warten Sie, bis in der Statusspalte **Created** angezeigt wird.
 5. Klicken Sie im Hauptbereich auf das virtuelle Netzwerk, das Sie gerade erstellt haben.
 6. Klicken Sie oben auf der Seite auf **DASHBOARD**.
@@ -93,7 +93,7 @@ Wie andere HDInsight-Cluster erfordert ein HBase-Cluster ein Azure-Speicherkonto
 1. Melden Sie sich beim [klassischen Azure-Portal][azure-portal] an.
 2. Klicken Sie links unten auf **NEU**, zeigen Sie auf **DATA SERVICES**, auf **SPEICHER**, und klicken Sie anschließend auf **SCHNELLERFASSUNG**.
 
-3. Geben Sie die folgenden Werte ein, oder wählen Sie sie aus:
+3. Geben Sie folgende Werte ein bzw. wählen diese aus:
 
 	- **URL** – Der Name des Speicherkontos.
 	- **SPEICHERORT** – Der Speicherort des Speicherkontos. Stellen Sie sicher, dass er dem Speicherort des virtuellen Netzwerks entspricht. Affinitätsgruppen werden nicht unterstützt.
@@ -103,10 +103,10 @@ Wie andere HDInsight-Cluster erfordert ein HBase-Cluster ein Azure-Speicherkonto
 5. Warten Sie, bis sich der **STATUS** des neuen Speicherkontos in **Online** geändert hat.
 6. Klicken Sie in der Liste auf das neue Speicherkonto, und wählen Sie es aus.
 7. Klicken Sie am Seitenende auf **ZUGRIFFSSCHLÜSSEL VERWALTEN**.
-8. Notieren Sie sich den Namen des Speicherkontos und den primären Zugriffsschlüssel (oder den sekundären Zugriffsschlüssel – beide Schlüssel funktionieren). Sie werden diese später im Lernprogramm benötigen.
+8. Notieren Sie sich den Namen des Speicherkontos und den primären Zugriffsschlüssel (oder den sekundären Zugriffsschlüssel – beide Schlüssel funktionieren). Sie werden diese später im Tutorial benötigen.
 9. Klicken Sie oben auf der Seite auf **CONTAINER**.
 10. Klicken Sie unten auf der Seite auf **HINZUFÜGEN**.
-11. Geben Sie den Containernamen ein. Dieser Container wird als Standardcontainer für den HBase-Cluster verwendet. Standardmäßig entspricht der Standard-Containername dem Clusternamen. Wählen Sie für das Feld **ACCESS** die Einstellung **Private** aus.  
+11. Geben Sie den Containernamen ein. Dieser Container wird als Standardcontainer für den HBase-Cluster verwendet. Standardmäßig entspricht der Standard-Containername dem Clusternamen. Wählen Sie für das Feld **ACCESS** die Einstellung **Private** aus.
 12. Klicken Sie auf das Häkchen, um den Container zu erstellen.
 
 **So stellen Sie einen HBase-Cluster im klassischen Azure-Portal bereit**
@@ -131,7 +131,7 @@ Wie andere HDInsight-Cluster erfordert ein HBase-Cluster ein Azure-Speicherkonto
 	<table border='1'>
 		<tr><th>Eigenschaft</th><th>Wert</th></tr>
 		<tr><td>Datenknoten</td><td>Wählen Sie die Anzahl der Datenknoten, die Sie bereitstellen möchten. Erstellen Sie zu Testzwecken einen Cluster mit nur einem Knoten. <br />Die Größenbegrenzung für die Cluster variiert in Azure-Abonnements. Wenden Sie sich an das Azure-Abrechnungssupportteam, um diese Begrenzung zu erhöhen.</td></tr>
-		<tr><td>Region/virtuelles Netzwerk:</td><td><p>Wählen Sie eine Region oder ein virtuelles Netzwerk in Azure, wenn Sie bereits eines erstellt haben. Wählen Sie für dieses Lernprogramm das zuvor erstellte Netzwerk und dann ein entsprechendes Subnetz aus. Der Standardname lautet <b>Subnet-1</b>.</p></td></tr>
+		<tr><td>Region/virtuelles Netzwerk:</td><td><p>Wählen Sie eine Region oder ein virtuelles Netzwerk in Azure, wenn Sie bereits eines erstellt haben. Wählen Sie für dieses Tutorial das zuvor erstellte Netzwerk und dann ein entsprechendes Subnetz aus. Der Standardname lautet <b>Subnet-1</b>.</p></td></tr>
 		<tr><td>Größe des Hauptknotens</td><td><p>Wählen Sie eine VM-Größe für den Hauptknoten aus.</p></td></tr>
 		<tr><td>Datenknotengröße</td><td><p>Wählen Sie eine VM-Größe für die Datenknoten aus.</p></td></tr>
 		<tr><td>Zookeeper-Größe</td><td><p>Wählen Sie eine VM-Größe für den Zookeeper-Knoten aus.</p></td></tr>
@@ -148,7 +148,7 @@ Wie andere HDInsight-Cluster erfordert ein HBase-Cluster ein Azure-Speicherkonto
 	<table border='1'>
 		<tr><th>Eigenschaft</th><th>Wert</th></tr>
 		<tr><td>HTTP-Benutzername</td>
-			<td>Geben Sie den Benutzernamen für den HDInsight-Cluster an.</td></tr>
+			<td>Geben Sie den Benutzernamen für das HDInsight-Cluster an.</td></tr>
 		<tr><td>HTTP-Kennwort/Kennwort bestätigen</td>
 			<td>Geben Sie das Kennwort für den HDInsight-Cluster an.</td></tr>
 		<tr><td>Remotedesktop für Cluster aktivieren</td>
@@ -166,7 +166,7 @@ Wie andere HDInsight-Cluster erfordert ein HBase-Cluster ein Azure-Speicherkonto
 			<ul>
 				<li><strong>Vorhandenen Speicher verwenden</strong></li>
 				<li><strong>Neuen Speicher erstellen</strong></li>
-				<li><strong>Speicher aus anderem Abonnement verwenden</strong></li>
+				<li><strong>"Speicher aus anderem Abonnement verwenden"</strong></li>
 			</ul>
 			</td></tr>
 		<tr><td>Kontoname</td>
@@ -175,7 +175,7 @@ Wie andere HDInsight-Cluster erfordert ein HBase-Cluster ein Azure-Speicherkonto
 				<li>Wenn Sie <strong>Neuen Speicher erstellen</strong> oder <strong>Speicher aus einem anderem Abonnement verwenden</strong> ausgewählt haben, müssen Sie den Namen des Storage-Kontos angeben.</li>
 			</ul></td></tr>
 		<tr><td>Kontoschlüssel</td>
-			<td>Geben Sie den Speicherschlüssel für das entsprechende Konto ein, falls Sie <strong>Speicher aus anderem Abonnement verwenden</strong> ausgewählt haben.</td></tr>
+			<td>Geben Sie den Schlüssel für das entsprechende Storage-Konto ein, falls Sie <strong>Speicher aus anderem Abonnement verwenden</strong> ausgewählt haben.</td></tr>
 		<tr><td>Standardcontainer</td>
 			<td><p>Gibt den Standardcontainer im Speicherkonto an, der als Standarddateisystem für den HDInsight-Cluster verwendet werden soll. Wenn Sie <strong>Vorhandenen Speicher verwenden</strong> für das Feld <strong>Speicherkonto</strong> wählen und in dem betreffenden Konto keine Container vorhanden sind, wird der Container standardmäßig mit demselben Namen wie der des Clusters erstellt. Falls bereits ein Container mit dem Namen des Clusters existiert, wird eine Sequenznummer an den Containernamen angehängt. Zum Beispiel mycontainer1, mycontainer2 und so weiter. Sie können jedoch auch Container im vorhandenen Speicherkonto verwenden, die einen anderen Namen als der Cluster haben.</p>
 	        <p>Falls Sie einen neuen Speicher erstellen oder einen Speicher aus einem anderen Azure-Abonnement verwenden, müssen Sie den Namen des Standardcontainers angeben.</p>
@@ -186,7 +186,7 @@ Wie andere HDInsight-Cluster erfordert ein HBase-Cluster ein Azure-Speicherkonto
 
 	Klicken Sie auf den Pfeil nach rechts.
 
-7. Klicken Sie auf der Seite **Skriptaktionen** unten rechts auf das Häkchen. Klicken Sie nicht auf die Schaltfläche **Skriptaktion hinzufügen**, da in diesem Lernprogramm kein angepasstes Clustersetup erforderlich ist.
+7. Klicken Sie auf der Seite **Skriptaktionen** unten rechts auf das Häkchen. Klicken Sie nicht auf die Schaltfläche **Skriptaktion hinzufügen**, da in diesem Tutorial kein angepasstes Clustersetup erforderlich ist.
 
 	![Konfigurieren von Skriptaktionen zum Anpassen eines HDInsight HBase-Clusters][img-provision-cluster-page5]
 
@@ -382,7 +382,7 @@ Führen Sie die unter [Verwenden von Maven zur Entwicklung von Java-Anwendungen,
 
 ##Nächste Schritte
 
-In diesem Lernprogramm haben Sie erfahren, wie Sie einen HBase-Cluster bereitstellen. Weitere Informationen finden Sie unter:
+In diesem Tutorial haben Sie erfahren, wie Sie einen HBase-Cluster bereitstellen. Weitere Informationen finden Sie unter:
 
 - [Erste Schritte mit HDInsight](hdinsight-hadoop-linux-tutorial-get-started.md)
 - [Konfigurieren der HBase-Replikation in HDInsight](hdinsight-hbase-geo-replication.md)
@@ -436,4 +436,4 @@ In diesem Lernprogramm haben Sie erfahren, wie Sie einen HBase-Cluster bereitste
 [img-provision-cluster-page1]: ./media/hdinsight-hbase-provision-vnet/hbasewizard1.png "Bereitstellen von Details für den neuen HBase-Cluster"
 [img-provision-cluster-page5]: ./media/hdinsight-hbase-provision-vnet/hbasewizard5.png "Verwenden von Skriptaktionen zum Anpassen eines HBase-Clusters"
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0907_2016-->

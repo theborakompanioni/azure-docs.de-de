@@ -44,8 +44,8 @@ Wählen Sie eine Warnung aus, um Details anzuzeigen.
 
 Es gibt drei Arten der Erkennung:
 
-* [Fehlerwarnungen nahezu in Echtzeit](app-insights-nrt-proactive-diagnostics.md). Wir nutzen Machine Learning, um die voraussichtliche Rate fehlerhafter Anforderungen für Ihre App (korreliert mit Lastangaben und anderen Faktoren) festzulegen. Falls die Fehlerrate den erwarteten Rahmen überschreitet, wird eine Warnung gesendet.
-* [Anormales Verhalten](app-insights-proactive-detection.md). Wir suchen jeden Tag nach anormalem Verhalten bei Reaktionszeiten und Fehlerraten. Diese Probleme werden mit Eigenschaften wie Standort, Browser, Clientbetriebssystem, Serverinstanz und Tageszeit in Beziehung gesetzt.
+* [Fehlerwarnungen nahezu in Echtzeit](app-insights-proactive-failure-diagnostics.md). Wir nutzen Machine Learning, um die voraussichtliche Rate fehlerhafter Anforderungen für Ihre App (korreliert mit Lastangaben und anderen Faktoren) festzulegen. Falls die Fehlerrate den erwarteten Rahmen überschreitet, wird eine Warnung gesendet.
+* [Anomaliediagnose](app-insights-proactive-anomaly-diagnostics.md). Wir suchen jeden Tag nach anormalem Verhalten bei Reaktionszeiten und Fehlerraten. Diese Probleme werden mit Eigenschaften wie Standort, Browser, Clientbetriebssystem, Serverinstanz und Tageszeit in Beziehung gesetzt.
 * [Azure Cloud Services](https://azure.microsoft.com/blog/proactive-notifications-on-cloud-service-issues-with-azure-diagnostics-and-application-insights/). Sie erhalten Warnungen, wenn Ihre App in Azure Cloud Services gehostet wird und bei einer Rolleninstanz Startfehler, häufige Wiederverwendungen oder Abstürze zur Laufzeit auftreten.
 
 (Über die Hilfelinks in den jeweiligen Benachrichtigungen gelangen Sie zu den relevanten Artikeln.)
@@ -53,9 +53,15 @@ Es gibt drei Arten der Erkennung:
 
 ## Nächste Schritte
 
+Mit diesen Diagnosetools können Sie die Telemetriedaten Ihrer App untersuchen:
+
+* [Metrik-Explorer](app-insights-metrics-explorer.md)
+* [Suchexplorer](app-insights-diagnostic-search.md)
+* [Analytics: Leistungsfähige Abfragesprache](app-insights-analytics-tour.md)
+
 Proaktive Erkennungen sind vollkommen automatisch. Vielleicht möchten Sie aber weitere Warnungen einrichten?
 
 * [Einrichten von Warnungen in Application Insights](app-insights-alerts.md)
 * [Verfügbarkeitswebtests](app-insights-monitor-web-app-availability.md)
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0907_2016-->

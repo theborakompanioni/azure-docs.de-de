@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="05/27/2016"
+   ms.date="09/02/2016"
    ms.author="jgao"/>
 
 # Erstellen Windows-basierter Hadoop-Cluster in HDInsight mit der Azure-Befehlszeilenschnittstelle
@@ -53,11 +53,11 @@ Um Hilfe zu erhalten, verwenden Sie die Option **-h**. Beispiel:
 
 ##Erstellen von Clustern
 
-Sie benötigen zum Erstellen eines HDInsight-Clusters ein ARM- (Azure-Ressourcen-Manager) und ein Azure-Blobspeicherkonto. Zum Erstellen eines HDInsight-Clusters müssen Sie Folgendes angeben:
+Sie benötigen zum Erstellen eines HDInsight-Clusters ein Konto für Azure Resource Manager (ARM) und ein Konto für Azure Blob Storage. Zum Erstellen eines HDInsight-Clusters müssen Sie Folgendes angeben:
 
-- **Azure-Ressourcengruppe**: Ein Data Lake Analytics-Konto muss in einer Azure-Ressourcengruppe erstellt werden. Mit dem Azure-Ressourcen-Manager können Sie mit den Ressourcen in Ihrer Anwendung als Gruppe arbeiten. Sie können alle Ressourcen für Ihre Anwendung in einem einzigen, koordinierten Vorgang bereitstellen, aktualisieren oder löschen.
+- **Azure-Ressourcengruppe**: Ein Data Lake Analytics-Konto muss in einer Azure-Ressourcengruppe erstellt werden. Azure Resource Manager ermöglicht es Ihnen, mit den Ressourcen in Ihrer Anwendung als Gruppe zu arbeiten. Sie können alle Ressourcen für Ihre Anwendung in einem einzigen, koordinierten Vorgang bereitstellen, aktualisieren oder löschen.
 
-	So führen Sie die Ressourcengruppen in Ihrem Abonnement auf:
+	So listen Sie die Ressourcengruppen in Ihrem Abonnement auf:
 
 		azure group list
 
@@ -132,11 +132,11 @@ Weitere Informationen zu Skriptaktionen finden Sie unter [Anpassen von HDInsight
 
 Sie können die Befehlszeilenschnittstelle zum Erstellen von Clustern verwenden, indem ARM-Vorlagen aufgerufen werden. Weitere Informationen finden Sie unter [Bereitstellen über die Azure-Befehlszeilenschnittstelle](hdinsight-hadoop-create-windows-clusters-arm-templates.md#deploy-with-azure-cli).
 
-## Weitere Informationen
+## Siehe auch
 
 - [Erste Schritte mit Azure HDInsight](hdinsight-hadoop-linux-tutorial-get-started.md) – Erfahren Sie, wie Sie die Arbeit mit Ihrem HDInsight-Cluster aufnehmen können.
 - [Programmgesteuerte Übermittlung von Hadoop-Jobs](hdinsight-submit-hadoop-jobs-programmatically.md) – Erfahren Sie, wie Sie Aufträge programmgesteuert an HDInsight übermitteln können.
 - [Verwalten von Hadoop-Clustern in HDInsight mit der Azure-Befehlszeilenschnittstelle](hdinsight-administer-use-command-line.md)
 - [Verwenden der Azure-Befehlszeilenschnittstelle für Mac, Linux und Windows mit der Azure-Dienstverwaltung](../virtual-machines-command-line-tools.md)
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0907_2016-->

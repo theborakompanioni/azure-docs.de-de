@@ -3,7 +3,7 @@
    description="Problembehandlung bei der Vorschau von Microsoft Power BI Embedded"
    services="power-bi-embedded"
    documentationCenter=""
-   authors="minewiskan"
+   authors="mgblythe"
    manager="NA"
    editor=""
    tags=""/>
@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="NA"
    ms.workload="powerbi"
    ms.date="06/29/2016"
-   ms.author="owend"/>
+   ms.author="mblythe"/>
 
 # Problembehandlung bei der Vorschau von Microsoft Power BI Embedded
 Dieser Artikel enthält Möglichkeiten zur Problembehandlung bei **Power BI Embedded**.
@@ -40,4 +40,4 @@ Falls Sie Anmeldeinformationen für eine Entwicklungs- oder eine Stagingumgebung
 - [Erste Schritte mit dem Beispiel](power-bi-embedded-get-started-sample.md)
 - [Was ist Power BI Embedded?](power-bi-embedded-what-is-power-bi-embedded.md)
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0907_2016-->
