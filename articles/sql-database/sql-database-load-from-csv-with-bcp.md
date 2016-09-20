@@ -1,7 +1,7 @@
 <properties
    pageTitle="Laden von Daten aus einer CSV-Datei in Azure SQL-Datenbank (BCP) | Microsoft Azure"
    description="Für kleinere Datenmengen wird BCP zum Importieren von Daten in Azure SQL-Datenbank verwendet."
-   services="sql-data-warehouse"
+   services="sql-database"
    documentationCenter="NA"
    authors="CarlRabeler"
    manager="jhubbard"
@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="06/30/2016"
+   ms.date="09/13/2016"
    ms.author="carlrab"/>
 
 
@@ -37,12 +37,9 @@ Sie können die Dienstprogramme bcp und sqlcmd im [Microsoft Download Center][] 
 
 Wenn Sie in diesem Tutorial Ihre eigenen Daten verwenden möchten, müssen die Daten in ASCII- oder UTF-16-Codierung vorlegen, da UTF-8 von bcp nicht unterstützt wird.
 
-PolyBase unterstützt zwar UTF-8, aber noch kein UTF-16. Wenn Sie bcp mit PolyBase kombinieren möchten, müssen die aus SQL Server exportierten Daten in das UTF-8-Format umgewandelt werden.
-
-
 ## 1\. Erstellen einer Zieltabelle
 
-Definieren Sie in SQL Data Warehouse eine Zieltabelle für die Daten. Die Spalten der Tabelle müssen auf die Daten in den Zeilen der Datendatei abgestimmt sein.
+Definieren Sie eine Tabelle in SQL-Datenbank als Zieltabelle. Die Spalten der Tabelle müssen auf die Daten in den Zeilen der Datendatei abgestimmt sein.
 
 Führen Sie zum Erstellen einer Tabelle an einer Eingabeaufforderung den Befehl „sqlcmd.exe“ aus:
 
@@ -127,4 +124,4 @@ Informationen zum Migrieren einer SQL Server-Datenbank finden Sie im Artikel zur
 <!--Other Web references-->
 [Microsoft Download Center]: https://www.microsoft.com/download/details.aspx?id=36433
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0914_2016-->

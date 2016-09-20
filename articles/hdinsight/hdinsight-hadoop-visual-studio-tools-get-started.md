@@ -6,7 +6,7 @@
 	documentationCenter=""
 	tags="azure-portal"
 	authors="mumian"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun"/>
 
 <tags
@@ -36,7 +36,7 @@ Um dieses Tutorial durchzuführen und die Hadoop-Tools in Visual Studio zu verwe
 	- Windows 8.1, Windows 8 oder Windows 7
 	- Visual Studio (eine der folgenden Versionen):
 		- Visual Studio 2013 Community/Professional/Premium/Ultimate mit [Update 4](https://www.microsoft.com/download/details.aspx?id=44921)
-		- Visual Studio 2015 (Community/Enterprise)
+		- Visual Studio 2015 (Community/Enterprise)
 
 	>[AZURE.NOTE] Derzeit werden die HDInsight-Tools für Visual Studio nur mit der englischen Version bereitgestellt.
 
@@ -221,7 +221,7 @@ Um Ihnen das Verständnis der Hive-Abfragen zu erleichtern, wurde dem Tool in di
 
 ### Aufgabenausführungsansicht für Hive bei Tez-Aufträgen
 
-Mit der Aufgabenausführungsansicht für Hive bei Tez-Aufträgen können Sie strukturierte und visualisierte Informationen zu Hive-Aufträgen gewinnen und sich mehr Auftragsdetails anzeigen lassen. Bei Leistungsproblemen können Sie in dieser Ansicht zusätzliche Details abrufen. Sie erfahren z. B., wie jede einzelne Aufgabe ausgeführt wird, und sehen die Details dazu (Lese- und Schreibvorgänge für Daten, geplanter Ausführungszeitpunkt, Startzeit, Endzeit usw.). Auf Basis dieser visualisierten Informationen können Sie die Auftragskonfigurationen oder die Systemarchitektur optimieren.
+Mit der Aufgabenausführungsansicht für Hive bei Tez-Aufträgen können Sie strukturierte und visualisierte Informationen zu Hive-Aufträgen gewinnen und sich mehr Auftragsdetails anzeigen lassen. Bei Leistungsproblemen können Sie in dieser Ansicht zusätzliche Details abrufen. Sie erfahren z. B., wie jede einzelne Aufgabe ausgeführt wird, und sehen die Details dazu (Lese- und Schreibvorgänge für Daten, geplanter Ausführungszeitpunkt, Startzeit, Endzeit usw.). Auf Basis dieser visualisierten Informationen können Sie die Auftragskonfigurationen oder die Systemarchitektur optimieren.
 
 ![HDInsight Visual Studio Tools Aufgabenausführungsanzeige](./media/hdinsight-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.task.execution.view.png)
 
@@ -282,4 +282,4 @@ In diesem Artikel haben Sie erfahren, wie Sie in Visual Studio mithilfe des Hado
 
 [apache.hive]: http://hive.apache.org
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0914_2016-->

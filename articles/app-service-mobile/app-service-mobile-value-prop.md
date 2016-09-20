@@ -37,7 +37,7 @@ Die folgenden Features sind für die cloudfähige mobile Entwicklung wichtig:
 
   Erfahren Sie mehr über unsere [Authentifizierungsfeatures].
 
-- **Datenzugriff** – Azure Mobile Apps stellt eine für Mobilgeräte geeignete OData v3-Datenquelle bereit, die mit SQL Azure oder einer lokalen SQL Server-Instanz verknüpft ist. Dieser Dienst kann auf Entity Framework basieren, sodass für Sie die einfache Integration in andere NoSQL- und SQL-Datenanbieter möglich ist, z.B. [Azure Table Storage], MongoDB, [DocumentDB] und SaaS-API-Anbieter wie Office 365 und Salesforce.com.
+- **Datenzugriff:** Azure Mobile Apps stellt eine für Mobilgeräte geeignete OData v3-Datenquelle bereit, die mit SQL Azure oder einer lokalen SQL Server-Instanz verknüpft ist. Dieser Dienst kann auf Entity Framework basieren, sodass für Sie die einfache Integration in andere NoSQL- und SQL-Datenanbieter möglich ist, z.B. [Azure Table Storage], MongoDB, [DocumentDB] und SaaS-API-Anbieter wie Office 365 und Salesforce.com.
 - **Offlinesynchronisierung** – Mit unseren Client-SDKs ist es für Sie einfach, robuste und reaktionsfähige mobile Anwendungen zu erstellen. Diese Anwendungen arbeiten mit einem Offlinedataset, das automatisch mit den Back-End-Daten synchronisiert werden kann, einschließlich Unterstützung der Konfliktlösung.
 
   Erfahren Sie mehr über unsere [Datenfeatures].
@@ -63,7 +63,7 @@ Die folgenden Plattformfeatures sind allgemein nützlich für mobile Produktions
 
   Erfahren Sie mehr über [Bereitstellungsoptionen].
 
-- **Virtuelles Netzwerk** – App Service kann die Verbindung mit lokalen Ressourcen per virtuellem Netzwerk, ExpressRoute oder Hybridverbindungen herstellen.
+- **Virtuelles Netzwerk:** App Service kann die Verbindung mit lokalen Ressourcen per virtuellem Netzwerk, ExpressRoute oder Hybridverbindungen herstellen.
 
   Erfahren Sie mehr über [Hybridverbindungen], [virtuelle Netzwerke] und [ExpressRoute].
 
@@ -100,6 +100,6 @@ Weitere Informationen zu Azure Mobile Apps finden Sie in unserem [Lernpfad]. Wei
 [virtuelle Netzwerke]: ../app-service-web/web-sites-integrate-with-vnet.md
 [ExpressRoute]: ../app-service/app-service-app-service-environment-network-configuration-expressroute.md
 [App Service-Umgebungen]: ../app-service-web/app-service-app-service-environment-intro.md
-[Lernpfad]: https://azure.microsoft.com/documentation/learning-paths/appservice-mobileapps/
+[Lernpfad]: https://azure.microsoft.com/en-us/documentation/learning-paths/appservice-mobileapps/
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0914_2016-->

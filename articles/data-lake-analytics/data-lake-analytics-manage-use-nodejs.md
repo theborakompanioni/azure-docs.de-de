@@ -1,10 +1,10 @@
 <properties
-   pageTitle="Verwalten von Azure Data Lake Analytics mithilfe des Azure SDK für Node.js | Azure"
-   description="Hier erfahren Sie, wie Sie mithilfe des Azure SDK für Node.js Data Lake Analytics-Konten, -Datenquellen, -Aufträge und -Benutzer verwalten."
+   pageTitle="Verwalten von Azure Data Lake Analytics mithilfe des Azure SDK für Node.js | Azure"
+   description="Hier erfahren Sie, wie Sie mithilfe des Azure SDK für Node.js Data Lake Analytics-Konten, -Datenquellen, -Aufträge und -Benutzer verwalten."
    services="data-lake-analytics"
    documentationCenter=""
    authors="edmacauley"
-   manager="paulettm"
+   manager="jhubbard"
    editor="cgronlun"/>
 
 <tags
@@ -16,7 +16,7 @@
    ms.date="05/16/2016"
    ms.author="edmaca"/>
 
-# Verwalten von Azure Data Lake Analytics mithilfe des Azure SDK für Node.js
+# Verwalten von Azure Data Lake Analytics mithilfe des Azure SDK für Node.js
 
 
 [AZURE.INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -30,7 +30,7 @@ Momentan werden folgende Versionen unterstützt:
   *  **REST-API-Version für Kataloge: 2015-10-01-preview**
   *  **REST-API-Version für Aufträge: 2016-03-20-preview**
 
-## Merkmale
+## Features
 
 - Kontoverwaltung: Erstellen, Abrufen, Auflisten, Aktualisieren und Löschen
 - Auftragsverwaltung: Senden, Abrufen, Auflisten, Abbrechen
@@ -138,9 +138,9 @@ catalogClient.catalog.listDatabases(accountName, function (err, result, request,
 });
 ```
 
-## Weitere Informationen
+## Siehe auch
 
 - [Microsoft Azure SDK für Node.js](https://github.com/azure/azure-sdk-for-node)
 - [Microsoft Azure SDK für Node.js – Data Lake-Speicherverwaltung](https://github.com/Azure/azure-sdk-for-node/tree/autorest/lib/services/dataLake.Store)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0914_2016-->

@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="05/10/2016"
+   ms.date="09/12/2016"
    ms.author="magoedte" />
 
 # Authentifizieren von Runbooks mit Azure-Dienstverwaltung und Resource Manager
@@ -26,7 +26,7 @@ In diesem Artikel werden die Schritte beschrieben, die Sie zum Konfigurieren ein
 2. Wählen Sie **Active Directory** und dann den Namen des Verzeichnisses Ihrer Organisation.
 3. Wählen Sie die Registerkarte **Benutzer** und dann im Befehlsbereich die Option **Benutzer hinzufügen**.
 4. Wählen Sie auf der Seite **Informationen über diesen Benutzer** unter **Art des Benutzers** die Option **Neuer Benutzer in Ihrem Unternehmen**.
-5. Geben Sie einen Benutzernamen ein.  
+5. Geben Sie einen Benutzernamen ein.
 6. Wählen Sie den Verzeichnisnamen aus, der Ihrem Azure-Abonnement auf der Active Directory-Seite zugeordnet ist.
 7. Geben Sie auf der Seite **Benutzerprofil** den Vornamen und Nachnamen, einen benutzerfreundlichen Namen und über die Liste **Rollen** einen Benutzer an. Wählen Sie nicht die Option **Multi-Factor Authentication aktivieren** aus.
 8. Notieren Sie sich den vollständigen Namen des Benutzers und das vorläufige Kennwort.
@@ -45,10 +45,10 @@ In diesem Abschnitt führen Sie die folgenden Schritte aus, um ein neues Azure A
 1. Melden Sie sich im klassischen Azure-Portal als Dienstadministrator für das Azure-Abonnement an, das Sie verwalten möchten.
 2. Wählen Sie **Automation**.
 3. Wählen Sie auf der Seite **Automation** die Option **Automation-Konto erstellen**.
-4. Geben Sie im Feld **Automation-Konto erstellen** einen Namen für das neue Automation-Konto ein, und wählen Sie in der Dropdownliste eine **Region** aus.  
+4. Geben Sie im Feld **Automation-Konto erstellen** einen Namen für das neue Automation-Konto ein, und wählen Sie in der Dropdownliste eine **Region** aus.
 5. Klicken Sie auf **OK**, um die Einstellungen zu übernehmen und das Konto zu erstellen.
 6. Nach der Erstellung wird es auf der Seite **Automation** aufgeführt.
-7. Wenn Sie auf das Konto klicken, gelangen Sie auf die Dashboardseite.  
+7. Wenn Sie auf das Konto klicken, gelangen Sie auf die Dashboardseite.
 8. Wählen Sie auf der Seite mit dem Automation-Dashboard die Option **Ressourcen**.
 9. Wählen Sie auf der Seite **Ressourcen** unten auf der Seite die Option **Einstellungen hinzufügen**.
 10. Wählen Sie auf der Seite **Einstellungen hinzufügen** die Option **Anmeldeinformationen hinzufügen**.
@@ -64,9 +64,9 @@ In diesem Abschnitt führen Sie die folgenden Schritte aus, um ein neues Azure A
 3. Klicken Sie im Blatt „Automation-Konten“ auf **Hinzufügen**.<br>![Automation-Konto hinzufügen](media/automation-sec-configure-azure-runas-account/add-automation-acct-properties.png)
 2. Geben Sie im Blatt **Automation-Konto hinzufügen** im Feld **Name** einen Namen für das neue Automation-Konto ein.
 5. Wenn Sie über mehrere Abonnements verfügen, geben Sie das Abonnement für das neue Konto sowie eine neue oder vorhandene **Ressourcengruppe** und den **Speicherort** eines Azure-Rechenzentrums an.
-3. Wählen Sie **Nein** für die Option **Ausführendes Azure-Konto erstellen**, und klicken Sie auf die Schaltfläche **Erstellen**.  
+3. Wählen Sie **Nein** für die Option **Ausführendes Azure-Konto erstellen**, und klicken Sie auf die Schaltfläche **Erstellen**.
 
-    >[AZURE.NOTE] Wenn Sie sich dafür entscheiden, das ausführende Konto nicht zu erstellen, indem Sie die Option **Nein** wählen, wird im Blatt **Automation-Konto hinzufügen** eine Warnmeldung angezeigt. Das Konto wird zwar erstellt und der Rolle **Mitwirkender** des Abonnements zugewiesen, aber es verfügt über keine entsprechende Authentifizierungsidentität in Ihrem Abonnementverzeichnisdienst und somit auch nicht über Zugriffsressourcen in Ihrem Abonnement. So wird verhindert, dass Runbooks, die auf dieses Konto verweisen, sich authentifizieren und Aufgaben für ARM-Ressourcen durchführen können.
+    >[AZURE.NOTE] Wenn Sie sich dafür entscheiden, das ausführende Konto nicht zu erstellen, indem Sie die Option **Nein** wählen, wird im Blatt **Automation-Konto hinzufügen** eine Warnmeldung angezeigt. Das Konto wird zwar erstellt und der Rolle **Mitwirkender** des Abonnements zugewiesen, es verfügt aber über keine entsprechende Authentifizierungsidentität in Ihrem Abonnementverzeichnisdienst und somit auch nicht über Zugriffsressourcen in Ihrem Abonnement. So wird verhindert, dass Runbooks, die auf dieses Konto verweisen, sich authentifizieren und Aufgaben für ARM-Ressourcen durchführen können.
 
     ![Automation-Konto hinzufügen – Warnung](media/automation-sec-configure-azure-runas-account/add-automation-acct-properties-error.png)
 
@@ -87,4 +87,4 @@ Diese Zeilen sollten nach jedem [Prüfpunkt](http://technet.microsoft.com/librar
 ## Nächste Schritte
 * Informieren Sie sich über die unterschiedlichen Runbooktypen und die Schritte zum Erstellen Ihrer eigenen Runbooks im Artikel [Azure Automation-Runbooktypen](../automation/automation-runbook-types.md).
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0914_2016-->

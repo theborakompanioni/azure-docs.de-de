@@ -15,7 +15,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="multiple"
    ms.workload="na"
-   ms.date="08/22/2016"
+   ms.date="09/08/2016"
    ms.author="glenga"/>
 
 #Erstellen Sie Ihre erste Funktion in Azure Functions
@@ -23,7 +23,7 @@
 ##Übersicht
 Azure-Funktionen ist eine ereignisgesteuerte On-Demand-Computeumgebung, mit der die vorhandene Azure-Anwendungsplattform um Funktionen zur Implementierung von Code erweitert wird, der von Ereignissen ausgelöst wird, die in anderen Azure-Diensten, SaaS-Produkten sowie in lokalen Systemen auftreten können. Mit Azure-Funktionen werden Ihre Anwendungen basierend auf der Nachfrage skaliert, und Sie zahlen nur für die Ressourcen, die Sie tatsächlich nutzen. Mit Azure Functions können Sie geplante oder ausgelöste Codeeinheiten erstellen, die in verschiedenen Programmiersprachen implementiert wurden. Weitere Informationen zu Azure Functions finden Sie in der [Übersicht zu Azure Functions](functions-overview.md).
 
-Dieses Thema behandelt die Verwendung des Azure Functions-Schnellstarts im Azure Functions-Portal zum Erstellen einer einfachen „Hello World“-Node.js-Funktion, die von einem HTTP-Trigger aufgerufen wird. Sie können sich auch ein kurzes Video ansehen, das die Ausführung dieser Schritte im Portal zeigt.
+Dieses Thema behandelt die Verwendung des Azure Functions-Schnellstarts im Portal zum Erstellen einer einfachen „Hello World“-Node.js-Funktion, die von einem HTTP-Trigger aufgerufen wird. Sie können sich auch ein kurzes Video ansehen, das die Ausführung dieser Schritte im Portal zeigt.
 
 ## Video ansehen
 
@@ -33,13 +33,17 @@ Das folgende Video zeigt die Ausführung der grundlegenden Schritte in diesem Tu
 
 ##Erstellen einer Funktion über den Schnellstart
 
-Eine Funktions-App hostet die Ausführung Ihrer Funktionen in Azure. Führen Sie diese Schritte aus, um eine neue Funktions-App sowie eine neue Funktion zu erstellen. Bevor Sie Ihre erste Funktion erstellen können, müssen Sie über ein aktives Azure-Konto verfügen. Wenn Sie noch kein Azure-Konto haben, [erstellen Sie ein kostenloses Konto](https://azure.microsoft.com/free/).
+Eine Funktions-App hostet die Ausführung Ihrer Funktionen in Azure. Führen Sie diese Schritte aus, um eine neue Funktions-App sowie eine neue Funktion zu erstellen. Die neue Funktionen-App wird mit einer Standardkonfiguration erstellt. Ein Beispiel für die explizite Erstellung der Funktionen-App finden Sie im [anderen Schnellstart-Tutorial zu Azure Functions](functions-create-first-azure-function-azure-portal.md).
+
+Bevor Sie Ihre erste Funktion erstellen können, müssen Sie über ein aktives Azure-Konto verfügen. Wenn Sie noch kein Azure-Konto haben, [erstellen Sie ein kostenloses Konto](https://azure.microsoft.com/free/).
 
 1. Rufen Sie das [Azure Functions-Portal](https://functions.azure.com/signin) auf, und melden Sie sich mit Ihrem Azure-Konto an.
 
 2. Geben Sie einen eindeutigen **Namen** für Ihre neue Funktions-App ein, oder nehmen Sie den generierten Namen an, wählen Sie die bevorzugte **Region** aus, und klicken Sie anschließend auf **Erstellen und starten**.
 
-3. Klicken Sie auf der Registerkarte **Schnellstart** auf **WebHook + API** > **Funktion erstellen**. Eine neue vordefinierte Node.js-Funktion wird erstellt.
+3. Klicken Sie auf der Registerkarte **Schnellstart** auf **WebHook + API**, auf **JavaScript** und anschließend auf **Diese Funktion erstellen**. Eine neue vordefinierte Node.js-Funktion wird erstellt.
+
+	![](./media/functions-create-first-azure-function/function-app-quickstart-node-webhook.png)
 
 4. (Optional) Nun können Sie auswählen, ob Sie eine kurze Übersicht über die Features von Azure Functions im Portal erhalten möchten. Sobald diese Übersicht beendet ist bzw. übersprungen wurde, können Sie Ihre neue Funktion mit dem HTTP-Trigger testen.
 
@@ -48,6 +52,8 @@ Eine Funktions-App hostet die Ausführung Ihrer Funktionen in Azure. Führen Sie
 Da der Schnellstart von Azure Functions Funktionscode enthält, können Sie Ihre neue Funktion sofort testen.
 
 1. Sehen Sie auf der Registerkarte **Entwickeln** das Fenster **Code** an. Hier finden Sie die Angabe, dass dieser Node.js-Code eine HTTP-Anforderung mit dem Wert *Name* erfordert, der entweder im Nachrichtentext oder in einer Abfragezeichenfolge übergeben wird. Wenn die Funktion ausgeführt wird, wird dieser Wert in der Antwortnachricht zurückgegeben.
+
+	![](./media/functions-create-first-azure-function/function-app-develop-tab-testing.png)
 
 2. Scrollen Sie nach unten zum Textfeld **Anforderungstext**, ändern Sie den Wert der Eigenschaft *Name* entsprechend, und klicken Sie anschließend auf **Ausführen**. Wie Sie sehen, wird die Ausführung von einer Test-HTTP-Anforderung ausgelöst, die Informationen werden in die Streamingprotokolle geschrieben, und die „Hello“-Antwort wird in der **Ausgabe** angezeigt.
 
@@ -64,4 +70,4 @@ Der Schnellstart zeigt eine sehr einfache Ausführung einer grundlegenden, über
 
 [AZURE.INCLUDE [Hinweis zu den ersten Schritten](../../includes/functions-get-help.md)]
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0914_2016-->

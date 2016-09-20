@@ -4,7 +4,7 @@
    services="data-lake-store" 
    documentationCenter="" 
    authors="nitinme" 
-   manager="paulettm" 
+   manager="jhubbard" 
    editor="cgronlun"/>
  
 <tags
@@ -13,7 +13,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="08/02/2016"
+   ms.date="09/13/2016"
    ms.author="nitinme"/>
 
 # Erste Schritte mit Azure Data Lake-Speicher mithilfe des Azure-Portals
@@ -31,19 +31,9 @@ Hier erfahren Sie, wie Sie im Azure-Portal ein Azure Data Lake-Speicherkonto ers
 
 ## Voraussetzungen
 
-Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
+Bevor Sie mit diesem Tutorial beginnen können, benötigen Sie Folgendes:
 
 - **Ein Azure-Abonnement**. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
-
-## <a name="signup"></a>Aktivieren Ihres Azure-Abonnements für die öffentliche Vorschau von Data Lake-Speicher
-
-Zunächst müssen Sie die Aktivierung Ihres Azure-Abonnements für die öffentliche Vorschau von Data Lake-Speicher anfordern. Führen Sie die folgenden Schritte aus.
-
-1. Melden Sie sich beim neuen [Azure-Portal](https://portal.azure.com) an.
-2. Klicken Sie auf **NEU**, auf **Daten und Speicher** und anschließend auf **Azure Data Lake-Speicher**.
-3. Klicken Sie auf dem Blatt **Neuer Data Lake-Speicher** auf **Für Vorschau anmelden**. Prüfen Sie die Informationen, und klicken Sie auf **OK**. Sie erhalten eine E-Mail, sobald Ihr Abonnement für die öffentliche Vorschau aktiviert wurde.
-
-	![Anmeldung für die öffentliche Vorschau](./media/data-lake-store-get-started-portal/preview-signup.png "Erstellen eines neuen Azure Data Lake-Kontos")
 
 ## Lernen Sie schnell mithilfe von Videos?
 
@@ -62,7 +52,7 @@ Sehen Sie sich die folgenden Videos mit ersten Schritten mit dem Data Lake-Speic
 
 	![Erstellen eines neuen Azure Data Lake-Speicherkontos](./media/data-lake-store-get-started-portal/ADL.Create.New.Account.png "Erstellen eines neuen Azure Data Lake-Kontos")
 
-	- **Abonnement**. Wählen Sie das Abonnement aus, unter dem Sie ein neues Data Lake-Speicherkonto erstellen möchten.
+	- **Abonnement**. Wählen Sie das Abonnement aus, unter dem Sie ein neues Data Lake Store-Konto erstellen möchten.
 	- **Ressourcengruppe**: Wählen Sie eine vorhandene Ressourcengruppe aus, oder klicken Sie auf **Neue Ressourcengruppe erstellen**, um eine neue Ressourcengruppe zu erstellen. Eine Ressourcengruppe ist ein Container, der verwandte Ressourcen für eine Anwendung enthält. Weitere Informationen finden Sie unter [Ressourcengruppen in Azure](resource-group-overview.md#resource-groups).
 	- **Ort**: Wählen Sie den Ort aus, an dem Sie das Data Lake-Speicherkonto erstellen möchten.
 
@@ -138,4 +128,4 @@ Um ein Azure Data Lake-Speicherkonto zu löschen, klicken Sie auf dem Blatt „D
 - [Verwenden von Azure HDInsight mit Data Lake-Speicher](data-lake-store-hdinsight-hadoop-use-portal.md)
 - [Zugreifen auf Diagnoseprotokolle für Azure Data Lake Store](data-lake-store-diagnostic-logs.md)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0914_2016-->

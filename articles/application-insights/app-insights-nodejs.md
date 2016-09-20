@@ -215,7 +215,7 @@ server.on("listening", () => {
 ## Nächste Schritte
 
 * [Überwachen Ihrer Telemetriedaten im Portal](app-insights-dashboards.md)
-* [Schreiben von Analytics-Abfragen über Ihre Telemetrie (app-insights-analytics-tour.md)
+* [Schreiben von Analytics-Abfragen über Ihre Telemetriedaten](app-insights-analytics-tour.md)
 
 
 
@@ -228,4 +228,4 @@ server.on("listening", () => {
 [qna]: app-insights-troubleshoot-faq.md
 [roles]: app-insights-resources-roles-access-control.md
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0914_2016-->

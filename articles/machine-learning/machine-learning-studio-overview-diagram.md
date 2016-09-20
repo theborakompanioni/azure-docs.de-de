@@ -5,7 +5,7 @@
 	services="machine-learning"
 	documentationCenter=""
 	authors="hning86"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun"/>
 
 <tags
@@ -47,4 +47,4 @@ Laden Sie das Diagramm **Übersicht der Microsoft Azure Machine Learning Studio-
 
 [AZURE.INCLUDE [machine-learning-kostenlose-Testversion](../../includes/machine-learning-free-trial.md)]
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0914_2016-->

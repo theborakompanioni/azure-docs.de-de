@@ -23,7 +23,7 @@ Dieser Artikel enthält eine Übersicht über die Verwendung von Python-Web- und
 
 ## Voraussetzungen
 
- - Visual Studio 2013 oder 2015
+ - Visual Studio 2013 oder 2015
  - [Python-Tools für Visual Studio][] \(PTVS)
  - [Azure SDK-Tools für VS 2013][] oder [Azure SDK-Tools für VS 2015][]
  - [Python 2.7 32-Bit][] oder [Python 3.5 32-Bit][]
@@ -57,7 +57,7 @@ Sie können Web- oder Workerrollen jederzeit zu einem vorhandenen Cloud-Dienst h
 
 ![Befehl "Rolle hinzufügen"](./media/cloud-services-python-ptvs/add-new-or-existing-role.png)
 
-Ihr Cloud-Dienst kann Rollen enthalten, die in verschiedenen Sprachen implementiert wurden. Sie können beispielsweise eine Python-Webrolle mithilfe von Django in Python- oder C#-Workerrollen implementieren. Sie können mit Service Bus-Warteschlangen oder Speicherwarteschlangen einfach zwischen Ihren Rollen kommunizieren.
+Ihr Cloud-Dienst kann Rollen enthalten, die in verschiedenen Sprachen implementiert wurden. Sie können beispielsweise eine Python-Webrolle mithilfe von Django in Python- oder C#-Workerrollen implementieren. Sie können mit Service Bus-Warteschlangen oder Speicherwarteschlangen einfach zwischen Ihren Rollen kommunizieren.
 
 ## Installieren von Python im Clouddienst
 
@@ -240,6 +240,8 @@ if (-not $is_emulated){
 
 #### Ändern von „LaunchWorker.ps1“
 
+>[AZURE.NOTE] Im Fall eines **Workerrollenprojekts** ist zum Ausführen der Startdatei die Datei **LauncherWorker.ps1** erforderlich. In einem **Webrollenprojekt** wird stattdessen die Startdatei in den Projekteigenschaften festgelegt.
+
 **bin\\LaunchWorker.ps1** wurde ursprünglich erstellt, um eine Reihe von Vorbereitungsschritten auszuführen, aber dies funktioniert nicht wie gewünscht. Ersetzen Sie den Inhalt dieser Datei durch das folgende Skript.
 
 Mit dem Skript wird die Datei **worker.py** aus Ihrem Python-Projekt aufgerufen. Wenn die Umgebungsvariable **PYTHON2** auf **on** festgelegt ist, wird Python 2.7 verwendet, andernfalls Python 3.5.
@@ -364,4 +366,4 @@ Weitere Details zur Verwendung von Azure-Diensten aus Ihren Web- und Workerrolle
 [Python 2.7 32-bit]: https://www.python.org/downloads/
 [Python 3.5 32-bit]: https://www.python.org/downloads/
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0914_2016-->

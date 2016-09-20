@@ -15,7 +15,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="04/12/2016"
+   ms.date="09/13/2016"
    ms.author="rogardle"/>
 
 
@@ -37,8 +37,6 @@ Als Erstes ermitteln Sie beim Erstellen eines SSH-Tunnels unter Linux oder OS X 
 **PORT** ist der Port des Endpunkts, den Sie verfügbar machen möchten. Für Swarm ist dies 2375. Verwenden Sie für DC/OS Port 80. **BENUTZERNAME** ist der Benutzername, der bei der Bereitstellung des Clusters angegeben wurde. **DNSPREFIX** ist das DNS-Präfix, das bei der Bereitstellung des Clusters angegeben wurde. **REGION** ist die Region, in der sich die Ressourcengruppe befindet. **PATH\_TO\_PRIVATE\_KEY** [OPTIONAL] ist der Pfad zum privaten Schlüssel, der zu dem öffentlichen Schlüssel passt, den Sie beim Erstellen des Container Service-Clusters angegeben haben. Verwenden Sie diese Option mit dem Flag „-i“.
 
 ```bash
-# ssh sample
-
 ssh -L PORT:localhost:PORT -f -N [USERNAME]@[DNSPREFIX]mgmt.[REGION].cloudapp.azure.com -p 2200
 ```
 > Für die SSH-Verbindung wird Port 2200 und nicht der Standardport 22 verwendet.
@@ -48,8 +46,6 @@ ssh -L PORT:localhost:PORT -f -N [USERNAME]@[DNSPREFIX]mgmt.[REGION].cloudapp.az
 Öffnen Sie einen Tunnel zu den zu DC/OS gehörigen Endpunkten, indem Sie einen Befehl wie den folgenden ausführen:
 
 ```bash
-# ssh sample
-
 sudo ssh -L 80:localhost:80 -f -N azureuser@acsexamplemgmt.japaneast.cloudapp.azure.com -p 2200
 ```
 
@@ -66,8 +62,6 @@ Sie erreichen die REST-APIs für jede Anwendung über diesen Tunnel auf ähnlich
 Führen Sie zum Öffnen eines Tunnels zum Swarm-Endpunkt einen Befehl wie diesen aus:
 
 ```bash
-# ssh sample
-
 ssh -L 2375:localhost:2375 -f -N azureuser@acsexamplemgmt.japaneast.cloudapp.azure.com -p 2200
 ```
 
@@ -120,4 +114,4 @@ Bereitstellen und Verwalten von Containern mit DC/OS oder Swarm:
 - [Verwenden von Azure Container Service und DC/OS](container-service-mesos-marathon-rest.md)
 - [Verwenden von Azure Container Service und Docker Swarm](container-service-docker-swarm.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0914_2016-->

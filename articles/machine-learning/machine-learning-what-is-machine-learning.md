@@ -5,7 +5,7 @@
 	services="machine-learning"
     documentationCenter=""
     authors="cjgronlund"
-    manager="paulettm"
+    manager="jhubbard"
     editor="cgronlun"/>
 
 <tags
@@ -62,7 +62,7 @@ In [Machine Learning Studio](machine-learning-what-is-ml-studio.md) können Sie 
 
 ### Operationalisieren von Predictive Analytics-Lösungen: Erwerben von Webdiensten oder Veröffentlichen eigener Dienste
 
-* Erwerben Sie im [Microsoft Azure Marketplace](https://datamarket.azure.com/browse?query=machine+learning) sofort nutzbare Webdienste z. B. für Empfehlungen, Textanalysen und Anomalieerkennung.
+* Erwerben Sie im [Microsoft Azure Marketplace](https://datamarket.azure.com/browse?query=machine+learning) sofort nutzbare Webdienste z. B. für Empfehlungen, Textanalysen und Anomalieerkennung.
 
 * Operationalisieren Sie Ihre Predictive Analytics-Modelle:
     * [Bereitstellen von Webdiensten](machine-learning-publish-a-machine-learning-web-service.md)
@@ -79,7 +79,7 @@ Machine Learning-Begriffe können manchmal verwirrend sein. Hier finden Sie desh
 
 Beim **Durchsuchen von Daten** werden Informationen über ein umfangreiches und häufig unstrukturiertes Dataset erfasst, um Merkmale für eine gezielte Analyse zu ermitteln. Der Begriff **Data Mining** bezieht sich auf das automatisierte Durchsuchen von Daten.
 
-Bei der **beschreibenden Analyse** wird ein Dataset analysiert, um Vorgänge zusammenzufassen. Bei den weitaus meisten Business Analytics-Prozessen – z. B. Verkaufsberichten, Webmetriken und Analysen sozialer Netzwerke – handelt es sich um beschreibende Analysen.
+Bei der **beschreibenden Analyse** wird ein Dataset analysiert, um Vorgänge zusammenzufassen. Bei den weitaus meisten Business Analytics-Prozessen – z. B. Verkaufsberichten, Webmetriken und Analysen sozialer Netzwerke – handelt es sich um beschreibende Analysen.
 
 Bei **Predictive Analytics** werden Modelle basierend auf vergangenen oder aktuellen Daten entwickelt, um zukünftige Ergebnisse vorhersagen zu können.
 
@@ -93,7 +93,7 @@ Bei **Predictive Analytics** werden Modelle basierend auf vergangenen oder aktue
 Ein Modell zum maschinellen Lernen ist eine Abstraktion der Frage, die Sie beantworten möchten, oder des Ergebnisses, das Sie vorhersagen möchten. Modelle werden anhand vorhandener Daten trainiert und ausgewertet.
 
 #### Trainingsdaten
-Wenn Sie ein Modell mit Daten trainieren, verwenden Sie ein bekanntes Dataset und nehmen basierend auf den Datenmerkmalen Anpassungen am Modell vor, um eine möglichst genaue Antwort zu erhalten. In Azure Machine Learning wird ein Modell aus einem Algorithmusmodul entwickelt, das Trainingsdaten und funktionale Module, wie z. B. ein Bewertungsmodul, verarbeitet.
+Wenn Sie ein Modell mit Daten trainieren, verwenden Sie ein bekanntes Dataset und nehmen basierend auf den Datenmerkmalen Anpassungen am Modell vor, um eine möglichst genaue Antwort zu erhalten. In Azure Machine Learning wird ein Modell aus einem Algorithmusmodul entwickelt, das Trainingsdaten und funktionale Module, wie z. B. ein Bewertungsmodul, verarbeitet.
 
 Wenn Sie ein Betrugserkennungsmodell in einem überwachten Lernprozess trainieren, verwenden Sie einen Satz Transaktionen, die entweder als betrügerisch oder als gültig bezeichnet sind. Sie teilen Ihr Dataset nach dem Zufallsprinzip und verwenden einen Teil zum Trainieren und einen Teil zum Testen oder Auswerten des Modells.
 
@@ -104,9 +104,9 @@ Nachdem Sie das Modell trainiert haben, werden Sie es mithilfe der verbleibenden
 
 * **Algorithmus**: Ein eigenständiger Regelsatz, der zum Lösen von Problemen mithilfe von Datenverarbeitung, mathematischen Berechnungen oder automatisierter Argumentation verwendet wird.
 * **Anomalieerkennung**: Ein Modell, bei dem ungewöhnliche Ereignisse oder Werte gemeldet werden, damit Probleme erkannt werden können. Bei der Erkennung von Kreditkartenbetrug wird beispielsweise nach ungewöhnlichen Käufen gesucht.
-* **Kategorische Daten**: Daten, die nach Kategorien organisiert sind und in Gruppen unterteilt werden können. Ein kategorisches Dataset für Fahrzeuge könnte z. B. Jahr, Marke, Modell und Preis angeben.
+* **Kategorische Daten**: Daten, die nach Kategorien organisiert sind und in Gruppen unterteilt werden können. Ein kategorisches Dataset für Fahrzeuge könnte z. B. Jahr, Marke, Modell und Preis angeben.
 * **Klassifizierung**: Ein Modell für die Einordnung von Datenpunkten in Kategorien, basierend auf einem Dataset, für das die Kategoriegruppierungen bereits bekannt sind.
-* **Featureentwicklung**: Der Prozess des Extrahierens oder Auswählens von Features in Zusammenhang mit einem Dataset, um das Dataset zu erweitern und die Ergebnisse zu verbessern. Flugpreisdaten könnten z. B. durch Wochentage und Ferien erweitert werden. Siehe [Entwicklung und Auswahl von Features in Azure Machine Learning](machine-learning-feature-selection-and-engineering.md).
+* **Featureentwicklung**: Der Prozess des Extrahierens oder Auswählens von Features in Zusammenhang mit einem Dataset, um das Dataset zu erweitern und die Ergebnisse zu verbessern. Flugpreisdaten könnten z. B. durch Wochentage und Ferien erweitert werden. Siehe [Entwicklung und Auswahl von Features in Azure Machine Learning](machine-learning-feature-selection-and-engineering.md).
 * **Modul**: Ein Funktionselement in einem Machine Learning Studio-Modell, z.B. das Modul zur Dateneingabe, das die Eingabe und Bearbeitung kleiner Datasets ermöglicht. Auch bei einem Algorithmus handelt es sich um eine Art Modul in Machine Learning Studio.
 * **Modell**: Ein Modell für überwachtes Lernen ist das Produkt eines Machine Learning-Experiments, das aus Trainingsdaten, einem Algorithmusmodul und Funktionsmodulen besteht, z.B. einem Bewertungsmodellmodul.
 * **Numerische Daten**: Daten, die eine Bedeutung als Messung (kontinuierliche Daten) oder Zählung (diskrete Daten) haben. Diese Daten werden auch als *quantitative Daten* bezeichnet.
@@ -125,4 +125,4 @@ Die Grundlagen der Vorhersageanalyse und des maschinellen Lernens werden anhand 
 <!-- Module References -->
 [learning-with-counts]: https://msdn.microsoft.com/library/azure/81c457af-f5c0-4b2d-922c-fdef2274413c/
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0914_2016-->

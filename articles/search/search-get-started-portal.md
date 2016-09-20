@@ -4,7 +4,7 @@
 	services="search" 
 	documentationCenter="" 
 	authors="HeidiSteen" 
-	manager="paulettm" 
+	manager="jhubbard" 
 	editor=""
     tags="azure-portal"/>
 
@@ -48,7 +48,7 @@ Um diese Aufgabe über das Portal durchführen zu können, gehen wir davon aus, 
 Erstellen Sie vor dem Fortfahren eine [DocumentDB-Beispieldatenbank](#apdx-sampledata) für dieses Tutorial. Kehren Sie anschließend zu diesem Abschnitt zurück, um die unten angegebenen Schritte auszuführen.
 
 <a id="defineDS"></a>
-#### Schritt 1: Definieren der Datenquelle
+#### Schritt 1: Definieren der Datenquelle
 
 1. Klicken Sie auf dem Dashboard des Azure Search-Diensts auf der Befehlsleiste auf **Daten importieren**, um einen Assistenten zu starten, mit dem ein Index erstellt und aufgefüllt wird.
 
@@ -64,7 +64,7 @@ Beachten Sie, dass wir diese Abfrage überspringen. Der Grund ist, dass wir die 
 
 Klicken Sie auf **OK**, um diesen Schritt des Assistenten abzuschließen.
 
-#### Schritt 2: Definieren des Index
+#### Schritt 2: Definieren des Index
 
 Klicken Sie im Assistenten auf **Index**, und sehen Sie sich die Entwurfsoberfläche zum Erstellen eines Azure Search-Index an. Für einen Index sind mindestens ein Name und eine Felderauflistung erforderlich, wobei ein Feld als Dokumentschlüssel gekennzeichnet ist. Da wir ein DocumentDB-Dataset verwenden, werden die Felder vom Assistenten automatisch erkannt, und Felder und Datentypzuweisungen werden vorab in den Index geladen.
 
@@ -72,11 +72,11 @@ Klicken Sie im Assistenten auf **Index**, und sehen Sie sich die Entwurfsoberfl�
 
 Die Felder und Datentypen sind zwar konfiguriert, aber Sie müssen trotzdem Attribute zuweisen. Die Kontrollkästchen oben in der Liste der Felder sind *Indexattribute*, mit denen die Verwendung des Felds gesteuert wird.
 
-- **Abrufbar** bedeutet, dass es in der Liste mit den Suchergebnissen angezeigt wird. Sie können einzelne Felder kennzeichnen, indem Sie dieses Kontrollkästchen deaktivieren, um sie aus den Suchergebnissen auszuschließen, z. B. wenn Felder nur in Filterausdrücken verwendet werden.
+- **Abrufbar** bedeutet, dass es in der Liste mit den Suchergebnissen angezeigt wird. Sie können einzelne Felder kennzeichnen, indem Sie dieses Kontrollkästchen deaktivieren, um sie aus den Suchergebnissen auszuschließen, z. B. wenn Felder nur in Filterausdrücken verwendet werden.
 - Mit **Filterbar**, **Sortierbar** und **Facettenreich** wird angegeben, ob ein Feld in einer Filter-, Sortier- oder Facettennavigationsstruktur verwendet werden kann.
 - **Durchsuchbar** bedeutet, dass ein Feld in die Volltextsuche einbezogen wird. Zeichenfolgen können normalerweise durchsucht werden. Numerische Felder und boolesche Felder werden häufig als „Nicht durchsuchbar“ markiert.
 
-Markieren Sie für die Felder im Index vor dem Verlassen der Seite die Verwendung der folgenden Optionen (Abrufbar, Durchsuchbar usw.). Die meisten Felder sind abrufbar. Die meisten Zeichenfolgenfelder sind durchsuchbar (Sie müssen den Schlüssel nicht durchsuchbar machen). Einige Felder, z. B. „genre“, „orderableOnline“, „rating“ und „tags“, sind auch filterbar, sortierbar und facettenreich.
+Markieren Sie für die Felder im Index vor dem Verlassen der Seite die Verwendung der folgenden Optionen (Abrufbar, Durchsuchbar usw.). Die meisten Felder sind abrufbar. Die meisten Zeichenfolgenfelder sind durchsuchbar (Sie müssen den Schlüssel nicht durchsuchbar machen). Einige Felder, z. B. „genre“, „orderableOnline“, „rating“ und „tags“, sind auch filterbar, sortierbar und facettenreich.
 	
 Feld | Typ | Options |
 ------|------|---------|
@@ -100,7 +100,7 @@ Zu Vergleichszwecken ist der folgende Screenshot eine Darstellung eines Index, d
 
 Klicken Sie auf **OK**, um diesen Schritt des Assistenten abzuschließen.
 
-#### Schritt 3: Definieren des Indexers
+#### Schritt 3: Definieren des Indexers
 
 Klicken Sie im Assistenten **Daten importieren** auf **Indexer** > **Name**, geben Sie einen Namen für den Indexer ein, und verwenden Sie für alle anderen Werte die Standardwerte. Mit diesem Objekt wird ein ausführbarer Prozess definiert. Nach der Erstellung können Sie einen wiederkehrenden Zeitplan einrichten. Verwenden Sie hier aber die Standardoption, um den Indexer einmal sofort auszuführen, wenn Sie auf **OK** klicken.
 
@@ -130,7 +130,7 @@ Der **Suchexplorer** ist ein in das Portal integriertes Abfragetool. Es verfügt
 
 ## Nächste Schritte
 
-Nachdem Sie den Assistenten einmal ausgeführt haben, können Sie einen Schritt zurück machen und einzelne Komponenten anzeigen oder ändern: Index, Indexer oder Datenquelle. Einige Bearbeitungen, z. B. das Ändern des Felddatentyps, sind für den Index nicht zulässig, aber die meisten Eigenschaften und Einstellungen können geändert werden. Klicken Sie zum Anzeigen der einzelnen Komponenten auf dem Dashboard auf die Kachel **Index**, **Indexer** oder **Datenquellen**, um eine Liste mit vorhandenen Objekten anzuzeigen.
+Nachdem Sie den Assistenten einmal ausgeführt haben, können Sie einen Schritt zurück machen und einzelne Komponenten anzeigen oder ändern: Index, Indexer oder Datenquelle. Einige Bearbeitungen, z. B. das Ändern des Felddatentyps, sind für den Index nicht zulässig, aber die meisten Eigenschaften und Einstellungen können geändert werden. Klicken Sie zum Anzeigen der einzelnen Komponenten auf dem Dashboard auf die Kachel **Index**, **Indexer** oder **Datenquellen**, um eine Liste mit vorhandenen Objekten anzuzeigen.
 
 Weitere Informationen zu anderen Features, die in diesem Artikel erwähnt werden, finden Sie unter diesen Links:
 
@@ -154,7 +154,7 @@ Im Folgenden erhalten Sie eine allgemeine Anleitung, die aber nicht alle Aspekte
 
 ### Erstellen von musicstoredb für dieses Tutorial
 
-1. Klicken Sie [hier](https://github.com/HeidiSteen/azure-search-get-started-sample-data), um eine ZIP-Datei mit den JSON-Datendateien für den Music Store herunterzuladen. Wir stellen 246 JSON-Dokumente für dieses Dataset bereit.
+1. Klicken Sie [hier](https://github.com/HeidiSteen/azure-search-get-started-sample-data), um eine ZIP-Datei mit den JSON-Datendateien für den Music Store herunterzuladen. Wir stellen 246 JSON-Dokumente für dieses Dataset bereit.
 2. Fügen Sie DocumentDB Ihrem Abonnement hinzu, und öffnen Sie anschließend das Dashboard des Diensts.
 2. Klicken Sie auf **Datenbank hinzufügen**, um eine neue Datenbank mit der ID `musicstoredb` zu erstellen. Sie wird nach der Erstellung in der Datenbankkachel weiter unten auf der Seite angezeigt.
 2. Klicken Sie auf den Namen der Datenbank, um das Blatt für die Datenbank zu öffnen.
@@ -171,7 +171,7 @@ Im Folgenden erhalten Sie eine allgemeine Anleitung, die aber nicht alle Aspekte
 
 Eine einfache Möglichkeit ist hierbei die Verwendung der Standardabfrage. Sie können die Standardabfrage aber auch so ändern, dass die obersten 300 Elemente ausgewählt werden (in diesem Dataset sind weniger als 300 Elemente vorhanden).
 
-Sie sollten eine JSON-Ausgabe zurückerhalten, die mit der Dokumentnummer 386 beginnt und mit Dokument 669 endet. Nach dem Laden der Daten können Sie [zu den Schritten in dieser exemplarischen Vorgehensweise zurückkehren](#defineDS), um mit dem Assistenten **Daten importieren** einen Index zu erstellen.
+Sie sollten eine JSON-Ausgabe zurückerhalten, die mit der Dokumentnummer 386 beginnt und mit Dokument 669 endet. Nach dem Laden der Daten können Sie [zu den Schritten in dieser exemplarischen Vorgehensweise zurückkehren](#defineDS), um mit dem Assistenten **Daten importieren** einen Index zu erstellen.
 
 
 <!--Image references-->
@@ -183,4 +183,4 @@ Sie sollten eine JSON-Ausgabe zurückerhalten, die mit der Dokumentnummer 386 b
 [6]: ./media/search-get-started-portal/AzureSearch-GetStart-IndexerList.png
 [7]: ./media/search-get-started-portal/search-data-import-wiz-btn.png
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0914_2016-->

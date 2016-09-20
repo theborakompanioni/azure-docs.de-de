@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="06/16/2016"
+   ms.date="09/13/2016"
    ms.author="ryanwi"/>
 
 # Vorbereiten Ihrer Entwicklungsumgebung
@@ -23,7 +23,7 @@
 ### Unterstützte Betriebssystemversionen
 Die folgenden Betriebssystemversionen werden bei der Entwicklung unterstützt:
 
-- Windows 7
+- Windows 7
 - Windows 8/Windows 8.1
 - Windows Server 2012 R2
 - Windows 10
@@ -32,10 +32,9 @@ Die folgenden Betriebssystemversionen werden bei der Entwicklung unterstützt:
 
 ## Installieren von Laufzeit, SDK und Tools
 
-Der Webplattform-Installer bietet drei Konfigurationen für die Service Fabric-Entwicklung:
+Der Webplattform-Installer bietet zwei Konfigurationen für die Service Fabric-Entwicklung:
 
-- [Installieren der Service Fabric-Laufzeit, des SDK und der Tools für Visual Studio 2015 Update 2 oder höher][full-bundle-vs2015]
-- [Installieren der Service Fabric-Laufzeit, des SDKs und der Tools für Visual Studio „15“ Preview][full-bundle-dev15]
+- [Installieren der Service Fabric-Laufzeit, des SDK und der Tools für Visual Studio 2015 (Visual Studio 2015 Update 2 oder höher erforderlich)][full-bundle-vs2015]
 - [Installieren der Service Fabric-Laufzeit und des SDKs (keine Visual Studio-Tools)][core-sdk]
 
 ## Aktivieren der PowerShell-Skriptausführung
@@ -58,9 +57,9 @@ Nachdem Sie die Entwicklungsumgebung eingerichtet haben, können Sie nun mit dem
 
 [1]: http://azure.microsoft.com/campaigns/service-fabric/ "Service Fabric-Kampagnenseite"
 [2]: http://go.microsoft.com/fwlink/?LinkId=517106 "VS RC"
-[full-bundle-vs2015]: http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-VS2015-2_1 "WebPI-Link für VS 2015"
-[full-bundle-dev15]: http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-Dev15-2_1 "WebPI-Link für Dev15"
-[core-sdk]: http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=ServiceFabricSDK_2_1 "WebPI-Link für Core SDK"
-[powershell5-download]: https://www.microsoft.com/de-DE/download/details.aspx?id=50395
+[full-bundle-vs2015]: http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-VS2015 "WebPI-Link für VS 2015"
+[full-bundle-dev15]: http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-Dev15 "WebPI-Link für Dev15"
+[core-sdk]: http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-CoreSDK "WebPI-Link für Core SDK"
+[powershell5-download]: https://www.microsoft.com/en-us/download/details.aspx?id=50395
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0914_2016-->

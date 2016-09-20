@@ -15,7 +15,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="04/13/2016"
+   ms.date="09/13/2016"
    ms.author="nepeters"/>
 
 # Containerverwaltung mit Docker Swarm
@@ -123,4 +123,4 @@ Sie können natürlich auch `docker-compose ps` verwenden, um nur die Container 
 
 [Weitere Informationen zu Docker Swarm](https://docs.docker.com/swarm/)
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0914_2016-->
