@@ -1,11 +1,11 @@
 <properties
-	pageTitle="Azure Machine Learning – häufig gestellte Fragen (FAQ) | Microsoft Azure"
+	pageTitle="Azure Machine Learning – häufig gestellte Fragen (FAQ) | Microsoft Azure"
 	description="Einführung in Azure Machine Learning: häufig gestellte Fragen (FAQ) zu Abrechnung, Funktionen und Einschränkungen von Clouddiensten für die optimierte Vorhersagemodellierung."
 	keywords="Einführung in maschinelles Lernen,Vorhersagemodellierung,was ist maschinelles Lernen"
 	services="machine-learning"
 	documentationCenter=""
 	authors="garyericson"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun"/>
 
 <tags
@@ -25,7 +25,7 @@ In diesem Dokument werden häufig gestellte Fragen zu Azure Machine Learning bea
 
 **Was ist Azure Machine Learning?**
 
-Azure Machine Learning ist ein vollständig verwalteter Dienst, mit dem Sie Lösungen zu Vorhersageanalyse in der Cloud erstellen, testen, betreiben und verwalten können. Mit einem Browser können Sie sich anmelden, Daten hochladen und sofort mit Experimenten im Bereich Machine Learning beginnen. Dank der Vorhersagemodellierung per Drag & Drop, einer umfangreichen Modulpalette und einer Bibliothek mit Ausgangsvorlagen können Sie gängige Aufgaben im Bereich Machine Learning schnell und einfach ausführen. Weitere Informationen finden Sie auf der Übersichtsseite zu [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/). Eine Einführung in Machine Learning mit wichtigen Begriffen und Konzepten finden Sie unter [Einführung in Azure Machine Learning](machine-learning-what-is-machine-learning.md).
+Azure Machine Learning ist ein vollständig verwalteter Dienst, mit dem Sie Lösungen zu Vorhersageanalyse in der Cloud erstellen, testen, betreiben und verwalten können. Mit einem Browser können Sie sich anmelden, Daten hochladen und sofort mit Experimenten im Bereich Machine Learning beginnen. Dank der Vorhersagemodellierung per Drag & Drop, einer umfangreichen Modulpalette und einer Bibliothek mit Ausgangsvorlagen können Sie gängige Aufgaben im Bereich Machine Learning schnell und einfach ausführen. Weitere Informationen finden Sie auf der Übersichtsseite zu [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/). Eine Einführung in Machine Learning mit wichtigen Begriffen und Konzepten finden Sie unter [Einführung in Azure Machine Learning](machine-learning-what-is-machine-learning.md).
 
 [AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
@@ -43,7 +43,7 @@ Weitere Informationen finden Sie unter [Verbinden mit einem Machine Learning-Web
 
 **Wo sind meine klassischen Webdienste aufgeführt? Wo sind meine neuen ARM-basierten Webdienste aufgeführt?**
 
-Klassische Webdienste finden Sie in [Machine Learning Studio](http://studio.azureml.net) auf der Registerkarte „Web Services“. Neue ARM-basierte Webdienste befinden sich im [Microsoft Azure Machine Learning-Webdienste](https://services.azureml.net/)-Portal. Es ist keine übergreifende Auflistung vorhanden.
+Klassische Webdienste finden Sie in [Machine Learning Studio](http://studio.azureml.net) auf der Registerkarte „Webdienste“. Neue ARM-basierte Webdienste befinden sich im [Microsoft Azure Machine Learning-Webdienste](https://services.azureml.net/)-Portal. Es ist keine übergreifende Auflistung vorhanden.
 
 ## Fragen zu Microsoft Azure Machine Learning-Webdiensten
 
@@ -60,7 +60,7 @@ Es gibt mehrere Möglichkeiten, die REST-API zu nutzen und auf den Webdienst zuz
 
 **Was sind die wichtigsten Updates für die neuen Azure ML-Webdienste?**
 
-Weitere Informationen zu den neuen Azure Machine Learning-Webdiensten finden Sie in der [verwandten Dokumentation](machine-learning-whats-new.md).
+Weitere Informationen zu den neuen Azure Machine Learning-Webdiensten finden Sie in der [zugehörigen Dokumentation](machine-learning-whats-new.md).
 
 ## Fragen zu Machine Learning Studio
 
@@ -87,21 +87,21 @@ Daten können auf drei Arten in ein Machine Learning Studio-Experiment geladen w
 
 #### <a id="ModuleLimit"></a>Wie groß können DataSets für meine Module sein?
 
-Module in Machine Learning Studio unterstützen in normalen Anwendungsfällen DataSets bis zu einer Größe von 10 GB an dichten numerischen Daten. Wenn ein Modul mehrere Eingaben akzeptiert, entsprechen 10 GB der Summe aller Eingabegrößen. Sie können über Hive- oder Azure SQL-Datenbank-Abfragen oder durch Vorverarbeitung per Lernen nach Anzahl auch Teile größerer DataSets übernehmen.
+Module in Machine Learning Studio unterstützen in normalen Anwendungsfällen DataSets bis zu einer Größe von 10 GB an dichten numerischen Daten. Wenn ein Modul mehrere Eingaben akzeptiert, entsprechen 10 GB der Summe aller Eingabegrößen. Sie können über Hive- oder Azure SQL-Datenbank-Abfragen oder durch Vorverarbeitung per Lernen nach Anzahl auch Teile größerer DataSets übernehmen.
 
-Die folgenden Typen von Daten können während der Featurenormalisierung in größere DataSets erweitert werden und sind auf weniger als 10 GB beschränkt:
+Die folgenden Typen von Daten können während der Featurenormalisierung in größere DataSets erweitert werden und sind auf weniger als 10 GB beschränkt:
 
 - Platzsparend
 - Kategorisch
 - Zeichenfolgen
 - Binärdaten
 
-Die folgenden Bereiche sind auf DataSets mit einer Größe unter 10 GB beschränkt:
+Die folgenden Bereiche sind auf DataSets mit einer Größe unter 10 GB beschränkt:
 
 - Empfohlene Module
 - SMOTE-Modul
 - Skripting-Module: R, Python, SQL
-- Module, bei denen die Größe der Ausgabedaten die der Eingabedaten überschreiten kann, z. B. Join oder Feature-Hashing.
+- Module, bei denen die Größe der Ausgabedaten die der Eingabedaten überschreiten kann, z. B. Join oder Feature-Hashing.
 - Kreuzvalidierung, Tune Model Hyperparameters, Ordinal Regression und One-vs-All Multiclass, wenn eine sehr große Anzahl von Iterationen durchgeführt wird.
 
 Für DataSets größer als einige GB sollten Sie die Daten in Azure Storage oder Azure SQL-Datenbank laden oder HDInsight verwenden, anstatt die Daten direkt aus lokalen Dateien hochzuladen.
@@ -125,7 +125,7 @@ Informationen zur Bildeingabefunktion finden Sie in der Referenz unter [Importie
 
 **Der gewünschte Algorithmus, das Datenformat oder die Datentransformation ist nicht in Azure Machine Learning Studio enthalten. Welche Optionen habe ich?**
 
-Sie können das [Forum für Benutzer-Feedback](http://go.microsoft.com/fwlink/?LinkId=404231) besuchen, um herauszufinden, welche Featureanfragen wir momentan verfolgen. Stimmen Sie für eine entsprechende Anfrage ab, wenn ein von Ihnen gewünschtes Feature bereits angefordert wurde. Falls das gewünschte Feature nicht vorhanden ist, können Sie eine neue Anfrage erstellen. Sie können den Status Ihrer Anfrage ebenfalls in diesem Forum verfolgen. Wir verfolgen diese Liste regelmäßig und aktualisieren den Verfügbarkeitsstatus von Features häufig. Mit der integrierten Unterstützung für R und Python können außerdem benutzerdefinierte Transformationen nach Bedarf erstellt werden.
+Sie können das [Forum für Benutzerfeedback](http://go.microsoft.com/fwlink/?LinkId=404231) besuchen, um herauszufinden, welche Featureanfragen wir momentan verfolgen. Stimmen Sie für eine entsprechende Anfrage ab, wenn ein von Ihnen gewünschtes Feature bereits angefordert wurde. Falls das gewünschte Feature nicht vorhanden ist, können Sie eine neue Anfrage erstellen. Sie können den Status Ihrer Anfrage ebenfalls in diesem Forum verfolgen. Wir verfolgen diese Liste regelmäßig und aktualisieren den Verfügbarkeitsstatus von Features häufig. Mit der integrierten Unterstützung für R und Python können außerdem benutzerdefinierte Transformationen nach Bedarf erstellt werden.
 
 
 **Kann ich meinen vorhandenen Code in Machine Learning Studio verwenden?**
@@ -155,7 +155,7 @@ Da die an den Browser übertragenen Daten umfangreich sein können, ist die Date
 
 **Welche vorhandenen Algorithmen werden in Machine Learning Studio unterstützt?**
 
-Machine Learning Studio unterstützt moderne Algorithmen wie z. B. skalierbare Boosted Decision-Strukturen, Bayessche Empfehlungssysteme, tiefe neuronale Netze und die von Microsoft Research entwickelten "Entscheidungsdschungel". Skalierbare Open Source-Pakete für Machine Learning wie z. B. Vowpal Wabbit sind ebenfalls enthalten. Machine Learning Studio unterstützt Algorithmen für Machine Learning für mehrklassige und binäre Klassifizierung, Regression und Clustering. Weitere Informationen finden Sie in der vollständigen Liste der [Machine Learning-Module][machine-learning-modules].
+Machine Learning Studio unterstützt moderne Algorithmen wie z. B. skalierbare Boosted Decision-Strukturen, Bayessche Empfehlungssysteme, tiefe neuronale Netze und die von Microsoft Research entwickelten "Entscheidungsdschungel". Skalierbare Open Source-Pakete für Machine Learning wie z. B. Vowpal Wabbit sind ebenfalls enthalten. Machine Learning Studio unterstützt Algorithmen für Machine Learning für mehrklassige und binäre Klassifizierung, Regression und Clustering. Weitere Informationen finden Sie in der vollständigen Liste der [Machine Learning-Module][machine-learning-modules].
 
 **Wird automatisch der richtige Machine Learning-Algorithmus für meine Daten vorgeschlagen?**
 
@@ -224,13 +224,13 @@ Nr.
 
 **Gibt es eine Grundlatenz, die für alle Webdienste erwartet wird?**
 
-Informationen hierzu finden Sie unter [Einschränkungen für Azure-Abonnements](../azure-subscription-service-limits.md)
+Informationen hierzu finden Sie unter [Einschränkungen für Azure-Abonnements](../azure-subscription-service-limits.md).
 
 ### Verwenden Sie
 
 **Wann sollte ich mein Vorhersagemodell als Stapelausführungsdienst oder als Anfrage-Antwort-Dienst ausführen?**
 
-Der Anfrage-Antwort-Dienst (Request Response Service, RRS) ist ein hoch skalierbarer Webdienst mit niedriger Latenz, der eine Schnittstelle für zustandslose Modelle bereitstellt, die in der Experimentumgebung erstellt und bereitgestellt wurden. Der Stapelausführungsdienst (Batch Execution Service, BES) dient zur asynchronen Bewertung eines Stapels von Datensätzen. Die Eingaben für RRS und BES sind einander sehr ähnlich. BES liest im Gegensatz zu RRS einen Block von Einträgen aus einer Vielzahl von Quellen wie z. B. dem Blobdienst und dem Tabellenspeicherdienst in Azure, Azure SQL-Datenbank, HDInsight (Hive-Abfrage) und HTTP-Quellen. Weitere Informationen finden Sie unter [Verwenden von Machine Learning-Webdiensten](machine-learning-consume-web-services.md).
+Der Anfrage-Antwort-Dienst (Request Response Service, RRS) ist ein hoch skalierbarer Webdienst mit niedriger Latenz, der eine Schnittstelle für zustandslose Modelle bereitstellt, die in der Experimentumgebung erstellt und bereitgestellt wurden. Der Stapelausführungsdienst (Batch Execution Service, BES) dient zur asynchronen Bewertung eines Stapels von Datensätzen. Die Eingaben für RRS und BES sind einander sehr ähnlich. BES liest im Gegensatz zu RRS einen Block von Einträgen aus einer Vielzahl von Quellen wie z. B. dem Blobdienst und dem Tabellenspeicherdienst in Azure, Azure SQL-Datenbank, HDInsight (Hive-Abfrage) und HTTP-Quellen. Weitere Informationen finden Sie unter [Verwenden von Machine Learning-Webdiensten](machine-learning-consume-web-services.md).
 
 **Wie aktualisiere ich das Modell für den bereitgestellten Webdienst?**
 
@@ -268,21 +268,21 @@ Nein.
 
 **Wie viele Daten kann ich für das Training verwenden?**
 
-Module in Machine Learning Studio unterstützen in normalen Anwendungsfällen DataSets bis zu einer Größe von 10 GB an dichten numerischen Daten. Wenn für ein Modul mehr als eine Eingabe verwendet wird, beträgt die Gesamtgröße für alle Eingaben zusammen 10 GB. Sie können über Hive- oder Azure SQL-Datenbank-Abfragen oder per Vorverarbeitung durch Module vom Typ „Lernen nach Anzahl“ ([Datentransformation/Lernen mit Zahlen][counts]) auch Teile größerer Datasets übernehmen.
+Module in Machine Learning Studio unterstützen in normalen Anwendungsfällen DataSets bis zu einer Größe von 10 GB an dichten numerischen Daten. Wenn für ein Modul mehr als eine Eingabe verwendet wird, beträgt die Gesamtgröße für alle Eingaben zusammen 10 GB. Sie können über Hive- oder Azure SQL-Datenbank-Abfragen oder per Vorverarbeitung durch Module vom Typ „Lernen nach Anzahl“ ([Datentransformation/Lernen mit Zahlen][counts]) auch Teile größerer Datasets übernehmen.
 
-Die folgenden Typen von Daten können während der Featurenormalisierung in größere DataSets erweitert werden und sind auf weniger als 10 GB beschränkt:
+Die folgenden Typen von Daten können während der Featurenormalisierung in größere DataSets erweitert werden und sind auf weniger als 10 GB beschränkt:
 
 - Mit geringer Dichte
 - Kategorisch
 - Zeichenfolgen
 - Binärdaten
 
-Die folgenden Bereiche sind auf DataSets mit einer Größe unter 10 GB beschränkt:
+Die folgenden Bereiche sind auf DataSets mit einer Größe unter 10 GB beschränkt:
 
 - Empfohlene Module
 - SMOTE-Modul
 - Skripting-Module: R, Python, SQL
-- Module, bei denen die Größe der Ausgabedaten die der Eingabedaten überschreiten kann, z. B. Join oder Feature-Hashing.
+- Module, bei denen die Größe der Ausgabedaten die der Eingabedaten überschreiten kann, z. B. Join oder Feature-Hashing.
 - Cross-Validate, Tune Model Hyperparameters, Ordinal Regression und One-vs-All Multiclass, wenn eine sehr große Anzahl von Iterationen durchgeführt wird.
 
 Für Datasets, die größer als einige GB sind, sollten Sie die Daten in Azure Storage oder Azure SQL-Datenbank laden oder HDInsight verwenden, anstatt die Daten direkt aus einer lokalen Datei hochzuladen.
@@ -379,15 +379,15 @@ Eine API-Computestunde ist die Abrechnungseinheit für die Dauer von API-Aufrufe
 
 **Wie lange dauert ein typischer Produktions-API-Aufruf?**
 
-Die Produktions-API-Aufrufzeiten können erheblich variieren und reichen im Allgemeinen von Hundertstel Millisekunden bis zu einigen Sekunden, können aber auch mehrere Minuten betragen. Dies richtet sich jeweils nach der Komplexität der Datenverarbeitung und des Machine Learning-Modells. Die beste Möglichkeit zur Einschätzung der Produktions-API-Aufrufzeiten besteht darin, basierend auf dem Machine Learning-Dienst eine Benchmark für ein Modell zu erstellen.
+Die Produktions-API-Aufrufzeiten können erheblich variieren und reichen im Allgemeinen von Hundertstel Millisekunden bis zu einigen Sekunden, können aber auch mehrere Minuten betragen. Dies richtet sich jeweils nach der Komplexität der Datenverarbeitung und des Machine Learning-Modells. Die beste Möglichkeit zur Einschätzung der Produktions-API-Aufrufzeiten besteht darin, basierend auf dem Machine Learning-Dienst einen Benchmark für ein Modell zu erstellen.
 
 **Was ist eine Studio-Computestunde?**
 
 Eine Studio-Computestunde ist die Abrechnungseinheit für den gesamten Zeitraum, in dem für Experimente Computeressourcen in Studio genutzt werden.
 
-**Welche Bedeutung hat die Entwicklungs-/Testebene in den neuen Webdiensten?**
+**Welche Bedeutung hat die Dev/Test-Ebene in den neuen Webdiensten?**
 
-Die neuen Azure ML-Webdienste verfügen über mehrere Ebenen (Tarife), die Sie zum Bereitstellen Ihres Abrechnungsplans verwenden können. Die Entwicklungs-/Testebene ist eine Ebene mit begrenzten enthaltenen Mengen. So können Sie Ihr Experiment als neuen Webdienst testen, ohne dass Kosten anfallen. Sie können einen Testlauf durchführen, um die Funktionsweise zu testen.
+Die neuen Azure ML-Webdienste verfügen über mehrere Ebenen (Tarife), die Sie zum Bereitstellen Ihres Abrechnungsplans verwenden können. Die Dev/Test-Ebene ist eine Ebene mit begrenzten enthaltenen Mengen. So können Sie Ihr Experiment als neuen Webdienst testen, ohne dass Kosten anfallen. Sie können einen Testlauf durchführen, um die Funktionsweise zu testen.
 
 **Gibt es separate Speichergebühren?**
 
@@ -395,7 +395,7 @@ Der Free-Tarif von Machine Learning erfordert keinen separaten Speicher und läs
 
 **Wie unterstützt Machine Learning hoch verfügbares Arbeiten?**
 
-Die Produktions-API-Aufrufzeiten können erheblich variieren und reichen im Allgemeinen von Hundertstel Millisekunden bis zu einigen Sekunden, können aber auch mehrere Minuten betragen. Dies richtet sich jeweils nach der Komplexität der Datenverarbeitung und des Machine Learning-Modells. Die beste Möglichkeit zur Einschätzung der Produktions-API-Aufrufzeiten besteht darin, basierend auf dem Machine Learning-Dienst eine Benchmark für ein Modell zu erstellen.
+Die Produktions-API-Aufrufzeiten können erheblich variieren und reichen im Allgemeinen von Hundertstel Millisekunden bis zu einigen Sekunden, können aber auch mehrere Minuten betragen. Dies richtet sich jeweils nach der Komplexität der Datenverarbeitung und des Machine Learning-Modells. Die beste Möglichkeit zur Einschätzung der Produktions-API-Aufrufzeiten besteht darin, basierend auf dem Machine Learning-Dienst einen Benchmark für ein Modell zu erstellen.
 
 **Auf welcher Art von Computeressourcen werden meine Produktions-API-Aufrufe ausgeführt?**
 
@@ -415,7 +415,7 @@ Eine Planinstanz ist eine Einheit von enthaltenen Mengen, die Sie Ihrem Abrechnu
 
 **Wie viele Planinstanzen kann ich hinzufügen?**
 
-Ein Abonnement kann über eine Instanz der Entwicklungs-/Testebene verfügen.
+Ein Abonnement kann über eine Instanz der Dev/Test-Ebene verfügen.
 
 Für die Tarife S1, S2 und S3 können Sie beliebig viele Instanzen hinzufügen.
 
@@ -464,7 +464,7 @@ Die neuen Abrechnungspläne sind in den drei Produktionsregionen verfügbar, in 
 
 **Ich verfüge über Webdienste in mehreren Regionen. Benötige ich einen Plan für jede Region?**
 
-Ja. Die Preise der Pläne variieren je nach Region. Wenn Sie einen Webdienst in einer anderen Region bereitstellen, müssen Sie dafür einen speziellen Plan für die Region zuweisen.
+Ja. Die Preise der Pläne variieren je nach Region. Wenn Sie einen Webdienst in einer anderen Region bereitstellen, müssen Sie dafür einen regionsspezifischen Plan zuweisen.
 
 ### Neue Webdienste – Überschreitungen
 
@@ -474,15 +474,15 @@ Sie können die Nutzung Ihrer Pläne im Azure Machine Learning-Webdienste-Portal
 
 In den Spalten „Transaktionen“ und „Compute“ der Tabelle werden die enthaltenen Mengen des Plans und die Nutzung in Prozent angezeigt.
 
-**Was passiert, wenn ich die enthaltenen Mengen der Entwicklungs-/Testebene aufgebraucht habe?**
+**Was passiert, wenn ich die enthaltenen Mengen der Dev/Test-Ebene aufgebraucht habe?**
 
-Dienste, denen eine Entwicklungs-/Testebene zugewiesen wurde, werden beendet, bis der nächste Zeitraum beginnt oder bis Sie sie in einen kostenpflichtigen Tarif verschieben.
+Dienste, denen eine Dev/Test-Ebene zugewiesen wurde, werden beendet, bis der nächste Zeitraum beginnt oder bis Sie sie in einen kostenpflichtigen Tarif verschieben.
 
 **Wie werden bei klassischen Webdiensten und Überschreitungen von neuen Webdiensten die Preise für Workloads vom Typ Anforderung/Antwort (RRS) und Batch (BES) berechnet?**
 
-Bei einer RSS-Workload zahlen Sie für jeden API-Transaktionsaufruf, den Sie vornehmen, sowie für die Computezeit im Zusammenhang mit diesen Anforderungen. Zur Berechnung der Kosten für RRS-Produktions-API-Transaktionen wird daher die Gesamtzahl Ihrer durchgeführten API-Aufrufe mit dem Preis pro 1.000 Transaktionen (anteilsmäßig für die einzelnen Transaktionen) multipliziert. Zur Berechnung der Kosten für Ihre RSS-API-Produktions-API-Berechnungsstunden wird die Summe der für jeden API-Aufruf benötigten Zeit mit der Gesamtzahl an API-Transaktionen und dem Preis pro Produktions-API-Computestunde multipliziert. Beispiel: Für eine Standard S1-Überschreitung lautet das Ergebnis für 1.000.000 API-Transaktionen mit einer Ausführungszeit von je 0,72 Sekunden für Produktions-API-Transaktionen „500 USD“ (1.000.000 * 0,50 USD / 1.000 API-Transaktionen) und für Produktions-API-Berechnungsstunden „400 USD“ (1.000.000 * 0,72 Sek. * 2 USD/Std.). Dies ergibt eine Gesamtsumme von 900 USD.
+Bei einer RSS-Workload zahlen Sie für jeden API-Transaktionsaufruf, den Sie vornehmen, sowie für die Computezeit im Zusammenhang mit diesen Anforderungen. Zur Berechnung der Kosten für RRS-Produktions-API-Transaktionen wird daher die Gesamtzahl Ihrer durchgeführten API-Aufrufe mit dem Preis pro 1.000 Transaktionen (anteilsmäßig für die einzelnen Transaktionen) multipliziert. Zur Berechnung der Kosten für Ihre RSS-API-Produktions-API-Berechnungsstunden wird die Summe der für jeden API-Aufruf benötigten Zeit mit der Gesamtzahl an API-Transaktionen und dem Preis pro Produktions-API-Computestunde multipliziert. Beispiel: Für eine Standard S1-Überschreitung lautet das Ergebnis für 1.000.000 API-Transaktionen mit einer Ausführungszeit von je 0,72 Sekunden für Produktions-API-Transaktionen „500 USD“ (1.000.000 · 0,50 USD/1.000 API-Transaktionen) und für Produktions-API-Berechnungsstunden „400 USD“ (1.000.000 · 0,72 Sek. · 2 USD/Std.). Dies ergibt eine Gesamtsumme von 900 USD.
 
-Bei BES-Workloads erfolgt die Abrechnung nach dem gleichen Prinzip. Allerdings stehen die API-Transaktionskosten hier für die Anzahl von initiierten Batchaufträgen, und die Kosten für Computestunden stellen die Computezeit im Zusammenhang mit diesen Batchaufträgen dar. Zur Berechnung der Kosten für BES-Produktions-API-Transaktionen wird daher die Gesamtzahl der initiierten Aufträge mit dem Preis pro 1.000 Transaktionen (anteilsmäßig für die einzelnen Transaktionen) multipliziert. Zur Berechnung der Kosten für BES-Produktions-API-Berechnungsstunden wird die Summe der für die Ausführung der einzelnen Zeilen in Ihrem Auftrag benötigten Zeit mit der Gesamtzahl an Zeilen in Ihrem Auftrag, mit der Gesamtzahl an Aufträgen und mit dem Preis pro Produktions-API-Computestunde multipliziert. Bei Verwendung des Machine Learning-Rechners zeigt der Transaktionszähler die Anzahl von Aufträgen an, die ausgeführt werden sollen, und im Feld für die Zeit pro Transaktion wird die Gesamtzeit angezeigt, die zur Ausführung aller Zeilen in den einzelnen Aufträgen benötigt wird. Beispiel für eine Standard S1-Überschreitung: Wenn Sie 100 Aufträge pro Tag initiieren, die jeweils 500 Zeilen umfassen und deren Ausführung jeweils 0,72 Sekunden dauert, betragen Ihre monatlichen Kosten für Produktions-API-Transaktionen 1,55 USD (100 Aufträge pro Tag = 3.100 Aufträge/Monat * 0,50 USD / 1.000 API-Transaktionen). Die Kosten für Produktions-API-Berechnungsstunden liegen bei 620 USD (500 Zeilen * 0,72 Sek. * 3.100 Aufträge * 2 USD/Std.). Dies ergibt eine Gesamtsumme von 621,55.
+Bei BES-Workloads erfolgt die Abrechnung nach dem gleichen Prinzip. Allerdings stehen die API-Transaktionskosten hier für die Anzahl von initiierten Batchaufträgen, und die Kosten für Computestunden stellen die Computezeit im Zusammenhang mit diesen Batchaufträgen dar. Zur Berechnung der Kosten für BES-Produktions-API-Transaktionen wird daher die Gesamtzahl der initiierten Aufträge mit dem Preis pro 1.000 Transaktionen (anteilsmäßig für die einzelnen Transaktionen) multipliziert. Zur Berechnung der Kosten für BES-Produktions-API-Berechnungsstunden wird die Summe der für die Ausführung der einzelnen Zeilen in Ihrem Auftrag benötigten Zeit mit der Gesamtzahl an Zeilen in Ihrem Auftrag, mit der Gesamtzahl an Aufträgen und mit dem Preis pro Produktions-API-Computestunde multipliziert. Bei Verwendung des Machine Learning-Rechners zeigt der Transaktionszähler die Anzahl von Aufträgen an, die ausgeführt werden sollen, und im Feld für die Zeit pro Transaktion wird die Gesamtzeit angezeigt, die zur Ausführung aller Zeilen in den einzelnen Aufträgen benötigt wird. Beispiel für eine Standard S1-Überschreitung: Wenn Sie 100 Aufträge pro Tag initiieren, die jeweils 500 Zeilen umfassen und deren Ausführung jeweils 0,72 Sekunden dauert, betragen Ihre monatlichen Kosten für Produktions-API-Transaktionen 1,55 USD (100 Aufträge pro Tag = 3.100 Aufträge/Monat · 0,50 USD je 1.000 API-Transaktionen). Die Kosten für Produktions-API-Berechnungsstunden liegen bei 620 USD (500 Zeilen · 0,72 Sek. · 3.100 Aufträge · 2 USD/Std.). Dies ergibt eine Gesamtsumme von 621,55 USD.
 
 ### Klassische Azure ML-Webdienste
 
@@ -502,20 +502,20 @@ Die Abrechnung des Azure ML-API-Diensts hängt davon ab, ob es sich um einen kla
 
 Die unten angegebenen Kosten werden pro Arbeitsbereich für Ihr Abonnement aggregiert.
 
-* ML-Arbeitsplatzabonnement – Das ML-Arbeitsplatzabonnement ist eine Monatsgebühr, die Zugriff auf einen ML Studio-Arbeitsbereich ermöglicht und zum Ausführen von Experimenten in Studio sowie für die Nutzung der Produktions-APIs erforderlich ist.
-* Studio-Versuchstunden – Hierbei werden alle Computegebühren zusammengefasst, die durch laufende Experimente in ML Studio und laufende Produktions-API-Aufrufe in der Stagingumgebung angefallen sind.
+* ML-Arbeitsplatzabonnement: Das ML-Arbeitsplatzabonnement ist eine Monatsgebühr, die Zugriff auf einen ML Studio-Arbeitsbereich ermöglicht und zum Ausführen von Experimenten in Studio sowie für die Nutzung der Produktions-APIs erforderlich ist.
+* Studio-Versuchstunden: Hierbei werden alle Computegebühren zusammengefasst, die durch laufende Experimente in ML Studio und laufende Produktions-API-Aufrufe in der Stagingumgebung angefallen sind.
 * Greifen Sie auf Daten zu, indem Sie eine Verbindung mit einer lokalen SQL Server-Instanz in Ihren Modellen für Training und Bewertung herstellen.
 * Für klassische Webdienste:
-	* Produktions-API-Berechnungsstunden – Dieser Zähler umfasst Computegebühren, die durch in der Produktion ausgeführte Webdienste anfallen.
-	* Produktions-API-Transaktionen (in 1000) – Dieser Zähler umfasst die Gebühren, die pro Aufruf Ihres Produktionswebdiensts anfallen.
+	* Produktions-API-Berechnungsstunden: Dieser Zähler umfasst Computegebühren, die durch in der Produktion ausgeführte Webdienste anfallen.
+	* Produktions-API-Transaktionen (in 1000): Dieser Zähler umfasst die Gebühren, die pro Aufruf Ihres Produktionswebdiensts anfallen.
 
 Abgesehen von den oben genannten Gebühren werden die Gebühren für neue Webdienste basierend auf dem ausgewählten Plan aggregiert:
 
-* API-Plan Standard-S1/S2/S3 (Einheiten) – Steht für den Typ der Instanz, der für neue Webdienste ausgewählt wurde.
-* Überschreitung API-Computestunden Standard-S1/S2/S3 (Einheiten) – Enthält Computegebühren, die für die in der Produktion ausgeführten neuen Webdienste anfallen, nachdem die enthaltenen Mengen in vorhandenen Instanzen aufgebraucht sind. Die zusätzliche Nutzung wird anhand der Überschreitungsrate berechnet, die dem Tarif des S1/S2/S3-Plans zugeordnet ist.
-* Überschreitung API-Transaktionen Standard-S1/S2/S3 (in 1000) – Enthält Gebühren, die pro Aufruf Ihres neuen Webdiensts für die Produktion anfallen, nachdem die enthaltenen Mengen in vorhandenen Instanzen aufgebraucht sind. Die zusätzliche Nutzung wird anhand der Überschreitungsrate berechnet, die dem Tarif des S1/S2/S3-Plans zugeordnet ist.
-* Enthaltene Menge an API-Computestunden – Umfasst bei den neuen Webdiensten die enthaltene Menge von API-Computestunden.
-* Enthaltene Menge an API-Transaktionen (in 1000) – Umfasst bei den neuen Webdiensten die enthaltene Menge von API-Transaktionen.
+* API-Plan Standard-S1/S2/S3 (Einheiten): Steht für den Typ der Instanz, der für neue Webdienste ausgewählt wurde.
+* Überschreitung API-Computestunden Standard-S1/S2/S3 (Einheiten): Enthält Computegebühren, die für die in der Produktion ausgeführten neuen Webdienste anfallen, nachdem die enthaltenen Mengen in vorhandenen Instanzen aufgebraucht sind. Die zusätzliche Nutzung wird anhand der Überschreitungsrate berechnet, die dem Tarif des S1/S2/S3-Plans zugeordnet ist.
+* Überschreitung API-Transaktionen Standard-S1/S2/S3 (in 1000): Enthält Gebühren, die pro Aufruf Ihres neuen Webdiensts für die Produktion anfallen, nachdem die enthaltenen Mengen in vorhandenen Instanzen aufgebraucht sind. Die zusätzliche Nutzung wird anhand der Überschreitungsrate berechnet, die dem Tarif des S1/S2/S3-Plans zugeordnet ist.
+* Enthaltene Menge an API-Computestunden: Umfasst bei den neuen Webdiensten die enthaltene Menge von API-Computestunden.
+* Enthaltene Menge an API-Transaktionen (in 1000): Umfasst bei den neuen Webdiensten die enthaltene Menge von API-Transaktionen.
 
 
 **Wie registriere ich mich für den Free-Tarif von Azure ML?**
@@ -524,7 +524,7 @@ Dazu benötigen Sie nur ein Microsoft-Konto. Wechseln Sie zur [Azure Machine Lea
 
 **Wie registriere ich mich für den Standard-Tarif von Azure ML?**
 
-Zunächst benötigen Sie Zugriff auf ein Azure-Abonnement, um einen Standard-ML-Arbeitsbereich erstellen zu können. Sie können sich für ein 30-tägiges, kostenloses Azure-Testabonnement registrieren und später ein Upgrade auf ein kostenpflichtiges Azure-Abonnement durchführen oder direkt ein kostenpflichtiges Azure-Abonnement erwerben. Sobald Sie Zugriff auf das Abonnement haben, können Sie über das klassische Microsoft Azure-Portal einen Machine Learning-Arbeitsbereich erstellen. Lesen Sie die [Schritt-für-Schritt-Anleitungen](https://azure.microsoft.com/trial/get-started-machine-learning-b/).
+Zunächst benötigen Sie Zugriff auf ein Azure-Abonnement, um einen ML Standard-Arbeitsbereich erstellen zu können. Sie können sich für ein 30-tägiges, kostenloses Azure-Testabonnement registrieren und später ein Upgrade auf ein kostenpflichtiges Azure-Abonnement durchführen oder direkt ein kostenpflichtiges Azure-Abonnement erwerben. Sobald Sie Zugriff auf das Abonnement haben, können Sie über das klassische Microsoft Azure-Portal einen Machine Learning-Arbeitsbereich erstellen. Lesen Sie die [Schritt-für-Schritt-Anleitungen](https://azure.microsoft.com/trial/get-started-machine-learning-b/).
 
 Alternativ können Sie auch von einem Standard-ML-Arbeitsbereichbesitzer eingeladen werden, auf den Arbeitsbereich des Besitzers zuzugreifen.
 
@@ -538,7 +538,7 @@ Ja. Sie können Machine Learning-Modelle im Rahmen des Free-Tarifs mit Staging-A
 
 **Worin besteht der Unterschied zwischen der kostenlosen Testversion von Azure und dem Free-Tarif von Azure Machine Learning?**
 
-Die [kostenlose Testversion von Microsoft Azure](https://azure.microsoft.com/free/) bietet Gutschriften, die einen Monat lang für jeden Azure-Dienst genutzt werden können. Der Free-Tarif von Azure Machine Learning hingegen stellt vor allem einen kontinuierlichen Zugriff auf den Azure Machine Learning-Dienst für produktionsfremde Workloads ermöglicht.
+Die [kostenlose Testversion von Microsoft Azure](https://azure.microsoft.com/free/) bietet Gutschriften, die einen Monat lang für jeden Azure-Dienst genutzt werden können. Der Free-Tarif von Azure Machine Learning hingegen stellt vor allem einen kontinuierlichen Zugriff auf den Azure Machine Learning-Dienst für produktionsfremde Workloads sicher.
 
 **Wie verschiebe ich ein Experiment vom Free-Tarif in den Standard-Tarif?**
 
@@ -582,4 +582,4 @@ Der Machine Learning-Dienst ist ein mehrinstanzenfähiger Dienst, und die tatsä
 [python]: https://msdn.microsoft.com/library/azure/CDB56F95-7F4C-404D-BDE7-5BB972E6F232
 [counts]: https://msdn.microsoft.com/library/azure/dn913056.aspx
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0914_2016-->

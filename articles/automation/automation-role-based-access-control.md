@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="06/20/2016"
+   ms.date="09/12/2016"
    ms.author="magoedte;sngun"/>
 
 # Rollenbasierte Zugriffssteuerung in Azure Automation
@@ -36,7 +36,7 @@ Der Zugriff wird in Azure Automation erteilt, indem den Benutzern, Gruppen und A
 
 >[AZURE.NOTE] Es ist nicht möglich, Zugriffsrechte bestimmten Runbooks zu gewähren, sondern nur für die Ressourcen und Aktionen im Automation-Konto.
 
-In diesem Artikel zeigen wir Ihnen Schritt für Schritt, wie Sie eine rollenbasierte Zugriffssteuerung in Azure Automation einrichten. Zuerst sehen wir uns aber die einzelnen Berechtigungen genauer an, die für die Rollen „Mitwirkender“, „Leser“, „Operator für Automation“ und „Benutzerzugriffsadministrator“ gewährt werden. Das Ziel ist ein gutes Verständnis der Berechtigungen, bevor wir Benutzern Rechte unter dem Automation-Konto gewähren. Andernfalls kann dies unbeabsichtigte oder unerwünschte Konsequenzen haben.
+In diesem Artikel zeigen wir Ihnen Schritt für Schritt, wie Sie eine rollenbasierte Zugriffssteuerung in Azure Automation einrichten. Zuerst sehen wir uns aber die einzelnen Berechtigungen genauer an, die für die Rollen „Mitwirkender“, „Leser“, „Operator für Automation“ und „Benutzerzugriffsadministrator“ gewährt werden. Das Ziel ist ein gutes Verständnis der Berechtigungen, bevor wir Benutzern Rechte für das Automation-Konto gewähren. Andernfalls kann dies unbeabsichtigte oder unerwünschte Konsequenzen haben.
 
 ## Berechtigungen für die Rolle „Mitwirkender“
 
@@ -127,17 +127,17 @@ Die folgende Tabelle enthält die speziellen Aktionen, die von der Rolle „Benu
 
 ## Konfigurieren einer rollenbasierten Zugriffssteuerung für Automation-Konten mittels Azure-Portal
 
-1.	Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an, und öffnen Sie auf dem Blatt „Automation-Konten“ Ihr Automation-Konto.  
+1.	Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an, und öffnen Sie auf dem Blatt „Automation-Konten“ Ihr Automation-Konto.
 
 2.	Klicken Sie oben rechts auf die **Zugriffssteuerung**. Dadurch wird das Blatt **Benutzer** geöffnet, auf dem Sie neue Benutzer, Gruppen und Anwendungen hinzufügen können, um Ihr Automation-Konto zu verwalten. Des Weiteren können Sie die vorhandenen Rollen anzeigen, die für das Automation-Konto konfiguriert werden können.
 
     ![Zugriffsschaltfläche](media/automation-role-based-access-control/automation-01-access-button.png)
 
->[AZURE.NOTE] **Abonnement-Administratoren** ist als Standardbenutzer bereits vorhanden. Die Active Directory-Gruppe der Abonnement-Administratoren umfasst die Dienstadministratoren und Co-Administratoren für Ihr Azure-Abonnement. Der Dienstadministrator ist der Besitzer Ihres Azure-Abonnements und dessen Ressourcen und wird auch für die Automation-Konten die Rolle des Besitzers erben. Dies bedeutet, dass der Zugriff für **Dienstadministratoren und Co-Administratoren** eines Abonnements **geerbt** wird, während er für alle anderen Benutzer **zugewiesen** wird. Klicken Sie auf **Abonnementadministratoren**, um mehr über deren Rechte zu erfahren.
+>[AZURE.NOTE] **Abonnement-Administratoren** ist als Standardbenutzer bereits vorhanden. Die Active Directory-Gruppe der Abonnementadministratoren umfasst die Dienstadministratoren und Co-Administratoren für Ihr Azure-Abonnement. Der Dienstadministrator ist der Besitzer Ihres Azure-Abonnements und dessen Ressourcen und wird auch für die Automation-Konten die Rolle des Besitzers erben. Dies bedeutet, dass der Zugriff für **Dienstadministratoren und Co-Administratoren** eines Abonnements **geerbt** wird, während er für alle anderen Benutzer **zugewiesen** wird. Klicken Sie auf **Abonnement-Administratoren**, um mehr über deren Rechte zu erfahren.
 
 ### Einen neuen Benutzer hinzufügen und eine Rolle zuweisen
 
-1.	Klicken Sie im Benutzerblatt auf **Hinzufügen**, um das Blatt **Zugriff hinzufügen** zu öffnen, auf dem Sie einen Benutzer, eine Gruppe oder eine Anwendung hinzufügen und ihnen Rollen zuweisen können.  
+1.	Klicken Sie im Benutzerblatt auf **Hinzufügen**, um das Blatt **Zugriff hinzufügen** zu öffnen, auf dem Sie einen Benutzer, eine Gruppe oder eine Anwendung hinzufügen und ihnen Rollen zuweisen können.
 
     ![Benutzer hinzufügen](media/automation-role-based-access-control/automation-02-add-user.png)
 
@@ -145,7 +145,7 @@ Die folgende Tabelle enthält die speziellen Aktionen, die von der Rolle „Benu
 
     ![Rolle wählen](media/automation-role-based-access-control/automation-03-select-role.png)
 
-3.	Klicken Sie auf **Benutzer hinzufügen**, um das Blatt **Benutzer hinzufügen** zu öffnen. Falls Sie bereits Benutzer, Gruppen oder Anwendungen hinzugefügt haben, um Ihr Abonnement zu verwalten, werden diese Benutzer aufgelistet und Sie können sie auswählen um ihnen den Zugriff zu erteilen. Falls keine Benutzer aufgeführt werden oder falls der Benutzer, den Sie hinzufügen möchten, nicht auf der Liste steht, klicken Sie auf **Einladen**, um das Blatt **Einen Gast einladen** zu öffnen. Von dort können Sie jeden Benutzer mit einer gültigen Microsoft-Konto-E-Mail-Adresse wie Outlook.com, OneDrive oder Xbox Live ID einladen. Wenn Sie die E-Mail-Adresse des Benutzers eingegeben haben, klicken Sie auf **Auswählen**, um den Benutzer hinzuzufügen, und dann auf **OK**.
+3.	Klicken Sie auf **Benutzer hinzufügen**, um das Blatt **Benutzer hinzufügen** zu öffnen. Falls Sie bereits Benutzer, Gruppen oder Anwendungen hinzugefügt haben, um Ihr Abonnement zu verwalten, werden diese Benutzer aufgelistet, und Sie können sie auswählen, um ihnen den Zugriff zu erteilen. Falls keine Benutzer aufgeführt werden oder falls der Benutzer, den Sie hinzufügen möchten, nicht auf der Liste steht, klicken Sie auf **Einladen**, um das Blatt **Einen Gast einladen** zu öffnen. Von dort können Sie jeden Benutzer mit einer gültigen Microsoft-Konto-E-Mail-Adresse wie Outlook.com, OneDrive oder Xbox Live ID einladen. Wenn Sie die E-Mail-Adresse des Benutzers eingegeben haben, klicken Sie auf **Auswählen**, um den Benutzer hinzuzufügen, und dann auf **OK**.
 
     ![Hinzufügen von Benutzern](media/automation-role-based-access-control/automation-04-add-users.png)
  
@@ -205,7 +205,7 @@ Dieser Benutzer hat auch keine Zugriffsrechte, um die einem Runbook zugeordneten
 
 Rollenbasierter Zugriff kann für ein Automation-Konto auch mit den folgenden [Azure PowerShell-Cmdlets](../active-directory/role-based-access-control-manage-access-powershell.md) konfiguriert werden.
 
-• [Get-AzureRmRoleDefinition](https://msdn.microsoft.com/library/mt603792.aspx) listet alle in Azure Active Directory verfügbaren RBAC-Rollen auf. Sie können diesen Befehl zusammen mit der **Name**-Eigenschaft verwenden, um alle Aktionen aufzulisten, die von einer bestimmte Rolle durchgeführt werden können. **Beispiel:** ![Beziehe Rollendefinition](media/automation-role-based-access-control/automation-14-get-azurerm-role-definition.png)
+• [Get-AzureRmRoleDefinition](https://msdn.microsoft.com/library/mt603792.aspx) listet alle in Azure Active Directory verfügbaren RBAC-Rollen auf. Sie können diesen Befehl zusammen mit der **Name**-Eigenschaft verwenden, um alle Aktionen aufzulisten, die von einer bestimmten Rolle durchgeführt werden können. **Beispiel:** ![Beziehe Rollendefinition](media/automation-role-based-access-control/automation-14-get-azurerm-role-definition.png)
 
 • [Get-AzureRmRoleAssignment](https://msdn.microsoft.com/library/mt619413.aspx) listet die Rollenzuweisungen durch Azure AD RBAC für den angegebenen Bereich auf. Ohne einschränkende Parameter gibt dieser Befehl alle Rollenzuweisungen zurück, die in diesem Abonnement erstellt wurden. Verwenden Sie den **ExpandPrincipalGroups**-Parameter, um die Zugriffszuweisungen für den festgelegten Benutzer sowie die Gruppen, denen der Benutzer angehört, aufzulisten. **Beispiel:** Verwenden Sie den folgenden Befehl, um alle Benutzer innerhalb eines Automation-Kontos mit ihren Rollen aufzulisten.
 
@@ -227,8 +227,8 @@ Ersetzen Sie in den obigen Beispielen die **Anmelde-ID**, die **Abonnement-ID**,
 
 
 ## Nächste Schritte
--  Weitere Informationen zu den verschiedenen Möglichkeiten, wie Sie die rollenbasierte Zugriffsteuerung für Azure Automation konfigurieren können, finden Sie unter [Verwalten der rollenbasierten Zugriffssteuerung mit Azure PowerShell](../active-directory/role-based-access-control-manage-access-powershell.md).
+-  Weitere Informationen zu den verschiedenen Möglichkeiten, die rollenbasierte Zugriffsteuerung für Azure Automation zu konfigurieren, finden Sie unter [Verwalten der rollenbasierten Zugriffssteuerung mit Azure PowerShell](../active-directory/role-based-access-control-manage-access-powershell.md).
 - Weitere Informationen zu verschiedenen Methoden zum Starten eines Runbooks finden Sie unter [Starten eines Runbooks in Azure Automation](automation-starting-a-runbook.md).
 - Weitere Informationen zu verschiedenen Runbooktypen finden Sie unter [Azure Automation-Runbooktypen](automation-runbook-types.md).
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0914_2016-->

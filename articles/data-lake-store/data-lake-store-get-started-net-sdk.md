@@ -4,7 +4,7 @@
    services="data-lake-store"
    documentationCenter=""
    authors="nitinme"
-   manager="paulettm"
+   manager="jhubbard"
    editor="cgronlun"/>
 
 <tags
@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="07/18/2016"
+   ms.date="09/13/2016"
    ms.author="nitinme"/>
 
 # Erste Schritte mit Azure Data Lake-Speicher mithilfe des .NET SDK
@@ -33,7 +33,6 @@ Erfahren Sie, wie Sie mithilfe des [.NET SDK für Azure Data Lake Store](https:/
 
 * Visual Studio 2013 oder 2015 Die folgenden Anweisungen verwenden Visual Studio 2015.
 * **Ein Azure-Abonnement**. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
-* **Aktiviertes Azure-Abonnement** für die öffentliche Vorschauversion von Data Lake Store. Weitere Informationen finden Sie in den [Anweisungen](data-lake-store-get-started-portal.md#signup).
 * **Erstellen einer Azure Active Directory-Anwendung**. Zur Authentifizierung mithilfe von Azure Active Directory stehen Ihnen zwei Möglichkeiten zur Verfügung: **interaktiv** und **nicht interaktiv**. Je nach der gewählten Authentifizierung gelten unterschiedliche Voraussetzungen.
 	* **Interaktive Authentifizierung** (die in diesem Artikel verwendet wird) – Sie müssen in Azure Active Directory eine **native Clientanwendung** erstellen. Nach dem Erstellen der Anwendung rufen Sie die folgenden Werte ab, die mit der Anwendung in Zusammenhang stehen.
 		- Abrufen von **Client-ID** und **Umleitungs-URI** für die Anwendung
@@ -139,7 +138,7 @@ Im folgenden Codeausschnitt wird eine `AuthenticateUser`-Methode veranschaulicht
  	// Authenticate the user with AAD through an interactive popup.
     // You need to have an application registered with AAD in order to authenticate.
     //   For more information and instructions on how to register your application with AAD, see:
-    //   https://azure.microsoft.com/documentation/articles/resource-group-create-service-principal-portal/
+    //   https://azure.microsoft.com/en-us/documentation/articles/resource-group-create-service-principal-portal/
 	public static TokenCredentials AuthenticateUser(string tenantId, string resource, string appClientId, Uri appRedirectUri, string userId = "")
 	{
 	    var authContext = new AuthenticationContext("https://login.microsoftonline.com/" + tenantId);
@@ -157,7 +156,7 @@ Im folgenden Codeausschnitt wird eine `AuthenticateApplication`-Methode veransch
 	// Authenticate the application with AAD through the application's secret key.
 	// You need to have an application registered with AAD in order to authenticate.
 	//   For more information and instructions on how to register your application with AAD, see:
-	//   https://azure.microsoft.com/documentation/articles/resource-group-create-service-principal-portal/
+	//   https://azure.microsoft.com/en-us/documentation/articles/resource-group-create-service-principal-portal/
 	public static TokenCredentials AuthenticateApplication(string tenantId, string resource, string appClientId, Uri appRedirectUri, SecureString clientSecret)
 	{
 	    var authContext = new AuthenticationContext("https://login.microsoftonline.com/" + tenantId);
@@ -168,7 +167,7 @@ Im folgenden Codeausschnitt wird eine `AuthenticateApplication`-Methode veransch
 	    return new TokenCredentials(tokenAuthResult.AccessToken);
 	}
 	
-## Erstellen eines Data Lake-Speicherkontos
+## Erstellen eines Data Lake-Speicherkontos
 
 Im folgenden Codeausschnitt wird eine `CreateAccount`-Methode veranschaulicht, die Sie zum Erstellen eines Data Lake Store-Kontos verwenden können.
 
@@ -280,7 +279,7 @@ Im folgenden Codeausschnitt wird eine `DownloadFile`-Methode veranschaulicht, di
         stream.Close();
     }
 
-## Löschen eines Data Lake-Speicherkontos
+## Löschen eines Data Lake-Speicherkontos
 
 Im folgenden Codeausschnitt wird eine `DeleteAccount`-Methode veranschaulicht, die Sie zum Löschen eines Data Lake Store-Kontos verwenden können.
 
@@ -402,7 +401,7 @@ Stellen Sie abschließend sicher, dass der hier angegebene lokale Pfad und der D
             // Authenticate the user with AAD through an interactive popup.
             // You need to have an application registered with AAD in order to authenticate.
             //   For more information and instructions on how to register your application with AAD, see:
-            //   https://azure.microsoft.com/documentation/articles/resource-group-create-service-principal-portal/
+            //   https://azure.microsoft.com/en-us/documentation/articles/resource-group-create-service-principal-portal/
             public static TokenCredentials AuthenticateUser(string tenantId, string resource, string appClientId, Uri appRedirectUri, string userId = "")
             {
                 var authContext = new AuthenticationContext("https://login.microsoftonline.com/" + tenantId);
@@ -417,7 +416,7 @@ Stellen Sie abschließend sicher, dass der hier angegebene lokale Pfad und der D
             // Authenticate the application with AAD through the application's secret key.
             // You need to have an application registered with AAD in order to authenticate.
             //   For more information and instructions on how to register your application with AAD, see:
-            //   https://azure.microsoft.com/documentation/articles/resource-group-create-service-principal-portal/
+            //   https://azure.microsoft.com/en-us/documentation/articles/resource-group-create-service-principal-portal/
             public static TokenCredentials AuthenticateApplication(string tenantId, string resource, string appClientId, Uri appRedirectUri, SecureString clientSecret)
             {
                 var authContext = new AuthenticationContext("https://login.microsoftonline.com/" + tenantId);
@@ -527,7 +526,7 @@ Stellen Sie abschließend sicher, dass der hier angegebene lokale Pfad und der D
 - [Sichern von Daten in Data Lake-Speicher](data-lake-store-secure-data.md)
 - [Verwenden von Azure Data Lake Analytics mit Data Lake-Speicher](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 - [Verwenden von Azure HDInsight mit Data Lake-Speicher](data-lake-store-hdinsight-hadoop-use-portal.md)
-- [Data Lake Store .NET SDK Reference](https://msdn.microsoft.com/library/mt581387.aspx) (Referenz zum Data Lake Store .NET SDK)
-- [Data Lake Store REST Reference](https://msdn.microsoft.com/library/mt693424.aspx) (Data Lake Store-REST-Referenz)
+- [Data Lake Store .NET SDK Reference (Referenz zum Data Lake Store .NET SDK)](https://msdn.microsoft.com/library/mt581387.aspx)
+- [Data Lake Store REST Reference (Data Lake Store-REST-Referenz)](https://msdn.microsoft.com/library/mt693424.aspx)
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0914_2016-->

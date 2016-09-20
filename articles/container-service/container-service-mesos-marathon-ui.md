@@ -60,7 +60,7 @@ Protocol | TCP
 Sie müssen den JSON-Modus verwenden, wenn Sie den Containerport statisch einem Port auf dem Agent zuordnen möchten. Wechseln Sie im Assistenten „Neue Anwendung“ hierzu mit dem Umschalter in den **JSON-Modus**. Geben Sie im Abschnitt `portMappings` der Anwendungsdefinition dann Folgendes ein. In diesem Beispiel wird Port 80 des Containers an Port 80 des DC/OS-Agents gebunden. Nachdem Sie diese Änderung vorgenommen haben, können Sie den JSON-Modus für den Assistenten wieder deaktivieren.
 
 ```none
-“hostPort”: 80,
+"hostPort": 80,
 ```
 
 ![Neue Anwendungsbenutzeroberfläche – Beispiel für Port 80](media/dcos/dcos13.png)
@@ -101,4 +101,4 @@ Deep dive on the Azure Container Service with Mesos (Ausführliche Informationen
 
 > [AZURE.VIDEO] azurecon-2015-deep-dive-on-the-azure-container-service-with-mesos]
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0914_2016-->

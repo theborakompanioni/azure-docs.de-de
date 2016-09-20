@@ -14,7 +14,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="csharp"
    ms.workload="data-management"
-   ms.date="09/01/2016"
+   ms.date="09/14/2016"
    ms.author="sstein"/>
 
 # Ausprobieren von SQL-Datenbank: Verwenden von C# zum Erstellen einer SQL-Datenbank mithilfe der SQL-Datenbankbibliothek für .NET
@@ -42,7 +42,7 @@ Damit Sie die in diesem Artikel aufgeführten Schritte ausführen können, benö
 ## Erstellen einer Konsolen-App und Installieren der erforderlichen Bibliotheken
 
 1. Starten Sie Visual Studio.
-2. Klicken Sie auf **Datei** > **Neu** > **Projekt**.
+2. Klicken Sie auf **Datei** > **Neu** > **Projekt**.
 3. Erstellen Sie eine **Konsolenanwendung** mit C#, und nennen Sie sie *SqlDbConsoleApp*.
 
 
@@ -114,7 +114,7 @@ Ersetzen Sie den Inhalt von **Program.cs** durch folgende Angaben, und aktualisi
         {
             // Authenticate:
             _token = GetToken(_tenantId, _applicationId, _applicationSecret);
-            Console.WriteLine("Token aquired. Expires on:" + _token.ExpiresOn);
+            Console.WriteLine("Token acquired. Expires on:" + _token.ExpiresOn);
 
             // Instantiate management clients:
             _resourceMgmtClient = new ResourceManagementClient(new Microsoft.Rest.TokenCredentials(_token.AccessToken));
@@ -291,4 +291,4 @@ Nachdem Sie SQL-Datenbank ausprobiert und mit C# eine Datenbank erstellt haben, 
 [8]: ./media/sql-database-get-started-csharp/add-application2.png
 [9]: ./media/sql-database-get-started-csharp/clientid.png
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0914_2016-->

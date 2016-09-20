@@ -4,7 +4,7 @@
 	services="hdinsight"
 	documentationCenter=""
 	authors="Blackmist"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun"
 	tags="azure-portal"/>
 
@@ -116,7 +116,7 @@ Hier finden Sie eine Liste der typischen Szenarien, in denen Apache Storm in HDI
 * Soziale Analysen
 * Extraktions-, Umwandlungs- und Ladeprozesse (Extract, Transform and Load, ETL)
 * Netzwerküberwachung
-* Suchen
+* Suche
 * Mobile Engagement
 
 ##Wie werden die Daten in HDInsight Storm verarbeitet?
@@ -145,7 +145,7 @@ Apache Storm verarbeitet **Topologien** anstelle der MapReduce-Aufträge, die Si
 
 	* **Nimbus** ist ein Thrift-Dienst, und eine **Topologie** ist eine Thrift-Definition. Aus diesem Grund ist es möglich, Topologien in einer Vielzahl von Programmiersprachen zu entwickeln.
 
-Weitere Informationen zu Storm-Komponenten finden Sie im [Storm Tutorial][apachetutorial] \(in englischer Sprache) auf apache.org.
+Weitere Informationen zu Storm-Komponenten finden Sie im [Storm Tutorial][apachetutorial] (in englischer Sprache) auf apache.org.
 
 
 ##Welche Programmiersprachen kann ich verwenden?
@@ -196,7 +196,7 @@ Ein Beispiel für Tick-Tupel finden Sie unter [Analysieren von Sensordaten mit S
 
 Falls Sie Trident verwenden, erfolgt die Verarbeitung immer als Batches von Tupeln.
 
-###Zwischenspeichern
+###Caching
 
 Speicherinterne Zwischenspeicherung wird oft verwendet, um die Verarbeitung zu beschleunigen, da häufig verwendete Elemente im Speicher erhalten bleiben. Da eine Topologie über mehrere Knoten verteilt ist und jeder Knoten mehrere Prozesse enthält, können Sie mit [fieldsGrouping](http://javadox.com/org.apache.storm/storm-core/0.9.1-incubating/backtype/storm/topology/InputDeclarer.html#fieldsGrouping%28java.lang.String,%20backtype.storm.tuple.Fields%29) sicherstellen, dass Tupel mit Feldern, die für die Cachesuche verwendet werden, immer an denselben Prozess weitergeleitet werden. Auf diese Weise können Sie Duplikate von Cache-Einträgen zwischen Prozessen vermeiden.
 
@@ -225,4 +225,4 @@ Weitere Informationen zu Lösungen für Echtzeitanalysen mit Apache Storm in HDI
 [apachetutorial]: https://storm.apache.org/documentation/Tutorial.html
 [gettingstarted]: hdinsight-apache-storm-tutorial-get-started-linux.md
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0914_2016-->

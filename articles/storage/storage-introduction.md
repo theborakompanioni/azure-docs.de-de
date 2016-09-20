@@ -128,7 +128,7 @@ Eine Konto-SAS delegiert den Zugriff auf Ressourcen in einem oder mehreren der S
 
 Außerdem können Sie einen Container und die dazugehörigen Blobs (oder ein bestimmtes Blob) öffentlich verfügbar machen. Wenn Sie einen Container oder ein Blob als öffentliche Ressource konfigurieren, kann jeder Benutzer anonym und ohne Authentifizierung drauf zugreifen. Mithilfe öffentlicher Container und Blobs können Sie Ressourcen wie Medien und Dokumente verfügbar machen, die auf Websites gehostet werden. Zur Verringerung der Netzwerklatenz für ein globales Publikum können Sie von Websites verwendete Blobdaten in Azure CDN zwischenspeichern.
 
-Weitere Informationen zu Shared Access Signatures finden Sie unter [Shared Access Signatures: Grundlagen zum SAS-Modell](storage-dotnet-shared-access-signature-part-1.md). Weitere Informationen zum sicheren Zugriff auf Ihr Speicherkonto finden Sie unter [Verwalten des anonymen Lesezugriffs auf Container und Blobs](storage-manage-access-to-resources.md) sowie unter [Authentication for the Azure Storage Services](https://msdn.microsoft.com/library/azure/dd179428.aspx) (Authentifizierung für die Azure Storage-Dienste).
+Weitere Informationen zu Shared Access Signatures finden Sie unter [Shared Access Signatures, Teil 1: Grundlagen zum SAS-Modell](storage-dotnet-shared-access-signature-part-1.md). Weitere Informationen zum sicheren Zugriff auf Ihr Speicherkonto finden Sie unter [Verwalten des anonymen Lesezugriffs auf Container und Blobs](storage-manage-access-to-resources.md) sowie unter [Authentication for the Azure Storage Services](https://msdn.microsoft.com/library/azure/dd179428.aspx) (Authentifizierung für die Azure Storage-Dienste).
 
 ## Replikation für Dauerhaftigkeit und hohe Verfügbarkeit
 
@@ -138,12 +138,12 @@ Darüber hinaus finden Sie unter [Azure-Regionen](https://azure.microsoft.com/re
 
 Beim Erstellen eines Speicherkontos müssen Sie eine der folgenden Replikationsoptionen auswählen:
 
-- **Lokal redundanter Speicher (LRS)**: Lokal redundanter Speicher hält drei Kopien Ihrer Daten vor. LRS wird innerhalb eines einzelnen Standorts dreimal in einer einzelnen Region repliziert. LRS schützt Ihre Daten vor normalen Hardwareausfällen, jedoch nicht vor dem Ausfall einer einzelnen Einrichtung.
+- **Lokal redundanter Speicher (LRS):** Lokal redundanter Speicher hält drei Kopien Ihrer Daten vor. LRS wird innerhalb eines einzelnen Standorts dreimal in einer einzelnen Region repliziert. LRS schützt Ihre Daten vor normalen Hardwareausfällen, jedoch nicht vor dem Ausfall einer einzelnen Einrichtung.
   
 	LRS wird zu günstigen Preisen angeboten. Für maximale Dauerhaftigkeit empfehlen wir die Verwendung von georedundantem Speicher (siehe Beschreibung weiter unten).
 
 
-- **Zonenredundanter Speicher (ZRS)**: Zonenredundanter Speicher hält drei Kopien Ihrer Daten vor. ZRS wird über zwei oder drei Standorte hinweg dreimal repliziert – entweder innerhalb einer einzelnen Region oder über zwei Regionen hinweg. Dadurch wird im Vergleich zu LRS eine höhere Dauerhaftigkeit entsteht. ZRS gewährleistet die Dauerhaftigkeit Ihrer Daten innerhalb einer einzelnen Region.
+- **Zonenredundanter Speicher (ZRS):** Zonenredundanter Speicher hält drei Kopien Ihrer Daten vor. ZRS wird über zwei oder drei Standorte hinweg dreimal repliziert – entweder innerhalb einer einzelnen Region oder über zwei Regionen hinweg. Dadurch wird im Vergleich zu LRS eine höhere Dauerhaftigkeit entsteht. ZRS gewährleistet die Dauerhaftigkeit Ihrer Daten innerhalb einer einzelnen Region.
 
 	ZRS bietet eine höhere Dauerhaftigkeit als LRS. Für maximale Dauerhaftigkeit empfehlen wir jedoch die Verwendung von georedundantem Speicher (siehe Beschreibung weiter unten).
 
@@ -267,4 +267,4 @@ Weitere Informationen zu Azure Storage finden Sie in den folgenden Ressourcen:
 - [Gewusst wie: Verwenden von Queue Storage mit Python](storage-python-how-to-use-queue-storage.md)
 - [Gewusst wie: Verwenden von Azure File Storage mit Python](storage-python-how-to-use-file-storage.md)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0914_2016-->

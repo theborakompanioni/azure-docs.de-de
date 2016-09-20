@@ -5,7 +5,7 @@
 	services="machine-learning"
 	documentationCenter=""
 	authors="hning86"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun"/>
 
 <tags
@@ -55,4 +55,4 @@ Laden Sie für Machine Learning PowerShell zunächst das [Versionspaket](https:/
 
 Das PowerShell-Modul wird während dieses Vorschauzeitraums weiter verbessert und erweitert. Weitere Neuigkeiten und Informationen finden Sie unter [Blog zu Cortana Intelligence und Machine Learning](https://blogs.technet.microsoft.com/machinelearning/).
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0914_2016-->
