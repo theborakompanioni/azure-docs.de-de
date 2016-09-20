@@ -60,7 +60,7 @@ In diesem Szenario wird der Benutzer in der Anwendung zum Anmelden aufgefordert.
 
 		https://login.microsoftonline.com/<TENANT-ID>/oauth2/authorize?client_id=<CLIENT-ID>&response_type=code&redirect_uri=<REDIRECT-URI>
 
-	>[AZURE.NOTE] <REDIRECT-URI> muss für die Verwendung in einer URL codiert werden. Verwenden Sie daher `https%3A%2F%2Flocalhost` für https://localhost.
+	>[AZURE.NOTE] \<REDIRECT-URI> muss für die Verwendung in einer URL codiert werden. Verwenden Sie daher `https%3A%2F%2Flocalhost` für https://localhost.
 
 	In diesem Tutorial können Sie die Platzhalterwerte in der URL oben ersetzen und in der Adressleiste des Webbrowsers einfügen. Sie werden umgeleitet und authentifizieren sich mit Ihrer Azure-Anmeldung. Nachdem Sie sich erfolgreich angemeldet haben, wird die Antwort in der Adressleiste des Browsers angezeigt. Die Antwort wird im folgenden Format angezeigt:
 		
@@ -75,7 +75,7 @@ In diesem Szenario wird der Benutzer in der Anwendung zum Anmelden aufgefordert.
         -F client_id=<CLIENT-ID> \
         -F code=<AUTHORIZATION-CODE>
 
-	>[AZURE.NOTE] In diesem Fall muss <REDIRECT-URI> nicht codiert werden.
+	>[AZURE.NOTE] In diesem Fall muss \<REDIRECT-URI> nicht codiert werden.
 
 3. Die Antwort ist ein JSON-Objekt, das ein Zugriffstoken (z.B. `"access_token": "<ACCESS_TOKEN>"`) und ein Aktualisierungstoken (z.B. `"refresh_token": "<REFRESH_TOKEN>"`) enthält. Die Anwendung verwendet das Zugriffstoken beim Zugriff auf Azure Data Lake-Speicher und das Aktualisierungstoken zum Abrufen eines anderen Zugriffstokens, wenn ein Zugriffstoken abläuft.
 

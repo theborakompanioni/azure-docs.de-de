@@ -145,7 +145,7 @@ Apache Storm verarbeitet **Topologien** anstelle der MapReduce-Aufträge, die Si
 
 	* **Nimbus** ist ein Thrift-Dienst, und eine **Topologie** ist eine Thrift-Definition. Aus diesem Grund ist es möglich, Topologien in einer Vielzahl von Programmiersprachen zu entwickeln.
 
-Weitere Informationen zu Storm-Komponenten finden Sie im [Storm Tutorial][apachetutorial] (in englischer Sprache) auf apache.org.
+Weitere Informationen zu Storm-Komponenten finden Sie im [Storm Tutorial][apachetutorial] \(in englischer Sprache) auf apache.org.
 
 
 ##Welche Programmiersprachen kann ich verwenden?

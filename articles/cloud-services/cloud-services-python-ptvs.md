@@ -24,7 +24,7 @@ Dieser Artikel enthält eine Übersicht über die Verwendung von Python-Web- und
 ## Voraussetzungen
 
  - Visual Studio 2013 oder 2015
- - [Python-Tools für Visual Studio][] (PTVS)
+ - [Python-Tools für Visual Studio][] \(PTVS)
  - [Azure SDK-Tools für VS 2013][] oder [Azure SDK-Tools für VS 2015][]
  - [Python 2.7 32-Bit][] oder [Python 3.5 32-Bit][]
 

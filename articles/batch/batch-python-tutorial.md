@@ -58,7 +58,7 @@ Sie können die [azure-batch][pypi_batch]- und [azure-storage][pypi_storage]-Pyt
 
 `pip install azure-batch==0.30.0rc4`<br/> `pip install azure-storage==0.30.0`
 
-> [AZURE.TIP] Unter Umständen müssen Sie Ihren Befehlen das Präfix `sudo` voranstellen, wenn Sie ein nicht privilegiertes Konto verwenden. Beispiel: `sudo pip install -r requirements.txt`. Weitere Informationen zur Installation von Python-Paketen finden Sie unter [Installing Packages][pypi_install] (Installieren von Paketen) auf „readthedocs.io“.
+> [AZURE.TIP] Unter Umständen müssen Sie Ihren Befehlen das Präfix `sudo` voranstellen, wenn Sie ein nicht privilegiertes Konto verwenden. Beispiel: `sudo pip install -r requirements.txt`. Weitere Informationen zur Installation von Python-Paketen finden Sie unter [Installing Packages][pypi_install] \(Installieren von Paketen) auf „readthedocs.io“.
 
 ## Python-Tutorial für Batch – Codebeispiel
 
@@ -372,7 +372,7 @@ Nachdem ein Auftrag erstellt wurde, werden Aufgaben zum Durchführen der Arbeits
 
 Batch-**Aufgaben** sind die einzelnen Arbeitseinheiten, die auf den Computeknoten ausgeführt werden. Eine Aufgabe verfügt über eine Befehlszeile und führt die Skripts oder ausführbaren Dateien aus, die Sie in der Befehlszeile festlegen.
 
-Zum eigentlichen Ausführen der Arbeitsschritte müssen die Aufgaben einem Auftrag hinzugefügt werden. Jede [CloudTask][py_task]-Aufgabe wird mit einer Befehlszeileneigenschaft und [ResourceFiles][py_resource_file] (wie bei der StartTask-Aufgabe des Pools) konfiguriert, die von der Aufgabe auf den Knoten heruntergeladen werden, bevor die Befehlszeile automatisch ausgeführt wird. Im Beispiel verarbeitet jede Aufgabe nur eine Datei. Daher enthält die ResourceFiles-Sammlung in diesem Fall ein einzelnes Element.
+Zum eigentlichen Ausführen der Arbeitsschritte müssen die Aufgaben einem Auftrag hinzugefügt werden. Jede [CloudTask][py_task]-Aufgabe wird mit einer Befehlszeileneigenschaft und [ResourceFiles][py_resource_file] \(wie bei der StartTask-Aufgabe des Pools) konfiguriert, die von der Aufgabe auf den Knoten heruntergeladen werden, bevor die Befehlszeile automatisch ausgeführt wird. Im Beispiel verarbeitet jede Aufgabe nur eine Datei. Daher enthält die ResourceFiles-Sammlung in diesem Fall ein einzelnes Element.
 
 ```python
 def add_tasks(batch_service_client, job_id, input_files,
@@ -446,7 +446,7 @@ blob_client = azureblob.BlockBlobService(account_name=args.storageaccount,
 
 Wenn einem Auftrag Aufgaben hinzugefügt werden, werden sie automatisch in die Warteschlange eingereiht und für die Ausführung auf Computeknoten in dem Pool eingeplant, der dem Auftrag zugeordnet ist. Basierend auf den Einstellungen, die Sie angeben, führt Batch das Einreihen, Planen und erneute Ausführen sowie andere Schritte der Aufgabenverwaltung für Sie durch.
 
-Es gibt viele Ansätze für die Überwachung der Aufgabenausführung. Die Funktion `wait_for_tasks_to_complete` in *python\_tutorial\_client.py* bietet ein einfaches Beispiel für das Überwachen von Aufgaben für einen bestimmten Status. In diesem Fall ist dies [completed][py_taskstate] (abgeschlossen).
+Es gibt viele Ansätze für die Überwachung der Aufgabenausführung. Die Funktion `wait_for_tasks_to_complete` in *python\_tutorial\_client.py* bietet ein einfaches Beispiel für das Überwachen von Aufgaben für einen bestimmten Status. In diesem Fall ist dies [completed][py_taskstate] \(abgeschlossen).
 
 ```python
 def wait_for_tasks_to_complete(batch_service_client, job_id, timeout):
