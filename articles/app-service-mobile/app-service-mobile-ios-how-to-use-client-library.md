@@ -393,6 +393,8 @@ Rufen Sie zum Öffnen einer benutzerdefinierten APIs `MSClient.invokeAPI` wie un
 Um eine `GET`-Anforderung anstelle einer `POST`-Anforderung zu erstellen, setzen Sie den Parameter `HTTPMethod` auf `"GET"` und den Parameter `body` auf `nil` (da GET-Anforderungen keinen Nachrichtentext enthalten). Wenn Ihre benutzerdefinierte API andere HTTP-Verben unterstützt, ändern Sie `HTTPMethod` entsprechend.
 
 **Objective-C**:
+
+
 ```
 [self.client invokeAPI:@"sendEmail"
                   body:@{ @"contents": @"Hello world!" }
@@ -854,4 +856,4 @@ Mithilfe des Google-Anmelde-SDKs für iOS können Sie Benutzer über ein Google-
 [CLI to manage Mobile Services tables]: ../virtual-machines-command-line-tools.md#Mobile_Tables
 [Conflict-Handler]: mobile-services-ios-handling-conflicts-offline-data.md#add-conflict-handling
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0907_2016-->

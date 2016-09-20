@@ -15,7 +15,7 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="support-article"
-	ms.date="06/14/2016"
+	ms.date="09/01/2016"
 	ms.author="iainfou"/>
 
 # Problembehandlung bei Remotedesktopverbindungen mit einem Windows-basierten virtuellen Azure-Computer
@@ -65,7 +65,7 @@ Versuchen Sie nach jedem Problembehandlungsschritt, die Verbindung mit dem virtu
 		-VMName "myVM" -Name "myVMAccess" -Location Westus
 	```
 
-	> [AZURE.NOTE] In den vorhergehenden Beispielen ist `myVMAccessExtension` oder `MyVMAccess` ein Name, den Sie für die neue Erweiterung angeben, die während des Vorgangs installiert wird. Er wird häufig auf den Namen der VM festgelegt. Wenn Sie zuvor VMAccessAgent verwendet haben, können Sie den Namen der vorhandenen Erweiterung mithilfe von `Get-AzureRmVM -ResourceGroupName "myRG" -Name "myVM"` abrufen, um die Eigenschaften des virtuellen Computers zu überprüfen. Suchen Sie dann im Abschnitt „Erweiterungen“ der Ausgabe. Da nur jeweils ein VMAccessAgent auf einem virtuellen Computer vorhanden sein kann, müssen Sie bei Verwendung von `Set-AzureRmVMExtension` auch den Parameter `-ForceReRun` hinzufügen, um den Agent erneut zu registrieren.
+	> [AZURE.NOTE] In den vorhergehenden Beispielen ist `myVMAccessExtension` oder `MyVMAccess` ein Name, den Sie für die neue Erweiterung angeben, die während des Vorgangs installiert wird. Er wird häufig auf den Namen der VM festgelegt. Wenn Sie zuvor VMAccessAgent verwendet haben, können Sie den Namen der vorhandenen Erweiterung mithilfe von `Get-AzureRmVM -ResourceGroupName "myRG" -Name "myVM"` abrufen, um die Eigenschaften des virtuellen Computers zu überprüfen. Im Abschnitt „Erweiterungen“ der Ausgabe wird der Name angezeigt. Da nur jeweils ein VMAccessAgent auf einem virtuellen Computer vorhanden sein kann, müssen Sie bei Verwendung von `Set-AzureRmVMExtension` auch den Parameter `-ForceReRun True` hinzufügen, um den Agent erneut zu registrieren.
 
 2. Starten Sie den virtuellen Computer neu, um andere Probleme beim Start zu beheben. Wählen Sie **Durchsuchen** > **Virtuelle Computer** > *Ihr virtueller Computer* > **Neu starten** aus.
 
@@ -210,4 +210,4 @@ Wenn keiner dieser Fehler auftritt und Sie trotzdem keine Verbindung mit dem vir
 
 [Problembehandlung beim Zugriff auf eine Anwendung, die auf einem virtuellen Azure-Computer ausgeführt wird](virtual-machines-linux-troubleshoot-app-connection.md)
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0907_2016-->

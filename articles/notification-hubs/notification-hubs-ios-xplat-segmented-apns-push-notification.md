@@ -34,7 +34,7 @@ Dieses Thema baut auf die App auf, die Sie in [Erste Schritte mit Notification H
 
 ##Hinzufügen der Kategorieauswahl zur App
 
-Zunächst werden Sie Benutzeroberflächenelemente zum vorhandenen Storyboard hinzufügen, mit denen Benutzer Kategorien für die Registrierung auswählen können. Die durch den Benutzer ausgewählten Kategorien werden auf dem Gerät gespeichert. Wenn die App gestartet wird, wird eine Geräteregistrierung in Ihrem Notification Hub mit den ausgewählten Kategorien als Tags erstellt.
+Zunächst werden Sie Benutzeroberflächenelemente zum vorhandenen Storyboard hinzufügen, mit denen Benutzer Kategorien für die Registrierung auswählen können. Die durch den Benutzer ausgewählten Kategorien werden auf dem Gerät gespeichert. Beim Starten der App wird eine Geräteregistrierung in Ihrem Notification Hub mit den ausgewählten Kategorien als Tags erstellt.
 
 1. Fügen Sie die folgenden Komponenten aus der Objektbibliothek zu MainStoryboard\_iPhone.storyboard hinzu:
 	+ Eine Beschriftung mit dem Text "Breaking News",
@@ -318,7 +318,7 @@ Normalerweise würden die Benachrichtigungen von einem Back-End-Dienst gesendet 
 3. Erstellen Sie das Projekt neu, und stellen Sie sicher, dass keine Buildfehler vorliegen.
 
 
-##Ausführen der App und Erzeugen von Benachrichtigungen
+##Ausführen der Anwendung und Erzeugen von Benachrichtigungen
 
 1. Klicken Sie auf die Schaltfläche Ausführen, um das Projekt zu erstellen und die App zu starten. Wählen Sie einige Optionen zum Abonnieren aktueller Nachrichten aus, und klicken Sie dann auf die Schaltfläche **Subscribe**. Es sollte in einem Dialogfeld angegeben werden, dass die Benachrichtigungen abonniert wurden.
 
@@ -337,7 +337,7 @@ Normalerweise würden die Benachrichtigungen von einem Back-End-Dienst gesendet 
 
 ## Nächste Schritte
 
-In diesem Lernprogramm haben Sie erfahren, wie aktuelle Nachrichten nach Kategorie übermittelt werden. Sie können nun eines der folgenden Lernprogramme durchführen, die andere komplexe Notification Hub-Szenarios zeigen:
+In diesem Lernprogramm haben Sie erfahren, wie aktuelle Nachrichten nach Kategorie übermittelt werden. Sie können nun eines der folgenden Lernprogramme durchführen, die andere komplexe Notification Hubs-Szenarien zeigen:
 
 + **[Verwenden von Notification Hubs zum Übermitteln von lokalisierten aktuellen Nachrichten]**
 
@@ -361,7 +361,7 @@ In diesem Lernprogramm haben Sie erfahren, wie aktuelle Nachrichten nach Kategor
 
 <!-- URLs. -->
 [How To: Service Bus Notification Hubs (iOS Apps)]: http://msdn.microsoft.com/library/jj927168.aspx
-[Verwenden von Notification Hubs zum Übermitteln von lokalisierten aktuellen Nachrichten]: notification-hubs-ios-send-localized-breaking-news.md
+[Verwenden von Notification Hubs zum Übermitteln von lokalisierten aktuellen Nachrichten]: notification-hubs-ios-xplat-localized-apns-push-notification.md
 [Mobile Service]: /develop/mobile/tutorials/get-started
 [Notify users with Notification Hubs]: notification-hubs-aspnet-backend-ios-notify-users.md
 [Notification Hubs Guidance]: http://msdn.microsoft.com/library/dn530749.aspx
@@ -369,4 +369,4 @@ In diesem Lernprogramm haben Sie erfahren, wie aktuelle Nachrichten nach Kategor
 [get-started]: /manage/services/notification-hubs/get-started-notification-hubs-ios/
 [klassischen Azure-Portal]: https://manage.windowsazure.com
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0907_2016-->

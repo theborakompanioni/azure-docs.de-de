@@ -13,7 +13,7 @@
 	ms.workload="search" 
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
-	ms.date="06/08/2016" 
+	ms.date="08/08/2016" 
 	ms.author="heidist"/>
 
 #Implementieren der Facettennavigation in Azure Search
@@ -57,8 +57,8 @@ Der Ausgangspunkt ist eine Anwendungsseite mit Facettennavigation (üblicherweis
 
 1.	Die Facettennavigationsstruktur wird in einer an Azure Search gesendeten Abfrage mithilfe entsprechender Abfrageparameter angegeben. So kann die Abfrage beispielsweise `facet=Rating` enthalten und ggf. mit einer `:values`- oder `:sort`-Option versehen werden, um die Darstellung weiter zu verfeinern.
 2.	Die Darstellungsschicht rendert unter Verwendung der in der Anforderung angegebenen Facetten eine Suchseite mit Facettennavigation.
-3.	Bei Verwendung einer bewertungsbasierten Facettennavigationsstruktur klickt der Benutzer auf „4“, um anzugeben, dass nur Produkte mit der Bewertung 4 oder höher angezeigt werden sollen. 
-4.	Im Gegenzug sendet die Anwendung eine Abfrage mit `$filter=Rating ge 4`. 
+3.	Bei Verwendung einer bewertungsbasierten Facettennavigationsstruktur klickt der Benutzer auf „4“, um anzugeben, dass nur Produkte mit der Bewertung 4 oder höher angezeigt werden sollen.
+4.	Im Gegenzug sendet die Anwendung eine Abfrage mit `$filter=Rating ge 4`.
 5.	Die Darstellungsschicht aktualisiert die Seite und zeigt ein reduziertes Resultset an, das nur Elemente enthält, die den neuen Kriterien entsprechen (in diesem Fall Produkte mit der Bewertung 4 oder höher).
 
 Eine Facette ist ein Abfrageparameter, darf aber nicht mit einer Abfrageeingabe verwechselt werden. Sie wird nie als Auswahlkriterium in einer Abfrage verwendet. Stellen Sie sich Facettenabfrageparameter stattdessen als Eingaben für die Navigationsstruktur vor, die in der Antwort zurückgegeben wird. Azure Search prüft für jeden angegebenen Facettenabfrageparameter, wie viele Dokumente in den Teilergebnissen für die einzelnen Facettenwerte enthalten sind.
@@ -152,7 +152,7 @@ Im Anschluss finden Sie einige hilfreiche Anmerkungen:
 
 - Überlegen Sie sich bei jedem Feld, das als Facette fungieren soll, ob es Werte enthält, die als Filter für eine selbstständige Suche geeignet sind. Die Werte müssen kurz, aussagekräftig und ausreichend unterschiedlich sein, um eine eindeutige Entscheidung zwischen verschiedenen Optionen treffen zu können.
 - Tippfehler oder fast übereinstimmende Werte: Wenn die Facette auf der Farbe basiert und die Feldwerte „Orange“ und „Ornage“ (Tippfehler) umfasst, werden bei einer Facette, die auf dem Feld „Color“ basiert, beide Optionen verwendet.
-- Auch gemischte Groß-/Kleinschreibung kann die Facettennavigation durcheinander bringen, da „orange“ und „Orange“ als zwei unterschiedliche Werte angezeigt werden. 
+- Auch gemischte Groß-/Kleinschreibung kann die Facettennavigation durcheinander bringen, da „orange“ und „Orange“ als zwei unterschiedliche Werte angezeigt werden.
 - Singular- und Pluralformen des gleichen Werts können ebenfalls zu separaten Facetten führen.
 
 Für eine effektive Facettennavigation ist daher eine sorgfältige Datenvorbereitung unerlässlich.
@@ -178,7 +178,7 @@ Wenn ein Benutzer durch Klicken auf „Rot“ angibt, dass nur rote Produkte ang
 
 Im Anschluss werden einige bewährte Methoden zusammengefasst.
 
-- **Genauigkeit**<br/> Verwenden Sie Filter. Wenn Sie sich ausschließlich auf Suchausdrücke verlassen, wird aufgrund der Wortstammerkennung unter Umständen ein Dokument zurückgegeben, bei dem keines der Felder den exakten Facettenwert enthält. 
+- **Genauigkeit**<br/> Verwenden Sie Filter. Wenn Sie sich ausschließlich auf Suchausdrücke verlassen, wird aufgrund der Wortstammerkennung unter Umständen ein Dokument zurückgegeben, bei dem keines der Felder den exakten Facettenwert enthält.
 
 - **Zielfelder**<br/> Bei einem facettenbasierten Drilldownvorgang sollen in der Regel nur Dokumente enthalten sein, die den Facettenwert in einem bestimmten Feld enthalten (und nicht in einem beliebigen durchsuchbaren Feld). Durch Hinzufügen eines Filters wird der Dienst angewiesen, nur im als Facette fungierenden Feld nach einem übereinstimmenden Wert zu suchen.
 
@@ -250,7 +250,7 @@ Unter bestimmten Umständen kann es vorkommen, dass die Facettenanzahl nicht den
 
 Die Abweichung der Facettenanzahl kann auf die Sharding-Architektur zurückzuführen sein. Jeder Suchindex besitzt mehrere Shards, von denen jeweils die x relevantesten Facetten (auf der Grundlage der Dokumentanzahl) zurückgegeben werden. Diese werden dann zu einem einzelnen Ergebnis zusammengefasst. Falls nun für einige Shards besonders viele und für andere Shards besonders wenige Werte vorhanden sind, kann es vorkommen, dass einige Facettenwerte fehlen oder in den Ergebnissen nicht korrekt erfasst wurden.
 
-Dieses Verhalten kann sich zwar jederzeit ändern, wenn Sie jedoch aktuell davon betroffen sind, können Sie das Problem umgehen, indem Sie „count:<number>“ künstlich auf eine sehr große Zahl erhöhen, um vollständige Berichte aus jeder Shard zu erzwingen. Wenn der Wert von „count:“ größer oder gleich der Anzahl eindeutiger Werte im Feld ist, erhalten Sie garantiert exakte Ergebnisse. Bei einer besonders hohen Anzahl von Dokumenten ist jedoch mit Leistungseinbußen zu rechnen. Verwenden Sie die Option daher mit Bedacht.
+Dieses Verhalten kann sich zwar jederzeit ändern, wenn Sie jedoch aktuell davon betroffen sind, können Sie das Problem umgehen, indem Sie „count:<Zahl>“ künstlich auf eine sehr große Zahl erhöhen, um vollständige Berichte aus jeder Shard zu erzwingen. Wenn der Wert von „count:“ größer oder gleich der Anzahl eindeutiger Werte im Feld ist, erhalten Sie garantiert exakte Ergebnisse. Bei einer besonders hohen Anzahl von Dokumenten ist jedoch mit Leistungseinbußen zu rechnen. Verwenden Sie die Option daher mit Bedacht.
 
 <a name="rangefacets"></a>
 ##Facettennavigation auf der Grundlage von Bereichswerten
@@ -287,7 +287,7 @@ Filter, die den Benutzer bei der Wahl eines Geschäfts, Restaurants oder eines Z
 
 In Azure Search stehen zwei räumliche Funktionen zur Verfügung: **geo.distance** und **geo.intersects**.
 
-- **geo.distance** gibt die Entfernung zwischen zwei Punkten (in Kilometern) zurück, wobei es sich bei einem Punkt um ein Feld und bei dem anderen Punkt um eine Konstante handelt, die als Teil des Filters übergeben wird. 
+- **geo.distance** gibt die Entfernung zwischen zwei Punkten (in Kilometern) zurück, wobei es sich bei einem Punkt um ein Feld und bei dem anderen Punkt um eine Konstante handelt, die als Teil des Filters übergeben wird.
 
 - **geo.intersects** gibt „true“ zurück, wenn ein bestimmter Punkt innerhalb eines bestimmten Polygons liegt. Der Punkt ist hierbei ein Feld, das Polygon eine Konstantenliste mit Koordinaten, die als Teil des Filters übergeben werden.
 
@@ -298,7 +298,7 @@ Filterbeispiele finden Sie unter [OData-Ausdruckssyntax für Azure Search](http:
 
 Die bei Codeplex verfügbare Adventure Works-Demo für Azure Search enthält die Beispiele, auf die in diesem Artikel Bezug genommen wird. Achten Sie bei der Arbeit mit Suchergebnissen auf die Veränderung der Abfragekonstruktion in der URL. Diese Anwendung fügt die ausgewählten Facetten dem URI hinzu.
 
-1.	Konfigurieren Sie die Beispielanwendung für Ihre Dienst-URL und Ihren API-Schlüssel. 
+1.	Konfigurieren Sie die Beispielanwendung für Ihre Dienst-URL und Ihren API-Schlüssel.
 
 	Beachten Sie das Schema, das in der Datei „Program.cs“ des CatalogIndexer-Projekts definiert ist. Es gibt facettenfähige Felder für „color“, „listPrice“, „size“, „weight“, „categoryName“ und „modelName“ an. In der Facettennavigation sind jedoch nur einige dieser Felder („color“, „listPrice“ und „categoryName“) tatsächlich implementiert.
 
@@ -369,4 +369,4 @@ Auch [Azure Search Deep Dive](http://channel9.msdn.com/Events/TechEd/Europe/2014
 
  
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0907_2016-->

@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="03/09/2016"
+   ms.date="09/05/2016"
    ms.author="smalone" />
 
 # Mit der Azure-Befehlszeilenschnittstelle Ihre Reverse-DNS-Einträge für Ihre Dienste verwalten
@@ -60,4 +60,4 @@ Mithilfe von „azure network public-ip set“ können Sie eine Reverse-DNS-Eige
 
 [AZURE.INCLUDE [HÄUFIG GESTELLTE FRAGEN](../../includes/dns-reverse-dns-record-operations-faq-arm-include.md)]
 
-<!-----HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0907_2016-->

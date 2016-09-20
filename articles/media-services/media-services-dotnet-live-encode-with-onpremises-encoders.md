@@ -13,10 +13,18 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="ne" 
 	ms.topic="article" 
- 	ms.date="08/19/2016"  
+ 	ms.date="08/31/2016"  
 	ms.author="cenkdin;juliako"/>
 
 #Gewusst wie: Durchführen von Livestreaming mit lokalen Encodern mithilfe von .NET
+
+> [AZURE.SELECTOR]
+- [Portal](media-services-portal-live-passthrough-get-started.md)
+- [.NET](media-services-dotnet-live-encode-with-onpremises-encoders.md)
+- [REST](https://msdn.microsoft.com/library/azure/dn783458.aspx)
+
+In diesem Tutorial werden Sie durch die Schritte des Azure Media Services-.NET SDK zum Erstellen eines **Kanals** geführt, der für eine Pass-Through-Bereitstellung konfiguriert ist.
+
 
 ##Voraussetzungen
 
@@ -387,4 +395,4 @@ Media Services-Lernpfade ansehen
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0907_2016-->

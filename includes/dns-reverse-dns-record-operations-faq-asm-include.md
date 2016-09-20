@@ -7,12 +7,14 @@ Ja. Sobald Sie die Reverse-DNS-Eigenschaft für Ihren Clouddienst festlegen, ver
 ### Wird für meine Clouddienste ein Standard-Reverse-DNS-Eintrag erstellt?
 Nein. Reverse-DNS ist eine optionale Funktion. Es werden keine Standard-DNS-Einträge erstellt, wenn Sie keine konfigurieren.
 ### Wie sieht das Format für den vollqualifizierten Domänennamen (FQDN) aus?
-FQDNs werden aufsteigend angegeben und müssen einen Punkt am Ende haben (z. B. „app1.contoso.com.“).
+FQDNs werden aufsteigend angegeben und müssen einen Punkt am Ende haben (z. B. „app1.contoso.com.“).
 ### Was passiert bei Fehlern bei den Überprüfungen der Reverse-DNS, die ich angegeben habe?
 Wo ein Fehler bei der Überprüfung der Reverse-DNS auftaucht, erfolgt ein Fehler beim Dienstverwaltungsvorgang. Korrigieren Sie bitte den Reverse-DNS-Wert entsprechend den Anforderungen, und versuchen Sie es erneut.
 ### Kann ich für meine Azure-Website Reverse-DNS verwalten?
 Reverse-DNS wird für Azure Websites nicht unterstützt. Reverse-DNS wird für Azure-PaaS-Rollen und virtuelle IaaS-Computer unterstützt.
 ### Kann ich für meinen Clouddienst mehrere Reverse-DNS-Einträge konfigurieren?
 Nein. Azure unterstützt für jeden Azure-Clouddienst nur einen Reverse-DNS-Eintrag. Jedoch kann jeder Azure-Clouddienst seinen eigenen Reverse-DNS-Eintrag haben.
+### Kann ich aus Azure Compute Services heraus E-Mails an externe Domänen senden?
+Nein. Wie [hier](https://blogs.msdn.microsoft.com/mast/2016/04/04/sending-e-mail-from-azure-compute-resource-to-external-domains/) beschrieben wird, unterstützen Azure Compute Services das Senden von E-Mails an externe Domänen nicht.
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0907_2016-->

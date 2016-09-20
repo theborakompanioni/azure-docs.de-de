@@ -3,7 +3,7 @@
    description="Verwenden von Power BI Embedded mit REST "
    services="power-bi-embedded"
    documentationCenter=""
-   authors="tsmatsuz"
+   authors="mgblythe"
    manager="NA"
    editor=""
    tags=""/>
@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="NA"
    ms.workload="powerbi"
    ms.date="08/02/2016"
-   ms.author="owend"/>
+   ms.author="mblythe"/>
 
 # Verwendung von Power BI Embedded mit REST
 
@@ -451,4 +451,4 @@ Aktuell zeigt Power BI Embedded den Bericht nur im IFrame an. Besuchen Sie regel
 ## Siehe auch
 - [Authentifizieren und Autorisieren in Power BI Embedded](power-bi-embedded-app-token-flow.md)
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0907_2016-->

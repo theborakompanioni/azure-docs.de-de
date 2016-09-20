@@ -21,7 +21,7 @@
 
 ## Installieren von Azure PowerShell
  
-Informationen dazu, wie Sie die aktuelle Version von Azure PowerShell installieren, das gewünschte Abonnement auswählen und sich am Azure-Konto anmelden, finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
+Unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md) finden Sie Informationen dazu, wie Sie die neueste Version von Azure PowerShell installieren, das gewünschte Abonnement auswählen und sich bei Ihrem Azure-Konto anmelden.
 
 ## Festlegen von Variablen
 
@@ -168,7 +168,7 @@ Folgendes sollte angezeigt werden:
     ---------  -------------------  ----------  ------------
                               True          OK  OK
 
-## Aktualisieren eines virtuellen Computers
+## Ändern der Größe eines virtuellen Computers
 
 Dieses Beispiel zeigt, wie Sie die Größe des virtuellen Computers aktualisieren.
         
@@ -222,4 +222,4 @@ Der Skriptdateiinhalt für die Datenträgerinitialisierung kann etwa wie folgt a
 
 Sollten bei einer Bereitstellung Probleme aufgetreten sein, helfen Ihnen ggf. die Informationen unter [Problembehandlung beim Bereitstellen von Ressourcengruppen mit dem Azure-Portal](../resource-manager-troubleshoot-deployments-portal.md) weiter.
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0907_2016-->

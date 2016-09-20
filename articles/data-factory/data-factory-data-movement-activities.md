@@ -31,7 +31,7 @@ Zunächst erfahren Sie, wie die Datenmigration zwischen zwei Clouddatenspeichern
 > [AZURE.NOTE] Allgemeine Informationen zu Aktivitäten finden Sie unter [Grundlegendes zu Pipelines und Aktivitäten](data-factory-create-pipelines.md).
 
 ### Kopieren von Daten zwischen zwei Clouddatenspeichern
-Wenn sich sowohl der Quell- als auch der Senkendatenspeicher (also der Zieldatenspeicher) in der Cloud befinden, durchläuft die Kopieraktivität die folgenden Phasen, um die Daten aus der Quelle in die Senke zu kopieren bzw. zu verschieben. Folgendes gilt für den Dienst, auf dem die Kopieraktivität basiert:
+Wenn sich sowohl Quell- als auch der Senkendatenspeicher in der Cloud befinden, durchläuft die Kopieraktivität die folgenden Phasen, um die Daten aus der Quelle in die Senke zu kopieren. Folgendes gilt für den Dienst, auf dem die Kopieraktivität basiert:
 
 1. Er liest Daten aus dem Quelldatenspeicher.
 2. Er führt die Serialisierung/Deserialisierung, Komprimierung/Dekomprimierung, Spaltenzuordnung und Typumwandlung durch. Diese Vorgänge erfolgen basierend auf den Konfigurationen von Eingabedataset, Ausgabedataset und Kopieraktivität.
@@ -43,7 +43,7 @@ Der Dienst wählt automatisch die optimale Region zum Durchführen der Datenvers
 
 
 ### Kopieren von Daten zwischen einem lokalen Datenspeicher und einem Clouddatenspeicher
-Um Daten sicher zwischen einem lokalen Datenspeicher hinter der Unternehmensfirewall und einem Clouddatenspeicher zu verschieben, müssen Sie auf dem lokalen Computer ein Datenverwaltungsgateway installieren. Ein Datenverwaltungsgateway ist ein Agent, der eine hybride Datenverschiebung und -verarbeitung ermöglicht. Sie können das Gateway auf dem gleichen Computer installieren, auf dem sich der Datenspeicher selbst befindet, oder auf einem separaten Computer, der Zugriff auf den Datenspeicher hat.
+Um Daten sicher zwischen einem lokalen Datenspeicher und einem Clouddatenspeicher zu verschieben, installieren Sie auf dem lokalen Computer ein Datenverwaltungsgateway. Ein Datenverwaltungsgateway ist ein Agent, der eine hybride Datenverschiebung und -verarbeitung ermöglicht. Sie können das Gateway auf dem gleichen Computer installieren, auf dem sich der Datenspeicher selbst befindet, oder auf einem separaten Computer, der Zugriff auf den Datenspeicher hat.
 
 In diesem Szenario führt das Datenverwaltungsgateway die Serialisierung/Deserialisierung, Komprimierung/Dekomprimierung, Spaltenzuordnung und Typumwandlung aus. Die Daten fließen nicht über den Azure Data Factory-Dienst. Das Datenverwaltungsgateway schreibt die Daten stattdessen direkt in den Zielspeicher.
 
@@ -65,7 +65,7 @@ Andere | [Salesforce](data-factory-salesforce-connector.md)<br/> [Generisches OD
 
 > [AZURE.NOTE] Datenspeicher mit * können lokal oder in Azure IaaS verfügbar sein. Für ihre Verwendung müssen Sie das [Datenverwaltungsgateway](data-factory-data-management-gateway.md) auf einem lokalen oder einem Azure IaaS-Computer installieren.
 
-Wenn Sie Daten in einen/aus einem Datenspeicher verschieben müssen, der von der Kopieraktivität nicht unterstützt wird, können Sie die **benutzerdefinierte Aktivität** in Data Factory mit Ihrer eigenen Logik zum Kopieren/Verschieben von Daten verwenden. Informationen zum Erstellen und Verwenden einer benutzerdefinierten Aktivität finden Sie unter [Verwenden von benutzerdefinierten Aktivitäten in einer Azure Data Factory-Pipeline](data-factory-use-custom-activities.md).
+Wenn Sie Daten in einen/aus einem Datenspeicher verschieben müssen, der von der Kopieraktivität nicht unterstützt wird, verwenden Sie die **benutzerdefinierte Aktivität** in Data Factory mit Ihrer eigenen Logik zum Kopieren/Verschieben von Daten. Informationen zum Erstellen und Verwenden einer benutzerdefinierten Aktivität finden Sie unter [Verwenden von benutzerdefinierten Aktivitäten in einer Azure Data Factory-Pipeline](data-factory-use-custom-activities.md).
 
 ### Unterstützte Dateiformate
 Sie können die Kopieraktivität verwenden, um Dateien unverändert zwischen zwei dateibasierten Datenspeichern zu kopieren, wie z.B. Azure-Blob, Dateisystem und HDFS (Hadoop Distributed File System). Zu diesem Zweck können Sie in den Definitionen sowohl für das Eingabe- als auch für das Ausgabedataset den [Formatierungsabschnitt](data-factory-create-datasets.md) überspringen. Die Daten werden effizient ohne jegliche Serialisierung oder Deserialisierung kopiert.
@@ -79,18 +79,20 @@ Die Kopieraktivität liest und schreibt Dateien in den folgenden Formaten: Text,
 
 
 ## <a name="global"></a>Global verfügbare Datenverschiebung
-Der Dienst, auf dem die Kopieraktivität basiert, steht weltweit in den folgenden Regionen und Geografien zur Verfügung, obwohl Azure Data Factory nur in den Regionen „USA, Westen“, „USA, Osten“ und „Europa, Norden“ verfügbar ist. Die global verfügbare Topologie gewährleistet effiziente Datenverschiebungen, die regionsübergreifende Hops in der Regel vermeiden. Unter [Dienste nach Region](https://azure.microsoft.com/regions/#services) erfahren Sie, in welchen Regionen Data Factory und die Datenverschiebung verfügbar sind.
+Azure Data Factory ist nur in den USA (Westen), USA (Osten) und Nordeuropa verfügbar. Jedoch ist der Dienst, der die Kopieraktivität unterstützt, in den folgenden Regionen und Ländern global verfügbar. Die global verfügbare Topologie gewährleistet effiziente Datenverschiebungen, die regionsübergreifende Hops in der Regel vermeiden. Unter [Dienste nach Region](https://azure.microsoft.com/regions/#services) erfahren Sie, in welchen Regionen Data Factory und die Datenverschiebung verfügbar sind.
 
 ### Kopieren von Daten zwischen Clouddatenspeichern
-Wenn sich Quell- und Senkendatenspeicher in der Cloud befinden, verwendet Azure Data Factory für die Durchführung der Datenverschiebung eine Dienstbereitstellung in der Region, die dem Gebiet der Senke am nächsten liegt. Informationen zur Zuordnung erhalten Sie in der folgenden Tabelle:
+Wenn sich Quell- und Senkendatenspeicher in der Cloud befinden, verwendet Data Factory zum Verschieben der Daten eine Dienstbereitstellung in der Region, die dem Gebiet der Senke am nächsten liegt. Informationen zur Zuordnung erhalten Sie in der folgenden Tabelle:
 
 Region des Zieldatenspeichers | Verwendete Region für die Datenverschiebung
 :----------------------------------- | :----------------------------
 USA, Osten | USA, Osten
-USA, Osten 2 | USA, Osten 2
-USA, Mitte | USA, Mitte
-USA, Westen | USA, Westen
-USA, Norden-Mitte | USA, Norden-Mitte
+USA, Osten 2 | USA (Ost) 2
+USA (West) | USA (West)
+USA, Westen 2 | USA (West)
+USA (Mitte) | USA (Mitte)
+USA, Westen-Mitte | USA (Mitte)
+USA Nord Mitte | USA, Norden-Mitte
 USA, Süden-Mitte | USA, Süden-Mitte
 Europa, Norden | Europa, Norden
 Europa, Westen | Europa, Westen
@@ -183,11 +185,11 @@ Verschiedene Datenspeicher weisen unterschiedliche systemeigene Typsysteme auf. 
 1. Konvertieren von nativen Quelltypen in einen .NET-Typ.
 2. Konvertieren eines .NET-Typs in einen nativen Senkentyp.
 
-Sie finden die Zuordnung zwischen einem nativen Typ und einem .NET-Typ für den Datenspeicher im entsprechenden Artikel zum Datenspeicher. (Klicken Sie auf den angegebenen Link in der Tabelle [Unterstützte Datenspeicher](#supported-data-stores).) Über diese Zuordnungen können Sie beim Erstellen von Tabellen die geeigneten Typen bestimmen, damit die Kopieraktivität die richtigen Umwandlungen ausführt.
+Die Zuordnung zwischen einem nativen Typ und einem .NET-Typ für den Datenspeicher finden Sie im entsprechenden Artikel zum Datenspeicher. (Klicken Sie auf den angegebenen Link in der Tabelle [Unterstützte Datenspeicher](#supported-data-stores).) Über diese Zuordnungen können Sie beim Erstellen von Tabellen die geeigneten Typen bestimmen, damit die Kopieraktivität die richtigen Umwandlungen ausführt.
 
 
 ## Nächste Schritte
-- Unter [Kopieren von Daten aus Azure-Blob Storage in Azure SQL-Datenbank](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) erfahren Sie, wie Sie die Kopieraktivität verwenden, um Daten aus einem Quelldatenspeicher in einen Senkendatenspeicher zu verschieben.
+- Weitere Informationen über die Kopieraktivität finden Sie unter [Kopieren von Daten aus Azure Blob Storage in Azure SQL-Datenbank](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 - Unter [Verschieben von Daten zwischen lokalen Quellen und der Cloud](data-factory-move-data-between-onprem-and-cloud.md) erfahren Sie, wie Sie Daten aus einem lokalen Datenspeicher in einen Clouddatenspeicher verschieben.
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0907_2016-->

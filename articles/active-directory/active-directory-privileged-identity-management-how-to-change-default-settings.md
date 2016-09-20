@@ -23,8 +23,8 @@ Ein Administrator für privilegierte Rollen kann Azure AD Privileged Identity Ma
 ## Verwalten der Rollenaktivierungseinstellungen
 
 1. Wechseln Sie zum [Azure-Portal](https://portal.azure.com), und wählen Sie auf dem Dashboard die App **Azure AD Privileged Identity Management** aus.
-2. Wählen Sie in der Rollenliste die Rolle aus, die Sie verwalten möchten.
-3. Klicken Sie auf **Einstellungen**.
+2. Wählen Sie **Privilegierte Rollen verwalten** > **Einstellungen** > **Privilegierte Rollen**.
+3. Wählen Sie die Rolle, deren Einstellungen Sie verwalten möchten.
 
 Auf der Einstellungsseite für jede Rolle finden Sie eine Reihe von Einstellungen, die Sie konfigurieren können. Diese Einstellungen wirken sich nur auf Benutzer aus, die berechtigte Administratoren und keine permanenten Administratoren sind.
 
@@ -40,19 +40,24 @@ Auf der Einstellungsseite für jede Rolle finden Sie eine Reihe von Einstellunge
 
 - Sie können MFA für sehr privilegierte Rollen für Azure AD und Office 365 nicht deaktivieren. Dies ist ein Sicherheitsfeature, da diese Rollen sorgfältig geschützt werden sollten:
 
-    - Globaler Administrator
-    - Administrator für privilegierte Rollen
-    - Benutzerkontoadministrator
+    - Anwendungsadministrator
+    - Serveradministrator des Anwendungsproxys
+    - Abrechnungsadministrator
+    - Complianceadministrator
+    - CRM-Dienstadministrator
+    - Genehmigende Person für den LockBox-Kundenzugriff
     - Verzeichnisautor
+    - Exchange-Administrator
+    - Globaler Administrator
+    - Intune-Dienstadministrator
+    - Postfachadministrator
     - Partnersupport der Ebene 1
     - Partnersupport der Ebene 2
-    - Abrechnungsadministrator
+    - Administrator für privilegierte Rollen
     - Sicherheitsadministrator
-    - Exchange-Administrator
-    - Postfachadministrator
-    - Skype for Business-Administrator
     - SharePoint-Administrator
-    - Complianceadministrator
+    - Skype for Business-Administrator
+    - Benutzerkontoadministrator
 
 Weitere Informationen zum Verwenden von MFA mit PIM finden Sie unter [Erfordern von MFA](active-directory-privileged-identity-management-how-to-require-mfa.md).
 
@@ -62,4 +67,4 @@ Weitere Informationen zum Verwenden von MFA mit PIM finden Sie unter [Erfordern 
 ## Nächste Schritte
 [AZURE.INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0907_2016-->

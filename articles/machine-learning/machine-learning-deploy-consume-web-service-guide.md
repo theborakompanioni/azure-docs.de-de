@@ -18,40 +18,35 @@
 
 # Azure Machine Learning-Webdienste: Bereitstellung und Nutzung
 
-Mit Azure Machine Learning (Azure ML) können Sie Machine Learning-Workflows und -Modelle als Webdienste bereitstellen. Diese Webdienste können dann verwendet werden, um die ML-Modelle in Anwendungen über das Internet aufzurufen und Vorhersagen im Echtzeit- oder Batchmodus zu nutzen. Die Webdienste sind RESTful und können daher über verschiedene Programmiersprachen und Plattformen (etwa .NET und Java) sowie über Anwendungen (etwa Excel) aufgerufen werden.
+Mit Azure Machine Learning können Sie Machine Learning-Workflows und -Modelle als Webdienste bereitstellen. Diese Webdienste können dann verwendet werden, um die Machine Learning-Modelle in Anwendungen über das Internet aufzurufen und Vorhersagen im Echtzeit- oder Batchmodus zu nutzen. Da die Webdienste RESTful sind, können Sie sie über verschiedene Programmiersprachen und Plattformen wie etwa .NET und Java sowie über Anwendungen wie Excel aufrufen.
 
-In den nächsten Abschnitten finden Sie Informationen zu den Schritten für den Einstieg sowie Links zu Code und zur Dokumentation.
+Die nächsten Abschnitte enthalten Links zu exemplarischen Vorgehensweisen, Code und Dokumentationen, die Ihnen beim Einstieg helfen.
 
-## Bereitstellen
+## Bereitstellen eines Webdiensts
 
-### Mithilfe von Azure ML Studio
+### Mit Azure Machine Learning Studio
 
-Mit Machine Learning Studio und dem Microsoft Azure Machine Learning-Webdiensteportal können Sie einen Webdienst ganz ohne Programmieraufwand bereitstellen und verwalten.
+Mit Machine Learning Studio und dem Microsoft Azure Machine Learning-Webdiensteportal können Sie einen Webdienst bereitstellen und verwalten, ohne Code schreiben zu müssen.
 
 Unter den folgenden Links finden Sie allgemeine Informationen zur Bereitstellung eines neuen Webdiensts:
 
 * Eine Übersicht über das Bereitstellen eines neuen Azure Resource Manager-basierten Webdiensts finden Sie unter [Bereitstellen eines neuen Webdiensts](machine-learning-webservice-deploy-a-web-service.md).
 * Eine exemplarische Vorgehensweise zum Bereitstellen eines Webdiensts finden Sie unter [Bereitstellen eines Azure Machine Learning-Webdiensts](machine-learning-publish-a-machine-learning-web-service.md).
+* Eine umfassende exemplarische Vorgehensweise zum Erstellen und Bereitstellen eines Webdiensts finden Sie unter [Exemplarische Vorgehensweise, Schritt 1: Erstellen eines Machine Learning-Arbeitsbereichs](machine-learning-walkthrough-1-create-ml-workspace.md).
+* Spezifische Beispiele für das Bereitstellen eines Webdiensts finden Sie hier:
 
-Eine umfassende exemplarische Vorgehensweise zum Erstellen und Bereitstellen eines Webdiensts finden Sie unter [Exemplarische Vorgehensweise, Schritt 1: Erstellen eines Machine Learning-Arbeitsbereichs](machine-learning-walkthrough-1-create-ml-workspace.md).
+	* [Anleitung Schritt 5: Bereitstellen des Azure Machine Learning-Webdiensts](machine-learning-walkthrough-5-publish-web-service.md)
+	* [Gewusst wie: Bereitstellen eines Webdiensts in mehreren Regionen](machine-learning-how-to-deploy-to-multiple-regions.md)
 
-Spezifische Beispiele für das Bereitstellen eines Webdiensts finden Sie hier:
+### Mit Webdienste-Ressourcenanbieter-APIs (Azure Resource Manager-APIs)
 
-* [Anleitung Schritt 5: Bereitstellen des Azure Machine Learning-Webdiensts](machine-learning-walkthrough-5-publish-web-service.md)
-* [Gewusst wie: Bereitstellen eines Webdiensts in mehreren Regionen](machine-learning-how-to-deploy-to-multiple-regions.md)
+Der Azure Machine Learning-Ressourcenanbieter für Webdienste ermöglicht die Bereitstellung und Verwaltung von Webdiensten mithilfe von REST-API-Aufrufen. Weitere Informationen finden Sie auf MSDN in der [Machine Learning-Webdienst (REST)](https://msdn.microsoft.com/library/azure/mt767538.aspx)-Referenz.
 
-### Mithilfe von Web Services-Ressourcenanbieter-APIs (Azure Resource Manager-APIs)
+### Mit PowerShell-Cmdlets
 
-Der Azure ML-Ressourcenanbieter für Webdienste ermöglicht die Bereitstellung und Verwaltung von Webdiensten mithilfe von REST-API-Aufrufen. Ausführlichere Informationen finden Sie in den folgenden Artikeln sowie im Beispielcode.
+Der Azure Machine Learning-Ressourcenanbieter für Webdienste ermöglicht die Bereitstellung und Verwaltung von Webdiensten mithilfe von PowerShell-Cmdlets.
 
-* [Machine Learning-Webdienst (REST)](https://msdn.microsoft.com/library/azure/mt767538.aspx)-Referenz auf MSDN.
-
-
-### Mithilfe von PowerShell-Cmdlets
-
-Der Azure ML-Ressourcenanbieter für Webdienste ermöglicht die Bereitstellung und Verwaltung von Webdiensten über PowerShell-Cmdlets.
-
-Um die Cmdlets verwenden zu können, müssen Sie sich innerhalb Ihrer PowerShell-Umgebung zunächst mithilfe des Cmdlets [Add-AzureRmAccount](https://msdn.microsoft.com/library/mt619267.aspx) bei Ihrem Azure-Konto anmelden. Informationen zum Aufrufen Resource Manager-basierter PowerShell-Befehle finden Sie unter [Verwenden von Azure PowerShell mit Azure Resource Manager](../powershell-azure-resource-manager.md#login-to-your-azure-account).
+Um die Cmdlets verwenden zu können, müssen Sie sich innerhalb Ihrer PowerShell-Umgebung zunächst mithilfe des Cmdlets [Add-AzureRmAccount](https://msdn.microsoft.com/library/mt619267.aspx) bei Ihrem Azure-Konto anmelden. Wenn Sie mit dem Aufrufen Resource Manager-basierter PowerShell-Befehle nicht vertraut sind, nutzen Sie die Informationen unter [Verwenden von Azure PowerShell mit Azure Resource Manager](../powershell-azure-resource-manager.md#login-to-your-azure-account).
 
 Verwenden Sie [diesen Beispielcode](https://github.com/ritwik20/AzureML-WebServices), um Ihr Vorhersageexperiment zu exportieren. Nachdem Sie die EXE-Datei auf der Grundlage des Codes erstellt haben, können Sie Folgendes eingeben:
 
@@ -60,13 +55,15 @@ Verwenden Sie [diesen Beispielcode](https://github.com/ritwik20/AzureML-WebServi
 Durch Ausführen der Anwendung wird eine JSON-Webdienstvorlage erstellt. Fügen Sie folgende Informationen hinzu, um mithilfe dieser Vorlage einen Webdienst bereitzustellen:
 
 * Speicherkontoname und -schlüssel
-	* Den Namen des Speicherkontos und den Schlüssel können Sie sowohl über das neue als auch über das klassische Azure-Portal ermitteln.
+
+	Den Namen des Speicherkontos und den Schlüssel können Sie sowohl über das [Azure-Portal](https://portal.azure.com/) als auch das [klassische Azure-Portal](http://manage.windowsazure.com/) ermitteln.
 * Vertragsplan-ID
-	* Die Plan-ID können Sie über das [Azure Machine Learning-Webdiensteportal](https://services.azureml.net) ermitteln, indem Sie sich anmelden und auf einen Plannamen klicken.
+
+	Die Plan-ID können Sie über das [Azure Machine Learning-Webdiensteportal](https://services.azureml.net) ermitteln, indem Sie sich anmelden und auf einen Plannamen klicken.
 
 Fügen Sie der JSON-Vorlage die Werte als untergeordnete Elemente des Knotens *Eigenschaften* auf der Ebene des Knotens *MachineLearningWorkspace* hinzu.
 
-Beispiel:
+Hier sehen Sie ein Beispiel:
 
 	"StorageAccount": {
             "name": "YourStorageAccountName",
@@ -76,16 +73,16 @@ Beispiel:
         "id": "subscriptions/YouSubscriptionID/resourceGroups/YourResourceGroupID/Microsoft.MachineLearning/commitmentPlans/YourPlanName"
     }
 
-Ausführlichere Informationen finden Sie in den folgenden Artikeln sowie im Beispielcode.
+Ausführlichere Informationen finden Sie in den folgenden Artikeln sowie im Beispielcode:
 
 * Referenz zu [Azure Machine Learning-Cmdlets](https://msdn.microsoft.com/library/azure/mt767952.aspx) auf MSDN
 * [Exemplarische Vorgehensweise](https://github.com/raymondlaghaeian/azureml-webservices-arm-powershell/blob/master/sample-commands.txt) auf GitHub
 
-## Nutzen der Webdienste
+## Nutzen von Webdiensten
 
-### Über die Benutzeroberfläche der Azure ML-Webdienste (Test)
+### Über die Benutzeroberfläche der Azure Machine Learning-Webdienste (Testen)
 
-Sie können Ihren Webdienst über das Azure ML-Webdiensteportal testen. Dies beinhaltet das Testen der RRS- und der BES-Schnittstelle.
+Sie können Ihren Webdienst über das Azure Machine Learning-Webdiensteportal testen. Dies schließt das Testen der Schnittstellen des Request-Response Service (RRS) und des Stapelausführungsdiensts (Batch Execution Service, BES) ein.
 
 * [Bereitstellen eines neuen Webdiensts](machine-learning-webservice-deploy-a-web-service.md)
 * [Bereitstellen eines Azure Machine Learning-Webdiensts](machine-learning-publish-a-machine-learning-web-service.md)
@@ -93,7 +90,7 @@ Sie können Ihren Webdienst über das Azure ML-Webdiensteportal testen. Dies bei
 
 ### Über Excel
 
-Sie können eine Excel-Vorlage zur einfachen Nutzung des Webdiensts herunterladen:
+Sie können eine Excel-Vorlage zur Nutzung des Webdiensts herunterladen:
 
 * [Verwenden eines Azure Machine Learning-Webdiensts aus Excel](machine-learning-consuming-from-excel.md)
 * [Excel-Add-In für Azure Machine Learning-Webdienste](machine-learning-excel-add-in-for-web-services.md)
@@ -101,8 +98,6 @@ Sie können eine Excel-Vorlage zur einfachen Nutzung des Webdiensts herunterlade
 
 ### Über einen REST-basierten Client
 
-Bei den Azure ML-Webdiensten handelt es sich um RESTful-APIs. Diese APIs können über verschiedene Plattformen (.NET, Python, R, Java usw.) genutzt werden. Im [Microsoft Azure Machine Learning-Webdiensteportal](https://services.azureml.net) steht auf der Nutzungsseite Ihres Webdiensts Beispielcode zur Verfügung, der Ihnen den Einstieg erleichtert.
+Azure Machine Learning-Webdienste sind RESTful-APIs. Diese APIs können über verschiedene Plattformen (.NET, Python, R, Java usw.) genutzt werden. Im [Microsoft Azure Machine Learning-Webdiensteportal](https://services.azureml.net) steht auf der **Nutzungsseite** Ihres Webdiensts Beispielcode zur Verfügung, der Ihnen den Einstieg erleichtert. Weitere Informationen finden Sie unter [Nutzen eines Azure Machine Learning-Webdiensts, der von einem Machine Learning-Experiment aus bereitgestellt wurde](machine-learning-consume-web-services.md).
 
-* [Nutzen eines Azure Machine Learning-Webdiensts, der von einem Machine Learning-Experiment aus bereitgestellt wurde](machine-learning-consume-web-services.md)
-
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0907_2016-->

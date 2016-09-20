@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/09/2016"
+	ms.date="09/02/2016"
 	ms.author="jgao"/>
 
 # Anpassen von HDInsight-Clustern mithilfe von Bootstrap
@@ -41,19 +41,19 @@ Die Cluster können die Änderungen aufgrund des Re-Imagings nicht beibehalten. 
 
 Es gibt drei Methoden zum Verwenden von Bootstrap:
 
-- Verwenden von Azure PowerShell
+- Mithilfe von Azure PowerShell
 
     [AZURE.INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
     
 - Verwenden von .NET SDK
-- Verwenden von ARM-Vorlagen
+- Verwenden von Azure Resource Manager-Vorlagen
 
 Informationen zum Installieren zusätzlicher Komponenten in HDInsight-Clustern während ihrer Erstellung finden Sie unter:
 
 - [Anpassen von HDInsight-Clustern mithilfe von Skriptaktionen (Linux)](hdinsight-hadoop-customize-cluster-linux.md)
 - [Anpassen von HDInsight-Clustern mithilfe von Skriptaktionen | Azure](hdinsight-hadoop-customize-cluster.md)
 
-## Verwenden von Azure PowerShell
+## Mithilfe von Azure PowerShell
 
 Der folgende PowerShell-Code passt eine Hive-Konfiguration an:
 
@@ -114,9 +114,9 @@ Weitere Informationen finden Sie im Blog von Azim Uddin mit dem Titel [Customizi
 
 Informationen hierzu finden Sie unter [Erstellen von Linux-basierten Clustern in HDInsight mit dem .NET SDK](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md#use-bootstrap).
 
-## Verwenden von Azure-Ressourcen-Manager-Vorlagen
+## Verwenden von Resource Manager-Vorlagen
 
-Sie können Bootstrap in ARM-Vorlagen verwenden:
+Sie können Bootstrap in einer Resource Manager-Vorlage verwenden:
 
     "configurations": {
         …
@@ -128,11 +128,11 @@ Sie können Bootstrap in ARM-Vorlagen verwenden:
     }
 
 
-![hdinsight hadoop customize cluster bootstrap arm template](./media/hdinsight-hadoop-customize-cluster-bootstrap/hdinsight-customize-cluster-bootstrap-arm.png)
+![HDInsight Hadoop anpassen Cluster Bootstrap Azure Resource Manager-Vorlage](./media/hdinsight-hadoop-customize-cluster-bootstrap/hdinsight-customize-cluster-bootstrap-arm.png)
 
 
 
-## Weitere Informationen
+## Siehe auch
 
 - Unter [Erstellen von Hadoop-Clustern in HDInsight][hdinsight-provision-cluster] finden Sie Anweisungen zum Erstellen eines HDInsight-Clusters mit anderen benutzerdefinierten Optionen.
 - [Entwickeln von Script Action-Skripts für HDInsight][hdinsight-write-script]
@@ -261,4 +261,4 @@ Dieses PowerShell-Skript erstellt einen HDInsight-Cluster und passt eine Hive-Ei
 
     #endregion
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0907_2016-->

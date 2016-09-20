@@ -187,7 +187,7 @@ Der erste Schritt besteht daraus, Benutzeroberflächenelemente zur vorhandenen H
         }
 
 
-    Diese Klasse verwendet den isolierten Speicher, um Nachrichtenkategorien zu speichern, die das Gerät empfangen soll. Sie enthält außerdem Methoden zum Registrieren dieser Kategorien mithilfe einer [Vorlagenbenachrichtigungsregistrierung](notification-hubs-templates.md).
+    Diese Klasse verwendet den isolierten Speicher, um Nachrichtenkategorien zu speichern, die das Gerät empfangen soll. Sie enthält außerdem Methoden zum Registrieren dieser Kategorien mithilfe einer [Vorlagenbenachrichtigungsregistrierung](notification-hubs-templates-cross-platform-push-messages.md).
 
 
 4. Fügen Sie in der Datei „App.xaml.cs“ der **App**-Klasse folgende Eigenschaft hinzu: Ersetzen Sie die Platzhalter `<hub name>` und `<connection string with listen access>` durch den Namen Ihres Notification Hubs und die Verbindungszeichenfolge für *DefaultListenSharedAccessSignature*, die Sie zuvor erhalten haben.
@@ -266,7 +266,7 @@ Die App kann ist jetzt vollständig und kann verschiedene Kategorien in einem lo
 
 [AZURE.INCLUDE [notification-hubs-send-categories-template](../../includes/notification-hubs-send-categories-template.md)]
 
-##Ausführen der App und Erzeugen von Benachrichtigungen
+##Ausführen der Anwendung und Erzeugen von Benachrichtigungen
 
 1. Drücken Sie in Visual Studio die Taste F5, um die App zu starten.
 
@@ -321,4 +321,4 @@ In this tutorial we learned how to broadcast breaking news by category. Consider
 [Notification Hubs Guidance]: http://msdn.microsoft.com/library/jj927170.aspx
 [Notification Hubs How-To for Windows Phone]: ??
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0907_2016-->

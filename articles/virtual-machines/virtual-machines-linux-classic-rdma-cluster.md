@@ -35,11 +35,11 @@ Mit den folgenden Methoden können Sie einen Linux RDMA-Cluster mit oder ohne ei
 
 * **Azure-CLI-Skripts**: Verwenden Sie, wie weiter unten in diesem Artikel gezeigt, die [Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md) (CLI) für die Erstellung eines Skripts zur Bereitstellung eines Clusters von Linux-VMs der Größe A8 oder A9. Da Clusterknoten im Rahmen des klassischen Bereitstellungsmodells im Dienstverwaltungsmodus der Befehlszeilenschnittstelle seriell erstellt werden, kann die Bereitstellung einer großen Anzahl von Serverknoten mehrere Minuten dauern. Im klassischen Bereitstellungsmodell müssen A8- oder A9-VMs im gleichen Clouddienst bereitgestellt werden, damit eine Verbindung über das RDMA-Netzwerk hergestellt werden kann.
 
-* **Azure Resource Manager-Vorlagen**: Verwenden Sie das Resource Manager-Bereitstellungsmodell, um mehrere virtuelle Linux-Computer der Größe A8 und A9 in einem Computecluster bereitzustellen, der das RDMA-Netzwerk zum Ausführen von MPI-Workloads nutzt. Sie können [eine eigene Vorlage erstellen](../resource-group-authoring-templates.md) oder in den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/documentation/templates/) nach Vorlagen von Microsoft oder der Community suchen, um die gewünschte Lösung bereitzustellen. Ressourcen-Manager-Vorlagen stellen eine schnelle und zuverlässige Möglichkeit zum Bereitstellen eines Linux-Clusters dar. Im Resource Manager-Bereitstellungsmodell müssen A8- oder A9-VMs in der gleichen Verfügbarkeitsgruppe bereitgestellt werden, damit eine Verbindung über das RDMA-Netzwerk hergestellt werden kann.
+* **Azure Resource Manager-Vorlagen**: Verwenden Sie das Resource Manager-Bereitstellungsmodell, um einen Cluster mit virtuellen Computern der Größen A8 und A9 bereitzustellen, der eine Verbindung mit dem RDMA-Netzwerk herstellt, um MPI-Workloads auszuführen. Sie können [eine eigene Vorlage erstellen](../resource-group-authoring-templates.md) oder in den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/documentation/templates/) nach Vorlagen von Microsoft oder der Community suchen, um die gewünschte Lösung bereitzustellen. Ressourcen-Manager-Vorlagen stellen eine schnelle und zuverlässige Möglichkeit zum Bereitstellen eines Linux-Clusters dar. Im Resource Manager-Bereitstellungsmodell müssen A8- oder A9-VMs in der gleichen Verfügbarkeitsgruppe bereitgestellt werden, damit eine Verbindung über das RDMA-Netzwerk hergestellt werden kann.
 
 ## Beispielbereitstellung im klassischen Modell
 
-Die folgenden Schritte zeigen Ihnen, wie Sie die Azure-CLI verwenden, um eine SUSE Linux Enterprise Server 12-HPC-VM (SLES) aus dem Azure Marketplace bereitzustellen, die Intel MPI Library und andere Anpassungen zu installieren sowie ein benutzerdefiniertes VM-Image zu erstellen. Verwenden Sie dann das Image zum Erstellen eines Skripts für die Bereitstellung eines Clusters aus A8- oder A9-VMs.
+Die folgenden Schritte zeigen Ihnen, wie Sie die Azure-CLI verwenden, um eine SUSE Linux Enterprise Server 12-HPC-VM (SLES) aus dem Azure Marketplace bereitzustellen, die Intel MPI Library zu installieren sowie ein benutzerdefiniertes VM-Image zu erstellen. Verwenden Sie dann das Image zum Erstellen eines Skripts für die Bereitstellung eines Clusters aus A8- oder A9-VMs.
 
 >[AZURE.TIP]  Ein Cluster mit virtuellen A8- oder A9-Computern, die auf dem CentOS-basierten HPC-Image (Version 6.5 oder 7.1) aus dem Azure Marketplace basieren, lässt sich auf ganz ähnliche Weise bereitstellen. Unterschiede sind in den jeweiligen Schritten angegeben. Da die CentOS-basierten HPC-Images Intel MPI enthalten, muss Intel MPI beispielsweise nicht separat auf virtuellen Computern installiert werden, die auf der Grundlage dieser Images erstellt wurden.
 
@@ -107,7 +107,7 @@ Nach Abschluss der VM-Bereitstellung stellen Sie mithilfe der externen IP-Adress
     >
     >Für die CentOS-basierten HPC-Images aus dem Marketplace sind Kernel-Updates in der **yum**-Konfigurationsdatei deaktiviert. Da die Linux RDMA-Treiber als RPM-Paket verteilt werden, funktionieren Treiberupdates möglicherweise nicht, wenn der Kernel aktualisiert wird.
 
-* **Linux RDMA-Treiberupdates**: Wenn Sie einen SLES 12-HPC-VM bereitgestellt haben, müssen die RDMA-Treiber aktualisiert werden. Ausführlichere Informationen finden Sie unter [Informationen zu den rechenintensiven A8-, A9, A10- und A11-Instanzen](virtual-machines-linux-a8-a9-a10-a11.md#Linux-RDMA-driver-updates-for-SLES-12).
+* **Linux RDMA-Treiberupdates**: Wenn Sie einen SLES 12-HPC-VM bereitgestellt haben, müssen die RDMA-Treiber aktualisiert werden. Ausführlichere Informationen finden Sie unter [Informationen zu den rechenintensiven A8-, A9, A10- und A11-Instanzen](virtual-machines-linux-a8-a9-a10-a11-specs.md#rdma-driver-updates-for-sles-12).
 
 * **Intel MPI** – Wenn Sie einen SLES 12-HPC-VM bereitgestellt haben, laden Sie die Intel MPI Library 5-Laufzeit von der Website „Intel.com“ herunter, und installieren Sie sie. Entsprechende Beispielbefehle finden Sie weiter unten. Dieser Schritt ist nicht erforderlich, wenn Sie einen CentOS-basierten HPC-VM (Version 6.5 oder 7.1) bereitgestellt haben.
 
@@ -129,7 +129,7 @@ Nach Abschluss der VM-Bereitstellung stellen Sie mithilfe der externen IP-Adress
 
     >[AZURE.NOTE]Zu Testzwecken können Sie "memlock" auch auf "unbegrenzt" festlegen. Beispiel: „<Benutzer- oder Gruppenname> hard memlock unlimited“
 
-* **SSH-Schlüssel für SLES 12-VMs** – Generieren Sie SSH-Schlüssel, um bei der Ausführung von MPI-Aufträgen zwischen allen Computeknoten im SLES 12-HPC-Cluster eine Vertrauensstellung für Ihr Benutzerkonto einzurichten. (Überspringen Sie diesen Schritt, wenn Sie einen CentOS-basierten HPC-VM bereitgestellt haben. Anweisungen zum Einrichten einer kennwortlosen SSH-Vertrauensstellung zwischen den Clusterknoten nach Erfassung des Images und Bereitstellung des Clusters finden Sie weiter unten in diesem Artikel.)
+* **SSH-Schlüssel für SLES 12-VMs** – Generieren Sie SSH-Schlüssel, um bei der Ausführung von MPI-Aufträgen zwischen Computeknoten im SLES 12-HPC-Cluster eine Vertrauensstellung für Ihr Benutzerkonto einzurichten. (Überspringen Sie diesen Schritt, wenn Sie einen CentOS-basierten HPC-VM bereitgestellt haben. Anweisungen zum Einrichten einer kennwortlosen SSH-Vertrauensstellung zwischen den Clusterknoten nach Erfassung des Images und Bereitstellung des Clusters finden Sie weiter unten in diesem Artikel.)
 
     Führen Sie den folgenden Befehl aus, um SSH-Schlüssel zu erstellen: Wenn Sie zur Eingabe aufgefordert werden, drücken Sie einfach die EINGABETASTE, um die Schlüssel am Standardspeicherort zu erstellen, ohne eine Passphrase festzulegen.
 
@@ -398,4 +398,4 @@ In einem funktionierenden Cluster mit zwei Knoten wird eine Ausgabe angezeigt, d
 
 * Verwenden Sie eine [Schnellstartvorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/intel-lustre-clients-on-centos), um einen Intel Lustre-Cluster unter Verwendung eines CentOS-basierten HPC-Images zu erstellen. Informationen hierzu finden Sie in diesem [Blogbeitrag](https://blogs.msdn.microsoft.com/arsen/2015/10/29/deploying-intel-cloud-edition-for-lustre-on-microsoft-azure/).
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0907_2016-->

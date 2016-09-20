@@ -159,7 +159,7 @@ Dieses Beispiel zeigt die Konfiguration der Ressource in der Vorlage:
 
 Im obigen Beispiel werden zwei Regeln erstellt, um Aktionen für die automatische Skalierung zu definieren: Die erste Regel definiert das Hochskalieren, die zweite das Herunterskalieren. Diese Werte werden in den Regeln bereitgestellt:
 
-- **metricName**: Entspricht dem Leistungsindikator, den wir in der Variablen „wadperfcounter“ für die Diagnoseerweiterung definiert haben. Im obigen Beispiel wird der Zähler für die Threadanzahl verwendet.  
+- **metricName**: Entspricht dem Leistungsindikator, den wir in der Variablen „wadperfcounter“ für die Diagnoseerweiterung definiert haben. Im obigen Beispiel wird der Zähler für die Threadanzahl verwendet.
 - **metricResourceUri**: Dies ist der Ressourcenbezeichner der VM-Skalierungsgruppe. Dieser Bezeichner enthält den Namen der Ressourcengruppe, den Namen des Ressourcenanbieters und den Namen der zu skalierenden Skalierungsgruppe.
 - **timeGrain**: Dies ist die Granularität der erfassten Metriken. Im obigen Beispiel werden Daten in einem Intervall von einer Minute erfasst. Dieser Wert wird in Kombination mit „timeWindow“ verwendet.
 - **statistic**: Hiermit wird bestimmt, wie die Metriken für die Durchführung der automatischen Skalierungsaktion kombiniert werden. Mögliche Werte sind: Average, Min, Max.
@@ -228,5 +228,6 @@ Azure PowerShell kann zum Einrichten der automatischen Skalierung für eine Skal
 - Unter [Automatisches Skalieren von Computern in einer VM-Skalierungsgruppe](virtual-machine-scale-sets-windows-autoscale.md) finden Sie ein Beispiel für die Erstellung einer Skalierungsgruppe mit automatischer Skalierung.
 - Beispiele für Überwachungsfeatures von Azure Insights finden Sie unter [Azure Insights – PowerShell-Schnellstartbeispiele](../azure-portal/insights-powershell-samples.md).
 - Informationen zu Benachrichtigungsfeatures finden Sie unter [Verwenden von automatischen Skalierungsvorgängen zum Senden von E-Mail- und Webhook-Warnbenachrichtigungen in Azure Insights](../azure-portal/insights-autoscale-to-webhook-email.md) sowie unter [Verwenden von Überwachungsprotokollen zum Senden von E-Mail- und Webhook-Warnbenachrichtigungen in Azure Insights](../azure-portal/insights-auditlog-to-webhook-email.md).
+- Erfahren Sie mehr über [erweiterte Szenarien für die automatische Skalierung](./virtual-machine-scale-sets-advanced-autoscale.md).
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0907_2016-->

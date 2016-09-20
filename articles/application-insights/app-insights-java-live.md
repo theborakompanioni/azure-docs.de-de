@@ -107,9 +107,9 @@ Um möglichst genaue Ergebnisse zu erhalten, muss der Filter vor allen anderen F
 
 Gegebenenfalls müssen Sie [Ausnahmen für das Senden ausgehender Daten festlegen](app-insights-ip-addresses.md).
 
-## 5\. Starten Sie die Web-App neu.
+## 6\. Starten Sie die Web-App neu.
 
-## 6\. Anzeigen Ihrer Telemetriedaten in Application Insights
+## 7\. Anzeigen Ihrer Telemetriedaten in Application Insights
 
 Kehren Sie zur Application Insights-Ressource im [Microsoft Azure-Portal](https://portal.azure.com) zurück.
 
@@ -143,4 +143,4 @@ Beim Anzeigen der Eigenschaften einer Anforderung können Sie die damit verbunde
 
  
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0907_2016-->

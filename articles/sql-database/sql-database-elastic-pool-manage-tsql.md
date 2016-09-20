@@ -26,9 +26,7 @@
 
 Verwenden Sie die Befehle [Create Database (Azure SQL-Datenbank)](https://msdn.microsoft.com/library/dn268335.aspx) und [Alter Database(Azure SQL-Datenbank)](https://msdn.microsoft.com/library/mt574871.aspx), um Datenbanken zu erstellen und in elastische Pools bzw. aus elastischen Pools zu verschieben. Der elastische Pool muss vorhanden sein, bevor Sie diese Befehle verwenden können. Diese Befehle wirken sich nur auf Datenbanken aus. Die Erstellung eines neuen Pools und die Einstellung der Pooleigenschaften (z.B. min. und max. eDTUs) kann mit T-SQL-Befehlen nicht geändert werden.
 
-
-> [AZURE.NOTE] Pools für elastische Datenbanken sind derzeit als Vorschauversion ausschließlich für Server mit SQL-Datenbank V12 verfügbar. Wenn Sie über einen SQL-Datenbank V11-Server verfügen, können Sie in einem Schritt [mithilfe von PowerShell auf V12 aktualisieren und einen Pool erstellen](sql-database-upgrade-server-portal.md).
-
+> [AZURE.NOTE] Elastische Pools sind in allen Azure-Regionen allgemein verfügbar, mit Ausnahme von „USA, Norden-Mitte“ und „Indien, Westen“. Dort befinden sie sich derzeit in der Vorschauphase. Die allgemeine Verfügbarkeit von elastischen Pools in diesen Regionen wird so bald wie möglich bereitgestellt. Elastische Pools unterstützen zurzeit keine Datenbanken mit [In-Memory-OLTP oder In-Memory-Analysen](sql-database-in-memory.md).
 
 ## Erstellen einer neuen Datenbank in einem elastischen Pool
 Verwenden Sie den Befehl CREATE DATABASE mit der Option SERVICE\_OBJECTIVE.
@@ -84,4 +82,4 @@ Nach dem Erstellen eines Pools für elastische Datenbanken können Sie elastisch
 
 Unter [Übersicht über Features für elastische Datenbanken](sql-database-elastic-scale-introduction.md) finden Sie Informationen zur Verwendung elastischer Datenbanktools für die horizontale Skalierung, zum Verschieben von Daten, für Abfrage oder zum Erstellen von Transaktionen.
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0907_2016-->

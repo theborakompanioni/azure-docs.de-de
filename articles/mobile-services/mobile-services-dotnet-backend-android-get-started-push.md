@@ -58,7 +58,7 @@ Wenn Sie auf einem älteren Gerät testen, konsultieren Sie Einrichten des Googl
 
 [AZURE.INCLUDE [Hinzufügen von Play Services](../../includes/mobile-services-add-google-play-services.md)]
 
-###Hinzufügen des Codes
+###Code hinzufügen
 
 [AZURE.INCLUDE [mobile-services-android-getting-started-with-push](../../includes/mobile-services-android-getting-started-with-push.md)]
 
@@ -114,6 +114,6 @@ Weitere Informationen zu Mobile Services und Benachrichtigungshubs finden Sie in
 
 [Was sind Notification Hubs?]: ../notification-hubs-overview.md
 [Senden von Übertragungsbenachrichtigungen an Abonnenten]: ../notification-hubs-windows-store-dotnet-send-breaking-news.md
-[Senden vorlagenbasierter Benachrichtigungen an Abonnenten]: ../notification-hubs-windows-store-dotnet-send-localized-breaking-news.md
+[Senden vorlagenbasierter Benachrichtigungen an Abonnenten]: ../notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0907_2016-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/03/2016"
+	ms.date="08/31/2016"
 	ms.author="trinadhk; jimpark; markgal;"/>
 
 # Verwalten und Überwachen der Sicherung von virtuellen Azure-Computern
@@ -49,7 +49,7 @@ So verwalten Sie geschützte virtuelle Computer
 
     ![Aufträge](./media/backup-azure-manage-vms/backup-job.png)
 
-## Bedarfsabhängig Sicherung eines virtuellen Computers
+## On-Demand-Sicherung eines virtuellen Computers
 Sie können eine bedarfsabhängige Sicherung eines virtuellen Computers erstellen, sobald dieser für den Schutz konfiguriert ist. Wenn die erste Sicherung für den virtuellen Computer ansteht, wird mithilfe einer bedarfsabhängigen Sicherung eine vollständige Kopie des virtuellen Computers im Azure-Sicherungstresor erstellt. Wenn die erste Sicherung abgeschlossen ist, werden bei einer bedarfsabhängigen Sicherung nur Änderungen an einer vorherigen Sicherung an den Azure-Sicherungstresor gesendet, d.h. sie ist stets inkrementell.
 
 >[AZURE.NOTE] Der Aufbewahrungszeitraum einer bedarfsabhängigen Sicherung wird auf den Wert festgelegt, der in der Sicherungsrichtlinie für den virtuellen Computer für die tägliche Aufbewahrung festgelegt ist.
@@ -219,7 +219,7 @@ PS C:\> Add-AzureRmLogAlertRule -Name backupFailedAlert -Location "East US" -Res
 
 **ResourceId**: Sie erhalten diese aus dem Popup "Vorgangsprotokolle", wie im vorherigen im Abschnitt beschrieben. „ResourceUri“ im Popupdetailfenster eines Vorgangs entspricht der „ResourceId“, die für dieses Cmdlet bereitgestellt werden muss.
 
-**OperationName**: Hat das Format „Microsoft.Backup/backupvault/<EventName>“, wobei EventName folgende Werte haben kann: Register, Unregister, ConfigureProtection, Backup, Restore, StopProtection, DeleteBackupData, CreateProtectionPolicy, DeleteProtectionPolicy, UpdateProtectionPolicy.
+**OperationName**: Hat das Format „Microsoft.Backup/backupvault/<EventName>“, wobei „EventName“ folgende Werte haben kann: Register, Unregister, ConfigureProtection, Backup, Restore, StopProtection, DeleteBackupData, CreateProtectionPolicy, DeleteProtectionPolicy, UpdateProtectionPolicy.
 
 **Status**: Unterstützte Werte sind "Started", "Succeeded" und "Failed".
 
@@ -227,7 +227,7 @@ PS C:\> Add-AzureRmLogAlertRule -Name backupFailedAlert -Location "East US" -Res
 
 **Name**: Name der Warnungsregel.
 
-**CustomEmail**: Geben Sie die benutzerdefinierte E-Mail-Adresse an, an die die Warnungsbenachrichtigung gesendet werden soll.
+**CustomEmails**: Geben Sie die benutzerdefinierte E-Mail-Adresse an, an die die Warnungsbenachrichtigung gesendet werden soll.
 
 **SendToServiceOwners**: Mit dieser Option wird die Warnungsbenachrichtigung an alle Administratoren und Co-Administratoren des Abonnements gesendet. Sie kann im **New-AzureRmAlertRuleEmail**-Cmdlet verwendet werden.
 
@@ -242,4 +242,4 @@ Ereignisbasierte Warnungen unterliegen den folgenden Einschränkungen:
 
 - [Wiederherstellen virtueller Azure-Computer](backup-azure-restore-vms.md)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0907_2016-->

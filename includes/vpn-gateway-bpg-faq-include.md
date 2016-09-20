@@ -37,7 +37,7 @@ Derzeit leider nicht.
 
 #### Kann ich die gleichen Präfixe wie meine Virtual Network-Präfixe ankündigen?
 
-Nein. Das Ankündigen der gleichen Präfixe wie Ihre Virtual Network-Adresspräfixe wird von der Azure-Plattform blockiert oder gefiltert.
+Nein. Das Ankündigen der gleichen Präfixe wie Ihre Virtual Network-Adresspräfixe wird von der Azure-Plattform blockiert oder gefiltert. Sie können jedoch ein Präfix ankündigen, das eine Obermenge der Inhalte Ihres virtuellen Netzwerks ist. Ihr virtuelles Netzwerk könnte z.B. den Adressraum 10.10.0.0/16 verwenden, und Sie könnten 10.0.0.0/8 ankündigen.
 
 ### Kann ich BGP mit meinen VNET-zu-VNET-Verbindungen verwenden?
 
@@ -79,4 +79,4 @@ Das lokale Azure-Netzwerkgateway gibt die anfänglichen Adresspräfixe für das 
 
 Sie müssen eine Hostroute der Azure-BGP-Peer-IP-Adresse auf Ihrem VPN-Gerät hinzufügen, die auf den IPsec-S2S-VPN-Tunnel verweist. Lautet die Azure-VPN-Peer-IP-Adresse also etwa 10.12.255.30, müssen Sie eine Hostroute für 10.12.255.30 mit einer Nexthop-Schnittstelle der entsprechenden IPSec-Tunnelschnittstelle auf Ihrem VPN-Gerät hinzufügen.
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0907_2016-->

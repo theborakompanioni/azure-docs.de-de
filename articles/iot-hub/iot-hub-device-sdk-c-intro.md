@@ -13,14 +13,14 @@
      ms.topic="article"
      ms.tgt_pltfrm="na"
      ms.workload="na"
-     ms.date="03/29/2016"
+     ms.date="09/06/2016"
      ms.author="obloch"/>
 
 # Einführung in das Azure IoT-Geräte-SDK für C
 
 Das **Azure IoT-Geräte-SDK** ist ein Satz von Bibliotheken, die konzipiert wurden, um den Versand von Ereignissen und den Empfang von Nachrichten vom **Azure IoT Hub**-Dienst zu vereinfachen. Es gibt verschiedene Varianten des SDK für die unterschiedlichen Plattformen. In diesem Artikel wird aber das **Azure IoT-Geräte-SDK für C** beschrieben.
 
-Das Azure IoT-Geräte-SDK für C wurde für optimale Portabilität in ANSI C (C99) geschrieben. Dies vereinfacht den Einsatz auf einer Reihe von Plattformen und Geräten – vor allem, wenn es wichtig ist, die Festplatten- und Speichergröße zu reduzieren.
+Das Azure IoT-Geräte-SDK für C wurde für optimale Portabilität in ANSI C (C99) geschrieben. Dies vereinfacht den Einsatz auf einer Reihe von Plattformen und Geräten – vor allem, wenn es wichtig ist, die Festplatten- und Speichergröße zu reduzieren.
 
 Es gibt eine Vielzahl von Plattformen, auf denen das SDK getestet wurde. (Einzelheiten finden Sie unter [Betriebssystemplattformen und Hardwarekompatibilität mit Geräte-SDKs](iot-hub-tested-configurations.md).) Denken Sie daran, dass der in diesem Artikel beschriebene Code für alle unterstützten Plattformen identisch ist, obwohl in diesem Artikel der Beispielcode für die Windows-Plattform verwendet wird.
 
@@ -41,7 +41,7 @@ Dieses Repository enthält die gesamte Familie der Azure IoT-Geräte-SDKs. In di
   ![](media/iot-hub-device-sdk-c-intro/02-CFolder.PNG)
 
 * Die Hauptimplementierung des SDKs befindet sich im Ordner **iothub\_client**, der die Implementierung der niedrigsten API-Ebene im SDK (die Bibliothek **IoTHubClient**) enthält. Die Bibliothek **IoTHubClient** enthält APIs zum Implementieren des Messagings zum Senden von Nachrichten an IoT Hub sowie zum Empfangen von Nachrichten von IoT Hub. Wenn Sie diese Bibliothek verwenden, müssen Sie die Nachrichtenserialisierung implementieren (wozu das nachstehend beschriebene Serialisierungsbeispielprogramm verwendet wird). Andere Details zur Kommunikation mit IoT Hub werden jedoch für Sie übernommen.
-* Der Ordner **serializer** enthält Hilfsfunktionen und Beispiele, die zeigen, wie Daten vor dem Senden an Azure IoT Hub mithilfe der Clientbibliothek serialisiert werden. Beachten Sie, dass die Verwendung des Serialisierungsprogramms nicht obligatorisch ist und nur zur Veranschaulichung erläutert wird. Wenn Sie die Bibliothek des **Serialisierungsprogramms** verwenden, beginnen Sie zunächst mit der Definition eines Modells, das sowohl die Ereignisse, die Sie an IoT Hub senden möchten, als auch die Nachrichten angibt, die Sie von IoT Hub empfangen möchten. Sobald das Modell definiert ist, bietet Ihnen das SDK eine API-Oberfläche, mit der Sie problemlos mit Ereignissen und Nachrichten arbeiten können, ohne sich um Serialisierungsdetails Gedanken machen zu müssen. Die Bibliothek ist von anderen Open Source-Bibliotheken abhängig, die den Datentransport mithilfe verschiedener Protokolle (AMQP, MQTT) implementieren.
+* Der Ordner **serializer** enthält Hilfsfunktionen und Beispiele, die zeigen, wie Daten vor dem Senden an Azure IoT Hub mithilfe der Clientbibliothek serialisiert werden. Beachten Sie, dass die Verwendung des Serialisierungsprogramms nicht obligatorisch ist und nur zur Veranschaulichung erläutert wird. Wenn Sie die Bibliothek des **Serialisierungsprogramms** verwenden, beginnen Sie zunächst mit der Definition eines Modells, das sowohl die Ereignisse, die Sie an IoT Hub senden möchten, als auch die Nachrichten angibt, die Sie von IoT Hub empfangen möchten. Sobald das Modell definiert ist, bietet das SDK Ihnen eine API-Oberfläche, mit der Sie problemlos mit Ereignissen und Nachrichten arbeiten können, ohne sich um Serialisierungsdetails Gedanken machen zu müssen. Die Bibliothek hängt von anderen Open-Source-Bibliotheken ab, die den Transport mithilfe mehrerer Protokolle (AMQP, MQTT) implementieren.
 * Die Bibliothek **IoTHubClient** hängt von anderen Open-Source-Bibliotheken ab:
    * Der Bibliothek [Azure C shared utility](https://github.com/Azure/azure-c-shared-utility), die allgemeine Funktionen für grundlegende Aufgaben (etwa Zeichenfolgen- und Listenbearbeitung, E/A usw.) bereitstellt, die von mehreren Azure-bezogenen SDKs für C benötigt werden.
    * Der Bibliothek [Azure uAMQP](https://github.com/Azure/azure-uamqp-c), einer clientseitigen Implementierung von AMQP, die für Geräte mit eingeschränkten Ressourcen optimiert ist.
@@ -488,4 +488,4 @@ Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 [lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
 [lnk-portal]: iot-hub-manage-through-portal.md
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0907_2016-->

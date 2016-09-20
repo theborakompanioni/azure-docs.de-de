@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="06/07/2016"
+   ms.date="09/06/2016"
    ms.author="toddabel"/>
 
 # Melden und Überprüfen der Dienstintegrität
@@ -156,4 +156,4 @@ activationContext.ReportApplicationHealth(healthInformation);
 ## Nächste Schritte
 [Ausführlichere Informationen zur Service Fabric-Integrität](service-fabric-health-introduction.md)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0907_2016-->

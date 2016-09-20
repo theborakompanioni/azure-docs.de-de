@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="andkjell"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/27/2016"
+	ms.date="09/07/2016"
 	ms.author="andkjell"/>
 
 
@@ -28,11 +28,11 @@ Mit der Benutzeroberfläche von **Synchronization Service Manager** können erwe
 
 Sie starten die Benutzeroberfläche von **Synchronization Service Manager** über das Startmenü. Sie heißt **Synchronisierungsdienst** und befindet sich in der Gruppe **Azure AD Connect**. ![Synchronization Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/startmenu.png)
 
-Klicken Sie auf die Links oben in diesem Thema, um weitere Informationen zu den verschiedenen Registerkarten in der Benutzeroberfläche zu erhalten.
+Klicken Sie auf die Links oben in diesem Thema, um weitere Informationen zu den verschiedenen Registerkarten auf der Benutzeroberfläche zu erhalten.
 
 ## Nächste Schritte
 Weitere Informationen zur Konfiguration der [Azure AD Connect-Synchronisierung](active-directory-aadconnectsync-whatis.md).
 
 Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md).
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0907_2016-->

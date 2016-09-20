@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/14/2016"
+	ms.date="09/02/2016"
 	ms.author="micurd"/>
 
 # Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy
@@ -40,7 +40,7 @@ Die grundlegende Syntax für AzCopy-Befehle ist:
 
 	AzCopy /Source:<source> /Dest:<destination> [Options]
 
-Öffnen Sie ein Befehlsfenster, und navigieren Sie zum Installationsverzeichnis von AzCopy auf Ihrem Computer – dort befindet sich die ausführbare Datei `AzCopy.exe`. Bei Bedarf können Sie den Speicherort für die AzCopy-Installation zum Systempfad hinzufügen. AzCopy wird standardmäßig in `%ProgramFiles(x86)%\Microsoft SDKs\Azure\AzCopy` (64-bit Windows) oder `%ProgramFiles%\Microsoft SDKs\Azure\AzCopy` (32-bit Windows) installiert.
+Öffnen Sie ein Befehlsfenster, und navigieren Sie zum Installationsverzeichnis von AzCopy auf Ihrem Computer – dort befindet sich die ausführbare Datei `AzCopy.exe`. Bei Bedarf können Sie den Speicherort für die AzCopy-Installation zum Systempfad hinzufügen. In der Standardeinstellung ist AzCopy in `%ProgramFiles(x86)%\Microsoft SDKs\Azure\AzCopy` oder `%ProgramFiles%\Microsoft SDKs\Azure\AzCopy` installiert.
 
 Die folgenden Beispiele zeigen eine Vielzahl von Szenarien zum Kopieren von Daten von und zu Microsoft Azure Blobs, Dateien und Tabellen. Für eine detailliertere Erklärung der in jedem Beispiel verwendeten Parameter gehen Sie zum Abschnitt [Einführung in die Parameter](#azcopy-parameters).
 
@@ -866,4 +866,4 @@ Weitere Informationen zu Azure Storage und zu AzCopy finden Sie in den folgenden
 - [AzCopy: Verwenden des kontoübergreifenden Kopierblobs](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/04/01/azcopy-using-cross-account-copy-blob.aspx)
 - [AzCopy: Hochladen/Herunterladen von Dateien für Microsoft Azure-Blobs](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/12/03/azcopy-uploading-downloading-files-for-windows-azure-blobs.aspx)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0907_2016-->

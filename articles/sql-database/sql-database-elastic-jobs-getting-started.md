@@ -12,14 +12,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/23/2016"
+	ms.date="09/06/2016"
 	ms.author="ddove" />
 
 # Erste Schritte mit Aufträgen für die elastische Datenbank
 
 Aufträge für die elastische Datenbank (Vorschau) für Azure SQL-Datenbank ermöglicht die zuverlässige Ausführung von T-SQL-Skripts, die mehrere Datenbanken überspannen, und stellt automatische Wiederholung und ggf. Abschlussgarantien bereit. Weitere Informationen zu Aufträgen für die elastische Datenbank finden Sie auf der [Übersichtsseite zum Feature](sql-database-elastic-jobs-overview.md).
 
-Dieses Thema baut auf dem Beispiel unter [Erste Schritte mit den Tools für die elastische Datenbank](sql-database-elastic-scale-get-started.md) auf. Wenn Sie das Beispiel durchgearbeitet haben, haben Sie gelernt, wie Sie Aufträge zum Verwalten einer Gruppe aufeinander bezogener Datenbanken erstellen und verwalten können.
+Dieses Thema erweitert das Beispiel unter [Erste Schritte mit Tools für elastische Datenbanken](sql-database-elastic-scale-get-started.md). Wenn Sie das Beispiel durchgearbeitet haben, haben Sie gelernt, wie Sie Aufträge zum Verwalten einer Gruppe aufeinander bezogener Datenbanken erstellen und verwalten können. Es ist nicht erforderlich, die Tools für die elastische Skalierung zu verwenden, um die Vorteile der elastischen Aufträge zu nutzen.
 
 ## Voraussetzungen
 
@@ -238,7 +238,7 @@ Ausführungsrichtlinien lassen aktuell die folgenden Definitionen zu:
 * Auftragstimeout: Gesamtzeit bis zum Abbruch eines Auftrags durch die Aufträge für die elastische Datenbank.
 * Anfängliches Wiederholungsintervall: Wartezeit vor dem ersten Wiederholungsversuch.
 * Maximales Wiederholungsintervall: Höchstmenge der zu durchlaufenden Wiederholungsintervalle.
-* Backoffkoeffizient des Wiederholungsintervalls: Koeffizient zur Berechnung des nächsten Intervalls zwischen Wiederholungsversuchen. Dazu wird diese Formel verwendet: (Anfängliches Wiederholungsintervall) * Math.pow((Intervallbackoffkoeffizient), (Anzahl der Wiederholungsversuche) - 2). 
+* Backoffkoeffizient des Wiederholungsintervalls: Koeffizient zur Berechnung des nächsten Intervalls zwischen Wiederholungsversuchen. Dazu wird diese Formel verwendet: (Anfängliches Wiederholungsintervall) * Math.pow((Intervallbackoffkoeffizient), (Anzahl der Wiederholungsversuche) - 2).
 * Versuche maximal: Die Höchstzahl der im Rahmen eines Auftrags auszuführenden Wiederholungsversuche.
 
 Für die standardmäßige Ausführungsrichtlinie werden diese Werte verwendet:
@@ -447,4 +447,4 @@ Preisinformationen finden Sie in der [SQL-Datenbank – Preisdetails](https://az
 [5]: ./media/sql-database-elastic-query-getting-started/exel-sources.png
 <!--anchors-->
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0907_2016-->

@@ -16,28 +16,15 @@
  
 # Versionshinweise für das Application Insights-SDK für Windows Phone und Store
 
-Das [Application Insights-SDK](app-insights-windows-get-started.md) sendet Telemetriedaten über Ihre Live-App an [Application Insights](https://azure.microsoft.com/services/application-insights/), wo Sie die Nutzung und Leistung analysieren können.
+Das Application Insights-SDK sendet Telemetriedaten über Ihre Live-App an [Application Insights](https://azure.microsoft.com/services/application-insights/), wo Sie die Nutzung und Leistung analysieren können.
 
-
-#### So installieren Sie das SDK in Ihrer Anwendung
-
-Weitere Informationen finden Sie unter [Erste Schritte mit Application Insights für Windows Phone- und Windows Store-Apps](app-insights-windows-get-started.md).
-
-#### So aktualisieren Sie auf das neueste SDK 
-
-* Speichern Sie eine Kopie der Datei "ApplicationInsights.config", um Ihre Anpassungen beizubehalten.
-* Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt, und wählen Sie dann **NuGet-Pakete verwalten** aus.
-* Legen Sie einen Filter fest, um nur die installierten Pakete anzuzeigen. 
-* Wählen Sie die installierten Application Insights-Pakete und dann "Upgrade" aus.
-* Vergleichen Sie die alte und neue Version der Datei "ApplicationInsights.config". Übernehmen Sie wieder alle Anpassungen, die Sie an der alten Version vorgenommen haben.
-* Erstellen Sie die Projektmappe neu.
 
 ## Version 1.1.1
 
 ### Windows SDK
 
-- Beheben einer ausbleibenden Reaktion bei Abstürzen bei Nutzung des Silverlight SDK von Windows Phone. Nach dieser Änderung wird jeder Absturz, der später als etwa 2 Sekunden nach dem Aufruf von WindowsAppInitialier.InitializeAsync(...) auftritt, auf dem Datenträger gespeichert und bei der nächsten Ausführung der App gesendet. Wenn ein Absturz innerhalb von etwa 2 Sekunden nach dem Aufruf auftritt, wird er ignoriert.  
-- Legen Sie die NuGet-Abhängigkeiten auf eine bestimmte Version von Core und „Microsoft.ApplicationInsights.PersistenceChannel“ (Version 1.2.3) fest.   
+- Beheben einer ausbleibenden Reaktion bei Abstürzen bei Nutzung des Silverlight SDK von Windows Phone. Nach dieser Änderung wird jeder Absturz, der später als etwa 2 Sekunden nach dem Aufruf von WindowsAppInitialier.InitializeAsync(...) auftritt, auf dem Datenträger gespeichert und bei der nächsten Ausführung der App gesendet. Wenn ein Absturz innerhalb von etwa 2 Sekunden nach dem Aufruf auftritt, wird er ignoriert.
+- Legen Sie die NuGet-Abhängigkeiten auf eine bestimmte Version von Core und „Microsoft.ApplicationInsights.PersistenceChannel“ (Version 1.2.3) fest.
 
 ### Core SDK
 
@@ -95,4 +82,4 @@ Vorschau vom 28.04.2015
 
 Für ältere Versionen sind keine Versionshinweise verfügbar.
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0907_2016-->

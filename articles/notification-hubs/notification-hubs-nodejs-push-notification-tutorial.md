@@ -31,7 +31,7 @@ Die behandelten Szenarios umfassen das Senden von Pushbenachrichtigungen an Anwe
 * Android
 * iOS
 * Windows Phone
-* Universelle Windows-Plattform 
+* Universelle Windows-Plattform
 
 Weitere Informationen zu Notification Hubs finden Sie im Abschnitt [Nächste Schritte](#next).
 
@@ -41,7 +41,7 @@ Azure Notification Hubs bieten eine einfache, plattformübergreifende und skalie
 
 ##Erstellen einer Node.js-Anwendung
 
-Der erste Schritt in diesem Tutorial besteht im Erstellen einer neuen leeren Node.js-Anwendung. Anweisungen zum Erstellen von Node.js-Anwendungen finden Sie unter [Erstellen und Bereitstellen einer Node.js-Anwendung auf einer Azure-Website][nodejswebsite], [Node.js-Clouddienst][Node.js Cloud Service] \(mithilfe von Windows PowerShell) oder [Website mit WebMatrix].
+Der erste Schritt in diesem Tutorial besteht im Erstellen einer neuen leeren Node.js-Anwendung. Anweisungen zum Erstellen von Node.js-Anwendungen finden Sie unter [Erstellen und Bereitstellen einer Node.js-Anwendung auf einer Azure-Website][nodejswebsite], [Node.js-Clouddienst][Node.js Cloud Service] mithilfe von Windows PowerShell oder [Website mit WebMatrix].
 
 ##Konfigurieren der Anwendung für Notification Hubs
 
@@ -218,4 +218,4 @@ Mit den obigen Beispielcodeausschnitten können Sie problemlos eine Dienstinfras
   [Node.js Web Application with Storage]: /develop/nodejs/tutorials/web-site-with-storage/
   [Azure-Portal]: https://portal.azure.com
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0907_2016-->

@@ -35,7 +35,7 @@ Dieses Thema baut auf die App auf, die Sie in [Erste Schritte mit Notification H
 
 ##Hinzufügen der Kategorieauswahl zur App
 
-Der erste Schritt besteht daraus, Benutzeroberflächenelemente zur vorhandenen Hauptseite hinzuzufügen, welche dem Benutzer die Auswahl der Kategorien für die Registrierung ermöglichen. Die durch den Benutzer ausgewählten Kategorien werden auf dem Gerät gespeichert. Wenn die App gestartet wird, wird eine Geräteregistrierung in Ihrem Notification Hub mit den ausgewählten Kategorien als Tags erstellt.
+Der erste Schritt besteht daraus, Benutzeroberflächenelemente zur vorhandenen Hauptseite hinzuzufügen, welche dem Benutzer die Auswahl der Kategorien für die Registrierung ermöglichen. Die durch den Benutzer ausgewählten Kategorien werden auf dem Gerät gespeichert. Beim Starten der App wird eine Geräteregistrierung in Ihrem Notification Hub mit den ausgewählten Kategorien als Tags erstellt.
 
 1. Öffnen Sie die Projektdatei "MainPage.xaml", und kopieren Sie folgenden Code in das Element **Grid**:
 
@@ -115,7 +115,7 @@ Der erste Schritt besteht daraus, Benutzeroberflächenelemente zur vorhandenen H
 
 	Wenn sich ein Gerät für mehrere Vorlagen mit demselben Tag registriert, werden bei einer eingehenden Nachricht für das entsprechende Tag mehrere Benachrichtigungen an das Gerät verschickt (eine pro Vorlage). Dies ist hilfreich, um dieselbe logische Nachricht in mehreren visuellen Darstellungen anzuzeigen, z. B. als Signal und als Popupbenachrichtigung in einer Windows Store-App.
 
-	Weitere Informationen zu Vorlagen finden Sie unter [Vorlagen](notification-hubs-templates.md).
+	Weitere Informationen zu Vorlagen finden Sie unter [Vorlagen](notification-hubs-templates-cross-platform-push-messages.md).
 
 
 
@@ -196,7 +196,7 @@ Die App kann ist jetzt vollständig und kann verschiedene Kategorien in einem lo
 
 [AZURE.INCLUDE [notification-hubs-send-categories-template](../../includes/notification-hubs-send-categories-template.md)]
 
-##Ausführen der App und Erzeugen von Benachrichtigungen
+##Ausführen der Anwendung und Erzeugen von Benachrichtigungen
 
 1. Drücken Sie in Visual Studio die Taste F5, um die App zu starten.
 
@@ -222,7 +222,7 @@ Die App kann ist jetzt vollständig und kann verschiedene Kategorien in einem lo
 
 ##Nächste Schritte
 
-In diesem Lernprogramm haben Sie erfahren, wie aktuelle Nachrichten nach Kategorie übermittelt werden. Sie können nun eines der folgenden Lernprogramme durchführen, die andere komplexe Notification Hub-Szenarios zeigen:
+In diesem Lernprogramm haben Sie erfahren, wie aktuelle Nachrichten nach Kategorie übermittelt werden. Sie können nun eines der folgenden Lernprogramme durchführen, die andere komplexe Notification Hubs-Szenarien zeigen:
 
 + [Verwenden von Notification Hubs zum Übermitteln von lokalisierten aktuellen Nachrichten]
 
@@ -258,4 +258,4 @@ In diesem Lernprogramm haben Sie erfahren, wie aktuelle Nachrichten nach Kategor
 
 [wns object]: http://go.microsoft.com/fwlink/p/?LinkId=260591
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0907_2016-->

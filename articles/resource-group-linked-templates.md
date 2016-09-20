@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="08/11/2016"
+   ms.date="09/02/2016"
    ms.author="tomfitz"/>
 
 # Verwenden von verknüpften Vorlagen mit Azure-Ressourcen-Manager
@@ -29,7 +29,7 @@ Sie erstellen einen Link zwischen zwei Vorlagen durch Hinzufügen einer Bereitst
     "resources": [ 
       { 
          "apiVersion": "2015-01-01", 
-         "name": "nestedTemplate", 
+         "name": "linkedTemplate", 
          "type": "Microsoft.Resources/deployments", 
          "properties": { 
            "mode": "incremental", 
@@ -53,7 +53,7 @@ Der Resource Manager-Dienst muss auf die verknüpfte Vorlage zugreifen können. 
 
 Obwohl die verknüpfte Vorlage extern verfügbar sein muss, muss sie der Öffentlichkeit nicht allgemein zur Verfügung stehen. Sie können Ihre Vorlage einem privaten Speicherkonto hinzufügen, auf das nur der Speicherkontobesitzer Zugriff hat. Anschließend erstellen Sie ein SAS-Token (Shared Access Signature), um den Zugriff während der Bereitstellung zu ermöglichen. Sie fügen dieses SAS-Token dem URI für die verknüpfte Vorlage hinzu. Schritte zum Einrichten einer Vorlage in einem Speicherkonto und zum Generieren eines SAS-Tokens finden Sie unter [Bereitstellen von Ressourcen mit dem Resource Manager-Vorlagen und Azure PowerShell](resource-group-template-deploy.md) oder [Bereitstellen von Ressourcen mit Resource Manager-Vorlage und Azure-CLI](resource-group-template-deploy-cli.md).
 
-Im folgenden Beispiel wird eine übergeordnete Vorlage gezeigt, die mit einer anderen Vorlage verknüpft ist. Der Zugriff auf die geschachtelte Vorlage erfolgt mithilfe eines SAS-Tokens, das als Parameter übergeben wird.
+Im folgenden Beispiel wird eine übergeordnete Vorlage gezeigt, die mit einer anderen Vorlage verknüpft ist. Der Zugriff auf die verknüpfte Vorlage erfolgt mithilfe eines SAS-Tokens, das als Parameter übergeben wird.
 
     "parameters": {
         "sasToken": { "type": "securestring" }
@@ -61,7 +61,7 @@ Im folgenden Beispiel wird eine übergeordnete Vorlage gezeigt, die mit einer an
     "resources": [
         {
             "apiVersion": "2015-01-01",
-            "name": "nestedTemplate",
+            "name": "linkedTemplate",
             "type": "Microsoft.Resources/deployments",
             "properties": {
               "mode": "incremental",
@@ -82,7 +82,7 @@ Im nächsten Beispiel wird die **parametersLink**-Eigenschaft genutzt, um eine V
     "resources": [ 
       { 
          "apiVersion": "2015-01-01", 
-         "name": "nestedTemplate", 
+         "name": "linkedTemplate", 
          "type": "Microsoft.Resources/deployments", 
          "properties": { 
            "mode": "incremental", 
@@ -161,7 +161,7 @@ Sie geben diesen Variablenwert für die Bereitstellungsressource an.
     "resources": [
         {
             "apiVersion": "2015-01-01",
-            "name": "nestedTemplate",
+            "name": "linkedTemplate",
             "type": "Microsoft.Resources/deployments",
             "properties": {
                 "mode": "incremental",
@@ -200,7 +200,7 @@ Das folgende Beispiel zeigt die Vorlage **existingStorageAccount.json**:
       }
     }
 
-Das nächste Beispiel zeigt die Vorlage **newStorageAccount.json**. Beachten Sie, dass das Speicherkontoobjekt wie die Vorlage für das vorhandene Speicherkonto in den Ausgaben zurückgegeben wird. Die Mastervorlage kann mit beiden geschachtelten Vorlagen verwendet werden.
+Das nächste Beispiel zeigt die Vorlage **newStorageAccount.json**. Beachten Sie, dass das Speicherkontoobjekt wie die Vorlage für das vorhandene Speicherkonto in den Ausgaben zurückgegeben wird. Die Mastervorlage kann mit beiden verknüpften Vorlagen verwendet werden.
 
     {
       "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -247,7 +247,7 @@ Die Datei **parent.json** besteht aus Folgendem:
       "resources": [
         {
           "apiVersion": "2015-01-01",
-          "name": "nestedTemplate",
+          "name": "linkedTemplate",
           "type": "Microsoft.Resources/deployments",
           "properties": {
             "mode": "incremental",
@@ -261,7 +261,7 @@ Die Datei **parent.json** besteht aus Folgendem:
       "outputs": {
         "result": {
           "type": "object",
-          "value": "[reference('nestedTemplate').outputs.result]"
+          "value": "[reference('linkedTemplate').outputs.result]"
         }
       }
     }
@@ -300,4 +300,4 @@ Sie werden aufgefordert, das SAS-Token als Parameter anzugeben. Sie müssen dem 
 - Informationen zum Definieren der Bereitstellungsreihenfolge Ihrer Ressourcen finden Sie unter [Definieren von Abhängigkeiten in Azure-Ressourcen-Manager-Vorlagen](resource-group-define-dependencies.md).
 - Informationen, wie Sie eine Ressource definieren und von dieser viele Instanzen erstellen, finden Sie unter [Erstellen mehrerer Instanzen von Ressourcen im Azure-Ressourcen-Manager](resource-group-create-multiple.md).
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0907_2016-->

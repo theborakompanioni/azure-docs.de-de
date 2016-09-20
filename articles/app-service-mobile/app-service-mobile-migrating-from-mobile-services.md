@@ -42,7 +42,7 @@ Weitere Informationen zu den Vorteilen von Azure App Service finden Sie im Thema
 
 Bevor Sie mit größeren Arbeiten an Ihrer Website beginnen, sollten Sie [Ihre Mobile Service-Skripts] und Ihre SQL-Datenbank sichern.
 
-Wenn Sie den Migrationsprozess vor der Migration Ihrer Produktionswebsite testen möchten, duplizieren Sie Ihren Azure Mobile Service für die Produktion innerhalb einer neuen [Azure-Region] \(zusammen mit einer Kopie der Datenquelle), und testen Sie die Migration anhand der neuen URL. Sie benötigen außerdem eine Testclientimplementierung, die auf die Testsite verweist, um die migrierte Website ordnungsgemäß zu testen.
+Wenn Sie den Migrationsprozess vor der Migration Ihrer Produktionswebsite testen möchten, duplizieren Sie Ihren Azure Mobile Service für die Produktion innerhalb einer neuen [Azure-Region] (zusammen mit einer Kopie der Datenquelle), und testen Sie die Migration anhand der neuen URL. Sie benötigen außerdem eine Testclientimplementierung, die auf die Testsite verweist, um die migrierte Website ordnungsgemäß zu testen.
 
 ## <a name="migrating-site"></a>Migrieren Ihrer Websites
 
@@ -401,7 +401,7 @@ Ihre Anwendung ist nicht nur zu App Service migriert, Sie können sogar noch meh
 [Protokollierung]: ../app-service-web/web-sites-enable-diagnostic-log.md
 [Mobile Apps-Node.js-SDK]: https://github.com/azure/azure-mobile-apps-node
 [Mobile Services im Vergleich zu App Service]: app-service-mobile-value-prop-migration-from-mobile-services.md
-[Notification Hubs]: ../notification-hubs/notification-hubs-overview.md
+[Notification Hubs]: ../notification-hubs/notification-hubs-push-notification-overview.md
 [Leistungsüberwachung]: ../app-service-web/web-sites-monitor.md
 [Postman]: http://www.getpostman.com/
 [Ihre Mobile Service-Skripts]: ../mobile-services/mobile-services-disaster-recovery.md
@@ -410,4 +410,4 @@ Ihre Anwendung ist nicht nur zu App Service migriert, Sie können sogar noch meh
 [WebJobs]: ../app-service-web/websites-webjobs-resources.md
 [XDT-Transformationsbeispielen]: https://github.com/projectkudu/kudu/wiki/Xdt-transform-samples
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0907_2016-->

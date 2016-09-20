@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/17/2016"
+	ms.date="09/07/2016"
 	ms.author="genli"/>
 
 #  Azure-Abrechnung und -Abonnement – Häufig gestellte Fragen
@@ -34,6 +34,7 @@ In diesem Artikel werden einige der am häufigsten gestellten Fragen zu Abrechnu
 
 - [Wie erhalte ich eine Kopie meiner Rechnung?](#how-do-i-get-a-copy-of-my-invoice)
 - [Für den letzten Abrechnungszeitraum wird keine Rechnung angezeigt. Warum?](#i-do-not-see-an-invoice-for-the-last-billing-period-why)
+- [Wie kann ich bezahlen?](#how-do-i-make-a-payment)
 
 ## Kostenlose Testversion
 
@@ -314,4 +315,10 @@ Weitere Informationen finden Sie unter [Kostenlose Azure-Testversion](https://az
 
 > [AZURE.NOTE] Wenn Sie weitere Fragen haben, [wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), um das Problem schnell zu lösen.
 
-<!---HONumber=AcomDC_0824_2016-->
+### Wie kann ich bezahlen?
+
+Wenn Sie eine Kredit- oder Debitkarte als Zahlungsmethode festgelegt haben, erfolgt die Zahlung automatisch.
+
+Wenn Sie die [Zahlung per Rechnung](https://azure.microsoft.com/pricing/invoicing/) festgelegt haben, senden Sie Ihre Zahlung an den Empfänger, der unten auf der Rechnung aufgeführt ist. Sie können den [Support kontaktieren](billing-how-to-create-billing-support-ticket.md), falls Sie weitere Unterstützung benötigen.
+
+<!---HONumber=AcomDC_0907_2016-->

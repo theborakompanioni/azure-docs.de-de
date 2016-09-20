@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Ermöglichen des externen Zugriffs auf einen virtuellen Computer über das Portal | Microsoft Azure"
-   description="Erfahren Sie, wie Sie mit dem Resource Manager-Bereitstellungsmodell im Azure-Portal einen Port öffnen oder einen Endpunkt erstellen können, der einen Zugriff auf Ihren virtuellen Computer ermöglicht."
+   pageTitle="Öffnen von Ports für einen virtuellen Computer mithilfe des Azure-Portals | Microsoft Azure"
+   description="Erfahren Sie, wie Sie mit dem Resource Manager-Bereitstellungsmodell im Azure-Portal für Ihren virtuellen Windows-Computer einen Port öffnen oder einen Endpunkt erstellen."
    services="virtual-machines-windows"
    documentationCenter=""
    authors="iainfoulds"
@@ -16,7 +16,7 @@
    ms.date="08/08/2016"
    ms.author="iainfou"/>
 
-# Ermöglichen des externen Zugriffs auf einen virtuellen Computer über das Azure-Portal
+# Öffnen von Ports für einen virtuellen Computer in Azure mithilfe des Azure-Portals
 [AZURE.INCLUDE [virtual-machines-common-nsg-quickstart](../../includes/virtual-machines-common-nsg-quickstart.md)]
 
 ## Schnellbefehle
@@ -34,7 +34,7 @@ Wählen Sie die neue Netzwerksicherheitsgruppe aus. Nun erstellen Sie eine einge
 
 ![Hinzufügen einer eingehenden Regel](./media/virtual-machines-windows-nsg-quickstart-portal/add-inbound-rule.png)
 
-Geben Sie einen Namen für die neue Regel an. Beachten Sie, dass standardmäßig Port 80 eingetragen ist. Hier können beim Hinzufügen von zusätzlichen Regeln zur Netzwerksicherheitsgruppe die Quelle, das Protokoll und das Ziel geändert werden.
+Geben Sie einen Namen für die neue Regel an. Standardmäßig ist Port 80 bereits eingetragen. Auf diesem Blatt können beim Hinzufügen von zusätzlichen Regeln zur Netzwerksicherheitsgruppe die Quelle, das Protokoll und das Ziel geändert werden:
 
 ![Erstellen einer eingehenden Regel](./media/virtual-machines-windows-nsg-quickstart-portal/create-inbound-rule.png)
 
@@ -50,17 +50,17 @@ Sie haben nun eine Netzwerksicherheitsgruppe sowie eine eingehende Regel erstell
 
 
 ## Weitere Informationen zu Netzwerksicherheitsgruppen
-Mit diesen Schnellbefehlen können Sie den Datenverkehr zu Ihrem virtuellen Computer einrichten. Netzwerksicherheitsgruppen bieten eine Vielzahl erstklassiger Funktionen sowie eine differenzierte Steuerung des Ressourcenzugriffs. Weitere Informationen über die [Erstellung von Netzwerksicherheitsgruppen und ACL-Regeln finden Sie hier](../virtual-network/virtual-networks-create-nsg-arm-ps.md).
+Mit diesen Schnellbefehlen können Sie den Datenverkehr zu Ihrem virtuellen Computer einrichten. Netzwerksicherheitsgruppen bieten eine Vielzahl erstklassiger Funktionen sowie eine differenzierte Steuerung des Ressourcenzugriffs. Weitere Informationen über die [Erstellung von Netzwerksicherheitsgruppen und ACL-Regeln erhalten Sie hier](../virtual-network/virtual-networks-create-nsg-arm-ps.md).
 
-Sie können Netzwerksicherheitsgruppen und ACL-Regeln auch als Teil von Azure Resource Manager-Vorlagen definieren. Erfahren Sie mehr über das [Erstellen von Netzwerksicherheitsgruppen mit Vorlagen](../virtual-network/virtual-networks-create-nsg-arm-template.md).
+Sie können Netzwerksicherheitsgruppen und ACL-Regeln auch als Teil von Azure Resource Manager-Vorlagen definieren. Erfahren Sie mehr über [das Erstellen von Netzwerksicherheitsgruppen mit Vorlagen](../virtual-network/virtual-networks-create-nsg-arm-template.md).
 
-Wenn eine Portweiterleitung notwendig ist, um einem internen Port des virtuellen Computers einen eindeutigen externen Port zuzuweisen, müssen ein Lastenausgleich sowie NAT-Regeln (Network Address Translation, Netzwerkadressübersetzung) verwendet werden. Sie können beispielsweise TCP-Port 8080 extern verfügbar machen und den Datenverkehr an TCP-Port 80 auf einem virtuellen Computer weiterleiten. Hier finden Sie weitere Informationen zum [Erstellen eines Load Balancers mit Internetzugriff](../load-balancer/load-balancer-get-started-internet-arm-ps.md).
+Wenn eine Portweiterleitung notwendig ist, um einem internen Port des virtuellen Computers einen eindeutigen externen Port zuzuweisen, verwenden Sie einen Lastenausgleich sowie NAT-Regeln (Network Address Translation, Netzwerkadressübersetzung). Sie können beispielsweise TCP-Port 8080 extern verfügbar machen und den Datenverkehr an TCP-Port 80 auf einem virtuellen Computer weiterleiten. Hier finden Sie weitere Informationen zum [Erstellen eines Load Balancers mit Internetzugriff](../load-balancer/load-balancer-get-started-internet-arm-ps.md).
 
 ## Nächste Schritte
 In diesem Beispiel haben Sie eine einfache Regel erstellt, die HTTP-Datenverkehr zulässt. Informationen zum Erstellen von detaillierteren Umgebungen finden Sie in den folgenden Artikeln:
 
-- [Übersicht über Azure Resource Manager](../resource-group-overview.md)
+- [Übersicht über den Azure-Ressourcen-Manager](../resource-group-overview.md)
 - [Was ist eine Netzwerksicherheitsgruppe (NSG)?](../virtual-network/virtual-networks-nsg.md)
 - [Übersicht über Azure Resource Manager für Load Balancer](../load-balancer/load-balancer-arm.md)
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0907_2016-->

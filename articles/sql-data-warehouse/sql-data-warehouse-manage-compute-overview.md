@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="07/01/2016"
+   ms.date="09/03/2016"
    ms.author="barbkess;sonyama"/>
 
 # Verwalten von Computeleistung in Azure SQL Data Warehouse (Übersicht)
@@ -98,13 +98,17 @@ Verwenden Sie zum Fortsetzen einer Datenbank eine dieser individuellen Methoden.
 - [Fortsetzen von Computeressourcen mit PowerShell][]
 - [Fortsetzen von Computeressourcen mit REST-APIs][]
 
+## Berechtigungen
+
+Zum Skalieren der Datenbank sind die in [ALTER DATABASE][] beschriebenen Berechtigungen erforderlich. Zum Anhalten und Fortsetzen ist die [Mitwirkender von SQL DB][]-Berechtigung erforderlich, insbesondere „Microsoft.Sql/servers/databases/action“.
+
 <a name="next-steps-bk"></a>
 
 ## Nächste Schritte
 Informationen zu zusätzlichen zentralen Leistungskonzepten finden Sie in den folgenden Artikeln:
 
 - [Parallelitäts- und Workloadverwaltung][]
-- [Overview of tables in SQL Data Warehouse][] (Übersicht über Tabellen in SQL Data Warehouse)
+- [Overview of tables in SQL Data Warehouse (Übersicht über Tabellen in SQL Data Warehouse)][]
 - [Tabellenverteilung][]
 - [Tabellenindizierung][]
 - [Tabellenpartitionierung][]
@@ -133,7 +137,7 @@ Informationen zu zusätzlichen zentralen Leistungskonzepten finden Sie in den fo
 [Fortsetzen von Computeressourcen mit REST-APIs]: ./sql-data-warehouse-manage-compute-rest-api.md#resume-compute-bk
 
 [Parallelitäts- und Workloadverwaltung]: ./sql-data-warehouse-develop-concurrency.md
-[Overview of tables in SQL Data Warehouse]: ./sql-data-warehouse-tables-overview.md
+[Overview of tables in SQL Data Warehouse (Übersicht über Tabellen in SQL Data Warehouse)]: ./sql-data-warehouse-tables-overview.md
 [Tabellenverteilung]: ./sql-data-warehouse-tables-distribute.md
 [Tabellenindizierung]: ./sql-data-warehouse-tables-index.md
 [Tabellenpartitionierung]: ./sql-data-warehouse-tables-partition.md
@@ -141,9 +145,12 @@ Informationen zu zusätzlichen zentralen Leistungskonzepten finden Sie in den fo
 [Bewährte Methoden]: ./sql-data-warehouse-best-practices.md
 [development overview]: ./sql-data-warehouse-overview-develop.md
 
+[Mitwirkender von SQL DB]: ../active-directory/role-based-access-built-in-roles.md#sql-db-contributor
+
 <!--MSDN references-->
+[ALTER DATABASE]: https://msdn.microsoft.com/library/mt204042.aspx
 
 <!--Other Web references-->
 [Azure portal]: http://portal.azure.com/
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0907_2016-->

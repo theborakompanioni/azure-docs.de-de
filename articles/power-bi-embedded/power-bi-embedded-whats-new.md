@@ -3,7 +3,7 @@
    description="Abrufen aktueller Informationen zu Neuerungen in Power BI Embedded"
    services="power-bi-embedded"
    documentationCenter=""
-   authors="minewiskan"
+   authors="mgblythe"
    manager="mblythe"
    editor=""
    tags=""/>
@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="NA"
    ms.workload="powerbi"
    ms.date="07/06/2016"
-   ms.author="owend"/>
+   ms.author="mblythe"/>
 
 # Neuerungen in Power BI Embedded
 
@@ -41,4 +41,4 @@ In dieser Version:
 -    Benutzer können Visualisierungsdaten in eine **CSV-Datei** exportieren.
 -    Power BI Embedded wird nun in den gleichen Sprachen/Gebietsschemas unterstützt wie Microsoft Azure. Weitere Informationen finden Sie unter [Azure – Languages](http://social.technet.microsoft.com/wiki/contents/articles/4234.windows-azure-extent-of-localization.aspx) (Azure – Sprachen).
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0907_2016-->

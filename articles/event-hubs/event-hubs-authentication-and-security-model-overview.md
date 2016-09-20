@@ -39,7 +39,7 @@ Alle Token werden mit einem SAS-Schlüssel signiert. Alle Token werden in der Re
 
 Wenn Sie einen Event Hubs-Namespace erstellen, generiert Azure Event Hubs einen 256-Bit-SAS-Schlüssel mit dem Namen **RootManageSharedAccessKey**. Dieser Schlüssel erteilt die Rechte zum Senden, Überwachen und Verwalten für den Namespace. Sie können zusätzliche Schlüssel erstellen. Es wird empfohlen, dass Sie einen Schlüssel erzeugen, der Berechtigungen zum Senden an den bestimmten Event Hub erteilt. Für den Rest dieses Themas wird davon ausgegangen, dass Sie diesen Schlüssel `EventHubSendKey` benannt haben.
 
-Das folgende Beispiel erzeugt beim Erstellen des Event Hubs einen Schlüssel, der nur zum Senden verwendet werden kann:
+Das folgende Beispiel erstellt einen reinen Sende-Schlüssel beim Erstellen des Event Hubs:
 
 ```
 // Create namespace manager.
@@ -101,57 +101,17 @@ Die aktuelle Version des Service Bus unterstützt nicht die SAS-Regeln für einz
 
 In Ermangelung einer SAS-Authentifizierung für einzelne Consumergruppen können Sie SAS-Schlüssel nutzen, um alle Consumergruppen mit einem gemeinsamen Schlüssel zu sichern. Dieser Ansatz ermöglicht einer Anwendung, Daten von allen Consumergruppen eines Event Hubs zu verwenden.
 
-### Erstellen von Dienstidentitäten, vertrauenden Seiten und Regeln in ACS
-
-ACS unterstützt mehrere Möglichkeiten, um Dienstidentitäten, vertrauende Seiten und Regeln zu erstellen, aber die einfachste Möglichkeit hierzu ist die Verwendung von [SBAZTool](http://code.msdn.microsoft.com/Authorization-SBAzTool-6fd76d93). Beispiel:
-
-1. Erstellen eine Dienstidentität für einen **EventHubSender**. Über diesen Vorgang wird der Name der erstellten Dienstidentität und deren Schlüssel zurückgegeben:
-
-	```
-	sbaztool.exe exe -n <namespace> -k <key>  makeid eventhubsender
-	```
-
-2. Dem **EventHubSender** "Senden von Ansprüchen" an den Event Hub gewähren:
-
-	```
-	sbaztool.exe -n <namespace> -k <key> grant Send /AuthTestEventHub eventhubsender
-	```
-
-3. Erstellen einer Dienstidentität für einen Empfänger an die Consumergruppe 1:
-
-	```
-	sbaztool.exe exe -n <namespace> -k <key> makeid consumergroup1receiver
-	```
-
-4. `consumergroup1receiver` "Anhören-Anspruch" an **ConsumerGroup1** gewähren:
-
-	```
-	sbaztool.exe -n <namespace> -k <key> grant Listen /AuthTestEventHub/ConsumerGroup1 consumergroup1receiver
-	```
-
-5. Erstellen einer Dienstidentität für einen Empfänger an die **Consumergruppe 2**:
-
-	```
-	sbaztool.exe exe -n <namespace> -k <key>  makeid consumergroup2receiver
-	```
-
-6. `consumergroup2receiver` "Anhören-Anspruch" an **ConsumerGroup2** gewähren:
-
-	```
-	sbaztool.exe -n <namespace> -k <key> grant Listen /AuthTestEventHub/ConsumerGroup2 consumergroup2receiver
-	```
-
 ## Nächste Schritte
 
 Weitere Informationen zu Event Hubs finden Sie unter den folgenden Themen:
 
 - [Übersicht über Event Hubs]
-- Eine vollständige [Beispielanwendung mit Verwendung von Ereignis-Hubs].
 - Eine [Messaginglösung mit Warteschlange] unter Verwendung von Service Bus-Warteschlangen.
+- Eine vollständige [Beispielanwendung mit Verwendung von Ereignis-Hubs].
 
 [Übersicht über Event Hubs]: event-hubs-overview.md
 [Beispielanwendung mit Verwendung von Ereignis-Hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
 [Messaginglösung mit Warteschlange]: ../service-bus/service-bus-dotnet-multi-tier-app-using-service-bus-queues.md
  
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0907_2016-->

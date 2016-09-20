@@ -75,7 +75,7 @@ Verwenden Sie eine JSON-Vorlage und eine Parameterdatei, um einen IoT Hub in der
 
 1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt, klicken Sie auf **Hinzufügen** und dann auf **Neues Element**. Fügen Sie dem Projekt eine JSON-Datei namens **template.json** hinzu.
 
-2. Ersetzen Sie den Inhalt von **template.json** mit der folgenden Ressourcendefinition, um der Region **USA, Osten** einen Standard-IoT Hub hinzuzufügen:
+2. Ersetzen Sie den Inhalt von **template.json** mit der folgenden Ressourcendefinition, um der Region **USA, Osten** einen Standard-IoT Hub hinzuzufügen (eine aktuelle Liste der Standorte, die IoT Hub unterstützen, finden Sie unter [Azure-Status][lnk-status]):
 
     ```
     {
@@ -220,6 +220,7 @@ Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 <!-- Links -->
 [lnk-free-trial]: https://azure.microsoft.com/pricing/free-trial/
 [lnk-azure-portal]: https://portal.azure.com/
+[lnk-status]: https://azure.microsoft.com/status/
 [lnk-powershell-install]: ../powershell-install-configure.md
 [lnk-rest-api]: https://msdn.microsoft.com/library/mt589014.aspx
 [lnk-azure-rm-overview]: ../resource-group-overview.md
@@ -233,4 +234,4 @@ Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 [lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
 [lnk-portal]: iot-hub-manage-through-portal.md
 
-<!---HONumber=AcomDC_0831_2016-->
+<!----HONumber=AcomDC_0907_2016-->

@@ -631,34 +631,34 @@ Im folgenden Beispiel werden die Leerzeichen aus dem vom Benutzer bereitgestellt
 
 **uniqueString (baseString, ...)**
 
-Erstellt basierend auf den als Parametern angegebenen Werten eine eindeutige Zeichenfolge.
+Erstellt auf der Grundlage der als Parameter angegebenen Werte eine deterministische Hashzeichenfolge.
 
 | Parameter | Erforderlich | Beschreibung
 | :--------------------------------: | :------: | :----------
 | baseString | Ja | Die Zeichenfolge, die in der Hashfunktion verwendet wird, um eine eindeutige Zeichenfolge zu erstellen.
 | Zusätzliche Parameter nach Bedarf. | Nein | Sie können beliebig viele Zeichenfolgen hinzufügen, ganz wie sie zum Erstellen des Werts benötigt werden, der die Ebene der Eindeutigkeit angibt.
 
-Diese Funktion ist hilfreich, wenn Sie einen eindeutigen Namen für eine Ressource erstellen müssen. Sie geben Parameterwerte an, die die Ebene der Eindeutigkeit für das Ergebnis darstellen. Sie können angeben, ob der Name für Ihr Abonnement, die Ressourcengruppe oder die Bereitstellung eindeutig ist.
+Diese Funktion ist hilfreich, wenn Sie einen eindeutigen Namen für eine Ressource erstellen müssen. Sie geben Parameterwerte an, die den Eindeutigkeitsbereich für das Ergebnis einschränken. Sie können angeben, ob der Name bis hinunter zum Abonnement, zur Ressourcengruppe oder zur Bereitstellung eindeutig ist.
 
-Der zurückgegebene Wert ist keine zufällige Zeichenfolge, sondern das Ergebnis einer Hashfunktion. Der zurückgegebene Wert ist 13 Zeichen lang. Es ist nicht garantiert, dass er global eindeutig ist. Es empfiehlt sich, den Wert mit einem Präfix aus Ihrer Benennungskonvention zu kombinieren, um einen leichter erkennbaren Namen zu erstellen. Im folgenden Beispiel wird das Format des zurückgegebenen Werts veranschaulicht. Der tatsächliche Werte variiert natürlich je nach den angegebenen Parametern.
+Der zurückgegebene Wert ist keine zufällige Zeichenfolge, sondern das Ergebnis einer Hashfunktion. Der zurückgegebene Wert ist 13 Zeichen lang. Er ist nicht global eindeutig. Es empfiehlt sich, den Wert mit einem Präfix aus Ihrer Benennungskonvention zu kombinieren, um einen aussagekräftigen Namen zu erstellen. Im folgenden Beispiel wird das Format des zurückgegebenen Werts veranschaulicht. Der tatsächliche Werte variiert natürlich je nach den angegebenen Parametern.
 
     tcvhiyu5h2o5o
 
 Die folgenden Beispiele zeigen, wie Sie mithilfe von uniqueString einen eindeutigen Wert für häufig verwendete Ebenen erstellen können.
 
-Eindeutig auf Grundlage des Abonnements
+Eindeutige Zuordnung zum Abonnement
 
     "[uniqueString(subscription().subscriptionId)]"
 
-Eindeutig auf Grundlage der Ressourcengruppe
+Eindeutige Zuordnung zur Ressourcengruppe
 
     "[uniqueString(resourceGroup().id)]"
 
-Eindeutig auf Grundlage der Bereitstellung für eine Ressourcengruppe
+Eindeutige Zuordnung zur Bereitstellung für eine Ressourcengruppe
 
     "[uniqueString(resourceGroup().id, deployment().name)]"
     
-Das folgende Beispiel zeigt, wie Sie einen eindeutigen Namen für ein Speicherkonto auf Grundlage seiner Ressourcengruppe erstellen.
+Das folgende Beispiel zeigt, wie Sie auf der Grundlage Ihrer Ressourcengruppe einen eindeutigen Namen für ein Speicherkonto erstellen. (Innerhalb dieser Ressourcengruppe ist der Name nicht eindeutig, wenn er auf die gleiche Weise konstruiert wird.)
 
     "resources": [{ 
         "name": "[concat('contosostorage', uniqueString(resourceGroup().id))]", 
@@ -1217,4 +1217,4 @@ Das folgende Beispiel zeigt ein Abrufen der subscription-Funktion im Abschnitt �
 - Informationen dazu, wie Sie beim Erstellen eines Ressourcentyps eine bestimmte Anzahl von Durchläufen ausführen, finden Sie unter [Erstellen mehrerer Instanzen von Ressourcen im Azure-Ressourcen-Manager](resource-group-create-multiple.md).
 - Informationen zum Bereitstellen der erstellten Vorlage finden Sie unter [Bereitstellen einer Anwendung mit einer Azure-Ressourcen-Manager-Vorlage](resource-group-template-deploy.md).
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0907_2016-->

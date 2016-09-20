@@ -86,7 +86,6 @@ In HDInsight kann eine Vielzahl von Hadoop-Komponenten verwendet werden. Eine Li
 
 	- **Überwachungsprotokolle**:
     - **Schnellstart**: Zeigt hilfreiche Informationen für die ersten Schritte mit HDInsight an.
-	- **Clusteranmeldung**: Ändern des Cluster-HTTP-Benutzernamens und des Kennworts
 	- **Cluster skalieren**: Erhöhen und Verringern der Anzahl der Cluster-Workerknoten
     - **Secure Shell**: Zeigt die Anweisungen für die Verbindung mit dem Cluster über eine Secure Shell-Verbindung (SSH) an.
     - **HDInsight-Partner**: Hinzufügen/Entfernen des aktuellen HDInsight-Partners.
@@ -98,7 +97,7 @@ In HDInsight kann eine Vielzahl von Hadoop-Komponenten verwendet werden. Eine Li
 	- **Benutzer**: Dient zum Festlegen der Berechtigungen für die _Portalverwaltung_ dieses Clusters für andere Benutzer in Ihrem Azure-Abonnement.
 	- **Tags**: Mithilfe von Tags können Sie Schlüssel-Wert-Paare festlegen, um eine benutzerdefinierte Taxonomie für Ihre Clouddienste zu definieren. Sie können z. B. einen Schlüssel mit dem Namen __Projekt__ erstellen und dann einen gemeinsamen Wert für alle mit einem bestimmten Projekt verknüpften Dienste verwenden.
     
-    > [AZURE.NOTE] Dies ist eine generische Liste der verfügbaren Einstellungen – nicht alle stehen für alle Cluster zur Verfügung.
+    > [AZURE.NOTE] Dies ist eine generische Liste der verfügbaren Einstellungen – nicht alle stehen für alle Cluster zur Verfügung.
 
 6. Klicken Sie auf **Eigenschaften**.
 
@@ -202,6 +201,8 @@ Ein HDInsight-Cluster kann über zwei Benutzerkonten verfügen. Das HDInsight-Cl
 
 ###Ändern des Clusterbenutzerkennworts
 
+Sie können die Ambari-Webbenutzeroberfläche verwenden, um das Clusterbenutzerkennwort zu ändern. Zum Anmelden bei Ambari müssen Sie den vorhandenen Benutzernamen und das vorhandene Kennwort verwenden.
+
 > [AZURE.NOTE] Wenn Sie das Kennwort für den Clusterbenutzer (Admin) ändern, können Skriptaktionen, die für diesen Cluster ausgeführt werden, möglicherweise fehlschlagen. Wenn Sie Skriptaktionen beibehalten möchten, deren Ziel Workerknoten sind, können sie fehlschlagen, wenn Sie dem Cluster über eine Größenänderung Knoten hinzufügen. Weitere Informationen zu Skriptaktionen finden Sie unter [Anpassen von HDInsight-Clustern mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md).
 
 1. Melden Sie sich bei der Ambari-Webbenutzeroberfläche mit den HDInsight-Clusterbenutzer-Anmeldeinformationen an. Der Standard-Benutzername lautet **admin**. Die URL lautet **https://&lt;HDInsight Clustername>azurehdinsight.net**.
@@ -266,7 +267,7 @@ Jeder Cluster ist mit einem Azure-Abonnement verknüpft. Die Abonnement-ID wird 
 Im ARM-Modus wird jeder HDInsight-Cluster mit einer Azure-Ressourcengruppe erstellt. Die Azure-Ressourcengruppe, zu der ein Cluster gehört, wird hier angezeigt:
 
 - Die Liste der Cluster verfügt über eine Spalte **Ressourcengruppe**.
-- Die Kachel **Zusammenfassung** des Clusters.  
+- Die Kachel **Zusammenfassung** des Clusters.
 
 Informationen hierzu finden Sie unter [Auflisten und Anzeigen von Clustern](#list-and-show-clusters).
 
@@ -332,4 +333,4 @@ In diesem Artikel haben Sie erfahren, wie ein HDInsight-Cluster mit dem Azure-Po
 [azure-portal]: https://portal.azure.com
 [image-hadoopcommandline]: ./media/hdinsight-administer-use-portal-linux/hdinsight-hadoop-command-line.png "Hadoop-Befehlszeile"
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0907_2016-->

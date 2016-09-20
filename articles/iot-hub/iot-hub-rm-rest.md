@@ -94,7 +94,7 @@ Verwenden Sie die [IoT Hub REST-API][lnk-rest-api], um einen IoT Hub in der Ress
     client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
     ```
 
-3. Fügen Sie den folgenden Code der **CreateIoTHub**-Methode hinzu, um den zu erstellenden IoT Hub zu beschreiben und eine JSON-Darstellung zu erzeugen.
+3. Fügen Sie den folgenden Code der **CreateIoTHub**-Methode hinzu, um den zu erstellenden IoT Hub zu beschreiben und eine JSON-Darstellung zu erzeugen (eine aktuelle Liste der Standorte, die IoT Hub unterstützen, finden Sie unter [Azure-Status][lnk-status]):
 
     ```
     var description = new
@@ -190,6 +190,7 @@ Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 <!-- Links -->
 [lnk-free-trial]: https://azure.microsoft.com/pricing/free-trial/
 [lnk-azure-portal]: https://portal.azure.com/
+[lnk-status]: https://azure.microsoft.com/status/
 [lnk-powershell-install]: ../powershell-install-configure.md
 [lnk-rest-api]: https://msdn.microsoft.com/library/mt589014.aspx
 [lnk-azure-rm-overview]: ../resource-group-overview.md
@@ -202,4 +203,4 @@ Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 [lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
 [lnk-portal]: iot-hub-manage-through-portal.md
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0907_2016-->

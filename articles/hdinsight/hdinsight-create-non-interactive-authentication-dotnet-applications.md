@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/13/2016"
+	ms.date="09/02/2016"
 	ms.author="jgao"/>
 
 # Erstellen von .NET HDInsight-Anwendungen für die nicht interaktive Authentifizierung
@@ -25,7 +25,7 @@ Für die .NET-Anwendung benötigen Sie Folgendes:
 
 - Mandanten-ID des Azure-Abonnements
 - Client-ID der Azure Directory-Anwendung
-- Geheimen Schlüssel der Azure Directory-Anwendung  
+- Geheimen Schlüssel der Azure Directory-Anwendung
 
 Der Hauptprozess umfasst die folgenden Schritte:
 
@@ -36,7 +36,7 @@ Der Hauptprozess umfasst die folgenden Schritte:
 
 ##Voraussetzungen
 
-- HDInsight-Cluster. Sie können einen Cluster gemäß der Anleitung im [Tutorial zu den ersten Schritten](hdinsight-hadoop-linux-tutorial-get-started.md#create-cluster) erstellen. 
+- HDInsight-Cluster. Sie können einen Cluster gemäß der Anleitung im [Tutorial zu den ersten Schritten](hdinsight-hadoop-linux-tutorial-get-started.md#create-cluster) erstellen.
 
 
 
@@ -115,11 +115,11 @@ Oder mit der Azure-Befehlszeilenschnittstelle:
     azure account show --json
 
       
-## Weitere Informationen
+## Siehe auch
 
 - [Übermitteln von Hadoop-Aufträgen in HDInsight](hdinsight-submit-hadoop-jobs-programmatically.md)
 - [Erstellen einer Active Directory-Anwendung und eines Dienstprinzipals mithilfe des Portals](../resource-group-create-service-principal-portal.md)
 - [Authentifizieren eines Dienstprinzipals mit Azure Resource Manager](../resource-group-authenticate-service-principal.md)
 - [Rollenbasierte Access Control in Azure](../active-directory/role-based-access-control-configure.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0907_2016-->

@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="multiple" 
 	ms.topic="article" 
-	ms.date="07/21/2016" 
+	ms.date="09/01/2016" 
 	ms.author="awills"/>
 
 # Application Insights-API für benutzerdefinierte Ereignisse und Metriken 
@@ -46,7 +46,6 @@ Falls noch nicht geschehen:
 
 * Fügen Sie Ihrem Projekt das Application Insights-SDK hinzu:
  * [ASP.NET-Projekt][greenbrown]
- * [Windows-Projekt][windows]
  * [Java-Projekt][java]
  * [JavaScript auf jeder Webseite][client]
 
@@ -276,7 +275,6 @@ Die SDKs viele Ausnahmen automatisch abfangen, müssen Sie TrackException nicht 
 
 * ASP.NET: [Schreiben Sie Code zum Abfangen von Ausnahmen](app-insights-asp-net-exceptions.md)
 * J2EE: [Ausnahmen werden automatisch abgefangen](app-insights-java-get-started.md#exceptions-and-request-failures)
-* Windows-Apps: [Abstürze werden automatisch abgefangen](app-insights-windows-crashes.md)
 * JavaScript: Wird automatisch abgefangen. Wenn Sie die automatische Erfassung deaktivieren möchten, fügen Sie eine Zeile dem Codeausschnitt hinzu, den Sie in Ihren Webseiten einfügen:
 
     ```
@@ -353,7 +351,7 @@ Normalerweise sendet das SDK Daten zu ausgewählten Zeiten, um den Benutzer mög
     // Allow some time for flushing before shutdown.
     System.Threading.Thread.Sleep(1000);
 
-Beachten Sie, dass die Funktion für speicherinterne Kanäle asynchron ist, allerdings synchron, wenn Sie den [persistenten Kanal](app-insights-windows-services.md#persistence-channel) wählen.
+Beachten Sie, dass die Funktion für speicherinterne Kanäle asynchron ist, allerdings synchron, wenn Sie den [persistenten Kanal](app-insights-api-filtering-sampling.md#persistence-channel) wählen.
 
 
 ## Authentifizierte Benutzer
@@ -517,7 +515,7 @@ Wenn es für Sie praktischer ist, können Sie die Parameter eines Ereignisses in
 
     telemetry.TrackEvent(event);
 
-> [AZURE.WARNING] Verwenden Sie nicht dieselbe Telemetrieelementinstanz (in diesem Beispiel `event`), um Track*() mehrfach aufzurufen. Dies kann dazu führen, dass Telemetriedaten mit einer falschen Konfiguration gesendet werden.
+> [AZURE.WARNING] Verwenden Sie nicht dieselbe Telemetrieelementinstanz (in diesem Beispiel `event`), um „Track*()“ mehrfach aufzurufen. Dies kann dazu führen, dass Telemetriedaten mit einer falschen Konfiguration gesendet werden.
 
 ## Vorgangskontext
 
@@ -747,17 +745,16 @@ Wenn Sie diese Werte selbst festlegen, empfiehlt es sich, die entsprechende Zeil
 
 * [ASP.NET Core SDK](https://github.com/Microsoft/ApplicationInsights-dotnet)
 * [ASP.NET 5](https://github.com/Microsoft/ApplicationInsights-aspnet5)
-* [Android-SDK](https://github.com/Microsoft/ApplicationInsights-Android)
+* [Windows Server-Pakete](https://github.com/Microsoft/applicationInsights-dotnet-server)
 * [Java SDK](https://github.com/Microsoft/ApplicationInsights-Java)
 * [JavaScript SDK](https://github.com/Microsoft/ApplicationInsights-JS)
-* [iOS SDK](https://github.com/Microsoft/ApplicationInsights-iOS)
 * [Alle Plattformen](https://github.com/Microsoft?utf8=%E2%9C%93&query=applicationInsights)
 
 ## Fragen
 
 * *Welche Ausnahmen werden möglicherweise von Aufrufen vom Typ „Track\_()“ ausgelöst?*
     
-    Keine. Sie müssen sie nicht mit try/catch-Klauseln umschließen. Wenn beim SDK Probleme auftreten, werden Meldungen protokolliert, die in der Debugkonsolenausgabe und – sofern die Meldungen ankommen – in der Diagnosesuche angezeigt werden.
+    Keine Sie müssen sie nicht mit try/catch-Klauseln umschließen. Wenn beim SDK Probleme auftreten, werden Meldungen protokolliert, die in der Debugkonsolenausgabe und – sofern die Meldungen ankommen – in der Diagnosesuche angezeigt werden.
 
 
 
@@ -788,8 +785,7 @@ Wenn Sie diese Werte selbst festlegen, empfiehlt es sich, die entsprechende Zeil
 [metrics]: app-insights-metrics-explorer.md
 [qna]: app-insights-troubleshoot-faq.md
 [trace]: app-insights-search-diagnostic-logs.md
-[windows]: app-insights-windows-get-started.md
 
  
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0907_2016-->

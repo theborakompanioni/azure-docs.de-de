@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Hinzufügen einer VM mit Artefakten zu einem Lab | Microsoft Azure"
-	description="Erfahren Sie, wie Sie eine VM mit Artefakten in DevTest Labs hinzufügen."
+	pageTitle="Hinzufügen einer VM mit Artefakten zu einem Lab in Azure DevTest Labs | Microsoft Azure"
+	description="Erfahren Sie, wie Sie eine VM mit Artefakten in Azure DevTest Labs hinzufügen."
 	services="devtest-lab,virtual-machines"
 	documentationCenter="na"
 	authors="tomarcher"
@@ -13,14 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/25/2016"
+	ms.date="08/30/2016"
 	ms.author="tarcher"/>
 
-# Hinzufügen einer VM mit Artefakten zu einem Lab
+# Hinzufügen einer VM mit Artefakten zu einem Lab in Azure DevTest Labs
 
 > [AZURE.VIDEO how-to-create-vms-with-artifacts-in-a-devtest-lab]
-
-## Übersicht
 
 Sie erstellen einen virtuellen Computer in einem Lab aus einer *Basis*, bei der es sich entweder um ein [benutzerdefiniertes Image](./devtest-lab-create-template.md), eine [Formel](./devtest-lab-manage-formulas.md) oder ein [Marketplace-Image](./devtest-lab-configure-marketplace-images.md) handelt.
 
@@ -34,27 +32,25 @@ In diesem Artikel wird die Erstellung eines virtuellen Computers in Ihrem Lab mi
 
 ## Hinzufügen einer VM mit Artefakten
 
-1. Melden Sie sich beim [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) an.
+1. Melden Sie sich auf dem [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) an.
 
-1. Wählen Sie **Durchsuchen** und dann in der Liste **DevTest Labs**.
+1. Wählen Sie **Weitere Dienste** und dann in der Liste **DevTest Labs**.
 
-1. Wählen Sie in der Liste der Labs das Lab aus, in dem Sie den neuen virtuellen Computer erstellen möchten.
+1. Wählen Sie in der Liste der Labs das Lab aus, in dem Sie den neuen virtuellen Computer (VM, Virtual Machine) erstellen möchten.
 
-1. Wählen Sie auf dem Blatt des Labs **+ Lab-VM**, wie in der folgenden Abbildung dargestellt. ![Schaltfläche „Lab-VM hinzufügen“](./media/devtest-lab-add-vm-with-artifacts/devtestlab-home-blade-add-vm.png)
+1. Wählen Sie auf dem Blatt **Übersicht** die Option **+ Virtueller Computer**. ![Schaltfläche zum Hinzufügen eines virtuellen Computers](./media/devtest-lab-add-vm-with-artifacts/devtestlab-home-blade-add-vm.png)
 
 1. Wählen Sie auf dem Blatt **Basisdesign auswählen** eine Basis für den virtuellen Computer aus.
 
-1. Geben Sie auf dem Blatt **Lab-VM** einen Namen für den neuen virtuellen Computer in das Textfeld **Name der Lab-VM** ein.
+1. Geben Sie auf dem Blatt **Virtueller Computer** im Textfeld **Name des virtuellen Computers** einen Namen für den neuen virtuellen Computer ein.
 
 	![Blatt „Lab-VM“](./media/devtest-lab-add-vm-with-artifacts/devtestlab-lab-vm-blade.png)
 
 1. Geben Sie einen **Benutzernamen** ein, dem Administratorrechte auf dem virtuellen Computer erteilt werden.
 
-1. Wenn das Betriebssystem für die ausgewählte Basis Linux ist, geben Sie entweder *Kennwort* oder *Öffentlicher SSH-Schlüssel* als Authentifizierungstyp an.
-
-1. Geben Sie je nach angegebenem Authentifizierungstyp ein Kennwort oder einen öffentlichen SSH-Schlüssel ein.
-
-1. Wählen Sie **VM-Größe**, und wählen Sie eines der vordefinierten Elemente aus, mit denen die Prozessorkerne, die RAM-Größe und die Größe der Festplatte des zu erstellenden virtuellen Computers angegeben werden.
+1. Wenn Sie ein Kennwort verwenden möchten, das in Ihrem *geheimen Speicher* hinterlegt ist, wählen Sie **Geheime Schlüssel aus meinem geheimen Speicher verwenden**, und geben Sie einen Schlüsselwert an, der ihrem geheimen Schlüssel (Kennwort) entspricht. Andernfalls geben Sie einfach im Textfeld **Geben Sie einen Wert ein** ein Kennwort ein.
+ 
+1. Wählen Sie **Größe des virtuellen Computers**, und wählen Sie eines der vordefinierten Elemente aus, die die Prozessorkerne, die RAM-Größe und die Größe der Festplatte für den zu erstellenden virtuellen Computer angeben.
 
 1. Wählen Sie **Virtuelles Netzwerk**, und wählen Sie das gewünschte virtuelle Netzwerk aus.
 
@@ -76,11 +72,11 @@ In diesem Artikel wird die Erstellung eines virtuellen Computers in Ihrem Lab mi
 
 Beim Erstellen eines virtuellen Computers können Sie vorhandene Artefakte hinzufügen. Jedes Lab enthält Artefakte aus dem öffentlichen DevTest Labs-Artefaktrepository, sowie Artefakte, die Sie erstellt und Ihrem eigenen Artefaktrepository hinzugefügt haben. Informationen zum Erstellen von Artefakten finden Sie im Artikel [Erstellen von benutzerdefinierten Artefakten für Ihre DevTest Labs-VM](devtest-lab-artifact-author.md).
 
-1. Wählen Sie auf dem Blatt **Lab-VM** die Option **Artefakte**.
+1. Klicken Sie auf dem Blatt **Virtueller Computer** auf **Artefakte**.
 
 1. Wählen Sie auf dem Blatt **Artefakte hinzufügen** das gewünschte Artefakt aus.
 
-![Blatt „Artefakte hinzufügen“](./media/devtest-lab-add-vm-with-artifacts/devtestlab-add-artifact-blade.png)
+	![Blatt „Artefakte hinzufügen“](./media/devtest-lab-add-vm-with-artifacts/devtestlab-add-artifact-blade.png)
 
 1. Geben Sie die erforderlichen Parameterwerte und alle optionalen Parameter ein, die Sie benötigen.
 
@@ -98,7 +94,7 @@ Standardmäßig werden die Aktionen der Artefakte in der Reihenfolge ausgeführt
 
     ![Anzahl der Artefakte, die dem virtuellen Computer hinzugefügt wurden](./media/devtest-lab-add-vm-with-artifacts/devtestlab-add-artifacts-blade-selected-artifacts.png)
 
-1. Positionieren Sie die Artefakte in der Liste mit Drag & Drop so, dass sie die gewünschte Reihenfolge widerspiegeln. **Hinweis:** Wenn beim Ziehen eines Artefakts Probleme auftreten, stellen Sie sicher, dass Sie von der linken Seite des Artefakts aus ziehen.
+1. Um die Reihenfolge für die Ausführung der Artefakte anzugeben, ziehen Sie die Artefakte in die gewünschte Reihenfolge. **Hinweis:** Wenn beim Ziehen eines Artefakts Probleme auftreten, stellen Sie sicher, dass Sie von der linken Seite des Artefakts aus ziehen.
 
 1. Wählen Sie nach Abschluss des Vorgangs **OK**.
 
@@ -120,9 +116,9 @@ Die folgenden Schritte veranschaulichen das Anzeigen oder Ändern der Parameter 
 
 Eine Azure Resource Manager-Vorlage bietet eine deklarative Möglichkeit zum Definieren einer wiederholbaren Bereitstellung. Die folgenden Schritte erläutern, wie die Azure Resource Manager-Vorlage für den zu erstellenden virtuellen Computer gespeichert wird. Nach dem Speichern können Sie die Azure Resource Manager-Vorlage zum [Bereitstellen neuer virtueller Computer mit Azure PowerShell](../resource-group-overview.md#template-deployment) nutzen.
 
-1. Wählen Sie auf dem Blatt **Lab-VM** die Option **ARM-Vorlage anzeigen**.
+1. Klicken Sie auf dem Blatt **Virtual machine** (Virtueller Computer) auf **View ARM Template** (ARM-Vorlage anzeigen).
 
-1. Markieren Sie auf dem Blatt **Azure Resource Manager-Vorlage anzeigen** den gesamten Text der Vorlage.
+1. Markieren Sie auf dem Blatt **View Azure Resource Manager Template** (Azure Resource Manager-Vorlage anzeigen) den Text der Vorlage.
 
 1. Kopieren Sie den markierten Text in die Zwischenablage.
 
@@ -142,4 +138,4 @@ Eine Azure Resource Manager-Vorlage bietet eine deklarative Möglichkeit zum Def
 - Informieren Sie sich über das [Erstellen von benutzerdefinierten Artefakten für Ihre DevTest Lab-VM](devtest-lab-artifact-author.md).
 - Erkunden Sie den [DevTest Labs-ARM-Katalog mit Schnellstartvorlagen](https://github.com/Azure/azure-devtestlab/tree/master/ARMTemplates).
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0907_2016-->

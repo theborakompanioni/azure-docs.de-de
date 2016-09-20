@@ -64,6 +64,11 @@ Mit diesem Befehl wird die Anforderung zum Kopieren der Datenbank an den Dienst 
     # Copy a database to the same server
     Start-AzureSqlDatabaseCopy -ServerName $ServerName -DatabaseName $DatabaseName -PartnerDatabase $PartnerDatabaseName
 
+Verwenden der Azure Resource Manager-Cmdlets:
+
+    # Copy a database to the same server
+    New-AzureRmSqlDatabaseCopy -ResourceGroupName $ResourceGroupName -ServerName $ServerName -DatabaseName $DatabaseName -CopyDatabaseName $PartnerDatabaseName
+
 ### Kopieren einer SQL-Datenbank auf einen anderen Server
 
 Mit diesem Befehl wird die Anforderung zum Kopieren der Datenbank an den Dienst gesendet. Je nach Größe Ihrer Datenbank kann es einige Zeit dauern, bis der Kopiervorgang abgeschlossen ist.
@@ -71,6 +76,10 @@ Mit diesem Befehl wird die Anforderung zum Kopieren der Datenbank an den Dienst 
     # Copy a database to a different server
     Start-AzureSqlDatabaseCopy -ServerName $ServerName -DatabaseName $DatabaseName -PartnerServer $PartnerServerName -PartnerDatabase $PartnerDatabaseName
     
+Verwenden der Azure Resource Manager-Cmdlets:
+
+    # Copy a database to a different server
+    New-AzureRmSqlDatabaseCopy -ResourceGroupName $ResourceGroupName -ServerName $ServerName -DatabaseName $DatabaseName -CopyServerName $PartnerServerName -CopyDatabaseName $PartnerDatabaseName
 
 ## Überwachen des Fortschritts des Kopiervorgangs
 
@@ -125,4 +134,4 @@ Informationen zum Auflösen von Anmeldungen, nachdem der Kopiervorgang abgeschlo
 - [Übersicht über die Geschäftskontinuität](sql-database-business-continuity.md)
 - [SQL-Datenbankdokumentation](https://azure.microsoft.com/documentation/services/sql-database/)
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0907_2016-->

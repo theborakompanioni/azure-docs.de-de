@@ -60,7 +60,7 @@ Behebung:
 + Stellen Sie sicher, dass Sie die Anmeldeinformationen für das richtige Azure-Konto eingegeben haben.
 + Überprüfen Sie in Ihrem Browser, ob Sie auf das [Azure-Portal](https://portal.azure.com) zugreifen können. Öffnen Sie "Einstellungen", und stellen Sie fest, ob eine Einschränkung besteht.
 + [Fügen Sie Application Insights einem vorhandenen Projekt hinzu](app-insights-asp-net.md): Klicken Sie mit der rechten Maustaste auf das Projekt im Projektmappen-Explorer, und wählen Sie "Application Insights hinzufügen" aus.
-+ Wenn es immer noch nicht funktioniert, führen Sie das [manuelle Verfahren](app-insights-asp-net-manual.md)aus, um eine Ressource im Portal hinzuzufügen, und fügen Sie anschließend das SDK zum Projekt hinzu.
++ Wenn es immer noch nicht funktioniert, führen Sie das [manuelle Verfahren](app-insights-windows-services.md)aus, um eine Ressource im Portal hinzuzufügen, und fügen Sie anschließend das SDK zum Projekt hinzu.
 
 ## <a name="emptykey"></a>Eine Fehlermeldung "Instrumentationsschlüssel darf nicht leer sein" wird angezeigt.
 
@@ -215,4 +215,4 @@ Haben Sie für .NET 4.6 erstellt? 4.6 wird nicht automatisch in Azure Cloud Ser
 
 * [Application Insights-Forum](https://social.msdn.microsoft.com/Forums/vstudio/de-DE/home?forum=ApplicationInsights)
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0907_2016-->

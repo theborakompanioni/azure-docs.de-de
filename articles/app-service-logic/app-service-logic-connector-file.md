@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/31/2016"
+	ms.date="09/01/2016"
 	ms.author="rajram"/>
 
 # Erste Schritte mit dem Datei-Connector und das Hinzufügen zur Logik-App
@@ -27,17 +27,19 @@ Der Datei-Connector verwendet den Hybrid Connection Manager für eine Hybridkonn
 Zur Verwendung des Datei-Connectors müssen Sie zunächst eine Instanz der Datei-Connector-API-App erstellen. Gehen Sie dazu folgendermaßen vor:
 
 1.	Öffnen Sie den Azure Marketplace mit der Option "+NEU" auf der linken Seite im Azure-Portal.
-2.	Navigieren Sie zu „Marketplace > API-Apps“, und suchen Sie nach „Datei-Connector“.
-3.	Konfigurieren Sie den Datei-Connector wie folgt: ![][1]
+2.	Suchen Sie nach „Datei-Connector“.
+3.	Wählen Sie in den Suchergebnissen die Vorschauversion des Datei-Connectors.
+4.	Klicken Sie auf die Schaltfläche **Erstellen**.
+5.	Konfigurieren Sie den Datei-Connector wie folgt: ![][1]
 
-	- **Name** – Geben Sie einen Namen für den Datei-Connector ein.
+	- **Name**: Geben Sie einen Namen für den Datei-Connector ein.
 	- **Paketeinstellungen**
 		- **Stammordner** - Geben Sie den Pfad des Stammordners auf dem Hostcomputer an. Z. B. D:\\FileConnectorTest
 		- **Service Bus-Verbindungszeichenfolge** - Geben Sie eine Dienstbus-Verbindungszeichenfolge an. Stellen Sie sicher, dass der Service Bus-Namespace vom Typ "Standard" ist und NICHT "Basic", um Service Bus Relays zu ermöglichen. Service Bus Relay wird für die Verbindung mit dem Hybrid Connection Manager verwendet.
 	- **App Service-Plan** - Wählen oder erstellen Sie einen App Service-Plan.
 	- **Tarif** – Wählen Sie einen Tarif für den Connector.
 	- **Ressourcengruppe** – Wählen oder erstellen Sie eine Ressourcengruppe, in der sich der Connector befinden soll.
-	- **Abonnement** – Wählen Sie ein Abonnement, in dem dieser Connector erstellt werden soll.
+	- **Abonnement**: Wählen Sie ein Abonnement aus, in dem dieser Connector erstellt werden soll.
 	- **Standort** – Wählen Sie den geografischen Standort, an dem Sie den Connector bereitstellen möchten.
 
 4. Klicken Sie auf "Erstellen". Ein neuer Datei-Connector wird erstellt.
@@ -65,12 +67,12 @@ Sobald Ihre API-App erstellt wurde, können Sie den Datei-Connector als Aktion f
 ## Datei-Connector-REST-APIs ##
 Um den Connector außerhalb einer Logik-App zu verwenden, können die vom Connector zur Verfügung gestellten REST-APIs genutzt werden. Sie können diese API-Definitionen mit „Durchsuchen“ > „API-App“ > „Datei-Connector“ anzeigen. Klicken Sie jetzt auf die Lupe "API-Definition" im Abschnitt "Zusammenfassung", um alle APIs anzuzeigen, die von diesem Connector zur Verfügung gestellt werden: ![][7]
 
-Ausführliche Informationen zu den APIs finden sie unter [File Connector] \(Datei-Connector).
+Ausführliche Informationen zu den APIs finden sie unter [File Connector] (Datei-Connector).
 
 ## Mehr mit Ihrem Connector machen
 Nachdem der Connector nun erstellt ist, können Sie ihn mit einer Logik-App einem Geschäftsworkflow hinzufügen. Informationen finden Sie unter [Was sind Logik-Apps?](app-service-logic-what-are-logic-apps.md).
 
->[AZURE.NOTE] Wenn Sie Azure Logik-Apps ausprobieren möchten, ehe Sie sich für ein Azure-Konto registrieren, wechseln Sie zu [Logik-App testen](https://tryappservice.azure.com/?appservice=logic). Dort können Sie sofort eine kurzlebige Starter-Logik-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
+>[AZURE.NOTE] Wenn Sie Azure Logic Apps ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie unter [Logik-App testen](https://tryappservice.azure.com/?appservice=logic) sofort kostenlos eine kurzlebige Starter-Logik-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
 
 Anzeigen der Swagger-REST-API-Referenz unter [Referenz zu Connectors und API-Apps](http://go.microsoft.com/fwlink/p/?LinkId=529766).
 
@@ -87,4 +89,4 @@ Sie können auch Leistungsstatistiken überprüfen und die Sicherheit zum Connec
 [File Connector]: https://msdn.microsoft.com/library/dn936296.aspx
 [Hybrid Connection Manager verwenden]: app-service-logic-hybrid-connection-manager.md
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0907_2016-->

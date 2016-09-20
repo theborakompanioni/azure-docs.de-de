@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/21/2016"
+	ms.date="09/06/2016"
 	ms.author="cephalin;dariac"/>
     
 # Bereitstellen der App in Azure App Service
@@ -234,4 +234,4 @@ Informationen zur Verwendung der rollenbasierten Zugriffssteuerung von Azure zum
 
  
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0907_2016-->

@@ -13,7 +13,7 @@
      ms.topic="article"
      ms.tgt_pltfrm="na"
      ms.workload="na"
-     ms.date="05/17/2016"
+     ms.date="09/06/2016"
      ms.author="obloch"/>
 
 # Microsoft Azure IoT-Geräte-SDK für C – weitere Informationen zu IoTHubClient
@@ -22,7 +22,7 @@ Im [ersten Artikel](iot-hub-device-sdk-c-intro.md) dieser Serie wurde das **Micr
 
 Im vorherigen Artikel wurde beschrieben, wie Sie die **IoTHubClient**-Bibliothek verwenden können, um Ereignisse an IoT Hub zu senden und Nachrichten zu empfangen. In diesem Artikel erklären wir Ihnen, wie Sie präziser bestimmen können, *wann* Sie Daten senden und empfangen. Dazu stellen wir Ihnen die **Low-Level-APIs** vor. Wir erläutern zudem, wie Sie Eigenschaften mithilfe der Eigenschaftsverarbeitungsfunktionen in der **IoTHubClient**-Bibliothek an Ereignisse anfügen (und sie von Nachrichten abrufen) können. Außerdem erfahren Sie mehr über die verschiedenen Methoden zum Verarbeiten von Nachrichten vom IoT Hub.
 
-Am Ende dieses Artikels werden verschiedene Themen besprochen, u. a. weitere Informationen zu Geräteanmeldeinformationen und zum Ändern des Verhaltens von **IoTHubClient** über Konfigurationsoptionen.
+Am Ende dieses Artikels werden verschiedene Themen besprochen, u.a. weitere Informationen zu Geräteanmeldeinformationen und zum Ändern des Verhaltens von **IoTHubClient** über Konfigurationsoptionen.
 
 Zur Erläuterung dieser Themen verwenden wir die **IoTHubClient**-SDK-Beispiele. Sehen Sie sich für weitere Informationen die **iothub\_client\_sample\_http**- und **iothub\_client\_sample\_amqp**-Anwendungen an, die im Azure IoT-Geräte-SDK für C enthalten sind. Alles nachfolgend Beschriebene wird in diesen Beispielen veranschaulicht.
 
@@ -69,7 +69,7 @@ Für jede dieser APIs gibt es jedoch Begleitfunktionen:
 
 Der API-Name all dieser Funktionen beinhaltet die Zeichenfolge "LL". Abgesehen davon sind die Parameter für alle diese Funktionen mit ihren Nicht-LL-Gegenstücken identisch. Das Verhalten dieser Funktionen unterscheidet sich jedoch in einem wichtigen Punkt.
 
-Beim Aufruf von **IoTHubClient\_CreateFromConnectionString** erstellen die zugrunde liegenden Bibliotheken einen neuen Thread, der im Hintergrund ausgeführt wird. Dieser Thread sendet Ereignisse an den IoT Hub und empfängt Nachrichten vom IoT Hub. Bei der Arbeit mit den "LL"-APIs wird kein solcher Thread erstellt. Die Erstellung des Hintergrundthreads stellt eine Vereinfachung für den Entwickler dar. Sie müssen sich nicht darum kümmern, dass Ereignisse explizit an den IoT Hub gesendet und Nachrichten vom IoT Hub empfangen werden; dies erfolgt automatisch im Hintergrund. Im Gegensatz dazu bieten die "LL"-APIs Ihnen bei Bedarf eine explizite Kontrolle über die Kommunikation mit dem IoT Hub.
+Beim Aufruf von **IoTHubClient\_CreateFromConnectionString** erstellen die zugrunde liegenden Bibliotheken einen neuen Thread, der im Hintergrund ausgeführt wird. Dieser Thread sendet Ereignisse an den IoT Hub und empfängt Nachrichten vom IoT Hub. Bei der Arbeit mit den "LL"-APIs wird kein solcher Thread erstellt. Die Erstellung des Hintergrundthreads stellt eine Vereinfachung für den Entwickler dar. Sie müssen sich nicht darum kümmern, dass Ereignisse explizit an den IoT Hub gesendet und Nachrichten vom IoT Hub empfangen werden; dies erfolgt automatisch im Hintergrund. Im Gegensatz dazu bieten die „LL“-APIs Ihnen bei Bedarf eine explizite Kontrolle über die Kommunikation mit dem IoT Hub.
 
 Sehen Sie sich zur Veranschaulichung das folgende Beispiel an:
 
@@ -296,4 +296,4 @@ Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 [lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
 [lnk-portal]: iot-hub-manage-through-portal.md
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0907_2016-->

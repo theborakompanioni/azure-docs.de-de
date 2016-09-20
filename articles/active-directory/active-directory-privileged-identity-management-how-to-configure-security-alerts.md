@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="08/17/2016"
+   ms.date="09/02/2016"
    ms.author="kgremban"/>
 
 # Konfigurieren von Sicherheitswarnungen in Azure AD Privileged Identity Management
@@ -30,7 +30,7 @@ Azure Privileged Identity Management (PIM) generiert bei verdächtigen oder nich
 | **Rollen werden außerhalb von PIM zugewiesen** | Ein Administrator wurde außerhalb der PIM-Benutzeroberfläche permanent zu einer Rolle zugewiesen. | Überprüfen Sie die neue Rollenzuweisung. Da andere Dienste nur permanente Administratoren zuweisen können, ändern Sie die Zuweisung bei Bedarf in eine berechtigte Zuweisung. |
 | **Rollen werden zu häufig aktiviert** | Es sind zu viele erneute Aktivierungen derselben Rolle innerhalb des in den Einstellungen festgelegten Zeitraums erfolgt. | Wenden Sie sich an den Benutzer, um festzustellen, warum die Rolle so häufig aktiviert wurde. Möglicherweise ist der Zeitraum zu kurz, um die Aufgaben abzuschließen, oder Benutzer verwenden Skripts, um eine Rolle automatisch zu aktivieren. |
 | **Rollen erfordern für die Aktivierung keine Multi-Factor Authentication** | Bei manchen Rollen ist MFA in den Einstellungen nicht aktiviert. | Wir fordern MFA für die meisten sehr privilegierten Rollen an, empfehlen jedoch dringend, dass Sie MFA für die Aktivierung aller Rollen aktivieren. |
-| **Administratoren verwenden ihre privilegierten Rollen nicht** | Es gibt temporäre Administratoren, die ihre Rollen längere Zeit nicht aktiviert haben. | Starten Sie eine Zugriffsüberprüfung, um die Benutzer zu ermitteln, die keinen Zugriff mehr benötigen. |
+| **Administratoren verwenden ihre privilegierten Rollen nicht** | Es gibt berechtigte Administratoren, die ihre Rollen längere Zeit nicht aktiviert haben. | Starten Sie eine Zugriffsüberprüfung, um die Benutzer zu ermitteln, die keinen Zugriff mehr benötigen. |
 | **Es gibt zu viele globale Administratoren** | In den Einstellungen sind mehr globale Administratoren festgelegt als empfohlen. | Wenn Sie eine große Anzahl von globalen Administratoren haben, ist es wahrscheinlich, dass Benutzer mehr Berechtigungen als notwendig erhalten. Verlagern Sie Benutzer in weniger privilegierte Rollen, oder legen Sie einige von ihnen als für die Rolle berechtigt fest, statt sie permanent zuzuweisen. |
 
 ## Konfigurieren der Einstellungen für Sicherheitswarnungen
@@ -75,4 +75,4 @@ Diese Warnung wird auslöst, wenn ein Benutzer für eine bestimmte Zeit eine Rol
 [1]: ./media/active-directory-privileged-identity-management-how-to-configure-security-alerts/PIM_security_dash.png
 [2]: ./media/active-directory-privileged-identity-management-how-to-configure-security-alerts/PIM_security_settings.png
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0907_2016-->

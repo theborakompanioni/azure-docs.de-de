@@ -5,7 +5,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="andkjell"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/27/2016"
+	ms.date="08/31/2016"
 	ms.author="andkjell"/>
 
 
@@ -43,21 +43,21 @@ Wählen Sie eine der Aufgaben aus, und klicken Sie auf **Weiter**, um fortzufahr
 Um zurückzugehen, klicken Sie auf **Zurück**. Mit einem Klick auf **Beenden** schließen Sie den Installations-Assistenten.
 
 ## Synchronisierungsoptionen anpassen
-Mit dieser Option nehmen Sie Änderungen an der Synchronisierungskonfiguration vor. Ihnen wird eine Teilmenge von Optionen im Installationspfad der Konfiguration angezeigt. Diese wird Ihnen auch dann angezeigt, wenn Sie zunächst die Expressinstallation verwendet haben.
+Mit dieser Option nehmen Sie Änderungen an der Synchronisierungskonfiguration vor. Ihnen wird eine Teilmenge von Optionen im Installationspfad der Konfiguration angezeigt. Diese Option wird Ihnen auch dann angezeigt, wenn Sie zunächst die Expressinstallation verwendet haben.
 
 - [Hinzufügen weiterer Verzeichnisse](active-directory-aadconnect-get-started-custom.md#connect-your-directories). Informationen zum Entfernen eines Verzeichnisses finden Sie unter [Löschen eines Connectors](active-directory-aadconnectsync-service-manager-ui-connectors.md#delete).
 - [Ändern der Filterung von Domänen und Organisationseinheiten](active-directory-aadconnect-get-started-custom.md#domain-and-ou-filtering).
 - Entfernen gruppenspezifischer Filterregeln.
 - [Ändern optionaler Features](active-directory-aadconnect-get-started-custom.md#optional-features).
 
-Die weiteren Optionen aus der anfänglichen Installation können nicht geändert werden und sind nicht verfügbar. Dazu zählen:
+Die weiteren Optionen aus der anfänglichen Installation können nicht geändert werden und sind nicht verfügbar. Die Optionen sind:
 
 - Ändern des Attributs zur Verwendung für userPrincipalName und sourceAnchor.
 - Ändern der Verknüpfungsmethode für Objekte aus einer anderen Gesamtstruktur.
 - Aktivieren der gruppenbasierten Filterung.
 
 ## Aktualisieren des Verzeichnisschemas
-Diese Option wird verwendet, wenn Sie das Schema in einer Ihrer lokalen AD DS-Gesamtstrukturen verändert haben. Zum Beispiel haben Sie möglicherweise Exchange installiert oder ein Upgrade auf ein Windows Server 2012-Schema mit Geräteobjekten ausgeführt. In diesem Fall müssen Sie Azure AD Connect anweisen, das Schema erneut aus den AD DS zu lesen und den Cache zu aktualisieren. Dies führt auch dazu, dass die Synchronisierungsregeln neu generiert werden. Wenn Sie beispielsweise das Exchange-Schema hinzufügen, werden der Konfiguration die Synchronisierungsregeln für Exchange hinzugefügt.
+Diese Option wird verwendet, wenn Sie das Schema in einer Ihrer lokalen AD DS-Gesamtstrukturen verändert haben. Zum Beispiel haben Sie möglicherweise Exchange installiert oder ein Upgrade auf ein Windows Server 2012-Schema mit Geräteobjekten ausgeführt. In diesem Fall müssen Sie Azure AD Connect anweisen, das Schema erneut aus den AD DS zu lesen und den Cache zu aktualisieren. Diese Aktion generiert auch die Synchronisierungsregeln neu. Wenn Sie beispielsweise das Exchange-Schema hinzufügen, werden der Konfiguration die Synchronisierungsregeln für Exchange hinzugefügt.
 
 Wenn Sie diese Option auswählen, werden alle Verzeichnisse in Ihrer Konfiguration aufgeführt. Sie können die Standardeinstellung beibehalten und alle Gesamtstrukturen aktualisieren oder die Auswahl einiger Gesamtstrukturen aufheben.
 
@@ -75,10 +75,13 @@ Mit dieser Option können Sie von der Kennwortsynchronisierung zum Verbund oder 
 
 Weitere Informationen zu dieser Option finden Sie unter [Benutzeranmeldung](active-directory-aadconnect-user-signin.md#changing-user-sign-in-method).
 
-
 ## Nächste Schritte
-Weitere Informationen zur Konfiguration der [Azure AD Connect-Synchronisierung](active-directory-aadconnectsync-whatis.md).
 
-Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md).
+- Weitere Informationen zu dem von Azure AD Connect verwendeten Konfigurationsmodell finden Sie unter [Understanding Declarative Provisioning](active-directory-aadconnectsync-understanding-declarative-provisioning.md) (Grundlegendes zur deklarativen Bereitstellung).
 
-<!---HONumber=AcomDC_0629_2016-->
+**Übersichtsthemen**
+
+- [Azure AD Connect-Synchronisierung: Grundlagen und Anpassung der Synchronisierung](active-directory-aadconnectsync-whatis.md)
+- [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md)
+
+<!---HONumber=AcomDC_0907_2016-->

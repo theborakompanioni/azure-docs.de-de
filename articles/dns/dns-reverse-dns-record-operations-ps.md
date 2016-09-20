@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="03/09/2016"
+   ms.date="09/05/2016"
    ms.author="smalone" />
 
 # Mit PowerShell Ihre Reverse-DNS-Einträge für Ihre Dienste verwalten
@@ -68,4 +68,4 @@ Mithilfe des Cmdlets Set-AzureRmPublicIpAddress können Sie eine Reverse-DNS-Eig
 
 [AZURE.INCLUDE [HÄUFIG GESTELLTE FRAGEN](../../includes/dns-reverse-dns-record-operations-faq-arm-include.md)]
 
-<!-----HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0907_2016-->

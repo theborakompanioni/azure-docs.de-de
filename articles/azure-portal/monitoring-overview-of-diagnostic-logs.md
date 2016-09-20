@@ -33,7 +33,7 @@ Diagnoseprotokolle für computefremde Ressourcen werden mithilfe von Diagnoseein
 
 - Wohin Diagnoseprotokolle gesendet werden sollen (Speicherkonto, Event Hubs und/oder OMS Log Analytics)
 - Welche Protokollkategorien gesendet werden sollen
-- Wie lange die einzelnen Protokollkategorien in einem Speicherkonto aufbewahrt werden sollen. Bei Angabe einer Aufbewahrungsdauer von null Tagen werden die Protokolle dauerhaft aufbewahrt. Wenn Aufbewahrungsrichtlinien festgelegt werden, aber das Speichern von Protokollen in einem Speicherkonto deaktiviert ist (etwa, wenn nur die Event Hubs- oder die OMS-Option aktiviert ist), werden die Aufbewahrungsrichtlinien ignoriert.
+- Wie lange die einzelnen Protokollkategorien in einem Speicherkonto aufbewahrt werden sollen. Bei Angabe einer Aufbewahrungsdauer von null Tagen werden die Protokolle dauerhaft aufbewahrt. Andernfalls kann dieser Wert zwischen 1 und 2147483647 liegen. Wenn Aufbewahrungsrichtlinien festgelegt werden, aber das Speichern von Protokollen in einem Speicherkonto deaktiviert ist (etwa, wenn nur die Event Hubs- oder die OMS-Option aktiviert ist), werden die Aufbewahrungsrichtlinien ignoriert.
 
 Diese Einstellungen können für eine Ressource ganz einfach über das Diagnoseblatt im Azure-Portal, über Azure PowerShell und mithilfe von CLI-Befehlen oder über die [Insights-REST-API](https://msdn.microsoft.com/library/azure/dn931943.aspx) konfiguriert werden.
 
@@ -50,13 +50,17 @@ Die Erfassung von Diagnoseprotokollen kann im Zuge der Ressourcenerstellung und 
 Diagnoseprotokolle können im Azure-Portal wie folgt beim Erstellen einiger Ressourcentypen aktiviert werden:
 
 1.	Navigieren Sie zu **Neu**, und wählen Sie die gewünschte Ressource.
-2.	Wählen Sie nach dem Konfigurieren der grundlegenden Einstellungen und dem Auswählen einer Größe auf dem Blatt **Einstellungen** unter **Überwachung** die Option **Aktiviert** und anschließend ein Speicherkonto aus, in dem die Diagnoseprotokolle gespeichert werden sollen. Wenn Sie Diagnoseinformationen an ein Speicherkonto senden, werden Ihnen die üblichen Datengebühren für Speicherung und Transaktionen in Rechnung gestellt. ![Aktivieren von Diagnoseprotokollen im Rahmen der Ressourcenerstellung](./media/monitoring-overview-of-diagnostic-logs/enable-portal-new.png)
+2.	Wählen Sie nach dem Konfigurieren der grundlegenden Einstellungen und dem Auswählen einer Größe auf dem Blatt **Einstellungen** unter **Überwachung** die Option **Aktiviert** und anschließend ein Speicherkonto aus, in dem die Diagnoseprotokolle gespeichert werden sollen. Wenn Sie Diagnoseinformationen an ein Speicherkonto senden, werden Ihnen die üblichen Datengebühren für Speicherung und Transaktionen in Rechnung gestellt.
+
+    ![Aktivieren von Diagnoseprotokollen im Rahmen der Ressourcenerstellung](./media/monitoring-overview-of-diagnostic-logs/enable-portal-new.png)
 3.	Klicken Sie auf **OK**, und erstellen Sie die Ressource.
 
 Wenn Sie Diagnoseprotokolle nach der Erstellung einer Ressource über das Azure-Portal aktivieren möchten, führen Sie die folgenden Schritte aus:
 
 1.	Wechseln Sie zum Blatt für die Ressource, und öffnen Sie das Blatt **Diagnose**.
-2.	Klicken Sie auf **Ein**, und wählen Sie ein Speicherkonto und/oder eine Event Hub-Instanz aus. ![Aktivieren von Diagnoseprotokollen nach der Ressourcenerstellung](./media/monitoring-overview-of-diagnostic-logs/enable-portal-existing.png)
+2.	Klicken Sie auf **Ein**, und wählen Sie ein Speicherkonto und/oder eine Event Hub-Instanz aus.
+
+    ![Aktivieren von Diagnoseprotokollen nach der Ressourcenerstellung](./media/monitoring-overview-of-diagnostic-logs/enable-portal-existing.png)
 3.	Wählen Sie unter **Protokolle** die zu erfassenden oder zu streamenden **Protokollkategorien** aus.
 4.	Klicken Sie auf **Speichern**.
 
@@ -104,10 +108,35 @@ Das Schema für Diagnoseprotokolle variiert abhängig von der Ressource und der 
 | Data Lake-Speicher | [Zugreifen auf Diagnoseprotokolle für Azure Data Lake Store](../data-lake-store/data-lake-store-diagnostic-logs.md) |
 | Data Lake Analytics | [Zugreifen auf Diagnoseprotokolle für Azure Data Lake Analytics](../data-lake-analytics/data-lake-analytics-diagnostic-logs.md) |
 | Logik-Apps | Kein Schema verfügbar. |
+| Azure Batch | Kein Schema verfügbar. |
+| Azure-Automatisierung | Kein Schema verfügbar. |
+
+## Unterstützte Protokollkategorien pro Ressourcentyp
+
+|Ressourcentyp|Kategorie|Anzeigename der Kategorie|
+|---|---|---|
+|Microsoft.Automation/automationAccounts|JobLogs|Auftragsprotokolle|
+|Microsoft.Automation/automationAccounts|JobStreams|Auftragsdatenströme|
+|Microsoft.Batch/batchAccounts|ServiceLog|Dienstprotokolle|
+|Microsoft.DataLakeAnalytics/accounts|Audit|Überwachungsprotokolle|
+|Microsoft.DataLakeAnalytics/accounts|Requests|Anforderungsprotokolle|
+|Microsoft.DataLakeStore/accounts|Audit|Überwachungsprotokolle|
+|Microsoft.DataLakeStore/accounts|Requests|Anforderungsprotokolle|
+|Microsoft.KeyVault/vaults|AuditEvent|Überwachungsprotokolle|
+|Microsoft.Logic/workflows|WorkflowRuntime|Diagnoseereignisse zur Workflowlaufzeit|
+|Microsoft.Network/networksecuritygroups|NetworkSecurityGroupEvent|Ereignis der Netzwerksicherheitsgruppe|
+|Microsoft.Network/networksecuritygroups|NetworkSecurityGroupRuleCounter|Regelzähler der Netzwerksicherheitsgruppe|
+|Microsoft.Network/networksecuritygroups|NetworkSecurityGroupFlowEvent|Regelflussereignis der Netzwerksicherheitsgruppe|
+|Microsoft.Network/loadBalancers|LoadBalancerAlertEvent|Load Balancer-Warnereignisse|
+|Microsoft.Network/loadBalancers|LoadBalancerProbeHealthStatus|Integritätsstatus der Load Balancer-Stichprobe|
+|Microsoft.Network/applicationGateways|ApplicationGatewayAccessLog|Application Gateway-Zugriffsprotokoll|
+|Microsoft.Network/applicationGateways|ApplicationGatewayPerformanceLog|Application Gateway-Leistungsprotokoll|
+|Microsoft.Network/applicationGateways|ApplicationGatewayFirewallLog|Application Gateway-Firewallprotokoll|
+|Microsoft.Search/searchServices|OperationLogs|Vorgangsprotokolle|
 
 ## Nächste Schritte
 - [Streamen von Diagnoseprotokollen an **Event Hubs**](monitoring-stream-diagnostic-logs-to-event-hubs.md)
 - [Ändern der Diagnoseeinstellungen mithilfe der Insights-REST-API](https://msdn.microsoft.com/library/azure/dn931931.aspx)
 - [Analysieren der Protokolle mit OMS Log Analytics](../log-analytics/log-analytics-azure-storage-json.md)
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0907_2016-->
