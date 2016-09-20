@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Anwendungsfall – Erstellen von Kundenprofilen" 
+	pageTitle="Anwendungsfall – Erstellen von Kundenprofilen" 
 	description="Erfahren Sie, wie Azure Data Factory zum Erstellen eines datengesteuerten Workflows (Pipeline) verwendet wird, um Profile von Spielekunden zu erstellen." 
 	services="data-factory" 
 	documentationCenter="" 
@@ -16,7 +16,7 @@
 	ms.date="09/06/2016" 
 	ms.author="spelluru"/>
 
-# Anwendungsfall – Erstellen von Kundenprofilen
+# Anwendungsfall – Erstellen von Kundenprofilen
 
 Azure Data Factory ist einer der zahlreichen Dienste, die zum Implementieren der Cortana Intelligence Suite von Lösungsoptimierungen verwendet werden. Weitere Informationen zu Cortana Intelligence finden Sie unter [Cortana Intelligence Suite](http://www.microsoft.com/cortanaanalytics). In diesem Dokument wird ein einfacher Anwendungsfall beschrieben, der Ihnen dabei helfen soll zu verstehen, wie Sie mit Azure Data Factory verbreitete Analyseprobleme lösen können.
 

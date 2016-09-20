@@ -20,7 +20,8 @@
 
 # Entwicklerreferenz zu Triggern und Bindungen in Azure Functions
 
-Die folgenden Artikel erläutern das Konfigurieren und Codieren von Triggern und Bindungen in Azure Functions. In diesem Artikel wird davon ausgegangen, dass Sie die [Entwicklerreferenz zu Azure Functions](functions-reference.md) sowie die Referenzartikel zu [C#](functions-reference-csharp.md) bzw. [Node.js](functions-reference-node.md) für Entwickler gelesen haben.
+Die folgenden Artikel erläutern das Konfigurieren und Codieren von Triggern und Bindungen in Azure Functions. 
+In diesem Artikel wird davon ausgegangen, dass Sie die [Entwicklerreferenz zu Azure Functions](functions-reference.md) sowie die Referenzartikel zu [C#](functions-reference-csharp.md) bzw. [Node.js](functions-reference-node.md) für Entwickler gelesen haben.
 
 ## Artikel zu Triggern und Bindungen
 

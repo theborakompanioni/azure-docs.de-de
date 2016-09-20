@@ -138,10 +138,19 @@ Die verfügbaren Optionen umfassen:
 
 | Option | Details | Standard |
 | ---- | ----- | ----- |
-| /q | Unbeaufsichtigte Installation | - | | /p: "location" | Der Pfad zum Installationsordner für den Azure Backup-Agent. | C:\\Program Files\\Microsoft Azure Recovery Services Agent || /s: "Location" | Der Pfad zum Cacheordner für den Azure Backup-Agent. | C:\\Program Files\\Microsoft Azure Recovery Services Agent\\Scratch || /m | Microsoft Update abonnieren | - | | /nu | Nach Abschluss der Installation nicht nach Updates suchen | - | | /d | Microsoft Azure Recovery Services Agent wird deinstalliert | - | | /ph | Proxyhostadresse | - | | /po | Proxyhost-Portnummer | - | | /pu | Proxyhost-Benutzername | - | | /pw | Proxykennwort | - |
+| /q | Unbeaufsichtigte Installation | - |
+| /p: "location" | Der Pfad zum Installationsordner für den Azure Backup-Agent. | C:\\Program Files\\Microsoft Azure Recovery Services Agent |
+| /s: "Location" | Der Pfad zum Cacheordner für den Azure Backup-Agent. | C:\\Program Files\\Microsoft Azure Recovery Services Agent\\Scratch |
+| /m | Microsoft Update abonnieren | - | 
+| /nu | Nach Abschluss der Installation nicht nach Updates suchen | - |
+| /d | Microsoft Azure Recovery Services Agent wird deinstalliert | - | 
+| /ph | Proxyhostadresse | - | 
+| /po | Proxyhost-Portnummer | - | 
+| /pu | Proxyhost-Benutzername | - | 
+| /pw | Proxykennwort | - |
 
-## Registrieren von DPM bei einem Recovery Services-Tresor
-
+## Registrieren 
+von DPM bei einem Recovery Services-Tresor
 Laden Sie nach dem Erstellen des Recovery Services-Tresors den neuesten Agent sowie die Tresoranmeldeinformationen herunter, und speichern Sie sie an einem zentralen Ort wie C:\\Downloads.
 
 ```

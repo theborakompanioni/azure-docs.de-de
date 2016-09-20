@@ -46,7 +46,7 @@ Add-AzureRmLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/r
 | Eigenschaft | Erforderlich | Beschreibung |
 |------------------|----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | StorageAccountId | Nein | Ressourcen-ID des Speicherkontos, in dem Aktivitätsprotokolle gespeichert werden sollen. |
-| Locations | Ja | Kommagetrennte Liste mit den Regionen, für die Sie Aktivitätsprotokollereignisse erfassen möchten. Eine Liste mit allen Bereichen können Sie sich auf [dieser Seite](https://azure.microsoft.com/de-DE/regions) oder mithilfe der [Azure-Verwaltungs-REST-API](https://msdn.microsoft.com/library/azure/gg441293.aspx) ansehen. |
+| Locations | Ja | Kommagetrennte Liste mit den Regionen, für die Sie Aktivitätsprotokollereignisse erfassen möchten. Eine Liste mit allen Bereichen können Sie sich auf [dieser Seite](https://azure.microsoft.com/regions) oder mithilfe der [Azure-Verwaltungs-REST-API](https://msdn.microsoft.com/library/azure/gg441293.aspx) ansehen. |
 | RetentionInDays | Ja | Anzahl von Tagen für die Aufbewahrung von Ereignissen (1 bis 2.147.483.647). Bei einem Wert von 0 werden die Protokolle dauerhaft (d.h. für immer) gespeichert. |
 | Categories | Ja | Kommagetrennte Liste mit den Ereigniskategorien, die erfasst werden sollen. Mögliche Werte sind „Write“, „Delete“ und „Action“. |
 ## Archivieren des Aktivitätsprotokolls mithilfe der Befehlszeilenschnittstelle
@@ -58,7 +58,7 @@ azure insights logprofile add --name my_log_profile --storageId /subscriptions/s
 |-----------------|----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Name | Ja | Name des Protokollprofils. |
 | storageId | Nein | Ressourcen-ID des Speicherkontos, in dem Aktivitätsprotokolle gespeichert werden sollen. |
-| locations | Ja | Kommagetrennte Liste mit den Regionen, für die Sie Aktivitätsprotokollereignisse erfassen möchten. Eine Liste mit allen Bereichen können Sie sich auf [dieser Seite](https://azure.microsoft.com/de-DE/regions) oder mithilfe der [Azure-Verwaltungs-REST-API](https://msdn.microsoft.com/library/azure/gg441293.aspx) ansehen. |
+| locations | Ja | Kommagetrennte Liste mit den Regionen, für die Sie Aktivitätsprotokollereignisse erfassen möchten. Eine Liste mit allen Bereichen können Sie sich auf [dieser Seite](https://azure.microsoft.com/regions) oder mithilfe der [Azure-Verwaltungs-REST-API](https://msdn.microsoft.com/library/azure/gg441293.aspx) ansehen. |
 | retentionInDays | Ja | Anzahl von Tagen für die Aufbewahrung von Ereignissen (1 bis 2.147.483.647). Bei einem Wert von 0 werden die Protokolle dauerhaft (d.h. für immer) gespeichert. |
 | categories | Ja | Kommagetrennte Liste mit den Ereigniskategorien, die erfasst werden sollen. Mögliche Werte sind „Write“, „Delete“ und „Action“. |
 

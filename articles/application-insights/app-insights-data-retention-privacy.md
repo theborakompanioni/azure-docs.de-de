@@ -211,7 +211,7 @@ Weitere Informationen zu [SDKs für andere Plattformen][platforms] finden Sie in
 
 Gesammelte Datenklasse | Umfasst (keine vollständige Liste) 
 ---|---
-**Eigenschaften**|**Alle Daten – bestimmt durch Code**
+**Eigenschaften**|**Alle Daten – bestimmt durch Code**
 DeviceContext |ID, IP, Gebietsschema, Gerätemodell, Netzwerk, Netzwerktyp, OEM-Name, Bildschirmauflösung, Rolleninstanz, Rollenname, Gerätetyp
 ClientContext |Betriebssystem, Gebietsschema, Sprache, Netzwerk, Fensterauflösung
 Sitzung (Session) | Sitzungs-ID

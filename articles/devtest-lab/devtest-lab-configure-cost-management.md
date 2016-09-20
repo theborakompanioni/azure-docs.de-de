@@ -32,7 +32,7 @@ Führen Sie folgende Schritte aus, um das Diagramm „Monatlicher geschätzter K
 
 1. Wählen Sie auf dem Blatt des Labs die Option **Cost settings** (Kosteneinstellungen) aus.
 
-1. Wählen Sie im Blatt **Cost settings** (Kosteneinstellungen) des Labs die Option ** Lab cost trend** (Labkostentrend) aus.
+1. Wählen Sie im Blatt **Cost settings** (Kosteneinstellungen) des Labs die Option **Lab cost trend** (Labkostentrend) aus.
 
 1. Der folgende Screenshot zeigt ein Beispiel eines Kostendiagramms.
 

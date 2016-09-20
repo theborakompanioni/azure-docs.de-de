@@ -12,9 +12,9 @@ Bei der Authentifizierung mit gemeinsam verwendetem Schlüssel nutzt die Anwendu
 
 Wenn Sie die Authentifizierung mit gemeinsam verwendetem Schlüssel nutzen, erstellen Sie eine [Verbindungszeichenfolge](../articles/storage/storage-configure-connection-string.md). Die Verbindungszeichenfolge besteht aus:
 
-- dem **DefaultEndpointsProtocol** – Sie können zwischen HTTP oder HTTPS wählen. Die Verwendung von HTTPS wird jedoch unbedingt empfohlen.
-- dem **Kontonamen** – der Name Ihres Storage-Kontos
-- dem ** Kontoschlüssel** – navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem Speicherkonto, und klicken Sie auf das Symbol **Schlüssel**, um diese Informationen zu erhalten.
+- dem **DefaultEndpointsProtocol** – Sie können zwischen HTTP oder HTTPS wählen. Die Verwendung von HTTPS wird jedoch unbedingt empfohlen.
+- dem **Kontonamen** – der Name Ihres Storage-Kontos
+- dem **Kontoschlüssel** – navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem Speicherkonto, und klicken Sie auf das Symbol **Schlüssel**, um diese Informationen zu erhalten.
 - (Optional) **EndpointSuffix** – dieser Wert wird für Speicherdienste in Regionen mit anderen Endpunktsuffixen verwendet, z.B. Azure China oder Azure Governance.
 
 Hier sehen Sie ein Beispiel einer Verbindungszeichenfolge bei Authentifizierung mit gemeinsam verwendetem Schlüssel:
