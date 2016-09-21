@@ -23,7 +23,7 @@ In diesem Artikel erfahren Sie, wie Sie Ihre [Azure-Aktivitätsprotokolle](monit
 Bevor Sie beginnen, müssen Sie [ein Speicherkonto erstellen](../storage/storage-create-storage-account.md#create-a-storage-account), in dem Sie Ihre Diagnoseprotokolle archivieren können. Um den Zugriff auf Überwachungsdaten besser steuern zu können, wird dringend davon abgeraten, ein bereits vorhandenes Speicherkonto mit anderen, nicht überwachungsbezogenen Daten zu verwenden. Wenn Sie jedoch auch Ihr Aktivitätsprotokoll Diagnosemetriken in einem Speicherkonto archivieren, ist es unter Umständen sinnvoll, dieses Speicherkonto auch für Ihre Diagnoseprotokolle zu verwenden, damit sich alle Überwachungsdaten an einem zentralen Ort befinden. Bei dem Speicherkonto muss es sich um ein allgemeines Speicherkonto (nicht um ein Blobspeicherkonto) handeln.
 
 ## Diagnoseeinstellungen
-Legen Sie eine **Diagnoseeinstellung** für eine bestimmte Ressource fest, um die Diagnoseprotokolle mit einer der weiter unten angegebenen Methoden zu archivieren. Eine Diagnoseeinstellung für eine Ressource definiert die Kategorien von Protokollen, die gespeichert oder gestreamt werden, sowie die Ausgaben (Speicherkonto und/oder Event Hub). Außerdem definiert sie die Aufbewahrungsrichtlinie (Anzahl von Tagen für die Aufbewahrung) für Ereignisse jeder Protokollkategorie, die in einem Speicherkonto gespeichert werden. Wird die Aufbewahrungsrichtlinie auf Null festgelegt, werden Ereignisse für diese Protokollkategorie dauerhaft gespeichert. [Hier](monitoring-overview-of-diagnostic-logs.md#diagnostic-settings) erfahren Sie mehr über Diagnoseeinstellungen.
+Legen Sie eine **Diagnoseeinstellung** für eine bestimmte Ressource fest, um die Diagnoseprotokolle mit einer der weiter unten angegebenen Methoden zu archivieren. Eine Diagnoseeinstellung für eine Ressource definiert die Kategorien von Protokollen, die gespeichert oder gestreamt werden, sowie die Ausgaben (Speicherkonto und/oder Event Hub). Außerdem definiert sie die Aufbewahrungsrichtlinie (Anzahl von Tagen für die Aufbewahrung) für Ereignisse jeder Protokollkategorie, die in einem Speicherkonto gespeichert werden. Wird die Aufbewahrungsrichtlinie auf Null festgelegt, werden Ereignisse für diese Protokollkategorie dauerhaft (also für immer) gespeichert. Für eine Aufbewahrungsrichtlinie kann andernfalls eine beliebige Anzahl von Tagen zwischen 1 und 2.147.483.647 festgelegt werden. [Hier](monitoring-overview-of-diagnostic-logs.md#diagnostic-settings) erfahren Sie mehr über Diagnoseeinstellungen.
 
 ## Archivieren von Diagnoseprotokollen mithilfe des Portals
 
@@ -51,7 +51,7 @@ Set-AzureRmDiagnosticSetting -ResourceId /subscriptions/s1id1234-5679-0123-4567-
 | Categories | Nein | Durch Trennzeichen getrennte Liste der zu aktivierenden Protokollkategorien |
 | Aktiviert | Ja | Boolescher Wert, der angibt, ob die Diagnose für diese Ressource aktiviert oder deaktiviert werden soll |
 | RetentionEnabled | Nein | Boolescher Wert, der angibt, ob eine Aufbewahrungsrichtlinie für diese Ressource aktiviert ist |
-| RetentionInDays | Nein | Anzahl von Tagen für die Aufbewahrung von Ereignissen. Bei einem Wert von 0 werden die Protokolle dauerhaft gespeichert. |
+| RetentionInDays | Nein | Anzahl von Tagen für die Aufbewahrung von Ereignissen (1 bis 2.147.483.647). Bei einem Wert von 0 werden die Protokolle dauerhaft gespeichert. |
 
 ## Archivieren des Aktivitätsprotokolls über die plattformübergreifende Befehlszeilenschnittstelle
 
@@ -124,4 +124,4 @@ Die einzelnen Ereignisse werden innerhalb der Datei „PT1H.json“ im folgenden
 - [Streamen von Diagnoseprotokollen an Event Hubs](monitoring-stream-diagnostic-logs-to-event-hubs.md)
 - [Weitere Informationen zu Diagnoseprotokollen](monitoring-overview-of-diagnostic-logs.md)
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0907_2016-->

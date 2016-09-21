@@ -19,10 +19,12 @@
 
 # SQL-Datenbankoptionen und -leistung: Grundlegendes zum Angebot in den einzelnen Tarifen
 
-[Azure SQL-Datenbank](sql-database-technical-overview.md) umfasst mehrere Dienstebenen für unterschiedliche Workloads. Sie können jederzeit [Dienstebenen ändern](sql-database-scale-up.md) und die Ausfallzeiten für Ihre Anwendung dabei gering halten (im Durchschnitt meist unter vier Sekunden). Sie haben auch die Möglichkeit zum [Erstellen einer Einzeldatenbank](sql-database-get-started.md) mit definierten Merkmalen und Preisen. Oder Sie können mehrere Datenbanken verwalten, indem Sie einen [Pool für elastische Datenbanken erstellen](sql-database-elastic-pool-create-portal.md). In beiden Fällen sind die Dienstebenen **Basic**, **Standard** und **Premium** verfügbar. Die Datenbankoptionen dieser Ebenen sind bei eigenständigen Datenbanken und elastischen Pools ähnlich, aber bei elastischen Pools sind noch weitere Aspekte zu beachten. Dieser Artikel enthält ausführliche Informationen zu den Dienstebenen für eigenständige Datenbanken und elastische Pools.
+[Azure SQL-Datenbank](sql-database-technical-overview.md) bietet drei Tarife mit mehreren Leistungsstufen für unterschiedliche Workloads. Jede Leistungsstufe bietet einen zunehmenden Umfang an Ressourcen, um einen zunehmend höheren Durchsatz zu ermöglichen. Sie können jede Datenbank in ihrer eigenen [Dienstebene](sql-database-service-tiers.md#standalone-database-service-tiers-and-performance-levels) mit eigenen Leistungsstufen verwalten. Darüber hinaus besteht die Möglichkeit, mehrere Datenbanken in einem [elastischen Pool](sql-database-service-tiers.md#elastic-pool-service-tiers-and-performance-in-edtus) mit gemeinsam genutzten Ressourcen zu verwalten. Die für eigenständige Datenbanken verfügbaren Ressourcen werden als Datenbanktransaktionseinheiten (Database Transaction Units, DTUs) und die für elastische Pools verfügbaren Ressourcen als elastische DTUs bzw. eDTUs bezeichnet. Weitere Informationen zu DTUs und eDTUs finden Sie unter [What is a DTU](sql-database-what-is-a-DTU.md) (Informationen zu DTUs).
+
+In beiden Fällen sind die Dienstebenen **Basic**, **Standard** und **Premium** verfügbar. Die Datenbankoptionen dieser Ebenen sind bei eigenständigen Datenbanken und elastischen Pools ähnlich, aber bei elastischen Pools sind noch weitere Aspekte zu beachten. Dieser Artikel enthält ausführliche Informationen zu den Dienstebenen für eigenständige Datenbanken und elastische Pools.
 
 ## Tarife und Datenbankoptionen
-Die Dienstebenen "Basic", "Standard" und "Premium" haben alle eine Betriebszeit-SLA von 99,99 % und bieten vorhersagbare Leistung, flexible Optionen für Geschäftskontinuität, Sicherheitsfeatures und stündliche Abrechnung. In der folgenden Tabelle sind Beispiele für Dienstebenen aufgeführt, die sich für unterschiedliche Anwendungsworkloads am besten eignen.
+Die Dienstebenen "Basic", "Standard" und "Premium" haben alle eine Betriebszeit-SLA von 99,99 % und bieten vorhersagbare Leistung, flexible Optionen für Geschäftskontinuität, Sicherheitsfeatures und stündliche Abrechnung. In der folgenden Tabelle sind Beispiele für Dienstebenen aufgeführt, die sich für unterschiedliche Anwendungsworkloads am besten eignen.
 
 | Dienstebene | Zielworkloads |
 |---|---|
@@ -39,8 +41,6 @@ Die hier aufgeführten Leistungsmerkmale gelten für Datenbanken, die mit [SQL-D
 
 [AZURE.INCLUDE [Tarife für SQL-Datenbank](../../includes/sql-database-service-tiers-table.md)]
 
-Weitere Informationen zu DTUs finden Sie in diesem Thema im Abschnitt [DTU](#understanding-dtus).
-
 >[AZURE.NOTE] Eine ausführliche Beschreibung aller anderen Zeilen in dieser Dienstebenentabelle finden Sie unter [Service tier capabilities and limits](sql-database-performance-guidance.md#service-tier-capabilities-and-limits) (Funktionen und Limits von Dienstebenen; in englischer Sprache).
 
 ## Dienstebenen und Leistung für elastische Pools in eDTUs
@@ -53,10 +53,6 @@ In der folgenden Tabelle sind die Merkmale der Dienstebenen eines Pools beschrie
 [AZURE.INCLUDE [Tabelle mit den SQL-Datenbank-Dienstebenen für elastische Pools](../../includes/sql-database-service-tiers-table-elastic-db-pools.md)]
 
 Für jede Datenbank in einem Pool gelten auch die Merkmale für eigenständige Datenbanken für die entsprechende Dienstebene. Der Basic-Pool verfügt in Bezug auf die maximalen Sitzungen pro Pool beispielsweise über eine Beschränkung auf den Bereich von 4.800 bis 28.800. Eine eigenständige Datenbank in einem Basic-Pool verfügt dagegen über eine Datenbankbeschränkung von 300 Sitzungen.
-
-## Grundlegendes zu DTUs
-
-[AZURE.INCLUDE [Beschreibung von SQL-Datenbank-DTUs](../../includes/sql-database-understanding-dtus.md)]
 
 ## Auswählen einer Dienstebene
 
@@ -92,4 +88,4 @@ Nachdem Sie die Dienstebene für Ihren Pool ermittelt haben, können Sie die Lei
 
 Informationen zu gängigen Datenarchitekturmustern von mehrinstanzenfähigen SaaS-Datenbankanwendungen (Software-as-a-Service) finden Sie unter [Entwurfsmuster für mehrinstanzenfähige SaaS-Anwendungen und Azure SQL-Datenbank](sql-database-design-patterns-multi-tenancy-saas-applications.md).
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0914_2016-->

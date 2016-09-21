@@ -3,7 +3,7 @@
    description="Richtlinien und Empfehlungen zur Verwendung von PolyBase in SQL Data Warehouse-Szenarios."
    services="sql-data-warehouse"
    documentationCenter="NA"
-   authors="happynicolle"
+   authors="ckarst"
    manager="barbkess"
    editor=""/>
 
@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
    ms.date="06/30/2016"
-   ms.author="nicw;barbkess;sonyama"/>
+   ms.author="cakarst;barbkess;sonyama"/>
 
 
 # Anleitung für die Verwendung von PolyBase in SQL Data Warehouse
@@ -82,7 +82,7 @@ Siehe [CREATE TABLE AS SELECT (Transact-SQL)][].
 
 ## Erstellen von Statistiken für die neu geladenen Daten
 
-Azure SQL Data Warehouse bietet noch keine Unterstützung für die automatische Erstellung oder die automatische Aktualisierung von Statistiken. Um die beste Leistung bei Abfragen zu erhalten, ist es wichtig, dass die Statistiken für alle Spalten aller Tabellen nach dem ersten Laden oder nach allen wesentlichen Datenänderungen erstellt werden. Eine ausführliche Erläuterung der Statistik finden Sie unter dem Thema [Statistiken][] in der Entwicklungsgruppe der Themen. Es folgt ein kurzes Beispiel, wie Sie Statistiken für die in diesem Beispiel geladene Tabelle erstellen können.
+Azure SQL Data Warehouse bietet noch keine Unterstützung für die automatische Erstellung oder die automatische Aktualisierung von Statistiken. Um die beste Leistung bei Abfragen zu erhalten, ist es wichtig, dass die Statistiken für alle Spalten aller Tabellen nach dem ersten Laden oder nach allen wesentlichen Datenänderungen erstellt werden. Eine ausführliche Erläuterung der Statistik finden Sie im Thema [Statistiken][] in der Entwicklungsgruppe der Themen. Es folgt ein kurzes Beispiel, wie Sie Statistiken für die in diesem Beispiel geladene Tabelle erstellen können.
 
 ```sql
 create statistics [SensorKey] on [Customer_Speed] ([SensorKey]);
@@ -206,4 +206,4 @@ Weitere Informationen zum Verschieben von Daten in SQL Data Warehouse finden Sie
 
 <!-- External Links -->
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0907_2016-->

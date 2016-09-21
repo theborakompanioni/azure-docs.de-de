@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/28/2016"
+	ms.date="09/01/2016"
 	ms.author="casoper"/>
     
 # Problembehandlung bei der CDN-Dateikomprimierung
@@ -26,6 +26,10 @@ Wenn Sie beim Lesen dieses Artikels feststellen, dass Sie weitere Hilfe benötig
 
 Die Komprimierung für Ihren Endpunkt ist aktiviert, die Dateien werden aber nicht komprimiert zurückgegeben.
 
+>[AZURE.TIP] Um zu überprüfen, ob Ihre Dateien komprimiert zurückgegeben werden, müssen Sie ein Tool wie [Fiddler](http://www.telerik.com/fiddler) oder die [Entwicklertools](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/) Ihres Browsers verwenden. Überprüfen Sie die HTTP-Antwortheader, die mit Ihrem zwischengespeicherten CDN.Inhalt zurückgegeben werden. Wenn ein Header mit dem Namen `Content-Encoding` mit einem Wert von **gzip**, **bzip2**, oder **deflate** vorhanden ist, werden Ihre Inhalte komprimiert.
+>
+>![Content-Encoding-Header](./media/cdn-troubleshoot-compression/cdn-content-header.png)
+
 ## Ursache
 
 Es gibt mehrere mögliche Ursachen, darunter folgende:
@@ -36,7 +40,7 @@ Es gibt mehrere mögliche Ursachen, darunter folgende:
 
 ## Schritte zur Problembehandlung
 
-> [AZURE.TIP] Genauso wie beim Bereitstellen neuer Endpunkte dauert es eine gewisse Zeit, bis Änderungen an der CDN-Konfiguration im gesamten Netzwerk verteilt sind. In den meisten Fällen werden Ihre Änderungen innerhalb von 90 Minuten übernommen. Wenn Sie die Komprimierung für Ihren CDN-Endpunkt zum ersten Mal einrichten, sollten Sie jedoch 1–2 Stunden warten, um sicherzugehen, dass die Komprimierungseinstellungen an alle POPs verteilt wurden.
+> [AZURE.TIP] Genauso wie beim Bereitstellen neuer Endpunkte dauert es eine gewisse Zeit, bis Änderungen an der CDN-Konfiguration im gesamten Netzwerk verteilt sind. Änderungen werden in der Regel innerhalb von 90 Minuten angewendet. Wenn Sie die Komprimierung für Ihren CDN-Endpunkt zum ersten Mal einrichten, sollten Sie jedoch 1–2 Stunden warten, um sicherzugehen, dass die Komprimierungseinstellungen an alle POPs verteilt wurden.
 
 ### Überprüfen der Anforderung
 
@@ -64,7 +68,7 @@ Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem Endpunkt, un
 
 > [AZURE.NOTE] Dieser Schritt gilt nur, wenn Ihr CDN-Profil ein **Azure CDN Premium von Verizon**-Profil ist.
 
-Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem Endpunkt, und klicken Sie auf die Schaltfläche **Verwalten**. Das zusätzliche Portal wird geöffnet. Zeigen Sie auf die Registerkarte **HTTP Groß** und dann auf das Flyout **Cacheeinstellungen**. Klicken Sie auf **Komprimierung**.
+Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem Endpunkt, und klicken Sie auf die Schaltfläche **Verwalten**. Das zusätzliche Portal wird geöffnet. Zeigen Sie auf die Registerkarte **HTTP Groß** und dann auf das Flyout **Cacheeinstellungen**. Klicken Sie auf **Datenkomprimierung**.
 
 - Überprüfen Sie, ob die Komprimierung aktiviert ist.
 - Überprüfen Sie, ob die Liste **Dateitypen** eine durch Trennzeichen getrennte Liste von MIME-Typen ohne Leerzeichen enthält.
@@ -78,7 +82,7 @@ Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem Endpunkt, un
 
 Überprüfen Sie mithilfe der Entwicklertools Ihres Browsers die Antwortheader, um sicherzustellen, dass die Datei in der Region zwischengespeichert wird, in der sie angefordert wird.
 
-- Überprüfen Sie den Antwortheader **Server**. Dieser Header sollte das Format **Plattform (POP-/Server-ID)** aufweisen, wie im Beispiel unten gezeigt.
+- Überprüfen Sie den Antwortheader **Server**. Dieser Header sollte wie im folgenden Beispiel das Format **Plattform (POP-/Server-ID)** aufweisen.
 - Überprüfen Sie den Antwortheader **X-Cache**. Dieser Header sollte **HIT** lauten.
 
 ![CDN-Antwortheader](./media/cdn-troubleshoot-compression/cdn-response-headers.png)
@@ -99,4 +103,4 @@ Der **Über**-HTTP-Header informiert den Webserver darüber, dass die Anforderun
 - **IIS 6**: [Legen Sie in den IIS-Metabasiseigenschaften „HcNoCompressionForProxies="FALSE"“ fest](https://msdn.microsoft.com/library/ms525390.aspx).
 - **IIS 7 und höher**: [Legen Sie in der Serverkonfiguration sowohl für **noCompressionForHttp10** als auch für **noCompressionForProxies** die Option „False“ fest.](http://www.iis.net/configreference/system.webserver/httpcompression)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0907_2016-->

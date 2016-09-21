@@ -1,7 +1,7 @@
 
 <properties 
     pageTitle="Verwenden Ihres Office 365-Abonnements mit Azure RemoteApp | Microsoft Azure"
-	description="Erfahren Sie, wie Sie über Ihr Office 365-Abonnement in Azure RemoteApp Office-Apps freigeben können."
+	description="Erfahren Sie, wie Sie über Ihr Office 365-Abonnement in Azure RemoteApp Office-Apps freigeben können."
 	services="remoteapp"
 	documentationCenter="" 
 	authors="piotrci" 
@@ -30,7 +30,7 @@ Sie finden alle Informationen in Peters neuem Artikel: [Verwenden von Azure Remo
 
 ## Kann ich mein Office 365-Abonnement für die Ausführung von Office-Anwendungen in Azure RemoteApp verwenden?
 
-Ja. Tatsächlich können Sie ausschließlich mit Ihrem Office 365-Abonnement Ihre Office-Anwendungen in Azure RemoteApp bereitstellen.
+Ja. Tatsächlich können Sie ausschließlich mit Ihrem Office 365-Abonnement Ihre Office-Anwendungen in Azure RemoteApp bereitstellen.
 
 (Hinweis: Wenn Ihre Azure RemoteApp-Bereitstellung von einem Hostingpartner geliefert wird, kann Ihnen dieser möglicherweise Office-Lizenzen auf der Grundlage eines [Dienstanbieterlizenzvertrags](http://www.microsoft.com/de-DE/Licensing/licensing-programs/spla-program.aspx) anbieten.)
 
@@ -51,7 +51,7 @@ Solange Sie (als Administrator) Ihren Benutzern Office 365 ProPlus-Lizenzen zuw
 
 ## Welche Office-Anwendungen kann ich mit Office 365 und Azure RemoteApp verwenden?
 
-Über Ihr Office 365 ProPlus-Abonnement können Sie Office 2013 und Office 2016 (nach der Veröffentlichung) freigeben. Azure RemoteApp unterstützt keine früheren Versionen von Office.
+Über Ihr Office 365 ProPlus-Abonnement können Sie Office 2013 freigeben. Azure RemoteApp unterstützt keine früheren Versionen von Office.
 
 ## Wie sieht es mit Visio Pro oder Project Pro aus?
 
@@ -126,4 +126,4 @@ Sie benötigen weitere Informationen zur Verwendung des Office-Bereitstellungsto
 - [Deploying and Updating Office 365 ProPlus Using the Office Deployment Tool](https://channel9.msdn.com/Events/Ignite/2015/BRK3168) (Video, in englischer Sprache)
 - [Konfigurieren von Updateeinstellungen für Office 365 ProPlus](https://technet.microsoft.com/library/dn761708.aspx)
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0907_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="05/27/2016"
+   ms.date="09/02/2016"
    ms.author="jgao"/>
 
 # Verwenden von Apache Phoenix mit Linux-basierten HBase-Clustern in HDInsight  
@@ -36,9 +36,9 @@ Beim Verbinden mit einem HBase-Cluster müssen Sie die Verbindung zu einem der Z
 
 **So finden Sie den Hostnamen des Zookeeper heraus:**
 
-1. Öffnen Sie Ambari, indem Sie zu **https://<ClusterName>.azurehdinsight.net** navigieren.
+1. Öffnen Sie Ambari, indem Sie zu **https://<Clustername>.azurehdinsight.net** navigieren.
 2. Geben Sie zum Anmelden den HTTP-(Cluster-)Benutzernamen und das Kennwort ein.
-3. Klicken Sie im linken Menü auf **ZooKeeper**. Sie sehen die 3 **ZooKeeper-Server** aufgeführt.
+3. Klicken Sie im linken Menü auf **ZooKeeper**. Sie sehen drei **ZooKeeper-Server** aufgeführt.
 4. Klicken Sie auf einen der aufgeführten **ZooKeeper-Server**. Suchen Sie im Zusammenfassungsbereich den **Hostnamen**. Er ähnelt *zk1-jdolehb.3lnng4rcvp5uzokyktxs4a5dhd.bx.internal.cloudapp.net*.
 
 **Verwendung von SQLLine**
@@ -71,7 +71,7 @@ In diesem Artikel haben Sie erfahren, wie Sie Apache Phoenix in HDInsight verwen
 
 - [Übersicht HBase mit HDInsight][hdinsight-hbase-overview]\: HBase ist eine Open-Source-NoSQL-Datenbank von Apache, die auf Hadoop aufbaut und wahlfreien Zugriff sowie starke Konsistenz für große Mengen unstrukturierter und teilstrukturierter Daten bietet.
 - [Bereitstellen von HBase-Clustern im virtuellen Azure-Netzwerk][hdinsight-hbase-provision-vnet]\: Mit der Integration in virtuelle Netzwerke können HBase-Cluster im selben virtuellen Netzwerk bereitgestellt werden wie Ihre Anwendungen, sodass Anwendungen direkt mit HBase kommunizieren können.
-- [Konfiguration von HBase-Replikation in HDInsight](hdinsight-hbase-geo-replication.md): Erfahren Sie, wie Sie HBase-Replikation über zwei Azure-Rechenzentren konfigurieren. 
+- [Konfiguration von HBase-Replikation in HDInsight](hdinsight-hbase-geo-replication.md): Erfahren Sie, wie Sie HBase-Replikation über zwei Azure-Rechenzentren konfigurieren.
 - [Analysieren der Twitter-Stimmungen mit HBase in HDInsight][hbase-twitter-sentiment]\: Erfahren Sie, wie Sie in Echtzeit [Stimmungsanalysen](http://en.wikipedia.org/wiki/Sentiment_analysis) bei Big Data mithilfe von HBase in einem Hadoop-Cluster in HDInsight durchführen können.
 
 [azure-portal]: https://portal.azure.com
@@ -95,4 +95,4 @@ In diesem Artikel haben Sie erfahren, wie Sie Apache Phoenix in HDInsight verwen
 
  
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0907_2016-->

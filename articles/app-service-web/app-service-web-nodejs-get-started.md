@@ -52,8 +52,9 @@ In diesem Tutorial erfahren Sie, wie Sie eine einfache [Node.js][NODEJS]-Anwendu
 
     Navigieren Sie in Ihrem Browser zu <http://localhost:3000>, um zu prüfen, ob die Express-Startseite angezeigt wird. Nachdem Sie sich vergewissert haben, dass die App richtig ausgeführt wird, können Sie sie mit `Ctrl-C` beenden.
     
-1. Melden Sie sich wie folgt bei Azure an (hierzu benötigen Sie die [Azure-Befehlszeilenschnittstelle](#prereq)):
+1. Wechseln Sie in den ASM-Modus, und melden Sie sich bei Azure an (dazu ist die [Azure-CLI](#prereq) erforderlich):
 
+        azure config mode asm
         azure login
 
     Befolgen Sie die Aufforderung, um die Anmeldung in einem Browser mit einem Microsoft-Konto fortzusetzen, das über Ihr Azure-Abonnement verfügt.
@@ -236,4 +237,4 @@ Führen Sie diese Schritte aus, um Node-Inspector zu aktivieren:
 [iislog-kudu-console-open]: ./media/app-service-web-nodejs-get-started/iislog-kudu-console-open.png
 [iislog-kudu-console-read]: ./media/app-service-web-nodejs-get-started/iislog-kudu-console-read.png
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0914_2016-->

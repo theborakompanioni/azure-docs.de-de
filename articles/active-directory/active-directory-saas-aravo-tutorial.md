@@ -137,13 +137,13 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Microsoft Azure AD
 
 5. Wenden Sie sich an das Supportteam von Aravo, um SSO (Single Sign-On, einmaliges Anmelden) für Ihre Anwendung konfigurieren zu lassen, und stellen Sie Folgendes bereit:
 
-	- Die **heruntergeladene Zertifikatdatei**
+	- Die **heruntergeladene Zertifikatdatei**
 
-	- Die **Aussteller-URL**
+	- Die **Aussteller-URL**
 
-	- Die **SAML-SSO-URL**
+	- Die **SAML-SSO-URL**
 
-	- Die **Dienst-URL für einmaliges Abmelden**
+	- Die **Dienst-URL für einmaliges Abmelden**
 
 6. Wählen Sie im klassischen Portal die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Weiter**.
 
@@ -279,4 +279,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Aravo“ klicken, sollten Sie auto
 [204]: ./media/active-directory-saas-aravo-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-aravo-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0824_2016-->
+<!----HONumber=AcomDC_0824_2016-->

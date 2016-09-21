@@ -173,4 +173,4 @@ In Office 365 Exchange Online-Anwendungen steht der zusätzliche Bereich **Excha
 
 - [Bedingter Zugriff mit Azure Active Directory](active-directory-conditional-access.md)
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0907_2016-->

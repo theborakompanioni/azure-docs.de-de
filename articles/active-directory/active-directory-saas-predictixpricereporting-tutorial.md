@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/06/2016"
+	ms.date="09/01/2016"
 	ms.author="jeedes"/>
 
 
@@ -129,7 +129,7 @@ In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im klas
 
     a. Klicken Sie auf **Zertifikat herunterladen** und speichern Sie die Datei auf Ihrem Computer.
 
-    b. Klicken Sie auf **Weiter**.
+    b. Klicken Sie auf **Next**.
 
 
 5. Wenden Sie sich an das Supportteam von Predictix Price Reporting, um SSO (Single Sign-On, einmaliges Anmelden) für Ihre Anwendung konfigurieren zu lassen, und stellen Sie Folgendes bereit:
@@ -165,7 +165,7 @@ In diesem Abschnitt erstellen Sie im klassischen Portal einen Testbenutzer mit d
 
 2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
 
-3. Klicken Sie zum Anzeigen der Liste der Benutzer im Menü oben auf **Benutzer**.
+3. Klicken Sie im Menü oben auf **Benutzer**, um die Liste der Benutzer anzuzeigen.
 
 	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-predictixpricereporting-tutorial/create_aaduser_03.png)
 
@@ -246,7 +246,7 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmeld
 Wenn Sie im Zugriffsbereich auf die Kachel „Predictix Price Reporting“ klicken, sollten Sie automatisch bei Ihrer Predictix Price Reporting-Anwendung angemeldet werden.
 
 
-## Zusätzliche Ressourcen
+## Weitere Ressourcen
 
 * [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)
@@ -270,4 +270,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Predictix Price Reporting“ klick
 [204]: ./media/active-directory-saas-predictixpricereporting-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-predictixpricereporting-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0907_2016-->

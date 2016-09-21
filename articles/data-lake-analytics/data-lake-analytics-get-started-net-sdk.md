@@ -4,7 +4,7 @@
    services="data-lake-analytics" 
    documentationCenter="" 
    authors="edmacauley" 
-   manager="paulettm" 
+   manager="jhubbard" 
    editor="cgronlun"/>
  
 <tags
@@ -31,8 +31,8 @@ In diesem Lernprogramm wird eine C#-Konsolenanwendung entwickelt, die ein U-SQL-
 
 Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
 
-- **Visual Studio 2015, Visual Studio 2013 Update 4 oder Visual Studio 2012 mit Installation von Visual C++**.
-- **Microsoft Azure SDK für .NET-Version 2.5 oder höher**. Führen Sie die Installation mit dem [Webplattform-Installer](http://www.microsoft.com/web/downloads/platform.aspx) durch.
+- **Visual Studio 2015, Visual Studio 2013 Update 4 oder Visual Studio 2012 mit Installation von Visual C++**.
+- **Microsoft Azure SDK für .NET-Version 2.5 oder höher**. Führen Sie die Installation mit dem [Webplattform-Installer](http://www.microsoft.com/web/downloads/platform.aspx) durch.
 - **[Data Lake-Tools für Visual Studio](http://aka.ms/adltoolsvs)**
 - Erstellen Sie eine AAD-Anwendung (Azure Active Directory), und rufen Sie dafür **Client-ID**, **Mandanten-ID** und **Schlüssel** ab. Weitere Informationen über AAD-Anwendungen und Anweisungen zum Abrufen einer Client-ID finden Sie unter [Erstellen einer Active Directory-Anwendung und eines Dienstprinzipals mithilfe des Portals](../resource-group-create-service-principal-portal.md). Der Antwort-URI und der Schlüssel stehen auch über das Portal zur Verfügung, sobald Sie die Anwendung erstellt und den Schlüssel generiert haben.
 
@@ -256,7 +256,7 @@ Ein Beispielsuchprotokoll wurde in einen öffentlichen Azure-Blob-Container kopi
 
 6. Drücken Sie **F5**, um die Anwendung auszuführen.
 
-## Weitere Informationen
+## Siehe auch
 
 - Wenn Sie dasselbe Tutorial mit anderen Tools verwenden möchten, klicken Sie oben auf der Seite auf die Registerkartenauswahl.
 - Eine komplexere Abfrage finden Sie unter [Analysieren von Websiteprotokollen mit Azure Data Lake Analytics](data-lake-analytics-analyze-weblogs.md).
@@ -265,4 +265,4 @@ Ein Beispielsuchprotokoll wurde in einen öffentlichen Azure-Blob-Container kopi
 - Informationen zu Verwaltungsaufgaben finden Sie unter [Verwalten von Azure Data Lake Analytics mithilfe des Azure-Portals](data-lake-analytics-manage-use-portal.md).
 - Eine Übersicht über Data Lake Analytics finden Sie unter [Azure Data Lake Analytics – Übersicht](data-lake-analytics-overview.md).
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0914_2016-->

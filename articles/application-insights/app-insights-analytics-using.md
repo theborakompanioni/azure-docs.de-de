@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/26/2016" 
+	ms.date="09/06/2016" 
 	ms.author="danha"/>
 
 
@@ -125,11 +125,14 @@ Die Ergebnisse werden standardmäßig zunächst als Tabelle angezeigt. Sie wähl
 
 ## An das Dashboard anheften
 
-Sie können ein Diagramm an eines Ihrer [freigegebenen Dashboards](app-insights-dashboards.md) anheften – klicken Sie einfach auf die Stecknadel. (Unter Umständen müssen Sie [das Tarifpaket für Ihre App aktualisieren](app-insights-pricing.md), um diese Funktion zu aktivieren.)
+Sie können ein Diagramm oder eine Tabelle an eines Ihrer [freigegebenen Dashboards](app-insights-dashboards.md) anheften – klicken Sie einfach auf die Stecknadel. (Unter Umständen müssen Sie [das Tarifpaket für Ihre App aktualisieren](app-insights-pricing.md), um diese Funktion zu aktivieren.)
 
 ![Auf Stecknadel klicken](./media/app-insights-analytics-using/pin-01.png)
 
 Wenn Sie ein Dashboard zum Überwachen der Leistung oder Nutzung Ihrer Webdienste erstellen, können Sie so zusätzlich zu den anderen Metriken komplexe Analysen hinzufügen.
+
+Wenn eine Tabelle maximal vier Spalten enthält, können Sie sie an das Dashboard anheften. Nur die ersten sieben Zeilen werden angezeigt.
+
 
 #### Dashboard-Aktualisierung
 
@@ -183,4 +186,4 @@ Nachdem Sie eine Abfrage ausgeführt haben, können Sie eine CSV-Datei herunterl
 
 [AZURE.INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0907_2016-->

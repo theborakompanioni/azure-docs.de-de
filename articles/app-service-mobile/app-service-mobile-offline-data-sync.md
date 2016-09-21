@@ -39,7 +39,7 @@ Die folgenden Lernprogramme zeigen, wie Sie die Offlinesynchronisierung zu Ihren
 * [Xamarin iOS: Offlinesynchronisierung aktivieren]
 * [Xamarin Android: Offlinesynchronisierung aktivieren]
 * [Xamarin.Forms: Offlinesynchronisierung aktivieren](app-service-mobile-xamarin-forms-get-started-offline-data.md)
-* [Windows 8.1: Offlinesynchronisierung aktivieren]
+* [Aktivieren der Offlinesynchronisierung für Ihre Windows-App]
 
 ## Was ist eine Synchronisierungstabelle?
 
@@ -51,7 +51,7 @@ Zur Unterstützung der Offlinenutzung sollte Ihre App stattdessen die *Synchroni
 
 Ein lokaler Speicher ist die Datenpersistenzebene auf dem Clientgerät. Die Client-SDKs von Azure Mobile Apps bieten eine Standardimplementierung für den lokalen Speicher. Unter Windows, Xamarin und Android basieren sie auf SQLite, unter iOS auf Core Data.
 
-Um die SQLite-basierte Implementierung für Windows Phone oder Windows Store 8.1 verwenden zu können, müssen Sie eine SQLite-Erweiterung installieren. Weitere Informationen finden Sie unter [Windows 8.1: Aktivieren der Offline-Synchronisierung]. Im Lieferumfang von Android und iOS ist im Betriebssystem selbst eine Version von SQLite enthalten, weshalb es nicht notwendig ist, auf eine eigene Version von SQLite zu verweisen.
+Um die SQLite-basierte Implementierung für Windows Phone oder Windows Store 8.1 verwenden zu können, müssen Sie eine SQLite-Erweiterung installieren. Weitere Informationen finden Sie unter [Aktivieren der Offlinesynchronisierung für Ihre Windows-App]. Im Lieferumfang von Android und iOS ist im Betriebssystem selbst eine Version von SQLite enthalten, weshalb es nicht notwendig ist, auf eine eigene Version von SQLite zu verweisen.
 
 Entwickler können auch ihren eigenen lokalen Speicher implementieren. Wenn Sie Daten in einem verschlüsselten Format auf dem mobilen Client speichern möchten, können Sie z. B. einen lokalen Speicher definieren, der SQLCipher für die Verschlüsselung verwendet.
 
@@ -95,7 +95,7 @@ Beim Synchronisieren von Tabellen steuert der Clientcode, wann lokale Änderunge
 * [iOS: Offlinesynchronisierung aktivieren]
 * [Xamarin iOS: Offlinesynchronisierung aktivieren]
 * [Xamarin Android: Offlinesynchronisierung aktivieren]
-* [Windows 8.1: Offlinesynchronisierung aktivieren]
+* [Aktivieren der Offlinesynchronisierung für Ihre Windows-App]
 
 <!-- Links -->
 [.NET client SDK]: app-service-mobile-dotnet-how-to-use-client-library.md
@@ -103,7 +103,6 @@ Beim Synchronisieren von Tabellen steuert der Clientcode, wann lokale Änderunge
 [iOS: Offlinesynchronisierung aktivieren]: app-service-mobile-ios-get-started-offline-data.md
 [Xamarin iOS: Offlinesynchronisierung aktivieren]: app-service-mobile-xamarin-ios-get-started-offline-data.md
 [Xamarin Android: Offlinesynchronisierung aktivieren]: app-service-mobile-xamarin-ios-get-started-offline-data.md
-[Windows 8.1: Aktivieren der Offline-Synchronisierung]: app-service-mobile-windows-store-dotnet-get-started-offline-data.md
-[Windows 8.1: Offlinesynchronisierung aktivieren]: app-service-mobile-windows-store-dotnet-get-started-offline-data.md
+[Aktivieren der Offlinesynchronisierung für Ihre Windows-App]: app-service-mobile-windows-store-dotnet-get-started-offline-data.md
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0907_2016-->

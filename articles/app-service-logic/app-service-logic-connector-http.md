@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration"
-   ms.date="04/19/2016"
+   ms.date="08/31/2016"
    ms.author="prkumar"/>
 
 
@@ -68,7 +68,7 @@ Die HTTP-Aktion wird systemeigen von Logik-Apps unterstützt. Zu ihrer Verwendun
 
 Die Ausgabe der HTTP-Aktion besteht aus Headern und Text und kann in ähnlicher Weise wie die Ausgabe anderer Aktionen und Connectors später im Datenfluss herangezogen werden.
 
-## Mehr mit Ihrem Connector machen
+## Optimale Nutzung Ihres Connectors
 Nachdem der Connector nun erstellt ist, können Sie ihn mit Logik-App in einem Geschäftsworkflow hinzufügen. Informationen finden Sie unter [Was sind Logik-Apps?](app-service-logic-what-are-logic-apps.md).
 
 Anzeigen der Swagger-REST-API-Referenz unter [Referenz zu Connectors und API-Apps](http://go.microsoft.com/fwlink/p/?LinkId=529766).
@@ -89,4 +89,4 @@ Sie können auch Leistungsstatistiken überprüfen und die Sicherheit zum Connec
 [9]: ./media/app-service-logic-connector-http/9.png
 [10]: ./media/app-service-logic-connector-http/10.png
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0907_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/16/2016" 
+	ms.date="09/07/2016" 
 	ms.author="sdanie"/>
 
 # Skalieren von Azure Redis Cache
@@ -52,7 +52,7 @@ Wählen Sie auf dem Blatt **Tarif** den gewünschten Tarif aus, und klicken Sie 
 >    -    Eine Skalierung von einem **Premium**-Cache auf einen niedrigeren **Standard**- oder **Basic**-Cache ist nicht möglich.
 >    -    Ein **Standard**-Cache kann nicht auf einen niedrigeren **Basic**-Cache skaliert werden.
 >-	Ein **Basic**-Cache kann auf einen **Standard**-Cache skaliert werden, die Größe kann jedoch nicht gleichzeitig geändert werden. Wenn Sie eine andere Größe benötigen, können Sie anschließend einen Skalierungsvorgang auf die gewünschte Größe durchführen.
->-	Ein **Basic**-Cache kann nicht direkt auf einen **Premium**-Cache skaliert werden. Stattdessen müssen Sie in einem ersten Skalierungsvorgang von **Basic** auf **Standard** skalieren und dann in einem folgenden Skalierungsvorgang von **Standard** auf **Premium**.
+>-	Ein **Basic**-Cache kann nicht direkt auf einen **Premium**-Cache skaliert werden. Stattdessen müssen Sie in einem ersten Skalierungsvorgang von **Basic** auf **Standard** skalieren und dann in einem anschließenden Skalierungsvorgang von **Standard** auf **Premium**.
 >-	Von einer größeren Größe kann nicht auf **C0 (250 MB)** herunterskaliert werden.
 
 Während der Cache in den neuen Tarif skaliert wird, wird auf dem Blatt **Redis Cache** der Status **Skalierung** angezeigt.
@@ -145,7 +145,7 @@ Nein, Cachename und -schlüssel bleiben während eines Skalierungsvorgangs unver
 
 -	Wenn ein **Basic**-Cache auf eine neue Größe skaliert wird, gehen alle Daten verloren, und der Cache ist während des Skalierungsvorgangs nicht verfügbar.
 -	Wenn ein **Basic**-Cache auf einen **Standard**-Cache skaliert wird, werden die Daten im Cache in der Regel beibehalten.
--	Wenn ein **Standard**-Cache auf eine größere Größe oder auf einen höheren Tarif bzw. ein **Premium**-Cache auf eine größere Größe skaliert wird, bleiben normalerweise alle Daten erhalten. Wenn Sie einen **Standard**-Cache oder einen **Premium**-Cache auf eine kleinere Größe herunterskalieren, können Daten verloren gehen, je nachdem, ob der neue Cache groß genug für alle bisher enthaltenen Daten ist. Wenn Daten beim Herunterskalieren verloren gehen, werden die Schlüssel mithilfe der Entfernungsrichtlinie [allkeys-lru](http://redis.io/topics/lru-cache) entfernt. 
+-	Wenn ein **Standard**-Cache auf eine größere Größe oder auf einen höheren Tarif bzw. ein **Premium**-Cache auf eine größere Größe skaliert wird, bleiben normalerweise alle Daten erhalten. Wenn Sie einen **Standard**-Cache oder einen **Premium**-Cache auf eine kleinere Größe herunterskalieren, können Daten verloren gehen, je nachdem, ob der neue Cache groß genug für alle bisher enthaltenen Daten ist. Wenn Daten beim Herunterskalieren verloren gehen, werden die Schlüssel mithilfe der Entfernungsrichtlinie [allkeys-lru](http://redis.io/topics/lru-cache) entfernt.
 
 ### Hat die Skalierung Auswirkungen auf meine benutzerdefinierte Einstellung für Datenbanken?
 
@@ -170,7 +170,7 @@ Hinweis: Für Caches der Tarife „Standard“ und „Premium“ gilt zwar eine 
     -    Eine Skalierung von einem **Premium**-Cache auf einen niedrigeren **Standard**- oder **Basic**-Cache ist nicht möglich.
     -    Ein **Standard**-Cache kann nicht auf einen niedrigeren **Basic**-Cache skaliert werden.
 -	Ein **Basic**-Cache kann auf einen **Standard**-Cache skaliert werden, die Größe kann jedoch nicht gleichzeitig geändert werden. Wenn Sie eine andere Größe benötigen, können Sie anschließend einen Skalierungsvorgang auf die gewünschte Größe durchführen.
--	Ein **Basic**-Cache kann nicht direkt auf einen **Premium**-Cache skaliert werden. Stattdessen müssen Sie in einem ersten Skalierungsvorgang von **Basic** auf **Standard** skalieren und dann in einem folgenden Skalierungsvorgang von **Standard** auf **Premium**.
+-	Ein **Basic**-Cache kann nicht direkt auf einen **Premium**-Cache skaliert werden. Stattdessen müssen Sie in einem ersten Skalierungsvorgang von **Basic** auf **Standard** skalieren und dann in einem anschließenden Skalierungsvorgang von **Standard** auf **Premium**.
 -	Von einer größeren Größe kann nicht auf **C0 (250 MB)** herunterskaliert werden.
 
 Wenn bei einem Skalierungsvorgang ein Fehler auftritt, versucht der Dienst, den Vorgang rückgängig zu machen, und der Cache wird auf die ursprüngliche Größe zurückgesetzt.
@@ -199,4 +199,4 @@ Wir haben die Funktion veröffentlicht, um Feedback zu erhalten. Basierend auf d
 
 [redis-cache-scaling]: ./media/cache-how-to-scale/redis-cache-scaling.png
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0907_2016-->

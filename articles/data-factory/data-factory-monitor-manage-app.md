@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/20/2016" 
+	ms.date="09/06/2016" 
 	ms.author="spelluru"/>
 
 # Überwachen und Verwalten von Azure Data Factory-Pipelines mit der neuen App „Überwachung und Verwaltung“
@@ -45,14 +45,19 @@ Wenn Sie in der Liste unten keine Aktivitätsfenster sehen, klicken Sie auf die 
 Links befinden sich drei Registerkarten: **Ressourcen-Explorer**, **Überwachungsansichten** und **Warnungen**. Die erste Registerkarte (Ressourcen-Explorer) ist standardmäßig ausgewählt.
 
 ### Ressourcen-Explorer
-Die **Strukturansicht** von Ressourcen-Explorer sehen Sie im linken Bereich, die **Diagrammansicht** oben und die Liste **Aktivitätsfenster** im mittleren Bereich unten. Die Registerkarten **Eigenschaften**/**Aktivitätsfenster-Explorer** werden rechts angezeigt.
+Sie sehen Folgendes:
 
-Sie können alle Ressourcen (Pipelines, Datasets, verknüpfte Dienste) in der Data Factory in einer Strukturansicht anzeigen. Wenn Sie ein Objekt im Ressourcen-Explorer auswählen, sehen Sie Folgendes:
+- **Strukturansicht** des Ressourcen-Explorers im linken Bereich.
+- **Diagrammansicht** oben.
+- Liste mit **Aktivitätsfenstern** unten im mittleren Bereich.
+- Registerkarten **Eigenschaften**/**Aktivitätsfenster-Explorer** im rechten Bereich.
+
+Im Ressourcen-Explorer können Sie alle Ressourcen (Pipelines, Datasets, verknüpfte Dienste) in der Data Factory in einer Strukturansicht anzeigen. Wenn Sie ein Objekt im Ressourcen-Explorer auswählen, sehen Sie Folgendes:
 
 - die zugeordnete Data Factory-Entität ist in der Diagrammansicht hervorgehoben.
-- Zugeordnete Aktivitätsfenster sind in der Liste „Aktivitätsfenster“ unten hervorgehoben (klicken Sie [hier](data-factory-scheduling-and-execution.md), um mehr über Aktivitätsfenster zu erfahren).  
-- Eigenschaften des ausgewählten Objekts im Fenster „Eigenschaften“ im rechten Bereich. 
-- Die JSON-Definition des ausgewählten Objekts, falls anwendbar. Zum Beispiel: ein verknüpfter Dienst, ein Dataset oder eine Pipeline. 
+- Zugeordnete Aktivitätsfenster sind in der Liste „Aktivitätsfenster“ unten hervorgehoben (klicken Sie [hier](data-factory-scheduling-and-execution.md), um mehr über Aktivitätsfenster zu erfahren).
+- Eigenschaften des ausgewählten Objekts im Fenster „Eigenschaften“ im rechten Bereich.
+- Die JSON-Definition des ausgewählten Objekts, falls anwendbar. Zum Beispiel: ein verknüpfter Dienst, ein Dataset oder eine Pipeline.
 
 ![Ressourcen-Explorer](./media/data-factory-monitor-manage-app/ResourceExplorer.png)
 
@@ -65,11 +70,11 @@ Die Diagrammansicht einer Data Factory bietet eine zentrale Konsole zum Überwac
 - zugeordnete Aktivitätsfenster sind in der Liste „Aktivitätsfenster“ hervorgehoben.
 - Eigenschaften des ausgewählten Objekts im Fenster „Eigenschaften“.
 
-Wenn die Pipeline aktiviert (d. h. nicht im Status „Angehalten“) ist, wird sie mit einer grünen Linie (siehe unten) angezeigt.
+Wenn sich die Pipeline im aktivierten Zustand befindet (nicht im angehaltenen Zustand), wird dies durch eine grüne Linie angezeigt.
 
 ![Pipeline wird ausgeführt](./media/data-factory-monitor-manage-app/PipelineRunning.png)
 
-Wie Sie sehen, gibt es in der Diagrammansicht drei Befehlsschaltflächen für die Pipeline. Die zweite Schaltfläche dient zum Anhalten der Pipeline. Dadurch werden die derzeit ausgeführten Aktivitäten nicht beendet, die bis zum Abschluss fortgesetzt werden können. Die dritte Schaltfläche dient zum Anhalten der Pipeline und Beenden vorhandener ausgeführter Aktivitäten. Über die erste Schaltfläche wird die angehaltene Pipeline fortgesetzt. Wenn Ihre Pipeline angehalten wird, ändert sich die Farbe der Pipelinekachel wie folgt.
+Wie Sie sehen, gibt es in der Diagrammansicht drei Befehlsschaltflächen für die Pipeline. Die zweite Schaltfläche dient zum Anhalten der Pipeline. Durch das Anhalten werden die derzeit ausgeführten Aktivitäten nicht beendet, die bis zum Abschluss fortgesetzt werden können. Die dritte Schaltfläche dient zum Anhalten der Pipeline und Beenden vorhandener ausgeführter Aktivitäten. Mit der ersten Schaltfläche wird die Pipeline fortgesetzt. Wenn Ihre Pipeline angehalten wird, ändert sich die Farbe der Pipelinekachel wie folgt:
 
 ![Fortsetzen/Anhalten auf Kachel](./media/data-factory-monitor-manage-app/SuspendResumeOnTile.png)
 
@@ -81,11 +86,11 @@ Sie können alle Aktivitäten in der Pipeline anzeigen, indem Sie mit der rechte
 
 ![Menü „Pipeline öffnen“](./media/data-factory-monitor-manage-app/OpenPipelineMenu.png)
 
-In der geöffneten Pipelineansicht sehen Sie alle Aktivitäten in der Pipeline. In diesem Beispiel gibt es mit der Kopieraktivität nur eine Aktivität. Um zur vorherigen Ansicht zurückzukehren, klicken Sie oben der Adressleiste auf den Namen der Data Factory.
+In der geöffneten Pipelineansicht sehen Sie alle Aktivitäten in der Pipeline. In diesem Beispiel gibt es mit der Kopieraktivität nur eine Aktivität. Um zur vorherigen Ansicht zurückzukehren, klicken Sie oben in der Adressleiste auf den Namen der Data Factory.
 
 ![Geöffnete Pipeline](./media/data-factory-monitor-manage-app/OpenedPipeline.png)
 
-Wenn Sie in der geschlossenen/geöffneten Pipelineansicht auf ein Ausgabedataset klicken und den Mauszeiger über diesem bewegen, wird das Aktivitätsfenster für dieses Dataset eingeblendet.
+Wenn Sie in der Pipelineansicht auf ein Ausgabedataset klicken oder mit der Maus darauf zeigen, wird das Aktivitätsfenster für dieses Dataset eingeblendet.
 
 ![Einblendfenster „Aktivitätsfenster“](./media/data-factory-monitor-manage-app/ActivityWindowsPopup.png)
 
@@ -107,7 +112,7 @@ Wechseln Sie zur Registerkarte **Skript**, um die JSON-Skriptdefinition für das
 
 Sie können das Aktivitätsfenster an drei Stellen sehen:
 
-- im Einblendfenster in der Diagrammansicht (im mittleren Bereich)
+- im Einblendfenster „Aktivitätsfenster“ in der Diagrammansicht (im mittleren Bereich)
 - im Aktivitätsfenster-Explorer im rechten Bereich
 - in der Liste „Aktivitätsfenster“ im unteren Bereich
 
@@ -115,7 +120,7 @@ Im Einblendfenster „Aktivitätsfenster“ und im Aktivitätsfenster-Explorer k
 
 ![Aktivitätsfenster-Explorer, Pfeile nach links/rechts](./media/data-factory-monitor-manage-app/ActivityWindowExplorerLeftRightArrows.png)
 
-Am unteren Rand der Diagrammansicht sehen Sie die Schaltflächen „Vergrößern“, „Verkleinern“, „Mit Zoom anpassen“, „Auf 100 % vergrößern“ und „Layout sperren“ (die verhindert, dass Sie versehentlich Tabellen und Pipelines in der Diagrammansicht verschieben). Die Schaltfläche „Layout sperren“ (mit dem Schloss) ist standardmäßig aktiviert. Sie können sie deaktivieren und Entitäten im Diagramm verschieben. Wenn Sie sie deaktivieren, können Sie die letzte Schaltfläche verwenden, um Tabellen und Pipelines automatisch zu positionieren. Sie können die Ansicht auch mit dem Mausrad vergrößern/verkleinern.
+Am unteren Rand der Diagrammansicht sehen Sie die Schaltflächen „Vergrößern“, „Verkleinern“, „Mit Zoom anpassen“, „Auf 100 % vergrößern“ und „Layout sperren“. Mit der Schaltfläche „Layout sperren“ können Sie verhindern, dass Sie versehentlich Tabellen und Pipelines in der Diagrammansicht verschieben. Diese Funktion ist standardmäßig aktiviert. Sie können sie deaktivieren und Entitäten im Diagramm verschieben. Wenn Sie sie deaktivieren, können Sie die letzte Schaltfläche verwenden, um Tabellen und Pipelines automatisch zu positionieren. Sie können die Ansicht auch mit dem Mausrad vergrößern/verkleinern.
 
 ![Diagrammansicht, Zoombefehle](./media/data-factory-monitor-manage-app/DiagramViewZoomCommands.png)
 
@@ -150,7 +155,7 @@ Das Aktivitätsfenster kann einen der folgenden Status haben:
 <td>ActivityResume</td><td>Die Aktivität wurde angehalten und kann die Aktivitätsfenster erst ausführen, wenn sie fortgesetzt wird.</td>
 </tr>
 <tr>
-<td>Wiederholen</td><td>Die Aktivität wird erneut ausgeführt.</td>
+<td>Wiederholen</td><td>Es wird versucht, die Ausführung der Aktivität zu wiederholen.</td>
 </tr>
 <tr>
 <td>Überprüfen</td><td>Die Überprüfung wurde noch nicht gestartet.</td>
@@ -188,7 +193,7 @@ Das Aktivitätsfenster kann einen der folgenden Status haben:
 </table>
 
 
-Wenn Sie in der Liste auf ein Aktivitätsfenster klicken, sehen Sie auf der rechten Seite im **Aktivitätsfenster-Explorer** oder im Fenster **Eigenschaften** Details zum Aktivitätsfenster.
+Wenn Sie in der Liste auf ein Aktivitätsfenster klicken, sehen Sie im **Aktivitätsfenster-Explorer** oder im Fenster **Eigenschaften** auf der rechten Seite die dazugehörigen Details.
 
 ![Aktivitätsfenster-Explorer](./media/data-factory-monitor-manage-app/ActivityWindowExplorer-2.png)
 
@@ -209,7 +214,7 @@ Das Fenster **Aktivitätsfenster-Explorer** wird in der App „Überwachung und 
 
 ![Aktivitätsfenster-Explorer](./media/data-factory-monitor-manage-app/ActivityWindowExplorer-3.png)
 
-Sie können zu einem anderen Aktivitätsfenster wechseln, indem Sie in der Kalenderansicht oben darauf klicken. Sie können auch oben auf die Schaltflächen **Pfeil nach links**/**Pfeil nach rechts** klicken, um die Aktivitätsfenster der vorherigen/nächsten Woche anzuzeigen.
+Sie können zu einem anderen Aktivitätsfenster wechseln, indem Sie oben in der Kalenderansicht darauf klicken. Sie können auch oben auf die Schaltflächen **Pfeil nach links**/**Pfeil nach rechts** klicken, um die Aktivitätsfenster der vorherigen bzw. nächsten Woche anzuzeigen.
 
 Sie können die Schaltflächen auf der Symbolleiste im unteren Bereich verwenden, um das Aktivitätsfenster **erneut auszuführen** oder die Details im Bereich zu **aktualisieren**.
 
@@ -218,14 +223,14 @@ Sie können die Registerkarte **Skript** verwenden, um die JSON-Definition der a
 
 ![Registerkarte „Skript“](./media/data-factory-monitor-manage-app/ScriptTab.png)
 
-## Verwenden von Systemsichten
+## Verwenden von Systemansichten
 Die App „Überwachung und Verwaltung“ bietet vordefinierte Systemansichten (**Letzte Aktivitätsfenster**, **Fehlerhafte Aktivitätsfenster**, **In Bearbeitung befindliche Aktivitätsfenster**), in denen Sie die entsprechenden Aktivitätsfenster für Ihre Data Factory anzeigen können.
 
 Wechseln Sie zur Registerkarte **Überwachungsansichten** auf der linken Seite, indem Sie darauf klicken.
 
 ![Registerkarte „Überwachungsansichten“](./media/data-factory-monitor-manage-app/MonitoringViewsTab.png)
 
-Derzeit werden drei Systemsichten unterstützt. Wählen Sie eine Option, um in der Liste „Aktivitätsfenster“ (unten im mittleren Bereich) die letzten Aktivitätsfenster oder fehlerhafte Aktivitätsfenster oder in Bearbeitung befindliche Aktivitätsfenster anzuzeigen.
+Derzeit werden drei Systemansichten unterstützt. Wählen Sie eine Option, um in der Liste „Aktivitätsfenster“ (unten im mittleren Bereich) die letzten Aktivitätsfenster oder fehlerhafte Aktivitätsfenster oder in Bearbeitung befindliche Aktivitätsfenster anzuzeigen.
 
 Wenn Sie die Option **Letzte Aktivitätsfenster** auswählen, werden die letzten Aktivitätsfenster in absteigender Reihenfolge basierend auf dem **Zeitpunkt des letzten Versuchs** angezeigt.
 
@@ -233,7 +238,7 @@ Sie können die Option **Fehlerhafte Aktivitätsfenster** nutzen, um alle fehler
 
 
 ## Sortieren und Filtern von Aktivitätsfenstern
-Ändern Sie auf der Befehlsleiste die **Startzeit** und **Endzeit**, um Aktivitätsfenster zu filtern. Klicken Sie nach Ändern von Start- und Endzeit auf die Schaltfläche neben der Endzeit, um die Liste „Aktivitätsfenster“ zu aktualisieren.
+Ändern Sie in der Befehlsleiste die **Startzeit** und **Endzeit**, um Aktivitätsfenster zu filtern. Klicken Sie nach Ändern von Start- und Endzeit auf die Schaltfläche neben der Endzeit, um die Liste „Aktivitätsfenster“ zu aktualisieren.
 
 ![Start- und Endzeiten](./media/data-factory-monitor-manage-app/StartAndEndTimes.png)
 
@@ -253,15 +258,15 @@ Wenn Sie einen Filter für eine Spalte angeben, wird die Filterschaltfläche fü
 
 ![Filtern in der Spalte in der Liste „Aktivitätsfenster“](./media/data-factory-monitor-manage-app/ActivityWindowsListFilterInColumn.png)
 
-Im selben Fenster können Sie Filter aufheben. Um alle Filter für die Liste „Aktivitätsfenster“ aufzuheben, klicken Sie auf der Befehlsleiste auf die Schaltfläche „Filter aufheben“.
+In demselben Fenster können Sie Filter auch aufheben. Um alle Filter für die Liste „Aktivitätsfenster“ aufzuheben, klicken Sie auf der Befehlsleiste auf die Schaltfläche „Filter aufheben“.
 
 ![Aufheben aller Filter in der Liste „Aktivitätsfenster“](./media/data-factory-monitor-manage-app/ClearAllFiltersActivityWindowsList.png)
 
 
 ## Durchführen von Batchaktionen
 
-### Wiederholen ausgewählter Aktivitätsfenster
-Wählen Sie ein Aktivitätsfenster aus, klicken Sie für die erste Befehlsleisten-Schaltfläche auf den Pfeil nach unten, und wählen Sie **Erneut ausführen** bzw. **Mit Upstream in der Pipeline erneut ausführen** aus. Wenn Sie die Option **Mit Upstream in der Pipeline erneut ausführen** auswählen, werden alle Upstream-Aktivitätsfenster ebenfalls erneut ausgeführt. ![Wiederholen eines Aktivitätsfensters](./media/data-factory-monitor-manage-app/ReRunSlice.png)
+### Erneutes Ausführen ausgewählter Aktivitätsfenster
+Wählen Sie ein Aktivitätsfenster aus, klicken Sie für die erste Befehlsleisten-Schaltfläche auf den Pfeil nach unten, und wählen Sie **Erneut ausführen** bzw. **Mit Upstream in der Pipeline erneut ausführen** aus. Wenn Sie die Option **Mit Upstream in der Pipeline erneut ausführen** auswählen, werden alle Upstream-Aktivitätsfenster ebenfalls erneut ausgeführt. ![Erneutes Ausführen eines Aktivitätsfensters](./media/data-factory-monitor-manage-app/ReRunSlice.png)
 
 Sie können auch mehrere Aktivitätsfenster in der Liste auswählen und diese gleichzeitig wiederholen. Sie können Aktivitätsfenster basierend auf dem Status (z.B. **Fehlerhaft**) filtern und das fehlerhafte Aktivitätsfenster erneut ausführen, nachdem Sie das Problem behoben haben, das den Fehler des Aktivitätsfensters verursacht hat. Im folgenden Abschnitt finden Sie Details zum Filtern von Aktivitätsfenstern in der Liste.
 
@@ -271,13 +276,13 @@ Sie können bei gedrückter STRG-TASTE zwei oder mehrere Pipelines auswählen un
 ![Anhalten/Fortsetzen auf Befehlsleiste](./media/data-factory-monitor-manage-app/SuspendResumeOnCommandBar.png)
 
 ## Erstellen von Warnungen 
-Auf der Seite „Warnungen“ können Sie eine neue Warnung erstellen bzw. vorhandene Warnungen anzeigen, bearbeiten und löschen. Sie können eine Warnung auch aktivieren/deaktivieren. Klicken Sie auf die Registerkarte „Warnungen“, um die Seite anzuzeigen.
+Auf der Seite „Warnungen“ können Sie eine Warnung erstellen und vorhandene Warnungen anzeigen, bearbeiten und löschen. Sie können eine Warnung auch aktivieren/deaktivieren. Klicken Sie auf die Registerkarte „Warnungen“, um die Seite „Warnungen“ anzuzeigen.
 
 ![Registerkarte „Warnungen“](./media/data-factory-monitor-manage-app/AlertsTab.png)
 
 ### So erstellen Sie eine Warnung
 
-1. Klicken Sie auf **Warnung hinzufügen**, um eine Warnung hinzuzufügen. Die Seite „Details“ wird angezeigt. 
+1. Klicken Sie auf **Warnung hinzufügen**, um eine Warnung hinzuzufügen. Die Seite „Details“ wird angezeigt.
 
 	![Warnungen erstellen – Seite „Details“](./media/data-factory-monitor-manage-app/CreateAlertDetailsPage.png)
 1. Geben Sie den **Namen** und eine **Beschreibung** für die Warnung an, und klicken Sie auf **Weiter**. Daraufhin sollte die Seite **Filter** angezeigt werden.
@@ -286,24 +291,24 @@ Auf der Seite „Warnungen“ können Sie eine neue Warnung erstellen bzw. vorha
 
 2. Wählen Sie das **Ereignis**, den **Status** und den **Unterstatus** (optional) für die Warnung durch den Data Factory-Dienst aus, und klicken Sie auf **Weiter**. Daraufhin sollte die Seite **Empfänger** angezeigt werden.
 
-	![Warnung erstellen – Seite „Empfänger“](./media/data-factory-monitor-manage-app/CreateAlertRecipientsPage.png) 
-3. Wählen Sie **E-Mail-Abonnementadministratoren** aus, und/oder füllen Sie **E-Mail an weiteren Administrator** aus, und klicken Sie auf **Fertigstellen**. Sie sollten die Warnung in der Liste sehen. 
+	![Warnung erstellen – Seite „Empfänger“](./media/data-factory-monitor-manage-app/CreateAlertRecipientsPage.png)
+3. Wählen Sie **E-Mail-Abonnementadministratoren** aus, und/oder füllen Sie **E-Mail an weiteren Administrator** aus, und klicken Sie auf **Fertigstellen**. Sie sollten die Warnung in der Liste sehen.
 	
 	![Liste „Warnungen“](./media/data-factory-monitor-manage-app/AlertsList.png)
 
 In der Liste „Warnungen“ können Sie eine Warnung über die entsprechende Schaltfläche bearbeiten, löschen, deaktivieren und aktivieren.
 
 ### Ereignis/Status/Unterstatus
-Die folgende Tabelle enthält eine Liste der verfügbaren Ereignisse und Status (samt Unterstatus).
+Die folgende Tabelle enthält die Liste mit den verfügbaren Ereignissen und Status (samt Unterstatus).
 
 Ereignisname | Status | Unterstatus
 -------------- | ------ | ----------
 Aktivitätsausführung gestartet | Gestartet | Wird gestartet
-Aktivitätsausführung beendet | Succeeded | Succeeded 
-Aktivitätsausführung beendet | Fehler| Fehlerhafte Ressourcenzuordnung <br/><br/>Fehlerhafte Ausführung<br/><br/>Zeitüberschreitung<br/><br/>Fehlerhafte Überprüfung<br/><br/>Abgebrochen
+Aktivitätsausführung beendet | Erfolgreich | Erfolgreich 
+Aktivitätsausführung beendet | Fehler| Fehlerhafte Ressourcenzuordnung<br/><br/>Fehlerhafte Ausführung<br/><br/>Zeitüberschreitung<br/><br/>Fehlerhafte Überprüfung<br/><br/>Abgebrochen
 Bedarfsgesteuerte Erstellung eines HDI-Clusters gestartet | Gestartet | &nbsp; |
-Bedarfsgesteuerte Erstellung eines HDI-Clusters erfolgreich | Succeeded | &nbsp; |
-Bedarfsgesteuert erstellten HDI-Cluster gelöscht | Succeeded | &nbsp; |
+Bedarfsgesteuerte Erstellung eines HDI-Clusters erfolgreich | Erfolgreich | &nbsp; |
+Bedarfsgesteuert erstellten HDI-Cluster gelöscht | Erfolgreich | &nbsp; |
 ### So bearbeiten, löschen oder deaktivieren Sie eine Warnung
 
 
@@ -314,4 +319,4 @@ Bedarfsgesteuert erstellten HDI-Cluster gelöscht | Succeeded | &nbsp; |
     
  
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0907_2016-->

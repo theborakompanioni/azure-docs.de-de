@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Überwachen von Dienstmetriken in Microsoft Azure | Microsoft Azure"
+	pageTitle="Überblick über Metriken in Microsoft Azure | Microsoft Azure"
 	description="Erfahren Sie, wie Sie Überwachungsdiagramme in Azure anpassen."
 	authors="rboucher"
 	manager=""
@@ -16,7 +16,7 @@
 	ms.date="09/08/2015"
 	ms.author="robb"/>
 
-# Überwachen von Dienstmetriken
+# Überblick über Metriken in Microsoft Azure
 
 Alle Azure-Dienste verfolgen wichtige Metriken, die Ihnen das Überwachen der Integrität, Leistung, Verfügbarkeit und Nutzung Ihrer Dienste ermöglichen. Sie können diese Metriken im Azure-Portal anzeigen, und Sie können darüber hinaus mithilfe von [REST-API](https://msdn.microsoft.com/library/azure/dn931930.aspx) oder [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Insights/) programmgesteuert auf sämtliche Metriken zugreifen.
 
@@ -73,4 +73,4 @@ Wie bei den Metriken können Sie mithilfe von [REST-API](https://msdn.microsoft.
 * Verwenden von [Application Insights für JavaScript-Apps und Webseiten](../application-insights/app-insights-web-track-usage.md), um eine Clientanalyse über die Browser zu erhalten, mit denen auf eine Webseite zugegriffen wird.
 * [Überwachen der Verfügbarkeit und Reaktionsfähigkeit einer beliebigen Webseite](../application-insights/app-insights-monitor-web-app-availability.md) mit Application Insights, um zu ermitteln, ob eine Seite offline ist.
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0907_2016-->

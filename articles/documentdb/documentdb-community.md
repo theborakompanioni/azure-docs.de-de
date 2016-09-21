@@ -13,7 +13,7 @@
   ms.topic="article"
   ms.tgt_pltfrm="na"
   ms.workload="data-services"
-  ms.date="08/30/2016"
+  ms.date="09/01/2016"
   ms.author="andrl"/>
 
 # Communityportal
@@ -120,9 +120,9 @@ Sie können über aktuelle DocumentDB-Nachrichten und -Features auf dem Laufende
 
 | Veranstaltungsname | Referent | Ort | Datum | Hashtag |
 | -------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- | -------------------- | ------------------------ | ------- |
-| [Capital City .NET Users Group](https://www.meetup.com/tally-dot-net/events/233070827/) | Santosh Hari | Tallahassee, Florida | 1\. September 2016 | – |
 | [Ignite 2016](https://myignite.microsoft.com/sessions?q=documentdb) | Andrew Liu und Tara Jana | Atlanta (Georgia, USA) | 26\.-30. September 2016 | [#MSIgnite](https://twitter.com/MS_Ignite) |
 | [Strata + Hadoop World](http://conferences.oreilly.com/strata/hadoop-big-data-ny/?cmp=kn-data-confreg-home-stny16_bing_branded) | TBD | New York, NY | 26\. bis 29. September 2016 | [#StrataConf](https://twitter.com/strataconf) |
+| [Capital City .NET Users Group](http://www.meetup.com/tally-dot-net/events/233768568/) | Santosh Hari | Tallahassee, Florida | 3\. November 2016 | – |
 
 
 *Sprechen Sie auf einer Veranstaltung oder organisieren Sie sie? [Teilen Sie uns mit, ](mailto:askdocdb@microsoft.com)wie wir helfen können!*
@@ -268,4 +268,4 @@ Assistent | Bild
 
 Möchten Sie ein DocumentDB-Genie werden? Wenngleich es nicht unbedingt ein bestimmtes Kriterium gibt, das erfüllt sein muss, um ein DocumentDB-Genie zu werden, bewerten wir u. a. den Einfluss der Beiträge des Kandidaten zu Onlineforen wie StackOverflow und MSDN, Wikis, Online-Inhalten, Konferenzen, Benutzergruppen, Podcasts, Websites, Blogs und sozialen Medien sowie Artikeln und Büchern. [Senden uns eine E-Mail](mailto:askdocdb@microsoft.com), um sich selbst oder jemand anderen vorzuschlagen.
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0907_2016-->

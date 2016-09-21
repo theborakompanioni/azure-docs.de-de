@@ -4,7 +4,7 @@
 	services="search"
 	documentationCenter=""
 	authors="HeidiSteen"
-	manager="mblythe"
+	manager="paulettm"
 	editor=""/>
 
 <tags
@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.author="heidist"
-	ms.date="05/18/2016" />
+	ms.date="08/29/2016" />
 
 # Bewertungsprofile (Azure Search REST-API Version 2015-02-28-Preview)
 
@@ -55,7 +55,7 @@ Um dieses Bewertungsprofil zu verwenden, muss die Abfrage so formuliert werden, 
 
     GET /indexes/hotels/docs?search=inn&scoringProfile=geo&scoringParameter=currentLocation--122.123,44.77233&api-version=2015-02-28-Preview
 
-Diese Abfrage sucht nach dem Begriff "inn" und übergibt die aktuelle Position. Beachten Sie, dass diese Abfrage weitere Parameter einbezieht, z. B. `scoringParameter`. Eine Beschreibung der Abfrageparameter finden Sie unter [Dokumente durchsuchen (Azure Search-API)](search-api-2015-02-28-preview/#SearchDocs).
+Diese Abfrage sucht nach dem Begriff "inn" und übergibt die aktuelle Position. Beachten Sie, dass diese Abfrage weitere Parameter einbezieht, z. B. `scoringParameter`. Eine Beschreibung der Abfrageparameter finden Sie unter [Dokumente durchsuchen (Azure Search-API)](search-api-2015-02-28-preview.md#SearchDocs).
 
 Klicken Sie auf [Beispiel](#example), um ein ausführlicheres Beispiel für ein Bewertungsprofil zu überprüfen.
 
@@ -175,10 +175,10 @@ Funktionen werden verwendet, wenn für bestimmte Kontexte zusätzliche Berechnun
 
   - Der Funktionstyp (freshness, magnitude, distance, tag) muss in Kleinbuchstaben angegeben werden.
   - Funktionen dürfen nicht Null sein oder leere Werte enthalten. Insbesondere beim Einbeziehen von Feldnamen muss ein Wert festgelegt werden.
-  - Funktionen können nur auf filterbare Felder angewendet werden. Weitere Informationen zu filterbaren Feldern finden Sie unter [Index erstellen (Azure Search-API)](search-api-2015-02-28/#createindex).
+  - Funktionen können nur auf filterbare Felder angewendet werden. Weitere Informationen zu filterbaren Feldern finden Sie unter [Index erstellen (Azure Search-API)](search-api-2015-02-28.md#createindex).
   - Funktionen können nur auf Felder angewendet werden, die in der Felderauflistung für einen Index definiert sind.
 
-Nachdem der Index definiert wurde, erstellen Sie den Index durch Hochladen des Indexschemas, gefolgt von Dokumenten. Anweisungen zu diesen Vorgängen finden Sie unter [Index erstellen](search-api-2015-02-28-preview/#createindex) und [Dokumente hinzufügen oder aktualisieren](search-api-2015-02-28-preview/#AddOrUpdateDocuments). Nachdem der Index erstellt wurde, sollten Sie über ein funktionsfähiges Bewertungsprofil verfügen, das mit Ihren Suchdaten arbeitet.
+Nachdem der Index definiert wurde, erstellen Sie den Index durch Hochladen des Indexschemas, gefolgt von Dokumenten. Anweisungen zu diesen Vorgängen finden Sie unter [Index erstellen](search-api-2015-02-28-preview.md#createindex) und [Dokumente hinzufügen oder aktualisieren](search-api-2015-02-28-preview.md#AddOrUpdateDocuments). Nachdem der Index erstellt wurde, sollten Sie über ein funktionsfähiges Bewertungsprofil verfügen, das mit Ihren Suchdaten arbeitet.
 
 <a name="bkmk_template"></a>
 ## Vorlage
@@ -256,10 +256,10 @@ In diesem Abschnitt wird die Syntax und die Vorlage für die Bewertungsprofile v
 | `freshness` | Die Bewertungsfunktion für die Aktualität wird dazu verwendet, um Rangfolgenbewertungen für Elemente auf Basis von Werten in DateTimeOffset-Feldern zu ändern. Ein Element mit einem aktuelleren Datum kann z. B. höher als ältere Elemente eingestuft werden. (Beachten Sie, dass z. B. Kalenderereignisse mit in der Zukunft liegenden Daten so eingestuft werden können, dass Ereignisse mit geringerem Abstand zur Gegenwart höher als Ereignisse eingestuft werden, die weiter in der Zukunft liegen.) Im aktuellen Service Release wird ein Ende des Bereichs auf die aktuelle Zeit festgelegt. Das andere Ende ist ein Zeitpunkt in der Vergangenheit, der auf `boostingDuration` basiert. Um einen Bereich von Zeitpunkten in der Zukunft zu verstärken, verwenden Sie einen negativen Wert für `boostingDuration`. Die Rate, mit der die Verstärkung von einem maximalen und minimalen Bereich wechselt, wird durch die Interpolation bestimmt, die auf das Bewertungsprofil angewendet wird (siehe folgende Abbildung). Wählen Sie zum Umkehren des angewendeten Verstärkungsfaktors einen Verstärkungsfaktor, der kleiner ist als 1. |
 | `freshness:boostingDuration` | Legt eine Ablaufdauer fest, nach der die Verstärkung für ein bestimmtes Dokument beendet wird. Informationen zur Syntax und Beispiele finden Sie im folgenden Abschnitt unter [Festlegen von „boostingDuration“](#bkmk\_boostdur). |
 | `distance` | Die Bewertungsfunktion für den Abstand wird dazu verwendet, um auf Basis des Abstands relativ zu einem geografischen Standort Einfluss auf die Bewertung von Dokumenten zu nehmen. Der Referenzstandort wird als Teil der Abfrage in einem Parameter (mithilfe des Abfrageparameters `scoringParameter`) als „lon,lat“-Argument (Längengrad, Breitengrad) angegeben. |
-| `distance:referencePointParameter` | Ein in Abfragen zu übergebender Parameter, der als Referenzstandort verwendet wird. scoringParameter ist ein Abfrageparameter; "scoringParameter" ist ein Abfrageparameter. Beschreibungen zu den Abfrageparametern finden Sie unter [Dokumente durchsuchen (REST-API in Azure Search-Dienst)](search-api-2015-02-28-preview/#SearchDocs). |
+| `distance:referencePointParameter` | Ein in Abfragen zu übergebender Parameter, der als Referenzstandort verwendet wird. scoringParameter ist ein Abfrageparameter; "scoringParameter" ist ein Abfrageparameter. Beschreibungen zu den Abfrageparametern finden Sie unter [Dokumente durchsuchen (REST-API in Azure Search-Dienst)](search-api-2015-02-28-preview.md#SearchDocs). |
 | `distance:boostingDistance` | Dies muss eine ganze Zahl sein. Legt den Abstand in Kilometern vom Referenzstandort fest, an dem der Verstärkungsbereich endet. |
 | `tag` | Die Bewertungsfunktion "tag" wird verwendet, um die Bewertung von Dokumenten auf Grundlage der Tags in Dokumenten und Suchabfragen zu beeinflussen. Dokumente, die dieselben Tags wie die Suchabfrage enthalten, werden verstärkt. Die Tags für die Suchabfrage dienen als Bewertungsparameter in jeder Suchanforderung (mithilfe des `scoringParameter`-Abfrageparameters). |
-| `tag:tagsParameter` | Ein in Abfragen zu übergebender Parameter, der Tags für eine bestimmten Anforderung angibt. `scoringParameter` ist ein Abfrageparameter. Beschreibungen zu den Abfrageparametern finden Sie unter [Dokumente durchsuchen (REST-API in Azure Search-Dienst)](search-api-2015-02-28-preview/#SearchDocs). |
+| `tag:tagsParameter` | Ein in Abfragen zu übergebender Parameter, der Tags für eine bestimmten Anforderung angibt. `scoringParameter` ist ein Abfrageparameter. Beschreibungen zu den Abfrageparametern finden Sie unter [Dokumente durchsuchen (REST-API in Azure Search-Dienst)](search-api-2015-02-28-preview.md#SearchDocs). |
 | `functionAggregation` | Optional. Gilt nur, wenn Funktionen angegeben sind. Gültige Werte sind `sum` (Standard), `average`, `minimum`, `maximum` und `firstMatching`. Eine Suchbewertung entspricht einem einzelnen Wert, der aus mehreren Variablen berechnet wird, einschließlich mehrerer Funktionen. Dieses Attribut gibt an, wie die Verstärkungen aller Funktionen zu einer einzelnen Gesamtverstärkung zusammengefasst werden, die dann auf die Basisdokumentbewertung angewendet wird. Die Basisbewertung basiert auf dem tf-idf-Wert, der aus dem Dokument und der Suchabfrage berechnet wird. |
 | `defaultScoringProfile` | Beim Ausführen einer Suchanforderung wird die Standardbewertung verwendet (nur tf-idf), wenn kein Bewertungsprofil angegeben ist. Hier kann ein Standardname für das Bewertungsprofil festgelegt werden. Dies führt dazu, dass Azure Search dieses Profil verwendet, wenn in der Suchanforderung kein bestimmtes Profil angegeben ist. |
 
@@ -280,11 +280,11 @@ Interpolationen ermöglichen Ihnen die Definition der Steigung, in der die Bewer
 
 `boostingDuration` ist ein Attribut der Funktion "freshness". Sie können damit eine Ablaufdauer festlegen, nach der die Verstärkung für ein bestimmtes Dokument beendet wird. Um beispielsweise eine Produktlinie oder Marke für einen zehntägigen Werbezeitraum zu verstärken, können Sie den zehntägigen Zeitraum für diese Dokumente z. B. als "P10D" angeben. Oder geben Sie "-P7D" an, um bevorstehende Ereignisse in der nächsten Woche zu verstärken.
 
-`boostingDuration` muss als XSD-Wert "dayTimeDuration" formatiert sein (eine eingeschränkte Teilmenge eines ISO 8601-Zeitdauerwerts). Das Muster hierfür lautet wie folgt: `][-]P\[nD]\[T\[nH]\[nM]\[nS]\]`.
+`boostingDuration` muss als XSD-Wert "dayTimeDuration" formatiert sein (eine eingeschränkte Teilmenge eines ISO 8601-Zeitdauerwerts). Das Muster hierfür lautet wie folgt: `[-]P\[nD]\[T\[nH]\[nM]\[nS]\]`.
 
 Die folgende Tabelle enthält einige Beispiele.
 
-| Dauer | boostingDuration |
+| Duration | boostingDuration |
 |----------|------------------|
 | 1 Tag | "P1D" |
 | 2 Tage und 12 Stunden | "P2DT12H" |
@@ -298,4 +298,4 @@ Weitere Beispiele finden Sie unter [XML-Schema: Datentypen (W3.org-Website)](htt
 <!--Image references-->
 [1]: ./media/search-api-scoring-profiles-2015-02-28-Preview/scoring_interpolations.png
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0907_2016-->

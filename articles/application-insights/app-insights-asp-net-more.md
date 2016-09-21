@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Optimale Nutzung von Application Insights" 
+	pageTitle="Optimale Nutzung von Application Insights | Microsoft Azure" 
 	description="Nachdem Sie die ersten Schritte mit Application Insights gemacht haben, finden Sie hier eine Zusammenfassung der Funktionen, mit denen Sie sich beschäftigen können." 
 	services="application-insights" 
     documentationCenter=".net"
@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/10/2016" 
+	ms.date="08/30/2016" 
 	ms.author="awills"/>
 
 # Weitere Telemetriedaten aus Application Insights
@@ -60,16 +60,19 @@ Wenn Ihre App als Azure-Web-App ausgeführt wird, wechseln Sie zur Azure-Systems
 
 (Sie können diese Methode auch verwenden, um die [Leistungsüberwachung zur Laufzeit zu aktivieren](app-insights-monitor-performance-live-website-now.md), auch wenn Sie Ihre App nicht in Visual Studio instrumentiert haben.)
 
+## Clientseitige Überwachung
 
-## Browserleistung
+Sie haben das SDK installiert, das Telemetriedaten vom Server (Back-End) Ihrer Anwendung sendet. Nun können Sie die clientseitige Überwachung hinzufügen. Dadurch erhalten Sie Daten zu Benutzern, Sitzungen, Seitenaufrufen und allen Ausnahmen oder Abstürzen, die im Browser auftreten. Sie können zudem eigenen Code schreiben, um nachzuverfolgen, wie Ihre Benutzer Ihre App verwenden – bis zur Detailebene der Mausklicks und Tastaturanschläge.
 
-Fügen Sie den JavaScript-Codeausschnitt für Application Insights zu Ihren Webseiten hinzu, um Telemetriedaten aus Clientbrowsern zu erhalten.
+Fügen Sie den JavaScript-Codeausschnitt für Application Insights zu jeder Webseite hinzu, um Telemetriedaten aus Clientbrowsern zu erhalten.
 
 1. Öffnen Sie in Azure die Application Insights-Ressource für Ihre App.
 2. Öffnen Sie „Schnellstart“ und dann die Überwachung für die Clientseite, und kopieren Sie den Codeausschnitt.
 3. Fügen Sie den Ausschnitt so ein, dass er im Header jeder Webseite angezeigt wird – am besten, indem Sie den Ausschnitt auf der Masterlayoutseite einfügen.
 
 ![In Azure erweitern](./media/app-insights-asp-net-more/100.png)
+
+Beachten Sie, dass der Code den Instrumentationsschlüssel enthält, der Ihre Anwendungsressource identifiziert.
 
 ### Was erhalten Sie?
 
@@ -78,6 +81,27 @@ Fügen Sie den JavaScript-Codeausschnitt für Application Insights zu Ihren Webs
 * [Leistungs- und Nutzungsdaten für Clients](app-insights-javascript.md) im Blatt „Browser“.
 
 ![In Azure erweitern](./media/app-insights-asp-net-more/090.png)
+
+
+[Weitere Informationen zur Nachverfolgung von Webseiten.](app-insights-web-track-usage.md)
+
+
+
+## Nachverfolgen der Anwendungsversion
+
+Stellen Sie sicher, dass `buildinfo.config` vom MSBuild-Prozess generiert wird. Fügen Sie in Ihrer CSPROJ-Datei Folgendes hinzu:
+
+```XML
+
+    <PropertyGroup>
+      <GenerateBuildInfoConfigFile>true</GenerateBuildInfoConfigFile>    <IncludeServerNameInBuildInfo>true</IncludeServerNameInBuildInfo>
+    </PropertyGroup> 
+```
+
+Wenn das Webmodul Application Insights über die Buildinformationen verfügt, fügt es jedem Telemetrieelement automatisch die **Anwendungsversion** als Eigenschaft hinzu. Dies ermöglicht es Ihnen, nach Version zu filtern, wenn Sie [Diagnosesuchen](app-insights-diagnostic-search.md) ausführen oder [Metriken untersuchen](app-insights-metrics-explorer.md).
+
+Beachten Sie jedoch, dass die Buildversionsnummer nur von MSBuild nicht vom Entwicklerbuild in Visual Studio generiert wird.
+
 
 ## Verfügbarkeitswebtests
 
@@ -121,4 +145,4 @@ Es gibt zahlreiche Möglichkeiten, Ihre Daten zu untersuchen. Wenn Sie erst vor 
 |**API für den Datenzugriff**<br/>In Kürze verfügbar.|
 |[**Stichprobenerstellung**](app-insights-sampling.md)<br/>Reduziert die Datenrate und hilft Ihnen dabei, innerhalb Ihres Tariflimits zu bleiben.|![Kachel für Stichproben](./media/app-insights-asp-net-more/030.png)
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0907_2016-->

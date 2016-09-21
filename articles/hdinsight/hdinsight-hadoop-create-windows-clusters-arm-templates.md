@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Erstellen Windows-basierter Hadoop-Cluster in HDInsight mithilfe von ARM-Vorlagen | Microsoft Azure"
-   	description="Erfahren Sie, wie Sie Cluster für Azure HDInsight mithilfe von Azure-ARM-Vorlagen erstellen."
+   pageTitle="Erstellen Windows-basierter Hadoop-Cluster in HDInsight mithilfe von Azure Resource Manager-Vorlagen | Microsoft Azure"
+   	description="Erfahren Sie, wie Sie Cluster für Azure HDInsight mithilfe von Azure Resource Manager-Vorlagen erstellen."
    services="hdinsight"
    documentationCenter=""
    tags="azure-portal"
@@ -17,11 +17,11 @@
    ms.date="07/25/2016"
    ms.author="jgao"/>
 
-# Erstellen Windows-basierter Hadoop-Cluster in HDInsight mithilfe von ARM-Vorlagen
+# Erstellen Windows-basierter Hadoop-Cluster in HDInsight mithilfe von Azure Resource Manager-Vorlagen
 
 [AZURE.INCLUDE [Auswahl](../../includes/hdinsight-selector-create-clusters.md)]
 
-Erfahren Sie mehr über das Erstellen von HDInsight-Clustern mithilfe von Azure-Ressourcen-Manager-Vorlagen (ARM). Weitere Informationen finden Sie unter [Bereitstellen einer Anwendung mit einer Azure-Ressourcen-Manager-Vorlage](../resource-group-template-deploy.md). Andere Tools und Features zur Clustererstellung finden Sie, indem Sie oben auf dieser Seite auf die Registerkartenauswahl klicken, oder unter [Methoden zur Clustererstellung](hdinsight-provision-clusters.md#cluster-creation-methods).
+Informieren Sie sich über das Erstellen von HDInsight-Clustern mithilfe von Azure Resource Manager-Vorlagen. Weitere Informationen finden Sie unter [Bereitstellen einer Anwendung mit einer Azure-Resource Manager-Vorlage](../resource-group-template-deploy.md). Andere Tools und Features zur Clustererstellung finden Sie, indem Sie oben auf dieser Seite auf die Registerkartenauswahl klicken, oder unter [Methoden zur Clustererstellung](hdinsight-provision-clusters.md#cluster-creation-methods).
 
 ##Voraussetzungen:
 
@@ -35,23 +35,23 @@ Bevor Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie F
 
     [AZURE.INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-powershell-and-cli.md)]
 
-## ARM-Vorlagen
+## Resource Manager-Vorlagen
 
-ARM-Vorlagen können HDInsight-Cluster, ihre abhängigen Ressourcen (z. B. das standardmäßige Speicherkonto) und andere Ressourcen (z. B. Azure SQL-Datenbank zur Verwendung von Apache Sqoop) für die Anwendung ganz einfach in einem einzigen, koordinierten Vorgang erstellt werden. In der Vorlage müssen Sie die Ressourcen definieren, die für die Anwendung erforderlich sind, und Bereitstellungsparameter für die Eingabe von Werten für unterschiedliche Umgebungen angeben. Die Vorlage besteht aus JSON und Ausdrücken, mit denen Sie Werte für die Bereitstellung erstellen können.
+Mit Resource Manager-Vorlagen können HDInsight-Cluster, ihre abhängigen Ressourcen (z.B. das standardmäßige Speicherkonto) und andere Ressourcen (z.B. Azure SQL-Datenbank zur Verwendung von Apache Sqoop) für die Anwendung ganz einfach in einem einzigen, koordinierten Vorgang erstellt werden. In der Vorlage müssen Sie die Ressourcen definieren, die für die Anwendung erforderlich sind, und Bereitstellungsparameter für die Eingabe von Werten für unterschiedliche Umgebungen angeben. Die Vorlage besteht aus JSON und Ausdrücken, mit denen Sie Werte für die Bereitstellung erstellen können.
 
-Eine ARM-Vorlage zum Erstellen eines HDInsight-Clusters und des abhängigen Azure-Speicherkontos finden Sie in [Anhang A](#appx-a-arm-template). Verwenden Sie einen Text-Editor, um die Vorlage in einer Datei auf Ihrer Arbeitsstation zu speichern. Sie erfahren, wie die Vorlage mit verschiedenen Tools aufgerufen werden kann.
+Eine Resource Manager-Vorlage zum Erstellen eines HDInsight-Clusters und des abhängigen Azure Storage-Kontos finden Sie in [Anhang A](#appx-a-arm-template). Verwenden Sie einen Text-Editor, um die Vorlage in einer Datei auf Ihrer Arbeitsstation zu speichern. Sie erfahren, wie die Vorlage mit verschiedenen Tools aufgerufen werden kann.
 
-Weitere Informationen zu ARM-Vorlagen finden Sie unter
+Weitere Informationen über Resource Manager-Vorlagen finden Sie unter:
 
-- [Erstellen von Azure-Ressourcen-Manager-Vorlagen](../resource-group-authoring-templates.md)
-- [Bereitstellen einer Anwendung mit einer Azure-Ressourcen-Manager-Vorlage](../resource-group-template-deploy.md)
+- [Erstellen von Azure Resource-Manager-Vorlagen](../resource-group-authoring-templates.md)
+- [Bereitstellen einer Anwendung mit einer Azure-Resource Manager-Vorlage](../resource-group-template-deploy.md)
 
 
 ## Bereitstellen mit PowerShell
 
 Gehen Sie wie folgt vor, um den HDInsight-Cluster zu erstellen.
 
-**So stellen Sie ein Cluster mithilfe einer ARM-Vorlage bereit**
+**Bereitstellen eines Clusters mithilfe von Resource Manager-Vorlagen**
 
 1. Speichern Sie die JSON-Datei aus [Anhang A](#appx-a-arm-template) auf Ihrer Arbeitsstation.
 2. Legen Sie bei Bedarf die Parameter fest.
@@ -128,7 +128,7 @@ Informationen hierzu finden Sie unter [Bereitstellen mit der REST-API](../resour
 
 ## Bereitstellen mit Visual Studio 2013
 
-Mit Visual Studio können Sie über die Benutzeroberfläche ein Ressourcengruppenprojekt erstellen und in Azure bereitstellen. Wählen Sie den Typ der Ressourcen aus, die in das Projekt aufgenommen werden sollen, und diese Ressourcen werden der Ressourcen-Manager-Vorlage automatisch hinzugefügt. Das Projekt enthält auch ein PowerShell-Skript zum Bereitstellen der Vorlage.
+Mit Visual Studio können Sie über die Benutzeroberfläche ein Ressourcengruppenprojekt erstellen und in Azure bereitstellen. Wählen Sie den Typ der Ressourcen aus, die in das Projekt aufgenommen werden sollen, und diese Ressourcen werden der Resource Manager-Vorlage automatisch hinzugefügt. Das Projekt enthält auch ein PowerShell-Skript zum Bereitstellen der Vorlage.
 
 Eine Einführung in die Verwendung von Visual Studio mit Ressourcengruppen finden Sie unter [Erstellen und Bereitstellen von Azure-Ressourcengruppen über Visual Studio](../vs-azure-tools-resource-groups-deployment-projects-create-deploy.md).
 
@@ -144,9 +144,9 @@ In diesem Artikel haben Sie mehrere Möglichkeiten zum Erstellen von HDInsight-C
 
 
 
-##Anhang A: ARM-Vorlage
+##Anhang A: Resource Manager-Vorlage
 
-Die folgende Azure-Ressourcen-Manager-Vorlage erstellt einen Windows-basierten Hadoop-Cluster mit abhängigem Azure-Speicherkonto.
+Die folgende Azure Resource Manager-Vorlage erstellt einen Windows-basierten Hadoop-Cluster mit abhängigem Azure-Speicherkonto.
 
     {
         "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -294,4 +294,4 @@ Die folgende Azure-Ressourcen-Manager-Vorlage erstellt einen Windows-basierten H
         }
     }
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0907_2016-->

@@ -23,7 +23,7 @@ In diesem Artikel erfahren Sie, wie Sie Ihr [**Azure-Aktivitätsprotokoll**](mon
 Bevor Sie beginnen, müssen Sie [ein Speicherkonto erstellen](../storage/storage-create-storage-account.md#create-a-storage-account), in dem Sie Ihr Aktivitätsprotokoll archivieren können. Um den Zugriff auf Überwachungsdaten besser steuern zu können, wird dringend davon abgeraten, ein bereits vorhandenes Speicherkonto mit anderen, nicht überwachungsbezogenen Daten zu verwenden. Wenn Sie jedoch auch Diagnoseprotokolle und Metriken in einem Speicherkonto archivieren, ist es unter Umständen sinnvoll, dieses Speicherkonto auch für Ihr Aktivitätsprotokoll zu verwenden, damit sich alle Überwachungsdaten an einem zentralen Ort befinden. Bei dem Speicherkonto muss es sich um ein allgemeines Speicherkonto (nicht um ein Blobspeicherkonto) handeln.
 
 ## Protokollprofil
-Legen Sie das **Protokollprofil** für ein Abonnement fest, um das Aktivitätsprotokoll mit einer der weiter unten angegebenen Methoden zu archivieren. Das Protokollprofil definiert die Art der Ereignisse, die gespeichert oder gestreamt werden, sowie die Ausgaben (Speicherkonto und/oder Event Hub). Außerdem definiert es die Aufbewahrungsrichtlinie (Anzahl von Tagen für die Aufbewahrung) für Ereignisse, die in einem Speicherkonto gespeichert werden. Wird die Aufbewahrungsrichtlinie auf Null festgelegt, werden Ereignisse dauerhaft gespeichert. Weitere Informationen zu Protokollprofilen finden Sie [hier](monitoring-overview-activity-logs.md#export-the-activity-log-with-log-profiles).
+Legen Sie das **Protokollprofil** für ein Abonnement fest, um das Aktivitätsprotokoll mit einer der weiter unten angegebenen Methoden zu archivieren. Das Protokollprofil definiert die Art der Ereignisse, die gespeichert oder gestreamt werden, sowie die Ausgaben (Speicherkonto und/oder Event Hub). Außerdem definiert es die Aufbewahrungsrichtlinie (Anzahl von Tagen für die Aufbewahrung) für Ereignisse, die in einem Speicherkonto gespeichert werden. Wird die Aufbewahrungsrichtlinie auf Null festgelegt, werden Ereignisse dauerhaft gespeichert. Andernfalls kann sie auf einen beliebigen Wert zwischen 1 und 2.147.483.647 festgelegt werden. Weitere Informationen zu Protokollprofilen finden Sie [hier](monitoring-overview-activity-logs.md#export-the-activity-log-with-log-profiles).
 
 ## Archivieren des Aktivitätsprotokolls über das Portal
 1. Klicken Sie im linken Navigationsbereich des Portals auf den Link **Aktivitätsprotokoll**. Sollte kein Link für das Aktivitätsprotokoll angezeigt werden, klicken Sie zuerst auf den Link **Weitere Dienste**.
@@ -46,8 +46,8 @@ Add-AzureRmLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/r
 | Eigenschaft | Erforderlich | Beschreibung |
 |------------------|----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | StorageAccountId | Nein | Ressourcen-ID des Speicherkontos, in dem Aktivitätsprotokolle gespeichert werden sollen. |
-| Locations | Ja | Kommagetrennte Liste mit den Regionen, für die Sie Aktivitätsprotokollereignisse erfassen möchten. Eine Liste mit allen Bereichen können Sie sich auf [dieser Seite](https://azure.microsoft.com/de-DE/regions) oder mithilfe der [Azure-Verwaltungs-REST-API](https://msdn.microsoft.com/library/azure/gg441293.aspx) ansehen. |
-| RetentionInDays | Ja | Anzahl von Tagen für die Aufbewahrung von Ereignissen. Bei einem Wert von 0 werden die Protokolle dauerhaft gespeichert. |
+| Locations | Ja | Kommagetrennte Liste mit den Regionen, für die Sie Aktivitätsprotokollereignisse erfassen möchten. Eine Liste mit allen Bereichen können Sie sich auf [dieser Seite](https://azure.microsoft.com/regions) oder mithilfe der [Azure-Verwaltungs-REST-API](https://msdn.microsoft.com/library/azure/gg441293.aspx) ansehen. |
+| RetentionInDays | Ja | Anzahl von Tagen für die Aufbewahrung von Ereignissen (1 bis 2.147.483.647). Bei einem Wert von 0 werden die Protokolle dauerhaft (d.h. für immer) gespeichert. |
 | Categories | Ja | Kommagetrennte Liste mit den Ereigniskategorien, die erfasst werden sollen. Mögliche Werte sind „Write“, „Delete“ und „Action“. |
 ## Archivieren des Aktivitätsprotokolls mithilfe der Befehlszeilenschnittstelle
 ```
@@ -58,8 +58,8 @@ azure insights logprofile add --name my_log_profile --storageId /subscriptions/s
 |-----------------|----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Name | Ja | Name des Protokollprofils. |
 | storageId | Nein | Ressourcen-ID des Speicherkontos, in dem Aktivitätsprotokolle gespeichert werden sollen. |
-| locations | Ja | Kommagetrennte Liste mit den Regionen, für die Sie Aktivitätsprotokollereignisse erfassen möchten. Eine Liste mit allen Bereichen können Sie sich auf [dieser Seite](https://azure.microsoft.com/de-DE/regions) oder mithilfe der [Azure-Verwaltungs-REST-API](https://msdn.microsoft.com/library/azure/gg441293.aspx) ansehen. |
-| retentionInDays | Ja | Anzahl von Tagen für die Aufbewahrung von Ereignissen. Bei einem Wert von 0 werden die Protokolle dauerhaft gespeichert. |
+| locations | Ja | Kommagetrennte Liste mit den Regionen, für die Sie Aktivitätsprotokollereignisse erfassen möchten. Eine Liste mit allen Bereichen können Sie sich auf [dieser Seite](https://azure.microsoft.com/regions) oder mithilfe der [Azure-Verwaltungs-REST-API](https://msdn.microsoft.com/library/azure/gg441293.aspx) ansehen. |
+| retentionInDays | Ja | Anzahl von Tagen für die Aufbewahrung von Ereignissen (1 bis 2.147.483.647). Bei einem Wert von 0 werden die Protokolle dauerhaft (d.h. für immer) gespeichert. |
 | categories | Ja | Kommagetrennte Liste mit den Ereigniskategorien, die erfasst werden sollen. Mögliche Werte sind „Write“, „Delete“ und „Action“. |
 
 ## Speicherschema des Aktivitätsprotokolls
@@ -156,4 +156,4 @@ Die einzelnen Ereignisse werden innerhalb der Datei „PT1H.json“ im folgenden
 - [Streamen des Aktivitätsprotokolls an Event Hubs](monitoring-stream-activity-logs-event-hubs.md)
 - [Weitere Informationen zum Aktivitätsprotokoll](monitoring-overview-activity-logs.md)
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0907_2016-->

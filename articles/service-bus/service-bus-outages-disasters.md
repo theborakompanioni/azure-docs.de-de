@@ -12,7 +12,7 @@
     ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="na"
-    ms.date="05/06/2016"
+    ms.date="09/02/2016"
     ms.author="sethm" />
 
 # Bewährte Methoden zum Schützen von Anwendungen vor Service Bus-Ausfällen und Notfällen
@@ -85,14 +85,6 @@ Bei Verwendung der passiven Replikation können Nachrichten in den folgenden Sze
 
 Im Beispiel [Georeplikation mit Service Bus-Brokernachrichten][] wird die passive Replikation von Nachrichtenentitäten veranschaulicht.
 
-## Dauerhafte clientseitige Warteschlange
-
-Wenn die Anwendung die Nichtverfügbarkeit einer Service Bus-Entität tolerieren kann, aber keine Nachrichten verloren gehen dürfen, kann der Absender eine dauerhafte clientseitige Warteschlange verwenden. Darin werden alle Nachrichten lokal gespeichert, die nicht an Service Bus gesendet werden können. Nachdem die Service Bus-Entität wieder verfügbar ist, werden alle gepufferten Nachrichten an diese Entität gesendet. Im Beispiel [Dauerhafter Nachrichtenabsender][] wird eine Warteschlange dieser Art mithilfe von MSMQ implementiert. Alternativ können die Nachrichten auch auf die lokale Festplatte geschrieben werden.
-
-Bei einer dauerhaften clientseitigen Warteschlange wird die Nachrichtenreihenfolge beibehalten, und die Clientanwendung wird vor Ausnahmen geschützt, falls die Service Bus-Entität nicht verfügbar ist. Hierbei können einfache und verteilte Transaktionen verwendet werden.
-
-> [AZURE.NOTE] Dieses Beispiel funktioniert gut in „Infrastructure as a Service (IaaS)“-Szenarios, in denen ein lokaler Datenträger oder ein Datenträger für MSMQ einem Speicherkonto zugeordnet wird, und Nachrichten mit MSMQ zuverlässig gespeichert werden. Für „Platform as a Service (PaaS)“-Szenarios, z. B. Cloud Services und Webanwendungen, ist dies nicht geeignet.
-
 ## Nächste Schritte
 
 Weitere Informationen zur Notfallwiederherstellung finden Sie in diesen Artikeln:
@@ -102,13 +94,12 @@ Weitere Informationen zur Notfallwiederherstellung finden Sie in diesen Artikeln
 
   [Service Bus-Authentifizierung]: service-bus-authentication-and-authorization.md
   [Partitionierte Messagingentitäten]: service-bus-partitioning.md
-  [Asynchrone Nachrichtenmuster und hohe Verfügbarkeit]: service-bus-async-messaging.md
+  [Asynchrone Nachrichtenmuster und hohe Verfügbarkeit]: service-bus-async-messaging.md#failure-of-service-bus-within-an-azure-datacenter
   [Georeplikation mit Service Bus Relay-Nachrichten]: http://code.msdn.microsoft.com/Geo-replication-with-16dbfecd
   [BrokeredMessage.MessageId]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.messageid.aspx
   [BrokeredMessage.Label]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.label.aspx
   [Georeplikation mit Service Bus-Brokernachrichten]: http://code.msdn.microsoft.com/Geo-replication-with-f5688664
-  [Dauerhafter Nachrichtenabsender]: http://code.msdn.microsoft.com/Service-Bus-Durable-Sender-0763230d
   [Geschäftskontinuität in Azure SQL-Datenbank]: ../sql-database/sql-database-business-continuity.md
   [Technischer Leitfaden zur Resilienz in Azure]: ../resiliency/resiliency-technical-guidance.md
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0907_2016-->

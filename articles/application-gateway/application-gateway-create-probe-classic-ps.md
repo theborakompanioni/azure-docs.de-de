@@ -26,7 +26,7 @@
 
 <BR>
 
-[AZURE.INCLUDE [azure-probe-intro-include](../../includes/application-gateway-create-probe-intro-include.md)].
+[AZURE.INCLUDE [azure-probe-intro-include](../../includes/application-gateway-create-probe-intro-include.md)]
 
 [AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-classic-include.md)] Erfahren Sie, wie Sie [diese Schritte mit dem Resource Manager-Modell ausführen](application-gateway-create-probe-ps.md).
 
@@ -47,35 +47,13 @@ Verwenden Sie zum Erstellen des Gateways das **New-AzureApplicationGateway**-Cmd
 
 Das folgende Beispiel erstellt ein Anwendungsgateway mithilfe eines virtuellen Netzwerks mit dem Namen „testvnet1“ und eines Subnetzes mit dem Namen „subnet-1“.
 
-
-	PS C:\> New-AzureApplicationGateway -Name AppGwTest -VnetName testvnet1 -Subnets @("Subnet-1")
-
-	VERBOSE: 4:31:35 PM - Begin Operation: New-AzureApplicationGateway
-	VERBOSE: 4:32:37 PM - Completed Operation: New-AzureApplicationGateway
-	Name       HTTP Status Code     Operation ID                             Error
-	----       ----------------     ------------                             ----
-	Successful OK                   55ef0460-825d-2981-ad20-b9a8af41b399
-
-
- *Description*, *InstanceCount* und *GatewaySize* sind optionale Parameter.
-
+	New-AzureApplicationGateway -Name AppGwTest -VnetName testvnet1 -Subnets @("Subnet-1")
 
 Sie können das **Get-AzureApplicationGateway**-Cmdlet verwenden, um zu überprüfen, ob das Gateway erstellt wurde.
 
-
-	PS C:\> Get-AzureApplicationGateway AppGwTest
-	Name          : AppGwTest
-	Description   :
-	VnetName      : testvnet1
-	Subnets       : {Subnet-1}
-	InstanceCount : 2
-	GatewaySize   : Medium
-	State         : Stopped
-	VirtualIPs    : {}
-	DnsName       :
+	Get-AzureApplicationGateway AppGwTest
 
 >[AZURE.NOTE]  Der Standardwert für *InstanceCount* ist 2, der Maximalwert ist 10. Der Standardwert für *GatewaySize* ist "Medium". Sie können zwischen „Small“, „Medium“ und „Large“ wählen.
-
 
  *VirtualIPs* und *DnsName* werden leer angezeigt, da das Gateway noch nicht gestartet wurde. Diese Werte werden erstellt, sobald das Gateway ausgeführt wird.
 
@@ -87,10 +65,9 @@ Sie können das Application Gateway per XML oder mit einem Konfigurationsobjekt 
 
 Im folgenden Beispiel verwenden Sie eine XML-Datei, um alle Einstellungen des Anwendungsgateways zu konfigurieren und auf die Anwendungsgatewayressource zu übertragen.
 
-### Schritt 1  
+### Schritt 1
 
 Kopieren Sie den folgenden Text in Editor.
-
 
 	<ApplicationGatewayConfiguration xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/windowsazure">
     <FrontendIPConfigurations>
@@ -161,7 +138,6 @@ Das folgende Beispiel zeigt, wie Sie mithilfe einer Konfigurationsdatei und eine
 
 >[AZURE.IMPORTANT] Für die Protokollelemente Http oder Https muss die Groß-/Kleinschreibung beachtet werden.
 
-
 Es wird ein neues Konfigurationselement vom Typ <Probe> hinzugefügt, um benutzerdefinierte Tests zu konfigurieren.
 
 Die Konfigurationsparameter sind:
@@ -183,7 +159,7 @@ Zum Ändern der aktuellen Konfiguration eines Application Gateways sind drei Sch
 
 Rufen Sie mit get-AzureApplicationGatewayConfig die XML-Datei ab. Dadurch wird die XML-Konfigurationsdatei exportiert, sodass ihr die Einstellungen für den Test hinzugefügt werden können.
 
-	get-AzureApplicationGatewayConfig -Name <application gateway name> -Exporttofile "<path to file>"
+	Get-AzureApplicationGatewayConfig -Name "<application gateway name>" -Exporttofile "<path to file>"
 
 
 ### Schritt 2
@@ -200,6 +176,7 @@ Rufen Sie mit get-AzureApplicationGatewayConfig die XML-Datei ab. Dadurch wird d
             <Timeout>15</Timeout>
             <UnhealthyThreshold>5</UnhealthyThreshold>
         </Probe>
+    </Probes>
 
 Fügen Sie den Namen des Tests im Abschnitt „backendHttpSettings“ der XML-Datei wie im folgenden Beispiel hinzu:
 
@@ -214,12 +191,11 @@ Fügen Sie den Namen des Tests im Abschnitt „backendHttpSettings“ der XML-Da
 
 Speichern Sie die XML-Datei.
 
-
 ### Schritt 3
 
 Aktualisieren Sie die Konfiguration des Anwendungsgateways mit der neuen XML-Datei, indem Sie **Set-AzureApplicationGatewayConfig** verwenden. Dadurch wird das Anwendungsgateway mit der neuen Konfiguration aktualisiert.
 
-	set-AzureApplicationGatewayConfig -Name <application gateway name> -Configfile "<path to file>"
+	Set-AzureApplicationGatewayConfig -Name "<application gateway name>" -Configfile "<path to file>"
 
 
 ## Nächste Schritte
@@ -228,4 +204,4 @@ Wenn Sie die SSL-Auslagerung (Secure Sockets Layer) konfigurieren möchten, lese
 
 Wenn Sie ein Anwendungsgateway für die Verwendung mit einem internen Lastenausgleich konfigurieren möchten, lesen Sie den Abschnitt [Erstellen eines Anwendungsgateways mit einem internen Lastenausgleich (ILB)](application-gateway-ilb.md).
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0907_2016-->

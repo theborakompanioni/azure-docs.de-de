@@ -1,20 +1,22 @@
 ### Tag-Cmdlet ist in der neuesten Version von PowerShell geändert
 
-Die August 2016-Version von Azure PowerShell enthält wichtige Änderungen bezüglich der Art und Weise, wie Sie mit Tags arbeiten. Bevor Sie fortfahren, überprüfen Sie Ihre Version des Moduls AzureRm.Resources.
+Die August 2016-Version von [Azure PowerShell 2.0][powershell] enthält wichtige Änderungen bezüglich der Art und Weise, wie Sie mit Tags arbeiten. Bevor Sie fortfahren, überprüfen Sie Ihre Version des Moduls AzureRm.Resources.
 
-    (Get-Module -ListAvailable | Where-Object{ $_.Name -eq 'AzureRm.Resources' }) | Select Version, Name | Format-List
+    Get-Module -ListAvailable -Name AzureRm.Resources | Select Version
 
 Wenn Sie Ihr Azure PowerShell zuletzt vor August 2016 aktualisiert haben, sollte Ihre Überprüfung eine kleinere Version als 3.0 ergeben.
 
-    Version : 2.0.2
-    Name    : AzureRM.Resources
+    Version
+    -------
+    2.0.2
 
 Wenn Sie Ihr Azure PowerShell seit August 2016 aktualisiert haben, sollte Ihre Überprüfung eine 3.0-Version ergeben.
 
-    Version : 3.0.1
-    Name    : AzureRM.Resources
-
-Wenn Ihre Version des Moduls 3.0.1 oder höher ist, haben Sie die neuesten Cmdlets für die Arbeit mit Tags. Ist Ihre Version niedriger als 3.0.1, können Sie weiterhin diese Version verwenden, aber Sie sollten erwägen, auf die neueste Version zu aktualisieren. Die neueste Version umfasst Änderungen, die das Arbeiten mit Tags erleichtern. In diesem Thema werden beide Ansätze beschrieben.
+    Version
+    -------
+    3.0.1
+    
+Wenn Ihre Version des Moduls 3.0.1 oder höher ist, haben Sie die neuesten Cmdlets für die Arbeit mit Tags. Diese Version des Azure-Ressourcen-Moduls wird beim Installieren oder Aktualisieren von Azure PowerShell mithilfe von PowerShell-Katalog, PowerShellGet oder Webplattform-Installer automatisch installiert. Ist Ihre Version niedriger als 3.0.1, können Sie weiterhin diese Version verwenden, aber Sie sollten erwägen, auf die neueste Version zu aktualisieren. Die neueste Version umfasst Änderungen, die das Arbeiten mit Tags erleichtern. In diesem Thema werden beide Ansätze beschrieben.
 
 ### Aktualisieren Ihres Skripts auf Änderungen in der neuesten Version 
 
@@ -228,4 +230,7 @@ Möglicherweise sehen Sie Tags, die mit "hidden-" und "link:" beginnen. Hierbei 
 
 Verwenden Sie das Cmdlet **New-AzureRmTag**, um der Taxonomie neue Markierungen hinzuzufügen. Diese Tags werden in die AutoVervollständigen-Funktion eingeschlossen, obwohl sie noch nicht auf Ressourcen oder Ressourcengruppen angewendet wurden. Um einen Markierungsnamen/Markierungswert zu entfernen, entfernen Sie zuerst die Markierung aus allen Ressourcen, mit denen es möglicherweise verwendet wird, und entfernen Sie es dann mit dem Cmdlet **Remove-AzureRmTag** aus der Taxonomie.
 
-<!---HONumber=AcomDC_0817_2016-->
+
+[powershell]: https://msdn.microsoft.com/library/mt619274(v=azure.200).aspx
+
+<!---HONumber=AcomDC_0907_2016-->

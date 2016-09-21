@@ -242,7 +242,7 @@ Im nächsten Schritt erstellen Sie die Android-Anwendung.
             }
         }
 
-	Diese Komponente implementiert die REST-Aufrufe, die für das Kontaktieren des App-Back-Ends erforderlich sind, um sich für Pushbenachrichtigungen zu registrieren. Außerdem werden die vom Notification Hub erstellten *registrationIds* lokal gespeichert, wie unter [Registrierung vom App-Back-End aus](notification-hubs-registration-management.md#registration-management-from-a-backend) beschrieben. Beachten Sie, dass ein Authentifizierungstoken aus dem lokalen Speicher verwendet wird, wenn Sie die Schaltfläche **Log in** verwenden.
+	Diese Komponente implementiert die REST-Aufrufe, die für das Kontaktieren des App-Back-Ends erforderlich sind, um sich für Pushbenachrichtigungen zu registrieren. Außerdem werden die vom Notification Hub erstellten *registrationIds* lokal gespeichert, wie unter [Registrierung vom App-Back-End aus](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend) beschrieben. Beachten Sie, dass ein Authentifizierungstoken aus dem lokalen Speicher verwendet wird, wenn Sie die Schaltfläche **Log in** verwenden.
 
 5. Entfernen Sie in der `MainActivity`-Klasse Ihr privates Feld für `NotificationHub`, oder kommentieren Sie es aus, und fügen Sie ein Feld für die `RegisterClient`-Klasse und eine Zeichenfolge für den Endpunkt Ihres ASP.NET-Back-Ends hinzu. Ersetzen Sie `<Enter Your Backend Endpoint>` durch den aktuellen Back-End-Endpunkt, den Sie zuvor erhalten haben. Beispiel: `http://mybackend.azurewebsites.net`.
 
@@ -432,4 +432,4 @@ Im nächsten Schritt erstellen Sie die Android-Anwendung.
 [A1]: ./media/notification-hubs-aspnet-backend-android-notify-users/android-notify-users.png
 [A2]: ./media/notification-hubs-aspnet-backend-android-notify-users/android-notify-users-enter-password.png
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0907_2016-->

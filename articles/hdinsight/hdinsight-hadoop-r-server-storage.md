@@ -81,7 +81,7 @@ Legen Sie den Namensknotenverweis im R-Code auf das Speicherkonto **storage2** f
 
   Spark-Rechenkontext definieren:
 
-    mySparkCluster <- RxSpark(consoleOutput=TRUE)
+    mySparkCluster <- RxSpark(consoleOutput=TRUE, nameNode=myNameNode, port=myPort)
 
   Rechenkontext festlegen:
 
@@ -136,7 +136,7 @@ myPort <- 0
 bigDataDirRoot <- "/share"  
 
 # Define Spark compute context
-mySparkCluster <- RxSpark(consoleOutput=TRUE)
+mySparkCluster <- RxSpark(consoleOutput=TRUE, nameNode=myNameNode, port=myPort)
 
 # Set compute context
 rxSetComputeContext(mySparkCluster)
@@ -190,4 +190,4 @@ Da Sie jetzt die Grundlagen zur Verwendung der R-Konsole über eine SSH-Sitzung 
 - [Hinzufügen von RStudio Server zu HDInsight Premium](hdinsight-hadoop-r-server-install-r-studio.md)
 - [Rechenkontextoptionen für R Server in HDInsight](hdinsight-hadoop-r-server-compute-contexts.md)
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0907_2016-->

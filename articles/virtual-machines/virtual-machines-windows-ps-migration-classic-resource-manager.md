@@ -76,7 +76,15 @@ Legen Sie Ihr Azure-Abonnement für die aktuelle Sitzung fest. Ersetzen Sie alle
 	$subscr="<subscription name>"
 	Get-AzureSubscription –SubscriptionName $subscr | Select-AzureSubscription
 
-## Schritt 4: Ausführen von Befehlen zum Migrieren Ihrer IaaS-Ressourcen
+## Schritt 4: Sicherstellen, dass Sie über genügend Kerne in virtuellen Azure Resource Manager-Computern in der Azure-Region Ihrer aktuellen Bereitstellung oder Ihres VNET verfügen
+
+Mit dem folgenden PowerShell-Befehl können Sie Ihre aktuelle Anzahl an Kernen in Azure Resource Manager überprüfen. Weitere Informationen zu Kernkontingenten finden Sie unter [Grenzwerte und Azure Resource Manager](../azure-subscription-service-limits.md#limits-and-the-azure-resource-manager).
+
+```
+Get-AzureRmVMUsage -Location "<Your VNET or Deployment's Azure region"
+```
+
+## Schritt 5: Ausführen von Befehlen zum Migrieren Ihrer IaaS-Ressourcen
 
 >[AZURE.NOTE] Alle hier beschriebenen Vorgänge sind idempotent. Sollte ein Problem auftreten, das nicht auf ein nicht unterstütztes Feature oder auf einen Konfigurationsfehler zurückzuführen ist, wiederholen Sie den Vorbereitungs-, Abbruch- oder Commitvorgang. Die Plattform versucht dann erneut, die Aktion auszuführen.
 
@@ -181,4 +189,4 @@ Wenn die vorbereitete Konfiguration in Ordnung ist, können Sie den Vorgang fort
 - [Ausführliche technische Informationen zur plattformgestützten Migration vom klassischen Bereitstellungsmodell zu Azure Resource Manager](virtual-machines-windows-migration-classic-resource-manager-deep-dive.md)
 - [Klonen eines klassischen virtuellen Computers für Azure Resource Manager mithilfe von PowerShell-Skripts aus der Community](virtual-machines-windows-migration-scripts.md)
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0907_2016-->

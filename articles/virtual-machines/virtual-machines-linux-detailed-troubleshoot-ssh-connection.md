@@ -15,7 +15,7 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="support-article"
-	ms.date="06/16/2016"
+	ms.date="09/01/2016"
 	ms.author="iainfou"/>
 
 # Ausführliche Schritte zur Problembehandlung bei SSH
@@ -32,26 +32,26 @@ Mit den folgenden Schritten können Sie die Fehlerquelle isolieren und Lösungen
 
 Überprüfen Sie zunächst den Status des virtuellen Computers im Portal.
 
-Gehen Sie im [klassischen Azure-Portal](https://manage.windowsazure.com) folgendermaßen für virtuelle Computer vor, die mit dem klassischen Bereitstellungsmodell erstellt wurden:
-
-1. Klicken Sie auf **Virtuelle Computer** > *VM-Name*.
-2. Wählen Sie das **Dashboard** des virtuellen Computers aus, um den Status zu überprüfen.
-3. Wählen Sie **Überwachen** aus, um aktuelle Aktivitäten für Compute-, Speicher- und Netzwerkressourcen anzuzeigen.
-4. Wählen Sie **Endpunkte** aus, und vergewissern Sie sich, dass ein Endpunkt für SSH-Datenverkehr vorhanden ist.
-
 Im [Azure-Portal](https://portal.azure.com):
 
-1. Klicken Sie für virtuelle Computer, die mit dem klassischen Bereitstellungsmodell erstellt wurden, auf **Durchsuchen** > **Virtuelle Computer (klassisch)** > *VM-Name*.
+1. Wählen Sie für virtuelle Computer, die mit dem klassischen Bereitstellungsmodell erstellt wurden, **Durchsuchen** > **Virtuelle Computer (klassisch)** > *VM-Name* aus.
 
 	ODER
 
-	Klicken Sie für virtuelle Computer, die mit dem Resource Manager-Bereitstellungsmodell erstellt wurden, auf **Durchsuchen** > **Virtuelle Computer** > *VM-Name*.
+	Wählen Sie für virtuelle Computer, die mit dem Resource Manager-Bereitstellungsmodell erstellt wurden, **Durchsuchen** > **Virtuelle Computer** > *VM-Name* aus.
 
 	Im Statusbereich für den virtuellen Computer sollte **Wird ausgeführt** angezeigt werden. Führen Sie einen Bildlauf nach unten durch, um aktuelle Aktivitäten für Compute-, Speicher- und Netzwerkressourcen anzuzeigen.
 
 2. Wählen Sie **Einstellungen** aus, um Endpunkte, IP-Adressen und andere Einstellungen zu überprüfen.
 
 	Um Endpunkte auf virtuellen Computern zu identifizieren, die mit Resource Manager erstellt wurden, überprüfen Sie, ob eine [Netzwerksicherheitsgruppe](../virtual-network/virtual-networks-nsg.md) definiert wurde. Stellen Sie außerdem sicher, dass die Regeln auf die Netzwerksicherheitsgruppe angewendet wurden und dass im Subnetz darauf verwiesen wird.
+
+Gehen Sie im [klassischen Azure-Portal](https://manage.windowsazure.com) folgendermaßen für virtuelle Computer vor, die mit dem klassischen Bereitstellungsmodell erstellt wurden:
+
+1. Wählen Sie **Virtuelle Computer** > *VM-Name* aus.
+2. Wählen Sie das **Dashboard** des virtuellen Computers aus, um den Status zu überprüfen.
+3. Wählen Sie **Überwachen** aus, um aktuelle Aktivitäten für Compute-, Speicher- und Netzwerkressourcen anzuzeigen.
+4. Wählen Sie **Endpunkte** aus, und vergewissern Sie sich, dass ein Endpunkt für SSH-Datenverkehr vorhanden ist.
 
 Analysieren Sie zum Überprüfen der Netzwerkverbindung die konfigurierten Endpunkte, und testen Sie, ob der virtuelle Computer über ein anderes Protokoll (z. B. HTTP oder über einen anderen Dienst) erreichbar ist.
 
@@ -62,11 +62,11 @@ Versuchen Sie nach diesen Schritten erneut, die SSH-Verbindung herzustellen.
 
 Das Verbindungsproblem zwischen dem SSH-Client auf Ihrem Computer und dem SSH-Dienst auf dem virtuellen Azure-Computer ist u.U. auf die folgenden Probleme oder Konfigurationsfehler zurückzuführen:
 
-- SSH-Clientcomputer
-- Edgegerät der Organisation
-- Clouddienst-Endpunkt und die Zugriffssteuerungsliste (ACL)
-- Netzwerksicherheitsgruppen
-- Linux-basierter virtueller Azure-Computer
+- [SSH-Clientcomputer](#source-1-ssh-client-computer)
+- [Edgegerät der Organisation](#source-2-organization-edge-device)
+- [Clouddienst-Endpunkt und die Zugriffssteuerungsliste (ACL)](#source-3-cloud-service-endpoint-and-acl)
+- [Netzwerksicherheitsgruppen](#source-4-network-security-groups)
+- [Linux-basierter virtueller Azure-Computer](#source-5-linux-based-azure-virtual-machine)
 
 ## Quelle 1: SSH-Clientcomputer
 
@@ -74,7 +74,7 @@ Das Verbindungsproblem zwischen dem SSH-Client auf Ihrem Computer und dem SSH-Di
 
 ![Diagramm, in dem die SSH-Clientcomputerkomponenten hervorgehoben sind](./media/virtual-machines-linux-detailed-troubleshoot-ssh-connection/ssh-tshoot2.png)
 
-Falls dies nicht möglich ist, suchen Sie auf Ihrem Computer Folgendes:
+Falls ein Verbindungsfehler auftritt, überprüfen Sie Ihren Computer auf Folgendes:
 
 - Eine lokale Firewall-Einstellung, die eingehenden oder ausgehenden SSH-Datenverkehr (TCP-22) blockiert
 - Lokal installierte Proxy-Clientsoftware, die SSH-Verbindungen verhindert
@@ -92,11 +92,11 @@ Vergewissern Sie sich bei Verwendung der Zertifikatauthentifizierung, dass Sie f
 
 ## Quelle 2: Edgegerät der Organisation
 
-Überprüfen Sie, ob ein direkt mit dem Internet verbundener Computer SSH-Verbindungen mit Ihrem virtuellen Azure-Computer herstellen kann, um das Edgegerät der Organisation als Fehlerquelle auszuschließen. Wenn der Zugriff auf den virtuellen Computer über ein Site-to-Site-VPN oder über eine Azure ExpressRoute-Verbindung erfolgt, fahren Sie mit [Quelle 4: Netzwerksicherheitsgruppen](#nsg) fort.
+Überprüfen Sie, ob ein direkt mit dem Internet verbundener Computer SSH-Verbindungen mit Ihrem virtuellen Azure-Computer herstellen kann, um das Edgegerät der Organisation als Fehlerquelle auszuschließen. Wenn der Zugriff auf den virtuellen Computer über ein Standort-zu-Standort-VPN oder über eine Azure ExpressRoute-Verbindung erfolgt, fahren Sie mit [Quelle 4: Netzwerksicherheitsgruppen](#nsg) fort.
 
 ![Diagramm, in dem das Edgegerät der Organisation hervorgehoben ist](./media/virtual-machines-linux-detailed-troubleshoot-ssh-connection/ssh-tshoot3.png)
 
-Wenn Sie keinen Computer haben, der direkt mit dem Internet verbunden ist, können Sie problemlos einen neuen virtuellen Azure-Computer in einer eigenen Ressourcengruppe oder einem eigenen Clouddienst erstellen und verwenden. Weitere Informationen finden Sie unter [Erstellen eines virtuellen Computers unter Linux in Azure](virtual-machines-linux-quick-create-cli.md). Löschen Sie die Ressourcengruppe oder den virtuellen Computer und den Clouddienst, wenn Sie Ihre Tests abgeschlossen haben.
+Wenn Sie keinen Computer haben, der direkt mit dem Internet verbunden ist, erstellen Sie einen neuen virtuellen Azure-Computer in einer eigenen Ressourcengruppe oder einem eigenen Clouddienst und verwenden ihn. Weitere Informationen finden Sie unter [Erstellen eines virtuellen Computers unter Linux in Azure](virtual-machines-linux-quick-create-cli.md). Löschen Sie die Ressourcengruppe oder den virtuellen Computer und den Clouddienst, wenn Sie Ihre Tests abgeschlossen haben.
 
 Wenn Sie eine SSH-Verbindung mit einem direkt mit dem Internet verbundenen Computer herstellen können, überprüfen Sie das Edgegerät Ihrer Organisation auf Folgendes:
 
@@ -145,7 +145,7 @@ Versuchen Sie erneut, die Verbindung von Ihrem Computer aus herzustellen. Wenn d
 - Auf dem virtuellen Azure-Computer wird Software zur Netzwerküberwachung oder zur Erkennung von Eindringversuchen ausgeführt, die SSH-Verbindungen verhindert.
 
 
-## Weitere Ressourcen
+## Zusätzliche Ressourcen
 Weitere Informationen zur Problembehandlung beim Anwendungszugriff finden Sie unter [Problembehandlung beim Zugriff auf eine Anwendung, die auf einem virtuellen Azure-Computer ausgeführt wird](virtual-machines-linux-troubleshoot-app-connection.md).
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0907_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/19/2016" 
+	ms.date="09/02/2016" 
 	ms.author="stefsch"/>
 
 # Steuern von eingehendem Datenverkehr in eine App Service-Umgebung
@@ -39,6 +39,7 @@ Im Folgenden sehen Sie eine Liste der Ports, die von einer App Service-Umgebung 
 - 80: Standardport für eingehenden HTTP-Datenverkehr in Apps, die in App Service-Plänen in einer App Service-Umgebung ausgeführt werden. Dieser Port ist in einer für den internen Lastenausgleich geeigneten App Service-Umgebung an die Adresse der ASE für den internen Lastenausgleich gebunden.
 - 443: Standardport für eingehenden SSL-Datenverkehr in Apps, die in App Service-Plänen in einer App Service-Umgebung ausgeführt werden. Dieser Port ist in einer für den internen Lastenausgleich geeigneten App Service-Umgebung an die Adresse der ASE für den internen Lastenausgleich gebunden.
 - 21: Steuerungskanal für FTP. Dieser Port kann sicher blockiert werden, wenn FTP nicht verwendet wird. Dieser Port kann in einer für den internen Lastenausgleich geeigneten App Service-Umgebung an die Adresse der ASE für den internen Lastenausgleich gebunden werden.
+- 990: Steuerungskanal für FTPS. Dieser Port kann sicher blockiert werden, wenn FTPS nicht verwendet wird. Dieser Port kann in einer für den internen Lastenausgleich geeigneten App Service-Umgebung an die Adresse der ASE für den internen Lastenausgleich gebunden werden.
 - 10001 10020: Datenkanäle für FTP. Wie der Steuerungskanal können diese Ports sicher blockiert werden, wenn FTP nicht verwendet wird. Dieser Port kann in einer für den internen Lastenausgleich geeigneten App Service-Umgebung an die Adresse der ASE für den internen Lastenausgleich gebunden werden.
 - 4016: Wird zum Remotedebuggen in Visual Studio 2012 verwendet. Dieser Port kann sicher blockiert werden, wenn die Funktion nicht verwendet wird. Dieser Port ist in einer für den internen Lastenausgleich geeigneten App Service-Umgebung an die Adresse der ASE für den internen Lastenausgleich gebunden.
 - 4018: Wird zum Remotedebuggen in Visual Studio 2013 verwendet. Dieser Port kann sicher blockiert werden, wenn die Funktion nicht verwendet wird. Dieser Port ist in einer für den internen Lastenausgleich geeigneten App Service-Umgebung an die Adresse der ASE für den internen Lastenausgleich gebunden.
@@ -140,4 +141,4 @@ Weitere Informationen zur Azure App Service-Plattform finden Sie unter [Azure Ap
 <!-- IMAGES -->
  
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0907_2016-->

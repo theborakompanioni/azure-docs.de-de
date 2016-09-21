@@ -3,7 +3,7 @@
    description="Details zur Sicherheit auf Zeilenebene in Power BI Embedded"
    services="power-bi-embedded"
    documentationCenter=""
-   authors="minewiskan"
+   authors="mgblythe"
    manager="NA"
    editor=""
    tags=""/>
@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="NA"
    ms.workload="powerbi"
    ms.date="07/05/2016"
-   ms.author="owend"/>
+   ms.author="mblythe"/>
 
 # Sicherheit auf Zeilenebene in Power BI Embedded
 
@@ -99,7 +99,7 @@ Wenn sich nach Abschluss all dieser Schritte nun eine Person an unserer Anwendun
 
 ![](media\power-bi-embedded-rls\pbi-embedded-rls-dashboard-13.png)
 
-## Weitere Informationen
+## Siehe auch
 [Sicherheit auf Zeilenebene](https://powerbi.microsoft.com/de-DE/documentation/powerbi-admin-rls/)
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0907_2016-->

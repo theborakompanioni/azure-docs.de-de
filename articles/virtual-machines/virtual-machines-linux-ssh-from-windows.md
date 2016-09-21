@@ -26,7 +26,6 @@ description="Erfahren Sie, wie Sie SSH-Schlüssel auf einem Windows-Computer ers
 
 In diesem Thema wird beschrieben, wie Sie unter Windows mithilfe von **ssh-rsa** öffentliche und private Schlüsseldateien im **PEM**-Format erstellen und verwenden, um mit diesen und dem Befehl **ssh** Verbindungen mit Ihren Linux-VMs in Azure herzustellen. Wenn Sie bereits **PEM**-Dateien erstellt haben, können diese verwenden, um virtuelle Linux-Computer zu erstellen, zu denen Sie mit **ssh** eine Verbindung herstellen können. Viele weitere Befehle verwenden das **SSH**-Protokoll und Schlüsseldateien für das sichere Ausführen von Aufgaben, insbesondere **scp** oder [Secure Copy](https://en.wikipedia.org/wiki/Secure_copy), das Dateien sicher zwischen Computern kopieren kann, die **SSH**-Verbindungen unterstützen.
 
-> [AZURE.NOTE] Falls Sie einen Moment Zeit haben, würden wir uns freuen, wenn Sie an dieser [kurzen Umfrage](https://aka.ms/linuxdocsurvey) teilnehmen könnten, um zur Verbesserung der Dokumentation für virtuelle Azure-Computer unter Linux beizutragen. Jede Antwort hilft uns dabei, Sie noch besser bei Ihrer Arbeit zu unterstützen.
 
 ## Erforderliche SSH- und Schlüsselerstellungsprogramme
 
@@ -168,4 +167,4 @@ Die einfachste Lösung ist, die Umgebungsvariable `OPENSSL_CONF` festzulegen. De
 5.	Klicken Sie auf **Öffnen**, um die Verbindung mit Ihrem virtuellen Computer herzustellen.
  
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0907_2016-->

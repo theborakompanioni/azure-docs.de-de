@@ -4,7 +4,7 @@
    services="data-lake-analytics"
    documentationCenter=""
    authors="edmacauley"
-   manager="paulettm"
+   manager="jhubbard"
    editor="cgronlun"/>
 
 <tags
@@ -29,7 +29,7 @@ U-SQL ist eine hyperskalierbare, hochgradig erweiterbare Sprache zum Vorbereiten
 ###Voraussetzungen
 
 - **Visual Studio 2015, Visual Studio 2013 Update 4 oder Visual Studio 2012. Die Editionen Enterprise (Ultimate/Premium), Professional und Community werden unterstützt; Express Edition wird nicht unterstützt. Visual Studio „15“ wird derzeit nicht unterstützt, wir arbeiten jedoch daran.**
-- **Microsoft Azure SDK für .NET ab Version 2.7.1**. Führen Sie die Installation mit dem [Webplattform-Installer](http://www.microsoft.com/web/downloads/platform.aspx) durch.
+- **Microsoft Azure SDK für .NET ab Version 2.7.1**. Führen Sie die Installation mit dem [Webplattform-Installer](http://www.microsoft.com/web/downloads/platform.aspx) durch.
 - **[Data Lake-Tools für Visual Studio](http://aka.ms/adltoolsvs)**
 
     Nach der Installation der Data Lake-Tools für Visual Studio wird im Server-Explorer unterhalb des Azure-Knotens der Knoten „Data Lake Analytics“ angezeigt (der Server-Explorer wird mit STRG+ALT+S geöffnet).
@@ -172,8 +172,8 @@ Die Data Lake Analytics-Aufträge werden in der Sprache U-SQL geschrieben. Weite
 
 	![U-SQL Visual Studio Data Lake Analytics-Diagramm zur Auftragsleistung](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-performance-graph.png)
 
-	* Auftragszusammenfassung. Hier können Sie die zusammengefassten Informationen des aktuellen Auftrags anzeigen, z. B. Zustand, Status, Ausführungszeit, Laufzeitname, Absender usw.
-	* Auftragsdetails. Hier werden ausführliche Informationen zum Auftrag bereitgestellt, z. B. Skript, Ressource, Scheitelpunktausführungsansicht.
+	* Auftragszusammenfassung. Hier können Sie die zusammengefassten Informationen des aktuellen Auftrags anzeigen, z. B. Zustand, Status, Ausführungszeit, Laufzeitname, Absender usw.
+	* Auftragsdetails. Hier werden ausführliche Informationen zum Auftrag bereitgestellt, z. B. Skript, Ressource, Scheitelpunktausführungsansicht.
 	* Auftragsdiagramm: Es werden vier Diagramme zur Visualisierung der Auftragsinformationen bereitgestellt: Status, gelesene Daten, geschriebene Daten, Ausführungszeit, durchschnittliche Ausführungszeit pro Knoten, Eingangsdurchsatz, Ausgangsdurchsatz.
 	* Metadatenvorgänge: Hier werden alle Metadatenvorgänge angezeigt.
 	* Zustandsverlauf.
@@ -362,4 +362,4 @@ Mit dem folgenden PowerShell-Skript werden das Azure Data Lake Analytics-Konto u
     Get-AzureRmDataLakeStoreChildItem -Account $dataLakeStoreName -Path  "/Samples/Data/"
     #endregion
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0914_2016-->

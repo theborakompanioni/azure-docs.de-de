@@ -130,7 +130,7 @@ Beim Erstellen von Batch-Ressourcen wie Pools und Aufträgen können Sie eine JS
 
 Viele Ressourcenerstellungsvorgänge können zwar allein mithilfe von Befehlszeilenoptionen ausgeführt werden, manche Features erfordern jedoch die Verwendung einer JSON-Datei mit den Ressourcendetails. Eine JSON-Datei ist beispielsweise erforderlich, wenn Sie Ressourcendateien für eine Startaufgabe angeben möchten.
 
-Den JSON-Code für die Ressourcenerstellung finden Sie auf MSDN in der [Batch REST-API-Referenz][rest_api]. Jedes Thema vom Typ „Hinzufügen von *Ressourcentyp*“ enthält JSON-Code zum Erstellen der entsprechenden Ressource. Diesen Code können Sie als Vorlage für Ihre JSON-Dateien verwenden. Den JSON-Code für die Poolerstellung finden Sie etwa unter [Add a pool to an account][rest_add_pool] \(Hinzufügen eines Pools zu einem Konto).
+Den JSON-Code für die Ressourcenerstellung finden Sie auf MSDN in der [Batch REST-API-Referenz][rest_api]. Jedes Thema vom Typ „Hinzufügen von *Ressourcentyp* “ enthält JSON-Code zum Erstellen der entsprechenden Ressource. Diesen Code können Sie als Vorlage für Ihre JSON-Dateien verwenden. Den JSON-Code für die Poolerstellung finden Sie etwa unter [Add a pool to an account][rest_add_pool] \(Hinzufügen eines Pools zu einem Konto).
 
 >[AZURE.NOTE] Wenn Sie bei der Ressourcenerstellung eine JSON-Datei angeben, werden alle anderen Parameter, die Sie an der Befehlszeile für diese Ressource angeben, ignoriert.
 

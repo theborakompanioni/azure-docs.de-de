@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="05/27/2016"
+   ms.date="09/02/2016"
    ms.author="jgao"/>
 
 # Verwenden von Apache Phoenix und SQuirreL mit Windows-basierten HBase-Clustern in HDInsight  
@@ -91,15 +91,15 @@ In diesem Abschnitt erfahren Sie, wie Sie SQuirreL auf Ihrer Arbeitsstation übe
 
 Bevor Sie die Vorgehensweise befolgen, müssen Sie über Folgendes verfügen:
 
-- Ein HBase-Cluster das auf einem virtuellen Azure-Netzwerk mit einem virtuellen DNS-Computer bereitgestellt wird. Anweisungen finden Sie unter [Bereitstellen von HBase-Clustern im virtuellen Azure-Netzwerk][hdinsight-hbase-provision-vnet]. 
+- Ein HBase-Cluster das auf einem virtuellen Azure-Netzwerk mit einem virtuellen DNS-Computer bereitgestellt wird. Anweisungen finden Sie unter [Bereitstellen von HBase-Clustern im virtuellen Azure-Netzwerk][hdinsight-hbase-provision-vnet].
 
 	>[AZURE.IMPORTANT] Sie müssen einen DNS-Server auf dem virtuellen Netzwerk installieren. Anweisungen finden Sie unter [Konfigurieren von DNS zwischen zwei virtuellen Netzwerken in Azure](hdinsight-hbase-geo-replication-configure-DNS.md).
 
 - Rufen Sie das verbindungsspezifische DNS-Suffix des HBase-Clusters ab. Rufen Sie dazu mittels RDP den Cluster auf und führen Sie IPConfig aus. Das DNS-Suffix ähnelt:
 
 		myhbase.b7.internal.cloudapp.net
-- Laden Sie [Microsoft Visual Studio Express 2013 für Windows Desktop](https://www.visualstudio.com/products/visual-studio-express-vs.aspx) herunter und installieren Sie es auf Ihrer Arbeitsstation. Sie benötigen Makecert aus dem Paket, um Ihr Zertifikat zu erstellen.  
-- Laden Sie [Java Laufzeitumgebung](http://www.oracle.com/technetwork/java/javase/downloads/jre7-downloads-1880261.html) herunter und installieren Sie es auf Ihrer Arbeitsstation. SQuirreL SQL-Client Version 3.0 und höher erfordert JRE-Version 1.6 oder höher.  
+- Laden Sie [Microsoft Visual Studio Express 2013 für Windows Desktop](https://www.visualstudio.com/products/visual-studio-express-vs.aspx) herunter und installieren Sie es auf Ihrer Arbeitsstation. Sie benötigen Makecert aus dem Paket, um Ihr Zertifikat zu erstellen.
+- Laden Sie [Java Laufzeitumgebung](http://www.oracle.com/technetwork/java/javase/downloads/jre7-downloads-1880261.html) herunter und installieren Sie es auf Ihrer Arbeitsstation. SQuirreL SQL-Client Version 3.0 und höher erfordert JRE-Version 1.6 oder höher.
 
 
 ###Konfigurieren Sie eine Punkt-zu-Standort-VPN-Verbindung mit dem virtuellen Azure-Netzwerk
@@ -122,7 +122,7 @@ Stellen Sie sicher, dass Sie einen HBase-Cluster in einem virtuellen Azure Netzw
 2. Klicken Sie auf der linken Seite auf **NETZWERKE**.
 3. Klicken Sie auf das virtuelle Netzwerk, das Sie erstellt haben (siehe [Bereitstellen von HBase-Clustern im virtuellen Azure Netzwerk][hdinsight-hbase-provision-vnet]).
 4. Klicken Sie oben auf **KONFIGURIEREN** .
-5. Im Abschnitt **Punkt-zu-Standort-Konnektivität** wählen Sie **Konfiguration Punkt-zu-Standort-Konnektivität** aus. 
+5. Im Abschnitt **Punkt-zu-Standort-Konnektivität** wählen Sie **Konfiguration Punkt-zu-Standort-Konnektivität** aus.
 6. Konfigurieren Sie **START-IP** und **CIDR**, um den IP-Adressbereich anzugeben, von dem Ihre VPN-Clients eine IP-Adresse erhalten, wenn eine Verbindung besteht. Der Bereich darf nicht mit anderen Bereichen überlappen, die sich auf Ihrem lokalen Netzwerk und dem virtuellen Azure Netzwerk befinden, mit dem Sie eine Verbindung herstellen werden. Wenn Sie zum Beispiel 10.0.0.0/20 für das virtuelle Netzwerk ausgewählt haben, können Sie 10.1.0.0/24 für den Client-Adressraum auswählen. Siehe Seite [Punkt-zu-Standort-Konnektivität][vnet-point-to-site-connectivity] für weitere Informationen.
 7. Klicken Sie auf **Gateway-Subnetz hinzufügen** im Abschnitt Adressräume des virtuellen Netzwerks.
 7. Klicken Sie unten auf der Seite auf **SPEICHERN**.
@@ -148,8 +148,8 @@ Eine Möglichkeit zum Erstellen eines X.509-Zertifikats ist mithilfe des Tools z
 **So erstellen Sie ein selbstsigniertes Stammzertifikat**
 
 1. Öffnen Sie auf Ihrer Arbeitsstation ein Eingabeaufforderungsfenster.
-2. Navigieren Sie zum Ordner „Visual Studio-Tools“. 
-3. Der folgende Befehl im Beispiel unten erstellt und installiert ein Stammzertifikat im persönlichen Zertifikatsspeicher auf Ihrer Arbeitsstation und erstellt außerdem eine entsprechende .cer-Datei, die Sie später im klassischen Azure-Portal hochladen. 
+2. Navigieren Sie zum Ordner „Visual Studio-Tools“.
+3. Der folgende Befehl im Beispiel unten erstellt und installiert ein Stammzertifikat im persönlichen Zertifikatsspeicher auf Ihrer Arbeitsstation und erstellt außerdem eine entsprechende .cer-Datei, die Sie später im klassischen Azure-Portal hochladen.
 
 		makecert -sky exchange -r -n "CN=HBaseVnetVPNRootCertificate" -pe -a sha1 -len 2048 -ss My "C:\Users\JohnDole\Desktop\HBaseVNetVPNRootCertificate.cer"
 
@@ -222,7 +222,7 @@ Eine Möglichkeit zum Erstellen eines X.509-Zertifikats ist mithilfe des Tools z
 	>
 	>     java.exe -jar [the path of the SQuirreL jar file] 
 5. Klicken Sie auf **OK**, um das Zielverzeichnis zu erstellen.
-6. Die Standardeinstellung ist die Installation der Basis- und Standardpakete. Klicken Sie auf **Weiter**.
+6. Die Standardeinstellung ist die Installation der Basis- und Standardpakete. Klicken Sie auf **Next**.
 7. Klicken Sie zwei Mal auf **Weiter** und anschließend auf **Fertig**.
 
 
@@ -264,7 +264,7 @@ STRG + V).
 	- **Kennwort**: Beliebiger Text.
 
 	![HDInsight HBase SQuirreL-Treiber][img-squirrel-alias]
-4. Klicken Sie auf **Test**. 
+4. Klicken Sie auf **Test**.
 5. Klicken Sie auf **Verbinden**. Nach dem Aufbau der Verbindung sieht SQuirreL wie folgt aus:
 
 	![HBase Phoenix SQuirreL][img-squirrel]
@@ -286,7 +286,7 @@ In diesem Artikel haben Sie erfahren, wie Sie Apache Phoenix in HDInsight verwen
 
 - [Übersicht HBase mit HDInsight][hdinsight-hbase-overview]\: HBase ist eine Open-Source-NoSQL-Datenbank von Apache, die auf Hadoop aufbaut und wahlfreien Zugriff sowie starke Konsistenz für große Mengen unstrukturierter und teilstrukturierter Daten bietet.
 - [Bereitstellen von HBase-Clustern im virtuellen Azure-Netzwerk][hdinsight-hbase-provision-vnet]\: Mit der Integration in virtuelle Netzwerke können HBase-Cluster im selben virtuellen Netzwerk bereitgestellt werden wie Ihre Anwendungen, sodass Anwendungen direkt mit HBase kommunizieren können.
-- [Konfiguration von HBase-Replikation in HDInsight](hdinsight-hbase-geo-replication.md): Erfahren Sie, wie Sie HBase-Replikation über zwei Azure-Rechenzentren konfigurieren. 
+- [Konfiguration von HBase-Replikation in HDInsight](hdinsight-hbase-geo-replication.md): Erfahren Sie, wie Sie HBase-Replikation über zwei Azure-Rechenzentren konfigurieren.
 - [Analysieren der Twitter-Stimmungen mit HBase in HDInsight][hbase-twitter-sentiment]\: Erfahren Sie, wie Sie in Echtzeit [Stimmungsanalysen](http://en.wikipedia.org/wiki/Sentiment_analysis) bei Big Data mithilfe von HBase in einem Hadoop-Cluster in HDInsight durchführen können.
 
 [azure-portal]: https://portal.azure.com
@@ -310,4 +310,4 @@ In diesem Artikel haben Sie erfahren, wie Sie Apache Phoenix in HDInsight verwen
 
  
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0907_2016-->

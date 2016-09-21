@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Verwalten von DevTest Labs-Formeln zum Erstellen virtueller Computer | Microsoft Azure"
-	description="Erfahren Sie, wie Sie DevTest Labs-Formeln erstellen, aktualisieren, entfernen und zum Erstellen neuer virtueller Computer verwenden."
+	pageTitle="Verwalten von Formeln in Azure DevTest Labs zum Erstellen virtueller Computer | Microsoft Azure"
+	description="Erfahren Sie, wie Sie Azure DevTest Labs-Formeln erstellen, aktualisieren, entfernen und zum Erstellen neuer virtueller Computer verwenden."
 	services="devtest-lab,virtual-machines"
 	documentationCenter="na"
 	authors="tomarcher"
@@ -13,50 +13,46 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/25/2016"
+	ms.date="08/30/2016"
 	ms.author="tarcher"/>
 
 # Verwalten von DevTest Labs-Formeln zum Erstellen virtueller Computer
 
-## Übersicht
-
-Formeln – ähnlich wie [benutzerdefinierte Images](./devtest-lab-create-template.md) und [Marketplace-Images](./devtest-lab-configure-marketplace-images.md) – bieten einen Mechanismus zur schnellen Bereitstellung virtueller Computer. Eine Formel in DevTest Labs ist eine Liste standardmäßiger Eigenschaftswerte, die zum Erstellen eines virtuellen Labcomputers verwendet werden. Beim Erstellen eines virtuellen Computers aus einer Formel können die Standardwerte wie vorhanden verwendet oder geändert werden.
+Eine Formel in Azure DevTest Labs ist eine Liste von Standardeigenschaftswerten, die zum Erstellen eines virtuellen Computers (VM, Virtual Machine) verwendet werden. Beim Erstellen eines virtuellen Computers aus einer Formel können die Standardwerte wie vorhanden verwendet oder geändert werden. Ähnlich wie [benutzerdefinierte Images](./devtest-lab-create-template.md) und [Marketplace-Images](./devtest-lab-configure-marketplace-images.md) bieten Formeln einen Mechanismus zur schnellen Bereitstellung virtueller Computer.
 
 In diesem Artikel erfahren Sie, wie Sie folgende Aufgaben ausführen:
 
-- [Erstellen einer neuen Formel](#create-a-new-formula)
-- [Verwenden einer Formel zum Erstellen eines neuen virtuellen Computers](#use-a-formula-to-create-a-new-vm)
+- [Erstellen einer Formel](#create-a-formula)
+- [Verwenden einer Formel zum Bereitstellen eines virtuellen Computers](#use-a-formula-to-provision-a-vm)
 - [Ändern einer Formel](#modify-a-formula)
 - [Löschen einer Formel](#delete-a-formula)
 
-> [AZURE.NOTE] Formeln ähneln [benutzerdefinierten Images](./devtest-lab-create-template.md), da beide Methoden zum Erstellen eines Basisimages aus einer virtuellen Festplatte dienen, die zum Bereitstellen von virtuellen Computern verwendet wird. Um leichter entscheiden zu können, welche Methode sich für Ihre Umgebung besser eignet, lesen Sie die Informationen unter [Vergleich zwischen benutzerdefinierten Images und Formeln in DevTest Labs](./devtest-lab-comparing-vm-base-image-types.md).
+> [AZURE.NOTE] Genauso wie [benutzerdefinierte Images](./devtest-lab-create-template.md) ermöglichen es Ihnen Formeln, aus einer VHD-Datei ein Basisimage erstellen. Dieses Basisimage kann anschließend zum Bereitstellen eines neuen virtuellen Computers verwendet werden. Um leichter entscheiden zu können, welche Methode sich für Ihre Umgebung besser eignet, lesen Sie die Informationen unter [Vergleich zwischen benutzerdefinierten Images und Formeln in DevTest Labs](./devtest-lab-comparing-vm-base-image-types.md).
 
-## Erstellen einer neuen Formel
-Jeder Benutzer mit der Berechtigung *Benutzer* in DevTest Labs kann in einem Lab virtuelle Computer auf Basis einer Formel erstellen. Es gibt zwei Möglichkeiten, um Formeln zu erstellen:
+## Erstellen einer Formel
+Jeder Benutzer mit der Berechtigung *Benutzer* in DevTest Labs kann virtuelle Computer auf Basis einer Formel erstellen. Es gibt zwei Möglichkeiten, um Formeln zu erstellen:
 
-- Von Grund auf: Entscheiden Sie sich für diese Option, wenn Sie alle Merkmale der Formel von Grund auf neu definieren möchten.
+- Anhand einer Basis: Entscheiden Sie sich für diese Option, wenn Sie alle Merkmale der Formel definieren möchten.
 - Aus einem vorhandenen virtuellen Labcomputer: Entscheiden Sie sich für diese Option, wenn Sie eine Formel basierend auf den Einstellungen eines vorhandenen virtuellen Computers erstellen möchten.
 
-### Erstellen einer neuen Formel von Grund auf
-Die folgenden Schritte führen Sie durch den Prozess der Erstellung einer neuen Formel von Grund auf.
+### Erstellen einer Formel anhand einer Basis
+In den folgenden Schritten wird beschrieben, wie Sie eine Formel auf der Basis eines benutzerdefinierten Images, eines Marketplace-Images oder auf Grundlage einer anderen Formel erstellen.
 
-1. Melden Sie sich beim [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) an.
+1. Melden Sie sich auf dem [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) an.
 
-1. Wählen Sie **Durchsuchen** und dann in der Liste **DevTest Labs**.
+1. Wählen Sie **Weitere Dienste** und dann in der Liste **DevTest Labs**.
 
 1. Wählen Sie in der Liste der Labs das gewünschte Lab aus.
 
-1. Das Blatt **Einstellungen** des ausgewählten Labs wird angezeigt.
-
-1. Wählen Sie auf dem Blatt **Einstellungen** für das Lab **Formeln**.
+1. Wählen Sie auf dem Blatt für das Lab die Option **Formulas (reusable bases)** (Formeln (wiederverwendbare Basis)) aus.
 
     ![Menü „Formel“](./media/devtest-lab-manage-formulas/lab-settings-formulas.png)
 
 1. Wählen Sie auf dem Blatt **Labformeln** **+ Hinzufügen**.
 
-    ![Neue Formel hinzufügen](./media/devtest-lab-manage-formulas/add-formula.png)
+    ![Formel hinzufügen](./media/devtest-lab-manage-formulas/add-formula.png)
 
-1. Wählen Sie auf dem Blatt **Basis auswählen** das benutzerdefinierte Image oder das Marketplace-Image, aus dem Sie die Formel erstellen möchten.
+1. Wählen Sie auf dem Blatt **Choose a base** (Basis auswählen) die Grundlage aus, anhand derer Sie die Formel erstellen möchten (also das benutzerdefinierte Image, das Marketplace-Image oder die Formel).
 
     ![Basisliste](./media/devtest-lab-manage-formulas/base-list.png)
 
@@ -64,52 +60,57 @@ Die folgenden Schritte führen Sie durch den Prozess der Erstellung einer neuen 
 
 	- **Formelname**: Geben Sie einen Namen für die Formel ein. Dieser Wert wird in der Liste der Basisimages angezeigt, wenn Sie einen virtuellen Computer erstellen. Der Name wird während der Eingabe überprüft. Falls er nicht gültig ist, werden Sie in einer Meldung über die Anforderungen für einen gültigen Namen informiert.
 	- **Beschreibung**: Geben Sie eine aussagekräftige Beschreibung für Ihre Formel ein. Dieser Wert steht über das Kontextmenü der Formel zur Verfügung, wenn Sie einen virtuellen Computer erstellen.
+	- **Benutzername**: Geben Sie einen Benutzernamen ein, dem Administratorrechte erteilt werden.
+	- **Kennwort**: Geben Sie einen Wert ein, der dem geheimen Schlüssel bzw. dem Kennwort zugeordnet ist, das für den angegebenen Benutzer verwendet werden soll, oder wählen Sie diesen Wert aus der Dropdownliste aus.
 	- **Image**: Dieses Feld zeigt den Namen des Basisimage an, das Sie auf dem vorherigen Blatt ausgewählt haben.
-	- **VM-Größe**: Wählen Sie eines der vordefinierten Elemente aus, mit denen die Prozessorkerne, die RAM-Größe und die Größe der Festplatte des zu erstellenden virtuellen Computers angegeben werden.
-	- **Virtuelles Netzwerk**: Wählen Sie diese Option und das gewünschte virtuelle Netzwerk aus.
-	- **Subnetz**: Wählen Sie diese Option und das gewünschte Subnetz aus.
+	- **Größe des virtuellen Computers**: Wählen Sie eines der vordefinierten Elemente aus, die die Prozessorkerne, die RAM-Größe und die Größe der Festplatte für den zu erstellenden virtuellen Computer angeben.
+	- **Virtuelles Netzwerk**: Geben Sie das gewünschte virtuelle Netzwerk an.
+	- **Subnetz**: Geben Sie das gewünschte Subnetz an.
 	- **Öffentliche IP-Adresse**: Wenn die Labrichtlinie öffentliche IP-Adressen für das ausgewählte Subnetz zulässt, geben Sie durch Auswahl von **Ja** oder **Nein** an, ob die IP-Adresse öffentlich sein soll. Andernfalls ist diese Option deaktiviert und als **Nein** festgelegt.
-	- **Artefakte**: Wählen Sie diese Option und – aus der Liste der Artefakte – die Artefakte aus, die Sie dem Basisimage hinzufügen möchten, und konfigurieren Sie sie. Beachten Sie, dass Artefaktparameter, bei denen es sich um sichere Zeichenfolgen handelt, nicht angezeigt werden, da die Formel keine sicheren Zeichenfolgenwerte speichert.
+	- **Artefakte**: Wählen Sie die Artefakte aus, die Sie dem Basisimage hinzufügen möchten, und konfigurieren Sie sie. Die Werte von sichere Zeichenfolgen werden nicht in der Formel gespeichert. Wenn es sich bei Artefaktparametern um sichere Zeichenfolgen handelt, werden sie deshalb nicht angezeigt.
 
     	![Formel erstellen](./media/devtest-lab-manage-formulas/create-formula.png)
 
-1. Wählen Sie **Erstellen**, um die Formel zu erstellen. Wenn die Formel erfolgreich erstellt wurde, wird sie auf dem Blatt **Labformeln** aufgeführt.
+1. Wählen Sie **Erstellen**, um die Formel zu erstellen.
 
-	![Neu erstellte Formel](./media/devtest-lab-manage-formulas/newly-created-formula.png)
-
-### Erstellen einer neuen Formel aus einem virtuellen Labcomputer
+### Erstellen einer Formel aus einem virtuellen Computer
 Die folgenden Schritte führen Sie durch den Prozess der Erstellung einer neuen Formel aus einem vorhandenen virtuellen Labcomputer.
 
-> [AZURE.NOTE] Nur virtuelle Computer, die nach dem 30. März 2016 erstellt wurden, unterstützen die Erstellung einer neuen Formel aus einem virtuellen Labcomputer.
+> [AZURE.NOTE] Damit Sie anhand eines virtuellen Computers eine Formel erstellen können, muss dieser virtuelle Computer nach dem 30. März 2016 erstellt worden sein.
 
-1. Melden Sie sich beim [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) an.
+1. Melden Sie sich auf dem [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) an.
 
-1. Wählen Sie **Durchsuchen** und dann in der Liste **DevTest Labs**.
+1. Wählen Sie **Weitere Dienste** und dann in der Liste **DevTest Labs**.
 
 1. Wählen Sie in der Liste der Labs das gewünschte Lab aus.
 
-1. Suchen Sie auf dem Blatt des Labs nach dem Abschnitt mit dem Titel **Meine VMs**, und wählen Sie den virtuellen Computer, aus dem Sie die neue Formel erstellen möchten.
+1. Wählen Sie auf dem Blatt **Übersicht** des Labs den virtuellen Computer aus, aus dem Sie die Formel erstellen möchten.
 
 	![Virtuelle Labs-Computer](./media/devtest-lab-manage-formulas/my-vms.png)
 
-1. Wählen Sie auf dem Blatt **Einstellungen** des virtuellen Computers **Formel erstellen**.
+1. Wählen Sie auf dem Blatt für den virtuellen Computer die Option **Create formula (reusable base)** (Formel erstellen (wiederverwendbare Basis)) aus.
 
 	![Formel erstellen](./media/devtest-lab-manage-formulas/create-formula-menu.png)
 
-1. Geben Sie auf dem Blatt **Formel erstellen** einen **Namen** und eine **Beschreibung** für Ihre neue Formel ein, und wählen Sie **OK**. Wenn die Formel erfolgreich erstellt wurde, wird sie auf dem Blatt **Labformeln** aufgeführt.
+1. Geben Sie auf dem Blatt **Create Formula** (Formel erstellen) einen **Namen** und eine **Beschreibung** für die neue Formel ein.
 
 	![Blatt „Formel erstellen“](./media/devtest-lab-manage-formulas/create-formula-blade.png)
+
+1. Wählen Sie **OK**, um die Formel zu erstellen.
+
+## Verwenden einer Formel zum Bereitstellen eines virtuellen Computers
+Nachdem Sie eine Formel erstellt haben, können Sie diese als Grundlage zum Erstellen eines virtuellen Computers verwenden. Die genaue Vorgehensweise wird im Abschnitt [Hinzufügen einer VM mit Artefakten](devtest-lab-add-vm-with-artifacts.md#add-a-vm-with-artifacts) beschrieben.
 
 ## Ändern einer Formel
 Um eine Formel zu ändern, gehen Sie folgendermaßen vor:
 
 1. Melden Sie sich beim [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) an.
 
-1. Wählen Sie **Durchsuchen** und dann in der Liste **DevTest Labs**.
+1. Wählen Sie **Weitere Dienste** und dann in der Liste **DevTest Labs**.
 
 1. Wählen Sie in der Liste der Labs das gewünschte Lab aus.
 
-1. Wählen Sie auf dem Blatt **Einstellungen** für das Lab **Formeln**.
+1. Wählen Sie auf dem Blatt für das Lab die Option **Formulas (reusable bases)** (Formeln (wiederverwendbare Basis)) aus.
 
     ![Menü „Formel“](./media/devtest-lab-manage-formulas/lab-settings-formulas.png)
 
@@ -120,9 +121,9 @@ Um eine Formel zu ändern, gehen Sie folgendermaßen vor:
 ## Löschen einer Formel 
 Um eine Formel zu löschen, gehen Sie folgendermaßen vor:
 
-1. Melden Sie sich beim [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) an.
+1. Melden Sie sich auf dem [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) an.
 
-1. Wählen Sie **Durchsuchen** und dann in der Liste **DevTest Labs**.
+1. Wählen Sie **Weitere Dienste** und dann in der Liste **DevTest Labs**.
 
 1. Wählen Sie in der Liste der Labs das gewünschte Lab aus.
 
@@ -140,8 +141,6 @@ Um eine Formel zu löschen, gehen Sie folgendermaßen vor:
 
 1. Wählen Sie im Bestätigungsdialogfeld **Ja**.
 
-    ![Kontextmenü „Formel“](./media/devtest-lab-manage-formulas/formula-delete-confirmation.png)
-
 [AZURE.INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
 ## Verwandte Blogbeiträge
@@ -151,4 +150,4 @@ Um eine Formel zu löschen, gehen Sie folgendermaßen vor:
 ## Nächste Schritte
 Nachdem Sie eine Formel erstellt haben, die zum Erstellen virtueller Computer verwendet werden soll, besteht der nächste Schritt darin, [Ihrem Lab einen virtuellen Computer hinzuzufügen](./devtest-lab-add-vm-with-artifacts.md).
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0907_2016-->

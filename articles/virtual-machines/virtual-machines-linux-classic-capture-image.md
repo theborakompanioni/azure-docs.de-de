@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/14/2016"
+	ms.date="08/31/2016"
 	ms.author="iainfou"/>
 
 
@@ -24,18 +24,18 @@
 
 In diesem Artikel wird erläutert, wie Sie einen klassischen virtuellen Azure-Computer, auf dem Linux ausgeführt wird, als Image erfassen, um weitere virtuelle Computer zu erstellen. Dieses Image umfasst den Betriebssystemdatenträger und die an den virtuellen Computer angefügten Datenträger. Da das Image keine Netzwerkkonfiguration enthält, müssen Sie die Konfiguration später vornehmen, wenn Sie die anderen virtuellen Computer auf der Basis dieses Images erstellen.
 
-Azure speichert das Image unter **Images**. Hier werden sämtliche Images abgelegt, die Sie hochladen. Weitere Informationen zu Images finden Sie unter [Informationen zu virtuellen Computern in Azure][].
+Azure speichert das Image unter **Images**, zusammen mit allen Images, die Sie hochgeladen haben. Weitere Informationen zu Images finden Sie unter [Informationen zu virtuellen Computern in Azure][].
 
 ## Voraussetzungen
 
-Diese Schritte setzen voraus, dass Sie bereits mithilfe des klassischen Bereitstellungsmodells einen virtuellen Azure-Computer erstellt, das Betriebssystem konfiguriert und Datenträger angefügt haben. Falls Sie dies noch nicht getan haben, lesen Sie sich [Erstellen eines benutzerdefinierten virtuellen Linux-Computers][] durch.
+Diese Schritte setzen voraus, dass Sie bereits mithilfe des klassischen Bereitstellungsmodells einen virtuellen Azure-Computer erstellt, das Betriebssystem konfiguriert und Datenträger angefügt haben. Falls Sie einen virtuellen Computer erstellen müssen, lesen Sie sich [Erstellen eines benutzerdefinierten virtuellen Linux-Computers][] durch.
 
 
 ## Erfassen des virtuellen Computers
 
 1. Stellen Sie über einen SSH-Client Ihrer Wahl eine [Verbindung mit dem virtuellen Computer](virtual-machines-linux-mac-create-ssh-keys.md) her.
 
-2. Geben Sie im SSH-Fenster den folgenden Befehl ein. Beachten Sie, dass die Ausgabe von `waagent` je nach Version dieses Hilfsprogramms geringfügig abweichen kann:
+2. Geben Sie im SSH-Fenster den folgenden Befehl ein. Die Ausgabe von `waagent` kann je nach Version dieses Hilfsprogramms geringfügig abweichen:
 
 	`sudo waagent -deprovision+user`
 
@@ -43,12 +43,12 @@ Diese Schritte setzen voraus, dass Sie bereits mithilfe des klassischen Bereitst
 
 	- Entfernen von SSH-Hostschlüsseln (sofern "Provisioning.RegenerateSshHostKeyPair" in der Konfigurationsdatei auf "y" festgelegt ist)
 	- Löschen der Namenserverkonfiguration in "/etc/resolv.conf"
-	- Entfernen des Kennworts des `root`-Benutzers aus "/etc/shadow" (sofern "Provisioning.DeleteRootPassword" in der Konfigurationsdatei auf "y" festgelegt ist)
+	- Entfernen des Kennworts des `root`-Benutzers aus „/etc/shadow“ (sofern „Provisioning.DeleteRootPassword“ in der Konfigurationsdatei auf „y“ festgelegt ist)
 	- Entfernen von zwischengespeicherten DHCP-Clientleases
 	- Setzt den Hostnamen auf "localhost.localdomain" zurück
 	- Löschen des zuletzt bereitgestellten Benutzerkontos (aus "/var/lib/waagent" abgerufen) **und der zugehörigen Daten**
 
-	>[AZURE.NOTE] Beim Aufheben der Bereitstellung werden Dateien und Daten gelöscht, um das Image zu "verallgemeinern". Führen Sie diesen Befehl nur auf einem virtuellen Computer aus, den Sie als neue Imagevorlage erfassen möchten. Dies garantiert nicht, dass alle vertraulichen Informationen aus dem Image gelöscht werden oder dass es für eine erneute Verteilung an Dritte genutzt werden kann.
+	>[AZURE.NOTE] Beim Aufheben der Bereitstellung werden Dateien und Daten gelöscht, um das Image zu „generalisieren“. Führen Sie diesen Befehl nur auf einem virtuellen Computer aus, den Sie als neue Imagevorlage erfassen möchten. Dies garantiert nicht, dass alle vertraulichen Informationen aus dem Image gelöscht werden oder dass es für eine erneute Verteilung an Dritte genutzt werden kann.
 
 
 3. Geben Sie **y** ein, um fortzufahren. Sie können den Parameter `-force` hinzufügen, um diesen Bestätigungsschritt zu vermeiden.
@@ -63,7 +63,7 @@ Diese Schritte setzen voraus, dass Sie bereits mithilfe des klassischen Bereitst
 
 	`azure config mode asm`
 
-7. Beenden Sie den virtuellen Computer, dessen Bereitstellung mit den oben stehenden Schritten bereits aufgehoben wurde:
+7. Beenden Sie den virtuellen Computer, dessen Bereitstellung mit den vorherigen Schritten bereits aufgehoben wurde:
 
 	`azure vm shutdown <your-virtual-machine-name>`
 
@@ -85,7 +85,7 @@ Diese Schritte setzen voraus, dass Sie bereits mithilfe des klassischen Bereitst
 
 
 ## Nächste Schritte
-Das Image kann jetzt zum Erstellen virtueller Computer verwendet werden. Sie können den Azure-CLI-Befehl `azure vm create` verwenden und den Namen des Images angeben, das Sie gerade erstellt haben. Weitere Informationen zu dem Befehl finden Sie unter [Verwenden der Azure-Befehlszeilenschnittstelle mit der Azure-Dienstverwaltung](../virtual-machines-command-line-tools.md). Alternativ können Sie einen benutzerdefinierten virtuellen Computer über das [klassische Azure-Portal][] erstellen, indem Sie die Methode **Aus Katalog** verwenden und das Image auswählen, das Sie gerade erstellt haben. Weitere Informationen finden Sie unter [Erstellen eines benutzerdefinierten virtuellen Computers][].
+Das Image kann jetzt zum Erstellen virtueller Computer verwendet werden. Sie können den Azure-CLI-Befehl `azure vm create` verwenden und den Namen des Images angeben, das Sie erstellt haben. Weitere Informationen zu diesem Befehl finden Sie unter [Verwenden der Azure-Befehlszeilenschnittstelle beim klassischen Bereitstellungsmodell](../virtual-machines-command-line-tools.md). Alternativ können Sie einen benutzerdefinierten virtuellen Computer über das [klassische Azure-Portal][] erstellen, indem Sie die Methode **Aus Katalog** verwenden und das Image auswählen, das Sie erstellt haben. Weitere Informationen finden Sie unter [Erstellen eines benutzerdefinierten virtuellen Computers][].
 
 **Siehe auch**: [Benutzerhandbuch für Azure Linux-Agent](virtual-machines-linux-agent-user-guide.md)
 
@@ -96,4 +96,4 @@ Das Image kann jetzt zum Erstellen virtueller Computer verwendet werden. Sie kö
 [How to Attach a Data Disk to a Virtual Machine]: virtual-machines-windows-classic-attach-disk.md
 [Erstellen eines benutzerdefinierten virtuellen Linux-Computers]: virtual-machines-linux-classic-create-custom.md
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0907_2016-->

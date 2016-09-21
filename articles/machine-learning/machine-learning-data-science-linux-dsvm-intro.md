@@ -61,7 +61,7 @@ Bevor Sie eine Linux Data Science Virtual Machine erstellen können, benötigen 
 Es folgen die Schritte zum Erstellen einer Instanz der Linux Data Science Virtual Machine:
 
 1.	Wechseln Sie im [Azure-Portal](https://portal.azure.com/#create/microsoft-ads.linux-data-science-vmlinuxdsvm) zur Auflistung der virtuellen Computer.
-2.	 Klicken Sie auf **Erstellen** (unten auf der Seite), um den Assistenten aufzurufen.![configure-data-science-vm](./media/machine-learning-data-science-linux-dsvm-intro/configure-linux-data-science-virtual-machine.png)
+2.	 Klicken Sie auf **Erstellen** (unten auf der Seite), um den Assistenten aufzurufen. ![configure-data-science-vm](./media/machine-learning-data-science-linux-dsvm-intro/configure-linux-data-science-virtual-machine.png)
 3.	 Die folgenden Abschnitte enthalten die Eingaben für jeden Schritt des Assistenten (im rechten Teil der obigen Abbildung aufgelistet), mit dem die Microsoft Data Science Virtual Machine erstellt wird. Die zum Konfigurieren der einzelnen Schritte erforderlichen Eingaben sind:
 
   a. **Grundlagen**:
@@ -247,7 +247,7 @@ Die VM enthält einige Machine Learning-Tools und -Algorithmen, die vorkompilier
 * **CNTK** (Computational Network Toolkit von Microsoft Research): Ein Deep Learning-Toolkit.
 * **Vowpal Wabbit**: Ein Algorithmus für schnelles Onlinelernen.
 * **xgboost**: Tool mit optimierten Boosted Tree-Algorithmen.
-* **Python**: Anaconda Python wird als Paket mit Machine Learning-Algorithmen für Bibliotheken wie Scikit-learn bereitgestellt. Sie können andere Bibliotheken installieren, indem Sie „pip install“ ausführen.
+* **Python**: Anaconda Python wird als Paket mit Machine Learning-Algorithmen für Bibliotheken wie Scikit-learn bereitgestellt. Sie können andere Bibliotheken installieren, indem Sie den `pip install`-Befehl verwenden.
 * **R**: Für R ist eine umfassende Bibliothek mit Machine Learning-Funktionen verfügbar. Einige Bibliotheken sind vorinstalliert, z.B. lm, glm, randomForest und rpart. Sie können andere Bibliotheken installieren, indem Sie Folgendes ausführen:
 
 		install.packages(<lib name>)
@@ -344,4 +344,4 @@ Informieren Sie sich weiter:
 * Erfahren Sie, wie Sie mithilfe des [Team Data Science-Prozesses](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) systematisch vollständige Analyselösungen erstellen.
 * Öffnen Sie den [Cortana Analytics-Katalog](http://gallery.cortanaanalytics.com), um Anwendungsbeispiele der Cortana Analytics Suite für die Bereiche Machine Learning und Datenanalysen zu erhalten.
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0907_2016-->

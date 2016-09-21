@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Erstellen Linux-basierter Hadoop-Cluster in HDInsight mithilfe von ARM-Vorlagen | Microsoft Azure"
-   	description="Erfahren Sie, wie Sie Cluster für Azure HDInsight mithilfe von Azure-ARM-Vorlagen erstellen."
+   pageTitle="Erstellen Linux-basierter Hadoop-Cluster in HDInsight mithilfe von Azure Resource Manager-Vorlagen | Microsoft Azure"
+   	description="Erfahren Sie, wie Sie Cluster für Azure HDInsight mithilfe von Azure Resource Manager-Vorlagen erstellen."
    services="hdinsight"
    documentationCenter=""
    tags="azure-portal"
@@ -14,14 +14,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="07/25/2016"
+   ms.date="09/02/2016"
    ms.author="jgao"/>
 
-# Erstellen Linux-basierter Hadoop-Cluster in HDInsight mithilfe von ARM-Vorlagen
+# Erstellen Linux-basierter Hadoop-Cluster in HDInsight mithilfe von Azure Resource Manager-Vorlagen
 
 [AZURE.INCLUDE [Auswahl](../../includes/hdinsight-selector-create-clusters.md)]
 
-Erfahren Sie mehr über das Erstellen von HDInsight-Clustern mithilfe von Azure-Ressourcen-Manager-Vorlagen (ARM). Weitere Informationen finden Sie unter [Bereitstellen einer Anwendung mit einer Azure-Ressourcen-Manager-Vorlage](../resource-group-template-deploy.md). Andere Tools und Features zur Clustererstellung finden Sie, indem Sie oben auf dieser Seite auf die Registerkartenauswahl klicken, oder unter [Methoden zur Clustererstellung](hdinsight-provision-clusters.md#cluster-creation-methods).
+Erfahren Sie mehr über das Erstellen von HDInsight-Clustern mithilfe von Azure Resource Manager-Vorlagen (ARM-Vorlagen). Weitere Informationen finden Sie unter [Bereitstellen einer Anwendung mit einer Azure Resource Manager-Vorlage](../resource-group-template-deploy.md). Andere Tools und Features zur Clustererstellung finden Sie, indem Sie oben auf dieser Seite auf die Registerkartenauswahl klicken, oder unter [Methoden zur Clustererstellung](hdinsight-provision-clusters.md#cluster-creation-methods).
 
 ##Voraussetzungen:
 
@@ -34,23 +34,31 @@ Bevor Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie F
 
     [AZURE.INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-powershell-and-cli.md)]
 
-## ARM-Vorlagen
+## Resource Manager-Vorlagen
 
-ARM-Vorlagen können HDInsight-Cluster, ihre abhängigen Ressourcen (z. B. das standardmäßige Speicherkonto) und andere Ressourcen (z. B. Azure SQL-Datenbank zur Verwendung von Apache Sqoop) für die Anwendung ganz einfach in einem einzigen, koordinierten Vorgang erstellt werden. In der Vorlage müssen Sie die Ressourcen definieren, die für die Anwendung erforderlich sind, und Bereitstellungsparameter für die Eingabe von Werten für unterschiedliche Umgebungen angeben. Die Vorlage besteht aus JSON und Ausdrücken, mit denen Sie Werte für die Bereitstellung erstellen können.
+Mit Resource Manager-Vorlagen können HDInsight-Cluster, ihre abhängigen Ressourcen (z.B. das standardmäßige Speicherkonto) und andere Ressourcen (z.B. Azure SQL-Datenbank zur Verwendung von Apache Sqoop) für die Anwendung ganz einfach in einem einzigen, koordinierten Vorgang erstellt werden. In der Vorlage müssen Sie die Ressourcen definieren, die für die Anwendung erforderlich sind, und Bereitstellungsparameter für die Eingabe von Werten für unterschiedliche Umgebungen angeben. Die Vorlage besteht aus JSON und Ausdrücken, mit denen Sie Werte für die Bereitstellung erstellen können.
 
-Eine ARM-Vorlage zum Erstellen eines HDInsight-Clusters und des abhängigen Azure-Speicherkontos finden Sie in [Anhang A](#appx-a-arm-template). Verwenden Sie den plattformübergreifenden [VSCode](https://code.visualstudio.com/#alt-downloads) mit der [ARM-Erweiterung](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools) oder einem Texteditor zum Speichern der Vorlage in eine Datei auf Ihrer Arbeitsstation. Sie erfahren, wie die Vorlage mithilfe verschiedener Tools aufgerufen werden kann.
+Eine Resource Manager-Vorlage zum Erstellen eines HDInsight-Clusters und des abhängigen Azure Storage-Kontos finden Sie in [Anhang A](#appx-a-arm-template). Verwenden Sie den plattformübergreifenden [VSCode](https://code.visualstudio.com/#alt-downloads) mit der [Resource Manager-Erweiterung](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools) oder einem Texteditor, um die Vorlage in einer Datei auf Ihrer Arbeitsstation zu speichern. Sie erfahren, wie die Vorlage mithilfe verschiedener Tools aufgerufen werden kann.
 
-Weitere Informationen zu ARM-Vorlagen finden Sie unter
+Weitere Informationen über Resource Manager-Vorlagen finden Sie unter:
 
-- [Erstellen von Azure-Ressourcen-Manager-Vorlagen](../resource-group-authoring-templates.md)
-- [Bereitstellen einer Anwendung mit einer Azure-Ressourcen-Manager-Vorlage](../resource-group-template-deploy.md)
+- [Erstellen von Azure Resource Manager-Vorlagen](../resource-group-authoring-templates.md)
+- [Bereitstellen einer Anwendung mit einer Azure Resource Manager-Vorlage](../resource-group-template-deploy.md)
 
+Um das JSON-Schema für bestimmte Elemente zu ermitteln, können Sie wie folgt vorgehen:
 
+1. Öffnen Sie das [Azure-Portal](https://porta.azure.com), um einen HDInsight-Cluster zu erstellen. Weitere Informationen finden Sie unter [Erstellen von Linux-basierten Clustern in HDInsight mithilfe des Azure-Portals](hdinsight-hadoop-create-linux-clusters-portal.md).
+2. Konfigurieren Sie die erforderlichen Elemente und die Elemente, die für das JSON-Schema benötigt werden.
+3. Klicken Sie auf **Automatisierungsoptionen**, bevor Sie auf **Erstellen** klicken, wie im folgenden Screenshot gezeigt:
+
+    ![HDInsight Hadoop Cluster erstellen Resource Manager-Vorlage Schema Automatisierungsoptionen](./media/hdinsight-hadoop-create-linux-clusters-arm-templates/hdinsight-create-cluster-resource-manager-template-automation-option.png)
+
+    Das Portal erstellt auf Grundlage Ihrer Konfigurationseinstellungen eine Resource Manager-Vorlage.
 ## Bereitstellen mit PowerShell
 
 Gehen Sie wie folgt vor, um den Linux-basierten HDInsight-Cluster zu erstellen.
 
-**So stellen Sie ein Cluster mithilfe einer ARM-Vorlage bereit**
+**Bereitstellen eines Clusters mithilfe von Resource Manager-Vorlagen**
 
 1. Speichern Sie die JSON-Datei aus [Anhang A](#appx-a-arm-template) auf Ihrer Arbeitsstation. Im PowerShell-Skript lautet der Dateiname *C:\\HDITutorials-ARM\\hdinsight-arm-template.json*.
 2. Legen Sie ggf. die Parameter und Variablen fest.
@@ -104,20 +112,20 @@ Gehen Sie wie folgt vor, um den Linux-basierten HDInsight-Cluster zu erstellen.
         # List cluster
         Get-AzureRmHDInsightCluster -ResourceGroupName $resourceGroupName -ClusterName $hdinsightClusterName 
 
-	Mit dem PowerShell-Skript wird nur der Name des Clusters konfiguriert. Der Name des Speicherkontos ist in der Vorlage hartcodiert. Sie werden dazu aufgefordert, das Benutzerkennwort für den Cluster (der Standardbenutzername ist *admin*) und das SSH-Benutzerkennwort (der Standardbenutzername ist *sshuser*) einzugeben.
+	Mit dem PowerShell-Skript wird nur der Name des Clusters konfiguriert. Der Name des Speicherkontos ist in der Vorlage hartcodiert. Sie werden dazu aufgefordert, das Benutzerkennwort für den Cluster (Standardbenutzername: *admin*) sowie das SSH-Benutzerkennwort (Standardbenutzername: *sshuser*) einzugeben.
 	
 Weitere Informationen finden Sie unter [Bereitstellen mit PowerShell](../resource-group-template-deploy.md#deploy-with-powershell).
 
 ## Bereitstellen über die Azure-Befehlszeilenschnittstelle
 
-Im folgende Beispiel werden ein Cluster und dessen abhängiges Speicherkonto und der zugehörige Container durch Aufrufen einer ARM-Vorlage erstellt:
+Im folgende Beispiel werden ein Cluster und dessen abhängiges Speicherkonto und der zugehörige Container durch Aufrufen einer Resource Manager-Vorlage erstellt:
 
 	azure login
 	azure config mode arm
     azure group create -n hdi1229rg -l "East US"
     azure group deployment create --resource-group "hdi1229rg" --name "hdi1229" --template-file "C:\HDITutorials-ARM\hdinsight-arm-template.json"
     
-Sie werden dazu aufgefordert, den Clusternamen, das Benutzerkennwort für den Cluster (der Standardbenutzername ist *admin*) und das SSH-Benutzerkennwort (der Standardbenutzername ist *sshuser*) einzugeben. Zum Bereitstellen von Inline-Parametern:
+Sie werden dazu aufgefordert, den Clusternamen, das Benutzerkennwort für den Cluster (Standardbenutzername: *admin*) sowie das SSH-Benutzerkennwort (Standardbenutzername: *sshuser*) einzugeben. So geben Sie Inline-Parameter an:
 
     azure group deployment create --resource-group "hdi1229rg" --name "hdi1229" --template-file "c:\Tutorials\HDInsightARM\create-linux-based-hadoop-cluster-in-hdinsight.json" --parameters '{"clusterName":{"value":"hdi1229"},"clusterLoginPassword":{"value":"Pass@word1"},"sshPassword":{"value":"Pass@word1"}}'
 
@@ -127,9 +135,9 @@ Informationen hierzu finden Sie unter [Bereitstellen mit der REST-API](../resour
 
 ## Bereitstellen mit Visual Studio 2013
 
-Mit Visual Studio können Sie über die Benutzeroberfläche ein Ressourcengruppenprojekt erstellen und in Azure bereitstellen. Wählen Sie den Typ der Ressourcen aus, die in das Projekt aufgenommen werden sollen, und diese Ressourcen werden der Ressourcen-Manager-Vorlage automatisch hinzugefügt. Das Projekt enthält auch ein PowerShell-Skript zum Bereitstellen der Vorlage.
+Mit Visual Studio können Sie über die Benutzeroberfläche ein Ressourcengruppenprojekt erstellen und in Azure bereitstellen. Wählen Sie den Typ der Ressourcen aus, die in das Projekt aufgenommen werden sollen, und diese Ressourcen werden der Resource Manager-Vorlage automatisch hinzugefügt. Das Projekt enthält auch ein PowerShell-Skript zum Bereitstellen der Vorlage.
 
-Eine Einführung in die Verwendung von Visual Studio mit Ressourcengruppen finden Sie unter [Erstellen und Bereitstellen von Azure-Ressourcengruppen über Visual Studio](../vs-azure-tools-resource-groups-deployment-projects-create-deploy.md).
+Eine Einführung in die Verwendung von Visual Studio mit Ressourcengruppen finden Sie unter [Erstellen und Bereitstellen von Azure-Ressourcengruppen mit Visual Studio](../vs-azure-tools-resource-groups-deployment-projects-create-deploy.md).
 
 ##Nächste Schritte
 In diesem Artikel haben Sie mehrere Möglichkeiten zum Erstellen von HDInsight-Clustern kennengelernt. Weitere Informationen finden Sie in den folgenden Artikeln:
@@ -140,9 +148,11 @@ In diesem Artikel haben Sie mehrere Möglichkeiten zum Erstellen von HDInsight-C
 - Informationen zu den Abschnitten der Azure Resource Manager-Vorlage finden Sie unter [Erstellen von Vorlagen](../resource-group-authoring-templates.md).
 - Unter [Vorlagenfunktionen](../resource-group-template-functions.md) finden Sie eine Liste der Funktionen, die Sie in einer Azure Resource Manager-Vorlage verwenden können.
 
-##Anhang A: ARM-Vorlage
+##Anhang A: Resource Manager-Vorlage
 
-Die folgende Azure-Ressourcen-Manager-Vorlage erstellt einen Linux-basierten Hadoop-Cluster mit abhängigem Azure-Speicherkonto.
+Die folgende Azure Resource Manager-Vorlage erstellt einen Linux-basierten Hadoop-Cluster mit abhängigem Azure-Speicherkonto.
+
+> [AZURE.NOTE] Das Beispiel enthält Konfigurationsinformationen für den Hive-Metastore und den Oozie-Metastore. Entfernen Sie den entsprechenden Abschnitt, oder konfigurieren Sie ihn, bevor Sie die Vorlage verwenden.
 
     {
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -164,20 +174,20 @@ Die folgende Azure-Ressourcen-Manager-Vorlage erstellt einen Linux-basierten Had
         "clusterLoginPassword": {
         "type": "securestring",
         "metadata": {
-            "description": "The password for the cluster login."
+            "description": "The password must be at least 10 characters in length and must contain at least one digit, one non-alphanumeric character, and one upper or lower case letter."
         }
         },
         "sshUserName": {
         "type": "string",
         "defaultValue": "sshuser",
         "metadata": {
-            "description": "These credentials can be used to remotely access the cluster and the edge node virtual machine."
+            "description": "These credentials can be used to remotely access the cluster."
         }
         },
         "sshPassword": {
         "type": "securestring",
         "metadata": {
-            "description": "The password for the ssh user."
+            "description": "The password must be at least 10 characters in length and must contain at least one digit, one non-alphanumeric character, and one upper or lower case letter."
         }
         },
         "location": {
@@ -214,19 +224,19 @@ Die folgende Azure-Ressourcen-Manager-Vorlage erstellt einen Linux-basierten Had
         "metadata": {
             "description": "The type of the HDInsight cluster to create."
         }
-        },  
+        },
         "clusterWorkerNodeCount": {
         "type": "int",
         "defaultValue": 2,
         "metadata": {
             "description": "The number of nodes in the HDInsight cluster."
         }
-        }      
+        }
     },
     "variables": {
         "defaultApiVersion": "2015-05-01-preview",
         "clusterApiVersion": "2015-03-01-preview",
-        "clusterStorageAccountName": "[concat(parameters('clusterName'),'store')]"      
+        "clusterStorageAccountName": "[concat(parameters('clusterName'),'store')]"
     },
     "resources": [
         {
@@ -234,8 +244,8 @@ Die folgende Azure-Ressourcen-Manager-Vorlage erstellt einen Linux-basierten Had
         "type": "Microsoft.Storage/storageAccounts",
         "location": "[parameters('location')]",
         "apiVersion": "[variables('defaultApiVersion')]",
-        "dependsOn": [],
-        "tags": {},
+        "dependsOn": [ ],
+        "tags": { },
         "properties": {
             "accountType": "Standard_LRS"
         }
@@ -245,13 +255,14 @@ Die folgende Azure-Ressourcen-Manager-Vorlage erstellt einen Linux-basierten Had
         "type": "Microsoft.HDInsight/clusters",
         "location": "[parameters('location')]",
         "apiVersion": "[variables('clusterApiVersion')]",
-        "dependsOn": [
-            "[concat('Microsoft.Storage/storageAccounts/',variables('clusterStorageAccountName'))]"
-        ],
-        "tags": {},
+        "dependsOn": [ "[concat('Microsoft.Storage/storageAccounts/',variables('clusterStorageAccountName'))]" ],
+        "tags": {
+
+        },
         "properties": {
-            "clusterVersion": "3.2",
+            "clusterVersion": "3.4",
             "osType": "Linux",
+            "tier": "standard",
             "clusterDefinition": {
             "kind": "[parameters('clusterType')]",
             "configurations": {
@@ -259,7 +270,36 @@ Die folgende Azure-Ressourcen-Manager-Vorlage erstellt einen Linux-basierten Had
                 "restAuthCredential.isEnabled": true,
                 "restAuthCredential.username": "[parameters('clusterLoginUserName')]",
                 "restAuthCredential.password": "[parameters('clusterLoginPassword')]"
-                }
+                },
+                "hive-site": {
+                    "javax.jdo.option.ConnectionDriverName": "com.microsoft.sqlserver.jdbc.SQLServerDriver",
+                    "javax.jdo.option.ConnectionURL": "jdbc:sqlserver://myadla0901dbserver.database.windows.net;database=myhive20160901;encrypt=true;trustServerCertificate=true;create=false;loginTimeout=300",
+                    "javax.jdo.option.ConnectionUserName": "johndole",
+                    "javax.jdo.option.ConnectionPassword": "myPassword$"
+                },
+                "hive-env": {
+                    "hive_database": "Existing MSSQL Server database with SQL authentication",
+                    "hive_database_name": "myhive20160901",
+                    "hive_database_type": "mssql",
+                    "hive_existing_mssql_server_database": "myhive20160901",
+                    "hive_existing_mssql_server_host": "myadla0901dbserver.database.windows.net",
+                    "hive_hostname": "myadla0901dbserver.database.windows.net"
+                },
+                "oozie-site": {
+                    "oozie.service.JPAService.jdbc.driver": "com.microsoft.sqlserver.jdbc.SQLServerDriver",
+                    "oozie.service.JPAService.jdbc.url": "jdbc:sqlserver://myadla0901dbserver.database.windows.net;database=myhive20160901;encrypt=true;trustServerCertificate=true;create=false;loginTimeout=300",
+                    "oozie.service.JPAService.jdbc.username": "johndole",
+                    "oozie.service.JPAService.jdbc.password": "myPassword$",
+                    "oozie.db.schema.name": "oozie"
+                },
+                "oozie-env": {
+                    "oozie_database": "Existing MSSQL Server database with SQL authentication",
+                    "oozie_database_name": "myhive20160901",
+                    "oozie_database_type": "mssql",
+                    "oozie_existing_mssql_server_database": "myhive20160901",
+                    "oozie_existing_mssql_server_host": "myadla0901dbserver.database.windows.net",
+                    "oozie_hostname": "myadla0901dbserver.database.windows.net"
+                }            
             }
             },
             "storageProfile": {
@@ -278,7 +318,7 @@ Die folgende Azure-Ressourcen-Manager-Vorlage erstellt einen Linux-basierten Had
                 "name": "headnode",
                 "targetInstanceCount": "2",
                 "hardwareProfile": {
-                    "vmSize": "Large"
+                    "vmSize": "Standard_D3"
                 },
                 "osProfile": {
                     "linuxOperatingSystemProfile": {
@@ -291,7 +331,7 @@ Die folgende Azure-Ressourcen-Manager-Vorlage erstellt einen Linux-basierten Had
                 "name": "workernode",
                 "targetInstanceCount": "[parameters('clusterWorkerNodeCount')]",
                 "hardwareProfile": {
-                    "vmSize": "Large"
+                    "vmSize": "Standard_D3"
                 },
                 "osProfile": {
                     "linuxOperatingSystemProfile": {
@@ -313,4 +353,4 @@ Die folgende Azure-Ressourcen-Manager-Vorlage erstellt einen Linux-basierten Had
     }
     }
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0907_2016-->

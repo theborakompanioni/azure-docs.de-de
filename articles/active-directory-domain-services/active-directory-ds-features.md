@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/06/2016"
+	ms.date="08/31/2016"
 	ms.author="maheshu"/>
 
 # Azure AD-Domänendienste *(Vorschau)*
 
-## Merkmale
+## Features
 Die folgenden Features sind in der Vorschauversion der Azure Active Directory-Domänendienste verfügbar.
 
 - **Einfache Bereitstellung:** Sie können die Azure AD-Domänendienste für Ihren Azure AD-Mandanten mit nur wenigen Mausklicks aktivieren. Unabhängig davon, ob es sich bei Ihrem Azure AD-Mandanten um einen Cloudmandanten handelt oder ob er mit Ihrem lokalen Verzeichnis synchronisiert wird, kann Ihre verwaltete Domäne schnell bereitgestellt werden.
@@ -27,7 +27,7 @@ Die folgenden Features sind in der Vorschauversion der Azure Active Directory-Do
 
 - **Eine Domäneninstanz pro Azure AD-Verzeichnis:** Sie können eine einzige Active Directory-Domäne für jedes Azure AD-Verzeichnis erstellen.
 
-- **Domänen mit benutzerdefinierten Namen erstellen:** Erstellen Sie Domänen mit benutzerdefinierten Namen (z. B. contoso.local) mithilfe der Azure Active Directory-Domänendienste. Dies schließt sowohl überprüfte als auch nicht überprüfte Domänennamen ein. Optional können Sie eine Domäne mit dem integrierten Domänensuffix erstellen (d. h. *.onmicrosoft.com), die von Ihrem Azure AD-Verzeichnis bereitgestellt wird.
+- **Domänen mit benutzerdefinierten Namen erstellen:** Erstellen Sie Domänen mit benutzerdefinierten Namen (z.B. contoso100.com) mithilfe der Azure Active Directory-Domänendienste. Dies schließt sowohl überprüfte als auch nicht überprüfte Domänennamen ein. Optional können Sie eine Domäne mit dem integrierten Domänensuffix erstellen (d. h. *.onmicrosoft.com), die von Ihrem Azure AD-Verzeichnis bereitgestellt wird.
 
 - **In Azure AD integriert:** Sie müssen die Replikation in Azure Active Directory-Domänendienste nicht konfigurieren oder verwalten. Benutzerkonten, Gruppenmitgliedschaften und Benutzeranmeldeinformationen (Kennwörter) aus dem Azure AD-Verzeichnis stehen in Azure Active Directory-Domänendiensten automatisch zur Verfügung. Neue Benutzer, Gruppen oder Änderungen von Attributen auf Ihrem Azure AD-Mandanten oder in Ihrem lokalen Verzeichnis werden mit Azure Active Directory-Domänendiensten automatisch synchronisiert.
 
@@ -51,4 +51,4 @@ Die folgenden Features sind in der Vorschauversion der Azure Active Directory-Do
 
 - **Verwendung vertrauter Verwaltungstools:** Sie können vertraute Windows Server Active Directory-Verwaltungstools wie das Active Directory-Verwaltungscenter oder Active Directory-PowerShell zur Verwaltung von Domänen einsetzen, die von Azure Active Directory-Domänendiensten bereitgestellt werden.
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0907_2016-->

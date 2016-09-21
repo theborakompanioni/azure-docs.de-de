@@ -1,10 +1,10 @@
 <properties 
    pageTitle="Erste Schritte mit Azure Data Lake Analytics mithilfe der Azure-Befehlszeilenschnittstelle | Microsoft Azure" 
-   description="Erfahren Sie, wie Sie die Azure-Befehlszeilenschnittstelle zum Erstellen eines Data Lake-Speicherkontos, zum Erstellen eines Data Lake Analytics-Auftrags mit U-SQL und zum Senden des Auftrags verwenden." 
+   description="Erfahren Sie, wie Sie die Azure-Befehlszeilenschnittstelle zum Erstellen eines Data Lake-Speicherkontos, zum Erstellen eines Data Lake Analytics-Auftrags mit U-SQL und zum Senden des Auftrags verwenden. " 
    services="data-lake-analytics" 
    documentationCenter="" 
    authors="edmacauley" 
-   manager="paulettm" 
+   manager="jhubbard" 
    editor="cgronlun"/>
  
 <tags
@@ -29,7 +29,7 @@ In diesem Tutorial entwickeln Sie einen Auftrag, bei dem eine Datei mit tabulato
 
 ##Voraussetzungen
 
-Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
+Bevor Sie mit diesem Tutorial beginnen können, benötigen Sie Folgendes:
 
 - **Ein Azure-Abonnement**. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
 - **Azure-Befehlszeilenschnittstelle**. Weitere Informationen finden Sie unter [Installieren und Konfigurieren der Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md).
@@ -46,7 +46,7 @@ Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
 
 Zum Ausführen von Aufträgen ist ein Data Lake Analytics-Konto erforderlich. Zum Erstellen eines Data Lake Analytics-Kontos müssen Sie Folgendes angeben:
 
-- **Azure-Ressourcengruppe**: Es muss ein Data Lake Analytics-Konto in einer Azure-Ressourcengruppe erstellt werden. Mit dem [Azure-Ressourcen-Manager](../resource-group-overview.md) können Sie mit den Ressourcen in Ihrer Anwendung als Gruppe arbeiten. Sie können alle Ressourcen für Ihre Anwendung in einem einzigen, koordinierten Vorgang bereitstellen, aktualisieren oder löschen.  
+- **Azure-Ressourcengruppe**: Es muss ein Data Lake Analytics-Konto in einer Azure-Ressourcengruppe erstellt werden. Mit dem [Azure-Ressourcen-Manager](../resource-group-overview.md) können Sie mit den Ressourcen in Ihrer Anwendung als Gruppe arbeiten. Sie können alle Ressourcen für Ihre Anwendung in einem einzigen, koordinierten Vorgang bereitstellen, aktualisieren oder löschen.
 
 	So listen Sie die Ressourcengruppen in Ihrem Abonnement auf:
     
@@ -153,7 +153,7 @@ Nachdem der Auftrag abgeschlossen wurde, können Sie die folgenden Cmdlets verwe
 	azure datalake store filesystem export "<Data Lake Store Account Name>" "/Output/SearchLog-from-Data-Lake.csv" "<Destination>"
 	azure datalake store filesystem read "<Data Lake Store Account Name>" "/Output/SearchLog-from-Data-Lake.csv" <Length> <Offset>
 
-## Weitere Informationen
+## Siehe auch
 
 - Wenn Sie dasselbe Tutorial mit anderen Tools verwenden möchten, klicken Sie oben auf der Seite auf die Registerkartenauswahl.
 - Eine komplexere Abfrage finden Sie unter [Analysieren von Websiteprotokollen mit Azure Data Lake Analytics](data-lake-analytics-analyze-weblogs.md).
@@ -162,4 +162,4 @@ Nachdem der Auftrag abgeschlossen wurde, können Sie die folgenden Cmdlets verwe
 - Informationen zu Verwaltungsaufgaben finden Sie unter [Verwalten von Azure Data Lake Analytics mithilfe des Azure-Portals](data-lake-analytics-manage-use-portal.md).
 - Eine Übersicht über Data Lake Analytics finden Sie unter [Azure Data Lake Analytics – Übersicht](data-lake-analytics-overview.md).
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0914_2016-->

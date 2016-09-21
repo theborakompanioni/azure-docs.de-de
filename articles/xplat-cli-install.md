@@ -35,33 +35,35 @@ Sobald die Azure-CLI installiert ist, [verbinden Sie sie mit Ihrem Azure-Abonnem
 
 
 
-## Installieren eines npm-Pakets
+## Option 1. Installieren eines npm-Pakets
 
 Um die CLI aus einem npm-Paket zu installieren, müssen auf Ihrem System die aktuellen Versionen von Node.js und npm installiert sein. Führen Sie dann den folgenden Befehl aus, um die Azure-CLI zu installieren. (Bei Linux-Distributionen müssen Sie möglicherweise **sudo** verwenden, um den Befehl __npm__ erfolgreich ausführen zu können.)
 
 	npm install azure-cli -g
 
-> [AZURE.NOTE]Falls Sie Node.js und npm für Ihr Betriebssystem installieren oder aktualisieren müssen, finden Sie weitere Informationen unter [Nodejs.org](https://nodejs.org/en/download/package-manager/). Wir empfehlen die Installation der aktuellsten LTS-Version von Node.js (4.x). Wenn Sie eine ältere Version verwenden, kommt es möglicherweise zu Fehlern bei der Installation.
+> [AZURE.NOTE]Falls Sie Node.js und npm für Ihr Betriebssystem installieren oder aktualisieren müssen, finden Sie weitere Informationen unter [Nodejs.org](https://nodejs.org/en/download/package-manager/). Wir empfehlen die Installation der aktuellsten LTS-Version von Node.js (4.x). Wenn Sie eine ältere Version verwenden, kommt es möglicherweise zu Fehlern bei der Installation. Weitere Informationen zu npm finden Sie unter [npmjs.com](https://www.npmjs.com/).
 
-## Verwenden eines Installers
+## Option 2. Verwenden eines Installers
 
 Die folgenden CLI-Installationspakete stehen ebenfalls zum Download bereit:
 
 
-* [OS X Installer][mac-installer]
+* [Mac OS X-Installer][mac-installer]
 
 * [Windows Installer][windows-installer]
 
 * [Tar-Datei für Linux][linux-installer] (erfordert Node.js und npm): Installation durch Ausführen von `sudo npm install -g <path to downloaded tar file>`
 
 
-## Verwenden eines Docker-Containers
+## Option 3. Verwenden eines Docker-Containers
 
-Führen Sie auf einem Docker-Host folgenden Befehl aus:
+Wenn Sie einen Docker-Host eingerichtet haben, können Sie die Azure-CLI in einem Docker-Container ausführen. Führen Sie folgenden Befehl aus:
 
 ```
 docker run -it microsoft/azure-cli
 ```
+
+Weitere Informationen zu Docker finden Sie unter [docker.com](https://docs.docker.com/engine/understanding-docker/).
 
 ## Ausführen von Azure-CLI-Befehlen
 Sobald die Azure-CLI installiert ist, führen Sie den Befehl **azure** in der CLI (Bash, Terminal, Eingabeaufforderung usw.) aus. Um beispielsweise den Hilfebefehl auszuführen, geben Sie Folgendes ein:
@@ -83,7 +85,7 @@ azure --version
 
 Jetzt sind Sie soweit. Um Zugriff auf alle CLI-Befehle für die Arbeit mit Ihren eigenen Ressourcen zu erhalten, [stellen Sie über die Azure-CLI eine Verbindung mit Ihrem Azure-Abonnement her](xplat-cli-connect.md).
 
->[AZURE.NOTE] Wenn Sie die Azure CLI-Version 0.9.20 oder später zum ersten Mal verwenden, werden Sie in einer Meldung gefragt, ob Sie Microsoft das Sammeln von Informationen zur Verwendung der CLI erlauben möchten. Die Teilnahme ist freiwillig. Wenn Sie sich für die Teilnahme entscheiden, können Sie diese durch Ausführen von `azure telemetry --disable` jederzeit beenden. Zum Aktivieren der Teilnahme können Sie jederzeit `azure telemetry --enable` ausführen.
+>[AZURE.NOTE] Wenn Sie die Azure-CLI zum ersten Mal verwenden, werden Sie in einer Meldung gefragt, ob Sie Microsoft das Sammeln von Informationen zur Verwendung der CLI erlauben möchten. Die Teilnahme ist freiwillig. Wenn Sie sich für die Teilnahme entscheiden, können Sie diese durch Ausführen von `azure telemetry --disable` jederzeit beenden. Zum Aktivieren der Teilnahme können Sie jederzeit `azure telemetry --enable` ausführen.
 
 
 ## Aktualisieren der CLI
@@ -128,4 +130,4 @@ echo 'source ~/azure.completion.sh' >> ~/.bash_profile
 [cliasm]: virtual-machines-command-line-tools.md
 [cliarm]: ./virtual-machines/azure-cli-arm-commands.md
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0907_2016-->

@@ -19,7 +19,7 @@
     
 #Gebietsübergreifende, hochverfügbare AD FS-Bereitstellung in Azure mit Azure Traffic Manager
 
-Unter [AD FS-Bereitstellung in Azure](.\active-directory-aadconnect-azure-adfs.md) erfahren Sie Schritt für Schritt, wie Sie in Azure eine einfache AD FS-Infrastruktur für Ihre Organisation bereitstellen. Dieser Artikel enthält die nächsten Schritte, mit denen Sie in Azure mithilfe von [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) eine gebietsübergreifende AD FS-Bereitstellung erstellen können. Azure Traffic Manager unterstützt Sie beim Erstellen einer geografisch verteilten, hochverfügbaren und hochleistungsfähigen von AD FS-Infrastruktur für Ihre Organisation. Hierbei kommt eine Reihe von Routingmethoden zum Einsatz, die zur Erfüllung der verschiedenen Anforderungen der Infrastruktur zur Verfügung stehen.
+Unter [AD FS-Bereitstellung in Azure](active-directory-aadconnect-azure-adfs.md) erfahren Sie Schritt für Schritt, wie Sie in Azure eine einfache AD FS-Infrastruktur für Ihre Organisation bereitstellen. Dieser Artikel enthält die nächsten Schritte, mit denen Sie in Azure mithilfe von [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) eine gebietsübergreifende AD FS-Bereitstellung erstellen können. Azure Traffic Manager unterstützt Sie beim Erstellen einer geografisch verteilten, hochverfügbaren und hochleistungsfähigen von AD FS-Infrastruktur für Ihre Organisation. Hierbei kommt eine Reihe von Routingmethoden zum Einsatz, die zur Erfüllung der verschiedenen Anforderungen der Infrastruktur zur Verfügung stehen.
 
 Eine hochverfügbare, gebietsübergreifende AD FS-Infrastruktur bietet folgende Vorteile:
 
@@ -49,7 +49,7 @@ Die grundlegenden Entwurfsprinzipien entsprechen den Entwurfsprinzipien aus dem 
 ##Schritte zum Integrieren von Azure Traffic Manager
 
 ###Bereitstellen von AD FS in der neuen geografischen Region
-Orientieren Sie sich an den Schritten und Richtlinien in [AD FS-Bereitstellung in Azure](.\active-directory-aadconnect-azure-adfs.md), um die gleiche Topologie in der neuen geografischen Region bereitzustellen.
+Orientieren Sie sich an den Schritten und Richtlinien in [AD FS-Bereitstellung in Azure](active-directory-aadconnect-azure-adfs.md), um die gleiche Topologie in der neuen geografischen Region bereitzustellen.
 
 ###DNS-Bezeichnungen für öffentliche IP-Adressen der (öffentlichen) Lastenausgleichsmodule mit Internetzugriff
 Wie weiter oben bereits erwähnt, kann Azure Traffic Manager nur auf DNS-Bezeichnungen als Endpunkte verweisen. Daher müssen unbedingt DNS-Bezeichnungen für die öffentlichen IP-Adressen der externen Lastenausgleichsmodule erstellt werden. Der folgende Screenshot zeigt, wie Sie Ihre DNS-Bezeichnung für die öffentliche IP-Adresse konfigurieren können:
@@ -131,4 +131,4 @@ Die einfachste Möglichkeit zum Testen von AD FS ist die Verwendung der Seite �
 * [Verwalten von Azure Traffic Manager-Profilen](../traffic-manager/traffic-manager-manage-profiles.md)
 * [Hinzufügen, Deaktivieren, Aktivieren oder Löschen von Endpunkten](../traffic-manager/traffic-manager-endpoints.md)
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0914_2016-->

@@ -12,12 +12,12 @@
     ms.topic="article"
     ms.tgt_pltfrm="cache-redis"
     ms.workload="tbd"
-    ms.date="06/09/2016"
+    ms.date="09/07/2016"
     ms.author="sdanie" />
 
 # Migrieren von Managed Cache Service zu Azure Redis Cache
 
-Zum Migrieren von Anwendungen, die Azure Managed Cache Service verwenden, zu Azure Redis Cache, sind je nach den von Ihrer Cachinganwendung verwendeten Features nur minimale Änderungen an der Anwendung erforderlich. Sie APIs sind zwar nicht identisch, aber doch sehr ähnlich. Der vorhandene Code für die Verwendung von Managed Cache Service kann nach minimalen Änderungen für den Zugriff auf einen Cache wiederverwendet werden. In diesem Thema wird beschrieben, wie Sie erforderlichen Änderungen an der Konfiguration und der Anwendung vornehmen, um Managed Cache Service-Anwendungen zur Verwendung von Azure Redis Cache migrieren, und wie Sie mit einigen der Features von Azure Redis Cache die Funktionen eines Managed Cache Service-Cache implementieren.
+Zum Migrieren von Anwendungen, die Azure Managed Cache Service verwenden, zu Azure Redis Cache, sind je nach den von Ihrer Cachinganwendung verwendeten Features nur minimale Änderungen an der Anwendung erforderlich. Sie APIs sind zwar nicht identisch, aber doch sehr ähnlich. Der vorhandene Code für die Verwendung von Managed Cache Service kann nach minimalen Änderungen für den Zugriff auf einen Cache wiederverwendet werden. In diesem Thema wird beschrieben, wie Sie die erforderlichen Änderungen an der Konfiguration und der Anwendung vornehmen, um Managed Cache Service-Anwendungen zur Verwendung von Azure Redis Cache zu migrieren, und wie Sie mit einigen der Features von Azure Redis Cache die Funktionen eines Managed Cache Service-Cache implementieren.
 
 ## Schritte bei der Migration
 
@@ -33,7 +33,7 @@ Die folgenden Schritte sind zum Migrieren einer Managed Cache Service-Anwendung 
 	-	Herstellen einer Verbindung mit dem Cache mithilfe der ConnectionMultiplexer-Klasse
 	-	Zugreifen auf primitive Datentypen im Cache
 	-	Arbeiten mit .NET-Objekten im Cache
--	Migrieren des ASP.NET-Sitzungszustands und des Ausgabecaches zu Azure Redis Cache 
+-	Migrieren des ASP.NET-Sitzungszustands und des Ausgabecaches zu Azure Redis Cache
 
 ## Zuordnen der Managed Cache Service-Features zu Azure Redis Cache
 
@@ -78,9 +78,9 @@ Nachdem der Cache erstellt und konfiguriert wurde, besteht der nächste Schritt 
 
 Bevor die Clientanwendungen für Azure Redis Cache konfiguriert werden können, müssen die vorhandene Managed Cache Service-Konfiguration und die Assemblyverweise entfernt werden, indem Sie das Managed Cache Service-NuGet-Paket deinstallieren.
 
-Klicken Sie zum Deinstallieren des Managed Cache Service-NuGet-Pakets im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt, und wählen Sie **NuGet-Pakete verwalten** aus. Wählen Sie den Knoten **Installierte Pakete** aus, und geben Sie im Suchfeld für installierte Pakete „W**indowsAzure.Caching**“ ein. Wählen Sie **Windows** **Azure Cache** (oder **Windows** **Azure Caching**, je nach Version des NuGet-Pakets) aus, klicken Sie auf **Deinstallieren** und dann auf **Schließen**.
+Klicken Sie zum Deinstallieren des Managed Cache Service-NuGet-Pakets im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt, und wählen Sie **NuGet-Pakete verwalten** aus. Wählen Sie den Knoten **Installierte Pakete** aus, und geben Sie im Suchfeld für installierte Pakete **WindowsAzure.Caching** ein. Wählen Sie **Windows** **Azure Cache** (oder **Windows** **Azure Caching**, je nach Version des NuGet-Pakets) aus, klicken Sie auf **Deinstallieren** und dann auf **Schließen**.
 
-![Azure Managed Cache Service NuGet Paket deinstallieren](./media/cache-migrate-to-redis/IC757666.jpg)
+![Deinstallieren des Azure Managed Cache Service NuGet-Pakets](./media/cache-migrate-to-redis/IC757666.jpg)
 
 Wenn Sie das Managed Cache Service-NuGet-Paket deinstallieren, werden die Managed Cache Service-Assemblys und die Managed Cache Service-Einträge in „app.config“ oder „web.config“ der Clientanwendung entfernt. Da einige angepasste Einstellungen nicht entfernt werden können, wenn Sie das NuGet-Paket deinstallieren, öffnen Sie „web.config“ oder „app.config“, und vergewissern Sie sich, dass die folgenden Elemente vollständig entfernt wurden.
 
@@ -177,6 +177,6 @@ Azure-Redis-Cache verfügt über Anbieter für den ASP.NET-Sitzungszustand und d
 
 ## Nächste Schritte
 
-In der [Azure Redis Cache-Dokumentation](https://azure.microsoft.com/documentation/services/cache/) finden Sie Lernprogramme, Beispiele, Videos und vieles mehr.
+In der [Azure Redis Cache-Dokumentation](https://azure.microsoft.com/documentation/services/cache/) finden Sie Tutorials, Beispiele, Videos und vieles mehr.
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0907_2016-->

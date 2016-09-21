@@ -40,9 +40,9 @@ Visual Studio und Developer Analytics-Tools bieten alles für einen guten integr
 ![Web-App-DevOps-Zyklus](./media/app-insights-developer-analytics/040.png)
 
 * Ein Entwickler checkt Code im Repository ein oder führt diesen im Hauptzweig zusammen. Das Repository in dieser Abbildung ist Git, es könnte aber auch die [Team Foundation-Versionskontrolle](https://www.visualstudio.com/docs/tfvc/overview) sein.
-* Die Änderungen lösen einen Build und einen Komponententest aus. Der Builddienst kann Teil von [Visual Studio Team Services oder der lokalen Entsprechung, Team Foundation Server](https://www.visualstudio.com/docs/vsts-tfs-overview) sein. 
-* Bei dem Build und einem erfolgreichen Komponententest kann eine [automatische Bereitstellung](https://www.visualstudio.com/docs/release/author-release-definition/more-release-definition) ausgelöst werden. Der Web-App-Host kann ein eigener Webserver- oder Microsoft Azure sein. 
-* Telemetriedaten aus der Live-App wird sowohl vom Server als auch von den [Clientbrowsern](app-insights-javascript.md) an [Application Insights](app-insights-overview.md) gesendet. Dort können Sie die Leistung der App und die Nutzungsmuster analysieren. Leistungsstarke [Suchtools](app-insights-analytics.md) helfen bei der Diagnose von Problemen. [Warnungen](app-insights-alerts.md) stellen sicher, dass Sie von einem Problem erfahren, sowie es auftritt. 
+* Die Änderungen lösen einen Build und einen Komponententest aus. Der Builddienst kann Teil von [Visual Studio Team Services oder der lokalen Entsprechung, Team Foundation Server](https://www.visualstudio.com/docs/vsts-tfs-overview) sein.
+* Bei dem Build und einem erfolgreichen Komponententest kann eine [automatische Bereitstellung](https://www.visualstudio.com/docs/release/author-release-definition/more-release-definition) ausgelöst werden. Der Web-App-Host kann ein eigener Webserver- oder Microsoft Azure sein.
+* Telemetriedaten aus der Live-App wird sowohl vom Server als auch von den [Clientbrowsern](app-insights-javascript.md) an [Application Insights](app-insights-overview.md) gesendet. Dort können Sie die Leistung der App und die Nutzungsmuster analysieren. Leistungsstarke [Suchtools](app-insights-analytics.md) helfen bei der Diagnose von Problemen. [Warnungen](app-insights-alerts.md) stellen sicher, dass Sie von einem Problem erfahren, sowie es auftritt.
 * Der nächste Entwicklungszyklus wird über Ihre Analyse der Livetelemetriedaten informiert.
 
 ### Geräte- und Desktop-Apps
@@ -71,10 +71,18 @@ Für jede Komponente der Anwendung – mobil, Web oder Desktop – sind die Schr
 3. Für Geräte-Apps:
  * Laden Sie ein Debugbuild auf HockeyApp hoch. Von dort aus können Sie es an ein Team von Testbenutzern verteilen. Wenn Sie nachfolgende Builds hochladen, wird das Team jedes Mal benachrichtigt.
  * Beim Einrichten dieses kontinuierlichen Builddiensts erstellen Sie eine Versionsdefinition, die den Plug-In-Schritt zum Hochladen nach HockeyApp verwendet.
+
+### Analytics und Export für HockeyApp-Telemetriedaten
+
+Sie können benutzerdefinierte Telemetriedaten und Protokolltelemetriedaten von HockeyApp mithilfe der Funktionen für Analytics und fortlaufenden Export von Application Insights untersuchen. Dazu müssen Sie eine [Brücke einrichten](app-insights-hockeyapp-bridge-app.md).
+
+
+
+## Nächste Schritte
  
 Hier finden Sie die ausführliche Anleitung für verschiedene Arten von Apps:
 
-* [ASP.NET-Web-Apps](app-insights-asp-net.md) 
+* [ASP.NET-Web-Apps](app-insights-asp-net.md)
 * [Java-Web-Apps](app-insights-java-get-started.md)
 * [Node.js-Web-Apps](https://github.com/Microsoft/ApplicationInsights-node.js)
 * [iOS-Apps](https://support.hockeyapp.net/kb/client-integration-ios-mac-os-x-tvos/hockeyapp-for-ios)
@@ -84,4 +92,4 @@ Hier finden Sie die ausführliche Anleitung für verschiedene Arten von Apps:
 * [Windows Phone 8- und 8.1-Apps](https://support.hockeyapp.net/kb/client-integration-windows-and-windows-phone/hockeyapp-for-windows-phone-silverlight-apps-80-and-81)
 * [Windows Presentation Foundation-Apps](https://support.hockeyapp.net/kb/client-integration-windows-and-windows-phone/hockeyapp-for-windows-wpf-apps)
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0907_2016-->

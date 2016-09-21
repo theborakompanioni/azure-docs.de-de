@@ -97,7 +97,7 @@ Ihr Dienst ist jetzt so konfiguriert, dass er mit Pushbenachrichtigungen unter i
 
 3. Setzen Sie in derselben Datei das Ereignis **RegisteredForRemoteNotifications** außer Kraft: In diesem Code registrieren Sie sich für eine einfache Vorlagenbenachrichtigung, die vom Server an alle unterstützten Plattformen gesendet wird.
 
-	Weitere Informationen zu Vorlagen mit Notification Hubs finden Sie unter [Vorlagen](../notification-hubs/notification-hubs-templates.md).
+	Weitere Informationen zu Vorlagen mit Notification Hubs finden Sie unter [Vorlagen](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md).
 
 
         public override void RegisteredForRemoteNotifications(UIApplication application, NSData deviceToken)
@@ -156,4 +156,4 @@ Sie haben dieses Lernprogramm erfolgreich abgeschlossen.
 
 <!-- URLs. -->
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0907_2016-->

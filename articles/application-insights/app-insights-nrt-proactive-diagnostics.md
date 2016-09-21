@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Proaktive NRT-Diagnose in Application Insights" 
+	pageTitle="Proaktive NRT-Diagnose in Application Insights | Microsoft Azure" 
 	description="Weist Sie auf ungewöhnliche Fehlermuster in Ihrer App hin und bietet Diagnoseanalysen. Es ist keine Konfiguration erforderlich." 
 	services="application-insights" 
     documentationCenter=""
@@ -21,7 +21,7 @@
 
 Dieses Feature funktioniert mit Java- und ASP.NET-Web-Apps, die in der Cloud oder auf Ihren eigenen Servern gehostet werden. Es funktioniert auch mit allen Apps, die Daten zur Anforderungstelemetrie generieren, z. B. mit einer Workerrolle, mit der [TrackRequest()](app-insights-api-custom-events-metrics.md#track-request) aufgerufen wird.
 
-Nach dem Einrichten von [Application Insights für Ihr Projekt](app-insights-get-started.md), und sofern Ihre App eine bestimmte Mindestmenge von Telemetriedaten generiert, benötigt die proaktive NRT-Diagnose 24 Stunden, um das normale Verhalten Ihrer App zu verstehen, bevor sie eingeschaltet wird und Warnungen senden kann.
+Wenn Sie [Application Insights für Ihr Projekt](app-insights-overview.md) eingerichtet haben und Ihre App eine bestimmte Mindestmenge von Telemetriedaten generiert, benötigt die proaktive NRT-Diagnose 24 Stunden, um das normale Verhalten Ihrer App zu verstehen, bevor sie eingeschaltet wird und Warnungen senden kann.
 
 Hier sehen Sie eine Beispielwarnung:
 
@@ -121,14 +121,14 @@ Die proaktive NRT-Diagnose ergänzt andere ähnliche, aber doch verschiedene Fea
 
     Bei der proaktiven NRT-Diagnose wird der Schwellenwert automatisch an die aktuellen Bedingungen angepasst.
 
-    Mit der proaktiven NRT-Diagnose wird die Diagnose für Sie gestartet. 
+    Mit der proaktiven NRT-Diagnose wird die Diagnose für Sie gestartet.
 * Die [proaktive Erkennung](app-insights-proactive-detection.md) verwendet zudem intelligente Funktionen, um ungewöhnliche Muster in Ihren Metriken zu ermitteln, und muss nicht von Ihnen konfiguriert werden. Im Gegensatz zur proaktiven NRT-Diagnose besteht der Zweck der proaktiven Erkennung jedoch darin, Segmente in Ihrem Nutzungsangebot zu ermitteln, die (beispielsweise durch bestimmte Seiten in einem bestimmten Browsertyp) nicht zufriedenstellend verarbeitet werden. Die Analyse wird täglich ausgeführt, und falls ein Ergebnis gefunden wird, ist dies wahrscheinlich wesentlich weniger dringend als eine Warnung. Im Gegensatz dazu wird die Analyse für die proaktive NRT-Diagnose an eingehenden Telemetriedaten kontinuierlich ausgeführt, und Sie werden innerhalb von Minuten benachrichtigt, wenn die Serverfehlerraten höher als erwartet ausfallen.
 
 ## Bei Erhalt einer Warnung durch die proaktive NRT-Diagnose
 
 *Warum habe ich diese Warnung erhalten?*
 
-*	Im Vergleich zu den normalen Grundwerten des vorhergehenden Zeitraums wurde ein ungewöhnlicher Anstieg der Anforderungsfehlerrate festgestellt. Nach der Analyse der Fehler und zugeordneten Telemetriedaten ist davon auszugehen, dass ein Problem vorliegt, das Sie untersuchen sollten. 
+*	Im Vergleich zu den normalen Grundwerten des vorhergehenden Zeitraums wurde ein ungewöhnlicher Anstieg der Anforderungsfehlerrate festgestellt. Nach der Analyse der Fehler und zugeordneten Telemetriedaten ist davon auszugehen, dass ein Problem vorliegt, das Sie untersuchen sollten.
 
 *Bedeutet die Benachrichtigung, dass ich definitiv ein Problem habe?*
 
@@ -144,7 +144,7 @@ Die proaktive NRT-Diagnose ergänzt andere ähnliche, aber doch verschiedene Fea
 
 *Kann ich das Abonnement abbestellen oder die Benachrichtigungen stattdessen an meine Kollegen senden lassen?*
 
-*	Ja, klicken Sie unter „Warnungsregeln“ auf die Regel für die proaktive Diagnose, um sie zu konfigurieren. Sie können die Warnung deaktivieren oder die Empfänger für die Warnung ändern. 
+*	Ja, klicken Sie unter „Warnungsregeln“ auf die Regel für die proaktive Diagnose, um sie zu konfigurieren. Sie können die Warnung deaktivieren oder die Empfänger für die Warnung ändern.
 
 *Ich habe die E-Mail verloren. Wo finde ich die Benachrichtigungen im Portal?*
 
@@ -159,4 +159,17 @@ Die proaktive NRT-Diagnose ergänzt andere ähnliche, aber doch verschiedene Fea
 
 *Wir sind sehr an Ihrer Meinung interessiert. Bitte senden Sie Ihr Feedback an:* [ainrtpd@microsoft.com](mailto:ainrtpd@microsoft.com).
 
-<!---HONumber=AcomDC_0608_2016-->
+## Nächste Schritte
+
+Mit diesen Diagnosetools können Sie die Telemetriedaten Ihrer App untersuchen:
+
+* [Metrik-Explorer](app-insights-metrics-explorer.md)
+* [Suchexplorer](app-insights-diagnostic-search.md)
+* [Analytics: Leistungsfähige Abfragesprache](app-insights-analytics-tour.md)
+
+Proaktive Erkennungen sind vollkommen automatisch. Vielleicht möchten Sie aber weitere Warnungen einrichten?
+
+* [Einrichten von Warnungen in Application Insights](app-insights-alerts.md)
+* [Verfügbarkeitswebtests](app-insights-monitor-web-app-availability.md)
+
+<!---HONumber=AcomDC_0907_2016-->

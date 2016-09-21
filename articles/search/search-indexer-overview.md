@@ -4,7 +4,7 @@
 	services="search"
 	documentationCenter=""
 	authors="HeidiSteen"
-	manager="paulettm"
+	manager="jhubbard"
 	editor=""
     tags="azure-portal"/>
 
@@ -76,4 +76,4 @@ Nachdem Sie sich über die Grundlagen informiert haben, ist der nächste Schritt
 - [Indizieren von CSV-Blobs mit Azure Search-Blobindexer (Vorschau)](search-howto-index-csv-blobs.md)
 - [Indizieren von JSON-Blobs mit Azure Search-Blobindexer (Vorschau)](search-howto-index-json-blobs.md)
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0914_2016-->

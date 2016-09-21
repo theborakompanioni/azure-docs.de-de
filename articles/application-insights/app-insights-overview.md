@@ -17,13 +17,13 @@
  
 # Application Insights – Einführung
 
-[Visual Studio Application Insights](app-insights-get-started.md) ist ein erweiterbarer Analysedienst, der Ihre Live-Webanwendungen überwacht. Mit diesem Dienst können Sie Leistungsprobleme erkennen und diagnostizieren, und Sie können nachvollziehen, wie die Benutzer Ihre App nutzen. Der Dienst ist für Entwickler konzipiert und unterstützt Sie dabei, die Leistung und Benutzerfreundlichkeit Ihrer App kontinuierlich zu verbessern. Er lässt sich für Apps auf einer Vielzahl von Plattformen einsetzen, wie z.B. .NET, Node.js oder J2EE – lokal gehostet oder in der Cloud.
+Visual Studio Application Insights ist ein erweiterbarer Analysedienst, der Ihre Live-Webanwendungen überwacht. Mit diesem Dienst können Sie Leistungsprobleme erkennen und diagnostizieren, und Sie können nachvollziehen, wie die Benutzer Ihre App nutzen. Der Dienst ist für Entwickler konzipiert und unterstützt Sie dabei, die Leistung und Benutzerfreundlichkeit Ihrer App kontinuierlich zu verbessern. Er lässt sich für Apps auf einer Vielzahl von Plattformen einsetzen, wie z.B. .NET, Node.js oder J2EE – lokal gehostet oder in der Cloud.
 
 ![Erstellen Sie ein Diagramm mit der Statistik zur Benutzeraktivität, oder führen Sie eine Detailsuche bei bestimmten Ereignissen aus.](./media/app-insights-overview/00-sample.png)
 
-[Sehen Sie sich die Animation zur Einführung an](https://www.youtube.com/watch?v=fX2NtGrh-Y0).
+[Sehen Sie sich die Introanimation an](https://www.youtube.com/watch?v=fX2NtGrh-Y0).
 
-## Wie funktioniert Application Insights?
+## Wie funktioniert dies?
 
 Sie installieren ein kleines Instrumentierungspaket in Ihrer Anwendung und richten eine Application Insights-Ressource im Microsoft Azure-Portal ein. Die Instrumentierung überwacht Ihre App und sendet Telemetriedaten an das Portal. Das Portal zeigt Ihnen statistische Diagramme und bietet leistungsfähige Suchtools, mit denen Sie Probleme diagnostizieren können.
 
@@ -65,7 +65,7 @@ Diagnose- und Analysetools:
 
 ## Erste Schritte
 
-Application Insights ist einer der vielen in Microsoft Azure gehosteten Dienste, und Telemetriedaten werden zur Analyse und Darstellung an Azure gesendet. Als Erstes benötigen Sie also ein Abonnement für [Microsoft Azure](http://azure.com). Die Registrierung ist kostenlos, und Sie können den kostenlosen [Tarif](https://azure.microsoft.com/pricing/details/application-insights/)von Application Insights auswählen. Falls Ihre Organisation bereits über ein Abonnement verfügt, kann sie dieser Ihr Microsoft-Konto hinzufügen.
+Application Insights ist einer der vielen in Microsoft Azure gehosteten Dienste, und Telemetriedaten werden zur Analyse und Darstellung an Azure gesendet. Als Erstes benötigen Sie also ein Abonnement für [Microsoft Azure](http://azure.com). Die Registrierung ist kostenlos, und Sie können den kostenlosen [Tarif](https://azure.microsoft.com/pricing/details/application-insights/)von Application Insights auswählen. Falls Ihre Organisation bereits über ein Abonnement verfügt, kann sie diesem Ihr Microsoft-Konto hinzufügen.
 
 
 Es gibt mehrere Möglichkeiten für den Einstieg. Wählen Sie die Methode aus, die sich am besten für Sie eignet. Die anderen können später hinzugefügt werden.
@@ -75,7 +75,7 @@ Es gibt mehrere Möglichkeiten für den Einstieg. Wählen Sie die Methode aus, d
  * [**Azure-Web-App oder virtueller Computer**](app-insights-monitor-performance-live-website-now.md#if-your-app-runs-as-an-azure-web-app)
  * [**J2EE**](app-insights-java-live.md)
 * **Bei der Entwicklung: Fügen Sie Ihrem Code Application Insights hinzu.** Ermöglicht das Schreiben von benutzerdefinierter Telemetrie sowie das Instrumentieren von Back-End- und Desktop-Apps.
- * [Visual Studio](app-insights-asp-net.md) 2013 Update 2 oder höher
+ * [Visual Studio](app-insights-asp-net.md) 2013, Update 2 oder höher.
  * Java in [Eclipse](app-insights-java-eclipse.md) oder [anderen Tools](app-insights-java-get-started.md)
  * [Node.js](app-insights-nodejs.md)
  * [Andere Plattformen](app-insights-platforms.md)
@@ -105,7 +105,7 @@ Das Diagramm mit den Abhängigkeiten ist nützlich, da Sie darin sehen können, 
 
 #### Anpassen eines Diagramms
 
-Versuchen Sie, eines dieser Diagramme bearbeiten. Wenn beispielsweise Ihre Web-App auf einer Sammlung von Serverinstanzen ausgeführt wird, können Sie die Antwortzeiten der verschiedenen Serverinstanzen vergleichen:
+Versuchen Sie, eines dieser Diagramme zu bearbeiten. Wenn beispielsweise Ihre Web-App auf einer Sammlung von Serverinstanzen ausgeführt wird, können Sie die Antwortzeiten der verschiedenen Serverinstanzen vergleichen:
 
 ![Bearbeiten des Diagramms](./media/app-insights-overview/05.png)
 
@@ -132,7 +132,7 @@ Verwenden Sie Filter, um bestimmte Arten von Ereignissen und ausgewählte Eigens
 
 ![Filtern nach Eigenschaften](./media/app-insights-overview/07.png)
 
-Klicken Sie auf „...“, um eine vollständige Liste der Eigenschaften anzuzeigen, oder öffnen Sie andere Ereignisse, die mit diesem Ereignis verknüpft sind. In diesem Beispiel weist die fehlerhafte Anforderung einen Bericht mit zugehörigen Ausnahmen auf:
+Klicken Sie auf „...“, um eine vollständige Liste der Eigenschaften anzuzeigen, oder öffnen Sie andere Ereignisse, die mit dieser Anforderung verknüpft sind. In diesem Beispiel weist die fehlerhafte Anforderung einen Bericht mit zugehörigen Ausnahmen auf:
 
 ![Zugehörige Elemente und Eigenschaftsdetails](./media/app-insights-overview/08.png)
 
@@ -142,7 +142,7 @@ Klicken Sie auf „...“, um eine vollständige Liste der Eigenschaften anzuzei
 
 ## Analyse
 
-[Analytics](app-insights-analytics.md) ist ein noch leistungsfähigeres Such- und Analysefeature, in dem Sie SQL-ähnliche Abfragen für Ihre Telemetriedaten schreiben können, um nach bestimmten Problemen zu suchen oder statistische Informationen zu sammeln.
+[Analytics](app-insights-analytics.md) ist eine noch leistungsfähigere Such- und Analysefunktion, in der Sie SQL-ähnliche Abfragen für Ihre Telemetriedaten schreiben können, um nach bestimmten Problemen zu suchen oder statistische Informationen zusammenzustellen.
 
 ![Analyse](./media/app-insights-overview/10.png)
 
@@ -185,7 +185,7 @@ Zur Überwachung des gesamten Systems können Sie die interessantesten Diagramme
 
 ![Dashboards](./media/app-insights-overview/12.png)
 
-Sie können mehrere Dashboards erstellen: z.B. ein Dashboard für den Teamraum, um die allgemeine Systemintegrität zu überwachen; ein Entwurfsdashboard, das die Nutzung verschiedener Features anzeigt; ein separates Dashboard für Komponenten im Test; und viele weitere mehr.
+Sie können mehrere Dashboards erstellen, z.B. ein Dashboard für den Teamraum, um die allgemeine Systemintegrität zu überwachen, ein Entwurfsdashboard, das die Nutzung verschiedener Features anzeigt; ein separates Dashboard für Komponenten im Test und viele mehr.
 
 Dashboards können ebenso wie Ressourcen zur gemeinsamen Nutzung durch mehrere Teammitglieder freigegeben werden.
 
@@ -221,7 +221,7 @@ Der Diagnosehub zeigt (ab Visual Studio 2015) die von Application Insights gener
 
 ### Ausnahmen
 
-Wenn Sie die [Ausnahmeüberwachung eingerichtet haben](app-insights-asp-net-exceptions.md), werden im Search-Fenster Ausnahmeberichte angezeigt.
+Wenn Sie [Ausnahmeüberwachung eingerichtet haben](app-insights-asp-net-exceptions.md), werden im Suchfenster Ausnahmeberichte angezeigt.
 
 Klicken Sie auf eine Ausnahme, um eine Stapelüberwachung zu erhalten. Wenn der Code der App in Visual Studio geöffnet ist, können Sie sich durch die Stapelüberwachung bis zur entsprechenden Zeile im Code klicken.
 
@@ -247,13 +247,13 @@ Dies ist ebenfalls hilfreich, wenn Sie über [benutzerdefinierte Telemetriedaten
 * *Zunächst habe ich Application Insights vollständig für das Senden von Telemetriedaten an das Portal konfiguriert. Aber nun möchte ich die Telemetriedaten nur in Visual Studio anzeigen.*
 
  * In den Einstellungen des Suchfensters steht eine Option zum Durchsuchen der lokalen Diagnosen zur Verfügung, auch wenn Ihre App Telemetriedaten an das Portal sendet.
- * Damit keine Telemetriedaten mehr an das Portal gesendet werden, kommentieren Sie in „ApplicationInsights.config“ die Zeile `<instrumentationkey>...` aus. Wenn Sie bereit sind, Telemetriedaten erneut an das Portal zu senden, heben Sie die Auskommentierung auf.
+ * Damit keine Telemetriedaten mehr an das Portal gesendet werden, kommentieren Sie die Zeile `<instrumentationkey>...` in „ApplicationInsights.config“ aus. Wenn Sie bereit sind, Telemetriedaten erneut an das Portal zu senden, heben Sie die Auskommentierung auf.
 
 ## Trends
 
 Mit dem Trends-Tool in Visual Studio können Sie visualisieren, wie sich Ihre App im Laufe der Zeit verhält.
 
-Wählen Sie auf der Application Insights-Symbolleiste oder im Application Insights-Suchfenster die Schaltfläche **Telemetrietrends untersuchen** aus. Wählen Sie eine der fünf allgemeinen Abfragen aus, um zu beginnen. Sie können unterschiedliche Datasets basierend auf Telemetrietypen, Zeiträumen und anderen Eigenschaften analysieren.
+Wählen Sie auf der Application Insights-Symbolleiste oder im Application Insights-Suchfenster die Schaltfläche **Telemetrietrends untersuchen**. Wählen Sie eine der fünf allgemeinen Abfragen aus, um zu beginnen. Sie können unterschiedliche Datasets basierend auf Telemetrietypen, Zeiträumen und anderen Eigenschaften analysieren.
 
 Wählen Sie zum Ermitteln von Anomalien in Ihren Daten in der Dropdownliste „Ansichtstyp“ eine Anomalieoption. Mit den Filteroptionen am unteren Rand des Fensters ist es einfach, bestimmte Teilmengen Ihrer Telemetriedaten anzuzeigen.
 
@@ -300,7 +300,7 @@ Sie können [Metrikwarnungen](app-insights-alerts.md) konfigurieren, die Sie inf
 
 ![Wählen Sie im Metrik-Explorer "Warnungsregeln", "Warnung hinzufügen"](./media/app-insights-metrics-explorer/appinsights-413setMetricAlert.png)
 
-### Verfügbarkeit
+### Availability
 
 [Verfügbarkeitswebtests](app-insights-monitor-web-app-availability.md) senden von unseren Servern an verschiedenen Standorten auf der ganzen Welt Anforderungen an Ihre Website. Sie informieren Sie, wenn Ihre Website im Internet nicht verfügbar ist oder langsam reagiert.
 
@@ -311,8 +311,8 @@ Sie können [Metrikwarnungen](app-insights-alerts.md) konfigurieren, die Sie inf
 Es gibt verschiedene Methoden, um Ihre Telemetriedaten aus dem Application Insights-Portal abzurufen:
 
 * Der [fortlaufende Export](app-insights-export-telemetry.md) ist ideal, wenn Sie große Teile Ihrer Telemetriedaten länger beibehalten möchten als in der standardmäßigen Aufbewahrungsdauer vorgesehen.
-* Mit der [Export-Schaltfläche](app-insights-metrics-explorer.md#export-to-excel) im oberen Bereich eines Blatts mit Metriken oder Suchergebnissen können Sie Tabellen und Diagramme in ein Excel-Arbeitsblatt übertragen.
-* [Analytics](app-insights-analytics.md) bietet eine leistungsstarke Abfragesprache für Telemetriedaten sowie die Möglichkeit, Ergebnisse zu exportieren.
+* [Die Schaltfläche „Exportieren“](app-insights-metrics-explorer.md#export-to-excel) ganz oben in einem Blatt „Metriken“ oder „Suche“, mit der Sie Tabellen und Diagramme in ein Excel-Arbeitsblatt übertragen können.
+* [Analytics](app-insights-analytics.md) bietet eine leistungsstarke Abfragesprache für Telemetriedaten und ermöglicht darüber hinaus das Exportieren von Ergebnissen.
 * Die Data Access-REST-API kann verwendet werden, um Daten zu suchen und zu extrahieren. Die API kann Analytics-Abfragen ausführen.
 * Wenn Sie [Ihre Daten in Power BI untersuchen](http://blogs.msdn.com/b/powerbi/archive/2015/11/04/explore-your-application-insights-data-with-power-bi.aspx) möchten, benötigen Sie dazu keinen fortlaufenden Export.
 
@@ -320,7 +320,7 @@ Es gibt verschiedene Methoden, um Ihre Telemetriedaten aus dem Application Insig
  
 ## Datenverwaltung
 
-Die Verwendung von Application Insights weist einige Einschränkungen auf, die zu einem gewissen Teil von dem von Ihnen gewählten Tarif abhängen. Die sind die wichtigsten Einschränkungen:
+Die Verwendung von Application Insights weist einige Einschränkungen auf, die zu einem gewissen Teil von dem von Ihnen gewählten Tarif abhängen. Dies sind die wichtigsten Einschränkungen:
 
 * Telemetrierate pro Minute
 * Anzahl der Datenpunkte pro Monat
@@ -383,8 +383,7 @@ Beginnen mit der Entwicklungszeitmethode mit:
 [portal]: http://portal.azure.com/
 [qna]: app-insights-troubleshoot-faq.md
 [redfield]: app-insights-monitor-performance-live-website-now.md
-[windows]: app-insights-windows-get-started.md
 
  
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0907_2016-->

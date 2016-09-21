@@ -13,19 +13,19 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/20/2016" 
+	ms.date="09/06/2016" 
 	ms.author="spelluru"/>
 
 # Verschieben von Daten aus einem lokalem HDFS mithilfe von Azure Data Factory
-Dieser Artikel beschreibt, wie Sie die Kopieraktivität in einer Azure Data Factory verwenden können, um Daten aus einem lokalen HDFS (Hadoop Distributed File System) in einen anderen Datenspeicher zu verschieben. Dieser Artikel baut auf dem Artikel [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) auf, der eine allgemeine Übersicht zur Datenverschiebung mit Kopieraktivität und unterstützten Datenspeicherkombinationen bietet.
+Dieser Artikel beschreibt, wie Sie die Kopieraktivität in einer Azure Data Factory verwenden können, um Daten aus einem lokalen HDFS (Hadoop Distributed File System) in einen anderen Datenspeicher zu verschieben. Dieser Artikel baut auf dem Artikel [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) auf, der eine allgemeine Übersicht zur Datenverschiebung mit der Kopieraktivität und unterstützten Datenspeicherkombinationen enthält.
 
 Data Factory unterstützt derzeit nur das Verschieben von Daten aus einem lokalen HDFS in andere Datenspeicher, aber nicht das Verschieben aus anderen Datenspeichern in ein lokales HDFS.
 
 
 ## Herstellen der Verbindung
-Der Data Factory-Dienst unterstützt das Herstellen einer Verbindung mit einem lokalen HDFS über das Datenverwaltungsgateway. Im Artikel [Verschieben von Daten zwischen lokalen Standorten und Cloud](data-factory-move-data-between-onprem-and-cloud.md) erfahren mehr zum Datenverwaltungsgateway und erhalten eine schrittweise Anleitung zum Einrichten des Gateways. Sie müssen das Gateway nutzen, um eine Verbindung mit dem HDFS herzustellen, auch wenn das HDFS einer Azure-IaaS-VM gehostet wird.
+Der Data Factory-Dienst unterstützt das Herstellen einer Verbindung mit einem lokalen HDFS über das Datenverwaltungsgateway. Im Artikel [Verschieben von Daten zwischen lokalen Standorten und Cloud](data-factory-move-data-between-onprem-and-cloud.md) erfahren mehr zum Datenverwaltungsgateway und erhalten eine schrittweise Anleitung zum Einrichten des Gateways. Verwenden Sie das Gateway, um eine Verbindung mit dem HDFS herzustellen, auch wenn es auf einem virtuellen Azure-IaaS-Computer gehostet wird.
 
-Grundsätzlich ist es zwar möglich, das Gateway auf dem gleichen lokalen Computer bzw. auf dem gleichen virtuellen Azure-Computer zu installieren, auf dem sich auch das HDFS befindet. Aus Leistungsgründen und zur Vermeidung von Ressourcenkonflikten wird jedoch empfohlen, das Gateway auf einem separaten Computer oder auf einer separaten Azure-IaaS-VM zu installieren. Wenn Sie das Gateway auf einem separaten Computer installieren, muss dieser Computer auf den Computer mit dem HDFS zugreifen können.
+Grundsätzlich ist es zwar möglich, das Gateway auf dem gleichen lokalen Computer bzw. auf dem virtuellen Azure-Computer zu installieren, auf dem sich auch das HDFS befindet, es empfiehlt sich jedoch, das Gateway auf einem separaten Computer bzw. auf einem separaten virtuellen Azure-IaaS-Computer zu installieren. Diese Vorgehensweise dient zur Vermeidung von Ressourcenkonflikten und verbessert die Leistung. Wenn Sie das Gateway auf einem separaten Computer installieren, muss dieser Computer auf den Computer mit dem HDFS zugreifen können.
 
 
 ## Assistent zum Kopieren von Daten
@@ -45,9 +45,9 @@ Das Beispiel enthält die folgenden Data Factory-Entitäten:
 4.	Ein [Ausgabedataset](data-factory-create-datasets.md) des Typs [AzureBlob](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties)
 4.	Eine [Pipeline](data-factory-create-pipelines.md) mit Kopieraktivität, die [FileSystemSource](#hdfs-copy-activity-type-properties) und [BlobSink](data-factory-azure-blob-connector.md#azure-blob-copy-activity-type-properties) verwendet
 
-Das Beispiel kopiert stündlich Daten aus einem Abfrageergebnis in einem lokalen HDFS in ein Blob. Die bei diesen Beispielen verwendeten JSON-Eigenschaften werden in den Abschnitten beschrieben, die auf die Beispiele folgen.
+Das Beispiel kopiert stündlich Daten aus einem lokalen HDFS in ein Azure-Blob. Die bei diesen Beispielen verwendeten JSON-Eigenschaften werden in den Abschnitten beschrieben, die auf die Beispiele folgen.
 
-Als ersten Schritt richten Sie das Datenverwaltungsgateway gemäß den Anweisungen im Artikel [Verschieben von Daten zwischen lokalen Standorten und Cloud](data-factory-move-data-between-onprem-and-cloud.md) ein.
+Als Erstes richten Sie das Datenverwaltungsgateway ein. Anweisungen dazu finden Sie im Artikel [Verschieben von Daten zwischen lokalen Standorten und Cloud](data-factory-move-data-between-onprem-and-cloud.md).
 
 **Mit HDFS verknüpfter Dienst**. In diesem Beispiel wird die Windows-Authentifizierung verwendet. Informationen zu den verwendbaren Authentifizierungstypen finden Sie im Abschnitt [Mit HDFS verknüpfter Dienst](#hdfs-linked-service-properties).
 
@@ -81,7 +81,7 @@ Als ersten Schritt richten Sie das Datenverwaltungsgateway gemäß den Anweisung
 
 **HDFS-Eingabedataset**. Dieses Dataset verweist auf den HDFS-Ordner „DataTransfer/UnitTest/“. Die Pipeline kopiert alle Dateien in diesem Ordner an das Ziel.
 
-Durch Festlegen von „external“ auf „true“ und (optionales) Angeben der Richtlinie „externalData“ wird dem Data Factory-Dienst mitgeteilt, dass dies eine Tabelle ist, die für die Data Factory extern ist und die nicht durch eine Aktivität in der Data Factory erzeugt wird.
+Durch Festlegen von „external“ auf „true“ wird dem Data Factory-Dienst mitgeteilt, dass das Dataset für die Data Factory extern ist und nicht durch eine Aktivität in der Data Factory erzeugt wird.
 	
 	{
 	    "name": "InputDataset",
@@ -104,7 +104,7 @@ Durch Festlegen von „external“ auf „true“ und (optionales) Angeben der R
 
 **Azure-Blob-Ausgabedataset**
 
-Daten werden stündlich in ein neues Blob geschrieben (frequency: hour, interval: 1). Der Ordnerpfad des Blobs wird basierend auf der Startzeit des Slices, der verarbeitet wird, dynamisch ausgewertet. Im Ordnerpfad werden Jahr, Monat, Tag und die Stundenteile der Startzeit verwendet.
+Daten werden stündlich in ein neues Blob geschrieben ("frequency": "hour", "interval": 1). Der Ordnerpfad des Blobs wird basierend auf der Startzeit des Slices, der verarbeitet wird, dynamisch ausgewertet. Im Ordnerpfad werden Jahr, Monat, Tag und die Stundenteile der Startzeit verwendet.
 
 	{
 	    "name": "OutputDataset",
@@ -164,7 +164,7 @@ Daten werden stündlich in ein neues Blob geschrieben (frequency: hour, interval
 
 **Pipeline mit Kopieraktivität**
 
-Die Pipeline enthält eine Kopieraktivität, die für das Verwenden der oben genannten Ein- und Ausgabedatasets und für eine stündliche Ausführung konfiguriert ist. In der JSON-Definition der Pipeline ist der Typ **source** auf **FileSystemSource** und der Typ **sink** auf **BlobSink** festgelegt. Die für die **query**-Eigenschaft angegebene SQL-Abfrage wählt die aus der letzten Stunde zu kopierenden Daten aus.
+Die Pipeline enthält eine Kopieraktivität, die für das Verwenden der Ein- und Ausgabedatasets und für eine stündliche Ausführung konfiguriert ist. In der JSON-Definition der Pipeline ist der Typ **source** auf **FileSystemSource** und der Typ **sink** auf **BlobSink** festgelegt. Die für die **query**-Eigenschaft angegebene SQL-Abfrage wählt die aus der letzten Stunde zu kopierenden Daten aus.
 	
 	{
 	    "name": "pipeline",
@@ -260,28 +260,28 @@ Ausführliche Informationen zum Festlegen von Anmeldeinformationen für ein loka
 
 ## Eigenschaften des Dataset-Typs „HDFS“
 
-Eine vollständige Liste der Abschnitte und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel [Erstellen von Datasets](data-factory-create-datasets.md). Abschnitte wie „structure“, „availability“ und „policy“ des JSON-Codes eines Datasets sind bei allen Typen von Datasets (Azure SQL, Azure-Blob, Azure-Tabelle usw.) ähnlich.
+Eine vollständige Liste der Abschnitte und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel [Erstellen von Datasets](data-factory-create-datasets.md). Abschnitte wie „structure“, „availability“ und „policy“ des JSON-Codes eines Datasets sind bei allen Dataset-Typen (Azure SQL, Azure-Blob, Azure-Tabelle usw.) ähnlich.
 
 Der Abschnitt **typeProperties** unterscheidet sich bei jedem Typ von Dataset und bietet Informationen zum Speicherort der Daten im Datenspeicher. Der Abschnitt „typeProperties“ für ein Dataset vom Typ **FileShare** (mit HDFS-Dataset) hat die folgenden Eigenschaften:
 
 Eigenschaft | Beschreibung | Erforderlich
 -------- | ----------- | --------
-folderPath | Pfad zum Ordner. Beispiel: myfolder<br/><br/>Verwenden Sie für Sonderzeichen in der Zeichenfolge das Escapezeichen „\\“. Geben Sie für „folder\\subfolder“ z.B. „folder\\\subfolder“ und für „d:\\samplefolder“ die Syntax „d:\\\samplefolder“ an.<br/><br/>Sie können dies mit **partitionBy** kombinieren, damit Ordnerpfade auf der Datum-/Uhrzeitangabe für Anfangs- und Endwert von Slices basieren. | Ja
+folderPath | Pfad zum Ordner. Beispiel: myfolder<br/><br/>Verwenden Sie für Sonderzeichen in der Zeichenfolge das Escapezeichen „\\“. Geben Sie für „Ordner\\Unterordner“ beispielsweise „Ordner\\\Unterordner“ und für „d:\\Beispielordner“ die Syntax „d:\\\Beispielordner“ an.<br/><br/>Sie können diese Eigenschaft mit **partitionBy** kombinieren, damit Ordnerpfade auf der Datums-/Uhrzeitangabe für den Anfangs- und Endwert von Slices basieren. | Ja
 fileName | Geben Sie den Namen der Datei in **folderPath** an, wenn die Tabelle auf eine bestimmte Datei im Ordner verweisen soll. Wenn Sie keine Werte für diese Eigenschaft angeben, verweist die Tabelle auf alle Dateien im Ordner.<br/><br/>Wenn fileName für ein Ausgabedataset nicht angegeben ist, hat der Name der generierten Datei das folgende Format: <br/><br/>Data.<GUID>.txt (Beispiel: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt). | Nein
-partitionedBy | "partitionedBy" kann genutzt werden, um einen dynamischen Wert für "folderPath" oder "filename" für Zeitreihendaten anzugeben. Beispiel: "folderPath" als Parameter für jedes Stunde mit Daten. | Nein
+partitionedBy | Mit „partitionedBy“ kann für Zeitreihendaten ein dynamischer Wert für „folderPath“ und „filename“ angegeben werden. Beispiel: Parametrisierung von „folderPath“ für Daten nach Stunde. | Nein
 fileFilter | Geben Sie einen Filter zur Auswahl einer Teilmenge der Dateien in "folderPath" statt alle Dateien an. <br/><br/>Zulässige Werte: * (mehrere Zeichen) und ? (einzelnes Zeichen).<br/><br/>Beispiel 1: „fileFilter“: „*.log“<br/>Beispiel 2: „fileFilter“: „2014-1-?.txt“<br/><br/>**Hinweis:** fileFilter eignet sich für ein FileShare-Eingabedataset. | Nein
-| Komprimierung | Geben Sie den Typ und den Grad der Komprimierung für die Daten an. Folgende Typen werden unterstützt: **GZip**, **Deflate** und **BZip2**. Folgende Komprimierungsgrade werden unterstützt: **Optimal** und **Schnellste**. Beachten Sie, dass für Daten mit **AvroFormat** oder **OrcFormat** derzeit keine Komprimierungseinstellungen unterstützt werden. Weitere Einzelheiten finden Sie im Abschnitt [Komprimierungsunterstützung](#compression-support). | Nein |
-| format | Die folgenden Formattypen werden unterstützt: **TextFormat**, **AvroFormat**, **JsonFormat**, **OrcFormat**. Sie müssen die **type**-Eigenschaft unter „Format“ auf einen dieser Werte festlegen. Weitere Informationen finden Sie in den Abschnitten [Angeben von TextFormat](#specifying-textformat), [Angeben von AvroFormat](#specifying-avroformat), [Angeben von JsonFormat](#specifying-jsonformat) und [Angeben von OrcFormat](#specifying-orcformat). Wenn Sie Dateien unverändert zwischen dateibasierten Speichern kopieren möchten (binäre Kopie), können Sie den Formatabschnitt bei den Definitionen von Eingabe- und Ausgabedatasets überspringen. | Nein 
+| Komprimierung | Geben Sie den Typ und den Grad der Komprimierung für die Daten an. Folgende Typen werden unterstützt: **GZip**, **Deflate** und **BZip2**. Folgende Komprimierungsstufen werden unterstützt: **Optimal** und **Schnellste**. Beachten Sie, dass für Daten mit **AvroFormat** oder **OrcFormat** derzeit keine Komprimierungseinstellungen unterstützt werden. Weitere Einzelheiten finden Sie im Abschnitt [Komprimierungsunterstützung](#compression-support). | Nein |
+| format | Die folgenden Formattypen werden unterstützt: **TextFormat**, **AvroFormat**, **JsonFormat**, **OrcFormat**. Sie müssen die **type**-Eigenschaft unter „format“ auf einen dieser Werte festlegen. Weitere Informationen finden Sie in den Abschnitten [Angeben von TextFormat](#specifying-textformat), [Angeben von AvroFormat](#specifying-avroformat), [Angeben von JsonFormat](#specifying-jsonformat) und [Angeben von OrcFormat](#specifying-orcformat). Wenn Sie Dateien unverändert zwischen dateibasierten Speichern kopieren möchten (binäre Kopie), können Sie den Formatabschnitt bei den Definitionen von Eingabe- und Ausgabedatasets überspringen. | Nein 
 
 
 > [AZURE.NOTE] "filename" und "fileFilter" können nicht gleichzeitig verwendet werden.
 
 
-### Nutzen der "partionedBy"-Eigenschaft
+### Verwenden der partionedBy-Eigenschaft
 
-Wie zuvor erwähnt, kann "partitionedBy" genutzt werden, um einen dynamischen Wert für "folderPath" oder "filename" für Zeitreihendaten anzugeben. Sie können dazu die Data Factory-Makros und Systemvariablen "SliceStart" und "SliceEnd" verwenden, die den logischen Zeitraum für einen bestimmten Datenslice angeben.
+Wie im vorherigen Abschnitt erwähnt, kann „partitionedBy“ verwendet werden, um für Zeitreihendaten einen dynamischen Wert für „folderPath“ und „filename“ anzugeben. Sie können dazu die Data Factory-Makros und Systemvariablen "SliceStart" und "SliceEnd" verwenden, die den logischen Zeitraum für einen bestimmten Datenslice angeben.
 
-In den Artikeln [Erstellen von Datasets](data-factory-create-datasets.md), [Planung und Ausführung](data-factory-scheduling-and-execution.md) und [Erstellen von Pipelines](data-factory-create-pipelines.md) finden Sie weitere Details zu Zeitreihendatasets, Planung und Slices.
+In den Artikeln [Erstellen von Datasets](data-factory-create-datasets.md), [Planung und Ausführung](data-factory-scheduling-and-execution.md) und [Erstellen von Pipelines](data-factory-create-pipelines.md) finden Sie weitere Details zu Zeitreihen-Datasets, Planung und Slices.
 
 #### Beispiel 1:
 
@@ -291,7 +291,7 @@ In den Artikeln [Erstellen von Datasets](data-factory-create-datasets.md), [Plan
 	    { "name": "Slice", "value": { "type": "DateTime", "date": "SliceStart", "format": "yyyyMMddHH" } },
 	],
 
-Im obigen Beispiel wird {Slice} durch den Wert der Data Factory-Systemvariablen "SliceStart" ersetzt, die im Format (JJJJMMTTHH) angegeben wird. "SliceStart" bezieht sich auf die Startzeit des Slices. "folderPath" unterscheidet sich für jeden Slice. Beispiel: "wikidatagateway/wikisampledataout/2014100103" oder "wikidatagateway/wikisampledataout/2014100104".
+Im obigen Beispiel wird „{Slice}“ durch den Wert der Data Factory-Systemvariablen „SliceStart“ ersetzt, die im Format „JJJJMMTTHH“ angegeben ist. "SliceStart" bezieht sich auf die Startzeit des Slices. "folderPath" unterscheidet sich für jeden Slice. Beispiel: "wikidatagateway/wikisampledataout/2014100103" oder "wikidatagateway/wikisampledataout/2014100104".
 
 #### Beispiel 2:
 
@@ -305,18 +305,18 @@ Im obigen Beispiel wird {Slice} durch den Wert der Data Factory-Systemvariablen 
 	    { "name": "Hour", "value": { "type": "DateTime", "date": "SliceStart", "format": "hh" } } 
 	],
 
-Im Beispiel oben werden Jahr, Monat, Tag und Uhrzeit von "SliceStart" in separate Variablen extrahiert, die von den Eigenschaften "folderPath" und "fileName" verwendet werden.
+Im Beispiel oben werden Jahr, Monat, Tag und Uhrzeit von SliceStart in separate Variablen extrahiert, die von den Eigenschaften „folderPath“ und „fileName“ verwendet werden.
 
 [AZURE.INCLUDE [data-factory-file-format](../../includes/data-factory-file-format.md)]  
 [AZURE.INCLUDE [data-factory-compression](../../includes/data-factory-compression.md)]
 
 ## Eigenschaften von HDFS-Kopieraktivitätstyp
 
-Eine vollständige Liste der Abschnitte und Eigenschaften zum Definieren von Aktivitäten finden Sie im Artikel [Erstellen von Pipelines](data-factory-create-pipelines.md). Eigenschaften wie Name, Beschreibung, Eingabe- und Ausgabetabellen, verschiedene Richtlinien usw. sind für alle Arten von Aktivitäten verfügbar.
+Eine vollständige Liste der Abschnitte und Eigenschaften zum Definieren von Aktivitäten finden Sie im Artikel [Erstellen von Pipelines](data-factory-create-pipelines.md). Eigenschaften wie Name, Beschreibung, Eingabe- und Ausgabetabellen und Richtlinien sind für alle Arten von Aktivitäten verfügbar.
 
-Im Abschnitt "typeProperties" der Aktivität verfügbare Eigenschaften variieren hingegen bei jedem Aktivitätstyp. Bei der Kopieraktivität variieren sie je nach Typ der Quellen und Senken.
+Eigenschaften im Abschnitt „typeProperties“ der Aktivität können dagegen je nach Aktivitätstyp variieren. Für die Kopieraktivität variieren die Eigenschaften je nach Art der Quellen und Senken.
 
-Wenn die Quelle der Kopieraktivität den Typ **FileSystemSource** aufweist, sind im Abschnitt „typeProperties“ die folgenden Eigenschaften verfügbar:
+Wenn die Quelle der Kopieraktivität den Typ **FileSystemSource** hat, sind im Abschnitt „typeProperties“ die folgenden Eigenschaften verfügbar:
 
 **FileSystemSource** unterstützt die folgenden Eigenschaften:
 
@@ -331,4 +331,4 @@ Wenn die Quelle der Kopieraktivität den Typ **FileSystemSource** aufweist, sind
 ## Leistung und Optimierung  
 Im Artikel [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-factory-copy-activity-performance.md) werden wichtige Faktoren beschrieben, die sich auf die Leistung der Datenverschiebung (Kopieraktivität) in Azure Data Factory auswirken, sowie verschiedene Möglichkeiten zur Leistungsoptimierung.
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0907_2016-->

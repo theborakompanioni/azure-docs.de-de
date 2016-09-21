@@ -57,7 +57,14 @@ Informationen zu Kontingenten und Einschränkungen sowie zum Öffnen von Support
 
 ##Nächster Schritt
 
-[Skalieren der Medienverarbeitung mithilfe des Azure-Portals](media-services-portal-scale-media-processing.md)
+Führen Sie das Skalieren der Medienverarbeitung mit einer dieser Technologien durch:
+
+> [AZURE.SELECTOR]
+- [.NET](media-services-dotnet-encoding-units.md)
+- [Portal](media-services-portal-scale-media-processing.md)
+- [REST](https://msdn.microsoft.com/library/azure/dn859236.aspx)
+- [Java](https://github.com/southworkscom/azure-sdk-for-media-services-java-samples)
+- [PHP](https://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices)
 
 ##Media Services-Lernpfade
 
@@ -67,4 +74,4 @@ Informationen zu Kontingenten und Einschränkungen sowie zum Öffnen von Support
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0907_2016-->

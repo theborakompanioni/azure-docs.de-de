@@ -97,13 +97,14 @@ Ressourcen-Manager | Rollenbasierte Zugriffssteuerung (RBAC) für klassische Res
 Compute | Mehrere Subnetze, die einem virtuellen Computer zugeordnet sind | Aktualisieren Sie die Subnetzkonfiguration so, dass nur auf Subnetze verwiesen wird.
 Compute | Virtuelle Computer, die zu einem virtuellen Netzwerk gehören, aber denen kein explizites Subnetz zugewiesen ist | Sie können die VM optional löschen.
 Compute | Virtuelle Computer mit Warnungen, Richtlinien für automatische Skalierung | Die Migration wird durchlaufen, und diese Einstellungen werden gelöscht. Wir empfehlen Ihnen dringend, vor der Migration Ihre Umgebung auszuwerten. Alternativ hierzu können Sie die Warnungseinstellungen nach Abschluss der Migration neu konfigurieren.
-Compute | XML-VM-Erweiterungen (Visual Studio Debugger, Web Deploy und Remotedebuggen) | Dies wird nicht unterstützt. Sie sollten diese Erweiterungen vom virtuellen Computer entfernen, um die Migration fortzusetzen.
+Compute | XML-VM-Erweiterungen (BGInfo 1.*, Visual Studio Debugger, Web Deploy und Remotedebuggen) | Dies wird nicht unterstützt. Es wird empfohlen, dass Sie diese Erweiterungen vom virtuellen Computer entfernen, um die Migration fortzusetzen. Andernfalls werden sie während der Migration automatisch gelöscht.
 Compute | Startdiagnose mit Storage Premium | Deaktivieren Sie die Funktion „Startdiagnose“ für die virtuellen Computer, bevor Sie mit der Migration fortfahren. Sobald die Migration abgeschlossen ist, können Sie die Startdiagnose im Resource Manager-Stapel erneut aktivieren. Darüber hinaus sollten für Screenshots und serielle Protokolle verwendete Blobs gelöscht werden, damit diese Blobs nicht mehr berechnet werden.
 Compute | Clouddienste, die Web-/Workerrollen enthalten | Dies wird derzeit nicht unterstützt.
 Netzwerk | Virtuelle Netzwerke, die virtuelle Computer und Web-/Workerrollen enthalten | Dies wird derzeit nicht unterstützt.
 Azure App Service | Virtuelle Netzwerke, die App Service-Umgebungen enthalten | Dies wird derzeit nicht unterstützt.
 Azure HDInsight | Virtuelle Netzwerke, die HDInsight-Dienste enthalten | Dies wird derzeit nicht unterstützt.
 Microsoft Dynamics Lifecycle Services | Virtuelle Netzwerke, die virtuelle Computer enthalten, die von Dynamics Lifecycle Services verwaltet werden | Dies wird derzeit nicht unterstützt.
+Compute | Azure Security Center-Erweiterungen mit einem VNET, das ein VPN-Gateway oder ER-Gateway mit lokalem DNS-Server aufweist | Azure Security Center installiert die Erweiterungen automatisch auf Ihren virtuellen Computern, um deren Sicherheit zu überwachen und Warnungen auszulösen. Diese Erweiterungen werden in der Regel automatisch installiert, wenn die Azure Security Center-Richtlinie für das Abonnement aktiviert ist. Da die Gatewaymigration derzeit nicht unterstützt wird und das Gateway gelöscht werden muss, bevor ein Commit für die Migration durchgeführt wird, geht der Internetzugriff auf das VM-Speicherkonto verloren, wenn das Gateway gelöscht wird. Die Migration wird nicht fortgesetzt, wenn dies geschieht, da das Statusblob des Gast-Agents nicht aufgefüllt werden kann. Es wird empfohlen, die Azure Security Center-Richtlinie für das Abonnement für 3 Stunden zu deaktivieren, bevor Sie mit der Migration fortfahren.
 
 ## Migrationsvorgang
 
@@ -205,7 +206,7 @@ Während der Migration wird für die Ressourcen die Transformation vom klassisch
 
 **Was passiert, wenn ich gegenwärtig Azure Site Recovery oder Azure Backup verwende?**
 
-Die Unterstützung für Azure Site Recovery und Backup für virtuelle Computer unter Resource Manager wurde vor Kurzem hinzugefügt. Wir arbeiten an der Möglichkeit, auch die Migration virtueller Computer zu Resource Manager zu unterstützen. Derzeit empfehlen wir Ihnen, keine Migration durchzuführen, wenn Sie diese Funktionen nutzen.
+Informationen zum Migrieren des virtuellen Computers, den Sie für die Sicherung aktiviert haben, finden Sie unter [Ich habe meine klassischen virtuellen Computer in einem Sicherungstresor gesichert. Nun möchten ich meine virtuellen Computer vom klassischen Modus zum Resource Manager-Modus migrieren. Wie kann ich sie in einem Recovery Services-Tresor sichern?](../backup/backup-azure-backup-ibiza-faq.md#i-have-backed-up-my-classic-vms-in-backup-vault-now-i-want-to-migrate-my-vms-from-classic-mode-to-resource-manager-mode-how-can-i-backup-them-in-recovery-services-vault)
 
 **Kann ich mein Abonnement oder meine Ressourcen überprüfen, um zu ermitteln, ob sie für die Migration geeignet sind?**
 
@@ -227,6 +228,7 @@ Alle Ressourcen, für die Sie unter dem klassischen Bereitstellungsmodell expliz
 
 Diese Meldung wird empfangen, wenn der virtuelle Computer keine ausgehende Verbindung mit dem Internet aufweist. Der VM-Agent verwendet ausgehende Verbindungen, um das Azure-Speicherkonto für die Aktualisierung des Agent-Status alle fünf Minuten zu erreichen.
 
+
 ## Nächste Schritte
 Nachdem Sie nun eine Vorstellung von der Migration klassischer IaaS-Ressourcen zu Resource Manager haben, können Sie damit beginnen, die Ressourcen zu migrieren.
 
@@ -235,4 +237,4 @@ Nachdem Sie nun eine Vorstellung von der Migration klassischer IaaS-Ressourcen z
 - [Migrieren von IaaS-Ressourcen vom klassischen Bereitstellungsmodell zu Azure Resource Manager mithilfe der Befehlszeilenschnittstelle](virtual-machines-linux-cli-migration-classic-resource-manager.md)
 - [Klonen eines klassischen virtuellen Computers nach Azure Resource Manager mithilfe von PowerShell-Skripts aus der Community](virtual-machines-windows-migration-scripts.md)
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0907_2016-->

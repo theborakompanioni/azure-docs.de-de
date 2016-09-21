@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Erstellen eines IoT-Hubs mithilfe einer ARM-Vorlage und PowerShell | Microsoft Azure"
+	pageTitle="Erstellen eines IoT Hubs mithilfe einer Resource Manager-Vorlage und PowerShell| Microsoft Azure"
 	description="Nutzen Sie dieses Tutorial für erste Schritte mit Resource Manager-Vorlagen zum Erstellen eines IoT-Hubs mit PowerShell."
 	services="iot-hub"
 	documentationCenter=".net"
@@ -13,7 +13,7 @@
      ms.topic="article"
      ms.tgt_pltfrm="na"
      ms.workload="na"
-     ms.date="07/19/2016"
+     ms.date="09/07/2016"
      ms.author="dobett"/>
 
 # Erstellen eines IoT Hubs mit PowerShell
@@ -22,16 +22,16 @@
 
 ## Einführung
 
-Sie können den Azure Resource Manager (ARM) verwenden, um Azure IoT-Hubs programmgesteuert zu erstellen und zu verwalten. In diesem Tutorial erfahren Sie, wie Sie anhand einer Resource Manager-Vorlage mit PowerShell einen IoT Hub erstellen.
+Sie können den Azure-Ressourcen-Manager verwenden, um Azure IoT Hubs programmgesteuert zu erstellen und zu verwalten. In diesem Tutorial erfahren Sie, wie Sie anhand einer Resource Manager-Vorlage mit PowerShell einen IoT Hub erstellen.
 
 > [AZURE.NOTE] Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Ressourcen-Manager und klassische Bereitstellungen](../resource-manager-deployment-model.md). Dieser Artikel behandelt die Verwendung des Ressourcen-Manager-Bereitstellungsmodells.
 
-Zum Durchführen dieses Lernprogramms benötigen Sie Folgendes:
+Für dieses Tutorial benötigen Sie Folgendes:
 
 - Ein aktives Azure-Konto. <br/>Wenn Sie noch kein Konto haben, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Einzelheiten finden Sie unter [Kostenlose Azure-Testversion][lnk-free-trial].
 - [Microsoft Azure PowerShell 1.0][lnk-powershell-install] oder höher.
 
-> [AZURE.TIP] Der Artikel [Verwenden von Azure PowerShell mit dem Azure Resource Manager][lnk-powershell-arm] enthält weitere Informationen zum Verwenden von PowerShell-Skripts und ARM-Vorlagen zum Erstellen von Azure-Ressourcen.
+> [AZURE.TIP] Der Artikel [Verwenden von Azure PowerShell mit dem Azure Resource Manager][lnk-powershell-arm] enthält weitere Informationen zum Verwenden von PowerShell-Skripts und Resource Manager-Vorlagen zum Erstellen von Azure-Ressourcen.
 
 ## Verbinden mit Ihrem Azure-Abonnement
 
@@ -54,11 +54,11 @@ Erstellen Sie mit dem folgenden Befehl an einem Speicherort, der IoT Hub unterst
 New-AzureRmResourceGroup -Name MyIoTRG1 -Location "East US"
 ```
 
-## Einsenden einer Vorlage zum Erstellen eines IoT-Hubs
+## Einsenden einer Vorlage zum Erstellen eines IoT Hubs
 
-Verwenden Sie eine JSON-Vorlage, um einen neuen IoT-Hub in der Ressourcengruppe zu erstellen. Sie können auch eine Vorlage verwenden, um Änderungen an einem vorhandenen IoT-Hub vorzunehmen.
+Verwenden Sie eine JSON-Vorlage, um einen IoT Hub in der Ressourcengruppe zu erstellen. Sie können auch eine Vorlage verwenden, um Änderungen an einem vorhandenen IoT Hub vorzunehmen.
 
-1. Verwenden Sie einen Texteditor zum Erstellen einer ARM-Vorlage namens **template.json** mit der folgenden Ressourcendefinition, um einen neuen Standard-IoT-Hub zu erstellen. In diesem Beispiel wird IoT Hub in der Region **USA, Osten** hinzugefügt, es werden zwei Consumergruppen (**cg1** und **cg2**) auf dem Event Hub-kompatiblen Endpunkt erstellt, und es wird die API-Version **2016-02-03** verwendet. Diese Vorlage erwartet auch, dass Sie den IoT Hub-Namen als Parameter **hubName** übergeben.
+1. Verwenden Sie einen Texteditor zum Erstellen einer Resource Manager-Vorlage namens **template.json** mit der folgenden Ressourcendefinition, um einen neuen Standard-IoT Hub zu erstellen. In diesem Beispiel wird IoT Hub in der Region **USA, Osten** hinzugefügt, es werden zwei Consumergruppen (**cg1** und **cg2**) auf dem Event Hub-kompatiblen Endpunkt erstellt, und es wird die API-Version **2016-02-03** verwendet. Diese Vorlage erwartet auch, dass Sie den IoT Hub-Namen als Parameter **hubName** übergeben. Die aktuelle Liste der Standorte, die IoT Hub unterstützen, finden Sie unter [Azure-Status][lnk-status].
 
     ```
     {
@@ -120,13 +120,13 @@ Verwenden Sie eine JSON-Vorlage, um einen neuen IoT-Hub in der Ressourcengruppe 
 
 4. Die Ausgabe zeigt die Schlüssel für den IoT-Hub an, den Sie erstellt haben.
 
-5. Das Hinzufügen des neuen IoT-Hubs durch die Anwendung lässt sich durch Anzeigen der Ressourcenliste im [Portal][lnk-azure-portal] oder mithilfe des PowerShell-Cmdlets **Get-AzureRmResource** überprüfen.
+5. Das Hinzufügen des neuen IoT Hubs durch die Anwendung lässt sich durch Anzeigen der Ressourcenliste im [Portal][lnk-azure-portal] oder mithilfe des PowerShell-Cmdlets **Get-AzureRmResource** überprüfen.
 
-> [AZURE.NOTE] Diese Beispielanwendung fügt einen für Sie kostenpflichtigen S1-Standard-IoT-Hub hinzu. Sie können den IoT-Hub nach Abschluss des Beispiels über das [Portal][lnk-azure-portal] oder mithilfe des PowerShell-Cmdlets **Remove-AzureRmResource** löschen.
+> [AZURE.NOTE] Diese Beispielanwendung fügt einen für Sie kostenpflichtigen S1-Standard-IoT Hub hinzu. Sie können den IoT Hub nach Abschluss des Beispiels über das [Portal][lnk-azure-portal] oder mithilfe des PowerShell-Cmdlets **Remove-AzureRmResource** löschen.
 
 ## Nächste Schritte
 
-Nachdem Sie nun einen IoT-Hub mithilfe einer ARM-Vorlage mit PowerShell bereitgestellt haben, möchten Sie vielleicht mehr wissen:
+Nachdem Sie nun einen IoT Hub mithilfe einer Resource Manager-Vorlage mit PowerShell bereitgestellt haben, möchten Sie vielleicht mehr wissen:
 
 - Informieren Sie sich über die Funktionen der [IoT Hub-Ressourcenanbieter-REST-API][lnk-rest-api].
 - Weitere Informationen zu den Fähigkeiten des Azure-Ressourcen-Manager finden Sie unter [Übersicht über den Azure-Ressourcen-Manager][lnk-azure-rm-overview].
@@ -146,6 +146,7 @@ Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 <!-- Links -->
 [lnk-free-trial]: https://azure.microsoft.com/pricing/free-trial/
 [lnk-azure-portal]: https://portal.azure.com/
+[lnk-status]: https://azure.microsoft.com/status/
 [lnk-powershell-install]: ../powershell-install-configure.md
 [lnk-rest-api]: https://msdn.microsoft.com/library/mt589014.aspx
 [lnk-azure-rm-overview]: ../resource-group-overview.md
@@ -159,4 +160,4 @@ Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 [lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
 [lnk-portal]: iot-hub-manage-through-portal.md
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0907_2016-->

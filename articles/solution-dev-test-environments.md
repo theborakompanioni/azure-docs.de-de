@@ -3,9 +3,9 @@
    description="Enthält Informationen zum Verwenden von Azure-Ressourcen-Manager-Vorlagen zum schnellen und konsistenten Erstellen und Löschen von Entwicklungs- und Testumgebungen."
    services="azure-resource-manager"
    documentationCenter="na"
-   authors="jimdial"
-   manager="carmonm"
-   editor=""/>
+   authors="tfitzmac"
+   manager="timlt"
+   editor="tysonn"/>
 
 <tags
    ms.service="azure-resource-manager"
@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="na"
    ms.date="01/22/2016"
-   ms.author="jdial"/>
+   ms.author="tomfitz"/>
 
 # Entwicklungs- und Testumgebungen in Microsoft Azure
 
@@ -361,4 +361,4 @@ Jetzt wissen Sie, wie einfach es ist, Entwicklungs- und Testumgebungen zu erstel
 - [Zuweisen von Tags](resource-group-using-tags.md) zu den Ressourcengruppen für jede Umgebung und/oder die einzelnen Ressourcen. Sie können den Ressourcengruppen ein Tag "Environment" hinzufügen und dessen Wert auf den Umgebungsnamen festlegen. Tags können besonders hilfreich sein, wenn Sie Ressourcen zur Abrechnung oder Verwaltung organisieren müssen.
 - Überwachen von Warnungen und Abrechnungen für Ressourcen aus Ressourcengruppen im [Azure-Portal](https://portal.azure.com).
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0907_2016-->

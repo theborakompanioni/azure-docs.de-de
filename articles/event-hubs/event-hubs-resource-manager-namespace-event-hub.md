@@ -24,14 +24,8 @@ Weitere Informationen zum Erstellen von Vorlagen finden Sie unter [Erstellen von
 
 Die vollständige [Event Hub- und Consumergruppenvorlage][] finden Sie auf GitHub.
 
->[AZURE.NOTE] Die folgenden Azure Resource Manager-Vorlagen sind zum Download und zur Bereitstellung verfügbar.
->
->-    [Create a Service Bus authorization rule for namespace and queue using an Azure Resource Manager template (Erstellen einer Service Bus-Autorisierungsregel für Namespace und Warteschlange mit einer Azure Resource Manager-Vorlage)](service-bus-resource-manager-namespace-auth-rule.md)
->-    [Create a Service Bus namespace and a queue using an Azure Resource Manager template (Erstellen eines Service Bus-Namespace und einer Warteschlange mit einer Azure Resource Manager-Vorlage)](service-bus-resource-manager-namespace-queue.md)
->-    [Create a Service Bus namespace with topic and subscription using an Azure Resource Manager template](service-bus-resource-manager-namespace-topic.md) (Erstellen eines Service Bus-Namespace mit Thema und Abonnement mit einer Azure Resource Manager-Vorlage)
->-    [Erstellen eines Service Bus-Namespaces](service-bus-resource-manager-namespace.md)
->
->Um die neuesten Vorlagen zu finden, rufen Sie den Katalog [Azure-Schnellstartvorlagen][] auf, und suchen Sie nach „Event Hubs“.
+>[AZURE.NOTE]
+Um die neuesten Vorlagen zu finden, rufen Sie den Katalog [Azure-Schnellstartvorlagen][] auf, und suchen Sie nach „Event Hubs“.
 
 ## Was möchten Sie bereitstellen?
 
@@ -156,14 +150,12 @@ azure group deployment create <my-resource-group> <my-deployment-name> --templat
 
 Da Sie nun Ressourcen mit Azure Resource Manager erstellt und bereitgestellt haben, lesen Sie die folgenden Artikel, und erfahren Sie, wie Sie diese Ressourcen verwalten können:
 
-- [Verwalten von Azure Service Bus mithilfe von Azure Automation](service-bus-automation-manage.md)
-- [Verwalten von Service Bus mit PowerShell](service-bus-powershell-how-to-provision.md)
 - [Service Bus Explorer](https://code.msdn.microsoft.com/Service-Bus-Explorer-f2abca5a)
 
   [Erstellen von Azure Resource Manager-Vorlagen]: ../resource-group-authoring-templates.md
-  [Azure-Schnellstartvorlagen]: https://azure.microsoft.com/documentation/templates/?term=service+bus
+  [Azure-Schnellstartvorlagen]: https://azure.microsoft.com/documentation/templates/?term=event+hubs
   [Using Azure PowerShell with Azure Resource Manager]: ../powershell-azure-resource-manager.md
   [Using the Azure CLI for Mac, Linux, and Windows with Azure Resource Management]: ../xplat-cli-azure-resource-manager.md
   [Event Hub- und Consumergruppenvorlage]: https://github.com/Azure/azure-quickstart-templates/blob/master/201-event-hubs-create-event-hub-and-consumer-group/
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0907_2016-->

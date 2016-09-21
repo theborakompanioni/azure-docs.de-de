@@ -53,7 +53,7 @@ Die URL für den Zugriff auf ein Objekt in einem Speicherkonto wird durch Anhän
 
 Sie können auch einen benutzerdefinierten Domänennamen konfigurieren, den Sie mit Ihrem Speicherkonto verwenden. Informationen zu klassischen Speicherkonten finden Sie unter [Konfigurieren eines benutzerdefinierten Domänennamens für Ihren Blob Storage-Endpunkt](storage-custom-domain-name.md). Für Resource Manager-Speicherkonten wurde diese Funktion im [Azure-Portal](https://portal.azure.com) noch nicht hinzugefügt, Sie können jedoch PowerShell für die Konfiguration verwenden. Weitere Informationen finden Sie unter dem Cmdlet [Set-AzureRmStorageAccount](https://msdn.microsoft.com/library/mt607146.aspx).
 
-## Speicherkonto erstellen
+## Erstellen Sie ein Speicherkonto.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
@@ -71,7 +71,7 @@ Sie können auch einen benutzerdefinierten Domänennamen konfigurieren, den Sie 
 
 5. Wählen Sie den Typ des Speicherkontos aus: **Allgemein** oder **Blob Storage**. **Allgemein** ist die Standardeinstellung.
 
-	Wenn **Allgemein** ausgewählt wurde, geben Sie die Leistungsstufe an: **Standard** oder **Premium**. Die Standardeinstellung ist **Standard**. Weitere Informationen zu Standard- und Premium-Speicherkonten finden Sie unter [Einführung in Microsoft Azure Storage](storage-introduction.md) und [Premium-Speicher: Hochleistungsspeicher für Workloads auf virtuellen Azure-Computern](storage-premium-storage.md).
+	Wenn **Allgemein** ausgewählt wurde, geben Sie die Leistungsstufe an: **Standard** oder **Premium**. Die Standardeinstellung ist **Standard**. Weitere Informationen zu Standard- und Premium-Speicherkonten finden Sie unter [Einführung in Microsoft Azure Storage](storage-introduction.md) und [Storage Premium: Hochleistungsspeicher für Workloads auf virtuellen Azure-Computern](storage-premium-storage.md).
 
 	Wenn **Blob Storage** ausgewählt wurde, geben Sie den Zugriffstarif an: **Heiße Daten** oder **Kalte Daten**. Der Standardwert ist **Heiße Daten**. Weitere Informationen finden Sie unter [Azure Blob Storage: „Heiße“ und „kalte“ Speicherebenen](storage-blob-storage-tiers.md).
 
@@ -101,7 +101,7 @@ Wenn Sie für BLOB-Speicherkonten die Zugriffsstufen ändern, fallen unter Umst�
 
 Wenn Sie ein Speicherkonto erstellen, generiert Azure zwei 512-Bit-Speicherzugriffsschlüssel, die für die Authentifizierung verwendet werden, wenn der Zugriff auf das Speicherkonto erfolgt. Durch Bereitstellen von zwei Speicherzugriffsschlüsseln ermöglicht Azure Ihnen das erneute Generieren der Schlüssel ohne Unterbrechung des Speicherdiensts oder Zugriff auf diesen Dienst.
 
-> [AZURE.NOTE] Sie sollten das Weitergeben von Speicherzugriffsschlüsseln an andere vermeiden. Um den Zugriff auf Speicherressourcen zu gewähren, ohne den Zugriffsschlüssel weiterzugeben, verwenden Sie eine *Shared Access Signature*. Eine Shared Access Signature (SAS) bietet Zugriff auf eine Ressource in Ihrem Konto für ein von Ihnen definiertes Zeitintervall und mit den von Ihnen festgelegten Berechtigungen. Weitere Informationen finden Sie unter [Shared Access Signatures: Grundlagen zum SAS-Modell](storage-dotnet-shared-access-signature-part-1.md).
+> [AZURE.NOTE] Sie sollten das Weitergeben von Speicherzugriffsschlüsseln an andere vermeiden. Um den Zugriff auf Speicherressourcen zu gewähren, ohne den Zugriffsschlüssel weiterzugeben, verwenden Sie eine *Shared Access Signature*. Eine Shared Access Signature (SAS) bietet Zugriff auf eine Ressource in Ihrem Konto für ein von Ihnen definiertes Zeitintervall und mit den von Ihnen festgelegten Berechtigungen. Weitere Informationen finden Sie unter [Shared Access Signatures, Teil 1: Grundlagen zum SAS-Modell](storage-dotnet-shared-access-signature-part-1.md).
 
 #### Anzeigen und Kopieren von Speicherzugriffsschlüssel
 
@@ -157,4 +157,4 @@ Weitere Informationen finden Sie unter [Dokumentation zu virtuellen Azure-Comput
 - [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](storage-use-azcopy.md)
 - Besuchen Sie den [Blog des Azure-Speicherteams](http://blogs.msdn.com/b/windowsazurestorage/).
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0914_2016-->

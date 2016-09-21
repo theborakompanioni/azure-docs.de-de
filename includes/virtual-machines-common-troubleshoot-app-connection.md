@@ -1,6 +1,6 @@
-Verschiedene Gründe können zu Problemen beim Starten einer Anwendung oder beim Herstellen einer Verbindung mit einer Anwendung führen, die auf einem virtuellen Azure-Computer ausgeführt wird, z.B. wenn die Anwendung nicht ausgeführt wird oder nicht an den erwarteten Ports lauscht, der Lauschport blockiert ist oder Netzwerkregeln den Datenverkehr nicht ordnungsgemäß an die Anwendung weiterleiten. In diesem Artikel wird ein methodischer Ansatz zum Ermitteln und Beheben der Probleme beschrieben.
+Es gibt verschiedene Gründe, aus denen Sie eine Anwendung, die auf einem virtuellen Azure-Computer (VM) ausgeführt wird, nicht starten können bzw. keine Verbindung damit herstellen können. Zu den Gründen gehört, dass die Anwendung nicht ausgeführt wird oder nicht an den erwarteten Ports lauscht, dass der Lauschport blockiert ist oder dass Netzwerkeregeln Datenverkehr nicht ordnungsgemäß an die Anwendung übergeben. In diesem Artikel wird ein methodischer Ansatz zum Ermitteln und Beheben der Probleme beschrieben.
 
-Wenn beim Herstellen einer Verbindung mit dem virtuellen Computer mit RDP oder SSH Probleme auftreten, finden Sie entsprechende Informationen zunächst in den folgenden Artikeln:
+Wenn beim Herstellen einer Verbindung mit dem virtuellen Computer mit RDP oder SSH Probleme auftreten, finden Sie entsprechende Informationen in den folgenden Artikeln:
 
  - [Problembehandlung bei Remotedesktopverbindungen mit einem Windows-basierten virtuellen Azure-Computer](../articles/virtual-machines/virtual-machines-windows-troubleshoot-rdp-connection.md)
  - [Behandeln von Problemen mit Secure Shell-Verbindungen (SSH) mit einem Linux-basierten virtuellen Azure-Computer](../articles/virtual-machines/virtual-machines-linux-troubleshoot-ssh-connection.md)
@@ -11,7 +11,7 @@ Wenn Sie beim Lesen dieses Artikels feststellen, dass Sie weitere Hilfe benötig
 
 ## Allgemeine Problembehandlung bei Endpunktverbindungen
 
-Wenn beim Herstellen der Verbindung mit einer Anwendung Probleme auftreten, führen Sie die folgenden allgemeinen Schritte zur Problembehandlung aus. Versuchen Sie nach jedem Schritt erneut, eine Verbindung mit der Anwendung herzustellen.
+Wenn beim Herstellen der Verbindung mit einer Anwendung Probleme auftreten, führen Sie die folgenden allgemeinen Schritte zur Problembehandlung aus. Versuchen Sie nach jedem Schritt erneut, eine Verbindung mit der Anwendung herzustellen:
 
 - Starten Sie den virtuellen Computer neu.
 - Erstellen Sie den Endpunkt, die Firewallregeln und die Regeln für die Netzwerksicherheitsgruppen (NSG) neu.
@@ -118,4 +118,4 @@ Wenn Sie auf die Anwendung zugreifen können, stellen Sie sicher, dass Ihre Inte
 
 [Behandeln von Problemen mit Secure Shell (SSH)-Verbindungen mit einem Linux-basierten virtuellen Azure-Computer](../articles/virtual-machines/virtual-machines-linux-troubleshoot-ssh-connection.md)
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0907_2016-->

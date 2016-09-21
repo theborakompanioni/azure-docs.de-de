@@ -39,7 +39,7 @@ Mit einem **Protokollprofil** wird gesteuert, wie das Aktivitätsprotokoll expor
 - Wohin das Aktivitätsprotokoll gesendet wird (Speicherkonto oder Event Hubs)
 - Welche Ereigniskategorien gesendet werden sollen (z.B. „Write“, „Delete“, „Action“)
 - Welche Regionen (Standorte) exportiert werden sollen
-- Wie lange das Aktivitätsprotokoll in einem Speicherkonto aufbewahrt werden sollen. Bei Angabe einer Aufbewahrungsdauer von null Tagen werden die Protokolle dauerhaft aufbewahrt. Wenn Aufbewahrungsrichtlinien festgelegt werden, aber das Speichern von Protokollen in einem Speicherkonto deaktiviert ist (wenn z.B. nur die Event Hubs- oder die OMS-Option aktiviert ist), werden die Aufbewahrungsrichtlinien ignoriert.
+- Wie lange das Aktivitätsprotokoll in einem Speicherkonto aufbewahrt werden sollen. Bei Angabe einer Aufbewahrungsdauer von null Tagen werden die Protokolle dauerhaft aufbewahrt. Andernfalls kann als Wert die Anzahl von Tagen (1 bis 2.147.483.647) festgelegt werden. Wenn Aufbewahrungsrichtlinien festgelegt werden, aber das Speichern von Protokollen in einem Speicherkonto deaktiviert ist (wenn z.B. nur die Event Hubs- oder die OMS-Option aktiviert ist), werden die Aufbewahrungsrichtlinien ignoriert.
 
 Diese Einstellungen können im Portal auf dem Blatt „Aktivitätsprotokoll“ mit der Option „Exportieren“ oder programmgesteuert [mit der REST-API](https://msdn.microsoft.com/library/azure/dn931927.aspx), PowerShell-Cmdlets oder der CLI konfiguriert werden. Ein Abonnement kann nur über ein Protokollprofil verfügen.
 
@@ -52,7 +52,7 @@ Sie können das Aktivitätsprotokoll an einen Event Hub streamen oder in einem S
 2. Klicken Sie oben auf dem Blatt auf die Schaltfläche **Exportieren**.
 
     ![Schaltfläche „Exportieren“ im Portal](./media/monitoring-overview-activity-logs/activity-logs-portal-export.png)
-3. Auf dem angezeigten Blatt können Sie Folgendes auswählen: die Regionen, für die Sie Ereignisse exportieren möchten, das Speicherkonto, in dem Sie Ereignisse speichern möchten (und die Anzahl von Tagen für die Aufbewahrung dieser Ereignisse im Speicher), und den Service Bus-Namespace, unter dem ein Event Hub zum Streamen dieser Ereignisse erstellt werden soll.
+3. Auf dem angezeigten Blatt können Sie Folgendes auswählen: die Regionen, für die Sie Ereignisse exportieren möchten, das Speicherkonto, in dem Sie Ereignisse speichern möchten (und die Anzahl von Tagen für die Aufbewahrung dieser Ereignisse im Speicher. Bei der Angabe von 0 Tagen werden die Protokolle unbegrenzt gespeichert.), und den Service Bus-Namespace, unter dem ein Event Hub zum Streamen dieser Ereignisse erstellt werden soll.
 
     ![Blatt zum Exportieren des Aktivitätsprotokolls](./media/monitoring-overview-activity-logs/activity-logs-portal-export-blade.png)
 4. Klicken Sie auf **Speichern**, um die Einstellungen zu speichern. Die Einstellungen werden sofort auf Ihr Abonnement angewendet.
@@ -74,7 +74,7 @@ Add-AzureRmLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/r
 | StorageAccountId | Nein | Ressourcen-ID des Speicherkontos, in dem das Aktivitätsprotokoll gespeichert werden soll. |
 | serviceBusRuleId | Nein | Service Bus-Regel-ID für den Service Bus-Namespace, unter dem Event Hubs erstellt werden sollen. Dies ist eine Zeichenfolge mit dem folgenden Format: `{service bus resource ID}/authorizationrules/{key name}`. |
 | Locations | Ja | Kommagetrennte Liste mit den Regionen, für die Sie Aktivitätsprotokollereignisse erfassen möchten. |
-| RetentionInDays | Ja | Anzahl von Tagen für die Aufbewahrung von Ereignissen. Bei einem Wert von 0 werden die Protokolle dauerhaft gespeichert. |
+| RetentionInDays | Ja | Anzahl von Tagen für die Aufbewahrung von Ereignissen (1 bis 2.147.483.647). Bei einem Wert von 0 werden die Protokolle dauerhaft (d.h. für immer) gespeichert. |
 | Categories | Nein | Kommagetrennte Liste mit den Ereigniskategorien, die erfasst werden sollen. Mögliche Werte sind „Write“, „Delete“ und „Action“. |
 
 #### Entfernen eines Protokollprofils
@@ -103,7 +103,7 @@ azure insights logprofile add --name my_log_profile --storageId /subscriptions/s
 | storageId | Nein | Ressourcen-ID des Speicherkontos, in dem das Aktivitätsprotokoll gespeichert werden soll. |
 | serviceBusRuleId | Nein | Service Bus-Regel-ID für den Service Bus-Namespace, unter dem Event Hubs erstellt werden sollen. Dies ist eine Zeichenfolge mit dem folgenden Format: `{service bus resource ID}/authorizationrules/{key name}`. |
 | locations | Ja | Kommagetrennte Liste mit den Regionen, für die Sie Aktivitätsprotokollereignisse erfassen möchten. |
-| retentionInDays | Ja | Anzahl von Tagen für die Aufbewahrung von Ereignissen. Bei einem Wert von 0 werden die Protokolle dauerhaft gespeichert. |
+| retentionInDays | Ja | Anzahl von Tagen für die Aufbewahrung von Ereignissen (1 bis 2.147.483.647). Bei einem Wert von 0 werden die Protokolle dauerhaft (d.h. für immer) gespeichert. |
 | categories | Nein | Kommagetrennte Liste mit den Ereigniskategorien, die erfasst werden sollen. Mögliche Werte sind „Write“, „Delete“ und „Action“. |
 
 #### Entfernen eines Protokollprofils
@@ -223,4 +223,4 @@ Jedes Ereignis im Aktivitätsprotokoll verfügt über ein JSON-Blob dieser Art:
 - [Weitere Informationen zum Aktivitätsprotokoll (bisher „Überwachungsprotokolle“)](../resource-group-audit.md)
 - [Stream the Azure Activity Log to Event Hubs (Streamen des Azure-Aktivitätsprotokolls auf Event Hubs)](./monitoring-stream-activity-logs-event-hubs.md)
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0907_2016-->

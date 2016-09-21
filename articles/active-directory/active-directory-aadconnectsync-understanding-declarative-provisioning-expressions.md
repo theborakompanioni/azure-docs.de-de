@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/29/2016"
+	ms.date="08/31/2016"
 	ms.author="markusvi;andkjell"/>
 
 
@@ -70,18 +70,26 @@ Folgende Operatoren können verwendet werden:
 - **Logischer Ausdruck**: && (and), || (or)
 - **Auswertungsreihenfolge**: ( )
 
-Operatoren werden von links nach rechts ausgewertet und haben bei der Auswertung die gleiche Priorität. Das bedeutet, dass der Multiplikator (\*) nicht vor der Subtraktion (-) ausgewertet wird. „2\*(5+3)“ ist nicht dasselbe wie „2\*5+3“. Die Klammern werden verwendet, um die Reihenfolge der Auswertung zu ändern, wenn die Auswertungsreihenfolge von links nach rechts nicht geeignet ist.
+Operatoren werden von links nach rechts ausgewertet und haben bei der Auswertung die gleiche Priorität. Dies bedeutet, dass der Multiplikator (*) nicht vor der Subtraktion (-) ausgewertet wird. „2\*(5+3)“ ist nicht dasselbe wie „2\*5+3“. Die Klammern werden verwendet, um die Reihenfolge der Auswertung zu ändern, wenn die Auswertungsreihenfolge von links nach rechts nicht geeignet ist.
 
 ## Mehrwertige Attribute
 Die Funktionen können sowohl für einwertige als auch für mehrwertige Attribute verwendet werden. Bei mehrwertigen Attributen wird die Funktion für jeden Wert ausgeführt, und auf alle Werte wird die gleiche Funktion angewendet.
 
 Beispiel: `Trim([proxyAddresses])` – Führt eine Trim-Funktion für jeden Wert im Attribut „proxyAddress“ aus. `Word([proxyAddresses],1,"@") & "@contoso.com"` – Ersetzt für jeden Wert mit dem @-Zeichen die Domäne durch „@contoso.com“. `IIF(InStr([proxyAddresses],"SIP:")=1,NULL,[proxyAddresses])` – Sucht nach der SIP-Adresse und entfernt sie aus den Werten.
 
-## Weitere Ressourcen
+## Nächste Schritte
 
-- [Azure AD Connect sync: Understanding Declarative Provisioning](active-directory-aadconnectsync-understanding-declarative-provisioning.md) (Azure AD Connect-Synchronisierung: Grundlegendes zur deklarativen Bereitstellung)
-- [Azure AD Connect-Synchronisierung: Funktionsreferenz](active-directory-aadconnectsync-functions-reference.md)
-- [Azure AD Connect-Synchronisierung: Anpassen von Synchronisierungsoptionen](active-directory-aadconnectsync-whatis.md)
+- Weitere Informationen zum Konfigurationsmodell finden Sie unter [Understanding Declarative Provisioning](active-directory-aadconnectsync-understanding-declarative-provisioning.md) (Grundlegendes zur deklarativen Bereitstellung).
+- Unter [Grundlegendes zur Standardkonfiguration](active-directory-aadconnectsync-understanding-default-configuration.md) wird die standardmäßige Verwendung der deklarativen Bereitstellung veranschaulicht.
+- Unter [Ändern der Standardkonfiguration](active-directory-aadconnectsync-change-the-configuration.md) wird beschrieben, wie Sie mit der deklarativen Bereitstellung eine praktische Änderung vornehmen.
+
+**Übersichtsthemen**
+
+- [Azure AD Connect-Synchronisierung: Grundlagen und Anpassung der Synchronisierung](active-directory-aadconnectsync-whatis.md)
 - [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md)
 
-<!---HONumber=AcomDC_0831_2016-->
+**Referenzthemen**
+
+- [Azure AD Connect-Synchronisierung: Funktionsreferenz](active-directory-aadconnectsync-functions-reference.md)
+
+<!---HONumber=AcomDC_0907_2016-->

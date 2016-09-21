@@ -19,9 +19,9 @@
 #Azure Notification Hubs – Sichere Pushbenachrichtigungen
 
 > [AZURE.SELECTOR]
-- [Windows Universal](notification-hubs-aspnet-backend-windows-dotnet-secure-push.md)
-- [iOS](notification-hubs-aspnet-backend-ios-secure-push.md)
-- [Android](notification-hubs-aspnet-backend-android-secure-push.md)
+- [Windows Universal](notification-hubs-aspnet-backend-windows-dotnet-wns-secure-push-notification.md)
+- [iOS](notification-hubs-aspnet-backend-ios-push-apple-apns-secure-notification.md)
+- [Android](notification-hubs-aspnet-backend-android-secure-google-gcm-push-notification.md)
 
 
 ##Übersicht
@@ -43,7 +43,7 @@ Beachten Sie, dass im obigen Ablauf (und in diesem Lernprogramm) angenommen wird
 
 Dieses Lernprogramm zu sicheren Pushbenachrichtigungen veranschaulicht das sichere Senden einer Pushbenachrichtigung. Es baut auf dem Lernprogramm [Benachrichtigen von Benutzern](notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md) auf, daher sollten Sie die Schritte in diesem Lernprogramm zuerst durchführen.
 
-> [AZURE.NOTE] In diesem Lernprogramm wird davon ausgegangen, dass Sie Ihren Notification Hub wie unter [Erste Schritte mit Notification Hubs (Windows Store)](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) beschrieben erstellt und konfiguriert haben Beachten Sie außerdem, dass für Windows Phone 8.1 Anmeldedaten für Windows (nicht Windows Phone) erforderlich sind und dass Hintergrundaufgaben in Windows Phone 8.0 oder Silverlight 8.1 nicht funktionieren. Bei Windows Store-Anwendungen können nur dann Benachrichtigungen über eine Hintergrundaufgabe empfangen werden, wenn für die App der Sperrbildschirm aktiviert ist (klicken Sie auf das Kontrollkästchen im AppManifest).
+> [AZURE.NOTE] In diesem Lernprogramm wird davon ausgegangen, dass Sie Ihren Notification Hub wie unter [Erste Schritte mit Notification Hubs (Windows Store)](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) beschrieben erstellt und konfiguriert haben Beachten Sie außerdem, dass für Windows Phone 8.1 Anmeldedaten für Windows (nicht Windows Phone) erforderlich sind und dass Hintergrundaufgaben in Windows Phone 8.0 oder Silverlight 8.1 nicht funktionieren. Bei Windows Store-Anwendungen können nur dann Benachrichtigungen über eine Hintergrundaufgabe empfangen werden, wenn für die App der Sperbildschirmaktiviert ist (klicken Sie auf das Kontrollkästchen im AppManifest).
 
 [AZURE.INCLUDE [notification-hubs-aspnet-backend-securepush](../../includes/notification-hubs-aspnet-backend-securepush.md)]
 
@@ -186,4 +186,4 @@ Gehen Sie zum Ausführen der Anwendung folgendermaßen vor:
 [12]: ./media/notification-hubs-aspnet-backend-windows-dotnet-secure-push/notification-hubs-secure-push12.png
 [13]: ./media/notification-hubs-aspnet-backend-windows-dotnet-secure-push/notification-hubs-secure-push13.png
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0907_2016-->

@@ -13,7 +13,7 @@
 	ms.workload="search" 
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
-	ms.date="06/08/2016" 
+	ms.date="08/08/2016" 
 	ms.author="heidist"/>
 
 # Erste Schritte mit der Azure Search Management-REST-API
@@ -136,10 +136,10 @@ Wenn Sie die Beispielanwendung noch nicht [von GitHub heruntergeladen](https://g
 	![][9]
 
 5. Angabe von `TenantID.`
-	- Gehen Sie zurück zu Active Directory | SearchTutorial (Dienst). 
-	- Klicken Sie in der oberen Leiste auf **Anwendungen**. 
-	- Klicken Sie unten auf der Seite auf **Endpunkte anzeigen**. 
-	- Kopieren Sie den OAUTH 2.0-Autorisierungsendpunkt unten auf der Liste. 
+	- Gehen Sie zurück zu Active Directory | SearchTutorial (Dienst).
+	- Klicken Sie in der oberen Leiste auf **Anwendungen**.
+	- Klicken Sie unten auf der Seite auf **Endpunkte anzeigen**.
+	- Kopieren Sie den OAUTH 2.0-Autorisierungsendpunkt unten auf der Liste.
 	- Fügen Sie den Endpunkt unter "TenantID" ein, und verkürzen Sie dabei den Wert aller URI-Parameter, mit Ausnahme der Mandanten-ID.
 
     Wenn "https://login.windows.net/55e324c7-1656-4afe-8dc3-43efcd4ffa50/oauth2/authorize?api-version=1.0" ist, löschen Sie alles mit Ausnahme von "55e324c7-1656-4afe-8dc3-43efcd4ffa50".
@@ -160,7 +160,7 @@ Fügen Sie einen Haltepunkt am ersten Methodenaufruf ein, sodass Sie das Program
 
 Die Beispielanwendung erstellt einen kostenlosen Azure Search-Dienst für ein vorhandenes Azure-Abonnement. Wenn ein kostenloser Dienst für Ihr Abonnement bereits vorhanden ist, schlägt die Beispielanwendung fehl. Nur ein kostenloser Search-Dienst pro Abonnement ist zulässig.
 
-1. Öffnen Sie im Projektmappen-Explorer "Program.cs", und gehen Sie zur Funktion Main (string void). 
+1. Öffnen Sie im Projektmappen-Explorer "Program.cs", und gehen Sie zur Funktion Main (string void).
  
 3. Beachten Sie, dass **ExecuteArmRequest** verwendet wird, um Anforderungen für den Azure-Ressourcen-Manager-Endpunkt `https://management.azure.com/subscriptions` für eine angegebene `subscriptionID` auszuführen. Diese Methode wird in der gesamten Anwendung für Operationen mit der Azure Resource Manager-API oder der Search Management-API verwendet.
 
@@ -208,4 +208,4 @@ Nach Abschluss dieses Lernprogramms empfiehlt es sich, mehr über die Dienstverw
 
  
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0907_2016-->

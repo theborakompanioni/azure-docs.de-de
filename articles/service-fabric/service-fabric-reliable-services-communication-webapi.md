@@ -409,11 +409,11 @@ public void Abort()
 
 private void StopWebServer()
 {
-    if (this.serverHandle != null)
+    if (this.webApp != null)
     {
         try
         {
-            this.serverHandle.Dispose();
+            this.webApp.Dispose();
         }
         catch (ObjectDisposedException)
         {
@@ -684,4 +684,4 @@ Weitere Informationen zum Erstellen von Anwendungs- und Dienstinstanzen finden S
 
 [Debuggen der Service Fabric-Anwendung mithilfe von Visual Studio](service-fabric-debugging-your-application.md)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0907_2016-->

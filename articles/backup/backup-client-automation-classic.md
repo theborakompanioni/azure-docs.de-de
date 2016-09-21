@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/23/2016"
-	ms.author="markgal;jimpark;nkolli;trinadhk"/>
+	ms.date="09/01/2016"
+	ms.author="saurabhsensharma;markgal;jimpark;nkolli;trinadhk"/>
 
 
 # Bereitstellen und Verwalten der Sicherung in Azure für Windows Server-/Windows-Clientcomputer mit PowerShell
@@ -221,7 +221,7 @@ Ein ```OBFileSpec```-Objekt definiert die Dateien, die in eine Sicherung eingesc
 
 Letzteres wird durch Verwendung des -NonRecursive-Kennzeichens im New-OBFileSpec-Befehl erreicht.
 
-Im folgenden Beispiel sichern wir Volume „C:“ und „D:“ und schließen die Binärdateien des Betriebssystems im Windows-Ordner sowie alle temporären Ordner aus. Dazu erstellen wir zwei Dateispezifikationen mithilfe des [New-OBFileSpec](https://technet.microsoft.com/library/hh770408)-Cmdlets – eine Spezifikation für Einschluss und eine für Ausschluss. Nachdem die Dateispezifikationen erstellt wurden, werden sie mithilfe des [Add-OBFileSpec](https://technet.microsoft.com/library/hh770424)-Cmdlets mit der Richtlinie verknüpft.
+Im folgenden Beispiel sichern wir Volume „C:“ und „D:“ und schließen die Binärdateien des Betriebssystems im Windows-Ordner sowie alle temporären Ordner aus. Dazu erstellen wir zwei Dateispezifikationen mithilfe des [New-OBFileSpec](https://technet.microsoft.com/library/hh770408)-Cmdlets – eine Spezifikation für Einschluss und eine für Ausschluss. Nachdem die Dateispezifikationen erstellt wurden, werden sie mithilfe des [Add-OBFileSpec](https://technet.microsoft.com/library/hh770424)-Cmdlets mit der Richtlinie verknüpft.
 
 ```
 PS C:\> $inclusions = New-OBFileSpec -FileSpec @("C:", "D:")
@@ -599,4 +599,4 @@ Weitere Informationen zu Azure Backup für Windows-Server und -Clients finden Si
 - [Einführung in Azure Backup](backup-introduction-to-azure-backup.md)
 - [Sichern von Windows-Servern](backup-configure-vault.md)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0907_2016-->

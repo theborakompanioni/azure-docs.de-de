@@ -19,12 +19,12 @@
 # Verwenden von Notification Hubs zum Senden lokalisierter Nachrichten
 
 > [AZURE.SELECTOR]
-- [Windows Store C#](notification-hubs-windows-store-dotnet-send-localized-breaking-news.md)
-- [iOS](notification-hubs-ios-send-localized-breaking-news.md)
+- [Windows Store C#](notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md)
+- [iOS](notification-hubs-ios-xplat-localized-apns-push-notification.md)
 
 ##Übersicht
 
-In diesem Thema wird gezeigt, wie Sie mit der **Vorlagen**-Funktion von Azure Notification Hubs Benachrichtigungen senden können, die je nach Sprache und Gerät lokalisiert wurden. In diesem Lernprogramm beginnen Sie mit der Windows Store-App, die Sie in [Verwenden von Notification Hubs zum Übermitteln von aktuellen Nachrichten] erstellt haben. Sie werden anschließend in der Lage sein, sich für Kategorien zu registrieren, die Sie interessieren, eine Sprache für die Benachrichtigungen auszuwählen und nur Pushbenachrichtigungen für diese Kategorien in der jeweiligen Sprache zu empfangen.
+In diesem Thema wird gezeigt, wie Sie mit der **Vorlagen**-Funktion von Azure Notification Hubs aktuelle Nachrichten senden können, die je nach Sprache und Gerät lokalisiert wurden. In diesem Lernprogramm beginnen Sie mit der Windows Store-App, die Sie in [Verwenden von Notification Hubs zum Übermitteln von aktuellen Nachrichten] erstellt haben. Sie werden anschließend in der Lage sein, sich für Kategorien zu registrieren, die Sie interessieren, eine Sprache für die Benachrichtigungen auszuwählen und nur Pushbenachrichtigungen für diese Kategorien in der jeweiligen Sprache zu empfangen.
 
 
 Dieses Szenario besteht aus zwei Teilen:
@@ -227,4 +227,4 @@ Fügen Sie ein Sprachen-Kombinationsfeld zu Ihrer MainPage.xaml hinzu:
 [Notification Hubs How-To for iOS]: http://msdn.microsoft.com/library/jj927168.aspx
 [Notification Hubs How-To for Windows Store]: http://msdn.microsoft.com/library/jj927172.aspx
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0907_2016-->
