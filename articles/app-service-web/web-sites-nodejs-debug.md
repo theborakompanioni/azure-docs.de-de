@@ -21,7 +21,7 @@
 
 Azure bietet integrierte Diagnosefunktionen zur Unterstützung des Debugging von in [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714)-Web-Apps gehosteten Node.js-Anwendungen. In diesem Artikel erfahren Sie, wie Sie die Protokollierung von "stdout" und "stderr" aktivieren, Fehlerinformationen im Browser anzeigen und die Protokolldateien herunterladen und anzeigen.
 
-Die auf Azure gehosteten Diagnosefunktionen für Node.js-Anwendungen werden von [IISNode] bereitgestellt. In diesem Artikel werden die am häufigsten verwendeten Einstellungen zum Erfassen von Diagnoseinformationen erläutert. Er stellt keine vollständige Referenz für die Arbeit mit IISNode dar. Weitere Informationen zum Arbeiten mit IISNode finden Sie unter [IISNode Readme] (IISNode-Readme, in englischer Sprache) auf GitHub.
+Die auf Azure gehosteten Diagnosefunktionen für Node.js-Anwendungen werden von [IISNode] bereitgestellt. In diesem Artikel werden die am häufigsten verwendeten Einstellungen zum Erfassen von Diagnoseinformationen erläutert. Er stellt keine vollständige Referenz für die Arbeit mit IISNode dar. Weitere Informationen zum Arbeiten mit IISNode finden Sie unter [IISNode Readme]\(IISNode-Readme, in englischer Sprache) auf GitHub.
 
 <a id="enablelogging"></a>
 ## Aktivieren der Protokollierung
