@@ -12,7 +12,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="cache-redis"
 	ms.workload="tbd"
-	ms.date="07/12/2016"
+	ms.date="09/01/2016"
 	ms.author="sdanie" />
 
 # ASP.NET-Sitzungszustandsanbieter für Azure Redis Cache
@@ -21,7 +21,7 @@ Azure Redis Cache stellt einen Sitzungszustandsanbieter bereit, mit dem Sie den 
 
 Im praktischen Einsatz von Cloud-Apps lässt sich das Speichern von Zustandsinformationen für eine Benutzersitzung oft nicht vermeiden. Allerdings beeinträchtigen einige Herangehensweisen die Leistung und Skalierbarkeit stärker als andere. Wenn Sie einen Sitzungszustand speichern müssen, ist es am besten, die Menge der Zustandsinformationen niedrig zu halten und sie in Cookies zu speichern. Wenn das nicht umsetzbar ist, besteht die nächstbeste Lösung darin, den ASP.NET-Sitzungszustand mit einem Anbieter für verteilten In-Memory-Cache zu verwenden. Die schlechteste Lösung im Hinblick auf Leistung und Skalierbarkeit wäre es, einen datenbankbasierten Sitzungszustandsanbieter zu verwenden. Dieses Thema bietet einen Leitfaden zum Verwenden des ASP.NET-Sitzungszustandsanbieters für Azure Redis Cache. Informationen zu anderen Optionen für den Sitzungszustand finden Sie unter [Optionen für den ASP.NET-Sitzungszustand](#aspnet-session-state-options).
 
-## Speichern des ASP.NET-Sitzungszustands im Cache
+## Speichern des ASP.NET-Sitzungsstatus im Cache
 
 Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt und wählen Sie **NuGet-Pakete verwalten** aus, um eine Clientanwendung in Visual Studio mithilfe des Redis Cache Sitzungszustands-NuGet-Pakets zu konfigurieren.
 
@@ -98,7 +98,7 @@ Nach Abschluss dieser Schritte ist Ihre Anwendung für die Verwendung des Redis 
 
 - SQL Server-Sitzungszustandsanbieter: Dieser Anbieter speichert den Sitzungszustand in SQL Server. Sie sollten diesen Anbieter verwenden, wenn der Sitzungszustand in einem permanenten Speicher beibehalten werden soll. Sie können Ihre Web-App skalieren, aber die Verwendung von SQL Server für den Sitzungszustand hat Auswirkungen auf die Leistung Ihrer Web-App.
 
-- Verteilter In-Memory-Sitzungszustandsanbieter wie z. B. Redis Cache-Sitzungszustandsanbieter: Dieser Anbieter bietet Ihnen das Beste aus beiden Welten. Ihre Web-App kann einen einfachen, schnellen und skalierbaren Sitzungszustandsanbieter erhalten. Sie müssen dabei jedoch beachten, dass dieser Anbieter den Sitzungszustand in einem Cache speichert. Ihre App muss daher so ausgelegt sein, dass die besonderen Merkmale bei der Kommunikation mit einem verteilten In-Memory-Cache berücksichtigt werden, z. B. kurze Netzwerkausfälle. Bewährte Verfahren zum Verwenden des Caches finden Sie unter [Caching Guidance](https://github.com/mspnp/azure-guidance/blob/master/Caching.md) (in englischer Sprache, aus Microsoft Patterns & Practices, [Azure Cloud Application Design and Implementation Guidance](https://github.com/mspnp/azure-guidance)).
+- Verteilter In-Memory-Sitzungszustandsanbieter wie z. B. Redis Cache-Sitzungszustandsanbieter: Dieser Anbieter bietet Ihnen das Beste aus beiden Welten. Ihre Web-App kann einen einfachen, schnellen und skalierbaren Sitzungszustandsanbieter erhalten. Sie müssen dabei jedoch beachten, dass dieser Anbieter den Sitzungszustand in einem Cache speichert. Ihre App muss daher so ausgelegt sein, dass die besonderen Merkmale bei der Kommunikation mit einem verteilten In-Memory-Cache berücksichtigt werden, z. B. kurze Netzwerkausfälle. Bewährte Verfahren zum Verwenden des Caches finden Sie unter [Caching Guidance](../best-practices-caching.md) (in englischer Sprache, aus Microsoft Patterns & Practices, [Azure Cloud Application Design and Implementation Guidance](https://github.com/mspnp/azure-guidance)).
 
 Weitere Information über das Thema Sitzungszustand und andere bewährte Verfahren finden Sie unter [Web Development Best Practices (Building Real-World Cloud Apps with Azure)](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/web-development-best-practices) (in englischer Sprache).
 
@@ -106,4 +106,4 @@ Weitere Information über das Thema Sitzungszustand und andere bewährte Verfahr
 
 Lesen Sie [ASP.NET-Ausgabecacheanbieter für Azure Redis Cache](cache-aspnet-output-cache-provider.md).
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0907_2016-->

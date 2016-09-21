@@ -19,7 +19,7 @@
 
 *Application Insights befindet sich in der Vorschau.*
 
-Mit [Visual Studio Application Insights](app-insights-get-started.md) und [HockeyApp](https://hockeyapp.net) können Sie Ihre bereitgestellte Anwendung auf Nutzung und Leistung überwachen.
+Mit [Visual Studio Application Insights](app-insights-overview.md) und [HockeyApp](https://hockeyapp.net) können Sie Ihre bereitgestellte Anwendung auf Nutzung und Leistung überwachen.
 
 > [AZURE.IMPORTANT] Wir empfehlen [HockeyApp](https://hockeyapp.net) zum Verteilen und Überwachen von Apps für Desktops und Geräte. Mit HockeyApp können Sie die Verteilung, das Durchführen von Livetests und das Feedback von Benutzern verwalten. Außerdem können Sie mit HockeyApp auch Nutzungs-und Absturzberichte überwachen. Sie können auch [Ihre Telemetriedaten mit Analytics exportieren und abfragen](app-insights-hockeyapp-bridge-app.md).
 
@@ -89,4 +89,4 @@ Mit [Visual Studio Application Insights](app-insights-get-started.md) und [Hocke
 * [Schreiben von Analytics-Abfragen](app-insights-analytics.md)
  
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0907_2016-->

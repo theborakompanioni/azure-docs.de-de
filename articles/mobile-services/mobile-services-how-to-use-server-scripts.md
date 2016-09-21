@@ -93,7 +93,7 @@ Sie können Serverskripts, die für einen Tabellenvorgang registriert sind, auf 
 
 	![1][1]
 	
-	Weitere Informationen hierzu finden Sie unter [Validate and modify data in Mobile Services by using server scripts] (Validierung und Änderung von Daten in Mobile Services mithilfe von Serverskripts, in englischer Sprache).
+	Weitere Informationen hierzu finden Sie unter [Validate and modify data in Mobile Services by using server scripts]\(Validierung und Änderung von Daten in Mobile Services mithilfe von Serverskripts, in englischer Sprache).
 
 + Mithilfe von Quellcodeverwaltung. Falls Sie die Quellcodeverwaltung aktiviert haben, erstellen Sie einfach eine Datei mit dem Namen "<em>`<table>`</em>.<em>`<operation>`</em>.js" im Unterordner ".\\service\\table" in Ihrem Git-Repository, wobei <em>`<table>`</em> der Name der Tabelle und <em>`<operation>`</em> der registrierte Tabellenvorgang ist. Weitere Informationen finden Sie unter [Quellcodeverwaltung und freigegebener Code][Source control, shared code, and helper functions].
 
@@ -1057,3 +1057,4 @@ Um Ihr Protokoll nicht zu überladen, sollten Sie Aufrufe von console.log() entf
  
 
 <!---HONumber=AcomDC_0727_2016-->
+

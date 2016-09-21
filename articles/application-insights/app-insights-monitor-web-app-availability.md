@@ -72,7 +72,7 @@ Fügen Sie weitere Tests hinzu. Neben dem Testen der Startseite können Sie auch
 
 ## <a name="monitor"></a>3. Anzeigen der Webtestergebnisse
 
-Nach ein bis zwei Minuten werden Ergebnisse angezeigt.
+Nach ein bis zwei Minuten werden Ergebnisse auf dem Webtestblatt angezeigt.
 
 ![Ergebnisübersicht im Startblatt](./media/app-insights-monitor-web-app-availability/14-availSummary.png)
 
@@ -87,7 +87,7 @@ Klicken Sie auf einen roten Punkt.
 
 ![Auf einen roten Punkt klicken](./media/app-insights-monitor-web-app-availability/14-availRedDot.png)
 
-Oder führen Sie einen Bildlauf nach unten durch, und klicken Sie auf einen Test, bei dem der Erfolg kleiner als 100 % ist.
+Oder führen Sie einen Bildlauf nach unten durch, und klicken Sie auf einen Test, bei dem der Erfolg kleiner als 100 % ist.
 
 ![Auf bestimmten Webtest klicken](./media/app-insights-monitor-web-app-availability/15-webTestList.png)
 
@@ -95,7 +95,7 @@ Die Ergebnisse dieses Tests werden geöffnet.
 
 ![Auf bestimmten Webtest klicken](./media/app-insights-monitor-web-app-availability/16-1test.png)
 
-Der Test wird von verschiedenen Standorten aus ausgeführt. Wählen Sie einen davon aus, bei dem die Ergebnisse bei unter 100 % liegen.
+Der Test wird von verschiedenen Standorten aus ausgeführt. Wählen Sie einen davon aus, bei dem die Ergebnisse bei unter 100 % liegen.
 
 ![Auf bestimmten Webtest klicken](./media/app-insights-monitor-web-app-availability/17-availViewDetails.png)
 
@@ -323,4 +323,4 @@ Nach Abschluss des Tests werden die Antwortzeiten und Erfolgsraten angezeigt.
 [qna]: app-insights-troubleshoot-faq.md
 [start]: app-insights-overview.md
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0914_2016-->

@@ -15,7 +15,7 @@
 	ms.topic="reference"
 	ms.tgt_pltfrm="multiple"
 	ms.workload="na"
-	ms.date="06/02/2016"
+	ms.date="08/30/2016"
 	ms.author="glenga"/>
 
 # Mobile Apps-Bindungen in Azure Functions
@@ -169,4 +169,4 @@ Dieses Node.js-Codebeispiel fügt einen neuen Datensatz mit einer *text*-Eigensc
 
 [AZURE.INCLUDE [Nächste Schritte](../../includes/functions-bindings-next-steps.md)]
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0907_2016-->

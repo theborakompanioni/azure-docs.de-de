@@ -17,20 +17,17 @@
 	ms.date="08/16/2016"
 	ms.author="spelluru"/>
 
-# Erstellen der ersten Azure Data Factory mit der Data Factory-REST-API
+# Tutorial: Erstellen der ersten Azure Data Factory mit der Data Factory-REST-API
 > [AZURE.SELECTOR]
-- [Übersicht über das Tutorial](data-factory-build-your-first-pipeline.md)
-- [Verwenden des Data Factory-Editors](data-factory-build-your-first-pipeline-using-editor.md)
-- [Verwenden von PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
-- [Verwenden von Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
-- [Verwenden der Resource Manager-Vorlage](data-factory-build-your-first-pipeline-using-arm.md)
-- [Verwenden der REST-API](data-factory-build-your-first-pipeline-using-rest-api.md)
+- [Azure-Portal](data-factory-build-your-first-pipeline-using-editor.md)
+- [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
+- [PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
+- [Resource Manager-Vorlage](data-factory-build-your-first-pipeline-using-arm.md)
+- [REST-API](data-factory-build-your-first-pipeline-using-rest-api.md)
 
-In diesem Artikel erfahren Sie, wie Sie mithilfe der Data Factory-REST-API Ihre erste Azure Data Factory erstellen.
+[AZURE.INCLUDE [data-factory-tutorial-prerequisites](../../includes/data-factory-tutorial-prerequisites.md)]
 
-## Voraussetzungen
-
-- Lesen Sie den Artikel [Übersicht über das Tutorial](data-factory-build-your-first-pipeline.md). In diesem Artikel werden die Grundlagen von Azure Data Factory beschrieben.
+## Zusätzliche Voraussetzungen
 - Installieren Sie [Curl](https://curl.haxx.se/dlwiz/) auf Ihrem Computer. Sie können das Curl-Tool mit REST-Befehlen zum Erstellen einer Data Factory verwenden.
 - Befolgen Sie die Anleitung in [diesem Artikel](../resource-group-create-service-principal-portal.md), um Folgendes durchzuführen:
 	1. Erstellen Sie eine Webanwendung mit dem Namen **ADFGetStartedApp** in Azure Active Directory.
@@ -405,4 +402,4 @@ In diesem Artikel haben Sie eine Pipeline mit einer Transformationsaktivität (H
 | [Überwachen und Verwalten von Pipelines über Blätter im Azure-Portal](data-factory-monitor-manage-pipelines.md) | In diesem Artikel wird das Überwachen, Verwalten und Debuggen Ihrer Pipelines über Blätter im Azure-Portal beschrieben. |
 | [Überwachen und Verwalten von Pipelines mit der Überwachungs-App](data-factory-monitor-manage-app.md) | In diesem Artikel wird das Überwachen, Verwalten und Debuggen von Pipelines mit der App für die Überwachung und Verwaltung beschrieben. 
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0914_2016-->

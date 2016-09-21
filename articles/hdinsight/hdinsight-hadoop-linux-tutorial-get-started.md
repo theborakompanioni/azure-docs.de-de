@@ -4,7 +4,7 @@
    	services="hdinsight"
    	documentationCenter=""
    	authors="mumian"
-   	manager="paulettm"
+   	manager="jhubbard"
    	editor="cgronlun"
 	tags="azure-portal"/>
 
@@ -14,7 +14,7 @@
    	ms.topic="hero-article"
    	ms.tgt_pltfrm="na"
    	ms.workload="big-data"
-   	ms.date="06/13/2016"
+   	ms.date="09/14/2016"
    	ms.author="jgao"/>
 
 # Hadoop-Tutorial: Erste Schritte bei der Verwendung von Linux-basiertem Hadoop in HDInsight
@@ -35,19 +35,19 @@ Bevor Sie mit diesem Tutorial beginnen können, benötigen Sie Folgendes:
 
 ## Cluster erstellen
 
-Die meisten Hadoop-Aufträge sind Batchaufträge. Sie erstellen einen Cluster, führen einige Aufträge aus und löschen dann den Cluster. In diesem Abschnitt erstellen Sie einen Linux-basierten Hadoop-Cluster in HDInsight mithilfe einer [Azure ARM-Vorlage](../resource-group-template-deploy.md). ARM-Vorlagen sind vollständig anpassbar, sodass es sehr einfach ist, Azure-Ressourcen wie HDInsight zu erstellen. Für dieses Tutorial sind keine Erfahrungen mit Azure-ARM-Vorlagen erforderlich. Andere Methoden zur Erstellung von Clustern und Informationen zu den in diesem Tutorial verwendeten Eigenschaften finden Sie unter [Erstellen von HDInsight-Clustern](hdinsight-hadoop-provision-linux-clusters.md). Die in diesem Tutorial verwendete ARM-Vorlage befindet sich in einem öffentlichen Blob-Container ([https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-hadoop-cluster-in-hdinsight.json](https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-hadoop-cluster-in-hdinsight.json)).
+Die meisten Hadoop-Aufträge sind Batchaufträge. Sie erstellen einen Cluster, führen einige Aufträge aus und löschen dann den Cluster. In diesem Abschnitt erstellen Sie einen Linux-basierten Hadoop-Cluster in HDInsight mithilfe einer [Azure Resource Manager-Vorlage](../resource-group-template-deploy.md). Resource Manager-Vorlagen sind vollständig anpassbar, sodass es sehr einfach ist, Azure-Ressourcen wie HDInsight zu erstellen. Für dieses Tutorial ist keine Erfahrung mit Resource Manager-Vorlagen erforderlich. Andere Methoden zur Erstellung von Clustern und Informationen zu den in diesem Tutorial verwendeten Eigenschaften finden Sie unter [Erstellen von HDInsight-Clustern](hdinsight-hadoop-provision-linux-clusters.md). Die in diesem Tutorial verwendete Resource Manager-Vorlage befindet sich in einem öffentlichen Blobcontainer ([https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-hadoop-cluster-in-hdinsight.json](https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-hadoop-cluster-in-hdinsight.json)).
 
-1. Klicken Sie auf die folgende Abbildung, um sich an Azure anzumelden und die ARM-Vorlage im Azure-Portal zu öffnen. 
+1. Klicken Sie auf die folgende Abbildung, um sich bei Azure anzumelden und die Resource Manager-Vorlage im Azure-Portal zu öffnen.
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-hadoop-cluster-in-hdinsight.json" target="_blank"><img src="https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/documentation/articles/hdinsight-hbase-tutorial-get-started-linux/20160201111850/deploy-to-azure.png" alt="Deploy to Azure"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-hadoop-cluster-in-hdinsight.json" target="_blank"><img src="https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/en-us/documentation/articles/hdinsight-hbase-tutorial-get-started-linux/20160201111850/deploy-to-azure.png" alt="Deploy to Azure"></a>
 
 2. Geben Sie auf dem Blatt **Parameter** Folgendes ein:
 
-    ![HDInsight Linux, Erste Schritte mit der ARM-Vorlage im Portal](./media/hdinsight-hadoop-linux-tutorial-get-started/hdinsight-linux-get-started-arm-template-on-portal.png).
+    ![HDInsight Linux, Erste Schritte mit der Resource Manager-Vorlage im Portal](./media/hdinsight-hadoop-linux-tutorial-get-started/hdinsight-linux-get-started-arm-template-on-portal.png).
 
     - **ClusterName**: Geben Sie einen Namen für den Hadoop-Cluster ein, den Sie erstellen möchten.
     - **Cluster-Benutzername und -Kennwort**: Der Standardname für die Anmeldung lautet **admin**.
-    - **SSH-Benutzername und -Kennwort**: Der Standardname für die Anmeldung lautet **sshuser**. Sie können auch einen anderen Namen festlegen. 
+    - **SSH-Benutzername und -Kennwort**: Der Standardname für die Anmeldung lautet **sshuser**. Sie können auch einen anderen Namen festlegen.
     
     Andere Parameter sind zum Durcharbeiten dieses Tutorials optional. Ändern Sie sie nicht.
     
@@ -56,8 +56,8 @@ Die meisten Hadoop-Aufträge sind Batchaufträge. Sie erstellen einen Cluster, f
 3. Klicken Sie auf **OK**, um die Parameter zu speichern.
 4. Geben Sie im Blatt **Benutzerdefinierte Bereitstellung** den Text **Neuer Ressourcengruppenname** ein, um eine neue Ressourcengruppe zu erstellen. Die Ressourcengruppe ist ein Container, in dem der Cluster, das abhängige Speicherkonto und andere Elemente gruppiert werden. Der Speicherort der Ressourcengruppe kann vom Clusterspeicherort abweichen.
 5. Klicken Sie auf **Rechtliche Bedingungen** und dann auf **Erstellen**.
-6. Vergewissern Sie sich, dass das Kontrollkästchen **An Dashboard anheften** aktiviert ist, und klicken Sie auf **Erstellen**. Es wird eine neue Kachel mit dem Titel **Vorlagenbereitstellung bereitstellen** angezeigt. Das Erstellen eines Clusters dauert ca. 20 Minuten. 
-7.  Nachdem der Cluster erstellt wurde, wird die Beschriftung der Kachel in den von Ihnen angegebenen Ressourcengruppennamen geändert. Im Portal werden außerdem automatisch zwei Blätter mit dem Cluster und den Clustereinstellungen geöffnet. 
+6. Vergewissern Sie sich, dass das Kontrollkästchen **An Dashboard anheften** aktiviert ist, und klicken Sie auf **Erstellen**. Es wird eine neue Kachel mit dem Titel **Vorlagenbereitstellung bereitstellen** angezeigt. Das Erstellen eines Clusters dauert ca. 20 Minuten.
+7.  Nachdem der Cluster erstellt wurde, wird die Beschriftung der Kachel in den von Ihnen angegebenen Ressourcengruppennamen geändert. Im Portal werden außerdem automatisch zwei Blätter mit dem Cluster und den Clustereinstellungen geöffnet.
 
     ![HDInsight Linux, Erste Schritte mit Clustereinstellungen](./media/hdinsight-hadoop-linux-tutorial-get-started/hdinsight-linux-get-started-cluster-settings.png).
 
@@ -108,11 +108,11 @@ Nach Abschluss des Tutorials kann es ratsam sein, den Cluster zu löschen. Mit H
 
 ## Nächste Schritte
 
-In diesem Tutorial haben Sie gelernt, wie Sie mithilfe einer ARM-Vorlage einen Linux-basierten HDInsight-Cluster erstellen und wie Sie einfache Hive-Abfragen ausführen.
+In diesem Tutorial haben Sie gelernt, wie Sie mithilfe einer Resource Manager-Vorlage einen Linux-basierten HDInsight-Cluster erstellen und einfache Hive-Abfragen ausführen.
 
 Weitere Informationen zur Datenanalyse mit HDInsight finden Sie in den folgenden Artikeln:
 
-- Weitere Informationen zum Verwenden von Hive mit HDInsight, z. B. zum Ausführen von Hive-Abfragen in Visual Studio, finden Sie im Artikel zum [Verwenden von Hive mit HDInsight][hdinsight-use-hive].
+- Weitere Informationen zum Verwenden von Hive mit HDInsight, z. B. zum Ausführen von Hive-Abfragen in Visual Studio, finden Sie im Artikel zum [Verwenden von Hive mit HDInsight][hdinsight-use-hive].
 
 - Informationen zu Pig, einer Sprache zum Transformieren von Daten, finden Sie im Artikel zum [Verwenden von Pig mit HDInsight][hdinsight-use-pig].
 
@@ -132,9 +132,9 @@ Weitere Informationen zum Erstellen und Verwalten von HDInsight-Clustern finden 
 
 - Informationen zu den Optionen, die Sie beim Erstellen eines HDInsight-Clusters auswählen können, finden Sie unter [Erstellen von HDInsight unter Linux mit benutzerdefinierten Optionen](hdinsight-hadoop-provision-linux-clusters.md).
 
-- Wenn Sie mit Linux und Hadoop vertraut sind und detaillierte Informationen zu Hadoop in HDInsight benötigen, finden Sie diese unter [Informationen zur Verwendung von HDInsight unter Linux](hdinsight-hadoop-linux-information.md). Dieser Artikel enthält u. a. folgende Informationen:
+- Wenn Sie mit Linux und Hadoop vertraut sind und detaillierte Informationen zu Hadoop in HDInsight benötigen, finden Sie diese unter [Informationen zur Verwendung von HDInsight unter Linux](hdinsight-hadoop-linux-information.md). Dieser Artikel enthält u. a. folgende Informationen:
 
-	* URLs für im Cluster gehostete Dienste, z. B. Ambari und WebHCat
+	* URLs für im Cluster gehostete Dienste, z. B. Ambari und WebHCat
 	* Speicherort von Hadoop-Dateien und -Beispielen im lokalen Dateisystem
 	* Verwendung von Azure-Speicher (WASB) anstelle von HDFS als Standarddatenspeicher
 
@@ -161,4 +161,4 @@ Weitere Informationen zum Erstellen und Verwalten von HDInsight-Clustern finden 
 [image-hdi-gettingstarted-powerquery-importdata]: ./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.GettingStarted.PowerQuery.ImportData.png
 [image-hdi-gettingstarted-powerquery-importdata2]: ./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.GettingStarted.PowerQuery.ImportData2.png
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0914_2016-->

@@ -12,7 +12,7 @@ Felder pro Objekt | 100 | [Support kontaktieren](https://azure.microsoft.com/blo
 Bytes pro Feldname oder Bezeichner | 2 KB | [Support kontaktieren](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)
 Bytes pro Feld | 30 KB | [Support kontaktieren](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)
 Bedarfsgesteuerte HDInsight-Clusterkerne innerhalb eines Abonnements <sup>2</sup> | 48 | [Support kontaktieren](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)
-Anzahl der Wiederholungsversuche für Ausführungen von Pipelineaktivitäten | 1\.000 | MaxInt (32 Bit)
+Anzahl der Wiederholungsversuche für Ausführungen von Pipelineaktivitäten | 1000 | MaxInt (32 Bit)
 
 <sup>1</sup> Pipeline-, Dataset- und verknüpfte Dienstobjekte stellen eine logische Gruppierung Ihrer Workload dar. Limits für diese Objekte beziehen sich nicht auf die Datenmenge, die Sie mit dem Azure Data Factory-Dienst verschieben und verarbeiten können. Data Factory kann so skaliert werden, dass Petabytes an Daten verarbeitet werden können.
 
@@ -28,6 +28,6 @@ Timeoutwert für Wiederholungsversuche | 1 Sekunde | 1 Sekunde
 
 ### Limits für Webdienstaufrufe
 
-Der Azure-Ressourcen-Manager weist Limits für API-Aufrufe auf. Sie können API-Aufrufe mit einer Rate innerhalb der [API-Limits des Azure-Ressourcen-Managers](../azure-subscription-service-limits.md#resource-group-limits) ausführen.
+Der Azure Resource Manager weist Limits für API-Aufrufe auf. Sie können API-Aufrufe mit einer Rate innerhalb der [API-Limits von Azure Resource Manager](../azure-subscription-service-limits.md#resource-group-limits) ausführen.
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0907_2016-->

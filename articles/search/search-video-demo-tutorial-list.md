@@ -14,7 +14,7 @@
 	ms.workload="search"
 	ms.topic="article" 
 	ms.tgt_pltfrm="na"
-	ms.date="05/17/2016"
+	ms.date="08/29/2016"
 	ms.author="heidist"/>
 
 #Azure Search: Codebeispiele, Demos, Videos und Tutorials
@@ -45,7 +45,7 @@ Die [**Demo eines Jobportals für New York City (NYC) mit Azure Search**](http:/
 Hier sind einige unserer beliebtesten Tutorials und Videos zu Azure Search aufgeführt.
 
 - [Video: Microsoft Virtual Academy introduction to Azure Search](https://mva.microsoft.com/de-DE/training-courses/adding-microsoft-azure-search-to-your-websites-and-apps-10540?l=ADkxnd97_9304984382) (Microsoft Virtual Academy – Einführung in Azure Search) ist eine gute Ressource, um sich über die Grundlagen von Azure Search zu informieren.
-- [Video: AzureCon 2015: Best Practices for Azure Search](https://azure.microsoft.com/documentation/videos/azurecon-2015-azure-search-best-practices-for-web-and-mobile-applications/) (AzureCon 2015: Bewährte Methoden für Azure Search) enthält praktische Tipps, wie Sie beim Erstellen von Apps für das Web oder für mobile Szenarios horizontal skalieren, die Leistung optimieren und Codeeffizienz erreichen. 
+- [Video: AzureCon 2015: Best Practices for Azure Search](https://azure.microsoft.com/documentation/videos/azurecon-2015-azure-search-best-practices-for-web-and-mobile-applications/) (AzureCon 2015: Bewährte Methoden für Azure Search) enthält praktische Tipps, wie Sie beim Erstellen von Apps für das Web oder für mobile Szenarios horizontal skalieren, die Leistung optimieren und Codeeffizienz erreichen.
 - [Code sample for .NET client library](https://github.com/Azure-Samples/search-dotnet-getting-started) (Codebeispiel für die .NET-Clientbibliothek) ist eine ASP.NET MVC 5-Anwendung, die die .NET-Clientbibliothek für Suchvorgänge verwendet.
 - [Tutorial: Verwenden von Azure Search in .NET](search-howto-dotnet-sdk.md)|Konfigurieren und Ausführen einer Beispielwebanwendung für Visual Studio, die in Azure Search integriert ist.
 - [Tutorial: Erste Schritte mit Azure Search im Portal](search-get-started-portal.md) ist eine rein portalbasierte exemplarische Vorgehensweise, bei der Sie einen Index und Daten erhalten, ohne Code schreiben zu müssen. Dieses Tutorial ist hilfreich, um zu lernen, wie allgemeine Aufgaben im Portal durchgeführt werden.
@@ -84,10 +84,10 @@ Exemplarische Vorgehensweise|Beschreibung
 [Erste Schritte mit Azure Search in NodeJS](search-get-started-nodejs.md)|Erfahren Sie, wie Sie mit Azure Search in NodeJS arbeiten.
 [Erste Schritte mit Azure Search in Java](search-get-started-java.md)|Tutorial für Java-Programmierer, die mit Eclipse und Apache Tomcat-Server eine Beispielanwendung erstellen und ausführen, die Azure Search verwendet.
 [Azure Search Scenarios and Capabilities](https://azure.microsoft.com/blog/2014/08/28/azure-search-scenarios-and-capabilities/)|Blogbeitrag zu den wichtigsten, durch die aktuellen Funktionen ermöglichten Szenarien.
-[How to Add Suggestions to your Search Applications](https://azure.microsoft.com/blog/2015/01/20/azure-search-how-to-add-suggestions-auto-complete-to-your-search-applications/)|Hier erfahren Sie, wie Sie Vorschläge implementieren. Dies wird häufig auch als automatisches Vervollständigen bezeichnet. Diese Demo führt Sie durch eine Reihe von Themen, z. B. das Erstellen einer MVC4-Anwendung, die Azure Search-Vorschläge nutzt, das Verwenden einer "typeahead.js"-Bibliothek für Twitter zum Erstellen einer effektiven JavaScript-Komponente für automatische Vorschläge sowie das Verwenden von Fuzzyvorschlägen, mit deren Hilfe auch dann Vorschläge angezeigt werden, wenn der Benutzer das Wort falsch geschrieben hat.
+[How to Add Suggestions to your Search Applications](https://azure.microsoft.com/blog/2015/01/20/azure-search-how-to-add-suggestions-auto-complete-to-your-search-applications/)|Hier erfahren Sie, wie Sie Vorschläge implementieren. Dies wird häufig auch als automatisches Vervollständigen bezeichnet. Diese Demo führt Sie durch eine Reihe von Themen, z.B. das Erstellen einer MVC4-Anwendung, die Azure Search-Vorschläge nutzt, das Verwenden einer „typeahead.js“-Bibliothek für Twitter zum Erstellen einer effektiven JavaScript-Komponente für automatische Vorschläge sowie das Verwenden von Fuzzyvorschlägen, mit deren Hilfe auch dann Vorschläge angezeigt werden, wenn der Benutzer das Wort falsch geschrieben hat.
 [TechNet Virtual Lab: Building a Microsoft Azure Search Application](http://go.microsoft.com/?linkid=9874663)|Virtuelle Übungseinheit, die eine Entwicklungsumgebung, Tools, Dokumentation und Daten bereitstellt. Zur Durchführung der Übung benötigen Sie ein Azure-Konto, entweder ein Testabonnement oder Ihr persönliches Azure-Abonnement.
 [Synchronize SQL Server Data with Azure Search](https://azure.microsoft.com/blog/2014/11/10/how-to-sync-sql-server-data-with-azure-search/)|Blogbeitrag mit Erläuterungen zum Laden von Daten aus relationalen SQL Server-Datenbanken in einen Azure Search-Index.
 [Lernprogramm zu Bewertungsprofilen](search-get-started-scoring-profiles.md)|Testen von Bewertungsprofilen mit einer Konsolenanwendung.
 [Lernprogramm zur Azure Search Management-REST-API](search-get-started-management-api.md)|So verwenden Sie die Management-REST-API, um den Dienst bereitzustellen und Administrator- oder Abfrage-API-Schlüssel zu verwalten.
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0907_2016-->

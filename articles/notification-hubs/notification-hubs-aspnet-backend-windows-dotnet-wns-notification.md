@@ -383,8 +383,8 @@ In diesem Abschnitt aktualisieren Sie den Code in dem Projekt, das Sie für das 
 
 <!-- URLs. -->
 [Erste Schritte mit Notification Hubs]: notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
-[Sichere Pushbenachrichtigungen]: notification-hubs-aspnet-backend-windows-dotnet-secure-push.md
+[Sichere Pushbenachrichtigungen]: notification-hubs-aspnet-backend-windows-dotnet-wns-secure-push-notification.md
 [Verwenden von Benachrichtigungshubs zum Senden von neuesten Nachrichten]: notification-hubs-windows-store-dotnet-send-breaking-news.md
 [Notification Hubs-Leitfaden]: http://msdn.microsoft.com/library/jj927170.aspx
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0907_2016-->

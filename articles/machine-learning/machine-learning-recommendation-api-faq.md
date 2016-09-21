@@ -13,13 +13,17 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/18/2016" 
+	ms.date="08/26/2016" 
 	ms.author="luisca"/>
 
 #Häufig gestellte Fragen zur Einrichtung und Verwendung der Machine Learning RECOMMENDATIONS-API
 
 
 **Was ist RECOMMENDATIONS?**
+
+> Dies ist die Dokumentation zu den alten Recommendations-APIs im Datenmarkt, die zum 31.12.2016 eingestellt werden. Verwenden Sie ab sofort die [Recommentations-API von Cognitive Services](https://www.microsoft.com/cognitive-services/de-DE/recommendations-api).
+
+
 
 Für Organisationen und Unternehmen, die für Cross-Selling und Up-Selling auf Empfehlungen bauen, ist RECOMMENDATIONS von Azure Machine Learning ein Self-Service-Empfehlungsmodul. Es handelt sich um eine Implementierung von kombinierten Filtern, die als Kernalgorithmus eine Matrixfaktorisierung einsetzen. Anwendungsentwickler können mithilfe von REST-APIs auf RECOMMENDATIONS zugreifen.
 
@@ -63,7 +67,7 @@ Sie können Ihr Abonnement auf der [Angebotsseite](https://datamarket.azure.com/
 
 Wenn Sie ein Abonnement aktualisieren:
 
-* Ihre im alten Abonnement verbleibenden Transaktionen werden nicht auf Ihr neues Abonnement übertragen. 
+* Ihre im alten Abonnement verbleibenden Transaktionen werden nicht auf Ihr neues Abonnement übertragen.
 * Sie bezahlen den Preis für das neue Abonnement, auch wenn Sie nicht verwendete Transaktionen auf Ihrem alten Abonnement haben
 
 Vorgehensweise zum Aktualisieren eines Abonnements:
@@ -135,4 +139,4 @@ Der technische Support ist auf der Website des [Microsoft Azure-Supports](https:
 
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0907_2016-->

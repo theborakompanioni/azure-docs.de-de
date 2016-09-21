@@ -38,7 +38,7 @@ Für den ersten Schritt ist ein virtueller Azure-Computer von einem Linux-Image 
 
 Stellen Sie nach dem Erstellen des virtuellen Computers sicher, dass der Docker auf Ihrem Clientcomputer installiert ist. (Einzelheiten finden Sie in den [Installationsanweisungen für Docker](https://docs.docker.com/installation/#installation).)
 
-Erstellen Sie das Zertifikat und Schlüsseldateien für die Docker-Kommunikation gemäß [Running Docker with https] (Ausführen von Docker mit HTTPS, in englischer Sprache), und speichern Sie sie im Verzeichnis **`~/.docker`** auf Ihrem Clientcomputer.
+Erstellen Sie das Zertifikat und Schlüsseldateien für die Docker-Kommunikation gemäß [Running Docker with https]\(Ausführen von Docker mit HTTPS, in englischer Sprache), und speichern Sie sie im Verzeichnis **`~/.docker`** auf Ihrem Clientcomputer.
 
 > [AZURE.NOTE] Für die Docker-VM-Erweiterung im Portal sind zurzeit base64-codierte Anmeldeinformationen erforderlich.
 

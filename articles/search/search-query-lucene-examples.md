@@ -15,7 +15,7 @@
     ms.workload="search"
     ms.topic="article"
     ms.tgt_pltfrm="na"
-    ms.date="05/17/2016"
+    ms.date="08/29/2016"
     ms.author="liamca"
 />
 
@@ -129,4 +129,4 @@ Versuchen Sie, den Lucene-Abfrageparser in Ihrem Code anzugeben. Unter den folge
 
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0907_2016-->

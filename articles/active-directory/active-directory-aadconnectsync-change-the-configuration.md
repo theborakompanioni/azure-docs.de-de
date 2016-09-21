@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="andkjell"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/26/2016"
+	ms.date="08/31/2016"
 	ms.author="andkjell"/>
 
 
@@ -49,13 +49,13 @@ Der [Scheduler](active-directory-aadconnectsync-feature-scheduler.md) wird stand
 	- Name: Geben Sie einen beschreibenden Namen für die Regel ein.
 	- Beschreibung: Fügen Sie Informationen hinzu, denen andere Benutzer entnehmen können, wozu die Regel dient.
 	- Connected System (Verbundenes System): Das System, in dem sich das Objekt befindet. In diesem Fall wählen wir den Active Directory Connector aus.
-	- Connected System Object Type/Metaverse Object Type (Verbundener Systemobjekttyp/Metaverseobjekttyp): Wählen Sie **Benutzer** bzw. **Person** aus.
+	- Connected System Object Type/Metaverse Object Type (Objekttyp „Verbundenes System“/Metaverseobjekttyp): Wählen Sie **Benutzer** bzw. **Person** aus.
 	- Verknüpfungstyp: Ändern Sie diesen Wert in **Join**.
 	- Precedence (Rangfolge): Geben Sie einen Wert an, der im System eindeutig ist. Ein niedrigerer numerischer Wert steht für eine höhere Rangfolge.
 	- Tag: Lassen Sie dieses Feld leer. Dieses Feld sollte nur bei vordefinierten Regeln von Microsoft einen Wert enthalten.
 3. Geben Sie auf der Seite **Scoping Filter** (Bereichsfilter) **givenName ISNOTNULL** ein. ![Bereichsfilter für die eingehende Regel](./media/active-directory-aadconnectsync-change-the-configuration/scopingfilter.png) Dieser Abschnitt wird verwendet, um die Objekte zu definieren, auf die die Regel angewendet werden soll. Wenn Sie die Felder leer lassen, gilt die Regel für alle Benutzerobjekte. Sie würde in diesem Fall jedoch Konferenzräume, Dienstkonten und andere nicht personenbezogene Benutzerobjekte enthalten.
 4. Lassen die Felder im Abschnitt **Join Rules** (Verknüpfungsregeln) leer.
-5. Ändern Sie auf der Seite **Transformations** (Transformationen) den „FlowType“ in **Expression** (Ausdruck). Wählen Sie das Zielattribut **giveName** aus, und geben Sie `PCase([givenName])` als Quelle ein. ![Transformationen für die eingehende Regel](./media/active-directory-aadconnectsync-change-the-configuration/transformations.png) Das Synchronisierungsmodul beachtet sowohl beim Funktionsnamen als auch dem Attributnamen die Groß-/Kleinschreibung. Im Fall einer fehlerhaften Eingabe wird beim Hinzufügen der Regel eine Warnung angezeigt. Da Sie Ihre Einstellungen im Editor speichern und den Vorgang dann fortsetzen können, müssten Sie die Regel erneut öffnen und korrigieren.
+5. Ändern Sie auf der Seite **Transformations** (Transformationen) den „FlowType“ in **Expression** (Ausdruck). Wählen Sie das Zielattribut **givenName** aus, und geben Sie `PCase([givenName])` als Quelle ein. ![Transformationen für die eingehende Regel](./media/active-directory-aadconnectsync-change-the-configuration/transformations.png) Das Synchronisierungsmodul beachtet sowohl beim Funktionsnamen als auch dem Attributnamen die Groß-/Kleinschreibung. Im Fall einer fehlerhaften Eingabe wird beim Hinzufügen der Regel eine Warnung angezeigt. Da Sie Ihre Einstellungen im Editor speichern und den Vorgang dann fortsetzen können, müssten Sie die Regel erneut öffnen und korrigieren.
 6. Klicken Sie auf **Hinzufügen**, um die Regel zu speichern.
 
 Die neue benutzerdefinierte Regel sollte zusammen mit den anderen Synchronisierungsregeln im System angezeigt werden.
@@ -126,12 +126,12 @@ Bei Fabrikam haben wir festgestellt, dass einige der Attribute, die wir mit der 
 
 ## Nächste Schritte
 
-Erfahren Sie mehr über die [deklarative Bereitstellung](active-directory-aadconnectsync-understanding-declarative-provisioning.md) und die in den Synchronisierungsregeln verfügbaren Optionen.
+- Weitere Informationen zum Konfigurationsmodell finden Sie unter [Understanding Declarative Provisioning](active-directory-aadconnectsync-understanding-declarative-provisioning.md) (Grundlegendes zur deklarativen Bereitstellung).
+- Weitere Informationen zur Ausdruckssprache finden Sie unter [Grundlegendes zu Ausdrücken für die deklarative Bereitstellung](active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md).
 
-Weitere Informationen zu [Ausdrücken für die deklarative Bereitstellung](active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md).
+**Übersichtsthemen**
 
-Weitere Informationen zur Konfiguration der [Azure AD Connect-Synchronisierung](active-directory-aadconnectsync-whatis.md).
+- [Azure AD Connect-Synchronisierung: Grundlagen und Anpassung der Synchronisierung](active-directory-aadconnectsync-whatis.md)
+- [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md)
 
-Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md).
-
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0907_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="06/13/2016"
+   ms.date="08/30/2016"
    ms.author="amanbha"/>
 
 
@@ -129,4 +129,4 @@ Beachten Sie, dass ein Actor für sich selbst durch eine seiner Methoden „dele
 <!--Image references-->
 [1]: ./media/service-fabric-reliable-actors-lifecycle/garbage-collection.png
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0907_2016-->

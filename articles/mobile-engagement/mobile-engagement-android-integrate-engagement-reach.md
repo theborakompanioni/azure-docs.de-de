@@ -249,7 +249,7 @@ Wenn Sie die bereitgestellten Layouts ändern, verändern Sie das Aussehen Ihrer
 
 Sie müssen beim Initialisieren der Anwendung einen Aufruf hinzufügen, um einen Kategoriehandler für Ihre Benachrichtigungen zu registrieren.
 
-> [AZURE.IMPORTANT] Informieren Sie sich unter „Integrieren von Engagement unter Android“ über die Warnung zum android:process-Attribut „<android-sdk-engagement-process>“, bevor Sie den Vorgang fortsetzen.
+> [AZURE.IMPORTANT] Informieren Sie sich unter „Integrieren von Engagement unter Android“ über die Warnung zum android:process-Attribut „\<android-sdk-engagement-process\>“, bevor Sie den Vorgang fortsetzen.
 
 Im folgenden Beispiel wird angenommen, dass Sie die vorherige Warnung bestätigt haben und eine Unterklasse von `EngagementApplication` verwenden:
 
@@ -644,4 +644,4 @@ Wenn Sie aufgerufen `actionContent(this)` und dann die Aktivität beendet haben,
 [Google Cloud Messaging]: http://developer.android.com/guide/google/gcm/index.html
 [Amazon Device Messaging]: https://developer.amazon.com/sdk/adm.html
 
-<!---HONumber=AcomDC_0824_2016-->
+<!-----HONumber=AcomDC_0824_2016-->

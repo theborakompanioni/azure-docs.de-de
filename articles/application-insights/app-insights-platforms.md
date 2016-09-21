@@ -37,8 +37,8 @@ Bei diesen Elementen handelt es sich um Implementierungen von [Application Insig
 + [ASP.NET – Für Apps, die bereits aktiv sind.](app-insights-monitor-performance-live-website-now.md)
 + [ASP.NET 5](app-insights-asp-net-core.md)
 + [Android](https://github.com/Microsoft/ApplicationInsights-Android) (HockeyApp)
-+ [Azure-Web-Apps und VMs](../azure-portal/insights-perf-analytics.md)
-+ [Azure Cloud Services](app-insights-cloudservices.md) – Einschließlich Web- und Workerrollen.
++ [Azure-Web-Apps und VMs](app-insights-azure-web-apps.md)
++ [Azure Cloud Services](app-insights-cloudservices.md) – Einschließlich Web- und Workerrollen.
 + [Microsoft Dynamics CRM Online](app-insights-sample-mscrm.md)
 + [Docker](app-insights-docker.md)
 + [Glimpse](https://azure.microsoft.com/blog/glimpse-application-insights/)
@@ -61,7 +61,7 @@ Bei diesen Elementen handelt es sich um Implementierungen von [Application Insig
 
 +	[Log4Net, NLog oder System.Diagnostics.Trace](app-insights-diagnostic-search.md)
 +	[Java, Log4J oder Logback](app-insights-java-trace-logs.md)
-+   [Semantic Logging (SLAB)](https://github.com/fidmor89/SLAB_AppInsights) – In [Semantic Logging Application Block](https://msdn.microsoft.com/library/dn440729.aspx) integriert
++   [Semantic Logging (SLAB)](https://github.com/fidmor89/SLAB_AppInsights) – In [Semantic Logging Application Block](https://msdn.microsoft.com/library/dn440729.aspx) integriert
 +   [Cloudbasierte Auslastungstests](http://blogs.msdn.com/b/visualstudioalm/archive/2015/07/30/getting-application-insights-counters-with-cloud-based-load-testing.aspx)
 
 
@@ -84,4 +84,4 @@ Bei diesen Elementen handelt es sich um Implementierungen von [Application Insig
 
 Wenn für Ihre Sprache oder Plattform noch kein SDK vorhanden ist, können Sie eins erstellen. Sehen Sie sich den Code der vorhandenen SDKs an, die im [Application Insights-SDK-Projekt auf GitHub](https://github.com/Microsoft/AppInsights-Home) aufgeführt sind.
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0914_2016-->

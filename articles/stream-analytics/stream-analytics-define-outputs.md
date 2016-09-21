@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Datentransformationsausgaben: Optionen für Speicher und Analysen | Microsoft Azure"
-	description="Erfahren Sie , wie Sie Stream Analytics-Datentransformationsausgaben auf Datenspeicheroptionen ausrichten können. Verwenden Sie außerdem Power BI für die Analyseergebnisse."
+	pageTitle="Stream Analytics-Ausgaben: Optionen für Speicher, Analyse | Microsoft Azure"
+	description="Erfahren Sie, wie Sie Optionen für Stream Analytics-Datenausgaben einschließlich Power BI für Analyseergebnisse einsetzen."
 	keywords="Datentransformation, Analyseergebnisse, Datenspeicheroptionen"
 	services="stream-analytics,documentdb,sql-database,event-hubs,service-bus,storage"
 	documentationCenter="" 
@@ -14,18 +14,28 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="data-services"
-	ms.date="07/27/2016"
+	ms.date="08/29/2016"
 	ms.author="jeffstok"/>
 
-# Ausrichten von Stream Analytics-Datentransformationsausgaben auf Analysetools und Datenspeicheroptionen
+# Stream Analytics-Ausgaben: Optionen für Speicher, Analyse
 
-Überlegen Sie beim Erstellen eines Stream Analytics-Auftrags, wie die Datentransformationsausgabe genutzt wird. Wie möchten Sie die Ergebnisse des Stream Analytics-Auftrags anzeigen? Welche Tools verwenden Sie zum Anzeigen der Ergebnisse der Datenanalyse? Ist eine Datenspeicheroption notwendig?
+Überlegen Sie beim Erstellen eines Stream Analytics-Auftrags, wie die resultierenden Daten genutzt werden. Wie möchten Sie die Ergebnisse des Stream Analytics-Auftrags anzeigen, und wo möchten Sie sie speichern?
 
 Um verschiedene Anwendungsmuster zu ermöglichen, stellt Azure Stream Analytics verschiedene Optionen zum Speichern der Ausgabe und zum Anzeigen von Analyseergebnissen bereit. Dadurch wird sowohl einfaches Anzeigen der Auftragsausgabe als auch Flexibilität bei der Nutzung und Speicherung der Auftragsausgabe für Data Warehousing und andere Zwecke erreicht. Jede Ausgabe, die im Auftrag konfiguriert wird, muss vorhanden sein, bevor der Auftrag gestartet wird und Ereignisse übertragen werden. Wird beispielsweise ein Blob Storage als Ausgabe verwendet, erstellt der Auftrag nicht automatisch ein Speicherkonto. Es muss vom Benutzer erstellt werden, bevor der ASA-Auftrag gestartet wird.
 
-## Azure Data Lake-Speicher
+## Azure Data Lake Store
 
 Stream Analytics unterstützt [Azure Data Lake-Speicher](https://azure.microsoft.com/services/data-lake-store/). Dieser Speicher bietet Ihnen die Möglichkeit, Daten von beliebiger Größe, Art und Erfassungsgeschwindigkeit zur Durchführung operativer und explorativer Analysen zu speichern. Derzeit wird die Erstellung und Konfiguration von Data Lake-Speicherausgaben nur im klassischen Azure-Portal unterstützt. Darüber hinaus muss Stream Analytics autorisiert werden, um auf Data Lake-Speicher zuzugreifen. Informationen zur Autorisierung und wie Sie sich für die Data Lake-Speicher-Vorschau anmelden (falls erforderlich), finden Sie im Artikel zur [Data Lake-Ausgabe](stream-analytics-data-lake-output.md).
+
+### Autorisieren eines Azure Data Lake Store
+
+Wenn Data Lake-Speicherung im Azure-Verwaltungsportal als Ausgabe ausgewählt ist, werden Sie aufgefordert, eine Verbindung mit einem vorhandenen Data Lake Store zu autorisieren.
+
+![Autorisieren von Data Lake-Speicher](./media/stream-analytics-define-outputs/06-stream-analytics-define-outputs.png)
+
+Füllen Sie dann die Eigenschaften für die Data Lake Store-Ausgabe wie unten dargestellt aus:
+
+![Autorisieren von Data Lake-Speicher](./media/stream-analytics-define-outputs/07-stream-analytics-define-outputs.png)
 
 Die folgende Tabelle enthält die Namen und Beschreibungen der Eigenschaften, die für die Erstellung einer Data Lake-Speicherausgabe erforderlich sind.
 
@@ -40,8 +50,8 @@ Die folgende Tabelle enthält die Namen und Beschreibungen der Eigenschaften, di
 <td>Dies ist ein Anzeigename, der in Abfragen verwendet wird, um die Abfrageausgabe an diesen Data Lake-Speicher weiterzuleiten.</td>
 </tr>
 <tr>
-<td>Data Lake-Speicherkonto</td>
-<td>Der Name des Speicherkontos, an das Sie die Ausgabe senden. Ihnen wird eine Dropdown-Liste der Data Lake-Speicherkonten angezeigt, auf die der im Portal angemeldete Benutzer Zugriff hat.</td>
+<td>Kontoname</td>
+<td>Der Name des Data Lake-Speicherkontos, an das Sie die Ausgabe senden. Ihnen wird eine Dropdown-Liste der Data Lake-Speicherkonten angezeigt, auf die der im Portal angemeldete Benutzer Zugriff hat.</td>
 </tr>
 <tr>
 <td>Präfixmuster des Pfads [<I>optional</I>]</td>
@@ -74,9 +84,16 @@ Die folgende Tabelle enthält die Namen und Beschreibungen der Eigenschaften, di
 </tbody>
 </table>
 
+### Erneuern der Data Lake-Speicherautorisierung
+
+Sie müssen Ihr Data Lake Store-Konto erneut authentifizieren, wenn das Kennwort seit der Erstellung oder letzten Authentifizierung Ihres Auftrags geändert wurde.
+
+![Autorisieren von Data Lake-Speicher](./media/stream-analytics-define-outputs/08-stream-analytics-define-outputs.png)
+
+
 ## SQL-Datenbank
 
-[Azure SQL-Datenbank](https://azure.microsoft.com/services/sql-database/) kann als Ausgabe für relationale Daten oder für Anwendungen verwendet werden, die auf Inhalten aufsetzen, die in einer relationalen Datenbank gehostet werden. Stream Analytics-Aufträge werden in eine vorhandene Tabelle in einer Azure SQL-Datenbank geschrieben. Beachten Sie, dass das Tabellenschema genau den Feldern und deren Typen entsprechen muss, die aus Ihrem Auftrag ausgegeben werden. Ein [Azure SQL Data Warehouse](https://azure.microsoft.com/documentation/services/sql-data-warehouse/) kann auch über die SQL-Datenbank-Ausgabeoption als Ausgabe angegeben werden (diese Funktionen steht Ihnen im Vorschauportal zur Verfügung). Die folgende Tabelle enthält die Eigenschaftennamen und die entsprechenden Beschreibungen zum Erstellen einer SQL-Datenbank-Ausgabe.
+[Azure SQL-Datenbank](https://azure.microsoft.com/services/sql-database/) kann als Ausgabe für relationale Daten oder für Anwendungen verwendet werden, die auf Inhalten aufsetzen, die in einer relationalen Datenbank gehostet werden. Stream Analytics-Aufträge werden in eine vorhandene Tabelle in einer Azure SQL-Datenbank geschrieben. Beachten Sie, dass das Tabellenschema genau den Feldern und deren Typen entsprechen muss, die aus Ihrem Auftrag ausgegeben werden. Ein [Azure SQL Data Warehouse](https://azure.microsoft.com/documentation/services/sql-data-warehouse/) kann auch über die SQL-Datenbank-Ausgabeoption als Ausgabe angegeben werden (diese Funktionen steht Ihnen in der Vorschau zur Verfügung). Die folgende Tabelle enthält die Eigenschaftennamen und die entsprechenden Beschreibungen zum Erstellen einer SQL-Datenbank-Ausgabe.
 
 | Eigenschaftenname | Beschreibung |
 |---------------|-------------|
@@ -190,9 +207,9 @@ Sobald Sie das Power BI-Konto authentifiziert haben, können Sie die Eigenschaf
 | Eigenschaftenname | Beschreibung |
 |---------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Ausgabealias | Dies ist ein Anzeigename, der in Abfragen verwendet wird, um die Abfrageausgabe an diese Power BI-Ausgabe weiterzuleiten. |
+| Gruppenarbeitsbereich | Um die gemeinsame Datennutzung mit anderen Power BI-Benutzern zu ermöglichen, können Sie Gruppen in Ihrem Power BI-Konto auswählen. Wählen Sie alternativ „Arbeitsbereich“, wenn Sie nicht in eine Gruppe schreiben möchten. Zum Aktualisieren einer vorhandenen Gruppe muss die Power BI-Authentifizierung erneuert werden. | 
 | Datasetname | Geben Sie einen Datasetnamen an, der für die Power BI-Ausgabe verwendet werden soll. |
 | Tabellenname | Geben Sie einen Tabellennamen unter dem Dataset der Power BI-Ausgabe ein. Derzeit darf die Power BI-Ausgabe von Stream Analytics-Aufträgen nur eine Tabelle pro Dataset aufweisen. |
-| Gruppenname | Um die gemeinsame Nutzung von Daten mit anderen Power BI-Benutzern zu ermöglichen, müssen Sie Daten in Gruppen schreiben. Sie können Gruppen in Ihrem Power BI-Konto auswählen. Wählen Sie alternativ "Arbeitsbereich", wenn Sie nicht in eine Gruppe schreiben möchten. Zum Aktualisieren einer vorhandenen Gruppe muss die Power BI-Authentifizierung erneuert werden. |
 
 Eine schrittweise Anleitung zum Konfigurieren eine Power BI-Ausgabe und eines Power BI-Dashboards erhalten Sie im Artikel [Azure Stream Analytics & Power BI](stream-analytics-power-bi-dashboard.md).
 
@@ -208,7 +225,7 @@ Um dieses Problem zu beheben, halten Sie den laufenden Auftrag an, und wechseln 
 
   ![Power BI-Erneuerungsautorisierung](./media/stream-analytics-define-outputs/04-stream-analytics-define-outputs.png)
 
-## Table Storage
+## Tabellenspeicher
 
 [Azure-Tabellenspeicher](../storage/storage-introduction.md) bietet einen hoch verfügbaren, in hohem Maße skalierbaren Speicher, sodass eine Anwendung automatisch an die Bedürfnisse der Benutzer angepasst werden kann. Tabellenspeicher ist Microsofts NoSQL-Schlüssel-/Attributspeicher, der für strukturierte Daten genutzt werden kann, die weniger Einschränkungen hinsichtlich des Schemas haben. Azure-Tabellenspeicher kann zum Speichern von Daten für dauerhafte Archivierung und effizienten Abruf verwendet werden.
 
@@ -253,7 +270,7 @@ Die folgende Tabelle enthält die Eigenschaftennamen und die entsprechenden Besc
 | Ausgabealias | Dies ist ein Anzeigename, der in Abfragen verwendet wird, um die Abfrageausgabe an dieses Service Bus-Thema weiterzuleiten. |
 | Service Bus- Namespace | Ein Service Bus-Namespace ist ein Container für einen Satz von Nachrichtenentitäten. Sie haben bei der Erstellung eines neuen Event Hubs auch einen Service Bus-Namespace erstellt. |
 | Themenname | Themen sind Messagingentitäten, vergleichbar mit Event Hubs und Warteschlangen. Sie wurden für die Erfassung von Ereignisstreams von einer Reihe unterschiedlicher Geräte und Dienste entwickelt. Wenn ein Thema erstellt wird, wird ihm auch ein bestimmter Name zugewiesen. Die an ein Thema gesendeten Nachrichten sind nur verfügbar, wenn ein Abonnement erstellt wurde. Stellen Sie daher sicher, dass es mindestens ein Abonnement unter dem Thema gibt. |
-| Name der Themenrichtlinie | Beim Erstellen eines Themas können Sie auf der Registerkarte "Thema konfigurieren" Richtlinien für den gemeinsamen Zugriff erstellen. Jede Richtlinie für den gemeinsamen Zugriff verfügt über einen Namen, die von Ihnen festgelegten Berechtigungen und Zugriffsschlüssel. |
+| Name der Themenrichtlinie | Beim Erstellen eines Themas können Sie auf der Registerkarte „Thema konfigurieren“ Richtlinien für den gemeinsamen Zugriff erstellen. Jede Richtlinie für den gemeinsamen Zugriff verfügt über einen Namen, die von Ihnen festgelegten Berechtigungen und Zugriffsschlüssel. |
 | Schlüssel der Themenrichtlinie | Der Schlüssel für den gemeinsamen Zugriff, der für die Authentifizierung des Zugriffs auf den Service Bus-Namespace verwendet wird. |
 | Ereignisserialisierungsformat | Das Serialisierungsformat für Ausgabedaten. Es werden JSON, CSV und Avro unterstützt. |
 | Codieren | Beim CSV- oder JSON-Format muss eine Codierung angegeben werden. Das einzige derzeit unterstützte Codierungsformat ist UTF-8. |
@@ -318,4 +335,4 @@ Sie haben nun Stream Analytics kennengelernt, einen verwalteten Dienst für Stre
 [stream.analytics.query.language.reference]: http://go.microsoft.com/fwlink/?LinkID=513299
 [stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0907_2016-->

@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="05/27/2016"
+    ms.date="09/06/2016"
     ms.author="ddove"/>
 
 # Horizontales Hochskalieren mit Azure SQL-Datenbank
@@ -33,10 +33,10 @@ Die Datenbankfarbe symbolisiert Schemas. Datenbanken mit der gleichen Farbe verw
 1. Eine Reihe von **Azure SQL-Datenbanken** werden von Azure unter Verwendung einer Shardingarchitektur gehostet.
 2. Die **Clientbibliothek für elastische Datenbanken** dient zum Verwalten einer Shardgruppe.
 3. Eine Teilmenge der Datenbanken wird einem **Pool für elastische Datenbanken** zugewiesen. (Siehe [Was ist ein Pool?](sql-database-elastic-pool.md)).
-4. Ein **Auftrag für die elastische Datenbank** führt T-SQL-Skripts für alle Datenbanken aus.
+4. Ein **Auftrag für elastische Datenbanken** wird geplant ausgeführt, oder Ad-hoc-T-SQL-Skripts werden für alle Datenbanken ausgeführt.
 5. Mit dem **Split-Merge-Tool** werden Daten zwischen Shards verschoben.
 6. Mit der **Abfrage für elastische Datenbanken** können Sie eine Abfrage für alle Datenbanken in der Shardgruppe erstellen.
-7. Mit **Elastische Transaktionen** können Sie Transaktionen ausführen, die sich über mehrere Datenbanken erstrecken. 
+7. Mit **Elastische Transaktionen** können Sie Transaktionen ausführen, die sich über mehrere Datenbanken erstrecken.
 
 
 ![Tools für elastische Datenbanken][1]
@@ -47,7 +47,7 @@ Die Datenbankfarbe symbolisiert Schemas. Datenbanken mit der gleichen Farbe verw
 Flexibilität und Skalierbarkeit für Cloudanwendungen lassen sich bei virtuellen Computern und Blob Storage durch einfaches Hinzufügen oder Entfernen von Einheiten oder durch Erhöhen der Leistung erreichen. Bei der zustandsbehafteten Datenverarbeitung in relationalen Datenbanken ist es jedoch eine Herausforderung geblieben. Herausforderungen treten in folgenden Szenarios auf:
 
 * Vergrößern und Verkleinern der Kapazität für den relationalen Datenbankteil der Workload.
-* Verwalten von Hotspots, die Auswirkungen auf eine bestimmte Teilmenge von Daten haben können – z. B. auf besonders aktive Endkunden (Mandant).
+* Verwalten von Hotspots, die Auswirkungen auf eine bestimmte Teilmenge von Daten haben können – z. B. auf besonders aktive Endkunden (Mandant).
 
 In der Vergangenheit wurden Szenarios wie diese durch eine Investition in größere Datenbankserver zur Unterstützung der Anwendung gelöst. Diese Option ist in der Cloud jedoch beschränkt, wo für die gesamte Verarbeitung vordefinierte Standardhardware verwendet wird. Stattdessen stellt die Verteilung von Daten und Verarbeitung auf mehrere identisch strukturierte Datenbanken (die als „Sharding“ bezeichnete horizontale Skalierung) eine Alternative zur herkömmlichen Hochskalierung im Hinblick auf Kosten und Elastizität dar.
 
@@ -82,7 +82,7 @@ Das Sharding funktioniert am besten, wenn jede Transaktion in einer Anwendung au
 
 ## Mehrere Mandanten und einzelner Mandant
 
-Einige Anwendungen verwenden den einfachsten Ansatz und erstellen für jeden Mandanten eine eigene Datenbank. Dies ist das **Shardingmuster mit einzelnen Mandanten**, das Isolation, Sicherungs-/Wiederherstellungsfunktion und Ressourcenskalierung auf der Ebene einzelner Mandanten bietet. Beim Sharding mit einzelnen Mandanten ist jede Datenbank mit einem bestimmten Mandanten-ID-Wert (oder Kundenschlüsselwert) verknüpft, wobei der Schlüssel jedoch nicht immer in den Daten vorhanden sein muss. Es ist Aufgabe der Anwendung, die einzelnen Anforderungen an die entsprechende Datenbank weiterzuleiten – dies wird durch die Clientbibliothek vereinfacht.
+Einige Anwendungen verwenden den einfachsten Ansatz und erstellen für jeden Mandanten eine eigene Datenbank. Dies ist das **Shardingmuster mit einzelnen Mandanten**, das Isolation, Sicherungs-/Wiederherstellungsfunktion und Ressourcenskalierung auf der Ebene einzelner Mandanten bietet. Beim Sharding mit einzelnen Mandanten ist jede Datenbank mit einem bestimmten Mandanten-ID-Wert (oder Kundenschlüsselwert) verknüpft, wobei der Schlüssel jedoch nicht immer in den Daten vorhanden sein muss. Es ist Aufgabe der Anwendung, die einzelnen Anforderungen an die entsprechende Datenbank weiterzuleiten – dies wird durch die Clientbibliothek vereinfacht.
 
 ![Einzelinstanzen und Mehrinstanzen][4]
 
@@ -109,4 +109,4 @@ Einzelheiten zum Pool für elastische Datenbanken finden Sie unter [Überlegunge
 [3]: ./media/sql-database-elastic-scale-introduction/overview.png
 [4]: ./media/sql-database-elastic-scale-introduction/single_v_multi_tenant.png
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0907_2016-->

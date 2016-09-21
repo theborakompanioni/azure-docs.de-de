@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Öffentliche und private Agent-Pools – ACS | Microsoft Azure"
+   pageTitle="Öffentliche und private DC/OS-Agent-Pools – ACS | Microsoft Azure"
    description="Funktionsweise öffentlicher und privater Agent-Pools mit einem Azure Container Service-Cluster"
    services="container-service"
    documentationCenter=""
@@ -18,9 +18,9 @@
    ms.date="08/16/2016"
    ms.author="adegeo"/>
 
-# Agent-Pools
+# DC/OS-Agent-Pools für Azure Container Service
 
-Azure Container Service unterteilt Agents in mehrere Pools. Während jeder virtuelle Computer in einem Pool identisch ist, hat jeder Pool sein eigenes Subnetz. Daher kann jeder Pool entweder als öffentlich oder privat gekennzeichnet werden, was den Zugriff zwischen den Computern in Ihrem Containerdienst beeinflusst.
+Azure Container Service für DC/OS unterteilt Agents in öffentliche und private Pools. Eine Bereitstellung ist in jedem Pool möglich, der Pool hat jedoch Auswirkungen auf den Zugriff zwischen Computern in Ihrem Containerdienst. Die Computer können über Internetzugriff (öffentlich) verfügen oder nur intern (privat) verwendet werden. Dieser Artikel geht kurz darauf ein, warum ein öffentlicher und ein privater Pool zur Verfügung stehen.
 
 ### Private Agents
 
@@ -32,10 +32,12 @@ Private Agentknoten werden über ein nicht routingfähiges Netzwerk ausgeführt.
 
 ## Verwenden von Agent-Pools
 
-Standardmäßig stellt **Marathon** jede neue Anwendung auf den *privaten* Agentknoten bereit. Sie müssen die Anwendung explizit auf den *öffentlichen* Knoten bereitstellen. Leider ist das Bereitstellen auf dem öffentlichen Knoten nicht ganz so unkompliziert wie z.B. das Aktivieren eines Kontrollkästchens. Wechseln Sie beim Erstellen einer neuen Anwendung zur Registerkarte **Optional**, und geben Sie unter **Accepted Resource Roles** (Akzeptierte Ressourcenrollen) den Text **slave\_public** ein. Dieser Prozess ist [hier](container-service-mesos-marathon-ui.md#deploy-a-docker-formatted-container) und in der [DC/OS-Dokumentation](https://dcos.io/docs/1.7/administration/installing/custom/create-public-agent/) beschrieben.
+Standardmäßig stellt **Marathon** jede neue Anwendung auf den *privaten* Agentknoten bereit. Sie müssen die Anwendung bei der Anwendungserstellung explizit auf dem *öffentlichen* Knoten bereitstellen. Geben Sie dazu auf der Registerkarte **Optional** für den Wert **Accepted Resource Roles** (Akzeptierte Ressourcenrollen) den Text **slave\_public** ein. Dieser Prozess ist [hier](container-service-mesos-marathon-ui.md#deploy-a-docker-formatted-container) und in der [DC/OS-Dokumentation](https://dcos.io/docs/1.7/administration/installing/custom/create-public-agent/) beschrieben.
 
 ## Nächste Schritte
 
 Erhalten Sie weitere Informationen zum [Verwalten Ihrer DC/OS-Container](container-service-mesos-marathon-ui.md).
 
-<!---HONumber=AcomDC_0824_2016-->
+Erfahren Sie, wie Sie [die von Azure bereitgestellte Firewall öffnen](container-service-enable-public-access.md), um den Zugriff auf Ihre DC/OS-Container zu ermöglichen.
+
+<!---HONumber=AcomDC_0907_2016-->

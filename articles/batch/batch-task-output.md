@@ -13,18 +13,18 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows"
 	ms.workload="big-compute"
-	ms.date="08/06/2016"
+	ms.date="09/07/2016"
 	ms.author="marsma" />
 
 # Beibehalten der Ausgabe von Azure Batch-Aufträgen und -Tasks
 
 Die Tasks, die Sie in Batch ausführen, generieren in der Regel Ausgaben, die gespeichert und später von anderen Tasks im Auftrag und/oder von der Clientanwendung, die den Auftrag ausführt, abgerufen werden müssen. Diese Ausgaben können Dateien sein, die durch die Verarbeitung von Eingabedaten oder Protokolldateien, die mit der Taskausführung verknüpft sind, generiert werden. In diesem Artikel wird eine .NET-Klassenbibliothek beschrieben, die ein auf Konventionen basierendes Verfahren zum Beibehalten solcher Taskausgaben in Azure Blob Storage verwendet. So sind die Ausgaben auch dann noch verfügbar, wenn Sie Ihre Pools, Aufträge und Computeknoten gelöscht haben.
 
-Mithilfe des in diesem Artikel beschriebenen Verfahrens können Sie die Taskausgabe auch in **Gespeicherte Ausgabedateien** und **Gespeicherte Protokolle** im [Azure-Portal][portal] anzeigen.
+Mithilfe des in diesem Artikel beschriebenen Verfahrens können Sie die Taskausgabe auch im [Azure-Portal][portal] unter **Gespeicherte Ausgabedateien** und **Gespeicherte Protokolle** anzeigen.
 
 ![Auswahl von „Gespeicherte Ausgabedateien“ und „Gespeicherte Protokolle“ im Portal][1]
 
->[AZURE.NOTE] Die hier erläuterte Methode zum Speichern und Abrufen von Dateien ist mit der Funktionalität zum Verwalten der Taskausgabe in **Batch Apps** (veraltet) vergleichbar.
+>[AZURE.NOTE] Die in diesem Artikel behandelte .NET-Klassenbibliothek zu [Azure Batch-Dateikonventionen][nuget_package] befindet sich derzeit in der Vorschauphase. Einige der hier beschriebenen Features werden bis zur allgemeinen Verfügbarkeit unter Umständen noch geändert.
 
 ## Überlegungen zur Taskausgabe
 
@@ -34,9 +34,9 @@ Beim Entwerfen Ihrer Batch-Lösung sind mehrere Faktoren zu berücksichtigen, di
 
 * **Ausgabespeicher**: Um die Taskausgabedaten in einem permanenten Speicher beizubehalten, können Sie das [Azure Storage-SDK](../storage/storage-dotnet-how-to-use-blobs.md) im Taskcode verwenden, um die Taskausgabe in einen Blob Storage-Container hochzuladen. Wenn Sie einen Container mit der entsprechenden Dateinamenskonvention implementieren, können die Clientanwendung oder andere Tasks im Auftrag diese Ausgabe auf Grundlage der Konvention suchen und herunterladen.
 
-* **Abrufen der Ausgabe**: Sie können die Taskausgabe direkt aus den Computeknoten im Pool oder, wenn Ihre Tasks die Ausgabe beibehalten, aus Azure Storage abrufen. Um die Ausgabe eines Tasks direkt von einem Computeknoten abzurufen, benötigen Sie den Dateinamen und den Ausgabespeicherort auf dem Knoten. Wenn Sie die Ausgabe in Azure Storage beibehalten, müssen nachgelagerte Tasks oder die Clientanwendung über den vollständigen Dateipfad in Azure Storage verfügen, um die Datei mithilfe des Azure Storage-SDK herunterzuladen.
+* **Abrufen der Ausgabe**: Sie können die Taskausgabe direkt aus den Computeknoten im Pool oder, wenn Ihre Tasks die Ausgabe beibehalten, aus Azure Storage abrufen. Um die Ausgabe eines Tasks direkt von einem Computeknoten abzurufen, benötigen Sie den Dateinamen und den Ausgabespeicherort auf dem Knoten. Wenn Sie die Ausgabe in Azure Storage beibehalten, müssen nachgelagerte Tasks oder die Clientanwendung über den vollständigen Dateipfad in Azure Storage verfügen, um die Datei mithilfe des Azure Storage-SDKs herunterzuladen.
 
-* **Anzeigen der Ausgabe**: Wenn Sie im Azure-Portal zu einem Batch-Task navigieren und **Dateien auf Knoten** wählen, werden Ihnen alle Dateien angezeigt, die mit dem Task verknüpft sind (nicht nur die Ausgabedateien, die Sie interessieren). Wie bereits erwähnt, sind Dateien auf Computeknoten nur verfügbar, solange der Knoten vorhanden ist, und nur für die Dateiaufbewahrungszeit, die Sie für den Task festgelegt haben. Um die in Azure Storage beibehaltene Taskausgabe im Portal oder einer Anwendung wie dem [Azure-Speicher-Explorer][storage_explorer] anzuzeigen, müssen Sie ihren Speicherort kennen und direkt zur gewünschten Datei navigieren.
+* **Anzeigen der Ausgabe**: Wenn Sie im Azure-Portal zu einem Batch-Task navigieren und **Dateien auf Knoten** auswählen, werden Ihnen alle Dateien angezeigt, die mit dem Task verknüpft sind (nicht nur die Ausgabedateien, die Sie interessieren). Wie bereits erwähnt, sind Dateien auf Computeknoten nur verfügbar, solange der Knoten vorhanden ist, und nur für die Dateiaufbewahrungszeit, die Sie für den Task festgelegt haben. Um die in Azure Storage beibehaltene Taskausgabe im Portal oder einer Anwendung wie dem [Azure-Speicher-Explorer][storage_explorer] anzuzeigen, müssen Sie ihren Speicherort kennen und direkt zur gewünschten Datei navigieren.
 
 ## Hilfe für permanente Ausgabe
 
@@ -72,9 +72,9 @@ Sie müssen zwei Hauptaufgaben ausführen, wenn Sie Auftrags- und Taskausgaben m
 
 ### Erstellen eines Speichercontainers
 
-Bevor die Tasks beginnen können, Ausgaben dauerhaft in den Speicher zu schreiben, müssen Sie einen Blob Storage-Container erstellen, in den die Ausgaben hochgeladen werden. Rufen Sie dazu [CloudJob][net_cloudjob].[PrepareOutputStorageAsync][net_prepareoutputasync] auf. Diese Erweiterungsmethode verwendet ein [CloudStorageAccount][net_cloudstorageaccount]-Objekt als Parameter und erstellt einen Container, der so benannt ist, dass sein Inhalt vom Azure-Portal und den Abrufmethoden, die später in diesem Artikel erläutert werden, erkannt werden kann.
+Bevor die Tasks damit beginnen können, Ausgaben dauerhaft in den Speicher zu schreiben, müssen Sie einen Blob Storage-Container erstellen, in den die Ausgaben hochgeladen werden. Rufen Sie dazu [CloudJob][net_cloudjob].[PrepareOutputStorageAsync][net_prepareoutputasync] auf. Diese Erweiterungsmethode verwendet ein [CloudStorageAccount][net_cloudstorageaccount]-Objekt als Parameter und erstellt einen Container, der so benannt ist, dass sein Inhalt vom Azure-Portal und von den später in diesem Artikel erläuterten Abrufmethoden gefunden werden kann.
 
-In der Regel wird dieser Code in der Clientanwendung verwendet (der Anwendung, die Pools, Aufträge und Tasks erstellt).
+In der Regel wird dieser Code in der Clientanwendung verwendet (also in der Anwendung, die Pools, Aufträge und Tasks erstellt).
 
 ```csharp
 CloudJob job = batchClient.JobOperations.CreateJob(
@@ -113,7 +113,7 @@ Der Parameter „output kind“ kategorisiert persistent gespeicherte Dateien. E
 
 Mit diesen Ausgabetypen können Sie angeben, welche Typen von Ausgaben aufgelistet werden, wenn Sie die beibehaltenen Ausgaben eines bestimmten Tasks später in Batch abfragen. Beim Auflisten der Ausgaben für einen Task können Sie die Liste also nach einem der Ausgabetypen filtern. Beispiel: „*preview*-Ausgabe für Task *109* abrufen.“ Weitere Informationen zum Auflisten und Abrufen von Ausgaben finden Sie unter [Abrufen der Ausgabe](#retrieve-output) weiter unten in diesem Artikel.
 
->[AZURE.TIP] Der Typ der Ausgabe legt auch fest, wo eine bestimmte Datei im Azure-Portal angezeigt wird: Als *TaskOutput* kategorisierte Dateien werden in „Taskausgabedateien“ angezeigt, als *TaskLog* kategorisierte Dateien in „Taskprotokolle“.
+>[AZURE.TIP] Die Art der Ausgabe bestimmt auch, wo eine bestimmte Datei im Azure-Portal angezeigt wird: Als *TaskOutput* kategorisierte Dateien werden unter „Taskausgabedateien“ angezeigt, als *TaskLog* kategorisierte Dateien unter „Taskprotokolle“.
 
 ### Speichern von Auftragsausgaben
 
@@ -129,7 +129,7 @@ await jobOutputStorage.SaveAsync(JobOutputKind.JobOutput, "mymovie.mp4");
 await jobOutputStorage.SaveAsync(JobOutputKind.JobPreview, "mymovie_preview.mp4");
 ```
 
-Ähnlich wie bei TaskOutputKind für Taskausgaben verwenden Sie den Parameter [JobOutputKind][net_joboutputkind], um die beibehaltenen Dateien eines Auftrags zu kategorisieren. Dadurch können Sie später einen bestimmten Ausgabentyp abfragen (oder auflisten). JobOutputKind umfasst sowohl Ausgabe- als auch Vorschautypen und unterstützt das Erstellen von benutzerdefinierten Typen.
+Ähnlich wie bei TaskOutputKind für Taskausgaben verwenden Sie den Parameter [JobOutputKind][net_joboutputkind], um die beibehaltenen Dateien eines Auftrags zu kategorisieren. Mit diesem Parameter können Sie später einen bestimmten Ausgabetyp abfragen (oder auflisten). JobOutputKind umfasst sowohl Ausgabe- als auch Vorschautypen und unterstützt das Erstellen von benutzerdefinierten Typen.
 
 ### Speichern von Taskprotokollen
 
@@ -138,29 +138,39 @@ Zusätzlich zum Beibehalten einer Datei in dauerhaftem Speicher, nachdem ein Tas
 Im folgenden Codeausschnitt wird [SaveTrackedAsync][net_savetrackedasync] verwendet, um `stdout.txt` während der Ausführung des Tasks alle 15 Sekunden in Azure Storage zu aktualisieren:
 
 ```csharp
+TimeSpan stdoutFlushDelay = TimeSpan.FromSeconds(3);
 string logFilePath = Path.Combine(
 	Environment.GetEnvironmentVariable("AZ_BATCH_TASK_DIR"), "stdout.txt");
 
+// The primary task logic is wrapped in a using statement that sends updates to
+// the stdout.txt blob in Storage every 15 seconds while the task code runs.
 using (ITrackedSaveOperation stdout =
-		taskStorage.SaveTrackedAsync(
+		await taskStorage.SaveTrackedAsync(
 		TaskOutputKind.TaskLog,
 		logFilePath,
 		"stdout.txt",
 		TimeSpan.FromSeconds(15)))
 {
 	/* Code to process data and produce output file(s) */
+
+	// We are tracking the disk file to save our standard output, but the
+	// node agent may take up to 3 seconds to flush the stdout stream to
+	// disk. So give the file a moment to catch up.
+ 	await Task.Delay(stdoutFlushDelay);
 }
 ```
 
-`Code to process data and produce output file(s)` ist ein Platzhalter für den Code, den der Task normalerweise ausführen würde. Möglicherweise verfügen Sie z.B. über Code, der Daten aus Azure Storage herunterlädt und eine Transformation oder Berechnung mit diesen Daten durchführt. Dieses Beispiel soll veranschaulichen, wie solcher Code in einem `using`-Block umschlossen werden kann, um eine Datei in regelmäßigen Abständen mit [SaveTrackedAsync][net_savetrackedasync] zu aktualisieren.
+`Code to process data and produce output file(s)` ist ein Platzhalter für den Code, den der Task normalerweise ausführen würde. Unter Umständen verfügen Sie beispielsweise über Code, der Daten aus Azure Storage herunterlädt und eine Transformation oder Berechnung mit diesen Daten durchführt. Dieses Beispiel soll veranschaulichen, wie solcher Code in einem `using`-Block umschlossen werden kann, um eine Datei in regelmäßigen Abständen mit [SaveTrackedAsync][net_savetrackedasync] zu aktualisieren.
 
->[AZURE.NOTE] Wenn Sie die Dateinachverfolgung mit SaveTrackedAsync aktivieren, werden nur *Anfügungen* der nachverfolgten Datei in Azure Storage beibehalten. Verwenden Sie diese Methode nur für das Nachverfolgen von nicht rotierenden Protokolldateien oder anderen Dateien mit Anfügungen (beim Aktualisieren einer Datei werden nur am Dateiende Daten hinzugefügt).
+`Task.Delay` wird am Ende des `using`-Blocks benötigt, um sicherzustellen, dass der Knoten-Agent Zeit hat, um den Inhalt der Standardausgabe in die Datei „stdout.txt“ auf dem Knoten zu leeren. (Der Knoten-Agent ist ein Programm, das auf jedem Knoten im Pool ausgeführt wird, und stellt die Befehls- und Steuerungsschnittstelle zwischen dem Knoten und dem Batch-Dienst dar.) Ohne diese Verzögerung gehen unter Umständen die letzten Sekunden der Ausgabe verloren. Diese Verzögerung ist möglicherweise nicht für alle Dateien erforderlich.
+
+>[AZURE.NOTE] Wenn Sie die Dateinachverfolgung mit SaveTrackedAsync aktivieren, werden nur *Anfügungen* der nachverfolgten Datei in Azure Storage beibehalten. Verwenden Sie diese Methode zum Nachverfolgen von nicht rotierenden Protokolldateien oder anderen Dateien, bei denen Daten angefügt (also beim Aktualisieren nur am Dateiende hinzugefügt) werden.
 
 ## Abrufen der Ausgabe
 
 Wenn Sie die dauerhaft gespeicherte Ausgabe mithilfe der Dateikonventionenbibliothek von Azure Batch abrufen, wird dieser Vorgang task- oder auftragsbasiert ausgeführt. Sie können die Ausgabe für einen bestimmten Task oder Auftrag anfordern, ohne den Pfad in Blob Storage oder den Dateinamen kennen zu müssen. Sie können z.B. folgende Abfrage formulieren: „Ausgabedateien für Task*109* abrufen.“
 
-Der folgende Codeausschnitt durchläuft alle Tasks eines Auftrags, druckt einige Informationen über die Ausgabedateien für den Task aus, und lädt dann die Dateien aus Storage herunter.
+Der folgende Codeausschnitt durchläuft alle Tasks eines Auftrags, gibt einige Informationen zu den Ausgabedateien für den Task aus und lädt dann die Dateien aus Storage herunter.
 
 ```csharp
 foreach (CloudTask task in myJob.ListTasks())
@@ -180,7 +190,7 @@ foreach (CloudTask task in myJob.ListTasks())
 
 ## Taskausgaben und das Azure-Portal
 
-Im Azure-Portal werden Taskausgaben und Protokolle angezeigt, die unter Verwendung der Namenskonventionen in der [Infodatei zu Azure Batch-Dateikonventionen][github_file_conventions_readme] in einem verknüpften Azure Storage-Konto beibehalten werden. Sie können diese Konventionen in Ihrer bevorzugten Sprache implementieren oder die Dateikonventionenbibliothek in Ihren .NET-Anwendungen verwenden.
+Im Azure-Portal werden Taskausgaben und Protokolle angezeigt, die unter Verwendung der Namenskonventionen in der [Infodatei zu Azure Batch-Dateikonventionen][github_file_conventions_readme] dauerhaft in einem verknüpften Azure Storage-Konto gespeichert werden. Sie können diese Konventionen in Ihrer bevorzugten Sprache implementieren oder die Dateikonventionenbibliothek in Ihren .NET-Anwendungen verwenden.
 
 ### Aktivieren der Portal-Anzeige
 
@@ -242,4 +252,4 @@ Der Beitrag [Installing applications and staging data on Batch compute nodes][fo
 [1]: ./media/batch-task-output/task-output-01.png "Auswahl von „Gespeicherte Ausgabedateien“ und „Gespeicherte Protokolle“ im Portal"
 [2]: ./media/batch-task-output/task-output-02.png "Taskausgabeblatt im Azure-Portal"
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0907_2016-->

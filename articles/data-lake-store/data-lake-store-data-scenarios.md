@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="06/14/2016"
+   ms.date="09/06/2016"
    ms.author="nitinme"/>
 
 # Verwenden von Azure Data Lake-Speicher für Big Data-Anforderungen
@@ -145,4 +145,4 @@ Sie können eine Kombination von Diensten verwenden, um visuelle Darstellungen d
 * Sie können beginnen, indem Sie [Daten mithilfe von Azure Data Factory aus Data Lake Store nach Azure SQL Data Warehouse verschieben](../data-factory/data-factory-data-movement-activities.md#supported-data-stores).
 * Danach können Sie [Power BI in Azure SQL Data Warehouse integrieren](../sql-data-warehouse/sql-data-warehouse-integrate-power-bi.md), um eine visuelle Darstellung der Daten zu erstellen.
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0907_2016-->

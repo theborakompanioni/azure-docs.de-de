@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Erstellen eines Labs in DevTest Labs | Microsoft Azure"
-	description="Erstellen eines neuen Labs in DevTest Labs für virtuelle Computer"
+	pageTitle="Erstellen eines Labs in Azure DevTest Labs | Microsoft Azure"
+	description="Erstellen eines Labs in Azure DevTest Labs für virtuelle Computer"
 	services="devtest-lab,virtual-machines"
 	documentationCenter="na"
 	authors="tomarcher"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="08/25/2016"
+	ms.date="09/12/2016"
 	ms.author="tarcher"/>
 
 # Erstellen eines Labs in Azure DevTest Labs
@@ -22,16 +22,15 @@
 
 Zum Erstellen eines Labs benötigen Sie Folgendes:
 
-- Ein Azure-Abonnement. Weitere Informationen zu den Azure-Kaufoptionen finden Sie unter [Azure erwerben](https://azure.microsoft.com/pricing/purchase-options/) oder [Kostenlose Testversion (1 Monat)](https://azure.microsoft.com/pricing/free-trial/). Zum Erstellen des Labs müssen Sie der Besitzer des Abonnements sein.
-- Eine Azure-Ressourcengruppe für das Lab. Weitere Informationen finden Sie unter [Übersicht über den Azure-Ressourcen-Manager](../resource-group-overview.md) und [Rollenbasierte Access Control in Azure](../active-directory/role-based-access-control-configure.md).
+- Ein Azure-Abonnement. Weitere Informationen zu den Azure-Kaufoptionen finden Sie unter [Azure erwerben](https://azure.microsoft.com/pricing/purchase-options/) oder [Kostenlose Testversion (1 Monat)](https://azure.microsoft.com/pricing/free-trial/). Zum Erstellen des Labs müssen Sie der Besitzer des Abonnements sein.
 
-## Erstellen eines Labs
+## Schritte zum Erstellen eines Labs in Azure DevTest Labs
 
-1. Melden Sie sich beim [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) an.
+Die folgenden Schritte beschreiben, wie Sie mithilfe des Azure-Portals ein Lab in Azure DevTest Labs erstellen.
 
-1. Wählen Sie **Durchsuchen**.
+1. Melden Sie sich auf dem [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) an.
 
-1. Wählen Sie in der Liste **DevTest Labs** aus.
+1. Wählen Sie **Weitere Dienste** und dann in der Liste **DevTest Labs**.
 
 1. Wählen Sie auf dem Blatt **DevTest Labs** die Option **Hinzufügen**.
 
@@ -40,9 +39,16 @@ Zum Erstellen eines Labs benötigen Sie Folgendes:
 1. Führen Sie auf dem Blatt **DevTest Lab erstellen** folgende Schritte aus:
 
     1. Geben Sie einen **Labnamen** für das neue Lab ein.
-    1. Wählen Sie das **Abonnement** aus, das mit dem Lab verknüpft werden soll.
-    1. Wählen Sie einen **Speicherort** für das Lab aus.
-    1. Klicken Sie auf **Erstellen**.
+    
+	1. Wählen Sie das **Abonnement** aus, das mit dem Lab verknüpft werden soll.
+    
+	1. Wählen Sie einen **Speicherort** für das Lab aus.
+    
+	1. Geben Sie mithilfe von **Auto-shutdown** (Automatisch herunterfahren) an, ob Sie das automatische Herunterfahren für alle virtuellen Computer im Lab aktivieren und die entsprechenden Parameter festlegen möchten.
+	
+	1. Wählen Sie den **Speichertyp**, um den Speicherdatenträgertyp für die virtuellen Computer im Lab anzugeben.
+    
+	1. Klicken Sie auf **Erstellen**.
 
     ![Erstellen eines Lab-Blatts](./media/devtest-lab-create-lab/create-devtestlab-blade.png)
 
@@ -60,6 +66,6 @@ Nachdem das Lab erstellt wurde, sollten Sie ggf. die folgenden Schritte ausführ
 
 - [Erstellen benutzerdefinierter Artefakte für Ihre VMs](devtest-lab-artifact-author.md).
 
-- [Hinzufügen eines virtuellen Computers mit Artefakten zu einem Lab](devtest-lab-add-vm-with-artifacts.md).
+- [Hinzufügen einer VM mit Artefakten zu einem Lab](devtest-lab-add-vm-with-artifacts.md).
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0914_2016-->

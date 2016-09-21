@@ -31,4 +31,4 @@ Führen Sie die folgenden Schritte aus, um unter Verwendung Ihres [bereits vorha
 
    ![Anmelden](./media/azure-getting-started-portal-login/login.png)
 
-<!---HONumber=AcomDC_0907_2016-->
+<!----HONumber=AcomDC_0912_2016-->

@@ -4,7 +4,7 @@
    services="data-lake-store"
    documentationCenter=""
    authors="nitinme"
-   manager="paulettm"
+   manager="jhubbard"
    editor="cgronlun"/>
 
 <tags
@@ -224,7 +224,9 @@ In einem HDFS-System handelt es sich bei „umask“ in der Regel um eine stando
 
 | Benutzergruppe | Einstellung | Auswirkung auf die Zugriffs-ACL eines neuen untergeordneten Elements |
 |------------ |---------|---------------------------------------|
-| Zuständiger Benutzer | --- | Keine Auswirkungen | | Zuständige Gruppe| --- | Keine Auswirkungen | | Andere Benutzer | RWX | Entfernung von Lesen/Schreiben/Ausführen |
+| Zuständiger Benutzer | --- | Keine Auswirkungen |
+| Zuständige Gruppe| --- | Keine Auswirkungen |
+| Andere Benutzer | RWX | Entfernung von Lesen/Schreiben/Ausführen |
 
 Die folgende Abbildung zeigt dieses unmask-Element in Aktion. Letztendlich entfernt es **Lesen/Schreiben/Ausführen** für **andere Benutzer**. Da das umask-Element keine Bits für **zuständiger Benutzer** und **zuständige Gruppe** angibt, werden diese Berechtigungen nicht transformiert.
 
@@ -286,17 +288,17 @@ Nein.
 
 * [http://www.vanemery.com/Linux/ACL/POSIX\_ACL\_on\_Linux.html](http://www.vanemery.com/Linux/ACL/POSIX_ACL_on_Linux.html)
 
-* [HDFS Permission Guide](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html) (Handbuch zu HDFS-Berechtigungen)
+* [HDFS Permission Guide (Handbuch zu HDFS-Berechtigungen)](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html)
 
-* [POSIX FAQ](http://www.opengroup.org/austin/papers/posix_faq.html) (Häufig gestellte Fragen zu POSIX)
+* [POSIX FAQ (Häufig gestellte Fragen zu POSIX)](http://www.opengroup.org/austin/papers/posix_faq.html)
 
 * [POSIX 1003.1 2008](http://standards.ieee.org/findstds/standard/1003.1-2008.html)
 
 * [POSIX 1003.1e 1997](http://users.suse.com/~agruen/acl/posix/Posix_1003.1e-990310.pdf)
 
-* [POSIX ACL on Linux](http://users.suse.com/~agruen/acl/linux-acls/online/) (POSIX-ACL unter Linux)
+* [POSIX ACL on Linux (POSIX-ACL unter Linux)](http://users.suse.com/~agruen/acl/linux-acls/online/)
 
-* [ACL using Access Control Lists on Linux](http://bencane.com/2012/05/27/acl-using-access-control-lists-on-linux/) (ACL mit Zugriffssteuerungslisten unter Linux)
+* [ACL using Access Control Lists on Linux (ACL mit Zugriffssteuerungslisten unter Linux)](http://bencane.com/2012/05/27/acl-using-access-control-lists-on-linux/)
 
 ## Siehe auch
 
@@ -304,4 +306,4 @@ Nein.
 
 * [Erste Schritte mit Azure Data Lake Analytics](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0914_2016-->

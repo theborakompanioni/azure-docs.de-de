@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="06/22/2016"
+   ms.date="09/06/2016"
    ms.author="nitinme"/>
 
 # Schützen von Daten, die im Azure Data Lake-Speicher gespeichert sind
@@ -32,7 +32,7 @@ Dieser Artikel enthält eine Anleitung zur Verwendung des Azure-Portals für die
 
 ## Voraussetzungen
 
-Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
+Bevor Sie mit diesem Tutorial beginnen können, benötigen Sie Folgendes:
 
 - **Ein Azure-Abonnement**. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
 - **Ein Azure Data Lake-Speicherkonto**. Eine Anleitung zur Erstellung finden Sie unter [Erste Schritte mit dem Azure Data Lake-Speicher](data-lake-store-get-started-portal.md).
@@ -47,7 +47,7 @@ Eine Anleitung zum Erstellen von AAD-Sicherheitsgruppen und zum Hinzufügen von 
 
 ## Zuweisen von Benutzern oder Sicherheitsgruppen zu Azure Data Lake-Speicherkonten
 
-Wenn Sie Benutzer oder Sicherheitsgruppen Azure Data Lake-Speicherkonten zuweisen, steuern Sie den Zugriff auf die Verwaltungsvorgänge des Kontos, indem Sie das Azure-Portal und die Azure-Ressourcen-Manager-APIs verwenden.
+Wenn Sie Benutzer oder Sicherheitsgruppen Azure Data Lake-Speicherkonten zuweisen, steuern Sie den Zugriff auf die Verwaltungsvorgänge des Kontos, indem Sie das Azure-Portal und die Azure Resource Manager-APIs verwenden.
 
 1. Öffnen Sie ein Azure Data Lake-Speicherkonto. Klicken Sie im linken Bereich auf **Durchsuchen** und dann auf **Data Lake-Speicher**. Klicken Sie anschließend auf dem Blatt „Data Lake-Speicher“ auf den Namen des Kontos, dem Sie einen Benutzer oder eine Sicherheitsgruppe zuordnen möchten.
 
@@ -144,7 +144,7 @@ Mit dem Azure Data Lake-Speicher können Sie den Zugriff auf Ihren Datenspeicher
 
 ## Entfernen von Sicherheitsgruppen für ein Azure Data Lake-Speicherkonto
 
-Wenn Sie Sicherheitsgruppen aus Azure Data Lake-Speicherkonten entfernen, ändern Sie lediglich den Zugriff auf die Verwaltungsvorgänge des Kontos, indem Sie das Azure-Portal und die Azure-Ressourcen-Manager-APIs verwenden.
+Wenn Sie Sicherheitsgruppen aus Azure Data Lake-Speicherkonten entfernen, ändern Sie lediglich den Zugriff auf die Verwaltungsvorgänge des Kontos, indem Sie das Azure-Portal und die Azure Resource Manager-APIs verwenden.
 
 1. Klicken Sie auf dem Blatt Ihres Data Lake-Speicherkontos auf das Benutzersymbol.
 
@@ -185,4 +185,4 @@ Wenn Sie Zugriffssteuerungslisten von Sicherheitsgruppen aus dem Azure Data Lake
 - [Erste Schritte mit Data Lake-Speicher mithilfe des .NET SDK](data-lake-store-get-started-net-sdk.md)
 - [Zugreifen auf Diagnoseprotokolle für Azure Data Lake Store](data-lake-store-diagnostic-logs.md)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0907_2016-->

@@ -22,8 +22,8 @@
 Sie können von einem Java-/PHP-/Python-/Ruby-Back-End aus über die REST-Schnittstelle für Notification Hubs, die im MSDN-Thema [REST-APIs für Benachrichtigungshubs](http://msdn.microsoft.com/library/dn223264.aspx) beschrieben ist, auf alle Notification Hubs-Funktionen zugreifen.
 
 > [AZURE.NOTE] Dies ist eine beispielhafte Referenzimplementierung für die Implementierung der Benachrichtigungsübermittlung in Python und nicht der offiziell unterstützte Notification Hub Python SDK.
-
-> [AZURE.NOTE] Dieses Beispiel wurde mit Python 3.4 geschrieben.
+>
+> Dieses Beispiel wurde mit Python 3.4 geschrieben.
 
 In diesem Thema wird Folgendes erläutert:
 
@@ -393,4 +393,4 @@ In diesem Thema haben wir gezeigt, wie Sie einen einfachen Python-REST-Client f�
 [5]: ./media/notification-hubs-python-backend-how-to/TemplatedNotification.png
  
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0907_2016-->

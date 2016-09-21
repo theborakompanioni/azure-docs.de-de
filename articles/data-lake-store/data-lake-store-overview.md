@@ -4,7 +4,7 @@
    services="data-lake-store"
    documentationCenter=""
    authors="nitinme"
-   manager="paulettm"
+   manager="jhubbard"
    editor="cgronlun"/>
 
 <tags
@@ -62,7 +62,7 @@ Azure Data Lake-Speichercontainer für Daten sind im Wesentlichen Ordner und Dat
 
 Azure Data Lake-Speicher verwendet Azure Active Directory zur Authentifizierung und Zugriffssteuerungslisten (ACLs) zum Verwalten des Zugriffs auf Ihre Daten.
 
-| Funktion | Beschreibung |
+| Feature | Beschreibung |
 |-----------------------------------------|------------------------------------------|
 | Authentifizierung | Zur Identitäts- und Zugriffsverwaltung für alle in Azure Data Lake-Speicher gespeicherten Daten ist Azure Data Lake-Speicher in Azure Active Directory (AAD) integriert. Dank dieser Integration nutzt Azure Data Lake sämtliche AAD-Funktionen, z. B. Multi-Factor Authentication, bedingter Zugriff, rollenbasierte Zugriffssteuerung, Überwachung der Anwendungsnutzung, Sicherheitsüberwachung und -warnungen usw. Azure Data Lake-Speicher unterstützt das OAuth 2.0-Protokoll für die Authentifizierung mit der REST-Schnittstelle. |
 | Zugriffssteuerung | Azure Data Lake-Speicher ermöglicht eine Zugriffssteuerung durch die Unterstützung von POSIX-Berechtigungen, die vom WebHDFS-Protokoll verfügbar gemacht werden. In der aktuellen Version können ACLs im Stammordner, in Unterordnern und in einzelnen Dateien aktiviert werden. Die ACLs, die Sie auf den Stammordner anwenden, gelten auch für alle untergeordneten Ordner bzw. Dateien.|
@@ -110,4 +110,4 @@ Für Benutzer, die sich lieber anhand von Videos informieren, stellt Data Lake-S
 * [Data Orchestration using Azure Data Factory for Azure Data Lake Store (Datenorchestrierung mithilfe von Azure Data Factory für den Azure Data Lake-Speicher)](https://mix.office.com/watch/1oa7le7t2u4ka)
 * [Securing Data in the Azure Data Lake Store (Schützen von Daten im Azure Data Lake-Speicher)](https://mix.office.com/watch/1q2mgzh9nn5lx)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0914_2016-->

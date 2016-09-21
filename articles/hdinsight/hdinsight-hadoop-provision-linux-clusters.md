@@ -14,7 +14,7 @@
    	ms.topic="article"
    	ms.tgt_pltfrm="na"
    	ms.workload="big-data"
-   	ms.date="07/08/2016"
+   	ms.date="09/06/2016"
    	ms.author="jgao"/>
 
 
@@ -216,6 +216,8 @@ Die Abrechnung beginnt, sobald ein Cluster erstellt wurde, und sie endet, wenn d
 
 In manchen Fällen ist es wünschenswert, dem Cluster zusätzlichen Speicher hinzufügen zu können. Dies kann beispielsweise dann der Fall sein, wenn Sie über mehrere Azure-Speicherkonten in verschiedenen geografischen Regionen oder für verschiedene Dienste verfügen und all diese Konten mit HDInsight analysieren möchten.
 
+Sie können Speicherkonten hinzufügen, wenn Sie einen HDInsight-Cluster erstellen oder nachdem die Erstellung des Clusters abgeschlossen ist. Weitere Informationen finden Sie unter [Anpassen Linux-basierter HDInsight-Cluster mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md).
+
 Weitere Informationen zu sekundären Blobspeichern finden Sie unter [Verwenden von Azure-Blobspeicher mit HDInsight](hdinsight-hadoop-use-blob-storage.md). Weitere Informationen zur Verwendung von sekundärem Data Lake-Speicher finden Sie unter [Erstellen eines HDInsight-Clusters mit Data Lake-Speicher mithilfe des Azure-Portals](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md).
 
 
@@ -297,4 +299,4 @@ In diesem Artikel haben Sie grundlegende Informationen zum Erstellen eines Linux
 | [.NET SDK](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md) | &nbsp; | &nbsp; | &nbsp; | ✔ | ✔ | ✔ |
 | [Azure Resource Manager-Vorlagen](hdinsight-hadoop-create-linux-clusters-arm-templates.md) | &nbsp; | ✔ | &nbsp; | &nbsp; | ✔ | ✔ |
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0907_2016-->

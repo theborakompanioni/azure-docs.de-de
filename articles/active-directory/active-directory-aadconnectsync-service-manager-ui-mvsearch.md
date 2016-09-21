@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="andkjell"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/27/2016"
+	ms.date="09/07/2016"
 	ms.author="andkjell"/>
 
 
@@ -24,7 +24,7 @@
 
 ![Synchronization Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/mvsearch.png)
 
-Die Registerkarte „Metaverse Search“ ist nützlich für die Behandlung von Datenproblemen. In der oberen Hälfte können Sie eine, auf einer Kombination von Attributen basierende, Abfrage erstellen. Wenn Sie mit Ihrer Abfrage zufrieden sind, klicken Sie auf **Suchen**. Das Ergebnis wird im unteren Raster angezeigt. Mit **Spalteneinstellungen** können Sie auswählen, welche Spalten sichtbar sein sollen.
+Die Registerkarte „Metaverse Search“ ist nützlich für die Behandlung von Datenproblemen. In der oberen Hälfte können Sie eine auf einer Kombination von Attributen basierende Abfrage erstellen. Wenn Sie mit Ihrer Abfrage zufrieden sind, klicken Sie auf **Suchen**. Das Ergebnis wird im unteren Raster angezeigt. Mit **Spalteneinstellungen** können Sie auswählen, welche Spalten sichtbar sein sollen.
 
 Wählen Sie in den Suchergebnissen ein Objekt und **Eigenschaften** aus, um die [Metaverse-Objekteigenschaften](active-directory-aadconnectsync-service-manager-ui-connectors.md#metaverse-object-properties) anzuzeigen.
 
@@ -33,4 +33,4 @@ Weitere Informationen zur Konfiguration der [Azure AD Connect-Synchronisierung](
 
 Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md).
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0907_2016-->

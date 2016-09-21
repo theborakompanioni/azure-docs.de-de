@@ -18,9 +18,12 @@
 	ms.author="spelluru"/>
 
 # Verschieben von Daten in einen und aus einem Azure-Blob mithilfe von Azure Data Factory
-In diesem Artikel erfahren Sie, wie Sie Daten mithilfe der Kopieraktivität von Azure Data Factory in einen und aus einem Azure-Blob verschieben, indem Sie Blobdaten aus einem anderen Datenspeicher heranziehen. Dieser Artikel baut auf dem Artikel zu Datenverschiebungsaktivitäten auf, der eine allgemeine Übersicht zur Datenverschiebung mit der Kopieraktivität und den unterstützten Datenspeicherkombinationen bietet.
+In diesem Artikel erfahren Sie, wie Sie Daten mithilfe der Kopieraktivität von Azure Data Factory in einen und aus einem Azure-Blob verschieben, indem Sie Blobdaten aus einem anderen Datenspeicher heranziehen. Dieser Artikel baut auf dem Artikel zu [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) auf, der eine allgemeine Übersicht zur Datenverschiebung mit der Kopieraktivität und den unterstützten Datenspeicherkombinationen bietet.
 
-> [AZURE.NOTE] Dieser Azure-Blobconnector unterstützt derzeit nur Kopiervorgänge an/aus Blockblobs. Darüber hinaus unterstützt er sowohl Azure Storage für allgemeine Zwecke als auch Blob Storage (Hot/Cool).
+> [AZURE.NOTE]
+Die Kopieraktivität unterstützt das Kopieren von Daten in und aus Azure Storage-Konten für allgemeine Zwecke und Blob Storage (Hot/Cool).
+> 
+> Die Aktivität unterstützt das Lesen aus Block-, Anfüge- und Seitenblobs. Das Schreiben wird jedoch nur für Blockblobs unterstützt.
 
 ## Assistent zum Kopieren von Daten
 Die einfachste Möglichkeit zum Erstellen einer Pipeline, die Daten in Azure-Blobspeicher und daraus kopiert, ist die Verwendung des Assistenten zum Kopieren von Daten. Unter [Tutorial: Erstellen einer Pipeline mit dem Assistenten zum Kopieren](data-factory-copy-data-wizard-tutorial.md) finden Sie eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mithilfe des Assistenten zum Kopieren von Daten.
@@ -449,18 +452,18 @@ Eigenschaften im Abschnitt „typeProperties“ der Aktivität können dagegen j
 | -------- | ----------- | -------------- | -------- |
 | copyBehavior | Definiert das Verhalten beim Kopieren, wenn die Quelle "BlobSource" oder "FileSystem" ist. | **PreserveHierarchy:** Behält die Dateihierarchie im Zielordner bei. Der relative Pfad der Quelldatei zum Quellordner entspricht dem relativen Pfad der Zieldatei zum Zielordner.<br/><br/>**FlattenHierarchy**: Alle Dateien aus dem Quellordner befinden sich in der ersten Ebene des Zielordners. Für die Zieldateien wird ein automatisch ein Name erzeugt. <br/><br/>**MergeFiles** (Standardwert): Führt alle Dateien aus dem Quellordner in einer Datei zusammen. Wenn der Datei-/Blob-Name angegeben wurde, entspricht der Name dem angegebenen Namen, andernfalls dem automatisch generierten Dateinamen. | Nein |
 
-**BlobSource** unterstützt darüber hinaus die beiden folgenden Eigenschaften, die demnächst ausgemustert werden.
+**BlobSource** unterstützt darüber hinaus zum Zweck der Abwärtskompatibilität die beiden folgenden Eigenschaften:
 
 - **treatEmptyAsNull**: Gibt an, ob Null oder eine leere Zeichenfolge als NULL-Wert behandelt wird.
 - **skipHeaderLineCount**: Gibt an, wie viele Zeilen übersprungen werden müssen. Nur anwendbar, wenn das Eingabedataset „TextFormat“ verwendet.
 
-**BlobSink** unterstützt die folgende Eigenschaft, die demnächst ausgemustert wird.
+**BlobSink** unterstützt zum Zweck der Abwärtskompatibilität die folgende Eigenschaft:
 
 - **blobWriterAddHeader**: Gibt an, ob beim Schreiben in ein Ausgabedataset ein Header der Spaltendefinitionen hinzugefügt werden soll.
 
 Datasets unterstützen jetzt die folgenden Eigenschaften, die die gleichen Funktionen implementieren: **treatEmptyAsNull**, **skipLineCount**, **firstRowAsHeader**.
 
-Die folgende Tabelle enthält Anweisungen zur Verwendung der neuen Dataseteigenschaften anstelle der Blobquellen-/Senkeneigenschaften, die demnächst ausgemustert werden.
+Die folgende Tabelle enthält Anweisungen zur Verwendung der neuen Dataseteigenschaften anstelle dieser Blobquellen-/Senkeneigenschaften.
 
 | Eigenschaft der Kopieraktivität | Dataseteigenschaft |
 | :---------------------- | :---------------- | 
@@ -494,4 +497,4 @@ false | mergeFiles | Für einen Quellordner „Ordner1“ mit der folgenden Stru
 ## Leistung und Optimierung  
 Im Artikel [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-factory-copy-activity-performance.md) werden wichtige Faktoren beschrieben, die sich auf die Leistung der Datenverschiebung (Kopieraktivität) in Azure Data Factory auswirken, sowie verschiedene Möglichkeiten zur Leistungsoptimierung.
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0907_2016-->

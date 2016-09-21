@@ -49,7 +49,8 @@ Erstellen Sie im [Anwendungsregistrierungsportal](https://apps.dev.microsoft.com
 
 - Kopieren Sie die Ihrer App zugewiesene **Anwendungs-ID**. Sie benötigen sie in Kürze.
 - Fügen Sie die **Mobile**-Plattform Ihrer App hinzu.
-- Kopieren Sie den **Umleitungs-URI** aus dem Portal. Sie müssen den Standardwert `https://login.microsoftonline.com/common/oauth2/nativeclient` verwenden.
+
+> Hinweis: Im Anwendungsregistrierungsportal wird ein Wert für den **Umleitungs-URI** bereitgestellt. In diesem Beispiel müssen Sie jedoch den Standardwert `https://login.microsoftonline.com/common/oauth2/nativeclient` verwenden.
 
 
 ## Herunterladen der Drittanbieterbibliothek „NXOAuth2“ und Erstellen eines Arbeitsbereichs
@@ -196,4 +197,4 @@ Klicken Sie nach erfolgreicher Authentifizierung auf die Schaltfläche **Request
 
 Wir empfehlen Ihnen, den Erhalt von Benachrichtigungen zu Sicherheitsvorfällen einzurichten. Rufen Sie dazu das [Security TechCenter](https://technet.microsoft.com/security/dd252948) auf, und abonnieren Sie die Sicherheitsempfehlungen.
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0907_2016-->

@@ -42,7 +42,7 @@ In diesem Thema sind einige häufige Fragen zur Problembehandlung aufgeführt, d
 | Problem | Lösung |
 | :----------------------------------| :---------------------------------------------- |
 | Behandlung von Problemen mit der Abfrageleistung | Wenn Sie die Problembehandlung für eine bestimmte Abfrage durchführen möchten, sollten Sie sich zunächst über das [Untersuchen der Ausführung von Abfragen][] informieren.|
-| Schlechte Abfrageleistung und Planung ist häufig das Ergebnis fehlender Statistiken | Die häufigste Ursache für schlechte Leistung ist das Fehlen von Statistiken für Ihre Tabellen. Ausführliche Informationen dazu, wie Sie Statistiken erstellen und warum sie für die Leistung wichtig sind, finden Sie unter [Managing statistics on tables in SQL Data Warehouse][Statistics] \(Verwalten von Statistiken für Tabellen in SQL Data Warehouse).|
+| Schlechte Abfrageleistung und Planung ist häufig das Ergebnis fehlender Statistiken | Die häufigste Ursache für schlechte Leistung ist das Fehlen von Statistiken für Ihre Tabellen. Ausführliche Informationen dazu, wie Sie Statistiken erstellen und warum sie für die Leistung wichtig sind, finden Sie unter [Managing statistics on tables in SQL Data Warehouse][Statistics] (Verwalten von Statistiken für Tabellen in SQL Data Warehouse).|
 | Geringe Parallelität/Abfragen in der Warteschlange | Das Verständnis der [Workloadverwaltung][] ist wichtig, damit Sie wissen, wie Sie die Speicherbelegung und die Parallelität abwägen sollen.|
 | Implementieren von bewährten Methoden | Wenn Sie die Leistung bei Ihren Abfragen verbessern möchten, ist der Artikel [Bewährte Methoden für SQL Data Warehouse][] ein idealer Ausgangspunkt.|
 | Verbessern der Leistung mit der Skalierung | Mitunter besteht der Weg zum Verbessern der Leistung einfach darin, den Abfragen mehr Computeleistung hinzuzufügen, indem Sie Ihr [SQL Data Warehouse skalieren][].|
@@ -52,7 +52,7 @@ In diesem Thema sind einige häufige Fragen zur Problembehandlung aufgeführt, d
 
 | Problem | Lösung |
 | :----------------------------------| :---------------------------------------------- |
-| Msg 40847: Der Vorgang konnte nicht ausgeführt werden, da der Server das zulässige Datenbankdurchsatzeinheit-Kontingent von 45.000 überschreiten würde. | Reduzieren Sie entweder die [DWU][] der Datenbank, die Sie erstellen möchten, oder [fordern Sie eine Erhöhung des Kontingents][] an.|
+| Msg 40847: Der Vorgang konnte nicht ausgeführt werden, da der Server das zulässige Datenbanktransaktionseinheit-Kontingent von 45.000 überschreiten würde. | Reduzieren Sie entweder die [DWU][] der Datenbank, die Sie erstellen möchten, oder [fordern Sie eine Erhöhung des Kontingents][] an.|
 | Untersuchen der Speicherauslastung | Informationen zu den Grundlagen der Speicherauslastung des Systems finden Sie unter [Tabellengrößen][].|
 | Hilfe beim Verwalten von Tabellen | Hilfe zur Verwaltung von Tabellen finden Sie unter [Übersicht über Tabellen][Overview]. Dieser Artikel enthält auch Links zu ausführlicheren Themen, z.B. [Tabellendatentypen][Data types], [Verteilen einer Tabelle][Distribute], [Indizieren einer Tabelle][Index], [Partitionieren einer Tabelle][Partition], [Verwalten von Tabellenstatistiken][Statistics] und [Temporäre Tabellen][Temporary].|
 
@@ -140,4 +140,4 @@ Wenn Sie bisher keine Lösung für Ihr Problem gefunden haben, können Sie folge
 [Twitter]: https://twitter.com/hashtag/SQLDW
 [Videos]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0907_2016-->

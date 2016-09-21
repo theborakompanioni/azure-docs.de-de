@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="06/20/2016"
+   ms.date="09/06/2016"
    ms.author="toddabel"/>
 
 
@@ -49,8 +49,8 @@ Suchen Sie bei Projekten, die mit **Dienstvorlagen** (zustandslos oder zustandsb
 
 Für Projekte, die mit **Actor-Vorlagen** (zustandsbehaftet oder zustandslos) erstellt wurden:
 
-1. Öffnen Sie die Datei **ProjectName.cs**, wobei *ProjectName* der Name Ihres Visual Studio-Projekts ist.  
-2. Suchen Sie den Code `ActorEventSource.Current.ActorMessage(this, "Doing Work");` in der Methode *DoWorkAsync*. Dies ist ein Beispiel für eine benutzerdefinierte ETW-Ablaufverfolgung, die aus dem Anwendungscode geschrieben wird.  
+1. Öffnen Sie die Datei **ProjectName.cs**, wobei *ProjectName* der Name Ihres Visual Studio-Projekts ist.
+2. Suchen Sie den Code `ActorEventSource.Current.ActorMessage(this, "Doing Work");` in der Methode *DoWorkAsync*. Dies ist ein Beispiel für eine benutzerdefinierte ETW-Ablaufverfolgung, die aus dem Anwendungscode geschrieben wird.
 3. Die Datei **ActorEventSource.cs** enthält eine Überladung für die `ActorEventSource.ActorMessage`-Methode, die aus Leistungsgründen für häufige Ereignisse verwendet werden sollte.
 
 Nachdem Sie die benutzerdefinierte ETW-Ablaufverfolgung dem Dienstcode hinzugefügt haben, können Sie die Anwendung erneut erstellen, bereitstellen und ausführen, um die Ereignisse in der Diagnoseereignisanzeige anzuzeigen. Beim Debuggen der Anwendung mit **F5** wird die Diagnoseereignisanzeige automatisch geöffnet.
@@ -60,4 +60,4 @@ Der Ablaufverfolgungscode, den Sie Ihrer Anwendung für die lokale Diagnose hinz
 * [Sammeln von Protokollen mit Azure-Diagnose](service-fabric-diagnostics-how-to-setup-wad.md)
 * [Verwenden von ElasticSearch als Service Fabric-Anwendungsüberwachungsspeicher](service-fabric-diagnostic-how-to-use-elasticsearch.md)
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0907_2016-->

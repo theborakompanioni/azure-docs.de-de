@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="08/24/2016" 
+	ms.date="09/01/2016" 
 	ms.author="rnagpal"/>
 
 # DocumentDB-APIs und -SDKs 
@@ -40,6 +40,11 @@
 ## Versionsinformationen
 
 > [AZURE.IMPORTANT] Beim Abfragen partitionierter Sammlungen erhalten Sie ggf. die Ausnahme „System.NotSupportedException“. Um diesen Fehler zu vermeiden, deaktivieren Sie die auf der Registerkarte „Build“ im Fenster „Eigenschaften“ Ihres Projekts die Option „32-Bit bevorzugen“.
+
+### <a name="1.9.5"/>[1\.9.5](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.9.5)
+
+  - Es wurde ein Problem behoben, dass die folgende Ausnahme vom Typ „Nicht gefunden“ („NotFoundException“) auslöste: Die Lesesitzung für das eingegebene Sitzungstoken ist nicht verfügbar. Diese Ausnahme trat in einigen Fällen bei Abfragen für die Leseregion eines geografisch verteilten Kontos auf.
+  - Es wurde die ResponseStream-Eigenschaft in der ResourceResponse-Klasse verfügbar gemacht, die einen direkten Zugriff auf den zugrunde liegenden Datenstrom aus einer Antwort ermöglicht.
 
 ### <a name="1.9.4"/>[1\.9.4](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.9.4)
 
@@ -169,10 +174,12 @@ Alle Versionen des Azure DocumentDB-SDK für .NET vor Version **1.0.0** werden a
  
 | Version | Herausgabedatum | Deaktivierungstermine 
 | ---	  | ---	         | ---
+| [1\.9.5](#1.9.5) | 01. September 2016 |--- 
 | [1\.9.4](#1.9.4) | 24. August 2016 |--- 
 | [1\.9.3](#1.9.3) | 15. August 2016 |--- 
 | [1\.9.2](#1.9.2) | 23. Juli 2016 |--- 
-| 1.9.1 | Veraltet |--- | 1.9.0 | Veraltet |--- 
+| 1.9.1 | Veraltet |--- 
+| 1.9.0 | Veraltet |--- 
 | [1\.8.0](#1.8.0) | 14. Juni 2016 |--- 
 | [1\.7.1](#1.7.1) | 06. Mai 2016 |--- 
 | [1\.7.0](#1.7.0) | 26. April 2016 |--- 
@@ -200,4 +207,4 @@ Alle Versionen des Azure DocumentDB-SDK für .NET vor Version **1.0.0** werden a
 
 Weitere Informationen zu DocumentDB finden Sie auf der Seite zum Dienst [Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/).
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0907_2016-->

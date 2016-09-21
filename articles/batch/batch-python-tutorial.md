@@ -13,7 +13,7 @@
 	ms.topic="hero-article"
 	ms.tgt_pltfrm="na"
 	ms.workload="big-compute"
-	ms.date="08/17/2016"
+	ms.date="09/08/2016"
 	ms.author="marsma"/>
 
 # Erste Schritte mit dem Azure Batch-Python-Client
@@ -24,8 +24,6 @@
 
 Lernen Sie die Grundlagen von [Azure Batch][azure_batch] und [Batch-Python][py_azure_sdk]-Clients mithilfe einer kleinen in Python erstellten Batch-Anwendung kennen. Wir sehen uns an, wie zwei Beispielskripts den Batch-Dienst nutzen, um eine parallele Workload auf virtuellen Linux-Computern in der Cloud zu verarbeiten, und wie sie mit [Azure Storage](./../storage/storage-introduction.md) in Bezug auf das Bereitstellen und Abrufen von Dateien interagieren. Sie lernen häufig verwendete Batch-Anwendungsworkflows kennen und erhalten ein besseres Verständnis in Bezug auf die Hauptkomponenten von Batch, wie etwa Aufträge, Aufgaben, Pools und Computeknoten.
 
-> [AZURE.NOTE] Die Unterstützung von Linux in Batch befindet sich derzeit in der Vorschauphase. Einige Aspekte des hier beschriebenen Features können sich vor der allgemeinen Verfügbarkeit ändern. [Anwendungspakete](batch-application-packages.md) werden auf Linux-Computeknoten **derzeit nicht unterstützt**.
-
 ![Batch-Lösungsworkflow (einfach)][11]<br/>
 
 ## Voraussetzungen
@@ -34,8 +32,8 @@ In diesem Artikel wird davon ausgegangen, dass Sie über Python-Kenntnisse verf�
 
 ### Konten
 
-- **Azure-Konto:** Wenn Sie nicht bereits über ein Azure-Abonnement verfügen, können Sie ein [kostenloses Azure-Konto erstellen][azure_free_account].
-- **Batch-Konto:** Wenn Sie über ein Azure-Abonnement verfügen, können Sie ein [Azure Batch-Konto erstellen](batch-account-create-portal.md).
+- **Azure-Konto**: Wenn Sie nicht bereits über ein Azure-Abonnement verfügen, können Sie ein [kostenloses Azure-Konto erstellen][azure_free_account].
+- **Batch-Konto**: Wenn Sie über ein Azure-Abonnement verfügen, können Sie ein [Azure Batch-Konto erstellen](batch-account-create-portal.md).
 - **Storage-Konto:** Weitere Informationen finden Sie unter [Informationen zu Azure-Speicherkonten](../storage/storage-create-storage-account.md) im Abschnitt [Erstellen eines Speicherkontos](../storage/storage-create-storage-account.md#create-a-storage-account).
 
 ### Codebeispiel
@@ -60,7 +58,7 @@ Sie können die [azure-batch][pypi_batch]- und [azure-storage][pypi_storage]-Pyt
 
 `pip install azure-batch==0.30.0rc4`<br/> `pip install azure-storage==0.30.0`
 
-> [AZURE.TIP] Unter Umständen müssen Sie Ihren Befehlen das Präfix `sudo` voranstellen, wenn Sie ein nicht privilegiertes Konto verwenden. Beispiel: `sudo pip install -r requirements.txt`. Weitere Informationen zur Installation von Python-Paketen finden Sie unter [Installing Packages][pypi_install] (Installieren von Paketen) auf „readthedocs.io“.
+> [AZURE.TIP] Unter Umständen müssen Sie Ihren Befehlen das Präfix `sudo` voranstellen, wenn Sie ein nicht privilegiertes Konto verwenden. Beispiel: `sudo pip install -r requirements.txt`. Weitere Informationen zur Installation von Python-Paketen finden Sie unter [Installing Packages][pypi_install] \(Installieren von Paketen) auf „readthedocs.io“.
 
 ## Python-Tutorial für Batch – Codebeispiel
 
@@ -111,7 +109,7 @@ Navigieren Sie zur Zeile **python\_tutorial\_client.py**, um mit Schritt 1 zu be
 if __name__ == '__main__':
 ```
 
-## Schritt 1: Erstellen von Storage-Containern
+## Schritt 1: Erstellen von Storage-Containern
 
 ![Container in Azure Storage erstellen][1] <br/>
 
@@ -233,7 +231,7 @@ Bei Shared Access Signatures handelt es sich um Zeichenfolgen, die den sicheren 
 
 > [AZURE.TIP] Sehen Sie sich die zweiteilige Reihe zu Shared Access Signatures an: [Teil 1: Grundlagen zum SAS-Modell](../storage/storage-dotnet-shared-access-signature-part-1.md) und [Teil 2: Erstellen und Verwenden einer SAS mit dem Blob-Dienst](../storage/storage-dotnet-shared-access-signature-part-2.md). Sie erhalten darin weitere Informationen zur Bereitstellung des sicheren Zugriffs auf Daten in Ihrem Storage-Konto.
 
-## Schritt 3: Erstellen eines Batch-Pools
+## Schritt 3: Erstellen eines Batch-Pools
 
 ![Batch-Pool erstellen][3] <br/>
 
@@ -333,13 +331,13 @@ Beachten Sie im obigen Codeausschnitt auch die Verwendung von zwei Umgebungsvari
 
 > [AZURE.TIP] Weitere Informationen zu den Umgebungsvariablen, die auf Computeknoten in einem Batch-Pool verfügbar sind, sowie Informationen zu Arbeitsverzeichnissen von Aufgaben finden Sie unter **Umgebungseinstellungen für Aufgaben** und **Dateien und Verzeichnisse** in der [Übersicht über Azure Batch-Features](batch-api-basics.md).
 
-## Schritt 4: Erstellen eines Batch-Auftrags
+## Schritt 4: Erstellen eines Batch-Auftrags
 
 ![Batch-Auftrag erstellen][4]<br/>
 
 Ein Batch-**Auftrag** ist im Wesentlichen eine Sammlung von Aufgaben, die einem Pool mit Computeknoten zugeordnet sind. Die Aufgaben in einem Auftrag werden auf den Computeknoten des zugeordneten Pools ausgeführt.
 
-Mit einem Auftrag wird nicht nur das Organisieren und Nachverfolgen von Aufgaben in zusammengehörenden Workloads ermöglicht, sondern es können auch bestimmte Beschränkungen festgelegt werden. Beispiele hierfür sind die maximale Laufzeit für den Auftrag (und somit auch seiner Aufgaben) und die Auftragspriorität in Bezug auf andere Aufträge im Batch-Konto. In diesem Beispiel ist die Aufgabe aber nur dem Pool zugeordnet, der in Schritt 3 erstellt wurde. Es werden keine zusätzlichen Eigenschaften konfiguriert.
+Mit einem Auftrag wird nicht nur das Organisieren und Nachverfolgen von Aufgaben in zusammengehörenden Workloads ermöglicht, sondern es können auch bestimmte Beschränkungen festgelegt werden. Beispiele hierfür sind die maximale Laufzeit für den Auftrag (und somit auch seiner Aufgaben) und die Auftragspriorität in Bezug auf andere Aufträge im Batch-Konto. In diesem Beispiel ist die Aufgabe aber nur dem Pool zugeordnet, der in Schritt 3 erstellt wurde. Es werden keine zusätzlichen Eigenschaften konfiguriert.
 
 Alle Batch-Aufträge sind einem bestimmten Pool zugeordnet. Diese Zuordnung gibt an, auf welchen Knoten die Aufgaben des Auftrags ausgeführt werden. Sie geben den Pool mit der Eigenschaft [PoolInformation][py_poolinfo] an (siehe Codeausschnitt weiter unten).
 
@@ -368,13 +366,13 @@ def create_job(batch_service_client, job_id, pool_id):
 
 Nachdem ein Auftrag erstellt wurde, werden Aufgaben zum Durchführen der Arbeitsschritte hinzugefügt.
 
-## Schritt 5: Hinzufügen von Aufgaben zum Auftrag
+## Schritt 5: Hinzufügen von Aufgaben zum Auftrag
 
 ![Aufgaben zu Auftrag hinzufügen][5]<br/> *(1) Die Aufgaben werden dem Auftrag hinzugefügt, (2) die Aufgaben werden für die Ausführung auf Knoten eingeplant, und (3) für die Aufgaben werden die zu verarbeitenden Datendateien heruntergeladen.*
 
 Batch-**Aufgaben** sind die einzelnen Arbeitseinheiten, die auf den Computeknoten ausgeführt werden. Eine Aufgabe verfügt über eine Befehlszeile und führt die Skripts oder ausführbaren Dateien aus, die Sie in der Befehlszeile festlegen.
 
-Zum eigentlichen Ausführen der Arbeitsschritte müssen die Aufgaben einem Auftrag hinzugefügt werden. Jede [CloudTask][py_task]-Aufgabe wird mit einer Befehlszeileneigenschaft und [ResourceFiles][py_resource_file] (wie bei der StartTask-Aufgabe des Pools) konfiguriert, die von der Aufgabe auf den Knoten heruntergeladen werden, bevor die Befehlszeile automatisch ausgeführt wird. Im Beispiel verarbeitet jede Aufgabe nur eine Datei. Daher enthält die ResourceFiles-Sammlung in diesem Fall ein einzelnes Element.
+Zum eigentlichen Ausführen der Arbeitsschritte müssen die Aufgaben einem Auftrag hinzugefügt werden. Jede [CloudTask][py_task]-Aufgabe wird mit einer Befehlszeileneigenschaft und [ResourceFiles][py_resource_file] \(wie bei der StartTask-Aufgabe des Pools) konfiguriert, die von der Aufgabe auf den Knoten heruntergeladen werden, bevor die Befehlszeile automatisch ausgeführt wird. Im Beispiel verarbeitet jede Aufgabe nur eine Datei. Daher enthält die ResourceFiles-Sammlung in diesem Fall ein einzelnes Element.
 
 ```python
 def add_tasks(batch_service_client, job_id, input_files,
@@ -442,13 +440,13 @@ blob_client = azureblob.BlockBlobService(account_name=args.storageaccount,
                                          sas_token=args.sastoken)
 ```
 
-## Schritt 6: Überwachen von Aufgaben
+## Schritt 6: Überwachen von Aufgaben
 
 ![Aufgaben überwachen][6]<br/> *Das Skript (1) überwacht für die Aufgaben den Abschlussstatus, und (2) die Aufgaben laden Ergebnisdaten in Azure Storage hoch.*
 
 Wenn einem Auftrag Aufgaben hinzugefügt werden, werden sie automatisch in die Warteschlange eingereiht und für die Ausführung auf Computeknoten in dem Pool eingeplant, der dem Auftrag zugeordnet ist. Basierend auf den Einstellungen, die Sie angeben, führt Batch das Einreihen, Planen und erneute Ausführen sowie andere Schritte der Aufgabenverwaltung für Sie durch.
 
-Es gibt viele Ansätze für die Überwachung der Aufgabenausführung. Die Funktion `wait_for_tasks_to_complete` in *python\_tutorial\_client.py* bietet ein einfaches Beispiel für das Überwachen von Aufgaben für einen bestimmten Status. In diesem Fall ist dies [completed][py_taskstate] (abgeschlossen).
+Es gibt viele Ansätze für die Überwachung der Aufgabenausführung. Die Funktion `wait_for_tasks_to_complete` in *python\_tutorial\_client.py* bietet ein einfaches Beispiel für das Überwachen von Aufgaben für einen bestimmten Status. In diesem Fall ist dies [completed][py_taskstate] \(abgeschlossen).
 
 ```python
 def wait_for_tasks_to_complete(batch_service_client, job_id, timeout):
@@ -485,7 +483,7 @@ def wait_for_tasks_to_complete(batch_service_client, job_id, timeout):
                        "timeout period of " + str(timeout))
 ```
 
-## Schritt 7: Herunterladen der Aufgabenausgabe
+## Schritt 7: Herunterladen der Aufgabenausgabe
 
 ![Aufgabenausgabe aus Storage herunterladen][7]<br/>
 
@@ -525,7 +523,7 @@ def download_blobs_from_container(block_blob_client,
 
 > [AZURE.NOTE] Der Aufruf von `download_blobs_from_container` in *python\_tutorial\_client.py* gibt an, dass die Dateien in Ihr Stammverzeichnis heruntergeladen werden sollen. Sie können diesen Ausgabespeicherort ändern.
 
-## Schritt 8: Löschen von Containern
+## Schritt 8: Löschen von Containern
 
 Da Ihnen Daten berechnet werden, die sich in Azure Storage befinden, ist Folgendes ratsam: Entfernen Sie alle Blobs, die für Ihre Batch-Aufträge nicht mehr benötigt werden. In *python\_tutorial\_client.py* erfolgt dies mit drei Aufrufen von [BlockBlobService.delete\_container][py_delete_container]\:
 
@@ -537,7 +535,7 @@ blob_client.delete_container(input_container_name)
 blob_client.delete_container(output_container_name)
 ```
 
-## Schritt 9: Löschen des Auftrags und des Pools
+## Schritt 9: Löschen des Auftrags und des Pools
 
 Im letzten Schritt werden Sie aufgefordert, den Auftrag und den Pool zu löschen, die vom Skript *python\_tutorial\_client.py* erstellt wurden. Für die Aufträge und Aufgaben fallen zwar keine Kosten an, *für Computeknoten dagegen schon*. Daher empfehlen wir Ihnen, Knoten nur bei Bedarf zuzuordnen. Sie können das Löschen von nicht verwendeten Pools beispielsweise im Rahmen Ihres Wartungsprozesses durchführen.
 
@@ -660,4 +658,4 @@ Nachdem Sie sich jetzt mit dem grundlegenden Workflow einer Batch-Lösung vertra
 [10]: ./media/batch-python-tutorial/credentials_storage_sm.png "Storage-Anmeldeinformationen im Portal"
 [11]: ./media/batch-python-tutorial/batch_workflow_minimal_sm.png "Batch-Lösungsworkflow (reduziertes Diagramm)"
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0914_2016-->

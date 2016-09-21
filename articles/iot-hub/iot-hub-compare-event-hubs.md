@@ -25,7 +25,7 @@ Allerdings bestehen bei den Diensten viele Unterschiede, die in der folgenden Ta
 | Bereich | IoT Hub | Event Hubs |
 | ---- | ------- | ---------- |
 | Kommunikationsmuster | Ermöglicht D2C- und C2D-Messaging. | Ermöglicht nur Ereigniseingang (meist für D2C-Szenarien). |
-| Unterstützung für Geräteprotokolle | Unterstützt AMQP, AMQP über WebSockets, MQTT und HTTP/1. Darüber hinaus arbeitet IoT Hub mit dem [Azure IoT-Protokollgateway][lnk-azure-protocol-gateway] zusammen, einer anpassbaren Protokollgateway-Implementierung, die benutzerdefinierte Protokolle unterstützt. | Unterstützt AMQP, AMQP über WebSockets und HTTP/1. |
+| Unterstützung für Geräteprotokolle | Unterstützt MQTT, AMQP, AMQP über WebSockets und HTTP/1. Darüber hinaus arbeitet IoT Hub mit dem [Azure IoT-Protokollgateway][lnk-azure-protocol-gateway] zusammen, einer anpassbaren Protokollgateway-Implementierung, die benutzerdefinierte Protokolle unterstützt. | Unterstützt AMQP, AMQP über WebSockets und HTTP/1. |
 | Sicherheit | Ermöglicht Identität pro Gerät und widerrufbare Zugriffssteuerung. Siehe [Abschnitt über Sicherheit im IoT Hub-Entwicklerleitfaden]. | Ermöglicht Event Hub-weite [SAS-Richtlinien][Event Hub - security] mit begrenzter Widerrufsunterstützung über [Richtlinien des Herausgebers][Event Hub publisher policies]. Bei IoT-Lösungen ist es häufig erforderlich, eine benutzerdefinierte Lösung zur Unterstützung von Anmeldeinformationen pro Gerät und Maßnahmen zum Schutz vor Spoofing zu implementieren. |
 | Vorgangsüberwachung | Ermöglicht IoT-Lösungen, einen umfangreichen Satz von Geräte-Identitätsverwaltungs- und -verbindungsereignissen zu abonnieren, z. B. individuelle Authentifizierungsfehler, Drosselung und Ausnahmen bei ungültigen Formaten. Diese Ereignisse ermöglichen Ihnen das rasche Bestimmen von Verbindungsproblemen auf Einzelgerätebene. | Macht nur aggregierte Metriken verfügbar. |
 | Skalieren | Ist für die Unterstützung von Millionen von gleichzeitig verbundenen Geräten optimiert. | Kann eine eingeschränktere Anzahl von gleichzeitigen Verbindungen unterstützen – bis zu 5.000 AMQP-Verbindungen gemäß [Azure Service Bus-Kontingenten][]. Jedoch können Sie mit Event Hubs die Partition für jede gesendete Nachricht angeben. |
@@ -61,4 +61,4 @@ Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 [lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
 [lnk-portal]: iot-hub-manage-through-portal.md
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0907_2016-->

@@ -13,22 +13,22 @@
 	ms.workload="search"
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
-	ms.date="05/17/2016"
+	ms.date="08/29/2016"
 	ms.author="heidist" />
 
 # Management-API: Version 2015-02-28
 
-Azure Search ist ein in Microsoft Azure gehosteter Cloudsuchdienst. Das vorliegende Dokument beschreibt die Version *2015-02-28** der Azure Search-Verwaltungs-REST-API. Sie wurde seitdem durch neuere Versionen ersetzt. Die neuesten Versionen finden Sie unter [Azure Search-Verwaltungs-REST-API 2015-08-19](https://msdn.microsoft.com/library/dn832684.aspx) auf MSDN.
+Azure Search ist ein in Microsoft Azure gehosteter Cloudsuchdienst. Das vorliegende Dokument beschreibt die Version **2015-02-28* der Azure Search-Verwaltungs-REST-API. Sie wurde seitdem durch neuere Versionen ersetzt. Die neuesten Versionen finden Sie unter [Azure Search-Verwaltungs-REST-API 2015-08-19](https://msdn.microsoft.com/library/dn832684.aspx) auf MSDN.
 
 ##Dienstverwaltungsvorgänge
 
 Die Verwaltungs-REST-API des Diensts Azure Search bietet auf die meisten Funktionen des Portals programmgesteuerten Zugriff und ermöglicht Administratoren somit die Automatisierung der folgenden Vorgänge:
 
 - Erstellen oder Löschen eines Azure Search-Diensts
-- Erstellen, neu Generieren oder Abrufen von `api-keys` für die Automatisierung regulärer Änderungen an den Admin-Schlüsseln für die Authentifizierung von Datensuchvorgängen 
+- Erstellen, neu Generieren oder Abrufen von `api-keys` für die Automatisierung regulärer Änderungen an den Admin-Schlüsseln für die Authentifizierung von Datensuchvorgängen
 - Anpassen der Skalierung eines Azure Search-Diensts in Reaktion auf Änderungen am Abfragevolumen oder den Speicheranforderungen
 
-Für die vollständige programmgesteuerte Verwaltung des Diensts benötigen Sie zwei APIs: die Verwaltungs-REST-API von Azure Search sowie die allgemeine [Azure-Ressourcen-Manager-REST-API](https://msdn.microsoft.com/library/azure/dn790568.aspx). Über die Ressourcen-Manager-API werden allgemeine, dienstunspezifische Operationen wie die Abfrage von Abonnementdaten, die Auflistung geografischer Standorte und dergleichen mehr ausgeführt. Wenn Sie innerhalb Ihres Abonnements Azure Search-Dienste erstellen und verwalten möchten, muss Ihre HTTP-Anforderung den Ressourcen-Manager-Endpunkt, die Abonnement-ID, den Anbieter (in diesem Fall Azure Search) und die Azure Search-spezifische Operation enthalten.
+Für die vollständige programmgesteuerte Verwaltung des Diensts benötigen Sie zwei APIs: die Verwaltungs-REST-API von Azure Search sowie die allgemeine [Azure-Ressourcen-Manager-REST-API](https://msdn.microsoft.com/library/azure/dn790568.aspx). Über die Resource Manager-API werden allgemeine, dienstunspezifische Operationen wie die Abfrage von Abonnementdaten, die Auflistung geografischer Standorte und dergleichen mehr ausgeführt. Wenn Sie innerhalb Ihres Abonnements Azure Search-Dienste erstellen und verwalten möchten, muss Ihre HTTP-Anforderung den Resource Manager-Endpunkt, die Abonnement-ID, den Anbieter (in diesem Fall Azure Search) und die Azure Search-spezifische Operation enthalten.
 
 In [Erste Schritte mit der Azure Search Verwaltungs-REST-API](http://go.microsoft.com/fwlink/p/?linkID=516968) finden Sie exemplarische Vorgehensweisen, welche die Aufgaben der Anwendungskonfiguration und Dienstverwaltung anhand von Beispielcode darstellen. Die Beispielanwendung gibt Anforderungen an die Azure-Ressourcen-Manager-API und die Dienstverwaltungs-API von Azure Search aus und ist somit ein gutes Beispiel für eine zusammenhängende Anwendung, die auf beide APIs zugreift.
 
@@ -129,7 +129,7 @@ Die Operation **Suchdienst erstellen** stellt einen neuen Suchdienst mit den ang
 
 `resourceGroupName`: Erforderlich. Der Name der Ressourcengruppe innerhalb des Abonnements des Benutzers. Dieser Wert kann über die Azure-Ressourcen-Manager-API oder das Portal abgerufen werden.
 
-`serviceName`: Erforderlich. Der Name des Suchdiensts innerhalb der angegebenen Ressourcengruppe. Dienstnamen müssen zwischen 2 und 15 Zeichen lang sein und dürfen nur Kleinbuchstaben, Ziffern oder Bindestriche enthalten. Keine Bindestriche dürfen sie an den ersten beiden und der letzten Stelle enthalten und es dürfen auch nicht mehrere Bindestriche direkt aufeinander folgen. Da alle Namen letztendlich <name>.search.windows.net-Namen werden, müssen Dienstnamen eindeutig sein. Kein Dienstname innerhalb oder über Abonnements und Ressourcengruppen hinweg darf mehrmals vorkommen. Nach der Erstellung kann der Dienstname nicht mehr geändert werden.
+`serviceName`: Erforderlich. Der Name des Suchdiensts innerhalb der angegebenen Ressourcengruppe. Dienstnamen müssen zwischen 2 und 15 Zeichen lang sein und dürfen nur Kleinbuchstaben, Ziffern oder Bindestriche enthalten. Keine Bindestriche dürfen sie an den ersten beiden und der letzten Stelle enthalten und es dürfen auch nicht mehrere Bindestriche direkt aufeinander folgen. Da alle Namen letztendlich <Name>.search.windows.net-Namen werden, müssen Dienstnamen eindeutig sein. Kein Dienstname innerhalb oder über Abonnements und Ressourcengruppen hinweg darf mehrmals vorkommen. Nach der Erstellung kann der Dienstname nicht mehr geändert werden.
 
 `api-version`: Erforderlich. Gibt die für diese Anforderung verwendete Protokollversion an. Die aktuelle Version ist `2015-02-28`.
 
@@ -211,7 +211,7 @@ Bei HTTP 200 und 201 enthält der Antworttext die Dienstdefinition.
 
 - `free`: Freigegebener Cluster
 - `standard`: Dedizierter Cluster
-- `standard2`: Nur auf Anweisung von Microsoft Support verwenden 
+- `standard2`: Nur auf Anweisung von Microsoft Support verwenden
 
 `replicaCount`: Gibt die Anzahl der Replikate des Diensts an. Gültige Werte sind 1 bis 6.
 
@@ -224,7 +224,7 @@ Bei HTTP 200 und 201 enthält der Antworttext die Dienstdefinition.
 - `deleting`: Der Suchdienst wird gelöscht.
 - `degraded`: Der Suchdienst wurde heruntergestuft. Dies kann geschehen, wenn im Cluster ein Fehler auftritt, der die ordnungsgemäße Funktion des Diensts verhindern kann.
 - `disabled`: Die Suche wurde deaktiviert. Mit diesem Status lehnt der Dienst alle API-Anforderungen ab.
-- `error`: Der Suchdienst hat den Status "error". 
+- `error`: Der Suchdienst hat den Status "error".
 
 **Hinweis**: Wenn der Dienst den Status `degraded`, `disabled` oder `error` hat, untersucht das Azure Search-Team bereits das zugrundeliegende Problem. Dedizierte Dienste mit diesen Status sind weiterhin auf Basis der Anzahl der bereitgestellten Sucheinheiten fakturierbar.
 
@@ -234,7 +234,7 @@ Bei HTTP 200 und 201 enthält der Antworttext die Dienstdefinition.
 
 - `succeeded`: Die Bereitstellung war erfolgreich.
 - `provisioning`: Der Dienst wird gerade bereitgestellt.
-- `failed`: Bei der Dienstbereitstellung sind Fehler aufgetreten. 
+- `failed`: Bei der Dienstbereitstellung sind Fehler aufgetreten.
 
 Die Bereitstellung ist ein vorübergehender Zustand während der Einrichtung der Dienstkapazität. Nach deren Einrichtung wechselt `provisioningState` zu "succeeded" (erfolgreich) oder "failed" (Fehler). Um festzustellen, wann eine Operation abgeschlossen ist, können Clientanwendungen den Bereitstellungsstatus mit der Operation **Suchdienst abrufen** abrufen (empfohlenes Abrufintervall: 30 Sekunden bis 1 Minute). Bei Verwendung des kostenlosen Diensts wird der Status in der Regel direkt im Aufruf zur Diensterstellung als "succeeded" zurückgemeldet. Grund hierfür ist, dass der kostenlose Dienst bereits eingerichtete Kapazitäten verwendet.
 
@@ -327,7 +327,7 @@ HTTP 200 (OK), wenn erfolgreich.
 - `deleting`: Der Suchdienst wird gelöscht.
 - `degraded`: Der Suchdienst wurde heruntergestuft. Dies kann geschehen, wenn im Cluster ein Fehler auftritt, der die ordnungsgemäße Funktion des Diensts verhindern kann.
 - `disabled`: Die Suche wurde deaktiviert. Mit diesem Status lehnt der Dienst alle API-Anforderungen ab.
-- `error`: Der Suchdienst hat den Status "error". 
+- `error`: Der Suchdienst hat den Status "error".
  
 **Hinweis**: Wenn der Dienst den Status `degraded`, `disabled` oder `error` hat, untersucht das Azure Search-Team bereits das zugrundeliegende Problem. Dedizierte Dienste mit diesen Status sind weiterhin auf Basis der Anzahl der bereitgestellten Sucheinheiten fakturierbar.
  
@@ -361,7 +361,7 @@ Die Operation **Suchdienste auflisten** gibt eine Liste mit allen Suchdiensten i
 
 ####Anforderungstext
 
-Keiner.
+Keine
 
 ####Antwort
 
@@ -452,7 +452,7 @@ Die Operation **Suchdienst löschen** löscht den Suchdienst mitsamt seiner Date
 
 ###Anforderungstext###
 
-Keiner.
+Keine
 
 ###Antwort###
 
@@ -466,7 +466,7 @@ Mit **Suchdienst-API abrufen** können Sie den Status des Löschvorgangs abrufen
 
 ###Antworttext###
 
-Keiner.
+Keine
 
 <a name="UpdateService"></a>
 ### Suchdienst aktualisieren ##
@@ -590,7 +590,7 @@ Admin-Schlüssel werden mit dem Dienst erstellt. Es gibt immer zwei Schlüssel, 
 
 ###Anforderungstext###
 
-Keiner.
+Keine
 
 ###Antwort###
 
@@ -642,7 +642,7 @@ Die Operation **Admin-Schlüssel neu generieren** löscht den primären oder sek
 
 ###Anforderungstext###
 
-Keiner.
+Keine
 
 ###Antwort###
 
@@ -696,7 +696,7 @@ Die Operation **Abfrageschlüssel erstellen** generiert einen neuen Abfrageschl�
 
 ###Anforderungstext###
 
-Keiner.
+Keine
 
 ###Antwort###
 
@@ -748,7 +748,7 @@ Die Operation **Abfrageschlüssel auflisten** gibt die Abfrageschlüssel für de
 
 ###Anforderungstext###
 
-Keiner.
+Keine
 
 ###Antwort###
 
@@ -812,7 +812,7 @@ Im Gegensatz zu Admin-Schlüsseln werden Abfrageschlüssel nicht neu generiert. 
 
 ###Anforderungstext###
 
-Keiner.
+Keine
 
 ###Antwort###
 
@@ -826,6 +826,6 @@ Bei erfolgreicher Ausführung lautet der Statuscode HTTP 200 (OK).
 
 ###Antworttext###
 
-Keiner.
+Keine
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0907_2016-->

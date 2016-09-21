@@ -18,7 +18,11 @@
 
 # Hinzufügen von Benutzern aus anderen Verzeichnissen oder Partnerunternehmen zu Azure Active Directory
 
-In diesem Artikel wird beschrieben, wie Sie Benutzer von anderen Verzeichnissen in Azure Active Directory sowie Benutzer von Partnerunternehmen hinzufügen. Informationen dazu, wie Sie neue Benutzer in Ihrer Organisation sowie Benutzer mit Microsoft-Konten hinzufügen finden Sie unter [Hinzufügen neuer Benutzer zu Azure Active Directory](active-directory-create-users.md). Hinzugefügte Benutzer verfügen nicht standardmäßig über Administratorberechtigungen, aber Sie können ihnen jederzeit Rollen zuweisen.
+> [AZURE.SELECTOR]
+- [Azure-Portal](active-directory-create-users-external-azure-portal.md)
+- [Klassisches Azure-Portal](active-directory-create-users-external.md)
+
+In diesem Artikel wird beschrieben, wie Sie Benutzer von anderen Verzeichnissen in Azure Active Directory sowie Benutzer von Partnerunternehmen hinzufügen. Informationen dazu, wie Sie neue Benutzer in Ihrer Organisation sowie Benutzer mit Microsoft-Konten hinzufügen, finden Sie unter [Hinzufügen neuer Benutzer zu Azure Active Directory](active-directory-create-users.md). Hinzugefügte Benutzer verfügen nicht standardmäßig über Administratorberechtigungen, aber Sie können ihnen jederzeit Rollen zuweisen.
 
 ## Hinzufügen eines Benutzers
 
@@ -26,11 +30,11 @@ In diesem Artikel wird beschrieben, wie Sie Benutzer von anderen Verzeichnissen 
 
 2. Wählen Sie **Active Directory**, und öffnen Sie Ihr Verzeichnis.
 
-3. Wählen Sie die Registerkarte **Benutzer** und anschließend in der Befehlsleiste die Option **Benutzer hinzufügen**.
+3. Wählen Sie die Registerkarte **Benutzer** und anschließend auf der Befehlsleiste die Option **Benutzer hinzufügen**.
 
 4. Wählen Sie auf der Seite **Informationen über diesen Benutzer** unter **Art des Benutzers** eine der folgenden Optionen aus:
 
-	- **Benutzer in einem anderen Azure AD-Verzeichnis**: Dient zum Hinzufügen eines Benutzerkontos zu Ihrem Verzeichnis, das aus einem anderen Azure AD-Verzeichnis stammt. Sie können einen Benutzer nur dann in einem anderen Verzeichnis auswählen, wenn Sie auch ein Mitglied dieses Verzeichnisses sind.
+	- **Benutzer in einem anderen Azure AD-Verzeichnis**: Dient zum Hinzufügen eines Benutzerkontos zu Ihrem Verzeichnis, das aus einem anderen Azure AD-Verzeichnis erstellt wurde. Sie können einen Benutzer nur dann in einem anderen Verzeichnis auswählen, wenn Sie auch ein Mitglied dieses Verzeichnisses sind.
 	- **Benutzer in Partnerunternehmen**: Dient zum Einladen und Autorisieren eines Partnerunternehmens für Ihr Verzeichnis (siehe [Azure Active Directory B2B-Zusammenarbeit](active-directory-b2b-what-is-azure-ad-b2b.md)). Sie müssen dabei [eine CSV-Datei hochladen und die E-Mail-Adressen angeben](active-directory-b2b-references-csv-file-format.md).
 
 6. Geben Sie auf der Seite **Profil** des Benutzers den Vornamen und Nachnamen, einen benutzerfreundlichen Namen und über die Liste **Rollen** eine Benutzerrolle an. Weitere Informationen zu Benutzer- und Administratorrollen finden Sie unter [Zuweisen von Administratorrollen in Azure AD](active-directory-assign-admin-roles.md). Geben Sie an, ob Sie für den Benutzer die **Multi-Factor Authentication aktivieren** möchten.
@@ -48,7 +52,7 @@ Wenn Sie Informationen für einen Benutzer ändern, dessen Identität mit Ihrem 
 
 Sie können auch Benutzer aus einem anderen Azure AD-Verzeichnis hinzufügen, dem Sie angehören, oder von Partnerunternehmen, indem Sie eine CSV-Datei hochladen. Zum Hinzufügen eines externen Benutzers geben Sie unter **Art des Benutzers** die Option **Benutzer in einem anderen Microsoft Azure AD-Verzeichnis** oder **Benutzer in Partnerunternehmen** an.
 
-Benutzer dieser Typen stammen aus einem anderen Verzeichnis und werden als **externe Benutzer** hinzugefügt. Externe Benutzer können mit anderen Benutzern in einem Verzeichnis zusammenarbeiten, ohne dass die Anforderung besteht, neue Konten und Anmeldeinformationen hinzuzufügen. Externe Benutzer werden über ihr Basisverzeichnis authentifiziert, wenn sie sich anmelden. Diese Authentifizierung funktioniert auch für alle anderen Verzeichnisse, denen sie hinzugefügt wurden.
+Diese Benutzertypen werden aus einem anderen Verzeichnis erstellt und als **externe Benutzer** hinzugefügt. Externe Benutzer können mit anderen Benutzern in einem Verzeichnis zusammenarbeiten, ohne dass die Anforderung besteht, neue Konten und Anmeldeinformationen hinzuzufügen. Externe Benutzer werden über ihr Basisverzeichnis authentifiziert, wenn sie sich anmelden. Diese Authentifizierung funktioniert auch für alle anderen Verzeichnisse, denen sie hinzugefügt wurden.
 
 ## Verwaltung externer Benutzer und Einschränkungen
 
@@ -63,10 +67,10 @@ Wenn ein Benutzer in seinem Basisverzeichnis gelöscht wird oder sein Microsoft-
 
 ### Dienste, die den Zugriff durch externe Azure AD-Benutzer derzeit unterstützen:
 
-- **Klassisches Azure-Portal**: Ermöglicht einem externen Benutzer, der Administrator mehrerer Verzeichnisse ist, das Verwalten dieser Verzeichnisse.
-- **SharePoint Online**: Ermöglicht einem externen Benutzer den Zugriff auf autorisierte Ressourcen von SharePoint Online, wenn die externe Freigabe aktiviert ist.
-- **Dynamics CRM**: Ermöglicht einem externen Benutzer den Zugriff auf autorisierte Ressourcen in Dynamics CRM, wenn der Benutzer per PowerShell lizenziert ist.
-- **Dynamics AX**: Ermöglicht einem externen Benutzer den Zugriff auf autorisierte Ressourcen in Dynamics AX, wenn der Benutzer per PowerShell lizenziert ist. Die Einschränkungen für [externe Azure AD-Benutzer](#known-limitations-of-azure-ad-external-users) und [Gastbenutzer](#guest-user-management-and-limitations) gelten auch für externe Benutzer in Dynamics AX.
+- **Klassisches Azure-Portal:** Ermöglicht einem externen Benutzer, der Administrator mehrerer Verzeichnisse ist, das Verwalten dieser Verzeichnisse.
+- **SharePoint Online:** Ermöglicht einem externen Benutzer den Zugriff auf autorisierte Ressourcen von SharePoint Online, wenn die externe Freigabe aktiviert ist.
+- **Dynamics CRM:** Ermöglicht einem externen Benutzer den Zugriff auf autorisierte Ressourcen in Dynamics CRM, wenn der Benutzer per PowerShell lizenziert ist.
+- **Dynamics AX:** Ermöglicht einem externen Benutzer den Zugriff auf autorisierte Ressourcen in Dynamics AX, wenn der Benutzer per PowerShell lizenziert ist. Die Einschränkungen für [externe Azure AD-Benutzer](#known-limitations-of-azure-ad-external-users) und [Gastbenutzer](#guest-user-management-and-limitations) gelten auch für externe Benutzer in Dynamics AX.
 
 ### Bekannte Einschränkungen für externe Azure AD-Benutzer
 
@@ -84,4 +88,4 @@ Wenn ein Benutzer in seinem Basisverzeichnis gelöscht wird oder sein Microsoft-
 - [Verwalten von Kennwörtern in Azure AD](active-directory-manage-passwords.md)
 - [Verwalten von Gruppen in Azure AD](active-directory-manage-groups.md)
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0914_2016-->

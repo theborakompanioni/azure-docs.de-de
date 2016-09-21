@@ -18,7 +18,7 @@
 
 # Verwenden von IoT Hub-Sicherheitstoken und X.509-Zertifikaten
 
-IoT Hub verwendet Sicherheitstoken zum Authentifizieren von Geräten und Diensten, um das Senden von Schlüsseln über das Netzwerk zu vermeiden. Darüber hinaus sind Sicherheitstoken im Hinblick auf Gültigkeitszeitraum und Bereich beschränkt. [Azure IoT Hub SDKs][lnk-apis-sdks] generieren Token automatisch, ohne dass eine spezielle Konfiguration erforderlich ist. In einigen Szenarien muss der Benutzer Sicherheitstoken jedoch direkt generieren und verwenden. Dazu gehören die direkte Verwendung von AMQP-, MQTT- oder HTTP-Oberflächen oder die Implementierung des Tokendienstmusters, wie in der [IoT Hub-Anleitung][lnk-guidance-security] erläutert.
+IoT Hub verwendet Sicherheitstoken zum Authentifizieren von Geräten und Diensten, um das Senden von Schlüsseln über das Netzwerk zu vermeiden. Darüber hinaus sind Sicherheitstoken im Hinblick auf Gültigkeitszeitraum und Bereich beschränkt. [Azure IoT Hub SDKs][lnk-apis-sdks] generieren Token automatisch, ohne dass eine spezielle Konfiguration erforderlich ist. In einigen Szenarien muss der Benutzer Sicherheitstoken jedoch direkt generieren und verwenden. Dazu gehören die direkte Verwendung von MQTT-, AMQP- oder HTTP-Oberflächen oder die Implementierung des Tokendienstmusters, wie in der [IoT Hub-Anleitung][lnk-guidance-security] erläutert.
 
 IoT Hub ermöglicht Geräten darüber hinaus die Authentifizierung bei IoT Hub mithilfe von X.509-Zertifikaten. IoT Hub unterstützt die X.509-basierte Authentifizierung für Geräte über die Protokolle AMQP, AMQP über WebSockets und HTTP.
 
@@ -265,4 +265,4 @@ var deviceClient = DeviceClient.Create("<IotHub DNS HostName>", authMethod);
 [lnk-service-sdk]: https://github.com/Azure/azure-iot-sdks/tree/master/csharp/service
 [lnk-client-sdk]: https://github.com/Azure/azure-iot-sdks/tree/master/csharp/device
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0907_2016-->

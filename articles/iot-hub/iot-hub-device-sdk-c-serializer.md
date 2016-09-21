@@ -13,7 +13,7 @@
      ms.topic="article"
      ms.tgt_pltfrm="na"
      ms.workload="na"
-     ms.date="05/17/2016"
+     ms.date="09/06/2016"
      ms.author="obloch"/>
 
 # Microsoft Azure IoT-Geräte-SDK für C – weitere Informationen zum Serialisierungsprogramm
@@ -22,7 +22,7 @@ Im [ersten Artikel](iot-hub-device-sdk-c-intro.md) dieser Serie wurde das **Azur
 
 Im Einführungsartikel wurde die Verwendung der Bibliothek des **Serialisierungsprogramms** zum Senden von Ereignissen an und zum Empfangen von Nachrichten von IoT Hub beschrieben. In diesem Artikel wird genauer erläutert, wie Sie Ihre Daten mit der Makrosprache des **Serialisierungsprogramms** modellieren. Im Artikel wird ebenfalls im Detail beschrieben, wie die Serialisierung von Nachrichten durch die Bibliothek funktioniert (und wie Sie das Serialisierungsverhalten in einigen Fällen steuern können). Darüber hinaus werden einige Parameter beschrieben, die Sie ändern können und die die Größe der von Ihnen erstellten Modelle bestimmen.
 
-Zum Abschluss werden einige in vorherigen Artikeln bereits erläuterte Themen erneut aufgegriffen, wie z. B. die Behandlung von Nachrichten und Eigenschaften. Sie werden feststellen, dass diese Features bei Verwendung der Bibliothek des **Serialisierungsprogramms** genauso funktionieren wie mit der **IoTHubClient**-Bibliothek.
+Zum Abschluss werden einige in vorherigen Artikeln bereits erläuterte Themen erneut aufgegriffen, z.B. die Behandlung von Nachrichten und Eigenschaften. Sie werden feststellen, dass diese Features bei Verwendung der Bibliothek des **Serialisierungsprogramms** genauso funktionieren wie mit der **IoTHubClient**-Bibliothek.
 
 Sämtliche in diesem Artikel beschriebenen Elemente basieren auf den Beispielen für das SDK des **Serialisierungsprogramms**. Wenn Sie die Beschreibungen in diesem Artikel nachvollziehen möchten, sehen Sie sich die Anwendungen **simplesample\_amqp** und **simplesample\_http** an, die im Azure IoT-Geräte-SDK für C enthalten sind.
 
@@ -616,7 +616,7 @@ Wie bereits in einem [vorherigen Artikel](iot-hub-device-sdk-c-iothubclient.md) 
 
 Diese APIs werden in **simplesample\_amqp** gezeigt.
 
-Es gibt auch eine analoge Gruppe von Low-Level-APIs:
+Es gibt auch eine analoge Gruppe von Low-Level-APIs.
 
 -   IoTHubClient\_LL\_CreateFromConnectionString
 
@@ -685,4 +685,4 @@ Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 [lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
 [lnk-portal]: iot-hub-manage-through-portal.md
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0907_2016-->

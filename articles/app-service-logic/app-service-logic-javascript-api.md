@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration"
-   ms.date="05/31/2016"
+   ms.date="09/01/2016"
    ms.author="stepsic"/>
 
 # JavaScript-API-App
@@ -89,7 +89,7 @@ return Attachments.map(function(obj){var a = obj.Content; a.FileName = obj.Name;
 
 Die Aktion gibt das JSON-Objekt zurück, das Sie von Ihrer Funktion zurückgegeben haben. So können Sie in der Yammer-API-App auf `@body('javascriptapi')` für die **Attachments**-Eigenschaft verweisen.
 
-## Mehr mit Ihrem Connector machen
+## Optimale Nutzung Ihres Connectors
 Nachdem der Connector nun erstellt ist, können Sie ihn mit einer Logik-App in einem Geschäftsworkflow hinzufügen. Informationen finden Sie unter [Was sind Logik-Apps?](app-service-logic-what-are-logic-apps.md).
 
  
@@ -99,4 +99,4 @@ Nachdem der Connector nun erstellt ist, können Sie ihn mit einer Logik-App in e
 <!--Links -->
 [Creating a Logic app]: app-service-logic-create-a-logic-app.md
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0907_2016-->

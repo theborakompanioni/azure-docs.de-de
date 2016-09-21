@@ -32,9 +32,9 @@ Mit den PowerShell-APIs für **Aufträge für die elastische Datenbank** (Vorsch
 
 ### Auswählen des Azure-Abonnements
 
-Zur Auswahl des Abonnements benötigen Sie Ihre Abonnement-ID (**-SubscriptionId**) oder den Abonnementnamen (**-SubscriptionName**). Falls Sie über mehrere Abonnements verfügen, können Sie sie über das Cmdlet **Get-AzureSubscription** abrufen und die gewünschten Abonnementinformationen aus dem Resultset kopieren. Nachdem Sie Ihre Abonnementinformationen ermittelt haben, führen Sie das folgende Cmdlet aus, um das betreffende Abonnement als Standard festzulegen, insbesondere als Ziel für das Erstellen und Verwalten von Aufträgen:
+Zur Auswahl des Abonnements benötigen Sie Ihre Abonnement-ID (**- SubscriptionId**) oder den Abonnementnamen (**- SubscriptionName**). Wenn Sie über mehrere Abonnements verfügen, können Sie das **Get-AzureRmSubscription**-Cmdlet ausführen und die gewünschten Abonnementinformationen aus dem Resultset kopieren. Sobald Sie über Ihre Abonnementinformationen verfügen, führen Sie das folgende Cmdlet aus, um dieses Abonnement als Standard festzulegen, nämlich als Ziel für das Erstellen und Verwalten von Aufträgen:
 
-	Select-AzureSubscription -SubscriptionId {SubscriptionID}
+	Select-AzureRmSubscription -SubscriptionId {SubscriptionID}
 
 Die [PowerShell-ISE](https://technet.microsoft.com/library/dd315244.aspx) wird zum Entwickeln und Ausführen von PowerShell-Skripts für die Ausführung in Aufträgen für die elastische Datenbank empfohlen.
 
@@ -166,7 +166,7 @@ In der folgenden Tabelle sind alle Objekttypen von **Aufträgen für die elastis
   </tr>
 
 <tr>
-    <td>Zeitplan</td>
+    <td>Schedule</td>
     <td>
 	<p>Zeitbasierte Festlegung der Ausführung, die entweder in einem sich wiederholenden Intervall oder einmalig erfolgen soll.</p>
 	</td>
@@ -680,4 +680,4 @@ Nach der Erstellung eines DACPACs in Aufträge für die elastische Datenbank kan
 [2]: ./media/sql-database-elastic-jobs-powershell/portal.png
 <!--anchors-->
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0907_2016-->

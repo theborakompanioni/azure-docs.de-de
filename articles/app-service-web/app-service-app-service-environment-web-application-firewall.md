@@ -28,6 +28,8 @@ Für dieses Dokument konfigurieren wir unsere App Service-Umgebung hinter mehrer
 
 ![Architektur][Architecture]
 
+> Hinweis: Mit der Einführung der [ILB-Unterstützung für die App Service-Umgebung](app-service-environment-with-internal-load-balancer.md) können Sie die ASE so konfigurieren, dass darauf von der DMZ nicht zugegriffen werden kann und sie nur im privaten Netzwerk zur Verfügung steht.
+
 ## Konfigurieren der App Service-Umgebung ##
 Informationen zum Konfigurieren einer App Service-Umgebung finden Sie in [unserer Dokumentation](app-service-web-how-to-create-an-app-service-environment.md) zu diesem Thema. Sobald Sie ein App Service-Umgebung eingerichtet haben, können Sie in dieser Umgebung [Web Apps](app-service-web-overview.md), [API-Apps](../app-service-api/app-service-api-apps-why-best-platform.md) und [mobile Apps](../app-service-mobile/app-service-mobile-value-prop.md) erstellen, die alle hinter der WAF geschützt werden, die wir im nächsten Abschnitt konfigurieren.
 
@@ -99,4 +101,4 @@ Ersetzen Sie "SourceAddressPrefix" durch die virtuelle IP-Adresse (VIP) des Clou
 [ConfigureTrafficManager]: ./media/app-service-app-service-environment-web-application-firewall/ConfigureTrafficManager.png
 [WebsiteTranslations]: ./media/app-service-app-service-environment-web-application-firewall/WebsiteTranslations.png
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0907_2016-->

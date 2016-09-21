@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Zulassen des externen Zugriffs auf eine VM mithilfe von PowerShell | Microsoft Azure"
-   description="Erfahren Sie, wie Sie einen Port öffnen oder Endpunkt erstellen, der mit dem Resource Manager-Bereitstellungsmodell und Azure PowerShell den Zugriff auf Ihren virtuellen Windows-Computer ermöglicht."
+   pageTitle="Öffnen von Ports für einen virtuellen Computer mithilfe von PowerShell | Microsoft Azure"
+   description="Erfahren Sie, wie Sie mit dem Azure Resource Manager-Bereitstellungsmodell und Azure PowerShell für Ihren virtuellen Windows-Computer einen Port öffnen oder einen Endpunkt erstellen."
    services="virtual-machines-windows"
    documentationCenter=""
    authors="iainfoulds"
@@ -16,7 +16,7 @@
    ms.date="08/08/2016"
    ms.author="iainfou"/>
 
-# Zulassen des externen Zugriffs auf eine VM mithilfe von PowerShell
+# Öffnen von Ports für einen virtuellen Computer in Azure mithilfe von PowerShell
 [AZURE.INCLUDE [virtual-machines-common-nsg-quickstart](../../includes/virtual-machines-common-nsg-quickstart.md)]
 
 ## Schnellbefehle
@@ -63,13 +63,13 @@ Mit diesen Schnellbefehlen können Sie den Datenverkehr zu Ihrem virtuellen Comp
 
 Sie können Netzwerksicherheitsgruppen und ACL-Regeln auch als Teil von Azure Resource Manager-Vorlagen definieren. Erfahren Sie mehr über [das Erstellen von Netzwerksicherheitsgruppen mit Vorlagen](../virtual-network/virtual-networks-create-nsg-arm-template.md).
 
-Wenn eine Portweiterleitung notwendig ist, um einem internen Port des virtuellen Computers einen eindeutigen externen Port zuzuweisen, müssen ein Lastenausgleich sowie NAT-Regeln (Network Address Translation, Netzwerkadressübersetzung) verwendet werden. Sie können beispielsweise TCP-Port 8080 extern verfügbar machen und den Datenverkehr an TCP-Port 80 auf einem virtuellen Computer weiterleiten. Hier finden Sie weitere Informationen zum [Erstellen eines Load Balancers mit Internetzugriff](../load-balancer/load-balancer-get-started-internet-arm-ps.md).
+Wenn eine Portweiterleitung notwendig ist, um einem internen Port des virtuellen Computers einen eindeutigen externen Port zuzuweisen, verwenden Sie einen Lastenausgleich sowie NAT-Regeln (Network Address Translation, Netzwerkadressübersetzung). Sie können beispielsweise TCP-Port 8080 extern verfügbar machen und den Datenverkehr an TCP-Port 80 auf einem virtuellen Computer weiterleiten. Hier finden Sie weitere Informationen zum [Erstellen eines Load Balancers mit Internetzugriff](../load-balancer/load-balancer-get-started-internet-arm-ps.md).
 
 ## Nächste Schritte
 In diesem Beispiel haben Sie eine einfache Regel erstellt, die HTTP-Datenverkehr zulässt. Informationen zum Erstellen von detaillierteren Umgebungen finden Sie in den folgenden Artikeln:
 
 - [Übersicht über den Azure-Ressourcen-Manager](../resource-group-overview.md)
 - [Was ist eine Netzwerksicherheitsgruppe (NSG)?](../virtual-network/virtual-networks-nsg.md)
-- [Übersicht über den Azure Resource Manager für Load Balancer](../load-balancer/load-balancer-arm.md)
+- [Übersicht über Azure Resource Manager für Load Balancer](../load-balancer/load-balancer-arm.md)
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0907_2016-->

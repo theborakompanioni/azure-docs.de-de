@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="andkjell"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -58,8 +58,10 @@ Wählen Sie **Ja**, um eine Kopie der Regel zu erstellen. Die geklonte Regel wir
 Nehmen Sie an dieser geklonten Regel die erforderlichen Änderungen für Bereich, Verknüpfung und Transformationen vor.
 
 ## Nächste Schritte
-Weitere Informationen zur Konfiguration der [Azure AD Connect-Synchronisierung](active-directory-aadconnectsync-whatis.md).
 
-Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md).
+**Übersichtsthemen**
 
-<!---HONumber=AcomDC_0824_2016-->
+- [Azure AD Connect-Synchronisierung: Grundlagen und Anpassung der Synchronisierung](active-directory-aadconnectsync-whatis.md)
+- [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md)
+
+<!---HONumber=AcomDC_0907_2016-->

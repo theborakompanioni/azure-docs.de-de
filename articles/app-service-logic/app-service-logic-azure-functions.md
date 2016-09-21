@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration"
-   ms.date="05/14/2016"
+   ms.date="09/01/2016"
    ms.author="jehollan"/>
 
 # Verwenden von Azure Functions mit Logik-Apps
@@ -70,4 +70,4 @@ Der Designer generiert dann eine Funktionsvorlage, die Sie inline erstellen kön
 [1]: ./media/app-service-logic-azure-functions/callFunction.png
 [2]: ./media/app-service-logic-azure-functions/createFunction.png
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0907_2016-->

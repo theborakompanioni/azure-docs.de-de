@@ -3,7 +3,7 @@
    description="Erfahren Sie, wie Sie PolyBase verwenden, um Daten aus Azure Blob Storage in SQL Data Warehouse zu laden. Laden Sie einige Tabellen aus öffentlichen Daten in das Contoso Retail-Data Warehouse-Schema."
    services="sql-data-warehouse"
    documentationCenter="NA"
-   authors="jrowlandjones"
+   authors="ckarst"
    manager="barbkess"
    editor=""/>
 
@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
    ms.date="08/25/2016"
-   ms.author="jrj;barbkess;sonyama"/>
+   ms.author="cakarst;barbkess;sonyama"/>
 
 
 # Laden von Daten aus Azure Blob Storage in SQL Data Warehouse (PolyBase)
@@ -390,4 +390,4 @@ Verwenden Sie das Skript unter [Entwurfsentscheidungen und Programmiertechniken 
 [Microsoft Download Center]: http://www.microsoft.com/download/details.aspx?id=36433
 [Laden des kompletten Contoso Retail-Data Warehouse]: https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/contoso-data-warehouse/readme.md
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0907_2016-->

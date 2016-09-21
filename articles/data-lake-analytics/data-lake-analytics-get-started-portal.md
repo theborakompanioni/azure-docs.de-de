@@ -4,7 +4,7 @@
    services="data-lake-analytics" 
    documentationCenter="" 
    authors="edmacauley" 
-   manager="paulettm" 
+   manager="jhubbard" 
    editor="cgronlun"/>
  
 <tags
@@ -28,7 +28,7 @@ In diesem Tutorial entwickeln Sie einen Auftrag, bei dem eine Datei mit tabulato
 
 ##Voraussetzungen
 
-Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
+Bevor Sie mit diesem Tutorial beginnen können, benötigen Sie Folgendes:
 
 - **Ein Azure-Abonnement**. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
 
@@ -135,7 +135,7 @@ Nachdem Sie die Quelldaten vorbereitet haben, können Sie mit dem Entwickeln ein
 
     ![Azure Data Lake Analytics-Auftragsdetails](./media/data-lake-analytics-get-started-portal/data-lake-analytics-job-completed.png)
 
-    In der vorherigen Abbildung können Sie sehen, dass der Auftrag vom Zustand „Gesendet“ bis zum Zustand „Beendet“ ungefähr 1,5 Minuten gedauert hat.
+    In der vorherigen Abbildung können Sie sehen, dass der Auftrag vom Zustand „Gesendet“ bis zum Zustand „Beendet“ ungefähr 1,5 Minuten gedauert hat.
     
     Falls für den Auftrag ein Fehler auftritt, helfen Ihnen die Informationen unter [Überwachung und Problembehandlung für Data Lake Analytics-Aufträge](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorials.md) weiter.
 
@@ -156,4 +156,4 @@ Nachdem Sie die Quelldaten vorbereitet haben, können Sie mit dem Entwickeln ein
 - Wenn Sie dasselbe Tutorial mit anderen Tools verwenden möchten, klicken Sie oben auf der Seite auf die Registerkartenauswahl.
 - Informationen zum Protokollieren von Diagnoseinformationen finden Sie unter [Accessing diagnostic logs for Azure Data Lake Analytics](data-lake-analytics-diagnostic-logs.md) (Zugreifen auf Diagnoseprotokolle für Azure Data Lake Analytics).
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0914_2016-->

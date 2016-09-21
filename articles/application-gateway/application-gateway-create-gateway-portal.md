@@ -14,12 +14,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="08/09/2016"
+   ms.date="09/06/2016"
    ms.author="gwallace" />
 
 # Erstellen eines Anwendungsgateways über das Portal
 
-Azure Application Gateway verwendet einen Load Balancer auf der Schicht 7 (Anwendungsschicht). Das Application Gateway ermöglicht ein Failover sowie schnelles Routing von HTTP-Anforderungen zwischen verschiedenen Servern in der Cloud und der lokalen Umgebung. Application Gateway bietet folgende Funktionen für die Anwendungsbereitstellung: HTTP-Lastenausgleich, cookiebasierte Sitzungsaffinität, SSL-Auslagerung (Secure Sockets Layer), benutzerdefinierte Integritätstests und Unterstützung für mehrere Websites.
+Azure Application Gateway verwendet einen Load Balancer auf der Schicht 7 (Anwendungsschicht). Das Application Gateway ermöglicht ein Failover sowie schnelles Routing von HTTP-Anforderungen zwischen verschiedenen Servern in der Cloud und der lokalen Umgebung. Application Gateway bietet zahlreiche Application Delivery Controller-Funktionen (ADC), u.a. HTTP-Lastenausgleich, cookiebasierte Sitzungsaffinität, SSL-Auslagerung (Secure Sockets Layer), benutzerdefinierte Integritätstests und Unterstützung für mehrere Websites. Eine vollständige Liste der unterstützten Features finden Sie unter [Übersicht über Application Gateway](application-gateway-introduction.md).
 
 > [AZURE.SELECTOR]
 - [Azure-Portal](application-gateway-create-gateway-portal.md)
@@ -27,10 +27,6 @@ Azure Application Gateway verwendet einen Load Balancer auf der Schicht 7 (Anwe
 - [Klassische Azure PowerShell](application-gateway-create-gateway.md)
 - [Azure Resource Manager-Vorlage](application-gateway-create-gateway-arm-template.md)
 - [Azure-Befehlszeilenschnittstelle](application-gateway-create-gateway-cli.md)
-
-<BR>
-
-
 
 ## Szenario
 
@@ -75,7 +71,6 @@ Folgende Informationen werden für die Grundeinstellungen benötigt:
 
 >[AZURE.NOTE] Zu Testzwecken kann für die Anzahl von Instanzen der Wert 1 ausgewählt werden. Beachten Sie, dass eine Anzahl von weniger als zwei Instanzen nicht durch die SLA abgedeckt ist und daher nicht empfohlen wird. Gateways mit niedriger Nutzungsdauer sind für Dev/Test-Umgebungen vorgesehen und sollten nicht zu Produktionszwecken verwendet werden.
 
-
 ### Schritt 3
 
 Nachdem die Grundeinstellungen definiert wurden, muss im nächsten Schritt das zu verwendende virtuelle Netzwerk definiert werden. In diesem virtuellen Netzwerk befindet sich die Anwendung, für die das Anwendungsgateway den Lastenausgleich durchführt.
@@ -88,7 +83,7 @@ Klicken Sie auf **Virtuelles Netzwerk auswählen**, um das virtuelle Netzwerk zu
 
 Klicken Sie auf dem Blatt *Virtuelles Netzwerk auswählen* auf **Neu erstellen**.
 
-*An dieser Stelle kann ein vorhandenes virtuelles Netzwerk ausgewählt werden. Auf diese Vorgehensweise wird in diesem Szenario jedoch nicht näher eingegangen.*
+An dieser Stelle kann ein vorhandenes virtuelles Netzwerk ausgewählt werden. Auf diese Vorgehensweise wird in diesem Szenario jedoch nicht näher eingegangen. Bei Verwendung eines vorhandenen virtuellen Netzwerks ist es wichtig zu wissen, dass das virtuelle Netzwerk ein leeres Subnetz oder ein Subnetz nur mit Anwendungsgatewayressourcen benötigt, damit es verwendet werden kann.
 
 ![Blatt „Virtuelles Netzwerk auswählen“][4]
 
@@ -147,7 +142,7 @@ Mit diesen Schritten wird ein einfaches Anwendungsgateway mit Standardeinstellun
 
 Unter [Erstellen eines benutzerdefinierten Integritätstests](application-gateway-create-probe-portal.md) erfahren Sie, wie benutzerdefinierte Integritätstests erstellt werden.
 
-Unter [Konfigurieren der SSL-Auslagerung](application-gateway-ssl-arm.md) wird beschrieben, wie Sie die SSL-Auslagerung konfigurieren, damit Ihre Webserver nicht länger eine kostenintensive SSL-Entschlüsselung durchführen müssen.
+Unter [Konfigurieren der SSL-Auslagerung](application-gateway-ssl-portal.md) wird beschrieben, wie Sie die SSL-Auslagerung konfigurieren, damit Ihre Webserver nicht länger eine kostenintensive SSL-Entschlüsselung durchführen müssen.
 
 <!--Image references-->
 [1]: ./media/application-gateway-create-gateway-portal/figure1.png
@@ -162,4 +157,4 @@ Unter [Konfigurieren der SSL-Auslagerung](application-gateway-ssl-arm.md) wird b
 [10]: ./media/application-gateway-create-gateway-portal/figure10.png
 [scenario]: ./media/application-gateway-create-gateway-portal/scenario.png
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0907_2016-->
