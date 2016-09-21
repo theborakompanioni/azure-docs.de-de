@@ -224,7 +224,9 @@ In einem HDFS-System handelt es sich bei „umask“ in der Regel um eine stando
 
 | Benutzergruppe | Einstellung | Auswirkung auf die Zugriffs-ACL eines neuen untergeordneten Elements |
 |------------ |---------|---------------------------------------|
-| Zuständiger Benutzer | --- | Keine Auswirkungen | | Zuständige Gruppe| --- | Keine Auswirkungen | | Andere Benutzer | RWX | Entfernung von Lesen/Schreiben/Ausführen |
+| Zuständiger Benutzer | --- | Keine Auswirkungen |
+| Zuständige Gruppe| --- | Keine Auswirkungen |
+| Andere Benutzer | RWX | Entfernung von Lesen/Schreiben/Ausführen |
 
 Die folgende Abbildung zeigt dieses unmask-Element in Aktion. Letztendlich entfernt es **Lesen/Schreiben/Ausführen** für **andere Benutzer**. Da das umask-Element keine Bits für **zuständiger Benutzer** und **zuständige Gruppe** angibt, werden diese Berechtigungen nicht transformiert.
 

@@ -416,7 +416,7 @@ Der folgende Code zeigt, wie ein erkannter Schreibkonflikt gelöst werden kann. 
 	}
 
 
-Ein kompletteres Beispiel für optimistische Nebenläufigkeit in mobilen Diensten finden Sie unter [Optimistic Concurrency Tutorial] (Lernprogramm für optimistische Nebenläufigkeit, in englischer Sprache).
+Ein kompletteres Beispiel für optimistische Nebenläufigkeit in mobilen Diensten finden Sie unter [Optimistic Concurrency Tutorial]\(Lernprogramm für optimistische Nebenläufigkeit, in englischer Sprache).
 
 
 ##<a name="binding"></a>Vorgehensweise: Binden mobiler Dienstdaten an eine Windows-Benutzeroberfläche
