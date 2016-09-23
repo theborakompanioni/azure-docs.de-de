@@ -14,22 +14,22 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="09/09/2016" 
+	ms.date="09/16/2016" 
 	ms.author="cephalin"
 />
 	
 # Bereitstellen Ihrer ersten Web-App für Azure in fünf Minuten
 
-In diesem Tutorial erfahren Sie, wie Sie Ihre erste Web-App für [Azure App Service](../app-service/app-service-value-prop-what-is.md) bereitstellen. 
+In diesem Tutorial erfahren Sie, wie Sie eine einfache Web-App mit HTML und CSS für [Azure App Service](../app-service/app-service-value-prop-what-is.md) bereitstellen. 
 Mit App Service können Sie Web-Apps, [Mobile App-Back-Ends](/documentation/learning-paths/appservice-mobileapps/) 
 und [API-Apps](../app-service-api/app-service-api-apps-why-best-platform.md) erstellen.
 
 In diesem Tutorial führen Sie folgende Schritte aus:
 
 - Erstellen einer Web-App in Azure App Service
-- Bereitstellen von Beispielcode (Auswahl: ASP.NET, PHP, Node.js, Java oder Python)
-- Anzeigen des live in der Produktion ausgeführten Codes
-- Aktualisieren Ihrer Web-App wie beim [Ausführen von Git-Commits mittels Push](https://git-scm.com/docs/git-push)
+- Bereitstellen von HTML und CSS in der App
+- Anzeigen der live in der Produktion ausgeführten Seiten
+- Aktualisieren des Inhalts wie beim [Ausführen von Git-Commits mittels Push](https://git-scm.com/docs/git-push)
 
 ## Voraussetzungen
 
@@ -48,7 +48,7 @@ einem PowerShell-Fenster, einer Linux-Shell oder einem OS X-Terminal ausführen.
 
 2. Klicken Sie im linken Menü auf **Neu** > **Web und mobil** > **Web-App**.
 
-    ![Mit dem Erstellen der ersten Web-App in Azure beginnen](./media/app-service-web-get-started/create-web-app-portal.png)
+    ![](./media/app-service-web-get-started-languages/create-web-app-portal.png)
 
 3. Legen Sie auf dem Blatt für die App-Erstellung die folgenden Einstellungen für die neue App fest:
 
@@ -59,27 +59,27 @@ einem PowerShell-Fenster, einer Linux-Shell oder einem OS X-Terminal ausführen.
 
     Wenn Sie fertig sind, sollte das Blatt für die App-Erstellung wie folgt aussehen:
 
-    ![Erste Web-App in Azure konfigurieren](./media/app-service-web-get-started/create-web-app-settings.png)
+    ![](./media/app-service-web-get-started-languages/create-web-app-settings.png)
 
 3. Klicken Sie unten auf dem Blatt auf **Erstellen**. Sie können oben auf das Symbol **Benachrichtigung** klicken, um den Status anzuzeigen.
 
-    ![App-Erstellungsbenachrichtigung für Ihre erste Web-App in Azure](./media/app-service-web-get-started/create-web-app-started.png)
+    ![](./media/app-service-web-get-started-languages/create-web-app-started.png)
 
 4. Nach Abschluss der Bereitstellung sollte die folgende Benachrichtigungsmeldung angezeigt werden. Klicken Sie auf die Meldung, um das Blatt Ihrer Bereitstellung zu öffnen.
 
-    ![Meldung zu abgeschlossener Bereitstellung für Ihre erste Web-App in Azure](./media/app-service-web-get-started/create-web-app-finished.png)
+    ![](./media/app-service-web-get-started-languages/create-web-app-finished.png)
 
 5. Klicken Sie auf dem Blatt **Bereitstellung erfolgreich** auf den Link **Ressource**, um das Blatt Ihrer neuen Web-App zu öffnen.
 
-    ![Ressourcenlink für Ihre erste Web-App in Azure](./media/app-service-web-get-started/create-web-app-resource.png)
+    ![](./media/app-service-web-get-started-languages/create-web-app-resource.png)
 
-## Bereitstellen von Code für die Web-App
+## Bereitstellen von Inhalten für die Web-App
 
-Als Nächstes stellen wir mithilfe von Git Code in Azure bereit.
+Als Nächstes stellen wir mithilfe von Git Inhalte in Azure bereit.
 
 5. Klicken Sie auf dem Blatt der Web-App auf **Bereitstellungsoptionen** (scrollen Sie dazu nach unten, oder suchen Sie nach der Option).
 
-    ![Bereitstellungsoptionen für Ihre erste Web-App in Azure](./media/app-service-web-get-started/deploy-web-app-deployment-options.png)
+    ![](./media/app-service-web-get-started-languages/deploy-web-app-deployment-options.png)
 
 6. Klicken Sie auf **Quelle auswählen** > **Lokales Git-Repository** > **OK**.
 
@@ -89,24 +89,15 @@ Als Nächstes stellen wir mithilfe von Git Code in Azure bereit.
 
 7. Klicken Sie auf dem Blatt der Web-App auf **Eigenschaften** (scrollen Sie dazu nach unten, oder suchen Sie nach der Option). Klicken Sie neben **Git-URL** auf die Schaltfläche **Kopieren**.
 
-    ![Eigenschaftenblatt für Ihre erste Web-App in Azure](./media/app-service-web-get-started/deploy-web-app-properties.png)
+    ![](./media/app-service-web-get-started-languages/deploy-web-app-properties.png)
 
-    Jetzt können Sie Ihren Code mit Git bereitstellen.
+    Jetzt können Sie Ihre Inhalte mit Git bereitstellen.
 
 1. Wechseln Sie im Befehlszeilenterminal zu einem Arbeitsverzeichnis (`CD`), und klonen Sie die Beispiel-App wie folgt:
 
-        git clone <github_sample_url>
+        git clone https://github.com/Azure-Samples/app-service-web-html-get-started.git
 
-    ![Klonen des App-Beispielcodes für Ihre erste Web-App in Azure](./media/app-service-web-get-started/html-git-clone.png)
-
-    Verwenden Sie für *&lt;github_sample_url>* je nach gewünschtem Framework eine der folgenden URLs:
-
-    - HTML, CSS, JS: [https://github.com/Azure-Samples/app-service-web-html-get-started.git](https://github.com/Azure-Samples/app-service-web-html-get-started.git)
-    - ASP.NET: [https://github.com/Azure-Samples/app-service-web-dotnet-get-started.git](https://github.com/Azure-Samples/app-service-web-dotnet-get-started.git)
-    - PHP (CodeIgniter): [https://github.com/Azure-Samples/app-service-web-php-get-started.git](https://github.com/Azure-Samples/app-service-web-php-get-started.git)
-    - Node.js (Express): [https://github.com/Azure-Samples/app-service-web-nodejs-get-started.git](https://github.com/Azure-Samples/app-service-web-nodejs-get-started.git)
-    - Java: [https://github.com/Azure-Samples/app-service-web-java-get-started.git](https://github.com/Azure-Samples/app-service-web-java-get-started.git)
-    - Python (Django): [https://github.com/Azure-Samples/app-service-web-python-get-started.git](https://github.com/Azure-Samples/app-service-web-python-get-started.git)
+    ![Klonen des App-Beispielcodes für Ihre erste Web-App in Azure](./media/app-service-web-get-started-languages/html-git-clone.png)
 
 2. Wechseln Sie in das Repository Ihrer Beispiel-App. Beispiel:
 
@@ -120,15 +111,13 @@ Als Nächstes stellen wir mithilfe von Git Code in Azure bereit.
 
         git push azure master
 
-    ![Übertragen von Code an Ihre erste Web-App in Azure mittels Push](./media/app-service-web-get-started/html-git-push.png)
-
-    Bei Verwendung eines der Sprachen-Frameworks wird eine andere Ausgabe angezeigt. Das hat folgenden Grund: Mit `git push` wird nicht nur Code in Azure eingefügt, sondern es werden auch Bereitstellungsaufgaben im Bereitstellungsmodul ausgelöst. Falls Ihr Projektstamm (bzw. Repositorystamm) die Datei „package.json“ (Node.js) oder „requirements.txt“ (Python) enthält oder falls Ihr ASP.NET-Projekt die Datei „packages.config“ enthält, stellt das Bereitstellungsskript die erforderlichen Pakete wieder für Sie her. Sie können auch die [Composer-Erweiterung aktivieren](web-sites-php-mysql-deploy-use-git.md#composer), um Dateien vom Typ „composer.json“ in Ihrer PHP-App automatisch zu verarbeiten.
+    ![Übertragen von Code an Ihre ersten Web-App in Azure mittels Push](./media/app-service-web-get-started-languages/html-git-push.png)
 
 Das ist alles! Ihr Code wird jetzt live in Azure ausgeführt. Navigieren Sie im Browser zu „http://*&lt;appname>*.azurewebsites.net“, um ihn in Aktion zu sehen.
 
 ## Durchführen von Updates für die App
 
-Sie können jetzt Git verwenden, um aus Ihrem Projektstamm (Repositorystamm) jederzeit einen Pushvorgang durchzuführen und so ein Update für die Live-Website vorzunehmen. Dazu gehen Sie wie bei der erstmaligen Bereitstellung Ihres Codes vor. Wenn Sie beispielsweise eine neue Änderung übertragen möchten, die Sie lokal getestet haben, führen Sie einfach die folgenden Befehle in Ihrem Projektstamm (Repositorystamm) aus:
+Sie können jetzt Git verwenden, um aus Ihrem Projektstamm (Repositorystamm) jederzeit einen Pushvorgang durchzuführen und so ein Update für die Live-Website vorzunehmen. Dazu gehen Sie wie bei der erstmaligen Bereitstellung Ihrer Inhalte vor. Wenn Sie beispielsweise eine neue Änderung übertragen möchten, die Sie lokal getestet haben, führen Sie einfach die folgenden Befehle in Ihrem Projektstamm (Repositorystamm) aus:
 
     git add .
     git commit -m "<your_message>"
