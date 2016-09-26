@@ -40,7 +40,7 @@ Wenn Sie Ihr Abonnement kündigen, werden Ihre Daten gemäß der [Aufbewahrungsr
 
 5. Klicken Sie auf ![checkbutton](./media/billing-how-to-cancel-azure-subscription/checkbutton.png), um das Dialogfenster zu schließen und zu Ihrer Abonnementseite zurückkehren.
 
-	> [AZURE.NOTE] Wenn Sie versehentlich Ihr Abonnement mit nutzungsbasierter Bezahlung gekündigt haben, können Sie es mithilfe [dieser](https://azure.microsoft.com/de-DE/documentation/articles/billing-subscription-become-disable/) Anweisungen erneut aktivieren.
+	> [AZURE.NOTE] Wenn Sie versehentlich Ihr Abonnement mit nutzungsbasierter Bezahlung gekündigt haben, können Sie es mithilfe [dieser](https://azure.microsoft.com/documentation/articles/billing-subscription-become-disable/) Anweisungen erneut aktivieren.
 
 > [AZURE.NOTE] Wenn Sie weitere Fragen haben, [wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), um das Problem schnell zu lösen.
 

@@ -94,7 +94,8 @@ Einige dieser Risikoereignisse sind über die Berichte zu anomalen Aktivitäten 
 | Anmeldungen von infizierten Geräten | Anmeldungen von möglicherweise infizierten Geräten |
 | Anmeldungen von anonymen IP-Adressen | Anmeldungen von unbekannten Quellen |
 | Anmeldungen von IP-Adressen mit verdächtigen Aktivitäten |	Anmeldungen von IP-Adressen mit verdächtigen Aktivitäten |
-| Anmeldungen von unbekannten Standorten | - | | Sperr-Ereignisse (nicht Teil der öffentlichen Vorschau) | - |
+| Anmeldungen von unbekannten Standorten | - | 
+| Sperr-Ereignisse (nicht Teil der öffentlichen Vorschau) | - |
 
 Die folgenden Azure AD-Berichte zu anomalen Aktivitäten sind nicht als Risikoereignisse in Azure AD Identity Protection enthalten und daher auch nicht über Identity Protection verfügbar. Diese Berichte sind im Azure-Verwaltungsportal noch enthalten, aber sie werden nach und nach eingestellt, da sie durch Risikoereignisse in Identity Protection ersetzt werden.
 
@@ -233,7 +234,8 @@ Azure AD Identity Protection dient Ihnen als Unterstützung beim Verwalten der 
 
 - Festlegen des Schwellenwerts für die Benutzerrisikostufe (Niedrig, Mittel oder Hoch), mit der die Blockierung eines Benutzers ausgelöst wird: <br><br> ![Benutzerrisiko-Richtlinie](./media/active-directory-identityprotection/503.png "Benutzerrisiko-Richtlinie") <br>
 
-- Wechseln des Zustands Ihrer Richtlinie: <br><br> ![MFA-Registrierung](./media/active-directory-identityprotection/403.png "MFA-Registrierung") <br>
+- Wechseln des Zustands Ihrer Richtlinie: <br><br>
+![MFA-Registrierung](./media/active-directory-identityprotection/403.png "MFA-Registrierung") <br>
 
 - Überprüfen und Bewerten der Auswirkungen einer Änderung vor dem Aktivieren: <br><br> ![Benutzerrisiko-Richtlinie](./media/active-directory-identityprotection/504.png "Benutzerrisiko-Richtlinie") <br>
 

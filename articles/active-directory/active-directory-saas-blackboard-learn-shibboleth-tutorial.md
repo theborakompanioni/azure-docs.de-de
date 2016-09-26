@@ -77,7 +77,7 @@ Zum Konfigurieren der Integration von Blackboard Learn – Shibboleth in Azure A
 
 	![Anwendungen][4]
 
-6. Geben Sie im Suchfeld als Suchbegriff **Blackboard Learn – Shibboleth ** ein.
+6. Geben Sie im Suchfeld als Suchbegriff **Blackboard Learn – Shibboleth** ein.
 
 	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-blackboard-learn-shibboleth-tutorial/tutorial_blackboardlearnshibboleth_01.png)
 

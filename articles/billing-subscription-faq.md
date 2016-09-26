@@ -210,7 +210,7 @@ Wenden Sie sich an den [Azure-Support](https://azure.microsoft.com/support/optio
 
 ### Wie verwalte ich Administratorkonten im neuen Azure-Portal?
 
-Die rollenbasierte Access Control in Azure (RBAC) ermöglicht eine präzise Zugriffsverwaltung für Azure. Mithilfe von RBAC können Sie Aufgaben in Ihrem DevOps-Team verteilen und Benutzern nur den Zugriff gewähren, den sie zur Ausführung ihrer Aufgaben benötigen. Weitere Informationen finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure Access Directory] (.\\active-directory\\Azure Role-Based Access Control.md).
+Die rollenbasierte Access Control in Azure (RBAC) ermöglicht eine präzise Zugriffsverwaltung für Azure. Mithilfe von RBAC können Sie Aufgaben in Ihrem DevOps-Team verteilen und Benutzern nur den Zugriff gewähren, den sie zur Ausführung ihrer Aufgaben benötigen. Weitere Informationen finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure Access Directory](.\\active-directory\\Azure Role-Based Access Control.md).
 
 ### Wie übertrage ich den Besitz meiner Abonnements?
 

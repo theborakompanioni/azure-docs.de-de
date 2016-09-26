@@ -52,7 +52,7 @@ Zum Verwenden von [Edit Metadata][edit-metadata] geben Sie zuerst an, welche Spa
 
 1.	Geben Sie in der Modulpalette „Metadaten“ in das Feld **Suchen** ein. [Edit Metadata][edit-metadata] wird in der Modulliste angezeigt.
 2.	Klicken und ziehen Sie das Modul [Edit Metadata][edit-metadata] in den Experimentbereich, und legen Sie es unter dem zuvor hinzugefügten Dataset ab.
-3.	Verbinden Sie das Dataset mit [Edit Metadata][edit-metadata]\: Klicken Sie auf den Ausgabeport des Datasets (den kleinen Kreis unten im Dataset), ziehen Sie ihn zum Eingabeport von [Edit Metadata][edit-metadata] (den kleinen Kreis oben im Modul), und lassen Sie die Maustaste los. Das Dataset und das Modul bleiben verbunden, auch wenn Sie diese im Bereich verschieben.
+3.	Verbinden Sie das Dataset mit [Edit Metadata][edit-metadata]\: Klicken Sie auf den Ausgabeport des Datasets (den kleinen Kreis unten im Dataset), ziehen Sie ihn zum Eingabeport von [Edit Metadata][edit-metadata] \(den kleinen Kreis oben im Modul), und lassen Sie die Maustaste los. Das Dataset und das Modul bleiben verbunden, auch wenn Sie diese im Bereich verschieben.
 
     Das Experiment sollte in etwa wie folgt aussehen:
 
@@ -63,7 +63,8 @@ Zum Verwenden von [Edit Metadata][edit-metadata] geben Sie zuerst an, welche Spa
     > [AZURE.TIP] Sie können einen Kommentar zu einem Modul eingeben, indem Sie auf das Modul doppelklicken und Text eingeben. Auf diese Weise können Sie mit einem Blick sehen, welche Funktion das Modul in Ihrem Experiment erfüllt. Doppelklicken Sie hierfür auf das Modul [Edit Metadata][edit-metadata], und geben Sie den Kommentar „Spaltenüberschriften hinzufügen“ ein. Klicken Sie auf eine Stelle des Experimentbereichs, um das Textfeld zu schließen. Klicken Sie auf den nach unten zeigenden Pfeil für das Modul, um den Kommentar anzuzeigen.
 
 4.	Klicken Sie bei ausgewähltem [Edit Metadata][edit-metadata] im Bereich **Eigenschaften** rechts neben dem Experimentbereich auf **Launch column selector**.
-5.	Wählen Sie im Dialogfeld **Select columns** in **Available Columns** alle Zeilen aus, und klicken Sie auf „>“, um sie in **Selected Columns** zu verschieben. Das Dialogfeld sollte wie folgt aussehen: ![Spaltenauswahl, alle Spalten ausgewählt][4]
+5.	Wählen Sie im Dialogfeld **Select columns** in **Available Columns** alle Zeilen aus, und klicken Sie auf „>“, um sie in **Selected Columns** zu verschieben. Das Dialogfeld sollte wie folgt aussehen: 
+![Spaltenauswahl, alle Spalten ausgewählt][4]
 7.	Klicken Sie auf das Häkchen **OK**.
 8.	Suchen Sie im Bereich **Properties** nach dem Parameter **New column name**. Geben Sie in diesem Feld eine Liste der Namen für die 21 Spalten im Dataset ein, durch Kommas getrennt und in der Reihenfolge der Spalten. Die Spaltennamen können Sie der Datasetdokumentation auf der UCI-Website entnehmen, oder Sie können einfach die folgende Liste kopieren und einfügen:
 

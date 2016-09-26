@@ -40,7 +40,7 @@ Bevor Sie mit diesem Tutorial beginnen können, benötigen Sie Folgendes:
 
 ##Herunterladen der Flugdaten
 
-1. Rufen Sie die Website von [Research and Innovative Technology Administration, Bureau of Transportation Statistics][rita-website] (RITA) auf.
+1. Rufen Sie die Website von [Research and Innovative Technology Administration, Bureau of Transportation Statistics][rita-website] \(RITA) auf.
 2. Wählen Sie auf der Website die folgenden Werte aus:
 
     | Name | Wert |

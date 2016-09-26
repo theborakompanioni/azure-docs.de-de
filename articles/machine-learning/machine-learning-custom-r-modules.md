@@ -259,7 +259,7 @@ Ein Modul-Parameter wird mithilfe des untergeordneten**Arg**-Elements vom Abschn
 
 * *Optionale Eigenschaften*: **min**, **max** und **Standard**
 
-**bool ** – ein boolescher Parameter, der durch ein Kontrollkästchen in der UX dargestellt wird.
+**bool** – ein boolescher Parameter, der durch ein Kontrollkästchen in der UX dargestellt wird.
 
 		<Arg id="boolValue1" name="Boolean Param" type="bool">
 			<Properties default="true" />

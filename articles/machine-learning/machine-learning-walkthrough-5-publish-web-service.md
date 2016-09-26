@@ -48,7 +48,7 @@ Folgende Module müssen gelöscht werden:
 
 - [Two-Class Support Vector Machine][two-class-support-vector-machine]
 - Die damit verbundenen Module [Train Model][train-model] und [Score Model][score-model]
-- [Normalize Data][normalize-data] (beide)
+- [Normalize Data][normalize-data] \(beide)
 - [Evaluate Model][evaluate-model]
 
 Wählen Sie das Modul aus, und drücken Sie die ENTF-Taste, oder klicken Sie mit der rechten Maustaste auf das Modul, und wählen Sie **Delete** aus.

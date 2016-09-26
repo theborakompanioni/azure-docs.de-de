@@ -34,7 +34,7 @@ In diesem Artikel wird beschrieben, wie Sie in der Azure Active Directory-Vorsch
 
 3.  Wählen Sie auf dem Blatt **Benutzer und Gruppen** die Option **Benutzer** aus, und klicken Sie dann auf **Hinzufügen**.
 
-    ![Auswählen des Befehls „Hinzufügen“](./media/ management](./media/active-directory-users-create-external-azure-portal/create-users-add-command.png)
+    ![Auswählen des Befehls „Hinzufügen“](./media/active-directory-users-create-external-azure-portal/create-users-add-command.png)
 
 4. Geben Sie auf dem Blatt **Benutzer** im Feld **Name** einen Anzeigenamen und im Feld **Benutzername** den Anmeldenamen des Benutzers ein.
 
@@ -42,15 +42,15 @@ In diesem Artikel wird beschrieben, wie Sie in der Azure Active Directory-Vorsch
 
 6. Wählen Sie optional **Profil** aus, um den Vor- und Nachnamen des Benutzers, eine Position und einen Abteilungsnamen hinzuzufügen.
 
-		![Opening the user profile](./media/ management](./media/active-directory-users-create-external-azure-portal/create-users-user-profile.png)
+	![Opening the user profile](./media/active-directory-users-create-external-azure-portal/create-users-user-profile.png)
 
 	- Wählen Sie **Gruppen** aus, um den Benutzer mindestens einer Gruppe hinzuzufügen.
 
-		![Hinzufügen eines Benutzers zu Gruppen](./media/ management](./media/active-directory-users-create-external-azure-portal/create-users-user-groups.png)
+		![Hinzufügen eines Benutzers zu Gruppen](./media/active-directory-users-create-external-azure-portal/create-users-user-groups.png)
 
 	- Wählen Sie **Organisationsrolle** aus, um den Benutzer über die Liste **Rollen** einer Rolle zuzuweisen. Weitere Informationen zu Benutzer- und Administratorrollen finden Sie unter [Zuweisen von Administratorrollen in Azure AD](active-directory-assign-admin-roles.md).
 
-		![Zuweisen eines Benutzers zu einer Rolle](./media/ management](./media/active-directory-users-create-external-azure-portal/create-users-assign-role.png)
+		![Zuweisen eines Benutzers zu einer Rolle](./media/active-directory-users-create-external-azure-portal/create-users-assign-role.png)
 
 7. Klicken Sie auf **Erstellen**.
 
@@ -73,4 +73,4 @@ Wenn Sie Informationen für einen Benutzer ändern, dessen Identität mit Ihrem 
 - [Verwalten von Benutzerprofilen](active-directory-users-profile-azure-portal.md)
 - [Löschen eines Benutzers in Azure AD](active-directory-users-delete-user-azure-portal.md)
 
-<!---HONumber=AcomDC_0914_2016-->
+<!----HONumber=AcomDC_0914_2016-->

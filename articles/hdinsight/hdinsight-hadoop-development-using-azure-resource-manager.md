@@ -271,7 +271,7 @@ Im Folgenden finden Sie einige Beispiele dazu, wie ein Vorgang mit dem ASM-basie
 		//Service principal auth
 		//This will log the application in as itself, rather than on behalf of a specific user.
 		//For details, including how to set up the application, see:
-		//   https://azure.microsoft.com/de-DE/documentation/articles/hdinsight-create-non-interactive-authentication-dotnet-applications/
+		//   https://azure.microsoft.com/documentation/articles/hdinsight-create-non-interactive-authentication-dotnet-applications/
 		 
 		var authFactory = new AuthenticationFactory();
 		 

@@ -36,7 +36,7 @@ Angenommen, Sie erstellen ein Experiment und führen Versionen dieses Experiment
 
 Sie können alle vorherigen Testläufe eines Experiments anzeigen, indem Sie in einem geöffneten Experiment auf **View Run History** (Ausführungsverlauf anzeigen) klicken.
 
-Angenommen, Sie erstellen ein Experiment mit dem Modul [Linear Regression][linear-regression] (Lineare Regression), und Sie möchten beobachten, wie sich Änderungen des Werts von **Learning Rate** (Lernrate) auf die Ergebnisse Ihres Experiments auswirken. Sie führen das Experiment mehrmals mit unterschiedlichen Werten für diesen Parameter wie folgt aus:
+Angenommen, Sie erstellen ein Experiment mit dem Modul [Linear Regression][linear-regression] \(Lineare Regression), und Sie möchten beobachten, wie sich Änderungen des Werts von **Learning Rate** (Lernrate) auf die Ergebnisse Ihres Experiments auswirken. Sie führen das Experiment mehrmals mit unterschiedlichen Werten für diesen Parameter wie folgt aus:
 
 | Der Wert von "Learning Rate" | Startzeit des Testlaufs |
 | ------------------- | -------------- |
@@ -72,7 +72,7 @@ Nehmen wir beispielsweise an, Sie haben den Ausführungsverlauf des Experiments 
 
 4. Ändern Sie den Parameter **Number of training epochs** (Anzahl der Trainingsperioden).
 
-5. Klicken Sie auf **RUN ** (AUSFÜHREN).
+5. Klicken Sie auf **RUN** (AUSFÜHREN).
 
 Sie können diese Version des Experiments nun weiterhin ändern und ausführen, wobei ein neuer Ausführungsverlauf zur Dokumentation Ihrer Arbeit erstellt wird.
 

@@ -30,7 +30,7 @@ In diesem Artikel wird erläutert, wie Sie in der Azure Active Directory-Vorscha
 
 3.  Wählen Sie auf dem Blatt **Benutzer und Gruppen*** die Option **Benutzer** aus.
 
-    ![Öffnen des Blatts „Benutzer“](./media/active-directory-users-profile-azure-portal/create-users-opde-DEers-blade.png)
+    ![Öffnen des Blatts „Benutzer“](./media/active-directory-users-profile-azure-portal/create-users-open-users-blade.png)
 
 4. Wählen Sie auf dem Blatt **Benutzer und Gruppen – Benutzer** einen Benutzer aus der Liste aus.
 

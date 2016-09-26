@@ -74,7 +74,7 @@ Bevor Sie mit diesem Tutorial beginnen können, benötigen Sie Folgendes:
 **Zum Erstellen eines virtuellen Netzwerks namens Contoso-VNet-EU in Nordeuropa**
 
 1.	Melden Sie sich beim [klassischen Azure-Portal][azure-portal] an.
-2.	Klicken Sie auf **NEU**, **NETWORK SERVICES**, **VIRTUELLES NETZWERK**, ** BENUTZERDEFINIERT ERSTELLEN**.
+2.	Klicken Sie auf **NEU**, **NETWORK SERVICES**, **VIRTUELLES NETZWERK**, **BENUTZERDEFINIERT ERSTELLEN**.
 3.	Geben Sie Folgendes ein:
 
 	- **NAME**: Contoso-VNet-EU

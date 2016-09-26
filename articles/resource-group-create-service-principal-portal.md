@@ -68,7 +68,7 @@ Ausführliche Schritte zum Integrieren einer Anwendung in Azure zur Verwaltung v
 
      ![Anwendung benennen](./media/resource-group-create-service-principal-portal/tell-us-about-your-application.png)
 
-7. Tragen Sie die Eigenschaften Ihrer Anwendung ein. Geben Sie für die **ANMELDE-URL** den URI einer Website an, die Ihre Anwendung beschreibt. Das Vorhandensein der Website wird nicht überprüft. Geben Sie für die **APP-ID URI ** die URI an, die Ihre Anwendung identifiziert.
+7. Tragen Sie die Eigenschaften Ihrer Anwendung ein. Geben Sie für die **ANMELDE-URL** den URI einer Website an, die Ihre Anwendung beschreibt. Das Vorhandensein der Website wird nicht überprüft. Geben Sie für die **APP-ID URI** die URI an, die Ihre Anwendung identifiziert.
 
      ![Anwendungseigenschaften](./media/resource-group-create-service-principal-portal/app-properties.png)
 

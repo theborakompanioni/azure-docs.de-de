@@ -34,7 +34,7 @@ In diesem Artikel wird erläutert, wie Sie das Kennwort für einen Benutzer in d
 
 3.  Wählen Sie auf dem Blatt **Benutzer und Gruppen** die Option **Benutzer** aus.
 
-    ![Öffnen des Blatts „Benutzer“](./media/active-directory-users-reset-password-azure-portal/create-users-opde-DEers-blade.png)
+    ![Öffnen des Blatts „Benutzer“](./media/active-directory-users-reset-password-azure-portal/create-users-open-users-blade.png)
 
 4. Wählen Sie auf dem Blatt **Benutzer und Gruppen – Benutzer** einen Benutzer aus der Liste aus.
 

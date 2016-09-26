@@ -213,7 +213,7 @@ Ein Gerät verwendet entweder ein X.509-Zertifikat oder ein Sicherheitstoken fü
 
 ## Registrieren eines X.509-Clientzertifikats für ein Gerät
 
-Das [Azure IoT-Dienst-SDK für C#][lnk-service-sdk] (mindestens Version 1.0.8) unterstützt Geräte, die ein X.509-Clientzertifikat für die Authentifizierung verwenden. Andere APIs wie beispielsweise für den Import/Export von Geräten unterstützen ebenfalls X.509-Clientzertifikate.
+Das [Azure IoT-Dienst-SDK für C#][lnk-service-sdk] \(mindestens Version 1.0.8) unterstützt Geräte, die ein X.509-Clientzertifikat für die Authentifizierung verwenden. Andere APIs wie beispielsweise für den Import/Export von Geräten unterstützen ebenfalls X.509-Clientzertifikate.
 
 ### C#-Unterstützung
 
@@ -240,7 +240,7 @@ await registryManager.AddDeviceAsync(device);
 
 ## Verwenden eines X.509-Clientzertifikats während Laufzeitvorgängen
 
-Das [Azure IoT-Geräte-SDK für .NET][lnk-client-sdk] (mindestens Version 1.0.11) unterstützt die Verwendung von X.509-Clientzertifikaten.
+Das [Azure IoT-Geräte-SDK für .NET][lnk-client-sdk] \(mindestens Version 1.0.11) unterstützt die Verwendung von X.509-Clientzertifikaten.
 
 ### C#-Unterstützung
 
