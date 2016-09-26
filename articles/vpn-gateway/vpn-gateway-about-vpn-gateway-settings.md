@@ -30,7 +30,7 @@ Mit dem Gatewaytyp wird angegeben, wie das Gateway die Verbindung hergestellt. E
 - ExpressRoute
 
 
-Für ein VPN-Gateway ist „-GatewayType *Vpn*“ erforderlich, wie im folgenden PowerShell-Beispiel für das Resource Manager-Bereitstellungsmodell gezeigt. Beim Erstellen eines Gateways des virtuellen Netzwerks müssen Sie sicherstellen, dass der Gatewaytyp für Ihre Konfiguration korrekt ist.
+Für ein VPN-Gateway ist „-GatewayType *Vpn* “ erforderlich, wie im folgenden PowerShell-Beispiel für das Resource Manager-Bereitstellungsmodell gezeigt. Beim Erstellen eines Gateways des virtuellen Netzwerks müssen Sie sicherstellen, dass der Gatewaytyp für Ihre Konfiguration korrekt ist.
 
 	New-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
 	-Location 'West US' -IpConfigurations $gwipconfig -GatewayType Vpn `

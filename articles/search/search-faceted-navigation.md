@@ -129,7 +129,8 @@ Beachten Sie, dass jede Facette eine Beschriftung („Colors“, „Categories�
 <a name="buildindex"></a>
 ##Erstellen des Index
 
-Die Facettenerstellung wird mithilfe des folgenden Indexattributs auf Feldbasis im Index aktiviert: `"Facetable": true`. Alle Feldtypen, die ggf. für die Facettennavigation verwendet werden können, sind standardmäßig als `Facetable` konfiguriert. Zu diesen Feldtypen zählen `Edm.String`, `Edm.DateTimeOffset` sowie alle numerischen Feldtypen. (Mit Ausnahme von `Edm.GeographyPoint` sind eigentlich alle Feldtypen für die Facettennavigation geeignet.)
+Die Facettenerstellung wird mithilfe des folgenden Indexattributs auf Feldbasis im Index aktiviert: `"Facetable": true`.  
+Alle Feldtypen, die ggf. für die Facettennavigation verwendet werden können, sind standardmäßig als `Facetable` konfiguriert. Zu diesen Feldtypen zählen `Edm.String`, `Edm.DateTimeOffset` sowie alle numerischen Feldtypen. (Mit Ausnahme von `Edm.GeographyPoint` sind eigentlich alle Feldtypen für die Facettennavigation geeignet.)
 
 Bei der Indexerstellung empfiehlt es sich, die Facettenerstellung für Felder, die nicht als Facetten verwendet werden sollen, ausdrücklich zu deaktivieren. Insbesondere Zeichenfolgenfelder für Singleton-Werte (wie etwa eine ID oder ein Produktname) sollten auf `"Facetable": false` festgelegt werden, damit sie nicht versehentlich für die Facettennavigation verwendet werden.
 
