@@ -1,10 +1,10 @@
 <properties
 	pageTitle="Exemplarische Vorgehensweise, Schritt 4: Trainieren und Auswerten des Predictive Analytics-Modells | Microsoft Azure"
-	description="Exemplarische Vorgehensweise zum Entwickeln einer Vorhersagelösung – Schritt 4: Trainieren, Bewerten und Auswerten mehrerer Modelle in Azure Machine Learning Studio."
+	description="Exemplarische Vorgehensweise zum Entwickeln einer Vorhersagelösung – Schritt 4: Trainieren, Bewerten und Auswerten mehrerer Modelle in Azure Machine Learning Studio."
 	services="machine-learning"
 	documentationCenter=""
 	authors="garyericson"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun"/>
 
 <tags
@@ -17,7 +17,7 @@
 	ms.author="garye"/>
 
 
-# Exemplarische Vorgehensweise, Schritt 4: Trainieren und Auswerten des Predictive Analytics-Modells
+# Exemplarische Vorgehensweise, Schritt 4: Trainieren und Auswerten des Predictive Analytics-Modells
 
 Dies ist der vierte Schritt der exemplarischen Vorgehensweise zum [Entwickeln einer Predictive Analytics-Lösung in Azure Machine Learning](machine-learning-walkthrough-develop-predictive-solution.md).
 
@@ -68,7 +68,7 @@ Um das SVM-Modell einzurichten, führen Sie folgende Schritte aus:
 2.	Klicken Sie mit der rechten Maustaste auf das Modul [Train Model][train-model], und wählen Sie **Copy** aus. Klicken Sie anschließend mit der rechten Maustaste auf die Canvas, und wählen Sie **Paste** aus. Beachten Sie, dass die Kopie des Moduls [Train Model][train-model] die gleiche Spaltenauswahl wie das Original hat.
 3.	Verbinden Sie die Ausgabe des SVM-Moduls mit dem linken Eingabeport („Untrainiertes Modell“) des zweiten Moduls [Train Model][train-model].
 4.	Suchen Sie das Modul [Normalize Data][normalize-data], und ziehen Sie es auf die Canvas.
-5.	Verbinden Sie die Eingabe dieses Moduls mit der linken Ausgabe des linken Moduls [Execute R Script][execute-r-script] \(beachten Sie, dass der Ausgabeport eines Moduls mit mehr als einem anderen Modul verbunden sein kann).
+5.	Verbinden Sie die Eingabe dieses Moduls mit der linken Ausgabe des linken Moduls [Execute R Script][execute-r-script] (beachten Sie, dass der Ausgabeport eines Moduls mit mehr als einem anderen Modul verbunden sein kann).
 6.	Verbinden Sie den linken Ausgabeport („Transformiertes Dataset“) des Moduls [Normalize Data][normalize-data] mit dem rechten Eingabeport („Dataset“) des zweiten Moduls [Train Model][train-model].
 7.	Wählen Sie im Bereich **Properties** des Moduls [Normalize Data][normalize-data] den Wert **Tanh** für den Parameter **Transformation method** aus.
 8.	Klicken Sie auf **Launch column selector**, wählen Sie für **Begin With** „No columns“ und wählen Sie in der ersten Dropdownliste **Include**, in der zweiten Dropdownliste **column type** und in der dritten Dropdownliste **Numeric** aus. Damit wird festgelegt, dass alle numerischen Spalten (und nur die numerischen Spalten) transformiert werden.
@@ -86,7 +86,7 @@ Dieser Teil des Experiments sieht jetzt in etwa wie folgt aus:
 Wir verwenden die Testdaten, die durch das Modul [Split Data][split] getrennt wurden, um die trainierten Modelle zu bewerten. Danach können die Ergebnisse der beiden Modelle verglichen werden, um festzustellen, welches bessere Ergebnisse erbrachte.
 
 1.	Suchen Sie das Modul [Modell bewerten][score-model], und ziehen Sie es in den Bereich.
-2.	Verbinden Sie den linken Eingabeport dieses Moduls mit dem Boosted Decision Tree-Modell (d. h., verbinden Sie es mit dem Ausgabeport des Moduls [Modell trainieren][train-model], das mit dem Modul [Zweiklassiger Boosted Decision Tree][two-class-boosted-decision-tree] verbunden ist).
+2.	Verbinden Sie den linken Eingabeport dieses Moduls mit dem Boosted Decision Tree-Modell (d. h., verbinden Sie es mit dem Ausgabeport des Moduls [Modell trainieren][train-model], das mit dem Modul [Zweiklassiger Boosted Decision Tree][two-class-boosted-decision-tree] verbunden ist).
 3.	Verbinden Sie den rechten Eingabeport des Moduls [Score Model][score-model] mit der linken Ausgabe des rechten Moduls [Execute R Script][execute-r-script].
 
     Das Modul [Score Model][score-model] kann die Kreditinformationen aus den Testdaten entnehmen, sie durch das Modell laufen lassen und vom Modell generierte Vorhersagen mit der Spalte mit dem tatsächlichen Kreditrisiko in den Testdaten vergleichen.
@@ -143,4 +143,4 @@ Wenn Sie diese Werte prüfen, können Sie entscheiden, welches Modell am ehesten
 [two-class-support-vector-machine]: https://msdn.microsoft.com/library/azure/12d8479b-74b4-4e67-b8de-d32867380e20/
 [split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0914_2016-->

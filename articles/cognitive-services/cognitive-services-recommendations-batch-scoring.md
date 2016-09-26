@@ -5,7 +5,7 @@
 	services="cognitive-services"
 	documentationCenter=""
 	authors="luiscabrer"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun"/>
 
 <tags
@@ -198,4 +198,4 @@ Im Anschluss sehen Sie eine Beispielausgabe. Zur besseren Übersichtlichkeit zei
 -	Pro Abonnement kann immer nur ein Batchauftrag aufgerufen werden.
 -	Eine Eingabedatei für einen Batchauftrag darf maximal 2 MB groß sein.
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0914_2016-->

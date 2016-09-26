@@ -18,6 +18,13 @@
 
 # Verwenden von Windows PowerShell mit dem Azure-Ressourcen-Manager
 
+> [AZURE.SELECTOR]
+- [Portal](azure-portal/resource-group-portal.md)
+- [Azure-Befehlszeilenschnittstelle](xplat-cli-azure-resource-manager.md)
+- [Azure PowerShell](powershell-azure-resource-manager.md)
+- [REST-API](resource-manager-rest-api.md)
+
+
 Azure Resource Manager implementiert einen modernen Ansatz für die Steuerung des Azure-Ressourcenlebenszyklus. Anstatt einzelne Ressourcen zu erstellen und zu verwalten, können Sie sich eine Komplettlösung vorstellen, zum Beispiel einen Blog, eine Fotogalerie, ein SharePoint-Portal oder ein Wiki. Mithilfe eine Vorlage (einer deklarativen Darstellung der Lösung) können Sie eine Ressourcengruppe festlegen, die alle Ressourcen enthält, die Sie zum Unterstützen der Lösung brauchen. Anschließend wird diese Ressourcengruppe als logische Einheit bereitgestellt und verwaltet.
 
 In diesem Tutorial erlernen Sie das Verwenden von Azure PowerShell mit dem Azure-Ressourcen-Manager. Sie werden durch die Bereitstellung einer Lösung und die Verwendung der Lösung geführt. Sie verwenden Azure PowerShell und eine Resource Manager-Vorlage, um Folgendes bereitzustellen:
@@ -376,4 +383,4 @@ In den oben stehenden Bereitstellungsbeispielen in diesem Thema wurden nur die i
 - Ein ausführliches Beispiel für das Bereitstellen eines Projekts finden Sie unter [Vorhersagbares Bereitstellen von Microservices in Azure](app-service-web/app-service-deploy-complex-application-predictably.md).
 - Weitere Informationen zur Problembehandlung bei einer nicht erfolgreichen Bereitstellung finden Sie unter [Problembehandlung beim Bereitstellen von Ressourcengruppen in Azure](./resource-manager-troubleshoot-deployments-powershell.md).
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0914_2016-->

@@ -13,14 +13,14 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-linux"
 	ms.workload="na"
-	ms.date="08/26/2016"
+	ms.date="09/08/2016"
 	ms.author="marsma" />
 
 # Bereitstellen von Linux-Computeknoten in Azure Batch-Pools
 
 Sie können Azure Batch verwenden, um Computeworkloads auf virtuellen Linux- und Windows-Computern parallel auszuführen. Dieser Artikel enthält Informationen zum Erstellen von Pools mit Linux-Computeknoten im Batch-Dienst mit den Clientbibliotheken [Batch Python][py_batch_package] sowie [Batch .NET][api_net].
 
-> [AZURE.NOTE] Die Unterstützung von Linux in Batch befindet sich derzeit in der Vorschauphase. Einige Aspekte der hier beschriebenen Features können sich vor der allgemeinen Verfügbarkeit ändern. [Anwendungspakete](batch-application-packages.md) werden auf Linux-Computeknoten derzeit nicht unterstützt.
+> [AZURE.NOTE] [Application packages](batch-application-packages.md) werden auf Linux-Serverknoten derzeit nicht unterstützt.
 
 ## Konfiguration des virtuellen Computers
 
@@ -198,7 +198,7 @@ ImageReference imageReference = new ImageReference(
 
 ## Liste mit VM-Images
 
-In der folgenden Tabelle ist angegeben, welche Marketplace-VM-Images zum Zeitpunkt der Aktualisierung dieses Artikels mit den verfügbaren Batch-Knoten-Agents kompatibel waren. Dabei ist zu beachten, dass diese Liste nicht final ist, da Images und Knoten-Agents jederzeit hinzugefügt oder entfernt werden können. Es wird empfohlen, für die Batch-Anwendungen und -Dienste immer [list\_node\_agent\_skus][py_list_skus] \(Python) und [ListNodeAgentSkus][net_list_skus] \(Batch .NET) zu verwenden, um die aktuell verfügbaren SKUs zu bestimmen und eine Auswahl zu treffen.
+In der folgenden Tabelle ist angegeben, welche Marketplace-VM-Images zum Zeitpunkt der Aktualisierung dieses Artikels mit den verfügbaren Batch-Knoten-Agents kompatibel waren. Dabei ist zu beachten, dass diese Liste nicht final ist, da Images und Knoten-Agents jederzeit hinzugefügt oder entfernt werden können. Es wird empfohlen, für die Batch-Anwendungen und -Dienste immer [list\_node\_agent\_skus][py_list_skus] (Python) und [ListNodeAgentSkus][net_list_skus] (Batch .NET) zu verwenden, um die aktuell verfügbaren SKUs zu bestimmen und eine Auswahl zu treffen.
 
 > [AZURE.WARNING] Die folgende Liste kann sich jederzeit ändern. Verwenden Sie immer die in den Batch-APIs verfügbaren Methoden **zum Auflisten von Knoten-Agent-SKUs**, um die kompatiblen virtuellen Computer und Knoten-Agent-SKUs aufzulisten und eine Auswahl zu treffen, wenn Sie Batch-Aufträge ausführen.
 
@@ -349,6 +349,4 @@ Das [Azure Batch-Forum][forum] auf MSDN eignet sich hervorragend, um Information
 [vm_marketplace]: https://azure.microsoft.com/marketplace/virtual-machines/
 [vm_pricing]: https://azure.microsoft.com/pricing/details/virtual-machines/
 
-[1]: ./media/batch-application-packages/app_pkg_01.png "Übersichtsdiagramm für Anwendungspakete"
-
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0914_2016-->

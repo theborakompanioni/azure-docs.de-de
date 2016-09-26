@@ -19,7 +19,10 @@
 
 # Verwalten von NSGs mithilfe des Vorschauportals
 
-[AZURE.INCLUDE [virtual-network-manage-arm-selectors-include.md](../../includes/virtual-network-manage-nsg-arm-selectors-include.md)]
+> [AZURE.SELECTOR]
+- [Portal](virtual-network-manage-nsg-arm-portal.md)
+- [PowerShell](virtual-network-manage-nsg-arm-ps.md)
+- [Azure-Befehlszeilenschnittstelle](virtual-network-manage-nsg-arm-cli.md)
 
 [AZURE.INCLUDE [virtual-network-manage-nsg-intro-include.md](../../includes/virtual-network-manage-nsg-intro-include.md)]
 
@@ -152,7 +155,7 @@ Um die Zuordnung der **NSG-FrontEnd**-NSG zum **FrontEnd**-Subnetz aufzuheben, f
 
 ![Azure-Portal – NSGs](./media/virtual-network-manage-nsg-arm-portal/figure14.png)
 
-3. Klicken Sie auf dem Blatt **FrontEnd** auf **Speichern**.
+3. Klicken Sie im Blatt **FrontEnd** auf **Speichern**.
 
 ![Azure-Portal – NSGs](./media/virtual-network-manage-nsg-arm-portal/figure15.png)
 
@@ -184,4 +187,4 @@ Sie können eine NSG nur löschen, wenn sie keiner Ressource zugeordnet ist. Um 
 
 - [Aktivieren der Protokollierung](virtual-network-nsg-manage-log.md) für NSGs.
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0914_2016-->

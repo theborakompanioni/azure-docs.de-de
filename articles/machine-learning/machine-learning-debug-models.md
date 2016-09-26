@@ -4,7 +4,7 @@
 	services="machine-learning"
 	documentationCenter="" 
 	authors="garyericson" 
-	manager="paulettm" 
+	manager="jhubbard" 
 	editor="cgronlun"/>
 
 <tags 
@@ -13,21 +13,21 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/03/2016" 
+	ms.date="09/09/2016" 
 	ms.author="bradsev;garye" />
 
 # Debuggen Ihres Modells in Azure Machine Learning
 
 In diesem Artikel wird erläutert, wie Sie Ihre Modelle in Microsoft Azure Machine Learning debuggen. Er behandelt insbesondere die möglichen Gründe, warum bei der Ausführung eines Modells die folgenden zwei Fehlerszenarios auftreten können:
 
-* Das [Train Model][train-model]-Modul löst einen Fehler aus. 
-* Das [Score Model][score-model]-Modul liefert falsche Ergebnisse. 
+* Das [Train Model][train-model]-Modul löst einen Fehler aus.
+* Das [Score Model][score-model]-Modul liefert falsche Ergebnisse.
 
 [AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
 ## "Train Model"-Modul löst einen Fehler aus
 
-![image1](./media/machine-learning-debug-models/train_model-1.png)
+![Bild1](./media/machine-learning-debug-models/train_model-1.png)
 
 Für das [Train Model][train-model]-Modul werden die folgenden 2 Eingaben erwartet:
 
@@ -56,7 +56,7 @@ Für das [Score Model][score-model]-Modul sind zwei Eingaben erforderlich:
 
 Es kann vorkommen, dass das [Score Model][score-model]-Modul falsche Ergebnisse liefert, auch wenn das Experiment erfolgreich ausgeführt wird. Dies kann durch verschiedene Szenarios verursacht werden:
 
-1. Wenn der angegebene Bezeichner kategorisch ist und ein Regressionsmodell für die Daten trainiert wird, gibt das [Score Model][score-model]-Modul eine falsche Ausgabe aus. Dies ist darauf zurückzuführen, dass für die Regression eine stetige Antwortvariable erforderlich ist. In diesem Fall empfiehlt sich die Verwendung eines Klassifizierungsmodells. 
+1. Wenn der angegebene Bezeichner kategorisch ist und ein Regressionsmodell für die Daten trainiert wird, gibt das [Score Model][score-model]-Modul eine falsche Ausgabe aus. Dies ist darauf zurückzuführen, dass für die Regression eine stetige Antwortvariable erforderlich ist. In diesem Fall empfiehlt sich die Verwendung eines Klassifizierungsmodells.
 2. In ähnlicher Weise liefert ein Klassifizierungsmodell möglicherweise unerwünschte Ergebnisse, wenn es für ein Dataset mit Gleitkommazahlen in der Spalte "Label" trainiert wird. Dies liegt daran, dass für die Klassifizierung eine diskrete Antwortvariable erforderlich ist, die nur Werte zulässt, die innerhalb einer begrenzten und normalerweise eher kleinen Gruppe von Klassen liegen.
 3. Wenn das Dataset für die Bewertung nicht alle Funktionen enthält, mit denen das Modell trainiert wird, gibt das [Score Model][score-model]-Modul einen Fehler aus.
 4. Das [Score Model][score-model]-Modul gibt keine Ergebnisse für eine Zeile im Dataset für die Bewertung aus, die keinen Wert oder einen unendlichen Wert für die zugehörigen Funktionen enthält.
@@ -69,4 +69,4 @@ Es kann vorkommen, dass das [Score Model][score-model]-Modul falsche Ergebnisse 
 [train-model]: https://msdn.microsoft.com/library/azure/5cc7053e-aa30-450d-96c0-dae4be720977/
  
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0914_2016-->

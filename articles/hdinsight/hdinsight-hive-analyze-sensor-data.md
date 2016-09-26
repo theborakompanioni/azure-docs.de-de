@@ -4,7 +4,7 @@
 	services="hdinsight"
 	documentationCenter=""
 	authors="Blackmist"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun"
 	tags="azure-portal"/>
 
@@ -42,7 +42,7 @@ In diesem Beispiel verarbeiten Sie Verlaufsdaten von Klimaanlagensystemen mithil
 
 * [Microsoft Hive ODBC-Treiber](http://www.microsoft.com/download/details.aspx?id=40886)
 
-##So führen Sie das Beispiel aus
+##Ausführen des Beispiels
 
 1. Navigieren Sie in einem Browser zur folgenden URL: Ersetzen Sie `<clustername>` durch den Namen Ihres HDInsight-Clusters.
 
@@ -54,4 +54,4 @@ In diesem Beispiel verarbeiten Sie Verlaufsdaten von Klimaanlagensystemen mithil
 
 3. Folgen Sie den Anweisungen auf der Webseite, um das Beispiel abzuschließen.
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0914_2016-->

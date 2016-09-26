@@ -4,7 +4,7 @@
 	services="hdinsight"
 	documentationCenter=""
 	authors="Blackmist"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun"
 	tags="azure-portal"/>
 
@@ -50,7 +50,7 @@ Twitter ermöglicht das Abrufen der [Daten für jeden Tweet](https://dev.twitter
 	| Feld | Wert |
 	|:----- |:----- |
 	| Name | MyHDInsightApp |
-	| Description | MyHDInsightApp |
+	| Beschreibung | MyHDInsightApp |
 	| Website | http://www.myhdinsightapp.com |
 	
 4. Aktivieren Sie **Yes, I agree**, und klicken Sie dann auf **Create your Twitter application**.
@@ -319,4 +319,4 @@ In diesem Lernprogramm haben Sie erfahren, wie Sie ein unstrukturiertes JSON-Dat
 [twitter-streaming-api]: https://dev.twitter.com/docs/streaming-apis
 [twitter-statuses-filter]: https://dev.twitter.com/docs/api/1.1/post/statuses/filter
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0914_2016-->

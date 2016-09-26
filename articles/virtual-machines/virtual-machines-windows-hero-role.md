@@ -27,7 +27,7 @@ Wenn Sie Ihre erste VM noch nicht erstellt haben, sollten Sie [Erstellen Ihres e
 
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com).
 2. Klicken Sie im Hubmenü auf **Virtuelle Computer**. Wählen Sie den gewünschten virtuellen Computer aus der Liste aus.
-3. Wenn der Status **Beendet (Zuordnung aufgehoben)** ist, klicken Sie auf die Schaltfläche **Starten** auf dem Blatt **„Zusammenfassung“ des virtuellen Computers. Wenn der Status **Wird ausgeführt* ist, können Sie mit dem nächsten Schritt fortfahren.
+3. Wenn der Status **Beendet (Zuordnung aufgehoben)** ist, klicken Sie auf dem Blatt **Zusammenfassung** des virtuellen Computers auf die Schaltfläche **Starten**. Wenn der Status **Wird ausgeführt** ist, können Sie mit dem nächsten Schritt fortfahren.
 
 ## Herstellen einer Verbindung mit dem virtuellen Computer und Anmelden
 
@@ -120,10 +120,11 @@ Weitere Informationen zu Netzwerksicherheitsgruppen sowie Ein- und Ausgangsregel
 3. Ihr Browser sollte die standardmäßige IIS-Webseite öffnen. Sie sieht etwa wie folgt aus:
 
 	![Screenshot der IIS-Standardseite in einem Browser](./media/virtual-machines-windows-hero-tutorial/iis-default.png)
-	
-	
-	## Nächste Schritte
+
+    
+
+## Nächste Schritte
 
 - Sie können auch mit dem [Anfügen eines Datenträgers](virtual-machines-windows-attach-disk-portal.md) an Ihren virtuellen Computer experimentieren. Datenträger bieten mehr Speicherplatz für den virtuellen Computer.
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0914_2016-->

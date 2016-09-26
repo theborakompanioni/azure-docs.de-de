@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-linux" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/21/2016" 
+	ms.date="09/06/2016" 
 	ms.author="rclaus"/>
 
 
@@ -24,7 +24,7 @@ Ein häufiges Szenario ist die Verwendung von Software-RAID auf virtuellen Linux
 
 
 ## Anfügen von Datenträgern
-In der Regel sind zwei oder mehr leere Datenträger erforderlich, um ein RAID-Gerät zu konfigurieren. Der Hauptgrund für die Erstellung eines RAID-Geräts ist die Leistungsverbesserung Ihrer Datenträger-E/A. Basierend auf Ihren E/A-Anforderungen können Sie wählen, in unserem Standardspeicher gespeicherte Datenträger mit bis zu 500 IOPS und Datenträger anzufügen oder in unserem Premiumspeicher gespeicherte Datenträger mit bis zu 5000 IOPS und Datenträger anzufügen. In diesem Artikel wird nicht erläutert, wie Sie Datenträger an einen virtuellen Linux-Computer bereitstellen und anfügen. Eine ausführliche Anleitung, wie Sie einen leeren Datenträger an einen virtuellen Linux-Computer in Azure anfügen, finden Sie im Microsoft Azure-Artikel [Anfügen eines Datenträgers](virtual-machines-linux-add-disk.md).
+Es sind zwei oder mehr leere Datenträger erforderlich, um ein RAID-Gerät zu konfigurieren. Der Hauptgrund für die Erstellung eines RAID-Geräts ist die Leistungsverbesserung Ihrer Datenträger-E/A. Basierend auf Ihren E/A-Anforderungen können Sie wählen, in unserem Standardspeicher gespeicherte Datenträger mit bis zu 500 IOPS und Datenträger anzufügen oder in unserem Premiumspeicher gespeicherte Datenträger mit bis zu 5000 IOPS und Datenträger anzufügen. In diesem Artikel wird nicht erläutert, wie Sie einem virtuellen Linux-Computer Datenträger bereitstellen und an diesen anfügen. Eine ausführliche Anleitung, wie Sie einen leeren Datenträger an einen virtuellen Linux-Computer in Azure anfügen, finden Sie im Microsoft Azure-Artikel [Anfügen eines Datenträgers](virtual-machines-linux-add-disk.md).
 
 
 ## Installieren des mdadm-Dienstprogramms
@@ -44,7 +44,7 @@ In der Regel sind zwei oder mehr leere Datenträger erforderlich, um ein RAID-Ge
 
 
 ## Erstellen der Datenträgerpartitionen
-In diesem Beispiel erstellen wir eine einzelne Datenträgerpartition unter "/dev/sdc". Die neue Datenträgerpartition wird "/dev/sdc1" genannt.
+In diesem Beispiel erstellen wir eine einzelne Datenträgerpartition unter „/dev/sdc“. Die neue Datenträgerpartition wird „/dev/sdc1“ genannt.
 
 1. Starten Sie "fdisk", um mit dem Erstellen der Partitionen zu beginnen.
 
@@ -72,12 +72,12 @@ In diesem Beispiel erstellen wir eine einzelne Datenträgerpartition unter "/dev
 
 		Partition number (1-4): 1
 
-5. Wählen Sie den Ausgangspunkt der neuen Partition, oder drücken Sie einfach die Eingabetaste, um die Standardeinstellung zu akzeptieren und die Partition am Anfang des freien Speicherplatzes auf dem Laufwerk zu platzieren:
+5. Wählen Sie den Ausgangspunkt der neuen Partition, oder drücken Sie `<enter>`, um die Standardeinstellung zu akzeptieren und die Partition am Anfang des freien Speicherplatzes auf dem Laufwerk zu platzieren:
 
 		First cylinder (1-1305, default 1):
 		Using default value 1
 
-6. Legen Sie die Größe der Partition fest, z. B. '+10G', um eine 10-Gigabyte-Partition zu erstellen. Oder drücken Sie einfach die Eingabetaste, um eine einzelne Partition zu erstellen, die das gesamte Laufwerk umfasst:
+6. Legen Sie die Größe der Partition fest, z. B. '+10G', um eine 10-Gigabyte-Partition zu erstellen. Oder drücken Sie einfach `<enter>`, um eine einzelne Partition zu erstellen, die das gesamte Laufwerk umfasst:
 
 		Last cylinder, +cylinders or +size{K,M,G} (1-1305, default 1305): 
 		Using default value 1305
@@ -121,7 +121,7 @@ In diesem Beispiel erstellen wir eine einzelne Datenträgerpartition unter "/dev
 
 ## Hinzufügen des neuen Laufwerks zu "/etc/fstab"
 
-**Achtung:** Eine fehlerhafte Bearbeitung der Datei /etc/fstab kann dazu führen, dass das System sich nicht mehr starten lässt. Wenn Sie sich nicht sicher sind, finden Sie in der Dokumentation der Distribution Informationen zur korrekten Bearbeitung dieser Datei. Außerdem wird empfohlen, ein Backup der Datei /etc/fstab zu erstellen, bevor Sie sie bearbeiten.
+**Achtung:** Eine fehlerhafte Bearbeitung der Datei /etc/fstab kann dazu führen, dass das System sich nicht mehr starten lässt. Wenn Sie sich nicht sicher sind, helfen Ihnen die Informationen zur richtigen Bearbeitung dieser Datei in der Dokumentation weiter. Außerdem wird empfohlen, ein Backup der Datei /etc/fstab zu erstellen, bevor Sie sie bearbeiten.
 
 1. Erstellen Sie den gewünschten Bereitstellungspunkt für das neue Dateisystem, zum Beispiel:
 
@@ -147,7 +147,7 @@ In diesem Beispiel erstellen wir eine einzelne Datenträgerpartition unter "/dev
 
 		# sudo mount -a
 
-	Wenn dieser Befehl zu einer Fehlermeldung führt, überprüfen Sie die Syntax in der Datei "/etc/fstab".
+	Wenn dieser Befehl zu einer Fehlermeldung führt, überprüfen Sie die Syntax in der Datei „/etc/fstab“.
 
 	Führen Sie nun den Befehl `mount` aus, um sicherzustellen, dass das Dateisystem eingebunden wurde:
 
@@ -169,6 +169,6 @@ In diesem Beispiel erstellen wir eine einzelne Datenträgerpartition unter "/dev
 
 	Zusätzlich zu den oben angegebenen Parametern kann der Kernelparameter „`bootdegraded=true`“ das Starten des Systems ermöglichen, selbst wenn das RAID-System beschädigt oder beeinträchtigt ist, weil beispielsweise unabsichtlich ein Datenträger aus dem virtuellen Computer entfernt wurde. Normalerweise kann dies auch den Start des Systems verhindern.
 
-	Informationen zum Bearbeiten der Kernel-Parameter erhalten Sie in der Dokumentation der Verteilung. Beispielsweise können diese Parameter der Datei „`/boot/grub/menu.lst`“ in vielen Distributionen (CentOS, Oracle Linux, SLES 11) manuell hinzugefügt werden. In Ubuntu kann dieser Parameter der Variablen `GRUB_CMDLINE_LINUX_DEFAULT` unter „/etc/default/grub“ hinzugefügt werden.
+	Informationen zum Bearbeiten der Kernel-Parameter erhalten Sie in der Dokumentation der Distribution. Beispielsweise können diese Parameter der Datei „`/boot/grub/menu.lst`“ in vielen Distributionen (CentOS, Oracle Linux, SLES 11) manuell hinzugefügt werden. In Ubuntu kann dieser Parameter der Variablen `GRUB_CMDLINE_LINUX_DEFAULT` unter „/etc/default/grub“ hinzugefügt werden.
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0914_2016-->

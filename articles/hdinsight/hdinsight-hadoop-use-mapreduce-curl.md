@@ -4,7 +4,7 @@
    services="hdinsight"
    documentationCenter=""
    authors="Blackmist"
-   manager="paulettm"
+   manager="jhubbard"
    editor="cgronlun"
 	tags="azure-portal"/>
 
@@ -29,7 +29,7 @@ Curl dient zum Veranschaulichen der Interaktion mit HDInsight über unformatiert
 
 ##<a id="prereq"></a>Voraussetzungen
 
-Damit Sie die in diesem Artikel aufgeführten Schritte ausführen können, benötigen Sie Folgendes:
+Um die in diesem Artikel aufgeführten Schritte auszuführen, benötigen Sie Folgendes:
 
 * Einen Hadoop-Cluster in HDInsight (Linux- oder Windows-basiert)
 
@@ -115,4 +115,4 @@ Informationen zu anderen Möglichkeiten, wie Sie mit Hadoop in HDInsight arbeite
 
 * [Verwenden von Pig mit Hadoop in HDInsight](hdinsight-use-pig.md)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0914_2016-->

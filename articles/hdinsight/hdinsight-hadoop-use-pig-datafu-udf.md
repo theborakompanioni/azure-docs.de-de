@@ -4,7 +4,7 @@ description="Bei DataFu handelt es sich um eine Sammlung von Bibliotheken für d
 services="hdinsight"
 documentationCenter=""
 authors="Blackmist"
-manager="paulettm"
+manager="jhubbard"
 editor="cgronlun"/>
 
 <tags
@@ -109,4 +109,4 @@ Weitere Informationen zu DataFu oder Pig finden Sie in den folgenden Dokumenten:
 
 * [Verwenden von Pig mit HDInsight](hdinsight-use-pig.md)
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0914_2016-->

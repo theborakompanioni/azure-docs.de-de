@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/28/2016" 
+	ms.date="09/12/2016" 
 	ms.author="spelluru"/>
 
 # Azure Data Factory – Häufig gestellte Fragen
@@ -22,9 +22,9 @@
 
 ### Was ist Azure Data Factory?
 
-Data Factory ist ein cloudbasierter Datenintegrationsdienst, der das **Verschieben und Transformieren von Daten automatisiert**. Genau wie ein Fertigungsbetrieb, in dem Anlagen Rohmaterialien verarbeiten und in Endprodukte umwandeln, organisiert Data Factory vorhandene Dienste so, dass Rohdaten gesammelt und in nutzbare Informationen transformiert werden.
+Data Factory ist ein cloudbasierter Datenintegrationsdienst, der das **Verschieben und Transformieren von Daten automatisiert**. Genau wie ein Betrieb, in dem Anlagen Rohmaterialien verarbeiten und in Endprodukte umwandeln, organisiert Data Factory vorhandene Dienste so, dass Rohdaten gesammelt und in nutzbare Informationen transformiert werden.
  
-Der Data Factory-Dienst ermöglicht das Erstellen von datengesteuerten Workflows zum Verschieben von Daten zwischen lokalen und cloudbasierten Datenspeichern sowie zum Verarbeiten/Transformieren von Daten mithilfe von Computediensten wie Azure HDInsight und Azure Data Lake Analytics. Nachdem Sie eine Pipeline erstellt haben, die die gewünschte Aktion ausführt, können Sie die regelmäßige Ausführung der Pipeline planen (stündlich, täglich, wöchentlich usw.).
+Data Factory ermöglicht das Erstellen von datengesteuerten Workflows zum Verschieben von Daten zwischen lokalen und cloudbasierten Datenspeichern sowie zum Verarbeiten/Transformieren von Daten mithilfe von Computediensten wie Azure HDInsight und Azure Data Lake Analytics. Nachdem Sie eine Pipeline erstellt haben, die die gewünschte Aktion ausführt, können Sie die regelmäßige Ausführung der Pipeline planen (stündlich, täglich, wöchentlich usw.).
 
 Unter [Übersicht und Schlüsselkonzepte](data-factory-introduction.md) finden Sie weitere Informationen.
 
@@ -65,7 +65,7 @@ Sie können Data Factorys mithilfe einer der folgenden Methoden erstellen:
 Nein. Wie bei anderen Azure-Ressourcen auch kann der Name einer Azure Data Factory nicht geändert werden.
 
 ### Kann ich eine Data Factory aus einem Azure-Abonnement in ein anderes verschieben? 
-Ja. Verwenden Sie die Schaltfläche **Verschieben** auf Ihrem Data Factory-Blatt, wie unten dargestellt:
+Ja. Verwenden Sie die Schaltfläche **Verschieben** auf Ihrem Data Factory-Blatt, wie im folgenden Diagramm dargestellt:
 
 ![Data Factory verschieben](media/data-factory-faq/move-data-factory.png)
 
@@ -76,11 +76,11 @@ Ja. Verwenden Sie die Schaltfläche **Verschieben** auf Ihrem Data Factory-Blatt
 - [Datentransformationsaktivitäten](data-factory-data-transformation-activities.md) zum Verarbeiten/Transformieren von Daten.
 
 ### Wann wird eine Aktivität ausgeführt?
-Die Konfigurationseinstellung **availability** in der Ausgabedatentabelle bestimmt, wann die Aktivität erfolgt. Wenn Eingabedatasets angegeben sind, prüft die Aktivität, ob alle Eingabedatenabhängigkeiten erfüllt sind (den Status **ready** aufweisen), bevor die Ausführung beginnt.
+Die Konfigurationseinstellung **availability** in der Ausgabedatentabelle bestimmt, wann die Aktivität erfolgt. Wenn Eingabedatasets angegeben sind, prüft die Aktivität, ob alle Eingabedatenabhängigkeiten erfüllt sind (den Status **Bereit** aufweisen), bevor die Ausführung beginnt.
 
 ## Kopieraktivität – Häufig gestellte Fragen
 ### Ist es besser, eine Pipeline mit mehreren Aktivitäten oder eine separate Pipeline für jede Aktivität einzurichten? 
-Pipelines dienen zum Bündeln verwandter Aktivitäten. Natürlich können Sie die Aktivitäten in einer Pipeline halten, wenn die Tabellen, die diese verbinden, nicht von anderen Aktivitäten außerhalb der Pipeline genutzt werden. Auf diese Weise müssen Sie Pipelineaktivitäten nicht verknüpfen, damit diese sich aneinander ausrichten. Darüber hinaus kann die Datenintegrität in den Tabellen, die für die Pipeline intern sind, beim Aktualisieren der Pipeline besser beibehalten werden. Bei einer Pipelineaktualisierung werden alle Aktivitäten in der Pipeline beendet, entfernt und neu erstellt. Aus Erstellungssicht kann es auch einfacher sein, den Datenfluss innerhalb der zugehörigen Aktivitäten in einer JSON-Datei für die Pipeline nachzuverfolgen.
+Pipelines dienen zum Bündeln verwandter Aktivitäten. Sie können die Aktivitäten in einer Pipeline halten, wenn die Datasets, die diese verbinden, nicht von anderen Aktivitäten außerhalb der Pipeline genutzt werden. Auf diese Weise müssen Sie Pipelineaktivitäten nicht verknüpfen, damit diese sich aneinander ausrichten. Darüber hinaus kann die Datenintegrität in den Tabellen, die für die Pipeline intern sind, beim Aktualisieren der Pipeline besser beibehalten werden. Bei einer Pipelineaktualisierung werden alle Aktivitäten in der Pipeline beendet, entfernt und neu erstellt. Aus Erstellungssicht kann es auch einfacher sein, den Datenfluss innerhalb der zugehörigen Aktivitäten in einer JSON-Datei für die Pipeline nachzuverfolgen.
 
 ### Wo wird der Kopiervorgang ausgeführt? 
 
@@ -104,7 +104,7 @@ Wenn Sie Ihren eigenen HDInsight-Cluster (BYOC - Bring Your Own Cluster) verwend
 - [Verwenden eines HDInsight-Clusters mit alternativen Speicherkonten und Metastores][hdinsight-alternate-storage]
 - [Verwenden zusätzlicher Speicherkonten mit HDInsight Hive][hdinsight-alternate-storage-2]
 
-Wenn Sie einen bedarfsgesteuerten Cluster verwenden, der vom Data Factory-Dienst erstellt wird, müssen Sie zusätzliche Speicherkonten für den verknüpften- HDInsight-Dienst angeben, damit der Data Factory-Dienst diese in Ihrem Auftrag registrieren kann. Verwenden Sie in der JSON-Definition des bedarfsgesteuerten verknüpften Diensts die **additionalLinkedServiceNames**-Eigenschaft, um alternative Speicherkonten anzugeben, wie im folgenden JSON-Codeausschnitt gezeigt:
+Wenn Sie einen bedarfsgesteuerten Cluster verwenden, der vom Data Factory-Dienst erstellt wird, geben Sie zusätzliche Speicherkonten für den verknüpften HDInsight-Dienst an, damit der Data Factory-Dienst diese in Ihrem Auftrag registrieren kann. Verwenden Sie in der JSON-Definition des bedarfsgesteuerten verknüpften Diensts die **additionalLinkedServiceNames**-Eigenschaft, um alternative Speicherkonten anzugeben, wie im folgenden JSON-Codeausschnitt gezeigt:
  
 	{
 	    "name": "MyHDInsightOnDemandLinkedService",
@@ -131,7 +131,7 @@ Im folgenden Beispiel müssen Sie nur für **Dataset1** den Wert **external** au
 
 **DataFactory1** Pipeline 1: Dataset1 -> Aktivität1 -> Dataset2 -> Aktivität2 -> Dataset3 Pipeline 2: Dataset3 -> Aktivität3 -> Dataset4
 
-Wenn Sie über eine andere Data Factory mit einer Pipeline, die Dataset4 nimmt, verfügen (erstellen von Pipeline 2 in Data Factory 1), müssen Sie Dataset4 als externes Dataset markieren, da das Dataset von einer anderen Data Factory (DataFactory1, nicht DataFactory2) erstellt wird.
+Wenn Sie über eine andere Data Factory mit einer Pipeline, die Dataset4 nimmt, verfügen (erstellt von Pipeline 2 in Data Factory 1), markieren Sie Dataset4 als externes Dataset, da das Dataset von einer anderen Data Factory (DataFactory1, nicht DataFactory2) erstellt wird.
 
 **DataFactory2** Pipeline 1: Dataset4 -> Aktivität4 -> Dataset5
 
@@ -153,7 +153,7 @@ Tägliche Slices starten anstatt zur Standardzeit (Mitternacht) um **6:00 Uhr**.
 Sie können einen Slice auf eine der folgenden Arten erneut ausführen:
 
 - Verwenden Sie die App „Überwachen und Verwalten“, um ein Aktivitätsfenster oder einen Slice erneut auszuführen. Anweisungen finden Sie unter [Wiederholen ausgewählter Aktivitätsfenster](data-factory-monitor-manage-app.md#re-run-selected-activity-windows).
-- Klicken Sie im Portal auf der Befehlsleiste für den Slice auf dem Blatt **DATENSLICE** auf **Ausführen**.
+- Klicken Sie im Azure-Portal auf der Befehlsleiste für den Slice auf dem Blatt **DATENSLICE** auf **Ausführen**.
 - Führen Sie das Cmdlet **Set-AzureRmDataFactorySliceStatus** aus, wobei der Status des Slices auf **Waiting** festgelegt ist.
 	
 		Set-AzureRmDataFactorySliceStatus -Status Waiting -ResourceGroupName $ResourceGroup -DataFactoryName $df -TableName $table -StartDateTime "02/26/2015 19:00:00" -EndDateTime "02/26/2015 20:00:00" 
@@ -170,7 +170,7 @@ Sie können auch wie folgt im Azure-Portal vorgehen:
 3. Wählen Sie auf dem Blatt **TABELLE** in der Liste **Zuletzt verwendete Slices** den gewünschten Slice aus.
 4. Klicken Sie auf dem Blatt **DATENSLICE** in der Liste **Aktivitätsausführungen** auf die Aktivitätsausführung.
 5. Klicken Sie auf der Kachel **Eigenschaften** auf das Blatt **DETAILS ZUR AKTIVITÄTSAUSFÜHRUNG**.
-6. Daraufhin sollte das Feld **Dauer** mit einem Wert angezeigt werden. Dies ist die Verarbeitungszeit des Slices.
+6. Daraufhin sollte das Feld **Dauer** mit einem Wert angezeigt werden. Dieser Wert ist die Verarbeitungszeit des Slices.
 
 ### Wie wird ein ausgeführter Slice beendet?
 Wenn Sie die Ausführung der Pipeline beenden müssen, können Sie das Cmdlet [Suspend-AzureRmDataFactoryPipeline](https://msdn.microsoft.com/library/mt603721.aspx) verwenden. Derzeit werden laufende Sliceausführungen bei Anhalten der Pipeline nicht beendet. Sobald die laufenden Ausführungen abgeschlossen sind, wird kein zusätzlicher Slice ausgewählt.
@@ -192,4 +192,4 @@ Wenn Sie alle Ausführungen wirklich sofort beenden möchten, ist die einzige M�
 [hdinsight-alternate-storage-2]: http://blogs.msdn.com/b/cindygross/archive/2014/05/05/use-additional-storage-accounts-with-hdinsight-hive.aspx
  
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0914_2016-->

@@ -49,13 +49,15 @@ Erstellen Sie zuerst schnell eine standardmäßige Sails.js-App, indem Sie die f
 
 Erstellen Sie als Nächstes die App Service-App-Ressource. Sie werden ihr später Ihre Sails.js-App bereitstellen.
 
-1. Melden Sie sich im gleichen Terminal wie folgt bei Azure an:
+1. Melden Sie sich wie folgt bei Azure an:
+1. Wechseln Sie im gleichen Terminal in den ASM-Modus, und melden Sie sich bei Azure an:
 
+        azure config mode asm
         azure login
 
     Befolgen Sie die Aufforderung, um die Anmeldung in einem Browser mit einem Microsoft-Konto fortzusetzen, das über Ihr Azure-Abonnement verfügt.
 
-2. Stellen Sie sicher, dass Sie sich noch im Stammverzeichnis Ihres Sails.js-Projekts befinden. Erstellen Sie die App Service-App-Ressource in Azure mit einem eindeutigen App-Namen mit dem nächsten Befehl. Die URL der Web-App lautet „http://&lt;appname>.azurewebsites.net“.
+2. Stellen Sie sicher, dass Sie sich noch im Stammverzeichnis Ihres Sails.js-Projekts befinden. Erstellen Sie die App Service-App-Ressource in Azure mit einem eindeutigen App-Namen mit dem nächsten Befehl. Die URL der Web-App lautet http://&lt;appname>.azurewebsites.net.
 
         azure site create --git <appname>
 
@@ -156,7 +158,7 @@ Die Granularität der stdout-Protokolle kann in der Datei [config/log.js](http:/
 
 ## Herstellen einer Verbindung mit einer Datenbank in Azure
 
-Erstellen Sie zum Herstellen einer Verbindung mit einer Datenbank in Azure die gewünschte Datenbank in Azure (Azure SQL-Datenbank, MySQL, MongoDB, Azure (Redis) Cache oder Ähnliches), und verwenden Sie den entsprechenden [Datenspeicheradapter](https://github.com/balderdashy/sails#compatibility), um die Verbindung herzustellen. Mit den Schritten in diesem Abschnitt wird gezeigt, wie eine Verbindung mit einer Azure SQL-Datenbank hergestellt wird.
+Erstellen Sie zum Herstellen einer Verbindung mit einer Datenbank in Azure die gewünschte Datenbank in Azure (Azure SQL-Datenbank, MySQL, MongoDB, Azure [Redis] Cache oder Ähnliches), und verwenden Sie den entsprechenden [Datenspeicheradapter](https://github.com/balderdashy/sails#compatibility), um die Verbindung herzustellen. Mit den Schritten in diesem Abschnitt wird gezeigt, wie eine Verbindung mit einer Azure SQL-Datenbank hergestellt wird.
 
 1. Führen Sie [dieses Tutorial](../sql-database/sql-database-get-started.md) aus, um eine leere Azure SQL-Datenbank in einer neuen SQL Server-Instanz zu erstellen. Die Standardeinstellungen der Firewall ermöglichen es, dass Azure-Dienste (z. B. App Service) eine Verbindung herstellen.
 
@@ -213,9 +215,9 @@ Erstellen Sie zum Herstellen einer Verbindung mit einer Datenbank in Azure die g
             migrate: 'alter'
         },
 
-    `migrate: 'alter'` ermöglicht die Verwendung von Datenbankmigrationsfeatures zum problemlosen Erstellen und Aktualisieren der Datenbanktabellen in Ihrer Azure SQL-Datenbank. Für die Azure-(Produktions-)Umgebung wird allerdings `migrate: 'safe'` verwendet, da „Sails.js“ die Verwendung von `migrate: 'alter'` in einer Produktionsumgebung nicht zulässt. (Weitere Informationen finden Sie in der [Sails.js-Dokumentation](http://sailsjs.org/documentation/concepts/models-and-orm/model-settings)).
+    `migrate: 'alter'` ermöglicht die Verwendung von Datenbankmigrationsfeatures zum problemlosen Erstellen und Aktualisieren der Datenbanktabellen in Ihrer Azure SQL-Datenbank. Für die Azure-Umgebung (Produktion) wird allerdings `migrate: 'safe'` verwendet, da „Sails.js“ die Verwendung von `migrate: 'alter'` in einer Produktionsumgebung nicht zulässt. (Weitere Informationen finden Sie in der [Sails.js-Dokumentation](http://sailsjs.org/documentation/concepts/models-and-orm/model-settings)).
 
-4. [Generieren](http://sailsjs.org/documentation/reference/command-line-interface/sails-generate) Sie über das Terminal wie gewohnt eine Sails.js-[Blaupausen-API](http://sailsjs.org/documentation/concepts/blueprints). Führen Sie dann `sails lift` aus, um die Datenbank mit Sails.js-Datenbankmigration zu erstellen. Zum Beispiel:
+4. [Generieren](http://sailsjs.org/documentation/reference/command-line-interface/sails-generate) Sie über das Terminal wie gewohnt eine Sails.js-[Blaupausen-API](http://sailsjs.org/documentation/concepts/blueprints). Führen Sie dann `sails lift` aus, um die Datenbank mit Sails.js-Datenbankmigration zu erstellen. Beispiel:
 
          sails generate api mywidget
          sails lift
@@ -237,7 +239,7 @@ Erstellen Sie zum Herstellen einer Verbindung mit einer Datenbank in Azure die g
         git push azure master
         azure site browse
 
-6. Greifen Sie auf die Blaupausen-API Ihrer Azure-Web-App zu. Zum Beispiel:
+6. Greifen Sie auf die Blaupausen-API Ihrer Azure-Web-App zu. Beispiel:
 
         http://<appname>.azurewebsites.net/mywidget/create
 
@@ -248,4 +250,4 @@ Erstellen Sie zum Herstellen einer Verbindung mit einer Datenbank in Azure die g
 - [Erste Schritte mit Node.js-Web-Apps in Azure App Service](app-service-web-nodejs-get-started.md)
 - [Verwenden von Node.js-Modulen mit Azure-Anwendungen](../nodejs-use-node-modules-azure-apps.md)
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0914_2016-->

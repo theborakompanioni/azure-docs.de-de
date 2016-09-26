@@ -4,7 +4,7 @@
 	services="machine-learning"
 	documentationCenter=""
 	authors="jeannt"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun"/>
 
 <tags
@@ -51,7 +51,7 @@ Ein allgemeiner Problemlösungsprozess für die Kundenabwanderung ist in den Abb
 
 1.	Mit einem Risikomodell können Sie berücksichtigen, wie sich Aktionen auf die Wahrscheinlichkeit und das Risiko auswirken.
 2.	Mit einem Interventionsmodell können Sie berücksichtigen, wie sich das Interventionsniveau auf die Abwanderungswahrscheinlichkeit und den Langzeitwert von Kundenbeziehungen (Customer Lifetime Value, CLV) auswirken kann.
-3.	Diese Analyse bietet sich für eine qualitative Analyse an, die in eine auf Kundensegmente ausgerichtete proaktive Marketingkampagne ausgeweitet wird, um das optimale Angebot bereitzustellen.  
+3.	Diese Analyse bietet sich für eine qualitative Analyse an, die in eine auf Kundensegmente ausgerichtete proaktive Marketingkampagne ausgeweitet wird, um das optimale Angebot bereitzustellen.
 
 ![][1]
 
@@ -101,7 +101,7 @@ Die folgenden Diagramme veranschaulichen die verwendeten Daten.
 ![][5]
 
 
-*Abbildung 7: Aus der Datenquelle extrahierte Funktionen*
+*Abbildung 7: Aus der Datenquelle extrahierte Funktionen*  
 > Beachten Sie, dass diese Daten privat sind, weshalb Modell und Daten nicht freigegeben werden dürfen. Sie finden jedoch ein ähnliches Modell mit öffentlich verfügbaren Daten in diesem Beispielexperiment im [Cortana Intelligence-Katalog](http://gallery.cortanaintelligence.com/) unter [Telco Customer Churn](http://gallery.cortanaintelligence.com/Experiment/31c19425ee874f628c847f7e2d93e383).
 > 
 > Weitere Informationen zum Implementieren eines Abwanderungsanalysemodells mit Cortana Intelligence Suite finden Sie auch in [diesem Video](https://info.microsoft.com/Webinar-Harness-Predictive-Customer-Churn-Model.html) von Senior Program Manager Wee Hyong Tok.
@@ -114,7 +114,7 @@ Wir haben die folgenden vier Machine Learning-Algorithmen für die Erstellung de
 1.	Logistische Regression (LR)
 2.	Boosted Decision Tree (BT, verstärkter Entscheidungsbaum)
 3.	Averaged Perceptron (AP, gemitteltes Perzeptron)
-4.	Support Vector Machine (SVM, Stützvektormethode)  
+4.	Support Vector Machine (SVM, Stützvektormethode)
 
 
 Das folgende Diagramm veranschaulicht einen Teil der Experimententwurfsoberfläche, die die Reihenfolge anzeigt, in der die Modelle erstellt wurden:
@@ -151,7 +151,7 @@ AUC wird i. Allg. als Maßstab für den Wert verschiedener Algorithmen (oder ve
 Wir haben die Fehlklassifikationsraten für das fragliche Dataset mithilfe der CRM-Daten von ungefähr 8.000 Kunden verglichen.
 
 -	Die SAS-Fehlklassifizierungsrate lag bei 10-15 %.
--	Die Fehlklassifizierungsrate von Machine Learning Studio lag für die obersten 200-300 Abwanderer bei 15-20 %.  
+-	Die Fehlklassifizierungsrate von Machine Learning Studio lag für die obersten 200-300 Abwanderer bei 15-20 %.
 
 In der Telekommunikationsbranche ist es wichtig, sich nur mit den Kunden mit dem höchsten Abwanderungsrisiko zu befassen, indem ihnen ein Concierge-Dienst oder andere Sonderbehandlungen angeboten werden. In dieser Hinsicht erzielt die Machine Learning Studio-Implementierung Ergebnisse, die mit dem SAS-Modell vergleichbar sind.
 
@@ -188,11 +188,11 @@ Die in Machine Learning Studio gehosteten Modelle haben SAS hinsichtlich der Aus
 In der Telekommunikationsbranche haben sich verschiedene Methoden zur Analyse der Abwanderung entwickelt, darunter:
 
 -	Ableitung der Metriken für vier grundlegende Kategorien:
-	-	**Entität (z. B. ein Abonnement)**. Bereitstellung grundlegender Informationen zum Abonnement und/oder Kunden, das/der Gegenstand der Abwanderung ist.
+	-	**Entität (z.B. ein Abonnement)**. Bereitstellung grundlegender Informationen zum Abonnement und/oder Kunden, das/der Gegenstand der Abwanderung ist.
 	-	**Aktivität**: Abrufen aller möglichen Nutzungsinformationen, die sich auf die Entität beziehen, z. B. die Anzahl der Anmeldungen.
 	-	**Kundensupport**. Sammeln von Informationen aus Kundensupportprotokollen, um anzuzeigen, ob es für das Abonnement Probleme oder Interaktionen mit dem Kundensupport gab.
 	-	**Wettbewerbs- und Geschäftsdaten**. Abrufen aller möglichen Informationen zum Kunden (können nicht verfügbar oder schwer nachzuverfolgen sein).
--	Verwenden der Gewichtung zur Steuerung der Funktionsauswahl. Das bedeutet, dass das Boosted Decision Tree-Modell immer einen vielversprechenden Ansatz darstellt.  
+-	Verwenden der Gewichtung zur Steuerung der Funktionsauswahl. Das bedeutet, dass das Boosted Decision Tree-Modell immer einen vielversprechenden Ansatz darstellt.
 
 Die Verwendung dieser vier Kategorien schafft die Illusion, dass ein einfacher *deterministischer* Ansatz basierend auf Indizes, die anhand von angemessenen Faktoren pro Kategorie gebildet werden, ausreichen sollte, um das Abwanderungsrisiko von Kunden zu erkennen. Obwohl dieser Gedanke plausibel scheint, beruht er leider auf einem falschen Verständnis. Der Grund hierfür ist, dass die Abwanderung ein temporaler Effekt ist, während die zur Abwanderung führenden Faktoren normalerweise schwankende Zustände aufweisen. Was bringt einen Kunden dazu, zu glauben, dass es einen Unterschied macht, ob er heute oder morgen oder in sechs Monaten abwandert? Daher ist ein *Wahrscheinlichkeitsmodell* erforderlich.
 
@@ -202,20 +202,20 @@ Die Aussicht der Self-Service-Analyse mithilfe von Machine Learning Studio ist j
 
 Eine weitere interessante Funktion von Azure Machine Learning ist die Möglichkeit, dem Repository der bereits verfügbaren vordefinierten Module ein benutzerdefiniertes Modul hinzuzufügen. Diese Funktion bietet im Wesentlichen eine Möglichkeit, Bibliotheken auszuwählen und Vorlagen für vertikale Märkte zu erstellen. Sie ist am Markt ein wichtiges Unterscheidungsmerkmal von Azure Machine Learning.
 
-Wir hoffen, dieses Thema weiter behandeln zu können, insbesondere in Bezug auf die Analyse großer Datenmengen.
+Wir hoffen, dieses Thema weiter behandeln zu können, insbesondere in Bezug auf die Analyse großer Datenmengen.  
 ##Zusammenfassung
-In diesem Dokument wird ein sinnvoller Ansatz zur Bewältigung eines allgemeinen Problems, der Kundenabwanderung, mithilfe einer allgemeinen Struktur beschrieben. Wir haben einen Prototyp zur Bewertung von Modellen betrachtet und ihn mithilfe von Azure Machine Learning implementiert. Abschließend wird die Genauigkeit und Leistung der Prototyplösung hinsichtlich vergleichbarer Algorithmen in SAS bewertet.
+In diesem Dokument wird ein sinnvoller Ansatz zur Bewältigung eines allgemeinen Problems, der Kundenabwanderung, mithilfe einer allgemeinen Struktur beschrieben. Wir haben einen Prototyp zur Bewertung von Modellen betrachtet und ihn mithilfe von Azure Machine Learning implementiert. Abschließend haben wird die Genauigkeit und Leistung der Prototyplösung hinsichtlich vergleichbarer Algorithmen in SAS bewertet.
 
 **Weitere Informationen:**
 
 Konnte Ihnen dieses Dokument helfen? Bitte senden Sie uns Ihr Feedback. Teilen Sie uns auf einer Skala von 1 (schlecht) bis 5 (ausgezeichnet) mit, wie Sie dieses Dokument bewerten, und nennen Sie uns einen Grund für diese Bewertung. Beispiel:
 
 -	Erfolgt die positive Bewertung aufgrund geeigneter Beispiele, ausgezeichneter Screenshots, anschaulicher Beschreibungen oder aus anderen Gründen?
--	Erfolgt die negative Bewertung aufgrund schlechter Beispiele, ungenauer Screenshots oder missverständlicher Beschreibungen?  
+-	Erfolgt die negative Bewertung aufgrund schlechter Beispiele, ungenauer Screenshots oder missverständlicher Beschreibungen?
 
 Dieses Feedback hilft uns dabei, die Qualität der von uns veröffentlichten Whitepaper zu verbessern.
 
-[Feedback senden](mailto:sqlfback@microsoft.com).
+[Feedback senden](mailto:sqlfback@microsoft.com).  
 ##Referenzen
 [1]Predictive Analytics: Beyond the Predictions, W. McKnight, Information Management, Juli/August 2011, S. 18-20.
 
@@ -225,7 +225,7 @@ Dieses Feedback hilft uns dabei, die Qualität der von uns veröffentlichten Whi
 
 [4] [Big Data Marketing: Engage Your Customers More Effectively and Drive Value](http://www.amazon.com/Big-Data-Marketing-Customers-Effectively/dp/1118733894/ref=sr_1_12?ie=UTF8&qid=1387541531&sr=8-12&keywords=customer+churn) (in englischer Sprache)
 
-[5] [Telco churn model template](http://gallery.cortanaintelligence.com/Experiment/Telco-Customer-Churn-5) (Vorlage für ein Abwanderungsmodell für Telekommunikationsunternehmen) in der [Cortana Intelligence Gallery](http://gallery.cortanaintelligence.com/) (Cortana Intelligence-Katalog)
+[5] [Telco churn model template](http://gallery.cortanaintelligence.com/Experiment/Telco-Customer-Churn-5) (Vorlage für ein Abwanderungsmodell für Telekommunikationsunternehmen) in der [Cortana Intelligence Gallery](http://gallery.cortanaintelligence.com/) (Cortana Intelligence-Katalog)  
 ##Anhang
 
 ![][10]
@@ -244,4 +244,4 @@ Dieses Feedback hilft uns dabei, die Qualität der von uns veröffentlichten Whi
 [9]: ./media/machine-learning-azure-ml-customer-churn-scenario/churn-9.png
 [10]: ./media/machine-learning-azure-ml-customer-churn-scenario/churn-10.png
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0914_2016-->

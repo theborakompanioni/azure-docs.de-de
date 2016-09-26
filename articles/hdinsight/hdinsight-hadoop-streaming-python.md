@@ -4,7 +4,7 @@
    services="hdinsight"
    documentationCenter=""
    authors="Blackmist"
-   manager="paulettm"
+   manager="jhubbard"
    editor="cgronlun"
 	tags="azure-portal"/>
 
@@ -27,7 +27,7 @@ Dieser Artikel basiert auf Informationen und Beispielen, die von Michael Noll un
 
 ##Voraussetzungen
 
-Damit Sie die in diesem Artikel aufgeführten Schritte ausführen können, benötigen Sie Folgendes:
+Um die in diesem Artikel aufgeführten Schritte auszuführen, benötigen Sie Folgendes:
 
 * Ein Linux-basierter Hadoop-Cluster in HDInsight
 
@@ -212,4 +212,4 @@ Nachdem Sie erfahren haben, wie Sie Streaming-MapReduce-Aufträge mit HDInsight 
 * [Verwenden von Pig mit HDInsight](hdinsight-use-pig.md)
 * [Verwenden von MapReduce-Aufträgen mit HDInsight](hdinsight-use-mapreduce.md)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0914_2016-->

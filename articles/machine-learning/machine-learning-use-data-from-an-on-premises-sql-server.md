@@ -4,7 +4,7 @@ description="Verwenden Sie Daten aus einer lokalen SQL Server-Datenbank, um erwe
 services="machine-learning"
 documentationCenter=""
 authors="garyericson"
-manager="paulettm"
+manager="jhubbard"
 editor="cgronlun"/>
 
 <tags
@@ -51,7 +51,7 @@ Sie sollten beim Einrichten und Verwenden eines Datenverwaltungsgateways Folgend
 - Sie können ein Gateway nur für jeweils einen Arbeitsbereich konfigurieren. Gateways können zurzeit nicht Arbeitsbereiche übergreifend freigegeben werden.
 - Sie können für einen einzelnen Arbeitsbereich mehrere Gateways konfigurieren. Sie möchten z.B. ein Gateway verwenden, das während der Entwicklung mit Ihren Testdatenquellen verbunden ist, und ein Produktionsgateway, wenn Sie bereit sind, den Betrieb aufzunehmen.
 - Das Gateway muss sich nicht auf dem gleichen Computer wie die Datenquelle befinden, aber die Nähe zur Datenquelle verkürzt die Zeit, die das Gateway benötigt, um sich mit der Datenquelle zu verbinden. Es wird empfohlen, das Gateway auf einem anderen Computer als dem Computer zu installieren, auf dem die lokale Datenquelle gehostet wird. So konkurriert das Gateway nicht mit der Datenquelle um Ressourcen.
-- Wenn Sie bereits ein Gateway auf dem Computer installiert haben, das Power BI- oder Azure Data Factory-Szenarien unterstützt, installieren Sie auf einem anderen Computer ein separates Gateway für Azure Machine Learning. 
+- Wenn Sie bereits ein Gateway auf dem Computer installiert haben, das Power BI- oder Azure Data Factory-Szenarien unterstützt, installieren Sie auf einem anderen Computer ein separates Gateway für Azure Machine Learning.
 
     > [AZURE.NOTE] Sie können Datenverwaltungsgateway und Power BI-Gateway nicht auf dem gleichen Computer ausführen.
 
@@ -162,4 +162,4 @@ Nach Abschluss der Ausführung des Experiments können Sie die Daten, die Sie au
 
 Wenn Sie die Entwicklung des Experiments abgeschlossen haben, können Sie Ihr Modell bereitstellen und in Betrieb nehmen. Mit dem Batchausführungsdienst werden Daten aus der im **Import Data**-Modul konfigurierten lokalen SQL Server-Datenbank gelesen und für die Bewertung verwendet. Sie können zwar den Request Response Service zur Bewertung lokaler Daten verwenden, aber Microsoft empfiehlt stattdessen die Verwendung des [Excel-Add-Ins](machine-learning-excel-add-in-for-web-services.md). Derzeit wird das Schreiben in eine lokale SQL Server-Datenbank über **Export Data** weder in Ihren Experimenten noch in veröffentlichten Webdiensten unterstützt.
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0914_2016-->

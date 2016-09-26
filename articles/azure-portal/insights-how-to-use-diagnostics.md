@@ -66,8 +66,8 @@ Beachten Sie, dass derzeit bestimmte Linux-Distributionen nicht unterstützt wer
 * [Empfangen von Warnbenachrichtigungen](insights-receive-alert-notifications.md), wenn ein Vorgangsereignis auftritt oder Metriken einen Schwellenwert überschreiten.
 * [Überwachen von Dienstmetriken](insights-how-to-customize-monitoring.md), um sicherzustellen, dass Ihr Dienst verfügbar und reaktionsfähig ist.
 * [Automatisches Skalieren der Instanzenzahl](insights-how-to-scale.md), um sicherzustellen, dass Ihr Dienst verfügbar und reaktionsfähig ist.
-* [Überwachen der Anwendungsleistung](insights-perf-analytics.md), um präzise Informationen zur Leistung Ihres Codes in der Cloud zu ermitteln.
+* [Überwachen der Anwendungsleistung](../application-insights/app-insights-azure-web-apps.md), um präzise Informationen zur Leistung Ihres Codes in der Cloud zu ermitteln.
 * [Anzeigen von Ereignissen und Überwachungsprotokollen](insights-debugging-with-events.md), um sich über sämtliche Aktivitäten Ihres Diensts zu informieren.
 * [Nachverfolgen der Dienstintegrität](insights-service-health.md), um den Zeitpunkt von Leistungsabfällen oder Dienstunterbrechungen zu ermitteln, die in Azure aufgetreten sind.
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0914_2016-->

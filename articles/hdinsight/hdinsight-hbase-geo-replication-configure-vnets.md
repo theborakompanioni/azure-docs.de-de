@@ -4,7 +4,7 @@
    services="hdinsight,virtual-network" 
    documentationCenter="" 
    authors="mumian" 
-   manager="paulettm" 
+   manager="jhubbard" 
    editor="cgronlun"/>
 
 <tags
@@ -47,7 +47,7 @@ Das folgende Diagramm veranschaulicht die beiden virtuellen Netzwerke, die Sie i
  
 
 ##Voraussetzungen
-Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
+Bevor Sie mit diesem Tutorial beginnen können, benötigen Sie Folgendes:
 
 - **Ein Azure-Abonnement**. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 
@@ -212,7 +212,7 @@ Im letzten Abschnitt können Sie ein VPN-Gateway für jedes der VNets erstellen.
 3.	Klicken Sie auf **Contoso-LNet-EU-** und klicken Sie dann unten auf **BEARBEITEN**.
 4.	Aktualisieren der **IP-ADRESSE DES VPN-GERÄTS**. Das ist die Adresse, die Sie von der Registerkarte DASHBOARD von Contoso-VNET-EU erhalten.
 5.	Klicken Sie auf die rechte Taste.
-6.	Klicken Sie dann die Taste „Aktivieren“.
+6.	Klicken Sie dann auf das Häkchen.
 
 **So konfigurieren Sie die IP-Adresse des VPN-Geräts für Contoso-LNet-US**
 
@@ -272,4 +272,4 @@ In diesem Lernprogramm haben Sie gelernt, eine VPN-Verbindung zwischen zwei virt
 [img-vnet-lnet-diagram]: ./media/hdinsight-hbase-geo-replication-configure-VNets/HDInsight.HBase.VPN.LNet.diagram.png
 [img-vpn-status]: ./media/hdinsight-hbase-geo-replication-configure-VNets/HDInsight.HBase.VPN.status.png
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0914_2016-->

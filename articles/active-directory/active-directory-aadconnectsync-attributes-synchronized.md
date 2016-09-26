@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="andkjell"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -13,20 +13,17 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/27/2016"
+	ms.date="09/13/2016"
 	ms.author="markvi;andkjell"/>
 
 
 # Azure AD Connect-Synchronisierung: Mit Azure Active Directory synchronisierte Attribute
-
-In diesem Thema werden die Attribute aufgelistet, die von der Azure AD Connect-Synchronisierung synchronisiert werden. Die Attribute sind nach den zugehörigen Azure AD-Apps gruppiert.
+In diesem Thema werden die Attribute aufgelistet, die bei der Azure AD Connect-Synchronisierung synchronisiert werden. Die Attribute sind nach den zugehörigen Azure AD-Apps gruppiert.
 
 ## Zu synchronisierende Attribute
-Häufig wird die Frage gestellt, *welche Attribute als Mindestvoraussetzung synchronisiert werden müssen*. Die standardmäßige und empfohlene Vorgehensweise besteht darin, die Standardattribute beizubehalten, damit in der Cloud eine vollständige GAL (Globale Adressliste) erstellt werden kann und alle Features in Office 365-Workloads abgerufen werden können. In einigen Fällen können Attribute vorhanden sein, die für Ihre Organisation nicht mit der Cloud synchronisiert werden sollen, da sie sensible Daten oder personenbezogene Informationen (Personally Identifiable Information, PII) wie im obigen Beispiel enthalten.
+Häufig wird die Frage gestellt, *welche Attribute als Mindestvoraussetzung synchronisiert werden müssen*. Die standardmäßige und empfohlene Vorgehensweise besteht darin, die Standardattribute beizubehalten, damit in der Cloud eine vollständige GAL (Globale Adressliste) erstellt werden kann und alle Features in Office 365-Workloads abgerufen werden können. In einigen Fällen können Attribute vorhanden sein, die für Ihre Organisation nicht mit der Cloud synchronisiert werden sollen, da sie sensible Daten oder personenbezogene Informationen (Personally Identifiable Information, PII) enthalten, wie etwa in diesem Beispiel: ![Fehlerhafte Attribute](./media/active-directory-aadconnectsync-attributes-synchronized/badextensionattribute.png)
 
-![Fehlerhafte Attribute](./media/active-directory-aadconnectsync-attributes-synchronized/badextensionattribute.png)
-
-In diesem Fall beginnen Sie mit der unten angegebenen Liste von Attributen und identifizieren die Attribute, die unter Umständen sensible oder personenbezogene Informationen enthalten und nicht synchronisiert werden können. Deaktivieren Sie diese Attribute per [Azure AD-App- und Attributfilterung](active-directory-aadconnect-get-started-custom.md#azure-ad-app-and-attribute-filtering) während der Installation.
+In diesem Fall beginnen Sie mit der in diesem Thema angegebenen Liste von Attributen und identifizieren die Attribute, die unter Umständen sensible oder personenbezogene Informationen enthalten und nicht synchronisiert werden können. Deaktivieren Sie diese Attribute per [Azure AD-App- und Attributfilterung](active-directory-aadconnect-get-started-custom.md#azure-ad-app-and-attribute-filtering) während der Installation.
 
 >[AZURE.WARNING] Sie sollten beim Deaktivieren der Attribute äußerst vorsichtig vorgehen und nur diejenigen Attribute deaktivieren, die auf keinen Fall synchronisiert werden können. Das Deaktivieren von anderen Attributen kann eine negative Auswirkung auf Features haben.
 
@@ -43,10 +40,9 @@ In diesem Fall beginnen Sie mit der unten angegebenen Liste von Attributen und i
 | usageLocation| X| Mechanische Eigenschaft. Das Land des Benutzers. Wird für die Lizenzzuweisung verwendet.|
 | userPrincipalName| X| Dieser Benutzerprinzipalname (UPN) ist die Anmelde-ID für den Benutzer. Meistens identisch mit dem Wert [mail].|
 
-
 ## Exchange Online
 
-| Attributname| Benutzer| Kontakt| Gruppe| Kommentar |
+| Attributname| Benutzer| Kontakt| Group| Kommentar |
 | --- | :-: | :-: | :-: | --- |
 | accountEnabled| X| | | Definiert, ob ein Konto aktiviert ist.|
 | assistant| X| X| | |
@@ -167,11 +163,9 @@ In diesem Fall beginnen Sie mit der unten angegebenen Liste von Attributen und i
 | userSMIMECertificates| X| X| | |
 | wWWHomePage| X| X| | |
 
-
-
 ## SharePoint Online
 
-| Attributname| Benutzer| Kontakt| Gruppe| Kommentar |
+| Attributname| Benutzer| Kontakt| Group| Kommentar |
 | --- | :-: | :-: | :-: | --- |
 | accountEnabled| X| | | Definiert, ob ein Konto aktiviert ist.|
 | authOrig| X| X| X| |
@@ -254,7 +248,7 @@ In diesem Fall beginnen Sie mit der unten angegebenen Liste von Attributen und i
 
 ## Lync Online
 
-| Attributname| Benutzer| Kontakt| Gruppe| Kommentar |
+| Attributname| Benutzer| Kontakt| Group| Kommentar |
 | --- | :-: | :-: | :-: | --- |
 | accountEnabled| X| | | Definiert, ob ein Konto aktiviert ist.|
 | c| X| X| | |
@@ -302,10 +296,9 @@ In diesem Fall beginnen Sie mit der unten angegebenen Liste von Attributen und i
 | userPrincipalName| X| | | Dieser Benutzerprinzipalname (UPN) ist die Anmelde-ID für den Benutzer. Meistens identisch mit dem Wert [mail].|
 | wWWHomePage| X| X| | |
 
-
 ## Azure RMS
 
-| Attributname| Benutzer| Kontakt| Gruppe| Kommentar |
+| Attributname| Benutzer| Kontakt| Group| Kommentar |
 | --- | :-: | :-: | :-: | --- |
 | accountEnabled| X| | | Definiert, ob ein Konto aktiviert ist.|
 | cn| X| | X| Allgemeiner Name oder Alias. Meistens das Präfix des Werts [mail].|
@@ -320,10 +313,9 @@ In diesem Fall beginnen Sie mit der unten angegebenen Liste von Attributen und i
 | usageLocation| X| | | Mechanische Eigenschaft. Das Land des Benutzers. Wird für die Lizenzzuweisung verwendet.|
 | userPrincipalName| X| | | Dieser Benutzerprinzipalname ist die Anmelde-ID für den Benutzer. Meistens identisch mit dem Wert [mail].|
 
-
 ## Intune
 
-| Attributname| Benutzer| Kontakt| Gruppe| Kommentar |
+| Attributname| Benutzer| Kontakt| Group| Kommentar |
 | --- | :-: | :-: | :-: | --- |
 | accountEnabled| X| | | Definiert, ob ein Konto aktiviert ist.|
 | c| X| X| | |
@@ -341,11 +333,9 @@ In diesem Fall beginnen Sie mit der unten angegebenen Liste von Attributen und i
 | usageLocation| X| | | Mechanische Eigenschaft. Das Land des Benutzers. Wird für die Lizenzzuweisung verwendet.|
 | userPrincipalName| X| | | Dieser Benutzerprinzipalname (UPN) ist die Anmelde-ID für den Benutzer. Meistens identisch mit dem Wert [mail].|
 
-
-
 ## Dynamics CRM
 
-| Attributname| Benutzer| Kontakt| Gruppe| Kommentar |
+| Attributname| Benutzer| Kontakt| Group| Kommentar |
 | --- | :-: | :-: | :-: | --- |
 | accountEnabled| X| | | Definiert, ob ein Konto aktiviert ist.|
 | c| X| X| | |
@@ -378,14 +368,14 @@ In diesem Fall beginnen Sie mit der unten angegebenen Liste von Attributen und i
 | userPrincipalName| X| | | Dieser Benutzerprinzipalname (UPN) ist die Anmelde-ID für den Benutzer. Meistens identisch mit dem Wert [mail].|
 
 ## Drittanbieteranwendungen
-Dies ist ein Satz mit Attributen. Es handelt sich um die Attribute, die für eine generische Workload oder Anwendung mindestens benötigt werden. Er kann für eine oben nicht aufgeführte Workload oder für eine Nicht-Microsoft-App verwendet werden. Der Satz wird explizit für Folgendes verwendet:
+Diese Gruppe umfasst einen Satz von Attributen. Es handelt sich um die Attribute, die für eine generische Workload oder Anwendung mindestens benötigt werden. Dieser Attributsatz kann für eine oben nicht aufgeführte Workload oder für eine Nicht-Microsoft-App verwendet werden. Der Satz wird explizit für Folgendes verwendet:
 
-- Yammer (nur „Benutzer“ wird wirklich genutzt)
-- Organisationsübergreifende Hybrid-B2B-Zusammenarbeit über Ressourcen wie SharePoint (siehe [SharePoint Business to Business Collaboration: Extranet for Partners with Office 365](http://go.microsoft.com/fwlink/?LinkId=747036) (SharePoint Business-to-Business-Zusammenarbeit: Extranet für Partner mit Office 365))
+- Yammer (nur „Benutzer“ wird genutzt)
+- [Organisationsübergreifende Hybrid-B2B-Zusammenarbeit über Ressourcen wie SharePoint (siehe SharePoint Business to Business Collaboration: Extranet for Partners with Office 365 (SharePoint Business-to-Business-Zusammenarbeit: Extranet für Partner mit Office 365))](http://go.microsoft.com/fwlink/?LinkId=747036)
 
-Dies ist ein Satz von Attributen, die verwendet werden können, wenn das Azure AD-Verzeichnis nicht zur Unterstützung von Office 365, Dynamics oder Intune verwendet wird. Er umfasst eine kleine Gruppe von Kernattributen.
+Diese Gruppe umfasst einen Satz von Attributen, die verwendet werden können, wenn das Azure AD-Verzeichnis nicht zur Unterstützung von Office 365, Dynamics oder Intune verwendet wird. Er umfasst eine kleine Gruppe von Kernattributen.
 
-| Attributname| Benutzer| Kontakt| Gruppe| Kommentar |
+| Attributname| Benutzer| Kontakt| Group| Kommentar |
 | --- | :-: | :-: | :-: | --- |
 | accountEnabled| X| | | Definiert, ob ein Konto aktiviert ist.|
 | cn| X| | X| |
@@ -418,19 +408,19 @@ Bei unter Windows 10 per Domänenbeitritt in die Domäne eingebundenen Computern
 | operatingSystemVersion | X| Auch als „deviceOSVersion“ bezeichnet.|
 | userCertificate | X| |
 
-Diese Attribute für Benutzer ergänzen die anderen Apps, die Sie ausgewählt haben.
+Diese Attribute für **Benutzer** ergänzen die anderen Apps, die Sie ausgewählt haben.
 
 | Attributname| Benutzer| Kommentar |
 | --- | :-: | --- |
-| domainFQDN| X| Auch als „dnsDomainName“ bezeichnet. Beispiel: contoso.com|
+| domainFQDN| X| Auch als „dnsDomainName“ bezeichnet. Beispiel: contoso.com.|
 | domainNetBios| X| Auch als „netBiosName“ bezeichnet. Beispiel: CONTOSO|
 
 ## Exchange-Hybridrückschreiben
-Diese Attribute werden vom Azure AD auf das lokale Active Directory zurückgeschrieben, wenn Sie die Aktivierung des Exchange-Hybrids auswählen. Abhängig von Ihrer Exchange-Version werden möglicherweise weniger Attribute synchronisiert.
+Diese Attribute werden vom Azure AD in das lokale Active Directory zurückgeschrieben, wenn Sie **Exchange-Hybrid** aktivieren. Abhängig von Ihrer Exchange-Version werden möglicherweise weniger Attribute synchronisiert.
 
-| Attributname| Benutzer| Kontakt| Gruppe| Kommentar |
+| Attributname| Benutzer| Kontakt| Group| Kommentar |
 | --- | :-: | :-: | :-: | --- |
-| msDS-ExternalDirectoryObjectID| X| | | Abgeleitet von cloudAnchor in Azure AD. Dies ist neu in Exchange 2016.|
+| msDS-ExternalDirectoryObjectID| X| | | Abgeleitet von cloudAnchor in Azure AD. Dies ist ein neues Attribut in Exchange 2016.|
 | msExchArchiveStatus| X| | | Online-Archiv: Ermöglicht Kunden, E-Mail-Nachrichten zu archivieren.|
 | msExchBlockedSendersHash| X| | | Filtern: Schreibt lokale Filterung, Onlinesicherung und blockierte Absenderdaten von Clients zurück.|
 | msExchSafeRecipientsHash| X| | | Filtern: Schreibt lokale Filterung, Onlinesicherung und blockierte Absenderdaten von Clients zurück.|
@@ -440,7 +430,7 @@ Diese Attribute werden vom Azure AD auf das lokale Active Directory zurückgesch
 | proxyAddresses| X| X| X| Nur die x500-Adresse von Exchange Online wird eingefügt.|
 
 ## Geräterückschreiben
-Geräteobjekte werden in Active Directory erstellt. Dabei kann es sich um Geräte, die mit Azure AD verknüpft sind, oder um in eine Domäne eingebundene Windows 10-Computer handeln.
+Geräteobjekte werden in Active Directory erstellt. Bei diesen Objekten kann es sich um mit Azure AD verknüpfte Geräte oder um in eine Domäne eingebundene Windows 10-Computer handeln.
 
 | Attributname| Gerät| Kommentar |
 | --- | :-: | --- |
@@ -461,12 +451,13 @@ Geräteobjekte werden in Active Directory erstellt. Dabei kann es sich um Gerät
 
 
 ## Hinweise
-- Bei Verwendung einer alternativen ID wird das lokale Attribut userPrincipalName mit dem Azure AD-Attribut onPremisesUserPrincipalName synchronisiert. Das alternative ID-Attribut, z. B. Mail, wird mit dem Azure AD-Attribut userPrincipalName synchronisiert.
+
+- Bei Verwendung einer alternativen ID wird das lokale Attribut userPrincipalName mit dem Azure AD-Attribut onPremisesUserPrincipalName synchronisiert. Das alternative ID-Attribut, z.B. „mail“, wird mit dem Azure AD-Attribut userPrincipalName synchronisiert.
 - In den obigen Listen gilt der Objekttyp **Benutzer** auch für den Objekttyp **iNetOrgPerson**.
 
 ## Nächste Schritte
 Weitere Informationen zur Konfiguration der [Azure AD Connect-Synchronisierung](active-directory-aadconnectsync-whatis.md).
 
-Weitere Informationen zum [Integrieren Ihrer lokalen Identitäten in Azure Active Directory](active-directory-aadconnect.md)
+Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md).
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0914_2016-->

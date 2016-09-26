@@ -4,7 +4,7 @@ description="Erfahren Sie, wie Sie Application Insights-Protokolle in Blobspeich
 services="hdinsight"
 documentationCenter=""
 authors="Blackmist"
-manager="paulettm"
+manager="jhubbard"
 editor="cgronlun"/>
 
 <tags
@@ -362,4 +362,4 @@ Informationen zum Erstellen und Ausführen von Spark-Anwendungen finden Sie in d
 
 * [Remoteausführung von Aufträgen in einem Spark-Cluster mithilfe von Livy](hdinsight-apache-spark-livy-rest-interface.md)
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0914_2016-->

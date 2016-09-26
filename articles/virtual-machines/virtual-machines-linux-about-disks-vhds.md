@@ -23,7 +23,7 @@ Virtuelle Computer in Azure verwenden wie alle anderen Computer auch einen Daten
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
-
+> [AZURE.NOTE] Falls Sie einen Moment Zeit haben, würden wir uns freuen, wenn Sie an dieser [kurzen Umfrage](https://aka.ms/linuxdocsurvey) teilnehmen könnten, um zur Verbesserung der Dokumentation für virtuelle Azure-Computer unter Linux beizutragen. Jede Antwort hilft uns dabei, Sie noch besser bei Ihrer Arbeit zu unterstützen.
 
 ## Betriebssystem-Datenträger
 
@@ -73,4 +73,4 @@ Um eine VHD-Quelldatei löschen zu können, müssen Sie die Lease entfernen, ind
 -  [Konfigurieren von Software-RAID](virtual-machines-linux-configure-raid.md) für Redundanz
 -  [Erfassen eines virtuellen Linux-Computers](virtual-machines-linux-classic-capture-image.md) für die schnelle Bereitstellung zusätzlicher virtueller Computer
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0914_2016-->

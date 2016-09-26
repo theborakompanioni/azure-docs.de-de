@@ -4,7 +4,7 @@
 	services="machine-learning"
 	documentationCenter=""
 	authors="bradsev,deguhath"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun" />
 
 <tags
@@ -1164,4 +1164,4 @@ Eine Übersicht zu Themen, die Sie durch die Aufgaben führen, die den Data Scie
 
 [Bewerten von Machine Learning-Modellen, die mit Spark erstellt wurden](machine-learning-data-science-spark-model-consumption.md) zeigt Ihnen, wie Sie Scala-Code verwenden, um mit in Spark erstellten und im Azure-Blobspeicher gespeicherten Machine Learning-Modellen automatisch neue Datasets zu laden und zu bewerten. Sie können die dortigen Anweisungen befolgen und für eine automatisierte Nutzung einfach den Python-Code durch den Scala-Code in diesem Artikel ersetzen.
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0914_2016-->

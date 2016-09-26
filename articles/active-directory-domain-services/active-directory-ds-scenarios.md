@@ -13,53 +13,81 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/06/2016"
+	ms.date="09/07/2016"
 	ms.author="maheshu"/>
 
 
 # Bereitstellungsszenarios und Anwendungsfälle
-In diesem Abschnitt betrachten wir einige Szenarios und Anwendungsfälle, die von der Verwendung von Azure Active Directory-Domänendiensten (AD) profitieren würden.
+In diesem Abschnitt betrachten wir einige Szenarios und Anwendungsfälle, die von der Verwendung von Azure Active Directory-Domänendiensten (AD) profitieren.
 
 ## Sichere und einfache Verwaltung von virtuellen Azure-Computern
-Wenn Server und andere Infrastruktur das Ende ihrer Lebensdauer erreichen, verlagert Contoso viele Anwendungen in die Cloud, die derzeit noch lokal gehostet werden. Der aktuelle IT-Standard des Unternehmens gibt vor, dass Server, auf denen Unternehmensanwendungen gehostet werden, einer Domäne angehören und per Gruppenrichtlinie verwaltet werden müssen. Der IT-Administrator von Contoso zieht es vor, für unter Azure bereitgestellte virtuelle Computer den Beitritt zu einer Domäne durchzuführen, um die Verwaltung zu vereinfachen (Administratoren können sich also mit Unternehmensanmeldeinformationen anmelden). Contoso würde es vorziehen, Domänencontroller in Azure nicht bereitstellen, überwachen und verwalten zu müssen, um virtuelle Azure-Computer zu schützen.
+Die Azure Active Directory-Domänendienste ermöglichen eine optimierte Verwaltung Ihrer virtuellen Azure-Computer. Virtuelle Azure-Computer können der verwalteten Domäne hinzugefügt werden, was Ihnen die Verwendung Ihrer Unternehmens-AD-Anmeldeinformationen für die Anmeldung ermöglicht. Mit diesem Ansatz kann der Aufwand bei der Verwaltung von Anmeldeinformationen verhindert werden, beispielsweise die Verwaltung lokaler Administratorkonten auf allen virtuellen Azure-Computern.
 
-Beachten Sie die folgenden wichtigen Punkte, wenn Sie dieses Szenario in Betracht ziehen:
+Der verwalteten Domäne hinzugefügte virtuelle Computer können auch mithilfe von Gruppenrichtlinien verwaltet und geschützt werden. Sie können gemäß den Sicherheitsrichtlinien Ihres Unternehmens erforderliche Sicherheitsbaselines auf Ihre virtuellen Azure-Computer anwenden und diese sperren. Beispiel: Sie können mithilfe von Funktionen für die Gruppenrichtlinienverwaltung die Anwendungstypen einschränken, die auf diesen virtuellen Computern gestartet werden können.
 
-- Verwaltete Domänen, die von Azure AD-Domänendiensten bereitgestellt werden, unterstützen für Organisationseinheiten nur eine flache Struktur. Alle Computer, die einer Domäne beigetreten sind, befinden sich in einer einzelnen flachen Organisationseinheit, und hierarchische Strukturen für Organisationseinheiten werden nicht unterstützt.
+![Optimierte Verwaltung von virtuellen Azure-Computern](./media/active-directory-domain-services-scenarios/streamlined-vm-administration.png)
+
+Wenn Server und andere Infrastruktur das Ende ihrer Lebensdauer erreichen, verlagert Contoso viele Anwendungen in die Cloud, die derzeit noch lokal gehostet werden. Der aktuelle IT-Standard des Unternehmens gibt vor, dass Server, auf denen Unternehmensanwendungen gehostet werden, einer Domäne angehören und per Gruppenrichtlinie verwaltet werden müssen. Der IT-Administrator von Contoso zieht es vor, für unter Azure bereitgestellte virtuelle Computer den Beitritt zu einer Domäne durchzuführen, um die Verwaltung zu vereinfachen. Infolgedessen können sich Administratoren und Benutzer mit ihren Unternehmensanmeldeinformationen anmelden. Gleichzeitig können Computer mithilfe von Gruppenrichtlinien so konfiguriert werden, dass sie die erforderlichen Sicherheitsbaselines erfüllen. Contoso würde es vorziehen, Domänencontroller in Azure nicht bereitstellen, überwachen und verwalten zu müssen, um virtuelle Azure-Computer zu schützen. Daher eignen sich die Azure AD-Domänendienste hervorragend für diesen Anwendungsfall.
+
+**Hinweise zur Bereitstellung**
+
+Beachten Sie die folgenden wichtigen Punkte für dieses Bereitstellungsszenario:
+
+- Verwaltete Domänen, die von Azure AD-Domänendiensten bereitgestellt werden, stellen standardmäßig eine Struktur mit einer einzelnen flachen Organisationseinheit bereit. Alle in die Domäne eingebundenen Computer befinden sich in einer einzelnen flachen Organisationseinheit. Sie können jedoch auch benutzerdefinierte Organisationseinheiten erstellen.
+
 - Azure AD-Domänendienste unterstützen jeweils eine einfache Gruppenrichtlinie in Form eines integrierten Gruppenrichtlinienobjekts (GPO) für Benutzer- und Computercontainer. Es ist nicht möglich, die Gruppenrichtlinie nach Organisationseinheit/Abteilung auszurichten, eine WMI-Filterung durchzuführen oder benutzerdefinierte Gruppenrichtlinienobjekte zu erstellen.
+
 - Azure AD-Domänendienste unterstützen das grundlegende AD-Computerobjektschema. Sie können das Schema des Computerobjekts nicht erweitern.
 
 
 ## Verlagern einer lokalen Anwendung, die die LDAP-Bindungsauthentifizierung verwendet, auf Azure-Infrastrukturdienste
+
+![LDAP-Bindung](./media/active-directory-domain-services-scenarios/ldap-bind.png)
+
 Contoso verfügt über eine lokale Anwendung, die vor vielen Jahren von einem Internetdienstanbieter gekauft wurde. Die Anwendung wurde vom Internetdienstanbieter in den Wartungsmodus versetzt, und das Anfordern von Änderungen an der Anwendung ist für Contoso gerade übermäßig teuer. Diese Anwendung verfügt über ein webbasiertes Front-End, mit dem Benutzeranmeldeinformationen per Web Form gesammelt werden, und anschließend werden Benutzer authentifiziert, indem eine LDAP-Bindung an das Active Directory des Unternehmens eingerichtet wird. Contoso möchte diese Anwendung zu den Azure-Infrastrukturdiensten migrieren. Hierbei ist es wünschenswert, dass die Anwendung funktioniert, ohne dass Änderungen erforderlich sind. Außerdem sollen sich Benutzer mit ihren vorhandenen Unternehmensanmeldeinformationen authentifizieren können, und es soll kein Schulungsaufwand zur Vermittlung einer anderen Vorgehensweise anfallen. Anders ausgedrückt: Für Endbenutzer soll nicht erkennbar bzw. relevant sein, wo die Anwendung ausgeführt wird, und die Migration sollte transparent sein.
 
-Beachten Sie die folgenden wichtigen Punkte, wenn Sie dieses Szenario in Betracht ziehen:
+**Hinweise zur Bereitstellung**
+
+Beachten Sie die folgenden wichtigen Punkte für dieses Bereitstellungsszenario:
 
 - Stellen Sie sicher, dass es für die Anwendung nicht erforderlich ist, das Verzeichnis zu ändern oder in das Verzeichnis zu schreiben. Der LDAP-Schreibzugriff auf verwaltete Domänen, die von Azure AD-Domänendiensten bereitgestellt werden, wird nicht unterstützt.
-- Benutzer können ihr Kennwort nicht direkt basierend auf der verwalteten Domäne ändern. Benutzer können ihr Kennwort entweder mithilfe des Self-Service-Verfahrens zum Ändern des Kennworts von Azure AD oder basierend auf dem lokalen Verzeichnis ändern. Diese Änderungen werden automatisch mit der verwalteten Domäne synchronisiert und sind darin verfügbar.
+
+- Sie können Kennwörter nicht direkt basierend auf der verwalteten Domäne ändern. Endbenutzer können ihr Kennwort entweder mithilfe des Self-Service-Verfahrens zum Ändern des Kennworts von Azure AD oder basierend auf dem lokalen Verzeichnis ändern. Diese Änderungen werden automatisch mit der verwalteten Domäne synchronisiert und sind darin verfügbar.
 
 
 ## Verlagern einer lokalen Anwendung, die den LDAP-Lesevorgang zum Zugreifen auf das Verzeichnis verwendet, auf Azure-Infrastrukturdienste
 Contoso besitzt eine lokale Branchenanwendung, die vor fast zehn Jahren entwickelt wurde. Diese Anwendung ist verzeichnisorientiert und wurde für die Zusammenarbeit mit Windows Server AD entworfen. Die Anwendung nutzt LDAP (Lightweight Directory Access Protocol) zum Lesen von Informationen/Attributen der Benutzer über Active Directory. Von der Anwendung werden keine Attribute geändert, und es werden auch keine anderen Schreibvorgänge in das Verzeichnis durchgeführt. Contoso möchte diese Anwendung zu Azure-Infrastrukturdiensten migrieren und die ältere lokale Hardware aussondern, auf der diese Anwendung derzeit gehostet wird. Die Anwendung kann nicht für die Verwendung moderner Verzeichnis-APIs, z. B. die REST-basierte Azure AD Graph-API, umgeschrieben werden. Aus diesem Grund ist eine Verlagerungsoption („Lift-and-Shift“) hilfreich, bei der die Anwendung für die Ausführung in der Cloud migriert werden kann, ohne dass Code geändert oder die Anwendung umgeschrieben wird.
 
-Beachten Sie die folgenden wichtigen Punkte, wenn Sie dieses Szenario in Betracht ziehen:
+**Hinweise zur Bereitstellung**
+
+Beachten Sie die folgenden wichtigen Punkte für dieses Bereitstellungsszenario:
 
 - Stellen Sie sicher, dass es für die Anwendung nicht erforderlich ist, das Verzeichnis zu ändern oder in das Verzeichnis zu schreiben. Der LDAP-Schreibzugriff auf verwaltete Domänen, die von Azure AD-Domänendiensten bereitgestellt werden, wird nicht unterstützt.
+
 - Stellen Sie sicher, dass die Anwendung kein benutzerdefiniertes/erweitertes Active Directory-Schema benötigt. Schemaerweiterungen werden in Azure AD-Domänendiensten nicht unterstützt.
-- Stellen Sie sicher, dass für die Anwendung kein LDAPS-Zugriff erforderlich ist. LDAPS wird von Azure AD-Domänendiensten nicht unterstützt.
 
 
 ## Migrieren eines lokalen Diensts oder einer Daemonanwendung zu Azure-Infrastrukturdiensten
-Contoso verfügt über eine benutzerdefinierte Softwaretresor-Anwendung mit einem Web-Front-End, einem SQL-Server und einem Back-End-FTP-Server. Das Unternehmen nutzt die integrierte Windows-Authentifizierung per Dienstkonto, um das Web-Front-End gegenüber dem FTP-Server zu authentifizieren. Diese Anwendung soll auf die Azure-Infrastrukturdienste umgestellt werden, und es soll vermieden werden, in der Cloud einen virtuellen Domänencontroller-Computer bereitzustellen, um die Identitätsanforderungen dieser Anwendung zu unterstützen. Der IT-Administrator von Contoso kann die Server, auf denen das Web-Front-End gehostet wird, den SQL-Server und den FTP-Server auf virtuellen Computern in Azure bereitstellen und für diese Komponenten den Beitritt zu einer Domäne der Azure AD-Domänendienste durchführen. Anschließend kann dasselbe Dienstkonto im Verzeichnis für die Authentifizierungszwecke der App verwendet werden.
+Einige Programme bestehen aus mehreren Ebenen, in denen eine Ebene authentifizierte Aufrufe an eine Back-End-Ebene (etwa eine Datenbankebene) ausführen muss. Active Directory-Dienstkonten werden häufig für diese Anwendungsfälle verwendet. Sie können derartige Anwendungen in Azure-Infrastrukturdienste verlagern und Azure AD-Domänendienste für die Identitätsanforderungen dieser Anwendungen verwenden. Sie können dasselbe Dienstkonto verwenden, das aus Ihrem lokalen Verzeichnis in Azure AD synchronisiert wird. Alternativ können Sie zum Bereitstellen solcher Anwendungen zuerst eine benutzerdefinierte Organisationseinheit und dann ein separates Dienstkonto in dieser Organisationseinheit erstellen.
 
-Beachten Sie die folgenden wichtigen Punkte, wenn Sie dieses Szenario in Betracht ziehen:
+![Dienstkonto mit WIA](./media/active-directory-domain-services-scenarios/wia-service-account.png)
+
+Contoso verfügt über eine benutzerdefinierte Softwaretresoranwendung mit einem Web-Front-End, einer SQL Server-Instanz und einem Back-End-FTP-Server. Die integrierte Windows-Authentifizierung per Dienstkonto wird genutzt, um das Web-Front-End gegenüber dem FTP-Server zu authentifizieren. Das Web-Front-End wird zur Ausführung als Dienstkonto eingerichtet. Der Back-End-Server wird zum Autorisieren des Zugriffs vom Dienstkonto für das Web-Front-End konfiguriert. Contoso bevorzugt es, keinen virtuellen Computer mit Domänencontroller in der Cloud bereitstellen zu müssen, um diese Anwendung in Azure-Infrastrukturdienste zu verschieben. Der IT-Administrator von Contoso kann die Server, auf denen das Web-Front-End, SQL Server und der FTP-Server gehostet werden, auf virtuellen Azure-Computern bereitstellen. Diese Computer werden dann in eine verwaltete Domäne der Azure AD-Domänendienste eingebunden. Anschließend kann dasselbe Dienstkonto im lokalen Verzeichnis für die Authentifizierungszwecke der App verwendet werden. Dieses Dienstkonto wird mit der verwalteten Domäne der Azure AD-Domänendienste synchronisiert und kann verwendet werden.
+
+**Hinweise zur Bereitstellung**
+
+Beachten Sie die folgenden wichtigen Punkte für dieses Bereitstellungsszenario:
 
 - Stellen Sie sicher, dass die Anwendung für die Authentifizierung Benutzername und Kennwort verwendet. Die Authentifizierung per Zertifikat oder Smartcard wird von Azure AD-Domänendiensten nicht unterstützt.
 
+- Sie können Kennwörter nicht direkt basierend auf der verwalteten Domäne ändern. Endbenutzer können ihr Kennwort entweder mithilfe des Self-Service-Verfahrens zum Ändern des Kennworts von Azure AD oder basierend auf dem lokalen Verzeichnis ändern. Diese Änderungen werden automatisch mit der verwalteten Domäne synchronisiert und sind darin verfügbar.
+
 
 ## Azure RemoteApp
-Azure RemoteApp ermöglicht dem Administrator von Contoso die Erstellung einer in die Domäne eingebundenen Sammlung. Dadurch können von Azure RemoteApp bereitgestellte Remoteanwendungen auf in die Domäne eingebundenen Computern ausgeführt werden und mit integrierter Windows-Authentifizierung auf andere Ressourcen zugreifen. Contoso kann mithilfe von Azure AD-Domänendiensten eine verwaltete Domäne bereitstellen, die von in die Domäne eingebundenen Azure RemoteApp-Sammlungen verwendet wird.
+Azure RemoteApp ermöglicht dem Administrator von Contoso die Erstellung einer in die Domäne eingebundenen Sammlung. Dank dieses Features können von Azure RemoteApp bereitgestellte Remoteanwendungen auf in die Domäne eingebundenen Computern ausgeführt werden und mit integrierter Windows-Authentifizierung auf andere Ressourcen zugreifen. Contoso kann mithilfe von Azure AD-Domänendiensten eine verwaltete Domäne bereitstellen, die von in die Domäne eingebundenen Azure RemoteApp-Sammlungen verwendet wird.
+
+![Azure RemoteApp](./media/active-directory-domain-services-scenarios/azure-remoteapp.png)
 
 Weitere Informationen zu diesem Bereitstellungsszenario finden Sie im Remotedesktopdienste-Blog im Artikel [Lift-and-shift your workloads with Azure RemoteApp and Azure AD Domain Services](http://blogs.msdn.com/b/rds/archive/2016/01/19/lift-and-shift-your-workloads-with-azure-remoteapp-and-azure-ad-domain-services.aspx) (Verlagern von Workloads mit Azure RemoteApp und Azure AD-Domänendiensten).
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0914_2016-->

@@ -4,7 +4,7 @@
 	services="search"
 	documentationCenter=""
 	authors="HeidiSteen"
-	manager="paulettm"
+	manager="jhubbard"
 	editor=""
     tags="azure-portal"/>
 
@@ -55,8 +55,8 @@ Hier sind einige unserer beliebtesten Tutorials und Videos zu Azure Search aufge
 
 Link|Veröffentlicht|Details
 ----|------------|-----------
-[Channel9 Build 2016: „Applications That Learn & Adapt: Azure Machine Learning + Search“](https://channel9.msdn.com/Events/Build/2016/P458) (Anwendungen, die lernen und sich anpassen: Azure Machine Learning + Search)|Mai 2016|17 Minuten. Liam Cavanagh erläutert die Vorteile des Hinzufügens der „Für Sie empfohlen“-Funktionen zu Ihrer Azure Search-Anwendung, und wie Rückschlüsse auf die Voreinstellungen des Benutzers aus Machine Learning abgeleitet werden. 
-[Channel9 Build 2016: „Intelligent Data Driven Applications that Learn and Adapt“](https://channel9.msdn.com/Events/Build/2016/B857) (Intelligente datengesteuerte Anwendungen, die lernen und sich anpassen)|Mai 2016|1 Stunde. Erfahren Sie, wie Machine Learning und Azure Search zusammen verwendet werden können, um komplexe datengesteuerte Anwendungen zu erstellen.
+[Channel9 Build 2016: „Applications That Learn & Adapt: Azure Machine Learning + Search“ (Anwendungen, die lernen und sich anpassen: Azure Machine Learning + Search)](https://channel9.msdn.com/Events/Build/2016/P458)|Mai 2016|17 Minuten. Liam Cavanagh erläutert die Vorteile des Hinzufügens der „Für Sie empfohlen“-Funktionen zu Ihrer Azure Search-Anwendung, und wie Rückschlüsse auf die Voreinstellungen des Benutzers aus Machine Learning abgeleitet werden. 
+[Channel9 Build 2016: „Intelligent Data Driven Applications that Learn and Adapt“ (Intelligente datengesteuerte Anwendungen, die lernen und sich anpassen)](https://channel9.msdn.com/Events/Build/2016/B857)|Mai 2016|1 Stunde. Erfahren Sie, wie Machine Learning und Azure Search zusammen verwendet werden können, um komplexe datengesteuerte Anwendungen zu erstellen.
 [Channel9 Data Exposed: „Custom Analyzers, Search Analytics, & Portal Querying in Azure Search“](https://channel9.msdn.com/Shows/Data-Exposed/Custom-Analyzers-Search-Analytics--Portal-Querying-in-Azure-Search)|Januar 2016|15 Minuten. Benutzerdefinierte Analysen ermöglichen das Konfigurieren von Tokenizern und Tokenfiltern. Über die Suchanalyse erhalten Sie Einblick in die von den Benutzern eingegebenen Suchbegriffe und in die Effektivität Ihres Suchindex. Suchexplorer ist ein integriertes Abfragetool, mit dem Sie Abfragen innerhalb des Portals testen können. 
 [Channel9 Data Exposed: „Azure Search Enhancements“](http://channel9.msdn.com/Shows/Data-Exposed/Azure-Search-Enhancements)|November 2015|17 Minuten. Datenerfassung von StackExchange-Daten. Erstellung eines Index im Azure-Portal. Erfahren Sie, wie Indexer unterstützte Datenquellen durchforsten und Daten in den Azure Search-Index aufnehmen. Sprachanalysen. Lucene-Abfrageausdrücke.
 [Was ist Azure Search?](https://azure.microsoft.com/documentation/videos/what-is-azure-search/)|Oktober 2015|Haben Sie kurz Zeit? Dann sehen Sie sich diese Videoeinführung zu Azure Search an (1:30 Min.).
@@ -90,4 +90,4 @@ Exemplarische Vorgehensweise|Beschreibung
 [Lernprogramm zu Bewertungsprofilen](search-get-started-scoring-profiles.md)|Testen von Bewertungsprofilen mit einer Konsolenanwendung.
 [Lernprogramm zur Azure Search Management-REST-API](search-get-started-management-api.md)|So verwenden Sie die Management-REST-API, um den Dienst bereitzustellen und Administrator- oder Abfrage-API-Schlüssel zu verwalten.
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0914_2016-->

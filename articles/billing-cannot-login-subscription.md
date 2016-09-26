@@ -15,22 +15,68 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/17/2016"
+	ms.date="09/09/2016"
 	ms.author="genli"/>
 
 # Ich kann mich nicht anmelden, um mein Azure-Abonnement zu verwalten
 
-> [AZURE.NOTE] Wenn Sie bei irgendeinem Verfahren in diesem Artikel weitere Hilfe benötigen, [wenden Sie sich an den Support](http://go.microsoft.com/fwlink/?linkid=544831&clcid=0x409), um das Problem schnell zu lösen.
+Dieser Artikel führt Sie durch einige der am häufigsten verwendeten Methoden, um Anmeldungsprobleme zu beheben.
 
-Dieser Artikel hilft Ihnen bei der Problembehandlung einiger häufiger Ursachen bei Anmeldeproblemen.
+> [AZURE.NOTE] Wenn Sie bei irgendeinem Verfahren in diesem Artikel weitere Hilfe benötigen, [wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), um das Problem schnell zu lösen.
 
-## Auf welches Portal möchten Sie zugreifen?
+## Azure-Portale
 
-Ein Kontoadministrator kann nur auf das [Kontocenter](https://account.windowsazure.com/) zugreifen, während Dienstadministratoren und Co-Administratoren nur Zugriff auf das [Azure-Portal](https://portal.azure.com) oder das [klassische Azure-Portal](https://manage.windowsazure.com/) haben.
+| Name | Beschreibung | URL |
+|---|---|---|
+| Azure-Portal |Eine zentrale Anlaufstelle zum Bereitstellen und Verwalten von Azure-Ressourcen | [https://portal.azure.com](https://portal.azure.com) |
+| Klassisches Azure-Portal | Das alte Azure-Portal |[https://manage.windowsazure.com](https://manage.windowsazure.com) |
+| Azure-Kontocenter | Eine zentrale Anlaufstelle, wo Sie Ihre Azure-Nutzung nachverfolgen und Ihr Abonnement verwalten können. |[https://Account.windowsazure.com/Subscriptions](https://account.windowsazure.com/Subscriptions) ||
 
-Weitere Informationen zu den Azure-Administratorrollen finden Sie unter [Hinzufügen oder Ändern von Azure-Administratorrollen](billing-add-change-azure-subscription-administrator.md).
+## Symptom: Die Seite hängt im Ladestatus.
 
-## Ist Ihr Abonnement mit einem Microsoft-Konto oder Organisationskonto verknüpft?
+Dieses Problem kann mit einem Problem zusammenhängen, das Ihren Internetbrowser betrifft.
+
+Um dieses Problem zu beheben, probieren Sie die folgenden Methoden in der angegebenen Reihenfolge aus. Nachdem Sie jede Methode ausprobiert haben, versuchen Sie erneut, eine Verbindung mit der Anmeldeseite im Portal herzustellen.
+
+-	Aktualisieren Sie die Seite.
+-	Verwenden Sie einen anderen Internetbrowser.
+-	Wenn Sie Microsoft Internet Explorer verwenden, navigieren Sie im InPrivate-Browsermodus zum Azure-Portal. Gehen Sie dazu folgendermaßen vor:
+
+	A: Klicken Sie auf **Extras** ![Schaltfläche „Extras“](./media/billing-cannot-login-subscription/Toolsbutton.png) > **Sicherheit** > **InPrivate-Browsen**.
+
+	B. Navigieren Sie zum [Azure-Portal](https://portal.azure.com) oder [klassischen Azure-Portal](https://manage.windowsazure.com), und melden Sie sich beim Portal an.
+
+## Symptom: Fehlermeldung „Keine Abonnements gefunden“
+
+Dieses Problem kann auftreten, wenn das Konto nicht über ausreichende Benutzerrechte verfügt. Ein Kontoadministrator kann nur auf das [Kontocenter](https://account.windowsazure.com/) zugreifen, während Dienstadministratoren und Co-Administratoren nur Zugriff auf das [Azure-Portal](https://portal.azure.com) oder das [klassische Azure-Portal](https://manage.windowsazure.com/) haben.
+
+**Szenario 1: Fehlermeldung wird im Azure-Portal oder klassischen Azure-Portal empfangen**
+
+Zum Beheben dieses Problems [fügen Sie die Co-Administrator- oder Besitzerrolle](billing-add-change-azure-subscription-administrator.md) für das Konto hinzu.
+
+**Szenario 2: Fehlermeldung wird im Azure-Kontocenter empfangen**
+
+Überprüfen Sie, ob das Konto, das Sie verwendet haben, das des Kontoadministrators ist. Gehen Sie folgendermaßen vor, um zu überprüfen, wer der Kontoadministrator ist:
+
+1.	Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com) an.
+2.	Wählen Sie im Menü „Hub“ die Option **Abonnement** aus.
+3.	Wählen Sie das zu überprüfende Abonnement und dann **Einstellungen** aus.
+4.	Wählen Sie **Eigenschaften** aus. Der Kontoadministrator des Abonnements wird im Feld **Kontoadministrator** angezeigt.
+
+## Symptom: Sie werden automatisch als ein anderer Benutzer angemeldet
+
+Dieses Problem kann auftreten, wenn Sie mehr als ein Benutzerkonto in einem Internetbrowser verwenden.
+
+Um dieses Problem zu lösen, probieren Sie eine der folgenden Methoden aus:
+
+- Melden Sie sich vom Portal ab und dann wieder mit dem Konto an, das Sie verwenden möchten.
+-	Löschen Sie Cache und Internetcookies. Klicken Sie hierzu in Internet Explorer auf **Extras** ![Schaltfläche „Extras“](./media/billing-cannot-login-subscription/Toolsbutton.png) > **Internetoptionen** > **Löschen**, stellen Sie sicher, dass die Kontrollkästchen für temporäre Dateien, Cookies, Kennwort und Verlauf aktiviert sind, und klicken Sie dann auf „Löschen“.
+
+-	Setzen Sie die Internet Explorer-Einstellungen zurück, um alle persönlichen Einstellungen wiederherstellen, die Sie vorgenommen haben. Klicken Sie hierzu auf **Extras** ![Schaltfläche „Extras“](./media/billing-cannot-login-subscription/Toolsbutton.png)> **Internetoptionen** > **Erweitert** > wählen Sie das Feld **Persönliche Einstellungen löschen** > **Zurücksetzen**.
+
+-	Navigieren Sie im Modus InPrivate-Browsen zum Azure-Portal. Klicken Sie hierzu auf **Extras** ![Schaltfläche „Extras“](./media/billing-cannot-login-subscription/Toolsbutton.png) > **Sicherheit** > **InPrivate-Browsen**.
+
+## Microsoft-Konto im Vergleich zum Organisationskonto
 
 Ihr Microsoft-Konto ist die E-Mail-Adresse, die Sie zusammen mit Ihrem Kennwort verwenden, um sich bei Windows Live-Programmen oder -Diensten anzumelden, z. B. bei Outlook, Hotmail, MSN oder OneDrive. Sie können ein Microsoft-Konto mit einer beliebigen E-Mail-Adresse einrichten, z. B. auch mit Ihrer Firmen-E-Mail-Adresse. Weitere Informationen finden Sie unter [www.microsoft.com/account](http://www.microsoft.com/account).
 
@@ -38,22 +84,6 @@ Wenn Ihr Konto mit einem Organisationskonto verknüpft ist, wählen Sie die rich
 
 ![Anmeldeseite](./media/billing-cannot-login-subscription/signin.png)
 
-## Co-Administrator: Verwenden Sie den richtigen Kontotyp zum Verwalten anderer Konten?
+> [AZURE.NOTE] Wenn Sie weitere Fragen haben, [wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), um das Problem schnell zu lösen.
 
-- Wenn Sie mit einem Microsoft-Konto angemeldet sind, können Sie nur andere Microsoft-Konten als Co-Administratoren hinzufügen. Dies ist eine Sicherheitsanforderung und verhindert, dass nicht zu einer Organisation gehörende Konten erkennen, ob bestimmte Konten (z. B. janedoe@contoso.com) gültig sind.
-- Wenn Sie mit einem Organisationskonto angemeldet sind, können Sie andere Organisationskonten in Ihrer Organisation als Co-Administratoren hinzufügen. Beispielsweise kann abby@contoso.com das Konto bob@contoso.com als Dienstadministrator oder Co-Administrator hinzufügen, nicht jedoch john@notcontoso.com. Mit einem Organisationskonto angemeldete Benutzer können zudem Benutzer mit Microsoft-Konten als Dienstadministrator oder Co-Administrator hinzufügen.
-
-Nachdem es jetzt möglich ist, sich bei Azure mit einem Organisationskonto anzumelden, ändern sich die folgenden Kontoanforderungen für Dienstadministratoren und Co-Administratoren:
-
-| Anmeldemethode| Microsoft-Konto als Co-Administrator oder Dienstadministrator hinzufügen? |Organisationskonto in der gleichen Organisation als Co-Administrator oder Dienstadministrator hinzufügen? |Organisationskonto in einer anderen Organisation als Co-Administrator oder Dienstadministrator hinzufügen?
-| ------------- | ------------- |---------------|---------------|
-|Microsoft Account |Ja|Nein|Nein|
-|Organisationskonto|Ja|Ja|Nein|
-
-## Gibt es ein Problem mit der Internetbrowser?
-
-Versuchen Sie, den Cache und Cookies zu löschen, den Internet Explorer-Modus „InPrivate-Browsen“ zu verwenden und einen anderen Browser zu nutzen.
-
-> [AZURE.NOTE] Wenn Sie weitere Fragen haben, [wenden Sie sich an den Support](http://go.microsoft.com/fwlink/?linkid=544831&clcid=0x409), um das Problem schnell zu lösen.
-
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0914_2016-->

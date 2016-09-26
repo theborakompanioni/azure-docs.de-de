@@ -4,7 +4,7 @@
 	services="hdinsight" 
 	documentationCenter="" 
 	authors="nitinme" 
-	manager="paulettm" 
+	manager="jhubbard" 
 	editor="cgronlun"
 	tags="azure-portal"/>
 
@@ -20,7 +20,7 @@
 
 # Machine Learning: Vorhersageanalyse von Lebensmittelkontrolldaten mithilfe von MLlib mit Apache Spark-Cluster unter HDInsight (Linux)
 
-> [AZURE.TIP] Dieses Tutorial steht auch als Jupyter-Notebook für einen Spark-Cluster (Linux) zur Verfügung, den Sie in HDInsight erstellen. In der Notebook-Umgebung können Sie die Python-Ausschnitte direkt im Notebook ausführen. Wenn Sie das Tutorial innerhalb eines Notebooks ausführen möchten, erstellen Sie einen Spark-Cluster, starten Sie ein Jupyter-Notebook (`https://CLUSTERNAME.azurehdinsight.net/jupyter`), und führen Sie dann das Notebook **Spark Machine Learning - Predictive analysis on food inspection data using MLLib.ipynb** im Ordner **Python** aus.
+> [AZURE.TIP] Dieses Tutorial steht auch als Jupyter Notebook für einen Spark-Cluster (Linux) zur Verfügung, den Sie in HDInsight erstellen. In der Notebook-Umgebung können Sie die Python-Ausschnitte direkt im Notebook ausführen. Wenn Sie das Tutorial innerhalb eines Notebooks ausführen möchten, erstellen Sie einen Spark-Cluster, starten Sie ein Jupyter-Notebook (`https://CLUSTERNAME.azurehdinsight.net/jupyter`), und führen Sie dann das Notebook **Spark Machine Learning - Predictive analysis on food inspection data using MLLib.ipynb** im Ordner **Python** aus.
 
 
 Dieser Artikel beschreibt, wie Sie **MLLib**, die integrierten Bibliotheken für maschinelles Lernen von Spark, verwenden, um eine einfache Vorhersageanalyse für einen offenen Datensatz durchzuführen. MLLib ist eine Spark-Kernbibliothek, die eine Reihe von Hilfsprogrammen bietet, die nützlich für maschinelle Lernaufgaben sind, darunter auch für folgende Aufgaben geeignete Hilfsprogramme:
@@ -404,7 +404,7 @@ Nach Ausführen der Anwendung empfiehlt es sich, das Notebook herunterzufahren, 
 
 * [Verwenden des HDInsight-Tools-Plug-Ins für IntelliJ IDEA zum Erstellen und Übermitteln von Spark Scala-Anwendungen](hdinsight-apache-spark-intellij-tool-plugin.md)
 
-* [Use HDInsight Tools Plugin for IntelliJ IDEA to debug Spark applications remotely](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md) (Verwenden von HDInsight-Tools-Plug-Ins für IntelliJ IDEA zum Remotedebuggen von Spark-Anwendungen)
+* [Use HDInsight Tools Plugin for IntelliJ IDEA to debug Spark applications remotely (Verwenden von HDInsight-Tools-Plug-Ins für IntelliJ IDEA zum Remotedebuggen von Spark-Anwendungen)](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 
 * [Verwenden von Zeppelin-Notebooks mit einem Spark-Cluster in HDInsight](hdinsight-apache-spark-use-zeppelin-notebook.md)
 
@@ -420,4 +420,4 @@ Nach Ausführen der Anwendung empfiehlt es sich, das Notebook herunterzufahren, 
 
 * [Track and debug jobs running on an Apache Spark cluster in HDInsight](hdinsight-apache-spark-job-debugging.md) (Nachverfolgen und Debuggen von Aufträgen in einem Apache Spark-Cluster unter HDInsight)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0914_2016-->

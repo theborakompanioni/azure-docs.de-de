@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/06/2016"
+	ms.date="09/13/2016"
 	ms.author="v-shysun"/>
 
 # Tipps zur Optimierung der SQL-Datenbankleistung
@@ -35,4 +35,4 @@ Sie können jederzeit den [Tarif](sql-database-service-tiers.md) einer Einzeldat
 1.	Für Einzeldatenbanken können Sie die [Diensttarife bedarfsgesteuert ändern](sql-database-scale-up.md), um die Datenbankleistung zu steigern.
 2.	Ziehen Sie bei mehreren Datenbanken [Pool für elastische Datenbanken](sql-database-elastic-pool-guidance.md) in Betracht, um Ressourcen automatisch zu skalieren.
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0914_2016-->

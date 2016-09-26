@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="08/10/2016"
+   ms.date="09/07/2016"
    ms.author="alkohli" />
 
 # Ausführen eines Failovers und einer Notfallwiederherstellung für das StorSimple-Gerät
@@ -21,7 +21,7 @@
 
 In diesem Tutorial werden die erforderlichen Schritte für das Ausführen eines Failovers auf einem StorSimple-Gerät bei einem Notfall beschrieben. Ein Failover ermöglicht das Migrieren Ihrer Daten von einem Quellgerät im Datencenter auf ein anderes physisches oder sogar ein virtuelles Gerät an dem gleichen oder einem anderen geografischen Standort.
 
-Ein Gerätefailover wird über das Feature der Notfallwiederherstellung koordiniert und auf der Seite **Geräte** initiiert. Auf dieser Seite werden alle StorSimple-Geräte aufgeführt, die mit dem StorSimple-Manager-Dienst verbunden sind. Für jedes Gerät werden Anzeigename, Status, bereitgestellte und maximale Kapazität, Typ und Modell angezeigt.
+Die Notfallwiederherstellung wird über das Feature „Gerätefailover“ koordiniert und auf der Seite **Geräte** ausgelöst. Auf dieser Seite werden alle StorSimple-Geräte aufgeführt, die mit dem StorSimple-Manager-Dienst verbunden sind. Für jedes Gerät werden Anzeigename, Status, bereitgestellte und maximale Kapazität, Typ und Modell angezeigt.
 
 ![Seite "Geräte"](./media/storsimple-device-failover-disaster-recovery/IC740972.png)
 
@@ -31,7 +31,9 @@ Die Anweisungen in diesem Tutorial gelten für physische und virtuelle StorSimpl
 
 ## Notfallwiederherstellung und Gerätefailover
 
-Bei einer Notfallwiederherstellung funktioniert das primäre Gerät nicht mehr. In diesem Fall können Sie die dem ausgefallenen Gerät zugeordneten Clouddaten auf ein anderes Gerät verschieben und dabei das primäre Gerät als *Quelle* und ein anderes Gerät als *Ziel* angeben. Sie können einen oder mehrere Volumecontainer für das Migrieren auf das Zielgerät auswählen. Dieser Vorgang wird als *Failover* bezeichnet. Während des Failovers wechseln die Volumecontainer vom Quellgerät den Eigentümer und werden auf das Zielgerät übertragen.
+Bei einer Notfallwiederherstellung funktioniert das primäre Gerät nicht mehr. In diesem Fall können Sie die dem ausgefallenen Gerät zugeordneten Clouddaten auf ein anderes Gerät verschieben und dabei das primäre Gerät als *Quelle* und ein anderes Gerät als *Ziel* angeben. Sie können einen oder mehrere Volumecontainer für das Migrieren auf das Zielgerät auswählen. Dieser Vorgang wird als *Failover* bezeichnet.
+
+Während des Failovers wechseln die Volumecontainer vom Quellgerät den Eigentümer und werden auf das Zielgerät übertragen. Sobald der Besitzer der Volumecontainer geändert wurde, werden diese vom Quellgerät gelöscht. Nach dem Löschvorgang kann für das Zielgerät ein Failback erfolgen.
 
 Nach einer Notfallwiederherstellung werden die Daten in der Regel mithilfe der letzten Sicherung auf dem Zielgerät wiederhergestellt. Falls allerdings für das gleiche Volume mehrere Sicherungsrichtlinien vorhanden sind, wird die Sicherungsrichtlinie mit der größten Anzahl von Volumes ausgewählt, und die Daten werden auf dem Zielgerät auf der Grundlage der neuesten Sicherung für diese Richtlinie wiederhergestellt.
 
@@ -170,6 +172,35 @@ Führen Sie die folgenden Schritte aus, um Ihr Gerät auf einem virtuellen StorS
 
 Sie können sich [hier](https://azure.microsoft.com/documentation/videos/storsimple-and-disaster-recovery/) ein Video anschauen, in dem das Wiederherstellen eines fehlgeschlagenen physischen Geräts auf ein virtuelles Gerät in der Cloud demonstriert wird.
 
+
+## Failback
+
+Für Update 3 oder höher unterstützt StorSimple auch das Failback. Nach dem Failover erfolgen die folgenden Aktionen:
+
+- Die Volumecontainer, für die ein Failover durchgeführt wurde, werden vom Quellgerät bereinigt.
+
+- Auf der Seite **Aufträge** wird ein Löschauftrag pro Volumecontainer (mit erfolgtem Failover) angezeigt. Die Gesamtdauer des Löschens der Volumecontainer hängt von der Datenmenge in den Containern ab. Wenn Sie Testfailover/-failbacks planen, wird empfohlen, Volumecontainer mit weniger Daten (GBs) zu testen.
+
+- Nachdem alle Löschaufträge abgeschlossen wurden, können Sie das Failback versuchen.
+
+## Häufig gestellte Fragen
+
+F: **Was geschieht, wenn die Notfallwiederherstellung misslingt oder nur teilweise erfolgreich war?**
+
+A: Wenn die Notfallwiederherstellung misslingt, sollten Sie sie wiederholen. Beim zweiten Mal weiß die Notfallwiederherstellung, was beim ersten Mal alles erreicht und wo der Prozess angehalten wurde. Die Notfallwiederherstellung wird an dieser Stelle fortgesetzt.
+
+F: **Kann ich ein Gerät löschen, während das Gerätefailover erfolgt?**
+
+A: Ein Gerät kann nicht gelöscht werden, während eine Notfallwiederherstellung ausgeführt wird. Sie können Ihr Gerät erst nach erfolgter Notfallwiederherstellung löschen.
+
+F: **Wann wird die Garbage Collection auf dem Quellgerät gestartet, damit die lokalen Daten auf dem Quellgerät gelöscht werden?**
+
+A: Die Garbage Collection wird auf dem Quellgerät erst aktiviert, nachdem das Gerät vollständig bereinigt wurde. Die Bereinigung enthält bereinigte Objekte, für die ein Failover vom Quellgerät erfolgt ist, z.B. Volumes, Sicherungsobjekte (keine Daten), Volumecontainer und Richtlinien.
+
+F: **Was geschieht, wenn der den Volumecontainern zugeordnete Löschauftrag auf dem Quellgerät misslingt?**
+
+A: Wenn der Löschauftrag misslingt, müssen Sie das Löschen der Volumecontainer manuell auslösen. Wählen Sie auf der Seite **Geräte** Ihr Quellgerät aus, und klicken Sie auf **Volumecontainer**. Wählen Sie die Volumecontainer aus, für die Sie ein Failover ausgeführt haben, und klicken Sie unten auf der Seite auf **Löschen**. Sobald Sie alle Volumecontainer mit erfolgtem Failover vom Quellgerät gelöscht haben, können Sie das Failback starten.
+
 ## Business Continuity Disaster Recovery (BCDR)
 
 Ein Business Continuity Disaster Recovery (BCDR)-Szenario liegt vor, wenn das gesamte Azure-Rechenzentrum nicht mehr funktioniert. Dies kann sich auf den StorSimple Manager-Dienst und die zugehörigen StorSimple-Geräte auswirken.
@@ -184,4 +215,4 @@ Wenn StorSimple-Geräte direkt vor einem Notfall registriert wurden, müssen die
 - Weitere Informationen zum Verwenden des StorSimple Manager-Diensts finden Sie unter [Verwalten Ihres StorSimple-Geräts mithilfe des StorSimple Manager-Diensts](storsimple-manager-service-administration.md).
  
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0914_2016-->

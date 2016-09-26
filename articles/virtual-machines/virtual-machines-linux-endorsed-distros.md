@@ -22,6 +22,8 @@
 
 #Linux auf von Azure unterstützten Verteilungen
 
+> [AZURE.NOTE] Falls Sie einen Moment Zeit haben, würden wir uns freuen, wenn Sie an dieser [kurzen Umfrage](https://aka.ms/linuxdocsurvey) teilnehmen könnten, um zur Verbesserung der Dokumentation für virtuelle Azure-Computer unter Linux beizutragen. Jede Antwort hilft uns dabei, Sie noch besser bei Ihrer Arbeit zu unterstützen.
+
 Die Linux-Images im Azure-Katalog oder Marketplace werden von verschiedenen Partnern zur Verfügung gestellt. Außerdem arbeiten wir mit verschiedenen Linux-Communitys daran, die Liste der unterstützten Verteilungen noch vielseitiger zu gestalten. In der Zwischenzeit können Sie für Verteilungen, die im Katalog nicht verfügbar sind, Ihre eigene Linux-Images bereitstellen ("Bring Your Own"), indem Sie die Richtlinien [auf dieser Seite](virtual-machines-linux-classic-create-upload-vhd.md) befolgen
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
@@ -89,4 +91,4 @@ Engineering und Open Community Governance von Canonical steigern den Erfolg von 
 
 Mit Entwicklern und Engineering Centers überall auf der Welt ist Canonical hervorragend positioniert, um Partnerschaften mit Hardwareherstellern, Inhaltsanbietern und Softwareentwicklern einzugehen, um Ubuntu-Lösungen auf den Markt zu bringen – von PCs bis hin zu Servern und portablen Geräten.
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0914_2016-->

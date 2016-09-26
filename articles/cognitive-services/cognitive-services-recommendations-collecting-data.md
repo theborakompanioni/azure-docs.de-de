@@ -4,7 +4,7 @@
 	services="cognitive-services"
 	documentationCenter=""
 	authors="luiscabrer"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun"/>
 
 <tags
@@ -45,9 +45,9 @@ Ohne Features:
 
 Mit Features:
 
-    AAA04294,Office Language Pack Online DwnLd,Office, softwaretype=productivity, compatibility=Windows
-    BAB04303,Minecraft DwnLd,Games, softwaretype=gaming, compatibility=iOS, agegroup=all
-    C9F00168,Kiruna Flip Cover,Accessories, compatibility=lumia, hardwaretype=mobile
+    AAA04294,Office Language Pack Online DwnLd,Office,, softwaretype=productivity, compatibility=Windows
+    BAB04303,Minecraft DwnLd,Games, softwaretype=gaming,, compatibility=iOS, agegroup=all
+    C9F00168,Kiruna Flip Cover,Accessories, compatibility=lumia,, hardwaretype=mobile
 
 #### Formatdetails
 
@@ -151,4 +151,4 @@ Nach einer guten Faustregel sollten die meisten Artikel in mindestens 20 Transak
 
 Nach der Erstellung eines Modells können Sie eine [Offlineauswertung](cognitive-services-recommendations-buildtypes.md) ausführen, um die wahrscheinliche Leistung Ihres Modells zu überprüfen.
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0914_2016-->

@@ -1,10 +1,10 @@
 <properties 
    pageTitle="Verwalten von Azure Data Lake Analytics mit Azure PowerShell | Azure" 
-   description="Erfahren Sie, wie Sie Data Lake Analytics-Aufträge, -Datenquellen, und -Benutzer verwalten." 
+   description="Erfahren Sie, wie Sie Data Lake Analytics-Aufträge, -Datenquellen, und -Benutzer verwalten. " 
    services="data-lake-analytics" 
    documentationCenter="" 
    authors="edmacauley" 
-   manager="paulettm" 
+   manager="jhubbard" 
    editor="cgronlun"/>
  
 <tags
@@ -328,7 +328,7 @@ Alle diese Komponenten lassen sich zur einfacheren Verwaltung unter einer ARM-Gr
 
 Ein Data Lake Analytics-Konto und die dazugehörigen Speicherkonten müssen sich im gleichen Azure-Rechenzentrum befinden. Die ARM-Gruppe kann sich jedoch in einem anderen Rechenzentrum befinden.
 
-##Weitere Informationen 
+##Siehe auch 
 
 - [Übersicht über Microsoft Azure Data Lake Analytics](data-lake-analytics-overview.md)
 - [Erste Schritte mit Data Lake Analytics mithilfe des Azure-Portals](data-lake-analytics-get-started-portal.md)
@@ -392,4 +392,4 @@ Die folgende ARM-Vorlage kann zum Bereitstellen eines Data Lake Analytics-Kontos
 	  }
 	}
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0914_2016-->

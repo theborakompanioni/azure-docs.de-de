@@ -26,7 +26,7 @@ Sie wissen nicht, was eine Sammlung ist? Dann lesen Sie den Abschnitt [Was ist e
 
     ![Screenshot mit „DocumentDB-Konten“ in der Navigationsleiste, mit dem Konto im Blatt „DocumentDB-Konten“ und mit der Datenbank im Blatt „DocumentDB-Konten“ im Fokus „Datenbanken“](./media/documentdb-create-collection/docdb-database-creation-1-2.png)
     
-    Wenn **DocumentDB-Konten** nicht angezeigt wird, klicken Sie auf **Weitere Dienste** und dann auf **DocumentDB (NoSQL)**. Wenn keine Konten aufgeführt sind, müssen Sie [ein DocumentDB-Konto erstellen](documentdb-create-account.md).
+    Wenn **DocumentDB (NoSQL)** nicht in der Navigationsleiste angezeigt wird, klicken Sie auf **Weitere Dienste** und dann auf **DocumentDB (NoSQL)**. Wenn keine Konten aufgeführt sind, müssen Sie [ein DocumentDB-Konto erstellen](documentdb-create-account.md).
 
 2. Wählen Sie auf dem Blatt **DocumentDB-Konto** für das ausgewählte Konto im Fokus **Datenbanken** die Datenbank aus, in der eine Sammlung hinzugefügt werden soll.
 
@@ -91,4 +91,4 @@ Nachdem Sie nun über eine Sammlung verfügen, besteht der nächste Schritt dari
 
 Wenn eine Sammlung Dokumente enthält, können Sie in [DocumentDB SQL](documentdb-sql-query.md) an den Dokumenten [Abfragen ausführen](documentdb-sql-query.md#executing-queries), indem Sie den [Abfrage-Explorer](documentdb-query-collections-query-explorer.md) im Portal, die [REST-API](https://msdn.microsoft.com/library/azure/dn781481.aspx) oder eines der [SDKs](documentdb-sdk-dotnet.md) verwenden.
 
-<!----HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0914_2016-->

@@ -11,20 +11,19 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="06/21/2016" 
+    ms.date="09/11/2016" 
     ms.author="jeedes" />
 
 #Tutorial: Azure Active Directory-Integration mit TOPdesk - Public
 
-In diesem Tutorial wird die Integration von Azure und TOPdesk - Public erläutert.  
-Das in diesem Lernprogramm verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
+In diesem Tutorial wird die Integration von Azure und TOPdesk - Public erläutert. Das in diesem Tutorial verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
 
 -   Ein gültiges Azure-Abonnement
 -   Ein TOPdesk - Public-Abonnement, für das einmaliges Anmelden aktiviert ist
   
 Nach Abschluss dieses Tutorials können sich die TOPdesk - Public zugewiesenen Azure AD-Benutzer mittels einmaliger Anmeldung auf Ihrer TOPdesk - Public-Unternehmenswebsite bei der Anwendung anmelden (durch den Dienstanbieter initiierte Anmeldung). Alternativ können sie den Zugriffsbereich nutzen (siehe [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md)).
   
-Das in diesem Lernprogramm beschriebene Szenario besteht aus den folgenden Bausteinen:
+Das in diesem Tutorial beschriebene Szenario besteht aus den folgenden Bausteinen:
 
 1.  Aktivieren der Anwendungsintegration für TOPdesk - Public
 2.  Konfigurieren der einmaligen Anmeldung
@@ -67,10 +66,9 @@ In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für TOP
 
 ##Konfigurieren der einmaligen Anmeldung
   
-In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbundanmeldung auf Basis des SAML-Protokolls ermöglichen, sich mit ihrem Azure AD-Konto bei TOPdesk - Public zu authentifizieren.  
-Für das Konfigurieren des einmaligen Anmeldens für TOPdesk - Public müssen Sie eine Logosymboldatei hochladen. Um die Symboldatei zu erhalten, wenden Sie sich an das TOPdesk-Supportteam.
+In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbundanmeldung auf Basis des SAML-Protokolls ermöglichen, sich mit ihrem Azure AD-Konto bei TOPdesk - Public zu authentifizieren. Für das Konfigurieren des einmaligen Anmeldens für TOPdesk - Public müssen Sie eine Logosymboldatei hochladen. Um die Symboldatei zu erhalten, wenden Sie sich an das TOPdesk-Supportteam.
 
-###So konfigurieren Sie einmaliges Anmelden:
+###So konfigurieren Sie einmaliges Anmelden
 
 1.  Melden Sie sich bei der **TOPdesk - Public**-Unternehmenswebsite als Administrator an.
 
@@ -91,9 +89,8 @@ Für das Konfigurieren des einmaligen Anmeldens für TOPdesk - Public müssen Si
     ![Technische Einstellungen](./media/active-directory-saas-topdesk-public-tutorial/IC790601.png "Technische Einstellungen")
 
     1.  Klicken Sie auf **Herunterladen**, um die öffentliche Metadatendatei herunterzuladen und sie dann lokal auf Ihrem Computer zu speichern.
-    2.  Öffnen Sie die Metadatendatei, und suchen Sie den Knoten **AssertionConsumerService**.
-        ![AssertionConsumerService](./media/active-directory-saas-topdesk-public-tutorial/IC790619.png "AssertionConsumerService")
-    3.  Kopieren Sie den Wert **AssertionConsumerService**.  
+    2.  Öffnen Sie die Metadatendatei, und suchen Sie den Knoten **AssertionConsumerService**. ![AssertionConsumerService](./media/active-directory-saas-topdesk-public-tutorial/IC790619.png "AssertionConsumerService")
+    3.  Kopieren Sie den Wert **AssertionConsumerService**.
 
         >[AZURE.NOTE] Sie benötigen den Wert später im Tutorial im Abschnitt **App-URL konfigurieren**.
 
@@ -111,9 +108,9 @@ Für das Konfigurieren des einmaligen Anmeldens für TOPdesk - Public müssen Si
 
     ![App-URL konfigurieren](./media/active-directory-saas-topdesk-public-tutorial/IC790622.png "App-URL konfigurieren")
 
-    1.  Geben Sie in das Textfeld **TOPdesk - Public-Anmelde-URL** die URL ein, welche die Benutzer zur Anmeldung bei der „TOPdesk - Public“-Anwendung verwenden (z. B. „*https://qssolutions.topdesk.net*").
-    2.  Fügen Sie in das Textfeld **TOPdesk – öffentliche Antwort-URL** die **TOPdesk - Public-AssertionConsumerService-URL** ein (z. B.: "*https://qssolutions.topdesk.net/tas/public/login/saml*")
-    3.  Klicken Sie auf **Weiter**.
+    1.  Geben Sie in das Textfeld **TOPdesk - Public-Anmelde-URL** die URL ein, die die Benutzer zur Anmeldung bei Ihrer „TOPdesk - Public“-Anwendung verwenden (z.B. "*https://qssolutions.topdesk.net*").
+    2.  Fügen Sie in das Textfeld **TOPdesk – öffentliche Antwort-URL** die **TOPdesk - Public-AssertionConsumerService-URL** ein (z.B.: „*https://qssolutions.topdesk.net/tas/public/login/saml*")
+    3.  Klicken Sie auf **Next**.
 
 10. Klicken Sie auf der Seite **Einmaliges Anmelden konfigurieren für TOPdesk - Public** auf **Metadaten herunterladen**, und speichern Sie die Metadatendatei lokal auf Ihrem Computer.
 
@@ -161,8 +158,7 @@ Für das Konfigurieren des einmaligen Anmeldens für TOPdesk - Public müssen Si
 
 ##Konfigurieren der Benutzerbereitstellung
   
-Damit sich Azure AD-Benutzer bei TOPdesk - Public anmelden können, müssen sie in TOPdesk - Public bereitgestellt werden.  
-Im Fall von TOPdesk - Public ist die Bereitstellung eine manuelle Aufgabe.
+Damit sich Azure AD-Benutzer bei TOPdesk - Public anmelden können, müssen sie in TOPdesk - Public bereitgestellt werden. Im Fall von TOPdesk - Public ist die Bereitstellung eine manuelle Aufgabe.
 
 ###So konfigurieren Sie die Benutzerbereitstellung
 
@@ -191,7 +187,7 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie d
 
 1.  Erstellen Sie im klassischen Azure-Portal ein Testkonto.
 
-2.  Klicken Sie auf der Anwendungsintegrationsseite für TOPdesk - Public auf **Benutzer zuweisen**.
+2.  Klicken Sie auf der Anwendungsintegrationsseite für **TOPdesk - Public** auf **Benutzer zuweisen**.
 
     ![Benutzer zuweisen](./media/active-directory-saas-topdesk-public-tutorial/IC790630.png "Benutzer zuweisen")
 
@@ -201,4 +197,4 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie d
   
 Wenn Sie die SSO-Einstellungen testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md).
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0914_2016-->

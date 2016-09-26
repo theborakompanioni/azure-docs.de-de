@@ -4,7 +4,7 @@ description="Informationen zum Verwenden der Tez-Benutzeroberfläche zum Debugge
 services="hdinsight"
 documentationCenter=""
 authors="Blackmist"
-manager="paulettm"
+manager="jhubbard"
 editor="cgronlun"/>
 
 <tags
@@ -147,4 +147,4 @@ Nachdem Sie sich mit der Verwendung der Tez-Ansicht vertraut gemacht haben, erfa
 
 Ausführliche technische Informationen zu Tez finden Sie auf der [Seite zu Tez bei Hortonworks](http://hortonworks.com/hadoop/tez/).
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0914_2016-->

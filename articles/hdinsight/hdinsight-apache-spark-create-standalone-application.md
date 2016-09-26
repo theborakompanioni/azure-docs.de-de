@@ -4,7 +4,7 @@
 	services="hdinsight"
 	documentationCenter=""
 	authors="nitinme"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun"
 	tags="azure-portal"/>
 
@@ -135,7 +135,7 @@ Falls Sie beim Installieren von IntelliJ IDEA nicht zum Aktivieren des Scala-Plu
 	1. Klicken Sie im Menü **Datei** auf **Projektstruktur**.
 	2. Klicken Sie im Dialogfeld **Projektstruktur** auf **Artefakte** und anschließend auf das Pluszeichen. Klicken Sie im Popupdialogfeld auf **JAR** und anschließend auf **From modules with dependencies**.
 
-		![JAR-Datei erstellen](./media/hdinsight-apache-spark-create-standalone-application/create-jar-1.png)
+		![Erstellen einer JAR-Datei](./media/hdinsight-apache-spark-create-standalone-application/create-jar-1.png)
 
 	3. Klicken Sie im Dialogfeld **Modulbasierte JAR-Erstellung** auf die Auslassungspunkte (![Auslassungspunkte](./media/hdinsight-apache-spark-create-standalone-application/ellipsis.png)) für die Hauptklasse.
 
@@ -145,17 +145,17 @@ Falls Sie beim Installieren von IntelliJ IDEA nicht zum Aktivieren des Scala-Plu
 
 	5. Vergewissern Sie sich im Dialogfeld **Create JAR from Modules**, dass die Option zum Extrahieren in die JAR-Zieldatei aktiviert ist, und klicken Sie anschließend auf **OK**. Dadurch wird eine einzelne JAR-Datei mit allen Abhängigkeiten erstellt.
 
-		![JAR-Datei erstellen](./media/hdinsight-apache-spark-create-standalone-application/create-jar-3.png)
+		![Erstellen einer JAR-Datei](./media/hdinsight-apache-spark-create-standalone-application/create-jar-3.png)
 
 	6. Die Ausgabelayout-Registerkarte führt alle JAR-Dateien des Maven-Projekts auf. Dateien ohne direkte Abhängigkeit für die Scala-Anwendung können ausgewählt und gelöscht werden. Bei der hier erstellten Anwendung können Sie bis auf **SparkSimpleApp compile output** alle entfernen. Wählen Sie die zu löschenden JAR-Dateien aus, und klicken Sie anschließend auf das Symbol **Löschen**.
 
-		![JAR-Datei erstellen](./media/hdinsight-apache-spark-create-standalone-application/delete-output-jars.png)
+		![Erstellen einer JAR-Datei](./media/hdinsight-apache-spark-create-standalone-application/delete-output-jars.png)
 
 		Vergewissern Sie sich, dass das Kontrollkästchen **Build on make** aktiviert ist, damit die JAR-Datei bei jeder Projekterstellung oder -aktualisierung erstellt wird. Klicken Sie auf **Apply**, dann auf **OK**.
 
 	7. Klicken Sie auf der Menüleiste auf **Erstellen** und anschließend auf **Projekt erstellen**. Die JAR-Datei kann auch durch Klicken auf **Build Artifacts** erstellt werden. Die JAR-Ausgabedatei wird unter **\\out\\artifacts** erstellt.
 
-		![JAR-Datei erstellen](./media/hdinsight-apache-spark-create-standalone-application/output.png)
+		![Erstellen einer JAR-Datei](./media/hdinsight-apache-spark-create-standalone-application/output.png)
 
 ## Ausführen der Anwendung im Spark-Cluster
 
@@ -191,7 +191,7 @@ Gehen Sie wie folgt vor, um die Anwendung im Cluster auszuführen:
 
 * [Verwenden des HDInsight-Tools-Plug-Ins für IntelliJ IDEA zum Erstellen und Übermitteln von Spark Scala-Anwendungen](hdinsight-apache-spark-intellij-tool-plugin.md)
 
-* [Use HDInsight Tools Plugin for IntelliJ IDEA to debug Spark applications remotely](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md) (Verwenden von HDInsight-Tools-Plug-Ins für IntelliJ IDEA zum Remotedebuggen von Spark-Anwendungen)
+* [Use HDInsight Tools Plugin for IntelliJ IDEA to debug Spark applications remotely (Verwenden von HDInsight-Tools-Plug-Ins für IntelliJ IDEA zum Remotedebuggen von Spark-Anwendungen)](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 
 * [Verwenden von Zeppelin-Notebooks mit einem Spark-Cluster in HDInsight](hdinsight-apache-spark-use-zeppelin-notebook.md)
 
@@ -207,4 +207,4 @@ Gehen Sie wie folgt vor, um die Anwendung im Cluster auszuführen:
 
 * [Track and debug jobs running on an Apache Spark cluster in HDInsight](hdinsight-apache-spark-job-debugging.md) (Nachverfolgen und Debuggen von Aufträgen in einem Apache Spark-Cluster unter HDInsight)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0914_2016-->

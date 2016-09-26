@@ -1,10 +1,10 @@
 <properties 
    pageTitle="Verwenden von U-SQL-Fensterfunktionen für Azure Data Lake Analytics-Aufträge| Azure" 
-   description="Erfahren Sie, wie Sie U-SQL-Fensterfunktionen verwenden." 
+   description="Erfahren Sie, wie Sie U-SQL-Fensterfunktionen verwenden. " 
    services="data-lake-analytics" 
    documentationCenter="" 
    authors="edmacauley" 
-   manager="paulettm" 
+   manager="jhubbard" 
    editor="cgronlun"/>
  
 <tags
@@ -44,7 +44,7 @@ Die Fensterfunktionen sind in die folgenden Kategorien unterteilt:
 
 In diesem Tutorial werden zwei Datasets verwendet:
 
-- QueryLog 
+- QueryLog
 
     „QueryLog“ enthält eine Übersicht, wonach Benutzer in der Suchmaschine gesucht haben. Jedes Abfrageprotokoll enthält Folgendes:
     
@@ -166,7 +166,7 @@ Die Summe der Spalte „SalaryByDept“ ist $165000, was dem Betrag im letzten S
  
 In beiden Fällen gibt es weniger Ausgabezeilen als Eingabezeilen:
  
-- Ohne GROUP BY reduziert die Aggregation alle Zeilen zu einer einzelnen Zeile. 
+- Ohne GROUP BY reduziert die Aggregation alle Zeilen zu einer einzelnen Zeile.
 - Mit GROUP BY gibt es N Ausgabezeilen, wobei N die Anzahl unterschiedliche Werte ist, die in den Daten enthalten sind. In diesem Fall sind 4 Zeilen in der Ausgabe enthalten.
 
 ###  Verwenden einer Fensterfunktion
@@ -328,7 +328,7 @@ Rangfolgefunktionen geben gemäß der Definition der Klauseln PARTITION BY und O
 Die folgenden Rangfolgefunktionen werden unterstützt:
 
 - RANK
-- DENSE\_RANK 
+- DENSE\_RANK
 - NTILE
 - ROW\_NUMBER
 
@@ -341,7 +341,7 @@ Die folgenden Rangfolgefunktionen werden unterstützt:
 	) AS <alias>
 
 - Die ORDER BY-Klausel ist für Rangfolgefunktionen optional. Falls ORDER BY angegeben ist, wird damit die Rangfolge bestimmt. Falls ORDER BY nicht angegeben ist, werden Werte von U-SQL auf Grundlage der Lesereihenfolge von Datensätzen zugewiesen. Dies führt zu einem nicht deterministischen Wert für ROW\_NUMBER, RANK und DENSE\_RANK für den Fall, dass die ORDER BY-Klausel nicht angegeben wurde.
-- NTILE erfordert einen Ausdruck, der in eine positive ganze Zahl ausgewertet wird. Diese Zahl gibt die Anzahl der Gruppen an, in die jede Partition unterteilt werden muss. Dieser Bezeichner wird nur bei der Rangfolgefunktion NTILE verwendet. 
+- NTILE erfordert einen Ausdruck, der in eine positive ganze Zahl ausgewertet wird. Diese Zahl gibt die Anzahl der Gruppen an, in die jede Partition unterteilt werden muss. Dieser Bezeichner wird nur bei der Rangfolgefunktion NTILE verwendet.
 
 Weitere Informationen zur OVER-Klausel finden Sie in der [U-SQL-Referenz]().
 
@@ -389,7 +389,7 @@ DENSE\_RANK entspricht nahezu RANK, außer dass kein „Sprung“ zur nächsten 
 
 ![U-SQL-Fensterfunktion DENSE\_RANK](./media/data-lake-analytics-use-windowing-functions/u-sql-windowing-function-dense-rank-result.png)
 
-### Anmerkungen
+### Hinweise
 
 - Wenn ORDER BY nicht angegeben ist, wird die Rangfolgefunktion ohne bestimmte Reihenfolge auf das Rowset angewendet. Dies führt zu einem nicht deterministischen Verhalten dahingehend, wie die Rangfolgefunktion angewendet wird.
 - Es gibt keine Garantie, dass die von einer Abfrage mit ROW\_NUMBER zurückgegebenen Zeilen bei jeder Ausführung exakt gleich sortiert werden, es sei denn, die folgenden Bedingungen treffen zu.
@@ -417,7 +417,7 @@ Im folgenden Beispiel wird die Menge der Zeilen in jeder Partition (Vertical) in
 		
 Die Ergebnisse:
 
-|Abfragen|Wartezeit|Vertical|Quartile
+|Abfrage|Latenz|Vertical|Quartile
 |-----|-----------|--------|-------------
 |Banana|300|Image|1
 |Cherry|300|Image|2
@@ -431,8 +431,8 @@ Die Ergebnisse:
 
 NTILE verwendet den „numgroups“-Parameter. „numgroups“ ist eine positive ganze Zahl (int) oder ein Konstantenausdruck vom Typ „long“, der die Anzahl der Gruppen angibt, in die jede Partition unterteilt werden muss.
 
-- Wenn die Anzahl der Zeilen in der Partition von „numgroups“ gleichmäßig geteilt werden kann, haben die Gruppen dieselbe Größe. 
-- Wenn die Anzahl der Zeilen in der Partition von „numgroups“ nicht gleichmäßig geteilt werden kann, sind das Ergebnis Gruppen mit zwei Größen, die sich in einem Element unterscheiden. Größere Gruppen stehen in der von der OVER-Klausel angegebenen Reihenfolge vor kleineren Gruppen. 
+- Wenn die Anzahl der Zeilen in der Partition von „numgroups“ gleichmäßig geteilt werden kann, haben die Gruppen dieselbe Größe.
+- Wenn die Anzahl der Zeilen in der Partition von „numgroups“ nicht gleichmäßig geteilt werden kann, sind das Ergebnis Gruppen mit zwei Größen, die sich in einem Element unterscheiden. Größere Gruppen stehen in der von der OVER-Klausel angegebenen Reihenfolge vor kleineren Gruppen.
 
 Beispiel:
 
@@ -456,7 +456,7 @@ Sie haben am Anfang des Abschnitts zu Rangfolgefunktionen das folgende Beispiel 
 
 Die Ergebnisse:
 
-|Abfragen|Wartezeit|Vertical|Rank|DenseRank|RowNumber
+|Abfrage|Latenz|Vertical|Rank|DenseRank|RowNumber
 |-----|-----------|--------|---------|--------------|--------------
 |Banana|300|Image|1|1|1
 |Cherry|300|Image|1|1|2
@@ -485,7 +485,7 @@ Im folgenden Beispiel werden die TOP 3 Datensätze in jeder Gruppe ohne Lücken 
 
 Die Ergebnisse:
 
-|Abfragen|Wartezeit|Vertical|DenseRank
+|Abfrage|Latenz|Vertical|DenseRank
 |-----|-----------|--------|--------------
 |Banana|300|Image|1
 |Cherry|300|Image|1
@@ -510,7 +510,7 @@ Die Ergebnisse:
 
 Die Ergebnisse:
 
-|Abfragen|Wartezeit|Vertical|Rank
+|Abfrage|Latenz|Vertical|Rank
 |-----|-----------|--------|---------
 |Banana|300|Image|1
 |Cherry|300|Image|1
@@ -535,7 +535,7 @@ Die Ergebnisse:
 
 Die Ergebnisse:
     
-|Abfragen|Wartezeit|Vertical|RowNumber
+|Abfrage|Latenz|Vertical|RowNumber
 |-----|-----------|--------|--------------
 |Banana|300|Image|1
 |Cherry|300|Image|2
@@ -561,7 +561,7 @@ Analysefunktionen dienen zum Verstehen der Verteilung von Werten in Fenstern. Da
 
 **Unterstützte Analysefunktionen für Fenster**
 
-- CUME\_DIST 
+- CUME\_DIST
 - PERCENT\_RANK
 - PERCENTILE\_CONT
 - PERCENTILE\_DISC
@@ -570,7 +570,7 @@ Analysefunktionen dienen zum Verstehen der Verteilung von Werten in Fenstern. Da
 
 CUME\_DIST berechnet die relative Position eines angegebenen Werts in einer Gruppe von Werten. Berechnet wird den Prozentsatz der Abfragen mit einer Latenz kleiner gleich der aktuellen Abfragelatenz im selben „Vertical“. Für eine Zeile R ist bei angenommener aufsteigender Reihenfolge CUME\_DIST von R die Anzahl von Zeilen mit Werten kleiner gleich dem Wert von R dividiert durch die Anzahl von Zeilen, die im Resultset der Partition oder Abfrage ausgewertet werden. CUME\_DIST gibt Zahlen im Bereich 0 < x < = 1 zurück.
 
-Syntax
+**Syntax**
 
     CUME_DIST() 
         OVER (
@@ -588,7 +588,7 @@ Im folgenden Beispiel wird die CUME\_DIST-Funktion zum Berechnen des Latenzperze
 
 Die Ergebnisse:
     
-|Abfragen|Wartezeit|Vertical|CumeDist
+|Abfrage|Latenz|Vertical|CumeDist
 |-----|-----------|--------|---------------
 |Durian|500|Image|1
 |Banana|300|Image|0\.666666666666667
@@ -606,7 +606,7 @@ Es gibt in der Partition 6 Zeilen mit dem Partitionsschlüssel „Web“ (ab de
 - Es gibt fünf Zeilen mit einem Wert kleiner gleich 400, sodass der CUME\_DIST-Wert 5:6 = 0,83 entspricht.
 - Es gibt 4 Zeilen mit einem Wert kleiner gleich 300, sodass der CUME\_DIST-Wert 4:6 = 0,66 entspricht.
 - Es gibt drei Zeilen mit einem Wert kleiner gleich 200, sodass der CUME\_DIST-Wert 3:6 = 0,5 entspricht. Es gibt zwei Zeilen mit demselben Latenzwert.
-- Es gibt eine Zeile mit einem Wert kleiner gleich 100, sodass der CUME\_DIST-Wert 1:6 = 0,16 entspricht. 
+- Es gibt eine Zeile mit einem Wert kleiner gleich 100, sodass der CUME\_DIST-Wert 1:6 = 0,16 entspricht.
 
 
 **Hinweise zur Verwendung:**
@@ -623,7 +623,7 @@ Hinweis: Die ORDER BY-Klausel ist nicht zulässig, wenn auf die SELECT-Anweisung
 
 PERCENT\_RANK berechnet den relativen Rang einer Zeile innerhalb einer Gruppe von Zeilen. Mit PERCENT\_RANK können Sie den relativen Rang eines Werts innerhalb eines Resultsets oder einer Partition ermitteln. Der von PERCENT\_RANK zurückgegebene Wertebereich ist größer als 0 und kleiner gleich 1. Im Gegensatz zu CUME\_DIST ist PERCENT\_RANK für die erste Zeile immer 0.
 	
-Syntax
+**Syntax**
 
     PERCENT_RANK() 
         OVER (
@@ -636,7 +636,7 @@ Syntax
 - Die erste Zeile in einer Menge hat den PERCENT\_RANK 0.
 - NULL-Werte werden als die niedrigsten möglichen Werte behandelt.
 - Sie müssen die ORDER BY-Klausel angeben, um PERCENT\_RANK zu berechnen.
-- CUME\_DIST ist vergleichbar mit der PERCENT\_RANK-Funktion. 
+- CUME\_DIST ist vergleichbar mit der PERCENT\_RANK-Funktion.
 
 
 Im folgenden Beispiel wird die PERCENT\_RANK-Funktion zum Berechnen des Latenzperzentils für jede Abfrage in einem „Vertical“ verwendet.
@@ -654,7 +654,7 @@ Der von der PERCENT\_RANK-Funktion zurückgegebene Wert stellt den Rang der Late
 
 Die Ergebnisse:
 
-|Abfragen|Latency:int|Vertical|PercentRank
+|Abfrage|Latency:int|Vertical|PercentRank
 |-----|-----------|--------|------------------
 |Banana|300|Image|0
 |Cherry|300|Image|0
@@ -678,9 +678,9 @@ Diese beiden Funktionen berechnen ein Perzentil basierend auf einer kontinuierli
 
 **numeric\_literal**: Das zu berechnende Perzentil. Der Wert muss im Bereich von 0,0 bis 1,0 liegen.
 
-WITHIN GROUP ( ORDER BY <identifier> [ ASC | DESC ]): Gibt eine Liste von numerischen Werten für die Sortierung und Berechnung des Perzentils an. Nur ein Spaltenbezeichner ist zulässig. Der Ausdruck muss in einen numerischen Datentyp ausgewertet werden. Andere Datentypen sind nicht zulässig. Die Standardsortierreihenfolge ist aufsteigend.
+WITHIN GROUP (ORDER BY <Bezeichner> [ ASC | DESC ]): Gibt eine Liste von numerischen Werten für die Sortierung und Berechnung des Perzentils an. Nur ein Spaltenbezeichner ist zulässig. Der Ausdruck muss in einen numerischen Datentyp ausgewertet werden. Andere Datentypen sind nicht zulässig. Die Standardsortierreihenfolge ist aufsteigend.
 
-OVER ([ PARTITION BY <identifier,>…[n] ] ): Teilt das Eingaberowset in Partitionen gemäß dem Partitionsschlüssel auf, für den die Perzentilfunktion gilt. Weitere Informationen finden Sie im Abschnitt RANGFOLGE dieses Dokuments. Hinweis: Alle NULL-Werte im Dataset werden ignoriert.
+OVER ([ PARTITION BY <Bezeichner,>…[n] ] ): Teilt das Eingaberowset in Partitionen gemäß dem Partitionsschlüssel auf, für den die Perzentilfunktion gilt. Weitere Informationen finden Sie im Abschnitt RANGFOLGE dieses Dokuments. Hinweis: Alle NULL-Werte im Dataset werden ignoriert.
 
 **PERCENTILE\_CONT** berechnet ein Perzentil basierend auf einer kontinuierlichen Verteilung der Spaltenwerte. Das Ergebnis wird interpoliert und entspricht ggf. keinem der spezifischen Werte in der Spalte.
 
@@ -703,7 +703,7 @@ Die Funktionsweise beider Funktionen zeigt das folgende Beispiel, bei dem der Me
 
 Die Ergebnisse:
 
-|Abfragen|Latency:int|Vertical|PercentileCont50|PercentilDisc50
+|Abfrage|Latency:int|Vertical|PercentileCont50|PercentilDisc50
 |-----|-----------|--------|-------------------|----------------
 |Banana|300|Image|300|300
 |Cherry|300|Image|300|300
@@ -730,7 +730,7 @@ PERCENTILE\_DISC interpoliert keine Werte, weshalb der Median für „Web“ 200
 
 
 
-## Weitere Informationen
+## Siehe auch
 
 - [Übersicht über Microsoft Azure Data Lake Analytics](data-lake-analytics-overview.md)
 - [Erste Schritte mit Data Lake Analytics mithilfe des Azure-Portals](data-lake-analytics-get-started-portal.md)
@@ -743,4 +743,4 @@ PERCENTILE\_DISC interpoliert keine Werte, weshalb der Median für „Web“ 200
 - [Verwalten von Azure Data Lake Analytics mithilfe von Azure PowerShell](data-lake-analytics-manage-use-powershell.md)
 - [Überwachen und Problembehandeln von Azure Data Lake Analytics-Aufträgen mithilfe des Azure-Portals](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0914_2016-->

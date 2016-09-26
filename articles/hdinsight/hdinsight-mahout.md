@@ -4,7 +4,7 @@
 	services="hdinsight"
 	documentationCenter=""
 	authors="Blackmist"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun"
 	tags="azure-portal"/>
 
@@ -68,7 +68,7 @@ Praktischerweise stellt [GroupLens Research][movielens] Bewertungsdaten für Fil
 
 Es existieren zwei Dateien, `moviedb.txt` (Informationen zu den Filmen) und `user-ratings.txt`. Die Datei „user-ratings.txt“ der Benutzerbewertung wird während der Analyse verwendet, während „moviedb.txt“ beim Anzeigen der Ergebnisse der Analyse benutzerfreundliche Textinformationen angibt.
 
-Die Daten in der Datei „user-ratings.txt“ haben folgende Struktur: `userID`, `movieID`, `userRating` und `timestamp`. Dies gibt Aufschluss darüber, wie die einzelnen Benutzer einen Film bewertet haben. Hier sehen Sie ein Beispiel für die Daten:
+Die Daten in der Datei „user-ratings.txt“ der Benutzerbewertung haben die Struktur von `userID`, `movieID`, `userRating` und `timestamp`, anhand der die Bewertung eines Films durch die einzelnen Benutzer ersichtlich wird. Hier sehen Sie ein Beispiel für die Daten:
 
 
     196	242	3	881250949
@@ -424,9 +424,9 @@ Mahout ist in HDInsight 3.1-Clustern bereits installiert. Die Installation kann 
 
 			mvn -Dhadoop2.version=2.2.0 -DskipTests clean package
 
-    	Nachdem der Build abgeschlossen wurde, finden Sie die JAR-Datei unter „__mahout\mrlegacy\target\mahout-mrlegacy-1.0-SNAPSHOT-job.jar__“.
+    	After the build completes, you can find the JAR file at __mahout\mrlegacy\target\mahout-mrlegacy-1.0-SNAPSHOT-job.jar__.
 
-    	> [AZURE.NOTE] Wenn Mahout 1.0 veröffentlicht wird, sollten Sie die vorgefertigten Pakete mit HDInsight 3.0 verwenden können.
+    	> [AZURE.NOTE] When Mahout 1.0 is released, you should be able to use the prebuilt packages with HDInsight 3.0.
 
 2. Laden Sie die jar-Datei hoch in __example/jars__ in den Standardspeicher Ihres Clusters. Ersetzen Sie „CLUSTERNAME“ im folgenden Skript durch den Namen des HDInsight-Clusters, und ersetzen Sie „FILENAME“ durch den Pfad zur __mahout-coure-0.9-job.jar__-Datei.
 
@@ -524,4 +524,4 @@ Nachdem Sie sich mit Mahout vertraut gemacht haben, können Sie sich anderen Met
 [tools]: https://github.com/Blackmist/hdinsight-tools
  
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0914_2016-->

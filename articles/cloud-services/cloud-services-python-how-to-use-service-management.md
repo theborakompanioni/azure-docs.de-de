@@ -13,15 +13,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="python"
 	ms.topic="article"
-	ms.date="06/22/2016"
+	ms.date="09/06/2016"
 	ms.author="lmazuel"/>
 
 # Verwenden der Dienstverwaltung aus Python
 
-In diesem Leitfaden wird die programmgesteuerte Durchführung gängiger Dienstverwaltungsaufgaben aus Python erläutert. Die **ServiceManagementService**-Klasse im [Azure-SDK für Python](../python-how-to-install.md) unterstützt den programmgesteuerten Zugriff auf viele der Dienstverwaltungsfunktionen, die im [klassischen Azure-Portal][management-portal] zur Verfügung stehen (z. B. **Erstellen, Aktualisieren und Löschen von Clouddiensten, Bereitstellungen, Datenverwaltungsdiensten und virtuellen Computern**). Diese Funktionalität kann bei der Erstellung von Anwendungen hilfreich sein, die programmgesteuert auf Dienstverwaltungsfunktionen zugreifen müssen.
-
 > [AZURE.NOTE] Die Dienstverwaltungs-API wird durch die neue Ressourcenverwaltungs-API ersetzt, die derzeit als Vorschauversion verfügbar ist. Weitere Informationen zur Verwendung der neuen Ressourcenverwaltungs-API von Python finden Sie in der [Dokumentation zur Azure-Ressourcenverwaltung](http://azure-sdk-for-python.readthedocs.org/).
 
+In diesem Leitfaden wird die programmgesteuerte Durchführung gängiger Dienstverwaltungsaufgaben aus Python erläutert. Die **ServiceManagementService**-Klasse im [Azure-SDK für Python](https://github.com/Azure/azure-sdk-for-python) unterstützt den programmgesteuerten Zugriff auf viele der Dienstverwaltungsfunktionen, die im [klassischen Azure-Portal][management-portal] zur Verfügung stehen (z.B. **Erstellen, Aktualisieren und Löschen von Clouddiensten, Bereitstellungen, Datenverwaltungsdiensten und virtuellen Computern**). Diese Funktionalität kann bei der Erstellung von Anwendungen hilfreich sein, die programmgesteuert auf Dienstverwaltungsfunktionen zugreifen müssen.
 
 ## <a name="WhatIs"> </a>Was ist Dienstverwaltung?
 Die Dienstverwaltungs-API bietet programmgesteuerten Zugriff auf viele der im [klassischen Azure-Portal][management-portal] verfügbaren Dienstverwaltungsfunktionen. Mithilfe des Azure-SDK für Python können Sie Ihre Clouddienste und Speicherkonten verwalten.
@@ -30,6 +29,10 @@ Um die Dienstverwaltungs-API verwenden zu können, müssen Sie [ein Azure-Konto 
 
 ## <a name="Concepts"> </a>Konzepte
 Das Azure-SDK für Python umfasst die [Azure-Dienstverwaltungs-API][svc-mgmt-rest-api], eine REST-API. Alle API-Vorgänge werden über SSL ausgeführt und mithilfe von X.509s v3-Zertifikaten gegenseitig authentifiziert. Der Zugriff auf die Dienstverwaltung kann über einen in Azure ausgeführten Dienst erfolgen oder direkt über das Internet, und zwar von jeder Anwendung aus, die HTTPS-Anforderungen senden und HTTPS-Antworten empfangen kann.
+
+## <a name="Installation"> </a>Installation
+
+Alle in diesem Artikel beschriebenen Features sind im `azure-servicemanagement-legacy`-Paket verfügbar, das Sie mit Pip installieren können. Weitere Details zur Installation (z.B. wenn Python für Sie neu ist) finden Sie in diesem Artikel: [Installieren von Python und SDK](../python-how-to-install.md).
 
 ## <a name="Connect"> </a>Herstellen einer Verbindung mit der Dienstverwaltung
 Um eine Verbindung zum Dienstverwaltungs-Endpunkt herzustellen, benötigen Sie Ihre Azure-Abonnement-ID und ein gültiges Verwaltungszertifikat. Ihre Abonnement-ID können Sie über das [klassische Azure-Portal][management-portal] abrufen.
@@ -47,7 +50,7 @@ Führen Sie zum Erstellen des `.cer`-Zertifikats Folgendes aus:
 
 Weitere Informationen zu Azure-Zertifikaten finden Sie unter [Übersicht über Zertifikate für Azure Cloud Services](./cloud-services-certs-create.md). Eine vollständige Beschreibung von OpenSSL-Parametern finden Sie in der Dokumentation auf [http://www.openssl.org/docs/apps/openssl.html](http://www.openssl.org/docs/apps/openssl.html).
 
-Nachdem Sie diese Dateien erstellt haben, müssen Sie die `.cer`-Datei mit der Aktion "Upload" auf der Registerkarte „Einstellungen“ des [klassischen Azure-Portals][management-portal] zu Azure hochladen und sich den Speicherort der `.pem`-Datei notieren.
+Nachdem Sie diese Dateien erstellt haben, müssen Sie die `.cer`-Datei mit der Aktion „Upload“ auf der Registerkarte „Einstellungen“ des [klassischen Azure-Portals][management-portal] zu Azure hochladen und sich den Speicherort der `.pem`-Datei notieren.
 
 Nachdem Sie Ihre Abonnement-ID abgerufen, ein Zertifikat erstellt und die `.cer`-Datei zu Azure hochgeladen haben, können Sie eine Verbindung zum Azure-Verwaltungsendpunkt herstellen, indem Sie die Abonnement-ID und den Pfad zur `.pem`-Datei an **ServiceManagementService** übergeben:
 
@@ -99,18 +102,18 @@ Um die für das Hosten von Diensten verfügbaren Standorte aufzulisten, verwende
 Wenn Sie einen Clouddienst oder einen Speicherdienst erstellen, müssen Sie einen gültigen Standort angeben. Die Methode **list\_locations** gibt stets eine aktuelle Liste der derzeit verfügbaren Standorte zurück. Zum Zeitpunkt der Erstellung dieses Dokuments waren folgende Standorte verfügbar:
 
 - Westeuropa
-- Nordeuropa
+- Europa, Norden
 - Südostasien
 - Ostasien
 - USA (Mitte)
 - USA Nord Mitte
-- USA (Mitte/Süden)
-- USA (Westen)
+- USA, Süden-Mitte
+- USA (West)
 - USA (Osten)
 - Japan (Osten)
-- Japan (Westen)
+- Japan, Westen
 - Brasilien (Süden)
-- Australien (Osten)
+- Australien, Osten
 - Australien (Südosten)
 
 ## <a name="CreateCloudService"> </a>Erstellen eines Clouddiensts
@@ -204,7 +207,7 @@ Mit der Methode **list\_storage\_accounts** können Sie Ihre Speicherkonten und 
 
 ## <a name="DeleteStorageService"> </a>Löschen eines Speicherdiensts
 
-Sie können einen Speicherdienst löschen, indem Sie den Speicherdienstnamen an die Methode **delete\_storage\_account** übergeben. Beim Löschen eines Speicherdiensts werden alle im Dienst gespeicherten Daten ebenfalls gelöscht (Blobs, Tabellen und Warteschlangen).
+Sie können einen Speicherdienst löschen, indem Sie den Speicherdienstnamen an die Methode **delete\_storage\_account** übergeben. Beim Löschen eines Speicherdiensts werden alle im Dienst gespeicherten Daten gelöscht (Blobs, Tabellen und Warteschlangen).
 
 	from azure import *
 	from azure.servicemanagement import *
@@ -435,4 +438,4 @@ Weitere Informationen finden Sie im [Python Developer Center](/develop/python/).
 
 [Clouddienst]: https://azure.microsoft.com/de-DE/documentation/services/cloud-services/
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0914_2016-->

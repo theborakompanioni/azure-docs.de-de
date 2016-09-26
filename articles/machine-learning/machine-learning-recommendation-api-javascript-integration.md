@@ -4,7 +4,7 @@
 	services="machine-learning" 
 	documentationCenter="" 
 	authors="LuisCabrer" 
-	manager="paulettm" 
+	manager="jhubbard" 
 	editor="cgronlun"/>
 
 <tags 
@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="javascript" 
 	ms.topic="article" 
-	ms.date="08/24/2016" 
+	ms.date="09/08/2016" 
 	ms.author="luisca"/>
 
 # Azure Machine Learning-Empfehlungen – JavaScript-Integration
 
-> Dies ist die Dokumentation zu den alten Recommendations-APIs im Datenmarkt, die zum 31.12.2016 eingestellt werden. Verwenden Sie ab sofort die [Recommentations-API von Cognitive Services](https://www.microsoft.com/cognitive-services/de-DE/recommendations-api).
+>[AZURE.NOTE] Beginnen Sie mit der Nutzung der Empfehlungs-API des Cognitive Service anstatt mit dieser Version. Der Recommendations Cognitive Service wird diesen Dienst ersetzen, weshalb alle neuen Features dafür entwickelt werden. Der Dienst bietet neue Funktionen wie Unterstützung der Batchverarbeitung, einen besseren API-Explorer, eine übersichtlichere API-Oberfläche, eine einheitlicherere Registrierungs-/Abrechnungsumgebung usw. Erfahren Sie mehr zur [Migration zum neuen Cognitive Service](http://aka.ms/recomigrate).
 
 
 Dieses Dokument beschreibt die Integration Ihrer Website mithilfe von JavaScript. JavaScript ermöglicht es Ihnen, Datensammlungsereignisse zu senden und Empfehlungen zu nutzen, nachdem Sie ein Empfehlungsmodell erstellt haben. Alle Vorgänge, die über JS erfolgen, können auch von der Serverseite her erfolgen.
@@ -62,7 +62,7 @@ Die folgenden Schritte erleichtern das Senden von Ereignissen:
 1.	Binden Sie die JQuery-Bibliothek in Ihren Code ein. Sie können ihn über die folgende URL von Nuget herunterladen.
 
 		http://www.nuget.org/packages/jQuery/1.8.2
-2.	Binden Sie die JavaScript-Bibliothek für Empfehlungen von folgender URL ein: http://1drv.ms/1Aoa1Zp
+2.	Binden Sie die JavaScript-Bibliothek für Empfehlungen von folgender URL ein: http://aka.ms/RecoJSLib1
 
 3.	Initialisieren Sie die Azure ML-Recommendations-Bibliothek mit den entsprechenden Parametern.
 
@@ -187,12 +187,7 @@ Dieses Ereignis sollte nach der Benutzeranmeldung auf Ihrer Website verwendet we
 
 Parameter:
 * event (Zeichenfolge) – „userlogin“
-* user (Zeichenfolge) – eindeutige Identifikation des Benutzers. 
-
-		<script> 
-			if (typeof AzureMLRecommendationsEvent=="undefined") { AzureMLRecommendationsEvent = ; }
-			AzureMLRecommendationsEvent.push({event: "userlogin", user: “ABCD10AA” });
-		</script>
+* user (Zeichenfolge) – eindeutige Identifikation des Benutzers. <script> if (typeof AzureMLRecommendationsEvent=="undefined") { AzureMLRecommendationsEvent = ; } AzureMLRecommendationsEvent.push({event: "userlogin", user: “ABCD10AA” }); </script>
 
 ##4\. Nutzen von Empfehlungen über JavaScript
 Der Code, der die Empfehlung nutzt, wird durch ein JavaScript-Ereignis von der Client-Webseite ausgelöst. Die Antwort mit der Empfehlung enthält die Ids der empfohlenen Elemente, deren Namen und ihre Bewertungen. Es empfiehlt sich, diese Option nur für eine Listenanzeige der empfohlenen Elemente zu verwenden. Eine komplexere Aufbereitung (wie z. B. das Hinzufügen von Metadaten des Elements) sollte in der serverseitigen Integration erledigt werden.
@@ -230,4 +225,4 @@ Beispiel: Mit dem folgenden Code werden acht Empfehlungen für das Element "64f6
 [3]: ./media/machine-learning-recommendation-api-javascript-integration/Drawing3.png
  
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0914_2016-->

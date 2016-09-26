@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/20/2016"
+	ms.date="09/09/2016"
 	ms.author="jeedes"/>
 
 
@@ -33,7 +33,7 @@ Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unte
 
 Um die Azure AD-Integration mit SAP Business ByDesign konfigurieren zu können, benötigen Sie Folgendes:
 
-- Ein Azure AD-Abonnement.
+- Ein Azure AD-Abonnement
 - Ein SAP Business ByDesign-Abonnement, für das einmaliges Anmelden aktiviert ist
 
 
@@ -97,7 +97,7 @@ Diese Linkbeziehung wird hergestellt, indem Sie den Benutzernamen in Azure AD de
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei SAP Business ByDesign müssen Sie die folgenden Bausteine ausführen:
 
-1. **[Konfigurieren von Azure AD – einmaliges Anmelden](#configuring-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
+1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
 2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
 3. **[Erstellen eines SAP Business ByDesign-Testbenutzers](#creating-an-sap-business-bydesign-test-user)**, um eine Entsprechung von Britta Simon in SAP Business ByDesign zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
 4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
@@ -223,7 +223,7 @@ In diesem Abschnitt erstellen Sie im klassischen Portal einen Testbenutzer mit d
 
 2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
 
-3. Klicken Sie zum Anzeigen der Liste der Benutzer im Menü oben auf **Benutzer**.
+3. Klicken Sie im Menü oben auf **Benutzer**, um die Liste der Benutzer anzuzeigen.
 
 	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-sapbusinessbydesign-tutorial/create_aaduser_03.png)
 
@@ -333,4 +333,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel „SAP Business ByDesign“ klicken, 
 [204]: ./media/active-directory-saas-sapbusinessbydesign-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-sapbusinessbydesign-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0914_2016-->

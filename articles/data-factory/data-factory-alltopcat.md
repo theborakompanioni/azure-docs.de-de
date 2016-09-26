@@ -4,7 +4,7 @@
 	services="data-factory"
 	documentationCenter=""
 	authors="spelluru"
-	manager="paulettm"
+	manager="jhubbard"
 	editor=""/>
 
 <tags
@@ -43,9 +43,9 @@ In diesem Abschnitt werden Artikel aufgelistet, die kürzlich mit einem sehr umf
 
 | &nbsp; | Artikel | Aktualisierter Text, Ausschnitt |
 | --: | :-- | :-- |
-| 8 | [Erstellen, Überwachen und Verwalten von Azure Data Factorys mithilfe des Data Factory .NET SDK](data-factory-create-data-factories-programmatically.md) | **Anmeldung ohne Popupdialogfeld** Der obige Beispielcode startet ein Dialogfeld zur Eingabe der Azure-Anmeldeinformationen. Wenn Sie sich programmgesteuert ohne ein Dialogfeld anmelden müssen, lesen Sie die Informationen zur Authentifizierung eines Dienstprinzipals mit Azure Resource Manager (resource-group-authenticate-service-principal.md authenticate-service-principal-with-certificate---powershell). **Beispiel** Erstellen der GetAuthorizationHeaderNoPopup-Methode (s.u.): public static string GetAuthorizationHeaderNoPopup() { var authority = new Uri(new Uri("https://login.windows.net"), ConfigurationManager.AppSettings "ActiveDirectoryTenantId" ); var context = new AuthenticationContext(authority.AbsoluteUri); var credential = new ClientCredential(ConfigurationManager.AppSettings "AdfClientId" , ConfigurationManager.AppSettings "AdfClientSecret" ); AuthenticationResult result = context.AcquireTokenAsync(ConfigurationManager.AppSettings "WindowsManagementUri" , credential).Result; |
+| 8 | [Erstellen, Überwachen und Verwalten von Azure Data Factorys mithilfe des Data Factory .NET SDK](data-factory-create-data-factories-programmatically.md) | **Anmeldung ohne Popupdialogfeld** Der obige Beispielcode startet ein Dialogfeld zur Eingabe der Azure-Anmeldeinformationen. Wenn Sie sich programmgesteuert ohne ein Dialogfeld anmelden müssen, lesen Sie die Informationen zur Authentifizierung eines Dienstprinzipals mit Azure Resource Manager (resource-group-authenticate-service-principal.md authenticate-service-principal-with-certificate---powershell). ** Beispiel** Erstellen der GetAuthorizationHeaderNoPopup-Methode (s.u.): public static string GetAuthorizationHeaderNoPopup() { var authority = new Uri(new Uri("https://login.windows.net"), ConfigurationManager.AppSettings "ActiveDirectoryTenantId" ); var context = new AuthenticationContext(authority.AbsoluteUri); var credential = new ClientCredential(ConfigurationManager.AppSettings "AdfClientId" , ConfigurationManager.AppSettings "AdfClientSecret" ); AuthenticationResult result = context.AcquireTokenAsync(ConfigurationManager.AppSettings "WindowsManagementUri" , credential).Result; |
 | 9 | [Verschieben von Daten mit der Kopieraktivität](data-factory-data-movement-activities.md) | **Unterstützte Dateiformate** Die Kopieraktivität kann Dateien unverändert zwischen zwei dateibasierten Datenspeichern wie Azure Blob, Dateisystem und Hadoop Distributed File System (HDFS) kopieren. Zu diesem Zweck können Sie den Formatabschnitt (data-factory-create-datasets.md) in den Definitionen für Ein- und Ausgabedataset überspringen. Die Daten werden dann direkt und ohne Serialisierung/Deserialisierung kopiert. Die Kopieraktivität liest und schreibt Dateien in den folgenden Formaten: Text, Avro, ORC und JSON. Im Folgenden finden Sie einige Beispiele für Aktionen, die Sie mit der Kopieraktivität durchführen können: Kopieren von Daten im Textformat (CSV) aus Azure Blob und Schreiben in Azure SQL/Kopieren von Dateien im Textformat (CSV) aus lokalen Dateisystemen und Schreiben in Azure Blob im Avro-Format/Kopieren von Daten in Azure SQL-Datenbank und Schreiben in ein lokales HDFS im ORC-Format** .a name="global"../a.Global verfügbare Datenverschiebung** Der Dienst, der die Kopieraktivität unterstützt, steht weltweit in den folgenden Regionen und Gebieten zur Verfügung, obwohl Azure Data Factory nur in den Regionen „USA, Westen“, „USA, Osten“ und „Europa, Norden“ verfügbar ist.|
-| 10 | [Verschieben von Daten aus einer OData-Quelle mithilfe von Azure Data Factory](data-factory-odata-connector.md) | **Verwenden der Windows-Authentifizierung für den Zugriff auf lokale OData-Quellen** { "name": "inputLinkedService", "properties": { "type": "OData", "typeProperties": { "url": ".endpoint of on-premises OData source e.g. Dynamics CRM.", "authenticationType": "Windows", "username": "domain\\user", "password": "password", "gatewayName": "mygateway" } } } |
+| 10 | [Verschieben von Daten aus einer OData-Quelle mithilfe von Azure Data Factory](data-factory-odata-connector.md) | ** Verwenden der Windows-Authentifizierung für den Zugriff auf lokale OData-Quellen** { "name": "inputLinkedService", "properties": { "type": "OData", "typeProperties": { "url": ".endpoint of on-premises OData source e.g. Dynamics CRM.", "authenticationType": "Windows", "username": "domain\\user", "password": "password", "gatewayName": "mygateway" } } } |
 
 
 
@@ -130,7 +130,7 @@ In diesem Abschnitt werden Artikel aufgelistet, die kürzlich mit einem sehr umf
 | &nbsp; | Titel | Beschreibung |
 | --: | :-- | :-- |
 | 57 | [Fallstudien](data-factory-customer-case-studies.md) | Erfahren Sie, wie einige unserer Kunden Azure Data Factory verwendet haben. |
-| 58 | [Anwendungsfall – Erstellen von Kundenprofilen](data-factory-customer-profiling-usecase.md) | Erfahren Sie, wie Azure Data Factory zum Erstellen eines datengesteuerten Workflows (Pipeline) verwendet wird, um Profile von Spielekunden zu erstellen. |
+| 58 | [Anwendungsfall – Erstellen von Kundenprofilen](data-factory-customer-profiling-usecase.md) | Erfahren Sie, wie Azure Data Factory zum Erstellen eines datengesteuerten Workflows (Pipeline) verwendet wird, um Profile von Spielekunden zu erstellen. |
 | 59 | [Anwendungsfall – Produktempfehlungen](data-factory-product-reco-usecase.md) | Informationen zu einem Anwendungsfall, der mithilfe von Azure Data Factory zusammen mit anderen Diensten implementiert wurde. |
 
 
@@ -162,4 +162,4 @@ In diesem Abschnitt werden Artikel aufgelistet, die kürzlich mit einem sehr umf
 | 66 | [Azure Data Factory – Benennungsregeln](data-factory-naming-rules.md) | Beschreibt die Benennungsregeln für Data Factory-Entitäten. |
 | 67 | [Problembehandlung bei Data Factory](data-factory-troubleshoot.md) | Erfahren Sie, wie Sie Probleme mithilfe von Azure Data Factory beheben. |
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0914_2016-->

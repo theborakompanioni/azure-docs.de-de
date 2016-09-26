@@ -4,7 +4,7 @@ description="Erfahren Sie, wie sie von einem Windows-basierten HDInsight-Cluster
 services="hdinsight"
 documentationCenter=""
 authors="Blackmist"
-manager="paulettm"
+manager="jhubbard"
 editor="cgronlun"/>
 
 <tags
@@ -134,7 +134,7 @@ Bootstrap für Linux-basierte Cluster bietet diese Funktion nicht. Verwenden Sie
 
 ### Virtuelle Netzwerke
 
-Windows-basierte HDInsight-Cluster funktionieren nur mit klassischen virtuellen Netzwerken, während für Linux-basierte HDInsight-Cluster virtuelle Resource Manager-Netzwerke erforderlich sind. Wenn Sie über Ressourcen in einem klassischen virtuellen Netzwerk verfügen, mit dem sich der Linux-basierte HDInsight-Cluster verbinden muss, finden Sie weitere Informationen dazu unter [Herstellen einer Verbindung zwischen klassischen VNets und neuen VNets](../virtual-network/virtual-networks-arm-asm-s2s.md).
+Windows-basierte HDInsight-Cluster funktionieren nur mit klassischen virtuellen Netzwerken, während für Linux-basierte HDInsight-Cluster virtuelle Resource Manager-Netzwerke erforderlich sind. Wenn Sie über Ressourcen in einem klassischen virtuellen Netzwerk verfügen, mit dem sich der Linux-basierte HDInsight-Cluster verbinden muss, finden Sie weitere Informationen dazu unter [Verbinden von virtuellen Netzwerken aus unterschiedlichen Bereitstellungsmodellen im Portal](../vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md).
 
 Weitere Informationen zu den Konfigurationsanforderungen für das Verwenden von Azure Virtual Networks mit HDInsight finden Sie unter [Erweitern der HDInsight-Funktionen mit Azure Virtual Network](hdinsight-extend-hadoop-virtual-network.md).
 
@@ -254,4 +254,4 @@ Wenn Sie wissen, dass die Skripts keine Zeichenfolgen mit eingebetteten CR-Zeich
 
 -   [Verwalten eines Linux-basierten Clusters mithilfe von Ambari](hdinsight-hadoop-manage-ambari.md)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0914_2016-->

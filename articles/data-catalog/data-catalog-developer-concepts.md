@@ -4,7 +4,7 @@
 	services="data-catalog"
 	documentationCenter=""
 	authors="spelluru"
-	manager="paulettm"
+	manager="jhubbard"
 	editor=""
 	tags=""/>
 <tags 
@@ -353,4 +353,4 @@ Mit den Sichtelementanforderungen **PUT** und **POST** können Sie Rollen und Be
 <!--Image references-->
 [1]: ./media/data-catalog-developer-concepts/concept2.png
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0914_2016-->

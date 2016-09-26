@@ -4,7 +4,7 @@
    services="data-lake-store,stream-analytics" 
    documentationCenter=""
    authors="nitinme"
-   manager="paulettm"
+   manager="jhubbard"
    editor="cgronlun"/>
 
 <tags
@@ -24,11 +24,11 @@ In diesem Artikel erfahren Sie, wie Sie Azure Data Lake-Speicher als Ausgabe fü
 
 ## Voraussetzungen
 
-Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
+Bevor Sie mit diesem Tutorial beginnen können, benötigen Sie Folgendes:
 
 - **Ein Azure-Abonnement**. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
 
-- **Aktivieren Ihres Azure-Abonnements** für die öffentliche Vorschauversion des Data Lake-Speichers. Weitere Informationen finden Sie in den [Anweisungen](data-lake-store-get-started-portal.md#signup).
+- **Aktivieren Sie Ihr Azure-Abonnement** für die öffentliche Vorschauversion von Data Lake Store. Weitere Informationen finden Sie in den [Anweisungen](data-lake-store-get-started-portal.md#signup).
 
 - **Azure-Speicherkonto**. Sie verwenden einen Blobcontainer aus diesem Konto, um Daten für einen Stream Analytics-Auftrag einzugeben. Gehen Sie für dieses Tutorial davon aus, dass Sie ein Speicherkonto namens **datalakestoreasa** und einen Container innerhalb des Kontos namens **datalakestoreasacontainer** erstellen. Nachdem Sie den Container erstellt haben, laden Sie eine Beispieldatendatei in diesen hoch. Eine Beispieldatendatei finden Sie im [Azure Data Lake Git-Repository](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/Drivers.txt). Sie können verschiedene Clients verwenden, z. B. [Azure-Speicher-Explorer](http://storageexplorer.com/), zum Hochladen von Daten in einen Blobcontainer.
 
@@ -125,8 +125,8 @@ Abschließend können Sie das Data Lake Store-Konto mit dem [Azure-Portal](https
 
 Beachten Sie, dass die Ausgabe im Daten-Explorer-Fenster gemäß Angabe in den Data Lake Store-Ausgabeeinstellungen (`streamanalytics/job/output/{date}/{time}`) in einen Ordner geschrieben wird.
 
-## Weitere Informationen
+## Siehe auch
 
 * [Erstellen eines HDInsight-Clusters für die Verwendung von Data Lake-Speicher](data-lake-store-hdinsight-hadoop-use-portal.md)
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0914_2016-->

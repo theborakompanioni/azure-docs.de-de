@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="NA"
 	ms.workload="data-catalog"
-	ms.date="06/27/2016"
+	ms.date="09/13/2016"
 	ms.author="spelluru"/>
 
 # Tastenkombinationen für Azure Data Catalog
@@ -22,7 +22,7 @@
 
 ### Allgemeine Tastenkombinationen
 
-|Zweck|Drücken Sie
+|Vorgang|Drücken Sie
 |---|---
 |Zu den einzelnen Steuerelementen auf der Seite gelangen|TAB
 |Option wählen|EINGABE- oder LEERTASTE
@@ -33,27 +33,27 @@
 
 ### Authentifizierungsseite
 
-|Zweck|Drücken Sie
+|Vorgang|Drücken Sie
 |---|---
 |Beim Dienst anmelden|ALT+S
 
 ### Seite zur Datenquellenauswahl
 
-|Zweck|Drücken Sie
+|Vorgang|Drücken Sie
 |---|---
 |Zur nächsten Seite wechseln (sofern aktiviert)|ALT+N
 |Ausgewählten Typ ändern, wenn eine Kachel im Fokus ist|NACH-LINKS, -OBEN, -RECHTS ODER -UNTEN-TASTE
 
 ### Seite für Datenquellenverbindung
 
-|Zweck|Drücken Sie
+|Vorgang|Drücken Sie
 |---|---
 |Zur vorherigen Seite wechseln (sofern aktiviert)|ALT+P
 |Schaltfläche „Verbinden“ auswählen| ALT+C
 
 ### Seite mit dem Verbindungskontext
 
-|Zweck|Drücken Sie
+|Vorgang|Drücken Sie
 |---|---
 |Schaltfläche „Registrieren“ (sofern aktiviert)| ALT+R
 |Kontrollkästchen „Vorschau einschließen“ (falls verfügbar).|ALT+P
@@ -64,7 +64,7 @@
 
 ### Seite „Status veröffentlichen“
 
-|Zweck|Drücken Sie
+|Vorgang|Drücken Sie
 |---|---
 |Schaltfläche „Abbrechen“|ALT+C
 |Schaltfläche „Weitere Objekte registrieren“| ALT+R
@@ -72,14 +72,14 @@
 
 ### Seite „Status veröffentlichen“
 
-|Zweck|Drücken Sie
+|Vorgang|Drücken Sie
 |---|---
 |Schaltfläche „Speichern“ (sofern aktiviert)| ALT+S
 |Schaltfläche „Abbrechen“|ALT+C
 
 ## Tastenkombinationen für das Data Catalog-Portal
 
-|Zweck|Drücken Sie
+|Vorgang|Drücken Sie
 |---|---
 |Navigieren| TAB und UMSCHALT+TAB
 |Auf ein Element klicken| LEERTASTE oder EINGABETASTE
@@ -92,4 +92,4 @@
 |Menü **Öffnen In** ein-/ausblenden | ALT+O
 |Container untersuchen, wenn das Objekt ein Container ist | ALT+L
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0914_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="html"
 	ms.devlang="javascript"
 	ms.topic="article"
-	ms.date="06/29/2016"
+	ms.date="09/12/2016"
 	ms.author="adrianha;ricksal"/>
 
 # Verwenden der JavaScript-Clientbibliothek für Azure Mobile Apps
@@ -57,15 +57,23 @@ Insgesamt werden zwei Authentifizierungsflüsse unterstützt: ein Serverfluss un
 
 [AZURE.INCLUDE [app-service-mobile-html-js-auth-library](../../includes/app-service-mobile-html-js-auth-library.md)]
 
-###<a name="configure-external-redirect-urls"></a>So wird's gemacht: Konfigurieren Ihres Mobile App Service für externe Umleitungs-URLs
+###<a name="configure-external-redirect-urls"></a>Vorgehensweise: Konfigurieren Ihres Mobile App Service für externe Umleitungs-URLs
 
-Mehrere Arten von JavaScript-Anwendungen verwenden zur Behandlung von OAuth-UI-Datenflüssen eine Loopback-Funktion – etwa, wenn Sie Ihren Dienst lokal ausführen, Live Reload im Ionic-Framework verwenden oder zur Authentifizierung eine Umleitung zu App Service durchführen. Dies kann problematisch sein, da die App Service-Authentifizierung in der Standardkonfiguration nur Zugriffe von Ihrem mobilen App-Back-End zulässt.
+Mehrere JavaScript-Anwendungen verwenden eine Loopback-Funktion, um Abläufe in der OAuth-Benutzeroberfläche zu verarbeiten. Diese Funktionen umfassen:
 
-Führen Sie die folgenden Schritte durch, um die App Service-Einstellungen zu ändern und die Authentifizierung über Ihren lokalen Host zu ermöglichen:
+* Lokale Ausführung Ihres Dienstes
+* Verwendung von Live Reload mit den Ionic-Framework
+* Umleitung an den App Service zur Authentifizierung.
 
-1. Melden Sie sich beim [Azure-Portal] an, navigieren Sie zu Ihrem mobilen App-Back-End, und klicken Sie dann auf **Tools** > **Ressourcen-Explorer** > **Start**, um ein neues Ressourcen-Explorer-Fenster für Ihr mobiles App-Back-End (Website) zu öffnen.
+Lokale Ausführung kann problematisch sein, da die App Service-Authentifizierung in der Standardkonfiguration nur Zugriffe von Ihrem Back-End für mobile Apps zulässt. Führen Sie die folgenden Schritte aus, um die App Service-Einstellungen zu ändern und die Authentifizierung bei lokaler Serverausführung zu ermöglichen:
 
-2. Erweitern Sie den Knoten **config** für Ihre App. Klicken Sie anschließend auf **authsettings** > **Bearbeiten**, navigieren Sie zum Element **AllowedExternalRedirectUrls** (sollte NULL sein), und ändern Sie es wie folgt:
+1. Melden Sie sich beim [Azure-Portal] an.
+2. Navigieren Sie zum Back-End für mobile Apps.
+3. Wählen Sie **Ressourcen-Explorer** im Menü **ENTWICKLUNGSTOOLS**.
+4. Klicken Sie auf **Gehe zu**, um den Ressourcen-Explorer für Ihr Back-End für mobile Apps in einer neuen Registerkarte oder einem neuen Fenster zu öffnen.
+5. Erweitern Sie den Knoten **config** > **authsettings** für Ihre App.
+6. Klicken Sie auf die Schaltfläche **Bearbeiten**, um die Bearbeitung der Ressource zu ermöglichen.
+7. Suchen Sie nach dem Element **allowedExternalRedirectUrls**, das den Wert NULL haben sollte. Ändern Sie es wie folgt:
 
          "allowedExternalRedirectUrls": [
              "http://localhost:3000",
@@ -73,21 +81,26 @@ Führen Sie die folgenden Schritte durch, um die App Service-Einstellungen zu ä
          ],
 
     Ersetzen Sie die URLs im Array durch die URLs Ihres Diensts (in diesem Beispiel `http://localhost:3000` für den lokalen Node.js-Beispieldienst). Alternativ könnten Sie auch `http://localhost:4400` für den Ripple-Dienst oder eine andere URL verwenden (je nach Konfiguration Ihrer App).
+
+8. Klicken Sie oben auf der Seite auf **Lesen/Schreiben** und anschließend auf **PUT**, um Ihre Änderungen zu speichern.
+
+Nun müssen auch die gleichen Loopback-URLs den CORS-Positivlisteneinstellungen hinzugefügt werden:
+
+1. Navigieren Sie zurück zum [Azure-Portal].
+2. Navigieren Sie zum Back-End für mobile Apps.
+3. Klicken Sie im **API**-Menü auf **CORS**.
+4. Geben Sie jede URL in das leere Textfeld **Zulässige Ursprünge** ein. Es wird ein neues Textfeld erstellt.
+5. Klicken Sie auf **SPEICHERN**.
     
-3. Klicken Sie oben auf der Seite auf **Lesen/Schreiben** und anschließend auf **PUT**, um Ihre Änderungen zu speichern.
-
-    Nun müssen die gleichen Loopback-URLs noch den CORS-Positivlisteneinstellungen hinzugefügt werden:
-
-4. Klicken Sie im [Azure-Portal] unter Ihrem mobilen App-Back-End auf **Alle Einstellungen** > **CORS**, fügen Sie die Loopback-URLs der Positivliste hinzu, und klicken Sie anschließend auf **Speichern**.
-
 Nach der Aktualisierung des Back-Ends können Sie die neuen Loopback-URLs in Ihrer App verwenden.
 
 <!-- URLs. -->
 [Schnellstart von Azure Mobile Apps]: app-service-mobile-cordova-get-started.md
 [Erste Schritte mit der Authentifizierung]: app-service-mobile-cordova-get-started-users.md
-[Hinzufügen von Authentifizierung zu Ihrer App]: app-service-mobile-cordova-get-started-users.md
+[Add authentication to your app]: app-service-mobile-cordova-get-started-users.md
 
+[Azure-Portal]: https://portal.azure.com/
 [JavaScript-SDKs für Azure Mobile Apps]: https://www.npmjs.com/package/azure-mobile-apps-client
-[Dokumentation „Query-Objekt“]: https://msdn.microsoft.com/de-DE/library/azure/jj613353.aspx
+[Query object documentation]: https://msdn.microsoft.com/de-DE/library/azure/jj613353.aspx
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0914_2016-->

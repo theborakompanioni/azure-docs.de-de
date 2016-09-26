@@ -153,7 +153,7 @@ Wenn die Netzwerkumgebung Ihres Unternehmens einen Proxyserver für den Internet
 
 ![Einrichten des Proxys während der Registrierung](media/data-factory-data-management-gateway/SetProxyDuringRegistration.png)
 
-Das Gateway verwendet den Proxyserver, um eine Verbindung mit dem Clouddienst herzustellen. Klicken Sie während des anfänglichen Setups auf den Link **Ändern**, um das Dialogfeld mit den Proxyeinstellungen zu öffnen.
+Das Gateway verwendet den Proxyserver, um eine Verbindung mit dem Clouddienst herzustellen. Klicken Sie während des Anfangssetups auf **Ändern**. Sie sehen das Dialogfeld **Proxyeinstellung**.
 
 ![Einrichten des Proxys mithilfe des Konfigurations-Managers](media/data-factory-data-management-gateway/SetProxySettings.png)
 
@@ -181,7 +181,7 @@ Sie können den HTTP-Proxy im Konfigurations-Manager anzeigen und aktualisieren.
 ### Konfigurieren der Proxyeinstellungen in „diahost.exe.config“
 Wenn Sie die Einstellung **Systemproxy verwenden** für den HTTP-Proxy auswählen, verwendet das Gateway die Proxyeinstellungen in „diahost.exe.config“. Wenn in „diahost.exe.config“ kein Proxy angegeben ist, stellt das Gateway die Verbindung zu den Clouddiensten nicht über einen Proxy, sondern direkt her. Das folgende Verfahren enthält Anweisungen für die Aktualisierung der Konfigurationsdatei.
 
-1.	Erstellen Sie im Datei-Explorer eine sichere Kopie von „C:\\Programme\\Microsoft Data Management Gateway\\1.0\\Shared\\diahost.exe.config“, um die Originaldatei zu sichern.
+1.	Erstellen Sie im Datei-Explorer eine sichere Kopie von „C:\\Programme\\Microsoft Data Management Gateway\\2.0\\Shared\\diahost.exe.config“, um die Originaldatei zu sichern.
 2.	Starten Sie „Notepad.exe“ als Administrator, und öffnen Sie die Textdatei „C:\\Programme\\Microsoft Data Management Gateway\\2.0\\Shared\\diahost.exe.config“. Sie finden das Standardtag für „system.net“ wie folgt:
 
 			<system.net>
@@ -205,7 +205,7 @@ Wenn Sie die Einstellung **Systemproxy verwenden** für den HTTP-Proxy auswähle
 Zusätzlich zu den obigen Punkten müssen Sie auch sicherstellen, dass Microsoft Azure in der Whitelist Ihres Unternehmens aufgeführt ist. Sie können die Liste mit den gültigen Microsoft Azure-IP-Adressen im [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=41653) herunterladen.
 
 #### Mögliche Symptome für Probleme im Zusammenhang mit der Firewall und dem Proxyserver
-Wenn Sie die unten aufgeführten Fehler feststellen, liegt dies meist an einer unsachgemäßen Konfiguration der Firewall oder des Proxyservers, die verhindert, dass das Gateway eine Verbindung mit der Data Factory herstellt, um sich zu authentifizieren. Überprüfen Sie den vorherigen Abschnitt, um sicherzustellen, dass die Firewall und der Proxyserver richtig konfiguriert sind.
+Wenn Sie ähnliche Fehler wie die unten aufgeführten feststellen, liegt dies meist an einer unsachgemäßen Konfiguration der Firewall oder des Proxyservers, die verhindert, dass das Gateway eine Verbindung mit der Data Factory herstellt, um sich zu authentifizieren. Überprüfen Sie den vorherigen Abschnitt, um sicherzustellen, dass die Firewall und der Proxyserver richtig konfiguriert sind.
 
 1.	Wenn Sie versuchen, das Gateway zu registrieren, wird die folgende Fehlermeldung angezeigt: "Fehler beim Registrieren des Gatewayschlüssels. Prüfen Sie, ob sich das Datenverwaltungsgateway im Status "Verbunden" befindet und der Datenverwaltungsgateway-Hostdienst gestartet wurde, bevor Sie versuchen, den Gatewayschlüssel erneut zu registrieren."
 2.	Wenn Sie den Konfigurations-Manager öffnen, wird der Status als „Getrennt“ oder „Verbindung wird hergestellt“ angezeigt. Wenn Sie die Windows-Ereignisprotokolle anzeigen, sehen Sie unter „Ereignisanzeige“ > „Anwendungs- und Dienstprotokolle“ > „Datenverwaltungsgateway“ Fehlermeldungen wie die folgende: `Unable to connect to the remote server` `A component of Data Management Gateway has become unresponsive and restarts automatically. Component name: Gateway.`
@@ -217,7 +217,7 @@ Bei Verwendung einer Drittanbieterfirewall können Sie den Port 8050 manuell öf
 
 	msiexec /q /i DataManagementGateway.msi NOFIREWALL=1
 
-Falls Sie den Port 8050 auf dem Gatewaycomputer nicht öffnen, verwenden Sie zum Einrichten eines lokalen verknüpften Diensts andere Verfahren als die Anwendung **Anmeldeinformationen festlegen**, um Anmeldeinformationen für den Datenspeicher zu konfigurieren. Beispielsweise können Sie das PowerShell-Cmdlet [New-AzureRmDataFactoryEncryptValue](https://msdn.microsoft.com/library/mt603802.aspx) verwenden. Informationen zum Festlegen von Datenspeicher-Anmeldeinformationen finden Sie unter [Festlegen von Anmeldeinformationen und Sicherheit](#set-credentials-and-securityy).
+Falls Sie den Port 8050 auf dem Gatewaycomputer nicht öffnen, verwenden Sie andere Verfahren als die Anwendung **Anmeldeinformationen festlegen**, um Anmeldeinformationen für den Datenspeicher zu konfigurieren. Beispielsweise können Sie das PowerShell-Cmdlet [New-AzureRmDataFactoryEncryptValue](https://msdn.microsoft.com/library/mt603802.aspx) verwenden. Informationen zum Festlegen von Datenspeicher-Anmeldeinformationen finden Sie unter [Festlegen von Anmeldeinformationen und Sicherheit](#set-credentials-and-securityy).
 
 ## Aktualisieren 
 Standardmäßig wird das Datenverwaltungsgateway automatisch aktualisiert, wenn eine neuere Version des Gateways verfügbar ist. Das Gateway wird erst aktualisiert, nachdem alle geplanten Aufgaben erledigt wurden. Vom Gateway werden keine weiteren Aufgaben verarbeitet, bevor der Aktualisierungsvorgang abgeschlossen ist. Wenn die Aktualisierung fehlschlägt, wird für das Gateway ein Rollback auf die alte Version durchgeführt.
@@ -246,7 +246,7 @@ Der Status des Aktualisierungsvorgangs (manuell oder automatisch) wird auf der T
 Sie können das Feature für die automatische Aktualisierung wie folgt deaktivieren und aktivieren:
 
 1. Starten Sie Windows PowerShell auf dem Gatewaycomputer.
-2. Wechseln Sie in den Ordner „C:\\Programme\\Microsoft Data Management Gateway\\1.0\\PowerShellScript“.
+2. Wechseln Sie in den Ordner „C:\\Programme\\Microsoft Data Management Gateway\\2.0\\PowerShellScript“.
 3. Führen Sie den folgenden Befehl aus, um das Feature für die automatische Aktualisierung zu deaktivieren.
 
 		.\GatewayAutoUpdateToggle.ps1  -off
@@ -259,7 +259,7 @@ Sie können das Feature für die automatische Aktualisierung wie folgt deaktivie
 Nach der Installation des Gateways können Sie den Datenverwaltungsgateway-Konfigurations-Manager auf eine der folgenden Arten starten:
 
 - Geben Sie im Fenster **Suchen** den Begriff **Datenverwaltungsgateway** ein, um auf dieses Hilfsprogramm zuzugreifen.
-- Führen Sie die Datei **ConfigManager.exe** im Ordner **C:\\Programme\\Microsoft Data Management Gateway\\1.0\\Shared** aus.
+- Führen Sie die Datei **ConfigManager.exe** im Ordner **C:\\Programme\\Microsoft Data Management Gateway\\2.0\\Shared** aus.
  
 ### Startseite
 Auf der Startseite können Sie die folgenden Schritte ausführen:
@@ -340,6 +340,32 @@ Klicken Sie auf den Link **Gatewayprotokolle archivieren**, um Protokolle zu arc
 
 ![Datenverwaltungsgateway – Archivieren von Protokollen](media/data-factory-data-management-gateway/data-management-gateway-archive-logs.png)
 
+### Gateway ist online mit eingeschränkter Funktionalität 
+Sie sehen, dass der Status des Gateways aus einem der folgenden Gründe als **mit eingeschränkter Funktionalität online** angezeigt wird.
+
+- Das Gateway kann nicht über den Servicebus eine Verbindung mit dem Clouddienst herstellen.
+- Der Clouddienst kann nicht über den Servicebus eine Verbindung mit dem Gateway herstellen.
+
+Wenn ein Gateway mit eingeschränkter Funktionalität online ist, können Sie möglicherweise nicht mithilfe des Assistenten zum Kopieren von Data Factory Datenpipelines zum Kopieren von Daten in einen bzw. aus einem lokalen Datenspeicher erstellen.
+
+Die Lösung/Umgehung dieses Problems (online mit eingeschränkter Funktionalität) hängt davon ab, ob das Gateway nicht mit dem Clouddienst oder auf andere Art und Weise eine Verbindung herstellen kann. In den folgenden Abschnitte werden diese Umgehungen beschrieben.
+
+#### Das Gateway kann nicht über den Servicebus eine Verbindung mit dem Clouddienst herstellen.
+Um das Gateway wieder online zu schalten, gehen Sie wie folgt vor:
+
+1. Aktivieren Sie die ausgehenden Ports 9350-9354 sowohl auf dem Gatewaycomputer als auch auf der Unternehmensfirewall auf der Windows-Firewall. Weitere Informationen finden Sie unter [Ports und Firewall](#ports-and-firewall).
+2. Konfigurieren Sie die Proxyeinstellungen auf dem Gateway. Weitere Informationen finden Sie unter [Proxyserver-Aspekte](#proxy-server-considerations).
+
+Um dieses Problem zu umgehen, verwenden Sie den Data Factory-Editor in Azure-Portal (oder) Visual Studio (oder) Azure PowerShell.
+
+#### Fehler: Der Clouddienst kann nicht über den Servicebus eine Verbindung mit dem Gateway herstellen.
+Um das Gateway wieder online zu schalten, gehen Sie wie folgt vor:
+ 
+1. Aktivieren Sie die ausgehenden Ports 5671 und 9350-9354 sowohl auf dem Gatewaycomputer als auch auf der Unternehmensfirewall auf der Windows-Firewall. Weitere Informationen finden Sie unter [Ports und Firewall](#ports-and-firewall).
+2. Konfigurieren Sie die Proxyeinstellungen auf dem Gateway. Weitere Informationen finden Sie unter [Proxyserver-Aspekte](#proxy-server-considerations).
+3. Heben Sie die statische IP-Einschränkung auf dem Proxyserver auf.
+
+Um dieses Problem zu umgehen, können Sie den Data Factory-Editor in Azure-Portal (oder) Visual Studio (oder) Azure PowerShell verwenden.
  
 ## Verschieben eines Gateways von einem Computer auf einen anderen
 Dieser Abschnitt enthält Anweisungen zum Verschieben des Gatewayclients von einem Computer auf einen anderen.
@@ -406,7 +432,7 @@ Wenn Sie auf das Portal auf einem Computer zugreifen, der sich vom Computer mit 
 
 Wenn Sie die Anwendung **Anmeldeinformationen festlegen** verwenden, verschlüsselt das Portal die Anmeldeinformationen mit dem Zertifikat, das Sie auf der Registerkarte **Zertifikat** des **Datenverwaltungsgateway-Konfigurations-Managers** auf dem Gatewaycomputer angegeben haben.
 
-Wenn Sie einen API-basierten Ansatz zum Verschlüsseln der Anmeldeinformationen nutzen möchten, können Sie das PowerShell-Cmdlet [New-AzureRmDataFactoryEncryptValue](https://msdn.microsoft.com/library/mt603802.aspx) verwenden, um Anmeldeinformationen zu verschlüsseln. Das Cmdlet verwendet das Zertifikat, für dessen Verwendung dieses Gateway konfiguriert ist, um die Anmeldeinformationen zu verschlüsseln. Sie können die verschlüsselten Anmeldeinformationen dem **EncryptedCredential**-Element der Verbindungszeichenfolge (**connectionString**) in der JSON-Datei hinzufügen, die Sie mit dem Cmdlet [New-AzureRmDataFactoryLinkedService](https://msdn.microsoft.com/library/mt603647.aspx) verwenden. Alternativ können Sie die Informationen im Data Factory-Editor in den JSON-Ausschnitt einfügen.
+Wenn Sie einen API-basierten Ansatz zum Verschlüsseln der Anmeldeinformationen nutzen möchten, können Sie das PowerShell-Cmdlet [New-AzureRmDataFactoryEncryptValue](https://msdn.microsoft.com/library/mt603802.aspx) verwenden, um Anmeldeinformationen zu verschlüsseln. Das Cmdlet verwendet das Zertifikat, für dessen Verwendung dieses Gateway konfiguriert ist, um die Anmeldeinformationen zu verschlüsseln. Sie können dem Element **EncryptedCredential** von **connectionString** in JSON verschlüsselte Anmeldeinformationen hinzufügen. Verwenden Sie JSON mit dem [New-AzureRmDataFactoryLinkedService](https://msdn.microsoft.com/library/mt603647.aspx)-Cmdlet oder im Data Factory-Editor.
 
 	"connectionString": "Data Source=<servername>;Initial Catalog=<databasename>;Integrated Security=True;EncryptedCredential=<encrypted credential>",
 
@@ -442,7 +468,7 @@ Dieser Abschnitt beschreibt das Erstellen und Registrieren eines Gateways mit Az
 		Key               : ADF#00000000-0000-4fb8-a867-947877aef6cb@fda06d87-f446-43b1-9485-78af26b8bab0@4707262b-dc25-4fe5-881c-c8a7c3c569fe@wu#nfU4aBlq/heRyYFZ2Xt/CD+7i73PEO521Sj2AFOCmiI
 
 	
-4. Wechseln Sie in Azure PowerShell in den Ordner **C:\\Programme\\Microsoft Data Management Gateway\\1.0\\PowerShellScript**. Führen Sie **RegisterGateway.ps1** mit der lokalen Variablen **$Key** aus, wie im folgenden Befehl gezeigt. Dieses Skript registriert den auf dem Computer installierten Client-Agent bei dem logischen Gateway, das Sie zuvor erstellt haben.
+4. Wechseln Sie in Azure PowerShell in den Ordner **C:\\Programme\\Microsoft Data Management Gateway\\2.0\\PowerShellScript**. Führen Sie **RegisterGateway.ps1** mit der lokalen Variablen **$Key** aus, wie im folgenden Befehl gezeigt. Dieses Skript registriert den auf dem Computer installierten Client-Agent bei dem logischen Gateway, das Sie zuvor erstellt haben.
 
 		PS C:\> .\RegisterGateway.ps1 $MyDMG.Key
 		
@@ -470,4 +496,4 @@ Sie können ein Gateway mit dem **Remove-AzureRmDataFactoryGateway**-Cmdlet entf
 ## Nächste Schritte
 - Ausführliche Informationen zum Gateway finden Sie im Artikel [Datenverwaltungsgateway](data-factory-data-management-gateway.md).
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0914_2016-->

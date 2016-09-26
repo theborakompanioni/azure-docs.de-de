@@ -4,7 +4,7 @@
 	services="cognitive-services"
 	documentationCenter=""
 	authors="luiscabrer"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun"/>
 
 <tags
@@ -168,4 +168,4 @@ Lesen Sie die Dokumentation [Get recommendations based on items (I2I)](http://go
 ### Wie geht es weiter?
 Danke, dass Sie bis zum Schluss dabei waren! Weitere Informationen finden Sie in der vollständigen [Empfehlungen-API-Referenz](http://go.microsoft.com/fwlink/?LinkId=759348). Wenn Sie Fragen haben, zögern Sie nicht, sich unter mlapi@microsoft.com an uns zu wenden.
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0914_2016-->

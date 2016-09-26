@@ -47,7 +47,7 @@ Sie müssen folgende Voraussetzungen erfüllen, um den Blob-Dienst mit Ihrer Hud
 
     Wenn Sie noch keine Hudson CI-Lösung im Einsatz haben, können Sie eine Hudson CI-Lösung auf folgende Weise ausführen:
 
-    1. Laden Sie für einen Java-fähigen Computer Hudson WAR von <http://hudson-ci.org/> herunter.
+    1. Laden Sie für einen Java-fähigen Computer Hudson WAR von http://hudson-ci.org/ herunter.
     2. Führen Sie in einer Eingabeaufforderung im Ordner, der Hudson.WAR enthält, den folgenden Befehl aus: Falls Sie zum Beispiel Version 3.1.2 heruntergeladen haben:
 
         `java -jar hudson-3.1.2.war`
@@ -121,7 +121,7 @@ Für das Lernprogramm müssen wir zunächst einen Auftrag erstellen, der mehrere
 
     Unter dem Bereich **Command**, in dem Sie ein Skript für **Execute Windows batch command** eingegeben haben, befindet sich ein Link zu den von Hudson erkannten Umgebungsvariablen. Klicken Sie auf diesen Link, um die Namen und Beschreibungen der Umgebungsvariablen anzuzeigen. Beachten Sie, dass Umgebungsvariablen, die Sonderzeichen enthalten, z. B. die Umgebungsvariable **BUILD\_URL**, nicht als Containername oder gemeinsamer virtueller Pfad zulässig sind.
 
-8. Klicken Sie für dieses Beispiel auf **Make new container public by default**. (Wenn Sie einen privaten Container verwenden möchten, müssen Sie eine Shared Access Signature erstellen, um den Zugriff zu ermöglichen. Dies geht jedoch über den Rahmen dieses Artikels hinaus. Weitere Informationen zu Shared Access Signatures erhalten Sie unter [Shared Access Signatures: Grundlagen zum SAS-Modell](storage-dotnet-shared-access-signature-part-1.md).)
+8. Klicken Sie für dieses Beispiel auf **Make new container public by default**. (Wenn Sie einen privaten Container verwenden möchten, müssen Sie eine Shared Access Signature erstellen, um den Zugriff zu ermöglichen. Dies geht jedoch über den Rahmen dieses Artikels hinaus. Sie finden weitere Informationen zu Shared Access Signatures unter [Verwenden von Shared Access Signatures (SAS)](storage-dotnet-shared-access-signature-part-1.md).
 9. [Optional] Klicken Sie auf **Clean container before uploading**, wenn die Inhalte aus dem Container gelöscht werden sollen, bevor die Buildartefakte hochgeladen (lassen Sie die Option deaktiviert, wenn die Inhalte nicht aus dem Container gelöscht werden sollen) werden.
 10. Geben Sie unter **List of Artifacts to upload** die Zeichenfolge **text/*.txt** ein.
 11. Geben Sie unter **Common virtual path for uploaded artifacts** die Zeichenfolge **${BUILD\_ID}/${BUILD\_NUMBER}** ein.
@@ -139,7 +139,7 @@ Für das Lernprogramm müssen wir zunächst einen Auftrag erstellen, der mehrere
 
     e. Klicken Sie auf den Container **myjob**. Dies ist die Version des Auftragsnamens, den Sie beim Erstellen des Hudson-Auftrags zugewiesen haben, in Kleinbuchstaben. Containernamen und Blobnamen bestehen in Azure Storage aus Kleinbuchstaben (es wird zwischen Groß- und Kleinschreibung unterschieden). In der Liste der Blobs für den Container **myjob** sollte **hello.txt** und **date.txt** angezeigt werden. Kopieren Sie die URL für beide Elemente, und öffnen Sie sie in Ihrem Browser. Sie sehen die Textdatei, die als Buildartefakt hochgeladen wurde.
 
-Es kann nur eine Postbuild-Aktion pro Auftrag erstellt werden, die Artefakte in den Azure-Blobspeicher hochlädt. Beachten Sie, dass die einzelne Postbuild-Aktion zum Hochladen von Artefakten in den Azure-Blobspeicher mithilfe eines Semikolons als Trennzeichen verschiedene Dateien (einschließlich Platzhalter) und Pfade zu Dateien in **Liste der hochzuladenden Artefakte** angeben kann. Wenn Ihr Hudson-Build beispielsweise JAR- und TXT-Dateien im Ordner **build** Ihres Arbeitsbereichs erstellt und Sie beide in den Azure-Blobspeicher hochladen möchten, verwenden Sie Folgendes für den Wert **Liste der hochzuladenden Artefakte**: **build/\*.jar;build/\*.txt**. Sie können auch eine Doppel-Doppelpunktsyntax verwenden, um einen im Blobnamen zu verwendenden Pfad anzugeben. Wenn beispielsweise die JAR-Dateien mithilfe von **binaries** im Blobpfad und die TXT-Dateien mithilfe von **notices** im Blobpfad hochgeladen werden sollen, verwenden Sie Folgendes für den Wert **Liste der hochzuladenden Artefakte**: **build/\*.jar::binaries;build/\*.txt::notices**.
+Es kann nur eine Postbuild-Aktion pro Auftrag erstellt werden, die Artefakte in den Azure-Blobspeicher hochlädt. Beachten Sie, dass die einzelne Postbuild-Aktion zum Hochladen von Artefakten in den Azure-Blobspeicher mithilfe eines Semikolons als Trennzeichen verschiedene Dateien (einschließlich Platzhalter) und Pfade zu Dateien in **Liste der hochzuladenden Artefakte** angeben kann. Wenn Ihr Hudson-Build beispielsweise JAR- und TXT-Dateien im Ordner **build** Ihres Arbeitsbereichs erstellt und Sie beide in den Azure-Blobspeicher hochladen möchten, verwenden Sie Folgendes für den Wert **Liste der hochzuladenden Artefakte**: **build/*.jar;build/*.txt**. Sie können auch eine Doppel-Doppelpunktsyntax verwenden, um einen im Blobnamen zu verwendenden Pfad anzugeben. Wenn beispielsweise die JAR-Dateien mithilfe von **binaries** im Blobpfad und die TXT-Dateien mithilfe von **notices** im Blobpfad hochgeladen werden sollen, verwenden Sie Folgendes für den Wert **Liste der hochzuladenden Artefakte**: **build/*.jar::binaries;build/*.txt::notices**.
 
 ## Erstellen eines Buildschritts für das Herunterladen des Azure-Blobspeichers ##
 
@@ -182,4 +182,4 @@ Im Folgenden erhalten Sie einen Überblick über die Komponenten des Blob-Dienst
 
 Weitere Informationen finden Sie auch im [Java Developer Center](https://azure.microsoft.com/develop/java/).
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0914_2016-->

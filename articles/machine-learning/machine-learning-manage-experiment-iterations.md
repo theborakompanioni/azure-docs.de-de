@@ -4,7 +4,7 @@
 	services="machine-learning"
 	documentationCenter=""
 	authors="garyericson"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun"/>
 
 <tags
@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/10/2016"
+	ms.date="09/09/2016"
 	ms.author="garye"/>
 
 # Verwalten von Experimentiterationen in Azure Machine Learning-Studio
 
 Das Entwickeln eines solchen Vorhersageanalysemodells ist ein iterativer Prozess: Sie ändern die verschiedenen Funktionen und Parameter des Experiments, und die Ergebnisse nähern sich solange an, bis Sie der Ansicht sind, ein trainiertes, effektives Modell erreicht zu haben. Wichtig für diesen Prozess ist das Verfolgen der verschiedenen Iterationen der Experimentparameter und -konfigurationen.
 
-[AZURE.INCLUDE [machine-learning-kostenlose-Testversion](../../includes/machine-learning-free-trial.md)]
+[AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
 Sie können die vorherigen Testläufe der Experimente zu jedem beliebigen Zeitpunkt noch einmal überprüfen, um die vorherigen Annahmen infrage zu stellen, neu aufzugreifen und letztendlich entweder zu bestätigen oder zu verfeinern. Wenn Sie ein Experiment ausführen, speichert Machine Learning Studio den Verlauf des Testlaufs, einschließlich DataSets, Modul sowie Portverbindungen und Parameter. In diesem Verlauf werden auch Ergebnisse, Laufzeitinformationen, z. B. Start- und Endzeiten, Protokollmeldungen und der Ausführungsstatus aufgezeichnet. Sie können jeden dieser Testläufe jederzeit überprüfen, um die Chronologie des Experiments und die Zwischenergebnisse zu betrachten. Ein vorheriger Testlauf des Experiment kann sogar den Ausgangspunkt einer neuen Untersuchungsphase auf dem Weg zur Erstellung einfacher, komplexer oder mehrfacher Modellierungslösungen bilden.
 
@@ -72,7 +72,7 @@ Nehmen wir beispielsweise an, Sie haben den Ausführungsverlauf des Experiments 
 
 4. Ändern Sie den Parameter **Number of training epochs** (Anzahl der Trainingsperioden).
 
-5. Klicken Sie auf **RUN** (AUSFÜHREN).
+5. Klicken Sie auf **RUN ** (AUSFÜHREN).
 
 Sie können diese Version des Experiments nun weiterhin ändern und ausführen, wobei ein neuer Ausführungsverlauf zur Dokumentation Ihrer Arbeit erstellt wird.
 
@@ -84,4 +84,4 @@ Sie können diese Version des Experiments nun weiterhin ändern und ausführen, 
 <!-- Module References -->
 [linear-regression]: https://msdn.microsoft.com/library/azure/31960a6f-789b-4cf7-88d6-2e1152c0bd1a/
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0914_2016-->

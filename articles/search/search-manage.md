@@ -4,7 +4,7 @@
 	services="search" 
 	documentationCenter="" 
 	authors="HeidiSteen" 
-	manager="paulettm" 
+	manager="jhubbard" 
 	editor=""
     tags="azure-portal"/>
 
@@ -36,7 +36,7 @@ Als Administrator beim Einrichten des Search-Diensts ist eine der ersten Entsche
 
 Bestehenden Abonnenten steht kostenlos ein gemeinsam genutzter Dienst zur Auswahl, den Sie zu Lernzwecken, zum Testen von Machbarkeitsstudien oder zur Entwicklung kleiner Suchprojekte nutzen können. Der gemeinsam genutzte Dienst ist beschränkt auf 50 MB Speicherplatz, drei Indizes und maximal 10.000 Dokumente, selbst wenn dabei die erlaubten 50 MB noch nicht erreicht sind. Für den Shared-Dienst gelten keine Leistungsgarantien. Für Suchanwendungen in Produktionsumgebungen sollten Sie daher die Standardsuche verwenden.
 
-Basis- und Standardsuche sind kostenpflichtig, da Sie sich für fest zugeordnete Ressourcen und Infrastruktur registrieren, die Ihrem Abonnement exklusiv zur Verfügung stehen. Basis- und Standardsuche werden in benutzerdefinierten Paketen aus Partitionen (Speicher) und Replikaten (Dienstworkloads) zugewiesen und pro Sucheinheit abgerechnet. Sie können Partitionen und Replikate unabhängig voneinander heraufskalieren und mehr von der jeweils benötigten Ressource hinzufügen.
+Basic- und Standard-Suche sind kostenpflichtig, da Sie sich für fest zugeordnete Ressourcen und Infrastruktur registrieren, die Ihrem Abonnement exklusiv zur Verfügung stehen. Basis- und Standardsuche werden in benutzerdefinierten Paketen aus Partitionen (Speicher) und Replikaten (Dienstworkloads) zugewiesen und pro Sucheinheit abgerechnet. Sie können Partitionen und Replikate unabhängig voneinander heraufskalieren und mehr von der jeweils benötigten Ressource hinzufügen.
 
 Wir empfehlen die folgenden Links für die Kapazitätsplanung und zum Verständnis der entstehenden Kosten:
 
@@ -167,11 +167,11 @@ Azure bietet ein globales rollenbasiertes Autorisierungsmodell für alle Dienste
 Bei Azure Search bestimmt die rollenbasierte Zugriffssteuerung die folgenden Verwaltungsaufgaben:
 
 
-Rolle|Aufgabe
+Role|Task
 ---|---
 Besitzer|Starten, Beenden oder Löschen des Diensts.<p>Erstellen und Anzeigen von Administrator- und Abfrageschlüsseln.<p>Anzeigen des Dienststatus, einschließlich Indexanzahl, Indexnamen, Dokumentanzahl und Speichergröße.<p>Hinzufügen oder Löschen von Rollenmitgliedschaften (Nur ein Besitzer kann die Rollenmitgliedschaften verwalten).<p>Abonnement- und Dienstadministratoren sind automatisch Mitglieder der Besitzerrolle.
 Mitwirkender|Verfügt über die gleiche Zugriffsebene wie Besitzer mit Ausnahme der Rollenverwaltung. So kann z. B. ein Mitwirkender den `api-key` anzeigen und neu generieren, aber nicht die Rollenmitgliedschaften ändern.
-Reader|Dienststatus und Abfrageschlüssel anzeigen. Mitglieder dieser Rolle können einen Dienst nicht starten oder beenden und auch keine Admin-Schlüssel anzeigen.
+Leser|Dienststatus und Abfrageschlüssel anzeigen. Mitglieder dieser Rolle können einen Dienst nicht starten oder beenden und auch keine Admin-Schlüssel anzeigen.
 
 Beachten Sie, dass die Rollen keine Zugriffsrechte für den Dienstendpunkt erteilen. Suchdienstoperationen, wie z. B. die Indexverwaltung, Auffüllung des Indexes und Abfragen von Suchdaten werden durch die API-Schlüssel und nicht durch Rollen gesteuert. Weitere Informationen finden Sie unter [Rollenbasierte Zugriffssteuerung über das Azure-Vorschauportal](../active-directory/role-based-access-control-configure.md) im Abschnitt "Autorisierung für Verwaltungsvorgänge vs. Datenvorgänge".
 
@@ -194,4 +194,4 @@ Rollen bieten Zugriffssteuerung, nachdem der Dienst erstellt wurde. Nur Abonneme
 
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0914_2016-->

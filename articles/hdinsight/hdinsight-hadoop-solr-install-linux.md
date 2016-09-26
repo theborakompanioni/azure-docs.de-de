@@ -4,7 +4,7 @@
 	services="hdinsight"
 	documentationCenter=""
 	authors="Blackmist"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun"
 	tags="azure-portal"/>
 
@@ -106,7 +106,7 @@ Sie müssen mit der Indizierung von Solr mit einigen Datendateien beginnen. Sie 
 
 		curl "http://localhost:8983/solr/collection1/select?q=*%3A*&wt=json&indent=true"
 
-	Dadurch wird eine Abfrage gegen __collection1__ für alle Dokumente ausgestellt, die __\*:\*__ (codiert als \*% 3A\* in der Abfragezeichenfolge) entsprechen. Die Antwort sollte im JSON-Format zurückgegeben werden. Die Antwort sollte in etwa wie folgt aussehen:
+	Dadurch wird eine Abfrage gegen __collection1__ für alle Dokumente ausgestellt, die __*:*__ (codiert als *% 3A* in der Abfragezeichenfolge) entsprechen. Die Antwort sollte im JSON-Format zurückgegeben werden. Die Antwort sollte in etwa wie folgt aussehen:
 
 			"response": {
 			    "numFound": 2,
@@ -184,7 +184,7 @@ Wenn Sie einen SSH-Tunnel eingerichtet haben, gehen Sie folgendermaßen vor, um 
 
 3. Wählen Sie aus den Einträgen unter __collection1__ __Abfrage__ aus. Verwenden Sie die folgenden Werte zum Auffüllen der Suchseite:
 
-	* Geben Sie im Textfeld **q** Folgendes ein: **\*:**\*. Dadurch werden alle Dokumente zurückgegeben, die in Solr indiziert sind. Wenn Sie nach einer bestimmten Zeichenfolge innerhalb der Dokumente suchen möchten, können diese Zeichenfolge hier eingeben.
+	* Geben Sie im Textfeld **q** Folgendes ein: ***:***. Dadurch werden alle Dokumente zurückgegeben, die in Solr indiziert sind. Wenn Sie nach einer bestimmten Zeichenfolge innerhalb der Dokumente suchen möchten, können diese Zeichenfolge hier eingeben.
 
 	* Wählen Sie im Textfeld **wt** das Ausgabeformat aus. Der Standardwert ist **json**.
 
@@ -296,13 +296,13 @@ Bewährt hat sich auch das Sichern der indizierten Daten auf den Solr-Clusterkno
 Weitere Informationen zum Arbeiten mit Solr-Backups und -Wiederherstellungen finden Sie unter [Making and restoring backups of SolrCores](https://cwiki.apache.org/confluence/display/solr/Making+and+Restoring+Backups+of+SolrCores) (auf Englisch).
 
 
-## Weitere Informationen
+## Siehe auch
 
 - [Installieren und Verwenden von Hue in HDInsight-Clustern](hdinsight-hadoop-hue-linux.md) Hue ist eine Webbenutzeroberfläche, die das Erstellen, Ausführen und Speichern von Pig- und Hive-Aufträgen sowie das Durchsuchen des Standardspeichers für Ihre HDInsight-Cluster vereinfacht.
 
 - [Installieren und Verwenden von R in HDInsight-Clustern][hdinsight-install-r]. Verwenden Sie die Clusteranpassung, um R in HDInsight Hadoop-Clustern zu installieren. R ist eine Open-Source-Sprache und -Umgebung für statistische Berechnungen. Sie bietet Hunderte integrierter Statistikfunktionen und eine eigene Programmiersprache, die Aspekte der funktionalen und objektorientierten Programmierung kombiniert. Darüber hinaus werden umfangreiche Grafikfunktionen geboten.
 
-- [Installieren von Giraph in HDInsight-Clustern](hdinsight-hadoop-giraph-install-linux.md). Verwenden Sie die Clusteranpassung, um Giraph in HDInsight Hadoop-Clustern zu installieren. Giraph ermöglicht Ihnen, mithilfe von Hadoop Graphen zu verarbeiten, und kann mit Azure HDInsight eingesetzt werden.
+- [Installieren von Giraph in HDInsight-Clustern](hdinsight-hadoop-giraph-install-linux.md). Verwenden Sie die Clusteranpassung, um Giraph in HDInsight Hadoop-Clustern zu installieren. Giraph ermöglicht Ihnen, mithilfe von Hadoop Graphen zu verarbeiten, und kann mit Azure HDInsight verwendet werden.
 
 - [Installieren von Hue in HDInsight-Clustern](hdinsight-hadoop-hue-linux.md) Verwenden Sie die Clusteranpassung, um Hue in HDInsight Hadoop-Clustern zu installieren. Bei Hue handelt es sich um einen Satz von Webanwendungen zur Interaktion mit einem Hadoop-Cluster.
 
@@ -311,4 +311,4 @@ Weitere Informationen zum Arbeiten mit Solr-Backups und -Wiederherstellungen fin
 [hdinsight-install-r]: hdinsight-hadoop-r-scripts-linux.md
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster-linux.md
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0914_2016-->

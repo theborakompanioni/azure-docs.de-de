@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="06/14/2016"
+   ms.date="09/08/2016"
    ms.author="terrylan"/>
 
 # Sicherheit in Azure – bewährte Methoden und Muster
@@ -28,9 +28,9 @@ Wir stellen Ihnen derzeit die folgenden Artikel zu bewährten Methoden und Muste
 - [Microsoft-Clouddienste und Netzwerksicherheit](../best-practices-network-security.md)
 - [Implementing a secure hybrid network architecture in Azure](../guidance/guidance-iaas-ra-secure-vnet-hybrid.md) (Implementieren einer sicheren Hybrid-Netzwerkarchitektur in Azure)
 
-Azure bietet eine sichere Plattform, auf der Sie Ihre Lösungen erstellen können. Außerdem bieten wir Ihnen viele Dienste und Technologien an, die Sie verwenden können, um die Dienste, die Sie in Azure erstellen, sicherer zu machen. Wegen der zahlreichen verfügbaren Optionen haben viele von Ihnen ihr Interesse geäußert, zu erfahren, was Microsoft als bewährte Methoden und Muster zur Verbesserung der Sicherheit ihrer Azure-Bereitstellungen empfehlen kann.
+Azure bietet eine sichere Plattform, auf der Sie Ihre Lösungen erstellen können. Wir bieten auch Dienste und Technologien, um Ihre Lösungen in Azure sicherer zu gestalten. Wegen der zahlreichen verfügbaren Optionen möchten viele von Ihnen erfahren, was Microsoft als bewährte Methoden und Muster zur Verbesserung der Sicherheit empfehlen kann.
 
-Wir verstehen Ihr Interesse und haben zu diesem Zweck eine Sammlung von Dokumenten erstellt, die im richtigen Kontext Vorgehensweisen beschreiben, die Sie verwenden können, und die unserer Meinung nach bei der Verbesserung der Sicherheit von Azure-Bereitstellungen hilfreich sind.
+Wir verstehen Ihr Interesse und haben zu diesem Zweck eine Sammlung von Dokumenten erstellt, die im jeweiligen Kontext Vorgehensweisen beschreiben, die Sie verwenden können und die bei der Verbesserung der Sicherheit von Azure-Bereitstellungen hilfreich sind.
 
 In diesen Artikeln über bewährte Methoden und Muster erörtern wir eine Sammlung bewährter Methoden und nützlicher Muster für bestimmte Themen. Diese bewährten Methoden und Muster sind aus unseren Erfahrungen mit diesen Technologien und den Erfahrungen von Kunden wie Ihnen abgeleitet.
 
@@ -44,4 +44,4 @@ Für jede bewährte Methode erläutern wir Folgendes:
 
 Das Angebot an Artikeln zur Sicherheitsarchitektur von Azure sowie zu bewährten Methoden wird in Zukunft noch erweitert. Themenwünsche können im Diskussionsbereich am Ende dieser Seite geäußert werden.
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0914_2016-->

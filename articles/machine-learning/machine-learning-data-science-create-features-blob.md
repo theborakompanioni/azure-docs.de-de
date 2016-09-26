@@ -4,7 +4,7 @@
 	services="machine-learning,storage" 
 	documentationCenter="" 
 	authors="bradsev" 
-	manager="paulettm" 
+	manager="jhubbard" 
 	editor="cgronlun" />
 
 <tags 
@@ -20,8 +20,7 @@
 
 In diesem Dokument wird erläutert, wie Sie Features für in einem Azure-BLOB-Container gespeicherte Daten mithilfe des [Pandas](http://pandas.pydata.org/)-Python-Pakets erstellen. Nach der Beschreibung des Ladens der Daten in einen Panda-Datenrahmen wird erläutert, wie mithilfe von Python-Skripts mit Indikatorwerten und Klassifizierungsfeatures kategorische Features generiert werden.
 
-[AZURE.INCLUDE [cap-create-features-data-selector](../../includes/cap-create-features-selector.md)]
-Dieses **Menü** stellt eine Verknüpfung mit Themen dar, in denen beschrieben wird, wie Features für Daten in verschiedenen Umgebungen erstellt werden. Dieser Task ist ein Schritt im [Team Data Science-Prozess (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/).
+[AZURE.INCLUDE [cap-create-features-data-selector](../../includes/cap-create-features-selector.md)] Dieses **Menü** stellt eine Verknüpfung mit Themen dar, in denen beschrieben wird, wie Features für Daten in verschiedenen Umgebungen erstellt werden. Dieser Task ist ein Schritt im [Team Data Science-Prozess (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/).
 
 
 ## Voraussetzungen
@@ -31,7 +30,7 @@ In diesem Artikel wird davon ausgegangen, dass Sie ein Azure-Blobspeicherkonto e
 ## Laden der Daten in ein Pandas-DataFrame
 Um ein DataSet zu untersuchen und zu bearbeiten, muss es aus der Blobquelle in eine lokale Datei heruntergeladen werden, die anschließend in ein Pandas-DataFrame geladen werden kann. Nachfolgend sehen Sie für dieses Verfahren erforderlichen Schritte:
 
-1. Laden Sie die Daten mithilfe des Blobdiensts und folgenden Python-Beispielcodes aus dem Azure-Blob herunter. Ersetzen Sie die Variablen im Code durch die für Ihre Umgebung geltenden Werte: 
+1. Laden Sie die Daten mithilfe des Blobdiensts und folgenden Python-Beispielcodes aus dem Azure-Blob herunter. Ersetzen Sie die Variablen im Code durch die für Ihre Umgebung geltenden Werte:
 
 	    from azure.storage.blob import BlobService
     	import tables
@@ -137,4 +136,4 @@ Nachdem Sie die Daten untersucht und die erforderlichen Funktionen erstellt habe
 
  
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0914_2016-->

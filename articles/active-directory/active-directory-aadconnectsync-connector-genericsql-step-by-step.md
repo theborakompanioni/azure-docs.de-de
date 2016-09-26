@@ -52,7 +52,7 @@ Jetzt verfügen Sie über die benötigte Datei und können mit dem Erstellen des
 6. Nicht alle Attributtypen können in einer SQL-Datenbank erkannt werden. Dies gilt insbesondere für den Verweisattributtyp. Für den Objekttyp „Group“ müssen wir „OwnerID“ und „MemberID“ in „Verweis“ ändern. ![Connector 6](.\media\active-directory-aadconnectsync-connector-genericsql-step-by-step\connector6.png)
 7. Für die Attribute, die wir im vorherigen Schritt als Verweisattribute ausgewählt haben, muss der Objekttyp angegeben werden, für den die Werte einen Verweis darstellen. In unserem Fall ist dies der Objekttyp „User“. ![Connector 7](.\media\active-directory-aadconnectsync-connector-genericsql-step-by-step\connector7.png)
 8. Wählen Sie auf der Seite mit den globalen Parametern **Wasserzeichen** als Deltastrategie aus. Geben Sie das Format von Datum/Uhrzeit als **JJJJ-MM-TT HH:MM:SS** ein. ![Connector 8](.\media\active-directory-aadconnectsync-connector-genericsql-step-by-step\connector8.png)
-9. Wählen Sie auf der Seite **Partitionen konfigurieren** beide Objekttypen aus. ![Connector 9](.\media\active-directory-aadconnectsync-connector-genericsql-step-by-step\connector9.png)
+9. Wählen Sie auf der Seite **Partitionen und Hierarchien konfigurieren** beide Objekttypen aus. ![Connector 9](.\media\active-directory-aadconnectsync-connector-genericsql-step-by-step\connector9.png)
 10. Wählen Sie unter **Objekttypen auswählen** und **Attribute auswählen** beide Objekttypen und alle Attribute aus. Klicken Sie auf der Seite **Anker konfigurieren** auf **Fertig stellen**.
 
 ## Erstellen von Ausführungsprofilen
@@ -61,7 +61,7 @@ Jetzt verfügen Sie über die benötigte Datei und können mit dem Erstellen des
 2. Wählen Sie den Typ **Vollständiger Import (nur Bereitstellung)** aus. ![Ausführungsprofil 2](.\media\active-directory-aadconnectsync-connector-genericsql-step-by-step\runprofile2.png)
 3. Wählen Sie die Partition **OBJECT=User** aus. ![Ausführungsprofil 3](.\media\active-directory-aadconnectsync-connector-genericsql-step-by-step\runprofile3.png)
 4. Wählen Sie **Tabelle** aus, und geben Sie **[USERS]** ein. Führen Sie einen Bildlauf zum Abschnitt für den Objekttyp mit mehreren Werten aus, und geben Sie die Daten wie in der folgenden Abbildung ein. Wählen Sie **Fertig stellen**, um den Schritt zu speichern. ![Ausführungsprofil 4a](.\media\active-directory-aadconnectsync-connector-genericsql-step-by-step\runprofile4a.png) ![Ausführungsprofil 4b](.\media\active-directory-aadconnectsync-connector-genericsql-step-by-step\runprofile4b.png)
-5. Wählen Sie **Neuer Schritt**. Wählen Sie dieses Mal **OBJECT=Group** aus. Verwenden Sie auf der letzten Seite die Konfiguration wie in der folgenden Abbildung. Klicken Sie auf **Fertig stellen**. ![Ausführungsprofil 5a](.\media\active-directory-aadconnectsync-connector-genericsql-step-by-step\runprofile5a.png) ![Ausführungsprofil 5b](.\media\active-directory-aadconnectsync-connector-genericsql-step-by-step\runprofile5b.png)
+5. Wählen Sie ** Neuer Schritt**. Wählen Sie dieses Mal **OBJECT=Group** aus. Verwenden Sie auf der letzten Seite die Konfiguration wie in der folgenden Abbildung. Klicken Sie auf **Fertig stellen**. ![Ausführungsprofil 5a](.\media\active-directory-aadconnectsync-connector-genericsql-step-by-step\runprofile5a.png) ![Ausführungsprofil 5b](.\media\active-directory-aadconnectsync-connector-genericsql-step-by-step\runprofile5b.png)
 6. Optional: Sie können bei Bedarf zusätzliche Ausführungsprofile konfigurieren. In dieser exemplarischen Vorgehensweise wird nur der vollständige Import verwendet.
 7. Klicken Sie auf **OK**, um das Ändern von Ausführungsprofilen abzuschließen.
 
@@ -170,4 +170,4 @@ ALTER TABLE [dbo].[USERPHONE] CHECK CONSTRAINT [FK_USERPHONE_USER]
 GO
 ```
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0914_2016-->

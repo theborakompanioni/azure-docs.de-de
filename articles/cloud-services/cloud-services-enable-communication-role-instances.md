@@ -12,12 +12,12 @@ ms.workload="tbd"
 ms.tgt_pltfrm="na" 
 ms.devlang="na" 
 ms.topic="article" 
-ms.date="06/22/2016" 
+ms.date="09/06/2016" 
 ms.author="adegeo"/>
 
 # Ermöglichen der Kommunikation für Rolleninstanzen in Azure
 
-Clouddienstrollen kommunizieren über interne und externe Verbindungen miteinander. Externe Verbindungen werden als **Eingabeendpunkte** bezeichnet, interne Verbindungen dagegen als **interne Endpunkte**. In diesem Thema wird beschrieben, wie Sie die [Dienstdefinition](cloud-services-model-and-package.md#csdef) zum Erstellen von Endpunkten ändern.
+Clouddienstrollen kommunizieren über interne und externe Verbindungen miteinander. Externe Verbindungen werden als **Eingabeendpunkte** bezeichnet, interne Verbindungen dagegen als **interne Endpunkte**. In diesem Thema wird beschrieben, wie Sie die [Dienstdefinition](cloud-services-model-and-package.md#csdef) zum Erstellen von Endgeräten ändern.
 
 
 ## Eingabeendpunkt
@@ -101,7 +101,7 @@ int port = RoleEnvironment.CurrentRoleInstance.InstanceEndpoints["StandardWeb"].
 
 Die **Instances**-Eigenschaft gibt eine Sammlung von **RoleInstance**-Objekten zurück. Diese Sammlung enthält immer die aktuelle Instanz. Falls die Rolle keinen internen Endpunkt definiert, enthält die Sammlung die aktuelle Instanz, aber keine anderen Instanzen. Die Anzahl von Rolleninstanzen in der Sammlung ist immer 1, wenn kein interner Endpunkt für die Rolle definiert ist. Wenn die Rolle einen internen Endpunkt definiert, können ihre Instanzen zur Laufzeit ermittelt werden. In diesem Fall entspricht die Anzahl von Instanzen in der Sammlung der Anzahl von Instanzen, die in der Dienstkonfigurationsdatei für die Rolle angegeben ist.
 
-> [AZURE.NOTE] Die verwaltete Azure-Bibliothek bietet nicht die Möglichkeit, die Integrität anderer Rolleninstanzen zu ermitteln. Sie können aber selbst Integritätsbewertungen implementieren, wenn diese Funktion für Ihren Dienst erforderlich ist. Informationen zu ausgeführten Rolleninstanzen können mithilfe der [Azure-Diagnose](https://msdn.microsoft.com/library/azure/gg433048.aspx) abgerufen werden.
+> [AZURE.NOTE] Die verwaltete Azure-Bibliothek bietet nicht die Möglichkeit, die Integrität anderer Rolleninstanzen zu ermitteln. Sie können aber selbst Integritätsbewertungen implementieren, wenn diese Funktion für Ihren Dienst erforderlich ist. Informationen zu ausgeführten Rolleninstanzen können mithilfe der [Azure-Diagnose](cloud-services-dotnet-diagnostics.md) abgerufen werden.
 
 Um die Portnummer für einen internen Endpunkt einer Rolleninstanz zu bestimmen, können Sie mithilfe der [InstanceEndpoints](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleinstance.instanceendpoints.aspx)-Eigenschaft ein Dictionary-Objekt zurückgeben, das Endpunktnamen und die entsprechenden IP-Adressen und Ports enthält. Die [IPEndpoint](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleinstanceendpoint.ipendpoint.aspx)-Eigenschaft gibt die IP-Adresse und den Port für einen angegebenen Endpunkt zurück. Die **PublicIPEndpoint**-Eigenschaft gibt den Port für einen Endpunkt mit Lastenausgleich zurück. Der IP-Adressteil der **PublicIPEndpoint**-Eigenschaft wird nicht verwendet.
 
@@ -359,4 +359,4 @@ Eine XML-Schemareferenz für die oben verwendeten Elemente finden Sie [hier](htt
 ## Nächste Schritte
 Erfahren Sie mehr über das [Clouddienstmodell](cloud-services-model-and-package.md).
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0914_2016-->

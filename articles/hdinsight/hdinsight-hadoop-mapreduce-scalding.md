@@ -4,7 +4,7 @@
  services="hdinsight"
  documentationCenter=""
  authors="Blackmist"
- manager="paulettm"
+ manager="jhubbard"
  editor="cgronlun"
 	tags="azure-portal"/>
 <tags
@@ -199,7 +199,7 @@ Erfahren Sie in diesem Dokument, wie Maven verwendet wird, um einen einfachen Ma
 
         ssh username@clustername-ssh.azurehdinsight.net
 
-    > [AZURE.NOTE] Wenn Sie zum Schutz Ihres SSH-Kontos ein Kennwort verwendet haben, werden Sie zur Eingabe dieses Kennworts aufgefordert. Wenn Sie einen SSH-Schlüssel verwendet haben, müssen Sie möglicherweise den `-i`-Parameter und den Pfad zum privaten Schlüssel angeben. Zum Beispiel, `ssh -i /path/to/private/key username@clustername-ssh.azurehdinsight.net`
+    > [AZURE.NOTE] Wenn Sie zum Schutz Ihres SSH-Kontos ein Kennwort verwendet haben, werden Sie zur Eingabe dieses Kennworts aufgefordert. Wenn Sie einen SSH-Schlüssel verwendet haben, müssen Sie möglicherweise den `-i`-Parameter und den Pfad zum privaten Schlüssel angeben. Beispiel: `ssh -i /path/to/private/key username@clustername-ssh.azurehdinsight.net`
 
 3. Nachdem eine Verbindung mit dem Hauptknoten hergestellt wurde, verwenden Sie den folgenden Befehl zum Ausführen des Wortzählauftrags.
 
@@ -245,7 +245,7 @@ Die folgenden Schritte geschehen mithilfe von Windows PowerShell. Weitere Method
 
 		Select-AzureRMSubscription -SubscriptionID <YourSubscriptionId>
 
-    > [AZURE.NOTE] Sie können `Get-AzureRMSubscription` zum Abrufen einer Liste aller Ihrem Konto zugeordneten Abonnements verwenden, einschließlich der Abonnement-ID jedes Abonnements.
+    > [AZURE.NOTE] Sie können `Get-AzureRMSubscription` verwenden, um eine Liste aller Abonnements anzurufen, die Ihrem Konto zugeordnet sind, einschließlich der Abonnement-ID jedes Abonnements.
 
 4. Verwenden Sie das folgende Skript, um den WordCount-Auftrag hochzuladen und auszuführen. Ersetzen Sie `CLUSTERNAME` durch den Namen Ihres HDInsight-Clusters, und stellen Sie sicher, dass `$fileToUpload` der richtige Pfad zur Datei __scaldingwordcount-1.0-SNAPSHOT.jar__ ist.
 
@@ -345,4 +345,4 @@ Nachdem Sie erfahren haben, wie mit Scalding MapReduce-Aufträge für HDInsight 
 
 * [Verwenden von MapReduce-Aufträgen mit HDInsight](hdinsight-use-mapreduce.md)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0914_2016-->

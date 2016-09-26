@@ -4,7 +4,7 @@
 	services="machine-learning" 
 	documentationCenter="" 
 	authors="ireiter" 
-	manager="paulettm" 
+	manager="jhubbard" 
 	editor="cgronlun"/>
 
 <tags 
@@ -36,9 +36,9 @@ Dieser Dienst akzeptiert vier Argumente einer Normalverteilung und berechnet die
 
 Die Eingabeargumente sind:
 
-* p – eine einzige Wahrscheinlichkeit eines Ereignisses mit Normalverteilung 
+* p – eine einzige Wahrscheinlichkeit eines Ereignisses mit Normalverteilung
 * mean – Mittelwert der Normalverteilung
-* sd – Standardabweichung der Normalverteilung 
+* sd – Standardabweichung der Normalverteilung
 * side – L für den unteren Rand der Verteilung, U für den oberen Rand der Verteilung
 
 Die Ausgabe des Diensts ist das berechnete Quantil, das zur angegebenen Wahrscheinlichkeit gehört.
@@ -48,9 +48,9 @@ Dieser Dienst akzeptiert vier Argumente einer Normalverteilung und berechnet die
 
 Die Eingabeargumente sind:
 
-* q – ein einzelnes Quantil eines Ereignisses mit Normalverteilung 
+* q – ein einzelnes Quantil eines Ereignisses mit Normalverteilung
 * mean – Mittelwert der Normalverteilung
-* sd – Standardabweichung der Normalverteilung 
+* sd – Standardabweichung der Normalverteilung
 * side – L für den unteren Rand der Verteilung, U für den oberen Rand der Verteilung
 
 Die Ausgabe des Diensts ist die berechnete Wahrscheinlichkeit, die dem angegebenen Quantil zugeordnet ist.
@@ -58,9 +58,9 @@ Die Ausgabe des Diensts ist die berechnete Wahrscheinlichkeit, die dem angegeben
 ###Normal Distribution Generator
 Dieser Dienst akzeptiert 3 Argumente einer Binomialverteilung und generiert eine zufällige Sequenz von Zahlen, die normal verteilt werden. Die folgenden Argumente sollten innerhalb der Anforderung bereitgestellt werden:
 
-* n – Anzahl von Beobachtungen 
+* n – Anzahl von Beobachtungen
 * mean – Mittelwert der Normalverteilung
-* sd – Standardabweichung der Normalverteilung 
+* sd – Standardabweichung der Normalverteilung
 
 Die Ausgabe des Diensts ist eine Sequenz der Länge n mit einer Normalverteilung anhand der Argumente mean und SD.
 
@@ -265,4 +265,4 @@ Häufig gestellte Fragen zur Nutzung des Webdiensts und zum Veröffentlichen im 
 [4]: ./media/machine-learning-r-csharp-normal-distribution/normal-img4.png
  
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0914_2016-->

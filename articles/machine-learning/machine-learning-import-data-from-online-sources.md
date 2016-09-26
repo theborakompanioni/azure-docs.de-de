@@ -5,7 +5,7 @@
 	services="machine-learning"
 	documentationCenter=""
 	authors="bradsev"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun"/>
 
 <tags
@@ -34,7 +34,7 @@ Sie können in Azure Machine Learning Studio auf Daten aus einer von mehreren On
 
 - Web-URL über HTTP
 - Hadoop über HiveQL
-- Azure-Blobspeicher
+- Azure Blob Storage
 - Azure-Tabelle
 - Azure SQL-Datenbank oder SQL Server in Azure VM
 - Datenfeedanbieter (derzeit OData)
@@ -68,4 +68,4 @@ Data Feed Provider | Liest Daten aus einem unterstützten Feedanbieter. Derzeit 
 [import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
 [export-data]: https://msdn.microsoft.com/library/azure/7A391181-B6A7-4AD4-B82D-E419C0D6522C/
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0914_2016-->

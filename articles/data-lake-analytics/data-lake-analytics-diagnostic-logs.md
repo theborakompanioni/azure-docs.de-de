@@ -4,7 +4,7 @@
    services="data-lake-analytics" 
    documentationCenter="" 
    authors="Blackmist" 
-   manager="paulettm" 
+   manager="jhubbard" 
    editor="cgronlun"/>
  
 <tags
@@ -234,4 +234,4 @@ Azure Data Lake Analytics stellt ein Muster bereit, nach dem die Protokolldaten 
 
 - [Azure Data Lake Analytics – Übersicht](data-lake-analytics-overview.md)
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0914_2016-->

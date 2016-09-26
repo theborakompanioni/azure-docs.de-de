@@ -4,7 +4,7 @@
 	services="machine-learning"
 	documentationCenter="" 
 	authors="bradsev" 
-	manager="paulettm" 
+	manager="jhubbard" 
 	editor="cgronlun"/>
 
 <tags 
@@ -13,13 +13,13 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/27/2016" 
+	ms.date="09/12/2016" 
 	ms.author="bradsev" />
 
 
 # Interpretieren von Modellergebnissen in Azure Machine Learning 
  
-**Verstehen und Visualisieren der "Score Model"-Ausgabe** In diesem Thema werden die Visualisierung und das Interpretieren der Vorhersageergebnisse in Azure Machine Learning Studio erläutert. Nachdem Sie ein Modell trainiert und darauf basierend Vorhersagen erstellt (das Modell ausgewertet) haben, müssen Sie das erhaltene Vorhersageergebnis verstehen und interpretieren.
+**Verstehen und Visualisieren der „Score Model“-Ausgabe** In diesem Thema werden die Visualisierung und das Interpretieren der Vorhersageergebnisse in Azure Machine Learning Studio erläutert. Nachdem Sie ein Modell trainiert und darauf basierend Vorhersagen erstellt (das Modell ausgewertet) haben, müssen Sie das erhaltene Vorhersageergebnis verstehen und interpretieren.
 
 [AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
@@ -32,9 +32,9 @@ Es gibt vier Hauptarten von Machine Learning-Modellen in Azure Machine Learning:
 
 Folgende Module, mit denen Vorhersagen auf Basis dieser Module erstellt werden, führen eine "Bewertung" mit einigen Testdaten durch:
 
-* [Score Model][score-model] ist ein Modul für Klassifizierung und Regression; 
-* [Assign to Clusters][assign-to-clusters] ist ein Modul für das Clustering 
-* [Score Matchbox Recommender][score-matchbox-recommender] ist ein Modul für Empfehlungssysteme 
+* [Score Model][score-model] ist ein Modul für Klassifizierung und Regression;
+* [Assign to Clusters][assign-to-clusters] ist ein Modul für das Clustering
+* [Score Matchbox Recommender][score-matchbox-recommender] ist ein Modul für Empfehlungssysteme
  
 Dieses Dokument erläutert, wie Sie die Vorhersageergebnisse für jedes dieser Module interpretieren können. Einen Überblick über diese Modellarten finden Sie unter [Auswählen von Parametern zum Optimieren Ihres Algorithmus in Azure Machine Learning](machine-learning-algorithm-parameters-optimize.md).
 
@@ -45,15 +45,15 @@ Wenn Sie gerade erst in Azure Machine Learning einsteigen und Hilfe beim Erstell
 ##Klassifizierung
 Es gibt zwei Unterkategorien von Klassifizierungsproblemen:
 
-* Probleme mit nur zwei Klassen (Zwei-Klassen- oder binäre Klassifizierung) 
-* Probleme mit mehr als zwei Klassen (Multiklassenklassifizierung) 
+* Probleme mit nur zwei Klassen (Zwei-Klassen- oder binäre Klassifizierung)
+* Probleme mit mehr als zwei Klassen (Multiklassenklassifizierung)
 
-Azure Machine Learning verfügt über verschiedene Module für den Umgang mit jedem dieser Klassifizierungstypen. Doch ihre Vorhersageergebnisse werden in sehr ähnlicher Weise interpretiert. Zuerst werden Klassifizierungsprobleme mit zwei und anschließend Probleme mit mehreren Klassen erläutert.
+Azure Machine Learning verfügt über verschiedene Module für den Umgang mit jedem dieser Klassifizierungstypen. Doch ihre Vorhersageergebnisse werden in ähnlicher Weise interpretiert. Zuerst werden Klassifizierungsprobleme mit zwei und anschließend Probleme mit mehreren Klassen erläutert.
 
 ###Klassifizierung mit zwei Klassen
 **Beispielexperiment**
 
-Ein Beispiel für ein Klassifizierungsproblem mit zwei Klassen ist die Klassifizierung von Schwertlilien (Iris): bei dieser Aufgabe werden Schwertlilien auf Basis ihrer Features klassifiziert. Beachten Sie, dass das in Azure Machine Learning bereitgestellte Iris-Dataset eine Teilmenge des beliebten [Iris-Dataset](http://en.wikipedia.org/wiki/Iris_flower_data_set) ist und nur Instanzen von zwei Blumenarten (Klasse 0 und 1) enthält. Es gibt vier Features für jede Blume (Länge und Breite des Kelchblatts sowie Länge und Breite des Kronblatts).
+Ein Beispiel für ein Klassifizierungsproblem mit zwei Klassen ist die Klassifizierung von Schwertlilien (Iris): bei dieser Aufgabe werden Schwertlilien auf Basis ihrer Features klassifiziert. Das in Azure Machine Learning bereitgestellte Iris-Dataset ist eine Teilmenge des beliebten [Iris-Dataset](http://en.wikipedia.org/wiki/Iris_flower_data_set) und enthält nur Instanzen von zwei Blumenarten (Klasse 0 und 1). Es gibt vier Features für jede Blume (Länge und Breite des Kelchblatts sowie Länge und Breite des Kronblatts).
 
 ![screenshot\_of\_experiment](./media/machine-learning-interpret-model-results/1.png)
 
@@ -96,7 +96,7 @@ Abbildung 5: Webdienstergebnis der Klassifizierung der Schwertlilien mit zwei Kl
 ###Klassifizierung mit mehreren Klassen
 **Beispielexperiment**
 
-In diesem Experiment führen Sie als Beispiel der Klassifizierung mit mehreren Klassen eine Buchstabenerkennung durch. Die Klassifizierung versucht, einen bestimmten Buchstaben (Klasse) anhand von Handschriftattributwerten vorherzusagen, die aus Handschriftbildern extrahiert werden. In den Trainingsdaten gibt es sechzehn Features, die aus Handschriftbildern extrahiert wurden. Die 26 Buchstaben bilden die 26 Klassen. Zum Trainieren eines Klassifizierungsmodells mit mehreren Klasse zur Buchstabenerkennung und Vorhersage auf Basis derselben Featuregruppe bei einem Testdataset wurde ein Experiment erstellt, wie in Abbildung 6 gezeigt.
+In diesem Experiment führen Sie als Beispiel der Klassifizierung mit mehreren Klassen eine Buchstabenerkennung durch. Die Klassifizierung versucht, einen bestimmten Buchstaben (Klasse) anhand von Handschriftattributwerten vorherzusagen, die aus handschriftlichen Bildern extrahiert werden. In den Trainingsdaten gibt es 16 Features, die aus handschriftlichen Bildern extrahiert wurden. Die 26 Buchstaben bilden die 26 Klassen. Zum Trainieren eines Klassifizierungsmodells mit mehreren Klassen zur Buchstabenerkennung und Vorhersage auf Basis derselben Featuregruppe bei einem Testdataset wurde ein Experiment erstellt, wie in Abbildung 6 gezeigt.
 
 ![screenshot\_of\_experiment](./media/machine-learning-interpret-model-results/5_1.png)
  
@@ -112,7 +112,7 @@ Abbildung 7: Visualisieren des Ergebnisses der Modellbewertung bei der Multiklas
 
 **Ergebnisinterpretation**
 
-Die linken sechzehn Spalten stellen die Featurewerte des Testsatzes dar. Die Spalten mit den Namen "Scored Probabilities for Class 'XX'" entsprechen der Spalte "Scored Probabilities" bei zwei Klassen. Sie zeigen die Wahrscheinlichkeit, dass der entsprechende Eintrag in einer bestimmten Klasse liegt. Für den ersten Eintrag beträgt die Wahrscheinlichkeit z. B. 0,003571, dass es sich um ein "A" handelt, 0,000451, dass es sich um ein "B" handelt usw. Die letzte Spalte "Scored Labels" entspricht "Scored Labels" bei zwei Klassen. Die Klasse mit der größten ausgewerteten Wahrscheinlichkeit wird als die vorhergesagte Klasse des entsprechenden Eintrags ausgewählt. Beispielsweise ist "F" der ausgewertete Bezeichner für den ersten Eintrag, da es mit größter Wahrscheinlichkeit (0,916995) ein "F" ist.
+Die linken 16 Spalten stellen die Featurewerte des Testsatzes dar. Die Spalten mit den Namen "Scored Probabilities for Class 'XX'" entsprechen der Spalte "Scored Probabilities" bei zwei Klassen. Sie zeigen die Wahrscheinlichkeit, dass der entsprechende Eintrag in einer bestimmten Klasse liegt. Für den ersten Eintrag beträgt die Wahrscheinlichkeit z. B. 0,003571, dass es sich um ein "A" handelt, 0,000451, dass es sich um ein "B" handelt usw. Die letzte Spalte "Scored Labels" entspricht "Scored Labels" bei zwei Klassen. Die Klasse mit der größten ausgewerteten Wahrscheinlichkeit wird als die vorhergesagte Klasse des entsprechenden Eintrags ausgewählt. Beispielsweise ist "F" der ausgewertete Bezeichner für den ersten Eintrag, da es mit größter Wahrscheinlichkeit (0,916995) ein "F" ist.
 
 **Webdienstveröffentlichung**
 
@@ -126,7 +126,7 @@ Abbildung 8: R-Code für das Extrahieren von "Scored Labels" und der zugehörige
 
 Abbildung 9: Endgültiges Bewertungsexperiment zur Buchstabenerkennung bei einem Klassifizierungsproblem mit mehreren Klassen
 
-Wenn Sie nach dem Veröffentlichen und Ausführen des Webdiensts einige Featurewerte eingeben, entspricht das ausgegebene Ergebnis Abbildung 10. Dieser handgeschriebene Buchstabe mit den extrahierten sechzehn Features wird mit einer Wahrscheinlichkeit von 0,9715 als "T" vorhergesagt.
+Wenn Sie nach dem Veröffentlichen und Ausführen des Webdiensts einige Featurewerte eingeben, entspricht das ausgegebene Ergebnis Abbildung 10. Dieser handschriftliche Buchstabe mit den extrahierten 16 Features wird mit einer Wahrscheinlichkeit von 0,9715 als „T“ vorhergesagt.
  
 ![screenshot\_of\_experiment](./media/machine-learning-interpret-model-results/9_1.png)
 
@@ -176,7 +176,7 @@ Abbildung 14: Webdienstergebnis zum Regressionsproblem Automobilpreis
 
 **Beispielexperiment**
 
-Verwenden Sie das Iris-Dataset erneut, um ein Clusteringexperiment zu erstellen. Hier filtern Sie die Klassenbezeichner aus dem Dataset heraus, sodass es nur Features enthält und für das Clustering verwendet werden kann. Legen Sie in diesem Iris-Anwendungsfall die Anzahl der Cluster während des Trainingsprozesses auf 2 fest, d. h. die Blumen sollen in zwei Klassen zusammengefasst werden. Das Experiment ist in Abbildung 15 dargestellt.
+Verwenden Sie das Iris-Dataset erneut, um ein Clusteringexperiment zu erstellen. Hier filtern Sie die Klassenbezeichner aus dem Dataset heraus, sodass es nur Features enthält und für das Clustering verwendet werden kann. Legen Sie in diesem Iris-Anwendungsfall die Anzahl der Cluster während des Trainingsprozesses auf 2 fest, d.h. die Blumen sollen in zwei Klassen zusammengefasst werden. Das Experiment ist in Abbildung 15 dargestellt.
  
 ![screenshot\_of\_experiment](./media/machine-learning-interpret-model-results/15.png)
 
@@ -198,7 +198,7 @@ Abbildung 17: Visualisieren des Clusteringergebnisses für ein neues Dataset
 
 **Ergebnisinterpretation**
 
-Obwohl die Ergebnisse der beiden Teile aus verschiedenen Experimentphasen stammen, sehen sie genau gleich aus und werden auf dieselbe Weise interpretiert. Die ersten vier Spalten sind Features. Die letzte Spalte "Assignments" ist das Vorhersageergebnis. Die Einträge, denen die gleiche Zahl zugewiesen wurde, werden als im selben Cluster befindlich vorhergesagt, d. h. beide weisen in bestimmter Form Ähnlichkeiten auf (in diesem Experiment wurde die standardmäßige euklidische Abstandsmetrik verwendet). Denken Sie daran, dass Sie die Anzahl von Clustern mit 2 angegeben haben. In der Spalte "Assignments" sind also die Einträge entweder mit 0 oder 1 bezeichnet.
+Obwohl die Ergebnisse der beiden Teile aus verschiedenen Experimentphasen stammen, sehen sie genau gleich aus und werden auf dieselbe Weise interpretiert. Die ersten vier Spalten sind Features. Die letzte Spalte "Assignments" ist das Vorhersageergebnis. Die Einträge, denen die gleiche Zahl zugewiesen wurde, werden als im selben Cluster befindlich vorhergesagt, d.h. beide weisen in bestimmter Form Ähnlichkeiten auf (in diesem Experiment wurde die standardmäßige euklidische Abstandsmetrik verwendet). Denken Sie daran, dass Sie die Anzahl von Clustern mit 2 angegeben haben. In der Spalte "Assignments" sind also die Einträge entweder mit 0 oder 1 bezeichnet.
 
 **Webdienstveröffentlichung**
 
@@ -219,11 +219,11 @@ Abbildung 19: Webdienstergebnis der Klassifizierung der Schwertlilien mit zwei K
 ##Empfehlungssystem
 **Beispielexperiment**
 
-Für Empfehlungssysteme verwenden Sie das Restaurantempfehlungsproblem als Beispiel: Kunden werden auf Grundlage eines Bewertungsverlaufs Restaurants empfohlen. Die Eingabedaten besteht aus drei Teilen:
+Für Empfehlungssysteme verwenden Sie das Restaurantempfehlungsproblem als Beispiel: Kunden werden Restaurants auf Grundlage ihres Bewertungsverlaufs empfohlen. Die Eingabedaten besteht aus drei Teilen:
 
-* Restaurantbewertungen von Kunden 
-* Kundenfeaturedaten 
-* Restaurantfeaturedaten 
+* Restaurantbewertungen von Kunden
+* Kundenfeaturedaten
+* Restaurantfeaturedaten
 
 Mit dem integrierten Modul [Train Matchbox Recommender][train-matchbox-recommender] von Azure Machine Learning können Sie verschiedene Aufgaben durchführen:
 
@@ -254,7 +254,7 @@ Es gibt drei Spalten. Die ersten beiden Spalten sind die Benutzer-Element-Paare,
 
 *Empfehlen von Elementen für einen bestimmten Benutzer*
 
-Bei Auswahl von **Item Recommendation** im Menü **Recommender prediction kind** empfiehlt das System Elemente für einen bestimmten Benutzer. Es gibt einen weiteren Parameter, den Sie in diesem Szenario auswählen müssen: die Auswahl des empfohlenen Elements. Die Option **From Rated Items (for model evaluation)** wird in erster Linie für die Auswertung von Modellen während des Trainings verwendet. Wählen Sie für diese Vorhersagephase **From All Items**. Abbildung 22 zeigt die Visualisierung der Ausgabe von [Score Matchbox Recommender][score-matchbox-recommender].
+Bei Auswahl von **Item Recommendation** im Menü **Recommender prediction kind** empfiehlt das System Elemente für einen bestimmten Benutzer. Es gibt einen weiteren Parameter, den Sie in diesem Szenario auswählen müssen: die Auswahl des empfohlenen Elements. Die Option **From Rated Items (for model evaluation)** wird in erster Linie für die Auswertung von Modellen während des Trainings verwendet. Wählen Sie für diese Vorhersagephase **From All Items** aus. Abbildung 22 zeigt die Visualisierung der Ausgabe von [Score Matchbox Recommender][score-matchbox-recommender].
  
 ![screenshot\_of\_experiment](./media/machine-learning-interpret-model-results/22.png)
 
@@ -309,4 +309,4 @@ Abbildung 26: Webdienstergebnis für das Restaurantempfehlungsproblem
 [train-matchbox-recommender]: https://msdn.microsoft.com/library/azure/fa4aa69d-2f1c-4ba4-ad5f-90ea3a515b4c/
  
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0914_2016-->

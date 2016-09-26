@@ -5,7 +5,7 @@
 	documentationCenter=""
 	tags="azure-portal"
 	authors="mumian"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun"/>
 
 <tags
@@ -75,7 +75,7 @@ Das Power Query für Excel-Add-In erleichtert den Import von Daten aus Ihrem HDI
 
 In diesem Artikel haben Sie gelernt, wie Sie Daten aus HDInsight mithilfe von Power Query in Excel verwenden können. Auf ähnliche Weise können Sie Daten aus HDInsight für die Azure SQL-Datenbank abrufen. Außerdem können Sie Daten nach HDInsight hochladen. Weitere Informationen finden Sie in den folgenden Artikeln:
 
-* [Verbinden von Excel mit HDInsight mithilfe des Microsoft Hive ODBC-Treibers](../../articles/hdinsight/hdinsight-connect-excel-hive-odbc-driver.md)
+* [Verbinden von Excel mit HDInsight mithilfe des Microsoft Hive ODBC-Treibers][hdinsight-ODBC]
 * [Hochladen von Daten zu HDInsight][hdinsight-upload-data]
 
 [hdinsight-ODBC]: hdinsight-connect-excel-hive-ODBC-driver.md
@@ -88,4 +88,4 @@ In diesem Artikel haben Sie gelernt, wie Sie Daten aus HDInsight mithilfe von Po
 
 [powerquery-download]: http://go.microsoft.com/fwlink/?LinkID=286689
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0914_2016-->

@@ -154,7 +154,7 @@ Für Ihren zusätzlichen TXT-Eintrag wird die Konvention der Zuordnung von „&l
 <a name="cname"></a>
 ### Erstellen eines CNAME-Eintrags
 
-Wenn Sie einen CNAME-Eintrag für die Zuordnung zum Standarddomänennamen Ihrer Azure-App verwenden, benötigen Sie keinen zusätzlichen CNAME-Eintrag wie bei einem A-Eintrag.
+Wenn Sie einen CNAME-Eintrag für die Zuordnung zum Standarddomänennamen Ihrer Azure-App verwenden, benötigen Sie keinen zusätzlichen TXT-Eintrag wie bei einem A-Eintrag.
 
 >[AZURE.IMPORTANT] Erstellen Sie keinen CNAME-Eintrag für die Stammdomäne (d.h. den „Stammeintrag“). Weitere Informationen finden Sie unter [Why can't a CNAME record be used at the root domain](http://serverfault.com/questions/613829/why-cant-a-cname-record-be-used-at-the-apex-aka-root-of-a-domain) (Warum kann ein CNAME-Eintrag nicht für die Stammdomäne verwendet werden?). Verwenden Sie stattdessen zum Zuordnen einer Stammdomäne zu Ihrer Azure-App einen [A-Eintrag](#a).
 
@@ -232,7 +232,7 @@ Wechseln Sie nach der Erstellung dieses DNS-Eintrags zurück zum Azure-Portal, u
 <a name="verify"></a>
 ## Überprüfen der DNS-Verteilung
 
-Es kann nach Abschluss der Konfigurationsschritte einige Zeit dauern, bis die Änderungen übernommen wurden – dies hängt von Ihrem DNS-Anbieter ab. Mit [http://digwebinterface.com/](http://digwebinterface.com/) können Sie überprüfen, ob die DNS-Verteilung erwartungsgemäß funktioniert. Geben Sie nach dem Navigieren zu der Website die Hostnamen in das Textfeld ein, und klicken Sie auf **Dig**. Überprüfen Sie anhand der Ergebnisse, ob die aktuellen Änderungen übernommen wurden.
+Es kann nach Abschluss der Konfigurationsschritte einige Zeit dauern, bis die Änderungen übernommen wurden – dies hängt von Ihrem DNS-Anbieter ab. Mit [http://digwebinterface.com/](http://digwebinterface.com/) können Sie überprüfen, ob die DNS-Verteilung erwartungsgemäß funktioniert. Geben Sie nach dem Navigieren zu der Website die Hostnamen in das Textfeld ein, und klicken Sie auf **Dig**. Überprüfen Sie anhand der Ergebnisse, ob die aktuellen Änderungen übernommen wurden.
 
 ![Zuordnen eines benutzerdefinierten Domänennamens zu einer Azure-App: Überprüfen der DNS-Verteilung](./media/web-sites-custom-domain-name/1-digwebinterface.png)
 
@@ -249,4 +249,4 @@ Erfahren Sie, wie Sie Ihren benutzerdefinierten Domänennamen mit HTTPS sichern,
 <!-- Images -->
 [subdomain]: media/web-sites-custom-domain-name/azurewebsites-subdomain.png
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0914_2016-->

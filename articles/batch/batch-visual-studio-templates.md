@@ -382,9 +382,9 @@ Die Run()-Methode ist für das Starten der Befehlszeile, Starten von einem oder 
 
 Mit der Run()-Implementierung besteht Zugriff auf Folgendes:
 
-* Die Aufgabenparameter über das Feld „\_parameters“.
-* Die Auftrags- und Aufgaben-IDs über die Felder „\_jobId“ und „\_taskId“.
-* Die Aufgabenkonfiguration über das Feld „\_configuration“.
+* Die Aufgabenparameter über das Feld `_parameters`.
+* Die Auftrags- und Aufgaben-IDs über die Felder `_jobId` und `_taskId`.
+* Die Aufgabenkonfiguration über das Feld `_configuration`.
 
 **Aufgabenfehler**
 
@@ -427,7 +427,7 @@ Wenn Sie die Verwendung einer Container-URL mit SAS vorziehen, können Sie diese
 
 Es wird empfohlen, dass der Client oder die Auftrags-Manager-Aufgabe alle für die Aufgaben erforderlichen Container erstellt, bevor die Aufgaben dem Auftrag hinzugefügt werden. Dies ist obligatorisch, wenn Sie eine Container-URL mit SAS verwenden, da eine URL dieser Art keine Berechtigung zum Erstellen des Containers enthält. Dies ist auch zu empfehlen, wenn Sie Anmeldeinformationen für das Speicherkonto übergeben, da dann nicht jede Aufgabe „CloudBlobContainer.CreateIfNotExistsAsync“ für den Container aufrufen muss.
 
-## Übergeben von Parametern und Umgebungsvariablen aus dem Clientcode
+## Übergeben von Parametern und Umgebungsvariablen
 
 ### Übergeben von Umgebungseinstellungen
 
@@ -482,4 +482,4 @@ Das [Azure Batch-Forum][forum] auf MSDN eignet sich hervorragend, um Information
 [solution_explorer01]: ./media/batch-visual-studio-templates/solution_explorer01.png
 [solution_explorer02]: ./media/batch-visual-studio-templates/solution_explorer02.png
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0914_2016-->

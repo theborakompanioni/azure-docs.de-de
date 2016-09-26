@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="07/26/2016"
+   ms.date="08/16/2016"
    ms.author="manuaery" />
 
 # Lokale StorSimple-Volumes: Häufig gestellte Fragen (FAQ)
@@ -33,23 +33,23 @@ Die Fragen und Antworten sind in folgende Kategorien unterteilt:
 
 **F.** Wie groß kann ein lokales Volume auf Geräten der 8000-Serie maximal sein?
 
-**A** Sie können lokale Volumes von bis zu 8 TB oder mehrstufige Volumes von bis zu 200 TB auf dem 8100-Gerät bereitstellen. Auf dem größeren 8600-Gerät können Sie lokale Volumes von bis zu 20 TB oder mehrstufige Volumes von bis zu 500 TB bereitstellen.
+**A** Sie können lokale Volumes von bis zu 8,5 TB ODER mehrstufige Volumes von bis zu 200 TB auf dem 8100-Gerät bereitstellen. Auf dem größeren 8600-Gerät können Sie lokale Volumes von bis zu 22,5 TB oder mehrstufige Volumes von bis zu 500 TB bereitstellen.
 
-**F.** Ich habe vor Kurzem mein 8100-Gerät auf Update 2 aktualisiert. Wenn ich nun versuche, ein lokales Volume zu erstellen, beträgt die verfügbare maximale Größe statt 8 TB nur 6 TB. Warum kann ich kein Volume mit 8 TB erstellen?
+**F.** Ich habe vor Kurzem mein 8100-Gerät auf Update 2 aktualisiert. Wenn ich nun versuche, ein lokales Volume zu erstellen, beträgt die verfügbare maximale Größe statt 8,5 TB nur 6 TB. Warum kann ich kein Volume mit 8,5 TB erstellen?
 
-**A** Sie können lokale Volumes von bis zu 8 TB ODER mehrstufige Volumes von bis zu 200 TB auf dem 8100-Gerät bereitstellen. Wenn auf Ihrem Gerät bereits mehrstufige Volumes bereitgestellt wurden, ist der Platz zum Erstellen eines lokalen Volumes proportional kleiner als diese Höchstgrenze. Beispiel: Wenn auf dem 8100-Gerät bereits mehrstufige Volumes mit 100 TB (also der Hälfte der Kapazität mehrstufiger Volumes) bereitgestellt wurden, verringert sich die maximale Größe eines lokalen Volumes, das Sie auf dem 8100-Gerät erstellen können, dementsprechend auf 4 TB (die Hälfte der maximalen Kapazität lokaler Volumes).
+**A** Sie können lokale Volumes von bis zu 8,5 TB ODER mehrstufige Volumes von bis zu 200 TB auf dem 8100-Gerät bereitstellen. Wenn auf Ihrem Gerät bereits mehrstufige Volumes bereitgestellt wurden, ist der Platz zum Erstellen eines lokalen Volumes proportional kleiner als diese Höchstgrenze. Beispiel: Wenn auf dem 8100-Gerät bereits mehrstufige Volumes mit 100 TB (also der Hälfte der Kapazität mehrstufiger Volumes) bereitgestellt wurden, verringert sich die maximale Größe eines lokalen Volumes, das Sie auf dem 8100-Gerät erstellen können, dementsprechend auf 4 TB (ca. die Hälfte der maximalen Kapazität lokaler Volumes).
 
 Da ein Teil des lokalen Speicherplatzes auf dem Gerät zum Hosten des Arbeitssatzes mehrstufiger Volumes verwendet wird, verringert sich der verfügbare Speicherplatz für die Erstellung eines lokalen Volumes, wenn das Gerät über mehrstufige Volumes verfügt. Umgekehrt verringert sich beim Erstellen eines lokalen Volumes der verfügbare Speicherplatz für mehrstufige Volumes proportional. In der folgenden Tabelle wird die Kapazität für mehrstufige Volumes auf 8100- und 8600-Geräten bei der Erstellung lokaler Volumes zusammengefasst.
 
 |Bereitgestellte Kapazität lokaler Volumes|Verfügbare Kapazität für mehrstufige Volumes – 8100|Verfügbare Kapazität für mehrstufige Volumes – 8600|
 |-----|------|------|
 |0 | 200 TB | 500 TB |
-|1 TB | 175 TB | 475 TB|
-|4 TB | 100 TB | 400 TB |
-|8 TB | 0 TB | 300 TB|
-|10 TB | NA | 250 TB |
-|15 TB | NA | 125 TB |
-|20 TB | NA | 0 TB |
+|1 TB | 176,5 TB | 477,8 TB|
+|4 TB | 105,9 TB | 411,1 TB |
+|8,5 TB | 0 TB | 311,1 TB|
+|10 TB | NA | 277,8 TB |
+|15 TB | NA | 166,7 TB |
+|22,5 TB | NA | 0 TB |
 
 
 **F.** Warum dauert die Erstellung eines lokalen Volumes so lange?
@@ -213,4 +213,4 @@ Weitere Informationen zu [Failover und Notfallwiederherstellung bei lokalen Volu
 
 **A.** Ja, das ist möglich. Bei einem Failover der lokalen Volumes erhalten Sie mehrstufige Volumes. Weitere Informationen zu [Failover und Notfallwiederherstellung bei lokalen Volumes mit verschiedenen Versionen](storsimple-device-failover-disaster-recovery.md#considerations-for-device-failover)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0914_2016-->

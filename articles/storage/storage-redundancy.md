@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/03/2016"
+	ms.date="09/07/2016"
 	ms.author="tamram"/>
 
 # Azure Storage-Replikation
@@ -71,22 +71,22 @@ Wenn Sie ein Speicherkonto erstellen, wählen Sie die primäre Region für das K
 
 | Primär | Sekundär |
 |---------------------|---------------------|
-| USA (Mitte/Norden) | USA (Mitte/Süden) |
+| USA (Mitte/Norden) | USA, Süden-Mitte |
 | USA (Mitte/Süden) | USA (Mitte/Norden) |
 | USA (Ost) | USA (West) |
 | USA (West) | USA (Ost) |
 | USA (Ost 2) | USA (Mitte) |
 | USA (Mitte) | USA (Ost 2) |
-| Nordeuropa | Westeuropa |
+| Nordeuropa | Europa, Westen |
 | Westeuropa | Nordeuropa |
 | Südostasien | Ostasien |
 | Ostasien | Südostasien |
 | Ostchina | Nordchina |
 | Nordchina | Ostchina |
 | Japan Ost | Japan (Westen) |
-| Japan (Westen) | Japan Ost |
+| Japan (Westen) | Japan, Osten |
 | Brasilien Süd | USA (Mitte/Süden) |
-| Australien (Osten) | Australien (Südosten) |
+| Australien (Osten) | Australien, Südosten |
 | Australien (Südosten) | Australien (Osten) |
 | Indien, Süden | Indien, Mitte |
 | Indien, Mitte | Indien, Süden |
@@ -117,4 +117,4 @@ Wenn Sie den schreibgeschützten Zugriff auf Ihre Daten in der sekundären Regio
 - [Microsoft Azure Storage Redundancy Options and Read Access Geo Redundant Storage (in englischer Sprache)](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/11/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx)
 - [SOSP Paper - Azure Storage: A Highly Available Cloud Storage Service with Strong Consistency (SOSP-Dokument – Azure Storage: ein hochverfügbarer Cloudspeicherdienst mit starker Konsistenz)](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0914_2016-->

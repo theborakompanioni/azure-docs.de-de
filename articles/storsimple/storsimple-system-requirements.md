@@ -57,7 +57,7 @@ Das StorSimple-Gerät ist ein gesperrtes Gerät. Allerdings müssen Ports in der
 | Portnr.<sup>1,2</sup> | ein oder aus | Portbereich | Erforderlich | Hinweise |
 |------------------------|-----------|------------|----------|-------|
 |TCP 80 (HTTP)<sup>3</sup>| aus | WAN | Nein |<ul><li>Der ausgehende Port wird für den Internetzugriff zum Abrufen von Updates verwendet.</li><li>Der ausgehende Webproxy ist vom Benutzer konfigurierbar.</li><li>Zum Ermöglichen von Systemupdates muss dieser Port auch für die festen IP-Adressen des Controllers geöffnet sein.</li></ul> |
-|TCP 443 (HTTPS)<sup>3</sup>| aus | WAN | Ja |<ul><li>Der ausgehende Port wird für den Zugriff auf Daten in der Cloud verwendet.</li><li>Der ausgehende Webproxy ist vom Benutzer konfigurierbar.</li><li>Zum Ermöglichen von Systemupdates muss dieser Port auch für die festen IP-Adressen des Controllers geöffnet sein.</li></ul>|
+|TCP 443 (HTTPS)<sup>3</sup>| aus | WAN | Ja |<ul><li>Der ausgehende Port wird für den Zugriff auf Daten in der Cloud verwendet.</li><li>Der ausgehende Webproxy ist vom Benutzer konfigurierbar.</li><li>Zum Ermöglichen von Systemupdates muss dieser Port auch für die festen IP-Adressen des Controllers geöffnet sein.</li><li>Dieser Port wird auch auf beiden Controllern für die Garbage Collection verwendet.</li></ul>|
 |UDP 53 (DNS) | aus | WAN | In einigen Fällen; siehe Hinweise. |Dieser Port ist nur dann erforderlich, wenn Sie einen internetbasierten DNS-Server verwenden. |
 | UDP 123 (NTP) | aus | WAN | In einigen Fällen; siehe Hinweise. |Dieser Port ist nur dann erforderlich, wenn Sie einen internetbasierten NTP-Server verwenden. |
 | TCP 9354 | aus | WAN | Ja |Der ausgehende Port wird vom StorSimple-Gerät für die Kommunikation mit dem StorSimple Manager-Dienst verwendet. |
@@ -138,12 +138,7 @@ Update 2 umfasst mehrere netzwerkbezogene Verbesserungen, und die Routingmetrik 
 
 	| Netzwerkschnittstelle | Cloudfähig | Nicht cloudfähig mit Gateway |
 	|-----|---------------|---------------------------|
-	| Data 0 | 1 | - |
-	| Data 1 | 2 | 20 |
-	| Data 2 | 3 | 30 |
-	| Data 3 | 4 | 40 |
-	| Data 4 | 5 | 50 |
-	| Data 5 | 6 | 60 |
+	| Data 0 | 1 | - | | Data 1 | 2 | 20 | | Data 2 | 3 | 30 | | Data 3 | 4 | 40 | | Data 4 | 5 | 50 | | Data 5 | 6 | 60 |
 
 
 - Der Clouddatenverkehr wird in folgender Reihenfolge über die Netzwerkschnittstellen weitergeleitet:
@@ -291,4 +286,4 @@ Lesen Sie sich diese bewährten Methoden sorgfältig durch, um eine hohe Verfüg
 <!--Reference links-->
 [1]: https://technet.microsoft.com/library/cc731844(v=WS.10).aspx
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0914_2016-->

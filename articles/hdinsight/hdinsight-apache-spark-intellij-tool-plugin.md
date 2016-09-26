@@ -4,7 +4,7 @@
 	services="hdinsight"
 	documentationCenter=""
 	authors="nitinme"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun"
 	tags="azure-portal"/>
 
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/26/2016"
+	ms.date="09/09/2016"
 	ms.author="nitinme"/>
 
 
@@ -34,13 +34,38 @@ Informationen zu den ersten Schritten finden Sie auch in diesem [Video](https://
 ##Voraussetzungen
 
 * Ein Azure-Abonnement. Siehe [How to get Azure Free trial for testing Hadoop in HDInsight](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/) (in englischer Sprache).
+
 * Einen Apache Spark-Cluster unter HDInsight (Linux). Eine Anleitung finden Sie unter [Erstellen von Apache Spark-Clustern in Azure HDInsight](hdinsight-apache-spark-jupyter-spark-sql.md).
+
 * Oracle Java Development Kit. Das Installationspaket finden Sie [hier](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html).
+
 * IntelliJ IDEA. In diesem Artikel wird die Version 15.0.1 verwendet. Das Installationspaket finden Sie [hier](https://www.jetbrains.com/idea/download/).
 
 ## Installieren der HDInsight-Tools im Azure-Toolkit für IntelliJ
 
 Die HDInsight-Tools für IntelliJ sind als Teil des Azure-Toolkits für IntelliJ verfügbar. Anweisungen zum Installieren des Azure-Toolkits finden Sie unter [Installieren des Azure Toolkit für IntelliJ](../azure-toolkit-for-intellij-installation.md).
+
+## Anmelden bei Ihrem Azure-Abonnement
+
+1. Starten Sie die IntelliJ-IDE, und öffnen Sie den Azure Explorer. Klicken Sie im Menü **View** (Ansicht) in IDE auf **Tool Windows** (Tool-Fenster), und klicken Sie dann auf **Azure Explorer**.
+
+	![Erstellen einer Spark Scala-Anwendung](./media/hdinsight-apache-spark-intellij-tool-plugin/show-azure-explorer.png)
+
+2. Klicken Sie mit der rechten Maustaste auf den Knoten **Azure** im **Azure Explorer**, und klicken Sie auf **Manage Subscriptions**.
+
+3. Klicken Sie im Dialogfeld **Manage Subscriptions** auf **Sign in**, und geben Sie Ihre Azure-Anmeldeinformationen ein.
+
+	![Erstellen einer Spark Scala-Anwendung](./media/hdinsight-apache-spark-intellij-tool-plugin/view-explorer-2.png)
+
+4. Nachdem Sie sich angemeldet haben, werden im Dialogfeld **Manage Subscriptions** alle Azure-Abonnements aufgelistet, die den Anmeldeinformationen zugeordnet sind. Klicken Sie im Dialogfeld auf **Schließen**.
+
+5. Erweitern Sie in der Registerkarte **Azure Explorer** **HDInsight**, um die HDInsight Spark-Cluster in Ihrem Abonnement anzuzeigen.
+
+	![Erstellen einer Spark Scala-Anwendung](./media/hdinsight-apache-spark-intellij-tool-plugin/view-explorer-3.png)
+
+6. Sie können des Weiteren einen Clusternamenknoten erweitern, um die mit dem Cluster verbundenen Ressourcen (z.B. Speicherkonten) anzuzeigen.
+
+	![Erstellen einer Spark Scala-Anwendung](./media/hdinsight-apache-spark-intellij-tool-plugin/view-explorer-4.png)
 
 ## Ausführen einer Spark Scala-Anwendung in einem HDInsight Spark-Cluster
 
@@ -145,21 +170,9 @@ Die HDInsight-Tools für IntelliJ sind als Teil des Azure-Toolkits für IntelliJ
 
 Mit den HDInsight-Tools, die zum Azure-Toolkit für IntelliJ gehören, können Sie eine Vielzahl von Vorgängen ausführen.
 
-### Zugreifen auf den Speichercontainer des Clusters
-
-1. Zeigen Sie im Menü **View** (Ansicht) auf **Tool Windows** (Tool-Fenster), und klicken Sie dann auf **HDInsight Explorer**. Wenn Sie dazu aufgefordert werden, geben Sie die Anmeldeinformationen für Ihr Azure-Abonnement ein.
-
-2. Erweitern Sie den Stammknoten **HDInsight**, um eine Liste der verfügbaren HDInsight Spark-Cluster anzuzeigen.
-
-3. Erweitern Sie den Namen des Clusters, um das Speicherkonto und den Standardspeichercontainer des Clusters anzuzeigen.
-
-	![Zugreifen auf Clusterspeicher](./media/hdinsight-apache-spark-intellij-tool-plugin/hdi-spark-access-storage.png)
-
-4. Klicken Sie auf den Namen des Speichercontainers, der dem Cluster zugeordnet ist. Im rechten Bereich sollten Sie einen Ordner namens **HVACOut** sehen. Doppelklicken Sie darauf, um den Ordner zu öffnen. Sie sehen Dateien vom Typ **part-***. Öffnen Sie eine dieser Dateien, um die Ausgabe der Anwendung anzuzeigen.
-
 ### Zugriff auf die Auftragsansicht direkt über die HDInsight-Tools
 
-1. Erweitern Sie im **HDInsight Explorer** den Namen des Spark-Clusters, und klicken Sie dann auf **Jobs** (Aufträge).
+1. Erweitern Sie im **Azure Explorer** **HDInsight**, den Namen des Spark-Clusters, und klicken Sie dann auf **Jobs** (Aufträge).
 
 2. Im rechten Bereich werden auf der Registerkarte **Spark Job View** (Spark-Auftragsansicht) alle Anwendungen angezeigt, die in dem Cluster ausgeführt wurden. Klicken Sie auf den Namen der Anwendung, zu der Sie weitere Details sehen möchten.
 
@@ -171,17 +184,17 @@ Mit den HDInsight-Tools, die zum Azure-Toolkit für IntelliJ gehören, können S
 
 ### Zugreifen auf den Spark-Verlaufsserver
 
-1. Klicken Sie in **HDInsight Explorer** mit der rechten Maustaste auf den Namen Ihres Spark-Clusters, und wählen Sie dann **Open Spark History UI** (Spark-Verlaufsbenutzeroberfläche öffnen) aus. Geben Sie die Anmeldeinformationen für den Cluster ein, wenn Sie dazu aufgefordert werden. Diese müssen Sie beim Bereitstellen des Clusters angegeben haben.
+1. Erweitern Sie im **Azure Explorer** **HDInsight**, klicken Sie mit der rechten Maustaste auf den Namen Ihres Spark-Clusters, und wählen Sie dann **Open Spark History UI** aus. Geben Sie die Anmeldeinformationen für den Cluster ein, wenn Sie dazu aufgefordert werden. Diese müssen Sie beim Bereitstellen des Clusters angegeben haben.
 
 2. Im Dashboard des Spark-Verlaufsservers können Sie die Anwendung, deren Ausführung Sie gerade beendet haben, anhand des Anwendungsnamens suchen. Im obigen Code haben Sie den Anwendungsnamen mit `val conf = new SparkConf().setAppName("MyClusterApp")` festgelegt. Daher lautete der Name Ihrer Spark-Anwendung **MyClusterApp**.
 
 ### Öffnen des Ambari-Portals
 
-Klicken Sie in **HDInsight Explorer** mit der rechten Maustaste auf den Namen Ihres Spark-Clusters, und wählen Sie dann **Open Cluster Management Portal (Ambari)** (Clusterverwaltungsportal [Ambari] öffnen) aus. Geben Sie die Anmeldeinformationen für den Cluster ein, wenn Sie dazu aufgefordert werden. Diese müssen Sie beim Bereitstellen des Clusters angegeben haben.
+Erweitern Sie im **Azure Explorer** **HDInsight**, klicken Sie mit der rechten Maustaste auf den Namen Ihres Spark-Clusters, und wählen Sie dann **Open Cluster Management Portal (Ambari)** aus. Geben Sie die Anmeldeinformationen für den Cluster ein, wenn Sie dazu aufgefordert werden. Diese müssen Sie beim Bereitstellen des Clusters angegeben haben.
 
 ### Verwalten von Azure-Abonnements
 
-Standardmäßig führen die HDInsight-Tools die Spark-Cluster in all Ihren Azure-Abonnements auf. Bei Bedarf können Sie die Abonnements angeben, für die Sie auf den Cluster zugreifen möchten. Klicken Sie in **HDInsight Explorer** mit der rechten Maustaste auf den Stammknoten **HDInsight**, und klicken Sie auf **Manage Subscriptions**. Deaktivieren Sie im Dialogfeld die Kontrollkästchen für die Abonnements, auf die Sie nicht zugreifen möchten, und klicken Sie dann auf **Close**. Sie können auch auf **Sign Out** klicken, wenn Sie sich von Ihrem Azure-Abonnement abmelden möchten.
+Standardmäßig führen die HDInsight-Tools die Spark-Cluster in all Ihren Azure-Abonnements auf. Bei Bedarf können Sie die Abonnements angeben, für die Sie auf den Cluster zugreifen möchten. Klicken Sie im **Azure Explorer** mit der rechten Maustaste auf den Stammknoten **Azure**, und klicken Sie auf **Manage Subscriptions**. Deaktivieren Sie im Dialogfeld die Kontrollkästchen für die Abonnements, auf die Sie nicht zugreifen möchten, und klicken Sie dann auf **Close**. Sie können auch auf **Sign Out** klicken, wenn Sie sich von Ihrem Azure-Abonnement abmelden möchten.
 
 
 ## Lokales Ausführen einer Spark Scala-Anwendung
@@ -316,4 +329,4 @@ Falls Sie Vorschläge oder Feedback haben oder bei Verwendung dieses Tools Probl
 
 * [Track and debug jobs running on an Apache Spark cluster in HDInsight (Nachverfolgen und Debuggen von Aufträgen in einem Apache Spark-Cluster unter HDInsight)](hdinsight-apache-spark-job-debugging.md)
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0914_2016-->

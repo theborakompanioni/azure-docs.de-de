@@ -4,7 +4,7 @@
 	services="hdinsight" 
 	documentationCenter="" 
 	authors="nitinme" 
-	manager="paulettm" 
+	manager="jhubbard" 
 	editor="cgronlun"/>
 
 <tags 
@@ -25,9 +25,9 @@ Erfahren Sie, wie Zeppelin Notebooks auf Apache Spark-Clustern installiert und z
 
 **Voraussetzungen:**
 
-* Bevor Sie mit diesem Lernprogramm beginnen, müssen Sie über ein Azure-Abonnement verfügen. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
+* Für dieses Tutorial wird ein Azure-Abonnement benötigt. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 * Einen Apache Spark-Cluster. Eine Anleitung finden Sie unter [Erstellen von Apache Spark-Clustern in Azure HDInsight](hdinsight-apache-spark-jupyter-spark-sql.md).
-* Einen SSH-Client Für Linux- und Unix-Distributionen oder Macintosh OS X steht der Befehl `ssh` über das Betriebssystem zur Verfügung. Bei Windows wird [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) empfohlen.
+* Einen SSH-Client. Für Linux- und Unix-Distributionen oder Macintosh OS X steht der Befehl `ssh` über das Betriebssystem zur Verfügung. Bei Windows wird [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) empfohlen.
 
 	> [AZURE.NOTE] Wenn Sie einen anderen SSH-Client als `ssh` oder PuTTY verwenden möchten, finden Sie Informationen zum Herstellen eines SSH-Tunnels in der Dokumentation zu Ihrem Client.
 
@@ -201,7 +201,7 @@ Wenn Sie FoxyProxy Standard installiert haben, konfigurieren Sie es folgenderma�
 
 	* **Name des Musters**: **zeppelinnotebook** – Dies ist lediglich ein Anzeigename für das Muster.
 
-	* **URL-Muster**: **\*hn0*** – Dient zum Definieren eines Musters, das mit dem internen vollqualifizierten Domänennamen des Endpunkts übereinstimmt, auf dem die Zeppelin Notebooks gehostet werden. Da Zeppelin Notebooks nur auf „headnode0“ des Clusters verfügbar sind und der Endpunkt normalerweise `http://hn0-<string>.internal.cloudapp.net` lautet, wird durch die Verwendung des Musters **hn0** sichergestellt, dass die Anforderung an den Zeppelin-Endpunkt umgeleitet wird.
+	* **URL-Muster**: ***hn0**** – Dient zum Definieren eines Musters, das mit dem internen vollqualifizierten Domänennamen des Endpunkts übereinstimmt, auf dem die Zeppelin Notebooks gehostet werden. Da Zeppelin Notebooks nur auf „headnode0“ des Clusters verfügbar sind und der Endpunkt normalerweise `http://hn0-<string>.internal.cloudapp.net` lautet, wird durch die Verwendung des Musters **hn0** sichergestellt, dass die Anforderung an den Zeppelin-Endpunkt umgeleitet wird.
 
 		![FoxyProxy-Muster](./media/hdinsight-apache-spark-use-zeppelin-notebook/foxypattern.png)
 
@@ -387,4 +387,4 @@ Nach dem Einrichten des SSH-Tunneling können Sie die folgenden Schritte ausfüh
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: storage-create-storage-account.md
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0914_2016-->

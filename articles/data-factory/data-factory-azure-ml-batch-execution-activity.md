@@ -27,9 +27,9 @@
 
 1. **Erstellen eines Trainingsexperiments**. Sie führen diesen Schritt mit Azure ML Studio aus. ML Studio ist eine visuelle Entwicklungsumgebung für die Zusammenarbeit, mit der Sie ein Predictive Analytics-Modell mithilfe von Trainingsdaten trainieren und testen können.
 2. **Konvertierten in ein Vorhersageexperiment**. Sobald Ihr Modell mit vorhandenen Daten trainiert wurde, können Sie es verwenden, um neue Daten zu bewerten. Sie bereiten das Experiment auf die Bewertung vor und optimieren es.
-3. **Bereitstellen des Experiments als Webdienst**. Sie können das Bewertungsexperiment als Azure-Webdienst veröffentlichen. Benutzer können Daten über diesen Webdienstendpunkt an Ihr Modell senden und Ergebnisvorhersagen vom Modell empfangen.
+3. **Bereitstellen des Experiments als Webdienst**. Sie können das Bewertungsexperiment als Azure-Webdienst veröffentlichen. Sie können Daten über diesen Webdienstendpunkt an Ihr Modell senden und Ergebnisvorhersagen vom Modell empfangen.
 
-Azure Data Factory ermöglicht die einfache Erstellung von Pipelines, die einen veröffentlichten [Azure Machine Learning][azure-machine-learning]-Webdienst für Predictive Analytics nutzen. Mithilfe der **Batchausführungsaktivität** in einer Azure Data Factory-Pipeline können Sie einen Azure ML-Webdienst aufrufen, um Vorhersagen zu den Daten im Batch zu machen. Weitere Details finden Sie im Abschnitt [Aufrufen eines Azure ML-Webdiensts mit der Batchausführungsaktivität](#invoking-an-azure-ml-web-service-using-the-batch-execution-activity).
+Azure Data Factory ermöglicht die einfache Erstellung von Pipelines, die einen veröffentlichten [Azure Machine Learning][azure-machine-learning]-Webdienst für Predictive Analytics nutzen. Mithilfe der **Batchausführungsaktivität ** in einer Azure Data Factory-Pipeline können Sie einen Azure ML-Webdienst aufrufen, um Vorhersagen zu den Daten im Batch zu machen. Weitere Details finden Sie im Abschnitt [Aufrufen eines Azure ML-Webdiensts mit der Batchausführungsaktivität](#invoking-an-azure-ml-web-service-using-the-batch-execution-activity).
 
 Im Laufe der Zeit müssen die Vorhersagemodelle in den Azure ML-Bewertungsexperimenten mit neuen Eingabedatasets neu trainiert werden. Sie können ein Azure ML-Modell über eine Data Factory-Pipeline neu trainieren, indem Sie die folgenden Schritte ausführen:
 
@@ -44,7 +44,7 @@ Nachdem Sie das erneute Trainieren abgeschlossen haben, sollten Sie den Bewertun
 
 Einzelheiten finden Sie im Abschnitt [Aktualisieren von Azure ML-Modellen mithilfe der Ressourcenaktualisierungsaktivität](#updating-azure-ml-models-using-the-update-resource-activity).
 
-## Aufrufen eines Azure ML-Webdiensts mit der Batchausführungsaktivität
+## Aufrufen eines Webdiensts mit der Batchausführungsaktivität
 
 Mit Azure Data Factory können Sie die Verschiebung und Verarbeitung von Daten orchestrieren und anschließend eine Batchausführung mithilfe von Azure Machine Learning vornehmen. Dies sind die Schritte der obersten Ebene:
 
@@ -61,7 +61,12 @@ Mit Azure Data Factory können Sie die Verschiebung und Verarbeitung von Daten o
 ### Szenario: Experimente mit Eingaben/Ausgaben für den Webdienst, die auf Daten im Azure-Blob-Speicher verweisen
 In diesem Szenario werden mit dem Azure Machine Learning-Webdienst anhand der Daten aus einer Datei eines Azure-Blob-Speichers Vorhersagen erstellt und die Vorhersageergebnisse im Blob-Speicher gespeichert. Das folgende JSON-Skript definiert eine Data Factory-Pipeline mit einer AzureMLBatchExecution-Aktivität. Die Aktivität enthält das Dataset **DecisionTreeInputBlob** als Eingabe und **DecisionTreeResultBlob** als Ausgabe. **DecisionTreeInputBlob** wird als Eingabeelement an den Webdienst übergeben, indem die **webServiceInput**-JSON-Eigenschaft verwendet wird. **DecisionTreeResultBlob** wird als Ausgabeelement an den Webdienst übergeben, indem die **webServiceOutputs**-JSON-Eigenschaft verwendet wird.
 
-> [AZURE.NOTE] Datasets, auf die die Eigenschaften **webServiceInput** und **webServiceOutputs** (in **typeProperties**) verweisen, müssen auch in den Aktivitäten **inputs** und **outputs** enthalten sein.
+> [AZURE.IMPORTANT] 
+Wenn der Webdienst mehrere Eingaben akzeptiert, verwenden Sie die Eigenschaft **webServiceInputs** anstatt **webServiceInput**. Im Abschnitt [Webdienst erfordert mehrere Eingaben](#web-service-requires-multiple-inputs) finden Sie ein Beispiel für die Verwendung der webServiceInputs-Eigenschaft.
+>  
+> Datasets, auf die die Eigenschaften **webServiceInput**/**webServiceInputs** und **webServiceOutputs** (in **typeProperties**) verweisen, müssen auch in den Aktivitäten **inputs** und **outputs** enthalten sein.
+> 
+> In Ihrem Azure ML-Experiment haben Eingabe- und Ausgabeports von Webdiensten und globale Parameter Standardnamen („input1“, „input2“), die Sie anpassen können. Die Namen, die Sie für die Einstellungen webServiceInputs, webServiceOutputs und globalParameters verwenden, müssen den Namen in den Experimenten genau entsprechen. Sie können die Beispiel-Anforderungsnutzlast auf der Hilfeseite für die Batchausführung für Ihren Azure ML-Endpunkt anzeigen, um die erwartete Zuordnung zu überprüfen.
 
 
 	{
@@ -99,8 +104,8 @@ In diesem Szenario werden mit dem Azure Machine Learning-Webdienst anhand der Da
 	        }
 	      }
 	    ],
-	    "start": "2015-02-13T00:00:00Z",
-	    "end": "2015-02-14T00:00:00Z"
+	    "start": "2016-02-13T00:00:00Z",
+	    "end": "2016-02-14T00:00:00Z"
 	  }
 	}
 
@@ -125,7 +130,7 @@ Wir empfehlen Ihnen, das Tutorial zum [Erstellen der ersten Pipeline mit Data Fa
 		  }
 		}
 
-2. Erstellen Sie das **Eingabe** **dataset** für Azure Data Factory. Im Gegensatz zu einigen anderen Data Factory-Datasets müssen diese Datasets die beiden Werte **folderPath** und **fileName** enthalten. Sie können die Partitionierung verwenden, damit jede Batchausführung (jeder Datenslice) eindeutige Ein- und Ausgabedateien verarbeitet oder erzeugt. Sie müssen unter Umständen einige vorgeschaltete Aktivitäten einbeziehen, um die Eingabe in das CSV-Dateiformat umzuwandeln und sie im Speicherkonto für die einzelnen Datenslices abzulegen. In diesem Fall würden Sie die im folgenden Beispiel gezeigten Einstellungen **external** und **externalData** nicht einbeziehen, und Ihr „DecisionTreeInputBlob“ würde dem Ausgabedataset einer anderen Aktivität entsprechen.
+2. Erstellen Sie das **Eingabe****dataset** für Azure Data Factory. Im Gegensatz zu einigen anderen Data Factory-Datasets müssen diese Datasets die beiden Werte **folderPath** und **fileName** enthalten. Sie können die Partitionierung verwenden, damit jede Batchausführung (jeder Datenslice) eindeutige Ein- und Ausgabedateien verarbeitet oder erzeugt. Sie müssen unter Umständen einige vorgeschaltete Aktivitäten einbeziehen, um die Eingabe in das CSV-Dateiformat umzuwandeln und sie im Speicherkonto für die einzelnen Datenslices abzulegen. In diesem Fall würden Sie die im folgenden Beispiel gezeigten Einstellungen **external** und **externalData** nicht einbeziehen, und Ihr „DecisionTreeInputBlob“ würde dem Ausgabedataset einer anderen Aktivität entsprechen.
 
 		{
 		  "name": "DecisionTreeInputBlob",
@@ -164,7 +169,7 @@ Wir empfehlen Ihnen, das Tutorial zum [Erstellen der ersten Pipeline mit Data Fa
 	     }
 	 
 	Wenn die CSV-Datei nicht die Kopfzeilen enthält, wird möglicherweise folgender Fehler angezeigt: **Fehler in Aktivität: Fehler beim Lesen der Zeichenfolge. Unerwartetes Token: StartObject. Pfad '', Zeile 1, Position 1**.
-3. Erstellen Sie das **Ausgabe** **dataset** für Azure Data Factory. In diesem Beispiel wird die Partitionierung verwendet, um für die Ausführung der einzelnen Datenslices einen eindeutigen Ausgabepfad zu erstellen. Ohne die Partitionierung würde die Aktivität die Datei überschreiben.
+3. Erstellen Sie das **Ausgabe****dataset** für Azure Data Factory. In diesem Beispiel wird die Partitionierung verwendet, um für die Ausführung der einzelnen Datenslices einen eindeutigen Ausgabepfad zu erstellen. Ohne die Partitionierung würde die Aktivität die Datei überschreiben.
 
 		{
 		  "name": "DecisionTreeResultBlob",
@@ -258,8 +263,8 @@ Wir empfehlen Ihnen, das Tutorial zum [Erstellen der ersten Pipeline mit Data Fa
 		        }
 		      }
 		    ],
-		    "start": "2015-02-13T00:00:00Z",
-		    "end": "2015-02-14T00:00:00Z"
+		    "start": "2016-02-13T00:00:00Z",
+		    "end": "2016-02-14T00:00:00Z"
 		  }
 		}
 
@@ -347,8 +352,8 @@ Wenn Sie das Reader-Modul in einem Azure Machine Learning-Experiment verwenden, 
 	        },
 	      }
 	    ],
-	    "start": "2015-02-13T00:00:00Z",
-	    "end": "2015-02-14T00:00:00Z"
+	    "start": "2016-02-13T00:00:00Z",
+	    "end": "2016-02-14T00:00:00Z"
 	  }
 	}
  
@@ -358,6 +363,50 @@ Im obigen JSON-Beispiel:
 - Datum und Uhrzeit von **Start** und **Ende** müssen im [ISO-Format](http://en.wikipedia.org/wiki/ISO_8601) angegeben werden. Beispiel: 2014-10-14T16:32:41Z. Die Zeit für **end** ist optional. Wenn Sie keinen Wert für die **end**-Eigenschaft angeben, wird sie mit der Formel „**Start + 48 Stunden**“ berechnet. Um die Pipeline unendlich auszuführen, geben Sie **9999-09-09** als Wert für die **end**-Eigenschaft ein. Informationen zu JSON-Eigenschaften finden Sie in der [JSON-Skriptreferenz](https://msdn.microsoft.com/library/dn835050.aspx).
 
 ### Andere Szenarien
+
+#### Webdienst erfordert mehrere Eingaben
+Wenn der Webdienst mehrere Eingaben akzeptiert, verwenden Sie die Eigenschaft **webServiceInputs** anstatt **webServiceInput**. Datasets, auf die **webServiceInputs** verweist, müssen auch in der Aktivität **inputs** enthalten sein.
+ 
+In Ihrem Azure ML-Experiment haben Eingabe- und Ausgabeports von Webdiensten und globale Parameter Standardnamen („input1“, „input2“), die Sie anpassen können. Die Namen, die Sie für die Einstellungen webServiceInputs, webServiceOutputs und globalParameters verwenden, müssen den Namen in den Experimenten genau entsprechen. Sie können die Beispiel-Anforderungsnutzlast auf der Hilfeseite für die Batchausführung für Ihren Azure ML-Endpunkt anzeigen, um die erwartete Zuordnung zu überprüfen.
+
+
+	{
+		"name": "PredictivePipeline",
+		"properties": {
+			"description": "use AzureML model",
+			"activities": [{
+				"name": "MLActivity",
+				"type": "AzureMLBatchExecution",
+				"description": "prediction analysis on batch input",
+				"inputs": [{
+					"name": "inputDataset1"
+				}, {
+					"name": "inputDataset2"
+				}],
+				"outputs": [{
+					"name": "outputDataset"
+				}],
+				"linkedServiceName": "MyAzureMLLinkedService",
+				"typeProperties": {
+					"webServiceInputs": {
+						"input1": "inputDataset1",
+						"input2": "inputDataset2"
+					},
+					"webServiceOutputs": {
+						"output1": "outputDataset"
+					}
+				},
+				"policy": {
+					"concurrency": 3,
+					"executionPriorityOrder": "NewestFirst",
+					"retry": 1,
+					"timeout": "02:00:00"
+				}
+			}],
+			"start": "2016-02-13T00:00:00Z",
+			"end": "2016-02-14T00:00:00Z"
+		}
+	}
 
 #### Webdienst erfordert keine Eingabe
 
@@ -447,7 +496,7 @@ Es ergeben sich folgende **Erkenntnisse**:
 - Weitere Datasets können in den Eigenschaften „inputs“ und „outputs“ der Aktivität enthalten sein, ohne das in „typeProperties“ der Aktivität darauf verwiesen wird. Diese Datasets bestimmen die Ausführung mit Slice-Abhängigkeiten, werden aber von der Aktivität „AzureMLBatchExecution“ ignoriert.
 
 
-## Aktualisieren von Azure ML-Modellen mithilfe der Ressourcenaktualisierungsaktivität
+## Aktualisieren von Modellen mithilfe der Ressourcenaktualisierungsaktivität
 Im Laufe der Zeit müssen die Vorhersagemodelle in den Azure ML-Bewertungsexperimenten mit neuen Eingabedatasets neu trainiert werden. Wenn Sie mit dem erneuten Trainieren fertig sind, sollten Sie den Bewertungswebdienst mit dem neu trainierten ML-Modell aktualisieren. Typische Schritte, um das erneute Trainieren und das Aktualisieren von Azure ML-Modellen über Webdienste zu ermöglichen:
 
 1. Erstellen Sie ein Experiment in [Azure ML Studio](https://studio.azureml.net).
@@ -682,8 +731,8 @@ Die Pipeline weist zwei Aktivitäten auf: **AzureMLBatchExecution** und **AzureM
 	                "linkedServiceName": "updatableScoringEndpoint2"
 	            }
 	        ],
-	    	"start": "2015-02-13T00:00:00Z",
-	   		"end": "2015-02-14T00:00:00Z"
+	    	"start": "2016-02-13T00:00:00Z",
+	   		"end": "2016-02-14T00:00:00Z"
 	    }
 	}
 
@@ -738,8 +787,8 @@ Wenn Sie weiterhin die AzureMLBatchScoring-Aktivität verwenden möchten, lesen 
 	        }
 	      }
 	    ],
-	    "start": "2015-02-13T00:00:00Z",
-	    "end": "2015-02-14T00:00:00Z"
+	    "start": "2016-02-13T00:00:00Z",
+	    "end": "2016-02-14T00:00:00Z"
 	  }
 	}
 
@@ -779,4 +828,4 @@ Sie können auch [Data Factory-Funktionen ](https://msdn.microsoft.com/library/d
 
  
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0914_2016-->

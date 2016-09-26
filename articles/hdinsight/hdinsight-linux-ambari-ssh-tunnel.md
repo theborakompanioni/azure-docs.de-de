@@ -4,7 +4,7 @@ description="Erfahren Sie, wie Sie einen SSH-Tunnel verwenden, um auf Webressour
 services="hdinsight"
 documentationCenter=""
 authors="Blackmist"
-manager="paulettm"
+manager="jhubbard"
 editor="cgronlun"/>
 
 <tags
@@ -42,7 +42,7 @@ Wenn Sie für die Clusteranpassung Skriptaktionen verwenden, benötigen Sie für
 
 Sie benötigen für die Verwendung eines SSH-Tunnels für Webdatenverkehr Folgendes:
 
-* Einen SSH-Client Für Linux- und Unix-Distributionen oder Macintosh OS X steht der Befehl `ssh` über das Betriebssystem zur Verfügung. Bei Windows wird [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) empfohlen.
+* Einen SSH-Client. Für Linux- und Unix-Distributionen oder Macintosh OS X steht der Befehl `ssh` über das Betriebssystem zur Verfügung. Bei Windows wird [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) empfohlen.
 
 	> [AZURE.NOTE] Wenn Sie einen anderen SSH-Client als `ssh` oder PuTTY verwenden möchten, finden Sie Informationen zum Herstellen eines SSH-Tunnels in der Dokumentation zu Ihrem Client.
 
@@ -144,14 +144,14 @@ Wenn Sie FoxyProxy Standard installiert haben, konfigurieren Sie es folgenderma�
 
 	* **Name des Musters**: **Clusterknoten** – Dies ist lediglich ein Anzeigename für das Muster.
 
-	* **URL-Muster** – **\*internal.cloudapp.net\*** – Dies definiert ein Muster, das mit dem internen vollständig qualifizierten Domänennamen der Clusterknoten übereinstimmt.
+	* **URL-Muster** – ***internal.cloudapp.net*** – Dies definiert ein Muster, das mit dem internen vollständig qualifizierten Domänennamen der Clusterknoten übereinstimmt.
 
 	![FoxyProxy-Muster](./media/hdinsight-linux-ambari-ssh-tunnel/foxypattern.png)
 
     Fügen Sie ein weiteres Muster mit den folgenden Informationen für die Einstellungen hinzu:
 
     * __Name des Musters__: Hauptknoten
-    * __URL-Muster__: \*Hauptknotenhost\*
+    * __URL-Muster__: *Hauptknotenhost*
 
     Wählen Sie „OK“, um dieses Muster zu speichern.
 
@@ -201,4 +201,4 @@ Weitere Informationen zur Verwendung von SSH mit HDInsight finden Sie in den fol
 
 * [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Windows](hdinsight-hadoop-linux-use-ssh-windows.md)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0914_2016-->

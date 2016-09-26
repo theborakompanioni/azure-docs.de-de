@@ -11,7 +11,7 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="06/29/2016" 
+    ms.date="09/11/2016" 
     ms.author="jeedes" />
 
 #Tutorial: Azure Active Directory-Integration mit SumoLogic
@@ -23,7 +23,7 @@ In diesem Tutorial wird die Integration von Azure und SumoLogic erläutert. Das 
   
 Nach Abschluss dieses Tutorials können sich die SumoLogic zugewiesenen Azure AD-Benutzer mittels einmaliger Anmeldung auf Ihrer SumoLogic-Unternehmenswebsite bei der Anwendung anmelden (durch den Dienstanbieter initiierte Anmeldung). Alternativ können sie den Zugriffsbereich nutzen (siehe [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md)).
   
-Das in diesem Lernprogramm beschriebene Szenario besteht aus den folgenden Bausteinen:
+Das in diesem Tutorial beschriebene Szenario besteht aus den folgenden Bausteinen:
 
 1.  Aktivieren der Anwendungsintegration für SumoLogic
 2.  Konfigurieren der einmaligen Anmeldung
@@ -72,19 +72,19 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
 1.  Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für **SumoLogic** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-sumologic-tutorial/IC778552.png "Einmaliges Anmelden konfigurieren")
+    ![Configure single sign-on](./media/active-directory-saas-sumologic-tutorial/IC778552.png "Configure single sign-on")
 
 2.  Wählen Sie auf der Seite **Wie sollen sich Benutzer bei SumoLogic anmelden?** die Option **Microsoft Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-sumologic-tutorial/IC778553.png "Einmaliges Anmelden konfigurieren")
+    ![Configure single sign-on](./media/active-directory-saas-sumologic-tutorial/IC778553.png "Configure single sign-on")
 
-3.  Geben Sie auf der Seite **App-URL konfigurieren** im Textfeld für die **SumoLogic-Anmelde-URL** die URL im Format „ *https://\<Mandantenname>.SumoLogic.com* “ ein, und klicken Sie dann auf **Weiter**.
+3.  Geben Sie auf der Seite **App-URL konfigurieren** im Textfeld für die **SumoLogic-Anmelde-URL** die URL im Format „*https://\<Mandantenname>.SumoLogic.com*“ ein, und klicken Sie dann auf **Weiter**.
 
     ![AOO-URL konfigurieren](./media/active-directory-saas-sumologic-tutorial/IC778554.png "AOO-URL konfigurieren")
 
 4.  Klicken Sie zum Herunterladen des Zertifikats auf der Seite **Einmaliges Anmelden konfigurieren um SumoLogic** auf **Zertifikat herunterladen**, und speichern Sie das Zertifikat auf Ihrem Computer.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-sumologic-tutorial/IC778555.png "Einmaliges Anmelden konfigurieren")
+    ![Configure single sign-on](./media/active-directory-saas-sumologic-tutorial/IC778555.png "Configure single sign-on")
 
 5.  Melden Sie sich in einem anderen Webbrowserfenster auf der SumoLogic-Unternehmenswebsite als Administrator an.
 
@@ -120,13 +120,13 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
 10. Wählen Sie im klassischen Azure-Portal auf der Dialogseite **Einmaliges Anmelden konfigurieren für SumoLogic** die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Abschließen**.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-sumologic-tutorial/IC778560.png "Einmaliges Anmelden konfigurieren")
+    ![Configure single sign-on](./media/active-directory-saas-sumologic-tutorial/IC778560.png "Configure single sign-on")
 
 ##Konfigurieren der Benutzerbereitstellung
   
 Damit sich Azure AD-Benutzer bei SumoLogic anmelden können, müssen sie in SumoLogic bereitgestellt werden. Im Fall von SumoLogic ist die Bereitstellung eine manuelle Aufgabe.
 
-###So stellen Sie Benutzerkonten bereit:
+###Führen Sie zum Bereitstellen von Benutzerkonten die folgenden Schritte aus:
 
 1.  Melden Sie sich bei Ihrem **SumoLogic**-Mandanten an.
 
@@ -151,7 +151,7 @@ Damit sich Azure AD-Benutzer bei SumoLogic anmelden können, müssen sie in Sum
 
 ##Zuweisen von Benutzern
   
-Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie die Verwendung Ihrer Anwendung ermöglichen möchten, Zugriff auf die Anwendung gewähren. Weisen Sie dazu der Anwendung Benutzer zu.
+Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie die Verwendung Ihrer Anwendung ermöglichen möchten, Zugriff auf die Anwendung gewähren. Weisen Sie dazu der Anwendung Benutzer zu.
 
 ###So weisen Sie SumoLogic Benutzer zu:
 
@@ -167,4 +167,4 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie 
   
 Wenn Sie die SSO-Einstellungen testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md).
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0914_2016-->

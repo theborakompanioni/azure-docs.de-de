@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="jeevansd"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/25/2016"
+	ms.date="09/11/2016"
 	ms.author="jeedes"/>
 
 
@@ -91,7 +91,7 @@ Damit das einmalige Anmelden funktioniert, muss Azure AD wissen, welcher Benutze
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei Optimizely müssen Sie die folgenden Bausteine ausführen:
 
-1. **[Konfigurieren von Azure AD – einmaliges Anmelden](#configuring-azure-ad-single-single-sign-on)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
+1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-single-sign-on)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
 2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
 4. **[Erstellen eines Optimizely-Testbenutzers](#creating-an-optimizely-test-user)**, um eine Entsprechung von Britta Simon in Optimizely zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
 5. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
@@ -124,7 +124,7 @@ Die Optimizely-Anwendung erwartet, dass die SAML-Assertions ein Attribut namens 
 	c. Wählen Sie aus der Liste **Attributwert** den Attributwert „userprincipalname“ oder einen anderen Wert aus, der eine in Azure AD und Optimizely bekannte E-Mail-Adresse enthält.
 
 	d. Klicken Sie auf **Fertig stellen**.
-3. Klicken Sie im Menü oben auf **Schnellstart**.
+3. Klicken Sie im oberen Menü auf **Schnellstart**.
 
 	![Einmaliges Anmelden konfigurieren][6]
 4. Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für **Optimizely** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
@@ -144,7 +144,7 @@ Die Optimizely-Anwendung erwartet, dass die SAML-Assertions ein Attribut namens 
 
 	b. Geben Sie im Textfeld **Bezeichner** Folgendes ein: `urn:auth0:optimizely:contoso`.
 
-	c. Klicken Sie auf **Weiter**.
+	c. Klicken Sie auf **Next**.
 
 
 	> [AZURE.NOTE] Die Werte für **Anmelde-URL** und **Bezeichner** sind nur Platzhalter für die tatsächlichen Werte. Anweisungen zum Abrufen der tatsächlichen Werte aus Optimizely finden Sie weiter unten in diesem Tutorial.
@@ -180,7 +180,7 @@ Die Optimizely-Anwendung erwartet, dass die SAML-Assertions ein Attribut namens 
 
     a. Wählen Sie die Bestätigung zur Konfiguration des einmaligen Anmeldens aus.
 
-    b. Klicken Sie auf **Weiter**.
+    b. Klicken Sie auf **Next**.
 
 11. Klicken Sie auf der Seite **Bestätigung zur einmaligen Anmeldung** auf **Fertig stellen**.
   	
@@ -208,7 +208,7 @@ In diesem Abschnitt erstellen Sie im klassischen Portal einen Testbenutzer mit d
 
 2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
 
-3. Klicken Sie zum Anzeigen der Liste der Benutzer im Menü oben auf **Benutzer**.
+3. Klicken Sie im Menü oben auf **Benutzer**, um die Liste der Benutzer anzuzeigen.
 	
 	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-optimizely-tutorial/create_aaduser_03.png)
 
@@ -300,7 +300,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 ### Testen der einmaligen Anmeldung
 
-In diesem Abschnitt soll Ihre Azure AD-Konfiguration für das einmalige Anmelden mithilfe des Zugriffsbereichs getestet werden.
+Das Ziel dieses Abschnitts ist das Testen Ihrer Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „Optimizely“ klicken, sollten Sie automatisch bei Ihrer Optimizely-Anwendung angemeldet werden.
 
@@ -332,4 +332,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Optimizely“ klicken, sollten Sie
 [204]: ./media/active-directory-saas-optimizely-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-optimizely-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0914_2016-->

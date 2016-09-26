@@ -4,7 +4,7 @@
    services="search" 
    documentationCenter="" 
    authors="HeidiSteen" 
-   manager="paulettm" 
+   manager="jhubbard" 
    editor=""
    tags="azure-portal"/>
 
@@ -27,7 +27,7 @@ Sie können auch die neue Funktion zum Durchsuchen der Datenverkehrsanalyse verw
 
 ##Anzeigen von Anzahl und Metriken im Portal 
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. 
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
 2. Öffnen Sie das Service-Dashboard des Azure-Suchdiensts. Die Startseite enthält Kacheln für den Dienst, oder Sie können auch über „Durchsuchen“ auf der Indexleiste zum Dienst navigieren. Schrittweise Anweisungen finden Sie unter [Erstellen eines Diensts](search-create-service-portal.md).
 
@@ -59,4 +59,4 @@ Weitere Informationen zur Dienstverwaltung finden Sie unter [Verwalten Ihres Suc
 
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0914_2016-->

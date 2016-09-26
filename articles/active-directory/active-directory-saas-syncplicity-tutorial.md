@@ -11,7 +11,7 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="06/29/2016" 
+    ms.date="09/11/2016" 
     ms.author="jeedes" />
 
 #Lernprogramm: Azure Active Directory-Integration mit Syncplicity
@@ -72,7 +72,7 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
 1.  Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für **Syncplicity** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-syncplicity-tutorial/IC769534.png "Einmaliges Anmelden konfigurieren")
+    ![Configure single sign-on](./media/active-directory-saas-syncplicity-tutorial/IC769534.png "Configure single sign-on")
 
 2.  Wählen Sie auf der Seite **Wie sollen sich Benutzer bei Syncplicity anmelden?** die Option **Microsoft Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**.
 
@@ -86,7 +86,7 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
 4.  Klicken Sie zum Herunterladen des Zertifikats auf der Seite **Einmaliges Anmelden konfigurieren für Syncplicity** auf **Zertifikat herunterladen**, und speichern Sie die Zertifikatsdatei lokal auf Ihrem Computer.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-syncplicity-tutorial/IC769543.png "Einmaliges Anmelden konfigurieren")
+    ![Configure single sign-on](./media/active-directory-saas-syncplicity-tutorial/IC769543.png "Configure single sign-on")
 
 5.  Melden Sie sich bei Ihrem **Syncplicity**-Mandanten an.
 
@@ -122,7 +122,7 @@ Damit sich AAD-Benutzer anmelden können, müssen sie in der Syncplicity-Anwendu
 
 3.  Klicken Sie auf **Benutzer hinzufügen**.
 
-    ![Benutzer verwalten](./media/active-directory-saas-syncplicity-tutorial/IC769764.png "Benutzer verwalten")
+    ![Manage Users](./media/active-directory-saas-syncplicity-tutorial/IC769764.png "Manage Users")
 
 4.  Geben Sie die **E-Mail-Adresse** eines AAD-Kontos ein, das Sie bereitstellen möchten, und wählen Sie dann **Benutzer** als **Rolle**. Klicken Sie abschließend auf **Weiter**.
 
@@ -144,7 +144,7 @@ Damit sich AAD-Benutzer anmelden können, müssen sie in der Syncplicity-Anwendu
 
 ##Zuweisen von Benutzern
   
-Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie die Verwendung Ihrer Anwendung ermöglichen möchten, Zugriff auf die Anwendung gewähren. Weisen Sie dazu der Anwendung Benutzer zu.
+Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie die Verwendung Ihrer Anwendung ermöglichen möchten, Zugriff auf die Anwendung gewähren. Weisen Sie dazu der Anwendung Benutzer zu.
 
 ###So weisen Sie Syncplicity Benutzer zu:
 
@@ -160,4 +160,4 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie 
   
 Wenn Sie die SSO-Einstellungen testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md).
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0914_2016-->

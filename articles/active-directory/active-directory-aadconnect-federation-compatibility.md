@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/08/2016"
+	ms.date="09/12/2016"
 	ms.author="billmath"/>
 
 # Azure AD-Verbund – Kompatibilitätsliste
@@ -22,8 +22,7 @@ Azure Active Directory ermöglicht das einmalige Anmelden und bietet eine höher
 Organisationen, die bereits Investitionen in Verbundlösungen anderer Anbieter getätigt haben, erhalten in diesem Thema Unterstützung bei der Konfiguration des einmaligen Anmeldens für Ihre Windows Server Active Directory-Benutzer mit Microsoft Online Services unter Verwendung von Identitätsanbietern anderer Anbieter, die in der unten stehenden Kompatibilitätsliste für den Azure Active Directory-Verbund aufgeführt sind.
 
 
-Die ![](./media/active-directory-aadconnect-federation-compatibility/oxford2.jpg)   
-[Oxford Computer Group](http://oxfordcomputergroup.com/) hat im Auftrag von Microsoft das einmalige Anmelden bei Verwendung von nicht von Microsoft stammenden Identitätsanbietern für verschiedene gängige Azure Active Directory-Anwendungsfälle getestet.
+Die ![](./media/active-directory-aadconnect-federation-compatibility/oxford2.jpg) [Oxford Computer Group](http://oxfordcomputergroup.com/) hat im Auftrag von Microsoft das einmalige Anmelden bei Verwendung von nicht von Microsoft stammenden Identitätsanbietern für verschiedene gängige Azure Active Directory-Anwendungsfälle getestet.
 
 Informationen dazu, wie Sie Ihren nicht von Microsoft stammenden Identitätsanbieter in diese Liste aufnehmen lassen können, wenden Sie sich unter [idp@oxfordcomputergroup.com](mailto:idp@oxfordcomputergroup.com) an die Oxford Computer Group.
 
@@ -41,7 +40,7 @@ Informationen dazu, wie Sie Ihren nicht von Microsoft stammenden Identitätsanbi
 - [Centrify](#centrify)
 - [IBM Tivoli Federated Identity Manager 6.2.2](#ibm-tivoli-federated-identity-manager-622)
 - [SecureAuth IdP 7.2.0](#secureauth-idp-720)
-- [CA SiteMinder 12.52](#ca-siteminder-1252)
+- [CA SiteMinder 12.52](#ca-siteminder-1252-sp1-cumulative-release-4)
 - [RadiantOne CFS 3.0](#radiantone-cfs-30)
 - [Okta](#okta)
 - [OneLogin](#onelogin)
@@ -173,15 +172,15 @@ Nachfolgend finden Sie die Matrix der unterstützten Szenarien für das einmalig
 
 Weitere Informationen zu SecureAuth finden Sie unter [SecureAuth IdP](http://go.microsoft.com/?linkid=9845293).
 
-## CA SiteMinder 12.52 
+## CA SiteMinder 12.52 SP1 Cumulative Release 4
 CA SiteMinder Federation 12.52 implementiert den weit verbreiteten WS-Verbund-/WS-Trust-Identitätsstandard, um das einmalige Anmelden zu ermöglichen und ein Framework für den Austausch von Attributen bereitzustellen.
 
 Nachfolgend finden Sie die Matrix der unterstützten Szenarien für das einmalige Anmelden:
 
 | Client- |Support |Ausnahmen|
 | --------- | --------- |--------- |
-| Webbasierte Clients wie Exchange Web Access und SharePoint Online | Unterstützt |Integrierte Windows-Authentifizierung|
-| Rich Client-Anwendungen wie Lync, Office-Abonnement, CRM | Unterstützt |Integrierte Windows-Authentifizierung|
+| Webbasierte Clients wie Exchange Web Access und SharePoint Online | Unterstützt |Keine|
+| Rich Client-Anwendungen wie Lync, Office-Abonnement, CRM | Unterstützt |Keine|
 | E-Mail-Clients wie Outlook und ActiveSync | Unterstützt |Keine|
 
 Weitere Informationen zu CA SiteMinder finden Sie unter [CA SiteMinder Federation.](http://www.ca.com/us/products/ca-single-sign-on.html)
@@ -339,4 +338,4 @@ Nachfolgend finden Sie die Matrix der unterstützten Szenarien für das einmalig
 
 Weitere Informationen finden Sie unter [AuthAnvil Single Sign On](https://help.scorpionsoft.com/entries/26538603-How-can-I-Configure-Single-Sign-On-for-Office-365-).
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0914_2016-->

@@ -5,7 +5,7 @@
    documentationCenter=""
    tags="azure-portal"
    authors="mumian"
-   manager="paulettm"
+   manager="jhubbard"
    editor="cgronlun"/>
 
 <tags
@@ -42,7 +42,7 @@ Eine Resource Manager-Vorlage zum Erstellen eines HDInsight-Clusters und des abh
 
 Weitere Informationen über Resource Manager-Vorlagen finden Sie unter:
 
-- [Erstellen von Azure Resource Manager-Vorlagen](../resource-group-authoring-templates.md)
+- [Erstellen von Azure Resource-Manager-Vorlagen](../resource-group-authoring-templates.md)
 - [Bereitstellen einer Anwendung mit einer Azure Resource Manager-Vorlage](../resource-group-template-deploy.md)
 
 Um das JSON-Schema für bestimmte Elemente zu ermitteln, können Sie wie folgt vorgehen:
@@ -137,7 +137,7 @@ Informationen hierzu finden Sie unter [Bereitstellen mit der REST-API](../resour
 
 Mit Visual Studio können Sie über die Benutzeroberfläche ein Ressourcengruppenprojekt erstellen und in Azure bereitstellen. Wählen Sie den Typ der Ressourcen aus, die in das Projekt aufgenommen werden sollen, und diese Ressourcen werden der Resource Manager-Vorlage automatisch hinzugefügt. Das Projekt enthält auch ein PowerShell-Skript zum Bereitstellen der Vorlage.
 
-Eine Einführung in die Verwendung von Visual Studio mit Ressourcengruppen finden Sie unter [Erstellen und Bereitstellen von Azure-Ressourcengruppen mit Visual Studio](../vs-azure-tools-resource-groups-deployment-projects-create-deploy.md).
+Eine Einführung in die Verwendung von Visual Studio mit Ressourcengruppen finden Sie unter [Erstellen und Bereitstellen von Azure-Ressourcengruppen über Visual Studio](../vs-azure-tools-resource-groups-deployment-projects-create-deploy.md).
 
 ##Nächste Schritte
 In diesem Artikel haben Sie mehrere Möglichkeiten zum Erstellen von HDInsight-Clustern kennengelernt. Weitere Informationen finden Sie in den folgenden Artikeln:
@@ -353,4 +353,4 @@ Die folgende Azure Resource Manager-Vorlage erstellt einen Linux-basierten Hadoo
     }
     }
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0914_2016-->

@@ -13,21 +13,21 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/28/2016" 
+	ms.date="09/13/2016" 
 	ms.author="spelluru"/>
 
 # Verschieben von Daten in eine und aus einer Azure-Tabelle mithilfe von Azure Data Factory
 
-Dieser Artikel beschreibt die Verwendung der Kopieraktivität in einer Azure Data Factory, um Daten aus einem anderen Datenspeicher in eine Azure-Tabelle und aus einer Azure-Tabelle in einen anderen Datenspeicher zu verschieben. Dieser Artikel baut auf dem Artikel [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) auf, der eine allgemeine Übersicht zur Datenverschiebung mit Kopieraktivität und unterstützten Datenspeicherkombinationen bietet.
+Dieser Artikel beschreibt, wie Sie die Kopieraktivität in einer Azure Data Factory verwenden können, um Daten aus der Azure-Tabelle in einen anderen Datenspeicher zu verschieben oder umgekehrt. Dieser Artikel baut auf dem Artikel [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) auf, der eine allgemeine Übersicht zur Datenverschiebung und unterstützten Datenspeicherkombinationen mit Kopieraktivität bietet.
 
 ## Assistent zum Kopieren von Daten
 Die einfachste Möglichkeit zum Erstellen einer Pipeline, die Daten in und aus Azure Table Storage kopiert, ist die Verwendung des Assistenten zum Kopieren von Daten. Unter [Tutorial: Erstellen einer Pipeline mit dem Assistenten zum Kopieren](data-factory-copy-data-wizard-tutorial.md) finden Sie eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mithilfe des Assistenten zum Kopieren von Daten.
 
-Die folgenden Beispiele zeigen Beispiel-JSON-Definitionen, die Sie zum Erstellen einer Pipeline mit dem [Azure-Portal](data-factory-copy-activity-tutorial-using-azure-portal.md), mit [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) oder [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) verwenden können. Sie zeigen Ihnen das Kopieren von Daten aus Azure Table Storge und der Azure-Blobdatenbank (und umgekehrt). Daten können jedoch mithilfe der Kopieraktivität in Azure Data Factory **direkt** aus beliebigen Quellen in die [hier](data-factory-data-movement-activities.md#supported-data-stores) aufgeführten Senken kopiert werden.
+Die folgenden Beispiele zeigen JSON-Beispieldefinitionen, die Sie zum Erstellen einer Pipeline mit dem [Azure-Portal](data-factory-copy-activity-tutorial-using-azure-portal.md), mit [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) oder [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) verwenden können. Sie zeigen Ihnen das Kopieren von Daten aus Azure Table Storge und der Azure-Blobdatenbank (und umgekehrt). Daten können jedoch mithilfe der Kopieraktivität in Azure Data Factory **direkt** aus beliebigen Quellen in die [hier](data-factory-data-movement-activities.md#supported-data-stores) aufgeführten Senken kopiert werden.
 
 ## Beispiel: Kopieren von Daten aus einer Azure-Tabelle in ein Azure-Blob
 
-Das nachstehende Beispiel zeigt Folgendes:
+Dieses Beispiel zeigt Folgendes:
 
 1.	Einen verknüpften Dienst des Typs [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service-properties) (wird für Tabelle und Blob verwendet)
 2.	Ein [Eingabedataset](data-factory-create-datasets.md) des Typs [AzureTable](#azure-table-dataset-type-properties)
@@ -54,7 +54,7 @@ Azure Data Factory unterstützt zwei Arten von mit Azure Storage verknüpften Di
 
 Im Beispiel wird davon ausgegangen, dass Sie eine Tabelle "MyTable" in einer Azure-Tabelle erstellt haben.
  
-Durch Festlegen von "external" auf "true" und Angeben der Richtlinie "externalData" wird der Data Factory angegeben, dass dies eine Tabelle ist, die für die Data Factory extern ist und nicht durch eine Aktivität in der Data Factory erzeugt wird.
+Durch Festlegen von „external“ auf „true“ wird dem Data Factory-Dienst mitgeteilt, dass das Dataset für die Data Factory extern ist und nicht durch eine Aktivität in der Data Factory erzeugt wird.
 
 	{
 	  "name": "AzureTableInput",
@@ -139,7 +139,7 @@ Daten werden stündlich in ein neues Blob geschrieben ("frequency": "hour", "int
 
 **Pipeline mit Kopieraktivität:**
 
-Die Pipeline enthält eine Kopieraktivität, die für das Verwenden der oben genannten Ein- und Ausgabedatasets und für eine stündliche Ausführung konfiguriert ist. In der JSON-Definition der Pipeline ist der Typ **source** auf **AzureTableSource** und der Typ **sink** auf **BlobSink** festgelegt. Die mit der Eigenschaft **AzureTableSourceQuery** angegebene SQL-Abfrage wählt stündlich aus der Standardpartition die zu kopierenden Daten aus.
+Die Pipeline enthält eine Kopieraktivität, die für die Verwendung der Ein- und Ausgabedatasets und für eine stündliche Ausführung konfiguriert ist. In der JSON-Definition der Pipeline ist der Typ **source** auf **AzureTableSource** und der Typ **sink** auf **BlobSink** festgelegt. Die mit der Eigenschaft **AzureTableSourceQuery** angegebene SQL-Abfrage wählt stündlich aus der Standardpartition die zu kopierenden Daten aus.
 
 	{  
 	    "name":"SamplePipeline",
@@ -188,7 +188,7 @@ Die Pipeline enthält eine Kopieraktivität, die für das Verwenden der oben gen
 
 ## Beispiel: Kopieren von Daten aus einem Azure-Blob in eine Azure-Tabelle
 
-Das nachstehende Beispiel zeigt Folgendes:
+Dieses Beispiel zeigt Folgendes:
 
 1.	Einen verknüpften Dienst des Typs [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service-properties) (wird für Tabelle und Blob verwendet)
 3.	Ein [Eingabedataset](data-factory-create-datasets.md) des Typs [AzureBlob](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties)
@@ -196,7 +196,7 @@ Das nachstehende Beispiel zeigt Folgendes:
 4.	Die [Pipeline](data-factory-create-pipelines.md) mit Kopieraktivität, die [BlobSource](data-factory-azure-blob-connector.md#azure-blob-copy-activity-type-properties) und [AzureTableSink](#azure-table-copy-activity-type-properties) verwendet
 
 
-Im Beispiel werden Daten, die zu einer Zeitreihe aus einem Azure-Blob gehören, stündlich in eine Tabelle in einer Azure-Tabellendatenbank kopiert. Die bei diesen Beispielen verwendeten JSON-Eigenschaften werden in den Abschnitten beschrieben, die auf die Beispiele folgen.
+Im Beispiel werden Zeitreihendaten aus einem Azure-Blob stündlich in eine Azure-Tabelle kopiert. Die bei diesen Beispielen verwendeten JSON-Eigenschaften werden in den Abschnitten beschrieben, die auf die Beispiele folgen.
 
 **Mit Azure Storage (für Azure-Tabelle und -Blob) verknüpfter Dienst:**
 
@@ -214,7 +214,7 @@ Azure Data Factory unterstützt zwei Arten von mit Azure Storage verknüpften Di
 
 **Azure-Blob-Eingabedataset:**
 
-Daten werden stündlich aus einem neuen Blob übernommen ("frequency": "hour", "interval": 1). Ordnerpfad und Dateiname des Blobs werden basierend auf der Startzeit des Slices, der verarbeitet wird, dynamisch ausgewertet. Der Ordnerpfad verwendet die Bestandteile Jahr, Monat und Tag der Startzeit, und der Dateiname verwendet die Stunde der Startzeit. Die Festlegung von "external" auf "true" teilt dem Data Factory-Dienst mit, dass diese Tabelle für die Data Factory extern ist und nicht durch eine Aktivität in der Data Factory erzeugt wird.
+Daten werden stündlich aus einem neuen Blob übernommen ("frequency": "hour", "interval": 1). Ordnerpfad und Dateiname des Blobs werden basierend auf der Startzeit des Slices, der verarbeitet wird, dynamisch ausgewertet. Der Ordnerpfad verwendet die Bestandteile Jahr, Monat und Tag der Startzeit, und der Dateiname verwendet die Stunde der Startzeit. Die Festlegung von „external“ auf „true“ teilt dem Data Factory-Dienst mit, dass dieses Dataset für die Data Factory extern ist und nicht durch eine Aktivität in der Data Factory erzeugt wird.
 	
 	{
 	  "name": "AzureBlobInput",
@@ -281,7 +281,7 @@ Daten werden stündlich aus einem neuen Blob übernommen ("frequency": "hour", "
 
 **Azure-Tabellen-Ausgabedataset:**
 
-Das Beispiel kopiert Daten in eine Tabelle namens "MyTable" in einer Azure-Tabelle. Sie sollten die Tabelle in der Azure-Tabelle mit der gleichen Anzahl von Spalten erstellen, die Sie in der Blob-CSV-Datei erwarten. Neue Zeilen werden der Tabelle stündlich hinzugefügt.
+Das Beispiel kopiert Daten in eine Tabelle namens "MyTable" in einer Azure-Tabelle. Erstellen Sie eine Azure-Tabelle mit der gleichen Anzahl von Spalten, die Sie in der Blob-CSV-Datei erwarten. Neue Zeilen werden der Tabelle stündlich hinzugefügt.
 
 	{
 	  "name": "AzureTableOutput",
@@ -300,7 +300,7 @@ Das Beispiel kopiert Daten in eine Tabelle namens "MyTable" in einer Azure-Tabel
 
 **Pipeline mit Kopieraktivität:**
 
-Die Pipeline enthält eine Kopieraktivität, die für das Verwenden der oben genannten Ein- und Ausgabedatasets und für eine stündliche Ausführung konfiguriert ist. In der JSON-Definition der Pipeline ist der Typ **source** auf **BlobSource** und der Typ **sink** auf **AzureTableSink** festgelegt.
+Die Pipeline enthält eine Kopieraktivität, die für die Verwendung der Ein- und Ausgabedatasets und für eine stündliche Ausführung konfiguriert ist. In der JSON-Definition der Pipeline ist der Typ **source** auf **BlobSource** und der Typ **sink** auf **AzureTableSink** festgelegt.
 
 
 	{  
@@ -356,7 +356,7 @@ Es gibt zwei Arten von verknüpften Diensten, die Sie verwenden können, um eine
 
 ## Eigenschaften des Dataset-Typs "Azure-Tabelle"
 
-Eine vollständige Liste der Abschnitte und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel [Erstellen von Datasets](data-factory-create-datasets.md). Abschnitte wie "structure", "availability" und "policy" des JSON-Codes eines Datasets sind bei allen Typen von Datasets (Azure SQL, Azure-Blob, Azure-Tabelle usw.) ähnlich.
+Eine vollständige Liste der Abschnitte und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel [Erstellen von Datasets](data-factory-create-datasets.md). Abschnitte wie „structure“, „availability“ und „policy“ des JSON-Codes eines Datasets sind bei allen Dataset-Typen (Azure SQL, Azure-Blob, Azure-Tabelle usw.) ähnlich.
 
 Der Abschnitt "typeProperties" unterscheidet sich bei jedem Typ von Dataset und bietet Informationen zum Speicherort der Daten im Datenspeicher. Der Abschnitt **typeProperties** für ein Dataset des Typs **AzureTable** hat die folgenden Eigenschaften.
 
@@ -368,21 +368,21 @@ Der Abschnitt "typeProperties" unterscheidet sich bei jedem Typ von Dataset und 
 Bei schemafreien Datenspeichern, z. B. Azure-Tabellen, leitet der Data Factory-Dienst das Schema auf eine der folgenden Weisen ab:
 
 1.	Wenn Sie die Struktur der Daten mithilfe der **structure**-Eigenschaft in der Datasetdefinition angeben, berücksichtigt der Data Factory-Dienst diese Struktur als das Schema. Wenn in diesem Fall eine Zeile keinen Wert für eine Spalte enthält, wird ein NULL-Wert für sie angegeben.
-2.	Wenn Sie die Struktur der Daten nicht mithilfe der **structure**-Eigenschaft in der Datasetdefinition angeben, leitet der Data Factory-Dienst das Schema unter Verwendung der ersten Zeile in den Daten ab. Wenn in diesem Fall die erste Zeile nicht das vollständige Schema enthält, fehlen im Ergebnis des Kopiervorgangs einige Spalten.
+2. Wenn Sie die Struktur der Daten nicht mithilfe der **structure**-Eigenschaft in der Datasetdefinition angeben, leitet Data Factory das Schema unter Verwendung der ersten Zeile in den Daten ab. Wenn in diesem Fall die erste Zeile nicht das vollständige Schema enthält, fehlen im Ergebnis des Kopiervorgangs einige Spalten.
 
 Daher empfiehlt es sich bei schemafreien Datenquellen, die Struktur der Daten mithilfe der **structure**-Eigenschaft anzugeben.
 
 ## Eigenschaften von Azure-Tabellen-Kopieraktivitätstypen
 
-Eine vollständige Liste der Abschnitte und Eigenschaften zum Definieren von Aktivitäten finden Sie im Artikel [Erstellen von Pipelines](data-factory-create-pipelines.md). Eigenschaften wie Name, Beschreibung, Eingabe- und Ausgabetabellen, verschiedene Richtlinien usw. sind für alle Arten von Aktivitäten verfügbar.
+Eine vollständige Liste der Abschnitte und Eigenschaften zum Definieren von Aktivitäten finden Sie im Artikel [Erstellen von Pipelines](data-factory-create-pipelines.md). Eigenschaften wie Name, Beschreibung, Eingabe- und Ausgabedatasets und Richtlinien sind für alle Arten von Aktivitäten verfügbar.
 
-Im Abschnitt "typeProperties" der Aktivität verfügbare Eigenschaften variieren hingegen bei jedem Aktivitätstyp. Bei der Kopieraktivität variieren sie je nach Typ der Quellen und Senken.
+Eigenschaften im Abschnitt „typeProperties“ der Aktivität können dagegen je nach Aktivitätstyp variieren. Für die Kopieraktivität variieren die Eigenschaften je nach Art der Quellen und Senken.
 
 **AzureTableSource** unterstützt die folgenden Eigenschaften im Abschnitt "typeProperties":
 
 Eigenschaft | Beschreibung | Zulässige Werte | Erforderlich
 -------- | ----------- | -------------- | -------- 
-azureTableSourceQuery | Verwendet die benutzerdefinierte Abfrage zum Lesen von Daten. | Abfragezeichenfolge für Azure-Tabelle. Siehe unten aufgeführte Beispiele. | Nein. Wenn ein Tabellenname ohne „AzureTableSourceQuery“ angegeben wird, werden alle Datensätze aus der Tabelle an das Ziel kopiert. Bei Angabe von „AzureTableSourceQuery“ werden nur Datensätze, die der Abfrage entsprechen, aus der Tabelle an das Ziel kopiert.  
+azureTableSourceQuery | Verwendet die benutzerdefinierte Abfrage zum Lesen von Daten. | Abfragezeichenfolge für Azure-Tabelle. Siehe Beispiele im nächsten Abschnitt. | Nein. Wenn ein Tabellenname ohne „AzureTableSourceQuery“ angegeben wird, werden alle Datensätze aus der Tabelle an das Ziel kopiert. Bei Angabe von „AzureTableSourceQuery“ werden nur Datensätze, die der Abfrage entsprechen, aus der Tabelle an das Ziel kopiert.
 azureTableSourceIgnoreTableNotFound | Gibt an, ob der Ausnahmefall, dass die Tabelle nicht vorhanden ist, ignoriert werden soll. | TRUE<br/>FALSE | Nein |
 
 ### Beispiele für azureTableSourceQuery
@@ -402,14 +402,14 @@ Wenn die Spalte für die Azure-Tabelle vom Typ „datetime“ ist:
 Eigenschaft | Beschreibung | Zulässige Werte | Erforderlich  
 -------- | ----------- | -------------- | -------- 
 azureTableDefaultPartitionKeyValue | Standardmäßiger Partitionsschlüsselwert, der von der Senke verwendet werden kann. | Ein Zeichenfolgenwert. | Nein 
-azureTablePartitionKeyName | Vom Benutzer angegebener Spaltenname, dessen Spaltenwerte als Partitionsschlüssel verwendet werden. Wenn dieser nicht angegeben ist, wird "AzureTableDefaultPartitionKeyValue" als Partitionsschlüssel verwendet. | Ein Spaltenname. | Nein |
-azureTableRowKeyName | Vom Benutzer angegebener Spaltenname, dessen Spaltenwerte als Zeilenschlüssel verwendet werden. Wenn nicht angegeben, verwenden Sie für jede Zeile eine GUID. | Ein Spaltenname. | Nein  
-azureTableInsertType | Der Modus zum Einfügen von Daten in eine Azure-Tabelle.<br/><br/>Diese Eigenschaft steuert, ob die Werte von vorhandenen Zeilen in der Ausgabetabelle, deren Partitions- und Zeilenschlüssel übereinstimmen, ersetzt oder zusammengeführt werden. <br/><br/>Informationen zur Funktionsweise dieser Einstellungen (Zusammenführen und Ersetzen) finden Sie in den Themen [Insert or Merge Entity](https://msdn.microsoft.com/library/azure/hh452241.aspx) (Entität einfügen oder zusammenführen) und [Insert or Replace Entity](https://msdn.microsoft.com/library/azure/hh452242.aspx) (Entität einfügen oder ersetzen). <br/><br> Beachten Sie, dass diese Einstellung nicht auf Tabellenebene, sondern auf Zeilenebene gilt, und dass keine der beiden Optionen Zeilen in der Ausgabetabelle löscht, die in der Eingabe nicht vorhanden sind. | merge (default)<br/>replace | Nein 
+azureTablePartitionKeyName | Geben Sie den Namen der Spalte an, deren Werte als Partitionsschlüssel verwendet werden. Wenn dieser nicht angegeben ist, wird "AzureTableDefaultPartitionKeyValue" als Partitionsschlüssel verwendet. | Ein Spaltenname. | Nein |
+azureTableRowKeyName | Geben Sie den Namen der Spalte an, deren Werte als Zeilenschlüssel verwendet werden. Wenn nicht angegeben, verwenden Sie für jede Zeile eine GUID. | Ein Spaltenname. | Nein  
+azureTableInsertType | Der Modus zum Einfügen von Daten in eine Azure-Tabelle.<br/><br/>Diese Eigenschaft steuert, ob die Werte von vorhandenen Zeilen in der Ausgabetabelle, deren Partitions- und Zeilenschlüssel übereinstimmen, ersetzt oder zusammengeführt werden. <br/><br/>Informationen zur Funktionsweise dieser Einstellungen (Zusammenführen und Ersetzen) finden Sie in den Themen [Insert or Merge Entity](https://msdn.microsoft.com/library/azure/hh452241.aspx) (Entität einfügen oder zusammenführen) und [Insert or Replace Entity](https://msdn.microsoft.com/library/azure/hh452242.aspx) (Entität einfügen oder ersetzen). <br/><br> Diese Einstellung gilt auf Zeilenebene, nicht auf Tabellenebene, und keine der beiden Optionen löscht Zeilen in der Ausgabetabelle, die in der Eingabe nicht vorhanden sind. | merge (default)<br/>replace | Nein 
 writeBatchSize | Fügt Daten in die Azure-Tabelle ein, wenn "writeBatchSize" oder "writeBatchTimeout" erreicht wird. | Integer (Gesamtanzahl von Zeilen)| Nein (Standard = 10000) 
 writeBatchTimeout | Fügt Daten in die Azure-Tabelle ein, wenn "writeBatchSize" oder "writeBatchTimeout" erreicht wird. | Zeitraum<br/><br/>Beispiel: 00:20:00 (20 Minuten) | Nein (Standardmäßiger Timeoutwert von 90 Sekunden für Speicherclient)
 
 ### azureTablePartitionKeyName
-Sie müssen einer Zielspalte mithilfe der JSON-translator-Eigenschaft eine Quellspalte zuordnen, bevor Sie die Zielspalte als azureTablePartitionKeyName verwenden können.
+Ordnen Sie einer Zielspalte mithilfe der JSON-Eigenschaft „translator“ eine Quellspalte zu, bevor Sie die Zielspalte als azureTablePartitionKeyName verwenden können.
 
 Im folgenden Beispiel wird die Quellspalte "DivisionID" der Zielspalte "DivisionID" zugeordnet.
 
@@ -418,7 +418,7 @@ Im folgenden Beispiel wird die Quellspalte "DivisionID" der Zielspalte "Division
 		"columnMappings": "DivisionID: DivisionID, FirstName: FirstName, LastName: LastName"
 	} 
 
-Die "EmpID" wird als Partitionsschlüssel angegeben.
+Die EmpID wird als Partitionsschlüssel angegeben.
 
 	"sink": {
 		"type": "AzureTableSink",
@@ -432,7 +432,7 @@ Die "EmpID" wird als Partitionsschlüssel angegeben.
 
 ### Typzuordnung für Azure-Tabelle
 
-Wie im Artikel [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) beschrieben, führt die Kopieraktivität automatische Typkonvertierungen von Quelltypen in Senkentypen mithilfe des folgenden aus zwei Schritten bestehenden Ansatzes durch:
+Wie im Artikel [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) beschrieben, führt die Kopieraktivität mithilfe des folgenden aus zwei Schritten bestehenden Ansatzes automatische Typkonvertierungen von Quelltypen in Senkentypen durch.
 
 1. Konvertieren von systemeigenen Quelltypen in den .NET-Typ
 2. Konvertieren vom .NET-Typ in systemeigenen Senkentyp
@@ -441,14 +441,14 @@ Beim Verschieben von Daten in die und aus der Azure-Tabelle werden die folgenden
 
 | OData-Datentyp | .NET-Typ | Details |
 | --------------- | --------- | ------- |
-| Edm.Binary | byte | Ein Array von Bytes mit einer Größe bis zu 64 KB. |
+| Edm.Binary | byte | Ein Array von Bytes mit einer Größe bis zu 64KB. |
 | Edm.Boolean | bool | Ein boolescher Wert. |
 | Edm.DateTime | DateTime | Ein 64-Bit-Wert, ausgedrückt als koordinierte Weltzeit (UTC). Der unterstützte DateTime-Bereich beginnt um 00:00 Uhr, Mitternacht, 1. Januar, 1601 n. Chr. (unsere Zeitrechnung), UTC Der Bereich endet am 31. Dezember 9999. |
 | Edm.Double | double | Ein 64-Bit-Gleitkommawert. |
 | Edm.Guid | GUID | Ein 128-Bit-GUID. |
 | Edm.Int32 | Int32 oder int | Eine 32-Bit-Ganzzahl. |
 | Edm.Int64 | Int64 oder long | Eine 64-Bit-Ganzzahl. |
-| Edm.String | String | Ein UTF-16-codierter Wert. Zeichenfolgenwerte können bis zu 64 KB groß sein. |
+| Edm.String | String | Ein UTF-16-codierter Wert. Zeichenfolgenwerte können bis zu 64KB groß sein. |
 
 ### Beispiel für Typkonvertierung
 
@@ -456,7 +456,7 @@ Im folgenden Beispiel wird das Kopieren von Daten aus einem Azure-Blob in eine A
 
 Es wird vorausgesetzt, dass das Blobdataset im CSV-Format vorliegt und drei Spalten enthält. Eine davon ist eine datetime-Spalte mit einem benutzerdefinierten datetime-Format mit abgekürzten französischen Namen für die Wochentage.
 
-Sie definieren das Blob-Quelldataset wie folgt zusammen mit Typdefinitionen für die Spalten.
+Definieren Sie das Blob-Quelldataset wie folgt zusammen mit Typdefinitionen für die Spalten.
 	
 	{
 	    "name": " AzureBlobInput",
@@ -522,13 +522,13 @@ Als Nächstes definieren Sie das Azure-Tabellendataset wie folgt. Sie müssen ke
 	  }
 	}
 
-In diesem Fall führt Data Factory die Typkonvertierungen automatisch einschließlich des Datetime-Felds mit dem benutzerdefinierten Datetime-Format aus. Dabei wird die Kultur "fr-fr" beim Verschieben von Daten aus dem Blob in die Azure-Tabelle verwendet.
+In diesem Fall führt Data Factory die Typkonvertierungen automatisch einschließlich des Datetime-Felds mit dem benutzerdefinierten Datetime-Format aus. Dabei wird die Kultur „fr-fr“ beim Verschieben von Daten aus dem Blob in die Azure-Tabelle verwendet.
 
 
 
 [AZURE.INCLUDE [data-factory-column-mapping](../../includes/data-factory-column-mapping.md)]
 
 ## Leistung und Optimierung  
-Im Artikel [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-factory-copy-activity-performance.md) werden wichtige Faktoren beschrieben, die sich auf die Leistung der Datenverschiebung (Kopieraktivität) in Azure Data Factory auswirken, sowie verschiedene Möglichkeiten zur Leistungsoptimierung.
+Wichtige Faktoren, die sich auf die Leistung der Datenverschiebung (Kopieraktivität) in Azure Data Factory auswirken, sowie verschiedene Möglichkeiten zur Leistungsoptimierung werden im Artikel [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-factory-copy-activity-performance.md) beschrieben.
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0914_2016-->

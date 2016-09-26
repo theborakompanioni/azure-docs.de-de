@@ -4,7 +4,7 @@
 	services="machine-learning"
 	documentationCenter=""
 	authors="bradsev,deguhath,gokuma"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun" />
 
 <tags
@@ -25,9 +25,9 @@ In diesem Thema wird das Laden von Machine Learning-Modellen (ML) beschrieben, d
 
 ## Voraussetzungen
 
-1. Sie benötigen ein Azure-Konto und HDInsight Spark. Zum Durcharbeiten dieser exemplarischen Vorgehensweise ist ein Cluster vom Typ HDInsight 3.4 Spark 1.6 erforderlich. Unter [Übersicht zu Data Science unter Verwendung von Spark unter Azure HDInsight](machine-learning-data-science-spark-overview.md) finden Sie diese Anforderungen, eine Beschreibung der hier verwendeten NYC-Taxidaten von 2013 und Anweisungen zum Ausführen von Code aus einem Jupyter-Notebook im Spark-Cluster. Das Notebook **machine-learning-data-science-spark-data-exploration-modeling.ipynb**, das die Codebeispiele in diesem Thema enthält, ist bei [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/pySpark) verfügbar.
+1. Sie benötigen ein Azure-Konto und HDInsight Spark. Zum Durcharbeiten dieser exemplarischen Vorgehensweise ist ein Cluster vom Typ HDInsight 3.4 Spark 1.6 erforderlich. Unter [Übersicht zu Data Science unter Verwendung von Spark unter Azure HDInsight](machine-learning-data-science-spark-overview.md) finden Sie diese Anforderungen, eine Beschreibung der hier verwendeten NYC-Taxidaten von 2013 und Anweisungen zum Ausführen von Code aus einem Jupyter-Notebook im Spark-Cluster. Das **machine-learning-data-science-spark-data-exploration-modeling.ipynb**-Notebook, das die Codebeispiele in diesem Thema enthält, ist bei [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/pySpark) verfügbar.
 
-2. Außerdem müssen Sie die hier zu bewertenden Modelle für maschinelles Lernen erstellen, indem Sie das Thema [Durchsuchen von Daten und Modellierung mit Spark](machine-learning-data-science-spark-data-exploration-modeling.md) durcharbeiten.
+2. Außerdem müssen Sie die hier zu bewertenden Machine Learning-Modelle erstellen, indem Sie das Thema [Durchsuchen von Daten und Modellierung mit Spark](machine-learning-data-science-spark-data-exploration-modeling.md) durcharbeiten.
 
 
 [AZURE.INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
@@ -104,16 +104,16 @@ Legen Sie den Spark-Kontext fest, und importieren Sie die erforderlichen Bibliot
 
 Die PySpark-Kernel, die mit Jupyter Notebooks bereitgestellt werden, verfügen über einen vorab festgelegten Kontext. Sie müssen die Spark- oder Hive-Kontexte also nicht mehr explizit festlegen, um mit der Anwendung, die Sie entwickeln, arbeiten zu können. Diese Kontexte stehen standardmäßig zur Verfügung. Diese Kontexte sind:
 
-- sc – für Spark 
+- sc – für Spark
 - sqlContext – für Hive
 
 Der PySpark-Kernel bietet einige so genannte „Magic-Befehle“, die vordefiniert sind. Dies sind spezielle Befehle, die Sie mit %% aufrufen können. Es gibt zwei Befehle dieser Art, die in den Codebeispielen verwendet werden.
 
 - **%%local** gibt an, dass der Code in den nachfolgenden Zeilen lokal ausgeführt wird. Der Code muss gültiger Python-Code sein.
-- **%%sql -o <variable name>** führt eine Hive-Abfrage für den sqlContext aus. Wenn der Parameter -o übergeben wird, wird das Ergebnis der Abfrage im %%local-Python-Kontext als Pandas-Dataframe beibehalten.
+- **%%sql -o <Variablenname>** führt eine Hive-Abfrage für den sqlContext aus. Wenn der Parameter -o übergeben wird, wird das Ergebnis der Abfrage im %%local-Python-Kontext als Pandas-Dataframe beibehalten.
  
 
-Weitere Informationen zu den Kerneln für Jupyter-Notebooks und den zugehörigen vordefinierten Magics, die mit %% aufgerufen werden (z.B. „%%local“), finden Sie unter [Verfügbare Kernels für Jupyter-Notebooks mit HDInsight Spark-Linux-Clustern in HDInsight](../hdinsight/hdinsight-apache-spark-jupyter-notebook-kernels.md).
+Weitere Informationen zu den Kernels für Jupyter-Notebooks und den zugehörigen vordefinierten „Magics“, die mit %% aufgerufen werden (z.B. „%%local“), finden Sie unter [Verfügbare Kernels für Jupyter-Notebooks mit HDInsight Spark-Linux-Clustern in HDInsight](../hdinsight/hdinsight-apache-spark-jupyter-notebook-kernels.md).
 
 
 ## Erfassen von Daten und Erstellen eines bereinigten Datenrahmens
@@ -262,9 +262,9 @@ Für die Ausführung der obigen Zelle benötigte Zeit: 5,37 Sekunden
 
 ### Erstellen von RDD-Objekten mit Featurearrays für die Eingabe in Modelle
 
-Dieser Abschnitt enthält Code, der zeigt, wie Sie kategorische Textdaten als RDD-Objekt indizieren und one-hot-codieren, sodass sie zum Trainieren und Testen logistischer Regression gemäß MLlib und anderer strukturbasierter Modelle verwendet werden können. Die indizierten Daten sind in [RDD](http://spark.apache.org/docs/latest/api/java/org/apache/spark/rdd/RDD.html)-Objekten (Robuste verteilte Datasets) gespeichert. Hierbei handelt es sich um die grundlegende Abstraktion in Spark. Ein RDD-Objekt repräsentiert eine unveränderliche, partitionierte Sammlung von Elementen, die parallel in Spark verarbeitet werden können.
+Dieser Abschnitt enthält Code, der zeigt, wie Sie kategorische Textdaten als RDD-Objekt indizieren und one-hot-codieren, sodass sie zum Trainieren und Testen logistischer Regression gemäß MLlib und anderer strukturbasierter Modelle verwendet werden können. Die indizierten Daten sind in [RDD](http://spark.apache.org/docs/latest/api/java/org/apache/spark/rdd/RDD.html)-Objekten (robuste verteilte Datasets) gespeichert. Hierbei handelt es sich um die grundlegende Abstraktion in Spark. Ein RDD-Objekt repräsentiert eine unveränderliche, partitionierte Sammlung von Elementen, die parallel in Spark verarbeitet werden können.
 
-Es enthält auch Code, der zeigt, wie Daten mit dem von MLlib bereitgestellten `StandardScalar` für die Verwendung bei der linearen Regression mit dem stochastischen Gradientenverfahren (SGD), einem verbreiteten Algorithmus für das Training einer Vielzahl von Modellen für maschinelles Lernen, skaliert werden. Der [StandardScaler](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.feature.StandardScaler) wird zum Skalieren der Features auf Einheitenvarianz verwendet. Featureskalierung, auch bekannt als Datennormalisierung, stellt sicher, dass Features mit weit verteilten Werten keine übermäßige Gewichtung in der Zielfunktion erhalten.
+Es enthält auch Code, der zeigt, wie Daten mit dem von MLlib bereitgestellten `StandardScalar` für die Verwendung bei der linearen Regression mit dem stochastischen Gradientenverfahren (SGD), einem verbreiteten Algorithmus für das Training einer Vielzahl von Machine Learning-Modellen, skaliert werden. Der [StandardScaler](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.feature.StandardScaler) wird zum Skalieren der Features auf Einheitenvarianz verwendet. Featureskalierung, auch bekannt als Datennormalisierung, stellt sicher, dass Features mit weit verteilten Werten keine übermäßige Gewichtung in der Zielfunktion erhalten.
 
 
 	# CREATE RDD OBJECTS WITH FEATURE ARRAYS FOR INPUT INTO MODELS
@@ -385,7 +385,7 @@ Der Code in diesem Abschnitt zeigt, wie ein lineares Regressionsmodell aus Azure
 	#LOAD LIBRARIES​
 	from pyspark.mllib.regression import LinearRegressionWithSGD, LinearRegressionModel
 	
-	# LOAD MODEL AND SCORE USING **SCALED VARIABLES **
+	# LOAD MODEL AND SCORE USING ** SCALED VARIABLES **
 	savedModel = LinearRegressionModel.load(sc, linearRegFileLoc)
 	predictions = oneHotTESTregScaled.map(lambda features: (float(savedModel.predict(features))))
 	
@@ -410,7 +410,7 @@ Für die Ausführung der obigen Zelle benötigte Zeit: 16,63 Sekunden
 
 Der Code in diesem Abschnitt zeigt, wie die im Azure-Blobspeicher gespeicherten zufälligen Gesamtstrukturmodelle für Klassifizierung und Regression geladen werden, ihre Leistung mit Standardklassifizierungs- und Regressionsmaßnahmen bewertet wird und dann die Ergebnis wieder im Blobspeicher gespeichert werden.
 
-[Zufällige Gesamtstrukturen](http://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests) sind Gruppen von Entscheidungsstrukturen. In ihnen sind viele Entscheidungsstrukturen kombiniert, um das Risiko der Überanpassung zu verringern. Zufällige Gesamtstrukturen können kategorische Features behandeln, auf die Mehrklassenklassifizierung ausgedehnt werden, erfordern keine Featureskalierung und können Nichtlinearitäten und Funktionsinteraktionen erfassen. Zufällige Gesamtstrukturen zählen zu den erfolgreichsten Machine Learning-Modelle für Klassifizierung und Regression.
+[Zufällige Gesamtstrukturen](http://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests) sind Ensembles von Entscheidungsstrukturen. In ihnen sind viele Entscheidungsstrukturen kombiniert, um das Risiko der Überanpassung zu verringern. Zufällige Gesamtstrukturen können kategorische Features behandeln, auf die Mehrklassenklassifizierung ausgedehnt werden, erfordern keine Featureskalierung und können Nichtlinearitäten und Funktionsinteraktionen erfassen. Zufällige Gesamtstrukturen zählen zu den erfolgreichsten Machine Learning-Modelle für Klassifizierung und Regression.
 
 [spark.mllib](http://spark.apache.org/mllib/) unterstützt zufällige Gesamtstrukturen für binäre und Mehrklassenklassifizierung sowie für Regression mit kontinuierlichen und kategorischen Features.
 
@@ -529,17 +529,17 @@ Für die Ausführung der obigen Zelle benötigte Zeit: 14,6 Sekunden
 
 **AUSGABE:**
 
-logisticRegFileLoc: LogisticRegressionWithLBFGS\_2016-05-0317\_22\_38.953814.txt
+logisticRegFileLoc: LogisticRegressionWithLBFGS_2016-05-0317_22\_38.953814.txt
 
-linearRegFileLoc: LinearRegressionWithSGD\_2016-05-0317\_22\_58.878949
+linearRegFileLoc: LinearRegressionWithSGD_2016-05-0317_22\_58.878949
 
-randomForestClassificationFileLoc: RandomForestClassification\_2016-05-0317\_23\_15.939247.txt
+randomForestClassificationFileLoc: RandomForestClassification_2016-05-0317_23\_15.939247.txt
 
-randomForestRegFileLoc: RandomForestRegression\_2016-05-0317\_23\_31.459140.txt
+randomForestRegFileLoc: RandomForestRegression_2016-05-0317_23\_31.459140.txt
 
-BoostedTreeClassificationFileLoc: GradientBoostingTreeClassification\_2016-05-0317\_23\_49.648334.txt
+BoostedTreeClassificationFileLoc: GradientBoostingTreeClassification_2016-05-0317_23\_49.648334.txt
 
-BoostedTreeRegressionFileLoc: GradientBoostingTreeRegression\_2016-05-0317\_23\_56.860740.txt
+BoostedTreeRegressionFileLoc: GradientBoostingTreeRegression_2016-05-0317_23\_56.860740.txt
 
 
 
@@ -599,7 +599,7 @@ Sie können diesen Python-Code auch [Azure Functions](https://azure.microsoft.co
 
 Wenn Sie eine codefreie Kundenerfahrung bevorzugen, verwenden Sie [Azure Logic Apps](https://azure.microsoft.com/documentation/services/app-service/logic/) zum Aufrufen der Spark-Batchbewertung durch Definieren einer HTTP-Aktion für den **Logik-Apps-Designer** und Festlegung seiner Parameter.
 
-- Erstellen Sie im Azure-Portal eine neue Logik-App durch Auswählen von **+Neu** -> **Web und mobil** -> **Logik-App**. 
+- Erstellen Sie im Azure-Portal eine neue Logik-App durch Auswählen von **+Neu** > **Web und mobil** > **Logik-App**.
 - Geben Sie den Namen der Logik-App und den App Service-Plan ein, um den **Logik-Apps-Designer** aufzurufen.
 - Wählen Sie eine HTTP-Aktion, und geben Sie die Parameter wie in der folgenden Abbildung dargestellt ein:
 
@@ -608,6 +608,6 @@ Wenn Sie eine codefreie Kundenerfahrung bevorzugen, verwenden Sie [Azure Logic A
 
 ## Wie geht es weiter? 
 
-**Übergreifende Validierung und Hyper-Parameter-Sweeping:** Unter [Erweiterte Datendurchsuchung und Modellierung mit Spark](machine-learning-data-science-spark-advanced-data-exploration-modeling.md) erfahren Sie, wie Modelle mit übergreifender Validierung und Hyper-Parameter-Sweeping trainiert werden können.
+**Übergreifende Validierung und Hyperparameter-Sweeping:** Unter [Erweiterte Datendurchsuchung und Modellierung mit Spark](machine-learning-data-science-spark-advanced-data-exploration-modeling.md) erfahren Sie, wie Modelle mit Kreuzvalidierung und Hyperparameter-Sweeping trainiert werden können.
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0914_2016-->

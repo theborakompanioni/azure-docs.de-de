@@ -4,7 +4,7 @@
 	services="machine-learning" 
 	documentationCenter="" 
 	authors="alokkirpal" 
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun" />
 
 <tags 
@@ -170,7 +170,7 @@ Weitere ausführliche Informationen zu diesen Eingabeparametern sind in der folg
 |Eingabeparameter|Beschreibung|Standardeinstellung|Typ|Gültiger Bereich|Vorgeschlagener Bereich|
 |---|---|---|---|---|---|
 |preprocess.aggregationInterval|Aggregationsintervall in Sekunden zum Aggregieren von Eingabezeitreihen|0 (keine Aggregation)|integer|0: Aggregation überspringen, andernfalls > 0|5 Minuten bis 1 Tag, von Zeitreihe abhängig
-|preprocess.aggregationFunc|Funktion zum Aggregieren von Daten im angegebenen AggregationInterval|mean|enumerated|mean, sum, length|–|
+|preprocess.aggregationFunc|Funktion zum Aggregieren von Daten im angegebenen AggregationInterval|mean|enumerated|mean, sum, length|N/V|
 |preprocess.replaceMissing|Werte zum Zuordnen fehlender Daten|lkv (last known value)|enumerated|zero, lkv, mean|N/V|
 |detectors.historyWindow|Verwendeter Verlauf (in Anzahl von Datenpunkten) für die Anomalieberechnung|500|integer|10 - 2.000|Von Zeitreihe abhängig|
 |upleveldetector.sensitivity|Empfindlichkeit für Erkennungsmodul für Pegeländerungen in Aufwärtsrichtung |3\.25|double|Keine|3,25 - 5 (niedrigerer Wert = höhere Empfindlichkeit)|
@@ -178,10 +178,10 @@ Weitere ausführliche Informationen zu diesen Eingabeparametern sind in der folg
 |trenddetector.sensitivity|Empfindlichkeit für Erkennungsmodul für positive Trends |3\.25|double|Keine|3,25 - 5 (niedrigerer Wert = höhere Empfindlichkeit)|
 |tspikedetector.sensitivity |Empfindlichkeit für TSpike-Erkennungsmodul|3|integer|1 - 10|3 - 5 (niedrigerer Wert = höhere Empfindlichkeit)|
 |zspikedetector.sensitivity |Empfindlichkeit für ZSpike-Erkennungsmodul|3|integer|1 - 10 |3 - 5 (niedrigerer Wert = höhere Empfindlichkeit)|
-|seasonality.enable|Gibt an, ob eine saisonabhängige Analyse durchgeführt wird.|true|boolean|true, false|Von Zeitreihe abhängig|
+|seasonality.enable|Gibt an, ob eine saisonabhängige Analyse durchgeführt wird.|true|Boolescher Wert|true, false|Von Zeitreihe abhängig|
 |seasonality.numSeasonality |Maximale Anzahl von zu erkennenden periodischen Zyklen|1|integer|1, 2|1 - 2|
-|seasonality.transform |Gibt an, ob saisonale (und) Trendkomponenten entfernt werden sollen, bevor die Anomalieerkennung angewendet wird.|deseason|enumerated|none, deseason, deseasontrend|–|
-|postprocess.tailRows |Anzahl von aktuellen Datenpunkten, die in den Ausgabeergebnissen beibehalten werden sollen|0|integer|0 (alle Datenpunkte beibehalten), oder geben Sie die Anzahl von Punkten an, die in den Ergebnissen beibehalten werden sollen|–|
+|seasonality.transform |Gibt an, ob saisonale (und) Trendkomponenten entfernt werden sollen, bevor die Anomalieerkennung angewendet wird.|deseason|enumerated|none, deseason, deseasontrend|N/V|
+|postprocess.tailRows |Anzahl von aktuellen Datenpunkten, die in den Ausgabeergebnissen beibehalten werden sollen|0|integer|0 (alle Datenpunkte beibehalten), oder geben Sie die Anzahl von Punkten an, die in den Ergebnissen beibehalten werden sollen|N/V|
 
 ###Ausgabe
 Die API führt alle Erkennungsmodule für Ihre Zeitreihendaten aus und gibt für jeden Zeitpunkt Anomaliebewertungen und binäre Spitzenindikatoren zurück. In der Tabelle unten sind die Ausgaben der API aufgeführt.
@@ -211,4 +211,4 @@ Diese Ausgabe kann mit einem [einfachen Parser](https://adresultparser.codeplex.
 
  
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0914_2016-->

@@ -4,7 +4,7 @@
  services="hdinsight,documentdb,notification-hubs"
  documentationCenter=""
  authors="Blackmist"
- manager="paulettm"
+ manager="jhubbard"
  editor="cgronlun"/>
 
 <tags
@@ -58,4 +58,4 @@ Eine vollständige, automatisierte Lösung für dieses Szenario ist als Teil des
 
 Weitere Beispiel-Storm-Topologien finden Sie unter [Beispieltopologien für Storm auf HDInsight](hdinsight-storm-example-topology.md).
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0914_2016-->

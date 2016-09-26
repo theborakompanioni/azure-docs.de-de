@@ -5,7 +5,7 @@
 	services="machine-learning"
 	documentationCenter=""
 	authors="bradsev"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun" />
 
 <tags
@@ -100,4 +100,4 @@ TDSP schreibt zwar keine bestimmten Arten von **Dokumentationsartefakten** vor, 
 
 Vollständige exemplarische Vorgehensweisen, in denen sämtliche Schritte im Prozess für **bestimmte Szenarien** gezeigt werden, sind ebenfalls verfügbar. Sie sind mit Miniaturansichtsbeschreibungen im Thema [Exemplarische Vorgehensweisen für den Team Data Science-Prozess](data-science-process-walkthroughs.md) aufgeführt.
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0914_2016-->

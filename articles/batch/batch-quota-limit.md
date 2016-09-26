@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Batch-Dienst – Kontingente und Limits | Microsoft Azure"
-	description="Erfahren Sie mehr über Kontingente, Limits und Einschränkungen für die Verwendung des Azure Batch-Diensts."
+	description="Erfahren Sie mehr über Azure Batch-Standardkontingente, Limits und Einschränkungen sowie die Anforderung von Kontingentsteigerungen."
 	services="batch"
 	documentationCenter=""
 	authors="mmacy"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/10/2016"
+	ms.date="09/10/2016"
 	ms.author="marsma"/>
 
 # Kontingente und Limits für den Azure Batch-Dienst
@@ -46,13 +46,13 @@ Anwendungspaketgröße (jeweils) | Ca. 195 GB<sup>1</sup>
 
 Sie können die Kontingente Ihres Batch-Kontos im [Azure-Portal][portal] anzeigen.
 
-1. Klicken Sie im Portal auf **Batch-Konten** und dann auf den Namen Ihres Batch-Kontos.
+1. Wählen Sie **Batch-Konten** im Portal, und wählen Sie dann das Batch-Konto, das Sie interessiert.
 
-2. Klicken Sie auf dem Blatt für Ihr Konto auf **Alle Einstellungen** > **Eigenschaften**.
+2. Wählen Sie **Eigenschaften** im Menüblatt des Batch-Kontos.
+
+3. Auf dem Blatt „Eigenschaften“ werden die **Kontingente** angezeigt, die derzeit für das Batch-Konto gelten.
 
 	![Batch-Kontokontingente][account_quotas]
-
-3. Auf dem Blatt **Eigenschaften** werden die Kontingente angezeigt, die derzeit für das Batch-Konto gelten.
 
 ## Erhöhen eines Kontingents
 
@@ -106,4 +106,4 @@ Nachdem Sie die Supportanfrage übermittelt haben, wird sich der Azure-Support m
 
 [account_quotas]: ./media/batch-quota-limit/accountquota_portal.PNG
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0914_2016-->

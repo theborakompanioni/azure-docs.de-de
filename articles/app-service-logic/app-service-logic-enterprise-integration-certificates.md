@@ -23,6 +23,7 @@ Für die Unternehmensintegration werden Zertifikate zum Schutz der B2B-Kommunika
 - Öffentliche Zertifikate, die bei einer Zertifizierungsstelle erworben werden müssen.
 - Private, selbst ausgestellte Zertifikate. Diese Zertifikate werden gelegentlich auch als selbstsignierte Zertifikate bezeichnet.
 
+
 ## Was sind Zertifikate?
 Zertifikate sind digitale Dokumente, die zum Überprüfen der Identität der Teilnehmer an einer elektronischen Kommunikation und zum Schutz der elektronischen Kommunikation verwendet werden.
 
@@ -36,7 +37,7 @@ Die Kommunikation zwischen zwei Unternehmen muss mitunter vertraulich gehalten w
 ### Öffentliches Zertifikat
 Um ein **öffentliches Zertifikat** in Ihren Logik-Apps mit B2B-Funktionen zu verwenden, müssen Sie es zuerst in Ihr Integrationskonto hochladen. Wenn Sie hingegen ein **selbstsigniertes Zertifikat** verwenden, müssen Sie es zuerst in den [Schlüsseltresor](../key-vault/key-vault-get-started.md "Informationen zu Key Vault") hochladen.
 
-Hochgeladene Zertifikate stehen zum Schutz Ihrer B2B-Nachrichten zur Verfügung, wenn Sie deren Eigenschaften in von Ihnen erstellten [Vereinbarungen](./app-service-logic-enterprise-integration-agreements.md) definieren.
+Hochgeladene Zertifikate stehen zum Schutz Ihrer B2B-Nachrichten zur Verfügung, wenn Sie deren Eigenschaften in [Vereinbarungen](./app-service-logic-enterprise-integration-agreements.md) definieren.
 
 Im Anschluss folgen die einzelnen Schritte, mit denen Sie Ihre öffentlichen Zertifikate in Ihr Integrationskonto hochladen können, nachdem Sie sich beim Azure-Portal angemeldet haben:
 1. Wählen Sie **Durchsuchen** aus. ![](./media/app-service-logic-enterprise-integration-overview/overview-1.png)
@@ -49,6 +50,7 @@ Im Anschluss folgen die einzelnen Schritte, mit denen Sie Ihre öffentlichen Zer
 8. Wählen Sie die Kachel **Zertifikate** aus. Nach dem Aktualisieren der Seite wird das neu hinzugefügte Zertifikat angezeigt: ![](./media/app-service-logic-enterprise-integration-certificates/certificate-4.png)
 
 ### Privates Zertifikat
+
 Sie können auch private Zertifikate in Ihr Integrationskonto hochladen. Führen Sie hierzu die folgenden Schritte aus:
 
 1. [Laden Sie Ihren privaten Schlüssel in den Schlüsseltresor hoch.](../key-vault/key-vault-get-started.md "Informationen zu Key Vault")
@@ -61,6 +63,7 @@ Sie können auch private Zertifikate in Ihr Integrationskonto hochladen. Führen
 Nachdem Sie diese Schritte ausgeführt haben, können Sie das private Zertifikat nutzen, um Vereinbarungen zu erstellen.
 
 Im Anschluss folgen die einzelnen Schritte, mit denen Sie Ihre privaten Zertifikate in Ihr Integrationskonto hochladen können, nachdem Sie sich beim Azure-Portal angemeldet haben:
+   
 1. Wählen Sie **Durchsuchen** aus. ![](./media/app-service-logic-enterprise-integration-overview/overview-1.png)
 2. Geben Sie in das Filtersuchfeld **Integration** ein, und wählen Sie in der Ergebnisliste **Integrationskonten** aus. ![](./media/app-service-logic-enterprise-integration-overview/overview-2.png)
 3. Wählen Sie das **Integrationskonto** aus, dem Sie das Zertifikat hinzufügen möchten. ![](./media/app-service-logic-enterprise-integration-overview/overview-3.png)
@@ -78,4 +81,4 @@ Hochgeladene Zertifikate stehen zum Schutz Ihrer B2B-Nachrichten zur Verfügung,
 - [Erstellen einer B2B-Vereinbarung](./app-service-logic-enterprise-integration-agreements.md)
 - [Weitere Informationen zum Schlüsseltresor](../key-vault/key-vault-get-started.md "Informationen zu Key Vault")
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0914_2016-->

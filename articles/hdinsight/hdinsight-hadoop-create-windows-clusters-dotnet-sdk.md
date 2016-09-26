@@ -5,7 +5,7 @@
    documentationCenter=""
    tags="azure-portal"
    authors="mumian"
-   manager="paulettm"
+   manager="jhubbard"
    editor="cgronlun"/>
 
 <tags
@@ -162,10 +162,10 @@ Die Anwendung erfordert eine Azure-Ressourcengruppe und das Standardspeicherkont
 In diesem Artikel haben Sie mehrere Möglichkeiten zum Erstellen von HDInsight-Clustern kennengelernt. Weitere Informationen finden Sie in den folgenden Artikeln:
 
 - [Erste Schritte mit Azure HDInsight](hdinsight-hadoop-linux-tutorial-get-started.md) – Erfahren Sie, wie Sie die Arbeit mit Ihrem HDInsight-Cluster aufnehmen können.
-- [Run Hive jobs in HDInsight using .NET SDK](hdinsight-hadoop-use-hive-dotnet-sdk.md) (Ausführen von Hive-Aufträgen in HDInsight mit dem .NET SDK)
+- [Run Hive jobs in HDInsight using .NET SDK (Ausführen von Hive-Aufträgen in HDInsight mit dem .NET SDK)](hdinsight-hadoop-use-hive-dotnet-sdk.md)
 - [Ausführen von Pig-Aufträgen mithilfe des .NET SDK in HDInsight](hdinsight-hadoop-use-pig-dotnet-sdk.md)
-- [Run Sqoop jobs in HDInsight using .NET SDK](hdinsight-hadoop-use-sqoop-dotnet-sdk.md) (Ausführen von Sqoop-Aufträgen in HDInsight mithilfe des .NET SDK)
-- [Run Oozie jobs in HDInsight](hdinsight-use-oozie.md) (Ausführen von Oozie-Aufträgen in HDInsight)
+- [Run Sqoop jobs in HDInsight using .NET SDK (Ausführen von Sqoop-Aufträgen in HDInsight mithilfe des .NET SDK)](hdinsight-hadoop-use-sqoop-dotnet-sdk.md)
+- [Run Oozie jobs in HDInsight (Ausführen von Oozie-Aufträgen in HDInsight)](hdinsight-use-oozie.md)
 - [Dokumentation zum Azure HDInsight SDK][hdinsight-sdk-documentation] – Machen Sie sich mit dem HDInsight SDK vertraut.
 
 [hdinsight-sdk-documentation]: http://msdn.microsoft.com/library/dn479185.aspx
@@ -247,4 +247,4 @@ Das folgende Azure PowerShell-Skript kann zum Erstellen der abhängigen Komponen
     Write-host "Default Storage Account Key: $defaultStorageAccountKey"
     Write-host "Default Blob Container Name: $defaultBlobContainerName"
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0914_2016-->

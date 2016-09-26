@@ -11,19 +11,19 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="06/21/2016" 
+    ms.date="09/11/2016" 
     ms.author="jeedes" />
 
 #Tutorial: Azure Active Directory-Integration mit TOPdesk - Secure
   
-In diesem Tutorial wird die Integration von Azure und TOPdesk - Secure erläutert. Das in diesem Lernprogramm verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
+In diesem Tutorial wird die Integration von Azure und TOPdesk - Secure erläutert. Das in diesem Tutorial verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
 
 -   Ein gültiges Azure-Abonnement
 -   Ein TOPdesk - Secure-Abonnement, für das einmaliges Anmelden aktiviert ist
   
 Nach Abschluss dieses Tutorials können sich die TOPdesk - Secure zugewiesenen Azure AD-Benutzer mittels einmaliger Anmeldung auf Ihrer TOPdesk - Secure-Unternehmenswebsite bei der Anwendung anmelden (durch den Dienstanbieter initiierte Anmeldung). Alternativ können sie den Zugriffsbereich nutzen (siehe [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md)).
   
-Das in diesem Lernprogramm beschriebene Szenario besteht aus den folgenden Bausteinen:
+Das in diesem Tutorial beschriebene Szenario besteht aus den folgenden Bausteinen:
 
 1.  Aktivieren der Anwendungsintegration für TOPdesk - Secure
 2.  Konfigurieren der einmaligen Anmeldung
@@ -68,7 +68,7 @@ In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für TOP
   
 In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbundanmeldung auf Basis des SAML-Protokolls ermöglichen, sich mit ihrem Azure AD-Konto bei TOPdesk - Secure zu authentifizieren. Für das Konfigurieren des einmaligen Anmeldens für TOPdesk - Secure müssen Sie eine Logosymboldatei hochladen. Um die Symboldatei zu erhalten, wenden Sie sich an das TOPdesk-Supportteam.
 
-###So konfigurieren Sie einmaliges Anmelden:
+###So konfigurieren Sie einmaliges Anmelden
 
 1.  Melden Sie sich bei der **TOPdesk - Secure**-Unternehmenswebsite als Administrator an.
 
@@ -89,9 +89,8 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
     ![Technische Einstellungen](./media/active-directory-saas-topdesk-secure-tutorial/IC790855.png "Technische Einstellungen")
 
     1.  Klicken Sie auf **Herunterladen**, um die öffentliche Metadatendatei herunterzuladen und sie dann lokal auf Ihrem Computer zu speichern.
-    2.  Öffnen Sie die Metadatendatei, und suchen Sie den Knoten **AssertionConsumerService**.
-        ![Assertion Consumer Service](./media/active-directory-saas-topdesk-secure-tutorial/IC790856.png "Assertion Consumer Service")
-    3.  Kopieren Sie den Wert **AssertionConsumerService**.  
+    2.  Öffnen Sie die Metadatendatei, und suchen Sie den Knoten **AssertionConsumerService**. ![Assertion Consumer Service](./media/active-directory-saas-topdesk-secure-tutorial/IC790856.png "Assertion Consumer Service")
+    3.  Kopieren Sie den Wert **AssertionConsumerService**.
 
         >[AZURE.NOTE] Sie benötigen den Wert später im Tutorial im Abschnitt **App-URL konfigurieren**.
 
@@ -109,9 +108,9 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
     ![App-URL konfigurieren](./media/active-directory-saas-topdesk-secure-tutorial/IC790604.png "App-URL konfigurieren")
 
-    1.  Geben Sie in das Textfeld **TOPdesk - Secure-Anmelde-URL** die URL ein, welche die Benutzer zur Anmeldung bei der „TOPdesk - Secure“-Anwendung verwenden (z. B. „*https://qssolutions.topdesk.net*").
-    2.  Fügen Sie in das Textfeld **TOPdesk – öffentliche Antwort-URL** die **TOPdesk - Secure-AssertionConsumerService-URL** ein (z. B.: "*https://qssolutions.topdesk.net/tas/public/login/saml*")
-    3.  Klicken Sie auf **Weiter**.
+    1.  Geben Sie in das Textfeld **TOPdesk - Secure-Anmelde-URL** die URL ein, welche die Benutzer zur Anmeldung bei der „TOPdesk - Secure“-Anwendung verwenden (z.B. "*https://qssolutions.topdesk.net*").
+    2.  Fügen Sie in das Textfeld **TOPdesk – öffentliche Antwort-URL** die **TOPdesk - Secure-AssertionConsumerService-URL** ein (z.B.: „*https://qssolutions.topdesk.net/tas/public/login/saml*")
+    3.  Klicken Sie auf **Next**.
 
 10. Klicken Sie auf der Seite **Einmaliges Anmelden konfigurieren für TOPdesk - Secure** auf **Metadaten herunterladen**, und speichern Sie die Metadatendatei lokal auf Ihrem Computer.
 
@@ -189,7 +188,7 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie d
 
 1.  Erstellen Sie im klassischen Azure-Portal ein Testkonto.
 
-2.  Klicken Sie auf der Anwendungsintegrationsseite für TOPdesk - Secure auf **Benutzer zuweisen**.
+2.  Klicken Sie auf der Anwendungsintegrationsseite für **TOPdesk - Secure** auf **Benutzer zuweisen**.
 
     ![Benutzer zuweisen](./media/active-directory-saas-topdesk-secure-tutorial/IC790612.png "Benutzer zuweisen")
 
@@ -199,4 +198,4 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie d
   
 Wenn Sie die SSO-Einstellungen testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md).
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0914_2016-->

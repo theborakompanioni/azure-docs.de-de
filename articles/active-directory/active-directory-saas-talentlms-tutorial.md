@@ -11,19 +11,19 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="06/21/2016" 
+    ms.date="09/11/2016" 
     ms.author="jeedes" />
 
 #Tutorial: Azure Active Directory-Integration mit TalentLMS
   
-In diesem Tutorial wird die Integration von Azure und TalentLMS erläutert. Das in diesem Lernprogramm verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
+In diesem Tutorial wird die Integration von Azure und TalentLMS erläutert. Das in diesem Tutorial verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
 
 -   Ein gültiges Azure-Abonnement
 -   Ein TalentLMS-Mandant
   
 Nach Abschluss dieses Tutorials können sich die TalentLMS zugewiesenen Azure AD-Benutzer mittels einmaliger Anmeldung auf Ihrer TalentLMS-Unternehmenswebsite bei der Anwendung anmelden (durch den Dienstanbieter initiierte Anmeldung). Alternativ können sie den Zugriffsbereich nutzen (siehe [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md)).
   
-Das in diesem Lernprogramm beschriebene Szenario besteht aus den folgenden Bausteinen:
+Das in diesem Tutorial beschriebene Szenario besteht aus den folgenden Bausteinen:
 
 1.  Aktivieren der Anwendungsintegration für TalentLMS
 2.  Konfigurieren der einmaligen Anmeldung
@@ -72,13 +72,13 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
 1.  Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für **TalentLMS** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-talentlms-tutorial/IC777292.png "Einmaliges Anmelden konfigurieren")
+    ![Configure single sign-on](./media/active-directory-saas-talentlms-tutorial/IC777292.png "Configure single sign-on")
 
 2.  Wählen Sie auf der Seite **Wie sollen sich Benutzer bei TalentLMS anmelden?** die Option **Microsoft Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-talentlms-tutorial/IC777293.png "Einmaliges Anmelden konfigurieren")
+    ![Configure single sign-on](./media/active-directory-saas-talentlms-tutorial/IC777293.png "Configure single sign-on")
 
-3.  Geben Sie auf der Seite **App-URL konfigurieren** im Textfeld für die **TalentLMS-Anmelde-URL** die URL im Format „ *https://\<Mandantenname\>.TalentLMSapp.com* “ ein, und klicken Sie dann auf **Weiter**.
+3.  Geben Sie auf der Seite **App-URL konfigurieren** im Textfeld für die ** TalentLMS-Anmelde-URL** die URL im Format „*https://\<Mandantenname>. TalentLMSapp.com*“ ein, und klicken Sie dann auf **Weiter**.
 
     ![Anmelde-URL](./media/active-directory-saas-talentlms-tutorial/IC777294.png "Anmelde-URL")
 
@@ -100,17 +100,17 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
     1.  Wählen Sie aus der Liste **SSO-Integrationstyp** die Option **SAML 2.0** aus.
     2.  Kopieren Sie im klassischen Azure-Portal auf der Dialogfeldseite **Einmaliges Anmelden konfigurieren für TalentLMS** den Wert der **Identitätsanbieter-ID**, und fügen Sie ihn in das Textfeld **Identitätsanbieter (IdP)** ein.
-    3.  Kopieren Sie den **Fingerabdruckwert** aus dem exportierten Zertifikat, und fügen Sie ihn in das Textfeld **Fingerabdruck des Zertifikats** ein.
+    3.  Kopieren Sie den **Fingerabdruckwert** aus dem exportierten Zertifikat, und fügen Sie ihn in das Textfeld **Certificate Fingerprint** ein.
 
         >[AZURE.TIP] Weitere Informationen finden Sie unter [Abrufen des Fingerabdruckwerts eines Zertifikats](http://youtu.be/YKQF266SAxI).
 
     4.  Kopieren Sie im klassischen Azure-Portal auf der Dialogfeldseite **Einmaliges Anmelden konfigurieren für TalentLMS** den Wert für **Remoteanmelde-URL**, und fügen Sie ihn in das Textfeld **Remoteanmelde-URL** ein.
     5.  Kopieren Sie im klassischen Azure-Portal auf der Dialogfeldseite **Einmaliges Anmelden konfigurieren für TalentLMS** den Wert für **Remoteabmelde-URL**, und fügen Sie ihn in das Textfeld **Remoteabmelde-URL** ein.
     6.  Geben Sie in das Textfeld **TargetedID** **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name** ein.
-7.  Geben Sie in das Textfeld **Vorname** **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname** ein.
-8.  Geben Sie in das Textfeld **Nachname** **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname** ein.
-9.  Geben Sie in das Textfeld **E-Mail** **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress** ein.
-10. Klicken Sie auf **Speichern**.
+    7.  Geben Sie in das Textfeld **Vorname** **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname** ein.
+    8.  Geben Sie in das Textfeld **Nachname** **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname** ein.
+    9.  Geben Sie in das Textfeld **E-Mail** **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress** ein.
+    10. Klicken Sie auf **Speichern**.
 
 9.  Wählen Sie im klassischen Azure-Portal die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Abschließen**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu schließen.
 
@@ -120,11 +120,11 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
   
 Damit sich Azure AD-Benutzer bei TalentLMS anmelden können, müssen sie in TalentLMS bereitgestellt werden. Im Fall von TalentLMS ist die Bereitstellung eine manuelle Aufgabe.
 
-###So stellen Sie Benutzerkonten bereit:
+###Führen Sie zum Bereitstellen von Benutzerkonten die folgenden Schritte aus:
 
 1.  Melden Sie sich bei Ihrem **TalentLMS**-Mandanten an.
 
-2.  Klicken Sie auf **Benutzer** und dann auf **Benutzer hinzufügen**.
+2.  Klicken Sie auf **Benutzer** und dann auf ** Benutzer hinzufügen**.
 
 3.  Führen Sie auf der Dialogfeldseite **Benutzer hinzufügen** die folgenden Schritte aus:
 
@@ -153,4 +153,4 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie d
   
 Wenn Sie die SSO-Einstellungen testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md).
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0914_2016-->
