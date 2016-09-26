@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="08/03/2016"
+	ms.date="09/08/2016"
 	ms.author="robinsh"/>
 
 #Azure Storage-Sicherheitsleitfaden
@@ -366,19 +366,17 @@ Obwohl Sie die clientseitige Verschlüsselung zum Verschlüsseln der Daten (die 
 
 ###Storage Service Encryption (SSE)
 
-SSE ist ein neues, in der öffentlichen Vorschau befindliches Feature von Azure Storage. Mit diesem Feature können Sie anfordern, dass der Speicherdienst die Daten beim Schreiben in Azure Storage automatisch verschlüsselt. Wenn Sie die Daten aus Azure Storage lesen, werden sie vom Speicherdienst vor der Rückgabe entschlüsselt. So können Sie Daten schützen, ohne dass Sie in Anwendungen Code ändern oder hinzufügen müssen.
+Mit SSE können Sie anfordern, dass der Speicherdienst die Daten beim Schreiben in Azure Storage automatisch verschlüsselt. Wenn Sie die Daten aus Azure Storage lesen, werden sie vom Speicherdienst vor der Rückgabe entschlüsselt. So können Sie Daten schützen, ohne dass Sie in Anwendungen Code ändern oder hinzufügen müssen.
 
 Diese Einstellung gilt für das gesamte Speicherkonto. Sie können dieses Feature aktivieren und deaktivieren, indem Sie den Wert der Einstellung ändern. Zu diesem Zweck können Sie das Azure-Portal, PowerShell, die Azure-Befehlszeilenschnittstelle, die REST-API des Azure Storage-Ressourcenanbieters oder die .NET-Speicherclientbibliothek verwenden. SSE ist standardmäßig deaktiviert.
 
 Derzeit werden die Schlüssel für die Verschlüsselung von Microsoft verwaltet. Wir generieren die Schlüssel ursprünglich und verwalten die sichere Speicherung der Schlüssel sowie die reguläre Rotation gemäß der internen Microsoft-Richtlinie. In Zukunft erhalten Sie die Möglichkeit, Ihre eigenen Verschlüsselungsschlüssel zu verwalten, und wir bieten Ihnen einen Migrationspfad von den von Microsoft verwalteten Schlüsseln zu von Kunden verwalteten Schlüsseln.
 
-Dieses Feature ist für Standard Storage- und Storage Premium-Konten verfügbar, die mit dem Resource Manager-Bereitstellungsmodell und nach dem 30.03.2016, 24:00 Uhr PST (Pacific Standard Time) erstellt wurden. SSE gilt nur für Blockblobs, Seitenblobs und Anfügeblobs. Die anderen Typen von Daten, einschließlich Tabellen, Warteschlangen und Dateien, werden nicht verschlüsselt.
+Dieses Feature ist für Standard Storage- und Storage Premium-Konten verfügbar, die mit dem Resource Manager-Bereitstellungsmodell erstellt wurden. SSE gilt nur für Blockblobs, Seitenblobs und Anfügeblobs. Die anderen Typen von Daten, einschließlich Tabellen, Warteschlangen und Dateien, werden nicht verschlüsselt.
 
 Daten werden nur dann verschlüsselt, wenn SSE aktiviert ist und die Daten in den Blobspeicher geschrieben werden. Das Aktivieren oder Deaktivieren von SSE wirkt sich nicht auf vorhandene Daten aus. Mit anderen Worten: Wenn Sie diese Verschlüsselung aktivieren, werden bereits vorhandene Daten nicht verschlüsselt. Es werden auch keine bereits vorhandenen Daten entschlüsselt, wenn Sie SSE deaktivieren.
 
-Wenn Sie dieses Feature mit einem Speicherkonto testen möchten, das vor dem oben genannten Datum erstellt wurde, oder einem klassischen Speicherkonto, können Sie ein neues Speicherkonto erstellen und die Daten mit AzCopy in das neue Konto kopieren. Dies sollte nach der Vorschau nicht erforderlich sein.
-
-Wie bei fast jeder Vorschau gilt: Die Verwendung in der Produktion sollte erst dann beginnen, wenn das Feature allgemein verfügbar ist.
+Wenn Sie dieses Feature mit einem klassischen Speicherkonto testen möchten, können Sie ein neues Resource Manager-Speicherkonto erstellen und die Daten mit AzCopy in das neue Konto kopieren.
 
 ###Clientseitige Verschlüsselung
 
@@ -460,7 +458,7 @@ Die clientseitige Verschlüsselung ist eine zusätzliche Belastung des Clients, 
 
 ####Storage Service Encryption (SSE)
 
-SSE wird von Azure Storage verwaltet und ist einfach zu verwenden. SSE sorgt nicht für die Sicherheit der Daten während der Übertragung, verschlüsselt sie jedoch beim Schreiben in Azure Storage. Die Verwendung dieser Funktion hat keine Auswirkungen auf die Leistung.
+SSE wird von Azure Storage verwaltet. SSE sorgt nicht für die Sicherheit der Daten während der Übertragung, verschlüsselt sie jedoch beim Schreiben in Azure Storage. Die Verwendung dieser Funktion hat keine Auswirkungen auf die Leistung.
 
 Sie können mit SSE nur Blockblobs, Anfügeblobs und Seitenblobs verschlüsseln. Wenn Sie Tabellen- oder Warteschlangendaten verschlüsseln müssen, sollten Sie die clientseitige Verschlüsselung verwenden.
 
@@ -634,4 +632,4 @@ Weitere Informationen zu CORS und zur CORS-Aktivierung finden Sie in diesen Ress
 
 	Dieser Artikel behandelt die Verwendung des FIPS-Modus auf älteren Windows-Computern.
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0914_2016-->

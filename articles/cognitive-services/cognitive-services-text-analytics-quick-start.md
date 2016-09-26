@@ -4,7 +4,7 @@
 	services="cognitive-services"
 	documentationCenter=""
 	authors="onewth"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun"/>
 
 <tags
@@ -297,4 +297,4 @@ Glückwunsch! Sie haben nun die Nutzung der Textanalyse für Ihre Daten abgeschl
 
 Wie Textanalysefunktionen, z.B. Stimmung, als Teil eines Bots verwendet werden können, zeigt Ihnen das Beispiel [Emotional Bot](http://docs.botframework.com/de-DE/bot-intelligence/language/#example-emotional-bot) (Emotionaler Bot) auf der Bot-Framework-Website.
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0914_2016-->

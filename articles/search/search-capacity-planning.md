@@ -4,7 +4,7 @@
 	services="search"
 	documentationCenter=""
 	authors="HeidiSteen"
-	manager="paulettm"
+	manager="jhubbard"
 	editor=""
     tags="azure-portal"/>
 
@@ -118,4 +118,4 @@ Beide Tarife beginnen mit einem Replikat und einer Partition, die als eine Suche
 
 Die Kosten pro SU werden vom Tarif bestimmt. Die Kosten pro SU für den Basic-Tarif sind niedriger als für den Standard-Tarif. Die Preise für die einzelnen Tarife finden Sie in der [Preisübersicht](https://azure.microsoft.com/pricing/details/search/).
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0914_2016-->

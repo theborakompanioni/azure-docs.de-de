@@ -4,7 +4,7 @@
 	services="cognitive-services"
 	documentationCenter=""
 	authors="onewth"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun"/>
 
 <tags
@@ -30,7 +30,7 @@ Zuerst müssen Sie aus dem **Azure-Portal** einen neuen API-Schlüssel abrufen:
 
 1. Klicken Sie auf **Registrieren**. Mit diesem Link gelangen Sie zum Azure-Verwaltungsportal, in dem Sie sich für den Dienst registrieren können.
 
-1. Wählen Sie einen Plan. Sie können z.B. den **Free-Tarif für 5.000 Transaktionen pro Monat** auswählen. Da es sich um einen kostenlosen Plan handelt, wird die Nutzung dieses Diensts nicht berechnet. Sie müssen sich bei Ihrem Azure-Abonnement anmelden.
+1. Wählen Sie einen Plan. Sie können z. B. den **Free-Tarif für 5.000 Transaktionen pro Monat** auswählen. Da es sich um einen kostenlosen Plan handelt, wird die Nutzung dieses Diensts nicht berechnet. Sie müssen sich bei Ihrem Azure-Abonnement anmelden.
 
 1. Nach der Registrierung für Text Analytics erhalten Sie einen **API-Schlüssel**. Kopieren Sie diesen Schlüssel, da Sie ihn beim Verwenden der API-Dienste benötigen.
 
@@ -308,4 +308,4 @@ Nachdem die Themen-API den Vorgang abgeschlossen hat, wird der Status `succeeded
 
 Jetzt sollte alles startklar sein! Testen Sie Ihren Code mit einer kleinen Stichprobe, um sicherzustellen, dass Sie die Daten erfolgreich verarbeiten können.
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0914_2016-->

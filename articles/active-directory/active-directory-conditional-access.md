@@ -14,7 +14,7 @@
 	ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="identity" 
-	ms.date="08/25/2016"
+	ms.date="09/14/2016"
 	ms.author="markvi"/>
 
 
@@ -24,15 +24,13 @@ In jedem Unternehmen ist das Sichern des Zugriffs auf Unternehmensressourcen von
   
 ## Gründe für den bedingten Zugriff  
 
-Die Steuerungsfunktionen für den bedingten Zugriff in Azure Active Directory bieten einfache Methoden, mit denen Unternehmen Ressourcen in der Cloud und lokal sichern können. Richtlinien für bedingten Zugriff können verwendet werden, um für Schutz vor der Gefahr durch gestohlene oder per Phishing entwendete Anmeldeinformationen zu sorgen, indem die Multi-Factor Authentication erzwungen wird. Außerdem werden die Unternehmensdaten geschützt, indem ein von Intune verwaltetes Gerät verwendet werden muss, das den Zugriff auf vertrauliche Dienste gewährt.
+Die Steuerungsfunktionen für den bedingten Zugriff in Azure Active Directory bieten einfache Methoden, mit denen Unternehmen Ressourcen in der Cloud und lokal schützen können. Richtlinien zum bedingten Zugriff können verwendet werden, um für Schutz vor der Gefahr durch gestohlene oder per Phishing entwendete Anmeldeinformationen zu sorgen, indem die mehrstufige Authentifizierung erzwungen wird. Außerdem werden die Unternehmensdaten geschützt, indem ein von Intune verwaltetes Gerät verwendet werden muss, das den Zugriff auf vertrauliche Dienste gewährt.
 
 
 
 ## Lizenzanforderungen
 
-Der bedingte Zugriff ist eine Funktion von [Azure AD Premium](http://www.microsoft.com/identity). Alle Benutzer, die beim Zugreifen auf eine Anwendung eine Richtlinie für bedingten Zugriff verwenden, müssen über eine Azure AD Premium-Lizenz verfügen. Weitere Informationen zur Nutzung finden Sie im [Unlicensed User report](https://aka.ms/utc5ix) (Bericht zu nicht lizenzierten Benutzern).
-
-
+Der bedingte Zugriff in Azure Active Directory ist eine Funktion von [Azure AD Premium](http://www.microsoft.com/identity). Alle Benutzer, die beim Zugreifen auf eine Anwendung eine Richtlinie für bedingten Zugriff verwenden, müssen über eine Azure AD Premium-Lizenz verfügen. Weitere Informationen zur Nutzung finden Sie im [Unlicensed User report](https://aka.ms/utc5ix) (Bericht zu nicht lizenzierten Benutzern).
 
 
 
@@ -89,7 +87,7 @@ Richtlinien können basierend auf den folgenden Anforderungen festgelegt werden:
     - **iOS- und Android-Geräte**, die über Microsoft Intune verwaltet werden.
 
 
-Wenn Benutzer auf eine durch die gerätebasierte Richtlinie für bedingten Zugriff geschützte Anwendung zugreifen möchten, müssen sie dies über ein Gerät tun, das diese Richtlinie erfüllt. Wird ein Gerät verwendet, das die Richtlinie nicht erfüllt, wird der Zugriff verweigert.
+Wenn Benutzer auf eine durch die gerätebasierte Richtlinie zum bedingten Zugriff geschützte Anwendung zugreifen möchten, müssen sie dies über ein Gerät tun, das diese Richtlinie erfüllt. Wird ein Gerät verwendet, das die Richtlinie nicht erfüllt, wird der Zugriff verweigert.
 
 Informationen zum Konfigurieren von gerätebasierten Richtlinien für bedingten Zugriff in Azure AD finden Sie unter [Konfigurieren von gerätebasierten Richtlinien für bedingten Zugriff zur Steuerung des Zugriffs auf über Azure Active Directory verbundene Anwendungen](active-directory-conditional-access-policy-connected-applications.md).
 
@@ -125,4 +123,4 @@ In der folgenden Inhaltszuordnung werden Dokumente aufgeführt, in denen Sie wei
 - [Häufig gestellte Fragen zum bedingten Zugriff](active-directory-conditional-faqs.md)
 - [Technische Referenz](active-directory-conditional-access-technical-reference.md)
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0914_2016-->

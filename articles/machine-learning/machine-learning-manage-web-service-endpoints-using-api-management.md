@@ -5,7 +5,7 @@
 	services="machine-learning"
 	documentationCenter=""
 	authors="roalexan"
-	manager="paulettm"
+	manager="jhubbard"
 	editor=""/>
 
 <tags
@@ -26,7 +26,7 @@ Dieser Leitfaden beschreibt die ersten Schritte mit API Management zur Verwaltun
 
 ##Was ist Azure API Management?
 
-Azure API Management ist ein Azure-Dienst, mit dem Sie Ihre REST-API-Endpunkte verwalten können, indem Sie Benutzerzugriff, Nutzungseinschränkungen und Dashboardüberwachung definieren. Klicken Sie [hier](https://azure.microsoft.com/services/api-management/), um Informationen zu Azure API Management zu erhalten. Klicken Sie [hier](../api-management/api-management-get-started.md), um eine Anleitung zum Einstieg in Azure API Management zu erhalten. Dieser Leitfaden (auf dem der vorliegende Leitfaden basiert) behandelt weitere Themen, z. B. Benachrichtigungskonfiguration, Tarife, Antwortverarbeitung, Benutzerauthentifizierung, Produkterstellung, Entwicklerabonnements und Nutzungsdashboards.
+Azure API Management ist ein Azure-Dienst, mit dem Sie Ihre REST-API-Endpunkte verwalten können, indem Sie Benutzerzugriff, Nutzungseinschränkungen und Dashboardüberwachung definieren. Klicken Sie [hier](https://azure.microsoft.com/services/api-management/), um Informationen zu Azure API Management zu erhalten. Klicken Sie [hier](../api-management/api-management-get-started.md), um eine Anleitung zum Einstieg in Azure API Management zu erhalten. In diesem Leitfaden (auf dem der vorliegende Leitfaden basiert) werden weitere Themen behandelt, z.B. Benachrichtigungskonfiguration, Tarife, Antwortverarbeitung, Benutzerauthentifizierung, Produkterstellung, Entwicklerabonnements und Nutzungsdashboards.
 
 ##Was ist Azure ML?
 
@@ -130,7 +130,7 @@ Wählen Sie als Vorgang **RRS Execute** aus. Klicken Sie auf **Testen**.
 
 Geben Sie als Anforderungsparameter Ihren **Arbeitsbereich** und **Dienst** sowie **2.0** als **API-Version** und **true** für die **Details** ein. Sie finden Ihren **Arbeitsbereich** und **Dienst** im Azure ML-Webdienstdashboard (siehe **Testen des Webdiensts** in Anhang A).
 
-Um den Anforderungsheader festzulegen, klicken Sie auf **Header hinzufügen**, und geben Sie **Content-Type** und **application/json** ein. Klicken Sie anschließend auf **Header hinzufügen**, und geben Sie **Authorization** und **Bearer<YOUR AZUREML SERVICE API-KEY>** ein. Sie finden Ihren **API-Schlüssel** im Azure ML-Webdienstdashboard (siehe **Testen des Webdiensts** in Anhang A).
+Um den Anforderungsheader festzulegen, klicken Sie auf **Header hinzufügen**, und geben Sie **Content-Type** und **application/json** ein. Klicken Sie anschließend auf **Header hinzufügen**, und geben Sie **Authorization** und **Bearer<IHR AZUREML SERVICE API-SCHLÜSSEL>** ein. Sie finden Ihren **API-Schlüssel** im Azure ML-Webdienstdashboard (siehe **Testen des Webdiensts** in Anhang A).
 
 Geben Sie **{"Inputs": {"input1": {"ColumnNames": ["Col2"], "Values": [["This is a good day"]]}}, "GlobalParameters": {}}** als Anforderungstext ein.
 
@@ -384,4 +384,4 @@ Dieser Leitfaden zeigt ein funktionierendes Python-Beispiel. Sie müssen dieses 
 	return
 	invokeBatchExecutionService()
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0914_2016-->

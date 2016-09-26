@@ -39,13 +39,13 @@ Sie können die hier erlernten Dinge auf andere PHP-Web-Apps anwenden, die Sie u
 - [Composer](https://getcomposer.org/download/) installieren
 - [Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md) installieren
 - [Git](http://www.git-scm.com/downloads) installieren
-- Microsoft Azure-Konto erstellen. Wenn Sie kein Konto haben, können Sie sich [für eine kostenlose Testversion registrieren](/pricing/free-trial/?WT.mc_id=A261C142F) oder [Ihre Visual Studio-Abonnentenvorteile aktivieren](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F).
+- Microsoft Azure-Konto erstellen. Falls Sie noch kein Konto haben, können Sie sich [für eine kostenlose Testversion registrieren](/pricing/free-trial/?WT.mc_id=A261C142F) oder [Ihre Visual Studio-Abonnentenvorteile aktivieren](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F).
 
 >[AZURE.NOTE] Sehen Sie sich eine Web-App in Aktion an: [Probieren Sie App Service gleich aus](http://go.microsoft.com/fwlink/?LinkId=523751), und erstellen Sie eine kurzzeitige Start-App – ohne Kreditkarte oder weitere Verpflichtungen.
 
 ## Erstellen einer PHP-App (Laravel) auf dem Entwicklungscomputer
 
-1. Öffnen Sie eine neue Windows-Eingabeaufforderung, ein PowerShell-Fenster, eine Linux-Shell oder ein OS X-Terminal. Führen Sie die folgenden Befehle aus, um sicherzustellen, dass die erforderlichen Tools richtig auf dem Computer installiert sind. 
+1. Öffnen Sie eine neue Windows-Eingabeaufforderung, ein PowerShell-Fenster, eine Linux-Shell oder ein OS X-Terminal. Führen Sie die folgenden Befehle aus, um sicherzustellen, dass die erforderlichen Tools richtig auf dem Computer installiert sind.
 
         php --version
         composer --version
@@ -82,8 +82,9 @@ Dies ist bisher nur der übliche Laravel-Workflow, und das Ziel besteht hier ja 
 
 Mit der Azure-Befehlszeilenschnittstelle können Sie mit nur einer Codezeile eine Web-App in Azure App Service erstellen und für die Git-Bereitstellung einrichten. Dies werden wir jetzt tun.
 
-3. Melden Sie sich wie folgt an Azure an:
+1. Wechseln Sie in den ASM-Modus, und melden Sie sich bei Azure an:
 
+        azure config mode asm
         azure login
     
     Folgen Sie der Hilfemeldung, um den Anmeldeprozess fortzusetzen.
@@ -105,7 +106,7 @@ Mit der Azure-Befehlszeilenschnittstelle können Sie mit nur einer Codezeile ein
 
 Damit die Laravel-App in Azure funktioniert, müssen Sie auf einige Dinge achten. Sie führen diese Übung in ähnlicher Weise für Ihr bevorzugtes PHP-Framework durch.
 
-- Konfigurieren Sie PHP 5.5.9 oder höher. Die vollständige Liste mit den Serveranforderungen finden Sie unter den [aktuellen Laravel 5.2-Serveranforderungen](https://laravel.com/docs/5.2#server-requirements). Bei den restlichen Einträgen der Liste handelt es sich um Erweiterungen, die von den PHP-Installationen von Azure bereits aktiviert wurden. 
+- Konfigurieren Sie PHP 5.5.9 oder höher. Die vollständige Liste mit den Serveranforderungen finden Sie unter den [aktuellen Laravel 5.2-Serveranforderungen](https://laravel.com/docs/5.2#server-requirements). Bei den restlichen Einträgen der Liste handelt es sich um Erweiterungen, die von den PHP-Installationen von Azure bereits aktiviert wurden.
 - Legen Sie die Umgebungsvariablen gemäß den Anforderungen Ihrer App fest. Laravel nutzt die Datei `.env` zum einfachen Festlegen der Umgebungsvariablen. Da aber kein Commit in die Quellcodeverwaltung vorgesehen ist (siehe [Laravel-Umgebungskonfiguration](https://laravel.com/docs/5.2/configuration#environment-configuration)), legen Sie stattdessen die App-Einstellungen Ihrer Azure-Web-App fest.
 - Stellen Sie sicher, dass der Einstiegspunkt der Laravel-App (`public/index.php`) zuerst geladen wird. Weitere Informationen finden Sie unter [Laravel Lifecycle Overview](https://laravel.com/docs/5.2/lifecycle#lifecycle-overview) (Laravel – Übersicht über den Lebenszyklus). Anders ausgedrückt: Sie müssen die Stamm-URL der Web-App so festlegen, dass sie auf das Verzeichnis `public` zeigt.
 - Aktivieren Sie die Composer-Erweiterung in Azure, da Sie über die Datei „composer.json“ verfügen. Sie können das Abrufen der erforderlichen Pakete dann Composer überlassen, wenn Sie die Bereitstellung mit `git push` durchführen. Dies ist lediglich eine Frage der Benutzerfreundlichkeit. Wenn Sie die Composer-Automation nicht aktivieren, müssen Sie nur `/vendor` aus der Datei `.gitignore` entfernen, damit Git beim Übernehmen und Bereitstellen von Code alle Elemente im Verzeichnis `vendor` einschließt (Aufhebung von „Ignorieren“).
@@ -248,4 +249,4 @@ Informieren Sie sich darüber, wie Sie Ihrer App Daten hinzufügen, indem Sie [i
 - [Konvertieren von WordPress in Multisite in Azure App Service](web-sites-php-convert-wordpress-multisite.md)
 - [Leistungsstarkes WordPress in Azure App Service](web-sites-php-enterprise-wordpress.md)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0914_2016-->

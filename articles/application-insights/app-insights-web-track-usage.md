@@ -21,8 +21,8 @@ Wenn Sie wissen, wie Benutzer Ihre Anwendung verwenden, können Sie Ihre Entwick
 
 Visual Studio Application Insights bietet Nutzungsverfolgung auf zwei Ebenen:
 
-* **Daten zu Benutzern, Sitzungen und Seitenaufrufen** – direkt bereitgestellt.  
-* **Benutzerdefinierte Telemetrie** – Sie [schreiben Code][api], um die Nutzung Ihrer App zu verfolgen. 
+* **Daten zu Benutzern, Sitzungen und Seitenaufrufen** – direkt bereitgestellt.
+* **Benutzerdefinierte Telemetrie** – Sie [schreiben Code][api], um die Nutzung Ihrer App zu verfolgen.
 
 ## Einrichten
 
@@ -37,7 +37,7 @@ Melden Sie sich beim [Azure-Portal][portal] an, navigieren Sie zur Anwendungsres
 
 ![](./media/app-insights-web-track-usage/14-usage.png)
 
-* **Benutzer:** Die Anzahl der unterschiedlichen aktiven Benutzer über den Zeitbereich des Diagramms. 
+* **Benutzer:** Die Anzahl der unterschiedlichen aktiven Benutzer über den Zeitbereich des Diagramms.
 * **Sitzungen:** Die Anzahl der aktiven Sitzungen
 * **Seitenaufrufe** Zählt die Anzahl der Aufrufe von trackPageView(), wird in der Regel einmal auf jeder Webseite aufgerufen.
 
@@ -336,7 +336,7 @@ Gehen Sie im App-Initialisierer wie z. B. "Global.asax.cs" so vor:
 Wenn Sie mit Analysen arbeiten, werden diese zu einem integrierten Bestandteil Ihres Entwicklungszyklus und nicht bloß zu etwas, an das Sie denken, wenn es gilt, Probleme zu lösen. Hier einige Tipps:
 
 * Bestimmen Sie die wichtigste Metrik Ihrer Anwendung. Wünschen Sie sich so viele Benutzer wie möglich oder lieber eine kleine Gruppe sehr zufriedener Benutzer? Möchten Sie Websitebesuche oder den Umsatz maximieren?
-* Planen Sie eine Messung für jede User Story. Wenn Sie eine neue User Story oder Funktion entwerfen oder eine vorhandene aktualisieren wollen, denken Sie stets daran, wie Sie den Erfolg der Änderung messen möchten. Fragen Sie sich vor Beginn der Programmierung "Welche Auswirkungen hat dies auf unsere Metriken, wenn es funktioniert? Sollten wir neue Ereignisse nachverfolgen?" Und wenn das Feature dann online ist, sehen Sie sich die Analyse an, und reagieren Sie auf die Ergebnisse. 
+* Planen Sie eine Messung für jede User Story. Wenn Sie eine neue User Story oder Funktion entwerfen oder eine vorhandene aktualisieren wollen, denken Sie stets daran, wie Sie den Erfolg der Änderung messen möchten. Fragen Sie sich vor Beginn der Programmierung "Welche Auswirkungen hat dies auf unsere Metriken, wenn es funktioniert? Sollten wir neue Ereignisse nachverfolgen?" Und wenn das Feature dann online ist, sehen Sie sich die Analyse an, und reagieren Sie auf die Ergebnisse.
 * Setzen Sie die anderen Metriken in Beziehung zur Hauptmetrik. Wenn Sie z. B. das Feature "Favoriten" hinzufügen, möchten Sie bestimmt wissen, wie oft Benutzer Favoriten hinzufügen. Aber vielleicht ist es noch interessanter zu wissen, wie oft sie zu ihren Favoriten zurückkehren. Und am wichtigsten ist, ob Benutzer, die Favoriten nutzen, letztendlich mehr von Ihrem Produkt kaufen.
 * Testen Sie mit begrenzten Benutzergruppen. Richten Sie einen Feature-Umschalter ein, der es Ihnen ermöglicht, ein neues Feature nur für einige Benutzer sichtbar zu machen. Verwenden Sie Application Insights, um festzustellen, ob das neue Feature so wie vorgesehen genutzt wird. Nehmen Sie Anpassungen vor, und veröffentlichen Sie es für ein breiteres Publikum.
 * Sprechen Sie Ihre Benutzer an! Analysen allein genügen nicht, sondern dienen zur Aufrechterhaltung einer guten Kundenbeziehung.
@@ -366,4 +366,4 @@ Wenn Sie mit Analysen arbeiten, werden diese zu einem integrierten Bestandteil I
 
  
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0914_2016-->

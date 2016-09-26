@@ -69,8 +69,8 @@ Wie bei den Metriken können Sie mithilfe von [REST-API](https://msdn.microsoft.
 * [Empfangen von Warnbenachrichtigungen](insights-receive-alert-notifications.md), wenn eine Metrik einen Schwellenwert überschreitet.
 * [Aktivieren von Überwachung und Diagnose](insights-how-to-use-diagnostics.md), um detaillierte Hochfrequenzmetriken zu Ihrem Dienst zu sammeln.
 * [Automatisches Skalieren der Instanzenanzahl](insights-how-to-scale.md), um sicherzustellen, dass Ihr Dienst verfügbar und reaktionsfähig ist.
-* [Überwachen der Anwendungsleistung](insights-perf-analytics.md), um präzise Informationen zur Leistung Ihres Codes in der Cloud zu ermitteln.
+* [Überwachen der Anwendungsleistung](../application-insights/app-insights-azure-web-apps.md), um präzise Informationen zur Leistung Ihres Codes in der Cloud zu ermitteln.
 * Verwenden von [Application Insights für JavaScript-Apps und Webseiten](../application-insights/app-insights-web-track-usage.md), um eine Clientanalyse über die Browser zu erhalten, mit denen auf eine Webseite zugegriffen wird.
 * [Überwachen der Verfügbarkeit und Reaktionsfähigkeit einer beliebigen Webseite](../application-insights/app-insights-monitor-web-app-availability.md) mit Application Insights, um zu ermitteln, ob eine Seite offline ist.
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0914_2016-->

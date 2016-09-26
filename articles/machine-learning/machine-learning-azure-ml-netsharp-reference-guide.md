@@ -4,7 +4,7 @@
 	services="machine-learning" 
 	documentationCenter="" 
 	authors="jeannt" 
-	manager="paulettm" 
+	manager="jhubbard" 
 	editor="cgronlun"/>
 
 <tags 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/22/2016" 
+	ms.date="09/12/2016" 
 	ms.author="jeannt"/>
 
 
@@ -26,9 +26,9 @@ Net# ist eine von Microsoft entwickelte Sprache zum Definieren von neuronalen Ne
 -	Grundlegende Konzepte von neuronalen Netzwerken
 -	Anforderungen neuronaler Netzwerke und Definieren der primären Komponenten
 -	Syntax und Schlüsselwörter der Net#-Spezifikationssprache
--	Beispiele von mit Net# erstellten benutzerdefinierten neuronalen Netzwerken 
+-	Beispiele von mit Net# erstellten benutzerdefinierten neuronalen Netzwerken
 	
-[AZURE.INCLUDE [machine-learning-kostenlose-Testversion](../../includes/machine-learning-free-trial.md)]
+[AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
 ## Neuronale Netzwerke – Grundlagen
 Die Struktur eines neuronalen Netzwerks besteht aus ***Knoten***, die in ***Schichten*** organisiert sind, sowie gewichteten ***Verbindungen*** (bzw. ***Kanten***) zwischen den Knoten. Die Verbindungen sind gerichtet, und jede Verbindung hat einen ***Quellknoten*** und einen ***Zielknoten***.
@@ -43,7 +43,7 @@ Darüber hinaus unterstützt Net# die folgenden vier Arten erweiterter Verbindun
 
 -	**Gefilterte Bündel**. Der Benutzer kann unter Verwendung der Positionen des Quell- und des Zielschichtknotens ein Prädikat definieren. Wenn das Prädikat "True" ist, sind die Knoten verbunden.
 -	**Konvolutionsbündel**. Der Benutzer kann kleine Knotenumgebungen in der Quellschicht definieren. Jeder Knoten in der Zielschicht ist mit einer Knotenumgebung in der Quellschicht verbunden.
--	**Poolingbündel** und **Antwortnormalisierungsbündel**. Diese ähneln insofern den Konvolutionsbündeln, als der Benutzer kleine Knotenumgebungen in der Quellschicht definiert. Der Unterschied besteht darin, dass die Gewichtungen der Kanten in diesen Paketen nicht trainierbar sind. Stattdessen wird eine vordefinierte Funktion auf die Werte des Quellknotens angewendet, um den Wert des Zielknotens zu ermitteln.  
+-	**Poolingbündel** und **Antwortnormalisierungsbündel**. Diese ähneln insofern den Konvolutionsbündeln, als der Benutzer kleine Knotenumgebungen in der Quellschicht definiert. Der Unterschied besteht darin, dass die Gewichtungen der Kanten in diesen Paketen nicht trainierbar sind. Stattdessen wird eine vordefinierte Funktion auf die Werte des Quellknotens angewendet, um den Wert des Zielknotens zu ermitteln.
 
 Die Verwendung von Net# zum Definieren der Struktur eines neuronalen Netzwerks macht es möglich, komplexe Strukturen wie Deep Neural Networks oder Konvolutionen beliebiger Dimensionen zu definieren, die bekanntermaßen das Lernen aus Daten wie Bildern, Audio und Video verbessern.
 
@@ -53,20 +53,20 @@ Die Architektur der neuronalen Netzwerkmodelle, die Sie in Azure Machine Learnin
 -	verdeckte Schichten erstellen und die Anzahl der Knoten in jeder Schicht steuern;
 -	angeben, wie Schichten miteinander verbunden werden sollen;
 -	spezielle Konnektivitätsstrukturen wie Konvolutionen und Bündel mit gemeinsamer Gewichtung definieren;
--	verschiedene Aktivierungsfunktionen angeben.  
+-	verschiedene Aktivierungsfunktionen angeben.
 
 Einzelheiten zur Syntax der Spezifikationssprache finden Sie unter [Strukturspezifikation](#Structure-specifications).
  
 Beispiele für die Definition neuronaler Netzwerke für einige gängige Aufgaben aus dem Bereich Machine Learning (sowohl einfach als auch komplex) finden Sie unter [Beispiele](#Examples-of-Net#-usage).
 
 ## Allgemeine Anforderungen
--	Es müssen genau eine Ausgabeschicht, mindestens eine Eingabeschicht und null oder mehr verdeckte Schichten vorhanden sein. 
--	Jede Schicht verfügt über eine feste Anzahl von Knoten, die konzeptionell in einem rechteckigen Array beliebiger Dimensionen angeordnet sind. 
--	Eingabeschichten sind keine trainierten Parameter zugeordnet; sie stellen den Eintrittspunkt von Instanzdaten in das Netzwerk dar. 
--	Trainierbaren Schichten (verdeckten Schichten und Ausgabeschichten) sind trainierte Parameter zugeordnet, die als Gewichtungen und Biase bezeichnet werden. 
--	Die Quell- und Zielknoten müssen sich in verschiedenen Schichten befinden. 
+-	Es müssen genau eine Ausgabeschicht, mindestens eine Eingabeschicht und null oder mehr verdeckte Schichten vorhanden sein.
+-	Jede Schicht verfügt über eine feste Anzahl von Knoten, die konzeptionell in einem rechteckigen Array beliebiger Dimensionen angeordnet sind.
+-	Eingabeschichten sind keine trainierten Parameter zugeordnet; sie stellen den Eintrittspunkt von Instanzdaten in das Netzwerk dar.
+-	Trainierbaren Schichten (verdeckten Schichten und Ausgabeschichten) sind trainierte Parameter zugeordnet, die als Gewichtungen und Biase bezeichnet werden.
+-	Die Quell- und Zielknoten müssen sich in verschiedenen Schichten befinden.
 -	Verbindungen müssen azyklisch sein, anders ausgedrückt, sie dürfen keine Kette von Verbindungen bilden, die zurück zum ursprünglichen Quellknoten führen.
--	Die Ausgabeschicht darf keine Quellschicht eines Verbindungsbündels sein.  
+-	Die Ausgabeschicht darf keine Quellschicht eines Verbindungsbündels sein.
 
 ## Strukturspezifikation
 Die Strukturspezifikation eines neuronalen Netzwerks besteht aus drei Abschnitten: der **Konstantendeklaration**, der **Schichtdeklaration** und der **Verbindungsdeklaration**. Es gibt auch einen optionalen Abschnitt für eine **Deklaration der gemeinsamen Nutzung**. Die Abschnitte können in beliebiger Reihenfolge angegeben werden.
@@ -95,14 +95,14 @@ Die Schichtdeklaration ist erforderlich. Sie definiert die Größe und die Quell
 	output Result[2] from Hidden all;  
 
 -	Das Produkt der Dimensionen ist die Anzahl von Knoten in der Schicht. In diesem Beispiel liegen zwei Dimensionen [5,20] vor, d. h., die Schicht hat 100 Knoten.
--	Die Schichten können in beliebiger Reihenfolge deklariert werden, mit einer Ausnahme: Wenn mehrere Eingabeschichten definiert werden, muss die Reihenfolge ihrer Deklaration mit der Reihenfolge der Features in den Eingabedaten übereinstimmen.  
+-	Die Schichten können in beliebiger Reihenfolge deklariert werden, mit einer Ausnahme: Wenn mehrere Eingabeschichten definiert werden, muss die Reihenfolge ihrer Deklaration mit der Reihenfolge der Features in den Eingabedaten übereinstimmen.
 
 
 Um die Anzahl der Knoten in einer Schicht automatisch bestimmen zu lassen, verwenden Sie das Schlüsselwort **auto**. Die Wirkung des Schlüsselworts **auto** ist je nach Schicht unterschiedlich:
 
 -	In der Deklaration einer Eingabeschicht entspricht die Anzahl der Knoten der Anzahl von Features in den Eingabedaten.
--	In der Deklaration einer verdeckten Schicht entspricht die Anzahl der Knoten der Zahl, die vom Parameterwert für **Anzahl der verborgenen Knoten** angegeben wird. 
--	In der Deklaration einer Ausgabeschicht beträgt die Anzahl der Knoten 2 für eine Zwei-Klassen-Klassifikation und 1 für Regression; für eine Klassifikation mehrerer Klassen ist sie gleich der Anzahl der Ausgabeknoten.   
+-	In der Deklaration einer verdeckten Schicht entspricht die Anzahl der Knoten der Zahl, die vom Parameterwert für **Anzahl der verborgenen Knoten** angegeben wird.
+-	In der Deklaration einer Ausgabeschicht beträgt die Anzahl der Knoten 2 für eine Zwei-Klassen-Klassifikation und 1 für Regression; für eine Klassifikation mehrerer Klassen ist sie gleich der Anzahl der Ausgabeknoten.
 
 Im folgenden Beispiel einer Netzwerkdefinition wird die Größe aller Schichten automatisch bestimmt:
 
@@ -123,8 +123,8 @@ Die folgenden Ausgabefunktionen werden unterstützt:
 -	sqrt
 -	srlinear
 -	abs
--	tanh 
--	brlinear  
+-	tanh
+-	brlinear
 
 Die folgende Deklaration verwendet beispielsweise die Funktion **softmax**:
 
@@ -139,7 +139,7 @@ Derzeit werden fünf Arten von Verbindungsbündeln unterstützt:
 -	**Gefilterte** Bündel; diese werden mit dem Schlüsselwort **where** gefolgt von einem Prädikatausdruck angegeben.
 -	**Konvolutionsbündel**; diese werden mit dem Schlüsselwort **convolve** gefolgt von den Konvolutionsattributen angegeben.
 -	**Poolingbündel**; diese werden mit dem Schlüsselwort **max pool** oder **mean pool** angegeben.
--	**Antwortnormalisierungsbündel**; diese werden mit dem Schlüsselwort **response norm** angegeben.  	
+-	**Antwortnormalisierungsbündel**; diese werden mit dem Schlüsselwort **response norm** angegeben.
 
 ## Vollständige Bündel  
 
@@ -152,8 +152,8 @@ Die Spezifikation eines gefilterten Verbindungsbündels enthält ein Prädikat, 
 	hidden ByRow[10, 12] from Pixels where (s,d) => s[0] == d[0];
 	hidden ByCol[5, 20] from Pixels where (s,d) => abs(s[1] - d[1]) <= 1;  
 
--	Im Prädikat für _ByRow_ ist **s** ein Parameter, der einen Index in das rechteckige Knotenarray der Eingabeschicht _Pixels_ darstellt, und **d** ist ein Parameter, der einen Index in das Knotenarray der verdeckten Schicht _ByRow_ darstellt. Der Typ von **s** und **d** ist jeweils ein Tupel ganzer Zahlen der Länge zwei. Konzeptionell erstreckt sich **s** über alle Paare von ganzen Zahlen mit _0 <= s[0] < 10_ und _0 <= s[1] < 20_, während **d** sich über alle Paare von ganzen Zahlen mit _0 <= d[0] < 10_ und _0 <= d[1] < 12_ erstreckt. 
--	Auf der rechten Seite des Prädikatausdrucks befindet sich eine Bedingung. In diesem Beispiel gibt es für jeden Wert von **s** und **d**, bei dem die Bedingung "true" ist, eine Kante vom Quellschichtknoten zum Zielschichtknoten. Der Filterausdruck gibt somit an, dass das Bündel immer dann, wenn s[0] gleich d[0] ist, eine Verbindung von dem durch **s** definierten Knoten zu dem durch **d** definierten Knoten enthält.  
+-	Im Prädikat für _ByRow_ ist **s** ein Parameter, der einen Index in das rechteckige Knotenarray der Eingabeschicht _Pixels_ darstellt, und **d** ist ein Parameter, der einen Index in das Knotenarray der verdeckten Schicht _ByRow_ darstellt. Der Typ von **s** und **d** ist jeweils ein Tupel ganzer Zahlen der Länge zwei. Konzeptionell erstreckt sich **s** über alle Paare von ganzen Zahlen mit _0 <= s[0] < 10_ und _0 <= s[1] < 20_, während **d** sich über alle Paare von ganzen Zahlen mit _0 <= d[0] < 10_ und _0 <= d[1] < 12_ erstreckt.
+-	Auf der rechten Seite des Prädikatausdrucks befindet sich eine Bedingung. In diesem Beispiel gibt es für jeden Wert von **s** und **d**, bei dem die Bedingung "true" ist, eine Kante vom Quellschichtknoten zum Zielschichtknoten. Der Filterausdruck gibt somit an, dass das Bündel immer dann, wenn s[0] gleich d[0] ist, eine Verbindung von dem durch **s** definierten Knoten zu dem durch **d** definierten Knoten enthält.
 
 Optional können Sie einen Satz Gewichtungen für ein gefiltertes Bündel angeben. Der Wert für das Attribut **Weights** muss ein Tupel von Gleitkommawerten sein, dessen Länge der Anzahl der vom Bündel definierten Verbindungen entspricht. Standardmäßig werden Gewichtungen nach dem Zufallsprinzip generiert.
 
@@ -175,27 +175,27 @@ Konvolutionsbündel unterstützen die folgenden Attribute:
 
 Die Form und Positionen der Kernel können mit den Attributen **KernelShape**, **Stride**, **Padding**, **LowerPad** und **UpperPad** definiert werden:
 
--	**KernelShape** (erforderlich): definiert die Dimensionalität jedes Kernels für das Konvolutionsbündel. Der Wert muss ein Tupel positiver ganzer Zahlen sein, dessen Länge der Arität des Bündels entspricht. Jede Komponente dieses Tupels darf nicht größer sein als die entsprechende Komponente von **InputShape**. 
--	**Stride** (optional): definiert die gleitenden Schrittgrößen der Konvolution (eine Schrittgröße für jede Dimension), d. h. den Abstand zwischen den zentralen Knoten. Der Wert muss ein Tupel positiver ganzer Zahlen sein, dessen Länge der Arität des Bündels entspricht. Jede Komponente dieses Tupels darf nicht größer sein als die entsprechende Komponente von **KernelShape**. Der Standardwert ist ein Tupel, in dem alle Komponenten gleich eins sind. 
--	**Sharing** (optional): definiert die gemeinsame Nutzung von Gewichtungen für jede Dimension der Konvolution. Der Wert kann ein einzelner boolescher Wert oder ein Tupel boolescher Werte sein, dessen Länge der Arität des Bündels entspricht. Ein einzelner boolescher Wert wird zu einem Tupel der richtigen Länge erweitert, in dem alle Komponenten gleich dem angegebenen Wert sind. Der Standardwert ist ein Tupel, in dem alle Werte "True" sind. 
--	**MapCount** (optional): definiert die Anzahl der Featurezuordnungen für das Konvolutionsbündel. Der Wert kann eine einzelne positive ganze Zahl oder ein Tupel positiver ganzer Zahlen sein, dessen Länge der Arität des Bündels entspricht. Ein einzelner ganzzahliger Wert wird zu einem Tupel der richtigen Länge erweitert, in dem die ersten Komponenten gleich dem angegebenen Wert und alle übrigen Komponenten gleich eins sind. Der Standardwert ist eins. Die Gesamtanzahl an Featurezuordnungen ist das Produkt der Komponenten des Tupels. Die Faktorisierung dieser Gesamtanzahl über alle Komponenten legt fest, wie die Featurezuordnungswerte in den Zielknoten gruppiert werden. 
--	**Weights** (optional): definiert die anfänglichen Gewichtungen für das Bündel. Der Wert muss ein Tupel von Gleitkommawerten sein, dessen Länge der Anzahl der Kernel mal der Anzahl der Gewichtungen pro Kernel entspricht, wie weiter unten in diesem Artikel definiert. Die Standardgewichtungen werden nach dem Zufallsprinzip generiert.  
+-	**KernelShape** (erforderlich): definiert die Dimensionalität jedes Kernels für das Konvolutionsbündel. Der Wert muss ein Tupel positiver ganzer Zahlen sein, dessen Länge der Arität des Bündels entspricht. Jede Komponente dieses Tupels darf nicht größer sein als die entsprechende Komponente von **InputShape**.
+-	**Stride** (optional): definiert die gleitenden Schrittgrößen der Konvolution (eine Schrittgröße für jede Dimension), d. h. den Abstand zwischen den zentralen Knoten. Der Wert muss ein Tupel positiver ganzer Zahlen sein, dessen Länge der Arität des Bündels entspricht. Jede Komponente dieses Tupels darf nicht größer sein als die entsprechende Komponente von **KernelShape**. Der Standardwert ist ein Tupel, in dem alle Komponenten gleich eins sind.
+-	**Sharing** (optional): definiert die gemeinsame Nutzung von Gewichtungen für jede Dimension der Konvolution. Der Wert kann ein einzelner boolescher Wert oder ein Tupel boolescher Werte sein, dessen Länge der Arität des Bündels entspricht. Ein einzelner boolescher Wert wird zu einem Tupel der richtigen Länge erweitert, in dem alle Komponenten gleich dem angegebenen Wert sind. Der Standardwert ist ein Tupel, in dem alle Werte "True" sind.
+-	**MapCount** (optional): definiert die Anzahl der Featurezuordnungen für das Konvolutionsbündel. Der Wert kann eine einzelne positive ganze Zahl oder ein Tupel positiver ganzer Zahlen sein, dessen Länge der Arität des Bündels entspricht. Ein einzelner ganzzahliger Wert wird zu einem Tupel der richtigen Länge erweitert, in dem die ersten Komponenten gleich dem angegebenen Wert und alle übrigen Komponenten gleich eins sind. Der Standardwert ist eins. Die Gesamtanzahl an Featurezuordnungen ist das Produkt der Komponenten des Tupels. Die Faktorisierung dieser Gesamtanzahl über alle Komponenten legt fest, wie die Featurezuordnungswerte in den Zielknoten gruppiert werden.
+-	**Weights** (optional): definiert die anfänglichen Gewichtungen für das Bündel. Der Wert muss ein Tupel von Gleitkommawerten sein, dessen Länge der Anzahl der Kernel mal der Anzahl der Gewichtungen pro Kernel entspricht, wie weiter unten in diesem Artikel definiert. Die Standardgewichtungen werden nach dem Zufallsprinzip generiert.
 
 Es gibt zwei Gruppen von Eigenschaften zum Steuern der Auffüllung, die sich gegenseitig ausschließen:
 
 -	**Padding** (optional): Legt fest, ob die Eingabe unter Verwendung eines **Standardauffüllungsschemas** aufgefüllt werden soll. Der Wert kann ein einzelner boolescher Wert oder ein Tupel boolescher Werte sein, dessen Länge der Arität des Bündels entspricht. Ein einzelner boolescher Wert wird zu einem Tupel der richtigen Länge erweitert, in dem alle Komponenten gleich dem angegebenen Wert sind. Wenn der Wert einer Dimension "True" ist, wird die Quelle in dieser Dimension logisch mit Nullwertzellen aufgefüllt, um zusätzliche Kernelanwendungen zu unterstützen, sodass die zentralen Knoten des ersten und letzten Kernels in dieser Dimension den ersten und letzten Knoten in dieser Dimension in der Zielschicht darstellen. Die Anzahl von „Dummy“-Knoten in jeder Dimension wird somit automatisch bestimmt, um genau (_(InputShape[d] - 1) / Stride[d] + 1_ Kernel in die aufgefüllte Quellschicht aufzunehmen. Wenn der Wert einer Dimension "False" ist, werden die Kernel so definiert, dass die Anzahl der ausgelassenen Knoten auf jeder Seite gleich ist (bis zu einer Differenz von 1). Der Standardwert dieses Attributs ist ein Tupel, in dem alle Komponenten "False" sind.
 -	**UpperPad** und **LowerPad** (optional): Ermöglichen eine bessere Steuerung des zu verwendenden Umfangs der Auffüllung. **Wichtig:** Diese Attribute können nur dann definiert werden, wenn die **Padding**-Eigenschaft oben ***nicht*** definiert wurde. Die Werte sollten Tupel ganzer Zahlen sein, deren Längen der Arität des Bündels entsprechen. Wenn diese Attribute angegeben werden, werden am unteren und oberen Ende jeder Dimension der Eingabeschicht „Dummy“-Knoten hinzugefügt. Die Anzahl der Knoten, die dem unteren und oberen Ende der Dimension hinzugefügt werden, wird durch **LowerPad**[i] bzw. **UpperPad**[i] festgelegt. Um sicherzustellen, dass Kernel nur "realen" Knoten und nicht "Dummy"-Knoten entsprechen, müssen die folgenden Bedingungen erfüllt sein:
-	-	Jede Komponente von **LowerPad** muss kleiner als (aber nicht gleich) KernelShape[d]/2 sein. 
-	-	Jede Komponente von **UpperPad** darf nicht größer sein als KernelShape[d]/2. 
-	-	Der Standardwert dieser Attribute ist ein Tupel, in dem alle Komponenten gleich 0 sind. 
+	-	Jede Komponente von **LowerPad** muss kleiner als (aber nicht gleich) KernelShape[d]/2 sein.
+	-	Jede Komponente von **UpperPad** darf nicht größer sein als KernelShape[d]/2.
+	-	Der Standardwert dieser Attribute ist ein Tupel, in dem alle Komponenten gleich 0 sind.
 
 Die Einstellung **Padding** = „true“ lässt so viel Auffüllung wie nötig zu, um das „Zentrum“ des Kernels innerhalb der „tatsächlichen“ Eingabe zu halten. Dadurch wird die Formel für die Berechnung der Ausgabegröße etwas geändert. In der Regel wird die Ausgabegröße _D_ berechnet als _D = (I - K) / S + 1_, wobei _I_ die Eingabegröße, _K_ die Kernelgröße, _S_ „STRIDE“ und _/_ die Division ganzer Zahlen (Runden in Richtung Null) ist. Wenn Sie UpperPad = [1, 1] festlegen, ist die Eingabegröße _I_ tatsächlich 29, weshalb _D = (29-5) / 2 + 1 = 13_ gilt. Wenn jedoch **Padding** = „true“ ist, wird _I_ tatsächlich durch _K - 1_ erhöht. Daher gilt _D = ((28 + 4) - 5) / 2 + 1 = 27 / 2 + 1 = 13 + 1 = 14_. Durch Angeben von Werten für **UpperPad** und **LowerPad** erhalten Sie wesentlich mehr Kontrolle über die Auffüllung, als wenn nur **Padding** = true festgelegt wird.
 
 Weitere Informationen zu Konvolutionsnetzwerken und ihren Anwendungsmöglichkeiten finden Sie in den folgenden Artikeln (in englischer Sprache):
 
 -	[http://deeplearning.net/tutorial/lenet.html ](http://deeplearning.net/tutorial/lenet.html)
--	[http://research.microsoft.com/pubs/68920/icdar03.pdf](http://research.microsoft.com/pubs/68920/icdar03.pdf) 
--	[http://people.csail.mit.edu/jvb/papers/cnn\_tutorial.pdf](http://people.csail.mit.edu/jvb/papers/cnn_tutorial.pdf)  
+-	[http://research.microsoft.com/pubs/68920/icdar03.pdf](http://research.microsoft.com/pubs/68920/icdar03.pdf)
+-	[http://people.csail.mit.edu/jvb/papers/cnn\_tutorial.pdf](http://people.csail.mit.edu/jvb/papers/cnn_tutorial.pdf)
 
 ## Poolingbündel
 Ein **Poolingbündel** wendet Geometrie ähnlich wie Konvolutionskonnektivität an, verwendet jedoch vordefinierte Funktionen für Quellknotenwerte, um die Zielknotenwerte abzuleiten. Daher haben Poolingbündel keinen trainierbaren Zustand (Gewichtungen oder Biase). Poolingbündel unterstützen alle Konvolutionsattribute mit Ausnahme von **Sharing**, **MapCount** und **Weights**.
@@ -211,15 +211,15 @@ Im folgenden Beispiel wird ein Poolingbündel veranschaulicht:
 	    Stride      = [ 1,  2,  2];
 	  }  
 
--	Die Arität des Bündels ist 3 (die Länge der Tupel **InputShape**, **KernelShape** und **Stride**). 
--	Die Anzahl der Knoten in der Quellschicht beträgt _5 * 24 * 24 = 2880_. 
--	Dies ist eine herkömmliche lokale Poolingschicht, da **KernelShape** und **Stride** gleich sind. 
--	Die Anzahl der Knoten in der Zielschicht beträgt _5 * 12 * 12 = 1440_.  
+-	Die Arität des Bündels ist 3 (die Länge der Tupel **InputShape**, **KernelShape** und **Stride**).
+-	Die Anzahl der Knoten in der Quellschicht beträgt _5 * 24 * 24 = 2.880_.
+-	Dies ist eine herkömmliche lokale Poolingschicht, da **KernelShape** und **Stride** gleich sind.
+-	Die Anzahl der Knoten in der Zielschicht beträgt _5 * 12 * 12 = 1.440_.
 	
 Weitere Informationen zu Poolingschichten finden Sie in den folgenden Artikeln (in englischer Sprache):
 
 -	[http://www.cs.toronto.edu/~hinton/absps/imagenet.pdf](http://www.cs.toronto.edu/~hinton/absps/imagenet.pdf) (Abschnitt 3 4)
--	[http://cs.nyu.edu/~koray/publis/lecun-iscas-10.pdf](http://cs.nyu.edu/~koray/publis/lecun-iscas-10.pdf) 
+-	[http://cs.nyu.edu/~koray/publis/lecun-iscas-10.pdf](http://cs.nyu.edu/~koray/publis/lecun-iscas-10.pdf)
 -	[http://cs.nyu.edu/~koray/publis/jarrett-iccv-09.pdf](http://cs.nyu.edu/~koray/publis/jarrett-iccv-09.pdf)
 	
 ## Antwortnormalisierungsbündel
@@ -230,7 +230,7 @@ Die **Antwortnormalisierung** ist ein lokales Normalisierungsschema, das erstmal
 Antwortnormalisierungsbündel unterstützen alle Konvolutionsattribute mit Ausnahme von **Sharing**, **MapCount** und **Weights**.
  
 -	Wenn der Kernel Neuronen in derselben Zuordnung wie ***x*** enthält, wird das Normalisierungsschema als **zuordnungsinterne Normalisierung** bezeichnet. Um diese Art von Normalisierung zu definieren, muss die erste Koordinate in **InputShape** den Wert 1 haben.
--	Wenn der Kernel Neuronen an derselben räumlichen Position wie ***x*** enthält, die Neuronen sich jedoch in anderen Zuordnungen befinden, wird das Normalisierungsschema als **zuordnungsübergreifende Normalisierung** bezeichnet. Diese Art der Antwortnormalisierung implementiert eine Form von lateraler Hemmung, inspiriert durch den in echten Neuronen gefundenen Typ; dies sorgt für einen Wettbewerb um hohe Aktivierungsniveaus zwischen den in unterschiedlichen Zuordnungen berechneten Neuronenausgaben. Um eine zuordnungsübergreifende Normalisierung zu definieren, muss die erste Koordinate eine ganze Zahl größer als eins und nicht größer als die Anzahl der Zuordnungen sein; der Rest der Koordinaten muss den Wert 1 haben.  
+-	Wenn der Kernel Neuronen an derselben räumlichen Position wie ***x*** enthält, die Neuronen sich jedoch in anderen Zuordnungen befinden, wird das Normalisierungsschema als **zuordnungsübergreifende Normalisierung** bezeichnet. Diese Art der Antwortnormalisierung implementiert eine Form von lateraler Hemmung, inspiriert durch den in echten Neuronen gefundenen Typ; dies sorgt für einen Wettbewerb um hohe Aktivierungsniveaus zwischen den in unterschiedlichen Zuordnungen berechneten Neuronenausgaben. Um eine zuordnungsübergreifende Normalisierung zu definieren, muss die erste Koordinate eine ganze Zahl größer als eins und nicht größer als die Anzahl der Zuordnungen sein; der Rest der Koordinaten muss den Wert 1 haben.
 
 Da Antwortnormalisierungsbündel zur Bestimmung des Zielknotenwerts eine vordefinierte Funktion auf Quellknotenwerte anwenden, haben sie keinen trainierbaren Zustand (Gewichtungen oder Biase).
 
@@ -238,9 +238,9 @@ Da Antwortnormalisierungsbündel zur Bestimmung des Zielknotenwerts eine vordefi
 
 Zusätzlich zu den vier weiter oben beschriebenen Attributen unterstützen Antwortnormalisierungsbündel auch die folgenden Attribute:
 
--	**Alpha** (erforderlich): Gibt einen Gleitkommawert an, der in der vorstehenden Formel ***α*** entspricht. 
--	**Beta** (erforderlich): gibt einen Gleitkommawert an, der in der vorstehenden Formel ***β*** entspricht. 
--	**Offset** (optional): gibt einen Gleitkommawert an, der in der vorstehenden Formel ***k*** entspricht. Der Standardwert lautet 1.  
+-	**Alpha** (erforderlich): Gibt einen Gleitkommawert an, der in der vorstehenden Formel ***α*** entspricht.
+-	**Beta** (erforderlich): gibt einen Gleitkommawert an, der in der vorstehenden Formel ***β*** entspricht.
+-	**Offset** (optional): gibt einen Gleitkommawert an, der in der vorstehenden Formel ***k*** entspricht. Der Standardwert lautet 1.
 
 Das folgende Beispiel definiert ein Antwortnormalisierungsbündel mit diesen Attributen:
 
@@ -252,9 +252,9 @@ Das folgende Beispiel definiert ein Antwortnormalisierungsbündel mit diesen Att
 	    Beta = 0.75;
 	  }  
 
--	Die Quellschicht enthält fünf Zuordnungen, jede mit einer Dimension von 12x12, also insgesamt 1.440 Knoten. 
--	Der Wert von **KernelShape** gibt an, das es sich hierbei um eine Schicht mit zuordnungsinterner Normalisierung handelt, bei der die Umgebung ein 3x3-Rechteck ist. 
--	Der Standardwert von **Padding** ist "False", daher hat die Zielschicht nur 10 Knoten in jeder Dimension. Um einen Knoten in die Zielschicht entsprechend jedem Knoten in der Quellschicht einzuschließen, fügen Sie Padding = [true, true, true] hinzu, und ändern Sie die Größe von RN1 in [5, 12, 12].  
+-	Die Quellschicht enthält fünf Zuordnungen, jede mit einer Dimension von 12x12, also insgesamt 1.440 Knoten.
+-	Der Wert von **KernelShape** gibt an, das es sich hierbei um eine Schicht mit zuordnungsinterner Normalisierung handelt, bei der die Umgebung ein 3x3-Rechteck ist.
+-	Der Standardwert von **Padding** ist "False", daher hat die Zielschicht nur 10 Knoten in jeder Dimension. Um einen Knoten in die Zielschicht entsprechend jedem Knoten in der Quellschicht einzuschließen, fügen Sie Padding = [true, true, true] hinzu, und ändern Sie die Größe von RN1 in [5, 12, 12].
 
 ## Deklaration der gemeinsamen Nutzung 
 In Net# wird optional die Definition mehrerer Bündel mit gemeinsamen Gewichtungen unterstützt. Die Gewichtungen zweier beliebiger Bündel können gemeinsam genutzt werden, sofern die Struktur der Bündel identisch ist. Die folgende Syntax definiert Bündel mit gemeinsamen Gewichtungen:
@@ -305,9 +305,9 @@ Die folgende Deklaration der gemeinsamen Nutzung beispielsweise nennt Schichtnam
 	}
 	share { H1, H2 } // share both weights and biases  
 
--	Die Eingabefeatures werden in zwei gleich große Eingabeschichten partitioniert. 
--	Anschließend berechnen die verdeckten Schichten Features höherer Ebene in den zwei Eingabeschichten. 
--	Die Deklaration der gemeinsamen Nutzung gibt an, dass _H1_ und _H2_ auf die gleiche Weise aus den jeweiligen Eingaben berechnet werden müssen.  
+-	Die Eingabefeatures werden in zwei gleich große Eingabeschichten partitioniert.
+-	Anschließend berechnen die verdeckten Schichten Features höherer Ebene in den zwei Eingabeschichten.
+-	Die Deklaration der gemeinsamen Nutzung gibt an, dass _H1_ und _H2_ auf die gleiche Weise aus den jeweiligen Eingaben berechnet werden müssen.
  
 Alternativ kann dies wie folgt mit zwei separaten Deklarationen der gemeinsamen Nutzung angegeben werden:
 
@@ -331,9 +331,9 @@ Dieses einfache Beispiel zeigt, wie ein neuronales Netzwerkmodell mit einer einz
 
 Das Beispiel veranschaulicht die Verwendung einiger grundlegender Befehle wie folgt:
 
--	Die erste Zeile definiert die Eingabeschicht (mit dem Namen _Data_). Wenn Sie das Schlüsselwort **auto** verwenden, bezieht das neuronale Netzwerk automatisch alle Featurespalten in die Eingabebeispiele ein. 
+-	Die erste Zeile definiert die Eingabeschicht (mit dem Namen _Data_). Wenn Sie das Schlüsselwort **auto** verwenden, bezieht das neuronale Netzwerk automatisch alle Featurespalten in die Eingabebeispiele ein.
 -	In der zweiten Zeile wird die verdeckte Schicht erstellt. Die verdeckte Schicht hat 200 Knoten und erhält den Namen _H_. Diese Schicht ist vollständig mit der Eingabeschicht verbunden.
--	In der dritten Zeile wird die Ausgabeschicht definiert. Sie erhält den Namen _O_ und enthält 10 Ausgabeknoten. Wenn das neuronale Netzwerk für die Klassifizierung verwendet wird, ist ein Ausgabeknoten pro Klasse vorhanden. Das Schlüsselwort **sigmoid** gibt die auf die Ausgabeschicht angewendete Ausgabefunktion an.   
+-	In der dritten Zeile wird die Ausgabeschicht definiert. Sie erhält den Namen _O_ und enthält 10 Ausgabeknoten. Wenn das neuronale Netzwerk für die Klassifizierung verwendet wird, ist ein Ausgabeknoten pro Klasse vorhanden. Das Schlüsselwort **sigmoid** gibt die auf die Ausgabeschicht angewendete Ausgabefunktion an.
 
 ### Definieren von mehreren verborgenen Schichten: Beispiel Computer Vision
 Das folgende Beispiel zeigt die Definition eines etwas komplexeren neuronalen Netzwerks mit mehreren benutzerdefinierten verdeckten Schichten.
@@ -396,14 +396,14 @@ Die Definition des folgenden Netzwerks zur Erkennung von Ziffern veranschaulicht
 -	Das Schlüsselwort **convolve** gibt an, dass die Schichten mit den Namen _Conv1_ und _Conv2_ Konvolutionsschichten sind. Auf jede dieser Schichtdeklarationen folgt eine Liste der Konvolutionsattribute.
 -	Das Netzwerk hat eine dritte verdeckte Schicht: _Hid3_. Diese ist vollständig mit der zweiten verdeckten Schicht _Conv2_ verbunden.
 -	Die Ausgabeschicht _Digit_ ist nur mit der dritten verdeckten Schicht (_Hid3_) verbunden. Das Schlüsselwort **all** gibt an, dass die Ausgabeschicht vollständig mit _Hid3_ verbunden ist.
--	Die Arität der Konvolution ist drei (die Länge der Tupel **InputShape**, **KernelShape**, **Stride** und **Sharing**). 
--	Die Anzahl der Gewichtungen pro Kernel ist _1 + **KernelShape**\[0] * **KernelShape**\[1] * **KernelShape**\[2] = 1 + 1 * 5 * 5 = 26. Oder 26 * 50 = 1300_.
+-	Die Arität der Konvolution ist drei (die Länge der Tupel **InputShape**, **KernelShape**, **Stride** und **Sharing**).
+-	Die Anzahl der Gewichtungen pro Kernel ist _1 + **KernelShape**[0] *KernelShape**[1] * **KernelShape**[2] = 1 + 1 * 5 * 5 = 26. Oder 26 * 50 = 1300_.
 -	Sie können die Knoten in jeder verdeckten Schicht wie folgt berechnen:
-	-	**NodeCount**\[0] = (5 - 1) / 1 + 1 = 5.
-	-	**NodeCount**\[1] = (13–5)/2+1 = 5. 
-	-	**NodeCount**\[2] = (13 - 5) / 2 + 1 = 5. 
--	Die Gesamtanzahl der Knoten kann anhand der deklarierten Dimensionalität der Schicht [50, 5, 5] wie folgt berechnet werden: _**MapCount** * **NodeCount**\[0] * **NodeCount**\[1] * **NodeCount**\[2] = 10 * 5 * 5 * 5_
--	Da **Sharing**[d] nur für _d == 0_ „False“ ist, beträgt die Anzahl der Kernel _**MapCount** * **NodeCount**[0] = 10 * 5 = 50_. 
+	-	**NodeCount**[0] = (5 - 1) / 1 + 1 = 5.
+	-	**NodeCount**[1] = (13–5)/2+1 = 5.
+	-	**NodeCount**[2] = (13 - 5) / 2 + 1 = 5.
+-	Die Gesamtanzahl der Knoten kann anhand der deklarierten Dimensionalität der Schicht [50, 5, 5] wie folgt berechnet werden: _**MapCount** *NodeCount**[0] * **NodeCount**[1] *NodeCount**[2] = 10 * 5 * 5 * 5_
+-	Da **Sharing**[d] nur für _d == 0_ „False“ ist, beträgt die Anzahl der Kernel _**MapCount** *NodeCount**[0] = 10 * 5 = 50_.
 
 
 ## Danksagung
@@ -414,4 +414,4 @@ Die Net#-Sprache zum Anpassen der Architektur von neuronalen Netzwerken wurde be
 [1]: ./media/machine-learning-azure-ml-netsharp-reference-guide/formula_large.gif
  
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0914_2016-->

@@ -4,7 +4,7 @@
 	services="machine-learning"
 	documentationCenter=""
 	authors="bradsev,deguhath,gokuma"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun"  />
 
 <tags
@@ -20,7 +20,7 @@
 
 [AZURE.INCLUDE [machine-learning-spark-modeling](../../includes/machine-learning-spark-modeling.md)]
 
-Diese Suite von Themen zeigt, wie mit HDInsight Spark allgemeine Data Science-Aufgaben wie Datenerfassung, Featureentwicklung, Modellierung und Modellauswertung durchgeführt werden können. Die verwendeten Daten sind eine Stichprobe des Datasets für Taxifahrten und Fahrpreise in New York aus dem Jahr 2013. Die erstellten Modelle umfassen logistische und lineare Regression, zufällige Gesamtstrukturen und Gradient-Boosted-Strukturen. In den Themen wird auch gezeigt, wie diese Modelle in Azure Blob Storage (WASB) gespeichert werden und wie ihre Vorhersageleistung bewertet und ausgewertet wird. Fortgeschrittenere Themen behandeln das Traninieren von Modellen mithilfe übergreifender Validierung und Hyper-Parameter-Sweeping. In diesem Übersichtsthema wird außerdem beschrieben, wie Sie einen Spark-Cluster einrichten, den Sie zum Ausführen der Schritte in den drei bereitgestellten exemplarischen Vorgehensweisen benötigen.
+Diese Suite von Themen zeigt, wie mit HDInsight Spark allgemeine Data Science-Aufgaben wie Datenerfassung, Featureentwicklung, Modellierung und Modellauswertung durchgeführt werden können. Die verwendeten Daten sind eine Stichprobe des Datasets für Taxifahrten und Fahrpreise in New York aus dem Jahr 2013. Die erstellten Modelle umfassen logistische und lineare Regression, zufällige Gesamtstrukturen und Gradient-Boosted-Strukturen. In den Themen wird auch gezeigt, wie diese Modelle in Azure Blob Storage (WASB) gespeichert werden und wie ihre Vorhersageleistung bewertet und ausgewertet wird. Fortgeschrittenere Themen behandeln das Trainieren von Modellen mithilfe übergreifender Validierung und Hyper-Parameter-Sweeping. In diesem Übersichtsthema wird außerdem beschrieben, wie Sie einen Spark-Cluster einrichten, den Sie zum Ausführen der Schritte in den drei bereitgestellten exemplarischen Vorgehensweisen benötigen.
 
 [Spark](http://spark.apache.org/) ist ein Open-Source-Framework für die Parallelverarbeitung, das die In-Memory-Verarbeitung unterstützt, um die Leistung von Anwendungen zur Analyse von Big Data zu steigern. Das Spark-Verarbeitungsmodul ist auf Geschwindigkeit, einfache Nutzung und anspruchsvolle Analysen ausgelegt. Dank seiner verteilten In-Memory-Datenverarbeitungsfunktionen eignet sich Spark besonders für iterative Algorithmen bei Machine Learning und für Graphberechnungen. [MLlib](http://spark.apache.org/mllib/) ist die skalierbare Machine Learning-Bibliothek von Spark, die Modellierungsfunktionen in diese verteilte Umgebung einbringt.
 
@@ -37,7 +37,7 @@ Installationsschritte und Code in dieser exemplarischen Vorgehensweise beziehen 
 
 ![](./media/machine-learning-data-science-spark-overview/spark-cluster-on-portal.png)
 
-> [AZURE.NOTE] Ein Thema, das die Verwendung von Scala statt Python zur Ausführung von Aufgaben für einen End-to-End-Data Science-Process veranschaulicht, ist [Data Science using Scala with Spark on Azure](machine-learning-data-science-process-scala-walkthrough.md) (Data Science mit Scala und Spark in Azure).
+> [AZURE.NOTE] Ein Thema, das die Verwendung von Scala statt Python zur Ausführung von Aufgaben für einen End-to-End-Data Science-Process veranschaulicht, ist [Data Science unter Verwendung von Scala und Spark in Azure](machine-learning-data-science-process-scala-walkthrough.md).
 
 >[AZURE.INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
@@ -146,4 +146,4 @@ Nachdem Sie einen HDInsight Spark-Cluster eingerichtet und die Jupyter-Notebooks
 
 **Übergreifende Validierung und Hyperparameter-Sweeping:** Unter [Erweiterte Datendurchsuchung und Modellierung mit Spark](machine-learning-data-science-spark-advanced-data-exploration-modeling.md) erfahren Sie, wie Modelle mit Kreuzvalidierung und Hyperparameter-Sweeping trainiert werden können.
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0914_2016-->

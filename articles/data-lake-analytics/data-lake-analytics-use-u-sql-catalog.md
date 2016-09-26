@@ -4,7 +4,7 @@
    services="data-lake-analytics"
    documentationCenter=""
    authors="edmacauley"
-   manager="paulettm"
+   manager="jhubbard"
    editor="cgronlun"/>
 
 <tags
@@ -61,7 +61,7 @@ Sie können die Data Lake-Tools für Visual Studio zur Katalogverwaltung nutzen.
 ![Durchsuchen von Visual Studio U-SQL-Katalogen](./media/data-lake-analytics-use-u-sql-catalog/data-lake-analytics-browse-catalogs.png)
 
 
-## Weitere Informationen
+## Siehe auch
 
 - Erste Schritte
     - [Erste Schritte mit Data Lake Analytics mithilfe des Azure-Portals](data-lake-analytics-get-started-portal.md)
@@ -84,4 +84,4 @@ Sie können die Data Lake-Tools für Visual Studio zur Katalogverwaltung nutzen.
     - [Verwenden interaktiver Lernprogramme zu Azure Data Lake Analytics](data-lake-analytics-use-interactive-tutorials.md)
     - [Analysieren von Websiteprotokollen mit Azure Data Lake Analytics](data-lake-analytics-analyze-weblogs.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0914_2016-->

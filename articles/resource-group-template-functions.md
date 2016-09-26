@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="08/11/2016"
+   ms.date="09/12/2016"
    ms.author="tomfitz"/>
 
 # Vorlagenfunktionen im Azure-Ressourcen-Manager
@@ -1087,7 +1087,7 @@ Im folgenden Beispiel wird auf ein Speicherkonto in einer anderen Ressourcengrup
 		}
 	}
 
-Die Eigenschaften des zurückgegebenen Objekts variieren je nach Ressourcentyp.
+Die Eigenschaften für das Objekt, die von der **reference**-Funktion zurückgegeben werden, variieren je nach Ressourcentyp. Um die Eigenschaftennamen und Werte für einen Ressourcentyp anzuzeigen, erstellen Sie eine einfache Vorlage, die das Objekt im Abschnitt **outputs** zurückgibt. Wenn Sie über eine Ressource dieses Typs verfügen, gibt Ihre Vorlage lediglich das Objekt zurück, ohne neue Ressourcen bereitzustellen. Wenn Sie nicht über eine vorhandene Ressource dieses Typs verfügen, stellt Ihre Vorlage nur diesen Typ bereit und gibt das Objekt zurück. Fügen Sie anschließend diese Eigenschaften anderen Vorlagen hinzu, die während der Bereitstellung die Werte dynamisch abrufen müssen.
 
 <a id="resourcegroup" />
 ### Ressourcengruppe
@@ -1217,4 +1217,4 @@ Das folgende Beispiel zeigt ein Abrufen der subscription-Funktion im Abschnitt �
 - Informationen dazu, wie Sie beim Erstellen eines Ressourcentyps eine bestimmte Anzahl von Durchläufen ausführen, finden Sie unter [Erstellen mehrerer Instanzen von Ressourcen im Azure-Ressourcen-Manager](resource-group-create-multiple.md).
 - Informationen zum Bereitstellen der erstellten Vorlage finden Sie unter [Bereitstellen einer Anwendung mit einer Azure-Ressourcen-Manager-Vorlage](resource-group-template-deploy.md).
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0914_2016-->

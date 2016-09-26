@@ -13,7 +13,7 @@ ms.devlang="na"
 ms.topic="article"
 ms.tgt_pltfrm="vm-windows"
 ms.workload="infrastructure-services"
-ms.date="05/17/2016"
+ms.date="09/06/2016"
 ms.author="rclaus" />
 
 #Verschiedene Überlegungen zu Images für virtuelle Oracle-Computer
@@ -53,7 +53,7 @@ Sie können zwei verschiedene Verfahren zum Anfügen mehrerer Datenträger verwe
 
 Wenn Sie Oracle Database auf virtuellen Azure-Computern verwenden, müssen Sie eine Lösung für Hochverfügbarkeit und Notfallwiederherstellung implementieren, um Ausfallzeiten zu vermeiden. Sie sind außerdem für das Sichern der eigenen Daten und Anwendung verantwortlich.
 
-Hochverfügbarkeit und Notfallwiederherstellung für Oracle Database Enterprise Edition (ohne RAC) in Azure kann mithilfe von [Data Guard, Active Data Guard](http://www.oracle.com/technetwork/articles/oem/dataguardoverview-083155.html) oder [Oracle GoldenGate](http://www.oracle.com/technetwork/middleware/goldengate) mit zwei Datenbanken auf zwei eigenen virtuellen Computern erreicht werden. Beide virtuellen Computer sollten sich in demselben [Clouddienst](virtual-machines-linux-classic-connect-vms.md) und in demselben [virtuellen Netzwerk](https://azure.microsoft.com/documentation/services/virtual-network/) befinden, um sicherzustellen, dass sie über die private statische IP-Adresse Zugriff aufeinander haben. Darüber hinaus wird empfohlen, die virtuellen Computer in derselben [Verfügbarkeitsgruppe](virtual-machines-windows-manage-availability.md) zu platzieren, damit sie von Azure in eigenen Fehlerdomänen und Upgradedomänen angeordnet werden können. Beachten Sie, dass nur virtuelle Computer in demselben Clouddienst Mitglieder derselben Verfügbarkeitsgruppe sein können. Jeder virtuelle Computer muss mindestens 2 GB Arbeitsspeicher und 5 GB Speicherplatz aufweisen.
+Hochverfügbarkeit und Notfallwiederherstellung für Oracle Database Enterprise Edition (ohne RAC) in Azure kann mithilfe von [Data Guard, Active Data Guard](http://www.oracle.com/technetwork/articles/oem/dataguardoverview-083155.html) oder [Oracle GoldenGate](http://www.oracle.com/technetwork/middleware/goldengate) mit zwei Datenbanken auf zwei eigenen virtuellen Computern erreicht werden. Beide virtuellen Computer sollten sich in demselben [Clouddienst](virtual-machines-linux-classic-connect-vms.md) und in demselben [virtuellen Netzwerk](https://azure.microsoft.com/documentation/services/virtual-network/) befinden, um sicherzustellen, dass sie über die private statische IP-Adresse Zugriff aufeinander haben. Darüber hinaus wird empfohlen, die virtuellen Computer in derselben [Verfügbarkeitsgruppe](virtual-machines-windows-manage-availability.md) zu platzieren, damit sie von Azure in eigenen Fehlerdomänen und Upgradedomänen angeordnet werden können. Nur virtuelle Computer in demselben Clouddienst können Mitglieder derselben Verfügbarkeitsgruppe sein. Jeder virtuelle Computer muss mindestens 2 GB Arbeitsspeicher und 5 GB Speicherplatz aufweisen.
 
 Mit Oracle Data Guard kann Hochverfügbarkeit mit einer primären Datenbank auf einem virtuellen Computer, einer sekundären Datenbank (Standbydatenbank) auf einem weiteren virtuellen Computer und unidirektionaler Replikation zwischen diesen Komponenten erzielt werden. Das Ergebnis ist Lesezugriff auf die Kopie der Datenbank. Mit Oracle GoldenGate können Sie bidirektionale Replikation zwischen den beiden Datenbanken konfigurieren. Informationen zum Einrichten einer Lösung für Hochverfügbarkeit für die Datenbanken mithilfe dieser Tools finden Sie in der Dokumentation zu [Active Data Guard](http://www.oracle.com/technetwork/database/features/availability/data-guard-documentation-152848.html) und [GoldenGate](http://docs.oracle.com/goldengate/1212/gg-winux/index.html) auf der Oracle-Website. Wenn Sie Schreibzugriff auf die Kopie der Datenbank benötigen, können Sie [Oracle Active Data Guard](http://www.oracle.com/uk/products/database/options/active-data-guard/overview/index.html) verwenden.
 
@@ -61,9 +61,9 @@ Mit Oracle Data Guard kann Hochverfügbarkeit mit einer primären Datenbank auf 
 
 -  **Clustering wird nur in der Enterprise Edition unterstützt.** Sie sind nur für die Verwendung von WebLogic-Clustern lizenziert, wenn Sie die Enterprise Edition von WebLogic Server verwenden. Verwenden Sie Clustering nicht mit der WebLogic Server Standard Edition.
 
--  **Verbindungstimeouts:** Wenn die Anwendung Verbindungen mit öffentlichen Endpunkten eines anderen Azure-Clouddiensts (z. B. einem Dienst auf Datenbankebene) erfordert, werden diese Verbindungen möglicherweise nach 4 Minuten Inaktivität von Azure geschlossen. Dies wirkt sich eventuell auf Features und Anwendungen aus, die Verbindungspools erfordern, da Verbindungen, die länger als dieses Limit inaktiv sind, möglicherweise nicht mehr gültig sind. Wenn sich dies auf die Anwendung auswirkt, sollten Sie das Anwenden von Keep-Alive-Logik auf die Verbindungspools in Betracht ziehen.
+-  **Verbindungstimeouts:** Wenn die Anwendung Verbindungen mit öffentlichen Endpunkten eines anderen Azure-Clouddiensts (z.B. einem Dienst auf Datenbankebene) erfordert, werden diese Verbindungen möglicherweise nach vier Minuten Inaktivität von Azure geschlossen. Dies wirkt sich eventuell auf Features und Anwendungen aus, die Verbindungspools erfordern, da Verbindungen, die länger als dieses Limit inaktiv sind, möglicherweise nicht mehr gültig sind. Wenn sich dies auf die Anwendung auswirkt, sollten Sie das Anwenden von Keep-Alive-Logik auf die Verbindungspools in Betracht ziehen.
 
-	Wenn sich ein Endpunkt *innerhalb* der Bereitstellung des Azure-Clouddiensts befindet (z. B. ein eigenständiger virtueller Datenbankcomputer in *demselben* Clouddienst wie die virtuellen WebLogic-Computer), handelt es sich bei der Verbindung um eine direkte Verbindung. Diese erfordert keinen Azure-Load Balancer, und es tritt kein Timeout der Verbindung auf.
+	Wenn sich ein Endpunkt *innerhalb* der Bereitstellung des Azure-Clouddiensts befindet (z.B. ein eigenständiger virtueller Datenbankcomputer in *demselben* Clouddienst wie die virtuellen WebLogic-Computer), handelt es sich bei der Verbindung um eine direkte Verbindung. Diese erfordert keinen Azure Load Balancer, und es tritt kein Timeout der Verbindung auf.
 
 -  **UDP-Multicast wird nicht unterstützt.** Azure unterstützt UDP-Unicasting, jedoch weder Multicasting noch Broadcasting. WebLogic Server kann die UDP-Unicast-Funktionen von Azure nutzen. Um optimale Ergebnisse bei der Nutzung von UDP-Unicast zu erzielen, empfiehlt es sich, eine statische Größe des WebLogic-Clusters zu verwenden oder nicht mehr als 10 verwaltete Server in den Cluster aufzunehmen.
 
@@ -73,7 +73,7 @@ Mit Oracle Data Guard kann Hochverfügbarkeit mit einer primären Datenbank auf 
 
 		Bootstrap to: example.cloudapp.net/138.91.142.178:7006' over: 't3' got an error or timed out]
 
-	Der Grund dafür ist, dass WebLogic Server für jeden T3-Remotezugriff erwartet, dass der Port für das Load Balancer-Modul und der Port des verwalteten WebLogic-Servers identisch sind. Im obigen Fall greift der Client auf Port 7006 (den Port für das Load Balancer-Modul) zu, und der verwaltete Server lauscht an Port 7008 (dem privaten Port). Beachten Sie, dass diese Einschränkung nur für T3-Zugriff und nicht für HTTP gilt.
+	Der Grund dafür ist, dass WebLogic Server für jeden T3-Remotezugriff erwartet, dass der Port für das Load Balancer-Modul und der Port des verwalteten WebLogic-Servers identisch sind. Im obigen Fall greift der Client auf Port 7006 (den Port für das Load Balancer-Modul) zu, und der verwaltete Server lauscht an Port 7008 (dem privaten Port). Diese Einschränkung gilt nur für den T3-Zugriff und nicht für HTTP.
 
 	Sie können dieses Problem mit einer der folgenden Problemumgehungen vermeiden:
 
@@ -85,7 +85,7 @@ Mit Oracle Data Guard kann Hochverfügbarkeit mit einer primären Datenbank auf 
 
 Weitere Informationen finden Sie im KB-Artikel **860340.1** unter <http://support.oracle.com>.
 
--  **Einschränkungen für dynamisches Clustering und Lastenausgleich.** Angenommen, Sie möchten in WebLogic Server einen dynamischen Cluster verwenden und ihn in Azure über einen einzelnen Endpunkt mit Lastenausgleich verfügbar machen. Dies ist möglich, solange Sie für jeden verwalteten Server eine feste Portnummer (keine dynamisch aus einem Bereich zugewiesene Nummer) verwenden und nicht mehr verwaltete Server starten, als Computer vorhanden sind, die vom Administrator nachverfolgt werden (d. h. nicht mehr als einen verwalteten Server pro virtuellem Computer). Wenn die Konfiguration bewirkt, dass mehr WebLogic-Server gestartet werden, als virtuelle Computer vorhanden sind (d. h., wenn mehrere WebLogic Server-Instanzen denselben virtuellen Computer verwenden), kann nicht mehr als eine dieser WebLogic Server-Instanzen an eine angegebene Portnummer gebunden werden, und die anderen Instanzen auf diesem virtuellen Computer schlagen fehl.
+-  **Einschränkungen für dynamisches Clustering und Lastenausgleich.** Angenommen, Sie möchten in WebLogic Server einen dynamischen Cluster verwenden und ihn in Azure über einen einzelnen Endpunkt mit Lastenausgleich verfügbar machen. Dies ist möglich, solange Sie für jeden verwalteten Server eine feste Portnummer (keine dynamisch aus einem Bereich zugewiesene Nummer) verwenden und nicht mehr verwaltete Server starten, als Computer vorhanden sind, die vom Administrator nachverfolgt werden (d. h. nicht mehr als einen verwalteten Server pro virtuellem Computer). Wenn die Konfiguration bewirkt, dass mehr WebLogic-Server gestartet werden, als virtuelle Computer vorhanden sind (d.h., wenn mehrere WebLogic Server-Instanzen denselben virtuellen Computer verwenden), kann nicht mehr als eine dieser WebLogic Server-Instanzen an eine angegebene Portnummer gebunden werden, und die anderen Instanzen auf diesem virtuellen Computer schlagen fehl.
 
 	Wenn Sie hingegen festlegen, dass der Admin-Server automatisch den verwalteten Servern eindeutige Portnummern zuweist, ist kein Lastenausgleich möglich. Der Grund dafür ist, dass diese Konfiguration das Zuordnen eines einzelnen öffentlichen Ports zu mehreren privaten Ports erfordert. Dies wird jedoch von Azure nicht unterstützt.
 
@@ -93,13 +93,13 @@ Weitere Informationen finden Sie im KB-Artikel **860340.1** unter <http://suppor
 
 ##Images von virtuellen Oracle JDK-Computern
 
--  **Neueste Updates von JDK 6 und 7.** Es wird zwar empfohlen, die neueste öffentliche unterstützte Version von Java (derzeit Java 8) zu verwenden, aber für Azure werden auch JDK 6- und JDK 7-Images verfügbar gemacht. Diese sind für ältere Anwendungen vorgesehen, die noch nicht auf JDK 8 aktualisiert werden können. Updates früherer JDK-Images sind möglicherweise nicht mehr für die allgemeine Öffentlichkeit verfügbar. Aufgrund der Partnerschaft von Microsoft mit Oracle bieten die von Azure bereitgestellten JDK 6- und JDK 7-Images jedoch ein neueres nicht öffentliches Update, das Oracle normalerweise nur einer bestimmten Gruppe unterstützter Oracle-Kunden anbietet. Im Lauf der Zeit werden neuere Version der JDK-Images mit aktualisierten Versionen von JDK 6 und 7 zur Verfügung gestellt.
+-  **Neueste Updates von JDK 6 und 7.** Es wird zwar empfohlen, die neueste öffentliche unterstützte Version von Java (derzeit Java 8) zu verwenden, aber für Azure werden auch JDK 6- und JDK 7-Images verfügbar gemacht. Diese sind für ältere Anwendungen vorgesehen, die noch nicht auf JDK 8 aktualisiert werden können. Updates früherer JDK-Images sind möglicherweise nicht mehr für die allgemeine Öffentlichkeit verfügbar. Aufgrund der Partnerschaft von Microsoft mit Oracle bieten die von Azure bereitgestellten JDK 6- und JDK 7-Images jedoch ein neueres nicht öffentliches Update, das Oracle normalerweise nur einer bestimmten Gruppe unterstützter Oracle-Kunden anbietet. Im Lauf der Zeit werden neuere Version der JDK-Images mit aktualisierten Versionen von JDK 6 und 7 zur Verfügung gestellt.
 
-	Beachten Sie, dass das in diesen JDK 6- und JDK 7-Images verfügbare JDK und die von ihnen abgeleiteten virtuellen Computer und Images nur in Azure verwendet werden können.
+	In diesen JDK 6- und JDK 7-Images verfügbare JDK und die von ihnen abgeleiteten virtuellen Computer und Images können nur in Azure verwendet werden.
 
 -  **64-Bit-JDK.** Die von Azure bereitgestellten Images virtueller Oracle WebLogic Server-Computer und virtueller Oracle JDK-Computer enthalten die 64-Bit-Versionen von Windows Server und dem JDK.
 
 ##Zusätzliche Ressourcen
 [Images des virtuellen Oracle-Computers für Azure](virtual-machines-linux-classic-oracle-images.md)
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0914_2016-->

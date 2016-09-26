@@ -4,7 +4,7 @@
 	services="machine-learning" 
 	documentationCenter="" 
 	authors="raymondlaghaeian" 
-	manager="paulettm" 
+	manager="jhubbard" 
 	editor="cgronlun"/>
 
 <tags 
@@ -31,7 +31,7 @@ Sie können Webdienstparameter definieren und einem oder mehreren Modulparameter
 
 Sie definieren einen Webdienstparameter, indem Sie auf das Symbol neben dem Parameter für ein Modul klicken und "Set as web service parameter" (Als Webdienstparameter festlegen) auswählen. Daraufhin wird ein neuer Webdienstparameter erstellt und mit diesem Modulparameter verbunden. Wenn auf den Webdienst zugegriffen wird, kann der Benutzer kann einen Wert für den Webdienstparameter angeben, der dann auf den Modulparameter angewendet wird.
 
-Nachdem Sie einen Web Service-Parameter definiert haben, steht dieser für andere Modulparameter im Experiment zur Verfügung. Sie können einen Webdienstparameter, den Sie definiert und einem Modulparameter zugeordnet haben, auch für einen Parameter eines anderen Moduls verwenden, sofern der betreffende Parameter denselben Typ von Wert erwartet. Wenn der Webdienstparameter z. B. ein numerischer Wert ist, kann er nur für Modulparameter verwendet werden, die einen numerischen Wert erwarten. Wenn der Benutzer einen Wert für den Webdienstparameter festlegt, wird dieser auf alle zugehörigen Modulparameter angewendet.
+Nachdem Sie einen Web Service-Parameter definiert haben, steht dieser für andere Modulparameter im Experiment zur Verfügung. Sie können einen Webdienstparameter, den Sie definiert und einem Modulparameter zugeordnet haben, auch für einen Parameter eines anderen Moduls verwenden, sofern der betreffende Parameter denselben Typ von Wert erwartet. Wenn der Webdienstparameter z. B. ein numerischer Wert ist, kann er nur für Modulparameter verwendet werden, die einen numerischen Wert erwarten. Wenn der Benutzer einen Wert für den Webdienstparameter festlegt, wird dieser auf alle zugehörigen Modulparameter angewendet.
 
 Sie können entscheiden, ob Sie einen Standardwert für den Webdienstparameter angeben. Wenn Sie dies tun, ist der Parameter für die Benutzer des Webdiensts optional. Geben Sie keinen Standardwert an, dann muss der Benutzer einen Wert eingeben, wenn auf den Webdienst zugegriffen wird.
 
@@ -93,4 +93,4 @@ Weitere Informationen zum Zugreifen auf einen Machine Learning-Webdienst finden 
 [writer]: https://msdn.microsoft.com/library/azure/7a391181-b6a7-4ad4-b82d-e419c0d6522c/
  
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0914_2016-->

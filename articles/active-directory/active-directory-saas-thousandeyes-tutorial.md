@@ -11,14 +11,14 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="06/21/2016" 
+    ms.date="09/11/2016" 
     ms.author="jeedes" />
 
 #Tutorial: Azure Active Directory-Integration mit ThousandEyes
   
 In diesem Tutorial wird erläutert, wie einmaliges Anmelden für Azure Active Directory (Azure AD) und ThousandEyes eingerichtet wird.
   
-Das in diesem Lernprogramm verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
+Das in diesem Tutorial verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
 
 -   Ein gültiges Azure-Abonnement
 -   Ein ThousandEyes-Abonnement, für das einmaliges Anmelden aktiviert ist
@@ -78,7 +78,7 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-thousandeyes-tutorial/IC790063.png "Einmaliges Anmelden konfigurieren")
 
-3.  Geben Sie auf der Seite **App-URL konfigurieren** im Textfeld für die **ThousandEyes-Anmelde-URL** die URL-Benutzer ein, welche die Benutzer zur Anmeldung bei ThousandEyes verwenden (z. B. *https://app.thousandeyes.com/login/sso*"), und klicken Sie dann auf **Weiter**.
+3.  Geben Sie auf der Seite **App-URL konfigurieren** im Textfeld für die **ThousandEyes-Anmelde-URL** die URL-Benutzer ein, welche die Benutzer zur Anmeldung bei ThousandEyes verwenden (z.B. "*https://app.thousandeyes.com/login/sso*"), und klicken Sie dann auf **Weiter**.
 
     ![App-URL konfigurieren](./media/active-directory-saas-thousandeyes-tutorial/IC790064.png "App-URL konfigurieren")
 
@@ -105,8 +105,8 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
     ![Einmaliges Anmelden einrichten](./media/active-directory-saas-thousandeyes-tutorial/IC790069.png "Einmaliges Anmelden einrichten")
 
     1.  Wählen Sie **Einmaliges Anmelden aktivieren** aus.
-    2.  Kopieren Sie im klassischen Microsoft Azure-Portal auf der Seite **Einmaliges Anmelden konfigurieren für ThousandEyes** den Wert für **Remoteanmelde-URL**, und fügen Sie ihn ins Textfeld **Anmeldeseiten-URL** ein.
-    3.  Kopieren Sie im klassischen Microsoft Azure-Portal auf der Seite **Einmaliges Anmelden konfigurieren für ThousandEyes** den Wert für **Remoteabmelde-URL**, und fügen Sie ihn ins Textfeld **Abmeldeseiten-URL** ein.
+    2.  Kopieren Sie im klassischen Microsoft Azure-Portal auf der Seite **Einmaliges Anmelden konfigurieren für ThousandEyes** den Wert für **Remoteanmelde-URL**, und fügen Sie ihn in das Textfeld **Anmeldeseiten-URL** ein.
+    3.  Kopieren Sie im klassischen Microsoft Azure-Portal auf der Seite **Einmaliges Anmelden konfigurieren für ThousandEyes** den Wert für **Remoteabmelde-URL**, und fügen Sie ihn in das Textfeld **Abmeldeseiten-URL** ein.
     4.  Kopieren Sie im klassischen Microsoft Azure-Portal auf der Seite **Einmaliges Anmelden konfigurieren für ThousandEyes** den Wert für **Aussteller-URL**, und fügen Sie ihn in das Textfeld **Identitätsanbieter-Aussteller** ein.
     5.  Klicken Sie unter **Zertifikat des Identitätsanbieters** auf **Datei auswählen**, und laden Sie dann das Zertifikat hoch, das Sie aus dem klassischen Microsoft Azure-Portal heruntergeladen haben.
     6.  Klicken Sie auf **Speichern**.
@@ -148,7 +148,7 @@ Damit sich Azure AD-Benutzer bei ThousandEyes anmelden können, müssen sie in 
 
 ##Zuweisen von Benutzern
   
-Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie die Verwendung Ihrer Anwendung ermöglichen möchten, Zugriff auf die Anwendung gewähren. Weisen Sie dazu der Anwendung Benutzer zu.
+Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie die Verwendung Ihrer Anwendung ermöglichen möchten, Zugriff auf die Anwendung gewähren. Weisen Sie dazu der Anwendung Benutzer zu.
 
 ###So weisen Sie ThousandEyes Benutzer zu:
 
@@ -164,4 +164,4 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie 
   
 Wenn Sie die SSO-Einstellungen testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md).
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0914_2016-->

@@ -11,17 +11,17 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="06/20/2016" 
+    ms.date="09/09/2016" 
     ms.author="jeedes" />
 
 #Tutorial: Azure Active Directory-Integration mit Workday
   
-In diesem Tutorial wird die Integration von Azure und Workday erläutert. Das in diesem Lernprogramm verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
+In diesem Tutorial wird die Integration von Azure und Workday erläutert. Das in diesem Tutorial verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
 
 -   Ein gültiges Azure-Abonnement
 -   Einen Mandanten in Workday
   
-Das in diesem Lernprogramm beschriebene Szenario besteht aus den folgenden Bausteinen:
+Das in diesem Tutorial beschriebene Szenario besteht aus den folgenden Bausteinen:
 
 1.  Aktivieren der Anwendungsintegration für Workday
 2.  Konfigurieren der einmaligen Anmeldung
@@ -76,11 +76,11 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
     ![App-URL konfigurieren](./media/active-directory-saas-workday-tutorial/IC782957.png "App-URL konfigurieren")
 
-	a. Geben Sie im Textfeld **Anmelde-URL** die von Ihren Benutzern zur Anmeldung bei Workday verwendete URL in folgendem Format ein: `https://impl.workday.com/<tenant>/login-saml2.htmld`.
+	a. Geben Sie im Textfeld **Anmelde-URL** die von Ihren Benutzern zur Anmeldung bei Workday verwendete URL in folgendem Format ein: `https://impl.workday.com/<tenant>/login-saml2.htmld`
 
 	b. Geben Sie im Textfeld **Antwort-URL von Workday** die Antwort-URL von Workday in folgendem Format ein: `https://impl.workday.com/<tenant>/login-saml.htmld`.
 
-	>[AZURE.NOTE] Ihre Antwort-URL muss eine Unterdomäne aufweisen (z. B. www, wd2, wd3, wd3-impl, wd5, wd5-impl). „ *http://www.myworkday.com* “ funktioniert beispielsweise, „ *http://myworkday.com* “ jedoch nicht.
+	>[AZURE.NOTE] Ihre Antwort-URL muss eine Unterdomäne aufweisen (z.B. www, wd2, wd3, wd3-impl, wd5, wd5-impl). *http://www.myworkday.com* funktioniert beispielsweise, *http://myworkday.com* jedoch nicht.
  
 4.  Klicken Sie zum Herunterladen des Zertifikats auf der Seite **Einmaliges Anmelden konfigurieren für Workday** auf **Zertifikat herunterladen**, und speichern Sie das Zertifikat auf Ihrem Computer.
 
@@ -115,12 +115,12 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
 	>[AZURE.NOTE] Der Wert des Umgebungsattributs wird an den Wert der Mandanten-URL gebunden:
 	>
-    >-   Wenn der Domänenname der Mandanten-URL mit „impl“ beginnt (z. B.: *https://impl.workday.com/\<Mandant>/login-saml2.htmld*), muss das Attribut für die **Umgebung** auf Implementierung festgelegt werden.
+    >-   Wenn der Domänenname der Mandanten-URL mit „impl“ beginnt (z.B.: *https://impl.workday.com/\<Mandant>/login-saml2.htmld*), muss das Attribut für die **Umgebung** auf Implementierung festgelegt werden.
     >-   Wenn der Domänenname anders beginnt, müssen Sie sich mit Workday in Verbindung setzen, um den passenden Wert für die **Umgebung** zu erhalten.
 
 10. Führen Sie im Abschnitt **SAML-Setup** die folgenden Schritte aus:
 
-    ![SAML-Setup](./media/active-directory-saas-workday-tutorial/IC782926.png "SAML-Setup")
+    ![SAML Setup](./media/active-directory-saas-workday-tutorial/IC782926.png "SAML-Setup")
 
 	a. Wählen Sie die Option **SAML-Authentifizierung aktivieren**.
 
@@ -130,7 +130,7 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
     ![SAML-Identitätsanbieter](./media/active-directory-saas-workday-tutorial/IC7829271.png "SAML-Identitätsanbieter")
 
-	a. Geben Sie im Textfeld „Name des Identitätsanbieters“ einen Anbieternamen ein (z. B.: *SPInitiatedSSO*).
+	a. Geben Sie im Textfeld „Name des Identitätsanbieters“ einen Anbieternamen ein (z.B *SPInitiatedSSO*).
 
     b. Kopieren Sie im klassischen Azure-Portal auf der Dialogfeldseite **Einmaliges Anmelden konfigurieren für Workday** den Wert für die **Identitätsanbieter-ID**, und fügen Sie ihn in das Textfeld **Aussteller** ein.
 
@@ -152,7 +152,7 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
 	![Öffentlichen x509-Schlüssel anzeigen](./media/active-directory-saas-workday-tutorial/IC782930.png "Öffentlichen x509-Schlüssel anzeigen")
 
-	a. Geben Sie im Textfeld **Name** einen Namen für das Zertifikat ein (z. B.: *PPE\_SP*).
+	a. Geben Sie im Textfeld **Name** einen Namen für das Zertifikat ein (z.B. *PPE\_SP*).
     	
 	b. Geben Sie im Textfeld **Gültig ab** den „Gültig-ab“-Attributwert des Zertifikats ein.
     
@@ -162,7 +162,7 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
 	d. Erstellen Sie eine **Base-64-codierte** Datei aus dem heruntergeladenen Zertifikat.
 
-	>[AZURE.TIP] Weitere Informationen finden Sie unter [How to convert a binary certificate into a text file](http://youtu.be/PlgrzUZ-Y1o) (in englischer Sprache).
+	>[AZURE.TIP] Weitere Informationen finden Sie unter [Konvertieren eines binären Zertifikats in eine Textdatei](http://youtu.be/PlgrzUZ-Y1o).
 
 	e. Öffnen Sie das Base64-codierte Zertifikat in Editor, und kopieren Sie seinen Inhalt.
     
@@ -224,4 +224,4 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie d
   
 Wenn Sie die SSO-Einstellungen testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md).
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0914_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/23/2016"
+	ms.date="09/07/2016"
 	ms.author="tamram"/>
 
 # Verwalten des anonymen Lesezugriffs auf Container und Blobs
@@ -22,7 +22,7 @@
 
 Standardmäßig kann nur der Besitzer eines Speicherkontos auf Speicherressourcen in diesem Konto zugreifen. Nur für Blobspeicher können Sie die Berechtigungen für einen Container so festlegen, dass der anonyme Lesezugriff auf den Container und seine Blobs erlaubt wird. Dadurch können Sie Zugriff auf diese Ressourcen gewähren, ohne Ihren Kontoschlüssel freigeben zu müssen.
 
-Anonymer Zugriff ist am besten für Szenarien, in denen bestimmte Blobs für den anonymen Lesezugriff stets zur Verfügung stehen sollen. Für eine präzisere Steuerung können Sie eine SAS (Shared Access Signature) erstellen, die Ihnen das Delegieren eines eingeschränkten Zugriffs mithilfe verschiedener Berechtigungen und über einen angegebenen Zeitraum ermöglicht. Weitere Informationen zum Erstellen einer SAS finden Sie unter [Shared Access Signatures: Grundlagen zum SAS-Modell](storage-dotnet-shared-access-signature-part-1.md).
+Anonymer Zugriff ist am besten für Szenarien, in denen bestimmte Blobs für den anonymen Lesezugriff stets zur Verfügung stehen sollen. Für eine präzisere Steuerung können Sie eine SAS (Shared Access Signature) erstellen, die Ihnen das Delegieren eines eingeschränkten Zugriffs mithilfe verschiedener Berechtigungen und über einen angegebenen Zeitraum ermöglicht. Weitere Informationen zum Erstellen von Shared Access Signatures finden Sie unter [Verwenden von Shared Access Signatures (SAS)](storage-dotnet-shared-access-signature-part-1.md).
 
 ## Erteilen von anonymen Benutzerberechtigungen für Container und Blobs
 
@@ -152,7 +152,7 @@ Die folgende Tabelle zeigt, welche Vorgänge von anonymen Benutzern aufgerufen w
 ## Weitere Informationen
 
 - [Authentifizierung für Azure Storage-Dienste](https://msdn.microsoft.com/library/azure/dd179428.aspx)
-- [Shared Access Signatures: Grundlagen zum SAS-Modell](storage-dotnet-shared-access-signature-part-1.md)
-- [Delegieren des Zugriffs mit einer Shared Access Signature](https://msdn.microsoft.com/library/azure/ee395415.aspx) 
+- [Verwenden von Shared Access Signatures (SAS)](storage-dotnet-shared-access-signature-part-1.md)
+- [Delegieren des Zugriffs mit einer Shared Access Signature](https://msdn.microsoft.com/library/azure/ee395415.aspx)
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0914_2016-->

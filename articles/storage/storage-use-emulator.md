@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/03/2016" 
+	ms.date="09/07/2016" 
 	ms.author="tamram"/>
 
 # Einsatz des Azure-Speicheremulators für Entwicklung und Tests
@@ -22,6 +22,8 @@
 Der Microsoft Azure-Speicheremulator bietet eine lokale Umgebung, die die Azure-Blob-, -Warteschlangen- und -Tabellendienste für Entwicklungszwecke emuliert. Durch Verwendung des Speicheremulators können Sie die Anwendung bezüglich der Speicherdienste lokal testen, ohne ein Azure-Abonnement zu erwerben oder sonstige Kosten zu verursachen. Wenn Sie mit der Funktion der Anwendung im Emulator zufrieden sind, können Sie zur Verwendung eines Azure-Speicherkontos in der Cloud wechseln.
 
 > [AZURE.NOTE] Der Speicheremulator ist als Teil des [Microsoft Azure-SDK](https://azure.microsoft.com/downloads/) verfügbar. Sie können den Speicheremulator auch mithilfe des [eigenständigen Installationsprogramms](https://go.microsoft.com/fwlink/?linkid=717179&clcid=0x409) installieren. Zum Konfigurieren des Speicheremulators benötigen Sie Administratorrechte auf dem Computer.
+> 
+> Der Speicheremulator wird derzeit nur unter Windows ausgeführt.
 >  
 > Beachten Sie, dass der Zugriff auf die Daten, die in einer bestimmten Version des Speicheremulators erstellt wurden, bei Verwendung einer anderen Version nicht gewährleistet ist. Wenn Sie die Daten langfristig beibehalten müssen, wird empfohlen, diese Daten in einem Azure Storage-Konto und nicht im Speicheremulator zu speichern.
 
@@ -65,7 +67,7 @@ Der resultierende SAS-URI für den neuen Container sollte dem folgenden ähneln:
 
 Die mit diesem Beispiel erstellte SAS gilt für einen Tag. Die Signatur gewährt uneingeschränkten Zugriff (z. B. Lesen, Schreiben, Löschen und Auflisten) auf die Blobs im Container.
 
-Weitere Informationen zu SAS finden Sie unter [Shared Access Signatures: Grundlagen zum SAS-Modell](storage-dotnet-shared-access-signature-part-1.md).
+Weitere Informationen zu Shared Access Signatures finden Sie unter [Verwenden von Shared Access Signatures (SAS)](storage-dotnet-shared-access-signature-part-1.md).
 
 
 ## Starten und Initialisieren des Speicheremulators
@@ -203,7 +205,13 @@ Es bestehen keine Unterschiede beim Warteschlangenspeicher im Emulator.
 
 ## Speicheremulator – Versionshinweise
 
+### Version 4.5
+
+- Korrektur eines Fehlers, das verursacht hat, dass Initialisierung und Installation des Speicheremulators misslingen, wenn die Sicherungsdatenbank umbenannt wurde.
+
 ### Version 4.4
+
+- Der Speicheremulator unterstützt nun Version 2015-12-11 der Speicherdienste auf Blob-, Warteschlangen- und Tabellenspeicherdienst-Endpunkten.
 
 - Der Speicheremulator verfügt nun über eine effizientere Garbage Collection für die Verarbeitung zahlreicher Blobs.
 
@@ -247,4 +255,4 @@ Es bestehen keine Unterschiede beim Warteschlangenspeicher im Emulator.
 
 - Version 2013-08-15 der Azure Storage-Dienste wird jetzt vollständig unterstützt. (Zuvor wurde diese Version nur von Version 2.2.1 Preview des Speicheremulators unterstützt.)
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0914_2016-->

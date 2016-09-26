@@ -22,7 +22,7 @@
 
 ## Übersicht
 
-Azure SQL-Datenbank verwaltet die für eine Datenbank verfügbaren Ressourcen mithilfe zweier verschiedener Mechanismen: **Ressourcenkontrolle** und **Durchsetzung von Grenzen**. Dieser Artikel beschreibt diese zwei Hauptbereiche der Ressourcenverwaltung.
+Azure SQL-Datenbank verwaltet die für eine Datenbank verfügbaren Ressourcen mithilfe zweier verschiedener Mechanismen: **Ressourcenkontrolle** und **Durchsetzung von Grenzen**. In diesem Thema werden diese beiden Hauptbereiche der Ressourcenverwaltung behandelt.
 
 ## Ressourcenkontrolle
 Eines der Entwurfsziele der Tarife Basic, Standard und Premium ist es, dass sich die Azure SQL-Datenbank so verhält, als ob sie auf einem eigenen Computer vollständig isoliert von anderen Datenbanken ausgeführt wird. Die Ressourcenkontrolle emuliert dieses Verhalten. Wenn die aggregierte Ressourcenverwendung die maximal verfügbaren Ressourcen an CPU, Arbeitsspeicher, Protokoll-E/A und Daten-E/A erreicht, die der Datenbank zugeordnet sind, reiht die Ressourcenkontrolle die Ausführung von Abfragen in eine Warteschlange ein und ordnet den Abfragen in der Warteschlange Ressourcen zu, während sie nach und nach freigegeben werden.
@@ -45,15 +45,21 @@ Z. B. wird die Anzahl der Verbindungen mit einer SQL-Datenbank sowie die Anzahl 
 
 ## Tarife und Leistungsebenen
 
-Für eine einzelne Datenbank sind deren Einschränkungen durch die Dienstebene und Leistungsstufe der Datenbank definiert. In der folgenden Tabelle sind die Merkmale von Basic-, Standard- und Premium-Datenbanken für unterschiedliche Leistungsstufen beschrieben.
+Es gibt Tarife und Leistungsstufen für sowohl eigenständige Datenbanken als auch elastische Pools.
+
+### Eigenständige Datenbanken
+
+Bei eigenständigen Datenbanken werden die Einschränkungen vom Tarif und der Leistungsstufe der Datenbank bestimmt. In der folgenden Tabelle sind die Merkmale von Basic-, Standard- und Premium-Datenbanken für unterschiedliche Leistungsstufen beschrieben.
 
 [AZURE.INCLUDE [Tarife für SQL-Datenbank](../../includes/sql-database-service-tiers-table.md)]
 
-[Elastische Datenbankpools](sql-database-elastic-pool.md) nutzen Ressourcen gemeinsam für die Datenbanken im Pool. In der folgenden Tabelle sind die Merkmale von elastischen Basic-, Standard- und Premium-Datenbankpools beschrieben.
+### Elastische Pools
+
+[Elastische Pools](sql-database-elastic-pool.md) nutzen Ressourcen in verschiedenen Datenbanken im Pool gemeinsam. In der folgenden Tabelle sind die Merkmale von elastischen Basic-, Standard- und Premium-Datenbankpools beschrieben.
 
 [AZURE.INCLUDE [Tabelle der SQL-Datenbank-Dienstebenen für elastische Datenbanken](../../includes/sql-database-service-tiers-table-elastic-db-pools.md)]
 
-Eine erweiterte Definition der einzelnen Ressourcen, die in den vorangehenden Tabellen aufgeführt werden, können Sie der Beschreibungen in [Funktionen und Grenzen der Serviceebenen](sql-database-performance-guidance.md#service-tier-capabilities-and-limits) entnehmen. Eine Übersicht über die Diensttarife finden Sie unter [Dienstebenen und Leistungsstufen für Azure SQL-Datenbank](sql-database-service-tiers.md).
+Eine erweiterte Definition der einzelnen Ressourcen, die in den vorangehenden Tabellen aufgeführt werden, können Sie der Beschreibungen in [Funktionen und Grenzen der Serviceebenen](sql-database-performance-guidance.md#service-tier-capabilities-and-limits) entnehmen. Eine Übersicht über die Tarife finden Sie unter [Tarife und Leistungsstufen für Azure SQL-Datenbank](sql-database-service-tiers.md).
 
 ## Weitere Einschränkungen für SQL-Datenbanken
 
@@ -73,4 +79,4 @@ Eine erweiterte Definition der einzelnen Ressourcen, die in den vorangehenden Ta
 
 [Fehlermeldungen für Clientprogramme der SQL-Datenbank](sql-database-develop-error-messages.md)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0914_2016-->

@@ -4,7 +4,7 @@
 	services="machine-learning" 
 	documentationCenter="" 
 	authors="bradsev"
-	manager="paulettm" 
+	manager="jhubbard" 
 	editor="cgronlun" />
 
 <tags 
@@ -42,7 +42,7 @@ Die logistischen Fragen betreffen den Speicherort der **Datenquelle**, das **Zie
 
 3. **Wie möchten Sie die Daten verschieben?** In den folgenden Themen werden die Verfahren und Ressourcen für das Erfassen und Laden von Daten in einer Vielzahl anderer Speicher und Verarbeitungsumgebungen beschrieben.
 
-	-  [Laden von Daten in Speicherumgebungen für Analysen](machine-learning-data-science-ingest-data.md) 
+	-  [Laden von Daten in Speicherumgebungen für Analysen](machine-learning-data-science-ingest-data.md)
 	-  [Importieren von Trainingsdaten aus verschiedenen Datenquellen in Azure Machine Learning Studio](machine-learning-data-science-import-data,md)
 
 4. **Müssen die Daten nach einem regelmäßigen Zeitplan verschoben oder während der Migration geändert werden?** Sie sollten die Verwendung von Azure Data Factory (ADF) in Betracht ziehen, wenn Daten insbesondere in einem Hybridszenario kontinuierlich migriert werden müssen, das sowohl auf lokale als auch Cloudressourcen zugreift. Gleiches gilt, wenn die Daten Transaktionen unterworfen werden oder geändert werden müssen, oder wenn ihnen im Rahmen der Migration eine Geschäftslogik hinzugefügt wird. Weitere Informationen finden Sie unter [Verschieben von Daten von einem lokalen SQL Server zu SQL Azure mithilfe von Azure Data Factory](machine-learning-data-science-move-sql-azure-adf.md).
@@ -53,7 +53,7 @@ Die logistischen Fragen betreffen den Speicherort der **Datenquelle**, das **Zie
 ## Fragen zu Datenmerkmalen: Typ, Format und Größe
 Diese Fragen sind wichtig für die Planung Ihrer Speicher- und Verarbeitungsumgebungen, die jeweils für verschiedene Datentypen geeignet sind und für die jeweils bestimmte Einschränkungen gelten.
 
-1. **Was sind die Datentypen?** Beispiel: 
+1. **Was sind die Datentypen?** Beispiel:
 	- Numerisch
 	- Kategorisch
 	- Zeichenfolgen
@@ -87,7 +87,7 @@ Informationen zu den Einschränkungen anderer Azure-Dienste, die im Analyseproze
 ## Fragen zu Tools und Sprachen
 Je nachdem, welche Sprachen und Entwicklungsumgebungen bzw. Tools Sie brauchen oder am liebsten nutzen, gibt es hier viele Optionen.
  
-1. **Welche Sprachen bevorzugen Sie für die Analyse?**  
+1. **Welche Sprachen bevorzugen Sie für die Analyse?**
 	- R
 	- Python
 	- SQL
@@ -100,7 +100,7 @@ Je nachdem, welche Sprachen und Entwicklungsumgebungen bzw. Tools Sie brauchen o
 	- [Python Tools für Visual Studio](http://microsoft.github.io/PTVS/)
 	- [Anaconda](https://www.continuum.io/why-anaconda)
 	- [Jupiter Notebooks](http://jupyter.org/)
-	- [Microsoft Power BI](http://powerbi.microsoft.com) 
+	- [Microsoft Power BI](http://powerbi.microsoft.com)
 
 
 ## Bestimmen des Szenarios für die erweiterte Analyse
@@ -114,4 +114,4 @@ Nachdem Sie die Fragen im vorherigen Abschnitt beantwortet haben, können Sie be
 
  
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0914_2016-->

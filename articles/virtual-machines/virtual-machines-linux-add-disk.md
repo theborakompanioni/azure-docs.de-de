@@ -15,7 +15,7 @@
 	ms.workload="infrastructure-services"
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
-	ms.date="04/29/2016"
+	ms.date="09/06/2016"
 	ms.author="rclaus"/>
 
 # Hinzufügen eines Datenträgers zu einem virtuellen Linux-Computer
@@ -277,4 +277,4 @@ Es gibt zwei Methoden, TRIM-Unterstützung auf Ihrem virtuellen Linux-Computer z
 - Lesen Sie die Empfehlungen unter [Optimieren virtueller Linux-Computer in Azure](virtual-machines-linux-optimization.md), um sicherzustellen, dass Ihr virtueller Linux-Computer richtig konfiguriert ist.
 - Erweitern Sie die Speicherkapazität durch Hinzufügen zusätzlicher Datenträger, und [konfigurieren Sie RAID](virtual-machines-linux-configure-raid.md) für zusätzliche Leistung.
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0914_2016-->

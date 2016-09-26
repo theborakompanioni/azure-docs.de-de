@@ -66,10 +66,10 @@ Stellen Sie eine Verbindung mit der Codierung von AS2-Nachrichten her, um eine s
 
 ##Probieren Sie es selbst aus
 
-Versuchen Sie es doch einfach mal. Klicken Sie [hier](https://github.com/Azure/azure-quickstart-templates/tree/master/201-logic-app-as2-send-receive), um Ihre eigene voll funktionsfähige Logik-App mit den AS2-Features von Logic Apps bereitzustellen.
- 
+Versuchen Sie es doch einfach mal. Klicken Sie [hier](https://azure.microsoft.com/documentation/templates/201-logic-app-as2-send-receive/), um Ihre eigene voll funktionsfähige Logik-App mit den AS2-Features von Logic Apps bereitzustellen.
+
 ## Nächste Schritte
 
 [Weitere Informationen zum Enterprise Integration Pack](./app-service-logic-enterprise-integration-overview.md "Informationen zum Enterprise Integration Pack")
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0914_2016-->

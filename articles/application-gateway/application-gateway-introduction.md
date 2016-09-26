@@ -17,7 +17,7 @@
 
 # Übersicht über Application Gateway
 
-Microsoft Azure Application Gateway bietet einen von Azure verwalteten HTTP-Lastenausgleichsdienst, der auf Lastenausgleich der HTTP-Ebene 7 basiert. Einfach ausgedrückt akzeptiert der Dienst Datenverkehr und leitet ihn auf der Grundlage von definierten Regeln an die entsprechenden Back-End-Instanzen weiter.
+Microsoft Azure Application Gateway bietet einen von Azure verwalteten HTTP-Lastenausgleichsdienst, der auf Lastenausgleich der HTTP-Ebene 7 basiert. Einfach ausgedrückt, akzeptiert der Dienst Datenverkehr und leitet ihn auf der Grundlage von definierten Regeln an die entsprechenden Back-End-Instanzen weiter.
 
 Mit dem Anwendungslastenausgleich können IT-Administratoren und Entwickler HTTP-basierte Routingregeln für Netzwerkdatenverkehr erstellen. Der Application Gateway-Dienst bietet hohe Verfügbarkeit und gute Kontrolle. Die Vereinbarung zum Servicelevel und die Preise finden Sie auf den Seiten [SLA](https://azure.microsoft.com/support/legal/sla/) und [Preise](https://azure.microsoft.com/pricing/details/application-gateway/).
 
@@ -75,4 +75,4 @@ Nachdem Sie sich mit Anwendungsgateways vertraut gemacht haben, können Sie [ein
 
 Weitere Informationen zum Erstellen eines Anwendungsgateways mit URL-basiertem Inhaltsrouting finden Sie unter [Erstellen eines Anwendungsgateways mit URL-basiertem Routing](application-gateway-create-url-route-arm-ps.md).
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0914_2016-->

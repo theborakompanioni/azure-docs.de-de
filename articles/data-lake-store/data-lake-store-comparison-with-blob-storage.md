@@ -4,7 +4,7 @@
    services="data-lake-store"
    documentationCenter=""
    authors="nitinme"
-   manager="paulettm"
+   manager="jhubbard"
    editor="cgronlun"/>
 
 <tags
@@ -48,4 +48,4 @@ In der Tabelle in diesem Artikel werden die Unterschiede zwischen Azure Data Lak
 - [Übersicht über Azure Data Lake-Speicher](data-lake-store-overview.md)
 - [Erste Schritte mit dem Data Lake-Speicher](data-lake-store-get-started-portal.md)
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0914_2016-->

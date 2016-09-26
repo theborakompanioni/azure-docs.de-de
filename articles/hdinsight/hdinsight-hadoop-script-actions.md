@@ -5,7 +5,7 @@
 	documentationCenter=""
 	tags="azure-portal"
 	authors="mumian"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun"/>
 
 <tags
@@ -303,7 +303,7 @@ Aus diesem Protokoll geht hervor, dass die Spark-Skriptaktion auf dem virtuellen
 Bei Auftreten eines Ausführungsfehlers enthält die Protokolldatei auch die beschreibende Ausgabe. Die Informationen in diesen Protokollen sind hilfreich zum Debuggen eventuell auftretender Probleme.
 
 
-## Weitere Informationen
+## Siehe auch
 
 - [Anpassen von HDInsight-Clustern mithilfe von Skriptaktionen][hdinsight-cluster-customize]
 - [Installieren und Verwenden von Spark in HDInsight-Clustern][hdinsight-install-spark]
@@ -320,4 +320,4 @@ Bei Auftreten eines Ausführungsfehlers enthält die Protokolldatei auch die bes
 <!--Reference links in article-->
 [1]: https://msdn.microsoft.com/library/96xafkes(v=vs.110).aspx
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0914_2016-->

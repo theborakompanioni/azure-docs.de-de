@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/03/2016"
+	ms.date="09/07/2016"
 	ms.author="tamram"/>
 
 # Konfigurieren von Azure Storage-Verbindungszeichenfolgen
@@ -72,7 +72,7 @@ Um eine Verbindungszeichenfolge zu erstellen, die eine SAS enthält, geben Sie d
 
 Jeder Dienstendpunkt ist optional, obwohl die Verbindungszeichenfolge mindestens einen enthalten muss.
 
-Die Verwendung von HTTPS mit einem SAS wird als bewährte Methode empfohlen. Weitere Informationen zu Shared Access Signatures finden Sie unter [Shared Access Signatures, Teil 1: Grundlagen zum SAS-Modell](storage-dotnet-shared-access-signature-part-1.md).
+Die Verwendung von HTTPS mit einem SAS wird als bewährte Methode empfohlen. Weitere Informationen zu Shared Access Signatures finden Sie unter [Verwenden von Shared Access Signatures (SAS)](storage-dotnet-shared-access-signature-part-1.md).
 
 >[AZURE.NOTE] Wenn Sie eine SAS in einer Verbindungszeichenfolge in einer Konfigurationsdatei angeben, müssen Sie womöglich Sonderzeichen in der URL codieren.
 
@@ -163,4 +163,4 @@ Ihre Verbindungszeichenfolge sollte beispielsweise der folgenden Verbindungszeic
 - [Einsatz des Azure-Speicheremulators für Entwicklung und Tests](storage-use-emulator.md)
 - [Windows Azure-Speicher-Explorer](storage-explorers.md)
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0914_2016-->

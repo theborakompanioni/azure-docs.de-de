@@ -13,7 +13,7 @@ ms.devlang="rest-api"
 ms.workload="search" 
 ms.topic="article"  
 ms.tgt_pltfrm="na" 
-ms.date="07/14/2016" 
+ms.date="09/07/2016" 
 ms.author="eugenesh" />
 
 #Indexer-Vorgänge (REST-API für Azure Search-Dienst: 2015-02-28-Preview)#
@@ -32,13 +32,14 @@ Ein **Indexer** ist die Ressource, die Datenquellen mit Zielsuchindizes verbinde
 
 Ein **Indexer** ist nützlich, wenn regelmäßige Aktualisierungen eines Indexes durchgeführt werden sollen. Sie können einen eingebetteten Zeitplan als Teil der Definition eines Indexers einrichten oder den Indexer bei Bedarf mit [Indexer ausführen](#RunIndexer) ausführen.
 
-Eine **Datenquelle** gibt an, welche Daten indiziert werden müssen. Sie legt außerdem die Anmeldeinformationen für den Zugriff auf die Daten sowie die Richtlinien zur Aktivierung von Azure Search fest, um Änderungen an den Daten effizient identifizieren zu können (wie z. B. geänderte oder gelöschte Zeilen in einer Datenbanktabelle). Die Datenquelle wird als unabhängige Ressource definiert, sodass sie von mehreren Indexern verwendet werden kann.
+Eine **Datenquelle** gibt an, welche Daten indiziert werden müssen. Sie legt außerdem die Anmeldeinformationen für den Zugriff auf die Daten sowie die Richtlinien zur Aktivierung von Azure Search fest, um Änderungen an den Daten effizient identifizieren zu können (wie z. B. geänderte oder gelöschte Zeilen in einer Datenbanktabelle). Die Datenquelle wird als unabhängige Ressource definiert, sodass sie von mehreren Indexern verwendet werden kann.
 
 Die folgenden Datenquellen werden derzeit unterstützt:
 
 - **Azure SQL-Datenbank** und **SQL Server in Azure VMs**. Eine gezielte exemplarische Vorgehensweise finden Sie [in diesem Artikel](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers-2015-02-28.md).
 - **Azure DocumentDB**. Eine gezielte exemplarische Vorgehensweise finden Sie [in diesem Artikel](../documentdb/documentdb-search-indexer.md).
 - **Azure-Blobspeicher**, einschließlich der folgenden Dokumentformate: PDF, Microsoft Office (DOCX/DOC, XSLX/XLS, PPTX/PPT, MSG), HTML, XML, ZIP und Nur-Text-Dateien (einschließlich JSON). Eine gezielte exemplarische Vorgehensweise finden Sie [in diesem Artikel](search-howto-indexing-azure-blob-storage.md).
+- **Azure Table Storage**. Eine gezielte exemplarische Vorgehensweise finden Sie [in diesem Artikel](search-howto-indexing-azure-tables.md).
 	 
 Unterstützung für zusätzliche Datenquellen ist für einen späteren Zeitpunkt geplant. Damit wir unsere Entscheidungen besser priorisieren können, lassen Sie uns im [Feedback-Forum für Azure Search](http://feedback.azure.com/forums/263029-azure-search) Ihr Feedback zukommen.
 
@@ -94,7 +95,7 @@ In der folgenden Liste werden die erforderlichen und optionalen Anforderungshead
 - `Content-Type`: Erforderlich. Auf `application/json` festlegen.
 - `api-key`: Erforderlich. `api-key` wird zum Authentifizieren der Anforderung beim Search-Dienst verwendet. Es handelt sich um einen für Ihren Dienst eindeutigen Zeichenfolgenwert. Die Anforderung **Datenquelle erstellen** muss einen `api-key`-Header enthalten, der auf Ihren Admin-Schlüssel (im Gegensatz zum Abfrageschlüssel) festgelegt ist.
  
-Sie benötigen außerdem den Dienstnamen, um die URL der Anforderung zu erstellen. Sie können den Dienstnamen und den `api-key` in Ihrem Dienst-Dashboard im [Azure-Portal](https://portal.azure.com/) abrufen. Hilfe bei der Seitennavigation finden Sie unter [Search-Dienst im Portal erstellen](search-create-service-portal.md).
+Sie benötigen außerdem den Dienstnamen, um die URL der Anforderung zu erstellen. Sie können den Dienstnamen und den `api-key` in Ihrem Dienstdashboard im [Azure-Portal](https://portal.azure.com/) abrufen. Hilfe bei der Seitennavigation finden Sie unter [Search-Dienst im Portal erstellen](search-create-service-portal.md).
 
 <a name="CreateDataSourceRequestSyntax"></a> **Syntax des Anforderungstextes**
 
@@ -105,7 +106,7 @@ Die Syntax für die Strukturierung der Anforderungsnutzlast ist wie folgt. Eine 
     { 
 		"name" : "Required for POST, optional for PUT. The name of the data source",
     	"description" : "Optional. Anything you want, or nothing at all",
-    	"type" : "Required. Must be one of 'azuresql', 'documentdb', or 'azureblob'",
+    	"type" : "Required. Must be one of 'azuresql', 'documentdb', 'azureblob', or 'azuretable'",
     	"credentials" : { "connectionString" : "Required. Connection string for your data source" },
     	"container" : { "name" : "Required. The name of the table, collection, or blob container you wish to index" },
     	"dataChangeDetectionPolicy" : { Optional. See below for details }, 
@@ -120,23 +121,24 @@ Die Anforderung enthält die folgenden Eigenschaften:
 	- `azuresql`: Azure SQL-Datenbank und SQL Server in Azure VMs
 	- `documentdb`: Azure DocumentDB
 	- `azureblob`: Azure Blob Storage
+	- `azuretable`: Azure Table Storage
 - `credentials`:
 	- Die erforderlichen Eigenschaft `connectionString` gibt die Verbindungszeichenfolge für die Datenquelle an. Das Format der Verbindungszeichenfolge hängt vom Typ der Datenquelle ab:
 		- Für SQL Azure ist dies die übliche SQL Server-Verbindungszeichenfolge. Wenn Sie die Verbindungszeichenfolge über das Azure-Portal abrufen, verwenden Sie die Option `ADO.NET connection string`.
 		- Für DocumentDB muss die Verbindungszeichenfolge folgenden Format aufweisen: `"AccountEndpoint=https://[your account name].documents.azure.com;AccountKey=[your account key];Database=[your database id]"`. Alle Werte sind erforderlich. Informationen zu den Werten finden Sie im [Azure-Portal](https://portal.azure.com/).
-		- Für Azure-Blobspeicher ist dies die Speicherkonto-Verbindungszeichenfolge. Das Format wird [hier](https://azure.microsoft.com/documentation/articles/storage-configure-connection-string/) beschrieben. Ein HTTPS-Endpunktprotokoll ist erforderlich.
-		
+		- Für Azure Blob Storage und Azure Table Storage ist dies die Verbindungszeichenfolge für das Speicherkonto. Das Format wird [hier](https://azure.microsoft.com/documentation/articles/storage-configure-connection-string/) beschrieben. Ein HTTPS-Endpunktprotokoll ist erforderlich.
 - `container`, erforderlich: Gibt die zu indizierenden Daten mithilfe der Eigenschaften `name` und `query` an:
 	- `name`, erforderlich:
 		- Azure SQL: Gibt die Tabelle oder Sicht an. Sie können schemaqualifizierte Namen verwenden, z.B. `[dbo].[mytable]`.
 		- DocumentDB: Gibt die Auflistung an.
-		- Azure-Blobspeicher: gibt den Speichercontainer an.
+		- Azure Blob Storage: Gibt den Speichercontainer an.
+		- Azure Table Storage: Gibt den Namen der Tabelle an.
 	- `query`, optional:
 		- DocumentDB: zum Angeben einer Abfrage, die ein beliebiges JSON-Dokumentlayout in ein Flatfile-Schema reduziert, welches von Azure Search indiziert werden kann.
-		- Azure-Blobspeicher: zum Angeben eines virtuellen Ordners im Blobcontainer. Für den Blobpfad `mycontainer/documents/blob.pdf` kann beispielsweise `documents` als virtueller Ordner verwendet werden.
+		- Azure Blob Storage: Erlaubt das Angeben eines virtuellen Ordners im Blobcontainer. Für den Blobpfad `mycontainer/documents/blob.pdf` kann beispielsweise `documents` als virtueller Ordner verwendet werden.
+		- Azure Table Storage: Erlaubt das Angeben einer Abfrage, die die Menge der zu importierenden Zeilen filtert.
 		- Azure SQL: Abfrage wird nicht unterstützt. Wenn Sie diese Funktion benötigen, stimmen Sie für [diesen Vorschlag](https://feedback.azure.com/forums/263029-azure-search/suggestions/9893490-support-user-provided-query-in-sql-indexer).
-   
-- Die optionalen Eigenschaften `dataChangeDetectionPolicy` und `dataDeletionDetectionPolicy` werden im Folgenden beschrieben.
+- Die optionalen Eigenschaften `dataChangeDetectionPolicy` und `dataDeletionDetectionPolicy` werden nachstehend beschrieben.
 
 <a name="DataChangeDetectionPolicies"></a>**Richtlinien zur Erkennung von Datenänderungen**
 
@@ -172,7 +174,7 @@ Die integrierte Änderungsverfolgung wird , ab den folgenden SQL Server-Datenban
 - SQL Server 2008 R2 bei Verwendung von SQL Server auf virtuellen Azure-Computern.
 - Azure SQL-Datenbank V12 bei Verwendung von Azure SQL-Datenbank.
 
-Wenn Sie die Richtlinie für die integrierte SQL-Änderungsnachverfolgung verwenden, geben Sie keine separate Richtlinie für das Erkennen gelöschter Daten an – Unterstützung für die Identifizierung gelöschter Zeilen ist in der Richtlinie bereits integriert.
+Wenn Sie die Richtlinie für die integrierte SQL-Änderungsnachverfolgung verwenden, geben Sie keine separate Richtlinie für das Erkennen gelöschter Daten an – Unterstützung für die Identifizierung gelöschter Zeilen ist in der Richtlinie bereits integriert.
 
 Diese Richtlinie kann nur mit Tabellen verwendet werden; sie kann nicht mit Ansichten verwendet werden. Sie müssen die Änderungsnachverfolgung für die verwendete Tabelle aktivieren, bevor Sie diese Richtlinie verwenden können. Anweisungen finden Sie unter [Aktivieren und Deaktivieren der Änderungsnachverfolgung](https://msdn.microsoft.com/library/bb964713.aspx).
  
@@ -239,11 +241,9 @@ Sie können eine vorhandene Datenquelle mithilfe einer HTTP-PUT-Anforderung aktu
 
 Die Syntax des Anforderungstexts ist mit der für [Anforderungen zum Erstellen von Datenquellen](#CreateDataSourceRequestSyntax) identisch.
 
-> [AZURE.NOTE]
-Manche Eigenschaften vorhandener Datenquellen können nicht aktualisiert werden. Sie können z. B. nicht den Typ einer vorhandenen Datenquelle ändern.
+> [AZURE.NOTE] Manche Eigenschaften vorhandener Datenquellen können nicht aktualisiert werden. Sie können z. B. nicht den Typ einer vorhandenen Datenquelle ändern.
 
-> [AZURE.NOTE]
-Wenn Sie die Verbindungszeichenfolge für eine vorhandene Datenquelle nicht ändern möchten, können Sie das Literal `<unchanged>` für die Verbindungszeichenfolge angeben. Dies ist hilfreich in Situationen, in denen Sie eine Datenquelle aktualisieren müssen, aber keinen bequemen Zugriff auf die Verbindungszeichenfolge haben, da sie zu den vertraulichen Daten zählt.
+> [AZURE.NOTE] Wenn Sie die Verbindungszeichenfolge für eine vorhandene Datenquelle nicht ändern möchten, können Sie das Literal `<unchanged>` für die Verbindungszeichenfolge angeben. Dies ist hilfreich in Situationen, in denen Sie eine Datenquelle aktualisieren müssen, aber keinen bequemen Zugriff auf die Verbindungszeichenfolge haben, da sie zu den vertraulichen Daten zählt.
 
 **Antwort**
 
@@ -398,7 +398,6 @@ Optional kann ein Indexer mehrere Parameter angeben, die sein Verhalten beeinflu
 - `base64EncodeKeys`: Gibt an, ob Dokumentschlüssel mit base-64 codiert werden. In Azure Search gelten Einschränkungen für Zeichen, die in einem Dokumentschlüssel vorhanden sein können. Allerdings können die Werte in Ihren Quelldaten Zeichen enthalten, die ungültig sind. Wenn solche Werte als Dokumentschlüssel indiziert werden sollen, können Sie dieses Kennzeichen auf "true" festlegen. Der Standardwert ist `false`.
 
 - `batchSize`: Gibt die Anzahl der Elemente an, die aus einer Datenquelle gelesen und als einzelner Batch indiziert werden, um die Leistung zu verbessern. Der Standardwert hängt vom Datenquellentyp ab: 1.000 für Azure SQL und DocumentDB und 10 für Azure-Blobspeicher.
-
 
 **Feldzuordnungen**
 
@@ -641,7 +640,7 @@ Das Indexer-Ausführungsergebnis enthält die folgenden Eigenschaften:
 
 - `endTime`: Die Zeit in UTC, zu der die Ausführung gestartet wurde. Dieser Wert wird nicht festgelegt, wenn die Ausführung noch nicht abgeschlossen ist.
 
-- `errors`: Eine Liste der auf Elementebene aufgetretenen Fehler, falls vorhanden. Jeder Eintrag enthält einen Dokumentschlüssel (`key`-Eigenschaft) und eine Fehlermeldung (`errorMessage`-Eigenschaft).
+- `errors`: Ein Array mit Fehlern auf Elementebene, sofern vorhanden. Jeder Eintrag enthält einen Dokumentschlüssel (`key`-Eigenschaft) und eine Fehlermeldung (`errorMessage`-Eigenschaft).
 
 - `itemsProcessed`: Die Anzahl der vom Indexer in dieser Ausführung zu indizierenden Datenquellen-Elemente (z. B. Zeilen in Tabelle).
 
@@ -668,7 +667,7 @@ Der Status der Indexer-Ausführung erfasst den Status einer einzelnen Indexer-Au
 <a name="ResetIndexer"></a>
 ## Indexer zurücksetzen ##
 
-Der Vorgang **Indexer zurücksetzen** setzt den mit dem Indexer verknüpften Status der Änderungsnachverfolgung zurück. Dies ermöglicht Ihnen, eine komplett neue Indizierung durchführen (z. B. wenn Ihr Datenquellenschema geändert wurde) oder die Richtlinie für die Änderungsnachverfolgung für Daten für eine mit dem Indexer verknüpfte Datenquelle zu ändern.
+Der Vorgang **Indexer zurücksetzen** setzt den mit dem Indexer verknüpften Status der Änderungsnachverfolgung zurück. Dies ermöglicht Ihnen, eine komplett neue Indizierung durchführen (z. B. wenn Ihr Datenquellenschema geändert wurde) oder die Richtlinie für die Änderungsnachverfolgung für Daten für eine mit dem Indexer verknüpfte Datenquelle zu ändern.
 
 	POST https://[service name].search.windows.net/indexers/[indexer name]/reset?api-version=[api-version]
     api-key: [admin key]
@@ -743,7 +742,7 @@ Statuscode "204 Kein Inhalt" bei erfolgreicher Antwort.
 </tr>
 <tr>
 <td>time, timespan<br>binary, varbinary, image,<br>xml, geometry, CLR types</td>
-<td>N/V</td>
+<td>–</td>
 <td>Nicht unterstützt</td>
 </tr>
 </table>
@@ -798,4 +797,4 @@ Statuscode "204 Kein Inhalt" bei erfolgreicher Antwort.
 </tr>
 </table>
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0914_2016-->

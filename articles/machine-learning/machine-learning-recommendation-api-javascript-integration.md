@@ -4,7 +4,7 @@
 	services="machine-learning" 
 	documentationCenter="" 
 	authors="LuisCabrer" 
-	manager="paulettm" 
+	manager="jhubbard" 
 	editor="cgronlun"/>
 
 <tags 
@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="javascript" 
 	ms.topic="article" 
-	ms.date="08/24/2016" 
+	ms.date="09/08/2016" 
 	ms.author="luisca"/>
 
 # Azure Machine Learning-Empfehlungen – JavaScript-Integration
 
-> Dies ist die Dokumentation zu den alten Recommendations-APIs im Datenmarkt, die zum 31.12.2016 eingestellt werden. Verwenden Sie ab sofort die [Recommentations-API von Cognitive Services](https://www.microsoft.com/cognitive-services/de-DE/recommendations-api).
+>[AZURE.NOTE] Beginnen Sie mit der Nutzung der Empfehlungs-API des Cognitive Service anstatt mit dieser Version. Der Recommendations Cognitive Service wird diesen Dienst ersetzen, weshalb alle neuen Features dafür entwickelt werden. Der Dienst bietet neue Funktionen wie Unterstützung der Batchverarbeitung, einen besseren API-Explorer, eine übersichtlichere API-Oberfläche, eine einheitlicherere Registrierungs-/Abrechnungsumgebung usw. Erfahren Sie mehr zur [Migration zum neuen Cognitive Service](http://aka.ms/recomigrate).
 
 
 Dieses Dokument beschreibt die Integration Ihrer Website mithilfe von JavaScript. JavaScript ermöglicht es Ihnen, Datensammlungsereignisse zu senden und Empfehlungen zu nutzen, nachdem Sie ein Empfehlungsmodell erstellt haben. Alle Vorgänge, die über JS erfolgen, können auch von der Serverseite her erfolgen.
@@ -62,7 +62,7 @@ Die folgenden Schritte erleichtern das Senden von Ereignissen:
 1.	Binden Sie die JQuery-Bibliothek in Ihren Code ein. Sie können ihn über die folgende URL von Nuget herunterladen.
 
 		http://www.nuget.org/packages/jQuery/1.8.2
-2.	Binden Sie die JavaScript-Bibliothek für Empfehlungen von folgender URL ein: http://1drv.ms/1Aoa1Zp
+2.	Binden Sie die JavaScript-Bibliothek für Empfehlungen von folgender URL ein: http://aka.ms/RecoJSLib1
 
 3.	Initialisieren Sie die Azure ML-Recommendations-Bibliothek mit den entsprechenden Parametern.
 
@@ -136,7 +136,9 @@ Oder mit optionalen Daten:
 
 
 ####3\.2.3. Addshopcart-Ereignis
-Dieses Ereignis sollte verwendet werden, wenn der Benutzer ein Element zum Einkaufswagen hinzufügt. Parameter:
+Dieses Ereignis sollte verwendet werden, wenn der Benutzer ein Element zum Einkaufswagen hinzufügt.
+
+Parameter:
 * event (Zeichenfolge, erforderlich) – „addshopcart“
 * item (Zeichenfolge, erforderlich) – eindeutiger Bezeichner des Elements
 * itemName (Zeichenfolge, optional) – der Name des Elements
@@ -168,7 +170,8 @@ Dieses Ereignis sollte verwendet werden, wenn der Benutzer seinen Einkaufswagen 
 
 Parameter:
 * event (Zeichenfolge) – „purchase“
-* items ( Purchased ) – Array mit einem Eintrag für jeden gekauften Artikel.<br><br> Format für „Purchased“:
+* items ( Purchased ) – Array mit einem Eintrag für jeden gekauften Artikel.<br><br> 
+Format für „Purchased“:
 	* item (Zeichenfolge) – eindeutiger Bezeichner des Elements
 	* count (Ganzzahl oder Zeichenfolge) – Anzahl der gekauften Elemente.
 	* price (Gleitkommazahl oder Zeichenfolge) – optionales Feld – der Preis des Elements.
@@ -189,7 +192,7 @@ Parameter:
 * event (Zeichenfolge) – „userlogin“
 * user (Zeichenfolge) – eindeutige Identifikation des Benutzers. 
 
-		<script> 
+		<script>
 			if (typeof AzureMLRecommendationsEvent=="undefined") { AzureMLRecommendationsEvent = ; }
 			AzureMLRecommendationsEvent.push({event: "userlogin", user: “ABCD10AA” });
 		</script>
@@ -230,4 +233,4 @@ Beispiel: Mit dem folgenden Code werden acht Empfehlungen für das Element "64f6
 [3]: ./media/machine-learning-recommendation-api-javascript-integration/Drawing3.png
  
 
-<!---HONumber=AcomDC_0831_2016-->
+<!----HONumber=AcomDC_0914_2016-->

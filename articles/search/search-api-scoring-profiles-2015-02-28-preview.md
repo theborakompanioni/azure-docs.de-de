@@ -4,7 +4,7 @@
 	services="search"
 	documentationCenter=""
 	authors="HeidiSteen"
-	manager="paulettm"
+	manager="jhubbard"
 	editor=""/>
 
 <tags
@@ -280,7 +280,7 @@ Interpolationen ermöglichen Ihnen die Definition der Steigung, in der die Bewer
 
 `boostingDuration` ist ein Attribut der Funktion "freshness". Sie können damit eine Ablaufdauer festlegen, nach der die Verstärkung für ein bestimmtes Dokument beendet wird. Um beispielsweise eine Produktlinie oder Marke für einen zehntägigen Werbezeitraum zu verstärken, können Sie den zehntägigen Zeitraum für diese Dokumente z. B. als "P10D" angeben. Oder geben Sie "-P7D" an, um bevorstehende Ereignisse in der nächsten Woche zu verstärken.
 
-`boostingDuration` muss als XSD-Wert "dayTimeDuration" formatiert sein (eine eingeschränkte Teilmenge eines ISO 8601-Zeitdauerwerts). Das Muster hierfür lautet wie folgt: `[-]P\[nD]\[T\[nH]\[nM]\[nS]\]`.
+`boostingDuration` muss als XSD-Wert "dayTimeDuration" formatiert sein (eine eingeschränkte Teilmenge eines ISO 8601-Zeitdauerwerts). Das Muster hierfür lautet wie folgt: `[-]P[nD][T[nH][nM][nS]]`.
 
 Die folgende Tabelle enthält einige Beispiele.
 
@@ -298,4 +298,4 @@ Weitere Beispiele finden Sie unter [XML-Schema: Datentypen (W3.org-Website)](htt
 <!--Image references-->
 [1]: ./media/search-api-scoring-profiles-2015-02-28-Preview/scoring_interpolations.png
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0914_2016-->

@@ -5,7 +5,7 @@
 	services="hdinsight"
 	documentationCenter=""
 	authors="mumian"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun"/>
 
 <tags
@@ -52,7 +52,7 @@ Bevor Sie mit diesem Lernprogramm zu HBase beginnen können, benötigen Sie Folg
 	- **Clustertyp** – Wählen Sie **HBase** aus.
 	- **Clusterbetriebssystem** – Wählen Sie **Windows** aus. Informationen zu Linux-basierten HBase-Clustern finden Sie unter [HBase-Tutorial: Erste Schritte mit Apache HBase mit Hadoop in HDInsight (Linux)](hdinsight-hbase-tutorial-get-started-linux.md).
 	- **Version** – Wählen Sie eine HBase-Version.
-	- **Abonnement** – Wählen Sie das Azure-Abonnement aus, das für die Erstellung des Clusters verwendet wird.
+	- **Abonnement**: Wählen Sie das Azure-Abonnement aus, das für die Erstellung des Clusters verwendet wird.
 	- **Ressourcengruppe** – Erstellen Sie eine neue Azure-Ressourcengruppe, oder wählen Sie eine vorhandene aus. Weitere Informationen finden Sie unter [Übersicht über den Azure-Ressourcen-Manager](resource-group-overview.md).
 	- **Anmeldeinformationen** – Bei Windows-basierten Clustern können Sie einen Clusterbenutzer (auch als HTTP- oder HTTP-Webdienstbenutzer bezeichnet) und einen Remotedesktopbenutzer erstellen. Klicken Sie auf **Remotedesktop aktivieren**, um die Remotedesktopbenutzer-Anmeldeinformationen hinzuzufügen. Der nächste Abschnitt setzt RDP voraus.
 	- **Datenquelle**: Erstellen Sie ein neues Azure-Speicherkonto, oder wählen Sie ein vorhandenes Azure-Speicherkonto aus, das als Standarddateisystem für den Cluster verwendet werden soll. Der Standardspeicherort für das Speicherkonto bestimmt den Speicherort des Clusters. Das Standardspeicherkonto und der Cluster müssen sich im gleichen Azure-Rechenzentrum befinden.
@@ -334,4 +334,4 @@ Weitere Informationen finden Sie unter:
 [img-hbase-sample-data-tabular]: ./media/hdinsight-hbase-tutorial-get-started/hdinsight-hbase-contacts-tabular.png
 [img-hbase-sample-data-bigtable]: ./media/hdinsight-hbase-tutorial-get-started/hdinsight-hbase-contacts-bigtable.png
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0914_2016-->

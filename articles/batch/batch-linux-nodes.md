@@ -13,14 +13,14 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-linux"
 	ms.workload="na"
-	ms.date="08/26/2016"
+	ms.date="09/08/2016"
 	ms.author="marsma" />
 
 # Bereitstellen von Linux-Computeknoten in Azure Batch-Pools
 
 Sie können Azure Batch verwenden, um Computeworkloads auf virtuellen Linux- und Windows-Computern parallel auszuführen. Dieser Artikel enthält Informationen zum Erstellen von Pools mit Linux-Computeknoten im Batch-Dienst mit den Clientbibliotheken [Batch Python][py_batch_package] sowie [Batch .NET][api_net].
 
-> [AZURE.NOTE] Die Unterstützung von Linux in Batch befindet sich derzeit in der Vorschauphase. Einige Aspekte der hier beschriebenen Features können sich vor der allgemeinen Verfügbarkeit ändern. [Anwendungspakete](batch-application-packages.md) werden auf Linux-Computeknoten derzeit nicht unterstützt.
+> [AZURE.NOTE] [Application packages](batch-application-packages.md) werden auf Linux-Serverknoten derzeit nicht unterstützt.
 
 ## Konfiguration des virtuellen Computers
 
@@ -349,6 +349,4 @@ Das [Azure Batch-Forum][forum] auf MSDN eignet sich hervorragend, um Information
 [vm_marketplace]: https://azure.microsoft.com/marketplace/virtual-machines/
 [vm_pricing]: https://azure.microsoft.com/pricing/details/virtual-machines/
 
-[1]: ./media/batch-application-packages/app_pkg_01.png "Übersichtsdiagramm für Anwendungspakete"
-
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0914_2016-->

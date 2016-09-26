@@ -224,7 +224,7 @@ Verwenden Sie eine der folgenden drei Methoden zum Erstellen eines Speicherkonte
     	$sasToken = New-AzureStorageContainerSASToken -Container abc -Permission rl
     	$Ctx = New-AzureStorageContext -StorageAccountName $StorageAccountName -SasToken $sasToken
 
-	Weitere Informationen finden Sie unter [New-AzureStorageContainerSASToken](http://msdn.microsoft.com/library/azure/dn806416.aspx) und [Shared Access Signatures, Teil 1: Grundlagen zum SAS-Modell](storage-dotnet-shared-access-signature-part-1.md).
+	Weitere Informationen finden Sie unter [New-AzureStorageContainerSASToken](http://msdn.microsoft.com/library/azure/dn806416.aspx) und [Verwenden von Shared Access Signatures (SAS)](storage-dotnet-shared-access-signature-part-1.md).
 
 - In einigen Fällen möchten Sie möglicherweise die Dienstendpunkte angeben, wenn Sie einen neuen Speicherkontext erstellen. Dies kann erforderlich sein, wenn Sie einen benutzerdefinierten Domänennamen für Ihr Speicherkonto mit dem Blob-Dienst registriert haben oder eine SAS (Shared Access Signature) für den Zugriff auf Speicherressourcen verwenden möchten. Legen Sie die Dienstendpunkte in einer Verbindungszeichenfolge fest, und verwenden Sie diese, um einen neuen Speicherkontext zu erstellen, wie unten gezeigt:
 
@@ -632,7 +632,7 @@ Eine SAS kann zwei Formen aufweisen:
 - **Ad-hoc-SAS:** Beim Erstellen einer Ad-hoc-SAS werden Startzeit, Ablaufzeit und Berechtigungen für die SAS direkt im SAS-URI angegeben. Diese Art von SAS kann für Container, Blobs, Tabellen oder Warteschlangen erstellt werden und kann nicht aufgehoben werden.
 - **SAS mit gespeicherten Zugriffsrichtlinien:** Gespeicherte Zugriffsrichtlinien werden für Ressourcencontainer – Blob-Container, Tabellen oder Warteschlangen – definiert und dienen der Verwaltung von Einschränkungen für eine oder mehrere SAS (Shared Access Signature). Wenn Sie eine SAS mit einer gespeicherten Zugriffsrichtlinie verknüpfen, erbt die SAS die Einschränkungen (Startzeit, Ablaufzeit und Berechtigungen) dieser gespeicherten Zugriffsrichtlinie. Diese Art von SAS kann aufgehoben werden.
 
-Weitere Informationen finden Sie unter [Shared Access Signatures: Grundlagen zum SAS-Modell](storage-dotnet-shared-access-signature-part-1.md) und [Verwalten des anonymen Lesezugriffs auf Container und Blobs](storage-manage-access-to-resources.md).
+Weitere Informationen finden Sie unter [Verwenden von Shared Access Signatures (SAS)](storage-dotnet-shared-access-signature-part-1.md) und [Verwalten des anonymen Lesezugriffs auf Container und Blobs](storage-manage-access-to-resources.md).
 
 In den nächsten Abschnitten erfahren Sie, wie Sie ein SAS-Token und eine gespeicherte Zugriffsrichtlinie für Azure-Tabellen erstellen. Azure PowerShell stellt ähnliche Cmdlets auch für Container, Blobs und Warteschlangen bereit. Um die Skripts in diesem Abschnitt auszuführen, laden Sie [Azure PowerShell, Version 0.8.14](http://go.microsoft.com/?linkid=9811175&clcid=0x409) oder höher herunter.
 
@@ -752,4 +752,4 @@ In diesem Handbuch haben Sie erfahren, wie Sie Azure Storage mit Azure PowerShel
 [How to use Azure Storage for U.S. government and Azure China]: #gov
 [Next Steps]: #next
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0914_2016-->

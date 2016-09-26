@@ -132,7 +132,7 @@ Derzeit werden die folgenden Aliase unterstützt:
 
 | Aliasname | Beschreibung |
 | ---------- | ----------- |
-| {resourceType}/sku.name | Unterstützte Ressourcentypen: Microsoft.Compute/virtualMachines,<br />Microsoft.Storage/storageAccounts,<br />Microsoft.Web/serverFarms,<br /> Microsoft.Scheduler/jobcollections,<br />Microsoft.DocumentDB/databaseAccounts,<br />Microsoft.Cache/Redis,<br />Microsoft..CDN/profiles |
+| {resourceType}/sku.name | Unterstützte Ressourcentypen: Microsoft.Compute/virtualMachines,<br />Microsoft.Storage/storageAccounts,<br />Microsoft.Web/serverFarms,<br /> Microsoft.Scheduler/jobcollections,<br />Microsoft.DocumentDB/databaseAccounts,<br />Microsoft.Cache/Redis,<br />Microsoft.CDN/profiles |
 | {resourceType}/sku.family | Unterstützter Ressourcentyp: Microsoft.Cache/Redis |
 | {resourceType}/sku.capacity | Unterstützter Ressourcentyp: Microsoft.Cache/Redis |
 | Microsoft.Compute/virtualMachines/imagePublisher | |
@@ -414,6 +414,27 @@ Die Ausgabe der Ausführung wird im $policy-Objekt gespeichert und kann später 
 
     New-AzureRmPolicyDefinition -Name regionPolicyDefinition -Description "Policy to allow resource creation only in certain 	regions" -Policy "path-to-policy-json-on-disk"
 
+### Erstellen der Richtliniendefinition mit der Azure-CLI
+
+Sie können eine neue Richtliniendefinition mithilfe der Azure-CLI über den entsprechenden Befehl erstellen (siehe unten). Das unten angeführte Beispiel erstellt eine Richtlinie, um Ressourcen nur in Nordeuropa und Westeuropa zuzulassen.
+
+    azure policy definition create --name regionPolicyDefinition --description "Policy to allow resource creation only in certain regions" --policy-string '{	
+      "if" : {
+        "not" : {
+          "field" : "location",
+          "in" : ["northeurope" , "westeurope"]
+    	}
+      },
+      "then" : {
+        "effect" : "deny"
+      }
+    }'    
+    
+
+Sie können auch den Pfad zu einer JSON-Datei angeben, die die Richtlinie enthält, anstatt die Richtlinie, wie unten gezeigt, inline anzugeben.
+
+    azure policy definition create --name regionPolicyDefinition --description "Policy to allow resource creation only in certain regions" --policy "path-to-policy-json-on-disk"
+
 
 ## Anwenden einer Richtlinie
 
@@ -456,17 +477,46 @@ Sie können Richtliniendefinitionen mithilfe der Cmdlets "Get-AzureRmPolicyDefin
 
 Ähnlich können Sie Richtlinienzuweisungen mithilfe der Cmdlets "Get-AzureRmPolicyAssignment", "Set-AzureRmPolicyAssignment" bzw. "Remove-AzureRmPolicyAssignment" abrufen, ändern oder entfernen.
 
+### Zuweisen von Richtlinien mit der Azure-CLI
+
+Sie können die oben erstellte Richtlinie mithilfe der Azure-CLI für den gewünschten Bereich erstellen, indem Sie den Befehl zur Richtlinienzuweisung verwenden, wie unten gezeigt:
+
+    azure policy assignment create --name regionPolicyAssignment --policy-definition-id /subscriptions/########-####-####-####-############/providers/Microsoft.Authorization/policyDefinitions/<policy-name> --scope    /subscriptions/########-####-####-####-############/resourceGroups/<resource-group-name>
+        
+Der Bereich ist in diesem Fall der Name der von Ihnen angegebenen Ressourcengruppe. Wenn der Wert des Parameters „policy-definition-id“ unbekannt ist, können Sie ihn über die Azure-CLI abrufen, wie unten gezeigt:
+
+    azure policy definition show <policy-name>
+
+Wenn Sie die oben genannte Richtlinienzuweisung entfernen möchten, können Sie hierzu wie folgt vorgehen:
+
+    azure policy assignment remove --name regionPolicyAssignment --ccope /subscriptions/########-####-####-####-############/resourceGroups/<resource-group-name>
+
+Über die Befehle „show“, „set“ und „delete“ können Sie Richtliniendefinitionen abrufen, ändern oder entfernen.
+
+Auf ähnliche Weise können Sie über die Befehle „show“ und „delete“ Richtlinienzuweisungen abrufen, ändern und entfernen.
+
 ##Richtlinie zur Überwachung von Ereignissen
 
-Nachdem Sie die Richtlinie angewendet haben, werden Sie richtlinienbezogene Ereignisse sehen können. Sie können entweder zum Portal wechseln oder PowerShell verwenden, um diese Daten abzurufen.
+Nachdem Sie die Richtlinie angewendet haben, werden Sie richtlinienbezogene Ereignisse sehen können. Sie können entweder das Portal, PowerShell oder die Azure-CLI verwenden, um diese Daten abzurufen.
 
-Zum Anzeigen aller Ereignisse, die mit dem Verweigerungseffekt in Verbindung stehen, können Sie den folgenden Befehl verwenden.
+### Überwachen von Ereignissen bei Richtlinien mithilfe von PowerShell
+
+Zum Anzeigen aller Ereignisse, die mit dem Verweigerungseffekt in Verbindung stehen, können Sie den folgenden PowerShell-Befehl verwenden.
 
     Get-AzureRmLog | where {$_.OperationName -eq "Microsoft.Authorization/policies/deny/action"} 
 
 Zum Anzeigen aller Ereignisse, die mit dem Überwachungseffekt in Verbindung stehen, können Sie den folgenden Befehl verwenden.
 
     Get-AzureRmLog | where {$_.OperationName -eq "Microsoft.Authorization/policies/audit/action"} 
-    
 
-<!---HONumber=AcomDC_0810_2016-->
+### Überwachen von Ereignissen bei Richtlinien mithilfe der Azure-CLI
+
+Zum Anzeigen aller Ereignisse in einer Ressourcengruppe, die mit dem Verweigerungseffekt in Verbindung stehen, können Sie den folgenden CLI-Befehl verwenden.
+
+    azure group log show ExampleGroup --json | jq ".[] | select(.operationName.value == "Microsoft.Authorization/policies/deny/action")"
+
+Zum Anzeigen aller Ereignisse, die mit dem Überwachungseffekt in Verbindung stehen, können Sie den folgenden CLI-Befehl verwenden.
+
+    azure group log show ExampleGroup --json | jq ".[] | select(.operationName.value == "Microsoft.Authorization/policies/audit/action")"
+
+<!---HONumber=AcomDC_0914_2016-->

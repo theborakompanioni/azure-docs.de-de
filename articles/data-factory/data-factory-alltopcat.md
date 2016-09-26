@@ -4,7 +4,7 @@
 	services="data-factory"
 	documentationCenter=""
 	authors="spelluru"
-	manager="paulettm"
+	manager="jhubbard"
 	editor=""/>
 
 <tags
@@ -130,7 +130,7 @@ In diesem Abschnitt werden Artikel aufgelistet, die kürzlich mit einem sehr umf
 | &nbsp; | Titel | Beschreibung |
 | --: | :-- | :-- |
 | 57 | [Fallstudien](data-factory-customer-case-studies.md) | Erfahren Sie, wie einige unserer Kunden Azure Data Factory verwendet haben. |
-| 58 | [Anwendungsfall – Erstellen von Kundenprofilen](data-factory-customer-profiling-usecase.md) | Erfahren Sie, wie Azure Data Factory zum Erstellen eines datengesteuerten Workflows (Pipeline) verwendet wird, um Profile von Spielekunden zu erstellen. |
+| 58 | [Anwendungsfall – Erstellen von Kundenprofilen](data-factory-customer-profiling-usecase.md) | Erfahren Sie, wie Azure Data Factory zum Erstellen eines datengesteuerten Workflows (Pipeline) verwendet wird, um Profile von Spielekunden zu erstellen. |
 | 59 | [Anwendungsfall – Produktempfehlungen](data-factory-product-reco-usecase.md) | Informationen zu einem Anwendungsfall, der mithilfe von Azure Data Factory zusammen mit anderen Diensten implementiert wurde. |
 
 
@@ -162,4 +162,4 @@ In diesem Abschnitt werden Artikel aufgelistet, die kürzlich mit einem sehr umf
 | 66 | [Azure Data Factory – Benennungsregeln](data-factory-naming-rules.md) | Beschreibt die Benennungsregeln für Data Factory-Entitäten. |
 | 67 | [Problembehandlung bei Data Factory](data-factory-troubleshoot.md) | Erfahren Sie, wie Sie Probleme mithilfe von Azure Data Factory beheben. |
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0914_2016-->

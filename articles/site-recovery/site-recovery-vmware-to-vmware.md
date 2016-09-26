@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/14/2016"
+	ms.date="09/11/2016"
 	ms.author="nisoneji"/>
 
 
@@ -22,7 +22,7 @@
 
 ## Übersicht
 
-InMage Scout in Azure Site Recovery ermöglicht eine Echtzeitreplikation zwischen lokalen VMware-Standorten. InMage Scout ist Teil der Abonnements des Azure Site Recovery-Diensts.
+InMage Scout in Azure Site Recovery ermöglicht eine Echtzeitreplikation zwischen lokalen VMware-Standorten. InMage Scout ist Teil der Abonnements des Azure Site Recovery-Diensts.
 
 
 ## Voraussetzungen
@@ -32,7 +32,7 @@ InMage Scout in Azure Site Recovery ermöglicht eine Echtzeitreplikation zwische
 
 ## Schritt 1: Erstellen eines Tresors
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com) an.
 2. Klicken Sie auf **Data Services** > **Recovery Services** > **Site Recovery-Tresor**.
 3. Klicken Sie auf **Neu erstellen** > **Schnellerfassung**.
 4. Geben Sie unter **Name** einen Anzeigenamen ein, über den der Tresor identifiziert wird.
@@ -164,4 +164,4 @@ Update 1 enthält die folgenden Fehlerbehebungen und neuen Features:
 
 Etwaige Fragen können Sie im [Azure Recovery Services-Forum](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr) stellen.
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0914_2016-->

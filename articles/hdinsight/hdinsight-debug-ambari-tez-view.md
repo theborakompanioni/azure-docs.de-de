@@ -4,7 +4,7 @@ description="Erfahren Sie, wie Sie die Ambari-Tez-Ansicht zum Debuggen von Tez-A
 services="hdinsight"
 documentationCenter=""
 authors="Blackmist"
-manager="paulettm"
+manager="jhubbard"
 editor="cgronlun"/>
 
 <tags
@@ -141,4 +141,4 @@ Ausführliche technische Informationen zu Tez finden Sie auf der [Seite zu Tez b
 
 Weitere Informationen zur Verwendung von Ambari mit HDInsight finden Sie unter [Verwalten von HDInsight-Clustern mithilfe der Ambari-Webbenutzeroberfläche](hdinsight-hadoop-manage-ambari.md).
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0914_2016-->

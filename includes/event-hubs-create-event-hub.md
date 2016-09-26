@@ -8,7 +8,7 @@
 
 3. Geben Sie auf dem Blatt **Namespace erstellen** einen Namen für den Namespace ein. Das System überprüft sofort, ob dieser Name verfügbar ist.
 
-	![][1]
+	![](./media/event-hubs-create-event-hub/create-event-hub1.png)
 
 4. Ist der Name verfügbar, wählen Sie den Tarif („Basic“ oder „Standard“) aus. Wählen Sie außerdem ein Azure-Abonnement, eine Ressourcengruppe und einen Standort, an dem die Ressource erstellt werden soll.
 
@@ -36,7 +36,7 @@
 
 5. Klicken Sie auf dem Blatt mit Namespaces (nicht auf dem Blatt für den bestimmten Event Hub) auf **Shared access policies** (Richtlinien für gemeinsamen Zugriff), und klicken Sie dann auf **RootManageSharedAccessKey**.
 
-	![][7]
+	![](./media/event-hubs-create-event-hub/create-event-hub7.png)
 
 5. Klicken Sie auf die Kopierschaltfläche, um die Verbindungszeichenfolge **RootManageSharedAccessKey** in die Zwischenablage zu kopieren. Speichern Sie diese Verbindungszeichenfolge für die spätere Verwendung in diesem Tutorial.
 
@@ -44,16 +44,14 @@
 
 Ihr Event Hub wird jetzt erstellt, und Sie verfügen über die zum Senden und Empfangen von Ereignissen erforderlichen Verbindungszeichenfolgen.
 
-[1]: ./media/event-hubs-create-event-hub/create-event-hub1.png
 [2]: ./media/event-hubs-create-event-hub/create-event-hub2.png
 [3]: ./media/event-hubs-create-event-hub/create-event-hub3.png
 [4]: ./media/event-hubs-create-event-hub/create-event-hub4.png
 [5]: ./media/event-hubs-create-event-hub/create-event-hub5.png
 [6]: ./media/event-hubs-create-event-hub/create-event-hub6.png
-[7]: ./media/event-hubs-create-event-hub/create-event-hub7.png
 [8]: ./media/event-hubs-create-event-hub/create-event-hub8.png
 [9]: ./media/event-hubs-create-event-hub/create-event-hub9.png
 
 [Azure-Portal]: https://portal.azure.com/
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0914_2016-->

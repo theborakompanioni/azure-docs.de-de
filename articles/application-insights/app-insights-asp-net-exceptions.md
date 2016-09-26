@@ -23,7 +23,7 @@
 
 Durch die Überwachung Ihrer Anwendung mit [Visual Studio Application Insights][start] können Sie Anforderungsfehler mit Ausnahmen und andere Ereignisse auf dem Client und auf dem Server zueinander in Beziehung setzen, damit Sie die Ursachen schnell diagnostizieren können.
 
-Um eine ASP.NET-App zu überwachen, müssen Sie Ihrer Anwendung das [Application Insights-SDK][greenbrown] hinzufügen, den [Statusmonitor auf dem IIS-Server installieren][redfield] oder, falls es sich bei Ihrer App um eine Azure-Web-App handelt, die [Application Insights-Erweiterung][azure] hinzufügen.
+Um eine ASP.NET-App zu überwachen, müssen Sie Ihrer Anwendung das [Application Insights-SDK][greenbrown] hinzufügen, den [Statusmonitor auf dem IIS-Server installieren][redfield] oder, falls es sich bei Ihrer App um eine Azure-Web-App handelt, die [Application Insights-Erweiterung](app-insights-azure-web-apps.md) hinzufügen.
 
 ## Diagnostizieren von Ausnahmen mithilfe von Visual Studio
 
@@ -76,7 +76,7 @@ Von dort aus können Sie sich die Stapelüberwachung und detaillierte Eigenschaf
 
 Eine *Abhängigkeit* ist ein Dienst, der von Ihrer Anwendung aufgerufen wird. Dies geschieht in der Regel über eine REST-API oder eine Datenbankverbindung. [Application Insights-Statusmonitor][redfield] überwacht automatisch eine Vielzahl von Abhängigkeitsaufruftypen und misst dabei die Dauer des Aufrufs sowie Erfolg oder Fehler.
 
-Um Abhängigkeitsdaten zu erhalten, müssen Sie den [Statusmonitor auf dem IIS-Server installieren][redfield] oder, wenn es sich bei Ihrer App um eine Azure-Web-App handelt, die [Application Insights-Erweiterung][azure] verwenden.
+Um Abhängigkeitsdaten zu erhalten, müssen Sie den [Statusmonitor auf dem IIS-Server installieren][redfield] oder, wenn es sich bei Ihrer App um eine Azure-Web-App handelt, die [Application Insights-Erweiterung](app-insights-azure-web-apps.md) verwenden.
 
 Fehlerhafte Aufrufe von Abhängigkeiten werden auf dem Blatt "Fehler" aufgeführt, und Sie finden sie außerdem unter "Verwandte Elemente" in den Anforderungsdetails und den Ausnahmendetails.
 
@@ -109,7 +109,7 @@ Anforderungsdetails enthalten nicht die Daten, die in einem POST-Aufruf an Ihre 
 
 * [Installieren Sie das SDK][greenbrown] in Ihrem Anwendungsprojekt.
 * Fügen Sie Code in die Anwendung ein, um [Microsoft.ApplicationInsights.TrackTrace()][api] aufzurufen. Senden Sie die POST-Daten im "message"-Parameter. Es gibt eine Größenbeschränkung, daher sollten Sie versuchen, nur die notwendigen Daten zu senden.
-* Wenn Sie eine fehlerhafte Anforderung untersuchen, suchen Sie die zugehörigen Ablaufverfolgungen.  
+* Wenn Sie eine fehlerhafte Anforderung untersuchen, suchen Sie die zugehörigen Ablaufverfolgungen.
 
 ![Drillthrough](./media/app-insights-asp-net-exceptions/060-req-related.png)
 
@@ -327,10 +327,10 @@ Sie könnten dieses außer Kraft gesetzte Attribut bestimmten Controllern oder d
 
 Es gibt eine Reihe von Fällen, die von den Ausnahmefiltern nicht verarbeitet werden können. Beispiel:
 
-* Von Controllerkonstruktoren ausgelöste Ausnahmen. 
-* Von Meldungshandlern ausgelöste Ausnahmen 
-* Während des Routings ausgelöste Ausnahmen. 
-* Während der Serialisierung von Antwortinhalten ausgelöste Ausnahmen. 
+* Von Controllerkonstruktoren ausgelöste Ausnahmen.
+* Von Meldungshandlern ausgelöste Ausnahmen
+* Während des Routings ausgelöste Ausnahmen.
+* Während der Serialisierung von Antwortinhalten ausgelöste Ausnahmen.
 
 ## Web-API 2.x
 
@@ -386,7 +386,7 @@ Fügen Sie den Diensten in WebApiConfig Folgendes hinzu:
 
 Als Alternativen können Sie folgende Aktionen ausführen:
 
-2. Ersetzen Sie den einzigen ExceptionHandler durch eine benutzerdefinierte Implementierung von IExceptionHandler. Diese wird nur aufgerufen, wenn das Framework weiterhin wählen kann, welche Antwortnachricht gesendet wird (nicht wenn z. B. die Verbindung abgebrochen wird). 
+2. Ersetzen Sie den einzigen ExceptionHandler durch eine benutzerdefinierte Implementierung von IExceptionHandler. Diese wird nur aufgerufen, wenn das Framework weiterhin wählen kann, welche Antwortnachricht gesendet wird (nicht wenn z. B. die Verbindung abgebrochen wird).
 3. Ausnahmefilter (wie im obigen Abschnitt zu Web-API-1.x-Controllern beschrieben) – werden nicht in allen Fällen aufgerufen.
 
 
@@ -467,7 +467,6 @@ Beachten Sie, dass sich der Wert von der Anzahl der "Ausnahmen" unterscheidet, d
 <!--Link references-->
 
 [api]: app-insights-api-custom-events-metrics.md
-[azure]: ../azure-portal/insights-perf-analytics.md
 [client]: app-insights-javascript.md
 [diagnostic]: app-insights-diagnostic-search.md
 [greenbrown]: app-insights-asp-net.md
@@ -477,4 +476,4 @@ Beachten Sie, dass sich der Wert von der Anzahl der "Ausnahmen" unterscheidet, d
 
  
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0914_2016-->

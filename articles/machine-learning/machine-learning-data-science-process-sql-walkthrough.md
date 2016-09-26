@@ -4,7 +4,7 @@
 	services="machine-learning"
 	documentationCenter=""
 	authors="bradsev"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun" />
 
 <tags
@@ -24,7 +24,7 @@ In diesem Tutorial werden Sie durch die Erstellung und Bereitstellung eines Mach
 
 ## <a name="dataset"></a>Beschreibung des NYC Taxi Trips-DataSets
 
-Die NYC Taxi Trips-Daten umfassen ca. 20 GB komprimierter CSV-Dateien (~48 GB unkomprimiert) mit mehr als 173 Millionen einzelnen Fahrten mit den zugehörigen Preisen. Jedes Fahrten-DataSets enthält den Start- und Zielort mit der Uhrzeit, die anonymisierte Lizenznummer des Fahrers (Hack) und die eindeutige ID des Taxis (Medallion). Die Daten umfassen alle Fahrten im Jahr 2013. Sie werden für jeden Monat in den folgenden beiden Datasets bereitgestellt:
+Die NYC Taxi Trips-Daten umfassen ca. 20 GB komprimierter CSV-Dateien (~48 GB unkomprimiert) mit mehr als 173 Millionen einzelnen Fahrten mit den zugehörigen Preisen. Jeder Fahrtendatensatz enthält den Start- und Zielort mit der Uhrzeit, die anonymisierte Lizenznummer des Fahrers (Hack) und die eindeutige ID des Taxis (Medallion). Die Daten umfassen alle Fahrten im Jahr 2013. Sie werden für jeden Monat in den folgenden beiden Datasets bereitgestellt:
 
 1. Die CSV-Datei "trip\_data" enthält Fahrtendetails wie die Anzahl der Fahrgäste, Start- und Zielort, Fahrtdauer und Fahrtlänge. Es folgen einige Beispieleinträge:
 
@@ -81,7 +81,7 @@ So richten Sie Ihre Azure Data Science-Umgebung ein:
 3. [Stellen Sie einen virtuellen Computer für Data Science bereit](machine-learning-data-science-setup-sql-server-virtual-machine.md), der als Server für SQL Server und IPython Notebook fungiert.
 
 	> [AZURE.NOTE] Die Beispielskripts und IPython Notebooks werden während der Einrichtung auf den virtuellen Computer für Data Science heruntergeladen. Nach Abschluss der VM-Nachinstallationsskripts finden Sie die Beispiele in der Dokumentbibliothek auf Ihrem virtuellen Computer:
-	> - Beispielskripts: `C:\Users<user_name>\Documents\Data Science Scripts`  
+	> - Beispielskripts: `C:\Users<user_name>\Documents\Data Science Scripts`
 	> - Beispiele für IPython Notebooks: `C:\Users<user_name>\Documents\IPython Notebooks\DataScienceSamples`, wobei `<user_name>` Ihr Windows-Anmeldename für Ihren virtuellen Computers ist. Wir bezeichnen die Beispielordner mit **Sample Scripts** und **Sample IPython Notebooks**.
 
 
@@ -97,7 +97,7 @@ So kopieren Sie die Daten mit AzCopy:
 
 2. Erstellen Sie ein neues Verzeichnis auf dem VM-Datenträger (Hinweis: Verwenden Sie nicht den temporären Datenträger, der als Datenträger auf dem virtuellen Computer enthalten ist).
 
-3. Führen Sie in einem Eingabeaufforderungsfenster die folgende AzCopy-Befehlszeile aus, und ersetzen Sie <path_to_data_folder> durch den in (2) erstellten Datenordner:
+3. Führen Sie in einem Eingabeaufforderungsfenster die folgende AzCopy-Befehlszeile aus, und ersetzen Sie „<path\_to\_data\_folder>“ durch den in (2) erstellten Datenordner:
 
 		"C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:https://nyctaxitrips.blob.core.windows.net/data /Dest:<path_to_data_folder> /S
 
@@ -144,7 +144,7 @@ Die Leistung beim Laden/Übertragen großer Datenmengen in eine SQL-Datenbank un
 7. Im Ordner **Sample Scripts** befinden sich zwei PowerShell-Beispielskripts zur Veranschaulichung des parallelen Massenimports von Daten in SQL Server-Tabellen.
 
 	- **bcp\_parallel\_generic.ps1** ist ein allgemeines Skript für den parallelen Massenimport von Daten in eine Tabelle. Ändern Sie dieses Skript, um die Eingabe- und Zielvariablen wie in den Kommentarzeilen im Skript angegeben festzulegen.
-	- **bcp\_parallel\_nyctaxi.ps1** ist eine vorkonfigurierte Version des generischen Skripts, das verwendet werden kann, um beide Tabellen für die "NYC Taxi Trips"-Daten zu laden.  
+	- **bcp\_parallel\_nyctaxi.ps1** ist eine vorkonfigurierte Version des generischen Skripts, das verwendet werden kann, um beide Tabellen für die "NYC Taxi Trips"-Daten zu laden.
 
 8. Klicken Sie mit der rechten Maustaste auf den Namen des Skripts **bcp\_parallel\_nyctaxi.ps1**, und klicken Sie dann auf **Bearbeiten**, um es in PowerShell zu öffnen. Überprüfen und ändern Sie die vordefinierten Variablen entsprechend Ihren gewählten Namen für Datenbank, Eingabedatenordner, Zielprotokollordner und die Pfade zu den Beispielformatdateien **nyctaxi\_trip.xml** und **nyctaxi\_fare.xml** (im Ordner **Sample Scripts**).
 
@@ -198,7 +198,7 @@ In diesem Beispiel wird die Taxinummer ("medallion") mit mehr als 100 Fahrten i
 	GROUP BY medallion
 	HAVING COUNT(*) > 100
 
-#### Untersuchung: Verteilung der Fahrten nach "medallion" und "hack\_license"
+#### Durchsuchen: Verteilung der Fahrten nach "medallion" und "hack\_license"
 
 	SELECT medallion, hack_license, COUNT(*)
 	FROM nyctaxi_fare
@@ -231,7 +231,7 @@ Dieses Beispiel ermittelt die Anzahl von Fahrten mit und ohne Trinkgeld in einem
 
 #### Durchsuchen: Verteilung von Trinkgeld nach Klasse/Bereich
 
-In diesem Beispiel wird die Verteilung von Trinkgeldbereichen in einem bestimmten Zeitraum (oder im vollständigen DataSet, wenn das ganze Jahr verwendet wird) berechnet. Dies ist die Verteilung der Bezeichnerklassen, die später für die Modellierung der Multi-Klassen-Klassifizierung verwendet wird.
+In diesem Beispiel wird die Verteilung von Trinkgeldbereichen in einem bestimmten Zeitraum (oder im vollständigen DataSet, wenn das ganze Jahr verwendet wird) berechnet. Dies ist die Verteilung der Bezeichnerklassen, die später für die Modellierung der Multiklassenklassifizierung verwendet wird.
 
 	SELECT tip_class, COUNT(*) AS tip_freq FROM (
 		SELECT CASE
@@ -298,7 +298,7 @@ Die empfohlene Reihenfolge beim Arbeiten mit großen Datenmengen lautet wie folg
 
 Wenn Sie bereit für die Weiterarbeit in Azure Machine Learning sind, können Sie Folgendes durchführen:
 
-1. die letzte SQL-Abfrage zum Extrahieren und Erstellen von Stichprobendaten speichern und per Kopieren und Einfügen direkt in ein [Import Data][import-data]-Modul in Azure Machine Learning einfügen. Dieses Verfahren wird im Abschnitt [Erstellen von Modellen in Azure Machine Learning](#mlmodel) veranschaulicht.    
+1. die letzte SQL-Abfrage zum Extrahieren und Erstellen von Stichprobendaten speichern und per Kopieren und Einfügen direkt in ein [Import Data][import-data]-Modul in Azure Machine Learning einfügen. Dieses Verfahren wird im Abschnitt [Erstellen von Modellen in Azure Machine Learning](#mlmodel) veranschaulicht.
 2. die extrahierten und verarbeiteten Daten, die Sie für Ihr Modell verwenden möchten, in einer neuen Datenbanktabelle speichern und dann die neue Tabelle im [Import Data][import-data]-Modul verwenden.
 
 Es folgen einige Beispiele für das Durchsuchen von Daten, die Datenvisualisierung und das Verarbeiten von Funktionen. Weitere Beispiele finden Sie im Beispiel-SQL-IPython Notebook im Ordner **Sample IPython Notebooks**.
@@ -334,7 +334,7 @@ Initialisieren Sie die Datenbank-Verbindungseinstellungen in den folgenden Varia
 
 	print 'Total number of columns = %d' % ncols.iloc[0,0]
 
-- Gesamtanzahl von Zeilen = 173.179.759  
+- Gesamtanzahl von Zeilen = 173.179.759
 - Gesamtanzahl von Spalten = 14
 
 #### Einlesen einer kleinen Datenprobe aus der SQL Server-Datenbank
@@ -419,7 +419,7 @@ Auf ähnliche Weise können wir die Beziehung zwischen **rate\_code** und **trip
 
 ### Generieren von Stichproben aus den Daten in SQL
 
-Bei der Vorbereitung von Daten für die Modellerstellung in [Azure Machine Learning Studio](https://studio.azureml.net) entscheiden Sie sich entweder für eine **direkte Verwendung von SQL-Abfragen im „Import Data“-Modul** oder für das Beibehalten der bearbeiteten und erfassten Daten in einer neuen Tabelle, die Sie im [Import Data][import-data]-Modul mit einer einfachen **SELECT-Abfrage wie SELECT * FROM <Ihr\_neuer\_Tabellenname>** verwenden können.
+Bei der Vorbereitung von Daten für die Modellerstellung in [Azure Machine Learning Studio](https://studio.azureml.net) entscheiden Sie sich entweder für eine **direkte Verwendung von SQL-Abfragen im „Import Data“-Modul** oder für das Beibehalten der bearbeiteten und erfassten Daten in einer neuen Tabelle, die Sie im [Import Data][import-data]-Modul mit einer einfachen SELECT-Abfrage wie **SELECT * FROM <Name\_Ihrer\_neuen\_Tabelle> verwenden können.
 
 In diesem Abschnitt erstellen Sie eine neue Tabelle zum Speichern der erfassten und verarbeiteten Daten. Ein Beispiel für eine direkte SQL-Abfrage für die Modellerstellung finden Sie im Abschnitt [Durchsuchen von Daten und Verarbeiten von Funktionen in SQL Server](#dbexplore).
 
@@ -647,7 +647,7 @@ Sie haben in dieser Übung bereits die Daten in SQL Server untersucht und bearbe
 
 7. Fügen Sie im Textbereich für die **Datenbankabfrage** die Abfrage ein, die die erforderlichen Datenbankfelder (einschließlich berechneter Felder wie die Bezeichner) extrahiert und die Daten auf die gewünschte Stichprobengröße reduziert.
 
-Ein Beispiel für ein binäres Klassifizierungsexperiment zum Lesen von Daten direkt aus der SQL Server-Datenbank finden Sie in der folgenden Abbildung. Ähnliche Experimente können für Multi-Klassen-Klassifizierungen und Regressionsprobleme erstellt werden.
+Ein Beispiel für ein binäres Klassifizierungsexperiment zum Lesen von Daten direkt aus der SQL Server-Datenbank finden Sie in der folgenden Abbildung. Ähnliche Experimente können für Multiklassenklassifizierungen und Regressionsprobleme erstellt werden.
 
 ![Azure ML-Schulung][10]
 
@@ -716,4 +716,4 @@ Diese exemplarische Vorgehensweise und die zugehörigen Skripts und IPython Note
 [select-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
 [import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0914_2016-->

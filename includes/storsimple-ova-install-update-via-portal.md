@@ -1,33 +1,35 @@
 <!--author=alkohli last changed: 09/02/16 -->
 
-#### To install updates via the Azure classic portal
+#### So installieren Sie Updates über das klassische Azure-Portal
 
-1. On the **Devices** page, select the device on which you want to install updates.
+1. Wählen Sie auf der Seite **Geräte** das Gerät aus, für das Sie Updates installieren möchten.
 
-2. Navigate to **Devices > Maintenance > Software Updates**.
+2. Navigieren Sie zu **Geräte > Wartung > Softwareupdates**.
 
-    ![update device](../includes/media/storsimple-ova-install-update-via-portal/azupdate1m.png)  
+    ![Gerät aktualisieren](../includes/media/storsimple-ova-install-update-via-portal/azupdate1m.png)
 
-3. You see a message if the software updates are available. To check for updates, you can also click **Scan Updates** at the bottom of the page.
+3. Wenn Softwareupdates verfügbar sind, wird eine Meldung angezeigt. Klicken Sie unten auf der Seite auf **Updates scannen**, um nach Updates zu suchen.
 
-    ![update device](../includes/media/storsimple-ova-install-update-via-portal/azupdate2m.png)
+    ![Gerät aktualisieren](../includes/media/storsimple-ova-install-update-via-portal/azupdate2m.png)
 
-4. From the bottom of the page, click **Download Updates**. A dialog notifies the user that the update is disruptive. Given the StorSimple Virtual Array is a single node device, the device restarts after it is updated. This disrupts any IO in progress. Click the check icon to launch a job to download the available updates. 
+4. Klicken Sie unten auf der Seite auf **Updates herunterladen**. Der Benutzer wird mit einem Dialogfeld darauf hingewiesen, dass das Update zu einer Unterbrechung führt. Da es sich bei StorSimple Virtual Array um ein Gerät mit einem Einzelknoten handelt, wird das Gerät nach dem Update neu gestartet. Dadurch werden alle laufenden E/A-Vorgänge unterbrochen. Klicken Sie auf das Häkchensymbol, um einen Auftrag zum Herunterladen der verfügbaren Updates zu starten.
 
-    ![update device](../includes/media/storsimple-ova-install-update-via-portal/azupdate3m.png)
+    ![Gerät aktualisieren](../includes/media/storsimple-ova-install-update-via-portal/azupdate3m.png)
 
-5. You are notified when the updates are downloaded. 
+5. Sie werden benachrichtigt, nachdem die Updates heruntergeladen wurden.
 
-    ![update device](../includes/media/storsimple-ova-install-update-via-portal/azupdate6m.png)
+    ![Gerät aktualisieren](../includes/media/storsimple-ova-install-update-via-portal/azupdate6m.png)
 
-6. From the bottom of the page, click **Install Updates** to begin updating the device. The dialog is presented to you again. Click the check icon to start a job to install the updates. 
+6. Klicken Sie unten auf der Seite auf **Updates installieren**, um mit dem Update des Geräts zu beginnen. Das Dialogfeld wird erneut angezeigt. Klicken Sie auf das Häkchensymbol, um einen Auftrag zum Installieren der Updates zu starten.
 
-    ![update device](../includes/media/storsimple-ova-install-update-via-portal/azupdate7m.png) 
+    ![Gerät aktualisieren](../includes/media/storsimple-ova-install-update-via-portal/azupdate7m.png)
 
-7. You are notified after the job is created. 
+7. Sie werden benachrichtigt, sobald der Auftrag erstellt wurde.
 
-    ![update device](../includes/media/storsimple-ova-install-update-via-portal/azupdate8m.png)
+    ![Gerät aktualisieren](../includes/media/storsimple-ova-install-update-via-portal/azupdate8m.png)
 
-8. Click **View Job** link to go to the Jobs page and monitor the install status. You can click **Details** at any time to get detailed information about the update job. 
+8. Klicken Sie auf den Link **Auftrag anzeigen**, und wechseln Sie zur Seite „Aufträge“, um den Installationsstatus zu prüfen. Klicken Sie auf **Details**, um detaillierte Informationen zum Updateauftrag zu erhalten.
 
-    ![update device](../includes/media/storsimple-ova-install-update-via-portal/azupdate9m.png)
+    ![Gerät aktualisieren](../includes/media/storsimple-ova-install-update-via-portal/azupdate9m.png)
+
+<!---HONumber=AcomDC_0914_2016-->

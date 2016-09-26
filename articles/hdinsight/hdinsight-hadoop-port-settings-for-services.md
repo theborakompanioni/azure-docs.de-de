@@ -4,7 +4,7 @@ description="Enthält eine Liste mit Ports, die von in HDInsight ausgeführten H
 services="hdinsight"
 documentationCenter=""
 authors="Blackmist"
-manager="paulettm"
+manager="jhubbard"
 editor="cgronlun"/>
 
 <tags
@@ -143,4 +143,4 @@ Alle Dienste, die im Internet öffentlich verfügbar gemacht werden, müssen aut
 | Broker | Workerknoten | 9092 | [Kafka Wire Protocol](http://kafka.apache.org/protocol.html) | Für die Clientkommunikation |
 | &nbsp; | Zookeeper-Knoten | 2181 | &nbsp; | Port, der von Clients für die Verbindungsherstellung mit Zookeeper verwendet wird |
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0914_2016-->

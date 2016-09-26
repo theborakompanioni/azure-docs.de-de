@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="06/07/2016"
+	ms.date="09/06/2016"
 	ms.author="adegeo"/>
 
 
@@ -83,7 +83,7 @@ Visual Studio Teams Services verwendet einen ähnlichen Ansatz für automatisier
 
 Wenn in der Diagnosekonfiguration kein „StorageAccount“ angegeben wurden, müssen Sie den „StorageAccountName“-Parameter an das Cmdlet übergeben. Bei Angabe des Parameters „StorageAccountName“ verwendet das Cmdlet immer das im Parameter angegebene Speicherkonto und nicht die Angabe aus der Diagnosekonfigurationsdatei.
 
-Wenn das Diagnosespeicherkonto einem anderen Abonnement angehört als der Clouddienst, müssen die Parameter „StorageAccountName“ und „StorageAccountKey“ explizit an das Cmdlet übergeben werden. Der Parameter „StorageAccountKey“ ist nicht erforderlich, wenn das Diagnosespeicherkonto dem gleichen Abonnement angehört, da das Cmdlet beim Aktivieren der Diagnoseerweiterung den Schlüsselwert automatisch abfragen und festlegen kann. Gehört das Diagnosespeicherkonto dagegen einem anderen Abonnement an, kann das Cmdlet den Schlüssel unter Umständen nicht automatisch abrufen, weshalb er in diesem Fall explizit über den Parameter „StorageAccountKey“ angegeben werden muss.
+Wenn das Diagnosespeicherkonto einem anderen Abonnement angehört als der Clouddienst, müssen die Parameter StorageAccountName und StorageAccountKey explizit an das Cmdlet übergeben werden. Der Parameter StorageAccountKey ist nicht erforderlich, wenn das Diagnosespeicherkonto dem gleichen Abonnement angehört, da das Cmdlet beim Aktivieren der Diagnoseerweiterung den Schlüsselwert automatisch abfragen und festlegen kann. Gehört das Diagnosespeicherkonto dagegen einem anderen Abonnement an, kann das Cmdlet den Schlüssel unter Umständen nicht automatisch abrufen, weshalb er in diesem Fall explizit über den Parameter StorageAccountKey angegeben werden muss.
 
 	$webrole_diagconfig = New-AzureServiceDiagnosticsExtensionConfig -Role "WebRole" -DiagnosticsConfigurationPath $webrole_diagconfigpath -StorageAccountName $diagnosticsstorage_name -StorageAccountKey $diagnosticsstorage_key
 	$workerrole_diagconfig = New-AzureServiceDiagnosticsExtensionConfig -Role "WorkerRole" -DiagnosticsConfigurationPath $workerrole_diagconfigpath -StorageAccountName $diagnosticsstorage_name -StorageAccountKey $diagnosticsstorage_key
@@ -125,6 +125,6 @@ So entfernen Sie die Diagnoseerweiterung aus jeder einzelnen Rolle
 
 - Weitere Anleitungen zur Verwendung von Azure-Diagnose und anderen Techniken zur Problembehandlung finden Sie unter [Aktivieren der Diagnose in Azure Cloud Services und Virtual Machines](cloud-services-dotnet-diagnostics.md).
 - Das [Diagnosekonfigurationsschema](https://msdn.microsoft.com/library/azure/dn782207.aspx) erläutert die verschiedenen Optionen der XML-Konfigurationen für die Diagnoseerweiterung.
-- Weitere Informationen zum Aktivieren der Diagnoseerweiterung für virtuelle Computer finden Sie unter [Erstellen eines virtuellen Windows-Computers mit Überwachung und Diagnose mithilfe von Azure-Ressourcen-Manager-Vorlagen](../virtual-machines/virtual-machines-windows-extensions-diagnostics-template.md).  
+- Weitere Informationen zum Aktivieren der Diagnoseerweiterung für virtuelle Computer finden Sie unter [Erstellen eines virtuellen Windows-Computers mit Überwachung und Diagnose mithilfe von Azure-Ressourcen-Manager-Vorlagen](../virtual-machines/virtual-machines-windows-extensions-diagnostics-template.md).
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0914_2016-->

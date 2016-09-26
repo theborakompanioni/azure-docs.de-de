@@ -4,7 +4,7 @@
 	services="hdinsight"
 	documentationCenter=""
 	authors="nitinme"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun"
 	tags="azure-portal"/>
 
@@ -232,7 +232,7 @@ Beim lokalen Ausführen der Spark Scala-Anwendung auf einem Windows-Computer erh
 	![Erstellen einer Spark Scala-Anwendung](./media/hdinsight-apache-spark-eclipse-tool-plugin/hdi-spark-app-local-run.png)
 
 	* Wählen Sie im linken Bereich **HDInsight** aus.
-	* Wählen Sie im rechten Bereich **Spark on HDInsight Local Run Sample (Scala)** aus.
+	* Wählen Sie im rechten Bereich **Spark on HDInsight Local Run Sample (Scala)** (Spark auf HDInsight – Beispiel für lokale Ausführung [Scala]) aus.
 	* Klicken Sie auf **Next**.
 
 2. Um die Projektdetails bereitzustellen, führen Sie die Schritte 3 bis 6 wie im früheren Abschnitt [Einrichten eines Spark Scala-Projekts für einen HDInsight Spark-Cluster](#set-up-a-spark-scala-application-project-for-an-hdinsight-spark Cluster) gezeigt aus.
@@ -294,4 +294,4 @@ Falls Sie Vorschläge oder Feedback haben oder bei Verwendung dieses Tools Probl
 
 * [Track and debug jobs running on an Apache Spark cluster in HDInsight (Nachverfolgen und Debuggen von Aufträgen in einem Apache Spark-Cluster unter HDInsight)](hdinsight-apache-spark-job-debugging.md)
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0914_2016-->

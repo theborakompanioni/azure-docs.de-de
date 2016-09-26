@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="05/24/2016"
+   ms.date="09/12/2016"
    ms.author="magoedte;bwren;sngun"/>
 
 # Azure Automation-Webhooks
@@ -84,7 +84,7 @@ Eine andere Strategie besteht darin, dass das Runbook eine externe Bedingung üb
 
 Gehen Sie wie folgt vor, um einen neuen Webhook zu erstellen, der mit einem Runbook im Azure-Portal verknüpft ist
 
-1. Klicken Sie auf dem Blatt **Runbooks** im Azure-Portal auf das Runbook, das vom Webhook gestartet werden soll, um das Detailblatt des Runbooks anzuzeigen. 
+1. Klicken Sie auf dem Blatt **Runbooks** im Azure-Portal auf das Runbook, das vom Webhook gestartet werden soll, um das Detailblatt des Runbooks anzuzeigen.
 3. Klicken Sie oben im Blatt auf **Webhook**, um das Blatt **Webhook hinzufügen** zu öffnen. <br> ![Schaltfläche "Webhooks"](media/automation-webhooks/webhooks-button.png)
 4. Klicken Sie auf **Neuen Webhook erstellen**, um das Blatt **Webhook erstellen** zu öffnen.
 5. Geben Sie einen **Namen** und ein **Ablaufdatum** für den Webhook an, und legen Sie fest, ob er aktiviert werden soll. Weitere Informationen zu diesen Eigenschaften finden Sie unter [Details zu einem Webhook](#details-of-a-webhook).
@@ -192,7 +192,7 @@ Neben der Verwendung von Azure-Warnungen als Benachrichtigungssystem können Sie
 
 ![Webhooks](media/automation-webhooks/webhook-alert.jpg)
 
-### Der Warnungskontext
+### Warnungskontext
 
 Bei einer Azure Ressource wie einem virtuellen Computer ist die CPU-Auslastung dieses Computers eine der wichtigsten Leistungsmetriken. Wenn die CPU-Auslastung über einen langen Zeitraum 100 % oder mehr beträgt, empfiehlt sich ein Neustart des virtuellen Computers, um das Problem zu beheben. Dies kann gelöst werden, indem für den virtuellen Computer eine Warnregel mit dem CPU-Prozentsatz als Metrik konfiguriert wird. Der CPU-Prozentsatz dient hier lediglich als Beispiel. Es gibt zahlreiche weitere Metriken, die Sie für Ihre Azure-Ressourcen konfigurieren können. Der Neustart des virtuellen Computers ist eine Aktion, um dieses Problem zu beheben. Sie können aber auch andere Aktionen für das Runbook konfigurieren.
 
@@ -272,4 +272,4 @@ Das folgende Beispiel-Runbook wird immer dann ausgelöst, wenn die Warnregel akt
 - Informationen zum Anzeigen des Status eines Runbookauftrags finden Sie unter [Ausführen von Runbooks in Azure Automation](automation-runbook-execution.md).
 - Informationen zur Verwendung von Azure Automation für die Reaktion auf Azure-Warnungen finden Sie unter [Wartung nach Azure-VM-Warnungen mit Automation-Runbooks](automation-azure-vm-alert-integration.md)
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0914_2016-->

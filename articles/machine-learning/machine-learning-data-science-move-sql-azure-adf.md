@@ -4,7 +4,7 @@
 	services="machine-learning"
 	documentationCenter=""
 	authors="bradsev"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun" />
 
 <tags
@@ -42,7 +42,7 @@ Wir richten eine ADF-Pipeline ein, die aus zwei Datenmigrationsaktivitäten best
 * Kopieren von Daten aus einer lokalen SQL Server-Datenbank in ein Azure Blob-Speicherkonto
 * Kopieren von Daten aus dem Azure Blob-Speicherkonto in eine Azure SQL-Datenbank
 
-**Referenz**: Die hier gezeigten Schritte wurden dem detaillierteren Tutorial [Move data between on-premises sources and cloud with Data Management Gateway](../data-factory/data-factory-move-data-between-onprem-and-cloud.md) (Verschieben von Daten zwischen lokalen Quellen und der Cloud mit dem Datenverwaltungsgateway) entnommen und angepasst, das vom ADF-Team bereitgestellt wurde. Verweise auf die entsprechenden Abschnitte dieses Tutorials werden an geeigneten Stellen angegeben.
+**Referenz**: Die hier gezeigten Schritte wurden dem detaillierteren Tutorial [Verschieben von Daten zwischen lokalen Quellen und der Cloud mit dem Datenverwaltungsgateway](../data-factory/data-factory-move-data-between-onprem-and-cloud.md) entnommen und angepasst, das vom ADF-Team bereitgestellt wurde. Verweise auf die entsprechenden Abschnitte dieses Tutorials werden an geeigneten Stellen angegeben.
 
 
 ## <a name="prereqs"></a>Voraussetzungen
@@ -94,7 +94,7 @@ Um den verknüpften Dienst für den lokalen SQL Server zu erstellen, klicken Sie
 Um den verknüpften Dienst für das Azure Blob-Speicherkonto zu erstellen, klicken Sie im klassischen Azure-Portal auf der ADF-Startseite auf **Datenspeicher**, wählen Sie *Azure-Speicherkonto* aus, und geben Sie den Azure Blob-Speicherkontoschlüssel und den Containernamen ein. Nennen Sie den Dienst Link *adfds*.
 
 ###<a name="adf-linked-service-azure-sql"></a>Verknüpfter Dienst für Azure SQL-Datenbank
-Um den verknüpften Dienst für die Azure SQL-Datenbank zu erstellen, klicken Sie im klassischen Azure-Portal auf der ADF-Startseite auf **Datenspeicher**, wählen Sie *Azure SQL* aus, und geben Sie die Anmeldeinformationen für *Benutzername* und *Kennwort* für die Azure SQL-Datenbank ein. Der *Benutzername* muss im Format "**user@servername*" angegeben werden.
+Um den verknüpften Dienst für die Azure SQL-Datenbank zu erstellen, klicken Sie im klassischen Azure-Portal auf der ADF-Startseite auf **Datenspeicher**, wählen Sie *Azure SQL* aus, und geben Sie die Anmeldeinformationen für *Benutzername* und *Kennwort* für die Azure SQL-Datenbank ein. Der *Benutzername* muss im Format *user@servername* angegeben werden.
 
 
 ##<a name="adf-tables"></a>Definieren und Erstellen von Tabellen, um die Art des Zugriffs auf Datasets anzugeben
@@ -106,7 +106,7 @@ Erstellen Sie Tabellen, in denen die Struktur, der Speicherort und die Verfügba
 Die JSON-basierten Definitionen in den Tabellen verwenden die folgenden Namen:
 
 * Der **Tabellenname** im lokalen SQL Server lautet *nyctaxi\_data*.
-* Der **Containername** im Azure Blob-Speicherkonto lautet *containername*.  
+* Der **Containername** im Azure Blob-Speicherkonto lautet *containername*.
 
 Für diese ADF-Pipeline sind drei Tabellendefinitionen erforderlich:
 
@@ -310,4 +310,4 @@ Sobald die Pipeline ausgeführt wird, sollten Sie die Daten sehen können, die i
 
 Beachten Sie, dass wir nicht die Funktionalität von ADF zum inkrementellen Übertragen von Daten per Pipe genutzt haben. Weitere Detailinformationen zur Vorgehensweise sowie zu weiteren von ADF bereitgestellten Funktionen finden Sie in der [ADF-Dokumentation](https://azure.microsoft.com/services/data-factory/).
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0914_2016-->

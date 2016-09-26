@@ -19,8 +19,7 @@
 
 # Tutorial: Erstellen der ersten Pipeline zum Verarbeiten von Daten mithilfe eines Hadoop-Clusters 
 > [AZURE.SELECTOR]
-- [Übersicht über das Tutorial](data-factory-build-your-first-pipeline.md)
-- [Verwenden des Data Factory-Editors](data-factory-build-your-first-pipeline-using-editor.md)
+- [Verwenden des Azure-Portals](data-factory-build-your-first-pipeline-using-editor.md)
 - [Verwenden von Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
 - [Mithilfe von PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
 - [Verwenden der Resource Manager-Vorlage](data-factory-build-your-first-pipeline-using-arm.md)
@@ -226,4 +225,4 @@ Jetzt können Sie mit dem Tutorial beginnen. Klicken Sie oben auf eine der Regis
 - [Mithilfe von PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
 - [Verwenden der Resource Manager-Vorlage](data-factory-build-your-first-pipeline-using-arm.md)
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0914_2016-->

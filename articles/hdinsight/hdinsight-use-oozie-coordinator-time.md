@@ -5,7 +5,7 @@
 	documentationCenter=""
 	tags="azure-portal"
 	authors="mumian"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun"/>
 
 <tags
@@ -211,7 +211,7 @@ Von der Hive-Aktion im Workflow wird eine HiveQL-Skriptdatei aufgerufen. Die Skr
 	<tr><td>${hiveOutputFolder}</td><td>Der Ausgabeordner für die Hive-Anweisung INSERT OVERWRITE. Dieser entspricht dem für den Sqoop-Export angegebenen Ordner (export-dir).</td></tr>
 	</table>
 
-	Weitere Informationen über den Oozie-Workflow und die Verwendung von Workflowaktionen finden Sie in der [Apache Oozie 4.0-Dokumentation][apache-oozie-400] (für HDInsight-Cluster der Version 3.0) oder in der [Apache Oozie 3.3.2-Dokumentation][apache-oozie-332] (für HDInsight-Cluster der Version 2.1).
+	Weitere Informationen über den Oozie-Workflow und die Verwendung von Workflowaktionen finden Sie in der [Apache Oozie 4.0-Dokumentation][apache-oozie-400] \(für HDInsight-Cluster der Version 3.0) oder in der [Apache Oozie 3.3.2-Dokumentation][apache-oozie-332] \(für HDInsight-Cluster der Version 2.1).
 
 2. Speichern Sie die Datei al **C:\\Tutorials\\UseOozie\\workflow.xml** mit ANSI (ASCII)-Codierung. (Verwenden Sie Editor, falls Ihr Texteditor diese Option nicht zur Verfügung stellt.)
 
@@ -253,7 +253,7 @@ Sie führen ein Azure PowerShell-Skript aus, um folgende Aktionen durchzuführen
 
 HDInsight verwendet Azure-Blobspeicher für die Datenspeicherung. „wasbs://“ ist die HDFS-Implementierung (Hadoop Distributed File System) von Microsoft im Azure-Blobspeicher. Weitere Informationen finden Sie unter [Verwenden von Azure-Blobspeicher mit HDInsight][hdinsight-storage].
 
-Während des Prozesses zur Bereitstellung eines HDInsight-Clusters werden wie in HDFS ein Azure-Blobspeicherkonto und ein bestimmter Container aus diesem Konto als Standarddateisystem festgelegt. Zusätzlich zu diesem Speicherkonto können Sie während des Bereitstellungsprozesses weitere Speicherkonten aus demselben Azure-Abonnement oder aus anderen Azure-Abonnements hinzufügen. Informationen zum Hinzufügen zusätzlicher Speicherkonten finden Sie unter [Bereitstellen von HDInsight-Clustern][hdinsight-provision]. Um das in diesem Lernprogramm verwendete Azure PowerShell-Skript zu vereinfachen, werden alle Dateien im Standarddateisystemcontainer unter */tutorials/useoozie* gespeichert. Dieser Container hat standardmäßig denselben Namen wie der HDInsight-Cluster. Die Syntax ist:
+Während des Prozesses zur Bereitstellung eines HDInsight-Clusters werden wie in HDFS ein Azure-Blobspeicherkonto und ein bestimmter Container aus diesem Konto als Standarddateisystem festgelegt. Zusätzlich zu diesem Speicherkonto können Sie während des Bereitstellungsprozesses weitere Speicherkonten aus dem gleichen Azure-Abonnement oder aus anderen Azure-Abonnements hinzufügen. Informationen zum Hinzufügen zusätzlicher Speicherkonten finden Sie unter [Bereitstellen von HDInsight-Clustern][hdinsight-provision]. Um das in diesem Lernprogramm verwendete Azure PowerShell-Skript zu vereinfachen, werden alle Dateien im Standarddateisystemcontainer unter */tutorials/useoozie* gespeichert. Dieser Container hat standardmäßig denselben Namen wie der HDInsight-Cluster. Die Syntax ist:
 
 	wasb[s]://<ContainerName>@<StorageAccountName>.blob.core.windows.net/<path>/<filename>
 
@@ -277,9 +277,9 @@ Folgendes sollten Sie über interne und externe Hive-Tabellen wissen:
 
 - Der Befehl CREATE TABLE erstellt eine interne Tabelle, die auch als verwaltete Tabelle bezeichnet wird. Die Datendatei muss sich im Standardcontainer befinden.
 - Der Befehl CREATE TABLE verschiebt die Datendatei in den Ordner „/hive/warehouse/<Tabellenname>“ im Standardcontainer.
-- Der Befehl CREATE EXTERNAL TABLE erstellt eine externe Tabelle. Die Datendatei kann sich außerhalb des Standardcontainers befinden.
+- Mit dem Befehl CREATE EXTERNAL TABLE erstellen Sie eine externe Tabelle. Die Datendatei kann sich außerhalb des Standardcontainers befinden.
 - Der Befehl CREATE EXTERNAL TABLE verschiebt die Datendatei nicht.
-- Der Befehl CREATE EXTERNAL TABLE lässt keine Unterordner unter dem in der LOCATION-Klausel angegebenen Ordner zu. Aus diesem Grund wird im Lernprogramm eine Kopie der Datei sample.log erstellt.
+- Der Befehl CREATE EXTERNAL TABLE lässt keine Unterordner unter dem in der LOCATION-Klausel angegebenen Ordner zu. Aus diesem Grund wird durch dieses Lernprogramm eine Kopie der Datei "sample.log" erstellt.
 
 Weitere Informationen finden Sie unter [HDInsight: Hive Internal and External Tables Intro][cindygross-hive-tables].
 
@@ -378,7 +378,7 @@ Weitere Informationen finden Sie unter [HDInsight: Hive Internal and External Ta
 
 ##Ausführen des Oozie-Projekts
 
-Azure PowerShell stellt derzeit keine Cmdlets zum Definieren von Oozie-Jobs bereit. Sie können das Cmdlet **Invoke-RestMethod** verwenden, um Oozie-Webdienste aufzurufen. Die Oozie-Webdienste-API ist eine HTTP REST JSON-API. Weitere Informationen über die Oozie-Webdienste-API finden Sie in der [Apache Oozie 4.0-Dokumentation][apache-oozie-400] (für HDInsight-Cluster der Version 3.0) oder in der [Apache Oozie 3.3.2-Dokumentation][apache-oozie-332] (für HDInsight-Cluster der Version 2.1).
+Azure PowerShell stellt derzeit keine Cmdlets zum Definieren von Oozie-Jobs bereit. Sie können das Cmdlet **Invoke-RestMethod** verwenden, um Oozie-Webdienste aufzurufen. Die Oozie-Webdienste-API ist eine HTTP REST JSON-API. Weitere Informationen über die Oozie-Webdienste-API finden Sie in der [Apache Oozie 4.0-Dokumentation][apache-oozie-400] \(für HDInsight-Cluster der Version 3.0) oder in der [Apache Oozie 3.3.2-Dokumentation][apache-oozie-332] \(für HDInsight-Cluster der Version 2.1).
 
 **So übermitteln Sie einen Oozie-Auftrag**
 
@@ -525,7 +525,7 @@ Azure PowerShell stellt derzeit keine Cmdlets zum Definieren von Oozie-Jobs bere
 
 	>[AZURE.NOTE] Der Hauptunterschied zur Nutzlastdatei für die Workflowübermittlung ist die Variable **oozie.coord.application.path**. Beim Übermitteln eines Workflowauftrags wird stattdessen **oozie.wf.application.path** verwendet.
 
-4. Hängen Sie die folgenden Codezeilen an das Skript. In diesem Teil wird der Status des Oozie-Webdiensts geprüft:
+4. Hängen Sie die folgenden Codezeilen an das Skript. Dieser Teil dient zur Statusüberprüfung des Oozie-Webdienstes:
 
 		function checkOozieServerStatus()
 		{
@@ -740,4 +740,4 @@ In diesem Lernprogramm haben Sie einen Oozie-Workflow und einen Oozie-Koordinato
 
 [technetwiki-hive-error]: http://social.technet.microsoft.com/wiki/contents/articles/23047.hdinsight-hive-error-unable-to-rename.aspx
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0914_2016-->

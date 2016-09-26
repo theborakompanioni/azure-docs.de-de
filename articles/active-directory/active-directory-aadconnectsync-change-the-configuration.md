@@ -35,7 +35,7 @@ Oben rechts sehen Sie die Schaltfläche **Neue Regel hinzufügen**. Diese Schalt
 Unten im Fenster befinden sich Schaltflächen, mit denen Sie Aktionen für eine ausgewählte Synchronisierungsregel ausführen können. Die Schaltflächen **Bearbeiten** und **Löschen** sind selbsterklärend. **Exportieren** erzeugt ein PowerShell-Skript zur erneuten Erstellung der Synchronisierungsregel. Dieses Verfahren ermöglicht es Ihnen, eine Synchronisierungsregel von einem Server auf einen anderen zu verschieben.
 
 ## Erstellen Ihrer ersten benutzerdefinierten Regel
-Änderungen an den Attributflüssen zählen zu den häufigsten Änderungen. Die Daten in Ihrem Quellverzeichnis sind möglicherweise nicht so, wie Sie sie in Azure AD haben möchten. Im Beispiel in diesem Abschnitt möchten Sie sicherstellen, dass der Vorname eines Benutzers immer die **korrekte Groß-/Kleinschreibung** aufweist.
+Änderungen an den Attributflüssen zählen zu den häufigsten Änderungen. Die Daten in Ihrem Quellverzeichnis weichen möglicherweise von denen in Azure AD ab. Im Beispiel in diesem Abschnitt möchten Sie sicherstellen, dass der Vorname eines Benutzers immer die **korrekte Groß-/Kleinschreibung** aufweist.
 
 ### Deaktivieren des Schedulers
 Der [Scheduler](active-directory-aadconnectsync-feature-scheduler.md) wird standardmäßig alle 30 Minuten ausgeführt. Sie möchten sicherstellen, dass er nicht gestartet wird, während Sie Änderungen vornehmen und Probleme in Ihren neuen Regeln beheben. Um den Scheduler vorübergehend zu deaktivieren, starten Sie PowerShell, und führen Sie folgenden Befehl aus: `Set-ADSyncScheduler -SyncCycleEnabled $false`
@@ -134,4 +134,4 @@ Bei Fabrikam haben wir festgestellt, dass einige der Attribute, die wir mit der 
 - [Azure AD Connect-Synchronisierung: Grundlagen und Anpassung der Synchronisierung](active-directory-aadconnectsync-whatis.md)
 - [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md)
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0914_2016-->

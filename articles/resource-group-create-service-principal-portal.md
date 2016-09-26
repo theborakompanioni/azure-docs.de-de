@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="08/18/2016"
+   ms.date="09/07/2016"
    ms.author="tomfitz"/>
 
 # Erstellen einer Active Directory-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff mithilfe des Portals
@@ -148,9 +148,23 @@ Sie können den Umfang auf Abonnement-, Ressourcengruppen- oder Ressourcenebene 
 
      Wenn Sie nicht über die erforderlichen Berechtigungen zum Gewähren des Zugriffs auf eine Anwendung verfügen, muss Ihr Abonnementadministrator Sie zur Rolle „Benutzerzugriffsadministrator“ hinzufügen, oder es muss ein Administrator den Zugriff auf die Anwendung gewähren.
 
-1. Navigieren Sie zur Bereichsebene, der Sie die Anwendung zuweisen möchten. Für dieses Thema können Sie zu einer Ressourcengruppe navigieren und auf dem Blatt der Ressourcengruppe die Option **Zugriffssteuerung** auswählen.
+1. Navigieren Sie zur Bereichsebene, der Sie die Anwendung zuweisen möchten. Um einer Gruppe im Abonnementkontext eine Rolle zuzuweisen, wählen Sie **Abonnements** aus.
+
+     ![Abonnement auswählen](./media/resource-group-create-service-principal-portal/select-subscription.png)
+
+     Wählen Sie das Abonnement aus, dem die Anwendung zugewiesen werden soll.
+
+     ![Abonnement für Zuweisung auswählen](./media/resource-group-create-service-principal-portal/select-one-subscription.png)
+
+     Wählen Sie rechts oben das Symbol **Zugriff** aus.
+
+     ![„Zugriff“ auswählen](./media/resource-group-create-service-principal-portal/select-access.png)
+     
+     Um eine Rolle auf Ressourcengruppenebene zuzuweisen, wechseln Sie zu einer Ressourcengruppe. Wählen Sie auf dem Blatt „Ressourcengruppe“ **Zugriffssteuerung** aus.
 
      ![Benutzer auswählen](./media/resource-group-create-service-principal-portal/select-users.png)
+
+     Die folgenden Schritte sind für alle Ebenen identisch.
 
 2. Wählen Sie **Hinzufügen**.
 
@@ -208,4 +222,4 @@ Die folgenden Beispielanwendungen veranschaulichen die Anmeldung als Dienstprinz
 - Informationen zum Festlegen von Sicherheitsrichtlinien finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure](./active-directory/role-based-access-control-configure.md).
 - Eine Videodemo dieser Schritte finden Sie unter [Aktivieren der programmgesteuerten Verwaltung einer Azure-Ressource mit Azure Active Directory](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Enabling-Programmatic-Management-of-an-Azure-Resource-with-Azure-Active-Directory).
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0914_2016-->

@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="06/22/2016"
+    ms.date="09/06/2016"
     ms.author="adegeo"/>
 
 # Verbinden von Azure Cloud Services-Rollen mit einem in Azure gehosteten AD-Domänencontroller
@@ -156,4 +156,4 @@ help New-AzureServiceADDomainExtensionConfig
 
 Wir möchten gerne von Ihnen wissen, ob Sie eine Erweiterung nützlich fänden, mit der ein virtueller Computer zu einem Domänencontroller heraufgestuft werden kann. Wenn Sie also der Meinung sind, eine solche Erweiterung wäre nützlich, geben Sie uns bitte Feedback im Kommentarbereich.
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0914_2016-->

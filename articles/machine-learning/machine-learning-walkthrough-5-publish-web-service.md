@@ -1,10 +1,10 @@
 <properties
-	pageTitle="Schritt 5: Bereitstellen des Machine Learning-Webdiensts | Microsoft Azure"
-	description="Exemplarische Vorgehensweise zum Entwickeln einer Vorhersagelösung – Schritt 5: Bereitstellen eines Vorhersageexperiments als Webdienst in Machine Learning Studio."
+	pageTitle="Schritt 5: Bereitstellen des Machine Learning-Webdiensts | Microsoft Azure"
+	description="Exemplarische Vorgehensweise zum Entwickeln einer Vorhersagelösung – Schritt 5: Bereitstellen eines Vorhersageexperiments als Webdienst in Machine Learning Studio."
 	services="machine-learning"
 	documentationCenter=""
 	authors="garyericson"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun"/>
 
 <tags
@@ -17,7 +17,7 @@
 	ms.author="garye"/>
 
 
-# Anleitung Schritt 5: Bereitstellen des Azure Machine Learning-Webdiensts
+# Anleitung Schritt 5: Bereitstellen des Azure Machine Learning-Webdiensts
 
 Dies ist der fünfte Schritt der exemplarischen Vorgehensweise zum [Predictive Analytics-Lösung in Azure Machine Learning](machine-learning-walkthrough-develop-predictive-solution.md).
 
@@ -68,7 +68,7 @@ Glücklicherweise können alle drei Schritte ausgeführt werden, indem Sie einfa
 Beim Klicken auf **Set Up Web Service** geschehen mehrere Dinge:
 
 - Das trainierte Modell wird als Modul **Trained Model** in der Modulpalette gespeichert, die sich links neben dem Experimentbereich befindet. (Sie finden sie unter **Trained Models**.)
-- Module, die zum Training verwendet wurden, werden entfernt. Dies gilt insbesondere in folgenden Fällen:
+- Module, die zum Training verwendet wurden, werden entfernt. Dies bedeutet Folgendes:
   - [Two-Class Boosted Decision Tree][two-class-boosted-decision-tree]
   - [Train Model][train-model]
   - [Split Data][split]
@@ -127,7 +127,7 @@ Um den Webdienst zu testen, klicken Sie auf die Menüoption **Test** (siehe **Te
 
 ## Testen des Webdiensts
 
-**Testen eines klassischen Webdiensts**Klicken Sie auf der Seite **DASHBOARD** unter **Default Endpoint** auf die Schaltfläche **Test**. Ein Dialogfeld wird geöffnet, in dem Sie nach den Eingabedaten für den Dienst gefragt werden. Dies sind die gleichen Spalten, die im Originaldataset „German Credit Risk“ angezeigt wurden.
+**Testen eines klassischen Webdiensts** Klicken Sie auf der Seite **DASHBOARD** unter **Default Endpoint** auf die Schaltfläche **Test**. Ein Dialogfeld wird geöffnet, in dem Sie nach den Eingabedaten für den Dienst gefragt werden. Dies sind die gleichen Spalten, die im Originaldataset „German Credit Risk“ angezeigt wurden.
 
 Geben Sie eine Reihe von Daten ein, und klicken Sie auf **OK**.
 
@@ -200,4 +200,4 @@ So überwachen Sie die Leistung des Webdiensts
 [two-class-support-vector-machine]: https://msdn.microsoft.com/library/azure/12d8479b-74b4-4e67-b8de-d32867380e20/
 [project-columns]: https://msdn.microsoft.com/de-DE/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0914_2016-->

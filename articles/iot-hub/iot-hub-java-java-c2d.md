@@ -13,7 +13,7 @@
      ms.topic="article"
      ms.tgt_pltfrm="na"
      ms.workload="na"
-     ms.date="06/23/2016"
+     ms.date="09/13/2016"
      ms.author="dobett"/>
 
 # Tutorial: Senden von Cloud-zu-Gerät-Nachrichten mithilfe von IoT Hub und Java
@@ -81,9 +81,9 @@ In diesem Abschnitt ändern Sie die simulierte Geräteanwendung, die Sie in [Ers
 
 ## Senden einer C2D-Nachricht
 
-In diesem Abschnitt erstellen Sie eine Java-Konsolen-App, die Cloud-zu-Gerät-Nachrichten an die simulierte Geräte-App sendet. Dazu benötigen Sie die Geräte-ID des Geräts, das Sie im Tutorial [Erste Schritte mit IoT Hub] hinzugefügt haben, sowie die Verbindungszeichenfolge für Ihre IoT Hub-Instanz, die Sie im [Azure-Portal] finden können.
+In diesem Abschnitt erstellen Sie eine Java-Konsolen-App, die C2D-Nachrichten an die simulierte Geräte-App sendet. Sie benötigen die Geräte-ID des Geräts, das Sie im Tutorial [Erste Schritte mit IoT Hub] hinzugefügt haben. Sie benötigen auch die Verbindungszeichenfolge für den IoT Hub, die Sie im [Azure-Portal] finden.
 
-1. Erstellen Sie mithilfe des folgenden Befehls über die Eingabeaufforderung ein neues Maven-Projekt namens **send-c2d-messages**. Beachten Sie, dass es sich hierbei um einen einzelnen langen Befehl handelt:
+1. Erstellen Sie mithilfe des folgenden Befehls über die Eingabeaufforderung ein Maven-Projekt namens **send-c2d-messages**. Beachten Sie, dass es sich hierbei um einen einzelnen langen Befehl handelt:
 
     ```
     mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=send-c2d-messages -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
@@ -91,7 +91,7 @@ In diesem Abschnitt erstellen Sie eine Java-Konsolen-App, die Cloud-zu-Gerät-Na
 
 2. Navigieren Sie an der Eingabeaufforderung zu dem neuen Ordner „send-c2d-messages“.
 
-3. Öffnen Sie die Datei „pom.xml“ aus dem Ordner „send-c2d-messages“ in einem Text-Editor, und fügen Sie dem Knoten **dependencies** die folgende Abhängigkeit hinzu. Dadurch können Sie in Ihrer Anwendung das Paket **iothub-java-service-client** verwenden, um mit Ihrem IoT Hub-Dienst zu kommunizieren:
+3. Öffnen Sie die Datei „pom.xml“ aus dem Ordner „send-c2d-messages“ in einem Text-Editor, und fügen Sie dem Knoten **dependencies** die folgende Abhängigkeit hinzu. Durch Hinzufügen der Abhängigkeit können Sie in Ihrer Anwendung das Paket **iothub-java-service-client** verwenden, um mit Ihrem IoT Hub-Dienst zu kommunizieren:
 
     ```
     <dependency>
@@ -159,7 +159,7 @@ In diesem Abschnitt erstellen Sie eine Java-Konsolen-App, die Cloud-zu-Gerät-Na
 
 Sie können nun die Anwendungen ausführen.
 
-1. Führen Sie an einer Befehlszeile im Ordner „simulated-device“ den folgenden Befehl aus, um mit dem Senden von Telemetriedaten an Ihren IoT Hub und Empfangen von C2D-Nachrichten, die von Ihrem IoT Hub gesendet werden, zu beginnen:
+1. Führen Sie an einer Befehlszeile im Ordner „simulated-device“ den folgenden Befehl aus, um mit dem Senden von Telemetriedaten an Ihren IoT Hub und Empfangen von C2D-Nachrichten, die von Ihrem Hub gesendet werden, zu beginnen:
 
     ```
     mvn exec:java -Dexec.mainClass="com.mycompany.app.App" 
@@ -199,4 +199,4 @@ Weitere Informationen zum Entwickeln von Lösungen mit IoT Hub finden Sie im [Io
 [Azure-Portal]: https://portal.azure.com
 [Azure IoT Suite]: https://azure.microsoft.com/documentation/suites/iot-suite/
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0914_2016-->

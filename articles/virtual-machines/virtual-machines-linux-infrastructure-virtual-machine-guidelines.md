@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/22/2016"
+	ms.date="09/08/2016"
 	ms.author="iainfou"/>
 
 # Richtlinien für virtuelle Computer
@@ -31,7 +31,7 @@ Entscheidungen:
 
 Aufgaben:
 
-- Definieren Sie die Workloads für Ihre Anwendung und die Ressourcen, die der virtuelle Computer benötigt.
+- Definieren Sie die Workloads für Ihre Anwendung und die Ressourcen, die die VMs benötigen.
 - Stimmen Sie den Ressourcenbedarf für jeden virtuellen Computer mit der entsprechenden Größe und dem Speichertyp der virtuellen Computer ab.
 - Definieren Sie die Ressourcengruppen für die verschiedenen Ebenen und Komponenten Ihrer Infrastruktur.
 - Definieren Sie die Namenskonvention für virtuelle Computer.
@@ -43,7 +43,7 @@ Zu den wichtigsten Komponenten in Ihrer Azure-Umgebung gehören wahrscheinlich v
 
 Sie müssen die [unterschiedlichen Größen virtueller Computer](virtual-machines-linux-sizes.md) kennen, um die Größe Ihrer Umgebung im Hinblick auf Leistung und Kosten richtig festzulegen. Wenn Ihre virtuellen Computer nicht über genügend CPU-Kerne oder Arbeitsspeicher verfügen, leidet die Leistung der Anwendung unabhängig davon, wie gut sie entworfen und entwickelt wurde. Überprüfen Sie zunächst die vorgeschlagenen Workloads für jede Serie virtueller Computer, wenn Sie entscheiden, welche Größe Sie für virtuelle Computer für jede Komponente in Ihrer Infrastruktur verwenden möchten. Sie können [die Größe eines virtuellen Computers](virtual-machines-linux-change-vm-size.md) nach der Bereitstellung ändern.
 
-Speicher spielt eine wichtige Rolle für die Leistung virtueller Computer. Sie können Standard-Speicher verwenden, für den normale rotierende Festplatten genutzt werden, oder Premium-Speicher für hohe E/A-Workloads und Höchstleistung mithilfe von SSD-Datenträgern. Wie die Größe des virtuellen Computers müssen auch Kostenerwägungen berücksichtigt werden, wenn es darum geht, das Speichermedium auszuwählen. Sie können den [Artikel mit Richtlinien für die Speicherinfrastruktur](virtual-machines-linux-infrastructure-storage-solutions-guidelines.md) lesen, um zu verstehen, wie der geeignete Speicher für eine optimale Leistung Ihrer virtuellen Computer entworfen wird.
+Speicher spielt eine wichtige Rolle für die Leistung virtueller Computer. Sie können Standardspeicher auf normalen rotierenden Festplatten oder Storage Premium-Speicher auf SSD-Datenträgern für hohe E/A-Workloads und Höchstleistung nutzen. Wie die Größe des virtuellen Computers müssen auch Kostenaspekte berücksichtigt werden, wenn es darum geht, das Speichermedium auszuwählen. Sie können den [Artikel mit Richtlinien für die Speicherinfrastruktur](virtual-machines-linux-infrastructure-storage-solutions-guidelines.md) lesen, um zu verstehen, wie der geeignete Speicher für eine optimale Leistung Ihrer virtuellen Computer entworfen wird.
 
 
 ## Ressourcengruppen
@@ -57,4 +57,4 @@ Sie können Vorlagen erstellen, die durch deklarative JSON-Dateien definiert sin
 ## Nächste Schritte
 [AZURE.INCLUDE [virtual-machines-linux-infrastructure-guidelines-next-steps](../../includes/virtual-machines-linux-infrastructure-guidelines-next-steps.md)]
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0914_2016-->

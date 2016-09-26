@@ -1,5 +1,5 @@
-       Navigieren Sie nun zum Blade Schlüssel Ihres DocumentDB-Kontos, da diese Werte in der Webanwendung verwendet werden, die wir als Nächstes erstellen.
+  Navigieren Sie nun zum Blatt „DocumentDB-Konto“, und klicken Sie auf **Schlüssel**, da wird diese Werte in der Webanwendung verwenden, die wir als Nächstes erstellen.
 
-       ![Screen shot of the Azure portal, showing a DocumentDB account, with the Keys button highlighted on the DocumentDB account blade, and the URI, PRIMARY KEY and SECONDARY KEY values highlighted on the Keys blade](./media/documentdb-keys/keys.png)
+![Screenshot des Azure-Portals mit einem DocumentDB-Konto, bei dem die Schaltfläche „Schlüssel“ auf dem Blatt „DocumentDB-Konto“ hervorgehoben ist, und auf dem Blatt „Schlüssel“ die Werte URI, PRIMÄRSCHLÜSSEL und SEKUNDÄRSCHLÜSSEL hervorgehoben sind](./media/documentdb-keys/keys.png)
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0914_2016-->

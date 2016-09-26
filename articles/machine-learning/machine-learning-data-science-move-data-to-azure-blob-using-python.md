@@ -4,7 +4,7 @@
 	services="machine-learning,storage"
 	documentationCenter=""
 	authors="bradsev"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun" />
 
 <tags
@@ -24,7 +24,7 @@ Dieses Thema beschreibt das Auflisten, Hochladen und Herunterladen von Blobs mit
 - Hochladen eines Blobs in einen Container
 - Herunterladen von Blobs
 - Auflisten der Blobs in einem Container
-- Löschen eines Blobs
+- Löschen eines BLOBs
 
 Weitere Informationen zur Verwendung der Python-API finden Sie unter [Verwenden des Blob-Speicherdiensts in Python](../storage/storage-python-how-to-use-blob-storage.md).
 
@@ -42,7 +42,7 @@ Nachstehend finden Sie Links zu Anleitungen für Technologien zum Verschieben vo
 
 In diesem Dokument wird davon ausgegangen, dass Sie über ein Azure-Abonnement, ein Speicherkonto und den zugehörigen Speicherschlüssel für dieses Konto verfügen. Bevor Sie Daten hoch- und herunterladen können, müssen Sie den Namen Ihres Azure-Speicherkontos und den Kontoschlüssel kennen.
 
-- Informationen zum Einrichten eines Azure-Abonnements finden Sie unter [Kostenlose 1-Monat-Testversion](https://azure.microsoft.com/pricing/free-trial/).
+- Informationen zum Einrichten eines Azure-Abonnements finden Sie unter [Kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/).
 - Anleitungen zum Erstellen eines Speicherkontos und zum Abrufen von Konto- und Schlüsselinformationen finden Sie unter [Informationen zu Azure-Speicherkonten](../storage/storage-create-storage-account.md).
 
 
@@ -129,4 +129,4 @@ Der folgende Beispielcode lädt alle Blobs aus einem Container herunter. Dabei w
 	    except:
 	        print "something wrong happened when downloading the data %s"%blob.name
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0914_2016-->

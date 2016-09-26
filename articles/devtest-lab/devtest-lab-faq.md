@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/01/2016"
+	ms.date="09/13/2016"
 	ms.author="tarcher"/>
 
 # Häufig gestellte Fragen zu Azure DevTest Labs
@@ -45,6 +45,7 @@ In diesem Artikel werden einige der am häufigsten gestellten Fragen zu Azure De
 - [Wie verschiebe ich meine vorhandenen Azure-VMs in mein Azure DevTest Labs-Lab?](#how-do-i-move-my-existing-azure-vms-into-my-azure-devtest-labs-lab)
 - [Kann ich mehrere Datenträger an meine VMs anfügen?](#can-i-attach-multiple-disks-to-my-vms)
 - [Wie automatisiere ich das Hochladen von VHD-Dateien zum Erstellen benutzerdefinierter Images?](#how-do-i-automate-the-process-of-uploading-vhd-files-to-create-custom-images)
+- [Wie kann ich den Löschvorgang für alle virtuellen Computer in meinem Lab automatisieren?](#how-can-i-automate-the-process-of-deleting-all-the-vms-in-my-lab)
  
 ## Artefakte 
  
@@ -56,6 +57,8 @@ In diesem Artikel werden einige der am häufigsten gestellten Fragen zu Azure De
 - [Warum werden meine VMs in verschiedenen Ressourcengruppen mit willkürlichen Namen erstellt? Kann ich diese Ressourcengruppen umbenennen oder ändern?](#why-are-my-vms-created-in-different-resource-groups-with-arbitrary-names-can-i-rename-or-modify-these-resource-groups)
 - [Wie viele Labs kann ich unter demselben Abonnement erstellen?](#how-many-labs-can-i-create-under-the-same-subscription)
 - [Wie viele VMs kann ich pro Lab erstellen?](#how-many-vms-can-i-create-per-lab)
+- [Wie gebe ich einen direkten Link zu meinem Lab frei?](#how-do-i-share-a-direct-link-to-my-lab)
+- [Was ist ein Microsoft-Konto?](#what-is-a-microsoft-account)
  
 ## Problembehandlung 
  
@@ -168,11 +171,48 @@ Führen Sie folgende Schritte aus, um nach dem Zielspeicherkonto zu suchen, das 
 1. Suchen Sie in der Liste nach Uploads. Falls kein Upload vorhanden ist, kehren Sie zu Schritt 4 zurück, und versuchen Sie es mit einem anderen Speicherkonto.
 1. Verwenden Sie die **URL** im AzCopy-Befehl als Ziel.
 
+
+### Wie kann ich den Löschvorgang für alle virtuellen Computer in meinem Lab automatisieren?
+
+Zusätzlich zum Löschen von virtuellen Computern aus Ihrem Lab im Azure-Portal können Sie alle virtuellen Computer in Ihrem Lab mithilfe eines PowerShell-Skripts löschen. Ändern Sie im folgenden Beispiel einfach die Werte der Parameter unter dem Kommentar **Values to change**. Sie können die Werte `subscriptionId`, `labResourceGroup` und `labName` aus dem Labblatt im Azure-Portal abrufen.
+
+
+	# Delete all the VMs in a lab
+	
+	# Values to change
+	$subscriptionId = "<Enter Azure subscription ID here>"
+	$labResourceGroup = "<Enter lab's resource group here>"
+	$labName = "<Enter lab name here>"
+
+	# Login to your Azure account
+	Login-AzureRmAccount
+	
+	# Select the Azure subscription that contains the lab. This step is optional
+	# if you have only one subscription.
+	Select-AzureRmSubscription -SubscriptionId $subscriptionId
+	
+	# Get the lab that contains the VMs to delete.
+	$lab = Get-AzureRmResource -ResourceId ('subscriptions/' + $subscriptionId + '/resourceGroups/' + $labResourceGroup + '/providers/Microsoft.DevTestLab/labs/' + $labName)
+	
+	# Get the VMs from that lab.
+	$labVMs = Get-AzureRmResource | Where-Object { 
+	          $_.ResourceType -eq 'microsoft.devtestlab/labs/virtualmachines' -and
+	          $_.ResourceName -like "$($lab.ResourceName)/*"}
+	
+	# Delete the VMs.
+	foreach($labVM in $labVMs)
+	{
+	    Remove-AzureRmResource -ResourceId $labVM.ResourceId -Force
+	}
+
+
+
+
 ### Was sind Artefakte? 
 Artefakte sind anpassbare Elemente, die verwendet werden können, um die neuesten Komponenten oder Ihre Entwicklungstools auf einer VM bereitzustellen. Sie werden während der VM-Erstellung mit ein paar einfachen Klicks an die VM angefügt. Nach der Bereitstellung der VM wird Ihre VM von den Artefakten bereitgestellt und konfiguriert. In unserem [öffentlichen GitHub-Repository](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts) ist bereits eine Reihe von Artefakten verfügbar, Sie können aber auch ganz einfach [eigene Artefakte erstellen](devtest-lab-artifact-author.md).
 
 ### Wie erstelle ich ein Lab anhand einer Azure Resource Manager-Vorlage? 
-Wir haben ein [Github-Repository mit Azure Resource Manager-Vorlagen für Labs](https://github.com/Azure/azure-devtestlab/tree/master/ARMTemplates). Jede dieser Vorlagen enthält einen Link, auf den Sie klicken können, um das Azure DevTest Labs-Lab unter Ihrem eigenen Azure-Abonnement bereitzustellen.
+Wir haben ein [Github-Repository von Azure Resource Manager-Labvorlagen](https://github.com/Azure/azure-devtestlab/tree/master/ARMTemplates) vorbereitet, die Sie in vorliegender oder geänderter Form zum Erstellen benutzerdefinierter Vorlagen für Ihre Labs bereitstellen können. Jede dieser Vorlagen hat einen Link, auf den Sie klicken können, um das Lab in vorliegender Form unter Ihrem eigenen Azure-Abonnement bereitzustellen, oder Sie können die Vorlage anpassen und [mit PowerShell oder über die Azure-Befehlszeilenschnittstelle bereitstellen](../resource-group-template-deploy.md).
  
 ### Warum werden meine VMs in verschiedenen Ressourcengruppen mit willkürlichen Namen erstellt? Kann ich diese Ressourcengruppen umbenennen oder ändern? 
 Ressourcengruppen werden auf diese Weise erstellt, damit Azure DevTest Labs die Benutzerberechtigungen und den Zugriff auf virtuelle Computer verwalten kann. Sie können einen virtuellen Computer zwar in eine andere Ressourcengruppe mit dem gewünschten Namen verschieben, dies wird jedoch nicht empfohlen. Wir arbeiten daran, diese Situation zu verbessern, um mehr Flexibilität zu ermöglichen.
@@ -182,6 +222,21 @@ Es gibt keine bestimmte Beschränkung für die Anzahl von Labs, die pro Abonneme
  
 ### Wie viele VMs kann ich pro Lab erstellen? 
 Es gibt keine bestimmte Beschränkung für die Anzahl von virtuellen Computern (VMs), die pro Abonnement erstellt werden können. Das Lab unterstützt zurzeit aber nur ca. 40 gleichzeitig ausgeführte VMs für Standardspeicher und 25 gleichzeitig ausgeführte VMs für Storage Premium. Wir arbeiten daran, diese Limits zu erhöhen.
+
+### Wie gebe ich einen direkten Link zu meinem Lab frei?
+
+Einen direkten Link können Sie mit folgendem Verfahren für Ihre Labbenutzer freigeben.
+
+1. Navigieren Sie im Azure-Portal zum Lab.
+2. Kopieren Sie die Lab-URL aus Ihrem Browser, und geben Sie sie für die Laborbenutzer frei.
+
+>[AZURE.NOTE] Wenn Ihre Labbenutzer externe Benutzer mit einem [MSA-Konto](#what-is-a-microsoft-account) sind und nicht zum Active Directory Ihres Unternehmens gehören, erhalten sie möglicherweise eine Fehlermeldung, wenn sie zu dem bereitgestellten Link navigieren. Weisen Sie sie an, im Falle einer Fehlermeldung oben rechts im Azure-Portal auf ihren Namen zu klicken und im Bereich **Verzeichnis** des Menüs das Verzeichnis auszuwählen, in dem sich das Lab befindet.
+
+### Was ist ein Microsoft-Konto?
+
+Ein Microsoft-Konto verwenden Sie für nahezu jede Aktion, die Sie mit Geräten und Diensten von Microsoft ausführen. Es handelt sich um eine E-Mail-Adresse und ein Kennwort zur Anmeldung bei Skype, Outlook.com, OneDrive, Windows Phone und Xbox LIVE – und es bedeutet, dass Ihre Dateien, Fotos, Kontakte und Einstellungen Ihnen zu jedem Gerät folgen können.
+
+>[AZURE.NOTE] Früher wurde das Microsoft-Konto als „Windows Live ID“ bezeichnet.
  
 ### Für mein Artefakt ist während der VM-Erstellung ein Fehler aufgetreten. Wie kann ich das Problem beheben? 
 Im Blogbeitrag [How to troubleshoot failing Artifacts in AzureDevTestLabs](http://www.visualstudiogeeks.com/blog/DevOps/How-to-troubleshoot-failing-artifacts-in-AzureDevTestLabs) (Problembehandlung für fehlerhafte Artefakte in AzureDevTestLabs) eines unserer MVPs finden Sie Informationen dazu, wie Sie Protokolle für das fehlgeschlagene Artefakt abrufen können.
@@ -189,4 +244,4 @@ Im Blogbeitrag [How to troubleshoot failing Artifacts in AzureDevTestLabs](http:
 ### Warum wird mein vorhandenes virtuelles Netzwerk nicht korrekt gespeichert?  
 Möglicherweise enthält der Name des virtuellen Netzwerks Punkte. Wenn dies der Fall ist, können Sie die Punkte entfernen oder durch Bindestriche ersetzen und dann noch einmal versuchen, das virtuelle Netzwerk zu speichern.
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0914_2016-->

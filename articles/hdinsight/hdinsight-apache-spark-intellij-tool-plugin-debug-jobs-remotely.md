@@ -4,7 +4,7 @@
 	services="hdinsight"
 	documentationCenter=""
 	authors="nitinme"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun"
 	tags="azure-portal"/>
 
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/26/2016"
+	ms.date="09/09/2016"
 	ms.author="nitinme"/>
 
 
@@ -43,6 +43,8 @@ Dieser Artikel enthält eine Schrittanleitung zur Verwendung der HDInsight-Tools
 * IntelliJ IDEA. In diesem Artikel wird die Version 15.0.1 verwendet. Das Installationspaket finden Sie [hier](https://www.jetbrains.com/idea/download/).
  
 * HDInsight-Tools im Azure-Toolkit für IntelliJ. Die HDInsight-Tools für IntelliJ sind als Teil des Azure-Toolkits für IntelliJ verfügbar. Anweisungen zum Installieren des Azure-Toolkits finden Sie unter [Installieren des Azure Toolkit für IntelliJ](../azure-toolkit-for-intellij-installation.md).
+
+* Melden Sie sich von IntelliJ IDEA aus bei Ihrem Azure-Abonnement an. Befolgen Sie [diese](hdinsight-apache-spark-intellij-tool-plugin.md#log-into-your-azure-subscription) Anweisungen.
  
 * Beim Ausführen der Spark Scala-Anwendung für das Remotedebuggen auf einem Windows-Computer erhalten Sie ggf. eine Ausnahme wie unter [SPARK-2356](https://issues.apache.org/jira/browse/SPARK-2356) beschrieben, die aufgrund der unter Windows fehlenden Datei „WinUtils.exe“ ausgelöst wird. Um diesen Fehler zu umgehen, müssen Sie [die ausführbare Datei hier herunterladen](http://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe) und an einem Speicherort wie **C:\\WinUtils\\bin** speichern. Fügen Sie anschließend die Umgebungsvariable **HADOOP\_HOME** hinzu, und setzen Sie den Wert der Variablen auf **C\\WinUtils**.
 
@@ -104,14 +106,14 @@ Sie sollten auch einen Apache Spark-Cluster unter Azure HDInsight erstellen, der
 	![Erstellen einer Spark Scala-Anwendung](./media/hdinsight-apache-spark-intellij-tool-plugin/create-hdi-scala-app.png)
 
 	* Wählen Sie im linken Bereich **HDInsight** aus.
-	* Wählen Sie im rechten Bereich **Spark on HDInsight (Scala)** aus.
-	* Klicken Sie auf **Next**.
+	* Wählen Sie im rechten Bereich **Spark on HDInsight (Scala)** (Spark auf HDInsight [Scala]) aus.
+	* Klicken Sie auf **Weiter**.
 
 2. Geben Sie im nächsten Fenster die Projektdetails an.
 
 	* Geben Sie einen Projektnamen und den Projektspeicherort an.
-	* Geben Sie für **Project SDK** eine Java-Version höher als 7 an.
-	* Klicken Sie für **Scala SDK** auf **Create** (Erstellen) und dann auf **Download**, und wählen Sie die zu verwendende Version von Scala aus. **Verwenden Sie nicht die Version 2.11.x**. In diesem Beispiel wird Version **2.10.6** verwendet.
+	* Geben Sie für **Project SDK** (Projekt-SDK) eine Java-Version höher als 7 an.
+	* Klicken Sie für **Scala SDK** auf **Create** (Erstellen) und dann auf **Download** (Herunterladen), und wählen Sie die zu verwendende Version von Scala aus. **Verwenden Sie nicht die Version 2.11.x**. In diesem Beispiel wird Version **2.10.6** verwendet.
 
 		![Erstellen einer Spark Scala-Anwendung](./media/hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely/hdi-scala-version.png)
 
@@ -124,13 +126,13 @@ Sie sollten auch einen Apache Spark-Cluster unter Azure HDInsight erstellen, der
 3. Das Spark-Projekt erstellt automatisch ein Artefakt für Sie. Gehen Sie wie folgt vor, um das Artefakt anzuzeigen:
 
 	1. Klicken Sie im Menü **Datei** auf **Projektstruktur**.
-	2. Klicken Sie im Dialogfeld **Projektstruktur** auf **Artefakte**, um das Standardartefakt anzuzeigen, das erstellt wird.
+	2. Klicken Sie im Dialogfeld **Project Structure** (Projektstruktur) auf **Artifacts** (Artefakte), um das Standardartefakt anzuzeigen, das erstellt wird.
 
 		![Erstellen einer JAR-Datei](./media/hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely/default-artifact.png)
 
 	Sie können auch eigene Artefakte erstellen, indem Sie auf das in der Abbildung oben hervorgehobene **+**-Symbol klicken.
 
-4. Klicken Sie im Dialogfeld **Project Structure** auf **Project**. Wenn **Project SDK** auf 1.8 festgelegt ist, stellen Sie sicher, dass **Project language level** auf **7 - Diamonds, ARM, multi-catch, etc** festgelegt ist.
+4. Klicken Sie im Dialogfeld **Project Structure** (Projektstruktur) auf **Project** (Projekt). Wenn **Project SDK** (Projekt-SDK) auf 1.8 festgelegt ist, stellen Sie sicher, dass **Project language level** (Projektsprachebene) auf **7 - Diamonds, ARM, multi-catch, etc** festgelegt ist.
 
 	![Festlegen der Sprache auf Projektebene](./media/hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely/set-project-language-level.png)
 
@@ -346,4 +348,4 @@ Sie sollten auch einen Apache Spark-Cluster unter Azure HDInsight erstellen, der
 
 * [Track and debug jobs running on an Apache Spark cluster in HDInsight (Nachverfolgen und Debuggen von Aufträgen in einem Apache Spark-Cluster unter HDInsight)](hdinsight-apache-spark-job-debugging.md)
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0914_2016-->

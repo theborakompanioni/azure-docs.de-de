@@ -4,7 +4,7 @@
 	services="machine-learning" 
 	documentationCenter="" 
 	authors="bradsev" 
-	manager="paulettm" 
+	manager="jhubbard" 
 	editor="cgronlun"  />
 
 <tags 
@@ -51,11 +51,11 @@ Geben Sie auf der 4. Konfigurationsseite den Speicherkontonamen und den Standar
 
 Klicken Sie auf der letzten Konfigurationsseite zu **Script Actions** auf die Schaltfläche** add script action** und füllen Sie die Felder mit den folgenden Werten aus.
  
-* **NAME** - eine beliebige Zeichenfolge als Name für diese Skriptaktion. 
-* **NODE TYPE** - wählen Sie **All nodes** aus. 
-* **SCRIPT URI** - **http://getgoing.blob.core.windows.net/publicscripts/Azure_HDI_Setup_Windows.ps1*
-	* *publicscripts* ist ein öffentlicher Container im Speicherkonto. 
-	* *getgoing* wird für die Freigabe der PowerShell-Skriptdateien verwendet, um den Benutzern die Arbeit in Azure zu vereinfachen. 
+* **NAME** - eine beliebige Zeichenfolge als Name für diese Skriptaktion.
+* **NODE TYPE** - wählen Sie **All nodes** aus.
+* **SCRIPT URI** - *http://getgoing.blob.core.windows.net/publicscripts/Azure_HDI_Setup_Windows.ps1*
+	* *publicscripts* ist ein öffentlicher Container im Speicherkonto.
+	* *getgoing* wird für die Freigabe der PowerShell-Skriptdateien verwendet, um den Benutzern die Arbeit in Azure zu vereinfachen.
 * **PARAMETERS** - (leer lassen)
 
 Klicken Sie abschließend auf das Häkchen, um die Erstellung des benutzerdefinierten HDInsight Hadoop-Clusters zu starten.
@@ -86,4 +86,4 @@ Unter [Gewusst wie: Übermitteln von Hive-Abfragen ](machine-learning-data-scien
 
  
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0914_2016-->
