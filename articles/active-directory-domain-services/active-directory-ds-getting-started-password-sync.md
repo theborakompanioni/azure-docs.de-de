@@ -13,10 +13,10 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="09/08/2016"
+	ms.date="09/20/2016"
 	ms.author="maheshu"/>
 
-# Azure AD-Domänendienste *(Vorschau)* – Aktivieren der Kennwortsynchronisierung für Azure AD-Domänendienste
+# Aktivieren der Kennwortsynchronisierung für Azure AD-Domänendienste
 Im Rahmen der obigen Aufgaben haben Sie Azure AD-Domänendienste für Ihren Azure AD-Mandanten aktiviert. Die nächste Aufgabe besteht darin, für die Hashes von Anmeldeinformationen, die für die NTLM- und Kerberos-Authentifizierung erforderlich sind, die Synchronisierung mit Azure AD-Domänendiensten zu ermöglichen. Nach der Einrichtung der Synchronisierung von Anmeldeinformationen können sich Benutzer mit ihren Unternehmensanmeldeinformationen an der verwalteten Domäne anmelden.
 
 Die einzelnen Schritte unterscheiden sich in Abhängigkeit davon, ob Ihre Organisation über einen auf die Cloud beschränkten Azure AD-Mandanten verfügt oder ob die Synchronisierung mit Ihrem lokalen Verzeichnis über Azure AD Connect erfolgt.
@@ -61,11 +61,11 @@ Nachdem Sie Ihr Kennwort geändert haben, kann das neue Kennwort bald in den Azu
 
 ## Verwandte Inhalte
 
-- [Aktivieren der Kennwortsynchronisierung für AAD-Domänendienste bei einem synchronisierten Azure AD-Mandanten](active-directory-ds-getting-started-password-sync-synced-tenant.md)
-
 - [Aktualisieren Ihres eigenen Kennworts](../active-directory/active-directory-passwords-update-your-own-password.md)
 
 - [Erste Schritte mit der Kennwortverwaltung in Azure AD](../active-directory/active-directory-passwords-getting-started.md)
+
+- [Aktivieren der Kennwortsynchronisierung für AAD-Domänendienste bei einem synchronisierten Azure AD-Mandanten](active-directory-ds-getting-started-password-sync-synced-tenant.md)
 
 - [Verwalten einer durch Azure AD-Domänendienste verwalteten Domäne](active-directory-ds-admin-guide-administer-domain.md)
 
@@ -73,4 +73,4 @@ Nachdem Sie Ihr Kennwort geändert haben, kann das neue Kennwort bald in den Azu
 
 - [Einbinden eines virtuellen Red Hat Enterprise Linux-Computers in eine verwaltete Domäne der Azure AD-Domänendienste](active-directory-ds-admin-guide-join-rhel-linux-vm.md)
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -13,15 +13,15 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="07/29/2016"
+	ms.date="09/15/2016"
 	ms.author="markgal; jimpark"/>
 
 
 # Einführung: Sichern von virtuellen Azure-Computern
 
 > [AZURE.SELECTOR]
-- [Einführung: Schützen von VMs mit einem Recovery Services-Tresor](backup-azure-vms-first-look-arm.md)
-- [Einführung: Schützen von Azure-VMs mit einem Sicherungstresor](backup-azure-vms-first-look.md)
+- [Schützen von VMs mit einem Recovery Services-Tresor](backup-azure-vms-first-look-arm.md)
+- [Schützen von Azure-VMs mit einem Sicherungstresor](backup-azure-vms-first-look.md)
 
 In diesem Tutorial werden die Schritte zum Sichern eines virtuellen Azure-Computers (VM) in einem Sicherungstresor in Azure beschrieben. In diesem Artikel wird das klassische Modell bzw. Service Manager-Bereitstellungsmodell zum Sichern von VMs erläutert. Wenn Sie am Ablauf der Sicherung einer VM in einem Recovery Services-Tresor interessiert sind, der einer Ressourcengruppe angehört, helfen Ihnen die Informationen unter [Einführung: Schützen von VMs mit einem Recovery Services-Tresor](backup-azure-vms-first-look-arm.md) weiter. Die folgenden Voraussetzungen müssen erfüllt sein, damit Sie dieses Tutorial erfolgreich durcharbeiten können:
 
@@ -213,4 +213,4 @@ Nachdem Sie einen virtuellen Computer erfolgreich gesichert haben, sind unter Um
 ## Fragen?
 Wenn Sie Fragen haben oder Anregungen zu gewünschten Funktionen mitteilen möchten, [senden Sie uns Ihr Feedback](http://aka.ms/azurebackup_feedback).
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0921_2016-->

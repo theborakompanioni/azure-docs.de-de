@@ -6,7 +6,7 @@
 
 5. Ist der Name verfügbar, wählen Sie den Tarif („Basic“, „Standard“ oder Premium“) aus.
 
-7. Wählen Sie im Feld **Abonnement** ein Azure-Abonnement aus, unter dem der Namespace erstellt werden soll.
+7. Wählen Sie im Feld **Abonnement** ein Azure-Abonnement aus, in dem der Namespace erstellt werden soll.
 
 9. Wählen Sie im Feld **Ressourcengruppe** eine vorhandene Ressourcengruppe für den Namespace aus, oder erstellen Sie eine neue Ressourcengruppe.
 
@@ -14,19 +14,19 @@
 
 	![Erstellen des Namespaces][create-namespace]
 
-6. Klicken Sie auf die Schaltfläche **Erstellen**. Ihr Dienstnamespace wird nun erstellt und aktiviert. Ggf. müssen Sie einige Minuten warten, bis die Ressourcen für Ihr Konto durch das System bereitgestellt werden.
+6. Klicken Sie auf **Create**. Ihr Dienstnamespace wird nun erstellt und aktiviert. Ggf. müssen Sie einige Minuten warten, bis die Ressourcen für Ihr Konto durch das System bereitgestellt werden.
  
 ### Abrufen der Verwaltungsanmeldeinformationen
 
 1. Klicken Sie in der Liste mit den Namespaces auf den neu erstellten Namespacenamen.
  
-3. Klicken Sie auf dem Blatt **Service Bus-Namespace** auf **Freigegebene Zugriffsrichtlinien**.
+3. Klicken Sie auf dem Blatt „Namespace“ auf **Richtlinien für gemeinsamen Zugriff**.
 
-4. Klicken Sie auf dem Blatt **Freigegebene Zugriffsrichtlinien** auf **RootManageSharedAccessKey**.
+4. Klicken Sie auf dem Blatt **Richtlinien für gemeinsamen Zugriff** auf **RootManageSharedAccessKey**.
 
-	![Verbindungsinformationen][connection-info]
+	![connection-info][connection-info]
 
-5. Klicken Sie auf dem Blatt **Richtlinie: RootManageSharedAccessKey** neben **Verbindungszeichenfolge – Primärschlüssel** auf die Kopierschaltfläche, um die Verbindungszeichenfolge zur späteren Verwendung in die Zwischenablage zu kopieren.
+5. Klicken Sie auf dem Blatt **Richtlinie: RootManageSharedAccessKey** neben **Verbindungszeichenfolge – Primärschlüssel** auf die Kopierschaltfläche, um die Verbindungszeichenfolge zur späteren Verwendung in die Zwischenablage zu kopieren. Fügen Sie diesen Wert in den Editor oder an einem anderen temporären Speicherort ein.
 
 	![connection-string][connection-string]
 
@@ -39,4 +39,4 @@
 <!--Reference style links - using these makes the source content way more readable than using inline links-->
 [Azure-Portal]: https://portal.azure.com
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0921_2016-->

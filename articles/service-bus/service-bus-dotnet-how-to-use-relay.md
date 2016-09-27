@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="get-started-article"
-	ms.date="05/06/2016"
+	ms.date="09/16/2016"
 	ms.author="sethm"/>
 
 
@@ -25,7 +25,7 @@ In diesem Artikel wird die Verwendung des Service Bus Relay-Diensts beschrieben.
 
 ## Was ist Service Bus Relay?
 
-Der [Service Bus *Relay*-Dienst](service-bus-relay-overview.md) ermöglicht Ihnen die Erstellung von Hybridanwendungen, die sowohl in einem Azure-Rechenzentrum als auch in Ihrer eigenen lokalen Unternehmensumgebung ausgeführt werden. Der Service Bus Relay-Dienst erleichtert dies, indem er Ihnen die Möglichkeit bietet, WCF-Dienste (Windows Communication Foundation), die sich in einem Unternehmensnetzwerk befinden, sicher in der öffentlichen Cloud bereitzustellen, ohne dass eine Firewallverbindung eröffnet werden muss oder intrusive Änderungen an der unternehmensinternen Netzwerkinfrastruktur erforderlich werden.
+Der [Service Bus *Relay*-Dienst](service-bus-relay-overview.md) ermöglicht Ihnen die Erstellung von Hybridanwendungen, die sowohl in einem Azure-Datencenter als auch in Ihrer eigenen lokalen Unternehmensumgebung ausgeführt werden. Der Service Bus Relay-Dienst erleichtert dies, indem er Ihnen die Möglichkeit bietet, WCF-Dienste (Windows Communication Foundation), die sich in einem Unternehmensnetzwerk befinden, sicher in der öffentlichen Cloud bereitzustellen, ohne dass eine Firewallverbindung eröffnet werden muss oder intrusive Änderungen an der unternehmensinternen Netzwerkinfrastruktur erforderlich werden.
 
 ![Relaykonzepte](./media/service-bus-dotnet-how-to-use-relay/sb-relay-01.png)
 
@@ -43,13 +43,12 @@ So erstellen Sie einen Dienstnamespace:
 
 ## Abrufen des NuGet-Pakets "Service Bus"
 
-Das [Service Bus-NuGet-Paket](https://www.nuget.org/packages/WindowsAzure.ServiceBus) stellt die einfachste Möglichkeit zum Abrufen der Service Bus-API und zum Konfigurieren der Anwendung mit allen Service Bus-Abhängigkeiten dar. Gehen sie folgendermaßen vor, um das NuGet-Paket in der Anwendung zu installieren:
+Das [Service Bus-NuGet-Paket](https://www.nuget.org/packages/WindowsAzure.ServiceBus) stellt die einfachste Möglichkeit zum Abrufen der Service Bus-API und zum Konfigurieren der Anwendung mit allen Service Bus-Abhängigkeiten dar. Gehen Sie wie folgt vor, um das NuGet-Paket in Ihrem Projekt zu installieren:
 
 1.  Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf **Verweise**, und klicken Sie dann auf **NuGet-Pakete verwalten**.
-2.  Suchen Sie nach „Service Bus“, und wählen Sie das Element **Microsoft Azure Service Bus** aus. Klicken Sie auf **Installieren**, um die Installation abzuschließen. Schließen Sie danach das folgende Dialogfeld.
+2.  Suchen Sie nach „Service Bus“, und wählen Sie das Element **Microsoft Azure Service Bus** aus. Klicken Sie auf **Installieren**, um die Installation durchzuführen. Schließen Sie danach das folgende Dialogfeld:
 
 	![](./media/service-bus-dotnet-how-to-use-relay/getting-started-multi-tier-13.png)
-
 
 ## Verwenden von Service Bus zum Bereitstellen und Nutzen eines SOAP-Webdiensts mit TCP
 
@@ -57,10 +56,10 @@ Um einen bestehenden WCF SOAP-Webdienst für die externe Nutzung bereitzustellen
 
 Bei dieser Aufgabe erstellen Sie einen einfachen WCF-Dienst und fügen ihm einen Service Bus-Listener hinzu. Für diese Übung wird eine gewisse Vertrautheit mit Visual Studio vorausgesetzt. Es werden daher nicht alle Details der Projekterstellung erläutert. Stattdessen steht der Code im Vordergrund.
 
-Bevor Sie die Schritte unten ausführen, richten Sie zunächst mit dem folgenden Verfahren Ihre Umgebung ein:
+Richten Sie vor dem Ausführen dieser Schritte zunächst mit dem folgenden Verfahren Ihre Umgebung ein:
 
 1.  Erstellen Sie in Visual Studio eine Konsolenanwendung, die die beiden Projekte "Client" und "Service" innerhalb der Lösung enthält.
-2.  Fügen Sie das Paket Microsoft Azure Service Bus NuGet beiden Projekte hinzu. Damit werden den Projekten alle benötigten Assemblyverweise hinzugefügt.
+2.  Fügen Sie das Paket Microsoft Azure Service Bus NuGet beiden Projekte hinzu. Mit diesem Paket werden den Projekten alle benötigten Assemblyverweise hinzugefügt.
 
 ### Erstellen des Diensts
 
@@ -68,7 +67,7 @@ Erstellen Sie zunächst den Dienst selbst Ein WCF-Dienst besteht aus mindestens 
 
 -   Definition eines Vertrags, der beschreibt, welche Nachrichten ausgetauscht werden und welche Operationen aufgerufen werden sollen
 -   Implementierung des besagten Vertrags
--   Dem Host, der diesen WCF-Dienst hostet und eine Reihe von Endpunkten bereitstellt.
+-   Dem Host, der diesen WCF-Dienst hostet und mehrere Endpunkte bereitstellt
 
 Die Codebeispiele in diesem Abschnitt beziehen sich auf jede dieser Komponenten.
 
@@ -114,7 +113,7 @@ sh.AddServiceEndpoint(
    typeof(IProblemSolver), new NetTcpRelayBinding(),
    ServiceBusEnvironment.CreateServiceUri("sb", "namespace", "solver"))
     .Behaviors.Add(new TransportClientEndpointBehavior {
-          TokenProvider = TokenProvider.CreateSharedAccessSignatureTokenProvider("RootManageSharedAccessKey", "yourKey")});
+          TokenProvider = TokenProvider.CreateSharedAccessSignatureTokenProvider("RootManageSharedAccessKey", "<yourKey>")});
 
 sh.Open();
 
@@ -124,7 +123,7 @@ Console.ReadLine();
 sh.Close();
 ```
 
-In dem Beispiel erstellen Sie zwei Endpunkte für dieselbe Vertragsimplementierung. Einer ist lokal und einer wird über Service Bus projiziert. Die zentralen Unterschiede sind die Bindungen. [NetTcpBinding](https://msdn.microsoft.com/library/azure/system.servicemodel.nettcpbinding.aspx) für den lokalen Endpunkt und [NetTcpRelayBinding](https://msdn.microsoft.com/library/azure/microsoft.servicebus.nettcprelaybinding.aspx) für den Service Bus-Endpunkt und die Adressen. Der lokale Endpunkt verfügt über eine lokale Netzwerkadresse mit einem bestimmten Port. Der Service Bus-Endpunkt hat eine Endpunktadresse, die sich aus der Zeichenfolge `sb`, Ihrem Namespacenamen und dem Pfad „solver“ zusammensetzt. Dies führt zum URI `sb://[serviceNamespace].servicebus.windows.net/solver`, mit dem der Dienstendpunkt als Service Bus-TCP-Endpunkt mit vollqualifiziertem externem DNS-Namen identifiziert wird. Wenn Sie Code, der gemäß der obigen Erläuterung die Platzhalter ersetzt, in die `Main`-Funktion der Anwendung **Service** einfügen, erhalten Sie einen funktionierenden Dienst. Wenn Ihr Dienst exklusiv für Service Bus lauschen soll, entfernen Sie die lokale Endpunktdeklaration.
+In dem Beispiel erstellen Sie zwei Endpunkte für dieselbe Vertragsimplementierung. Einer ist lokal und einer wird über Service Bus projiziert. Die zentralen Unterschiede sind die Bindungen. [NetTcpBinding](https://msdn.microsoft.com/library/azure/system.servicemodel.nettcpbinding.aspx) für den lokalen Endpunkt und [NetTcpRelayBinding](https://msdn.microsoft.com/library/azure/microsoft.servicebus.nettcprelaybinding.aspx) für den Service Bus-Endpunkt und die Adressen. Der lokale Endpunkt verfügt über eine lokale Netzwerkadresse mit einem bestimmten Port. Der Service Bus-Endpunkt hat eine Endpunktadresse, die sich aus der Zeichenfolge `sb`, Ihrem Namespacenamen und dem Pfad „solver“ zusammensetzt. Dies führt zum URI `sb://[serviceNamespace].servicebus.windows.net/solver`, mit dem der Dienstendpunkt als Service Bus-TCP-Endpunkt mit vollqualifiziertem externem DNS-Namen identifiziert wird. Wenn Sie Code, der die Platzhalter ersetzt, in die `Main`-Funktion der Anwendung **Service** einfügen, erhalten Sie einen funktionierenden Dienst. Wenn Ihr Dienst exklusiv für Service Bus lauschen soll, entfernen Sie die lokale Endpunktdeklaration.
 
 ### Konfigurieren eines Diensthosts in der Datei „App.config“
 
@@ -138,7 +137,7 @@ Console.ReadLine();
 sh.Close();
 ```
 
-Die Endpunktdefinitionen werden in die Datei "App.config" verschoben. Beachten Sie, dass das NuGet-Paket bereits eine Reihe von Definitionen zur "App.config"-Datei hinzugefügt hat, die die erforderlichen Konfigurationserweiterungen für Service Bus darstellen. Das folgende Beispiel, das mit dem vorherigen Beispiel identisch ist, sollte direkt unter dem **system.serviceModel**-Element angezeigt werden. In dem Codebeispiel wird davon ausgegangen, dass der C#-Namespace des Projekts den Namen **Service** hat. Ersetzen Sie die Platzhalter durch den Namespace und den SAS-Schlüssel des Service Bus-Diensts.
+Die Endpunktdefinitionen werden in die Datei "App.config" verschoben. Das NuGet-Paket hat der Datei „App.config“ bereits eine Reihe von Definitionen hinzugefügt, die die erforderlichen Konfigurationserweiterungen für Service Bus darstellen. Das folgende Beispiel, das mit dem vorherigen Beispiel identisch ist, sollte direkt unter dem **system.serviceModel**-Element angezeigt werden. In dem Codebeispiel wird davon ausgegangen, dass der C#-Namespace des Projekts den Namen **Service** hat. Ersetzen Sie die Platzhalter durch den Namespace und den SAS-Schlüssel des Service Bus-Diensts.
 
 ```
 <services>
@@ -157,7 +156,7 @@ Die Endpunktdefinitionen werden in die Datei "App.config" verschoben. Beachten S
         <behavior name="sbTokenProvider">
             <transportClientEndpointBehavior>
                 <tokenProvider>
-                    <sharedAccessSignature keyName="RootManageSharedAccessKey" key="yourKey" />
+                    <sharedAccessSignature keyName="RootManageSharedAccessKey" key="<yourKey>" />
                 </tokenProvider>
             </transportClientEndpointBehavior>
         </behavior>
@@ -171,7 +170,7 @@ Nachdem Sie diese Änderungen vorgenommen haben, startet der Dienst wie zuvor, j
 
 #### Programmgesteuertes Konfigurieren eines Clients
 
-Um den Dienst zu nutzen, können Sie einen WCF-Client mit einem [ChannelFactory](https://msdn.microsoft.com/library/system.servicemodel.channelfactory.aspx)-Objekt erstellen. Service Bus verwendet ein Token-basiertes Sicherheitsmodell, das mit SAS implementiert wird. Die [TokenProvider](https://msdn.microsoft.com/library/azure/microsoft.servicebus.tokenprovider.aspx)-Klasse stellt einen Sicherheitstokenanbieter mit integrierten Factory-Methoden dar, die einige bekannte Tokenanbieter zurückgeben. Im Beispiel unten wird die [CreateSharedAccessSignatureTokenProvider](https://msdn.microsoft.com/library/azure/microsoft.servicebus.tokenprovider.createsharedaccesssignaturetokenprovider.aspx)-Methode zum Behandeln der Beschaffung des richtigen SAS-Tokens verwendet. Die Name und der Schlüssel wurden aus dem Portal abgerufen, wie im vorherigen Abschnitt beschrieben wurde.
+Um den Dienst zu nutzen, können Sie einen WCF-Client mit einem [ChannelFactory](https://msdn.microsoft.com/library/system.servicemodel.channelfactory.aspx)-Objekt erstellen. Service Bus verwendet ein Token-basiertes Sicherheitsmodell, das mit SAS implementiert wird. Die [TokenProvider](https://msdn.microsoft.com/library/azure/microsoft.servicebus.tokenprovider.aspx)-Klasse stellt einen Sicherheitstokenanbieter mit integrierten Factory-Methoden dar, die einige bekannte Tokenanbieter zurückgeben. Im folgenden Beispiel wird die [CreateSharedAccessSignatureTokenProvider](https://msdn.microsoft.com/library/azure/microsoft.servicebus.tokenprovider.createsharedaccesssignaturetokenprovider.aspx)-Methode zum Behandeln der Beschaffung des richtigen SAS-Tokens verwendet. Die Name und der Schlüssel wurden aus dem Portal abgerufen, wie im vorherigen Abschnitt beschrieben wurde.
 
 Verweisen Sie zuerst auf den `IProblemSolver`-Vertragscode, oder kopieren Sie ihn aus dem Dienst in Ihr Clientprojekt.
 
@@ -183,7 +182,7 @@ var cf = new ChannelFactory<IProblemSolverChannel>(
     new EndpointAddress(ServiceBusEnvironment.CreateServiceUri("sb", "namespace", "solver")));
 
 cf.Endpoint.Behaviors.Add(new TransportClientEndpointBehavior
-            { TokenProvider = TokenProvider.CreateSharedAccessSignatureTokenProvider("RootManageSharedAccessKey","yourKey") });
+            { TokenProvider = TokenProvider.CreateSharedAccessSignatureTokenProvider("RootManageSharedAccessKey","<yourKey>") });
 
 using (var ch = cf.CreateChannel())
 {
@@ -219,7 +218,7 @@ Die Endpunktdefinitionen werden in die Datei "App.config" verschoben. Das folgen
         <behavior name="sbTokenProvider">
             <transportClientEndpointBehavior>
                 <tokenProvider>
-                    <sharedAccessSignature keyName="RootManageSharedAccessKey" key="yourKey" />
+                    <sharedAccessSignature keyName="RootManageSharedAccessKey" key="<yourKey>" />
                 </tokenProvider>
             </transportClientEndpointBehavior>
         </behavior>
@@ -239,4 +238,4 @@ Nachdem Sie nun mit den Grundlagen des Service Bus Relay-Diensts vertraut sind, 
   [Azure-Beispiele]: https://code.msdn.microsoft.com/site/search?query=service%20bus&f%5B0%5D.Value=service%20bus&f%5B0%5D.Type=SearchText&ac=2
   [Übersicht über Service Bus-Beispiele]: service-bus-samples.md
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0921_2016-->

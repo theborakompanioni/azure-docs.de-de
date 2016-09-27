@@ -1,20 +1,20 @@
 <properties 
-	pageTitle="IIS-Authentifizierung und Azure Multi-Factor Authentication-Server" 
-	description="Dies ist die Azure Multi-Factor Authentication-Seite, die bei der Bereitstellung der IIS-Authentifizierung und des Azure Multi-Factor Authentication-Servers Unterstützung bietet." 
-	services="multi-factor-authentication" 
-	documentationCenter="" 
-	authors="billmath" 
-	manager="stevenpo" 
+	pageTitle="IIS-Authentifizierung und Azure Multi-Factor Authentication-Server"
+	description="Dies ist die Azure Multi-Factor Authentication-Seite, die bei der Bereitstellung der IIS-Authentifizierung und des Azure Multi-Factor Authentication-Servers Unterstützung bietet."
+	services="multi-factor-authentication"
+	documentationCenter=""
+	authors="kgremban"
+	manager="femila"
 	editor="curtand"/>
 
-<tags 
-	ms.service="multi-factor-authentication" 
-	ms.workload="identity" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="get-started-article" 
-	ms.date="08/04/2016" 
-	ms.author="billmath"/>
+<tags
+	ms.service="multi-factor-authentication"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.date="08/04/2016"
+	ms.author="kgremban"/>
 
 # IIS-Authentifizierung
 
@@ -76,4 +76,4 @@ Nachdem Sie die URLs und Einstellungen für die formularbasierte oder die HTTP-A
 3. Im daraufhin angezeigten Dialogfeld "Vertrauenswürdige IP hinzufügen" wählen Sie das Optionsfeld "Eine IP", "IP-Bereich" oder "Subnetz" aus.
 4. Geben Sie die IP-Adresse, den IP-Adressbereich oder das Subnetz ein, das der Positivliste hinzugefügt werden soll. Wenn Sie ein Subnetz eingeben, wählen Sie die entsprechende Netzmaske aus, und klicken Sie auf die Schaltfläche "OK". Der Eintrag wird der Positivliste hinzugefügt.
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0921_2016-->

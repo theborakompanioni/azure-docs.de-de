@@ -13,19 +13,19 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="08/18/2016"
+   ms.date="09/16/2016"
    ms.author="tomfitz"/>
 
 # Übersicht über den Azure-Ressourcen-Manager
 
-Die Infrastruktur für Ihre Anwendung besteht normalerweise aus vielen Komponenten: womöglich ein virtueller Computer, ein Speicherkonto und ein virtuelles Netzwerk oder eine Web-App, eine Datenbank, ein Datenbankserver und Drittanbieterdienste. Sie sehen diese Komponenten nicht als separate Entitäten, sondern als verwandte und voneinander abhängige Teile einer einzelnen Entität. Diese möchten Sie als Gruppe bereitstellen, verwalten und überwachen. Mit dem Azure-Ressourcen-Manager können Sie als Gruppe mit den Ressourcen in Ihrer Lösung arbeiten. Sie können alle Ressourcen für Ihre Lösung in einem einzigen, koordinierten Vorgang bereitstellen, aktualisieren oder löschen. Sie verwenden eine Vorlage für die Bereitstellung, die für unterschiedliche Umgebungen geeignet sein kann, z. B. Testing, Staging und Produktion. Der Ressourcen-Manager bietet Sicherheits-, Überwachungs- und Kennzeichnungsfunktionen, mit denen Sie Ihre Ressourcen nach der Bereitstellung verwalten können.
+Die Infrastruktur für Ihre Anwendung besteht normalerweise aus vielen Komponenten: womöglich ein virtueller Computer, ein Speicherkonto und ein virtuelles Netzwerk oder eine Web-App, eine Datenbank, ein Datenbankserver und Drittanbieterdienste. Sie sehen diese Komponenten nicht als separate Entitäten, sondern als verwandte und voneinander abhängige Teile einer einzelnen Entität. Diese möchten Sie als Gruppe bereitstellen, verwalten und überwachen. Mit dem Azure-Ressourcen-Manager können Sie als Gruppe mit den Ressourcen in Ihrer Lösung arbeiten. Sie können alle Ressourcen für Ihre Lösung in einem einzigen koordinierten Vorgang bereitstellen, aktualisieren oder löschen. Sie verwenden eine Vorlage für die Bereitstellung, die für unterschiedliche Umgebungen geeignet sein kann, z.B. Testing, Staging und Produktion. Der Ressourcen-Manager bietet Sicherheits-, Überwachungs- und Kennzeichnungsfunktionen, mit denen Sie Ihre Ressourcen nach der Bereitstellung verwalten können.
 
 ## Terminologie
 
 Wenn Sie mit dem Azure Resource Manager noch nicht vertraut sind, kennen Sie unter Umständen einige Begriffe noch nicht.
 
 - **Ressource**: Ein verwaltbares Element, das über Azure verfügbar ist. Beispiele für häufig verwendete Ressourcen sind virtueller Computer, Speicherkonto, Web-App, Datenbank und virtuelles Netzwerk, aber es sind noch viele weitere Ressourcen vorhanden.
-- **Ressourcengruppe**: Ein Container, der verwandte Ressourcen für eine Anwendung enthält. Die Ressourcengruppe kann alle Ressourcen für eine Anwendung enthalten, oder nur die Ressourcen, die Sie gruppieren. Je nachdem, was für Ihre Organisation am sinnvollsten ist, können Sie entscheiden, wie Sie die Ressourcen den Ressourcengruppen zuordnen möchten. Weitere Informationen finden Sie unter [Ressourcengruppen](#resource-groups).
+- **Ressourcengruppe**: Ein Container, der verwandte Ressourcen für eine Azure-Lösung enthält. Die Ressourcengruppe kann alle Ressourcen für die Lösung oder nur die Ressourcen enthalten, die Sie als Gruppe verwalten möchten. Sie entscheiden in Abhängigkeit davon, was für Ihre Organisation am sinnvollsten ist, wie Sie die Ressourcen den Ressourcengruppen zuordnen möchten. Weitere Informationen finden Sie unter [Ressourcengruppen](#resource-groups).
 - **Ressourcenanbieter**: Ein Dienst zum Beschaffen der Ressourcen, die Sie über den Resource Manager bereitstellen und verwalten können. Jeder Ressourcenanbieter bietet Vorgänge zum Arbeiten mit den bereitgestellten Ressourcen. Beispiele für häufig verwendete Ressourcenanbieter sind „Microsoft.Compute“ zum Bereitstellen der Ressource für den virtuellen Computer, „Microsoft.Storage“ zum Bereitstellen der Speicherkontoressource und „Microsoft.Web“ zum Bereitstellen von Ressourcen für Web-Apps. Weitere Informationen finden Sie unter [Ressourcenanbieter](#resource-providers).
 - **Resource Manager-Vorlage**: Eine JSON-Datei (JavaScript Object Notation), mit der eine oder mehrere Ressourcen zum Bereitstellen einer Ressourcengruppe definiert werden. Außerdem werden damit die Abhängigkeiten zwischen den bereitgestellten Ressourcen definiert. Die Vorlage kann zum konsistenten und wiederholten Bereitstellen der Ressourcen verwendet werden. Weitere Informationen finden Sie unter [Bereitstellung von Vorlagen](#template-deployment).
 - **Deklarative Syntax**: Bei dieser Syntax können Sie beispielsweise „Here is what I intend to create“ (Dies möchte ich erstellen) eingeben, ohne dafür die Folge der Programmierbefehle für die Erstellung schreiben zu müssen. Die Resource Manager-Vorlage ist ein Beispiel für die deklarative Syntax. In der Datei definieren Sie die Eigenschaften für die Infrastruktur zum Bereitstellen für Azure.
@@ -40,13 +40,13 @@ Der Ressourcen-Manager bietet mehrere Vorteile:
 - Sie können die Abhängigkeiten zwischen Ressourcen definieren, sodass diese in der richtigen Reihenfolge bereitgestellt werden.
 - Sie können die Zugriffssteuerung auf alle Dienste in der Ressourcengruppe anwenden, da die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) standardmäßig in die Verwaltungsplattform integriert ist.
 - Sie können Tags auf Ressourcen anwenden, um alle Ressourcen in Ihrem Abonnement logisch zu organisieren.
-- Sie können die Abrechnung für Ihre Organisation vereinfachen, indem Sie die zusammengefassten Kosten für die gesamte Gruppe oder für eine Gruppe an Ressourcen mit dem gleichen Tag anzeigen.
+- Indem Sie die Kosten für eine Gruppe mit Ressourcen anzeigen, für die das gleiche Tag verwendet wird, erhalten Sie die Abrechnungsinformationen für Ihre Organisation.
 
 Der Ressourcen-Manager stellt eine neue Möglichkeit zur Bereitstellung und Verwaltung Ihrer Lösungen bereit. Weitere Informationen zu den Änderungen an dem von Ihnen verwendeten früheren Bereitstellungsmodell finden Sie unter [Grundlegendes zur Bereitstellung über den Ressourcen-Manager im Vergleich zur klassischen Bereitstellung](resource-manager-deployment-model.md).
 
 ## Anleitungen
 
-Die folgenden Vorschläge helfen Ihnen, bei der Arbeit mit Lösungen die Vorteile des Ressourcen-Managers zu nutzen.
+Die folgenden Vorschläge helfen Ihnen, bei der Arbeit mit Lösungen die Vorteile von Resource Manager zu nutzen.
 
 1. Definieren Sie die Infrastruktur mithilfe der deklarativen Syntax in Ressourcen-Manager-Vorlagen anstatt mit imperativen Befehlen, und stellen Sie sie so bereit.
 2. Definieren Sie alle Bereitstellungs- und Konfigurationsschritte in der Vorlage. Sie sollten keine manuellen Schritte zum Einrichten der Lösung durchführen müssen.
@@ -59,31 +59,33 @@ Weitere Empfehlungen finden Sie unter [Bewährte Methoden für das Erstellen von
 
 Beim Definieren der Ressourcengruppe sind einige wichtige Faktoren zu beachten:
 
-1. Alle Ressourcen einer Gruppe sollten über den gleichen Lebenszyklus verfügen. Sie werden zusammen bereitgestellt, aktualisiert und gelöscht. Falls eine Ressource, z. B. ein Datenbankserver, in einem anderen Entwicklungszyklus vorhanden sein muss, sollte er in einer anderen Ressourcengruppe enthalten sein.
+1. Alle Ressourcen einer Gruppe sollten über den gleichen Lebenszyklus verfügen. Sie werden von Ihnen zusammen bereitgestellt, aktualisiert und gelöscht. Falls eine Ressource, z. B. ein Datenbankserver, in einem anderen Entwicklungszyklus vorhanden sein muss, sollte er in einer anderen Ressourcengruppe enthalten sein.
 2. Jede Ressource kann nur in einer Ressourcengruppe vorhanden sein.
 3. Sie können eine Ressource einer Ressourcengruppe jederzeit hinzufügen bzw. die Ressource daraus entfernen.
 4. Sie können eine Ressource aus einer Ressourcengruppe in eine andere Gruppe verschieben. Weitere Informationen finden Sie unter [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](resource-group-move-resources.md).
 4. Eine Ressourcengruppe kann Ressourcen enthalten, die sich in unterschiedlichen Regionen befinden.
 5. Eine Ressourcengruppe kann zum Festlegen der Zugriffssteuerung für administrative Aktionen verwendet werden.
-6. Eine Ressource kann mit einer Ressource in einer anderen Ressourcengruppe interagieren, wenn die beiden Ressourcen miteinander verknüpft sind, aber nicht den gleichen Lebenszyklus aufweisen (z.B. eine Web-App, die eine Verbindung mit einer Datenbank herstellt).
+6. Eine Ressource kann mit Ressourcen in anderen Ressourcengruppen interagieren. Diese Interaktion tritt häufig auf, wenn die beiden Ressourcen zusammengehören, aber nicht den gleichen Lebenszyklus aufweisen (z.B. Web-Apps, die eine Verbindung mit einer Datenbank herstellen).
+
+Beim Erstellen einer Ressourcengruppe müssen Sie einen Standort für die Ressourcengruppe angeben. Vielleicht stellen Sie sich hierbei die folgende Frage: „Warum wird für eine Ressourcengruppe ein Standort benötigt? Und wenn die Ressourcen andere Standorte als die Ressourcengruppe aufweisen können, warum ist der Standort der Ressourcengruppe dann überhaupt wichtig?“ In der Ressourcengruppe werden Metadaten zu den Ressourcen gespeichert. Wenn Sie einen Standort für die Ressourcengruppe angeben, legen Sie also fest, wo die Metadaten gespeichert werden. Aus Compliance-Gründen müssen Sie unter Umständen sicherstellen, dass Ihre Daten in einer bestimmten Region gespeichert werden.
 
 ## Ressourcenanbieter
 
 Jeder Ressourcenanbieter stellt einen Satz mit Ressourcen und Vorgängen für den technischen Bereich bereit. Wenn Sie beispielsweise Schlüssel und geheime Schlüssel speichern möchten, verwenden Sie den Ressourcenanbieter **Microsoft.KeyVault**. Der Ressourcenanbieter verfügt über einen Ressourcentyp namens **vaults** zum Erstellen des Schlüsseltresors und einen Ressourcentyp namens **vaults/secrets** zum Erstellen eines geheimen Schlüssels im Schlüsseltresor. Außerdem stellt er Vorgänge über [Schlüsseltresor-REST-API-Vorgänge](https://msdn.microsoft.com/library/azure/dn903609.aspx) bereit. Sie können die REST-API direkt aufrufen oder [Key Vault-PowerShell-Cmdlets](https://msdn.microsoft.com/library/dn868052.aspx) und die [Key Vault-Azure-CLI](./key-vault/key-vault-manage-with-cli.md) zum Verwalten des Schlüsseltresors verwenden. Sie können für die meisten Ressourcen auch verschiedene Programmiersprachen verwenden. Weitere Informationen finden Sie unter [SDKs und Beispiele](#sdks-and-samples).
 
-Um Ihre Infrastruktur bereitstellen und verwalten zu können, müssen Sie über einige Informationen zu den Ressourcenanbietern verfügen: welche Ressourcentypen sie umfassen, die Versionsnummern der REST-API-Vorgänge, die unterstützten Vorgänge sowie das Schema, das beim Festlegen der Werte für den zu erstellenden Ressourcentyp verwendet werden muss. Informationen zu den unterstützten Ressourcenanbietern finden Sie unter [Ressourcen-Manager-Anbieter, -Regionen, -API-Versionen und -Schemas](resource-manager-supported-services.md).
+Zum Bereitstellen und Verwalten Ihrer Infrastruktur müssen Sie mit den Details zum Ressourcenanbieter vertraut sein. Sie müssen die Ressourcentypen, die Versionsnummern für REST-API-Vorgänge, die unterstützten Vorgänge und das Schema zum Erstellen von Ressourcen kennen. Informationen zu den unterstützten Ressourcenanbietern finden Sie unter [Anbieter, Regionen, API-Versionen und Schemas für den Ressourcen-Manager](resource-manager-supported-services.md).
 
 ## Bereitstellung von Vorlagen
 
-Mit dem Ressourcen-Manager können Sie eine einfache Vorlage (im JSON-Format) erstellen, mit der die Bereitstellung und Konfiguration Ihrer Anwendung definiert wird. Mit einer Vorlage können Sie die Anwendung während des gesamten App-Lebenszyklus wiederholt bereitstellen und sicher sein, dass Ihre Ressourcen einheitlich bereitgestellt werden. Azure Resource Manager analysiert Abhängigkeiten, um sicherzustellen, dass Ressourcen in der richtigen Reihenfolge erstellt werden. Weitere Informationen finden Sie unter [Definieren von Abhängigkeiten in Azure-Ressourcen-Manager-Vorlagen](resource-group-define-dependencies.md).
+Mit dem Resource Manager können Sie eine Vorlage (im JSON-Format) erstellen, mit der die Bereitstellung und Konfiguration Ihrer Anwendung definiert wird. Mit einer Vorlage können Sie die Anwendung während des gesamten App-Lebenszyklus wiederholt bereitstellen und sicher sein, dass Ihre Ressourcen einheitlich bereitgestellt werden. Azure Resource Manager analysiert Abhängigkeiten, um sicherzustellen, dass Ressourcen in der richtigen Reihenfolge erstellt werden. Weitere Informationen finden Sie unter [Definieren von Abhängigkeiten in Azure-Ressourcen-Manager-Vorlagen](resource-group-define-dependencies.md).
 
-Wenn Sie eine Lösung über das Portal erstellen, enthält sie automatisch eine Bereitstellungsvorlage. Sie müssen die Vorlage nicht völlig neu erstellen, weil Sie mit der Vorlage für Ihre Lösung beginnen und sie dann an die speziellen Anforderungen anpassen können. Sie können eine Vorlage für eine vorhandene Ressourcengruppe abrufen, indem Sie entweder den aktuellen Zustand der Ressourcengruppe in eine Vorlage exportieren oder die Vorlage anzeigen, die für eine bestimmte Bereitstellung verwendet wurde. Das Anzeigen der exportierten Vorlage ist hilfreich, um sich über die Vorlagensyntax zu informieren. Weitere Informationen zur Verwendung von exportierten Vorlagen finden Sie unter [Exportieren einer Azure Resource Manager-Vorlage aus vorhandenen Ressourcen](resource-manager-export-template.md).
+Wenn Sie eine Lösung über das Portal erstellen, enthält sie automatisch eine Bereitstellungsvorlage. Sie müssen die Vorlage nicht völlig neu erstellen, weil Sie mit der Vorlage für Ihre Lösung beginnen und sie dann an die speziellen Anforderungen anpassen können. Sie können eine Vorlage für eine vorhandene Ressourcengruppe abrufen, indem Sie entweder den aktuellen Zustand der Ressourcengruppe exportieren oder die Vorlage anzeigen, die für eine bestimmte Bereitstellung verwendet wurde. Das Anzeigen der exportierten Vorlage ist hilfreich, um sich über die Vorlagensyntax zu informieren. Weitere Informationen zur Verwendung von exportierten Vorlagen finden Sie unter [Exportieren einer Azure Resource Manager-Vorlage aus vorhandenen Ressourcen](resource-manager-export-template.md).
 
 Sie müssen nicht die gesamte Infrastruktur in einer einzelnen Vorlage definieren. Oftmals ist es sinnvoll, die Bereitstellungsanforderungen in eine Gruppe von spezifischen, zweckgebundenen Vorlagen zu unterteilen. Sie können diese Vorlagen mühelos für verschiedene Lösungen erneut verwenden. Um eine bestimmte Lösung bereitzustellen, erstellen Sie eine Mastervorlage, die alle erforderlichen Vorlagen verknüpft. Weitere Informationen finden Sie unter [Verwenden von verknüpften Vorlagen mit Azure-Ressourcen-Manager](resource-group-linked-templates.md).
 
-Sie können die Vorlage auch für Aktualisierungen der Infrastruktur verwenden. Beispielsweise können Sie Ihrer App eine neue Ressource sowie Konfigurationsregeln für die Ressourcen hinzufügen, die bereits bereitgestellt wurden. Wenn in der Vorlage die Erstellung einer neuen Ressource angegeben ist, diese aber bereits vorhanden ist, führt der Azure-Ressourcen-Manager anstelle der Erstellung einer neuen Ressource eine Aktualisierung durch. Der Azure-Ressourcen-Manager aktualisiert die vorhandene Ressource auf den Zustand, der für eine neue Ressource gelten würde. Oder Sie können angeben, dass Ressourcen-Manager Ressourcen löschen, die nicht in der Vorlage angegeben werden. Informationen über die verschiedenen Optionen bei der Bereitstellung finden Sie unter [Bereitstellen einer Anwendung mit einer Azure-Ressourcen-Manager-Vorlage](resource-group-template-deploy.md).
+Sie können die Vorlage auch für Aktualisierungen der Infrastruktur verwenden. Beispielsweise können Sie Ihrer Lösung eine Ressource sowie Konfigurationsregeln für die Ressourcen hinzufügen, die bereits bereitgestellt wurden. Wenn in der Vorlage die Erstellung einer Ressource angegeben ist, diese aber bereits vorhanden ist, führt der Azure Resource Manager anstelle der Erstellung einer neuen Ressource eine Aktualisierung durch. Der Azure-Ressourcen-Manager aktualisiert die vorhandene Ressource auf den Zustand, der für eine neue Ressource gelten würde. Oder Sie können angeben, dass Ressourcen-Manager Ressourcen löschen, die nicht in der Vorlage angegeben werden. Informationen über die verschiedenen Optionen bei der Bereitstellung finden Sie unter [Bereitstellen einer Anwendung mit einer Azure-Ressourcen-Manager-Vorlage](resource-group-template-deploy.md).
 
-Sie können Parameter in Ihrer Vorlage angeben, um in Bezug auf die Bereitstellung für Anpassung und Flexibilität zu sorgen. Beispielsweise können Sie Parameterwerte übergeben, mit denen die Bereitstellung für Ihre Testumgebung angepasst wird. Durch das Angeben der Parameter können Sie dieselbe Vorlage für die Bereitstellung für alle Umgebungen Ihrer App verwenden.
+Sie können Parameter in Ihrer Vorlage angeben, um in Bezug auf die Bereitstellung für Anpassung und Flexibilität zu sorgen. Beispielsweise können Sie Parameterwerte übergeben, mit denen die Bereitstellung für Ihre Testumgebung angepasst wird. Indem Sie die Parameter angeben, können Sie dieselbe Vorlage nutzen, um die Lösung in unterschiedlichen Umgebungen bereitzustellen.
 
 Der Ressourcen-Manager verfügt über Erweiterungen für Szenarien, in denen zusätzliche Vorgänge, wie z. B. das Installieren bestimmter Software, die nicht Teil des Setups ist, erforderlich sind. Wenn Sie bereits einen Konfigurationsverwaltungsdienst verwenden, z. B. DSC, Chef oder Puppet, können Sie ihn weiter nutzen, indem Sie Erweiterungen einsetzen.
 
@@ -97,7 +99,7 @@ Informationen zum Bereitstellen der Lösung in andere Umgebungen finden Sie unte
 
 ## Tags
 
-Der Ressourcen-Manager verfügt über eine Markierungsfunktion, mit der Sie Ressourcen gemäß Ihren Anforderungen für die Verwaltung oder Abrechnung kategorisieren können. Die Verwendung von Markierungen (Tags) kann ratsam sein, wenn Sie über eine komplexe Sammlung von Ressourcengruppen und Ressourcen verfügen und diese Ressourcen auf möglichst sinnvolle Weise visualisieren müssen. Beispielsweise können Sie Ressourcen markieren, die in Ihrer Organisation eine ähnliche Funktion haben oder zu derselben Abteilung gehören. Benutzer in Ihrer Organisation können mehrere Ressourcen erstellen, die ohne Tags später schwer zu identifizieren und zu verwalten sind. Sie möchten beispielsweise alle Ressourcen für ein bestimmtes Projekt löschen. Wenn diese Ressourcen jedoch nicht mit einem Tag für das Projekt versehen wurden, müssen Sie manuell nach den Ressourcen suchen. Mit Tags lassen sich unter Umständen unnötige Kosten in Ihrem Abonnement vermeiden.
+Der Ressourcen-Manager verfügt über eine Markierungsfunktion, mit der Sie Ressourcen gemäß Ihren Anforderungen für die Verwaltung oder Abrechnung kategorisieren können. Die Verwendung von Tags (Markierungen) kann ratsam sein, wenn Sie über eine komplexe Sammlung von Ressourcengruppen und Ressourcen verfügen und diese Ressourcen auf möglichst sinnvolle Weise visualisieren müssen. Beispielsweise können Sie Ressourcen markieren, die in Ihrer Organisation eine ähnliche Funktion haben oder zu derselben Abteilung gehören. Benutzer in Ihrer Organisation können mehrere Ressourcen erstellen, die ohne Tags später schwer zu identifizieren und zu verwalten sind. Es kann beispielsweise sein, dass Sie alle Ressourcen für ein bestimmtes Projekt löschen möchten. Wenn diese Ressourcen für das Projekt nicht mit Tags versehen sind, müssen Sie manuell danach suchen. Mit Tags lassen sich unter Umständen unnötige Kosten in Ihrem Abonnement vermeiden.
 
 Ressourcen müssen sich nicht in derselben Ressourcengruppe befinden, um ein gemeinsames Tag aufzuweisen. Sie können Ihre eigene Tag-Taxonomie erstellen, um dafür zu sorgen, dass alle Benutzer in Ihrer Organisation die gleichen Tags verwenden. So wird verhindert, dass Benutzer versehentlich leicht unterschiedliche Tags nutzen (z. B. „dept“ anstelle von „department“).
 
@@ -117,11 +119,11 @@ Bewährte Methoden finden Sie unter [Sicherheitsaspekte für Azure-Ressourcen-Ma
 
 ## Verwalten von Ressourcen mit benutzerdefinierten Richtlinien
 
-Mit dem Ressourcen-Manager können Sie benutzerdefinierte Richtlinien zum Verwalten Ihrer Ressourcen erstellen. Die von Ihnen erstellten Richtlinien können verschiedenste Szenarien abdecken. Sie können z. B. festlegen, dass bestimmte Namenskonventionen zwingend einzuhalten sind, oder einschränken, welche Typen und Instanzen von Ressourcen bereitgestellt werden oder welche Regionen einen bestimmten Typ von Ressourcen hosten können. Oder Sie können einen Tagwert für Ressourcen als erforderlich deklarieren, um eine Abrechnung nach Abteilungen zu ermöglichen. Sie erstellen Richtlinien, um Kosten zu senken und die Konsistenz in Ihrem Abonnement zu wahren. Weitere Informationen finden Sie unter [Verwenden von Richtlinien für Ressourcenverwaltung und Zugriffssteuerung](resource-manager-policy.md).
+Mit dem Ressourcen-Manager können Sie benutzerdefinierte Richtlinien zum Verwalten Ihrer Ressourcen erstellen. Die Arten der von Ihnen erstellten Richtlinien können unterschiedliche Szenarien umfassen. Sie können eine Namenskonvention für Ressourcen erzwingen, begrenzen, welche Arten und Instanzen von Ressourcen bereitgestellt werden können, oder begrenzen, in welchen Regionen eine Ressourcenart gehostet werden kann. Um die Abrechnung nach Abteilungen zu organisieren, können Sie die Verwendung eines Tagwerts für Ressourcen obligatorisch machen. Sie erstellen Richtlinien, um Kosten zu senken und die Konsistenz in Ihrem Abonnement zu wahren. Weitere Informationen finden Sie unter [Verwenden von Richtlinien für Ressourcenverwaltung und Zugriffssteuerung](resource-manager-policy.md).
 
 ## Einheitliche Verwaltungsebene
 
-Der Ressourcen-Manager bietet vollständig kompatible Vorgänge für Azure PowerShell, die Azure-Befehlszeilenschnittstelle für Mac, Linux und Windows sowie das Azure-Portal und die REST-API. Sie können die Schnittstelle verwenden, die für Sie am besten geeignet ist, und schnell zwischen Schnittstellen wechseln, ohne dass Verwirrung entsteht. Im Portal werden sogar Benachrichtigungen für Aktionen angezeigt, die außerhalb des Portals durchgeführt werden.
+Der Resource Manager bietet kompatible Vorgänge für Azure PowerShell, die Azure-Befehlszeilenschnittstelle für Mac, Linux und Windows sowie das Azure-Portal und die REST-API. Sie können die Schnittstelle verwenden, die für Sie am besten geeignet ist, und schnell zwischen Schnittstellen wechseln, ohne dass Verwirrung entsteht.
 
 Weitere Informationen zu PowerShell finden Sie unter [Verwenden von Azure PowerShell mit dem Ressourcen-Manager](powershell-azure-resource-manager.md) und [Azure-Ressourcen-Manager-Cmdlets](https://msdn.microsoft.com/library/azure/dn757692.aspx).
 
@@ -149,29 +151,29 @@ Im Anschluss finden Sie unsere Open Source-SDK-Repositorys. Wir freuen uns über
 
 ### .NET
 
-- [Manage Azure resources and resource groups](https://azure.microsoft.com/documentation/samples/resource-manager-dotnet-resources-and-groups/) (Verwalten von Azure-Ressourcen und -Ressourcengruppen)
-- [Deploy an SSH Enabled VM with a Template](https://azure.microsoft.com/documentation/samples/resource-manager-dotnet-template-deployment/) (Bereitstellen eines SSH-fähigen virtuellen Computers mit einer Vorlage)
+- [Manage Azure resources and resource groups (Verwalten von Azure-Ressourcen und -Ressourcengruppen)](https://azure.microsoft.com/documentation/samples/resource-manager-dotnet-resources-and-groups/)
+- [Deploy an SSH Enabled VM with a Template (Bereitstellen eines SSH-fähigen virtuellen Computers mit einer Vorlage)](https://azure.microsoft.com/documentation/samples/resource-manager-dotnet-template-deployment/)
 
 ### Java
 
-- [Manage Azure resources](https://azure.microsoft.com/documentation/samples/resources-java-manage-resource/) (Verwalten von Azure-Ressourcen)
-- [Manage Azure resource groups](https://azure.microsoft.com/documentation/samples/resources-java-manage-resource-group/) (Verwalten von Azure-Ressourcengruppen)
-- [Deploy an SSH Enabled VM with a Template](https://azure.microsoft.com/documentation/samples/resources-java-deploy-using-arm-template/) (Bereitstellen eines SSH-fähigen virtuellen Computers mit einer Vorlage)
+- [Manage Azure resources (Verwalten von Azure-Ressourcen)](https://azure.microsoft.com/documentation/samples/resources-java-manage-resource/)
+- [Manage Azure resource groups (Verwalten von Azure-Ressourcengruppen)](https://azure.microsoft.com/documentation/samples/resources-java-manage-resource-group/)
+- [Deploy an SSH Enabled VM with a Template (Bereitstellen eines SSH-fähigen virtuellen Computers mit einer Vorlage)](https://azure.microsoft.com/documentation/samples/resources-java-deploy-using-arm-template/)
 
 ### Node.js
 
-- [Manage Azure resources and resource groups](https://azure.microsoft.com/documentation/samples/resource-manager-node-resources-and-groups/) (Verwalten von Azure-Ressourcen und -Ressourcengruppen)
-- [Deploy an SSH Enabled VM with a Template](https://azure.microsoft.com/documentation/samples/resource-manager-node-template-deployment/) (Bereitstellen eines SSH-fähigen virtuellen Computers mit einer Vorlage)
+- [Manage Azure resources and resource groups (Verwalten von Azure-Ressourcen und -Ressourcengruppen)](https://azure.microsoft.com/documentation/samples/resource-manager-node-resources-and-groups/)
+- [Deploy an SSH Enabled VM with a Template (Bereitstellen eines SSH-fähigen virtuellen Computers mit einer Vorlage)](https://azure.microsoft.com/documentation/samples/resource-manager-node-template-deployment/)
 
 ### Python
 
-- [Manage Azure resources and resource groups](https://azure.microsoft.com/documentation/samples/resource-manager-python-resources-and-groups/) (Verwalten von Azure-Ressourcen und -Ressourcengruppen)
-- [Deploy an SSH Enabled VM with a Template](https://azure.microsoft.com/documentation/samples/resource-manager-python-template-deployment/) (Bereitstellen eines SSH-fähigen virtuellen Computers mit einer Vorlage)
+- [Manage Azure resources and resource groups (Verwalten von Azure-Ressourcen und -Ressourcengruppen)](https://azure.microsoft.com/documentation/samples/resource-manager-python-resources-and-groups/)
+- [Deploy an SSH Enabled VM with a Template (Bereitstellen eines SSH-fähigen virtuellen Computers mit einer Vorlage)](https://azure.microsoft.com/documentation/samples/resource-manager-python-template-deployment/)
 
 ### Ruby
 
-- [Manage Azure resources and resource groups](https://azure.microsoft.com/documentation/samples/resource-manager-ruby-resources-and-groups/) (Verwalten von Azure-Ressourcen und -Ressourcengruppen)
-- [Deploy an SSH Enabled VM with a Template](https://azure.microsoft.com/documentation/samples/resource-manager-ruby-template-deployment/) (Bereitstellen eines SSH-fähigen virtuellen Computers mit einer Vorlage)
+- [Manage Azure resources and resource groups (Verwalten von Azure-Ressourcen und -Ressourcengruppen)](https://azure.microsoft.com/documentation/samples/resource-manager-ruby-resources-and-groups/)
+- [Deploy an SSH Enabled VM with a Template (Bereitstellen eines SSH-fähigen virtuellen Computers mit einer Vorlage)](https://azure.microsoft.com/documentation/samples/resource-manager-ruby-template-deployment/)
 
 
 Neben diesen Beispielen können Sie auch die Katalogbeispiele durchsuchen.
@@ -190,4 +192,4 @@ Hier sehen Sie eine Videodemonstration dieser Übersicht:
 
 [AZURE.VIDEO azure-resource-manager-overview]
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0921_2016-->

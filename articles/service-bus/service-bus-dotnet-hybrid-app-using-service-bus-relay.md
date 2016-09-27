@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="get-started-article"
-	ms.date="05/23/2016"
+	ms.date="09/16/2016"
 	ms.author="sethm"/>
 
 # Hybride lokale/Cloud-.NET-Anwendung mit Azure Service Bus Relay
@@ -25,7 +25,7 @@ In diesem Artikel wird beschrieben, wie Sie mit Microsoft Azure und Visual Studi
 Sie erhalten Informationen zu folgenden Themen:
 
 -   Erstellen oder Anpassen eines vorhandenen Webdiensts zur Verwendung durch eine Weblösung
--   Verwenden von Azure Service Bus Relay zum Freigeben von Daten zwischen einer Azure-Anwendung und einem an einem anderen Ort gehosteten Webdienst
+-   Verwenden des Azure Service Bus Relay-Diensts zum Freigeben von Daten zwischen einer Azure-Anwendung und einem an einem anderen Ort gehosteten Webdienst
 
 [AZURE.INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
@@ -53,7 +53,7 @@ Im Folgenden wird ein Bildschirmfoto der Startseite der vollständigen Webanwend
 
 Bevor Sie mit der Entwicklung von Azure-Anwendungen beginnen können, müssen Sie über die entsprechenden Tools verfügen und die Entwicklungsumgebung einrichten.
 
-1.  Installieren Sie das Azure-SDK für .NET auf [Tools und SDK herunterladen][].
+1.  Installieren Sie das Azure-SDK für .NET über die Seite [Tools und SDK herunterladen][].
 
 2. 	Klicken Sie für Ihre Visual Studio-Version auf **Installieren des SDK**. Für die Schritte in diesem Tutorial wird Visual Studio 2015 verwendet.
 
@@ -358,7 +358,7 @@ Führen Sie die Anwendung aus, um sicherzustellen, dass sie funktioniert.
 
 1.  Stellen Sie sicher, dass **ProductsPortal** das aktive Projekt ist. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf den Projektnamen, und wählen Sie **Als Startprojekt festlegen** aus.
 2.  Drücken Sie in Visual Studio die Taste F5.
-3.  Die Anwendung sollte ausgeführt in einem Browser angezeigt werden.
+3.  Die Anwendung sollte ausgeführt und in einem Browser angezeigt werden.
 
     ![][21]
 
@@ -366,9 +366,9 @@ Führen Sie die Anwendung aus, um sicherzustellen, dass sie funktioniert.
 
 Im nächsten Schritt wird der lokale Produktserver mit der ASP.NET-Webanwendung zusammengeführt.
 
-1.  Falls noch nicht geschehen, öffnen Sie in Visual Studio erneut das Projekt **ProductsPortal**, das Sie im Abschnitt „Erstellen einer ASP.NET-Anwendung“ erstellt haben.
+1.  Falls noch nicht geschehen, öffnen Sie in Visual Studio erneut das Projekt **ProductsPortal**, das Sie im Abschnitt [Erstellen einer ASP.NET-Anwendung](#create-an-aspnet-application) erstellt haben.
 
-2.  Fügen Sie das NuGet-Paket den Projektverweisen hinzu, wie im Schritt "Erstellen eines lokalen Servers" beschrieben. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt **ProductsPortal**, und klicken Sie anschließend auf **NuGet-Pakete verwalten**.
+2.  Fügen Sie das NuGet-Paket den Projektverweisen hinzu, wie im Schritt „Erstellen eines lokalen Servers“ beschrieben. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt **ProductsPortal**, und klicken Sie anschließend auf **NuGet-Pakete verwalten**.
 
 3.  Suchen Sie nach „Service Bus“, und wählen Sie das Element **Microsoft Azure Service Bus** aus. Schließen Sie die Installation ab, und schließen Sie das Dialogfeld.
 
@@ -420,7 +420,7 @@ Im nächsten Schritt wird der lokale Produktserver mit der ASP.NET-Webanwendung 
 	}
 	```
 
-7.  Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf **ProductsPortal**. Klicken Sie auf **Hinzufügen** und dann auf **Vorhandenes Projekt**.
+7.  Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf die Projektmappe **ProductsPortal** (klicken Sie auf die Projektmappe, nicht auf das Projekt). Klicken Sie auf **Hinzufügen** und anschließend auf **Vorhandenes Projekt**.
 
 8.  Navigieren Sie zum Projekt **ProductsServer**, und doppelklicken Sie dann auf die Projektmappendatei **ProductsServer.csproj**, um sie hinzuzufügen.
 
@@ -448,16 +448,17 @@ Drücken Sie F5, um die Anwendung in Visual Studio lokal zu testen. Zuerst muss 
 
 Wählen Sie auf der Seite **ProductsPortal** die Option **Aktualisieren** aus. Bei jeder Aktualisierung der Seite wird von der Server-App eine Nachricht angezeigt, wenn `GetProducts()` von **ProductsServer** aufgerufen wird.
 
+Schließen Sie beide Anwendungen, bevor Sie mit dem nächsten Schritt fortfahren.
+
 ## Bereitstellen des Projekts ProductsPortal in einer Azure-Web-App
 
 Im nächsten Schritt wird das **ProductsPortal**-Front-End in eine Azure-Web-App konvertiert. Stellen Sie zuerst das Projekt **ProductsPortal** bereit, indem Sie alle Schritte im Abschnitt [Bereitstellen des Webprojekts für die Azure-Web-App](../app-service-web/web-sites-dotnet-get-started.md#deploy-the-web-project-to-the-azure-web-app) ausführen. Kehren Sie nach Abschluss der Bereitstellung zu diesem Tutorial zurück, und fahren Sie mit dem nächsten Schritt fort.
 
+> [AZURE.NOTE] Im Browserfenster wird unter Umständen eine Fehlermeldung angezeigt, wenn das Webprojekt **ProductsPortal** nach der Bereitstellung automatisch gestartet wird. Dies ist zu erwarten und tritt auf, da die Anwendung **ProductsServer** noch nicht ausgeführt wird.
+
 Kopieren Sie die URL der bereitgestellten Web-App, da Sie die URL im nächsten Schritt benötigen. Sie können diese URL auch in Visual Studio im Fenster „Aktivität von Azure App Service“ abrufen:
 
 ![][9]
-   
-
-> [AZURE.NOTE] Im Browserfenster wird unter Umständen eine Fehlermeldung angezeigt, wenn das Webprojekt **ProductsPortal** nach der Bereitstellung automatisch gestartet wird. Dies ist zu erwarten und tritt auf, da die Anwendung **ProductsServer** noch nicht ausgeführt wird.
 
 ### Festlegen von ProductsPortal als Web-App
 
@@ -528,4 +529,4 @@ Weitere Informationen zum Servicebus finden Sie in den folgenden Ressourcen:
   [sbwacom]: /documentation/services/service-bus/
   [sbwacomqhowto]: service-bus-dotnet-get-started-with-queues.md
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0921_2016-->

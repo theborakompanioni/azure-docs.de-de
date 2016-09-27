@@ -24,8 +24,6 @@ Enthält Informationen zum Verwenden des Azure-Portals zum Erstellen von Azure D
 
 In diesem Tutorial entwickeln Sie einen Auftrag, bei dem eine Datei mit tabulatorgetrennten Werten (TSV) gelesen und in eine Datei mit kommagetrennten Werten (CSV) konvertiert wird. Um das gleiche Lernprogramm unter Verwendung anderer unterstützter Tools zu durchlaufen, klicken Sie auf die Registerkarten oben in diesem Abschnitt. Nachdem Ihr erster Auftrag erfolgreich durchgeführt wurde, können Sie damit beginnen, mit U-SQL komplexere Datentransformationen zu schreiben.
 
-[AZURE.INCLUDE [basic-process-include](../../includes/data-lake-analytics-basic-process.md)]
-
 ##Voraussetzungen
 
 Bevor Sie mit diesem Tutorial beginnen können, benötigen Sie Folgendes:
@@ -135,7 +133,7 @@ Nachdem Sie die Quelldaten vorbereitet haben, können Sie mit dem Entwickeln ein
 
     ![Azure Data Lake Analytics-Auftragsdetails](./media/data-lake-analytics-get-started-portal/data-lake-analytics-job-completed.png)
 
-    In der vorherigen Abbildung können Sie sehen, dass der Auftrag vom Zustand „Gesendet“ bis zum Zustand „Beendet“ ungefähr 1,5 Minuten gedauert hat.
+    In der vorherigen Abbildung können Sie sehen, dass der Auftrag vom Zustand „Gesendet“ bis zum Zustand „Beendet“ ungefähr 1,5 Minuten gedauert hat.
     
     Falls für den Auftrag ein Fehler auftritt, helfen Ihnen die Informationen unter [Überwachung und Problembehandlung für Data Lake Analytics-Aufträge](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorials.md) weiter.
 
@@ -156,4 +154,4 @@ Nachdem Sie die Quelldaten vorbereitet haben, können Sie mit dem Entwickeln ein
 - Wenn Sie dasselbe Tutorial mit anderen Tools verwenden möchten, klicken Sie oben auf der Seite auf die Registerkartenauswahl.
 - Informationen zum Protokollieren von Diagnoseinformationen finden Sie unter [Accessing diagnostic logs for Azure Data Lake Analytics](data-lake-analytics-diagnostic-logs.md) (Zugreifen auf Diagnoseprotokolle für Azure Data Lake Analytics).
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

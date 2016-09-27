@@ -13,43 +13,41 @@
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="NA"
 	ms.workload="data-catalog"
-	ms.date="07/06/2016"
+	ms.date="09/20/2016"
 	ms.author="spelluru"/>
 
 # Erste Schritte mit Azure Data Catalog
 Azure Data Catalog ist ein vollständig verwalteter Clouddienst, der als Registrierungs- und Ermittlungssystem für Datenassets von Unternehmen dient. Eine ausführliche Übersicht finden Sie unter [Was ist Azure Data Catalog?](data-catalog-what-is-data-catalog.md).
 
-Dieses Tutorial dient als Starthilfe für Azure Data Catalog. In diesem Tutorial führen Sie die folgenden Verfahren aus:
+Dieses Tutorial dient als Starthilfe für Azure Data Catalog. In diesem Tutorial führen Sie die folgenden Verfahren durch:
 
 | Vorgehensweise | Beschreibung |
 | :--- | :---------- |
-| [Bereitstellen des Datenkatalogs](#provision-data-catalog) | In diesem Verfahren werden Sie Azure Data Catalog bereitstellen oder einrichten. Führen Sie diesen Schritt nur aus, wenn der Katalog nicht bereits eingerichtet wurde. Pro Organisation (Microsoft Azure Active Directory-Domäne) kann nur ein Datenkatalog bereitgestellt werden. Dies gilt auch, wenn Ihrem Azure-Konto mehrere Abonnements zugeordnet sind. |
+| [Bereitstellen des Datenkatalogs](#provision-data-catalog) | In diesem Verfahren stellen Sie Azure Data Catalog bereit bzw. führen die Einrichtung dafür durch. Führen Sie diesen Schritt nur aus, wenn der Katalog nicht bereits eingerichtet wurde. Pro Organisation (Microsoft Azure Active Directory-Domäne) kann nur ein Datenkatalog bereitgestellt werden. Dies gilt auch, wenn Ihrem Azure-Konto mehrere Abonnements zugeordnet sind. |
 | [Registrieren von Datenassets](#register-data-assets) | In diesem Verfahren registrieren Sie Datenassets aus der AdventureWorks2014-Beispieldatenbank im Datenkatalog. Die Registrierung ist der Prozess des Extrahierens wichtiger struktureller Metadaten, z.B. Namen, Typen und Orte, aus der Datenquelle und des Kopierens dieser Metadaten in den Katalog. Die Datenquellen und ihre Daten bleiben an ihrem Ort, aber die Metadaten werden vom Katalog verwendet, um sie leichter ermittelbar und verständlich zu machen. |
 | [Ermitteln von Datenassets](#discover-data-assets) | In diesem Verfahren verwenden Sie das Azure Data Catalog-Portal, um Datenassets zu ermitteln, die im vorherigen Schritt registriert wurden. Nachdem eine Datenquelle in Azure Data Catalog registriert wurde, werden ihre Metadaten vom Dienst indiziert, sodass Benutzer mühelos nach benötigten Daten suchen können. |
-| [Versehen von Datenassets mit Anmerkungen](#annotate-data-assets) | In diesem Verfahren fügen Sie den Datenassets Anmerkungen (Informationen wie Beschreibungen, Tags, Dokumentation oder Experten) zur Ergänzung der aus der Datenquelle extrahierten Metadaten hinzu, um die Datenquelle für eine größere Zahl von Benutzern besser verständlich zu machen. |
-| [Herstellen einer Verbindung mit Datenassets](#connect-to-data-assets) | In diesem Verfahren öffnen Sie Datenassets mithilfe von Verbindungsinformationen in integrierten Clienttools (z.B. Excel und SQL Server Data Tools) und einem nicht integrierten Tool (SQL Server Management Studio). |
+| [Versehen von Datenassets mit Anmerkungen](#annotate-data-assets) | In diesem Verfahren geben Sie Anmerkungen (Informationen wie Beschreibungen, Tags, Dokumentation oder Experten) für die Datenassets an. Diese Informationen dienen als Erweiterung der Metadaten, die aus der Datenquelle extrahiert wurden, sowie dem besseren allgemeinen Verständnis der Datenquelle. |
+| [Herstellen einer Verbindung mit Datenassets](#connect-to-data-assets) | In diesem Verfahren öffnen Sie Datenassets in integrierten Clienttools (z.B. Excel und SQL Server Data Tools) und einem nicht integrierten Tool (SQL Server Management Studio). |
 | [Verwalten von Datenassets](#manage-data-assets) | In diesem Verfahren richten Sie die Sicherheit für Ihre Datenassets ein. Mit Data Catalog erhalten Benutzer keinen Zugriff auf die eigentlichen Daten. Der Besitzer der Datenquelle steuert den Datenzugriff. <br/><br/> Mit Data Catalog können Sie Datenquellen ermitteln und die **Metadaten** der im Katalog registrierten Quellen anzeigen. Mitunter sollen Datenquellen jedoch nur für bestimmte Benutzer oder Mitglieder bestimmter Gruppen sichtbar sein. In solchen Fällen können Sie in Data Catalog den Besitz von im Katalog registrierten Datenassets übernehmen und die Sichtbarkeit Ihrer Assets steuern. |
-| [Entfernen von Datenassets](#remove-data-assets) | In diesem Verfahren erfahren Sie, wie Sie Datenassets aus dem Datenkatalog entfernen. |  
+| [Entfernen von Datenassets](#remove-data-assets) | In diesem Verfahren wird beschrieben, wie Sie Datenassets aus dem Datenkatalog entfernen. |  
 
 ## Voraussetzungen für das Lernprogramm
-
-Zum Durchführen dieses Tutorials benötigen Sie Folgendes.
 
 ### Azure-Abonnement
 Um den Azure Data Catalog einzurichten, müssen Sie Besitzer oder Mitbesitzer eines Azure-Abonnements sein.
 
-Mit Azure-Abonnements können Sie den Zugriff auf die Clouddienstressourcen wie Azure Data Catalog organisieren. Mit diesen Abonnements können Sie darüber hinaus steuern, wie die Ressourcennutzung gemeldet, abgerechnet und bezahlt wird. Jedes Abonnement kann in Bezug auf Abrechnung und Zahlung unterschiedlich eingerichtet sein, daher können Sie je nach Abteilung, Projekt, Niederlassung usw. verschiedene Abonnements und verschiedene Pläne haben. Jeder Clouddienst gehört zu einem Abonnement, und Sie benötigen ein Abonnement vor dem Einrichten von Azure Data Catalog. Weitere Informationen finden Sie unter [Beziehung zwischen Azure-Abonnements und Azure Active Directory](../active-directory/active-directory-how-subscriptions-associated-directory.md).
+Mit Azure-Abonnements können Sie den Zugriff auf die Clouddienstressourcen wie Azure Data Catalog organisieren. Mit diesen Abonnements können Sie darüber hinaus steuern, wie die Ressourcennutzung gemeldet, abgerechnet und bezahlt wird. Jedes Abonnement kann in Bezug auf Abrechnung und Zahlung unterschiedlich eingerichtet sein, daher können Sie je nach Abteilung, Projekt, Niederlassung usw. verschiedene Abonnements und verschiedene Pläne haben. Jeder Clouddienst gehört zu einem Abonnement, und Sie benötigen ein Abonnement vor dem Einrichten von Azure Data Catalog. Weitere Informationen finden Sie unter [Verwalten von Konten, Abonnements und Administratorrollen](../active-directory/active-directory-how-subscriptions-associated-directory.md).
 
 Wenn Sie über kein Abonnement verfügen, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Details hierzu finden Sie in den Informationen zur [kostenlosen Testversion](https://azure.microsoft.com/pricing/free-trial/).
 
 ### Azure Active Directory
-Zum Einrichten von Azure Data Catalog müssen Sie sich mit einem Azure Active Directory (Azure AD)-Benutzerkonto anmelden. Der Benutzer muss der Besitzer oder Mitbesitzer eines Azure-Abonnements sein.
+Zum Einrichten von Azure Data Catalog müssen Sie sich mit einem Azure Active Directory (Azure AD)-Benutzerkonto anmelden. Sie müssen der Besitzer oder Mitbesitzer eines Azure-Abonnements sein.
 
-Azure AD bietet Ihrem Unternehmen sowohl in der Cloud als auch lokal eine einfache Möglichkeit zur Identitäts- und Zugriffsverwaltung. Benutzer können sich mit einem einzigen Geschäfts- oder Schulkonto bei beliebigen cloudbasierten oder lokalen Webanwendungen anmelden. Azure Data Catalog verwendet Azure AD für die Authentifizierung bei der Anmeldung. Weitere Informationen finden Sie unter [Was ist Azure Active Directory?](../active-directory/active-directory-whatis.md).
+Azure AD bietet Ihrem Unternehmen sowohl in der Cloud als auch lokal eine einfache Möglichkeit zur Identitäts- und Zugriffsverwaltung. Sie können sich mit einem einzelnen Geschäfts- oder Schulkonto bei beliebigen cloudbasierten oder lokalen Webanwendungen anmelden. Azure Data Catalog verwendet Azure AD für die Authentifizierung bei der Anmeldung. Weitere Informationen finden Sie unter [Was ist Azure Active Directory?](../active-directory/active-directory-whatis.md).
 
 ### Azure Active Directory-Richtlinienkonfiguration
 
-Es kann vorkommen, dass Sie sich beim Azure Data Catalog-Portal anmelden können, jedoch eine Fehlermeldung erhalten, wenn Sie versuchen, sich beim Tool zum Registrieren von Datenquellen anzumelden. Dies kann passieren, wenn Sie sich im Unternehmensnetzwerk befinden oder von außerhalb des Unternehmensnetzwerks eine Verbindung herstellen.
+Es kann vorkommen, dass Sie sich beim Azure Data Catalog-Portal anmelden können, jedoch eine Fehlermeldung erhalten, wenn Sie versuchen, sich beim Tool zum Registrieren von Datenquellen anzumelden. Dieser Fehler kann auftreten, wenn Sie sich im Unternehmensnetzwerk befinden oder von außerhalb des Unternehmensnetzwerks eine Verbindung herstellen.
 
 Das Registrierungstool verwendet die *Formularauthentifizierung*, um Benutzeranmeldungen mit Azure Active Directory zu überprüfen. Um die Anmeldung zu ermöglichen, muss der Azure Active Directory-Administrator die Formularauthentifizierung in der *globalen Authentifizierungsrichtlinie* aktivieren.
 
@@ -59,13 +57,13 @@ Wie im folgenden Screenshot gezeigt, kann die Authentifizierung in der globalen 
 
 Weitere Informationen finden Sie unter [Konfigurieren von Authentifizierungsrichtlinien](https://technet.microsoft.com/library/dn486781.aspx).
 
-## Bereitstellen eines Datenkatalogs
-Sie können nur einen Datenkatalog pro Organisation (Azure Active Directory-Domäne) bereitstellen. Wenn der Besitzer oder Mitbesitzer eines Azure-Abonnements, der dieser Azure Active Directory-Domäne angehört, bereits einen Katalog erstellt hat, können Sie daher keinen weiteren Katalog erstellen. Dies gilt auch, wenn Sie über mehrere Azure-Abonnements verfügen. Um festzustellen, ob von einem Benutzer in Ihrer Azure Active Directory-Domäne ein Datenkatalog erstellt wurde, navigieren Sie zur [Azure Data Catalog-Startseite](http://azuredatacatalog.com), und überprüfen Sie, ob ein Katalog angezeigt wird. Wenn bereits ein Katalog für Sie erstellt wurde, überspringen Sie das folgende Verfahren, und fahren Sie mit dem nächsten Abschnitt fort.
+## Bereitstellen des Datenkatalogs
+Sie können nur einen Datenkatalog pro Organisation (Azure Active Directory-Domäne) bereitstellen. Wenn der Besitzer oder Mitbesitzer eines Azure-Abonnements, der dieser Azure Active Directory-Domäne angehört, bereits einen Katalog erstellt hat, können Sie daher keinen weiteren Katalog erstellen. Dies gilt auch, wenn Sie über mehrere Azure-Abonnements verfügen. Um festzustellen, ob von einem Benutzer in Ihrer Azure Active Directory-Domäne ein Datenkatalog erstellt wurde, navigieren Sie zur [Azure Data Catalog-Startseite](http://azuredatacatalog.com) und überprüfen, ob ein Katalog angezeigt wird. Wenn bereits ein Katalog für Sie erstellt wurde, überspringen Sie das folgende Verfahren, und fahren Sie mit dem nächsten Abschnitt fort.
 
 1. Navigieren Sie zur [Seite des Data Catalog-Diensts](https://azure.microsoft.com/services/data-catalog), und klicken Sie auf **Erste Schritte**.
 
 	![Azure Data Catalog – Angebotsseite](media/data-catalog-get-started/data-catalog-marketing-landing-page.png)
-2. Melden Sie sich mit einem Benutzerkonto an, bei dem es sich um den Besitzer oder Mitbesitzer eines Azure-Abonnements handelt. Nach der Anmeldung wird die folgende Seite angezeigt.
+2. Melden Sie sich mit einem Benutzerkonto an, bei dem es sich um den Besitzer oder Mitbesitzer eines Azure-Abonnements handelt. Nach der Anmeldung wird die folgende Seite angezeigt:
 
 	![Azure Data Catalog – Datenkatalog bereitstellen](media/data-catalog-get-started/data-catalog-create-azure-data-catalog.png)
 3. Geben Sie einen **Namen** für den Datenkatalog, das zu verwendende **Abonnement** und den **Speicherort** für den Katalog an.
@@ -89,9 +87,9 @@ Sie können nur einen Datenkatalog pro Organisation (Azure Active Directory-Dom�
 	![Azure Data Catalog – Tarif](media/data-catalog-get-started/data-catalog-change-pricing-tier.png)
 
 ### Adventure Works-Beispieldatenbank
-In diesem Tutorial registrieren Sie Datenassets (Tabellen) aus der AdventureWorks2014-Beispieldatenbank für das SQL Server-Datenbankmodul. Sie können jedoch jede unterstützte Datenquelle verwenden, wenn Sie lieber mit Daten arbeiten möchten, die Ihnen vertraut und für Ihre Rolle relevant sind. Eine Liste der unterstützten Datenquellen finden Sie unter [Von Azure Data Catalog unterstützte Datenquellen](data-catalog-dsr.md).
+In diesem Tutorial registrieren Sie Datenassets (Tabellen) aus der AdventureWorks2014-Beispieldatenbank für das SQL Server-Datenbankmodul. Sie können aber jede unterstützte Datenquelle verwenden, wenn Sie lieber mit Daten arbeiten möchten, die Ihnen vertraut und für Ihre Rolle relevant sind. Eine Liste der unterstützten Datenquellen finden Sie unter [Von Azure Data Catalog unterstützte Datenquellen](data-catalog-dsr.md).
 
-### Installieren der Adventure Works 2014 OLTP-Datenbank
+### Installieren der Adventure Works 2014 OLTP-Datenbank
 Die Adventure Works-Datenbank unterstützt Standardszenarien zur Onlinetransaktionsverarbeitung für einen fiktiven Fahrradhersteller (Adventure Works Cycles), z.B. für die Bereiche Produkte, Vertrieb und Einkauf. In diesem Tutorial registrieren Sie Informationen zu Produkten in Azure Data Catalog.
 
 So installieren Sie die Adventure Works-Beispieldatenbank:
@@ -114,7 +112,7 @@ In dieser Übung verwenden Sie das Registrierungstool, um Datenassets aus der Ad
 
 ### Registrieren einer Datenquelle
 
-1.	Navigieren Sie zur [Azure Data Catalog-Startseite](https://azuredatacatlog.com), und klicken Sie auf **Daten veröffentlichen**.
+1.	Navigieren Sie zur [Azure Data Catalog-Startseite](https://azuredatacatalog.com), und klicken Sie auf **Daten veröffentlichen**.
 
     ![Azure Data Catalog – Schaltfläche „Daten veröffentlichen“](media/data-catalog-get-started/data-catalog-publish-data.png)
 
@@ -137,13 +135,13 @@ In dieser Übung verwenden Sie das Registrierungstool, um Datenassets aus der Ad
 6.	Registrieren Sie die Metadaten Ihres Datenassets. In diesem Beispiel registrieren Sie **Production/Product**-Objekte aus dem Namespace „Production“ von AdventureWorks:
 
 	1. Erweitern Sie in der **Serverhierarchie** den Knoten **AdventureWorks2014**, und klicken Sie auf **Production**.
-	2. Wählen Sie mit STRG+Klick **Product**, **ProductCategory**, **ProductDescription** und **ProductPhoto** aus.
-	3. Klicken Sie auf den **Pfeil zum Verschieben der ausgewählten Elemente** (**>**). Alle ausgewählten Objekte werden in die Liste **Zu registrierende Objekte** verschoben.
+	2. Klicken Sie mit gedrückter STRG-Taste nacheinander auf **Product**, **ProductCategory**, **ProductDescription** und **ProductPhoto**, um diese Elemente auszuwählen.
+	3. Klicken Sie auf den **Pfeil zum Verschieben der ausgewählten Elemente** (**>**). Mit dieser Aktion werden alle ausgewählten Objekte in die Liste **Zu registrierende Objekte** verschoben.
 
     	![Azure Data Catalog-Tutorial – Objekte durchsuchen und auswählen](media/data-catalog-get-started/data-catalog-server-hierarchy.png)
-	4. Wählen Sie **Vorschau einschließen** aus, um eine Momentaufnahme der Daten einzuschließen. Die Momentaufnahme enthält bis zu 20 Datensätze aus jeder Tabelle und wird in den Katalog kopiert.
-	5. Wählen Sie **Datenprofil einschließen** aus, um eine Momentaufnahme der Objektstatistik für das Datenprofil einzuschließen (z.B. Mindest-, Höchst- und Mittelwerte für eine Spalte und Anzahl von Zeilen).
-	6. Geben Sie **adventure works, cycles** in das Feld **Tags hinzufügen** ein. Hiermit werden Suchtags für diese Datenassets hinzugefügt. Tags sind eine hervorragende Möglichkeit, Benutzer beim Suchen nach einer registrierten Datenquelle zu unterstützen.
+	4. Wählen Sie **Vorschau einschließen** aus, um eine Momentaufnahme der Daten einzubinden. Die Momentaufnahme enthält bis zu 20 Datensätze aus jeder Tabelle und wird in den Katalog kopiert.
+	5. Wählen Sie **Datenprofil einschließen** aus, um eine Momentaufnahme der Objektstatistik für das Datenprofil einzubinden (z.B. Mindest-, Höchst- und Mittelwerte für eine Spalte, Anzahl von Zeilen).
+	6. Geben Sie **adventure works, cycles** in das Feld **Tags hinzufügen** ein. Mit dieser Aktion werden Suchtags für diese Datenassets hinzugefügt. Tags sind eine hervorragende Möglichkeit, Benutzer beim Suchen nach einer registrierten Datenquelle zu unterstützen.
 	7. Geben Sie den Namen eines **Experten** für diese Daten an (optional).
 
     	![Azure Data Catalog-Tutorial – zu registrierende Objekte](media/data-catalog-get-started/data-catalog-objects-register.png)
@@ -176,7 +174,7 @@ Im Folgenden wird die Ermittlung von Datenassets im Katalog anhand einiger Beisp
 Die Standardsuche ermöglicht Ihnen das Durchsuchen des Katalogs anhand eines oder mehrerer Suchbegriffe. Als Ergebnisse werden alle Ressourcen zurückgegeben, bei denen eine beliebige Eigenschaft mit den angegebenen Begriffen übereinstimmt.
 
 1. Klicken Sie im Azure Data Catalog-Portal auf **Start**. Falls Sie den Webbrowser geschlossen haben, wechseln Sie zur [Azure Data Catalog-Startseite](https://www.azuredatacatalog.com).
-2. Geben Sie **cycles** in das Suchfeld ein, und drücken Sie die **EINGABETASTE**.
+2. Geben Sie `cycles` in das Suchfeld ein, und drücken Sie die **EINGABETASTE**.
 
 	![Azure Data Catalog – Standardtextsuche](media/data-catalog-get-started/data-catalog-basic-text-search.png)
 3. Vergewissern Sie sich, dass alle vier Tabellen und die Datenbank (AdventureWorks2014) in den Ergebnissen angezeigt werden. Sie können wie im folgenden Screenshot dargestellt mit den Schaltflächen auf der Symbolleiste zwischen der **Rasteransicht** und der **Listenansicht** wechseln. Das Suchschlüsselwort wird in den Suchergebnissen hervorgehoben, weil die Option **Hervorheben** aktiviert ist. Sie können auch die Anzahl von **Ergebnissen pro Seite** in den Suchergebnissen angeben.
@@ -200,7 +198,7 @@ Die Standardsuche ermöglicht Ihnen das Durchsuchen des Katalogs anhand eines od
 Die eigenschaftsbasierte Suche ermöglicht Ihnen das Ermitteln von Datenassets, bei denen der Suchbegriff mit der angegebenen Eigenschaft übereinstimmt.
 
 1. Deaktivieren Sie unter **Filter** für **Objekttyp** den Filter **Tabelle**.
-2. Geben Sie **tags:cycles** in das Suchfeld ein, und drücken Sie die **EINGABETASTE**. Alle Eigenschaften, die zum Durchsuchen des Datenkatalogs verwendet werden können, finden Sie unter [Data Catalog Search syntax reference](https://msdn.microsoft.com/library/azure/mt267594.aspx) (Referenz zur Data Catalog-Suchsyntax).
+2. Geben Sie `tags:cycles` in das Suchfeld ein, und drücken Sie die **EINGABETASTE**. Alle Eigenschaften, die zum Durchsuchen des Datenkatalogs verwendet werden können, finden Sie unter [Data Catalog Search syntax reference](https://msdn.microsoft.com/library/azure/mt267594.aspx) (Referenz zur Data Catalog-Suchsyntax).
 3. Vergewissern Sie sich, dass alle vier Tabellen und die Datenbank (AdventureWorks2014) in den Ergebnissen angezeigt werden.
 
 	![Data Catalog – Suchergebnisse der eigenschaftsbasierten Suche](media/data-catalog-get-started/data-catalog-property-scoping-results.png)
@@ -219,15 +217,15 @@ Die eigenschaftsbasierte Suche ermöglicht Ihnen das Ermitteln von Datenassets, 
 ### Boolesche Operatoren
 Sie können die Suche mit booleschen Operatoren erweitern oder eingrenzen.
 
-1. Geben Sie **tags:cycles AND objectType:table** in das Suchfeld ein, und drücken Sie die **EINGABETASTE**.
+1. Geben Sie `tags:cycles AND objectType:table` in das Suchfeld ein, und drücken Sie die **EINGABETASTE**.
 2. Vergewissern Sie sich, dass in den Ergebnissen nur Tabellen angezeigt werden (nicht die Datenbank).
 
 	![Azure Data Catalog – Boolescher Operator der Suche](media/data-catalog-get-started/data-catalog-search-boolean-operator.png)
 
 ### Gruppierung mit Klammern
-Durch die Gruppierung mit Klammern können Sie Teile der Abfrage gruppieren, um eine logische Isolierung zu erzielen (insbesondere in Verbindung mit booleschen Operatoren).
+Durch die Gruppierung mit Klammern können Sie Teile der Abfrage gruppieren, um eine logische Isolierung zu erzielen (insbesondere bei booleschen Operatoren).
 
-1. Geben Sie **name:product AND (tags:cycles AND objectType:table)** in das Suchfeld ein, und drücken Sie die **EINGABETASTE**.
+1. Geben Sie `name:product AND (tags:cycles AND objectType:table)` in das Suchfeld ein, und drücken Sie die **EINGABETASTE**.
 2. Vergewissern Sie sich, dass in den Suchergebnissen nur die Tabelle **Product** angezeigt wird.
 
 	![Azure Data Catalog – Suchvorgänge gruppieren](media/data-catalog-get-started/data-catalog-grouping-search.png)
@@ -235,9 +233,9 @@ Durch die Gruppierung mit Klammern können Sie Teile der Abfrage gruppieren, um 
 ### Vergleichsoperatoren
 Mit Vergleichsoperatoren können Sie für Eigenschaften mit numerischen Datentypen und Datumsdatentypen andere Vergleiche als „Gleichheit“ ausführen.
 
-1. Geben Sie **lastRegisteredTime:>"06/09/2016"** in das Suchfeld ein.
+1. Geben Sie im Suchfeld `lastRegisteredTime:>"06/09/2016"` ein.
 2. Deaktivieren Sie unter **Objekttyp** den Filter **Tabelle**.
-3. Drücken Sie die**EINGABETASTE**.
+3. Betätigen Sie die **EINGABETASTE**.
 4. Vergewissern Sie sich, dass die Tabellen **Product**, **ProductCategory**, **ProductDescription** und **ProductPhoto** sowie die von Ihnen registrierte AdventureWorks2014-Datenbank in den Suchergebnissen angezeigt werden.
 
 	![Azure Data Catalog – Vergleichssuchergebnisse](media/data-catalog-get-started/data-catalog-comparison-operator-results.png)
@@ -245,11 +243,11 @@ Mit Vergleichsoperatoren können Sie für Eigenschaften mit numerischen Datentyp
 Ausführliche Informationen zur Ermittlung von Datenassets finden Sie unter [Ermitteln von Datenquellen](data-catalog-how-to-discover.md). Informationen zur Suchsyntax finden Sie unter [Data Catalog Search syntax reference](https://msdn.microsoft.com/library/azure/mt267594.aspx) (Referenz zur Data Catalog-Suchsyntax).
 
 ## Versehen von Datenassets mit Anmerkungen
-In dieser Übung verwenden Sie das Azure Data Catalog-Portal, um Datenassets, die Sie zuvor im Katalog registriert haben, mit Anmerkungen zu versehen (d.h. Informationen wie Beschreibungen, Tags oder Experten hinzufügen). Die von Ihnen angegebenen Anmerkungen dienen als Ergänzung und Erweiterung der strukturellen Metadaten, die während der Registrierung aus der Datenquelle extrahiert wurden, und führen dazu, dass die Datenassets viel besser ermittelbar und verständlich sind.
+In dieser Übung verwenden Sie das Azure Data Catalog-Portal, um Datenassets, die Sie zuvor im Katalog registriert haben, mit Anmerkungen zu versehen (d.h. Informationen wie Beschreibungen, Tags oder Experten hinzufügen). Die Anmerkungen dienen als Ergänzung und Erweiterung der strukturellen Metadaten, die während der Registrierung aus der Datenquelle extrahiert wurden, und führen dazu, dass die Datenassets viel besser ermittelbar und verständlich sind.
 
-In dieser Übung fügen Sie einem Datenasset (ProductPhoto) Anmerkungen hinzu. Sie fügen dem Datenasset „ProductPhoto“ einen Anzeigenamen und eine Beschreibung hinzu.
+In dieser Übung versehen Sie ein Datenasset (ProductPhoto) mit Anmerkungen. Sie fügen dem Datenasset „ProductPhoto“ einen Anzeigenamen und eine Beschreibung hinzu.
 
-1.  Navigieren Sie zur [Azure Data Catalog-Startseite](https://www.azuredatacatalog.com), und führen Sie eine Suche mit **tags:cycles** durch, um nach den von Ihnen registrierten Datensassets zu suchen.
+1.  Navigieren Sie zur [Azure Data Catalog-Startseite](https://www.azuredatacatalog.com), und führen Sie eine Suche mit `tags:cycles` durch, um nach den von Ihnen registrierten Datenassets zu suchen.
 2. Klicken Sie in den Suchergebnissen auf **ProductPhoto**.
 3. Geben Sie für **Anzeigename** den Text **Produktbilder** und für **Beschreibung** den Text **Produktfotos für Marketingmaterial** ein.
 
@@ -283,7 +281,7 @@ Ausführliche Informationen zum Versehen von Datenassets mit Anmerkungen finden 
 ## Herstellen einer Verbindung mit Datenassets
 In dieser Übung öffnen Sie Datenassets mithilfe von Verbindungsinformationen in einem integrierten Clienttool (Excel) und einem nicht integrierten Tool (SQL Server Management Studio).
 
-> [AZURE.NOTE] Bedenken Sie, dass Azure Data Catalog Ihnen keinen Zugriff auf die eigentliche Datenquelle bietet – es erleichtert es Ihnen lediglich, die Datenquelle zu ermitteln und zu verstehen. Wenn Sie eine Verbindung mit einer Datenquelle herstellen, verwendet die dazu ausgewählte Clientanwendung Ihre Windows-Anmeldeinformationen, oder Sie werden zur Eingabe Ihrer Anmeldeinformationen aufgefordert. Um auf eine Datenquelle zugreifen zu können, muss Ihnen der Zugriff gewährt werden (sofern noch nicht geschehen).
+> [AZURE.NOTE] Bedenken Sie, dass Azure Data Catalog Ihnen keinen Zugriff auf die eigentliche Datenquelle bietet – es erleichtert es Ihnen lediglich, die Datenquelle zu ermitteln und zu verstehen. Wenn Sie eine Verbindung mit einer Datenquelle herstellen, verwendet die dafür ausgewählte Clientanwendung Ihre Windows-Anmeldeinformationen, oder Sie werden zur Eingabe Ihrer Anmeldeinformationen aufgefordert. Um auf eine Datenquelle zugreifen zu können, muss Ihnen der Zugriff gewährt werden (sofern noch nicht geschehen).
 
 ### Herstellen einer Verbindung mit einem Datenasset über Excel
 
@@ -307,7 +305,7 @@ In dieser Übung haben Sie eine Verbindung mit Datenassets hergestellt, die mit 
 
 1. Öffnen Sie **SQL Server Management Studio**.
 2. Geben Sie im Dialogfeld **Mit Server verbinden** den Servernamen aus dem Bereich **Eigenschaften** des Azure Data Catalog-Portals ein.
-3. Verwenden Sie eine geeignete Authentifizierungsmethode und die entsprechenden Anmeldeinformationen, um auf das Datenasset zuzugreifen. Falls Sie keinen Zugriff haben, fordern Sie ihn entsprechend den Informationen im Feld **Zugriff anfordern** an.
+3. Verwenden Sie eine geeignete Authentifizierungsmethode und die entsprechenden Anmeldeinformationen, um auf das Datenasset zuzugreifen. Falls Sie keinen Zugriff haben, fordern Sie ihn anhand der Informationen im Feld **Zugriff anfordern** an.
 
 	![Azure Data Catalog – Zugriff anfordern](media/data-catalog-get-started/data-catalog-request-access.png)
 
@@ -320,10 +318,10 @@ Mit Data Catalog können Sie Datenquellen ermitteln und die Metadaten der im Kat
 
 > [AZURE.NOTE] Die in dieser Übung beschriebenen Verwaltungsfunktionen sind nur in der Standard Edition von Azure Data Catalog verfügbar, nicht in der kostenlosen Edition. In Azure Data Catalog können Sie den Besitz von Datenassets übernehmen, Datenassets Mitbesitzer hinzufügen und die Sichtbarkeit von Datenassets festlegen.
 
-### Übernehmen des Besitzes von Datenassets und Einschränken Sichtbarkeit
+### Übernehmen des Besitzes von Datenassets und Einschränken der Sichtbarkeit
 
-1. Navigieren Sie zur [Azure Data Catalog-Startseite](https://www.azuredatacatalog.com). Geben Sie **tags:cycles** in das Textfeld **Suche** ein, und drücken Sie die **EINGABETASTE**.
-2. Klicken Sie auf ein Element in der Ergebnisliste und dann auf der Symbolleiste auf **Besitz übernehmen**.
+1. Navigieren Sie zur [Azure Data Catalog-Startseite](https://www.azuredatacatalog.com). Geben Sie `tags:cycles` in das Textfeld **Suche** ein, und drücken Sie die **EINGABETASTE**.
+2. Klicken Sie auf ein Element in der Ergebnisliste und dann in der Symbolleiste auf **Besitz übernehmen**.
 3. Klicken Sie im Bereich **Eigenschaften** unter **Verwaltung** auf **Besitz übernehmen**.
 
 	![Azure Data Catalog – Besitz übernehmen](media/data-catalog-get-started/data-catalog-take-ownership.png)
@@ -338,12 +336,12 @@ In dieser Übung verwenden Sie das Azure Data Catalog-Portal, um Vorschaudaten a
 In Azure Data Catalog können Sie ein einzelnes Asset oder mehrere Assets löschen.
 
 1. Navigieren Sie zur [Azure Data Catalog-Startseite](https://www.azuredatacatalog.com).
-2. Geben Sie **tags:cycles** in das Feld **Suche** ein, und drücken Sie die **EINGABETASTE**.
-3. Wählen Sie wie im folgenden Screenshot dargestellt in der Ergebnisliste ein Element aus, und klicken Sie auf der Symbolleiste auf **Löschen**.
+2. Geben Sie `tags:cycles` in das Textfeld **Suche** ein, und drücken Sie die **EINGABETASTE**.
+3. Wählen Sie wie im folgenden Screenshot dargestellt in der Ergebnisliste ein Element aus, und klicken Sie auf der Symbolleiste auf **Löschen**:
 
 	![Azure Data Catalog – Rasterelement löschen](media/data-catalog-get-started/data-catalog-delete-grid-item.png)
 
-	Wenn Sie die Listenansicht verwenden, befindet sich das Kontrollkästchen wie unten gezeigt links neben dem Element.
+	Wenn Sie die Listenansicht verwenden, befindet sich das Kontrollkästchen wie unten gezeigt links neben dem Element:
 
 	![Azure Data Catalog – Listenelement löschen](media/data-catalog-get-started/data-catalog-delete-list-item.png)
 
@@ -368,4 +366,4 @@ In diesem Tutorial haben Sie wichtige Funktionen von Azure Data Catalog kennen g
 - [Herstellen einer Verbindung mit Datenassets](data-catalog-how-to-connect.md)
 - [Verwalten von Datenassets](data-catalog-how-to-manage.md)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0921_2016-->

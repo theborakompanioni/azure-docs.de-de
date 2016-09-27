@@ -13,20 +13,34 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="09/01/2016"
+   ms.date="09/21/2016"
    ms.author="cherylmc" />
 
 # Informationen zu VPN Gateway
 
 
-Ein virtuelles Netzwerkgateway dient zum Senden von Netzwerkdatenverkehr zwischen virtuellen Azure-Netzwerken und lokalen Standorten sowie zwischen virtuellen Netzwerken innerhalb von Azure (VNet-zu-VNet). Fügen Sie zum Erstellen einer Verbindung einem VNet ein virtuelles Netzwerkgateway sowie zusätzliche Ressourcen und die dazugehörigen Einstellungen hinzu.
+Ein virtuelles Netzwerkgateway dient zum Senden von Netzwerkdatenverkehr zwischen virtuellen Azure-Netzwerken und lokalen Standorten sowie zwischen virtuellen Netzwerken innerhalb von Azure (VNet-zu-VNet). Beim Konfigurieren eines VPN-Gateways müssen Sie ein Gateway des virtuellen Netzwerks und eine dazugehörige Verbindung erstellen und konfigurieren.
 
-Beim Erstellen einer Ressource vom Typ „Virtuelles Netzwerkgateway“ müssen mehrere Einstellungen angegeben werden. Eine dieser Einstellungen ist „-GatewayType“. Der Gatewaytyp gibt an, wie das Gateway eine Verbindung herstellt. Zur Auswahl stehen zwei Arten von virtuellen Netzwerkgateways: „Vpn“ und „ExpressRoute“. Verwenden Sie den Gatewaytyp „ExpressRoute“, wenn Netzwerkdatenverkehr über eine dedizierte private Verbindung gesendet wird. Dies wird auch als ExpressRoute-Gateway bezeichnet. Wenn Netzwerkdatenverkehr verschlüsselt und über eine öffentliche Verbindung gesendet wird, verwenden Sie den Gatewaytyp „Vpn“. Dies wird als VPN Gateway bezeichnet. Bei Site-to-Site-, Point-to-Site- und VNet-zu-VNet-Verbindungen wird jeweils VPN Gateway verwendet.
+Wenn Sie beim Resource Manager-Bereitstellungsmodell eine Ressource vom Typ „Gateway des virtuellen Netzwerks“ erstellen, geben Sie mehrere Einstellungen an. Eine dieser Einstellungen ist „-GatewayType“. Zur Auswahl stehen zwei Arten von virtuellen Netzwerkgateways: „Vpn“ und „ExpressRoute“.
 
-Ein virtuelles Netzwerk kann pro Gatewaytyp immer nur über ein einzelnes virtuelles Netzwerkgateway verfügen. So können Sie beispielsweise ein virtuelles Netzwerkgateway mit „-GatewayType Vpn“ und ein virtuelles Netzwerkgateway mit „-GatewayType ExpressRoute“ verwenden. Dieser Artikel konzentriert sich in erster Linie auf VPN Gateway. Weitere Informationen über ExpressRoute finden Sie unter [ExpressRoute – Technische Übersicht](../expressroute/expressroute-introduction.md).
+Verwenden Sie den Gatewaytyp „ExpressRoute“, wenn Netzwerkdatenverkehr über eine dedizierte private Verbindung gesendet wird. Dies wird auch als ExpressRoute-Gateway bezeichnet. Wenn Netzwerkdatenverkehr verschlüsselt und über eine öffentliche Verbindung gesendet wird, verwenden Sie den Gatewaytyp „Vpn“. Dies wird als VPN Gateway bezeichnet. Bei Site-to-Site-, Point-to-Site- und VNet-zu-VNet-Verbindungen wird jeweils VPN Gateway verwendet.
 
-Informationen zu Gatewayanforderungen finden Sie [hier](vpn-gateway-about-vpn-gateway-settings.md#requirements). Informationen zum voraussichtlichen aggregierten Durchsatz finden Sie [hier](vpn-gateway-about-vpn-gateway-settings.md#aggthroughput). Preisinformationen finden Sie unter [VPN Gateway Preise](https://azure.microsoft.com/pricing/details/vpn-gateway). Abonnements und dienstspezifische Grenzwerte finden Sie unter [Grenzwerte für Netzwerke](../articles/azure-subscription-service-limits.md#networking-limits).
+Ein virtuelles Netzwerk kann pro Gatewaytyp immer nur über ein einzelnes virtuelles Netzwerkgateway verfügen. So können Sie beispielsweise ein virtuelles Netzwerkgateway mit „-GatewayType ExpressRoute“ und ein virtuelles Netzwerkgateway mit „-GatewayType Vpn“ verwenden. Dieser Artikel konzentriert sich in erster Linie auf VPN Gateway. Weitere Informationen über ExpressRoute finden Sie unter [ExpressRoute – Technische Übersicht](../expressroute/expressroute-introduction.md).
 
+## Preise
+
+[AZURE.INCLUDE [vpn-gateway-about-pricing-include](../../includes/vpn-gateway-about-pricing-include.md)]
+
+
+## Gateway-SKUs
+
+[AZURE.INCLUDE [vpn-gateway-gwsku-include](../../includes/vpn-gateway-gwsku-include.md)]
+
+###  <a name="skugw"></a>Geschätzter aggregierter Durchsatz nach SKU und Gatewaytyp
+
+In der folgenden Tabelle sind die Gatewaytypen und der geschätzte zusammengefasste Durchsatz angegeben. Diese Tabelle betrifft sowohl das Resource Manager-Bereitstellungsmodell als auch das klassische Bereitstellungsmodell.
+
+[AZURE.INCLUDE [vpn-gateway-table-gwtype-aggthroughput](../../includes/vpn-gateway-table-gwtype-aggtput-include.md)]
 
 ## Konfigurieren von VPN Gateway
 
@@ -34,7 +48,7 @@ Die Konfigurationsschritte für VPN Gateway hängen davon ab, mit welchem Bereit
 
 Eine VPN Gateway-Verbindung basiert auf mehreren, mit spezifischen Einstellungen konfigurierten Ressourcen. Die meisten der Ressourcen können separat konfiguriert werden. In manchen Fällen ist allerdings eine bestimmte Reihenfolge einzuhalten. Sie können zunächst mit einem Konfigurationstool wie dem Azure-Portal Ressourcen erstellen und konfigurieren. Später können Sie dann mit einem anderen Tool (beispielsweise PowerShell) zusätzliche Ressourcen konfigurieren oder ggf. vorhandene Ressourcen ändern. Derzeit können nicht alle Ressourcen und Ressourceneinstellungen über das Azure-Portal konfiguriert werden. Sollte ein bestimmtes Konfigurationstool benötigt werden, ist dies in den Anleitungen der Artikel zu den einzelnen Verbindungstopologien angegeben. Informationen zu einzelnen Ressourcen und Einstellungen für VPN Gateway finden Sie unter [Informationen zu VPN Gateway-Einstellungen](vpn-gateway-about-vpn-gateway-settings.md).
 
-Die folgenden Abschnitte enthalten Tabellen mit Informationen zu Folgendem:
+Die folgenden Abschnitte enthalten Tabellen, in denen Folgendes aufgelistet ist:
 
 - Verfügbares Bereitstellungsmodell
 - Verfügbare Konfigurationstools
@@ -136,4 +150,4 @@ Planen Sie Ihre VPN Gateway-Konfiguration. Entsprechende Informationen finden Si
 
  
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0921_2016-->

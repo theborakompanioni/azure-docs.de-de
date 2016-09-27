@@ -14,8 +14,8 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="08/02/2016"
-   ms.author="narayanannamalai"/>
+   ms.date="09/14/2016"
+   ms.author="narayanannamalai;annahar"/>
 
 # Erstellen des VNet-Peerings mit Resource Manager-Vorlagen
 
@@ -29,7 +29,7 @@ Führen Sie die folgenden Schritte aus, um ein VNet-Peering mit Resource Manager
 
 1. Wenn Sie Azure PowerShell zuvor noch nicht verwendet haben, lesen Sie [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md), und befolgen Sie die komplette Anleitung, um sich bei Azure anzumelden und Ihr Abonnement auszuwählen.
 
-    Hinweis: Das PowerShell-Cmdlet zum Verwalten des VNet-Peerings ist in [Azure PowerShell 1.6.](http://www.powershellgallery.com/packages/Azure/1.6.0) enthalten.
+    > [AZURE.NOTE] Das PowerShell-Cmdlet zum Verwalten des VNet-Peerings ist in [Azure PowerShell 1.6](http://www.powershellgallery.com/packages/Azure/1.6.0) enthalten.
 
 2. Im Text weiter unten finden Sie die Definition eines VNet-Peeringlinks für „VNet1 zu VNet2“ (auf der Grundlage des obigen Szenarios). Kopieren Sie den Inhalt weiter unten, und speichern Sie ihn in einer Datei namens „VNetPeeringVNet1.json“.
 
@@ -58,7 +58,7 @@ Führen Sie die folgenden Schritte aus, um ein VNet-Peering mit Resource Manager
             }
         ]
         }
-    
+
 3. Der Abschnitt weiter unten enthält die Definition eines VNet-Peeringlinks für „VNet2 zu VNet1“ (auf der Grundlage des obigen Szenarios). Kopieren Sie den Inhalt weiter unten, und speichern Sie ihn in einer Datei namens „VNetPeeringVNet2.json“.
 
         {
@@ -163,7 +163,7 @@ Führen Sie die folgenden Schritte aus, um ein VNet-Peering mit Resource Manager
 
 Führen Sie die folgenden Schritte aus, um ein abonnementübergreifendes VNet-Peering zu erstellen:
 
-1. Melden Sie sich bei Azure unter dem Abonnement A mit einem privilegierten Benutzerkonto für Benutzer A an, und führen Sie das folgende Cmdlet aus:
+1. Melden Sie sich bei Azure unter Abonnement A mit einem privilegierten Benutzerkonto für Benutzer A an, und führen Sie das folgende Cmdlet aus:
 
         New-AzureRmRoleAssignment -SignInName <UserB ID> -RoleDefinitionName "Network Contributor" -Scope /subscriptions/<Subscription-A-ID>/resourceGroups/<ResourceGroupName>/providers/Microsoft.Network/VirtualNetwork/VNet5
 
@@ -178,7 +178,7 @@ Führen Sie die folgenden Schritte aus, um ein abonnementübergreifendes VNet-Pe
         New-AzureRmResourceGroupDeployment -ResourceGroupName VNet101 -TemplateFile .\VNetPeeringVNet3.json -DeploymentDebugLogLevel all
 
     Hier ist angegeben, wie die JSON-Datei definiert wird.
-    
+
         {
         "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
         "contentVersion": "1.0.0.0",
@@ -204,11 +204,11 @@ Führen Sie die folgenden Schritte aus, um ein abonnementübergreifendes VNet-Pe
             }
         ]
         }
-   
+
 4. Führen Sie in der Anmeldesitzung von Benutzer B das folgende Cmdlet aus:
 
         New-AzureRmResourceGroupDeployment -ResourceGroupName VNet101 -TemplateFile .\VNetPeeringVNet5.json -DeploymentDebugLogLevel all
-   
+
 	Hier ist angegeben, wie die JSON-Datei definiert wird:
 
         {
@@ -236,7 +236,7 @@ Führen Sie die folgenden Schritte aus, um ein abonnementübergreifendes VNet-Pe
             }
         ]
         }
- 
+
  	Nachdem das Peering in diesem Szenario eingerichtet wurde, können Sie die Verbindungen von jedem virtuellen Computer mit jedem virtuellen Computer in beiden VNets über verschiedene Abonnements hinweg initiieren.
 
 [AZURE.INCLUDE [virtual-networks-create-vnet-scenario-transit-include](../../includes/virtual-networks-create-vnetpeering-scenario-transit-include.md)]
@@ -303,4 +303,57 @@ Führen Sie die folgenden Schritte aus, um ein abonnementübergreifendes VNet-Pe
 
 3. Nachdem das Peering eingerichtet wurde, können Sie [diesen Artikel](virtual-network-create-udr-arm-ps.md) lesen und eine benutzerdefinierte Route (User-Defined Route, UDR) festlegen, um VNet1-Datenverkehr über ein virtuelles Gerät zu leiten und dessen Funktionen zu nutzen. Wenn Sie die Adresse des nächsten Hops der Route angeben, können Sie diese auf die IP-Adresse des virtuellen Geräts im mittels Peering verknüpften VNet (HubVNet) festlegen.
 
-<!---HONumber=AcomDC_0810_2016-->
+[AZURE.INCLUDE [virtual-networks-create-vnet-scenario-asmtoarm-include](../../includes/virtual-networks-create-vnetpeering-scenario-asmtoarm-include.md)]
+
+Führen Sie die folgenden Schritte aus, um ein Peering zwischen virtuellen Netzwerken aus unterschiedlichen Bereitstellungsmodellen zu erstellen:
+1. Im Text weiter unten ist die Definition eines VNet-Peeringlinks zwischen VNET1 und VNET2 für dieses Szenario enthalten. Es ist nur ein Link erforderlich, um ein klassisches virtuelles Netzwerk mit einem virtuellen Azure Resource Manager-Netzwerk zu verknüpfen.
+
+    Fügen Sie Ihre Abonnement-ID ein, um anzugeben, wo sich das klassische virtuelle Netzwerk bzw. VNET2 befindet, und ändern Sie MyResourceGroup in den entsprechenden Ressourcengruppennamen.
+
+    { "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#", "contentVersion": "1.0.0.0", "parameters": { }, "variables": { }, "resources": [ { "apiVersion": "2016-06-01", "type": "Microsoft.Network/virtualNetworks/virtualNetworkPeerings", "name": "VNET1/LinkToVNET2", "location": "[resourceGroup().location]", "properties": { "allowVirtualNetworkAccess": true, "allowForwardedTraffic": false, "allowGatewayTransit": false, "useRemoteGateways": false, "remoteVirtualNetwork": { "id": "[resourceId('Microsoft.ClassicNetwork/virtualNetworks', 'VNET2')]" } } } ] }
+
+2. Führen Sie zum Bereitstellen der Vorlagendatei das folgende Cmdlet aus, um die Bereitstellung zu erstellen oder zu aktualisieren.
+
+        New-AzureRmResourceGroupDeployment -ResourceGroupName MyResourceGroup -TemplateFile .\VnetPeering.json -DeploymentDebugLogLevel all
+
+        Output shows:
+
+        DeploymentName          : VnetPeering
+        ResourceGroupName       : MyResourceGroup
+        ProvisioningState       : Succeeded
+        Timestamp               : XX/XX/YYYY 5:42:33 PM
+        Mode                    : Incremental
+        TemplateLink            :
+        Parameters              :
+        Outputs                 :
+        DeploymentDebugLogLevel : RequestContent, ResponseContent
+
+3. Nachdem die Bereitstellung erfolgreich abgeschlossen wurde, können Sie das folgende Cmdlet ausführen, um den Peeringstatus anzuzeigen:
+
+        Get-AzureRmVirtualNetworkPeering -VirtualNetworkName VNET1 -ResourceGroupName MyResourceGroup -Name LinkToVNET2
+
+        Output shows:
+
+        Name                             : LinkToVNET2
+        Id                               : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResource
+                                   Group/providers/Microsoft.Network/virtualNetworks/VNET1/virtualNetworkPeering
+                                   s/LinkToVNET2
+        Etag                             : W/"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+        ResourceGroupName                : MyResourceGroup
+        VirtualNetworkName               : VNET1
+        PeeringState                     : Connected
+        ProvisioningState                : Succeeded
+        RemoteVirtualNetwork             : {
+                                     "Id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/M
+                                   yResourceGroup/providers/Microsoft.ClassicNetwork/virtualNetworks/VNET2"
+                                   }
+        AllowVirtualNetworkAccess        : True
+        AllowForwardedTraffic            : False
+        AllowGatewayTransit              : False
+        UseRemoteGateways                : False
+        RemoteGateways                   : null
+        RemoteVirtualNetworkAddressSpace : null
+
+Nach dem Peering zwischen einem klassischen VNet und einem Resource Manager-VNet sollte es möglich sein, Verbindungen von beliebigen virtuellen Computern in VNET1 mit virtuellen Computern in VNET2 zu initiieren (und umgekehrt).
+
+<!---HONumber=AcomDC_0921_2016-->

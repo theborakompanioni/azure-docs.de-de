@@ -20,9 +20,9 @@
 # Erstellen eines VNet mit einer Site-to-Site-Verbindung mithilfe von PowerShell
 
 > [AZURE.SELECTOR]
-- [Azure-Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
-- [Klassisches Azure-Portal](vpn-gateway-site-to-site-create.md)
-- [PowerShell – Resource Manager](vpn-gateway-create-site-to-site-rm-powershell.md)
+- [Resource Manager – Azure-Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+- [Resource Manager – PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
+- [Klassisch – Klassisches Portal](vpn-gateway-site-to-site-create.md)
 
 In diesem Artikel wird das Erstellen eines virtuellen Netzwerks und das Herstellen einer Site-to-Site-VPN-Verbindung mit Ihrem lokalen Netzwerk mithilfe des **Azure Resource Manager-Bereitstellungsmodells** beschrieben. Site-to-Site-Verbindungen können für standortübergreifende Konfigurationen und Hybridkonfigurationen verwendet werden.
 
@@ -177,7 +177,7 @@ Verwenden Sie die folgenden Werte:
 
 ## 7\. Konfigurieren des VPN-Geräts
 
-An diesem Punkt benötigen Sie die öffentliche IP-Adresse des Gateways des virtuellen Netzwerks für die Konfiguration Ihres lokalen VPN-Geräts. Halten Sie mit Ihrem Gerätehersteller für spezifische Informationen zur Konfiguration Rücksprache. Darüber hinaus finden Sie weitere Informationen unter [VPN-Geräte](vpn-gateway-about-vpn-devices.md).
+An diesem Punkt benötigen Sie die öffentliche IP-Adresse des Gateways des virtuellen Netzwerks für die Konfiguration Ihres lokalen VPN-Geräts. Halten Sie mit Ihrem Gerätehersteller für spezifische Informationen zur Konfiguration Rücksprache. Weitere Informationen finden Sie unter [VPN-Geräte](vpn-gateway-about-vpn-devices.md).
 
 Um die öffentliche IP-Adresse des Gateways des virtuellen Netzwerks zu ermitteln, verwenden Sie das folgende Beispiel:
 
@@ -222,4 +222,4 @@ Verwenden Sie die unten angegebene Anleitung, wenn Sie die Präfixe für Ihr Gat
 
 - Informationen zu BGP finden Sie in der [Übersicht über BGP](vpn-gateway-bgp-overview.md) und unter [Konfigurieren von BGP](vpn-gateway-bgp-resource-manager-ps.md).
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0921_2016-->

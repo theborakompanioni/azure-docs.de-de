@@ -13,8 +13,8 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="06/10/2016"
-   ms.author="ryanwi"/>
+   ms.date="09/09/2016"
+   ms.author="ryanwi;mikhegn"/>
 
 # Erste Schritte beim Bereitstellen und Aktualisieren von Anwendungen im lokalen Cluster
 Das Azure Service Fabric-SDK umfasst eine vollständige lokale Entwicklungsumgebung, die Sie verwenden können, um schnell mit der Bereitstellung und Verwaltung von Anwendungen in einem lokalen Cluster zu beginnen. In diesem Artikel verwenden Sie Windows PowerShell, um einen lokalen Cluster zu erstellen, eine vorhandene Anwendung bereitzustellen und die Anwendung auf eine neue Version zu aktualisieren.
@@ -193,7 +193,35 @@ Bevor Sie Ihre Arbeit abschließen, sollten Sie bedenken, dass der lokale Cluste
 
 3. Zum Beenden des Clusters bei Beibehaltung der Anwendungsdaten und Ablaufverfolgungen klicken Sie in der Infobereichs-App auf **Lokalen Cluster beenden**.
 
-4. Zum vollständigen Entfernen des Clusters klicken Sie in der Infobereichs-App auf **Lokalen Cluster entfernen**. Beachten Sie, dass diese Option zu einer weiteren langsamen Bereitstellung führt, wenn Sie das nächste Mal in Visual Studio F5 drücken. Entfernen Sie den lokalen Cluster nur, wenn Sie nicht beabsichtigen, ihn einige Zeit zu verwenden, oder wenn Sie Ressourcen freigeben müssen.
+4. Zum vollständigen Entfernen des Clusters klicken Sie in der Infobereichs-App auf **Lokalen Cluster entfernen**. Diese Option führt zu einer weiteren langsamen Bereitstellung, wenn Sie das nächste Mal in Visual Studio F5 drücken. Entfernen Sie den lokalen Cluster nur, wenn Sie nicht beabsichtigen, ihn einige Zeit zu verwenden, oder wenn Sie Ressourcen freigeben müssen.
+
+## Clustermodi „1 Knoten“ und „5 Knoten“
+
+Beim Verwenden des lokalen Clusters zum Entwickeln von Anwendungen kommt es häufig zu schnellen Abläufen, die sich auch wiederholen können: Schreiben von Code, Debuggen, Ändern von Code, Debuggen usw. Zur Optimierung dieses Prozesses kann der lokale Cluster in zwei Modi ausgeführt werden: „1 Knoten“ oder „5 Knoten“. Beide Clustermodi haben bestimmte Vorteile. Im Clustermodus mit fünf Knoten können Sie mit einem echten Cluster arbeiten. Sie können Failoverszenarien testen und mit mehr Instanzen und Replikaten Ihres Diensts arbeiten. Der Clustermodus mit einem Knoten wurde für die schnelle Bereitstellung und Registrierung von Diensten optimiert, damit Sie mit der Service Fabric-Laufzeit in kurzer Zeit Code überprüfen können.
+
+Weder beim Clustermodus mit einem Knoten noch mit fünf Knoten handelt es sich um einen Emulator oder Simulator. Er führt den gleichen Plattformcode wie Cluster mit mehreren Computern aus.
+
+> [AZURE.NOTE] Dieses Feature ist in SDK-Version 5.2 und höher verfügbar.
+
+Verwenden Sie zum Wechseln in den Clustermodus mit nur einem Knoten entweder den Service Fabric-Manager für lokale Cluster oder PowerShell. Gehen Sie wie folgt vor:
+
+1. Starten Sie als Administrator ein neues PowerShell-Fenster.
+
+2. Führen Sie das Skript für die Clustereinrichtung aus dem SDK-Ordner aus:
+
+	```powershell
+	& "$ENV:ProgramFiles\Microsoft SDKs\Service Fabric\ClusterSetup\DevClusterSetup.ps1" -CreateOneNodeCluster
+	```
+
+    Die Clustereinrichtung dauert einen Moment. Nach Abschluss des Setups wird in etwa die folgende Ausgabe angezeigt:
+    
+    ![Ausgabe bei der Clustereinrichtung][cluster-setup-success-1-node]
+
+Bei Verwendung des Service Fabric-Managers für lokale Cluster:
+
+![Wechseln des Clustermodus][switch-cluster-mode]
+
+> [AZURE.WARNING] Wenn Sie den Clustermodus ändern, wird der aktuelle Cluster aus Ihrem System entfernt und ein neuer Cluster erstellt. Die Daten, die im Cluster gespeichert sein müssen, werden gelöscht, wenn Sie den Clustermodus ändern.
 
 ## Nächste Schritte
 - Nachdem Sie nun einige vordefinierte Anwendungen bereitgestellt und aktualisiert haben, können Sie [selbst eine Anwendung in Visual Studio erstellen](service-fabric-create-your-first-application-in-visual-studio.md).
@@ -217,5 +245,7 @@ Bevor Sie Ihre Arbeit abschließen, sollten Sie bedenken, dass der lokale Cluste
 [sfx-upgradeprogress]: ./media/service-fabric-get-started-with-a-local-cluster/SfxUpgradeOverview.png
 [sfx-service-overview]: ./media/service-fabric-get-started-with-a-local-cluster/sfx-service-overview.png
 [sfe-delete-application]: ./media/service-fabric-get-started-with-a-local-cluster/sfe-delete-application.png
+[cluster-setup-success-1-node]: ./media/service-fabric-get-started-with-a-local-cluster/cluster-setup-success-1-node.png
+[switch-cluster-mode]: ./media/service-fabric-get-started-with-a-local-cluster/switch-cluster-mode.png
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0921_2016-->
