@@ -183,9 +183,13 @@ Wir probieren auch ein Modell mit einer zufälligen Gesamtstruktur aus. Mit zuf�
 
 Zum Bereitstellen des Entscheidungsbaumcodes aus dem vorherigen Bereich müssen Sie sich an Azure Machine Learning Studio anmelden. Sie benötigen für die Anmeldung Ihre Arbeitsbereich-ID und ein Autorisierungstoken. Gehen Sie wie folgt vor, um diese Werte zu ermitteln und die AzureML-Variablen damit zu initialisieren:
 
-Wählen Sie links im Menü die Option **Einstellungen**. Notieren Sie sich Ihre **ARBEITSBEREICH-ID**. ![2](./media/machine-learning-data-science-linux-dsvm-walkthrough/workspace-id.png)
+Wählen Sie links im Menü die Option **Einstellungen**. Notieren Sie sich Ihre **ARBEITSBEREICH-ID**.
 
-Wählen Sie oben im Menü die Option **Autorisierungstoken**, und notieren Sie sich Ihr **Primäres Autorisierungstoken**.![3](./media/machine-learning-data-science-linux-dsvm-walkthrough/workspace-token.png)
+ ![2](./media/machine-learning-data-science-linux-dsvm-walkthrough/workspace-id.png)
+
+Wählen Sie oben im Menü die Option **Autorisierungstoken**, und notieren Sie sich Ihr **Primäres Autorisierungstoken**.
+
+![3](./media/machine-learning-data-science-linux-dsvm-walkthrough/workspace-token.png)
 
 Laden Sie das **AzureML**-Paket, und legen Sie dann Werte der Variablen mit Ihrem Token und der Arbeitsbereich-ID in der R-Sitzung auf der DSVM fest:
 
@@ -313,7 +317,7 @@ Gehen Sie wie folgt vor, um das Modell für AzureML zu veröffentlichen:
 
 ## JupyterHub
 
-Die Anaconda-Distribution auf der DSVM verfügt über ein Jupyter Notebook, eine plattformübergreifende Umgebung zum gemeinsamen Nutzen von Python-, R- oder Julia-Code und Analysefunktionen. Auf Jupyter Notebook wird über JupyterHub zugegriffen. Sie melden sich mit Ihrem lokalen Linux-Benutzernamen und dem dazugehörigen Kennwort unter ***https://\<VM-DNS-Name oder IP-Adresse>:8000/*** an. Alle Konfigurationsdateien für JupyterHub befinden sich im Verzeichnis **/etc/jupyterhub**.
+Die Anaconda-Distribution auf der DSVM verfügt über ein Jupyter Notebook, eine plattformübergreifende Umgebung zum gemeinsamen Nutzen von Python-, R- oder Julia-Code und Analysefunktionen. Auf Jupyter Notebook wird über JupyterHub zugegriffen. Sie melden sich mit Ihrem lokalen Linux-Benutzernamen und dem dazugehörigen Kennwort unter **https://\<VM-DNS-Name oder IP-Adresse>:8000/** an. Alle Konfigurationsdateien für JupyterHub befinden sich im Verzeichnis **/etc/jupyterhub**.
 
 Einige Beispiele für Notebooks sind auf der VM bereits installiert:
 
@@ -385,7 +389,7 @@ Rattle kann auch eine Clusteranalyse durchführen. Wir schließen einige Feature
 - word\_freq\_business
 - spam
 
-Wechseln Sie zurück zur Registerkarte **Cluster** (Cluster), wählen Sie **KMeans** (KMeans), und legen Sie die Option *Number of clusters* (Anzahl von Clustern) auf 4 fest. Klicken Sie anschließend auf **Execute** (Ausführen). Die Ergebnisse werden im Ausgabefenster angezeigt. Ein Cluster weist eine hohe Häufigkeit für „george“ und „hp“ auf und ist vermutlich eine legitime geschäftliche E-Mail.
+Wechseln Sie zurück zur Registerkarte **Cluster** (Cluster), wählen Sie **KMeans**, und legen Sie die Option *Number of clusters* (Anzahl von Clustern) auf 4 fest. Klicken Sie anschließend auf **Execute** (Ausführen). Die Ergebnisse werden im Ausgabefenster angezeigt. Ein Cluster weist eine hohe Häufigkeit für „george“ und „hp“ auf und ist vermutlich eine legitime geschäftliche E-Mail.
 
 Gehen Sie wie folgt vor, um ein einfaches Machine Learning-Modell mit Entscheidungsbaum zu erstellen:
 
@@ -404,7 +408,7 @@ Eines der sehr hilfreichen Features von Rattle ist die Möglichkeit, mehrere Mac
 
 Wählen Sie nach Abschluss der Modellerstellung die Registerkarte **Log** (Protokoll), um den R-Code anzuzeigen, der von Rattle während Ihrer Sitzung ausgeführt wird. Sie können die Schaltfläche **Export** (Exportieren) wählen, um diese Daten zu speichern.
 
->[AZURE.NOTE] Die aktuelle Version von Rattle enthält einen Fehler. Um das Skript zu ändern oder es zum Wiederholen der Schritte zu einem späteren Zeitpunkt zu verwenden, müssen Sie vor *Export this log ... * im Text des Protokolls das Zeichen „#“ einfügen.
+>[AZURE.NOTE] Die aktuelle Version von Rattle enthält einen Fehler. Um das Skript zu ändern oder es zum Wiederholen der Schritte zu einem späteren Zeitpunkt zu verwenden, müssen Sie vor *Export this log ...* im Text des Protokolls das Zeichen „#“ einfügen.
 
 
 ## PostgreSQL und Squirrel SQL
