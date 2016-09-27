@@ -20,12 +20,12 @@
 
 Da es mehrere Arten von Azure Multi-Factor Authentication gibt, müssen Sie einige Fragen klären, um herauszufinden, welche Version für Sie die richtige ist. Fragen:
 
--	[Was möchte ich sichern?](#what-am-i-trying-to-secure)
--	[Wo befinden sich die Benutzer?](#where-are-the-users-located)
+-	<a href="#1">Was möchte ich sichern?</a>
+-	[Wo befinden sich die Benutzer?](#wo-befinden-sich-die-benutzer)
 
 In den folgenden Abschnitten erhalten Sie Informationen, die Ihnen helfen, die Antworten auf diese Fragen zu geben.
 
-## Was möchte ich sichern?
+<h2 id="1">Was möchte ich sichern?</h2>
 
 Um die richtige Multi-Factor Authentication-Lösung zu ermitteln, müssen Sie zunächst die Frage beantworten, was Sie über die zweite Methode zur Authentifizierung sichern möchten. Handelt es sich um eine Anwendung in Azure? Oder ist Sie es z. B. ein RAS-System? Die Antwort auf die Frage, wo Multi-Factor Authentication aktiviert werden muss, richtet sich danach, was Sie sichern möchten.
 
