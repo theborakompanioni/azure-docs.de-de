@@ -24,7 +24,7 @@ authors="ashmaka"
 
 ## Was ist ein Index?
 
-Ein *Index* ist ein dauerhafter Speicher von *Dokumenten* und anderen Konstrukten, die von einem Azure Search-Dienst verwendet werden. Ein Dokument ist eine einzelne Einheit durchsuchbarer Daten im Index. Ein Internetversandhändler hat beispielsweise ein Dokument für jeden angebotenen Artikel, eine Nachrichtenagentur hat ein Dokument pro Zeitungsartikel usw. So lassen sich diese Konzepte vertrauteren Entsprechungen in der Datenbank zuordnen: Ein *Index* entspricht etwa einer *Tabelle*, und *Dokumente* entsprechen ungefähr den *Zeilen* einer Tabelle.
+Ein *Index* ist ein dauerhafter Speicher von *Dokumenten* und anderen Konstrukten, die von einem Azure Search-Dienst verwendet werden. Ein Dokument ist eine einzelne Einheit mit durchsuchbaren Daten im Index. Ein Internetversandhändler hat beispielsweise ein Dokument für jeden angebotenen Artikel, eine Nachrichtenagentur hat ein Dokument pro Zeitungsartikel usw. So lassen sich diese Konzepte vertrauteren Entsprechungen in der Datenbank zuordnen: Ein *Index* entspricht etwa einer *Tabelle*, und *Dokumente* entsprechen ungefähr den *Zeilen* einer Tabelle.
 
 Wenn Sie Dokumente hinzufügen/hochladen und Suchabfragen an Azure Search übermitteln, übermitteln Sie Ihre Anforderungen an einen bestimmten Index in Ihrem Suchdienst.
 
@@ -70,4 +70,4 @@ Nehmen Sie sich beim Entwerfen Ihres Indexes in der Planungsphase genügend Zeit
 
 Wenn sich die Datenspeicheranforderungen mit der Zeit ändern, können Sie die Kapazität erhöhen oder verringern, indem Sie Partitionen hinzufügen oder entfernen. Weitere Informationen finden Sie unter [Verwalten Ihres Suchdiensts in Azure](search-manage.md) oder [Grenzwerte für Dienste](search-limits-quotas-capacity.md).
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0921_2016-->

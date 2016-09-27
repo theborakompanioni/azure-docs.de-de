@@ -20,9 +20,9 @@
 # Erstellen eines VNet mit einer Standort-zu-Standort-Verbindung über das Azure-Portal
 
 > [AZURE.SELECTOR]
-- [Azure-Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
-- [Klassisches Azure-Portal](vpn-gateway-site-to-site-create.md)
-- [PowerShell – Resource Manager](vpn-gateway-create-site-to-site-rm-powershell.md)
+- [Resource Manager – Azure-Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+- [Resource Manager – PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
+- [Klassisch – Klassisches Portal](vpn-gateway-site-to-site-create.md)
 
 
 In diesem Artikel wird das Erstellen eines virtuellen Netzwerks und das Herstellen einer Standort-zu-Standort-VPN-Verbindung mit Ihrem lokalen Netzwerk mithilfe des **Azure Resource Manager-Bereitstellungsmodells** und des Azure-Portals beschrieben. Site-to-Site-Verbindungen können für standortübergreifende Konfigurationen und Hybridkonfigurationen verwendet werden.
@@ -154,4 +154,4 @@ Sie können Ihre VPN-Verbindung entweder im Portal oder mithilfe von PowerShell 
 
 - Informationen zu BGP finden Sie in der [Übersicht über BGP](vpn-gateway-bgp-overview.md) und unter [Konfigurieren von BGP](vpn-gateway-bgp-resource-manager-ps.md).
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0921_2016-->

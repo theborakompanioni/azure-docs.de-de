@@ -1,20 +1,20 @@
 <properties 
-	pageTitle="Verzeichnisintegration zwischen Multi-Factor Authentication und Active Directory" 
-	description="Dies ist die Azure Multi-Factor Authentication-Seite, auf der beschrieben wird, wie Sie den Azure Multi-Factor Authentication-Server in Active Directory integrieren, damit Sie die Verzeichnisse synchronisieren können." 
-	services="multi-factor-authentication" 
-	documentationCenter="" 
-	authors="billmath" 
-	manager="stevenpo" 
+	pageTitle="Verzeichnisintegration zwischen Multi-Factor Authentication und Active Directory"
+	description="Dies ist die Azure Multi-Factor Authentication-Seite, auf der beschrieben wird, wie Sie den Azure Multi-Factor Authentication-Server in Active Directory integrieren, damit Sie die Verzeichnisse synchronisieren können."
+	services="multi-factor-authentication"
+	documentationCenter=""
+	authors="kgremban"
+	manager="femila"
 	editor="curtand"/>
 
-<tags 
-	ms.service="multi-factor-authentication" 
-	ms.workload="identity" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="get-started-article" 
-	ms.date="08/04/2016" 
-	ms.author="billmath"/>
+<tags
+	ms.service="multi-factor-authentication"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.date="08/04/2016"
+	ms.author="kgremban"/>
 
 # Verzeichnisintegration zwischen Azure MFA-Server und Active Directory
 
@@ -137,4 +137,4 @@ Zusätzliche Multi-Factor Authentication-Server können als RADIUS-Backupproxy, 
 
 ![Multi-Factor Authentication-Server](./media/multi-factor-authentication-get-started-server-dirint/dirint6.png)
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0921_2016-->

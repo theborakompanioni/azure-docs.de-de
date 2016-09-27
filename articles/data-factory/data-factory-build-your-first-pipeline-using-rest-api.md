@@ -19,15 +19,17 @@
 
 # Tutorial: Erstellen der ersten Azure Data Factory mit der Data Factory-REST-API
 > [AZURE.SELECTOR]
+- [Übersicht und Voraussetzungen](data-factory-build-your-first-pipeline.md)
 - [Azure-Portal](data-factory-build-your-first-pipeline-using-editor.md)
 - [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
 - [PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
 - [Resource Manager-Vorlage](data-factory-build-your-first-pipeline-using-arm.md)
 - [REST-API](data-factory-build-your-first-pipeline-using-rest-api.md)
 
-[AZURE.INCLUDE [data-factory-tutorial-prerequisites](../../includes/data-factory-tutorial-prerequisites.md)]
+In diesem Artikel verwenden Sie die Data Factory-REST-API zum Erstellen Ihrer ersten Azure Data Factory.
 
-## Zusätzliche Voraussetzungen
+## Voraussetzungen
+- Lesen Sie sich den Artikel mit der [Übersicht über das Tutorial](data-factory-build-your-first-pipeline.md) durch, und führen Sie die erforderlichen Schritte aus, damit die **Voraussetzungen** erfüllt sind.
 - Installieren Sie [Curl](https://curl.haxx.se/dlwiz/) auf Ihrem Computer. Sie können das Curl-Tool mit REST-Befehlen zum Erstellen einer Data Factory verwenden.
 - Befolgen Sie die Anleitung in [diesem Artikel](../resource-group-create-service-principal-portal.md), um Folgendes durchzuführen:
 	1. Erstellen Sie eine Webanwendung mit dem Namen **ADFGetStartedApp** in Azure Active Directory.
@@ -39,7 +41,7 @@
 	1. Führen Sie **Login-AzureRmAccount** aus, und geben Sie den Benutzernamen und das Kennwort ein, den bzw. das Sie bei der Anmeldung beim Azure-Portal verwendet haben.
 	2. Führen Sie **Get-AzureRmSubscription** aus, um alle Abonnements für dieses Konto anzuzeigen.
 	3. Führen Sie „Get-AzureRmSubscription -SubscriptionName NameOfAzureSubscription“ aus.| Set-AzureRmContext** to select the subscription that you want to work with. Replace **NameOfAzureSubscription** with the name of your Azure subscription. 
-3. Erstellen Sie eine Azure-Ressourcengruppe mit dem Namen **ADFTutorialResourceGroup**, indem Sie in der PowerShell den folgenden Befehl ausführen.
+3. Erstellen Sie eine Azure-Ressourcengruppe mit dem Namen **ADFTutorialResourceGroup**, indem Sie in der PowerShell den folgenden Befehl ausführen:
 
 		New-AzureRmResourceGroup -Name ADFTutorialResourceGroup  -Location "West US"
 
@@ -94,7 +96,7 @@ Die folgende Tabelle enthält eine Beschreibung der JSON-Eigenschaften, die im C
 | TimeToLive | Gibt die Leerlaufzeit des HDInsight-Clusters an, bevor er gelöscht wird. |
 | linkedServiceName | Gibt das Speicherkonto an, das verwendet wird, um die von HDInsight generierten Protokolle zu speichern. |
 
-Beachten Sie Folgendes:
+Beachten Sie folgende Punkte:
 
 - Die Data Factory erstellt mit dem obigen JSON-Code einen **Windows-basierten** HDInsight-Cluster für Sie. Sie können sich auch für die Erstellung eines **Linux-basierten** HDInsight-Clusters entscheiden. Ausführliche Informationen finden Sie unter [Bedarfsgesteuerter verknüpfter HDInsight-Dienst](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service).
 - Anstelle eines bedarfsgesteuerten HDInsight-Clusters könnten Sie **Ihren eigenen HDInsight-Cluster** verwenden. Ausführliche Informationen finden Sie unter [Verknüpfter HDInsight-Dienst](data-factory-compute-linked-services.md#azure-hdinsight-linked-service).
@@ -261,9 +263,9 @@ In diesem Schritt erstellen Sie eine Azure Data Factory mit dem Namen **FirstDat
 
 		Write-Host $results
 
-Beachten Sie Folgendes:
+Beachten Sie folgende Punkte:
  
-- Der Name der Azure Data Factory muss global eindeutig sein. Sollte der Fehler **Der Data Factory-Name „FirstDataFactoryREST“ ist nicht verfügbar** angezeigt werden, gehen Sie wie folgt vor:
+- Der Name der Azure Data Factory muss global eindeutig sein. Führen Sie die folgenden Schritte aus, wenn der Fehler **Der Data Factory-Name „FirstDataFactoryREST“ ist nicht verfügbar** angezeigt wird:
 	1. Ändern Sie den Namen in der Datei **datafactory.json** (beispielsweise in „<IhrName>FirstDataFactoryREST“). Im Thema [Data Factory – Benennungsregeln](data-factory-naming-rules.md) finden Sie Benennungsregeln für Data Factory-Artefakte.
 	2. Ersetzen Sie im ersten Befehl an der Stelle, an der der Variablen **$cmd** ein Wert zugewiesen wird, „FirstDataFactoryREST“ durch den neuen Namen, und führen Sie den Befehl aus.
 	3. Führen Sie die nächsten beiden Befehle zum Aufrufen der REST-API aus, um die Data Factory zu erstellen und die Ergebnisse des Vorgangs auszugeben.
@@ -271,11 +273,11 @@ Beachten Sie Folgendes:
 - Der Name der Data Factory kann in Zukunft als DNS-Name registriert und so öffentlich sichtbar werden.
 - Führen Sie einen der folgenden Schritte aus, wenn Sie eine Fehlermeldung wie **Dieses Abonnement ist nicht zur Verwendung des Microsoft.DataFactory-Namespaces registriert** erhalten, und versuchen Sie, die Veröffentlichung erneut durchzuführen:
 
-	- Führen Sie in Azure PowerShell den folgenden Befehl aus, um den Data Factory-Anbieter zu registrieren.
+	- Führen Sie in Azure PowerShell den folgenden Befehl aus, um den Data Factory-Anbieter zu registrieren:
 		
 			Register-AzureRmResourceProvider -ProviderNamespace Microsoft.DataFactory
 	
-		Sie können den folgenden Befehl ausführen, um sich zu vergewissern, dass der Data Factory-Anbieter registriert ist.
+		Sie können den folgenden Befehl ausführen, um sicherzustellen, dass der Data Factory-Anbieter registriert ist:
 	
 			Get-AzureRmResourceProvider
 	- Melden Sie sich mit dem Azure-Abonnement beim [Azure-Portal](https://portal.azure.com) an, und navigieren Sie zu einem Data Factory-Blatt, oder erstellen Sie eine Data Factory im Azure-Portal. Mit dieser Aktion wird der Anbieter automatisch für Sie registriert.
@@ -370,6 +372,10 @@ In diesem Schritt verwenden Sie die Data Factory-REST-API zum Überwachen von Sl
     	    (convertFrom-Json $results2).RemoteException
 	}
 
+
+> [AZURE.IMPORTANT] 
+Die Erstellung eines bedarfsgesteuerten HDInsight-Clusters dauert in der Regel einige Zeit (etwa 20 Minuten). Daher ist damit zu rechnen, dass die Pipeline **etwa 30 Minuten** zum Verarbeiten des Slice benötigt.
+
 Führen Sie „Invoke-Command“ und den darauffolgenden Befehl aus, bis für den Slice der Status **Bereit** oder **Fehler** angezeigt wird. Sobald der Slice den Status „Bereit“ hat, überprüfen Sie, ob die Ausgabedaten sich in Ihrem Blobspeicher im Ordner **partitioneddata** im Container **adfgetstarted** befinden. Die Erstellung eines bedarfsgesteuerten HDInsight-Clusters dauert in der Regel einige Zeit.
 
 ![Ausgabedaten](./media/data-factory-build-your-first-pipeline-using-rest-api/three-ouptut-files.png)
@@ -402,4 +408,4 @@ In diesem Artikel haben Sie eine Pipeline mit einer Transformationsaktivität (H
 | [Überwachen und Verwalten von Pipelines über Blätter im Azure-Portal](data-factory-monitor-manage-pipelines.md) | In diesem Artikel wird das Überwachen, Verwalten und Debuggen Ihrer Pipelines über Blätter im Azure-Portal beschrieben. |
 | [Überwachen und Verwalten von Pipelines mit der Überwachungs-App](data-factory-monitor-manage-app.md) | In diesem Artikel wird das Überwachen, Verwalten und Debuggen von Pipelines mit der App für die Überwachung und Verwaltung beschrieben. 
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

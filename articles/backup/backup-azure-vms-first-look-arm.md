@@ -14,15 +14,15 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="06/03/2016"
+	ms.date="09/15/2016"
 	ms.author="markgal; jimpark"/>
 
 
 # Einführung: Schützen von Azure-VMs mit einem Recovery Services-Tresor
 
 > [AZURE.SELECTOR]
-- [Einführung: Schützen von VMs mit einem Recovery Services-Tresor](backup-azure-vms-first-look-arm.md)
-- [Einführung: Schützen von Azure-VMs mit einem Sicherungstresor](backup-azure-vms-first-look.md)
+- [Schützen von VMs mit einem Recovery Services-Tresor](backup-azure-vms-first-look-arm.md)
+- [Schützen von VMs mit einem Sicherungstresor](backup-azure-vms-first-look.md)
 
 In diesem Tutorial werden die Schritte zum Erstellen eines Recovery Services-Tresors und Sichern eines virtuellen Azure-Computers (VM) beschrieben. Recovery Services-Tresore schützen Folgendes:
 
@@ -34,9 +34,11 @@ In diesem Tutorial werden die Schritte zum Erstellen eines Recovery Services-Tre
 
 Weitere Informationen zum Schutz virtueller Storage Premium-Computer finden Sie unter [Sichern und Wiederherstellen virtueller Storage Premium-Computer](backup-introduction-to-azure-backup.md#back-up-and-restore-premium-storage-vms).
 
->[AZURE.NOTE] Dieses Tutorial setzt voraus, dass Sie in Ihrem Azure-Abonnement bereits einen virtuellen Computer verwenden und die entsprechenden Schritte durchgeführt haben, um dem Backup-Dienst den Zugriff auf den virtuellen Computer zu erlauben. Azure verfügt über zwei Bereitstellungsmodelle zum Erstellen und Verwenden von Ressourcen: [Resource Manager-Modell und klassisches Modell](../resource-manager-deployment-model.md). Dieser Artikel ist für die Verwendung mit Resource Manager und virtuellen Computern bestimmt, die mit Resource Manager bereitgestellt wurden.
+>[AZURE.NOTE] Dieses Tutorial setzt voraus, dass Sie in Ihrem Azure-Abonnement bereits einen virtuellen Computer verwenden und die entsprechenden Schritte durchgeführt haben, um dem Backup-Dienst den Zugriff auf den virtuellen Computer zu erlauben.
 
-Dies sind im Allgemeinen die Schritte, die auszuführen sind.
+[AZURE.INCLUDE [learn-about-Azure-Backup-deployment-models](../../includes/backup-deployment-models.md)]
+
+Dies sind die allgemeinen Schritte, die auszuführen sind:
 
 1. Erstellen Sie einen Recovery Services-Tresor für eine VM.
 2. Verwenden Sie das Azure-Portal, um ein Szenario zu wählen, die Richtlinie festzulegen und zu schützende Elemente zu ermitteln.
@@ -44,7 +46,7 @@ Dies sind im Allgemeinen die Schritte, die auszuführen sind.
 
 
 
-## Schritt 1: Erstellen eines Recovery Services-Tresors für eine VM
+## Erstellen eines Recovery Services-Tresor für eine VM
 
 Bei einem Recovery Services-Tresor handelt es sich um eine Entität, in der alle Sicherungen und Wiederherstellungspunkte gespeichert werden, die im Laufe der Zeit erstellt wurden. Der Recovery Services-Tresor enthält auch die Sicherungsrichtlinie, die auf die geschützten VMs angewendet wird.
 
@@ -55,7 +57,7 @@ So erstellen Sie einen Recovery Services-Tresor:
 
 1. Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com/) an.
 
-2. Klicken Sie im Hub-Menü auf **Durchsuchen**, und geben Sie in der Liste mit den Ressourcen **Recovery Services** ein. Wenn Sie mit der Eingabe beginnen, wird die Liste anhand Ihrer Eingaben gefiltert. Klicken Sie auf **Recovery Services-Tresor**.
+2. Klicken Sie im Hub-Menü auf **Durchsuchen**, und geben Sie in der Liste mit den Ressourcen **Recovery Services** ein. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Klicken Sie auf **Recovery Services-Tresor**.
 
     ![Erstellen eines Recovery Services-Tresors – Schritt 1](./media/backup-azure-vms-first-look-arm/browse-to-rs-vaults.png) <br/>
 
@@ -73,11 +75,11 @@ So erstellen Sie einen Recovery Services-Tresor:
 
 5. Klicken Sie auf **Abonnement**, um die Liste mit den verfügbaren Abonnements anzuzeigen. Falls Sie nicht sicher sind, welches Abonnement geeignet ist, können Sie das Standardabonnement bzw. das vorgeschlagene Abonnement verwenden. Es sind nur dann mehrere Auswahlmöglichkeiten verfügbar, wenn Ihr Organisationskonto mehreren Azure-Abonnements zugeordnet ist.
 
-6. Klicken Sie auf **Ressourcengruppe**, um die Liste mit den verfügbaren Ressourcengruppen anzuzeigen, oder klicken Sie auf **Neu**, um eine neue Ressourcengruppe zu erstellen. Weitere Informationen zu Ressourcengruppen finden Sie unter [Übersicht über Azure Resource Manager](../resource-group-overview.md).
+6. Klicken Sie auf **Ressourcengruppe**, um die Liste mit den verfügbaren Ressourcengruppen anzuzeigen, oder klicken Sie auf **Neu**, um eine Ressourcengruppe zu erstellen. Weitere Informationen zu Ressourcengruppen finden Sie unter [Übersicht über den Azure Resource Manager](../resource-group-overview.md).
 
 7. Klicken Sie auf **Standort**, um die geografische Region für den Tresor auszuwählen. Der Tresor **muss** sich in derselben Region wie die zu schützenden virtuellen Computer befinden.
 
-    >[AZURE.IMPORTANT] Wenn Sie sich nicht sicher sind, an welchem Standort sich Ihr virtueller Computer befindet, schließen Sie das Dialogfeld zur Tresorerstellung, und wechseln Sie zur Liste der virtuellen Computer im Portal. Wenn Sie über virtuelle Computer in mehreren Regionen verfügen, müssen Sie in jeder Region einen Recovery Services-Tresor erstellen. Erstellen Sie den Tresor am ersten Standort, bevor Sie mit dem nächsten Standort fortfahren. Es müssen keine Speicherkonten zum Speichern der Sicherungsdaten angegeben werden. Dies erfolgt automatisch über den Recovery Services-Tresor und den Azure Backup-Dienst.
+    >[AZURE.IMPORTANT] Wenn Sie sich nicht sicher sind, an welchem Standort sich Ihr virtueller Computer befindet, schließen Sie das Dialogfeld zur Tresorerstellung, und wechseln Sie zur Liste der virtuellen Computer im Portal. Wenn Sie über virtuelle Computer in mehreren Regionen verfügen, sollten Sie in jeder Region einen Recovery Services-Tresor erstellen. Erstellen Sie den Tresor am ersten Standort, bevor Sie mit dem nächsten Standort fortfahren. Es müssen keine Speicherkonten zum Speichern der Sicherungsdaten angegeben werden. Dies erfolgt automatisch über den Recovery Services-Tresor und den Azure Backup-Dienst.
 
 8. Klicken Sie auf **Erstellen**. Es kann einige Zeit dauern, bis der Recovery Services-Tresor erstellt wurde. Verfolgen Sie die Benachrichtigungen oben rechts im Portal. Nach Abschluss des Erstellungsvorgangs wird der Tresor in der Liste mit den Recovery Services-Tresoren angezeigt.
 
@@ -99,14 +101,14 @@ So bearbeiten Sie die Einstellung für die Speicherreplikation:
 
     Wenn Sie die Speicheroption für Ihren Tresor ausgewählt haben, können Sie den virtuellen Computer dem Tresor zuordnen. Ermitteln und registrieren Sie die virtuellen Azure-Computer, um mit der Zuordnung zu beginnen.
 
-## Schritt 2: Auswählen eines Sicherungsziels, Festlegen der Richtlinie und Definieren von zu schützenden Elementen
+## Auswählen eines Sicherungsziels, Festlegen der Richtlinie und Definieren von zu schützenden Elementen
 
 Führen Sie zunächst den Ermittlungsprozess durch, bevor Sie einen virtuellen Computer registrieren, um sicherzustellen, dass alle neuen virtuellen Computer, die dem Abonnement hinzugefügt wurden, identifiziert werden. Bei diesem Vorgang wird Azure nach der Liste virtueller Computer im Abonnement abgefragt. Außerdem werden zusätzliche Informationen wie der Clouddienstname und die Region erfasst. „Szenario“ bezeichnet im Kontext des Azure-Portals das, was Sie dem Recovery Services-Tresor hinzufügen möchten. Die Richtlinie gibt die Häufigkeit und den Zeitpunkt für die Erstellung von Wiederherstellungspunkten an. Darüber hinaus enthält die Richtlinie die Beibehaltungsdauer für die Wiederherstellungspunkte.
 
 1. Falls Sie bereits über einen geöffneten Recovery Services-Tresor verfügen, können Sie mit Schritt 2 fortfahren. Wenn Sie keinen Recovery Services-Tresor geöffnet haben und sich im Azure-Portal befinden, klicken Sie im Hub-Menü auf **Durchsuchen**.
 
   - Geben Sie in der Liste mit den Ressourcen **Recovery Services** ein.
-  - Wenn Sie mit der Eingabe beginnen, wird die Liste anhand Ihrer Eingaben gefiltert. Klicken Sie auf **Recovery Services-Tresore**, wenn der Eintrag angezeigt wird.
+  - Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Wenn **Recovery Services-Tresore** angezeigt wird, klicken Sie auf den Eintrag.
 
     ![Erstellen eines Recovery Services-Tresors – Schritt 1](./media/backup-azure-vms-first-look-arm/browse-to-rs-vaults.png) <br/>
 
@@ -121,7 +123,7 @@ Führen Sie zunächst den Ermittlungsprozess durch, bevor Sie einen virtuellen C
 
     ![Blatt „Sicherung“ öffnen](./media/backup-azure-vms-first-look-arm/backup-button.png)
 
-    Nachdem das Blatt geöffnet wurde, sucht der Backup-Dienst nach neuen VMs im Abonnement.
+    Nachdem das Blatt geöffnet wurde, sucht der Backup-Dienst nach neuen virtuellen Computern im Abonnement.
 
     ![VMs ermitteln](./media/backup-azure-vms-first-look-arm/discovering-new-vms.png)
 
@@ -129,7 +131,7 @@ Führen Sie zunächst den Ermittlungsprozess durch, bevor Sie einen virtuellen C
 
     ![Blatt „Szenario“ öffnen](./media/backup-azure-vms-first-look-arm/select-backup-goal-one.png)
 
-4. Legen Sie auf dem Blatt für das Sicherungsziel die Option **Wo wird Ihre Workload ausgeführt?** auf „Azure“ und die Option **What do you want to backup** (Was möchten Sie sichern?) auf „Virtueller Computer“ fest, und klicken Sie anschließend auf **OK**.
+4. Legen Sie auf dem Blatt für das Sicherungsziel die Option **Wo wird Ihre Workload ausgeführt?** auf „Azure“ und die Option **Was möchten Sie sichern?** auf „Virtueller Computer“ fest, und klicken Sie anschließend auf **OK**.
 
     Das Blatt für das Sicherungsziel wird geschlossen, und das Blatt „Sicherungsrichtlinie“ wird geöffnet.
 
@@ -139,7 +141,7 @@ Führen Sie zunächst den Ermittlungsprozess durch, bevor Sie einen virtuellen C
 
     ![Sicherungsrichtlinie auswählen](./media/backup-azure-vms-first-look-arm/setting-rs-backup-policy-new.png)
 
-    In den Details werden die Details zur Standardrichtlinie aufgeführt. Wählen Sie im Dropdownmenü die Option **Neu erstellen** aus, wenn Sie eine neue Richtlinie erstellen möchten. Im Dropdownmenü steht auch eine Option zur Verfügung, mit der die Zeit der Momentaufnahmenerstellung auf 19 Uhr festgelegt werden kann. Eine Anleitung zum Definieren einer Sicherungsrichtlinie finden Sie unter [Definieren einer Sicherungsrichtlinie](backup-azure-vms-first-look-arm.md#defining-a-backup-policy). Nachdem Sie auf **OK** geklickt haben, wird die Sicherungsrichtlinie dem Tresor zugeordnet.
+    In den Details werden die Informationen zur Standardrichtlinie aufgeführt. Wählen Sie im Dropdownmenü die Option **Neu erstellen**, wenn Sie eine Richtlinie erstellen möchten. Im Dropdownmenü steht auch eine Option zur Verfügung, mit der die Zeit der Momentaufnahmenerstellung auf 19 Uhr festgelegt werden kann. Eine Anleitung zum Definieren einer Sicherungsrichtlinie finden Sie unter [Definieren einer Sicherungsrichtlinie](backup-azure-vms-first-look-arm.md#defining-a-backup-policy). Nachdem Sie auf **OK** geklickt haben, wird die Sicherungsrichtlinie dem Tresor zugeordnet.
 
     Wählen Sie als Nächstes die VMs aus, die dem Tresor zugeordnet werden sollen.
 
@@ -154,13 +156,13 @@ Führen Sie zunächst den Ermittlungsprozess durch, bevor Sie einen virtuellen C
     ![Sicherung aktivieren](./media/backup-azure-vms-first-look-arm/enable-backup-settings-new.png)
 
 
-## Schritt 3: Erste Sicherung
+## Erste Sicherung
 
 Nachdem eine Sicherungsrichtlinie auf dem virtuellen Computer bereitgestellt wurde, bedeutet dies nicht, dass die Daten gesichert wurden. Die erste geplante Sicherung (gemäß Definition in der Sicherungsrichtlinie) ist die erste Sicherung. Bis zur Durchführung der ersten Sicherung wird der Status der letzten Sicherung auf dem Blatt **Sicherungsaufträge** als **Warnung (anfängliche Sicherung steht aus)** angezeigt.
 
 ![Sicherung ausstehend](./media/backup-azure-vms-first-look-arm/initial-backup-not-run.png)
 
-Falls die erste Sicherung nicht ohnehin in Kürze ausgeführt wird, empfiehlt es sich, **Jetzt sichern** auszuführen.
+Falls die erste Sicherung nicht ohnehin in Kürze durchgeführt wird, empfiehlt es sich, **Jetzt sichern** auszuführen.
 
 So führen Sie **Jetzt sichern** aus
 
@@ -186,7 +188,7 @@ So führen Sie **Jetzt sichern** aus
 
     ![Kachel „Sicherungsaufträge“](./media/backup-azure-vms-first-look-arm/backup-jobs-in-jobs-view.png)
 
-    >[AZURE.NOTE] Als Teil des Sicherungsvorgangs gibt der Azure Backup-Dienst einen Befehl an die Sicherungserweiterung auf jedem virtuellen Computer aus, damit alle Schreibvorgänge geleert werden und eine konsistente Momentaufnahme erstellt wird.
+    >[AZURE.NOTE] Als Teil des Sicherungsvorgangs gibt der Azure Backup-Dienst einen Befehl an die Sicherungserweiterung auf jeder VM aus, damit alle Schreibvorgänge geleert werden und eine konsistente Momentaufnahme erstellt wird.
 
     Wenn der Sicherungsauftrag abgeschlossen ist, lautet der Status *Abgeschlossen*.
 
@@ -203,7 +205,7 @@ Die folgende Tabelle enthält weitere Informationen zum VM-Agent für virtuelle 
 | **Vorgang** | **Windows** | **Linux** |
 | --- | --- | --- |
 | Installieren des VM-Agent | <li>Laden Sie den [Agent-MSI](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) herunter, und installieren Sie ihn. Zum Durchführen der Installation benötigen Sie Administratorberechtigungen. <li>[Aktualisieren Sie die VM-Eigenschaft](http://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx), um anzugeben, dass der Agent installiert wurde. | <li>Installieren Sie den neuesten [Linux-Agent](https://github.com/Azure/WALinuxAgent) aus GitHub. Zum Durchführen der Installation benötigen Sie Administratorberechtigungen. <li> [Aktualisieren Sie die VM-Eigenschaft](http://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx), um anzugeben, dass der Agent installiert wurde. |
-| Aktualisieren des VM-Agents | Das Aktualisieren des VM-Agents ist so einfach wie das Neuinstallieren der [Binärdateien für den VM-Agent](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). <br>Stellen Sie sicher, dass kein Sicherungsvorgang ausgeführt wird, während der VM-Agent aktualisiert wird. | Folgen Sie den Anweisungen unter [Aktualisieren des virtuellen Linux-Agents](../virtual-machines-linux-update-agent.md). <br>Stellen Sie sicher, dass kein Sicherungsvorgang ausgeführt wird, während der VM-Agent aktualisiert wird. |
+| Aktualisieren des VM-Agents | Das Aktualisieren des VM-Agents ist so einfach wie das Neuinstallieren der [Binärdateien für den VM-Agent](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). <br>Stellen Sie sicher, dass kein Sicherungsvorgang ausgeführt wird, während der VM-Agent aktualisiert wird. | Folgen Sie den Anweisungen unter [Aktualisieren des Linux-VM-Agents](../virtual-machines-linux-update-agent.md). <br>Stellen Sie sicher, dass kein Sicherungsvorgang ausgeführt wird, während der VM-Agent aktualisiert wird. |
 | Überprüfen der VM-Agent-Installation | <li>Navigieren Sie auf dem virtuellen Azure-Computer zum Ordner *C:\\WindowsAzure\\Packages*. <li>Dieser Ordner enthält die Datei „WaAppAgent.exe“.<li> Klicken Sie mit der rechten Maustaste auf die Datei, wechseln Sie zu **Eigenschaften**, und wählen Sie dann die Registerkarte **Details** aus. Im Feld mit der Produktversion sollte 2.6.1198.718 oder eine höhere Version angegeben sein. | N/V |
 
 
@@ -211,7 +213,7 @@ Die folgende Tabelle enthält weitere Informationen zum VM-Agent für virtuelle 
 
 Sobald der VM-Agent auf dem virtuellen Computer installiert wurde, installiert der Azure Backup-Dienst die Sicherungserweiterung für den VM-Agent. Der Azure Backup-Dienst installiert nahtlos und ohne zusätzlichen Benutzereingriff Upgrades und Patches für die Backup-Erweiterung.
 
-Die Sicherungserweiterung wird vom Sicherungsdienst installiert, unabhängig davon, ob der virtuelle Computer ausgeführt wird oder nicht. Bei einem ausgeführten virtuellen Computer besteht zudem die größte Chance auf einen anwendungskonsistenten Wiederherstellungspunkt. Der Azure Backup-Dienst setzt die Sicherung des virtuellen Computers jedoch auch dann fort, wenn dieser ausgeschaltet wurde und die Erweiterung nicht installiert werden konnte. Dies wird als Offline-VM bezeichnet. In diesem Fall ist der Wiederherstellungspunkt *absturzkonsistent*.
+Die Sicherungserweiterung wird vom Backup-Dienst installiert, und zwar unabhängig davon, ob der virtuelle Computer ausgeführt wird. Bei einem ausgeführten virtuellen Computer besteht zudem die größte Chance auf einen anwendungskonsistenten Wiederherstellungspunkt. Der Azure Backup-Dienst setzt die Sicherung des virtuellen Computers jedoch auch dann fort, wenn dieser ausgeschaltet wurde und die Erweiterung nicht installiert werden konnte. Dies wird als Offline-VM bezeichnet. In diesem Fall ist der Wiederherstellungspunkt *absturzkonsistent*.
 
 ## Informationen zur Problembehandlung
 Falls bei der Durchführung einiger Aufgaben in diesem Artikel Probleme auftreten, helfen Ihnen die [Anleitungen zur Problembehandlung](backup-azure-vms-troubleshoot.md) weiter.
@@ -220,4 +222,4 @@ Falls bei der Durchführung einiger Aufgaben in diesem Artikel Probleme auftrete
 ## Fragen?
 Wenn Sie Fragen haben oder Anregungen zu gewünschten Funktionen mitteilen möchten, [senden Sie uns Ihr Feedback](http://aka.ms/azurebackup_feedback).
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0921_2016-->

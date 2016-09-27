@@ -20,10 +20,9 @@
 # Erstellen eines VNet mit einer Standort-zu-Standort-Verbindung über das klassische Azure-Portal
 
 > [AZURE.SELECTOR]
-- [Azure-Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
-- [Klassisches Azure-Portal](vpn-gateway-site-to-site-create.md)
-- [PowerShell – Resource Manager](vpn-gateway-create-site-to-site-rm-powershell.md)
-
+- [Resource Manager – Azure-Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+- [Resource Manager – PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
+- [Klassisch – Klassisches Portal](vpn-gateway-site-to-site-create.md)
 
 In diesem Artikel wird das Erstellen eines virtuellen Netzwerks und das Herstellen einer Standort-zu-Standort-VPN-Verbindung mit Ihrem lokalen Netzwerk mithilfe des **klassischen Bereitstellungsmodells** und des Azure-Portals beschrieben. Site-to-Site-Verbindungen können für standortübergreifende Konfigurationen und Hybridkonfigurationen verwendet werden. Für das klassische Bereitstellungsmodell kann derzeit keine End-to-End-Standort-zu-Standort-Konfiguration über das Azure-Portal erstellt werden.
 
@@ -55,7 +54,7 @@ Vergewissern Sie sich vor Beginn der Konfiguration, dass Sie über Folgendes ver
 
 2. Klicken Sie unten links auf dem Bildschirm auf **Neu**. Klicken Sie im Navigationsbereich auf **Netzwerkdienste** und dann auf **Virtuelles Netzwerk**. Klicken Sie auf **Custom Create**, um den Konfigurationsassistenten zu starten.
 
-3. Geben Sie die Informationen auf den folgenden Seiten an, um Ihr VNet zu erstellen.
+3. Geben Sie zum Erstellen des VNet Ihre Konfigurationseinstellungen auf den folgenden Seiten ein:
 
 ## Seite "Details zu Virtual Network"
 
@@ -76,7 +75,7 @@ Geben Sie die folgenden Informationen ein, und klicken Sie dann unten rechts auf
 
 Wenn Sie ein neues lokales Netzwerk erstellen, wird die Seite **Site-to-Site-Konnektivität** angezeigt. Wenn Sie ein zuvor erstelltes lokales Netzwerk verwenden möchten, wird diese Seite nicht im Assistenten angezeigt, und Sie können mit dem nächsten Abschnitt fortfahren.
 
-Geben Sie die folgenden Informationen ein, und klicken Sie dann auf den Pfeil „Weiter“.
+Geben Sie die folgenden Informationen ein, und klicken Sie dann auf den Pfeil "Weiter".
 
 - 	**Name:** Der Name, den Sie Ihrem lokalen Netzwerkstandort geben möchten.
 - 	**IP-Adresse des VPN-Geräts:** Die öffentliche IPv4-Adresse des lokalen VPN-Geräts, mit dem Sie die Verbindung mit Azure herstellen. Das VPN-Gerät kann sich nicht hinter einer NAT befinden.
@@ -107,4 +106,4 @@ Konfigurieren Sie das Gateway für das virtuelle Netzwerk, um eine sichere Site-
 
 Sobald die Verbindung hergestellt ist, können Sie Ihren virtuellen Netzwerken virtuelle Computer hinzufügen. Weitere Informationen finden Sie unter [Dokumentation zu Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/).
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0921_2016-->

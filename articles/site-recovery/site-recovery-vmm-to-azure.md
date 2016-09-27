@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="08/23/2016"
+	ms.date="09/16/2016"
 	ms.author="raynew"/>
 
 # Replizieren von virtuellen Hyper-V-Computern in VMM-Clouds in Azure per Azure Site Recovery über das Azure-Portal | Microsoft Azure
@@ -571,4 +571,4 @@ Hier wird beschrieben, wie Sie die Konfigurationseinstellungen, den Status und d
 
 Nachdem die Bereitstellung eingerichtet wurde und ausgeführt wird, können Sie sich über die unterschiedlichen Failoverarten [informieren](site-recovery-failover.md).
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -1,21 +1,21 @@
 <properties 
-	pageTitle="Erste Schritte mit Azure Multi-Factor Authentication-Server" 
-	description="Auf dieser Seite zur Azure Multi-Factor Authentication werden die ersten Schritte mit dem Azure MFA-Server beschrieben." 
+	pageTitle="Erste Schritte mit Azure Multi-Factor Authentication-Server"
+	description="Auf dieser Seite zur Azure Multi-Factor Authentication werden die ersten Schritte mit dem Azure MFA-Server beschrieben."
 	services="multi-factor-authentication"
-	keywords="Authentifizierungsserver, Aktivierungsseite der Azure Multi-Factor Authentication-App, Download Authentifizierungsserver" 
-	documentationCenter="" 
-	authors="billmath" 
-	manager="femila" 
+	keywords="Authentifizierungsserver, Aktivierungsseite der Azure Multi-Factor Authentication-App, Download Authentifizierungsserver"
+	documentationCenter=""
+	authors="kgremban"
+	manager="femila"
 	editor="curtand"/>
 
-<tags 
-	ms.service="multi-factor-authentication" 
-	ms.workload="identity" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="get-started-article" 
-	ms.date="08/15/2016" 
-	ms.author="billmath"/>
+<tags
+	ms.service="multi-factor-authentication"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.date="08/15/2016"
+	ms.author="kgremban"/>
 
 # Erste Schritte mit Azure Multi-Factor Authentication-Server
 
@@ -41,14 +41,8 @@ Es gibt zwei Möglichkeiten, den Azure Multi-Factor Authentication-Server herunt
 2. Wählen Sie im linken Bereich "Active Directory" aus.
 3. Klicken Sie auf der Seite "Active Directory" oben auf **Anbieter für mehrstufige Authentifizierung**.
 4. Klicken Sie unten auf **Verwalten**.
-5. Dadurch wird eine neue Seite geöffnet. Klicken Sie auf **Downloads**.
-
-	![Download](./media/multi-factor-authentication-sdk/download.png)
-
-6. Klicken Sie über **Anmeldeinformationen für Aktivierung generieren** auf **Herunterladen**.
-
-	![Download](./media/multi-factor-authentication-get-started-server/download4.png)
-
+5. Dadurch wird eine neue Seite geöffnet. Klicken Sie auf **Downloads**. ![Download](./media/multi-factor-authentication-sdk/download.png)
+6. Klicken Sie über **Anmeldeinformationen für Aktivierung generieren** auf **Herunterladen**. ![Download](./media/multi-factor-authentication-get-started-server/download4.png)
 7. Speichern Sie den Download.
 
 
@@ -59,14 +53,9 @@ Es gibt zwei Möglichkeiten, den Azure Multi-Factor Authentication-Server herunt
 1. Melden Sie sich beim Azure-Portal als Administrator an.
 2. Wählen Sie im linken Bereich "Active Directory" aus.
 3. Doppelklicken Sie auf Ihre Instanz von Azure AD.
-4. Klicken Sie oben auf **Konfigurieren**.
-
-	![Download](./media/multi-factor-authentication-sdk/download2.png)
-
+4. Klicken Sie oben auf **Konfigurieren**. ![Download](./media/multi-factor-authentication-sdk/download2.png)
 5. Wählen Sie unter "Multi-Factor Authentication" die Option **Diensteinstellungen verwalten** aus.
-6. Klicken Sie auf der Seite "Diensteinstellungen" am unteren Rand des Bildschirms auf **Portal aufrufen**.
-
-	![Download](./media/multi-factor-authentication-get-started-server/servicesettings.png)
+6. Klicken Sie auf der Seite "Diensteinstellungen" am unteren Rand des Bildschirms auf **Portal aufrufen**. ![Download](./media/multi-factor-authentication-get-started-server/servicesettings.png)
 7. Dadurch wird eine neue Seite geöffnet. Klicken Sie auf **Downloads**.
 8. Klicken Sie über **Anmeldeinformationen für Aktivierung generieren** auf **Herunterladen**.
 9. Speichern Sie den Download.
@@ -80,7 +69,7 @@ Nachdem Sie den Server heruntergeladen haben, können Sie ihn installieren und k
 
 
 Anforderungen an den Azure Multi-Factor Authentication-Server|Beschreibung|
-:------------- | :------------- | 
+:------------- | :------------- |
 Hardware|<li>200 MB freier Festplattenspeicherplatz</li><li>x32- oder x64-Prozessor</li><li>Mindestens 1 GB RAM</li>
 Software|<li>Windows Server 2008 oder höher, wenn der Host über ein Serverbetriebssystem verfügt</li><li>Windows 7 oder höher, wenn der Host über ein Clientbetriebssystem verfügt</li><li>Microsoft .NET 4.0 Framework</li><li>IIS 7.0 oder höher, wenn das Benutzerportal oder das Webdienst-SDK installiert wird</li>
 
@@ -117,9 +106,7 @@ IP-Subnetz|Netzmaske|IP-Bereich
 1. Doppelklicken Sie auf die ausführbare Datei. Dadurch wird die Installation gestartet.
 2. Vergewissern Sie sich, dass im Bildschirm "Installationsordner auswählen" der richtige Ordner ausgewählt ist, und klicken Sie auf "Weiter".
 3. Klicken Sie nach Abschluss der Installation auf "Fertig stellen". Dadurch wird der Konfigurations-Assistent gestartet.
-4. Aktivieren Sie auf der Willkommensseite des Konfigurations-Assistenten das Kontrollkästchen **Verwendung des Authentifizierungskonfigurations-Assistenten überspringen**, und klicken Sie auf **Weiter**. Damit wird der Assistent geschlossen und der Server gestartet.
-
-	![Cloud](./media/multi-factor-authentication-get-started-server/skip2.png)
+4. Aktivieren Sie auf der Willkommensseite des Konfigurations-Assistenten das Kontrollkästchen **Verwendung des Authentifizierungskonfigurations-Assistenten überspringen**, und klicken Sie auf **Weiter**. Damit wird der Assistent geschlossen und der Server gestartet. ![Cloud](./media/multi-factor-authentication-get-started-server/skip2.png)
 
 5. Wechseln Sie zurück zu der Seite, von der Sie den Server heruntergeladen haben, und klicken Sie auf die Schaltfläche **Anmeldeinformationen für Aktivierung generieren**. Kopieren Sie diese Informationen auf dem Azure MFA-Server in die angezeigten Felder, und klicken Sie auf **Aktivieren**.
 
@@ -187,7 +174,7 @@ Zusätzlich zu den obigen Feldern werden auch das Authentifizierungsergebnis (Er
 Weitere Informationen zu erweiterten Einstellungen und Konfigurationsinformationen finden Sie in der folgenden Tabelle.
 
 Methode|Beschreibung
-:------------- | :------------- | 
+:------------- | :------------- |
 [Benutzerportal](multi-factor-authentication-get-started-portal.md)| Informationen zum Einrichten und Konfigurieren des Benutzerportals einschließlich der Bereitstellung und Benutzer-Self-Service.
 [Active Directory-Verbunddienste](multi-factor-authentication-get-started-adfs.md)|Informationen zum Einrichten von Multi-Factor Authentication mit AD FS.
 [RADIUS-Authentifizierung](multi-factor-authentication-get-started-server-radius.md)| Informationen über Einrichtung und Konfiguration des Azure MFA-Servers mit RADIUS.
@@ -198,4 +185,4 @@ Methode|Beschreibung
 [Synchronisieren mit Windows Server Active Directory](multi-factor-authentication-get-started-server-dirint.md)|Informationen zum Einrichten und Konfigurieren der Synchronisierung zwischen Active Directory und dem Azure MFA-Server.
 [Bereitstellen des mobilen App-Webdienstes für den Azure Multi-Factor Authentication-Server](multi-factor-authentication-get-started-server-webservice.md)|Informationen über das Einrichten und Konfigurieren des Azure MFA-Server-Webdienstes.
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0921_2016-->

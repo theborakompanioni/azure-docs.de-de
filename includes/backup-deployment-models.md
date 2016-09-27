@@ -1,10 +1,10 @@
-Der Azure Backup-Dienst bietet zwei Arten von Tresoren: den Sicherungstresor und den Recovery Services-Tresor.
+Der Azure Backup-Dienst umfasst zwei Arten von Tresoren: den Backup-Tresor und den Recovery Services-Tresor. Der Backup-Tresor wurde zuerst eingeführt. Anschließend folgte der Recovery Services-Tresor als Unterstützung für die erweiterten Resource Manager-Bereitstellungen. Microsoft empfiehlt die Verwendung von Resource Manager-Bereitstellungen, sofern nicht eine besondere Anforderung für die Nutzung der klassischen Bereitstellung besteht.
 
 | **Bereitstellung** | **Portal** | **Tresor** |
 |-----------|------|-----|
-| Klassisch | [Klassisch](https://manage.windowsazure.com) | Sicherungstresor |
-| Resource Manager (empfohlen) | [Azure](https://portal.azure.com) | Recovery Services-Tresor |
+|Klassisch|[Klassisch](https://manage.windowsazure.com)|Sicherung|
+|Ressourcen-Manager|[Azure](https://portal.azure.com)|Recovery Services|
 
 > [AZURE.NOTE] Mit Resource Manager bereitgestellte Lösungen können nicht mit einem Sicherungstresor geschützt werden. Sie können einen Recovery Services-Tresor jedoch zum Schützen von Servern und virtuellen Computern verwenden, die mit dem klassischen Modell bereitgestellt wurden.
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0921_2016-->

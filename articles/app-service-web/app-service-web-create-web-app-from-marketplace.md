@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="07/11/2016"
+	ms.date="09/20/2016"
 	ms.author="robmcm"/>
 
 <!-- Note: This article replaces web-sites-php-web-site-gallery.md -->
@@ -37,7 +37,7 @@ Im Rahmen dieses Tutorials stellen Sie eine WordPress-Blog-Website aus dem Azure
 Die in diesem Tutorial bereitgestellte WordPress-Website verwendet MySQL als Datenbank. Wenn Sie stattdessen die SQL-Datenbank verwenden möchten, navigieren Sie zu [Project Nami] (ebenfalls über den Azure Marketplace erhältlich).
 
 > [AZURE.NOTE]
-Sie benötigen ein Microsoft Azure-Konto, um dieses Lernprogramm auszuführen. Wenn Sie kein Konto haben, können Sie [Ihre Visual Studio-Abonnentenvorteile aktivieren][activate] oder sich [für eine kostenlose Testversion registrieren][free trial].
+Sie benötigen ein Microsoft Azure-Konto, um dieses Tutorial auszuführen. Wenn Sie kein Konto haben, können Sie [Ihre Visual Studio-Abonnentenvorteile aktivieren][activate] oder sich [für eine kostenlose Testversion registrieren][free trial].
 >
 > Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, besuchen Sie [Azure App Service-App erstellen]. Dort können Sie ohne Angabe von Kreditkartendaten oder anderen Verpflichtungen umgehend eine kurzzeitige Start-Web-App in App Service erstellen.
 
@@ -180,4 +180,4 @@ Weitere Informationen zum Entwickeln von WordPress-Web-Apps in Azure finden Sie 
 [WordPressDashboard2]: ./media/app-service-web-create-web-app-from-marketplace/wpdashboard2.png
 [WordPressConfigure]: ./media/app-service-web-create-web-app-from-marketplace/wpconfigure.png
 
-<!----HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0921_2016-->

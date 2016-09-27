@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-catalog"
-   ms.date="05/26/2016"
+   ms.date="09/21/2016"
    ms.author="maroche"/>
 
 # Was ist Azure Data Catalog?
@@ -74,4 +74,4 @@ Weitere Informationen zu den Funktionen von Data Catalog finden Sie unter:
 * [Einrichten des Unternehmensglossars](data-catalog-how-to-business-glossary.md)
 * [Häufig gestellte Fragen](data-catalog-frequently-asked-questions.md)
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0921_2016-->

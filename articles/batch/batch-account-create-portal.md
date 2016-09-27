@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="08/26/2016"
+	ms.date="09/21/2016"
 	ms.author="marsma"/>
 
 # Erstellen eines Azure Batch-Kontos im Azure-Portal
@@ -28,7 +28,7 @@ Hier erfahren Sie, wie Sie ein Azure Batch-Konto im [Azure-Portal][azure_portal]
 
 1. Melden Sie sich auf dem [Azure-Portal][azure_portal] an.
 
-2. Klicken Sie auf **Neu** > **Virtuelle Computer** > **Batchdienst**.
+2. Klicken Sie auf **Neu** > **Compute** > **Batch-Dienst**.
 
 	![Batch im Marketplace][marketplace_portal]
 
@@ -125,4 +125,4 @@ Neben der Verwendung des Azure-Portals stehen Ihnen zum Erstellen und Verwalten 
 [storage_account]: ./media/batch-account-create-portal/storage_account.png
 [quotas]: ./media/batch-account-create-portal/quotas.png
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0921_2016-->

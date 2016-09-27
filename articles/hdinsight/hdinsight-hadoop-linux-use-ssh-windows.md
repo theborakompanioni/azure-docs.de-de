@@ -141,7 +141,7 @@ Weitere Informationen zur Verwendung dieses Befehls finden Sie unter [Benutzerde
 
 6. Geben Sie nach der entsprechenden Aufforderung den Benutzer ein, den Sie beim Erstellen des Clusters eingegeben haben. Wenn Sie für den Benutzer ein Kennwort angegeben haben, werden Sie auch zur Eingabe dieses Kennworts aufgefordert.
 
-> [AZURE.NOTE] In den oben genannten Schritten wird davon ausgegangen, dass Sie Port 22 verwenden. Über diesen Port wird eine Verbindung mit „Hauptknoten 0“ im HDInsight-Cluster hergestellt. Wenn Sie Port 23 verwenden, wird eine Verbindung mit „head node 1“ hergestellt. Weitere Informationen zu Hauptknoten finden Sie unter [Verfügbarkeit und Zuverlässigkeit von Hadoop-Clustern in HDInsight](hdinsight-high-availability-linux.md).
+> [AZURE.NOTE] In den oben genannten Schritten wird davon ausgegangen, dass Sie Port 22 verwenden. Über diesen Port wird eine Verbindung mit dem primären Hauptknoten auf dem HDInsight-Cluster hergestellt. Wenn Sie Port 23 verwenden, wird eine Verbindung mit dem sekundären Knoten hergestellt. Weitere Informationen zu Hauptknoten finden Sie unter [Verfügbarkeit und Zuverlässigkeit von Hadoop-Clustern in HDInsight](hdinsight-high-availability-linux.md).
 
 ###Herstellen einer Verbindung mit den Workerknoten
 
@@ -185,9 +185,9 @@ Sofern Sie beim Erstellen des Benutzerkontos einen SSH-Schlüssel bereitgestellt
 
     > [AZURE.NOTE] Wenn Sie ein Kennwort zur Authentifizierung Ihrer SSH-Sitzung verwenden, werden Sie aufgefordert, das Kennwort erneut einzugeben. Wenn Sie einen SSH-Schlüssel verwenden, sollte die Verbindung ohne Aufforderungen fertig gestellt werden.
 
-9. Sobald die Sitzung eingerichtet ist, ändert sich die Eingabeaufforderung für Ihre PuTTY-Sitzung von `username@hn0-clustername` in `username@wn0-clustername`, um anzugeben, dass Sie mit dem Workerknoten verbunden sind. Alle Befehle, die Sie ab diesem Punkt ausführen, werden auf dem Workerknoten ausgeführt.
+9. Sobald die Sitzung eingerichtet ist, ändert sich die Eingabeaufforderung für Ihre PuTTY-Sitzung von `username@hn#-clustername` in `username@wn#-clustername`, um anzugeben, dass Sie mit dem Workerknoten verbunden sind. Alle Befehle, die Sie ab diesem Punkt ausführen, werden auf dem Workerknoten ausgeführt.
 
-10. Wenn Sie mit dem Ausführen von Aktionen auf dem Workerknoten fertig sind, geben Sie den Befehl `exit` zum Schließen der Sitzung mit dem Workerknoten ein. Sie kehren zur Eingabeaufforderung `username@hn0-clustername` zurück.
+10. Wenn Sie mit dem Ausführen von Aktionen auf dem Workerknoten fertig sind, geben Sie den Befehl `exit` zum Schließen der Sitzung mit dem Workerknoten ein. Sie kehren zur Eingabeaufforderung `username@hn#-clustername` zurück.
 
 ##Hinzufügen weiterer Konten
 
@@ -237,4 +237,4 @@ Nachdem Sie jetzt wissen, wie die Authentifizierung mithilfe eines SSH-Schlüsse
 
 [preview-portal]: https://portal.azure.com/
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

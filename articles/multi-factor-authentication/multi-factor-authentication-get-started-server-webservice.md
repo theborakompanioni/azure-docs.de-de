@@ -1,20 +1,20 @@
 <properties 
-	pageTitle="Erste Schritte mit dem Webdienst der mobilen App für den MFA-Server" 
-	description="Die Azure Multi-Factor Authentication-App verfügt über eine zusätzliche Out-of-Band-Authentifizierungsoption. Diese ermöglicht es, dass der MFA-Server Pushbenachrichtigungen an Benutzer sendet." 
-	services="multi-factor-authentication" 
-	documentationCenter="" 
-	authors="billmath" 
-	manager="stevenpo" 
+	pageTitle="Erste Schritte mit dem Webdienst der mobilen App für den MFA-Server"
+	description="Die Azure Multi-Factor Authentication-App verfügt über eine zusätzliche Out-of-Band-Authentifizierungsoption. Diese ermöglicht es, dass der MFA-Server Pushbenachrichtigungen an Benutzer sendet."
+	services="multi-factor-authentication"
+	documentationCenter=""
+	authors="kgremban"
+	manager="femila"
 	editor="curtland"/>
 
-<tags 
-	ms.service="multi-factor-authentication" 
-	ms.workload="identity" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="get-started-article" 
-	ms.date="08/04/2016" 
-	ms.author="billmath"/>
+<tags
+	ms.service="multi-factor-authentication"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.date="08/04/2016"
+	ms.author="kgremban"/>
 
 # Erste Schritte mit dem Webdienst der mobilen App für den MFA-Server
 
@@ -58,11 +58,11 @@ Beachten Sie folgende Punkte, bevor Sie den Webdienst der mobilen App installier
 ### So installieren Sie den Webdienst der mobilen App
 
 <ol>
-<li>Öffnen Sie auf dem Azure Multi-Factor Authentication-Server den Windows-Explorer, und navigieren Sie zu dem Ordner, in dem der Azure Multi-Factor Authentication-Server installiert ist (z.&#160;B. „C:\Programme\Azure Multi-Factor Authentication Server“). Wählen Sie entsprechend dem Server, auf dem der Webdienst der mobilen App installiert wird, die 32-Bit- oder 64-Bit-Version der Azure Multi-Factor AuthenticationPhoneAppWebServiceSetup installation-Installationsdatei aus. Kopieren Sie die Installationsdatei auf den mit dem Internet verbundenen Server.</li> 
+<li>Öffnen Sie auf dem Azure Multi-Factor Authentication-Server den Windows-Explorer, und navigieren Sie zu dem Ordner, in dem der Azure Multi-Factor Authentication-Server installiert ist (z.&#160;B. „C:\Programme\Azure Multi-Factor Authentication Server“). Wählen Sie entsprechend dem Server, auf dem der Webdienst der mobilen App installiert wird, die 32-Bit- oder 64-Bit-Version der Azure Multi-Factor AuthenticationPhoneAppWebServiceSetup installation-Installationsdatei aus. Kopieren Sie die Installationsdatei auf den mit dem Internet verbundenen Server.</li>
 
 <li>Die Setupdatei muss auf dem mit dem Internet verbundenen Webserver mit Administratorrechten ausgeführt werden. Dies lässt sich am einfachsten erreichen, indem Sie eine Eingabeaufforderung als Administrator öffnen und zu dem Verzeichnis navigieren, in das die Installationsdatei kopiert wurde.</li>  
 
-<li>Führen Sie die Multi-Factor AuthenticationMobileAppWebServiceSetup-Installationsdatei aus, ändern Sie ggf. die Website, und ändern Sie das virtuelle Verzeichnis in einen kurzen Namen wie "PA". Es wird empfohlen, für das virtuelle Verzeichnis einen kurzen Namen festzulegen, da der Benutzer die URL des Webdiensts der mobilen App bei der Aktivierung auf dem mobilen Gerät eingeben muss.</li> 
+<li>Führen Sie die Multi-Factor AuthenticationMobileAppWebServiceSetup-Installationsdatei aus, ändern Sie ggf. die Website, und ändern Sie das virtuelle Verzeichnis in einen kurzen Namen wie "PA". Es wird empfohlen, für das virtuelle Verzeichnis einen kurzen Namen festzulegen, da der Benutzer die URL des Webdiensts der mobilen App bei der Aktivierung auf dem mobilen Gerät eingeben muss.</li>
 
 <li>Navigieren Sie nach Abschluss der Installation von Azure Multi-Factor AuthenticationMobileAppWebServiceSetup zu "C:\inetpub\wwwroot\PA" (oder zum entsprechenden Verzeichnis basierend auf dem Namen des virtuellen Verzeichnisses), und bearbeiten Sie die Datei "Web.config".</li>  
 
@@ -72,7 +72,7 @@ Beachten Sie folgende Punkte, bevor Sie den Webdienst der mobilen App installier
 
 <li>Wenn die Website, unter der der Webdienst der mobilen App installiert wurde (z.&#160;B. "Standardwebsite"), noch nicht mit einem öffentlich signierten Zertifikat gebunden wurde, installieren Sie das Zertifikat auf dem Server, sofern es nicht bereits installiert ist, öffnen Sie den IIS-Manager, und binden Sie das Zertifikat an die Website.</li>  
 
-<li>Öffnen Sie auf einem beliebigen Computer einen Webbrowser, und navigieren Sie zu der URL, unter der der Webdienst der mobilen App installiert wurde (z.&#160;B. "https://www.publicwebsite.com/PA"). Stellen Sie sicher, dass keine Zertifikatswarnungen oder -fehler angezeigt werden.</li> 
+<li>Öffnen Sie auf einem beliebigen Computer einen Webbrowser, und navigieren Sie zu der URL, unter der der Webdienst der mobilen App installiert wurde (z.&#160;B. "https://www.publicwebsite.com/PA"). Stellen Sie sicher, dass keine Zertifikatswarnungen oder -fehler angezeigt werden.</li>
 
 ### Konfigurieren der Einstellungen für die mobile App im Azure Multi-Factor Authentication-Server
 Nachdem Sie den Webdienst der mobilen App installiert haben, müssen Sie den Azure Multi-Factor Authentication-Server für die Verwendung mit dem Portal konfigurieren.
@@ -88,6 +88,5 @@ Nachdem Sie den Webdienst der mobilen App installiert haben, müssen Sie den Azu
 
 
 <center>![Setup](./media/multi-factor-authentication-get-started-server-webservice/mobile.png)</center>
- 
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0921_2016-->
