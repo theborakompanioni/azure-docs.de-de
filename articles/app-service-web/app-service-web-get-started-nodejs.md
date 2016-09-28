@@ -144,4 +144,4 @@ Sie können auch weiter mit Ihrer ersten Web-App arbeiten. Beispiel:
 - Entwickeln Sie Ihre Azure-App weiter. Authentifizieren Sie Ihre Benutzer. Skalieren Sie die App je nach Bedarf. Richten Sie einige Leistungswarnungen ein. Es sind jeweils nur wenige Klicks erforderlich. Weitere Informationen finden Sie unter 
 [Hinzufügen von Funktionen zu Ihrer ersten Web-App](app-service-web-get-started-2.md).
 
-<!---HONumber=AcomDC_0920_2016-->
+<!----HONumber=AcomDC_0920_2016-->
