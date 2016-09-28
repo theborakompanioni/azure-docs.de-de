@@ -62,7 +62,7 @@ Um Ihre benutzerdefinierte Domäne mit einer Web-App im App Service zu verknüpf
 
 	* Wenn Sie einen Eintrag vom Typ **A (Host)** hinzufügen, müssen Sie das Feld **Host** entweder auf **@** (Stammdomänenname wie **contoso.com**,) auf * (Platzhalter für mehrere Unterdomänen) oder auf die gewünschte Unterdomäne (etwa **www**) festlegen. Das Feld **Zeigt auf** muss auf die IP-Adresse Ihrer Azure-Web-App festgelegt werden.
 
-	* Wenn Sie einen **CNAME (Alias)**-Datensatz hinzufügen, müssen Sie im Feld **Host** die gewünschte Unterdomäne festlegen. Beispiel: **www**. Sie müssen das Feld **Zeigt auf** auf den **.azurewebsites.net**-Domänennamen Ihrer Azure-Web-App festlegen. Beispiel: **contoso.azurwebsites.net**.
+	* Wenn Sie einen **CNAME (Alias)**-Datensatz hinzufügen, müssen Sie im Feld **Host** die gewünschte Unterdomäne festlegen. Beispiel: **www**. Sie müssen das Feld **Zeigt auf** auf den **.azurewebsites.net**-Domänennamen Ihrer Azure-Web-App festlegen. Beispiel: **contoso.azurewebsites.net**.
 
 5. Klicken Sie auf **Weiteren hinzufügen**.
 6. Wählen Sie als Eintragstyp die Option **TXT** aus, und geben Sie als Hostwert das Zeichen **@** und unter **Zeigt auf** den Wert **&lt;Name Ihrer Web-App&gt;.azurewebsites.net** ein.
