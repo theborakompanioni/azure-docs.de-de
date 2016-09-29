@@ -151,7 +151,7 @@ Sie können jetzt die Anwendung ausführen.
 
 In diesem Tutorial haben Sie gelernt, wie Sie die IoT Hub-Funktionen zum Hochladen von Dateien nutzen, um Dateiuploads zu vereinfachen. In den folgenden Artikeln werden weitere IoT Hub-Features und -Szenarien vorgestellt:
 
-- [Programmgesteuertes Erstellen eines IoT Hubs][lnk-create-hub]
+- [Programmgesteuertes Erstellen eines IoT Hubs][lnk-create-hub]
 - [Einführung in das C SDK][lnk-c-sdk]
 - [IoT Hub-SDKs][lnk-sdks]
 
@@ -197,4 +197,4 @@ Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 [lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
 [lnk-portal]: iot-hub-manage-through-portal.md
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0914_2016-->

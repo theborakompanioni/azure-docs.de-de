@@ -4,7 +4,7 @@
 	services="machine-learning,storage" 
 	documentationCenter="" 
 	authors="bradsev" 
-	manager="paulettm" 
+	manager="jhubbard" 
 	editor="cgronlun" />
 
 <tags 
@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/14/2016" 
-	ms.author="fashah;garye;bradsev" />
+	ms.date="09/13/2016" 
+	ms.author="bradsev" />
 
 #Untersuchen von Daten im Azure-Blob-Speicher mit Pandas
 
 In diesem Dokument wird erläutert, wie Sie in einem Azure-Blob-Container gespeicherte Daten mithilfe des [Pandas](http://pandas.pydata.org/)-Python-Pakets untersuchen.
 
-Das nachstehende **Menü** enthält Links zu Themen, in denen die Verwendung von Tools zum Untersuchen von Daten aus verschiedenen Speicherumgebungen beschrieben wird. Diese Aufgabe ist ein Teil des Cortana-Analyseprozesses (CAP).
+Das folgende **Menü** enthält Links zu den Themen, in denen die Verwendung dieser Tools zum Untersuchen von Daten aus verschiedenen Speicherumgebungen beschrieben wird. Dieser Task ist ein Schritt im [Data Science-Prozess]().
 
 [AZURE.INCLUDE [cap-explore-data-selector](../../includes/cap-explore-data-selector.md)]
 
@@ -28,13 +28,13 @@ Das nachstehende **Menü** enthält Links zu Themen, in denen die Verwendung von
 ## Voraussetzungen
 In diesem Artikel wird davon ausgegangen, dass Sie Folgendes abgeschlossen haben:
 
-* Sie haben ein Azure-Speicherkonto erstellt. Anweisungen finden Sie unter [Erstellen eines Azure-Speicherkontos](../hdinsight-get-started.md#storage)
-* Die Daten wurden in einem Azure-Blob-Speicherkonto gespeichert.
+* Sie haben ein Azure-Speicherkonto erstellt. Anweisungen finden Sie unter [Erstellen eines Azure-Speicherkontos](../storage/storage-create-storage-account.md)
+* Die Daten wurden in einem Azure-Blob-Speicherkonto gespeichert. Wenn Sie Anweisungen benötigen, lesen Sie [Verschieben von Daten in und aus Azure Storage](../storage/storage-moving-data.md).
 
 ## Laden der Daten in ein Pandas-DataFrame
-Um ein DataSet zu untersuchen und zu bearbeiten, muss es aus der Blobquelle in eine lokale Datei heruntergeladen werden, die anschließend in ein Pandas-DataFrame geladen werden kann. Nachfolgend sehen Sie für dieses Verfahren erforderlichen Schritte:
+Damit ein Dataset untersucht und bearbeitet werden kann, muss es zuerst aus der Blobquelle in eine lokale Datei heruntergeladen werden, die anschließend in ein Pandas-DataFrame geladen werden kann. Nachfolgend sehen Sie für dieses Verfahren erforderlichen Schritte:
 
-1. Laden Sie die Daten mithilfe des Blob-Diensts und folgenden Python-Beispielcodes aus dem Azure-Blob herunter. Ersetzen Sie die Variablen im Code durch die für Ihre Umgebung geltenden Werte: 
+1. Laden Sie die Daten mithilfe des Blob-Diensts und folgenden Python-Beispielcodes aus dem Azure-Blob herunter. Ersetzen Sie die Variablen im folgenden Code durch die für Ihre Umgebung geltenden Werte:
 
 	    from azure.storage.blob import BlobService
     	import tables
@@ -64,11 +64,11 @@ Sie können nun die Daten durchsuchen und Funktionen mit diesem DataSet generier
 
 Hier sind einige Beispiele für Möglichkeiten zum Durchsuchen von Daten mithilfe von Pandas:
 
-1. Untersuchen der **Anzahl von Zeilen und Spalten** 
+1. Untersuchen der **Anzahl von Zeilen und Spalten**
 
 		print 'the size of the data is: %d rows and  %d columns' % dataframe_blobdata.shape
 
-2. **Untersuchen** der ersten oder letzten **Zeilen** im DataSet:
+2. **Überprüfen** der ersten oder letzten **Zeilen** im folgenden Dataset:
 
 		dataframe_blobdata.head(10)
 		
@@ -115,4 +115,4 @@ Hier sind einige Beispiele für Möglichkeiten zum Durchsuchen von Daten mithilf
 		#correlation between column_a and column_b
 		dataframe_blobdata[['<column_a>', '<column_b>']].corr()
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0914_2016-->

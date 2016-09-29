@@ -4,7 +4,7 @@
 	services="machine-learning" 
 	documentationCenter="" 
 	authors="LuisCabrer" 
-	manager="paulettm" 
+	manager="jhubbard" 
 	editor="cgronlun"/>
 
 <tags 
@@ -13,14 +13,13 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/24/2016" 
+	ms.date="09/08/2016" 
 	ms.author="luisca"/>
 
 
 # Die Azure Machine Learning-Empfehlungen-API anhand einer Beispielanwendung
 
-> Dies ist die Dokumentation zu den alten Recommendations-APIs im Datenmarkt, die zum 31.12.2016 eingestellt werden. Verwenden Sie ab sofort die [Recommentations-API von Cognitive Services](https://www.microsoft.com/cognitive-services/de-DE/recommendations-api).
-
+>[AZURE.NOTE] Beginnen Sie mit der Nutzung der Empfehlungs-API des Cognitive Service anstatt mit dieser Version. Der Recommendations Cognitive Service wird diesen Dienst ersetzen, weshalb alle neuen Features dafür entwickelt werden. Der Dienst bietet neue Funktionen wie Unterstützung der Batchverarbeitung, einen besseren API-Explorer, eine übersichtlichere API-Oberfläche, eine einheitlicherere Registrierungs-/Abrechnungsumgebung usw. Erfahren Sie mehr zur [Migration zum neuen Cognitive Service](http://aka.ms/recomigrate).
 
 ##Zweck
 
@@ -93,4 +92,4 @@ Eine vollständige Beschreibung der APIs finden Sie in der Dokumentation zum Mic
 Die Beispiel-App ist nicht für die Ausführung in einer Produktionsumgebung gedacht. Der Katalog umfasst nur sehr wenige Daten, die kein sinnvolles Empfehlungsmodell ergeben. Die Daten werden als Beispiel bereitgestellt.
  
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0914_2016-->

@@ -12,7 +12,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="infrastructure-services"
-	ms.date="06/14/2016"
+	ms.date="09/18/2016"
 	ms.author="magoedte;bwren" />
 
 
@@ -66,7 +66,7 @@ Das direkte Importieren aus dem Runbook-Katalog ist nur über das klassische Azu
 
 Microsoft empfiehlt, Runbooks aus dem Runbook-Katalog hinzuzufügen, die für andere Kunden nützlich sein könnten. Sie können ein Runbook durch [Hochladen ins Script Center](http://gallery.technet.microsoft.com/site/upload) hinzufügen. Berücksichtigen Sie dabei Folgendes:
 
-- Damit das Runbook im Assistenten angezeigt wird, geben Sie als **Kategorie** die Option *Microsoft Azure* und als **Unterkategorie** die Option *Automation* ein.  
+- Damit das Runbook im Assistenten angezeigt wird, geben Sie als **Kategorie** die Option *Windows Azure* und als **Unterkategorie** die Option *Automation* ein.
 
 - Laden Sie eine einzelne Datei vom Typ „.ps1“ oder „.graphrunbook“ hoch. Sind für das Runbook Module, untergeordnete Runbooks oder Objekte erforderlich, führen Sie diese in der Beschreibung der Übermittlung und im Kommentarbereich des Runbooks auf. Falls für Ihr Szenario mehrere Runbooks erforderlich sind, laden Sie sie einzeln hoch, und führen Sie die Namen der zugehörigen Runbooks in den jeweiligen Beschreibungen auf. Verwenden Sie unbedingt die gleichen Tags, damit die Runbooks in derselben Kategorie angezeigt werden. Dass zur Verwendung des Szenarios weitere Runbooks erforderlich sind, erfährt der Benutzer in der Beschreibung.
 
@@ -87,7 +87,7 @@ Microsoft empfiehlt, Runbooks aus dem Runbook-Katalog hinzuzufügen, die für an
  - Überwachung
  - Patching
  - Bereitstellung
- - Korrektur
+ - Wiederherstellung
  - Lebenszyklusverwaltung für virtuelle Computer
 
 
@@ -138,4 +138,4 @@ Sie können Anforderungen an [User Voice](https://feedback.azure.com/forums/2462
 - Informationen zum Einstieg in die Arbeit mit Runbooks finden Sie unter [Erstellen oder Importieren eines Runbooks in Azure Automation](automation-creating-importing-runbook.md).
 - Informationen zu den Unterschieden zwischen PowerShell- und PowerShell-Workflow bei der Arbeit mit Runbooks finden Sie unter [Grundlagen des PowerShell-Workflows](automation-powershell-workflow.md).
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0914_2016-->

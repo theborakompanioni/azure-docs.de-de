@@ -4,7 +4,7 @@
 	services="machine-learning"
 	documentationCenter=""
 	authors="tedway"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun"/>
 
 <tags
@@ -26,7 +26,7 @@ Wenn Sie Excel 2013 (oder höher) oder Excel Online verwenden, empfehlen wir die
 
 ## Schritte
 
-Veröffentlichen eines Webdiensts. Auf [dieser Seite](machine-learning-walkthrough-5-publish-web-service.md) wird dies erläutert. Die Excel-Arbeitsmappenfunktion wird derzeit nur für Antwort-/Anfrage-Dienste unterstützt, die eine einzelne Ausgabe aufweisen (d. h. eine einzelne Bewertungsbezeichnung).
+Veröffentlichen eines Webdiensts. Auf [dieser Seite](machine-learning-walkthrough-5-publish-web-service.md) wird dies erläutert. Die Excel-Arbeitsmappenfunktion wird derzeit nur für Antwort-/Anfrage-Dienste unterstützt, die eine einzelne Ausgabe aufweisen (d. h. eine einzelne Bewertungsbezeichnung).
 
 Wenn Sie einen Webdienst haben, klicken Sie auf den Bereich **WEB SERVICES** der linken Seite in Studio und wählen Sie den aus Excel zu verwendenden Webdienst aus.
 
@@ -80,4 +80,4 @@ RRS-Aufrufe werden in diesen beiden Situationen ausgeführt:
 [3]: ./media/machine-learning-consuming-from-excel/enablecontent.png
 [4]: ./media/machine-learning-consuming-from-excel/sampletable.png
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0914_2016-->

@@ -4,7 +4,7 @@ description="Erfahren Sie, wie Sie mit Apache Maven eine Java-basierte Apache HB
 services="hdinsight"
 documentationCenter=""
 authors="Blackmist"
-manager="paulettm"
+manager="jhubbard"
 editor="cgronlun"
 tags="azure-portal"/>
 
@@ -621,7 +621,7 @@ Es gibt viele Möglichkeiten, eine Datei in einen HDInsight-Cluster hochzuladen,
 
     Ersetzen Sie __hdinsightclustername__ durch den Namen Ihres HDInsight-Clusters.
 
-    Dieser Befehl verwendet die Klasse **SearchByEmail** Klasse, um nach allen Zeilen zu suchen, in denen die Spaltenfamilie __contactinformation__ und die Spalte __email__ die Zeichenfolge __contoso.com__ enthält. Daraufhin sollten Sie folgende Ergebnisse erhalten:
+    Dieser Befehl verwendet die Klasse **SearchByEmail** Klasse, um nach allen Zeilen zu suchen, in denen die Spaltenfamilie __contactinformation__ und die Spalte __email__ die Zeichenfolge __contoso.com__ enthält. Daraufhin sollte Sie folgende Ergebnisse erhalten:
 
           Franklin Holtz - ID: 2
           Franklin Holtz - franklin@contoso.com - ID: 2
@@ -646,4 +646,4 @@ Ersetzen Sie __hdinsightclustername__ durch den Namen Ihres HDInsight-Clusters.
 
 Verwenden Sie den Parameter `-showErr`, wenn Sie den Standardfehler (STDERR) sehen möchten, der während der Ausführung des Auftrags erzeugt wurde.
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0914_2016-->

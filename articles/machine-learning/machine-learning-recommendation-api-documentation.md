@@ -4,7 +4,7 @@
 	services="machine-learning" 
 	documentationCenter="" 
 	authors="LuisCabrer" 
-	manager="paulettm" 
+	manager="jhubbard" 
 	editor="cgronlun"/>
 
 <tags 
@@ -13,18 +13,17 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/17/2016" 
+	ms.date="09/08/2016" 
 	ms.author="LuisCa"/>
 
 #Azure Machine Learning-Empfehlungs-APIs – Dokumentation
 
-In diesem Dokument werden die Microsoft Azure Machine Learning-APIs für Empfehlungen erläutert, die im Marketplace verfügbar sind.
+>[AZURE.NOTE] Beginnen Sie mit der Nutzung der Empfehlungs-API des Cognitive Service anstatt mit dieser Version. Der Recommendations Cognitive Service wird diesen Dienst ersetzen, weshalb alle neuen Features dafür entwickelt werden. Der Dienst bietet neue Funktionen wie Unterstützung der Batchverarbeitung, einen besseren API-Explorer, eine übersichtlichere API-Oberfläche, eine einheitlicherere Registrierungs-/Abrechnungsumgebung usw. Erfahren Sie mehr zur [Migration zum neuen Cognitive Service](http://aka.ms/recomigrate).
+
+In diesem Dokument werden die Microsoft Azure Machine Learning-APIs für Empfehlungen erläutert.
 
 
-> Dies ist die Dokumentation zu den alten Empfehlungs-APIs im Datenmarkt, die zum 31.12.2016 eingestellt werden. Sie sollten ab jetzt die [Empfehlungs-API der Cognitive Services](https://www.microsoft.com/cognitive-services/de-DE/recommendations-api) verwenden.
-
-
-[AZURE.INCLUDE [machine-learning-kostenlose-Testversion](../../includes/machine-learning-free-trial.md)]
+[AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
 ##1\. Allgemeine Übersicht
 Dieses Dokument ist eine API-Referenz. Beginnen Sie mit dem Dokument „Azure Machine Learning Recommendation – Quick Start“ (Empfehlungen zu Azure Machine Learning – Schnellstart).
@@ -890,17 +889,17 @@ OData-XML
 |	apiVersion | 1,0 |
 |||
 | Anforderungstext | 
-<ins>Wenn Sie Element-IDs für Geschäftsregeln bereitstellen, stellen Sie sicher, dass Sie die externe ID des Elements verwenden (dies ist die ID, die Sie in der Katalogdatei verwendet haben)</ins><br>
-<ins>Hinzufügen einer BlockList-Regel:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>BlockList</Type><Value>{"ItemsToExclude":["2406E770-769C-4189-89DE-1C9283F93A96","3906E110-769C-4189-89DE-1C9283F98888"]}</Value></ApiFilter>`<br><br><ins> <ins>
-Hinzufügen einer FeatureBlockList-Regel:</ins><br>
-<br>
+<ins>Wenn Sie Element-IDs für Geschäftsregeln bereitstellen, stellen Sie sicher, dass Sie die externe ID des Elements verwenden (dies ist die ID, die Sie in der Katalogdatei verwendet haben)</ins><br> 
+<ins>Hinzufügen einer BlockList-Regel:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>BlockList</Type><Value>{"ItemsToExclude":["2406E770-769C-4189-89DE-1C9283F93A96","3906E110-769C-4189-89DE-1C9283F98888"]}</Value></ApiFilter>`<br><br><ins> 
+<ins>Hinzufügen einer FeatureBlockList-Regel:</ins><br> 
+<br> 
 `<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>FeatureBlockList</Type><Value>{"Name":"Movie_category","Values":["Adult","Drama"]}</Value></ApiFilter>`<br><br><ins> 
 Hinzufügen einer Upsale-Regel:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>Upsale</Type><Value>{"ItemsToUpsale":["2406E770-769C-4189-89DE-1C9283F93A96"],"NumberOfItemsToUpsale":5}</Value></ApiFilter>`<br><br> 
-<ins>Hinzufügen einer WhiteList-Regel:</ins><br> 
+<ins>Hinzufügen einer WhiteList-Regel:</ins><br>
 `<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>WhiteList</Type><Value>{"ItemsToInclude":["2406E770-769C-4189-89DE-1C9283F93A96","1116E770-769C-4189-89DE-1C9283F88888"]}</Value></ApiFilter>`<br><br><ins> 
-<ins>Hinzufügen einer FeatureWhiteList-Regel:</ins><br>
+<ins>Hinzufügen einer FeatureWhiteList-Regel:</ins><br> 
 <br> 
-`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>FeatureWhiteList</Type><Value>{"Name":"Movie_rating","Values":["PG13"]}</Value></ApiFilter>`<br><br><ins>
+`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>FeatureWhiteList</Type><Value>{"Name":"Movie_rating","Values":["PG13"]}</Value></ApiFilter>`<br><br><ins> 
 Hinzufügen einer PerSeedBlockList-Regel:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>PerSeedBlockList</Type><Value>{"SeedItems":["9949"],"ItemsToExclude":["9862","8158","8244"]}</Value></ApiFilter>`|
 
 
@@ -3107,4 +3106,4 @@ Dieses Dokument gibt Ihnen keinerlei geistige Eigentums- oder anderweitige Recht
 © 2015 Microsoft. Alle Rechte vorbehalten.
  
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0914_2016-->

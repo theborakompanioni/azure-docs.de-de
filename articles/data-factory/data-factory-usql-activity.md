@@ -13,19 +13,19 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/27/2016" 
+	ms.date="09/12/2016" 
 	ms.author="spelluru"/>
 
 # Ausführen eines U-SQL-Skripts auf Azure Data Lake Analytics in Azure Data Factory 
 Eine Pipeline in einer Azure Data Factory verarbeitet Daten in verknüpften Speicherdiensten mithilfe verknüpfter Compute Services. Sie enthält eine Abfolge von Aktivitäten, wobei jede Aktivität einen bestimmten Verarbeitungsvorgang ausführt. In diesem Kapitel wird die **U-SQL-Aktivität von Data Lake Analytics** beschrieben, die ein **U-SQL**-Skript auf einem mit **Azure Data Lake Analytics** verknüpften Computedienst ausführt.
 
 > [AZURE.NOTE] 
-Vor dem Erstellen einer Pipeline mit U-SQL-Aktivität auf Data Lake Analytics muss ein Azure Data Lake Analytics-Konto erstellt werden. Weitere Informationen zu Azure Data Lake Analytics finden Sie unter [Erste Schritte mit Azure Data Lake Analytics](../data-lake-analytics/data-lake-analytics-get-started-portal.md).
+Erstellen Sie ein Azure Data Lake Analytics-Konto, bevor Sie mit einer U-SQL-Aktivität von Data Lake Analytics eine Pipeline erstellen. Weitere Informationen zu Azure Data Lake Analytics finden Sie unter [Erste Schritte mit Azure Data Lake Analytics](../data-lake-analytics/data-lake-analytics-get-started-portal.md).
 >  
-> Im Tutorial [Erstellen Ihrer ersten Pipeline](data-factory-build-your-first-pipeline.md) finden Sie ausführliche Anweisungen zum Erstellen von Data Factorys, verknüpften Diensten, Datasets und Pipelines. Verwenden Sie die JSON-Codeausschnitte mit Data Factory-Editor, Visual Studio oder Azure PowerShell, um die Data Factory-Entitäten zu erstellen.
+> Im Tutorial [Erstellen Ihrer ersten Pipeline](data-factory-build-your-first-pipeline.md) finden Sie ausführliche Anweisungen zum Erstellen von Data Factorys, verknüpften Diensten, Datasets und Pipelines. Verwenden Sie JSON-Codeausschnitte mit Data Factory-Editor, Visual Studio oder Azure PowerShell, um Data Factory-Entitäten zu erstellen.
 
 ## Mit Azure Data Lake Analytics verknüpfter Dienst
-Sie erstellen einen mit **Azure Data Lake Analytics** verknüpften Dienst, um einen Azure Data Lake Analytics-Computedienst vor Verwendung der Data Lake Analytics-U-SQL-Aktivität mit einer Azure Data Factory zu verknüpfen.
+Sie erstellen einen mit **Azure Data Lake Analytics** verknüpften Dienst, um einen Azure Data Lake Analytics-Computedienst mit einer Azure Data Factory zu verknüpfen. Die Data Lake Analytics-U-SQL-Aktivität in der Pipeline verweist auf diesen verknüpften Dienst.
 
 Das folgende Beispiel enthält eine JSON-Definition für einen mit Azure Data Lake Analytics verknüpften Dienst.
 
@@ -55,7 +55,7 @@ dataLakeAnalyticsUri | URI des Azure Data Lake Analytics-Kontos. | Nein
 Autorisierung | Der Autorisierungscode wird automatisch abgerufen, nachdem Sie im Data Factory-Editor auf die Schaltfläche **Autorisieren** geklickt und die OAuth-Anmeldung abgeschlossen haben. | Ja 
 subscriptionId | Azure-Abonnement-ID | Nein (falls nicht angegeben, wird das Abonnement der Data Factory verwendet). 
 ResourceGroupName | Azure-Ressourcengruppenname | Nein (falls nicht angegeben, wird die Ressourcengruppe der Data Factory verwendet).
-sessionId | Sitzungs-ID aus der OAuth-Autorisierungssitzung. Jede Sitzungs-ID ist eindeutig und darf nur einmal verwendet werden. Sie wird im Data Factory-Editor automatisch generiert. | Ja
+sessionId | Sitzungs-ID aus der OAuth-Autorisierungssitzung. Jede Sitzungs-ID ist eindeutig und darf nur einmal verwendet werden. Die Sitzungs-ID wird im Data Factory-Editor automatisch generiert. | Ja
 
 Der von Ihnen mithilfe der Schaltfläche **Autorisieren** generierte Autorisierungscode läuft nach einer gewissen Zeit ab. Die Zeiten bis zum Ablaufen der Autorisierungscodes für die verschiedenen Benutzerkonten finden Sie in der folgenden Tabelle. Unter Umständen wird Ihnen nach dem **Ablauf des Tokens** folgende Fehlermeldung angezeigt: „Fehler beim Anmeldevorgang: invalid\_grant – AADSTS70002: Fehler beim Überprüfen der Anmeldeinformationen. AADSTS70008: Die angegebene Zugriffserteilung ist abgelaufen oder wurde widerrufen. Ablaufverfolgungs-ID: d18629e8-af88-43c5-88e3-d8419eb1fca1 Korrelations-ID: fac30a0c-6be6-4e02-8d69-a776d2ffefd7 Zeitstempel: 2015-12-15 21:09:31Z“
 
@@ -65,7 +65,7 @@ Der von Ihnen mithilfe der Schaltfläche **Autorisieren** generierte Autorisieru
 | Benutzerkonten, die NICHT von Azure Active Directory verwaltet werden (@hotmail.com, @live.com usw.) | 12 Stunden |
 | Benutzerkonten, die von Azure Active Directory (AAD) verwaltet werden | 14 Tage nach der letzten Sliceausführung. <br/><br/>90 Tage, wenn ein Slice, das auf einem verknüpften OAuth-Dienst basiert, mindestens einmal alle 14 Tage ausgeführt wird. |
 
-Um diesen Fehler zu vermeiden/beheben, müssen Sie sich durch Klicken auf die Schaltfläche **Autorisieren** erneut autorisieren, wenn das **Token abläuft**, und den verknüpften Dienst anschließend erneut bereitstellen. Sie können auch Werte für die Eigenschaften **sessionId** und **authorization** programmgesteuert mithilfe des Codes im folgenden Abschnitt generieren.
+Um diesen Fehler zu vermeiden/beheben, autorisieren Sie sich durch Klicken auf die Schaltfläche **Autorisieren** erneut, wenn das **Token abläuft**, und stellen Sie den verknüpften Dienst anschließend erneut bereit. Sie können auch Werte für die Eigenschaften **sessionId** und **authorization** programmgesteuert mithilfe des Codes im folgenden Abschnitt generieren.
 
   
 ### So generieren Sie programmgesteuert Werte für „sessionId“ und „authorization“ 
@@ -93,7 +93,7 @@ Um diesen Fehler zu vermeiden/beheben, müssen Sie sich durch Klicken auf die Sc
         }
     }
 
-Nähere Informationen zu den im Code verwendeten Data Factory-Klassen finden Sie in den Themen [AzureDataLakeStoreLinkedService-Klasse](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx), [AzureDataLakeAnalyticsLinkedService-Klasse](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx) und [AuthorizationSessionGetResponse-Klasse](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.authorizationsessiongetresponse.aspx). Sie müssen für die WindowsFormsWebAuthenticationDialog-Klasse einen Verweis hinzufügen auf: „Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll“.
+Nähere Informationen zu den im Code verwendeten Data Factory-Klassen finden Sie in den Themen [AzureDataLakeStoreLinkedService-Klasse](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx), [AzureDataLakeAnalyticsLinkedService-Klasse](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx) und [AuthorizationSessionGetResponse-Klasse](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.authorizationsessiongetresponse.aspx). Fügen Sie für die WindowsFormsWebAuthenticationDialog-Klasse einen Verweis auf Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll hinzu.
  
  
 ## U-SQL-Aktivität für Data Lake Analytics 
@@ -156,7 +156,7 @@ Die folgende Tabelle beschreibt die Namen und Eigenschaften, die für diese Akti
 Eigenschaft | Beschreibung | Erforderlich
 :-------- | :----------- | :--------
 Typ | Die type-Eigenschaft muss auf **DataLakeAnalyticsU-SQL** festgelegt werden. | Ja
-scriptPath | Der Pfad zum Ordner, der das U-SQL-Skript enthält. Beachten Sie, dass beim Dateinamen Groß-/Kleinschreibung beachtet werden muss. | Nein (wenn script verwendet wird)
+scriptPath | Der Pfad zum Ordner, der das U-SQL-Skript enthält. Beim Dateinamen wird Groß-/Kleinschreibung unterschieden. | Nein (wenn script verwendet wird)
 scriptLinkedService | Verknüpfter Dienst, der den Speicher, der das Skript enthält, mit der Data Factory verknüpft. | Nein (wenn script verwendet wird)
 script | Geben Sie anstelle von scriptPath und scriptLinkedService ein Inlineskript an. Beispiel: „script“ : „CREATE DATABASE test“. | Nein (wenn scriptPath and scriptLinkedService verwendet werden)
 degreeOfParallelism | Die maximale Anzahl von Knoten, die zum Ausführen des Auftrags gleichzeitig verwendet werden. | Nein
@@ -210,7 +210,7 @@ In diesem Beispiel werden die von dem U-SQL-Skript erzeugten Ausgabedaten in ein
 	}
 
 ### Beispiel für einen mit Azure Data Lake Store verknüpften Dienst
-Hier finden Sie die Definition des mit Azure Data Lake Store verknüpften Beispieldiensts, der von den oben genannten Eingabe- und Ausgabedatasets verwendet wird.
+Hier finden Sie die Definition des mit Azure Data Lake Store verknüpften Beispieldiensts, der von den Eingabe-/Ausgabedatasets verwendet wird.
 
 	{
 	    "name": "AzureDataLakeStoreLinkedService",
@@ -224,7 +224,7 @@ Hier finden Sie die Definition des mit Azure Data Lake Store verknüpften Beispi
 	    }
 	}
 
-Eine Beschreibung der in den oben gezeigten JSON-Ausschnitten zum Thema „Verknüpfte Dienste und Datasets mit Azure Data Lake-Speicher“ verwendeten JSON-Eigenschaften finden Sie unter [Verschieben von Daten zu und von Azure Data Lake-Speicher](data-factory-azure-datalake-connector.md)
+Im Artikel [Verschieben von Daten in und aus Azure Data Lake Store mithilfe von Azure Data Factory](data-factory-azure-datalake-connector.md) finden Sie Beschreibungen der JSON-Eigenschaften.
 
 ## Beispiel-U-SQL-Skript 
 
@@ -253,12 +253,12 @@ Eine Beschreibung der in den oben gezeigten JSON-Ausschnitten zum Thema „Verkn
 	    TO @out
 	      USING Outputters.Tsv(quoting:false, dateTimeFormat:null);
 
-Die Werte für die Parameter **@in** und **@out** im oben dargestellten U-SQL-Skript werden von ADF dynamisch mithilfe des Abschnitts „parameters“ übergeben. Informationen finden Sie oben in der Pipelinedefinition im Abschnitt „parameters“.
+Die Werte für die Parameter **@in** und **@out** im U-SQL-Skript werden von ADF dynamisch mithilfe des Abschnitts „parameters“ übergeben. Informationen finden Sie in der Pipelinedefinition im Abschnitt „parameters“.
 
-Sie können in Ihrer Pipelinedefinition auch andere Eigenschaften wie etwa „degreeOfParallelism“ oder „priority“ für die Aufträge angeben, die im Azure Data Lake Analytics-Dienst ausgeführt werden.
+Sie können in Ihrer Pipelinedefinition auch andere Eigenschaften wie etwa degreeOfParallelism oder „priority“ für die Aufträge angeben, die im Azure Data Lake Analytics-Dienst ausgeführt werden.
 
 ## Dynamische Parameter
-In der oben gezeigten beispielhaften Pipelinedefinition werden die Eingabe- und Ausgabeparameter mit hartcodierten Werten zugewiesen.
+In der beispielhaften Pipelinedefinition werden die Eingabe- und Ausgabeparameter mit hartcodierten Werten zugewiesen.
 
     "parameters": {
         "in": "/datalake/input/SearchLog.tsv",
@@ -272,6 +272,6 @@ Anstelle von hartcodierten Werten können dynamische Parameter verwendet werden.
         "out": "$$Text.Format('/datalake/output/{0:yyyy-MM-dd HH:mm:ss}.tsv', SliceStart)"
     }
 
-In diesem Fall werden die Eingabedateien weiterhin aus dem Ordner „/datalake/input“ abgerufen und die Ausgabedateien im Ordner „datalake/output“ generiert, aber die Dateinamen sind dynamisch und basieren auf der Startzeit der Slices.
+In diesem Fall werden die Eingabedateien weiterhin aus dem Ordner „/datalake/input“ abgerufen und die Ausgabedateien im Ordner „datalake/output“ generiert. Die Dateinamen sind dynamisch und basieren auf der Startzeit des Slices.
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0914_2016-->

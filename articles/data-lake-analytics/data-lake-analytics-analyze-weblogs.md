@@ -1,10 +1,10 @@
 <properties
    pageTitle="Analysieren von Websiteprotokollen mit Azure Data Lake Analytics | Azure"
-   description="Erfahren Sie, wie Sie Websiteprotokolle mit Azure Data Lake Analytics analysieren."
+   description="Erfahren Sie, wie Sie Websiteprotokolle mit Azure Data Lake Analytics analysieren. "
    services="data-lake-analytics"
    documentationCenter=""
    authors="edmacauley"
-   manager="paulettm"
+   manager="jhubbard"
    editor="cgronlun"/>
 
 <tags
@@ -188,7 +188,7 @@ Sie können der Anwendung außerdem benutzerdefinierte Operatoren hinzufügen. W
 3.  Doppelklicken Sie auf **UnsuccessfulResponses.log**.
 4.  Sie können auch in der Diagrammansicht des Auftrags auf die Ausgabedatei doppelklicken, um direkt zur Ausgabe zu navigieren.
 
-## Weitere Informationen
+## Siehe auch
 
 Informationen zu den ersten Schritten mit Data Lake Analytics unter Verwendung unterschiedlicher Tools finden Sie unter:
 
@@ -202,4 +202,4 @@ Weitere Themen zur Entwicklung:
 - [Erste Schritte mit Azure Data Lake Analytics-U-SQL-Sprache](data-lake-analytics-u-sql-get-started.md)
 - [Entwickeln von benutzerdefinierten U-SQL-Operatoren für Data Lake Analytics-Aufträge](data-lake-analytics-u-sql-develop-user-defined-operators.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0914_2016-->

@@ -4,7 +4,7 @@
    services="hdinsight"
    documentationCenter=""
    authors="Blackmist"
-   manager="paulettm"
+   manager="jhubbard"
    editor="cgronlun"
 	tags="azure-portal"/>
 
@@ -104,7 +104,7 @@ Weitere Informationen zum Verwenden von PuTTY finden Sie unter [Verwenden von SS
         STORED AS TEXTFILE LOCATION 'wasbs:///example/data/';
         SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs WHERE t4 = '[ERROR]' AND INPUT__FILE__NAME LIKE '%.log' GROUP BY t4;
 
-    Mit diesen Anweisungen werden die folgenden Aktionen ausgeführt:
+    Diese Anweisungen führen die folgenden Aktionen aus:
 
     * **TABELLE LÖSCHEN**: Löscht Tabelle und Datendatei, falls die Tabelle bereits existiert.
     * **EXTERNE TABELLE ERSTELLEN**: Erstellt eine neue "externe" Tabelle in Hive. Externe Tabellen speichern nur die Tabellendefinition in Hive. Die Daten verbleiben an ihrem ursprünglichen Speicherort.
@@ -156,7 +156,7 @@ Beeline kann auch verwendet werden, um eine Datei auszuführen, die HiveQL-Anwei
         CREATE TABLE IF NOT EXISTS errorLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string) STORED AS ORC;
         INSERT OVERWRITE TABLE errorLogs SELECT t1, t2, t3, t4, t5, t6, t7 FROM log4jLogs WHERE t4 = '[ERROR]' AND INPUT__FILE__NAME LIKE '%.log';
 
-    Mit diesen Anweisungen werden die folgenden Aktionen ausgeführt:
+    Diese Anweisungen führen die folgenden Aktionen aus:
 
     * **TABELLE ERSTELLEN, FALLS NICHT VORHANDEN** – Erstellt eine Tabelle, sofern diese noch nicht vorhanden ist. Da das Schlüsselwort **EXTERN** nicht verwendet wird, ist dies eine "interne" Tabelle, die im Hive-Data Warehouse gespeichert und vollständig von Hive verwaltet wird.
     * **ALS ORC GESPEICHERT** – Speichert die Daten im ORC-Format (Optimized Row Columnar). Dies ist ein stark optimiertes und effizientes Format zum Speichern von Hive-Daten.
@@ -235,4 +235,4 @@ Wenn Sie mit Tez mit Hive verwenden, finden Sie in den folgenden Dokumenten Info
 
 [powershell-here-strings]: http://technet.microsoft.com/library/ee692792.aspx
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0914_2016-->

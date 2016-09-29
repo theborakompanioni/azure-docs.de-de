@@ -4,7 +4,7 @@ description="Erfahren Sie, wie Sie Hive-Bibliotheken (JAR-Dateien) einem HDInsig
 services="hdinsight"
 documentationCenter=""
 authors="Blackmist"
-manager="paulettm"
+manager="jhubbard"
 editor="cgronlun"/>
 
 <tags
@@ -88,4 +88,4 @@ Nach der Erstellung des Clusters können Sie die durch dieses Skript hinzugefüg
 
 In diesem Dokument haben Sie gelernt, wie Hive-Bibliotheken in JAR-Dateien einem HDInsight-Cluster während der Erstellung des Clusters hinzugefügt werden. Weitere Informationen zum Arbeiten mit Hive finden Sie unter [Verwenden von Hive mit HDInsight](hdinsight-use-hive.md).
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0914_2016-->

@@ -4,7 +4,7 @@
    services="hdinsight,notification hubs"
    documentationCenter=""
    authors="Blackmist"
-   manager="paulettm"
+   manager="jhubbard"
    editor="cgronlun"/>
 
 <tags
@@ -44,7 +44,7 @@ In diesem Lernprogramm erfahren Sie, wie Sie den Event-Hub-Spout und Bolt zum Le
 
 	> [AZURE.NOTE] Der Editor oder die IDE verfügen möglicherweise über bestimmte Funktionen für die Arbeit mit Maven, die in diesem Dokument nicht behandelt werden. Informationen zu den Funktionen der Bearbeitungsumgebung finden Sie in der Dokumentation für das von Ihnen verwendete Produkt.
 
- * Einen SSH-Client Weitere Informationen zur Verwendung von SSH mit HDInsight finden Sie in den folgenden Artikeln:
+ * Einen SSH-Client. Weitere Informationen zur Verwendung von SSH mit HDInsight finden Sie in den folgenden Artikeln:
 
     - [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](hdinsight-hadoop-linux-use-ssh-unix.md)
 
@@ -443,7 +443,7 @@ Durch das Exportieren und Importieren können Sie Prüfpunktdaten persistent spe
 
 Wenn unter /devicedata gespeicherte Dateien nicht angezeigt werden (mit dem Befehl `hadoop fs -ls /devicedata` oder dem Hive-Befehl in der Abfrage), prüfen Sie die Storm-Benutzeroberfläche auf mögliche von den Topologien zurückgegebenen Fehler.
 
-Weitere Informationen zur Storm-Benutzeroberfläche finden Sie den folgenden Themen:
+Weitere Informationen zur Storm-Benutzeroberfläche finden Sie in den folgenden Themen:
 
 * Informationen zur Verwendung eines __Linux-basierten__ Clusters finden Sie unter [Bereitstellen und Verwalten von Apache Storm-Topologien in HDInsight unter Linux](hdinsight-storm-deploy-monitor-topology-linux.md)
 
@@ -453,4 +453,4 @@ Weitere Informationen zur Storm-Benutzeroberfläche finden Sie den folgenden The
 
 * [Beispiele für Storm-Topologien für Storm in HDInsight](hdinsight-storm-example-topology.md)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0914_2016-->

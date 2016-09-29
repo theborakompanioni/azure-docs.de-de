@@ -4,7 +4,7 @@
    services="hdinsight"
    documentationCenter=""
    authors="Blackmist"
-   manager="paulettm"
+   manager="jhubbard"
    editor="cgronlun"
 	tags="azure-portal"/>
 
@@ -25,7 +25,7 @@ In diesem Artikel erfahren Sie, wie Sie mithilfe des Remotedesktops eine Verbind
 
 ##<a id="prereq"></a>Voraussetzungen
 
-Damit Sie die in diesem Artikel aufgeführten Schritte ausführen können, benötigen Sie Folgendes:
+Um die in diesem Artikel aufgeführten Schritte auszuführen, benötigen Sie Folgendes:
 
 * Einen Windows-basierten HDInsight-Cluster (Hadoop in HDInsight)
 
@@ -96,4 +96,4 @@ Informationen zu anderen Möglichkeiten, wie Sie mit Hadoop in HDInsight arbeite
 
 * [Verwenden von Pig mit Hadoop in HDInsight](hdinsight-use-pig.md)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0914_2016-->

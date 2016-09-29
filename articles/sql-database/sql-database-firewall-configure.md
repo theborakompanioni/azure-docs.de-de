@@ -15,7 +15,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-management"
-   ms.date="09/06/2016"
+   ms.date="09/14/2016"
    ms.author="rickbyh"/>
 
 # Konfigurieren von Firewallregeln für Azure SQL-Datenbank – Übersicht
@@ -76,7 +76,7 @@ Sie können Verbindungen über Azure auf zwei Arten ermöglichen:
 
 ## Erstellen der ersten Firewallregel auf Serverebene
 
-Die erste Firewalleinstellung auf Serverebene kann mit dem [Azure-Portal](https://portal.azure.com/) oder programmgesteuert mithilfe der REST-API oder Azure PowerShell erstellt werden. Nachfolgende Firewallregeln auf Serverebene können anhand dieser Methoden sowie über Transact-SQL erstellt und verwaltet werden. Weitere Informationen zu Firewallregeln auf Serverebene finden Sie unter [Konfigurieren einer Firewallregel auf Serverebene für Azure SQL-Datenbank mithilfe des Azure-Portals](sql-database-configure-firewall-settings.md).
+Die erste Firewalleinstellung auf Serverebene kann mit dem [Azure-Portal](https://portal.azure.com/) oder programmgesteuert mithilfe der REST-API oder Azure PowerShell erstellt werden. Nachfolgende Firewallregeln auf Serverebene können anhand dieser Methoden sowie über Transact-SQL erstellt und verwaltet werden. Um die Leistung zu verbessern, werden Firewallregeln auf Serverebene vorübergehend auf Datenbankebene zwischengespeichert. Informationen zum Aktualisieren des Caches finden Sie unter [DBCC FLUSHAUTHCACHE](https://msdn.microsoft.com/library/mt627793.aspx). Weitere Informationen zu Firewallregeln auf Serverebene finden Sie unter [Konfigurieren einer Firewallregel auf Serverebene für Azure SQL-Datenbank mithilfe des Azure-Portals](sql-database-configure-firewall-settings.md).
 
 ## Erstellen von Firewallregeln auf Datenbankebene
 
@@ -158,4 +158,4 @@ Ein Tutorial zum Erstellen einer Datenbank finden Sie unter [Erstellen einer SQL
 <!--Image references-->
 [1]: ./media/sql-database-firewall-configure/sqldb-firewall-1.png
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0914_2016-->

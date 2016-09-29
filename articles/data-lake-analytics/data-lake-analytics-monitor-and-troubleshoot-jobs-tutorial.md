@@ -1,10 +1,10 @@
 <properties 
    pageTitle="Problembehandelung bei Azure Data Lake Analytics-Aufträgen mithilfe des Azure-Portals | Azure" 
-   description="Erfahren Sie, wie die Problembehandlung von Data Lake Analytics-Aufträgen im Azure-Portal erfolgt." 
+   description="Erfahren Sie, wie die Problembehandlung von Data Lake Analytics-Aufträgen im Azure-Portal erfolgt. " 
    services="data-lake-analytics" 
    documentationCenter="" 
    authors="edmacauley" 
-   manager="paulettm" 
+   manager="jhubbard" 
    editor="cgronlun"/>
  
 <tags
@@ -103,11 +103,11 @@ Im letzten Abschnitt haben Sie ohne Erfolg einen Auftrag übermittelt.
 8. Klicken Sie auf **Auftrag senden**.
 
 
-##Weitere Informationen
+##Siehe auch
 
 - [Azure Data Lake Analytics – Übersicht](data-lake-analytics-overview.md)
 - [Erste Schritte mit Azure Data Lake Analytics mithilfe von Azure PowerShell](data-lake-analytics-get-started-powershell.md)
 - [Erste Schritte mit Azure Data Lake Analytics und U-SQL mithilfe von Visual Studio](data-lake-analytics-u-sql-get-started.md)
 - [Verwalten von Azure Data Lake Analytics mithilfe des Azure-Portals](data-lake-analytics-manage-use-portal.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0914_2016-->

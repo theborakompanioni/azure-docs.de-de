@@ -20,12 +20,12 @@
 # Konfigurieren einer Point-to-Site-Verbindung mit einem VNet über das klassische Portal
 
 > [AZURE.SELECTOR]
-- [PowerShell – Resource Manager](vpn-gateway-howto-point-to-site-rm-ps.md)
-- [Portal – klassisch](vpn-gateway-point-to-site-create.md)
+- [Resource Manager – PowerShell](vpn-gateway-howto-point-to-site-rm-ps.md)
+- [Klassisch – Klassisches Portal](vpn-gateway-point-to-site-create.md)
 
 Mit einer P2S-Konfiguration (Point-to-Site) können Sie von einem einzelnen Clientcomputer eine sichere Verbindung mit einem virtuellen Netzwerk herstellen. Eine P2S-Verbindung ist nützlich, wenn Sie von einem Remotestandort, z.B. von zu Hause oder in einer Konferenz, eine Verbindung mit Ihrem VNet herstellen möchten. Diese Methode eignet sich auch, wenn Sie nur wenige Clients besitzen, die mit einem virtuellen Netzwerk verbunden werden müssen.
 
-In diesem Artikel erfahren Sie Schritt für Schritt, wie Sie im Rahmen des **klassischen Bereitstellungsmodells** ein VNet mit einer Point-to-Site-Verbindung über das klassische Portal erstellen. Diese Konfiguration kann derzeit für das klassische Bereitstellungsmodell nicht vollständig über das Azure-Portal erstellt werden.
+In diesem Artikel erfahren Sie Schritt für Schritt, wie Sie im Rahmen des **klassischen Bereitstellungsmodells** ein VNet mit einer Point-to-Site-Verbindung über das **klassische Portal** erstellen. Diese Konfiguration kann derzeit für das klassische Bereitstellungsmodell nicht vollständig über das Azure-Portal erstellt werden. Sie können einige dieser Schritte im Azure-Portal ausführen, aber PowerShell ist für den Download der VPN-Clientkonfiguration weiterhin erforderlich.
 
 Damit P2S-Verbindungen funktionieren, ist kein VPN-Gerät und keine öffentliche IP-Adresse erforderlich. Eine VPN-Verbindung wird hergestellt, indem Sie die Verbindung vom Clientcomputer aus starten. Weitere Informationen zu P2S-Verbindungen finden Sie unter [Häufig gestellte Fragen zum VPN Gateway](vpn-gateway-vpn-faq.md#point-to-site-connections) und [Planung und Entwurf](vpn-gateway-plan-design.md).
 
@@ -193,4 +193,4 @@ Sie können dem virtuellen Netzwerk virtuelle Computer hinzufügen. Weitere Info
 
 Weitere Informationen über virtuelle Netzwerke erhalten Sie unter [Dokumentation zu virtuellen Netzwerken](https://azure.microsoft.com/documentation/services/virtual-network/).
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0921_2016-->

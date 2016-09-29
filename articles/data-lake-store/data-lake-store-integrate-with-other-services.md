@@ -4,7 +4,7 @@
    documentationCenter=""
    services="data-lake-store"
    authors="nitinme"
-   manager="paulettm"
+   manager="jhubbard"
    editor="cgronlun"/>
 
 <tags
@@ -78,10 +78,10 @@ Sie können Power BI zum Importieren von Daten aus einem Data Lake-Speicherkonto
 Sie können Daten aus dem Data Lake-Speicher in Azure Data Catalog registrieren, damit die Daten in der gesamten Organisation auffindbar sind. Weitere Informationen finden Sie unter [Registrieren von Daten aus dem Data Lake-Speicher in Azure Data Catalog](data-lake-store-with-data-catalog.md).
 
 
-## Weitere Informationen
+## Siehe auch
 
 - [Übersicht über Azure Data Lake-Speicher](data-lake-store-overview.md)
 - [Erste Schritte mit Data Lake-Speicher mithilfe des Portals](data-lake-store-get-started-portal.md)
 - [Erste Schritte mit Data Lake-Speicher mithilfe von PowerShell](data-lake-store-get-started-powershell.md)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0914_2016-->

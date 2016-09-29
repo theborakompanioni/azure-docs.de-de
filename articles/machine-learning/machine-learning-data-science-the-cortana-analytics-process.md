@@ -4,7 +4,7 @@
 	services="machine-learning" 
 	documentationCenter="" 
 	authors="bradsev"
-	manager="paulettm" 
+	manager="jhubbard" 
 	editor="cgronlun" />
 
 <tags 
@@ -25,7 +25,7 @@ Dies sind die Schritte im **Team Data Science-Prozess**:
 
 ![CAP-Workflow](./media/machine-learning-data-science-the-cortana-analytics-process/CAP-workflow.png)
 
-Der Prozess ist **iterativ**: das Verständnis neuer und vorhandener Optimierungen im Modell entwickelt sich weiter und erfordert das Überarbeiten von zuvor in der Folge abgeschlossenen Schritten. Vorhandene Organisationsentwicklungs- und Projektplanungsprozesse können **einfach** an die im TDSP definierte Schrittfolge angepasst werden.
+Der Prozess ist **iterativ**: das Verständnis neuer und vorhandener Optimierungen im Modell entwickelt sich weiter und erfordert das Überarbeiten von zuvor in der Folge abgeschlossenen Schritten. Vorhandene Organisationsentwicklungs- und Projektplanungsprozesse können **problemlos an die im TDSP definierte Schrittfolge angepasst werden**.
 
 Die Schritte in diesem Prozess sind im [TDSP-Lernpfad](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) abgebildet und verlinkt und werden unten beschrieben.
 
@@ -33,15 +33,15 @@ Die Schritte in diesem Prozess sind im [TDSP-Lernpfad](https://azure.microsoft.c
 
 ## P1. Planen des Analyseprojekts 
 
-Starten Sie ein Analyseprojekt, indem Sie geschäftliche Ziele und Probleme bestimmen, die als **Geschäftsanforderungen** ausgedrückt werden. Ein zentrales Ziel dieses Schritts ist das Bestimmen der wesentlichen geschäftlichen Variablen (z. B. Umsatzprognose oder Wahrscheinlichkeit eines betrügerischen Auftrags), die die Analyse vorherzusagen hat, um diese Anforderungen zu erfüllen. Zusätzliche Planung ist dann in der Regel wichtig, um sich einen Überblick über die **Datenquellen** zu verschaffen, die benötigt werden, um die Ziel des Projekts aus Analysesicht zu erreichen. Es ist z. B. nicht ungewöhnlich festzustellen, dass vorhandene Systeme zusätzliche Arten von Daten sammeln und protokollieren müssen, um das Problem anzugehen und die Projektziele zu erreichen. Eine Anleitung finden Sie unter [Planen Ihrer Umgebung für den Team Data Science-Prozess](machine-learning-data-science-plan-your-environment.md) und [Szenarien für die erweiterte Analyse in Azure Machine Learning](machine-learning-data-science-plan-sample-scenarios.md).
+Starten Sie ein Analyseprojekt, indem Sie geschäftliche Ziele und Probleme bestimmen, die als **Geschäftsanforderungen** ausgedrückt werden. Ein zentrales Ziel dieses Schritts ist das Bestimmen der wesentlichen geschäftlichen Variablen (z. B. Umsatzprognose oder Wahrscheinlichkeit eines betrügerischen Auftrags), die die Analyse vorherzusagen hat, um diese Anforderungen zu erfüllen. Zusätzliche Planung ist dann in der Regel wichtig, um sich einen Überblick über die **Datenquellen** zu verschaffen, die benötigt werden, um die Ziel des Projekts aus Analysesicht zu erreichen. Es ist z. B. nicht ungewöhnlich festzustellen, dass vorhandene Systeme zusätzliche Arten von Daten sammeln und protokollieren müssen, um das Problem anzugehen und die Projektziele zu erreichen. Eine Anleitung finden Sie unter [Bestimmen von Szenarien und Planen der Datenverarbeitung für die erweiterte Analyse](machine-learning-data-science-plan-your-environment.md) sowie unter [Szenarien für die erweiterte Analyse in Azure Machine Learning](machine-learning-data-science-plan-sample-scenarios.md).
 
 ## P2. Einrichten der Analyse-Umgebung 
 
 Eine Analyse-Umgebung für den Team Data Science-Prozess umfasst mehrere Komponenten:
 
-- **Datenarbeitsbereiche**, in denen die Daten für die Analyse und Modellierung bereitgestellt werden 
+- **Datenarbeitsbereiche**, in denen die Daten für die Analyse und Modellierung bereitgestellt werden
 - eine **Verarbeitungsinfrastruktur** für die Vorverarbeitung, Untersuchung und Modellierung von Daten
-- eine **Laufzeitinfrastruktur** zum Operationalisieren der Analysemodelle und Ausführen intelligenter Clientanwendungen, die die Modelle nutzen.  
+- eine **Laufzeitinfrastruktur** zum Operationalisieren der Analysemodelle und Ausführen intelligenter Clientanwendungen, die die Modelle nutzen.
 
 Die einzurichtende Analyse-Infrastruktur ist häufig Teil einer Umgebung, die von den Hauptsystemen getrennt ist. Doch in der Regel nutzt sie Daten aus mehreren Systemen innerhalb des Unternehmens sowie aus Quellen außerhalb des Unternehmens. Die Analyse-Infrastruktur kann rein cloudbasiert, lokal oder eine Kombination aus beidem sein. Optionen finden Sie unter [Einrichten von Data Science-Umgebungen für die Verwendung im Team Data Science-Prozess](machine-learning-data-science-environment-setup.md).
 
@@ -61,18 +61,18 @@ Der nächste Schritte besteht darin, sich ein umfassenderes Verständnis der Dat
 
 ## 3\. Entwickeln von Features 
 
-Datenwissenschaftler muss in Zusammenarbeit mit Fachbereichsexperten die Features bestimmen, die die wesentlichen Eigenschaften des Datasets erfassen und am besten zum Vorhersagen der wichtigsten Geschäftsvariablen genutzt werden können, die während der Planung ausgemacht wurden. Diese neuen Features können von vorhandenen Daten abgeleitet werden oder ggf. das Erfassen zusätzlicher Daten erfordern. Dieser Prozess wird als **Feature-Engineering** bezeichnet und ist einer der wichtigsten Schritte beim Entwickeln eines effektiven Predictive Analytics-Systems. Dieser Schritt erfordert eine kreative Kombination von Sachkenntnis mit den im Datenuntersuchungsschritt gewonnenen Erkenntnissen. Anleitungen finden Sie unter [Entwicklung von Features im Team Data Science-Prozess](machine-learning-data-science-create-features.md).
+Datenwissenschaftler muss in Zusammenarbeit mit Fachbereichsexperten die Features bestimmen, die die wesentlichen Eigenschaften des Datasets erfassen und am besten zum Vorhersagen der wichtigsten Geschäftsvariablen genutzt werden können, die während der Planung ausgemacht wurden. Diese neuen Features können von vorhandenen Daten abgeleitet werden oder ggf. das Erfassen zusätzlicher Daten erfordern. Dieser Prozess wird als **Feature-Engineering** bezeichnet und ist einer der wichtigsten Schritte beim Entwickeln eines effektiven Predictive Analytics-Systems. Dieser Schritt erfordert eine kreative Kombination von Sachkenntnis mit den im Datenuntersuchungsschritt gewonnenen Erkenntnissen. Eine Anleitung finden Sie unter [Featureentwicklung im Cortana-Analyseprozess](machine-learning-data-science-create-features.md).
 
 
 ## 4\. Erstellen von Vorhersagemodellen 
 
-Datenwissenschaftler erstellen Analysemodelle zum Vorhersagen der Hauptvariablen, die von den Geschäftsanforderungen bestimmt werden. Diese werden wiederum im Planungsschritt anhand von Daten definiert, die bereinigt und Features zugeordnet wurden. Machine Learning-Systeme unterstützen mehrere **Modellierungsalgorithmen**, die für eine Vielzahl von Fällen geeignet sind. Anleitungen finden Sie unter [Auswählen von Algorithmen für Microsoft Azure Machine Learning](machine-learning-algorithm-choice.md).
+Datenwissenschaftler erstellen Analysemodelle zum Vorhersagen der Hauptvariablen, die von den Geschäftsanforderungen bestimmt werden. Diese werden wiederum im Planungsschritt anhand von Daten definiert, die bereinigt und Features zugeordnet wurden. Machine Learning-Systeme unterstützen mehrere **Modellierungsalgorithmen**, die für eine Vielzahl von Fällen geeignet sind. Eine Anleitung finden Sie unter [Auswählen von Algorithmen für Microsoft Azure Machine Learning](machine-learning-algorithm-choice.md).
 
 Datenwissenschaftler müssen das am besten geeignete Modell für die jeweilige Vorhersageaufgabe wählen. Es ist nicht ungewöhnlich, dass Ergebnisse aus mehreren Modellen kombiniert werden müssen, um die besten Ergebnisse zu erzielen. Die Eingabedaten für die Modellierung sind in der Regel nach dem Zufallsprinzip in drei Teile unterteilt:
 
-- ein Dataset für das Training 
-- ein Dataset für die Überprüfung 
-- ein Datasets für Tests 
+- ein Dataset für das Training
+- ein Dataset für die Überprüfung
+- ein Datasets für Tests
 
 Die Modelle werden mithilfe des **Datasets für das Training** erstellt. Die optimale Kombination von Modellen (mit optimierten Parametern) wird ausgewählt, indem die Modelle ausgeführt und die Vorhersagefehler für das **Dataset für die Überprüfung** gemessen werden. Schließlich wird das **Dataset für Tests** verwendet, um die Leistung des ausgewählten Modells für unabhängige Daten auswerten, die nicht zum Trainieren oder Überprüfen des Modells verwendet wurden. Verfahren finden Sie unter [Auswerten der Modellleistung in Azure Machine Learning](machine-learning-evaluate-model-performance.md).
 
@@ -96,4 +96,4 @@ Vollständige exemplarische Vorgehensweisen, in denen sämtliche Schritte im Pro
 
  
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0914_2016-->

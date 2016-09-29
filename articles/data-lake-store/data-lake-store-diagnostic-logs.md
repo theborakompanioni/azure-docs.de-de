@@ -4,7 +4,7 @@
    services="data-lake-store" 
    documentationCenter="" 
    authors="nitinme" 
-   manager="paulettm" 
+   manager="jhubbard" 
    editor="cgronlun"/>
  
 <tags
@@ -25,7 +25,7 @@ Organisationen können die Diagnoseprotokollierung für ihre Azure Data Lake Sto
 ## Voraussetzungen
 
 - **Ein Azure-Abonnement**. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
-- **Aktivieren Ihres Azure-Abonnements** für die öffentliche Vorschauversion des Data Lake-Speichers. Weitere Informationen finden Sie in den [Anweisungen](data-lake-store-get-started-portal.md#signup).
+- **Aktivieren Sie Ihr Azure-Abonnement** für die öffentliche Vorschauversion von Data Lake Store. Weitere Informationen finden Sie in den [Anweisungen](data-lake-store-get-started-portal.md#signup).
 - **Azure Data Lake-Speicherkonto**. Führen Sie die Schritte der Anleitung unter [Erste Schritte mit dem Azure Data Lake-Speicher mithilfe des Azure-Portals](data-lake-store-get-started-portal.md) aus.
 
 ## Aktivieren der Diagnoseprotokollierung für Ihr Data Lake Store-Konto
@@ -38,7 +38,7 @@ Organisationen können die Diagnoseprotokollierung für ihre Azure Data Lake Sto
 
 	![Aktivieren der Diagnoseprotokollierung](./media/data-lake-store-diagnostic-logs/enable-diagnostic-logs.png "Aktivieren von Diagnoseprotokollen")
 
-	* Setzen Sie **Status** auf **Ein**, um die Diagnoseprotokollierung zu aktivieren.
+	* Legen Sie **Status** auf **Ein** fest, um die Diagnoseprotokollierung zu aktivieren.
 	* Sie können die Daten auf zwei verschiedene Arten speichern/verarbeiten.
 		* Wählen Sie die Option **Nach Event Hub Exportieren**, um die Protokolldaten an einen Azure Event Hub zu streamen. Wahrscheinlich werden Sie diese Option verwenden, wenn Sie eine Downstreamverarbeitungs-Pipeline einsetzen, um eingehende Protokolle in Echtzeit zu analysieren. Wenn Sie diese Option auswählen, müssen Sie die Details für den Azure Event Hub angeben, den Sie verwenden möchten.
 		* Wählen Sie die Option **Nach Speicherkonto exportieren**, um Protokolle in einem Azure Storage-Konto zu speichern. Verwenden Sie diese Option, wenn Sie die Daten archivieren möchten, die zu einem späteren Zeitpunkt der Batchverarbeitung unterzogen werden sollen. Bei Auswahl dieser Option müssen Sie ein Azure Storage-Konto zum Speichern der Protokolle bereitstellen.
@@ -90,7 +90,7 @@ Die Überwachungs- und Anforderungsprotokolle liegen im JSON-Format vor. In dies
 
 ### Anforderungsprotokolle
 
-Hier ist ein Beispiel für einen Eintrag im JSON-formatierten Anforderungsprotokoll. Jedes Blob hat ein Stammobjekt namens **records**, das ein Array von Protokollobjekten enthält.
+Hier ist ein Beispiel für einen Eintrag im JSON-formatierten Anforderungsprotokoll. Jedes Blob hat ein Stammobjekt namens **records**, das ein Array mit Protokollobjekten enthält.
 
 	{
 	"records": 
@@ -119,12 +119,12 @@ Hier ist ein Beispiel für einen Eintrag im JSON-formatierten Anforderungsprotok
 |-----------------|--------|--------------------------------------------------------------------------------|
 | in | String | Der Zeitstempel (UTC) des Protokolls. |
 | Ressourcen-ID | String | Die ID der Ressource, auf der der Vorgang stattfand. |
-| category | String | Die Protokollkategorie. Zum Beispiel **Anforderungen**. |
+| category | String | Die Protokollkategorie. Beispiel: **Anforderungen**. |
 | operationName | String | Der Name des protokollierten Vorgangs. Beispielsweise „getfilestatus“. |
 | resultType | String | Der Status des Vorgangs, beispielsweise 200. |
 | callerIpAddress | String | Die IP-Adresse des Clients, der die Anforderung gestellt hat. |
 | correlationId | String | Die ID des Protokolls, die verwendet werden kann, um einen Satz verbundener Protokolleinträge zu gruppieren. |
-| Identität | Object | Die Identität, die das Protokoll erstellt hat. |
+| Identität | Objekt | Die Identität, die das Protokoll erstellt hat. |
 | Eigenschaften | JSON | Weitere Informationen siehe unten. |
 
 #### Eigenschaftenschema des Anforderungsprotokolls
@@ -132,7 +132,7 @@ Hier ist ein Beispiel für einen Eintrag im JSON-formatierten Anforderungsprotok
 | Name | Typ | Beschreibung |
 |----------------------|--------|-----------------------------------------------------------|
 | HttpMethod | String | Die HTTP-Methode, die für den Vorgang verwendet werden. Beispiel: GET. |
-| Path | String | Der Pfad, in dem der Vorgang durchgeführt wurde. |
+| Pfad | String | Der Pfad, in dem der Vorgang durchgeführt wurde. |
 | RequestContentLength | int | Die Inhaltslänge der HTTP-Anforderung. |
 | ClientRequestId | String | Die ID, die diese Anforderung eindeutig identifiziert. |
 | StartTime | String | Der Zeitpunkt, zu dem der Server die Anforderung empfangen hat. |
@@ -168,11 +168,11 @@ Hier ist ein Beispiel für einen Eintrag im JSON-formatierten Überwachungsproto
 |-----------------|--------|--------------------------------------------------------------------------------|
 | in | String | Der Zeitstempel (UTC) des Protokolls. |
 | Ressourcen-ID | String | Die ID der Ressource, auf der der Vorgang stattfand. |
-| category | String | Die Protokollkategorie. Zum Beispiel **Überwachung**. |
+| category | String | Die Protokollkategorie. Beispiel: **Überwachung**. |
 | operationName | String | Der Name des protokollierten Vorgangs. Beispielsweise „getfilestatus“. |
 | resultType | String | Der Status des Vorgangs, beispielsweise 200. |
 | correlationId | String | Die ID des Protokolls, die verwendet werden kann, um einen Satz verbundener Protokolleinträge zu gruppieren. |
-| Identität | Object | Die Identität, die das Protokoll erstellt hat. |
+| Identität | Objekt | Die Identität, die das Protokoll erstellt hat. |
 | Eigenschaften | JSON | Weitere Informationen siehe unten. |
 
 #### Eigenschaftenschema des Überwachungsprotokolls
@@ -187,9 +187,9 @@ Hier ist ein Beispiel für einen Eintrag im JSON-formatierten Überwachungsproto
 Azure Data Lake Store stellt ein Muster bereit, nach dem die Protokolldaten verarbeitet und analysiert werden sollen. Sie finden das Beispiel hier: [https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample](https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample).
 
 
-## Weitere Informationen
+## Siehe auch
 
 - [Übersicht über Azure Data Lake-Speicher](data-lake-store-overview.md)
 - [Sichern von Daten in Data Lake-Speicher](data-lake-store-secure-data.md)
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0914_2016-->

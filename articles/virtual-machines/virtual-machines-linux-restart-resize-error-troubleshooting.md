@@ -14,14 +14,10 @@
    ms.tgt_pltfrm="vm-linux"
    ms.devlang="na"
    ms.workload="required"
-   ms.date="06/16/2016"
+   ms.date="09/09/2016"
    ms.author="delhan"/>
 
 # Problembehandlung von Ressourcen-Manager-Bereitstellungsproblemen beim Neustart oder Ändern der Größe eines vorhandenen virtuellen Linux-Computers in Azure
-
-> [AZURE.SELECTOR]
-- [Klassisch](../articles/virtual-machines/virtual-machines-linux-classic-restart-resize-error-troubleshooting.md)
-- [Ressourcen-Manager](../articles/virtual-machines/virtual-machines-linux-restart-resize-error-troubleshooting.md)
 
 Wenn Sie versuchen, einen beendeten virtuellen Azure-Computer zu starten oder die Größe eines vorhandenen virtuellen Azure-Computers zu ändern, tritt häufig ein Zuordnungsfehler auf. Dieser Fehler tritt auf, wenn in dem Cluster oder der Region keine Ressourcen verfügbar sind, oder wenn die angeforderte Größe des virtuellen Computers nicht unterstützt werden kann.
 
@@ -78,4 +74,4 @@ Die Anforderung zur Größenänderung des virtuellen Computers muss im Originalc
 
 Wenn beim Erstellen eines neuen virtuellen Linux-Computers in Azure Probleme auftreten, finden Sie Informationen unter [Behandeln von Bereitstellungsproblemen beim Erstellen eines neuen virtuellen Linux-Computers in Azure](../virtual-machines/virtual-machines-linux-troubleshoot-deployment-new-vm.md).
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0914_2016-->

@@ -4,7 +4,7 @@
 	services="machine-learning"
 	documentationCenter=""
 	authors="garyericson"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun"/>
 
 <tags
@@ -17,7 +17,7 @@
 	ms.author="garye" />
 
 
-#Erweitern Ihres Experiments mit R
+# Erweitern Ihres Experiments mit R
 
 Sie können die Funktionalität von ML Studio mithilfe der Programmiersprache R hinaus erweitern, indem Sie das [Execute R Script][execute-r-script] verwenden.
 
@@ -29,7 +29,7 @@ Sie können auf jeden Eingangsport des Moduls mithilfe von Code wie folgt zugrei
 
 [AZURE.INCLUDE [machine-learning-kostenlose-Testversion](../../includes/machine-learning-free-trial.md)]
 
-##Auflisten aller derzeit installierten Pakete
+## Auflisten aller derzeit installierten Pakete
 
 Die Liste der installierten Pakete kann sich ändern. Um eine vollständige und aktuelle Liste der installierten Pakete abzurufen, einschließlich der Beschreibung jedes Pakets, geben Sie folgenden Code in das Modul [Execute R Script][execute-r-script] ein:
 
@@ -40,8 +40,11 @@ Damit wird die Liste der Pakete an den Ausgabeport des Moduls [Execute R Script]
 
 ![](./media/machine-learning-extend-your-experiment-with-r/download-package-list.png)
 
+<!--
+For convenience, here is the [current full list with version numbers in Excel format](http://az754797.vo.msecnd.net/docs/RPackages.xlsx).
+-->
 
-##Importieren von Paketen
+## Importieren von Paketen
 
 Sie können auch Pakete importieren, die noch nicht aus einem bereitgestellten ML Studio Repository installiert wurden. Hierzu verwenden Sie die folgenden Befehle im Modul [Execute R Script][execute-r-script] und einem gezippten Paketarchiv:
 
@@ -50,9 +53,8 @@ Sie können auch Pakete importieren, die noch nicht aus einem bereitgestellten M
 
 Hierbei enthält `my_favorite_package.zip` die ZIP-Datei des Pakets.
 
-
 <!-- Module References -->
 [execute-r-script]: https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/
 [convert-to-csv]: https://msdn.microsoft.com/library/azure/faa6ba63-383c-4086-ba58-7abf26b85814/
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0914_2016-->

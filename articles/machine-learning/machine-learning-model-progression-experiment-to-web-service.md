@@ -4,7 +4,7 @@
 	services="machine-learning"
 	documentationCenter=""
 	authors="garyericson"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun"/>
 
 <tags
@@ -145,7 +145,7 @@ Wenn Sie Ihr Machine Learning-Modell beibehalten, es aber mit neuen Daten neu tr
 
 **Sie möchten ein anderes Modell trainieren**
 
-Wenn Sie am ursprünglichen Vorhersageexperiment Änderungen vornehmen möchten (z. B. einen anderen Machine Learning-Algorithmus auswählen oder eine andere Trainingsmethode ausprobieren), müssen Sie die zweite oben beschriebene Vorgehensweise zum Neutrainieren Ihres Modells befolgen: Öffnen Sie das Trainingsexperiment, klicken Sie auf **Speichern unter**, um eine Kopie zu erstellen, und starten Sie einen neuen Pfad zur Entwicklung des Modells, zur Erstellung des Vorhersageexperiments und zur Bereitstellung des Webdiensts. Dadurch wird ein neuer Webdienst erstellt, der vom ursprünglichen unabhängig ist. Sie können entscheiden, welcher von beiden weiterhin ausgeführt wird bzw. ob beide parallel ausgeführt werden.
+Wenn Sie am ursprünglichen Vorhersageexperiment Änderungen vornehmen möchten (z. B. einen anderen Machine Learning-Algorithmus auswählen oder eine andere Trainingsmethode ausprobieren), müssen Sie die zweite oben beschriebene Vorgehensweise zum Neutrainieren Ihres Modells befolgen: Öffnen Sie das Trainingsexperiment, klicken Sie auf **Speichern unter**, um eine Kopie zu erstellen, und starten Sie einen neuen Pfad zur Entwicklung des Modells, zur Erstellung des Vorhersageexperiments und zur Bereitstellung des Webdiensts. Dadurch wird ein neuer Webdienst erstellt, der vom ursprünglichen unabhängig ist. Sie können entscheiden, welcher von beiden weiterhin ausgeführt wird bzw. ob beide parallel ausgeführt werden.
 
 ## Weitere nützliche Informationen
 
@@ -163,4 +163,4 @@ Beispiele für den gesamten Prozess finden Sie unter:
 
 -   [Exemplarische Vorgehensweise: Entwickeln einer Lösung zur Vorhersageanalyse für die Kreditrisikobewertung in Azure Machine Learning](machine-learning-walkthrough-develop-predictive-solution.md)
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0914_2016-->

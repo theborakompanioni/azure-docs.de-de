@@ -1,10 +1,10 @@
 <properties 
    pageTitle="Entwickeln von U-SQL-Skripts mit Data Lake-Tools für Visual Studio | Azure" 
-   description="Erfahren Sie, wie Sie Data Lake-Tools für Visual Studio installieren und U-SQL-Skripts entwickeln und testen." 
+   description="Erfahren Sie, wie Sie Data Lake-Tools für Visual Studio installieren und U-SQL-Skripts entwickeln und testen. " 
    services="data-lake-analytics" 
    documentationCenter="" 
    authors="edmacauley" 
-   manager="paulettm" 
+   manager="jhubbard" 
    editor="cgronlun"/>
  
 <tags
@@ -56,7 +56,7 @@ Einige Konzepte und Schlüsselwörter im Skript:
 - **Rowsetvariablen**: Jeder Abfrageausdruck, der ein Rowset produziert, kann einer Variablen zugewiesen werden. U-SQL basiert im Skript auf dem Benennungsmuster für T-SQL-Variablen, z. B. **@searchlog**. Beachten Sie, dass die Zuweisung keine Erzwingung der Ausführung bedeutet. Der Ausdruck wird lediglich benannt, und Sie haben die Möglichkeit, komplexere Ausdrücke zu erstellen.
 - Mit **EXTRACT** können Sie bei einem Lesevorgang ein Schema definieren. Das Schema wird mit einem Spaltennamen und einem C#-Typnamenpaar pro Spalte angegeben. Es wird ein so genannter **Extractor** verwendet, z. B. **Extractors.Tsv()**, um TSV-Dateien zu extrahieren. Sie können benutzerdefinierte Extractors entwickeln.
 - Mit **OUTPUT** wird ein Rowset serialisiert. Mit der Datei „Outputters.Csv()“ wird eine kommagetrennte Datei an einem bestimmten Speicherort ausgegeben. Sie können auch benutzerdefinierte Outputter-Dateien entwickeln.
-- Beachten Sie, dass es sich bei den beiden Pfaden um relative Pfade handelt. Sie können aber auch absolute Pfade verwenden. Beispiel: 
+- Beachten Sie, dass es sich bei den beiden Pfaden um relative Pfade handelt. Sie können aber auch absolute Pfade verwenden. Beispiel:
     
         adl://<ADLStorageAccountName>.azuredatalakestore.net:443/Samples/Data/SearchLog.tsv
         
@@ -402,10 +402,10 @@ In diesem Tutorial wurde nur ein kleiner Teil von U-SQL behandelt. Aufgrund des 
 - Entwickeln von benutzerdefinierten Operatoren, z. B. Extractors, Outputters, Prozessoren, benutzerdefinierte Aggregatoren in C#
 - Verwenden von U-SQL-Windowing-Funktionen
 - Verwalten von U-SQL-Code mit Ansichten, Tabellenwertfunktionen und gespeicherten Prozeduren
-- Ausführen von beliebigem benutzerdefiniertem Code auf Verarbeitungsknoten 
+- Ausführen von beliebigem benutzerdefiniertem Code auf Verarbeitungsknoten
 - Herstellen einer Verbindung mit Azure SQL-Datenbanken und Durchführen von Partnerverbundabfragen für diese Datenbanken und Ihre U-SQL- und Azure Data Lake-Daten
 
-## Weitere Informationen 
+## Siehe auch 
 
 - [Übersicht über Microsoft Azure Data Lake Analytics](data-lake-analytics-overview.md)
 - [Entwickeln von U-SQL-Skripts mit Data Lake-Tools für Visual Studio](data-lake-analytics-data-lake-tools-get-started.md)
@@ -419,4 +419,4 @@ In diesem Tutorial wurde nur ein kleiner Teil von U-SQL behandelt. Aufgrund des 
 - [Hilfe in Foren](http://aka.ms/adlaforums)
 - [Feedback zu U-SQL](http://aka.ms/usqldiscuss)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0914_2016-->

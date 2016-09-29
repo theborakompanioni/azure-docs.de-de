@@ -4,7 +4,7 @@
    services="hdinsight"
    documentationCenter=""
    authors="Blackmist"
-   manager="paulettm"
+   manager="jhubbard"
    editor="cgronlun"/>
 
 <tags
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="06/22/2016"
+   ms.date="09/07/2016"
    ms.author="larryfr"/>
 
 # Bereitstellen und Verwalten von Apache Storm-Topologien in HDInsight unter Linux
@@ -62,11 +62,11 @@ Dieses Dokument enthält die Grundlagen zur Verwaltung und Überwachung von Stor
 
 Sie können programmgesteuert eine Topologie für Storm in HDInsight bereitstellen, indem Sie mit dem in Ihrem Cluster gehosteten Nimbus-Dienst kommunizieren. Die Java-Beispielanwendung unter [https://github.com/Azure-Samples/hdinsight-java-deploy-storm-topology](https://github.com/Azure-Samples/hdinsight-java-deploy-storm-topology) zeigt, wie Sie eine Topologie über den Nimbus-Dienst bereitstellen und starten.
 
-##Überwachen und Verwalten mit dem Befehl "storm"
+## Überwachen und Verwalten mit dem Befehl "storm"
 
 Mit dem Dienstprogramm `storm` können Sie an der Befehlszeile mit ausgeführten Topologien arbeiten. Im Folgenden finden Sie eine Liste mit häufig verwendeten Befehlen. Eine vollständige Liste der Befehle erhalten Sie mit `storm -h`.
 
-###Auflisten der Topologien
+### Auflisten der Topologien
 
 Mit dem folgenden Befehl können Sie alle ausgeführten Topologien auflisten:
 
@@ -78,7 +78,7 @@ Die Ausgabe dieses Befehls sieht etwa so aus:
     -------------------------------------------------------------------
     WordCount            ACTIVE     29         2            263
 
-###Deaktivieren und erneutes Aktivieren
+### Deaktivieren und erneutes Aktivieren
 
 Durch das Deaktivieren wird eine Topologie unterbrochen, bis sie beendet oder erneut aktiviert wird. Verwenden Sie zum Deaktivieren und erneuten Aktivieren folgende Befehle:
 
@@ -86,13 +86,13 @@ Durch das Deaktivieren wird eine Topologie unterbrochen, bis sie beendet oder er
     
     storm Activate TOPOLOGYNAME
 
-###Beenden einer ausgeführten Topologie
+### Beenden einer ausgeführten Topologie
 
 Storm-Topologien werden, nachdem sie einmal gestartet wurden, so lange ausgeführt, bis sie beendet werden. Führen Sie zum Beenden einer Topologie den folgenden Befehl aus:
 
     storm stop TOPOLOGYNAME
 
-###Ausgleichen
+### Ausgleichen
 
 Durch das Ausgleichen einer Topologie kann das System die Parallelität der Topologie überarbeiten. Wenn Sie z. B. die Größe des Clusters geändert haben, um zusätzliche Notizen hinzuzufügen, ermöglicht ein Ausgleich einer ausgeführten Topologie, die neuen Knoten zu verwenden.
 
@@ -100,7 +100,7 @@ Durch das Ausgleichen einer Topologie kann das System die Parallelität der Topo
 
     storm rebalance TOPOLOGYNAME
 
-##Überwachen und Verwalten mit der Storm-Benutzeroberfläche
+## Überwachen und Verwalten mit der Storm-Benutzeroberfläche
 
 Die Storm-Benutzeroberfläche bietet eine Weboberfläche zum Arbeiten mit ausgeführten Topologien und befindet sich auf dem HDInsight-Cluster. Öffnen Sie __https://CLUSTERNAME.azurehdinsight.net/stormui__ in einem Webbrowser (wobei __CLUSTERNAME\_\_ der Name Ihres Clusters ist), um die Storm-Benutzeroberfläche zu anzuzeigen.
 
@@ -197,4 +197,4 @@ Nachdem Sie erfahren haben, wie Sie Topologien mithilfe des Storm-Dashboards ber
 
 Eine Liste weiterer Beispieltopologien finden Sie unter [Beispieltopologien für Storm auf HDInsight](hdinsight-storm-example-topology.md).
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0914_2016-->

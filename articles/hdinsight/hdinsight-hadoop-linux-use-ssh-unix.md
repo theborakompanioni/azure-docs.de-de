@@ -14,7 +14,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="08/30/2016"
+   ms.date="09/13/2016"
    ms.author="larryfr"/>
 
 #Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X
@@ -43,7 +43,7 @@ OR
 
 ##Was ist SSH?
 
-SSH ist ein Dienstprogramm zur Anmeldung und Remoteausführung von Befehlen auf einem Remoteserver. Bei Linux-basiertem HDInsight stellt SSH eine verschlüsselte Verbindung mit dem Hauptknoten des Clusters her und bietet eine Befehlszeile, über die Sie Befehle eingeben können. Die Befehle werden dann direkt auf dem Server ausgeführt.
+SSH ist ein Dienstprogramm zur Anmeldung und Remoteausführung von Befehlen auf einem Remoteserver. Bei Linux-basiertem HDInsight stellt SSH eine verschlüsselte Verbindung mit dem Hauptknoten des Clusters her und zeigt eine Befehlszeile an, über die Sie Befehle eingeben können. Die Befehle werden dann direkt auf dem Server ausgeführt.
 
 ###SSH-Benutzername
 
@@ -118,17 +118,17 @@ Weitere Informationen zur Verwendung dieses Befehls finden Sie unter [Benutzerde
 
 ##Verbinden mit einem Linux-basierten HDInsight-Cluster
 
-Geben Sie in einer Terminalsitzung den SSH-Befehl ein, um die Verbindung mit dem Hauptknoten des Clusters herzustellen, indem Sie Adresse und den Benutzernamen angeben:
+Geben Sie in einer Terminalsitzung den SSH-Befehl ein, um die Verbindung mit dem Hauptknoten des Clusters herzustellen, indem Sie die Adresse und den Benutzernamen angeben:
 
 * **SSH-Adresse**: Für die Verbindungsherstellung mit einem Cluster per SSH stehen zwei Adressen zur Verfügung:
 
-    * **Verbindungsherstellung mit dem Hauptknoten:** Der Clustername, gefolgt von **-ssh.azurehdinsight.net**. Beispiel: **mycluster-ssh.azurehdinsight.net**.
+    * **Verbindungsherstellung mit dem Hauptknoten**: Der Clustername, gefolgt von **-ssh.azurehdinsight.net**. Beispiel: **mycluster-ssh.azurehdinsight.net**.
     
-    * **Verbindungsherstellung mit dem Edgeknoten:** Wenn Sie über einen R Server-Cluster in HDInsight verfügen, enthält der Cluster auch einen Edgeknoten, auf den mithilfe von **RServer.CLUSTERNAME.ssh.azurehdinsight.net** zugegriffen werden kann. Dabei steht __CLUSTERNAME__ für den Namen des Clusters.
+    * **Verbindungsherstellung mit dem Edgeknoten**: Wenn Sie über einen R Server-Cluster in HDInsight verfügen, enthält der Cluster auch einen Edgeknoten, auf den mithilfe von **RServer.CLUSTERNAME.ssh.azurehdinsight.net** zugegriffen werden kann. Dabei steht __CLUSTERNAME__ für den Namen des Clusters.
 
 * **Benutzername**: Der SSH-Benutzername, den Sie bei der Erstellung des Clusters angegeben haben.
 
-Im folgenden Beispiel stellt der Benutzer **me** eine Verbindung mit dem Hauptknoten 0 von **mycluster** her:
+Im folgenden Beispiel stellt der Benutzer **me** eine Verbindung mit dem primären Hauptknoten **mycluster** her:
 
 	ssh me@mycluster-ssh.azurehdinsight.net
 
@@ -140,11 +140,11 @@ Wenn Sie einen SSH-Schlüssel verwendet haben, der mit einer Passphrase geschüt
 >
 > `ssh -i ~/.ssh/id_rsa me@mycluster-ssh.azurehdinsight.net`
 
-Wenn Sie mithilfe der Adresse für den Hauptknoten eine Verbindung herstellen und kein Port angegeben wird, verwendet SSH standardmäßig Port 22. Über diesen Port wird eine Verbindung mit dem Hauptknoten 0 im HDInsight-Cluster hergestellt. Wenn Sie Port 23 verwenden, wird eine Verbindung mit „head node 1“ hergestellt. Weitere Informationen zu Hauptknoten finden Sie unter [Verfügbarkeit und Zuverlässigkeit von Hadoop-Clustern in HDInsight](hdinsight-high-availability-linux.md).
+Wenn Sie mithilfe der Adresse für den Hauptknoten eine Verbindung herstellen und kein Port angegeben wird, verwendet SSH standardmäßig Port 22. Über diesen Port wird eine Verbindung mit dem primären Hauptknoten im HDInsight-Cluster hergestellt. Wenn Sie Port 23 verwenden, wird eine Verbindung mit dem sekundären Knoten hergestellt. Weitere Informationen zu Hauptknoten finden Sie unter [Verfügbarkeit und Zuverlässigkeit von Hadoop-Clustern in HDInsight](hdinsight-high-availability-linux.md).
 
 ###Herstellen einer Verbindung mit den Workerknoten
 
-Auf die Workerknoten kann von außerhalb des Azure-Datencenters nicht direkt zugegriffen werden. Doch auf dem Hauptknoten des Clusters ist der Zugriff darauf über SSH möglich.
+Auf die Workerknoten kann von außerhalb des Azure-Datencenters nicht direkt zugegriffen werden. Aber auf dem Hauptknoten des Clusters ist der Zugriff darauf über SSH möglich.
 
 Wenn Sie einen SSH-Schlüssel verwenden, um Ihr Benutzerkonto zu authentifizieren, müssen Sie auf dem Client die folgenden Schritte ausführen:
 
@@ -195,9 +195,9 @@ Führen Sie die folgenden Schritte zum Verbinden mit den Workerknoten für Ihren
 
     > [AZURE.NOTE] Wenn Sie ein Kennwort zur Authentifizierung Ihrer SSH-Sitzung verwenden, werden Sie aufgefordert, das Kennwort erneut einzugeben. Wenn Sie einen SSH-Schlüssel verwenden, sollte die Verbindung ohne Aufforderungen fertig gestellt werden.
 
-4. Sobald die Sitzung eingerichtet ist, ändert sich die Terminaleingabeaufforderung von `username@hn0-clustername` in `username@wk0-clustername`, um anzugeben, dass Sie mit dem Workerknoten verbunden sind. Alle Befehle, die Sie ab diesem Punkt ausführen, werden auf dem Workerknoten ausgeführt.
+4. Sobald die Sitzung eingerichtet ist, ändert sich die Terminaleingabeaufforderung von `username@hn#-clustername` in `username@wk#-clustername`, um anzugeben, dass Sie mit dem Workerknoten verbunden sind. Alle Befehle, die Sie ab diesem Punkt ausführen, werden auf dem Workerknoten ausgeführt.
 
-4. Wenn Sie mit dem Ausführen von Aktionen auf dem Workerknoten fertig sind, geben Sie den Befehl `exit` zum Schließen der Sitzung mit dem Workerknoten ein. Sie kehren zur Eingabeaufforderung `username@hn0-clustername` zurück.
+4. Wenn Sie mit dem Ausführen von Aktionen auf dem Workerknoten fertig sind, geben Sie den Befehl `exit` zum Schließen der Sitzung mit dem Workerknoten ein. Sie kehren zur Eingabeaufforderung `username@hn#-clustername` zurück.
 
 ##Hinzufügen weiterer Konten
 
@@ -229,7 +229,7 @@ Führen Sie die folgenden Schritte zum Verbinden mit den Workerknoten für Ihren
 
 ##<a id="tunnel"></a>SSH-Tunnel
 
-SSH kann auch zum Tunneln lokaler Anforderungen wie etwa Webanforderungen zum HDInsight-Cluster verwendet werden. Die Anforderung wird dann zur angeforderten Ressource weitergeleitet, als ob sie vom Stammknoten des HDInsight-Clusters stammen würde.
+SSH kann auch zum Tunneln lokaler Anforderungen wie etwa Webanforderungen zum HDInsight-Cluster verwendet werden. Die Anforderung wird dann an die angeforderte Ressource weitergeleitet, als ob sie vom Stammknoten des HDInsight-Clusters stammen würde.
 
 > [AZURE.IMPORTANT] Ein SSH-Tunnel ist für manche Hadoop-Dienste eine Voraussetzung für den Zugriff auf die Webbenutzeroberfläche. Auf die Benutzeroberfläche des Auftragsverlaufs und des Ressourcen-Managers kann beispielsweise nur über einen SSH-Tunnel zugegriffen werden.
 
@@ -247,4 +247,4 @@ Nachdem Sie jetzt wissen, wie die Authentifizierung mithilfe eines SSH-Schlüsse
 
 [preview-portal]: https://portal.azure.com/
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

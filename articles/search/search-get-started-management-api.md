@@ -4,7 +4,7 @@
 	services="search" 
 	documentationCenter="" 
 	authors="HeidiSteen" 
-	manager="paulettm" 
+	manager="jhubbard" 
 	editor=""/>
 
 <tags 
@@ -208,4 +208,4 @@ Nach Abschluss dieses Lernprogramms empfiehlt es sich, mehr über die Dienstverw
 
  
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0914_2016-->

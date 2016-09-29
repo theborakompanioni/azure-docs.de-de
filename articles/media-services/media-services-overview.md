@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Azure Media Services – Übersicht und häufige Szenarios" 
+	pageTitle="Azure Media Services – Übersicht und häufige Szenarios | Microsoft Azure" 
 	description="Dieses Thema bietet eine Übersicht über Azure Media Services." 
 	services="media-services" 
 	documentationCenter="" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="hero-article" 
-	ms.date="08/07/2016"
+	ms.date="09/19/2016"
 	ms.author="juliako;anilmur"/>
 
 #Azure Media Services – Übersicht und häufige Szenarios
@@ -24,19 +24,19 @@ Sie können mithilfe von Media Services vollständige End-to-End-Workflows erste
 
 Sie können Ihre Inhalte live streamen oder sie bei Bedarf bereitstellen. In diesem Thema werden allgemeine Szenarien für die Übermittlung von Inhalten [live](media-services-overview.md#live_scenarios) oder [bei Bedarf](media-services-overview.md#vod_scenarios) gezeigt. Das Thema enthält außerdem Links zu anderen relevanten Themen.
 
-## SDKs und Tools 
+## SDKs und Tools
 
 Zum Entwickeln von Media Services-Lösungen können Sie folgende Komponenten verwenden:
 
 - [Media Services-REST-API](https://msdn.microsoft.com/library/azure/hh973617.aspx)
 - Eines der verfügbaren Client-SDKs:
-	- [Azure Media Services SDK für .NET](https://github.com/Azure/azure-sdk-for-media-services),
-	- [Azure SDK für Java](https://github.com/Azure/azure-sdk-for-java),
-	- [Azure PHP SDK](https://github.com/Azure/azure-sdk-for-php),
-	- [Azure Media Services für Node.js](https://github.com/michelle-becker/node-ams-sdk/blob/master/lib/request.js) (dies ist eine nicht von Microsoft stammende Version des Node.js SDK. Sie wird von einer Community verwaltet und bietet derzeit keine 100 %-ige Abdeckung der AMS-APIs).
+- [Azure Media Services SDK für .NET](https://github.com/Azure/azure-sdk-for-media-services)
+- [Azure SDK für Java](https://github.com/Azure/azure-sdk-for-java)
+- [Azure PHP SDK](https://github.com/Azure/azure-sdk-for-php)
+- [Azure Media Services für Node.js](https://github.com/michelle-becker/node-ams-sdk/blob/master/lib/request.js) (Dies ist eine nicht von Microsoft stammende Version des Node.js SDK. Sie wird von einer Community verwaltet und bietet derzeit keine 100 %-ige Abdeckung der AMS-APIs).
 - Vorhandene Tools:
-	- [Klassisches Azure-Portal](http://manage.windowsazure.com/)
-	- [Azure-Media-Services-Explorer](https://github.com/Azure/Azure-Media-Services-Explorer) (Azure Media Services Explorer [AMSE] ist eine Winforms-/ C#-Anwendung für Windows)
+- [Klassisches Azure-Portal](http://manage.windowsazure.com/)
+- [Azure Media Services-Explorer](https://github.com/Azure/Azure-Media-Services-Explorer) (Azure Media Services Explorer [AMSE] ist eine WinForms-/C#-Anwendung für Windows)
 
 ##Media Services-Lernpfade
 
@@ -48,23 +48,23 @@ Sie können sich die AMS-Lernpfade hier ansehen:
 ##Voraussetzungen
 
 Um mit Azure Media Services loszulegen, sollten Sie Folgendes haben:
- 
-3. Ein Azure-Konto. Wenn Sie noch kein Konto haben, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com).
+
+3. Ein Azure-Konto. Wenn Sie noch kein Konto haben, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Weitere Informationen finden Sie unter [Kostenloses Azure-Testkonto](https://azure.microsoft.com).
 2. Ein Azure Media Services-Konto. Verwenden Sie das klassische Azure-Portal, .NET oder die REST-API zum Erstellen eines Azure Media Services-Kontos. Weitere Informationen finden Sie unter [Erstellen von Konten](media-services-create-account.md).
 3. (Optional) Eine eingerichtete Entwicklungsumgebung. Wählen Sie .NET oder REST-API für Ihre Entwicklungsumgebung. Weitere Informationen finden Sie unter [Einrichten der Umgebung](media-services-dotnet-how-to-use.md).
 
-	Erfahren Sie darüber hinaus, wie Sie programmgesteuert eine [Verbindung](media-services-dotnet-connect-programmatically.md) herstellen können.
-4. (Empfohlen) Eine oder mehrere zugewiesene Skalierungseinheiten. Es wird empfohlen, für Anwendungen in der Produktionsumgebung eine oder mehrere Skalierungseinheiten zu reservieren. Weitere Informationen finden Sie unter [Verwalten von Streamingendpunkten](media-services-manage-origins.md).
+Erfahren Sie darüber hinaus, wie Sie programmgesteuert eine [Verbindung](media-services-dotnet-connect-programmatically.md) herstellen können.
+4. (Empfohlen) Eine oder mehrere zugewiesene Skalierungseinheiten. Es wird empfohlen, für Anwendungen in der Produktionsumgebung eine oder mehrere Skalierungseinheiten zu reservieren. Weitere Informationen finden Sie unter [Verwalten von Streamingendpunkten](media-services-portal-manage-streaming-endpoints.md).
 
 ##Konzepte und Übersicht
 
 Azure Media Services-Konzepte finden Sie unter [Konzepte](media-services-concepts.md).
 
-Eine Reihe mit Vorgehensweisen (Gewusst wie), in der Sie in die wichtigsten Komponenten von Azure Media Services eingeführt werden, finden Sie unter [Azure Media Services Step-by-Step tutorials](https://docs.com/fukushima-shigeyuki/3439/english-azure-media-services-step-by-step-series) (Schritt-für-Schritt-Tutorials zu Azure Media Services). Diese Serie bietet eine hervorragende Übersicht über die Konzepte und verwendet das AMSE-Tool, um die AMS-Aufgaben zu erläutern. Beachten Sie, dass es sich beim AMSE-Tool um ein Windows-Tool handelt. Dieses Tool unterstützt die meisten Aufgaben, die Sie programmgesteuert mit dem [AMS SDK für .NET](https://github.com/Azure/azure-sdk-for-media-services), dem [Azure SDK für Java](https://github.com/Azure/azure-sdk-for-java) oder dem [Azure PHP SDK](https://github.com/Azure/azure-sdk-for-php) durchführen können.
+Eine Reihe mit Vorgehensweisen (Gewusst wie), in der die wichtigsten Komponenten von Azure Media Services beschrieben werden, finden Sie unter [Azure Media Services Step-by-Step tutorials](https://docs.com/fukushima-shigeyuki/3439/english-azure-media-services-step-by-step-series) (Schritt-für-Schritt-Tutorials zu Azure Media Services). Diese Serie bietet eine hervorragende Übersicht über die Konzepte und verwendet das AMSE-Tool, um die AMS-Aufgaben zu erläutern. Beachten Sie, dass es sich beim AMSE-Tool um ein Windows-Tool handelt. Dieses Tool unterstützt die meisten Aufgaben, die Sie programmgesteuert mit dem [AMS SDK für .NET](https://github.com/Azure/azure-sdk-for-media-services), dem [Azure SDK für Java](https://github.com/Azure/azure-sdk-for-java) oder dem [Azure PHP SDK](https://github.com/Azure/azure-sdk-for-php) durchführen können.
 
 ##<a id="vod_scenarios"></a>Bereitstellen von Medien-on-Demand mit Azure Media Services: häufige Szenarios und Aufgaben.
 
-Dieser Abschnitt erläutert allgemeine Szenarien und enthält Links zu relevanten Themen. Das folgende Diagramm zeigt die Hauptbestandteile der Media Services-Plattform, die am Bereitstellen von On-Demand-Inhalten beteiligt sind.
+In diesem Abschnitt werden allgemeine Szenarien erläutert und Links zu relevanten Themen bereitgestellt. Das folgende Diagramm zeigt die Hauptbestandteile der Media Services-Plattform, die am Bereitstellen von On-Demand-Inhalten beteiligt sind.
 
 ![VoD-Workflow](./media/media-services-video-on-demand-workflow/media-services-video-on-demand.png)
 
@@ -135,14 +135,14 @@ Beim Arbeiten mit Livestreaming werden normalerweise die folgenden Komponenten v
 - Eine Kamera, mit der ein Ereignis übertragen wird.
 - Ein Live-Video-Encoder, der Signale von der Kamera in Datenströme konvertiert, die an einen Livestreaming-Dienst gesendet werden.
 
-	Optional: mehrere zeitsynchronisierte Liveencoder. Für bestimmte kritische Liveereignisse, die eine sehr hohe Verfügbarkeit und Quality of Experience erfordern, wird der Einsatz redundanter Aktiv-Aktiv-Encoder mit Zeitsynchronisierung empfohlen, um ein nahtloses Failover ohne Datenverlust zu erreichen.
+Optional: mehrere zeitsynchronisierte Liveencoder. Für bestimmte kritische Liveereignisse, die eine sehr hohe Verfügbarkeit und Quality of Experience erfordern, wird der Einsatz redundanter Aktiv-Aktiv-Encoder mit Zeitsynchronisierung empfohlen, um ein nahtloses Failover ohne Datenverlust zu erreichen.
 - Ein Livestreaming-Dienst, der Ihnen Folgendes ermöglicht:
-	
-	- Erfassen von Liveinhalten über verschiedene Livestreaming-Protokolle (z. B. RTMP oder Smooth Streaming)
-	- Optional: Codieren des Datenstroms in einen Datenstrom mit adaptiver Bitrate
-	- Vorschau des Livestreams
-	- Aufzeichnen und Speichern des erfassten Inhalts für ein späteres Streaming (Video-on-Demand)
-	- Übermitteln der Inhalte über häufig verwendete Streaming-Protokolle (z. B. MPEG DASH, Smooth, HLS, HDS) direkt an die Kunden oder an ein Content Delivery Network (CDN) zur weiteren Verteilung
+
+- Erfassen von Liveinhalten über verschiedene Livestreaming-Protokolle (z. B. RTMP oder Smooth Streaming)
+- Optional: Codieren des Datenstroms in einen Datenstrom mit adaptiver Bitrate
+- Vorschau des Livestreams
+- Aufzeichnen und Speichern des erfassten Inhalts für ein späteres Streaming (Video-on-Demand)
+- Übermitteln der Inhalte über häufig verwendete Streaming-Protokolle (z. B. MPEG DASH, Smooth, HLS, HDS) direkt an die Kunden oder an ein Content Delivery Network (CDN) zur weiteren Verteilung
 
 
 Mit **Microsoft Azure Media Services** (AMS) können Sie Livestreaminginhalte erfassen, codieren, in der Vorschau anzeigen, speichern und bereitstellen.
@@ -153,10 +153,10 @@ In Azure Media Services verarbeiten die **Kanäle**, **Programme** und **Streami
 
 Ein **Kanal** stellt eine Pipeline zum Verarbeiten von Livestreaming-Inhalten dar. Ein Kanal kann Live-Eingabedatenströme auf folgende Arten empfangen:
 
-- Von einem lokalen Liveencoder wird Multi-Bitrate-basiertes **RTMP** oder **Smooth Streaming** (fragmentiertes MP4) an den für **Pass-Through** konfigurierten Kanal gesendet. Bei der **Pass-Through-Übertragung** durchlaufen die erfassten Datenströme die **Kanäle** ohne weitere Verarbeitung. Sie können die folgenden Liveencoder verwenden, von denen Multi-Bitrate-Smooth Streaming ausgegeben werden kann: Elemental, Envivio, Cisco. Von den folgenden Liveencodern wird RTMP ausgegeben: Adobe Flash Live, Telestream Wirecast und Tricaster-Transcoder. Ein Liveencoder kann auch einen Single-Bitrate-Datenstrom an einen Kanal senden, der nicht für die Livecodierung konfiguriert ist. Dies wird jedoch nicht empfohlen. Auf Anforderung wird der Datenstrom den Kunden von Media Services bereitgestellt.
+- Von einem lokalen Liveencoder wird Mehrfachbitrate-basiertes **RTMP** oder **Smooth Streaming** (fragmentiertes MP4) an den für **Pass-Through** konfigurierten Kanal gesendet. Bei der **Pass-Through-Übertragung** durchlaufen die erfassten Datenströme die **Kanäle** ohne weitere Verarbeitung. Sie können die folgenden Liveencoder verwenden, von denen Multi-Bitrate-Smooth Streaming ausgegeben werden kann: Elemental, Envivio, Cisco. Von den folgenden Liveencodern wird RTMP ausgegeben: Adobe Flash Live, Telestream Wirecast und Tricaster-Transcoder. Ein Liveencoder kann auch einen Single-Bitrate-Datenstrom an einen Kanal senden, der nicht für die Livecodierung konfiguriert ist. Dies wird jedoch nicht empfohlen. Auf Anforderung wird der Datenstrom den Kunden von Media Services bereitgestellt.
 
-	>[AZURE.NOTE] Die Verwendung der Pass-Through-Methode ist die wirtschaftlichste Form des Livestreamings, wenn mehrere Ereignisse über einen längeren Zeitraum gestreamt werden und Sie bereits in lokale Encoder investiert haben. Preisdetails finden Sie [hier](/pricing/details/media-services/).
-	
+>[AZURE.NOTE] Die Verwendung der Pass-Through-Methode ist die wirtschaftlichste Form des Livestreamings, wenn mehrere Ereignisse über einen längeren Zeitraum gestreamt werden und Sie bereits in lokale Encoder investiert haben. Preisdetails finden Sie [hier](/pricing/details/media-services/).
+
 - Ein lokaler Liveencoder sendet einen Single-Bitrate-Datenstrom an den Kanal, der zum Ausführen von Livecodierung mit Media Services in einem der folgenden Formate aktiviert wurde: RTP (MPEG-TS), RTMP oder Smooth Streaming (fragmentiertes MP4). Vom Kanal wird dann eine Livecodierung des Single-Bitrate-Eingabedatenstroms in einen Multi-Bitrate-Videodatenstrom (adaptiv) ausgeführt. Auf Anforderung wird der Datenstrom den Kunden von Media Services bereitgestellt.
 
 
@@ -185,7 +185,7 @@ Azure Media Services stellt die Tools zur Verfügung, die zum Erstellen leistung
 
 ##Aktivieren von Azure CDN
 
-Von Media Services wird die Integration mit Azure CDN unterstützt. Informationen zum Aktivieren von Azure CDN finden Sie unter [Verwalten von Streamingendpunkten in Media Services-Konten](media-services-manage-origins.md#enable_cdn).
+Von Media Services wird die Integration mit Azure CDN unterstützt. Informationen zum Aktivieren von Azure CDN finden Sie unter [Verwalten von Streamingendpunkten in Media Services-Konten](media-services-portal-manage-streaming-endpoints.md).
 
 ##Skalieren eines Media Services-Kontos
 
@@ -193,7 +193,7 @@ Sie können **Media Services** skalieren, indem Sie die Anzahl **reservierter Ei
 
 Außerdem können Sie Ihr Media Services-Konto skalieren, indem Sie Speicherkonten hinzufügen. Jedes Speicherkonto ist auf 500 TB beschränkt. Um den Speicher über die Standardbeschränkungen hinaus zu erweitern, können Sie mehrere Speicherkonten mit einem einzelnen Media Services-Konto verknüpfen.
 
-[Dieses](media-services-how-to-scale.md) Thema enthält Links zu relevanten Themen.
+[Dieses Thema](media-services-portal-scale-streaming-endpoints.md) enthält Links zu relevanten Themen.
 
 ##Support
 
@@ -220,4 +220,4 @@ Weitere Informationen finden Sie im [Microsoft Azure-SLA](https://azure.microsof
 [live-overview2]: ./media/media-services-live-streaming-workflow/media-services-live-streaming-current.png
  
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0921_2016-->

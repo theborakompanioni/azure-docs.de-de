@@ -185,7 +185,7 @@ Dieser Code erhöht die Mindestanzahl von ThreadPool-Threads:
 
 	ThreadPool.SetMinThreads(100,100); //(Determine the right number for your application)  
 
-Weitere Informationen finden Sie unter [ThreadPool.SetMinThreads Method](http://msdn.microsoft.com/library/system.threading.threadpool.setminthreads(v=vs.110).aspx)).
+Weitere Informationen finden Sie unter [ThreadPool.SetMinThreads-Methode](http://msdn.microsoft.com/library/system.threading.threadpool.setminthreads%28v=vs.110%29.aspx).
 
 ####<a name="subheading11"></a>Nutzung der .NET 4.5 Garbage Collection
 Verwenden Sie .NET 4.5 oder höher, damit die Clientanwendung die Leistungsverbesserungen bei der Server Garbage Collection nutzen kann.
@@ -404,4 +404,4 @@ Verwenden Sie Warteschlangen, um die Anwendungsarchitektur skalierbar zu machen.
 ##Zusammenfassung
 In diesem Artikel wurden einige der häufigsten bewährten Vorgehensweisen zur Leistungsoptimierung bei der Verwendung des Azure-Speichers erläutert. Wir empfehlen jedem Anwendungsentwickler, seine Anwendung anhand dieser Vorgehensweisen zu überprüfen und ggf. die Empfehlungen umzusetzen, um bessere Leistung für ihre Anwendungen zu erzielen, die Azure-Speicher verwenden.
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0914_2016-->

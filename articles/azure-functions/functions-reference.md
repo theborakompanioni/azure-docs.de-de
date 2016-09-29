@@ -78,21 +78,19 @@ Der im Azure-Portal integrierte Funktionen-Editor ermöglicht das Aktualisieren 
 
 Funktionen-Apps basieren auf App Service. Daher stehen alle [für Standard-Web-Apps verfügbaren Bereitstellungsoptionen](../app-service-web/web-sites-deploy.md) auch für Funktionen-Apps zur Verfügung. Es folgen einige Methoden, die Sie zum Hochladen oder Aktualisieren von Funktionen-App-Dateien befolgen können.
 
-#### So verwenden Sie Visual Studio Team Services (Monaco)
+#### So verwenden Sie den App Service-Editor
 
 1. Klicken Sie im Azure Functions-Portal auf **Funktionen-App-Einstellungen**.
 
 2. Klicken Sie im Abschnitt **Erweiterte Einstellungen** auf **Zu App Service-Einstellungen wechseln**.
 
-3. Klicken Sie auf **Tools**.
+3. Klicken Sie im App-Menü „Nav“ unter **ENTWICKLUNGSTOOLS** auf **App Service-Editor**.
 
-4. Klicken Sie unter **Entwickeln** auf **Visual Studio Online**.
+4.  Klicken Sie auf **Start**.
 
-5. **Aktivieren** Sie diese Option, wenn sie noch nicht aktiviert ist, und klicken Sie auf **Los**.
+	Nachdem der App Service-Editor geladen wurde, sehen Sie die Datei *host.json* und die Funktionenordner unter *wwwroot*.
 
-	Nachdem Visual Studio Online geladen wurde, sehen Sie die Datei *host.json* und die Funktionenordner unter *wwwroot*.
-
-6. Öffnen Sie die Dateien, um Sie zu bearbeiten, oder laden Sie Dateien per Drag & Drop von Ihrem Entwicklungscomputer hoch.
+5. Öffnen Sie die Dateien, um Sie zu bearbeiten, oder laden Sie Dateien per Drag & Drop von Ihrem Entwicklungscomputer hoch.
 
 #### So verwenden Sie den SCM-Endpunkt (Kudu) der Funktionen-App
 
@@ -151,4 +149,4 @@ Weitere Informationen finden Sie in den folgenden Ressourcen:
 * [Trigger und Bindungen in Azure Functions](functions-triggers-bindings.md)
 * [Azure Functions: The Journey](https://blogs.msdn.microsoft.com/appserviceteam/2016/04/27/azure-functions-the-journey/) im Blog des Azure App Service-Teams. Überblick, wie Azure Functions entwickelt wurde.
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0914_2016-->

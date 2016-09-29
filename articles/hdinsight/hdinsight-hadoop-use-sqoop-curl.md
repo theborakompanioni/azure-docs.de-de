@@ -4,7 +4,7 @@
    services="hdinsight"
    documentationCenter=""
    authors="mumian"
-   manager="paulettm"
+   manager="jhubbard"
    editor="cgronlun"
 	tags="azure-portal"/>
 
@@ -29,7 +29,7 @@ Curl wird verwendet, um zu veranschaulichen, wie Sie über unformatierte HTTP-An
 
 ##Voraussetzungen
 
-Damit Sie die in diesem Artikel aufgeführten Schritte ausführen können, benötigen Sie Folgendes:
+Um die in diesem Artikel aufgeführten Schritte auszuführen, benötigen Sie Folgendes:
 
 * Einen Hadoop-Cluster in HDInsight (Linux- oder Windows-basiert)
 
@@ -150,4 +150,4 @@ Informationen zu anderen Möglichkeiten, wie Sie mit Hadoop in HDInsight arbeite
 
 [powershell-here-strings]: http://technet.microsoft.com/library/ee692792.aspx
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0914_2016-->

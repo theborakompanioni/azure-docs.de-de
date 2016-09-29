@@ -4,7 +4,7 @@
    services="data-lake-analytics" 
    documentationCenter="" 
    authors="edmacauley" 
-   manager="paulettm" 
+   manager="jhubbard" 
    editor="cgronlun"/>
  
 <tags
@@ -45,8 +45,8 @@ Zur Ausführung von Data Lake Analytics-Aufträgen ist ein Data Lake Analytics-K
 	- **Name**: Geben Sie dem Analytics-Konto einen Namen.
 	- **Data Lake-Speicher**: Jedes Data Lake Analytics-Konto verfügt über ein abhängiges Azure Data Lake-Speicherkonto. Das Data Lake Analytics-Konto und das abhängige Data Lake-Speicherkonto müssen sich in demselben Azure-Rechenzentrum befinden. Führen Sie die Anweisungen zum Erstellen eines neuen Data Lake-Speicherkontos aus, oder wählen Sie ein vorhandenes Konto aus.
 	- **Abonnement**: Wählen Sie das Azure-Abonnement aus, das für das Analytics-Konto verwendet wird.
-	- **Ressourcengruppe**. Wählen Sie eine vorhandene Ressourcengruppe aus, oder erstellen Sie eine neue Ressourcengruppe. Mit dem Azure-Ressourcen-Manager (ARM) können Sie mit den Ressourcen in Ihrer Anwendung als Gruppe arbeiten. Weitere Informationen finden Sie unter [Übersicht über den Azure-Ressourcen-Manager](resource-group-overview.md). 
-	- **Standort**. Wählen Sie ein Azure-Rechenzentrum für das Data Lake Analytics-Konto aus. 
+	- **Ressourcengruppe**. Wählen Sie eine vorhandene Ressourcengruppe aus, oder erstellen Sie eine neue Ressourcengruppe. Mit dem Azure-Ressourcen-Manager (ARM) können Sie mit den Ressourcen in Ihrer Anwendung als Gruppe arbeiten. Weitere Informationen finden Sie unter [Übersicht über den Azure-Ressourcen-Manager](resource-group-overview.md).
+	- **Standort**. Wählen Sie ein Azure-Rechenzentrum für das Data Lake Analytics-Konto aus.
 
 8. Klicken Sie auf **Erstellen**. Sie gelangen auf die Startseite des Portals. Dem Startmenü wird eine neue Kachel mit der Bezeichnung „Azure Data Lake Analytics wird bereitgestellt“ hinzugefügt. Es dauert einige Zeit, bis ein Data Lake Analytics-Konto erstellt wurde. Bei seiner Erstellung wird das Konto im Portal auf einem neuen Blatt geöffnet.
 
@@ -113,7 +113,7 @@ Beim Erstellen eines Data Lake Analytics-Kontos müssen Sie ein Azure Data Lake-
 **So fügen Sie zusätzliche Datenquellen hinzu**
 
 1. Öffnen Sie das Data Lake Analytics-Konto, das Sie verwalten möchten. Weitere Informationen finden Sie unter [Zugreifen auf Data Lake Analytics-Konten](#access-adla-account).
-2. Klicken Sie auf **Einstellungen** und dann auf **Datenquellen**. Hier wird das Data Lake-Standardspeicherkonto aufgeführt. 
+2. Klicken Sie auf **Einstellungen** und dann auf **Datenquellen**. Hier wird das Data Lake-Standardspeicherkonto aufgeführt.
 3. Klicken Sie auf **Datenquelle hinzufügen**.
 
 	![Azure Data Lake Analytics, Datenquelle hinzufügen](./media/data-lake-analytics-manage-use-portal/data-lake-analytics-add-data-source.png)
@@ -123,7 +123,7 @@ Beim Erstellen eines Data Lake Analytics-Kontos müssen Sie ein Azure Data Lake-
 <a name="explore-data-sources"></a>**So erkunden Sie die Datenquellen**
 
 1. Öffnen Sie das Analytics-Konto, das Sie verwalten möchten. Weitere Informationen finden Sie unter [Zugreifen auf Data Lake Analytics-Konten](#access-adla-account).
-2. Klicken Sie auf **Einstellungen** und dann auf **Daten-Explorer**. 
+2. Klicken Sie auf **Einstellungen** und dann auf **Daten-Explorer**.
  
 	![Azure Data Lake Analytics, Daten-Explorer](./media/data-lake-analytics-manage-use-portal/data-lake-analytics-data-explorer.png)
 	
@@ -142,7 +142,7 @@ Beim Erstellen eines Data Lake Analytics-Kontos müssen Sie ein Azure Data Lake-
 
 <a name="upload-data-to-adls"></a> **So laden Sie Dateien in das Data Lake-Speicherkonto hoch**
 
-1. Klicken Sie imPortal im Menü auf der linken Seite auf **Durchsuchen** und dann auf **Data Lake-Speicher**.
+1. Klicken Sie im Portal im Menü auf der linken Seite auf **Durchsuchen** und dann auf **Data Lake-Speicher**.
 2. Klicken Sie auf das Data Lake-Speicherkonto, in das Sie Daten hochladen möchten. Informationen zum Suchen nach dem Data Lake-Standardspeicherkonto finden Sie [hier](#default-adl-account).
 3. Klicken Sie im Menü oben auf **Daten-Explorer**.
 4. Klicken Sie auf **Neues Verzeichnis**, um einen neuen Ordner zu erstellen, oder klicken Sie auf einen Ordnernamen, um den Ordner zu ändern.
@@ -158,7 +158,7 @@ Weitere Informationen finden Sie unter [Hochladen von Daten für Hadoop-Aufträg
 
 Für Data Lake Analytics wird die rollenbasierte Zugriffssteuerung mit Azure Active Directory verwendet. Wenn Sie ein Data Lake Analytics-Konto erstellen, wird dem Konto die Rolle „Abonnement-Administratoren“ hinzugefügt. Sie können weitere Benutzer und Sicherheitsgruppen mit den folgenden Rollen hinzufügen:
 
-|Rolle|Beschreibung|
+|Role|Beschreibung|
 |----|-----------|
 |Besitzer|Sie können alles verwalten, einschließlich des Zugriffs auf Ressourcen.|
 |Mitwirkender|Sie können auf das Portal zugreifen und Aufträge senden und überwachen. Zum Senden von Aufträgen benötigt ein Mitwirkender auch die Lese- oder Schreibberechtigung für die Data Lake-Speicherkonten.|
@@ -188,7 +188,7 @@ Informationen zum Erstellen von Azure Active Directory-Benutzern und -Sicherheit
 <!-- ################################ -->
 ## Verwalten von Aufträgen
 
-Zum Ausführen von Aufträgen ist ein Data Lake Analytics-Konto erforderlich. Weitere Informationen finden Sie unter [Verwalten von Data Lake Analytics-Konten](#manage-data-lake-analytics-accounts).
+Zum Ausführen von Aufträgen ist ein Data Lake Analytics-Konto erforderlich. Weitere Informationen finden Sie unter [Verwalten von Data Lake Analytics-Konten](#manage-data-lake-analytics-accounts).
 
 <a name="create-job"></a>**So erstellen Sie einen Auftrag**
 
@@ -207,11 +207,11 @@ Zum Ausführen von Aufträgen ist ein Data Lake Analytics-Konto erforderlich. We
 	|Name|Beschreibung|
 	|----|-----------|
 	|Auftragsname|Geben Sie den Namen des Auftrags ein.|
-	|Priority|Je niedriger die Zahl ist, desto höher ist die Priorität. Wenn sich zwei Aufträge in der Warteschlange befinden, wird zuerst der Auftrag mit dem niedrigeren Prioritätswert ausgeführt.|
+	|Priorität|Je niedriger die Zahl ist, desto höher ist die Priorität. Wenn sich zwei Aufträge in der Warteschlange befinden, wird zuerst der Auftrag mit dem niedrigeren Prioritätswert ausgeführt.|
 	|Parallelität |Gibt die maximale Anzahl von Compute-Prozessen an, die gleichzeitig möglich sind. Wenn Sie diesen Wert erhöhen, können Sie die Leistung steigern, aber auch die Kosten können sich erhöhen.|
 	|Skript|Geben Sie das U-SQL-Skript für den Auftrag ein.|
 
-	Über dieselbe Oberfläche können Sie auch die verknüpften Datenquellen erkunden und diesen weitere Dateien hinzufügen. 
+	Über dieselbe Oberfläche können Sie auch die verknüpften Datenquellen erkunden und diesen weitere Dateien hinzufügen.
 3. Klicken Sie auf **Auftrag senden**, wenn Sie den Auftrag übermitteln möchten.
 
 **So senden Sie einen Auftrag**
@@ -257,7 +257,7 @@ Der [U-SQL-Katalog](data-lake-analytics-use-u-sql-catalog.md) wird zum Strukturi
 
 1. Öffnen Sie das Analytics-Konto, das Sie verwalten möchten. Weitere Informationen finden Sie unter [Zugreifen auf Data Lake Analytics-Konten](#access-adla-account).
 2. Klicken Sie im Menü oben auf **Daten-Explorer**.
-3. Erweitern Sie **Katalog**, **master** und dann **Tabellen** oder **Tabellenwertfunktionen** bzw. **Assemblys**. Im folgenden Screenshot ist eine Tabellenwertfunktion dargestellt.
+3. Erweitern Sie **Katalog**, **master** und dann **Tabellen oder Tabellenwertfunktionen**, bzw. **Assemblys**. Im folgenden Screenshot ist eine Tabellenwertfunktion dargestellt.
 
 	![Azure Data Lake Analytics, Daten-Explorer-Speicherkonto](./media/data-lake-analytics-manage-use-portal/data-lake-analytics-explore-catalog.png)
 
@@ -283,11 +283,11 @@ Ein Data Lake Analytics-Konto und die dazugehörigen Speicherkonten müssen si
 
 
 
-##Weitere Informationen 
+##Siehe auch 
 
 - [Übersicht über Microsoft Azure Data Lake Analytics](data-lake-analytics-overview.md)
 - [Erste Schritte mit Data Lake Analytics mithilfe des Azure-Portals](data-lake-analytics-get-started-portal.md)
 - [Verwalten von Azure Data Lake Analytics mithilfe von Azure PowerShell](data-lake-analytics-manage-use-powershell.md)
 - [Überwachen und Problembehandeln von Azure Data Lake Analytics-Aufträgen mithilfe des Azure-Portals](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0914_2016-->

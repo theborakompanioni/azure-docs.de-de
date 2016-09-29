@@ -15,7 +15,7 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/21/2016"
+	ms.date="09/06/2016"
 	ms.author="rclaus"/>
 
 # Optimieren virtueller Linux-Computer in Azure
@@ -32,7 +32,7 @@ Nach dem Erstellen eines virtuellen Linux-Computers in Azure sind diesem zwei Da
 
 ## Hinzufügen von Datenträgern für Größe und Leistung 
 
-Abhängig von der gewählten VM-Größe können Sie bis zu 16 zusätzliche Datenträger (A-Serie), 32 Datenträger (D-Serie) bzw. 64 Datenträger (G-Serie) anfügen, die jeweils eine Größe von bis zu 1 TB besitzen können. Orientieren Sie sich beim Hinzufügen zusätzlicher Datenträger an Ihren Platz- und IOPS-Anforderungen. Jeder Datenträger hat ein Leistungsziel von 500 IOPS (Storage Standard) bzw. von bis zu 5000 IOPS (Storage Premium). Weitere Informationen zu Storage Premium-Datenträgern finden Sie unter [Premium-Speicher: Hochleistungsspeicher für Arbeitslasten auf virtuellen Azure-Computern](../storage/storage-premium-storage.md).
+Abhängig von der VM-Größe können Sie bis zu 16 zusätzliche Datenträger (A-Serie), 32 Datenträger (D-Serie) bzw. 64 Datenträger (G-Serie) anfügen, die jeweils eine Größe von bis zu 1 TB haben können. Orientieren Sie sich beim Hinzufügen zusätzlicher Datenträger an Ihren Platz- und IOPS-Anforderungen. Jeder Datenträger hat ein Leistungsziel von 500 IOPS (Storage Standard) bzw. von bis zu 5000 IOPS (Storage Premium). Weitere Informationen zu Storage Premium-Datenträgern finden Sie unter [Premium Storage: Leistungsfähiger Speicher für Azure VMs](../storage/storage-premium-storage.md).
 
 Um bei Storage Premium-Datenträgern mit der Cacheeinstellung „ReadOnly“ oder „None“ die höchstmögliche IOPS-Leistung zu erzielen, müssen so genannte „Barriers“ beim Einbinden des Dateisystems in Linux deaktiviert werden. „Barriers“ werden nicht benötigt, da Schreibvorgänge auf Storage Premium-Datenträger bei diesen Cacheeinstellungen beständig sind.
 
@@ -44,11 +44,11 @@ Um bei Storage Premium-Datenträgern mit der Cacheeinstellung „ReadOnly“ ode
 
 Wenn Sie den virtuellen Linux-Computer in Azure erstellen, empfiehlt es sich, Datenträger aus Speicherkonten anzufügen, die sich in der gleichen Region befinden wie Ihr virtueller Computer, um weite Strecken zu vermeiden und die Netzwerklatenz zu minimieren. Die Kapazität jedes Storage Standard-Kontos ist auf maximal 20.000 IOPS und eine Größe von 500 TB beschränkt. Dies entspricht etwa 40 stark ausgelasteten Datenträgern (einschließlich Betriebssystem-Datenträger und aller von Ihnen erstellten Datenträger). Bei Storage Premium-Konten gilt kein IOPS-Limit, die Größe ist jedoch auf 32 TB beschränkt.
 
-Wenn Sie sehr IOPS-intensive Workloads verwenden und sich für Storage Standard-Datenträger entschieden haben, müssen Sie die Datenträger ggf. auf mehrere Speicherkonten aufteilen, um zu verhindern, dass Sie das Limit von 20.000 IOPS erreichen. Der virtuelle Computer kann eine Mischung aus Datenträgern verschiedener Speicherkonten und Speicherkontotypen enthalten, um eine optimale Konfiguration zu erreichen.
+Wenn Sie sehr IOPS-intensive Workloads verarbeiten müssen und sich für Datenträger des Typs „Standardspeicher“ entschieden haben, müssen Sie die Datenträger ggf. auf mehrere Speicherkonten aufteilen, um zu verhindern, dass Sie das Limit von 20.000 IOPS erreichen. Der virtuelle Computer kann eine Mischung aus Datenträgern verschiedener Speicherkonten und Speicherkontotypen enthalten, um eine optimale Konfiguration zu erreichen.
 
 ## Temporäres Laufwerk des virtuellen Computers
 
-Beim Erstellen eines neuen virtuellen Computers stellt Azure standardmäßig einen Betriebssystem-Datenträger (/dev/sda) und einen temporären Datenträger (/dev/sdb) bereit. Alle weiteren Datenträger, die Sie hinzufügen, werden als „/dev/sdc“, „/dev/sdd“, „/dev/sde“ usw. angezeigt. Die Daten auf dem temporären Datenträger (/dev/sdb) sind nicht beständig und können in bestimmten Fällen verloren gehen – etwa, wenn die Größe des virtuellen Computers geändert oder der virtuelle Computer neu bereitgestellt oder aufgrund von Wartungsarbeiten neu gestartet wird. Größe und Typ des temporären Datenträgers hängen mit der Größe des virtuellen Computers zusammen, die Sie zum Zeitpunkt der Bereitstellung ausgewählt haben. Im Falle eines virtuellen Premium-Computers (DS-, G- und DS\_V2-Serie) wird das temporäre Laufwerk durch eine lokale SSD unterstützt, um eine höhere Leistung von bis zu 48.000 IOPS zu erzielen.
+Beim Erstellen eines virtuellen Computers stellt Azure standardmäßig einen Betriebssystem-Datenträger (/dev/sda) und einen temporären Datenträger (/dev/sdb) bereit. Alle weiteren Datenträger, die Sie hinzufügen, werden als „/dev/sdc“, „/dev/sdd“, „/dev/sde“ usw. angezeigt. Die Daten auf dem temporären Datenträger (/dev/sdb) sind nicht beständig und können in bestimmten Fällen verloren gehen – etwa, wenn die Größe des virtuellen Computers geändert oder der virtuelle Computer neu bereitgestellt oder aufgrund von Wartungsarbeiten neu gestartet wird. Größe und Typ des temporären Datenträgers hängen mit der Größe des virtuellen Computers zusammen, die Sie zum Zeitpunkt der Bereitstellung ausgewählt haben. Im Falle eines virtuellen Premium-Computers (DS-, G- und DS\_V2-Serie) wird das temporäre Laufwerk durch eine lokale SSD unterstützt, um eine höhere Leistung von bis zu 48.000 IOPS zu erzielen.
 
 ## Linux-Auslagerungsdatei
 
@@ -126,4 +126,4 @@ Einige nützliche Links zu weiteren Ressourcen:
 - [Optimieren der MySQL-Leistung auf virtuellen Azure Linux-Computern](virtual-machines-linux-classic-optimize-mysql.md)
 - [Konfigurieren von Software-RAID unter Linux](virtual-machines-linux-configure-raid.md)
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0914_2016-->

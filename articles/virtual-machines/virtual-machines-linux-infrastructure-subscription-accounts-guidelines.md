@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/22/2016"
+	ms.date="09/08/2016"
 	ms.author="iainfou"/>
 
 # Richtlinien für Abonnements und Konten
@@ -44,29 +44,29 @@ Für die Arbeit mit Azure benötigen Sie mindestens ein Azure-Abonnement. Ressou
 
 - Unternehmenskunden verwenden i. d. R. eine Unternehmensanmeldung, die die oberste Ressource in der Hierarchie darstellt und einem oder mehreren Konten zugeordnet ist.
 - Für Benutzer und Kunden ohne Unternehmensanmeldung ist die oberste Ressource das Konto.
-- Abonnements sind Konten zugeordnet, und jedes Konto kann über mehrere Abonnements verfügen. Azure verzeichnet die Abrechnungsinformationen auf Abonnementebene.
+- Abonnements sind Konten zugeordnet, und jedes Konto kann über mehrere Abonnements verfügen. Azure zeichnet Abrechnungsinformationen auf Abonnementebene auf.
 
-Aufgrund der maximal zwei Hierarchieebenen für die Konto-/Abonnement-Beziehung ist es wichtig, die Benennungskonvention für Konten und Abonnements an die Abrechnungsanforderungen anzupassen. Wenn z. B. ein globales Unternehmen Azure verwendet, nutzt dieses pro Region möglicherweise ein Konto, und die Abonnements werden auf Regionsebene verwaltet.
+Aufgrund der maximal zwei Hierarchieebenen für die Konto-/Abonnement-Beziehung ist es wichtig, die Benennungskonvention für Konten und Abonnements an die Abrechnungsanforderungen anzupassen. Wenn z.B. ein globales Unternehmen Azure verwendet, nutzt dieses pro Region möglicherweise ein Konto, und die Abonnements werden auf Regionsebene verwaltet:
 
 ![](./media/virtual-machines-common-infrastructure-service-guidelines/sub01.png)
 
-Sie können beispielsweise diese Struktur verwenden.
+Sie können beispielsweise die folgende Struktur verwenden:
 
 ![](./media/virtual-machines-common-infrastructure-service-guidelines/sub02.png)
 
-Wenn sich diesem Beispiel folgend eine Region dazu entscheidet, mehr als ein Abonnement einer bestimmten Gruppe zuzuordnen, sollte die Benennungskonvention eine Methode enthalten, mit der das zusätzliche Abonnement entweder im Kontonamen oder im Abonnementnamen codiert wird. Diese Organisation ermöglicht Abrechnungsdaten, mit denen die neuen Hierarchieebenen bei den Abrechnungsberichten generiert werden.
+Wenn sich eine Region dazu entscheidet, mehr als ein Abonnement einer bestimmten Gruppe zuzuordnen, sollte die Benennungskonvention eine Methode enthalten, mit der die zusätzlichen Daten entweder im Kontonamen oder im Abonnementnamen codiert werden. Diese Organisation ermöglicht Abrechnungsdaten, mit denen die neuen Hierarchieebenen bei den Abrechnungsberichten generiert werden:
 
 ![](./media/virtual-machines-common-infrastructure-service-guidelines/sub03.png)
 
-Die Organisation könnte folgendermaßen aussehen.
+Die Organisation kann folgendermaßen aussehen:
 
 ![](./media/virtual-machines-common-infrastructure-service-guidelines/sub04.png)
 
-Microsoft stellt ausführliche Abrechnungen in einer herunterladbaren Datei für einzelne Konten oder für alle Konten in einem Enterprise Agreement zur Verfügung. Sie können diese Datei z. B. mit Microsoft Excel verarbeiten. Dieser Prozess würde Daten erfassen, die Ressourcen, die mehr als eine Ebene der Hierarchie codieren, in separate Spalten partitionieren und mithilfe einer PivotTable oder PowerPivot dynamische Berichtsfunktionen bereitstellen.
+Wir stellen ausführliche Abrechnungen in einer herunterladbaren Datei für einzelne Konten oder für alle Konten in einem Enterprise Agreement zur Verfügung.
 
 
 ## Nächste Schritte
 
 [AZURE.INCLUDE [virtual-machines-linux-infrastructure-guidelines-next-steps](../../includes/virtual-machines-linux-infrastructure-guidelines-next-steps.md)]
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0914_2016-->

@@ -2,7 +2,7 @@
 	pageTitle="Verwenden von Hadoop Sqoop in HDInsight | Microsoft Azure"
 	description="Erfahren Sie, wie Sie mit dem HDInsight .NET SDK einen Sqoop-Import und -Export zwischen einem Hadoop-Cluster und einer Azure-SQL-Datenbank durchführen können."
 	editor="cgronlun"
-	manager="paulettm"
+	manager="jhubbard"
 	services="hdinsight"
 	documentationCenter=""
 	tags="azure-portal"
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-   ms.date="06/28/2016"
+   ms.date="09/14/2016"
 	ms.author="jgao"/>
 
 #Ausführen von Sqoop-Aufträgen mithilfe des .NET SDK für Hadoop in HDInsight
@@ -29,7 +29,7 @@ Erfahren Sie, wie das HDInsight .NET SDK zum Ausführen von Sqoop-Aufträgen in 
 
 Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
 
-- **Hadoop-Cluster in HDInsight**. Informationen finden Sie unter [Erstellen von Cluster und SQL-Datenbank](hdinsight-use-sqoop.md#create-cluster-and-sql-database).
+- **Einen Hadoop-Cluster in HDInsight**. Informationen finden Sie unter [Erstellen von Cluster und SQL-Datenbank](hdinsight-use-sqoop.md#create-cluster-and-sql-database).
 
 ## Ausführen von Sqoop mit dem .NET SDK
 
@@ -122,4 +122,4 @@ Nun wissen Sie, wie Sqoop verwendet haben. Weitere Informationen finden Sie unte
 - [Analysieren von Daten zu Flugverspätungen mit HDInsight](hdinsight-analyze-flight-delay-data.md): Verwenden von Hive zur Analyse von Daten zu Flugverspätungen und Verwenden von Sqoop zum Exportieren von Daten in die SQL-Datenbank.
 - [Hochladen von Daten in HDInsight](hdinsight-upload-data.md): Andere Methoden zum Hochladen von Daten in HDInsight/Azure Blob-Speicher.
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0914_2016-->

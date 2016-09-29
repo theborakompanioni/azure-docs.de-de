@@ -4,7 +4,7 @@
 	services="machine-learning"
 	documentationCenter=""
 	authors="bradsev" 
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun" />
 
 <tags
@@ -18,7 +18,7 @@
 
 # Einrichten eines virtuellen Azure SQL Server-Computers als IPython Notebook-Server für die erweiterte Analyse
 
-In diesem Thema wird das Bereitstellen und Konfigurieren eines virtuellen SQL Server-Computers als Teil einer cloudbasierten Data Science-Umgebung beschrieben. Der virtuelle Windows-Computer wird mit Unterstützung von Tools wie IPython Notebook, Azure-Speicher-Explorer und AzCopy sowie anderer Hilfsprogramme, die für Data Science-Projekte hilfreich sind, konfiguriert. Azure-Speicher-Explorer und AzCopy stellen z. B. hilfreiche Möglichkeiten zum Hochladen von Daten von Ihrem lokalen Computer in den Azure-Blob-Speicher oder das Herunterladen aus dem Blob-Speicher auf Ihren lokalen Computer bereit.
+In diesem Thema wird das Bereitstellen und Konfigurieren eines virtuellen SQL Server-Computers als Teil einer cloudbasierten Data Science-Umgebung beschrieben. Der virtuelle Windows-Computer wird mit Unterstützung von Tools wie IPython Notebook, Azure-Speicher-Explorer und AzCopy sowie anderer Hilfsprogramme, die für Data Science-Projekte hilfreich sind, konfiguriert. Azure Storage-Explorer und AzCopy stellen z. B. hilfreiche Möglichkeiten zum Hochladen von Daten von Ihrem lokalen Computer in den Azure-Blobspeicher oder das Herunterladen aus dem Blobspeicher auf Ihren lokalen Computer bereit.
 
 In der Galerie der virtuellen Computer von Azure sind verschiedene Images zu finden, die Microsoft SQL Server enthalten. Wählen Sie ein VM-Image mit SQL Server aus, das Ihren Datenanforderungen entspricht. Folgende Images werden empfohlen:
 
@@ -90,7 +90,7 @@ In der Galerie der virtuellen Computer von Azure sind verschiedene Images zu fin
 
 3.  Geben Sie im Dialogfeld **Windows-Sicherheit** das Kennwort für das lokale Administratorkonto an, das Sie zuvor festgelegt haben. (Sie werden möglicherweise dazu aufgefordert, die Anmeldedaten des virtuellen Computers zu überprüfen.)
 
-4.  Beim ersten Anmelden auf dem virtuellen Computer müssen eventuell einige Prozesse ausgeführt werden, darunter die Einrichtung Ihres Desktops, Windows-Updates und die Fertigstellung der ersten Windows-Konfigurationsaufgaben (sysprep). Nachdem Windows-sysprep abgeschlossen ist, stellt die SQL Server-Einrichtung die Konfigurationsaufgaben fertig. Diese Tasks können während der Ausführung eine Verzögerung von wenigen Minuten verursachen. `SELECT @@SERVERNAME` gibt den richtigen Namen möglicherweise erst zurück, wenn die Einrichtung von SQL Server abgeschlossen ist, und SQL Server Management Studio wird auf der Startseite möglicherweise nicht angezeigt.
+4.  Beim ersten Anmelden auf dem virtuellen Computer müssen eventuell einige Prozesse ausgeführt werden, darunter die Einrichtung Ihres Desktops, Windows-Updates und die Fertigstellung der ersten Windows-Konfigurationsaufgaben (sysprep). Nachdem Windows-Sysprep abgeschlossen ist, stellt die SQL Server-Einrichtung die Konfigurationsaufgaben fertig. Diese Tasks können während der Ausführung eine Verzögerung von wenigen Minuten verursachen. `SELECT @@SERVERNAME` gibt den richtigen Namen möglicherweise erst zurück, wenn die Einrichtung von SQL Server abgeschlossen ist, und SQL Server Management Studio wird auf der Startseite möglicherweise nicht angezeigt.
 
 Nachdem Sie über Windows Remotedesktop mit dem virtuellen Computer verbunden sind, funktioniert der virtuelle Computer wie jeder andere Computer. Stellen Sie ganz normal eine Verbindung zur Standardinstanz von SQL Server mit SQL Server Management Studio, das auf dem virtuellen Computer ausgeführt wird, her.
 
@@ -141,7 +141,7 @@ Das SQL Server-Datenbankmodul kann ohne Domänenumgebung keine Windows-Authentif
 
 2.  Beim Öffnen wird in Management Studio das Dialogfeld **Verbindung mit Server herstellen** angezeigt. Geben Sie im Feld **Servername** den Namen des virtuellen Computers ein, um das Datenbankmodul mit dem Objekt-Explorer zu verbinden. (Anstelle des Namen des virtuellen Computers können Sie auch **(lokal)** oder einen einzigen Punkt als **Servername** verwenden. Wählen Sie **Windows-Authentifizierung**, und lassen Sie ***your\_VM\_name*\\your\_local\_administrator** im Feld **Benutzername**. Klicken Sie auf **Verbinden**.
 
-    ![Mit Server verbinden][6]
+    ![Verbindung mit dem Server herstellen][6]
 
 	<br>
 
@@ -271,7 +271,7 @@ Virtuelle Azure-Computer werden **nach Nutzung abgerechnet**. Damit Sie nicht f�
 
 So fahren Sie den virtuellen Computer herunter und heben die Zuordnung auf:
 
-1. Melden Sie sich mit Ihrem Konto beim [klassischen Azure-Portal](http://manage.windowsazure.com/) an.  
+1. Melden Sie sich mit Ihrem Konto beim [klassischen Azure-Portal](http://manage.windowsazure.com/) an.
 
 2. Wählen Sie in der Navigationsleiste links **VIRTUAL MACHINES** aus.
 
@@ -306,4 +306,4 @@ Die nächsten Schritte im Data Science-Prozess sind unter [Team Data Science-Pro
 [15]: ./media/machine-learning-data-science-setup-sql-server-virtual-machine/vmshutdown.png
  
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0914_2016-->

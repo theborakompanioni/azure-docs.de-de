@@ -3,8 +3,8 @@
    description="Spezifikation für die derzeit unterstützten Datenquellen."
    services="data-catalog"
    documentationCenter=""
-   authors="spelluru"
-   manager="paulettm"
+   authors="trhabe"
+   manager="jstrauss"
    editor=""
    tags=""/>
 <tags
@@ -13,12 +13,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-catalog"
-   ms.date="07/25/2016"
+   ms.date="09/13/2016"
    ms.author="trhabe"/>
 
 # Von Azure Data Catalog unterstützte Datenquellen
 
-Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröffentlichen: Sie können eine öffentliche API nutzen, sie können ein ClickOnce-Registrierungstool verwenden, und sie können die Informationen direkt in das Data Catalog-Webportal eingeben. Die folgende Tabelle fasst alle derzeit vom Katalog unterstützten Quellen zusammen und benennt jeweils die Veröffentlichungsmöglichkeiten. Außerdem werden die externen Datentools aufgelistet, in denen die jeweiligen Quelle direkt aus dem Portal heraus geöffnet werden kann – wir nennen das die „Öffnen in“-Erfahrung im Portal. Weiter unten folgt eine zweite Tabelle mit technischen Spezifikationen für die Verbindungseigenschaften der Datenquellen.
+Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröffentlichen: Sie können eine öffentliche API nutzen, sie können ein ClickOnce-Registrierungstool verwenden, und sie können die Informationen direkt in das Data Catalog-Webportal eingeben. Die folgende Tabelle fasst alle derzeit vom Katalog unterstützten Quellen zusammen und benennt jeweils die Veröffentlichungsmöglichkeiten. Außerdem werden die externen Datentools aufgelistet, in denen die jeweiligen Quelle direkt aus dem Portal heraus geöffnet werden kann – wir nennen das die „Öffnen in“-Erfahrung im Portal. Die zweite Tabelle im Artikel enthält weitere technische Spezifikationen für die Verbindungseigenschaften der Datenquellen.
 
 
 ## Liste der unterstützten Datenquellen
@@ -40,7 +40,7 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td>✓</td>
       <td>✓</td>
       <td><font size=2></font></td>
-      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
+      <td><font size=2></font></td>
     </tr>
 
     <tr>
@@ -49,7 +49,7 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td>✓</td>
       <td>✓</td>
       <td><font size=2></font></td>
-      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
+      <td><font size=2></font></td>
     </tr>
 
     <tr>
@@ -58,7 +58,7 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td>✓</td>
       <td>✓</td>
       <td><font size=2>Power&#160;BI</font></td>
-      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
+      <td><font size=2></font></td>
     </tr>
 
     <tr>
@@ -67,14 +67,14 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td>✓</td>
       <td>✓</td>
       <td><font size=2>Power&#160;BI</font></td>
-      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
+      <td><font size=2></font></td>
     </tr>
 
     <tr>
       <td>Azure Storage-Tabelle</td>
       <td>✓</td>
-      <td></td>
-      <td></td>
+      <td>✓</td>
+      <td>✓</td>
       <td>
         <font size="2"></font>
       </td>
@@ -89,7 +89,7 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td>✓</td>
       <td>✓</td>
       <td><font size=2></font></td>
-      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
+      <td><font size=2></font></td>
     </tr>
 
     <tr>
@@ -98,7 +98,7 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td>✓</td>
       <td>✓</td>
       <td><font size=2></font></td>
-      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
+      <td><font size=2></font></td>
     </tr>
 
     <tr>
@@ -107,7 +107,7 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td>✓</td>
       <td>✓</td>
       <td><font size=2>Excel</font></td>
-      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
+      <td><font size=2></font></td>
     </tr>
 
     <tr>
@@ -125,7 +125,7 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td>✓</td>
       <td>✓</td>
       <td><font size=2>Excel, Power&#160;BI</font></td>
-      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
+      <td><font size=2></font></td>
     </tr>
 
     <tr>
@@ -134,7 +134,7 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td>✓</td>
       <td>✓</td>
       <td><font size=2>Excel, Power&#160;BI</font></td>
-      <td>Excel, Power&#160;BI{Excel, Power&#160;BI1Excel, Power&#160;BI>Excel, Power&#160;BI&lt;Excel, Power&#160;BI1Excel, Power&#160;BI}Excel, Power&#160;BI</td>
+      <td><font size=2></font></td>
     </tr>
 
     <tr>
@@ -143,7 +143,7 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td>✓</td>
       <td>✓</td>
       <td><font size=2>Excel, Power&#160;BI</font></td>
-      <td>Excel, Power&#160;BI{Excel, Power&#160;BI1Excel, Power&#160;BI>Excel, Power&#160;BI&lt;Excel, Power&#160;BI1Excel, Power&#160;BI}Excel, Power&#160;BI</td>
+      <td><font size=2></font></td>
     </tr>
 
     <tr>
@@ -152,7 +152,7 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td>✓</td>
       <td>✓</td>
       <td><font size=2>Excel, Power&#160;BI</font></td>
-      <td>Excel, Power&#160;BI{Excel, Power&#160;BI1Excel, Power&#160;BI>Excel, Power&#160;BI&lt;Excel, Power&#160;BI1Excel, Power&#160;BI}Excel, Power&#160;BI</td>
+      <td><font size=2></font></td>
     </tr>
 
     <tr>
@@ -161,7 +161,7 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td>✓</td>
       <td></td>
       <td><font size=2></font></td>
-      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
+      <td><font size=2></font></td>
     </tr>
 
     <tr>
@@ -170,7 +170,7 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td>✓</td>
       <td>✓</td>
       <td><font size=2>Excel, PowerBI, SQL Server Data Tools</font></td>
-      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
+      <td><font size=2></font></td>
     </tr>
 
     <tr>
@@ -179,7 +179,7 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td>✓</td>
       <td>✓</td>
       <td><font size=2>Excel, PowerBI, SQL Server Data Tools</font></td>
-      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
+      <td><font size=2></font></td>
     </tr>
 
     <tr>
@@ -188,7 +188,7 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td>✓</td>
       <td>✓</td>
       <td><font size=2>Excel, Power&#160;BI</font></td>
-      <td>Excel, Power&#160;BI{Excel, Power&#160;BI1Excel, Power&#160;BI>Excel, Power&#160;BI&lt;Excel, Power&#160;BI1Excel, Power&#160;BI}Excel, Power&#160;BI</td>
+      <td><font size=2></font></td>
     </tr>
 
     <tr>
@@ -197,7 +197,7 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td>✓</td>
       <td>✓</td>
       <td><font size=2>Excel, Power&#160;BI</font></td>
-      <td>Excel, Power&#160;BI{Excel, Power&#160;BI1Excel, Power&#160;BI>Excel, Power&#160;BI&lt;Excel, Power&#160;BI1Excel, Power&#160;BI}Excel, Power&#160;BI</td>
+      <td><font size=2></font></td>
     </tr>
 
     <tr>
@@ -215,7 +215,7 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td>✓</td>
       <td>✓</td>
       <td><font size=2>Excel, Power&#160;BI</font></td>
-      <td>Excel, Power&#160;BI{Excel, Power&#160;BI1Excel, Power&#160;BI>Excel, Power&#160;BI&lt;Excel, Power&#160;BI1Excel, Power&#160;BI}Excel, Power&#160;BI</td>
+      <td><font size=2></font></td>
     </tr>
 
     <tr>
@@ -233,7 +233,7 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td>✓</td>
       <td>✓</td>
       <td><font size=2>Excel, PowerBI, SQL Server Data Tools</font></td>
-      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
+      <td><font size=2></font></td>
     </tr>
 
     <tr>
@@ -242,7 +242,7 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td>✓</td>
       <td>✓</td>
       <td><font size=2>Excel, PowerBI, SQL Server Data Tools</font></td>
-      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
+      <td><font size=2></font></td>
     </tr>
 
     <tr>
@@ -251,7 +251,7 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td>✓</td>
       <td>✓</td>
       <td><font size=2>Excel</font></td>
-      <td>Excel{Excel1Excel>Excel&lt;Excel1Excel}Excel</td>
+      <td><font size=2></font></td>
     </tr>
 
     <tr>
@@ -260,7 +260,7 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td>✓</td>
       <td>✓</td>
       <td><font size=2>Excel</font></td>
-      <td>Excel{Excel1Excel>Excel&lt;Excel1Excel}Excel</td>
+      <td><font size=2></font></td>
     </tr>
 
     <tr>
@@ -269,7 +269,7 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td>✓</td>
       <td>✓</td>
       <td><font size=2>Power&#160;BI</font></td>
-      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
+      <td><font size=2></font></td>
     </tr>
 
     <tr>
@@ -278,7 +278,7 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td></td>
       <td></td>
       <td><font size=2></font></td>
-      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
+      <td><font size=2></font></td>
     </tr>
 
     <tr>
@@ -287,7 +287,7 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td></td>
       <td></td>
       <td><font size=2></font></td>
-      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
+      <td><font size=2></font></td>
     </tr>
 
     <tr>
@@ -296,7 +296,7 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td></td>
       <td></td>
       <td><font size=2></font></td>
-      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
+      <td><font size=2></font></td>
     </tr>
 
     <tr>
@@ -305,7 +305,7 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td></td>
       <td></td>
       <td><font size=2></font></td>
-      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
+      <td><font size=2></font></td>
     </tr>
 
     <tr>
@@ -323,7 +323,7 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td></td>
       <td></td>
       <td><font size=2></font></td>
-      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
+      <td><font size=2></font></td>
     </tr>
 
     <tr>
@@ -332,7 +332,7 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td></td>
       <td></td>
       <td><font size=2></font></td>
-      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
+      <td><font size=2></font></td>
     </tr>
 
     <tr>
@@ -341,7 +341,7 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td></td>
       <td></td>
       <td><font size=2></font></td>
-      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
+      <td><font size=2></font></td>
     </tr>
 
     <tr>
@@ -350,7 +350,7 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td></td>
       <td></td>
       <td><font size=2></font></td>
-      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
+      <td><font size=2></font></td>
     </tr>
 
     <tr>
@@ -359,7 +359,7 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td></td>
       <td></td>
       <td><font size=2></font></td>
-      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
+      <td><font size=2></font></td>
     </tr>
 
     <tr>
@@ -368,7 +368,7 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td></td>
       <td></td>
       <td><font size=2></font></td>
-      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
+      <td><font size=2></font></td>
     </tr>
 
     <tr>
@@ -377,7 +377,7 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td></td>
       <td></td>
       <td><font size=2></font></td>
-      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
+      <td><font size=2></font></td>
     </tr>
 
     <tr>
@@ -386,7 +386,7 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td></td>
       <td></td>
       <td><font size=2></font></td>
-      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
+      <td><font size=2></font></td>
     </tr>
 
     <tr>
@@ -395,7 +395,7 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td></td>
       <td></td>
       <td><font size=2></font></td>
-      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
+      <td><font size=2></font></td>
     </tr>
 
     <tr>
@@ -404,12 +404,12 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td></td>
       <td></td>
       <td><font size=2></font></td>
-      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
+      <td><font size=2></font></td>
     </tr>
 
 </table>
 
-Wenn Sie Unterstützung für zusätzliche Quellen benötigen, senden Sie einen Funktionswunsch über das [Azure Data Catalog-Forum](http://go.microsoft.com/fwlink/?LinkID=616424&clcid=0x409).
+Wenn Sie Unterstützung für zusätzliche Quellen benötigen, senden Sie einen Featurewunsch über das [Azure Data Catalog-Forum](http://go.microsoft.com/fwlink/?LinkID=616424&clcid=0x409).
 
 
 <br> <br>
@@ -423,7 +423,7 @@ Wenn Sie Unterstützung für zusätzliche Quellen benötigen, senden Sie einen F
        <td><b>DSL-Struktur<b></td>
     </tr>
     <tr>
-      <td>Azure Data Lake-Speicher</td>
+      <td>Azure Data Lake Store</td>
       <td>Container</td>
       <td>Data Lake</td>
       <td>
@@ -434,8 +434,8 @@ Wenn Sie Unterstützung für zusätzliche Quellen benötigen, senden Sie einen F
       </td>
     </tr>
     <tr>
-      <td>Azure Data Lake-Speicher</td>
-      <td>Table</td>
+      <td>Azure Data Lake Store</td>
+      <td>Tabelle</td>
       <td>Verzeichnis, Datei</td>
       <td>
         <font size=2> protocol: webhdfs
@@ -459,7 +459,7 @@ Wenn Sie Unterstützung für zusätzliche Quellen benötigen, senden Sie einen F
     </tr>
     <tr>
       <td>Azure Storage</td>
-      <td>Table</td>
+      <td>Tabelle</td>
       <td>Blob, Verzeichnis</td>
       <td>
         <font size=2> protocol: azure-blobs
@@ -486,7 +486,7 @@ Wenn Sie Unterstützung für zusätzliche Quellen benötigen, senden Sie einen F
     <tr>
       <td>Azure Storage</td>
       <td>Tabelle</td>
-      <td>Table</td>
+      <td>Tabelle</td>
       <td>
         <font size=2> protocol: azure-tables
             <br>authentication: {azure-access-key}
@@ -509,7 +509,7 @@ Wenn Sie Unterstützung für zusätzliche Quellen benötigen, senden Sie einen F
     </tr>
     <tr>
       <td>Cosmos</td>
-      <td>Table</td>
+      <td>Tabelle</td>
       <td>Stream, Streamgruppe, Ansicht</td>
       <td>
         <font size=2> protocol: cosmos
@@ -554,7 +554,7 @@ Wenn Sie Unterstützung für zusätzliche Quellen benötigen, senden Sie einen F
     </tr>
     <tr>
       <td>DB2</td>
-      <td>Table</td>
+      <td>Tabelle</td>
       <td>Tabelle, Ansicht</td>
       <td>
         <font size=2> protocol: db2
@@ -579,7 +579,7 @@ Wenn Sie Unterstützung für zusätzliche Quellen benötigen, senden Sie einen F
     </tr>
     <tr>
       <td>FTP</td>
-      <td>Table</td>
+      <td>Tabelle</td>
       <td>Verzeichnis, Datei</td>
       <td>
         <font size=2> protocol: ftp
@@ -591,7 +591,7 @@ Wenn Sie Unterstützung für zusätzliche Quellen benötigen, senden Sie einen F
     <tr>
       <td>Hadoop Distributed File System</td>
       <td>Container</td>
-      <td>bereitstellen</td>
+      <td>Cluster</td>
       <td>
         <font size=2> protocol: webhdfs
             <br>authentication: {basic, oauth}
@@ -601,7 +601,7 @@ Wenn Sie Unterstützung für zusätzliche Quellen benötigen, senden Sie einen F
     </tr>
     <tr>
       <td>Hadoop Distributed File System</td>
-      <td>Table</td>
+      <td>Tabelle</td>
       <td>Verzeichnis, Datei</td>
       <td>
         <font size=2> protocol: webhdfs
@@ -626,7 +626,7 @@ Wenn Sie Unterstützung für zusätzliche Quellen benötigen, senden Sie einen F
     </tr>
     <tr>
       <td>Hive</td>
-      <td>Table</td>
+      <td>Tabelle</td>
       <td>Tabelle, Ansicht</td>
       <td>
         <font size=2> protocol: hive
@@ -663,7 +663,7 @@ Wenn Sie Unterstützung für zusätzliche Quellen benötigen, senden Sie einen F
     </tr>
     <tr>
       <td>HTTP</td>
-      <td>Table</td>
+      <td>Tabelle</td>
       <td>Endpunkt, Datei</td>
       <td>
         <font size=2> protocol: http
@@ -686,7 +686,7 @@ Wenn Sie Unterstützung für zusätzliche Quellen benötigen, senden Sie einen F
     </tr>
     <tr>
       <td>MySQL</td>
-      <td>Table</td>
+      <td>Tabelle</td>
       <td>Tabelle, Ansicht</td>
       <td>
         <font size=2> protocol: mysql
@@ -710,7 +710,7 @@ Wenn Sie Unterstützung für zusätzliche Quellen benötigen, senden Sie einen F
     </tr>
     <tr>
       <td>OData</td>
-      <td>Table</td>
+      <td>Tabelle</td>
       <td>Entitätenmenge, Funktion</td>
       <td>
         <font size=2> protocol: odata
@@ -734,7 +734,7 @@ Wenn Sie Unterstützung für zusätzliche Quellen benötigen, senden Sie einen F
     </tr>
     <tr>
       <td>Oracle-Datenbank</td>
-      <td>Table</td>
+      <td>Tabelle</td>
       <td>Tabelle, Ansicht</td>
       <td>
         <font size=2> protocol: oracle
@@ -760,7 +760,7 @@ Wenn Sie Unterstützung für zusätzliche Quellen benötigen, senden Sie einen F
     </tr>
     <tr>
       <td>PostgreSQL</td>
-      <td>Table</td>
+      <td>Tabelle</td>
       <td>Tabelle, Ansicht</td>
       <td>
         <font size=2> protocol: postgresql
@@ -795,9 +795,20 @@ Wenn Sie Unterstützung für zusätzliche Quellen benötigen, senden Sie einen F
       </td>
     </tr>
     <tr>
+      <td>Power Query</td>
+      <td>Tabelle</td>
+      <td>Datenmashup</td>
+      <td>
+        <font size=2> Protokoll: Power Query
+            <br>Authentifizierung: {oauth}
+            <br>address:
+            <br>&#160;&#160;&#160;&#160;&#160; url </font>
+      </td>
+    </tr>
+    <tr>
       <td>Salesforce</td>
       <td>Tabelle</td>
-      <td>Object</td>
+      <td>Objekt</td>
       <td>
         <font size=2> protocol: salesforce-com
             <br>authentication: {basic, windows}
@@ -821,7 +832,7 @@ Wenn Sie Unterstützung für zusätzliche Quellen benötigen, senden Sie einen F
     <tr>
       <td>SAP Hana</td>
       <td>Tabelle</td>
-      <td>Ansicht</td>
+      <td>Sicht</td>
       <td>
         <font size=2> protocol: sap-hana-sql
             <br>authentication: {protocol, windows}
@@ -845,7 +856,21 @@ Wenn Sie Unterstützung für zusätzliche Quellen benötigen, senden Sie einen F
     <tr>
       <td>SQL Data Warehouse</td>
       <td>Befehl</td>
-      <td>Gespeicherte Prozedur</td>
+      <td>Stored Procedure (Gespeicherte Prozedur)</td>
+      <td>
+        <font size=2> protocol: tds
+            <br>authentication: {protocol, windows}
+            <br>address:
+            <br>&#160;&#160;&#160;&#160;&#160; server
+            <br>&#160;&#160;&#160;&#160;&#160; database
+            <br>&#160;&#160;&#160;&#160;&#160; schema
+            <br>&#160;&#160;&#160;&#160;&#160; object </font>
+      </td>
+    </tr>
+    <tr>
+      <td>SQL Data Warehouse</td>
+      <td>TableValuedFunction</td>
+      <td>Tabellenwertfunktion</td>
       <td>
         <font size=2> protocol: tds
             <br>authentication: {protocol, windows}
@@ -870,7 +895,7 @@ Wenn Sie Unterstützung für zusätzliche Quellen benötigen, senden Sie einen F
     </tr>
     <tr>
       <td>SQL Data Warehouse</td>
-      <td>Table</td>
+      <td>Tabelle</td>
       <td>Tabelle, Ansicht</td>
       <td>
         <font size=2> protocol: tds
@@ -885,7 +910,21 @@ Wenn Sie Unterstützung für zusätzliche Quellen benötigen, senden Sie einen F
     <tr>
       <td>SQL Server</td>
       <td>Befehl</td>
-      <td>Gespeicherte Prozedur</td>
+      <td>Stored Procedure (Gespeicherte Prozedur)</td>
+      <td>
+        <font size=2> protocol: tds
+            <br>authentication: {protocol, windows}
+            <br>address:
+            <br>&#160;&#160;&#160;&#160;&#160; server
+            <br>&#160;&#160;&#160;&#160;&#160; database
+            <br>&#160;&#160;&#160;&#160;&#160; schema
+            <br>&#160;&#160;&#160;&#160;&#160; object </font>
+      </td>
+    </tr>
+    <tr>
+      <td>SQL Server</td>
+      <td>TableValuedFunction</td>
+      <td>Tabellenwertfunktion</td>
       <td>
         <font size=2> protocol: tds
             <br>authentication: {protocol, windows}
@@ -910,8 +949,8 @@ Wenn Sie Unterstützung für zusätzliche Quellen benötigen, senden Sie einen F
     </tr>
     <tr>
       <td>SQL Server</td>
-      <td>Table</td>
-      <td>Tabelle, Ansicht, Tabellenwertfunktion</td>
+      <td>Tabelle</td>
+      <td>Tabelle, Ansicht</td>
       <td>
         <font size=2> protocol: tds
             <br>authentication: {protocol, windows}
@@ -952,8 +991,8 @@ Wenn Sie Unterstützung für zusätzliche Quellen benötigen, senden Sie einen F
     </tr>
     <tr>
       <td>SQL Server Analysis Services – mehrdimensional</td>
-      <td>Kennzahl</td>
-      <td>Kennzahl</td>
+      <td>"Measure"</td>
+      <td>"Measure"</td>
       <td>
         <font size=2> protocol: analysis-services
             <br>authentication: {windows, basic, anonymous, none}
@@ -967,7 +1006,7 @@ Wenn Sie Unterstützung für zusätzliche Quellen benötigen, senden Sie einen F
     </tr>
     <tr>
       <td>SQL Server Analysis Services – mehrdimensional</td>
-      <td>Table</td>
+      <td>Tabelle</td>
       <td>Dimension</td>
       <td>
         <font size=2> protocol: analysis-services
@@ -1010,8 +1049,8 @@ Wenn Sie Unterstützung für zusätzliche Quellen benötigen, senden Sie einen F
     </tr>
     <tr>
       <td>SQL Server Analysis Services-Tabelle</td>
-      <td>Kennzahl</td>
-      <td>Kennzahl</td>
+      <td>"Measure"</td>
+      <td>"Measure"</td>
       <td>
         <font size=2> protocol: analysis-services
             <br>authentication: {windows, basic, anonymous, none}
@@ -1026,7 +1065,7 @@ Wenn Sie Unterstützung für zusätzliche Quellen benötigen, senden Sie einen F
     <tr>
       <td>SQL Server Analysis Services-Tabelle</td>
       <td>Tabelle</td>
-      <td>Table</td>
+      <td>Tabelle</td>
       <td>
         <font size=2> protocol: analysis-services
             <br>authentication: {windows, basic, anonymous, none}
@@ -1127,4 +1166,4 @@ Wenn Sie Unterstützung für zusätzliche Quellen benötigen, senden Sie einen F
     </tr>
 </table>
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0914_2016-->

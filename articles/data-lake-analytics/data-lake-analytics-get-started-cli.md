@@ -25,8 +25,6 @@ Enthält Informationen zum Verwenden der Azure-CLI zum Erstellen von Azure Data 
 
 In diesem Tutorial entwickeln Sie einen Auftrag, bei dem eine Datei mit tabulatorgetrennten Werten (TSV) gelesen und in eine Datei mit kommagetrennten Werten (CSV) konvertiert wird. Um das gleiche Lernprogramm unter Verwendung anderer unterstützter Tools zu durchlaufen, klicken Sie auf die Registerkarten oben in diesem Abschnitt.
 
-[AZURE.INCLUDE [basic-process-include](../../includes/data-lake-analytics-basic-process.md)]
-
 ##Voraussetzungen
 
 Bevor Sie mit diesem Tutorial beginnen können, benötigen Sie Folgendes:
@@ -162,4 +160,4 @@ Nachdem der Auftrag abgeschlossen wurde, können Sie die folgenden Cmdlets verwe
 - Informationen zu Verwaltungsaufgaben finden Sie unter [Verwalten von Azure Data Lake Analytics mithilfe des Azure-Portals](data-lake-analytics-manage-use-portal.md).
 - Eine Übersicht über Data Lake Analytics finden Sie unter [Azure Data Lake Analytics – Übersicht](data-lake-analytics-overview.md).
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

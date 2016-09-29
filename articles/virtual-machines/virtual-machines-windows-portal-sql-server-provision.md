@@ -13,7 +13,7 @@
 	ms.topic="hero-article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="06/21/2016"
+	ms.date="09/21/2016"
 	ms.author="jroth" />
 
 # Bereitstellen eines virtuellen Computers mit SQL Server im Azure-Portal
@@ -125,6 +125,7 @@ Konfigurieren Sie im Blatt **SQL Server-Einstellungen** die speziellen Einstellu
 | [Automatisiertes Patchen](#automated-patching) |
 | [Automatisierte Sicherung](#automated-backup) |
 | [Azure-Schlüsseltresor-Integration](#azure-key-vault-integration) |
+| [R Services](#r-services) |
 
 ### Konnektivität
 Geben Sie unter **SQL-Konnektivität** den Zugriffstyp an, den Sie für die SQL Server-Instanz auf dieser VM verwenden möchten. Wählen Sie für dieses Tutorial die Option **Öffentlich (Internet)**, um für Computer oder Dienste im Internet Verbindungen mit SQL Server zuzulassen. Wenn diese Option aktiviert ist, konfiguriert Azure die Firewall und die Netzwerksicherheitsgruppe automatisch, um Datenverkehr über Port 1433 zuzulassen.
@@ -138,7 +139,9 @@ Um über das Internet eine Verbindung mit SQL Server herzustellen, müssen Sie a
 Falls Sie die Verbindungen mit dem Datenbankmodul über das Internet nicht aktivieren möchten, wählen Sie eine der folgenden Optionen:
 
 - **Lokal (nur innerhalb der VM)**, um Verbindungen zu SQL Server nur von innerhalb des virtuellen Computers zuzulassen.
-- **Privat (innerhalb des Virtual Network)**, um Verbindungen zu SQL Server von Computern oder Diensten im gleichen virtuellen Netzwerk zuzulassen.
+- **Privat (innerhalb des Virtual Network)**, um Verbindungen zu SQL Server von Computern oder Diensten in demselben virtuellen Netzwerk zuzulassen.
+
+>[AZURE.NOTE] Mit dem VM-Image für die SQL Server Express Edition wird das TCP/IP-Protokoll nicht automatisch aktiviert. Dies gilt auch für die Konnektivitätsoptionen „Öffentlich“ und „Privat“. Für die Express Edition müssen Sie den SQL Server-Konfigurations-Manager verwenden, um [das TCP/IP-Protokoll nach dem Erstellen der VM manuell zu aktivieren](#configure-sql-server-to-listen-on-the-tcp-protocol).
 
 Generell sollten Sie die Sicherheit erhöhen, indem Sie die restriktivste Konnektivität wählen, die für Ihr Szenario zulässig ist. Bei allen Optionen können Sie aber Netzwerksicherheitsgruppen-Regeln und die SQL-/Windows-Authentifizierung verwenden, um für Sicherheit zu sorgen.
 
@@ -177,7 +180,7 @@ Standardmäßig optimiert Azure den Speicher für 5.000 IOPS, 200 MB und 1 TB
 
 ![SQL – Automatisiertes Patchen](./media/virtual-machines-windows-portal-sql-server-provision/azure-sql-arm-patching.png)
 
-Weitere Informationen finden Sie unter [Automatisches Patchen für SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-classic-sql-automated-patching.md).
+Weitere Informationen finden Sie unter [Automatisches Patchen für SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-sql-automated-patching.md).
 
 ### Automatisierte Sicherung
 Aktivieren Sie automatische Datenbanksicherungen für alle Datenbanken unter **Automatisierte Sicherung**. Die automatisierte Sicherung ist standardmäßig deaktiviert.
@@ -192,7 +195,7 @@ Klicken Sie auf **Aktivieren**, um die Sicherung zu verschlüsseln. Geben Sie da
 
 ![SQL – Automatisierte Sicherung](./media/virtual-machines-windows-portal-sql-server-provision/azure-sql-arm-autobackup.png)
 
- Weitere Informationen finden Sie unter [Automatisierte Sicherung für SQL Server in Azure Virtual Machines](virtual-machines-windows-classic-sql-automated-backup.md).
+ Weitere Informationen finden Sie unter [Automatisierte Sicherung für SQL Server in Azure Virtual Machines](virtual-machines-windows-sql-automated-backup.md).
 
 ### Azure-Schlüsseltresor-Integration
 Klicken Sie zum Speichern von geheimen Sicherheitsschlüsseln für die Verschlüsselung in Azure auf **Azure-Schlüsseltresor-Integration** und dann auf **Aktivieren**.
@@ -208,12 +211,19 @@ In der folgenden Tabelle sind die Parameter aufgeführt, die zum Konfigurieren d
 | **Geheimer Schlüssel des Prinzipals**|Der geheime Schlüssel des Azure Active Directory-Dienstprinzipals. Dieser geheime Schlüssel wird auch als geheimer Clientschlüssel bezeichnet. | 9VTJSQwzlFepD8XODnzy8n2V01Jd8dAjwm/azF1XDKM=|
 |**Name der Anmeldeinformationen**|**Anmeldeinformationsname**: Die Azure-Schlüsseltresor-Integration erstellt Anmeldeinformationen in SQL Server, damit der virtuelle Computer Zugriff auf den Schlüsseltresor hat. Wählen Sie einen Namen für diese Anmeldeinformation.| mycred1|
 
-Weitere Informationen finden Sie unter [Konfigurieren der Azure-Schlüsseltresor-Integration für SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-classic-ps-sql-keyvault.md).
+Weitere Informationen finden Sie unter [Konfigurieren der Azure-Schlüsseltresor-Integration für SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-ps-sql-keyvault.md).
 
 Klicken Sie auf **OK**, wenn Sie mit dem Konfigurieren der SQL Server-Einstellungen fertig sind.
 
+### R Services
+Für die SQL Server 2016 Enterprise Edition verfügen Sie über die Option zum Aktivieren von [SQL Server R Services](https://msdn.microsoft.com/library/mt604845.aspx). Dies ermöglicht die Verwendung der erweiterten Analyse mit SQL Server 2016. Klicken Sie auf dem Blatt **SQL Server-Einstellungen** auf **Aktivieren**.
+
+![SQL Server R Services aktivieren](./media/virtual-machines-windows-portal-sql-server-provision/azure-vm-sql-server-r-services.png)
+
+>[AZURE.NOTE] Für SQL Server-Images, bei denen es sich nicht um die 2016 Enterprise Edition handelt, ist die Option zum Aktivieren von R Services deaktiviert.
+
 ## 5\. Zusammenfassung prüfen
-Überprüfen Sie im Blatt **Zusammenfassung** die Zusammenfassung, und klicken Sie auf **OK**, um SQL Server, die Ressourcengruppe und die für diesen virtuellen Computer angegebenen Ressourcen zu erstellen.
+Überprüfen Sie auf dem Blatt **Zusammenfassung** die Zusammenfassung, und klicken Sie auf **OK**, um SQL Server, die Ressourcengruppe und die für diesen virtuellen Computer angegebenen Ressourcen zu erstellen.
 
 Sie können die Bereitstellung über das Azure-Portal überwachen. Auf der Schaltfläche **Benachrichtigungen** oben auf der Seite wird der grundlegende Status der Bereitstellung angezeigt.
 
@@ -224,13 +234,13 @@ Sie können die Bereitstellung über das Azure-Portal überwachen. Auf der Schal
 Führen Sie die folgenden Schritte aus, um mit Remotedesktop eine Verbindung mit dem virtuellen Computer herzustellen:
 
 1. Nachdem die Azure-VM erstellt wurde, wird auf dem Azure-Dashboard das Symbol für die VM angezeigt. Sie können auch darauf zugreifen, indem Sie die Liste mit den vorhandenen virtuellen Computern durchsuchen. Klicken Sie auf den neuen virtuellen SQL-Computer. Auf dem Blatt **Virtueller Computer** werden die Details zum virtuellen Computer angezeigt.
-1. Klicken Sie oben im Blatt **Virtueller Computer** auf **Verbinden**.
+1. Klicken Sie oben auf dem Blatt **Virtueller Computer** auf **Verbinden**.
 1. Im Browser wird eine RDP-Datei für die VM heruntergeladen. Öffnen Sie die RDP-Datei. ![Vom Remotedesktop zur SQL-VM](./media/virtual-machines-windows-portal-sql-server-provision/azure-sql-vm-remote-desktop.png)
 1. Sie werden von der Remotedesktopverbindung informiert, dass der Herausgeber dieser Remoteverbindung nicht identifiziert werden kann. Klicken Sie auf **Verbinden**, um den Vorgang fortzusetzen.
 1. Klicken Sie im Dialogfeld **Windows-Sicherheit** auf **Anderes Konto verwenden**.
-1. Geben Sie unter **Benutzername** den **<user name>** ein, wobei <user name> der Benutzername ist, den Sie beim Konfigurieren der VM angegeben haben. Sie müssen vor dem Namen einen vorangestellten umgekehrten Schrägstrich hinzufügen.
+1. Geben Sie unter **Benutzername** den **<Benutzernamen>** ein. Dies ist der Benutzername, den Sie beim Konfigurieren der VM angegeben haben. Sie müssen vor dem Namen einen vorangestellten umgekehrten Schrägstrich hinzufügen.
 1. Geben Sie das **Kennwort** ein, das Sie für diese VM konfiguriert haben, und klicken Sie dann auf **OK**, um die Verbindung herzustellen.
-1. Wenn in einem anderen Dialogfeld **Remotedesktopverbindung** gefragt wird, ob die Verbindung hergestellt werden kann, können Sie auf **Ja** klicken.
+1. Wenn in einem weiteren Dialogfeld **Remotedesktopverbindung** gefragt wird, ob die Verbindung hergestellt werden kann, können Sie auf **Ja** klicken.
 
 Nachdem Sie eine Verbindung mit dem virtuellen SQL Server-Computer hergestellt haben, können Sie SQL Server Management Studio starten und mit Ihren Anmeldeinformationen für den lokalen Administrator eine Verbindung mit der Windows-Authentifizierung herstellen. Wenn Sie die SQL Server-Authentifizierung aktiviert haben, können Sie die Verbindung auch per SQL-Authentifizierung herstellen, indem Sie den während der Bereitstellung konfigurierten SQL-Benutzernamen und das Kennwort verwenden.
 
@@ -253,4 +263,4 @@ Eine Übersicht über SQL Server auf virtuellen Azure-Computern als Video finden
 
 [Sehen Sie sich den Lernpfad für SQL Server auf virtuellen Azure-Computern an](https://azure.microsoft.com/documentation/learning-paths/sql-azure-vm/).
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0921_2016-->

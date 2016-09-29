@@ -4,7 +4,7 @@
 	services="machine-learning"
 	documentationCenter=""
 	authors="brohrer"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun"
     tags=""/>
     
@@ -237,4 +237,4 @@ Azure Machine Learning umfasst außerdem Zugriff auf ein leistungsfähiges Machi
 [9]: ./media/machine-learning-algorithm-choice/image9.png
 [10]: ./media/machine-learning-algorithm-choice/image10.png
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0914_2016-->

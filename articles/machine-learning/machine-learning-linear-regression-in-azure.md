@@ -5,7 +5,7 @@
 	services="machine-learning" 
 	documentationCenter="" 
 	authors="garyericson" 
-	manager="paulettm" 
+	manager="jhubbard" 
 	editor="cgronlun"  />
 
 <tags 
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/31/2016" 
+	ms.date="09/09/2016" 
 	ms.author="kbaroni;garye" />
 
 # Verwenden der linearen Regression in Azure Machine Learning
@@ -29,8 +29,8 @@
 
 Unser Projekt begann zunächst mit zwei Zielsetzungen:
 
-1. Durch den Einsatz von Vorhersageanalysen die Genauigkeit der Umsatzprognosen unserer Organisation zu verbessern  
-2. Mithilfe von Azure ML eine Bestätigung, Optimierung, Beschleunigung und Skalierung unserer Ergebnisse herbeizuführen.  
+1. Durch den Einsatz von Vorhersageanalysen die Genauigkeit der Umsatzprognosen unserer Organisation zu verbessern
+2. Mithilfe von Azure ML eine Bestätigung, Optimierung, Beschleunigung und Skalierung unserer Ergebnisse herbeizuführen.
 
 Wie viele andere Unternehmen durchläuft auch unsere Organisation einen monatlichen Prozess zur Erlösprognose. Unser kleines Analystenteam wurde beauftragt, diesen Prozess mithilfe von Machine Learning zu unterstützen und die Prognosegenauigkeit zu verbessern. Das Team sammelte im Verlauf einiger Monate Daten aus mehreren Quellen und ermittelte in dieser Zeit mit statistischen Hilfsmitteln die wichtigsten Attribute für Vertriebsprognosen im Bereich Services. Im nächsten Schritt wurden verschiedene Prototypen für die Regressionsmodelle in Excel erstellt und mit den vorhandenen Daten getestet. Innerhalb einiger Wochen hatten wir ein Regressionsmodell in Excel erstellt, das besser war als unsere derzeitigen Prognoseverfahren aus dem Finanzbereich. Dieses Modell wurde unser Prognose-Benchmark.
 
@@ -51,8 +51,8 @@ Wir berechneten den *Mean Absolute % Error* und verwendeten diesen Wert als Leis
 Das Erstellen unseres Experiments in Azure ML verlief in folgenden Schritten:
 
 1.	Hochladen des DataSets als CSV-Datei in Azure ML (sehr kleine Datei)
-2.	Erstellen eines neuen Experiments und Verwenden des [Select Columns in Dataset][select-columns]-Moduls, um die gleichen Datenfeatures wie in Excel auszuwählen.   
-3.	Verwenden des [Split Data][split]-Moduls (im Modus *Relative Expression*), um die Daten in ebenso große Trainingssätze wie in Excel aufzugliedern  
+2.	Erstellen eines neuen Experiments und Verwenden des [Select Columns in Dataset][select-columns]-Moduls, um die gleichen Datenfeatures wie in Excel auszuwählen.
+3.	Verwenden des [Split Data][split]-Moduls (im Modus *Relative Expression*), um die Daten in ebenso große Trainingssätze wie in Excel aufzugliedern
 4.	Experimentieren mit dem [Linear Regression][linear-regression]-Modul (nur Standardoptionen), Dokumentieren und Vergleichen mit den Ergebnissen unseres Excel-Regressionsmodells
 
 ### Beurteilung erster Ergebnisse
@@ -61,17 +61,17 @@ Zunächst war das Excel-Modell dem Azure-ML-Modell deutlich überlegen.
 | |Excel|Azure ML|
 |---|:---:|:---:|
 |Leistung| | |
-|<ul style="list-style-type: none;"><li>Adjusted R Square</li></ul>| 0,96 |–|
-|<ul style="list-style-type: none;"><li>Coefficient of <br />Determination</li></ul>|–|	0,78<br />(geringe Genauigkeit)|
+|<ul style="list-style-type: none;"><li>Adjusted R Square</li></ul>| 0,96 |N/V|
+|<ul style="list-style-type: none;"><li>Coefficient of <br />Determination</li></ul>|N/V|	0,78<br />(geringe Genauigkeit)|
 |Mittlerer absoluter Fehler |	9,5 Mio. $|	19,4 Mio. $|
-|Mean Absolute Error (%)|	6,03 %|	12,2 %
+|Mean Absolute Error (%)|	6,03 %|	12,2 %
 
 Als wir unser Verfahren und die Ergebnisse den Entwicklern und Data Scientists des Azure ML-Teams zeigten, konnte man uns dort ein paar rasche Tipps geben.
 
 * Bei Verwendung des [Linear Regression][linear-regression]-Moduls in Azure ML werden zwei Methoden bereitgestellt:
 	*  Online Gradient Descent: erscheint eher geeignet für umfangreichere Problemstellungen
 	*  Ordinary Least Squares: Diese Methode wird allgemein am häufigsten mit dem Stichwort lineare Regression assoziiert. Für kleine DataSets ist die "Ordinary Least Squares"-Methode möglicherweise besser geeignet.
-*  Denken Sie an die Möglichkeit, den "L2 Regularization Weight"-Parameter anzupassen, um die Leistung zu verbessern. Standardmäßig ist er auf 0,001 eingestellt, aber für unser kleines DataSet haben wir durch Ändern des Werts auf 0,005 eine bessere Leistung erzielt.    
+*  Denken Sie an die Möglichkeit, den "L2 Regularization Weight"-Parameter anzupassen, um die Leistung zu verbessern. Standardmäßig ist er auf 0,001 eingestellt, aber für unser kleines DataSet haben wir durch Ändern des Werts auf 0,005 eine bessere Leistung erzielt.
 
 ### Rätsel gelöst!
 Als wir die Empfehlungen umgesetzt hatten, konnten wir in Azure ML denselben Benchmark erzielen wie mit Excel.
@@ -85,8 +85,8 @@ Als wir die Empfehlungen umgesetzt hatten, konnten wir in Azure ML denselben Ben
 |Split: trainieren|Excel mithilfe der ersten 18 Zeilen trainiert, mit den letzten 8 Zeilen getestet|identisch|identisch|
 |Split: Test|Excels Regressionsformel auf die letzten 8 Zeilen angewendet|identisch|identisch|
 |**Leistung**||||
-|Adjusted R Square|0,96|–||
-|Coefficient of Determination|–|0,78|0,952049|
+|Adjusted R Square|0,96|N/V||
+|Coefficient of Determination|N/V|0,78|0,952049|
 |Mittlerer absoluter Fehler |9,5 Mio. $|19,4 Mio. $|9,5 Mio. $|
 |Mean Absolute Error (%)|<span style="background-color: 00FF00;"> 6,03%</span>|12,2 %|<span style="background-color: 00FF00;"> 6,03%</span>|
 
@@ -143,7 +143,7 @@ Die Möglichkeit, die Vorhersageanalytik für Prognosen aus Azure ML auch in Exc
 Im Folgenden finden Sie einige Ressourcen für Ihre Arbeit mit Regression:
 
 * Regression in Excel. Falls Sie in Excel noch nicht mit Regressionstechniken gearbeitet haben, erleichtert folgende Anleitung den Einstieg: [http://www.excel-easy.com/examples/regression.html](http://www.excel-easy.com/examples/regression.html)
-* Regression im Vergleich zu Vorhersagen. Tyler Chessman hat einen Blog-Artikel mit einer leicht verständlichen Beschreibung von linearer Regression für Anfänger verfasst, in dem er den Gebrauch von Zeitreihen zu Prognosezwecken erläutert. [http://sqlmag.com/sql-server-analysis-services/understanding-time-series-forecasting-concepts](http://sqlmag.com/sql-server-analysis-services/understanding-time-series-forecasting-concepts)  
+* Regression im Vergleich zu Vorhersagen. Tyler Chessman hat einen Blog-Artikel mit einer leicht verständlichen Beschreibung von linearer Regression für Anfänger verfasst, in dem er den Gebrauch von Zeitreihen zu Prognosezwecken erläutert. [http://sqlmag.com/sql-server-analysis-services/understanding-time-series-forecasting-concepts](http://sqlmag.com/sql-server-analysis-services/understanding-time-series-forecasting-concepts)
 * 	Ordinary Least Squares Linear Regression: Schwachstellen, Probleme und Stolperfallen. Eine Einführung und Erörterung der Regression: [http://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/ ](http://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/)
 
 [1]: ./media/machine-learning-linear-regression-in-azure/machine-learning-linear-regression-in-azure-1.png
@@ -159,4 +159,4 @@ Im Folgenden finden Sie einige Ressourcen für Ihre Arbeit mit Regression:
 [split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
  
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0914_2016-->

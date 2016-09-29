@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/06/2016"
+	ms.date="09/13/2016"
 	ms.author="v-shysun"/>
 
 # Gewusst wie: Ausführen allgemeiner Verwaltungsaufgaben in Azure SQL-Datenbank
@@ -43,4 +43,4 @@ In diesem Thema finden Sie Kurzanleitungen zum Gewähren und Aufheben des Zugrif
 ## So erstellen Sie zusätzliche Anmeldungen für Benutzer mit hohen Berechtigungen in der virtuellen „master“-Datenbank
 - Verwenden Sie die [CREATE LOGIN](https://msdn.microsoft.com/library/ms189751.aspx)-Anweisung, und lesen Sie den Abschnitt „Verwalten von Anmeldungen“ in [Verwalten von Datenbanken und Anmeldungen in der Azure SQL-Datenbank](sql-database-manage-logins.md), um weitere Informationen zu erhalten.
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0914_2016-->

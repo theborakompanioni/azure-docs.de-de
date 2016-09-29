@@ -4,7 +4,7 @@
 	services="hdinsight"
 	documentationCenter=""
 	authors="nitinme"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun"
 	tags="azure-portal"/>
 
@@ -59,7 +59,7 @@ Mithilfe von *Skriptaktionen* können Sie Giraph in einem beliebigen Clustertyp 
 			<td>Geben Sie die Parameter an, wenn dies für das Skript erforderlich ist. Für das Skript zum Installieren von Giraph sind keine Parameter erforderlich, sodass Sie diese leer lassen können.</td></tr>
 	</table>
 
-	Sie können dem Cluster mehr als eine Skriptaktion zum Installieren von mehreren Komponenten hinzufügen. Nachdem Sie die Skripts hinzugefügt haben, klicken Sie auf das Häkchen, um die Erstellung des Clusters zu starten.
+	Sie können dem Cluster mehr als eine Skriptaktion zum Installieren von mehreren Komponenten hinzufügen. Nachdem Sie die Skripts hinzugefügt haben, klicken Sie auf das Häkchen, um mit dem Erstellen des Clusters zu beginnen.
 
 ## Verwenden von Giraph
 
@@ -162,7 +162,7 @@ Weitere Informationen finden Sie unter [Anpassen von HDInsight-Clustern mithilfe
 Weitere Informationen finden Sie unter [Anpassen von HDInsight-Clustern mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster.md#call_scripts_using_azure_powershell). Das Beispiel veranschaulicht das Installieren von Spark mithilfe des .NET SDK. Sie müssen das Skript für die Verwendung von [https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1](https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1) anpassen.
 
 
-## Weitere Informationen
+## Siehe auch
 
 - [Installieren von Giraph in HDInsight Hadoop-Clustern (Linux)](hdinsight-hadoop-giraph-install-linux.md)
 - [Erstellen von Hadoop-Clustern in HDInsight](hdinsight-provision-clusters.md): Allgemeine Informationen zum Erstellen von HDInsight-Clustern
@@ -183,4 +183,4 @@ Weitere Informationen finden Sie unter [Anpassen von HDInsight-Clustern mithilfe
 [hdinsight-install-spark]: hdinsight-hadoop-spark-install.md
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster.md
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0914_2016-->

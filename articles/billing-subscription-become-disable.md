@@ -60,9 +60,20 @@ Sie können dieses Problem mit einer der folgenden Methoden beheben:
 - [Wechseln Sie zu einer anderen Kreditkarte.](billing-how-to-change-credit-card.md)
 - Als Unternehmen können Sie [zur Zahlung auf Rechnung wechseln](https://azure.microsoft.com/pricing/invoicing/).
 
-## Erneutes Aktivieren Ihres Abonnements
+## Das Abonnement wurde vom Kontoadministrator abgebrochen.
 
-Um ein deaktiviertes Abonnement erneut zu aktivieren, müssen Sie ein Supportticket erstellen: Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an, und wählen Sie **Hilfe und Support** > **Neue Supportanfrage**.
+>[AZURE.NOTE] Diese Methode gilt momentan nur für Abonnements mit nutzungsbasierter Zahlung. Für andere Abonnementtypen müssen Sie den [Support kontaktieren](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+
+Wenn Sie der Kontoadministrator sind, können Sie Ihr Abonnement mit nutzungsbasierter Zahlung mit folgenden Schritte reaktivieren:
+
+- Wählen Sie das abgebrochene Abonnement aus.
+- Klicken Sie auf einen der **Reaktivieren**-Links auf der Detailseite des Abonnements.
+
+![reactivate-sub](./media/billing-how-to-cancel-azure-subscription/reactivate-sub.png)
+
+## So reaktivieren Sie Abonnements mit nutzungsbasierter Zahlung:
+
+Um ein deaktiviertes Abonnement zu reaktivieren, müssen Sie ein Supportticket erstellen: Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an, und wählen Sie **Hilfe und Support** > **Neue Supportanfrage**.
 
 ![helpandsupportbutton](./media/billing-how-to-create-billing-support-ticket/helpandsupport.png)
 
@@ -75,4 +86,4 @@ Weitere Informationen finden Sie unter [Erstellen eines Supporttickets bei Probl
 
 > [AZURE.NOTE] Wenn Sie weitere Fragen haben, [wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), um das Problem schnell zu lösen.
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0914_2016-->

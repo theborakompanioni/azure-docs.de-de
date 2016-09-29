@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="08/29/2016"
-   ms.author="ganesr"/>
+   ms.date="09/14/2016"
+   ms.author="ganesr;cherylmc"/>
 
 # Erstellen und Ändern einer ExpressRoute-Verbindung
 
@@ -32,15 +32,34 @@ In diesem Artikel werden Sie durch die Schritte zum Erstellen einer Azure Expres
 
 ## Voraussetzungen
 
-- Sie benötigen die neueste Version der Azure PowerShell-Module. Sie können das neueste PowerShell-Modul im Abschnitt „PowerShell“ auf der Seite [Downloads](https://azure.microsoft.com/downloads/) für Azure herunterladen. Eine detaillierte Anleitung zum Konfigurieren des Computers für die Verwendung der PowerShell-Module erhalten Sie auf der Seite [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
+### 1\. Überprüfen der Voraussetzungen und Workflowartikel
 
-- Stellen Sie sicher, dass Sie vor Beginn der Konfiguration die [Voraussetzungen](expressroute-prerequisites.md) und [Workflows](expressroute-workflows.md) gelesen haben.
+Stellen Sie sicher, dass Sie vor Beginn der Konfiguration die [Voraussetzungen](expressroute-prerequisites.md) und [Workflows](expressroute-workflows.md) gelesen haben.
+
+
+### 2\. Installieren der aktuellen Versionen der Azure PowerShell-Module 
+
+Eine detaillierte Anleitung zum Konfigurieren des Computers für die Verwendung der PowerShell-Module erhalten Sie auf der Seite [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
+
+### 3\. Anmelden bei Ihrem Azure-Konto und Auswählen eines Abonnements
+
+1. Führen Sie das folgende Cmdlet in einem Windows PowerShell-Fenster mit erhöhten Rechten aus:
+
+		Add-AzureAccount
+2. Melden Sie sich auf der dann angezeigten Anmeldeseite bei Ihrem Konto an.
+
+3. Rufen Sie eine Liste Ihrer Abonnements ab.
+
+		Get-AzureSubscription
+4. Wählen Sie das Abonnement aus, das Sie verwenden möchten.
+	
+		Select-AzureSubscription -SubscriptionName "mysubscriptionname"
 
 ## Erstellen und Bereitstellen einer ExpressRoute-Verbindung
 
 ### 1\. Importieren der PowerShell-Module für ExpressRoute
 
- Sie müssen die Azure- und ExpressRoute-Module in die PowerShell-Sitzung importieren, um die ExpressRoute-Cmdlets verwenden zu können. Führen Sie zu diesem Zweck die folgenden Befehle aus:
+ Falls nicht bereits geschehen, müssen Sie die Azure- und ExpressRoute-Module in die PowerShell-Sitzung importieren, um die ExpressRoute-Cmdlets verwenden zu können. Sie importieren die Module aus dem Speicherort, im dem sie auf dem lokalen Computer installiert waren. Je nach der Methode, die Sie verwendet haben, um die Module zu installieren, weicht der Speicherort möglicherweise vom folgenden Beispiel ab. Ändern Sie das Beispiel, sofern erforderlich.
 
 	Import-Module 'C:\Program Files (x86)\Microsoft SDKs\Azure\PowerShell\ServiceManagement\Azure\Azure.psd1'
 	Import-Module 'C:\Program Files (x86)\Microsoft SDKs\Azure\PowerShell\ServiceManagement\Azure\ExpressRoute\ExpressRoute.psd1'
@@ -313,4 +332,4 @@ Führen Sie nach dem Erstellen Ihrer Verbindung folgende Vorgänge aus:
 - [Erstellen und Ändern des Routings für Ihre ExpressRoute-Verbindung](expressroute-howto-routing-classic.md)
 - [Verknüpfen Ihres virtuelles Netzwerks mit Ihrer ExpressRoute-Verbindung](expressroute-howto-linkvnet-classic.md)
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0914_2016-->

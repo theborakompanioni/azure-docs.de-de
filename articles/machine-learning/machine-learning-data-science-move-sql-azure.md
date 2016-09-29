@@ -4,7 +4,7 @@
 	services="machine-learning" 
 	documentationCenter="" 
 	authors="bradsev"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun" />
 
 <tags 
@@ -51,7 +51,7 @@ Sie können die hier beschriebenen Verfahren entweder auf einen Satz Ihrer eigen
 
 Daten in Flatfiles (CSV- oder TSV-Format) können mithilfe einer SQL-Abfrage zum Masseneinfügen in eine Azure SQL-Datenbank verschoben werden.
 
-### <a name="bulk-insert-sql-query"></a> SQL-Abfrage zum Masseneinfügen
+### <a name="bulk-insert-sql-query"></a>SQL-Abfrage zum Masseneinfügen
 
 Die Schritte des Verfahrens unter Verwendung der SQL-Abfrage zum Masseneinfügen sind mit denen vergleichbar, die in den Abschnitten zum Verschieben von Daten aus einer Flatfilequelle in SQL Server auf einem virtuellen Azure-Computer behandelt werden. Ausführliche Informationen finden Sie unter [SQL-Abfrage zum Masseneinfügen](machine-learning-data-science-move-sql-server-virtual-machine.md#insert-tables-bulkquery).
 
@@ -60,7 +60,7 @@ Die Schritte des Verfahrens unter Verwendung der SQL-Abfrage zum Masseneinfügen
 
 Wenn die Quelldaten auf einem lokalen SQL Server gespeichert sind, stehen verschiedene Optionen zum Verschieben der Daten in eine Azure SQL-Datenbank zur Verfügung:
 
-1. [Exportieren in eine Flatfile](#export-flat-file) 
+1. [Exportieren in eine Flatfile](#export-flat-file)
 2. [SQL-Datenbankmigrations-Assistent](#insert-tables-bcp)
 3. [Datenbanksicherung und -wiederherstellung](#db-migration)
 4. [Azure Data Factory](#adf)
@@ -85,4 +85,4 @@ Das Verfahren zum Verschieben von Daten in eine Azure SQL-Datenbank mit Azure Da
 
 Sie sollten die Verwendung von ADF in Betracht ziehen, wenn Daten in einem Hybridszenario kontinuierlich migriert werden müssen, das sowohl auf lokale als auch Cloudressourcen zugreift, und wenn die Daten Transaktionen unterworfen werden oder geändert werden müssen, oder wenn ihnen im Rahmen der Migration eine Geschäftslogik hinzugefügt wird. ADF gestatte die Planung und Überwachung von Aufträgen mithilfe einfacher JSON-Skripts, die das Verschieben von Daten in regelmäßigen Abständen verwalten. ADF verfügt außerdem über weitere Funktionen wie Unterstützung für komplexe Vorgänge.
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0914_2016-->

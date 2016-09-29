@@ -4,7 +4,7 @@
 	services="machine-learning"
 	documentationCenter=""
 	authors="bradsev,hangzh-msft,wguo123"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun" />
 
 <tags
@@ -26,7 +26,7 @@ Das Verfahren folgt dem Workflow des [Team Data Science-Prozesses (TDSP)](https:
 
 ## <a name="dataset"></a>Das Dataset „NYC Taxi Trips“
 
-Die „NYC Taxi Trips“-Daten umfassen ca. 20 GB komprimierter CSV-Dateien (~48 GB unkomprimiert) mit Aufzeichnungen von mehr als 173 Millionen einzelner Fahrten mit den zugehörigen Preisen. Jeder Fahrtendatensatz enthält den Start- und Zielort, jeweils mit Uhrzeit, die anonymisierte Lizenznummer des Fahrers (Hack) und die eindeutige ID des Taxis (Medallion). Die Daten umfassen alle Fahrten im Jahr 2013. Sie werden für jeden Monat in den folgenden beiden DataSets bereitgestellt:
+Die „NYC Taxi Trips“-Daten umfassen ca. 20 GB komprimierter CSV-Dateien (~48 GB unkomprimiert) mit Aufzeichnungen von mehr als 173 Millionen einzelner Fahrten mit den zugehörigen Preisen. Jeder Fahrtendatensatz enthält den Start- und Zielort, jeweils mit Uhrzeit, die anonymisierte Lizenznummer des Fahrers (Hack) und die eindeutige ID des Taxis (Medallion). Die Daten umfassen alle Fahrten im Jahr 2013. Sie werden für jeden Monat in den folgenden beiden Datasets bereitgestellt:
 
 1. Die Datei **trip\_data.csv** enthält Fahrtendetails wie die Anzahl der Fahrgäste, Start- und Zielort, Fahrtdauer und Fahrtlänge. Es folgen einige Beispieleinträge:
 
@@ -93,7 +93,7 @@ Zum Einrichten Ihrer Azure Data Science-Umgebung führen Sie die folgenden Schri
 
 **Stellen Sie mit Visual Studio eine Verbindung mit Ihrem Azure SQL Data Warehouse her.** Eine Anleitung hierzu finden Sie unter [Herstellen einer Verbindung mit Azure SQL Data Warehouse über Visual Studio](../sql-data-warehouse/sql-data-warehouse-connect-overview.md) in den Schritten 1 und 2.
 
->[AZURE.NOTE] Führen Sie die folgende SQL-Abfrage für die Datenbank aus, die Sie in SQL Data Warehouse erstellt haben(anstelle der Abfrage, die in Schritt 3 des Verbindungsthemas bereitgestellt wird), um **einen Hauptschlüssel zu erstellen**.
+>[AZURE.NOTE] Führen Sie die folgende SQL-Abfrage für die Datenbank aus, die Sie in SQL Data Warehouse erstellt haben (anstelle der Abfrage, die in Schritt 3 des Verbindungsthemas bereitgestellt wird), um **einen Hauptschlüssel zu erstellen**.
 
 	BEGIN TRY
 	       --Try to create the master key
@@ -417,7 +417,7 @@ Dieses Beispiel ermittelt die Anzahl von Fahrten mit und ohne Trinkgeld in einem
 
 ### Durchsuchen: Verteilung von Trinkgeld nach Klasse/Bereich
 
-In diesem Beispiel wird die Verteilung von Trinkgeldbereichen in einem bestimmten Zeitraum (oder im vollständigen DataSet, wenn das ganze Jahr verwendet wird) berechnet. Dies ist die Verteilung der Bezeichnerklassen, die später für die Modellierung der Multi-Klassen-Klassifizierung verwendet wird.
+In diesem Beispiel wird die Verteilung von Trinkgeldbereichen in einem bestimmten Zeitraum (oder im vollständigen DataSet, wenn das ganze Jahr verwendet wird) berechnet. Dies ist die Verteilung der Bezeichnerklassen, die später für die Modellierung der Multiklassenklassifizierung verwendet wird.
 
 	SELECT tip_class, COUNT(*) AS tip_freq FROM (
 		SELECT CASE
@@ -969,4 +969,4 @@ Diese exemplarische Vorgehensweise und die zugehörigen Skripts und IPython Note
 [select-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
 [import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0914_2016-->

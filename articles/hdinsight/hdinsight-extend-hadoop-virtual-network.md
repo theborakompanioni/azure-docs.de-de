@@ -4,7 +4,7 @@
 	services="hdinsight"
 	documentationCenter=""
 	authors="Blackmist"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun"/>
 
 <tags
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="07/06/2016"
+   ms.date="09/13/2016"
    ms.author="larryfr"/>
 
 
@@ -26,7 +26,7 @@ Mit Azure Virtual Network können Sie Ihre Hadoop-Lösungen erweitern, um lokale
 
 ##<a id="whatis"></a>Was ist Azure Virtual Network?
 
-[Azure Virtual Network](https://azure.microsoft.com/documentation/services/virtual-network/) ermöglicht das Erstellen eines sicheren, beständigen Netzwerk mit allen Ressourcen, die Sie für Ihre Lösung benötigen. Virtuelle Netzwerken ermöglichen Folgendes:
+[Azure Virtual Network](https://azure.microsoft.com/documentation/services/virtual-network/) ermöglicht das Erstellen eines sicheren, beständigen Netzwerk mit allen Ressourcen, die Sie für Ihre Lösung benötigen. Virtuelle Netzwerke ermöglichen Folgendes:
 
 * Verbinden von Cloudressourcen in einem privaten Netzwerk (nur in der Cloud)
 
@@ -70,9 +70,9 @@ Azure HDInsight unterstützt nur standortbasierte virtuelle Netzwerke und kann m
 
 ###Klassisches oder virtuelles Netzwerk der Version 2
 
-Für Windows-basierte Cluster ist ein virtuelles Azure-Netzwerk der Version 1 (klassisch) erforderlich, für Linux-basierte Cluster dagegen ein virtuelles Azure-Netzwerk der Version 2 (Azure-Ressourcen-Manager). Wenn nicht der richtige Netzwerktyp vorhanden ist, kann das Netzwerk nicht zum Erstellen des Clusters verwendet werden.
+Für Windows-basierte Cluster ist ein klassisches virtuelles Netzwerk erforderlich, Linux-basierte Cluster erfordern ein virtuelles Azure Resource Manager-Netzwerk. Wenn nicht der richtige Netzwerktyp vorhanden ist, kann das Netzwerk nicht zum Erstellen des Clusters verwendet werden.
 
-Wenn sich Ressourcen in einem virtuellen Netzwerk befinden, das nicht von dem zu erstellenden Cluster verwendet werden kann, dann können Sie ein neues virtuelles Netzwerk erstellen, das vom Cluster verwendet werden kann, und es mit dem inkompatiblen virtuellen Netzwerk verbinden. Anschließend können Sie den Cluster in der erforderlichen Netzwerkversion erstellen, und da die beiden Netzwerke verknüpft sind, kann auf die Ressourcen im anderen Netzwerk zugegriffen werden. Weitere Informationen zum Herstellen einer Verbindung zwischen klassischen und neuen virtuellen Netzwerken finden Sie unter [Herstellen einer Verbindung zwischen klassischen VNets und neuen VNets](../virtual-network/virtual-networks-arm-asm-s2s.md).
+Wenn sich Ressourcen in einem virtuellen Netzwerk befinden, das nicht von dem zu erstellenden Cluster verwendet werden kann, dann können Sie ein neues virtuelles Netzwerk erstellen, das vom Cluster verwendet werden kann, und es mit dem inkompatiblen virtuellen Netzwerk verbinden. Anschließend können Sie den Cluster in der erforderlichen Netzwerkversion erstellen, und da die beiden Netzwerke verknüpft sind, kann auf die Ressourcen im anderen Netzwerk zugegriffen werden. Weitere Informationen zum Herstellen einer Verbindung zwischen klassischen und neuen virtuellen Netzwerken finden Sie unter [Herstellen einer Verbindung zwischen klassischen VNets und neuen VNets](../vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md).
 
 ###Benutzerdefiniertes DNS
 
@@ -307,4 +307,4 @@ In den folgenden Beispielen wird die Verwendung von HDInsight mit Azure Virtual 
 
 Weitere Informationen zu virtuellen Azure Virtual-Netzwerken finden Sie unter [Überblick über Azure Virtual Network](../virtual-network/virtual-networks-overview.md).
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0914_2016-->

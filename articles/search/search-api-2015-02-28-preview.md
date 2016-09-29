@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="search"
-   ms.date="07/25/2016"
+   ms.date="09/07/2016"
    ms.author="brjohnst"/>
 
 # Azure-Suchdienst-REST-API: Version 2015-02-28-Preview
@@ -55,7 +55,7 @@ Die Azure Search-Dienst-API unterstützt zwei URL-Syntaxversionen für API-Vorg�
 
 [Testanalysemethode](#TestAnalyzer)
 
-    GET /indexes/[index name]/analyze?api-version=2015-02-28-Preview
+    POST /indexes/[index name]/analyze?api-version=2015-02-28-Preview
 
 [Index löschen](#DeleteIndex)
 
@@ -380,7 +380,7 @@ Es folgt die Liste der unterstützten Sprachen sowie die Namen der Lucene- und M
 		<td>nl.lucene</td>	
 	</tr>    
     <tr>
-		<td>Englisch</td>		
+		<td>Deutsch</td>		
 		<td>en.microsoft</td>
 		<td>en.lucene</td>		
 	</tr>
@@ -644,7 +644,7 @@ Clientseitiger JavaScript-Code kann standardmäßig keine APIs aufrufen, da der 
         {"name": "hotelId", "type": "Edm.String", "key": true, "searchable": false},
         {"name": "baseRate", "type": "Edm.Double"},
         {"name": "description", "type": "Edm.String", "filterable": false, "sortable": false, "facetable": false},
-	    {"name": "description_fr", "type": "Edm.String", "filterable": false, "sortable": false, "facetable": false, analyzer="fr.lucene"},
+        {"name": "description_fr", "type": "Edm.String", "filterable": false, "sortable": false, "facetable": false, "analyzer": "fr.lucene"},
         {"name": "hotelName", "type": "Edm.String"},
         {"name": "category", "type": "Edm.String"},
         {"name": "tags", "type": "Collection(Edm.String)"},
@@ -863,7 +863,7 @@ Sie benötigen außerdem den Dienstnamen, um die URL der Anforderung zu erstelle
 
 **Anforderungstext**
 
-Keine.
+Keine
 
 **Antwort**
 
@@ -930,7 +930,7 @@ Sie benötigen außerdem den Dienstnamen, um die URL der Anforderung zu erstelle
 
 **Anforderungstext**
 
-Keine.
+Keine
 
 **Antwort**
 
@@ -964,7 +964,7 @@ Sie benötigen außerdem den Dienstnamen, um die URL der Anforderung zu erstelle
 
 **Anforderungstext**
 
-Keine.
+Keine
 
 **Antwort**
 
@@ -999,7 +999,7 @@ Sie benötigen außerdem den Dienstnamen, um die URL der Anforderung zu erstelle
 
 **Anforderungstext**
 
-Keine.
+Keine
 
 **Antwort**
 
@@ -1344,7 +1344,9 @@ Ein Vorgang vom Typ **Search** wird als GET- oder POST-Anforderung ausgegeben un
 
 Wenn die API **Search** mittels „HTTP GET“ aufrufen, darf die Länge der angeforderten URL maximal 8 KB betragen. Dies ist für die meisten Anwendungen ausreichend. Manche Anwendungen erzeugen jedoch sehr große Abfragen oder OData-Filterausdrücke. Bei solchen Anwendungen ist HTTP POST besser geeignet, da dadurch größere Filter und Abfragen als mit GET möglich sind. Bei POST stellt die Anzahl der Begriffe oder Klauseln in einer Abfrage die Einschränkung dar, nicht die Größe der unformatierten Abfrage, da die maximal zulässige Größe für Anforderungen bei POST etwa 16 MB ist.
 
-> [AZURE.NOTE] Obwohl die Größenbeschränkung für POST-Anforderungen sehr hoch ist, dürfen Suchabfragen und Filterausdrücke nicht übermäßig komplex sein. Weitere Informationen zu Einschränkungen hinsichtlich der Komplexität von Suchabfragen und -filtern finden Sie in den Artikeln [Lucene-Abfragesyntax](https://msdn.microsoft.com/library/mt589323.aspx) und [OData-Ausdruckssyntax](https://msdn.microsoft.com/library/dn798921.aspx). **Anforderung**
+> [AZURE.NOTE] Obwohl die Größenbeschränkung für POST-Anforderungen sehr hoch ist, dürfen Suchabfragen und Filterausdrücke nicht übermäßig komplex sein. Weitere Informationen zu Einschränkungen hinsichtlich der Komplexität von Suchabfragen und -filtern finden Sie in den Artikeln [Lucene-Abfragesyntax](https://msdn.microsoft.com/library/mt589323.aspx) und [OData-Ausdruckssyntax](https://msdn.microsoft.com/library/dn798921.aspx).
+
+**Anforderung**
 
 Für Dienstanforderungen ist HTTPS erforderlich. Die Anforderung **Search** kann mit der GET- oder POST-Methode erstellt werden.
 
@@ -1460,7 +1462,7 @@ In der folgenden Liste werden die erforderlichen und optionalen Anforderungshead
 
 - `api-key`: Mit `api-key` wird die Anforderung bei Ihrem Suchdienst authentifiziert. Es handelt sich um einen für Ihre Dienst-URL eindeutigen Zeichenfolgewert. Für die **Suchanforderung** kann ein Administratorschlüssel oder ein Abfrageschlüssel für `api-key` festgelegt werden.
 
-Sie benötigen außerdem den Dienstnamen, um die URL der Anforderung zu erstellen. Sie können den Dienstnamen und den `api-key` in Ihrem Dienst-Dashboard im Azure-Portal abrufen. Hilfe bei der Seitennavigation finden Sie unter [Erstellen eines Azure-Suchdienstes im Portal](search-create-service-portal.md).
+Sie benötigen außerdem den Dienstnamen, um die URL der Anforderung zu erstellen. Sie können den Dienstnamen und den `api-key` in Ihrem Dienst-Dashboard im Azure-Portal abrufen. Hilfe bei der Seitennavigation finden Sie unter [Erstellen eines Azure-Suchdiensts im Portal](search-create-service-portal.md).
 
 **Anforderungstext**
 
@@ -1757,11 +1759,11 @@ In der folgenden Liste werden die erforderlichen und optionalen Anforderungshead
 
 - `api-key`: Mit `api-key` wird die Anforderung bei Ihrem Suchdienst authentifiziert. Es handelt sich um einen für Ihre Dienst-URL eindeutigen Zeichenfolgewert. Für die Anforderung **Dokument suchen** kann ein Administratorschlüssel oder ein Abfrageschlüssel für `api-key` festgelegt werden.
 
-Sie benötigen außerdem den Dienstnamen, um die URL der Anforderung zu erstellen. Sie können den Dienstnamen und den `api-key` in Ihrem Dienst-Dashboard im Azure-Portal abrufen. Hilfe bei der Seitennavigation finden Sie unter [Erstellen eines Azure-Suchdienstes im Portal](search-create-service-portal.md).
+Sie benötigen außerdem den Dienstnamen, um die URL der Anforderung zu erstellen. Sie können den Dienstnamen und den `api-key` in Ihrem Dienst-Dashboard im Azure-Portal abrufen. Hilfe bei der Seitennavigation finden Sie unter [Erstellen eines Azure-Suchdiensts im Portal](search-create-service-portal.md).
 
 **Anforderungstext**
 
-Keine.
+Keine
 
 **Antwort**
 
@@ -1805,11 +1807,11 @@ In der folgenden Liste werden die erforderlichen und optionalen Anforderungshead
 - `Accept`: Dieser Wert muss auf `text/plain` gesetzt werden.
 - `api-key`: Mit `api-key` wird die Anforderung bei Ihrem Suchdienst authentifiziert. Es handelt sich um einen für Ihre Dienst-URL eindeutigen Zeichenfolgewert. Für die Anforderung **Dokumentanzahl** kann ein Administratorschlüssel oder ein Abfrageschlüssel für `api-key` festgelegt werden.
 
-Sie benötigen außerdem den Dienstnamen, um die URL der Anforderung zu erstellen. Sie können den Dienstnamen und den `api-key` in Ihrem Dienst-Dashboard im Azure-Portal abrufen. Hilfe bei der Seitennavigation finden Sie unter [Erstellen eines Azure-Suchdienstes im Portal](search-create-service-portal.md).
+Sie benötigen außerdem den Dienstnamen, um die URL der Anforderung zu erstellen. Sie können den Dienstnamen und den `api-key` in Ihrem Dienst-Dashboard im Azure-Portal abrufen. Hilfe bei der Seitennavigation finden Sie unter [Erstellen eines Azure-Suchdiensts im Portal](search-create-service-portal.md).
 
 **Anforderungstext**
 
-Keine.
+Keine
 
 **Antwort**
 
@@ -1906,7 +1908,7 @@ In der folgenden Liste werden die erforderlichen und optionalen Anforderungshead
 
 - `api-key`: Mit `api-key` wird die Anforderung bei Ihrem Suchdienst authentifiziert. Es handelt sich um einen für Ihre Dienst-URL eindeutigen Zeichenfolgewert. Für die Anforderung **Vorschläge** kann ein Administratorschlüssel oder ein Abfrageschlüssel für `api-key` festgelegt werden.
 
-Sie benötigen außerdem den Dienstnamen, um die URL der Anforderung zu erstellen. Sie können den Dienstnamen und den `api-key` in Ihrem Dienst-Dashboard im Azure-Portal abrufen. Hilfe bei der Seitennavigation finden Sie unter [Erstellen eines Azure-Suchdienstes im Portal](search-create-service-portal.md).
+Sie benötigen außerdem den Dienstnamen, um die URL der Anforderung zu erstellen. Sie können den Dienstnamen und den `api-key` in Ihrem Dienst-Dashboard im Azure-Portal abrufen. Hilfe bei der Seitennavigation finden Sie unter [Erstellen eines Azure-Suchdiensts im Portal](search-create-service-portal.md).
 
 **Anforderungstext**
 
@@ -1970,4 +1972,4 @@ Rufen Sie 5 Vorschläge mit der Teilsuche nach "lux" ab.
       "suggesterName": "sg"
     }
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0914_2016-->

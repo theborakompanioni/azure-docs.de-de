@@ -4,7 +4,7 @@
 	services="hdinsight"
 	documentationCenter=""
 	authors="mumian"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun"/>
 
 <tags
@@ -74,7 +74,7 @@ Um OAuth zu verwenden, müssen Sie zunächst auf der Twitter-Entwicklerwebsite e
 	Feld|Wert
 	---|---
 	Name|MyHDInsightApp
-	Description|MyHDInsightApp
+	Beschreibung|MyHDInsightApp
 	Website|http://www.myhdinsightapp.com
 
 4. Aktivieren Sie **Yes, I agree**, und klicken Sie dann auf **Create your Twitter application**.
@@ -245,7 +245,7 @@ Mit Azure PowerShell können Sie mehrere HiveQL-Anweisungen gleichzeitig ausfüh
 
 >[AZURE.NOTE] Die Hive-Skriptdatei und eine Datei mit 10.000 Tweets wurden in einen öffentlichen Blobcontainer hochgeladen. Wenn Sie die hochgeladenen Dateien verwenden möchten, können Sie diesen Abschnitt überspringen.
 
-Das HiveQL-Skript führt folgende Schritte aus:
+Das HiveQL-Skript führt Folgendes durch:
 
 1. **Ablegen der Tabelle tweets\_raw**, falls die Tabelle bereits vorhanden ist.
 2. **Erstellen der Hive-Tabelle tweets\_raw**. Diese temporäre strukturierte Hive-Tabelle enthält die Daten für eine weitere ETL-Verarbeitung (Extrahieren, Transformieren und Laden). Informationen zu Partitionen finden Sie im englischsprachigen [Hive tutorial][apache-hive-tutorial].
@@ -565,4 +565,4 @@ In diesem Lernprogramm haben Sie erfahren, wie Sie ein unstrukturiertes JSON-Dat
 [hdinsight-hive-odbc]: hdinsight-connect-excel-hive-ODBC-driver.md
 [hdinsight-hbase-twitter-sentiment]: hdinsight-hbase-analyze-twitter-sentiment.md
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0914_2016-->

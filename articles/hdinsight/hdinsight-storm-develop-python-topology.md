@@ -4,7 +4,7 @@
    services="hdinsight"
    documentationCenter=""
    authors="Blackmist"
-   manager="paulettm"
+   manager="jhubbard"
    editor="cgronlun"/>
 
 <tags
@@ -174,4 +174,4 @@ In diesem Dokument haben Sie erfahren, wie Python-Komponenten in einer Storm-Top
 * [Verwenden von Python für Streaming-MapReduce-Aufträge ](hdinsight-hadoop-streaming-python.md)
 * [Verwenden von benutzerdefinierten Python-Funktionen (UDFs) in Pig und Hive](hdinsight-python.md)
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0914_2016-->

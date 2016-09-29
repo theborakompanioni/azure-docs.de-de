@@ -24,7 +24,7 @@
 In beiden Fällen sind die Dienstebenen **Basic**, **Standard** und **Premium** verfügbar. Die Datenbankoptionen dieser Ebenen sind bei eigenständigen Datenbanken und elastischen Pools ähnlich, aber bei elastischen Pools sind noch weitere Aspekte zu beachten. Dieser Artikel enthält ausführliche Informationen zu den Dienstebenen für eigenständige Datenbanken und elastische Pools.
 
 ## Tarife und Datenbankoptionen
-Die Dienstebenen "Basic", "Standard" und "Premium" haben alle eine Betriebszeit-SLA von 99,99 % und bieten vorhersagbare Leistung, flexible Optionen für Geschäftskontinuität, Sicherheitsfeatures und stündliche Abrechnung. In der folgenden Tabelle sind Beispiele für Dienstebenen aufgeführt, die sich für unterschiedliche Anwendungsworkloads am besten eignen.
+Die Dienstebenen "Basic", "Standard" und "Premium" haben alle eine Betriebszeit-SLA von 99,99 % und bieten vorhersagbare Leistung, flexible Optionen für Geschäftskontinuität, Sicherheitsfeatures und stündliche Abrechnung. In der folgenden Tabelle sind Beispiele für Dienstebenen aufgeführt, die sich für unterschiedliche Anwendungsworkloads am besten eignen.
 
 | Dienstebene | Zielworkloads |
 |---|---|
@@ -62,7 +62,7 @@ Ermitteln Sie zum Auswählen einer Dienstebene zunächst, ob die Datenbank eine 
 
 Beginnen Sie bei einer Dienstebene für eine eigenständige Datenbank damit, die benötigten Datenbankfeatures zu bestimmen, um die SQL-Datenbank-Edition auswählen zu können:
 
-- Datenbankgröße (maximal 5 GB für Basic, maximal 250 GB für Standard und maximal 500 GB bis 1 TB für Premium, je nach Leistungsebene)
+- Datenbankgröße (maximal 2 GB für Basic, maximal 250 GB für Standard und maximal 500 GB bis 1 TB für Premium, je nach Leistungsebene)
 - Datenbank-Aufbewahrungszeitraum (7 Tage bei Basic und 35 Tage bei Standard und Premium)
 
 Nach der Ermittlung der SQL-Datenbank-Edition können Sie die Leistungsebene für die Datenbank (Anzahl von DTUs) bestimmen. Sie können dies schätzen und dann anhand der tatsächlichen Erfahrungen [dynamisch zentral hoch- oder herunterskalieren](sql-database-scale-up.md). Sie können auch den [DTU Calculator](http://dtucalculator.azurewebsites.net/) (DTU-Rechner) verwenden, um die geschätzte Anzahl von erforderlichen DTUs zu ermitteln.
@@ -88,4 +88,4 @@ Nachdem Sie die Dienstebene für Ihren Pool ermittelt haben, können Sie die Lei
 
 Informationen zu gängigen Datenarchitekturmustern von mehrinstanzenfähigen SaaS-Datenbankanwendungen (Software-as-a-Service) finden Sie unter [Entwurfsmuster für mehrinstanzenfähige SaaS-Anwendungen und Azure SQL-Datenbank](sql-database-design-patterns-multi-tenancy-saas-applications.md).
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

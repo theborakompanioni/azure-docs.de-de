@@ -4,7 +4,7 @@
 	services="hdinsight"
 	documentationCenter=""
 	authors="nitinme"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun"
 	tags="azure-portal"/>
 
@@ -179,7 +179,7 @@ Weitere Informationen finden Sie unter [Anpassen von HDInsight-Clustern mithilfe
 
 
 
-## Weitere Informationen
+## Siehe auch
 
 - [Installieren und Verwenden von Solr in HDInsight Hadoop-Clustern (Linux)](hdinsight-hadoop-solr-install-linux.md)
 - [Erstellen von Hadoop-Clustern in HDInsight](hdinsight-provision-clusters.md): Allgemeine Informationen zur Erstellung von HDInsight-Clustern
@@ -196,4 +196,4 @@ Weitere Informationen finden Sie unter [Anpassen von HDInsight-Clustern mithilfe
 [hdinsight-install-spark]: hdinsight-hadoop-spark-install.md
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster.md
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0914_2016-->

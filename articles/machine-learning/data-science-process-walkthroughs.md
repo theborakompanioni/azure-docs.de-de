@@ -4,7 +4,7 @@
 	services="machine-learning" 
 	documentationCenter="" 
 	authors="bradsev"
-	manager="paulettm" 
+	manager="jhubbard" 
 	editor="cgronlun" />
 
 <tags 
@@ -56,4 +56,4 @@ In der exemplarischen Vorgehensweise [In-Database Advanced Analytics for SQL Dev
 
 Eine Übersicht zu Themen, die Sie durch die Aufgaben führen, die den Data Science-Prozess in Azure umfassen, finden Sie unter [Data Science-Prozess](http://aka.ms/datascienceprocess).
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0914_2016-->

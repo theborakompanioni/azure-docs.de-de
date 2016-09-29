@@ -11,19 +11,19 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="06/20/2016" 
+    ms.date="09/09/2016" 
     ms.author="jeedes" />
 
 #Tutorial: Azure Active Directory-Integration mit Zendesk
   
-In diesem Tutorial wird die Integration von Azure und Zendesk erläutert. Das in diesem Lernprogramm verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
+In diesem Tutorial wird die Integration von Azure und Zendesk erläutert. Das in diesem Tutorial verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
 
 -   Ein gültiges Azure-Abonnement
 -   Einen Zendesk-Mandanten
   
 Nach Abschluss dieses Tutorials können sich die Zendesk zugewiesenen Azure AD-Benutzer mittels einmaliger Anmeldung auf Ihrer Zendesk-Unternehmenswebsite bei der Anwendung anmelden (durch den Dienstanbieter initiierte Anmeldung). Alternativ können sie den Zugriffsbereich nutzen (siehe [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md)).
   
-Das in diesem Lernprogramm beschriebene Szenario besteht aus den folgenden Bausteinen:
+Das in diesem Tutorial beschriebene Szenario besteht aus den folgenden Bausteinen:
 
 1.  Aktivieren der Anwendungsintegration für Zendesk
 2.  Konfigurieren der einmaligen Anmeldung
@@ -76,21 +76,21 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
 2.  Wählen Sie auf der Seite **Wie sollen sich Benutzer bei Zendesk anmelden?** die Option **Microsoft Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-zendesk-tutorial/IC773087.png "Einmaliges Anmelden konfigurieren")
+    ![Configure single sign-on](./media/active-directory-saas-zendesk-tutorial/IC773087.png "Configure single sign-on")
 
 3.  Führen Sie auf der Seite **App-URL konfigurieren** die folgenden Schritte aus:
 
     ![App-URL konfigurieren](./media/active-directory-saas-zendesk-tutorial/IC773088.png "App-URL konfigurieren")
   
-	a. Geben Sie im Textfeld **Zendesk-Anmelde-URL** die URL im folgenden Format ein: `https://<tenant-name>.zendesk.com`
+	a. Geben Sie im Textfeld **Zendesk-Anmelde-URL** die URL in folgendem Format ein: `https://<tenant-name>.zendesk.com`
 
-	b. Klicken Sie auf **Weiter**.
+	b. Klicken Sie auf **Next**.
 
 
 
 4.  Klicken Sie auf der Seite **Einmaliges Anmelden konfigurieren für Zendesk** auf **Zertifikat herunterladen**, und speichern Sie die Zertifikatsdatei lokal auf Ihrem Computer.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-zendesk-tutorial/IC777534.png "Einmaliges Anmelden konfigurieren")
+    ![Configure single sign-on](./media/active-directory-saas-zendesk-tutorial/IC777534.png "Configure single sign-on")
 
 5.  Melden Sie sich in einem anderen Webbrowserfenster bei der Zendesk-Unternehmenswebsite als Administrator an.
 
@@ -110,7 +110,7 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
     ![Einmaliges Anmelden](./media/active-directory-saas-zendesk-tutorial/IC773090.png "Einmaliges Anmelden")
 
-12. Kopieren Sie den **Fingerabdruckwert** aus dem exportierten Zertifikat, und fügen Sie ihn in das Textfeld **Fingerabdruck des Zertifikats** ein.
+12. Kopieren Sie den **Fingerabdruckwert** aus dem exportierten Zertifikat, und fügen Sie ihn in das Textfeld **Certificate Fingerprint** ein.
 
 	>[AZURE.TIP] Weitere Informationen finden Sie unter [Abrufen des Fingerabdruckwerts eines Zertifikats](http://youtu.be/YKQF266SAxI).
 
@@ -118,7 +118,7 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
 14. Wählen Sie im Azure AD-Portal die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Abschließen**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu schließen.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-zendesk-tutorial/IC773093.png "Einmaliges Anmelden konfigurieren")
+    ![Configure single sign-on](./media/active-directory-saas-zendesk-tutorial/IC773093.png "Configure single sign-on")
 
 ##Konfigurieren der Benutzerbereitstellung
   
@@ -158,4 +158,4 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie d
   
 Wenn Sie die SSO-Einstellungen testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md).
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0914_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="vm-linux"
    ms.workload="infrastructure"
-   ms.date="05/24/2016"
+   ms.date="09/06/2016"
    ms.author="rclaus"/>
 
 # Azure und Linux
@@ -31,12 +31,12 @@ Verwenden Sie Microsoft Azure Virtual Machines, Azure Storage und das Azure-Netz
 3. Eine Linux-VM. [Erstellen Sie diese hier](virtual-machines-linux-quick-create-cli.md).
 4. Weitere Informationen zu Linux und Azure, inklusive wie Sie sich für die [Vereinbarung zum Servicelevel (SLA)](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_0/) qualifizieren. **Lesen Sie sich dieses Dokument auch dann durch, wenn Sie keine rechtlichen Dokumente mögen**.
 
-## Logistik: Regionen, Distributionen, Verfügbarkeit, VM-Größen und -Kontingente
+## Logistik: Regionen, Distributionen, Verfügbarkeit, VM-Größen und Kontingente
 ### Regionen
 Microsoft Azure-Ressourcen sind auf mehrere geografische Regionen weltweit verteilt. Eine „Region“ umfasst mehrere Rechenzentren in einem bestimmten geografischen Bereich. Ab 1. Januar 2016 gilt folgender Stand: 8 in Amerika, 2 in Europa, 6 in der Asien-Pazifik-Region, 2 in China (Festland) und 3 in Indien. Falls Sie eine vollständige Liste mit allen Azure-Regionen benötigen, können Sie **[hier](https://azure.microsoft.com/regions/)** die Liste mit den vorhandenen und neu angekündigten Regionen anzeigen.
 
 ### Distributionen
-Microsoft Azure unterstützt die Ausführung einer Reihe von beliebten Linux-Distributionen, die von verschiedenen Partnerunternehmen bereitgestellt und gepflegt werden. Auf dem Azure Marketplace finden Sie Distributionen wie CentOS, Debian, Red Hat Enterprise, Ubuntu, FreeBSD usw. Wir arbeiten aktiv mit verschiedenen Linux-Communitys zusammen, um der Liste mit unterstützten Distributionen noch mehr Einträge hinzuzufügen. **[Aktuelle Distributionen](virtual-machines-linux-endorsed-distros.md)** Falls Ihre bevorzugte Linux-Distribution derzeit nicht im Katalog enthalten ist, können Sie den Ansatz „Bring your own Linux VM“ verfolgen. Befolgen Sie dafür die Richtlinien **[auf dieser Seite.](virtual-machines-linux-create-upload-generic.md)**
+Microsoft Azure unterstützt die Ausführung einer Reihe von beliebten Linux-Distributionen, die von verschiedenen Partnerunternehmen bereitgestellt und gepflegt werden. In Azure Marketplace finden Sie Distributionen wie CentOS, Debian, Red Hat Enterprise, Ubuntu, FreeBSD usw. Wir arbeiten aktiv mit verschiedenen Linux-Communitys zusammen, um der Liste mit unterstützten Distributionen noch mehr Einträge hinzuzufügen. **[Aktuelle Distributionen](virtual-machines-linux-endorsed-distros.md)** Falls Ihre bevorzugte Linux-Distribution derzeit nicht im Katalog enthalten ist, können Sie den Ansatz „Bring your own Linux VM“ verfolgen. Befolgen Sie dafür die Richtlinien **[auf dieser Seite.](virtual-machines-linux-create-upload-generic.md)**
 
 ## Verfügbarkeit und Microsoft Azure-SLA
 Damit Ihre Bereitstellung die Qualifikation für unsere VM-Vereinbarung zum Servicelevel von 99,95% erreicht, müssen Sie mindestens zwei VMs bereitstellen, die Ihre Workload innerhalb einer Verfügbarkeitsgruppe ausführen. So wird sichergestellt, dass Ihre VMs auf mehrere Fehlerdomänen in unseren Rechenzentren verteilt und auf Hosts mit unterschiedlichen Wartungsfenstern bereitgestellt werden. Alle Details zu unserer Vereinbarung zum Servicelevel (SLA) können Sie **[hier online anzeigen](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_0/)**.
@@ -48,16 +48,16 @@ Hier sind einige grundlegende Richtlinien zur Auswahl einer VM-Größe aus einer
 
 * VMs der A-Serie sind unsere kostengünstigen Einsteiger-VMs für kleine Workloads und Entwicklungs- und Testszenarien. Sie sind in allen Regionen verfügbar und ermöglichen die Verbindung mit und Nutzung aller Standardressourcen für virtuelle Computer.
 * Bei den Größen der A-Serie (A8 - A11) handelt es sich um spezielle rechenintensive Konfigurationen, die für Computing-Clusteranwendungen mit hoher Leistung geeignet sind.
-* VMs der D-Serie dienen zum Ausführen von Anwendungen, die eine höhere Rechenleistung und eine höhere temporäre Datenträgerleistung erfordern. VMs der D-Serie bieten schnellere Prozessoren, ein höheres Verhältnis von Speicher zu Kern und ein SSD (Solid State Drive) für den temporären Datenträger. 
-* Die Dv2-Serie ist die neuste Version unserer D-Serie und verfügt über eine leistungsfähigere CPU. Die CPU der Dv2-Serie ist ca. 35 % schneller als die CPU der D-Serie. Sie basiert auf der neuesten Generation des 2,4-GHz-Intel Xeon ® E5-2673 v3-Prozessors (Haswell) und kann mit der Intel Turbo Boost Technology 2.0 bis auf 3,2 GHz gebracht werden. Der Dv2-Serie hat die gleichen Arbeitsspeicher- und Datenträgerkonfigurationen wie die D-Serie.
+* VMs der D-Serie dienen zum Ausführen von Anwendungen, die eine höhere Rechenleistung und eine höhere temporäre Datenträgerleistung erfordern. VMs der D-Serie bieten schnellere Prozessoren, ein höheres Verhältnis von Speicher zu Kern und ein SSD (Solid State Drive) für den temporären Datenträger.
+* Die Dv2-Serie ist die neuste Version unserer D-Serie und verfügt über eine leistungsfähigere CPU. Die CPU der Dv2-Serie ist ca. 35 % schneller als die CPU der D-Serie. Sie basiert auf der neuesten Generation des 2,4-GHz-Intel Xeon ® E5-2673 v3-Prozessors (Haswell) und kann mit der Intel Turbo Boost Technology 2.0 bis auf 3,2 GHz gebracht werden. Die Dv2-Serie hat die gleichen Arbeitsspeicher- und Datenträgerkonfigurationen wie die D-Serie.
 * Virtuelle Computer der G-Serie bieten den meisten Arbeitsspeicher und werden auf Hosts mit Prozessoren der Intel Xeon E5 V3-Familie ausgeführt.
 
-Hinweis: Für VMs der DS-Serie und GS-Serie besteht Zugriff auf Storage Premium, unsere Speicherlösung mit SSD-Unterstützung, hoher Leistung und geringer Latenz für Workloads mit hoher E/A-Intensität. Premium-Speicher ist in bestimmten Regionen verfügbar. Nähere Informationen finden Sie unter **[Premium Storage: High-Performance Storage for Azure Virtual Machine Workloads](../storage/storage-premium-storage.md)** (Storage Premium: Hochleistungsspeicher für Workloads auf virtuellen Azure-Computern).
+> [AZURE.NOTE] Für VMs der DS- und GS-Serie besteht Zugriff auf Storage Premium, unsere Speicherlösung mit SSD-Unterstützung, hoher Leistung und geringer Latenz für Workloads mit hoher E/A-Intensität. Premium-Speicher ist in bestimmten Regionen verfügbar. Nähere Informationen finden Sie unter **[Storage Premium: Hochleistungsspeicher für Arbeitslasten auf virtuellen Azure-Computern](../storage/storage-premium-storage.md)**.
 
-Jedes Azure-Abonnement verfügt über standardmäßige Kontingentgrenzen, durch die die Bereitstellung einer großen Anzahl von VMs für Ihr Projekt beeinträchtigt werden kann. Der derzeitige Grenzwert pro Abonnement liegt bei 20 VMs pro Region. Sie können diese Kontingentgrenzen erhöhen lassen, indem Sie ein Supportticket erstellen und die Erhöhung anfordern. Weitere Informationen zu Kontingentgrenzen finden Sie im Artikel **[Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../azure-subscription-service-limits.md)**
+Jedes Azure-Abonnement verfügt über standardmäßige Kontingentgrenzen, durch die die Bereitstellung vieler VMs für Ihr Projekt beeinträchtigt werden kann. Der derzeitige Grenzwert pro Abonnement liegt bei 20 VMs pro Region. Sie können diese Kontingentgrenzen erhöhen lassen, indem Sie ein Supportticket erstellen und die Erhöhung anfordern. Weitere Informationen zu Kontingentgrenzen finden Sie im Artikel **[Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../azure-subscription-service-limits.md)**
 
 ## Nächste Schritte
 
-Ein kostenloses Testkonto. **[Hier erhalten Sie ein kostenloses Testkonto.](https://azure.microsoft.com/pricing/free-trial/)** Falls Sie bereits über ein Konto verfügen, können Sie es ausprobieren, indem Sie die **[Azure-Befehlszeilenschnittstelle installieren](../xplat-cli-install.md)**. Wenn Sie das getan haben, können Sie Ihre [Linux-VM erstellen](virtual-machines-linux-quick-create-cli.md).
+Ein kostenloses Testkonto. **[Hier erhalten Sie ein Konto](https://azure.microsoft.com/pricing/free-trial/)**. Falls Sie bereits ein Konto haben, **[installieren Sie die Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md)**, um es auszuprobieren. Wenn das erfolgt ist, können Sie nun Ihre [Linux-VM erstellen](virtual-machines-linux-quick-create-cli.md).
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0914_2016-->

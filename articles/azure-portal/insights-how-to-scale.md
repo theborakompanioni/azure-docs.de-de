@@ -132,8 +132,8 @@ Möglicherweise möchten Sie jedoch tagsüber oder unter der Woche eine aggressi
 * [Überwachen von Dienstmetriken](insights-how-to-customize-monitoring.md), um sicherzustellen, dass Ihr Dienst verfügbar und reaktionsfähig ist.
 * [Aktivieren von Überwachung und Diagnose](insights-how-to-use-diagnostics.md), um detaillierte Hochfrequenzmetriken zu Ihrem Dienst zu sammeln.
 * [Empfangen von Warnbenachrichtigungen](insights-receive-alert-notifications.md), wenn ein Vorgangsereignis auftritt oder Metriken einen Schwellenwert überschreiten.
-* [Überwachen der Anwendungsleistung](insights-perf-analytics.md), um präzise Informationen zur Leistung Ihres Codes in der Cloud zu ermitteln.
+* [Überwachen der Anwendungsleistung](../application-insights/app-insights-azure-web-apps.md), um präzise Informationen zur Leistung Ihres Codes in der Cloud zu ermitteln.
 * [Anzeigen von Ereignissen und Überwachungsprotokollen](insights-debugging-with-events.md), um sich über sämtliche Aktivitäten Ihres Diensts zu informieren.
 * [Überwachen der Verfügbarkeit und Reaktionsfähigkeit einer beliebigen Webseite](../application-insights/app-insights-monitor-web-app-availability.md) mit Application Insights, um zu ermitteln, ob eine Seite offline ist.
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0914_2016-->

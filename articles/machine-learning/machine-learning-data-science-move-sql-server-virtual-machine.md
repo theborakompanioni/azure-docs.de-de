@@ -4,7 +4,7 @@
 	services="machine-learning" 
 	documentationCenter="" 
 	authors="bradsev" 
-	manager="paulettm" 
+	manager="jhubbard" 
 	editor="cgronlun" />
 
 <tags 
@@ -52,7 +52,7 @@ In diesem Tutorial wird Folgendes vorausgesetzt:
 
 Wenn sich Ihre Daten in einer Flatfile (in Zeilen/Spalten angeordnet) befinden, können sie über die folgenden Methoden auf eine SQL Server-VM in Azure verschoben werden:
 
-1. [Befehlszeilenprogramm zum Massenkopieren (BCP)](#insert-tables-bcp) 
+1. [Befehlszeilenprogramm zum Massenkopieren (BCP)](#insert-tables-bcp)
 2. [SQL-Abfrage zum Masseneinfügen](#insert-tables-bulkquery)
 3. [Integrierte grafische Hilfsprogramme in SQL Server (Importieren/Exportieren, SSIS)](#sql-builtin-utilities)
 
@@ -131,7 +131,7 @@ Das PowerShell-Beispielskript unten veranschaulicht das parallele Einfügen mith
 
 ### <a name="insert-tables-bulkquery"></a>SQL-Abfrage zum Masseneinfügen
 
-Mit der [SQL-Abfrage zum Masseneinfügen](https://msdn.microsoft.com/library/ms188365) können Sie Daten aus zeilen-/spaltenbasierten Dateien in die Datenbank importieren (Informationen zu den unterstützten Typen finden Sie unter [Vorbereiten von Daten für den Massenexport oder -import (SQL Server)](https://msdn.microsoft.com/library/ms188609)).
+Mit der [SQL-Abfrage zum Masseneinfügen](https://msdn.microsoft.com/library/ms188365) können Sie Daten aus zeilen-/spaltenbasierten Dateien in die Datenbank importieren (Informationen zu den unterstützten Typen finden Sie unter [Vorbereiten von Daten für den Massenexport oder -import [SQL Server]](https://msdn.microsoft.com/library/ms188609)).
 
 Im Folgenden sehen Sie einige Beispielbefehle für Masseneinfügungen:
 
@@ -156,7 +156,7 @@ Im Folgenden sehen Sie einige Beispielbefehle für Masseneinfügungen:
 
 Sie können die SQL Server Integration Services (SSIS) zum Importieren von Daten aus einer Flatfile in die SQL Server-VM in Azure verwenden. SSIS ist in zwei Studio-Umgebungen verfügbar. Weitere Informationen finden Sie unter [Integration Services (SSIS) und Studio-Umgebungen](https://technet.microsoft.com/library/ms140028.aspx):
 
-- Einzelheiten zu den SQL Server Data Tools finden Sie unter [Microsoft SQL Server Data Tools](https://msdn.microsoft.com/data/tools.aspx).  
+- Einzelheiten zu den SQL Server Data Tools finden Sie unter [Microsoft SQL Server Data Tools](https://msdn.microsoft.com/data/tools.aspx).
 - Ausführliche Informationen zum Import/Export-Assistenten finden Sie unter [SQL Server-Import/Export-Assistent](https://msdn.microsoft.com/library/ms141209.aspx).
 
 
@@ -165,7 +165,7 @@ Sie können die SQL Server Integration Services (SSIS) zum Importieren von Daten
 Sie können auch die folgenden Migrationsstrategien verwenden:
 
 1. [Assistent zum Bereitstellen einer SQL Server-Datenbank auf einem virtuellen Microsoft Azure-Computer](#deploy-a-sql-server-database-to-a-microsoft-azure-vm-wizard)
-2. [Exportieren in eine Flatfile](#export-flat-file) 
+2. [Exportieren in eine Flatfile](#export-flat-file)
 3. [SQL-Datenbankmigrations-Assistent](#sql-migration)
 4. [Datenbanksicherung und -wiederherstellung](#sql-backup)
 
@@ -177,7 +177,7 @@ Der **Assistent zum Bereitstellen einer SQL Server-Datenbank auf einem virtuelle
 
 ### <a name="export-flat-file"></a>Exportieren in eine Flatfile
 
-Für das Massenexportieren von Daten von einer lokalen SQL Server-Instanz stehen verschiedene Vorgehensweisen zur Verfügung, die unter [Massenimport und -export von Daten (SQL Server)](https://msdn.microsoft.com/library/ms175937.aspx) beschrieben werden. In diesem Dokument wird als Beispiel BPC (Bulk Copy Program) beschrieben. Nachdem die Daten in eine Flatfile exportiert wurden, können sie mit einem Massenimport auf einen anderen SQL Server importiert werden.
+Für das Massenexportieren von Daten von einer lokalen SQL Server-Instanz stehen verschiedene Vorgehensweisen zur Verfügung, die unter [Massenimport und -export von Daten [SQL Server]](https://msdn.microsoft.com/library/ms175937.aspx) beschrieben werden. In diesem Dokument wird als Beispiel BPC (Bulk Copy Program) beschrieben. Nachdem die Daten in eine Flatfile exportiert wurden, können sie mit einem Massenimport auf einen anderen SQL Server importiert werden.
 
 1. Exportieren Sie die Daten vom lokalen SQL Server folgendermaßen mit dem Dienstprogramm BPC in eine Datei:
 
@@ -208,8 +208,8 @@ Der [SQL-Datenbankmigrations-Assistent](http://sqlazuremw.codeplex.com/) stellt 
 
 SQL Server unterstützt:
 
-1. [Funktionen zur Datenbanksicherung und -wiederherstellung](https://msdn.microsoft.com/library/ms187048.aspx) (sowohl in einer lokalen Datei als auch per bacpac-Export in ein Blob) und [Datenebenenanwendungen](https://msdn.microsoft.com/library/ee210546.aspx) (mit bacpac). 
-2. Die Möglichkeit, SQL Server-VMs in Azure direkt mit einer kopierten Datenbank oder der Kopie einer vorhandenen SQL Azure-Datenbank zu erstellen. Weitere Informationen finden Sie unter [Verwenden des Assistenten zum Kopieren von Datenbanken](https://msdn.microsoft.com/library/ms188664.aspx). 
+1. [Funktionen zur Datenbanksicherung und -wiederherstellung](https://msdn.microsoft.com/library/ms187048.aspx) (sowohl in einer lokalen Datei als auch per bacpac-Export in ein Blob) und [Datenebenenanwendungen](https://msdn.microsoft.com/library/ee210546.aspx) (mit bacpac).
+2. Die Möglichkeit, SQL Server-VMs in Azure direkt mit einer kopierten Datenbank oder der Kopie einer vorhandenen SQL Azure-Datenbank zu erstellen. Weitere Informationen finden Sie unter [Verwenden des Assistenten zum Kopieren von Datenbanken](https://msdn.microsoft.com/library/ms188664.aspx).
 
 Einen Screenshot der Optionen für das Sichern/Wiederherstellen von Datenbanken in SQL Server Management Studio finden Sie unten.
 
@@ -224,4 +224,4 @@ Einen Screenshot der Optionen für das Sichern/Wiederherstellen von Datenbanken 
 [1]: ./media/machine-learning-data-science-move-sql-server-virtual-machine/sqlserver_builtin_utilities.png
 [2]: ./media/machine-learning-data-science-move-sql-server-virtual-machine/database_migration_wizard.png
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0914_2016-->

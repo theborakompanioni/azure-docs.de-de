@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/24/2016"
+	ms.date="09/08/2016"
 	ms.author="iainfou"/>
 
 # Exemplarische Vorgehensweise für eine Azure-Beispielinfrastruktur
@@ -24,7 +24,7 @@
 In diesem Artikel wird das Erstellen einer Beispielanwendungsinfrastruktur erläutert. Wir beschreiben das Entwerfen einer Infrastruktur für einen einfachen Onlineshop, wobei alle Richtlinien und Entscheidungen hinsichtlich der Namenskonventionen, Verfügbarkeit, virtuellen Netzwerke und Lastenausgleichsmodule relevant sind, und das eigentliche Bereitstellen Ihrer virtuellen Computer (VMs).
 
 
-## Besipielworkload
+## Beispielworkload
 
 Adventure Works Cycles möchte eine Anwendung für einen Onlineshop in Azure erstellen, die aus Folgendem besteht:
 
@@ -54,7 +54,7 @@ Alle oben aufgeführten Elemente werden anhand der folgenden Namenskonventionen 
 - Adventure Works Cycles verwendet **[IT-Workload]-[Standort]-[Azure-Ressource]** als Präfix.
 	- In diesem Beispiel ist **azos** (Azure-Onlineshop) der Name der IT-Workload und **use** (USA, Osten 2) der Standort
 - Speicherkonten folgen der Konvention „adventureazosusesa**[Beschreibung]**“.
-	- Beachten Sie, dass zur Eindeutigkeit „adventure“ zum Präfix hinzugefügt wurde und dass Speicherkontennamen keine Bindestriche unterstützen.
+	- Zur Eindeutigkeit wurde „adventure“ zum Präfix hinzugefügt. Speicherkontennamen dürfen keine Bindestriche enthalten.
 - Virtuelle Netzwerke folgen der Konvention „AZOS-USE-VN**[Nummer]**“.
 - Verfügbarkeitsgruppen folgen der Konvention „azos-use-as-**[Rolle]**“.
 - Die Namen der virtuellen Computer folgen der Konvention „azos-use-vm-**[VM-Name]**“.
@@ -113,7 +113,7 @@ Adventure Works Cycles hat sich für die folgenden Namen für die virtuellen Azu
 - **azos-use-vm-dc01** für den ersten Domänencontroller
 - **azos-use-vm-dc02** für den zweiten Domänencontroller
 
-Hier sehen Sie die daraus resultierende Konfiguration.
+Die resultierende Konfiguration sieht folgendermaßen aus.
 
 ![Endgültige in Azure bereitgestellte Anwendungsinfrastruktur](./media/virtual-machines-common-infrastructure-service-guidelines/example-config.png)
 
@@ -132,4 +132,4 @@ Diese Konfiguration umfasst:
 
 [AZURE.INCLUDE [virtual-machines-linux-infrastructure-guidelines-next-steps](../../includes/virtual-machines-linux-infrastructure-guidelines-next-steps.md)]
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0914_2016-->

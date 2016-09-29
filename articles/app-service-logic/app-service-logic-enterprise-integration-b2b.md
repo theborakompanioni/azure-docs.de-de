@@ -46,10 +46,10 @@ In dieser exemplarischen Vorgehensweise wird gezeigt, wie Sie die AS2- und X12-A
 8. Fügen Sie die **Header** hinzu, die für AS2 erforderlich sind. Diese sind in den HTTP-Anforderungsheadern enthalten. Wählen Sie in diesem Beispiel die Header der HTTP-Anforderung aus, die die Logik-App ausgelöst hat.
 9. Fügen Sie jetzt die Nachrichtenaktion „X12 decodieren“ hinzu, indem Sie nochmals **Aktion hinzufügen** auswählen. ![](./media/app-service-logic-enterprise-integration-b2b/b2b-9.png)
 10. Geben Sie **x12** in das Suchfeld ein, um die Aktion herauszufiltern, die Sie verwenden möchten. ![](./media/app-service-logic-enterprise-integration-b2b/b2b-10.png)
-11. Wählen Sie die Aktion **X12 – X12-Nachricht decodieren** aus, um sie der Logik-App hinzuzufügen ![](./media/app-service-logic-enterprise-integration-b2b/b2b-11.png).
+11. Wählen Sie die Aktion **X12 – X12-Nachricht decodieren** aus, um sie der Logik-App hinzuzufügen ![](./media/app-service-logic-enterprise-integration-b2b/b2b-as2message.png).
 12. Nun müssen Sie die Eingabe in diese Aktion angeben, die die Ausgabe der obigen AS2-Aktion sein wird. Der tatsächliche Nachrichteninhalt befindet sich in einem JSON-Objekt und ist mit base64 codiert. Deshalb müssen Sie einen Ausdruck als Eingabe angeben. Geben Sie daher den folgenden Ausdruck in das Eingabefeld **Zu decodierende X12-Flatfilenachricht** ein.
 
-    @base64ToString(body('Decode\_AS2\_message')?['Message']?['Content'])
+    @base64ToString(body('Decode\_AS2\_message')?['AS2Message']?['Content'])
 
 13. In diesem Schritt werden die vom Handelspartner empfangenen X12-Daten decodiert, und in einem JSON-Objekt werden verschiedene Elemente ausgegeben. Um den Partner über den Empfang der Daten zu informieren, können Sie eine Nachricht zurücksenden, die eine AS2 MDN (Message Disposition Notification, Benachrichtigung über den Nachrichtenstatus) in einer HTTP-Antwortaktion enthält.
 14. Fügen Sie die Aktion **Antwort** hinzu, indem Sie **Aktion hinzufügen** auswählen. ![](./media/app-service-logic-enterprise-integration-b2b/b2b-14.png)
@@ -75,4 +75,4 @@ An diesem Punkt ist das Einrichten der B2B-Logik-App abgeschlossen. In einer rea
 
 [Weitere Informationen zum Enterprise Integration Pack](./app-service-logic-enterprise-integration-overview.md)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0914_2016-->

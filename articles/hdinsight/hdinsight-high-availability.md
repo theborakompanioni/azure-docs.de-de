@@ -4,7 +4,7 @@
 	services="hdinsight"
 	tags="azure-portal"
 	editor="cgronlun"
-	manager="paulettm"
+	manager="jhubbard"
 	authors="mumian"
 	documentationCenter=""/>
 
@@ -108,4 +108,4 @@ Das Verfahren für das SDK ist ähnlich. Die Erstellung und Bereitstellung eines
 - [Herstellen einer Verbindung zu HDInsight-Clustern mit RDP](hdinsight-administer-use-management-portal.md#rdp)
 - [Verwenden des HDInsight .NET SDK](hdinsight-provision-clusters.md#sdk)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0914_2016-->

@@ -419,7 +419,7 @@ Im folgenden Beispiel wird zunächst die aktuelle ACL für die Tabelle **hometas
 	  }
 	});
 
-Nachdem die ACL festgelegt wurde, können Sie basierend auf der ID für eine Richtlinie eine SAS erstellen. Im folgenden Beispiel wird eine neue SAS für 'user2' erstellt:
+Nachdem die ACL \(festgelegt wurde, können Sie) basierend auf der ID für eine Richtlinie eine SAS erstellen. Im folgenden Beispiel wird eine neue SAS für 'user2' erstellt:
 
 	tableSAS = tableSvc.generateSharedAccessSignature('hometasks', { Id: 'user2' });
 

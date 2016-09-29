@@ -27,7 +27,7 @@
 
 [AZURE.INCLUDE [virtual-network-deploy-multinic-scenario-include.md](../../includes/virtual-network-deploy-multinic-scenario-include.md)]
 
-Derzeit können virtuelle Computer mit einer einzelnen NIC und virtuelle Computer mit mehreren NICs nicht in derselben Ressourcengruppe enthalten sein. Aus diesem Grund müssen Sie die Back-End-Server in einer anderen Ressourcengruppe als alle anderen Komponenten implementieren. In den folgenden Schritten verwendet die Ressourcengruppe *IaaSStory* als Hauptressourcengruppe und *IaaSStory-BackEnd* für die Back-End-Server.
+Derzeit können virtuelle Computer mit einer einzelnen NIC und virtuelle Computer mit mehreren NICs nicht in derselben Verfügbarkeitsgruppe enthalten sein. Aus diesem Grund müssen Sie die Back-End-Server in einer anderen Ressourcengruppe als alle anderen Komponenten implementieren. In den folgenden Schritten verwendet die Ressourcengruppe *IaaSStory* als Hauptressourcengruppe und *IaaSStory-BackEnd* für die Back-End-Server.
 
 ## Voraussetzungen
 
@@ -309,4 +309,4 @@ Führen Sie das Skript aus, nachdem sie es heruntergeladen und angepasst haben, 
 		RequestId           : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 		StatusCode          : OK
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0914_2016-->

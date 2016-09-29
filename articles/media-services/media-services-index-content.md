@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="06/22/2016"   
+	ms.date="09/12/2016"   
 	ms.author="adsolank;juliako;johndeu"/>
 
 
@@ -46,7 +46,7 @@ Sie können weitere Details für Ihre Indizierungsaufgaben mithilfe einer Aufgab
 
 Sie können auch mehrere Mediendateien gleichzeitig mithilfe einer Manifestdatei verarbeiten.
 
-Weitere Informationen finden Sie unter [Aufgabenvoreinstellung für Azure Media Indexer](#).
+Weitere Informationen finden Sie unter [Aufgabenvoreinstellung für Azure Media Indexer](https://msdn.microsoft.com/library/dn783454.aspx).
 
 ## Indizieren eines Medienobjekts
 
@@ -162,7 +162,7 @@ Wenn nicht alle Eingabemediendateien erfolgreich indiziert werden, verursacht de
 
 Mit der folgenden Methode werden mehrere Mediendateien als Medienobjekt hochgeladen und ein Auftrag zum Indizieren all dieser Dateien in einem Batch erstellt.
 
-Es wird eine Manifestdatei mit der Erweiterung LST erstellt und in das Medienobjekt hochgeladen. Die Manifestdatei enthält die Liste sämtlicher Medienobjektdateien. Weitere Informationen finden Sie unter [Aufgabenvoreinstellung für Azure Media Indexer](https://msdn.microsoft.com/library/azure/dn783454.aspx).
+Es wird eine Manifestdatei mit der Erweiterung LST erstellt und in das Medienobjekt hochgeladen. Die Manifestdatei enthält die Liste sämtlicher Medienobjektdateien. Weitere Informationen finden Sie unter [Aufgabenvoreinstellung für Azure Media Indexer](https://msdn.microsoft.com/library/dn783454.aspx).
 
 	static bool RunBatchIndexingJob(string[] inputMediaFiles, string outputFolder)
 	{
@@ -294,4 +294,4 @@ Derzeit werden die Sprachen Englisch und Spanisch unterstützt. Weitere Informat
 
 [Indizieren von Mediendateien mit der Vorschauversion von Azure Media Indexer 2 ](media-services-process-content-with-indexer2.md)
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0914_2016-->

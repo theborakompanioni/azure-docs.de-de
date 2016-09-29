@@ -52,7 +52,7 @@ Jetzt verfügen Sie über die benötigte Datei und können mit dem Erstellen des
 6. Nicht alle Attributtypen können in einer SQL-Datenbank erkannt werden. Dies gilt insbesondere für den Verweisattributtyp. Für den Objekttyp „Group“ müssen wir „OwnerID“ und „MemberID“ in „Verweis“ ändern. ![Connector 6](.\media\active-directory-aadconnectsync-connector-genericsql-step-by-step\connector6.png)
 7. Für die Attribute, die wir im vorherigen Schritt als Verweisattribute ausgewählt haben, muss der Objekttyp angegeben werden, für den die Werte einen Verweis darstellen. In unserem Fall ist dies der Objekttyp „User“. ![Connector 7](.\media\active-directory-aadconnectsync-connector-genericsql-step-by-step\connector7.png)
 8. Wählen Sie auf der Seite mit den globalen Parametern **Wasserzeichen** als Deltastrategie aus. Geben Sie das Format von Datum/Uhrzeit als **JJJJ-MM-TT HH:MM:SS** ein. ![Connector 8](.\media\active-directory-aadconnectsync-connector-genericsql-step-by-step\connector8.png)
-9. Wählen Sie auf der Seite **Partitionen konfigurieren** beide Objekttypen aus. ![Connector 9](.\media\active-directory-aadconnectsync-connector-genericsql-step-by-step\connector9.png)
+9. Wählen Sie auf der Seite **Partitionen und Hierarchien konfigurieren** beide Objekttypen aus. ![Connector 9](.\media\active-directory-aadconnectsync-connector-genericsql-step-by-step\connector9.png)
 10. Wählen Sie unter **Objekttypen auswählen** und **Attribute auswählen** beide Objekttypen und alle Attribute aus. Klicken Sie auf der Seite **Anker konfigurieren** auf **Fertig stellen**.
 
 ## Erstellen von Ausführungsprofilen
@@ -170,4 +170,4 @@ ALTER TABLE [dbo].[USERPHONE] CHECK CONSTRAINT [FK_USERPHONE_USER]
 GO
 ```
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0914_2016-->

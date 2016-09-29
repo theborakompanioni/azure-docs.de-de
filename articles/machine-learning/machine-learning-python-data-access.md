@@ -4,7 +4,7 @@
 	services="machine-learning" 
 	documentationCenter="python" 
 	authors="bradsev" 
-	manager="paulettm" 
+	manager="jhubbard" 
 	editor="cgronlun"/>
 
 <tags 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/27/2016" 
+	ms.date="09/12/2016" 
 	ms.author="huvalo;bradsev" />
 
 
@@ -23,7 +23,7 @@ Die Vorschau von Microsoft Azure Machine Learning Python-Clientbibliothek kann e
 
 Dieses Thema enthält Anweisungen zu:
 
-* Installation der Machine Learning Python-Clientbibliothek 
+* Installation der Machine Learning Python-Clientbibliothek
 * Zugriff auf und Hochladen von Datasets, einschließlich Anweisungen zur Autorisierung des Zugriffs auf Azure Machine Learning Datasets aus Ihrer lokalen Python-Umgebung
 *  Zugriff auf Zwischen-Datasets von Experimenten
 *  Verwendung der Python-Clientbibliothek zum Auflisten von Datasets, Zugriff auf Metadaten, Lesen des Inhalts eines Datasets, Erstellen neuer Datasets und Aktualisieren vorhandener Datasets
@@ -80,23 +80,25 @@ Wenn Ihre Rolle nicht als **Besitzer** festgelegt ist, können Sie darum bitten,
 
 Um das Autorisierungstoken zu erhalten, führen Sie eine der folgenden Aktionen durch:
 
-1. Fragen Sie bei einem Besitzer nach einem Token. Besitzer können auf ihren Autorisierungstoken auf der Seite „Einstellungen“ von ihrem Arbeitsbereich im Studio zugreifen. Wählen Sie im linken Bereich auf **Einstellungen** und klicken Sie auf **AUTORISIERUNGSTOKEN**, um die primären und sekundären Token zu sehen. Im Codebeispiel können zwar entweder das primäre oder das sekundäre Autorisierungstoken verwendet werden, es empfiehlt sich jedoch, dass Besitzer nur das sekundäre Autorisierungstoken freigeben.
+
+
+- Fragen Sie bei einem Besitzer nach einem Token. Besitzer können auf ihren Autorisierungstoken auf der Seite „Einstellungen“ von ihrem Arbeitsbereich im Studio zugreifen. Wählen Sie im linken Bereich auf **Einstellungen** und klicken Sie auf **AUTORISIERUNGSTOKEN**, um die primären und sekundären Token zu sehen. Im Codebeispiel können zwar entweder das primäre oder das sekundäre Autorisierungstoken verwendet werden, es empfiehlt sich jedoch, dass Besitzer nur das sekundäre Autorisierungstoken freigeben.
 
 ![](./media/machine-learning-python-data-access/ml-python-access-settings-tokens.png)
 
-2. Bitten Sie darum, zur Rolle „Besitzer“ hochgestuft zu werden. Zu diesem Zweck muss ein aktueller Besitzer des Arbeitsbereichs Sie zuerst aus dem Arbeitsbereich entfernen und dann erneut als Besitzer einladen.
+- Bitten Sie darum, zur Rolle „Besitzer“ hochgestuft zu werden. Zu diesem Zweck muss ein aktueller Besitzer des Arbeitsbereichs Sie zuerst aus dem Arbeitsbereich entfernen und dann erneut als Besitzer einladen.
 
-Wenn Entwickler die Arbeitsplatz-ID und das Autorisierungstoken abgerufen haben, können Sie auf den Arbeitsbereich mithilfe des Codeausschnitts unabhängig von ihrer Rolle zugreifen.
+Wenn Entwickler die Arbeitsplatz-ID und das Autorisierungstoken abgerufen haben, können sie auf den Arbeitsbereich mithilfe des Codeausschnitts unabhängig von ihrer Rolle zugreifen.
 
-Autorisierungstoken werden auf der Seite **AUTORISIERUNGSTOKEN** unter **EINSTELLUNGEN** verwaltet. Sie können Sie erneut generieren, aber dieses Verfahren hebt den Zugriff auf das vorherige Token auf.
+Autorisierungstoken werden auf der Seite **AUTORISIERUNGSTOKEN** unter **EINSTELLUNGEN** verwaltet. Sie können sie erneut generieren, aber dieses Verfahren hebt den Zugriff auf das vorherige Token auf.
 
 ### <a name="accessingDatasets"></a>Zugriff auf Datasets aus einer lokalen Python-Anwendung
 
-1. Klicken Sie in Machine Learning Studio in der Navigationsleiste auf der linken Seite auf **DATASETS**.
+1. Klicken Sie in Machine Learning Studio auf der Navigationsleiste auf der linken Seite auf **DATASETS**.
 
 2. Wählen Sie das Dataset, auf das Sie zugreifen möchten. Wählen Sie eines der Datasets aus der Liste **MEINE DATASETS** oder aus der Liste **BEISPIELE** aus.
 
-3. Klicken Sie in der unteren Symbolleiste auf **Datenzugriffscode generieren**. Beachten Sie, dass diese Schaltfläche deaktiviert wird, wenn die Daten ein mit der Python-Clientbibliothek nicht kompatibles Format haben.
+3. Klicken Sie auf der unteren Symbolleiste auf **Datenzugriffscode generieren**. Diese Schaltfläche ist deaktiviert, wenn die Daten ein mit der Python-Clientbibliothek nicht kompatibles Format haben.
 
 	![Datasets][datasets]
 
@@ -104,7 +106,7 @@ Autorisierungstoken werden auf der Seite **AUTORISIERUNGSTOKEN** unter **EINSTEL
 
 	![Zugriffscode][dataset-access-code]
 
-5. Fügen Sie den Code in das Notizbuch Ihrer lokalen Python-Anwendung ein.
+5. Fügen Sie den Code in das Notebook Ihrer lokalen Python-Anwendung ein.
 
 	![Notizbuch][ipython-dataset]
 
@@ -128,7 +130,7 @@ Einige der Module, wie z. B. das Modul [Aufteilen][split] geben ein Format mit d
 
 ![Dataset-Format][dataset-format]
 
-Sie müssen ein Konvertierungsmodul wie z. B. [Konvertierung in CSV][convert-to-csv] verwenden, um eine Ausgabe in einem unterstützten Format abzurufen.
+Sie müssen ein Konvertierungsmodul wie z.B. [Convert to CSV][convert-to-csv] verwenden, um eine Ausgabe in einem unterstützten Format abzurufen.
 
 ![GenericCSV-Format][csv-format]
 
@@ -144,13 +146,14 @@ Die folgenden Schritte zeigen ein Beispiel, das ein Experiment erstellt, dieses 
 
 5. Speichern Sie das Experiment, führen Sie es aus und warten Sie, bis es ausgeführt ist.
 
-6. Klicken Sie auf den Ausgabeknoten auf dem Modul [Konvertierung in CSV][convert-to-csv].
+6. Klicken Sie auf den Ausgabeknoten des Moduls [Convert to CSV][convert-to-csv].
 
-7. Es wird ein Kontextmenü angezeigt, wählen Sie **Datenzugriffscode generieren**.
+7. Ein Kontextmenü wird angezeigt.
+8.  Wählen Sie **Generate Data Access Code** aus.
 
 	![Kontextmenü][experiment]
 
-8. Daraufhin wird ein Fenster angezeigt. Wählen Sie den Codeausschnitt aus und kopieren Sie ihn in die Zwischenablage.
+8. Wählen Sie im eingeblendeten Fenster den Codeausschnitt aus, und kopieren Sie ihn in die Zwischenablage.
 
 	![Zugriffscode][intermediate-dataset-access-code]
 
@@ -243,7 +246,7 @@ Sie können auch einfach einen Stream zu den Inhalten öffnen:
 
 ### Erstellen eines neuen Datasets
 
-Mit der Python-Clientbibliothek können Sie Datasets aus Python-Programm hochladen. Diese Datasets stehen dann in Ihrem Arbeitsbereich zur Verfügung.
+Mit der Python-Clientbibliothek können Sie Datasets aus Ihrem Python-Programm hochladen. Diese Datasets stehen dann in Ihrem Arbeitsbereich zur Verfügung.
 
 Wenn Sie Ihre Daten in Pandas DataFrame haben, verwenden Sie den folgenden Code:
 
@@ -267,7 +270,7 @@ Wenn Ihre Daten bereits serialisiert sind, können Sie Folgendes verwenden:
         description='my description'
     )
 
-Die Python-Clientbibliothek kann Pandas DataFrame in die folgenden Formate serialisieren (diese Konstanten dafür sind in der `azureml.DataTypeIds` Klasse):
+Die Python-Clientbibliothek kann einen Pandas DataFrame in die folgenden Formate serialisieren (Konstanten dafür sind in der `azureml.DataTypeIds`-Klasse):
 
  - PlainText
  - GenericCSV
@@ -343,9 +346,9 @@ Sie können optional einen neuen Namen festlegen, indem Sie einen Wert für den 
     print(ws.datasets['existing dataset v2'].name) # 'existing dataset v2'
     print(ws.datasets['existing dataset'].name)    # IndexError
 
-Die Parameter `data_type_id`, `name` und `description` sind optional und werden auf es wird standardmäßig der vorherige Wert benutzt. Der Parameter `dataframe` ist immer erforderlich.
+Die Parameter `data_type_id`, `name` und `description` sind optional und werden standardmäßig auf ihren vorherigen Wert festgelegt. Der Parameter `dataframe` ist immer erforderlich.
 
-Wenn Ihre Daten bereits serialisiert sind, verwenden Sie `update_from_raw_data` statt `update_from_dataframe`. Dies funktioniert ähnlich, übergeben Sie einfach `raw_data` anstelle von `dataframe`.
+Wenn Ihre Daten bereits serialisiert sind, verwenden Sie `update_from_raw_data` statt `update_from_dataframe`. Wenn Sie `raw_data` anstelle von `dataframe` übergeben, funktioniert dies auf ähnliche Weise.
 
 
 
@@ -367,4 +370,4 @@ Wenn Ihre Daten bereits serialisiert sind, verwenden Sie `update_from_raw_data` 
 [split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
  
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0914_2016-->

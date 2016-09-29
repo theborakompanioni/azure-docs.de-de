@@ -1,26 +1,26 @@
-<properties 
-	pageTitle="Sichern von Cloud-Ressourcen mit Azure Multi-Factor Authentication und AD FS" 
-	description="Auf dieser Seite zur Azure Multi-Factor Authentication werden die ersten Schritte mit Azure MFA und AD FS in der Cloud beschrieben." 
-	services="multi-factor-authentication" 
-	documentationCenter="" 
-	authors="billmath" 
-	manager="stevenpo" 
+<properties
+	pageTitle="Sichern von Cloud-Ressourcen mit Azure Multi-Factor Authentication und AD FS"
+	description="Auf dieser Seite zur Azure Multi-Factor Authentication werden die ersten Schritte mit Azure MFA und AD FS in der Cloud beschrieben."
+	services="multi-factor-authentication"
+	documentationCenter=""
+	authors="kgremban"
+	manager="femila"
 	editor="curtland"/>
 
-<tags 
-	ms.service="multi-factor-authentication" 
-	ms.workload="identity" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="get-started-article" 
-	ms.date="08/04/2016" 
-	ms.author="billmath"/>
+<tags
+	ms.service="multi-factor-authentication"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.date="08/04/2016"
+	ms.author="kgremban"/>
 
 # Sichern von Cloud-Ressourcen mit Azure Multi-Factor Authentication und AD FS
 
 Wenn Ihre Organisation über einen Verbund mit Azure Active Directory verfügt und Ressourcen vorhanden sind, auf die von Azure AD zugegriffen wird, können Sie Multi-Factor Authentication oder Active Directory Federation Services zum Sichern dieser Ressourcen verwenden. Führen Sie die Verfahren unten aus, um Azure Active Directory-Ressourcen mit Azure Multi-Factor Authentication oder Active Directory-Verbunddiensten zu sichern.
 
-## So sichern Sie Azure AD-Ressourcen mit AD FS 
+## So sichern Sie Azure AD-Ressourcen mit AD FS
 
 
 
@@ -67,7 +67,7 @@ Als Erstes müssen wir die AD FS-Ansprüche konfigurieren. Wir werden zwei Ansp
 10. Wählen Sie im Assistenten zum Hinzufügen von Transformationsanspruchsregeln in der Dropdownliste die Option „Ansprüche mit benutzerdefinierter Regel senden“, und klicken Sie auf „Weiter“.
 11. Geben Sie im Feld unter „Anspruchsregelname:“ den Text „Benutzeranmeldung aufrechterhalten“ ein.
 12. Geben Sie in das Feld für benutzerdefinierte Regeln Folgendes ein:
-	    
+
 		c:[Type == "http://schemas.microsoft.com/2014/03/psso"]
 			=> issue(claim = c);
 ![Cloud](./media/multi-factor-authentication-get-started-adfs-cloud/trustedip5.png)
@@ -93,4 +93,4 @@ Da die Ansprüche jetzt vorhanden sind, können wir vertrauenswürdige IPs konfi
 
 Fertig! An diesem Punkt sollten Office 365-Partnerbenutzer nur MFA verwenden müssen, wenn ein Anspruch von außerhalb des Unternehmensintranets stammt.
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0921_2016-->

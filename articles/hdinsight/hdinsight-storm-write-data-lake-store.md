@@ -4,7 +4,7 @@ description="Erfahren Sie, wie Daten aus einer Apache Storm-Topologie in HDInsig
 services="hdinsight"
 documentationCenter="na"
 authors="Blackmist"
-manager="paulettm"
+manager="jhubbard"
 editor="cgronlun"/>
 
 <tags
@@ -13,7 +13,7 @@ ms.devlang="na"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="big-data"
-ms.date="06/17/2016"
+ms.date="09/06/2016"
 ms.author="larryfr"/>
 
 #Verwenden von Azure Data Lake-Speicher mit Apache Storm und HDInsight
@@ -27,7 +27,7 @@ Azure Data Lake-Speicher ist ein mit HDFS-kompatibler Cloudspeicherdienst, der f
 * [Java JDK 1.7](https://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html) oder höher
 * [Maven 3.x](https://maven.apache.org/download.cgi)
 * Ein Azure-Abonnement
-* Ein Storm-in-HDInsight-Cluster der Version 3.2. Erstellen Sie einen neuen Storm-in-HDInsight-Cluster, indem Sie die Schritte im Dokument [Bereitstellen eines HDInsight-Clusters mit Data Lake-Speicher mithilfe des Azure-Portals](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md) ausführen. Anhand der Schritte in diesem Dokument erstellen Sie einen neuen HDInsight-Cluster und Azure Data Lake-Speicher.  
+* Ein Storm-in-HDInsight-Cluster der Version 3.2. Erstellen Sie einen neuen Storm-in-HDInsight-Cluster, indem Sie die Schritte im Dokument [Bereitstellen eines HDInsight-Clusters mit Data Lake-Speicher mithilfe des Azure-Portals](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md) ausführen. Anhand der Schritte in diesem Dokument erstellen Sie einen neuen HDInsight-Cluster und Azure Data Lake-Speicher.
 
     > [AZURE.IMPORTANT] Wenn Sie den HDInsight-Cluster erstellen, müssen Sie __Storm__ als Clustertyp und __3.2__ als Version auswählen. Das Betriebssystem kann Windows oder Linux sein.
 
@@ -221,4 +221,4 @@ __Für Windows-basiertes HDInsight__:
 
 Nachdem Sie erfahren haben, wie Daten mithilfe von Storm in Azure Data Lake-Speicher geschrieben werden, können Sie sich mit anderen [Storm-Beispielen für HDInsight](hdinsight-storm-example-topology.md) beschäftigen.
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0914_2016-->

@@ -4,7 +4,7 @@
 	services="hdinsight" 
 	documentationCenter="" 
 	authors="nitinme" 
-	manager="paulettm" 
+	manager="jhubbard" 
 	editor="cgronlun"
 	tags="azure-portal"/>
 
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/25/2016" 
+	ms.date="09/14/2016" 
 	ms.author="nitinme"/>
 
 
@@ -33,7 +33,7 @@ Sie benötigen Folgendes:
 
 Bevor wir mit dem Erstellen der Anwendung beginnen, müssen wir uns zuerst mit der Struktur der Daten und der Art der Analyse vertraut machen, die wir für die Daten durchführen.
 
-In diesem Artikel verwenden wir die Beispieldatendatei **HVAC.csv**, die für alle HDInsight-Cluster standardmäßig unter **\\HdiSamples\\HdiSamples\\SensorSampleData\\hvac** verfügbar ist. Laden Sie die CSV-Datei herunter, und öffnen Sie sie, um eine Momentaufnahme der Daten zu erhalten.
+In diesem Artikel verwenden wir die Beispieldatendatei **HVAC.csv**, die im Azure Storage-Konto verfügbar ist, das Sie dem HDInsight-Cluster zugeordnet haben. Im Speicherkonto finden Sie die Datei unter **\\HdiSamples\\HdiSamples\\SensorSampleData\\hvac**. Laden Sie die CSV-Datei herunter, und öffnen Sie sie, um eine Momentaufnahme der Daten zu erhalten.
 
 ![HVAC-Datenmomentaufnahmen](./media/hdinsight-apache-spark-ipython-notebook-machine-learning/hdispark.ml.show.data.png "Momentaufnahme der HVAC-Daten")
 
@@ -201,7 +201,7 @@ In dieser Anwendung verwenden wir eine Spark ML-Pipeline, um eine Dokumentklassi
 
 	In der ersten Zeile der Vorhersage können Sie sehen, dass das Gebäude für ein HVAC-System mit ID 20 und einem Systemalter von 25 Jahren zu warm ist (**prediction=1.0**). Der erste Wert für DenseVector (0.49999) entspricht der Vorhersage 0,0, und der zweite Wert (0.5001) entspricht der Vorhersage 1,0. Obwohl der zweite Wert in der Ausgabe nur unwesentlich höher ist, zeigt das Modell **prediction=1.0** an.
 
-11. Nach Ausführen der Anwendung empfiehlt es sich, das Notebook herunterzufahren, um die Ressourcen freizugeben. Klicken Sie hierzu im Menü **Datei** des Notebooks auf die Option zum Schließen und Anhalten. Dadurch wird das Notebook heruntergefahren und geschlossen.
+11. Nach Ausführung der Anwendung empfiehlt es sich, das Notebook herunterzufahren, um die Ressourcen freizugeben. Klicken Sie hierzu im Menü **Datei** des Notebooks auf die Option zum Schließen und Anhalten. Dadurch wird das Notebook heruntergefahren und geschlossen.
 	  	   
 
 ##<a name="anaconda"></a>Verwenden der Anaconda-scikit-learn-Bibliothek für Machine Learning
@@ -232,7 +232,7 @@ Apache Spark-Cluster unter HDInsight enthalten Anaconda-Bibliotheken. Dazu gehö
 
 * [Verwenden des HDInsight-Tools-Plug-Ins für IntelliJ IDEA zum Erstellen und Übermitteln von Spark Scala-Anwendungen](hdinsight-apache-spark-intellij-tool-plugin.md)
 
-* [Use HDInsight Tools Plugin for IntelliJ IDEA to debug Spark applications remotely](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md) (Verwenden von HDInsight-Tools-Plug-Ins für IntelliJ IDEA zum Remotedebuggen von Spark-Anwendungen)
+* [Use HDInsight Tools Plugin for IntelliJ IDEA to debug Spark applications remotely (Verwenden von HDInsight-Tools-Plug-Ins für IntelliJ IDEA zum Remotedebuggen von Spark-Anwendungen)](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 
 * [Verwenden von Zeppelin-Notebooks mit einem Spark-Cluster in HDInsight](hdinsight-apache-spark-use-zeppelin-notebook.md)
 
@@ -262,4 +262,4 @@ Apache Spark-Cluster unter HDInsight enthalten Anaconda-Bibliotheken. Dazu gehö
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: storage-create-storage-account.md
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0914_2016-->

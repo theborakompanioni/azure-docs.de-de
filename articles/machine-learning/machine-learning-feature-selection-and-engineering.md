@@ -4,7 +4,7 @@
 	services="machine-learning"
 	documentationCenter=""
 	authors="bradsev"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun"/>
 
 <tags
@@ -13,13 +13,13 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/31/2016"
+	ms.date="09/12/2016"
 	ms.author="zhangya;bradsev" />
 
 
 # Entwicklung und Auswahl von Features in Azure Machine Learning
 
-In diesem Thema wird der Zweck der Entwicklung und Auswahl von Features im Datenaufbereitungsprozess für das maschinelle Lernen erläutert. Zur Veranschaulichung dieser Prozesse werden in Azure Machine Learning Studio bereitgestellte Beispiele verwendet.
+In diesem Thema wird der Zweck der Entwicklung und Auswahl von Features im Datenaufbereitungsprozess für das Machine Learning erläutert. Zur Veranschaulichung dieser Prozesse werden in Azure Machine Learning Studio bereitgestellte Beispiele verwendet.
 
 [AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
@@ -56,7 +56,7 @@ Wenn Sie Azure Machine Learning zum ersten Mal verwenden, ist es am einfachsten,
 
 ### Beispiel 1: Hinzufügen von temporären Features zu einem Regressionsmodell ###
 
-Das Experiment "Vorhersage der Anzahl ausgeliehener Fahrräder" in Azure Machine Learning Studio soll veranschaulichen, wie Features für Regressionsaufgaben entwickelt werden können. Dieses Experiment soll den Bedarf an Fahrrädern, d. h. die Anzahl von vermieteten Fahrrädern für einen bestimmten Monat/Tag/Stunde, vorhersagen. Das Dataset "Bike Rental UCI" liefert die Rohdaten für die Eingabe. Dieses Dataset basiert auf echten Daten des Unternehmens Capital Bikeshare, das eine Fahrradvermietung in Washington DC in den USA betreibt. Das Dataset stellt die Anzahl von geliehenen Fahrrädern zu einer bestimmten Tageszeit in den Jahren 2011 und 2012 dar und enthält 17.379 Zeilen und 17 Spalten. Die unformatierte Featuregruppe enthält Wetterbedingungen (Temperatur/Luftfeuchtigkeit/Windgeschwindigkeit) und den Typ des Tags (Feiertag/Wochentag). Das Feld für die Vorhersage ist "cnt", ein Zähler, der die ausgeliehenen Fahrräder innerhalb einer bestimmten Tageszeit darstellt und von 1 bis 977 reicht.
+Das Experiment „Vorhersage der Anzahl ausgeliehener Fahrräder“ in Azure Machine Learning Studio soll veranschaulichen, wie Features für Regressionsaufgaben entwickelt werden können. Dieses Experiment soll den Bedarf an Fahrrädern, d. h. die Anzahl von vermieteten Fahrrädern für einen bestimmten Monat/Tag/Stunde, vorhersagen. Das Dataset "Bike Rental UCI" liefert die Rohdaten für die Eingabe. Dieses Dataset basiert auf echten Daten des Unternehmens Capital Bikeshare, das eine Fahrradvermietung in Washington DC in den USA betreibt. Das Dataset stellt die Anzahl von geliehenen Fahrrädern zu einer bestimmten Tageszeit in den Jahren 2011 und 2012 dar und enthält 17379 Zeilen und 17 Spalten. Die unformatierte Featuregruppe enthält Wetterbedingungen (Temperatur/Luftfeuchtigkeit/Windgeschwindigkeit) und den Typ des Tags (Feiertag/Wochentag). Das Feld für die Vorhersage ist „cnt“, ein Zähler, der die ausgeliehenen Fahrräder innerhalb einer bestimmten Tageszeit darstellt und von 1 bis 977 reicht.
 
 Mit dem Ziel, effektive Features in den Trainingsdaten zu entwickeln, werden vier Regressionsmodelle mit demselben Algorithmus, jedoch mit vier verschiedenen Trainingsdatasets erstellt. Die vier Datasets enthalten dieselben Roheingabedaten, jedoch mit einer steigenden Anzahl von festgelegten Features. Diese Features sind in vier Kategorien unterteilt:
 
@@ -84,18 +84,18 @@ Für diese Aufgabe wird ein Verfahren namens **Feature Hashing** angewendet, um 
 Azure Machine Learning enthält ein Modul [Feature Hashing][feature-hashing], das diese Wort/Ausdruck-Features bequem erstellt. Die folgende Abbildung zeigt ein Beispiel für die Verwendung dieses Moduls. Das Eingabedataset enthält zwei Spalten: die Buchbewertung, die im Bereich von 1 bis 5 liegt, und den tatsächlichen Inhalt der Bewertung. Das Ziel dieses [Feature Hashing][feature-hashing]-Moduls ist, eine Reihe von neuen Features abzurufen, die die Häufigkeit des Auftretens entsprechender Wörter/Ausdrücke innerhalb der jeweiligen Buchbewertung zeigen. Um dieses Modul zu verwenden, müssen Sie die folgenden Schritte ausführen:
 
 * Wählen Sie zuerst die Spalte, die den eingegebenen Text enthält (in diesem Beispiel "Col2").
-* Legen Sie dann "Hashing bitsize" auf 8 fest, d. h. 2^8 = 256 Features werden erstellt. Die Wörter/Ausdrücke im gesamten Text werden auf 256 Indizes gehasht. Der Parameter "Hashing bitsize" reicht von 1 bis 31. Die Wörter/Ausdrücke werden mit geringerer Wahrscheinlichkeit in den gleichen Index gehasht, wenn eine größere Zahl festgelegt wird.
-* Setzen Sie dann den Parameter "N-grams" auf 2. Dadurch wird die Häufigkeit der Unigramme (ein Feature für jedes einzelne Wort) und Bigramme (ein Feature für jedes Paar angrenzender Wörter) aus dem Eingabetext abgerufen. Der Parameter "N-grams" reicht von 0 bis 10, wodurch die maximale Anzahl sequenzieller Wörter in einem Feature angezeigt wird.  
+* Legen Sie dann „Hashing bitsize“ auf 8 fest, d. h. 2^8 = 256 Features werden erstellt. Die Wörter/Ausdrücke im gesamten Text werden anschließend auf 256 Indizes gehasht. Der Parameter "Hashing bitsize" reicht von 1 bis 31. Die Wörter/Ausdrücke werden mit geringerer Wahrscheinlichkeit in den gleichen Index gehasht, wenn eine größere Zahl festgelegt wird.
+* Setzen Sie dann den Parameter "N-grams" auf 2. Dadurch wird die Häufigkeit der Unigramme (ein Feature für jedes einzelne Wort) und Bigramme (ein Feature für jedes Paar angrenzender Wörter) aus dem Eingabetext abgerufen. Der Parameter "N-grams" reicht von 0 bis 10, wodurch die maximale Anzahl sequenzieller Wörter in einem Feature angezeigt wird.
 
 !["Feature Hashing"-Modul](./media/machine-learning-feature-selection-and-engineering/feature-Hashing1.png)
 
-Die folgende Abbildung zeigt, wie dieses neue Feature aussehen wird.
+Die folgende Abbildung zeigt, wie diese neuen Features aussehen werden.
 
 !["Feature Hashing"-Beispiel](./media/machine-learning-feature-selection-and-engineering/feature-Hashing2.png)
 
 ## Filtern von Features aus Ihren Daten – Featureauswahl  ##
 
-Die Featureauswahl ist ein Prozess, der häufig für die Entwicklung von Trainingsdatasets für die Vorhersagemodellierung, wie z. B. Klassifizierung oder Regressionsaufgaben, angewendet wird. Das Ziel ist, eine Teilmenge der Features aus dem ursprünglichen Dataset auszuwählen, die dessen Dimensionen verringert, indem sie einen minimalen Satz von Features zur Darstellung der maximalen Abweichung in den Daten verwendet. Diese Teilmenge der Features enthält dann die einzigen Features, die zum Trainieren des Modells enthalten sein sollen. Die Featureauswahl dient zwei wesentlichen Zwecken.
+Die Featureauswahl ist ein Prozess, der häufig für die Entwicklung von Trainingsdatasets für die Vorhersagemodellierung, wie z. B. Klassifizierung oder Regressionsaufgaben, angewendet wird. Das Ziel ist, eine Teilmenge der Features aus dem ursprünglichen Dataset auszuwählen, die dessen Dimensionen verringert, indem sie einen minimalen Satz von Features zur Darstellung der maximalen Abweichung in den Daten verwendet. Diese Teilmenge der Features enthält die einzigen Features, die zum Trainieren des Modells enthalten sein sollen. Die Featureauswahl dient zwei wesentlichen Zwecken.
 
 * Zunächst steigert die Featureauswahl häufig die Klassifizierungsgenauigkeit durch Eliminieren irrelevanter, redundanter oder hochgradig korrelierter Features.
 * Zweitens sinkt die Anzahl von Features, was den Modelltrainingsvorgang effizienter gestaltet. Dies ist besonders wichtig für Lernmodelle, deren Training teuer ist, wie z. B. Support Vector Machines.
@@ -109,7 +109,7 @@ Azure Machine Learning Studio enthält Module zur Featureauswahl. Wie in der fol
 ![Beispiel für Featureauswahl](./media/machine-learning-feature-selection-and-engineering/feature-Selection.png)
 
 
-Betrachten Sie beispielsweise die Verwendung des Moduls [Filter-Based Feature Selection][filter-based-feature-selection]. Der Einfachheit halber wird weiterhin das oben beschriebene Text Mining-Beispiel verwendet. Es wird vorausgesetzt, dass ein Regressionsmodell erstellt werden soll, nachdem ein Satz von 256 Features über das [Feature Hashing][feature-hashing]-Modul erstellt wurde, dass die Antwortvariable "Col1" ist und eine Buchbewertung mit Bewertungen im Bereich von 1 bis 5 darstellt. Setzen Sie die "Feature scoring method" (Featurebewertungsmethode) auf "Pearson Correlation" (Pearson-Korrelation), die "Target Column" (Zielspalte) auf "Col1" und die "Number of desired features" (Anzahl von gewünschten Features) auf 50. Dann erzeugt das Modul [Filter-Based Feature Selection][filter-based-feature-selection] ein DataSet mit 50 Features mit dem Zieltattribut "Col1". Die folgende Abbildung zeigt den Ablauf dieses Experiments und die oben beschriebenen Eingabeparameter.
+Betrachten Sie beispielsweise die Verwendung des Moduls [Filter-Based Feature Selection][filter-based-feature-selection]. Der Einfachheit halber wird weiterhin das oben beschriebene Text Mining-Beispiel verwendet. Es wird vorausgesetzt, dass ein Regressionsmodell erstellt werden soll, nachdem ein Satz von 256 Features über das [Feature Hashing][feature-hashing]-Modul erstellt wurde, dass die Antwortvariable „Col1“ ist und eine Buchbewertung mit Bewertungen im Bereich von 1 bis 5 darstellt. Setzen Sie die "Feature scoring method" (Featurebewertungsmethode) auf "Pearson Correlation" (Pearson-Korrelation), die "Target Column" (Zielspalte) auf "Col1" und die "Number of desired features" (Anzahl von gewünschten Features) auf 50. Dann erzeugt das Modul [Filter-Based Feature Selection][filter-based-feature-selection] ein Dataset mit 50 Features mit dem Zieltattribut „Col1“. Die folgende Abbildung zeigt den Ablauf dieses Experiments und die oben beschriebenen Eingabeparameter.
 
 ![Beispiel für Featureauswahl](./media/machine-learning-feature-selection-and-engineering/feature-Selection1.png)
 
@@ -126,7 +126,7 @@ Durch Anwenden dieses Moduls [Filter-Based Feature Selection][filter-based-featu
 ## Zusammenfassung
 Entwicklung und Auswahl von Features sind zwei häufig ausgeführte Schritte zum Vorbereiten von Trainingsdaten beim Erstellen eines Modells für das maschinelle Lernen. Normalerweise wird die Featureentwicklung zuerst ausgeführt, um zusätzliche Features zu generieren, und anschließend wird die Featureauswahl ausgeführt, um irrelevante, redundante oder hoch korrelierte Features zu entfernen.
 
-Beachten Sie, dass die Entwicklung bzw. Auswahl von Features nicht immer unbedingt ausgeführt werden müssen. Ob sie benötigt werden oder nicht, hängt von den vorliegenden oder gesammelten Daten ab, dem gewählten Algorithmus und dem Ziel des Experiments.
+Die Entwicklung bzw. Auswahl von Features muss nicht immer unbedingt erfolgen. Ob sie benötigt werden oder nicht, hängt von den vorliegenden oder gesammelten Daten ab, dem gewählten Algorithmus und dem Ziel des Experiments.
 
 <!-- Module References -->
 [execute-r-script]: https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/
@@ -134,4 +134,4 @@ Beachten Sie, dass die Entwicklung bzw. Auswahl von Features nicht immer unbedin
 [filter-based-feature-selection]: https://msdn.microsoft.com/library/azure/918b356b-045c-412b-aa12-94a1d2dad90f/
 [fisher-linear-discriminant-analysis]: https://msdn.microsoft.com/library/azure/dcaab0b2-59ca-4bec-bb66-79fd23540080/
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0914_2016-->

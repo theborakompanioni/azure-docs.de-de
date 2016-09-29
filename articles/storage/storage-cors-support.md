@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="05/23/2016"
+	ms.date="09/07/2016"
 	ms.author="tamram"/>
 
 # Unterstützung von Cross-Origin Resource Sharing (CORS) für die Azure Storage-Dienste
@@ -134,7 +134,7 @@ Im folgenden Beispiel wird ein partieller Anforderungstext für einen Vorgang an
 
 Betrachten Sie als Nächstes die folgenden CORS-Anforderungen:
 
-Anforderung||| Antwort||
+Request||| Antwort||
 ---|---|---|---|---
 **Methode** |**Ursprung** |**Anforderungsheader** |**Regelübereinstimmung** |**Ergebnis**
 **PUT** | http://www.contoso.com |x-ms-blob-content-type | Erste Regel |Erfolgreich
@@ -167,9 +167,9 @@ Bei Anforderungen, die andere Methoden als GET/HEAD verwenden, wird der Vary-Hea
 
 Der folgenden Tabelle können Sie entnehmen, wie Azure Storage in den oben beschriebenen Fällen auf GET-/HEAD-Anforderungen antwortet:
 
-Anforderung|Kontoeinstellung und Ergebnis der Regelauswertung|||Antwort|||
+Request|Kontoeinstellung und Ergebnis der Regelauswertung|||Antwort|||
 ---|---|---|---|---|---|---|---|---
-**Origin-Header für Anforderung vorhanden** | **CORS-Regel(n) für den Dienst angegeben** | **Abgleichsregel vorhanden, die alle Ursprungsdomänen zulässt (*)** | **Abgleichsregel für genaue Übereinstimmung mit Ursprungsdomäne vorhanden** | **Antwort enthält Vary-Header, der auf "Origin" festgelegt ist** | **Antwort enthält "Access-Control-Allowed-Origin": "*"** | **Antwort enthält Access-Control-Exposed-Header**
+**Origin-Header für Anforderung vorhanden** | **CORS-Regel(n) für den Dienst angegeben** | **Abgleichsregel vorhanden, die alle Ursprungsdomänen zulässt (*)** | **Abgleichsregel für genaue Übereinstimmung mit Ursprungsdomäne vorhanden** | **Antwort enthält Vary-Header, der auf "Origin" festgelegt ist** | **Antwort enthält „Access-Control-Allowed-Origin“: *"** | **Antwort enthält Access-Control-Exposed-Header**
 Nein|Nein|Nein|Nein|Nein|Nein|Nein
 Nein|Ja|Nein|Nein|Ja|Nein|Nein
 Nein|Ja|Ja|Nein|Nein|Ja|Ja
@@ -195,4 +195,4 @@ Nicht erfolgreiche Preflight-Anforderungen werden nicht berechnet.
 
 [W3C-Spezifikation für CORS (Cross-Origin Resource Sharing)](http://www.w3.org/TR/cors/)
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0914_2016-->

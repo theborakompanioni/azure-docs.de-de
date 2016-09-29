@@ -4,7 +4,7 @@
 	services="machine-learning,hdinsight"
 	documentationCenter=""
 	authors="bradsev,hangzh-msft"
-	manager="paulettm" 
+	manager="jhubbard" 
 	editor="cgronlun"  />
 
 <tags
@@ -20,8 +20,8 @@
 
 In diesem Artikel wird das Komprimieren von in Azure HDInsight Hive-Tabellen gespeicherten Daten mithilfe von Hive-Abfragen beschrieben. Dabei werden drei häufig verwendete Samplingmethoden behandelt:
 
-* Einheitliche Stichproben 
-* Zufällige Stichproben nach Gruppen 
+* Einheitliche Stichproben
+* Zufällige Stichproben nach Gruppen
 * Geschichtete Stichproben
 
 **Warum eine Datenstichprobe entnehmen?** Wenn das Dataset, das Sie analysieren möchten, groß ist, sollten Sie in der Regel eine Komprimierung der Daten durchführen, um eine geringere aber immer noch repräsentative Größe zu erhalten. Dies erleichtert das Verständnis der Daten, das Durchsuchen und die Funktionsverarbeitung. Die Funktion besteht innerhalb des Team Data Science-Prozesses darin, schnell Prototypen der Funktionen zur Datenverarbeitung und Machine Learning-Modelle zu erstellen.
@@ -107,4 +107,4 @@ Dies ist eine Beispielabfrage:
 Informationen zu komplexeren Methoden für das Extrahieren von Stichproben, die in Hive verfügbar sind, finden Sie unter [LanguageManual Sampling](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Sampling) (in englischer Sprache).
  
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0914_2016-->

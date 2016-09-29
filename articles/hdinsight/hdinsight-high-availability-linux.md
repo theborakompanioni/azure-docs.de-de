@@ -3,7 +3,7 @@
 	description="Erfahren Sie, wie Linux-basierte HDInsight-Cluster durch die Verwendung eines zusätzlichen Hauptknotens eine höhere Zuverlässigkeit und Verfügbarkeit bieten. Sie erfahren, wie dies Hadoop-Dienste wie Ambari und Hive beeinflusst und wie eine Verbindung mit jedem Hauptknoten über SSH hergestellt wird."
 	services="hdinsight"
 	editor="cgronlun"
-	manager="paulettm"
+	manager="jhubbard"
 	authors="Blackmist"
 	documentationCenter=""
 	tags="azure-portal"/>
@@ -225,4 +225,4 @@ In diesem Dokument haben Sie erfahren, wie Azure HDInsight hohe Verfügbarkeit f
 [azure-powershell]: ../powershell-install-configure.md
 [azure-cli]: ../xplat-cli-install.md
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0914_2016-->

@@ -1,20 +1,20 @@
 <properties 
-	pageTitle="Windows-Authentifizierung und Azure Multi-Factor Authentication-Server" 
-	description="Dies ist die Azure Multi-Factor Authentication-Seite, die bei der Bereitstellung der Windows-Authentifizierung und des Azure Multi-Factor Authentication-Servers Unterstützung bietet." 
-	services="multi-factor-authentication" 
-	documentationCenter="" 
-	authors="billmath" 
-	manager="stevenpo" 
+	pageTitle="Windows-Authentifizierung und Azure Multi-Factor Authentication-Server"
+	description="Dies ist die Azure Multi-Factor Authentication-Seite, die bei der Bereitstellung der Windows-Authentifizierung und des Azure Multi-Factor Authentication-Servers Unterstützung bietet."
+	services="multi-factor-authentication"
+	documentationCenter=""
+	authors="kgremban"
+	manager="femila"
 	editor="curtand"/>
 
-<tags 
-	ms.service="multi-factor-authentication" 
-	ms.workload="identity" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="get-started-article" 
-	ms.date="08/04/2016" 
-	ms.author="billmath"/>
+<tags
+	ms.service="multi-factor-authentication"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.date="08/04/2016"
+	ms.author="kgremban"/>
 
 # Windows-Authentifizierung und Azure Multi-Factor Authentication-Server
 
@@ -31,7 +31,7 @@ Mit dem Abschnitt für die Windows-Authentifizierung kann der Administrator die 
 
 
 >[AZURE.NOTE]Dieses Feature wird nicht unterstützt, um Terminaldienste unter Windows Server 2012 R2 zu sichern.
- 
+
 
 
 
@@ -49,4 +49,4 @@ Mit dem Abschnitt für die Windows-Authentifizierung kann der Administrator die 
 10. Wählen Sie "Subnetz", wenn Sie einen IP-Bereich mithilfe der Subnetznotation angeben möchten. Geben Sie die Start-IP des Subnetzes an, und wählen Sie die entsprechende Netzmaske aus der Dropdown-Liste.
 11. Klicken Sie auf die Schaltfläche "OK".
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0921_2016-->

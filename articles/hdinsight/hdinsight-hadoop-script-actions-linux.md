@@ -4,7 +4,7 @@
     services="hdinsight"
     documentationCenter=""
     authors="Blackmist"
-    manager="paulettm"
+    manager="jhubbard"
     editor="cgronlun"/>
 
 <tags
@@ -31,7 +31,7 @@ Skriptaktionen können mithilfe der folgenden Methoden angewendet werden:
 | Verwenden Sie dies, um ein Skript anzuwenden... | Während der Clustererstellung... | In einem ausgeführten Cluster... |
 | ----- |:-----:|:-----:|
 | Azure-Portal | ✓ | ✓ |
-| Microsoft Azure PowerShell | ✓ | ✓ |
+| Azure PowerShell | ✓ | ✓ |
 | Azure-Befehlszeilenschnittstelle | &nbsp; | ✓ |
 | HDInsight .NET-SDK | ✓ | ✓ |
 | Azure Resource Manager-Vorlage | ✓ | &nbsp; |
@@ -268,4 +268,4 @@ Ersetzen Sie den oben aufgeführten Befehl __INFILE__ durch die Datei mit Bytere
 
 * Verwenden Sie die [HDInsight-REST-API](https://msdn.microsoft.com/library/azure/mt622197.aspx), um zu erfahren, wie Sie REST verwenden, um Verwaltungsaktionen auf HDInsight-Clustern auszuführen.
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0914_2016-->

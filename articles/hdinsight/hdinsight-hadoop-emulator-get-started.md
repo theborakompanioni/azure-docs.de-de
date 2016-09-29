@@ -3,7 +3,7 @@
 	description="Um sich mit dem Hadoop-Ökosystem vertraut zu machen, können Sie eine Hadoop-Sandbox von Hortonworks auf einem virtuellen Azure-Computer einrichten. "
 	keywords="hadoop emulator,hadoop sandbox"
 	editor="cgronlun"
-	manager="paulettm"
+	manager="jhubbard"
 	services="hdinsight"
 	authors="nitinme"
 	documentationCenter=""
@@ -26,4 +26,4 @@ Informationen zu den ersten Schritten mit einer Hortonworks Hadoop-Sandbox finde
 
 Nachdem Sie sich mit Hadoop vertraut gemacht haben, können Sie Hadoop in Azure verwenden und einen HDInsight-Cluster erstellen. Weitere Informationen für Ihren Einstieg finden Sie unter [Erste Schritte mit Hadoop in HDInsight](hdinsight-hadoop-linux-tutorial-get-started.md).
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0914_2016-->

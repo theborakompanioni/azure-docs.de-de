@@ -4,7 +4,7 @@
 	services="hdinsight"
 	tags="azure-portal"
 	editor="cgronlun"
-	manager="paulettm"
+	manager="jhubbard"
 	authors="mumian"
 	documentationCenter=""/>
 
@@ -341,4 +341,4 @@ Einige dieser Fehlermeldungen können auch im Azure-Portal angezeigt werden, wen
 - [Aktivieren von Heapdumps für Hadoop-Dienste auf Linux-basierten HDInsight-Clustern](hdinsight-hadoop-collect-debug-heap-dump-linux.md)
 - [Verwalten von HDInsight-Clustern mithilfe der Ambari-Webbenutzeroberfläche](hdinsight-hadoop-manage-ambari.md)
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0914_2016-->

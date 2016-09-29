@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/08/2016" 
+	ms.date="09/08/2016" 
 	ms.author="deonhe"/>
 
 # Übersicht über das Enterprise Integration Pack
@@ -35,7 +35,9 @@ Aus Sicht der Systemarchitektur basiert das Enterprise Integration Pack auf **In
 ## Erste Schritte mit der Unternehmensintegration
 Mit dem Enterprise Integration Pack und dem Logik-App-Designer im **Azure-Portal** können Sie B2B-Apps erstellen und verwalten.
 
-Hier ist eine Übersicht über die Schritte, die Sie ausführen müssen, ehe Sie im Azure-Portal Apps erstellen können: ![overviewimage](./media/app-service-logic-enterprise-integration-overview/overview-0.png)
+Sie können auch [PowerShell](https://msdn.microsoft.com/library/azure/mt652195.aspx "Logik-Apps-PowerShell-Themen") verwenden, um Ihre Logik-Apps zu verwalten.
+
+Hier ist eine Übersicht über die Schritte, die Sie ausführen müssen, ehe Sie im Azure-Portal Apps erstellen können: ![Übersichtsbild](./media/app-service-logic-enterprise-integration-overview/overview-0.png)
 
 ## Gängige Szenarien
 
@@ -49,8 +51,8 @@ Für die Unternehmensintegration werden unterstützt diese Branchenstandards unt
 - Visual Studio 2015 zum Erstellen von Zuordnungen und Schemas
 - [Microsoft Azure Logic Apps Enterprise Integration Tools for Visual Studio 2015 2.0](https://aka.ms/vsmapsandschemas)
 
-## Probieren Sie es selbst aus
-Versuchen Sie es doch einfach mal. Klicken Sie [hier](https://github.com/Azure/azure-quickstart-templates/tree/master/201-logic-app-as2-send-receive), um eigene, voll funktionsfähige AS2-Logik-Apps mit Sende- und Empfangsfunktionen unter Verwendung der B2B-Features von Logic Apps bereitzustellen.
+## Ausprobieren
+[Probieren Sie es jetzt aus](https://github.com/Azure/azure-quickstart-templates/tree/master/201-logic-app-as2-send-receive), um voll funktionsfähige Beispiel-AS2-Logik-Apps mit Sende- und Empfangsfunktionen unter Verwendung der B2B-Features von Logik-Apps bereitzustellen.
 
 ## Weitere Informationen:
 - [Vereinbarungen](./app-service-logic-enterprise-integration-agreements.md "Informationen zu Vereinbarungen zur Unternehmensintegration")
@@ -63,5 +65,6 @@ Versuchen Sie es doch einfach mal. Klicken Sie [hier](https://github.com/Azure/a
 - [Schemas](./app-service-logic-enterprise-integration-schemas.md "Informationen zu Schemas für die Unternehmensintegration")
 - [Überprüfung von XML-Nachrichten](./app-service-logic-enterprise-integration-xml.md "Informationen zum Überprüfen von XML-Nachrichten mit Logik-Apps")
 - [XML-Transformation](./app-service-logic-enterprise-integration-transform.md "Informationen zu Zuordnungen für die Unternehmensintegration")
+- [Unternehmensintegrationconnectors](../connectors/apis-list.md "Informationen zu Enterprise Integration Pack-Connectors")
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0914_2016-->

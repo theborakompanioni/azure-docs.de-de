@@ -4,7 +4,7 @@
 	services="hdinsight"
 	documentationCenter=""
 	authors="Blackmist"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun"
 	tags="azure-portal"/>
 
@@ -121,4 +121,4 @@ Gehen Sie folgendermaßen vor, um die Konfiguration für einen Dienst zu ändern
 
 8. Verwenden Sie nach dem Neustart der Dienste die Schaltfläche **Service Actions**, um **Turn Off Maintenance Mode** auszuwählen. Dadurch setzt Ambari das Überwachen auf Warnungen für den Dienst fort.
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0914_2016-->

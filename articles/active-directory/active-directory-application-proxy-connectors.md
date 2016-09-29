@@ -13,18 +13,23 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/22/2016"
+	ms.date="09/09/2016"
 	ms.author="kgremban"/>
 
 
-# Veröffentlichen von Anwendungen in getrennten Netzwerken und an getrennten Speicherorten mit Connectorgruppen
+# Veröffentlichen von Anwendungen in getrennten Netzwerken und an getrennten Standorten mithilfe von Connectorgruppen
 
-Connectorgruppen sind unter anderem in folgenden Anwendungsbereichen nützlich:
+> [AZURE.SELECTOR]
+- [Azure-Portal](active-directory-application-proxy-connectors-azure-portal.md)
+- [Klassisches Azure-Portal](active-directory-application-proxy-connectors.md)
 
-- Websites mit mehreren verbundenen Datencentern. In diesem Fall soll jeweils möglichst viel Datenverkehr innerhalb des Datencenters verlaufen, da Verbindungen zwischen Datencentern gewöhnlich teuer und langsam sind. In jedem Datencenter lassen sich Connectors bereitstellen, die jeweils nur die lokalen Anwendungen bedienen. Mit diesem Vorgehen werden bei völliger Transparenz für den Benutzer die Verbindungen zwischen den Datencentern minimiert.
+
+Connectorgruppen sind unter anderem in folgenden Szenarien nützlich:
+
+- Standorte mit mehreren verbundenen Rechenzentren. In diesem Fall soll jeweils möglichst viel Datenverkehr innerhalb des Rechenzentrums verlaufen, da Verbindungen zwischen Rechenzentren für gewöhnlich teuer und langsam sind. Sie können in jedem Rechenzentrum Connectors bereitstellen, die jeweils nur die lokalen Anwendungen bedienen. Mit diesem Vorgehen werden bei völliger Transparenz für den Benutzer die Verbindungen zwischen den Rechenzentren minimiert.
 - Verwalten von Anwendungen, die in isolierten Netzwerken installiert, jedoch nicht Teil des Hauptnetzwerks des Unternehmens sind. Connectorgruppen können verwendet werden, um dedizierte Connectors für isolierte Netzwerke zu installieren und außerdem die Anwendungen vom Netzwerk zu isolieren.
-- Für Anwendungen, die auf IaaS für den Cloudzugriff installiert sind, bieten Connectorgruppen einen übergreifenden Dienst, mit dem der Zugriff auf alle Apps gesichert wird, ohne eine zusätzliche Abhängigkeit vom Unternehmensnetzwerk zu schaffen oder die Einheitlichkeit der Benutzerführung aufzugeben. Connectors können in allen Cloudrechenzentren installiert werden und bedienen nur Anwendungen, die sich in diesem Netzwerk befinden. Es können mehrere Connectors installiert werden, um eine hohe Verfügbarkeit zu gewährleisten.
-- Unterstützung für Umgebungen mit mehreren Gesamtstrukturen, in denen bestimmte Connectors in einzelnen Gesamtstrukturen bereitgestellt werden können, um dort bestimmte Anwendungen zu bedienen.
+- Für IaaS-Anwendungen mit Cloudzugriff bieten Connectorgruppen einen gemeinsamen Dienst zum Absichern des Zugriffs auf alle Apps. Connectorgruppen erzeugen keine zusätzliche Abhängigkeit vom Unternehmensnetzwerk und beeinträchtigen nicht das App-Erlebnis. Connectors können in allen Cloudrechenzentren installiert werden und bedienen nur Anwendungen, die sich in diesem Netzwerk befinden. Es können mehrere Connectors installiert werden, um eine hohe Verfügbarkeit zu gewährleisten.
+- Unterstützung für Umgebungen mit mehreren Gesamtstrukturen, in denen spezifische Connectors in einzelnen Gesamtstrukturen bereitgestellt werden können, um dort bestimmte Anwendungen zu bedienen.
 - Connectorgruppen können bei Websites als Teil von Notfallkonzepten eingesetzt werden, um ein Failover zu erkennen oder als Datensicherung für die Hauptwebsite zu dienen.
 - Connectorgruppen können auch verwendet werden, um mehrere Unternehmen von einem einzigen Mandanten aus zu bedienen.
 
@@ -34,7 +39,7 @@ Um Connectors zu gruppieren, müssen Sie sicherstellen, dass [mehrere Connectors
 ## Schritt 1: Erstellen von Connectorgruppen
 Sie können beliebig viele Connectorgruppen erstellen. Das Erstellen von Connectorgruppen erfolgt im klassischen Azure-Portal.
 
-1. Wählen Sie Ihr Verzeichnis aus, und klicken Sie auf **Konfigurieren**. ![Screenshot zum Konfigurieren des Anwendungsproxys – auf „Connectorgruppen verwalten“ klicken](./media/active-directory-application-proxy-connectors/app_proxy_connectors_creategroup.png)
+1. Wählen Sie Ihr Verzeichnis aus, und klicken Sie auf **Konfigurieren**. ![Screenshot zum Konfigurieren des Anwendungsproxys – Klicken auf „Connectorgruppen verwalten“](./media/active-directory-application-proxy-connectors/app_proxy_connectors_creategroup.png)
 
 2. Klicken Sie dann unter „Anwendungsproxy“ auf **Connectorgruppen verwalten**, und erstellen Sie eine neue Connectorgruppe, indem Sie die Gruppe benennen. ![Screenshot zu Connectorgruppen für Anwendungsproxys – neue Gruppe benennen](./media/active-directory-application-proxy-connectors/app_proxy_connectors_namegroup.png)
 
@@ -51,7 +56,7 @@ Der letzte Schritt besteht darin, jede Anwendung der Connectorgruppe zuzuweisen,
 2. Wählen Sie unter **Connectorgruppe** die Gruppe aus, die die Anwendung verwenden soll. Diese Änderung wird sofort übernommen. ![Screenshot zu Anwendungsproxy-Connectorgruppen – Gruppe aus dem Dropdown-Menü auswählen](./media/active-directory-application-proxy-connectors/app_proxy_connectors_newgroup.png)
 
 
-## Weitere Informationen
+## Siehe auch
 
 - [Aktivieren des Anwendungsproxys](active-directory-application-proxy-enable.md)
 - [Aktivieren der einmaligen Anmeldung](active-directory-application-proxy-sso-using-kcd.md)
@@ -60,4 +65,4 @@ Der letzte Schritt besteht darin, jede Anwendung der Connectorgruppe zuzuweisen,
 
 Aktuelle Neuigkeiten und Updates finden Sie im [Blog zum Anwendungsproxy](http://blogs.technet.com/b/applicationproxyblog/).
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0914_2016-->

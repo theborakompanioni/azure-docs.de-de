@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="hero-article"
-	ms.date="07/22/2016"
-	ms.author="tamram"/>
+	ms.date="09/20/2016"
+	ms.author="jwillis;tamram"/>
 
 
 # Erste Schritte mit Azure Blob Storage mit .NET
@@ -23,7 +23,7 @@
 
 ## Übersicht
 
-Der Azure-BLOB-Speicher ist ein Dienst, bei dem unstrukturierte Daten in der Cloud als Objekte/Blobs gespeichert werden. In Blob Storage können alle Arten von Text- oder Binärdaten gespeichert werden, z. B. ein Dokument, eine Mediendatei oder ein Installer einer Anwendung. Der Blobspeicher wird auch als Objektspeicher bezeichnet.
+Der Azure-BLOB-Speicher ist ein Dienst, bei dem unstrukturierte Daten in der Cloud als Objekte/Blobs gespeichert werden. In Blob Storage können alle Arten von Text- oder Binärdaten gespeichert werden, z. B. ein Dokument, eine Mediendatei oder ein Installer einer Anwendung. Der Blobspeicher wird auch als Objektspeicher bezeichnet.
 
 ### Informationen zu diesem Lernprogramm
 
@@ -33,7 +33,7 @@ In diesem Tutorial wird gezeigt, wie Sie .NET-Code für einige häufig verwendet
 
 **Voraussetzungen:**
 
-- [Microsoft Visual Studio](https://www.visualstudio.com/en-us/visual-studio-homepage-vs.aspx)
+- [Microsoft Visual Studio](https://www.visualstudio.com/de-DE/visual-studio-homepage-vs.aspx)
 - [Azure Storage-Clientbibliothek für .NET](https://www.nuget.org/packages/WindowsAzure.Storage/)
 - [Azure Configuration Manager für .NET](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/)
 - Ein [Azure Storage-Konto](storage-create-storage-account.md#create-a-storage-account)
@@ -407,4 +407,4 @@ Nachdem Sie sich nun mit den Grundlagen von Blobspeichern vertraut gemacht haben
   [.NET client library reference]: http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409
   [REST API reference]: http://msdn.microsoft.com/library/azure/dd179355
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

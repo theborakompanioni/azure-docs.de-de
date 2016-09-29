@@ -1,5 +1,5 @@
 
-<properties 
+<properties
    pageTitle="Erste Schritte zum Erstellen eines Load Balancers mit Internetzugriff in einem klassischen Bereitstellungsmodell im klassischen Azure-Portal | Microsoft Azure"
    description="Erfahren Sie, wie Sie im klassischen Azure-Portal einen Load Balancer mit Internetzugriff in einem klassischen Bereitstellungsmodell erstellen"
    services="load-balancer"
@@ -9,13 +9,13 @@
    editor=""
    tags="azure-service-management"
 />
-<tags  
+<tags
    ms.service="load-balancer"
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="03/17/2016"
+   ms.date="08/31/2016"
    ms.author="sewhee" />
 
 # Erste Schritte zum Erstellen eines Load Balancers mit Internetzugriff (klassisch) im klassischen Azure-Portal
@@ -36,26 +36,30 @@ Um Lastenausgleich für Netzwerkverkehr aus dem Internet auf virtuellen Computer
 **So konfigurieren Sie eine Gruppe mit Lastenausgleich für virtuelle Computer**
 
 1. Klicken Sie im klassischen Azure-Portal auf **Virtuelle Computer** und anschließend auf den Namen eines virtuellen Computers in der Gruppe mit Lastenausgleich.
-2.	Klicken Sie auf **Endpunkte** und anschließend auf **Hinzufügen**.
 
-4.	Klicken Sie auf der Seite **Endpunkt zu einem virtuellen Computer hinzufügen** auf den rechten Pfeil.
+2. Klicken Sie auf **Endpunkte** und anschließend auf **Hinzufügen**.
 
-4.	Gehen Sie auf der Seite **Geben Sie die Details des Endpunktes ein** folgendermaßen vor:
-	- Geben Sie unter **Name** einen Namen für den Endpunkt ein, oder wählen Sie einen der vordefinierten Endpunkte für gängige Protokolle aus der Liste aus.
-	-  Wählen Sie unter **Protokoll** das Protokoll aus, das für den Endpunkttyp erforderlich ist: TCP oder UDP.
- 	-  Geben Sie unter **Öffentlicher Port** und "Privater Port" die Portnummern ein, die der virtuelle Computer verwenden soll. Sie können die Regeln für privaten Port und Firewall auf dem virtuellen Computer verwenden, um Datenverkehr entsprechend Ihren Anforderungen umzuleiten. Der private Port kann mit dem öffentlichen Port identisch sein. Für einen Endpunkt für Webverkehr (HTTP) könnten Sie zum Beispiel Port 80 sowohl für den öffentlichen als auch für den privaten Port verwenden.
+3. Klicken Sie auf der Seite **Endpunkt zu einem virtuellen Computer hinzufügen** auf den rechten Pfeil.
 
-5.	Klicken Sie auf **Satz mit Lastenausgleich erstellen** und klicken Sie auf den Pfeil nach rechts.
+4. Gehen Sie auf der Seite **Geben Sie die Details des Endpunktes ein** folgendermaßen vor:
 
-6.	Geben Sie auf der Seite **Gruppe mit Lastenausgleich konfigurieren** einen Namen für die Gruppe mit Lastenausgleich ein, und weisen Sie dann die Werte für das Testverhalten des Azure-Lastenausgleichsmoduls zu. Das Lastenausgleichsmodul führt Tests durch, um zu ermitteln, ob die virtuellen Computer in einem Satz mit Lastenausgleich empfangsbereit für eingehenden Datenverkehr sind.
+    * Geben Sie unter **Name** einen Namen für den Endpunkt ein, oder wählen Sie einen der vordefinierten Endpunkte für gängige Protokolle aus der Liste aus.
+    * Wählen Sie unter **Protokoll** das Protokoll aus, das für den Endpunkttyp erforderlich ist: TCP oder UDP.
+    * Geben Sie unter **Öffentlicher Port** und "Privater Port" die Portnummern ein, die der virtuelle Computer verwenden soll. Sie können die Regeln für privaten Port und Firewall auf dem virtuellen Computer verwenden, um Datenverkehr entsprechend Ihren Anforderungen umzuleiten. Der private Port kann mit dem öffentlichen Port identisch sein. Für einen Endpunkt für Webverkehr (HTTP) könnten Sie zum Beispiel Port 80 sowohl für den öffentlichen als auch für den privaten Port verwenden.
 
-7.	Klicken Sie auf das Häkchen, um den Endpunkt mit Lastenausgleich zu erstellen. In der Spalte **Name des Satzes mit Lastenausgleich** auf der Seite **Endpunkt** für den virtuellen Computer wird der Eintrag **Ja** angezeigt.
+5. Klicken Sie auf **Satz mit Lastenausgleich erstellen** und klicken Sie auf den Pfeil nach rechts.
 
-8.	Klicken Sie im Portal auf **Virtuelle Computer**, klicken Sie auf den Namen eines weiteren virtuellen Computers in der Gruppe mit Lastenausgleich, klicken Sie auf **Endpunkte** und dann auf **Hinzufügen**.
+6. Geben Sie auf der Seite **Gruppe mit Lastenausgleich konfigurieren** einen Namen für die Gruppe mit Lastenausgleich ein, und weisen Sie dann die Werte für das Testverhalten des Azure-Lastenausgleichsmoduls zu. Das Lastenausgleichsmodul führt Tests durch, um zu ermitteln, ob die virtuellen Computer in einem Satz mit Lastenausgleich empfangsbereit für eingehenden Datenverkehr sind.
 
-9.	Klicken Sie auf der Seite **Endpunkt zu virtuellem Computer hinzufügen** auf **Endpunkt zu einer vorhandenen Gruppe mit Lastenausgleich hinzufügen**, wählen Sie den Namen der Gruppe mit Lastenausgleich aus, und klicken Sie auf den Pfeil nach rechts.
+7. Klicken Sie auf das Häkchen, um den Endpunkt mit Lastenausgleich zu erstellen. In der Spalte **Name des Satzes mit Lastenausgleich** auf der Seite **Endpunkt** für den virtuellen Computer wird der Eintrag **Ja** angezeigt.
 
-10.	Geben Sie auf der Seite **Geben Sie die Details des Endpunktes ein** einen Namen für den Endpunkt ein, und klicken Sie auf das Häkchen. Wiederholen Sie die Schritte 8 bis 10 für die weiteren virtuellen Computer in der Gruppe mit Lastenausgleich.
+8. Klicken Sie im Portal auf **Virtuelle Computer**, klicken Sie auf den Namen eines weiteren virtuellen Computers in der Gruppe mit Lastenausgleich, klicken Sie auf **Endpunkte** und dann auf **Hinzufügen**.
+
+9. Klicken Sie auf der Seite **Endpunkt zu virtuellem Computer hinzufügen** auf **Endpunkt zu einer vorhandenen Gruppe mit Lastenausgleich hinzufügen**, wählen Sie den Namen der Gruppe mit Lastenausgleich aus, und klicken Sie auf den Pfeil nach rechts.
+
+10. Geben Sie auf der Seite **Geben Sie die Details des Endpunktes ein** einen Namen für den Endpunkt ein, und klicken Sie auf das Häkchen.
+
+Wiederholen Sie die Schritte 8 bis 10 für die weiteren virtuellen Computer in der Gruppe mit Lastenausgleich.
 
 
 
@@ -67,4 +71,4 @@ Um Lastenausgleich für Netzwerkverkehr aus dem Internet auf virtuellen Computer
 
 [Konfigurieren von TCP-Leerlauftimeout-Einstellungen für den Lastenausgleich](load-balancer-tcp-idle-timeout.md)
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0914_2016-->

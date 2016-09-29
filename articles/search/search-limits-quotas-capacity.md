@@ -4,7 +4,7 @@
 	services="search"
 	documentationCenter=""
 	authors="HeidiSteen"
-	manager="paulettm"
+	manager="jhubbard"
 	editor=""
     tags="azure-portal"/>
 
@@ -97,4 +97,4 @@ API-Schlüssel werden für die Dienstauthentifizierung verwendet. Es gibt zwei A
 - Maximal 2 Administratorschlüssel pro Dienst
 - Maximal 50 Abfrageschlüssel pro Dienst
 
-<!----HONumber=AcomDC_0907_2016-->
+<!----HONumber=AcomDC_0914_2016-->

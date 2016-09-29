@@ -19,8 +19,8 @@
 # Konfigurieren einer Point-to-Site-VPN-Verbindung (P2S) mit einem VNet mithilfe von PowerShell
 
 > [AZURE.SELECTOR]
-- [PowerShell – Resource Manager](vpn-gateway-howto-point-to-site-rm-ps.md)
-- [Portal – klassisch](vpn-gateway-point-to-site-create.md)
+- [Resource Manager – PowerShell](vpn-gateway-howto-point-to-site-rm-ps.md)
+- [Klassisch – Klassisches Portal](vpn-gateway-point-to-site-create.md)
 
 Mit einer P2S-Konfiguration (Point-to-Site) können Sie von einem einzelnen Clientcomputer eine sichere Verbindung mit einem virtuellen Netzwerk herstellen. Eine P2S-Verbindung ist nützlich, wenn Sie von einem Remotestandort, z.B. von zu Hause oder in einer Konferenz, eine Verbindung mit Ihrem VNet herstellen möchten. Diese Methode eignet sich auch, wenn Sie nur wenige Clients besitzen, die mit einem virtuellen Netzwerk verbunden werden müssen.
 
@@ -111,7 +111,7 @@ In diesem Abschnitt melden Sie sich an und deklarieren die für diese Konfigurat
 
 		New-AzureRmResourceGroup -Name $RG -Location $Location
 
-2. Erstellen Sie die Subnetzkonfigurationen für das virtuelle Netzwerk, und benennen Sie sie mit *FrontEnd*, *BackEnd* und *GatewaySubnet*. Diese Präfixe müssen im oben deklarierten VNet-Adressraum enthalten sein.
+2. Erstellen Sie die Subnetzkonfigurationen für das virtuelle Netzwerk, und benennen Sie sie mit *FrontEnd*, *BackEnd* und *GatewaySubnet*. Diese Präfixe müssen im deklarierten VNet-Adressraum enthalten sein.
 
 		$fesub = New-AzureRmVirtualNetworkSubnetConfig -Name $FESubName -AddressPrefix $FESubPrefix
 		$besub = New-AzureRmVirtualNetworkSubnetConfig -Name $BESubName -AddressPrefix $BESubPrefix
@@ -172,7 +172,7 @@ Clients, die mithilfe von P2S eine Verbindung mit Azure herstellen, benötigen e
 
 3. Kopieren Sie den zurückgegebenen Link, und fügen Sie ihn in einen Webbrowser ein, um das Paket herunterzuladen. Installieren Sie anschließend das Paket auf dem Clientcomputer.
 
-4. Navigieren Sie auf dem Clientcomputer zu **Netzwerkeinstellungen**, und klicken Sie auf **VPN**. Die Verbindung wird angezeigt. Sie zeigt den Namen des virtuellen Netzwerks an, mit dem eine Verbindung hergestellt wird. Dies sieht etwa so aus:
+4. Navigieren Sie auf dem Clientcomputer zu **Netzwerkeinstellungen**, und klicken Sie auf **VPN**. Die Verbindung wird angezeigt. Sie zeigt den Namen des virtuellen Netzwerks an, mit dem eine Verbindung hergestellt wird. Dies sieht in etwa wie in diesem Beispiel aus:
 
 	![VPN-Client](./media/vpn-gateway-howto-point-to-site-rm-ps/vpn.png "VPN-Client")
 
@@ -226,7 +226,7 @@ Installieren Sie auf jedem Computer, den Sie mit dem virtuellen Netzwerk verbind
 
 Zertifikate werden zur Authentifizierung von VPN-Clients für Punkt-zu-Standort-VPNs verwendet. In den folgenden Schritten wird das Hinzufügen und Entfernen von Stammzertifikaten beschrieben. Wenn Sie Azure eine Base64-codierte x.509-Datei (CER-Datei) hinzufügen, weisen Sie Azure dadurch an, dem Stammzertifikat zu vertrauen, das die Datei darstellt.
 
-Sie können vertrauenswürdige Stammzertifikate mithilfe von PowerShell oder im Azure-Portal hinzufügen oder entfernen. Im Azure-Portal ist dies unter **Virtuelles Netzwerkgateway > Einstellungen > Point-to-Site-Konfiguration > Stammzertifikate** möglich. In den folgenden Schritten ist beschrieben, wie Sie diese Aufgaben mithilfe von PowerShell ausführen.
+Sie können vertrauenswürdige Stammzertifikate mithilfe von PowerShell oder im Azure-Portal hinzufügen oder entfernen. Im Azure-Portal ist dies unter **Virtuelles Netzwerkgateway > Einstellungen > Point-to-Site-Konfiguration > Stammzertifikate** möglich. In den folgenden Schritten wird beschrieben, wie Sie diese Aufgaben mit PowerShell ausführen.
 
 ### Hinzufügen eines vertrauenswürdigen Stammzertifikats
 
@@ -234,11 +234,11 @@ Sie können Azure bis zu 20 vertrauenswürdige CER-Stammzertifikatdateien hinzuf
 
 1. Erstellen Sie das neue Stammzertifikat, das Sie Azure hinzufügen möchten, und bereiten Sie es vor. Exportieren Sie den öffentlichen Schlüssel als Base64-codierte X.509-Datei (.CER), und öffnen Sie diese mit einem Text-Editor. Kopieren Sie anschließend nur den unten gezeigten Teil.
  
-	Kopieren Sie die Werte wie im folgenden Beispiel gezeigt.
+	Kopieren Sie die Werte wie im folgenden Beispiel gezeigt:
 
 	![Zertifikat](./media/vpn-gateway-howto-point-to-site-rm-ps/copycert.png "Zertifikat")
 	
-2. Legen Sie im folgenden Beispiel den Zertifikatnamen und die Schlüsselinformationen als Variable fest. Ersetzen Sie die Informationen mit Ihren eigenen Informationen.
+2. Geben Sie den Zertifikatnamen und die Schlüsselinformationen als Variable an. Ersetzen Sie die Informationen durch Ihre eigenen Angaben, wie im folgenden Beispiel gezeigt:
 
 		$P2SRootCertName2 = "ARMP2SRootCert2.cer"
 		$MyP2SCertPubKeyBase64_2 = "MIIC/zCCAeugAwIBAgIQKazxzFjMkp9JRiX+tkTfSzAJBgUrDgMCHQUAMBgxFjAUBgNVBAMTDU15UDJTUm9vdENlcnQwHhcNMTUxMjE5MDI1MTIxWhcNMzkxMjMxMjM1OTU5WjAYMRYwFAYDVQQDEw1NeVAyU1Jvb3RDZXJ0MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAyjIXoWy8xE/GF1OSIvUaA0bxBjZ1PJfcXkMWsHPzvhWc2esOKrVQtgFgDz4ggAnOUFEkFaszjiHdnXv3mjzE2SpmAVIZPf2/yPWqkoHwkmrp6BpOvNVOpKxaGPOuK8+dql1xcL0eCkt69g4lxy0FGRFkBcSIgVTViS9wjuuS7LPo5+OXgyFkAY3pSDiMzQCkRGNFgw5WGMHRDAiruDQF1ciLNojAQCsDdLnI3pDYsvRW73HZEhmOqRRnJQe6VekvBYKLvnKaxUTKhFIYwuymHBB96nMFdRUKCZIiWRIy8Hc8+sQEsAML2EItAjQv4+fqgYiFdSWqnQCPf/7IZbotgQIDAQABo00wSzBJBgNVHQEEQjBAgBAkuVrWvFsCJAdK5pb/eoCNoRowGDEWMBQGA1UEAxMNTXlQMlNSb290Q2VydIIQKazxzFjMkp9JRiX+tkTfSzAJBgUrDgMCHQUAA4IBAQA223veAZEIar9N12ubNH2+HwZASNzDVNqspkPKD97TXfKHlPlIcS43TaYkTz38eVrwI6E0yDk4jAuPaKnPuPYFRj9w540SvY6PdOUwDoEqpIcAVp+b4VYwxPL6oyEQ8wnOYuoAK1hhh20lCbo8h9mMy9ofU+RP6HJ7lTqupLfXdID/XevI8tW6Dm+C/wCeV3EmIlO9KUoblD/e24zlo3YzOtbyXwTIh34T0fO/zQvUuBqZMcIPfM1cDvqcqiEFLWvWKoAnxbzckye2uk1gHO52d8AVL3mGiX8wBJkjc/pMdxrEvvCzJkltBmqxTM6XjDJALuVh16qFlqgTWCIcb7ju"
@@ -311,4 +311,4 @@ Sie können ein Clientzertifikat reaktivieren, indem Sie den Fingerabdruck aus d
 
 Sie können Ihrem virtuellen Netzwerk einen virtuellen Computer hinzufügen. Für diese Schritte finden Sie Informationen unter [Erstellen eines virtuellen Computers](../virtual-machines/virtual-machines-windows-hero-tutorial.md).
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0921_2016-->

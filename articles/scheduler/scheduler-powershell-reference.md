@@ -19,21 +19,41 @@
 
 In der folgenden Tabelle sind die wichtigsten Cmdlets in Azure Scheduler beschrieben. Sie enthält zudem Links zu den jeweiligen Referenzseiten dieser Cmdlets.
 
+Um Azure PowerShell zu installieren und Ihrem Azure-Abonnement zuzuordnen, lesen Sie [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
+
+Weitere Informationen zu [Azure Resource Manager-Cmdlets](https://msdn.microsoft.com/library/mt125356(v=azure.200).aspx) finden Sie unter [Verwenden von Azure PowerShell mit Azure Resource Manager](../powershell-azure-resource-manager.md).
+
 |Cmdlet|Beschreibung des Cmdlets|
 |---|---|
-|**[Get-AzureSchedulerJob](https://msdn.microsoft.com/library/azure/dn722516.aspx)**|Ruft eine Liste der Scheduler-Aufträge oder einen bestimmten Scheduler-Auftrag ab.|
-|**[Get-AzureSchedulerJobCollection](https://msdn.microsoft.com/library/azure/dn722471.aspx)**|Ruft Scheduler-Auftragssammlungen ab.|
-|**[Get-AzureSchedulerJobHistory](https://msdn.microsoft.com/library/azure/dn722514.aspx)**|Ruft den Verlauf für einen Scheduler-Auftrag ab.|
-|**[Get-AzureSchedulerLocation](https://msdn.microsoft.com/library/azure/dn722505.aspx)**|Ruft verfügbare Scheduler-Speicherorte ab.|
-|**[New-AzureSchedulerHttpJob](https://msdn.microsoft.com/library/azure/dn722492.aspx)**|Erstellt einen Scheduler-Auftrag, der über eine HTTP-Aktion verfügt.|
-|**[New-AzureSchedulerJobCollection](https://msdn.microsoft.com/library/azure/dn759640.aspx)**|Erstellt eine Scheduler-Auftragssammlung.|
-|**[New-AzureSchedulerStorageQueueJob](https://msdn.microsoft.com/library/azure/dn722518.aspx)**|Erstellt einen Scheduler-Auftrag, der über eine Speicheraktion verfügt.|
-|**[Remove-AzureSchedulerJob](https://msdn.microsoft.com/library/azure/dn722477.aspx)**|Löscht einen Scheduler-Auftrag.|
-|**[Remove-AzureSchedulerJobCollection](https://msdn.microsoft.com/library/azure/dn722530.aspx)**|Löscht eine Scheduler-Auftragssammlung.|
-|**[Set-AzureSchedulerHttpJob](https://msdn.microsoft.com/library/azure/dn722474.aspx)**|Aktualisiert einen Scheduler-Auftrag, der über eine HTTP-Aktion verfügt.|
-|**[Set-AzureSchedulerJobCollection](https://msdn.microsoft.com/library/azure/dn759626.aspx)**|Aktualisiert eine Scheduler-Auftragssammlung.|
-|**[Set-AzureSchedulerStorageQueueJob](https://msdn.microsoft.com/library/azure/dn722476.aspx)**|Aktualisiert einen Scheduler-Auftrag, der über eine Speicheraktion verfügt.|
+[Disable-AzureRmSchedulerJobCollection](https://msdn.microsoft.com/library/mt490133(v=azure.200).aspx) |Deaktiviert eine Auftragssammlung. 
+[Enable-AzureRmSchedulerJobCollection](https://msdn.microsoft.com/library/mt490135(v=azure.200).aspx) |Aktiviert eine Auftragssammlung.
+[Get-AzureRmSchedulerJob](https://msdn.microsoft.com/library/mt490125(v=azure.200).aspx) |Ruft Scheduler-Aufträge ab.
+[Get-AzureRmSchedulerJobCollection](https://msdn.microsoft.com/library/mt490132(v=azure.200).aspx) |Ruft Auftragssammlungen ab.
+[Get-AzureRmSchedulerJobHistory](https://msdn.microsoft.com/library/mt490126(v=azure.200).aspx) |Ruft den Auftragsverlauf ab.
+[Neue AzureRmSchedulerHttpJob](https://msdn.microsoft.com/library/mt490136(v=azure.200).aspx) |Erstellt einen HTTP-Auftrag.
+[New-AzureRmSchedulerJobCollection](https://msdn.microsoft.com/library/mt490141(v=azure.200).aspx) |Erstellt eine Auftragssammlung.
+[New-AzureRmSchedulerServiceBusQueueJob](https://msdn.microsoft.com/library/mt490134(v=azure.200).aspx) |Erstellt einen Service Bus-Warteschlangenauftrag.
+[New-AzureRmSchedulerServiceBusTopicJob](https://msdn.microsoft.com/library/mt490142(v=azure.200).aspx) |Erstellt einen Service Bus-Themenauftrag.
+[New-AzureRmSchedulerStorageQueueJob](https://msdn.microsoft.com/library/mt490127(v=azure.200).aspx) |Erstellt einen Speicherwarteschlangenauftrag. 
+[Remove-AzureRmSchedulerJob](https://msdn.microsoft.com/library/mt490140(v=azure.200).aspx) |Entfernt einen Scheduler-Auftrag.  
+[Remove-AzureRmSchedulerJobCollection](https://msdn.microsoft.com/library/mt490131(v=azure.200).aspx) |Entfernt eine Auftragssammlung. 
+[Set-AzureRmSchedulerHttpJob](https://msdn.microsoft.com/library/mt490130(v=azure.200).aspx) |Ändert einen Scheduler-HTTP-Auftrag.
+[Set-AzureRmSchedulerJobCollection](https://msdn.microsoft.com/library/mt490129(v=azure.200).aspx) |Ändert eine Auftragssammlung. 
+[Set-AzureRmSchedulerServiceBusQueueJob](https://msdn.microsoft.com/library/mt490143(v=azure.200).aspx) |Ändert einen Service Bus-Warteschlangenauftrag.  
+[Set-AzureRmSchedulerServiceBusTopicJob](https://msdn.microsoft.com/library/mt490137(v=azure.200).aspx) |Ändert einen Service Bus-Themenauftrag. 
+[Set-AzureRmSchedulerStorageQueueJob](https://msdn.microsoft.com/library/mt490128(v=azure.200).aspx) |Ändert einen Speicherwarteschlangenauftrag.   
 
+Weitere detaillierte Informationen erhalten Sie, wenn Sie die folgenden Cmdlets ausführen:
+
+```
+Get-Help <cmdlet name> -Detailed
+```
+```
+Get-Help <cmdlet name> -Examples
+```
+```
+Get-Help <cmdlet name> -Full
+```
 
 ## Weitere Informationen
 
@@ -54,4 +74,4 @@ In der folgenden Tabelle sind die wichtigsten Cmdlets in Azure Scheduler beschri
 
  [Ausgehende Authentifizierung von Azure Scheduler](scheduler-outbound-authentication.md)
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0914_2016-->

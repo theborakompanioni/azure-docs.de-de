@@ -4,7 +4,7 @@
    services="data-lake-store"
    documentationCenter=""
    authors="nitinme"
-   manager="paulettm"
+   manager="jhubbard"
    editor="cgronlun"/>
 
 <tags
@@ -41,4 +41,4 @@ In diesem Artikel werden Open Source-Big Data-Anwendungen aufgelistet, die mit A
 
 - [Übersicht über Azure Data Lake-Speicher](data-lake-store-overview.md)
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0914_2016-->

@@ -1,10 +1,10 @@
 <properties
-	pageTitle="Erste Schritte mit Azure Mobile Engagement für iOS in Objective C"
+	pageTitle="Erste Schritte mit Azure Mobile Engagement für iOS in Objective C | Microsoft Azure"
 	description="Erfahren Sie mehr über die Verwendung von Azure Mobile Engagement mit Analysefunktionen und Pushbenachrichtigungen für iOS-Apps."
 	services="mobile-engagement"
-	documentationCenter="ios"
+	documentationCenter="mobile"
 	authors="piyushjo"
-	manager="dwrede"
+	manager="erikre"
 	editor="" />
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-ios"
 	ms.devlang="objective-c"
 	ms.topic="hero-article"
-	ms.date="05/03/2016"
+	ms.date="09/14/2016"
 	ms.author="piyushjo" />
 
 # Erste Schritte mit Azure Mobile Engagement für iOS-Apps in Objective C
@@ -24,7 +24,7 @@ In diesem Thema erfahren Sie, wie Sie mithilfe von Azure Mobile Engagement die N
 
 Für dieses Lernprogramm ist Folgendes erforderlich:
 
-+ Xcode 6 oder Xcode 7, den Sie aus dem MAC App Store installieren können
++ Xcode 8 (Installation über MAC App Store)
 + Das [Mobile Engagement iOS SDK]
 
 Das Abschließen dieses Lernprogramms ist eine Voraussetzung für alle anderen Mobile Engagement-Lernprogramme für iOS-Apps.
@@ -178,4 +178,4 @@ Mit Mobile Engagement können Sie mit Ihren Benutzern und mit REACH mit Push-Ben
 [3]: ./media/mobile-engagement-ios-get-started/xcode-build-phases.png
 [4]: ./media/mobile-engagement-ios-get-started/app-connection-info-page.png
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0921_2016-->

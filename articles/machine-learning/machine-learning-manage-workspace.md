@@ -4,7 +4,7 @@
 	services="machine-learning"
 	documentationCenter=""
 	authors="garyericson"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun"/>
 
 <tags
@@ -36,7 +36,7 @@ Außerdem finden Sie auf der Dashboard-Registerkarte eine Übersicht über die N
 
 So verwalten Sie einen Arbeitsbereich:
 
-1.	Melden Sie sich mit Ihrem Microsoft Azure-Konto beim [klassischen Azure-Portal](https://manage.windowsazure.com/) an. Verwenden Sie hierzu das Konto, das dem Azure-Abonnement zugeordnet ist.
+1.	Melden Sie sich beim [klassischen Azure-Portal](https://manage.windowsazure.com/) mit Ihrem Microsoft Azure-Konto an. Verwenden Sie das Konto, das dem Azure-Abonnement zugeordnet ist.
 2.	Klicken Sie im Microsoft Azure-Dienstbereich auf **MACHINE LEARNING**.
 3.	Klicken Sie auf den Arbeitsbereich, den Sie verwalten möchten.
 
@@ -96,4 +96,4 @@ Klicken Sie auf die Registerkarte **KONFIGURIEREN**, um die Beschreibung zu bear
 [consume]: machine-learning-consume-web-services.md
 [marketplace]: machine-learning-publish-web-service-to-azure-marketplace.md
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0914_2016-->

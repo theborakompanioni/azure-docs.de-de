@@ -18,26 +18,23 @@
 
 # Tutorial: Erstellen der ersten Azure Data Factory mit einer Azure Resource Manager-Vorlage
 > [AZURE.SELECTOR]
+- [Übersicht und Voraussetzungen](data-factory-build-your-first-pipeline.md)
 - [Azure-Portal](data-factory-build-your-first-pipeline-using-editor.md)
 - [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
 - [PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
 - [Resource Manager-Vorlage](data-factory-build-your-first-pipeline-using-arm.md)
 - [REST-API](data-factory-build-your-first-pipeline-using-rest-api.md)
 
+In diesem Artikel verwenden Sie eine Azure Resource Manager-Vorlage, um Ihre erste Azure Data Factory zu erstellen.
 
-[AZURE.INCLUDE [data-factory-tutorial-prerequisites](../../includes/data-factory-tutorial-prerequisites.md)]
-
-## Zusätzliche Voraussetzungen
-Installieren Sie abgesehen von den Voraussetzungen im vorherigen Abschnitt die folgenden Komponenten:
-
-- **Installieren Sie Azure PowerShell**. Befolgen Sie die Anweisungen im Artikel [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md) zum Installieren der neuesten Version von Azure PowerShell auf Ihrem Computer.
+## Voraussetzungen
+- Lesen Sie sich den Artikel mit der [Übersicht über das Tutorial](data-factory-build-your-first-pipeline.md) durch, und führen Sie die erforderlichen Schritte aus, damit die **Voraussetzungen** erfüllt sind.
+- Befolgen Sie die Anweisungen im Artikel [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md) zum Installieren der neuesten Version von Azure PowerShell auf Ihrem Computer.
 - Informationen zu Azure Resource Manager-Vorlagen finden Sie unter [Erstellen von Azure-Ressourcen-Manager-Vorlagen](../resource-group-authoring-templates.md).
 
 ## Erstellen einer Resource Manager-Vorlage
 
-Erstellen Sie eine JSON-Datei mit dem Namen **ADFTutorialARM.json** im Ordner **C:\\ADFGetStarted** mit dem folgenden Inhalt:
-
-Mit der Vorlage können Sie die folgenden Data Factory-Entitäten erstellen.
+In diesem Abschnitt erstellen Sie die folgenden Data Factory-Entitäten:
 
 1. Eine **Data Factory** namens **TutorialDataFactoryARM**. Eine Data Factory kann eine oder mehrere Aktivitäten aufweisen. Eine Pipeline kann eine oder mehrere Aktivitäten aufweisen. Beispielsweise eine Kopieraktivität zum Kopieren von Daten aus einer Quelle in einen Zieldatenspeicher und eine HDInsight-Hive-Aktivität zum Ausführen eines Hive-Skripts zum Transformieren von Eingabedaten.
 2. Zwei **verknüpfte Dienste**: **StorageLinkedService** und **HDInsightOnDemandLinkedService**. Diese verknüpften Dienste verknüpfen Ihr Azure Storage-Konto und einen bedarfsgesteuerten Azure HDInsight-Cluster mit Ihrer Data Factory. Das Azure Storage-Konto enthält in diesem Beispiel die Ein- und Ausgabedaten für die Pipeline. Der verknüpfte HDInsight-Dienst wird verwendet, um das in der Aktivität der Pipeline in diesem Beispiel angegebene Hive-Skript auszuführen. Identifizieren Sie, welche Datenspeicher-/Computedienste in Ihrem Szenario verwendet werden, und verknüpfen Sie diese Dienste mit der Data Factory, indem Sie verknüpfte Dienste erstellen.
@@ -45,8 +42,9 @@ Mit der Vorlage können Sie die folgenden Data Factory-Entitäten erstellen.
 
 Klicken Sie auf die Registerkarte **Verwenden des Data Factory-Editors**, um zu dem Artikel mit näheren Informationen zu JSON-Eigenschaften, die in dieser Vorlage verwendet werden, zu wechseln.
 
-> [AZURE.IMPORTANT] Ändern Sie die Werte für die Variablen **storageAccountName** und **storageAccountKey**. Ändern Sie auch **dataFactoryName**, denn dieser Name muss eindeutig sein.
+Erstellen Sie eine JSON-Datei mit dem Namen **ADFTutorialARM.json** im Ordner **C:\\ADFGetStarted** mit dem folgenden Inhalt:
 
+> [AZURE.IMPORTANT] Ändern Sie die Werte für die Variablen **storageAccountName** und **storageAccountKey**. Ändern Sie auch **dataFactoryName**, denn dieser Name muss eindeutig sein.
 
 	{
 	    "contentVersion": "1.0.0.0",
@@ -226,9 +224,10 @@ Ausführliche Informationen finden Sie unter [Bedarfsgesteuerter verknüpfter HD
 
 ## Erstellen einer Data Factory
 
-1. Starten Sie **Azure PowerShell**, und führen Sie den folgenden Befehl aus.
-	- Führen Sie **Login-AzureRmAccount** aus, und geben Sie den Benutzernamen und das Kennwort ein, den bzw. das Sie bei der Anmeldung beim Azure-Portal verwendet haben.
-	- Führen Sie den folgenden Befehl aus, um ein Abonnement auszuwählen, in dem die Data Factory erstellt werden soll. Get-AzureRmSubscription -SubscriptionName <ABONNEMENTNAME> | Set-AzureRmContext
+1. Starten Sie **Azure PowerShell**, und führen Sie den folgenden Befehl aus:
+	- Führen Sie `Login-AzureRmAccount` aus, und geben Sie den Benutzernamen und das Kennwort ein, den bzw. das Sie bei der Anmeldung beim Azure-Portal verwendet haben.
+	- Führen Sie `Get-AzureRmSubscription` aus, um alle Abonnements für dieses Konto anzuzeigen.
+	- Führen Sie `Get-AzureRmSubscription -SubscriptionName <SUBSCRIPTION NAME> | Set-AzureRmContext` aus, um das Abonnement auszuwählen, das Sie verwenden möchten. Dieses Abonnement sollte dasselbe sein, das Sie im Azure-Portal verwendet haben.
 1. Führen Sie den folgenden Befehl aus, um die Data Factory-Entitäten bereitzustellen, die Sie in Schritt 1 mit der Resource Manager-Vorlage erstellt haben.
 
 		New-AzureRmResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile C:\ADFGetStarted\ADFTutorialARM.json
@@ -244,7 +243,7 @@ Ausführliche Informationen finden Sie unter [Bedarfsgesteuerter verknüpfter HD
 8. Doppelklicken Sie in der Diagrammansicht auf das Dataset **AzureBlobOutput**. Sie sehen den Slice, der gerade verarbeitet wird.
 
 	![Datensatz](./media/data-factory-build-your-first-pipeline-using-arm/AzureBlobOutput.png)
-9. Wenn die Verarbeitung abgeschlossen ist, wird der Slice mit dem Zustand **Bereit** angezeigt. Die Erstellung eines bedarfsgesteuerten HDInsight-Clusters dauert in der Regel einige Zeit (etwa 20 Minuten).
+9. Wenn die Verarbeitung abgeschlossen ist, wird der Slice mit dem Zustand **Bereit** angezeigt. Die Erstellung eines bedarfsgesteuerten HDInsight-Clusters dauert in der Regel einige Zeit (etwa 20 Minuten). Daher ist damit zu rechnen, dass die Pipeline **etwa 30 Minuten** zum Verarbeiten des Slice benötigt.
 
 	![Datensatz](./media/data-factory-build-your-first-pipeline-using-arm/SliceReady.png)
 10. Sobald der Slice den Status **Bereit** hat, überprüfen Sie, ob die Ausgabedaten sich in Ihrem Blobspeicher im Ordner **partitioneddata** im Container **adfgetstarted** befinden.
@@ -302,4 +301,4 @@ Mit dieser Vorlage wird eine Data Factory mit dem Namen GatewayUsingArmDF und de
 
   
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -3,8 +3,8 @@
     description="Speicherebenen für Azure-Blobspeicher ermöglichen eine kostengünstige Speicherung für Objektdaten basierend auf Zugriffsmustern. Die Speicherebene vom Typ „Cool“ ist für Daten optimiert, auf die weniger häufig zugegriffen wird."
     services="storage"
     documentationCenter=""
-    authors="sribhat-msft"
-    manager=""
+    authors="michaelhauss"
+    manager="vamshik"
     editor="tysonn"/>
 
 <tags
@@ -13,8 +13,8 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="07/05/2016"
-    ms.author="sribhat"/>
+    ms.date="09/20/2016"
+    ms.author="mihauss;robinsh"/>
 
 
 # Azure Blob Storage: „Heiße“ und „kalte“ Speicherebenen
@@ -340,4 +340,4 @@ Ausführlichere Informationen finden Sie unter [Erste Schritte mit Azure Blob St
 
 [Durchsuchen und Erkunden von Speicherkonten](http://storageexplorer.com/)
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0921_2016-->

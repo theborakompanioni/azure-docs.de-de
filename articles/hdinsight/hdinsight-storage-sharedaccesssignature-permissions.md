@@ -4,7 +4,7 @@ description="Erfahren Sie, wie Sie mit Shared Access Signatures den HDInsight-Zu
 services="hdinsight"
 documentationCenter=""
 authors="Blackmist"
-manager="paulettm"
+manager="jhubbard"
 editor="cgronlun"/>
 
 <tags
@@ -290,4 +290,4 @@ Nachdem Sie erfahren haben, wie Sie Ihrem HDInsight-Cluster Speicher mit eingesc
 
 [powershell]: ../powershell-install-configure.md
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0914_2016-->

@@ -37,7 +37,7 @@ Azure verhindert, dass Sie ein Zertifikat entfernen, während es verwendet wird.
 
 Solange das Zertifikat nicht verwendet wird, können Sie das PowerShell-Cmdlet [Remove-AzureCertificate](https://msdn.microsoft.com/library/azure/mt589145.aspx) zum Entfernen eines Zertifikats verwendet.
 
-### Ich verfüge über abgelaufene Zertifikate namens "Microsoft Azure Service Management for Extensions“.
+### Ich verfüge über abgelaufene Zertifikate namens „Windows Azure Service Management for Extensions“.
 
 Diese Zertifikate werden erstellt, wenn dem Clouddienst eine Erweiterung hinzugefügt wird, wie etwa die Remotedesktoperweiterung. Diese Zertifikate werden nur zum Verschlüsseln und Entschlüsseln der privaten Konfiguration der Erweiterung verwendet. Es spielt keine Rolle, ob diese Zertifikate ablaufen. Das Ablaufdatum wird nicht geprüft.
 
@@ -49,7 +49,17 @@ Das liegt wahrscheinlich an einem von Ihnen verwendeten Tool wie etwa Visual Stu
 
 Wenn die Instanz des virtuellen Computers zyklisch ausgeführt wird, gehen alle lokalen Änderungen verloren. Verwenden Sie eine [Startaufgabe](cloud-services-startup-tasks.md), um Zertifikate bei jedem Start der Rolle auf dem virtuellen Computer zu installieren.
 
+### Ich kann meine Verwaltungszertifikate im Portal nicht finden.
 
+[Verwaltungszertifikate](..\azure-api-management-certs.md) sind nur im klassischen Azure-Portal verfügbar. Das aktuelle Azure-Portal verwendet keine Verwaltungszertifikate.
+
+### Wie kann ich ein Verwaltungszertifikat deaktivieren?
+
+[Verwaltungszertifikate](..\azure-api-management-certs.md) können nicht deaktiviert werden. Sie löschen sie über das klassische Azure-Portal, wenn Sie nicht möchten, dass weiterhin verwendet werden.
+
+### Wie erstelle ich ein SSL-Zertifikat für eine bestimmte IP-Adresse?
+
+Befolgen Sie die Anweisungen im [Tutorial zum Erstellen eines Zertifikats](cloud-services-certs-create.md). Verwenden Sie die IP-Adresse als DNS-Namen.
 
 ## Problembehandlung
 
@@ -57,4 +67,4 @@ Wenn die Instanz des virtuellen Computers zyklisch ausgeführt wird, gehen alle 
 
 Stellen Sie zunächst sicher, dass die Instanz des virtuellen Computers, für den Sie die IP reservieren möchten, eingeschaltet ist. Vergewissern Sie sich anschließend, dass Sie reservierte IPs für Staging- und Produktionsbereitstellungen verwenden. Ändern Sie die Einstellungen **nicht**, während ein Upgrade der Bereitstellung durchgeführt wird.
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0914_2016-->

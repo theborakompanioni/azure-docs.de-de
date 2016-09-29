@@ -13,43 +13,46 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="hero-article" 
-	ms.date="08/16/2016"
+	ms.date="09/14/2016"
 	ms.author="spelluru"/>
 
 # Tutorial: Erstellen der ersten Azure Data Factory mit dem Azure-Portal
 > [AZURE.SELECTOR]
+- [Übersicht und Voraussetzungen](data-factory-build-your-first-pipeline.md)
 - [Azure-Portal](data-factory-build-your-first-pipeline-using-editor.md)
 - [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
 - [PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
 - [Resource Manager-Vorlage](data-factory-build-your-first-pipeline-using-arm.md)
 - [REST-API](data-factory-build-your-first-pipeline-using-rest-api.md)
 
-[AZURE.INCLUDE [data-factory-tutorial-prerequisites](../../includes/data-factory-tutorial-prerequisites.md)]
+In diesem Artikel erfahren Sie, wie Sie mithilfe des [Azure-Portals](https://portal.azure.com/) Ihre erste Azure Data Factory erstellen.
+
+## Voraussetzungen		
+1. Lesen Sie sich den Artikel mit der [Übersicht über das Tutorial](data-factory-build-your-first-pipeline.md) durch, und führen Sie die erforderlichen Schritte aus, damit die **Voraussetzungen** erfüllt sind.
+2. Dieser Artikel bietet keine grundlegende Übersicht über den Azure Data Factory-Dienst. Sie sollten den Artikel [Einführung in Azure Data Factory](data-factory-introduction.md) lesen, um eine ausführliche Übersicht über den Dienst zu erhalten.
 
 ## Erstellen einer Data Factory
-Eine Data Factory kann eine oder mehrere Aktivitäten aufweisen. Eine Pipeline kann eine oder mehrere Aktivitäten aufweisen. Beispielsweise eine Kopieraktivität zum Kopieren von Daten aus einer Quelle in einen Zieldatenspeicher und eine HDInsight-Hive-Aktivität zum Ausführen eines Hive-Skripts zum Transformieren von Eingabedaten. In diesem Schritt erstellen wir zunächst die Data Factory.
+Eine Data Factory kann eine oder mehrere Aktivitäten aufweisen. Eine Pipeline kann eine oder mehrere Aktivitäten aufweisen. Beispielsweise eine Kopieraktivität zum Kopieren von Daten aus einer Quelle in einen Zieldatenspeicher und eine HDInsight-Hive-Aktivität zum Ausführen eines Hive-Skripts zum Transformieren von Eingabedaten in Produktausgabedaten. In diesem Schritt erstellen wir zunächst die Data Factory.
 
-1.	Gehen Sie nach der Anmeldung beim [Azure-Portal](https://portal.azure.com/) wie folgt vor:
-	1.	Klicken Sie im linken Menü auf **NEU**.
-	2.	Klicken Sie auf dem Blatt **Erstellen** auf **Datenanalyse**.
-	3.	Klicken Sie auf dem Blatt **Datenanalyse** auf **Data Factory**.
-
-		![Blatt "Erstellen"](./media/data-factory-build-your-first-pipeline-using-editor/create-blade.png)
+1.	Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
+2.	Klicken Sie im Menü auf der linken Seite auf **NEU**, und klicken Sie auf **Data + Analytics** und dann auf **Data Factory**.
+		
+	![Blatt "Erstellen"](./media/data-factory-build-your-first-pipeline-using-editor/create-blade.png)
 
 2.	Geben Sie auf dem Blatt **Neue Data Factory** unter „Name“ die Zeichenfolge **GetStartedDF** ein.
 
 	![Blatt "Neue Data Factory"](./media/data-factory-build-your-first-pipeline-using-editor/new-data-factory-blade.png)
 
-	> [AZURE.IMPORTANT] Der Name der Azure Data Factory muss global eindeutig sein. Gehen Sie wie folgt vor, wenn Sie die Fehlermeldung **Die Data Factory mit dem Namen „GetStartedDF“ ist nicht verfügbar** erhalten: Ändern Sie den Namen der Data Factory (z.B. in „ihrnameGetStartedDF“), und versuchen Sie, die Erstellung erneut durchzuführen. Im Thema [Data Factory – Benennungsregeln](data-factory-naming-rules.md) finden Sie Benennungsregeln für Data Factory-Artefakte.
+	> [AZURE.IMPORTANT] 
+	Der Name der Azure Data Factory muss **global eindeutig** sein. Gehen Sie wie folgt vor, wenn Sie die Fehlermeldung **Die Data Factory mit dem Namen „GetStartedDF“ ist nicht verfügbar** erhalten: Ändern Sie den Namen der Data Factory (z.B. in „ihrnameGetStartedDF“), und versuchen Sie, die Erstellung erneut durchzuführen. Im Thema [Data Factory – Benennungsregeln](data-factory-naming-rules.md) finden Sie Benennungsregeln für Data Factory-Artefakte.
 	> 
-	> Der Name der Data Factory kann in Zukunft als DNS-Name registriert und so öffentlich sichtbar werden.
-	> 
-	> Um Data Factory-Instanzen erstellen zu können, müssen Sie unter dem Azure-Abonnement ein Mitwirkender oder Administrator sein.
-
+	> Der Name der Data Factory kann in Zukunft als **DNS**-Name registriert und so öffentlich sichtbar werden.
 
 3.	Wählen Sie das **Azure-Abonnement**, in dem die Data Factory erstellt werden soll.
 4.	Wählen Sie eine vorhandene **Ressourcengruppe** aus, oder erstellen Sie eine Ressourcengruppe. Erstellen Sie für das Tutorial eine Ressourcengruppe mit dem Namen **ADFGetStartedRG**.
 5.	Klicken Sie auf dem Blatt **Neue Data Factory** auf **Erstellen**.
+
+	> [AZURE.IMPORTANT] Zum Erstellen von Data Factory-Instanzen müssen Sie Mitglied der Rolle [Data Factory-Mitwirkender](../active-directory/role-based-access-built-in-roles.md/#data-factory-contributor) auf Abonnement- bzw. Ressourcengruppenebene sein.
 6.	Sie sehen, dass die Data Factory im **Startmenü** des Azure-Portals wie folgt erstellt wird:
 
 	![Erstellen des Data Factory-Status](./media/data-factory-build-your-first-pipeline-using-editor/creating-data-factory-image.png)
@@ -57,10 +60,10 @@ Eine Data Factory kann eine oder mehrere Aktivitäten aufweisen. Eine Pipeline k
 
 	![Blatt "Data Factory"](./media/data-factory-build-your-first-pipeline-using-editor/data-factory-blade.png)
 
-Vor dem Erstellen einer Pipeline müssen Sie zunächst einige Data Factory-Entitäten erstellen. Zuerst erstellen Sie verknüpfte Dienste zum Verknüpfen von Datenspeichern/Berechnungen mit Ihrem Datenspeicher, definieren die Datasets für Ein- und Ausgabe, um Eingabe-/Ausgabedaten in verknüpften Datenspeichern darzustellen, und erstellen dann die Pipeline mit einer Aktivität, die diese Datasets verwendet.
+Vor dem Erstellen einer Pipeline in der Data Factory müssen Sie zunächst einige Data Factory-Entitäten erstellen. Zuerst erstellen Sie verknüpfte Dienste zum Verknüpfen von Datenspeichern/Berechnungen mit Ihrem Datenspeicher, definieren die Datasets für Ein- und Ausgabe, um Eingabe-/Ausgabedaten in verknüpften Datenspeichern darzustellen, und erstellen dann die Pipeline mit einer Aktivität, die diese Datasets verwendet.
 
 ## Erstellen von verknüpften Diensten
-In diesem Schritt verknüpfen Sie Ihr Azure Storage-Konto und einen bedarfsgesteuerten Azure HDInsight-Cluster mit Ihrer Data Factory. Das Azure Storage-Konto enthält in diesem Beispiel die Ein- und Ausgabedaten für die Pipeline. Der verknüpfte HDInsight-Dienst wird verwendet, um das in der Aktivität der Pipeline in diesem Beispiel angegebene Hive-Skript auszuführen. Identifizieren Sie, welche Datenspeicher-/Computedienste in Ihrem Szenario verwendet werden, und verknüpfen Sie diese Dienste mit der Data Factory, indem Sie verknüpfte Dienste erstellen.
+In diesem Schritt verknüpfen Sie Ihr Azure Storage-Konto und einen bedarfsgesteuerten Azure HDInsight-Cluster mit Ihrer Data Factory. Das Azure Storage-Konto enthält in diesem Beispiel die Ein- und Ausgabedaten für die Pipeline. Der verknüpfte HDInsight-Dienst wird verwendet, um das in der Aktivität der Pipeline in diesem Beispiel angegebene Hive-Skript auszuführen. Identifizieren Sie, welche [Datenspeicher-](data-factory-data-movement-activities.md)/[Computedienste](data-factory-compute-linked-services.md) in Ihrem Szenario verwendet werden, und verknüpfen Sie diese Dienste mit der Data Factory, indem Sie verknüpfte Dienste erstellen.
 
 ### Erstellen des mit Azure Storage verknüpften Diensts
 In diesem Schritt verknüpfen Sie Ihr Azure Storage-Konto mit Ihrer Data Factory. In diesem Tutorial verwenden Sie das gleiche Azure Storage-Konto, um Ein-/Ausgabedaten und die HQL-Skriptdatei zu speichern.
@@ -69,23 +72,26 @@ In diesem Schritt verknüpfen Sie Ihr Azure Storage-Konto mit Ihrer Data Factory
 	 
 	![Kachel "Erstellen und bereitstellen"](./media/data-factory-build-your-first-pipeline-using-editor/data-factory-author-deploy.png)
 2.	Klicken Sie auf **Neuer Datenspeicher**, und wählen Sie **Azure Storage**.
+
+	![Neuer Datenspeicher – Azure Storage – Menü](./media/data-factory-build-your-first-pipeline-using-editor/new-data-store-azure-storage-menu.png)
+
+3.	Das JSON-Skript zum Erstellen eines mit einem Azure-Speicher verknüpften Diensts sollte im Editor angezeigt werden.
 	
 	![Mit Azure Storage verknüpfter Dienst](./media/data-factory-build-your-first-pipeline-using-editor/azure-storage-linked-service.png)
-
-	Das JSON-Skript zum Erstellen eines mit einem Azure-Speicher verknüpften Diensts sollte im Editor angezeigt werden.
+	 
 4. Ersetzen Sie **Kontoname** durch den Namen Ihres Azure-Speicherkontos und **Kontoschlüssel** durch den Zugriffsschlüssel des Azure-Speicherkontos. Informationen zum Abrufen Ihres Speicherzugriffsschlüssels finden Sie unter [Informationen zu Azure-Speicherkonten](../storage/storage-create-storage-account.md#view-copy-and-regenerate-storage-access-keys).
 5. Klicken Sie auf der Befehlsleiste auf **Bereitstellen**, um den verknüpften Dienst bereitzustellen.
 
 	![Schaltfläche "Bereitstellen"](./media/data-factory-build-your-first-pipeline-using-editor/deploy-button.png)
 
-   Nach erfolgreicher Bereitstellung des verknüpften Diensts sollte das Fenster **Draft-1** nicht mehr angezeigt werden, und Sie sehen **AzureStorageLinkedService** in der Strukturansicht links.
+   Nach erfolgreicher Bereitstellung des verknüpften Diensts sollte das Fenster **Draft-1** nicht mehr angezeigt werden, und Sie sehen **StorageLinkedService** in der Strukturansicht links.
         ![Mit Storage verknüpfter Dienst im Menü](./media/data-factory-build-your-first-pipeline-using-editor/StorageLinkedServiceInTree.png)
 
  
 ### Erstellen des mit Azure-HDInsight verknüpften Diensts
 In diesem Schritt verknüpfen Sie einen bedarfsgesteuerten HDInsight-Cluster mit Ihrer Data Factory. Der HDInsight-Cluster wird automatisch zur Laufzeit erstellt und gelöscht, nachdem die Verarbeitung abgeschlossen und die angegebene Leerlaufzeit verstrichen ist.
 
-1. Klicken Sie im **Data Factory-Editor** auf der Befehlsleiste auf **New compute** (Neu berechnen), und wählen Sie im Menü **On-demand HDInsight cluster** (Bedarfsgesteuerter HDInsight-Cluster) aus.
+1. Klicken Sie im **Data Factory-Editor** auf **... Weitere** und dann auf **Neu berechnen**, und wählen Sie **On-demand HDInsight cluster** (Bedarfsgesteuerter HDInsight-Cluster).
 
 	![Neu berechnen](./media/data-factory-build-your-first-pipeline-using-editor/new-compute-menu.png)
 2. Kopieren Sie den folgenden Codeausschnitt, und fügen Sie ihn in das Fenster **Draft-1** ein. Der JSON-Codeausschnitt beschreibt die Eigenschaften, die zum Erstellen des bedarfsgesteuerten HDInsight-Clusters verwendet werden.
@@ -112,7 +118,7 @@ In diesem Schritt verknüpfen Sie einen bedarfsgesteuerten HDInsight-Cluster mit
 	| TimeToLive | Gibt die Leerlaufzeit des HDInsight-Clusters an, bevor er gelöscht wird. |
 	| linkedServiceName | Gibt das Speicherkonto an, das verwendet wird, um die von HDInsight generierten Protokolle zu speichern. |
 
-	Beachten Sie Folgendes:
+	Beachten Sie folgende Punkte:
 	
 	- Die Data Factory erstellt mit dem JSON-Code einen **Windows-basierten** HDInsight-Cluster für Sie. Sie können sich auch für die Erstellung eines **Linux-basierten** HDInsight-Clusters entscheiden. Ausführliche Informationen finden Sie unter [Bedarfsgesteuerter verknüpfter HDInsight-Dienst](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service).
 	- Anstelle eines bedarfsgesteuerten HDInsight-Clusters könnten Sie **Ihren eigenen HDInsight-Cluster** verwenden. Ausführliche Informationen finden Sie unter [Verknüpfter HDInsight-Dienst](data-factory-compute-linked-services.md#azure-hdinsight-linked-service).
@@ -122,6 +128,9 @@ In diesem Schritt verknüpfen Sie einen bedarfsgesteuerten HDInsight-Cluster mit
 
 	Ausführliche Informationen finden Sie unter [Bedarfsgesteuerter verknüpfter HDInsight-Dienst](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service).
 3. Klicken Sie auf der Befehlsleiste auf **Bereitstellen**, um den verknüpften Dienst bereitzustellen.
+
+	![Bedarfsgesteuerten verknüpften HDInsight-Dienst bereitstellen](./media/data-factory-build-your-first-pipeline-using-editor/ondemand-hdinsight-deploy.png)
+
 4. Vergewissern Sie sich, dass in der Strukturansicht auf der linken Seite **AzureStorageLinkedService** und **HDInsightOnDemandLinkedService** angezeigt werden.
 
 	![Strukturansicht mit verknüpften Diensten](./media/data-factory-build-your-first-pipeline-using-editor/tree-view-linked-services.png)
@@ -131,7 +140,7 @@ In diesem Schritt erstellen Sie Datasets, um die Eingabe- und Ausgabedaten für 
 
 ### Erstellen eines Eingabedatasets
 
-1. Klicken Sie im **Data Factory Editor** auf der Befehlsleiste auf **Neues Dataset** und dann auf **Azure-BLOB-Speicher**.
+1. Klicken Sie im **Data Factory-Editor** in der Befehlszeile auf **... Weitere** und dann auf **Neues Dataset**, und wählen Sie **Azure-Blobspeicher**.
 
 	![Neues Dataset](./media/data-factory-build-your-first-pipeline-using-editor/new-data-set.png)
 2. Kopieren Sie den folgenden Codeausschnitt, und fügen Sie ihn in das Fenster „Draft-1“ ein. Im JSON-Codeausschnitt erstellen Sie ein Dataset mit dem Namen **AzureBlobInput**, das Eingabedaten für eine Aktivität in der Pipeline darstellt. Darüber hinaus geben Sie an, dass die Eingabedaten im Blobcontainer **adfgetstarted** und im Ordner **inputdata** gespeichert werden.
@@ -169,15 +178,14 @@ In diesem Schritt erstellen Sie Datasets, um die Eingabe- und Ausgabedaten für 
 	| columnDelimiter | Spalten werden in den Protokolldateien per Komma (,) voneinander getrennt. |
 	| frequency/interval | „frequency“ wird auf „Month“ und „interval“ auf „1“ festgelegt, was bedeutet, dass die Eingabeslices monatlich verfügbar sind. | 
 	| external | Diese Eigenschaft wird auf „true“ festgelegt, wenn die Eingabedaten nicht vom Data Factory-Dienst generiert werden. | 
-	  
-	
+	  	
 3. Klicken Sie auf der Befehlsleiste auf **Bereitstellen**, um das neu erstellte DataSet bereitzustellen. Das Dataset sollte in der Strukturansicht auf der linken Seite angezeigt werden.
 
 
 ### Erstellen des Ausgabedatasets
 Nun erstellen Sie das Ausgabedataset, das die im Azure-Blobspeicher gespeicherten Ausgabedaten darstellt.
 
-1. Klicken Sie im **Data Factory Editor** auf der Befehlsleiste auf **Neues Dataset** und dann auf **Azure-BLOB-Speicher**.
+1. Klicken Sie im **Data Factory-Editor** in der Befehlszeile auf **... Weitere** und dann auf **Neues Dataset**, und wählen Sie **Azure-Blobspeicher**.
 2. Kopieren Sie den folgenden Codeausschnitt, und fügen Sie ihn in das Fenster „Draft-1“ ein. Im JSON-Codeausschnitt erstellen Sie ein Dataset mit dem Namen **AzureBlobOutput** und geben die Struktur der Daten an, die vom Hive-Skript erzeugt werden. Darüber hinaus geben Sie an, dass die Ergebnisse im Blobcontainer **adfgetstarted** und im Ordner **partitioneddata** gespeichert werden. Der Abschnitt **availability** gibt an, dass das Ausgabe-DataSet monatlich erzeugt wird.
 	
 		{
@@ -282,6 +290,8 @@ In diesem Schritt erstellen Sie Ihre erste Pipeline mit einer **HDInsightHive**-
 
 ## Überwachen der Pipeline
 
+### Überwachen der Pipeline mit der Diagrammansicht
+
 6. Klicken Sie auf **X**, um die Data Factory-Editor-Blätter zu schließen und zum Blatt „Data Factory“ zurückzukehren, und klicken Sie auf **Diagramm**.
   
 	![Kachel "Diagramm"](./media/data-factory-build-your-first-pipeline-using-editor/diagram-tile.png)
@@ -304,17 +314,35 @@ In diesem Schritt erstellen Sie Ihre erste Pipeline mit einer **HDInsightHive**-
 
 	![Datensatz](./media/data-factory-build-your-first-pipeline-using-editor/dataset-blade.png)
 9. Wenn die Verarbeitung abgeschlossen ist, wird der Slice mit dem Zustand **Bereit** angezeigt.
-	>[AZURE.IMPORTANT] Die Erstellung eines bedarfsgesteuerten HDInsight-Clusters dauert in der Regel einige Zeit (etwa 20 Minuten).
+	>[AZURE.IMPORTANT] Die Erstellung eines bedarfsgesteuerten HDInsight-Clusters dauert in der Regel einige Zeit (etwa 20 Minuten). Daher ist damit zu rechnen, dass die Pipeline **etwa 30 Minuten** zum Verarbeiten des Slice benötigt.
 
 	![Datensatz](./media/data-factory-build-your-first-pipeline-using-editor/dataset-slice-ready.png)
 	
 10. Sobald der Slice den Status **Bereit** hat, überprüfen Sie, ob die Ausgabedaten sich in Ihrem Blobspeicher im Ordner **partitioneddata** im Container **adfgetstarted** befinden.
  
 	![Ausgabedaten](./media/data-factory-build-your-first-pipeline-using-editor/three-ouptut-files.png)
+11. Klicken Sie auf den Slice, um Details dazu auf dem Blatt **Datenslice** anzuzeigen.
 
-Ausführliche Informationen finden Sie im Artikel [Überwachen und Verwalten von Azure Data Factory-Pipelines](data-factory-monitor-manage-pipelines.md).
+	![Details zum Datenslice](./media/data-factory-build-your-first-pipeline-using-editor/data-slice-details.png)
+12. Klicken Sie in der Liste mit den **Aktivitätsausführungen** auf eine Aktivitätsausführung, um Details dazu (hier: die Hive-Aktivität) in einem Fenster mit dem Namen **Details zur Aktivitätsausführung** anzuzeigen.
+
+	![Aktivitätsausführung – Details](./media/data-factory-build-your-first-pipeline-using-editor/activity-window-blade.png)
+	
+	In den Protokolldateien werden die ausgeführte Hive-Abfrage und Statusinformationen angezeigt. Diese Protokolle sind zur Behandlung von Problemen hilfreich. Ausführliche Informationen finden Sie im Artikel [Überwachen und Verwalten von Azure Data Factory-Pipelines](data-factory-monitor-manage-pipelines.md).
 
 > [AZURE.IMPORTANT] Die Eingabedatei wird bei erfolgreicher Verarbeitung des Slice gelöscht. Wenn Sie den Slice erneut ausführen oder das Tutorial nochmals durchgehen möchten, laden Sie die Eingabedatei (input.log) daher in den Ordner „inputdata“ des Containers „adfgetstarted“ hoch.
+
+### Überwachen der Pipeline mit der App „Überwachung und Verwaltung“
+Sie können die App „Überwachung und Verwaltung“ auch zum Überwachen Ihrer Pipelines verwenden. Ausführliche Informationen zur Verwendung dieser App finden Sie unter [Überwachen und Verwalten von Azure Data Factory-Pipelines mit der neuen App „Überwachung und Verwaltung“](data-factory-monitor-manage-app.md).
+
+1. Klicken Sie auf der Startseite Ihrer Data Factory auf die Kachel **Überwachung und Verwaltung**.
+
+	![Kachel „Überwachung und Verwaltung“](./media/data-factory-build-your-first-pipeline-using-editor/monitor-and-manage-tile.png)
+2. Die **App „Überwachung und Verwaltung“** wird angezeigt. Ändern Sie die **Startzeit** und **Endzeit** in die Startzeit (04-01-2016 12:00 AM) und Endzeit (04-02-2016 12:00 AM) Ihrer Pipeline, und klicken Sie auf **Übernehmen**.
+
+	![App „Überwachung und Verwaltung“](./media/data-factory-build-your-first-pipeline-using-editor/monitor-and-manage-app.png)
+3. Wählen Sie in der Liste **Aktivitätsfenster** ein Aktivitätsfenster aus, um die Details dazu anzuzeigen. ![Details zum Aktivitätsfenster](./media/data-factory-build-your-first-pipeline-using-editor/activity-window-details.png)
+
 
 ## Zusammenfassung 
 In diesem Tutorial haben Sie eine Azure Data Factory zum Verarbeiten von Daten erstellt, indem Sie ein Hive-Skript in einem HDInsight Hadoop-Cluster ausgeführt haben. Sie haben den Data Factory-Editor im Azure-Portal verwendet, um die folgenden Schritte auszuführen:
@@ -340,4 +368,4 @@ In diesem Artikel haben Sie eine Pipeline mit einer Transformationsaktivität (H
 
   
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -1,20 +1,20 @@
-<properties 
-	pageTitle="Sichern von Cloud- und lokalen Ressourcen mithilfe von Azure Multi-Factor Authentication-Server mit AD FS 2.0" 
-	description="Auf dieser Seite zur Azure Multi-Factor Authentication werden die ersten Schritte mit Azure MFA und AD FS 2.0 beschrieben." 
-	services="multi-factor-authentication" 
-	documentationCenter="" 
-	authors="billmath" 
-	manager="stevenpo" 
+<properties
+	pageTitle="Sichern von Cloud- und lokalen Ressourcen mithilfe von Azure Multi-Factor Authentication-Server mit AD FS 2.0"
+	description="Auf dieser Seite zur Azure Multi-Factor Authentication werden die ersten Schritte mit Azure MFA und AD FS 2.0 beschrieben."
+	services="multi-factor-authentication"
+	documentationCenter=""
+	authors="kgremban"
+	manager="femila"
 	editor="curtland"/>
 
-<tags 
-	ms.service="multi-factor-authentication" 
-	ms.workload="identity" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="get-started-article" 
-	ms.date="08/04/2016" 
-	ms.author="billmath"/>
+<tags
+	ms.service="multi-factor-authentication"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.date="08/04/2016"
+	ms.author="kgremban"/>
 # Sichern von Cloud- und lokalen Ressourcen mithilfe von Azure Multi-Factor Authentication-Server mit AD FS 2.0
 
 Wenn Ihre Organisation einen Verbund mit Azure Active Directory bildet und Sie lokale und Cloud-Ressourcen sichern möchten, können Sie dazu Azure Multi-Factor Authentication Server verwenden, indem Sie diesen für die Verwendung mit AD FS so konfigurieren, dass die Multi-Factor Authentication bei wichtigen Endpunkten ausgelöst wird.
@@ -93,6 +93,4 @@ Zum Sichern von AD FS ohne Proxy installieren Sie Azure Multi-Factor Authenticat
 
 <center>![Setup](./media/multi-factor-authentication-get-started-adfs-adfs2/trusted.png)</center>
 
- 
-
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0921_2016-->

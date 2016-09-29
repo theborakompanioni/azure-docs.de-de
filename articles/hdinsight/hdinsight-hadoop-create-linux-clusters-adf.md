@@ -5,7 +5,7 @@
    documentationCenter=""
    tags="azure-portal"
    authors="mumian"
-   manager="paulettm"
+   manager="jhubbard"
    editor="cgronlun"/>
 
 <tags
@@ -47,7 +47,7 @@ Es gibt viele Vorteile bei der Verwendung von HDInsight mit Data Factory:
 
 - Die Abrechnung für HDInsight-Cluster erfolgt anteilsmäßig auf Minutenbasis, unabhängig davon, ob Sie sie verwenden oder nicht. Mit Data Factory werden die Cluster bei Bedarf erstellt. Zudem werden die Cluster automatisch gelöscht, wenn die Aufträge abgeschlossen sind. Sie bezahlen also nur für die Ausführungszeit von Aufträgen und eine kurze Leerlaufzeit (Gültigkeitsdauer).
 - Sie können einen Workflow mit einer Data Factory-Pipeline erstellen.
-- Sie können rekursive Aufträge planen.  
+- Sie können rekursive Aufträge planen.
 
 ##Voraussetzungen:
 
@@ -318,7 +318,7 @@ Die Ressource *hdinsight-hive-on-demand* enthält vier Ressourcen:
     
     Die Eingaben, Ausgaben und der Skriptpfad werden definiert.
     
-So erstellen Sie eine **Data Factory**
+**So erstellen Sie eine Data Factory**
 
 1. Klicken Sie auf die folgende Abbildung, um sich bei Azure anzumelden und die Resource Manager-Vorlage im Azure-Portal zu öffnen. Die Vorlage befindet sich unter https://hditutorialdata.blob.core.windows.net/adfhiveactivity/data-factory-hdinsight-on-demand.json.
 
@@ -438,4 +438,4 @@ In diesem Artikel haben Sie gelernt, wie Sie mit Azure Data Factory einen bedarf
 - [HDInsight-Dokumentation](https://azure.microsoft.com/documentation/services/hdinsight/)
 - [Data Factory-Dokumentation](https://azure.microsoft.com/documentation/services/data-factory/)
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0914_2016-->

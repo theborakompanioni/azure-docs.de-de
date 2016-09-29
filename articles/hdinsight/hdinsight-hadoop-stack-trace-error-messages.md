@@ -5,7 +5,7 @@
 	services="hdinsight"
 	documentationCenter="NA"
 	authors="mumian"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun"/>
 
 <tags
@@ -38,4 +38,4 @@ Die Artikel sind nach Art der Fehler unterteilt.
 * [Aktivieren von Heapdumps für Hadoop-Dienste auf Linux-basierten HDInsight-Clustern](hdinsight-hadoop-collect-debug-heap-dump-linux.md)
 * [Versionshinweise zu Hadoop-Komponenten in Azure HDInsight](hdinsight-release-notes.md)
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0914_2016-->

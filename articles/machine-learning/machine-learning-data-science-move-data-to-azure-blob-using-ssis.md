@@ -4,7 +4,7 @@
 	services="machine-learning,storage"
 	documentationCenter=""
 	authors="bradsev"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun" />
 
 <tags
@@ -87,4 +87,4 @@ Hier sei angemerkt, dass das SSIS Feature Pack komplexere zu verarbeitende Ablä
 - Verwenden Sie zum Anwenden eines Hive-Skripts auf einen Azure HDInsight-Cluster mit SSIS die [Hive-Aufgabe in Azure HDInsight](https://msdn.microsoft.com/library/mt146771.aspx).
 - Verwenden Sie zum Anwenden eines Pig-Skripts auf einen Azure HDInsight-Cluster mit SSIS die [Pig-Aufgabe in Azure HDInsight](https://msdn.microsoft.com/library/mt146781.aspx).
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0914_2016-->

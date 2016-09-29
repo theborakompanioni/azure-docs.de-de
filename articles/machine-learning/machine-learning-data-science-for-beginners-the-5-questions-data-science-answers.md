@@ -5,7 +5,7 @@
    services="machine-learning"
    documentationCenter="na"
    authors="brohrer-ms"
-   manager="paulettm"
+   manager="jhubbard"
    editor="cjgronlund"/>
 
 <tags
@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="06/24/2016"
+   ms.date="09/13/2016"
    ms.author="cgronlun;brohrer;garye"/>
 
 # Data Science für Einsteiger, 1. Video: Die 5 Fragen, die Data Science beantwortet
@@ -71,7 +71,7 @@ Sie empfiehlt sich für Fragen, die nur zwei mögliche Antworten haben.
 Beispiel:
 
   *	Übersteht dieser Reifen die nächsten 1.500 km: ja oder nein?
-  *	Was bringt mehr Kunden: ein 5-€-Gutschein oder ein Rabatt von 25 %?
+  *	Was bringt mehr Kunden: ein 5-€-Gutschein oder ein Rabatt von 25 %?
 
 Diese Frage kann auch so umformuliert werden, dass es mehr als zwei Optionen gibt: Ist dies A oder B oder C oder D usw.? Dies wird als Multiklassenklassifizierung bezeichnet und ist nützlich, wenn es mehrere (oder mehrere tausend) mögliche Antworten gibt. Die Multiklassenklassifizierung wählt die wahrscheinlichste Antwort.
 
@@ -151,4 +151,4 @@ Das sind sie also: Die 5 Fragen, die Data Science beantworten kann.
   * [Durchführen Ihres ersten Data Science-Experiments mit Azure Machine Learning](machine-learning-create-experiment.md)
   * [Einführung in Machine Learning in Microsoft Azure](machine-learning-what-is-machine-learning.md)
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0914_2016-->

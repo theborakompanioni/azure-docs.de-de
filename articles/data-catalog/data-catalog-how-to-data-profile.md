@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="NA"
 	ms.workload="data-catalog"
-	ms.date="06/27/2016"
+	ms.date="09/13/2016"
 	ms.author="spelluru"/>
 
 # Datenprofil-Datenquellen
@@ -22,7 +22,7 @@
 
 **Microsoft Azure Data Catalog** ist ein vollständig verwalteter Clouddienst, der als Registrierungs- und Ermittlungssystem für Datenquellen von Unternehmen dient. Mit anderen Worten ist es die Aufgabe von **Azure Data Catalog**, den Benutzern zu helfen, Datenquellen zu ermitteln, zu verstehen und zu nutzen, und Unternehmen zu helfen, mehr Nutzen aus ihren vorhandenen Daten zu ziehen. Wenn eine Datenquelle in **Azure Data Catalog** registriert wird, werden ihre Metadaten vom Dienst kopiert und indiziert. Dies ist aber noch nicht alles.
 
-**Azure Data Catalog** untersucht die Daten der unterstützten Datenquellen in Ihrem Katalog und sammelt Statistiken und Informationen zu diesen Daten. Dies wird als **Datenprofilerstellung** bezeichnet. Es ist einfach, ein Profil Ihrer Datenassets einzuschließen. Wählen Sie beim Registrieren eines Datenassets im Tool für die Datenquellenregistrierung die Option **Datenprofil einschließen**.
+Das **Datenprofilerstellungs**-Feature im **Azure Data Catalog** untersucht die Daten der unterstützten Datenquellen in Ihrem Katalog und sammelt Statistiken und Informationen zu diesen Daten. Es ist einfach, ein Profil Ihrer Datenassets einzuschließen. Wählen Sie beim Registrieren eines Datenassets im Tool für die Datenquellenregistrierung die Option **Datenprofil einschließen**.
 
 ## Beschreibung der Datenprofilerstellung
 
@@ -58,9 +58,9 @@ Weitere Informationen zum Registrieren von Datenquellen finden Sie unter [Regist
 
 
 ## Filtern nach Datenassets mit Datenprofilen
-Zum Ermitteln von Datenassets, die ein Datenprofil enthalten, können Sie **has:tableDataProfiles** oder **has:columnsDataProfiles** als einen Ihrer Suchbegriffe einbinden.
+Zum Ermitteln von Datenassets, die ein Datenprofil enthalten, können Sie `has:tableDataProfiles` oder `has:columnsDataProfiles` als einen Ihrer Suchbegriffe einbinden.
 
-> [AZURE.NOTE] Die Auswahl von **Datenprofil einschließen** im Tool für die Registrierung von Datenquellen umfasst sowohl Profilinformationen auf Tabellenebene als auch auf Spaltenebene. Von der Data Catalog-API wird aber nur zugelassen, dass Datenassets mit lediglich einem Satz eingeschlossener Profilinformationen registriert werden.
+> [AZURE.NOTE] Bei Auswahl von **Datenprofil einschließen** in das Tool zum Registrieren von Datenquellen werden Tabellen- und Profilinformationen auf Spaltenebene einbezogen. Allerdings ermöglicht die Data Catalog-API die Registrierung von Datenassets nur mit einem einzigen Satz von einbezogenen Profilinformationen.
 
 ## Anzeigen von Datenprofilinformationen
 
@@ -91,4 +91,4 @@ Bei der Datenprofilerstellung werden Statistiken und Informationen zu registrier
 -	[Registrieren von Datenquellen](data-catalog-how-to-register.md)
 -	[Erste Schritte mit Azure Data Catalog](data-catalog-get-started.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0914_2016-->

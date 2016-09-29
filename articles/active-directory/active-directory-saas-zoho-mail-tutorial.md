@@ -11,19 +11,19 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="06/20/2016" 
+    ms.date="09/09/2016" 
     ms.author="markvi" />
 
 #Tutorial: Azure Active Directory-Integration mit Zoho Mail
   
-In diesem Tutorial wird die Integration von Azure und Zoho Mail erläutert. Das in diesem Lernprogramm verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
+In diesem Tutorial wird die Integration von Azure und Zoho Mail erläutert. Das in diesem Tutorial verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
 
 -   Ein gültiges Azure-Abonnement
 -   Einen Zoho Mail-Mandanten
   
 Nach Abschluss dieses Tutorials können sich die Zoho Mail zugewiesenen Azure AD-Benutzer mittels einmaliger Anmeldung auf Ihrer Zoho Mail-Unternehmenswebsite bei der Anwendung anmelden (durch den Dienstanbieter initiierte Anmeldung). Alternativ können sie den Zugriffsbereich nutzen (siehe [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md)).
   
-Das in diesem Lernprogramm beschriebene Szenario besteht aus den folgenden Bausteinen:
+Das in diesem Tutorial beschriebene Szenario besteht aus den folgenden Bausteinen:
 
 1.  Aktivieren der Anwendungsintegration für Zoho Mail
 2.  Konfigurieren der einmaligen Anmeldung
@@ -82,9 +82,9 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
     ![App-URL konfigurieren](./media/active-directory-saas-zoho-mail-tutorial/IC789605.png "App-URL konfigurieren")
 
-	a. Geben Sie im Textfeld **Zoho Mail-Anmelde-URL** die URL im folgenden Format ein: `http://<company name>.ZohoMail.com`
+	a. Geben Sie im Textfeld **Zoho Mail-Anmelde-URL** die URL in folgendem Format ein: `http://<company name>.ZohoMail.com`
 
-	b. Klicken Sie auf **Weiter**.
+	b. Klicken Sie auf **Next**.
 
 
 4.  Klicken Sie auf der Seite **Einmaliges Anmelden konfigurieren für Zoho Mail** auf **Zertifikat herunterladen**, und speichern Sie die Zertifikatsdatei auf Ihrem Computer.
@@ -108,7 +108,7 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
     1.  Kopieren Sie im klassischen Azure-Portal auf der Dialogfeldseite **Einmaliges Anmelden konfigurieren für Zoho Mail** den Wert für **Remoteanmelde-URL**, und fügen Sie ihn in das Textfeld **Anmelde-URL** ein.
     2.  Kopieren Sie im klassischen Azure-Portal auf der Dialogfeldseite **Einmaliges Anmelden konfigurieren für Zoho Mail** den Wert für **Remoteabmelde-URL**, und fügen Sie ihn in das Textfeld **Abmelde-URL** ein.
     3.  Kopieren Sie im klassischen Azure-Portal auf der Dialogfeldseite **Einmaliges Anmelden konfigurieren für Zoho Mail** den Wert für **Kennwort-URL ändern**, und fügen Sie ihn in das Textfeld **Kennwort-URL ändern** ein.
-    4.  Erstellen Sie eine **Base64-codierte** Datei aus dem heruntergeladenen Zertifikat.  
+    4.  Erstellen Sie eine **Base64-codierte** Datei aus dem heruntergeladenen Zertifikat.
 
         >[AZURE.TIP] Weitere Informationen finden Sie unter [Konvertieren eines binären Zertifikats in eine Textdatei](http://youtu.be/PlgrzUZ-Y1o).
 
@@ -124,7 +124,7 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
   
 Damit sich Azure AD-Benutzer bei Zoho Mail anmelden können, müssen sie in Zoho Mail bereitgestellt werden. Im Fall von Zoho Mail ist die Bereitstellung eine manuelle Aufgabe.
 
-###So stellen Sie Benutzerkonten bereit
+###Führen Sie zum Bereitstellen von Benutzerkonten die folgenden Schritte aus:
 
 1.  Melden Sie sich bei der **Zoho Mail**-Unternehmenswebsite als Administrator an.
 
@@ -139,7 +139,7 @@ Damit sich Azure AD-Benutzer bei Zoho Mail anmelden können, müssen sie in Zoho
     ![Benutzer hinzufügen](./media/active-directory-saas-zoho-mail-tutorial/IC789612.png "Benutzer hinzufügen")
 
     1.  Geben Sie **Vorname**, **Nachname**, **E-Mail-ID** und **Kennwort** eines gültigen Azure Active Directory-Kontos, das Sie bereitstellen möchten, in die entsprechenden Textfelder ein.
-    2.  Klicken Sie auf **OK**.  
+    2.  Klicken Sie auf **OK**.
 
         >[AZURE.NOTE] Der Besitzer des Azure Active Directory-Kontos erhält eine E-Mail mit einem Link zur Bestätigung des Kontos, bevor es aktiv wird.
 
@@ -153,7 +153,7 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie d
 
 1.  Erstellen Sie im klassischen Azure-Portal ein Testkonto.
 
-2.  Klicken Sie auf der Anwendungsintegrationsseite für **Zoho Mail** auf **Benutzer zuweisen**.
+2.  Klicken Sie auf der Anwendungsintegrationsseite für **Zoho Mai**l auf **Benutzer zuweisen**.
 
     ![Benutzer zuweisen](./media/active-directory-saas-zoho-mail-tutorial/IC789613.png "Benutzer zuweisen")
 
@@ -163,4 +163,4 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie d
   
 Wenn Sie die SSO-Einstellungen testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md).
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0914_2016-->

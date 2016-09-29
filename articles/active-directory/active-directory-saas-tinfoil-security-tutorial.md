@@ -11,19 +11,19 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="06/21/2016" 
+    ms.date="09/11/2016" 
     ms.author="jeedes" />
 
 #Tutorial: Azure Active Directory-Integration mit Tinfoil Security
   
-In diesem Tutorial wird die Integration von Azure und Tinfoil Security erläutert. Das in diesem Lernprogramm verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
+In diesem Tutorial wird die Integration von Azure und Tinfoil Security erläutert. Das in diesem Tutorial verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
 
 -   Ein gültiges Azure-Abonnement
 -   Ein Tinfoil Security-Abonnement, für das einmaliges Anmelden aktiviert ist
   
 Nach Abschluss dieses Tutorials können sich die Tinfoil Security zugewiesenen Azure AD-Benutzer mittels einmaliger Anmeldung auf Ihrer Tinfoil Security-Unternehmenswebsite bei der Anwendung anmelden (durch den Identitätsanbieter initiierte Anmeldung). Alternativ können sie den Zugriffsbereich nutzen (siehe [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md)).
   
-Das in diesem Lernprogramm beschriebene Szenario besteht aus den folgenden Bausteinen:
+Das in diesem Tutorial beschriebene Szenario besteht aus den folgenden Bausteinen:
 
 1.  Aktivieren der Anwendungsintegration für Tinfoil Security
 2.  Konfigurieren der einmaligen Anmeldung
@@ -78,7 +78,7 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-tinfoil-security-tutorial/IC798968.png "Einmaliges Anmelden konfigurieren")
 
-3.  Geben Sie auf der Seite **App-URL konfigurieren** des Textfeldes **Tinfoil Security-Antwort-URL** Ihre Tinfoil Security Assertion Consumer Service (ACS)-URL ein (z. B.: "*https://www.tinfoilsecurity.com/saml/consume*", und klicken Sie dann auf **Weiter**.
+3.  Geben Sie auf der Seite **App-URL konfigurieren** des Textfeldes **Tinfoil Security-Antwort-URL** Ihre Tinfoil Security Assertion Consumer Service-URL (ACS) ein (z.B. "*https://www.tinfoilsecurity.com/saml/consume*"), und klicken Sie dann auf **Weiter**.
 
     >[AZURE.NOTE] Sie sollten in der Lage sein, die ACS-URL aus den Tinfoil Security-Metadaten abzurufen (https://www.tinfoilsecurity.com/saml/metadata).
 
@@ -105,9 +105,9 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
     1.  Wählen Sie **SAML aktivieren**.
     2.  Klicken Sie auf **Manuelle Konfiguration**.
     3.  Kopieren Sie im klassischen Azure-Portal auf der Dialogfeldseite **Einmaliges Anmelden konfigurieren für Tinfoil Security** den Wert der **SAML-SSO-URL**, und fügen Sie ihn in das Textfeld **SAML POST-URL** ein.
-    4.  Kopieren Sie den **Fingerabdruckwert** aus dem exportierten Zertifikat, und fügen Sie ihn in das Textfeld **SAML-Zertifikatsfingerabdruck** ein.  
+    4.  Kopieren Sie den **Fingerabdruckwert** aus dem exportierten Zertifikat, und fügen Sie ihn in das Textfeld **SAML-Zertifikatsfingerabdruck** ein.
 
-        >[AZURE.TIP] Weitere Informationen finden Sie unter [How to retrieve a certificate's thumbprint value](http://youtu.be/YKQF266SAxI) (in englischer Sprache).
+        >[AZURE.TIP] Weitere Informationen finden Sie unter [Abrufen des Fingerabdruckwerts eines Zertifikats](http://youtu.be/YKQF266SAxI).
 
     5.  Kopieren Sie **Ihre Konto-ID**.
     6.  Klicken Sie auf **Speichern**.
@@ -145,7 +145,7 @@ Damit sich Azure AD-Benutzer bei Tinfoil Security anmelden können, müssen sie 
 
 ##Zuweisen von Benutzern
   
-Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie die Verwendung Ihrer Anwendung ermöglichen möchten, Zugriff auf die Anwendung gewähren. Weisen Sie dazu der Anwendung Benutzer zu.
+Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie die Verwendung Ihrer Anwendung ermöglichen möchten, Zugriff auf die Anwendung gewähren. Weisen Sie dazu der Anwendung Benutzer zu.
 
 ###So weisen Sie Tinfoil Security Benutzer zu:
 
@@ -161,4 +161,4 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie 
   
 Wenn Sie die SSO-Einstellungen testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md).
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0914_2016-->

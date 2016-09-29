@@ -11,19 +11,19 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="06/21/2016" 
+    ms.date="09/11/2016" 
     ms.author="jeedes" />
 
 #Tutorial: Azure Active Directory-Integration mit Thirdlight
   
-In diesem Tutorial wird die Integration von Azure und Thirdlight erläutert. Das in diesem Lernprogramm verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
+In diesem Tutorial wird die Integration von Azure und Thirdlight erläutert. Das in diesem Tutorial verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
 
 -   Ein gültiges Azure-Abonnement
 -   Ein Thirdlight-Software-Abonnement, für das einmaliges Anmelden aktiviert ist
   
 Nach Abschluss dieses Tutorials können sich die Thirdlight zugewiesenen Azure AD-Benutzer mittels einmaliger Anmeldung auf Ihrer Thirdlight-Unternehmenswebsite bei der Anwendung anmelden (durch den Dienstanbieter initiierte Anmeldung). Alternativ können sie den Zugriffsbereich nutzen (siehe [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md)).
   
-Das in diesem Lernprogramm beschriebene Szenario besteht aus den folgenden Bausteinen:
+Das in diesem Tutorial beschriebene Szenario besteht aus den folgenden Bausteinen:
 
 1.  Aktivieren der Anwendungsintegration für Thirdlight
 2.  Konfigurieren der einmaligen Anmeldung
@@ -78,7 +78,7 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-thirdlight-tutorial/IC805840.png "Einmaliges Anmelden konfigurieren")
 
-3.  Geben Sie auf der Seite **App-URL konfigurieren** im Textfeld für die **Thirdlight-Anmelde-URL** die URL ein, welche die Benutzer zur Anmeldung bei Thirdlight verwenden (z. B. „*http://azuresso2.thirdlight.com/*"), und klicken Sie dann auf **Weiter**.
+3.  Geben Sie auf der Seite **App-URL konfigurieren** im Textfeld für die **Thirdlight-Anmelde-URL** die URL ein, welche die Benutzer zur Anmeldung bei Thirdlight verwenden (z.B. "*http://azuresso2.thirdlight.com/*"), und klicken Sie dann auf **Weiter**.
 
     ![App-URL konfigurieren](./media/active-directory-saas-thirdlight-tutorial/IC805841.png "App-URL konfigurieren")
 
@@ -94,7 +94,7 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
 7.  Führen Sie im Abschnitt „SAML2-Konfiguration“ die folgenden Schritte aus:
 
-    ![Einmaliges Anmelden für SAML](./media/active-directory-saas-thirdlight-tutorial/IC805844.png "Einmaliges Anmelden für SAML")
+    ![SAML Single Sign-On](./media/active-directory-saas-thirdlight-tutorial/IC805844.png "Einmaliges Anmelden für SAML")
 
     1.  Wählen Sie **Einmaliges Anmelden bei SAML2 aktivieren** aus.
     2.  Als **Quelle für IdP-Metadaten** wählen Sie **IdP-Metadaten von XML laden**.
@@ -121,7 +121,7 @@ Damit sich Azure AD-Benutzer bei Thirdlight anmelden können, müssen sie in Thi
 
 5.  Machen Sie Ihre Angaben unter **Benutzernamen, Namen oder Beschreibung, E-Mail und Voreinstellung oder Gruppe neuer Mitglieder wählen** eines gültigen AAD-Kontos, das Sie bereitstellen möchten.
 
-6.  Klicken Sie auf **Erstellen**.
+6.  Klicken Sie auf **Create**.
 
 >[AZURE.NOTE] Sie können AAD-Benutzerkonten auch mithilfe anderer Tools zum Erstellen von Thirdlight-Benutzerkonten oder mithilfe der von Thirdlight bereitgestellten APIs erstellen.
 
@@ -143,4 +143,4 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie d
   
 Wenn Sie die SSO-Einstellungen testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md).
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0914_2016-->

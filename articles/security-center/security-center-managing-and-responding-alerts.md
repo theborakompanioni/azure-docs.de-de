@@ -13,7 +13,7 @@
    ms.devlang="na"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="08/26/2016"
+   ms.date="09/19/2016"
    ms.author="yurid"/>
 
 # Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center
@@ -76,130 +76,9 @@ In diesem Fall bezieht sich die ausgelöste Warnung auf eine verdächtige RDP-Ak
 
 Das Feld **Beschreibung** auf diesem Blatt enthält weitere Informationen zu diesem Ereignis. Dank dieser zusätzlichen Details erhalten Sie Informationen dazu, wodurch die Sicherheitswarnung ausgelöst wurde, sowie die Zielressource, die IP-Quelladresse (falls zutreffend) und Empfehlungen zur Lösung. In einigen Fällen ist die IP-Quelladresse leer (nicht verfügbar), da nicht alle Windows-Sicherheitsereignisprotokolle die IP-Adresse enthalten.
 
-> [AZURE.NOTE] Die von Security Center vorgeschlagene Wiederherstellung variiert je nach Sicherheitshinweis. In einigen Fällen müssen Sie möglicherweise weitere Azure-Funktionen verwenden, um die empfohlenen Lösungen zu implementieren. Beispielsweise kann die Abhilfe für diesen Angriff darin bestehen, die IP-Adresse, die den Angriff generiert, durch Verwendung einer [Netzwerk-ACL](../virtual-network/virtual-networks-acl.md) oder einer Regel für die [Netzwerksicherheitsgruppe](../virtual-network/virtual-networks-nsg.md) auf eine Negativliste zu setzen.
+Die von Security Center vorgeschlagene Wiederherstellung variiert je nach Sicherheitshinweis. In einigen Fällen müssen Sie möglicherweise weitere Azure-Funktionen verwenden, um die empfohlenen Lösungen zu implementieren. Beispielsweise kann die Abhilfe für diesen Angriff darin bestehen, die IP-Adresse, die den Angriff generiert, durch Verwendung einer [Netzwerk-ACL](../virtual-network/virtual-networks-acl.md) oder einer Regel für die [Netzwerksicherheitsgruppe](../virtual-network/virtual-networks-nsg.md) auf eine Negativliste zu setzen.
 
-## Sicherheitswarnungen nach Typ
-Die gleichen Schritte, die zum Zugreifen auf die Warnung zur verdächtigen RDP-Aktivität verwendet wurden, können auch zum Zugreifen auf andere Arten von Warnungen ausgeführt werden. Hier sind einige weitere Beispiele für Security Center-Warnungen angegeben:
-
-### Potenzielle Einschleusung von SQL-Befehlen
-Eine Einschleusung von SQL-Befehlen ist ein Angriff, bei dem Schadcode in Zeichenfolgen eingefügt wird, die später zur Analyse und Ausführung an eine Instanz von SQL Server übergeben werden. Jedes Verfahren, bei dem SQL-Anweisungen erstellt werden, sollte auf Sicherheitsrisiken in Bezug auf Einschleusungen überprüft werden, da SQL Server alle syntaktisch gültigen Abfragen ausführt, die empfangen werden.
-
-![Warnung vor der Einschleusung von SQL-Befehlen](./media/security-center-managing-and-responding-alerts/security-center-managing-and-responding-alerts-fig9.png)
-
-Diese Warnung enthält Informationen, mit denen Sie die angegriffene Ressource, die Erkennungsdauer und den Status des Angriffs identifizieren können. Außerdem ist ein Link zu weiteren Untersuchungsschritten angegeben.
-
-### Erkennung von verdächtigem ausgehendem Datenverkehr
-
-Für Netzwerkgeräte ist die Ermittlung und Profilerstellung nahezu genauso wie für andere Arten von Systemen möglich. Angreifer beginnen in der Regel mit der Portüberwachung bzw. Port-Sweeping. Im folgenden Beispiel ist es zu verdächtigem SSH-Datenverkehr von einer VM gekommen, für den die Gefahr eines Brute-Force-SSH-Angriffs oder Port-Sweeping-Angriffs gegen eine externe Ressource besteht.
-
-![Warnung vor verdächtigem ausgehendem Datenverkehr](./media/security-center-managing-and-responding-alerts/security-center-managing-and-responding-alerts-fig-10.png)
-
-Diese Warnung enthält Informationen, mit denen Sie die für die Initiierung verwendete Ressource, den kompromittierten Computer, die Erkennungsdauer und das verwendete Protokoll und den Port identifizieren können. Auf diesem Blatt ist auch eine Liste mit Lösungsschritten angegeben, die Sie ausführen können, um das Problem zu beseitigen.
-
-### Netzwerkkommunikation mit einem schädlichen Computer
- 
-Durch die Nutzung von Microsoft Threat Intelligence-Feeds kann Azure Security Center kompromittierte Computer erkennen, die mit schädlichen IP-Adressen kommunizieren. Häufig ist dies ein Befehls- und Steuerungszentrum (Command and Control Center). In diesem Fall hat Azure Security Center erkannt, dass für die Kommunikation die Schadsoftware „Pony Loader“ (auch als [Fareit](https://www.microsoft.com/security/portal/threat/encyclopedia/entry.aspx?Name=PWS:Win32/Fareit.AF) bekannt) verwendet wurde.
-
-![Warnung vor Netzwerkkommunikation mit einem schädlichen Computer](./media/security-center-managing-and-responding-alerts/security-center-managing-and-responding-alerts-fig9-ga.png)
-
-Diese Warnung enthält Informationen, mit denen Sie die für den Angriff verwendete Ressource, die Ziel-IP-Adresse, die IP-Adresse des Angreifers und die Erkennungsdauer identifizieren können.
-
-> [AZURE.NOTE] Aus Datenschutzgründen wurden die realen IP-Adressen aus diesem Screenshot entfernt.
-
-### Erkennung von Shellcode 
-
-Shellcode ist die Nutzlast, die ausgeführt wird, nachdem eine Schadsoftware ein Sicherheitsrisiko einer Software ausgenutzt hat. Diese Warnung gibt an, dass bei einer Absturzabbild-Analyse ausführbarer Code mit einem Verhalten erkannt wurde, das üblicherweise von schädlichen Nutzlasten gezeigt wird. Zwar kann auch nicht schädliche Software dieses Verhalten aufweisen, aber es ist nicht typisch für normale Vorgehensweisen bei der Softwareentwicklung.
-
-Die folgenden Felder gelten für alle Absturzabbildwarnungen:
-
-- DUMPFILE: Name der Absturzabbilddatei
-- PROCESSNAME: Name des abstürzenden Prozesses
-- PROCESSVERSION: Version des abstürzenden Prozesses
-
-Diese Warnung enthält das folgende zusätzliche Feld:
-
-- ADDRESS: Speicherort im Arbeitsspeicher des Shellcodes
-
-Hier ist ein Beispiel für diese Art von Warnung angegeben:
-
-![Shellcode-Warnung](./media/security-center-managing-and-responding-alerts/security-center-managing-and-responding-alerts-fig10-ga.png)
-
-### Erkennung einer Codeeinschleusung
-
-Eine Codeeinschleusung ist das Einfügen von ausführbaren Modulen in laufende Prozesse oder Threads. Dieses Verfahren wird von Schadsoftware verwendet, um auf Daten zuzugreifen, Aktionen zu verschleiern und die Entfernung zu verhindern (z.B. Persistenz). Mit dieser Warnung wird angegeben, dass bei der Absturzabbildanalyse ein eingeschleustes Modul für das Absturzabbild entdeckt wurde.
- 
-Seriöse Softwareentwickler führen die Codeeinschleusung gelegentlich zu nicht schädlichen Zwecken durch, z.B. zum Ändern oder Erweitern einer vorhandenen Anwendung oder Betriebssystemkomponente. Um zwischen schädlichen und nicht schädlichen eingeschleusten Modulen unterscheiden zu können, überprüft Azure Security Center, ob das eingeschleuste Modul einem Profil mit verdächtigem Verhalten entspricht. Das Ergebnis dieser Überprüfung wird im Feld „SIGNATURE“ der Warnung angegeben und im Schweregrad der Warnung, der Warnungsbeschreibung und der Schritte zur Behebung der Warnung widergespiegelt.
-
-Zusätzlich zu den allgemeinen Feldern, die oben im Abschnitt „Erkennung von Shellcode“ beschrieben werden, verfügt diese Warnung über die folgenden weiteren Felder:
-
-- ADDRESS: Speicherort im Arbeitsspeicher des eingeschleusten Moduls
-- IMAGENAME: Name des eingeschleusten Moduls. Beachten Sie, dass dieses Feld leer sein kann, wenn der Imagename im Image nicht angegeben wird.
-- SIGNATURE: Gibt an, ob das eingeschleuste Modul einem Profil mit verdächtigem Verhalten entspricht. In der folgenden Tabelle sind Beispiele für Ergebnisse mit den dazugehörigen Beschreibungen aufgeführt:
-
-| **Signaturwert** | **Beschreibung** |
-|--------------------------------------|-------------------------------------------------------------------------------------------------------------------|
-| Suspicious reflective loader exploit | Dieses verdächtige Verhalten korreliert häufig mit dem Laden von eingeschleustem Code, unabhängig vom Betriebssystem-Ladeprogramm. |
-| Suspicious injected exploit | Weist auf Schädlichkeit hin, die häufig mit dem Einschleusen von Code in den Arbeitsspeicher korreliert. |
-| Suspicious injecting exploit | Weist auf Schädlichkeit hin, die häufig mit der Nutzung von eingeschleustem Code im Arbeitsspeicher korreliert. |
-| Suspicious injected debugger exploit | Weist auf Schädlichkeit hin, die häufig mit der Erkennung oder Umgehung eines Debuggers korreliert. |
-| Suspicious injected remote exploit | Weist auf Schädlichkeit hin, die häufig mit Szenarien vom Typ „Befehl und Steuerung“ (Command and control (C2)) korreliert. |
-
-Hier ist ein Beispiel für diese Art von Warnung angegeben:
-
-![Erkennung einer Codeeinschleusung](./media/security-center-managing-and-responding-alerts/security-center-managing-and-responding-alerts-fig11-ga.png)
-
-### Erkennung von Modul-Hijacking
-
-In Windows werden DLLs (Dynamic Link Libraries) verwendet, um für Software die Nutzung von allgemeinen Windows-Systemfunktionen zu ermöglichen. „DLL-Hijacking“ tritt auf, wenn von Schadsoftware die DLL-Ladereihenfolge geändert wird, um schädliche Nutzlasten in den Arbeitsspeicher zu laden und darin beliebigen Code auszuführen. Diese Warnung weist darauf hin, dass bei der Absturzabbildanalyse das Laden eines Moduls aus zwei unterschiedlichen Pfaden erkannt wurde, wobei einer der geladenen Pfade von einem gemeinsamen binären Speicherort des Windows-Systems stammt.
-
-Seriöse Softwareentwickler ändern gelegentlich die DLL-Ladereihenfolge zu nicht schädlichen Zwecken, z.B. zur Instrumentierung, um das Windows-Betriebssystem oder Windows-Anwendungen zu erweitern. Zur besseren Unterscheidung zwischen schädlichen und potenziell unkritischen Änderungen an der DLL-Ladereihenfolge überprüft Azure Security Center, ob ein geladenes Modul einem verdächtigen Profil entspricht. Das Ergebnis dieser Überprüfung wird im Feld „SIGNATURE“ der Warnung angegeben und im Schweregrad der Warnung, der Warnungsbeschreibung und der Schritte zur Behebung der Warnung widergespiegelt. Die Analyse der auf dem Datenträger befindlichen Kopie des Hijacking-Moduls, z.B. durch das Überprüfen der digitalen Signatur von Dateien oder das Durchführen eines Virenscans, kann weitere Informationen dazu liefern, ob das Hijacking-Modul unschädlich oder schädlich ist.
-
-Zusätzlich zu den allgemeinen Feldern, die oben im Abschnitt „Erkennung von Shellcode“ beschrieben werden, verfügt diese Warnung über die folgenden Felder:
-
-- SIGNATURE: Gibt an, ob das Hijacking-Modul einem Profil mit verdächtigem Verhalten entspricht.
-- HIJACKEDMODULE: Name des Windows-Systemmoduls, das Opfer des Hijacking-Vorgangs geworden ist.
-- HIJACKEDMODULEPATH: Pfad des Windows-Systemmoduls, das Opfer des Hijacking-Vorgangs geworden ist.
-- HIJACKINGMODULEPATH: Enthält den Pfad des Hijacking-Moduls.
-
-Hier ist ein Beispiel für diese Art von Warnung angegeben:
-
-![Warnung – DLL-Hijacking](./media/security-center-managing-and-responding-alerts/security-center-managing-and-responding-alerts-fig12-ga.png)
-
-### Erkennung eines Windows-Maskerademoduls
-
-Für Schadsoftware werden unter Umständen gängige Namen von Windows-Systembinärdateien (z.B. SVCHOST.EXE) oder Modulen (z.B. NTDLL.DLL) genutzt, um eine Verschleierung zu erzielen und die Schadsoftware vor Systemadministratoren zu verbergen. Diese Warnung gibt an, dass bei der Absturzabbildanalyse in der Absturzabbilddatei Module erkannt wurden, in denen Modulnamen des Windows-Systems verwendet werden, für die andere typische Kriterien von Windows-Modulen nicht erfüllt sind. Die Analyse der auf dem Datenträger befindlichen Kopie des Maskerademoduls kann weitere Informationen darüber liefern, ob das Modul unschädlich oder schädlich ist. Die Analyse kann Folgendes umfassen:
-
-- Bestätigen, dass die fragliche Datei im Rahmen eines legitimen Softwarepakets bereitgestellt wird
-- Überprüfen der digitalen Signatur der Datei
-- Ausführen eines Virenscans für die Datei
-
-Zusätzlich zu den allgemeinen Feldern, die oben im Abschnitt „Erkennung von Shellcode“ beschrieben werden, verfügt diese Warnung über die folgenden weiteren Felder:
-
-- DETAILS: Beschreibt, ob die Metadaten des Moduls gültig sind und ob das Modul aus einem Systempfad geladen wurde.
-- NAME: Gibt den Namen des Windows-Maskerademoduls an.
-- PATH: Gibt den Pfad zum Windows-Maskerademodul an.
-
-Diese Warnung extrahiert auch die jeweiligen Felder aus dem PE-Header des Moduls, z.B. „CHECKSUM“ und „TIMESTAMP“, und zeigt sie an. Diese Felder werden nur angezeigt, wenn sie im Modul vorhanden sind. Details zu diesen Feldern finden Sie in der [Microsoft PE- und COFF-Spezifikation](https://msdn.microsoft.com/windows/hardware/gg463119.aspx).
-
-Hier ist ein Beispiel für diese Art von Warnung angegeben:
-
-![Warnung – Maskerade](./media/security-center-managing-and-responding-alerts/security-center-managing-and-responding-alerts-fig13-ga.png)
-
-### Erkennung der Änderung einer Systembinärdatei 
-
-Mit Schadsoftware können wichtige Systembinärdateien geändert werden, um unerkannt auf Daten zuzugreifen oder sich heimlich dauerhaft auf einem kompromittierten System aufzuhalten. Diese Warnung gibt an, dass bei der Absturzabbildanalyse erkannt wurde, dass wichtige Binärdateien des Windows-Betriebssystems im Arbeitsspeicher oder auf dem Datenträger geändert wurden.
-
-Seriöse Softwareentwickler ändern Systemmodule im Arbeitsspeicher gelegentlich zu nicht schädlichen Zwecken, z.B. für Umwege oder aus Gründen der Anwendungskompatibilität. Zur besseren Unterscheidung zwischen schädlichen und potenziell unschädlichen Modulen wird von Azure Security Center überprüft, ob das geänderte Modul einem verdächtigen Profil entspricht. Das Ergebnis dieser Überprüfung wird im Schweregrad der Warnung, der Warnungsbeschreibung und der Schritte zur Behebung der Warnung widergespiegelt.
-
-Zusätzlich zu den allgemeinen Feldern, die oben im Abschnitt „Erkennung von Shellcode“ beschrieben werden, verfügt diese Warnung über die folgenden weiteren Felder:
-
-- MODULENAME: Enthält den Namen der geänderten Systembinärdatei.
-- MODULEVERSION: Enthält die Version der geänderten Systembinärdatei.
-
-Hier ist ein Beispiel für diese Art von Warnung angegeben:
-
-![Warnung – Geänderte Binärdatei](./media/security-center-managing-and-responding-alerts/security-center-managing-and-responding-alerts-fig14-ga.png)
-
+> [AZURE.NOTE] Weitere Informationen zu den verschiedenen Arten von Warnungen finden Sie unter [Sicherheitswarnungen nach Typ in Azure Security Center](security-center-alerts-type.md).
 
 ## Siehe auch
 
@@ -211,4 +90,4 @@ In diesem Dokument haben Sie erfahren, wie Sie Sicherheitsrichtlinien in Securit
 - [Azure Security Center – Häufig gestellte Fragen:](security-center-faq.md) Hier finden Sie häufig gestellte Fragen zur Verwendung des Diensts.
 - [Azure Security Blog](http://blogs.msdn.com/b/azuresecurity/) (Blog zur Azure-Sicherheit): Hier finden Sie Blogbeiträge zur Azure-Sicherheit und -Compliance.
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0921_2016-->

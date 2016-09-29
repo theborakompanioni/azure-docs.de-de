@@ -4,7 +4,7 @@
    services="data-lake-store,data-catalog" 
    documentationCenter=""
    authors="nitinme"
-   manager="paulettm"
+   manager="jhubbard"
    editor="cgronlun"/>
 
 <tags
@@ -22,11 +22,11 @@ In diesem Artikel erfahren Sie, wie der Azure Data Lake-Speicher in Azure Data C
 
 ## Voraussetzungen
 
-Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
+Bevor Sie mit diesem Tutorial beginnen können, benötigen Sie Folgendes:
 
 - **Ein Azure-Abonnement**. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
 
-- **Aktivieren Ihres Azure-Abonnements** für die öffentliche Vorschauversion des Data Lake-Speichers. Weitere Informationen finden Sie in den [Anweisungen](data-lake-store-get-started-portal.md#signup).
+- **Aktivieren Sie Ihr Azure-Abonnement** für die öffentliche Vorschauversion von Data Lake Store. Weitere Informationen finden Sie in den [Anweisungen](data-lake-store-get-started-portal.md#signup).
 
 - **Azure Data Lake-Speicherkonto**. Führen Sie die Schritte der Anleitung unter [Erste Schritte mit dem Azure Data Lake-Speicher mithilfe des Azure-Portals](data-lake-store-get-started-portal.md) aus. In diesem Tutorial erstellen wir ein Data Lake-Speicherkonto namens **datacatalogstore**.
 
@@ -88,10 +88,10 @@ Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
 	* [Hinzufügen von Anmerkungen zu Datenquellen in Data Catalog](../data-catalog/data-catalog-how-to-annotate.md)
 	* [Hinzufügen von Dokumenten zu Datenquellen in Data Catalog](../data-catalog/data-catalog-how-to-documentation.md)
 
-## Weitere Informationen
+## Siehe auch
 
 * [Hinzufügen von Anmerkungen zu Datenquellen in Data Catalog](../data-catalog/data-catalog-how-to-annotate.md)
 * [Hinzufügen von Dokumenten zu Datenquellen in Data Catalog](../data-catalog/data-catalog-how-to-documentation.md)
 * [Integrieren des Data Lake-Speichers in andere Azure-Dienste](data-lake-store-integrate-with-other-services.md)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0914_2016-->

@@ -12,7 +12,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows"
 	ms.workload="infrastructure-services"
-	ms.date="05/17/2016"
+	ms.date="09/06/2016"
 	ms.author="rclaus" />
 
 
@@ -43,7 +43,7 @@ Das Lernprogramm geht zudem davon aus, dass Sie die folgenden Voraussetzungen be
 
 In diesem Lernprogramm lernen Sie Folgendes:
 
-1. Einrichten der Datenbank an Standort A und Standort B  
+1. Einrichten der Datenbank an Standort A und Standort B
 
 	1. Durchführen der anfänglichen Datenlast
 
@@ -598,7 +598,7 @@ Remotedesktop an Standort A und überprüfen Sie, ob die Replikation stattgefund
 	100 TV 100 22-MAR-13
 	101 DVD 10 22-MAR-13
 
-##Zusätzliche Ressourcen
+##Weitere Ressourcen
 [Oracle Virtual Machine images for Azure (Images von virtuellen Oracle-Computern für Azure; in englischer Sprache)](virtual-machines-linux-classic-oracle-images.md)
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0914_2016-->

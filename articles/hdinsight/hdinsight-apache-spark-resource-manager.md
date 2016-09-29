@@ -4,7 +4,7 @@
 	services="hdinsight" 
 	documentationCenter="" 
 	authors="nitinme" 
-	manager="paulettm" 
+	manager="jhubbard" 
 	editor="cgronlun"
 	tags="azure-portal"/>
 
@@ -197,7 +197,7 @@ Da wir die dynamische Zuordnung von Spark verwenden, werden nur die Ressourcen f
 
 ### Verwalten von Ressourcen
 
-* [Track and debug jobs running on an Apache Spark cluster in HDInsight](hdinsight-apache-spark-job-debugging.md) (Nachverfolgen und Debuggen von Aufträgen in einem Apache Spark-Cluster unter HDInsight)
+* [Track and debug jobs running on an Apache Spark cluster in HDInsight (Nachverfolgen und Debuggen von Aufträgen in einem Apache Spark-Cluster unter HDInsight)](hdinsight-apache-spark-job-debugging.md)
 
 
 
@@ -212,4 +212,4 @@ Da wir die dynamische Zuordnung von Spark verwenden, werden nur die Ressourcen f
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: storage-create-storage-account.md
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0914_2016-->

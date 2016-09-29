@@ -4,7 +4,7 @@
 	services="search"
 	documentationCenter=""
 	authors="HeidiSteen"
-	manager="paulettm"
+	manager="jhubbard"
 	editor=""
     tags="azure-portal"/>
 
@@ -101,4 +101,4 @@ Wenn Sie die optimale SKU ermittelt haben, fahren Sie mit den folgenden Schritte
 - [Erstellen eines Azure Search-Diensts über das Azure-Portal](search-create-service-portal.md)
 - [Skalieren von Ressourcenebenen für Abfrage und Indizierung von Arbeitslasten in Azure Search](search-capacity-planning.md)
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0914_2016-->
