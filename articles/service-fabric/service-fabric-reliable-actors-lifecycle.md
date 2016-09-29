@@ -34,7 +34,7 @@ Wenn ein Actor aktiviert wird, geschieht Folgendes:
 Wenn ein Actor deaktiviert wird, geschieht Folgendes:
 
 - Wenn ein Actor einige Zeit lang nicht verwendet wird, wird er aus der Tabelle der aktiven Actors entfernt.
-- Die Methode `OnDeactivateAsync` (die bei der Actor-Implementierung überschrieben werden kann) wird aufgerufen. Dadurch werden alle Timer für den Actor gelöscht.
+- Die Methode `OnDeactivateAsync` (die bei der Actor-Implementierung überschrieben werden kann) wird aufgerufen. Dadurch werden alle Timer für den Actor gelöscht. Actor-Vorgänge wie Statusänderungen dürfen von dieser Methode nicht aufgerufen werden.
 
 > [AZURE.TIP] Die Fabric Actors-Laufzeit gibt einige [Ereignisse im Zusammenhang mit der Actor-Aktivierung und -Deaktivierung](service-fabric-reliable-actors-diagnostics.md#actor-activation-and-deactivation-events) aus. Sie sind hilfreich bei der Diagnose und Leistungsüberwachung.
 
@@ -129,4 +129,4 @@ Beachten Sie, dass ein Actor für sich selbst durch eine seiner Methoden „dele
 <!--Image references-->
 [1]: ./media/service-fabric-reliable-actors-lifecycle/garbage-collection.png
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0914_2016-->

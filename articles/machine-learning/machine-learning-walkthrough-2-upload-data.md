@@ -4,7 +4,7 @@
 	services="machine-learning"
 	documentationCenter=""
 	authors="garyericson"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun"/>
 
 <tags
@@ -69,7 +69,7 @@ Nach dem Konvertieren der Daten in das CSV-Format müssen Sie sie in Machine Lea
 1.	Geben Sie einen Namen für das Dataset ein. In dieser exemplarischen Vorgehensweise nennen wir es „UCI German Credit Card Data“.
 1.	Wählen Sie den Datentyp **Generic CSV File With no header (.nh.csv)** aus.
 1.	Fügen Sie bei Bedarf eine Beschreibung hinzu.
-1.	Klicken Sie auf **OK**.  
+1.	Klicken Sie auf **OK**.
 
 ![Hochladen des DataSets][1]
 
@@ -84,4 +84,4 @@ Weitere Informationen zum Importieren von verschiedenen Datentypen in einem Expe
 
 [1]: ./media/machine-learning-walkthrough-2-upload-data/upload1.png
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0914_2016-->

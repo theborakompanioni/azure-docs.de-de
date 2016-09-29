@@ -78,10 +78,10 @@ In diesem Tutorial wird vorausgesetzt, dass Sie ein [Texas Instruments SensorTag
 
 Bevor Sie beginnen, sollten Sie sicherstellen, dass Sie Ihr Edison-Gerät mit dem Drahtlosnetzwerk verbinden können. Um Ihr Edison-Gerät einzurichten, müssen Sie es mit einem Hostcomputer verbinden. Intel stellt Erste-Schritte-Handbücher für die folgenden Betriebssysteme bereit:
 
-- [Get Started with the Intel Edison Development Board on Windows 64-bit][lnk-setup-win64] (Erste Schritte mit dem Intel Edison Development Board unter Windows 64-Bit).
-- [Get Started with the Intel Edison Development Board on Windows 32-bit][lnk-setup-win32] (Erste Schritte mit dem Intel Edison Development Board unter Windows 32-Bit).
-- [Get Started with the Intel Edison Development Board on Mac OS X][lnk-setup-osx] (Erste Schritte mit dem Intel Edison Development Board unter Mac OS X).
-- [Getting Started with the Intel® Edison Board on Linux][lnk-setup-linux] (Erste Schritte mit dem Intel® Edison Board unter Linux).
+- [Get Started with the Intel Edison Development Board on Windows 64-bit][lnk-setup-win64]  \(Erste Schritte mit dem Intel Edison Development Board unter Windows 64-Bit).
+- [Get Started with the Intel Edison Development Board on Windows 32-bit][lnk-setup-win32] \(Erste Schritte mit dem Intel Edison Development Board unter Windows 32-Bit).
+- [Get Started with the Intel Edison Development Board on Mac OS X][lnk-setup-osx] \(Erste Schritte mit dem Intel Edison Development Board unter Mac OS X).
+- [Getting Started with the Intel® Edison Board on Linux][lnk-setup-linux] \(Erste Schritte mit dem Intel® Edison Board unter Linux).
 
 Um Ihr Edison-Gerät einzurichten und sich damit vertraut zu machen, sollten Sie alle Schritte in diesen „Erste Schritte“-Artikeln mit Ausnahme des letzten Schritts, „Choose IDE“ (IDE auswählen), ausführen, der für das aktuelle Tutorial nicht erforderlich ist. Am Ende des Edison-Installationsvorgangs haben Sie:
 
@@ -93,39 +93,7 @@ Um Ihr Edison-Gerät einzurichten und sich damit vertraut zu machen, sollten Sie
 
 Bevor Sie das Beispiel ausführen, müssen Sie überprüfen, ob Ihre Edison-Platine sich mit dem SensorTag-Gerät verbinden kann.
 
-Zunächst müssen Sie die Version der BlueZ-Software auf Ihrem Edison-Gerät aktualisieren. Beachten Sie: Auch wenn Sie bereits Version 5.37 installiert haben, sollten Sie die folgenden Schritte ausführen, um sicherzustellen, dass die Installation abgeschlossen ist:
-
-1. Beenden Sie den derzeit ausgeführten Bluetooth-Daemon.
-    
-    ```
-    systemctl stop bluetooth
-    ```
-
-2. Laden Sie den [Quellcode](http://www.kernel.org/pub/linux/bluetooth/bluez-5.37.tar.xz) für BlueZ Version 5.37 herunter, und extrahieren Sie ihn.
-    
-    ```
-    wget http://www.kernel.org/pub/linux/bluetooth/bluez-5.37.tar.xz
-    tar -xvf bluez-5.37.tar.xz
-    cd bluez-5.37
-    ```
-
-3. Erstellen und installieren Sie BlueZ.
-    
-    ```
-    ./configure --disable-udev --disable-systemd --enable-experimental
-    make
-    make install
-    ```
-
-4. Ändern Sie die *systemd*-Dienstkonfiguration für Bluetooth durch Bearbeiten der Datei **/lib/systemd/system/bluetooth.service**, sodass sie auf den neuen Bluetooth-Daemon verweist. Ersetzen Sie den Wert des **ExecStart**-Attributs so, dass es wie folgt aussieht:
-    
-    ```
-    ExecStart=/usr/local/libexec/bluetooth/bluetoothd -E
-    ```
-
-5. Starten Sie Ihr Edison-Gerät neu.
-
-Nun müssen Sie überprüfen, ob Ihr Edison-Gerät eine Verbindung mit dem SensorTag-Gerät herstellen kann.
+Zuerst müssen Sie überprüfen, ob Ihr Edison-Gerät eine Verbindung mit dem SensorTag-Gerät herstellen kann.
 
 1. Geben Sie Bluetooth auf dem Edison-Gerät frei, und überprüfen Sie, ob die Versionsnummer **5.37** ist.
     
@@ -134,20 +102,22 @@ Nun müssen Sie überprüfen, ob Ihr Edison-Gerät eine Verbindung mit dem Senso
     bluetoothctl --version
     ```
 
-2. Führen Sie den **Bluetoothctl**-Befehl aus. Eine ähnliche Ausgabe wie die folgende sollte angezeigt werden:
+2. Führen Sie den **Bluetoothctl**-Befehl aus. Sie befinden sich nun in einer interaktiven Bluetooth-Shell.
+
+3. Geben Sie den Befehl **power on** ein, um den Bluetooth-Controller einzuschalten. Eine ähnliche Ausgabe wie die folgende sollte angezeigt werden:
     
     ```
     [NEW] Controller 98:4F:EE:04:1F:DF edison [default]
     ```
 
-3. Sie befinden sich nun in einer interaktiven Bluetooth-Shell. Geben Sie den Befehl **scan on** ein, um zu prüfen, ob Bluetooth-Geräte vorhanden sind. Eine ähnliche Ausgabe wie die folgende sollte angezeigt werden:
+4. Während Sie sich noch in der interaktiven Bluetooth-Shell befinden, geben Sie den Befehl **scan on** zum Scannen nach Bluetooth-Geräten ein. Eine ähnliche Ausgabe wie die folgende sollte angezeigt werden:
     
     ```
     Discovery started
     [CHG] Controller 98:4F:EE:04:1F:DF Discovering: yes
     ```
 
-4. Machen Sie das SensorTag-Gerät erkennbar, indem Sie auf die kleine Taste drücken (die grüne LED sollte blinken). Das Edison-Gerät sollte das SensorTag-Gerät erkennen:
+5. Machen Sie das SensorTag-Gerät erkennbar, indem Sie auf die kleine Taste drücken (die grüne LED sollte blinken). Das Edison-Gerät sollte das SensorTag-Gerät erkennen:
     
     ```
     [NEW] Device A0:E6:F8:B5:F6:00 CC2650 SensorTag
@@ -157,14 +127,14 @@ Nun müssen Sie überprüfen, ob Ihr Edison-Gerät eine Verbindung mit dem Senso
     
     In diesem Beispiel können Sie sehen, dass die MAC-Adresse des SensorTag-Geräts **A0:E6:F8:B5:F6:00** ist.
 
-5. Deaktivieren Sie das Scannen durch Eingabe des Befehls **scan off**.
+6. Deaktivieren Sie das Scannen durch Eingabe des Befehls **scan off**.
     
     ```
     [CHG] Controller 98:4F:EE:04:1F:DF Discovering: no
     Discovery stopped
     ```
 
-6. Stellen Sie die Verbindung mit Ihrem SensorTag-Gerät über dessen MAC-Adresse her, indem Sie **connect <MAC-Adresse>** eingeben. Beachten Sie, dass die folgende Beispielausgabe abgekürzt ist:
+7. Stellen Sie die Verbindung mit Ihrem SensorTag-Gerät über dessen MAC-Adresse her, indem Sie **connect <MAC-Adresse>** eingeben. Beachten Sie, dass die folgende Beispielausgabe abgekürzt ist:
     
     ```
     Attempting to connect to A0:E6:F8:B5:F6:00
@@ -185,7 +155,7 @@ Nun müssen Sie überprüfen, ob Ihr Edison-Gerät eine Verbindung mit dem Senso
     
     Hinweis: Mit dem Befehl **list-attributes** können Sie die GATT-Merkmale des Geräts erneut auflisten.
 
-7. Sie können nun mithilfe des Befehls **disconnect** die Verbindung mit dem Gerät trennen und dann mithilfe des Befehl **quit** die Bluetooth-Shell verlassen:
+8. Sie können nun mithilfe des Befehls **disconnect** die Verbindung mit dem Gerät trennen und dann mithilfe des Befehl **quit** die Bluetooth-Shell verlassen:
     
     ```
     Attempting to disconnect from A0:E6:F8:B5:F6:00
@@ -458,4 +428,4 @@ Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 [lnk-dmui]: iot-hub-device-management-ui-sample.md
 [lnk-portal]: iot-hub-manage-through-portal.md
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0914_2016-->

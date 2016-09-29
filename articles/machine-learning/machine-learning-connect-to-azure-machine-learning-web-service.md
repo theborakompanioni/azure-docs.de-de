@@ -4,7 +4,7 @@
 	services="machine-learning"
 	documentationCenter=""
 	authors="garyericson"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun" />
 
 <tags
@@ -121,4 +121,4 @@ Verwenden Sie zum Verbinden mit einem Machine Learning-Webdienst die **urllib2**
 2. Weisen Sie "apiKey" den Schlüssel von einem Webdienst zu. Siehe oben: **Abrufen eines Autorisierungsschlüssels für Azure Machine Learning**.
 3. Weisen Sie "serviceUri" die Anforderungs-URI zu.
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0914_2016-->

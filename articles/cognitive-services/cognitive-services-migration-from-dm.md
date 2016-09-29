@@ -5,7 +5,7 @@
 	services="cognitive-services"
 	documentationCenter=""
 	authors="luiscabrer"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun"/>
 
 <tags
@@ -64,4 +64,4 @@ Für die [DataMarket-Empfehlungs-API](https://datamarket.azure.com/dataset/amla/
 
 Wir möchten diese Umstellung für Sie so einfach wie möglich gestalten. Wir können Sie dabei unterstützen, Ihre alten Modelle aus dem DataMarket-Konto in Ihr neues Abonnement der Azure Cognitive Services-Empfehlungs-API zu verschieben. Wenden Sie sich unter der Adresse [mlapi@microsoft.com](mailto://mlapi@microsoft.com) an uns. Sie werden von uns dann zum Angeben Ihrer DataMarket-Abonnement-ID und Ihrer Cognitive Services-Abonnement-ID aufgefordert, bevor wir die Modelle dem neuen Konto zuordnen.
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0914_2016-->

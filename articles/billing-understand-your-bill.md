@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="08/23/2016"
+   ms.date="09/13/2016"
    ms.author="erihur;genli"/>
 
 
@@ -161,8 +161,8 @@ Je nach Nutzung können Tausende von Zeilen an täglichen Nutzungsdaten vorhande
 
  Name | Download |
  :----------:| :-------: |
- Ausführliche Informationen zur Nutzung, CSV-Version 1| [Beispieldatei](https://azurepricing.blob.core.windows.net/sampleinvoices/Micorosft_Azure_Detailed_Usage_v1.csv)
- Ausführliche Informationen zur Nutzung, CSV-Version 2 | [Beispieldatei](https://azurepricing.blob.core.windows.net/sampleinvoices/Micorosft_Azure_Detailed_Usage_v2.csv)
+ Ausführliche Informationen zur Nutzung, CSV-Version 1| [Beispieldatei](https://azurepricing.blob.core.windows.net/supplemental/MOSPServices_csv1.xlsx)
+ Ausführliche Informationen zur Nutzung, CSV-Version 2 | [Beispieldatei](https://azurepricing.blob.core.windows.net/supplemental/MOSPServices_csv2.xlsx)
 
 
 
@@ -206,11 +206,11 @@ Zusätzlich zu einigen neuen Feldern und Namensänderungen für CSV-Version 2 w
 ![additionalinfo\_csv2](./media/billing-understand-your-bill/AdditionaInfo_csv2.png)
 
 - **Tags**: Diese Spalte enthält die vom Benutzer angegebenen Ressourcentags. Die Tags können zum Gruppieren von Abrechnungsdatensätzen verwendet werden. Beispielsweise können Sie Tags verwenden, um Kosten nach den Abteilungen zu unterteilen, die den Dienst nutzen. Weitere Informationen finden Sie unter [Verwenden von Tags zum Organisieren von Azure-Ressourcen](./resource-group-using-tags.md). Dienste, die das Ausgeben von Tags unterstützen, sind:
-    
+
     - Virtual Machines
-    
+
     - Storage und
-   
+
     - Netzwerkdienste, die mit der [Azure-Ressourcen-Manager-API](https://msdn.microsoft.com/library/azure/dn790567.aspx) bereitgestellt werden
 
 ![tags](./media/billing-understand-your-bill/tags.png)
@@ -241,4 +241,4 @@ OLD MSDN Articles
 
 <!--Image references-->
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0914_2016-->

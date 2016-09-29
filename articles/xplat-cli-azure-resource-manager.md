@@ -24,11 +24,7 @@
 - [Portal](azure-portal/resource-group-portal.md)
 - [Azure-Befehlszeilenschnittstelle](xplat-cli-azure-resource-manager.md)
 - [Azure PowerShell](powershell-azure-resource-manager.md)
-- [.NET](https://azure.microsoft.com/documentation/samples/resource-manager-dotnet-resources-and-groups/)
-- [Java](https://azure.microsoft.com/documentation/samples/resources-java-manage-resource-group/)
-- [Knoten](https://azure.microsoft.com/documentation/samples/resource-manager-node-resources-and-groups/)
-- [Python](https://azure.microsoft.com/documentation/samples/resource-manager-python-resources-and-groups/)
-- [Ruby](https://azure.microsoft.com/documentation/samples/resource-manager-ruby-resources-and-groups/)
+- [REST-API](resource-manager-rest-api.md)
 
 
 Die Azure-Befehlszeilenschnittstelle (Azure Command-Line Interface, Azure CLI) ist eines von mehreren Tools zum Bereitstellen und Verwalten von Ressourcen mit Resource Manager. In diesem Artikel werden allgemeine Methoden vorgestellt, mit denen Sie Azure-Ressourcen und -Ressourcengruppen mithilfe der Azure-Befehlszeilenschnittstelle im Resource Manager-Modus verwalten können. Information zum Bereitstellen von Ressourcen mithilfe der Befehlszeilenschnittstelle finden Sie unter [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure-CLI](resource-group-template-deploy-cli.md). Hintergrundinformationen zu Azure-Ressourcen und Resource Manager finden Sie in der [Übersicht über Azure Resource Manager](resource-group-overview.md).
@@ -231,4 +227,4 @@ Mithilfe der Azure-Befehlszeilenschnittstelle können Sie entweder eine Vorlage 
 * Informationen zum Abrufen von Details zu Bereitstellungsvorgängen und zum Behandeln von Bereitstellungsfehlern mit der Azure-Befehlszeilenschnittstelle finden Sie unter [Anzeigen von Bereitstellungsvorgängen mit der Azure-Befehlszeilenschnittstelle](resource-manager-troubleshoot-deployments-cli.md).
 * Informationen dazu, wie Sie eine Anwendung oder ein Skript mithilfe der Befehlszeilenschnittstelle für den Zugriff auf Ressourcen einrichten, finden Sie unter [Erstellen eines Dienstprinzipals für den Zugriff auf Ressourcen mithilfe der Azure-Befehlszeilenschnittstelle](resource-group-authenticate-service-principal-cli.md).
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0914_2016-->

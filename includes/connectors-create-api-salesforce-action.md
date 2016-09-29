@@ -31,7 +31,7 @@ Nachdem Sie eine Aktion zum Abrufen eines Leads hinzugefügt haben, sollten Sie 
 - Wählen Sie das Listenelement **Office 365 Outlook - E-Mail senden** aus. Wenn Sie noch keine *Verbindung* mit Ihrem Office 365-Konto erstellt haben, werden Sie aufgefordert, Ihre Office 365-Anmeldeinformationen einzugeben, um sie jetzt zu erstellen. Wenn Sie fertig sind, wird das Steuerelement **E-Mail senden** geöffnet.  
 ![Salesforce-Aktion – Abbildung 7](./media/connectors-create-api-salesforce/action-7.png)  
 - Geben Sie die E-Mail-Adresse, an die Sie die E-Mail senden möchten, in das Steuerelement **An** ein.
--  Geben Sie in das Steuerelement **Betreff** den Text *Neuer Lead erstellt - * ein, wählen Sie dann das Token *Unternehmen* aus. Damit wird das Feld *Unternehmen* des neuen Leads angezeigt, der in Salesforce erstellt wurde.
+-  Geben Sie in das Steuerelement **Betreff** den Text *Neuer Lead erstellt* ein, und wählen Sie dann das Token *Unternehmen* aus. Damit wird das Feld *Unternehmen* des neuen Leads angezeigt, der in Salesforce erstellt wurde.
 -  Im Steuerelement **Text** können Sie beliebige Token des neuen Leadobjekts auswählen, und Sie können auch den Text eingeben, der als Text der E-Mail angezeigt werden soll. Hier ist ein Beispiel angegeben:  
 ![Salesforce-Aktion – Abbildung 8](./media/connectors-create-api-salesforce/action-8.png)  
 - Speichern Sie den Workflow.
@@ -41,4 +41,4 @@ Das ist alles. Ihre Logik-App ist jetzt fertig.
 Nun können Sie Ihre Logik-App testen: Erstellen Sie in Salesforce einen neuen Lead, der die erstellte Bedingung erfüllt. Wenn Sie diese exemplarische Vorgehensweise vollständig befolgt haben, erstellen Sie einfach einen Lead mit einer E-Mail-Adresse, die *amazon.com* enthält. Nach wenigen Sekunden sollte Ihre Logik-App ausgelöst werden, und das Ergebnis könnte etwa wie folgt aussehen:  
 ![Salesforce-Aktion – Abbildung 9](./media/connectors-create-api-salesforce/action-9.png)  
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0914_2016-->

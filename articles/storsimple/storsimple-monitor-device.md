@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="05/24/2016"
+   ms.date="08/16/2016"
    ms.author="alkohli" />
 
 # Verwenden des StorSimple Manager-Diensts zum Überwachen Ihres StorSimple-Geräts 
@@ -21,7 +21,7 @@
 
 Sie können den StorSimple Manager-Dienst verwenden, um bestimmte Geräte innerhalb Ihrer StorSimple-Lösung zu überwachen. Sie können benutzerdefinierte Diagramme basierend auf Metriken zu EA-Leistung, Kapazitätsauslastung, Netzwerkdurchsatz und Geräteleistung erstellen.
 
-Um die Überwachungsinformationen für ein bestimmtes Gerät anzuzeigen, wählen Sie im klassischen Azure-Portal den StorSimple Manager-Dienst aus, klicken Sie auf die Registerkarte **Überwachen**, und wählen Sie das gewünschte Gerät aus der Geräteliste aus. Die Seite **Überwachen** enthält die folgenden Informationen.
+Um die Überwachungsinformationen für ein bestimmtes Gerät anzuzeigen, wählen Sie im klassischen Azure-Portal den StorSimple Manager-Dienst aus. Klicken Sie auf die Registerkarte **Überwachen**, und wählen Sie in der Geräteliste das gewünschte Gerät aus. Die Seite **Überwachen** enthält die folgenden Informationen.
 
 ## E/A-Leistung 
 
@@ -46,7 +46,7 @@ Für das gleiche Gerät wurde beginnend um 14:00 Uhr eine Cloudmomentaufnahme f�
 **Kapazitätsauslastung** verfolgt Metrikdaten im Zusammenhang mit der Menge an Datenspeicherplatz nach, die von den Volumes, den Volumecontainern oder dem Gerät verwendet wird. Sie können Berichte zur Kapazitätsauslastung des primären Speichers, des Cloudspeichers oder des Gerätespeichers erstellen. Die Kapazitätsauslastung kann für ein bestimmtes Volume, einen bestimmten Volumecontainer oder alle Volumecontainer gemessen werden.
 
 
-Die primäre, die Cloud- und die Gerätespeicherkapazität kann wie folgt beschrieben werden:
+Die primäre, Cloud- und Gerätespeicherkapazität kann wie folgt beschrieben werden:
 
 ###Kapazitätsauslastung des primären Speichers
  
@@ -54,23 +54,29 @@ In diesen Diagrammen ist die Datenmenge dargestellt, die auf StorSimple-Volumes 
 
 Wenn Sie die Diagramme mit der Volume-Kapazitätsauslastung des primären Speichers für alle Volumes und für einzelne Volumes anzeigen und in beiden Fällen die primären Daten addieren, kann es sein, dass die beiden Ergebnisse nicht übereinstimmen. Die Gesamtmenge der primären Daten auf allen Volumes stimmt unter Umständen nicht mit der Summe der primären Daten der einzelnen Volumes überein. Dies kann einen der folgenden Gründe haben:
 
-- **Einbeziehung der Momentaufnahmedaten für alle Volumes**: Die primären Daten, die für alle Volumes angezeigt werden, sind die Summe der primären Daten für jedes Volume und der Momentaufnahmedaten. Die primären Daten, die für ein bestimmtes Volume angezeigt werden, entsprechen nur der Datenmenge, die dem Volume zugeordnet ist (und enthalten nicht die entsprechenden Volume-Momentaufnahmedaten).
+- **Einbeziehung der Momentaufnahmedaten für alle Volumes**: Dieses Verhalten tritt nur auf, wenn Sie eine Version vor Update 3 ausführen. Die primären Daten, die für alle Volumes angezeigt werden, sind die Summe der primären Daten für jedes Volume und der Momentaufnahmedaten. Die primären Daten, die für ein bestimmtes Volume angezeigt werden, entsprechen nur der Datenmenge, die dem Volume zugeordnet ist (und enthalten nicht die entsprechenden Volume-Momentaufnahmedaten).
 
 	Dies lässt sich auch anhand der folgenden Gleichung erläutern:
 
-	*Primäre Daten (alle Volumes) = Summe von (Primäre Daten (Volume i) + Größe der Momentaufnahmedaten (Volume i))*
+	*Primäre Daten (alle Volumes) = Summe von (Primäre Daten (Volume i) + Größe der Momentaufnahmedaten (Volume i))*
 	
 	*Hierbei gilt Folgendes: Primäre Daten (Volume i) = Größe der primären Daten, die Volume i zugeordnet sind.*
  
 	Wenn die Momentaufnahmen über den Dienst gelöscht werden, wird der Löschvorgang asynchron im Hintergrund durchgeführt. Es kann einige Zeit dauern, bis die Volumedatengröße nach dem Löschen der Momentaufnahmen aktualisiert wird.
+
+    Wenn Update 3 oder höher ausgeführt wird, sind die Momentaufnahmedaten nicht in den Volumedaten enthalten. Und die primäre Auslastung wird wie folgt berechnet:
+
+    *Primäre Daten (alle Volumes) = Summe von (Primäre Daten (Volume i))
+    
+    *Hierbei gilt Folgendes: Primäre Daten (Volume i) = Größe der primären Daten, die Volume i zugeordnet sind.*
  
-- **Volumes mit deaktivierter Überwachung in allen Volumes**: Wenn Sie auf Ihrem Gerät Volumes haben, für die die Überwachung deaktiviert ist, sind die Überwachungsdaten für diese einzelnen Volumes in den Diagrammen nicht verfügbar. In den Daten für alle Volumes im Diagramm sind aber die Volumes enthalten, für die die Überwachung deaktiviert ist.
+- **Volumes mit deaktivierter Überwachung in allen Volumes**: Wenn Sie auf Ihrem Gerät Volumes haben, für die die Überwachung deaktiviert ist, sind die Überwachungsdaten für diese einzelnen Volumes in den Diagrammen nicht verfügbar. In den Daten für alle Volumes im Diagramm sind jedoch die Volumes enthalten, für die die Überwachung deaktiviert ist.
  
 - **Gelöschte Volumes mit vorhandenen zugeordneten Backups für alle Volumes**: Wenn Volumes mit Momentaufnahmedaten gelöscht werden, die zugeordneten Momentaufnahmen aber noch vorhanden sind, stimmen die Werte unter Umständen nicht überein.
 
-- **Gelöschte Volumes für alle Volumes**: In einigen Fällen sind alte Volumes unter Umständen auch dann noch vorhanden, wenn sie gelöscht wurden. Die Auswirkung des Löschvorgangs wird nicht angezeigt, und für das Gerät wird ggf. eine geringere verfügbare Kapazität angegeben. Wenden Sie sich an den Microsoft-Support, um diese Volumes entfernen zu lassen.
+- **Gelöschte Volumes für alle Volumes**: In einigen Fällen sind alte Volumes unter Umständen auch dann noch vorhanden, wenn sie gelöscht wurden. Die Auswirkung des Löschvorgangs wird nicht angezeigt, und für das Gerät wird ggf. eine geringere verfügbare Kapazität angegeben. Sie müssen den Microsoft-Support bitten, diese Volumes zu entfernen.
 
-Die folgenden Diagramme stellen die Kapazitätsauslastung des Primärspeichers eines StorSimple-Geräts vor und nach dem Erstellen einer Cloudmomentaufnahme dar. Unter der Voraussetzung, dass es sich nur um Volumedaten handelt, sollte eine Cloudmomentaufnahme keine Auswirkungen auf den Primärspeicher haben. Wie Sie sehen, zeigt das Diagramm als Ergebnis der Erstellung der Cloudmomentaufnahme keinen Unterschied in der Kapazitätsauslastung des Primärspeichers. Beachten Sie, dass die Erstellung der Cloudmomentaufnahme auf dem betreffenden Gerät um 14:00 Uhr gestartet wurde.
+Die folgenden Diagramme stellen die Kapazitätsauslastung des Primärspeichers eines StorSimple-Geräts vor und nach dem Erstellen einer Cloudmomentaufnahme dar. Da es sich nur um Volumedaten handelt, sollte eine Cloudmomentaufnahme keine Auswirkungen auf den Primärspeicher haben. Wie Sie sehen, zeigt das Diagramm als Ergebnis der Erstellung der Cloudmomentaufnahme keinen Unterschied in der Kapazitätsauslastung des Primärspeichers. Die Erstellung der Cloudmomentaufnahme wurde auf dem betreffenden Gerät um 14:00 Uhr gestartet.
 
 ![Kapazitätsauslastung des Primärspeichers vor einer Cloudmomentaufnahme](./media/storsimple-monitor-device/StorSimple_PrimaryCapacityUtil_For_AllVolumes2M.png)
 
@@ -107,7 +113,7 @@ Die folgenden Diagramme stellen die Kapazitätsauslastung des Primärspeichers e
 
 **Netzwerkdurchsatz** verfolgt Metrikdaten im Zusammenhang mit der Menge an Daten nach, die von den Netzwerkschnittstellen des iSCSI-Initiators auf dem Hostserver und dem Gerät sowie zwischen Gerät und Cloud übertragen werden. Sie können diese Metrikdaten für jede iSCSI-Netzwerkschnittstelle Ihres Geräts überwachen.
 
-Das Diagramm unten stellt den Netzwerkdurchsatz für „Data 0“ und „Data 4“ dar; bei beiden handelt es sich um 1 GbE-Netzwerkschnittstellen auf dem Gerät. In diesem Fall war „Data 0“ cloudfähig, während „Data 4“ iSCSI-fähig war. Sowohl der eingehende als auch der ausgehende Datenverkehr des StorSimple-Geräts ist dargestellt. Beachten Sie, dass die flache Linie im Diagramm, die um 15:24 beginnt, auf die Tatsache zurückzuführen ist, dass Daten nur alle 5 Minuten erfasst werden, und daher ignoriert werden kann.
+Die folgenden Diagramme stellen den Netzwerkdurchsatz für „Data 0“ und „Data 4“ dar. Bei beiden handelt es sich um 1 GbE-Netzwerkschnittstellen auf dem Gerät. In diesem Fall war „Data 0“ cloudfähig, während „Data 4“ iSCSI-fähig war. Sowohl der eingehende als auch der ausgehende Datenverkehr des StorSimple-Geräts ist dargestellt. Die flache Linie im Diagramm, die um 15:24 Uhr beginnt, ist auf die Tatsache zurückzuführen, dass Daten nur alle 5 Minuten erfasst werden, weshalb sie ignoriert werden kann.
 
 ![Netzwerkdurchsatz für Data4](./media/storsimple-monitor-device/StorSimple_NetworkThroughput_Data0M.png)
 
@@ -124,6 +130,6 @@ Das Diagramm unten stellt den Netzwerkdurchsatz für „Data 0“ und „Data 4�
 
 - Informationen zur [Verwendung des StorSimple Manager-Dienstdashboards für Geräte](storsimple-device-dashboard.md).
 
-- Informationen zum [Verwalten Ihres StorSimple-Geräts mithilfe des StorSimple Manager-Diensts](storsimple-manager-service-administration.md).
+- Erfahren Sie, wie Sie [Ihr StorSimple-Gerät mithilfe des StorSimple Manager-Diensts verwalten](storsimple-manager-service-administration.md).
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0914_2016-->

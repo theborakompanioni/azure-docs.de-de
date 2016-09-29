@@ -12,7 +12,7 @@ ms.workload="tbd"
 ms.tgt_pltfrm="na" 
 ms.devlang="na" 
 ms.topic="article" 
-ms.date="06/07/2016" 
+ms.date="09/06/2016" 
 ms.author="adegeo"/>
 
 
@@ -44,7 +44,7 @@ Im Folgenden werden die Schritte beim Starten einer Rolle in Azure aufgeführt:
 
 2. Alle Startaufgaben werden gemäß ihres **taskType**-Attributs ausgeführt.
     - Die mit **simple** gekennzeichneten Aufgaben werden synchron, nacheinander ausgeführt.
-    - Die **background**- und **foreground**-Aufgaben werden asynchron, parallel zur Startaufgabe gestartet.  
+    - Die **background**- und **foreground**-Aufgaben werden asynchron, parallel zur Startaufgabe gestartet.
        
     > [AZURE.WARNING] IIS ist während der Startaufgabephase des Startprozesses möglicherweise nicht vollständig konfiguriert, sodass rollenspezifische Daten möglicherweise nicht verfügbar sind. Startaufgaben, die rollenspezifische Daten erfordern, sollten [Microsoft.WindowsAzure.ServiceRuntime.RoleEntryPoint.OnStart](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.onstart.aspx) verwenden.
 
@@ -105,7 +105,7 @@ Im Folgenden werden die Attribute des **Task**-Elements in der Datei [ServiceDef
 
 **taskType** – Legt fest, wie eine Startaufgabe ausgeführt wird.
 
-- **simple** – Die Aufgaben werden synchron und nacheinander in der Reihenfolge ausgeführt, in der sie in der Datei [ServiceDefinition.csdef] aufgeführt werden. Wenn eine **simple**-Startaufgabe mit dem **errorlevel** Null (0) beendet wird, wird die nächste **simple**-Startaufgabe ausgeführt. Wenn keine weiteren **simple**-Startaufgaben ausgeführt werden sollen, wird die Rolle selbst gestartet.   
+- **simple** – Die Aufgaben werden synchron und nacheinander in der Reihenfolge ausgeführt, in der sie in der Datei [ServiceDefinition.csdef] aufgeführt werden. Wenn eine **simple**-Startaufgabe mit dem **errorlevel** Null (0) beendet wird, wird die nächste **simple**-Startaufgabe ausgeführt. Wenn keine weiteren **simple**-Startaufgaben ausgeführt werden sollen, wird die Rolle selbst gestartet.
 
     > [AZURE.NOTE] Wenn die **simple**-Aufgabe mit einem von Null abweichenden **errorlevel** beendet wird, wird die Instanz blockiert. Nachfolgende **simple**-Startaufgaben sowie die Rolle selbst werden nicht gestartet.
 
@@ -163,4 +163,4 @@ Erfahren Sie, wie Sie einige [allgemeine Startaufgaben](cloud-services-startup-t
 [RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
 [RoleEnvironment]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.aspx
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0914_2016-->

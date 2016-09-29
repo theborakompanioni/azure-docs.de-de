@@ -4,7 +4,7 @@
 	services="machine-learning" 
 	documentationCenter="" 
 	authors="ireiter" 
-	manager="paulettm" 
+	manager="jhubbard" 
 	editor="cgronlun"/>
 
 <tags 
@@ -35,17 +35,17 @@ Die Binomial Distribution Suite enthält die folgenden drei Dienste.
 ###Binomial Distribution Quantile Calculator
 Dieser Dienst akzeptiert vier Argumente einer Normalverteilung und berechnet die zugehörigen Quantile. Die Eingabeargumente sind:
 
-- p – eine einzige aggregierte Wahrscheinlichkeit mehrerer Versuche  
+- p – eine einzige aggregierte Wahrscheinlichkeit mehrerer Versuche
 - size – Anzahl von Versuchen
 - prob – Wahrscheinlichkeit des Erfolgs eines Versuchs
-- side – L für den unteren Rand der Verteilung, U für den oberen Rand der Verteilung 
+- side – L für den unteren Rand der Verteilung, U für den oberen Rand der Verteilung
 
 Die Ausgabe des Diensts ist das berechnete Quantil, das zur angegebenen Wahrscheinlichkeit gehört.
 
 ###Binomial Distribution Probability Calculator
 Dieser Dienst akzeptiert vier Argumente einer Binomialverteilung und berechnet die zugehörige Wahrscheinlichkeit. Die Eingabeargumente sind:
 
-- Q – ein einzelnes Quantil eines Ereignisses mit Binomialverteilung 
+- Q – ein einzelnes Quantil eines Ereignisses mit Binomialverteilung
 - size – Anzahl von Versuchen
 - prob – Wahrscheinlichkeit des Erfolgs eines Versuchs
 - side – L für den unteren Rand der Verteilung, U für den oberen Rand der Verteilung oder E, was einer einzelnen Zahl von Erfolgen entspricht.
@@ -55,7 +55,7 @@ Die Ausgabe des Diensts ist die berechnete Wahrscheinlichkeit, die dem angegeben
 ###Binomial Distribution Generator
 Dieser Dienst akzeptiert 3 Argumente einer Binomialverteilung und generiert eine zufällige Sequenz von Zahlen, die binomial verteilt werden. Die folgenden Argumente sollten innerhalb der Anforderung bereitgestellt werden:
 
-- n – Anzahl von Beobachtungen 
+- n – Anzahl von Beobachtungen
 - size – Anzahl von Versuchen
 - prob – Wahrscheinlichkeit des Erfolgs
 
@@ -290,4 +290,4 @@ Häufig gestellte Fragen zur Nutzung des Webdiensts und zum Veröffentlichen im 
 [6]: ./media/machine-learning-r-csharp-binomial-distribution/binomial_6.png
  
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0914_2016-->

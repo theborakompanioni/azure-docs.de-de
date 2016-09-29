@@ -6,13 +6,13 @@
    authors="mgoedtel"
    manager="jwhit"
    editor="tysonn" />
-<tags 
+<tags
    ms.service="automation"
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="06/06/2016"
+   ms.date="09/12/2016"
    ms.author="magoedte;bwren"/>
 
 # Starten eines Runbooks in Azure Automation
@@ -22,7 +22,7 @@ Die folgende Tabelle hilft Ihnen dabei herauszufinden, welche Methode zum Starte
 | **METHODE** | **MERKMALE** |
 |-------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [Azure-Portal](#starting-a-runbook-with-the-azure-portal) | <li>Einfachste Methode mit interaktiver Benutzeroberfläche.<br> <li>Formular zum Bereitstellen von einfachen Parameterwerten.<br> <li>Einfaches Nachverfolgen des Auftragsstatus.<br> <li>Authentifizierter Zugriff über Azure-Anmeldung. |
-| [Windows PowerShell](https://msdn.microsoft.com/library/dn690259.aspx) | <li>Aufruf über Befehlszeile mit Windows PowerShell-Cmdlets.<br> <li>Kann in eine automatisierte Lösung mit mehreren Schritten eingebunden werden.<br> <li>Anforderung wird über Zertifikat oder OAuth-Benutzerprinzipal/-Dienstprinzipal authentifiziert.<br> <li>Bereitstellen von einfachen und komplexen Parameterwerten.<br> <li>Nachverfolgen des Auftragsstatus.<br> <li>Client erforderlich zur Unterstützung der PowerShell-Cmdlets. |
+| [Windows PowerShell](https://msdn.microsoft.com/library/dn690259.aspx) | <li>Aufruf über Befehlszeile mit Windows PowerShell-Cmdlets.<br> <li>Kann in eine automatisierte Lösung mit mehreren Schritten eingebunden werden.<br> <li>Anforderung wird über Zertifikat oder OAuth-Benutzerprinzipal/-Dienstprinzipal authentifiziert.<br> <li>Bereitstellen von einfachen und komplexen Parameterwerten.<br> <li>Nachverfolgen des Auftragsstatus.<br> <li>Client erforderlich zur Unterstützung der PowerShell-Befehle. |
 | [Azure Automation-API](https://msdn.microsoft.com/library/azure/mt662285.aspx) | <li>Flexibelste Methode, jedoch auch sehr komplex.<br> <li>Aufruf aus jedem benutzerdefinierten Code, der HTTP-Anforderungen ausführen kann.<br> <li>Anforderung wird über Zertifikat oder OAuth-Benutzerprinzipal/-Dienstprinzipal authentifiziert.<br> <li>Bereitstellen von einfachen und komplexen Parameterwerten.<br> <li>Nachverfolgen des Auftragsstatus. |
 | [Webhooks](automation-webhooks.md) | <li>Starten eines Runbooks über eine einzelne HTTP-Anforderung.<br> <li>Authentifizierung über Sicherheitstoken in der URL.<br> <li>Client kann keine Parameterwerte überschreiben, die beim Erstellen des Webhooks festgelegt wurden. Ein Runbook kann einen einzelnen Parameter definieren, der mit den Details zur HTTP-Anforderung aufgefüllt wird.<br> <li>Keine Möglichkeit, den Auftragsstatus über die Webhook-URL nachzuverfolgen. |
 | [Reagieren auf eine Azure-Warnung](../log-analytics/log-analytics-alerts.md) | <li>Starten eines Runbooks als Reaktion auf eine Azure-Warnung.<br> <li>Konfigurieren eines Webhooks für Runbook und Link zum Warnen.<br> <li>Authentifizierung über Sicherheitstoken in der URL.<br> <li>Unterstützt derzeit nur Warnungen für Metriken. |
@@ -91,7 +91,7 @@ Der Azure Automation-Webdienst bietet spezielle Funktionen für Parameter, die b
 
 ### Benannte Werte
 
-Wenn der Parameter den Datentyp [object] enthält, können Sie das folgende JSON-Format verwenden, um eine Liste benannter Werte an den Parameter zu senden: *{"Name1":Wert1, "Name2":Wert2, "Name3":Wert3}*. Bei den Werten muss es sich um einfache Typen handeln. Das Runbook empfängt den Parameter als [PSCustomObject](https://msdn.microsoft.com/library/system.management.automation.pscustomobject(v=vs.85).aspx) mit Eigenschaften, die den einzelnen benannten Werten entsprechen.
+Wenn der Parameter den Datentyp [object] enthält, können Sie das folgende JSON-Format verwenden, um eine Liste benannter Werte an den Parameter zu senden: *{"Name1":Wert1, "Name2":Wert2, "Name3":Wert3}*. Bei den Werten muss es sich um einfache Typen handeln. Das Runbook empfängt den Parameter als [PSCustomObject](https://msdn.microsoft.com/library/system.management.automation.pscustomobject%28v=vs.85%29.aspx) mit Eigenschaften, die den einzelnen benannten Werten entsprechen.
 
 Betrachten Sie das folgende Testrunbook, das einen Parameter namens "user" akzeptiert.
 
@@ -101,10 +101,11 @@ Workflow Test-Parameters
    param (
       [Parameter(Mandatory=$true)][object]$user
    )
-    if ($user.Show) {
-        foreach ($i in 1..$user.RepeatCount) {
-            $user.FirstName
-            $user.LastName
+    $userObject = $user | ConvertFrom-JSON
+	if ($userObject.Show) {
+        foreach ($i in 1..$userObject.RepeatCount) {
+            $userObject.FirstName
+            $userObject.LastName
         }
     }
 }
@@ -113,7 +114,7 @@ Workflow Test-Parameters
 Für den Parameter "user" könnte folgender Text verwendet werden.
 
 ```
-{"FirstName":"Joe","LastName":"Smith","RepeatCount":2,"Show":true}
+{FirstName:'Joe',LastName:'Smith',RepeatCount:'2',Show:'True'}
 ```
 
 Dadurch wird die folgende Ausgabe zurückgegeben.
@@ -191,6 +192,7 @@ jsmith
 
 ## Nächste Schritte
 
--	Die Runbookarchitektur im aktuellen Artikel bietet eine allgemeine Beschreibung zu Hybrid Runbooks. Weitere Informationen finden Sie unter [Untergeordnete Runbooks in Azure Automation](automation-child-runbooks.md).
+-	Die Runbook-Architektur im aktuellen Artikel bietet einen allgemeinen Überblick über Runbooks, die zum Verwalten von Ressourcen in Azure und lokal mit dem Hybrid Runbook Worker eingesetzt werden. Weitere Informationen zum Ausführen von Automation-Runbooks in Ihrem Rechenzentrum finden Sie unter [Hybrid Runbook Worker](automation-hybrid-runbook-worker.md).
+-	Weitere Informationen zum Erstellen von modularen Runbooks, die von anderen Runbooks für spezifische oder allgemeine Funktionen verwendet werden, finden Sie unter [Untergeordnete Runbooks](automation-child-runbooks.md).
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0914_2016-->

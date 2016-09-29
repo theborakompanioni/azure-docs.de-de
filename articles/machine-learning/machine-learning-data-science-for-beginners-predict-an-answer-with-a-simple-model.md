@@ -5,7 +5,7 @@
    services="machine-learning"
    documentationCenter="na"
    authors="brohrer-ms"
-   manager="paulettm"
+   manager="jhubbard"
    editor="cjgronlund"/>
 
 <tags
@@ -45,7 +45,7 @@ Ein *Modell* ist eine vereinfachte, aber aussagekräftige Darstellung unserer Da
 
 ## Sammeln relevanten, genauer und verbundener Daten in ausreichender Menge
 
-Angenommen, ich möchte einen Diamanten kaufen. Ich habe einen Ring, der meiner Großmutter gehört hat, mit einer Fassung für einen Diamanten mit 1,35 Karat, und möchte eine Vorstellung erhalten, wie viel er kostet. Deswegen begebe ich mich zu einem Juwelier und notiere mir dort die Preise aller Diamanten in der Auslage und ihr Gewicht in Karat. Der erste Diamant hat 1,01 Karat und kostet 7.366 US-Dollar.
+Angenommen, ich möchte einen Diamanten kaufen. Ich habe einen Ring, der meiner Großmutter gehört hat, mit einer Fassung für einen Diamanten mit 1,35 Karat, und möchte eine Vorstellung erhalten, wie viel er kostet. Als Nächstes zeichnen wir eine vertikale Achse zum Aufzeichnen des Preises und verbinden Sie mit der horizontalen Gewichtsachse. Der erste Diamant hat 1,01 Karat und kostet 7.366 US-Dollar.
 
 Das wiederhole ich jetzt für alle anderen Diamanten in dem Geschäft.
 
@@ -141,4 +141,4 @@ Sehen Sie sich unbedingt auch die anderen Videos in der Reihe „Data Science f�
   * [Durchführen Ihres ersten Data Science-Experiments mit Azure Machine Learning](machine-learning-create-experiment.md)
   * [Einführung in Machine Learning in Microsoft Azure](machine-learning-what-is-machine-learning.md)
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0914_2016-->

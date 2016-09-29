@@ -4,7 +4,7 @@
 	services="machine-learning,hdinsight"
 	documentationCenter=""
 	authors="bradsev"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun" />
 
 <tags
@@ -97,7 +97,7 @@ Sie können zum Abrufen des Datasets [NYC Taxi Trips](http://www.andresmh.com/ny
 
 Nachfolgend wird beschrieben, wie Sie AzCopy zum Übertragen der Dateien verwenden, die Daten enthalten. Folgen Sie den Anweisungen unter [Erste Schritte mit dem Befehlszeilenprogramm AzCopy](../storage/storage-use-azcopy.md), um AzCopy herunterzuladen und zu installieren.
 
-1. Führen Sie in einem Eingabeaufforderungsfenster die folgenden AzCopy-Befehle aus, und ersetzen Sie *<path_to_data_folder>* durch den gewünschten Speicherort:
+1. Führen Sie in einem Eingabeaufforderungsfenster die folgenden AzCopy-Befehle aus, und ersetzen Sie *<path\_to\_data\_folder>* durch den gewünschten Speicherort:
 
 
 		"C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:https://nyctaxitrips.blob.core.windows.net/data /Dest:<path_to_data_folder> /S
@@ -111,7 +111,7 @@ Nachfolgend wird beschrieben, wie Sie AzCopy zum Übertragen der Dateien verwend
 
 Ersetzen Sie in den folgenden AzCopy-Befehlen die folgenden Parameter durch die tatsächlichen Werte, die Sie beim Erstellen des Hadoop-Clusters und beim Entzippen der Dateien angegeben haben.
 
-* ***&#60;path\_to\_data\_folder>***: Das Verzeichnis (einschließlich Pfad) auf Ihrem Computer, das die extrahierten Datendateien enthält.  
+* ***&#60;path\_to\_data\_folder>***: Das Verzeichnis (einschließlich Pfad) auf Ihrem Computer, das die extrahierten Datendateien enthält.
 * ***&#60;storage account name of Hadoop cluster>***: Das Ihrem HDInsight-Cluster zugeordnete Speicherkonto.
 * ***&#60;default container of Hadoop cluster>***: Der von Ihrem Cluster verwendete Standardcontainer. Beachten Sie, dass der Name des Standardcontainers üblicherweise mit dem des Clusters übereinstimmt. Wenn der Cluster beispielsweise den Namen "abc123.azurehdinsight.net" verwendet, heißt der Standardcontainer "abc123".
 * ***&#60;storage account key>***: Der Schlüssel für das von Ihrem Cluster verwendete Speicherkonto.
@@ -371,7 +371,7 @@ Dies ergibt:
 
 Die Gesamtzahl der Datensätze in beiden Tabellen stimmt ebenfalls überein. Dies liefert einen zweiten Beweis dafür, dass die Daten korrekt geladen wurden.
 
-### Untersuchung: Verteilung der Fahrten nach "medallion"
+### Durchsuchen: Verteilung der Fahrten nach "medallion"
 
 >[AZURE.NOTE] Diese Aufgabe wird typischerweise von einem **Datenanalyst** ausgeführt.
 
@@ -454,7 +454,7 @@ Das *-S*-Argument in diesem Befehl unterdrückt die Ausgabe der Hive Map/Reduce-
 
 Für das im Abschnitt [Beispiele für Vorhersageaufgaben](machine-learning-data-science-process-hive-walkthrough.md#mltasks) beschriebene Problem der binären Klassifizierung ist es nützlich zu wissen, ob ein Trinkgeld gegeben wurde oder nicht. Die Verteilung der Trinkgelder ist binär:
 
-* Trinkgeld erhalten (Class 1, tip\_amount > $0)  
+* Trinkgeld erhalten (Class 1, tip\_amount > $0)
 * Kein Trinkgeld (Class 0, tip\_amount = $0)
 
 Dies wird in der nachstehenden Datei *sample\_hive\_tipped\_frequencies.hql* gezeigt.
@@ -810,4 +810,4 @@ Diese exemplarische Vorgehensweise und die zugehörigen Skripts werden von Micro
 [select-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
 [import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0914_2016-->

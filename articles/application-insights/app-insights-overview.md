@@ -116,7 +116,7 @@ Versuchen Sie, eines dieser Diagramme zu bearbeiten. Wenn beispielsweise Ihre We
     Beachten Sie, dass Sie eine gültige Eigenschaft für die Metrik auswählen müssen, sonst zeigt das Diagramm gar keine Daten an.
 4. Wählen Sie einen Diagrammtyp aus. Flächen- und Balkendiagramme zeigen eine gestapelte Ansicht, die sich für den Aggregationstyp „Summe“ eignet.
 
-[Weitere Informationen zum Erkunden von Metriken](app-insights-metrics-explorer.md).
+[Weitere Informationen zum Erkunden von Metriken](app-insights-metrics-explorer.md)
 
 ## Durchsuchen von Instanzdaten
 
@@ -311,7 +311,7 @@ Sie können [Metrikwarnungen](app-insights-alerts.md) konfigurieren, die Sie inf
 Es gibt verschiedene Methoden, um Ihre Telemetriedaten aus dem Application Insights-Portal abzurufen:
 
 * Der [fortlaufende Export](app-insights-export-telemetry.md) ist ideal, wenn Sie große Teile Ihrer Telemetriedaten länger beibehalten möchten als in der standardmäßigen Aufbewahrungsdauer vorgesehen.
-* [Die Schaltfläche „Exportieren“](app-insights-metrics-explorer.md#export-to-excel) ganz oben in einem Blatt „Metriken“ oder „Suche“, mit der Sie Tabellen und Diagramme in ein Excel-Arbeitsblatt übertragen können.
+* Die Schaltfläche [Exportieren](app-insights-metrics-explorer.md#export-to-excel) ganz oben in dem Blatt „Metriken“ oder „Suche“, mit der Sie Tabellen und Diagramme in ein Excel-Arbeitsblatt übertragen können
 * [Analytics](app-insights-analytics.md) bietet eine leistungsstarke Abfragesprache für Telemetriedaten und ermöglicht darüber hinaus das Exportieren von Ergebnissen.
 * Die Data Access-REST-API kann verwendet werden, um Daten zu suchen und zu extrahieren. Die API kann Analytics-Abfragen ausführen.
 * Wenn Sie [Ihre Daten in Power BI untersuchen](http://blogs.msdn.com/b/powerbi/archive/2015/11/04/explore-your-application-insights-data-with-power-bi.aspx) möchten, benötigen Sie dazu keinen fortlaufenden Export.
@@ -347,11 +347,11 @@ Beginnen mit der Entwicklungszeitmethode mit:
  * [Problembehandlung][qna]
  * [MSDN-Forum](https://social.msdn.microsoft.com/Forums/vstudio/home?forum=ApplicationInsights)
  * [StackOverflow](http://stackoverflow.com/questions/tagged/ms-application-insights)
-* Vorschläge:
+ * [Developer Support anfordern](app-insights-get-dev-support.md)
+* Ihre Vorschläge:
  * [UserVoice](https://visualstudio.uservoice.com/forums/357324)
 * Blog:
  * [Application Insights-Blog](https://azure.microsoft.com/blog/tag/application-insights)
-
 
 
 
@@ -386,4 +386,4 @@ Beginnen mit der Entwicklungszeitmethode mit:
 
  
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0914_2016-->

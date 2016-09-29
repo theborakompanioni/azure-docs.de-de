@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/30/2016"
+	ms.date="09/08/2016"
 	ms.author="iainfou"/>
 
 # Benennungsrichtlinien für die Infrastruktur
@@ -31,7 +31,7 @@ Entscheidungen:
 
 Aufgaben:
 
-- Legen Sie die Affixe fest, die Sie für die Ressourcen nutzen werden, um Konsistenz zu gewährleisten.
+- Legen Sie die Affixe fest, die Sie für die Ressourcen nutzen, um Konsistenz zu gewährleisten.
 - Legen Sie die Namen der Speicherkonten fest. Beachten Sie dabei, dass diese global eindeutig sein müssen.
 - Dokumentieren Sie die zu verwendende Benennungskonvention, und geben Sie diese an alle beteiligten Parteien weiter, um Konsistenz zwischen den Bereitstellungen zu gewährleisten.
 
@@ -41,7 +41,7 @@ Es sollte eine geeignete Benennungskonvention vorhanden sein, bevor Sie mit der 
 
 Sie können auch einen bestimmten Satz von Benennungskonventionen für Ihre gesamte Organisation oder für ein bestimmtes Azure-Abonnement oder -Konto anwenden. Es ist zwar einfach, für Einzelpersonen innerhalb von Organisationen implizite Regeln für die Arbeit mit Azure-Ressourcen einzurichten, bei der Arbeit eines Teams an einem Projekt in Azure ist dieses Modell jedoch nicht gut geeignet.
 
-Sie sollten den Satz von Benennungskonventionen im Voraus vereinbaren. Es gibt einige Überlegungen hinsichtlich Benennungskonventionen, die für alle Regelsätze gelten.
+Vereinbaren Sie im Voraus den Satz von Benennungskonventionen. Es gibt einige Überlegungen hinsichtlich Benennungskonventionen, die für alle Regelsätze gelten.
 
 ## Affixe
 
@@ -60,9 +60,9 @@ Affixe können auf verschiedene Aspekte verweisen, die die entsprechenden Ressou
 | Aspekt | Beispiele | Hinweise |
 |:-------------------------------------|:-----------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------|
 | Environment | dev, stg, prod | Abhängig von Zweck und Name der jeweiligen Umgebung. |
-| Standort | usw (USA Westen), use (USA Osten 2) | Abhängig von der Region des Datencenters oder der Region der Organisation. |
+| Ort | usw (USA Westen), use (USA Osten 2) | Abhängig von der Region des Datencenters oder der Region der Organisation. |
 | Azure-Komponente, -Dienst oder -Produkt | „Rg“ für Ressourcengruppe, „VNet“ für virtuelles Netzwerk | Je nach Produkt, das die Ressource unterstützt. |
-| Rolle | sql, ora, sp, iis | Abhängig von der Rolle des virtuellen Computers. |
+| Role | sql, ora, sp, iis | Abhängig von der Rolle des virtuellen Computers. |
 | Instanz | 01, 02, 03 usw. | Für Ressourcen, die mehr als eine Instanz besitzen. Beispielsweise Webserver mit Lastenausgleich in einem Clouddienst. |
 
 
@@ -74,7 +74,7 @@ In vielen Fällen ist es wichtig, das Datum der Erstellung anhand des Namens ein
 
 ## Benennen von Ressourcen
 
-Sie sollten die einzelnen Ressourcentypen in der Benennungskonvention definieren, die Regeln für die Zuweisung von Namen für die erstellten Ressourcen enthalten sollte. Diese Regeln sollten auf alle Ressourcentypen angewendet werden, z. B.:
+Definieren Sie die einzelnen Ressourcentypen in der Benennungskonvention, die Regeln für die Zuweisung von Namen für die erstellten Ressourcen enthalten sollte. Diese Regeln sollten auf alle Ressourcentypen angewendet werden, z. B.:
 
 - Abonnements
 - Konten
@@ -110,4 +110,4 @@ Für die Benennung von Speicherkonten gelten spezielle Regeln. Sie können nur K
 ## Nächste Schritte
 [AZURE.INCLUDE [virtual-machines-windows-infrastructure-guidelines-next-steps](../../includes/virtual-machines-windows-infrastructure-guidelines-next-steps.md)]
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0914_2016-->

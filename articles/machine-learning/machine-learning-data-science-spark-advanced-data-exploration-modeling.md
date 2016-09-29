@@ -4,7 +4,7 @@
 	services="machine-learning"
 	documentationCenter=""
 	authors="bradsev,deguhath,gokuma"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun"  />
 
 <tags
@@ -25,7 +25,7 @@ In dieser exemplarischen Vorgehensweise wird HDInsight Spark für das Durchsuche
 - Die Aufgabe zur **binären Klassifizierung** besteht darin, vorherzusagen, ob ein Trinkgeld für eine Fahrt bezahlt wird.
 - Die Aufgabe zur **Regression** besteht darin, die Höhe des Trinkgelds basierend auf anderen Trinkgeldfunktionen vorherzusagen.
 
-Die Modellierungsschritte enthalten auch Code zum Trainieren, Evaluieren und Speichern jedes Modelltyps. Das Thema überschneidet sich teilweise mit [Data exploration and modeling with Spark](machine-learning-data-science-spark-data-exploration-modeling.md) (Durchsuchen von Daten und Modellierung mit Spark), umfasst jedoch auch die Kreuzvalidierung in Verbindung mit Hyperparameter-Sweeping zum Trainieren optimal präziser Klassifizierungs- und Regressionsmodelle verwendet.
+Die Modellierungsschritte enthalten auch Code zum Trainieren, Evaluieren und Speichern jedes Modelltyps. Das Thema überschneidet sich teilweise mit [Durchsuchen von Daten und Modellierung mit Spark](machine-learning-data-science-spark-data-exploration-modeling.md), umfasst jedoch weitergehend auch die Kreuzvalidierung in Verbindung mit Hyperparameter-Sweeping zum Trainieren optimal präziser Klassifizierungs- und Regressionsmodelle.
 
 Die **Kreuzvalidierung** ist eine Technik, mit der bewertet wird, wie gut ein Modell, das mit einem bekannten Datensatz trainiert wurde, verallgemeinern kann, um die Features von Datensätzen, mit denen es nicht trainiert wurde, vorherzusagen. Der Grundgedanke hinter dieser Technik ist, dass ein Modell mit bekannten Daten trainiert wird und die Genauigkeit seiner Vorhersagen dann mit einem unabhängigen Datensatz geprüft wird. Eine gängige Implementierung besteht darin, den Datensatz k-fach aufzuteilen und das Modell daraufhin im Roundrobin-Verfahren mit allen Teilmengen außer einer zu trainieren.
 
@@ -1496,4 +1496,4 @@ Da Sie nun Regressions- und Klassifizierungsmodelle mit der Spark MlLib erstellt
 
 **Modellnutzung:** Informationen zum Bewerten und Evaluieren der in diesem Thema erstellten Klassifizierungs- und Regressionsmodelle finden Sie unter [Bewerten von Machine Learning-Modellen, die mit Spark erstellt wurden](machine-learning-data-science-spark-model-consumption.md).
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0914_2016-->

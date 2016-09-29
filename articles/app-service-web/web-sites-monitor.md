@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/31/2016"
+	ms.date="09/07/2016"
 	ms.author="byvinyal"/>
 
 # Gewusst wie: Überwachen von Apps in Azure App Service
@@ -126,9 +126,9 @@ Der **CPU-Prozentsatz** ist dagegen für Apps hilfreich, die unter Plänen vom T
 
 Metriken für eine Anwendung und einen App Service-Plan werden vom Dienst mit den folgenden Granularitäten und Aufbewahrungsrichtlinien protokolliert und aggregiert:
 
- * Metriken mit der Granularität **Minute** werden für **24 Stunden** beibehalten.
- * Metriken mit der Granularität **Stunde** werden für **7 Tage** beibehalten.
- * Metriken mit der Granularität **Tag** werden für **30 Tage** beibehalten.
+ * Metriken mit der Granularität **Minute** werden für **48 Stunden** beibehalten.
+ * Metriken mit der Granularität **Stunde** werden für **30 Tage** beibehalten.
+ * Metriken mit der Granularität **Tag** werden für **90 Tage** beibehalten.
 
 ## Überwachen von Kontingenten und Metriken im Azure-Portal
 
@@ -160,4 +160,4 @@ App Service-Apps, die unter App Service-Plänen vom Typ Basic, Standard oder Pre
 [quotas]: ./media/web-sites-monitor/quotas.png
 [metrics]: ./media/web-sites-monitor/metrics.png
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0914_2016-->

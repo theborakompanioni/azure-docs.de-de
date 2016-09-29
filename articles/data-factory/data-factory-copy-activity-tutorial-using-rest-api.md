@@ -13,22 +13,20 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="get-started-article" 
-	ms.date="08/17/2016" 
+	ms.date="09/16/2016" 
 	ms.author="spelluru"/>
 
 # Tutorial: Erstellen einer Pipeline mit Kopieraktivität mithilfe der REST-API
 > [AZURE.SELECTOR]
-- [Übersicht über das Tutorial](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
-- [Verwenden des Data Factory-Editors](data-factory-copy-activity-tutorial-using-azure-portal.md)
-- [Verwenden von PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
-- [Verwenden von Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
-- [Verwenden der REST-API](data-factory-copy-activity-tutorial-using-rest-api.md)
-- [Verwenden der .NET-API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
-- [Verwenden des Kopier-Assistenten](data-factory-copy-data-wizard-tutorial.md)
+- [Übersicht und Voraussetzungen](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
+- [Azure-Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)
+- [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
+- [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
+- [REST-API](data-factory-copy-activity-tutorial-using-rest-api.md)
+- [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
+- [Kopier-Assistent](data-factory-copy-data-wizard-tutorial.md)
 
 In diesem Tutorial wird veranschaulicht, wie Sie eine Azure Data Factory mit der REST-API erstellen und überwachen. Die Pipeline in der Data Factory verwendet eine Kopieraktivität zum Kopieren von Daten aus Azure Blob Storage in Azure SQL-Datenbank.
-
-Die Kopieraktivität dient zum Verschieben von Daten in Azure Data Factory. Sie basiert auf einem global verfügbaren Dienst, mit dem Daten zwischen verschiedenen Datenspeichern sicher, zuverlässig und skalierbar kopiert werden können. Ausführliche Informationen zur Kopieraktivität finden Sie im Artikel [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md).
 
 > [AZURE.NOTE] 
 In diesem Artikel werden nicht alle Komponenten der Data Factory-REST-API behandelt. In der [Data Factory REST-API-Referenz](https://msdn.microsoft.com/library/azure/dn906738.aspx) finden Sie eine umfassende Dokumentation zu Data Factory-Cmdlets.
@@ -36,7 +34,7 @@ In diesem Artikel werden nicht alle Komponenten der Data Factory-REST-API behand
 
 ## Voraussetzungen
 
-- Lesen Sie sich die [Übersicht über das Tutorial](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) durch.
+- Lesen Sie sich die [Übersicht über das Tutorial](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) durch, und führen Sie die Schritte zur Erfüllung der **Voraussetzungen** aus.
 - Installieren Sie [Curl](https://curl.haxx.se/dlwiz/) auf Ihrem Computer. Sie können das Curl-Tool mit REST-Befehlen zum Erstellen einer Data Factory verwenden.
 - Befolgen Sie die Anleitung in [diesem Artikel](../resource-group-create-service-principal-portal.md), um Folgendes durchzuführen:
 	1. Erstellen Sie eine Webanwendung mit dem Namen **ADFCopyTutorialApp** in Azure Active Directory.
@@ -136,7 +134,7 @@ Erstellen Sie die folgenden JSON-Dateien in dem Ordner, in dem sich die Datei �
 
 Mit der JSON-Definition wird ein Dataset mit dem Namen **AzureBlobInput** definiert, das Eingabedaten für eine Aktivität in der Pipeline darstellt. Darüber hinaus wird angegeben, dass die Eingabedaten in der Datei **emp.txt** enthalten sind, die sich im Blobcontainer **adftutorial** befindet.
 
- Beachten Sie Folgendes:
+ Beachten Sie folgende Punkte:
 
 - **dataset type** ist auf **AzureBlob** festgelegt.
 - **linkedServiceName** ist auf **AzureStorageLinkedService** festgelegt.
@@ -192,7 +190,7 @@ Um **folderPath** und **fileName** dynamisch basierend auf der **SliceStart**-Ze
 
 Mit der JSON-Definition wird ein Dataset mit dem Namen **AzureSqlOutput** definiert, das Ausgabedaten für eine Aktivität in der Pipeline darstellt. Darüber hinaus wird angegeben, dass die Ergebnisse in der Tabelle **emp** in der Datenbank gespeichert werden, die von „AzureSqlLinkedService“ dargestellt wird. Im Abschnitt **availability** wird angegeben, dass das Ausgabedataset stündlich erstellt wird („frequency: hour“ und „interval: 1“).
 
-Beachten Sie Folgendes:
+Beachten Sie folgende Punkte:
 
 - **dataset type** ist auf **AzureSQLTable** festgelegt.
 - **linkedServiceName** ist auf **AzureSqlLinkedService** festgelegt.
@@ -245,7 +243,7 @@ Beachten Sie Folgendes:
 	}
 
 
-Beachten Sie Folgendes:
+Beachten Sie folgende Punkte:
 
 - Der Abschnitt "activities" enthält nur eine Aktivität, deren **type** auf **CopyActivity** festgelegt ist.
 - Die Eingabe für die Aktivität ist auf **AzureBlobInput** und die Ausgabe für die Aktivität ist auf **AzureSqlOutput** festgelegt.
@@ -300,9 +298,9 @@ In diesem Schritt erstellen Sie eine Azure Data Factory mit dem Namen **ADFCopyT
 
 		Write-Host $results
 
-Beachten Sie Folgendes:
+Beachten Sie folgende Punkte:
  
-- Der Name der Azure Data Factory muss global eindeutig sein. Gehen Sie bei Anzeige des Fehlers **Der Data Factory-Name „ADFCopyTutorialDF“ ist nicht verfügbar** wie folgt vor:
+- Der Name der Azure Data Factory muss global eindeutig sein. Führen Sie bei Anzeige des Fehlers **Der Data Factory-Name „ADFCopyTutorialDF“ ist nicht verfügbar** die folgenden Schritte aus:
 	1. Ändern Sie den Namen (z.B. „ihrnameADFCopyTutorialDF“) in der Datei **datafactory.json**.
 	2. Ersetzen Sie im ersten Befehl an der Stelle, an der der Variablen **$cmd** ein Wert zugewiesen wird, „ADFCopyTutorialDF“ durch den neuen Namen, und führen Sie den Befehl aus.
 	3. Führen Sie die nächsten beiden Befehle zum Aufrufen der REST-API aus, um die Data Factory zu erstellen und die Ergebnisse des Vorgangs auszugeben.
@@ -493,4 +491,4 @@ In diesem Tutorial haben Sie mit der REST-API eine Azure Data Factory erstellt, 
 [sql-management-studio]: ../sql-database/sql-database-manage-azure-ssms.md
  
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0921_2016-->

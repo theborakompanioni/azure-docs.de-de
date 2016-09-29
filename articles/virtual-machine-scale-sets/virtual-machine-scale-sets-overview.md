@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/12/2016"
+	ms.date="09/13/2016"
 	ms.author="guybo"/>
 
 # Übersicht über VM-Skalierungsgruppen
@@ -31,7 +31,9 @@ Sehen Sie sich diese Videos an, um weitere Informationen zu VM-Skalierungsgruppe
 
 ## Erstellen und Verwalten von VM-Skalierungsgruppen
 
-VM-Skalierungsgruppen können mithilfe von JSON-Vorlagen und [REST-APIs](https://msdn.microsoft.com/library/mt589023.aspx) definiert und bereitgestellt werden, ganz genauso wie einzelne virtuelle Azure-Ressourcen-Manager-Computer. Daher können alle standardmäßigen Azure-Ressourcen-Manager-Bereitstellungsmethoden verwendet werden. Weitere Informationen zu Vorlagen finden Sie unter [Erstellen von Azure-Ressourcen-Manager-Vorlagen](../resource-group-authoring-templates.md).
+Erstellen Sie im [Azure-Portal](https://portal.azure.com) eine VM-Skalierungsgruppe, indem Sie _Neu_ auswählen und „skalieren“ in die Suchleiste eingeben. In den Ergebnissen wird „VM-Skalierungsgruppe“ angezeigt. Sie können anschließend die Pflichtfelder ausfüllen, um Ihre Skalierungsgruppe anzupassen und bereitzustellen.
+
+VM-Skalierungsgruppen können auch mithilfe von JSON-Vorlagen und [REST-APIs](https://msdn.microsoft.com/library/mt589023.aspx) ebenso wie einzelne virtuelle Azure-Ressourcen-Manager-Computer definiert und bereitgestellt werden. Daher können alle standardmäßigen Azure-Ressourcen-Manager-Bereitstellungsmethoden verwendet werden. Weitere Informationen zu Vorlagen finden Sie unter [Erstellen von Azure-Ressourcen-Manager-Vorlagen](../resource-group-authoring-templates.md).
 
 Eine Reihe von Beispielvorlagen für VM-Skalierungsgruppen finden Sie [hier](https://github.com/Azure/azure-quickstart-templates) im GitHub-Repository für Azure-Schnellstartvorlagen (suchen Sie nach Vorlagen mit _vmss_ im Titel).
 
@@ -75,7 +77,7 @@ Dieser Abschnitt enthält einige typische Szenarien für VM-Skalierungsgruppen. 
 
 	[Als Beispiel für diese Herangehensweise erstellt die folgende Vorlage einen einfachen Mesos-Cluster mit einem eigenständigen virtuellen Mastercomputer, der einen auf einer VM-Skalierungsgruppe basierenden Cluster von virtuellen Computern verwaltet.](https://github.com/gbowerman/azure-myriad/blob/master/mesos-vmss-simple-cluster.json)
 
- - **Roundrobin-Lastenausgleich für VM-Skalierungsgruppeninstanzen** – Wenn Sie eine Workload per Roundrobin an einen Computecluster aus virtuellen Computern übergeben möchten, können Sie einen Azure Load Balancer mit entsprechenden Lastenausgleichsregeln konfigurieren. Sie können Tests definieren, um zu überprüfen, ob Ihre Anwendung ordnungsgemäß ausgeführt wird. Diese Tests pingen die Ports mit einem festgelegten Protokoll in vorgegebenen Zeitabständen und mit einem angegebenen Anforderungspfad. Azure [Application Gateway](https://azure.microsoft.com/services/application-gateway/) unterstützt darüber hinaus Skalierungsgruppen sowie anspruchsvollere Lastenausgleichsszenarien.
+ - **Lastenausgleich für VM-Skalierungsgruppeninstanzen** – Wenn Sie eine Workload per Roundrobin an einen Computecluster aus virtuellen Computern übergeben möchten, können Sie einen Azure Load Balancer mit entsprechenden Lastenausgleichsregeln konfigurieren. Sie können Tests definieren, um zu überprüfen, ob Ihre Anwendung ordnungsgemäß ausgeführt wird. Diese Tests pingen die Ports mit einem festgelegten Protokoll in vorgegebenen Zeitabständen und mit einem angegebenen Anforderungspfad. Azure [Application Gateway](https://azure.microsoft.com/services/application-gateway/) unterstützt darüber hinaus Skalierungsgruppen sowie anspruchsvollere Lastenausgleichsszenarien.
 
 	[Im folgenden Beispiel wird eine VM-Skalierungsgruppe mit virtuellen Computern erstellt, auf denen ein IIS-Webserver ausgeführt wird. Dabei wird die Last für die einzelnen virtuellen Computer mit einem Load Balancer ausgeglichen. In dem Beispiel wird HTTP verwendet, um auf jedem virtuellen Computer eine spezifische URL zu pingen.](https://github.com/gbowerman/azure-myriad/blob/master/vmss-win-iis-vnet-storage-lb.json) (Sehen Sie sich hier besonders den Ressourcentyp „Microsoft.Network/loadBalancers“ sowie „networkProfile“ und „extensionProfile“ in „virtualMachineScaleSet“ an.)
 
@@ -88,7 +90,7 @@ Dieser Abschnitt enthält einige typische Szenarien für VM-Skalierungsgruppen. 
 ## Richtlinien zur Leistungsfähigkeit von VM-Skalierungsgruppen und zum Skalieren
 
 - Erstellen Sie höchstens 500 virtuelle Computer in mehreren VM-Skalierungsgruppen gleichzeitig.
-- Planen Sie nicht mehr als 20 virtuelle Computer pro Speicherkonto ein (es sei denn, Sie legen die _overprovision_-Eigenschaft auf „false“ fest, in diesem Fall können Sie bis zu 40 festlegen).
+- Planen Sie nicht mehr als 20 virtuelle Computer pro Speicherkonto ein (es sei denn, Sie legen die _overprovision_-Eigenschaft auf „false“ fest, denn in diesem Fall können Sie bis zu 40 festlegen).
 - Nutzen Sie für die Namen der Speicherkonten verschiedene und im Alphabet möglichst weit auseinanderliegende Buchstaben. Die Beispielvorlagen für VM-Skalierungsgruppen (VMSS, Virtual Machine Scale Sets) in den [Azure-Schnellstartvorlagen](https://github.com/Azure/azure-quickstart-templates/) veranschaulichen die empfohlene Vorgehensweise.
 - Wenn Sie benutzerdefinierte virtuelle Computer verwenden, sollten Sie mit höchstens 40 virtuellen Computern pro VM-Skalierungsgruppe in einem einzelnen Speicherkonto planen. Sie müssen das Image vorab in das Speicherkonto kopieren, bevor Sie mit der Bereitstellung der VM-Skalierungsgruppe beginnen können. Weitere Informationen finden Sie in den FAQ.
 - Planen Sie mit höchstens 4096 virtuellen Computern pro VNET.
@@ -98,11 +100,11 @@ Dieser Abschnitt enthält einige typische Szenarien für VM-Skalierungsgruppen. 
 
 **F.** Wie viele virtuelle Computer können in eine VM-Skalierungsgruppe aufgenommen werden?
 
-**A.** 100, sofern Sie Plattformimages verwenden, die über mehrere Speicherkonten verteilt werden können. Wenn Sie benutzerdefinierte Images verwenden, bis zu 40 (wenn die _overprovision_-Eigenschaft auf „false“ gesetzt ist, standardmäßig sind es 20), da benutzerdefinierte Images derzeit nur in einem einzelnen Speicherkonto platziert werden können.
+**A.** 100, sofern Sie Plattformimages verwenden, die über mehrere Speicherkonten verteilt werden können. Wenn Sie benutzerdefinierte Images verwenden, bis zu 40 (wenn die _overprovision_-Eigenschaft auf „false“ festgelegt ist, denn standardmäßig sind es 20), da benutzerdefinierte Images derzeit auf ein einzelnes Speicherkonto begrenzt sind.
 
 **F.** Welche anderen Ressourceneinschränkungen bestehen für VM-Skalierungsgruppen?
 
-**A.** Während eines 10-minütigen Zeitraums dürfen höchstens 500 virtuelle Computer in mehreren Skalierungsgruppen pro Region erstellt werden. Die vorhandenen [Diensteinschränkungen des Azure-Abonnements](../azure-subscription-service-limits.md) gelten.
+**A.** Während eines 10-minütigen Zeitraums dürfen höchstens 500 virtuelle Computer in mehreren Skalierungsgruppen pro Region erstellt werden. Die bestehenden [Diensteinschränkungen des Azure-Abonnements](../azure-subscription-service-limits.md) gelten.
 
 **F.** Werden Datenträger innerhalb von VM-Skalierungsgruppen unterstützt?
 
@@ -149,10 +151,10 @@ Dieser Abschnitt enthält einige typische Szenarien für VM-Skalierungsgruppen. 
 
 **F.** Kann ich beim Verwenden mehrerer Erweiterungen in einer VM-Skalierungsgruppe eine Ausführungsreihenfolge erzwingen?
 
-**A.** Nicht direkt. Bei der customScript-Erweiterung kann das Skript jedoch warten, bis eine andere Erweiterung abgeschlossen ist ([z.B. durch Überwachung des Erweiterungsprotokolls](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vmss-lapstack-autoscale/install_lap.sh)). Weitere Informationen zur Erweiterungssequenzierung finden Sie im folgenden Blogbeitrag: [Extension Sequencing in Azure VM Scale Sets](https://msftstack.wordpress.com/2016/05/12/extension-sequencing-in-azure-vm-scale-sets/) (Erweiterungssequenzierung in Skalierungsgruppen mit virtuellen Azure-Computern).
+**A.** Nicht direkt. Bei der „customScript“-Erweiterung kann das Skript jedoch warten, bis eine andere Erweiterung abgeschlossen ist ([z.B. durch Überwachung des Erweiterungsprotokolls](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vmss-lapstack-autoscale/install_lap.sh)). Weitere Informationen zur Erweiterungssequenzierung finden Sie im folgenden Blogbeitrag: [Extension Sequencing in Azure VM Scale Sets](https://msftstack.wordpress.com/2016/05/12/extension-sequencing-in-azure-vm-scale-sets/) (Erweiterungssequenzierung in Skalierungsgruppen mit virtuellen Azure-Computern).
 
 **F.** Funktionieren VM-Skalierungsgruppen mit Azure-Verfügbarkeitsgruppen?
 
 **A.** Ja. Eine VM-Skalierungsgruppe ist eine implizite Verfügbarkeitsgruppe mit 5 Fehlerdomänen (FDs) und 5 Updatedomänen (UDs). Unter virtualMachineProfile brauchen Sie nichts zu konfigurieren. In künftigen Versionen werden VM-Skalierungsgruppen wahrscheinlich mehrere Mandanten umspannen, aber derzeit entspricht eine Skalierungsgruppe einer einzigen Verfügbarkeitsgruppe.
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0914_2016-->

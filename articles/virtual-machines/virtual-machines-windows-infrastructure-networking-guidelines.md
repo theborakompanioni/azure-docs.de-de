@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/30/2016"
+	ms.date="09/08/2016"
 	ms.author="iainfou"/>
 
 # Richtlinien für die Netzwerkinfrastruktur
@@ -45,22 +45,22 @@ Aufgaben:
 
 Virtuelle Netzwerke sind erforderlich, um die Kommunikation zwischen virtuellen Computern zu unterstützen. Sie können Subnetze, benutzerdefinierte IP-Adressen, DNS-Einstellungen, Sicherheitsfilter und Lastenausgleich definieren, genau wie bei physischen Netzwerken. Durch Verwendung eines [Standort-zu-Standort-VPN](../vpn-gateway/vpn-gateway-topology.md) oder einer [ExpressRoute-Verbindung](../expressroute/expressroute-introduction.md) können Sie virtuelle Azure-Netzwerke mit Ihren lokalen Netzwerken verbinden. Hier finden Sie weitere Informationen zu [virtuellen Netzwerken und ihren Komponenten](../virtual-network/virtual-networks-overview.md).
 
-Die Verwendung von Ressourcengruppen bietet Flexibilität beim Entwurf der virtuellen Netzwerkkomponenten. Virtuelle Computer können Verbindungen mit virtuellen Netzwerken außerhalb ihrer eigenen Ressourcengruppe herstellen. Ein gängiger Entwurfsansatz besteht darin, zentralisierte Ressourcengruppen zu erstellen, die Ihre zentrale, von einem gemeinsamen Team verwaltete Netzwerkinfrastruktur enthalten. Anschließend können virtuelle Computer und ihre Anwendungen in verschiedenen Ressourcengruppen bereitgestellt werden. Damit ermöglichen Sie es Anwendungsbesitzern, auf die Ressourcengruppe mit ihren virtuellen Computern zuzugreifen, ohne diesen gleichzeitig Zugriff auf die Konfiguration der weiteren virtuellen Netzwerkressourcen zu gewähren.
+Die Verwendung von Ressourcengruppen bietet Flexibilität beim Entwurf der virtuellen Netzwerkkomponenten. Virtuelle Computer können Verbindungen mit virtuellen Netzwerken außerhalb ihrer eigenen Ressourcengruppe herstellen. Ein gängiger Entwurfsansatz besteht darin, zentralisierte Ressourcengruppen zu erstellen, die Ihre zentrale, von einem gemeinsamen Team verwaltete Netzwerkinfrastruktur enthalten. Anschließend können virtuelle Computer und ihre Anwendungen in verschiedenen Ressourcengruppen bereitgestellt werden. Dieser Ansatz ermöglicht Anwendungsbesitzern, auf die Ressourcengruppe mit ihren virtuellen Computern zuzugreifen, ohne diesen gleichzeitig Zugriff auf die Konfiguration der weiteren virtuellen Netzwerkressourcen zu gewähren.
 
 ## Standortkonnektivität
 
 ### Rein cloudbasierte virtuelle Netzwerke
-Wenn lokale Benutzer und Computer nicht kontinuierlich mit virtuellen Computern im virtuellen Azure-Netzwerk verbunden sein müssen, wird der Entwurf Ihres virtuellen Netzwerks recht geradlinig ausfallen:
+Wenn lokale Benutzer und Computer nicht kontinuierlich mit virtuellen Computern im virtuellen Azure-Netzwerk verbunden sein müssen, wird der Entwurf Ihres virtuellen Netzwerks geradlinig ausfallen:
 
 ![Grundlegendes Diagramm eines rein cloudbasierten virtuellen Netzwerks](./media/virtual-machines-common-infrastructure-service-guidelines/vnet01.png)
 
-Dies eignet sich normalerweise für Internetworkloads, wie z. B. Internetwebserver. Sie können diese virtuellen Computer mit RDP oder Punkt-zu-Standort-VPN-Verbindungen verwalten.
+Dieser Ansatz eignet sich normalerweise für Internetworkloads, wie z. B. Internetwebserver. Sie können diese virtuellen Computer mit RDP oder Punkt-zu-Standort-VPN-Verbindungen verwalten.
 
 Da sie nicht mit Ihrem lokalen Netzwerk verbunden sind, können nur in Azure bestehende virtuelle Netzwerke einen beliebigen Teil des privaten IP-Adressraums verwenden, auch wenn dieser private Raum bereits lokal verwendet wird.
 
 
 ### Standortübergreifende virtuelle Netzwerke
-Wenn lokale Benutzer und Computer ständige Verbindungen mit virtuellen Computern in einem virtuellen Azure-Netzwerk benötigen, erstellen Sie ein standortübergreifendes virtuelles Netzwerk und verbinden es über eine ExpressRoute- oder Standort-zu-Standort-VPN-Verbindung mit Ihrem lokalen Netzwerk.
+Wenn lokale Benutzer und Computer nicht kontinuierlich mit virtuellen Computern im virtuellen Azure-Netzwerk verbunden sein müssen, erstellen Sie ein standortübergreifendes virtuelles Netzwerk. Verbinden Sie es über eine ExpressRoute- oder Standort-zu-Standort-VPN-Verbindung mit Ihrem lokalen Netzwerk.
 
 ![Diagramm eines standortübergreifenden virtuellen Netzwerks](./media/virtual-machines-common-infrastructure-service-guidelines/vnet02.png)
 
@@ -70,12 +70,12 @@ Da sie mit Ihrem lokalen Netzwerk verbunden sind, müssen standortübergreifende
 
 Um Pakete aus Ihrem standortübergreifenden virtuellen Netzwerk in Ihr lokales Netzwerk zu übertragen, müssen Sie den Satz von entsprechenden lokalen Adresspräfixen als Teil der Definition des lokalen Netzwerks für das virtuelle Netzwerk konfigurieren. Je nach dem Adressraum des virtuellen Netzwerks sowie den entsprechenden lokalen Standorten können viele Adresspräfixe im lokalen Netzwerk vorhanden sein.
 
-Sie können ein rein cloudbasiertes virtuelles Netzwerk in ein standortübergreifendes virtuelles Netzwerk konvertieren. Dabei müssen Sie jedoch höchstwahrscheinlich die IP-Adressen des virtuellen Netzwerkadressraums, der Subnetze und der virtuellen Computer, die statische Azure-IP-Adressen verwenden, neu zuweisen. Prüfen Sie daher sorgfältig, ob ein virtuelles Netzwerk mit Ihrem lokalen Netzwerk verbunden werden muss, wenn Sie ein IP-Subnetz zuweisen.
+Sie können ein rein cloudbasiertes virtuelles Netzwerk in ein standortübergreifendes virtuelles Netzwerk konvertieren. Dabei müssen Sie jedoch höchstwahrscheinlich die IP-Adressen des virtuellen Netzwerkadressraums und der Azure-Ressourcen neu zuweisen. Prüfen Sie daher sorgfältig, ob ein virtuelles Netzwerk mit Ihrem lokalen Netzwerk verbunden werden muss, wenn Sie ein IP-Subnetz zuweisen.
 
 ## Subnetze
-Subnetze ermöglichen es Ihnen, Ressourcen zu organisieren, die entweder logisch (z.B. in einem Subnetz für virtuelle Computer, die der gleichen Anwendung zugeordnet sind) oder physisch (z.B. in einem Subnetz pro Ressourcengruppe) verknüpft sind. Sie können mit Subnetzen auch Isolationstechniken zur Erhöhung der Sicherheit implementieren.
+Subnetze ermöglichen Ihnen, Ressourcen zu organisieren, die entweder logisch (z.B. in einem Subnetz für virtuelle Computer, die der gleichen Anwendung zugeordnet sind) oder physisch (z.B. in einem Subnetz pro Ressourcengruppe) verknüpft sind. Sie können mit Subnetzen auch Isolationstechniken zur Erhöhung der Sicherheit implementieren.
 
-Für standortübergreifende virtuelle Netzwerke sollten Sie Subnetze mit den gleichen Konventionen entwerfen, die Sie für lokale Ressourcen verwenden. Bedenken Sie dabei jedoch, dass **Azure immer die ersten drei IP-Adressen des Adressbereichs für jedes Subnetz verwendet**. Um die erforderliche Anzahl von Adressen für das Subnetz zu ermitteln, zählen Sie die virtuellen Computer, die Sie jetzt benötigen, und schätzen Sie, wie viele für zukünftiges Wachstum hinzukommen können. Verwenden Sie dann die folgende Tabelle, um die Größe des Subnetzes zu bestimmen.
+Für standortübergreifende virtuelle Netzwerke sollten Sie Subnetze gemäß den gleichen Konventionen entwerfen, die für lokale Ressourcen gelten. **Azure verwendet für jedes Subnetz stets die ersten drei IP-Adressen des Adressbereichs**. Um die Anzahl der für das Subnetz benötigten Adressen zu ermitteln, starten Sie mit dem Bestimmen der Anzahl virtueller Computer, die Sie derzeit benötigen. Schätzen Sie das künftige Wachstum, und verwenden Sie dann die folgende Tabelle, um die Größe des Subnetzes zu bestimmen.
 
 Anzahl der erforderlichen virtuellen Computer | Anzahl der erforderlichen Hostbits | Subnetzgröße
 --- | --- | ---
@@ -87,17 +87,17 @@ Anzahl der erforderlichen virtuellen Computer | Anzahl der erforderlichen Hostbi
 
 > [AZURE.NOTE] Für normale lokale Subnetze ist die maximale Anzahl von Adressen für ein Subnetz mit n Hostbits 2<sup>n</sup>-2. Für ein Azure-Subnetz ist die maximale Anzahl von Adressen für ein Subnetz mit n Hostbits 2<sup>n</sup>-5 (2+3 für die Adressen, die Azure in jedem Subnetz verwendet).
 
-Wenn Sie eine zu geringe Subnetzgröße wählen, müssen Sie den virtuellen Computern im Subnetz neue IP-Adressen zuweisen und die Computer neu bereitstellen.
+Wenn Sie eine zu kleine Subnetzgröße wählen, müssen Sie den virtuellen Computern im Subnetz neue IP-Adressen zuweisen und die Computer neu bereitstellen.
 
 
 ## Netzwerksicherheitsgruppen
-Sie können Filterregeln auf den Datenverkehr in Ihren virtuellen Netzwerken anwenden, indem Sie Netzwerksicherheitsgruppen verwenden. Sie können sehr differenzierte Filterregeln zum Schutz Ihrer virtuellen Netzwerkumgebung erstellen, um eingehenden und ausgehenden Datenverkehr, Quell- und Ziel-IP-Bereiche, zugelassene Ports usw. zu steuern. Netzwerksicherheitsgruppen können auf Subnetze innerhalb eines virtuellen Netzwerks oder direkt auf eine bestimmte virtuelle Netzwerkschnittstelle angewendet werden. Es wird empfohlen, ein gewisses Maß an Datenverkehrsfilterung für die Netzwerksicherheitsgruppen in Ihren virtuellen Netzwerken bereitzustellen. Hier finden Sie weitere Informationen zu[ Netzwerksicherheitsgruppen](../virtual-network/virtual-networks-nsg.md).
+Sie können Filterregeln auf den Datenverkehr in Ihren virtuellen Netzwerken anwenden, indem Sie Netzwerksicherheitsgruppen verwenden. Sie können differenzierte Filterregeln zum Schutz Ihrer virtuellen Netzwerkumgebung erstellen, um eingehenden und ausgehenden Datenverkehr, Quell- und Ziel-IP-Bereiche, zugelassene Ports usw. zu steuern. Netzwerksicherheitsgruppen können auf Subnetze innerhalb eines virtuellen Netzwerks oder direkt auf eine bestimmte virtuelle Netzwerkschnittstelle angewendet werden. Es wird empfohlen, ein gewisses Maß an Datenverkehrsfilterung für die Netzwerksicherheitsgruppen in Ihren virtuellen Netzwerken bereitzustellen. Hier finden Sie weitere Informationen zu[ Netzwerksicherheitsgruppen](../virtual-network/virtual-networks-nsg.md).
 
 
 ## Zusätzliche Netzwerkkomponenten
-Ebenso wie eine lokale physische Netzwerkinfrastruktur können auch virtuelle Azure-Netzwerke mehr als nur Subnetze und IP-Adressen enthalten. Beim Erstellen Ihrer Anwendungsinfrastruktur möchten Sie möglicherweise einige dieser zusätzlichen Komponenten integrieren:
+Ebenso wie eine lokale physische Netzwerkinfrastruktur können auch virtuelle Azure-Netzwerke mehr als Subnetze und IP-Adressen enthalten. Beim Erstellen Ihrer Anwendungsinfrastruktur möchten Sie möglicherweise einige dieser zusätzlichen Komponenten integrieren:
 
-- [VPN-Gateways](../vpn-gateway/vpn-gateway-about-vpngateways.md): Verbinden Sie virtuelle Azure-Netzwerke über ein Standort-zu-Standort-VPN mit anderen virtuellen Azure-Netzwerken und lokalen Netzwerken, bieten Sie Benutzern direkten Zugriff mit Punkt-zu-Standort-Verbindungen oder implementieren Sie ExpressRoute-Verbindungen für dedizierte, sichere Verbindungen.
+- [VPN-Gateways](../vpn-gateway/vpn-gateway-about-vpngateways.md) verbinden virtuelle Azure-Netzwerke mit anderen virtuellen Azure-Netzwerken oder ermöglichen über eine Standort-zu-Standort-VPN-Verbindung eine Anbindung an lokale Netzwerke. Richten Sie ExpressRoute-Verbindungen ein, um für fest zugeordnete, sichere Verbindungen zu sorgen. Über Punkt-zu-Standort-VPN-Verbindungen können Sie Benutzern auch einen Direktzugriff bereitstellen.
 - [Load Balancer](../load-balancer/load-balancer-overview.md): Bietet Lastenausgleich für Datenverkehr, ganz nach Wunsch sowohl für externen als auch für internen.
 - [Application Gateway](../application-gateway/application-gateway-introduction.md): Bietet mit HTTP-Lastenausgleich auf der Anwendungsschicht mehr Vorteile für Webanwendungen als die alleinige Bereitstellung von Azure Load Balancer.
 - [Traffic Manager](../traffic-manager/traffic-manager-overview.md): DNS-basierte Verteilung des Datenverkehrs, sodass Endbenutzer zum nächsten verfügbaren Anwendungsendpunkt geleitet werden und Sie Ihre Anwendung außerhalb von Azure-Rechenzentren in unterschiedlichen Regionen hosten können.
@@ -107,4 +107,4 @@ Ebenso wie eine lokale physische Netzwerkinfrastruktur können auch virtuelle Az
 
 [AZURE.INCLUDE [virtual-machines-windows-infrastructure-guidelines-next-steps](../../includes/virtual-machines-windows-infrastructure-guidelines-next-steps.md)]
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0914_2016-->

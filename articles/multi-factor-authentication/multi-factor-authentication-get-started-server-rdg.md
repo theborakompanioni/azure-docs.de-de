@@ -1,20 +1,20 @@
 <properties 
-	pageTitle="Remotedesktop-Gateway und Azure Multi-Factor Authentication-Server mithilfe von RADIUS" 
-	description="Dies ist die Azure Multi-Factor Authentication-Seite, die bei der Bereitstellung Remotedesktop-Gateways (RD) und des Azure Multi-Factor Authentication-Servers mithilfe von RADIUS Unterstützung bietet." 
-	services="multi-factor-authentication" 
-	documentationCenter="" 
-	authors="billmath" 
-	manager="femila" 
+	pageTitle="Remotedesktop-Gateway und Azure Multi-Factor Authentication-Server mithilfe von RADIUS"
+	description="Dies ist die Azure Multi-Factor Authentication-Seite, die bei der Bereitstellung Remotedesktop-Gateways (RD) und des Azure Multi-Factor Authentication-Servers mithilfe von RADIUS Unterstützung bietet."
+	services="multi-factor-authentication"
+	documentationCenter=""
+	authors="kgremban"
+	manager="femila"
 	editor="curtand"/>
 
-<tags 
-	ms.service="multi-factor-authentication" 
-	ms.workload="identity" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="get-started-article" 
-	ms.date="08/15/2016" 
-	ms.author="billmath"/>
+<tags
+	ms.service="multi-factor-authentication"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.date="08/15/2016"
+	ms.author="kgremban"/>
 
 # Remotedesktop-Gateway und Azure Multi-Factor Authentication-Server mithilfe von RADIUS
 
@@ -59,4 +59,4 @@ Der Azure Multi-Factor Authentication-Server wird als RADIUS-Proxy zwischen dem 
 
 ![RADIUS-Authentifizierung](./media/multi-factor-authentication-get-started-server-rdg/radius.png)
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0921_2016-->

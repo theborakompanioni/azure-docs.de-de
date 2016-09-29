@@ -2,7 +2,7 @@
 	pageTitle="Erstellen von .NET HDInsight-Anwendungen für die nicht interaktive Authentifizierung | Microsoft Azure"
 	description="Erfahren Sie, wie Sie .NET HDInsight-Anwendungen für die nicht interaktive Authentifizierung erstellen."
 	editor="cgronlun"
-	manager="paulettm"
+	manager="jhubbard"
 	services="hdinsight"
 	documentationCenter=""
 	tags="azure-portal"
@@ -122,4 +122,4 @@ Oder mit der Azure-Befehlszeilenschnittstelle:
 - [Authentifizieren eines Dienstprinzipals mit Azure Resource Manager](../resource-group-authenticate-service-principal.md)
 - [Rollenbasierte Access Control in Azure](../active-directory/role-based-access-control-configure.md)
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0914_2016-->

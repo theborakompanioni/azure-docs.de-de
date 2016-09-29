@@ -1,20 +1,20 @@
-<properties 
-	pageTitle="Erste Schritte mit Microsoft Azure Multi-Factor Authentication-Anbietern" 
-	description="Lernen Sie, wie Sie einen Azure Multi-Factor Authentication-Anbieter erstellen." 
-	services="multi-factor-authentication" 
-	documentationCenter="" 
-	authors="billmath" 
-	manager="stevenpo" 
+<properties
+	pageTitle="Erste Schritte mit Microsoft Azure Multi-Factor Authentication-Anbietern"
+	description="Lernen Sie, wie Sie einen Azure Multi-Factor Authentication-Anbieter erstellen."
+	services="multi-factor-authentication"
+	documentationCenter=""
+	authors="kgremban"
+	manager="femila"
 	editor="curtand"/>
 
-<tags 
-	ms.service="multi-factor-authentication" 
-	ms.workload="identity" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="get-started-article" 
-	ms.date="08/04/2016" 
-	ms.author="billmath"/>
+<tags
+	ms.service="multi-factor-authentication"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.date="08/04/2016"
+	ms.author="kgremban"/>
 
 
 
@@ -25,8 +25,8 @@ Multi-Factor Authentication ist standardmäßig für globale Administratoren, di
 
 Ein Azure Multi-Factor Authentication-Anbieter ist erforderlich, wenn Sie das SDK herunterladen möchten.
 
-> [AZURE.IMPORTANT]  Falls Sie das SDK herunterladen möchten, müssen Sie auch dann einen Azure Multi-Factor Authentication-Anbieter erstellen, wenn Sie über Azure MFA-, AAD Premium- oder EMS-Lizenzen verfügen. Falls Sie zu diesem Zweck einen Azure Multi-Factor Authentication-Anbieter erstellen und bereits im Besitz von Lizenzen sind, müssen Sie den Anbieter mit dem Modell **Pro aktiviertem Benutzer** erstellen und mit dem Verzeichnis verknüpfen, in dem die Azure MFA-, Azure AD Premium- oder EMS-Lizenzen enthalten sind. So wird sichergestellt, dass Ihnen nur Kosten berechnet werden, wenn die Anzahl von eindeutigen Benutzern, die das SDK verwenden, die Anzahl von Lizenzen in Ihrem Besitz übersteigt.
- 
+> [AZURE.IMPORTANT]  Falls Sie das SDK herunterladen möchten, müssen Sie auch dann einen Azure Multi-Factor Authentication-Anbieter erstellen, wenn Sie über Azure MFA-, AAD Premium- oder EMS-Lizenzen verfügen. Falls Sie zu diesem Zweck einen Azure MFA-Anbieter erstellen und bereits im Besitz von Lizenzen sind, müssen Sie den Anbieter mit dem Modell **Pro aktiviertem Benutzer** erstellen und mit dem Verzeichnis verknüpfen, in dem die Azure MFA-, Azure AD Premium- oder EMS-Lizenzen enthalten sind. So wird sichergestellt, dass Ihnen nur Kosten berechnet werden, wenn die Anzahl von eindeutigen Benutzern, die das SDK verwenden, die Anzahl von Lizenzen in Ihrem Besitz übersteigt.
+
 Führen Sie die folgenden Schritte aus, um einen Azure Multi-Factor Authentication-Anbieter zu erstellen.
 
 ## So erstellen Sie einen Anbieter für mehrstufige Authentifizierung
@@ -49,4 +49,4 @@ Führen Sie die folgenden Schritte aus, um einen Azure Multi-Factor Authenticati
 		- Azure AD Connect, AAD Sync oder DirSync ist nur erforderlich, wenn Sie Ihre lokale Active Directory-Umgebung mit einem Azure AD-Verzeichnis synchronisieren. Wenn Sie nur ein Azure AD-Verzeichnis verwenden, das nicht synchronisiert ist, ist dies nicht erforderlich. ![MFA-Anbieter erstellen](./media/multi-factor-authentication-get-started-auth-provider/authprovider5.png)
 5. Nach dem Klicken auf „Erstellen“ wird der Multi-Factor Authentication-Anbieter erstellt und die folgende Meldung angezeigt: **Der Anbieter für Multi-Factor Authentication wurde erstellt**. Klicken Sie auf **OK**. ![MFA-Anbieter erstellen](./media/multi-factor-authentication-get-started-auth-provider/authprovider6.png)
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0921_2016-->

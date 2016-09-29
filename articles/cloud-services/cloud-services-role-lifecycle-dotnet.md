@@ -12,7 +12,7 @@ ms.workload="tbd"
 ms.tgt_pltfrm="na" 
 ms.devlang="na" 
 ms.topic="article" 
-ms.date="06/07/2016" 
+ms.date="09/06/2016" 
 ms.author="adegeo"/>
 
 # Anpassen des Lebenszyklus einer Web- oder Workerrolle in .NET
@@ -33,9 +33,9 @@ Berücksichtigen Sie beim Erweitern von **RoleEntryPoint** das folgende Verhalte
 
      Wenn in einer der Lebenszyklusmethoden eine Ausnahme auftritt, löst Azure das [UnhandledException](https://msdn.microsoft.com/library/system.appdomain.unhandledexception.aspx)-Ereignis aus, und der Prozess wird beendet. Nachdem die Rolle offline geschaltet wurde, wird sie von Azure neu gestartet. Wenn eine nicht behandelte Ausnahme auftritt, wird das [Stopping](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.stopping.aspx)-Ereignis nicht ausgelöst, und die **OnStop**-Methode wird nicht aufgerufen.
 
-Wenn Ihre Rolle nicht gestartet wird oder zwischen den Zuständen „Initialisieren“, „Ausgelastet“ und „Beenden“ wechselt, wirft Ihr Code bei jedem Neustart der Rolle möglicherweise eine nicht behandelte Ausnahme in einem der Lebenszyklusereignisse aus. Verwenden Sie in diesem Fall das [UnhandledException](https://msdn.microsoft.com/library/system.appdomain.unhandledexception.aspx)-Ereignis, um die Ursache der Ausnahme zu ermitteln und die Ausnahme entsprechend zu behandeln. Ihre Rolle kann auch von der [Run](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx)-Methode zurückgegeben werden, wodurch ein Neustart der Rolle veranlasst wird. Weitere Informationen zu den Bereitstellungszuständen finden Sie unter [Allgemeine Probleme, durch die Rollen zyklisch ausgeführt werden](https://msdn.microsoft.com/library/azure/gg465402.aspx).
+Wenn Ihre Rolle nicht gestartet wird oder zwischen den Zuständen „Initialisieren“, „Ausgelastet“ und „Beenden“ wechselt, wirft Ihr Code bei jedem Neustart der Rolle möglicherweise eine nicht behandelte Ausnahme in einem der Lebenszyklusereignisse aus. Verwenden Sie in diesem Fall das [UnhandledException](https://msdn.microsoft.com/library/system.appdomain.unhandledexception.aspx)-Ereignis, um die Ursache der Ausnahme zu ermitteln und die Ausnahme entsprechend zu behandeln. Ihre Rolle kann auch von der [Run](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx)-Methode zurückgegeben werden, wodurch ein Neustart der Rolle veranlasst wird. Weitere Informationen zu den Bereitstellungszuständen finden Sie unter [Allgemeine Probleme, durch die Rollen zyklisch ausgeführt werden](cloud-services-troubleshoot-common-issues-which-cause-roles-recycle.md).
 
-> [AZURE.NOTE] Wenn Sie zum Entwickeln Ihrer Anwendung die [Azure-Tools für Microsoft Visual Studio](https://msdn.microsoft.com/library/azure/ee405484.aspx) verwenden, erweitern die Rollenprojektvorlagen die **RoleEntryPoint**-Klasse automatisch in den Dateien „WebRole.cs“ und „WorkerRole.cs“.
+> [AZURE.NOTE] Wenn Sie zum Entwickeln Ihrer Anwendung die **Azure-Tools für Microsoft Visual Studio** verwenden, erweitern die Rollenprojektvorlagen die **RoleEntryPoint**-Klasse automatisch in den Dateien *WebRole.cs* und *WorkerRole.cs*.
 
 ## OnStart-Methode
 
@@ -80,4 +80,4 @@ Sie können die ASP.NET-Lebenszyklusmethoden zusätzlich zu den Methoden der **R
 ## Nächste Schritte
 Hier erfahren Sie, wie Sie ein [Clouddienstpaket erstellen](cloud-services-model-and-package.md).
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0914_2016-->

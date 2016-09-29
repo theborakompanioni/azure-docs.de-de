@@ -4,7 +4,7 @@
 	services="machine-learning"
 	documentationCenter=""
 	authors="bradsev"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun" />
 
 <tags
@@ -19,7 +19,7 @@
 
 # Aufgaben zur Vorbereitung von Daten für erweitertes Machine Learning
 
-Deshalb ist die Vorverarbeitung und Bereinigung von Daten eine wichtige Aufgabe, die vor dem effektiven Verwenden eines Datasets für Machine Learning durchgeführt werden muss. Unformatierte Daten enthalten oft unnötige bzw. fehlende Werte und sind unzuverlässig. Die Verwendung dieser Daten für die Modellierung kann zu falschen Ergebnissen führen. Diese Aufgaben sind Teil des Team Data Science-Prozesses (TDSP). Normalerweise wird zuerst eine Untersuchung eines Datasets durchgeführt, um die erforderliche Vorverarbeitung zu ermitteln und zu planen. Eine ausführliche Anleitung zum TDSP-Prozess finden Sie in den Schritten, die unter [Team Data Science-Prozess](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) beschrieben sind.
+Die Vorverarbeitung und Bereinigung von Daten ist eine wichtige Aufgabe, die vor dem effektiven Verwenden eines Datasets für Machine Learning durchgeführt werden muss. Unformatierte Daten enthalten oft unnötige bzw. fehlende Werte und sind unzuverlässig. Die Verwendung dieser Daten für die Modellierung kann zu falschen Ergebnissen führen. Diese Aufgaben sind Teil des Team Data Science-Prozesses (TDSP). Normalerweise wird zuerst eine Untersuchung eines Datasets durchgeführt, um die erforderliche Vorverarbeitung zu ermitteln und zu planen. Eine ausführliche Anleitung zum TDSP-Prozess finden Sie in den Schritten, die unter [Team Data Science-Prozess](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) beschrieben sind.
 
 Aufgaben der Vorverarbeitung und Bereinigung, z. B. die Datenuntersuchung, können in vielen verschiedenen Umgebungen ausgeführt werden, z. B. SQL oder Hive oder Azure Machine Learning Studio, sowie mit unterschiedlichen Tools und Sprachen, z. B. R oder Python. Dies hängt davon ab, wo die Daten gespeichert sind und wie sie formatiert sind. Da CAP iterativ ist, können diese Aufgaben im Workflow des Prozesses in verschiedenen Schritten erfolgen.
 
@@ -74,7 +74,7 @@ Bei fehlenden Werten empfiehlt es sich, zunächst den Grund für die fehlenden W
 * **Ersetzen durch Platzhalterwerte**: Ersetzen Sie fehlende Werte durch Platzhalterwerte: z. B. _unbekannt_ bei kategorischen oder "0" bei numerischen Werten.
 * **Ersetzen durch Mittelwerte**: Ersetzen Sie fehlende numerische Daten durch Mittelwerte.
 * **Ersetzen durch häufige Werte**: Ersetzen Sie fehlende kategorische Daten durch den häufigsten Eintrag.
-* **Ersetzen durch Regressionswerte**: Verwenden Sie ein Regressionsverfahren, um fehlende Werte durch Regressionswerte zu ersetzen.  
+* **Ersetzen durch Regressionswerte**: Verwenden Sie ein Regressionsverfahren, um fehlende Werte durch Regressionswerte zu ersetzen.
 
 ## Wie werden Daten normalisiert?
 
@@ -82,22 +82,22 @@ Bei der Datennormalisierung werden numerische Werte in einen angegebenen Bereich
 
 * **Min-Max-Normalisierung**: Transformieren Sie die Daten linear in einen Bereich, z. B. zwischen 0 und 1. Der Mindestwert wird auf 0 skaliert und der Höchstwert auf 1.
 * **Z-Wert-Normalisierung**: Skalieren Sie die Daten basierend auf Mittelwert und Standardabweichung: Teilen Sie die Differenz aus Daten und Mittelwert durch die Standardabweichung.
-* **Dezimalskalierung**: Skalieren Sie die Daten durch Verschieben des Dezimaltrennzeichens des Attributwerts.  
+* **Dezimalskalierung**: Skalieren Sie die Daten durch Verschieben des Dezimaltrennzeichens des Attributwerts.
 
 ## Wie werden Daten diskretisiert?
 
 Daten können durch die Konvertierung kontinuierlicher Werte in nominale Attribute oder Intervalle diskretisiert werden. Dazu gibt es u. a. folgende Möglichkeiten:
 
 * **Festbreitengruppierung**: Teilen Sie den Bereich aller möglichen Werte eines Attributs in N Gruppen derselben Größe auf, und weisen Sie den Werten in einer Gruppe die Gruppennummer zu.
-* **Festhöhengruppierung**Teilen Sie den Bereich aller möglichen Werte eines Attributs in N Gruppen mit derselben Anzahl von Instanzen auf, und weisen Sie den Werten in einer Gruppe die Gruppennummer zu.  
+* **Festhöhengruppierung**Teilen Sie den Bereich aller möglichen Werte eines Attributs in N Gruppen mit derselben Anzahl von Instanzen auf, und weisen Sie den Werten in einer Gruppe die Gruppennummer zu.
 
 ## Wie werden Daten reduziert?
 
 Es gibt verschiedene Methoden zum Reduzieren der Größe zur einfacheren Datenverarbeitung. Je nach Größe und Inhalt der Daten können folgende Verfahren angewendet werden:
 
 * **Datensatzstichproben**: Erstellen Sie Stichproben aus den Datensätzen, und wählen Sie nur eine repräsentative Teilmenge von Daten aus.
-* **Attributstichproben**: Wählen Sie nur eine Teilmenge der wichtigsten Attribute aus den Daten aus.  
-* **Aggregation**: Unterteilen Sie die Daten in Gruppen, und speichern Sie die Zahlen der einzelnen Gruppen. Beispielsweise können die Tageseinnahmen einer Restaurant-Kette aus den letzten 20 Jahren im monatlichen Umsatz zusammengefasst werden, um die Größe der Daten zu verringern.  
+* **Attributstichproben**: Wählen Sie nur eine Teilmenge der wichtigsten Attribute aus den Daten aus.
+* **Aggregation**: Unterteilen Sie die Daten in Gruppen, und speichern Sie die Zahlen der einzelnen Gruppen. Beispielsweise können die Tageseinnahmen einer Restaurant-Kette aus den letzten 20 Jahren im monatlichen Umsatz zusammengefasst werden, um die Größe der Daten zu verringern.
 
 ## Wie werden Textdaten bereinigt?
 
@@ -109,4 +109,4 @@ Das **Durchsuchen von Daten** ermöglicht einen frühzeitigen Einblick in die Da
 
 >Jiawei Han, Micheline Kamber und Jian Pei: *Data Mining: Concepts and Techniques*, 3. Auflage, Morgan Kaufmann, 2011
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0914_2016-->

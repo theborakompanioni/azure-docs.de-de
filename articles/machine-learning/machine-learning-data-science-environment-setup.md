@@ -4,7 +4,7 @@
 	services="machine-learning" 
 	documentationCenter="" 
 	authors="bradsev" 
-	manager="paulettm" 
+	manager="jhubbard" 
 	editor="cgronlun"/>
 
 <tags 
@@ -29,4 +29,4 @@ Dieses Menü enthält Links zu Themen, in denen das Einrichten der verschiedenen
 
 Die **Microsoft Data Science Virtual Machine** ist auch als Image eines virtuellen Azure-Computers verfügbar, in dem bereits einige gängige Tools vorinstalliert und konfiguriert sind, die häufig für Datenanalysen und Machine Learning verwendet werden. Informationen zum Verwenden dieses virtuellen Computers finden Sie unter [Bereitstellen der Microsoft Data Science Virtual Machine](machine-learning-data-science-provision-vm.md).
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0914_2016-->

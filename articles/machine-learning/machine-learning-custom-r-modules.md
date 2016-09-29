@@ -4,7 +4,7 @@
 	services="machine-learning" 
 	documentationCenter="" 
 	authors="bradsev"  
-	manager="paulettm" 
+	manager="jhubbard" 
 	editor="cgronlun" />
 
 <tags 
@@ -259,7 +259,7 @@ Ein Modul-Parameter wird mithilfe des untergeordneten**Arg**-Elements vom Abschn
 
 * *Optionale Eigenschaften*: **min**, **max** und **Standard**
 
-**bool ** – ein boolescher Parameter, der durch ein Kontrollkästchen in der UX dargestellt wird.
+**bool** – ein boolescher Parameter, der durch ein Kontrollkästchen in der UX dargestellt wird.
 
 		<Arg id="boolValue1" name="Boolean Param" type="bool">
 			<Properties default="true" />
@@ -383,4 +383,4 @@ Die Ausführungsumgebung für das R-Skript verwendet die gleiche Version von R w
 
  
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0914_2016-->

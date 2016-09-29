@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="06/23/2016"
+   ms.date="09/12/2016"
    ms.author="tomfitz"/>
 
 # Definieren von Abhängigkeiten in Azure-Ressourcen-Manager-Vorlagen
@@ -24,9 +24,9 @@ Resource Manager wertet die Abhängigkeiten zwischen den Ressourcen aus und stel
 
 ## dependsOn
 
-Innerhalb Ihrer Vorlage bietet das dependsOn-Element die Möglichkeit, eine Ressource als von einer oder mehreren Ressourcen abhängig zu definieren. Der Wert kann eine durch Trennzeichen getrennte Liste von Ressourcennamen sein.
+Innerhalb Ihrer Vorlage bietet das „dependsOn“-Element die Möglichkeit, eine Ressource als von einer oder mehreren Ressourcen abhängig zu definieren. Der Wert kann eine durch Trennzeichen getrennte Liste von Ressourcennamen sein.
 
-Das folgende Beispiel zeigt eine VM-Skalierungsgruppe, die abhängig ist von einem Lastenausgleich, einem virtuellen Netzwerk und einer Schleife, die mehrere Speicherkonten erstellt. Diese anderen Ressourcen werden nachstehend nicht angezeigt, jedoch müssten sie anderswo in der Vorlage vorhanden sein.
+Das folgende Beispiel zeigt eine VM-Skalierungsgruppe, die abhängig von einem Load Balancer, einem virtuellen Netzwerk und einer Schleife ist, die mehrere Speicherkonten erstellt. Diese anderen Ressourcen werden im folgenden Beispiel nicht gezeigt, müssen jedoch anderswo in der Vorlage vorhanden sein.
 
     {
       "type": "Microsoft.Compute/virtualMachineScaleSets",
@@ -44,9 +44,9 @@ Das folgende Beispiel zeigt eine VM-Skalierungsgruppe, die abhängig ist von ein
       ...
     }
 
-Wenn Sie eine Abhängigkeit zwischen einer Ressource und Ressourcen definieren möchten, die über eine Kopierschleife erstellt werden (wie oben gezeigt), können Sie das dependsOn-Element auf den Namen der Schleife festlegen. Ein Beispiel finden Sie unter [Erstellen mehrerer Instanzen von Ressourcen im Azure-Ressourcen-Manager](resource-group-create-multiple.md).
+Um eine Abhängigkeit zwischen einer Ressource und Ressourcen zu definieren, die über eine Kopierschleife erstellt werden, können Sie das „dependsOn“-Element auf den Namen der Schleife festlegen. Ein Beispiel finden Sie unter [Erstellen mehrerer Instanzen von Ressourcen im Azure-Ressourcen-Manager](resource-group-create-multiple.md).
 
-Sie könnten geneigt sein, dependsOn zu verwenden, um Abhängigkeiten zwischen Ressourcen zuzuordnen, es ist jedoch wichtig zu verstehen, warum Sie es tun, da es sich auf die Leistung Ihrer Bereitstellung auswirken kann. Beispiel: Wenn Sie so dokumentieren möchten, wie Ressourcen miteinander verbunden sind, ist dependsOn nicht der richtige Ansatz. Der Lebenszyklus von dependsOn dient nur für die Bereitstellung und ist nach der Bereitstellung nicht verfügbar. Einmal bereitgestellt, gibt es keine Möglichkeit, diese Abhängigkeiten abzufragen. Durch die Verwendung von dependsOn besteht das Risiko einer Beeinträchtigung der Leistung, indem Sie versehentlich das Bereitstellungsmodul veranlassen könnten, keine Parallelität zu verwenden, wo dies andernfalls möglicherweise der Fall wäre. Verwenden Sie stattdessen [Ressourcenverknüpfungen](resource-group-link-resources.md) zum Dokumentieren und Bereitstellen von Abfragefunktionen für Beziehungen zwischen Ressourcen.
+Sie könnten geneigt sein, „dependsOn“ zu verwenden, um Beziehungen zwischen Ressourcen zuzuordnen. Es ist jedoch wichtig zu verstehen, warum Sie dies tun, da dadurch die Leistung Ihrer Bereitstellung beeinträchtigt werden kann. Um beispielsweise zu dokumentieren, wie Ressourcen miteinander verbunden sind, ist „dependsOn“ nicht der richtige Ansatz. Nach der Bereitstellung können Sie nicht mehr abfragen, welche Ressourcen im „dependsOn“-Element definiert waren. Bei Verwenden von „dependsOn“ beeinträchtigen Sie möglicherweise die Bereitstellungszeit, da der Resource Manager zwei Ressourcen, die eine Abhängigkeit aufweisen, nicht parallel bereitstellt. Um Beziehungen zwischen Ressourcen zu dokumentieren, sollten Sie die [Ressourcenverknüpfung](resource-group-link-resources.md) nutzen.
 
 ## Untergeordnete Ressourcen
 
@@ -95,11 +95,11 @@ Das folgende Beispiel zeigt einen SQL Server und eine SQL-Datenbank. Beachten Si
 
 ## reference-Funktion
 
-Mit der reference-Funktion kann ein Ausdruck seinen Wert von anderen JSON-Name/Wertpaaren oder Laufzeitressourcen ableiten. reference-Ausdrücke deklarieren implizit, dass eine Ressource von einer anderen abhängt. Die durch **propertyPath** unten dargestellte Eigenschaft ist optional. Wenn sie nicht angegeben ist, wird auf die Ressource verwiesen.
+Mit der [reference](resource-group-template-functions.md#reference)-Funktion kann ein Ausdruck seinen Wert von anderen Paaren aus JSON-Name und -Wert oder Laufzeitressourcen ableiten. reference-Ausdrücke deklarieren implizit, dass eine Ressource von einer anderen abhängt.
 
     reference('resourceName').propertyPath
 
-Sie können dieses Element oder das dependsOn-Element verwenden, um Abhängigkeiten anzugeben, aber Sie müssen nicht beide für dieselbe abhängige Ressource verwenden. Es empfiehlt sich, den impliziten Verweis zu verwenden, um das Risiko zu vermeiden, dass versehentlich ein unnötiges dependsOn-Element das Bereitstellungsmodul davon abhält, Aspekte der Bereitstellung parallel auszuführen.
+Sie können dieses Element oder das dependsOn-Element verwenden, um Abhängigkeiten anzugeben, aber Sie müssen nicht beide für dieselbe abhängige Ressource verwenden. Verwenden Sie nach Möglichkeit einen impliziten Verweis, um das versehentliche Hinzufügen einer unnötigen Abhängigkeit zu vermeiden.
 
 Weitere Informationen finden Sie unter [reference-Funktion](resource-group-template-functions.md#reference).
 
@@ -108,4 +108,4 @@ Weitere Informationen finden Sie unter [reference-Funktion](resource-group-templ
 - Weitere Informationen zum Erstellen von Azure-Ressourcen-Manager-Vorlagen finden Sie unter [Erstellen von Vorlagen](resource-group-authoring-templates.md).
 - Eine Liste der verfügbaren Funktionen in einer Vorlage finden Sie unter [Funktionen von Azure Resource Manager-Vorlagen](resource-group-template-functions.md).
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0914_2016-->

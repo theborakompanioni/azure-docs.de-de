@@ -4,7 +4,7 @@
 	services="machine-learning"
 	documentationCenter=""
 	authors="rastala"
-	manager="paulettm"
+	manager="jhubbard"
 	editor=""/>
 
 <tags
@@ -33,9 +33,9 @@ In diesem Tutorial lernen Sie diese Schritte anhand eines Stimmungsanalysemodell
 
 Sie finden Experimente, die in diesem Tutorial behandelt werden, in der Cortana Intelligence Gallery:
 
-[Predict Book Reviews](https://gallery.cortanaintelligence.com/Experiment/Predict-Book-Reviews-1) (Vorhersagen von Buchbesprechungen)
+[Predict Book Reviews (Vorhersagen von Buchbesprechungen)](https://gallery.cortanaintelligence.com/Experiment/Predict-Book-Reviews-1)
 
-[Predict Book Reviews – Predictive Experiment](https://gallery.cortanaintelligence.com/Experiment/Predict-Book-Reviews-Predictive-Experiment-1) (Vorhersagen von Buchbesprechungen – Vorhersageexperiment)
+[Predict Book Reviews – Predictive Experiment (Vorhersagen von Buchbesprechungen – Vorhersageexperiment)](https://gallery.cortanaintelligence.com/Experiment/Predict-Book-Reviews-Predictive-Experiment-1)
 
 ## Schritt 1: Bereinigen und Vorverarbeiten des Textdatasets
 
@@ -95,4 +95,4 @@ Jetzt haben wir ein Experiment, das als Webdienst veröffentlicht und mit Anford
 
 In der [MSDN-Dokumentation](https://msdn.microsoft.com/library/azure/dn905886.aspx) erfahren Sie mehr über Textanalysemodule.
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0914_2016-->

@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="NA"
 	ms.workload="data-catalog"
-	ms.date="06/27/2016"
+	ms.date="09/13/2016"
 	ms.author="spelluru"/>
 
 # Dokumentdatenquellen
@@ -26,13 +26,13 @@ Wenn eine Datenquelle in **Azure Data Catalog** registriert wird, werden ihre Me
 
 Unter [Hinzufügen von Anmerkungen zu Datenquellen](data-catalog-how-to-annotate.md) erfahren Sie, dass Experten, denen die Datenquelle bekannt ist, diese mit Tags und einer Beschreibung versehen können. Das **Azure Data Catalog** Portal enthält einen Rich-Text-Editor, damit Benutzer Datenressourcen und Container vollständig dokumentieren können. Der Editor bietet Absatzformatierung, z. B. für Überschriften, das Formatieren von Text, Aufzählungen, nummerierte Listen und Tabellen.
 
-Tags und Beschreibungen eignen sich hervorragend für einfache Anmerkungen. Um Datennutzern ein besseres Verständnis der Verwendung einer Datenquelle und von Geschäftsszenarien für eine Datenquelle zu vermitteln, kann ein Experte eine vollständige, ausführliche Dokumentation bereitstellen. Das Dokumentieren einer Datenquelle ist einfach. Wählen Sie einfach eine Datenressource oder einen Container aus, und wählen Sie dann **Dokumentation**.
+Tags und Beschreibungen eignen sich hervorragend für einfache Anmerkungen. Um Datennutzern ein besseres Verständnis der Verwendung einer Datenquelle und von Geschäftsszenarien für eine Datenquelle zu vermitteln, kann ein Experte eine vollständige, ausführliche Dokumentation bereitstellen. Das Dokumentieren einer Datenquelle ist einfach. Wählen Sie einfach ein Datenasset oder einen Container aus, und wählen Sie dann **Dokumentation**.
 
 ![](media\data-catalog-documentation\data-catalog-documentation.png)
 
 ## Dokumentieren von Datenressourcen
 
-Der Vorteil der **Azure Data Catalog**-Dokumentation besteht darin, dass Sie Ihren Data Catalog als Inhaltsrepository zum Erstellen einer vollständigen Textbeschreibung Ihrer Datenressourcen verwenden können. Benutzern stehen detaillierte Inhalte zur Verfügung, die Container und Tabellen beschreiben. Wenn Sie bereits Inhalt in einem anderen Inhaltsrepository wie SharePoint oder einer Dateifreigabe haben, können Sie der Ressourcendokumentation Links hinzufügen, die auf diesen vorhandenen Inhalt verweisen. Dadurch sind Ihre vorhandenen Dokumente leichter auffindbar.
+Der Vorteil der **Azure Data Catalog**-Dokumentation besteht darin, dass Sie Ihren Data Catalog als Inhaltsrepository zum Erstellen einer vollständigen Textbeschreibung Ihrer Datenressourcen verwenden können. Es stehen Ihnen detaillierte Inhalte zur Verfügung, die Container und Tabellen beschreiben. Wenn Sie bereits Inhalt in einem anderen Inhaltsrepository wie SharePoint oder einer Dateifreigabe haben, können Sie der Ressourcendokumentation Links hinzufügen, die auf diesen vorhandenen Inhalt verweisen. Mit diesem Feature sind Ihre vorhandenen Dokumente leichter auffindbar.
 
 > [AZURE.NOTE] Dokumentation ist nicht im Suchindex enthalten.
 
@@ -46,6 +46,6 @@ In der Dokumentation können z. B. die Merkmale und der Wert eines Datenressourc
 
 ## Zusammenfassung
 
-Durch das Dokumentieren von Datenquellen mit **Azure Data Catalog** können Sie eine Textbeschreibung Ihrer Datenressourcen mit allen erforderlichen Details erstellen. Mithilfe von Links können auf Inhalte in einem vorhandenen Inhaltsrepository verweisen; so werden Ihre vorhandenen Dokumente und Datenressourcen zusammengefasst. Sobald Ihre Benutzer geeignete Datenressourcen ermitteln, steht ihnen ein vollständiger Dokumentationssatz zur Verfügung.
+Durch das Dokumentieren von Datenquellen mit **Azure Data Catalog** können Sie eine Textbeschreibung Ihrer Datenressourcen mit allen erforderlichen Details erstellen. Mithilfe von Links können Sie auf Inhalte in einem vorhandenen Inhaltsrepository verweisen; so werden Ihre vorhandenen Dokumente und Datenressourcen zusammengefasst. Sobald Ihre Benutzer geeignete Datenressourcen ermitteln, steht ihnen ein vollständiger Dokumentationssatz zur Verfügung.
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0914_2016-->

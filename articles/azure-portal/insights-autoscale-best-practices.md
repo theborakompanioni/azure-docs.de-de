@@ -106,10 +106,10 @@ Beim *horizontalen Hochskalieren* wird die automatische Skalierung durchgeführt
  
 Nehmen Sie an, Sie hätten die folgenden vier Regeln für die automatische Skalierung:
 
-- Falls CPU-Auslastung < 30 %, skaliere horizontal um 1 herunter
-- Falls Arbeitsspeicherauslastung < 50 %, skaliere horizontal um 1 herunter
-- Falls CPU-Auslastung > 75 %, skaliere horizontal um 1 hoch
-- Falls Arbeitsspeicherauslastung > 75 %, skaliere horizontal um 1 hoch
+- Falls CPU-Auslastung < 30%, skaliere horizontal um 1 herunter
+- Falls Arbeitsspeicherauslastung < 50%, skaliere horizontal um 1 herunter
+- Falls CPU-Auslastung > 75%, skaliere horizontal um 1 hoch
+- Falls Arbeitsspeicherauslastung > 75%, skaliere horizontal um 1 hoch
 
 Daraufhin erfolgt Folgendes:
 
@@ -127,4 +127,4 @@ Die automatische Skalierung benachrichtigt die Administratoren und die Mitwirken
 - Für den Autoskalierungsdienst stehen keine Metriken zur Verfügung, auf deren Grundlage eine Skalierungsentscheidung getroffen werden kann.
 - Metriken stehen wieder zur Verfügung (Wiederherstellung), um eine Skalierungsentscheidung zu treffen. Zusätzlich zu den oben aufgeführten Bedingungen, können Sie E-Mail- oder Webhook-Benachrichtigungen konfigurieren, um bei erfolgreichen Skalierungsaktionen informiert zu werden.
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0914_2016-->

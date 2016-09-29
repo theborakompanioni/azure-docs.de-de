@@ -4,7 +4,7 @@
 	services="machine-learning" 
 	documentationCenter="" 
 	authors="pengxia" 
-	manager="paulettm" 
+	manager="jhubbard" 
 	editor="cgronlun"/>
 
 <tags 
@@ -20,14 +20,14 @@
 
 #Lexikonbasierte Stimmungsanalyse 
 
-Wie können Sie die Meinungen und Einstellungen Ihrer Benutzer zu Marken oder Themen in sozialen Netzwerken wie z. B. Facebook-Beiträgen, Tweets, Rezensionen usw. messen? Die Stimmungsanalyse bietet eine Methode, solche Fragen zu analysieren.
+Wie können Sie die Meinungen und Einstellungen Ihrer Benutzer zu Marken oder Themen in sozialen Netzwerken wie z.B. Facebook-Beiträgen, Tweets, Rezensionen usw. messen? Die Stimmungsanalyse bietet eine Methode, solche Fragen zu analysieren.
 
 
 [AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
 Es gibt im Allgemeinen zwei Methoden für die Stimmungsanalyse. Bei der einen Methode handelt es sich um einen überwachten Lernalgorithmus, die andere wird als "nicht überwachtes Lernen" bezeichnet. Ein überwachter Lernalgorithmus erstellt in der Regel ein Klassifizierungsmodell auf Basis eines großen Korpus mit Anmerkungen. Die Genauigkeit hierbei basiert hauptsächlich auf der Qualität der Anmerkungen, und das Training dauert in der Regel sehr lange. Außerdem ist beim Anwenden des Algorithmus auf eine andere Domäne das Ergebnis in der Regel nicht gut. Im Gegensatz zum überwachten Lernen wird beim lexikonbasierten nicht überwachten Lernen ein Simmungswörterbuch verwendet. Für diese Methode muss kein großer Datenkorpus gespeichert werden, und sie erfordert kein Training, wodurch der gesamte Prozess deutlich schneller ist.
 
-Der [Dienst](https://datamarket.azure.com/dataset/aml_labs/lexicon_based_sentiment_analysis) basiert auf dem MPQA Subjectivity Lexicon (http://mpqa.cs.pitt.edu/lexicons/subj_lexicon/)), einem der am häufigsten verwendeten Subjektivitätslexika. Es gibt 5.097 negative und 2.533 positive Wörter im MPQA. Und all diese Wörter sind als stark oder schwach gekennzeichnet. Der gesamte Korpus befindet sich unter der GNU General Public License. Der Webdienst kann auf alle kurzen Sätze wie Tweets und Facebook-Beiträge angewendet werden.
+Unser [Dienst](https://datamarket.azure.com/dataset/aml_labs/lexicon_based_sentiment_analysis) basiert auf dem MPQA Subjectivity Lexicon (http://mpqa.cs.pitt.edu/lexicons/subj_lexicon/), einem der am häufigsten verwendeten Subjektivitätslexika. Es gibt 5.097 negative und 2.533 positive Wörter im MPQA. Und all diese Wörter sind als stark oder schwach gekennzeichnet. Der gesamte Korpus befindet sich unter der GNU General Public License. Der Webdienst kann auf alle kurzen Sätze wie Tweets und Facebook-Beiträge angewendet werden.
 
 >Dieser Webdienst kann von Benutzern verwendet werden – beispielsweise über eine mobile App, eine Website oder sogar über einen lokalen Computer. Dieser Webdienst ist jedoch auch ein gutes Beispiel dafür, wie Azure Machine Learning zum Erstellen von Webdiensten basierend auf R-Code verwendet werden kann. Mit nur wenigen Codezeilen R-Code und einigen Klicks in Azure Machine Learning Studio können Sie ein Experiment mit R-Code erstellen und als Webdienst veröffentlichen. Der Webdienst kann dann im Azure Marketplace veröffentlicht und von Benutzern und Geräten auf der ganzen Welt genutzt werden – ohne Einrichtung einer Infrastruktur durch den Autor des Webdiensts.
 
@@ -153,4 +153,4 @@ Häufig gestellte Fragen zur Nutzung des Webdiensts und zum Veröffentlichen im 
 
  
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0914_2016-->

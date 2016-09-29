@@ -14,8 +14,8 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="08/02/2016"
-   ms.author="narayanannamalai"/>
+   ms.date="09/14/2016"
+   ms.author="narayanannamalai;annahar"/>
 
 # Erstellen eines VNet-Peerings mit dem Azure-Portal
 
@@ -60,7 +60,7 @@ Gehen Sie wie folgt vor, um mit dem Azure-Portal ein VNet-Peering basierend auf 
 
 	![Endgültiger Linkstatus 2](./media/virtual-networks-create-vnetpeering-arm-portal/figure08.png)
 
-10. HINWEIS: Das VNet-Peering wird nur eingerichtet, wenn beide Links verbunden sind.
+    > [AZURE.NOTE] Das VNet-Peering wird nur eingerichtet, wenn beide Links verbunden sind.
 
 Für die einzelnen Links können jeweils einige Eigenschaften konfiguriert werden:
 
@@ -91,7 +91,7 @@ Jeder Link in einem VNet-Peering verfügt über die obigen Eigenschaften. Sie k�
 
     ![RBAC2](./media/virtual-networks-create-vnetpeering-arm-portal/figure11.png)
 
-    HINWEIS: Sie können sich abmelden und beide Benutzersitzungen im Browser anmelden, um sich zu vergewissern, dass die Autorisierung erfolgreich aktiviert wurde.
+    > [AZURE.NOTE] Sie können sich abmelden und für beide Benutzersitzungen die Anmeldung im Browser durchführen, um sich zu vergewissern, dass die Autorisierung erfolgreich aktiviert wurde.
 
 6. Melden Sie sich am Portal als UserA an, navigieren Sie zum Blatt „VNet3“, und klicken Sie auf „Peering“. Aktivieren Sie das Kontrollkästchen „Ich kenne meine Ressourcen-ID“, und geben Sie die Ressourcen-ID für VNet5 im unten angegebenen Format ein.
 
@@ -117,6 +117,28 @@ Jeder Link in einem VNet-Peering verfügt über die obigen Eigenschaften. Sie k�
 
 3. Nachdem das Peering eingerichtet wurde, können Sie [diesen Artikel](virtual-network-create-udr-arm-ps.md) lesen und eine benutzerdefinierte Route (User-Defined Route, UDR) festlegen, um VNet1-Datenverkehr über ein virtuelles Gerät zu leiten und dessen Funktionen zu nutzen. Wenn Sie die Adresse des nächsten Hops der Route angeben, können Sie diese auf die IP-Adresse des virtuellen Geräts im per Peering verknüpften VNet (HubVNet) festlegen.
 
+
+[AZURE.INCLUDE [virtual-networks-create-vnet-scenario-asmtoarm-include](../../includes/virtual-networks-create-vnetpeering-scenario-asmtoarm-include.md)]
+
+
+
+1. Navigieren Sie in einem Browser zu http://portal.azure.com, und melden Sie sich, falls erforderlich, mit Ihrem Azure-Konto an.
+
+2. Zum Einrichten des VNET-Peerings in diesem Szenario müssen Sie nur einen Link erstellen, und zwar vom virtuellen Netzwerk im Azure Resource Manager zu einem virtuellen Netzwerk im klassischen Modus. Dies ist also eine Verbindung von **VNET1** mit **VNET2**. Klicken Sie im Portal auf **Durchsuchen**, und wählen Sie **Virtuelle Netzwerke**.
+
+3. Wählen Sie auf dem Blatt „Virtuelle Netzwerke“ die Option **VNET1**. Klicken Sie auf **Peerings** und dann auf **Hinzufügen**.
+
+4. Geben Sie dem Link auf dem Blatt „Peering hinzufügen“ einen Namen. Hier lautet der Name **LinkToVNet2**. Wählen Sie unter „Peerdetails“ die Option **Klassisch**.
+
+5. Wählen Sie anschließend das Abonnement und das virtuelle Peernetzwerk **VNET2** aus. Klicken Sie dann auf „OK“.
+
+    ![Verknüpfung von VNet1 mit VNet2](./media/virtual-networks-create-vnetpeering-arm-portal/figure18.png)
+
+6. Nachdem dieser VNet-Peeringlink erstellt wurde, werden die beiden virtuellen Netzwerke verknüpft, und Folgendes wird angezeigt:
+
+    ![Peerverbindung überprüfen](./media/virtual-networks-create-vnetpeering-arm-portal/figure19.png)
+
+
 ## Entfernen des VNet-Peerings
 
 1.	Navigieren Sie in einem Browser zu http://portal.azure.com, und melden Sie sich, falls erforderlich, mit Ihrem Azure-Konto an.
@@ -130,4 +152,4 @@ Jeder Link in einem VNet-Peering verfügt über die obigen Eigenschaften. Sie k�
 
 4. Bei diesem Status können Sie den Link erst dann wieder neu erstellen, wenn sich der Status des Peeringlinks in „Initiiert“ ändert. Es wird empfohlen, beide Links zu entfernen, bevor Sie das VNet-Peering neu erstellen.
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0921_2016-->

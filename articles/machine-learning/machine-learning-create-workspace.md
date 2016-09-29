@@ -4,7 +4,7 @@
 	services="machine-learning"
 	documentationCenter=""
 	authors="garyericson"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun"/>
 
 <tags
@@ -106,4 +106,4 @@ Es folgt eine Tabelle zur Verdeutlichung der Unterschiede zwischen einem Azure-A
 [klassische Microsoft Azure-Portal]: https://manage.windowsazure.com/
 [klassischen Microsoft Azure-Portal]: https://manage.windowsazure.com/
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0914_2016-->

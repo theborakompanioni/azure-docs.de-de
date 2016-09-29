@@ -4,7 +4,7 @@
 	services="data-catalog"
 	documentationCenter=""
 	authors="spelluru"
-	manager="paulettm"
+	manager="jhubbard"
 	editor=""
 	tags=""/>
 <tags 
@@ -304,7 +304,8 @@ Mit den Sichtelementanforderungen **PUT** und **POST** können Sie Rollen und Be
 		]
 	}
 
-  **Zuweisen von Besitzern und Einschränken der Sichtbarkeit für ein vorhandenes Stammelement**: **PUT** https://api.azuredatacatalog.com/catalogs/default/views/tables/042297b0...1be45ecd462a?api-version=2016-03-30
+**Zuweisen von Besitzern und Einschränken der Sichtbarkeit für ein vorhandenes Stammelement**:
+**PUT** https://api.azuredatacatalog.com/catalogs/default/views/tables/042297b0...1be45ecd462a?api-version=2016-03-30
 
 	{
 		"roles": [
@@ -353,4 +354,4 @@ Mit den Sichtelementanforderungen **PUT** und **POST** können Sie Rollen und Be
 <!--Image references-->
 [1]: ./media/data-catalog-developer-concepts/concept2.png
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0914_2016-->

@@ -4,7 +4,7 @@
 	services="machine-learning"
 	documentationCenter=""
 	authors="vDonGlover"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun"/>
 
 <tags
@@ -97,4 +97,4 @@ Das Dashboard des Plans enthält die folgenden Informationen:
 * **Top Web Service By Calls** zeigt die vier Webdienste, die die meisten Aufrufe vornehmen, die für den Plan in Rechnung gestellt werden.
 * **Top Web Services by Compute Hrs** zeigt die vier Webdienste, die die meisten Computeressourcen nutzen, die für den Plan in Rechnung gestellt werden.
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0914_2016-->

@@ -3,7 +3,7 @@
 	description="HDInsight unterstützt mehrere bereitstellbare Hadoop-Clusterversionen. Entdecken Sie die unterstützten Versionen von Hadoop und der HortonWorks Data Platform (HDP)."
 	services="hdinsight"
 	editor="cgronlun"
-	manager="paulettm"
+	manager="jhubbard"
 	authors="mumian"
 	documentationCenter=""/>
 
@@ -24,8 +24,8 @@ Azure HDInsight unterstützt mehrere Hadoop-Clusterversionen, die jederzeit bere
 
 
 <table border="1">
-<tr><th>Komponente</th><th>HDInsight-Version 3.2</th><th>HDInsight Version 3.1 (Standard)</th><th>HDInsight Version 3,0</th><th>HDInsight-Version 2.1</th></tr>
-<tr><td>Hortonworks Data Platform</td><td>2.2</td><td>2.1.7</td><td>2,0</td><td>1.3</td></tr>
+<tr><th>Component</th><th>HDInsight-Version 3.2</th><th>HDInsight Version 3.1 (Standard)</th><th>HDInsight Version 3,0</th><th>HDInsight-Version 2.1</th></tr>
+<tr><td>Hortonworks Data Platform</td><td>2.2</td><td>2.1.7</td><td>2.0</td><td>1.3</td></tr>
 <tr><td>Apache Hadoop und YARN</td><td>2.6.0</td><td>2.4.0</td><td>2.2.0</td><td>1.2.0</td></tr>
 <tr><td>Apache Tez</td><td>0.5.2</td><td>0.4.0</td><td></td><td></td></tr>
 <tr><td>Apache Pig</td><td>0.14.0</td><td>0.12.1</td><td>0.12.0</td><td>0.11.0</td></tr>
@@ -167,4 +167,4 @@ Das Datum **Veraltet ab** ist das Datum, nach dem eine Clusterversion nicht mehr
 
 [zookeeper]: http://zookeeper.apache.org/
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0914_2016-->

@@ -10,24 +10,25 @@
 <tags 
 	ms.service="data-factory" 
 	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
+	ms.tgt_pltfrm="na"  
 	ms.devlang="na" 
 	ms.topic="get-started-article" 
-	ms.date="08/01/2016" 
+	ms.date="09/16/2016" 
 	ms.author="spelluru"/>
 
 # Tutorial: Erstellen einer Pipeline mit Kopieraktivität mithilfe des Data Factory-Kopier-Assistenten
 > [AZURE.SELECTOR]
-- [Übersicht über das Tutorial](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
-- [Verwenden des Data Factory-Editors](data-factory-copy-activity-tutorial-using-azure-portal.md)
-- [Verwenden von PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
-- [Verwenden von Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
-- [Verwenden der REST-API](data-factory-copy-activity-tutorial-using-rest-api.md)
-- [Verwenden des Kopier-Assistenten](data-factory-copy-data-wizard-tutorial.md)
+- [Übersicht und Voraussetzungen](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
+- [Azure-Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)
+- [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
+- [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
+- [REST-API](data-factory-copy-activity-tutorial-using-rest-api.md)
+- [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
+- [Kopier-Assistent](data-factory-copy-data-wizard-tutorial.md)
 
 In diesem Tutorial verwenden Sie den Data Factory-Kopier-Assistenten, um eine Pipeline mit einer Kopieraktivität in einer Data Factory zu erstellen. Zuerst erstellen Sie eine Data Factory mit dem Azure-Portal. Anschließend verwenden Sie den Kopier-Assistenten, um verknüpfte Data Factory-Dienste, Datasets und eine Pipeline mit einer Kopieraktivität zu erstellen, mit der Daten aus einem Azure-Blobspeicher in eine Azure SQL-Datenbank kopiert werden. Ausführliche Informationen zur Kopieraktivität finden Sie im Artikel [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md).
 
-> [AZURE.IMPORTANT] Lesen Sie den Artikel [Übersicht über das Tutorial](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md), und führen Sie die vorbereitenden Schritte aus, bevor Sie mit diesem Tutorial beginnen.
+> [AZURE.IMPORTANT] Lesen Sie sich den Artikel mit der [Übersicht über das Tutorial](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) durch, und führen Sie vor Beginn dieses Tutorials die vorbereitenden Schritte aus, damit die **Voraussetzungen** erfüllt sind.
 
 ## Erstellen einer Data Factory
 In diesem Schritt erstellen Sie im Azure-Portal eine Azure Data Factory namens **ADFTutorialDataFactory**.
@@ -88,7 +89,10 @@ In diesem Schritt erstellen Sie im Azure-Portal eine Azure Data Factory namens *
 	3. Klicken Sie auf **Next**.
 
 	![Kopiertool – Eingabedatei- oder -ordner auswählen](./media/data-factory-copy-data-wizard-tutorial/copy-tool-choose-input-file-or-folder.png)
-7. Wählen Sie auf der Seite **Dateiformateinstellungen** die **Standard**werte aus, und klicken Sie auf **Weiter**.
+7. Klicken Sie auf der Seite **Choose the input file or folder** (Eingabedatei oder -ordner auswählen) auf **Weiter**. Aktivieren Sie nicht die Option **Binary copy** (Binärkopie).
+
+	![Kopiertool – Eingabedatei- oder -ordner auswählen](./media/data-factory-copy-data-wizard-tutorial/chose-input-file-folder.png)
+8. Wählen Sie auf der Seite **Dateiformateinstellungen** die **Standard**werte aus, und klicken Sie auf **Weiter**.
 
 	![Kopiertool – Dateiformateinstellungen](./media/data-factory-copy-data-wizard-tutorial/copy-tool-file-format-settings.png)
 8. Klicken Sie auf der Seite „Zieldatenspeicher“ auf die Kachel **Azure SQL-Datenbank** und dann auf **Weiter**.
@@ -102,11 +106,12 @@ In diesem Schritt erstellen Sie im Azure-Portal eine Azure Data Factory namens *
 
 	![Kopiertool – Tabellenzuordnung](./media/data-factory-copy-data-wizard-tutorial/copy-tool-table-mapping-page.png)
 10. Klicken Sie auf der Seite **Schemazuordnung** auf **Weiter**.
+11. Klicken Sie auf der Seite **Leistungseinstellungen** auf **Weiter**.
 11. Überprüfen Sie die Informationen auf der Seite **Zusammenfassung**, und klicken Sie auf **Fertig stellen**. Der Assistent erstellt zwei verknüpfte Dienste, zwei Datasets (Eingabe und Ausgabe) und eine Pipeline in der Data Factory erstellt (von der aus Sie den Kopier-Assistenten gestartet haben).
-12. Klicken Sie auf der Seite **Bereitstellung erfolgreich** auf **Zum Überwachen der Kopierpipeline hier klicken**.
+12. Klicken Sie auf der Seite **Bereitstellung erfolgreich** auf den Link **Zum Überwachen der Kopierpipeline hier klicken**.
 
 	![Kopiertool – Bereitstellung erfolgreich](./media/data-factory-copy-data-wizard-tutorial/copy-tool-deployment-succeeded.png)
-13. Verwenden Sie die Anleitung unter [Überwachen und Verwalten der Pipeline mit der Überwachungs-App](data-factory-monitor-manage-app.md), um zu erfahren, wie Sie die erstellte Pipeline überwachen können.
+13. Verwenden Sie die Anleitung unter [Überwachen und Verwalten der Pipeline mit der Überwachungs-App](data-factory-monitor-manage-app.md), um zu erfahren, wie Sie die erstellte Pipeline überwachen können. Klicken Sie in der Liste **AKTIVITÄTSFENSTER** auf das Symbol **Aktualisieren**, um den Slice anzuzeigen.
 
 	![Überwachungs-App](./media/data-factory-copy-data-wizard-tutorial/monitoring-app.png)
  
@@ -120,4 +125,4 @@ In diesem Schritt erstellen Sie im Azure-Portal eine Azure Data Factory namens *
 | [Datasets](data-factory-create-datasets.md) | Dieser Artikel enthält Informationen zu Datasets in Azure Data Factory.
 | [Überwachen und Verwalten von Pipelines mit der Überwachungs-App](data-factory-monitor-manage-app.md) | In diesem Artikel wird das Überwachen, Verwalten und Debuggen von Pipelines mit der App für die Überwachung und Verwaltung beschrieben. 
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0921_2016-->

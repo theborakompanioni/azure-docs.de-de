@@ -4,7 +4,7 @@ description="Informationen zu den verschiedenen Möglichkeiten, einen HDInsight-
 services="hdinsight"
 documentationCenter=""
 authors="Blackmist"
-manager="paulettm"
+manager="jhubbard"
 editor="cgronlun"/>
 
 <tags
@@ -48,4 +48,4 @@ Verwenden Sie an einer Eingabeaufforderung den folgenden Befehl zum Löschen des
     
 Ersetzen Sie __CLUSTERNAME__ durch den Namen Ihres HDInsight-Clusters.
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0914_2016-->

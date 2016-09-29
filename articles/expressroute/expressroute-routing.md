@@ -12,7 +12,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="08/10/2016"
+   ms.date="09/16/2016"
    ms.author="ganesr"/>
 
 
@@ -78,7 +78,7 @@ Der Routingaustausch verläuft über das eBGP-Protokoll. EBGP-Sitzungen werden z
 
 ## Autonome Systemnummern
 
-Microsoft verwendet AS 12076 für das öffentliche und private Azure-Peering und das Microsoft-Peering. Wir haben ASNs von 65515 bis 65520 für die interne Verwendung reserviert. Sowohl AS-Nummern mit 16 als auch mit 32 Bit werden unterstützt. Auf der Peeringseite (Kunde oder Anbieter) kann die ASN eine öffentliche ASN sein, wenn Sie als Besitzer feststellbar sind, oder eine private ASN für privates Peering. Für öffentliche Peerings und Microsoft-Peerings wird eine öffentliche ASN benötigt.
+Microsoft verwendet AS 12076 für das öffentliche und private Azure-Peering und das Microsoft-Peering. Wir haben ASNs von 65515 bis 65520 für die interne Verwendung reserviert. Sowohl AS-Nummern mit 16 als auch mit 32 Bit werden unterstützt. Auf der Peeringseite (Kunde oder Anbieter) kann die ASN eine öffentliche ASN sein, wenn Sie als Besitzer feststellbar sind, oder eine private ASN.
 
 Hinsichtlich Datenübertragungssymmetrie oder primärer und sekundärer Pfade einer Verbindung müssen keinerlei Anforderungen erfüllt werden. Die Weiterleitungs- und Rückgabepfade können unterschiedliche Routerpaare durchlaufen. Identische Routen müssen auf primärer oder sekundärer Seite für sämtliche Verbindungspaare angekündigt werden, die Ihnen gehören. Routenmetriken müssen nicht identisch sein.
 
@@ -175,4 +175,4 @@ Zusätzlich zu den obigen Kennzeichnungen versieht Microsoft Präfixe auch basie
 	- [Konfigurieren des Routings für das klassische Bereitstellungsmodell](expressroute-howto-routing-classic.md) oder [Konfigurieren des Routings für das Resource Manager-Bereitstellungsmodell](expressroute-howto-routing-arm.md)
 	- [Verknüpfen eines klassischen VNET mit einer ExpressRoute-Verbindung](expressroute-howto-linkvnet-classic.md) oder [Verknüpfen eines Resource Manager-VNET mit einer ExpressRoute-Verbindung](expressroute-howto-linkvnet-arm.md)
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0921_2016-->

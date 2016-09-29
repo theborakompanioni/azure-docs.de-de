@@ -12,13 +12,13 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows"
 	ms.workload="infrastructure-services"
-	ms.date="05/17/2016"
+	ms.date="09/06/2016"
 	ms.author="rclaus" />
 
 #Konfigurieren von Oracle Data Guard für Azure
 
 
-Dieses Lernprogramm zeigt, wie Sie Oracle Data Guard für virtuelle Computer in einer Azure-Umgebung für hohe Verfügbarkeit und Notfallwiederherstellung einrichten und implementieren. Das Lernprogramm konzentriert sich auf die unidirektionale Replikation für Oracle-Datenbanken ohne RAC.
+Dieses Tutorial zeigt, wie Sie Oracle Data Guard für virtuelle Computer in einer Azure-Umgebung für hohe Verfügbarkeit und Notfallwiederherstellung einrichten und implementieren. Das Tutorial konzentriert sich auf die unidirektionale Replikation für Oracle-Datenbanken ohne RAC.
 
 Oracle Data Guard unterstützt Datenschutz und Notfallwiederherstellung für Oracle Database. Es handelt sich um eine einfache, leistungsfähige und gebrauchsfertige Lösung für Notfallwiederherstellung, Datenschutz und hohe Verfügbarkeit des gesamten Oracle Database-Systems.
 
@@ -26,10 +26,10 @@ In diesem Lernprogramm wird davon ausgegangen, dass Sie bereits theoretische und
 
 Das Lernprogramm geht zudem davon aus, dass Sie die folgenden Voraussetzungen bereits implementiert haben:
 
-- Sie haben bereits den Abschnitt mit Überlegungen zu Hochverfügbarkeit und Notfallwiederherstellung im Thema [Images virtueller Oracle-Computer – verschiedene Überlegungen](virtual-machines-windows-classic-oracle-considerations.md) gelesen. Beachten Sie, dass Azure derzeit eigenständige Oracle-Datenbankinstanzen, aber keine Oracle Real Application Clusters (Oracle RAC) unterstützt.
+- Sie haben bereits den Abschnitt mit Überlegungen zu Hochverfügbarkeit und Notfallwiederherstellung im Thema [Images virtueller Oracle-Computer – verschiedene Überlegungen](virtual-machines-windows-classic-oracle-considerations.md) gelesen. Azure unterstützt derzeit eigenständige Oracle-Datenbankinstanzen, aber keine Oracle Real Application Clusters (Oracle RAC).
 
 
-- Sie haben zwei virtuelle Computer (VMs) in Azure mit demselben von der Plattform bereitgestellten Image von Oracle Enterprise Edition erstellt. Stellen Sie sicher, dass sich die virtuellen Computer im [gleichen Clouddienst](virtual-machines-windows-load-balance.md) und im gleichen [virtuellen Netzwerk](azure.microsoft.com/documentation/services/virtual-network/) befinden, um sicherzustellen, dass sie über die permanente private IP-Adresse aufeinander zugreifen können. Darüber hinaus wird empfohlen, die virtuellen Computer in derselben [Verfügbarkeitsgruppe](virtual-machines-windows-manage-availability.md) zu platzieren, damit sie von Azure in eigenen Fehlerdomänen und Upgradedomänen angeordnet werden können. Beachten Sie, dass Oracle Data Guard nur mit Oracle Database Enterprise Edition verfügbar ist. Jeder Computer muss mindestens 2 GB Arbeitsspeicher und 5 GB Speicherplatz aufweisen. Aktuelle Informationen zu den von der Plattform bereitgestellten VM-Größen finden Sie unter [Größen virtueller Computer für Azure](virtual-machines-windows-sizes.md). Wenn Sie zusätzliche Datenträgervolumes für die virtuellen Computer benötigen, können Sie zusätzliche Datenträger anfügen. Entsprechende Informationen finden Sie unter [Gewusst wie: Anfügen eines Datenträgers an einen virtuellen Computer](virtual-machines-windows-classic-attach-disk.md).
+- Sie haben zwei virtuelle Computer (VMs) in Azure mit demselben von der Plattform bereitgestellten Image von Oracle Enterprise Edition erstellt. Stellen Sie sicher, dass sich die virtuellen Computer im [gleichen Clouddienst](virtual-machines-windows-load-balance.md) und im gleichen virtuellen Netzwerk befinden, um sicherzustellen, dass sie über die permanente private IP-Adresse aufeinander zugreifen können. Darüber hinaus wird empfohlen, die virtuellen Computer in derselben [Verfügbarkeitsgruppe](virtual-machines-windows-manage-availability.md) zu platzieren, damit sie von Azure in eigenen Fehlerdomänen und Upgradedomänen angeordnet werden können. Oracle Data Guard ist nur mit Oracle Database Enterprise Edition verfügbar. Jeder Computer muss mindestens 2 GB Arbeitsspeicher und 5 GB Speicherplatz aufweisen. Aktuelle Informationen zu den von der Plattform bereitgestellten VM-Größen finden Sie unter [Größen virtueller Computer für Azure](virtual-machines-windows-sizes.md). Wenn Sie zusätzliche Datenträgervolumes für die virtuellen Computer benötigen, können Sie zusätzliche Datenträger anfügen. Entsprechende Informationen finden Sie unter [Gewusst wie: Anfügen eines Datenträgers an einen virtuellen Computer](virtual-machines-windows-classic-attach-disk.md).
 
 
 
@@ -65,11 +65,11 @@ Erstellen einer physischen Standbydatenbank
 
 	1. Konfigurieren von "listener.ora" auf beiden Servern zum Speichern von Einträgen für beide Datenbanken
 
-	2. Konfigurieren von "tnsnames.ora" auf dem primären virtuellen Computer und virtuellen Standbycomputer zum Speichern von Einträgen für die primäre und Standbydatenbank
+	2. Konfigurieren von „tnsnames.ora“ auf dem primären virtuellen Computer und virtuellen Standbycomputer zum Speichern von Einträgen für die primäre und Standbydatenbank.
 
 	3. Starten des Listeners und Testen von "tnsping" auf beiden virtuellen Computern für beide Dienste
 
-3. Starten der Standbyinstanz im Status "NOMOUNT"
+3. Starten der Standbyinstanz im Status NOMOUNT
 
 4. Verwenden von RMAN zum Klonen der Datenbank und Erstellen einer Standbydatenbank
 
@@ -77,7 +77,7 @@ Erstellen einer physischen Standbydatenbank
 
 6. Überprüfen der physischen Standbydatenbank
 
-> [AZURE.IMPORTANT] Dieses Lernprogramm wurde mit der folgenden Hardware- und Softwarekonfiguration eingerichtet und getestet:
+> [AZURE.IMPORTANT] Dieses Tutorial wurde mit der folgenden Hardware- und Softwarekonfiguration eingerichtet und getestet:
 >
 >| | **Primäre Datenbank** | **Standbydatenbank** |
 >|----------------------|-------------------------------------------|-------------------------------------------|
@@ -126,7 +126,7 @@ Es wird empfohlen, vor dem Erstellen einer Standbydatenbank sicherzustellen, das
 
 #### Aktivieren von erzwungener Protokollierung
 
-Zum Implementieren einer Standbydatenbank muss in der primären Datenbank die erzwungene Protokollierung aktiviert werden. Diese Option stellt sicher, dass selbst bei einem Vorgang ohne Protokollierung die erzwungene Protokollierung Vorrang hat und alle Vorgänge in den Redo Logs protokolliert werden. Deshalb stellen wir sicher, dass alle Vorgänge in der primären Datenbank protokolliert werden und die Replikation in die Standbydatenbank alle Vorgänge in der primären Datenbank umfasst. Führen Sie die Anweisung "ALTER DATABASE" zum Aktivieren der erzwungenen Protokollierung aus:
+Zum Implementieren einer Standbydatenbank muss in der primären Datenbank die erzwungene Protokollierung aktiviert werden. Diese Option stellt sicher, dass selbst bei einem Vorgang ohne Protokollierung die erzwungene Protokollierung Vorrang hat und alle Vorgänge in den Redo Logs protokolliert werden. Deshalb stellen wir sicher, dass alle Vorgänge in der primären Datenbank protokolliert werden und die Replikation in die Standbydatenbank alle Vorgänge in der primären Datenbank umfasst. Führen Sie die Anweisung ALTER DATABASE zum Aktivieren der erzwungenen Protokollierung aus:
 
 	SQL> ALTER DATABASE FORCE LOGGING;
 
@@ -243,7 +243,7 @@ Sie können die Data Guard-Umgebung mit den Parametern in der Datei "INIT.ORA" s
 	SQL> create pfile from spfile;
 	File created.
 
-Anschließend müssen Sie die PFILE-Datei bearbeiten, um die Standbyparameter hinzuzufügen. Öffnen Sie hierzu im Verzeichnis "% ORACLE\_HOME%\\database" die Datei "INITTEST. ORA". Fügen Sie dann die folgenden Anweisungen an die Datei "INITTEST.ORA" an. Beachten Sie, dass die Datei "INIT.ORA" gemäß der Namenskonvention "INIT<Datenbankname>.ORA" benannt werden muss.
+Anschließend müssen Sie die PFILE-Datei bearbeiten, um die Standbyparameter hinzuzufügen. Öffnen Sie hierzu im Verzeichnis "% ORACLE\_HOME%\\database" die Datei "INITTEST. ORA". Fügen Sie dann die folgenden Anweisungen an die Datei "INITTEST.ORA" an. Die Datei „INIT.ORA“ muss gemäß der Benennungskonvention „INIT<Datenbankname>.ORA“ benannt werden muss.
 
 	db_name='TEST'
 	db_unique_name='TEST'
@@ -320,7 +320,7 @@ In diesem Abschnitt werden die Schritte beschrieben, die Sie auf Machine2 ausfü
 
 Zunächst müssen Sie über das klassische Azure-Portal eine Remotedesktopverbindung mit „Machine2“ herstellen.
 
-Erstellen Sie dann auf dem Standbyserver (Machine2) alle erforderlichen Ordner für die Standbydatenbank, z. B. "C:\\<LokalerOrdner>\\TEST". Stellen Sie in diesem Lernprogramm sicher, dass die Ordnerstruktur der Ordnerstruktur auf Machine1 entspricht, damit alle erforderlichen Dateien, z. B. Steuerungsdatei, Datendateien, Redo-Log-Dateien sowie die Dateien in den Verzeichnissen "UDUMP", "BDUMP" und "CDUMP", erhalten bleiben. Definieren Sie außerdem auf Machine2 die Umgebungsvariablen "ORACLE\_HOME" und "ORACLE\_BASE". Wenn sie noch nicht definiert sind, definieren Sie sie im Dialogfeld "Umgebungsvariablen". Um auf dieses Dialogfeld zuzugreifen, starten Sie das Hilfsprogramm **System**, indem Sie in der **Systemsteuerung** auf das Symbol "System" doppelklicken. Klicken Sie dann auf die Registerkarte **Erweitert**, und wählen Sie **Umgebungsvariablen** aus. Klicken Sie unter **Systemvariablen** auf die Schaltfläche **Neu**, um die Umgebungsvariablen festzulegen. Nachdem Sie die Umgebungsvariablen eingerichtet haben, müssen Sie die vorhandene Windows-Eingabeaufforderung schließen und eine neue Eingabeaufforderung öffnen, damit die Änderungen angezeigt werden.
+Erstellen Sie dann auf dem Standbyserver (Machine2) alle erforderlichen Ordner für die Standbydatenbank, z. B. "C:\\<LokalerOrdner>\\TEST". Stellen Sie in diesem Lernprogramm sicher, dass die Ordnerstruktur der Ordnerstruktur auf Machine1 entspricht, damit alle erforderlichen Dateien, z. B. Steuerungsdatei, Datendateien, Redo-Log-Dateien sowie die Dateien in den Verzeichnissen UDUMP, BDUMP und CDUMP, erhalten bleiben. Definieren Sie außerdem auf Machine2 die Umgebungsvariablen "ORACLE\_HOME" und "ORACLE\_BASE". Wenn sie noch nicht definiert sind, definieren Sie sie im Dialogfeld "Umgebungsvariablen". Um auf dieses Dialogfeld zuzugreifen, starten Sie das Hilfsprogramm **System**, indem Sie in der **Systemsteuerung** auf das Symbol "System" doppelklicken. Klicken Sie dann auf die Registerkarte **Erweitert**, und wählen Sie **Umgebungsvariablen** aus. Klicken Sie unter **Systemvariablen** auf die Schaltfläche **Neu**, um die Umgebungsvariablen festzulegen. Nachdem Sie die Umgebungsvariablen eingerichtet haben, müssen Sie die vorhandene Windows-Eingabeaufforderung schließen und eine neue Eingabeaufforderung öffnen, damit die Änderungen angezeigt werden.
 
 Führen Sie anschließend die folgenden Schritte aus:
 
@@ -334,7 +334,7 @@ Führen Sie anschließend die folgenden Schritte aus:
 
 	3. Starten des Listeners und Testen von "tnsping" auf beiden virtuellen Computern für beide Dienste
 
-3. Starten der Standbyinstanz im Status "NOMOUNT"
+3. Starten der Standbyinstanz im Status NOMOUNT
 
 4. Verwenden von RMAN zum Klonen der Datenbank und Erstellen einer Standbydatenbank
 
@@ -501,7 +501,7 @@ Stellen Sie eine Remotedesktopverbindung mit Machine2 her, und bearbeiten Sie di
 	OK (260 msec)
 
 
-##Starten der Standbyinstanz im Status "NOMOUNT"
+##Starten der Standbyinstanz im Status NOMOUNT
 Sie müssen die Umgebung so einrichten, dass die Standbydatenbank auf dem virtuellen Standbycomputer (MACHINE2) unterstützt wird.
 
 Kopieren Sie zunächst die Kennwortdatei manuell vom primären Computer (Machine1) auf den Standbycomputer (Machine2). Dies ist erforderlich, da das **SYS**-Kennwort auf beiden Computern identisch sein muss.
@@ -627,7 +627,7 @@ Wenn Sie für die ursprüngliche primäre Datenbank nicht Flashback aktiviert ha
 
 Es wird empfohlen, für die primäre und Standbydatenbank "flashback database" zu aktivieren. Wenn ein Failover erfolgt, kann die primäre Datenbank in dem vor dem Failover vorhandenen Zustand wiederhergestellt und schnell in eine Standbydatenbank umgewandelt werden.
 
-##Zusätzliche Ressourcen
+##Weitere Ressourcen
 [Oracle Virtual Machine images for Azure (Images von virtuellen Oracle-Computern für Azure; in englischer Sprache)](virtual-machines-windows-classic-oracle-images.md)
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0914_2016-->

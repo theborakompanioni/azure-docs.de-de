@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="07/21/2016"
-	ms.author="tamram"/>
+	ms.date="09/20/2016"
+	ms.author="vamshik;tamram"/>
 
 # Einführung in Microsoft Azure Storage
 
@@ -139,7 +139,7 @@ Darüber hinaus finden Sie unter [Azure-Regionen](https://azure.microsoft.com/re
 Beim Erstellen eines Speicherkontos müssen Sie eine der folgenden Replikationsoptionen auswählen:
 
 - **Lokal redundanter Speicher (LRS):** Lokal redundanter Speicher hält drei Kopien Ihrer Daten vor. LRS wird innerhalb eines einzelnen Standorts dreimal in einer einzelnen Region repliziert. LRS schützt Ihre Daten vor normalen Hardwareausfällen, jedoch nicht vor dem Ausfall einer einzelnen Einrichtung.
-  
+
 	LRS wird zu günstigen Preisen angeboten. Für maximale Dauerhaftigkeit empfehlen wir die Verwendung von georedundantem Speicher (siehe Beschreibung weiter unten).
 
 
@@ -148,7 +148,7 @@ Beim Erstellen eines Speicherkontos müssen Sie eine der folgenden Replikationso
 	ZRS bietet eine höhere Dauerhaftigkeit als LRS. Für maximale Dauerhaftigkeit empfehlen wir jedoch die Verwendung von georedundantem Speicher (siehe Beschreibung weiter unten).
 
 	> [AZURE.NOTE] ZRS ist derzeit nur für Blockblobs verfügbar und wird erst ab der Version 2014-02-14 unterstützt.
-	> 
+	>
 	> Wenn Sie Ihr Speicherkonto erstellt und die ZRS-Option ausgewählt haben, kann der Replikationstyp nicht mehr geändert werden.
 
 - **Georedundanter Speicher (GRS)**: GRS hält sechs Kopien Ihrer Daten vor. Mit GRS werden Ihre Daten dreimal innerhalb der primären Region und dreimal in einer sekundären Region repliziert, die hunderte Kilometer von der primären Region entfernt ist. Dadurch wird eine höchstmögliche Dauerhaftigkeit erreicht. Im Falle eines Ausfalls in der primären Region führt Azure Storage ein Failover auf die sekundäre Region aus. Durch GRS wird die Dauerhaftigkeit Ihrer Daten in zwei separaten Regionen gewährleistet.
@@ -158,7 +158,7 @@ Beim Erstellen eines Speicherkontos müssen Sie eine der folgenden Replikationso
 - **Read-Access Geo Redundant-Speicher (RA-GRS)**: Nach der Erstellung Ihres Speicherkontos ist RA-GRS standardmäßig aktiviert. RA-GRS repliziert Ihre Daten an einen sekundären geografischen Standort und bietet außerdem Lesezugriff auf die Daten am sekundären Standort. Mithilfe von RA-GRS können Sie entweder vom primären oder vom sekundären Standort aus auf Ihre Daten zugreifen, falls einer der Standorte nicht mehr verfügbar ist.
 
 	> [AZURE.IMPORTANT] Die Art der Datenreplikation kann nach der Speicherkontoerstellung geändert werden, sofern bei der Kontoerstellung nicht die ZRS-Option angegeben wurde. Beachten Sie jedoch, dass unter Umständen zusätzlich einmalige Datenübertragungskosten anfallen, wenn Sie von LRS zu GRS oder RA-GRS wechseln.
- 
+
 Weitere Details zu den Speicherreplikationsoptionen finden Sie unter [Azure-Speicherreplikation](storage-redundancy.md).
 
 Preisinformationen für die Speicherkontoreplikation finden Sie unter [Preise für Azure Storage](https://azure.microsoft.com/pricing/details/storage/).
@@ -267,4 +267,4 @@ Weitere Informationen zu Azure Storage finden Sie in den folgenden Ressourcen:
 - [Gewusst wie: Verwenden von Queue Storage mit Python](storage-python-how-to-use-queue-storage.md)
 - [Gewusst wie: Verwenden von Azure File Storage mit Python](storage-python-how-to-use-file-storage.md)
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

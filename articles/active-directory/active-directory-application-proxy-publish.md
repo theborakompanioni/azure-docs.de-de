@@ -75,7 +75,7 @@ Bei Apps, für die eine Präauthentifizierung erforderlich ist, werden hierbei B
 
 ## Testen der veröffentlichten Anwendung
 
-Nachdem Sie die Anwendung veröffentlicht haben, können Sie sie testen, indem Sie zur veröffentlichten URL navigieren. Stellen Sie sicher, dass Sie darauf zugreifen können, dass sie richtig gerendert wird und dass alles wie erwartet funktioniert. Wenn Sie Probleme haben oder eine Fehlermeldung erhalten, hilft Ihnen das [Handbuch zur Problembehandlung](active-directory-application-proxy-troubleshoot.md) weiter.
+Nachdem Sie die Anwendung veröffentlicht haben, können Sie sie testen, indem Sie zur veröffentlichten URL navigieren. Stellen Sie sicher, dass Sie darauf zugreifen können, das Rendering richtig abläuft und alles wie erwartet funktioniert. Wenn Sie Probleme haben oder eine Fehlermeldung erhalten, hilft Ihnen das [Handbuch zur Problembehandlung](active-directory-application-proxy-troubleshoot.md) weiter.
 
 ## Konfigurieren der Anwendung
 
@@ -101,4 +101,4 @@ Um eine Anwendung zu löschen, wählen Sie eine Anwendung in der Liste aus, und 
 
 Aktuelle Neuigkeiten und Updates finden Sie im [Blog zum Anwendungsproxy](http://blogs.technet.com/b/applicationproxyblog/).
 
-<!----HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0921_2016-->

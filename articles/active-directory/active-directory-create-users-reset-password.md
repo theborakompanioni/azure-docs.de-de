@@ -18,6 +18,10 @@
 
 # Zurücksetzen des Kennworts für einen Benutzer
 
+> [AZURE.SELECTOR]
+- [Azure-Portal](active-directory-users-reset-password-azure-portal.md)
+- [Klassisches Azure-Portal](active-directory-create-users-reset-password.md)
+
 Egal, ob Sie auf eine Benutzeranfrage zum Zurücksetzen des Kennworts nach einer Sperre reagieren oder eine routinemäßige Sicherheitswartung durchführen: Mitunter müssen Sie das Kennwort eines Benutzers zurücksetzen. Mit Azure Active Directory (Azure AD) ist das einfach.
 
   1. Öffnen Sie Ihr Verzeichnis.
@@ -35,4 +39,4 @@ Egal, ob Sie auf eine Benutzeranfrage zum Zurücksetzen des Kennworts nach einer
 - [Verwalten von Kennwörtern in Azure AD](active-directory-manage-passwords.md)
 - [Verwalten von Gruppen in Azure AD](active-directory-manage-groups.md)
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0914_2016-->

@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure-Abrechnung und -Abonnement – Häufig gestellte Fragen | Microsoft Azure"
+	pageTitle="Azure-Abrechnung und -Abonnement – häufig gestellte Fragen | Microsoft Azure"
 	description="Antworten auf häufig gestellte Fragen zu Azure-Abrechnung und -Abonnement."
 	services=""
 	documentationCenter=""
@@ -17,7 +17,7 @@
 	ms.date="09/07/2016"
 	ms.author="genli"/>
 
-#  Azure-Abrechnung und -Abonnement – Häufig gestellte Fragen
+#  Azure-Abrechnung und -Abonnement – häufig gestellte Fragen
 
 In diesem Artikel werden einige der am häufigsten gestellten Fragen zu Abrechnung und Abonnements in Azure beantwortet.
 
@@ -61,6 +61,7 @@ In diesem Artikel werden einige der am häufigsten gestellten Fragen zu Abrechnu
 - [Wie entferne ich eine Kreditkarte, die ich nicht mehr als Azure-Zahlungsmethode verwende?](#how-do-i-remove-a-credit-card-that-i-no-longer-use-as-an-azure-payment-method)
 - [Wie aktualisiere oder ändere ich meine Kreditkarteninformationen?](#how-can-i-update-or-change-my-credit-card-information)
 - [Wie kann ich die Zahlungsinformationen für meine Azure-Abonnements bearbeiten?](#how-can-i-edit-my-payment-information-for-my-azure-subscriptions)
+- [Warum wird eine Meldung angezeigt, dass ich eine internationale Kreditkarte benötige?](#why-am-i-seeing-a-message-that-i-need-to-use-an-international-credit-card)
 
 ## Azure-Preise
 
@@ -74,7 +75,7 @@ In diesem Artikel werden einige der am häufigsten gestellten Fragen zu Abrechnu
 - [Was sind Azure-SLA-Guthaben?](#what-are-the-azure-sla-credits)
 - [Wie funktionieren Azure-SLAs mit aktuellen lokalen Microsoft-Lizenzvereinbarungen?](#how-will-azure-service-level-agreements-work-with-current-on-premises-microsoft-licensing-agreements)
 
-## Azure-Ausgabenlimits
+## Ausgabenlimits
 
 - [Kann ich das Ausgabenlimit wieder aktivieren, nachdem ich es deaktiviert habe?](#can-i-turn-the-spending-limit-back-on-if-i-turn-off-it)
 - [Kann der Betrag des Ausgabenlimits angepasst werden?](#can-i-adjust-the-amount-of-the-spending-limit)
@@ -209,7 +210,7 @@ Wenden Sie sich an den [Azure-Support](https://azure.microsoft.com/support/optio
 
 ### Wie verwalte ich Administratorkonten im neuen Azure-Portal?
 
-Die rollenbasierte Access Control in Azure (RBAC) ermöglicht eine präzise Zugriffsverwaltung für Azure. Mithilfe von RBAC können Sie Aufgaben in Ihrem DevOps-Team verteilen und Benutzern nur den Zugriff gewähren, den sie zur Ausführung ihrer Aufgaben benötigen. Weitere Informationen finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure Access Directory] (.\\active-directory\\Azure Role-Based Access Control.md).
+Die rollenbasierte Access Control in Azure (RBAC) ermöglicht eine präzise Zugriffsverwaltung für Azure. Mithilfe von RBAC können Sie Aufgaben in Ihrem DevOps-Team verteilen und Benutzern nur den Zugriff gewähren, den sie zur Ausführung ihrer Aufgaben benötigen. Weitere Informationen finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure Access Directory](.\\active-directory\\Azure Role-Based Access Control.md).
 
 ### Wie übertrage ich den Besitz meiner Abonnements?
 
@@ -250,6 +251,10 @@ Zum Anzeigen und Bearbeiten der Azure-Kontoinformationen müssen Sie sich beim A
 Weitere Informationen finden Sie im Artikel [Ändern der für die Zahlung eines Azure-Abonnements verwendeten Kreditkarte](billing-how-to-change-credit-card.md).
 
 >[AZURE.NOTE] Im Tool „Zahlungsmethode ändern“ kann eine vorhandene Kreditkarte gegenwärtig nicht als Zahlungsmethode entfernt werden. Informationen zum Entfernen einer Kreditkarte finden Sie in diesem Artikel unter [Wie entferne ich eine Kreditkarte, die ich nicht mehr als Azure-Zahlungsmethode verwende?](#how-do-i-remove-a-credit-card-that-i-no-longer-use-as-an-azure-payment-method).
+
+### Warum wird eine Meldung angezeigt, dass ich eine internationale Kreditkarte benötige?
+
+In einigen Fällen kaufen Sie Dienste über eine nicht lokale Microsoft-Entität, obwohl Sie für Azure-Dienste in Ihrer lokalen/bevorzugten Währung bezahlen, und Ihre Kreditkarte wird von einer nicht lokalen Bank bearbeitet. In diesen Fällen werden von lokalen Banken ausgestellte Karten möglicherweise abgelehnt, was Ihre Azure-Dienste beeinträchtigen kann. Wenn Sie nicht sicher sind, ob Ihre Kreditkarte für internationale Transaktionen aktiviert ist, wenden Sie sich an Ihre Bank oder den Kartenaussteller. Informationen finden Sie unter [Unterstützte Länder und Währungen](billing-countries-and-currencies.md).
 
 ### Warum kann ich Details meines Abonnements nicht bearbeiten oder ergänzen?
 
@@ -321,4 +326,4 @@ Wenn Sie eine Kredit- oder Debitkarte als Zahlungsmethode festgelegt haben, erfo
 
 Wenn Sie die [Zahlung per Rechnung](https://azure.microsoft.com/pricing/invoicing/) festgelegt haben, senden Sie Ihre Zahlung an den Empfänger, der unten auf der Rechnung aufgeführt ist. Sie können den [Support kontaktieren](billing-how-to-create-billing-support-ticket.md), falls Sie weitere Unterstützung benötigen.
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0914_2016-->

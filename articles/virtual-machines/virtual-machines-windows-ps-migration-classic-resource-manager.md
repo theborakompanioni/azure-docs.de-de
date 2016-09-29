@@ -46,10 +46,9 @@ Rufen Sie die verfügbaren Abonnements mit dem folgenden Befehl ab.
 
 	Get-AzureRMSubscription | Sort SubscriptionName | Select SubscriptionName
 
-Legen Sie Ihr Azure-Abonnement für die aktuelle Sitzung fest. Ersetzen Sie alles in den Anführungszeichen, einschließlich der Zeichen < und >, durch die korrekten Namen.
+Legen Sie Ihr Azure-Abonnement für die aktuelle Sitzung fest. Ersetzen Sie den Inhalt der Anführungszeichen (einschließlich der Zeichen „<“ und „>“) durch den korrekten Namen.
 
-	$subscr="<subscription name>"
-	Get-AzureRmSubscription –SubscriptionName $subscr | Select-AzureRmSubscription
+	Select-AzureRmSubscription –SubscriptionName "<subscription name>"
 
 >[AZURE.NOTE] Die Registrierung ist ein einmaliger Schritt, der jedoch einmal ausgeführt werden muss, bevor Sie versuchen, die Migration auszuführen. Ohne Registrierung wird die folgende Fehlermeldung angezeigt:
 
@@ -71,10 +70,9 @@ Rufen Sie die verfügbaren Abonnements mit dem folgenden Befehl ab.
 
 	Get-AzureSubscription | Sort SubscriptionName | Select SubscriptionName
 
-Legen Sie Ihr Azure-Abonnement für die aktuelle Sitzung fest. Ersetzen Sie alles in den Anführungszeichen, einschließlich der Zeichen < und >, durch die korrekten Namen.
+Legen Sie Ihr Azure-Abonnement für die aktuelle Sitzung fest. Ersetzen Sie den Inhalt der Anführungszeichen (einschließlich der Zeichen „<“ und „>“) durch den korrekten Namen.
 
-	$subscr="<subscription name>"
-	Get-AzureSubscription –SubscriptionName $subscr | Select-AzureSubscription
+	Select-AzureSubscription –SubscriptionName "<subscription name>"
 
 ## Schritt 4: Sicherstellen, dass Sie über genügend Kerne in virtuellen Azure Resource Manager-Computern in der Azure-Region Ihrer aktuellen Bereitstellung oder Ihres VNET verfügen
 
@@ -189,4 +187,4 @@ Wenn die vorbereitete Konfiguration in Ordnung ist, können Sie den Vorgang fort
 - [Ausführliche technische Informationen zur plattformgestützten Migration vom klassischen Bereitstellungsmodell zu Azure Resource Manager](virtual-machines-windows-migration-classic-resource-manager-deep-dive.md)
 - [Klonen eines klassischen virtuellen Computers für Azure Resource Manager mithilfe von PowerShell-Skripts aus der Community](virtual-machines-windows-migration-scripts.md)
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0914_2016-->

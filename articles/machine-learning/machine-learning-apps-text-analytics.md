@@ -4,7 +4,7 @@
 	services="machine-learning"
 	documentationCenter=""
 	authors="onewth"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun"/>
 
 <tags
@@ -285,7 +285,7 @@ Dieser API müssen mindestens 100 Datensätze übermittelt werden, aber sie kan
 **Beispiel für eine Anforderung**
 
 
-Im folgenden POST-Aufruf fordern wir Themen für einen Satz von 100 Artikeln an, wobei der zuerst und zuletzt eingegebene Artikel angezeigt werden und zwei „StopPhrases“ enthalten sind.
+Im folgenden POST-Aufruf fordern wir Themen für einen Satz von 100 Artikeln an, wobei der zuerst und zuletzt eingegebene Artikel angezeigt werden und zwei StopPhrases enthalten sind.
 
 	POST https://api.datamarket.azure.com/data.ashx/amla/text-analytics/v1/StartTopicDetection HTTP/1.1
 
@@ -373,7 +373,7 @@ Die Eigenschaften für jeden Teil der Antwort lauten:
 
 | Schlüssel | Beschreibung |
 |:-----|:----|
-| TopicId | Ein eindeutiger Bezeichner für jedes Thema. |
+| TopicId | Ein eindeutiger Bezeichner für jedes Thema |
 | Punkte | Anzahl der Datensätze, die dem Thema zugewiesen sind. |
 | KeyPhrase | Eine Zusammenfassung des Themas in einem Wort oder Ausdruck. Kann aus 1 oder mehreren Wörtern bestehen. |
 
@@ -385,4 +385,4 @@ Die Eigenschaften für jeden Teil der Antwort lauten:
 | TopicId | Die Themen-ID, der der Datensatz zugewiesen wurde. |
 | Distance | Zuverlässigkeit, dass der Datensatz zu dem Thema gehört. Je näher „Distance“ an 0 liegt, desto höher ist die Zuverlässigkeit. |
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0914_2016-->

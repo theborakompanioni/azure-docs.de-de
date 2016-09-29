@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/23/2016" 
+	ms.date="09/12/2016" 
 	ms.author="tomfitz"/>
 
 # Verwalten von Azure-Ressourcen über das Portal
@@ -94,7 +94,7 @@ Wenn Sie eine Ressource auswählen, werden auf dem Ressourcenblatt Standarddiagr
 
     ![Dashboard](./media/resource-group-portal/create-dashboard.png)
 
-     Um sich mit der Verwendung von Dashboards vertraut zu machen, sehen Sie sich das Video [Build Custom Dashboards in the Azure portal](https://channel9.msdn.com/Blogs/trevor-cloud/azure-portal-dashboards) (Erstellen benutzerdefinierter Dashboards im Azure-Portal) an. Informationen zum Freigeben des Zugriffs auf ein veröffentlichtes Dashboard finden Sie unter [Freigeben von Azure-Dashboards](azure-portal-dashboard-share-access.md).
+     Um sich mit der Verwendung von Dashboards vertraut zu machen, lesen Sie [Erstellen und Freigeben von Dashboards im Azure-Portal](azure-portal-dashboards.md).
 
 ## Verwalten von Ressourcen
 
@@ -151,4 +151,4 @@ Beim Löschen einer Ressourcengruppe werden alle darin enthaltenen Ressourcen ge
 - Informationen zum Bereitstellen von Ressourcen über das Portal finden Sie unter [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure-Portal](../resource-group-template-deploy-portal.md).
 - Informationen zum Verwalten des Zugriffs auf Ressourcen finden Sie unter [Verwenden von Rollenzuweisungen zum Verwalten Ihrer Azure-Abonnementressourcen](../active-directory/role-based-access-control-configure.md).
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0914_2016-->

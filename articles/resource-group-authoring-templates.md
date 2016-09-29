@@ -16,7 +16,7 @@
    ms.date="07/19/2016"
    ms.author="tomfitz"/>
 
-# Erstellen von Azure-Ressourcen-Manager-Vorlagen
+# Erstellen von Azure Resource Manager-Vorlagen
 
 In diesem Thema wird die Struktur einer Azure Resource Manager-Vorlage beschrieben. Er zeigt die verschiedenen Abschnitte einer Vorlage und die Eigenschaften, die in diesen Abschnitten verfügbar sind. Die Vorlage besteht aus JSON und Ausdrücken, mit denen Sie Werte für die Bereitstellung erstellen können.
 
@@ -112,7 +112,7 @@ Die zulässigen Typen und Werte lauten folgendermaßen:
 
 Um einen Parameter als optional anzugeben, geben Sie einen Standardwert (kann eine leere Zeichenfolge sein) an.
 
-Wenn Sie einen Parameternamen angeben, der einem Parameter im Befehl zum Bereitstellen der Vorlage entspricht (z.B. den Namen **ResourceGroupName** in Ihrer Vorlage, der dem **ResourceGroupName**-Parameter im Cmdlet [New-AzureRmResourceGroupDeployment](https://msdn.microsoft.com/library/azure/mt679003.aspx) entspricht), werden Sie aufgefordert, einen Wert für einen Parameter mit dem Postfix **FromTemplate** anzugeben (z.B. **ResourceGroupNameFromTemplate**). Im Allgemeinen sollten Sie diese Verwirrung vermeiden, indem Sie Parametern nicht dieselben Namen wie Parametern für Bereitstellungsvorgänge geben.
+Wenn Sie einen Parameternamen angeben, der einem Parameter im Befehl zum Bereitstellen der Vorlage entspricht (z.B. den Namen **ResourceGroupName** in Ihrer Vorlage, der dem **ResourceGroupName**-Parameter im Cmdlet [New-AzureRmResourceGroupDeployment][deployment2cmdlet] entspricht), werden Sie aufgefordert, einen Wert für einen Parameter mit dem Postfix **FromTemplate** anzugeben (z.B. **ResourceGroupNameFromTemplate**). Im Allgemeinen sollten Sie diese Verwirrung vermeiden, indem Sie Parametern nicht dieselben Namen wie Parametern für Bereitstellungsvorgänge geben.
 
 >[AZURE.NOTE] Für Kennwörter, Schlüssel und andere geheime Informationen sollte der Typ **secureString** verwendet werden. Vorlagenparameter des Typs secureString können nach der Bereitstellung der Ressource nicht mehr gelesen werden.
 
@@ -364,4 +364,7 @@ Weitere Informationen zum Arbeiten mit Vorlagen finden Sie unter [Freigeben des 
 - Informationen dazu, wie Sie beim Erstellen eines Ressourcentyps eine bestimmte Anzahl von Durchläufen ausführen, finden Sie unter [Erstellen mehrerer Instanzen von Ressourcen im Azure-Ressourcen-Manager](resource-group-create-multiple.md).
 - Möglicherweise müssen Sie Ressourcen verwenden, die in einer anderen Ressourcengruppe enthalten sind. Dies geschieht normalerweise bei der Arbeit mit Speicherkonten oder virtuellen Netzwerken, die in mehreren Ressourcengruppen gemeinsam verwendet werden. Weitere Informationen finden Sie unter der [resourceId-Funktion](resource-group-template-functions.md#resourceid).
 
-<!---HONumber=AcomDC_0803_2016-->
+
+[deployment2cmdlet]: https://msdn.microsoft.com/library/mt740620(v=azure.200).aspx
+
+<!---HONumber=AcomDC_0914_2016-->

@@ -27,7 +27,7 @@
 
 In diesem Artikel erfahren Sie, wie Sie HTTPS für Web-Apps, Back-Ends für mobile Apps oder API-Apps, die einen benutzerdefinierten Domänennamen verwenden, in [Azure App Service](../app-service/app-service-value-prop-what-is.md) aktivieren. Es wird nur die Serverauthentifizierung behandelt. Wenn Sie gegenseitige Authentifizierung (einschließlich Clientauthentifizierung) benötigen, finden Sie entsprechende Informationen unter [Konfigurieren der gegenseitigen TLS-Authentifizierung für eine Web-App](app-service-web-configure-tls-mutual-auth.md).
 
-Um mit HTTPS eine App zu sichern, die einen benutzerdefinierten Domänennamen hat, fügen Sie ein Zertifikat für diesen Domänennamen hinzu. Standardmäßig schützt Azure die **\*.azurewebsites.net**-Platzhalterdomäne mit einem einzigen SSL-Zertifikat, damit Ihre Clients bereits unter **https://*&lt;appname>*. azurewebsites.net** auf Ihre App zugreifen können. Aber wenn Sie eine benutzerdefinierte Domäne verwenden möchten, wie z.B. **contoso.com**, **www.contoso.com** und **\*.contoso.com**, kann das Standardzertifikat diese nicht sichern. Darüber hinaus ist das Standardzertifikat wie alle [Platzhalterzertifikate](https://casecurity.org/2014/02/26/pros-and-cons-of-single-domain-multi-domain-and-wildcard-certificates/) nicht so sicher wie die Verwendung einer benutzerdefinierten Domäne und eines Zertifikats für diese benutzerdefinierte Domäne.
+Um mit HTTPS eine App zu sichern, die einen benutzerdefinierten Domänennamen hat, fügen Sie ein Zertifikat für diesen Domänennamen hinzu. Standardmäßig schützt Azure die ***.azurewebsites.net**-Platzhalterdomäne mit einem einzigen SSL-Zertifikat, damit Ihre Clients bereits unter **https://*&lt;appname>*. azurewebsites.net** auf Ihre App zugreifen können. Aber wenn Sie eine benutzerdefinierte Domäne verwenden möchten, wie z.B. **contoso.com**, **www.contoso.com** und ***.contoso.com**, kann das Standardzertifikat diese nicht sichern. Darüber hinaus ist das Standardzertifikat wie alle [Platzhalterzertifikate](https://casecurity.org/2014/02/26/pros-and-cons-of-single-domain-multi-domain-and-wildcard-certificates/) nicht so sicher wie die Verwendung einer benutzerdefinierten Domäne und eines Zertifikats für diese benutzerdefinierte Domäne.
 
 >[AZURE.NOTE] Hilfe erhalten Sie jederzeit in den [Azure-Foren](https://azure.microsoft.com/support/forums/) von den Azure-Experten. Wenn Sie persönlicheren Support wünschen, rufen Sie den [Azure-Support](https://azure.microsoft.com/support/options/) auf, und klicken Sie auf **Support erhalten**.
 
@@ -36,7 +36,7 @@ Um mit HTTPS eine App zu sichern, die einen benutzerdefinierten Domänennamen ha
 Um Ihren benutzerdefinierten Domänennamen mit HTTPS zu sichern, binden Sie ein benutzerdefiniertes SSL-Zertifikat an diese benutzerdefinierte Domäne in Azure. Vor dem Binden eines benutzerdefinierten Zertifikats müssen Sie die folgenden Schritte ausführen:
 
 - **Konfigurieren Sie die benutzerdefinierte Domäne** – App Service ermöglicht das Hinzufügen eines Zertifikats nur für einen Domänennamen, der bereits in Ihrer App konfiguriert ist. Anweisungen finden Sie unter [Zuordnen eines benutzerdefinierten Domänennamens zu einer Azure-App](web-sites-custom-domain-name.md).
-- **Skalieren Sie zentral hoch bis zur Stufe „Basic“ oder höher ** – App Service-Pläne in unteren Preisstufen unterstützen keine benutzerdefinierten SSL-Zertifikate. Anweisungen finden Sie unter [Zentrales Hochskalieren einer App in Azure](web-sites-scale.md).
+- **Skalieren Sie zentral hoch bis zur Stufe „Basic“ oder höher** – App Service-Pläne in unteren Preisstufen unterstützen keine benutzerdefinierten SSL-Zertifikate. Anweisungen finden Sie unter [Zentrales Hochskalieren einer App in Azure](web-sites-scale.md).
 - **Rufen Sie ein SSL-Zertifikat ab** – wenn Sie nicht bereits über eines verfügen, müssen Sie eines von einer vertrauenswürdigen [Zertifizierungsstelle](http://en.wikipedia.org/wiki/Certificate_authority) (Certificate Authority, CA) abrufen. Das Zertifikat muss die folgenden Anforderungen erfüllen:
 
 	- Es ist von einer vertrauenswürdigen Zertifizierungsstelle (keine privaten CA-Server) signiert.
@@ -96,7 +96,7 @@ Wenn Sie das Setup im App Service testen möchten, bevor Sie ein Zertifikat erwe
 
 5. Übermitteln Sie **myrequest.csr** an eine Zertifizierungsstelle, um ein SSL-Zertifikat abzurufen. Laden Sie die Datei entweder hoch, oder kopieren Sie den Inhalt aus einem Text-Editor in ein Webformular.
 
-	Eine Liste der Zertifizierungsstellen, die von Microsoft als vertrauenswürdig eingestuft werden, finden Sie unter [Microsoft Trusted Root Certificate Program: Participants (v.2016-April)][cas] (Microsoft-Programm für vertrauenswürdige Stammzertifikate: Teilnehmer [v.2016-April]).
+	Eine Liste der Zertifizierungsstellen, die von Microsoft als vertrauenswürdig eingestuft werden, finden Sie unter [Microsoft Trusted Root Certificate Program: Participants (v.2016-April)][cas] \(Microsoft-Programm für vertrauenswürdige Stammzertifikate: Teilnehmer [v.2016-April]).
 
 6. Sobald die Zertifizierungsstelle Ihnen durch Senden eines Zertifikats (CER-Datei) geantwortet hat, speichern Sie es in Ihrem Arbeitsverzeichnis. Führen Sie dann den folgenden Befehl aus, um die ausstehende CSR abzuschließen.
 
@@ -135,7 +135,7 @@ Sie können nun die exportierte PFX-Datei in App Service hochladen. Siehe [Schri
 
 1. Generieren Sie eine CSR zum Senden an die Zertifizierungsstelle mit IIS-Manager. Weitere Informationen zum Generieren einer CSR finden Sie unter [Anfordern eines Internetserverzertifikats (IIS 7)][iiscsr].
 
-3. Senden Sie Ihre CSR an eine Zertifizierungsstelle, um ein SSL-Zertifikat zu beziehen. Eine Liste der Zertifizierungsstellen, die von Microsoft als vertrauenswürdig eingestuft werden, finden Sie unter [Microsoft Trusted Root Certificate Program: Participants (v.2016-April)][cas] (Microsoft-Programm für vertrauenswürdige Stammzertifikate: Teilnehmer [v.2016-April]).
+3. Senden Sie Ihre CSR an eine Zertifizierungsstelle, um ein SSL-Zertifikat zu beziehen. Eine Liste der Zertifizierungsstellen, die von Microsoft als vertrauenswürdig eingestuft werden, finden Sie unter [Microsoft Trusted Root Certificate Program: Participants (v.2016-April)][cas] \(Microsoft-Programm für vertrauenswürdige Stammzertifikate: Teilnehmer [v.2016-April]).
 
 
 3. Schließen Sie die CSR mit dem Zertifikat ab, das die Zertifizierungsstelle an Sie zurücksendet. Weitere Informationen zum Ausfüllen der CSR finden Sie unter [Installieren eines Internetserverzertifikats (IIS 7)][installcertiis].
@@ -179,7 +179,7 @@ Sie können nun die exportierte PFX-Datei in App Service hochladen. Siehe [Schri
 
 	Wenn Sie fertig sind, sollte Ihr Arbeitsverzeichnis zwei Dateien enthalten: **myserver.key** und **server.csr**. Die Datei **server.csr** enthält die CSR, und **myserver.key** benötigen Sie später.
 
-3. Senden Sie Ihre CSR an eine Zertifizierungsstelle, um ein SSL-Zertifikat zu beziehen. Eine Liste der Zertifizierungsstellen, die von Microsoft als vertrauenswürdig eingestuft werden, finden Sie unter [Microsoft Trusted Root Certificate Program: Participants (v.2016-April)][cas] (Microsoft-Programm für vertrauenswürdige Stammzertifikate: Teilnehmer [v.2016-April]).
+3. Senden Sie Ihre CSR an eine Zertifizierungsstelle, um ein SSL-Zertifikat zu beziehen. Eine Liste der Zertifizierungsstellen, die von Microsoft als vertrauenswürdig eingestuft werden, finden Sie unter [Microsoft Trusted Root Certificate Program: Participants (v.2016-April)][cas] \(Microsoft-Programm für vertrauenswürdige Stammzertifikate: Teilnehmer [v.2016-April]).
 
 
 4. Sobald die Zertifizierungsstelle das angeforderte Zertifikat sendet, speichern Sie es in einer Datei namens **myserver.crt** in Ihrem Arbeitsverzeichnis. Wenn die Zertifizierungsstelle das Zertifikat in einem Textformat bereitstellt, kopieren Sie einfach den Inhalt in einen Text-Editor, und speichern Sie ihn in einer Datei mit dem Namen **myserver.crt**. Ihre Datei sollte folgendermaßen aussehen:
@@ -269,7 +269,7 @@ Sie können nun die exportierte PFX-Datei in App Service hochladen. Siehe [Schri
 
 	Wenn Sie fertig sind, sollte Ihr Arbeitsverzeichnis zwei Dateien enthalten: **myserver.key** und **server.csr**. Die Datei **server.csr** enthält die CSR, und **myserver.key** benötigen Sie später.
 
-3. Senden Sie Ihre CSR an eine Zertifizierungsstelle, um ein SSL-Zertifikat zu beziehen. Eine Liste der Zertifizierungsstellen, die von Microsoft als vertrauenswürdig eingestuft werden, finden Sie unter [Microsoft Trusted Root Certificate Program: Participants (v.2016-April)][cas] (Microsoft-Programm für vertrauenswürdige Stammzertifikate: Teilnehmer [v.2016-April]).
+3. Senden Sie Ihre CSR an eine Zertifizierungsstelle, um ein SSL-Zertifikat zu beziehen. Eine Liste der Zertifizierungsstellen, die von Microsoft als vertrauenswürdig eingestuft werden, finden Sie unter [Microsoft Trusted Root Certificate Program: Participants (v.2016-April)][cas] \(Microsoft-Programm für vertrauenswürdige Stammzertifikate: Teilnehmer [v.2016-April]).
 
 
 4. Sobald die Zertifizierungsstelle das angeforderte Zertifikat sendet, speichern Sie es in einer Datei namens **myserver.crt**. Wenn die Zertifizierungsstelle das Zertifikat in einem Textformat bereitstellt, kopieren Sie einfach den Inhalt in einen Text-Editor, und speichern Sie ihn in einer Datei mit dem Namen **myserver.crt**. Die Datei sollte folgendermaßen aussehen:
@@ -442,7 +442,9 @@ Bevor Sie fortfahren, lesen Sie den Abschnitt [Was Sie alles benötigen](#bkmk_d
 
 ## Schritt 3: Ändern Sie Ihre Domänennamenzuordnung (nur IP-basiertes SSL).
 
-Wenn Sie nur **SNI SSL**-Bindungen verwenden, überspringen Sie diesen Abschnitt. Mehrere **SNI SSL**-Bindungen können zusammen bei den vorhandenen freigegebenen IP-Adressen funktionieren, die Ihrer App zugewiesen sind. Wenn Sie allerdings eine Bindung gemäß **IP-basiertem SSL** erstellen, erstellt App Service eine dedizierte IP-Adresse für die Bindung, weil **IP-basiertes SSL** dies erfordert. Aufgrund dieser dedizierten IP-Adresse müssen Sie Ihre App unter folgenden Umständen weiter konfigurieren:
+Wenn Sie nur **SNI SSL**-Bindungen verwenden, überspringen Sie diesen Abschnitt. Mehrere **SNI SSL**-Bindungen können zusammen bei den vorhandenen freigegebenen IP-Adressen funktionieren, die Ihrer App zugewiesen sind. Wenn Sie allerdings eine Bindung gemäß **IP-basiertem SSL** erstellen, erstellt App Service eine dedizierte IP-Adresse für die Bindung, weil **IP-basiertes SSL** dies erfordert. Nur eine dedizierte IP-Adresse kann erstellt werden. Daher kann nur eine **IP-basierte SSL**-Bindung hinzugefügt werden.
+
+Aufgrund dieser dedizierten IP-Adresse müssen Sie Ihre App unter folgenden Umständen weiter konfigurieren:
 
 - Sie [haben einen A-Eintrag verwendet, um Ihre benutzerdefinierte Domäne Ihrer Azure-App zuzuordnen](web-sites-custom-domain-name.md#a), und Sie haben soeben eine Bindung gemäß **IP-basiertem SSL** hinzugefügt. In diesem Szenario müssen Sie den vorhandenen A-Eintrag wie folgt neu zuordnen, sodass er auf die dedizierte IP-Adresse zeigt:
 
@@ -547,4 +549,4 @@ Weitere Informationen zum IIS-URL-Rewrite-Modul finden Sie unter der Dokumentati
 [certwiz3]: ./media/web-sites-configure-ssl-certificate/waws-certwiz3.png
 [certwiz4]: ./media/web-sites-configure-ssl-certificate/waws-certwiz4.png
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0914_2016-->

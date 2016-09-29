@@ -12,7 +12,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="08/09/2016"
+   ms.date="09/09/2016"
    ms.author="gwallace"/>
 
 # Konfigurieren eines Anwendungsgateways für die SSL-Auslagerung mit Azure Resource Manager
@@ -44,14 +44,14 @@
 
 Für die Konfiguration von SSL-Zertifikaten sollte das Protokoll in **HttpListener** in *Https*(Groß-/Kleinschreibung beachten) geändert werden. Das Element **SslCertificate** wird **HttpListener** mit dem Variablenwert hinzugefügt, der für das SSL-Zertifikat konfiguriert wurde. Der Front-End-Port sollte auf 443 aktualisiert werden.
 
-**So aktivieren Sie cookiebasierte Affinität** Ein Anwendungsgateway kann so konfiguriert werden, dass es sicherstellt, dass die Anforderung von einer Clientsitzung immer an denselben virtuellen Computer in der Webfarm weitergeleitet wird. Dies erfolgt durch Einfügen eines Sitzungscookies, sodass das Gateway den Datenverkehr entsprechend weiterleiten kann. Legen Sie zum Aktivieren der cookiebasierten Affinität **CookieBasedAffinity** im **BackendHttpSettings**-Element auf *Enabled* fest.
+**So aktivieren Sie cookiebasierte Affinität** Ein Anwendungsgateway kann so konfiguriert werden, dass es sicherstellt, dass die Anforderung von einer Clientsitzung immer an denselben virtuellen Computer in der Webfarm weitergeleitet wird. Für dieses Szenario wird das Einfügen eines Sitzungscookies genutzt, damit das Gateway den Datenverkehr entsprechend weiterleiten kann. Legen Sie zum Aktivieren der cookiebasierten Affinität **CookieBasedAffinity** im **BackendHttpSettings**-Element auf *Enabled* fest.
 
 
 ## Erstellen eines Anwendungsgateways
 
 Der Unterschied zwischen dem klassischen Azure-Bereitstellungsmodell und Azure Resource Manager besteht in der Reihenfolge, in der Sie ein Anwendungsgateway und die Elemente erstellen, die konfiguriert werden müssen.
 
-Beim Resource Manager werden alle Elemente, die ein Anwendungsgateway bilden, einzeln konfiguriert und anschließend zusammengesetzt, um eine Anwendungsgatewayressource zu erstellen.
+Bei Resource Manager werden alle Komponenten eines Anwendungsgateways einzeln konfiguriert und dann zusammengefügt, um eine Anwendungsgatewayressource zu erstellen.
 
 
 Hier sind die erforderlichen Schritte zum Erstellen eines Anwendungsgateways angegeben:
@@ -69,8 +69,6 @@ Stellen Sie sicher, dass Sie in den PowerShell-Modus wechseln, um die Azure-Ress
 ### Schritt 1
 
 	Login-AzureRmAccount
-
-
 
 ### Schritt 2
 
@@ -106,24 +104,25 @@ Das folgende Beispiel zeigt, wie Sie mit dem Ressourcen-Manager ein virtuelles N
 
 	$subnet = New-AzureRmVirtualNetworkSubnetConfig -Name subnet01 -AddressPrefix 10.0.0.0/24
 
-Dieser Befehl weist den Adressbereich 10.0.0.0/24 einer Subnetzvariablen zu, die zum Erstellen eines virtuellen Netzwerks verwendet wird.
+In diesem Beispiel wird der Adressbereich 10.0.0.0/24 einer Subnetzvariablen zugewiesen, die zum Erstellen eines virtuellen Netzwerks verwendet wird.
 
 ### Schritt 2
+
 	$vnet = New-AzureRmVirtualNetwork -Name appgwvnet -ResourceGroupName appgw-rg -Location "West US" -AddressPrefix 10.0.0.0/16 -Subnet $subnet
 
-Ein virtuelles Netzwerk mit dem Namen „appgwvnet“ wird in der Ressourcengruppe „appgw-rg“ für die Region „USA, Westen“ mit dem Präfix 10.0.0.0/16 und dem Subnetz 10.0.0.0/24 erstellt.
+In diesem Beispiel wird ein virtuelles Netzwerk mit dem Namen „appgwvnet“ in der Ressourcengruppe „appgw-rg“ für die Region „USA, Westen“ mit dem Präfix 10.0.0.0/16 und dem Subnetz 10.0.0.0/24 erstellt.
 
 ### Schritt 3
 
 	$subnet = $vnet.Subnets[0]
 
-Der Variablen „$subnet“ wird das Subnetzobjekt für die nächsten Schritte zugewiesen.
+In diesem Beispiel wird der Variablen „$subnet“ das Subnetzobjekt für die nächsten Schritte zugewiesen.
 
 ## Erstellen der öffentlichen IP-Adresse für die Front-End-Konfiguration
 
 	$publicip = New-AzureRmPublicIpAddress -ResourceGroupName appgw-rg -name publicIP01 -location "West US" -AllocationMethod Dynamic
 
-Es wird die öffentliche IP-Ressource „publicIP01“ in der Ressourcengruppe „appgw-rg“ für die Region „USA, Westen“ erstellt.
+In diesem Beispiel wird die öffentliche IP-Ressource „publicIP01“ in der Ressourcengruppe „appgw-rg“ für die Region „USA, Westen“ erstellt.
 
 
 ## Erstellen eines Konfigurationsobjekts für das Anwendungsgateway
@@ -132,56 +131,56 @@ Es wird die öffentliche IP-Ressource „publicIP01“ in der Ressourcengruppe �
 
 	$gipconfig = New-AzureRmApplicationGatewayIPConfiguration -Name gatewayIP01 -Subnet $subnet
 
-Eine IP-Konfiguration für das Anwendungsgateway mit dem Namen „gatewayIP01“ wird erstellt. Beim Starten des Anwendungsgateways wird eine IP-Adresse aus dem konfigurierten Subnetz ausgewählt, und der Netzwerkdatenverkehr wird an die IP-Adressen im Back-End-IP-Pool weitergeleitet. Beachten Sie, dass jede Instanz eine eigene IP-Adresse benötigt.
+In diesem Beispiel wird eine IP-Konfiguration für das Anwendungsgateway mit dem Namen „gatewayIP01“ erstellt. Beim Starten des Anwendungsgateways wird eine IP-Adresse aus dem konfigurierten Subnetz ausgewählt, und der Netzwerkdatenverkehr wird an die IP-Adressen im Back-End-IP-Pool weitergeleitet. Beachten Sie, dass jede Instanz eine eigene IP-Adresse benötigt.
 
 ### Schritt 2
 
 	$pool = New-AzureRmApplicationGatewayBackendAddressPool -Name pool01 -BackendIPAddresses 134.170.185.46, 134.170.188.221,134.170.185.50
 
-Es wird der Back-End-IP-Adresspool „pool01“ mit den IP-Adressen 134.170.185.46, 134.170.188.221 und 134.170.185.50 erstellt. Dies sind die IP-Adressen, die den Netzwerkdatenverkehr vom Front-End-IP-Endpunkt empfangen. Ersetzen Sie die IP-Adressen aus dem oben genannten Beispiel durch die IP-Adressen der Endpunkte Ihrer Webanwendung.
+In diesem Beispiel wird der Back-End-IP-Adresspool „pool01“ mit den IP-Adressen 134.170.185.46, 134.170.188.221 und 134.170.185.50 erstellt. Diese Werte sind die IP-Adressen, die den Netzwerkdatenverkehr vom Front-End-IP-Endpunkt empfangen. Ersetzen Sie die IP-Adressen aus dem obigen Beispiel durch die IP-Adressen der Endpunkte Ihrer Webanwendung.
 
 ### Schritt 3
 
 	$poolSetting = New-AzureRmApplicationGatewayBackendHttpSettings -Name poolsetting01 -Port 80 -Protocol Http -CookieBasedAffinity Enabled
 
-Die Anwendungsgatewayeinstellung „poolsetting01“ für den Lastenausgleich des Netzwerkdatenverkehrs im Back-End-Pool wird konfiguriert.
+In diesem Beispiel wird die Anwendungsgatewayeinstellung „poolsetting01“ für den Lastenausgleich des Netzwerkdatenverkehrs im Back-End-Pool konfiguriert.
 
 ### Schritt 4
 
 	$fp = New-AzureRmApplicationGatewayFrontendPort -Name frontendport01  -Port 443
 
-Der Front-End-IP-Port mit dem Namen „frontendport01“ für den öffentlichen IP-Adressendpunkt wird konfiguriert.
+In diesem Beispiel wird der Front-End-IP-Port mit dem Namen „frontendport01“ für den öffentlichen IP-Adressendpunkt konfiguriert.
 
 ### Schritt 5
 
 	$cert = New-AzureRmApplicationGatewaySslCertificate -Name cert01 -CertificateFile <full path for certificate file> -Password ‘<password>’
 
-Das Zertifikat für SSL-Verbindungen wird konfiguriert. Das Zertifikat muss im PFX-Format vorliegen, und das Kennwort muss zwischen 4 und 12 Zeichen umfassen.
+In diesem Beispiel wird das Zertifikat für SSL-Verbindungen konfiguriert. Das Zertifikat muss im PFX-Format vorliegen, und das Kennwort muss zwischen 4 und 12 Zeichen umfassen.
 
 ### Schritt 6
 
 	$fipconfig = New-AzureRmApplicationGatewayFrontendIPConfig -Name fipconfig01 -PublicIPAddress $publicip
 
-Die Front-End-IP-Adresskonfiguration mit dem Namen „fipconfig01“ wird erstellt, und die öffentliche IP-Adresse wird der Front-End-IP-Adresskonfiguration zugeordnet.
+In diesem Beispiel wird die Front-End-IP-Adresskonfiguration mit dem Namen „fipconfig01“ erstellt, und die öffentliche IP-Adresse wird der Front-End-IP-Adresskonfiguration zugeordnet.
 
 ### Schritt 7
 
 	$listener = New-AzureRmApplicationGatewayHttpListener -Name listener01  -Protocol Https -FrontendIPConfiguration $fipconfig -FrontendPort $fp -SslCertificate $cert
 
 
-Dient zum Erstellen des Listeners „listener01“ und zum Zuordnen des Front-End-Ports zur Front-End-IP-Adresskonfiguration und zum Zertifikat.
+Dieses Beispiel dient zum Erstellen des Listeners „listener01“ und zum Zuordnen des Front-End-Ports zur Front-End-IP-Adresskonfiguration und zum Zertifikat.
 
 ### Schritt 8
 
 	$rule = New-AzureRmApplicationGatewayRequestRoutingRule -Name rule01 -RuleType Basic -BackendHttpSettings $poolSetting -HttpListener $listener -BackendAddressPool $pool
 
-Erstellt die Load Balancer-Routingregel mit dem Namen „rule01“, mit der das Load Balancer-Verhalten konfiguriert wird.
+In diesem Beispiel wird die Load Balancer-Routingregel mit dem Namen „rule01“ erstellt, mit der das Load Balancer-Verhalten konfiguriert wird.
 
 ### Schritt 9
 
 	$sku = New-AzureRmApplicationGatewaySku -Name Standard_Small -Tier Standard -Capacity 2
 
-Konfiguriert die Instanzgröße des Anwendungsgateways.
+In diesem Beispiel wird die Instanzgröße des Anwendungsgateways konfiguriert.
 
 >[AZURE.NOTE]  Der Standardwert für *InstanceCount* ist 2, der Maximalwert ist 10. Der Standardwert für *GatewaySize* ist "Medium". Sie können zwischen „Standard\_Small“, „Standard\_Medium“ und „Standard\_Large“ wählen.
 
@@ -189,7 +188,7 @@ Konfiguriert die Instanzgröße des Anwendungsgateways.
 
 	$appgw = New-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg -Location "West US" -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting -FrontendIpConfigurations $fipconfig  -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku -SslCertificates $cert
 
-Hierbei wird ein Anwendungsgateway mit allen Konfigurationselementen der vorangegangenen Schritte erstellt. Im Beispiel heißt das Anwendungsgateway „appgwtest“.
+In diesem Beispiel wird ein Anwendungsgateway mit allen Konfigurationselementen aus den vorherigen Schritten erstellt. Im Beispiel heißt das Anwendungsgateway „appgwtest“.
 
 ## Nächste Schritte
 
@@ -200,4 +199,4 @@ Weitere Informationen zu Lastenausgleichsoptionen im Allgemeinen finden Sie unte
 - [Azure-Lastenausgleich](https://azure.microsoft.com/documentation/services/load-balancer/)
 - [Azure Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0921_2016-->

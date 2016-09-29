@@ -4,7 +4,7 @@
 	services="machine-learning" 
 	documentationCenter="" 
 	authors="bradsev" 
-	manager="paulettm" 
+	manager="jhubbard" 
 	editor="cgronlun" />
 
 <tags 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/27/2016" 
+	ms.date="09/12/2016" 
 	ms.author="bradsev" />
 
 
@@ -23,32 +23,32 @@ Dieses **Menü** enthält Links zu den Abschnitten des Playbooks:
 
 [AZURE.INCLUDE [cap-vehicle-telemetry-playbook-selector](../../includes/cap-vehicle-telemetry-playbook-selector.md)]
 
-In diesem Abschnitt geht es um die Details der einzelnen Phasen, die in der Lösungsarchitektur dargestellt sind, und Sie erhalten Anleitungen und Hinweise zur Anpassung.
+In diesem Abschnitt geht es um die einzelnen Phasen, die in der Lösungsarchitektur dargestellt sind, und Sie erhalten Anleitungen und Hinweise zur Anpassung.
 
 ## Datenquellen
 
 Für die Lösung werden zwei unterschiedliche Datenquellen verwendet:
 
-- **Dataset mit simulierten Fahrzeugsignalen und Diagnosedaten** 
+- **Dataset mit simulierten Fahrzeugsignalen und Diagnosedaten**
 - **Fahrzeugkatalog**
 
-Zu dieser Lösung gehört ein Simulator für Fahrzeugtelematik (Vehicle Telematics Simulator). Diese Anwendung gibt Diagnosedaten und Signale entsprechend dem Zustand des Fahrzeugs und Fahrmuster zu einem bestimmten Zeitpunkt aus. Klicken Sie auf [Vehicle Telematics Simulator](http://go.microsoft.com/fwlink/?LinkId=717075), um die **Visual Studio-Projektmappe „Vehicle Telematics Simulator“** herunterzuladen, wenn Sie Anpassungen nach Ihren Anforderungen vornehmen möchten. Der Fahrzeugkatalog enthält ein Referenzdataset mit einer Zuordnung von Fahrzeug-Identifizierungsnummer und Modell.
+Zu dieser Lösung gehört ein Simulator für Fahrzeugtelematik. Diese Anwendung gibt Diagnosedaten und Signale entsprechend dem Zustand des Fahrzeugs und Fahrmuster zu einem bestimmten Zeitpunkt aus. Klicken Sie auf [Vehicle Telematics Simulator](http://go.microsoft.com/fwlink/?LinkId=717075), um die **Visual Studio-Projektmappe „Vehicle Telematics Simulator“** herunterzuladen, wenn Sie Anpassungen nach Ihren Anforderungen vornehmen möchten. Der Fahrzeugkatalog enthält ein Referenzdataset mit einer Zuordnung von Fahrzeug-Identifizierungsnummer und Modell.
 
 ![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig2-vehicle-telematics-simulator.png)
 
 *Abbildung 2 – Vehicle Telematics Simulator*
 
-Dies ist ein Dataset im JSON-Format, das das unten angegebene Schema enthält.
+Dies ist ein JSON-formatierte Dataset, das folgendes Schema enthält.
 
-Column | Beschreibung | Werte   
- ------- | ----------- | ---------  
-VIN (Fahrzeug-Identifizierungsnummer) | Zufällig generierte Fahrzeug-Identifizierungsnummer | Wird aus einer Masterliste mit 10.000 zufällig generierten Fahrzeug-Identifizierungsnummern ausgewählt
+Column | Beschreibung | Werte 
+ ------- | ----------- | --------- 
+VIN (Fahrzeug-Identifizierungsnummer) | Zufällig generierte Fahrzeug-Identifizierungsnummer | Wird aus einer Masterliste mit 10.000 zufällig generierten Fahrzeug-Identifizierungsnummern ausgewählt
 Outside temperature (Außentemperatur) | Die Außentemperatur an dem Ort, an dem sich das Fahrzeug befindet | Zufällig generierte Zahl von 0 bis 100
 Engine temperature (Motortemperatur) | Motortemperatur des Fahrzeugs | Zufällig generierte Zahl von 0 bis 500
 Speed (Geschwindigkeit) | Geschwindigkeit, mit der sich das Fahrzeug bewegt | Zufällig generierte Zahl von 0 bis 100
 Fuel (Kraftstoff) | Kraftstoffmenge des Fahrzeugs | Zufällig generierte Zahl von 0 bis 100 (Kraftstoffstand in Prozent)
 EngineOil (Motoröl) | Motorölstand des Fahrzeugs | Zufällig generierte Zahl von 0 bis 100 (Motorölstand in Prozent)
-Tirepressure (Reifendruck) | Reifendruck des Fahrzeugs | Zufällig generierte Zahl von 0 bis 50 (Reifendruck in Prozent)
+Reifendruck | Reifendruck des Fahrzeugs | Zufällig generierte Zahl von 0 bis 50 (Reifendruck in Prozent)
 Odometer (Kilometerzähler) | Kilometerstand des Fahrzeugs | Zufällig generierte Zahl von 0 bis 200.000
 Accelerator\_pedal\_position (Position des Gaspedals) | Gaspedalposition des Fahrzeugs | Zufällig generierte Zahl von 0 bis 100 (Gaspedalposition in Prozent)
 Parking\_brake\_status (Status der Handbremse) | Gibt an, ob das Fahrzeug geparkt und die Handbremse gezogen ist | „true“ oder „false“
@@ -99,7 +99,7 @@ XUF99EW9OIQOMV7Q7 | Familienlimousine
 
 
 ### So generieren Sie simulierte Daten
-1.	Klicken Sie im Feld mit dem „Vehicle Telematics Simulator“ auf den rechts oben zeigenden Pfeil, um das Datensimulatorpaket herunterzuladen. Speichern und extrahieren Sie die Dateien lokal auf Ihrem Computer. ![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig3-vehicle-telemetry-blueprint.png) *Abbildung 3 – Lösungsblaupause für die Fahrzeugtelemetrieanalyse*
+1.	Klicken auf den Pfeil rechts oben im Knoten „Vehicle Telematics Simulator“ (Fahrzeugtelematiksimulator), um das Datensimulatorpaket herunterzuladen. Speichern und extrahieren Sie die Dateien lokal auf Ihrem Computer. ![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig3-vehicle-telemetry-blueprint.png) *Abbildung 3 – Lösungsblaupause für die Fahrzeugtelemetrieanalyse*
 
 2.	Wechseln Sie auf Ihrem lokalen Computer zum Ordner, in den Sie das „Vehicle Telematics Simulator“-Paket extrahiert haben. ![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig4-vehicle-telematics-simulator-folder.png) *Abbildung 4 – Ordner mit „Vehicle Telematics Simulator“*
 
@@ -115,10 +115,10 @@ XUF99EW9OIQOMV7Q7 | Familienlimousine
 
 
 ## Erfassung
-Es wird eine Kombination aus Azure Event Hubs, Stream Analytics und Data Factory genutzt, um die Fahrzeugsignale sowie die Diagnoseereignisse und Echtzeit- und Batchanalysen zu erfassen. All diese Komponenten werden im Rahmen der Lösungsbereitstellung erstellt und konfiguriert.
+Zum Erfassen der Fahrzeugsignale sowie der Diagnoseereignisse und Echtzeit- und Batchanalysen wird eine Kombination aus Azure Event Hubs, Stream Analytics und Data Factory genutzt. All diese Komponenten werden im Rahmen der Lösungsbereitstellung erstellt und konfiguriert.
 
 ### Echtzeitanalyse
-Die vom Vehicle Telematics Simulator generierten Ereignisse werden mit dem Event Hub SDK auf dem Event Hub veröffentlicht. Der Stream Analytics-Auftrag erfasst diese Ereignisse vom Event Hub und verarbeitet die Daten in Echtzeit, um die Integrität des Fahrzeugs zu analysieren.
+Die vom Vehicle Telematics Simulator generierten Ereignisse werden mit dem Event Hub SDK auf dem Event Hub veröffentlicht. Der Stream Analytics-Auftrag erfasst diese Ereignisse aus dem Event Hub und verarbeitet die Daten in Echtzeit, um die Integrität des Fahrzeugs zu analysieren.
 
 ![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig5-vehicle-telematics-event-hub-dashboard.png)
 
@@ -128,7 +128,13 @@ Die vom Vehicle Telematics Simulator generierten Ereignisse werden mit dem Event
 
 *Abbildung 6 – Verarbeitungsdaten für Stream Analytics-Auftrag*
 
-Der Stream Analytics-Auftrag erfasst die Daten vom Event Hub und führt eine Verknüpfung mit den Referenzdaten durch, um die Fahrzeug-Identifizierungsnummer dem entsprechenden Modell zuzuordnen. Außerdem werden die Daten in der Azure Blob Storage-Einheit dauerhaft gespeichert, um Batchanalysen durchführen zu können. Die unten angegebene Stream Analytics-Abfrage wird verwendet, um die Daten dauerhaft in der Azure Blob Storage-Einheit zu speichern.
+Der Stream Analytics-Auftrag
+
+- erfasst Daten aus dem Event Hub
+- führt eine Verknüpfung mit den Referenzdaten durch, um die Fahrzeug-Identifizierungsnummer dem entsprechenden Modell zuzuordnen
+- speichert diese dauerhaft in der Azure Blob Storage-Einheit, um Batchanalysen durchführen zu können.
+
+Die folgende Stream Analytics-Abfrage wird verwendet, um die Daten dauerhaft in der Azure Blob Storage-Einheit zu speichern.
 
 ![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig7-vehicle-telematics-stream-analytics-job-query-for-data-ingestion.png)
 
@@ -162,22 +168,29 @@ Nachdem die Pipeline erfolgreich ausgeführt wurde und das Dataset „RawCarEven
 [Visual Studio-Projektmappe „Azure Data Factory-DotNet-Aktivität“ zum Vorbereiten von Beispieldaten](http://go.microsoft.com/fwlink/?LinkId=717077)
 
 
-## Vorbereiten
->[AZURE.ALERT] Dieser Schritt der Projektmappe gilt nur für die Batchverarbeitung.
+## Partitionieren des Datasets
 
-Die rohen, halbstrukturierten Fahrzeugsignale und das Diagnosedataset werden im Datenvorbereitungsschritt in das Format JAHR/MONAT partitioniert, um effiziente Abfragen und eine skalierbare langfristige Speicherung zu ermöglichen (also ein Failover von einem Blob-Konto zum nächsten, wenn das erste voll ist). Die Ausgabedaten (mit der Bezeichnung *PartitionedCarEventsTable*) werden im „Data Lake“ des Kunden über einen längeren Zeitraum als grundlegende „Rohdaten“ aufbewahrt. Die Eingabedaten für die Pipeline werden normalerweise verworfen, da die Ausgabedaten die Qualität der Eingabedaten voll widerspiegeln. Sie werden lediglich für die nachfolgende Nutzung besser gespeichert (partitioniert).
+Die unformatierten halbstrukturierten Fahrzeugsignale und das Diagnosedataset werden im Datenvorbereitungsschritt in das Format JAHR/MONAT partitioniert. Diese Partitionierung sorgt für effizientere Abfragen und skalierbaren Langzeitspeicher, indem das Failover von einem Blob-Konto zum nächsten aktiviert wird, sobald das erste Konto voll ist.
+
+>[AZURE.NOTE] Dieser Schritt der Projektmappe gilt nur für die Batchverarbeitung.
+
+Verwaltung von Ein- und Ausgabedaten:
+
+- Die **Ausgabedaten** (mit der Bezeichnung *PartitionedCarEventsTable*) werden im „Data Lake“ des Kunden über einen längeren Zeitraum als grundlegende „Rohdaten“ aufbewahrt.
+- Die **Eingabedaten** für die Pipeline werden normalerweise verworfen, da die Ausgabedaten die Qualität der Eingabedaten voll widerspiegeln. Sie werden lediglich für die nachfolgende Nutzung besser gespeichert (partitioniert).
 
 ![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig11-vehicle-telematics-partition-car-events-workflow.png)
 
 *Abbildung 11 – Workflow „Partition Car Events“*
 
-Die Rohdaten werden mit einer Hive HDInsight-Aktivität in „PartitionCarEventsPipeline“ partitioniert. Die in Schritt 1 generierten Beispieldaten für den Zeitraum eines Jahrs werden nach JAHR/MONAT partitioniert, um Fahrzeugsignale und Diagnosedatenpartitionen für jeden Monat eines Jahrs zu generieren (insgesamt zwölf Partitionen).
+Die Rohdaten werden mit einer Hive HDInsight-Aktivität in „PartitionCarEventsPipeline“ partitioniert. Die in Schritt 1 für ein Jahr generierten Beispieldaten werden nach JAHR/MONAT partitioniert. Die Partitionen werden zum Generieren von Fahrzeugsignalen und Diagnosedaten für jeden Monat eines Jahres (insgesamt 12 Partitionen) verwendet.
 
 ![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig12-vehicle-telematics-partition-car-events-pipeline.png)
 
 *Abbildung 12 – PartitionCarEventsPipeline*
 
-Das unten angegebene Hive-Skript mit dem Namen „partitioncarevents.hql“ wird für die Partitionierung verwendet und befindet sich im Ordner „\\demo\\src\\connectedcar\\scripts“ der heruntergeladenen ZIP-Datei.
+Das folgende Hive-Skript mit dem Namen „partitioncarevents.hql“ wird für die Partitionierung verwendet und befindet sich im Ordner „\\demo\\src\\connectedcar\\scripts“ der heruntergeladenen ZIP-Datei.
+
 
 	SET hive.exec.dynamic.partition=true;
 	SET hive.exec.dynamic.partition.mode = nonstrict;
@@ -326,7 +339,7 @@ Die Daten sind jetzt optimiert, besser verwaltbar und bereit für die weitere Ve
 
 ## Datenanalyse
 
-In diesem Abschnitt erfahren Sie, wie wir die Kombination aus Azure Stream Analytics, Azure Machine Learning, Azure Data Factory und Azure HDInsight für die umfassende erweiterte Analyse des Fahrzeugzustands und des Fahrverhaltens verwendet haben. Es gibt hier drei Unterabschnitte:
+In diesem Abschnitt erfahren Sie, wie Azure Stream Analytics, Azure Machine Learning, Azure Data Factory und Azure HDInsight für die umfassende erweiterte Analyse des Fahrzeugzustands und des Fahrverhaltens kombiniert werden. Es gibt hier drei Unterabschnitte:
 
 1.	**Machine Learning**: Dieser Unterabschnitt enthält Informationen zum Experiment zur Erkennung von Anomalien. Wir haben dieses Experiment in dieser Projektmappe verwendet, um vorherzusagen, dass Fahrzeuge zur Wartung müssen oder aufgrund von Sicherheitsproblemen zurückgerufen werden müssen.
 2.	**Echtzeitanalyse**: Dieser Unterabschnitt enthält Informationen zu den Echtzeitanalysen mit der Stream Analytics-Abfragesprache und zum Operationalisieren des Machine Learning-Experiments in Echtzeit mit einer benutzerdefinierten Anwendung.
@@ -345,24 +358,26 @@ Das Ziel besteht hierbei darin, die Fahrzeuge vorherzusagen, die gewartet oder a
 	- Hohe Motortemperatur bei niedriger Außentemperatur
 	- Niedrige Motortemperatur bei hoher Außentemperatur
 
-Basierend auf den obigen Anforderungen haben wir zwei separate Modelle zum Erkennen von Anomalien erstellt: eins für die Erkennung der Fahrzeugwartung und eins für die Erkennung des Fahrzeugrückrufs. Für beide Modelle wird zur Erkennung von Anomalien der integrierte Principal Component Analysis (PCA)-Algorithmus verwendet.
+Basierend auf den vorhergehenden Anforderungen haben wir zwei separate Modelle zum Erkennen von Anomalien erstellt: eins für die Erkennung der Fahrzeugwartung und eins für die Erkennung des Fahrzeugrückrufs. Für beide Modelle wird zur Erkennung von Anomalien der integrierte Principal Component Analysis (PCA)-Algorithmus verwendet.
 
-**Modell für die Erkennung der Wartung** Beim Modell für die Erkennung der Wartung wird eine Anomalie gemeldet, wenn für einen von drei Indikatoren – Reifendruck, Motoröl oder Motortemperatur – die jeweilige Bedingung erfüllt ist. Daher müssen wir beim Erstellen des Modells nur diese drei Variablen berücksichtigen. Für unser Experiment in Azure Machine Learning verwenden wir zuerst das Modul **Select Columns in Dataset**, um diese drei Variablen zu extrahieren. Als Nächstes verwenden wir das PCA-basierte Modul für die Erkennung von Anomalien, um das Modell für die Erkennung von Anomalien zu erstellen.
+**Modell für die Wartungserkennung**
+
+Beim Modell für die Erkennung der Wartung wird eine Anomalie gemeldet, wenn für einen von drei Indikatoren – Reifendruck, Motoröl oder Motortemperatur – die jeweilige Bedingung erfüllt ist. Daher müssen wir beim Erstellen des Modells nur diese drei Variablen berücksichtigen. Für unser Experiment in Azure Machine Learning verwenden wir zuerst das Modul **Select Columns in Dataset** (Spaltenauswahl in Dataset), um diese drei Variablen zu extrahieren. Als Nächstes verwenden wir das PCA-basierte Modul für die Erkennung von Anomalien, um das Modell für die Erkennung von Anomalien zu erstellen.
 
 Die Hauptkomponentenanalyse (Principal Component Analysis, PCA) ist ein bewährtes Machine Learning-Verfahren, das auf die Featureauswahl, Klassifizierung und Erkennung von Anomalien angewendet werden kann. Bei der PCA wird ein Gruppe von Fällen, die unter Umständen korrelierte Variablen enthalten, in eine Gruppe von Werten konvertiert, die als Hauptkomponenten (Principal Components) bezeichnet werden. Der Hauptgedanke der PCA-basierten Modellierung ist das Projizieren von Daten auf eine niedrigere Dimension, damit Merkmale und Anomalien leichter identifiziert werden können.
  
-Bei der Erkennung von Anomalien berechnet die Anomalieerkennung für jede neue Eingabe zuerst die Projektion auf die Eigenvektoren und dann den normalisierten Rekonstruktionsfehler. Dieser normalisierte Fehler ist das Anomalieergebnis. Je höher der Fehler, desto anomaler ist die Instanz.
+Für jede neue Eingabe berechnet die Anomalieerkennung zuerst die Projektion auf die Eigenvektoren und dann den normalisierten Rekonstruktionsfehler. Dieser normalisierte Fehler ist das Anomalieergebnis. Je höher der Fehler, desto anomaler ist die Instanz.
 
-Bei der Wartungserkennung kann jeder Datensatz als Punkt in einem dreidimensionalen Raum angesehen werden, der durch die Koordinaten für Reifendruck, Motoröl und Motortemperatur definiert wird. Zum Erfassen dieser Anomalien können wir die Originaldaten per PCA aus dem dreidimensionalen Raum in einen zweidimensionalen Raum projizieren. Daher legen wir den Parameter für die Anzahl der Komponenten, die für die PCA verwendet werden sollen, auf „2“ fest. Dieser Parameter spielt eine wichtige Rolle beim Anwenden der PCA-basierten Erkennung von Anomalien. Nach dem Projizieren der Daten per PCA können wir diese Anomalien leichter identifizieren.
+Bei der Wartungserkennung kann jeder Datensatz als Punkt in einem dreidimensionalen Raum angesehen werden, der durch die Koordinaten für Reifendruck, Motoröl und Motortemperatur definiert wird. Zum Erfassen dieser Anomalien können wir die Originaldaten per PCA aus dem dreidimensionalen in einen zweidimensionalen Raum projizieren. Daher legen wir den Parameter für die Anzahl der Komponenten, die für die PCA verwendet werden sollen, auf „2“ fest. Dieser Parameter spielt eine wichtige Rolle beim Anwenden der PCA-basierten Erkennung von Anomalien. Nach dem Projizieren der Daten per PCA können wir diese Anomalien leichter identifizieren.
 
-**Modell für die Erkennung von Anomalien in Bezug auf Rückrufe** Für das Modell zur Erkennung von Anomalien in Bezug auf Rückrufe verwenden wir das Modul „Select Columns in Dataset“ und das Modul für die PCA-basierte Erkennung von Anomalien auf ähnliche Weise. Zuerst extrahieren wir dabei mit dem Modul **Select Columns in Dataset** drei Variablen: Motortemperatur, Außentemperatur und Geschwindigkeit. Wir beziehen die Geschwindigkeitsvariable ein, da die Motortemperatur normalerweise mit der Geschwindigkeit korreliert. Als Nächstes verwenden wir das Modul für die PCA-basierte Erkennung von Anomalien, um die Daten aus dem dreidimensionalen Raum in einen zweidimensionalen Raum zu projizieren. Die Kriterien für den Rückruf werden erfüllt, und für das Fahrzeug ist ein Rückruf erforderlich, wenn die Motortemperatur und die Außentemperatur eine hohe negative Korrelation aufweisen. Indem wir den Algorithmus für die PCA-basierte Erkennung von Anomalien verwenden, können wir die Anomalien nach Durchführung der PCA erfassen.
+**Modell für die Erkennung von Anomalien in Bezug auf Rückrufe** Für das Modell zur Erkennung von Anomalien in Bezug auf Rückrufe verwenden wir das Modul „Select Columns in Dataset“ (Spaltenauswahl in Dataset) und das Modul für die PCA-basierte Erkennung von Anomalien auf ähnliche Weise. Zuerst extrahieren wir dabei mit dem Modul **Select Columns in Dataset** (Spaltenauswahl in Dataset) drei Variablen: Motortemperatur, Außentemperatur und Geschwindigkeit. Wir beziehen die Geschwindigkeitsvariable ein, da die Motortemperatur normalerweise mit der Geschwindigkeit korreliert. Als Nächstes verwenden wir das Modul für die PCA-basierte Erkennung von Anomalien, um die Daten aus dem dreidimensionalen Raum in einen zweidimensionalen Raum zu projizieren. Die Kriterien für den Rückruf werden erfüllt, und für das Fahrzeug ist ein Rückruf erforderlich, wenn die Motortemperatur und die Außentemperatur eine hohe negative Korrelation aufweisen. Indem wir den Algorithmus für die PCA-basierte Erkennung von Anomalien verwenden, können wir die Anomalien nach Durchführung der PCA erfassen.
 
-Beachten Sie Folgendes: Beim Trainieren beider Modelle müssen wir normale Daten, bei denen keine Wartung bzw. kein Rückruf erforderlich ist, als Eingabedaten verwenden, um das Modell für die PCA-basierte Erkennung von Anomalien zu trainieren. Beim Bewertungsexperiment nutzen wir das trainierte Modell zur Erkennung von Anomalien, um erkennen zu können, ob für das Fahrzeug eine Wartung oder ein Rückruf erforderlich ist.
+Beim Trainieren beider Modelle müssen wir normale Daten, bei denen keine Wartung bzw. kein Rückruf erforderlich ist, als Eingabedaten verwenden, um das Modell für die PCA-basierte Erkennung von Anomalien zu trainieren. Beim Bewertungsexperiment nutzen wir das trainierte Modell zur Erkennung von Anomalien, um erkennen zu können, ob für das Fahrzeug eine Wartung oder ein Rückruf erforderlich ist.
 
 
 ### Echtzeitanalyse
 
-Die folgende Stream Analytics-SQL-Abfrage wird verwendet, um den Mittelwert aller wichtigen Fahrzeugparameter zu bilden, z. B. Geschwindigkeit, Kraftstoffstand, Motortemperatur, Kilometerzähleranzeige, Reihendruck, Motorölstand usw. So können Anomalien erkannt und Warnungen ausgegeben werden. Außerdem kann der Gesamtzustand von Fahrzeugen ermittelt werden, die in einer bestimmten Region bewegt werden, und dieser Wert kann dann mit demografischen Daten korreliert werden.
+Die folgende Stream Analytics-SQL-Abfrage wird verwendet, um den Mittelwert aller wichtigen Fahrzeugparameter zu bilden, z. B. Geschwindigkeit, Kraftstoffstand, Motortemperatur, Kilometerzähleranzeige, Reihendruck, Motorölstand usw. Anhand der Durchschnittswerte können Anomalien erkannt und Warnungen ausgegeben werden. Außerdem kann der Gesamtzustand von Fahrzeugen ermittelt werden, die in einer bestimmten Region bewegt werden, und dieser Wert kann dann mit demografischen Daten korreliert werden.
 
 ![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig15-vehicle-telematics-stream-analytics-query-for-real-time-processing.png)
 
@@ -376,7 +391,7 @@ Weitere Informationen zu allen „Windowing“-Funktionen in Azure Stream Analyt
 
 Die Projektmappe enthält eine Anwendung, mit der das Machine Learning-Modell in Echtzeit operationalisiert werden kann. Diese Anwendung hat den Namen „RealTimeDashboardApp“ und wird im Rahmen der Lösungsbereitstellung erstellt und konfiguriert. Die Anwendung führt Folgendes aus:
 
-1.	Sie lauscht auf eine Event Hub-Instanz, auf der Stream Analytics die Ereignisse in einem kontinuierlichen Muster veröffentlicht. ![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig16-vehicle-telematics-stream-analytics-query-for-publishing.png)*Abbildung 16 – Stream Analytics-Abfrage zum Veröffentlichen der Daten auf einer Event Hub-Ausgabeinstanz* 
+1.	Überwacht eine Event Hub-Instanz, in der Stream Analytics die Ereignisse fortlaufend in einem Muster veröffentlicht. ![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig16-vehicle-telematics-stream-analytics-query-for-publishing.png)*Abbildung 16 – Stream Analytics-Abfrage zum Veröffentlichen der Daten auf einer Event Hub-Ausgabeinstanz*
 
 2.	Für jedes Ereignis, das diese Anwendung empfängt, wird Folgendes durchgeführt:
 
@@ -389,14 +404,14 @@ Klicken Sie auf [RealtimeDashboardApp download](http://go.microsoft.com/fwlink/?
 
 **So führen Sie die Echtzeit-Dashboardanwendung aus**
 
-1.	Klicken Sie in der Diagrammansicht auf den Knoten „Power BI“ und dann im Eigenschaftenbereich auf den Link „Echtzeit-Dashboardanwendung herunterladen“. ![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig17-vehicle-telematics-powerbi-dashboard-setup.png) *Abbildung 17 – Setupanweisungen zum PowerBI-Dashboard*
+1.	Klicken Sie in der Diagrammansicht auf den Knoten „Power BI“ und dann im Eigenschaftenbereich auf den Link „Download Real-time Dashboard Application“ (Echtzeit-Dashboardanwendung herunterladen). ![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig17-vehicle-telematics-powerbi-dashboard-setup.png) *Abbildung 17 – Setupanweisungen zum PowerBI-Dashboard*
 2.	Lokales Extrahieren und Speichern ![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig18-vehicle-telematics-realtimedashboardapp-folder.png) *Abbildung 18 – Ordner „RealtimeDashboardApp“*
 3.	Führen Sie die Anwendung „RealtimeDashboardApp.exe“ aus.
-4.	Geben Sie gültige Power BI-Anmeldeinformationen ein, melden Sie sich an, und klicken Sie auf „Annehmen“. ![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig19a-vehicle-telematics-realtimedashboardapp-sign-in-to-powerbi.png) ![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig19b-vehicle-telematics-realtimedashboardapp-sign-in-to-powerbi.png) 
+4.	Geben Sie gültige Power BI-Anmeldeinformationen ein, melden Sie sich an, und klicken Sie auf „Annehmen“. ![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig19a-vehicle-telematics-realtimedashboardapp-sign-in-to-powerbi.png) ![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig19b-vehicle-telematics-realtimedashboardapp-sign-in-to-powerbi.png)
 
 *Abbildung 19 – RealtimeDashboardApp: Anmelden bei PowerBI*
 
->[AZURE.NOTE] Hinweis: Um die Daten für das PowerBI-Dataset zu löschen, führen Sie RealtimeDashboardApp mit dem Parameter „flushdata“ aus:
+>[AZURE.NOTE] Zum Löschen der Daten für das PowerBI-Dataset führen Sie RealtimeDashboardApp mit dem Parameter „flushdata“ aus:
 
 	RealtimeDashboardApp.exe -flushdata
 
@@ -409,8 +424,8 @@ Hierbei soll veranschaulicht werden, wie Contoso Motors die Azure-Berechnungsfun
 
 Bei dieser Lösung liegt der Schwerpunkt auf folgenden Metriken:
 
-1.	**Aggressives Fahrverhalten** Identifiziert den Trend in Bezug auf Modelle, Standorte, Fahrbedingungen und Jahreszeiten, um Erkenntnisse zu aggressivem Fahrverhalten zu gewinnen, damit Contoso Motors diese Daten für Marketingkampagnen, neue personalisierte Funktionen und eine nutzungsabhängige Versicherung einsetzen kann.
-2.	**Kraftstoffsparendes Fahrverhalten** Identifiziert den Trend in Bezug auf Modelle, Standorte, Fahrbedingungen und Jahreszeiten, um Erkenntnisse zu kraftstoffsparendem Fahrverhalten zu gewinnen. Diese Daten kann Contoso Motors für Marketingkampagnen, neue Funktionen und das proaktive Bereitstellen von Daten für Fahrer nutzen, um das kostensparende und umweltfreundliche Fahrverhalten zu fördern. 
+1.	**Aggressives Fahrverhalten**: Identifiziert den Trend in Bezug auf Modelle, Standorte, Fahrbedingungen und Jahreszeiten, um Erkenntnisse zu aggressivem Fahrverhalten zu gewinnen. Diese Daten können von Contoso Motors für Marketingkampagnen, neue personalisierte Funktionen und eine nutzungsabhängige Versicherung eingesetzt werden.
+2.	**Kraftstoffsparendes Fahrverhalten**: Identifiziert den Trend in Bezug auf Modelle, Standorte, Fahrbedingungen und Jahreszeiten, um Erkenntnisse zu kraftstoffsparendem Fahrverhalten zu gewinnen. Diese Daten kann Contoso Motors für Marketingkampagnen, neue Funktionen und das proaktive Bereitstellen von Daten für Fahrer nutzen, um das kostensparende und umweltfreundliche Fahrverhalten zu fördern.
 3.	**Rückrufmodelle** Identifiziert Modelle, für die ein Rückruf erforderlich ist, indem das Machine Learning-Experiment zur Erkennung von Anomalien operationalisiert wird.
 
 Wir sehen uns nun die Details dieser Metriken an.
@@ -418,7 +433,7 @@ Wir sehen uns nun die Details dieser Metriken an.
 
 **Aggressives Fahrmuster**
 
-Die partitionierten Fahrzeugsignale und Diagnosedaten werden in der Pipeline mit dem Namen „AggresiveDrivingPatternPipeline“ per Hive verarbeitet, um die Modelle, den Standort, die Fahrzeug- und Fahrbedingungen usw. zu bestimmen, die auf ein aggressives Fahrmuster hindeuten.
+Die partitionierten Fahrzeugsignale und Diagnosedaten werden in der Pipeline mit dem Namen „AggresiveDrivingPatternPipeline“ per Hive verarbeitet, um die Modelle, den Standort, die Fahrzeug- und Fahrbedingungen sowie andere Parameter zu bestimmen, die auf ein aggressives Fahrmuster hindeuten.
 
 ![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig20-vehicle-telematics-aggressive-driving-pattern.png) *Abbildung 20 – Aggressives Fahrmuster – Workflow*
 
@@ -494,7 +509,7 @@ Nachdem die Pipeline erfolgreich ausgeführt wurde, werden im Speicherkonto unte
 
 **Kraftstoffsparendes Fahrmuster**
 
-Die partitionierten Fahrzeugsignale und Diagnosedaten werden in der Pipeline mit dem Namen „FuelEfficientDrivingPatternPipeline“ per Hive verarbeitet, um die Modelle, den Standort, die Fahrzeug- und Fahrbedingungen usw. zu bestimmen, die auf ein kraftstoffsparendes Fahrmuster hindeuten.
+Die partitionierten Fahrzeugsignale und Diagnosedaten werden in der Pipeline mit dem Namen „AggresiveDrivingPatternPipeline“ verarbeitet. Mithilfe von Hive werden die Modelle, der Standort, die Fahrzeug- und Fahrbedingungen sowie andere Parameter bestimmt, die auf ein kraftstoffsparendes Fahrmuster hindeuten.
 
 ![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig23-vehicle-telematics-fuel-efficient-driving-pattern.png)
 
@@ -650,7 +665,6 @@ Nach Abschluss der Bewertung wird eine HDInsight-Aktivität verwendet, um die Da
 	from CarEventsAnomaly
 	where RecallLabel = '1' AND RecallProbability >= '0.60'
 
-*Abbildung 29 – Hive-Abfrage für Rückrufaggregation*
 
 Nachdem die Pipeline erfolgreich ausgeführt wurde, werden im Speicherkonto unter dem Container „connectedcar“ die unten angegebenen Partitionen generiert.
 
@@ -706,4 +720,4 @@ Klicken Sie hier, um eine ausführliche Anleitung zum Einrichten der PowerBI-Ber
 
 In diesem Dokument wird die Projektmappe für die Fahrzeugtelemetrieanalyse (Vehicle Telemetry Analytics) ausführlich beschrieben. Es wird ein Lambda-Architekturmuster für die Echtzeit- und Batchanalyse mit Vorhersagen und Aktionen veranschaulicht. Dieses Muster gilt für eine Vielzahl von Anwendungsfällen, für die „Hot Path“-Analysen (Echtzeit) und „Cold Path“-Analysen (Batch) erforderlich sind.
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0914_2016-->

@@ -5,7 +5,7 @@
    services="machine-learning"
    documentationCenter="na"
    authors="brohrer-ms"
-   manager="paulettm"
+   manager="jhubbard"
    editor="cjgronlund"/>
 
 <tags
@@ -63,13 +63,13 @@ Sobald Sie Ihre Fragen formuliert haben, prüfen Sie, ob es Beispiele für die A
 
 Wenn unsere Frage „Wie ist der Verkaufspreis meiner Aktien in der nächsten Woche?“ lautet, müssen wir sicherstellen, dass unsere Daten den Aktienkursverlauf enthalten.
 
-Wenn unsere Frage „Welches Fahrzeug in meinem Fuhrpark fällt als erstes aus?“, müssen wir uns vergewissern, dass unsere Daten Informationen zu vorherigen Pannen enthält.
+Wenn unsere Frage „Welches Fahrzeug in meinem Fuhrpark fällt als erstes aus?“ lautet, müssen wir uns vergewissern, dass unsere Daten Informationen zu vorherigen Pannen enthalten.
 
 ![Zieldaten: Beispiele für Ihre Antwort Formulieren einer Data Science-Frage](./media/machine-learning-data-science-for-beginners-ask-a-question-you-can-answer-with-data/machine-learning-data-science-target-data.png)
 
 Diese Beispiele von Antworten werden als „Ziel“ bezeichnet. Ein Ziel ist, was wir zu künftigen Datenpunkten vorhersagen möchten, sei es eine Kategorie oder eine Zahl.
 
-Wenn Sie keine Zieldaten haben, müssen Sie sich welche verschaffen. Denn ohne können sie können Sie Ihre Frage nicht beantworten.
+Wenn Sie keine Zieldaten haben, müssen Sie sich welche verschaffen. Denn ohne diese ist keine Antwort auf Ihre Frage möglich.
 
 ## Umformulieren Ihrer Frage
 
@@ -79,7 +79,7 @@ Die Frage „Ist dies Datenpunkt A oder B?“ sagt die Kategorie (bzw. den Namen
 
 Die Frage „Wie viel?“ oder „Wie viele?“ sagt eine Menge vorher. Um sie zu beantworten, verwenden wir einen *Regressionsalgorithmus*.
 
-Um zu prüfen, wie wir diese transformieren können, lassen Sie einen Blick auf die folgende Frage werfen: „Welcher Zeitungsartikel ist für diesen Leser am interessantesten?“ Gefragt wird nach einer Vorhersage einer einzelne Auswahl aus vielen Möglichkeiten, also „Ist dies A oder B oder C oder D?“, weshalb ein Klassifizierungsalgorithmus zum Einsatz kommt.
+Um zu prüfen, wie wir diese transformieren können, lassen Sie uns einen Blick auf die folgende Frage werfen: „Welcher Zeitungsartikel ist für diesen Leser am interessantesten?“ Gefragt wird nach einer Vorhersage einer einzelnen Auswahl aus vielen Möglichkeiten, also „Ist dies A oder B oder C oder D?“, weshalb ein Klassifizierungsalgorithmus zum Einsatz kommt.
 
 Doch diese Frage lässt sich ggf. einfacher beantworten, wenn Sie sie so umformulieren: „Wie interessant ist jeder Artikel in dieser Liste für diesen Leser?“ Nun können Sie jedem Artikel einen numerischen Wert zuordnen, wodurch es einfach ist, den Artikel mit dem höchsten Wert zu bestimmen. Dies ist das Umformulieren der Klassifizierungsfrage in eine Regressionsfrage (bzw. „Wie viel?“).
 
@@ -89,7 +89,7 @@ Wie Sie eine Frage stellen, bestimmt, welcher Algorithmus Ihnen eine Antwort lie
 
 Sie werden feststellen, dass bestimmte Gruppen von Algorithmen, wie z.B. diejenigen in unserem Beispiel mit den Artikeln, eng miteinander verknüpft sind. Sie können Ihre Frage so umformulieren, dass der Algorithmus verwendet wird, der Ihnen die nützlichste Antwort liefert.
 
-Doch am wichtigsten ist, dass Sie Ihre Frage so genau wie möglich stellen, damit Sie mit Daten beantwortet werden kann. Und stellen Sie sicher, dass Sie über die richtigen Daten dafür verfügen.
+Doch am wichtigsten ist, dass Sie Ihre Frage so genau wie möglich stellen, damit sie mit Daten beantwortet werden kann. Und stellen Sie sicher, dass Sie über die richtigen Daten dafür verfügen.
 
 Wir haben uns mit einigen Grundprinzipien zum Stellen einer Frage beschäftigt, die Sie mit Daten beantworten können.
 
@@ -101,4 +101,4 @@ Sehen Sie sich unbedingt auch die anderen Videos in der Reihe „Data Science f�
   * [Durchführen Ihres ersten Data Science-Experiments mit Azure Machine Learning](machine-learning-create-experiment.md)
   * [Einführung in Machine Learning in Microsoft Azure](machine-learning-what-is-machine-learning.md)
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0914_2016-->

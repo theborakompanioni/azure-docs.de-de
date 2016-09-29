@@ -1,6 +1,6 @@
 <properties
    pageTitle="Azure-Ressourcen-Manager-Unterstützung für Lastenausgleich – Vorschau | Microsoft Azure "
-   description="Verwenden von PowerShell für den Lastenausgleich mit Azure-Ressourcen-Manager (ARM) in der Vorschau Verwenden von Vorlagen für Lastenausgleich"
+   description="Verwenden von PowerShell für den Lastenausgleich mit Azure Resource Manager in der Vorschau. Verwenden von Vorlagen für Lastenausgleich"
    services="load-balancer"
    documentationCenter="na"
    authors="sdwheeler"
@@ -71,4 +71,4 @@ Sie können auch einen [Lastenausgleich mit Internetzugriff erstellen](load-bala
 
 Erfahren Sie, wie Sie [TCP-Leerlauftimeout-Einstellungen für ein Lastenausgleichsmodul](load-balancer-tcp-idle-timeout.md) verwalten. Dies ist wichtig, wenn Ihre Anwendung Verbindungen für Server hinter einem Lastenausgleichsmodul beibehalten muss.
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0914_2016-->

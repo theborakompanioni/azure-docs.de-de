@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/05/2016"
+	ms.date="09/06/2016"
 	ms.author="adegeo"/>
 
 
@@ -78,7 +78,7 @@ Sie müssen das [Dienstpaket erstellen](cloud-services-model-and-package.md#serv
 
 	![CloudServices\_Region](./media/cloud-services-how-to-create-deploy/CloudServices_Regionlist.png)
 
-	Sie können den Status des Prozesses im Meldungsbereich unten im Fenster überwachen.
+	Sie können den Status des Prozesses im Nachrichtenbereich unten im Fenster überwachen.
 
 	Der Bereich **Clouddienste** wird geöffnet und der neue Clouddienst wird angezeigt. Wenn der Status auf "Erstellt" geändert wird, wurde die Erstellung des Clouddiensts erfolgreich abgeschlossen.
 
@@ -141,7 +141,7 @@ Sie müssen das [Dienstpaket erstellen](cloud-services-model-and-package.md#serv
     ![CloudServices\_QuickGlance](./media/cloud-services-how-to-create-deploy/CloudServices_QuickGlance.png)
 
 
-[TFSTutorialForCloudService]: http://go.microsoft.com/fwlink/?LinkID=251796
+[TFSTutorialForCloudService]: cloud-services-continuous-delivery-use-vso.md
  
 ## Nächste Schritte
 
@@ -150,4 +150,4 @@ Sie müssen das [Dienstpaket erstellen](cloud-services-model-and-package.md#serv
 * [Verwalten Ihres Clouddiensts](cloud-services-how-to-manage.md)
 * Konfigurieren von [SSL-Zertifikaten](cloud-services-configure-ssl-certificate.md)
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0914_2016-->
