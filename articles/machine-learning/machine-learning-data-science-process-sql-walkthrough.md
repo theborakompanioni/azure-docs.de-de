@@ -358,7 +358,8 @@ Initialisieren Sie die Datenbank-Verbindungseinstellungen in den folgenden Varia
 
     print 'Number of rows and columns retrieved = (%d, %d)' % (df1.shape[0], df1.shape[1])
 
-Zeit für das Einlesen der Beispieltabelle ist 6,492000 Sekunden. Anzahl der abgerufenen Zeilen und Spalten = (84.952, 21)
+Zeit für das Einlesen der Beispieltabelle ist 6,492000 Sekunden.  
+Anzahl der abgerufenen Zeilen und Spalten = (84.952, 21)
 
 #### Deskriptive Statistik
 
@@ -688,7 +689,9 @@ Diese exemplarische Vorgehensweise und die zugehörigen Skripts und IPython Note
 
 ### Referenzen
 
-• [Downloadseite von Andrés Monroy mit den New Yorker Taxidaten](http://www.andresmh.com/nyctaxitrips/) • [FOILing NYC’s Taxi Trip Data (in englischer Sprache) von Chris Whong](http://chriswhong.com/open-data/foil_nyc_taxi/) • [NYC Taxi and Limousine Commission Research and Statistics (in englischer Sprache)](https://www1.nyc.gov/html/tlc/html/about/statistics.shtml)
+• [Downloadseite von Andrés Monroy mit den New Yorker Taxidaten](http://www.andresmh.com/nyctaxitrips/)  
+• [FOILing NYC’s Taxi Trip Data (in englischer Sprache) von Chris Whong](http://chriswhong.com/open-data/foil_nyc_taxi/)   
+• [NYC Taxi and Limousine Commission Research and Statistics (in englischer Sprache)](https://www1.nyc.gov/html/tlc/html/about/statistics.shtml)
 
 
 [1]: ./media/machine-learning-data-science-process-sql-walkthrough/sql-walkthrough_26_1.png
