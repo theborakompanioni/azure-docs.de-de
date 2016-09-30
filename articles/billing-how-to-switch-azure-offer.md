@@ -23,8 +23,7 @@
 
 Sie [sind möglicherweise berechtigt](#where-is-the-button), Ihr vorhandenes Abonnement ohne Dienstausfall auf ein günstigeres Angebot umzustellen. Im Folgenden sind die Pfade aufgeführt, die derzeit im [Kontocenter](https://account.windowsazure.com/Subscriptions) unterstützt werden. Klicken Sie auf die Links, um Informationen über die Anforderungen zu erhalten.
 
-| From | To  
- |
+| From | To   |
 |-------------------------------------------------------------------|-----------------------------------------------------------------------------------------|
 | [Nutzungsbasierte Bezahlung](https://azure.microsoft.com/offers/ms-azr-0003p/) | [Pay-As-You-Go Dev/Test](https://azure.microsoft.com/offers/ms-azr-0023p/) |
 | [Nutzungsbasierte Bezahlung](https://azure.microsoft.com/offers/ms-azr-0003p/) | [12-Monate mit Vorauszahlung](https://azure.microsoft.com/offers/ms-azr-0026p/) |
