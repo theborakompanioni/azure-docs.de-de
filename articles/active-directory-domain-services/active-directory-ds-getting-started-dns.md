@@ -51,4 +51,4 @@ Führen Sie die folgenden Konfigurationsschritte aus, um die DNS-Servereinstellu
 ## Aufgabe 5: Aktivieren der Synchronisierung von Kennwörtern für Azure AD-Domänendienste
 Die nächste Konfigurationsaufgabe besteht im [Aktivieren der Kennwortsynchronisierung für Azure AD-Domänendienste](active-directory-ds-getting-started-password-sync.md).
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0706_2016--->

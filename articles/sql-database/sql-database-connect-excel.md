@@ -83,4 +83,4 @@ Nachdem Sie die Verbindung hergestellt und die Datei mit Daten und Verbindungsin
 - Erfahren Sie mehr über die Vorteile von [elastischen Pools](sql-database-elastic-pool.md).
 - Erfahren Sie, wie Sie [eine Webanwendung erstellen, die eine Verbindung mit SQL-Datenbank auf dem Back-End herstellt](../app-service-web/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md).
 
-<!---HONumber=AcomDC_0706_2016-->
+<!----HONumber=AcomDC_0706_2016--->

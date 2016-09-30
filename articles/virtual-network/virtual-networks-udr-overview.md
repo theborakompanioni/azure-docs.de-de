@@ -94,4 +94,4 @@ Dieser virtuelle Computer muss eingehenden Datenverkehr empfangen können, der n
 - Erfahren Sie, wie Sie [Routen im Ressourcen-Manager-Bereitstellungsmodell erstellen](virtual-network-create-udr-arm-template.md) und diese Subnetzen zuordnen.
 - Erfahren Sie, wie Sie [Routen im klassischen Bereitstellungsmodell erstellen](virtual-network-create-udr-classic-ps.md) und diese Subnetzen zuordnen.
 
-<!---HONumber=AcomDC_0810_2016-->
+<!----HONumber=AcomDC_0810_2016--->

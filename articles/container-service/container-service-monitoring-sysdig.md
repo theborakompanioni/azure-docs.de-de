@@ -54,4 +54,4 @@ Legen Sie die Instanzen auf „10000000“ fest, damit Sysdig für jeden neu hin
 
 Navigieren Sie nach dem Installieren des Pakets zurück zur Sysdig-Benutzeroberfläche. Sie können darin die unterschiedlichen Nutzungsmetriken für die Container im Cluster untersuchen.
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0810_2016--->

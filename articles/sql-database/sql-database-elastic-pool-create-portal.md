@@ -113,4 +113,4 @@ Nach dem Hinzufügen von Datenbanken zum Pool werden Empfehlungen basierend auf 
 - [Verwalten eines elastischen SQL-Datenbankpools mit C#](sql-database-elastic-pool-manage-csharp.md)
 - [Übersicht über Features für elastische Datenbanken](sql-database-elastic-scale-introduction.md)
 
-<!---HONumber=AcomDC_0907_2016-->
+<!----HONumber=AcomDC_0907_2016--->
