@@ -59,4 +59,4 @@ Die Übersicht über [Azure AD Privileged Identity Management](active-directory-
 
 [1]: ./media/active-directory-privileged-identity-management-configure/PIM_EnablePim.png
 
-<!---HONumber=AcomDC_0921_2016-->
+<!----HONumber=AcomDC_0921_2016-->

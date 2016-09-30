@@ -42,4 +42,4 @@
 
 4. Klicken Sie auf das Häkchensymbol ![Häkchensymbol](./media/storsimple-create-volume-u2/HCS_CheckIcon-include.png). Ein Volume wird mit den angegebenen Einstellungen erstellt.
 
-<!---HONumber=AcomDC_0914_2016-->
+<!----HONumber=AcomDC_0914_2016-->

@@ -182,4 +182,4 @@ Nachdem Sie sich mit den Grundlagen von SQL Data Warehouse vertraut gemacht habe
 [Twitter]: https://twitter.com/hashtag/SQLDW
 [Videos]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
 
-<!---HONumber=AcomDC_0727_2016-->
+<!----HONumber=AcomDC_0727_2016--->

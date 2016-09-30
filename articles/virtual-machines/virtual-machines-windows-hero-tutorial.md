@@ -117,4 +117,4 @@ Wenn Sie den virtuellen Computer wieder verwenden möchten, klicken Sie auf die 
 
 - Falls Sie Bereitstellungen automatisieren möchten, lesen Sie die Informationen unter [Erstellen Sie einen virtuellen Windows-Computer mit einer Resource Manager-Vorlage](virtual-machines-windows-ps-template.md).
 
-<!----HONumber=AcomDC_0912_2016-->
+<!-----HONumber=AcomDC_0912_2016--->

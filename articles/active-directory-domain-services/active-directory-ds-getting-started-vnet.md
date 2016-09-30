@@ -58,4 +58,4 @@ Führen Sie die folgenden Konfigurationsschritte aus, um ein virtuelles Azure-Ne
 ## Aufgabe 3: Aktivieren der Azure AD-Domänendienste
 Die nächste Konfigurationsaufgabe besteht in der [Aktivierung der Azure AD-Domänendienste](active-directory-ds-getting-started-enableaadds.md).
 
-<!---HONumber=AcomDC_0921_2016-->
+<!----HONumber=AcomDC_0921_2016-->

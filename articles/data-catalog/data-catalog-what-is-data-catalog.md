@@ -74,4 +74,4 @@ Weitere Informationen zu den Funktionen von Data Catalog finden Sie unter:
 * [Einrichten des Unternehmensglossars](data-catalog-how-to-business-glossary.md)
 * [Häufig gestellte Fragen](data-catalog-frequently-asked-questions.md)
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0921_2016--->

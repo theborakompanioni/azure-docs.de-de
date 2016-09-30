@@ -94,4 +94,4 @@ In dieser Aufgabe aktivieren Sie Azure AD-Domänendienste für Ihr Verzeichnis. 
 ## Aufgabe 4: Aktualisieren der DNS-Einstellungen für das virtuelle Azure-Netzwerk
 Die nächste Konfigurationsaufgabe besteht in der [Aktualisierung der DNS-Einstellungen für das virtuelle Azure-Netzwerk](active-directory-ds-getting-started-dns.md).
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0706_2016--->

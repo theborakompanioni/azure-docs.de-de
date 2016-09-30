@@ -95,4 +95,4 @@ Für die Verwendung virtueller Netzwerke in Azure fallen keine Zusatzkosten an. 
 - Weitere Informationen zu [Netzwerksicherheitsgruppen](virtual-networks-nsg.md)
 - Weitere Informationen zu [benutzerdefinierten Routen und IP-Weiterleitung](virtual-networks-udr-overview.md)
 
-<!---HONumber=AcomDC_0810_2016-->
+<!----HONumber=AcomDC_0810_2016--->
