@@ -48,7 +48,10 @@ Durch diese Einstellung wird der Benutzer gezwungen, die Registrierung bei der A
 5. Klicken Sie unten auf der Seite auf "Verwalten der Multi-Factor Authentication". Die Seite für die mehrstufige Authentifizierung wird geöffnet.
 6. Suchen Sie den Benutzer, den Sie verwalten möchten, und aktivieren Sie das Kontrollkästchen neben seinem Namen. Sie müssen möglicherweise oben die Ansicht ändern.
 7. Hierdurch wird rechts der Link **Benutzereinstellungen verwalten** angezeigt. Klicken Sie auf diese Schaltfläche.
-8. Aktivieren Sie das Kontrollkästchen ** Bereitstellen der Kontaktmethoden bei ausgewählten Benutzern erneut anfordern**. ![Kontaktmethoden bereitstellen](./media/multi-factor-authentication-manage-users-and-devices/reproofup.png)
+8. Aktivieren Sie das Kontrollkästchen **Bereitstellen der Kontaktmethoden bei ausgewählten Benutzern erneut anfordern**.
+
+![Kontaktmethoden bereitstellen](./media/multi-factor-authentication-manage-users-and-devices/reproofup.png)
+
 10. Klicken Sie auf "Speichern".
 11. Klicken Sie auf "Schließen".
 

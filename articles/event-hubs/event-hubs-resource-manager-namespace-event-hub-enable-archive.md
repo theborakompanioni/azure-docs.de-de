@@ -286,7 +286,7 @@ Da Sie nun Ressourcen mit Azure Resource Manager erstellt und bereitgestellt hab
   [Using Azure PowerShell with Azure Resource Manager]: ../powershell-azure-resource-manager.md
   [Using the Azure CLI for Mac, Linux, and Windows with Azure Resource Management]: ../xplat-cli-azure-resource-manager.md
   [Event Hub and consumer group template]: https://github.com/Azure/azure-quickstart-templates/blob/master/201-eventhubs-create-namespace-and-enable-archive/
-  [Recommended naming conventions for Azure resources]: https://azure.microsoft.com/de-DE/documentation/articles/guidance-naming-conventions/
+  [Recommended naming conventions for Azure resources]: https://azure.microsoft.com/documentation/articles/guidance-naming-conventions/
   [Event Hub and enable Archive template]: https://github.com/Azure/azure-quickstart-templates/tree/master/201-eventhubs-create-namespace-and-enable-archive
 
 <!---HONumber=AcomDC_0921_2016-->

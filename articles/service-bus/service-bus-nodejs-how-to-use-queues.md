@@ -26,7 +26,7 @@ In diesem Artikel wird beschrieben, wie Sie Service Bus-Warteschlangen in „Nod
 
 ## Erstellen einer Node.js-Anwendung
 
-Erstellen Sie eine leere Node.js-Anwendung. Anweisungen zum Erstellen von Node.js-Anwendungen finden Sie unter [Erstellen und Bereitstellen einer Node.js-Anwendung auf einer Azure-Website][] oder [Node.js-Clouddienst][] (mithilfe von Windows PowerShell).
+Erstellen Sie eine leere Node.js-Anwendung. Anweisungen zum Erstellen von Node.js-Anwendungen finden Sie unter [Erstellen und Bereitstellen einer Node.js-Anwendung auf einer Azure-Website][] oder [Node.js-Clouddienst][] \(mithilfe von Windows PowerShell).
 
 ## Konfigurieren Ihrer Anwendung für die Verwendung von Service Bus
 

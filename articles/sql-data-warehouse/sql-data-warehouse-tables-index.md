@@ -257,7 +257,7 @@ ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_CO
 ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_COMPRESSION = COLUMNSTORE)
 ```
 
-Die Neuerstellung eines Index in SQL Data Warehouse ist ein Offlinevorgang. Weitere Informationen zur Neuerstellung von Indizes finden Sie im Abschnitt zu ALTER INDEX REBUILD in [Columnstore Indexes Defragmentation][] (Columnstore-Indexdefragmentierung) und im Syntaxthema [ALTER INDEX][].
+Die Neuerstellung eines Index in SQL Data Warehouse ist ein Offlinevorgang. Weitere Informationen zur Neuerstellung von Indizes finden Sie im Abschnitt zu ALTER INDEX REBUILD in [Columnstore Indexes Defragmentation][] \(Columnstore-Indexdefragmentierung) und im Syntaxthema [ALTER INDEX][].
  
 ### Schritt 3: Sicherstellen, dass sich die Qualität gruppierter Columnstore-Segmente verbessert hat
 Führen Sie die Abfrage, mit der die Tabelle mit schlechter Segmentqualität identifiziert wurde, erneut aus, und vergewissern Sie sich, dass sich die Segmentqualität verbessert hat. Falls sich die Segmentqualität nicht verbessert hat, kann dies daran liegen, dass die Zeilen in der Tabelle besonders breit sind. Erwägen Sie, beim Neuerstellen der Indizes eine höhere Ressourcenklasse oder DWU-Anzahl zu verwenden.

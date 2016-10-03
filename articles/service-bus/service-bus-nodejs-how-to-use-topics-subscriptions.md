@@ -27,7 +27,7 @@ In diesem Leitfaden erfahren Sie, wie Sie Service Bus-Themen und -Abonnements ü
 
 ## Erstellen einer Node.js-Anwendung
 
-Erstellen Sie eine leere Node.js-Anwendung. Anweisungen zum Erstellen von Node.js-Anwendungen finden Sie unter [Erstellen und Bereitstellen einer Node.js-Anwendung auf einer Azure-Website], [Node.js-Clouddienst][Node.js Cloud Service] (mithilfe von Windows PowerShell) oder Website mit WebMatrix.
+Erstellen Sie eine leere Node.js-Anwendung. Anweisungen zum Erstellen von Node.js-Anwendungen finden Sie unter [Erstellen und Bereitstellen einer Node.js-Anwendung auf einer Azure-Website], [Node.js-Clouddienst][Node.js Cloud Service] \(mithilfe von Windows PowerShell) oder Website mit WebMatrix.
 
 ## Konfigurieren Ihrer Anwendung für die Verwendung von Service Bus
 

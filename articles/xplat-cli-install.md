@@ -52,7 +52,7 @@ Die folgenden CLI-Installationspakete stehen ebenfalls zum Download bereit:
 
 * [Windows Installer][windows-installer]
 
-* [Tar-Datei für Linux][linux-installer] (erfordert Node.js und npm): Installation durch Ausführen von `sudo npm install -g <path to downloaded tar file>`
+* [Tar-Datei für Linux][linux-installer] \(erfordert Node.js und npm): Installation durch Ausführen von `sudo npm install -g <path to downloaded tar file>`
 
 
 ## Option 3. Verwenden eines Docker-Containers
