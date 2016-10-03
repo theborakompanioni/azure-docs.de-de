@@ -84,7 +84,7 @@ Maven ermöglicht Ihnen das Definieren von Werten auf Projektebene, die als Eige
         <!--
         Storm 0.10.0 is for HDInsight 3.3 and 3.4.
         To find the version information for earlier HDInsight cluster
-        versions, see https://azure.microsoft.com/de-DE/documentation/articles/hdinsight-component-versioning/
+        versions, see https://azure.microsoft.com/documentation/articles/hdinsight-component-versioning/
         -->
         <storm.version>0.10.0</storm.version>
     </properties>

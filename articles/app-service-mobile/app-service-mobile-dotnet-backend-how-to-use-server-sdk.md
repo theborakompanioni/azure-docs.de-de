@@ -435,7 +435,7 @@ Wenn ein authentifizierter Benutzer für Pushbenachrichtigungen registriert wird
     // Send a template notification to the user ID.
     await hub.SendTemplateNotificationAsync(notification, userTag);
 
-Stellen Sie vor der Registrierung für Pushbenachrichtigungen von einem authentifizierten Client sicher, dass die Authentifizierung abgeschlossen ist. Weitere Informationen finden Sie unter „App Service Mobile Apps completed quickstart for .NET backend“ (Abgeschlossenes Schnellstartbeispiel für Mobile App Service-Apps für .NET-Back-Ends) im Abschnitt [Push to users][6] (Push an Benutzer).
+Stellen Sie vor der Registrierung für Pushbenachrichtigungen von einem authentifizierten Client sicher, dass die Authentifizierung abgeschlossen ist. Weitere Informationen finden Sie unter „App Service Mobile Apps completed quickstart for .NET backend“ (Abgeschlossenes Schnellstartbeispiel für Mobile App Service-Apps für .NET-Back-Ends) im Abschnitt [Push to users][6] \(Push an Benutzer).
 
 ## Vorgehensweise: Debuggen und Problembehandlung des .NET-Server-SDKs
 

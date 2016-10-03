@@ -58,7 +58,7 @@ Die folgende Abbildung zeigt die allgemeine Architektur zum Aktivieren dieses Sz
 
 Weitere Informationen zur Verwendung des Gateway-SDK finden Sie in folgenden Tutorials:
 
-- [IoT Gateway SDK (beta) - Get started using Linux][lnk-gateway-get-started] (IoT-Gateway-SDK [Beta] – erste Schritte mit Linux).
+- [IoT Gateway SDK (beta) - Get started using Linux][lnk-gateway-get-started] \(IoT-Gateway-SDK [Beta] – erste Schritte mit Linux).
 - [IoT Gateway SDK – Senden von D2C-Nachrichten mit einem simulierten Gerät unter Linux][lnk-gateway-simulated].
 
 Informationen zur Geräteverwaltung mit IoT Hub finden Sie unter [Einführung in die Azure IoT Hub-Geräteverwaltungsbibliothek][lnk-library-c].

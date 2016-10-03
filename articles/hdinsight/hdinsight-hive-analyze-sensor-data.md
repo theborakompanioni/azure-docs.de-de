@@ -50,7 +50,7 @@ In diesem Beispiel verarbeiten Sie Verlaufsdaten von Klimaanlagensystemen mithil
 
 	Geben Sie den Benutzernamen und das Kennwort des Administrators ein, den Sie bei der Clusterbereitstellung verwendet haben, wenn Sie dazu aufgefordert werden.
 
-2. Klicken Sie auf der Webseite, die sich daraufhin öffnet, auf die Registerkarte **Erste Schritte mit dem Katalog ** und anschließend in der Kategorie **Lösungen mit Beispieldaten** auf das Beispiel **Analysieren von Sensordaten**.
+2. Klicken Sie auf der Webseite, die sich daraufhin öffnet, auf die Registerkarte **Erste Schritte mit dem Katalog** und anschließend in der Kategorie **Lösungen mit Beispieldaten** auf das Beispiel **Analysieren von Sensordaten**.
 
     ![Katalogimage für erste Schritte](./media/hdinsight-hive-analyze-sensor-data/getting-started-gallery.png)
 

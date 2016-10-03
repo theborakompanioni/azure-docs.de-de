@@ -449,7 +449,7 @@ ___
 >
 > Nur MDADM und LVM (Logical Volume Manager) werden unterstützt, um ein Software-RAID unter Linux zu erstellen. Weitere Informationen finden Sie in den folgenden Artikeln:
 >
-> * [Konfigurieren von Software-RAID unter Linux][virtual-machines-linux-configure-raid] (für MDADM)
+> * [Konfigurieren von Software-RAID unter Linux][virtual-machines-linux-configure-raid] \(für MDADM)
 > * [Konfigurieren von LVM auf einem virtuellen Linux-Computer in Azure][virtual-machines-linux-configure-lvm]
 
 

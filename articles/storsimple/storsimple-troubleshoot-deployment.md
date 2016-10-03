@@ -72,8 +72,8 @@ Die folgenden Tabellen enthalten häufige Fehler, die auftreten können, wenn Si
 | 2 | Invoke-HcsSetupWizard: Gerät ist nicht bereit. | Es gibt Probleme mit der DATA 0-Netzwerkverbindung.| Überprüfen Sie die physische DATA 0-Netzwerkkonnektivität.|
 | 3 | Invoke-HcsSetupWizard: Es liegt ein IP-Adressenkonflikt mit einem anderen System im Netzwerk vor (Ausnahme von HRESULT: 0x80070263). | Die für DATA 0 angegebene IP-Adresse wird bereits von einem anderen System verwendet. | Geben Sie eine neue IP-Adresse an, die nicht belegt ist.|
 | 4 | Invoke-HcsSetupWizard: Fehler in einer Clusterressource. (Ausnahme von HRESULT:0x800713AE). | Doppelte VIP. Die angegebene IP-Adresse wird bereits verwendet.| Geben Sie eine neue IP-Adresse an, die nicht belegt ist.|
-| 5 | Invoke-HcsSetupWizard: Ungültige IPv4-Adresse. | Die IP-Adresse hat das falsche Format.| Überprüfen Sie das Format, und geben Sie die IP-Adresse erneut an. Weitere Informationen finden Sie unter [Ipv4 Addressing][1] (in englischer Sprache). |
-| 6 | Invoke-HcsSetupWizard: Ungültige IPv6-Adresse. | Die IP-Adresse hat das falsche Format.| Überprüfen Sie das Format, und geben Sie die IP-Adresse erneut an. Weitere Informationen finden Sie unter [Ipv6 Addressing][2] (in englischer Sprache).|
+| 5 | Invoke-HcsSetupWizard: Ungültige IPv4-Adresse. | Die IP-Adresse hat das falsche Format.| Überprüfen Sie das Format, und geben Sie die IP-Adresse erneut an. Weitere Informationen finden Sie unter [Ipv4 Addressing][1] \(in englischer Sprache). |
+| 6 | Invoke-HcsSetupWizard: Ungültige IPv6-Adresse. | Die IP-Adresse hat das falsche Format.| Überprüfen Sie das Format, und geben Sie die IP-Adresse erneut an. Weitere Informationen finden Sie unter [Ipv6 Addressing][2] \(in englischer Sprache).|
 | 7 | Invoke-HcsSetupWizard: Es sind keine Endpunkte mehr von der Endpunktzuordnung verfügbar. (Ausnahme von HRESULT:0x800706D9). | Die Clusterfunktionalität ist nicht funktionsfähig. | [Wenden Sie sich an den Microsoft Support](storsimple-contact-microsoft-support.md) für weitere Schritte.
 
 ## Fehler während der optionalen Webproxyeinstellungen

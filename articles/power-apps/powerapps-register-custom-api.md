@@ -173,7 +173,7 @@ In diesem Schritt erstellen wir eine sehr einfache PowerApp, die verdeutlicht, w
 ![](./media/powerapps-register-custom-api/screencustomapi.png "Benutzerdefinierte API auswählen")
 5. Wählen Sie die Option **Datenquelle hinzufügen**.
 
-Nach dem Hinzufügen können Sie Ihre benutzerdefinierte API in der Funktionsleiste, einem Textfeld und an anderen Orten verwenden. In der Funktionsleiste können Sie beispielsweise mit der Eingabe von **MySampleWebAPI** beginnen, um die verfügbaren Funktionen anzuzeigen. [Show data from Office 365][12] (Anzeigen von Daten aus Office 365) ist ein Beispiel für die Verwendung der Office 365-API.
+Nach dem Hinzufügen können Sie Ihre benutzerdefinierte API in der Funktionsleiste, einem Textfeld und an anderen Orten verwenden. In der Funktionsleiste können Sie beispielsweise mit der Eingabe von **MySampleWebAPI** beginnen, um die verfügbaren Funktionen anzuzeigen. [Show data from Office 365][12] \(Anzeigen von Daten aus Office 365) ist ein Beispiel für die Verwendung der Office 365-API.
 
 
 ## Freigeben einer benutzerdefinierten API

@@ -67,7 +67,7 @@ SQL Data Warehouse enthält zwar viele Tabellenfunktionen, die auch für andere 
 
 | Nicht unterstützte Funktionen |
 | --- |
-|[Identity-Eigenschaft][] (siehe [Assigning Surrogate Key Workaround][] (Zuweisen von Ersatzschlüsseln – Problemumgehung))|
+|[Identity-Eigenschaft][] \(siehe [Assigning Surrogate Key Workaround][] \(Zuweisen von Ersatzschlüsseln – Problemumgehung))|
 |Primary Key, Foreign Key, Unique und Check – [Tabelleneinschränkungen][]|
 |[Eindeutige Indizes][]|
 |[Berechnete Spalten][]|
