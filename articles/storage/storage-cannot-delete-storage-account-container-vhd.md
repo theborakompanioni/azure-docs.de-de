@@ -74,7 +74,7 @@ Auch der folgende Fehler kann angezeigt werden:
 
 **Im klassischen Azure-Portal**:
 
-* Übermitteln fehlgeschlagen – das Speicherkonto <VM-Speicherkontoname> verfügt über 1 Container, der/die über ein aktives Image und/oder Datenträgerartefakte verfügt/verfügen. Stellen Sie sicher, dass diese Artefakte aus dem Image-Repository entfernt werden, bevor Sie dieses Speicherkonto löschen. Wenn Sie versuchen, ein Speicherkonto zu löschen, und dem Speicherkonto aktive Datenträger zugeordnet sind, werden Sie mit einer Meldung darüber informiert, dass aktive Datenträger vorhanden sind, die gelöscht werden müssen.*
+*Übermitteln fehlgeschlagen – das Speicherkonto <VM-Speicherkontoname> verfügt über 1 Container, der/die über ein aktives Image und/oder Datenträgerartefakte verfügt/verfügen. Stellen Sie sicher, dass diese Artefakte aus dem Image-Repository entfernt werden, bevor Sie dieses Speicherkonto löschen. Wenn Sie versuchen, ein Speicherkonto zu löschen, und dem Speicherkonto aktive Datenträger zugeordnet sind, werden Sie mit einer Meldung darüber informiert, dass aktive Datenträger vorhanden sind, die gelöscht werden müssen.*
 
 ### Szenario 2: Container kann nicht gelöscht werden
 

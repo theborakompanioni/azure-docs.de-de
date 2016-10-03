@@ -25,7 +25,7 @@ Mit dem v2.0-Endpunkt von Azure Active Directory können Sie eine Web-API mit [O
 
 Für ASP.NET-Web-APIs erreichen Sie das Gleiche durch die in .NET Framework 4.5 enthaltene OWIN-Middleware von Microsoft. Hier verwenden wir OWIN zum Erstellen einer MVC-Web-API mit einer Aufgabenliste. Die Web-API ermöglicht Clients das Erstellen und Lesen von Aufgaben aus der Aufgabenliste eines Benutzers. Die Web-API überprüft, ob eingehende Anforderungen ein gültiges Zugriffstoken enthalten, und lehnt alle Anforderungen ab, bei denen die Überprüfung für eine geschützte Route negativ ausfällt.
 
-## Download
+## Herunterladen
 Der Code für dieses Tutorial wird [auf GitHub](https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-DotNet) verwaltet. Um folgen zu können, können Sie [das App-Gerüst als ZIP-Datei herunterladen](https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-DotNet/archive/skeleton.zip) oder das Gerüst klonen:
 
 ```

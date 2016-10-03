@@ -49,7 +49,7 @@ Die folgenden Schritte sind ausreichend, um den Bericht von Protokollen zu aktiv
 	-   `CoreLocation.framework`
 	-   `libxml2.dylib`
 
-> [AZURE.NOTE] Das AdSupport-Framework kann entfernt werden. Dieses Framework ist für Engagement zum Erfassen der IDFA erforderlich. Die IDFA-Erfassung kann jedoch mit <ios-sdk-engagement-idfa> deaktiviert werden, um der neuen Apple-Richtlinie zu dieser ID zu entsprechen.
+> [AZURE.NOTE] Das AdSupport-Framework kann entfernt werden. Dieses Framework ist für Engagement zum Erfassen der IDFA erforderlich. Die IDFA-Erfassung kann jedoch mit \<ios-sdk-engagement-idfa\> deaktiviert werden, um der neuen Apple-Richtlinie zu dieser ID zu entsprechen.
 
 ##Initialisieren des Engagement-SDK
 
