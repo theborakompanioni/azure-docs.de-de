@@ -93,7 +93,7 @@ Sie können Serverskripts, die für einen Tabellenvorgang registriert sind, auf 
 
 	![1][1]
 	
-	Weitere Informationen hierzu finden Sie unter [Validate and modify data in Mobile Services by using server scripts]\(Validierung und Änderung von Daten in Mobile Services mithilfe von Serverskripts, in englischer Sprache).
+	Weitere Informationen hierzu finden Sie unter [Validate and modify data in Mobile Services by using server scripts] \(Validierung und Änderung von Daten in Mobile Services mithilfe von Serverskripts, in englischer Sprache).
 
 + Mithilfe von Quellcodeverwaltung. Falls Sie die Quellcodeverwaltung aktiviert haben, erstellen Sie einfach eine Datei mit dem Namen "<em>`<table>`</em>.<em>`<operation>`</em>.js" im Unterordner ".\\service\\table" in Ihrem Git-Repository, wobei <em>`<table>`</em> der Name der Tabelle und <em>`<operation>`</em> der registrierte Tabellenvorgang ist. Weitere Informationen finden Sie unter [Quellcodeverwaltung und freigegebener Code][Source control, shared code, and helper functions].
 
@@ -360,7 +360,7 @@ Der Endpunkt der benutzerdefinierten API kann nur mit den HTTP-Methoden aufgeruf
 
 ###<a name="api-return-xml"></a>Gewusst wie: Senden und Empfangen von Daten als XML
 
-Wenn Clients Daten speichern und abrufen, verwendet Mobile Services JavaScript Object Notation (JSON) für die Darstellung der Daten im Nachrichtentext. In manchen Szenarien macht es jedoch mehr Sinn, stattdessen eine XML-Nutzlast zu verwenden. Windows Store-Apps haben z. B. eine eingebaute Funktion für periodische Benachrichtigungen, die nur mit XML-Diensten funktioniert. Weitere Informationen finden Sie unter [Define a custom API that supports periodic notifications] (Definieren benutzerdefinierter APIs mit Unterstützung für periodische Benachrichtigungen, in englischer Sprache).
+Wenn Clients Daten speichern und abrufen, verwendet Mobile Services JavaScript Object Notation (JSON) für die Darstellung der Daten im Nachrichtentext. In manchen Szenarien macht es jedoch mehr Sinn, stattdessen eine XML-Nutzlast zu verwenden. Windows Store-Apps haben z. B. eine eingebaute Funktion für periodische Benachrichtigungen, die nur mit XML-Diensten funktioniert. Weitere Informationen finden Sie unter [Define a custom API that supports periodic notifications] \(Definieren benutzerdefinierter APIs mit Unterstützung für periodische Benachrichtigungen, in englischer Sprache).
 
 Die folgende **OrderPizza**-Funktion einer benutzerdefinierten API liefert ein einfaches XML-Dokument als Nutzlast der Antwort zurück.
 
@@ -376,7 +376,7 @@ Sie können diese Funktion aufrufen, indem Sie eine HTTP GET-Anforderung an den 
 
 ###<a name="get-api-user"></a>Gewusst wie: Arbeiten mit Benutzern und Headern in benutzerdefinierten APIs
 
-In Azure Mobile Services können Sie Benutzer mithilfe von Identitätsanbietern authentifizieren. Weitere Informationen finden Sie unter [Get started with authentication] (Erste Schritte zur Authentifizierung, in englischer Sprache). Wenn ein authentifizierter Benutzer eine benutzerdefinierte API aufruft, verwendet Mobile Services das [Benutzerobjekt], um Informationen über den Benutzer an den Code der benutzerdefinierten API zu liefern. Das [Benutzerobjekt] ist über die user-Eigenschaft des [Anforderungsobjekts] zugänglich. Die **userId**-Eigenschaft kann zum Speichern und Abrufen benutzerspezifischer Informationen verwendet werden.
+In Azure Mobile Services können Sie Benutzer mithilfe von Identitätsanbietern authentifizieren. Weitere Informationen finden Sie unter [Get started with authentication] \(Erste Schritte zur Authentifizierung, in englischer Sprache). Wenn ein authentifizierter Benutzer eine benutzerdefinierte API aufruft, verwendet Mobile Services das [Benutzerobjekt], um Informationen über den Benutzer an den Code der benutzerdefinierten API zu liefern. Das [Benutzerobjekt] ist über die user-Eigenschaft des [Anforderungsobjekts] zugänglich. Die **userId**-Eigenschaft kann zum Speichern und Abrufen benutzerspezifischer Informationen verwendet werden.
 
 In der folgenden **OrderPizza**-Funktion einer benutzerdefinierten API wird die owner-Eigenschaft eines Elements anhand der **userId** eines authentifizierten Benutzers gesetzt:
 
@@ -457,7 +457,7 @@ Geplante Aufträge können auf zwei Arten definiert werden:
 
 	![3][3]
 
-	Weitere Informationen hierzu finden Sie unter [Schedule backend jobs in Mobile Services] (Planen von Back-End-Aufgaben in Mobile Services, in englischer Sprache).
+	Weitere Informationen hierzu finden Sie unter [Schedule backend jobs in Mobile Services] \(Planen von Back-End-Aufgaben in Mobile Services, in englischer Sprache).
 
 + Über die Eingabeaufforderung im Azure-Befehlszeilentool. Weitere Informationen finden Sie unter [Arbeiten mit dem Befehlszeilentool].
 
@@ -484,7 +484,7 @@ Es folgt eine Liste hilfreicher Module, die Sie über die globale **require**-Fu
 + **path**: Enthält Werkzeuge zum Arbeiten mit Dateipfaden. Weitere Informationen finden Sie in der [Node.js-Dokumentation][path API].
 + **querystring**: Enthält Werkzeuge zum Arbeiten mit Abfragezeichenfolgen. Weitere Informationen finden Sie in der [Node.js-Dokumentation][querystring API].
 + **request**: Verschickt HTTP-Anforderungen an externe REST-Dienste wie z. B. Twitter und Facebook. Weitere Informationen finden Sie unter [HTTP-Anforderungen senden].
-+ **sendgrid**: Verschickt E-Mails über den Sendgrid-E-Mail-Dienst in Azure. Weitere Informationen finden Sie unter [Send email from Mobile Services with SendGrid] (E-Mail-Versand in Mobile Services mit SendGrid, in englischer Sprache).
++ **sendgrid**: Verschickt E-Mails über den Sendgrid-E-Mail-Dienst in Azure. Weitere Informationen finden Sie unter [Send email from Mobile Services with SendGrid] \(E-Mail-Versand in Mobile Services mit SendGrid, in englischer Sprache).
 + **url**: Enthält Werkzeuge zum Analysieren und Auflösen von URLs. Weitere Informationen finden Sie in der [Node.js-Dokumentation][url API].
 + **util**: Enthält verschiedene Werkzeuge wie z. B. Zeichenfolgenformatierung und Objekttypprüfungen. Weitere Informationen finden Sie in der [Node.js-Dokumentation][util API].
 + **zlib**: Macht Komprimierungsmethoden wie z. B. "gzip" und "deflate" verfügbar. Weitere Informationen finden Sie in der [Node.js-Dokumentation][zlib API].
@@ -588,7 +588,7 @@ Im folgenden Code werden Werte eines Twitter-Zugriffstokens über das Konfigurat
 		var accessToken= config.appSettings.TWITTER_ACCESS_TOKEN,
 		    accessTokenSecret = config.appSettings.TWITTER_ACCESS_TOKEN_SECRET;
 
-Beachten Sie, dass dieser Code auch die Consumer Key-Werte von Twitter abruft und in der Registerkarte **Identität** im Portal speichert. Da das **config-Objekt** in Skripts für Tabellenvorgänge und geplante Aufträge nicht verfügbar ist, muss das Konfigurationsmodul stattdessen auf die App-Einstellungen zugreifen. Ein vollständiges Beispiel finden Sie unter [Schedule backend jobs in Mobile Services] (Planen von Back-End-Aufgaben in Mobile Services, in englischer Sprache).
+Beachten Sie, dass dieser Code auch die Consumer Key-Werte von Twitter abruft und in der Registerkarte **Identität** im Portal speichert. Da das **config-Objekt** in Skripts für Tabellenvorgänge und geplante Aufträge nicht verfügbar ist, muss das Konfigurationsmodul stattdessen auf die App-Einstellungen zugreifen. Ein vollständiges Beispiel finden Sie unter [Schedule backend jobs in Mobile Services] \(Planen von Back-End-Aufgaben in Mobile Services, in englischer Sprache).
 
 <h2><a name="command-prompt"></a>Arbeiten mit dem Befehlszeilentool</h2>
 
@@ -631,7 +631,7 @@ Der folgende Befehl gibt Informationen über sämtliche Skriptdateien in Ihrem M
 		data:    register_notifications  application  application  user         application  application
 		info:    mobile script list command OK
 
-Weitere Informationen finden Sie unter [Commands to manage Azure Mobile Services] (Befehle zum Verwalten von Azure Mobile Services, in englischer Sprache).
+Weitere Informationen finden Sie unter [Commands to manage Azure Mobile Services] \(Befehle zum Verwalten von Azure Mobile Services, in englischer Sprache).
 
 ##<a name="working-with-tables"></a>Arbeiten mit Tabellen
 

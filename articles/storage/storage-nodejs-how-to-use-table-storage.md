@@ -427,9 +427,9 @@ Nachdem die ACL \(festgelegt wurde, können Sie) basierend auf der ID für eine 
 
 Weitere Informationen finden Sie in den folgenden Ressourcen.
 
--   [Azure Storage Team Blog][] (in englischer Sprache)
--   [Azure Storage SDK for Node.js][]-Repository auf GitHub (in englischer Sprache)
--   [Node.js Developer Center (in englischer Sprache)](/develop/nodejs/)
+-   [Azure Storage Team Blog][] \(in englischer Sprache)
+-   [Azure Storage SDK for Node.js][]-Repository auf GitHub \(in englischer Sprache)
+-   [Node.js Developer Center \(in englischer Sprache)](/develop/nodejs/)
 
   [Azure Storage SDK for Node.js]: https://github.com/Azure/azure-storage-node
   [OData.org]: http://www.odata.org/
