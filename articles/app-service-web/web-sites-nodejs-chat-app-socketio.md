@@ -109,7 +109,7 @@ Ihre App wird jetzt in Azure ausgeführt und kann Chat-Nachrichten zwischen vers
 
 Socket.IO-Anwendungen können über einen __Adapter__ horizontal skaliert werden, um Nachrichten und Ereignisse unter mehreren Anwendungsinstanzen zu verteilen. Es stehen zwar mehrere Adapter zur Verfügung, allerdings empfiehlt sich der Adapter [socket.io-redis], da sich dieser einfach mit der Azure Redis Cache-Funktion verwenden lässt.
 
-> [AZURE.NOTE] Eine weitere Anforderung für das horizontale Skalieren einer Socket.IO-Lösung ist die Unterstützung persistenter Sitzungen. Persistente Sitzungen sind für Azure-Web-Apps standardmäßig über das Azure-Anforderungsrouting aktiviert. Weitere Informationen finden Sie unter [Instance Affinity in Azure Web Sites] (Instanzaffinität in Azure Websites).
+> [AZURE.NOTE] Eine weitere Anforderung für das horizontale Skalieren einer Socket.IO-Lösung ist die Unterstützung persistenter Sitzungen. Persistente Sitzungen sind für Azure-Web-Apps standardmäßig über das Azure-Anforderungsrouting aktiviert. Weitere Informationen finden Sie unter [Instance Affinity in Azure Web Sites] \(Instanzaffinität in Azure Websites).
 
 ### Erstellen eines Redis-Caches
 
