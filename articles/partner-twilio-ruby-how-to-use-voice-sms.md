@@ -167,8 +167,8 @@ Zusätzlich zu den hier gezeigten Beispielen bietet Twilio webbasierte APIs, mit
 Nachdem Sie nun mit den Grundlagen des Twilio-Dienstes vertraut sind, finden Sie unter diesen Links weitere Informationen:
 
 * [Twilio Security Guidelines][twilio_security_guidelines] (Twilio-Sicherheitsrichtlinien, in englischer Sprache)
-* [Twilio HowTos and Example Code][twilio_howtos] (Twilio-Anleitungen und Beispielcode, in englischer Sprache)
-* [Twilio Quickstart Tutorials][twilio_quickstarts] (Twilio-Schnellstart-Lernprogramme, in englischer Sprache) 
+* [Twilio HowTos and Example Code][twilio_howtos] \(Twilio-Anleitungen und Beispielcode, in englischer Sprache)
+* [Twilio Quickstart Tutorials][twilio_quickstarts] (\Twilio-Schnellstart-Lernprogramme, in englischer Sprache) 
 * [Twilio auf GitHub][twilio_on_github]
 * [Kontakt zum Twilio-Support][twilio_support]
 

@@ -67,7 +67,7 @@ Sobald Ihre API-App erstellt wurde, können Sie den Datei-Connector als Aktion f
 ## Datei-Connector-REST-APIs ##
 Um den Connector außerhalb einer Logik-App zu verwenden, können die vom Connector zur Verfügung gestellten REST-APIs genutzt werden. Sie können diese API-Definitionen mit „Durchsuchen“ > „API-App“ > „Datei-Connector“ anzeigen. Klicken Sie jetzt auf die Lupe "API-Definition" im Abschnitt "Zusammenfassung", um alle APIs anzuzeigen, die von diesem Connector zur Verfügung gestellt werden: ![][7]
 
-Ausführliche Informationen zu den APIs finden sie unter [File Connector] (Datei-Connector).
+Ausführliche Informationen zu den APIs finden sie unter [File Connector] \(Datei-Connector).
 
 ## Mehr mit Ihrem Connector machen
 Nachdem der Connector nun erstellt ist, können Sie ihn mit einer Logik-App einem Geschäftsworkflow hinzufügen. Informationen finden Sie unter [Was sind Logik-Apps?](app-service-logic-what-are-logic-apps.md).

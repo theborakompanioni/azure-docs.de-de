@@ -34,7 +34,7 @@ In dieser exemplarischen Vorgehensweise wird gezeigt, wie Sie eine Azure SDK fü
 
 ### Softwareinstallationen
 
-Der Anwendungscode für "AzureWebDemo" in diesem Artikel wurde mit dem Azure Java SDK 0.7.0 geschrieben, das Sie über den [Web Platform Installer][] (WebPI) installieren können. Stellen Sie außerdem sicher, dass Sie die aktuelle Version des [Azure-Toolkits für Eclipse][] verwenden. Nachdem Sie das SDK installiert haben, aktualisieren Sie die Abhängigkeiten in Ihrem Eclipse-Projekt, indem Sie in **Maven-Repositorys** die Option **Index aktualisieren** ausführen, anschließend im Fenster **Abhängigkeiten** die neueste Version von jedem Paket hinzufügen. Sie können die Version Ihrer installierten Software in Eclipse prüfen, indem Sie auf **Hilfe > Installationsdetails** klicken. Sie sollten mindestens über die folgenden Versionen verfügen:
+Der Anwendungscode für "AzureWebDemo" in diesem Artikel wurde mit dem Azure Java SDK 0.7.0 geschrieben, das Sie über den [Web Platform Installer][] \(WebPI) installieren können. Stellen Sie außerdem sicher, dass Sie die aktuelle Version des [Azure-Toolkits für Eclipse][] verwenden. Nachdem Sie das SDK installiert haben, aktualisieren Sie die Abhängigkeiten in Ihrem Eclipse-Projekt, indem Sie in **Maven-Repositorys** die Option **Index aktualisieren** ausführen, anschließend im Fenster **Abhängigkeiten** die neueste Version von jedem Paket hinzufügen. Sie können die Version Ihrer installierten Software in Eclipse prüfen, indem Sie auf **Hilfe > Installationsdetails** klicken. Sie sollten mindestens über die folgenden Versionen verfügen:
 
 - Paket für Microsoft Azure-Bibliotheken für Java 0.7.0.20150309
 - Eclipse IDE für Java EE-Entwickler 4.4.2.20150219

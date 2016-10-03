@@ -105,7 +105,7 @@ Zur Erinnerung: Wenn Sie ein Subnetz in einem vorhandenen VNet erstellen möchte
 
 #### Externe oder interne VIP-Adresse ####
 
-Standardmäßig wird die VNet-Konfiguration mit einem externen VIP-Adresstyp und 1 IP-Adresse festgelegt. Wenn Sie einen ILB statt einer externen VIP-Adresse verwenden möchten, wechseln Sie zur VNet-Konfiguration, und ändern Sie den VIP-Adresstyp zu „intern“. Standardmäßig wird eine externe VIP-Adresse verwendet. Wenn Sie den VIP-Adresstyp zu „intern“ ändern, müssen Sie Ihre Unterdomäne für die ASE angeben. Bei Einsatz eines ILB als VIP-Adresse für eine ASE sind ein paar Kompromisse erforderlich. Mehr hierzu erfahren Sie unter [Using an Internal Load Balancer with an App Service Environment][ILBASE] (Verwenden eines ILB mit einer App Service-Umgebung).
+Standardmäßig wird die VNet-Konfiguration mit einem externen VIP-Adresstyp und 1 IP-Adresse festgelegt. Wenn Sie einen ILB statt einer externen VIP-Adresse verwenden möchten, wechseln Sie zur VNet-Konfiguration, und ändern Sie den VIP-Adresstyp zu „intern“. Standardmäßig wird eine externe VIP-Adresse verwendet. Wenn Sie den VIP-Adresstyp zu „intern“ ändern, müssen Sie Ihre Unterdomäne für die ASE angeben. Bei Einsatz eines ILB als VIP-Adresse für eine ASE sind ein paar Kompromisse erforderlich. Mehr hierzu erfahren Sie unter [Using an Internal Load Balancer with an App Service Environment][ILBASE] \(Verwenden eines ILB mit einer App Service-Umgebung).
 
 ![][4]
 

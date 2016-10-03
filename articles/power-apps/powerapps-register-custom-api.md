@@ -50,7 +50,7 @@ Sie können einen der folgenden Authentifizierungsmechanismen verwenden:
 > [AZURE.NOTE] Die Unterstützung für die Authentifizierung per API-Schlüssel wird in Kürze hinzugefügt.
 
 
-Weitere Informationen zum Angeben des Authentifizierungstyps finden Sie in Ihrem OpenAPI-Dokument (Swagger) unter [OpenAPI Specification][1] (OpenAPI-Spezifikation).
+Weitere Informationen zum Angeben des Authentifizierungstyps finden Sie in Ihrem OpenAPI-Dokument (Swagger) unter [OpenAPI Specification][1] \(OpenAPI-Spezifikation).
 
 Wenn Ihr API-Endpunkt den nicht authentifizierten Zugriff zulässt, sollten Sie das ```securityDefintions```-Objekt aus der OpenAPI-Datei (Swagger) entfernen. Entfernen Sie im folgenden Beispiel das ```securityDefintions```-Objekt vollständig:
 
@@ -85,7 +85,7 @@ Wenn Sie die Swagger-Datei erstellen, wird eine JSON-Datei erstellt. Halten Sie 
 
 #### Erhalten von Hilfe zum Erstellen von Swagger-Dateien
 
-- Wenn die Erstellung einer Swagger-Datei neu für Sie ist oder Sie noch nie eine Swagger-Datei erstellt haben, ist die Seite [Get started with Swagger][6] (Erste Schritte mit Swagger) hilfreich.
+- Wenn die Erstellung einer Swagger-Datei neu für Sie ist oder Sie noch nie eine Swagger-Datei erstellt haben, ist die Seite [Get started with Swagger][6] \(Erste Schritte mit Swagger) hilfreich.
  
 - Um Ihre eigene API zu erstellen, stellen Sie sie in Azure bereit und erstellen basierend auf dieser neuen API eine Swagger-Datei. Anschließend können Sie bei Bedarf das [Web-API-Tutorial](powerapps-web-api-tutorial.md) durcharbeiten. In diesem Tutorial erhalten Sie eine funktionierende Swagger-Datei. Auf GitHub finden Sie außerdem ein [Hello World-Beispiel][7].
 
@@ -159,7 +159,7 @@ Die nächsten Schritte richten sich danach, was mit Ihrer API möglich ist. Im R
 
 
 #### Hinzufügen der benutzerdefinierten API zu Ihrer PowerApp
-In diesem Schritt erstellen wir eine sehr einfache PowerApp, die verdeutlicht, wie Sie Ihre benutzerdefinierte API hinzufügen. Ausführlichere Informationen finden Sie unter [Create an app from Excel data][11] (Erstellen einer App aus Excel-Daten).
+In diesem Schritt erstellen wir eine sehr einfache PowerApp, die verdeutlicht, wie Sie Ihre benutzerdefinierte API hinzufügen. Ausführlichere Informationen finden Sie unter [Create an app from Excel data][11] \(Erstellen einer App aus Excel-Daten).
 
 > [AZURE.NOTE] Derzeit können benutzerdefinierte APIs nur im PowerApps-Webportal verwendet werden. Die Verwendung im PowerApps-Client ist nicht möglich.
 

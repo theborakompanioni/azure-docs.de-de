@@ -31,7 +31,7 @@ Falls die Bereitstellung zu groß für den Standardordner „approot“ ist, kan
 
 Wenn Sie **DEPLOYROOT** für das Feld *Name* Ihrer lokalen Ressource verwenden und den Namen der automatisch generierten Umgebungsvariablen nicht ändern (die in diesem Fall auf **DEPLOYROOT\_PATH** festgelegt wird), funktioniert Ihre Anwendung auch.
 
-Weitere Informationen zum Erstellen einer lokalen Speicherressource finden Sie unter [Local Storage Properties][] (in englischer Sprache).
+Weitere Informationen zum Erstellen einer lokalen Speicherressource finden Sie unter [Local Storage Properties][] \(in englischer Sprache).
 
 ## Weitere Informationen ##
 

@@ -72,10 +72,10 @@ Sie können auf ähnliche Weise auf beliebige Daten zugreifen, die mit RESTful-A
 
 Ausführlichere Informationen zum Erstellen von PowerApps und Logic Flow finden Sie hier:
 
-- [Connect to Office 365, Twitter, and Microsoft Translator][5] (Verbinden mit Office 365, Twitter und Microsoft Translator)
-- [Show data from Office 365][4] (Anzeigen von Daten aus Office 365)
-- [Create an app from a set of data][3] (Erstellen einer App aus einem Satz von Daten)
-- [Create Logic Flows][2] (Erstellen von Logic Flows)
+- [Connect to Office 365, Twitter, and Microsoft Translator][5] \(Verbinden mit Office 365, Twitter und Microsoft Translator)
+- [Show data from Office 365][4] \(Anzeigen von Daten aus Office 365)
+- [Create an app from a set of data][3] \(Erstellen einer App aus einem Satz von Daten)
+- [Create Logic Flows][2] \(Erstellen von Logic Flows)
 
 Bei Fragen oder Kommentaren zu benutzerdefinierten APIs können Sie eine E-Mail an [customapishelp@microsoft.com](mailto:customapishelp@microsoft.com) senden.
 

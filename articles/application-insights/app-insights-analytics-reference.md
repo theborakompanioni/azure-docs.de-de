@@ -445,7 +445,7 @@ Führt die Zeilen zweier Tabellen anhand von übereinstimmenden Werten der angeg
 
 **Syntax**
 
-    Table1 | join [kind=Kind] (Table2) on CommonColumn [, ...]
+    Table1 | join [kind=Kind] \(Table2) on CommonColumn [, ...]
 
 **Argumente**
 

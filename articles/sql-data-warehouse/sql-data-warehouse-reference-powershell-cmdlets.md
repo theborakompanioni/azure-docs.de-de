@@ -86,7 +86,7 @@ Weitere PowerShell-Beispiele finden Sie unter:
 - [Erstellen von SQL Data Warehouse mithilfe von PowerShell][]
 - [Datenbankwiederherstellung][]
 
-Eine Liste mit allen Aufgaben, die mit PowerShell automatisiert werden können, finden Sie unter [Azure SQL Database Cmdlets][] (Azure SQL-Datenbank-Cmdlets). Eine Liste mit Aufgaben, die mit REST automatisiert werden können, finden Sie unter [Vorgänge für Azure SQL-Datenbanken][].
+Eine Liste mit allen Aufgaben, die mit PowerShell automatisiert werden können, finden Sie unter [Azure SQL Database Cmdlets][] \(Azure SQL-Datenbank-Cmdlets). Eine Liste mit Aufgaben, die mit REST automatisiert werden können, finden Sie unter [Vorgänge für Azure SQL-Datenbanken][].
 
 <!--Image references-->
 

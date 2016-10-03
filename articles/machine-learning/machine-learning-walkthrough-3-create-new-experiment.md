@@ -53,7 +53,7 @@ Zum Verwenden von [Edit Metadata][edit-metadata] geben Sie zuerst an, welche Spa
 
 1.	Geben Sie in der Modulpalette „Metadaten“ in das Feld **Suchen** ein. [Edit Metadata][edit-metadata] wird in der Modulliste angezeigt.
 2.	Klicken und ziehen Sie das Modul [Edit Metadata][edit-metadata] in den Experimentbereich, und legen Sie es unter dem zuvor hinzugefügten Dataset ab.
-3.	Verbinden Sie das Dataset mit [Edit Metadata][edit-metadata]\: Klicken Sie auf den Ausgabeport des Datasets (den kleinen Kreis unten im Dataset), ziehen Sie ihn zum Eingabeport von [Edit Metadata][edit-metadata] (den kleinen Kreis oben im Modul), und lassen Sie die Maustaste los. Das Dataset und das Modul bleiben verbunden, auch wenn Sie diese im Bereich verschieben.
+3.	Verbinden Sie das Dataset mit [Edit Metadata][edit-metadata]\: Klicken Sie auf den Ausgabeport des Datasets (den kleinen Kreis unten im Dataset), ziehen Sie ihn zum Eingabeport von [Edit Metadata][edit-metadata] \(den kleinen Kreis oben im Modul), und lassen Sie die Maustaste los. Das Dataset und das Modul bleiben verbunden, auch wenn Sie diese im Bereich verschieben.
 
     Das Experiment sollte in etwa wie folgt aussehen:
 

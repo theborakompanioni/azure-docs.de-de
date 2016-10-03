@@ -49,7 +49,7 @@ Richten Sie Ihre Entwicklungsumgebung ein, indem Sie das Azure SDK für .NET 2.5
 
 Sie werden auch einen Emulator für mobile Browser benötigen. Klicken Sie dazu auf einen der folgenden Links:
 
--   Browseremulator in [Internet Explorer 11 F12-Entwicklertools][EmulatorIE11] (wird in allen Screenshots mobiler Browser verwendet). Benutzer-Agent-Zeichenfolgen für Windows Phone 8, Windows Phone 7 und Apple iPad sind voreingestellt.
+-   Browseremulator in [Internet Explorer 11 F12-Entwicklertools][EmulatorIE11] \(wird in allen Screenshots mobiler Browser verwendet). Benutzer-Agent-Zeichenfolgen für Windows Phone 8, Windows Phone 7 und Apple iPad sind voreingestellt.
 -	Browseremulator in [Google Chrome DevTools][EmulatorChrome]. Der Emulator enthält Voreinstellungen für zahlreiche Android-Geräte sowie für Apple iPhone, Apple iPad und Amazon Kindle Fire. Darüber hinaus emuliert er Touchereignisse.
 -   [Emulator für Opera Mobile][EmulatorOpera]
 

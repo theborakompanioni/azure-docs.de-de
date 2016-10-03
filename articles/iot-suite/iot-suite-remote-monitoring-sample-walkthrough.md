@@ -89,7 +89,7 @@ Der [IoT Hub][lnk-iothub] erfasst Daten, die von den Geräten in die Cloud gesen
 
 ## Azure Stream Analytics
 
-In der Lösung für die Remoteüberwachung übermittelt [Azure Stream Analytics][lnk-asa] (ASA) Gerätenachrichten, die über den IoT Hub eingehen, zur Verarbeitung oder Speicherung an andere Back-End-Komponenten. Unterschiedliche ASA-Aufträge führen bestimmte Funktionen basierend auf dem Inhalt der Nachrichten durch.
+In der Lösung für die Remoteüberwachung übermittelt [Azure Stream Analytics][lnk-asa] \(ASA) Gerätenachrichten, die über den IoT Hub eingehen, zur Verarbeitung oder Speicherung an andere Back-End-Komponenten. Unterschiedliche ASA-Aufträge führen bestimmte Funktionen basierend auf dem Inhalt der Nachrichten durch.
 
 **Auftrag 1: Geräteinformationen** filtert Meldungen mit Geräteinformationen aus dem eingehenden Meldungsdatenstrom und sendet diese an einen Event Hub-Endpunkt. Ein Gerät sendet Meldungen mit Geräteinformationen beim Start und als Antwort auf den Befehl **SendDeviceInfo**. Bei diesem Auftrag wird die folgende Abfragedefinition verwendet, um Nachrichten vom Typ **Geräteinformationen** zu identifizieren:
 
