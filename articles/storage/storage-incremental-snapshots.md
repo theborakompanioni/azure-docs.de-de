@@ -13,13 +13,13 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/25/2016"
-	ms.author="tamram;aungoo-msft"/>
+	ms.date="09/20/2016"
+	ms.author="tamram;aungoo"/>
 
 
 # Sichern von Azure-VM-Datenträgern mit inkrementellen Momentaufnahmen
 
-## Übersicht 
+## Übersicht
 
 Azure Storage bietet die Möglichkeit, Momentaufnahmen von Blobs zu erstellen. Momentaufnahmen erfassen den Blobzustand zum jeweiligen Zeitpunkt. In diesem Artikel wird ein Szenario beschrieben, in dem Sie Sicherungen von Datenträgern des virtuellen Computers mithilfe von Momentaufnahmen verwalten können. Wenn Sie Azure Backup und den Wiederherstellungsdienst nicht verwenden, und eine benutzerdefinierte Sicherungsstrategie für die Datenträger Ihres virtuellen Computers erstellen möchten, können Sie diese Methodik anwenden.
 
@@ -128,4 +128,4 @@ Mit den unten beschriebenen Schritten wird der Premium-Datenträger *mypremiumdi
 - [Erstellen einer Momentaufnahme eines Blobs](https://msdn.microsoft.com/library/azure/hh488361.aspx)
 - [Planen der Sicherungsinfrastruktur für virtuelle Computer](../backup/backup-azure-vms-introduction.md)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0921_2016-->

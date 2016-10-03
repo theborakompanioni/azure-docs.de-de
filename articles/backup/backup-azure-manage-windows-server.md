@@ -60,7 +60,12 @@ Am oberen Rand des Dashboards:
 - Löschen: Wenn ein Recovery Services-Tresor nicht mehr verwendet wird, können Sie ihn löschen, um Speicherplatz freizugeben. „Löschen“ wird erst aktiviert, nachdem alle geschützten Server aus dem Tresor gelöscht wurden.
 
 ![Aufgaben im Sicherungsdashboard](./media/backup-azure-manage-windows-server/dashboard-tasks.png)
-
+## Warnungen für Sicherungen mit dem Azure Backup-Agent:
+| Warnstufe | Gesendete Warnungen |
+| ------------- | ------------- |
+| Kritisch | Sicherungsfehler, Wiederherstellungsfehler |
+| Warnung | Sicherung mit Warnungen abgeschlossen ist (wenn weniger als 100 Dateien aufgrund von Beschädigungen nicht gesichert werden und mehr als eine Million Dateien erfolgreich gesichert werden) |
+| Information | Keine |
 ## Verwalten von Sicherungswarnungen
 Klicken Sie auf die Kachel **Sicherungswarnungen**, um das Blatt **Sicherungswarnungen** zu öffnen und Warnungen zu verwalten.
 
@@ -285,9 +290,14 @@ A3. Nachfolgend sind Fälle aufgeführt, in denen die Benachrichtigung nicht ges
    - Der Auftrag wird abgebrochen.
    - Bei der zweiten Sicherung tritt ein Fehler auf, da der ursprüngliche Sicherungsauftrag ausgeführt wird.
 
+## Problembehandlung bei der Überwachung<br>
+#### Problem: Aufträge und Warnungen vom Azure Backup-Agent werden im Portal nicht angezeigt.
+##### Schritte zur Problembehandlung:
+„OBRecoveryServicesManagementAgent“ wird verwendet, um die Daten der Aufträge und Warnungen zum Azure Backup-Dienst zu senden. Öffnen Sie den Task-Manager, und prüfen Sie, ob der Prozess „OBRecoveryServicesManagementAgent“ ausgeführt wird. Von Zeit zu Zeit ist dieser Prozess fehlerhaft oder abgeschaltet. Wenn der Prozess nicht ausgeführt wird, durchsuchen Sie die Liste der Dienste in der Systemsteuerung, und starten Sie „Microsoft Azure Recovery Services Management Agent“ bzw. führen Sie einen Neustart durch. Weitere Informationen finden Sie in den Protokollen im Installationsordner des Azure Backup-Agents: \\Microsoft Azure Recovery Services Agent\\Temp\\GatewayProvider*. <b>Z.B.</b>: C:\\Programme\\Microsoft Azure Recovery Services Agent\\Temp\\GatewayProvider0.errlog
+
 ## Nächste Schritte
 - [Wiederherstellen von Windows-Servern oder Windows-Clients aus Azure](backup-azure-restore-windows-server.md)
 - Weitere Informationen zu Azure Backup finden Sie unter [Azure Backup – Übersicht](backup-introduction-to-azure-backup.md).
 - Besuchen Sie das [Azure Backup-Forum](http://go.microsoft.com/fwlink/p/?LinkId=290933).
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0921_2016-->

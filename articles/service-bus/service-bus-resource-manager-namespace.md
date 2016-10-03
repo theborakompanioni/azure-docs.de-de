@@ -22,7 +22,7 @@ In diesem Artikel wird beschrieben, wie Sie eine Azure Resource Manager-Vorlage 
 
 Weitere Informationen zum Erstellen von Vorlagen finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen][].
 
-Die vollständige Vorlage finden Sie unter [Service Bus namespace template][] \(Service Bus-Namespace-Vorlage) auf GitHub.
+Die vollständige Vorlage finden Sie unter [Service Bus namespace template][] (Service Bus-Namespace-Vorlage) auf GitHub.
 
 >[AZURE.NOTE] Die folgenden Azure Resource Manager-Vorlagen sind zum Download und zur Bereitstellung verfügbar.
 >
@@ -35,7 +35,7 @@ Die vollständige Vorlage finden Sie unter [Service Bus namespace template][] \(
 
 ## Was möchten Sie bereitstellen?
 
-Mit dieser Vorlage können Sie einen Service Bus-Namespace mit einer [Basic- oder Standard](https://azure.microsoft.com/pricing/details/service-bus/)-SKU bereitstellen.
+Mit dieser Vorlage können Sie einen Service Bus-Namespace mit einer [Basic-, Standard oder Premium-](https://azure.microsoft.com/pricing/details/service-bus/)-SKU bereitstellen.
 
 Klicken Sie auf folgende Schaltfläche, um die Bereitstellung automatisch auszuführen:
 
@@ -69,7 +69,8 @@ Der Name der zu erstellenden Service Bus-[SKU](https://azure.microsoft.com/prici
     "type": "string", 
     "allowedValues": [ 
         "Basic", 
-        "Standard" 
+        "Standard",
+        "Premium" 
     ], 
     "defaultValue": "Standard", 
     "metadata": { 
@@ -78,9 +79,7 @@ Der Name der zu erstellenden Service Bus-[SKU](https://azure.microsoft.com/prici
 
 ```
 
-Die Vorlage definiert die Werte, die für diesen Parameter zulässig sind (Basic oder Standard), und weist einen Standardwert (Standard) zu, wenn kein Wert angegeben wird.
-
-Es wird eine Basisgebühr von 10 US-Dollar pro Monat für die Ebene "Standard" erhoben, die Ihnen ermöglicht, bis zu 12,5 Millionen Vorgänge pro Monat ohne zusätzliche Kosten auszuführen. Die Basic-Stufe kostet 0,05 $ pro Million Vorgänge.
+Die Vorlage definiert die Werte, die für diesen Parameter zulässig sind (Basic, Standard oder Premium), und weist einen Standardwert (Standard) zu, wenn kein Wert angegeben wird.
 
 Weitere Informationen zu Service Bus-Preisen finden Sie unter [Service Bus – Preise und Abrechnung][].
 
@@ -154,4 +153,4 @@ Da Sie nun Ressourcen mit Azure Resource Manager erstellt und bereitgestellt hab
   [Using Azure PowerShell with Azure Resource Manager]: ../powershell-azure-resource-manager.md
   [Using the Azure CLI for Mac, Linux, and Windows with Azure Resource Management]: ../xplat-cli-azure-resource-manager.md
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0921_2016-->

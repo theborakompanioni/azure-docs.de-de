@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/22/2016"
-	ms.author="renash"/>
+	ms.date="09/21/2016"
+	ms.author="renash;robinsh"/>
 
 
 # Verwenden des Microsoft Azure Import/Export-Diensts zum Übertragen von Daten in den Blobspeicher
@@ -24,7 +24,7 @@
 Mit dem Import/Export-Dienst von Azure können Sie große Datenmengen auf sichere Weise in den Azure-Blobspeicher übertragen, indem Sie Festplattenlaufwerke an ein Azure-Rechenzentrum schicken. Sie können diesen Dienst auch zum Übertragen von Daten aus dem Azure-Blobspeicher auf Festplattenlaufwerke und zum Schicken an Ihren lokalen Standort nutzen. Dieser Dienst eignet sich für Situationen, in denen Sie mehrere TB an Daten an oder von Azure übertragen möchten und in denen das Hoch- oder Herunterladen über das Netzwerk aufgrund der eingeschränkten Bandbreite oder hoher Netzwerkkosten nicht möglich ist.
 
 Für den Dienst ist es erforderlich, dass Festplattenlaufwerke über eine BitLocker-Verschlüsselung verfügen, damit für die Sicherheit Ihrer Daten gesorgt ist. Der Dienst unterstützt die klassischen Speicherkonten, die in allen Regionen des öffentlichen Azure vorhanden sind. Schicken Sie die Festplattenlaufwerke an einen der unterstützten Standorte, die weiter unten in diesem Artikel angegeben sind.
- 
+
 In diesem Artikel erfahren Sie mehr zum Import/Export-Dienst von Azure und zum Schicken von Laufwerken, um Ihre Daten in und aus Azure-Blobspeichern zu kopieren.
 
 > [AZURE.IMPORTANT] Sie können Import- und Exportaufträge für den klassischen Speicher mit dem klassischen Portal oder den REST-APIs des Import/Export-Diensts ([Speicher-Import/Export Service REST-API-Referenz](http://go.microsoft.com/fwlink/?LinkID=329099)) erstellen und verwalten. Resource Manager-Speicherkonten werden derzeit nicht unterstützt.
@@ -207,19 +207,19 @@ Sie können den Status Ihrer Import- oder Exportaufträge im klassischen Portal 
 
 Je nachdem, an welchem Punkt des Prozesses sich Ihre Festplatte befindet, wird einer der folgenden Auftragsstatus angezeigt.
 
-Auftragsstatus|Beschreibung
----|---
-Wird erstellt|Ihr Auftrag wurde erstellt, aber Sie haben Ihre Versandinformationen noch nicht angegeben.
-Versand|Ihr Auftrag wurde erstellt, und Sie haben Ihre Versandinformationen angegeben. **Hinweis**: Nachdem die Festplatte an das Azure-Rechenzentrum geliefert wurde, kann als Status vorerst noch „Versand“ angezeigt werden. Wenn der Dienst mit dem Kopieren der Daten beginnt, ändert sich der Status in „Übertragung wird ausgeführt“. Falls Sie einen genaueren Status für Ihre Festplatte angezeigt bekommen möchten, können Sie die Import/Export-REST-API verwenden. 
-Übertragung wird ausgeführt|Ihre Daten werden von Ihrem Laufwerk (bei einem Importauftrag) oder auf Ihr Laufwerk (bei einem Exportauftrag) übertragen.
-Verpackung|Die Übertragung Ihrer Daten ist abgeschlossen, und Ihre Festplatte wird für den Rückversand vorbereitet.
-Abgeschlossen|Ihre Festplatte wurde an Sie zurückgeschickt.
+| Auftragsstatus | Beschreibung |
+|:-------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Wird erstellt | Ihr Auftrag wurde erstellt, aber Sie haben Ihre Versandinformationen noch nicht angegeben. |
+| Versand | Ihr Auftrag wurde erstellt, und Sie haben Ihre Versandinformationen angegeben. **Hinweis**: Nachdem die Festplatte an das Azure-Rechenzentrum geliefert wurde, kann als Status vorerst noch „Versand“ angezeigt werden. Wenn der Dienst mit dem Kopieren der Daten beginnt, ändert sich der Status in „Übertragung wird ausgeführt“. Falls Sie einen genaueren Status für Ihre Festplatte angezeigt bekommen möchten, können Sie die Import/Export-REST-API verwenden. |
+| Übertragung wird ausgeführt | Ihre Daten werden von Ihrem Laufwerk (bei einem Importauftrag) oder auf Ihr Laufwerk (bei einem Exportauftrag) übertragen. |
+| Verpackung | Die Übertragung Ihrer Daten ist abgeschlossen, und Ihre Festplatte wird für den Rückversand vorbereitet. |
+| Abgeschlossen | Ihre Festplatte wurde an Sie zurückgeschickt. |
 
-### Verarbeitungsdauer des Auftrags 
+### Verarbeitungsdauer des Auftrags
 
 Die Verarbeitungsdauer eines Import- oder Exportauftrags kann aufgrund von verschiedenen Faktoren variieren, z.B. Versanddauer, Auftragstyp, Typ und Größe der zu kopierenden Daten und Größe der geschickten Festplatten. Der Import/Export-Dienst verfügt nicht über eine Vereinbarung zum Servicelevel (SLA). Sie können die REST-API verwenden, um den Auftragsstatus genauer verfolgen zu können. Der Vorgang zum Auflisten von Aufträgen enthält einen Parameter für die prozentuale Fertigstellung, mit dem Sie den Status des Kopiervorgangs verfolgen können. Sie können sich gern an uns wenden, falls Sie für einen zeitkritischen Import- oder Exportauftrag einen geschätzten Fertigstellungszeitpunkt benötigen.
 
-### Preise 
+### Preise
 
 **Bearbeitungsgebühr für Festplatte**
 
@@ -243,7 +243,7 @@ Erstellen Sie einen Importauftrag zum Kopieren von Daten von Festplatten in Ihr 
 
 > [AZURE.IMPORTANT] Sie können nur einen Auftrag pro Speicherkonto senden. Jede verschickte Festplatte kann in ein Speicherkonto importiert werden. Angenommen, Sie möchten Daten in zwei Speicherkonten importieren. In diesem Fall müssen Sie separate Festplattenlaufwerke für jedes Speicherkonto verwenden und pro Speicherkonto einen eigenen Auftrag erstellen.
 
-### Vorbereiten Ihrer Laufwerke	
+### Vorbereiten Ihrer Laufwerke
 
 Der erste Schritt beim Importieren von Daten mit dem Azure Import/Export-Dienst ist das Vorbereiten Ihrer Festplatten mit dem Azure Import/Export-Clienttool. Führen Sie die folgenden Schritte aus, um die Festplatten vorzubereiten:
 
@@ -256,7 +256,7 @@ Der erste Schritt beim Importieren von Daten mit dem Azure Import/Export-Dienst 
 4.	Bestimmen Sie die Verzeichnisse bzw. eigenständigen Dateien, die auf jede Festplatte kopiert werden sollen.
 
 5.	Verwenden Sie das [Azure Import/Export-Tool](http://go.microsoft.com/fwlink/?LinkID=301900&clcid=0x409), um Ihre Daten auf eine oder mehrere Festplatten zu kopieren.
-	
+
 	- Mit dem Azure Import/Export-Tool werden Kopiersitzungen zum Kopieren der Daten von der Quelle auf die Festplatten erstellt. In einer Kopiersitzung kann das Tool ein einzelnes Verzeichnis mit seinen Unterverzeichnissen oder eine einzelne Datei kopieren.
 
 	- Unter Umständen benötigen Sie mehrere Kopiersitzungen, wenn Ihre Quelldaten auf mehrere Verzeichnisse verteilt sind.
@@ -505,4 +505,4 @@ Informationen hierzu finden Sie unter [Workflow zur Offlinesicherung in Azure Ba
 
 - [Azure Import/Export-REST-API-Beispiel](https://azure.microsoft.com/documentation/samples/storage-dotnet-import-export-job-management/)
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0921_2016-->

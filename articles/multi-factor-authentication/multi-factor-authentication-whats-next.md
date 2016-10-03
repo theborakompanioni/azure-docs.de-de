@@ -1,20 +1,20 @@
 <properties 
-	pageTitle="Azure Multi-Factor Authentication – Nächste Schritte" 
-	description="Dies ist die Seite ";Azure Multi-Factor Authentication";, auf der beschrieben wird, was die nächsten Schritte mit Multi-Factor Authentication sind. Dazu gehören Berichte, Betrugswarnung, Einmalumgehung, benutzerdefinierte Sprachnachrichten, Zwischenspeicherung, vertrauenswürdige IP-Adressen und App-Kennwörter." 
-	services="multi-factor-authentication" 
-	documentationCenter="" 
-	authors="billmath" 
-	manager="stevenpo" 
+	pageTitle="Azure Multi-Factor Authentication – Nächste Schritte"
+	description="Dies ist die Seite ";Azure Multi-Factor Authentication";, auf der beschrieben wird, was die nächsten Schritte mit Multi-Factor Authentication sind. Dazu gehören Berichte, Betrugswarnung, Einmalumgehung, benutzerdefinierte Sprachnachrichten, Zwischenspeicherung, vertrauenswürdige IP-Adressen und App-Kennwörter."
+	services="multi-factor-authentication"
+	documentationCenter=""
+	authors="kgremban"
+	manager="femila"
 	editor="curtand"/>
 
-<tags 
-	ms.service="multi-factor-authentication" 
-	ms.workload="identity" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/30/2016" 
-	ms.author="billmath"/>
+<tags
+	ms.service="multi-factor-authentication"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/30/2016"
+	ms.author="kgremban"/>
 
 # Konfigurieren von Azure Multi-Factor Authentication
 
@@ -28,12 +28,12 @@ Melden Sie sich als Administrator am Azure-Portal an und wählen Sie die Option 
 
 
 Feature| Beschreibung| Inhalt
-:------------- | :------------- | :------------- | 
+:------------- | :------------- | :------------- |
 [Betrugswarnung](#fraud-alert)|Die Betrugswarnung kann so konfiguriert und eingerichtet werden, dass Ihre Benutzer betrügerische Versuche, auf ihre Ressourcen zuzugreifen, melden können.|Einrichtung, Konfiguration und Betrugsberichte
 [Einmalumgehung](#one-time-bypass) |Mit einer Einmalumgehung kann sich ein Benutzer ein einziges Mal authentifizieren, indem er die mehrstufige Authentifizierung "umgeht".|Einrichten und Konfigurieren einer Einmalumgehung
 [Benutzerdefinierte Sprachnachrichten](#custom-voice-messages) |Mit benutzerdefinierten Sprachnachrichten können Sie Ihre eigenen Aufzeichnungen oder Begrüßungen mit mehrstufiger Authentifizierung verwenden. |Einrichten und Konfigurieren von benutzerdefinierten Begrüßungen und Nachrichten
 [Zwischenspeichern](#caching-in-azure-multi-factor-authentication)|Durch Zwischenspeichern können Sie einen bestimmten Zeitraum festlegen, sodass nachfolgende Authentifizierungsversuche automatisch erfolgreich sind. |Einrichten und Konfigurieren des Zwischenspeicherns zur Authentifizierung
-[Vertrauenswürdige IPs](#trusted-ips)|Vertrauenswürdige IP-Adressen ist ein Feature der mehrstufigen Authentifizierung, mit der Administratoren eines verwalteten oder verbundenen Mandanten die mehrstufige Authentifizierung für Benutzer umgehen können, die sich vom lokalen Intranet des Unternehmens aus anmelden.|Konfigurieren und Einrichten von IP-Adressen, die von der mehrstufigen Authentifizierung ausgenommen sind	
+[Vertrauenswürdige IPs](#trusted-ips)|Vertrauenswürdige IP-Adressen ist ein Feature der mehrstufigen Authentifizierung, mit der Administratoren eines verwalteten oder verbundenen Mandanten die mehrstufige Authentifizierung für Benutzer umgehen können, die sich vom lokalen Intranet des Unternehmens aus anmelden.|Konfigurieren und Einrichten von IP-Adressen, die von der mehrstufigen Authentifizierung ausgenommen sind
 [App-Kennwörter](#app-passwords)|Mit App-Kennwörtern kann eine Anwendung, die die mehrstufige Authentifizierung nicht erkennt, diese umgehen und weiter ausgeführt werden.|Informationen zu App-Kennwörter.
 [Speichern der Multi-Factor Authentication für gespeicherte Geräte und Browser](#remember-multi-factor-authentication-for-devices-users-trust)|Mit dieser Funktion können Sie Geräte für eine festgelegte Anzahl von Tagen speichern, nachdem ein Benutzer erfolgreich mit MFA angemeldet wurde.|Informationen zum Aktivieren dieser Funktion und zum Einrichten der Anzahl von Tagen.
 [Auswählbare Verifizierungsmethoden](#selectable-verification-methods)|Ermöglicht Ihnen die Auswahl der Authentifizierungsmethoden, die Sie den Benutzern zur Verfügung stellen möchten.|Informationen zum Aktivieren oder Deaktivieren bestimmter Authentifizierungsmethoden, beispielweise per Anruf oder SMS.
@@ -172,9 +172,9 @@ Durch Zwischenspeichern können Sie einen bestimmten Zeitraum festlegen, sodass 
 
 Vertrauenswürdige IP-Adressen ist ein Feature der mehrstufigen Authentifizierung, mit der Administratoren eines verwalteten oder verbundenen Mandanten die mehrstufige Authentifizierung für Benutzer umgehen können, die sich vom lokalen Intranet des Unternehmens aus anmelden. Die Funktionen sind für Azure AD-Mandanten verfügbar, die Azure AD Premium, Enterprise Mobility Suite oder Azure Multi-Factor Authentication-Lizenzen verfügen.
 
- 
+
 Typen von Azure AD-Mandanten| Verfügbare vertrauenswürdige IP-Optionen
-:------------- | :------------- | 
+:------------- | :------------- |
 Verwaltet|Bestimmte IP-Adressbereiche – Administratoren können einen Bereich von IP-Adressen angeben, die die mehrstufige Authentifizierung für Benutzer umgehen können, die sich vom Intranet des Unternehmens aus anmelden.
 Im Verbund|<li>Alle verbundene Benutzer – Alle Verbundbenutzer, die sich von innerhalb der Organisation anmelden, umgehen die mehrstufige Authentifizierung mithilfe eines von AD FS ausgestellten Anspruchs.</li><li>Bestimmte IP-Adressbereiche – Administratoren können einen Bereich von IP-Adressen angeben, die die mehrstufige Authentifizierung für Benutzer umgehen können, die sich vom Intranet des Unternehmens aus anmelden.
 
@@ -182,7 +182,7 @@ Diese Umgehung funktioniert nur von innerhalb des Intranets eines Unternehmens. 
 
 
 |Vertrauenswürdige IP-Adressen aktiviert| Vertrauenswürdige IP-Adressen deaktiviert
-:------------- | :------------- | :------------- | 
+:------------- | :------------- | :------------- |
 Innerhalb des Unternehmensnetzwerks|Für Browserflüsse, für die KEINE mehrstufige Authentifizierung erforderlich ist.|Für Browserflüsse, für die eine mehrstufige Authentifizierung erforderlich ist.
 |Für Rich Client-Apps funktionieren normale Kennwörter, wenn der Benutzer keine App-Kennwörter erstellt hat. Sobald ein App-Kennwort erstellt wurde, muss dieses angegeben werden.|Für Rich Client-Apps, für die App-Kennwörter erforderlich sind.
 Außerhalb des Unternehmensnetzwerks|Für Browserflüsse, für die eine mehrstufige Authentifizierung erforderlich ist.|Für Browserflüsse, für die eine mehrstufige Authentifizierung erforderlich ist.
@@ -209,7 +209,7 @@ Außerhalb des Unternehmensnetzwerks|Für Browserflüsse, für die eine mehrstuf
 
 
 
- 
+
 ## App-Kennwörter
 
 In einigen Anwendungen wie Office 2010 oder älter und Apple Mail können Sie keine mehrstufige Authentifizierung verwenden. Um diese Anwendungen zu verwenden, müssen Sie "App-Kennwörter" anstelle Ihres herkömmlichen Kennworts angeben. Mit App-Kennwörtern kann eine Anwendung die die mehrstufige Authentifizierung umgehen und weiter ausgeführt werden.
@@ -225,7 +225,7 @@ In einigen Anwendungen wie Office 2010 oder älter und Apple Mail können Sie ke
 Es folgt eine Liste mit wichtigen Informationen, die Sie über App-Kennwörter wissen sollten.
 
 Authentifizierungsvorgang|Bei Browser-Apps|Bei Nicht-Browser-Apps
-:------------- | :------------- | :------------- 
+:------------- | :------------- | :-------------
 |<ul><li>Die 1. Stufe der Authentifizierung wird lokal durchgeführt.</li><li>Die 2. Stufe ist eine telefonbasierte Methode, die von Cloud-Identität ausgeführt wird.</li>|<ul><li>Administratoren und Benutzer können App-Kennwörtern zur Anmeldung nutzen.
 
 - Benutzer können über mehrere App-Kennwörter verfügen, was die Angriffsfläche für Diebstahl vergrößert. Da App-Kennwörter schwer zu merken sind, könnten Personen eher dazu neigen, sich diese aufzuschreiben. Dies wird nicht empfohlen und sollte unterbunden werden, da nur ein Faktor für die Anmeldung mit einem App-Kennwort erforderlich ist.
@@ -362,7 +362,7 @@ Da Benutzer jedoch MFA für vertrauenswürdige Geräte speichern können, wird d
 Es ist jetzt möglich, die Authentifizierungsmethoden auszuwählen, die Ihren Benutzern bei der Azure Multi-Factor Authentication zur Verfügung stehen. Dieses Feature war zuvor nur in der lokalen Serverversion verfügbar. Die Tabelle unten bietet einen kurzen Überblick über die verschiedenen Authentifizierungsmethoden, die Sie für Ihre Benutzer aktivieren oder deaktivieren können.
 
 Methode|Beschreibung
-:------------- | :------------- | 
+:------------- | :------------- |
 [Auf Telefon anrufen](multi-factor-authentication-end-user-first-time-mobile-phone.md)| Startet einen automatisierten Anruf an das Telefon für die Authentifizierung. Der Benutzer nimmt den Anruf an und drückt die #-Taste auf der Telefontastatur, um sich zu authentifizieren. Diese Telefonnummer wird nicht mit dem lokalen Active Directory synchronisiert.
 [Textnachricht an Telefon](multi-factor-authentication-end-user-first-time-mobile-phone.md)|Sendet eine Textnachricht mit einem Überprüfungscode an den Benutzer. Der Benutzer wird aufgefordert, mit dem Überprüfungscode auf die Textnachricht zu antworten oder den Überprüfungscode auf der Anmeldeseite einzugeben.
 [Benachrichtigung über mobile App](multi-factor-authentication-end-user-first-time-mobile-app.md)|In diesem Modus verhindert die Microsoft Authenticator-App nicht autorisierte Zugriffe auf Konten sowie betrügerische Transaktionen. Zu diesem Zweck wird eine Pushbenachrichtigung an Ihr Telefon oder registriertes Gerät gesendet. Überprüfen Sie einfach die Benachrichtigung, und wählen Sie „Bestätigen“, wenn Sie den Zugriff zulassen möchten. Bei einem nicht autorisierten Zugriff können Sie den Zugriff verweigern und optional die betrügerische Benachrichtigung melden. Informationen zum Senden von Berichten zu betrügerischen Benachrichtigungen finden Sie unter „Verwenden der Funktion ,Ablehnen und Betrug melden‘ für Multi-Factor Authentication“.</br></br>Die Microsoft Authenticator-App ist für [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071), [Android](http://go.microsoft.com/fwlink/?Linkid=825072) und [iOS](http://go.microsoft.com/fwlink/?Linkid=825073) verfügbar.|
@@ -379,4 +379,4 @@ Methode|Beschreibung
 9. Klicken Sie auf "Speichern".
 10. Klicken Sie auf "Schließen".
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0921_2016-->

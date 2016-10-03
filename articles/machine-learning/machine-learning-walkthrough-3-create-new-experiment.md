@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/06/2016" 
+	ms.date="09/16/2016" 
 	ms.author="garye"/>
 
 
@@ -41,7 +41,8 @@ Der nächste Schritt in dieser exemplarischen Vorgehensweise ist die Erstellung 
 3.	Erweitern Sie in der Modulpalette links vom Experimentbereich **Gespeicherte Datasets**.
 4.	Suchen Sie das Dataset, das Sie unter **Meine Datasets** erstellt haben, und ziehen Sie es in den Bereich. Sie können auch nach dem Dataset suchen, indem Sie den Namen in das Feld **Suchen** oberhalb der Palette eingeben.
 
-##Vorbereiten der Daten
+## Vorbereiten der Daten
+
 Sie können die ersten 100 Datenzeilen sowie einige statistische Informationen für das ganze Dataset anzeigen, indem Sie auf den Ausgabeport des Datasets (den kleinen Kreis unten) klicken und die Option **Visualize** auswählen.
 
 Da die Datendatei keine Spaltenüberschriften aufweist, hat Studio allgemeine Überschriften (Col1, Col2 *usw.*) bereitgestellt. Aussagekräftige Überschriften haben keine Bedeutung für die Erstellung eines Modells, erleichtern aber die Arbeit mit den Daten im Experiment. Wenn später das Modell in einem Webdienst veröffentlicht wird, kann der Benutzer des Diensts die Spalten anhand der Überschriften auch leichter identifizieren.
@@ -52,7 +53,7 @@ Zum Verwenden von [Edit Metadata][edit-metadata] geben Sie zuerst an, welche Spa
 
 1.	Geben Sie in der Modulpalette „Metadaten“ in das Feld **Suchen** ein. [Edit Metadata][edit-metadata] wird in der Modulliste angezeigt.
 2.	Klicken und ziehen Sie das Modul [Edit Metadata][edit-metadata] in den Experimentbereich, und legen Sie es unter dem zuvor hinzugefügten Dataset ab.
-3.	Verbinden Sie das Dataset mit [Edit Metadata][edit-metadata]\: Klicken Sie auf den Ausgabeport des Datasets (den kleinen Kreis unten im Dataset), ziehen Sie ihn zum Eingabeport von [Edit Metadata][edit-metadata] \(den kleinen Kreis oben im Modul), und lassen Sie die Maustaste los. Das Dataset und das Modul bleiben verbunden, auch wenn Sie diese im Bereich verschieben.
+3.	Verbinden Sie das Dataset mit [Edit Metadata][edit-metadata]\: Klicken Sie auf den Ausgabeport des Datasets (den kleinen Kreis unten im Dataset), ziehen Sie ihn zum Eingabeport von [Edit Metadata][edit-metadata] (den kleinen Kreis oben im Modul), und lassen Sie die Maustaste los. Das Dataset und das Modul bleiben verbunden, auch wenn Sie diese im Bereich verschieben.
 
     Das Experiment sollte in etwa wie folgt aussehen:
 
@@ -76,7 +77,8 @@ Zum Verwenden von [Edit Metadata][edit-metadata] geben Sie zuerst an, welche Spa
 
 > [AZURE.TIP] Wenn Sie die Spaltenüberschriften überprüfen möchten, führen Sie das Experiment aus (klicken Sie unter dem Experimentbereich auf **RUN**). Wenn die Ausführung abgeschlossen ist (in [Edit Metadata][edit-metadata] wird ein grünes Häkchen angezeigt), klicken Sie auf den Ausgabeport des Moduls [Edit Metadata][edit-metadata], und wählen Sie **Visualize** aus. Auf die gleiche Weise können Sie die Ausgabe jedes anderen Moduls anzeigen, um den Datenfortschritt im Experiment zu sehen.
 
-##Erstellen von Trainings- und Testdatasets
+## Erstellen von Trainings- und Testdatasets
+
 Der nächste Schritt des Experiments besteht im Erstellen getrennter Datasets, die für das Trainieren und Testen unseres Modells verwendet werden.
 
 Dafür wird das Modul [Split Data][split] verwendet.
@@ -131,4 +133,4 @@ Weitere Informationen zum Verwenden von R-Skripts in Ihren Experimenten finden S
 [edit-metadata]: https://msdn.microsoft.com/library/azure/370b6676-c11c-486f-bf73-35349f842a66/
 [split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

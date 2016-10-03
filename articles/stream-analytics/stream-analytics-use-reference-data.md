@@ -5,7 +5,7 @@
 	services="stream-analytics"
 	documentationCenter=""
 	authors="jeffstokes72"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun"/>
 
 <tags
@@ -37,11 +37,11 @@ Um die Verweisdaten zu konfigurieren, müssen Sie zunächst eine Eingabe vom Typ
 </tr>
 <tr>
 <td>Speicherkonto</td>
-<td>Der Name des Speicherkontos an, in dem sich die Blobdateien befinden. Wenn er sich im selben Abonnement wie Ihr Stream Analytics-Auftrag befindet, können Sie ihn aus der Dropdownliste auswählen.</td>
+<td>Der Name des Speicherkontos an, in dem sich die Blobdateien befinden. Wenn sich das Konto im selben Abonnement wie Ihr Stream Analytics-Auftrag befindet, können Sie es aus der Dropdownliste auswählen.</td>
 </tr>
 <tr>
 <td>Speicherkontoschlüssel</td>
-<td>Der geheime Schlüssel, der dem Speicherkonto zugeordnet ist. Dies wird automatisch ausgefüllt, wenn sich das Speicherkonto im selben Abonnement befindet wie Ihr Stream Analytics-Auftrag.</td>
+<td>Der geheime Schlüssel, der dem Speicherkonto zugeordnet ist. Dies wird automatisch aufgefüllt, wenn sich das Speicherkonto im selben Abonnement befindet wie Ihr Stream Analytics-Auftrag.</td>
 </tr>
 <tr>
 <td>Speichercontainer</td>
@@ -110,4 +110,4 @@ Sie haben nun Stream Analytics kennengelernt, einen verwalteten Dienst für Stre
 [stream.analytics.query.language.reference]: http://go.microsoft.com/fwlink/?LinkID=513299
 [stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0921_2016-->

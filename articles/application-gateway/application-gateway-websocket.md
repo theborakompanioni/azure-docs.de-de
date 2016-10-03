@@ -12,13 +12,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="08/18/2016"
+   ms.date="09/16/2016"
    ms.author="amsriva"/>
 
 # WebSocket-Unterstützung von Application Gateway
 
-Das in [RFC6455](https://tools.ietf.org/html/rfc6455) standardisierte WebSocket-Protokoll ermöglicht die Vollduplexkommunikation zwischen Server und Client über eine lange TCP-Verbindung. Dies ermöglicht wiederum mehr Interaktivität bei der Kommunikation zwischen Webserver und Client, da die Kommunikation auch ohne die bei HTTP-basierten Implementierungen erforderlichen Abfragen bidirektional sein kann. Im Vergleich zu HTTP zeichnen sich WebSockets durch einen geringen Mehraufwand aus. Außerdem können sie die gleiche TCP-Verbindung für mehrere Anforderungen/Antworten verwenden, was eine effizientere Ressourcennutzung zur Folge hat. WebSocket-Protokolle sind für die Nutzung der herkömmlichen HTTP-Ports 80 und 443 konzipiert.
-
+Das in [RFC6455](https://tools.ietf.org/html/rfc6455) standardisierte WebSocket-Protokoll ermöglicht die Vollduplexkommunikation zwischen Server und Client über eine lange TCP-Verbindung. Dieses Feature ermöglicht wiederum mehr Interaktivität bei der Kommunikation zwischen Webserver und Client, da die Kommunikation auch ohne die bei HTTP-basierten Implementierungen erforderlichen Abfragen bidirektional sein kann. Im Vergleich zu HTTP zeichnen sich WebSockets durch einen geringen Mehraufwand aus. Außerdem können sie die gleiche TCP-Verbindung für mehrere Anforderungen/Antworten verwenden, was eine effizientere Ressourcennutzung zur Folge hat. WebSocket-Protokolle sind für die Nutzung der herkömmlichen HTTP-Ports 80 und 443 konzipiert.
 
 WebSocket wird von Application Gateway nativ für alle Gatewaygrößen unterstützt. Die WebSocket-Unterstützung kann von Benutzern nicht selektiv aktiviert oder deaktiviert werden. WebSocket-Datenverkehr kann mit einem standardmäßigen HTTP-Listener an den Ports 80 und 443 empfangen werden. Der empfangene WebSocket-Datenverkehr wird dann unter Verwendung des entsprechenden Back-End-Pools (gemäß Angabe in Anwendungsgatewayregeln) an den WebSocket-fähigen Back-End-Server weitergeleitet.
 
@@ -30,35 +29,35 @@ Der Back-End-Server muss auf Anwendungsgatewaytests reagieren. Diese werden im A
 Zur Unterstützung von WebSocket kann ein vorhandener HTTP-Listener verwendet werden. Im Anschluss sehen Sie einen Codeausschnitt des HttpListeners-Elements aus einer Beispielvorlagendatei. Zur Unterstützung von WebSocket-Datenverkehr benötigen Sie sowohl den HTTP- als auch den HTTPS-Listener. Analog dazu können Sie über das [Portal](application-gateway-create-gateway-portal.md) oder mithilfe von [PowerShell](application-gateway-create-gateway-arm.md) ein Anwendungsgateway mit Listenern für die Ports 80 und 443 erstellen, um WebSocket-Datenverkehr zu unterstützen.
 
 
- 		"httpListeners": [
-                    {
-                        "name": "appGatewayHttpsListener",
-                        "properties": {
-                            "FrontendIPConfiguration": {
-                                "Id": "/subscriptions/<subid>/resourceGroups/<rgName>/providers/Microsoft.Network/applicationGateways/applicationGateway1/frontendIPConfigurations/DefaultFrontendPublicIP"
-                            },
-                            "FrontendPort": {
-                                "Id": "/subscriptions/<subid>/resourceGroups/<rgName>/providers/Microsoft.Network/applicationGateways/applicationGateway1/frontendPorts/appGatewayFrontendPort443'"
-                            },
-                            "Protocol": "Https",
-                            "SslCertificate": {
-                                "Id": "/subscriptions/<subid>/resourceGroups/<rgName>/providers/Microsoft.Network/applicationGateways/applicationGateway1/sslCertificates/appGatewaySslCert1'"
-                            },
-                        }
-                    },
-                    {
-                        "name": "appGatewayHttpListener",
-                        "properties": {
-                            "FrontendIPConfiguration": {
-                                "Id": "/subscriptions/<subid>/resourceGroups/<rgName>/providers/Microsoft.Network/applicationGateways/applicationGateway1/frontendIPConfigurations/appGatewayFrontendIP'"
-                            },
-                            "FrontendPort": {
-                                "Id": "/subscriptions/<subid>/resourceGroups/<rgName>/providers/Microsoft.Network/applicationGateways/applicationGateway1/frontendPorts/appGatewayFrontendPort80'"
-                            },
-                            "Protocol": "Http",
-                        }
+    "httpListeners": [
+                {
+                    "name": "appGatewayHttpsListener",
+                    "properties": {
+                        "FrontendIPConfiguration": {
+                            "Id": "/subscriptions/<subid>/resourceGroups/<rgName>/providers/Microsoft.Network/applicationGateways/applicationGateway1/frontendIPConfigurations/DefaultFrontendPublicIP"
+                        },
+                        "FrontendPort": {
+                            "Id": "/subscriptions/<subid>/resourceGroups/<rgName>/providers/Microsoft.Network/applicationGateways/applicationGateway1/frontendPorts/appGatewayFrontendPort443'"
+                        },
+                        "Protocol": "Https",
+                        "SslCertificate": {
+                            "Id": "/subscriptions/<subid>/resourceGroups/<rgName>/providers/Microsoft.Network/applicationGateways/applicationGateway1/sslCertificates/appGatewaySslCert1'"
+                        },
                     }
-                ],
+                },
+                {
+                    "name": "appGatewayHttpListener",
+                    "properties": {
+                        "FrontendIPConfiguration": {
+                            "Id": "/subscriptions/<subid>/resourceGroups/<rgName>/providers/Microsoft.Network/applicationGateways/applicationGateway1/frontendIPConfigurations/appGatewayFrontendIP'"
+                        },
+                        "FrontendPort": {
+                            "Id": "/subscriptions/<subid>/resourceGroups/<rgName>/providers/Microsoft.Network/applicationGateways/applicationGateway1/frontendPorts/appGatewayFrontendPort80'"
+                        },
+                        "Protocol": "Http",
+                    }
+                }
+            ],
 
 ## Konfigurieren von „backendAddressPool“, „backendHttpSetting“ und Routingregel
 
@@ -97,7 +96,8 @@ Zur Unterstützung von WebSocket kann ein vorhandener HTTP-Listener verwendet we
 	}]
 
 ## WebSocket-fähiges Back-End
-WebSocket kann nur verwendet werden, wenn das Back-End über einen HTTP-/HTTPS-Webserver verfügt, der an dem konfigurierten Port (üblicherweise 80/443) ausgeführt wird. Der Grund: Der anfängliche Handshake des WebSocket-Protokolls muss HTTP-basiert sein und über ein Headerfeld verfügen, das ein Upgrade auf das WebSocket-Protokoll angibt.
+
+WebSocket kann nur verwendet werden, wenn das Back-End über einen HTTP-/HTTPS-Webserver verfügt, der an dem konfigurierten Port (üblicherweise 80/443) ausgeführt wird. Dies ist erforderlich, da der anfängliche Handshake des WebSocket-Protokolls HTTP-basiert sein und über ein Headerfeld verfügen muss, das ein Upgrade auf das WebSocket-Protokoll angibt.
 
 	GET /chat HTTP/1.1
     Host: server.example.com
@@ -110,11 +110,8 @@ WebSocket kann nur verwendet werden, wenn das Back-End über einen HTTP-/HTTPS-W
 
 Ein weiterer Grund: Der Back-End-Integritätstest des Anwendungsgateways unterstützt nur das HTTP-/HTTPS-Protokoll. Wenn der Back-End-Server nicht auf HTTP-/HTTPS-Tests reagiert, wird er aus dem Back-End-Pool entfernt, wodurch das Back-End für keine Anforderungen mehr erreichbar ist. Das gilt auch für WebSocket-Anforderungen.
 
-	
-## Nächste Schritte 
+## Nächste Schritte
 
 Informieren Sie sich im Anschluss an die WebSocket-Unterstützung unter [Erstellen eines Anwendungsgateways](application-gateway-create-gateway.md) über die ersten Schritte mit einer WebSocket-fähigen Webanwendung.
 
-	    
-
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0921_2016-->

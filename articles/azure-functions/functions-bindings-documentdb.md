@@ -68,6 +68,29 @@ Bei Verwendung des oben genannten Beispiels für „function.json“ ruft die Do
 	    document.text = "This has changed.";
 	}
 
+#### Azure DocumentDB-Eingabecodebeispiel für einen F#-Warteschlangentrigger
+
+Bei Verwendung des oben genannten Beispiels für „function.json“ ruft die DocumentDB-Eingabebindung das Dokument mit der ID ab, die der Zeichenfolge der Warteschlangennachricht entspricht, und übergibt es an den Parameter „document“. Wenn das Dokument nicht gefunden wird, lautet der Parameter „document“ NULL. Das Dokument wird dann mit dem neuen Textwert aktualisiert, wenn die Funktion beendet wird.
+
+	open FSharp.Interop.Dynamic
+	let Run(myQueueItem: string, document: obj) =
+	    document?text <- "This has changed."
+
+Sie benötigen eine `project.json`-Datei, die etwa wie folgt mithilfe von NuGet die Pakete `FSharp.Interop.Dynamic` und `Dynamitey` als Paketabhängigkeiten angibt:
+
+	{
+	  "frameworks": {
+	    "net46": {
+	      "dependencies": {
+	        "Dynamitey": "1.0.2",
+	        "FSharp.Interop.Dynamic": "3.0.0"
+	      }
+	    }
+	  }
+	}
+
+Dabei wird NuGet zum Abrufen der Abhängigkeiten verwendet, auf die dann in Ihrem Skript verwiesen wird.
+
 #### Azure DocumentDB-Eingabecodebeispiel für einen Node.js-Warteschlangentrigger
  
 Bei Verwendung des oben genannten Beispiels für „function.json“ ruft die DocumentDB-Eingabebindung das Dokument mit der ID ab, die der Zeichenfolge der Warteschlangennachricht entspricht, und übergibt es an die `documentIn`-Bindungseigenschaft. In Node.js-Funktionen werden aktualisierte Dokumente nicht an die Sammlung zurückgesendet. Sie können die Eingabebindung jedoch direkt an eine DocumentDB-Ausgabebindung namens `documentOut` übergeben, um Updates zu unterstützen. In diesem Codebeispiel wird die Texteigenschaft des Eingabedokuments aktualisiert und als Ausgabedokument festgelegt.
@@ -131,6 +154,12 @@ Das Ausgabedokument:
 	}
  
 
+#### Azure DocumentDB-Ausgabecodebeispiel für einen F#-Warteschlangentrigger
+
+	open FSharp.Interop.Dynamic
+	let Run(myQueueItem: string, document: obj) =
+	    document?text <- (sprintf "I'm running in an F# function! %s" myQueueItem)
+
 #### Azure DocumentDB-Ausgabecodebeispiel für einen C#-Warteschlangentrigger
 
 
@@ -178,6 +207,27 @@ Sie könnten den folgenden C#-Code in einer Warteschlangentrigger-Funktion verwe
 	    };
 	}
 
+Alternativ können Sie den entsprechenden F#-Code verwenden:
+
+	open FSharp.Interop.Dynamic
+	open Newtonsoft.Json
+
+	type Employee = {
+	    id: string
+	    name: string
+	    employeeId: string
+	    address: string
+	}
+
+	let Run(myQueueItem: string, employeeDocument: byref<obj>, log: TraceWriter) =
+	    log.Info(sprintf "F# Queue trigger function processed: %s" myQueueItem)
+	    let employee = JObject.Parse(myQueueItem)
+	    employeeDocument <-
+	        { id = sprintf "%s-%s" employee?name employee?employeeId
+	          name = employee?name
+	          employeeId = employee?id
+	          address = employee?address }
+
 Beispielausgabe:
 
 	{
@@ -191,4 +241,4 @@ Beispielausgabe:
 
 [AZURE.INCLUDE [Nächste Schritte](../../includes/functions-bindings-next-steps.md)]
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/14/2016"
+	ms.date="09/19/2016"
 	ms.author="fashah;bradsev"/>
 
 
@@ -76,7 +76,7 @@ So richten Sie Ihre Azure Data Science-Umgebung ein:
 
 1. [Erstellen eines Speicherkontos](../storage/storage-create-storage-account.md)
 
-2. [Erstellen eines Azure ML-Arbeitsbereichs](machine-learning-create-workspace.md)
+2. [Erstellen eines Azure Machine Learning-Arbeitsbereichs](machine-learning-create-workspace.md)
 
 3. [Stellen Sie einen virtuellen Computer für Data Science bereit](machine-learning-data-science-setup-sql-server-virtual-machine.md), der als Server für SQL Server und IPython Notebook fungiert.
 
@@ -609,7 +609,7 @@ Wir können nun mit der Modellerstellung und -bereitstellung in [Azure Machine L
 
 ## <a name="mlmodel"></a>Erstellen von Modellen in Azure Machine Learning
 
-Melden Sie sich zum Starten der Modellierungsübung im Azure Machine Learning-Arbeitsbereich an. Wenn Sie noch keinen Machine Learning-Arbeitsbereich erstellt haben, lesen Sie unter [Erstellen eines Azure ML-Arbeitsbereichs](machine-learning-create-workspace.md) nach.
+Melden Sie sich zum Starten der Modellierungsübung im Azure Machine Learning-Arbeitsbereich an. Wenn Sie noch keinen Machine Learning-Arbeitsbereich erstellt haben, siehe [Erstellen eines Azure Machine Learning-Arbeitsbereichs](machine-learning-create-workspace.md).
 
 1. Informationen zu den ersten Schritten in Azure Machine Learning finden Sie unter [Was ist Azure Machine Learning Studio?](machine-learning-what-is-ml-studio.md).
 
@@ -620,7 +620,7 @@ Melden Sie sich zum Starten der Modellierungsübung im Azure Machine Learning-Ar
 Ein typisches Trainingsexperiment umfasst Folgendes:
 
 1. Erstellen eines **+NEW**-Experiments
-2. Abrufen der Daten in Azure ML
+2. Übertragen Sie die Daten in Azure Machine Learning.
 3. Vorverarbeiten, Transformieren und Ändern der Daten nach Bedarf
 4. Generieren von Funktionen nach Bedarf
 5. Aufteilen der Daten in DataSets für Training/Überprüfung/Tests (oder Verwenden verschiedener DataSets für alles)
@@ -630,11 +630,11 @@ Ein typisches Trainingsexperiment umfasst Folgendes:
 9. Evaluieren der Modelle zur Berechnung der relevanten Kennzahlen für das Lernproblem
 10. Optimieren der Modelle und Auswählen des geeignetsten Modells für die Bereitstellung
 
-Sie haben in dieser Übung bereits die Daten in SQL Server untersucht und bearbeitet und sich für eine Stichprobengröße für die Erfassung in Azure ML entschieden. Für das Erstellen einer oder mehrerer Vorhersagemodelle gehen Sie folgendermaßen vor:
+Sie haben in dieser Übung bereits die Daten in SQL Server untersucht und bearbeitet und sich für eine Stichprobengröße für die Erfassung in Azure Machine Learning entschieden. Für das Erstellen einer oder mehrerer Vorhersagemodelle gehen Sie folgendermaßen vor:
 
-1. Erfassen Sie die Daten in Azure ML mithilfe des [Import Data][import-data]-Moduls im Abschnitt **Data Input and Output**. Weitere Informationen finden Sie auf der Referenzseite zum [Import Data][import-data]-Modul.
+1. Erfassen Sie die Daten in Azure Machine Learning mithilfe des [Import Data][import-data]-Moduls im Abschnitt **Data Input and Output**. Weitere Informationen finden Sie auf der Referenzseite zum [Import Data][import-data]-Modul.
 
-	![Azure ML – Import Data][17]
+	![Azure Machine Learning: Importieren von Daten][17]
 
 2. Wählen Sie **Azure SQL-Datenbank** als **Datenquelle** im **Eigenschaften**bereich aus.
 
@@ -650,7 +650,7 @@ Sie haben in dieser Übung bereits die Daten in SQL Server untersucht und bearbe
 
 Ein Beispiel für ein binäres Klassifizierungsexperiment zum Lesen von Daten direkt aus der SQL Server-Datenbank finden Sie in der folgenden Abbildung. Ähnliche Experimente können für Multiklassenklassifizierungen und Regressionsprobleme erstellt werden.
 
-![Azure ML-Schulung][10]
+![Azure Machine Learning: Training][10]
 
 > [AZURE.IMPORTANT] In den Modellierungsbeispielen für Datenextraktion und Stichprobengenerierung in den vorherigen Abschnitten sind **alle Bezeichner für die drei Modellierungsübungen in der Abfrage enthalten**. Ein wichtiger (erforderlicher) Schritt in den einzelnen Modellierungsübungen ist das **Ausschließen** unnötiger Bezeichner für die anderen beiden Probleme und alle anderen **Zielverluste**. Wenn Sie z. B. eine binäre Klassifizierung anwenden, verwenden Sie den Bezeichner **tipped** und schließen die Felder **tip\_class**, **tip\_amount** und **total\_amount** aus. Letztere sind Zielverluste, da sie das bezahlte Trinkgeld beinhalten.
 >
@@ -658,7 +658,7 @@ Ein Beispiel für ein binäres Klassifizierungsexperiment zum Lesen von Daten di
 
 ## <a name="mldeploy"></a>Bereitstellen von Modellen in Azure Machine Learning
 
-Wenn das Modell fertig ist, können Sie es problemlos als Webdienst direkt aus dem Experiment heraus bereitstellen. Weitere Informationen zum Bereitstellen von Azure ML-Webdiensten finden Sie unter [Bereitstellen von Azure Machine Learning-Webdiensten](machine-learning-publish-a-machine-learning-web-service.md).
+Wenn das Modell fertig ist, können Sie es problemlos als Webdienst direkt aus dem Experiment heraus bereitstellen. Weitere Informationen zum Bereitstellen von Azure Machine Learning-Webdiensten finden Sie unter [Bereitstellen von Azure Machine Learning-Webdiensten](machine-learning-publish-a-machine-learning-web-service.md).
 
 So stellen Sie einen neuen Webdienst bereit:
 
@@ -679,7 +679,7 @@ Wenn das Bewertungsexperiment erstellt wurde, überprüfen Sie es und passen es 
 
 In der folgenden Abbildung finden Sie ein Beispiel für ein Bewertungsexperiment. Wenn Sie die Bereitstellung fertig vorbereitet haben, klicken Sie auf der unteren Aktionsleiste auf die Schaltfläche **PUBLISH WEB SERVICE**.
 
-![Azure ML-Veröffentlichung][11]
+![Azure-Machine Learning: Veröffentlichen][11]
 
 Zusammenfassend haben Sie in diesem Tutorial eine Azure Data Science-Umgebung erstellt und mit einem großen öffentlichen DataSet gearbeitet und dabei alle Schritte von der Datenerfassung bis zum Modelltraining und zur Bereitstellung eines Azure Machine Learning-Webdiensts durchlaufen.
 
@@ -719,4 +719,4 @@ Diese exemplarische Vorgehensweise und die zugehörigen Skripts und IPython Note
 [select-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
 [import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

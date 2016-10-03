@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="07/12/2016"
+   ms.date="09/13/2016"
    ms.author="larryfr"/>
 
 #Verwenden von Hive mit Hadoop in HDInsight über Beeline
@@ -59,7 +59,7 @@ Weitere Informationen zum Verwenden von PuTTY finden Sie unter [Verwenden von SS
 
         beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http' -n admin
 
-    Dadurch wird der Beeline-Client gestartet und eine Verbindung mit der JDBC-URL hergestellt. Hier wird `localhost` verwendet, da HiveServer2 auf beiden Hauptknoten im Cluster ausgeführt wird und wir Beeline direkt auf dem Hauptknoten 0 ausführen.
+    Dadurch wird der Beeline-Client gestartet und eine Verbindung mit der JDBC-URL hergestellt. Hier wird `localhost` verwendet, da HiveServer2 auf beiden Hauptknoten im Cluster ausgeführt wird und wir Beeline direkt auf dem primären Hauptknoten ausführen.
     
     Nach Abschluss des Befehls gelangen Sie zur Eingabeaufforderung `jdbc:hive2://localhost:10001/>`.
 
@@ -235,4 +235,4 @@ Wenn Sie mit Tez mit Hive verwenden, finden Sie in den folgenden Dokumenten Info
 
 [powershell-here-strings]: http://technet.microsoft.com/library/ee692792.aspx
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

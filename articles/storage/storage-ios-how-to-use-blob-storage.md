@@ -4,16 +4,17 @@
     services="storage"
     documentationCenter="ios"
     authors="micurd"
-    manager="jahogg"/>
+    manager="jahogg"
+    editor="tysonn"/>
 
 <tags
     ms.service="storage"
     ms.workload="storage"
     ms.tgt_pltfrm="na"
-    ms.devlang="Objective-C"
+    ms.devlang="objective-c"
     ms.topic="article"
-    ms.date="07/27/2016"
-    ms.author="micurd"/>
+    ms.date="09/20/2016"
+    ms.author="micurd;tamram"/>
 
 # Verwenden des Blobspeichers mit iOS
 
@@ -54,7 +55,7 @@ Um die Azure Storage-iOS-Bibliothek zu verwenden, müssen Sie zunächst die Fram
 
 1. Laden Sie zuerst das [azure-storage-ios-repo](https://github.com/azure/azure-storage-ios) herunter, oder klonen Sie es.
 
-2. Wechseln Sie zu *azure-storage-ios* -> *Lib* -> *Azure Storage-Client-Bibliothek*, und öffnen Sie `AZSClient.xcodeproj` in Xcode.
+2. Wechseln Sie zu *azure-storage-ios* -> *Lib* -> *Azure Storage-Client-Bibliothek*, und öffnen Sie `AZSClient.xcodeproj` in Xcode.
 
 3. Ändern Sie oben links in Xcode das aktive Schema von "Azure Storage-Client Library" in "Framework".
 
@@ -203,17 +204,17 @@ Neben dem Hochladen eines Blockblobs aus einer NSString gibt es ähnliche Method
 Das folgende Beispiel zeigt, wie alle Blobs in einem Container aufgelistet werden. Achten Sie beim Durchführen dieses Vorgangs auf die folgenden Parameter:
 
 - **ContinuationToken**: Das Fortsetzungstoken gibt an, wo der Auflistungsvorgang beginnen soll. Wenn kein Token angegeben wird, listet es Blobs vom Anfang auf. Es kann eine beliebige Anzahl von Blobs aufgeführt werden, von 0 (null) bis zu einem festgelegten Maximum. Auch wenn diese Methode keine Ergebnisse zurückgibt, wenn `results.continuationToken` nicht Null ist, gibt es möglicherweise mehr Blobs für den Dienst, die nicht aufgelistet wurden.
-- **prefix** – Sie können das Präfix angeben, das für die Blobliste verwendet werden soll. Nur Blobs, die mit diesem Präfix beginnen, werden aufgelistet.
-- **useFlatBlobListing** – Wie im Abschnitt [Benennen von Containern und Blobs und verweisen auf diese](#naming-and-referencing-containers-and-blobs) erwähnt, können Sie eine virtuelle Hierarchie durch Benennen von Blobs mit Pfadinformationen erstellen, selbst wenn der Blobdienst ein flaches Speicherschema ist. Allerdings wird derzeit eine nicht flache Auflistung nicht unterstützt. Dies ist in Kürze verfügbar. Bis dahin sollte der folgende Wert verwendet werden: `YES`.
-- **blobListingDetails** – Sie können angeben, welche Elemente beim Auflisten der Blobs einbezogen werden sollen.
+- **prefix** – Sie können das Präfix angeben, das für die Blobliste verwendet werden soll. Nur Blobs, die mit diesem Präfix beginnen, werden aufgelistet.
+- **useFlatBlobListing** – Wie im Abschnitt [Benennen von Containern und Blobs und verweisen auf diese](#naming-and-referencing-containers-and-blobs) erwähnt, können Sie eine virtuelle Hierarchie durch Benennen von Blobs mit Pfadinformationen erstellen, selbst wenn der Blobdienst ein flaches Speicherschema ist. Allerdings wird derzeit eine nicht flache Auflistung nicht unterstützt. Dies ist in Kürze verfügbar. Bis dahin sollte der folgende Wert verwendet werden: `YES`.
+- **blobListingDetails** – Sie können angeben, welche Elemente beim Auflisten der Blobs einbezogen werden sollen.
 	- `AZSBlobListingDetailsNone`: Listen Sie nur zugesicherte Blobs auf, und geben Sie keine Blobmetadaten zurück.
 	- `AZSBlobListingDetailsSnapshots`: Listen Sie zugesicherte Blobs und Blobmomentaufnahmen auf.
 	- `AZSBlobListingDetailsMetadata`: Rufen Sie Blobmetadaten für jeden Blob auf, der in der Liste zurückgegeben wird.
 	- `AZSBlobListingDetailsUncommittedBlobs`: Listen Sie zugesicherte und nicht zugesicherte Blobs auf.
 	- `AZSBlobListingDetailsCopy`: Schließen Sie die Kopiereigenschaften in der Liste ein.
 	- `AZSBlobListingDetailsAll`: Listen Sie alle verfügbaren zugesicherten Blobs, nicht zugesicherten Blobs und Momentaufnahmen auf, und geben Sie alle Metadaten und Kopierstatus für diese Blobs zurück.
-- **maxResults** – Die maximale Anzahl von Ergebnissen, die für diesen Vorgang zurückgegeben werden. Verwenden Sie -1, um keinen Grenzwert festzulegen.
-- **completionHandler** – Der auszuführende Codeblock mit den Ergebnissen des Auflistungsvorgangs.
+- **maxResults** – Die maximale Anzahl von Ergebnissen, die für diesen Vorgang zurückgegeben werden. Verwenden Sie -1, um keinen Grenzwert festzulegen.
+- **completionHandler** – Der auszuführende Codeblock mit den Ergebnissen des Auflistungsvorgangs.
 
 In diesem Beispiel wird eine Hilfsmethode verwendet, um jedes Mal die Methode zum Auflisten von Blobs wiederholt aufzurufen, wenn ein Fortsetzungstoken zurückgegeben wird.
 
@@ -371,4 +372,4 @@ Da Sie jetzt die Verwendung von Blobspeicher in iOS kennen, folgen Sie diesen Li
 
 Stellen Sie Fragen zu dieser Bibliothek in unserem [MSDN Azure-Forum](http://social.msdn.microsoft.com/Forums/windowsazure/home?forum=windowsazuredata) oder unter [Stack Overflow](http://stackoverflow.com/questions/tagged/windows-azure-storage+or+windows-azure-storage+or+azure-storage-blobs+or+azure-storage-tables+or+azure-table-storage+or+windows-azure-queues+or+azure-storage-queues+or+azure-storage-emulator+or+azure-storage-files). Richten Sie Vorschläge für Azure Storage-Features an [Feedback zu Azure Storage](https://feedback.azure.com/forums/217298-storage/).
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0921_2016-->

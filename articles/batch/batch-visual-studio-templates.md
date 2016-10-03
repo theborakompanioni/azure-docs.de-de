@@ -57,7 +57,7 @@ Für die Verwendung der Batch-Vorlagen benötigen Sie Folgendes:
     * Azure Batch-Auftrags-Manager mit Auftragsteilung
     * Azure Batch-Aufgabenprozessor
 
-  * Laden Sie die Vorlagen aus dem Onlinekatalog für Visual Studio herunter: [Microsoft Azure Batch Project Templates][vs_gallery_templates] \(Microsoft Azure Batch-Projektvorlagen).
+  * Laden Sie die Vorlagen aus dem Onlinekatalog für Visual Studio herunter: [Microsoft Azure Batch Project Templates][vs_gallery_templates] (Microsoft Azure Batch-Projektvorlagen).
 
 * Wenn Sie die Nutzung der Funktion [Anwendungspakete](batch-application-packages.md) planen, um den Auftrags-Manager und Aufgabenprozessor für die Batch-Computeknoten bereitzustellen, müssen Sie ein Speicherkonto mit Ihrem Batch-Konto verknüpfen.
 
@@ -371,7 +371,7 @@ public async Task<int> Run()
     {
         throw new TaskProcessorException(
         $"{ex.GetType().Name} exception in run task processor: {ex.Message}",
-        Ex
+        ex
         );
     }
 }
@@ -463,7 +463,7 @@ Sie können Parameter auch an einzelne Aufgaben übergeben, die mit der Aufgaben
 
 ### Persistente Aufträge und Aufgabenausgabe in Azure Storage
 
-Ein weiteres nützliches Tool bei der Entwicklung von Batch-Lösungen sind [Azure Batch File Conventions][nuget_package] \(Azure Batch-Dateikonventionen). Verwenden Sie diese .NET-Klassenbibliothek (derzeit in der Vorschauphase) in Ihren Batch .NET-Anwendungen, um Aufgabenausgaben leicht speichern und für Azure Storage übermitteln zu können. Der Artikel [Beibehalten der Ausgabe von Azure Batch-Aufträgen und -Tasks](batch-task-output.md) enthält eine umfassende Beschreibung der Bibliothek und ihrer Verwendung.
+Ein weiteres nützliches Tool bei der Entwicklung von Batch-Lösungen sind [Azure Batch File Conventions][nuget_package] (Azure Batch-Dateikonventionen). Verwenden Sie diese .NET-Klassenbibliothek (derzeit in der Vorschauphase) in Ihren Batch .NET-Anwendungen, um Aufgabenausgaben leicht speichern und für Azure Storage übermitteln zu können. Der Artikel [Beibehalten der Ausgabe von Azure Batch-Aufträgen und -Tasks](batch-task-output.md) enthält eine umfassende Beschreibung der Bibliothek und ihrer Verwendung.
 
 ### Batch-Forum
 
@@ -482,4 +482,4 @@ Das [Azure Batch-Forum][forum] auf MSDN eignet sich hervorragend, um Information
 [solution_explorer01]: ./media/batch-visual-studio-templates/solution_explorer01.png
 [solution_explorer02]: ./media/batch-visual-studio-templates/solution_explorer02.png
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-ios"
 	ms.devlang="objective-c"
 	ms.topic="article"
-	ms.date="03/18/2016"
+	ms.date="09/16/2016"
 	ms.author="brandwe"/>
 
 # Integrieren von Azure AD in eine iOS-Anwendung
@@ -48,12 +48,12 @@ Das iOS-Format für einen Umleitungs-URI lautet:
 - 	**aap-scheme** – dieses Schema ist in Ihrem XCode-Projekt registriert. So können Sie andere Anwendungen aufrufen. Sie finden dieses Schema unter "Info.plist -> URL types -> URL Identifier". Sie sollten ein Schema erstellen, sofern Sie nicht bereits ein oder mehrere Schemas konfiguriert haben.
 - 	**bundle-id** – dies ist die Paket-ID, die sich unter "identity" in Ihren Projekteinstellungen in XCode befindet.
 
-Beispiel für diesen QuickStart-Code: ******msquickstart://com.microsoft.azureactivedirectory.samples.graph.QuickStart***
+Beispiel für diesen QuickStart-Code: ***msquickstart://com.microsoft.azureactivedirectory.samples.graph.QuickStart***
 
 ## *2. Registrieren der Anwendung DirectorySearcher*
 Damit Ihre Anwendung Tokens abrufen kann, müssen Sie sie zunächst beim Azure AD-Mandanten registrieren und ihr die Berechtigung für den Zugriff auf die Azure AD Graph-API erteilen:
 
--	Melden Sie sich beim Azure-Verwaltungsportal an.
+-	Melden Sie sich am Azure-Verwaltungsportal an.
 -	Klicken Sie in der linken Navigationsleiste auf **Active Directory**.
 -	Wählen Sie den Mandanten aus, unter dem die Anwendung registriert werden soll.
 -	Klicken Sie auf die Registerkarte **Anwendungen** und dann in der unteren Schublade auf **Hinzufügen**.
@@ -137,7 +137,7 @@ completionHandler:(void (^) (NSString*, NSError*))completionBlock;
 
 ```
 
-- Nun muss mithilfe dieses Tokens nach Benutzern im Graph gesucht werden. Suchen Sie den Kommentar `// TODO: implement SearchUsersList`. Diese Methode übergibt der Azure AD Graph-API eine GET-Anforderung für die Suche nach Benutzern, deren UPNs mit dem angegebenen Suchbegriff beginnen. Für die Abfrage der Graph-API müssen Sie dem `Authorization`-Header der Anforderung jedoch ein Zugriffstoken hinzufügen – und hier kommt ADAL ins Spiel.
+- Nun muss mithilfe dieses Tokens nach Benutzern im Graph gesucht werden. Suchen Sie den Kommentar `// TODO: implement SearchUsersList`. Diese Methode übergibt der Azure AD Graph-API eine GET-Anforderung für die Suche nach Benutzern, deren UPNs mit dem angegebenen Suchbegriff beginnen. Für die Abfrage der Graph-API müssen Sie dem `Authorization`-Header der Anforderung jedoch ein Zugriffstoken hinzufügen – und hier kommt ADAL ins Spiel.
 
 ```ObjC
 +(void) searchUserList:(NSString*)searchString
@@ -212,11 +212,11 @@ completionHandler:(void (^) (NSString*, NSError*))completionBlock;
 - Beachten Sie, dass das Objekt `AuthenticationResult` ein `tokenCacheStoreItem`-Objekt enthält, mit dem von Ihrer Anwendung benötigte Informationen erfasst werden können. Im Projekt "QuickStart" wird mithilfe von `tokenCacheStoreItem` ermittelt, ob die Authentifizierung bereits erfolgt ist.
 
 
-## Schritt 5: Erstellen und Ausführen der Anwendung
+## Schritt 5: Erstellen und Ausführen der Anwendung
 
 
 
-Glückwunsch! Sie haben nun eine funktionierende iOS-Anwendung, die Benutzer authentifizieren, Web-APIs über OAuth 2.0 sicher aufrufen und grundlegende Benutzerinformationen abfragen kann. Sofern nicht bereits geschehen, ist es nun an der Zeit, Ihren Mandanten mit Benutzern zu füllen. Führen Sie die QuickStart-Anwendung aus, und melden Sie sich mit einem der Benutzernamen an. Suchen Sie anhand des UPN nach anderen Benutzern. Schließen Sie die Anwendung, und führen Sie sie erneut aus. Wie Sie sehen, bleibt die Benutzersitzung erhalten.
+Glückwunsch! Sie haben nun eine funktionierende iOS-Anwendung, die Benutzer authentifizieren, Web-APIs über OAuth 2.0 sicher aufrufen und grundlegende Benutzerinformationen abfragen kann. Sofern nicht bereits geschehen, ist es nun an der Zeit, Ihren Mandanten mit Benutzern zu füllen. Führen Sie die QuickStart-Anwendung aus, und melden Sie sich mit einem der Benutzernamen an. Suchen Sie anhand des UPN nach anderen Benutzern. Schließen Sie die Anwendung, und führen Sie sie erneut aus. Wie Sie sehen, bleibt die Benutzersitzung erhalten.
 
 ADAL erleichtert Ihnen die Integration all dieser allgemeinen Identitätsfunktionen in Ihrer Anwendung. Es übernimmt die unangenehmen Verwaltungsarbeiten für Sie – die Cacheverwaltung, die Unterstützung des OAuth-Protokolls, die Anzeige einer Anmeldeschnittstelle für den Benutzer, die Aktualisierung abgelaufener Tokens und vieles mehr. Das Einzige, womit Sie sich noch beschäftigen müssen, ist der API-Aufruf `getToken`.
 
@@ -226,8 +226,8 @@ Als Referenz stellen wir [hier](https://github.com/AzureADQuickStarts/NativeClie
 Sie können sich nun weiteren Szenarien zuwenden. Sie können beispielsweise Folgendes testen:
 
 - [Schützen einer Node.JS-Web-API mit Azure AD](active-directory-devquickstarts-webapi-nodejs.md)
-- Lesen Sie [Gewusst wie: Aktivieren von App-übergreifendem SSO unter iOS mit ADAL](active-directory-sso-ios.md)  
+- Lesen Sie [Gewusst wie: Aktivieren von App-übergreifendem SSO unter iOS mit ADAL](active-directory-sso-ios.md)
 
 [AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources.md)]
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0921_2016-->

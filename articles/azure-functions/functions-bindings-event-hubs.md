@@ -65,6 +65,13 @@ Mit dem oben genannten Beispiel function.json wird der Text der Ereignismeldung 
 	    log.Info($"C# Event Hub trigger function processed a message: {myEventHubMessage}");
 	}
 
+#### F#-Beispiel für Azure Event Hub-Trigger
+
+Mit dem oben genannten Beispiel für „function.json“ wird der Text der Ereignismeldung mit dem folgenden F#-Funktionscode protokolliert:
+
+	let Run(myEventHubMessage: string, log: TraceWriter) =
+	    log.Info(sprintf "F# eventhub trigger function processed work item: %s" myEventHubMessage)
+
 #### Node.js-Beispiel für Azure Event Hub-Trigger
  
 Mit dem oben genannten Beispiel function.json wird der Text der Ereignismeldung mit dem folgenden Node.js-Funktionscode protokolliert:
@@ -113,6 +120,15 @@ Der folgende C#-Beispielfunktionscode veranschaulicht das Schreiben eines Ereign
 	    outputEventHubMessage = msg;
 	}
 
+#### F#-Codebeispiel für die Azure Event Hub-Ausgabebindung
+
+Der folgende F#-Beispielfunktionscode veranschaulicht das Schreiben eines Ereignisses in einen Event Hub-Datenstrom. Dieses Beispiel zeigt die Anwendung der oben dargestellten Event Hub-Ausgabebindung auf einen C#-Trigger mit Timer.
+
+	let Run(myTimer: TimerInfo, outputEventHubMessage: byref<string>, log: TraceWriter) =
+	    let msg = sprintf "TimerTriggerFSharp1 executed at: %s" DateTime.Now.ToString()
+	    log.Verbose(msg);
+	    outputEventHubMessage <- msg;
+
 #### Node.js-Codebeispiel für die Azure Event Hub-Ausgabebindung
  
 Der folgende Node.js-Beispielfunktionscode veranschaulicht das Schreiben eines Ereignisses in einen Event Hub-Datenstrom. Dieses Beispiel zeigt die Anwendung der oben dargestellten Event Hub-Ausgabebindung auf einen Node.js-Trigger mit Timer.
@@ -136,4 +152,4 @@ Der folgende Node.js-Beispielfunktionscode veranschaulicht das Schreiben eines E
 
 [AZURE.INCLUDE [Nächste Schritte](../../includes/functions-bindings-next-steps.md)]
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0921_2016-->

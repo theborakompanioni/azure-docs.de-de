@@ -13,24 +13,27 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="08/29/2016"
+   ms.date="09/21/2016"
    ms.author="cherylmc" />
 
 # Informationen zu VPN Gateway-Einstellungen
 
 Für eine Verbindungslösung mit VPN-Gateways müssen mehrere Ressourcen konfiguriert werden, um den Netzwerkdatenverkehr zwischen virtuellen Netzwerken und lokalen Standorten zu senden. Jede Ressource enthält konfigurierbare Einstellungen. Die Kombination von Ressourcen und Einstellungen bestimmt die resultierende Verbindung.
 
-In den Abschnitten in diesem Artikel werden die Ressourcen und Einstellungen beschrieben, die sich auf ein VPN-Gateway beziehen. Vielleicht finden Sie es hilfreich, die verfügbaren Konfigurationen mithilfe von Verbindungstopologiediagrammen anzuzeigen. Die Beschreibungen und Topologiediagramme für jede Verbindungslösung finden Sie im Artikel [Informationen zu VPN Gateway](vpn-gateway-about-vpngateways.md).
+In den Abschnitten in diesem Artikel werden die Ressourcen und Einstellungen beschrieben, die sich im **Resource Manager**-Bereitstellungsmodell auf ein VPN-Gateway beziehen. Vielleicht finden Sie es hilfreich, die verfügbaren Konfigurationen mithilfe von Verbindungstopologiediagrammen anzuzeigen. Die Beschreibungen und Topologiediagramme für jede Verbindungslösung finden Sie im Artikel [Informationen zu VPN Gateway](vpn-gateway-about-vpngateways.md).
 
 ## <a name="gwtype"></a>Gatewaytypen
 
-Mit dem Gatewaytyp wird angegeben, wie das Gateway die Verbindung hergestellt. Es ist eine erforderliche Konfigurationseinstellung für das Resource Manager-Bereitstellungsmodell. Jedes virtuelle Netzwerk kann nur über ein einziges virtuelles Netzwerkgateway jedes Typs verfügen. Die verfügbaren Werte für `-GatewayType` lauten:
+Jedes virtuelle Netzwerk kann nur über ein einziges virtuelles Netzwerkgateway jedes Typs verfügen. Beim Erstellen eines Gateways des virtuellen Netzwerks müssen Sie sicherstellen, dass der Gatewaytyp für Ihre Konfiguration korrekt ist.
+
+Die verfügbaren Werte für -GatewayType lauten:
 
 - VPN
 - ExpressRoute
 
+Ein VPN-Gateway erfordert den `-GatewayType` *Vpn*.
 
-Für ein VPN-Gateway ist „-GatewayType *Vpn* “ erforderlich, wie im folgenden PowerShell-Beispiel für das Resource Manager-Bereitstellungsmodell gezeigt. Beim Erstellen eines Gateways des virtuellen Netzwerks müssen Sie sicherstellen, dass der Gatewaytyp für Ihre Konfiguration korrekt ist.
+Beispiel:
 
 	New-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
 	-Location 'West US' -IpConfigurations $gwipconfig -GatewayType Vpn `
@@ -39,19 +42,30 @@ Für ein VPN-Gateway ist „-GatewayType *Vpn* “ erforderlich, wie im folgende
 
 ## <a name="gwsku"></a>Gateway-SKUs
 
-Beim Erstellen eines VPN-Gateways müssen Sie die gewünschte SKU des Gateways des virtuellen Netzwerks angeben. Gateway-SKUs gelten sowohl für ExpressRoute als auch für das VPN Gateway. Für die einzelnen Gateway-SKUs gelten unterschiedliche Preise. Informationen zu den Preisen finden Sie unter [VPN-Gateway – Preise](https://azure.microsoft.com/pricing/details/vpn-gateway/). Weitere Informationen über ExpressRoute finden Sie unter [ExpressRoute – Technische Übersicht](../expressroute/expressroute-introduction.md).
 
-Es gibt drei VPN-Gateway-SKUs:
+[AZURE.INCLUDE [vpn-gateway-gwsku-include](../../includes/vpn-gateway-gwsku-include.md)]
 
-- Basic
-- Standard
-- HighPerformance
+**Angeben der Gateway-SKU im Azure-Portal**
+
+Wenn Sie das Azure-Portal verwenden, um ein Resource Manager-Gateway für virtuelle Netzwerke zu erstellen, wird das Gateway für virtuelle Netzwerke standardmäßig mit der Standard-SKU konfiguriert. Derzeit können im Azure-Portal keine anderen SKUs für das Resource Manager-Bereitstellungsmodell angegeben werden. Nach Erstellung des Gateways können Sie jedoch mithilfe des PowerShell-Cmdlets `Resize-AzureRmVirtualNetworkGateway` ein Upgrade auf eine leistungsfähigere Gateway-SKU (von Basic/Standard auf High Performance) durchführen. Sie können über PowerShell auch ein Downgrade der Gateway-SKU-Größe durchführen.
+
+**Angeben der Gateway-SKU mithilfe von PowerShell**
+
 
 Das folgende PowerShell-Beispiel gibt `-GatewaySku` als *Standard* an.
 
 	New-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
 	-Location 'West US' -IpConfigurations $gwipconfig -GatewaySku Standard `
 	-GatewayType Vpn -VpnType RouteBased
+
+**Ändern einer Gateway-SKU**
+
+Sie können die Größe einer Gateway-SKU ändern. Das folgende PowerShell-Beispiel zeigt die Änderung der Größe einer Gateway-SKU auf High Performance.
+
+	$gw = Get-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg
+	Resize-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $gw -GatewaySku HighPerformance
+
+<br>
 
 
 ###  <a name="aggthroughput"></a>Geschätzter aggregierter Durchsatz nach SKU und Gatewaytyp
@@ -64,7 +78,7 @@ In der folgenden Tabelle sind die Gatewaytypen und der geschätzte zusammengefas
 
 ## <a name="connectiontype"></a>Verbindungstypen
 
-Für jede Konfiguration ist ein bestimmter Verbindungstyp mit einem Gateway eines virtuellen Netzwerks erforderlich. Die verfügbaren Resource Manager-PowerShell-Werte für `-ConnectionType` sind:
+Im Resource Manager-Bereitstellungsmodell ist für jede Konfiguration ein bestimmter Typ der Verbindung mit dem Gateway eines virtuellen Netzwerks erforderlich. Die verfügbaren Resource Manager-PowerShell-Werte für `-ConnectionType` sind:
 
 - IPsec
 - Vnet2Vnet
@@ -82,14 +96,14 @@ Im folgenden PowerShell-Beispiel erstellen wir eine S2S-Verbindung, die den Verb
 
 Wenn Sie das Gateway des virtuellen Netzwerks für eine VPN-Gatewaykonfiguration erstellen, müssen Sie einen VPN-Typ angeben. Der ausgewählte VPN-Typ hängt von der Verbindungstopologie ab, die Sie erstellen möchten. Beispielsweise erfordert eine P2S-Verbindung den VPN-Typ „RouteBased“. Ein VPN-Typ kann außerdem von der Hardware abhängen, die Sie verwenden möchten. S2S-Konfigurationen erfordern ein VPN-Gerät. Einige VPN-Geräte unterstützen nur einen bestimmten VPN-Typ.
 
-Der VPN-Typ, den Sie auswählen, muss alle Verbindungsanforderungen für die Lösung erfüllen, die Sie erstellen möchten. Beispiel: Wenn Sie eine S2S-VPN-Gatewayverbindung und eine P2S-VPN-Gatewayverbindung für dasselbe virtuelle Netzwerk erstellen möchten, verwenden Sie den VPN-Typ *RouteBased*, da P2S diesen VPN-Typ erfordert. Sie müssen auch sicherstellen, dass Ihr VPN-Gerät eine RouteBased-VPN-Verbindung unterstützt.
+Der ausgewählte VPN-Typ muss alle Verbindungsanforderungen für die Lösung erfüllen, die Sie erstellen möchten. Beispiel: Wenn Sie eine S2S-VPN-Gatewayverbindung und eine P2S-VPN-Gatewayverbindung für dasselbe virtuelle Netzwerk erstellen möchten, verwenden Sie den VPN-Typ *RouteBased*, da P2S diesen VPN-Typ erfordert. Sie müssen auch sicherstellen, dass Ihr VPN-Gerät eine RouteBased-VPN-Verbindung unterstützt.
 
 Nachdem ein Gateway des virtuellen Netzwerks erstellt wurde, können Sie den VPN-Typ nicht mehr ändern. Sie müssen das Gateway des virtuellen Netzwerks löschen und ein neues erstellen. Es gibt zwei VPN-Typen:
 
 [AZURE.INCLUDE [vpn-gateway-vpntype](../../includes/vpn-gateway-vpntype-include.md)]
 
 
-Im folgenden PowerShell-Beispiel für das Resource Manager-Bereitstellungsmodell wird `-VpnType` als *RouteBased* angegeben. Beim Erstellen eines Gateways müssen Sie sicherstellen, dass -VpnType für Ihre Konfiguration korrekt ist.
+Das folgende PowerShell-Beispiel gibt `-VpnType` als *RouteBased* an. Beim Erstellen eines Gateways müssen Sie sicherstellen, dass -VpnType für Ihre Konfiguration korrekt ist.
 
 	New-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
 	-Location 'West US' -IpConfigurations $gwipconfig `
@@ -102,7 +116,7 @@ Im folgenden PowerShell-Beispiel für das Resource Manager-Bereitstellungsmodell
 
 ## <a name="gwsub"></a>Gatewaysubnetz
 
-Sie müssen zuerst ein Gatewaysubnetz für Ihr VNet erstellen, um ein Gateway des virtuellen Netzwerks zu konfigurieren. Das Gatewaysubnetz muss den Namen *GatewaySubnet* aufweisen, damit es einwandfrei funktioniert. Durch diesen Namen weiß Azure, dass dieses Subnetz für das Gateway verwendet werden soll. Wenn Sie das klassische Portal verwenden, erhält das Gatewaysubnetz in der Portaloberfläche automatisch den Namen *Gateway*. Dies gilt nur speziell für die Anzeige des Gatewaysubnetzes im klassischen Portal. In diesem Fall wird das Subnetz tatsächlich mit dem Wert *GatewaySubnet* erstellt und kann auf diese Weise im Azure-Portal und in PowerShell angezeigt werden.
+Sie müssen zuerst ein Gatewaysubnetz für Ihr VNet erstellen, um ein Gateway des virtuellen Netzwerks zu konfigurieren. Das Gatewaysubnetz muss den Namen *GatewaySubnet* aufweisen, damit es einwandfrei funktioniert. Durch diesen Namen weiß Azure, dass dieses Subnetz für das Gateway verwendet werden soll.
 
 Die Mindestgröße des Gatewaysubnetzes hängt gänzlich von der Konfiguration ab, die Sie erstellen möchten. Obwohl es möglich ist, ein Gatewaysubnetz mit einer Größe von nur /29 zu erstellen, empfehlen wir, ein Gatewaysubnetz von mindestens /28 (/ 28, / 27, /26 usw.) zu erstellen.
 
@@ -117,11 +131,11 @@ Im folgenden Resource Manager-PowerShell-Beispiel ist ein Gatewaysubnetz mit dem
 
 ## <a name="lng"></a>Gateways des lokalen Netzwerks
 
-Wenn Sie eine VPN-Gatewaylösung erstellen, stellt das Gateway des lokalen Netzwerks meist Ihren lokalen Standort dar. Beim klassischen Bereitstellungsmodell wurde das Gateway des lokalen Netzwerks als „Lokaler Standort“ bezeichnet.
+Wenn Sie eine VPN-Gatewaykonfiguration erstellen, stellt das Gateway des lokalen Netzwerks meist Ihren lokalen Standort dar. Beim klassischen Bereitstellungsmodell wurde das Gateway des lokalen Netzwerks als „Lokaler Standort“ bezeichnet.
 
 Sie geben dem Gateway des lokalen Netzwerks einen Namen, stellen die öffentliche IP-Adresse des lokalen VPN-Geräts bereit und geben die Adresspräfixe an, die sich am lokalen Standort befinden. Azure sucht unter den Zieladresspräfixen nach Netzwerkdatenverkehr, sieht in der Konfiguration nach, die Sie für das Gateway des lokalen Netzwerks angegeben haben, und leitet die Pakete entsprechend weiter. Sie geben auch Gateways des lokalen Netzwerks für VNet-zu-VNet-Konfigurationen an, die eine VPN-Gatewayverbindung verwenden.
 
-Mit dem folgenden Resource Manager-PowerShell-Beispiel wird ein neues Gateway des lokalen Netzwerks erstellt:
+Mit dem folgenden PowerShell-Beispiel wird ein neues Gateway des lokalen Netzwerks erstellt:
 
 	New-AzureRmLocalNetworkGateway -Name LocalSite -ResourceGroupName testrg `
 	-Location 'West US' -GatewayIpAddress '23.99.221.164' -AddressPrefix '10.5.51.0/24'
@@ -150,4 +164,4 @@ Weitere Informationen zu verfügbaren Verbindungskonfigurationen finden Sie unte
 
  
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0921_2016-->

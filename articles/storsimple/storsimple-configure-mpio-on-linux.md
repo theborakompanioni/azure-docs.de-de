@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="06/21/2016"
+   ms.date="09/21/2016"
    ms.author="alkohli" />
 
 # Konfigurieren von MPIO auf einem StorSimple-Host mit CentOS
@@ -286,7 +286,7 @@ Dieser Lastenausgleichsalgorithmus verwendet alle verfügbaren Pfade zum aktiven
 
 
 > [AZURE.NOTE] 
-> Die gängigsten Werte für `path_grouping_policy` lauten:
+Die gängigsten Werte für `path_grouping_policy` lauten:
 	
 > - failover = 1 Pfad pro Prioritätsgruppe
 > - multibus = alle gültigen Pfade in einer Prioritätsgruppe
@@ -330,10 +330,10 @@ Dieser Lastenausgleichsalgorithmus verwendet alle verfügbaren Pfade zum aktiven
 
 		Das folgende Beispiel zeigt die Ausgabe bei Verwendung des Ziel-IQN `iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target`. Die Ausgabe weist darauf hin, dass die Verbindungsherstellung mit den zwei iSCSI-aktivierten Netzwerkschnittstellen auf Ihrem Gerät erfolgreich war.
 
-		    Logging in to [iface: eth0, target: iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target, portal: 10.126.162.25,3260] \(multiple)
-	    	Logging in to [iface: eth1, target: iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target, portal: 10.126.162.25,3260] \(multiple)
-	    	Logging in to [iface: eth0, target: iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target, portal: 10.126.162.26,3260] \(multiple)
-	    	Logging in to [iface: eth1, target: iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target, portal: 10.126.162.26,3260] \(multiple)
+		    Logging in to [iface: eth0, target: iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target, portal: 10.126.162.25,3260] (multiple)
+	    	Logging in to [iface: eth1, target: iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target, portal: 10.126.162.25,3260] (multiple)
+	    	Logging in to [iface: eth0, target: iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target, portal: 10.126.162.26,3260] (multiple)
+	    	Logging in to [iface: eth1, target: iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target, portal: 10.126.162.26,3260] (multiple)
 	    	Login to [iface: eth0, target: iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target, portal: 10.126.162.25,3260] successful.
 	    	Login to [iface: eth1, target: iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target, portal: 10.126.162.25,3260] successful.
 	    	Login to [iface: eth0, target: iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target, portal: 10.126.162.26,3260] successful.
@@ -376,7 +376,7 @@ In diesem Abschnitt werden einige nützliche Tipps bereitgestellt, um mögliche 
 
 F: Änderungen, die an der Datei `multipath.conf` vorgenommen wurden, treten nicht in Kraft.
 
-A: Wenn Sie Änderungen an der Datei `multipath.conf` vornehmen, müssen Sie den Multipfaddienst neu starten. Geben Sie den folgenden Befehl ein:
+A: Wenn Sie Änderungen an der Datei `multipath.conf` vornehmen, müssen Sie den Multipfaddienst neu starten. Geben Sie folgenden Befehl ein:
     
     service multipathd restart
 
@@ -390,7 +390,7 @@ A: Wenn keinerlei Pfade für Multipfad angezeigt werden, deutet dies auf ein Pro
 
 Sie sollten möglicherweise auch prüfen, ob nach der Verbindungsherstellung mit dem Ziel überhaupt Datenträger angezeigt werden. Eine fehlende Antwort von der Multipfadauflistung kann auch bedeuten, dass keine Datenträger vorhanden sind.
 
-- Verwenden Sie den folgenden Befehl, um den SCSI-Bus erneut zu überprüfen: 
+- Verwenden Sie den folgenden Befehl, um den SCSI-Bus erneut zu überprüfen:
  
 	`$ rescan-scsi-bus.sh ` (Teil des sg3\_utils-Pakets)
  
@@ -414,7 +414,7 @@ Eine weniger wahrscheinliche Ursache könnte ein veralteter Wert für "iscsid pi
 
     iscsiadm -m node --logout -p <Target_IP>
 
-Wiederholen Sie diesen Befehl für alle verbundenen Netzwerkschnittstellen auf dem iSCSI-Ziel, Ihrem StorSimple-Gerät. Nachdem Sie sich von allen iSCSI-Sitzungen abgemeldet haben, verwenden Sie den iSCSI-Ziel-IQN, um die iSCSI-Sitzung wiederherzustellen. Geben Sie den folgenden Befehl ein:
+Wiederholen Sie diesen Befehl für alle verbundenen Netzwerkschnittstellen auf dem iSCSI-Ziel, Ihrem StorSimple-Gerät. Nachdem Sie sich von allen iSCSI-Sitzungen abgemeldet haben, verwenden Sie den iSCSI-Ziel-IQN, um die iSCSI-Sitzung wiederherzustellen. Geben Sie folgenden Befehl ein:
 
     iscsiadm -m node --login -T <TARGET_IQN>
 
@@ -492,4 +492,4 @@ Wenn Sie MPIO auf einem Linux-Host konfigurieren, müssen Sie möglicherweise au
 - [Einrichten von MPIO auf CentOS](http://www.centos.org/docs/5/html/5.1/DM_Multipath/setup_procedure.html)
 - [Linux-Trainingshandbuch](http://linux-training.be/files/books/LinuxAdm.pdf)
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0921_2016-->

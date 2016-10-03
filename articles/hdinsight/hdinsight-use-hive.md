@@ -15,7 +15,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="big-data"
-	ms.date="09/06/2016"
+	ms.date="09/19/2016"
 	ms.author="larryfr"/>
 
 # Verwenden von Hive und HiveQL mit Hadoop in HDInsight zum Analysieren einer Apache Log4j-Beispieldatei
@@ -32,6 +32,8 @@ Hive ermöglicht Ihnen die Strukturierung größtenteils unstrukturierter Daten.
 
 Hive kann mit strukturierten und semistrukturierten Daten arbeiten, z. B. Textdateien, in denen die Felder durch bestimmte Zeichen getrennt sind. Hive unterstützt auch benutzerdefinierte **Serialisierer/Deserialisierer (SerDe)** für komplexe oder unregelmäßig strukturierte Daten. Weitere Informationen finden Sie unter [Verwenden eines benutzerdefinierten JSON-SerDe mit HDInsight](http://blogs.msdn.com/b/bigdatasupport/archive/2014/06/18/how-to-use-a-custom-json-serde-with-microsoft-azure-hdinsight.aspx).
 
+## Benutzerdefinierte Funktionen (User Defined Functions, UDFs)
+
 Hive kann auch über **benutzerdefinierte Funktionen (UDF)** erweitert werden. Mit einer UDF-Datei können Sie Funktionen oder Logik implementieren, die sich nicht einfach in HiveQL modellieren lässt. Ein Beispiel für benutzerdefinierte Funktionen mit Hive finden Sie hier:
 
 * [Verwenden einer benutzerdefinierten Java-Funktion mit Hive](hdinsight-hadoop-hive-java-udf.md)
@@ -42,6 +44,7 @@ Hive kann auch über **benutzerdefinierte Funktionen (UDF)** erweitert werden. M
 
 * [How to add a custom Hive UDF to HDInsight (in englischer Sprache)](http://blogs.msdn.com/b/bigdatasupport/archive/2014/01/14/how-to-add-custom-hive-udfs-to-hdinsight.aspx)
 
+* [Custom Hive UDF example to convert date/time formats to Hive timestamp](https://github.com/Azure-Samples/hdinsight-java-hive-udf) (UDF-Beispiel für ein benutzerdefiniertes Hive-System zum Konvertieren von Datums-/Uhrzeitformaten in Hive-Zeitstempel)
 
 ## Interne und externe Hive-Tabellen
 
@@ -214,4 +217,4 @@ Nachdem Sie erfahren haben, was Hive ist und wie Sie es mit Hadoop in HDInsight 
 
 [cindygross-hive-tables]: http://blogs.msdn.com/b/cindygross/archive/2013/02/06/hdinsight-hive-internal-and-external-tables-intro.aspx
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

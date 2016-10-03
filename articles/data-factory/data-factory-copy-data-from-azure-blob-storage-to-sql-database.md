@@ -19,13 +19,13 @@
 
 # Kopieren von Daten aus Blob Storage in SQL-Datenbank mithilfe von Data Factory 
 > [AZURE.SELECTOR]
-- [Übersicht über das Tutorial](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
-- [Verwenden des Data Factory-Editors](data-factory-copy-activity-tutorial-using-azure-portal.md)
-- [Verwenden von PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
-- [Verwenden von Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
-- [Verwenden der REST-API](data-factory-copy-activity-tutorial-using-rest-api.md)
-- [Verwenden der .NET-API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
-- [Verwenden des Kopier-Assistenten](data-factory-copy-data-wizard-tutorial.md)
+- [Übersicht und Voraussetzungen](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
+- [Azure-Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)
+- [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
+- [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
+- [REST-API](data-factory-copy-activity-tutorial-using-rest-api.md)
+- [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
+- [Kopier-Assistent](data-factory-copy-data-wizard-tutorial.md)
 
 In diesem Tutorial erstellen Sie eine Data Factory mit einer Pipeline, um Daten aus Blob Storage in SQL-Datenbank zu kopieren.
 
@@ -34,7 +34,7 @@ Die Kopieraktivität dient zum Verschieben von Daten in Azure Data Factory. Sie 
 > [AZURE.NOTE] Eine ausführliche Übersicht über den Data Factory-Dienst finden Sie im Artikel [Einführung in Azure Data Factory][data-factory-introduction].
 
 ##Voraussetzungen für das Tutorial
-Bevor Sie mit diesem Tutorial beginnen können, benötigen Sie Folgendes:
+Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
 
 - **Azure-Abonnement**. Wenn Sie über kein Abonnement verfügen, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Im Artikel [Kostenlose Testversion][azure-free-trial] finden Sie Details.
 - **Azure Storage-Konto**. In diesem Tutorial verwenden Sie den Blobspeicher als **Quelldatenspeicher**. Wenn Sie kein Azure Storage-Konto haben, finden Sie im Artikel [Erstellen eines Speicherkontos][data-factory-create-storage] Schritte zum Erstellen eines Azure Storage-Kontos.
@@ -71,7 +71,7 @@ Stellen Sie sicher, dass die Einstellung **Zugriff auf Azure-Dienste erlauben** 
 5. Schließen Sie alle Blätter, indem Sie auf **X** klicken.
 
 ## Vorbereiten von Blob Storage und SQL-Datenbank 
-Nun bereiten Sie Ihrer Azure-Blobspeicher und die Azure SQL-Datenbank durch Ausführen der folgenden Schritte auf das Tutorial vor:
+Nun bereiten Sie Ihrer Azure-Blobspeicher und die Azure SQL-Datenbank durch Ausführen der folgenden Schritte auf das Lernprogramm vor:
 
 1. Öffnen Sie den Editor, fügen Sie den folgenden Text ein, und speichern Sie die Datei als **emp.txt** im Ordner **C:\\ADFGetStarted** auf Ihrer Festplatte.
 
@@ -94,20 +94,18 @@ Nun bereiten Sie Ihrer Azure-Blobspeicher und die Azure SQL-Datenbank durch Ausf
 
 		CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
 
-	**Wenn Sie SQL Server 2012/2014 auf Ihrem Computer installiert haben:** Befolgen Sie die Anweisungen unter "Schritt 2: Herstellen einer Verbindung mit SQL-Datenbank" im Artikel [Verwalten einer Azure SQL-Datenbank mit SQL Server Management Studio][sql-management-studio], um eine Verbindung mit Ihrem Azure SQL-Server herzustellen und das SQL-Skript auszuführen. Beachten Sie, dass in diesem Artikel das [Azure-Portal](http://manage.windowsazure.com)[](https://portal.azure.com) verwendet wird, um die Firewall für einen Azure SQL-Server zu konfigurieren.
+	**Wenn Sie SQL Server 2012/2014 auf Ihrem Computer installiert haben:** Befolgen Sie die Anweisungen unter "Schritt 2: Herstellen einer Verbindung mit SQL-Datenbank" im Artikel [Verwalten einer Azure SQL-Datenbank mit SQL Server Management Studio][sql-management-studio], um eine Verbindung mit Ihrem Azure SQL-Server herzustellen und das SQL-Skript auszuführen. In diesem Artikel wird nicht das [neue Azure-Portal](https://portal.azure.com), sondern das [klassische Azure-Portal](http://manage.windowsazure.com) verwendet, um die Firewall für einen Azure SQL-Server zu konfigurieren.
 
 	Wenn Ihr Client nicht auf den Azure SQL-Server zugreifen darf, müssen Sie die Firewall für Ihren Azure SQL-Server so konfigurieren, dass der Zugriff über Ihren Computer (bzw. dessen IP-Adresse) ermöglicht wird. Schritte zum Konfigurieren der Firewall für Ihren Azure SQL-Server finden Sie in [diesem Artikel](../sql-database/sql-database-configure-firewall-settings.md).
 
+Sie haben die Voraussetzungen erfüllt. Klicken Sie oben auf eine Registerkarte, um das Tutorial mit einer der folgenden Optionen auszuführen:
 
-Gehen Sie wie folgt vor:
-
-- Klicken Sie oben auf den Link [Data Factory-Editor verwenden](data-factory-copy-activity-tutorial-using-azure-portal.md), um das Tutorial mithilfe des Data Factory-Editors auszuführen, der Bestandteil des Azure-Portals ist.
-- Klicken Sie oben auf den Link [PowerShell verwenden](data-factory-copy-activity-tutorial-using-powershell.md), um das Tutorial mit Azure PowerShell auszuführen.
-- Klicken Sie oben auf den Link [Mit Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md), um das Tutorial mit Visual Studio 2013 auszuführen.
-
-## Kopieraktivität
-Ausführliche Informationen zur Kopieraktivität in Azure Data Factory finden Sie im Artikel [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md).
-
+- Azure-Portal
+- Visual Studio
+- PowerShell
+- REST-API
+- .NET API
+- Kopier-Assistent
 
 <!--Link references-->
 [azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
@@ -118,4 +116,4 @@ Ausführliche Informationen zur Kopieraktivität in Azure Data Factory finden Si
 [data-factory-create-storage]: http://azure.microsoft.com/documentation/articles/storage-create-storage-account/#create-a-storage-account
 [data-factory-create-sql-database]: ../sql-database/sql-database-get-started.md
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0921_2016-->

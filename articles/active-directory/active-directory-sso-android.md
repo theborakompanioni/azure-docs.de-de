@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="android"
 	ms.devlang="java"
 	ms.topic="article"
-	ms.date="05/16/2016"
+	ms.date="09/16/2016"
 	ms.author="brandwe"/>
 
 
@@ -262,4 +262,4 @@ MANAGE_ACCOUNTS
 
 Jetzt verwendet das Microsoft Identity SDK Anmeldeinformationen automatisch über Ihre Anwendungen hinweg und ruft den Broker auf, wenn dieser auf dem Gerät vorhanden ist.
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0921_2016-->

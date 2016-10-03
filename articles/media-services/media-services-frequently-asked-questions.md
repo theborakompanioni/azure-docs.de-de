@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Häufig gestellte Fragen" 
+	pageTitle="Häufig gestellte Fragen | Microsoft Azure" 
 	description="Häufig gestellte Fragen (FAQs)" 
 	services="media-services" 
 	documentationCenter="" 
@@ -13,21 +13,21 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/22/2016" 
+	ms.date="09/19/2016" 
 	ms.author="juliako"/>
 
 
-#Häufig gestellte Fragen  
+#Häufig gestellte Fragen
 
-##Allgemeine häufig gestellte Fragen zu AMS 
+##Allgemeine häufig gestellte Fragen zu AMS
 
 F: Wie wird die Indizierung skaliert?
 
-A: Die reservierten Einheiten für Codierungs- und Indizierungsaufgaben sind identisch. Folgen Sie den Anweisungen unter [Skalieren von für die Codierung reservierten Einheiten](media-services-how-to-scale.md). **Hinweis**: Die Indizierungsleistung für Typen reservierter Einheiten ist nicht herabgesetzt.
+A: Die reservierten Einheiten für Codierungs- und Indizierungsaufgaben sind identisch. Folgen Sie den Anweisungen unter [Skalieren von für die Codierung reservierten Einheiten](media-services-scale-media-processing-overview.md). **Hinweis**: Die Indizierungsleistung für Typen reservierter Einheiten ist nicht herabgesetzt.
 
 F: Ich habe ein Video hochgeladen, codiert und veröffentlicht. Was könnte die Ursache dafür sein, dass das Video nicht wiedergegeben wird, wenn ich versuche, es zu streamen?
 
-A: Einer der häufigsten Gründe ist, dass Sie für den Streamingendpunkt, von dem Sie die Wiedergabe versuchen, nicht über mindestens eine reservierte Einheit für das Streaming verfügen. Folgen Sie den Anweisungen unter [Skalieren von reservierten Einheiten für das Streaming](media-services-how-to-scale.md).
+A: Einer der häufigsten Gründe ist, dass Sie für den Streamingendpunkt, von dem Sie die Wiedergabe versuchen, nicht über mindestens eine reservierte Einheit für das Streaming verfügen. Folgen Sie den Anweisungen unter [Skalieren von reservierten Einheiten für das Streaming](media-services-portal-scale-streaming-endpoints.md).
 
 F: Ist ein Zusammensetzen bei einem Livestream möglich?
 
@@ -35,7 +35,7 @@ A: Das Zusammensetzen (Compositing) von Livestreams wird derzeit nicht in Azure 
 
 F: Kann ich das Azure CDN für das Livestreaming verwenden?
 
-A: Media Services unterstützt die Integration im Azure CDN. (Weitere Informationen finden Sie unter [Verwalten von Streamingendpunkten in einem Media Services-Konto](media-services-manage-origins.md#enable_cdn).) Sie können Livestreaming mit CDN verwenden. Azure Media Services ermöglicht die Smooth Streaming-, HLS- und MPEG-DASH-Ausgabe. Alle diese Formate verwenden HTTP zum Übertragen von Daten und bieten damit die Vorteile der HTTP-Zwischenspeicherung. Beim Livestreaming werden die eigentlichen Video- oder Audiodaten in Fragmente aufgeteilt, da dann einzeln im CDN zwischengespeichert werden. Die einzigen zu aktualisierenden Daten sind die Manifestdaten. CDN aktualisiert die Manifestdaten regelmäßig.
+A: Media Services unterstützt die Integration im Azure CDN. (Weitere Informationen finden Sie unter [Verwalten von Streamingendpunkten in einem Media Services-Konto](media-services-portal-manage-streaming-endpoints.md).) Sie können Livestreaming mit CDN verwenden. Azure Media Services ermöglicht die Smooth Streaming-, HLS- und MPEG-DASH-Ausgabe. Alle diese Formate verwenden HTTP zum Übertragen von Daten und bieten damit die Vorteile der HTTP-Zwischenspeicherung. Beim Livestreaming werden die eigentlichen Video- oder Audiodaten in Fragmente aufgeteilt, da dann einzeln im CDN zwischengespeichert werden. Die einzigen zu aktualisierenden Daten sind die Manifestdaten. CDN aktualisiert die Manifestdaten regelmäßig.
 
 F: Unterstützt Azure Media Services das Speichern von Bildern?
 
@@ -83,4 +83,4 @@ A: [Media Encoder Standard](media-services-dotnet-encode-with-media-encoder-stan
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0921_2016-->

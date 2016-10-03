@@ -1,20 +1,20 @@
-<properties 
-	pageTitle="Welchen Zweck erfüllen App-Kennwörter bei Azure MFA?" 
-	description="Auf dieser Seite finden Benutzer Informationen zu App-Kennwörtern und zu deren Verwendung im Zusammenhang mit Azure MFA." 
-	services="multi-factor-authentication" 
-	documentationCenter="" 
-	authors="billmath" 
-	manager="stevenpo" 
+<properties
+	pageTitle="Welchen Zweck erfüllen App-Kennwörter bei Azure MFA?"
+	description="Auf dieser Seite finden Benutzer Informationen zu App-Kennwörtern und zu deren Verwendung im Zusammenhang mit Azure MFA."
+	services="multi-factor-authentication"
+	documentationCenter=""
+	authors="kgremban"
+	manager="femila"
 	editor="curtland"/>
 
-<tags 
-	ms.service="multi-factor-authentication" 
-	ms.workload="identity" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/04/2016" 
-	ms.author="billmath"/>
+<tags
+	ms.service="multi-factor-authentication"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/04/2016"
+	ms.author="kgremban"/>
 
 
 
@@ -25,7 +25,7 @@ Bestimmte Nicht-Browser-Apps, z. B. der systemeigene E-Mail-Client von Apple, d
 >[AZURE.NOTE] Moderne Authentifizierung für Office 2013-Clients
 >
 > Office 2013-Clients (einschließlich Outlook) unterstützen jetzt neue Authentifizierungsprotokolle und bieten die Möglichkeit zum Aktivieren von Multi-Factor Authentication. Damit sind nach der Aktivierung keine App-Kennwörter mehr für Office 2013-Clients erforderlich. Weitere Informationen finden Sie unter [Office 2013 modern authentication public preview announced](https://blogs.office.com/2015/03/23/office-2013-modern-authentication-public-preview-announced/) ("Öffentliche Preview für moderne Authentifizierung in Office 2013", in englischer Sprache).
- 
+
 ## Verwenden von App-Kennwörtern
 
 Im Folgenden werden einige wichtige Punkte bei der Verwendung von App-Kennwörtern aufgeführt.
@@ -34,7 +34,7 @@ Im Folgenden werden einige wichtige Punkte bei der Verwendung von App-Kennwörte
 - Derzeit können pro Benutzer maximal 40 Kennwörter festgelegt werden. Wenn Sie versuchen, über diese Beschränkung hinaus weitere Kennwörter zu erstellen, werden Sie aufgefordert, eines der vorhandenen App-Kennwörter zu löschen, damit das neue Kennwort erstellt werden kann.
 - Es wird empfohlen, App-Kennwörter pro Gerät und nicht pro Anwendung zu erstellen. Beispielsweise können Sie ein App-Kennwort für Ihren Laptop erstellen und dieses App-Kennwort für alle Anwendungen auf dem betreffenden Laptop verwenden.
 - Bei der ersten Anmeldung wird ein App-Kennwort für Sie erstellt. Wenn Sie weitere Kennwörter benötigen, können Sie diese bei Bedarf erstellen.
- 
+
 ![Einrichtung](./media/multi-factor-authentication-end-user-app-passwords/app.png)
 
 Sobald ein App-Kennwort erstellt wurde, verwenden Sie in den entsprechenden Nicht-Browser-Apps dieses anstelle Ihres ursprünglichen Kennworts. Angenommen, Sie verwenden Multi-Factor Authentication und den systemeigenen E-Mail-Client von Apple auf Ihrem Telefon. In diesem Fall können Sie die Multi-Factor Authentication mithilfe des App-Kennworts umgehen, um sich im E-Mail-Client erfolgreich zu authentifizieren.
@@ -43,12 +43,12 @@ Sobald ein App-Kennwort erstellt wurde, verwenden Sie in den entsprechenden Nich
 Während der ersten Anmeldung wird ein App-Kennwort erstellt, das Sie direkt verwenden können. Darüber hinaus können Sie später zusätzliche App-Kennwörter erstellen und löschen. Wie Sie dabei vorgehen, hängt davon ab, wie Sie Multi-Factor Authentication verwenden. Wählen Sie die für Sie am besten geeignete Vorgehensweise.
 
 Verwendung von Multi-Factor Authentication|Beschreibung
-:------------- | :------------- | 
-<a href="#verwende">Ich verwende sie mit Office 365</a> | Erstellen Sie Ihre App-Kennwörter über das Office 365-Portal.
-<a href="#Natch">Nicht bekannt</a> |Erstellen Sie Ihre App-Kennwörter unter [https://myapps.microsoft.com](https://myapps.microsoft.com)
-<a href="#mit">Ich verwende sie mit Microsoft Azure</a>| Erstellen Sie Ihre App-Kennwörter über das Azure-Portal.
+:------------- | :------------- |
+[Ich verwende sie mit Office 365.](#creating-and-deleting-app-passwords-with-office-365)| Erstellen Sie Ihre App-Kennwörter über das Office 365-Portal.
+[Nicht bekannt](#creating-and-deleting-app-passwords-with-myapps-portal)|Erstellen Sie Ihre App-Kennwörter unter [https://myapps.microsoft.com](https://myapps.microsoft.com)
+[Ich verwende sie mit Microsoft Azure.](#create-app-passwords-in-the-azure-portal)| Erstellen Sie Ihre App-Kennwörter über das Azure-Portal.
 
-## Erstellen und Löschen von App-Kennwörtern mit Office 365 
+## Erstellen und Löschen von App-Kennwörtern mit Office 365
 
 Wenn Sie Multi-Factor Authentication mit Office 365 verwenden, können Sie App-Kennwörter über das Office 365-Portal erstellen und löschen.
 
@@ -129,4 +129,4 @@ Wenn Sie Multi-Factor Authentication mit Azure verwenden, können Sie App-Kennw�
 5. Bestätigen Sie den Löschvorgang mit **Ja**.
 6. Sobald das App-Kennwort gelöscht wurde, klicken Sie auf **Schließen**. ![Schließen](./media/multi-factor-authentication-end-user-app-passwords/delete3.png)
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0921_2016-->

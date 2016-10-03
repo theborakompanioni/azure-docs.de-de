@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Problembehandlung: Element ";Active Directory"; fehlt oder ist nicht verfügbar | Microsoft Azure"
+   pageTitle="Problembehandlung: Element ";Active Directory"; fehlt oder ist nicht verfügbar | Microsoft Azure "
    description="Vorgehensweise, wenn das Active Directory-Menüelement nicht im Azure-Verwaltungsportal angezeigt wird."
    services="active-directory"
    documentationCenter="na"
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="05/31/2016"
+   ms.date="09/16/2016"
    ms.author="mbaldwin"/>
 
 # Problembehandlung: Element "Active Directory" fehlt oder ist nicht verfügbar
@@ -54,4 +54,4 @@ Während die Seite geladen wird, wird das Element jedoch abgeblendet dargestellt
 
 ![Screenshot: Active Directory ist nicht verfügbar](./media/active-directory-troubleshooting/not-available.png)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="06/13/2016"
+   ms.date="09/14/2016"
    ms.author="subramar"/>
 
 
@@ -21,7 +21,7 @@
 
 # Service Fabric-Anwendungsupgrade mithilfe von PowerShell
 
-Die am häufigsten angewendete und empfohlene Methode für Upgrades ist das überwachte parallele Upgrade. Azure Service Fabric überwacht die Integrität der aktualisierten Anwendung basierend auf einer Reihe von Integritätsrichtlinien. Wenn die Anwendungen in einer Updatedomäne (UD) über ein Upgrade aktualisiert wurden, evaluiert Service Fabric die Anwendungsintegrität und ermittelt, ob mit der nächsten Updatedomäne fortgefahren wird oder ob basierend auf den Integritätsrichtlinien ein Upgradefehler vorliegt.
+Die am häufigsten angewendete und empfohlene Methode für Upgrades ist das überwachte parallele Upgrade. Azure Service Fabric überwacht die Integrität der aktualisierten Anwendung basierend auf einer Reihe von Integritätsrichtlinien. Wenn für eine Updatedomäne (UD) ein Upgrade erfolgt ist, prüft Service Fabric die Anwendungsintegrität und ob mit der nächsten Updatedomäne fortgefahren wird oder ob basierend auf den Integritätsrichtlinien ein Upgradefehler vorliegt.
 
 Ein überwachtes Anwendungsupgrade kann mithilfe der verwalteten oder systemeigenen APIs, PowerShell oder REST ausgeführt werden. Eine Anleitung zum Durchführen eines Upgrades mit Visual Studio finden Sie unter [Upgrade Ihrer Anwendung mit Visual Studio](service-fabric-application-upgrade-tutorial.md).
 
@@ -30,7 +30,7 @@ Mit den von Service Fabric überwachten parallelen Upgrades kann der Anwendungsa
 ## Schritt 1: Erstellen und Bereitstellen des Beispiels „Visual Objects“
 
 
-Erstellen und veröffentlichen Sie die Anwendung, indem Sie mit der rechten Maustaste auf das Anwendungsprojekt **VisualObjectsApplication** klicken und wie folgt im Menü „Service Fabric“ den Befehl **Veröffentlichen** auswählen. Weitere Informationen finden Sie im [Tutorial für Service Fabric-Anwendungsupgrades](service-fabric-application-upgrade-tutorial.md). Alternativ können Sie Ihre Anwendung mithilfe von PowerShell bereitstellen.
+Erstellen und veröffentlichen Sie die Anwendung, indem Sie mit der rechten Maustaste auf das Anwendungsprojekt **VisualObjectsApplication** klicken und den Befehl **Veröffentlichen** auswählen. Weitere Informationen finden Sie im [Tutorial für Service Fabric-Anwendungsupgrades](service-fabric-application-upgrade-tutorial.md). Alternativ können Sie Ihre Anwendung mithilfe von PowerShell bereitstellen.
 
 > [AZURE.NOTE] Um Service Fabric-Befehle in PowerShell verwenden zu können, müssen Sie zunächst mit dem Cmdlet `Connect-ServiceFabricCluster` eine Verbindung mit dem Cluster herstellen. Auch wird davon ausgegangen, dass der Cluster bereits auf dem lokalen Computer eingerichtet wurde. Siehe dazu den Artikel [Set up your Service Fabric development environment](service-fabric-get-started.md) (in englischer Sprache).
 
@@ -55,7 +55,7 @@ Nach diesen Änderungen sollte das Manifest wie folgt aussehen (Änderungen sind
 <CodePackageName="Code" Version="2.0">
 ```
 
-Nun müssen wir die Datei *ApplicationManifest.xml* (im Projekt **VisualObjects** unter der Projektmappe **VisualObjects**) so aktualisieren, dass Version 2.0 des Projekts **VisualObjects.ActorService** verwendet wird. Außerdem muss die Version der Anwendung von „1.0.0.0“ in „2.0.0.0“ geändert werden. Die entsprechenden Zeilen in der Datei *ApplicationManifest.xml* sollten wie folgt aussehen:
+Nun wird die Datei *ApplicationManifest.xml* (im Projekt **VisualObjects** unter der Projektmappe **VisualObjects**) auf Version 2.0 des Projekts **VisualObjects.ActorService** aktualisiert. Außerdem muss die Version der Anwendung von „1.0.0.0“ in „2.0.0.0“ geändert werden. Die Datei *ApplicationManifest.xml* sollte wie im folgenden Codeausschnitt aussehen:
 
 ```xml
 <ApplicationManifestxmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="VisualObjects" ApplicationTypeVersion="2.0.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
@@ -64,16 +64,16 @@ Nun müssen wir die Datei *ApplicationManifest.xml* (im Projekt **VisualObjects*
 ```
 
 
-Erstellen Sie jetzt das Projekt, indem Sie in Visual Studio das Projekt **ActorService** auswählen und dann mit der rechten Maustaste klicken und **Erstellen** wählen. (Wenn Sie **Alles neu erstellen** auswählen, müssen Sie möglicherweise die Versionen für andere Projekte in den zugehörigen Dateien *ServiceManifest.xml* und *ApplicationManifest.xml* aktualisieren, da sich in diesem Fall der Code geändert hat.) Verpacken Sie nun die aktualisierte Anwendung, indem Sie mit der rechten Maustaste auf ***VisualObjectsApplication*** klicken und anschließend im Service Fabric-Menü die Option **Paket** auswählen. Damit wird ein Anwendungspaket erstellt, das bereitgestellt werden kann. Die aktualisierte Anwendung kann nun bereitgestellt werden.
+Erstellen Sie jetzt das Projekt, indem Sie in Visual Studio das Projekt **ActorService** auswählen und dann mit der rechten Maustaste klicken und **Erstellen** wählen. Wenn Sie die Option **Alles neu erstellen** wählen, müssen Sie die Versionen für alle Projekte aktualisieren, da sich der Code geändert haben sollte. Packen Sie nun die aktualisierte Anwendung, indem Sie mit der rechten Maustaste auf ***VisualObjectsApplication*** klicken und anschließend im Service Fabric-Menü die Option **Paket** auswählen. Damit wird ein Anwendungspaket erstellt, das bereitgestellt werden kann. Die aktualisierte Anwendung kann nun bereitgestellt werden.
 
 
 ## Schritt 3: Festlegen der Integritätsrichtlinien und Upgradeparameter
 
-Machen Sie sich mit den [Anwendungsupgradeparametern](service-fabric-application-upgrade-parameters.md) und dem [Upgradevorgang](service-fabric-application-upgrade.md) vertraut, um sich einen fundierten Überblick über die verschiedenen Upgradeparameter, Timeouts und Integritätskriterien zu verschaffen. In dieser exemplarischen Vorgehensweise übernehmen wir die (empfohlenen) Standardwerte für das Evaluierungskriterium für die Dienstintegrität, wodurch alle Dienste und Instanzen nach dem Upgrade _fehlerfrei_ sein sollten.
+Machen Sie sich mit den [Anwendungsupgradeparametern](service-fabric-application-upgrade-parameters.md) und dem [Upgradevorgang](service-fabric-application-upgrade.md) vertraut, um sich einen fundierten Überblick über die verschiedenen Upgradeparameter, Timeouts und Integritätskriterien zu verschaffen. In dieser exemplarischen Vorgehensweise ist das Evaluierungskriterium für die Dienstintegrität auf die (empfohlenen) Standardwerte festgelegt, wodurch alle Dienste und Instanzen nach dem Upgrade _fehlerfrei_ sein sollten.
 
-Allerdings erhöhen wir *HealthCheckStableDuration* auf 60 Sekunden, sodass die Dienste mindestens 20 Sekunden fehlerfrei sind, bevor zur nächsten Updatedomäne gewechselt wird). Wir legen außerdem *UpgradeDomainTimeout* auf 1200 Sekunden und *UpgradeTimeout* auf 3000 Sekunden fest.
+Allerdings erhöhen wir *HealthCheckStableDuration* auf 60 Sekunden, sodass die Dienste mindestens 20 Sekunden fehlerfrei sind, bevor zur nächsten Updatedomäne gewechselt wird. Wir legen außerdem *UpgradeDomainTimeout* auf 1200 Sekunden und *UpgradeTimeout* auf 3000 Sekunden fest.
 
-Schließlich legen wir für *UpgradeFailureAction* den Wert „Rollback“ fest, sodass Service Fabric die Anwendung auf die vorherige Version zurücksetzt, falls während des Upgrades Probleme auftreten. Somit haben wir folgende Upgradeparameter für den Start des Upgrades (in Schritt 4) angegeben:
+Schließlich legen wir *UpgradeFailureAction* auf „Rollback“ fest. Diese Option fordert von Service Fabric an, die Anwendung auf die vorherige Version zurückzusetzen, falls während des Upgrades Probleme erkannt werden. Daher werden beim Starten des Upgrades (in Schritt 4) die folgenden Parameter angegeben:
 
 FailureAction = Rollback
 
@@ -103,7 +103,7 @@ Im nächsten Schritt wird diese Anwendung bei Service Fabric registriert. Dies k
 Register-ServiceFabricApplicationType -ApplicationPathInImageStore "VisualObjects\_V2"
 ```
 
-Wenn der obige Befehl nicht erfolgreich ausgeführt wird, müssen Sie wahrscheinlich alle Dienste neu erstellen. Wie in Schritt 2 erwähnt, müssen Sie möglicherweise auch Ihre WebService-Version aktualisieren.
+Wenn der vorherige Befehl nicht erfolgreich ausgeführt wird, müssen Sie wahrscheinlich alle Dienste neu erstellen. Wie in Schritt 2 erwähnt, müssen Sie möglicherweise auch Ihre WebService-Version aktualisieren.
 
 ## Schritt 5: Starten des Anwendungsupgrades
 
@@ -118,16 +118,16 @@ Beachten Sie, dass als Anwendungsname der in der Datei *ApplicationManifest.xml*
 
 Während das Anwendungsupgrade durchgeführt wird, können Sie es in Service Fabric Explorer oder mit dem folgenden PowerShell-Befehl überwachen: **Get-ServiceFabricApplicationUpgrade fabric:/VisualObjects**.
 
-Nach wenigen Minuten sollte nach Verwendung des obigen PowerShell-Befehls angezeigt werden, dass alle Updatedomänen aktualisiert (abgeschlossen) wurden. Und Sie werden feststellen, dass die visuellen Objekte in Ihrem Browserfenster sich jetzt drehen!
+Nach wenigen Minuten sollte nach Verwendung des vorangehenden PowerShell-Befehls angezeigt werden, dass alle Updatedomänen aktualisiert (abgeschlossen) wurden. Und Sie werden feststellen, dass die visuellen Objekte in Ihrem Browserfenster sich jetzt drehen!
 
-Sie können auch versuchen, als Übung Version 2 in Version 3 oder gar Version 2 zurück in Version 1 zu ändern (ja, ein Upgrade von Version 2 auf Version 1 ist möglich). Experimentieren Sie mit den Timeouts und Integritätsrichtlinien, um sich schrittweise mit ihnen vertraut zu machen. Bei der Bereitstellung in einem Azure-Cluster unterscheiden sich die Parameter von den bei der Bereitstellung in einem lokalen Cluster verwendeten Parametern. Daher empfiehlt sich eine konservative Festlegung der Timeouts.
+Versuchen Sie zur Übung ein Upgrade von Version 2 auf Version 3 oder von Version 2 auf Version 1. Der Wechsel von Version 2 zu Version 1 wird ebenfalls als Upgrade eingestuft. Experimentieren Sie mit den Timeouts und Integritätsrichtlinien, um sich schrittweise mit ihnen vertraut zu machen. Wenn Sie die Bereitstellung in einem Azure-Cluster erfolgt, müssen die Parameter entsprechend festgelegt werden. Es ist ratsam, die Timeouts konservativ festzulegen.
 
 
 ## Nächste Schritte
 
-Unter [Tutorial für das Upgraden von Service Fabric-Anwendungen mithilfe von Visual Studio](service-fabric-application-upgrade-tutorial.md) werden Sie schrittweise durch ein Anwendungsupgrade mit Visual Studio geführt.
+Unter [Upgrade Ihrer Anwendung mit Visual Studio](service-fabric-application-upgrade-tutorial.md) werden Sie schrittweise durch ein Anwendungsupgrade mithilfe von Visual Studio geführt.
 
-Steuern Sie Anwendungsupgrades mithilfe von [Upgradeparametern](service-fabric-application-upgrade-parameters.md).
+Steuern Sie die Upgrades von Anwendungen mithilfe von [Upgradeparametern](service-fabric-application-upgrade-parameters.md).
 
 Machen Sie sich mit der [Datenserialisierung](service-fabric-application-upgrade-data-serialization.md) vertraut, um Ihre Anwendungsupgrades kompatibel zu machen.
 
@@ -135,4 +135,4 @@ Informieren Sie sich in [weiterführenden Themen](service-fabric-application-upg
 
 Informationen zum Beheben gängiger Probleme bei Anwendungsupgrades finden Sie in den Anweisungen unter [Problembehandlung bei Anwendungsupgrades](service-fabric-application-upgrade-troubleshooting.md).
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0921_2016-->

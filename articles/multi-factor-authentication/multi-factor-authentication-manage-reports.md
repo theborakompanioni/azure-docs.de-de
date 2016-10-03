@@ -1,20 +1,20 @@
 <properties 
-	pageTitle="Azure Multi-Factor Authentication-Berichte" 
-	description="Beschreibt, wie Sie das Berichte-Feature für Multi-Factor Authentication verwenden." 
-	services="multi-factor-authentication" 
-	documentationCenter="" 
-	authors="billmath" 
-	manager="stevenpo" 
+	pageTitle="Azure Multi-Factor Authentication-Berichte"
+	description="Beschreibt, wie Sie das Berichte-Feature für Multi-Factor Authentication verwenden."
+	services="multi-factor-authentication"
+	documentationCenter=""
+	authors="kgremban"
+	manager="femila"
 	editor="curtand"/>
 
-<tags 
-	ms.service="multi-factor-authentication" 
-	ms.workload="identity" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/04/2016" 
-	ms.author="billmath"/>
+<tags
+	ms.service="multi-factor-authentication"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/04/2016"
+	ms.author="kgremban"/>
 
 # Berichte in Azure Multi-Factor Authentication
 
@@ -23,7 +23,7 @@ Azure Multi-Factor Authentication bietet verschiedene Berichte, die Sie und Ihre
 Sie können auf die Berichte über das Azure-Verwaltungsportal zugreifen.
 
 Name| Beschreibung
-:------------- | :------------- | 
+:------------- | :------------- |
 Verwendung | Die Nutzungsberichte geben Informationen zur Gesamtnutzung, Benutzerzusammenfassungen und Benutzerdetails an.
 Serverstatus|Dieser Bericht zeigt den Status von Multi-Factor Authentication-Servern an, die mit Ihrem Konto verknüpft sind.
 Verlauf – gesperrte Benutzer|Dieser Bericht zeigt den Verlauf von Anforderungen zum Sperren oder Entsperren von Benutzern an.
@@ -47,6 +47,5 @@ In Warteschlange|Hier werden Berichte aufgelistet, die zur Verarbeitung und aufg
 
 * [Für Benutzer](multi-factor-authentication-end-user.md)
 * [Azure Multi-Factor Authentication bei MSDN](https://msdn.microsoft.com/library/azure/dn249471.aspx)
- 
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0921_2016-->

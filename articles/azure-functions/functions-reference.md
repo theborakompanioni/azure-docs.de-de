@@ -145,8 +145,9 @@ Hier finden Sie eine Tabelle aller unterstützten Bindungen.
 Weitere Informationen finden Sie in den folgenden Ressourcen:
 
 * [C#-Entwicklerreferenz zu Azure Functions](functions-reference-csharp.md)
+* [F#-Entwicklerreferenz zu Azure Functions](functions-reference-fsharp.md)
 * [NodeJS-Entwicklerreferenz zu Azure Functions](functions-reference-node.md)
 * [Trigger und Bindungen in Azure Functions](functions-triggers-bindings.md)
 * [Azure Functions: The Journey](https://blogs.msdn.microsoft.com/appserviceteam/2016/04/27/azure-functions-the-journey/) im Blog des Azure App Service-Teams. Überblick, wie Azure Functions entwickelt wurde.
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -10,7 +10,7 @@
 <tags
 	ms.service="sql-database"
 	ms.devlang="NA"
-	ms.date="06/16/2016"
+	ms.date="09/19/2016"
 	ms.author="sstein"
 	ms.workload="data-management"
 	ms.topic="article"
@@ -39,16 +39,17 @@ Zum Kopieren einer SQL-Datenbank benötigen Sie Folgendes:
 Öffnen Sie das Blatt „SQL-Datenbank“ für die Datenbank, die Sie kopieren möchten:
 
 1.	Öffnen Sie das [Azure-Portal](https://portal.azure.com).
-2.	Navigieren Sie zu der Datenbank, die Sie kopieren möchten: Durchsuchen > SQL-Datenbanken.
-3.	Klicken Sie auf dem Blatt „SQL-Datenbank“ auf **Kopieren**, um das Blatt **Kopieren** zu öffnen:
+2.	Klicken Sie auf **Weitere Dienste** > **SQL-Datenbanken**, und klicken Sie dann auf die gewünschte Datenbank.
+3.	Klicken Sie auf der Seite der SQL-Datenbank auf **Kopieren**:
 
-    ![Datenbank kopieren][1]
+    ![SQL-Datenbank](./media/sql-database-copy-portal/sql-database-copy.png)
 
-1.  Geben Sie einen Namen für die Kopie der Datenbank ein. Es wird ein Standardname angegeben, den Sie bei Bedarf ändern können.
-2.  Wählen Sie einen **Zielserver** aus. Auf dem Zielserver wird die Kopie der Datenbank erstellt. Sie können einen neuen Server erstellen oder in der Liste einen vorhandenen Server auswählen.
+1.  Auf der Seite **Kopieren** wird ein Standarddatenbankname bereitgestellt. Geben Sie bei Bedarf einen anderen Namen ein (alle Datenbanken auf einem Server müssen eindeutige Namen aufweisen).
+2.  Wählen Sie einen **Zielserver** aus. Auf dem Zielserver wird die Kopie der Datenbank erstellt. Sie können die Datenbank auf den gleichen oder einen anderen Server kopieren. Sie können einen Server erstellen oder einen vorhandenen Server aus der Liste auswählen.
+3.  Nach Auswahl des **Zielservers** werden die Optionen **Pool für elastische Datenbanken** und **Tarif** aktiviert. Wenn der Server über einen Pool verfügt, können Sie die Datenbank in diesen Pool kopieren.
 3.  Klicken Sie auf **OK**, um den Kopiervorgang zu starten.
 
-    ![Datenbankname und Server][2]
+    ![SQL-Datenbank](./media/sql-database-copy-portal/copy-page.png)
 
 
 ## Überwachen des Fortschritts des Kopiervorgangs
@@ -62,7 +63,7 @@ Zum Kopieren einer SQL-Datenbank benötigen Sie Folgendes:
 
 ## Sicherstellen, dass die Datenbank auf dem Server aktiv ist
 
-- Klicken Sie auf **DURCHSUCHEN** > **SQL-Datenbanken**, und überprüfen Sie, ob die neue Datenbank **online** ist.
+- Klicken Sie auf **Weitere Dienste** > **SQL-Datenbanken**, und überprüfen Sie, ob die neue Datenbank **online** ist.
 
 
 ## Auflösen von Anmeldungen
@@ -96,4 +97,4 @@ Informationen zum Auflösen von Anmeldungen, nachdem der Kopiervorgang abgeschlo
 [3]: ./media/sql-database-copy-portal/copy-notification.png
 [4]: ./media/sql-database-copy-portal/monitor-copy.png
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0921_2016-->

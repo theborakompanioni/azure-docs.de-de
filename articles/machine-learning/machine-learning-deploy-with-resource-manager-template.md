@@ -124,6 +124,12 @@ Nach Abschluss der Bereitstellung können Sie ganz einfach auf die Eigenschaften
 $rgd.Outputs.mlWorkspaceToken.Value
 ```
 
+Eine weitere Möglichkeit zum Abrufen von Token des vorhandenen Arbeitsbereich ist der Befehl „Invoke-AzureRmResourceAction“. Beispielsweise können Sie die primären und sekundären Token aller Arbeitsbereiche auflisten.
+
+```  
+# List the primary and secondary tokens of all workspaces
+Get-AzureRmResource |? { $_.ResourceType -Like "*MachineLearning/workspaces*"} |% { Invoke-AzureRmResourceAction -ResourceId $_.ResourceId -Action listworkspacekeys -Force}  
+```
 Nach der Bereitstellung des Arbeitsbereichs können Sie viele Azure Machine Learning Studio-Aufgaben mithilfe des [PowerShell-Moduls für Azure Machine Learning](http://aka.ms/amlps) automatisieren.
 
 ## Nächste Schritte 
@@ -138,4 +144,4 @@ Nach der Bereitstellung des Arbeitsbereichs können Sie viele Azure Machine Lear
 
 <!--Link references-->
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/02/2016"
+   ms.date="09/13/2016"
    ms.author="chackdan"/>
 
 
@@ -57,7 +57,7 @@ Wenn die Clusterintegritätsrichtlinien erfüllt sind, wird das Upgrade als erfo
 
 Diese Integritätsrichtlinien in dieser Phase zielen auf die Vervollständigung des Upgrades und nicht auf die Integrität der Anwendungen ab. Nur sehr wenige Clusterupgrades gelangen in diese Phase. Wenn Ihr Cluster in diese Phase gelangt, besteht eine hohe Wahrscheinlichkeit, dass Ihre Anwendung instabil wird und/oder Verfügbarkeit einbüßt.
 
-Ähnlich wie in den beiden anderen Phasen erfolgen Upgrades om Phase 3 nacheinander in den einzelnen Upgradedomänen.
+Ähnlich wie in den beiden anderen Phasen erfolgen Upgrades in Phase 3 nacheinander in den einzelnen Upgradedomänen.
 
 Wenn die Integritätsrichtlinien des Clusters nicht erfüllt sind, wird das Upgrade zurückgesetzt. Wir versuchen, dasselbe Upgrade ein paar weitere Male auszuführen, falls ein Upgrade aus Gründen der Infrastruktur fehlgeschlagen ist. Danach wird der Cluster fixiert, sodass er keine weitere Unterstützung und/oder Upgrades empfängt.
 
@@ -71,13 +71,10 @@ Hier sind die Konfigurationseinstellungen, die Sie bei einem aktiven Cluster än
 
 ### Zertifikate
 
-Sie können die primären oder sekundären Zertifikate einfach über das Azure-Portal (siehe unten) oder über einen PUT-Befehl für die Ressource „servicefabric.cluster“ aktualisieren.
+Über das Portal können Sie nun Zertifikate für den Cluster und Client mühelos hinzufügen oder löschen. [In diesem Dokument finden Sie ausführliche Anweisungen](service-fabric-cluster-security-update-certs-azure.md).
 
 ![Screenshot mit dem Zertifikatfingerabdruck im Azure-Portal.][CertificateUpgrade]
 
->[AZURE.NOTE] Bevor Sie ein Zertifikat bestimmen, das Sie für die Clusterressourcen verwenden möchten, müssen Sie die folgenden Schritte ausführen. Andernfalls wird das neue Zertifikat nicht verwendet:
-1. Laden Sie das neue Zertifikat in den Azure-Schlüsseltresor hoch. Anweisungen finden Sie in unter [Service Fabric-Sicherheit](service-fabric-cluster-security.md). Beginnen Sie mit Schritt 2 in diesem Dokument.
-2. Aktualisieren Sie alle virtuellen Computer, die Ihren Cluster bilden, sodass das Zertifikat auf ihnen bereitgestellt wird. Weitere Informationen hierzu finden Sie im [Azure Key Vault-Teamblog](http://blogs.technet.com/b/kv/archive/2015/07/14/vm_2d00_certificates.aspx).
 
 ### Anwendungsports
 
@@ -87,7 +84,7 @@ Um einen neuen Port auf allen VMs in einem Knotentyp öffnen zu können, führen
 
 1. Fügen Sie dem entsprechenden Load Balancer einen neuen Test hinzu.
 
-    Wenn Sie den Cluster mithilfe des Portals bereitgestellt haben, heißen die Load Balancer für jeden Knotentyp „loadBalancer-0“ , „loadBalancer-1“ usw. Da die Load Balancer-Namen nur in einer Ressourcengruppe eindeutig sind, empfiehlt es sich, sie nur in einer bestimmten Ressourcengruppe zu suchen.
+    Wenn Sie den Cluster mithilfe des Portals bereitgestellt haben, heißen die Load Balancer für jeden Knotentyp „LB-Name der Ressourcengruppe-NodeTypename“. Für jeden Knotentyp gibt es einen LB. Da die Load Balancer-Namen nur in einer Ressourcengruppe eindeutig sind, empfiehlt es sich, sie nur in einer bestimmten Ressourcengruppe zu suchen.
 
     ![Screenshot, der zeigt, wie einem Load Balancer im Portal ein Test hinzugefügt wird.][AddingProbes]
 
@@ -122,8 +119,8 @@ Wenn Sie das verwendete Betriebssystemimage auf den virtuellen Computern des Clu
 - Machen Sie sich mit [Anwendungsupgrades](service-fabric-application-upgrade.md) vertraut.
 
 <!--Image references-->
-[CertificateUpgrade]: ./media/service-fabric-cluster-upgrade/CertificateUpgrade.png
-[AddingProbes]: ./media/service-fabric-cluster-upgrade/addingProbes.png
+[CertificateUpgrade]: ./media/service-fabric-cluster-upgrade/CertificateUpgrade2.png
+[AddingProbes]: ./media/service-fabric-cluster-upgrade/addingProbes2.PNG
 [AddingLBRules]: ./media/service-fabric-cluster-upgrade/addingLBRules.png
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0921_2016-->

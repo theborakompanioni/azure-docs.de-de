@@ -24,7 +24,7 @@ Mit der VPN-Unterstützung von API Management können Sie Ihr API Management-Gat
 
 ## <a name="enable-vpn"> </a>Aktivieren von VPN-Verbindungen
 
->Die VPN-Konnektivität steht nur im Tarif **Premium** zur Verfügung. Um zu diesem Tarif zu wechseln, öffnen Sie Ihren API Management-Dienst im [klassischen Azure-Portal][] und öffnen dann die Registerkarte **Skalieren**. Wählen Sie im Abschnitt **Allgemein** den Premium-Tarif, und klicken Sie auf "Speichern".
+>Die VPN-Konnektivität steht nur in den Tarifen **Premium** und **Developer** zur Verfügung. Um zu diesem Tarif zu wechseln, öffnen Sie Ihren API Management-Dienst im [klassischen Azure-Portal][] und öffnen dann die Registerkarte **Skalieren**. Wählen Sie im Abschnitt **Allgemein** den Premium-Tarif, und klicken Sie auf "Speichern".
 
 Um die VPN-Konnektivität zu aktivieren, öffnen Sie Ihren API Management-Dienst im [klassischen Azure-Portal][] und wechseln zur Registerkarte **Konfigurieren**.
 
@@ -85,4 +85,4 @@ API Management hängt von einer Reihe von Azure-Diensten ab. Wenn eine API Manag
 [Erstellen eines virtuellen Netzwerks mit einer Standort-zu-Standort-VPN-Verbindung mit dem klassischen Azure-Portal]: ../vpn-gateway/vpn-gateway-site-to-site-create.md
 [Verwenden des API-Inspektors zur Verfolgung von Aufrufen in Azure API Management]: api-management-howto-api-inspector.md
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0921_2016-->

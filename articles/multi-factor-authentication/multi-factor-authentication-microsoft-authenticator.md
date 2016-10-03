@@ -3,7 +3,7 @@
 	description="Erfahren Sie, wie Sie Azure Authenticator auf die neueste Version aktualisieren können."
 	services="multi-factor-authentication"
 	documentationCenter=""
-	authors="billmath"
+	authors="kgremban"
 	manager="femila"
 	editor="curtland"/>
 
@@ -14,7 +14,7 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="08/22/2016"
-	ms.author="billmath"/>
+	ms.author="kgremban"/>
 
 # Microsoft Authenticator
 
@@ -64,7 +64,7 @@ Gehen Sie für jedes Konto, das Sie zur Microsoft Authenticator-App hinzufügen 
 
 	![Bildschirm, auf dem Sie „Überprüfen“ auswählen, um sich anzumelden](./media/multi-factor-authentication-end-user-first-time-mobile-app/verify.png)
 
-6. Wenn Ihr Unternehmen eine PIN anfordert, um die Anmeldung zu genehmigen, werden Sie hier zur Eingabe gebeten.
+6. Wenn Ihr Unternehmen eine PIN anfordert, um die Überprüfung der Anmeldung zu genehmigen, gegen Sie sie hier ein.
 
 	![Feld für die Eingabe einer PIN](./media/multi-factor-authentication-end-user-first-time-mobile-app/scan3.png)
 
@@ -74,7 +74,7 @@ Gehen Sie für jedes Konto, das Sie zur Microsoft Authenticator-App hinzufügen 
 
 	![Bildschirm zum Erstellen eines App-Kennworts](./media/multi-factor-authentication-end-user-first-time-mobile-app/step4.png)
 
-10. Wenn Sie Nicht-Browser-Apps verwenden, kopieren Sie das angegebene App-Kennwort und fügen es in Ihre Anwendungen ein. Die Schritte für bestimmte Anwendungen wie Outlook und Lync finden Sie unter „Ändern des Kennworts in Ihrer E-Mail in das App-Kennwort“ und „Ändern des Kennworts in Ihrer Anwendung in das App-Kennwort“.
+10. Wenn Sie Nicht-Browser-Apps verwenden, kopieren Sie das angegebene App-Kennwort und fügen es in Ihre Apps ein. Die Schritte für bestimmte Anwendungen wie Outlook und Lync finden Sie unter „Ändern des Kennworts in Ihrer E-Mail in das App-Kennwort“ und „Ändern des Kennworts in Ihrer Anwendung in das App-Kennwort“.
 11. Wählen Sie **Fertig** aus.
 
 Das neue Konto sollte jetzt auf der Seite **Konten** angezeigt werden.
@@ -137,4 +137,4 @@ Um ein Konto aus der Microsoft-Authenticator-App zu entfernen, wählen Sie das K
 
 ![Schaltfläche „Löschen“](./media/multi-factor-authentication-azure-authenticator/remove.png)
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

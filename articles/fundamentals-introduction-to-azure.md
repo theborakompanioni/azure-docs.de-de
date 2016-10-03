@@ -22,7 +22,7 @@ Microsoft Azure ist die Anwendungsplattform von Microsoft für die öffentliche 
 
 **Wie Sie diesen Artikel lesen sollten**
 
-Azure wird ständig erweitert, sodass Sie leicht den Überblick verlieren können. Die grundlegenden Dienste sind weiter oben in diesem Artikel aufgeführt. Beginnen Sie einfach mit diesen, und arbeiten Sie dann die zusätzlichen Dienste durch. Das bedeutet nicht, dass Sie diese zusätzlichen Dienste nicht unabhängig verwenden können. Die grundlegenden Dienste bilden jedoch den Kern einer Anwendung, die in Azure ausgeführt wird.
+Azure wird ständig erweitert, sodass Sie leicht den Überblick verlieren können. Beginnen Sie mit den grundlegenden Diensten, die in diesem Artikel zuerst aufgeführt sind. Fahren Sie anschließend mit den zusätzlichen Diensten fort. Das bedeutet nicht, dass Sie diese zusätzlichen Dienste nicht unabhängig verwenden können. Die grundlegenden Dienste bilden jedoch den Kern einer Anwendung, die in Azure ausgeführt wird.
 
 **Geben Sie uns Feedback**
 
@@ -607,4 +607,4 @@ Nachdem Sie nun einen Überblick erhalten haben, besteht der nächste Schritt da
 
 [Azure Media Services Poster]: http://azure.microsoft.com/documentation/infographics/media-services/
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0921_2016-->

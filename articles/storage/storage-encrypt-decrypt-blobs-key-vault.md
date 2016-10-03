@@ -1,20 +1,20 @@
 <properties
-   pageTitle="Tutorial: Verschlüsseln und Entschlüsseln von Blobs in Microsoft Azure Storage per Azure Key Vault | Microsoft Azure"
-   description="In diesem Lernprogramm werden Sie durch die Schritte zum Verschlüsseln und Entschlüsseln eines BLOBs mithilfe der clientseitigen Verschlüsselung für Microsoft Azure Storage mit Azure Key Vault geführt."
-   services="storage"
-   documentationCenter=""
-   authors="adhurwit"
-   manager=""
-   editor="tysonn"/>
+	pageTitle="Tutorial: Verschlüsseln und Entschlüsseln von Blobs in Microsoft Azure Storage per Azure Key Vault | Microsoft Azure"
+	description="In diesem Lernprogramm werden Sie durch die Schritte zum Verschlüsseln und Entschlüsseln eines BLOBs mithilfe der clientseitigen Verschlüsselung für Microsoft Azure Storage mit Azure Key Vault geführt."
+	services="storage"
+	documentationCenter=""
+	authors="adhurwit"
+	manager=""
+	editor="tysonn"/>
 
 <tags
-   ms.service="storage"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="required"
-   ms.date="03/31/2016"
-   ms.author="lakasa"/>
+	ms.service="storage"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="required"
+	ms.date="09/20/2016"
+	ms.author="lakasa;robinsh"/>
 
 # Tutorial: Verschlüsseln und Entschlüsseln von Blobs in Microsoft Azure Storage per Azure Key Vault
 
@@ -35,7 +35,7 @@ Für dieses Lernprogramm benötigen Sie Folgendes:
 
 - Ein Azure-Speicherkonto
 - Visual Studio 2013 oder höher
-- Microsoft Azure PowerShell
+- Azure PowerShell
 
 
 ## Übersicht über die clientseitige Verschlüsselung
@@ -235,4 +235,4 @@ Aktuelle Informationen zu Microsoft Azure Storage finden Sie im [Microsoft Azure
 <!--Image references-->
 [1]: ./media/storage-encrypt-decrypt-blobs-key-vault/blobmetadata.png
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0921_2016-->

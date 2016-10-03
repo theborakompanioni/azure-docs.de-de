@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="09/08/2016"
+   ms.date="09/16/2016"
    ms.author="terrylan"/>
 
 # Sicherheit in Azure – bewährte Methoden und Muster
@@ -26,7 +26,7 @@ Wir stellen Ihnen derzeit die folgenden Artikel zu bewährten Methoden und Muste
 - [Internet der Dinge – bewährte Methoden für die Sicherheit](azure-security-iot-best-practices.md)
 - [Best Practices für Softwareupdates in Microsoft Azure IaaS](azure-security-best-practices-software-updates-iaas.md)
 - [Microsoft-Clouddienste und Netzwerksicherheit](../best-practices-network-security.md)
-- [Implementing a secure hybrid network architecture in Azure](../guidance/guidance-iaas-ra-secure-vnet-hybrid.md) (Implementieren einer sicheren Hybrid-Netzwerkarchitektur in Azure)
+- [Implementing a secure hybrid network architecture in Azure (Implementieren einer sicheren Hybrid-Netzwerkarchitektur in Azure)](../guidance/guidance-iaas-ra-secure-vnet-hybrid.md)
 
 Azure bietet eine sichere Plattform, auf der Sie Ihre Lösungen erstellen können. Wir bieten auch Dienste und Technologien, um Ihre Lösungen in Azure sicherer zu gestalten. Wegen der zahlreichen verfügbaren Optionen möchten viele von Ihnen erfahren, was Microsoft als bewährte Methoden und Muster zur Verbesserung der Sicherheit empfehlen kann.
 
@@ -44,4 +44,4 @@ Für jede bewährte Methode erläutern wir Folgendes:
 
 Das Angebot an Artikeln zur Sicherheitsarchitektur von Azure sowie zu bewährten Methoden wird in Zukunft noch erweitert. Themenwünsche können im Diskussionsbereich am Ende dieser Seite geäußert werden.
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

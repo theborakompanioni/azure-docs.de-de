@@ -9,12 +9,12 @@ editor=""
 tags="connectors"/>
 
 <tags
-ms.service="multiple"
+ms.service="logic-apps"
 ms.devlang="na"
 ms.topic="article"
 ms.tgt_pltfrm="na"
-ms.workload="na"
-ms.date="05/18/2016"
+ms.workload="integration"
+ms.date="09/19/2016"
 ms.author="mandia"/>
 
 # Erste Schritte mit dem Twilio-Connector
@@ -25,15 +25,15 @@ Stellen Sie eine Verbindung mit Twilio her, um global SMS, MMS und IP-Nachrichte
 
 Mit Twilio können Sie folgende Aktionen ausführen:
 
-- Erstellen eines Geschäftsworkflows basierend auf den Daten, die aus Twilio abgerufen werden. 
-- Verwenden von Aktionen zum Abrufen einer Nachricht, von Listennachrichten und mehr. Diese Aktionen erhalten eine Antwort und stellen anschließend die Ausgabe anderen Aktionen zur Verfügung. Wenn Sie eine neue Twilio-Nachricht erhalten, können Sie diese Nachricht z. B. annehmen und als Service Bus-Workflow verwenden. 
+- Erstellen eines Geschäftsworkflows basierend auf den Daten, die aus Twilio abgerufen werden.
+- Verwenden von Aktionen zum Abrufen einer Nachricht, von Listennachrichten und mehr. Diese Aktionen erhalten eine Antwort und stellen anschließend die Ausgabe anderen Aktionen zur Verfügung. Wenn Sie eine neue Twilio-Nachricht erhalten, können Sie diese Nachricht z. B. annehmen und als Service Bus-Workflow verwenden.
 
 Informationen zum Hinzufügen eines Vorgangs in Logik-Apps finden Sie unter [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
 ## Trigger und Aktionen
 Der Twilio-Connector beinhaltet die folgenden Aktionen. Es gibt keine Trigger.
 
-| Trigger | Aktionen|
+| Trigger | Actions|
 | --- | --- |
 |Keine| <ul><li>Nachricht abrufen</li><li>Nachrichten auflisten</li><li>Nachricht senden</li></ul>|
 
@@ -55,7 +55,7 @@ Wenn Sie noch kein Zugriffstoken besitzen, nutzen Sie die Informationen zum Erst
 >[AZURE.TIP] Sie können die gleiche Twilio-Verbindung in anderen Logik-Apps verwenden.
 
 ## Swagger-REST-API – Referenz
-#### Diese Dokumentation gilt für Version 1.0.
+#### Diese Dokumentation gilt für Version 1.0.
 
 ### Get Message
 Gibt eine einzelne Nachricht zurück, die in der bereitgestellten Nachrichten-ID angegeben ist. ```GET: /Messages/{MessageId}.json```
@@ -81,7 +81,7 @@ Gibt eine Liste von Nachrichten zurück, die Ihrem Konto zugeordnet sind. ```GET
 | ---|---|---|---|---|---|
 |To  
 |string|no|query|(Keine)|Angerufene Telefonnummer|
-|Aus|string|no|query|(Keine)|Anrufertelefonnummer|
+|From|string|no|query|(Keine)|Anrufertelefonnummer|
 |DateSent|string|no|query|(Keine)|Nur an diesem Datum (GMT) gesendete Nachrichten anzeigen, Datum im Format JJJJ-MM-TT. Beispiel: DateSent=2009-07-06. Sie können auch Ungleichheit angeben, d. h. DateSent<=JJJJ-MM-TT für Nachrichten, die an oder vor Mitternacht an einem bestimmten Datum gesendet wurden, sowie DateSent>=JJJJ-MM-TT für Nachrichten, die an oder nach Mitternacht an einem bestimmten Datum gesendet wurden.|
 |PageSize|integer|no|query|50|Die Anzahl der Ressourcen, die auf jeder Listenseite zurückgegeben werden. Standard ist 50.|
 |Seite|integer|no|query|0|Seitenzahl. Der Standardwert ist 0.|
@@ -119,7 +119,7 @@ Sendet eine neue Nachricht an eine Mobiltelefonnummer. ```POST: /Messages.json``
 |Eigenschaftenname | Datentyp | Erforderlich|
 |---|---|---|
 |from|string|Ja|
-|auf fest|string|Ja|
+|to|string|Ja|
 |body|string|Ja|
 |media\_url|array|no|
 |status\_callback|string|no|
@@ -134,7 +134,7 @@ Sendet eine neue Nachricht an eine Mobiltelefonnummer. ```POST: /Messages.json``
 |---|---|---|
 |body|string|no|
 |from|string|no|
-|auf fest|string|no|
+|to|string|no|
 |status|string|no|
 |sid|string|no|
 |account\_sid|string|no|
@@ -249,4 +249,4 @@ Sendet eine neue Nachricht an eine Mobiltelefonnummer. ```POST: /Messages.json``
 ## Nächste Schritte
 [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-<!-----HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0921_2016-->

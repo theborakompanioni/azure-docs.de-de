@@ -13,13 +13,13 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/14/2016"
+	ms.date="09/19/2016"
 	ms.author="hangzh;bradsev" />
 
 
 # Der Team Data Science-Prozess in Aktion: Verwenden von HDInsight Hadoop-Clustern
 
-In dieser exemplarischen Vorgehensweise nutzen Sie den Team Data Science-Prozess in einem vollständigen Szenario mit einem [Azure HDInsight Hadoop-Cluster](https://azure.microsoft.com/services/hdinsight/), um Daten aus dem öffentlich zugänglichen [NYC Taxi Trips](http://www.andresmh.com/nyctaxitrips/)-Dataset zu speichern und zu untersuchen, Features zu entwickeln und ein Downsampling auf die Daten anzuwenden. Modelle der Daten werden mit Azure Machine Learning entwickelt, um eine binäre Klassifizierung und eine Multiklassenklassifizierung sowie Regressionsvorhersageaufgaben durchzuführen.
+In dieser exemplarischen Vorgehensweise nutzen Sie den [Team Data Science-Prozess (TDSP)](data-science-process-overview.md) in einem vollständigen Szenario mit einem [Azure HDInsight Hadoop-Cluster, ](https://azure.microsoft.com/services/hdinsight/)um Daten aus dem öffentlich zugänglichen [NYC Taxi Trips](http://www.andresmh.com/nyctaxitrips/)-Dataset zu speichern und zu untersuchen, Features zu entwickeln und ein Downsampling auf die Daten anzuwenden. Modelle der Daten werden mit Azure Machine Learning entwickelt, um eine binäre Klassifizierung und eine Multiklassenklassifizierung sowie Regressionsvorhersageaufgaben durchzuführen.
 
 Eine exemplarische Vorgehensweise, die zeigt, wie ein größeres Dataset (mit 1 TB) für ein ähnliches Szenario mit Verwendung von HDInsight Hadoop-Clustern für die Datenverarbeitung genutzt wird, finden Sie unter [Team Data Science-Prozess in Aktion – Verwenden von Azure HDInsight Hadoop-Clustern in einem 1-TB-Dataset](machine-learning-data-science-process-hive-criteo-walkthrough.md).
 
@@ -97,7 +97,7 @@ Sie können zum Abrufen des Datasets [NYC Taxi Trips](http://www.andresmh.com/ny
 
 Nachfolgend wird beschrieben, wie Sie AzCopy zum Übertragen der Dateien verwenden, die Daten enthalten. Folgen Sie den Anweisungen unter [Erste Schritte mit dem Befehlszeilenprogramm AzCopy](../storage/storage-use-azcopy.md), um AzCopy herunterzuladen und zu installieren.
 
-1. Führen Sie in einem Eingabeaufforderungsfenster die folgenden AzCopy-Befehle aus, und ersetzen Sie *<path\_to\_data\_folder>* durch den gewünschten Speicherort:
+1. Führen Sie in einem Eingabeaufforderungsfenster die folgenden AzCopy-Befehle aus, und ersetzen Sie *<path_to_data_folder>* durch den gewünschten Speicherort:
 
 
 		"C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:https://nyctaxitrips.blob.core.windows.net/data /Dest:<path_to_data_folder> /S
@@ -434,10 +434,10 @@ Eine allgemeines Ziel bei der explorativen Datenanalyse besteht darin, ungültig
 
 Dies ist der Inhalt der Datei *sample\_hive\_quality\_assessment.hql*, der untersucht wird.
 
-    	SELECT COUNT(*) FROM nyctaxidb.trip
-    	WHERE month=1
-    	AND  (CAST(pickup_longitude AS float) NOT BETWEEN -90 AND -30
-    	OR    CAST(pickup_latitude AS float) NOT BETWEEN 30 AND 90
+	    SELECT COUNT(*) FROM nyctaxidb.trip
+	    WHERE month=1
+	    AND  (CAST(pickup_longitude AS float) NOT BETWEEN -90 AND -30
+	    OR    CAST(pickup_latitude AS float) NOT BETWEEN 30 AND 90
 	    OR    CAST(dropoff_longitude AS float) NOT BETWEEN -90 AND -30
 	    OR    CAST(dropoff_latitude AS float) NOT BETWEEN 30 AND 90);
 
@@ -564,10 +564,10 @@ Die Abfrage komprimiert anschließend die Daten, damit die Ergebnisse in Azure M
 
 Nachfolgend werden die Inhalte der Datei *sample\_hive\_prepare\_for\_aml\_full.hql* gezeigt, mit der Daten für die Modellentwicklung in Azure Machine Learning vorbereitet werden.
 
-		set R = 3959;
-	    set pi=radians(180);
+        set R = 3959;
+        set pi=radians(180);
 
-		create table if not exists nyctaxidb.nyctaxi_downsampled_dataset (
+        create table if not exists nyctaxidb.nyctaxi_downsampled_dataset (
 
         medallion string,
         hack_license string,
@@ -622,7 +622,7 @@ Nachfolgend werden die Inhalte der Datei *sample\_hive\_prepare\_for\_aml\_full.
         t.pickup_latitude,
         t.dropoff_longitude,
         t.dropoff_latitude,
-		t.direct_distance,
+        t.direct_distance,
         f.payment_type,
         f.fare_amount,
         f.surcharge,
@@ -810,4 +810,4 @@ Diese exemplarische Vorgehensweise und die zugehörigen Skripts werden von Micro
 [select-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
 [import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

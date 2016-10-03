@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="07/05/2016"
+	ms.date="09/13/2016"
 	ms.author="larryfr"/>
 
 #Verfügbarkeit und Zuverlässigkeit von Hadoop-Clustern in HDInsight
@@ -41,6 +41,10 @@ HDInsight-Cluster verfügen über einen sekundären Hauptknoten, sodass Masterdi
 
 > [AZURE.IMPORTANT] Beide Hauptknoten sind aktiv und werden gleichzeitig innerhalb des Clusters ausgeführt. Einige Dienste (z. B. HDFS oder YARN) sind jeweils nur auf einem Hauptknoten „aktiv“ (und auf dem anderen Hauptknoten im „Standby“). Andere Dienste (z. B. HiveServer2 oder Hive-MetaStore) sind gleichzeitig auf beiden Hauptknoten aktiv.
 
+Hauptknoten (und andere Knoten in HDInsight) verfügen über numerische Werte als Teil des Hostnamens des Knotens. Beispiel: `hn0-CLUSTERNAME` oder `hn4-CLUSTERNAME`.
+
+> [AZURE.IMPORTANT] Der numerische Wert gibt nicht an, ob ein Knoten primär oder sekundär ist; der numerische Wert vergibt nur einen eindeutigen Namen für jeden Knoten.
+
 ###Nimbusknoten
 
 In Storm-Clustern stellen Nimbusknoten die gleiche Funktionalität für den Hadoop JobTracker bereit, indem sie die Verarbeitung auf Workerknoten verteilen und überwachen. HDInsight stellt zwei Nimbusknoten für den Storm-Clustertyp bereit.
@@ -64,9 +68,9 @@ Zurzeit ist R Server auf HDInsight der einzige Clustertyp, der standardmäßig e
 
 ## Zugreifen auf die Knoten
 
-Der Zugriff auf den Cluster über das Internet wird über ein öffentliches Gateway bereitgestellt und ist auf das Herstellen einer Verbindung mit den Hauptknoten und (wenn es sich um einen Cluster mit R Server in HDInsight handelt) dem Edgeknoten beschränkt. Die Bereitstellung mehrerer Hauptknoten wirkt sich nicht auf den Zugriff auf die auf den Hauptknoten ausgeführten Dienste aus, da das öffentliche Gateway Anforderungen an den Hauptknoten weiterleitet, der den angeforderten Dienst hostet. Ein Beispiel: Ambari wird zurzeit auf Hauptknoten 1 gehostet, und das Gateway leitet eingehende Anforderungen für Ambari an diesen Knoten weiter.
+Der Zugriff auf den Cluster über das Internet wird über ein öffentliches Gateway bereitgestellt und ist auf das Herstellen einer Verbindung mit den Hauptknoten und (wenn es sich um einen Cluster mit R Server in HDInsight handelt) dem Edgeknoten beschränkt. Die Bereitstellung mehrerer Hauptknoten wirkt sich nicht auf den Zugriff auf die auf den Hauptknoten ausgeführten Dienste aus, da das öffentliche Gateway Anforderungen an den Hauptknoten weiterleitet, der den angeforderten Dienst hostet. Ein Beispiel: Ambari wird zurzeit auf dem sekundären Hauptknoten gehostet, und das Gateway leitet eingehende Anforderungen für Ambari an diesen Knoten weiter.
 
-Beim Zugriff auf den Cluster über SSH wird bei Verwendung von Port 22 (Standardport für SSH) eine Verbindung mit „Hauptknoten 0“ hergestellt und bei Verwendung von Port 23 eine Verbindung mit „Hauptknoten 1“. `ssh username@mycluster-ssh.azurehdinsight.net` stellt z. B. eine Verbindung mit Hauptknoten 0 des Clusters mit der Bezeichnung __mycluster__ her.
+Beim Zugriff auf den Cluster über SSH wird bei Verwendung von Port 22 (Standardport für SSH) eine Verbindung mit dem primären Hauptknoten hergestellt; bei Verwendung von Port 23 eine Verbindung mit dem sekundären Hauptknoten. `ssh username@mycluster-ssh.azurehdinsight.net` stellt z.B. eine Verbindung mit dem primären Hauptknoten des Clusters mit der Bezeichnung __mycluster__ her.
 
 > [AZURE.NOTE] Dies gilt auch für SSH-basierte Protokolle, wie etwa SFTP (SSH File Transfer Protocol).
 
@@ -143,7 +147,7 @@ Die Antwort sieht in etwa wie folgt aus:
 	  }
 	}
 
-Der URL können Sie entnehmen, dass der Dienst zurzeit auf **Hauptknoten 0** ausgeführt wird.
+Der URL können Sie entnehmen, dass der Dienst zurzeit auf einem Hauptknoten namens __hn0-CLUSTERNAME__ ausgeführt wird.
 
 Der Statuswert (state) gibt an, dass der Dienst zurzeit ausgeführt wird bzw. sich im Status **STARTED** befindet.
 
@@ -225,4 +229,4 @@ In diesem Dokument haben Sie erfahren, wie Azure HDInsight hohe Verfügbarkeit f
 [azure-powershell]: ../powershell-install-configure.md
 [azure-cli]: ../xplat-cli-install.md
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

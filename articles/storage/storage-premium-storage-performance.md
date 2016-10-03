@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="07/26/2016"
+    ms.date="09/19/2016"
     ms.author="aungoo-msft"/>
 
 # Azure Storage Premium: Entwurf für hohe Leistung
@@ -72,7 +72,7 @@ Messen Sie als Nächstes die maximalen Leistungsanforderungen der Anwendung wäh
 
 | **Leistungsanforderungen** | **50. Perzentil** | **90. Perzentil** | **99. Perzentil** |
 |---|---|---|---|
-| Maximal Transaktionen pro Sekunde | | | |
+| Max. Transaktionen pro Sekunde | | | |
 | % Lesevorgänge | | | |
 | % Schreibvorgänge | | | |
 | % zufällige Vorgänge | | | |
@@ -82,9 +82,9 @@ Messen Sie als Nächstes die maximalen Leistungsanforderungen der Anwendung wäh
 | Max. Durchsatz | | | |
 | Min. Latenz | | | |
 | Durchschnittliche Latenz | | | |
-| Maximal CPU | | | |
+| Max. CPU | | | |
 | Durchschnittliche CPU-Nutzung | | | |
-| Maximal Arbeitsspeicher | | | |
+| Max. Arbeitsspeicher | | | |
 | Durchschnittliche Arbeitsspeichernutzung | | | |
 | Warteschlangenlänge | | | |
 
@@ -236,6 +236,8 @@ Wie schon erwähnt, bieten Storage Premium-Datenträger eine höhere Leistung al
 
 ## Nutzung des Datenträgercaches  
 Hochleistungs-VMs mit Azure Storage Premium arbeiten mit einer mehrschichtigen Cachetechnologie mit dem Namen BlobCache. BlobCache verwendet für das Zwischenspeichern eine Kombination aus RAM des virtuellen Computers und lokalem SSD-Laufwerk. Dieser Cache ist für die permanenten Storage Premium-Datenträger und die lokalen VM-Datenträger verfügbar. Standardmäßig ist diese Cacheeinstellung auf „Read/Write“ für Betriebssystem-Datenträger und auf und „ReadOnly“ für in Storage Premium gehostete Datenträger festgelegt. Bei aktiviertem Cache auf den Storage Premium-Datenträgern können die Hochleistungs-VMs überaus hohe Leistungsgrade erreichen, die die zugrunde liegende Datenträgerleistung übersteigen.
+
+>[AZURE.WARNING] Durch Ändern der Cacheeinstellung eines Azure-Datenträgers wird der Zieldatenträger getrennt und erneut angefügt. Wenn es sich um den Betriebssystemdatenträger handelt, wird der virtuelle Computer neu gestartet. Beenden Sie alle Anwendungen und Dienste, die von dieser Unterbrechung betroffen sein könnten, bevor Sie die Cacheeinstellung des Datenträgers ändern.
 
 Weitere Informationen zur Funktionsweise von BlobCache finden Sie im Blogbeitrag [Inside Azure Premium Storage](https://azure.microsoft.com/blog/azure-premium-storage-now-generally-available-2/).
 
@@ -389,7 +391,7 @@ Führen Sie die folgenden Schritte aus, um den Cache aufzufüllen.
 
 3.  Führen Sie den Iometer-Test zum Auffüllen des Cachedatenträgers mit folgenden Parametern aus. Verwenden Sie drei Arbeitsthreads für das Zielvolume und die Warteschlangenlänge 128. Legen Sie auf der Registerkarte „Test Setup“ unter „Run time“ die Laufzeit des Tests auf 2 Stunden fest.
 
-	| Szenario | Zielvolume | Name | Dauer |
+	| Szenario | Zielvolume | Name | Duration |
 	|--------------------|---------------|------------------|----------|
 	| Auffüllen des Cachedatenträgers | CacheReads | RandomReads\_1MB | 2 Stunden |
 
@@ -397,11 +399,11 @@ Nachdem der Cachedatenträger aufgefüllt wurde, fahren Sie mit den nachstehende
 
 | Testszenario | Zielvolume | Name | Ergebnis |
 |--------------------|---------------|-------------------|--------------|
-| Maximal Lese-IOPS | CacheReads | RandomWrites\_8K | 50\.000 IOPS |
-| Maximal Schreib-IOPS | NoCacheWrites | RandomReads\_8K | 64\.000 IOPS |
-| Maximal Kombinierte IOPS | CacheReads | RandomWrites\_8K | 100\.000 IOPS |
+| Max. Lese-IOPS | CacheReads | RandomWrites\_8K | 50\.000 IOPS |
+| Max. Schreib-IOPS | NoCacheWrites | RandomReads\_8K | 64\.000 IOPS |
+| Max. Kombinierte IOPS | CacheReads | RandomWrites\_8K | 100\.000 IOPS |
 | | NoCacheWrites | RandomReads\_8K | |
-| Maximal Lesen – MB/s | CacheReads | RandomWrites\_64K | 524 MB/s |
+| Max. Lesen – MB/s | CacheReads | RandomWrites\_64K | 524 MB/s |
 | Maximal Schreiben – MB/s | NoCacheWrites | RandomReads\_64K | 524 MB/s |
 | Kombiniert – MB/s | CacheReads | RandomWrites\_64K | 1\.000 MB/s |
 | | NoCacheWrites | RandomReads\_64K | |
@@ -415,7 +417,7 @@ Nachstehend sehen Sie Screenshots der Iometer-Testergebnisse für kombinierte IO
 ![](media/storage-premium-storage-performance/image10.png)
 
 ### FIO  
-FIO ist ein beliebtes Tool für Benchmarktests des Speichers von Linux-VMs. Es ermöglicht die flexible Auswahl unterschiedlicher E/A-Größen sowie sequenzieller oder zufälliger Lese- und Schreibvorgänge. FIO erzeugt Arbeitsthreads oder Prozesse zum Ausführen der angegebenen E/A-Vorgänge. Mithilfe von Auftragsdateien können Sie den Typ der E/A-Vorgänge angeben, den jeder Arbeitsthread ausführen soll. Wir haben eine Auftragsdatei pro Szenario erstellt, was in den folgenden Beispielen veranschaulicht wird. Sie können die Spezifikationen in diesen Auftragsdateien ändern, um Benchmarktests für verschiedene Workloads in Storage Premium auszuführen. In den Beispielen verwenden wir eine Standard-VM vom Typ DS 14 unter**Ubuntu**. Verwenden Sie dieselbe Einrichtung wie am Anfang des Abschnitts [Benchmarktests](#Benchmarking) beschrieben, und füllen Sie den Cache vor dem Ausführen der Benchmarktests auf.
+FIO ist ein beliebtes Tool für Benchmarktests des Speichers von Linux-VMs. Es ermöglicht die flexible Auswahl unterschiedlicher E/A-Größen sowie sequenzieller oder zufälliger Lese- und Schreibvorgänge. FIO erzeugt Arbeitsthreads oder Prozesse zum Ausführen der angegebenen E/A-Vorgänge. Mithilfe von Auftragsdateien können Sie den Typ der E/A-Vorgänge angeben, den jeder Arbeitsthread ausführen soll. Wir haben eine Auftragsdatei pro Szenario erstellt, was in den folgenden Beispielen veranschaulicht wird. Sie können die Spezifikationen in diesen Auftragsdateien ändern, um Benchmarktests für verschiedene Workloads in Storage Premium auszuführen. In den Beispielen verwenden wir eine Standard-VM vom Typ DS 14 unter**Ubuntu**. Verwenden Sie dieselbe Einrichtung wie am Anfang des Abschnitts [Benchmarktests](#Benchmarking) beschrieben, und wärmen Sie den Cache vor dem Ausführen der Benchmarktests auf.
 
 Laden Sie zunächst [FIO](https://github.com/axboe/fio) herunter, und installieren Sie es auf dem virtuellen Computer.
 
@@ -567,4 +569,4 @@ Für SQL Server-Benutzer bietet sich das Lesen von Artikeln zu den bewährten Me
 - [Optimale Verfahren für die Leistung für SQL Server auf virtuellen Computern in Azure](../virtual-machines/virtual-machines-windows-sql-performance.md)
 - [Azure Storage Premium bietet höchste Leistung für SQL Server in Azure-VM](http://blogs.technet.com/b/dataplatforminsider/archive/2015/04/23/azure-premium-storage-provides-highest-performance-for-sql-server-in-azure-vm.aspx)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0921_2016-->

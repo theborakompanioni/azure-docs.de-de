@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure Active Directory-Domänendienste (Vorschau): Administratorhandbuch | Microsoft Azure"
+	pageTitle="Azure Active Directory Domain Services: Administratorhandbuch | Microsoft Azure"
 	description="Binden Sie einen virtuellen Windows-Computer mit Azure PowerShell und dem klassischen Bereitstellungsmodell in eine verwaltete Domäne ein."
 	services="active-directory-ds"
 	documentationCenter=""
@@ -13,11 +13,11 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/06/2016"
+	ms.date="09/20/2016"
 	ms.author="maheshu"/>
 
 
-# Erstellen von virtuellen Windows-Computern mit PowerShell und dem klassischen Bereitstellungsmodell
+# Einbinden eines virtuellen Windows Server-Computers in eine verwaltete Domäne mit PowerShell
 
 > [AZURE.SELECTOR]
 - [Klassisches Azure-Portal – Windows](active-directory-ds-admin-guide-join-windows-vm.md)
@@ -29,7 +29,7 @@
 
 Diese Schritte zeigen, wie Sie eine Reihe von Azure PowerShell-Befehlen anpassen, mit denen ein Windows-basierter virtueller Azure-Computer mit einem Bausteinansatz erstellt und vorab konfiguriert wird. Mithilfe dieser Schritte können Sie einen Windows-basierten virtuellen Azure-Computer erstellen und in eine durch die Azure AD-Domänendienste verwaltete Domäne einbinden.
 
-Diese Schritte folgen einem lückenfüllenden Ansatz zur Erstellung von Azure PowerShell-Befehlssätzen. Dieser Ansatz kann hilfreich sein, wenn Sie noch nicht mit PowerShell gearbeitet haben oder einfach wissen möchten, welche Werte Sie für die erfolgreiche Konfiguration angeben müssen. Erweiterte PowerShell-Benutzer können die Befehle verwenden und sie durch eigene Werte für die Variablen ersetzen (Zeilen, die mit "$" beginnen).
+Diese Schritte folgen einem lückenfüllenden Ansatz zur Erstellung von Azure PowerShell-Befehlssätzen. Dieser Ansatz kann hilfreich sein, wenn Sie noch nicht mit PowerShell gearbeitet haben oder wissen möchten, welche Werte Sie für die erfolgreiche Konfiguration angeben müssen. Erweiterte PowerShell-Benutzer können die Befehle verwenden und sie durch eigene Werte für die Variablen ersetzen (Zeilen, die mit "$" beginnen).
 
 Wenn Sie dies noch nicht getan haben, verwenden Sie die Anweisungen unter [Gewusst wie: Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md), um Azure PowerShell auf Ihrem lokalen Computer zu installieren. Öffnen Sie anschließend eine Windows PowerShell-Eingabeaufforderung.
 
@@ -111,9 +111,9 @@ Stellen Sie jetzt den in die Domäne eingebundenen virtuellen Windows-Computer b
 <br>
 
 ## Skript für die Bereitstellung eines virtuellen Windows-Computers und für den automatischen Beitritt zu einer durch die Azure AD-Domänendienste verwalteten Domäne
-Dieser PowerShell-Befehlssatz erstellt einen virtuellen Computer für einen Line-of-Business-Server, für den Folgendes gilt:
+Dieser PowerShell-Befehlssatz erstellt einen virtuellen Computer für einen Branchenserver, für den Folgendes gilt:
 
-- Verwendet das Windows Server 2012 R2 Datacenter-Image.
+- das Windows Server 2012 R2 Datacenter-Image verwendet
 - Ist ein besonders kleiner virtueller Computer.
 - Heißt „contoso-test“.
 - Tritt automatisch der verwalteten Domäne „contoso100“ bei.
@@ -147,4 +147,11 @@ Hier ist das vollständige Beispielskript zur Erstellung des virtuellen Windows-
 
     New-AzureVM –ServiceName $svcname -VMs $vm1 -VNetName $vnetname -Location "Central US" -DnsSettings $dns
 
-<!---HONumber=AcomDC_0706_2016-->
+<br>
+
+## Verwandte Inhalte
+- [Azure AD-Domänendienste – Leitfaden zu den ersten Schritten](./active-directory-ds-getting-started.md)
+
+- [Verwalten einer durch Azure AD-Domänendienste verwalteten Domäne](./active-directory-ds-admin-guide-administer-domain.md)
+
+<!---HONumber=AcomDC_0921_2016-->

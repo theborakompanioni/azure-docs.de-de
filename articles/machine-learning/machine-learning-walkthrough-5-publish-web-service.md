@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/06/2016"
+	ms.date="09/16/2016"
 	ms.author="garye"/>
 
 
@@ -48,7 +48,7 @@ Folgende Module müssen gelöscht werden:
 
 - [Two-Class Support Vector Machine][two-class-support-vector-machine]
 - Die damit verbundenen Module [Train Model][train-model] und [Score Model][score-model]
-- [Normalize Data][normalize-data] \(beide)
+- [Normalize Data][normalize-data] (beide)
 - [Evaluate Model][evaluate-model]
 
 Wählen Sie das Modul aus, und drücken Sie die ENTF-Taste, oder klicken Sie mit der rechten Maustaste auf das Modul, und wählen Sie **Delete** aus.
@@ -200,4 +200,4 @@ So überwachen Sie die Leistung des Webdiensts
 [two-class-support-vector-machine]: https://msdn.microsoft.com/library/azure/12d8479b-74b4-4e67-b8de-d32867380e20/
 [project-columns]: https://msdn.microsoft.com/de-DE/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

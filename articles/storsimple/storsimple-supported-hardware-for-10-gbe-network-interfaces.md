@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="05/25/2016"
+   ms.date="09/21/2016"
    ms.author="alkohli" />
 
 # Unterstützte Hardware für 10-GbE-Netzwerkschnittstellen auf Ihrem StorSimple-Gerät
@@ -27,13 +27,13 @@ Microsoft hat die folgenden SFP (Small Form-factor Pluggable)-Transceiver, Kabel
 
 ### SFP+-Transceiver
 
-|Stellen|Modell|
+|Make|Modell|
 |---|---|
 |Cisco|SFP-10G-SR|
 
 ### Kabel
 
-|S. Nr. |Stellen|Modell|
+|S. Nein. |Make|Modell|
 |---|---|---|
 | 1\.|Cisco|SFP-H10GB-CU1M|
 | 2\.|Cisco|SFP-H10GB-CU2M|
@@ -42,7 +42,7 @@ Microsoft hat die folgenden SFP (Small Form-factor Pluggable)-Transceiver, Kabel
 
 ### Switches
 
-|S. Nr.|Stellen|Modell|
+|S. Nein.|Make|Modell|
 |---|---|---|
 | 1\. |Cisco|N3K-C3172PQ-10GE|
 | 2\. |Cisco|N3K-C3048-ZM-F|
@@ -74,7 +74,7 @@ Mellanox hat die folgenden SFP (Small Form-factor Pluggable)-Transceiver, Kabel 
 
 Die folgende Tabelle enthält die Kabel und Module, die von Mellanox unterstützt werden. Diese wurden nicht von Microsoft getestet, funktionieren aber wahrscheinlich mit dem StorSimple-Gerät.
 
-| S. Nr. | Geschwindigkeit | Modell | Beschreibung | Stellen |
+| S. Nein. | Geschwindigkeit | Modell | Beschreibung | Stellen |
 |--------|-------|-----------------------|--------------------------------------------------------|-----------------------|
 | 1\. | 10 GbE| CAB-SFP-SFP-1M | Passives Kupferkabel, SFP+, 10 GBit/s (1 m) | Arista |
 | 2\. | 10 GbE| CAB-SFP-SFP-2M | Passives Kupferkabel, SFP+, 10 GBit/s (2 m) | Arista |
@@ -116,7 +116,7 @@ Die folgende Tabelle enthält die Kabel und Module, die von Mellanox unterstütz
 
 Die folgende Tabelle enthält die Switches, die von Mellanox unterstützt werden. Diese wurden nicht von Microsoft getestet, funktionieren aber wahrscheinlich mit dem StorSimple-Gerät.
 
-| S. Nr. | Geschwindigkeit | Modell | Beschreibung | Stellen |
+| S. Nein. | Geschwindigkeit | Modell | Beschreibung | Stellen |
 |--------|-------|-------------|---------------------------------------------------------------------|-------------|
 | 1\. | 10 GbE | 516733-B21 | HP ProCurve 6120XG Ethernet Blade Switch (10 GbE) | HP |
 | 2\. | 10 GbE | 538113-B21 | HP 10-GbE-Pass-Through-Modul (PTM) | HP |
@@ -130,4 +130,4 @@ Die folgende Tabelle enthält die Switches, die von Mellanox unterstützt werden
 
 Weitere Informationen zu [StorSimple-Hardwarekomponenten und ihrem Status](storsimple-monitor-hardware-status.md).
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0921_2016-->

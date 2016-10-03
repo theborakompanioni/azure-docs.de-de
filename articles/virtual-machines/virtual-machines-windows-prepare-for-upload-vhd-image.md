@@ -14,11 +14,11 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/01/2016"
+	ms.date="09/18/2016"
 	ms.author="glimoli;genli"/>
 
 # Vorbereiten einer Windows-VHD für das Hochladen in Azure
-Um einen virtuellen Windows-Computer aus einem lokalen Speicherort in Azure hochzuladen, müssen Sie die virtuelle Festplatte (Virtual Hard Disk, VHD) ordnungsgemäß vorbereiten. Es gibt eine Reihe von Schritten, die Sie ausführen sollten, bevor Sie eine VHD in Azure hochladen. Die Ausführung von `sysprep` ist ein allgemeiner Prozess, aber nur ein Schritt bei der Generalisierung eines Images. Dieser Artikel zeigt Ihnen, wie Sie eine Windows-VHD für das Hochladen in Microsoft Azure vorbereiten.
+Um einen virtuellen Windows-Computer aus einem lokalen Speicherort in Azure hochzuladen, müssen Sie die virtuelle Festplatte (Virtual Hard Disk, VHD) ordnungsgemäß vorbereiten. Es gibt eine Reihe von Schritten, die Sie ausführen sollten, bevor Sie eine VHD in Azure hochladen. Dieser Artikel zeigt Ihnen, wie Sie eine Windows-VHD für das Hochladen in Microsoft Azure vorbereiten, und erläutert, [wann und wie Sie Sysprep verwenden](#step23).
 
 ## Vorbereiten des virtuellen Datenträgers
 
@@ -248,8 +248,8 @@ Wenn Sie über ein Windows-VM-Image im [VMDK-Dateiformat](https://en.wikipedia.o
 
 14. Entfernen Sie jegliche zusätzlichen Transport Driver Interface-Filter, wie beispielsweise Software, die TCP-Pakete analysiert.
 15. Um sicherzustellen, dass der Datenträger fehlerfrei und konsistent ist, führen Sie den `CHKDSK /f`-Befehl aus.
-16.	Deinstallieren Sie sämtliche Softwareprogramme und Treiber von Drittanbietern.
-17. Stellen Sie sicher, dass keine Drittanbieteranwendung Port 3389 verwendet. Dieser Port wird für den RDP-Dienst in Azure verwendet.
+16.	Deinstallieren Sie jegliche Drittanbietersoftware und -treiber im Zusammenhang mit physischen Komponenten oder einer anderen Virtualisierungstechnologie.
+17. Stellen Sie sicher, dass keine Drittanbieteranwendung Port 3389 verwendet. Dieser Port wird für den RDP-Dienst in Azure verwendet. Sie können den `netstat -anob`-Befehl verwenden, um die Ports zu überprüfen, die von den Anwendungen genutzt werden.
 18.	Wenn es sich bei der Windows-VHD, die Sie hochladen möchten, um einen Domänencontroller handelt, führen Sie [diese zusätzlichen Schritte](https://support.microsoft.com/kb/2904015) aus, um den Datenträger vorzubereiten.
 19.	Starten Sie den virtuellen Computer neu, um sicherzustellen, dass Windows weiterhin fehlerfrei ausgeführt wird und über die RDP-Verbindung erreichbar ist.
 20.	Setzen Sie das aktuelle Kennwort des lokalen Administrators zurück, und stellen Sie sicher, dass Sie sich mit diesem Konto über die RDP-Verbindung bei Windows anmelden können. Diese Zugriffsberechtigung wird über das Richtlinienobjekt „Anmelden über Remotedesktopdienste zulassen“ gesteuert. Dieses Objekt befindet sich unter „Computerkonfiguration\\Windows-Einstellungen\\Sicherheitseinstellungen\\Lokale Richtlinien\\Zuweisen von Benutzerrechten“.
@@ -279,13 +279,13 @@ Wenn Sie über ein Windows-VM-Image im [VMDK-Dateiformat](https://en.wikipedia.o
 	- [KB3140410](https://support.microsoft.com/kb/3140410) MS16-031: Sicherheitsupdate für Microsoft Windows zum Unterbinden von Rechteerweiterungen: 8. März 2016
 
 	- [KB3146723](https://support.microsoft.com/kb/3146723) MS16-048: Hinweise zum Sicherheitsupdate für CSRSS: 12. April 2016
-	- [KB2904100](https://support.microsoft.com/kb/2904100) System friert während E/A-Vorgängen in Windows ein
-
-23. Wenn Sie ein Image erstellen möchten, mit dem Sie mehrere Computer bereitstellen können, müssen Sie `sysprep` ausführen, um das Image zu generalisieren, bevor Sie die VHD in Azure hochladen. Weitere Informationen zum Erstellen eines generalisierten Images finden Sie in den folgenden Artikeln:
+	- [KB2904100](https://support.microsoft.com/kb/2904100) System friert während E/A-Vorgängen in Windows ein <a id="step23"></a>
+23. Wenn Sie ein Image erstellen möchten, mit dem Sie mehrere Computer bereitstellen können, müssen Sie `sysprep` ausführen, um das Image zu generalisieren, bevor Sie die VHD in Azure hochladen. Sie müssen `sysprep` nicht ausführen, um eine spezielle VHD zu verwenden. Weitere Informationen zum Erstellen eines generalisierten Images finden Sie in den folgenden Artikeln:
 
 	- [Erstellen eines VM-Images aus einem vorhandenen virtuellen Azure-Computer mithilfe des Resource Manager-Bereitstellungsmodells](virtual-machines-windows-capture-image.md)
 	- [Erstellen eines VM-Images aus einem vorhandenen virtuellen Azure-Computer mithilfe des klassischen Bereitstellungsmodells](virtual-machines-windows-classic-capture-image.md)
 	- [Sysprep-Unterstützung für Serverrollen](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)
+
 
 
 ## Empfohlene zusätzliche Konfigurationen
@@ -319,4 +319,4 @@ Die folgenden Einstellungen wirken sich nicht auf das Hochladen von VHDs aus. Es
 
 - [Hochladen eines Windows-VM-Images an Azure für Resource Manager-Bereitstellungen](virtual-machines-windows-upload-image.md)
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0921_2016-->

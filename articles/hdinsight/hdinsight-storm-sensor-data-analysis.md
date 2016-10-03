@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="07/05/2016"
+   ms.date="09/20/2016"
    ms.author="larryfr"/>
 
 # Analysieren von Sensordaten mit Apache Storm, Event Hub und HBase in HDInsight (Hadoop) 
@@ -92,11 +92,17 @@ Hier sehen Sie eine Darstellung der Topologie:
 
 * **EventHub-Spout**: Der Spout wird als Teil der Apache-Storm-Version 0.10.0 und höher bereitgestellt.
 
-    > [AZURE.NOTE] Der in diesem Beispiel verwendete Event Hubs-Spout erfordert einen Storm-Cluster der Version 3.3 oder 3.4 in HDInsight. Informationen zur Verwendung von Event Hubs mit einer älteren Version von Storm in HDInsight finden Sie unter [Verarbeitung von Ereignissen von Azure Event Hubs mit Storm auf HDInsight](hdinsight-storm-develop-java-event-hub-topology.md).
+    > [AZURE.NOTE] Für den in diesem Beispiel verwendeten Event Hubs-Spout ist ein Storm-Cluster der Version 3.3 oder 3.4 in HDInsight erforderlich. Informationen zur Verwendung von Event Hubs mit einer älteren Version von Storm in HDInsight finden Sie unter [Verarbeitung von Ereignissen von Azure Event Hubs mit Storm auf HDInsight](hdinsight-storm-develop-java-event-hub-topology.md).
 
 * **ParserBolt.java**: Der Spout gibt reine JSON-Daten aus, und gelegentlich werden mehrere Ereignisse gleichzeitig ausgegeben. Dieser Bolt veranschaulicht, wie vom Spout ausgegebene Daten gelesen und als ein Tupel, das mehrere Felder enthält, an einen neuen Datenstrom ausgegeben werden.
 
 * **DashboardBolt.java**: Dies veranschaulicht, wie die Socket.io-Clientbibliothek für Java zum Senden von Daten an das Webdashboard in Echtzeit verwendet wird.
+
+Da in diesem Beispiel das [Flux](https://storm.apache.org/releases/0.10.0/flux.html)-Framework verwendet wird, ist die Topologiedefinition in YAML-Dateien enthalten. Es gibt zwei:
+
+* __no-hbase.yaml__: Verwenden Sie diese Datei, wenn Sie die Topologie in Ihrer Entwicklungsumgebung testen. Es werden keine HBase-Komponenten verwendet, da Sie von außerhalb des virtuellen Netzwerks, in dem sich der Cluster befindet, nicht auf die HBase-Java-API zugreifen können.
+
+* __with-hbase.yaml__: Verwenden Sie diese Datei, wenn Sie die Topologie im Storm-Cluster bereitstellen. Es werden HBase-Komponenten verwendet, da die Ausführung in demselben virtuellen Netzwerk wie für den HBase-Cluster erfolgt.
 
 ## Vorbereiten der Umgebung
 
@@ -106,24 +112,30 @@ Bevor Sie dieses Beispiel verwenden können, müssen Sie einen Azure Event Hub e
 
 Event Hub ist die Datenquelle für dieses Beispiel. Führen Sie die folgenden Schritte aus, um einen neuen Event Hub zu erstellen.
 
-1. Wählen Sie im [klassischen Azure-Portal](https://manage.windowsazure.com) die Option **NEU| Service Bus | Event Hub | Custom Create**.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com) die Optionen **+ Neu** > __Internet der Dinge (IoT)__ > __Event Hubs__.
 
-2. Geben Sie im Dialogfeld **Neuen Event Hub hinzufügen** einen **Event Hub-Namen** ein, wählen Sie die **Region** aus, in der der Hub erstellt werden soll, und erstellen Sie einen neuen Namespace, oder wählen einen vorhandenen Namespace aus. Klicken Sie zum Schluss auf den Pfeil, um fortzufahren.
+2. Führen Sie auf dem Blatt __Namespace erstellen__ die folgenden Aufgaben durch:
 
-2. Füllen Sie im Dialogfeld **Event Hub konfigurieren** die Felder **Anzahl der Partitionen** und **Aufbewahrung der Nachrichten** aus. Verwenden Sie für dieses Beispiel eine Anzahl von 10 Partitionen und eine Nachrichtenaufbewahrung von 1.
+    1. Geben Sie einen __Namen__ für den Namespace ein.
+    2. Wählen Sie einen Tarif. __Basic__ ist für dieses Beispiel ausreichend.
+    3. Wählen Sie aus, welches Azure-__Abonnement__ verwendet werden soll.
+    4. Wählen Sie eine vorhandene Ressourcengruppe aus, oder erstellen Sie eine neue Ressourcengruppe.
+    5. Wählen Sie den __Speicherort__ für den Event Hub aus.
+    6. Wählen Sie __An Dashboard anheften__, und klicken Sie dann auf __Erstellen__.
 
-3. Wählen Sie nach der Erstellung des Event Hubs den Namespace aus, und klicken Sie auf **Event Hubs**. Wählen Sie zuletzt den Event Hub aus, den Sie zuvor erstellt haben.
+3. Nachdem der Erstellungsvorgang abgeschlossen ist, wird das Blatt „Event Hubs“ für Ihren Namespace angezeigt. Wählen Sie hier die Option __+ Event Hub hinzufügen__. Geben Sie auf dem Blatt __Event Hub erstellen__ den Namen __sensordata__ ein, und wählen Sie __Erstellen__. Behalten Sie für die anderen Felder den Standardwert bei.
 
-4. Klicken Sie auf **Konfigurieren**, und erstellen Sie zwei neue Zugriffsrichtlinien mit den folgenden Informationen.
+4. Wählen Sie auf dem Blatt „Event Hubs“ für Ihren Namespace die Option __Event Hubs__. Wählen Sie den Eintrag __sensordata__ aus.
 
-	| Name | Berechtigungen |
+5. Wählen Sie auf dem Blatt für den Event Hub „sensordata“ die Option __Richtlinien für gemeinsamen Zugriff__. Verwenden Sie den Link __+ Hinzufügen__, um die folgenden Richtlinien hinzuzufügen:
+
+
+	| Richtlinienname | Ansprüche |
     | ----- | ----- |
 	| devices | Senden |
 	| storm | Empfangen |
 
-	Klicken Sie nach der Erstellung der Berechtigungen auf das **Speichern**-Symbol am unteren Seitenrand. Daraufhin werden die gemeinsam genutzten Zugriffsrichtlinien erstellt, die für den Austausch von Nachrichten mit diesem Hub verwendet werden.
-
-5. Verwenden Sie nach dem Speichern der Richtlinien den **Generator für freigegebene Zugriffsschlüssel** unten auf der Seite, um den Schlüssel für die Richtlinien **devices** und **storm** abzurufen. Speichern Sie diese, da Sie sie später verwenden werden.
+5. Wählen Sie beide Richtlinien aus, und notieren Sie sich den Wert von __PRIMÄRER SCHLÜSSEL__. Sie benötigen den Wert für beide Richtlinien für die weiteren Schritte.
 
 ## Herunterladen und Konfigurieren des Projekts
 
@@ -134,28 +146,28 @@ Führen Sie den folgenden Befehl aus, um das Projekt von GitHub herunterzuladen.
 Nach Abschluss des Befehls verfügen Sie über die folgende Verzeichnisstruktur:
 
 	hdinsight-eventhub-example/
-		TemperatureMonitor/ - this is the Java topology
-			conf/
-				Config.properties
-				hbase-site.xml
-			src/
-			test/
-			dashboard/ - this is the node.js web dashboard
-			SendEvents/ - utilities to send fake sensor data
+		TemperatureMonitor/ - this contains the topology
+			resources/
+                log4j2.xml - set logging to minimal
+                no-hbase.yaml - topology definition for local testing
+                with-hbase.yaml - topology definition that uses HBase in a virutal network
+			src/ - the Java bolts
+            dev.properties - contains configuration values for your environment
+		dashboard/nodejs/ - this is the node.js web dashboard
+		SendEvents/ - utilities to send fake sensor data
 
 > [AZURE.NOTE] Dieses Dokument geht nicht ausführlich auf alle Details des in diesem Beispiel enthaltenen Codes ein. Der Code ist jedoch vollständig kommentiert.
 
-Öffnen Sie die Datei **Config.properties**, und fügen Sie die Informationen hinzu, die Sie zuvor beim Erstellen des Event Hubs für die unten aufgelisteten Einträge verwendet haben. Speichern Sie die Datei, nachdem Sie diese Informationen hinzugefügt haben.
+Öffnen Sie die Datei **hdinsight-eventhub-example/TemperatureMonitor/dev.properties**, und fügen Sie Ihre Event Hub-Informationen den folgenden Zeilen hinzu:
 
-	eventhubspout.username = storm
+    eventhub.read.policy.name: storm
+    eventhub.read.policy.key: KeyForTheStormPolicy
+    eventhub.namespace: YourNamespace
+    eventhub.name: sensordata
 
-	eventhubspout.password = <the key of the 'storm' policy>
+> [AZURE.NOTE] In diesem Beispiel wird vorausgesetzt, dass Sie __storm__ als Name der Richtlinie mit dem Anspruch __Listen__ (Lauschen) verwendet haben und dass Ihr Event Hub den Namen __sensordata__ hat.
 
-	eventhubspout.namespace = <the event hub namespace>
-
-	eventhubspout.entitypath = <the event hub name>
-
-	eventhubspout.partitions.count = <the number of partitions for the event hub>
+ Speichern Sie die Datei, nachdem Sie diese Informationen hinzugefügt haben.
 
 ## Kompilieren und lokales Testen
 
@@ -187,19 +199,21 @@ Vor dem Testen müssen Sie das Dashboard zur Anzeige der Ausgabe der Topologie u
 
 > [AZURE.NOTE] Die Schritte in diesem Abschnitt verwenden „Node.js“, sodass sie auf einer beliebigen Plattform ausgeführt werden können. Andere Sprachbeispiele finden Sie im **SendEvents**-Verzeichnis.
 
-1. Öffnen Sie eine neue Eingabeaufforderung oder ein neues Terminal, und wechseln Sie ins Verzeichnis **hdinsight-eventhub-example/SendEvents/nodejs**. Verwenden Sie dann folgenden Befehl, um die von der Anwendung benötigten Abhängigkeiten zu installieren:
+1. Öffnen Sie eine neue Eingabeaufforderung, eine Shell oder ein neues Terminal, und wechseln Sie ins Verzeichnis **hdinsight-eventhub-example/SendEvents/nodejs**. Verwenden Sie dann den folgenden Befehl, um die von der Anwendung benötigten Abhängigkeiten zu installieren:
 
 		npm install
 
 2. Öffnen Sie die Datei **app.js** in einem Text-Editor, und fügen Sie die Event Hub-Informationen hinzu, die Sie zuvor abgerufen haben:
 
 		// ServiceBus Namespace
-		var namespace = 'servicebusnamespace';
+		var namespace = 'YourNamespace';
 		// Event Hub Name
-		var hubname ='eventhubname';
+		var hubname ='sensordata';
 		// Shared access Policy name and key (from Event Hub configuration)
 		var my_key_name = 'devices';
-		var my_key = 'key';
+		var my_key = 'YourKey';
+    
+    > [AZURE.NOTE] In diesem Beispiel wird vorausgesetzt, dass Sie __sensordata__ als Name für den Event Hub und __devices__ als Name für die Richtlinie mit dem Anspruch __Send__ (Senden) verwendet haben.
 
 2. Verwenden Sie den folgenden Befehl zum Einfügen neuer Einträge in Event Hub:
 
@@ -220,19 +234,27 @@ Vor dem Testen müssen Sie das Dashboard zur Anzeige der Ausgabe der Topologie u
 
 ### Starten der Topologie
 
-2. Führen Sie den folgenden Befehl aus, um die Topologie lokal zu starten:
+2. Öffnen Sie ein neues Eingabeaufforderungsfenster, eine Shell oder ein Terminal, und wechseln Sie zum Verzeichnis __hdinsight-eventhub-example/TemperatureMonitor__. Verwenden Sie dann den folgenden Befehl, um die Topologie zu starten:
 
-        mvn compile exec:java -Dstorm.topology=com.microsoft.examples.Temperature
+        mvn compile exec:java -Dexec.args="--local -R /no-hbase.yaml --filter dev.properties"
+    
+    Gehen Sie wie folgt vor, wenn Sie stattdessen PowerShell verwenden:
 
-	Dieser Befehl startet die Topologie, liest Dateien aus dem Event Hub und sendet die Daten an das Dashboard, das in einer Azure Website ausgeführt wird. Im Webdashboard sollten nun Linien angezeigt werden, die den folgenden ähneln:
+        mvn compile exec:java "-Dexec.args=--local -R /no-hbase.yaml --filter dev.properties"
+
+    > [AZURE.NOTE] Wenn Sie sich auf einem System mit Linux/Unix/OS X befinden und [Storm in der Entwicklungsumgebung installiert haben](http://storm.apache.org/releases/0.10.0/Setting-up-development-environment.html), können Sie stattdessen die folgenden Befehle verwenden:
+    >
+    > `mvn compile package` `storm jar target/WordCount-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux --local -R /no-hbase.yaml`
+
+	Hiermit wird die Topologie, die in der Datei __no-hbase.yaml__ definiert ist, im lokalen Modus gestartet. Die Werte in der Datei __dev.properties__ enthalten die Verbindungsinformationen für Event Hubs. Nach dem Starten liest die Topologie Einträge aus dem Event Hub und sendet sie an das Dashboard, das auf Ihrem lokalen Computer ausgeführt wird. Im Webdashboard sollten nun Linien angezeigt werden, die den folgenden ähneln:
 
 	![Dashboard mit Daten](./media/hdinsight-storm-sensor-data-analysis/datadashboard.png)
 
-    > [AZURE.NOTE] Wenn Sie diesen Befehl in einer PowerShell-Eingabeaufforderung ausführen, müssen Sie den `-Dstorm.topology=com.microsoft.examples.Temperature`-Parameter in doppelte Anführungszeichen setzen. Beispiel: `mvn compile exec:java "-Dstorm.topology=com.microsoft.examples.Temperature"`.
-
 3. Verwenden Sie während der Ausführung des Dashboards den Befehl `node app.js` aus den vorherigen Schritten, um neue Daten an Event Hubs zu senden. Da die Temperaturwerte zufällig generiert werden, sollte das Diagramm aktualisiert werden, um große Temperaturänderungen anzuzeigen.
 
-3. Beenden Sie die Topologie durch Eingabe von STRG+C, nachdem Sie überprüft haben, dass dies funktioniert. Um die SendEvent-App zu beenden, wählen Sie das Fenster aus, und drücken Sie eine beliebige Taste. Sie können auch STRG+C verwenden, um den Webserver zu beenden.
+    > [AZURE.NOTE] Sie müssen sich im Verzeichnis __hdinsight-eventhub-example/SendEvents/Nodejs__ befinden, wenn Sie den Befehl `node app.js` verwenden.
+
+3. Beenden Sie die Topologie durch Eingabe von STRG+C, nachdem Sie überprüft haben, dass dies funktioniert. Sie können STRG+C auch verwenden, um den lokalen Webserver zu beenden.
 
 ## Erstellen eines Storm- und HBase-Clusters
 
@@ -244,7 +266,7 @@ Die in diesem Dokument verwendete Resource Manager-Vorlage befindet sich in eine
 
 1. Klicken Sie auf die folgende Schaltfläche, um sich bei Azure anzumelden und die Resource Manager-Vorlage im Azure-Portal zu öffnen.
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-hbase-storm-cluster-in-vnet.json" target="_blank"><img src="https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/documentation/articles/hdinsight-hbase-tutorial-get-started-linux/20160201111850/deploy-to-azure.png" alt="Deploy to Azure"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-hbase-storm-cluster-in-vnet.json" target="_blank"><img src="https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/de-DE/documentation/articles/hdinsight-hbase-tutorial-get-started-linux/20160201111850/deploy-to-azure.png" alt="Deploy to Azure"></a>
 
 2. Geben Sie auf dem Blatt **Parameter** Folgendes ein:
 
@@ -275,9 +297,9 @@ Sobald die Ressourcen erstellt sind, werden Sie zu einem Blatt für die Ressourc
 
 ## Konfigurieren des Dashboard-Bolts
 
-Um Daten an das Dashboard zu senden, das als Web-App bereitgestellt ist, müssen Sie die folgende Zeile in der Datei __DashboardBolt.java__ ändern:
+Um Daten an das Dashboard zu senden, das als Web-App bereitgestellt ist, müssen Sie die folgende Zeile in der Datei __dev.properties__ ändern:
 
-    socket = IO.socket("http://localhost:3000");
+    dashboard.uri: http://localhost:3000
 
 Ändern Sie `http://localhost:3000` in `http://BASENAME-dashboard.azurewebsites.net`, und speichern Sie die Datei. Ersetzen Sie __BASENAME__ durch den Basisnamen, den Sie im vorherigen Schritt angegeben haben. Sie können auch die zuvor erstellte Ressourcengruppe verwenden, um das Dashboard auszuwählen und die URL anzuzeigen.
 
@@ -305,7 +327,7 @@ Um Daten in HBase zu speichern, müssen wir zuerst eine Tabelle erstellen. Im Al
 
     	scan 'SensorData'
 		
-	Dies sollte Informationen ähnlich den folgenden zurückgeben, die darauf hinweisen, dass die Tabelle 0 Zeilen enthält.
+	Hiermit sollten Informationen wie im folgenden Beispiel zurückgegeben werden, in dem angezeigt wird, dass die Tabelle 0 Zeilen enthält.
 	
 		ROW                   COLUMN+CELL                                       0 row(s) in 0.1900 seconds
 
@@ -321,9 +343,9 @@ Um vom Storm-Cluster aus in HBase zu schreiben, müssen Sie den HBase-Bolt mit d
 
 ### Herunterladen von „hbase-site.xml“
 
-Verwenden Sie über eine Befehlszeile SCP zum Herunterladen der Datei __hbase-site.xml__ aus dem Cluster. Ersetzen Sie im folgenden Beispiel __USERNAME__ mit dem SSH-Benutzernamen, den Sie beim Erstellen des Clusters bereitgestellt, und __BASENAME__ mit dem Basisnamen, den Sie früher angegeben haben. Geben Sie nach Aufforderung das Kennwort für den SSH-Benutzer ein. Ersetzen Sie `/path/to/TemperatureMonitor/conf/hbase-site.xml` durch den Pfad zu dieser Datei im TemperatureMonitor-Projekt.
+Verwenden Sie über eine Befehlszeile SCP zum Herunterladen der Datei __hbase-site.xml__ aus dem Cluster. Ersetzen Sie im folgenden Beispiel __USERNAME__ mit dem SSH-Benutzernamen, den Sie beim Erstellen des Clusters bereitgestellt, und __BASENAME__ mit dem Basisnamen, den Sie früher angegeben haben. Geben Sie nach Aufforderung das Kennwort für den SSH-Benutzer ein. Ersetzen Sie `/path/to/TemperatureMonitor/resources/hbase-site.xml` durch den Pfad zu dieser Datei im TemperatureMonitor-Projekt.
 
-    scp USERNAME@hbase-BASENAME-ssh.azurehdinsight.net:/etc/hbase/conf/hbase-site.xml /path/to/TemperatureMonitor/conf/hbase-site.xml
+    scp USERNAME@hbase-BASENAME-ssh.azurehdinsight.net:/etc/hbase/conf/hbase-site.xml /path/to/TemperatureMonitor/resources/hbase-site.xml
 
 Damit wird __hbase-site.xml__ in den angegebenen Pfad heruntergeladen.
 
@@ -338,6 +360,10 @@ Damit wird __hbase-site.xml__ in den angegebenen Pfad heruntergeladen.
 2. Verwenden Sie den folgenden Befehl, um diese Komponente in Ihrer Entwicklungsumgebung im lokalen Maven-Repository zu installieren. So kann Maven das Paket beim Kompilieren des Projekts finden. Ersetzen Sie __####__ mit der Versionsnummer, die im Dateinamen enthalten ist.
 
         mvn install:install-file -Dfile=storm-hbase-####.jar -DgroupId=org.apache.storm -DartifactId=storm-hbase -Dversion=#### -Dpackaging=jar
+    
+    Verwenden Sie den folgenden Befehl, wenn Sie PowerShell nutzen:
+
+        mvn install:install-file "-Dfile=storm-hbase-####.jar" "-DgroupId=org.apache.storm" "-DartifactId=storm-hbase" "-Dversion=####" "-Dpackaging=jar"
 
 ### Aktivieren der storm-hbase-Komponente im Projekt
 
@@ -362,22 +388,11 @@ Damit wird __hbase-site.xml__ in den angegebenen Pfad heruntergeladen.
 
 2. Speichern Sie die Datei __pom.xml__.
 
-3. Öffnen Sie **TemperatureMonitor/src/main/java/com/microsoft/examples/Temperature.java** in einem Text-Editor, und heben Sie die Auskommentierung der folgenden Zeilen auf, indem Sie die `//` am Anfang jeder Zeile entfernen.
-
-		topologyBuilder.setBolt("HBase", new HBaseBolt("SensorData", mapper).withConfigKey("hbase.conf"), spoutConfig.getPartitionCount())
-    	  .fieldsGrouping("Parser", "hbasestream", new Fields("deviceid")).setNumTasks(spoutConfig.getPartitionCount());
-
-	Der HBase-Bolt ist nun aktiviert.
-
-	> [AZURE.NOTE] Sie sollten den HBase-Bolt nur aktivieren, wenn Sie den Storm-Cluster bereitstellen, nicht bei lokalen Tests.
-
-4. Speichern Sie die Datei __Temperature.java__.
-    
 ## Erstellen, Verpacken und Bereitstellen der Lösung in HDInsight
 
 Führen Sie die folgenden Schritte in Ihrer Entwicklungsumgebung aus, um die Storm-Topologie im Storm-Cluster bereitzustellen.
 
-1. Führen Sie den folgenden Befehl aus, um einen neuen Build auszuführen und ein JAR-Paket aus Ihrem Projekt zu erstellen:
+1. Führen Sie im Verzeichnis __TemperatureMonitor__ den folgenden Befehl aus, um einen neuen Buildvorgang auszuführen und ein JAR-Paket aus Ihrem Projekt zu erstellen:
 
 		mvn clean compile package
 
@@ -385,19 +400,23 @@ Führen Sie die folgenden Schritte in Ihrer Entwicklungsumgebung aus, um die Sto
 
 2. Verwenden Sie scp, um die Datei __TemperatureMonitor-1.0-SNAPSHOT.jar__ auf Ihren Storm-Cluster hochzuladen. Ersetzen Sie im folgenden Beispiel __USERNAME__ mit dem SSH-Benutzernamen, den Sie beim Erstellen des Clusters bereitgestellt, und __BASENAME__ mit dem Basisnamen, den Sie früher angegeben haben. Geben Sie nach Aufforderung das Kennwort für den SSH-Benutzer ein.
 
-        scp target\TemperatureMonitor-1.0-SNAPSHOT.jar USERNAME@storm-BASENAME-ssh.azurehdinsight.net:
+        scp target\TemperatureMonitor-1.0-SNAPSHOT.jar USERNAME@storm-BASENAME-ssh.azurehdinsight.net:TemperatureMonitor-1.0-SNAPSHOT.jar
     
     > [AZURE.NOTE] Das Hochladen der Datei kann mehrere Minuten dauern, da sie mehrere Megabyte groß sein wird.
 
-3. Wenn die Datei hochgeladen ist, stellen Sie über SSH eine Verbindung mit dem Cluster her.
+    Verwenden Sie „scp“ zum Hochladen der Datei __dev.properties__, da sie die Informationen enthält, die zum Herstellen der Verbindung mit Event Hubs und dem Dashboard verwendet werden.
+
+        scp dev.properties USERNAME@storm-BASENAME-ssh.azurehdinsight.net:dev.properties
+
+3. Stellen Sie nach dem Hochladen der Dateien über SSH eine Verbindung mit dem Cluster her.
 
         ssh USERNAME@storm-BASENAME-ssh.azurehdinsight.net
 
 4. Verwenden Sie in der SSH-Sitzung den folgenden Befehl, um die Topologie zu starten.
 
-        storm jar TemperatureMonitor-1.0-SNAPSHOT.jar com.microsoft.examples.Temperature tempmonitor
+        storm jar TemperatureMonitor-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux --remote -R /with-hbase.yaml --filter dev.properties
     
-    Dies startet die Topologie mit der Klasse __com.microsoft.examples.Temperature__, die im Paket enthalten ist, wobei __tempmonitor__ als Anzeigename für diese Instanz der Topologie verwendet wird.
+    Die Topologie wird mit der Topologiedefinition in der Datei __with-hbase.yaml__ und den Konfigurationswerten in der Datei __dev.properties__ gestartet.
 
 3. Nachdem die Topologie gestartet wurde, öffnen Sie die Website, die Sie in Azure veröffentlicht haben, in einem Browser, und verwenden Sie dann den Befehl `node app.js` zum Senden von Daten an Event Hub. Das Webdashboard sollte mit den Informationen aktualisiert werden.
 
@@ -457,9 +476,9 @@ Um die Cluster, den Speicher und die Web-App auf einmal zu löschen, löschen Si
 
 ## Nächste Schritte
 
-Sie haben gelernt, wie Sie Daten mithilfe von Storm aus Event Hubs lesen, sie in HBase speichern und mit „Socket.io“ und „D3.js“ zur Anzeige an ein externes Dashboard senden.
+Sie haben gelernt, wie Sie Daten mithilfe von Storm aus Event Hubs lesen, sie in HBase speichern und die Informationen mit „Socket.io“ und „D3.js“ auf einem externen Dashboard visualisieren.
 
-* Weitere Beispiele für Storm-Topologien mit HDinsight finden Sie unter:
+* Weitere Beispiele für Storm-Topologien mit HDInsight finden Sie unter:
 
     * [Beispiele für Storm-Topologien für Storm in HDInsight](hdinsight-storm-example-topology.md)
 
@@ -477,4 +496,4 @@ Sie haben gelernt, wie Sie Daten mithilfe von Storm aus Event Hubs lesen, sie in
 
 [azure-portal]: https://portal.azure.com
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

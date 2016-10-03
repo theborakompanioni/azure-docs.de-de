@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/03/2016"
+   ms.date="09/19/2016"
    ms.author="v-jeana; hascipio; v-dabosl"/>
 
 # Grundlegendes zu Azure Marketplace-Auszahlungsberichten
@@ -116,4 +116,4 @@ Erstellen Sie bei anderen Problemen eine Supportanfrage unter <https://portal.az
 [8]: ./media/marketplace-publishing-report-payout/ledgerdefinitions.png
 [9]: ./media/marketplace-publishing-report-payout/payoutquestions.png
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0921_2016-->

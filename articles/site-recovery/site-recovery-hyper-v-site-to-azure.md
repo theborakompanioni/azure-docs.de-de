@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="storage-backup-recovery"
-	ms.date="05/09/2016"
+	ms.date="09/19/2016"
 	ms.author="raynew"/>
 
 
@@ -193,11 +193,11 @@ Richten Sie den Hyper-V-Standort ein, installieren Sie den Azure Site Recovery-A
 1. Führen Sie die Setupdatei für den Anbieter aus.
 2. Unter **Microsoft Update** können Sie Updates aktivieren, damit Updates für den Anbieter gemäß Ihrer Microsoft Update-Richtlinie installiert werden.
 3. Akzeptieren oder ändern Sie unter **Installation** den Standardspeicherort der Anbieterinstallation, und klicken Sie auf **Installieren**.
-5. Klicken Sie auf der Seite **Tresoreinstellungen** auf **Durchsuchen**, um die Tresorschlüsseldatei auszuwählen, die Sie heruntergeladen haben. Geben Sie das Azure Site Recovery-Abonnement, den Tresornamen und den Hyper-V-Standort an, zu dem der Hyper-V-Server gehört.
+4. Klicken Sie auf der Seite **Tresoreinstellungen** auf **Durchsuchen**, um die Tresorschlüsseldatei auszuwählen, die Sie heruntergeladen haben. Geben Sie das Azure Site Recovery-Abonnement, den Tresornamen und den Hyper-V-Standort an, zu dem der Hyper-V-Server gehört.
 
 	![Serverregistrierung](./media/site-recovery-hyper-v-site-to-azure/provider3.png)
 
-4\. Geben Sie unter **Proxyeinstellungen** an, wie der Anbieter, der auf dem Server installiert wird, eine Internetverbindung mit Azure Site Recovery herstellt.
+5\. Geben Sie unter **Proxyeinstellungen** an, wie der Anbieter, der auf dem Server installiert wird, eine Internetverbindung mit Azure Site Recovery herstellt.
 
 - Wenn der Anbieter eine direkte Verbindung herstellt, wählen Sie **Ohne Proxy direkt verbinden** aus.
 - Wenn die Verbindung über einen derzeit auf dem Server eingerichteten Proxy hergestellt werden soll, wählen Sie **Mit vorhandenen Proxyeinstellungen verbinden** aus.
@@ -207,9 +207,9 @@ Richten Sie den Hyper-V-Standort ein, installieren Sie den Azure Site Recovery-A
 
 	![Internet](./media/site-recovery-hyper-v-site-to-azure/provider7.PNG)
 
-5\. Klicken Sie nach Abschluss der Installation auf **Registrieren**, um den Server im Tresor zu registrieren. ![Installationspfad](./media/site-recovery-hyper-v-site-to-azure/provider2.png)
+6\. Klicken Sie nach Abschluss der Installation auf **Registrieren**, um den Server im Tresor zu registrieren. ![Installationspfad](./media/site-recovery-hyper-v-site-to-azure/provider2.png)
 
-6\. Nach der Registrierung ruft Azure Site Recovery Metadaten vom Hyper-V-Server ab, und der Server wird auf dem Blatt **Einstellungen** > **Site Recovery-Infrastruktur** > **Hyper-V-Hosts** angezeigt.
+7\. Nach der Registrierung ruft Azure Site Recovery Metadaten vom Hyper-V-Server ab, und der Server wird auf dem Blatt **Einstellungen** > **Site Recovery-Infrastruktur** > **Hyper-V-Hosts** angezeigt.
 
 
 ### Installation über die Befehlszeile
@@ -469,4 +469,4 @@ Hier wird beschrieben, wie Sie die Konfigurationseinstellungen, den Status und d
 
 Nachdem die Bereitstellung eingerichtet wurde und ausgeführt wird, können Sie sich über die unterschiedlichen Failoverarten [informieren](site-recovery-failover.md).
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0921_2016-->

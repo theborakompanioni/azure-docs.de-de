@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/14/2016"
-	ms.author="fashah;bradsev" />
+	ms.date="09/14/2016"
+	ms.author="bradsev" />
 
 # Verschieben von Daten in eine Azure SQL-Datenbank für Azure Machine Learning
 
@@ -22,7 +22,7 @@ In diesem Thema beschreiben wir die Optionen zum Verschieben von Daten aus Flatf
 
 Ein Thema, in dem die Optionen für das Verschieben von Daten in eine lokale SQL Server-Instanz für Machine Learning beschrieben werden, finden Sie unter [Verschieben von Daten in SQL Server auf einem virtuellen Computer in Azure](machine-learning-data-science-move-sql-server-virtual-machine.md).
 
-Das nachstehende **Menü** bietet Links zu Themen, in denen beschrieben wird, wie Daten in anderen Zielumgebungen erfasst werden, in denen die Daten während des Team Data Science-Prozesses (TDSP) gespeichert und verarbeitet werden.
+Das folgende **Menü** bietet Links zu Themen, in denen beschrieben wird, wie Daten in Zielumgebungen erfasst werden, in denen die Daten während des Team Data Science-Prozesses (TDSP) gespeichert und verarbeitet werden.
 
 [AZURE.INCLUDE [cap-ingest-data-selector](../../includes/cap-ingest-data-selector.md)]
 
@@ -38,7 +38,7 @@ In der folgende Tabelle sind die Optionen zum Verschieben von Daten in eine Azur
 Für diese hier beschriebenen Verfahren benötigen Sie:
 
 * Ein **Azure-Abonnement**. Wenn Sie nicht über ein Abonnement verfügen, können Sie sich für ein [kostenloses Testabonnement](https://azure.microsoft.com/pricing/free-trial/) registrieren.
-* Ein **Azure-Speicherkonto**. Sie benötigen ein Azure-Speicherkonto zum Speichern der Daten in diesem Tutorial. Falls Sie noch kein Azure-Speicherkonto haben, lesen Sie den Artikel [Erstellen eines Speicherkontos](storage-create-storage-account.md#create-a-storage-account). Nachdem Sie das Speicherkonto erstellt haben, müssen Sie den Kontoschlüssel für den Zugriff auf den Speicher abrufen. Siehe [Anzeigen, Kopieren und erneutes Generieren von Speicherzugriffsschlüsseln](storage-create-storage-account.md#view-copy-and-regenerate-storage-access-keys).
+* Ein **Azure-Speicherkonto**. Sie nutzen ein Azure-Speicherkonto zum Speichern der Daten in diesem Tutorial. Falls Sie noch kein Azure-Speicherkonto haben, lesen Sie den Artikel [Erstellen eines Speicherkontos](storage-create-storage-account.md#create-a-storage-account). Nachdem Sie das Speicherkonto erstellt haben, müssen Sie den Kontoschlüssel für den Zugriff auf den Speicher abrufen. Siehe [Anzeigen, Kopieren und erneutes Generieren von Speicherzugriffsschlüsseln](storage-create-storage-account.md#view-copy-and-regenerate-storage-access-keys).
 * Zugriff auf eine **Azure SQL-Datenbank**. Wenn Sie eine Azure SQL-Datenbank einrichten müssen, finden Sie in [Erste Schritte mit Microsoft Azure SQL-Datenbank](../sql-database/sql-database-get-started.md) Informationen dazu, wie Sie eine neue Instanz einer Azure SQL-Datenbank bereitstellen.
 * Lokal installierte und konfigurierte **Azure PowerShell**. Anweisungen hierzu finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
 
@@ -65,7 +65,7 @@ Wenn die Quelldaten auf einem lokalen SQL Server gespeichert sind, stehen versch
 3. [Datenbanksicherung und -wiederherstellung](#db-migration)
 4. [Azure Data Factory](#adf)
 
-Die Schritte für die ersten drei Möglichkeiten sind den Abschnitten unter [Verschieben von Daten in eine SQL Server-Instanz auf einem virtuellen Computer in Azure](machine-learning-data-science-move-sql-server-virtual-machine.md) sehr ähnlich, in denen diese Verfahren behandelt werden. Links zu den entsprechenden Abschnitten in diesem Thema finden Sie weiter unten.
+Die Schritte für die ersten drei Möglichkeiten sind den Abschnitten unter [Verschieben von Daten in eine SQL Server-Instanz auf einem virtuellen Computer in Azure](machine-learning-data-science-move-sql-server-virtual-machine.md) sehr ähnlich, in denen diese Verfahren behandelt werden. Links zu den entsprechenden Abschnitten in diesem Thema finden Sie in den folgenden Anleitungen.
 
 ###<a name="export-flat-file"></a>Exportieren in eine Flatfile
 
@@ -81,8 +81,8 @@ Die Schritte für die Verwendung der Datenbanksicherung und -wiederherstellung �
 
 ###<a name="adf"></a>Azure Data Factory
 
-Das Verfahren zum Verschieben von Daten in eine Azure SQL-Datenbank mit Azure Data Factory (ADF) finden Sie im Thema [Verschieben von Daten von einem lokalen SQL Server in eine Azure SQL-Datenbank mit Azure Data Factory](machine-learning-data-science-move-sql-azure-adf.md). In diesem Thema wird gezeigt, wie Sie mithilfe von ADF über einen Azure-Blobspeicher Daten aus einer lokalen SQL Server-Datenbank in eine Azure SQL-Datenbank verschieben.
+Das Verfahren zum Verschieben von Daten in eine Azure SQL-Datenbank mit Azure Data Factory (ADF) finden Sie im Thema [Verschieben von Daten von einem lokalen SQL Server zu SQL Azure mithilfe von Azure Data Factory](machine-learning-data-science-move-sql-azure-adf.md). In diesem Thema wird gezeigt, wie Sie mithilfe von ADF Daten aus einer lokalen SQL Server-Datenbank über Azure Blob Storage in eine Azure SQL-Datenbank verschieben.
 
-Sie sollten die Verwendung von ADF in Betracht ziehen, wenn Daten in einem Hybridszenario kontinuierlich migriert werden müssen, das sowohl auf lokale als auch Cloudressourcen zugreift, und wenn die Daten Transaktionen unterworfen werden oder geändert werden müssen, oder wenn ihnen im Rahmen der Migration eine Geschäftslogik hinzugefügt wird. ADF gestatte die Planung und Überwachung von Aufträgen mithilfe einfacher JSON-Skripts, die das Verschieben von Daten in regelmäßigen Abständen verwalten. ADF verfügt außerdem über weitere Funktionen wie Unterstützung für komplexe Vorgänge.
+Sie sollten die Verwendung von ADF in Betracht ziehen, wenn Daten in einem Hybridszenario kontinuierlich migriert werden müssen, das sowohl auf lokale als auch Cloudressourcen zugreift, und wenn die Daten Transaktionen unterworfen werden oder geändert werden müssen, oder wenn ihnen bei der Migration Geschäftslogik hinzugefügt wird. ADF ermöglicht die Planung und Überwachung von Aufträgen mithilfe einfacher JSON-Skripts, die das Verschieben von Daten in regelmäßigen Abständen verwalten. ADF verfügt außerdem über weitere Funktionen wie Unterstützung für komplexe Vorgänge.
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

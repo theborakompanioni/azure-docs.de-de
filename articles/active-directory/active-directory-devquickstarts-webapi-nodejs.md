@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="javascript"
 	ms.topic="article"
-	ms.date="05/16/2016"
+	ms.date="09/16/2016"
 	ms.author="brandwe"/>
 
 # Erste Schritte mit der Web-API für Node.js
@@ -41,7 +41,7 @@ In dieser exemplarischen Vorgehensweise werden Node.js-Module verwendet. Module 
 
 Die Struktur der Abhängigkeitskette erfordert zwar mehr Speicher, sie stellt aber sicher, dass alle Abhängigkeiten erfüllt sind und dass die bei der Entwicklung verwendeten Modulversionen auch in der Produktion verwendet werden. Dadurch wird das Verhalten der in der Produktion verwendeten Anwendung berechenbarer und Versionsprobleme, die sich auf die Benutzer auswirken, werden verhindert.
 
-## 1\. Registrieren eines Azure AD-Mandanten
+## 1\. Registrieren eines Azure AD-Mandanten
 
 Zur Verwendung dieses Beispiels benötigen Sie einen Azure Active Directory-Mandanten. Wenn Sie nicht wissen, was ein Mandant ist oder wie Sie einen erhalten, lesen Sie [Erhalten eines Azure AD-Mandanten](active-directory-howto-tenant.md).
 
@@ -61,7 +61,7 @@ Führen Sie folgende Schritte aus:
     - Die **App-ID-URI** ist eine eindeutige Kennung für die Anwendung. Üblicherweise wird `https://<tenant-domain>/<app-name>` verwendet, zum Beispiel: `https://contoso.onmicrosoft.com/my-first-aad-app`
 - Nach Abschluss der Registrierung weist AAD Ihrer Anwendung eine eindeutige Client-ID zu. Diesen Wert benötigen Sie in den nächsten Abschnitten, weswegen Sie ihn aus der Registerkarte „Konfigurieren“ kopieren sollten.
 
-- NICHT VERGESSEN: Erstellen Sie einen **geheimen Schlüssel für Ihre Anwendung**, und notieren Sie ihn sich. Sie benötigen sie später.
+- NICHT VERGESSEN: Erstellen Sie einen **geheimen Schlüssel für Ihre Anwendung**, und notieren Sie ihn sich. Sie benötigen ihn später.
 - NICHT VERGESSEN: Notieren Sie die **Anwendungs-ID**, die Ihrer App zugewiesen ist. Sie benötigen sie ebenfalls in Kürze.
 
 
@@ -89,7 +89,7 @@ Wechseln Sie an der Befehlszeile zum Verzeichnis „azuread“. Falls das Verzei
 
 `cd azuread - or- mkdir azuread; cd azuread`
 
-Geben Sie den folgenden Befehl ein:
+Geben Sie folgenden Befehl ein:
 
 `npm install restify`
 
@@ -248,7 +248,7 @@ Erstellen Sie eine `server.js`-Datei in Ihrem bevorzugten Editor, und fügen Sie
   var BearerStrategy = require('passport-azure-ad').BearerStrategy;
 ```
 
-Speichern Sie die Datei . Wir werden schon bald wieder auf diese Datei zurückkommen.
+Speichern Sie die Datei. Wir werden schon bald wieder auf diese Datei zurückkommen.
 
 ## 11\. Erstellen einer Konfigurationsdatei für die Azure AD-Einstellungen
 
@@ -941,4 +941,4 @@ Klonen Sie einfach hinunter zu Ihrem Entwicklungscomputer und führen Sie die Ko
 
 [AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources.md)]
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0921_2016-->

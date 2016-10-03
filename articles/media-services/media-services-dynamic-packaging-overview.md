@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Dynamische Paketerstellung – Übersicht"
+	pageTitle="Dynamische Paketerstellung – Übersicht | Microsoft Azure"
 	description="In diesem Thema finden Sie eine Übersicht über die dynamische Paketerstellung."
 	authors="Juliako"
 	manager="erikre"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/22/2016" 
+	ms.date="09/19/2016" 
 	ms.author="juliako"/>
 
 
@@ -34,7 +34,7 @@ Im folgenden Diagramm wird der Workflow zur dynamischen Paketerstellung dargeste
 ![Dynamische Codierung](./media/media-services-dynamic-packaging-overview/media-services-dynamic-packaging.png)
 
 
->[AZURE.NOTE]Um dynamische Paketerstellung nutzen zu können, ist mindestens eine bedarfsgesteuerte Streamingeinheit für den Streamingendpunkt erforderlich, aus dem die Inhalte bereitgestellt werden sollen. Weitere Informationen finden Sie unter [How to Scale Media Services](media-services-manage-origins.md#scale_streaming_endpoints) (Skalieren von Media Services).
+>[AZURE.NOTE]Um dynamische Paketerstellung nutzen zu können, ist mindestens eine bedarfsgesteuerte Streamingeinheit für den Streamingendpunkt erforderlich, aus dem die Inhalte bereitgestellt werden sollen. Weitere Informationen finden Sie unter [How to Scale Media Services](media-services-portal-manage-streaming-endpoints.md) (Skalieren von Media Services).
 
 ##Allgemeines Szenario
 
@@ -56,11 +56,11 @@ Zum Vorbereiten Ihres Medienobjekts auf dynamisches Streaming haben Sie zwei Mö
 3. [Streamen Sie Ihre Inhalte](media-services-deliver-content-overview.md).
 
 ODER
- 
-1. Laden Sie vorcodierte MP4-Dateien hoch. 
 
-	>[AZURE.NOTE] Diese Option wird jedoch nicht empfohlen.
-	
+1. Laden Sie vorcodierte MP4-Dateien hoch.
+
+>[AZURE.NOTE] Diese Option wird jedoch nicht empfohlen.
+
 2. [Überprüfen Sie die vorcodierten Dateien](media-services-static-packaging.md#validating-adaptive-bitrate-mp4s-encoded-with-external-encoders).
 3. [Streamen Sie Ihre Inhalte](media-services-deliver-content-overview.md).
 
@@ -80,4 +80,4 @@ Die folgenden Quelldateiformate werden von der dynamischen Paketerstellung nicht
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0921_2016-->

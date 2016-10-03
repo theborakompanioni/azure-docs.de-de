@@ -3,8 +3,8 @@
 	description="In diesem Artikel erfahren Sie, wie eine mobile App als primäre Kontaktmethode für Azure Multi-Factor Authentication verwendet wird."
 	services="multi-factor-authentication"
 	documentationCenter=""
-	authors="billmath"
-	manager="stevenp"
+	authors="kgremban"
+	manager="femila"
 	editor="curtland"/>
 
 <tags
@@ -14,7 +14,7 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="08/30/2016"
-	ms.author="billmath"/>
+	ms.author="kgremban"/>
 
 # Verwenden einer mobilen App als Kontaktmethode mit Azure Multi-Factor Authentication
 
@@ -78,4 +78,4 @@ So fügen Sie ein Konto manuell hinzu:
 
 3. Wenn die Aktivierung abgeschlossen ist, wählen Sie **Nehmen Sie Kontakt mit mir auf** aus. Dadurch wird eine Benachrichtigung oder ein Überprüfungscode an Ihr Mobiltelefon gesendet. Wählen Sie **Überprüfen** aus.
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

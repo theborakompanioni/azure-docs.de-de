@@ -13,11 +13,11 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="05/02/2016"
+   ms.date="09/09/2016"
    ms.author="chackdan"/>
 
 # Erstellen von eigenständigen Service Fabric-Clustern unter Windows Server oder Linux
-Azure Service Fabric ermöglicht die Erstellung von Service Fabric-Clustern auf VMs oder Computern mit Windows Server oder Linux. Dadurch lassen sich Service Fabric-Anwendungen in jeder lokalen oder cloudbasierten Umgebung bereitstellen und ausführen, in der sich miteinander verbundene Computer unter Windows Server oder Linux befinden.
+Azure Service Fabric ermöglicht die Erstellung von Service Fabric-Clustern auf VMs oder Computern mit Windows Server oder Linux. Dadurch lassen sich Service Fabric-Anwendungen in jeder lokalen oder cloudbasierten Umgebung bereitstellen und ausführen, in der sich miteinander verbundene Computer mit Windows Server oder Linux befinden.
 
 **Hinweis**: Das Erstellen eines Clusters unter Azure sollte entweder mit einer Azure Resource Manager-Vorlage oder mit dem Azure-Portal durchgeführt werden. Weitere Informationen finden Sie unter [Erstellen eines Service Fabric-Clusters mit einer Azure Resource Manager-Vorlage](service-fabric-cluster-creation-via-arm.md) oder [Erstellen eines Service Fabric-Clusters im Azure-Portal](service-fabric-cluster-creation-via-portal.md).
 
@@ -27,10 +27,10 @@ Service Fabric verfügt über ein Installationspaket, mit dem Sie diese eigenst�
 Sie können Cluster auf VMs oder Computer mit diesen Betriebssystemen erstellen:
 
 * Windows Server 2012 R2
-* Windows Server 2016
-* Linux
+* Windows Server 2016 (sobald die allgemeine Verfügbarkeit angekündigt wurde)
+* Linux (in Kürze)
 
-Weitere Informationen zu Windows Server finden Sie unter [Create an Azure Service Fabric cluster on-premises or in the cloud](service-fabric-cluster-creation-for-windows-server.md) (Erstellen eines Azure Service Fabric-Clusters – lokal oder in der Cloud)
+Weitere Informationen zu Windows Server finden Sie unter [Erstellen und Verwalten eines Windows Server-Clusters](service-fabric-cluster-creation-for-windows-server.md).
 
 ## Erstellung und Konfiguration von Clustern
 Service Fabric verfügt über ein Installationspaket, das Sie herunterladen können. Nach dem Herunterladen dieses Pakets müssen Sie eine JSON-Konfigurationsdatei bearbeiten, um die Einstellungen für Ihren Cluster anzugeben. Nach der Bearbeitung der Clustereinstellungen führen Sie ein Setupskript aus, mit dem der Cluster mit den Computern erstellt wird, die Sie in Ihren Clustereinstellungen angegeben haben. Sie können auch ein Skript ausführen, um einen Cluster für eine Gruppe von Computern zu entfernen.
@@ -62,4 +62,4 @@ Erstellen eines Clusters auf virtuellen Windows- oder Windows Server-Computern: 
 
 Erstellen eines Clusters auf virtuellen Linux- oder Linux-Computern: [Service Fabric on Linux](service-fabric-linux-overview.md) (Service Fabric unter Linux)
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0921_2016-->

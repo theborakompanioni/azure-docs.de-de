@@ -60,9 +60,9 @@ Weitere Informationen zu Optionen für die Bereitstellung, die für Ihr Szenario
 
         Set-AzureRmContext -SubscriptionID <YourSubscriptionId>
 
-3. Wenn Sie eine neue Vorlage bereitstellen, müssen Sie in der Regel zunächst eine Ressourcengruppe erstellen, die die Ressourcen enthalten soll. Wenn es bereits eine Ressourcengruppe gibt, in der die Bereitstellung erfolgen soll, können Sie diesen Schritt überspringen und einfach diese Ressourcengruppe nutzen.
+3. Wenn Sie eine neue Vorlage bereitstellen, müssen Sie in der Regel zunächst eine Ressourcengruppe erstellen, die die Ressourcen enthalten soll. Wenn es bereits eine Ressourcengruppe gibt, in der die Bereitstellung erfolgen soll, können Sie diesen Schritt überspringen und diese Ressourcengruppe nutzen.
 
-     Geben Sie zum Erstellen einer Ressourcengruppe einen Namen und Speicherort für diese an.
+     Geben Sie zum Erstellen einer Ressourcengruppe einen Namen und Speicherort für diese an. Sie müssen einen Standort für die Ressourcengruppe angeben, da diese Metadaten zu den Ressourcen speichert. Aus Compliance-Gründen sollten Sie angeben, wo diese Metadaten gespeichert werden. Im Allgemeinen wird die Angabe eines Standorts empfohlen, an dem sich der Großteil Ihrer Ressourcen befindet. Durch die Verwendung des gleichen Standorts können Sie die Vorlage vereinfachen.
 
         New-AzureRmResourceGroup -Name ExampleResourceGroup -Location "West US"
    
@@ -193,4 +193,4 @@ Weitere Informationen zum Verwenden eines KeyVault-Verweises zum Übergeben sich
 - Informationen zum Definieren von Parametern in der Vorlage finden Sie unter [Erstellen von Vorlagen](resource-group-authoring-templates.md#parameters).
 - Informationen zum Bereitstellen der Lösung in andere Umgebungen finden Sie unter [Entwicklungs- und Testumgebungen in Microsoft Azure](solution-dev-test-environments.md).
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0921_2016-->

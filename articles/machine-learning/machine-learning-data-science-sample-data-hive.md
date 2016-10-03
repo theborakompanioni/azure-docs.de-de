@@ -3,7 +3,7 @@
 	description="Komprimieren von Daten in Azure HDInsight (Hadoop) Hive-Tabellen"
 	services="machine-learning,hdinsight"
 	documentationCenter=""
-	authors="bradsev,hangzh-msft"
+	authors="bradsev"
 	manager="jhubbard" 
 	editor="cgronlun"  />
 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/14/2016"
+	ms.date="09/19/2016"
 	ms.author="hangzh;bradsev" />
 
 # Extrahieren von Stichproben aus Daten in Azure HDInsight Hive-Tabellen
@@ -107,4 +107,4 @@ Dies ist eine Beispielabfrage:
 Informationen zu komplexeren Methoden für das Extrahieren von Stichproben, die in Hive verfügbar sind, finden Sie unter [LanguageManual Sampling](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Sampling) (in englischer Sprache).
  
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

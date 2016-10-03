@@ -13,12 +13,12 @@
  ms.topic="article"
  ms.tgt_pltfrm="na"
  ms.workload="na"
- ms.date="03/14/2016"
+ ms.date="09/19/2016"
  ms.author="elioda"/>
 
 # Skalieren von IoT Hub
 
-Azure IoT Hub kann bis zu einer Million gleichzeitig verbundener Geräte unterstützen. Weitere Informationen finden Sie unter [IoT Hub – Preise][lnk-pricing]. Jede IoT Hub-Einheit lässt eine Anzahl von täglichen Nachrichten zu.
+Azure IoT Hub kann bis zu einer Million gleichzeitig verbundener Geräte unterstützen. Weitere Informationen finden Sie unter [IoT Hub – Preise][lnk-pricing]. Jede IoT Hub-Einheit lässt eine bestimmte Anzahl von täglichen Nachrichten zu.
 
 Um Ihre Lösung richtig skalieren zu können, sollten Sie sich nach dem jeweiligen IoT Hub-Anwendungsfall richten. Achten Sie besonders auf den erforderlichen Spitzendurchsatz für die folgenden Kategorien von Vorgängen:
 
@@ -40,8 +40,6 @@ D2C-Nachrichten basieren auf diesen Richtlinien für den anhaltenden Durchsatz:
 | S2 | Bis zu 16 MB/Minute pro Einheit<br/>(22,8 GB/Tag/Einheit) | Durchschnittlich 4167 Nachrichten/Minute pro Einheit<br/>(6 Millionen Nachrichten/Tag pro Einheit) |
 | S3 | Bis zu 814 MB/Minute pro Einheit<br/>(1.144,4 GB/Tag/Einheit) | Durchschnittlich 208.333 Nachrichten/Minute pro Einheit<br/>(300 Millionen Nachrichten/Tag pro Einheit) |
 
-Die Leistung wird bei C2D-Nachrichten pro Gerät skaliert und jedes Gerät empfängt bis zu 5 Nachrichten pro Minute.
-
 ## Durchsatz von Identitätsregistrierungsvorgängen
 
 IoT Hub-Identitätsregistrierungsvorgänge sollten keine Laufzeitvorgänge sein, da sie sich größtenteils auf die Gerätebereitstellung beziehen.
@@ -59,7 +57,7 @@ Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 - [Entwicklerhandbuch][lnk-devguide]
 - [Erkunden der Geräteverwaltung mithilfe der Beispielbenutzeroberfläche][lnk-dmui]
 - [Simulieren eines Geräts mit dem Gateway SDK][lnk-gateway]
-- [Verwenden des Azure-Portals zur Verwaltung von IoT Hub][lnk-portal]
+- [Verwalten von IoT Hubs über das Azure-Portal][lnk-portal]
 
 [lnk-pricing]: https://azure.microsoft.com/pricing/details/iot-hub
 [IoT Hub-Kontingente und -Drosselungen]: iot-hub-devguide.md#throttling
@@ -75,4 +73,4 @@ Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 [lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
 [lnk-portal]: iot-hub-manage-through-portal.md
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0921_2016-->

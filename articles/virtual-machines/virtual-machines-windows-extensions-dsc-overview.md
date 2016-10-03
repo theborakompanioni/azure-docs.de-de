@@ -15,7 +15,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="vm-windows"
    ms.workload="na"
-   ms.date="08/24/2016"
+   ms.date="09/15/2016"
    ms.author="zachal"/>
 
 # Einführung in den Handler der Azure-Erweiterung zum Konfigurieren des gewünschten Zustands #
@@ -44,7 +44,7 @@ Konfigurationsdaten: Eine PSD1-Datei mit Umgebungsdaten für eine Konfiguration.
 
 Die Azure DSC-Erweiterung nutzt das VM-Agent-Framework von Azure zur Übermittlung und Inkraftsetzung von DSC-Konfigurationen auf virtuellen Azure-Computern sowie zur Erstellung entsprechender Berichte. Die DSC-Erweiterung erwartet eine ZIP-Datei mit mindestens einem Konfigurationsdokument sowie einen Parametersatz, der entweder über das Azure PowerShell SDK oder über das Azure-Portal bereitgestellt wird.
 
-Wenn die Erweiterung zum ersten Mal aufgerufen wird, wird ein Installationsvorgang ausgeführt. Dabei wird eine Version von Windows Management Framework (WMF) installiert:
+Wenn die Erweiterung zum ersten Mal aufgerufen wird, wird ein Installationsvorgang ausgeführt. Dieser Prozess verwendet die folgende Logik, um eine Version von Windows Management Framework (WMF) zu installieren:
 
 1. Bei einem virtuellen Azure-Computer unter Windows Server 2016 wird keine Aktion ausgeführt. Unter Windows Server 2016 ist bereits die neueste Version von PowerShell installiert.
 2. Bei Angabe der Eigenschaft `wmfVersion` wird die entsprechende WMF-Version installiert (es sei denn, sie ist nicht mit dem Betriebssystem des virtuellen Computers kompatibel).
@@ -60,7 +60,7 @@ PowerShell-Cmdlets können mit ARM oder ASM zum Verpacken, Veröffentlichen und 
 
 Bei der durch dieses Cmdlet erstellten ZIP-Datei befindet sich das PS1-Skript im Stammverzeichnis des Archivordners. Der Modulordner für Ressourcen wird im Archivordner platziert.
 
-`Set-AzureVMDscExtension` fügt die erforderlichen Einstellungen für die PowerShell DSC-Erweiterung in ein VM-Konfigurationsobjekt ein, das dann mit `Update-AzureVM` auf einen virtuellen Azure-Computer angewendet werden kann.
+`Set-AzureVMDscExtension` fügt die erforderlichen Einstellungen für die PowerShell-DSC-Erweiterung in ein VM-Konfigurationsobjekt ein, das dann mit `Update-AzureVM` auf einen virtuellen Azure-Computer angewendet werden kann.
 
 `Get-AzureVMDscExtension` ruft den DSC-Erweiterungsstatus eines bestimmten virtuellen Computers ab.
 
@@ -82,9 +82,9 @@ Bei der durch dieses Cmdlet erstellten ZIP-Datei befindet sich das PS1-Skript im
 ## Funktionen des Azure-Portals ##
 Navigieren Sie zu einem klassischen virtuellen Computer. Klicken Sie unter „Einstellungen“ > „Allgemein“ auf „Erweiterungen“. Ein neuer Bereich wird erstellt. Klicken Sie auf „Hinzufügen“, und wählen Sie „PowerShell DSC“ aus.
 
-Das Portal benötigt Eingabe. **Konfigurationsmodule oder -skript**: Dies ist ein Pflichtfeld. Erfordert eine PS1-Datei mit einem Konfigurationsskript oder eine ZIP-Datei mit einem PS1-Konfigurationsskript am Verzeichnisstamm und allen abhängigen Ressourcen in Modulordnern innerhalb der ZIP. Die Datei kann mithilfe des Cmdlets `Publish-AzureVMDscConfiguration -ConfigurationArchivePath` aus dem Azure PowerShell SDK erstellt werden. Die ZIP-Datei wird in Ihren Benutzer-Blobspeicher hochgeladen und durch ein SAS-Token geschützt.
+Das Portal benötigt Eingabe. **Konfigurationsmodule oder -skript**: Dieses Feld ist obligatorisch. Erfordert eine PS1-Datei mit einem Konfigurationsskript oder eine ZIP-Datei mit einem PS1-Konfigurationsskript am Verzeichnisstamm und allen abhängigen Ressourcen in Modulordnern innerhalb der ZIP. Die Datei kann mithilfe des Cmdlets `Publish-AzureVMDscConfiguration -ConfigurationArchivePath` aus dem Azure PowerShell SDK erstellt werden. Die ZIP-Datei wird in Ihren Benutzer-Blobspeicher hochgeladen und durch ein SAS-Token geschützt.
 
-**PSD1-Konfigurationsdatendatei**: Dies ist ein optionales Feld. Wenn Ihre Konfiguration eine Konfigurationsdatendatei in PSD1 erfordert, wählen Sie mithilfe dieses Felds eine solche Datei aus, und laden Sie sie in Ihren Benutzer-Blobspeicher hoch, wo sie durch ein SAS-Token geschützt wird.
+**PSD1-Konfigurationsdatendatei**: Dieses Feld ist optional. Wenn Ihre Konfiguration eine Konfigurationsdatendatei in PSD1 erfordert, wählen Sie mithilfe dieses Felds eine solche Datei aus, und laden Sie sie in Ihren Benutzer-Blobspeicher hoch, wo sie durch ein SAS-Token geschützt wird.
  
 **Modulspezifischer Konfigurationsname**: PS1-Dateien können mehrere Konfigurationsfunktionen besitzen. Geben Sie den Namen des PS1-Konfigurationsskripts ein – gefolgt von '' und dem Namen der Konfigurationsfunktion. Wenn der Name des PS1-Skripts z.B. „configuration.ps1“ und die Konfiguration „IisInstall“ lautet, geben Sie Folgendes ein: `configuration.ps1\IisInstall`
 
@@ -140,8 +140,10 @@ C:\\WindowsAzure\\Logs\\Plugins\\Microsoft.Powershell.DSC[Versionsnummer]
 
 Weitere Informationen zu PowerShell DSC finden Sie im [PowerShell-Dokumentationscenter](https://msdn.microsoft.com/powershell/dsc/overview).
 
+Sehen Sie sich die [Azure Resource Manager-Vorlage für die DSC-Erweiterung](virtual-machines-windows-extensions-dsc-template.md) an.
+
 Weitere Funktionen, die Sie mit PowerShell DSC verwalten können, finden Sie, indem Sie den [PowerShell-Katalog](https://www.powershellgallery.com/packages?q=DscResource&x=0&y=0) nach weiteren DSC-Ressourcen durchsuchen.
 
 Ausführliche Informationen zum Übergeben von sensiblen Parametern an Konfigurationen finden Sie unter [Übergeben von Anmeldeinformationen an den Azure DSC-Erweiterungs-Handler](virtual-machines-windows-extensions-dsc-credentials.md).
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0921_2016-->

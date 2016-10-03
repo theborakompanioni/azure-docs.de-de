@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/14/2016"
+	ms.date="09/19/2016"
 	ms.author="zhangya;bradsev" />
 
 
@@ -25,8 +25,10 @@ Erläutert den Zweck der Erstellung von Features und stellt Beispiele ihrer Roll
 
 Dieses **Menü** stellt eine Verknüpfung mit Themen dar, in denen beschrieben wird, wie Features für Daten in verschiedenen Umgebungen erstellt werden. Dieser Task ist ein Schritt im [Team Data Science-Prozess (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/).
 
-Bei der Featureentwicklung wird versucht, die Vorhersageleistung der Lernalgorithmen durch Erstellen von Merkmalen aus Rohdaten zu verbessern und mit diesen den Lernprozess zu vereinfachen. Entwicklung und Auswahl von Features sind ein Teil des Team Data Science-Prozesses, der unter [Was ist der Team Data Science-Prozess?](data-science-process-overview.md) beschrieben ist. Die Entwicklung und die Auswahl der Features sind Teil des Schritts **Entwickeln von Features** der CAP-Vorgehensweise.
+Bei der Featureentwicklung wird versucht, die Vorhersageleistung der Lernalgorithmen durch Erstellen von Merkmalen aus Rohdaten zu verbessern und mit diesen den Lernprozess zu vereinfachen. Entwicklung und Auswahl von Features sind ein Teil des Team Data Science-Prozesses, der unter [Was ist der Team Data Science-Prozess?](data-science-process-overview.md) beschrieben ist. Entwicklung und Auswahl von Features sind Teile des Schritts **Entwickeln von Features** des TDSP.
+
 * **Featureentwicklung**: Bei diesem Prozess wird versucht, zusätzliche relevante Features aus den vorhandenen Rohfeatures in den Daten zu erstellen und die Vorhersageleistung des Lernalgorithmus zu steigern.
+
 * **Featureauswahl**: Dieser Prozess wählt bei dem Versuch, die Anzahl von Dimensionen des Trainingsproblems zu verringern, die wichtigste Teilmenge der ursprünglichen Datenfeatures aus.
 
 Normalerweise wird die **Featureentwicklung** zuerst ausgeführt, um zusätzliche Features zu generieren, und anschließend wird die **Featureauswahl** ausgeführt, um irrelevante, redundante oder stark korrelierte Features zu entfernen.
@@ -95,4 +97,4 @@ Entwickelte und ausgewählte Features steigern die Effizienz des Trainingsprozes
 Beachten Sie, dass die Entwicklung bzw. Auswahl von Features nicht immer unbedingt ausgeführt werden müssen. Ob sie benötigt werden oder nicht, hängt von den vorliegenden oder gesammelten Daten ab, dem gewählten Algorithmus und dem Ziel des Experiments.
  
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

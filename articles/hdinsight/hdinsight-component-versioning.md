@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/14/2016"
+	ms.date="09/21/2016"
 	ms.author="jgao"/>
 
 
@@ -91,12 +91,12 @@ In der folgenden Tabelle werden die derzeit verfügbaren Versionen von HDInsight
 HDInsight-Version|HDP-Version|Betriebssystem des virtuellen Computers|Hohe Verfügbarkeit|Herausgabedatum|Im Azure-Portal verfügbar|Supportablaufdatum|Veraltet ab
 ---|---|---|---|---|---|---|---
 HDI 3.4|HDP 2.4|Ubuntu 14.0.4 LTS|Ja|03/29/2016|Ja||
-HDI 3.3|HDP 2.3|Ubuntu 14.0.4 LTS oder Windows Server 2012 R2|Ja|02\.12.2015|Ja||
-HDI 3.2|HDP 2.2|Ubuntu 12.04 LTS oder Windows Server 2012 R2|Ja|18\.02.2015|Ja||
-HDI 3,1|HDP 2,1|Windows Server 2012 R2|Ja|24\.06.2014|Ja||
-HDI 3,0|HDP 2,0|Windows Server 2012 R2|Ja|11\.02.2014|Ja|17\.09.2014|30\.06.2015
-HDI 2,1|HDP 1,3|Windows Server 2012 R2|Ja|28\.10.2013|Ja|12\.05.2014|31\.05.2015
-HDI 1.6|HDP 1.1||Nein|28\.10.2013|Ja|26\.04.2014|31\.05.2015
+HDI 3.3|HDP 2.3|Ubuntu 14.0.4 LTS oder Windows Server 2012 R2|Ja|02\.12.2015|Ja|27\.06.2016|31\.07.2017
+HDI 3.2|HDP 2.2|Ubuntu 12.04 LTS oder Windows Server 2012 R2|Ja|18\.02.2015|Ja|01\.03.2016|01\.04.2017
+HDI 3,1|HDP 2,1|Windows Server 2012 R2|Ja|24\.06.2014|Nein|18\.05.2015|30\.06.2016
+HDI 3,0|HDP 2,0|Windows Server 2012 R2|Ja|11\.02.2014|Nein|17\.09.2014|30\.06.2015
+HDI 2,1|HDP 1,3|Windows Server 2012 R2|Ja|28\.10.2013|Nein|12\.05.2014|31\.05.2015
+HDI 1.6|HDP 1.1||Nein|28\.10.2013|Nein|26\.04.2014|31\.05.2015
 
 **Bereitstellung von Nicht-Standardclustern**
 
@@ -109,7 +109,7 @@ Die SLA ist in Form eines "Supportfensters" definiert. Ein Supportfenster bezieh
 
 Das Datum **Veraltet ab** ist das Datum, nach dem eine Clusterversion nicht mehr in HDInsight erstellt werden kann.
 
-> [AZURE.NOTE] Die HDInsight 2.1- und 3.0-Cluster werden unter dem Azure-Gastbetriebssystem [Family 4](../cloud-services/cloud-services-guestos-update-matrix.md) ausgeführt, das die 64-Bit-Version von Windows Server 2012 R2 verwendet und .NET Framework 4.0, 4.5. und 4.5.1 unterstützt.
+> [AZURE.NOTE] Windows-basierte HDInsight-Cluster (einschließlich Version 2.1, 3.0, 3.1, 3.2 und 3.3) laufen unter der Azure-Gastbetriebssystem-Familie 4, die die 64-Bit-Version von Windows Server 2012 R2 verwendet und .NET Framework 4.0, 4.5, 4.5.1 und 4.5.2 unterstützt.
 
 ## Hortonworks-Versionshinweise im Zusammenhang mit HDInsight-Versionen##
 
@@ -157,4 +157,4 @@ Das Datum **Veraltet ab** ist das Datum, nach dem eine Clusterversion nicht mehr
 
 [zookeeper]: http://zookeeper.apache.org/
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

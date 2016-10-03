@@ -13,13 +13,13 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/14/2016" 
+	ms.date="09/19/2016" 
 	ms.author="bradsev" />
 
 
 # Szenarien für die erweiterte Analyse in Azure Machine Learning
 
-Dieser Artikel beschreibt die verschiedenen Beispieldatenquellen und Zielszenarien, die mit dem Team Data Science-Prozess (TDSP) verarbeitet werden können. Der TDSP bietet einen systematischen Ansatz für Teams zur Zusammenarbeit bei der Entwicklung intelligenter Anwendungen. Die hier gezeigten Szenarien veranschaulichen einige der Optionen im Datenverarbeitungs-Workflow, die von den Datenmerkmalen, Quellspeicherorten und Zielrepositorys in Azure abhängen.
+Dieser Artikel beschreibt die verschiedenen Beispieldatenquellen und Zielszenarien, die mit dem [Team Data Science-Prozess (TDSP)](data-science-process-overview.md) verarbeitet werden können. Der TDSP bietet einen systematischen Ansatz für Teams zur Zusammenarbeit bei der Entwicklung intelligenter Anwendungen. Die hier gezeigten Szenarien veranschaulichen einige der Optionen im Datenverarbeitungs-Workflow, die von den Datenmerkmalen, Quellspeicherorten und Zielrepositorys in Azure abhängen.
 
 Die **Entscheidungsstruktur**, mit deren Hilfe Sie die für Ihre Daten und Ziele geeigneten Beispielszenarien auswählen, wird im letzten Abschnitt vorgestellt.
 
@@ -28,10 +28,9 @@ Die **Entscheidungsstruktur**, mit deren Hilfe Sie die für Ihre Daten und Ziele
 
 In jedem der folgenden Abschnitte wird ein Beispielszenario vorgestellt. Für jedes Szenario werden ein möglicher Ablauf für Datenwissenschaft oder erweiterte Analyse sowie die unterstützenden Azure-Ressourcen aufgeführt.
 
->[AZURE.NOTE] **Für alle folgenden Szenarien müssen Sie diese Schritte ausführen:**
-
-*   [Erstellen eines Speicherkontos](../storage/storage-create-storage-account.md)
-*   [Erstellen eines Azure ML-Arbeitsbereichs](machine-learning-create-workspace.md)
+>[AZURE.NOTE] **Für alle folgenden Szenarien müssen Sie diese Schritte ausführen:**<br/>
+>* [Erstellen eines Speicherkontos](../storage/storage-create-storage-account.md) <br/>
+>* [Erstellen eines Azure Machine Learning-Arbeitsbereichs](machine-learning-create-workspace.md)
 
 
 ## <a name="smalllocal"></a>Szenario 1: Kleines bis mittelgroßes tabellarisches Dataset in lokalen Dateien
@@ -92,7 +91,7 @@ In jedem der folgenden Abschnitte wird ein Beispielszenario vorgestellt. Für je
 
 9. Lesen Sie die Daten aus den Azure-Blobs mithilfe des [Import Data][import-data]-Moduls.
 
-10. Erstellen Sie einen Azure Machine Learning-Versuchsablauf, der mit einem oder mehreren aufgenommenen Datasets beginnt.
+10. Erstellen Sie einen Azure Machine Learning-Versuchsablauf, der mit einem oder mehreren erfassten Datasets beginnt.
 
 
 ## <a name="smalllocaltodb"></a>Szenario 4: Kleines bis mittelgroßes Dataset lokaler Dateien, das auf SQL Server in einer Azure-VM ausgerichtet ist
@@ -113,18 +112,18 @@ In jedem der folgenden Abschnitte wird ein Beispielszenario vorgestellt. Für je
 
 6.  Laden Sie Daten in einer SQL Server-Datenbank, die auf einem virtuellen Azure-Computer ausgeführt wird.
 
-    a. Option 1: Verwenden von SQL Server Management Studio
+    Option 1: Verwenden von SQL Server Management Studio
 
-		i.  Login to SQL Server VM
-        ii. Run SQL Server Management Studio.
-        iii. Create database and target tables.
-        iv. Use one of the bulk import methods to load the data from VM-local files.
+    - Melden Sie sich beim virtuellen SQL Server-Computer an.
+    - Führen Sie SQL Server Management Studio aus.
+    - Erstellen Sie eine Datenbank und Zieltabellen.
+    - Verwenden Sie eine der Methoden für den Massenimport, um Daten aus lokalen VM-Dateien zu laden.
 
-    b. Option 2: Verwenden von IPython Notebook – für mittlere und größere Datasets nicht empfehlenswert
-
-        i.  Use ODBC connection string to access SQL Server on VM.
-        ii. Create database and target tables.
-        iii. Use one of the bulk import methods to load the data from VM-local files.
+    Option 2: Verwenden von IPython Notebook – für mittlere und größere Datasets nicht empfehlenswert
+    <!-- -->    
+    - Verwenden Sie die ODBC-Verbindungszeichenfolge, um von der VM auf SQL Server zuzugreifen.
+    - Erstellen Sie eine Datenbank und Zieltabellen.
+    - Verwenden Sie eine der Methoden für den Massenimport, um Daten aus lokalen VM-Dateien zu laden.
 
 7.  Erkunden Sie die Daten, und erstellen Sie Features nach Bedarf. Beachten Sie, dass die Features nicht in den Datenbanktabellen materialisiert werden müssen. Beachten Sie nur die erforderliche Abfrage, um sie zu erstellen.
 
@@ -134,7 +133,7 @@ In jedem der folgenden Abschnitte wird ein Beispielszenario vorgestellt. Für je
 
 10. Lesen Sie die Daten mithilfe des [Import Data][import-data]-Moduls direkt von der SQL Server-Instanz. Fügen Sie die erforderliche Abfrage zum Extrahieren von Feldern, zum Erstellen von Features und zum Entnehmen von Datenproben bei Bedarf direkt in die [Import Data][import-data]-Abfrage ein.
 
-11. Erstellen Sie einen Azure Machine Learning-Versuchsablauf, der mit einem oder mehreren aufgenommenen Datasets beginnt.
+11. Erstellen Sie einen Azure Machine Learning-Versuchsablauf, der mit einem oder mehreren erfassten Datasets beginnt.
 
 ## <a name="largelocaltodb"></a>Szenario 5: Großes Dataset in lokalen Dateien, Ziel-SQL Server in Azure VM
 
@@ -168,7 +167,7 @@ In jedem der folgenden Abschnitte wird ein Beispielszenario vorgestellt. Für je
 
     f. Wenn Tabellenverknüpfungen erforderlich sind, erstellen Sie Indizes, um Verknüpfungen zu beschleunigen.
 
- > [AZURE.NOTE] Zum schnelleren Laden großer Datenmengen empfiehlt es sich, die Erstellung partitionierter Tabellen und den Massenimport der Daten parallel durchzuführen. Weitere Informationen finden Sie unter [Paralleler Datenimport in partitionierte SQL-Tabellen](machine-learning-data-science-parallel-load-sql-partitioned-tables.md).
+     > [AZURE.NOTE] Zum schnelleren Laden großer Datenmengen empfiehlt es sich, die Erstellung partitionierter Tabellen und den Massenimport der Daten parallel durchzuführen. Weitere Informationen finden Sie unter [Paralleler Datenimport in partitionierte SQL-Tabellen](machine-learning-data-science-parallel-load-sql-partitioned-tables.md).
 
 5.  Erkunden Sie die Daten, und erstellen Sie Features nach Bedarf. Beachten Sie, dass die Features nicht in den Datenbanktabellen materialisiert werden müssen. Beachten Sie nur die erforderliche Abfrage, um sie zu erstellen.
 
@@ -178,7 +177,7 @@ In jedem der folgenden Abschnitte wird ein Beispielszenario vorgestellt. Für je
 
 8. Lesen Sie die Daten mithilfe des [Import Data][import-data]-Moduls direkt von der SQL Server-Instanz. Fügen Sie die erforderliche Abfrage zum Extrahieren von Feldern, zum Erstellen von Features und zum Entnehmen von Datenproben bei Bedarf direkt in die [Import Data][import-data]-Abfrage ein.
 
-9. Einfacher Azure Machine Learning-Versuchsablauf, der mit einem hochgeladenen Dataset beginnt.
+9. Einfacher Azure Machine Learning-Versuchsablauf, der mit hochgeladenem Dataset beginnt
 
 ## <a name="largedbtodb"></a>Szenario 6: Großes Dataset in einer lokalen SQL Server-Datenbank, das auf SQL Server auf einem virtuellen Azure-Computer ausgerichtet ist
 
@@ -190,7 +189,7 @@ In jedem der folgenden Abschnitte wird ein Beispielszenario vorgestellt. Für je
 
 2.  Verwenden Sie eine der Datenexportmethoden, um die Daten aus SQL Server in Dumpdateien zu exportieren.
 
-    a. Hinweis: Wenn Sie sich dazu entschließen, alle Daten aus der lokalen Datenbank zu verschieben, wählen Sie eine alternative (schnellere) Methode zum Verschieben der vollständigen Datenbank in die SQL Server-Instanz in Azure. Überspringen Sie die Schritte zum Exportieren von Daten, zum Erstellen der Datenbank und zum Laden/Importieren der Daten in die Zieldatenbank, und führen Sie die alternative Methode durch.
+    > [AZURE.NOTE] Sie sich dazu entschließen, alle Daten aus der lokalen Datenbank zu verschieben, wählen Sie eine alternative (schnellere) Methode zum Verschieben der vollständigen Datenbank in die SQL Server-Instanz in Azure. Überspringen Sie die Schritte zum Exportieren von Daten, zum Erstellen der Datenbank und zum Laden/Importieren der Daten in die Zieldatenbank, und führen Sie die alternative Methode durch.
 
 3.  Laden Sie Dumpdateien in den Azure-Speichercontainer hoch.
 
@@ -208,7 +207,7 @@ In jedem der folgenden Abschnitte wird ein Beispielszenario vorgestellt. Für je
 
 	f. Wenn Tabellenverknüpfungen erforderlich sind, erstellen Sie Indizes, um Verknüpfungen zu beschleunigen.
 
-> [AZURE.NOTE] Zum schnelleren Laden großer Datenmengen führen Sie die Erstellung partitionierter Tabellen und den Massenimport der Daten parallel durch. Weitere Informationen finden Sie unter [Paralleler Datenimport in partitionierte SQL-Tabellen](machine-learning-data-science-parallel-load-sql-partitioned-tables.md).
+    > [AZURE.NOTE] Zum schnelleren Laden großer Datenmengen führen Sie die Erstellung partitionierter Tabellen und den Massenimport der Daten parallel durch. Weitere Informationen finden Sie unter [Paralleler Datenimport in partitionierte SQL-Tabellen](machine-learning-data-science-parallel-load-sql-partitioned-tables.md).
 
 5.  Erkunden Sie die Daten, und erstellen Sie Features nach Bedarf. Beachten Sie, dass die Features nicht in den Datenbanktabellen materialisiert werden müssen. Beachten Sie nur die erforderliche Abfrage, um sie zu erstellen.
 
@@ -218,7 +217,7 @@ In jedem der folgenden Abschnitte wird ein Beispielszenario vorgestellt. Für je
 
 8. Lesen Sie die Daten mithilfe des [Import Data][import-data]-Moduls direkt von der SQL Server-Instanz. Fügen Sie die erforderliche Abfrage zum Extrahieren von Feldern, zum Erstellen von Features und zum Entnehmen von Datenproben bei Bedarf direkt in die [Import Data][import-data]-Abfrage ein.
 
-9. Einfacher Azure Machine Learning-Versuchsablauf, der mit einem hochgeladenen Dataset beginnt.
+9. Einfacher Azure Machine Learning-Versuchsablauf, der mit hochgeladenem Dataset beginnt
 
 ### Alternative Methode zum Kopieren einer vollständigen Datenbank aus einem lokalen SQL Server in Azure SQL-Datenbank
 
@@ -226,7 +225,7 @@ In jedem der folgenden Abschnitte wird ein Beispielszenario vorgestellt. Für je
 
 #### Zusätzliche Azure-Ressourcen: Azure-VM (SQL Server / IPython Notebook-Server)
 
-Um die gesamte SQL Server-Datenbank auf dem virtuellen SQL Server-Computer zu replizieren, kopieren Sie eine Datenbank von einem Speicherort/Server auf einen anderen, vorausgesetzt, dass die Datenbank vorübergehend offline geschaltet werden kann. Hierzu verwenden Sie die Objekt-Explorer-Benutzeroberfläche von SQL Server Management Studio oder die entsprechenden Transact-SQL-Befehle.
+Um die gesamte SQL Server-Datenbank auf dem virtuellen SQL Server-Computer zu replizieren, kopieren Sie eine Datenbank von einem Speicherort/Server auf einen anderen, vorausgesetzt, dass die Datenbank vorübergehend offline geschaltet werden kann. Hierzu verwenden Sie den Objekt-Explorer von SQL Server Management Studio oder die entsprechenden Transact-SQL-Befehle.
 
 1. Trennen Sie die Datenbank am Quellspeicherort. Weitere Informationen finden Sie unter [Trennen einer Datenbank](https://technet.microsoft.com/library/ms191491(v=sql.110).aspx).
 2. Kopieren Sie im Windows-Explorer oder in der Windows-Eingabeaufforderung die getrennten Datenbankdateien und Protokolldateien in den Zielspeicherort auf dem virtuellen SQL Server-Computer in Azure.
@@ -282,7 +281,7 @@ Um die gesamte SQL Server-Datenbank auf dem virtuellen SQL Server-Computer zu re
 
 9. Lesen Sie die Daten direkt von `Hive Queries` mithilfe des [Import Data][import-data]-Moduls. Fügen Sie die erforderliche Abfrage zum Extrahieren von Feldern, zum Erstellen von Features und zum Entnehmen von Datenproben bei Bedarf direkt in die [Import Data][import-data]-Abfrage ein.
 
-10. Einfacher Azure Machine Learning-Versuchsablauf, der mit einem hochgeladenen Dataset beginnt.
+10. Einfacher Azure Machine Learning-Versuchsablauf, der mit hochgeladenem Dataset beginnt
 
 ## <a name="decisiontree"></a>Entscheidungsstruktur zur Auswahl des Szenarios
 ------------------------
@@ -314,4 +313,4 @@ Umfassende exemplarische Vorgehensweisen zu Azure Machine Learning, die die Adva
 <!-- Module References -->
 [import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

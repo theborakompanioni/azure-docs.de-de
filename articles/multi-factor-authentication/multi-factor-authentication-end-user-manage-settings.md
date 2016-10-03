@@ -1,21 +1,21 @@
-<properties 
-	pageTitle="Beheben von Problemen mit der Azure Multi-Factor Authentication | Microsoft Azure" 
-	description="In diesem Dokument erhalten Benutzer Informationen zur Vorgehensweise, wenn bei Multi-Factor Authentication ein Problem auftreten sollte." 
+<properties
+	pageTitle="Beheben von Problemen mit der Azure Multi-Factor Authentication | Microsoft Azure"
+	description="In diesem Dokument erhalten Benutzer Informationen zur Vorgehensweise, wenn bei Multi-Factor Authentication ein Problem auftreten sollte."
 	services="multi-factor-authentication"
 	keywords = "Client für Multi-Factor Authentication, Authentifizierungsproblem, Korrelations-ID"
-	documentationCenter="" 
-	authors="billmath" 
-	manager="stevenpo" 
+	documentationCenter=""
+	authors="kgremban"
+	manager="femila"
 	editor="curtland"/>
 
-<tags 
-	ms.service="multi-factor-authentication" 
-	ms.workload="identity" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/22/2016" 
-	ms.author="billmath"/>
+<tags
+	ms.service="multi-factor-authentication"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/22/2016"
+	ms.author="kgremban"/>
 
 # Beheben von Problemen mit Azure Multi-Factor Authentication
 >[AZURE.IMPORTANT]
@@ -44,7 +44,7 @@ Halten Sie die folgenden Informationen bereit, wenn Sie sich an den Support wend
  - **SessionId**: Die spezifische Sitzungs-ID, die Sie erhalten.
  - **Korrelations-ID**: Der generierte Code der Korrelations-ID bei Anzeige des Fehlers.
  - **Zeitstempel**: Genaues Datum samt Uhrzeit und Zeitzone des Auftretens des Fehlers.
- 
+
 ![Korrelations-ID](./media/multi-factor-authentication-end-user-manage/correlation.png)
 
  - **Benutzer-ID** – Wie lautet die ID des Benutzers, der den Fehler beobachtet hat (z.B. user@contoso.com)?
@@ -58,7 +58,7 @@ Wenn Ihr Telefon verloren gegangen ist oder gestohlen wurde, wird empfohlen, das
 Sie haben zwei Optionen, um sich wieder bei Ihrem Konto anzumelden. Die erste ist, dass wenn Sie eine alternative Authentifizierungstelefonnummer eingerichtet haben, Sie diese für die Anmeldung bei Ihrem Konto verwenden und dann die Sicherheitseinstellungen ändern.
 
 Wenn Sie eine sekundäre Authentifizierungstelefonnummer angegeben haben, können Sie sich damit anmelden. ![Einrichtung](./media/multi-factor-authentication-end-user-manage/altphone.png) Auf dem Bildschirmfoto oben sehen Sie, dass zwei Telefonnummern eingerichtet wurden. Eine endet mit 67 und die zweite mit 30.
-  
+
 Um sich mit der alternativen Telefonnummer anzumelden, gehen Sie wie üblich vor, und wählen Sie **Andere Überprüfungsoption verwenden** aus. ![Andere Überprüfung](./media/multi-factor-authentication-end-user-manage/differentverification.png)
 
 Wählen Sie dann Ihre andere Telefonnummer aus. Wählen Sie in diesem Fall **Rufen Sie mich unter der Rufnummer +XXXXXXXXX30 an** aus.
@@ -74,13 +74,13 @@ Wenn Sie keine sekundäre Authentifizierungstelefonnummer konfiguriert haben, m�
 Je nachdem, wie Sie Multi-Factor Authentication verwenden, gibt es mehrere Stellen, an denen Sie Einstellungen wie Ihre Telefonnummer ändern können. Verwenden Sie die folgende Tabelle, mit deren Hilfe Sie die für Sie geeignetste Option bestimmen können.
 
 Verwendung von Multi-Factor Authentication|Beschreibung
-:------------- | :------------- | 
+:------------- | :------------- |
 [Ich verwende sie mit Office 365.](#changing-your-settings-with-office-365)| Dies bedeutet, dass Sie die Einstellungen über das Office 365-Portal ändern sollten.
 [Nicht bekannt](#changing-your-settings-with-the-myapps-portal)|Dies bedeutet, dass Sie sich bei [http://myapps.microsoft.com](http://myapps.microsoft.com) anmelden und dort die Einstellungen ändern sollten.
 [Ich verwende sie mit Microsoft Azure.](#changing-your-settings-with-microsoft-azure)| Dies bedeutet, dass Sie die Einstellungen über das Azure-Portal ändern sollten.
 
 
- 
+
 ### Ändern der Einstellungen mit Office 365
 
 
@@ -128,7 +128,7 @@ Sie haben ein anderes Telefon haben und müssen die primäre Telefonnummer ände
 Konfigurieren Sie unbedingt eine sekundäre Authentifizierungstelefonnummer. Da sich Ihre primäre Telefonnummer und ihre mobile App wahrscheinlich auf demselben Telefon befinden, ist die sekundäre Telefonnummer die einzige Möglichkeit, sich wieder bei Ihrem Konto anzumelden, sollte Ihr Telefon verloren gehen oder gestohlen werden.
 
 Die erste Möglichkeit ist eine sekundäre Authentifizierungsmethode. Wenn Sie eine sekundäre Authentifizierungstelefonnummer angegeben haben, können Sie sich damit anmelden. ![Einrichtung](./media/multi-factor-authentication-end-user-manage/altphone.png) Auf dem Bildschirmfoto oben sehen Sie, dass zwei Telefonnummern eingerichtet wurden. Eine endet mit 67 und die zweite mit 30.
-  
+
 Um sich mit der alternativen Telefonnummer anzumelden, gehen Sie wie üblich vor, und wählen Sie **Andere Überprüfungsoption verwenden** aus. ![Andere Überprüfung](./media/multi-factor-authentication-end-user-manage/differentverification.png)
 
 Wählen Sie dann Ihre andere Telefonnummer aus. Wählen Sie in diesem Fall **Rufen Sie mich unter der Rufnummer +XXXXXXXXX30 an** aus.
@@ -172,4 +172,4 @@ Außerdem können Sie Ihren Administrator oder die Person, die Multi-Factor Auth
 
 Geben Sie abschließend bitte detailliertes Feedback auf dieser Seite ab, damit wir diese Seite aktualisieren und durch weitere Informationen verbessern können.
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0921_2016-->

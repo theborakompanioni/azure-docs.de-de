@@ -22,6 +22,7 @@
 
 > [AZURE.SELECTOR]
 - [C#-Skript](../articles/azure-functions/functions-reference-csharp.md)
+- [F#-Skript](../articles/azure-functions/functions-reference-fsharp.md)
 - [Node.js](../articles/azure-functions/functions-reference-node.md)
 
 Mit der Node-/JavaScript-Benutzeroberfläche für Azure Functions können Sie ganz einfach eine Funktion exportieren, der ein `context`-Objekt für die Kommunikation mit der Laufzeit sowie für das Empfangen oder Senden von Daten über Bindungen übergeben wird.
@@ -30,7 +31,7 @@ In diesem Artikel wird davon ausgegangen, dass Sie bereits die [Entwicklerrefere
 
 ## Exportieren einer Funktion
 
-Alle JavaScript-Funktionen müssen eine einzige `function` über `module.exports` exportieren, damit die Laufzeit die Funktion finden und ausführen kann. Diese Funktion muss immer ein `context`-Objekt enthalten.
+Alle JavaScript-Funktionen müssen über `module.exports` ein einzelnes `function`-Element exportieren, damit die Laufzeit die Funktion finden und ausführen kann. Diese Funktion muss immer ein `context`-Objekt enthalten.
 
 ```javascript
 // You must include a context, but other arguments are optional
@@ -46,17 +47,17 @@ module.exports = function(context, myTrigger, myInput, myOtherInput) {
 };
 ```
 
-Bindungen von `direction === "in"` werden als Funktionsargumente übergeben, sodass Sie mit [`arguments`](https://msdn.microsoft.com/library/87dw3w1k.aspx) neue Eingaben dynamisch verarbeiten können (z.B. durch Verwendung von `arguments.length` zum Durchlaufen all Ihrer Eingaben). Diese Funktion ist sehr praktisch, wenn Sie nur einen Trigger ohne weitere Eingaben verwenden, da Sie zuverlässig auf Ihre Triggerdaten zugreifen können, ohne auf Ihr `context`-Objekt zu verweisen.
+Bindungen von `direction === "in"` werden als Funktionsargumente übergeben, sodass Sie mit [`arguments`](https://msdn.microsoft.com/library/87dw3w1k.aspx) neue Eingaben dynamisch verarbeiten können (etwa durch Verwendung von `arguments.length` zum vollständigen Durchlaufen Ihrer Eingaben). Diese Funktion ist sehr praktisch, wenn Sie nur einen Trigger ohne weitere Eingaben verwenden, da Sie zuverlässig auf Ihre Triggerdaten zugreifen können, ohne auf Ihr `context`-Objekt zu verweisen.
 
-Die Argumente werden in der Reihenfolge an die Funktion übergeben, in der sie in *function.json* auftreten. Dies gilt auch dann, wenn Sie sie in der Exportanweisung nicht angeben. Wenn Sie beispielsweise `function(context, a, b)` verwenden und dies in `function(context, a)` ändern, können Sie dennoch den Wert von `b` im Funktionscode abrufen, indem Sie auf `arguments[3]` verweisen.
+Die Argumente werden in der Reihenfolge an die Funktion übergeben, in der sie in *function.json* vorhanden sind. Dies gilt auch, wenn Sie sie in der Exportanweisung nicht angeben. Wenn Sie also beispielsweise `function(context, a, b)` in `function(context, a)` ändern, können Sie dennoch den Wert von `b` im Funktionscode abrufen, indem Sie auf `arguments[3]` verweisen.
 
-Alle Bindungen werden unabhängig von der Richtung auch mit dem `context`-Objekt übergeben (siehe unten).
+Alle Bindungen werden unabhängig von der Richtung auch mit dem `context`-Objekt übergeben (wie weiter unten zu sehen).
 
-## Kontextobjekt
+## context-Objekt
 
-Die Laufzeit verwendet ein `context`-Objekt, um Daten an und von Ihrer Funktion zu übergeben und Ihnen die Kommunikation mit der Laufzeit zu ermöglichen.
+Die Laufzeit verwendet ein `context`-Objekt, um Daten an Ihre und von Ihrer Funktion zu übergeben und Ihnen die Kommunikation mit der Laufzeit zu ermöglichen.
 
-Das Kontextobjekt ist immer der erste Parameter in einer Funktion und sollte immer einbezogen werden, weil es Methoden wie `context.done` und `context.log` enthält, die die Laufzeit ordnungsgemäß verwenden müssen. Sie können das Objekt beliebig benennen (z.B. `ctx` oder `c`).
+Das context-Objekt ist immer der erste Parameter in einer Funktion und muss immer angegeben werden, da es Methoden wie `context.done` und `context.log` enthält, die für die ordnungsgemäße Verwendung der Laufzeit benötigt werden. Sie können dem Objekt einen beliebigen Namen geben (also etwa `ctx` oder `c`).
 
 ```javascript
 // You must include a context, but other arguments are optional
@@ -67,7 +68,7 @@ module.exports = function(context) {
 
 ## context.bindings
 
-Das `context.bindings`-Objekt erfasst alle Eingabe- und Ausgabedaten. Die Daten werden dem `context.bindings`-Objekt über die `name`-Eigenschaft der Bindung hinzugefügt. Wenn z.B. die folgende Bindungsdefinition in *function.json* vorliegt, können Sie über `context.bindings.myInput` auf den Inhalt der Warteschlange zugreifen.
+Das `context.bindings`-Objekt erfasst alle Eingabe- und Ausgabedaten. Die Daten werden dem `context.bindings`-Objekt über die `name`-Eigenschaft der Bindung hinzugefügt. Wenn also beispielsweise in *function.json* die folgende Bindungsdefinition vorliegt, können Sie über `context.bindings.myInput` auf den Inhalt der Warteschlange zugreifen.
 
 ```json
     {
@@ -89,9 +90,9 @@ context.bindings.myOutput = {
 
 ## `context.done([err],[propertyBag])`
 
-Die `context.done`-Funktion gibt der Laufzeit an, dass die Ausführung beendet ist. Sie sollte unbedingt aufgerufen werden, wenn Sie mit der Funktion fertig sind. Andernfalls ist der Laufzeit nicht bekannt, dass Ihre Funktion abgeschlossen wurde.
+Die `context.done`-Funktion gibt gegenüber der Laufzeit an, dass die Ausführung beendet ist. Sie sollte unbedingt aufgerufen werden, wenn Sie mit der Funktion fertig sind. Andernfalls ist der Laufzeit nicht bekannt, dass Ihre Funktion abgeschlossen wurde.
 
-Mit der `context.done`-Funktion können Sie der Laufzeit einen benutzerdefinierten Fehler sowie einen Eigenschaftenbehälter mit Eigenschaften zurückgeben, die die Eigenschaften des `context.bindings`-Objekts überschreiben.
+Mit der `context.done`-Funktion können Sie an die Laufzeit einen benutzerdefinierten Fehler sowie einen Eigenschaftenbehälter mit Eigenschaften zurückgeben, die die Eigenschaften des `context.bindings`-Objekts überschreiben.
 
 ```javascript
 // Even though we set myOutput to have:
@@ -113,7 +114,7 @@ function. You can access your bindings via context.bindings */
 context.log({hello: 'world'}); // logs: { 'hello': 'world' } 
 ```
 
-Die `context.log`-Methode unterstützt dasselbe Parameterformat, das von der Node-Methode [util.format](https://nodejs.org/api/util.html#util_util_format_format) unterstützt wird. Beispielsweise kann folgender Code:
+Die `context.log`-Methode unterstützt das gleiche Parameterformat, das auch von der Node-Methode [util.format](https://nodejs.org/api/util.html#util_util_format_format) unterstützt wird. Beispielsweise kann folgender Code:
 
 ```javascript
 context.log('Node.js HTTP trigger function processed a request. RequestUri=' + req.originalUrl);
@@ -129,7 +130,7 @@ context.log('Request Headers = ', JSON.stringify(req.headers));
 
 ## HTTP-Trigger: context.req und context.res
 
-Da es im Fall von HTTP-Triggern ein gängiges Muster ist, `req` und `res` für die HTTP-Anforderungs- und Antwortobjekte zu verwenden, haben wir uns entschieden, den Zugriff darauf im Kontextobjekt zu vereinfachen, statt Sie zur Verwendung des vollständigen `context.bindings.name`-Musters zu zwingen.
+Da es im Fall von HTTP-Triggern gängige Praxis ist, `req` und `res` für die HTTP-Anforderungs- und Antwortobjekte zu verwenden, haben wir uns entschieden, den Zugriff darauf im context-Objekt zu vereinfachen, anstatt die Verwendung des vollständigen `context.bindings.name`-Musters erforderlich zu machen.
 
 ```javascript
 // You can access your http request off of the context ...
@@ -140,9 +141,9 @@ context.res = { status: 202, body: 'You successfully ordered more coffee!' };
 
 ## Node-Version und Paketverwaltung
 
-Die Node-Version ist derzeit auf `5.9.1` festgelegt. Wir untersuchen die Option, Unterstützung für weitere Versionen sowie Konfigurationsmöglichkeiten hinzuzufügen.
+Die Node-Version ist derzeit unveränderlich auf `5.9.1` festgelegt. Wir untersuchen die Option, Unterstützung für weitere Versionen sowie Konfigurationsmöglichkeiten hinzuzufügen.
 
-Sie können Pakete in Ihre Funktion einschließen, indem Sie die Datei *package.json* in den Ordner Ihrer Funktion im Dateisystem der Funktionen-App hochladen. Anweisungen zum Hochladen von Dateien finden Sie im Abschnitt **Aktualisieren von Funktionen-App-Dateien** im entsprechenden Thema der [Referenz für Azure Functions-Entwickler](functions-reference.md#fileupdate).
+Sie können Pakete in Ihre Funktion einschließen, indem Sie die Datei *package.json* in den Ordner Ihrer Funktion im Dateisystem der Funktionen-App hochladen. Anweisungen zum Hochladen von Dateien finden Sie im Abschnitt **Aktualisieren von Funktionen-App-Dateien** der [Referenz für Azure Functions-Entwickler](functions-reference.md#fileupdate).
 
 Sie können auch `npm install` an der SCM-Befehlszeilenschnittstelle (Kudu) der Funktionen-App verwenden:
 
@@ -154,7 +155,7 @@ Sie können auch `npm install` an der SCM-Befehlszeilenschnittstelle (Kudu) der 
 
 4. Führen Sie `npm install` aus.
 
-Nach der Installation der benötigten Pakete importieren Sie Ihre Funktion auf übliche Weise (z.B. über `require('packagename')`).
+Nach der Installation der benötigten Pakete können Sie Ihre Funktion wie gewohnt (also über `require('packagename')`) importieren.
 
 ```javascript
 // Import the underscore.js library
@@ -169,7 +170,7 @@ module.exports = function(context) {
 
 ## Umgebungsvariablen
 
-Verwenden Sie `process.env` zum Abrufen einer Umgebungsvariable oder des Werts einer App-Einstellung (siehe das folgende Codebeispiel):
+Verwenden Sie `process.env` zum Abrufen einer Umgebungsvariablen oder zum Abrufen des Werts einer App-Einstellung, wie im folgenden Codebeispiel zu sehen:
 
 ```javascript
 module.exports = function (context, myTimer) {
@@ -198,6 +199,7 @@ Weitere Informationen finden Sie in den folgenden Ressourcen:
 
 * [Entwicklerreferenz zu Azure Functions](functions-reference.md)
 * [C#-Entwicklerreferenz zu Azure Functions](functions-reference-csharp.md)
+* [F#-Entwicklerreferenz zu Azure Functions](functions-reference-fsharp.md)
 * [Trigger und Bindungen in Azure Functions](functions-triggers-bindings.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0921_2016-->

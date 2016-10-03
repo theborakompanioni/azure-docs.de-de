@@ -73,7 +73,7 @@ In diesem Artikel erfahren Sie mehr zu verschiedenen Azure DevTest Labs-Features
 
     Mit Azure DevTest Labs können Sie eine Richtlinie im Lab festlegen, um die Anzahl von virtuellen Computern zu begrenzen, die von einem Benutzer im Lab erstellt werden können.
 
-    Wenn Sie eine mehrtägige Schulung durchführen und alle virtuellen Computer zu einer bestimmten Tageszeit beenden und am folgenden Tag neu starten möchten, können Sie im Lab Richtlinien zum automatischen Herunterfahren und Starten festlegen.
+    Wenn Sie eine mehrtägige Schulung durchführen und alle virtuellen Computer zu einer bestimmten Tageszeit herunterfahren und am folgenden Tag neu starten möchten, können Sie im Lab Richtlinien zum automatischen Herunterfahren und Starten festlegen.
 
     Nach Abschluss der Schulung können Sie alle virtuellen Computer durch Ausführen eines einzigen PowerShell-Skripts gleichzeitig löschen.
 
@@ -108,4 +108,4 @@ In diesem Artikel erfahren Sie mehr zu verschiedenen Azure DevTest Labs-Features
 
 [AZURE.INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

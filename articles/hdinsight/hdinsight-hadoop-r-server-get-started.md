@@ -4,7 +4,7 @@
    services="HDInsight"
    documentationCenter=""
    authors="jeffstokes72"
-   manager="paulettem"
+   manager="jhubbard"
    editor="cgronlun"
 />
 
@@ -410,4 +410,4 @@ Mit beide Vorlagen werden ein neuer HDInsight-Cluster und das zugehörige Speich
 
 Allgemeine Informationen zur Verwendung von Azure Resource Manager-Vorlagen finden Sie unter [Erstellen von Linux-basierten Hadoop-Clustern in HDInsight mit Azure Resource Manager-Vorlagen](hdinsight-hadoop-create-linux-clusters-arm-templates.md).
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0921_2016-->

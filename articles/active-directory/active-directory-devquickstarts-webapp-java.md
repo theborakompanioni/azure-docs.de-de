@@ -13,7 +13,7 @@
   ms.tgt_pltfrm="na"
 	ms.devlang="java"
 	ms.topic="article"
-	ms.date="05/31/2016"
+	ms.date="09/16/2016"
 	ms.author="brandwe"/>
 
 
@@ -312,7 +312,7 @@ Dadurch erfolgt eine Umleitung zu einer sicheren Seite, die von unserem Filter g
 </html>
 ```
 
-- Erstellen Sie dann die sichere Webseite, indem Sie unter `\webapp` einen Ordner namens `\secure` erstellen, sodass das Verzeichnis jetzt `\webapp\secure` ist. 
+- Erstellen Sie dann die sichere Webseite, indem Sie unter `\webapp` einen Ordner namens `\secure` erstellen, sodass das Verzeichnis jetzt `\webapp\secure` ist.
 
 - Erstellen Sie dann in diesem Verzeichnis die Datei `aad.jsp`, und fügen Sie mit Ausschneiden/Einfügen Folgendes ein:
 
@@ -359,7 +359,7 @@ Damit wir Daten über den Benutzer erhalten, müssen wir die Graph-API von Azure
 
 Für diese Aufgabe können wir Java-Dateien erstellen:
 
-1. Erstellen Sie in Ihrem Stammverzeichnis einen Ordner namens „adal4jsample“, um alle Java-Dateien zu speichern. 
+1. Erstellen Sie in Ihrem Stammverzeichnis einen Ordner namens „adal4jsample“, um alle Java-Dateien zu speichern.
 
 Wir verwenden den Namespace `com.microsoft.aad.adal4jsample` in den Java-Dateien. Die meisten IDEs erstellen dafür eine verschachtelte Ordnerstruktur (z. B. `/com/microsoft/aad/adal4jsample`). Dies können Sie auch tun, es ist aber nicht erforderlich.
 
@@ -1750,4 +1750,4 @@ Als Referenz stellen wir das vollständige Beispiel (ohne Ihre Konfigurationswer
 
 ```git clone --branch complete https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect.git```
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0921_2016-->

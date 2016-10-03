@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-catalog"
-   ms.date="05/11/2016"
+   ms.date="09/21/2016"
    ms.author="maroche"/>
 
 # Versionshinweise für Azure Data Catalog
@@ -58,10 +58,6 @@ Beim Öffnen von Datenressourcen aus dem Portal **Azure Data Catalog** in Micr
 
 Weitere Informationen finden Sie unter [Aktivieren oder Deaktivieren von Sicherheitswarnungen zu Verknüpfungen und Dateien von verdächtigen Websites](https://support.office.com/article/Enable-or-disable-security-alerts-about-links-and-files-from-suspicious-websites-A1AC6AE9-5C4A-4EB3-B3F8-143336039BBE).
 
-### Fehlende Blob- und UDT-Spalten in der Vorschau
-
-Wenn Sie Tabellen und Sichten registrieren, die Spalten für Blob- (Binary Large Object) und benutzerdefinierte Datentypen (user-defined data type, UDT) enthalten, und Sie die Vorschau für die Datenassets hinzufügen möchten, werden diese Spalten in der Vorschau nicht berücksichtigt.
-
 ### Proxy- und Richtlinienkonfiguration und Datenquellenregistrierung
 
 Es kann vorkommen, dass sich Benutzer beim Azure Data Catalog-Portal anmelden können, jedoch eine Fehlermeldung erhalten, die ihre Anmeldung beim Tool zum Registrieren von Datenquellen verhindert.
@@ -88,4 +84,4 @@ Weitere Informationen finden Sie unter [Konfigurieren von Authentifizierungsrich
 
 Starten Sie das Registrierungstool, um die Datei "RegistrationTool.exe.config" zu suchen, und öffnen Sie den Windows Task-Manager. Klicken Sie im Task-Manager auf der Registerkarte "Details" mit der rechten Maustaste auf "RegistrationTool.exe", und wählen Sie im Popupmenü "Dateispeicherort öffnen" aus.
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-catalog"
-   ms.date="09/13/2016"
+   ms.date="09/15/2016"
    ms.author="trhabe"/>
 
 # Von Azure Data Catalog unterstützte Datenquellen
@@ -79,7 +79,7 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
         <font size="2"></font>
       </td>
       <td>
-        ✓{✓1✓>✓&lt;✓1✓}✓{✓{✓1✓>✓&lt;✓1✓}✓1✓{✓1✓>✓&lt;✓1✓}✓>✓{✓1✓>✓&lt;✓1✓}✓&lt;✓{✓1✓>✓&lt;✓1✓}✓1✓{✓1✓>✓&lt;✓1✓}✓}✓{✓1✓>✓&lt;✓1✓}✓
+        ✓{✓1✓>✓&lt;✓1✓}✓{✓{✓1✓>✓&lt;✓1✓}✓1✓{✓1✓>✓&lt;✓1✓}✓>✓{✓1✓>✓&lt;✓1✓}✓&lt;✓{✓1✓>✓&lt;✓1✓}✓1✓{✓1✓>✓&lt;✓1✓}✓}✓{✓1✓>✓&lt;✓1✓}✓{✓{✓1✓>✓&lt;✓1✓}✓{✓{✓1✓>✓&lt;✓1✓}✓1✓{✓1✓>✓&lt;✓1✓}✓>✓{✓1✓>✓&lt;✓1✓}✓&lt;✓{✓1✓>✓&lt;✓1✓}✓1✓{✓1✓>✓&lt;✓1✓}✓}✓{✓1✓>✓&lt;✓1✓}✓1✓{✓1✓>✓&lt;✓1✓}✓{✓{✓1✓>✓&lt;✓1✓}✓1✓{✓1✓>✓&lt;✓1✓}✓>✓{✓1✓>✓&lt;✓1✓}✓&lt;✓{✓1✓>✓&lt;✓1✓}✓1✓{✓1✓>✓&lt;✓1✓}✓}✓{✓1✓>✓&lt;✓1✓}✓>✓{✓1✓>✓&lt;✓1✓}✓{✓{✓1✓>✓&lt;✓1✓}✓1✓{✓1✓>✓&lt;✓1✓}✓>✓{✓1✓>✓&lt;✓1✓}✓&lt;✓{✓1✓>✓&lt;✓1✓}✓1✓{✓1✓>✓&lt;✓1✓}✓}✓{✓1✓>✓&lt;✓1✓}✓&lt;✓{✓1✓>✓&lt;✓1✓}✓{✓{✓1✓>✓&lt;✓1✓}✓1✓{✓1✓>✓&lt;✓1✓}✓>✓{✓1✓>✓&lt;✓1✓}✓&lt;✓{✓1✓>✓&lt;✓1✓}✓1✓{✓1✓>✓&lt;✓1✓}✓}✓{✓1✓>✓&lt;✓1✓}✓1✓{✓1✓>✓&lt;✓1✓}✓{✓{✓1✓>✓&lt;✓1✓}✓1✓{✓1✓>✓&lt;✓1✓}✓>✓{✓1✓>✓&lt;✓1✓}✓&lt;✓{✓1✓>✓&lt;✓1✓}✓1✓{✓1✓>✓&lt;✓1✓}✓}✓{✓1✓>✓&lt;✓1✓}✓}✓{✓1✓>✓&lt;✓1✓}✓{✓{✓1✓>✓&lt;✓1✓}✓1✓{✓1✓>✓&lt;✓1✓}✓>✓{✓1✓>✓&lt;✓1✓}✓&lt;✓{✓1✓>✓&lt;✓1✓}✓1✓{✓1✓>✓&lt;✓1✓}✓}✓{✓1✓>✓&lt;✓1✓}✓
       </td>
     </tr>
 
@@ -116,7 +116,7 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td>✓</td>
       <td>✓</td>
       <td><font size=2>Excel</font></td>
-      <td>Excel{Excel1Excel>Excel&lt;Excel1Excel}Excel</td>
+      <td>Excel{Excel1Excel>Excel&lt;Excel1Excel}Excel{Excel{Excel1Excel>Excel&lt;Excel1Excel}Excel1Excel{Excel1Excel>Excel&lt;Excel1Excel}Excel>Excel{Excel1Excel>Excel&lt;Excel1Excel}Excel&lt;Excel{Excel1Excel>Excel&lt;Excel1Excel}Excel1Excel{Excel1Excel>Excel&lt;Excel1Excel}Excel}Excel{Excel1Excel>Excel&lt;Excel1Excel}Excel</td>
     </tr>
 
     <tr>
@@ -206,7 +206,7 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td>✓</td>
       <td>✓</td>
       <td><font size=2>Excel, Power&#160;BI</font></td>
-      <td>Excel, Power&#160;BI{Excel, Power&#160;BI1Excel, Power&#160;BI>Excel, Power&#160;BI&lt;Excel, Power&#160;BI1Excel, Power&#160;BI}Excel, Power&#160;BI</td>
+      <td>Excel, Power&#160;BI{Excel, Power&#160;BI1Excel, Power&#160;BI>Excel, Power&#160;BI&lt;Excel, Power&#160;BI1Excel, Power&#160;BI}Excel, Power&#160;BI{Excel, Power&#160;BI{Excel, Power&#160;BI1Excel, Power&#160;BI>Excel, Power&#160;BI&lt;Excel, Power&#160;BI1Excel, Power&#160;BI}Excel, Power&#160;BI1Excel, Power&#160;BI{Excel, Power&#160;BI1Excel, Power&#160;BI>Excel, Power&#160;BI&lt;Excel, Power&#160;BI1Excel, Power&#160;BI}Excel, Power&#160;BI>Excel, Power&#160;BI{Excel, Power&#160;BI1Excel, Power&#160;BI>Excel, Power&#160;BI&lt;Excel, Power&#160;BI1Excel, Power&#160;BI}Excel, Power&#160;BI&lt;Excel, Power&#160;BI{Excel, Power&#160;BI1Excel, Power&#160;BI>Excel, Power&#160;BI&lt;Excel, Power&#160;BI1Excel, Power&#160;BI}Excel, Power&#160;BI1Excel, Power&#160;BI{Excel, Power&#160;BI1Excel, Power&#160;BI>Excel, Power&#160;BI&lt;Excel, Power&#160;BI1Excel, Power&#160;BI}Excel, Power&#160;BI}Excel, Power&#160;BI{Excel, Power&#160;BI1Excel, Power&#160;BI>Excel, Power&#160;BI&lt;Excel, Power&#160;BI1Excel, Power&#160;BI}Excel, Power&#160;BI</td>
     </tr>
 
     <tr>
@@ -269,7 +269,7 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td>✓</td>
       <td>✓</td>
       <td><font size=2>Power&#160;BI</font></td>
-      <td><font size=2></font></td>
+      <td><font size=2>Nur Berechnungs- und Analyseansichten; Attributansichten werden nicht unterstützt.</font></td>
     </tr>
 
     <tr>
@@ -314,7 +314,7 @@ Benutzer von Azure Data Catalog können Metadaten auf verschiedenem Wege veröff
       <td></td>
       <td></td>
       <td><font size=2></font></td>
-      <td>✓{✓1✓>✓&lt;✓1✓}✓</td>
+      <td>✓{✓1✓>✓&lt;✓1✓}✓{✓{✓1✓>✓&lt;✓1✓}✓1✓{✓1✓>✓&lt;✓1✓}✓>✓{✓1✓>✓&lt;✓1✓}✓&lt;✓{✓1✓>✓&lt;✓1✓}✓1✓{✓1✓>✓&lt;✓1✓}✓}✓{✓1✓>✓&lt;✓1✓}✓</td>
     </tr>
 
     <tr>
@@ -1166,4 +1166,4 @@ Wenn Sie Unterstützung für zusätzliche Quellen benötigen, senden Sie einen F
     </tr>
 </table>
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

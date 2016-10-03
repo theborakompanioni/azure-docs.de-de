@@ -3,7 +3,7 @@
    description="Erfahren Sie, wie Sie Visual Studio-Tools für Docker zum Bereitstellen einer ASP.NET Core-Web-App in einem Docker-Container verwenden, der auf einem virtuellen Azure-Docker-Hostcomputer unter Linux ausgeführt wird."   
    services="azure-container-service"
    documentationCenter=".net"
-   authors="allclark"
+   authors="mlearned"
    manager="douge"
    editor=""/>
 
@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
    ms.date="06/08/2016"
-   ms.author="allclark;stevelas"/>
+   ms.author="mlearned"/>
 
 # Bereitstellen eines ASP.NET-Containers auf einem Docker-Remotehost
 
@@ -25,11 +25,12 @@ Docker ist ein einfaches Containermodul, in gewisser Weise mit einem virtuellen 
 Folgendes ist zum Durchführen dieses Tutorials erforderlich:
 
 - Erstellen eines virtuellen Azure-Docker-Hostcomputers gemäß der Beschreibung in [Verwenden von „docker-machine“ mit Azure](./virtual-machines/virtual-machines-linux-docker-machine.md)
-- Installieren von [Visual Studio 2015 Update 2](https://go.microsoft.com/fwlink/?LinkId=691978)
+- Installieren von [Visual Studio 2015 Update 3](https://go.microsoft.com/fwlink/?LinkId=691129)
+- [Microsoft ASP.NET Core 1.0 SDK](https://go.microsoft.com/fwlink/?LinkID=809122)
 - Installieren von [Visual Studio 2015-Tools für Docker – Preview](http://aka.ms/DockerToolsForVS)
 
-## 1\. Erstellen einer ASP.NET 5-Web-App
-Die folgenden Schritte führen Sie durch die Erstellung einer einfachen ASP.NET 5-App, die in diesem Tutorial verwendet wird.
+## 1\. Erstellen einer ASP.NET Core-Web-App
+Die folgenden Schritte führen Sie durch die Erstellung einer einfachen ASP.NET Core-App, die in diesem Tutorial verwendet wird.
 
 [AZURE.INCLUDE [create-aspnet5-app](../includes/create-aspnet5-app.md)]
 
@@ -89,4 +90,4 @@ Die folgenden Schritte führen Sie durch die Erstellung einer einfachen ASP.NET 
 [2]: ./media/vs-azure-tools-docker-hosting-web-apps-in-docker/launch-application.png
 [3]: ./media/vs-azure-tools-docker-hosting-web-apps-in-docker/view-application.png
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0921_2016-->

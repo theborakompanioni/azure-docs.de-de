@@ -27,8 +27,8 @@ Im Folgenden beschreiben wir die verschiedenen Abschnitte dieser Datei.
 Hierzu gehören die allgemeinen clusterspezifischen Konfigurationen, wie im folgenden JSON-Codeausschnitt gezeigt.
 
     "name": "SampleCluster",
-    "clusterManifestVersion": "1.0.0",
-    "apiVersion": "2015-01-01-alpha",
+    "clusterConfigurationVersion": "1.0.0",
+    "apiVersion": "2016-09-26",
 
 Sie können für Ihren Service Fabric-Cluster einen beliebigen Anzeigenamen festlegen, indem sie ihn der Variablen **name** zuweisen. Den Wert für **clusterManifestVersion** können Sie gemäß Ihrem Setup ändern; er muss allerdings angepasst werden, bevor Sie Ihre Service Fabric-Konfiguration upgraden. Für **apiVersion** können Sie den Standardwert beibehalten.
 
@@ -62,30 +62,36 @@ Ein Service Fabric-Cluster benötigt mindestens 3 Knoten. Wenn es für Ihr Setup
 |**Knotenkonfiguration**|**Beschreibung**|
 |-----------------------|--------------------------|
 |nodeName|Sie können einen beliebigen Anzeigenamen für den Knoten festlegen.|
-|iPAddress|Ermitteln Sie die IP-Adresse Ihres Knotens, indem Sie in einem Befehlsfenster `ipconfig` eingeben. Notieren Sie sich die IPV4-Adresse, und weisen Sie sie der Variablen **iPAddress** zu.|
+|iPAddress|Ermitteln Sie die IP-Adresse Ihres Knotens, indem Sie in einem Befehlsfenster `ipconfig` eingeben. Notieren Sie sich die IPv4-Adresse, und weisen Sie sie der Variablen **iPAddress** zu.|
 |nodeTypeRef|Jedem Knoten kann ein anderer Knotentyp zugewiesen werden. Die [Knotentypen](#nodetypes) werden im folgenden Abschnitt definiert.|
 |faultDomain|Mit Fehlerdomänen können Clusteradministratoren die physischen Knoten definieren, die unter Umständen gleichzeitig ausfallen können, weil gemeinsame physische Abhängigkeiten bestehen.|
 |upgradeDomain|Upgradedomänen beschreiben Gruppen von Knoten, die zum Durchführen von Service Fabric-Upgrades zur gleichen Zeit heruntergefahren werden. Sie können selbst auswählen, welche Knoten den Upgradedomänen zugewiesen werden sollen, denn es bestehen hier keine physischen Einschränkungen.| 
 
 
-## Diagnosekonfigurationen
-Sie können Parameter konfigurieren, um bei Knoten- und Clusterausfällen die Diagnose und Fehlerbehandlung zu erleichtern. Dazu verwenden Sie den Abschnitt **diagnosticsFileShare**, wie im folgenden Codeausschnitt gezeigt.
-
-    "diagnosticsFileShare": {
-        "etlReadIntervalInMinutes": "5",
-        "uploadIntervalInMinutes": "10",
-        "dataDeletionAgeInDays": "7",
-        "etwStoreConnectionString": "file:c:\ProgramData\SF\FileshareETW",
-        "crashDumpConnectionString": "file:c:\ProgramData\SF\FileshareCrashDump",
-        "perfCtrConnectionString": "file:c:\ProgramData\SF\FilesharePerfCtr"
-    },
-
-Diese Variablen helfen Ihnen beim Sammeln von ETW-Ablaufprotokollen, Absturzabbildern und Leistungsindikatoren. Weitere Informationen über ETW-Ablaufprotokolle finden Sie unter [Tracelog](https://msdn.microsoft.com/library/windows/hardware/ff552994.aspx) und [ETW-Ablaufverfolgung](https://msdn.microsoft.com/library/ms751538.aspx). [Absturzabbilder](https://blogs.technet.microsoft.com/askperf/2008/01/08/understanding-crash-dump-files/) für einen Service Fabric-Knoten und auch für den Cluster können an den für **crashDumpConnectionString** angegebenen Ordner geleitet werden. Die [Leistungsindikatoren](https://msdn.microsoft.com/library/windows/desktop/aa373083.aspx) für den Cluster können an den für **perfCtrConnectionString** angegebenen Ordner auf Ihrem Computer geleitet werden.
-
-
 ## Eigenschaften des Clusters (**properties**)
 
 Im Abschnitt **properties** der Datei „ClusterConfig.JSON“ wird der Cluster konfiguriert. Hierbei gehen Sie wie folgt vor:
+
+### **diagnosticsStore**
+Sie können Parameter konfigurieren, um bei Knoten- und Clusterausfällen die Diagnose und Fehlerbehandlung zu erleichtern. Dazu verwenden Sie den Abschnitt **diagnosticsStore**, wie im folgenden Codeausschnitt gezeigt.
+
+    "diagnosticsStore": {
+        "metadata":  "Please replace the diagnostics store with an actual file share accessible from all cluster machines.",
+        "dataDeletionAgeInDays": "7",
+        "storeType": "FileShare",
+        "IsEncrypted": "false",
+        "connectionstring": "c:\\ProgramData\\SF\\DiagnosticsStore"
+    }
+
+**metadata** ist eine Beschreibung Ihres Clusters und kann gemäß Ihrem Setup festgelegt werden. Diese Variablen helfen Ihnen beim Sammeln von ETW-Ablaufprotokollen, Absturzabbildern und Leistungsindikatoren. Weitere Informationen über ETW-Ablaufprotokolle finden Sie unter [Tracelog](https://msdn.microsoft.com/library/windows/hardware/ff552994.aspx) und [ETW-Ablaufverfolgung](https://msdn.microsoft.com/library/ms751538.aspx). Alle Protokolle einschließlich [Absturzabbilder](https://blogs.technet.microsoft.com/askperf/2008/01/08/understanding-crash-dump-files/) und [Leistungsindikatoren](https://msdn.microsoft.com/library/windows/desktop/aa373083.aspx) können zum Ordner **connectionString** auf Ihrem Computer geleitet werden. Sie können auch **AzureStorage** zum Speichern von Diagnosedaten verwenden. Nachfolgend finden Sie einen Codeausschnitt als Beispiel.
+
+	"diagnosticsStore": {
+        "metadata":  "Please replace the diagnostics store with an actual file share accessible from all cluster machines.",
+        "dataDeletionAgeInDays": "7",
+        "storeType": "AzureStorage",
+        "IsEncrypted": "false",
+        "connectionstring": "xstore:DefaultEndpointsProtocol=https;AccountName=[AzureAccountName];AccountKey=[AzureAccountKey]"
+    }
 
 ### **security** 
 Der Abschnitt **security** wird für einen sicheren eigenständigen Service Fabric-Cluster benötigt. Der folgende Codeausschnitt zeigt einen Teil dieses Abschnitts.
@@ -104,7 +110,7 @@ Der Abschnitt **security** wird für einen sicheren eigenständigen Service Fabr
 
 	"reliabilityLevel": "Bronze",
 	
-Beachten Sie, dass auf einem primären Knoten nur jeweils eine einzige Kopie der Systemdienste ausgeführt wird. Daher benötigen Sie für die Zuverlässigkeitsstufe *Bronze* mindestens 3 primäre Knoten, für *Silver* mindestens 5, für *Gold* mindestens 7 und für *Platinum* mindestens 9 Knoten.
+Beachten Sie, dass auf einem primären Knoten nur jeweils eine einzige Kopie der Systemdienste ausgeführt wird. Daher benötigen Sie für die Zuverlässigkeitsstufe *Bronze* mindestens 3 primäre Knoten, für *Silber* mindestens 5, für *Gold* mindestens 7 und für *Platin* mindestens 9 Knoten.
 
 
 <a id="nodetypes"></a>
@@ -143,11 +149,11 @@ In diesem Abschnitt können Sie die Stammverzeichnisse für die Service Fabric-D
             "value": "C:\ProgramData\SF\Log"
     }]
 
-Beachten Sie: Wenn Sie nur das Stammverzeichnis für die Daten anpassen, wird das Stammverzeichnis für die Protokolle genau eine Ebene unterhalb des Stammverzeichnisse für die Daten angesiedelt.
+Es wird empfohlen, ein Nicht-Betriebssystem-Laufwerk als „FabricDataRoot“ und „FabricLogRoot“ zu verwenden, da dies zur Verhinderung von Betriebssystemabstürzen mehr Zuverlässigkeit bietet. Beachten Sie: Wenn Sie nur das Stammverzeichnis für die Daten anpassen, wird das Stammverzeichnis für die Protokolle genau eine Ebene unterhalb des Stammverzeichnisses für die Daten angesiedelt.
 
 
 ## Nächste Schritte
 
 Nachdem Sie die Datei „ClusterConfig.JSON“ vollständig entsprechend dem Setup für Ihren eigenständigen Cluster konfiguriert haben, können Sie den Cluster bereitstellen. Dazu befolgen Sie die Anweisungen im Artikel [Erstellen eines Azure Service Fabric-Clusters – lokal oder in der Cloud](service-fabric-cluster-creation-for-windows-server.md), und anschließend [visualisieren Sie den Cluster mit Service Fabric Explorer](service-fabric-visualizing-your-cluster.md).
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0921_2016-->

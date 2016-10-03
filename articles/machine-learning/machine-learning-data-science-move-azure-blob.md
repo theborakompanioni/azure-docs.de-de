@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/14/2016"
-	ms.author="bradsev;sunliangms;sachouks" />
+	ms.date="09/14/2016"
+	ms.author="bradsev;sachouks" />
 
 # Verschieben von Daten in den und aus dem Azure-Blobspeicher
 
@@ -26,9 +26,16 @@ Nachstehend finden Sie Links zu Anleitungen für Technologien zum Verschieben vo
  
 Es hängt vom jeweiligen Szenario ab, welche Methode für Sie am besten geeignet ist. Mithilfe der Informationen im Artikel [Szenarien für erweiterte Analysen in Azure Machine Learning](machine-learning-data-science-plan-sample-scenarios.md) können Sie die Ressourcen ermitteln, die Sie für verschiedene, im erweiterten Analyseprozess verwendeten Data Science-Workflows benötigen.
 
-> [AZURE.NOTE] Eine umfassende Einführung in Azure-Blobspeicher finden Sie unter [Grundlagen zu Azure-Blobspeicher](../storage/storage-dotnet-how-to-use-blobs.md) und [Azure-Blobdienst](https://msdn.microsoft.com/library/azure/dd179376.aspx).
+> [AZURE.NOTE] Eine umfassende Einführung in Azure-Blobspeicher finden Sie unter [Erste Schritte mit Azure Blob Storage](../storage/storage-dotnet-how-to-use-blobs.md) und [Azure-Blobdienst](https://msdn.microsoft.com/library/azure/dd179376.aspx).
 
-> [AZURE.TIP] Alternativ dazu können Sie [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) zum Erstellen und Planen einer Pipeline verwenden, die Daten aus dem Azure-Blobspeicher herunterlädt, an einen veröffentlichten Azure Machine Learning-Webdienst übergibt, die Predictive Analytics-Ergebnisse empfängt und diese in den Speicher hochlädt. Weitere Informationen finden Sie unter [Erstellen von Vorhersagepipelines mithilfe von Azure Data Factory und Azure Machine Learning](../data-factory/data-factory-azure-ml-batch-execution-activity.md).
+Als Alternative können Sie [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) für folgende Zwecke verwenden:
+
+- Erstellen und Planen einer Pipeline, die Daten aus Azure- Blobspeicher herunterlädt
+- Übergeben dieser Daten an einen veröffentlichten Azure Machine Learning-Webdienst
+- Abrufen der Predictive Analytics-Ergebnisse und
+- Hochladen der Ergebnisse in den Speicher
+
+Weitere Informationen finden Sie unter [Erstellen von Vorhersagepipelines mithilfe von Azure Data Factory und Azure Machine Learning](../data-factory/data-factory-azure-ml-batch-execution-activity.md).
 
 ## Voraussetzungen
 
@@ -37,4 +44,4 @@ In diesem Dokument wird davon ausgegangen, dass Sie über ein Azure-Abonnement, 
 - Informationen zum Einrichten eines Azure-Abonnements finden Sie unter [Kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/).
 - Anleitungen zum Erstellen eines Speicherkontos und zum Abrufen von Konto- und Schlüsselinformationen finden Sie unter [Informationen zu Azure-Speicherkonten](../storage/storage-create-storage-account.md).
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

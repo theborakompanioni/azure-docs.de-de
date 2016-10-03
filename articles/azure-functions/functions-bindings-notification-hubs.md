@@ -87,6 +87,13 @@ In diesem Beispiel wird eine Benachrichtigung für eine [Vorlagenregistrierung](
 	    context.done();
 	};
 
+## Azure Notification Hub-Codebeispiel für einen F#-Trigger mit Timer
+
+In diesem Beispiel wird eine Benachrichtigung für eine [Vorlagenregistrierung](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md) gesendet, die `location` und `message` enthält.
+
+	let Run(myTimer: TimerInfo, notification: byref<IDictionary<string, string>>) =
+	    notification = dict [("location", "Redmond"); ("message", "Hello from F#!")]
+
 ## Azure Notification Hub-Codebeispiel für einen C#-Warteschlangentrigger
 
 In diesem Beispiel wird eine Benachrichtigung für eine [Vorlagenregistrierung](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md) gesendet, die `message` enthält.
@@ -157,4 +164,4 @@ Beispielcode:
 
 [AZURE.INCLUDE [Nächste Schritte](../../includes/functions-bindings-next-steps.md)]
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0921_2016-->

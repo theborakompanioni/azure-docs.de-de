@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/14/2016" 
+	ms.date="09/19/2016" 
 	ms.author="fashah;garye;bradsev" />
 
 #<a name="heading"></a>Erstellen von Datenstichproben aus SQL Server in Azure
@@ -25,7 +25,7 @@ Die Python-Stichprobe verwendet die [pyodbc](https://code.google.com/p/pyodbc/)-
 
 >[AZURE.NOTE] Beim SQL-Beispielcode in diesem Dokument wird davon ausgegangen, dass die Daten auf einem SQL Server in Azure gespeichert sind. Wenn dies nicht der Fall ist, finden Sie im Thema [Verschieben von Daten nach SQL Server in Azure](machine-learning-data-science-move-sql-server-virtual-machine.md) Anweisungen zum Verschieben von Daten zu SQL Server unter Azure.
 
-**Warum eine Datenstichprobe entnehmen?** Wenn das Dataset, das Sie analysieren möchten, groß ist, sollten Sie in der Regel eine Komprimierung der Daten durchführen, um eine geringere aber immer noch repräsentative Größe zu erhalten. Dies erleichtert das Verständnis der Daten, das Durchsuchen und die Funktionsverarbeitung. Die Funktion besteht innerhalb des Team Data Science-Prozesses darin, schnell Prototypen der Funktionen zur Datenverarbeitung und Machine Learning-Modelle zu erstellen.
+**Warum eine Datenstichprobe entnehmen?** Wenn das Dataset, das Sie analysieren möchten, groß ist, sollten Sie in der Regel eine Komprimierung der Daten durchführen, um eine geringere aber immer noch repräsentative Größe zu erhalten. Dies erleichtert das Verständnis der Daten, das Durchsuchen und die Funktionsverarbeitung. Die Funktion besteht innerhalb des [Team Data Science-Prozesses (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) darin, schnell Prototypen der Funktionen zur Datenverarbeitung und Machine Learning-Modelle zu erstellen.
 
 Das nachstehende **Menü** enthält Links zu Themen, die beschreiben, wie Datenstichproben aus verschiedenen Speicherumgebungen erstellt werden.
 
@@ -60,7 +60,7 @@ Sie können auch mit TABLESAMPLE eine Stichprobe erstellen, wie unten veranschau
 
 ###<a name="sql-aml"></a>Herstellen einer Verbindung mit Azure Machine Learning
 
-Sie können die Beispielabfragen oben direkt im „Import Data“-Modul von Azure ML verwenden, um Stichproben aus den Daten dynamisch zu erstellen und in einem Azure ML-Experiment zu verwenden. Dies ist ein Screenshot der Verwendung des Reader-Moduls zum Lesen der erfassten Daten:
+Sie können die Beispielabfragen oben direkt im [Import Data][import-data]-Modul von Azure Machine Learning verwenden, um Stichproben aus den Daten dynamisch zu erstellen und in einem Azure Machine Learning-Experiment zu verwenden. Dies ist ein Screenshot der Verwendung des Reader-Moduls zum Lesen der erfassten Daten:
    
 ![reader sql][1]
 
@@ -83,7 +83,7 @@ Sie können jetzt mit den erfassten Daten im Pandas-DataFrame arbeiten.
 
 ###<a name="python-aml"></a>Herstellen einer Verbindung mit Azure Machine Learning
 
-Mit dem folgenden Beispielcode können Sie die Stichprobendaten in einer Datei speichern und in ein Azure-Blob hochladen. Die Daten im Blob können mit dem *„Import Data“-Modul* direkt in ein Azure ML-Experiment gelesen werden. Die Schritte lauten wie folgt:
+Mit dem folgenden Beispielcode können Sie die Stichprobendaten in einer Datei speichern und in ein Azure-Blob hochladen. Die Daten im Blob können mit dem [Import Data][import-data]-Modul direkt in ein Azure Machine Learning-Experiment gelesen werden. Die Schritte lauten wie folgt:
 
 1. Schreiben Sie den Pandas-DataFrame in eine lokale Datei:
 
@@ -111,7 +111,7 @@ Mit dem folgenden Beispielcode können Sie die Stichprobendaten in einer Datei s
 	    except:	        
 		    print ("Something went wrong with uploading blob:"+BLOBNAME)
 
-3. Lesen Sie die Daten wie in der folgenden Abbildung dargestellt mit dem Azure ML-*Import Data*-Modul aus dem Azure-Blob:
+3. Lesen Sie die Daten (wie in der folgenden Abbildung dargestellt) mit dem Azure Machine Learning-Modul [Import Data][import-data] aus dem Azure-Blob ein:
  
 ![Reader-Blob][2]
 
@@ -122,6 +122,6 @@ Eine lückenlose exemplarische Vorgehensweise zur Verwendung des Team Data Scien
 [1]: ./media/machine-learning-data-science-sample-sql-server-virtual-machine/reader_database.png
 [2]: ./media/machine-learning-data-science-sample-sql-server-virtual-machine/reader_blob.png
 
- 
+ [import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Verwenden von Azure Managed Cache Service" 
+	pageTitle="So wird Azure Managed Cache Service verwendet" 
 	description="Erfahren Sie, wie zur Verbesserung der Leistung Ihrer Azure-Anwendungen mit Azure Managed Cache Service beitragen." 
 	services="cache" 
 	documentationCenter="" 
@@ -13,10 +13,10 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="06/24/2016" 
+	ms.date="09/15/2016" 
 	ms.author="sdanie"/>
 
-# Verwenden von Azure Managed Cache Service
+# So wird Azure Managed Cache Service verwendet
 
 Dieser Leitfaden beschreibt die ersten Schritte mit **Azure Managed Cache Service**. Die Beispiele sind in C#-Code geschrieben und verwenden die .NET API. Die behandelten Szenarien umfassen das **Erstellen und Konfigurieren eines Caches**, **Konfigurieren von Cacheclients**, **Hinzufügen und Entfernen von Objekten aus dem Cache, Speichern des ASP.NET-Sitzungsstatus im Cache** und **Aktivieren der Zwischenspeicherung von ASP.NET-Seitenausgaben mit dem Cache**. Weitere Informationen zum Verwenden von Azure Cache finden Sie im Abschnitt [Nächste Schritte][].
 
@@ -29,7 +29,7 @@ Azure Managed Cache Service ist eine verteilte, arbeitsspeicherinterne, skalierb
 
 Azure Managed Cache Service enthält die folgenden Features:
 
--   Vorbereitete ASP.NET-Anbieter für Sitzungszustand und Seitenausgabecaching für schnellere Webanwendungen, ohne Änderung des Anwendungscodes
+-   Vorbereitete ASP.NET-Anbieter für Sitzungsstatus und Seitenausgabecaching für schnellere Webanwendungen, ohne Änderung des Anwendungscodes
 -   Zwischenspeichern beliebiger serialisierbarer verwalteter Objekte, z. B. CLR-Objekte, Zeilen, XML und Binärdaten
 -   Konsistentes Entwicklungsmodell für Azure und Windows Server AppFabric
 
@@ -353,7 +353,7 @@ Um das verbleibende Zeitüberschreitungsintervall eines Elements im Cache anzuze
 <a name="store-session"></a>
 ## Vorgehensweise: Speichern des ASP.NET-Sitzungszustands im Cache
 
-Der Sitzungszustandsanbieter für Azure Cache ist ein prozessunabhängiger Speichermechanismus für ASP.NET-Anwendungen. Mit diesem Anbieter können Sie den Sitzungszustand in einem Azure-Cache speichern und müssen dies nicht im Arbeitsspeicher oder ein einer SQL Server-Datenbank tun. Um den Zustandsanbieter für Cachesitzungen zu verwenden, konfigurieren Sie zuerst den Cache, und konfigurieren Sie danach die ASP.NET-Anwendung für Cache mithilfe des Cache NuGet-Pakets, wie unter [Erste Schritte mit Managed Cache Service][] beschrieben. Wenn das Cache NuGet-Paket installiert ist, wird ein auskommentierter Abschnitt in "web.config" hinzugefügt, der die erforderliche Konfiguration für die ASP.NET-Anwendung enthält, um den Sitzungszustandsanbieter für Azure Cache verwenden zu können.
+Der Sitzungszustandsanbieter für Azure Cache ist ein prozessunabhängiger Speichermechanismus für ASP.NET-Anwendungen. Mit diesem Anbieter können Sie den Sitzungszustand in einem Azure-Cache speichern und müssen dies nicht im Arbeitsspeicher oder ein einer SQL Server-Datenbank tun. Um den Zustandsanbieter für Cachesitzungen zu verwenden, konfigurieren Sie zuerst den Cache, und konfigurieren Sie danach die ASP.NET-Anwendung für Cache mithilfe des Cache NuGet-Pakets, wie unter [Erste Schritte mit Managed Cache Service][] beschrieben. Wenn das Cache NuGet-Paket installiert ist, wird ein auskommentierter Abschnitt in web.config hinzugefügt, der die erforderliche Konfiguration für die ASP.NET-Anwendung enthält, um den Sitzungsstatusanbieter für Azure Cache verwenden zu können.
 
     <!--Uncomment this section to use Azure Caching for session state caching
     <system.web>
@@ -377,7 +377,7 @@ Weitere Informationen zum Verwenden des Sitzungszustandsanbieters von Managed Ca
 <a name="store-page"></a>
 ## Vorgehensweise: Speichern der ASP.NET-Seitenausgabe im Cache
 
-Der Ausgabecacheanbieter für Azure Cache ist ein prozessunabhängiger Speichermechanismus für Ausgabecachedaten. Diese Daten sind für vollständige HTTP-Antworten bestimmt (Zwischenspeichern von Seitenausgaben). Der Anbieter wird zum neuen Erweiterungspunkt des Ausgabecacheanbieters hinzugefügt, der in ASP.NET 4 eingeführt wurde. Um den Ausgabecacheanbieter zu nutzen, konfigurieren Sie zuerst Ihren Cachecluster, und konfigurieren Sie anschließend mithilfe des Cache NuGet-Pakets Ihre ASP.NET-Anwendung, wie unter [Erste Schritte mit Managed Cache Service][] beschrieben. Bei der Installation des Cache NuGet-Pakets wird der folgende auskommentierte Abschnitt in "web.config" hinzugefügt, der die erforderliche Konfiguration für die ASP.NET-Anwendung enthält, um den Ausgabecacheanbieter für Azure Cache verwenden zu können.
+Der Ausgabecacheanbieter für Azure Cache ist ein prozessunabhängiger Speichermechanismus für Ausgabecachedaten. Diese Daten sind für vollständige HTTP-Antworten bestimmt (Zwischenspeichern von Seitenausgaben). Der Anbieter wird zum neuen Erweiterungspunkt des Ausgabecacheanbieters hinzugefügt, der in ASP.NET 4 eingeführt wurde. Um den Ausgabecacheanbieter zu nutzen, konfigurieren Sie zuerst Ihren Cachecluster, und konfigurieren Sie anschließend mithilfe des Cache NuGet-Pakets Ihre ASP.NET-Anwendung, wie unter [Erste Schritte mit Managed Cache Service][] beschrieben. Bei der Installation des Cache NuGet-Pakets wird der folgende auskommentierte Abschnitt in web.config hinzugefügt, der die erforderliche Konfiguration für die ASP.NET-Anwendung enthält, um den Ausgabecacheanbieter für Azure Cache verwenden zu können.
 
     <!--Uncomment this section to use Azure Caching for output caching
     <caching>
@@ -484,4 +484,4 @@ Nachdem Sie sich nun mit den Grundlagen von Managed Cache Service vertraut gemac
 [Which Azure Cache offering is right for me?]: cache-faq.md#which-azure-cache-offering-is-right-for-me
  
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0921_2016-->

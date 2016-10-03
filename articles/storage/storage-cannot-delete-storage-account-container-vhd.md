@@ -5,7 +5,7 @@
 	documentationCenter=""
 	authors="genlin"
 	manager="felixwu"
-	editor=""
+	editor="tysonn"
 	tags="storage"/>
 
 <tags
@@ -14,8 +14,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/24/2016"
-	ms.author="genli"/>
+	ms.date="09/20/2016"
+	ms.author="minet;genli;robinsh"/>
 
 # Problembehandlung für das Löschen von Azure-Speicherkonten, -Containern oder -VHDs
 
@@ -108,4 +108,4 @@ Der Status „Beendet (Zuordnung aufgehoben)“ gibt Computerressourcen wie CPU,
 - [Löschen eines Speicherkontos](storage-create-storage-account.md#delete-a-storage-account)
 - [How to break the locked lease of blob storage in Microsoft Azure (PowerShell) (in englischer Sprache)](https://gallery.technet.microsoft.com/scriptcenter/How-to-break-the-locked-c2cd6492)
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -185,7 +185,7 @@ Objektverweise in Azure Automation DSC-Konfigurationen und -Runbooks sind gleich
 - [Variablen](automation-variables.md)
 
 ###Anmeldeinformationen###
-DSC-Konfigurationen in Azure Automation können mithilfe von **Get-AutomationPSCredential** auf Anmeldeinformationen verweisen. Diese Informationen können aber bei Bedarf auch über Parameter übergeben werden. Wenn in einer Konfiguration ein Parameter des Typs **PSCredential** vorhanden ist, müssen Sie den Zeichenfolgennamen eines Anmeldeinformationsobjekts von Azure Automation als Wert dieses Parameters und nicht als PSCredential-Objekt übergeben. Im Hintergrund wird das Azure Automation-Anmeldeinformationsobjekt mit diesem Namen abgerufen und an die Konfiguration übergeben.
+DSC-Konfigurationen in Azure Automation können mithilfe von **Get-AzureRmAutomationCredential** auf Anmeldeinformationen verweisen. Diese Informationen können aber bei Bedarf auch über Parameter übergeben werden. Wenn in einer Konfiguration ein Parameter des Typs **PSCredential** vorhanden ist, müssen Sie den Zeichenfolgennamen eines Anmeldeinformationsobjekts von Azure Automation als Wert dieses Parameters und nicht als PSCredential-Objekt übergeben. Im Hintergrund wird das Azure Automation-Anmeldeinformationsobjekt mit diesem Namen abgerufen und an die Konfiguration übergeben.
 
 Um die Sicherheit von Anmeldeinformationen in Knotenkonfigurationen (MOF-Konfigurationsdokumente) zu gewährleisten, müssen diese Informationen in der MOF-Datei der Knotenkonfiguration verschlüsselt werden. Azure Automation geht sogar noch einen Schritt weiter und verschlüsselt die gesamte MOF-Datei. Zurzeit müssen Sie PowerShell DSC jedoch noch darüber informieren, dass die Anmeldeinformationen während der Generierung der Knotenkonfiguration-MOF-Datei im Klartext übergeben werden. PowerShell DSC hat keinerlei Informationen darüber, dass Azure Automation die gesamte MOF-Datei nach dem Generieren über einen Kompilierungsauftrag verschlüsselt.
 
@@ -195,7 +195,7 @@ Das folgende Beispiel zeigt eine DSC-Konfiguration, die ein Automation-Anmeldein
 
     Configuration CredentialSample
     {
-       $Cred = Get-AutomationPSCredential -Name "SomeCredentialAsset"
+       $Cred = Get-AzureRmAutomationCredential -Name "SomeCredentialAsset"
     
     	Node $AllNodes.NodeName
     	{ 
@@ -228,4 +228,4 @@ Sie können die obige DSC-Konfiguration über PowerShell kompilieren. Hierbei we
     
     Start-AzureRmAutomationDscCompilationJob -ResourceGroupName "MyResourceGroup" -AutomationAccountName "MyAutomationAccount" -ConfigurationName "CredentialSample" -ConfigurationData $ConfigData
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0921_2016-->

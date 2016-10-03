@@ -74,10 +74,16 @@ So richten Sie E-Mail-Benachrichtigungen für Warnungen ein
 5. Wählen Sie unter **Schweregrad** mindestens eine Ebene aus, bei der die E-Mail-Benachrichtigung ausgelöst werden soll.
 
 6. Klicken Sie auf **Speichern**.
+### Welche Warnungstypen sind für die Azure IaaS-VM-Sicherung verfügbar?
+| Warnstufe | Gesendete Warnungen |
+| ------------- | ------------- |
+| Kritisch | Sicherungsfehler, Wiederherstellungsfehler |
+| Warnung | Keine |
+| Information | Keine | 
 
 ### Gibt es Fälle, in denen keine E-Mail gesendet wird, auch wenn Benachrichtigungen konfiguriert wurden?
 
-Es gibt Situationen, in denen keine Warnung gesendet wird, obwohl die Benachrichtigungen richtig konfiguriert wurden. In den folgenden Situationen werden keine E-Mail-Benachrichtigungen gesendet:
+Es gibt Situationen, in denen keine Warnung gesendet wird, obwohl die Benachrichtigungen richtig konfiguriert wurden. In den folgenden Situationen werden keine E-Mail-Benachrichtigungen gesendet, um unnötige Warnungen zu vermeiden:
 
 - Für Benachrichtigungen wurde die stündliche Übersicht konfiguriert, und eine Warnung wird ausgelöst und innerhalb dieser Stunde gelöst.
 - Der Auftrag wird abgebrochen.
@@ -231,4 +237,4 @@ Eine umfassende Beschreibung der Ereignis-, Vorgangs- und Überwachungsprotokoll
 
 Informationen zum erneuten Erstellen eines virtuellen Computers über einen Wiederherstellungspunkt finden Sie unter [Wiederherstellen virtueller Azure-Computer](backup-azure-restore-vms.md). Informationen zum Schutz Ihrer virtuellen Computer finden Sie unter [First look: Back up VMs to a Recovery Services vault](backup-azure-vms-first-look-arm.md) (Einführung: Sichern von VMs in einem Recovery Services-Tresor). Informationen zu den Verwaltungsaufgaben für VM-Sicherungen finden Sie im Artikel [Verwalten der Sicherungen von virtuellen Azure-Computern](backup-azure-manage-vms.md).
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0921_2016-->

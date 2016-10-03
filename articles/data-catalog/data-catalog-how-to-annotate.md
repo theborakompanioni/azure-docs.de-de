@@ -13,17 +13,17 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-catalog"
-   ms.date="05/06/2016"
+   ms.date="09/21/2016"
    ms.author="maroche"/>
 
 
 # Hinzufügen von Anmerkungen zu Datenquellen
 
 ## Einführung
-**Microsoft Azure Data Catalog** ist ein vollständig verwalteter Clouddienst, der als Registrierungs- und Ermittlungssystem für Datenquellen von Unternehmen dient. Mit anderen Worten ist es die Aufgabe von **Azure Data Catalog**, den Benutzern zu helfen, Datenquellen zu ermitteln, zu verstehen und zu nutzen, und Unternehmen zu helfen, mehr Nutzen aus ihren vorhandenen Daten zu ziehen. Wenn eine Datenquelle in **Azure Data Catalog** registriert wird, werden ihre Metadaten vom Dienst kopiert und indiziert. Dies ist aber noch nicht alles. **Azure Data Catalog** bietet Benutzern die Möglichkeit, die aus der Datenquelle extrahierten Metadaten durch eigene beschreibende Metadaten (z. B. Beschreibungen und Tags) zu ergänzen, um die Datenquelle für andere Benutzer verständlicher zu machen.
+**Microsoft Azure Data Catalog** ist ein vollständig verwalteter Clouddienst, der als Registrierungs- und Ermittlungssystem für Datenquellen von Unternehmen dient. Data Catalog unterstützt Benutzer also beim Ermitteln, Nachvollziehen und Verwenden von Datenquellen und Unternehmen dabei, mehr Nutzen aus ihren vorhandenen Daten zu ziehen. Wenn eine Datenquelle in Data Catalog registriert wird, werden ihre Metadaten vom Dienst kopiert und indiziert. Das ist aber noch nicht alles. Data Catalog bietet Benutzern die Möglichkeit, die aus der Datenquelle extrahierten Metadaten durch eigene beschreibende Metadaten (beispielsweise Beschreibungen und Tags) zu ergänzen, um die Datenquelle für andere Benutzer verständlicher zu machen.
 
 ## Anmerkung und Crowdsourcing
-Jeder hat eine Meinung. Und das ist auch gut so. **Azure Data Catalog** berücksichtigt die Tatsache, dass unterschiedliche Benutzer Unternehmensdatenquellen aus verschiedenen Perspektiven betrachten und jede dieser Perspektiven nützlich sein kann. Stellen Sie sich folgendes Szenario vor:
+Jeder hat eine Meinung. Und das ist auch gut so. Data Catalog berücksichtigt die Tatsache, dass unterschiedliche Benutzer Unternehmensdatenquellen aus verschiedenen Perspektiven betrachten und jede dieser Perspektiven nützlich sein kann. Stellen Sie sich folgendes Szenario vor:
 
 * Der Systemadministrator kennt die Vereinbarung zum Servicelevel für die Server und Dienste, die die Datenquelle hosten.
 * Der Datenbankadministrator kennt den Sicherungszeitplan für jede Datenbank und die zulässigen ETL-Verarbeitungsfenster.
@@ -31,10 +31,10 @@ Jeder hat eine Meinung. Und das ist auch gut so. **Azure Data Catalog** berücks
 * Der Data Steward weiß, wie die Ressourcen und Attribute in der Datenquelle dem Unternehmensdatenmodell zugeordnet sind.
 * Der Analyst weiß, wie die Daten im Kontext der von ihm unterstützten Geschäftsprozesse verwendet werden.
 
-Da jede dieser Perspektiven wertvoll ist, verwendet **Azure Data Catalog** einen Crowdsourcing-Ansatz für Metadaten. Auf diese Weise kann jede Perspektive berücksichtigt und ein lückenloses Bild der registrierten Datenquellen bereitgestellt werden. Mithilfe des **Azure Data Catalog**-Portals kann jeder Benutzer eigene Anmerkungen hinzufügen und bearbeiten und gleichzeitig die Anmerkungen anderer Benutzer anzeigen.
+Da jede dieser Perspektiven wertvoll ist, verwendet Data Catalog einen Crowdsourcing-Ansatz für Metadaten. Auf diese Weise kann jede Perspektive berücksichtigt und ein lückenloses Bild der registrierten Datenquellen bereitgestellt werden. Mithilfe des Data Catalog-Portals kann jeder Benutzer eigene Anmerkungen hinzufügen und bearbeiten und gleichzeitig die Anmerkungen anderer Benutzer anzeigen.
 
 ## Anmerkungstypen
-**Azure Data Catalog** unterstützt die folgenden Anmerkungstypen:
+Data Catalog unterstützt folgende Anmerkungstypen:
 
 | Anmerkung | Hinweise |
 |----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -44,22 +44,23 @@ Da jede dieser Perspektiven wertvoll ist, verwendet **Azure Data Catalog** einen
 | Tags (Glossartags) | Tags können auf der Datenressourcen- und Attribut-/Spaltenebene angegeben werden. Glossartags sind zentral definierte Glossarbegriffe, die zum Kategorisieren von Datenassets oder Attributen mithilfe einer allgemeinen Unternehmenstaxonomie verwendet werden können. Weitere Informationen finden Sie unter [Einrichten des Unternehmensglossars für gesteuertes Markieren](data-catalog-how-to-business-glossary.md). |
 | Experten | Experten können auf der Datenressourcenebene angegeben werden. Experten sind Benutzer oder Gruppen, die über fundiertes Wissen über die Daten verfügen und als Ansprechpartner für Benutzer fungieren können, die die registrierten Datenquellen finden und Fragen haben, die durch die vorhandenen Anmerkungen nicht beantwortet werden. |
 | Zugriff anfordern | Anmerkungen vom Typ „Zugriff anfordern“ können auf der Datenressourcenebene angegeben werden. Diese Anmerkung ist für Benutzer vorgesehen, die eine Datenquelle finden, für die sie noch keine Zugriffsberechtigung besitzen. Benutzer können die E-Mail-Adresse des Benutzers oder der Gruppe, der bzw. die für die Erteilung der Zugriffsberechtigung zuständig ist, die URL des für den Zugriff erforderlichen Prozesses oder Tools oder den Prozess selbst als Text eingeben. |
+| Dokumentation | Eine Dokumentation kann auf der Datenressourcenebene angegeben werden. Bei einer Ressourcendokumentation handelt es sich um Rich-Text-Informationen, die Links und Bilder enthalten und somit Informationen vermitteln können, die sich nicht über Beschreibungen und Tags bereitstellen lassen. |
 
 
 ## Hinzufügen einer Anmerkung zu mehreren Datenressourcen
-Benutzer können mehrere Datenressourcen im **Azure Data Catalog**-Portal auswählen und allen ausgewählten Ressourcen in nur einem Arbeitsschritt eine Anmerkung hinzufügen. Da Anmerkungen für alle ausgewählten Datenressourcen gelten, ist es ganz einfach, einheitliche Beschreibungen, Tags und Experten für verwandte Datenressourcen bereitzustellen.
+Benutzer können im Data Catalog-Portal mehrere Datenressourcen auswählen und allen ausgewählten Ressourcen in nur einem Arbeitsschritt eine Anmerkung hinzufügen. Da Anmerkungen für alle ausgewählten Datenressourcen gelten, ist es ganz einfach, einheitliche Beschreibungen, Tags und Experten für verwandte Datenressourcen bereitzustellen.
 
-> [AZURE.NOTE] Tags und Experten können auch beim Registrieren von Datenressourcen mit dem **Azure Data Catalog**-Tool zur Datenquellenregistrierung angegeben werden.
+> [AZURE.NOTE] Tags und Experten können auch beim Registrieren von Datenressourcen mit dem Data Catalog-Tool zur Datenquellenregistrierung angegeben werden.
 
-Bei Auswahl mehrerer Tabellen und Ansichten werden nur Spalten, die in allen Datenressourcen vorhanden sind, im **Azure Data Catalog**-Portal angezeigt. So können Benutzer Tags und Beschreibungen für alle Spalten hinzufügen, die für alle ausgewählten Datenressourcen den gleichen Namen aufweisen.
+Bei Auswahl mehrerer Tabellen und Ansichten werden im Data Catalog-Portal nur Spalten angezeigt, die in allen Datenressourcen vorhanden sind. So können Benutzer Tags und Beschreibungen für alle Spalten hinzufügen, die für alle ausgewählten Datenressourcen den gleichen Namen aufweisen.
 
 ## Anmerkungen und Ermittlung
-Genau wie die Metadaten, die bei der Registrierung aus der Datenquelle extrahiert und dem **Azure Data Catalog**-Suchindex hinzugefügt werden, werden auch die vom Benutzer angegebenen Metadaten indiziert. Anmerkungen erleichtern Benutzern somit nicht nur das Verständnis der gefundenen Daten, sondern auch die Ermittlung von Datenressourcen, da sie anhand der für sie sinnvollen Begriffe nach ihnen können.
+Genau wie die Metadaten, die bei der Registrierung aus der Datenquelle extrahiert und dem Data Catalog-Suchindex hinzugefügt werden, werden auch die vom Benutzer angegebenen Metadaten indiziert. Anmerkungen erleichtern Benutzern somit nicht nur das Verständnis der gefundenen Daten, sondern auch die Ermittlung von Datenressourcen, da sie anhand der für sie sinnvollen Begriffe nach ihnen können.
 
 ## Zusammenfassung
-Durch die Registrierung einer Datenquelle in **Azure Data Catalog** werden strukturelle und beschreibende Metadaten aus der Datenquelle in den Katalogdienst kopiert, sodass die darin enthaltenen Daten leichter auffindbar sind. Sobald eine Datenquelle registriert wurde, können Benutzer im **Azure Data Catalog**-Portal Anmerkungen hinzufügen, um das Verständnis der Daten zu erleichtern und die Ermittlung zu vereinfachen.
+Durch die Registrierung einer Datenquelle in Data Catalog werden strukturelle und beschreibende Metadaten aus der Datenquelle in den Katalogdienst kopiert, sodass die darin enthaltenen Daten leichter auffindbar sind. Sobald eine Datenquelle registriert wurde, können Benutzer im Data Catalog-Portal Anmerkungen hinzufügen, um das Verständnis der Daten zu erleichtern und die Ermittlung zu vereinfachen.
 
-## Weitere Informationen
-- Eine schrittweise Anleitung zum Hinzufügen von Anmerkungen zu Datenquellen finden Sie im Tutorial [Erste Schritte mit Azure Data Catalog](data-catalog-get-started.md).
+## Siehe auch
+- Eine detaillierte Anleitung zum Hinzufügen von Anmerkungen zu Datenquellen finden Sie im Tutorial [Erste Schritte mit Azure Data Catalog](data-catalog-get-started.md).
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0921_2016-->

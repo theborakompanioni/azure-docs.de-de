@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="05/18/2016"
+   ms.date="09/14/2016"
    ms.author="subramar"/>
 
 # Angeben von Ressourcen in einem Dienstmanifest
@@ -24,7 +24,7 @@ Mit dem Dienstmanifest können vom Dienst verwendete Ressourcen deklariert oder 
 
 ## Endpunkte
 
-Wenn eine Endpunktressource im Dienstmanifest definiert wird, weist Service Fabric Ports aus dem Bereich des reservierten Anwendungsports zu, sofern kein expliziter Port angegeben ist (sehen Sie sich beispielsweise den Endpunkt *ServiceEndpoint1* weiter unten an). Außerdem können Dienste auch einen bestimmten Port einer Ressource anfordern. Dienstreplikate, die auf unterschiedlichen Clusterknoten ausgeführt werden, können unterschiedlichen Portnummern zugewiesen werden, während für Replikate eines Diensts auf demselben Knoten derselbe Port verwendet wird. Diese Ports können von den Dienstreplikaten für unterschiedliche Zwecke genutzt werden, z. B. die Replikation, das Lauschen auf Clientanforderungen usw.
+Wenn eine Endpunktressource im Dienstmanifest definiert wird, weist Service Fabric Ports aus dem Bereich der reservierten Anwendungsports zu, sollte ein Port nicht explizit angegeben sein. Sehen Sie sich beispielsweise den Endpunkt *ServiceEndpoint1* an, der im Codeausschnitt aus dem Manifest im Anschluss an diesen Absatz angegeben ist. Außerdem können Dienste auch einen bestimmten Port einer Ressource anfordern. Dienstreplikate, die auf unterschiedlichen Clusterknoten ausgeführt werden, können unterschiedlichen Portnummern zugewiesen werden, während für Replikate eines Diensts auf demselben Knoten derselbe Port verwendet wird. Die Dienstreplikate können dann diese Ports nach Bedarf für die Replikation und das Überwachen auf Clientanforderungen nutzen.
 
 ```xml
 <Resources>
@@ -90,12 +90,12 @@ HTTP-Endpunkte werden von Service Fabric automatisch mit einer Zugriffssteuerung
 
 ## Beispiel: Angeben eines HTTPS-Endpunkts für Ihren Dienst
 
-Das HTTPS-Protokoll ermöglicht die Serverauthentifizierung und wird auch zum Verschlüsseln der Kommunikation zwischen Client und Server verwendet. Geben Sie dieses Protokoll beim Festlegen des Diensts im Abschnitt *Ressourcen -> Endpunkte -> Endpunkt* des Dienstmanifests an (wie weiter oben für den Endpunkt *ServiceEndpoint3* gezeigt), um es für Ihren Service Fabric-Dienst zu aktivieren.
+Das HTTPS-Protokoll ermöglicht die Serverauthentifizierung und wird auch zum Verschlüsseln der Kommunikation zwischen Client und Server verwendet. Geben Sie dieses Protokoll im Abschnitt *Ressourcen -> Endpunkte -> Endpunkt* des Dienstmanifests an (wie weiter oben für den Endpunkt *ServiceEndpoint3* gezeigt), um HTTPS für Ihren Service Fabric-Dienst zu aktivieren.
 
 >[AZURE.NOTE] Das Protokoll eines Diensts kann nicht während der Anwendungsaktualisierung geändert werden, da diese Änderung eine Unterbrechung verursacht.
 
 
-Hier sehen Sie ein Beispiel für ein Anwendungsmanifest, das Sie für HTTPS festlegen müssen. (Sie müssen den Fingerabdruck für Ihr Zertifikat bereitstellen.) Bei EndpointRef handelt es sich um einen Verweis auf die Endpunktressource im Dienstmanifest, für das Sie das HTTPS-Protokoll festgelegt haben. Sie können mehrere Endpunktzertifikate hinzufügen.
+Hier sehen Sie ein Beispiel für ein Anwendungsmanifest, das Sie für HTTPS festlegen müssen. Der Fingerabdruck Ihres Zertifikats muss bereitgestellt werden. Bei EndpointRef handelt es sich um einen Verweis auf die Endpunktressource im Dienstmanifest, für das Sie das HTTPS-Protokoll festgelegt haben. Sie können mehrere Endpunktzertifikate hinzufügen.
 
 ```
 <?xml version="1.0" encoding="utf-8"?>
@@ -137,4 +137,4 @@ Hier sehen Sie ein Beispiel für ein Anwendungsmanifest, das Sie für HTTPS fest
 </ApplicationManifest>
 ```
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0921_2016-->

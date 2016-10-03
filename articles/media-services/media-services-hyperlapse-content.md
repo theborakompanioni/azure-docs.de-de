@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Hyperlapsing von Mediendateien mit Azure Media Hyperlapse"
+	pageTitle="Hyperlapsing von Mediendateien mit Azure Media Hyperlapse | Microsoft Azure"
 	description="Azure Media Hyperlapse erzeugt ruckelfreie Zeitraffervideos aus der Ich-Perspektive oder Action-Kamera-Inhalten. In diesem Thema wird die Verwendung von Media Indexer erläutert."
 	services="media-services"
 	documentationCenter=""
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="06/22/2016"  
+	ms.date="09/19/2016"  
 	ms.author="adsolank"/>
 
 
@@ -29,7 +29,7 @@ Die neuesten Informationen zu Azure Media Hyperlapse finden Sie in den [Media Se
 
 ## Hyperlapsing eines Medienobjekts
 
-Zuerst müssen Sie die gewünschte Eingabedatei in Azure Media Services hochladen. Weitere Informationen zu den Konzepten zum Hochladen und Verwalten von Inhalten finden Sie im [Content Management-Artikel](media-services-manage-content.md#upload).
+Zuerst müssen Sie die gewünschte Eingabedatei in Azure Media Services hochladen. Weitere Informationen zu den Konzepten zum Hochladen und Verwalten von Inhalten finden Sie im [Content Management-Artikel](media-services-portal-vod-get-started.md).
 
 ###  <a id="configuration"></a>Konfigurationsvoreinstellung für Hyperlapse
 
@@ -75,68 +75,28 @@ Es folgt ein Beispiel einer geeigneten Konfigurationsdatei in XML und JSON:
 
 Mit der folgenden Methode werden eine Mediendatei als Asset hochgeladen und ein Auftrag mit dem Azure Media Hyperlapse-Medienprozessor erstellt.
 
-> [AZURE.NOTE] Sie sollten bereits über einen CloudMediaContext verfügen, der den Namen „Context“ enthält, damit dieser Code funktioniert. Weitere Informationen dazu finden Sie im [Content Management-Artikel](media-services-manage-content.md).
+> [AZURE.NOTE] Sie sollten bereits über einen CloudMediaContext verfügen, der den Namen „Context“ enthält, damit dieser Code funktioniert. Weitere Informationen dazu finden Sie im [Content Management-Artikel](media-services-dotnet-get-started.md).
 
 > [AZURE.NOTE] Das Zeichenfolgenargument „HyperConfig“ muss (wie zuvor beschrieben) eine geeignete Konfigurationsvoreinstellung in XML oder JSON sein.
 
-	static bool RunHyperlapseJob(string input, string output, string hyperConfig)
-	{
-		// create asset with input file
-		IAsset asset = context
-					   .Assets
-					   .CreateAssetAndUploadSingleFile(input, "My Hyperlapse Input", AssetCreationOptions.None);
+static bool RunHyperlapseJob(string input, string output, string hyperConfig) { // create asset with input file IAsset asset = context .Assets .CreateAssetAndUploadSingleFile(input, "My Hyperlapse Input", AssetCreationOptions.None);
 
-		// grab instances of Azure Media Hyperlapse MP
-		IMediaProcessor mp = context
-							 .MediaProcessors
-							 .GetLatestMediaProcessorByName("Azure Media Hyperlapse");
+// grab instances of Azure Media Hyperlapse MP IMediaProcessor mp = context .MediaProcessors .GetLatestMediaProcessorByName("Azure Media Hyperlapse");
 
-		// create Job with Hyperlapse task
-		IJob job = context
-				   .Jobs
-				   .Create(String.Format("Hyperlapse {0}", input));
+// create Job with Hyperlapse task IJob job = context .Jobs .Create(String.Format("Hyperlapse {0}", input));
 
-		if (String.IsNullOrEmpty(hyperConfig))
-		{
-			// config cannot be empty
-			return false;
-		}
+if (String.IsNullOrEmpty(hyperConfig)) { // config cannot be empty return false; }
 
-		hyperConfig = File.ReadAllText(hyperConfig);
+hyperConfig = File.ReadAllText(hyperConfig);
 
-		ITask hyperlapseTask = job.Tasks.AddNew("Hyperlapse task",
-												mp,
-												hyperConfig,
-												TaskOptions.None);
-		hyperlapseTask.InputAssets.Add(asset);
-		hyperlapseTask.OutputAssets.AddNew("Hyperlapse output",
-											AssetCreationOptions.None);
+ITask hyperlapseTask = job.Tasks.AddNew("Hyperlapse task", mp, hyperConfig, TaskOptions.None); hyperlapseTask.InputAssets.Add(asset); hyperlapseTask.OutputAssets.AddNew("Hyperlapse output", AssetCreationOptions.None);
 
 
-		job.Submit();
+job.Submit();
 
-		// Create progress printing and querying tasks
-			Task progressPrintTask = new Task(() =>
-			{
+// Create progress printing and querying tasks Task progressPrintTask = new Task(() => {
 
-				IJob jobQuery = null;
-				do
-				{
-					var progressContext = context;
-					jobQuery = progressContext.Jobs
-											  .Where(j => j.Id == job.Id)
-											  .First();
-					Console.WriteLine(string.Format("{0}\t{1}\t{2}",
-									  DateTime.Now,
-									  jobQuery.State,
-									  jobQuery.Tasks[0].Progress));
-					Thread.Sleep(10000);
-				}
-				while (jobQuery.State != JobState.Finished &&
-					   jobQuery.State != JobState.Error &&
-					   jobQuery.State != JobState.Canceled);
-			});
-			progressPrintTask.Start();
+IJob jobQuery = null; do { var progressContext = context; jobQuery = progressContext.Jobs .Where(j => j.Id == job.Id) .First(); Console.WriteLine(string.Format("{0}\\t{1}\\t{2}", DateTime.Now, jobQuery.State, jobQuery.Tasks[0].Progress)); Thread.Sleep(10000); } while (jobQuery.State != JobState.Finished && jobQuery.State != JobState.Error && jobQuery.State != JobState.Canceled); }); progressPrintTask.Start();
 
 			Task progressJobTask = job.GetExecutionProgressTask(
 												 CancellationToken.None);
@@ -215,4 +175,4 @@ Mit der folgenden Methode werden eine Mediendatei als Asset hochgeladen und ein 
 
 [Azure Media Analytics-Demos](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0921_2016-->

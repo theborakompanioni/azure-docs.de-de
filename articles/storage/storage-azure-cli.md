@@ -4,7 +4,8 @@
     services="storage"
     documentationCenter="na"
     authors="tamram"
-    manager="carmonm"/>
+    manager="carmonm"
+    editor="tysonn"/>
 
 <tags
     ms.service="storage"
@@ -12,8 +13,8 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="05/02/2016"
-    ms.author="micurd"/>
+    ms.date="09/20/2016"
+    ms.author="micurd;tamram"/>
 
 # Verwenden der Azure-Befehlszeilenschnittstelle mit Azure-Speicher
 
@@ -133,7 +134,7 @@ Jeder Blob im Azure-Speicher muss sich in einem Container befinden. Mit dem Befe
 
 ### Hochladen eines Blobs in einen Container
 
-Azure Blob-Speicher unterstützt Blockblobs und Seitenblobs. Weitere Informationen finden Sie unter [Grundlegendes zu Blockblobs, Anfügeblobs und Seitenblobs](http://msdn.microsoft.com/library/azure/ee691964.aspx).
+Azure Blob-Speicher unterstützt Blockblobs und Seitenblobs. Weitere Informationen finden Sie unter [Grundlagen zu Blockblobs, Anfügeblobs und Seitenblobs](http://msdn.microsoft.com/library/azure/ee691964.aspx).
 
 Um Blobs in einen Container hochzuladen, können Sie den Befehl `azure storage blob upload` verwenden. Dieser Befehl lädt standardmäßig die lokalen Dateien in einen Blockblob hoch. Um den Blob-Typ anzugeben, können Sie den Parameter `--blobtype` verwenden.
 
@@ -161,7 +162,7 @@ In diesem Beispiel wird ein asynchroner Kopiervorgang ausgeführt. Sie können d
 
 Beachten Sie, dass die für den Kopiervorgang bereitgestellte Quell-URL entweder öffentlich zugänglich sein muss oder ein SAS-Token (Token für die freigegebene Zugriffssignatur) enthalten muss.
 
-### Löschen eines Blobs
+### Löschen eines BLOBs
 
 Verwenden Sie den nachfolgenden Befehl, um ein Blob zu löschen.
 
@@ -221,4 +222,4 @@ In den folgenden Artikeln und Ressourcen finden Sie weitere Informationen zum Az
 
 [Image1]: ./media/storage-azure-cli/azure_command.png
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0921_2016-->

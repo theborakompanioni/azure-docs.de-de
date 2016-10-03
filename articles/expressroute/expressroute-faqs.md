@@ -12,7 +12,7 @@
    ms.topic="article" 
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="08/04/2016"
+   ms.date="09/19/2016"
    ms.author="cherylmc"/>
 
 # ExpressRoute – FAQ
@@ -53,6 +53,7 @@ ExpressRoute unterstützt die meisten Azure-Dienste.
 
 - Verbindungen mit virtuellen Computern und Clouddiensten, die in virtuellen Netzwerken bereitgestellt werden, werden über den privaten Peeringpfad unterstützt.
 - Azure Websites werden über den öffentlichen Peeringpfad unterstützt.
+- IoT Hub wird über den öffentlichen Peeringpfad unterstützt.
 - Office 365 wird über den Microsoft-Peeringpfad unterstützt.
 - Alle anderen Dienste sind über den öffentlichen Peeringpfad zugänglich. Es gibt folgende Ausnahmen.
 
@@ -240,4 +241,4 @@ Ja. Office 365-Dienstendpunkte sind über das Internet erreichbar, selbst wenn E
 ### Kann ich über eine ExpressRoute-Verbindung auf Dynamics AX Online zugreifen?
 Nein, dies wird nicht unterstützt.
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0921_2016-->

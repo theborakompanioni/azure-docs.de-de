@@ -13,9 +13,9 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="storage-backup-recovery" 
-	ms.date="12/14/2015" 
+	ms.date="09/12/2016" 
 	ms.author="anbacker"/>
-
+ 
 
 # Grundlegendes zur Hyper-V-Replikation mit Azure Site Recovery
 
@@ -24,7 +24,7 @@ Dieser Artikel beschreibt die technischen Konzepte, die Ihnen beim erfolgreichen
 ## Grundlegendes zu den Komponenten
 
 ### Bereitstellung des Hyper-V-Standorts oder VMM-Standorts für die Replikation zwischen lokalen Standorten und Azure.
-
+ 
 Als Bestandteil der Einrichtung der Notfallwiederherstellung zwischen lokalen Standorten und Azure muss Azure Site Recovery Provider heruntergeladen und auf dem VMM-Server installiert werden. Zudem muss der Azure Recovery Services-Agent auf jedem Hyper-V-Host installiert werden.
 
 ![Bereitstellung des VMM-Standorts für die Replikation zwischen lokalen Standorten und Azure.](media/site-recovery-understanding-site-to-azure-protection/image00.png)
@@ -36,11 +36,11 @@ Diese Hyper-V-Standortbereitstellung entspricht der Bereitstellung des VMM-Stand
 ### Schutz aktivieren
 Nachdem Sie einen virtuellen Computer aus dem Portal oder lokalen geschützt haben, wird ein ASR-Auftrag mit dem Namen *Schutz aktivieren* initiiert, und kann unter der Registerkarte "Aufträge" überwacht werden.
 
-![Behandlung von lokalen Hyper-V-Problemen](media/site-recovery-understanding-site-to-azure-protection/image01.png)
+![Behandlung von lokalen Hyper-V-Problemen](media/site-recovery-understanding-site-to-azure-protection/image001.PNG)
 
 Der Auftrag *Schutz aktivieren* überprüft die erforderlichen Komponenten, bevor [CreateReplicationRelationship](https://msdn.microsoft.com/library/hh850036.aspx) aufgerufen wird, wodurch die Replikation nach Azure mithilfe von Eingaben erstellt wird, die während des Schutzes konfiguriert wurden. Der Auftrag *Schutz aktivieren* startet die erste Replikation von einem lokalen Standort durch Aufrufen von [StartReplication](https://msdn.microsoft.com/library/hh850303.aspx), wodurch der virtuelle Datenträger des virtuellen Computers an Azure gesendet wird.
 
-![Behandlung von lokalen Hyper-V-Problemen](media/site-recovery-understanding-site-to-azure-protection/image02.png)
+![Behandlung von lokalen Hyper-V-Problemen](media/site-recovery-understanding-site-to-azure-protection/IMAGE002.PNG)
 
 ### Abschließen des Schutzes
 Eine [Hyper-V-VM-Momentaufnahme](https://technet.microsoft.com/library/dd560637.aspx) wird ausgeführt, wenn die erste Replikation ausgelöst wird. Virtueller Festplatten werden nacheinander verarbeitet, bis alle Datenträger in Azure hochgeladen werden. Dieser Vorgang dauert normalerweise eine Weile, je nach Größe des Datenträgers und der Bandbreite. Unter [How to manage on-premises to Azure protection network bandwidth usage](https://support.microsoft.com/kb/3056159) (auf Englisch; Verwalten der geschützten Nutzung der Netzwerkbandbreite „von lokal an Azure“) finden Sie Informationen zum Optimieren der Netzwerknutzung. Nach Abschluss der Erstreplikation konfiguriert der Auftrag *Schutz auf dem virtuellen Computer abschließen* die Netzwerk- und Nach-Replikationseinstellungen. Während der Erstreplikation in Bearbeitung ist, werden alle Änderungen an den Datenträgern überwacht, wie im Abschnitt Deltareplikation weiter unten erwähnt. Zusätzliche Speicherplatz wird für die Momentaufnahmen- und HRL-Dateien verbraucht, während die Erstreplikation im Gange ist. Nach Abschluss der Erstreplikation wird die Hyper-V-VM-Momentaufnahme gelöscht, was zur Zusammenführung der Datenänderungen nach der Erstreplikation auf dem übergeordneten Datenträger führt.
@@ -57,7 +57,9 @@ Eine virtuelle Maschine wird für die erneute Synchronisierung markiert, wenn di
 
 Nach Abschluss der erneuten Synchronisierung sollte die normale Deltareplikation fortgesetzt werden. Eine Erneute Synchronisierung kann bei einem Ausfall (z. B. Netzwerkausfall, VMMS-Absturz usw.) fortgesetzt werden.
 
-Standardmäßig wird die *automatisch geplante erneute Synchronisierung* nicht während der Arbeitszeit konfiguriert. Wenn der virtuelle Computer manuell neu synchronisiert werden muss, wählen Sie den virtuellen Computer aus dem Portal und klicken Sie auf „ERNEUT SYNCHRONISIEREN“. ![Behandlung von lokalen Hyper-V-Problemen](media/site-recovery-understanding-site-to-azure-protection/image04.png)
+Standardmäßig wird die *automatisch geplante erneute Synchronisierung* nicht während der Arbeitszeit konfiguriert. Wenn der virtuelle Computer manuell neu synchronisiert werden muss, wählen Sie den virtuellen Computer aus dem Portal, und klicken Sie auf „ERNEUT SYNCHRONISIEREN“.
+
+![Behandlung von lokalen Hyper-V-Problemen](media/site-recovery-understanding-site-to-azure-protection/image04.png)
 
 Die erneute Synchronisierung verwendet einen Chunking-Blockalgorithmus, in dem Quell-und Zieldateien in feste Blöcke unterteilt sind. Prüfsummen werden für jedes Segment generiert und dann verglichen, um zu bestimmen, welche Speicherblöcke aus der Quelle auf den Zielcomputer angewendet werden müssen.
 
@@ -79,4 +81,4 @@ Es gibt eine integrierte Wiederholungslogik, wenn Replikationsfehler auftreten. 
 - [Microsoft-Support](./site-recovery-monitoring-and-troubleshooting.md#reaching-out-for-microsoft-support)
 - [Häufige Fehler bei der automatischen Systemwiederherstellung und deren Lösungen](./site-recovery-monitoring-and-troubleshooting.md#common-asr-errors-and-their-resolutions)
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0921_2016-->

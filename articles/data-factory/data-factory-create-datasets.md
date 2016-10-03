@@ -67,8 +67,8 @@ In der folgenden Tabelle werden die Eigenschaften im obigen JSON-Code beschriebe
 | structure | Schema des Datasets<br/><br/>Im Abschnitt [Dataset: Structure](#Structure) finden Sie weitere Details. | Nein. | NA |
 | typeProperties | Eigenschaften, die dem ausgewählten Typ entsprechen. Im Abschnitt [Dataset: Type](#Type) finden Sie ausführliche Informationen über die unterstützten Typen und deren Eigenschaften. | Ja | NA |
 | external | Boolesches Flag, das angibt, ob ein Dataset explizit durch eine Data Factory-Pipeline erstellt wird oder nicht. | Nein | false | 
-| availability | Definiert das Verarbeitungsfenster oder das Modell für das Aufteilen in Slices für die Datasetproduktion. <br/><br/>Unter [Dataset: Availability](#Availability) finden Sie weitere Informationen.<br/><br/>Im Artikel [Planung und Ausführung](data-factory-scheduling-and-execution.md) finden Sie weitere Informationen zum Modell für das Aufteilen von Datasets in Slices. | Ja | –
-| policy | Definiert die Kriterien oder die Bedingung, die die Dataset-Slices erfüllen müssen. <br/><br/>Unter [Dataset: Policy](#Policy) finden Sie weitere Informationen. | Nein | NA |
+| availability | Definiert das Verarbeitungsfenster oder das Modell für das Aufteilen in Slices für die Datasetproduktion. <br/><br/>Details finden Sie unter [Dataset: Availability](#Availability). <br/><br/>Weitere Informationen zum Modell für das Aufteilen von Datasets in Slices finden Sie im Artikel [Planung und Ausführung](data-factory-scheduling-and-execution.md). | Ja | –
+| policy | Definiert die Kriterien oder die Bedingung, die die Dataset-Slices erfüllen müssen. <br/><br/>Weitere Informationen finden Sie im Abschnitt [Dataset-Richtlinie](#Policy). | Nein | NA |
 
 ## Datasetbeispiel
 Im folgenden Beispiel stellt das Dataset eine Tabelle mit dem Namen **MyTable** in einer **Azure SQL-Datenbank** dar.
@@ -90,7 +90,7 @@ Im folgenden Beispiel stellt das Dataset eine Tabelle mit dem Namen **MyTable** 
 	    }
 	}
 
-Beachten Sie Folgendes:
+Beachten Sie folgende Punkte:
 
 - „type“ ist auf „AzuresqlTable“ festgelegt.
 - Als tableName-Typeigenschaft (spezifisch für AzureSplTable-Typ) ist „MyTable“ festgelegt.
@@ -137,7 +137,7 @@ Der Abschnitt **Structure** definiert das Schema des Datasets. Er enthält eine 
 ## <a name="Availability"></a> Dataset: Availability
 Der Abschnitt **availability** in einem Dataset definiert das Verarbeitungsfenster (stündlich, täglich, wöchentlich usw.) oder das Modell für das Aufteilen in Slices für das Dataset. Im Artikel [Planung und Ausführung](data-factory-scheduling-and-execution.md) finden Sie weitere Informationen zum Modell für das Aufteilen von Datasets in Slices und Abhängigkeit.
 
-Der folgende Abschnitt „availability“ definiert, dass das Ausgabedataset entweder stündlich erstellt wird (oder) das Eingabedataset stündlich verfügbar ist.
+Der folgende Abschnitt „availability“ definiert, dass das Ausgabedataset entweder stündlich erstellt wird oder das Eingabedataset stündlich verfügbar ist:
 
 	"availability":	
 	{	
@@ -145,7 +145,7 @@ Der folgende Abschnitt „availability“ definiert, dass das Ausgabedataset ent
 		"interval": 1	
 	}
 
-In der folgenden Tabelle werden die Eigenschaften beschrieben, die Sie im Abschnitt „availability“ verwenden können.
+In der folgenden Tabelle werden die Eigenschaften beschrieben, die Sie im Abschnitt „availability“ verwenden können:
 
 | Eigenschaft | Beschreibung | Erforderlich | Standard |
 | -------- | ----------- | -------- | ------- |
@@ -166,9 +166,7 @@ Tägliche Slices, die um 6:00 Uhr anstelle des Standards Mitternacht beginnen.
 		"offset": "06:00:00"
 	}
 
-**frequency** ist auf **Month** und **interval** ist auf **1** (einmal im Monat) festgelegt: Wenn der Slice immer am neunten Tag jedes Monats um 6:00 Uhr erstellt werden soll, müssen Sie „offset“ auf „09.06:00:00“ festlegen. Beachten Sie, dass es sich hierbei um die UTC-Uhrzeit handelt.
-
-Für einen zwölfmonatigen Plan ("frequency" = "month"; "interval" = 12) bedeutet "offset": 60.00:00:00 den Beginn am 1. oder 2. März jedes Jahres (60 Tage ab dem Anfang des Jahres, wenn "style" = "StartOfInterval"), abhängig davon, ob es sich um ein Schaltjahr handelt.
+**frequency** ist auf **Day** und **interval** auf **1** (einmal täglich) festgelegt: Wenn dieser Slice um 6.00 Uhr erstellt werden soll und nicht zur Standardzeit (24:00 Uhr). Beachten Sie, dass es sich hierbei um die UTC-Uhrzeit handelt.
 
 ## Beispiel zu „anchorDateTime“
 
@@ -241,17 +239,17 @@ Der Abschnitt **policy** in der Datasetdefinition definiert die Kriterien oder d
 
 Externe Datasets werden nicht durch eine Pipeline erstellt, die in der Data Factory ausgeführt wird. Wenn das Dataset als **extern** gekennzeichnet ist, kann die **ExternalData**-Richtlinie definiert werden, um das Verhalten der Dataset-Sliceverfügbarkeit zu beeinflussen.
 
-Falls von Azure Data Factory kein Dataset erzeugt wird, sollte es als **extern** markiert werden. Dies gilt im Allgemeinen für die Eingaben der ersten Aktivität in einer Pipeline, insofern nicht die Aktivität oder Pipeline-Verkettung genutzt wird.
+Falls von Azure Data Factory kein Dataset erzeugt wird, sollte es als **extern** markiert werden. Diese Einstellung gilt im Allgemeinen für die Eingaben der ersten Aktivität in einer Pipeline, wenn nicht die Aktivität oder Pipeline-Verkettung genutzt wird.
 
 | Name | Beschreibung | Erforderlich | Standardwert |
 | ---- | ----------- | -------- | -------------- |
 | dataDelay | Zeit, um die die Prüfung der Verfügbarkeit der externen Daten für den angegebenen Slice verzögert wird. Wenn die Daten z.B. stündlich verfügbar sein sollen, kann die Überprüfung, ob die externen Daten verfügbar sind und der entsprechende Slice bereit ist, mithilfe von dataDelay verzögert werden.<br/><br/>Dies gilt nur für die aktuelle Zeit. Wenn es z.B. jetzt 13:00 Uhr ist, und dieser Wert 10 Minuten beträgt, beginnt die Überprüfung um 13:10 Uhr.<br/><br/>Diese Einstellung wirkt sich nicht auf Slices in der Vergangenheit aus (Slices, für die gilt: Sliceendzeit + dataDelay < jetzt), sie werden ohne Verzögerung verarbeitet .<br/><br/>Zeit über 23:59 Stunden muss im Format Tag.Stunden:Minuten:Sekunden angegeben werden. Um beispielsweise 24 Stunden anzugeben, verwenden Sie nicht 24:00:00, sondern stattdessen 1.00:00:00. Wenn Sie 24:00:00 verwenden, wird dies als 24 Tage (24.00:00:00) gewertet. Für 1 Tag und 4 Stunden geben Sie „1:04:00:00“ an. | Nein | 0 |
 | retryInterval | Die Wartezeit zwischen einem Fehler und dem nächsten Wiederholungsversuch. Gilt für die aktuelle Zeit. Wenn der vorherige Versuch fehlgeschlagen ist, ist dies die Wartezeit nach dem letzten Versuch. <br/><br/>Wenn es jetzt gerade 13:00 Uhr ist, beginnt der erste Versuch. Wenn die Ausführung der ersten Überprüfung 1 Minute gedauert hat und ein Fehler aufgetreten ist, findet die nächste Wiederholung um 13:00 + 1 Min. (Dauer) + 1 Min. (Wiederholungsintervall) = 13:02 Uhr statt. <br/><br/>Für Slices in der Vergangenheit gibt es keine Verzögerung. Der erneute Versuch erfolgt sofort. | Nein | 00:01:00 (1 Minute) | 
-| retryTimeout | Das Timeout für die einzelnen Wiederholungsversuche.<br/><br/>Wenn dieser Wert auf 10 Minuten festgelegt ist, muss die Überprüfung innerhalb von 10 Minuten abgeschlossen werden. Wenn die Ausführung der Überprüfung länger als 10 Minuten dauert, wird das Timeout für die Wiederholung wirksam.<br/><br/>Wenn für alle Überprüfungsversuche ein Timeout wirksam wird, wird der Slice als TimedOut gekennzeichnet. | Nein | 00:10:00 (10 Minuten) |
+| retryTimeout | Das Timeout für die einzelnen Wiederholungsversuche.<br/><br/>Wenn diese Eigenschaft auf 10 Minuten festgelegt ist, muss die Überprüfung innerhalb von 10 Minuten abgeschlossen werden. Wenn die Ausführung der Überprüfung länger als 10 Minuten dauert, wird das Timeout für die Wiederholung wirksam.<br/><br/>Wenn für alle Überprüfungsversuche ein Timeout wirksam wird, wird der Slice als TimedOut gekennzeichnet. | Nein | 00:10:00 (10 Minuten) |
 | maximumRetry | Gibt an, wie oft die Verfügbarkeit der externen Daten überprüft werden soll. Der zulässige Höchstwert ist 10. | Nein | 3 | 
 
 ## Zugeordnete Datasets
-Mit der Eigenschaft **datasets** können Sie Datasets erstellen, die einer Pipeline zugeordnet sind. Diese Datasets können nur von Aktivitäten innerhalb dieser Pipeline, aber nicht von Aktivitäten in anderen Pipelines verwendet werden. Das folgende Beispiel definiert eine Pipeline mit zwei Datasets (InputDataset Rdc und OutputDataset-Rdc), die in der Pipeline verwendet werden sollen.
+Mit der Eigenschaft **datasets** können Sie Datasets erstellen, die einer Pipeline zugeordnet sind. Diese Datasets können nur von Aktivitäten innerhalb dieser Pipeline, aber nicht von Aktivitäten in anderen Pipelines verwendet werden. Das folgende Beispiel definiert eine Pipeline mit zwei Datasets (InputDataset-rdc und OutputDataset-rdc), die in der Pipeline verwendet werden sollen:
 
 > [AZURE.IMPORTANT] Zugeordnete Datasets werden nur mit einmalig ausgeführten Pipelines unterstützt (**pipelineMode** ist auf **OneTime** festgelegt). Weitere Informationen finden Sie unter [Pipeline mit einmaliger Ausführung](data-factory-scheduling-and-execution.md#onetime-pipeline).
 
@@ -344,4 +342,4 @@ Mit der Eigenschaft **datasets** können Sie Datasets erstellen, die einer Pipel
 	    }
 	}
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -11,14 +11,14 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="06/29/2016" 
+    ms.date="09/19/2016" 
     ms.author="jeedes" />
 
 #Tutorial: Azure Active Directory-Integration mit SpringCM
   
 In diesem Tutorial wird erläutert, wie einmaliges Anmelden für Azure Active Directory und SpringCM eingerichtet wird.
   
-Das in diesem Lernprogramm verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
+Das in diesem Tutorial verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
 
 -   Ein gültiges Azure-Abonnement
 -   Ein SpringCM-Abonnement, für das einmaliges Anmelden aktiviert ist
@@ -120,7 +120,7 @@ Damit sich Azure Active Directory-Benutzer bei SpringCM anmelden können, müsse
 
 2.  Klicken Sie auf **GEHE ZU**, und klicken Sie dann auf **Adressbuch**.
 
-    ![Benutzer erstellen](./media/active-directory-saas-spring-cm-tutorial/IC797054.png "Benutzer erstellen")
+    ![Create User](./media/active-directory-saas-spring-cm-tutorial/IC797054.png "Create User")
 
 3.  Klicken Sie auf **Benutzer erstellen**.
 
@@ -138,7 +138,7 @@ Damit sich Azure Active Directory-Benutzer bei SpringCM anmelden können, müsse
 
 ##Zuweisen von Benutzern
   
-Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie die Verwendung Ihrer Anwendung ermöglichen möchten, Zugriff auf die Anwendung gewähren. Weisen Sie dazu der Anwendung Benutzer zu.
+Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie die Verwendung Ihrer Anwendung ermöglichen möchten, Zugriff auf die Anwendung gewähren. Weisen Sie dazu der Anwendung Benutzer zu.
 
 ###So weisen Sie SpringCM Benutzer zu:
 
@@ -154,4 +154,4 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie 
   
 Wenn Sie die SSO-Einstellungen testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md).
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0921_2016-->

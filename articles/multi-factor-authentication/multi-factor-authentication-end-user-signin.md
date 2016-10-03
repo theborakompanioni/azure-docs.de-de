@@ -1,21 +1,21 @@
-<properties 
-	pageTitle="Der Azure MFA-Anmeldevorgang mit Azure Multi-Factor Authentication" 
+<properties
+	pageTitle="Der Azure MFA-Anmeldevorgang mit Azure Multi-Factor Authentication"
 	description="Auf dieser Seite finden Sie Anleitung zu den verschiedenen Anmeldemethoden, die mit Azure MFA verfügbar sind."
-	keywords="Benutzerauthentifizierung, Anmeldevorgang, Anmelden mit dem Mobiltelefon, Anmelden mit dem Bürotelefon" 
-	services="multi-factor-authentication" 
-	documentationCenter="" 
-	authors="billmath" 
-	manager="stevenpo" 
+	keywords="Benutzerauthentifizierung, Anmeldevorgang, Anmelden mit dem Mobiltelefon, Anmelden mit dem Bürotelefon"
+	services="multi-factor-authentication"
+	documentationCenter=""
+	authors="kgremban"
+	manager="femila"
 	editor="curtland"/>
 
-<tags 
-	ms.service="multi-factor-authentication" 
-	ms.workload="identity" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/22/2016" 
-	ms.author="billmath"/>
+<tags
+	ms.service="multi-factor-authentication"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/22/2016"
+	ms.author="kgremban"/>
 
 # Der Anmeldevorgang mit Azure Multi-Factor Authentication
 > [AZURE.NOTE]  Die folgende Dokumentation auf dieser Seite zeigt eine normale Anmeldeumgebung. Hilfe zur Anmeldung finden Sie unter [Beheben von Problemen mit Azure Multi-Factor Authentication](multi-factor-authentication-end-user-manage-settings.md).
@@ -27,7 +27,7 @@ Der Anmeldevorgang hängt davon ab, wie Sie sich anmelden und Multi-Factor Authe
 
 
 Vorgehensweise|Beschreibung
-:------------- | :------------- | 
+:------------- | :------------- |
 [Anmeldung mit Mobil- oder Bürotelefon](#signing-in-with-mobile-or-office-phone) | Beschreibt die Anmeldung mit einem Mobil- oder Bürotelefon.
 [Anmelden mit der Microsoft Authenticator-App über eine Benachrichtigung](#signing-in-with-the-microsoft-authenticator-app-using-notification) | Beschreibt die benachrichtigungsbasierte Anmeldung mit der Microsoft Authenticator-App.
 [Anmelden mit der Microsoft Authenticator-App über einen Überprüfungscode](#signing-in-with-the-microsoft-authenticator-app-using-verification-code)|Beschreibt die prüfcodebasierte Anmeldung mit der Microsoft Authenticator-App.
@@ -105,6 +105,4 @@ Im folgenden Abschnitt erfahren Sie, wie Sie sich über eine alternative Methode
 
 - Wählen Sie eine alternative Methode aus, und melden Sie sich an.
 
- 
-
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0921_2016-->

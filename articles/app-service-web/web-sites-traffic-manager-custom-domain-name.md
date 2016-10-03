@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/07/2016"
+	ms.date="09/20/2016"
 	ms.author="robmcm"/>
 
 # Konfigurieren eines benutzerdefinierten Domänennamens für eine Web-App in Azure App Services, der Traffic Manager verwendet.
@@ -55,7 +55,7 @@ Um Ihrer benutzerdefinierten Domäne eine Web-App in Azure App Services zuzuweis
 
 1. Jede Registrierungsstelle ist spezifisch, generell weisen Sie jedoch *von* Ihrem benutzerdefinierten Domänennamen (z. B. **contoso.com**) *zum* Traffic Manager-Domänennamen (**contoso.trafficmanager.net**) zu, der für Ihre Web-App verwendet wird.
 
-> [AZURE.NOTE] Wenn ein Datensatz bereits verwendet wird und Sie Ihre Apps präemptiv an ihn binden müssen, erstellen Sie einen TXT-Eintrag für die Zuordnung von **awverify.contoso.com** zu **contoso.trafficmanager.net**.
+    > [AZURE.NOTE] Wenn ein Eintrag bereits verwendet wird und Sie Ihre Apps präemptiv an ihn binden müssen, können Sie einen zusätzlichen CNAME-Eintrag erstellen. Um beispielsweise **www.contoso.com** präemptiv an Ihre Web-App zu binden, erstellen Sie einen CNAME-Eintrag zur Verknüpfung von **awverify.www** mit **contoso.trafficmanager.net**. Anschließend können Sie „www.contoso.com“ zu Ihrer Web-App hinzufügen, ohne den CNAME-Eintrag „www“ zu ändern. Weitere Informationen finden Sie unter [Erstellen von DNS-Einträgen für eine Web-App in einer benutzerdefinierten Domäne][CREATEDNS].
 
 1. Speichern Sie die Änderungen, sobald Sie die DNS-Datensätze in Ihrer Registrierung hinzugefügt oder geändert haben.
 
@@ -72,4 +72,8 @@ Weitere Informationen finden Sie im [Node.js Developer Center](/develop/nodejs/)
 
 [AZURE.INCLUDE [app-service-web-try-app-service](../../includes/app-service-web-try-app-service.md)]
 
-<!---HONumber=AcomDC_0824_2016-->
+<!-- URL List -->
+
+[CREATEDNS]: ../dns/dns-web-sites-custom-domain.md
+
+<!---HONumber=AcomDC_0921_2016-->

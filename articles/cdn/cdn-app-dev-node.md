@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/28/2016"
+	ms.date="09/15/2016"
 	ms.author="casoper"/>
 
 # Erste Schritte mit der Azure CDN-Entwicklung
 
 > [AZURE.SELECTOR]
-- [.NET](cdn-app-dev-net.md)
 - [Node.js](cdn-app-dev-node.md)
+- [.NET](cdn-app-dev-net.md)
 
 Sie können das [Azure CDN SDK für Node.js](https://www.npmjs.com/package/azure-arm-cdn) verwenden, um die Erstellung und Verwaltung von CDN-Profilen und -Endpunkten zu automatisieren. In diesem Tutorial wird die Erstellung einer einfachen Node.js-Konsolenanwendung beschrieben, mit der einige verfügbare Vorgänge demonstriert werden. Dieses Tutorial dient nicht dazu, alle Aspekte des Azure CDN SDK für „Node.js“ ausführlich zu beschreiben.
 
@@ -369,4 +369,4 @@ Weitere Teile der Dokumentation zum Azure SDK für Node.js finden Sie in der [vo
 
 Verwalten Sie Ihre CDN-Ressourcen mit [PowerShell](./cdn-manage-powershell.md).
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -461,6 +461,21 @@ public class Person
 }
 ```
 
+Das folgende F#-Codebeispiel kann ebenfalls mit der vorhergehenden Datei *function.json* verwendet werden, um eine einzelne Tabellenentität zu lesen.
+
+```fsharp
+[<CLIMutable>]
+type Person = {
+  PartitionKey: string
+  RowKey: string
+  Name: string
+}
+
+let Run(myQueueItem: string, personEntity: Person) =
+    log.Info(sprintf "F# Queue trigger function processed: %s" myQueueItem)
+    log.Info(sprintf "Name in Person entity: %s" personEntity.Name)
+```
+
 Das folgende Node.js-Codebeispiel kann ebenfalls mit der vorhergehenden Datei *function.json* verwendet werden, um eine einzelne Tabellenentität zu lesen.
 
 ```javascript
@@ -567,6 +582,47 @@ public class Person
 
 ```
 
+#### Beispiel für Speichertabellen: Erstellen mehrerer Tabellenentitäten in F#
+
+Im folgenden Beispiel von *function.json* und *run.fsx* wird veranschaulicht, wie Tabellenentitäten in F# geschrieben werden.
+
+```json
+{
+  "bindings": [
+    {
+      "name": "input",
+      "type": "manualTrigger",
+      "direction": "in"
+    },
+    {
+      "tableName": "Person",
+      "connection": "MyStorageConnection",
+      "name": "tableBinding",
+      "type": "table",
+      "direction": "out"
+    }
+  ],
+  "disabled": false
+}
+```
+
+```fsharp
+[<CLIMutable>]
+type Person = {
+  PartitionKey: string
+  RowKey: string
+  Name: string
+}
+
+let Run(input: string, tableBinding: ICollector<Person>, log: TraceWriter) =
+    for i = 1 to 10 do
+        log.Info(sprintf "Adding Person entity %d" i)
+        tableBinding.Add(
+            { PartitionKey = "Test"
+              RowKey = i.ToString()
+              Name = "Name" + i.ToString() })
+```
+
 #### Beispiel für Speichertabellen: Erstellen einer Tabellenentität in Node
 
 Im folgenden Beispiel von *function.json* und *run.csx* wird veranschaulicht, wie eine Tabellenentität in Node.js geschrieben wird.
@@ -607,4 +663,4 @@ module.exports = function (context, myQueueItem) {
 
 [AZURE.INCLUDE [Nächste Schritte](../../includes/functions-bindings-next-steps.md)]
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="08/09/2016"
+   ms.date="09/09/2016"
    ms.author="gwallace"/>
 
 # Konfigurieren eines Anwendungsgateways für die SSL-Auslagerung über das Portal
@@ -44,13 +44,21 @@ Navigieren Sie zum Azure-Portal, und wählen Sie ein vorhandenes Anwendungsgatew
 
 ### Schritt 2
 
-Klicken Sie auf „Listener“ und dann auf die Schaltfläche „Hinzufügen“, um einen neuen Listener hinzuzufügen.
+Klicken Sie auf „Listener“ und dann auf die Schaltfläche „Hinzufügen“, um einen Listener hinzuzufügen.
 
 ### Schritt 3
 
 Stellen Sie die erforderlichen Informationen für den Listener bereit, und laden Sie das PFX-Zertifikat hoch. Wenn Sie fertig sind, klicken Sie auf „OK“.
 
-**Name**: Dies ist der Anzeigename des Listeners. **Front-End-IP-Konfiguration**: Dies ist die IP-Konfiguration des Front-Ends, die für den Listener verwendet wird. **Front-End-Port (Name/Port)**: Der im Front-End des Anwendungsgateways verwendete Anzeigename für den Port und der tatsächlich verwendete Port. **Protokoll**: Ein Schalter, mit dem bestimmt wird, ob für das Front-End HTTP oder HTTPS verwendet werden soll. **Zertifikat (Name/Kennwort)**: Wenn die SSL-Auslagerung verwendet wird, ist für diese Einstellung ein PFX-Zertifikat sowie der zugehörige Anzeigename und das zugehörige Kennwort erforderlich.
+**Name**: Dieser Wert ist der Anzeigename des Listeners.
+
+**Front-End-IP-Konfiguration**: Dieser Wert gibt die IP-Konfiguration des Front-Ends an, die für den Listener verwendet wird.
+
+**Front-End-Port (Name/Port)**: Der im Front-End des Anwendungsgateways verwendete Anzeigename für den Port und der tatsächlich verwendete Port.
+
+**Protokoll**: Ein Schalter, mit dem bestimmt wird, ob für das Front-End HTTP oder HTTPS verwendet werden soll.
+
+**Zertifikat (Name/Kennwort)**: Wenn die SSL-Auslagerung verwendet wird, ist für diese Einstellung ein PFX-Zertifikat sowie der zugehörige Anzeigename und das zugehörige Kennwort erforderlich.
 
 ![Blatt zum Hinzufügen eines Listeners][2]
 
@@ -81,4 +89,4 @@ Informationen zum Konfigurieren eines benutzerdefinierten Integritätstests mit 
 [3]: ./media/application-gateway-ssl-portal/figure3.png
 [4]: ./media/application-gateway-ssl-portal/figure4.png
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0921_2016-->

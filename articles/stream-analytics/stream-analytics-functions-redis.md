@@ -4,7 +4,7 @@
 	keywords="Datenstrom, Redis Cache, Service Bus-Warteschlange"
 	services="stream-analytics"
 	authors="ryancrawcour"
-	manager="paulettm"
+	manager="jhubbard"
     documentationCenter=""
 	/>
 
@@ -202,6 +202,7 @@ Weitere Informationen finden Sie auch in den folgenden Ressourcen:
 
 - [Entwicklerreferenz zu Azure Functions](../azure-functions/functions-reference.md)
 - [C#-Entwicklerreferenz zu Azure Functions](../azure-functions/functions-reference-csharp.md)
+- [F#-Entwicklerreferenz zu Azure Functions](../azure-functions/functions-reference-fsharp.md)
 - [NodeJS-Entwicklerreferenz zu Azure Functions](../azure-functions/functions-reference.md)
 - [Trigger und Bindungen in Azure Functions](../azure-functions/functions-triggers-bindings.md)
 - [Überwachen von Azure Redis Cache](../redis-cache/cache-how-to-monitor.md)
@@ -214,4 +215,4 @@ Um bei den neuesten Features auf dem Laufenden zu bleiben, folgen Sie [@AzureStr
 [use-rediscache]: ../redis-cache/cache-dotnet-how-to-use-azure-redis-cache.md
 [functions-getstarted]: ../azure-functions/functions-create-first-azure-function.md
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0921_2016-->

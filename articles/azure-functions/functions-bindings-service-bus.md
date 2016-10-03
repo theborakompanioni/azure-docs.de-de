@@ -67,6 +67,13 @@ public static void Run(string myQueueItem, TraceWriter log)
 }
 ```
 
+#### F#-Codebeispiel, das eine Service Bus-Warteschlangennachricht verarbeitet
+
+```fsharp
+let Run(myQueueItem: string, log: TraceWriter) =
+    log.Info(sprintf "F# ServiceBus queue trigger function processed message: %s" myQueueItem)
+```
+
 #### Node.js-Codebeispiel, das eine Service Bus-Warteschlangennachricht verarbeitet
 
 ```javascript
@@ -168,6 +175,15 @@ public static void Run(TimerInfo myTimer, TraceWriter log, ICollector<string> ou
 }
 ```
 
+#### F#-Codebeispiel, das eine Service Bus-Warteschlangennachricht erstellt
+
+```fsharp
+let Run(myTimer: TimerInfo, log: TraceWriter, outputSbQueue: byref<string>) =
+    let message = sprintf "Service Bus queue message created at: %s" (DateTime.Now.ToString())
+    log.Info(message)
+    outputSbQueue = message
+```
+
 #### Node.js-Codebeispiel, das eine Service Bus-Warteschlangennachricht erstellt
 
 ```javascript
@@ -189,4 +205,4 @@ module.exports = function (context, myTimer) {
 
 [AZURE.INCLUDE [Nächste Schritte](../../includes/functions-bindings-next-steps.md)]
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0921_2016-->

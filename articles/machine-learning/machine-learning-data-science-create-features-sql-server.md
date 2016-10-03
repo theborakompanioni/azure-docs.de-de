@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/14/2016" 
+	ms.date="09/19/2016" 
 	ms.author="bradsev;fashah;garye" />
 
 
@@ -23,7 +23,6 @@
 Dieses Dokument veranschaulicht das Generieren von Features für Daten auf einem virtuellen SQL Server-Computer in Azure, die dazu beitragen, dass Algorithmen effizienter aus den Daten lernen können. Dies kann mithilfe von SQL oder durch die Verwendung einer Programmiersprache wie Python erreicht werden. Hier werden beide Methoden erläutert.
 
 [AZURE.INCLUDE [cap-create-features-data-selector](../../includes/cap-create-features-selector.md)]
-
 Dieses **Menü** stellt eine Verknüpfung mit Themen dar, in denen beschrieben wird, wie Features für Daten in verschiedenen Umgebungen erstellt werden. Dieser Task ist ein Schritt im [Team Data Science-Prozess (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/).
 
 > [AZURE.NOTE] Für ein praktisches Beispiel können Sie das [NYC Taxi-DataSet](http://www.andresmh.com/nyctaxitrips/) verwenden. Eine vollständige Beschreibung finden Sie im IPython Notebook-Beispiel unter [NYC Data wrangling using IPython Notebook and SQL Server](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-sql-walkthrough.ipynb).
@@ -33,7 +32,7 @@ Dieses **Menü** stellt eine Verknüpfung mit Themen dar, in denen beschrieben w
 In diesem Artikel wird davon ausgegangen, dass Sie Folgendes abgeschlossen haben:
 
 * Sie haben ein Azure-Speicherkonto erstellt. Anweisungen finden Sie unter [Erstellen eines Azure-Speicherkontos](../hdinsight-get-started.md#storage)
-* Ihre Daten sind in SQL Server gespeichert. Wenn dies nicht der Fall ist, finden Sie unter [Verschieben von Daten in eine Azure SQL-Datenbank für Azure Machine Learning](machine-learning-data-science-move-sql-azure.md) Anweisungen zum Verschieben von Daten.
+* Ihre Daten sind in SQL Server gespeichert. Falls nicht, finden Sie unter [Verschieben von Daten in eine Azure SQL-Datenbank für Azure Machine Learning](machine-learning-data-science-move-sql-azure.md) Anweisungen zum Verschieben von Daten.
 
 
 ##<a name="sql-featuregen"></a>Generieren von Features mit SQL
@@ -96,10 +95,7 @@ Die Positionsinformationen können wie folgt in Funktionen umgewandelt werden, w
 Die oben beschriebenen positionsbasierten Funktionen können dann wie oben beschrieben zum Generieren weiterer Anzahlfunktionen verwendet werden.
 
 
-> [AZURE.TIP] Sie können die Datensätze programmgesteuert mithilfe Ihrer bevorzugten Sprache einfügen. Möglicherweise müssen Sie die Daten in Blöcken einfügen, um die Effizienz des Schreibvorgangs zu verbessern. [Ein pyodbc-Beispiel dazu finden Sie hier](https://code.google.com/p/pypyodbc/wiki/A_HelloWorld_sample_to_access_mssql_with_python).
- 
-
-> [AZURE.TIP] Eine weitere Möglichkeit zum Einfügen von Daten in die Datenbank bietet das [Hilfsprogramm BCP](https://msdn.microsoft.com/library/ms162802.aspx).
+> [AZURE.TIP] Sie können die Datensätze programmgesteuert mithilfe Ihrer bevorzugten Sprache einfügen. Möglicherweise müssen Sie die Daten in Blöcken einfügen, um die Effizienz des Schreibvorgangs zu verbessern. [Ein pyodbc-Beispiel dazu finden Sie hier](https://code.google.com/p/pypyodbc/wiki/A_HelloWorld_sample_to_access_mssql_with_python). Eine weitere Möglichkeit zum Einfügen von Daten in die Datenbank bietet das [Hilfsprogramm BCP](https://msdn.microsoft.com/library/ms162802.aspx).
 
 ###<a name="sql-aml"></a>Herstellen einer Verbindung mit Azure Machine Learning
 
@@ -126,4 +122,4 @@ Sie können nun mit dem Pandas-DataFrame arbeiten, wie unter [Erstellen von Feat
 
  
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016--->

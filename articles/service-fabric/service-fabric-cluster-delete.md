@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Löschen eines Clusters und der zugehörigen Ressourcen | Microsoft Azure"
+   pageTitle="Löschen eines Azure-Clusters und seiner Ressourcen | Microsoft Azure"
    description="Erfahren Sie, wie Sie ein Service Fabric-Cluster vollständig löschen, indem Sie entweder die Ressourcengruppe mit dem Cluster löschen oder Ressourcen selektiv löschen."
    services="service-fabric"
    documentationCenter=".net"
@@ -13,10 +13,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/04/2016"
+   ms.date="09/09/2016"
    ms.author="chackdan"/>
 
-# Löschen eines Service Fabric-Clusters und seiner Ressourcen
+# Löschen eines Service Fabric-Clusters und seiner Ressourcen aus Azure
 
 Ein Service Fabric-Cluster besteht, zusätzlich zu der Clusterressource selbst, aus vielen weiteren Azure-Ressourcen. Daher müssen Sie alle Ressourcen löschen, aus denen der Cluster besteht, um einen Service Fabric-Cluster zu löschen. Dazu stehen Ihnen zwei Möglichkeiten zur Verfügung: Sie können die Ressourcengruppe löschen, in der sich der Cluster befindet (dabei werden die Clusterressource und alle weiteren Ressourcen in der Ressourcengruppe gelöscht). Alternativ können Sie speziell die Clusterressource und die dazugehörigen Ressourcen löschen (jedoch keine anderen Ressourcen in der Ressourcengruppe).
 
@@ -56,11 +56,11 @@ Wenn Sie die Option *-Force* nicht verwenden, erhalten Sie eine Aufforderung, de
 
 Sind in der Ressourcengruppe nur Ressourcen enthalten, die mit dem Service Fabric-Cluster verknüpft sind, den Sie löschen möchten, ist es einfacher, die gesamte Ressourcengruppe zu löschen. Wenn Sie die einzelnen Ressourcen in der Ressourcengruppe selektiv nacheinander löschen möchten, gehen Sie folgendermaßen vor.
 
-Wenn Sie Ihren Cluster mithilfe des Portals oder der Service Fabric-Azure Resource Manager (ARM)-Vorlagen aus dem Vorlagenkatalog bereitgestellt haben, werden alle vom Cluster verwendeten Ressourcen mit den folgenden zwei Tags gekennzeichnet. Anhand der Tags können Sie entscheiden, welche Ressourcen Sie löschen möchten.
+Wenn Sie Ihren Cluster mithilfe des Portals oder der Service Fabric Resource Manager-Vorlagen aus dem Vorlagenkatalog bereitgestellt haben, werden alle vom Cluster verwendeten Ressourcen mit den folgenden zwei Tags gekennzeichnet. Anhand der Tags können Sie entscheiden, welche Ressourcen Sie löschen möchten.
 
-***Tag#1:*** Schlüssel = clusterName, Wert = „Name des Clusters“
+***Tag 1:*** Schlüssel = clusterName, Wert = „Name des Clusters“
 
-***Tag#2:*** Schlüssel = resourceName, Wert = ServiceFabric
+***Tag 2:*** Schlüssel = resourceName, Wert = ServiceFabric
 
 ### Löschen bestimmter Ressourcen im Azure-Portal
 
@@ -111,4 +111,4 @@ Lesen Sie die folgenden Artikel, um mehr über das Upgraden eines Clusters und d
 
 [TaggedResources]: ./media/service-fabric-cluster-delete/TaggedResources.PNG
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0921_2016-->

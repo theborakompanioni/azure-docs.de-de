@@ -13,7 +13,7 @@ ms.devlang="na"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="big-data"
-ms.date="08/30/2016"
+ms.date="09/13/2016"
 ms.author="larryfr"/>
 
 # Von HDInsight verwendete Ports und URIs
@@ -36,9 +36,9 @@ Alle Knoten eines HDInsight-Clusters befinden sich in einem Azure Virtual Networ
 
 | Dienst | Port | Protocol | Beschreibung |
 | ---- | ---------- | -------- | ----------- | ----------- |
-| sshd | 22 | SSH | Verbindet Clients mit sshd auf dem Hauptknoten 0. Siehe [Verwenden von SSH mit Linux-basiertem HDInsight](hdinsight-hadoop-linux-use-ssh-windows.md). |
+| sshd | 22 | SSH | Stellt eine Verbindung zwischen Clients und SSHD auf dem primären Hauptknoten her. Siehe [Verwenden von SSH mit Linux-basiertem HDInsight](hdinsight-hadoop-linux-use-ssh-windows.md). |
 | sshd | 22 | SSH | Verbindet Clients mit sshd auf dem Edgeknoten (nur HDInsight Premium). Siehe [Erste Schritte mit R Server in HDInsight](hdinsight-hadoop-r-server-get-started.md). |
-| sshd | 23 | SSH | Verbindet Clients mit sshd auf dem Hauptknoten 1. Siehe [Verwenden von SSH mit Linux-basiertem HDInsight](hdinsight-hadoop-linux-use-ssh-windows.md). |
+| sshd | 23 | SSH | Stellt eine Verbindung zwischen Clients und SSHD auf dem sekundären Hauptknoten her. Siehe [Verwenden von SSH mit Linux-basiertem HDInsight](hdinsight-hadoop-linux-use-ssh-windows.md). |
 | Ambari | 443 | HTTPS | Ambari-Webbenutzeroberfläche. Siehe [Verwalten von HDInsight mithilfe der Ambari-Webbenutzeroberfläche](hdinsight-hadoop-manage-ambari.md). |
 | Ambari | 443 | HTTPS | Ambari-REST-API. Siehe [Verwalten von HDInsight mithilfe der Ambari-REST-API](hdinsight-hadoop-manage-ambari-rest-api.md). |
 | WebHCat | 443 | HTTPS | HCatalog-REST-API. Siehe [Verwenden von Hive mit Curl](hdinsight-hadoop-use-Pig-curl.md), [Verwenden von Pig mit Curl](hdinsight-hadoop-use-Pig-curl.md), [Verwenden von MapReduce mit Curl](hdinsight-hadoop-use-mapreduce-curl.md). |
@@ -143,4 +143,4 @@ Alle Dienste, die im Internet öffentlich verfügbar gemacht werden, müssen aut
 | Broker | Workerknoten | 9092 | [Kafka Wire Protocol](http://kafka.apache.org/protocol.html) | Für die Clientkommunikation |
 | &nbsp; | Zookeeper-Knoten | 2181 | &nbsp; | Port, der von Clients für die Verbindungsherstellung mit Zookeeper verwendet wird |
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

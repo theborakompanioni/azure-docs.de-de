@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/14/2016" 
+	ms.date="09/19/2016" 
 	ms.author="bradsev" />
 
 
@@ -21,11 +21,11 @@
 
 Die Vorverarbeitung und Bereinigung von Daten ist eine wichtige Aufgabe, die vor dem effektiven Verwenden eines Datasets für Machine Learning durchgeführt werden muss. Unformatierte Daten enthalten oft unnötige bzw. fehlende Werte und sind unzuverlässig. Die Verwendung dieser Daten für die Modellierung kann zu falschen Ergebnissen führen. Diese Aufgaben sind Teil des Team Data Science-Prozesses (TDSP). Normalerweise wird zuerst eine Untersuchung eines Datasets durchgeführt, um die erforderliche Vorverarbeitung zu ermitteln und zu planen. Eine ausführliche Anleitung zum TDSP-Prozess finden Sie in den Schritten, die unter [Team Data Science-Prozess](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) beschrieben sind.
 
-Aufgaben der Vorverarbeitung und Bereinigung, z. B. die Datenuntersuchung, können in vielen verschiedenen Umgebungen ausgeführt werden, z. B. SQL oder Hive oder Azure Machine Learning Studio, sowie mit unterschiedlichen Tools und Sprachen, z. B. R oder Python. Dies hängt davon ab, wo die Daten gespeichert sind und wie sie formatiert sind. Da CAP iterativ ist, können diese Aufgaben im Workflow des Prozesses in verschiedenen Schritten erfolgen.
+Aufgaben der Vorverarbeitung und Bereinigung, z. B. die Datenuntersuchung, können in vielen verschiedenen Umgebungen ausgeführt werden, z. B. SQL oder Hive oder Azure Machine Learning Studio, sowie mit unterschiedlichen Tools und Sprachen, z. B. R oder Python. Dies hängt davon ab, wo die Daten gespeichert sind und wie sie formatiert sind. Da der TDSP iterativ ist, können diese Aufgaben im Workflow des Prozesses in verschiedenen Schritten erfolgen.
 
 In diesem Artikel werden verschiedene Konzepte und Aufgaben zur Datenverarbeitung beschrieben, die vor oder nach der Erfassung von Daten in Azure Machine Learning durchgeführt werden können.
 
-Ein Beispiel für die Datenuntersuchung und Vorverarbeitung in Azure Machine Learning Studio ist im Video [Vorverarbeitung von Daten in Azure ML Studio](https://azure.microsoft.com/documentation/videos/preprocessing-data-in-azure-ml-studio/) enthalten.
+Ein Beispiel für die Datenuntersuchung und Vorverarbeitung in Azure Machine Learning Studio ist im Video [Vorverarbeitung von Daten in Azure Machine Learning Studio](https://azure.microsoft.com/documentation/videos/preprocessing-data-in-azure-ml-studio/) enthalten.
 
 
 ## Warum müssen Daten vorverarbeitet und bereinigt werden?
@@ -54,7 +54,7 @@ Sie können die allgemeine Qualität der Daten überprüfen, indem Sie Folgendes
 
 Wenn Sie Probleme für die Daten ermitteln, sind **Verarbeitungsschritte** erforderlich. Dazu gehören häufig die Bereinigung fehlender Werte, die Datennormalisierung, die Diskretisierung, die Textverarbeitung zum Entfernen und/oder Ersetzen eingebetteter Zeichen, die Einfluss auf die Datenausrichtung haben können, das Bereinigen gemischter Datentypen in gemeinsamen Feldern u. a.
 
-**In Azure Machine Learning werden wohlgeformte Tabellendaten verarbeitet.** Wenn die Daten bereits in tabellarischer Form vorliegen, kann die Datenvorverarbeitung direkt in Azure Machine Learning in ML Studio ausgeführt werden. Wenn Daten nicht in tabellarischer Form vorliegen, sondern z. B. als XML, ist eine Analyse erforderlich, um die Daten in eine tabellarische Form zu konvertieren.
+**In Azure Machine Learning werden wohlgeformte Tabellendaten verarbeitet.** Wenn die Daten bereits in tabellarischer Form vorliegen, kann die Datenvorverarbeitung direkt in Azure Machine Learning in Machine Learning Studio ausgeführt werden. Wenn Daten nicht in tabellarischer Form vorliegen, sondern z. B. als XML, ist eine Analyse erforderlich, um die Daten in eine tabellarische Form zu konvertieren.
 
 ## Welches sind die wichtigsten Vorgänge bei der Datenvorverarbeitung?
 
@@ -109,4 +109,4 @@ Das **Durchsuchen von Daten** ermöglicht einen frühzeitigen Einblick in die Da
 
 >Jiawei Han, Micheline Kamber und Jian Pei: *Data Mining: Concepts and Techniques*, 3. Auflage, Morgan Kaufmann, 2011
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -75,6 +75,8 @@ Der Dienst „Azure-Protokollintegration“ sammelt Telemetriedaten des Computer
 
 6. Verweisen Sie für den Standardconnector für die SIEM-Dateiweiterleitung auf den richtigen Ordner, um die Daten an die SIEM-Instanz zu übermitteln. Informationen hierzu finden Sie unter [SIEM-Konfigurationen](https://azsiempublicdrops.blob.core.windows.net/drops/ALL.htm) in Ihrer SIEM-Konfiguration.
 
+Wenn Sie Fragen zur Azure-Protokollintegration haben, senden Sie eine E-Mail an [AzSIEMteam@microsoft.com](mailto:AzSIEMteam@microsoft.com)
+
 ## Nächste Schritte
 
 Weitere Informationen zu Azure-Überwachungsprotokollen und Definitionen von Eigenschaften finden Sie unter:
@@ -88,4 +90,4 @@ Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:
 - [Azure Security Center – Häufig gestellte Fragen](security-center-faq.md): Hier finden Sie häufig gestellte Fragen zur Verwendung des Diensts.
 - [Azure Security Blog](http://blogs.msdn.com/b/azuresecurity/) (Blog zur Azure-Sicherheit): Hier finden Sie Neuigkeiten und Informationen zur Azure-Sicherheit.
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0921_2016-->

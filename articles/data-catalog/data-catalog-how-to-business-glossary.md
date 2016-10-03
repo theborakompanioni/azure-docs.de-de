@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="NA"
 	ms.workload="data-catalog"
-	ms.date="05/06/2016"
+	ms.date="09/21/2016"
 	ms.author="maroche"/>
 
 # Einrichten des Unternehmensglossars für gesteuertes Markieren
@@ -27,7 +27,7 @@ Ein Data Catalog-Feature, dass das Verständnis von Assetdaten fördert, ist das
 Das Markieren kann jedoch gelegentlich spezielle Probleme verursachen. Dies sind Beispiele für Probleme, die das Markieren verursachen kann:
 
 1.	Benutzer verwenden beim Markieren Abkürzungen für manche Assets und erweiterten Text für andere. Diese Inkonsistenz behindert die Ermittlung von Assets, obwohl das Ziel war, die Assets mit dem gleichen Tag zu markieren.
-2.	Tags, die in unterschiedlichen Kontexten unterschiedliche Bedeutungen haben. So könnte sich z.B. ein Tag namens „Umsatz“ auf einem Kundendataset auf den Umsatz pro Kunde beziehen, aber das gleiche Tag könnte sich auf einem Quartalsverkaufsdataset auf den Quartalsumsatz des Unternehmens beziehen.  
+2.	Tags, die in unterschiedlichen Kontexten unterschiedliche Bedeutungen haben. So könnte sich z.B. ein Tag namens „Umsatz“ auf einem Kundendataset auf den Umsatz pro Kunde beziehen, aber das gleiche Tag könnte sich auf einem Quartalsverkaufsdataset auf den Quartalsumsatz des Unternehmens beziehen.
 
 Um diesen und anderen, ähnlichen Problemen zu begegnen, enthält Data Catalog ein Unternehmensglossar.
 
@@ -37,21 +37,21 @@ Das Unternehmensglossar von Data Catalog ermöglicht Organisationen, die wichtig
 
 ## Glossarverfügbarkeit und Berechtigungen
 
-/*Das Unternehmensglossar ist in der Standard Edition von Azure Data Catalog verfügbar. Die kostenlose Edition von Data Catalog enthält kein Glossar.* /
+/*Das Unternehmensglossar ist in der Standard Edition von Azure Data Catalog verfügbar. Die kostenlose Edition von Data Catalog enthält kein Glossar.*/
 
 Der Zugriff auf das Unternehmensglossar ist über die Option „Glossar“ im Navigationsmenü des Data Catalog-Portals möglich.
 
 ![Zugriff auf das Unternehmensglossar](./media/data-catalog-how-to-business-glossary/01-portal-menu.png)
 
 
-Data Catalog-Administratoren können Glossarbegriffe im Unternehmensglossar erstellen, bearbeiten und löschen. Alle Data Catalog-Benutzer können die Begriffsdefinitionen anzeigen und Assets mit Glossarbegriffen markieren.
+Data Catalog-Administratoren und Mitglieder der Rolle „Glossaradministratoren“ können Glossarbegriffe im Unternehmensglossar erstellen, bearbeiten und löschen. Alle Data Catalog-Benutzer können die Begriffsdefinitionen anzeigen und Assets mit Glossarbegriffen markieren.
 
 ![Hinzufügen eines neuen Glossarbegriffs](./media/data-catalog-how-to-business-glossary/02-new-term.png)
 
 
 ## Erstellen von Glossarbegriffen
 
-Data Catalog-Administratoren können neue Glossarbegriffe erstellen, indem sie auf die Schaltfläche „Neuer Begriff“ klicken, um Glossarbegriffe mit den folgenden Feldern zu erstellen:
+Data Catalog-Administratoren und Glossaradministratoren können neue Glossarbegriffe erstellen, indem sie auf die Schaltfläche „Neuer Begriff“ klicken, um Glossarbegriffe mit den folgenden Feldern zu erstellen:
 
 * Eine geschäftliche Definition für den Begriff
 * Eine Beschreibung, die die beabsichtigte Verwendung oder die Geschäftsregeln für das Asset/die Spalte erfasst
@@ -84,8 +84,8 @@ Sowohl Glossar- als auch Benutzertags können durchsucht und als Filter in einer
 ## Zusammenfassung
 Dank des Unternehmensglossars in Azure Data Catalog und des dadurch möglichen gesteuerten Markierens können Datenassets konsistent identifiziert, verwaltet und ermittelt werden. Das Unternehmensglossar kann das Lernen des Geschäftsvokabulars unter den Benutzern einer Organisation fördern und unterstützt die Erfassung sinnvoller Metadaten, sodass Ermittlung und Verständnis eines Assets völlig unkompliziert sind.
 
-## Siehe auch
+## Weitere Informationen
 
 - [REST-API-Dokumentation für Unternehmensglossarvorgänge](https://msdn.microsoft.com/library/mt708855.aspx)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="storage-backup-recovery"
-	ms.date="06/21/2016"
+	ms.date="09/19/2016"
 	ms.author="pratshar"/>
 
 #  Entwerfen Ihrer Netzwerkinfrastruktur für die Notfallwiederherstellung
@@ -36,7 +36,7 @@ Wenn Administratoren die Bereitstellung einer Lösung für die Notfallwiederhers
 
 Beim Entwerfen des Netzwerks für den Wiederherstellungsstandort haben Administratoren zwei Möglichkeiten:
 
-- Verwenden eines anderen IP-Adressbereichs für das Netzwerk am Wiederherstellungsstandort. Bei diesem Szenario erhält der virtuelle Computer nach dem Failover eine neue IP-Adresse, und der Administrator muss ein DNS-Update durchführen. Wie Sie das DNS-Update durchführen, erfahren Sie [hier](site-recovery-vmm-to-vmm.md#test-your-deployment): 
+- Verwenden eines anderen IP-Adressbereichs für das Netzwerk am Wiederherstellungsstandort. Bei diesem Szenario erhält der virtuelle Computer nach dem Failover eine neue IP-Adresse, und der Administrator muss ein DNS-Update durchführen. Wie Sie das DNS-Update durchführen, erfahren Sie [hier](site-recovery-vmm-to-vmm.md#test-your-deployment):
 - Verwenden des gleichen IP-Adressbereichs für das Netzwerk am Wiederherstellungsstandort. Bei bestimmten Szenarien ziehen es Administratoren vor, die IP-Adressen beizubehalten, die sie am primären Standort verwenden, und zwar auch nach dem Failover. Bei einem normalen Szenario muss ein Administrator die Routen aktualisieren, um den neuen Standort der IP-Adressen anzugeben. Aber bei diesem Szenario, bei dem ein gestrecktes VLAN zwischen dem primären und sekundären Standort bereitgestellt wird, ist das Beibehalten der IP-Adressen für die virtuellen Computer eine attraktive Option. Das Beibehalten der gleichen IP-Adressen vereinfacht den Wiederherstellungsprozess, da alle netzwerkbezogenen Schritte nach dem Failover entfallen.
 
 
@@ -120,7 +120,7 @@ Vor dem Failover
 Wir müssen die folgenden Workflows implementieren, um für Woodgrove die geschäftlichen Anforderungen zu erfüllen:
 
 - Erstellen Sie ein zusätzliches Netzwerk (mit dem Namen „Recovery Netzwerk“), in dem die virtuellen Computer nach dem Failover erstellt werden.
-- Gehen Sie wie folgt vor, um sicherzustellen, dass die IP-Adresse für einen virtuellen Computer nach einem Failover beibehalten wird: Navigieren Sie in den VM-Eigenschaften zur Registerkarte „Konfigurieren“, geben Sie die gleiche IP-Adresse an, die für den virtuellen Computer lokal verwendet wird, und klicken Sie dann auf „Speichern“. Wenn das Failover für den virtuellen Computer erfolgt, weist Azure Site Recovery die bereitgestellte IP-Adresse dem virtuellen Computer zu. 
+- Gehen Sie wie folgt vor, um sicherzustellen, dass die IP-Adresse für einen virtuellen Computer nach einem Failover beibehalten wird: Navigieren Sie in den VM-Eigenschaften zur Registerkarte „Konfigurieren“, geben Sie die gleiche IP-Adresse an, die für den virtuellen Computer lokal verwendet wird, und klicken Sie dann auf „Speichern“. Wenn das Failover für den virtuellen Computer erfolgt, weist Azure Site Recovery die bereitgestellte IP-Adresse dem virtuellen Computer zu.
 
 ![Netzwerkeigenschaften](./media/site-recovery-network-design/network-design8.png)
 
@@ -179,4 +179,4 @@ Im Blogbeitrag [Networking Infrastructure Setup for Microsoft Azure as a Disaste
 
 [Erfahren Sie](site-recovery-network-mapping.md), wie Site Recovery Quell- und Zielnetzwerke zuordnet, wenn der primäre Standort mit einem VMM-Server verwaltet wird.
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0921_2016-->

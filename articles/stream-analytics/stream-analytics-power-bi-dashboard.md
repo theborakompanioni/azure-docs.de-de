@@ -5,7 +5,7 @@
 	services="stream-analytics"
 	documentationCenter=""
 	authors="jeffstokes72"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun"/>
 
 <tags
@@ -57,8 +57,8 @@ In diesem Tutorial wird davon ausgegangen, dass Sie Event Hub als Eingabe mit J
 *	Wählen Sie **Event Hub**, und klicken Sie dann mit der rechten Maustaste.
 *	Geben Sie die folgenden Werte auf der dritten Seite ein, oder wählen Sie sie aus:
   *	**Alias eingeben** – Geben Sie einen Anzeigenamen für diesen Auftrag ein. Beachten Sie, dass Sie diesen Namen später in der Abfrage verwenden werden.
-  * **Event Hub** – Wenn der Event Hub, den Sie erstellt haben, sich in demselben Abonnement wie der Stream Analytics-Auftrag befindet, wählen Sie den Namespace aus, in dem sich der Event Hub befindet.
-*	Wenn sich Ihr Event Hub in einem anderen Abonnement befindet, wählen Sie **Event Hub aus anderem Abonnement verwenden**, und geben Sie manuell den **Service Bus-Namespace**, **Event Hub-Namen**, **Event Hub-Richtliniennamen**, **Event Hub-Richtlinienschlüssel** und die **Event Hub-Partitionsanzahl** ein.
+  * **Event Hub** – Wenn sich der Event Hub, den Sie erstellt haben, in demselben Abonnement wie der Stream Analytics-Auftrag befindet, wählen Sie den Namespace aus, in dem sich der Event Hub befindet.
+*	Wenn sich Ihr Event Hub in einem anderen Abonnement befindet, wählen Sie **Event Hub aus anderem Abonnement verwenden** aus, und geben Sie manuell die Informationen für **Service Bus-Namespace**, **Event Hub-Name**, **Event Hub-Richtlinienname**, **Event Hub-Richtlinienschlüssel** und **Event Hub-Partitionsanzahl** ein.
 
 > [AZURE.NOTE]	In diesem Beispiel wird die Standardanzahl an Partitionen verwendet, sprich 16.
 
@@ -240,4 +240,4 @@ Um Hilfe zu erhalten, besuchen Sie unser [Azure Stream Analytics-Forum](https://
 [graphic12]: ./media/stream-analytics-power-bi-dashboard/12-stream-analytics-power-bi-dashboard.png
 [graphic13]: ./media/stream-analytics-power-bi-dashboard/13-stream-analytics-power-bi-dashboard.png
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0921_2016-->

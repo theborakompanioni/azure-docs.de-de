@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/10/2016"
+	ms.date="09/16/2016"
 	ms.author="garye"/>
 
 
@@ -30,6 +30,8 @@ Dies ist der erste Schritt der exemplarischen Vorgehensweise zum [Entwickeln ein
 6.	[Zugreifen auf den Webdienst](machine-learning-walkthrough-6-access-web-service.md)
 
 ----------
+
+<!-- This needs to be updated to refer to the new way of creating workspaces in the Ibiza portal -->
 
 Um Machine Learning Studio verwenden zu können, benötigen Sie einen Microsoft Azure Machine Learning-Arbeitsbereich. Dieser Arbeitsbereich enthält die Tools, die zum Erstellen, Verwalten und Veröffentlichen von Experimenten erforderlich sind.
 
@@ -51,4 +53,4 @@ Nach dem Erstellen Ihres Machine Learning-Arbeitsbereichs wird dieser im klassis
 
 [1]: ./media/machine-learning-walkthrough-1-create-ml-workspace/create1.png
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

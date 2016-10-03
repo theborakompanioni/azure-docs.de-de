@@ -28,6 +28,9 @@ Bietet Ihnen aktuelle Informationen zu den neuesten Azure-Gastbetriebssystemrele
 Sind Sie unsicher, was das Gast-BS ist oder wie Gast-BS-Releases funktionieren? Lesen Sie [diesen](#how-it-works) Abschnitt.
 
 ## Neuigkeiten
+###### **13. September 2016**
+Die Bereitstellung des Gastbetriebssystems September begann am 13. September 2016 und soll voraussichtlich am 13. Oktober 2016 freigegeben werden.
+
 ###### **9. August 2016**
 Das Rollout des August-Gastbetriebssystems beginnt am 9. August 2016. Die Veröffentlichung ist für den 8. September 2016 geplant.
 
@@ -66,9 +69,10 @@ Unterstützt .NET 4.0, 4.5, 4.5.1, 4.5.2
 
 | Konfigurationszeichenfolge | Herausgabedatum | Deaktivierungsdatum | Abgelaufenes Datum |
 | ------------------------------ | --------------- | ------------- | ---- |
-| WA-GUEST-OS-4.35\_201608-01 | 8\. September 2016* | Post 4.37 | TBD |
+| WA-GUEST-OS-4.36\_201609-01 | 13\. Oktober 2016 | Nach 4.38 | TBD |
+| WA-GUEST-OS-4.35\_201608-01 | 13\. September 2016 | Post 4.37 | TBD |
 | WA-GUEST-OS-4.34\_201607-01 | 8\. August 2016 | Post 4.36 | Noch nicht festgelegt |
-| WA-GUEST-OS-4.33\_201606-01 | 13\. Juli 2016 | Nach 4.35 | TBD |
+| WA-GUEST-OS-4.33\_201606-01 | 13\. Juli 2016 | 13\. Oktober 2016 | TBD |
 | WA-GUEST-OS-4.32\_201605-01 | 10\. Juni 2016 | 8\. September 2016 | TBD |
 | WA-GUEST-OS-4.31\_201604-01 | 2\. Mai 2016 | 13\. August 2016 | TBD |
 | WA-GUEST-OS-4.30\_201603-01 | 7\. April 2016 | 10\. Juli 2016 | TBD |
@@ -95,9 +99,10 @@ Unterstützt .NET 4.0, 4.5, 4.5.1, 4.5.2
 
 | Konfigurationszeichenfolge | Herausgabedatum | Deaktivierungsdatum | Abgelaufenes Datum |
 | ------------------------------ | -------------- | ------------- | --- |
-| WA-GUEST-OS-3.42\_201608-01 | 8\. September 2016* | Post 3.44 | TBD |
+| WA-GUEST-OS-3.43\_201609-01 | 13\. Oktober 2016 | Nach 3.45 | TBD |
+| WA-GUEST-OS-3.42\_201608-01 | 13\. September 2016 | Post 3.44 | TBD |
 | WA-GUEST-OS-3.41\_201607-01 | 8\. August 2016 | Post 3.43 | TBD |
-| WA-GUEST-OS-3.40\_201606-01 | 13\. Juli 2016 | Nach 3.42 | TBD |
+| WA-GUEST-OS-3.40\_201606-01 | 13\. Juli 2016 | 13\. Oktober 2016 | TBD |
 | WA-GUEST-OS-3.39\_201605-01 | 10\. Juni 2016 | 8\. September 2016 | TBD |
 | WA-GUEST-OS-3.38\_201604-01 | 2\. Mai 2016 | 13\. August 2016 | TBD |
 | WA-GUEST-OS-3.37\_201603-01 | 7\. April 2016 | 10\. Juli 2016 | TBD |
@@ -125,9 +130,10 @@ Unterstützt .NET 3.5, 4.0, 4.5, 4.5.1, 4.5.2
 
 | Konfigurationszeichenfolge | Herausgabedatum | Deaktivierungsdatum | Abgelaufenes Datum |
 | ------------------------------ | ------------- | ------------  | --- |
-| WA-GUEST-OS-2.54\_201608-01 | 8\. September 2016* | Post 2.56 | TBD |
+| WA-GUEST-OS-2.55\_201609-01 | 13\. Oktober 2016 | Nach 2.57 | TBD |
+| WA-GUEST-OS-2.54\_201608-01 | 13\. September 2016 | Post 2.56 | TBD |
 | WA-GUEST-OS-2.53\_201607-01 | 8\. August 2016 | Post 2.55 | TBD |
-| WA-GUEST-OS-2.52\_201606-01 | 13\. Juli 2016 | Nach 2.54 | TBD |
+| WA-GUEST-OS-2.52\_201606-01 | 13\. Juli 2016 | 13\. Oktober 2016 | TBD |
 | WA-GUEST-OS-2.51\_201605-01 | 10\. Juni 2016 | 8\. September 2016 | TBD |
 | WA-GUEST-OS-2.50\_201604-01 | 2\. Mai 2016 | 13\. August 2016 | TBD |
 | WA-GUEST-OS-2.49\_201603-01 | 7\. April 2016 | 10\. Juli 2016 | TBD |
@@ -220,4 +226,4 @@ Die Unterstützungs- und Deaktivierungsrichtlinie für Gastbetriebssysteme wird 
 [fam1retire]: cloud-services-guestos-family1-retirement.md
  
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0921_2016-->

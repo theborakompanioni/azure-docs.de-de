@@ -29,7 +29,7 @@ In diesem Artikel erfahren Sie, wie Sie ermitteln können, ob eine SQL Server-Da
 
 ## Verwenden von SqlPackage.exe
 
-1. Öffnen Sie ein Eingabeaufforderungsfenster, und wechseln Sie in ein Verzeichnis mit der neuesten Version von „sqlpackage.exe“. Dieses Hilfsprogramm wird mit Visual Studio und SQL Server bereitgestellt. Laden Sie die [neueste Version von SQL Server Data Tools für Visual Studio](https://msdn.microsoft.com/library/mt204009.aspx) herunter, um die neueste Version des SqlPackage-Hilfsprogramms zu erhalten.
+1. Öffnen Sie ein Eingabeaufforderungsfenster, und wechseln Sie in ein Verzeichnis mit der neuesten Version von „sqlpackage.exe“. Dieses Dienstprogramm wird mit den neuesten Versionen von [SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) und [SQL Server Data Tools für Visual Studio](https://msdn.microsoft.com/library/mt204009.aspx) ausgeliefert. Alternativ dazu können Sie die neueste Version von [SqlPackage](https://www.microsoft.com/de-DE/download/details.aspx?id=53876) direkt aus dem Microsoft Download Center herunterladen.
 2. Führen Sie den folgenden SqlPackage-Befehl mit den unten angegebenen Argumenten für Ihre Umgebung aus:
 
 	'sqlpackage.exe /Action:Export /ssn:< Servername > /sdn:< Datenbankname > /tf:< Zieldatei > /p:TableData=< Schemaname.Tabellenname > > < Ausgabedatei > 2>&1'
@@ -62,4 +62,4 @@ In diesem Artikel erfahren Sie, wie Sie ermitteln können, ob eine SQL Server-Da
 - [Teilweise oder vollständig unterstützte Transact-SQL-Funktionen](sql-database-transact-sql-information.md)
 - [Migrate non-SQL Server databases using SQL Server Migration Assistant (Migrieren von Nicht-SQL Server-Datenbanken mithilfe des SQL Server-Migrations-Assistenten)](http://blogs.msdn.com/b/ssma/)
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0921_2016-->

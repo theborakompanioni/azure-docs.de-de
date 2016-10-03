@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-catalog"
-   ms.date="05/06/2016"
+   ms.date="09/21/2016"
    ms.author="maroche"/>
 
 # Azure Data Catalog-Terminologie
@@ -40,7 +40,7 @@ Strukturelle Metadaten sind die Metadaten, die aus einer Datenquelle extrahiert 
 
 ## Beschreibende Metadaten
 
-Beschreibende Metadaten sind Metadaten, mit denen der Zweck oder die Absicht eines Datenassets beschrieben wird. Normalerweise werden beschreibende Metadaten von Katalogbenutzern über das Azure Data Catalog-Portal hinzugefügt, aber sie können auch während der Registrierung aus der Datenquelle extrahiert werden. Mit dem Azure Data Catalog-Registrierungstool werden Beschreibungen aus der Description-Eigenschaft in SQL Server Analysis Services und SQL Server Reporting Services extrahiert – sowie aus der [erweiterten ms\_description-Eigenschaft](https://technet.microsoft.com/library/ms190243.aspx) in SQL Server-Datenbanken –, sofern diese Eigenschaften mit Werten aufgefüllt wurden.
+Beschreibende Metadaten sind Metadaten, mit denen der Zweck oder die Absicht eines Datenassets beschrieben wird. Normalerweise werden beschreibende Metadaten von Katalogbenutzern über das Azure Data Catalog-Portal hinzugefügt, aber sie können auch während der Registrierung aus der Datenquelle extrahiert werden. Mit dem Azure Data Catalog-Registrierungstool werden beispielsweise Beschreibungen aus der Description-Eigenschaft in SQL Server Analysis Services und SQL Server Reporting Services sowie aus der [erweiterten ms\_description-Eigenschaft](https://technet.microsoft.com/library/ms190243.aspx) in SQL Server-Datenbanken extrahiert, sofern diese Eigenschaften mit Werten aufgefüllt wurden.
 
 ## Zugriff anfordern
 
@@ -80,10 +80,10 @@ Ein Besitzer ist ein Benutzer mit zusätzlichen Berechtigungen zum Verwalten ein
 
 Die Registrierung umfasst das Extrahieren der Metadaten eines Datenassets aus einer Datenquelle und das Kopieren in den Azure Data Catalog-Dienst. Datenassets, die registriert wurden, können dann mit Anmerkungen versehen und ermittelt werden.
 
-## Weitere Informationen
+## Siehe auch
 
 - [Was ist Azure Data Catalog?](data-catalog-what-is-data-catalog.md) Dieser Artikel enthält einen Überblick über den Azure Data Catalog-Dienst, den damit verbundenen Nutzen sowie die unterstützten Szenarien.
 
 - [Erste Schritte mit Azure Data Catalog](data-catalog-get-started.md) Dieser Artikel enthält ein umfassendes Lernprogramm zur Verwendung von Azure Data Catalog für die Ermittlung von Datenquellen.
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0921_2016-->

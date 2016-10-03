@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/30/2016" 
+	ms.date="09/19/2016" 
 	ms.author="kipandya"/>
 
 # Sicherer Zugriff auf Daten in DocumentDB
@@ -38,6 +38,7 @@ DocumentDB bietet erstklassige Zugriffsteuerungskonzepte für DocumentDB-Ressour
 	- Berechtigung
 - Anwendungsressourcen
 	- Sammlung
+	- Angebot
 	- Dokument
 	- Anhang
 	- Gespeicherte Prozedur
@@ -47,7 +48,7 @@ DocumentDB bietet erstklassige Zugriffsteuerungskonzepte für DocumentDB-Ressour
 DocumentDB unterstützt im Rahmen dieser zwei Kategorien die folgenden drei Typen von Zugriffssteuerungsrollen: Kontoadministrator, Administrator mit Leseberechtigung und Datenbankbenutzer. Die Zugriffssteuerungsrollen verfügen über folgende Rechte:
  
 - Kontoadministrator: Vollzugriff auf alle Ressourcen (Verwaltung und Anwendung) in einem bestimmten DocumentDB-Konto.
-- Administrator mit Leseberechtigung: Schreibgeschützter Zugriff auf alle Ressourcen (Verwaltung und Anwendung) in einem bestimmten DocumentDB-Konto. 
+- Administrator mit Leseberechtigung: Schreibgeschützter Zugriff auf alle Ressourcen (Verwaltung und Anwendung) in einem bestimmten DocumentDB-Konto.
 - Datenbankbenutzer: Die einem bestimmten Satz an DocumentDB-Datenbankressourcen zugeordnete DocumentDB-Benutzerressource (z. B. Sammlungen, Dokumente, Skripts). Es können mehrere Benutzerressourcen einer bestimmten Datenbank zugeordnet werden, und jede Benutzerressource kann über mehrere Berechtigungen verfügen.
 
 Das DocumentDB-Zugriffssteuerungsmodell definiert mit Berücksichtigung der oben genannten Kategorien drei Typen von Zugriffskonstrukten:
@@ -91,17 +92,17 @@ Mit einem Ressourcentoken (durch Erstellung von DocumentDB-Benutzern und -Berech
 
 DocumentDB-Schlüssel mit Lesezugriff gewähren schreibgeschützen Zugriff auf alle Ressourcen, mit Ausnahme von Berechtigungsressourcen, in einem DocumentDB-Konto und können nicht zum differenzierteren Zugriff auf bestimmte DocumentDB-Ressourcen verwendet werden.
 
-DocumentDB-Ressourcentoken stellen eine sichere Alternative dazu, Clients entsprechend den gewährten Berechtigungen das Lesen, Schreiben und Löschen von Ressourcen in einem DocumentDB-Konto zu ermöglichen, ohne die Notwendigkeit eines Hauptschlüssels oder eines Schlüssels mit Leseberechtigung.
+DocumentDB-Ressourcentoken stellen eine sichere Alternative dar, Clients entsprechend den gewährten Berechtigungen das Lesen, Schreiben und Löschen von Ressourcen in einem DocumentDB-Konto zu ermöglichen, ohne die Notwendigkeit eines Hauptschlüssels oder eines Schlüssels mit Leseberechtigung.
 
 Im Folgenden finden Sie ein typisches Entwurfsmuster, bei dem Ressourcentoken angefordert, generiert und an Clients übermittelt werden können:
 
 1. Ein Mid-Tier-Dienst dient zum Freigeben von Benutzerfotos für eine mobile Anwendung.
 2. Der Mid-Tier-Dienst verfügt über den Hauptschlüssel des DocumentDB-Kontos.
-3. Die Fotoapp ist auf mobilen Geräten des Endbenutzers installiert. 
+3. Die Fotoapp ist auf mobilen Geräten des Endbenutzers installiert.
 4. Bei der Anmeldung richtet die Fotoapp die Identität des Benutzers mit dem Mid-Tier-Dienst ein. Dieser Mechanismus der Identitätseinrichtung hängt nur von der Anwendung ab.
 5. Nachdem die Identität eingerichtet wurde, fordert der Mid-Tier-Dienst Berechtigungen auf Grundlage der Identität an.
 6. Der Mid-Tier-Dienst sendet einen Ressourcentoken an die Phoneapp zurück.
-7. Die Phoneapp kann weiterhin den Ressourcentoken für direkten Zugriff auf DocumentDB-Ressourcen mit den Berechtigungen verwenden, die durch das Ressourcentoken für einen bestimmten Zeitraum definiert sind. 
+7. Die Phoneapp kann weiterhin den Ressourcentoken für direkten Zugriff auf DocumentDB-Ressourcen mit den Berechtigungen verwenden, die durch das Ressourcentoken für einen bestimmten Zeitraum definiert sind.
 8. Wenn das Ressourcentoken abläuft, tritt bei nachfolgenden Anforderungen eine Ausnahme 401 auf, die nichtautorisierten Zugriff meldet. An dieser Stelle richtet die Phoneapp die Identität erneut ein und fordert ein neues Ressourcentoken an.
 
 ![Workflow der DocumentDB-Ressourcentoken](./media/documentdb-secure-access-to-data/resourcekeyworkflow.png)
@@ -128,7 +129,7 @@ Eine DocumentDB-Berechtigungsressource ist einem DocumentDB-Benutzer zugeordnet.
 > [AZURE.NOTE] Zum Ausführen von gespeicherten DocumentDB-Prozeduren muss der Benutzer über uneingeschränkte Berechtigung für die Sammlung verfügen, in dem die gespeicherte Prozedur ausgeführt wird.
 
 
-Der folgende Codeausschnitt zeigt, wie eine Berechtigungsressource erstellt, das Ressourcentoken (Token) der Berechtigungsressource gelesen und die Berechtigungen dem oben erstellen Benutzer zugeordnet werden können.
+Der folgende Codeausschnitt zeigt, wie eine Berechtigungsressource erstellt, das Ressourcentoken der Berechtigungsressource gelesen und die Berechtigungen dem oben erstellen Benutzer zugeordnet werden können.
 
     // Create a permission.
     Permission docPermission = new Permission
@@ -166,4 +167,4 @@ Um alle einem bestimmten Benutzer zugeordneten Berechtigungsressourcen abzurufen
 - Informationen zum Erstellen von DocumentDB-Autorisierungstoken finden klicken Sie [hier](https://msdn.microsoft.com/library/azure/dn783368.aspx)
  
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0921_2016-->

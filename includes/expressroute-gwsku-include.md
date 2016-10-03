@@ -1,7 +1,8 @@
-When you create a virtual network gateway, you need to specify the gateway SKU that you want to use. When the virtual network gateway is created, it is built as virtual hardware. When you select a higher gateway SKU, more processing power is allocated to the gateway in order to route traffic and, in the case of VPN Gateway, process VPN encryption.
+Beim Erstellen eines virtuellen Netzwerkgateways müssen Sie die gewünschte Gateway-SKU angeben. Das virtuelle Netzwerkgateway wird als virtuelle Hardware erstellt. Wenn Sie eine höhere Gateway-SKU wählen, wird dem Gateway mehr Verarbeitungsleistung zugewiesen, um den Datenverkehr weiterzuleiten und – im Falle eines VPN-Gateways – die VPN-Verschlüsselung durchzuführen.
 
-ExpressRoute virtual network gateways can use the following SKUs: 
+Virtuelle ExpressRoute-Netzwerkgateways können folgende SKUs verwenden:
 
 - Standard
 - HighPerformance
 
+<!---HONumber=AcomDC_0921_2016-->

@@ -1,6 +1,6 @@
 <properties
 	pageTitle="v2.0-Endpunkt: Einschränkungen | Microsoft Azure"
-	description="Eine Liste der Einschränkungen des v2.0-Endpunkts in Azure AD."
+	description="Eine Liste der Einschränkungen des v2.0-Endpunkts in Azure AD."
 	services="active-directory"
 	documentationCenter=""
 	authors="dstrockis"
@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/18/2016"
+	ms.date="09/16/2016"
 	ms.author="dastrock"/>
 
 # Sollte ich den v2.0-Endpunkt verwenden?
 
-Beim Erstellen von Anwendungen, die in Azure Active Directory integriert werden, müssen Sie entscheiden, ob der v2.0-Endpunkt und die Authentifizierungsprotokolle Ihren Anforderungen entsprechen. Das ursprüngliche Azure AD-App-Modell wird weiterhin vollständig unterstützt und umfasst in gewisser Hinsicht mehr Funktionen als v2.0. Der v2.0-Endpunkt bietet jedoch [entscheidende Vorteile](active-directory-v2-compare.md) für Entwickler, die Sie zur Verwendung des neuen Programmiermodells verleiten könnten. Im Laufe der Zeit wird v2.0 auf sämtliche Azure AD-Funktionen erweitert, sodass nur noch der v2.0-Endpunkt verwenden werden muss.
+Beim Erstellen von Anwendungen, die in Azure Active Directory integriert werden, müssen Sie entscheiden, ob der v2.0-Endpunkt und die Authentifizierungsprotokolle Ihren Anforderungen entsprechen. Das ursprüngliche Azure AD-App-Modell wird weiterhin vollständig unterstützt und umfasst in gewisser Hinsicht mehr Funktionen als v2.0. Der v2.0-Endpunkt bietet jedoch [entscheidende Vorteile](active-directory-v2-compare.md) für Entwickler, die Sie zur Verwendung des neuen Programmiermodells verleiten könnten. Im Laufe der Zeit wird v2.0 auf sämtliche Azure AD-Funktionen erweitert, sodass nur noch der v2.0-Endpunkt verwenden werden muss.
 
 Zu diesem Zeitpunkt können Sie mit dem v2.0-Endpunkt zwei Kernfunktionen erreichen:
 
@@ -29,25 +29,25 @@ Beide Funktionen können in mobilen, Web- und PC-Anwendungen gleichermaßen impl
 
 In der Zwischenzeit können Sie anhand dieses Artikels ermitteln, ob der v2.0-Endpunkt für Sie geeignet ist. Dieser Artikel wird fortlaufend auf den aktuellen Status des v2.0-Endpunkts aktualisiert. Schauen Sie daher regelmäßig vorbei, um Ihre Anforderungen anhand der v2.0-Funktionen neu zu überprüfen.
 
-Wenn Sie eine vorhandene App mit Azure AD einsetzen, die den v2.0-Endpunkt nicht verwendet, müssen Sie nicht bei Null anfangen. In Zukunft bieten wir eine Möglichkeit, vorhandene Azure AD-Anwendungen auf die Verwendung mit dem v2.0-Endpunkt umzustellen.
+Wenn Sie eine vorhandene App mit Azure AD einsetzen, die den v2.0-Endpunkt nicht verwendet, müssen Sie nicht bei Null anfangen. In Zukunft bieten wir eine Möglichkeit, vorhandene Azure AD-Anwendungen auf die Verwendung mit dem v2.0-Endpunkt umzustellen.
 
 ## Einschränkungen für Apps
 Die folgenden App-Typen werden derzeit vom v2.0-Endpunkt nicht unterstützt. Eine Beschreibung der unterstützten Typen von Apps finden Sie [in diesem Artikel](active-directory-v2-flows.md).
 
 ##### Eigenständige Web-APIs
-Mit dem v2.0-Endpunkt können Sie eine [Web-API erstellen, die mit dem OAuth 2.0-Token geschützt wird](active-directory-v2-flows.md#web-apis). Allerdings kann die Web-API nur Token von einer Anwendung empfangen, die die gleiche Anwendungs-ID aufweist. Das Erstellen einer Web-API, auf die von einem Client mit einer anderen Anwendungs-ID zugegriffen wird, wird nicht unterstützt. Dieser Client kann keine Berechtigungen für Ihre Web-API anfordern oder erhalten.
+Mit dem v2.0-Endpunkt können Sie eine [Web-API erstellen, die mit dem OAuth 2.0-Token geschützt wird](active-directory-v2-flows.md#web-apis). Allerdings kann die Web-API nur Token von einer Anwendung empfangen, die die gleiche Anwendungs-ID aufweist. Das Erstellen einer Web-API, auf die von einem Client mit einer anderen Anwendungs-ID zugegriffen wird, wird nicht unterstützt. Dieser Client kann keine Berechtigungen für Ihre Web-API anfordern oder erhalten.
 
 Wenn Sie wissen möchten, wie eine Web-API erstellt wird, die Token von einem Client mit der gleichen App-ID akzeptiert, sehen Sie in den Web-API-Beispielen zum v2.0-Endpunkt im Abschnitt [Erste Schritte](active-directory-appmodel-v2-overview.md#getting-started) nach.
 
 ##### Daemons und serverseitige Apps
-Apps, die lang andauernde Prozesse enthalten oder ohne das Vorhandensein eines Benutzers arbeiten, benötigen ebenfalls die Möglichkeit, auf sichere Ressourcen wie Web-APIs zuzugreifen. Diese Apps können mithilfe der App-Identität (anstelle der delegierten Benutzeridentität) die Authentifizierung durchführen und Token erhalten. Dies funktioniert über den OAuth 2.0-Client-Anmeldeinformationsfluss.
+Apps, die lang andauernde Prozesse enthalten oder ohne das Vorhandensein eines Benutzers arbeiten, benötigen ebenfalls die Möglichkeit, auf sichere Ressourcen wie Web-APIs zuzugreifen. Diese Apps können mithilfe der App-Identität (anstelle der delegierten Benutzeridentität) die Authentifizierung durchführen und Token erhalten. Dies funktioniert über den OAuth 2.0-Client-Anmeldeinformationsfluss.
 
-Dieser Ablauf wird derzeit nicht vom v2.0-Endpunkt unterstützt, d. h. Apps können nur dann Token abrufen, nachdem ein interaktiver Benutzeranmeldeablauf stattgefunden hat. Der Ablauf für die Client-Anmeldeinformationen wird in naher Zukunft hinzugefügt. Wenn Sie sich für den Ablauf für Clientanmeldeinformationen mit dem ursprünglichen Azure AD-Endpunkt interessieren, sehen Sie sich das [Daemon-Beispiel auf GitHub](https://github.com/AzureADSamples/Daemon-DotNet) an.
+Dieser Ablauf wird derzeit nicht vom v2.0-Endpunkt unterstützt, d. h. Apps können nur dann Token abrufen, nachdem ein interaktiver Benutzeranmeldeablauf stattgefunden hat. Der Ablauf für die Client-Anmeldeinformationen wird in naher Zukunft hinzugefügt. Wenn Sie sich für den Ablauf für Clientanmeldeinformationen mit dem ursprünglichen Azure AD-Endpunkt interessieren, sehen Sie sich das [Daemon-Beispiel auf GitHub](https://github.com/AzureADSamples/Daemon-DotNet) an.
 
 ##### „Im Auftrag von“-Web-API-Ablauf
 Viele Architekturen umfassen eine Web-API, die eine weitere nachgeordnete Web-API aufrufen muss. Beide werden jeweils durch den v2.0-Endpunkt gesichert. Dieses Szenario kommt häufig bei nativen Clients mit Web-API-Back-End vor, das wiederum einen Microsoft Online-Dienst oder eine weitere benutzerdefinierte Web-API aufruft, die Azure AD unterstützt.
 
-Dieses Szenario kann mithilfe der Berechtigung für Anmeldeinformationen über den OAuth 2.0-JWT-Bearer unterstützt werden, auch bekannt als „Im Auftrag von“-Ablauf. Der „Im Auftrag von“-Ablauf wird für den v2.0-Endpunkt derzeit jedoch noch nicht unterstützt. Um sich die Funktionsweise dieses Vorgangs im allgemein verfügbaren Azure AD-Dienst anzusehen, wechseln Sie zum [Im-Auftrag-von-Codebeispiel auf GitHub](https://github.com/AzureADSamples/WebAPI-OnBehalfOf-DotNet).
+Dieses Szenario kann mithilfe der Berechtigung für Anmeldeinformationen über den OAuth 2.0-JWT-Bearer unterstützt werden, auch bekannt als „Im Auftrag von“-Ablauf. Der „Im Auftrag von“-Ablauf wird für den v2.0-Endpunkt derzeit jedoch noch nicht unterstützt. Um sich die Funktionsweise dieses Vorgangs im allgemein verfügbaren Azure AD-Dienst anzusehen, wechseln Sie zum [Im-Auftrag-von-Codebeispiel auf GitHub](https://github.com/AzureADSamples/WebAPI-OnBehalfOf-DotNet).
 
 ## Einschränkungen für App-Registrierungen
 Zu diesem Zeitpunkt müssen alle Apps, die in den v2.0-Endpunkt integriert werden sollen, eine neue App-Registrierung unter [apps.dev.microsoft.com](https://apps.dev.microsoft.com) erstellen. Keine der vorhandenen Azure AD- oder Microsoft-Konto-Apps sind mit dem v2.0-Endpunkt kompatibel. Dasselbe gilt für Apps, die in einem anderen Portal als dem neuen App-Registrierungsportal registriert werden. Wir planen eine Möglichkeit, vorhandene Anwendungen für die Verwendung als v2.0-App zu aktivieren. Zu diesem Zeitpunkt gibt es für eine App jedoch keinen Migrationspfad zum v2.0-Endpunkt.
@@ -108,7 +108,7 @@ Wenn Sie den v2.0-Endpunkt in einer Produktionsanwendung verwenden möchten, bes
   - [Android OpenID Connect-Client](https://github.com/kalemontes/OIDCAndroidLib)
 
 ## Einschränkungen für Protokolle
-Der v2.0-Endpunkt unterstützt nur Open ID Connect und OAuth 2.0. Allerdings wurden nicht alle Features und Funktionen der einzelnen Protokolle in den v2.0-Endpunkt integriert. Beispiele hierfür sind:
+Der v2.0-Endpunkt unterstützt nur Open ID Connect und OAuth 2.0. Allerdings wurden nicht alle Features und Funktionen der einzelnen Protokolle in den v2.0-Endpunkt integriert. Beispiele hierfür sind:
 
 - Der OpenID Connect-`end_sesssion_endpoint`
 - Das Erteilen von OAuth 2.0-Clientanmeldeinformationen
@@ -121,4 +121,4 @@ Im Azure Active Directory-Dienst steht eine Reihe von Entwicklerfeatures zur Ver
 - Gruppenansprüche für Azure AD-Benutzer
 - Anwendungsrollen und Rollenansprüche
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0921_2016-->

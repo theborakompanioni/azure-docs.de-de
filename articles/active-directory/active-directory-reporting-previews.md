@@ -13,14 +13,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="03/07/2016"
+   ms.date="09/16/2016"
    ms.author="dhanyahk"/>
 
 # Azure Active Directory-Berichte in der Vorschau
 
 *Diese Dokumentation ist Teil des [Handbuchs für Azure Active Directory Reporting](active-directory-reporting-guide.md).*
 
-Bericht | Verfügbarkeit
+Bericht | Availability
 ------------------------------------------------------- | --------------------
 **Sicherheitsberichte** |
 Irreguläre Anmeldeaktivitäten | Allgemeine Verfügbarkeit
@@ -54,4 +54,4 @@ Nutzung RMS-fähiger Anwendungen | Öffentliche Vorschau
 **Berichte in der privaten Vorschau** |
 Alle Benutzeranmeldeaktivitäten | Private Vorschau
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0921_2016-->

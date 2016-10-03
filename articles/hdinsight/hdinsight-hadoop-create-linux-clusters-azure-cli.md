@@ -14,7 +14,7 @@
    	ms.topic="article"
    	ms.tgt_pltfrm="na"
    	ms.workload="big-data"
-   	ms.date="08/30/2016"
+   	ms.date="09/20/2016"
    	ms.author="larryfr"/>
 
 #Erstellen von Linux-basierten Clustern in HDInsight mithilfe der Azure-Befehlszeilenschnittstelle
@@ -23,11 +23,11 @@
 
 Die Azure-Befehlszeilenschnittstelle ist ein plattformübergreifendes Befehlszeilentool zur Verwaltung von Azure-Diensten. Es kann mit Azure-Ressourcen-Manager-Vorlagen zum Erstellen eines HDInsight-Clusters verwendet werden, zusammen mit zugeordneten Speicherkonten und anderen Diensten.
 
-Bei Azure-Ressourcen-Manager-Vorlagen handelt es sich um JSON-Dokumente, mit denen eine __Ressourcengruppe__ und alle darin enthaltenen Ressourcen (z. B. HDInsight) beschrieben werden. Dieser vorlagenbasierte Ansatz ermöglicht Ihnen das Definieren aller für HDInsight benötigten Ressourcen in einer einzigen Vorlage sowie das Verwalten von Änderungen an der gesamten Gruppe durch __Bereitstellungen__, mit denen Änderungen an der Gruppe vorgenommen werden.
+Bei Azure-Ressourcen-Manager-Vorlagen handelt es sich um JSON-Dokumente, mit denen eine __Ressourcengruppe__ und alle darin enthaltenen Ressourcen (z. B. HDInsight) beschrieben werden. Diese vorlagenbasierte Vorgehensweise ermöglicht es Ihnen, alle Ressourcen zu definieren, die Sie für HDInsight in einer Vorlage benötigen. Mithilfe von __Bereitstellungen__ können Sie Änderungen der Gruppe insgesamt verwalten, wobei Änderungen auf die gesamte Gruppe angewendet werden.
 
 Anhand der Schritte in diesem Dokument werden Sie durch die Erstellung eines neuen HDInsight-Clusters mithilfe der Azure-Befehlszeilenschnittstelle und einer Vorlage geführt.
 
-> [AZURE.IMPORTANT] Bei den Schritten in diesem Dokument wird die Standardanzahl von Workerknoten (4) für einen HDInsight-Cluster verwendet. Wenn Sie mehr als 32 Workerknoten planen, entweder bei Erstellung des Clusters oder durch eine Skalierung des Clusters nach der Erstellung, müssen Sie eine Hauptknotengröße von mindestens 8 Kernen und 14 GB Arbeitsspeicher (RAM) auswählen.
+> [AZURE.IMPORTANT] Bei den Schritten in diesem Dokument wird die Standardanzahl von Workerknoten (4) für einen HDInsight-Cluster verwendet. Wenn Sie mehr als 32 Workerknoten planen (beim Erstellen oder durch Skalieren des Clusters), müssen Sie eine Hauptknotengröße von mindestens 8 Kernen und 14 GB Arbeitsspeicher (RAM) auswählen.
 >
 > Weitere Informationen zu Knotengrößen und damit verbundenen Kosten finden Sie unter [HDInsight – Preise](https://azure.microsoft.com/pricing/details/hdinsight/).
 
@@ -40,34 +40,34 @@ Anhand der Schritte in diesem Dokument werden Sie durch die Erstellung eines neu
 
     [AZURE.INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-cli.md)]
 
-##Anmelden bei Ihrem Azure-Abonnement
+##Melden Sie sich bei Ihrem Azure-Abonnement an.
 
 Führen Sie die Schritte aus, die unter [Herstellen einer Verbindung mit einem Azure-Abonnement von der Azure Befehlszeilenschnittstelle (Azure-CLI)](../xplat-cli-connect.md) dokumentiert sind, und stellen Sie über die __login__-Methode eine Verbindung mit Ihrem Abonnement her.
 
 ##Erstellen eines Clusters
 
-Die folgenden Schritte müssen in einer Befehlszeilen-, Shell- oder Terminalsitzung nach der Installation und Konfiguration der Azure-Befehlszeilenschnittstelle erfolgen.
+Die folgenden Schritte müssen in einer Befehlszeilen-, Shell- oder Terminalsitzung nach der Installation und Konfiguration der Azure-CLI erfolgen.
 
 1. Führen Sie den folgenden Befehl aus, um sich bei Ihrem Azure-Abonnement zu authentifizieren:
 
         azure login
 
-    Sie werden aufgefordert, Ihren Namen und das Kennwort anzugeben. Wenn Sie über mehrere Azure-Abonnements verfügen, können Sie `azure account set <subscriptionname>` zum Festlegen des Abonnements verwenden, das von den Befehlen der Azure-Befehlszeilenschnittstelle genutzt werden soll.
+    Sie werden aufgefordert, Ihren Namen und das Kennwort anzugeben. Wenn Sie über mehrere Azure-Abonnements verfügen, verwenden Sie `azure account set <subscriptionname>` zum Festlegen des Abonnements, das von den Befehlen der Azure-CLI genutzt werden soll.
 
 3. Wechseln Sie mit dem folgenden Befehl in den Azure-Ressourcen-Manager-Modus:
 
         azure config mode arm
 
-4. Erstellen Sie eine neue Ressourcengruppe. Die zu erstellende Gruppe umfasst den HDInsight-Cluster und das zugeordnete Speicherkonto.
+4. Erstellen Sie eine Ressourcengruppe. Diese Ressourcengruppe umfasst den HDInsight-Cluster und das zugeordnete Speicherkonto.
 
         azure group create groupname location
         
     * Ersetzen Sie __groupname__ durch einen eindeutigen Gruppenamen.
     * Ersetzen Sie __location__ durch die geografische Region, in der die Gruppe erstellt werden soll.
     
-        Eine Liste der gültigen Speicherorte können Sie mithilfe des Befehls `azure locations list` erzeugen. Verwenden Sie anschließend einen der Speicherorte aus der Spalte __Name__.
+        Eine Liste der gültigen Speicherorte können Sie mithilfe des Befehls `azure location list` erzeugen. Verwenden Sie anschließend einen der Speicherorte aus der Spalte __Name__.
 
-5. Erstellen Sie ein neues Speicherkonto Dies wird als Standardspeicher für den HDInsight-Cluster verwendet werden.
+5. Erstellen Sie ein Speicherkonto. Dieses Speicherkonto wird als Standardspeicher für den HDInsight-Cluster verwendet.
 
         azure storage account create -g groupname --sku-name RAGRS -l location --kind Storage storagename
         
@@ -86,7 +86,7 @@ Die folgenden Schritte müssen in einer Befehlszeilen-, Shell- oder Terminalsitz
     
     Speichern Sie von den zurückgegebenen Daten den __key__-Wert für __key1__.
 
-6. Erstellen Sie einen neuen HDInsight-Cluster.
+6. Erstellen eines HDInsight-Clusters
 
         azure hdinsight cluster create -g groupname -l location -y Linux --clusterType Hadoop --defaultStorageAccountName storagename.blob.core.windows.net --defaultStorageAccountKey storagekey --defaultStorageContainer clustername --workerNodeCount 2 --userName admin --password httppassword --sshUserName sshuser --sshPassword sshuserpassword clustername
 
@@ -121,4 +121,4 @@ Nachdem Sie einen HDInsight-Cluster erfolgreich mithilfe der Azure-Befehlszeilen
 * [Verwenden von Python-Komponenten in Storm in HDInsight](hdinsight-storm-develop-python-topology.md)
 * [Bereitstellen und Überwachen von Topologien mit Storm in HDInsight](hdinsight-storm-deploy-monitor-topology-linux.md)
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

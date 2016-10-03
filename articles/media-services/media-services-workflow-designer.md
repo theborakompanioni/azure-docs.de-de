@@ -1,10 +1,10 @@
 <properties 
-	pageTitle="Erstellen von erweiterten Codierungs-Workflows mit Workflow-Designer" 
-	description="Erfahren Sie, wie Sie mit dem Workflow-Designer erweiterte Codierungs-Workflows erstellen." 
+	pageTitle="Erstellen von erweiterten Codierungsworkflows mit Workflow-Designer | Microsoft Azure" 
+	description="Erfahren Sie, wie Sie mit dem Workflow-Designer erweiterte Codierungsworkflows erstellen." 
 	services="media-services" 
 	documentationCenter="" 
-	authors="juliako,johndeu,anilmur" 
-	manager="dwrede" 
+	authors="anilmur" 
+	manager="erikre" 
 	editor=""/>
 
 <tags 
@@ -13,11 +13,11 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/22/2016"
-	ms.author="juliako"/>
+	ms.date="09/15/2016"
+	ms.author="juliako;johndeu;anilmur"/>
 
 
-#Erstellen von erweiterten Codierungs-Workflows mit Workflow-Designer
+#Erstellen von erweiterten Codierungsworkflows mit Workflow-Designer
 
 ##Übersicht
 
@@ -74,8 +74,9 @@ Im Video von Tag 3 werden folgende Themen behandelt:
 > [AZURE.VIDEO azure-premium-encoder-workflow-designer-training-videos-day-3]
 
 
+## Nächster Schritt
 
-##Media Services-Lernpfade
+Überprüfen Sie die Media Services-Lernpfade.
 
 [AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
@@ -86,8 +87,8 @@ Im Video von Tag 3 werden folgende Themen behandelt:
 
 Falls Sie Support benötigen oder Fragen zur Erstellung von benutzerdefinierten Workflows im Workflow-Designer-Tool haben, können Sie eine E-Mail an mepd@microsoft.com senden.
 
-##Siehe auch
+##Weitere Informationen
 
 [Azure Premium Encoder Workflow-Designer – Schulungsvideos](http://johndeutscher.com/2015/07/06/azure-premium-encoder-workflow-designer-training-videos/)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0921_2016-->

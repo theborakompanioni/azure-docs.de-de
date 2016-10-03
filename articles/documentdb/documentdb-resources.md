@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/20/2016" 
+	ms.date="09/15/2016" 
 	ms.author="anhoh"/>
 
 # Hierarchisches Ressourcenmodell und Konzepte von DocumentDB
@@ -45,8 +45,8 @@ Um mit Ressourcen zu arbeiten, müssen Sie über Ihr Azure-Abonnement [ein Docum
 |Datenbank |Eine Datenbank ist ein logischer Container für Dokumentspeicher, der auf Sammlungen aufgeteilt ist. Sie ist auch ein Benutzercontainer.
 |Benutzer |Der logische Namespace für Gültigkeitsbereichsberechtigungen. 
 |Berechtigung |Ein Autorisierungstoken, das einem Benutzer für den Zugriff auf eine bestimmte Ressource zugeordnet ist.
-|Sammlung |Eine Sammlung ist ein Container für JSON-Dokumente und die zugehörige JavaScript-Anwendungslogik. Eine Sammlung ist eine fakturierbare Entität, bei der die [Kosten](documentdb-performance-levels.md) durch die Leistungsebene bestimmt werden, die mit der Sammlung verknüpft ist. Sammlungen können eine/n oder mehrere Partitionen oder Server umfassen und skaliert werden, um praktisch unbegrenzte Mengen an Speicher oder Durchsatz zu verarbeiten.
-|Gespeicherte Prozedur |Mit JavaScript geschriebene Anwendungslogik, die mit einer Sammlung registriert und über Transaktion innerhalb des Datenbankmoduls ausgeführt wird.
+|Sammlung |Eine Sammlung ist ein Container für JSON-Dokumente und die zugehörige JavaScript-Anwendungslogik. Eine Sammlung ist eine fakturierbare Entität, bei der die [Kosten](documentdb-performance-levels.md) durch die Leistungsebene bestimmt werden, die mit der Sammlung verknüpft ist. Sammlungen können eine/n oder mehrere Partitionen oder Server umfassen und können skaliert werden, um praktisch unbegrenzte Mengen an Speicher oder Durchsatz zu verarbeiten.
+|Stored Procedure (Gespeicherte Prozedur) |Mit JavaScript geschriebene Anwendungslogik, die mit einer Sammlung registriert und über Transaktion innerhalb des Datenbankmoduls ausgeführt wird.
 |Trigger |In JavaScript geschriebene Anwendungslogik, die vor oder nach einem Einfüge-, Ersetzungs- oder Löschvorgang ausgeführt wird.
 |UDF |In JavaScript geschriebene Anwendungslogik. Mit UDFs kann ein benutzerdefinierter Abfrageoperator erstellt und damit die DocumentDB-Kernabfragesprache erweitert werden.
 |Dokument |Benutzerdefinierter (beliebiger) JSON-Inhalt. Standardmäßig müssen kein Schema definiert oder sekundäre Indizes für alle zu einer Sammlung hinzugefügten Dokumente bereitgestellt werden.
@@ -99,7 +99,7 @@ DocumentDB verfügt über keine proprietären Erweiterungen des JSON-Standards o
 ### Adressieren einer Ressource
 Alle Ressourcen können über URI aufgerufen werden. Der Wert der **\_self**-Eigenschaft einer Ressource stellt den relativen URI der Ressource dar. Das Format des URI besteht aus den /<feed>/{\_rid}-Pfadsegmenten:
 
-|Der „\_self“-Wert |Beschreibung
+|Wert von "\_self" |Beschreibung
 |-------------------|-----------
 |/dbs |Feed der Datenbanken in einem Datenbankkonto.
 |/dbs/{dbName} |Datenbank mit einer ID, die dem Wert {dbName} entspricht
@@ -119,7 +119,7 @@ Jede Ressource verfügt ebenfalls über eine systemgenerierte hierarchische Ress
 Die DocumentDB-REST-APIs unterstützen die Adressierung von Ressourcen und das Weiterleiten von Anfragen durch die „id“- und die „\_rid“-Eigenschaften.
 
 ## Datenbankkonten
-Sie können mithilfe Ihres Azure-Abonnements ein oder mehrere DocumentDB-Datenbankkonten bereitstellen. Jedes Datenbankkonto der Ebene "Standard" erhält eine Mindestkapazität von einer S1-Sammlung.
+Sie können mithilfe Ihres Azure-Abonnements ein oder mehrere DocumentDB-Datenbankkonten bereitstellen.
 
 Im Azure-Portal unter [http://portal.azure.com/](https://portal.azure.com/) können Sie [DocumentDB-Datenbankkonten erstellen und verwalten](documentdb-create-account.md). Das Erstellen und Verwalten eines Datenbankkontos erfordert Administratorzugriff und kann nur unter Ihrem Azure-Abonnement ausgeführt werden.
 
@@ -176,8 +176,8 @@ DocumentDB ist ein echtes schemaloses Datenbanksystem. Es setzt kein Schema für
 ### Konfigurieren der Indizierungsrichtlinie einer Sammlung
 Die Indizierungsrichtlinie der einzelnen Sammlungen gestattet es Ihnen, Kompromisse bei der Leistung und Speicherung einzugehen, die mit der Indizierung einhergehen. Die folgende Optionen stehen Ihnen im Rahmen der Indexkonfiguration zur Verfügung:
 
--	Wählen Sie, ob die Sammlung automatisch alle Dokumente indiziert oder nicht. Standardmäßig werden automatisch alle Dokumente indiziert. Sie können die automatische Indizierung deaktivieren und wahlweise nur bestimmte Dokumente zum Index hinzufügen. Umgekehrt können Sie wahlweise auch nur bestimmte Dokumente ausschließen. Sie können dies erreichen, indem Sie für die Indizierungsrichtlinie einer Sammlung für die "automatic"-Eigenschaft den Wert "true" oder "false" festlegen und beim Einfügen, Ersetzen oder Löschen eines Dokuments den Anforderungsheader "[x-ms-indexingdirective]" verwenden.  
--	Wählen Sie, ob bestimmte Pfade oder Muster in Ihren Dokumenten in den Index einbezogen oder aus diesem ausgeschlossen werden sollen. Dies können Sie durch die entsprechende Festlegung von "includedPaths" und "excludedPaths" für die Indizierungsrichtlinie einer Sammlung erreichen. Sie können auch die Speicher- und Leistungsabstriche für Bereichs- und Hashabfragen für bestimmte Pfadmuster konfigurieren. 
+-	Wählen Sie, ob die Sammlung automatisch alle Dokumente indiziert oder nicht. Standardmäßig werden automatisch alle Dokumente indiziert. Sie können die automatische Indizierung deaktivieren und wahlweise nur bestimmte Dokumente zum Index hinzufügen. Umgekehrt können Sie wahlweise auch nur bestimmte Dokumente ausschließen. Sie können dies erreichen, indem Sie für die Indizierungsrichtlinie einer Sammlung für die "automatic"-Eigenschaft den Wert "true" oder "false" festlegen und beim Einfügen, Ersetzen oder Löschen eines Dokuments den Anforderungsheader "[x-ms-indexingdirective]" verwenden.
+-	Wählen Sie, ob bestimmte Pfade oder Muster in Ihren Dokumenten in den Index einbezogen oder aus diesem ausgeschlossen werden sollen. Dies können Sie durch die entsprechende Festlegung von "includedPaths" und "excludedPaths" für die Indizierungsrichtlinie einer Sammlung erreichen. Sie können auch die Speicher- und Leistungsabstriche für Bereichs- und Hashabfragen für bestimmte Pfadmuster konfigurieren.
 -	Wählen Sie zwischen synchronen (konsistenten) und asynchronen (flexiblen) Indexaktualisierungen. Der Index wird bei jedem Einfügen, Ersetzen oder Löschen eines Dokuments der Sammlung standardmäßig synchron aktualisiert. Auf diese Weise können die Abfragen dieselbe Konsistenzebene wie die von Dokumentlesevorgängen berücksichtigen. Obwohl DocumentDB für Schreibvorgänge optimiert ist und beständige Mengen an Dokumentschreibvorgängen zusammen mit der synchronen Indexwartung und der Bereitstellung konsistenter Abfragen unterstützt, können Sie bestimmte Sammlungen so konfigurieren, dass ihr Index flexibel aktualisiert wird. Die flexible Indizierung steigert die Schreibleistung noch weiter und ist ideal für Sammelerfassungsszenarien für Sammlungen mit hauptsächlich übermäßigen Lesevorgängen geeignet.
 
 Die Indizierungsrichtlinie kann durch Ausführen von PUT in der Sammlung geändert werden. Dies kann durch das [Client-SDK](https://msdn.microsoft.com/library/azure/dn781482.aspx), das [Azure-Portal](https://portal.azure.com) oder die [Azure DocumentDB-REST-APIs](https://msdn.microsoft.com/library/azure/dn781481.aspx) erreicht werden.
@@ -185,9 +185,9 @@ Die Indizierungsrichtlinie kann durch Ausführen von PUT in der Sammlung geände
 ### Abfragen einer Sammlung
 Die Dokumente in einer Sammlung können beliebige Schemas aufweisen, und Sie können Dokumente in einer Sammlung abfragen, ohne vorab ein Schema oder sekundäre Indizes bereitstellen zu müssen. Sie können die Sammlung mithilfe der [SQL-Syntax von DocumentDB](https://msdn.microsoft.com/library/azure/dn782250.aspx) abfragen, die über JavaScript-basierte UDFs umfassende hierarchische, relationale und räumliche Operatoren sowie Erweiterbarkeit bietet. Die JSON-Grammatik ermöglicht die Gestaltung von JSON-Dokumenten als Baumstrukturen mit den Beschriftungen als Strukturknoten. Dies wird sowohl über die automatischen Indizierungsverfahren als auch über den SQL-Dialekt von DocumentDB erreicht. Die Abfragesprache von DocumentDB besteht aus drei Hauptaspekten:
 
-1.	Eine kleine Auswahl von Abfragevorgängen, die natürlich zur Baumstruktur zugeordnet werden, einschließlich hierarchischer Abfragen und Projektionen. 
-2.	Eine Teilmenge von relationalen Vorgängen, einschließlich der Kompositionen, Filter, Projektionen, Aggregaten und Selbstverknüpfungen. 
-3.	Rein auf JavaScript basierende UDFs, die mit (1) und (2) funktionieren.  
+1.	Eine kleine Auswahl von Abfragevorgängen, die natürlich zur Baumstruktur zugeordnet werden, einschließlich hierarchischer Abfragen und Projektionen.
+2.	Eine Teilmenge von relationalen Vorgängen, einschließlich der Kompositionen, Filter, Projektionen, Aggregaten und Selbstverknüpfungen.
+3.	Rein auf JavaScript basierende UDFs, die mit (1) und (2) funktionieren.
 
 Das Abfragemodell von DocumentDB versucht die Balance zwischen Funktionalität, Effizienz und Einfachheit zu finden. Das Datenbankmodul von DocumentDB kompiliert die SQL-Abfrageanweisungen und führt sie aus. Sie können eine Sammlung mithilfe der [Azure DocumentDB-REST-APIs](https://msdn.microsoft.com/library/azure/dn781481.aspx) oder eines der [Client-SDKs](https://msdn.microsoft.com/library/azure/dn781482.aspx) abfragen. Das .NET-SDK verfügt über einen LINQ-Anbieter.
 
@@ -408,15 +408,15 @@ DocumentDB gestattet es Ihnen, binäre Blobs/Medien mit DocumentDB oder in einem
 
 Betrachten Sie eine soziale Leseanwendung, die DocumentDB zum Speichern von Anmerkungen und Metadaten verwendet, einschließlich der Kommentare, Lesezeichen, Bewertungen usw., die einem E-Book für einen bestimmten Benutzer zugeordnet sind.
 
--	Der Buchinhalt selbst wird im Medienspeicher entweder als Teil des DocumentDB-Datenbankkontos oder eines Remotemedienspeicher zur Verfügung gestellt. 
--	Ein Anwendung kann die Metadaten der einzelnen Benutzer als individuelles Dokument speichern. Die Metadaten von Johannes für Buch1 können z. B. in einem Dokument gespeichert werden, auf das über "/sammlungen/johannes/dokumente/buch1" verwiesen wird. 
--	Anhänge, die auf die Inhaltsseiten eines bestimmten Buchs für einen Benutzer verweisen, werden unter dem entsprechenden Dokument gespeichert, z. B. "/sammlungen/johannes/dokumente/buch1/kapitel1", "/sammlungen/johannes/dokumente/buch1/kapitel2" usw. 
+-	Der Buchinhalt selbst wird im Medienspeicher entweder als Teil des DocumentDB-Datenbankkontos oder eines Remotemedienspeicher zur Verfügung gestellt.
+-	Ein Anwendung kann die Metadaten der einzelnen Benutzer als individuelles Dokument speichern. Die Metadaten von Johannes für Buch1 können z. B. in einem Dokument gespeichert werden, auf das über "/sammlungen/johannes/dokumente/buch1" verwiesen wird.
+-	Anhänge, die auf die Inhaltsseiten eines bestimmten Buchs für einen Benutzer verweisen, werden unter dem entsprechenden Dokument gespeichert, z. B. "/sammlungen/johannes/dokumente/buch1/kapitel1", "/sammlungen/johannes/dokumente/buch1/kapitel2" usw.
 
 Beachten Sie, dass die oben aufgeführten Beispiele benutzerfreundliche IDs verwenden, um die Ressourcenhierarchie zu verdeutlichen. Der Zugriff auf Ressourcen erfolgt mithilfe eindeutiger Ressourcen-IDs über REST-APIs.
 
-Für die von DocumentDB verwalteten Medien verweist die "\_media"-Eigenschaft des Anhangs über seinen URI auf das Medium. DocumentDB stellt die Garbage Collection für die Medien sicher, wenn alle ausstehenden Referenzen entfernt werden. Der Anhang wird automatisch von DocumentDB generiert, wenn Sie neue Medien hochladen. Zudem wird die "\_media"-Eigenschaft gefüllt, um auf das neu hinzugefügte Medium zu verweisen. Wenn Sie die Medien in einem von Ihnen verwalteten Remote-BLOB-Speicher speichern (z. B. OneDrive, Azure Storage, DropBox usw.), können Sie weiterhin Anhänge verwenden, um auf die Medien zu verweisen. In diesem Fall erstellen Sie den Anhang selbst und füllen seine "\_media"-Eigenschaft.
+Für die von DocumentDB verwalteten Medien verweist die "\_media"-Eigenschaft des Anhangs über seinen URI auf das Medium. DocumentDB stellt die Garbage Collection für die Medien sicher, wenn alle ausstehenden Referenzen entfernt werden. Der Anhang wird automatisch von DocumentDB generiert, wenn Sie neue Medien hochladen. Zudem wird die "\_media"-Eigenschaft gefüllt, um auf das neu hinzugefügte Medium zu verweisen. Wenn Sie die Medien in einem von Ihnen verwalteten Remoteblobspeicher speichern (z. B. OneDrive, Azure Storage, DropBox usw.), können Sie weiterhin Anhänge verwenden, um auf die Medien zu verweisen. In diesem Fall erstellen Sie den Anhang selbst und füllen seine "\_media"-Eigenschaft.
 
-Wie die anderen Ressourcen können Anhänge mithilfe der REST-APIs oder eines Client-SDKs einfach erstellt, ersetzt, gelöscht, gelesen und aufgezählt werden. Wie bei Dokumenten folgt der Grad der Lesekonsistenz von Anhängen der Konsistenzrichtlinie des Datenbankkontos. Diese Richtlinie kann anforderungsbasiert in Abhängigkeit von den Anforderungen Ihrer Anwendung an die Datenkonsistenz außer Kraft gesetzt werden. Bei der Abfrage von Anhängen folgt die Lesekonsistenz dem für die Sammlung festgelegten Indizierungsmodus. Die Konsistenz folgt der Konsistenzrichtlinie des Kontos.
+Wie die anderen Ressourcen können Anhänge mithilfe der REST-APIs oder eines Client-SDKs einfach erstellt, ersetzt, gelöscht, gelesen und aufgezählt werden. Wie bei Dokumenten folgt der Grad der Lesekonsistenz von Anhängen der Konsistenzrichtlinie des Datenbankkontos. Diese Richtlinie kann anforderungsbasiert in Abhängigkeit von den Anforderungen Ihrer Anwendung an die Datenkonsistenz außer Kraft gesetzt werden. Bei der Abfrage von Anhängen folgt die Lesekonsistenz dem für die Sammlung festgelegten Indizierungsmodus. Die Konsistenz folgt der Konsistenzrichtlinie des Kontos.  
 ## Benutzer
 Ein DocumentDB-Benutzer stellt einen logischen Namespace für die Gruppierung von Berechtigungen dar. Ein DocumentDB-Benutzer kann einem Benutzer in einem Identitätsverwaltungssystem oder einer vordefinierten Anwendungsrolle entsprechen. Für DocumentDB stellt ein Benutzer einfach eine Abstraktion für die Gruppierung einer Reihe von Berechtigungen unter einer Datenbank dar.
 
@@ -425,9 +425,9 @@ Zur Implementierung der Mehrinstanzenfähigkeit für Ihre Anwendung können Sie 
 Da sich die Skalierung Ihrer Anwendung an die zunehmende Anzahl der Benutzer anpassen muss, können Sie verschiedene Methoden übernehmen, um die Datei horizontal zu partitionieren. Sie können jeden Benutzer wie folgt gestalten:
 
 -	Jeder Benutzer ist einer Datenbank zugeordnet.
--	Jeder Benutzer ist einer Sammlung zugeordnet. 
--	Dokumente entsprechen mehreren Benutzern für eine dedizierte Sammlung. 
--	Dokumente entsprechen mehreren Benutzern für eine Gruppe von Sammlungen.   
+-	Jeder Benutzer ist einer Sammlung zugeordnet.
+-	Dokumente entsprechen mehreren Benutzern für eine dedizierte Sammlung.
+-	Dokumente entsprechen mehreren Benutzern für eine Gruppe von Sammlungen.
 
 Unabhängig von der gewählten Strategie für die horizontale Partitionierung können Sie Ihre realen Benutzer als Benutzer in der DocumentDB-Datenbank abbilden und den einzelnen Benutzern differenzierte Berechtigungen zuweisen.
 
@@ -451,4 +451,4 @@ Weitere Informationen zum Arbeiten mit Ressourcen mithilfe von HTTP-Befehlen fin
 [2]: media/documentdb-resources/resources2.png
 [3]: media/documentdb-resources/resources3.png
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0921_2016-->

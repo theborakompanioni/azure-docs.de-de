@@ -20,7 +20,7 @@
 
 ## **Übersicht**
 
-Lösungsvorlagen dienen zur schnelleren Erstellung von E2E-Demos auf Grundlage der Cortana Intelligence Suite. Durch das Bereitstellen einer Vorlage wird Ihrem Abonnement die erforderliche Cortana Intelligence-Komponente bereitgestellt, und es wird eine Beziehung zwischen Vorlage und Komponente eingerichtet. Außerdem wird für die Datenpipeline ein Seeding mit Beispieldaten ausgeführt, die aus einer Anwendung zur Datensimulation generiert werden. Laden Sie den Datensimulator von dem bereitgestellten Link herunter, und installieren Sie ihn auf Ihrem lokalen Computer. Anweisungen zur Verwendung des Simulators finden Sie in der Datei „readme.txt“. Sobald die Datenpipeline mit den vom Simulator erzeugten Daten gefüllt ist, wird mit dem Erstellen von Machine Learning-Vorhersagen begonnen, die im Power BI-Dashboard visualisiert werden können.
+Lösungsvorlagen dienen zur schnelleren Erstellung von E2E-Demos auf Grundlage der Cortana Intelligence Suite. Durch das Bereitstellen einer Vorlage wird für Ihr Abonnement die erforderliche Cortana Intelligence-Komponente bereitgestellt, und es wird eine Beziehung zwischen Vorlage und Komponente eingerichtet. Außerdem wird für die Datenpipeline ein Seeding mit Beispieldaten ausgeführt, die aus einer Anwendung zur Datensimulation generiert werden. Laden Sie den Datensimulator von dem bereitgestellten Link herunter, und installieren Sie ihn auf Ihrem lokalen Computer. Anweisungen zur Verwendung des Simulators finden Sie in der Datei „readme.txt“. Sobald die Datenpipeline mit den vom Simulator erzeugten Daten gefüllt ist, wird mit dem Erstellen von Machine Learning-Vorhersagen begonnen, die im Power BI-Dashboard visualisiert werden können.
 
 Die Lösungsvorlage finden Sie [hier](https://gallery.cortanaintelligence.com/SolutionTemplate/Demand-Forecasting-for-Energy-1).
 
@@ -196,7 +196,7 @@ In diesem Abschnitt wird beschrieben, wie Sie das Power BI-Dashboard einrichten
 
 ### Einrichten des Dashboards für heiße Daten
 
-In den folgenden Schritten wird erklärt, wie Sie die Echtzeit-Datenausgabe aus den beim Bereitstellen der Lösung generierten Stream Analytics-Aufträgen visualisieren. Zum Ausführen der folgenden Schritte benötigen Sie ein [Power BI Online](http://www.powerbi.com/)-Konto. Wenn Sie über kein Konto verfügen, können Sie [eines erstellen](https://powerbi.microsoft.com/pricing).
+In den folgenden Schritten wird erklärt, wie Sie die Echtzeit-Datenausgabe aus den beim Bereitstellen der Lösung generierten Stream Analytics-Aufträgen visualisieren. Zum Ausführen der folgenden Schritte benötigen Sie ein Konto für [Power BI online](http://www.powerbi.com/). Wenn Sie über kein Konto verfügen, können Sie [eines erstellen](https://powerbi.microsoft.com/pricing).
 
 1.  Fügen Sie die Power BI-Ausgabe in Azure Stream Analytics hinzu.
 
@@ -260,15 +260,15 @@ In einer Pipeline mit kalten Daten besteht das grundlegende Ziel darin, die Beda
 
 	-   Im nächsten Ausklappfenster werden im linken Bereich zwei Optionen angezeigt: **Windows** und **Datenbank**. Klicken Sie auf **Datenbank**, und geben Sie **Benutzername** und **Kennwort** ein. (Hierbei handelt es sich um den Benutzernamen und das Kennwort, die Sie beim ersten Bereitstellen der Lösung und beim erstmaligen Erstellen einer Azure SQL-Datenbank eingegeben haben.) Aktivieren Sie unter ***Wählen Sie die Ebene aus, auf die diese Einstellungen anzuwenden sind*** die Option für die Datenbankebene. Klicken Sie anschließend auf **Verbinden**.
 
-	-   Wenn die vorherige Seite wieder angezeigt wird, schließen Sie das Fenster. Klicken Sie in der eingeblendeten Meldung auf **Übernehmen**. Klicken Sie zum Schluss auf die Schaltfläche **Speichern**, um die Änderungen zu speichern. Für Ihre Power BI-Datei wurde nun eine Verbindung mit dem Server eingerichtet. Wenn Ihre Visualisierungen leer sind, stellen Sie sicher, dass Sie die Auswahl für die Visualisierungen aufheben, um alle Daten zu visualisieren. Klicken Sie dazu in der rechten oberen Ecke der Legenden auf das Radierersymbol. Klicken Sie auf die Schaltfläche zum Aktualisieren, damit neue Daten in den Visualisierungen widergespiegelt werden. Anfangs sehen Sie in den Visualisierungen nur die Seedingdaten, weil die Data Factory planmäßig alle drei Stunden aktualisiert wird. Wenn Sie die Daten nach drei Stunden aktualisieren, sehen Sie in den Visualisierungen neue Vorhersagen.
+	-   Wenn die vorherige Seite wieder angezeigt wird, schließen Sie das Fenster. Es wird eine Meldung angezeigt – klicken Sie darin auf **Übernehmen**. Klicken Sie zum Schluss auf die Schaltfläche **Speichern**, um die Änderungen zu speichern. Für Ihre Power BI-Datei wurde nun eine Verbindung mit dem Server eingerichtet. Wenn Ihre Visualisierungen leer sind, stellen Sie sicher, dass Sie die Auswahl für die Visualisierungen aufheben, um alle Daten zu visualisieren. Klicken Sie dazu in der rechten oberen Ecke der Legenden auf das Radierersymbol. Klicken Sie auf die Schaltfläche zum Aktualisieren, damit neue Daten in den Visualisierungen widergespiegelt werden. Anfangs sehen Sie in den Visualisierungen nur die Seedingdaten, weil die Data Factory planmäßig alle drei Stunden aktualisiert wird. Wenn Sie die Daten nach drei Stunden aktualisieren, sehen Sie in den Visualisierungen neue Vorhersagen.
 
-3. (Optional) Veröffentlichen Sie das Dashboard für kalte Daten in [Power BI Online](http://www.powerbi.com/). Beachten Sie, dass Sie für diesen Schritt ein Power BI-Konto (oder ein Office 365-Konto) benötigen.
+3. (Optional) Veröffentlichen des Dashboards für kalte Daten in [Power BI online](http://www.powerbi.com/). Beachten Sie, dass Sie für diesen Schritt ein Power BI-Konto (oder ein Office 365-Konto) benötigen.
 
 	-   Klicken Sie auf **Veröffentlichen**. Nach einigen Sekunden wird durch eine Meldung mit einem grünen Häkchen bestätigt, dass die Veröffentlichung in Power BI erfolgreich war. Klicken Sie auf den Link unter „demoprediction.pbix in Power BI öffnen“. Ausführliche Anweisungen finden Sie unter [Veröffentlichen aus Power BI Desktop](https://support.powerbi.com/knowledgebase/articles/461278-publish-from-power-bi-desktop).
 
 	-   Klicken Sie zum Erstellen eines neuen Dashboards im linken Bereich neben dem Abschnitt **Dashboards** auf das Symbol **+**. Geben Sie den Namen „Demo für Bedarfsprognose“ für das neue Dashboard ein.
 
-	-   Wenn Sie den Bericht geöffnet haben, klicken Sie auf ![](media\cortana-analytics-technical-guide-demand-forecast\PowerBIpic6.png), um alle Visualisierungen an Ihr Dashboard anzuheften. Ausführliche Informationen finden Sie unter [Anheften einer Kachel an ein Power BI-Dashboard aus einem Bericht](https://support.powerbi.com/knowledgebase/articles/430323-pin-a-tile-to-a-power-bi-dashboard-from-a-report). Wechseln Sie zur Dashboardseite, passen Sie die Größe und Position der Visualisierungen an, und bearbeiten Sie deren Titel. Ausführliche Anweisungen zum Bearbeiten der Titel finden Sie unter [Bearbeiten einer Kachel – Größe ändern, verschieben, umbenennen, anheften, löschen, Link hinzufügen](https://powerbi.microsoft.com/documentation/powerbi-service-edit-a-tile-in-a-dashboard/#rename). Nachfolgend sehen Sie ein Beispieldashboard, an das einige Visualisierungen für kalte Daten angeheftet sind.
+	-   Wenn Sie den Bericht geöffnet haben, klicken Sie auf ![](media\cortana-analytics-technical-guide-demand-forecast\PowerBIpic6.png), um alle Visualisierungen an Ihr Dashboard anzuheften. Ausführliche Informationen finden Sie unter [Anheften einer Kachel an ein Power BI-Dashboard aus einem Bericht](https://support.powerbi.com/knowledgebase/articles/430323-pin-a-tile-to-a-power-bi-dashboard-from-a-report). Wechseln Sie zur Dashboardseite, passen Sie die Größe und Position der Visualisierungen an, und bearbeiten Sie deren Titel. Ausführliche Anweisungen zum Bearbeiten der Titel finden Sie unter [Bearbeiten einer Kachel – Größe ändern, verschieben, umbenennen, anheften, löschen, Link hinzufügen](https://powerbi.microsoft.com/documentation/powerbi-service-edit-a-tile-in-a-dashboard/#rename) Nachfolgend sehen Sie ein Beispieldashboard, an das einige Visualisierungen für kalte Daten angeheftet sind.
 
 		![](media\cortana-analytics-technical-guide-demand-forecast\PowerBIpic7.png)
 
@@ -296,4 +296,4 @@ Es stehen zwei Tools zur Verfügung, mit denen Sie die Gesamtkosten zum Ausführ
 ## **Bestätigungen**
 Dieser Artikel wurde von der Datenanalystin Yijing Chen und dem Softwareentwickler Qiu Min bei Microsoft verfasst.
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0921_2016-->

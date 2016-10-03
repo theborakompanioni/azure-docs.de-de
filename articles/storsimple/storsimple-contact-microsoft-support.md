@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="06/20/2016"
+   ms.date="09/21/2016"
    ms.author="alkohli" />
 
 # Microsoft-Support kontaktieren
@@ -45,10 +45,10 @@ Führen Sie die folgenden Schritte aus, um eine Supportanfrage zu erstellen.
 3. Führen Sie im Dialogfeld **Grundlagen** Folgendes aus:
 	1. Wählen Sie aus der Dropdownliste **Problemtyp** den Eintrag **Technisch** aus.
 	2. Wählen Sie aus der Dropdownliste ein **Abonnement** aus.
-	3. Wählen Sie aus der Dropdownliste **Dienst** den Eintrag **StorSimple** aus. 
+	3. Wählen Sie aus der Dropdownliste **Dienst** den Eintrag **StorSimple** aus.
 	4. Wählen Sie aus der Dropdownliste einen **Supportplan** aus. Sie benötigen einen kostenpflichtigen Supportplan, um technischen Support zu erhalten.
 
-4. Klicken Sie auf **Weiter**. Das Dialogfeld **Problem** wird angezeigt.
+4. Klicken Sie auf **Next**. Das Dialogfeld **Problem** wird angezeigt.
 
 	![Neue Supportanfrage (Bereich)](./media/storsimple-contact-microsoft-support/Ibiza5a.png)
 
@@ -56,13 +56,13 @@ Führen Sie die folgenden Schritte aus, um eine Supportanfrage zu erstellen.
 
     1.  Wählen Sie aus der Dropdownliste einen **Schweregrad** aus.
     2.  Wählen Sie aus der Dropdownliste einen **Problemtyp** aus.
-    3.  Wählen Sie aus der Dropdownliste eine **Kategorie** aus. 
+    3.  Wählen Sie aus der Dropdownliste eine **Kategorie** aus.
     4.  Beschreiben Sie Ihr Problem im Feld **Details**.
     5.  Geben Sie im Feld **Zeitraum** das Datum, die Uhrzeit und die Zeitzone an, die dem letzten Auftreten von Ihrem Problem entsprechen.
     6.  Klicken Sie unter **Dateiupload** auf das Ordnersymbol, um Ihr Supportpaket zu suchen.
     7.  Aktivieren Sie das Kontrollkästchen **Diagnoseinformationen freigeben**.
 
-6. Klicken Sie auf **Weiter**. Das Dialogfeld **Kontaktinformationen** wird angezeigt.
+6. Klicken Sie auf **Next**. Das Dialogfeld **Kontaktinformationen** wird angezeigt.
 
 	![Neue Supportanfrage (Bereich)](./media/storsimple-contact-microsoft-support/Ibiza6a.png)
 
@@ -102,4 +102,4 @@ Führen Sie zum Starten einer Supportsitzung die folgenden Schritte aus:
 
 > [AZURE.IMPORTANT] Sie können den Supportzugriff deaktivieren, indem Sie `Disable-HcsSupportAccess` deaktivieren. Das StorSimple-Gerät versucht acht Stunden nach dem Initiieren der Sitzung ebenfalls, den Supportzugriff zu deaktivieren. Es wird empfohlen, die Anmeldeinformationen für das StorSimple-Gerät nach dem Initiieren einer Supportsitzung zu ändern.
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0921_2016-->

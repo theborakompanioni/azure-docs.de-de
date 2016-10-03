@@ -1,10 +1,10 @@
 <properties 
-	pageTitle="Livestreaming mit Azure Media Services zum Erstellen von Multi-Bitrate-Datenströmen" 
+	pageTitle="Livestreaming mit Azure Media Services zum Erstellen von Multi-Bitrate-Datenströmen | Microsoft Azure" 
 	description="In diesem Thema wird beschrieben, wie ein Kanal eingerichtet wird, von dem ein Single-Bitrate-Livedatenstrom aus einem lokalen Encoder empfangen und eine Livecodierung zu einem Datenstrom mit adaptiver Bitrate mit Media Services ausgeführt wird. Der Stream kann über einen oder mehrere Streamingendpunkte an Wiedergabe-Clientanwendungen übermittelt werden. Dazu dienen die folgenden adaptiven Streamingprotokolle: HLS, Smooth Stream, MPEG DASH, HDS." 
 	services="media-services" 
 	documentationCenter="" 
-	authors="juliako,anilmur" 
-	manager="dwrede" 
+	authors="anilmur" 
+	manager="erikre" 
 	editor=""/>
 
 <tags 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/22/2016"
-	ms.author="juliako"/>
+	ms.date="09/19/2016"
+	ms.author="juliako;anilmur"/>
 
 #Livestreaming mit Azure Media Services zum Erstellen von Multi-Bitrate-Datenströmen
 
@@ -59,7 +59,7 @@ In der folgenden Tabelle ist die Zuordnung der Kanalstatus mit den Abrechnungsmo
  
 Kanalstatus|Portal-UI-Indikatoren|Werden Gebühren berechnet?
 ---|---|---
-Wird gestartet|Wird gestartet|Nein (Übergangsstatus)
+Wird gestartet|Starting|Nein (Übergangsstatus)
 Wird ausgeführt|Bereit (keine ausgeführten Programme)<br/>oder<br/>Streaming (mindestens ein laufendes Programm)|JA
 Wird beendet|Wird beendet|Nein (Übergangsstatus)
 Beendet|Beendet|Nein
@@ -261,7 +261,7 @@ Sie können die IP-Adressen definieren, die zum Herstellen einer Verbindung mit 
 
 In diesem Abschnitt wird beschrieben, wie die Einstellungen für den Liveencoder innerhalb des Kanals angepasst werden können, wenn der **Codierungstyp** des Kanals die Einstellung **Standard** aufweist.
 
->[AZURE.NOTE]Bei der Eingabe mehrerer Sprachspuren und beim Ausführen von Live Encoding mit Azure wird nur RTP für die Eingabe mehrerer Sprachen unterstützt. Sie können bis zu 8 Audiodatenströme mit MPEG-2 TS über RTP definieren. Das Erfassen mehrerer Audiospuren mit RTMP oder Smooth Streaming wird derzeit nicht unterstützt. Beim Ausführen der Livecodierung mit [lokalen Liveencodern](media-services-live-streaming-with-onprem-encoders.md) gibt es keine solche Einschränkung, weil alle an AMS gesendeten Daten ohne weitere Verarbeitung über einen Kanal weitergeleitet werden.
+>[AZURE.NOTE] Bei der Eingabe mehrerer Sprachspuren und beim Ausführen von Live Encoding mit Azure wird nur RTP für die Eingabe mehrerer Sprachen unterstützt. Sie können bis zu 8 Audiodatenströme mit MPEG-2 TS über RTP definieren. Das Erfassen mehrerer Audiospuren mit RTMP oder Smooth Streaming wird derzeit nicht unterstützt. Beim Ausführen der Livecodierung mit [lokalen Liveencodern](media-services-live-streaming-with-onprem-encoders.md) gibt es keine solche Einschränkung, weil alle an AMS gesendeten Daten ohne weitere Verarbeitung über einen Kanal weitergeleitet werden.
 
 ###Quelle für AD-Marker
 
@@ -334,7 +334,7 @@ Wenn Livecodierung bei Ihrem Kanal aktiviert ist, verfügen Sie über eine video
 
 Beim Signalisieren von Werbespots können Sie die folgenden Eigenschaften festlegen:
 
-###Duration (Dauer)
+###Duration
 
 Dies ist die Dauer der Werbepause in Sekunden. Es muss sich um einen positiven Wert ungleich null handeln, damit die Werbepause gestartet werden kann. Wird eine Werbepause ausgeführt, und die Dauer für die CueId der aktuellen Werbepause lautet null, so wird die Werbepause abgebrochen.
 
@@ -395,7 +395,7 @@ Zum Löschen von archivierten Inhalten beenden und löschen Sie das Programm und
 
 Auch nach dem Beenden und Löschen des Programms können die Benutzer archivierte Inhalte als bedarfsgesteuertes Video streamen, solange das Medienobjekt nicht gelöscht wurde.
 
-Wenn Sie die archivierten Inhalte beibehalten möchten, diese aber nicht für das Streaming verfügbar sein sollen, löschen Sie den Streaming-Locator.
+Wenn Sie die archivierten Inhalte beibehalten möchten, diese aber nicht für das Streaming verfügbar sein sollen, löschen Sie den Streaminglocator.
 
 
 ##Abrufen einer Miniaturansicht des Livefeeds
@@ -416,7 +416,7 @@ In der folgenden Tabelle ist die Zuordnung der Kanalstatus mit den Abrechnungsmo
  
 Kanalstatus|Portal-UI-Indikatoren|In Rechnung gestellt?
 ---|---|---
-Wird gestartet|Wird gestartet|Nein (Übergangsstatus)
+Starting|Starting|Nein (Übergangsstatus)
 Wird ausgeführt|Bereit (keine ausgeführten Programme)<br/>oder<br/>Streaming (mindestens ein laufendes Programm)|Ja
 Wird beendet|Wird beendet|Nein (Übergangsstatus)
 Beendet|Beendet|Nein
@@ -457,7 +457,9 @@ Wählen Sie **Portal**, **.NET** oder **REST API**, um auf Informationen zum Ers
 - [REST-API](https://msdn.microsoft.com/library/azure/dn783458.aspx)
 
 
-##Media Services-Lernpfade
+##Nächster Schritt
+
+Überprüfen Sie die Media Services-Lernpfade.
 
 [AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
@@ -468,7 +470,7 @@ Wählen Sie **Portal**, **.NET** oder **REST API**, um auf Informationen zum Ers
 
 ##Verwandte Themen
 
-[Bereitstellen von Livestreamingereignissen mit Azure Media Services](media-services-live-streaming-workflow.md)
+[Bereitstellen von Livestreamingereignissen mit Azure Media Services](media-services-overview.md)
 
 [Media Services-Konzepte](media-services-concepts.md)
 
@@ -476,4 +478,4 @@ Wählen Sie **Portal**, **.NET** oder **REST API**, um auf Informationen zum Ers
 
 [live-overview]: ./media/media-services-manage-live-encoder-enabled-channels/media-services-live-streaming-new.png
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0921_2016-->

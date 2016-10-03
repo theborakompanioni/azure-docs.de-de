@@ -27,10 +27,10 @@ Clouddienstrollen (Workerrollen und Webrollen) verwenden einen Gast-Agent für d
 
 Das Verhalten von Tests hängt von folgenden Faktoren ab:
 
-- Anzahl der erfolgreichen Tests, bei der eine Instanz als aktiv bezeichnet werden kann.
-- Anzahl der fehlerhaften Tests, bei der eine Instanz als inaktiv bezeichnet wird.
+- Anzahl der erfolgreichen Tests, bei der eine Instanz als „In Betrieb“ bezeichnet werden kann.
+- Anzahl der fehlerhaften Tests, bei der eine Instanz als „Ausgefallen“ bezeichnet wird.
 
-Die Werte für Timeout und Häufigkeit, die in SuccessFailCount angegeben sind, legen fest, ob eine Instanz ausgeführt oder nicht ausgeführt werden soll. Im Azure-Portal wird das Timeout auf das Doppelte des Werts für die Häufigkeit festgelegt.
+Das Timeout geteilt durch den Wert der Testhäufigkeit entspricht „SuccessFailCount“. Dieser Wert gibt an, ob eine Instanz als „In Betrieb“ oder als „Ausgefallen“ bezeichnet wird. Im Azure-Portal wird das Timeout auf das Doppelte des Werts für die Häufigkeit festgelegt.
 
 Die Konfiguration von Tests muss für alle Instanzen mit Lastenausgleich für einen Endpunkt (mit anderen Worten: eine Gruppe mit Lastenausgleich) identisch sein. Das heißt, dass Sie nicht für jede Rolleninstanz oder VM im selben gehosteten Dienst für eine bestimmte Endpunktkombination eine unterschiedliche Testkonfiguration wählen können. Beispielsweise muss jede Instanz identische lokale Ports und Timeouts aufweisen.
 
@@ -77,11 +77,11 @@ TCP-Tests leiten eine Verbindung über einen Drei-Wege-Handshake mit dem definie
 
 Weitere Informationen zum Konfigurieren eines HTTP-Integritätstests oder eines TCP-Tests finden Sie unter [Erste Schritte zum Erstellen eines Load Balancers mit Internetzugriff in Resource Manager unter Verwendung von PowerShell](load-balancer-get-started-internet-arm-ps.md#create-lb-rules-nat-rules-a-probe-and-a-load-balancer).
 
-## Erneutes Hinzufügen fehlerfreier Instanzen zum Load Balancer
+## Erneutes Hinzufügen fehlerfreier Instanzen zur Load Balancer-Rotation
 
 TCP- und HTTP-Tests werden als fehlerfrei eingestuft und markieren die Rolleninstanz als fehlerfrei, wenn:
 
-. Beim ersten Start der VM erhält der Load Balancer einen positiven Test.
+- Beim ersten Start der VM erhält der Load Balancer einen positiven Test.
 - Der Wert von „SuccessFailCount“ (oben beschrieben) definiert die Anzahl erfolgreicher Tests, die erforderlich sind, um die Rolleninstanz als fehlerfrei zu markieren. Wenn eine Rolleninstanz entfernt wurde, muss die Anzahl der erfolgreichen, aufeinanderfolgenden Tests gleich oder größer sein als der Wert von SuccessFailCount, damit die Rolleninstanz als aktiv markiert wird.
 
 >[AZURE.NOTE] Wenn die Integrität einer Rolleninstanz schwankt, wartet der Load Balancer länger, ehe die Rolleninstanz wieder in den fehlerfreien Zustand versetzt wird. Dies erfolgt zum Schutz der Benutzer und Infrastruktur über die Richtlinie.
@@ -90,4 +90,4 @@ TCP- und HTTP-Tests werden als fehlerfrei eingestuft und markieren die Rollenins
 
 Mit der [Protokollanalyse für den Load Balancer](load-balancer-monitor-log.md) können Sie den Testintegritätsstatus und die Testanzahl überprüfen. Die Protokollierung kann mit Power BI oder Azure Operational Insights verwendet werden, um Statistiken zum Integritätsstatus des Load Balancers bereitzustellen.
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -22,9 +22,9 @@ Sie erhalten Informationen zur Azure-Protokollintegration, zu den wichtigsten Fu
 
 ## Übersicht
 
-Sowohl PaaS- (Platform-as-a-Service) als auch IaaS-Lösungen (Infrastructure-as-a-Service), die in Azure gehostet werden, generieren eine große Menge an Daten in Sicherheitsprotokollen. Diese Protokolle enthalten wichtige Informationen, die wertvolle Einblicke in Richtlinienverstöße, interne und externe Bedrohungen, Probleme bei der Einhaltung gesetzlicher Compliancevorgaben sowie Anomalien bei Netzwerk-, Host- und Benutzeraktivität liefern.
+PaaS- (Platform-as-a-Service) als auch IaaS-Lösungen (Infrastructure-as-a-Service), die in Azure gehostet werden, generieren in Sicherheitsprotokollen eine große Menge von Daten. Diese Protokolle enthalten wichtige Informationen, die wertvolle Einblicke in Richtlinienverstöße, interne und externe Bedrohungen, Probleme bei der Einhaltung gesetzlicher Compliancevorgaben sowie Anomalien bei Netzwerk-, Host- und Benutzeraktivität liefern.
 
-Mit der Azure-Protokollintegration können Sie nicht aufbereitete Protokolle aus Ihren Azure-Ressourcen in Ihre lokalen SIEM-Systeme (Security Information and Event Management) integrieren. Bei der Azure-Protokollintegration werden Azure-Diagnosen aus Ihren virtuellen Windows- *(WAD)* und Linux-Computern *(LAD)* sowie Diagnosedaten aus Partnerlösungen wie Web Application Firewall (WAF) erfasst. Diese Integration bietet ein einheitliches Dashboard für alle Ihre Assets (ganz gleich ob lokal oder in der Cloud), sodass Sie Sicherheitsereignisse aggregieren, korrelieren, analysieren und entsprechende Warnungen ausgeben können.
+Mit der Azure-Protokollintegration können Sie nicht aufbereitete Protokolle aus Ihren Azure-Ressourcen in Ihre lokalen SIEM-Systeme (Security Information and Event Management) integrieren. Bei der Azure-Protokollintegration werden Azure-Diagnosen aus Ihren virtuellen Windows-Computern *(WAD)* sowie Diagnosedaten aus Partnerlösungen wie Web Application Firewall (WAF) erfasst. Diese Integration bietet ein einheitliches Dashboard für alle Ihre Assets (ganz gleich ob lokal oder in der Cloud), sodass Sie Sicherheitsereignisse aggregieren, korrelieren, analysieren und entsprechende Warnungen ausgeben können.
 
 ![Azure-Protokollintegration][1]
 
@@ -36,6 +36,8 @@ Azure führt für jeden Azure-Dienst eine umfassende Protokollierung durch. Dies
 - **Datenebenenprotokolle**, die Einblicke in die Ereignisse ermöglichen, die bei Verwendung einer Azure-Ressource auftreten. Beispiele für diesen Protokolltyp sind System-, Sicherheits- und Anwendungsprotokolle des Windows-Ereignisprotokolls auf einem virtuellen Computer.
 
 Die Azure-Protokollintegration bietet aktuell Unterstützung für die Integration von Azure-Überwachungsprotokollen, VM-Protokollen und Azure Security Center-Warnungen.
+
+Wenn Sie Fragen zur Azure-Protokollintegration haben, senden Sie eine E-Mail an [AzSIEMteam@microsoft.com](mailto:AzSIEMteam@microsoft.com)
 
 ## Nächste Schritte
 
@@ -51,4 +53,4 @@ In diesem Dokument wurde die Azure-Protokollintegration vorgestellt. Weitere Inf
 <!--Image references-->
 [1]: ./media/security-azure-log-integration-overview/azure-log-integration.png
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/24/2016"
+   ms.date="09/21/2016"
    ms.author="alkohli" />
 
 # Verwalten Ihres StorSimple-Geräts mithilfe des StorSimple Manager-Diensts
@@ -57,7 +57,7 @@ Die folgende Tabelle gibt Aufschluss über die Navigationshierarchie der Benutze
 |Zielseite|Seiten auf Dienstebene|Seiten auf Geräteebene|Seiten auf Geräteebene|
 |---|---|---|---|
 |StorSimple Manager-Dienst|Dienstdashboard|Gerätedashboard||
-||Geräte →|Überwachen|
+||Geräte →|Monitor|
 ||Sicherungskatalog|Volumecontainer→|Volumes|
 ||Konfigurieren (Dienst)|Sicherungsrichtlinien||
 ||Aufträge|Konfigurieren (Gerät)|
@@ -114,4 +114,4 @@ Informationen zu Problemen beim alltäglichen Betrieb Ihres StorSimple-Geräts o
 
 Falls sich die Probleme nicht beheben lassen und Sie eine Serviceanfrage erstellen müssen, finden Sie unter [Microsoft-Support kontaktieren](storsimple-contact-microsoft-support.md) weitere Informationen.
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0921_2016-->

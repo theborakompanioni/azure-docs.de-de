@@ -138,6 +138,49 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceW
 }
 ```
 
+## F#-Beispielcode für eine HTTP-Triggerfunktion
+
+Der Beispielcode sucht in der Abfragezeichenfolge oder im Text der HTTP-Anforderung nach einem `name`-Parameter.
+
+```fsharp
+open System.Net
+open System.Net.Http
+open FSharp.Interop.Dynamic
+
+let Run(req: HttpRequestMessage) =
+    async {
+        let q =
+            req.GetQueryNameValuePairs()
+                |> Seq.tryFind (fun kv -> kv.Key = "name")
+        match q with
+        | Some kv ->
+            return req.CreateResponse(HttpStatusCode.OK, "Hello " + kv.Value)
+        | None ->
+            let! data = Async.AwaitTask(req.Content.ReadAsAsync<obj>())
+            try
+                return req.CreateResponse(HttpStatusCode.OK, "Hello " + data?name)
+            with e ->
+                return req.CreateErrorResponse(HttpStatusCode.BadRequest, "Please pass a name on the query string or in the request body")
+    } |> Async.StartAsTask
+```
+
+Sie benötigen eine `project.json`-Datei, die wie folgt mithilfe von NuGet auf die Assemblys `FSharp.Interop.Dynamic` und `Dynamitey` verweist:
+
+```json
+{
+  "frameworks": {
+    "net46": {
+      "dependencies": {
+        "Dynamitey": "1.0.2",
+        "FSharp.Interop.Dynamic": "3.0.0"
+      }
+    }
+  }
+}
+```
+
+Dabei wird NuGet zum Abrufen der Abhängigkeiten verwendet, auf die dann in Ihrem Skript verwiesen wird.
+
 ## Node.js-Beispielcode für eine HTTP-Triggerfunktion 
 
 Dieser Beispielcode sucht in der Abfragezeichenfolge oder im Text der HTTP-Anforderung nach einem `name`-Parameter.
@@ -187,6 +230,31 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
 }
 ```
 
+## F#-Beispielcode für eine GitHub-WebHook-Funktion
+
+Dieser Beispielcode protokolliert GitHub-Kommentare.
+
+```fsharp
+open System.Net
+open System.Net.Http
+open FSharp.Interop.Dynamic
+open Newtonsoft.Json
+
+type Response = {
+    body: string
+}
+
+let Run(req: HttpRequestMessage, log: TraceWriter) =
+    async {
+        let! content = req.Content.ReadAsStringAsync() |> Async.AwaitTask
+        let data = content |> JsonConvert.DeserializeObject
+        log.Info(sprintf "GitHub WebHook triggered! %s" data?comment?body)
+        return req.CreateResponse(
+            HttpStatusCode.OK,
+            { body = sprintf "New GitHub comment: %s" data?comment?body })
+    } |> Async.StartAsTask
+```
+
 ## Node.js-Beispielcode für eine GitHub-WebHook-Funktion 
 
 Dieser Beispielcode protokolliert GitHub-Kommentare.
@@ -203,4 +271,4 @@ module.exports = function (context, data) {
 
 [AZURE.INCLUDE [Nächste Schritte](../../includes/functions-bindings-next-steps.md)]
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0921_2016-->
