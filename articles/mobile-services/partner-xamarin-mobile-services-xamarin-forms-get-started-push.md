@@ -777,7 +777,7 @@ Schließlich müssen Sie das Skript, das für den Einfügevorgang in der Tabelle
 
 	![Empfangene Toast-Benachrichtigung](./media/partner-xamarin-mobile-services-xamarin-forms-get-started-push/mobile-quickstart-push5-wp8.png)
 
-	>[AZURE.NOTE]Wenn Sie sich noch in der App befinden, erhalten Sie die Benachrichtigung nicht. Um eine Toast-Benachrichtigung zu empfangen, während die App aktiv ist, müssen Sie das [ShellToastNotificationReceived] (http://msdn.microsoft.com/library/windowsphone/develop/microsoft.phone.notification.httpnotificationchannel.shelltoastnotificationreceived(v=vs.105).aspx)-Ereignis behandeln.
+	>[AZURE.NOTE]Wenn Sie sich noch in der App befinden, erhalten Sie die Benachrichtigung nicht. Um eine Toast-Benachrichtigung zu empfangen, während die App aktiv ist, müssen Sie das [ShellToastNotificationReceived] \(http://msdn.microsoft.com/library/windowsphone/develop/microsoft.phone.notification.httpnotificationchannel.shelltoastnotificationreceived(v=vs.105).aspx)-Ereignis behandeln.
 
 <!-- Anchors. -->
 [Generate the certificate signing request]: #certificates

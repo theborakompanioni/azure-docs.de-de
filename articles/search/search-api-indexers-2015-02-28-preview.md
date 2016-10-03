@@ -718,7 +718,7 @@ Statuscode "204 Kein Inhalt" bei erfolgreicher Antwort.
 <tr>
 <td>char, nchar, varchar, nvarchar</td>
 <td>Edm.String<br/>Collection(Edm.String)</td>
-<td>Ausführliche Informationen zum Transformieren einer Zeichenfolgenspalte in Collection(Edm.String) finden Sie unter [Feldzuordnungsfunktionen] (#FieldMappingFunctions) in diesem Dokument. </td>
+<td>Ausführliche Informationen zum Transformieren einer Zeichenfolgenspalte in Collection(Edm.String) finden Sie unter [Feldzuordnungsfunktionen](#FieldMappingFunctions) in diesem Dokument. </td>
 </tr>
 <tr>
 <td>smalldatetime, datetime, datetime2, date, datetimeoffset</td>

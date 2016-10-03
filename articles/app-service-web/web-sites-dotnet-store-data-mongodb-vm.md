@@ -47,7 +47,7 @@ Die folgenden Kenntnisse sind für dieses Lernprogramm sinnvoll, jedoch nicht ob
 
 Bei diesem Lernprogramm wird vorausgesetzt, dass Sie in Azure einen virtuellen Computer erstellt haben. Nach dem Erstellen des virtuellen Computers müssen Sie MongoDB auf dem virtuellen Computer installieren:
 
-* Informationen zum Erstellen eines virtuellen Windows-Computers und zum Installieren von MongoDB finden Sie unter [Install MongoDB on a virtual machine running Windows Server in Azure][InstallMongoOnWindowsVM] (Installieren von MongoDB auf einem virtuellen Computer mit Windows Server in Azure, in englischer Sprache).
+* Informationen zum Erstellen eines virtuellen Windows-Computers und zum Installieren von MongoDB finden Sie unter [Install MongoDB on a virtual machine running Windows Server in Azure][InstallMongoOnWindowsVM] \(Installieren von MongoDB auf einem virtuellen Computer mit Windows Server in Azure, in englischer Sprache).
 
 
 Nachdem Sie den virtuellen Computer in Azure erstellt und MongoDB installiert haben, merken Sie sich den DNS-Namen des virtuellen Computers (z. B. "testlinuxvm.cloudapp.net") und den externen Port für MongoDB, den Sie im Endpunkt angegeben haben. Sie benötigen diese Informationen später im Lernprogramm.
@@ -431,7 +431,7 @@ Wenn der Endpunkt des virtuellen Computers einen anderen externen Port für Mong
 
  	private string connectionString = "mongodb://testlinuxvm.cloudapp.net:12345";
 
-Weitere Informationen über MongoDB-Verbindungszeichenfolgen finden Sie unter [Connections][MongoConnectionStrings] (Verbindungen, in englischer Sprache).
+Weitere Informationen über MongoDB-Verbindungszeichenfolgen finden Sie unter [Connections][MongoConnectionStrings] \(Verbindungen, in englischer Sprache).
 
 ## Testen der lokalen Bereitstellung ##
 

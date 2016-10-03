@@ -35,7 +35,7 @@ Sie erstellen eine Anwendung mit dem Webframework Django (siehe auch alternative
 - Python 2.7 oder 3.4
 - setuptools, pip, virtualenv (nur Python 2.7)
 - Git
-- [Python Tools für Visual Studio][] (PTVS) – Hinweis: diese sind optional
+- [Python Tools für Visual Studio][] \(PTVS) – Hinweis: diese sind optional
 
 **Hinweis**: TFS-Veröffentlichung wird derzeit für Python-Projekte nicht unterstützt.
 

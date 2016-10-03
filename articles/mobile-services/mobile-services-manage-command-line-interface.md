@@ -39,7 +39,7 @@ Die folgende Liste enthält Informationen zur Installation der Befehlszeilentool
 
 * **Mac**: Laden Sie den [Azure SDK Installer][mac-installer] herunter. Öffnen Sie die heruntergeladene PKG-Datei, und führen Sie die Installationsschritte durch, zu denen Sie aufgefordert werden.
 
-* **Linux**: Installieren Sie die neueste Version von [Node.js][nodejs-org] (siehe [Install Node.js via Package Manager][install-node-linux] (Installieren von Node.js mithilfe des Paket-Managers, in englischer Sprache)), und führen Sie dann den folgenden Befehl aus:
+* **Linux**: Installieren Sie die neueste Version von [Node.js][nodejs-org] \(siehe [Install Node.js via Package Manager][install-node-linux] \(Installieren von Node.js mithilfe des Paket-Managers, in englischer Sprache)), und führen Sie dann den folgenden Befehl aus:
 
 	npm install azure-cli -g
 

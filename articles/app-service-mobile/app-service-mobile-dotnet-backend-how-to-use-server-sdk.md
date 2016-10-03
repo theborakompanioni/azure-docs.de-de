@@ -45,7 +45,7 @@ Wählen Sie auf dem Blatt _Erste Schritte_ unter **Erstellen einer Tabellen-API*
 
 ### Erstellen eines .NET-Back-Ends mithilfe von Visual Studio 2013 und Visual Studio 2015
 
-Installieren Sie das [Azure SDK für .NET][4] (Version 2.9.0 oder höher), um in Visual Studio ein Azure Mobile Apps-Projekt zu erstellen. Erstellen Sie nach dem Installieren des SDK mit den folgenden Schritten eine ASP.NET-Anwendung:
+Installieren Sie das [Azure SDK für .NET][4] \(Version 2.9.0 oder höher), um in Visual Studio ein Azure Mobile Apps-Projekt zu erstellen. Erstellen Sie nach dem Installieren des SDK mit den folgenden Schritten eine ASP.NET-Anwendung:
 
 1. Öffnen Sie das Dialogfeld **Neues Projekt** (über *Datei* > **Neu** > **Projekt...**).
 2. Erweitern Sie **Vorlagen** > **Visual C#**, und wählen Sie **Web** aus.
@@ -418,7 +418,7 @@ Der Zugriff auf die Installations-ID ist über die **installationId**-Eigenschaf
 
 Alle Tags, die vom Client während der Registrierung von Pushbenachrichtigungen bereitgestellt werden, werden vom Back-End beim Erstellen der Installation ignoriert. Damit ein Client der Installation Tags hinzufügen kann, müssen Sie eine benutzerdefinierte API erstellen, die Tags nach dem obigen Muster hinzufügt.
 
-Eine Beispiel hierfür finden Sie unter [Client-added push notification tags][5] (Vom Client hinzugefügte Tags für Pushbenachrichtigungen) im abgeschlossenen Schnellstartbeispiel für Mobile App Service-Apps.
+Eine Beispiel hierfür finden Sie unter [Client-added push notification tags][5] \(Vom Client hinzugefügte Tags für Pushbenachrichtigungen) im abgeschlossenen Schnellstartbeispiel für Mobile App Service-Apps.
 
 ##<a name="push-user"></a>Vorgehensweise: Senden von Pushbenachrichtigungen an einen authentifizierten Benutzer
 

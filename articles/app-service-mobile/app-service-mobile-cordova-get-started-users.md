@@ -57,7 +57,7 @@ Als Nächstes werden Sie die App aktualisieren, um Benutzer zu authentifizieren,
         <meta http-equiv="Content-Security-Policy" content="default-src 'self'
 			data: gap: https://login.windows.net https://yourapp.azurewebsites.net; style-src 'self'">
 
-    Ersetzen Sie `https://login.windows.net` durch den OAuth-Host aus der oben stehenden Tabelle. Weitere Informationen zu diesem Metatag finden Sie in der Dokumentation [Whitelist Guide] (Whitelist-Ratgeber).
+    Ersetzen Sie `https://login.windows.net` durch den OAuth-Host aus der oben stehenden Tabelle. Weitere Informationen zu diesem Metatag finden Sie in der Dokumentation [Whitelist Guide] \(Whitelist-Ratgeber).
 
     Beachten Sie, dass einige Authentifizierungsanbieter bei der Verwendung auf geeigneten Mobilgeräten keine Änderungen an Content-Security-Policy erfordern. Beispielsweise sind bei Verwendung der Google-Authentifizierung auf einem Android-Gerät keine Änderungen an Content-Security-Policy notwendig.
 

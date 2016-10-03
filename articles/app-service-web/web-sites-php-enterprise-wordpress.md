@@ -49,7 +49,7 @@ Mithilfe von Azure [Traffic Manager][trafficmanager] ist es möglich, Ihre WordP
 
 Innerhalb jeder Region kann die WordPress-Website weiterhin über mehrere Web-App-Instanzen skaliert werden. Doch diese Skalierung ist regionsspezifisch. Regionen mit hohem Datenverkehr können anders als Regionen mit niedrigem Datenverkehr skaliert werden.
 
-Die Replikation und das Routing an mehrere MySQL-Datenbanken kann mithilfe des [CDBR-Hochverfügbarkeitsrouters][cleardbscale] (links) oder von [MySQL Cluster CGE][cge] erfolgen.
+Die Replikation und das Routing an mehrere MySQL-Datenbanken kann mithilfe des [CDBR-Hochverfügbarkeitsrouters][cleardbscale] \(links) oder von [MySQL Cluster CGE][cge] erfolgen.
 
 ### Bereitstellung in mehreren Regionen mit Medienspeicherung und Zwischenspeichern
 

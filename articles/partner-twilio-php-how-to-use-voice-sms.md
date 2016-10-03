@@ -74,7 +74,7 @@ Wenn Sie sich für ein Twilio-Konto anmelden, erhalten Sie eine Konto-ID und ein
 ## <a id="create_app"></a>Erstellen einer PHP-Anwendung
 PHP-Anwendungen, die den Twilio-Dienst verwenden und in Azure ausgeführt werden, unterscheiden sich nicht von anderen PHP-Anwendungen, die den Twilio-Dienst verwenden. Twilio-Dienste sind REST-basiert und können in PHP auf verschiedene Arten aufgerufen werden. Dieser Artikel konzentriert sich auf die Verwendung von Twilio mit der [Twilio-Bibliothek für PHP von GitHub][twilio_php]. Weitere Informationen zur Verwendung der Twilio-Bibliothek für PHP finden Sie unter [http://readthedocs.org/docs/twilio-php/en/latest/index.html][twilio_lib_docs].
 
-Ausführliche Informationen zur Erstellung und Bereitstellung von Twilio/PHP-Anwendungen in Azure finden Sie unter [How to Make a Phone Call Using Twilio in a Java Application on Azure][howto_phonecall_php] (Ausführen eines Telefonanrufs mit Twilio in einer Java-Anwendung in Azure, in englischer Sprache).
+Ausführliche Informationen zur Erstellung und Bereitstellung von Twilio/PHP-Anwendungen in Azure finden Sie unter [How to Make a Phone Call Using Twilio in a Java Application on Azure][howto_phonecall_php] \(Ausführen eines Telefonanrufs mit Twilio in einer Java-Anwendung in Azure, in englischer Sprache).
 
 ## <a id="configure_app"></a>Konfigurieren einer Anwendung für die Verwendung von Twilio-Bibliotheken
 Sie können die Anwendung auf zwei verschiedene Arten für die Twilio-Bibliothek in PHP konfigurieren:
@@ -234,9 +234,9 @@ Zusätzlich zu den hier gezeigten Beispielen bietet Twilio webbasierte APIs, mit
 ## <a id="NextSteps"></a>Nächste Schritte
 Nachdem Sie nun mit den Grundlagen des Twilio-Dienstes vertraut sind, finden Sie unter diesen Links weitere Informationen:
 
-* [Twilio Security Guidelines][twilio_security_guidelines] (Twilio-Sicherheitsrichtlinien, in englischer Sprache)
+* [Twilio Security Guidelines][twilio_security_guidelines] \(Twilio-Sicherheitsrichtlinien, in englischer Sprache)
 * [Twilio-Anleitungen und Beispielcode][twilio_howtos]
-* [Twilio Quickstart Tutorials][twilio_quickstarts] (Twilio-Schnellstart-Lernprogramme, in englischer Sprache) 
+* [Twilio Quickstart Tutorials][twilio_quickstarts] \(Twilio-Schnellstart-Lernprogramme, in englischer Sprache) 
 * [Twilio auf GitHub][twilio_on_github]
 * [Kontakt zum Twilio-Support][twilio_support]
 

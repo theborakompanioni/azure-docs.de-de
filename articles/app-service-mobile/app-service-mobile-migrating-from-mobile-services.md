@@ -42,7 +42,7 @@ Weitere Informationen zu den Vorteilen von Azure App Service finden Sie im Thema
 
 Bevor Sie mit größeren Arbeiten an Ihrer Website beginnen, sollten Sie [Ihre Mobile Service-Skripts] und Ihre SQL-Datenbank sichern.
 
-Wenn Sie den Migrationsprozess vor der Migration Ihrer Produktionswebsite testen möchten, duplizieren Sie Ihren Azure Mobile Service für die Produktion innerhalb einer neuen [Azure-Region] (zusammen mit einer Kopie der Datenquelle), und testen Sie die Migration anhand der neuen URL. Sie benötigen außerdem eine Testclientimplementierung, die auf die Testsite verweist, um die migrierte Website ordnungsgemäß zu testen.
+Wenn Sie den Migrationsprozess vor der Migration Ihrer Produktionswebsite testen möchten, duplizieren Sie Ihren Azure Mobile Service für die Produktion innerhalb einer neuen [Azure-Region] \(zusammen mit einer Kopie der Datenquelle), und testen Sie die Migration anhand der neuen URL. Sie benötigen außerdem eine Testclientimplementierung, die auf die Testsite verweist, um die migrierte Website ordnungsgemäß zu testen.
 
 ## <a name="migrating-site"></a>Migrieren Ihrer Websites
 

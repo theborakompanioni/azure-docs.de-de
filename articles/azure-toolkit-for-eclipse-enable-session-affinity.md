@@ -43,7 +43,7 @@ Das Eclipse-Toolkit ermöglicht dies durch Installieren eines speziellen IIS-Mod
 * Die Dauer der Initialisierung der einzelnen Rollen verlängert sich.
 * Es wird ein interner Endpunkt zur Umleitung des Datenverkehrs hinzugefügt, wie oben beschrieben.
 
-Ein Beispiel zum Verwalten von Sitzungsdaten bei aktivierter Sitzungsaffinität finden Sie unter [How to Maintain Session Data with Session Affinity][] (in englischer Sprache).
+Ein Beispiel zum Verwalten von Sitzungsdaten bei aktivierter Sitzungsaffinität finden Sie unter [How to Maintain Session Data with Session Affinity][] \(in englischer Sprache).
 
 ## Weitere Informationen ##
 
@@ -55,7 +55,7 @@ Ein Beispiel zum Verwalten von Sitzungsdaten bei aktivierter Sitzungsaffinität 
 
 [How to Maintain Session Data with Session Affinity (in englischer Sprache)][]
 
-Weitere Informationen zum Verwenden von Azure mit Java finden Sie im [Azure Java Developer Center][] (in englischer Sprache).
+Weitere Informationen zum Verwenden von Azure mit Java finden Sie im [Azure Java Developer Center][] \(in englischer Sprache).
 
 <!-- URL List -->
 

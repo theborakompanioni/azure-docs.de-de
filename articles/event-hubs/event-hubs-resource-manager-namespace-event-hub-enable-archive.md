@@ -22,9 +22,9 @@ In diesem Artikel wird beschrieben, wie Sie eine Azure Resource Manager-Vorlage 
 
 Weitere Informationen zum Erstellen von Vorlagen finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen][].
 
-Weitere Informationen zur Vorgehensweise und Muster zu Benennungskonventionen für Azure-Ressourcen finden Sie unter [Recommended naming conventions for Azure resources][] (Empfohlene Benennungskonventionen für Azure-Ressourcen).
+Weitere Informationen zur Vorgehensweise und Muster zu Benennungskonventionen für Azure-Ressourcen finden Sie unter [Recommended naming conventions for Azure resources][] \(Empfohlene Benennungskonventionen für Azure-Ressourcen).
 
-Die vollständige Vorlage finden Sie unter [Event Hub and enable Archive template][] (Event Hub- und Archive-Aktivierungsvorlage) auf GitHub.
+Die vollständige Vorlage finden Sie unter [Event Hub and enable Archive template][] \(Event Hub- und Archive-Aktivierungsvorlage) auf GitHub.
 
 >[AZURE.NOTE]
 Um die neuesten Vorlagen zu finden, rufen Sie den Katalog [Azure-Schnellstartvorlagen][] auf, und suchen Sie nach „Event Hubs“.
