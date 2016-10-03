@@ -216,7 +216,7 @@ Das Push-Plug-In nutzt Android Google Play-Dienste für Pushbenachrichtigungen.
 
 2.  Klicken Sie auf **Pakete installieren**, und warten Sie, bis die Installation abgeschlossen ist.
 
-Die aktuellen erforderlichen Bibliotheken werden in der [phonegap-plugin-push installation documentation] (Dokumentation zur Pushinstallation des PhoneGap-Plug-Ins) aufgelistet.
+Die aktuellen erforderlichen Bibliotheken werden in der [phonegap-plugin-push installation documentation]   \(Dokumentation zur Pushinstallation des PhoneGap-Plug-Ins) aufgelistet.
 
 #### Testen von Pushbenachrichtigungen in der App unter Android
 

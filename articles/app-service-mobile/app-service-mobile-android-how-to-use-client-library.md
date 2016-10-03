@@ -578,7 +578,7 @@ Für die Authentifizierung in Ihrer App sind drei Schritte erforderlich:
 
 Sie können Berechtigungen für Tabellen vergeben, um den Zugriff auf bestimmte Operationen auf authentifizierte Benutzer zu beschränken. Außerdem können Sie die SID eines authentifizierten Benutzers verwenden, um Anfragen zu verändern.
 
-Diese beiden ersten Aufgaben können Sie im [Azure-Portal](https://portal.azure.com/) erledigen. Weitere Informationen finden Sie unter [Get started with authentication] (Erste Schritte zur Authentifizierung, in englischer Sprache).
+Diese beiden ersten Aufgaben können Sie im [Azure-Portal](https://portal.azure.com/) erledigen. Weitere Informationen finden Sie unter [Get started with authentication] \(Erste Schritte zur Authentifizierung, in englischer Sprache).
 
 ### <a name="caching"></a>Hinzufügen des Authentifizierungscodes zur App
 
