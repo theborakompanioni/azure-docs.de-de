@@ -209,7 +209,7 @@ In diesem Abschnitt erstellen Sie im klassischen Portal einen Testbenutzer mit d
 
 8. Führen Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** die folgenden Schritte aus:
 
-	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-thefundingportal-tutorial/create_aaduser_08.png)
+	![Erstellen einesAzure AD-Testbenutzers](./media/active-directory-saas-thefundingportal-tutorial/create_aaduser_08.png)
 
     a. Notieren Sie den Wert von **Neues Kennwort**.
 
@@ -219,7 +219,7 @@ In diesem Abschnitt erstellen Sie im klassischen Portal einen Testbenutzer mit d
 
 ### Erstellen eines The Funding Portal-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in The Funding Portal einen Benutzer namens Britta Simon. In diesem Abschnitt erstellen Sie in The Funding Portal einen Benutzer namens Britta Simon. Falls Sie nicht wissen, wie Sie Britta Simon in The Funding Portal hinzufügen sollen, können Sie sich an das The Funding Portal-Supportteam wenden, um den Testbenutzer hinzuzufügen und SSO zu aktivieren. Verwenden Sie hierfür die E-Mail-Adresse info@regenteducation.com.
+In diesem Abschnitt erstellen Sie in The Funding Portal einen Benutzer namens Britta Simon. Falls Sie nicht wissen, wie Sie Britta Simon in The Funding Portal hinzufügen sollen, können Sie sich an das The Funding Portal-Supportteam wenden, um den Testbenutzer hinzuzufügen und SSO zu aktivieren. Verwenden Sie hierfür die E-Mail-Adresse info@regenteducation.com.
 
 ### Zuweisen des Azure AD-Testbenutzers
 
@@ -282,4 +282,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel „The Funding Portal“ klicken, sol
 [204]: ./media/active-directory-saas-thefundingportal-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-thefundingportal-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0921_2016-->

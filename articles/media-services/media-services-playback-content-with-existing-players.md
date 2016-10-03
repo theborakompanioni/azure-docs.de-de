@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Wiedergabe von Inhalten" 
+	pageTitle="Wiedergabe von Inhalten | Microsoft Azure" 
 	description="In diesem Thema finden Sie vorhandene Player, die Sie zum Wiedergeben Ihrer Inhalte verwenden können." 
 	services="media-services" 
 	documentationCenter="" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/22/2016" 
+	ms.date="09/19/2016" 
 	ms.author="juliako"/>
 
 
@@ -21,18 +21,18 @@
 
 Azure Media Services unterstützt zahlreiche gängige Streamingformate wie Smooth Streaming, HTTP Live Streaming und MPEG-Dash. In diesem Thema finden Sie Verweise auf vorhandene Player, die Sie zum Testen von Datenströmen verwenden können.
 
->[AZURE.NOTE]Für die Wiedergabe dynamisch paketierter oder verschlüsselter Inhalte müssen Sie sicherstellen, dass mindestens eine Streamingeinheit für den Streamingendpunkt abgerufen wurde, über den die Inhalte bereitgestellt werden sollen. Informationen zum Skalieren von Streamingeinheiten finden Sie unter [Skalieren von Streamingeinheiten](media-services-manage-origins.md#scale_streaming_endpoints).
+>[AZURE.NOTE]Für die Wiedergabe dynamisch paketierter oder verschlüsselter Inhalte müssen Sie sicherstellen, dass mindestens eine Streamingeinheit für den Streamingendpunkt abgerufen wurde, über den die Inhalte bereitgestellt werden sollen. Informationen zum Skalieren von Streamingeinheiten finden Sie unter [Skalieren von Streamingeinheiten](media-services-portal-manage-streaming-endpoints.md).
 
 ###Klassisches Azure-Portal – Media Services-Inhaltsplayer
 
-Im **klassischen Azure-Portal** wird ein Inhaltsplayer bereitgestellt, mit dem Sie Ihre Videos testen können.
+Im **Azure**-Portal wird ein Inhaltsplayer bereitgestellt, mit dem Sie Ihre Videos testen können.
 
-Klicken Sie auf den gewünschten Videoinhalt (vergewissern Sie sich, dass er [veröffentlicht](media-services-manage-content.md#publish) wurde), und klicken Sie auf die Schaltfläche **Abspielen** am unteren Rand des Portals.
- 
+Klicken Sie auf den gewünschten Videoinhalt (vergewissern Sie sich, dass er [veröffentlicht](media-services-portal-publish.md) wurde), und klicken Sie auf die Schaltfläche **Abspielen** am unteren Rand des Portals.
+
 Folgende Überlegungen sollten berücksichtigt werden:
 
 - Der **MEDIA SERVICES-INHALTSPLAYER** gibt die Inhalt vom standardmäßigen Streamingendpunkt wieder. Wenn Sie die Wiedergabe von einem anderen Streamingendpunkt starten möchten, verwenden Sie einen anderen Player. Beispiel: [Azure Media Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html).
- 
+
 
 ![AMSPlayer][AMSPlayer]
 
@@ -48,7 +48,7 @@ Verwenden Sie [Azure Media Player](http://amsplayer.azurewebsites.net/azuremedia
 
 ###Flash Player
 
-####AES-verschlüsselt mit Token 
+####AES-verschlüsselt mit Token
 
 [http://aestoken.azurewebsites.net](http://aestoken.azurewebsites.net)
 
@@ -90,7 +90,7 @@ Informationen zum Entwickeln eigener Player finden Sie unter [Entwickeln von Vid
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
- 
+
 [AMSPlayer]: ./media/media-services-playback-content-with-existing-players/media-services-portal-player.png
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0921_2016-->

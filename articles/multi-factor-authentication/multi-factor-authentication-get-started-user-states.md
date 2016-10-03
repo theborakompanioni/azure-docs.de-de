@@ -1,26 +1,26 @@
 <properties 
-	pageTitle="Benutzerstatus in Microsoft Azure Multi-Factor Authentication" 
-	description="Erfahren Sie etwas über Benutzerstatus in Azure MFA." 
-	services="multi-factor-authentication" 
-	documentationCenter="" 
-	authors="billmath" 
-	manager="stevenpo" 
+	pageTitle="Benutzerstatus in Microsoft Azure Multi-Factor Authentication"
+	description="Erfahren Sie etwas über Benutzerstatus in Azure MFA."
+	services="multi-factor-authentication"
+	documentationCenter=""
+	authors="kgremban"
+	manager="femila"
 	editor="curtand"/>
 
-<tags 
-	ms.service="multi-factor-authentication" 
-	ms.workload="identity" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/04/2016" 
-	ms.author="billmath"/>
+<tags
+	ms.service="multi-factor-authentication"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/04/2016"
+	ms.author="kgremban"/>
 
 # Benutzerstatus in Azure Multi-Factor Authentication
 
 Benutzerkonten in Azure Multi-Factor Authentication können die folgenden drei Zustände aufweisen:
 
-Zustand | Beschreibung |Nicht-Browser-Apps betroffen| Hinweise 
+Zustand | Beschreibung |Nicht-Browser-Apps betroffen| Hinweise
 :-------------: | :-------------: |:-------------: |:-------------: |
 Deaktiviert | Der Standardzustand für einen neuen Benutzer, der nicht für Multi-Factor Authentication registriert ist.|Nein|Der Benutzer verwendet keine Multi-Factor Authentication.
 Aktiviert |Der Benutzer wurde für Multi-Factor Authentication registriert.|Nein. Sie werden weiterhin ausgeführt, bis die Registrierung abgeschlossen ist.|Der Benutzer ist aktiviert, seine Registrierung ist jedoch nicht abgeschlossen. Er wird beim nächsten Anmelden aufgefordert, den Vorgang abzuschließen.
@@ -63,4 +63,4 @@ Ein Benutzerstatus ändert sich abhängig davon, ob er für MFA eingerichtet wur
 8.  Sie werden aufgefordert, dies zu bestätigen. Klicken Sie auf **Ja**. ![Benutzer deaktivieren](./media/multi-factor-authentication-get-started-user-states/userstate3.png)
 9.  Es sollte angezeigt werden, dass der Vorgang erfolgreich abgeschlossen wurde. Klicken Sie auf **Schließen**. ![Benutzer deaktivieren](./media/multi-factor-authentication-get-started-user-states/userstate4.png)
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0921_2016-->

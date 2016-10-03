@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/31/2016"
+	ms.date="09/16/2016"
 	ms.author="dastrock"/>
 
 # v2.0-Tokenreferenz
@@ -21,7 +21,7 @@
 Der Endpunkt mit der Version 2.0 stellt bei der Verarbeitung der einzelnen [Authentifizierungsflüsse](active-directory-v2-flows.md) verschiedene Arten von Sicherheitstoken aus. In diesem Dokument sind das Format, die Sicherheitsmerkmale und der Inhalt aller Tokentypen beschrieben.
 
 > [AZURE.NOTE]
-	Nicht alle Szenarios und Funktionen von Azure Active Directory werden vom v2.0-Endpunkt unterstützt. Lesen Sie die Informationen zu den [Einschränkungen des v2.0-Endpunkts](active-directory-v2-limitations.md), um zu bestimmen, ob Sie den v2.0-Endpunkt verwenden sollten.
+	Nicht alle Szenarien und Funktionen von Azure Active Directory werden vom v2.0-Endpunkt unterstützt. Lesen Sie die Informationen zu den [Einschränkungen des v2.0-Endpunkts](active-directory-v2-limitations.md), um herauszufinden, ob Sie den v2.0-Endpunkt verwenden sollten.
 
 ## Tokentypen
 
@@ -29,7 +29,7 @@ Der Endpunkt mit der Version 2.0 unterstützt das [OAuth 2.0-Autorisierungspro
 
 Ein Trägertoken ist ein einfaches Sicherheitstoken, das dem „Träger“ den Zugriff auf eine geschützte Ressource ermöglicht. In diesem Kontext ist der „Träger“ jede beliebige Partei, die das Token vorweisen kann. Um das Trägertoken zu erhalten, muss sich die Partei zwar zunächst bei Azure AD authentifizieren, falls jedoch keine Maßnahmen ergriffen werden, um das Token bei der Übertragung und Speicherung zu schützen, kann das Token von einer fremden Partei abgefangen und verwendet werden. Einige Sicherheitstoken verfügen über einen integrierten Mechanismus, der eine unbefugte Verwendung durch nicht autorisierte Parteien verhindert. Trägertoken besitzen dagegen keinen solchen Mechanismus und müssen über einen sicheren Kanal wie etwa Transport Layer Security (HTTPS) übertragen werden. Wird ein Trägertoken als Klartext gesendet, kann eine böswillige Partei das Token mithilfe eines Man-in-the-Middle-Angriffs abfangen und damit unautorisiert auf eine geschützte Ressource zugreifen. Die gleichen Sicherheitsprinzipien gelten für die (Zwischen-)Speicherung von Trägertoken zur späteren Verwendung. Stellen Sie daher sicher, dass Ihre App Bearertoken stets auf sichere Weise überträgt und speichert. Weitere Sicherheitsüberlegungen zu Trägertoken finden Sie unter [RFC 6750, Abschnitt 5](http://tools.ietf.org/html/rfc6750).
 
-Viele der vom Endpunkt mit der Version 2.0 ausgestellten Token werden als Json-Webtoken (JWTs) implementiert. Ein JWT stellt eine kompakte, URL-sichere Methode zum Übertragen von Informationen zwischen zwei Parteien dar. Die in JWTs enthaltenen Informationen werden als „Ansprüche“ oder Assertionen von Informationen zum Träger und Antragsteller des Tokens bezeichnet. Die Ansprüche in JWTs sind JSON-Objekte, die für die Übertragung codiert und serialisiert wurden. Da die vom Endpunkt mit der Version 2.0 ausgestellten JWTs signiert, aber nicht verschlüsselt sind, können Sie den Inhalt eines JWTs problemlos für Debugzwecke untersuchen. Dafür stehen mehrere Tools zur Verfügung, beispielsweise [calebb.net](http://jwt.calebb.net). Weitere Informationen zu JWTs finden Sie in der [JWT-Spezifikation](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html).
+Viele der vom Endpunkt mit der Version 2.0 ausgestellten Token werden als Json-Webtoken (JWTs) implementiert. Ein JWT stellt eine kompakte, URL-sichere Methode zum Übertragen von Informationen zwischen zwei Parteien dar. Die in JWTs enthaltenen Informationen werden als „Ansprüche“ oder Assertionen von Informationen zum Träger und Antragsteller des Tokens bezeichnet. Die Ansprüche in JWTs sind JSON-Objekte, die für die Übertragung codiert und serialisiert wurden. Da die vom Endpunkt mit der Version 2.0 ausgestellten JWTs signiert, aber nicht verschlüsselt sind, können Sie den Inhalt eines JWTs problemlos für Debugzwecke untersuchen. Weitere Informationen zu JWTs finden Sie in der [JWT-Spezifikation](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html).
 
 ## ID-Token
 
@@ -51,7 +51,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VL
 | Name | Anspruch | Beispielwert | Beschreibung |
 | ----------------------- | ------------------------------- | ------------ | --------------------------------- |
 | Zielgruppe | `aud` | `6731de76-14a6-49ae-97bc-6eba6914391e` | Identifiziert den vorgesehenen Empfänger des Tokens. In ID-Token ist die Zielgruppe die Anwendungs-ID der App, die Ihrer App im App-Registrierungsportal zugewiesen wurde. Ihre App sollte diesen Wert überprüfen und das Token ablehnen, wenn er nicht übereinstimmt. |
-| Aussteller | `iss` | `https://login.microsoftonline.com/b9419818-09af-49c2-b0c3-653adc1f376e/v2.0 ` | Identifiziert den Sicherheitstokendienst (Security Token Service, STS), der das Token und den Azure AD-Mandanten, in dem der Benutzer authentifiziert wurde, erstellt und zurückgibt. Ihre App sollte den Ausstelleranspruch überprüfen, um sicherzustellen, dass das Token vom Endpunkt mit der Version 2.0 stammt. Sie sollte auch den GUID-Abschnitt des Anspruchs nutzen, um die Gruppe der Mandanten zu beschränken, die sich bei der App anmelden dürfen. Die GUID, die angibt, dass der Benutzer ein Consumer-Benutzer eines Microsoft-Kontos ist, lautet `9188040d-6c67-4c5b-b112-36a304b66dad`. |
+| Issuer (Aussteller) | `iss` | `https://login.microsoftonline.com/b9419818-09af-49c2-b0c3-653adc1f376e/v2.0 ` | Identifiziert den Sicherheitstokendienst (Security Token Service, STS), der das Token und den Azure AD-Mandanten, in dem der Benutzer authentifiziert wurde, erstellt und zurückgibt. Ihre App sollte den Ausstelleranspruch überprüfen, um sicherzustellen, dass das Token vom Endpunkt mit der Version 2.0 stammt. Sie sollte auch den GUID-Abschnitt des Anspruchs nutzen, um die Gruppe der Mandanten zu beschränken, die sich bei der App anmelden dürfen. Die GUID, die angibt, dass der Benutzer ein Consumer-Benutzer eines Microsoft-Kontos ist, lautet `9188040d-6c67-4c5b-b112-36a304b66dad`. |
 | Ausgestellt um | `iat` | `1452285331` | Die Zeit, zu der das Token ausgestellt wurde (dargestellt als Epochenzeit) |
 | Ablaufzeit | `exp` | `1452289231` | Die Zeit, zu der das Token ungültig wird (dargestellt als Epochenzeit). Ihre App sollte mit diesem Anspruch die Gültigkeit der Tokenlebensdauer überprüfen. |
 | Nicht vor | `nbf` | `1452285331` | Die Zeit, zu der das Token gültig wird (dargestellt als Epochenzeit). Dieser Wert ist normalerweise mit dem Ausstellungszeitpunkt identisch. Ihre App sollte mit diesem Anspruch die Gültigkeit der Tokenlebensdauer überprüfen. |
@@ -63,7 +63,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VL
 | Name | `name` | `Babe Ruth` | Der Namensanspruch gibt einen von Menschen lesbaren Wert an, der den Antragsteller des Tokens identifiziert. Der Wert ist nicht zwingend eindeutig, kann geändert werden und dient nur zu Anzeigezwecken. Der Bereich `profile` ist erforderlich, um diesen Anspruch zu empfangen. |
 | E-Mail | `email` | `thegreatbambino@nyy.onmicrosoft.com` | Die primäre E-Mail-Adresse, die mit dem Benutzerkonto verknüpft ist (sofern vorhanden). Sein Wert ist änderbar und kann sich für einen bestimmten Benutzer im Laufe der Zeit ändern. Der Bereich `email` ist erforderlich, um diesen Anspruch zu empfangen. |
 | Bevorzugter Benutzername | `preferred_username` | `thegreatbambino@nyy.onmicrosoft.com` | Der primäre Benutzername, der zum Darstellen des Benutzers im Endpunkt mit der Version 2.0 verwendet wird. Dabei kann es sich um eine E-Mail-Adresse, eine Telefonnummer oder einen generischen Benutzernamen ohne bestimmtes Format handeln. Sein Wert ist änderbar und kann sich für einen bestimmten Benutzer im Laufe der Zeit ändern. Der Bereich `profile` ist erforderlich, um diesen Anspruch zu empfangen. |
-| Betreff | `sub` | `MF4f-ggWMEji12KynJUNQZphaUTvLcQug5jdF2nl01Q` | Der Prinzipal, für den das Token Informationen zusichert, z. B. der Benutzer einer App. Dieser Wert ist unveränderlich und kann nicht neu zugewiesen oder wiederverwendet werden. Daher kann er für die sichere Durchführung von Autorisierungsüberprüfungen verwendet werden, z. B. wenn das Token verwendet wird, um auf eine Ressource zuzugreifen. Da der Antragsteller immer in den Token vorhanden ist, die Azure AD ausstellt, wird die Nutzung dieses Werts in einem allgemeinen Autorisierungssystem empfohlen. |
+| Subject (Antragsteller) | `sub` | `MF4f-ggWMEji12KynJUNQZphaUTvLcQug5jdF2nl01Q` | Der Prinzipal, für den das Token Informationen zusichert, z. B. der Benutzer einer App. Dieser Wert ist unveränderlich und kann nicht neu zugewiesen oder wiederverwendet werden. Daher kann er für die sichere Durchführung von Autorisierungsüberprüfungen verwendet werden, z. B. wenn das Token verwendet wird, um auf eine Ressource zuzugreifen. Da der Antragsteller immer in den Token vorhanden ist, die Azure AD ausstellt, wird die Nutzung dieses Werts in einem allgemeinen Autorisierungssystem empfohlen. |
 | ObjectId | `oid` | `a1dbdde8-e4f9-4571-ad93-3059e3750d23` | Die Objekt-ID des Geschäfts- oder Schulkontos im Azure AD-System. Dieser Anspruch wird nicht für persönliche Microsoft-Konten ausgestellt. Der Bereich `profile` ist erforderlich, um diesen Anspruch zu empfangen. |
 
 
@@ -107,7 +107,7 @@ ID-Token werden mit branchenüblichen asymmetrischen Verschlüsselungsalgorithme
 }
 ```
 
-Der `alg`-Anspruch gibt den Algorithmus an, mit dem das Token signiert wurde. Der Anspruch `kid` hingegen bezeichnet den bestimmten öffentlichen Schlüssel, mit dem das Token signiert wurde.
+Der `alg`-Anspruch gibt den Algorithmus an, mit dem das Token signiert wurde. Der `kid`-Anspruch hingegen bezeichnet den bestimmten öffentlichen Schlüssel, mit dem das Token signiert wurde.
 
 Zu einem beliebigen Zeitpunkt signiert der Endpunkt mit der Version 2.0 vielleicht ein ID-Token mithilfe eines bestimmten Satzes von Paaren aus öffentlichen und privaten Schlüsseln. Der Endpunkt mit der Version 2.0 wechselt regelmäßig durch die möglichen Sätze von Schlüsseln. Ihre App muss also auf die automatische Verarbeitung dieser Schlüsseländerungen ausgelegt sein. Die vom Endpunkt mit der Version 2.0 verwendeten öffentlichen Schlüssel sollten alle 24 Stunden auf Änderungen überprüft werden.
 
@@ -134,7 +134,7 @@ Wenn Ihre App bei der Benutzeranmeldung ein ID-Token empfängt, sollte sie auch 
 - **Nonce**: Zur Abwehr von Tokenwiedergabeangriffen.
 - und vieles mehr...
 
-Eine vollständige Liste der Anspruchsüberprüfungen, die von Ihrer App ausgeführt werden sollten, finden Sie in der [OpenID Connect-Spezifikation](http://openid.net/specs/openid-connect-core-1_0.html#IDTokenValidation).
+Eine vollständige Liste mit Anspruchsüberprüfungen, die von Ihrer App ausgeführt werden sollten, finden Sie in der [OpenID Connect-Spezifikation](http://openid.net/specs/openid-connect-core-1_0.html#IDTokenValidation).
 
 Details zu den erwarteten Werten für diese Ansprüche finden Sie oben im Abschnitt [ID-Token](#id_tokens).
 
@@ -143,7 +143,7 @@ Details zu den erwarteten Werten für diese Ansprüche finden Sie oben im Abschn
 
 Die folgenden Angaben zur Tokengültigkeitsdauer dienen ausschließlich zu Informationszwecken, da sie beim Entwickeln und Debuggen von Apps hilfreich sein können. In Ihren Apps darf nicht davon ausgegangen werden, dass die Gültigkeitsdauer konstant bleibt, da sich diese jederzeit ändern kann.
 
-| Tokenverschlüsselung | Gültigkeitsdauer | Beschreibung |
+| Token | Gültigkeitsdauer | Beschreibung |
 | ----------------------- | ------------------------------- | ------------ |
 | ID-Token (Geschäfts- oder Schulkonten) | 1 Stunde | ID-Token gelten in der Regel eine Stunde. Ihre Web-App kann die gleiche Dauer für die Sitzung mit dem Benutzer verwenden (empfohlen) oder eine andere Sitzungsdauer wählen. Falls Ihre App ein neues ID-Token abrufen muss, muss sie lediglich eine neue Anmeldeanforderung an den Autorisierungsendpunkt mit der Version 2.0 senden. Wenn der Benutzer eine gültige Browsersitzung für den Endpunkt mit der Version 2.0 nutzt, müssen unter Umständen die Anmeldeinformationen nicht erneut eingegeben werden. |
 | ID-Token (Persönliche Konten) | 24 Stunden | ID-Token für persönliche Konten gelten in der Regel 24 Stunden. Ihre Web-App kann die gleiche Dauer für die Sitzung mit dem Benutzer verwenden (empfohlen) oder eine andere Sitzungsdauer wählen. Falls Ihre App ein neues ID-Token abrufen muss, muss sie lediglich eine neue Anmeldeanforderung an den Autorisierungsendpunkt mit der Version 2.0 senden. Wenn der Benutzer eine gültige Browsersitzung für den Endpunkt mit der Version 2.0 nutzt, müssen unter Umständen die Anmeldeinformationen nicht erneut eingegeben werden. |
@@ -154,4 +154,4 @@ Die folgenden Angaben zur Tokengültigkeitsdauer dienen ausschließlich zu Infor
 | Autorisierungscodes (Geschäfts- oder Schulkonten) | 10 Minuten | Autorisierungscodes haben absichtlich eine kurze Gültigkeitsdauer. Sie müssen umgehend für Zugriffs- und Aktualisierungstoken eingelöst werden, wenn sie empfangen werden. |
 | Autorisierungscodes (Persönliche Konten) | 5 Minuten | Autorisierungscodes haben absichtlich eine kurze Gültigkeitsdauer. Sie müssen umgehend für Zugriffs- und Aktualisierungstoken eingelöst werden, wenn sie empfangen werden. Für persönliche Konten ausgestellte Autorisierungscodes können auch nur einmal verwendet werden. |
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/21/2016" 
+	ms.date="09/20/2016" 
 	ms.author="arramac"/>
 
 # Partitionieren und Skalieren von Daten in DocumentDB
@@ -261,7 +261,7 @@ Ab dem DocumentDB SDK 1.9.0 werden Optionen zur parallelen Ausführung von Abfra
 
 Sie können die parallele Ausführung von Abfragen verwalten, indem Sie die folgenden Parameter optimieren:
 
-- Durch Festlegen von `MaxDegreeOfParallelism` können Sie den Grad der Parallelität steuern, d.h. die maximale Anzahl gleichzeitiger Verbindungen mit den Partitionen der Sammlung. Wenn Sie diese Einstellung auf „-1“ festlegen, wird der Grad der Parallelität vom SDK verwaltet.
+- Durch Festlegen von `MaxDegreeOfParallelism` können Sie den Grad der Parallelität steuern, d.h. die maximale Anzahl gleichzeitiger Verbindungen mit den Partitionen der Sammlung. Wenn Sie diese Einstellung auf „-1“ festlegen, wird der Grad der Parallelität vom SDK verwaltet. Falls `MaxDegreeOfParallelism` nicht angegeben oder auf 0 (Standardwert) festgelegt wurde, besteht eine einzelne Netzwerkverbindung mit den Partitionen der Sammlung.
 - Durch Festlegen von `MaxBufferedItemCount` können Sie eine Abstimmung zwischen Abfragelatenz und Speicherauslastung auf Clientseite ermöglichen. Wenn Sie diesen Parameter weglassen oder auf „-1“ festlegen, wird die Anzahl der Elemente, die während der Ausführung paralleler Abfragen gepuffert wird, vom SDK verwaltet.
 
 Bei gleichem Zustand der Sammlung gibt eine parallele Abfrage Ergebnisse in der gleichen Reihenfolge wie bei einer seriellen Ausführung zurück. Beim Durchführen einer partitionsübergreifenden Abfrage mit Sortierung (ORDER BY und/oder TOP) führt das DocumentDB SDK die Abfrage parallel auf den Partitionen durch und führt teilweise sortierte Ergebnisse auf Clientseite zusammen, um global sortierte Ergebnisse zu generieren.
@@ -279,7 +279,7 @@ Im nächsten Abschnitt untersuchen wir, wie partitionierte Sammlungen aus Sammlu
 
 <a name="migrating-from-single-partition"></a>
 ### Migrieren von Sammlungen mit nur einer Partitionen zu partitionierten Sammlungen
-Wenn eine Anwendung, die eine Sammlung mit nur einer Partition verwendet, einen höheren Durchsatz (>10.000 RU/s) oder mehr Speicher (>10 GB) benötigt, können Sie mit dem [DocumentDB-Datenmigrationstool](http://www.microsoft.com/downloads/details.aspx?FamilyID=cda7703a-2774-4c07-adcc-ad02ddc1a44d) die Daten aus der Sammlung mit nur einer Partition zu einer partitionierten Sammlung migrieren.
+Wenn eine Anwendung, die eine Sammlung mit nur einer Partition verwendet, einen höheren Durchsatz (> 10.000 RU/s) oder mehr Speicher (> 10 GB) benötigt, können Sie mit dem [DocumentDB-Datenmigrationstool](http://www.microsoft.com/downloads/details.aspx?FamilyID=cda7703a-2774-4c07-adcc-ad02ddc1a44d) die Daten aus der Sammlung mit nur einer Partition zu einer partitionierten Sammlung migrieren.
 
 So führen Sie eine Migration aus einer Sammlung mit nur einer Partition in eine partitionierte Sammlung durch
 
@@ -329,7 +329,7 @@ Sie können auch eine Kombination/einen abgestuften Ansatz verwenden. Hier werde
 ## Nächste Schritte
 In diesem Artikel haben wir beschrieben, wie Partitionierung in Azure DocumentDB funktioniert, wie Sie partitionierte Sammlungen erstellen können, und wie Sie einen guten Partitionsschlüssel für Ihre Anwendung auswählen können.
 
--   Nutzen Sie DocumentDB, um die Skalierung und die Leistung zu testen. Weitere Informationen und ein Beispiel finden Sie unter [Performance and scale testing with Azure DocumentDB](documentdb-performance-testing.md) (Leistungs- und Skalierungstests mit Azure DocumentDB).
+-   Nutzen Sie DocumentDB, um die Skalierung und die Leistung zu testen. Weitere Informationen und ein Beispiel finden Sie unter [Leistungs- und Skalierungstests mit Azure DocumentDB](documentdb-performance-testing.md).
 -   Erste Schritte bei der Codierung mit den [SDKs](documentdb-sdk-dotnet.md) oder der [REST-API](https://msdn.microsoft.com/library/azure/dn781481.aspx)
 -   Erfahren Sie mehr über den [bereitgestellten Durchsatz in DocumentDB](documentdb-performance-levels.md).
 -   Wenn Sie selbst anpassen möchten, wie Ihre Anwendung die Partitionierung ausführt, können Sie Ihre eigene clientseitige Partitionierungsimplementierung verwenden. Siehe [Unterstützung für clientseitige Partitionierung](documentdb-sharding.md).
@@ -340,4 +340,4 @@ In diesem Artikel haben wir beschrieben, wie Partitionierung in Azure DocumentDB
 
  
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0921_2016-->

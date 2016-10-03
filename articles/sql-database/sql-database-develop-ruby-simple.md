@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="ruby"
 	ms.topic="article"
-	ms.date="06/16/2016"
+	ms.date="09/16/2016"
 	ms.author="andrela"/>
 
 
@@ -45,9 +45,9 @@ Auf der [Seite für erste Schritte](sql-database-get-started.md) erhalten Sie In
 * Lesen Sie die [Übersicht über die Entwicklung von SQL-Datenbanken](sql-database-develop-overview.md)
 * Weitere Informationen zum [Microsoft Ruby-Treiber für SQL Server](https://msdn.microsoft.com/library/mt691981.aspx)
 
-## Weitere Ressourcen 
+## Zusätzliche Ressourcen 
 
 * [Entwurfsmuster für mehrinstanzenfähige SaaS-Anwendungen und Azure SQL-Datenbank](sql-database-design-patterns-multi-tenancy-saas-applications.md)
 * Entdecken Sie alle [Funktionen von SQL-Datenbank](https://azure.microsoft.com/services/sql-database/).
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0921_2016-->

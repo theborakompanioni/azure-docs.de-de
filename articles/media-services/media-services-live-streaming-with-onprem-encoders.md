@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Livestreaming mit lokalen Encodern, die Multi-Bitrate-Datenströme erstellen" 
+	pageTitle="Livestreaming mit lokalen Encodern, die Multi-Bitrate-Datenströme erstellen | Microsoft Azure" 
 	description="In diesem Thema wird das Einrichten eines Kanals beschrieben, der einen Livestream mit mehreren Bitraten von einem lokalen Encoder empfängt. Der Stream kann über einen oder mehrere Streamingendpunkte an Wiedergabe-Clientanwendungen übermittelt werden. Dazu dienen die folgenden adaptiven Streamingprotokolle: HLS, Smooth Stream, MPEG DASH, HDS." 
 	services="media-services" 
 	documentationCenter="" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="ne" 
 	ms.topic="article" 
-	ms.date="06/22/2016" 
+	ms.date="09/19/2016" 
 	ms.author="cenkdin;juliako"/>
 
 #Livestreaming mit lokalen Encodern, die Multi-Bitrate-Datenströme erstellen
@@ -154,7 +154,7 @@ Wenn Sie sowohl KeyFrameInterval als auch FragmentsPerSegment explizit festlegen
 
 Sie können die IP-Adressen definieren, die zum Veröffentlichen von Videos in diesem Kanal zugelassen sind. Zulässige IP-Adressen können als eine einzelne IP-Adresse (z. B. „10.0.0.1“), als IP-Adressbereich mithilfe einer IP-Adresse und einer CIDR-Subnetzmaske (z. B. „10.0.0.1/22“) oder als IP-Adressbereich mithilfe einer Subnetzmaske in punktierter Dezimalschreibweise (z. B. „10.0.0.1(255.255.252.0)“) angegeben werden.
 
-Wenn keine IP-Adressen angegeben sind und es keine Regeldefinition gibt, sind keine IP-Adressen zulässig. Um alle IP-Adressen zuzulassen, erstellen Sie eine Regel und legen „0.0.0.0/0“ fest.
+Wenn keine IP-Adressen angegeben sind und es keine Regeldefinition gibt, sind keine IP-Adressen zulässig. Um alle IP-Adressen zuzulassen, erstellen Sie eine Regel und legen 0.0.0.0/0 fest.
 
 ###Kanalvorschau 
 
@@ -212,7 +212,7 @@ In der folgenden Tabelle ist die Zuordnung der Kanalstatus mit den Abrechnungsmo
  
 Kanalstatus|Portal-UI-Indikatoren|In Rechnung gestellt?
 ---|---|---|---
-Wird gestartet|Wird gestartet|Nein (Übergangsstatus)
+Starting|Starting|Nein (Übergangsstatus)
 Wird ausgeführt|Bereit (keine ausgeführten Programme)<p>oder<p>Streaming (mindestens ein laufendes Programm)|Ja
 Wird beendet|Wird beendet|Nein (Übergangsstatus)
 Beendet|Beendet|Nein
@@ -271,10 +271,10 @@ Wählen Sie **Portal**, **.NET** oder **REST API**, um auf Informationen zum Ers
 
 [Spezifikation der Fragmented MP4-Echtzeiterfassung für Azure Media Services](media-services-fmp4-live-ingest-overview.md)
 
-[Bereitstellen von Livestreamingereignissen mit Azure Media Services](media-services-live-streaming-workflow.md)
+[Bereitstellen von Livestreamingereignissen mit Azure Media Services](media-services-overview.md)
 
 [Media Services-Konzepte](media-services-concepts.md)
 
 [live-overview]: ./media/media-services-manage-channels-overview/media-services-live-streaming-current.png
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0921_2016-->

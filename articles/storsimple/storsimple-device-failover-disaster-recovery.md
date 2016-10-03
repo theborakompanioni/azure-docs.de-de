@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="09/07/2016"
+   ms.date="09/16/2016"
    ms.author="alkohli" />
 
 # Ausführen eines Failovers und einer Notfallwiederherstellung für das StorSimple-Gerät
@@ -179,9 +179,12 @@ Für Update 3 oder höher unterstützt StorSimple auch das Failback. Nach dem Fa
 
 - Die Volumecontainer, für die ein Failover durchgeführt wurde, werden vom Quellgerät bereinigt.
 
-- Auf der Seite **Aufträge** wird ein Löschauftrag pro Volumecontainer (mit erfolgtem Failover) angezeigt. Die Gesamtdauer des Löschens der Volumecontainer hängt von der Datenmenge in den Containern ab. Wenn Sie Testfailover/-failbacks planen, wird empfohlen, Volumecontainer mit weniger Daten (GBs) zu testen.
+- Auf dem Quellgerät wird ein Hintergrundauftrag pro Volumecontainer (mit Failover) initiiert. Wenn Sie versuchen, ein Failback auszuführen, während der Auftrag ausgeführt wird, erhalten Sie eine entsprechende Benachrichtigung. Sie müssen warten, bis der Auftrag abgeschlossen ist, bevor Sie das Failback starten können.
 
-- Nachdem alle Löschaufträge abgeschlossen wurden, können Sie das Failback versuchen.
+	Wie lange das Löschen der Volumecontainer dauert, richtet sich nach verschiedenen Faktoren, wie z.B. der Datenmenge, dem Alter der Daten, der Anzahl von Sicherungen und der für den Vorgang verfügbaren Netzwerkbandbreite. Wenn Sie Testfailover/-failbacks planen, wird empfohlen, Volumecontainer mit weniger Daten (GBs) zu testen. In den meisten Fällen können Sie das Failback 24 Stunden nach Abschluss des Failovers starten.
+
+
+
 
 ## Häufig gestellte Fragen
 
@@ -215,4 +218,4 @@ Wenn StorSimple-Geräte direkt vor einem Notfall registriert wurden, müssen die
 - Weitere Informationen zum Verwenden des StorSimple Manager-Diensts finden Sie unter [Verwalten Ihres StorSimple-Geräts mithilfe des StorSimple Manager-Diensts](storsimple-manager-service-administration.md).
  
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

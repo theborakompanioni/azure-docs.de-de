@@ -40,8 +40,7 @@ Eine SAS-URL kann mit PowerShell generiert werden. Dieses Beispiel zeigt das Gen
 		$context = New-AzureStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageAccountKey[0].Value
 
 		$blobContainerName = "<name of blob container for app backups>"
-		$token = New-AzureStorageContainerSASToken -Name $blobContainerName -Permission rwdl -Context $context -ExpiryTime (Get-Date).AddMonths(1)
-		$sasUrl = $context.BlobEndPoint + $blobContainerName + $token
+		$sasUrl = New-AzureStorageContainerSASToken -Name $blobContainerName -Permission rwdl -Context $context -ExpiryTime (Get-Date).AddMonths(1) -FullUri
 
 ## Installieren von Azure PowerShell 1.3.2 oder höher
 
@@ -153,4 +152,4 @@ Sie können ein Sicherungsobjekt auch per Pipe-Zeichen in das Remove-AzureRmWebA
 		$backup = Get-AzureRmWebAppBackup -Name $appName -ResourceGroupName $resourceGroupName -BackupId 10102
 		$backup | Remove-AzureRmWebAppBackup -Overwrite
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0921_2016-->

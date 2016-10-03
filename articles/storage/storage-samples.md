@@ -4,7 +4,7 @@
 	services="storage"
 	documentationCenter="na"
 	authors="tamram"
-	manager="na"
+	manager="carmonm"
 	editor="tysonn" />
 <tags
 	ms.service="storage"
@@ -12,8 +12,8 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="storage"
-	ms.date="08/03/2016"
-	ms.author="tamram" />
+	ms.date="09/21/2016"
+	ms.author="micurd;tamram" />
 
 # Beispiele für Azure Storage
 
@@ -38,7 +38,7 @@ Um die Beispiele für .NET zu untersuchen, laden Sie die [Speicherclientbiblioth
 * [Erste Schritte mit dem Azure-Tabellenspeicherdienst in .NET](https://azure.microsoft.com/documentation/samples/storage-table-dotnet-getting-started/)
 * [Erste Schritte mit dem Azure-Dateidienst in .NET](https://azure.microsoft.com/documentation/samples/storage-file-dotnet-getting-started/)
 * [Webanwendung für eine Fotogalerie mit Azure Blob Storage](https://azure.microsoft.com/documentation/samples/storage-blobs-dotnet-webapp/)
-* [Managing concurrency using Azure Storage](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114) (Verwalten von Nebenläufigkeit mit Azure Storage)
+* [Managing concurrency using Azure Storage (Verwalten von Nebenläufigkeit mit Azure Storage)](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114)
 
 ## Beispiele für Java
 
@@ -90,4 +90,4 @@ Um die Beispiele für C++ zu untersuchen, laden Sie die [Speicherclientbibliothe
 - [Quellcode für die Speicherclientbibliothek für C++](https://github.com/Azure/azure-storage-cpp)
 - [Referenz zur C++-Clientbibliothek](http://azure.github.io/azure-storage-cpp/)
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -23,15 +23,34 @@ Mithilfe von Schemas bestätigen Sie, dass von Ihnen empfangene XML-Dokumente g�
 
 ## Hinzufügen eines Schemas
 Gehen Sie im Azure-Portal so vor:
+
 1. Wählen Sie **Weitere Dienste**. ![](./media/app-service-logic-enterprise-integration-overview/overview-11.png)
 2. Geben Sie in das Filtersuchfeld **Integration** ein, und wählen Sie in der Ergebnisliste **Integrationskonten** aus. ![](./media/app-service-logic-enterprise-integration-overview/overview-21.png)
-3. Wählen Sie das **Integrationskonto** aus, dem Sie das Schema hinzufügen möchten. ![](./media/app-service-logic-enterprise-integration-overview/overview-31.png)
-4.  Wählen Sie die Kachel **Schemas** aus. ![](./media/app-service-logic-enterprise-integration-schemas/schema-11.png)
+3. Wählen Sie das **Integrationskonto** aus, dem Sie das Schema hinzufügen. ![](./media/app-service-logic-enterprise-integration-overview/overview-31.png)
+4. Wählen Sie die Kachel **Schemas** aus. ![](./media/app-service-logic-enterprise-integration-schemas/schema-11.png)
+
+#### So fügen Sie eine Schemadatei hinzu, die kleiner als 2 MB ist:  
+
 5. Wählen Sie auf dem geöffneten Blatt „Schema“ die Schaltfläche **Hinzufügen** aus. ![](./media/app-service-logic-enterprise-integration-schemas/schema-21.png)
 6. Geben Sie einen **Namen** für das Schema ein. Wählen Sie dann zum Hochladen der Schemadatei das Ordnersymbol rechts neben dem Textfeld **Schema** aus. Wählen Sie nach Abschluss des Hochladevorgangs die Schaltfläche **OK** aus. ![](./media/app-service-logic-enterprise-integration-schemas/schema-31.png)
-7. So fügen Sie eine Schemadatei hinzu, die größer als 2MB (max. 8MB) ist:
-   * Laden Sie das Schema in den Speicher hoch, und kopieren Sie den URI. ![](./media/app-service-logic-enterprise-integration-schemas/schema-blob.png)
-   * Wählen Sie in „Schema hinzufügen“ „Große Datei“, und geben Sie den URI in „Inhalts-URI“ an. ![](./media/app-service-logic-enterprise-integration-schemas/schema-largefile.png) 8. Sie sollten das neu hinzugefügte Schema sehen. ![](./media/app-service-logic-enterprise-integration-schemas/schema-41.png)
+
+#### So fügen Sie eine Schemadatei hinzu, die größer als 2 MB (max. 8 MB) ist:  
+
+7. Wenn die Blob-Sicherheitszugriffsebene **Öffentlich** ist: ![](./media/app-service-logic-enterprise-integration-schemas/blob-public.png)
+
+  * Laden Sie das Schema in den Speicher hoch, und kopieren Sie den URI. ![](./media/app-service-logic-enterprise-integration-schemas/schema-blob.png)
+
+  * Wählen Sie unter „Schema hinzufügen“ die Option „Große Datei“ aus, und geben Sie unter „Inhalts-URI“ den URI an.
+
+8. Wenn die Blob-Sicherheitszugriffsebene **Kein anonymer Zugriff** ist: ![](./media/app-service-logic-enterprise-integration-schemas/blob-1.png)
+
+  * Laden Sie das Schema in den Speicher hoch. ![](./media/app-service-logic-enterprise-integration-schemas/blob-3.png)
+
+  * Generieren Sie einen Shared Access Signature-URI für das Schema. ![](./media/app-service-logic-enterprise-integration-schemas/blob-2.png)
+
+  * Wählen Sie unter „Schema hinzufügen“ die Option „Große Datei“ aus, und geben Sie unter „Inhalts-URI“ den Shared Access Signature-URI an. ![](./media/app-service-logic-enterprise-integration-schemas/schema-largefile.png)
+
+9. Das neu hinzugefügte Schema wird angezeigt:
 
 ## Verwenden von Schemas
 - Schemas dienen zum Überprüfen von Nachrichten, die in einem B2B-Szenario ausgetauscht werden.
@@ -55,4 +74,4 @@ Gehen Sie im Azure-Portal so vor:
 
 - [Weitere Informationen zum Enterprise Integration Pack](./app-service-logic-enterprise-integration-overview.md "Informationen zum Enterprise Integration Pack")
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

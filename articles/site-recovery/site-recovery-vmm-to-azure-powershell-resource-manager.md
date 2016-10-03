@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/13/2016"
+	ms.date="09/16/2016"
 	ms.author="rajanaki"/>
 
 # Replizieren virtueller Hyper-V-Computer in VMM-Clouds nach Azure mithilfe von PowerShell und Azure Resource Manager
@@ -28,18 +28,18 @@
 
 ## Übersicht
 
-Azure Site Recovery unterstützt Ihre Strategie für Geschäftskontinuität und Notfallwiederherstellung, indem Replikation, Failover und Wiederherstellung virtueller Computer in einer Vielzahl von Bereitstellungsszenarien aufeinander abgestimmt werden. Eine vollständige Liste mit Bereitstellungsszenarien finden Sie unter [Übersicht über Azure Site Recovery](site-recovery-overview.md).
+Azure Site Recovery unterstützt Ihre Strategie für Geschäftskontinuität und Notfallwiederherstellung, indem Replikation, Failover und Wiederherstellung virtueller Computer in einer Vielzahl von Bereitstellungsszenarios aufeinander abgestimmt werden. Eine vollständige Liste mit Bereitstellungsszenarien finden Sie unter [Übersicht über Azure Site Recovery](site-recovery-overview.md).
 
 In diesem Artikel erfahren Sie, wie Sie PowerShell zur Automatisierung häufiger Aufgaben verwenden, die Sie ausführen müssen, wenn Sie Azure Site Recovery zum Replizieren virtueller Hyper-V-Computer in System Center VMM-Clouds in Azure Storage einrichten.
 
 Der Artikel enthält Voraussetzungen für das Szenario und zeigt Ihnen folgende Vorgänge:
 
 - Einrichten eines Recovery Services-Tresors
-- installieren des Azure Site Recovery-Anbieters auf dem VMM-Quellserver 
+- installieren des Azure Site Recovery-Anbieters auf dem VMM-Quellserver
 - Registrieren des Servers im Tresor, Hinzufügen eines Azure-Speicherkontos
 - Installieren des Azure Recovery Services-Agents auf Hyper-V-Hostservern
-- Konfigurieren von Schutzeinstellungen für VMM-Clouds, die auf alle geschützten virtuellen Computer angewendet werden 
-- Aktivieren des Schutzes für diese virtuellen Computer 
+- Konfigurieren von Schutzeinstellungen für VMM-Clouds, die auf alle geschützten virtuellen Computer angewendet werden
+- Aktivieren des Schutzes für diese virtuellen Computer
 - Testen des Failovers, um sicherzustellen, dass alles wie erwartet funktioniert
 
 Sollten beim Einrichten dieses Szenarios Probleme auftreten, besuchen Sie das [Azure Recovery Services-Forum](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
@@ -53,7 +53,7 @@ Stellen Sie sicher, dass diese Voraussetzungen erfüllt werden:
 ### Voraussetzungen für Azure
 
 - Sie benötigen ein [Microsoft Azure](https://azure.microsoft.com/)-Konto. Wenn Sie keins besitzen, beginnen Sie mit einem [kostenloses Konto](https://azure.microsoft.com/free). Darüber hinaus können Sie sich über die [Preisgestaltung für Azure Site Recovery Manager](https://azure.microsoft.com/pricing/details/site-recovery/) informieren.
-- Sie benötigen ein CSP-Abonnement, wenn Sie die Replikation zu einem CSP-Abonnementszenario ausführen möchten. Erfahren Sie mehr über das CSP-Programm unter [Registrieren für das CSP-Programm](https://msdn.microsoft.com/library/partnercenter/mt156995.aspx).
+- Sie benötigen ein CSP-Abonnement, wenn Sie das Szenario zur Replikation zu einem CSP-Abonnement ausprobieren möchten. Erfahren Sie mehr über das CSP-Programm unter [Registrieren für das CSP-Programm](https://msdn.microsoft.com/library/partnercenter/mt156995.aspx).
 - Sie benötigen ein Azure-Speicherkonto der Version 2 (ARM), um nach Azure replizierte Daten zu speichern. Für das Konto muss Georeplikation aktiviert sein. Es muss sich in der gleichen Region wie der Azure Site Recovery-Dienst befinden und dem gleichen Abonnement oder dem CSP-Abonnement zugeordnet sein. Weitere Informationen zum Einrichten von Azure Storage finden Sie unter [Einführung in Microsoft Azure Storage](../storage/storage-introduction.md).
 - Sie müssen sicherstellen, dass die virtuellen Computer, die Sie schützen möchten, die [Anforderungen an virtuelle Azure-Computer](site-recovery-best-practices.md#azure-virtual-machine-requirements) erfüllen.
 
@@ -75,7 +75,7 @@ Stellen Sie sicher, dass diese Voraussetzungen erfüllt werden:
 ### Hyper-V-Voraussetzungen
 
 - Auf den Hyper-V-Hostservern muss mindestens Windows Server 2012 mit Hyper-V-Rolle ausgeführt werden, und die neuesten Updates müssen installiert sein.
-- Wenn Sie Hyper-V in einem Cluster ausführen, wird der Clusterbroker nicht automatisch erstellt, wenn Sie einen Cluster mit statischen IP-Adressen verwenden. Sie müssen den Clusterbroker manuell konfigurieren. Weitere 
+- Wenn Sie Hyper-V in einem Cluster ausführen, wird der Clusterbroker nicht automatisch erstellt, wenn Sie einen Cluster mit statischen IP-Adressen verwenden. Sie müssen den Clusterbroker manuell konfigurieren. Weitere
 - Anweisungen finden Sie unter [How to Configure Hyper-V Replica Broker](http://blogs.technet.com/b/haroldwong/archive/2013/03/27/server-virtualization-series-hyper-v-replica-broker-explained-part-15-of-20-by-yung-chou.aspx) (Konfigurieren des Hyper-V-Replikatbrokers).
 - Alle Hyper-V-Hostserver oder Cluster, deren Schutz Sie verwalten möchten, müssen in einer VMM-Cloud enthalten sein.
 
@@ -345,4 +345,4 @@ Verwenden Sie die folgenden Befehle zum Überwachen der Aktivität. Beachten Sie
 
 [Erfahren Sie mehr](https://msdn.microsoft.com/library/azure/mt637930.aspx) über Azure Site Recovery mit PowerShell-Cmdlets für Azure Resource Manager.
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0921_2016-->

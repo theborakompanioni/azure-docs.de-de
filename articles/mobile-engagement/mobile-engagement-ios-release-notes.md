@@ -13,10 +13,15 @@
 	ms.tgt_pltfrm="mobile-ios"
 	ms.devlang="objective-c"
 	ms.topic="article"
-	ms.date="06/30/2016"
+	ms.date="09/12/2016"
 	ms.author="piyushjo" />
 
 #Versionshinweise zum iOS-SDK für Azure Mobile Engagement
+
+##4\.0.0 (12.09.2016)
+
+-   Feste Benachrichtigung auf iOS 10-Geräten nicht umgesetzt.
+-   XCode 7 als veraltet markiert.
 
 ##3\.2.4 (30.06.2016)
 
@@ -68,7 +73,7 @@
 -   appId/sdkKey-Konfiguration wird durch die Konfiguration einer Verbindungszeichenfolge ersetzt.
 -   API entfernt, um beliebige XMPP-Nachrichten über beliebige XMPP-Entitäten zu senden und zu empfangen.
 -   API entfernt, um Nachrichten zwischen Geräten zu senden und zu empfangen.
--   Verbesserungen der Sicherheit.
+-   Verbesserungen der Sicherheit
 -   SmartAd-Verfolgung entfernt.
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0921_2016-->

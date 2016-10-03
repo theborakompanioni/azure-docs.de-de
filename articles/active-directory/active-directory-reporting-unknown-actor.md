@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="03/04/2016"
+   ms.date="09/16/2016"
    ms.author="saah"/>
 
 # Azure Active Directory-Berichtsereignisse „Unbekannter Akteur“
@@ -40,4 +40,4 @@ Dies ist ein bekanntes Problem, an dessen Lösung wir arbeiten.
 
 <!-- ![](./media/active-directory-reporting-unknown-actor/uid-actor.png) -->
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0921_2016-->

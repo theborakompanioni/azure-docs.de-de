@@ -1,21 +1,21 @@
 
-<properties 
-	pageTitle="Anmelden bei der mobilen App mithilfe eines Bestätigungscodes mit Azure Multi-Factor Authentication" 
-	description="Auf dieser Seite wird beschrieben, wie ein Benutzer sich über einen Bestätigungscode in der mobilen App mit Azure MFA anmelden kann." 
-	services="multi-factor-authentication" 
-	documentationCenter="" 
-	authors="billmath" 
-	manager="stevenpo" 
+<properties
+	pageTitle="Anmelden bei der mobilen App mithilfe eines Bestätigungscodes mit Azure Multi-Factor Authentication"
+	description="Auf dieser Seite wird beschrieben, wie ein Benutzer sich über einen Bestätigungscode in der mobilen App mit Azure MFA anmelden kann."
+	services="multi-factor-authentication"
+	documentationCenter=""
+	authors="kgremban"
+	manager="femila"
 	editor="curtland"/>
 
-<tags 
-	ms.service="multi-factor-authentication" 
-	ms.workload="identity" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/04/2016" 
-	ms.author="billmath"/>
+<tags
+	ms.service="multi-factor-authentication"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/04/2016"
+	ms.author="kgremban"/>
 
 # Anmelden bei der mobilen App mithilfe eines Bestätigungscodes mit Azure Multi-Factor Authentication
 
@@ -39,7 +39,4 @@ Im Folgenden wird der Vorgang für Multi-Factor Authentication mit der mobilen A
 
 <li>Sie sollten jetzt angemeldet sein.</li>
 
-
- 
-
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0921_2016-->

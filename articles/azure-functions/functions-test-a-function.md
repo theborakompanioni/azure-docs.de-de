@@ -172,7 +172,7 @@ Im Portalfenster **Protokolle** wird während der Ausführung der Funktion eine 
 
 Sie können eine Blobtriggerfunktion mit dem [Microsoft Azure-Speicher-Explorer](http://storageexplorer.com/) testen.
 
-1. Erstellen Sie im [Azure-Portal] für Ihre Functions-App eine neue C#- oder Node-Blobtriggerfunktion. Legen Sie den zu überwachenden Pfad auf den Namen Ihres Blobcontainers fest. Beispiel:
+1. Erstellen Sie im [Azure-Portal] für Ihre Funktionen-App eine neue C#-, F#- oder Node-Blobtriggerfunktion. Legen Sie den zu überwachenden Pfad auf den Namen Ihres Blobcontainers fest. Beispiel:
 
 		files
 
@@ -439,4 +439,4 @@ In Browserfenster für die Warteschlangenfunktion wird die Verarbeitung der einz
 
 [Azure-Portal]: https://portal.azure.com
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -13,13 +13,13 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/14/2016" 
-	ms.author="bradsev;gopitk" />
+	ms.date="09/19/2016" 
+	ms.author="bradsev" />
 
 
 # Was ist der Team Data Science-Prozess (TDSP)?
 
-Der Team Data Science-Prozess (TDSP) bietet einen systematischen Ansatz für das Erstellen intelligenter Anwendungen, der Data Scientists eine effektive Zusammenarbeit an allen Aktivitäten des gesamten Lebenszyklus ermöglicht, um diese Anwendungen in Produkte umzuwandeln. Der TDSP definiert eine Abfolge von Schritten als **Leitfaden** zum Bestimmen des Problems, Einrichten der benötigten Tools und Umgebungen, Analysieren relevanter Daten, Erstellen und Bewerten von Vorhersagemodellen und anschließenden Bereitstellen dieser Modelle in Unternehmensanwendungen.
+Der [Team Data Science-Prozess (TDSP)](data-science-process-overview.md) bietet einen systematischen Ansatz für das Erstellen intelligenter Anwendungen, der Data Scientists eine effektive Zusammenarbeit an allen Aktivitäten des gesamten Lebenszyklus ermöglicht, um diese Anwendungen in Produkte umzuwandeln. Der TDSP definiert eine Abfolge von Schritten als **Leitfaden** zum Bestimmen des Problems, Einrichten der benötigten Tools und Umgebungen, Analysieren relevanter Daten, Erstellen und Bewerten von Vorhersagemodellen und anschließenden Bereitstellen dieser Modelle in Unternehmensanwendungen.
 
 Dies sind die Schritte im **Team Data Science-Prozess**:
 
@@ -96,4 +96,4 @@ Vollständige exemplarische Vorgehensweisen, in denen sämtliche Schritte im Pro
 
  
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

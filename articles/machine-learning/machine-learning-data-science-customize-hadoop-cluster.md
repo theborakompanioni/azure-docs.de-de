@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/14/2016" 
+	ms.date="09/19/2016" 
 	ms.author="hangzh;bradsev" />
 
 # Anpassen von Azure HDInsight Hadoop-Clustern für den Team Data Science-Prozess 
 
 In diesem Artikel wird beschrieben, wie ein HDInsight Hadoop-Cluster durch die Installation der 64-Bit-Version von Anaconda (Python 2.7) auf jedem Knoten angepasst wird, wenn der Cluster als HDInsight-Dienst bereitgestellt wird. Es wird auch gezeigt, wie Sie auf den Hauptknoten zugreifen, um benutzerdefinierte Aufträge an den Cluster zu übermitteln. Diese Anpassung macht viele beliebte Python-Module verfügbar, die Bestandteil von Anaconda sind. Dies geschieht sehr benutzerfreundlich in UDFs (User Defined Function, benutzerdefinierte Funktion), die entwickelt wurden, um Hive-Datensätze im Cluster zu verarbeiten. Anweisungen zu den in diesem Szenario verwendeten Prozeduren finden Sie unter [Gewusst wie: Übermitteln von Hive-Abfragen](machine-learning-data-science-move-hive-tables.md#submit).
 
-Das nachstehende Menü enthält Links zu Themen, in denen das Einrichten der verschiedenen Data Science-Umgebungen beschrieben wird, die vom Team Data Science-Prozess (TDSP) verwendet werden.
+Das nachstehende Menü enthält Links zu Themen, in denen das Einrichten der verschiedenen Data Science-Umgebungen beschrieben wird, die vom [Team Data Science-Prozess (TDSP)](data-science-process-overview.md) verwendet werden.
 
 [AZURE.INCLUDE [data-science-environment-setup](../../includes/cap-setup-environments.md)]
 
@@ -86,4 +86,4 @@ Unter [Gewusst wie: Übermitteln von Hive-Abfragen ](machine-learning-data-scien
 
  
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

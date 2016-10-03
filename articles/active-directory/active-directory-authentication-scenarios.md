@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="06/06/2016"
+   ms.date="09/16/2016"
    ms.author="mbaldwin"/>
 
 # Authentifizierungsszenarien für Azure AD
@@ -66,7 +66,7 @@ Im Anschluss folgen einige wichtige Informationen zu den Komponenten des obigen 
 > [AZURE.IMPORTANT] Azure AD verwendet die Verschlüsselung mit öffentlichem Schlüssel, um Token zu signieren und deren Gültigkeit zu überprüfen. Weitere Informationen zur Logik, die in Ihrer Anwendung enthalten sein muss, damit diese immer mit den neuesten Schlüsseln aktualisiert wird, finden Sie unter [Wichtige Informationen zum Signaturschlüsselrollover in Azure AD](active-directory-signing-key-rollover.md).
 
 
-• Der Fluss von Anforderungen und Antworten für den Authentifizierungsprozess ergibt sich aus dem verwendeten Authentifizierungsprotokoll (etwa OAuth 2.0, OpenID Connect, WS-Federation oder SAML 2.0). Diese Protokolle werden im Thema [Azure Active Directory-Authentifizierungsprotokolle](active-directory-authentication-protocols.md) sowie in den folgenden Abschnitten ausführlicher behandelt.
+• Der Fluss von Anforderungen und Antworten für den Authentifizierungsprozess ergibt sich aus dem verwendeten Authentifizierungsprotokoll (etwa OAuth 2.0, OpenID Connect, WS-Federation oder SAML 2.0). Diese Protokolle werden im Thema [Azure Active Directory-Authentifizierungsprotokolle](active-directory-authentication-protocols.md) sowie in den folgenden Abschnitten ausführlicher behandelt.
 
 > [AZURE.NOTE] Azure AD unterstützt den OAuth 2.0- und den OpenID Connect-Standard. Diese machen ausgiebig Gebrauch von Trägertoken (auch in Form von JWTs). Ein Trägertoken ist ein einfaches Sicherheitstoken, das dem „Träger“ den Zugriff auf eine geschützte Ressource ermöglicht. In diesem Kontext ist der „Träger“ jede beliebige Partei, die das Token vorweisen kann. Um das Trägertoken zu erhalten, muss sich die Partei zwar zunächst bei Azure AD authentifizieren, falls jedoch keine Maßnahmen ergriffen werden, um das Token bei der Übertragung und Speicherung zu schützen, kann das Token von einer fremden Partei abgefangen und verwendet werden. Einige Sicherheitstoken verfügen über einen integrierten Mechanismus, der eine unbefugte Verwendung durch nicht autorisierte Parteien verhindert. Trägertoken besitzen dagegen keinen solchen Mechanismus und müssen über einen sicheren Kanal wie etwa Transport Layer Security (HTTPS) übertragen werden. Wird ein Trägertoken als Klartext gesendet, kann eine böswillige Partei das Token mithilfe eines Man-in-the-Middle-Angriffs abfangen und damit unautorisiert auf eine geschützte Ressource zugreifen. Die gleichen Sicherheitsprinzipien gelten für die (Zwischen-)Speicherung von Trägertoken zur späteren Verwendung. Stellen Sie daher sicher, dass Ihre Anwendung Trägertoken immer sicher überträgt und speichert. Weitere Sicherheitsüberlegungen zu Trägertoken finden Sie unter [RFC 6750, Abschnitt 5](http://tools.ietf.org/html/rfc6750).
 
@@ -83,20 +83,20 @@ Von Azure AD ausgestellte Sicherheitstoken enthalten Ansprüche oder Assertione
 |-------|-------------|
 | Anwendungs-ID | Die Anwendung, die das Token verwendet.
 | Zielgruppe | Die Empfängerressource, für die das Token vorgesehen ist. |
-| Kontextklassenreferenz für die Anwendungsauthentifizierung | Die Art der Clientauthentifizierung (öffentlicher oder vertraulicher Client). |
+| Application Authentication Context Class Reference (Kontextklassenreferenz für die Anwendungsauthentifizierung) | Die Art der Clientauthentifizierung (öffentlicher oder vertraulicher Client). |
 | Authentifizierungszeitpunkt | Datum und Uhrzeit der Authentifizierung. |
 | Authentifizierungsmethode | Die Authentifizierungsmethode für den Antragsteller des Tokens (Kennwort, Zertifikat oder Ähnliches). |
-| Vorname | Der Vorname des Benutzers gemäß Angabe in Azure AD. |
+| First Name (Vorname) | Der Vorname des Benutzers gemäß Angabe in Azure AD. |
 | Gruppen | Objekt-IDs von Azure AD-Gruppen, denen der Benutzer angehört. |
 | Identitätsanbieter | Der Identitätsanbieter, der den Antragsteller des Tokens authentifiziert hat. |
 | Ausgestellt um | Die Zeit, zu der das Token ausgestellt wurde (wird häufig für die Tokenaktualität verwendet). |
-| Aussteller | Der STS, der das Token ausgestellt hat, sowie der Azure AD-Mandant. |
-| Nachname | Der Nachname des Benutzers gemäß Angabe in Azure AD. |
+| Issuer (Aussteller) | Der STS, der das Token ausgestellt hat, sowie der Azure AD-Mandant. |
+| Last Name (Nachname) | Der Nachname des Benutzers gemäß Angabe in Azure AD. |
 | Name | Ein lesbarer Wert, der Aufschluss über den Antragsteller des Tokens gibt. |
 | Objekt-ID | Ein unveränderlicher, eindeutiger Bezeichner des Antragstellers in Azure AD. |
-| Roles | Anzeigenamen von Azure AD-Anwendungsrollen, die dem Benutzer erteilt wurden. |
+| Rollen | Anzeigenamen von Azure AD-Anwendungsrollen, die dem Benutzer erteilt wurden. |
 | Bereich | Die Berechtigungen, die der Clientanwendung gewährt wurden. |
-| Betreff | Der Prinzipal, für den das Token Informationen bestätigt. |
+| Subject (Antragsteller) | Der Prinzipal, für den das Token Informationen bestätigt. |
 | Mandanten-ID | Ein unveränderlicher, eindeutiger Bezeichner des Verzeichnismandanten, der das Token ausgestellt hat. |
 | Tokengültigkeitsdauer | Das Zeitintervall, für das ein Token gültig ist. |
 | Benutzerprinzipalname | Der Benutzerprinzipalname des Antragstellers. |
@@ -468,4 +468,4 @@ Wenn die erste Anwendung mithilfe ihres Autorisierungscodes ein JWT-Zugriffstoke
 
 [OAuth 2.0 in Azure AD](https://msdn.microsoft.com/library/azure/dn645545.aspx)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0921_2016-->

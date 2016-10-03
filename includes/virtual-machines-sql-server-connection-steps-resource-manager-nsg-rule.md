@@ -30,4 +30,6 @@ Wenn Sie eine Verbindung mit SQL Server über das Internet herstellen möchten, 
 
 9. Klicken Sie auf **OK**, um die Regel für den virtuellen Computer zu speichern.
 
-<!---HONumber=AcomDC_0629_2016-->
+>[AZURE.NOTE] Es ist möglich, dem Subnetz eine zweite Netzwerksicherheitsgruppe zuzuordnen (dies erfolgt getrennt von der Netzwerksicherheitsgruppe auf dem virtuellen Computer). Dies wird nicht standardmäßig eingerichtet. Wenn Sie eine Netzwerksicherheitsgruppe im Subnetz erstellt haben, müssen Sie Port 1433 in beiden Netzwerksicherheitsgruppen öffnen – sowohl im Subnetz als auch auf dem virtuellen Computer.
+
+<!---HONumber=AcomDC_0921_2016-->

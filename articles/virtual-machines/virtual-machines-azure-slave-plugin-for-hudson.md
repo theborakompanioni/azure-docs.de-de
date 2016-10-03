@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="vm-multiple"
 	ms.devlang="java"
 	ms.topic="article"
-	ms.date="06/27/2016"
+	ms.date="09/20/2016"
 	ms.author="robmcm"/>
 
 # Verwenden des Azure Slave-Plug-Ins mit Hudson Continuous Integration
@@ -68,7 +68,7 @@ Sie finden dies in Ihrem [Abonnementprofil]. Es folgt ein Beispiel für ein Abon
 
 	</PublishData>
 
-Gehen Sie folgendermaßen vor, um das Azure Slave-Plug-In zu konfigurieren, sobald Sie Ihr Abonnementprofil haben.
+Sobald Sie Ihr Abonnementprofil haben, gehen Sie folgendermaßen vor, um das Azure Slave-Plug-In zu konfigurieren.
 
 1. Klicken Sie im Hudson-Dashboard auf **Manage Hudson**.
 
@@ -84,7 +84,7 @@ Gehen Sie folgendermaßen vor, um das Azure Slave-Plug-In zu konfigurieren, soba
 
     ![Profil konfigurieren][configure profile]
 
-1. Kopieren Sie die Abonnement-ID und das Verwaltungszertifikat aus Ihrem Abonnementprofil, und fügen Sie sie in die entsprechenden Felder ein.
+1. Kopieren Sie die Abonnement-ID und das Verwaltungszertifikat aus Ihrem Abonnementprofil, und fügen Sie diese in die entsprechenden Felder ein.
 
     Beim Kopieren der Abonnement-ID und des Verwaltungszertifikats schließen Sie **nicht** die Anführungszeichen ein, die die Werte einschließen.
 
@@ -237,4 +237,4 @@ Weitere Informationen zum Verwenden von Azure mit Java finden Sie im [Azure Java
 [template config]: ./media/virtual-machines-azure-slave-plugin-for-hudson/hudson-setup-templateconfig1-withdata.png
 [OS family list]: ./media/virtual-machines-azure-slave-plugin-for-hudson/hudson-oslist.png
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0921_2016-->

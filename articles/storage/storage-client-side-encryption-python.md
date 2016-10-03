@@ -3,9 +3,9 @@
 	description="Die Azure Storage-Clientbibliothek für Python unterstützt die clientseitige Verschlüsselung. Dies bietet maximale Sicherheit für Ihre Azure Storage-Anwendungen."
 	services="storage"
 	documentationCenter="python"
-	authors="rickle-msft"
-	manager="carmonm"
-	editor=""/>
+	authors="dineshmurthy"
+	manager="jahogg"
+	editor="tysonn"/>
 
 <tags
 	ms.service="storage"
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="python"
 	ms.topic="article"
-	ms.date="08/08/2016"
-	ms.author="t-rickle"/>
+	ms.date="09/20/2016"
+	ms.author="dineshm;robinsh"/>
 
 
 # Clientseitige Verschlüsselung mit Python für Microsoft Azure Storage
@@ -226,4 +226,4 @@ Beachten Sie, dass ein Verschlüsseln Ihrer Storage-Daten einen zusätzlichen Le
 - Herunterladen der [Azure Storage-Clientbibliothek für das Java-PyPi-Paket](https://pypi.python.org/pypi/azure-storage)
 - Herunterladen der [Azure Storage-Clientbibliothek für Python-Quellcode aus GitHub](https://github.com/Azure/azure-storage-python)
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0921_2016-->

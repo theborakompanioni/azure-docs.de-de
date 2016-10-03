@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="08/18/2016"
+   ms.date="09/16/2016"
    ms.author="gwallace"/>
 
 # Routing auf URL-Pfadbasis – Übersicht
@@ -25,7 +25,7 @@ Anforderungen für http://contoso.com/video* werden an VideoServerPool weitergel
 
 ## urlPathMap-Konfigurationselement
 
-Mit dem urlPathMap-Element werden Pfadmuster für Zuordnungen zu Back-End-Serverpools angegeben. Im Folgenden finden Sie den Codeausschnitt des urlPathMap-Elements aus der Vorlagendatei.
+Mit dem urlPathMap-Element werden Pfadmuster für Zuordnungen zu Back-End-Serverpools angegeben. Das folgende Codebeispiel ist der Codeausschnitt des urlPathMap-Elements aus der Vorlagendatei.
 
 	"urlPathMaps": [
 	{
@@ -82,8 +82,8 @@ RequestRoutingRule vom Typ PathBasedRouting wird verwendet, um einen Listener an
 
     }
 	
-## Nächste Schritte 
+## Nächste Schritte
 
 Nachdem Sie sich mit dem URL-basierten Inhaltsrouting vertraut gemacht haben, können Sie mit [Erstellen eines Anwendungsgateways mit URL-basiertem Routing](application-gateway-create-url-route-portal.md) fortfahren, um ein Anwendungsgateway mit URL-Routingregeln zu erstellen.
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0921_2016-->

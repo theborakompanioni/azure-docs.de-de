@@ -13,7 +13,7 @@
 	ms.workload="data-management"
 	ms.topic="article"
 	ms.tgt_pltfrm="NA"
-	ms.date="09/14/2016"
+	ms.date="09/19/2016"
 	ms.author="sstein"/>
 
 
@@ -78,7 +78,7 @@ Zum Anzeigen des Servernamens Ihrer Datenbank klicken Sie auf dem Blatt **SQL-Da
 Zum Anzeigen, Erstellen oder Aktualisieren von Firewallregeln klicken Sie auf dem Blatt **SQL-Datenbank** auf **Set server firewall** (Serverfirewall festlegen) . Details finden Sie unter [Konfigurieren einer Firewallregel auf Serverebene für Azure SQL-Datenbank mithilfe des Azure-Portals](sql-database-configure-firewall-settings.md).
 
 
-![Firewallregeln](./media/sql-database-manage-portal/commands.png)
+![Firewallregeln](./media/sql-database-manage-portal/sql-database-firewall.png)
 
 
 ## Wie ändere ich die Dienstebene oder Leistungsstufe meiner SQL-Datenbank?
@@ -128,14 +128,14 @@ Für ein Failover auf eine georeplizierte sekundäre Datenbank klicken Sie auf d
 Zum Kopieren einer SQL-Datenbank klicken Sie auf dem Blatt **SQL-Datenbank** auf **Kopieren**. Details finden Sie unter [Kopieren einer Azure SQL-Datenbank mithilfe des Azure-Portals](sql-database-copy-portal.md).
 
 
-![Einstellungen der SQL-Datenbank](./media/sql-database-manage-portal/commands.png)
+![Einstellungen der SQL-Datenbank](./media/sql-database-manage-portal/sql-database-copy.png)
 
 ## Wie archiviere ich eine Azure SQL-Datenbank in eine BACPAC-Datei?
 
 Zum Erstellen einer BACPAC-Datei einer SQL-Datenbank klicken Sie auf dem Blatt **SQL-Datenbank** auf **Exportieren**. Details finden Sie unter [Archivieren einer Azure SQL-Datenbank in eine BACPAC-Datei mithilfe des Azure-Portals](sql-database-export.md).
 
 
-![SQL-­Datenbankexport](./media/sql-database-manage-portal/commands.png)
+![SQL-­Datenbankexport](./media/sql-database-manage-portal/sql-database-export.png)
 
 
 
@@ -144,7 +144,7 @@ Zum Erstellen einer BACPAC-Datei einer SQL-Datenbank klicken Sie auf dem Blatt *
 Zum Wiederherstellen einer SQL-Datenbank klicken Sie auf dem Blatt **SQL-Datenbank** auf **Wiederherstellen**. Details finden Sie unter [Wiederherstellen des Zustands einer Azure SQL-Datenbank zu einem früheren Zeitpunkt über das Azure-Portal](sql-database-point-in-time-restore-portal.md).
 
 
-![Einstellungen der SQL-Datenbank](./media/sql-database-manage-portal/commands.png)
+![Einstellungen der SQL-Datenbank](./media/sql-database-manage-portal/sql-database-restore.png)
 
 
 ## Wie erstelle ich eine Azure SQL-Datenbank aus einer BACPAC-Datei?
@@ -163,7 +163,7 @@ Zum Wiederherstellen einer gelöschten SQL­Datenbank klicken Sie auf dem Blatt 
 
 Zum Löschen einer SQL-Datenbank klicken Sie auf dem Blatt **SQL-Datenbank** auf **Löschen**.
 
-![Einstellungen der SQL-Datenbank](./media/sql-database-manage-portal/commands.png)
+![Einstellungen der SQL-Datenbank](./media/sql-database-manage-portal/sql-database-delete.png)
 
 
 
@@ -172,4 +172,4 @@ Zum Löschen einer SQL-Datenbank klicken Sie auf dem Blatt **SQL-Datenbank** auf
 - [SQL-Datenbank](sql-database-technical-overview.md)
 - [Überwachen und Verwalten eines Pools für elastische Datenbanken über das Azure-Portal](sql-database-elastic-pool-manage-portal.md)
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

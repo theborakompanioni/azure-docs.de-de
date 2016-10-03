@@ -13,28 +13,84 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-catalog"
-   ms.date="05/20/2016"
+   ms.date="09/21/2016"
    ms.author="maroche"/>
 
 # Neuigkeiten in Azure Data Catalog
 
 Updates für **Azure Data Catalog** werden in regelmäßigen Abständen veröffentlicht. Nicht jede Version umfasst neue Funktionen für Benutzer, da sich einige Versionen auf Back-End-Dienstfunktionen konzentrieren. Auf dieser Seite werden neue Funktionen für Benutzer aufgezeigt, die dem Dienst Azure Data Catalog hinzugefügt wurden.
 
+
+
+## Neuigkeiten in der Version der Woche vom 16. September 2016
+
+In der Woche vom 16. September 2016 wurden Azure Data Catalog die folgenden Funktionen hinzugefügt:
+
+- Unterstützung von IBM DB2-Datenquellen. Benutzer können nun DB2-Datenbanken, -Tabellen und -Sichten registrieren und ermitteln.
+- Unterstützung von Azure DocumentDB-Datenquellen. Benutzer können nun DocumentDB-Datenbanken und -Sammlungen registrieren und ermitteln.
+- Unterstützung der Anpassung des Katalognamens im Data Catalog-Portal. Catalog-Administratoren können nun Text für den Portaltitel angeben (etwa den Namen der Organisation).
+
+## Neuigkeiten in der Version der Woche vom 26. August 2016
+
+In der Woche vom 26. August 2016 wurden Azure Data Catalog folgende Funktionen hinzugefügt:
+
+- Erweiterungen für die Registrierung von SQL Server-MDS-Datenquellen (Master Data Services). Benutzer können nun Vorschauen und Datenprofile einschließen, wenn sie MDS-Entitäten mithilfe des Registrierungstools für Data Catalog-Datenquellen registrieren.
+- Unterstützung administratordefinierter gespeicherter Organisationssuchen. Beim Speichern einer Suche im Data Catalog-Portal können Data Catalog-Administratoren nun Suchvorgänge für den persönlichen Gebrauch oder für alle Katalogbenutzer speichern. Gespeicherte Organisationssuchen werden für alle Katalogbenutzer freigegeben und können als standardisierter Ausgangspunkt für die Ermittlung von Datenquellen fungieren.
+
+## Neuigkeiten in der Version der Woche vom 5. August 2016
+
+In der Woche vom 5. August 2016 wurden Azure Data Catalog folgende Funktionen hinzugefügt:
+
+- Aktualisierung der Eigenschaftenansicht im Data Catalog-Portal. Zur Verbesserung der Konsistenz und Übersichtlichkeit werden nun alle Datenasseteigenschaften in einem einzelnen Bereich mit anpassbarer Größer angezeigt und verwaltet.
+
+## Neuigkeiten in der Version der Woche vom 29. Juli 2016
+
+In der Woche vom 29. Juli 2016 wurden Azure Data Catalog folgende Funktionen hinzugefügt:
+
+- Unterstützung von SQL Server-MDS-Datenquellen (Master Data Services). Benutzer können nun MDS-Modelle und -Entitäten registrieren und ermitteln.
+
+## Neuigkeiten in der Version der Woche vom 22. Juli 2016
+
+In der Woche vom 22. Juli 2016 wurden Azure Data Catalog folgende Funktionen hinzugefügt:
+
+- Unterstützung gespeicherter SQL Server-Prozeduren. Benutzer können nun Objekte gespeicherter Prozeduren in SQL Server-Datenquellen registrieren und ermitteln.
+- Unterstützung zusätzlicher Sprachen im Azure Data Catalog-Portal und dem Tool zum Registrieren von Datenquellen. Damit werden insgesamt 18 Sprachen unterstützt. Die in Azure Data Catalog verwendete Sprache entspricht den in Windows oder im Webbrowser des Benutzers festgelegten Spracheinstellungen.
+
+## Neuigkeiten in der Version der Woche vom 8. Juli 2016
+
+In der Woche vom 8. Juli 2016 wurden Azure Data Catalog folgende Funktionen hinzugefügt:
+
+- Aktualisierung und Optimierung der Startseite des Data Catalog-Portals (einschließlich Verbesserung der Leistung und Benutzerfreundlichkeit).
+
+## Neuigkeiten in der Version der Woche vom 24. Juni 2016
+
+In der Woche vom 24. Juni 2016 wurden Azure Data Catalog folgende Funktionen hinzugefügt:
+
+- Unterstützung der Größenanpassung von Spalten in der Listenansicht beim Ermitteln von Datenassets im Data Catalog-Portal. Benutzer können nun die Größe einzelner Spalten anpassen und dadurch lange Assetmetadaten wie Tags und Beschreibungen einfacher lesen.
+- Dem Menü „Öffnen in“ des Data Catalog-Portals wurde Power Query für Excel hinzugefügt. Benutzer können nun unterstützte Datenquellen in Excel 2016 oder in Excel 2010 und Excel 2013 öffnen, wenn das Add-In [Power Query für Excel](https://support.office.com/article/Introduction-to-Microsoft-Power-Query-for-Excel-6E92E2F4-2079-4E1F-BAD5-89F6269CD605) installiert ist.
+
+
+## Neuigkeiten in der Version der Woche vom 17. Juni 2016
+
+In der Woche vom 17. Juni 2016 wurden Azure Data Catalog folgende Funktionen hinzugefügt:
+
+- Unterstützung von Azure Table Storage-Datenquellen. Benutzer können nun Tabellenobjekte in Azure Storage-Datenquellen registrieren und ermitteln.
+
 ## Neues im Release der Woche ab dem 20. Mai 2016
 
 In der Woche ab dem 20. Mai 2016 wurden Azure Data Catalog folgende Funktionen hinzugefügt:
 
 - Erweiterungen im Data Catalog-Unternehmensglossar, die es Benutzern ermöglichen, mehrere Glossarbegriffe in einem einzigen Vorgang zu aktualisieren. Benutzer können mehrere Begriffe auswählen, um folgende Felder zu bearbeiten:
-    - Übergeordneter Begriff: Der Benutzer kann einen neuen übergeordneten Begriff auswählen. Alle ausgewählten Begriffe werden so aktualisiert, dass sie untergeordnete Begriffe des ausgewählten übergeordneten Begriffs darstellen. Wenn alle ausgewählten Begriffe über denselben übergeordneten Begriff verfügen, wird dieser übergeordnete Begriff im Textfeld angezeigt. Andernfalls ist das Feld „übergeordneter Begriff“ leer.   
+    - Übergeordneter Begriff: Der Benutzer kann einen neuen übergeordneten Begriff auswählen. Alle ausgewählten Begriffe werden so aktualisiert, dass sie untergeordnete Begriffe des ausgewählten übergeordneten Begriffs darstellen. Wenn alle ausgewählten Begriffe über denselben übergeordneten Begriff verfügen, wird dieser übergeordnete Begriff im Textfeld angezeigt. Andernfalls ist das Feld „übergeordneter Begriff“ leer.
     - Tags und Beteiligte: Benutzer können Tags und Beteiligte für mehrere Glossarbegriffe mithilfe desselben Szenarios wie beim Markieren mehrerer Datenassets hinzufügen und entfernen.
 
-Weitere Informationen zum Unternehmensglossar finden Sie unter [How to set up the Business Glossary for Governed Tagging](data-catalog-how-to-business-glossary.md) (Einrichten des Unternehmensglossars für gesteuertes Markieren)
+Weitere Informationen zum Unternehmensglossar finden Sie unter [Einrichten des Unternehmensglossars für gesteuertes Markieren](data-catalog-how-to-business-glossary.md).
 
 ## Neuigkeiten in der Version der Woche ab dem 6. Mai 2016
 
 In der Woche ab dem 6. Mai 2016 wurden Azure Data Catalog folgende Funktionen hinzugefügt:
 
-- Ein Unternehmensglossar, mit dem Katalogadministratoren Geschäftsbedingungen und Hierarchien definieren können, um ein allgemeines Geschäftsvokabular zu erstellen. Benutzer können registrierte Datenassets mit Glossarbegriffen markieren, um das Erkennen und Verstehen des Kataloginhalts zu vereinfachen. Weitere Informationen finden Sie unter [How to set up the Business Glossary for Governed Tagging](data-catalog-how-to-business-glossary.md) (Einrichten des Unternehmensglossars für gesteuertes Markieren)  
+- Ein Unternehmensglossar, mit dem Katalogadministratoren Geschäftsbedingungen und Hierarchien definieren können, um ein allgemeines Geschäftsvokabular zu erstellen. Benutzer können registrierte Datenassets mit Glossarbegriffen markieren, um das Erkennen und Verstehen des Kataloginhalts zu vereinfachen. Weitere Informationen finden Sie unter [Einrichten des Unternehmensglossars für gesteuertes Markieren](data-catalog-how-to-business-glossary.md).
 
 > [AZURE.NOTE] Das Unternehmensglossar ist nur in der Standard Edition von Azure Data Catalog verfügbar. Die kostenlose Edition bietet keine Funktionen für gesteuertes Markieren bzw. ein Unternehmensglossar.
 
@@ -43,7 +99,7 @@ In der Woche ab dem 6. Mai 2016 wurden Azure Data Catalog folgende Funktionen hi
 
 In der Woche ab dem 11. März 2016 wurden Azure Data Catalog folgende Funktionen hinzugefügt:
 
-- Ein konsolidierter REST-API-Endpunkt für den programmgesteuerten Zugriff auf die Suchfunktionen und Funktionen zur Katalogbestandsverwaltung des Azure Data Catalog-Diensts. Der vorhandene Such-API-Endpunkt und Katalog-API-Endpunkt sind veraltet und werden zum 21. März 2016 eingestellt. Es gibt keine Änderungen der API-Semantik; nur der Endpunkt-URI wird geändert. Weitere Informationen finden Sie unter [Azure Data Catalog REST API Reference](https://msdn.microsoft.com/library/azure/mt267595.aspx) (Azure Data Catalog REST-API-Referenz). API-Beispiele finden Sie unter [Data Catalog – Entwicklerbeispiele](data-catalog-samples.md).
+- Ein konsolidierter REST-API-Endpunkt für den programmgesteuerten Zugriff auf die Suchfunktionen und Funktionen zur Katalogbestandsverwaltung des Azure Data Catalog-Diensts. Der vorhandene Such-API-Endpunkt und Katalog-API-Endpunkt sind veraltet und werden zum 21. März 2016 eingestellt. Es gibt keine Änderungen der API-Semantik; nur der Endpunkt-URI wird geändert. Weitere Informationen finden Sie in der [Azure Data Catalog REST-API-Referenz](https://msdn.microsoft.com/library/azure/mt267595.aspx). API-Beispiele finden Sie unter [Data Catalog – Entwicklerbeispiele](data-catalog-samples.md).
 
 ## Neuigkeiten in der Version der Woche ab dem 19. Februar 2016
 
@@ -58,7 +114,7 @@ In der Woche ab dem 19. Februar 2016 wurden Azure Data Catalog folgende Funktio
 
 In der Woche ab dem 5. Februar 2016 wurden Azure Data Catalog folgende Funktionen hinzugefügt:
 
-- Unterstützung für das Ändern der Azure-Abonnements, die von Azure Data Catalog verwendet werden. Administratoren von Azure Data Catalog können auf der Seite „Einstellungen“ im Azure Data Catalog-Portal zu Abrechnungszwecken ein anderes Azure-Abonnement auswählen.
+- Unterstützung der Änderung der von Azure Data Catalog verwendeten Azure-Abonnements. Administratoren von Azure Data Catalog können auf der Seite „Einstellungen“ im Azure Data Catalog-Portal zu Abrechnungszwecken ein anderes Azure-Abonnement auswählen.
 
 ## Neuerungen in der Version der Woche ab dem 29. Januar 2016
 
@@ -73,9 +129,9 @@ In der Woche ab dem 29. Januar 2016 wurden Azure Data Catalog folgende Funktio
    + Salesforce.com – Objekt
    + DB2 – Tabelle, Ansicht und Datenbank
    + PostgreSQL – Tabelle, Ansicht und Datenbank
-- Unterstützung für „Open in SQL Server Data Tools“ für SQL Server-Datenquellen (einschließlich Azure SQL-Datenbank und Azure SQL Data Warehouse).  
+- Unterstützung für „Open in SQL Server Data Tools“ für SQL Server-Datenquellen (einschließlich Azure SQL-Datenbank und Azure SQL Data Warehouse).
 
-> [AZURE.NOTE] „Open in SQL Server Data Tools“ erfordert die Installation von Visual Studio 2013 mit Update 4 und SQL Server-Tools. Zum Installieren der aktuellen Version von SQL Server Data Tools gehen Sie zu [Download der neuesten SQL Server-Datatools](https://msdn.microsoft.com/library/mt204009.aspx).
+> [AZURE.NOTE] „Open in SQL Server Data Tools“ erfordert die Installation von Visual Studio 2013 mit Update 4 und SQL Server-Tools. Besuchen Sie [Herunterladen von SQL Server Data Tools (SSDT)](https://msdn.microsoft.com/library/mt204009.aspx), um die aktuelle Version von SQL Server Data Tools zu installieren.
 
 ## Neuerungen in der Version der Woche ab dem 22. Januar 2016
 
@@ -114,7 +170,7 @@ In der Woche ab dem 20. November 2015 wurden Azure Data Catalog folgende Funkti
 
 - Möglichkeit zum Anzeigen und Kopieren von Verbindungszeichenfolgen über das Azure Data Catalog-Portal für SQL Server-Datenquellen (einschließlich Azure SQL-Datenbank) und Oracle-Datenquellen. Benutzer können in den Verbindungsinformationen für eine Tabelle, Ansicht oder Datenbank von SQL Server oder Oracle auf den Link „Verbindungszeichenfolgen anzeigen“ klicken, um die Verbindungszeichenfolgen zum Herstellen der Verbindung mit der Datenquelle anzuzeigen. Für SQL Server-Datenquellen werden ADO.NET-, ODBC-, OLEDB- und JDBC-Verbindungszeichenfolgen bereitgestellt. Für Oracle-Datenquellen werden ODBC- und OLEDB-Verbindungszeichenfolgen bereitgestellt.
 - Unterstützung für das Einbinden von Datenprofilen, wenn Teradata-Tabellen und -Ansichten registriert werden.
-- Unterstützung für „Open in Power BI Desktop“ für SQL Server-Datenquellen (einschließlich Azure SQL-Datenbank und Azure SQL Data Warehouse), SQL Server Analysis Services-, Azure Storage- und HDFS-Quellen.  
+- Unterstützung für „Open in Power BI Desktop“ für SQL Server-Datenquellen (einschließlich Azure SQL-Datenbank und Azure SQL Data Warehouse), SQL Server Analysis Services-, Azure Storage- und HDFS-Quellen.
 
 > [AZURE.NOTE] Für „Open in Power BI Desktop“ muss eine aktuelle Version der Anwendung Power BI Desktop installiert sein. Wenn bei der Verwendung dieser Funktion Probleme oder Fehler auftreten, vergewissern Sie sich, dass Sie die neueste Version von Power BI Desktop von [PowerBI.com](https://powerbi.com) heruntergeladen haben.
 
@@ -235,4 +291,4 @@ In der Woche ab dem 21. August 2015 wurden Azure Data Catalog folgende Funktione
 - Nur Standard Edition: Beim Hinzufügen von Besitzern zu Datenbeständen unterstützt Azure Data Catalog jetzt sowohl Benutzerkonten als auch Sicherheitsgruppen als Besitzer. Um eine Sicherheitsgruppe als Besitzer für ausgewählte Datenasset hinzuzufügen, können Sie entweder den Anzeigenamen der Gruppe oder die UPN-E-Mail-Adresse der Gruppe (sofern vorhanden) eingeben.
 - Unterstützung für Datenquellen in Azure Blob Storage. Benutzer können nun Azure Storage-Blobs und -Verzeichnisse registrieren und ermitteln.
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0921_2016-->

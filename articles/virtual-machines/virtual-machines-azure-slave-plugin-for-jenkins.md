@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="vm-multiple"
 	ms.devlang="java"
 	ms.topic="article"
-	ms.date="06/27/2016"
+	ms.date="09/20/2016"
 	ms.author="robmcm"/>
 
 # Verwenden des Azure Slave-Plug-Ins mit Jenkins Continuous Integration
@@ -85,7 +85,7 @@ Sobald Sie Ihr Abonnementprofil haben, gehen folgendermaßen Sie vor, um das Azu
 
 1. Kopieren Sie die Abonnement-ID und die Verwaltungszertifikatswerte aus Ihrem Abonnementprofil, und fügen Sie sie in die entsprechenden Felder ein.
 
-    Beim Kopieren der Abonnement-ID und des Verwaltungszertifikats schließen Sie nicht die Anführungszeichen ein, die die Werte einschließen.
+    Schließen Sie beim Kopieren der Abonnement-ID und des Verwaltungszertifikats nicht die Anführungszeichen ein, die die Werte umschließen.
 
 1. Klicken Sie auf **Verify Configuration**.
 
@@ -246,4 +246,4 @@ Weitere Informationen zum Verwenden von Azure mit Java finden Sie im [Azure Java
 [checkpoint general template config]: ./media/virtual-machines-azure-slave-plugin-for-jenkins/jenkins-slave-template-general-configuration.png
 [OS Image list sample]: ./media/virtual-machines-azure-slave-plugin-for-jenkins/jenkins-os-family-list-sample.png
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0921_2016-->

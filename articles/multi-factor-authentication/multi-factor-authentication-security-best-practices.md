@@ -1,20 +1,20 @@
 <properties 
-	pageTitle="Bewährten Methoden für die Sicherheit bei Verwendung von MFA" 
-	description="In diesem Dokument sind bewährte Methoden bei Verwendung von Azure MFA mit Azure-Konten beschrieben" 
-	services="multi-factor-authentication" 
-	documentationCenter="" 
-	authors="billmath" 
-	manager="stevenpo" 
+	pageTitle="Bewährten Methoden für die Sicherheit bei Verwendung von MFA"
+	description="In diesem Dokument sind bewährte Methoden bei Verwendung von Azure MFA mit Azure-Konten beschrieben"
+	services="multi-factor-authentication"
+	documentationCenter=""
+	authors="kgremban"
+	manager="femila"
 	editor="curtland"/>
 
-<tags 
-	ms.service="multi-factor-authentication" 
-	ms.workload="identity" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/04/2016" 
-	ms.author="billmath"/>
+<tags
+	ms.service="multi-factor-authentication"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/04/2016"
+	ms.author="kgremban"/>
 
 # Bewährte Sicherheitsmethoden beim Einsatz von Azure Multi-Factor Authentication mit Azure AD-Konten
 
@@ -31,7 +31,7 @@ Damit alle Benutzer die mehrstufige Authentifizierung nutzen und von den erweite
 ![EMS](./media/multi-factor-authentication-security-best-practices/ems.png)
 
 Um Azure MFA unter Verwendung von Azure AD Premium oder Enterprise Mobility Suite in der Cloud zu nutzen, sollten Sie Ihren Benutzern zunächst Lizenzen zuweisen. Da Azure Multi-Factor Authentication Teil dieser Suites sind, benötigt Ihr Unternehmen keine weiteren Komponenten, um die Multi-Factor Authentication-Funktion für alle Benutzer zu implementieren.
- 
+
 Berücksichtigen Sie bei der Einrichtung von Multi-Factor Authentication folgende Aspekte:
 
 - Sie müssen keinen Multi-Factor Authentication-Anbieter erstellen. Azure Multi-Factor Authentication ist in Azure AD Premium und Enterprise Mobility Suite bereits enthalten. Wenn Sie einen Authentifizierungsanbieter erstellen, fallen möglicherweise doppelte Kosten an.
@@ -102,7 +102,7 @@ Wenn für Ihr Unternehmen ein SSO-Verbund mit Azure AD konfiguriert ist und Sie 
 In der nachfolgenden Liste sind zusätzliche Überlegungen und bewährte Methoden für die einzelnen Komponenten aufgeführt, die lokal bereitgestellt werden:
 
 Methode|Beschreibung
-:------------- | :------------- | 
+:------------- | :------------- |
 [Active Directory-Verbunddienste](multi-factor-authentication-get-started-adfs.md)|Informationen zum Einrichten von Multi-Factor Authentication mit AD FS.
 [RADIUS-Authentifizierung](multi-factor-authentication-get-started-server-radius.md)| Informationen über Einrichtung und Konfiguration des Azure MFA-Servers mit RADIUS.
 [IIS-Authentifizierung](multi-factor-authentication-get-started-server-iis.md)|Informationen über Einrichtung und Konfiguration des Azure MFA-Servers mit IIS.
@@ -111,7 +111,7 @@ Methode|Beschreibung
 [Remotedesktop-Gateway und Azure Multi-Factor Authentication-Server mithilfe von RADIUS](multi-factor-authentication-get-started-server-rdg.md)| Informationen zum Einrichten und Konfigurieren des Azure MFA-Servers mit Remotedesktop-Gateway unter Verwendung von RADIUS.
 [Synchronisieren mit Windows Server Active Directory](multi-factor-authentication-get-started-server-dirint.md)|Informationen zum Einrichten und Konfigurieren der Synchronisierung zwischen Active Directory und dem Azure MFA-Server.
 [Bereitstellen des mobilen App-Webdienstes für den Azure Multi-Factor Authentication-Server](multi-factor-authentication-get-started-server-webservice.md)|Informationen über das Einrichten und Konfigurieren des Azure MFA-Server-Webdienstes.
-[Erweiterte VPN-Konfiguration mit Azure Multi-Factor Authentication](multi-factor-authentication-advanced-vpn-configurations.md)|Informationen zum Konfigurieren von Cisco ASA-, Citrix Netscaler- und Juniper/Pulse-Geräten über sichere VPN-Verbindungen unter Verwendung von LDAP oder RADIUS. 
+[Erweiterte VPN-Konfiguration mit Azure Multi-Factor Authentication](multi-factor-authentication-advanced-vpn-configurations.md)|Informationen zum Konfigurieren von Cisco ASA-, Citrix Netscaler- und Juniper/Pulse-Geräten über sichere VPN-Verbindungen unter Verwendung von LDAP oder RADIUS.
 
 
 ## Zusätzliche Ressourcen
@@ -121,4 +121,4 @@ In diesem Artikel sind einige bewährte Methoden für Azure MFA beschrieben. Zus
 - [Einrichten von Azure Multi-Factor Authentication](multi-factor-authentication-end-user-first-time.md)
 - [Azure Multi-Factor Authentication – Häufig gestellte Fragen](multi-factor-authentication-faq.md)
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0921_2016-->

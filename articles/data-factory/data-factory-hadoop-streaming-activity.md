@@ -13,13 +13,13 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/05/2016" 
+	ms.date="09/20/2016" 
 	ms.author="spelluru"/>
 
 # Hadoop-Streamingaktivität
 Mit der Aktivität „HDInsightStreamingActivity“ können Sie einen Hadoop-Streamingauftrag über eine Azure Data Factory-Pipeline aufrufen. Der folgende JSON-Codeausschnitt zeigt die Syntax für die Verwendung von HDInsightStreamingActivity in einer JSON-Pipelinedatei.
 
-Die HDInsight-Streamingaktivität in einer [Data Factory-Pipeline](data-factory-create-pipelines.md) führt Hadoop-Streamingprogramme in [eigenen](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) oder [bedarfsgesteuerten](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) Windows/Linux-basierten HDInsight-Clustern aus. Dieser Artikel baut auf dem Artikel zu [Datentransformationsaktivitäten](data-factory-data-transformation-activities.md) auf, der einen allgemeinen Überblick über die Datentransformation und die unterstützten Transformationsaktivitäten bietet.
+Die HDInsight-Streamingaktivität in einer [Data Factory-Pipeline](data-factory-create-pipelines.md) führt Hadoop-Streamingprogramme in [eigenen](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) oder [bedarfsgesteuerten](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) Windows/Linux-basierten HDInsight-Clustern aus. Dieser Artikel baut auf dem Artikel zu [Datentransformationsaktivitäten](data-factory-data-transformation-activities.md) auf, der eine allgemeine Übersicht über die Datentransformation und die unterstützten Transformationsaktivitäten bietet.
 
 ## JSON-Beispiel
 Der HDInsight-Cluster wird automatisch mit Beispielprogrammen („wc.exe“ und „cat.exe“) und Daten („davinci.txt“) aufgefüllt. Standardmäßig entspricht der Name des Containers, der im HDInsight-Cluster verwendet wird, dem Namen des Clusters. Wenn der Name Ihres Clusters beispielsweise „myhdicluster“ lautet, lautet der Name des zugeordneten Blob-Containers auch „myhdicluster“.
@@ -68,12 +68,12 @@ Der HDInsight-Cluster wird automatisch mit Beispielprogrammen („wc.exe“ und 
 	    }
 	}
 
-Beachten Sie Folgendes:
+Beachten Sie folgende Punkte:
 
 1. Legen Sie **linkedServiceName** auf den Namen des verknüpften Diensts fest, der auf Ihren HDInsight-Cluster verweist, auf dem der MapReduce-Streamingauftrag ausgeführt wird.
 2. Legen Sie den Typ der Aktivität auf **HDInsightStreaming** fest.
-3. Geben Sie für die **mapper**-Eigenschaft den Namen der ausführbaren Zuordnungsdatei an. Im obigen Beispiel ist „cat.exe“ die ausführbare Zuordnungsdatei.
-4. Geben Sie für die **reducer**-Eigenschaft den Namen der ausführbaren Reduzierungsdatei an. Im obigen Beispiel ist „wc.exe“ die ausführbare Reduzierungsdatei.
+3. Geben Sie für die **mapper**-Eigenschaft den Namen der ausführbaren Zuordnungsdatei an. Im Beispiel ist „cat.exe“ die ausführbare Zuordnungsdatei.
+4. Geben Sie für die **reducer**-Eigenschaft den Namen der ausführbaren Reduzierungsdatei an. Im Beispiel ist „wc.exe“ die ausführbare Reduzierungsdatei.
 5. Geben Sie für die **input**-Eigenschaft die Eingabedatei (einschließlich Speicherort) für die Zuordnung an. Im Beispiel „wasb://adfsample@<Kontoname>.blob.core.windows.net/example/data/gutenberg/davinci.txt“ ist „adfsample“ der Blobcontainer, „example/data/Gutenberg“ der Ordner und „davinci.txt“ das Blob.
 6. Geben Sie für die **output**-Eigenschaft die Ausgabedatei (einschließlich Speicherort) für die Reduzierung an. Die Ausgabe des Hadoop-Streamingauftrags wird an dem für diese Eigenschaft angegebenen Speicherort geschrieben.
 7. Geben Sie im Abschnitt **filePaths** die Pfade für die ausführbare Zuordnungs- und Reduzierungsdatei an. Im Beispiel „adfsample/example/apps/wc.exe“ ist „adfsample“ der Blob-Container, „example/apps“ der Ordner und „wc.exe“ die ausführbare Datei.
@@ -81,7 +81,7 @@ Beachten Sie Folgendes:
 9. Geben Sie für die **arguments**-Eigenschaft die Argumente für den Streamingauftrag an.
 10. Die **getDebugInfo**-Eigenschaft ist ein optionales Element. Wenn die Eigenschaft auf "Failure" festgelegt wird, werden die Protokolle nur bei Fehlern heruntergeladen. Wenn die Eigenschaft auf "All" festgelegt wird, werden Protokolle immer heruntergeladen, unabhängig vom Ausführungsstatus.
 
-> [AZURE.NOTE] Wie im Beispiel gezeigt, müssen Sie in Bezug auf die Hadoop-Streamingaktivität für die **outputs**-Eigenschaft ein Ausgabedataset festlegen. Dies ist nur ein für die Pipeline erforderliches Dummy-Dataset. Sie müssen in Bezug auf die Aktivität kein Eingabedataset für die **inputs**-Eigenschaft festlegen.
+> [AZURE.NOTE] Wie im Beispiel gezeigt, legen Sie in Bezug auf die Hadoop-Streamingaktivität für die **outputs**-Eigenschaft ein Ausgabedataset fest. Dieses Dataset ist nur ein für die Pipeline erforderliches Dummydataset. Sie müssen in Bezug auf die Aktivität kein Eingabedataset für die **inputs**-Eigenschaft festlegen.
 
 	
 ## Beispiel
@@ -121,7 +121,7 @@ Erstellen Sie anschließend einen verknüpften Dienst, um Ihren Azure HDInsight
 ### Datasets
 
 #### Ausgabedataset
-Die Pipeline in diesem Beispiel akzeptiert keine Eingaben. Für die HDInsight-Streamingaktivität muss ein Ausgabedataset angegeben werden. Dies ist nur ein für die Pipeline erforderliches Dummy-Dataset.
+Die Pipeline in diesem Beispiel akzeptiert keine Eingaben. Für die HDInsight-Streamingaktivität geben Sie ein Ausgabedataset an. Dieses Dataset ist nur ein für die Pipeline erforderliches Dummydataset.
 
 	{
 	    "name": "StreamingOutputDataset",
@@ -199,4 +199,4 @@ Der HDInsight-Cluster wird automatisch mit Beispielprogrammen („wc.exe“ und 
 - [Invoke Spark programs (Aufrufen von Spark-Programmen)](data-factory-spark.md)
 - [Invoke R scripts (Aufrufen von R-Skripts)](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample)
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0921_2016-->

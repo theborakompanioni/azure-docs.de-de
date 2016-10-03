@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="09/08/2016"
+   ms.date="09/16/2016"
    ms.author="terrylan"/>
 
 # Übersicht über die Sicherheit von Azure Storage
@@ -101,4 +101,4 @@ Weitere Informationen:
 - [Was ist der Azure-Schlüsseltresor?](../key-vault/key-vault-whatis.md)
 - [Erste Schritte mit dem Azure-Schlüsseltresor](../key-vault/key-vault-get-started.md)
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

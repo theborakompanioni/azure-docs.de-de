@@ -65,6 +65,6 @@ Für die Unternehmensintegration werden unterstützt diese Branchenstandards unt
 - [Schemas](./app-service-logic-enterprise-integration-schemas.md "Informationen zu Schemas für die Unternehmensintegration")
 - [Überprüfung von XML-Nachrichten](./app-service-logic-enterprise-integration-xml.md "Informationen zum Überprüfen von XML-Nachrichten mit Logik-Apps")
 - [XML-Transformation](./app-service-logic-enterprise-integration-transform.md "Informationen zu Zuordnungen für die Unternehmensintegration")
-- [Unternehmensintegrationconnectors](../connectors/apis-list.md "Informationen zu Enterprise Integration Pack-Connectors")
+- [Enterprise-Integrationsconnectors](../connectors/apis-list.md "Informationen zu Enterprise Integration Pack-Connectors")
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

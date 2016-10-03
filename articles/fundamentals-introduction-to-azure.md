@@ -22,7 +22,7 @@ Microsoft Azure ist die Anwendungsplattform von Microsoft für die öffentliche 
 
 **Wie Sie diesen Artikel lesen sollten**
 
-Azure wird ständig erweitert, sodass Sie leicht den Überblick verlieren können. Die grundlegenden Dienste sind weiter oben in diesem Artikel aufgeführt. Beginnen Sie einfach mit diesen, und arbeiten Sie dann die zusätzlichen Dienste durch. Das bedeutet nicht, dass Sie diese zusätzlichen Dienste nicht unabhängig verwenden können. Die grundlegenden Dienste bilden jedoch den Kern einer Anwendung, die in Azure ausgeführt wird.
+Azure wird ständig erweitert, sodass Sie leicht den Überblick verlieren können. Beginnen Sie mit den grundlegenden Diensten, die in diesem Artikel zuerst aufgeführt sind. Fahren Sie anschließend mit den zusätzlichen Diensten fort. Das bedeutet nicht, dass Sie diese zusätzlichen Dienste nicht unabhängig verwenden können. Die grundlegenden Dienste bilden jedoch den Kern einer Anwendung, die in Azure ausgeführt wird.
 
 **Geben Sie uns Feedback**
 
@@ -35,8 +35,7 @@ Azure gruppiert Dienste im Verwaltungsportal unter verschiedenen Kategorien und 
 
 Dieser Artikel **geht anders vor**, denn die Dienste werden nach Funktionsverwandtschaft dargestellt, und es werden wichtige Teildienste hervorgehoben, die zu größeren Diensten gehören.
 
-![Azure-Komponenten](./media/fundamentals-introduction-to-azure/AzureComponentsIntroNew780.png)  
-*Abbildung: Azure bietet über das Internet zugängliche Anwendungsdienste, die in Azure-Datencentern ausgeführt werden.*
+![Azure-Komponenten](./media/fundamentals-introduction-to-azure/AzureComponentsIntroNew780.png) *Abbildung: Azure bietet über das Internet zugängliche Anwendungsdienste, die in Azure-Datencentern ausgeführt werden. *
 
 ## Verwaltungsportal
 Azure verfügt über eine Webschnittstelle, das so genannte [Verwaltungsportal](http://manage.windowsazure.com), über das Administratoren auf die meisten Azure-Features zugreifen und die meisten Azure-Features verwalten können. Microsoft gibt das Portal mit der neueren Benutzeroberfläche in der Regel als Beta-Version heraus, bevor eine ältere Version zurückgezogen wird. Die neuere Version heißt [Azure-Vorschauportal](https://portal.azure.com/).
@@ -607,4 +606,4 @@ Nachdem Sie nun einen Überblick erhalten haben, besteht der nächste Schritt da
 
 [Azure Media Services Poster]: http://azure.microsoft.com/documentation/infographics/media-services/
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0921_2016-->

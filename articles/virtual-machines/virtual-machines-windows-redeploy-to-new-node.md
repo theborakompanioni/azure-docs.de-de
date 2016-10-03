@@ -15,7 +15,7 @@
 	ms.topic="support-article" 
 	ms.tgt_pltfrm="vm-windows"
 	ms.workload="infrastructure" 
-	ms.date="06/28/2016" 
+	ms.date="09/19/2016" 
 	ms.author="iainfou" 
 />
 
@@ -39,6 +39,6 @@ Verwenden Sie diesen Azure PowerShell-Befehl, um Ihren virtuellen Computer erneu
 
 
 ## Nächste Schritte
-Sie finden spezifische Hilfe zur [Problembehandlung bei RDP-Verbindungen](virtual-machines-windows-troubleshoot-rdp-connection.md) oder [detaillierte Schritte zur Fehlerbehebung bei RDP](virtual-machines-windows-detailed-troubleshoot-rdp.md), falls beim Herstellen einer Verbindung mit Ihrem virtuellen Computer Probleme auftreten. Sie können auch die Informationen zur [Problembehandlung bei der Anwendung](virtual-machines-windows-troubleshoot-app-connection.md) lesen, wenn Sie auf eine Anwendung, die auf Ihrem virtuellen Computer ausgeführt wird, nicht zugreifen können.
+Falls beim Herstellen einer Verbindung mit Ihrem virtuellen Computer Probleme auftreten, finden Sie spezifische Hilfe unter [Problembehandlung bei RDP-Verbindungen](virtual-machines-windows-troubleshoot-rdp-connection.md) oder [Ausführliche Schritte zur Problembehandlung bei RDP](virtual-machines-windows-detailed-troubleshoot-rdp.md). Sie können auch die Informationen zur [Problembehandlung bei der Anwendung](virtual-machines-windows-troubleshoot-app-connection.md) lesen, wenn Sie auf eine Anwendung, die auf Ihrem virtuellen Computer ausgeführt wird, nicht zugreifen können.
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -33,7 +33,7 @@ Die folgenden Informationen sollen Ihnen bei der Konfiguration und der produktiv
 
 
 - Speichern und schließen Sie RemoteApp-Anwendungen, wenn Sie die Anwendung nicht mehr benötigen. Eine nicht geschlossene Anwendung kann zu Datenverlusten führen.
-- Überprüfen Sie benutzerdefinierte Anwendungen, bevor Sie diese in Azure RemoteApp verwenden. Stellen Sie dabei auch sicher, dass sie auf einer Multisession-Plattform funktionieren, keine unnötigen Ressourcen (Speicher und CPU) belegen und dadurch möglicherweise einen anderen Benutzer derselben Sammlung blockieren. Informationen hierzu finden Sie im Whitepaper [Application Compatibility Best Practices for Remote Desktop Services](http://www.microsoft.com/download/details.aspx?id=18704), das Sie herunterladen können.
+- Überprüfen Sie benutzerdefinierte Anwendungen, bevor Sie diese in Azure RemoteApp verwenden. Stellen Sie dabei auch sicher, dass sie auf einer Multisession-Plattform funktionieren, keine unnötigen Ressourcen (Speicher und CPU) belegen und dadurch möglicherweise einen anderen Benutzer derselben Sammlung blockieren. Informationen hierzu finden Sie im Whitepaper [Application Compatibility Best Practices for Remote Desktop Services](http://www.dabcc.com/resources/Application%20Compatibility%20Best%20Practices%20for%20Remote%20Desktop%20Services.pdf), das Sie herunterladen können.
 
 ## Konfiguration und Verwaltung
 
@@ -46,4 +46,4 @@ Die folgenden Informationen sollen Ihnen bei der Konfiguration und der produktiv
 	- Konfigurieren Sie systemweite Einstellungen im Vorlagenimage und nicht auf einzelnen virtuellen Computern in einem Dienst.
 	- Deaktivieren Sie automatische Softwareupdates für veröffentlichte Anwendungen – wenden Sie Updates stattdessen manuell auf das Vorlagenimage an, und testen Sie sie, bevor Sie sie über die Vorlage bereitstellen.
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0921_2016-->

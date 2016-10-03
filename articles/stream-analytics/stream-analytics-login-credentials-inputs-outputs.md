@@ -5,7 +5,7 @@
 	services="stream-analytics" 
 	documentationCenter="" 
 	authors="jeffstokes72" 
-	manager="paulettm" 
+	manager="jhubbard" 
 	editor="cgronlun"/>
 
 <tags 
@@ -27,10 +27,10 @@ Während Azure Stream Analytics zwar das Fortsetzen eines Auftrags von der letzt
 ##Teil 1 – Vorbereiten des neuen Anmeldeinformationssatzes:
 Dieser Teil gilt für die folgenden Eingaben/Ausgaben:
 
-* Blob-Speicher
+* Blob Storage
 * Event Hubs
 * SQL-Datenbank
-* Table Storage
+* Tabellenspeicher
 
 Für andere Ein-/Ausgaben fahren Sie mit Teil 2 fort.
 
@@ -122,10 +122,10 @@ Für andere Ein-/Ausgaben fahren Sie mit Teil 2 fort.
 
 ##Teil 5: Entfernen des alten Anmeldeinformationssatzes
 Dieser Teil gilt für die folgenden Eingaben/Ausgaben:
-* Blob-Speicher
+* Blob Storage
 * Event Hubs
 * SQL-Datenbank
-* Table Storage
+* Tabellenspeicher
 
 ###Blob-Speicher/Tabellenspeicher
 Wiederholen Sie Teil 1 für den Zugriffsschlüssel, der bislang für den Auftrag verwendet wurde, um den jetzt nicht mehr verwendeten Zugriffsschlüssel zu erneuern.
@@ -198,4 +198,4 @@ Um Hilfe zu erhalten, besuchen Sie unser [Azure Stream Analytics-Forum](https://
 [graphic43]: ./media/stream-analytics-login-credentials-inputs-outputs/43-stream-analytics-login-credentials-inputs-outputs.png
  
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Übersicht über Livestreaming mit Azure Media Services" 
+	pageTitle="Übersicht über Livestreaming mit Azure Media Services | Azure Media Services" 
 	description="Dieses Thema bietet eine Übersicht über das Livestreaming mit Azure Media Services." 
 	services="media-services" 
 	documentationCenter="" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="ne" 
 	ms.topic="article" 
-	ms.date="06/22/2016"
+	ms.date="09/19/2016"
 	ms.author="juliako"/>
 
 #Übersicht über Livestreaming mit Azure Media Services
@@ -61,7 +61,7 @@ Mit Media Services-Version 2.10 können Sie beim Erstellen eines Kanals angeben,
 
 Die folgende Tabelle enthält eine Anleitung für den Vergleich der beiden von Media Services unterstützten Kanaltypen.
 
-Funktion|Pass-Through-Kanal|Standardkanal
+Feature|Pass-Through-Kanal|Standardkanal
 ---|---|---
 Die Single-Bitrate-Eingabe wird in mehreren Bitraten in der Cloud codiert.|Nein|Ja
 Maximale Auflösung, Anzahl der Ebenen|1080p, 8 Ebenen, 60 fps oder mehr|720p, 6 Ebenen, 30 fps
@@ -109,7 +109,7 @@ Mit einem [Programm](https://msdn.microsoft.com/library/azure/dn783463.aspx) kö
 
 ArchiveWindowLength bestimmt außerdem die maximale Dauer, für die Clients von der aktuellen Liveposition aus rückwärts suchen können. Programme können über die angegebene Zeitspanne laufen. Inhalte, die über das Zeitfenster hinausgehen, werden jedoch fortlaufend verworfen. Durch den Wert dieser Eigenschaft wird außerdem festgelegt, wie lange Clientmanifeste wachsen können.
 
-Jedes Programm ist mit einem Medienobjekt verknüpft. Zum Veröffentlichen des Programms müssen Sie einen Locator für das zugehörige Medienobjekt erstellen. Mithilfe dieses Locators können Sie eine Streaming-URL erstellen, die Sie Ihren Clients bereitstellen können.
+Jedes Programm ist mit einem Medienobjekt verknüpft. Zum Veröffentlichen des Programms müssen Sie einen Locator für das zugehörige Medienobjekt erstellen. Mithilfe dieses Locators können Sie eine Streaming-URL erstellen, die Sie Ihren Kunden bereitstellen können.
 
 Ein Kanal unterstützt bis zu drei gleichzeitig ausgeführte Programme, sodass Sie mehrere Archive desselben eingehenden Datenstroms erstellen können. Auf diese Weise können Sie verschiedene Teile eines Ereignisses nach Bedarf veröffentlichen und archivieren. Beispielsweise könnte Ihre Geschäftsanforderung darin bestehen, 6 Stunden eines Programms zu archivieren, jedoch nur die letzten 10 Minuten zu senden. Dazu müssen Sie zwei Programme erstellen, die gleichzeitig ausgeführt werden. Ein Programm wird auf die Archivierung von 6 Stunden des Ereignisses festgelegt. Dieses Programm wird jedoch nicht veröffentlicht. Das andere Programm wird auf die Archivierung von 10 Minuten festgelegt. Dieses Programm wird veröffentlicht.
 
@@ -138,7 +138,7 @@ In der folgenden Tabelle ist die Zuordnung der Kanalstatus mit den Abrechnungsmo
  
 Kanalstatus|Portal-UI-Indikatoren|Werden Gebühren berechnet?
 ---|---|---
-Wird gestartet|Wird gestartet|Nein (Übergangsstatus)
+Wird gestartet|Starting|Nein (Übergangsstatus)
 Wird ausgeführt|Bereit (keine ausgeführten Programme)<br/>oder<br/>Streaming (mindestens ein laufendes Programm)|JA
 Wird beendet|Wird beendet|Nein (Übergangsstatus)
 Beendet|Beendet|Nein
@@ -166,4 +166,4 @@ Beendet|Beendet|Nein
 
 [Media Services-Konzepte](media-services-concepts.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0921_2016-->

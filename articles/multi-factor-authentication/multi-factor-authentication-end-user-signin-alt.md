@@ -1,20 +1,20 @@
 <properties 
-	pageTitle="Anmelden über eine alternative Methode mit Azure Multi-Factor Authentication" 
-	description="Auf dieser Seite wird beschrieben, wie ein Benutzer sich über eine alternative Methode mit Azure MFA anmelden kann." 
-	services="multi-factor-authentication" 
-	documentationCenter="" 
-	authors="billmath" 
-	manager="stevenpo" 
+	pageTitle="Anmelden über eine alternative Methode mit Azure Multi-Factor Authentication"
+	description="Auf dieser Seite wird beschrieben, wie ein Benutzer sich über eine alternative Methode mit Azure MFA anmelden kann."
+	services="multi-factor-authentication"
+	documentationCenter=""
+	authors="kgremban"
+	manager="femilao"
 	editor="curtland"/>
 
-<tags 
-	ms.service="multi-factor-authentication" 
-	ms.workload="identity" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/04/2016" 
-	ms.author="billmath"/>
+<tags
+	ms.service="multi-factor-authentication"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/04/2016"
+	ms.author="kgremban"/>
 
 # Anmelden über eine alternative Methode mit Azure Multi-Factor Authentication
 
@@ -33,6 +33,4 @@ Im folgenden Abschnitt erfahren Sie, wie Sie sich über eine alternative Methode
 
 <li>Wählen Sie eine alternative Methode aus, und melden Sie sich an.</li>
 
- 
-
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0921_2016-->

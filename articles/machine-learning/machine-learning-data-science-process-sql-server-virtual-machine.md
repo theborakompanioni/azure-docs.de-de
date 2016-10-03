@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/14/2016" 
+	ms.date="09/16/2016" 
 	ms.author="fashah;garye;bradsev" />
 
 #<a name="heading"></a>Verarbeiten von Daten auf einer SQL Server-VM in Azure
@@ -113,10 +113,7 @@ Die Positionsinformationen können wie folgt in Funktionen umgewandelt werden, w
 Die oben beschriebenen positionsbasierten Funktionen können dann wie zuvor beschrieben zum Generieren weiterer Anzahlfunktionen verwendet werden.
 
 
-> [AZURE.TIP] Sie können die Datensätze programmgesteuert mithilfe Ihrer bevorzugten Sprache einfügen. Möglicherweise müssen Sie die Daten in Blöcken einfügen, um die Effizienz des Schreibvorgangs zu verbessern. (Ein Beispiel zur Vorgehensweise unter Verwendung von „pyodbc“ finden Sie unter [A HelloWorld sample to access SQLServer with python](https://code.google.com/p/pypyodbc/wiki/A_HelloWorld_sample_to_access_mssql_with_python) (HelloWorld-Beispiel für den SQL Server-Zugriff mit Python).)
- 
-
-> [AZURE.TIP] Eine weitere Möglichkeit zum Einfügen von Daten in die Datenbank bietet das [Hilfsprogramm BCP](https://msdn.microsoft.com/library/ms162802.aspx).
+> [AZURE.TIP] Sie können die Datensätze programmgesteuert mithilfe Ihrer bevorzugten Sprache einfügen. Möglicherweise müssen Sie die Daten in Blöcken einfügen, um die Effizienz des Schreibvorgangs zu verbessern. (Ein Beispiel zur Vorgehensweise unter Verwendung von „pyodbc“ finden Sie unter [A HelloWorld sample to access SQLServer with python](https://code.google.com/p/pypyodbc/wiki/A_HelloWorld_sample_to_access_mssql_with_python) (HelloWorld-Beispiel für den SQL Server-Zugriff mit Python).) Eine weitere Möglichkeit zum Einfügen von Daten in die Datenbank bietet das [Hilfsprogramm BCP](https://msdn.microsoft.com/library/ms162802.aspx).
 
 ###<a name="sql-aml"></a>Herstellen einer Verbindung mit Azure Machine Learning
 
@@ -152,4 +149,4 @@ Ein umfassendes Beispiel für den Azure Data Science Process anhand eines öffen
 [import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
  
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

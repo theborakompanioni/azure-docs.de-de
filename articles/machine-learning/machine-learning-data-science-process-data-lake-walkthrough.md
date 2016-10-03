@@ -3,7 +3,7 @@
 	description="Informationen zum Verwenden von Azure Data Lake zum Anwenden von Datenuntersuchungs- und binären Klassifizierungsaufgaben auf ein Dataset."  
 	services="machine-learning"
 	documentationCenter=""
-	authors="bradsev,wguo123"
+	authors="bradsev"
 	manager="jhubbard"
 	editor="cgronlun" />
 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/14/2016"
-	ms.author="bradsev;weig;gopitk"/>
+	ms.date="09/19/2016"
+	ms.author="bradsev;weig"/>
 
 
 # Skalierbare Data Science in Azure Data Lake: lückenlose exemplarische Vorgehensweise
@@ -76,10 +76,8 @@ Um die Data Science-Umgebung für diese exemplarische Vorgehensweise vorzubereit
 - Azure Machine Learning Studio-Konto
 - Azure Data Lake-Tools für Visual Studio (empfohlen)
 
-Dieser Abschnitt enthält Anweisungen zum Erstellen dieser Ressourcen. Bei Auswahl von Hive-Tabellen mit Azure Machine Learning anstelle von Python, um ein Modell zu erstellen, müssen Sie auch einen HDInsight-Cluster (Hadoop) bereitstellen. Das alternative Verfahren wird in den entsprechenden folgenden Abschnitten beschrieben.
-
->AZURE.NOTE Der **Azure Data Lake-Speicher** kann entweder getrennt oder bei der Erstellung von **Azure Data Lake Analytics** als Standardspeicher erstellt werden. Nachstehend finden Sie Anweisungen zum getrennten Erstellen dieser Ressourcen, doch das Data Lake-Speicherkonto muss nicht getrennt erstellt werden.
-
+Dieser Abschnitt enthält Anweisungen zum Erstellen dieser Ressourcen. Bei Auswahl von Hive-Tabellen mit Azure Machine Learning anstelle von Python, um ein Modell zu erstellen, müssen Sie auch einen HDInsight-Cluster (Hadoop) bereitstellen. Das alternative Verfahren wird in den entsprechenden folgenden Abschnitten beschrieben. <br/>
+>AZURE.NOTE Der **Azure Data Lake-Speicher** kann entweder getrennt oder bei der Erstellung von **Azure Data Lake Analytics** als Standardspeicher erstellt werden. Nachstehend finden Sie Anweisungen zum getrennten Erstellen dieser Ressourcen, doch das Data Lake-Speicherkonto muss nicht getrennt erstellt werden. <br/>
 ### Erstellen eines Azure Data Lake-Speichers
 
 Erstellen Sie im [Azure-Portal](http://portal.azure.com) einen Azure Data Lake-Speicher. Einzelheiten dazu finden Sie unter [Erstellen eines HDInsight-Clusters mit Data Lake-Speicher mithilfe des Azure-Portals](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md). Richten Sie die AAD-Identität des Clusters auf dem hier beschriebenen Blatt **Datenquelle** des Blatts **Optionale Konfiguration** ein.
@@ -741,4 +739,4 @@ Der Lernpfad für den [Team Data Science-Prozess (TDSP)](http://aka.ms/datascien
 - [Der Team Data Science-Prozess: Verwenden von SQL Server](machine-learning-data-science-process-sql-walkthrough.md)
 - [Übersicht über Data Science mit Spark in Azure HDInsight](machine-learning-data-science-spark-overview.md)
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

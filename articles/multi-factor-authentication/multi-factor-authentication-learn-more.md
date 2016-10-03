@@ -1,20 +1,20 @@
 <properties 
-	pageTitle="Azure Multi-Factor Authentication- Weitere Informationen" 
-	description="Dies ist die Seite zur Azure Multi-Factor Authentication, unter der Sie Links mit zusätzlichen Inhalten für Azure Multi-Factor Authentication finden. Hier erhalten Sie Informationen zu weiteren Themen zur Multi-Factor Authentication." 
-	services="multi-factor-authentication" 
-	documentationCenter="" 
-	authors="billmath" 
-	manager="stevenpo" 
+	pageTitle="Azure Multi-Factor Authentication- Weitere Informationen"
+	description="Dies ist die Seite zur Azure Multi-Factor Authentication, unter der Sie Links mit zusätzlichen Inhalten für Azure Multi-Factor Authentication finden. Hier erhalten Sie Informationen zu weiteren Themen zur Multi-Factor Authentication."
+	services="multi-factor-authentication"
+	documentationCenter=""
+	authors="kgremban"
+	manager="femila"
 	editor="curtland"/>
 
-<tags 
-	ms.service="multi-factor-authentication" 
-	ms.workload="identity" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/04/2016" 
-	ms.author="billmath"/>
+<tags
+	ms.service="multi-factor-authentication"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/04/2016"
+	ms.author="kgremban"/>
 
 # Erfahren Sie mehr über die Multi-Factor Authentication
 
@@ -35,7 +35,4 @@ Folgendes ist eine Sammlung von zusätzlichen Ressourcen, mit denen Sie alle Fun
 
 [Erstellen von Multi-Factor Authentication in benutzerdefinierten Apps (SDK)](https://msdn.microsoft.com/library/azure/dn249464.aspx)
 
-
- 
-
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0921_2016-->

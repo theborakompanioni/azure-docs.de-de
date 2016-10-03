@@ -67,7 +67,7 @@ Erfahren Sie, wie Sie [einen HTTP-Proxy für die Sicherung von virtuellen Comput
 ### Lösung
 Die meisten agent- oder erweiterungsbezogenen Fehler bei virtuellen Linux-Computern werden durch Probleme verursacht, die einen veralteten VM-Agent betreffen. Zur Problembehandlung werden im Allgemeinen zunächst die folgenden Schritte ausgeführt:
 
-1. [Installieren Sie den neuesten Azure-VM-Agent](https://acom-swtest-2.azurewebsites.net/documentation/articles/virtual-machines-linux-update-agent/).
+1. [Installieren Sie den neuesten Azure-VM-Agent](https://github.com/Azure/WALinuxAgent).
 2. Stellen Sie sicher, dass der Azure-Agent auf dem virtuellen Computer ausgeführt wird. Führen Sie zu diesem Zweck den folgenden Befehl aus: ```ps -e```
 
     Wenn dieser Prozess nicht ausgeführt wird, verwenden Sie die folgenden Befehle, um ihn neu zu starten.
@@ -136,4 +136,4 @@ Die folgenden Umstände können zu Fehlern bei Momentaufnahmeaufgaben führen:
 | Der virtuelle Computer wird bei hoher CPU-/Arbeitsspeicherauslastung ausgeführt. | Wird der virtuelle Computer bei hoher CPU-Auslastung (über 90 Prozent) oder hoher Arbeitsspeicherauslastung ausgeführt, wird die Momentaufnahmeaufgabe der Warteschlange hinzugefügt und verzögert, bis schließlich eine Zeitüberschreitung auftritt. Versuchen Sie es in diesem Fall mit bedarfsgesteuerten Sicherungen. |
 |Der virtuelle Computer kann keine Host-/Fabric-Adresse aus DHCP abrufen.|Für die VM-Sicherung mithilfe von IaaS muss im Gastbetriebssystem die DHCP-Option aktiviert sein. Wenn der virtuelle Computer die Host-/Fabric-Adresse nicht aus DHCP-Antwort 245 abrufen kann, können keine Erweiterungen heruntergeladen oder ausgeführt werden. Wenn Sie eine statische private IP-Adresse benötigen, sollten Sie diese über die Plattform konfigurieren. Die DHCP-Option innerhalb des virtuellen Computers sollte aktiviert bleiben. Lesen Sie weitere Informationen zum [Festlegen einer statischen internen privaten IP-Adresse](../virtual-network/virtual-networks-reserved-private-ip.md).|
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0921_2016-->

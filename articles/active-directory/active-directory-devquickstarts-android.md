@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-android"
 	ms.devlang="java"
 	ms.topic="article"
-	ms.date="03/18/2016"
+	ms.date="09/16/2016"
 	ms.author="brandwe"/>
 
 # Integrieren von Azure AD in eine Android-App
@@ -24,7 +24,7 @@
 
 Bei der Entwicklung einer Desktopanwendung ist es für Sie mit Azure AD einfach und problemlos möglich, Ihre Benutzer über deren Active Directory-Konten zu authentifizieren. Außerdem kann Ihre Anwendung damit auf sichere Weise alle Web-APIs nutzen, die per Azure AD geschützt sind, z. B. die Office 365-APIs oder die Azure-API.
 
-Für Android-Clients, die auf geschützte Ressourcen zugreifen müssen, ist unter Azure AD die Active Directory-Authentifizierungsbibliothek (ADAL) verfügbar. Die einzige Aufgabe der ADAL besteht darin, Ihrer App das Abrufen von Zugriffstoken zu erleichtern. Um Ihnen zu zeigen, wie einfach es geht, erstellen wir hier eine Android-Anwendung mit einer Aufgabenliste, mit der folgende Aktionen ausgeführt werden können:
+Für Android-Clients, die auf geschützte Ressourcen zugreifen müssen, ist unter Azure AD die Active Directory-Authentifizierungsbibliothek (ADAL) verfügbar. Die einzige Aufgabe von ADAL besteht darin, Ihrer Anwendung das Abrufen von Zugriffstoken zu erleichtern. Um Ihnen zu zeigen, wie einfach es geht, erstellen wir hier eine Android-Anwendung mit einer Aufgabenliste, mit der folgende Aktionen ausgeführt werden können:
 
 -	Abrufen von Zugriffstoken zum Aufrufen einer Aufgabenlisten-API mit dem [OAuth 2.0-Authentifizierungsprotokoll](https://msdn.microsoft.com/library/azure/dn645545.aspx)
 -	Abrufen der Aufgabenliste eines Benutzers
@@ -100,7 +100,7 @@ Für die Erstellung mit Maven können Sie die Datei „pom.xml“ auf der oberst
   * Richten Sie den Emulator mit SDK 19 ein.
   * Wechseln Sie zu dem Stammordner, in dem Sie das Repository geklont haben.
   * Führen Sie den folgenden Befehl aus: mvn clean install.
-  * Wechseln Sie in das Verzeichnis mit dem Schnellstartbeispiel: cd samples\hello.
+  * Wechseln Sie in das Verzeichnis mit dem Schnellstartbeispiel: cd samples\\hello.
   * Führen Sie den folgenden Befehl aus: mvn android:deploy android:run.
   * Die App wird gestartet.
   * Geben Sie die Anmeldeinformationen des Testbenutzers ein, um sie auszuprobieren.
@@ -136,7 +136,7 @@ repositories {
         dirs 'libs'
     }
     maven {
-        url "YourLocalMavenRepoPath\.m2\repository"
+        url "YourLocalMavenRepoPath\\.m2\\repository"
     }
 }
 dependencies {
@@ -270,8 +270,7 @@ Sie können **acquireTokenSilent** aufrufen, um das Caching und die Aktualisieru
      mContext.acquireTokenSilent(resource, clientid, userId, callback );
     ```
 
-11. **Broker**:
-  Die Brokerkomponente wird über die Unternehmensportal-App von Microsoft Intune bereitgestellt. ADAL verwendet das Brokerkonto, falls unter diesem Authentifikator ein Benutzerkonto erstellt wurde und der Entwickler sich nicht für das Überspringen entschieden hat. Der Entwickler kann den Brokerbenutzer wie folgt überspringen:
+11. **Broker**: Die Brokerkomponente wird über die Unternehmensportal-App von Microsoft Intune bereitgestellt. ADAL verwendet das Brokerkonto, falls unter diesem Authentifikator ein Benutzerkonto erstellt wurde und der Entwickler sich nicht für das Überspringen entschieden hat. Der Entwickler kann den Brokerbenutzer wie folgt überspringen:
 
     ```java
      AuthenticationSettings.Instance.setSkipBroker(true);
@@ -288,9 +287,9 @@ Sie können **acquireTokenSilent** aufrufen, um das Caching und die Aktualisieru
 
  Ihr App-Manifest sollte über Berechtigungen zum Verwenden von Account Manager-Konten verfügen: http://developer.android.com/reference/android/accounts/AccountManager.html
 
- * GET_ACCOUNTS
- * USE_CREDENTIALS
- * MANAGE_ACCOUNTS
+ * GET\_ACCOUNTS
+ * USE\_CREDENTIALS
+ * MANAGE\_ACCOUNTS
 
 
 Mit dieser exemplarischen Vorgehensweise haben Sie alles, was Sie für die erfolgreiche Integration in Azure Active Directory benötigen. Weitere Beispiele hierzu finden Sie im Repository „AzureADSamples/“ bei GitHub.
@@ -350,7 +349,7 @@ Beachten Sie auch, dass die Korrelations-IDs zentraler Bestandteil der Diagnose 
 
 Dies ist natürlich die erste Diagnosemaßnahme. Wir versuchen, hilfreiche Fehlermeldungen für Sie bereitzustellen. Sie können uns ein Problem melden, falls Sie eine Fehlermeldung finden, die nicht hilfreich ist. Geben Sie dabei auch die Geräteinformationen an, z. B. Modell und SDK#.
 
-#### Protokolle
+#### Logs
 
 Sie können die Bibliothek so konfigurieren, dass Protokollmeldungen generiert werden, die Sie zum Diagnostizieren von Problemen verwenden können. Sie können die Protokollierung konfigurieren, indem Sie den folgenden Aufruf verwenden. Hiermit können Sie einen Rückruf konfigurieren, der von der ADAL zum Weitergeben der Protokollmeldungen genutzt wird, wenn diese erzeugt werden.
 
@@ -457,4 +456,4 @@ Informationen zum Aktivieren von App-übergreifendem SSO unter Android mit ADAL 
 
 [AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources.md)]
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0921_2016-->

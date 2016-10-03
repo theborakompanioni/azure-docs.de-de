@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/12/2016"
+	ms.date="09/19/2016"
 	ms.author="juliako"/>
 
 
@@ -36,7 +36,7 @@ Mit der dynamischen Paketerstellung von Media Services können Sie Ihre mit adap
 Um die dynamische Paketerstellung nutzen zu können, müssen Sie folgende Schritte ausführen:
 
 - Codieren Ihrer Zwischendatei (Quelldatei) in einen Satz von MP4-Dateien oder Smooth Streaming-Dateien mit adaptiver Bitrate.
-- Abrufen von mindestens einer On-Demand-Streamingeinheit für den Streamingendpunkt, von dem aus Sie die Übermittlung Ihrer Inhalte planen. Weitere Informationen finden Sie unter [Skalieren von reservierten Einheiten für bedarfsgesteuertes Streaming](media-services-manage-origins.md#scale_streaming_endpoints).
+- Abrufen von mindestens einer On-Demand-Streamingeinheit für den Streamingendpunkt, von dem aus Sie die Übermittlung Ihrer Inhalte planen. Weitere Informationen finden Sie unter [Skalieren von reservierten Einheiten für bedarfsgesteuertes Streaming](media-services-portal-manage-streaming-endpoints.md).
 
 Mit der dynamischen Paketerstellung speichern Sie die Dateien in einem einzigen Speicherformat und zahlen auch nur für dieses eine Format. Media Services reagiert gemäß Ihren Anforderungen.
 
@@ -87,7 +87,7 @@ Sie können nur über SSL streamen, wenn der Streamingendpunkt, von dem aus Sie 
 
 {Streamingendpunktname-Media Services-Kontoname}.streaming.mediaservices.windows.net/{Locator-ID}/{Dateiname}.ism/Manifest(Format=mpd-time-csf)
 
-	http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=mpd-time-csf)
+http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=mpd-time-csf)
 
 
 
@@ -95,19 +95,19 @@ Sie können nur über SSL streamen, wenn der Streamingendpunkt, von dem aus Sie 
 
 {Streamingendpunktname-Media Services-Kontoname}.streaming.mediaservices.windows.net/{Locator-ID}/{Dateiname}.ism/Manifest(Format=m3u8-aapl)
 
-	http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl)
+http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl)
 
 ### Apple HTTP Live Streaming (HLS) V3-Format
 
 {Streamingendpunktname-Media Services-Kontoname}.streaming.mediaservices.windows.net/{Locator-ID}/{Dateiname}.ism/Manifest(Format=m3u8-aapl-v3)
 
-	http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3)
+http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3)
 
 ### Apple HTTP Live Streaming-Format (HLS) mit „audio-only“-Filter
 
-Standardmäßig sind reine Tonspuren im HLS-Manifest enthalten. Dies ist für die Apple Store-Zertifizierung für Mobilfunknetze erforderlich. Wenn ein Client in diesem Fall nicht über genügend Bandbreite verfügt oder über eine 2G-Verbindung verbunden ist, wird zur reinen Audiowiedergabe gewechselt. Auf diese Weise kann das Streamen von Inhalten ohne Pufferung fortgesetzt werden, jedoch wird kein Bild angezeigt. In einigen Szenarios könnte es vorteilhafter sein, wenn der Player puffert, anstatt nur die Tonspur abzuspielen. Wenn Sie die reine Tonspur entfernen möchten, so fügen Sie der URL **audio-only= false** hinzu.
+Standardmäßig sind reine Tonspuren im HLS-Manifest enthalten. Dies ist für die Apple Store-Zertifizierung für Mobilfunknetze erforderlich. Wenn ein Client in diesem Fall nicht über genügend Bandbreite verfügt oder über eine 2G-Verbindung verbunden ist, wird zur reinen Audiowiedergabe gewechselt. Auf diese Weise kann das Streamen von Inhalten ohne Pufferung fortgesetzt werden, jedoch wird kein Bild angezeigt. In einigen Szenarios könnte es vorteilhafter sein, wenn der Player puffert, anstatt nur die Tonspur abzuspielen. Wenn Sie die reine Tonspur entfernen möchten, fügen Sie der URL **audio-only= false** hinzu.
 
-	http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3,audio-only=false)
+http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3,audio-only=false)
 
 Weitere Informationen finden Sie unter [Azure Media Services – Dynamic Manifest Composition support and HLS output additional features](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/) (Azure Media Services – Unterstützung des Erstellens des dynamischen Manifests und zusätzliche HLS-Ausgabefunktionen).
 
@@ -118,7 +118,7 @@ Weitere Informationen finden Sie unter [Azure Media Services – Dynamic Manifes
 
 Beispiel:
 
-	http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest
+http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest
 
 ### <a id="fmp4_v20"></a>Smooth Streaming 2.0-Manifest (Legacymanifest)
 
@@ -159,24 +159,15 @@ Es gelten die folgenden Bedingungen:
 
 ## Streamingendpunkte
 
-Ein Streamingendpunkt stellt einen Streamingdienst dar, der Inhalte zur weiteren Verteilung direkt in einer Clientwiedergabeanwendung oder einem Content Delivery Network (CDN) bereitstellen kann. Der ausgehende Stream des Streamingendpunkt-Diensts kann ein Livestream oder ein Video on Demand-Medienobjekt in Ihrem Media Services-Konto sein. Sie können auch die Kapazität des Streamingendpunkt-Diensts für die Verarbeitung wachsender Bandbreitenanforderungen steuern, indem Sie die reservierten Einheiten für das Streaming anpassen. Anwendungen in einer Produktionsumgebung sollten Sie mindestens eine reservierte Einheit zuweisen. Weitere Informationen finden Sie unter [Verwalten von Streamingendpunkten in einem Media Services-Konto](media-services-manage-origins.md#scale_streaming_endpoints).
+Ein Streamingendpunkt stellt einen Streamingdienst dar, der Inhalte zur weiteren Verteilung direkt in einer Clientwiedergabeanwendung oder einem Content Delivery Network (CDN) bereitstellen kann. Der ausgehende Stream des Streamingendpunkt-Diensts kann ein Livestream oder ein Video on Demand-Medienobjekt in Ihrem Media Services-Konto sein. Sie können auch die Kapazität des Streamingendpunkt-Diensts für die Verarbeitung wachsender Bandbreitenanforderungen steuern, indem Sie die reservierten Einheiten für das Streaming anpassen. Anwendungen in einer Produktionsumgebung sollten Sie mindestens eine reservierte Einheit zuweisen. Weitere Informationen finden Sie unter [Skalieren eines Mediendiensts](media-services-portal-manage-streaming-endpoints.md).
 
 ## Bekannte Probleme
 
 ### Änderungen an der Smooth Streaming-Manifestversion
 
-Vor der Dienstversion vom Juli 2016 galt Folgendes: Wenn von Media Encoder Standard, Media Encoder Premium Workflow oder dem älteren Azure Media Encoder erstellte Medienobjekte mithilfe der dynamischen Paketerstellung gestreamt wurden, entsprach das zurückgegebene Smooth Streaming-Manifest der Version 2.0. In Version 2.0 wurden für die Dauer der Fragmente nicht die sog. Wiederholungstags („r“-Tags) verwendet. Zum Beispiel:
+Vor der Dienstversion vom Juli 2016 galt Folgendes: Wenn von Media Encoder Standard, Media Encoder Premium Workflow oder dem älteren Azure Media Encoder erstellte Medienobjekte mithilfe der dynamischen Paketerstellung gestreamt wurden, entsprach das zurückgegebene Smooth Streaming-Manifest der Version 2.0. In Version 2.0 wurden für die Dauer der Fragmente nicht die sog. Wiederholungstags („r“-Tags) verwendet. Beispiel:
 
-	<?xml version="1.0" encoding="UTF-8"?>
-	<SmoothStreamingMedia MajorVersion="2" MinorVersion="0" Duration="8000" TimeScale="1000">
-		<StreamIndex Chunks="4" Type="video" Url="QualityLevels({bitrate})/Fragments(video={start time})" QualityLevels="3" Subtype="" Name="video" TimeScale="1000">
-			<QualityLevel Index="0" Bitrate="1000000" FourCC="AVC1" MaxWidth="640" MaxHeight="360" CodecPrivateData="00000001674D4029965201405FF2E02A100000030010000003032E0A000F42400040167F18E3050007A12000200B3F8C70ED0B16890000000168EB7352" />
-			<c t="0" d="2000" n="0" />
-			<c d="2000" />
-			<c d="2000" />
-			<c d="2000" />
-		</StreamIndex>
-	</SmoothStreamingMedia>
+<?xml version="1.0" encoding="UTF-8"?> <SmoothStreamingMedia MajorVersion="2" MinorVersion="0" Duration="8000" TimeScale="1000"> <StreamIndex Chunks="4" Type="video" Url="QualityLevels({bitrate})/Fragments(video={start time})" QualityLevels="3" Subtype="" Name="video" TimeScale="1000"> <QualityLevel Index="0" Bitrate="1000000" FourCC="AVC1" MaxWidth="640" MaxHeight="360" CodecPrivateData="00000001674D4029965201405FF2E02A100000030010000003032E0A000F42400040167F18E3050007A12000200B3F8C70ED0B16890000000168EB7352" /> <c t="0" d="2000" n="0" /> <c d="2000" /> <c d="2000" /> <c d="2000" /> </StreamIndex> </SmoothStreamingMedia>
 
 Ab der Dienstversion vom Juli 2016 entspricht das generierte Smooth Streaming-Manifest der Version 2.2, wo für die Dauer von Fragmenten Wiederholungstags verwendet werden. Beispiel:
 
@@ -202,4 +193,4 @@ Einige ältere Smooth Streaming-Clients unterstützen möglicherweise nicht die 
 
 [Aktualisieren von Media Services nach dem Austausch der Speicherschlüssel](media-services-roll-storage-access-keys.md)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0921_2016-->

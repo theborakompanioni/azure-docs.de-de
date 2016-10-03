@@ -56,10 +56,10 @@ http(s)://<Cluster FQDN | internal IP>:Port/<ServiceInstanceName>/<Suffix path>?
 ```
 
  - **HTTP(S):** Der Reverseproxy kann zum Akzeptieren von HTTP- oder HTTPS-Datenverkehr konfiguriert werden. Bei HTTPS-Datenverkehr erfolgt die SSL-Beendigung im Reverseproxy. Anforderungen, die vom Reverseproxy an Dienste im Cluster weitergeleitet werden, erfolgen über HTTP.
- - **FQDN des Gateways | interne IP:** Für externe Clients kann der Reverseproxy so konfiguriert werden, dass er über die Clusterdomäne erreichbar ist (Beispiel: mycluster.eastus.cloudapp.azure.com). Der Reverseproxy wird standardmäßig auf jedem Knoten ausgeführt. Bei internen Datenverkehr ist er daher unter „localhost“ oder einer beliebigen internen Knoten-IP (z.B. 10.0.0.1) erreichbar.
- - **Port:** Den Port, der für den Reverseproxy angegeben wurde. Beispiel: 19008.
- - **ServiceInstanceName:** Der vollqualifizierte Name der bereitgestellten Dienstinstanz des Dienst, die Sie erreichen möchten, ohne das Schema „fabric:/“. Um beispielsweise den Dienst *fabric:/myapp/myservice/* zu erreichen, müssen Sie *myapp/myservice* verwenden.
- - **Suffixpfad:** Der tatsächliche URL-Pfad des Diensts, mit dem Sie eine Verbindung herstellen möchten. Beispiel: *myapi/values/add/3*.
+ - **Cluster-FQDN| internal IP:** For external clients, the reverse proxy can be configured so that it is reachable through the cluster domain (e.g., mycluster.eastus.cloudapp.azure.com). By default the reverse proxy runs on every node, so for internal traffic it can be reached on localhost or on any internal node IP (e.g., 10.0.0.1).
+ - **Port:** Der Port, der für den Reverseproxy angegeben wurde. Beispiel: 19008.
+ - **ServiceInstanceName:** Der vollqualifizierte Name der bereitgestellten Dienstinstanz des Diensts, den Sie erreichen möchten (ohne das Schema „fabric:/“). Um beispielsweise den Dienst *fabric:/myapp/myservice/* zu erreichen, müssen Sie *myapp/myservice* verwenden.
+ - **Suffixpfad:** Der tatsächliche URL-Pfad des Diensts, mit dem Sie eine Verbindung herstellen möchten. Beispiel: *myapi/values/add/3*
  - **PartitionKey:** Für einen partitionierten Dienst ist dies der berechnete Partitionsschlüssel der Partition, die Sie erreichen möchten. Beachten Sie, dass dies *nicht* die GUID der Partitions-ID ist. Dieser Parameter ist für Dienste, die mit einem einzelnen Partitionsschema arbeiten, nicht erforderlich.
  - **PartitionKind:** Das Partitionsschema des Diensts. Dies kann „Int64Range“ oder „Named“ sein. Dieser Parameter ist für Dienste, die mit einem einzelnen Partitionsschema arbeiten, nicht erforderlich.
  - **Timeout:** Gibt das Timeout für die HTTP-Anforderung an, die im Auftrag der Clientanforderung vom Reverseproxy für den Dienst erstellt wird. Der Standardwert hierfür ist 60 Sekunden. Dieser Parameter ist optional.
@@ -77,12 +77,12 @@ Mit den folgenden Ressourcen:
  - `/index.html`
  - `/api/users/<userId>`
 
-Wenn der Dienst ein einzelnes Partitionierungsschema verwendet, sind die Abfragezeichenfolgen-Parameter *PartitionKey* und *PartitionKind* nicht erforderlich. Der Dienst kann über das Gateway wie folgt erreicht werden:
+Wenn der Dienst ein einzelnes Partitionierungsschema verwendet, sind die Abfragezeichenfolgen-Parameter *PartitionKey* und *PartitionKind* nicht erforderlich. Der Dienst kann wie folgt über das Gateway erreicht werden:
 
  - Extern: `http://mycluster.eastus.cloudapp.azure.com:19008/MyApp/MyService`
  - Intern: `http://localhost:19008/MyApp/MyService`
 
-Wenn der Dienst das Partitionierungsschema „Uniform Int64“ verwendet, müssen die Abfragezeichenfolgen-Parameter *PartitionKey* und *PartitionKind* verwendet werden, um eine Partition des Dienstes zu erreichen:
+Wenn der Dienst das Partitionierungsschema „Uniform Int64“ verwendet, müssen die Abfragezeichenfolgen-Parameter *PartitionKey* und *PartitionKind* verwendet werden, um eine Partition des Diensts zu erreichen:
 
  - Extern: `http://mycluster.eastus.cloudapp.azure.com:19008/MyApp/MyService?PartitionKey=3&PartitionKind=Int64Range`
  - Intern: `http://localhost:19008/MyApp/MyService?PartitionKey=3&PartitionKind=Int64Range`
@@ -161,7 +161,7 @@ Sobald Sie über die Vorlage für den Cluster verfügen, die Sie bereitstellen m
         ...
     }
     ```
-3. Um den Reverseproxy von außerhalb des Azure-Clusters zu adressieren, richten Sie für den im 1. Schritt angegebenen Port die **Azure Load Balancer-Regeln** ein.
+3. Um den Reverseproxy von außerhalb des Azure-Clusters zu adressieren, richten Sie für den in Schritt 1 angegebenen Port die **Azure Load Balancer-Regeln** ein.
 
     ```json
     {
@@ -205,7 +205,7 @@ Sobald Sie über die Vorlage für den Cluster verfügen, die Sie bereitstellen m
         ]
     }
     ```
-4. Um SSL-Zertifikate für den Port des Reverseproxys zu konfigurieren, fügen Sie das Zertifikat der „httpApplicationGatewayCertificate“-Eigenschaft im Abschnitt **Cluster** [Resource type](../resource-group-authoring-templates.md) hinzu.
+4. Um SSL-Zertifikate für den Port des Reverseproxys zu konfigurieren, fügen Sie das Zertifikat der httpApplicationGatewayCertificate-Eigenschaft im Abschnitt der [Ressourcentypen](../resource-group-authoring-templates.md) des **Clusters** hinzu.
 
     ```json
     {
@@ -241,4 +241,4 @@ Sobald Sie über die Vorlage für den Cluster verfügen, die Sie bereitstellen m
 [0]: ./media/service-fabric-reverseproxy/external-communication.png
 [1]: ./media/service-fabric-reverseproxy/internal-communication.png
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0921_2016-->

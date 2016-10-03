@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Verwenden der dynamischen AES-128-Verschlüsselung und des Schlüsselübermittlungsdiensts"
+	pageTitle="Verwenden der dynamischen AES-128-Verschlüsselung und des Schlüsselbereitstellungsdiensts | Microsoft Azure"
 	description="Mit Microsoft Azure Media Services können Sie Inhalte übermitteln, die mit 128-Bit-AES-Verschlüsselungsschlüsseln verschlüsselt wurden. Media Services stellt außerdem den Schlüsselübermittlungsdienst bereit, der Verschlüsselungsschlüssel an autorisierte Benutzer übermittelt. In diesem Thema werden das dynamische Verschlüsseln mit AES-128 und das Verwenden des Schlüsselübermittlungsdiensts behandelt."
 	services="media-services"
 	documentationCenter=""
@@ -13,10 +13,10 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article" 
-	ms.date="07/27/2016"
+	ms.date="09/19/2016"
 	ms.author="juliako"/>
 
-#Verwenden der dynamischen AES-128-Verschlüsselung und des Schlüsselübermittlungsdiensts
+#Verwenden der dynamischen AES-128-Verschlüsselung und des Schlüsselbereitstellungsdiensts
 
 > [AZURE.SELECTOR]
 - [.NET](media-services-protect-with-aes128.md)
@@ -33,7 +33,7 @@ Damit dynamische Verschlüsselung genutzt werden kann, müssen Sie über ein Med
 
 Dieses Thema richtet sich an Entwickler, die an Anwendungen arbeiten, die geschützte Medieninhalte übermitteln. In dem Thema wird gezeigt, wie Sie den Schlüsselübermittlungsdienst mit Autorisierungsrichtlinien konfigurieren, damit nur autorisierte Clients die Verschlüsselungsschlüssel empfangen können. Außerdem wird gezeigt, wie dynamische Verschlüsselung verwendet wird.
 
->[AZURE.NOTE]Damit Sie mit der Verwendung der dynamischen Verschlüsselung beginnen können, müssen Sie zuerst mindestens eine "Scale Unit" (auch als "Streaming Unit" bezeichnet) abrufen. Weitere Informationen finden Sie unter [Skalieren eines Mediendiensts](media-services-manage-origins.md#scale_streaming_endpoints).
+>[AZURE.NOTE]Damit Sie mit der Verwendung der dynamischen Verschlüsselung beginnen können, müssen Sie zuerst mindestens eine "Scale Unit" (auch als "Streaming Unit" bezeichnet) abrufen. Weitere Informationen finden Sie unter [Skalieren eines Mediendiensts](media-services-portal-manage-streaming-endpoints.md).
 
 ##Workflow für dynamische AES-128-Verschlüsselung und Schlüsselübermittlungsdienst
 
@@ -45,11 +45,11 @@ Die folgenden allgemeinen Schritte müssen Sie ausführen, wenn Sie Medienobjekt
 1. [Konfigurieren der Autorisierungsrichtlinie des Inhaltsschlüssels](media-services-protect-with-aes128.md#configure_key_auth_policy). Die Inhaltsschlüssel-Authentifizierungsrichtlinie muss von Ihnen konfiguriert und vom Client erfüllt werden, damit der Inhaltsschlüssel an den Client übermittelt wird.
 1. [Konfigurieren der Übermittlungsrichtlinie für ein Medienobjekt](media-services-protect-with-aes128.md#configure_asset_delivery_policy). Die Konfiguration der Übermittlungsrichtlinie umfasst Folgendes: URL für den Schlüsselerwerb und Initialisierungsvektor (IV) (für AES 128 muss beim Ver- und Entschlüsseln der gleiche IV bereitgestellt werden), Übermittlungsprotokoll (z. B. MPEG DASH, HLS, HDS, Smooth Streaming oder alle) sowie der Typ der dynamischen Verschlüsselung (z. B. Umschlag oder keine dynamische Verschlüsselung).
 
-	Sie können unterschiedliche Richtlinien für jedes Protokoll für das gleiche Medienobjekt anwenden. Sie können z. B. PlayReady-Verschlüsselung auf Smooth/DASH und AES Envelope auf HLS anwenden. Alle Protokolle, die nicht in einer Übermittlungsrichtlinie definiert sind (wenn Sie z. B. eine einzelne Richtlinie hinzufügen, die nur HLS als Protokoll angibt), werden vom Streaming ausgeschlossen. Die einzige Ausnahme besteht darin, wenn Sie überhaupt keine Übermittlungsrichtlinie für Medienobjekte definiert haben. In diesem Fall sind alle Protokolle ohne Verschlüsselung zulässig.
+Sie können unterschiedliche Richtlinien für jedes Protokoll für das gleiche Medienobjekt anwenden. Sie können z. B. PlayReady-Verschlüsselung auf Smooth/DASH und AES Envelope auf HLS anwenden. Alle Protokolle, die nicht in einer Übermittlungsrichtlinie definiert sind (wenn Sie z. B. eine einzelne Richtlinie hinzufügen, die nur HLS als Protokoll angibt), werden vom Streaming ausgeschlossen. Die einzige Ausnahme besteht darin, wenn Sie überhaupt keine Übermittlungsrichtlinie für Medienobjekte definiert haben. In diesem Fall sind alle Protokolle ohne Verschlüsselung zulässig.
 
 1. [Erstellen eines "OnDemand"-Locators](media-services-protect-with-aes128.md#create_locator), um eine Streaming-URL zu erhalten.
 
-Außerdem wird in diesem Thema gezeigt, [wie der Client einen Schlüssel vom Schlüsselübermittlungsdienst anfordern kann](media-services-protect-with-aes128.md#client_request).
+Außerdem wird in diesem Thema gezeigt, [wie der Client einen Schlüssel vom Schlüsselbereitstellungsdienst anfordern kann](media-services-protect-with-aes128.md#client_request).
 
 Sie finden ein vollständiges .NET-[Beispiel](media-services-protect-with-aes128.md#example) am Ende des Themas.
 
@@ -172,7 +172,7 @@ Wenn Sie eine der Segmentdateien in einem Text-Editor öffnen (z. B. http://test
 	
 ###Anfordern des Schlüssels vom Schlüsselübermittlungsdienst
 
-Im folgenden Code wird gezeigt, wie Sie eine Anforderung an den Media Services-Schlüsselübermittlungsdienst senden und dabei einen aus dem Manifest extrahierten Schlüsselübermittlungs-URI und ein Token senden. (Das Abrufen einfacher Webtoken aus einem sicheren Tokendienst wird in diesem Thema nicht behandelt.)
+Im folgenden Code wird gezeigt, wie Sie eine Anforderung an den Media Services-Schlüsselbereitstellungsdienst senden und dabei einen aus dem Manifest extrahierten Schlüsselbereitstellungs-URI und ein Token senden. (Das Abrufen einfacher Webtoken aus einem sicheren Tokendienst wird in diesem Thema nicht behandelt.)
 
 	private byte[] GetDeliveryKey(Uri keyDeliveryUri, string token)
 	{
@@ -629,4 +629,4 @@ Im folgenden Code wird gezeigt, wie Sie eine Anforderung an den Media Services-S
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0921_2016-->

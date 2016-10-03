@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Verwenden von Windows-Client-Images für Entwicklung/Test | Microsoft Azure"
+   pageTitle="Verwenden von Windows-Clientimages für Entwicklungs-/Testszenarien | Microsoft Azure"
    description="Nutzen von Visual Studio-Abonnementvorteilen zum Bereitstellen von Windows 7/8/10 in Azure für Entwicklungs-/Testszenarien"
    services="virtual-machines-windowse"
    documentationCenter=""
@@ -16,7 +16,7 @@
    ms.date="08/31/2016"
    ms.author="iainfou"/>
 
-# Verwendung des Windows-Clients in Azure für Entwicklung/Tests
+# Verwendung des Windows-Clients in Azure für Entwicklungs-/Testszenarien
 
 Sie können Windows 7, Windows 8 oder Windows 10 in Azure für Entwicklungs-/Testszenarien verwenden, sofern Sie über ein entsprechendes Visual Studio-Abonnement (früher MSDN) verfügen. Dieser Artikel beschreibt die erforderlichen Berechtigungen für die Ausführung des Windows-Clients in Azure und die Verwendung von Images aus dem Azure-Katalog.
 
@@ -57,4 +57,4 @@ Sie können die Angebots-ID auch auf der [Registerkarte „Abonnements“](http:
 ## Nächste Schritte
 Jetzt können Sie Ihre VMs mit [PowerShell](virtual-machines-windows-ps-create.md), [Resource Manager-Vorlagen](virtual-machines-windows-ps-template.md) oder [Visual Studio](../vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) bereitstellen.
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0921_2016-->

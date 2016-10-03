@@ -1,20 +1,20 @@
 <properties 
 pageTitle="Bereitstellen von S/4 HANA oder BW/4 HANA unter Microsoft Azure | Microsoft Azure" 
 description="Bereitstellen von S/4 HANA oder BW/4 HANA unter Microsoft Azure" 
-services="virtual-machines,virtual-network,storage" 
-documentationCenter="saponazure" 
+services="virtual-machines-linux" 
+documentationCenter="" 
 authors="hermanndms" 
-manager="juergent" 
+manager="timlt" 
 editor="" 
 tags="azure-resource-manager" 
   keywords=""/>
 <tags  
-  ms.service="virtual-machines" 
-  ms.devlang="NA" 
-  ms.topic="campaign-page" 
+  ms.service="virtual-machines-linux" 
+  ms.devlang="na" 
+  ms.topic="article" 
   ms.tgt_pltfrm="vm-linux" 
-  ms.workload="na" 
-  ms.date="09/12/2016" 
+  ms.workload="infrastructure-services" 
+  ms.date="09/15/2016" 
   ms.author="hermannd"/>
 
 
@@ -88,4 +88,4 @@ Nun ist es möglich, für die Lösung über die Schaltfläche „Verbinden“ im
 
 Eine weitere Option ist die Anmeldung an der Windows-Client-VM und beispielsweise das Starten der vorkonfigurierten SAP GUI.
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

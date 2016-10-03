@@ -15,7 +15,7 @@
 	ms.topic="support-article" 
 	ms.tgt_pltfrm="vm-linux"
 	ms.workload="infrastructure" 
-	ms.date="06/28/2016" 
+	ms.date="09/19/2016" 
 	ms.author="iainfou" 
 />
 
@@ -36,7 +36,7 @@ Verwenden Sie den folgenden Befehl der Azure-Befehlszeilenschnittstelle, um Ihre
 azure vm redeploy --resourcegroup <resourcegroup> --vm-name <vmname> 
 ```
 
-Der Status der Änderung des virtuellen Computers wird während des Vorgangs der erneuten Bereitstellung angezeigt. Während der virtuelle Computer den Vorgang der erneuten Bereitstellung auf einem neuen Host durchläuft, ändert sich sein `PowerState` von „Wird ausgeführt“ zu „Aktualisieren“, dann „Wird gestartet“ und schließlich wieder zu „Wird ausgeführt“. Überprüfen Sie den Status der virtuellen Computer innerhalb einer Ressourcengruppe mit:
+Der Status der Änderung des virtuellen Computers wird während des Vorgangs der erneuten Bereitstellung angezeigt. Während der virtuelle Computer den Vorgang der erneuten Bereitstellung auf einem neuen Host durchläuft, ändert sich sein `PowerState` von „Wird ausgeführt“ zu „Wird aktualisiert“, dann zu „Wird gestartet“ und schließlich wieder zu „Wird ausgeführt“. Überprüfen Sie den Status der virtuellen Computer innerhalb einer Ressourcengruppe mit:
 
 ```bash
 azure vm list -g <resourcegroup>
@@ -47,6 +47,6 @@ azure vm list -g <resourcegroup>
 
 
 ## Nächste Schritte
-Sie finden spezifische Hilfe zur [Problembehandlung bei SSH-Verbindungen](virtual-machines-linux-troubleshoot-ssh-connection.md) oder [detaillierte Schritte zur Fehlerbehebung bei SSH](virtual-machines-linux-detailed-troubleshoot-ssh-connection.md), falls beim Herstellen einer Verbindung mit Ihrem virtuellen Computer Probleme auftreten. Sie können auch die Informationen zur [Problembehandlung bei der Anwendung](virtual-machines-linux-troubleshoot-app-connection.md) lesen, wenn Sie auf eine Anwendung, die auf Ihrem virtuellen Computer ausgeführt wird, nicht zugreifen können.
+Falls beim Herstellen einer Verbindung mit Ihrem virtuellen Computer Probleme auftreten, finden Sie spezifische Hilfe unter [Problembehandlung bei SSH-Verbindungen](virtual-machines-linux-troubleshoot-ssh-connection.md) oder [Ausführliche Schritte zur Problembehandlung bei SSH](virtual-machines-linux-detailed-troubleshoot-ssh-connection.md). Sie können auch die Informationen zur [Problembehandlung bei der Anwendung](virtual-machines-linux-troubleshoot-app-connection.md) lesen, wenn Sie auf eine Anwendung, die auf Ihrem virtuellen Computer ausgeführt wird, nicht zugreifen können.
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0921_2016-->

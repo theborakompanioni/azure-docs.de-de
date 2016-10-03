@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Konfigurieren des Telestream Wirecast-Encoders zum Senden eines Single-Bitrate-Livedatenstroms " 
+	pageTitle="Konfigurieren des Telestream Wirecast-Encoders zum Senden eines Single-Bitrate-Livedatenstroms | Microsoft Azure" 
 	description="In diesem Thema wird beschrieben, wie Sie den Wirecast-Liveencoder zum Senden eines Single-Bitrate-Livedatenstroms an AMS-Kanäle konfigurieren, für die Livecodierung aktiviert sind. " 
 	services="media-services" 
 	documentationCenter="" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="ne" 
 	ms.topic="article" 
-	ms.date="06/22/2016"
+	ms.date="09/19/2016"
 	ms.author="juliako;cenkdin;anilmur"/>
 
 #Verwenden des Wirecast-Encoders zum Senden eines Single-Bitrate-Livedatenstroms
@@ -32,7 +32,7 @@ In diesem Tutorial wird gezeigt, wie Sie Azure Media Services (AMS) mit dem Tool
 ##Voraussetzungen
 
 - [Erstellen eines Azure Media Services-Kontos](media-services-create-account.md)
-- Stellen Sie sicher, dass ein Streamingendpunkt mit mindestens einer zugeordneten Streamingeinheit ausgeführt wird. Weitere Informationen finden Sie unter [Verwalten von Streamingendpunkten in einem Media Services-Konto](media-services-manage-origins.md)
+- Stellen Sie sicher, dass ein Streamingendpunkt mit mindestens einer zugeordneten Streamingeinheit ausgeführt wird. Weitere Informationen finden Sie unter [Verwalten von Streamingendpunkten in einem Media Services-Konto](media-services-portal-manage-streaming-endpoints.md)
 - Installieren Sie die neueste Version des [AMSE](https://github.com/Azure/Azure-Media-Services-Explorer)-Tools.
 - Starten Sie das Tool, und stellen Sie eine Verbindung mit Ihrem AMS-Konto her.
 
@@ -180,4 +180,4 @@ Eine Anleitung finden Sie im Thema [Problembehandlung](media-services-troublesho
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0921_2016-->

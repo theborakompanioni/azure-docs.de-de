@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="05/31/2016"
+   ms.date="09/16/2016"
    ms.author="mbaldwin"/>
 
 
@@ -31,7 +31,7 @@ Für die Auflistung bestehen je nach Modus folgende Anforderungen:
 
 Befolgen Sie zum Integrieren Ihrer Anwendung in Azure AD diese [Anweisungen für Entwickler](active-directory-authentication-scenarios.md). Stellen Sie die nachfolgend beschriebenen Informationen zusammen, und senden Sie sie an waadpartners@microsoft.com.
 
-* Stellen Sie Anmeldeinformationen für einen Testmandanten oder ein Testkonto mit Ihrer Anwendung bereit, die vom Azure AD-Team zum Testen der Integration verwendet werden können.  
+* Stellen Sie Anmeldeinformationen für einen Testmandanten oder ein Testkonto mit Ihrer Anwendung bereit, die vom Azure AD-Team zum Testen der Integration verwendet werden können.
 
 * Geben Sie uns Anweisungen, wie sich das Azure AD-Team anmelden und eine Instanz von Azure AD unter Verwendung des [Azure AD Consent Framework](active-directory-integrating-applications.md#overview-of-the-consent-framework) mit Ihrer Anwendung verbinden kann.
 
@@ -67,7 +67,7 @@ Befolgen Sie zum Integrieren Ihrer Anwendung in Azure AD diese [Anweisungen für
 
 Jede App, die SAML 2.0 unterstützt, kann direkt in einen Azure AD-Mandanten integriert werden. Dazu befolgen Sie [diese Anweisungen zum Hinzufügen einer benutzerdefinierten Anwendung](active-directory-saas-custom-apps.md). Wenn Sie die Anwendungsintegration in Azure AD erfolgreich getestet haben, senden Sie die folgenden Informationen an <waadpartners@microsoft.com>.
 
-* Stellen Sie Anmeldeinformationen für einen Testmandanten oder ein Testkonto mit Ihrer Anwendung bereit, die vom Azure AD-Team zum Testen der Integration verwendet werden können.  
+* Stellen Sie Anmeldeinformationen für einen Testmandanten oder ein Testkonto mit Ihrer Anwendung bereit, die vom Azure AD-Team zum Testen der Integration verwendet werden können.
 
 * Geben Sie die URL für einmaliges Anmelden mit SAML, die Aussteller-URL (Entitäts-ID) und die Antwort-URL (Assertion Consumer Service) für Ihre Anwendung an, wie [hier](active-directory-saas-custom-apps.md) beschrieben. Wenn Sie diese Werte in der Regel als Teil einer SAML-Metadatendatei zur Verfügung stellen, senden Sie uns diese ebenfalls.
 
@@ -97,4 +97,4 @@ Jede App, die SAML 2.0 unterstützt, kann direkt in einen Azure AD-Mandanten i
 > 
 > Logo einfügen (PNG-Datei, 150 px mal 122 px, transparente Hintergrundfarbe):
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0921_2016-->

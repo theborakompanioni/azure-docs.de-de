@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/30/2016" 
+	ms.date="09/15/2016" 
 	ms.author="tomfitz"/>
 
 # Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure-Portal
@@ -26,7 +26,7 @@
 
 In diesem Thema wird veranschaulicht, wie Sie das [Azure-Portal](https://portal.azure.com) mit [Azure Resource Manager](resource-group-overview.md) verwenden, um Ihre Azure-Ressourcen bereitzustellen. Informationen zum Verwalten von Ressourcen finden Sie unter [Verwalten von Azure-Ressourcen über das Portal](./azure-portal/resource-group-portal.md).
 
-Das Portal und der Ressourcen-Manager werden derzeit nicht von allen Diensten unterstützt. Verwenden Sie für diese Dienste das [klassische Portal](https://manage.windowsazure.com). Den Status der einzelnen Dienste können Sie dem [Verfügbarkeitsdiagramm für das Azure-Portal](https://azure.microsoft.com/features/azure-portal/availability/) entnehmen.
+Das Portal und der Ressourcen-Manager werden derzeit nicht von allen Diensten unterstützt. Für diese Dienste müssen Sie das [klassische Portal](https://manage.windowsazure.com) verwenden. Den Status der einzelnen Dienste können Sie dem [Verfügbarkeitsdiagramm für das Azure-Portal](https://azure.microsoft.com/features/azure-portal/availability/) entnehmen.
 
 ## Erstellen einer Ressourcengruppe
 
@@ -34,7 +34,7 @@ Das Portal und der Ressourcen-Manager werden derzeit nicht von allen Diensten un
 
     ![Leere Ressourcengruppe erstellen](./media/resource-group-template-deploy-portal/create-empty-group.png)
 
-2. Geben Sie einen Namen und einen Speicherort an, und wählen Sie ggf. ein Abonnement aus.
+2. Geben Sie einen Namen und einen Speicherort an, und wählen Sie ggf. ein Abonnement aus. Sie müssen einen Standort für die Ressourcengruppe angeben, da diese Metadaten zu den Ressourcen speichert. Aus Compliance-Gründen sollten Sie angeben, wo diese Metadaten gespeichert werden. Im Allgemeinen wird die Angabe eines Standorts empfohlen, an dem sich der Großteil Ihrer Ressourcen befindet. Durch die Verwendung des gleichen Standorts können Sie die Vorlage vereinfachen.
 
     ![Gruppenwerte festlegen](./media/resource-group-template-deploy-portal/set-group-properties.png)
 
@@ -58,7 +58,7 @@ Nachdem Sie eine Ressourcengruppe erstellt haben, können Sie Ressourcen dafür 
 
     ![neue Ressourcengruppe erstellen](./media/resource-group-template-deploy-portal/select-new-group.png)
 
-4. Die Bereitstellung wird gestartet. Der Vorgang kann mehrere Minuten dauern. Nachdem die Bereitstellung abgeschlossen ist, wird eine Benachrichtigung angezeigt.
+4. Die Bereitstellung wird gestartet. Der Vorgang kann mehrere Minuten dauern. Nachdem die Bereitstellung abgeschlossen wurde, wird eine Benachrichtigung angezeigt.
 
     ![Benachrichtigung anzeigen](./media/resource-group-template-deploy-portal/view-notification.png)
 
@@ -118,4 +118,4 @@ Wenn Sie eine Bereitstellung ausführen möchten, ohne eine der Vorlagen im Mark
 - Informationen zum Behandeln von Bereitstellungsfehlern finden Sie unter [Problembehandlung beim Bereitstellen von Ressourcengruppen mit dem Azure-Portal](resource-manager-troubleshoot-deployments-portal.md).
 - Informationen zum Abrufen einer Vorlage aus einer Bereitstellung oder Ressourcengruppe finden Sie unter [Exportieren einer Azure Resource Manager-Vorlage aus vorhandenen Ressourcen](resource-manager-export-template.md).
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0921_2016-->

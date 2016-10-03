@@ -24,8 +24,6 @@ Erfahren Sie, wie Sie mithilfe des Java-SDK für Azure Data Lake Analytics ein A
 
 In diesem Tutorial entwickeln Sie eine Java-Konsolenanwendung, die Beispiele für allgemeine Verwaltungsaufgaben enthält. Zudem erstellen Sie Testdaten und übermitteln einen Auftrag. Um das gleiche Lernprogramm unter Verwendung anderer unterstützter Tools zu durchlaufen, klicken Sie auf die Registerkarten oben in diesem Abschnitt.
 
-[AZURE.INCLUDE [basic-process-include](../../includes/data-lake-analytics-basic-process.md)]
-
 ## Voraussetzungen
 
 * Java Development Kit (JDK) 8 (mit Java-Version 1.8).
@@ -356,4 +354,4 @@ Sie müssen Ihrer Anwendung die Berechtigung zum Erstellen von Ressourcen in Azu
 - Informationen zu Verwaltungsaufgaben finden Sie unter [Verwalten von Azure Data Lake Analytics mithilfe des Azure-Portals](data-lake-analytics-manage-use-portal.md).
 - Eine Übersicht über Data Lake Analytics finden Sie unter [Azure Data Lake Analytics – Übersicht](data-lake-analytics-overview.md).
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -418,7 +418,7 @@ Im folgenden Beispiel wird die Quellspalte "DivisionID" der Zielspalte "Division
 		"columnMappings": "DivisionID: DivisionID, FirstName: FirstName, LastName: LastName"
 	} 
 
-Die EmpID wird als Partitionsschlüssel angegeben.
+„DivisionID“ ist als Partitionsschlüssel angegeben.
 
 	"sink": {
 		"type": "AzureTableSink",
@@ -432,7 +432,7 @@ Die EmpID wird als Partitionsschlüssel angegeben.
 
 ### Typzuordnung für Azure-Tabelle
 
-Wie im Artikel [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) beschrieben, führt die Kopieraktivität mithilfe des folgenden aus zwei Schritten bestehenden Ansatzes automatische Typkonvertierungen von Quelltypen in Senkentypen durch.
+Wie im Artikel [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) beschrieben, führt die Kopieraktivität automatische Typkonvertierungen von Quelltypen in Senkentypen mithilfe des folgenden aus zwei Schritten bestehenden Ansatzes durch:
 
 1. Konvertieren von systemeigenen Quelltypen in den .NET-Typ
 2. Konvertieren vom .NET-Typ in systemeigenen Senkentyp
@@ -531,4 +531,4 @@ In diesem Fall führt Data Factory die Typkonvertierungen automatisch einschlie�
 ## Leistung und Optimierung  
 Wichtige Faktoren, die sich auf die Leistung der Datenverschiebung (Kopieraktivität) in Azure Data Factory auswirken, sowie verschiedene Möglichkeiten zur Leistungsoptimierung werden im Artikel [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-factory-copy-activity-performance.md) beschrieben.
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

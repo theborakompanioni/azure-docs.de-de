@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/14/2016" 
+	ms.date="09/19/2016" 
 	ms.author="bradsev" />
 
 # Paralleler Massenimport mithilfe von partitionierten SQL-Tabellen
@@ -23,9 +23,10 @@ In diesem Dokument wird das Erstellen partitionierter Tabellen für das schnelle
 
 ## Erstellen einer neuen Datenbank und eines Satzes von Dateigruppen
 
-- [Erstellen Sie eine neue Datenbank](https://technet.microsoft.com/library/ms176061.aspx) (sofern noch nicht vorhanden).
+- [Erstellen einer neuen Datenbank](https://technet.microsoft.com/library/ms176061.aspx) (falls noch nicht vorhanden)
 - Fügen Sie der Datenbank Dateigruppen hinzu, die die partitionierten physischen Dateien enthalten werden.
-- Hinweis: Dies kann bei einer neuen Datenbank mit [CREATE DATABASE](https://technet.microsoft.com/library/ms176061.aspx) und bei einer bereits vorhandenen Datenbank mit [ALTER DATABASE](https://msdn.microsoft.com/library/bb522682.aspx) erfolgen.
+
+  Hinweis: Dies kann bei einer neuen Datenbank mit [CREATE DATABASE](https://technet.microsoft.com/library/ms176061.aspx) und bei einer bereits vorhandenen Datenbank mit [ALTER DATABASE](https://msdn.microsoft.com/library/bb522682.aspx) erfolgen.
 
 - Fügen Sie (je nach Anforderungen) den einzelnen Datenbank-Dateigruppen eine oder mehrere Dateien hinzu.
 
@@ -74,7 +75,7 @@ Erstellen Sie die partitionierten Tabellen gemäß dem Datenschema, das den im v
 	    <filegroup_5>, <filegroup_6>, <filegroup_7>, <filegroup_8>,
 	    <filegroup_9>, <filegroup_10>, <filegroup_11>, <filegroup_12> )
 
-- Tipp: Um die gültigen Bereiche in den einzelnen Partitionen nach Funktion/Schema zu überprüfen, führen Sie die folgende Abfrage durch:
+  Tipp: Um die gültigen Bereiche in den einzelnen Partitionen nach Funktion/Schema zu überprüfen, führen Sie die folgende Abfrage durch:
 
 	    SELECT psch.name as PartitionScheme,
 	    	prng.value AS ParitionValue,
@@ -89,7 +90,7 @@ Erstellen Sie die partitionierten Tabellen gemäß dem Datenschema, das den im v
 	    CREATE TABLE <table_name> ( [include schema definition here] )
 	    ON <TablePScheme>(<partition_field>)
 
-- Weitere Informationen finden Sie unter [Erstellen partitionierter Tabellen und Indizes](https://msdn.microsoft.com/library/ms188730.aspx).
+Weitere Informationen finden Sie unter [Erstellen partitionierter Tabellen und Indizes](https://msdn.microsoft.com/library/ms188730.aspx).
 
 
 ## Massenimport der Daten für die einzelne Partitionstabellen
@@ -187,4 +188,4 @@ oder
 Eine umfassende exemplarische Vorgehensweise zur Verwendung des Cortana-Analyseprozesses mit einem öffentlichen DataSet finden Sie unter [Cortana-Analyseprozess in Aktion: Verwenden von SQL Server](machine-learning-data-science-process-sql-walkthrough.md).
  
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

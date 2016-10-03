@@ -60,7 +60,7 @@ Der XML-Code des Ereignisses enthält die folgenden Metadaten – einschließlic
 
 Fehler
 
-  *Failed to create AAD Application - Tenant 72f988bf-86f1-41af-91ab-2d7cd011db37 - Reason = 'Forbidden' - Message = 'Insufficient privileges to complete the operation.'* (Fehler beim Erstellen der AAD-Anwendung. Mandant: 72f988bf-86f1-41af-91ab-2d7cd011db37. Ursache: Unzulässig. Meldung: Nicht genügend Berechtigungen zum Abschließen des Vorgangs.)
+  *Failed to create AAD Application - Tenant 72f988bf-86f1-41af-91ab-2d7cd011db37 - Reason = 'Forbidden' - Message = 'Insufficient privileges to complete the operation.' (Fehler beim Erstellen der AAD-Anwendung. Mandant: 72f988bf-86f1-41af-91ab-2d7cd011db37. Ursache: Unzulässig. Meldung: Nicht genügend Berechtigungen zum Abschließen des Vorgangs.)*
 
 **azlog createazureid** versucht, in allen Azure AD-Mandanten für die Abonnements, auf die das angemeldete Azure-Konto Zugriff hat, einen Dienstprinzipal zu erstellen. Falls es sich bei Ihrer Azure-Anmeldung nur um einen Gastbenutzer des Azure AD-Mandanten handelt, tritt bei dem Befehl ein Fehler mit dem Hinweis auf, dass die Berechtigungen für den Vorgang nicht ausreichen. Bitten Sie den Mandantenadministrator, Ihr Konto als Benutzer hinzuzufügen.
 
@@ -113,7 +113,9 @@ In der folgenden Beispielkonfiguration werden lediglich Ereignisse mit den Ereig
 
 Vergewissern Sie sich nach dem Vornehmen von Änderungen im Speicherkonto, dass die richtigen Ereignisse erfasst werden.
 
+Wenn Sie Fragen zur Azure-Protokollintegration haben, senden Sie eine E-Mail an [AzSIEMteam@microsoft.com](mailto:AzSIEMteam@microsoft.com)
+
 <!--Image references-->
 [1]: ./media/security-azure-log-integration-faq/event-xml.png
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -14,8 +14,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/17/2016"
-	ms.author="bradsev;gopitk" />
+	ms.date="09/19/2016"
+	ms.author="bradsev" />
 
 
 # Was ist der Team Data Science-Prozess (TDSP)?
@@ -74,7 +74,7 @@ Im nächsten Schritt müssen Sie sich ausführlicher mit den Daten beschäftigen
 Datenwissenschaftler muss in Zusammenarbeit mit Fachbereichsexperten die Features bestimmen, die die wesentlichen Eigenschaften des Datasets erfassen und am besten zum Vorhersagen der wichtigsten Geschäftsvariablen genutzt werden können, die während der Planung ausgemacht wurden. Diese neuen Features können von vorhandenen Daten abgeleitet werden oder ggf. das Erfassen zusätzlicher Daten erfordern. Dieser Prozess wird als **Feature-Engineering** bezeichnet und ist einer der wichtigsten Schritte beim Entwickeln eines effektiven Predictive Analytics-Systems. Dieser Schritt erfordert eine kreative Kombination von Sachkenntnis mit den im Datenuntersuchungsschritt gewonnenen Erkenntnissen. Eine Anleitung finden Sie unter [Featureentwicklung im Cortana-Analyseprozess](machine-learning-data-science-create-features.md).
 
 
-## 4\. Erstellen und Trainieren von ML-Modellen
+## 4\. Erstellen und Trainieren von Machine Learning-Modellen
 
 Datenwissenschaftler erstellen Analysemodelle zum Vorhersagen der Hauptvariablen, die von den Geschäftsanforderungen bestimmt werden. Diese werden wiederum im Planungsschritt anhand von Daten definiert, die bereinigt und Features zugeordnet wurden. Machine Learning-Systeme unterstützen mehrere **Modellierungsalgorithmen**, die für eine Vielzahl von Fällen geeignet sind. Eine Anleitung finden Sie unter [Auswählen von Algorithmen für Microsoft Azure Machine Learning](machine-learning-algorithm-choice.md).
 
@@ -100,4 +100,4 @@ TDSP schreibt zwar keine bestimmten Arten von **Dokumentationsartefakten** vor, 
 
 Vollständige exemplarische Vorgehensweisen, in denen sämtliche Schritte im Prozess für **bestimmte Szenarien** gezeigt werden, sind ebenfalls verfügbar. Sie sind mit Miniaturansichtsbeschreibungen im Thema [Exemplarische Vorgehensweisen für den Team Data Science-Prozess](data-science-process-walkthroughs.md) aufgeführt.
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

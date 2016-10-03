@@ -22,14 +22,14 @@ In diesem Artikel wird beschrieben, wie Sie eine Azure Resource Manager-Vorlage 
 
 Weitere Informationen zum Erstellen von Vorlagen finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen][].
 
-Weitere Informationen zur Vorgehensweise und Muster zu Benennungskonventionen für Azure-Ressourcen finden Sie unter [Recommended naming conventions for Azure resources][] \(Empfohlene Benennungskonventionen für Azure-Ressourcen).
+Weitere Informationen zur Vorgehensweise und Muster zu Benennungskonventionen für Azure-Ressourcen finden Sie unter [Recommended naming conventions for Azure resources][] (Empfohlene Benennungskonventionen für Azure-Ressourcen).
 
-Die vollständige Vorlage finden Sie unter [Event Hub and enable Archive template][] \(Event Hub- und Archive-Aktivierungsvorlage) auf GitHub.
+Die vollständige Vorlage finden Sie unter [Event Hub and enable Archive template][] (Event Hub- und Archive-Aktivierungsvorlage) auf GitHub.
 
 >[AZURE.NOTE]
 Um die neuesten Vorlagen zu finden, rufen Sie den Katalog [Azure-Schnellstartvorlagen][] auf, und suchen Sie nach „Event Hubs“.
 
-## Was möchten Sie bereitstellen?
+## Was wird bereitgestellt?
 
 Mit dieser Vorlage können Sie einen Event Hubs-Namespace mit einem Event Hub bereitstellen und Archive aktivieren.
 
@@ -169,7 +169,7 @@ Das Größenintervall, in dem das Archiv beginnt, die Daten im Azure-Blobspeiche
 
 ### destinationStorageAccountResourceId
 
-Das Archiv benötigt eine Speicherkonto-Ressourcen-ID, um das Archiv in Ihrem gewünschten Azure-Speicher zu aktivieren.
+Das Archiv benötigt eine Speicherkontoressourcen-ID, um das Archiv in Ihrem gewünschten Azure-Speicher zu aktivieren.
 
 ```
  "destinationStorageAccountResourceId":{
@@ -182,7 +182,7 @@ Das Archiv benötigt eine Speicherkonto-Ressourcen-ID, um das Archiv in Ihrem ge
 
 ### blobContainerName
 
-Der Blobcotainer, in dem Sie die Ereignisdaten archivieren möchten.
+Der Blobcontainer, in dem Sie die Ereignisdaten archivieren möchten.
 
 ```
  "blobContainerName":{
@@ -286,7 +286,7 @@ Da Sie nun Ressourcen mit Azure Resource Manager erstellt und bereitgestellt hab
   [Using Azure PowerShell with Azure Resource Manager]: ../powershell-azure-resource-manager.md
   [Using the Azure CLI for Mac, Linux, and Windows with Azure Resource Management]: ../xplat-cli-azure-resource-manager.md
   [Event Hub and consumer group template]: https://github.com/Azure/azure-quickstart-templates/blob/master/201-eventhubs-create-namespace-and-enable-archive/
-  [Recommended naming conventions for Azure resources]: https://azure.microsoft.com/documentation/articles/guidance-naming-conventions/
-  [Event Hub and enable Archive template]: [https://github.com/Azure/azure-quickstart-templates/tree/master/201-eventhubs-create-namespace-and-enable-archive]
+  [Recommended naming conventions for Azure resources]: https://azure.microsoft.com/de-DE/documentation/articles/guidance-naming-conventions/
+  [Event Hub and enable Archive template]: https://github.com/Azure/azure-quickstart-templates/tree/master/201-eventhubs-create-namespace-and-enable-archive
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

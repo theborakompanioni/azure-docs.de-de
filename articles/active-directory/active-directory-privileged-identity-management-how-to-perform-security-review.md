@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="09/02/2016"
+   ms.date="09/16/2016"
    ms.author="kgremban"/>
 
 # Durchführen einer Zugriffsüberprüfung in Azure AD Privileged Identity Management
@@ -30,11 +30,8 @@ Sie können die Anwendung Azure AD Privileged Identity Management (PIM) im [Azur
 
 1. Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com/) an.
 2. Wählen Sie in der oberen rechten Ecke des Azure-Portals Ihren Benutzernamen, und wählen Sie das Verzeichnis aus, in dem Sie arbeiten möchten.
-3. Wählen Sie **Neu** > **Sicherheit und Identität** > **Azure AD Privileged Identity Management** aus.
-
-	![Aktivieren von PIM im Portal][1]
-
-4. Aktivieren Sie das Kontrollkästchen **An Dashboard anheften**, und klicken Sie dann auf die Schaltfläche **Erstellen**. Das Privileged Identity Management-Dashboard wird geöffnet.
+3. Wählen Sie **Weitere Dienste**, und verwenden Sie das Textfeld „Filter“, um nach **Azure AD Privileged Identity Management** zu suchen.
+4. Aktivieren Sie das Kontrollkästchen **An Dashboard anheften**, und klicken Sie dann auf **Erstellen**. Die Anwendung Privileged Identity Management wird geöffnet.
 
 
 ## Genehmigen oder Verweigern des Zugriffs
@@ -56,4 +53,4 @@ Wenn Sie Zugriff genehmigen oder verweigern, teilen Sie dem Prüfer lediglich mi
 
 [1]: ./media/active-directory-privileged-identity-management-configure/PIM_EnablePim.png
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0921_2016-->

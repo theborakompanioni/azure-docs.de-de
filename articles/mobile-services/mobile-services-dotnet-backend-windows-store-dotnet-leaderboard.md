@@ -13,10 +13,10 @@
 	ms.tgt_pltfrm="mobile-windows-store"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="07/21/2016"
+	ms.date="09/20/2016"
 	ms.author="glenga"/>
 
-# Erstellen einer Bestenlisten-App mit Azure Mobile Services .NET-Back-End
+# Erstellen einer Bestenlisten-App mit Azure Mobile Services .NET-Backend
 
 [AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
 
@@ -662,7 +662,7 @@ Die Rangfolge wird in einer Listenansicht (**ListView**) angezeigt:
 
 Alle Datenbindungen erfolgen über das Ansichtsmodell.
 
-## Veröffentlichen des mobilen Diensts
+## Veröffentlichen des mobilen Dienstes
 
 In diesem Schritt veröffentlichen Sie Ihren mobilen Dienst in Microsoft Azure und ändern die App, um den Live-Dienst zu verwenden.
 
@@ -765,4 +765,4 @@ Wenn Sie nun die App ausführen, kommuniziert diese mit dem echten Dienst.
 [Hinzufügen von Pushbenachrichtigungen]: ../notification-hubs-windows-store-dotnet-get-started.md
 [Erste Schritte mit der Authentifizierung]: /develop/mobile/tutorials/get-started-with-users-dotnet
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0921_2016-->

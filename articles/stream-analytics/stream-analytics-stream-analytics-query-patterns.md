@@ -5,7 +5,7 @@
 	services="stream-analytics"
 	documentationCenter=""
 	authors="jeffstokes72"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun"/>
 
 <tags
@@ -36,7 +36,7 @@ Abfragen in Azure Stream Analytics werden in einer SQL-ähnlichen Abfragesprache
 
 **Ausgabe**:
 
-| Make | Weight |
+| Make | Gewicht |
 | --- | --- |
 | Honda | 3000 |
 
@@ -258,7 +258,7 @@ Abfragen in Azure Stream Analytics werden in einer SQL-ähnlichen Abfragesprache
 
 **Eingabe**:
 
-| LicensePlate | Stellen | Time |
+| LicensePlate | Make | Time |
 | --- | --- | --- |
 | DXE 5291 | Honda | 2015-07-27T00:00:05.0000000Z |
 | YZK 5704 | Ford | 2015-07-27T00:02:17.0000000Z |
@@ -270,7 +270,7 @@ Abfragen in Azure Stream Analytics werden in einer SQL-ähnlichen Abfragesprache
 
 **Ausgabe**:
 
-| LicensePlate | Stellen | Time |
+| LicensePlate | Make | Time |
 | --- | --- | --- |
 | DXE 5291 | Honda | 2015-07-27T00:00:05.0000000Z |
 | QYF 9358 | Honda | 2015-07-27T00:12:02.0000000Z |
@@ -288,7 +288,7 @@ Abfragen in Azure Stream Analytics werden in einer SQL-ähnlichen Abfragesprache
 
 Ändern wir nun die Aufgabe, und ermitteln wir jeweils das erste Fahrzeug einer bestimmten Marke in einem Zehn-Minuten-Intervall.
 
-| LicensePlate | Stellen | Time |
+| LicensePlate | Make | Time |
 | --- | --- | --- |
 | DXE 5291 | Honda | 2015-07-27T00:00:05.0000000Z |
 | YZK 5704 | Ford | 2015-07-27T00:02:17.0000000Z |
@@ -312,7 +312,7 @@ Abfragen in Azure Stream Analytics werden in einer SQL-ähnlichen Abfragesprache
 
 **Eingabe**:
 
-| LicensePlate | Stellen | Time |
+| LicensePlate | Make | Time |
 | --- | --- | --- |
 | DXE 5291 | Honda | 2015-07-27T00:00:05.0000000Z |
 | YZK 5704 | Ford | 2015-07-27T00:02:17.0000000Z |
@@ -324,7 +324,7 @@ Abfragen in Azure Stream Analytics werden in einer SQL-ähnlichen Abfragesprache
 
 **Ausgabe**:
 
-| LicensePlate | Stellen | Time |
+| LicensePlate | Make | Time |
 | --- | --- | --- |
 | VFE 1616 | Toyota | 2015-07-27T00:09:31.0000000Z |
 | MDR 6128 | BMW | 2015-07-27T00:13:45.0000000Z |
@@ -390,14 +390,14 @@ Abfragen in Azure Stream Analytics werden in einer SQL-ähnlichen Abfragesprache
 
 **Eingabe**:
   
-| Benutzer | Funktion | Ereignis | Time |
+| Benutzer | Feature | Ereignis | Time |
 | --- | --- | --- | --- |
-| user@location.com | RightMenu | Starten | 2015-01-01T00:00:01.0000000Z |
+| user@location.com | RightMenu | Start | 2015-01-01T00:00:01.0000000Z |
 | user@location.com | RightMenu | End | 2015-01-01T00:00:08.0000000Z |
   
 **Ausgabe**:
   
-| Benutzer | Funktion | Dauer |
+| Benutzer | Feature | Duration |
 | --- | --- | --- |
 | user@location.com | RightMenu | 7 |
   
@@ -514,4 +514,4 @@ Um Hilfe zu erhalten, besuchen Sie unser [Azure Stream Analytics-Forum](https://
 - [Referenz zur Azure Stream Analytics-Verwaltungs-REST-API](https://msdn.microsoft.com/library/azure/dn835031.aspx)
  
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -13,13 +13,13 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/14/2016"
+	ms.date="09/19/2016"
 	ms.author="zhangya;bradsev" />
 
 
 # Featureauswahl im Team Data Science-Prozess (TDSP)
 
-In diesem Thema werden die Gründe zur Featureauswahl erläutert und Beispiele der Rolle im Datenaufbereitungsprozess für das maschinelle Lernen vorgestellt. Diese Beispiele stammen aus Azure Machine Learning Studio.
+In diesem Artikel werden die Gründe zur Featureauswahl erläutert und Beispiele der Rolle im Datenaufbereitungsprozess für maschinelles Lernen vorgestellt. Diese Beispiele stammen aus Azure Machine Learning Studio.
 
 [AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
@@ -27,7 +27,9 @@ In diesem Thema werden die Gründe zur Featureauswahl erläutert und Beispiele d
 In diesem Thema wird der Grund zur Featureauswahl erläutert und Beispiele der Rolle im Datenaufbereitungsprozess für das maschinelle Lernen vorgestellt. Diese Beispiele stammen aus Azure Machine Learning Studio.
 
 Entwicklung und Auswahl von Features sind ein Teil des Team Data Science-Prozesses, der unter [Was ist der Team Data Science-Prozess?](data-science-process-overview.md) beschrieben ist. Entwicklung und Auswahl von Features sind Teile des Schritts **Entwickeln von Features** des TDSP.
+
 * **Featureentwicklung**: Bei diesem Prozess wird versucht, zusätzliche relevante Features aus den vorhandenen Rohfeatures in den Daten zu erstellen und die Vorhersageleistung des Lernalgorithmus zu steigern.
+
 * **Featureauswahl**: Dieser Prozess wählt bei dem Versuch, die Anzahl von Dimensionen des Trainingsproblems zu verringern, die wichtigste Teilmenge der ursprünglichen Datenfeatures aus.
 
 Normalerweise wird die **Featureentwicklung** zuerst ausgeführt, um zusätzliche Features zu generieren, und anschließend wird die **Featureauswahl** ausgeführt, um irrelevante, redundante oder stark korrelierte Features zu entfernen.
@@ -74,4 +76,4 @@ Beachten Sie, dass die Entwicklung bzw. Auswahl von Features nicht immer unbedin
 [fisher-linear-discriminant-analysis]: https://msdn.microsoft.com/library/azure/dcaab0b2-59ca-4bec-bb66-79fd23540080/
  
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

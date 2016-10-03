@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="07/05/2016"
+    ms.date="09/13/2016"
     ms.author="larryfr"/>
 
 # Entwickeln von Skriptaktionen mit HDInsight
@@ -167,6 +167,11 @@ Damit können Sie folgende Hilfsprogramme in Ihrem Skript nutzen:
 | `test_is_headnode` | Bei Ausführung auf dem Hauptknoten eines Clusters wird "1" zurückgegeben, andernfalls "0". |
 | `test_is_datanode` | Wenn der aktuelle Knoten ein Datenknoten (Workerknoten) ist, wird "1" zurückgegeben, andernfalls "0". |
 | `test_is_first_datanode` | Wenn der aktuelle Knoten der erste Datenknoten (Workerknoten) ist (mit dem Namen "workernode0"), wird "1" zurückgegeben, andernfalls "0". |
+| `get_headnodes` | Gibt den vollqualifizierten Domänennamen der Hauptknoten im Cluster zurück. Namen sind durch Kommas getrennt. Bei einem Fehler wird eine leere Zeichenfolge zurückgegeben. |
+| `get_primary_headnode` | Ruft den vollqualifizierten Domänennamen des primären Hauptknotens ab. Bei einem Fehler wird eine leere Zeichenfolge zurückgegeben. |
+| `get_secondary_headnode` | Ruft den vollqualifizierten Domänennamen des sekundären Hauptknotens ab. Bei einem Fehler wird eine leere Zeichenfolge zurückgegeben. |
+| `get_primary_headnode_number` | Ruft das numerische Suffix des primären Hauptknotens ab. Bei einem Fehler wird eine leere Zeichenfolge zurückgegeben. |
+| `get_secondary_headnode_number` | Ruft das numerische Suffix des sekundären Hauptknotens ab. Bei einem Fehler wird eine leere Zeichenfolge zurückgegeben. |
 
 ## <a name="commonusage"></a>Gängige Verwendungsmuster
 
@@ -268,4 +273,4 @@ Ersetzen Sie den oben aufgeführten Befehl __INFILE__ durch die Datei mit Bytere
 
 * Verwenden Sie die [HDInsight-REST-API](https://msdn.microsoft.com/library/azure/mt622197.aspx), um zu erfahren, wie Sie REST verwenden, um Verwaltungsaktionen auf HDInsight-Clustern auszuführen.
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

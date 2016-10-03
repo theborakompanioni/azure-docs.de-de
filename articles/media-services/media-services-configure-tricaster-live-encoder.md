@@ -1,9 +1,9 @@
 <properties 
-	pageTitle="Konfigurieren des NewTek TriCaster-Encoders zum Senden eines Single-Bitrate-Livedatenstroms" 
+	pageTitle="Konfigurieren des NewTek TriCaster-Encoders zum Senden eines Single-Bitrate-Livedatenstroms | Microsoft Azure" 
 	description="In diesem Thema wird beschrieben, wie Sie den Tricaster-Liveencoder zum Senden eines Single-Bitrate-Livedatenstroms an AMS-Kanäle konfigurieren, für die Livecodierung aktiviert sind." 
 	services="media-services" 
 	documentationCenter="" 
-	authors="Juliako,cenkdin,anilmur" 
+	authors="cenkdin" 
 	manager="erikre" 
 	editor=""/>
 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="ne" 
 	ms.topic="article" 
-	ms.date="06/22/2016" 
-	ms.author="juliako"/>
+	ms.date="09/15/2016" 
+	ms.author="juliako;cenkd;anilmur"/>
 
 #Verwenden des NewTek TriCaster-Encoders zum Senden eines Single-Bitrate-Livedatenstroms
 
@@ -34,7 +34,7 @@ In diesem Tutorial wird gezeigt, wie Sie Azure Media Services (AMS) mit dem Tool
 ##Voraussetzungen
 
 - [Erstellen eines Azure Media Services-Kontos](media-services-create-account.md)
-- Stellen Sie sicher, dass ein Streamingendpunkt mit mindestens einer zugeordneten Streamingeinheit ausgeführt wird. Weitere Informationen finden Sie unter [Verwalten von Streamingendpunkten in einem Media Services-Konto](media-services-manage-origins.md)
+- Stellen Sie sicher, dass ein Streamingendpunkt mit mindestens einer zugeordneten Streamingeinheit ausgeführt wird. Weitere Informationen finden Sie unter [Verwalten von Streamingendpunkten in einem Media Services-Konto](media-services-portal-manage-streaming-endpoints.md)
 - Installieren Sie die neueste Version des [AMSE](https://github.com/Azure/Azure-Media-Services-Explorer)-Tools.
 - Starten Sie das Tool, und stellen Sie eine Verbindung mit Ihrem AMS-Konto her.
 
@@ -157,7 +157,9 @@ Der Datenstrom kann jetzt in einen Player eingebettet oder an eine Zielgruppe f�
 Eine Anleitung finden Sie im Thema [Problembehandlung](media-services-troubleshooting-live-streaming.md).
 
 
-##Media Services-Lernpfade
+##Nächster Schritt
+
+Überprüfen Sie die Media Services-Lernpfade.
 
 [AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
@@ -165,4 +167,4 @@ Eine Anleitung finden Sie im Thema [Problembehandlung](media-services-troublesho
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0921_2016-->

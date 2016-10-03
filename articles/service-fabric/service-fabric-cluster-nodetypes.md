@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="05/02/2016"
+   ms.date="09/09/2016"
    ms.author="chackdan"/>
 
 
@@ -27,14 +27,14 @@ Der folgende Screenshot zeigt einen Cluster mit zwei Knotentypen: FrontEnd und B
 
 ## Zuordnen von VM-Skalierungsgruppeninstanzen zu Knoten
 
-Wie Sie oben sehen können, beginnen VM-Skalierungsgruppeninstanzen bei Instanz 0 und werden dann heraufgezählt. Die Namen spiegeln die Nummerierung wider. Beispiel: „BackEnd\_0“ ist Instanz 0 der BackEnd-VM-Skalierungsgruppe. Diese bestimmte VM-Skalierungsgruppe hat fünf Instanzen mit den Namen „BackEnd\_0“, „BackEnd\_1“, „BackEnd\_2“, „BackEnd\_3“ und „BackEnd\_4“.
+Wie Sie oben sehen können, beginnen VM-Skalierungsgruppeninstanzen bei Instanz 0 und werden dann heraufgezählt. Die Namen spiegeln die Nummerierung wider. Beispiel: „BackEnd_0“ ist Instanz 0 der BackEnd-VM-Skalierungsgruppe. Diese bestimmte VM-Skalierungsgruppe hat fünf Instanzen mit den folgenden Namen: Back-End-_0, Back-End-_1, Back-End-_2, Back-End-_3 und Back-End-_4.
 
 Wenn Sie eine VM-Skalierungsgruppe zentral hochskalieren, wird eine neue Instanz erstellt. Der neue VM-Skalierungsgruppen-Instanzname hat in der Regel folgende Struktur: VM-Skalierungsgruppenname + Nummer der nächsten Instanz. In diesem Beispiel lautet er „BackEnd\_5“.
 
 
 ## Zuordnen des VM-Skalierungsgruppen-Lastenausgleichs für jeden Knotentyp/jede VM-Skalierungsgruppe
 
-Wenn Sie Ihren Cluster vom Portal aus bereitgestellt oder die bereitgestellte ARM-Beispielvorlage verwendet haben und dann eine Liste aller Ressourcen in einer Ressourcengruppe abrufen, wird der Lastenausgleich für jede VM-Skalierungsgruppe oder jeden Knotentyp angezeigt.
+Wenn Sie Ihren Cluster über das Portal bereitgestellt oder die bereitgestellte Resource Manager-Vorlage verwendet haben und dann eine Liste aller Ressourcen in einer Ressourcengruppe abrufen, wird der Lastenausgleich für jede VM-Skalierungsgruppe oder jeden Knotentyp angezeigt.
 
 Der Name würde etwa folgendermaßen lauten: **LB-&lt;Knotentypname&gt;**. Z. B. „LB-sfcluster4doc-0“, wie in diesem Screenshot gezeigt:
 
@@ -86,7 +86,7 @@ Im folgenden Screenshot wird die Remotedesktopverbindung zum Herstellen der Verb
 
 ### Vor der Clusterbereitstellung
 
-Wenn Sie den Cluster mithilfe einer ARM-Vorlage einrichten, können Sie den Bereich in **inboundNatPools** angeben.
+Wenn Sie den Cluster mithilfe einer Resource Manager-Vorlage einrichten, können Sie den Bereich in **inboundNatPools** angeben.
 
 Wechseln Sie zur Ressourcendefinition für **Microsoft.Network/loadBalancers**. Darunter finden Sie die Beschreibung für **inboundNatPools**. Ersetzen Sie die Werte *frontendPortRangeStart* und *frontendPortRangeEnd*.
 
@@ -133,4 +133,4 @@ Set-AzureRmResource -PropertyObject $PropertiesObject -ResourceGroupName <RG nam
 [NATRules]: ./media/service-fabric-cluster-nodetypes/NATRules.png
 [RDP]: ./media/service-fabric-cluster-nodetypes/RDP.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -14,12 +14,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-management"
-   ms.date="07/05/2016"
+   ms.date="09/20/2016"
    ms.author="carlrab"/>
 
 # Überwachen der Azure SQL-Datenbank mit dynamischen Verwaltungssichten
 
-Die Microsoft Azure SQL-Datenbank unterstützt eine Teilmenge dynamischer Verwaltungssichten für die Diagnose von Leistungsproblemen, die auf blockierte Abfragen oder Abfragen mit langen Laufzeiten, fehlerhafte Abfragepläne usw. zurückzuführen sind. Dieses Thema enthält Informationen zum Erkennen geläufiger Leistungsprobleme mithilfe der dynamischen Verwaltungssichten.
+Die Microsoft Azure SQL-Datenbank unterstützt eine Teilmenge dynamischer Verwaltungssichten für die Diagnose von Leistungsproblemen, die auf blockierte Abfragen oder Abfragen mit langen Laufzeiten, fehlerhafte Abfragepläne usw. zurückzuführen sind. Dieses Thema enthält Informationen zum Erkennen häufiger Leistungsprobleme mithilfe von dynamischen Verwaltungssichten.
 
 Die SQL-Datenbank unterstützt teilweise drei Kategorien von dynamischen Verwaltungssichten:
 
@@ -42,7 +42,7 @@ Bei einer lokalen Instanz von SQL Server geben dynamische Verwaltungssichten Inf
 Die folgende Abfrage gibt die Größe Ihrer Datenbank (in Megabyte) zurück:
 
 ```
--- Berechnet die Größe der Datenbank. 
+-- Calculates the size of the database.
 SELECT SUM(reserved_page_count)*8.0/1024
 FROM sys.dm_db_partition_stats;
 GO
@@ -76,7 +76,7 @@ JOIN sys.dm_exec_sessions AS s
 WHERE c.session_id = @@SPID;
 ```
 
-> [AZURE.NOTE] Wenn Sie **sys.dm\_exec\_requests** und **sys.dm\_exec\_sessions views** ausführen und der Benutzer die Berechtigung **VIEW DATABASE STATE** für die Datenbank besitzt, werden dem Benutzer alle aktiven Sitzungen in der Datenbank angezeigt. Besitzt er die Berechtigung nicht, wird nur die aktuelle Sitzung angezeigt..
+> [AZURE.NOTE] Wenn Sie **sys.dm\_exec\_requests** und **sys.dm\_exec\_sessions views** ausführen und die Berechtigung **VIEW DATABASE STATE** für die Datenbank besitzen, werden Ihnen alle zurzeit ausgeführten Sitzungen in der Datenbank angezeigt. Andernfalls wird Ihnen nur die aktuelle Sitzung angezeigt.
 
 ## Überwachen der Abfrageleistung
 
@@ -131,8 +131,8 @@ FROM
 ORDER BY highest_cpu_queries.total_worker_time DESC;
 ```
 
-## Weitere Informationen
+## Siehe auch
 
 [Einführung in SQL-Datenbank](sql-database-technical-overview.md)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0921_2016-->

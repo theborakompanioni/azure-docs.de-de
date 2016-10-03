@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="08/22/2016"
+   ms.date="09/16/2016"
    ms.author="jeffstok"/>
 
 
@@ -28,7 +28,7 @@ In diesem Artikel erfahren Sie, wie Sie mithilfe eines benutzerdefinierten Skrip
 ## Voraussetzungen
 
 * Einen Azure HDInsight-Cluster, auf dem R Server installiert ist. Anweisungen finden Sie unter [Erste Schritte mit R Server in HDInsight (Vorschau)](hdinsight-hadoop-r-server-get-started.md).
-* Einen SSH-Client. Für Linux- und Unix-Distributionen oder Macintosh OS X steht der Befehl `ssh` über das Betriebssystem zur Verfügung. Für Windows wird [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) empfohlen.
+* Einen SSH-Client. Für Linux- und Unix-Distributionen oder Macintosh OS X steht der Befehl `ssh` über das Betriebssystem zur Verfügung. Für Windows empfehlen wir [Cygwin](http://www.redhat.com/services/custom/cygwin/) mit der Option [OpenSSH](https://www.youtube.com/watch?v=CwYSvvGaiWU) oder [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html).
 
 
 ## Installieren von RStudio auf dem Cluster mit einem benutzerdefinierten Skript
@@ -73,13 +73,13 @@ In diesem Artikel erfahren Sie, wie Sie mithilfe eines benutzerdefinierten Skrip
 
 7. Erstellen Sie einen SSH-Tunnel zum Cluster, indem Sie `localhost:8787` im HDInsight-Cluster dem Clientcomputer zuordnen. Sie müssen einen SSH-Tunnel erstellen, bevor Sie eine neue Browsersitzung öffnen.
 
-	* Öffnen Sie auf einem Linux-Client oder auf einem Windows-Client (unter Verwendung von [Cygwin](http://www.redhat.com/services/custom/cygwin/)) eine Terminalsitzung, und verwenden Sie den folgenden Befehl:
+	* Öffnen Sie auf einem Linux-Client oder auf einem Windows-Client mit [Cygwin](http://www.redhat.com/services/custom/cygwin/) eine Terminalsitzung, und verwenden Sie den folgenden Befehl:
 
 			ssh -L localhost:8787:localhost:8787 USERNAME@R-Server.CLUSTERNAME-ssh.azurehdinsight.net
 			
 		Ersetzen Sie **USERNAME** durch einen SSH-Benutzer für Ihren HDInsight-Cluster und **CLUSTERNAME** durch den Namen des HDInsight-Clusters. Durch Hinzufügen von `-i id_rsa_key` können Sie anstelle eines Kennworts auch einen SSH-Schlüssel verwenden.
 
-	* Erstellen Sie auf einem Windows-Client einen SSH-Tunnel mit PuTTY.
+	* Bei Verwendung eines Windows-Clients mit PuTTY:
 
 		1.  Öffnen Sie PuTTY, und geben Sie die Verbindungsinformationen ein. Wenn Sie nicht mit PuTTY vertraut sind, finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Windows](hdinsight-hadoop-linux-use-ssh-windows.md) Informationen für die Verwendung mit HDInsight.
 		2.  Erweitern Sie auf der linken Seite des Dialogfelds im Abschnitt **Category** erst **Connection**, dann **SSH**, und wählen Sie anschließend **Tunnels** aus.
@@ -126,4 +126,4 @@ Alternativ können Sie `source(testhdi.r)` oder `source(testhdi_spark.r)` eingeb
 
  
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

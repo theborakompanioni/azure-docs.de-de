@@ -101,7 +101,7 @@ Die folgende Abbildung veranschaulicht detailliert die Prozessschritte im DSC-Le
 
 - Wenn beim Upgrade auf WMF 5 RTM der Computer bereits als Knoten in Azure Automation DSC registriert ist, heben Sie seine Registrierung in Azure Automation DSC auf, und registrieren Sie ihn nach dem Upgrade auf WMF 5 RTM erneut.
 
-- Azure Automation DSC bietet zurzeit keine Unterstützung für teilweise oder zusammengesetzte DSC-Konfigurationen. Zusammengesetzte DSC-Ressourcen können jedoch importiert und genau wie in der lokalen PowerShell verwendet werden, um die Wiederverwendung von Konfigurationen zu ermöglichen.
+- Azure Automation DSC bietet zurzeit keine Unterstützung für teilweise oder zusammengesetzte DSC-Konfigurationen. Zusammengesetzte DSC-Ressourcen können jedoch importiert und in Azure Automation DSC-Konfigurationen genau wie in der lokalen PowerShell verwendet werden, um die Wiederverwendung von Konfigurationen zu ermöglichen.
 
 - Für den PowerShell DSC-Agent für Windows muss die neueste Version von WMF 5 installiert werden, um eine Kommunikation mit Azure Automation zu ermöglichen. Die neueste Version des PowerShell DSC-Agents für Linux muss installiert sein, um unter Linux eine Kommunikation mit Azure Automation zu ermöglichen.
 
@@ -128,4 +128,4 @@ Die folgende Abbildung veranschaulicht detailliert die Prozessschritte im DSC-Le
 - [Azure Automation DSC – Preise](https://azure.microsoft.com/pricing/details/automation/)
 - [Kontinuierliche Bereitstellung für IaaS-VMs mit Azure Automation DSC und Chocolatey](automation-dsc-cd-chocolatey.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -12,7 +12,7 @@
     ms.topic="article"
     ms.tgt_pltfrm="NA"
     ms.workload="TBD"
-    ms.date="06/21/2016"
+    ms.date="09/21/2016"
     ms.author="alkohli" />
 
 # Versionsanmerkungen zu Update 0.1 der StorSimple 8000-Serie – Oktober 2014  
@@ -27,31 +27,31 @@ Lesen Sie vor der Bereitstellung der Updates in Ihrer StorSimple-Lösung die Inf
 
 >[AZURE.IMPORTANT]
 > 
--	Verwenden Sie den StorSimple-Manager-Dienst und nicht die Windows PowerShell für StorSimple, um die Oktober-Updates zu installieren.  
--	Die Fertigstellung des Updates dauert i. d. R. drei Stunden.  
--	Die Oktober-Version von StorSimple enthält keine Updates des virtuellen StorSimple-Geräts. Sie können dennoch weiterhin alle verfügbaren Windows-Updates, einschließlich der neuesten Sicherheitsupdates, anwenden, es wird aber keine Änderung der Version für das virtuelle Gerät angezeigt.  
+-	Verwenden Sie den StorSimple-Manager-Dienst und nicht die Windows PowerShell für StorSimple, um die Oktober-Updates zu installieren.
+-	Die Fertigstellung des Updates dauert i. d. R. drei Stunden.
+-	Die Oktober-Version von StorSimple enthält keine Updates des virtuellen StorSimple-Geräts. Sie können dennoch weiterhin alle verfügbaren Windows-Updates, einschließlich der neuesten Sicherheitsupdates, anwenden, es wird aber keine Änderung der Version für das virtuelle Gerät angezeigt.
 
 Bevor Ihr StorSimple-Gerät aktualisiert wird, sollten folgende Voraussetzungen erfüllt sein.
 
-- Stellen Sie sicher, dass beide Gerätecontroller ausgeführt werden, bevor Sie nach Updates suchen. Wenn einer der Controller nicht ausgeführt wird, treten bei der Überprüfung Fehler auf. Wechseln Sie unter der Seite **Wartung** zu **Hardwarestatus**, um sicherzustellen, dass die Controller fehlerfrei sind. Wenn Komponenten vorliegen, die **Aufmerksamkeit** erfordern, wenden Sie sich vor dem Fortfahren an den Microsoft-Support.  
-- Stellen Sie sicher, dass die festen IPs für Controller 0 und Controller 1 routingfähig sind und eine Verbindung zum Internet herstellen können, während sie für die Wartung der Updates für das Gerät verwendet werden. Sie können das [Cmdlet "Test-Connection"](https://technet.microsoft.com/library/hh849808.aspx) verwenden, um eine bekannte Adresse außerhalb des Netzwerks wie "outlook.com" per Ping abzufragen und so sicherzustellen, dass der Controller über eine Konnektivität zum Außennetzwerk verfügt.  
-- Stellen Sie sicher, dass die erforderlichen ausgehenden Ports auf Ihrem StorSimple-Gerät für die ausgehende Kommunikation verfügbar sind. Weitere Informationen finden Sie unter [Netzwerkanforderungen für das StorSimple-Gerät](storsimple-system-requirements.md#networking-requirements-for-your-storsimple-device).  
-- Deaktivieren Sie die Ports "Data 2" und "Data 3", sofern sie aktiviert sind, wenn die Softwareversion des Geräts älter als 6.3.9600.17312 (Oktober 2014-Update) ist, bevor Sie mit dem Update beginnen. Wenn Sie die Ports "Data 2" und "Data 3" aktiviert lassen, während Sie das Update anwenden, kann dies dazu führen, dass Ihr Gerätecontroller in den Wiederherstellungsmodus wechselt. Beachten Sie, dass beim Deaktivieren der Netzwerkschnittstellen alle zugehörigen Volumes offline gehen und die E/A für die Dauer des Updates unterbrochen wird.  
+- Stellen Sie sicher, dass beide Gerätecontroller ausgeführt werden, bevor Sie nach Updates suchen. Wenn einer der Controller nicht ausgeführt wird, treten bei der Überprüfung Fehler auf. Wechseln Sie unter der Seite **Wartung** zu **Hardwarestatus**, um sicherzustellen, dass die Controller fehlerfrei sind. Wenn Komponenten vorliegen, die **Aufmerksamkeit** erfordern, wenden Sie sich vor dem Fortfahren an den Microsoft-Support.
+- Stellen Sie sicher, dass die festen IPs für Controller 0 und Controller 1 routingfähig sind und eine Verbindung zum Internet herstellen können, während sie für die Wartung der Updates für das Gerät verwendet werden. Sie können das [Cmdlet "Test-Connection"](https://technet.microsoft.com/library/hh849808.aspx) verwenden, um eine bekannte Adresse außerhalb des Netzwerks wie "outlook.com" per Ping abzufragen und so sicherzustellen, dass der Controller über eine Konnektivität zum Außennetzwerk verfügt.
+- Stellen Sie sicher, dass die erforderlichen ausgehenden Ports auf Ihrem StorSimple-Gerät für die ausgehende Kommunikation verfügbar sind. Weitere Informationen finden Sie unter [Netzwerkanforderungen für das StorSimple-Gerät](storsimple-system-requirements.md#networking-requirements-for-your-storsimple-device).
+- Deaktivieren Sie die Ports "Data 2" und "Data 3", sofern sie aktiviert sind, wenn die Softwareversion des Geräts älter als 6.3.9600.17312 (Oktober 2014-Update) ist, bevor Sie mit dem Update beginnen. Wenn Sie die Ports "Data 2" und "Data 3" aktiviert lassen, während Sie das Update anwenden, kann dies dazu führen, dass Ihr Gerätecontroller in den Wiederherstellungsmodus wechselt. Beachten Sie, dass beim Deaktivieren der Netzwerkschnittstellen alle zugehörigen Volumes offline gehen und die E/A für die Dauer des Updates unterbrochen wird.
 
 ## Neuigkeiten in der Oktober-Version
 
 Dieses Update umfasst die folgenden Verbesserungen:
 
-- Sie können nun die Benutzeroberfläche des StorSimple-Manager-Diensts zur Verwaltung Ihrer Gerätecontroller verwenden. Zu den Verwaltungsaktionen zählen das Neustarten, Herunterfahren oder Einschalten eines Controllers. Weitere Informationen finden Sie unter [Verwalten von StorSimple-Gerätecontrollern](storsimple-manage-device-controller.md).  
-- Sie können die WAN-Bandbreitenzuordnung als Kombination von Wochentag und Uhrzeit planen. Dadurch erzielen Sie eine bessere Nutzung der WAN-Bandbreite in Spitzenzeiten. Verschiedene Bandbreitenvorlagen sind für verschiedene Volumecontainer zulässig. Weitere Informationen finden Sie unter [Verwalten von StorSimple-Bandbreitenvorlagen](storsimple-manage-bandwidth-templates.md).  
-- Sie können E-Mail-Benachrichtigungen konfigurieren, um die Administratoren und andere Personen proaktiv über vorhandene oder möglicherweise bevorstehende Probleme zu benachrichtigen. Weitere Informationen finden Sie unter [Konfigurieren von Warnungseinstellungen](storsimple-manage-alerts.md#configure-alert-settings).  
+- Sie können nun die Benutzeroberfläche des StorSimple-Manager-Diensts zur Verwaltung Ihrer Gerätecontroller verwenden. Zu den Verwaltungsaktionen zählen das Neustarten, Herunterfahren oder Einschalten eines Controllers. Weitere Informationen finden Sie unter [Verwalten von StorSimple-Gerätecontrollern](storsimple-manage-device-controller.md).
+- Sie können die WAN-Bandbreitenzuordnung als Kombination von Wochentag und Uhrzeit planen. Dadurch erzielen Sie eine bessere Nutzung der WAN-Bandbreite in Spitzenzeiten. Verschiedene Bandbreitenvorlagen sind für verschiedene Volumecontainer zulässig. Weitere Informationen finden Sie unter [Verwalten von StorSimple-Bandbreitenvorlagen](storsimple-manage-bandwidth-templates.md).
+- Sie können E-Mail-Benachrichtigungen konfigurieren, um die Administratoren und andere Personen proaktiv über vorhandene oder möglicherweise bevorstehende Probleme zu benachrichtigen. Weitere Informationen finden Sie unter [Konfigurieren von Warnungseinstellungen](storsimple-manage-alerts.md#configure-alert-settings).
 
 ## In der Oktober-Version behobene Probleme
 
 
 Die folgende Tabelle enthält eine Zusammenfassung der Probleme, die in diesem Update behoben wurden.
 
-| Nr. | Funktion | Problem | Gilt für das physische Gerät | Gilt für das virtuelle Gerät |
+| Nein. | Feature | Problem | Gilt für das physische Gerät | Gilt für das virtuelle Gerät |
 |-----|---------|-------|---------------------------------|--------------------------------|
 | 1 | Netzwerkschnittstellen | In der vorherigen Version wurden die Netzwerkschnittstellen DATA 2 und DATA 3 in der Software vertauscht. Dies wurde in diesem Update behoben. Löschen Sie die Einstellungen, und deaktivieren Sie diese Netzwerkschnittstellen, bevor Sie das Update installieren. Nach der Installation des Updates müssen Sie diese Schnittstellen neu konfigurieren. | Ja | Nein |
 | 2 | Supportpaket | Wenn Sie in der vorherigen Version das Windows PowerShell-Cmdlet **Export-HcsSupportPackage** zum Abrufen der Protokolle des Baseboard-Verwaltungscontrollers (Baseboard Management Controller, BMC) ausgeführt haben, trat ein Fehler des Vorgangs mit der folgenden Warnung auf: "Der Vorgang war auf diesem Domänencontroller erfolgreich. Auf dem Peercontroller ist jedoch aufgrund der folgenden Fehler ein Fehler aufgetreten. Überprüfen Sie, ob der Peer fehlerfrei ist und ob der aktuelle Knoten eine Verbindung mit dem Peer herstellen kann." Dieses Problem wurde jetzt behoben. | Ja | Nein |
@@ -69,7 +69,7 @@ Die folgende Tabelle enthält eine Zusammenfassung der Probleme, die in diesem U
 
 Die folgende Tabelle enthält eine Zusammenfassung der bekannten Probleme in dieser Version.
 
-| Nr. | Funktion | Problem | Kommentare/Problemumgehung | Gilt für das physische Gerät | Gilt für das virtuelle Gerät |
+| Nein. | Feature | Problem | Kommentare/Problemumgehung | Gilt für das physische Gerät | Gilt für das virtuelle Gerät |
 |-----|---------|-------|----------------------------|----------------------------|---------------------------|
 | 1 | Zurücksetzen auf Werkseinstellungen | Unter bestimmten Umständen kann das StorSimple-Gerät beim Zurücksetzen auf die Werkseinstellungen nicht mehr reagieren und die folgende Nachricht anzeigen: **Zurücksetzung auf Werkseinstellungen wird ausgeführt (Phase 8)**. Dies kann vorkommen, wenn Sie STRG+C drücken, während das Cmdlet ausgeführt wird. | Drücken Sie STRG+C nicht nach dem Einleiten einer Zurücksetzung auf die Werkseinstellungen. Wenn dies bereits erfolgt ist, wenden Sie sich an den Microsoft-Support, um Informationen zu den nächsten Schritten zu erhalten. | Ja | Nein |
 | 2 | Zurücksetzen auf Werkseinstellungen | Nehmen Sie keine Zurücksetzung auf Werkseinstellungen bei einem StorSimple-Gerät vor, das von der allgemeinen Verfügbarkeit auf die Version Oktober 2014 aktualisiert wurde. | Dieser Vorgang funktioniert nur, wenn ein Patch installiert ist. Wenden Sie sich an den Microsoft-Support, um diesen erforderlichen Patch zu erhalten. | Ja | Nein |	
@@ -99,4 +99,4 @@ Diese Version wendet auch ein kumulatives Firmwareupdate zur Behebung von Zuverl
 Diese Version enthält keine Updates für das virtuelle Gerät. Durch die Installation des Updates ändert sich die Softwareversion des virtuellen Geräts nicht.
  
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/07/2016"
-   ms.author="seanmck"/>
+   ms.date="09/09/2016"
+   ms.author="seanmck;mikhegn"/>
 
 # Verwenden von Visual Studio zum Vereinfachen des Schreibens und Verwaltens Ihrer Service Fabric-Anwendung
 
@@ -34,22 +34,28 @@ Sie können in Visual Studio auch **F5** drücken, um die Anwendung bereitzustel
 
 ### Debugmodus für die Anwendung
 
-Standardmäßig entfernt Visual Studio vorhandene Instanzen Ihres Anwendungstyps, wenn Sie das Debuggen beenden oder (falls Sie die App ohne angefügten Debugger bereitgestellt haben) wenn Sie die Anwendung erneut bereitstellen. In diesem Fall werden sämtliche Daten der Anwendung entfernt. Beim lokalen Debuggen sollen aber unter Umständen bereits erstellte Daten erhalten bleiben, wenn Sie eine neue Version der Anwendung testen. Die Visual Studio Service Fabric-Tools enthalten eine Eigenschaft namens **Application Debug Mode** (Anwendungsdebugmodus), die steuert, ob die Anwendung beim Drücken von F5 deinstalliert wird oder ob sie nach Abschluss einer Debugsitzung erhalten bleiben soll.
+Standardmäßig entfernt Visual Studio vorhandene Instanzen Ihres Anwendungstyps, wenn Sie das Debuggen beenden oder (falls Sie die App ohne angefügten Debugger bereitgestellt haben) Sie die Anwendung erneut bereitstellen. In diesem Fall werden sämtliche Daten der Anwendung entfernt. Beim lokalen Debuggen möchten Sie ggf. die Daten behalten, die Sie beim Testen einer neuen Version der Anwendung erstellt haben, die Anwendung weiter ausführen oder die Anwendung in nachfolgenden Debugsitzungen upgraden. Die Visual Studio Service Fabric-Tools enthalten eine Eigenschaft namens **Anwendungsdebugmodus**, die steuert, ob die Anwendung beim Drücken von **F5** deinstalliert wird, die Anwendung nach Beenden einer Debugsitzung weiter ausgeführt werden soll oder ob in nachfolgenden Debugsitzungen ein Upgrade erfolgen soll, anstatt sie zu entfernen und neu bereitzustellen.
 
-#### So legen Sie die „Application Debug Mode“-Eigenschaft fest
+#### So legen Sie die „Anwendungsdebugmodus“-Eigenschaft fest
 
 1. Wählen Sie im Kontextmenü des Anwendungsprojekts **Eigenschaften** aus (oder drücken Sie **F4**).
-2. Legen Sie im Eigenschaftenfenster die **Application Debug Mode**-Eigenschaft entweder auf **Remove** (Entfernen) oder auf **Auto Upgrade** (Automatisches Upgrade) fest.
+2. Legen Sie im Fenster **Eigenschaft** den **Anwendungsdebugmodus** fest.
 
     ![Festlegen der „Application Debug Mode“-Eigenschaft][debugmodeproperty]
 
-Durch das Festlegen dieses Eigenschaftswerts auf **Auto Upgrade** (Automatisches Upgrade) wird die Anwendung im lokalen Cluster weiter ausgeführt. Bei der nächsten Verwendung von F5 wird die Bereitstellung wie ein Upgrade behandelt, indem der nicht überwachte automatische Modus verwendet wird, um die Anwendung schnell auf eine neuere Version mit angehängter Datumszeichenfolge zu aktualisieren. Beim Upgradevorgang werden alle Daten beibehalten, die Sie in einer vorherigen Debugsitzung eingegeben haben.
+Dies sind die für **Anwendungsdebugmodus** verfügbaren Optionen.
 
-![Beispiel für neue Anwendungsversion mit angefügtem Datum (date1)][preservedate]
+1. **Automatisches Upgrade**: Die Anwendung wird weiter ausgeführt, nachdem die Debugsitzung beendet wurde. Beim nächsten Drücken von **F5** wird die Bereitstellung wie ein Upgrade behandelt, indem der nicht überwachte automatische Modus verwendet wird, um die Anwendung schnell auf eine neuere Version mit angehängter Datumszeichenfolge zu aktualisieren. Beim Upgradevorgang werden alle Daten beibehalten, die Sie in einer vorherigen Debugsitzung eingegeben haben.
 
-Daten werden dank der Nutzung der Anwendungsupgradefunktionen von Service Fabric beibehalten, der Optimierungsschwerpunkt liegt jedoch eher auf Leistung und weniger auf Sicherheit. Weitere Informationen zum Upgraden von Anwendungen sowie zur praktischen Durchführung eines Upgrades finden Sie unter [Service Fabric-Anwendungsupgrade](service-fabric-application-upgrade.md).
+2. **Anwendung beibehalten**: Die Anwendung wird weiter im Cluster ausgeführt, nachdem die Debugsitzung beendet wurde. Beim nächsten Drücken von **F5** wird die Anwendung entfernt, und die neu erstellte Anwendung wird im Cluster bereitgestellt.
 
->[AZURE.NOTE] Diese Eigenschaft ist erst ab Version 1.1 der Service Fabric-Tools für Visual Studio verfügbar. Verwenden Sie in Versionen vor 1.1 die **Preserve Data On Start**-Eigenschaft, um das gleiche Ergebnis zu erzielen.
+3. **Anwendung entfernen** bewirkt, dass die Anwendung entfernt wird, wenn die Debugsitzung endet.
+
+Bei **Automatisches Upgrade** werden Daten dank der Nutzung der Anwendungsupgradefunktionen von Service Fabric beibehalten. Doch der Optimierungsschwerpunkt liegt eher auf Leistung und weniger auf Sicherheit. Weitere Informationen zum Upgrade von Anwendungen sowie zur praktischen Durchführung eines Upgrades finden Sie unter [Service Fabric-Anwendungsupgrade](service-fabric-application-upgrade.md).
+
+![Beispiel der neuen Anwendungsversion mit angefügtem Datum][preservedata]
+
+>[AZURE.NOTE] Diese Eigenschaft ist erst ab Version 1.1 der Service Fabric-Tools für Visual Studio verfügbar. Verwenden Sie in Versionen vor 1.1 die Eigenschaft **Daten beim Start beibehalten**, um das gleiche Ergebnis zu erzielen. Die Option „Anwendung behalten“ wurde in Version 1.2 der Service Fabric-Tools für Visual Studio eingeführt.
 
 ## Fügen Sie der Service Fabric-Anwendung einen Dienst hinzu.
 
@@ -93,7 +99,6 @@ Einfache Clusterverwaltungsvorgänge können in Visual Studio mit dem Cloud-Expl
 [newservice]: ./media/service-fabric-manage-application-in-visual-studio/newservice.png
 [newserviceapplicationmanifest]: ./media/service-fabric-manage-application-in-visual-studio/newserviceapplicationmanifest.png
 [preservedata]: ./media/service-fabric-manage-application-in-visual-studio/preservedata.png
-[preservedate]: ./media/service-fabric-manage-application-in-visual-studio/preservedate.png
 [debugmodeproperty]: ./media/service-fabric-manage-application-in-visual-studio/debugmodeproperty.png
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0921_2016-->

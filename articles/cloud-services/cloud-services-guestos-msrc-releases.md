@@ -20,6 +20,25 @@
 
 Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MSRC), die auf das Azure-Gastbetriebssystem angewendet wurden. Durchsuchen Sie diesen Artikel, um zu ermitteln, ob ein bestimmtes Update für das Gastbetriebssystem gilt, das Sie verwenden. Updates werden für die [Familie][family-explain], in der sie eingeführt wurden, immer in die jeweils neueste Version übertragen.
 
+## Gastbetriebssystem September 
+
+| Bulletin-ID | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
+| ----------- | ------------------- | --------------------------------------------------------------------------- | ---------------- | --------------------- |
+| MS16-104 | [3183038] | Kumulatives Sicherheitsupdate für Internet Explorer | 4\.36, 3.43, 2.55 | 13\. September 2016 |
+| MS16-106 | [3185848] | Sicherheitsupdate für Microsoft-Grafikkomponente | 4\.36, 3.43, 2.55 | 13\. September 2016 |
+| MS16-110 | [3178467] | Sicherheitsupdate für Windows | 4\.36, 3.43, 2.55 | 13\. September 2016 |
+| MS16-111 | [3186973] | Sicherheitsupdate für Windows Kernel | 4\.36, 3.43, 2.55 | 13\. September 2016 |
+| MS16-112 | [3178469] | Sicherheitsupdate für Windows-Sperrbildschirm | 4\.36 | 13\. September 2016 |
+| MS16-114 | [3185879] | Sicherheitsupdate für Windows-SMB-Server | 4\.36, 3.43, 2.55 | 13\. September 2016 |
+| MS16-115 | [3188733] | Sicherheitsupdate für PDF | 4\.35, 3.43 | 13\. September 2016 |
+| MS16-116 | [3188724] | Sicherheitsupdate in OLE Automation für das Skriptmodul VBScript | 4\.36, 3.43, 2.55 | 13\. September 2016 |
+| | [3174644] | Aktualisierte Unterstützung für Diffie-Hellman-Schlüsselaustausch | 4\.36, 3.43, 2.55 | 13\. September 2016 |
+| | [3177723] | Zeitzonenupdate – Ägypten schafft Sommerzeit ab. | 4\.36, 3.43, 2.55 | 13\. September 2016 |
+| | [3179573] | Updaterollup vom August 2016 für Windows 7 SP1 und Windows Server 2008 R2 SP1 | 2\.55 | 13\. September 2016 |
+| | [3179575] | Updaterollup vom August 2016 für Windows Server 2012 | 3\.43 | 13\. September 2016 |
+| | [3179574] | Updaterollup vom August 2016 für Windows RT 8.1, Windows 8.1 und Windows Server 2012 R2 | 4\.36 | 13\. September 2016 |
+
+
 ## Gastbetriebssystem August 
 
 | Bulletin-ID | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
@@ -349,6 +368,19 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | N/V | [2999802][2999802] | In Windows werden durchgezogene Linien statt gepunktete Linien gedruckt | 4\.15, 3.22, 2.34 | 13\. Januar 2015 |
 | N/V | [2896881][2896881] | Lange Anmeldezeit bei der Verwendung des VBScript-Befehls "AddPrinterConnection" zum Zuordnen von Druckern zu Benutzern während des Anmeldeprozesses in Windows | 4\.15, 3.22, 2.34 | 13\. Januar 2015 |
 
+[3183038]: http://support.microsoft.com/kb/3183038
+[3185848]: http://support.microsoft.com/kb/3185848
+[3178467]: http://support.microsoft.com/kb/3178467
+[3186973]: http://support.microsoft.com/kb/3186973
+[3178469]: http://support.microsoft.com/kb/3178469
+[3185879]: http://support.microsoft.com/kb/3185879
+[3188733]: http://support.microsoft.com/kb/3188733
+[3188724]: http://support.microsoft.com/kb/3188724
+[3174644]: http://support.microsoft.com/kb/3174644
+[3177723]: http://support.microsoft.com/kb/3177723
+[3179573]: http://support.microsoft.com/kb/3179573
+[3179575]: http://support.microsoft.com/kb/3179575
+[3179574]: http://support.microsoft.com/kb/3179574
 
 [3177356]: http://support.microsoft.com/kb/3177356
 [3177393]: http://support.microsoft.com/kb/3177393
@@ -602,4 +634,4 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 [family-explain]: cloud-services-guestos-update-matrix.md#guest-os-family-version-and-release-explanation
  
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0921_2016-->

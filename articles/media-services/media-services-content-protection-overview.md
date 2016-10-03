@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Schützen von Inhalten – Übersicht" 
+	pageTitle="Schützen von Inhalten – Übersicht | Microsoft Azure" 
 	description="In diesem Artikel finden Sie eine Übersicht über die Content Protection mit Media Services." 
 	services="media-services" 
 	documentationCenter="" 
@@ -13,10 +13,10 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/22/2016" 
+	ms.date="09/19/2016" 
 	ms.author="juliako"/>
 
-#Schützen von Inhalten – Übersicht
+#Schützen von Inhalten – Übersicht
 
 
 Microsoft Azure Media Services ermöglicht die Sicherung Ihrer Medien ab dem Zeitpunkt, an dem sie Ihren Computer durch Speicherung, Verarbeitung und Übermittlung verlassen. Mit Media Services können Sie Inhalte dynamisch verschlüsselt übermitteln, und zwar mit AES (Advanced Encryption Standard unter Verwendung eines 128-Bit-Verschlüsselungsschlüssels) und Common Encryption (CENC, allgemeine Verschlüsselung) mit PlayReady- oder Widevine-DRM. Media Services bietet auch einen Dienst für die Übermittlung von AES-Schlüsseln und PlayReady-Lizenzen an autorisierte Clients. Sie können sich auch von folgenden AMS-Partnern bei der Übermittlung von Widevine-Lizenzen unterstützen lassen: [Axinom](http://www.axinom.com/press/ibc-axinom-drm-6/), [EZDRM](http://ezdrm.com/), [CastLabs](http://castlabs.com/company/partners/azure/).
@@ -36,13 +36,13 @@ Microsoft Azure Media Services ermöglicht die Sicherung Ihrer Medien ab dem Zei
 
 Je nach Art der Inhalte, die Sie hochladen, speichern und bereitstellen möchten, stellt Media Services verschiedene Verschlüsselungsoptionen zur Verfügung, aus denen Sie auswählen können.
 
-###Keine 
+###Keine
 
 Es wird keine Verschlüsselung verwendet. Dies ist der Standardwert. Bei Verwendung dieser Option sind Ihre Inhalte während der Übertragung oder im Ruhezustand im Speicher nicht geschützt.
 
 Wenn Sie planen, eine MP4-Datei über progressives Herunterladen zu übermitteln, verwenden Sie diese Option zum Hochladen der Inhalte.
 
-###StorageEncrypted 
+###StorageEncrypted
 
 Verwenden Sie **StorageEncrypted**, um Ihre unverschlüsselten Inhalte lokal mithilfe der AES-256-Bit-Verschlüsselung zu verschlüsseln und sie dann in Azure Storage hochzuladen, wo sie verschlüsselt im Ruhezustand gespeichert werden. Medienobjekte, die durch Speicherverschlüsselung geschützt sind, werden automatisch entschlüsselt, vor der Codierung in einem verschlüsselten Dateisystem platziert und optional vor dem Hochladen als neues Ausgabemedienobjekt erneut verschlüsselt. Der primäre Anwendungsfall für die Speicherverschlüsselung ist, wenn Sie Ihre qualitativ hochwertigen Eingabemediendateien mit starker Verschlüsselung beim Speichern im Ruhezustand auf dem Datenträger sichern möchten.
 
@@ -58,7 +58,7 @@ Wenn Sie wissen möchten, wie der grundlegende Algorithmus funktioniert, sehen S
 - [AesCtr](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.FileEncryption/FileEncryptionTransform.cs)
 
 
-###CommonEncryptionProtected 
+###CommonEncryptionProtected
 
 Verwenden Sie **CommonEncryptionProtected**, wenn Sie Inhalte mit Common Encryption verschlüsseln (oder bereits verschlüsselte Inhalte hochladen) möchten. PlayReady und Widewine werden gemäß der Common Encryption (CENC)-Spezifikation verschlüsselt und von AMS unterstützt.
 
@@ -78,7 +78,7 @@ Außerdem müssen Sie die Übermittlungsrichtlinie des Medienobjekts konfigurier
 
 Wenn ein Player einen Stream anfordert, verwendet Media Services den angegebenen Schlüssel, um den Inhalt mit AES oder Common Encryption dynamisch zu verschlüsseln. Um den Stream zu entschlüsseln, fordert der Player den Schlüssel vom Schlüsselübermittlungsdienst an. Um zu entscheiden, ob der Benutzer berechtigt ist, den Schlüssel zu erhalten, wertet der Dienst die Autorisierungsrichtlinien aus, die Sie für den Schlüssel angegeben haben.
 
->[AZURE.NOTE]Um die dynamische Verschlüsselung nutzen zu können, ist mindestens eine On-Demand-Streamingeinheit für den Streamingendpunkt erforderlich, aus dem die verschlüsselten Inhalte bereitgestellt werden sollen. Weitere Informationen finden Sie unter [Skalieren von Media Services](media-services-manage-origins.md#scale_streaming_endpoints).
+>[AZURE.NOTE]Um die dynamische Verschlüsselung nutzen zu können, ist mindestens eine On-Demand-Streamingeinheit für den Streamingendpunkt erforderlich, aus dem die verschlüsselten Inhalte bereitgestellt werden sollen. Weitere Informationen finden Sie unter [Skalieren von Media Services](media-services-portal-manage-streaming-endpoints.md).
 
 ##Dienst für die Übermittlung von Lizenzen und Schlüsseln
 
@@ -86,9 +86,9 @@ Media Services bietet einen Dienst zum Übermitteln von DRM-Lizenzen (PlayReady 
 
 Beachten Sie, dass Sie über das Portal eine AES-Richtlinie (zur Anwendung auf alle AES-verschlüsselten Inhalte) und eine PlayReady-Richtlinie (zur Anwendung auf alle PlayReady-verschlüsselten Inhalte) konfigurieren können. Verwenden Sie das Media Services-SDK für .NET, wenn Sie mehr Kontrolle über die Konfigurationen benötigen.
 
-##DRM-Lizenzen 
+##DRM-Lizenzen
 
-###PlayReady-Lizenz 
+###PlayReady-Lizenz
 
 Media Services bietet einen Dienst für die Übermittlung von PlayReady-Lizenzen. Wenn der Endbenutzer-Player (z. B. Silverlight) versucht, Ihre durch PlayReady geschützten Inhalte wiederzugeben, wird eine Anforderung zum Erwerben einer Lizenz an den Lizenzübermittlungsdienst gesendet. Wenn der Lizenzdienst die Anforderung genehmigt, wird die Lizenz ausgegeben. Diese wird an den Client gesendet und kann zum Entschlüsseln und Wiedergeben des angegebenen Inhalts verwendet werden.
 
@@ -155,4 +155,4 @@ Weitere Informationen finden Sie unter [How to integrate Azure PlayReady License
 
 [content-protection]: ./media/media-services-content-protection-overview/media-services-content-protection.png
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0921_2016-->

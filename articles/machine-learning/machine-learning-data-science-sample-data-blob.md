@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/14/2016" 
-	ms.author="sunliangms;fashah;garye;bradsev" />
+	ms.date="09/19/2016" 
+	ms.author="fashah;garye;bradsev" />
 
 #<a name="heading"></a>Datenstichproben im Azure-Blob-Speicher
 
@@ -33,7 +33,7 @@ Dieser Stichprobentask ist ein Schritt im [Team Data Science-Prozess (TDSP)](htt
 ## Download und Downsampling von Daten
 1. Laden Sie die Daten aus dem Azure-Blobspeicher mithilfe des Blobdiensts aus dem folgenden Python-Beispielcode herunter:
 
-	    from azure.storage.blob import BlobService
+    	from azure.storage.blob import BlobService
     	import tables
     	
 		STORAGEACCOUNTNAME= <storage_account_name>
@@ -53,12 +53,12 @@ Dieser Stichprobentask ist ein Schritt im [Team Data Science-Prozess (TDSP)](htt
 
 		import pandas as pd
 
-	    #directly ready from file on disk
+		#directly ready from file on disk
     	dataframe_blobdata = pd.read_csv(LOCALFILE)
 
 3. Erstellen Sie mit der `random.choice`-Funktion von `numpy` wie folgt Stichproben:
 
-	    # A 1 percent sample
+    	# A 1 percent sample
     	sample_ratio = 0.01 
     	sample_size = np.round(dataframe_blobdata.shape[0] * sample_ratio)
     	sample_rows = np.random.choice(dataframe_blobdata.index.values, sample_size)
@@ -102,4 +102,4 @@ Mit dem folgenden Beispielcode können Sie ein Downsampling der Daten durchführ
 
  
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

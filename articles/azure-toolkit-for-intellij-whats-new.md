@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="multiple"
 	ms.devlang="Java"
 	ms.topic="article"
-	ms.date="07/07/2016" 
+	ms.date="09/20/2016" 
 	ms.author="robmcm;asirveda"/>
 
 # Neuerungen im Azure-Toolkit für IntelliJ
@@ -43,7 +43,7 @@ Die Version des Azure-Toolkits für IntelliJ vom April 2016 umfasst folgende Erw
 * **Verschiedene Verbesserungen bei der Benutzerfreundlichkeit, Reaktionsfähigkeit und Leistung in Bezug auf die Unterstützung von Azure-Web-Apps**. Eine Reihe von Leistungsoptimierungen bei der Kommunikation zwischen Toolkit und Azure führen zu einer besseren Reaktionsfähigkeit der Benutzeroberfläche.
 * **Möglichkeit zum Löschen eines vorhandenen Webanwendungscontainers in Azure direkt aus IntelliJ heraus**. Mit dem Azure-Toolkit für IntelliJ können Sie jetzt einen vorhandenen Azure-Webcontainer löschen, ohne IntelliJ zu verlassen.
 
-## Siehe auch ##
+## Weitere Informationen ##
 
 Weitere Informationen zu den Azure-Toolkits für Java-IDEs finden Sie unter den folgenden Links:
 
@@ -56,7 +56,7 @@ Weitere Informationen zu den Azure-Toolkits für Java-IDEs finden Sie unter den 
   - [Erstellen einer „Hello World“-Web-App für Azure in IntelliJ]
   - *Neuerungen im Azure-Toolkit für IntelliJ (dieser Artikel)*
 
-Weitere Informationen zum Verwenden von Azure mit Java finden Sie im [Azure Java Developer Center] \(in englischer Sprache).
+Weitere Informationen zum Verwenden von Azure mit Java finden Sie im [Azure Java Developer Center].
 
 <!-- URL List -->
 
@@ -73,4 +73,4 @@ Weitere Informationen zum Verwenden von Azure mit Java finden Sie im [Azure Java
 
 [Verwenden des HDInsight-Tools-Plug-Ins für IntelliJ IDEA zum Erstellen von Spark-Anwendungen für HDInsight Spark-Cluster unter Linux]: ./hdinsight/hdinsight-apache-spark-intellij-tool-plugin.md
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0921_2016-->

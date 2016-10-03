@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="05/16/2016"
+   ms.date="09/16/2016"
    ms.author="mbaldwin"/>
 
 # Azure Active Directory-Codebeispiele
@@ -141,7 +141,7 @@ PHP | [PHP-Beispielanwendung für die Graph-API von Azure AD](http://code.msdn.m
 | C#/.NET | [Sichern einer Windows Store-Anwendung und des REST-Webdiensts mithilfe von Azure AD](https://github.com/Azure-Samples/active-directory-dotnet-windows-store) | Erstellt eine einfache Web-API-Ressource und eine Windows Store-Clientanwendung mithilfe von Azure AD und [Azure AD Authentication Library (ADAL)](active-directory-authentication-libraries.md).
 | C#/.NET| [Abfragen von Azure AD mithilfe der Graph-API](https://github.com/Azure-Samples/active-directory-dotnet-graphapi-web) | Konfiguriert eine Microsoft .NET-Anwendung zur Verwendung der Graph-API von Azure AD für den Zugriff auf Daten aus einem Azure AD-Mandantenverzeichnis.
 
-## Weitere Informationen
+## Siehe auch
 
 ##### Weitere Ressourcen
 
@@ -151,4 +151,4 @@ PHP | [PHP-Beispielanwendung für die Graph-API von Azure AD](http://code.msdn.m
 
 [Bibliothek für das Azure AD Graph-API-Hilfsprogramm](https://www.nuget.org/packages/Microsoft.Azure.ActiveDirectory.GraphClient)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0921_2016-->

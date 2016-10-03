@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="05/31/2016"
+   ms.date="09/16/2016"
    ms.author="mbaldwin" />
 
 # Azure Active Directory-Authentifizierungsbibliotheken
@@ -23,13 +23,13 @@ ADAL steht auf einer Vielzahl von Plattformen zur Verfügung.
 
 |Plattform|Paketname|Client/Server|Download|Quellcode|Dokumentation und Beispiele|
 |---|---|---|---|---|---|
-|.NET Client, Windows Store, Windows Phone (8.1)|Active Directory-Authentifizierungsbibliothek (ADAL) für .NET|Client|[Microsoft.IdentityModel.Clients.ActiveDirectory (NuGet)](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory)|[ADAL für .NET (Github)](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet)|[Dokumentation](https://msdn.microsoft.com/library/azure/mt417579.aspx)|
-|JavaScript|Active Directory-Authentifizierungsbibliothek (ADAL) für JavaScript|Client|[ADAL für JavaScript (Github)](https://github.com/AzureAD/azure-activedirectory-library-for-js)|[ADAL für JavaScript (Github)](https://github.com/AzureAD/azure-activedirectory-library-for-js)|Beispiel: [SinglePageApp-DotNet (Github)](https://github.com/AzureADSamples/SinglePageApp-DotNet)|
-|OS X, iOS|Active Directory-Authentifizierungsbibliothek (ADAL) für Objective-C|Client|[ADAL für Objective-C (CocoaPods)](https://cocoapods.org/?q=adal%20io)|[ADAL für Objective-C (Github)](https://github.com/AzureAD/azure-activedirectory-library-for-objc)|Beispiel: [NativeClient-iOS (Github)](https://github.com/AzureADSamples/NativeClient-iOS)|
-|Android|Active Directory-Authentifizierungsbibliothek (ADAL) für Android|Client|[ADAL für Android (The Central Repository)](http://search.maven.org/remotecontent?filepath=com/microsoft/aad/adal/)|[ADAL für Android (Github)](https://github.com/AzureAD/azure-activedirectory-library-for-android)|Beispiel: [NativeClient-Android (Github)](https://github.com/AzureADSamples/NativeClient-Android)|
-|Node.js|Active Directory-Authentifizierungsbibliothek (ADAL) für Node.js|Client|[ADAL für Node.js (npm)](https://www.npmjs.com/package/adal-node)|[ADAL für Node.js (Github)](https://github.com/AzureAD/azure-activedirectory-library-for-nodejs)|Beispiel: [WebAPI-Nodejs (Github)](https://github.com/AzureADSamples/WebAPI-Nodejs)|
-|Node.js|Microsoft Azure Active Directory Passport-Middleware zur Authentifizierung für Node|Client|[Azure Active Directory Passport für Node.js (npm)](https://www.npmjs.com/package/passport-azure-ad)|[Azure Active Directory für Node.js (Github)](https://github.com/AzureAD/passport-azure-ad)||
-|Java|Active Directory-Authentifizierungsbibliothek (ADAL) für Java|Client|[ADAL für Java (Github)](https://github.com/AzureAD/azure-activedirectory-library-for-java)|[ADAL für Java (Github)](https://github.com/AzureAD/azure-activedirectory-library-for-java)||
+|.NET Client, Windows Store, Windows Phone (8.1)|Active Directory-Authentifizierungsbibliothek (ADAL) für .NET|Client-|[Microsoft.IdentityModel.Clients.ActiveDirectory (NuGet)](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory)|[ADAL für .NET (Github)](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet)|[Dokumentation](https://msdn.microsoft.com/library/azure/mt417579.aspx)|
+|JavaScript|Active Directory-Authentifizierungsbibliothek (ADAL) für JavaScript|Client-|[ADAL für JavaScript (Github)](https://github.com/AzureAD/azure-activedirectory-library-for-js)|[ADAL für JavaScript (Github)](https://github.com/AzureAD/azure-activedirectory-library-for-js)|Beispiel: [SinglePageApp-DotNet (Github)](https://github.com/AzureADSamples/SinglePageApp-DotNet)|
+|OS X, iOS|Active Directory-Authentifizierungsbibliothek (ADAL) für Objective-C|Client-|[ADAL für Objective-C (CocoaPods)](https://cocoapods.org/?q=adal%20io)|[ADAL für Objective-C (Github)](https://github.com/AzureAD/azure-activedirectory-library-for-objc)|Beispiel: [NativeClient-iOS (Github)](https://github.com/AzureADSamples/NativeClient-iOS)|
+|Android|Active Directory-Authentifizierungsbibliothek (ADAL) für Android|Client-|[ADAL für Android (The Central Repository)](http://search.maven.org/remotecontent?filepath=com/microsoft/aad/adal/)|[ADAL für Android (Github)](https://github.com/AzureAD/azure-activedirectory-library-for-android)|Beispiel: [NativeClient-Android (Github)](https://github.com/AzureADSamples/NativeClient-Android)|
+|Node.js|Active Directory-Authentifizierungsbibliothek (ADAL) für Node.js|Client-|[ADAL für Node.js (npm)](https://www.npmjs.com/package/adal-node)|[ADAL für Node.js (Github)](https://github.com/AzureAD/azure-activedirectory-library-for-nodejs)|Beispiel: [WebAPI-Nodejs (Github)](https://github.com/AzureADSamples/WebAPI-Nodejs)|
+|Node.js|Microsoft Azure Active Directory Passport-Middleware zur Authentifizierung für Node|Client-|[Azure Active Directory Passport für Node.js (npm)](https://www.npmjs.com/package/passport-azure-ad)|[Azure Active Directory für Node.js (Github)](https://github.com/AzureAD/passport-azure-ad)||
+|Java|Active Directory-Authentifizierungsbibliothek (ADAL) für Java|Client-|[ADAL für Java (Github)](https://github.com/AzureAD/azure-activedirectory-library-for-java)|[ADAL für Java (Github)](https://github.com/AzureAD/azure-activedirectory-library-for-java)||
 |.NET|Identitätsmodellerweiterungen für Microsoft .NET Framework 4.5|Server|[Microsoft.IdentityModel.Protocol.Extensions (NuGet)](https://www.nuget.org/packages/Microsoft.IdentityModel.Protocol.Extensions)|[Azure AD-Identitätsmodellerweiterungen für .NET (Github)](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet)||
 |.NET|JSON-Webtokenhandler für Microsoft .Net Framework 4.5|Server|[System.IdentityModel.Tokens.Jwt (NuGet)](https://www.nuget.org/packages/System.IdentityModel.Tokens.Jwt)|[Azure AD-Identitätsmodellerweiterungen für .NET (Github)](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet)||
 |.NET|OWIN-Middleware, die einer Anwendung das Verwenden von Microsoft-Technologie für die Authentifizierung ermöglicht.|Server|[Microsoft.Owin.Security.ActiveDirectory (NuGet)](https://www.nuget.org/packages/Microsoft.Owin.Security.ActiveDirectory/)|[OWIN (CodePlex)](http://katanaproject.codeplex.com)||
@@ -55,7 +55,7 @@ In diesem Szenario verwendet ein Entwickler eine Anwendung, die auf einem Server
 In diesem Szenario verwendet ein Entwickler eine Anwendung, die auf einem Server ausgeführt wird und auf eine durch Azure AD geschützte Remoteressource (z. B. eine Web-API) zugreifen muss. Die Anforderung muss außerdem im Auftrag eines Benutzers in Azure AD vorgenommen werden. Der Entwickler verfügt über ein Azure-Abonnement, weiß, wie die Downstream-Web-API aufgerufen wird, und kennt den Azure AD-Mandanten, den der Dienst verwendet. Sobald der Benutzer für die Webanwendung authentifiziert ist, kann die Anwendung einen Autorisierungscode für den Benutzer aus Azure AD abrufen. Die Webanwendung kann dann ADAL verwenden, um im Auftrag eines Benutzers ein Zugriffstoken und ein Aktualisierungstoken abzurufen, wobei der Autorisierungscode und die Clientanmeldeinformationen verwendet werden, die der Anwendung aus Azure AD zugeordnet sind. Sobald die Webanwendung im Besitz des Zugriffstokens ist, kann sie bis zum Ablauf des Tokens die Web-API aufrufen. Nach Ablauf des Tokens kann die Webanwendung über ADAL mit dem zuvor empfangenen Aktualisierungstoken ein neues Zugriffstoken abrufen.
 
 
-## Siehe auch
+## Weitere Informationen
 
 [Entwicklerhandbuch zu Azure Active Directory](active-directory-developers-guide.md)
 
@@ -63,4 +63,4 @@ In diesem Szenario verwendet ein Entwickler eine Anwendung, die auf einem Server
 
 [Azure Active Directory-Codebeispiele](active-directory-code-samples.md)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0921_2016-->

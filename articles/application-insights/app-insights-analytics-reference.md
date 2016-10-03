@@ -19,7 +19,7 @@
 
 [Analytics](app-insights-analytics.md) ist die leistungsfähige Suchfunktion von [Application Insights](app-insights-overview.md). Auf diesen Seiten wird die Analytics-Abfragesprache beschrieben.
 
-> [AZURE.NOTE] [Testen Sie Analytics mit unseren simulierten Daten](https://analytics.applicationinsights.io/demo) wenn Ihre App noch keine Daten an Application Insights sendet.
+> [AZURE.NOTE] [Test drive Analytics on our simulated data]Führen Sie https://analytics.applicationinsights.io/demo aus, wenn Ihre App noch keine Daten an Application Insights sendet.
 
 ## Index
 
@@ -27,13 +27,13 @@
 **„let“ und „set“** [let](#let-clause) | [set](#set-clause)
 
 
-**Abfragen und Operatoren** [count](#count-operator) | [evaluate](#evaluate-operator) | [extend](#extend-operator) | [join](#join-operator) | [limit](#limit-operator) | [mvexpand](#mvexpand-operator) | [parse](#parse-operator) | [project](#project-operator) | [project-away](#project-away-operator) | [range](#range-operator) | [reduce](#reduce-operator) | [render directive](#render-directive) | [restrict clause](#restrict-clause) | [sort](#sort-operator) | [summarize](#summarize-operator) | [take](#take-operator) | [top](#top-operator) | [top-nested](#top-nested-operator) | [union](#union-operator) | [where](#where-operator)
+**Abfragen und Operatoren** [count](#count-operator) | [evaluate](#evaluate-operator) | [extend](#extend-operator) | [join](#join-operator) | [limit](#limit-operator) | [mvexpand](#mvexpand-operator) | [parse](#parse-operator) | [project](#project-operator) | [project-away](#project-away-operator) | [range](#range-operator) | [reduce](#reduce-operator) | [render directive](#render-directive) | [restrict clause](#restrict-clause) | [sort](#sort-operator) | [summarize](#summarize-operator) | [take](#take-operator) | [top](#top-operator) | [top-nested](#top-nested-operator) | [union](#union-operator) | [where](#where-operator) | [where-in](#where-in-operator)
 
 **Aggregationen** [any](#any) | [argmax](#argmax) | [argmin](#argmin) | [avg](#avg) | [buildschema](#buildschema) | [count](#count) | [countif](#countif) | [dcount](#dcount) | [dcountif](#dcountif) | [makelist](#makelist) | [makeset](#makeset) | [max](#max) | [min](#min) | [percentile](#percentile) | [percentiles](#percentiles) | [percentilesw](#percentilesw) | [percentilew](#percentilew) | [stdev](#stdev) | [sum](#sum) | [variance](#variance)
 
 **Skalare** [Boolesche Literale](#boolean-literals) | [Boolesche Operatoren](#boolean-operators) | [Typumwandlungen](#casts) | [Skalare Vergleiche](#scalar-comparisons) | [gettype](#gettype) | [hash](#hash) | [iff](#iff) | [isnotnull](#isnotnull) | [isnull](#isnull) | [notnull](#notnull) | [toscalar](#toscalar)
 
-**Zahlen** [Arithmetische Operatoren](#arithmetic-operators) | [Numerische Literale](#numeric-literals) | [abs](#abs) | [bin](#bin) | [exp](#exp) | [floor](#floor) | [log](#log) | [rand](#rand) | [sqrt](#sqrt) | [todouble](#todouble) | [toint](#toint) | [tolong](#tolong)
+**Zahlen** [Arithmetische Operatoren](#arithmetic-operators) | [Numerische Literale](#numeric-literals) | [abs](#abs) | [bin](#bin) | [exp](#exp) | [floor](#floor) | [gamma](#gamma) | [log](#log) | [rand](#rand) | [sqrt](#sqrt) | [todouble](#todouble) | [toint](#toint) | [tolong](#tolong)
 
 **Datum und Uhrzeit** [Datums- und Uhrzeitausdrücke](#date-and-time-expressions) | [Datums- und Uhrzeitliterale](#date-and-time-literals) | [ago](#ago) | [datepart](#datepart) | [dayofmonth](#dayofmonth) | [dayofweek](#dayofweek) | [dayofyear](#dayofyear) | [endofday](#endofday) | [endofmonth](#endofmonth) | [endofweek](#endofweek) | [endofyear](#endofyear) | [getmonth](#getmonth) | [getyear](#getyear) | [now](#now) | [startofday](#startofday) | [startofmonth](#startofmonth) | [startofweek](#startofweek) | [startofyear](#startofyear) | [todatetime](#todatetime) | [totimespan](#totimespan) | [weekofyear](#weekofyear)
 
@@ -910,7 +910,7 @@ Tabelle, die die Anzahl, durchschnittliche Anforderungsdauer und Menge von Städ
 
     T | summarize count() by price_range=bin(price, 10.0)
 
-Eine Tabelle, die zeigt, wie viele Elemente in jedem Intervall [0, 10,0], [10,0, 20,0] usw. Preise aufweisen. In diesem Beispiel ist eine Spalte für die Anzahl und eine für den Preisbereich vorhanden. Alle anderen Eingabespalten werden ignoriert.
+Eine Tabelle, die zeigt, wie viele Elemente in jedem Intervall [0, 10,0][10,0, 20,0] usw. Preise aufweisen. In diesem Beispiel ist eine Spalte für die Anzahl und eine für den Preisbereich vorhanden. Alle anderen Eingabespalten werden ignoriert.
 
 
 **Syntax**
@@ -1053,7 +1053,7 @@ Mit dieser effizienteren Version wird dasselbe Ergebnis erzielt. Jede Tabelle wi
 
 ### where-Operator
 
-     T | where fruit=="apple"
+     requests | where resultCode==200
 
 Filtert eine Tabelle auf die Teilmenge der Zeilen, die ein Prädikat erfüllen.
 
@@ -1086,7 +1086,7 @@ So erzielen Sie die optimale Leistung:
 **Beispiel**
 
 ```AIQL
-Traces
+traces
 | where Timestamp > ago(1h)
     and Source == "Kuskus"
     and ActivityId == SubActivityIt 
@@ -1096,6 +1096,26 @@ Datensätze, die nicht älter als 1 Stunde sind, aus der Quelle namens „Kusku
 
 Beachten Sie, dass wir den Vergleich zwischen zwei Spalten an das Ende stellen, da der Index nicht genutzt werden kann und ein Scan erzwungen wird.
 
+
+### where-in-Operator
+
+    requests | where resultCode !in (200, 201)
+
+    requests | where resultCode in (403, 404)
+
+**Syntax**
+
+    T | where col in (expr1, expr2, ...)
+    T | where col !in (expr1, expr2, ...)
+
+**Argumente**
+
+* `col`: Eine Spalte in der Tabelle
+* `expr1`...: Eine Liste skalarer Ausdrücke
+
+Verwenden Sie `in`, um nur Zeilen einzubeziehen, in denen `col` einem der `expr1...`-Ausdrücke entspricht.
+
+Verwenden Sie `!in`, um nur Zeilen einzubeziehen, in denen `col` keinem der `expr1...`-Ausdrücke entspricht.
 
 
 ## Aggregationen
@@ -1670,7 +1690,7 @@ Das ausgewertete Argument. Wenn das Argument eine Tabelle ist, wird die erste Sp
 
 ## Zahlen
 
-[abs](#abs) | [bin](#bin) | [exp](#exp) | [floor](#floor) |[log](#log) | [rand](#rand) | [range](#range) | [sqrt](#sqrt) | [todouble](#todouble) | [toint](#toint) | [tolong](#tolong)
+[abs](#abs) | [bin](#bin) | [exp](#exp) | [floor](#floor) | [gamma](#gamma) |[log](#log) | [rand](#rand) | [range](#range) | [sqrt](#sqrt) | [todouble](#todouble) | [toint](#toint) | [tolong](#tolong)
 
 ### Numerische Literale
 
@@ -1684,17 +1704,7 @@ Das ausgewertete Argument. Wenn das Argument eine Tabelle ist, wird die erste Sp
 || |
 |---|-------------|
 | + | Hinzufügen |
-| - | Subtrahieren |
-| * | Multiplizieren |
-| / | Dividieren |
-| % | Modulo |
-||
-| `<` | Kleiner 
-| `<=` | Kleiner gleich 
-| `>` | Größer 
-|`>=` | Größer gleich 
-| `<>` | Ungleich 
-| `!=` | Ungleich
+| - | Subtrahieren | | * | Multiplizieren | | / | Dividieren | | % | Modulo | || | `<` | Kleiner | `<=` | Kleiner gleich | `>` | Größer |`>=` | Größer gleich | `<>` | Ungleich | `!=` | Ungleich
 
 
 ### abs
@@ -1757,10 +1767,25 @@ Der folgende Ausdruck berechnet ein Histogramm der Dauer mit einer Bucketgröße
     exp10(v) // 10 raised to the power v
 
 
-
 ### floor
 
 Ein Alias für [`bin()`](#bin).
+
+### Gamma
+
+Die [Gammafunktion](https://en.wikipedia.org/wiki/Gamma_function)
+
+**Syntax**
+
+    gamma(x)
+
+**Argumente**
+
+* *x:* Eine reelle Zahl
+
+Bei positiven ganzen Zahlen gilt: `gamma(x) == (x-1)!`, z.B. `gamma(5) == 4 * 3 * 2 * 1`.
+
+Siehe auch [Loggamma](#loggamma).
 
 
 ### log
@@ -1771,6 +1796,20 @@ Ein Alias für [`bin()`](#bin).
 
 
 `v` sollte eine reelle Zahl > 0 sein. Andernfalls wird Null zurückgegeben.
+
+### Loggamma
+
+
+Der natürliche Logarithmus des absoluten Werts der [Gammafunktion](#gamma)
+
+**Syntax**
+
+    loggamma(x)
+
+**Argumente**
+
+* *x:* Eine reelle Zahl
+
 
 ### rand
 
@@ -2397,7 +2436,7 @@ Konvertiert eine Zeichenfolge in Großbuchstaben.
 
 ## Arrays, Objekte und Dynamik
 
-[Literale](#dynamic-literals) | [Typumwandlung](#casting-dynamic-objects) | [Operatoren](#operators) | [let-Klauseln](#dynamic-objects-in-let-clauses) <br/> [arraylength](#arraylength) | [extractjson](#extractjson) | [parsejson](#parsejson) | [range](#range) | [treepath](#treepath) | [todynamic](#todynamic)
+[Literale](#dynamic-literals) | [Typumwandlung](#casting-dynamic-objects) | [Operatoren](#operators) | [let-Klauseln](#dynamic-objects-in-let-clauses) <br/> [arraylength](#arraylength) | [extractjson](#extractjson) | [parsejson](#parsejson) | [range](#range) | [treepath](#treepath) | [todynamic](#todynamic) | [zip](#zip)
 
 
 Hier ist das Ergebnis einer Abfrage für eine Application Insights-Ausnahme. Der Wert in `details` ist ein Array.
@@ -2699,6 +2738,24 @@ Ein Array von Path-Ausdrücken.
 
 Beachten Sie, dass „[0]“ auf das Vorhandensein eines Arrays hinweist, aber nicht den von einem bestimmten Pfad verwendeten Index angibt.
 
+### zip
+
+    zip(list1, list2, ...)
+
+Kombiniert eine Gruppe von Listen in einer Tupelliste.
+
+* `list1...`: Eine Liste von Werten
+
+**Beispiele**
+
+    zip(parsejson('[1,3,5]'), parsejson('[2,4,6]'))
+    => [ [1,2], [3,4], [5,6] ]
+
+    
+    zip(parsejson('[1,3,5]'), parsejson('[2,4]'))
+    => [ [1,2], [3,4], [5,null] ]
+
+
 ### Namen
 
 Namen können bis zu 1024 Zeichen lang sein. Die Groß-/Kleinschreibung wird beachtet, und sie können Buchstaben, Ziffern und Unterstriche (`_`) enthalten.
@@ -2724,4 +2781,4 @@ Geben Sie einen Namen mit ['... '] oder [" ... "] an, um andere Zeichen einzubez
 
 [AZURE.INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -15,7 +15,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="vm-windows"
    ms.workload="na"
-   ms.date="08/29/2016"
+   ms.date="09/15/2016"
    ms.author="zachal"/>
 
 # Windows VMSS und Konfigurieren des gewünschten Zustands mit Azure Resource Manager-Vorlagen
@@ -90,7 +90,7 @@ Ein VMSS-Knoten weist den Abschnitt „properties“ mit dem Attribut „Virtual
 
 ## Ausführliche Einstellungsinformationen
 
-Dies ist das Schema für den Teil mit Einstellungen der Azure DSC-Erweiterung in einer Azure Resource Manager-Vorlage.
+Dies ist das Schema für den Bereich mit den Einstellungen der Azure DSC-Erweiterung in einer Azure Resource Manager-Vorlage.
 
 ```json
 
@@ -169,7 +169,7 @@ Wenn die Konfiguration Anmeldeinformationen erfordert, können diese in „Prote
 
 Das folgende Beispiel wird aus dem Abschnitt „Erste Schritte“ der Seite [DSC-Erweiterung: Handler-Übersicht](virtual-machines-windows-extensions-dsc-overview.md) abgeleitet. In diesem Beispiel werden Resourcen Manager-Vorlagen anstelle von Cmdlets zum Bereitstellen der Erweiterung verwendet. Speichern Sie die Konfiguration „IisInstall.ps1“, fügen Sie die einer ZIP-Datei hinzu, und laden Sie die Datei unter einer zugänglichen URL hoch. In diesem Beispiel wird Azure-Blobspeicher verwendet, ZIP-Dateien können jedoch von beliebigen Speicherorten heruntergeladen werden.
 
-In der Resource Manager-Vorlage weisen die folgenden Informationen den virtuellen Computer an, die richtige Datei herunterzuladen und die entsprechende PowerShell-Funktion auszuführen:
+In der Azure Resource Manager-Vorlage weist der folgende Code den virtuellen Computer an, die richtige Datei herunterzuladen und die entsprechende PowerShell-Funktion auszuführen:
 
 ```json
 "settings": {
@@ -224,8 +224,8 @@ So wird das frühere Format an das aktuelle Format angepasst:
 | --- | --- |
 | settings.wmfVersion | settings.WMFVersion |
 | settings.configuration.url | settings.ModulesUrl |
-| settings.configuration.script | 1\. Teil von „settings.ConfigurationFunction“ (vor „\\\“) |
-| settings.configuration.function | 2\. Teil von „settings.ConfigurationFunction“ (nach „\\\“) |
+| settings.configuration.script | Erster Teil von „settings.ConfigurationFunction“ (vor „\\\“) |
+| settings.configuration.function | Zweiter Teil von „settings.ConfigurationFunction“ (nach „\\\“) |
 | settings.configurationArguments | settings.Properties |
 | settings.configurationData.url | protectedSettings.DataBlobUri (ohne SAS-Token) |
 | settings.privacy.dataEnabled | settings.Privacy.DataEnabled |
@@ -257,7 +257,7 @@ Lösung: Überprüfen Sie alle Ihre angegebenen URLs. Stellen Sie sicher, dass a
 
 Problem: Die ConfigurationArguments-Eigenschaft kann nicht in ein Hashtabellenobjekt aufgelöst werden.
 
-Lösung: Stellen Sie sicher, dass Ihre ConfigurationArguments-Eigenschaft eine Hashtabelle ist. Nutzen Sie dasselbe Format wie im Beispiel oben. Achten Sie auf Anführungszeichen, Kommas und Klammern.
+Lösung: Stellen Sie sicher, dass Ihre ConfigurationArguments-Eigenschaft eine Hashtabelle ist. Nutzen Sie das im vorherigen Beispiel bereitgestellte Format. Achten Sie auf Anführungszeichen, Kommas und Klammern.
 
 ### „ConfigurationArguments“ doppelt vorhanden
 „Doppelte Argumente „{0}“ sowohl in öffentlichen und geschützten configurationArguments-Elementen gefunden“
@@ -285,4 +285,14 @@ Lösungen:
 - Geben Sie die fehlende Eigenschaft an.
 - Entfernen Sie die Eigenschaft, die die fehlende Eigenschaft benötigt.
 
-<!---HONumber=AcomDC_0914_2016-->
+
+## Nächste Schritte
+[Weitere Informationen zu DSC und VMSS](virtual-machines-scale-sets-dsc.md)
+
+Weitere Informationen finden Sie unter [Sichere Verwaltung von Anmeldeinformationen durch DSC](virtual-machines-windows-extensions-dsc-credentials.md).
+
+Weitere Informationen zum Azure DSC-Erweiterungs-Handler finden Sie unter [Einführung in den Handler der Azure-Erweiterung zum Konfigurieren des gewünschten Zustands](virtual-machines-windows-extensions-dsc-overview.md).
+
+Weitere Informationen zu PowerShell DSC finden Sie im [PowerShell-Dokumentationscenter](https://msdn.microsoft.com/powershell/dsc/overview).
+
+<!---HONumber=AcomDC_0921_2016-->

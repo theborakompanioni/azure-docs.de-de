@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/20/2016" 
+	ms.date="09/21/2016" 
 	ms.author="stefsch"/>
 
 # Gewusst wie: Erstellen einer ILB-ASE mit Azure Resource Manager-Vorlagen
@@ -74,17 +74,17 @@ Der folgende PowerShell-Codeausschnitt veranschaulicht ein Beispiel für das Gen
     
 Nachdem das SSL-Zertifikat erfolgreich generiert und in eine Base64-codierte Zeichenfolge konvertiert wurde, kann die Azure Resource Manager-Beispielvorlage auf GitHub für das [Konfigurieren des SSL-Standardzertifikats][configuringDefaultSSLCertificate] verwendet werden.
 
-Die Parameter in der Datei *azuredeploy.parameters.json* sind unten aufgeführt:
+Die Parameter in der Datei *azuredeploy.parameters.json* sind nachfolgend aufgeführt:
 
 - *appServiceEnvironmentName*: Der Name der ILB-ASE, die konfiguriert wird.
 - *existingAseLocation*: Die Textzeichenfolge mit der Azure-Region, in der die ILB-ASE bereitgestellt wurde. Beispiel: „USA, Süden-Mitte“.
 - *pfxBlobString*: Die Base64-codierte Zeichenfolgendarstellung der PFX-Datei. Bei Verwendung des weiter oben angegebenen Codeausschnitts kopieren Sie die in „exportedcert.pfx.b64“ enthaltene Zeichenfolge und fügen sie als Wert des Attributs *pfxBlobString* ein.
 - *password*: Das Kennwort, das zum Schützen der PFX-Datei verwendet wird.
 - *certificateThumbprint*: Der Fingerabdruck des Zertifikats. Wenn Sie diesen Wert aus PowerShell abrufen (z.B. *$certificate.Thumbprint* aus dem Codeausschnitt weiter oben), können Sie den Wert unverändert nutzen. Falls Sie den Wert aus dem Windows-Zertifikatdialogfeld kopieren, müssen Sie die überflüssigen Leerzeichen entfernen. *certificateThumbprint* sollte etwa wie folgt aussehen: AF3143EB61D43F6727842115BB7F17BBCECAECAE.
-- *certificateName*: Ein benutzerfreundlicher Zeichenfolgenbezeichner zum Identifizieren des Zertifikats, den Sie selbst wählen können. Der Name wird als Teil des eindeutigen Azure Resource Manager-Bezeichners für die Entität *Microsoft.Web/certificates* verwendet, die das SSL-Zertifikat darstellt.
+- *certificateName*: Ein benutzerfreundlicher Zeichenfolgenbezeichner zum Identifizieren des Zertifikats, den Sie selbst wählen können. Der Name wird als Teil des eindeutigen Azure Resource Manager-Bezeichners für die Entität *Microsoft.Web/certificates* verwendet, die das SSL-Zertifikat darstellt. Der Name **muss** auf folgendes Suffix enden: \_yourASENameHere\_InternalLoadBalancingASE. Dieses Suffix ist ein Indikator für das Portal, dass das Zertifikat zum Sichern einer für den internen Lastenausgleich geeigneten App Service-Umgebung genutzt wird.
 
 
-Ein gekürztes Beispiel für *azuredeploy.parameters.json* ist unten angegeben:
+Ein gekürztes Beispiel für *azuredeploy.parameters.json* sehen Sie hier:
 
 
     {
@@ -107,7 +107,7 @@ Ein gekürztes Beispiel für *azuredeploy.parameters.json* ist unten angegeben:
                    "value": "AF3143EB61D43F6727842115BB7F17BBCECAECAE"
               },
               "certificateName": {
-                   "value": "DefaultCertificateFor_yourASENameHere"
+                   "value": "DefaultCertificateFor_yourASENameHere_InternalLoadBalancingASE"
               }
          }
     }
@@ -142,4 +142,4 @@ Alle Artikel und Anleitungen zu App Service-Umgebungen stehen in der [Dokumentat
 [configuringDefaultSSLCertificate]: https://azure.microsoft.com/documentation/templates/201-web-app-ase-ilb-configure-default-ssl/
  
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -5,7 +5,7 @@
 	services="stream-analytics" 
 	documentationCenter="" 
 	authors="jeffstokes72" 
-	manager="paulettm" 
+	manager="jhubbard" 
 	editor="cgronlun"/>
 
 <tags 
@@ -14,7 +14,7 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="07/27/2016" 
+	ms.date="09/19/2016" 
 	ms.author="jeffstok"/>
 
 # Grundlegendes zur Stream Analytics-Auftragsüberwachung und zum Überwachen von Abfragen
@@ -41,9 +41,8 @@ Beim erstmaligen Erstellen eines Stream Analytics-Auftrags in einer Region müss
 | Metrik | Definition |
 |--------|-------------|
 | Speichereinheitnutzung in % | Die Auslastung der Streamingeinheiten, die einem Auftrag über seine Registerkarte „Skalieren“ zugewiesen sind. Sollte dieser Indikator 80 % erreichen oder darüber steigen, ist die Wahrscheinlichkeit hoch, dass die Ereignisverarbeitung verzögert wird oder keine Fortschritte mehr macht. |
-| Eingabeereignisse | Vom Stream Analytics-Auftrag erhaltene Datenmenge im Hinblick auf die Ereignisanzahl. Kann verwendet werden, um sicherzustellen, dass Ereignisse an die Eingabequelle gesendet werden. |
-| Eingabeereignisbytes | Vom Stream Analytics-Auftrag erhaltene Datenmenge im Hinblick auf den Durchsatz in Byte. |
-| Ausgabeereignisse | Vom Stream Analytics-Auftrag an das Ausgabeziel gesendete Datenmenge im Hinblick auf die Ereignisanzahl. |
+| Eingabeereignisse | Vom Stream Analytics-Auftrag erhaltene Datenmenge, ausgedrückt in der Anzahl von Ereignissen. Kann verwendet werden, um sicherzustellen, dass Ereignisse an die Eingabequelle gesendet werden. |
+| Ausgabeereignisse | Vom Stream Analytics-Auftrag an das Ausgabeziel gesendete Datenmenge, ausgedrückt in der Anzahl von Ereignissen. |
 | Ereignisse für falsche Reihenfolge | Anzahl der Ereignisse, die in falscher Reihenfolge empfangen und anhand der Richtlinie für die Ereignissortierung entweder verworfen oder mit einem angepassten Zeitstempel versehen wurden. Dies kann von der Konfiguration der Einstellung „Toleranzfenster für Fehlordnung“ beeinflusst werden. |
 | Konvertierungsfehler | Anzahl der Datenkonvertierungsfehler im Zusammenhang mit einem Stream Analytics-Auftrag. |
 | Laufzeitfehler | Die Anzahl von Fehlern, die beim Ausführen eines Stream Analytics-Auftrags festgestellt werden. |
@@ -78,7 +77,7 @@ Der Status von Stream Analytics-Aufträgen kann im klassischen Azure-Portal in d
 | Status | Definition |
 |--------|------------|
 | Erstellt | Ein Auftrag wurde erstellt, aber noch nicht gestartet. |
-| Wird gestartet | Ein Benutzer hat auf „Auftrag starten“ geklickt, und der Auftrag wird gestartet. |
+| Starting | Ein Benutzer hat auf „Auftrag starten“ geklickt, und der Auftrag wird gestartet. |
 | Wird ausgeführt | Der Auftrag ist zugewiesen, verarbeitet Eingaben oder wartet auf die Verarbeitung von Eingaben. Wenn ein Auftrag den Status "Wird ausgeführt" aufweist, ohne eine Ausgabe zu erzeugen, ist es wahrscheinlich, dass das Zeitfenster für die Verarbeitung groß oder die Abfragelogik kompliziert ist. Ein weiterer Grund ist möglicherweise, dass derzeit keine Daten an den Auftrag gesendet werden. |
 | Wird beendet | Ein Benutzer hat auf „Auftrag beenden“ geklickt, und der Auftrag wird beendet. |
 | Beendet | Der Auftrag wurde beendet. |
@@ -107,4 +106,4 @@ Um Hilfe zu erhalten, besuchen Sie unser [Azure Stream Analytics-Forum](https://
 - [Stream Analytics Query Language Reference (in englischer Sprache)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 - [Referenz zur Azure Stream Analytics-Verwaltungs-REST-API](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0921_2016-->

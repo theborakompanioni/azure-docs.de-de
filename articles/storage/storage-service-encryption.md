@@ -29,11 +29,11 @@ Azure Storage bietet einen umfassenden Satz von Sicherheitsfunktionen, die Entwi
 
 SSE verschlüsselt die Daten, wenn sie in Azure Storage geschrieben werden, und kann für Blockblobs, Seitenblobs und Anfügeblobs verwendet werden. Das Feature funktioniert wie folgt:
 
-	- General purpose storage accounts and Blob storage accounts
-	- Standard storage and Primary storage 
-	- All redundancy levels (LRS, ZRS, GRS, RA-GRS)
-	- Azure Resource Manager storage accounts (but not classic) 
-	- All regions
+-   Allgemeine Speicherkonten und Blobspeicherkonten
+-   Standardspeicher und Primärspeicher
+-   Alle Redundanzebenen (LRS, ZRS, GRS, RA-GRS)
+-   Azure Resource Manager-Speicherkonten (nicht jedoch klassische Konten)
+-   Alle Regionen
 
 Dieser Screenshot zeigt, wo Sie die Storage Service Encryption-Einstellung mit dem [Azure-Portal](https://azure.portal.com) finden. Klicken Sie auf diesem Bildschirm auf „Verschlüsselung“, um fortzufahren.
 
@@ -195,4 +195,4 @@ A: Bitte wenden Sie sich in allen Angelegenheiten, die Storage Service Encryptio
 
 Azure Storage bietet einen umfassenden Satz von Sicherheitsfunktionen, die Entwicklern das Erstellen sicherer Anwendungen ermöglichen. Weitere Informationen finden Sie im [Azure Storage-Sicherheitsleitfaden](storage-security-guide.md).
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="06/10/2016"
+   ms.date="09/21/2016"
    ms.author="alkohli" />
 
 # Verwalten von Volumes mithilfe des StorSimple Manager-Diensts (Update 2)
@@ -89,12 +89,12 @@ Ein Volume umfasst eine Reihe von Attributen:
 
 Verwenden Sie die Anweisungen in diesem Tutorial, um die folgenden Aufgaben auszuführen:
 
-- Hinzufügen eines Volumes 
-- Ändern von Volumes 
+- Hinzufügen eines Volumes
+- Ändern von Volumes
 - Ändern des Volumetyps
-- Löschen von Volumes 
-- Offlineschalten von Volumes 
-- Überwachen von Volumes 
+- Löschen von Volumes
+- Offlineschalten von Volumes
+- Überwachen von Volumes
 
 ## Hinzufügen eines Volumes
 
@@ -144,8 +144,8 @@ Zum Ändern eines Volumes müssen Sie dieses erweitern oder die Hosts ändern, d
 
 > [AZURE.IMPORTANT] 
 >
-> - Wenn Sie die Größe des Volumes auf dem Gerät ändern, muss auch die Größe des Volumes auf dem Host geändert werden. 
-> - Die hier beschriebenen hostseitigen Schritte gelten für Windows Server 2012 (2012R2). Vorgehensweisen für Linux oder andere Hostbetriebssysteme können davon abweichen. Beachten Sie beim Ändern des Volumes auf einem Host mit einem anderen Betriebssystem die Anweisungen zu Ihrem Hostbetriebssystem. 
+> - Wenn Sie die Größe des Volumes auf dem Gerät ändern, muss auch die Größe des Volumes auf dem Host geändert werden.
+> - Die hier beschriebenen hostseitigen Schritte gelten für Windows Server 2012 (2012R2). Vorgehensweisen für Linux oder andere Hostbetriebssysteme können davon abweichen. Beachten Sie beim Ändern des Volumes auf einem Host mit einem anderen Betriebssystem die Anweisungen zu Ihrem Hostbetriebssystem.
 
 #### So ändern Sie ein Volume
 
@@ -299,4 +299,4 @@ Führen Sie die folgenden Schritte durch, um die Überwachung eines Volumes zu a
 
  
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="ibiza"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/15/2016"
+	ms.date="09/16/2016"
 	ms.author="cjiang"/>
 
 # Zuordnen eines Office 365-Mandanten zu einem Azure-Abonnement
@@ -26,7 +26,7 @@ Szenarien: Sie haben das Azure-Abonnement und das Office 365-Abonnement in der V
 Wenn Sie Ihren Office 365-Mandanten Ihrem Azure-Abonnement zuordnen möchten, verwenden Sie Ihr Azure-Konto zum Hinzufügen des Office 365-Mandanten. Ordnen Sie anschließend das Azure-Abonnement dem Office 365-Mandanten zu. Weitere Informationen finden Sie unter „Ausführliche Schritte“.
 
 ## Ausführliche Schritte
-In diesem Szenario ist Kelley Wall eine Benutzerin mit einem Azure-Abonnement unter dem Konto kelly.wall@outlook.com. Kelley verfügt auch über ein Office 365-Abonnement unter dem Konto kelley.wall@contoso.onmicrosoft.com. Kelley möchte jetzt mit dem Azure-Abonnement auf den Office 365-Mandanten zugreifen.
+In diesem Szenario ist Kelley Wall eine Benutzerin mit einem Azure-Abonnement im Konto kelly.wall@outlook.com. Kelley verfügt auch über ein Office 365-Abonnement unter dem Konto kelley.wall@contoso.onmicrosoft.com. Kelley möchte jetzt mit dem Azure-Abonnement auf den Office 365-Mandanten zugreifen.
 
 ![msa-aad-status](./media/billing-add-office-365-tenant-to-azure-subscription/s31_msa-aad-status.png)
 
@@ -145,4 +145,4 @@ Führen Sie zum Zuordnen des Office 365-Mandanten zum Azure-Abonnement die folge
 ## Nächste Schritte
 Es gibt ähnliche Szenarien, in denen Sie bereits über ein Office 365-Abonnement verfügen und ein Azure-Abonnement wünschen, jedoch das vorhandene Office 365-Benutzerkonto (bzw. die Benutzerkonten) für Ihr Azure-Abonnement verwenden möchten. Alternativ sind Sie Azure-Abonnent und wünschen ein Office 365-Abonnement für die Benutzer in Ihrem vorhandenen Azure Active Directory. Informationen hierzu finden Sie unter [Verwenden Ihres vorhandenen Office 365-Kontos mit Ihrem Azure-Abonnement (oder umgekehrt)](billing-use-existing-office-365-account-azure-subscription.md).
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/14/2016"
+	ms.date="09/19/2016"
 	ms.author="xibingao;bradsev" />
 
 # Einrichten eines virtuellen Azure SQL Server-Computers als IPython Notebook-Server für die erweiterte Analyse
@@ -219,7 +219,7 @@ So erstellen Sie mit SQL Server Management Studio neue SQL Server-Anmeldungen:
 
 11. Falls es sich um den ersten Anmeldenamen handelt, den Sie erstellen, werden Sie diesen Anmeldenamen wahrscheinlich als SQL Server-Administrator bezeichnen. Prüfen Sie in diesem Fall **sysadmin** auf der Seite **Serverrollen**.
 
-    **Sicherheitshinweis:** Mitglieder der festen Serverrolle sysadmin haben vollständige Kontrolle über das Datenbankmodul. Sie sollten die Mitgliedschaft zu dieser Rolle sorgfältig beschränken.
+    > [AZURE.IMPORTANT] Mitglieder der festen Serverrolle sysadmin haben vollständige Kontrolle über das Datenbankmodul. Aus Sicherheitsgründen sollten Sie die Mitgliedschaft dieser Rolle sorgfältig beschränken.
 
     ![sysadmin][12]
 
@@ -306,4 +306,4 @@ Die nächsten Schritte im Data Science-Prozess sind unter [Team Data Science-Pro
 [15]: ./media/machine-learning-data-science-setup-sql-server-virtual-machine/vmshutdown.png
  
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->
