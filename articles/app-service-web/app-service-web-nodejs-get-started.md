@@ -20,16 +20,16 @@
 
 [AZURE.INCLUDE [Registerkarten](../../includes/app-service-web-get-started-nav-tabs.md)]
 
-In diesem Tutorial erfahren Sie, wie Sie eine einfache [Node.js][NODEJS]-Anwendung erstellen und für eine [Web-App] in [Azure App Service] über eine Befehlszeilenumgebung bereitstellen, z.B. „cmd.exe“ oder Bash. Die Anweisungen in diesem Tutorial gelten für alle Betriebssysteme, unter denen Node.js ausgeführt werden kann.
+In diesem Tutorial erfahren Sie, wie Sie eine einfache [Node.js]-Anwendung erstellen und über eine Befehlszeilenumgebung wie „cmd.exe“ oder Bash für [Azure App Service] bereitstellen. Die Anweisungen in diesem Tutorial gelten für alle Betriebssysteme, unter denen Node.js ausgeführt werden kann.
 
 <a name="prereq"></a>
 ## Voraussetzungen
 
-- **Node.js** ([Zum Installieren hier klicken][NODEJS])
-- **Bower** ([Zum Installieren hier klicken][BOWER])
-- **Yeoman** ([Zum Installieren hier klicken][YEOMAN])
-- **Git** ([Zum Installieren hier klicken][GIT])
-- **Azure-Befehlszeilenschnittstelle** ([Zum Installieren hier klicken][Azure CLI])
+- [Node.js]
+- [Bower]
+- [Yeoman]
+- [Git]
+- [Azure-Befehlszeilenschnittstelle]
 - Ein Microsoft Azure-Konto. Wenn Sie kein Konto haben, können Sie sich [für eine kostenlose Testversion registrieren] oder [Ihre Visual Studio-Abonnentenvorteile aktivieren].
 
 ## Erstellen und Bereitstellen einer einfachen Node.js-Web-App
@@ -52,20 +52,20 @@ In diesem Tutorial erfahren Sie, wie Sie eine einfache [Node.js][NODEJS]-Anwendu
 
     Navigieren Sie in Ihrem Browser zu <http://localhost:3000>, um zu prüfen, ob die Express-Startseite angezeigt wird. Nachdem Sie sich vergewissert haben, dass die App richtig ausgeführt wird, können Sie sie mit `Ctrl-C` beenden.
     
-1. Wechseln Sie in den ASM-Modus, und melden Sie sich bei Azure an (dazu ist die [Azure-CLI](#prereq) erforderlich):
+1. Wechseln Sie in den ASM-Modus, und melden Sie sich bei Azure an. (Sie benötigen die [Azure-Befehlszeilenschnittstelle](#prereq).)
 
         azure config mode asm
         azure login
 
     Befolgen Sie die Aufforderung, um die Anmeldung in einem Browser mit einem Microsoft-Konto fortzusetzen, das über Ihr Azure-Abonnement verfügt.
 
-2. Stellen Sie sicher, dass Sie sich noch im Stammverzeichnis Ihrer App befinden. Erstellen Sie anschließend die App Service-App-Ressource in Azure mit einem eindeutigen App-Namen, indem Sie den nächsten Befehl verwenden, z.B.: http://{appname}.azurewebsites.net
+2. Vergewissern Sie sich, dass Sie sich noch im Stammverzeichnis Ihrer App befinden. Erstellen Sie anschließend in Azure mithilfe des nächsten Befehls die App Service-App-Ressource mit einem eindeutigen App-Namen. Beispiel: http://{appname}.azurewebsites.net
 
         azure site create --git {appname}
 
     Folgen Sie der Aufforderung zum Auswählen einer Azure-Region für die Bereitstellung. Wenn Sie für Ihr Azure-Abonnement noch nie zuvor Git/FTP-Anmeldeinformationen für die Bereitstellung eingerichtet haben, werden Sie aufgefordert, diese zu erstellen.
 
-3. Öffnen Sie die Datei „./config/config.js“ im Stammverzeichnis der Anwendung, und ändern Sie den Produktionsport in `process.env.port`. Die `production`-Eigenschaft im `config`-Objekt muss wie im folgenden Beispiel aussehen.
+3. Öffnen Sie die Datei „./config/config.js“ im Stammverzeichnis der Anwendung, und ändern Sie den Produktionsport in `process.env.port`. Die `production`-Eigenschaft im `config`-Objekt muss wie im folgenden Beispiel aussehen:
 
         production: {
             root: rootPath,
@@ -77,13 +77,19 @@ In diesem Tutorial erfahren Sie, wie Sie eine einfache [Node.js][NODEJS]-Anwendu
 
     So kann die Node.js-App auf Webanforderungen über den Standardport antworten, über den iisnode lauscht.
     
+4. Öffnen Sie zum [Angeben der gewünschten Node.js-Version](#version) die Datei „./package.json“, und fügen Sie die `engines`-Eigenschaft hinzu.
+
+        "engines": {
+            "node": "6.6.0"
+        }, 
+
 4. Speichern Sie Ihre Änderungen, und verwenden Sie dann Git, um Ihre App in Azure bereitzustellen:
 
         git add .
         git commit -m "{your commit message}"
         git push azure master
 
-    Vom Express Generator wird bereits eine Datei vom Typ „.gitignore“ bereitgestellt, sodass von `git push` bei dem Versuch, das Verzeichnis „node\_modules/“ hochzuladen, keine Bandbreite beansprucht wird.
+    Vom Express-Generator wird bereits eine Datei vom Typ „.gitignore“ bereitgestellt, sodass von `git push` beim Hochladen des Verzeichnisses „node\_modules/“ keine Bandbreite beansprucht wird.
 
 5. Starten Sie die fertige Azure-App jetzt im Browser:
 
@@ -110,7 +116,7 @@ Von Azure App Service wird [iisnode] verwendet, um Node.js-Apps auszuführen. Di
     
 ## Verwenden eines Node.js-Frameworks
 
-Wenn Sie bei der App-Entwicklung ein gängiges Node.js-Framework wie [Sails.js][SAILSJS] oder [MEAN.js][MEANJS] verwenden, können Sie sie für App Service bereitstellen. Die gängigen Node.js-Frameworks verfügen über bestimmte Eigenheiten, und ihre Paketabhängigkeiten werden ständig aktualisiert. In App Service werden aber die Protokolle stdout und stderr für Sie zur Verfügung gestellt, damit Sie genau wissen, was mit Ihrer App passiert, und entsprechende Änderungen vornehmen können. Weitere Informationen finden Sie unter [Abrufen von stdout- und stderr-Protokollen von iisnode](#iisnodelog).
+Wenn Sie bei der App-Entwicklung ein gängiges Node.js-Framework wie [Sails.js][SAILSJS] oder [MEAN.js][MEANJS] verwenden, können Sie sie für App Service bereitstellen. Die gängigen Node.js-Frameworks verfügen über bestimmte Eigenheiten, und ihre Paketabhängigkeiten werden ständig aktualisiert. In App Service stehen jedoch die Protokolle „stdout“ und „stderr“ zur Verfügung, damit Sie genau nachvollziehen können, was mit Ihrer App passiert, und entsprechende Änderungen vornehmen können. Weitere Informationen finden Sie unter [Abrufen von stdout- und stderr-Protokollen von iisnode](#iisnodelog).
 
 In den folgendes Tutorials wird gezeigt, wie Sie mit einem bestimmten Framework in App Service arbeiten:
 
@@ -118,12 +124,13 @@ In den folgendes Tutorials wird gezeigt, wie Sie mit einem bestimmten Framework 
 - [Erstellen einer Node.js-Chat-Anwendung mit Socket.IO in Azure App Service]
 - [Verwenden von io.js mit Azure App Service-Web-Apps]
 
+<a name="version"></a>
 ## Verwenden eines bestimmten Node.js-Moduls
 
-In Ihrem typischen Workflow können Sie App Service mitteilen, ein bestimmtes Node.js-Modul zu verwenden, wie dies auch in „package.json“ möglich ist. Beispiel:
+In einem typischen Workflow weisen Sie App Service an, ein bestimmtes Node.js-Modul zu verwenden, wie das sonst auch in „package.json“ der Fall ist. Beispiel:
 
     "engines": {
-        "node": "5.5.0"
+        "node": "6.6.0"
     }, 
 
 Das Kudu-Bereitstellungsmodul bestimmt in der folgenden Reihenfolge, welches Node.js-Modul verwendet werden soll:
@@ -132,10 +139,12 @@ Das Kudu-Bereitstellungsmodul bestimmt in der folgenden Reihenfolge, welches Nod
 - Sehen Sie sich als Nächstes „package.json“ an, um zu prüfen, ob `"node": "..."` im `engines`-Objekt angegeben ist. Wenn ja, sollten Sie dieses Element verwenden.
 - Wählen Sie standardmäßig eine Node.js-Version aus.
 
+>[AZURE.NOTE] Es empfiehlt sich, das gewünschte Node.js-Modul explizit zu definieren. Die Node.js-Standardversion kann sich ändern, und dies kann wiederum zu Fehlern in Ihrer Azure-Web-App führen, falls die Node.js-Standardversion nicht für Ihre Anwendung geeignet ist.
+
 <a name="iisnodelog"></a>
 ## Abrufen von stdout- und stderr-Protokollen von iisnode
 
-Führen Sie die folgenden Schritte aus, um Protokolle von iisnode zu lesen.
+Führen Sie zum Lesen von iisnode-Protokollen die folgenden Schritte aus.
 
 > [AZURE.NOTE] Es kann sein, dass nach Abschluss dieser Schritte noch keine Protokolldateien vorhanden sind, sondern erst, wenn ein Fehler auftritt.
 
@@ -154,13 +163,13 @@ Führen Sie die folgenden Schritte aus, um Protokolle von iisnode zu lesen.
         git commit -m "{your commit message}"
         git push azure master
    
-   iisnode ist jetzt konfiguriert. In den nächsten Schritten wird veranschaulicht, wie Sie auf diese Protokolle zugreifen.
+    iisnode ist jetzt konfiguriert. In den nächsten Schritten wird veranschaulicht, wie Sie auf diese Protokolle zugreifen.
      
 4. Greifen Sie in Ihrem Browser auf die Kudu-Debugkonsole für Ihre App zu, die sich am folgenden Ort befindet:
 
         https://{appname}.scm.azurewebsites.net/DebugConsole 
 
-    Beachten Sie, dass sich diese URL von der Web-App-URL dadurch unterscheidet, dass „*.scm.*“ an den DNS-Namen angehängt ist. Sie erhalten einen 404-Fehler, wenn Sie diesen URL-Zusatz weglassen.
+    Diese URL unterscheidet sich von der Web-App-URL, da hier noch „*.scm.*“ an den DNS-Namen angehängt ist. Sie erhalten einen 404-Fehler, wenn Sie diesen URL-Zusatz weglassen.
 
 5. Navigieren Sie zu „D:\\home\\site\\wwwroot\\iisnode“.
 
@@ -212,23 +221,23 @@ Führen Sie diese Schritte aus, um Node-Inspector zu aktivieren:
 
 <!-- URL List -->
 
-[Azure CLI]: ../xplat-cli-install.md
+[Azure-Befehlszeilenschnittstelle]: ../xplat-cli-install.md
 [Azure App Service]: ../app-service/app-service-value-prop-what-is.md
 [Ihre Visual Studio-Abonnentenvorteile aktivieren]: http://go.microsoft.com/fwlink/?LinkId=623901
-[BOWER]: http://bower.io/
+[Bower]: http://bower.io/
 [Erstellen einer Node.js-Chat-Anwendung mit Socket.IO in Azure App Service]: ./web-sites-nodejs-chat-app-socketio.md
 [Bereitstellen einer Sails.js-Web-App in Azure App Service]: ./app-service-web-nodejs-sails.md
 [Exploring the Super Secret Kudu Debug Console (Erkunden der geheimen Kudu-Debugkonsole)]: /documentation/videos/super-secret-kudu-debug-console-for-azure-web-sites/
 [Express Generator für Yeoman]: https://github.com/petecoop/generator-express
-[GIT]: http://www.git-scm.com/downloads
+[Git]: http://www.git-scm.com/downloads
 [Verwenden von io.js mit Azure App Service-Web-Apps]: ./web-sites-nodejs-iojs.md
 [iisnode]: https://github.com/tjanczuk/iisnode/wiki
 [MEANJS]: http://meanjs.org/
-[NODEJS]: http://nodejs.org
+[Node.js]: http://nodejs.org
 [SAILSJS]: http://sailsjs.org/
 [für eine kostenlose Testversion registrieren]: http://go.microsoft.com/fwlink/?LinkId=623901
-[Web-App]: ./app-service-web-overview.md
-[YEOMAN]: http://yeoman.io/
+[web app]: ./app-service-web-overview.md
+[Yeoman]: http://yeoman.io/
 
 <!-- IMG List -->
 
@@ -237,4 +246,4 @@ Führen Sie diese Schritte aus, um Node-Inspector zu aktivieren:
 [iislog-kudu-console-open]: ./media/app-service-web-nodejs-get-started/iislog-kudu-console-open.png
 [iislog-kudu-console-read]: ./media/app-service-web-nodejs-get-started/iislog-kudu-console-read.png
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0928_2016-->

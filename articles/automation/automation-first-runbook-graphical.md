@@ -75,10 +75,10 @@ Das soeben erstellte Runbook befindet sich immer noch im Entwurfsmodus. Wir müs
 3.	Führen Sie wieder einen Bildlauf nach rechts durch, um das Blatt für **MyFirstRunbook** anzuzeigen. Mit den Optionen am oberen Rand können wir das Runbook starten, den Start für einen späteren Zeitpunkt planen oder einen [Webhook](automation-webhooks.md) erstellen, um den Start über einen HTTP-Aufruf zu ermöglichen.
 4.	Wir möchten das Runbook einfach nur starten. Klicken Sie daher auf **Starten** und anschließend auf **Ja**.<br> ![Runbook starten](media/automation-first-runbook-graphical/runbook-controls-start-revised20165.png)
 5.	Ein Auftragsblatt für den soeben erstellten Runbookauftrag erscheint. Dieses Blatt kann zwar geschlossen werden, in diesem Fall lassen wir es jedoch geöffnet, um den Status des Auftrags verfolgen zu können.
-6.	Der Auftragsstatus wird unter **Auftragszusammenfassung** angezeigt und entspricht den Statusoptionen, die wir bereits beim Testen des Runbooks gesehen haben.<br> ![API-Zusammenfassung](media/automation-first-runbook-graphical/runbook-job-summary.png)
-7.	Wenn der Runbookstatus *Abgeschlossen* lautet, klicken Sie auf **Ausgabe**. Das Blatt **Ausgabe** wird geöffnet, und der Text *Hello World* wird in dem Bereich angezeigt.<br> ![API-Zusammenfassung](media/automation-first-runbook-graphical/runbook-job-output.png)
+6.	Der Auftragsstatus wird unter **Auftragszusammenfassung** angezeigt und entspricht den Statusoptionen, die wir bereits beim Testen des Runbooks gesehen haben.<br> ![Auftragszusammenfassung](media/automation-first-runbook-graphical/runbook-job-summary.png)
+7.	Wenn der Runbookstatus *Abgeschlossen* lautet, klicken Sie auf **Ausgabe**. Das Blatt **Ausgabe** wird geöffnet, und der Text *Hello World* wird in dem Bereich angezeigt.<br> ![Auftragszusammenfassung](media/automation-first-runbook-graphical/runbook-job-output.png)
 8.	Schließen Sie das Ausgabeblatt.
-9.	Klicken Sie auf **Alle Protokolle**, um das Blatt „Datenströme“ für den Runbookauftrag zu öffnen. Im Ausgabestream sollte nur *Hello World* angezeigt werden. Hier können aber auch andere Datenströme für einen Runbookauftrag (wie etwa "Ausführlich" und "Fehler") angezeigt werden, sofern das Runbook in diese schreibt.<br> ![API-Zusammenfassung](media/automation-first-runbook-graphical/runbook-job-AllLogs.png)
+9.	Klicken Sie auf **Alle Protokolle**, um das Blatt „Datenströme“ für den Runbookauftrag zu öffnen. Im Ausgabestream sollte nur *Hello World* angezeigt werden. Hier können aber auch andere Datenströme für einen Runbookauftrag (wie etwa "Ausführlich" und "Fehler") angezeigt werden, sofern das Runbook in diese schreibt.<br> ![Auftragszusammenfassung](media/automation-first-runbook-graphical/runbook-job-AllLogs.png)
 10.	Schließen Sie die Blätter „Alle Protokolle“ und „Auftrag“, um zum Blatt „MyFirstRunbook“ zurückzukehren.
 11.	Klicken Sie auf **Aufträge**, um das Blatt „Aufträge“ für dieses Runbook zu öffnen. Dadurch werden alle von diesem Runbook erstellten Aufträge aufgeführt. Hier wird nur ein einzelner Auftrag aufgeführt, da wir den Auftrag bislang erst einmal ausgeführt haben.<br> ![Aufträge](media/automation-first-runbook-graphical/runbook-control-jobs.png)
 12.	Wenn Sie auf diesen Auftrag klicken, wird wieder der Auftragsbereich geöffnet, den wir uns beim Starten des Runbooks angesehen haben. So können Sie bereits ausgeführte Aufträge öffnen und Details zu jedem Auftrag anzeigen, der für ein bestimmtes Runbook erstellt wurde.
@@ -130,7 +130,7 @@ Ihr Runbook sollte nun wie folgt aussehen: <br>![Konfiguration der Runbook-Authe
 In diesem Schritt fügen wir eine Aktivität vom Typ **Start-AzureRmVM** hinzu, um einen virtuellen Computer zu starten. Sie können einen beliebigen virtuellen Computer in Ihrem Azure-Abonnement auswählen. Wir werden den Namen vorerst innerhalb des Cmdlets hartcodieren.
 
 1. Geben Sie im Bibliotheksteuerelement in das Textfeld für die Suche die Zeichenfolge **Start-AzureRm** ein.
-2. Fügen Sie **Start-AzureRmVM** dem Zeichenbereich hinzu, und ziehen Sie das Element anschließend unter **Connect to Azure**.
+2. Fügen Sie **Start-AzureRmVM** dem Zeichenbereich hinzu, und ziehen Sie das Element anschließend unter **Specify Subscription Id**.
 3. Zeigen Sie auf **Specify Subscription Id**, bis am unteren Rand der Form ein Kreis erscheint. Klicken Sie auf den Kreis, und ziehen Sie den Pfeil zu **Start-AzureRmVM**.
 4.	Wählen Sie **Start-AzureRmVM** aus. Klicken Sie auf **Parameter** und anschließend auf **Parametersatz**, um die Sätze für **Start-AzureRmVM** anzuzeigen. Wählen Sie den Parametersatz **ResourceGroupNameParameterSetName** aus. Beachten Sie, dass neben **ResourceGroupName** und **Name** jeweils ein Ausrufezeichen angezeigt wird. Das bedeutet, dass es sich dabei um erforderliche Parameter handelt. Beachten Sie außerdem, dass für beide ein Zeichenfolgenwert erwartet wird.
 5.	Wählen Sie **Name**. Wählen Sie unter **Datenquelle** die Option **PowerShell-Ausdruck** aus, und geben Sie den Namen des virtuellen Computers (in doppelten Anführungszeichen) ein, der mit diesem Runbook gestartet werden soll. Klicken Sie auf **OK**.<br>![Start-AzureRmVM – Wert für den Namensparameter](media/automation-first-runbook-graphical/runbook-startvm-nameparameter.png)
@@ -211,4 +211,4 @@ In diesem Schritt passen wir das Runbook so an, dass der virtuelle Computer nur 
 -	Erste Schritte mit PowerShell-Runbooks werden in [Mein erstes PowerShell-Runbook](automation-first-runbook-textual-powershell.md) beschrieben.
 -	Informationen über die ersten Schritte mit PowerShell-Workflow-Runbooks finden Sie unter [Mein erstes PowerShell-Workflow-Runbook](automation-first-runbook-textual.md).
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0928_2016-->

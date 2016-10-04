@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="09/12/2016"
+   ms.date="09/25/2016"
    ms.author="markvi"/>
 
 # Azure Active Directory-Berichterstellung – Vorschau
@@ -26,7 +26,7 @@ Die Berichterstellung hat zwei Hauptbereiche:
 
 - **Anmeldeaktivitäten**: Informationen zur Nutzung von verwalteten Anwendungen und Aktivitäten der Benutzeranmeldung
 
-- **Systemaktivitäten**: Überwachungsinformationen zu Benutzern und zur Gruppenverwaltung, verwalteten Anwendungen und Verzeichnisaktivitäten
+- **Überwachungsprotokolle**: Systemaktivitätsinformationen zu Benutzern und zur Gruppenverwaltung, zu verwalteten Anwendungen und Verzeichnisaktivitäten
 
 Je nach Umfang der Daten, nach denen Sie suchen, können Sie auf die Berichte zugreifen, indem Sie entweder auf **Benutzer und Gruppen** oder im [Azure-Portal](https://portal.azure.com) in der Liste mit den Diensten auf **Enterprise applications** (Unternehmensanwendungen) klicken.
 
@@ -118,7 +118,7 @@ Eine andere Methode zum Filtern von Einträgen der Anmeldeaktivitäten ist das S
 
 ![Berichterstellung](./media/active-directory-reporting-azure-portal/84.png "Berichterstellung")
 
-## Systemaktivitäten
+## Überwachungsprotokolle
 
 Die Überwachungsprotokolle in Azure Active Directory enthalten Datensätze mit Systemaktivitäten, die zum Nachweisen der Einhaltung von Bestimmungen verwendet werden können.
 
@@ -216,4 +216,4 @@ Eine andere Methode zum Filtern der Einträge eines Überwachungsprotokolls ist 
 
 Weitere Informationen finden Sie unter [Anleitung für Azure Active Directory-Berichte](active-directory-reporting-guide.md).
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0928_2016-->

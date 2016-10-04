@@ -3,7 +3,7 @@
 	description="Befolgen Sie dieses Erste-Schritte-Tutorial bei der Verwendung von Azure Event Hubs für das Senden von Ereignissen in C# und das Empfangen in Java mithilfe von EventProcessorHost."
 	services="event-hubs"
 	documentationCenter=""
-	authors="fsautomata"
+	authors="jtaubensee"
 	manager="timlt"
 	editor=""/>
 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="06/16/2016"
-	ms.author="jotaub"/>
+	ms.date="09/27/2016"
+	ms.author="jotaub;sethm"/>
 
 # Erste Schritte mit Event Hubs
 
@@ -71,4 +71,4 @@ Nachdem Sie eine funktionierende Anwendung erstellt haben, die einen Ereignis-Hu
 [Messaginglösung mit Warteschlange]: ../service-bus/service-bus-dotnet-multi-tier-app-using-service-bus-queues.md
  
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0928_2016-->

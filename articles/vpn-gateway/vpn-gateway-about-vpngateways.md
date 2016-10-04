@@ -36,8 +36,6 @@ Ein virtuelles Netzwerk kann pro Gatewaytyp immer nur über ein einzelnes virtue
 
 [AZURE.INCLUDE [vpn-gateway-gwsku-include](../../includes/vpn-gateway-gwsku-include.md)]
 
-###  <a name="skugw"></a>Geschätzter aggregierter Durchsatz nach SKU und Gatewaytyp
-
 In der folgenden Tabelle sind die Gatewaytypen und der geschätzte zusammengefasste Durchsatz angegeben. Diese Tabelle betrifft sowohl das Resource Manager-Bereitstellungsmodell als auch das klassische Bereitstellungsmodell.
 
 [AZURE.INCLUDE [vpn-gateway-table-gwtype-aggthroughput](../../includes/vpn-gateway-table-gwtype-aggtput-include.md)]
@@ -95,7 +93,7 @@ In Azure sind zurzeit zwei Bereitstellungsmodelle verfügbar: klassisches Modell
 
 #### VNet-Peering
 
-Sofern Ihr virtuelles Netzwerk bestimmte Anforderungen erfüllt, können Sie Ihre Verbindung ggf. mithilfe von VNet-Peering erstellen. Beim VNet-Peering wird kein Gateway für das virtuelle Netzwerk verwendet. Das [VNet-Peering](../virtual-network/virtual-network-peering-overview.md) befindet sich derzeit in der Vorschauphase.
+Sofern Ihr virtuelles Netzwerk bestimmte Anforderungen erfüllt, können Sie Ihre Verbindung ggf. mithilfe von VNet-Peering erstellen. Beim VNet-Peering wird kein Gateway für das virtuelle Netzwerk verwendet. Weitere Informationen finden Sie unter [VNet-Peering](../virtual-network/virtual-network-peering-overview.md).
 
 
 ### Bereitstellungsmodelle und -methoden für VNet-zu-VNet
@@ -150,4 +148,4 @@ Planen Sie Ihre VPN Gateway-Konfiguration. Entsprechende Informationen finden Si
 
  
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

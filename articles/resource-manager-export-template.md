@@ -144,7 +144,9 @@ In der Regel besteht die bewährte Methode darin, eine Vorlage zu verwenden, mit
 
 Auch wenn für jede Bereitstellung nur die Änderungen angezeigt werden, die Sie an der Ressourcengruppe vorgenommen haben, können Sie jederzeit eine Vorlage exportieren, um die Attribute der gesamten Ressourcengruppe anzuzeigen.
 
-1. Wählen Sie zum Anzeigen der Vorlage für eine Ressourcengruppe die Option **Automatisierungsskript** aus.
+> [AZURE.NOTE] Sie können keine Vorlage für eine Ressourcengruppe mit mehr als 200 Ressourcen exportieren.
+
+1. Wählen Sie zum Anzeigen der Vorlage für eine Ressourcengruppe die Option **Automatisierungsskript**.
 
       ![Ressourcengruppe exportieren](./media/resource-manager-export-template/export-resource-group.png)
 
@@ -340,7 +342,7 @@ Fügen Sie einen Ressourcentyp für die Verbindung hinzu.
 Glückwunsch! Sie haben gelernt, wie Sie eine Vorlage aus Ressourcen exportieren, die Sie im Portal erstellt haben.
 
 - Im zweiten Teil dieses Tutorials passen Sie die heruntergeladene Vorlage an, indem Sie weitere Parameter hinzufügen und die erneute Bereitstellung per Skript durchführen. Weitere Informationen finden Sie unter [Anpassen und erneutes Bereitstellen der exportierten Vorlage](resource-manager-customize-template.md).
-- Informationen zum Exportieren einer Vorlage mithilfe von PowerShell finden Sie unter [Verwenden von Windows PowerShell mit dem Azure-Ressourcen-Manager](powershell-azure-resource-manager.md).
-- Informationen zum Exportieren einer Vorlage mithilfe der Azure-Befehlszeilenschnittstelle finden Sie unter [Verwenden der plattformübergreifenden Azure-Befehlszeilenschnittstelle mit dem Azure-Ressourcen-Manager](xplat-cli-azure-resource-manager.md).
+- Informationen zum Exportieren einer Vorlage mithilfe von PowerShell finden Sie unter [Verwenden von Windows PowerShell mit Azure Resource Manager](powershell-azure-resource-manager.md).
+- Informationen zum Exportieren einer Vorlage mithilfe der Azure-Befehlszeilenschnittstelle finden Sie unter [Verwalten von Azure-Ressourcen und -Ressourcengruppen mithilfe der Azure-Befehlszeilenschnittstelle](xplat-cli-azure-resource-manager.md).
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0928_2016-->

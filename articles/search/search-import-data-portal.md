@@ -34,7 +34,7 @@ Sie können diesen Workflow mithilfe von Beispieldaten in DocumentDB testen. Ein
 
 ## Vom Datenimport-Assistenten unterstützte Datenquellen
 
-Indizierungsautomatisierung und -tools stehen für folgende Datenquellen zur Verfügung:
+Der Datenimport-Assistent unterstützt die folgenden Datenquellen:
 
 - Azure SQL-Datenbank
 - Relationale SQL Server-Daten auf einem virtuellen Azure-Computer
@@ -119,4 +119,4 @@ Unter den folgenden Links finden Sie weitere Informationen zu Indexern:
 <!--Image references-->
 [1]: ./media/search-import-data-portal/search-import-data-command.png
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0928_2016-->

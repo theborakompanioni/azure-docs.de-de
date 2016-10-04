@@ -6,10 +6,10 @@ Dieser Artikel beschreibt eine ausführliche exemplarische Vorgehensweise für d
 
 Diese Anleitung umfasst:
 
-- **Konzepte**: eine konzeptionelle Übersicht über die Komponenten, aus denen jedes Gateway besteht, das Sie mit dem Gateway SDK erstellen.  
+- **Konzepte**: eine konzeptionelle Übersicht über die Komponenten, aus denen jedes Gateway besteht, das Sie mit dem Gateway SDK erstellen.
 - **Hello World-Beispielarchitektur**: beschreibt die Anwendung der Konzepte auf das Hello World-Beispiel und das Zusammenwirken der Komponenten.
 - **Erstellen des Beispiels**: die zum Erstellen des Beispiels erforderlichen Schritte.
-- **Ausführen des Beispiels**: die zum Ausführen Beispiels erforderlichen Schritte. 
+- **Ausführen des Beispiels**: die zum Ausführen Beispiels erforderlichen Schritte.
 - **Typische Ausgabe**: Ein Beispiel der bei Ausführung des Beispiels zu erwartende Ausgabe.
 - **Codeausschnitte**: Eine Sammlung von Codeausschnitten, die veranschaulicht, wie das Hello World-Beispiel die wichtigsten Gatewaykomponenten implementiert.
 
@@ -35,28 +35,30 @@ Das SDK stellt eine Abstraktionsschicht bereit, mit deren Hilfe Sie Gateways ers
 
 ### Meldungen
 
-Die Vorstellung, dass Module einander Nachrichten übergeben, ist eine praktische Möglichkeit, die Funktionsweise eines Gateways zu verstehen, spiegelt stellt den tatsächlichen Vorgang aber nicht exakt wider. Module verwenden einen Nachrichtenbus für die Kommunikation untereinander. Sie veröffentlichen Nachrichten im Bus, und der Bus überträgt die Nachrichten an alle mit dem Bus verbundenen Module.
+Die Vorstellung, dass Module einander Nachrichten übergeben, ist eine praktische Möglichkeit, die Funktionsweise eines Gateways zu verstehen, spiegelt stellt den tatsächlichen Vorgang aber nicht exakt wider. Module verwenden einen Broker, um miteinander zu kommunizieren. Sie veröffentlichen Nachrichten für den Broker (Bus, Pub/Sub oder anderes Messagingmuster), die dann vom Broker an die verbundenen Module weitergeleitet werden.
 
-Ein Modul verwendet die Funktion **MessageBus\_Publish**, um eine Nachricht im Nachrichtenbus zu veröffentlichen. Der Bus übermittelt die Nachrichten durch Aufruf einer Rückruffunktion an ein Modul. Eine Nachricht besteht aus einem Satz aus Schlüssel-Wert-Eigenschaften und Inhalten, der als Arbeitsspeicherblock übergeben wird.
+Ein Modul verwendet die Funktion **Broker\_Publish**, um eine Nachricht für den Broker zu veröffentlichen. Der Broker übermittelt Nachrichten durch Aufrufen einer Rückruffunktion an ein Modul. Eine Nachricht besteht aus einem Satz aus Schlüssel-Wert-Eigenschaften und Inhalten, der als Arbeitsspeicherblock übergeben wird.
 
 ![][3]
 
-Jedes Modul muss die Nachrichten filtern, da der Nachrichtenbus einen Broadcastmechanismus verwendet, um die Nachrichten an jedes verbundene Modul zu übermitteln. Ein Modul sollte nur bei Nachrichten agieren, die für das Modul vorgesehen sind. Durch die Nachrichtenfilterung entsteht die Nachrichtenpipeline. Ein Modul filtert üblicherweise die empfangenen Nachrichten anhand der Nachrichteneigenschaften, um die Nachrichten zu identifizieren, die es verarbeiten soll.
+### Nachrichtenrouting und -filterung
+
+Nachrichten können auf zwei Arten an die richtigen Module weitergeleitet werden: An den Broker kann eine Gruppe von Links übergeben werden, um den Broker über Quelle und Senke der einzelnen Module zu informieren. Alternativ kann das Modul eine Filterung auf der Grundlage der Nachrichteneigenschaften durchführen. Ein Modul soll nur auf Nachrichten reagieren, die für das Modul bestimmt sind. Die Links und die Messagingfilterung bilden im Grunde eine Nachrichtenpipeline.
 
 ## Hello World-Beispielarchitektur
 
 Das Hello World-Beispiel veranschaulicht die Konzepte, die im vorherigen Abschnitt beschrieben wurden. Das Hello World-Beispiel implementiert ein Gateway, das über eine aus zwei Modulen bestehende Pipeline verfügt:
 
--	Das Modul *hello world* erstellt alle fünf Sekunden eine Nachricht und übergibt sie an das Protokollierungsmodul.
+-	Das Modul *hello world* erstellt alle fünf Sekunden eine Nachricht und übergibt sie an das Modul „logger“.
 -	Das Modul *logger* schreibt die empfangene Nachricht in eine Datei.
 
 ![][4]
 
-Wie im vorherigen Abschnitt beschrieben, übergibt das Hello World-Modul Nachrichten nicht direkt an das Protokollierungsmodul. Stattdessen veröffentlicht es alle fünf Sekunden eine Nachricht im Nachrichtenbus.
+Wie im vorherigen Abschnitt beschrieben, übergibt das Hello World-Modul Nachrichten nicht direkt an das Protokollierungsmodul. Stattdessen veröffentlicht es alle fünf Sekunden eine Nachricht für den Broker.
 
-Das Protokollierungsmodul empfängt die Nachricht aus dem Nachrichtenbus und untersucht ihre Eigenschaften in einem Filter. Wenn das Protokollierungsmodul feststellt, dass es die Nachricht verarbeiten sollte, schreibt es die Inhalte der Nachricht in eine Datei.
+Das Modul „logger“ empfängt die Nachricht vom Broker und reagiert darauf, indem es den Inhalt der Nachricht in eine Datei schreibt.
 
-Das Protokollierungsmodul verarbeitet Nachrichten aus dem Nachrichtenbus nur, es veröffentlicht niemals neue Nachrichten im Bus.
+Das Modul „logger“ verarbeitet nur Nachrichten des Brokers. Es veröffentlicht niemals neue Nachrichten für den Broker.
 
 ![][5]
 
@@ -73,3 +75,4 @@ Die Abbildung zeigt die Architektur des Hello World-Beispiels sowie die relative
 [lnk-helloworld-sample]: https://github.com/Azure/azure-iot-gateway-sdk/tree/master/samples/hello_world
 [lnk-gateway-sdk]: https://github.com/Azure/azure-iot-gateway-sdk
 
+<!---HONumber=AcomDC_0928_2016-->

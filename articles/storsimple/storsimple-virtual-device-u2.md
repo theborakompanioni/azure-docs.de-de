@@ -12,7 +12,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="08/17/2016"
+   ms.date="09/23/2016"
    ms.author="alkohli" />
 
 # Bereitstellen und Verwalten eines virtuellen StorSimple-Geräts in Azure
@@ -139,12 +139,15 @@ Führen Sie die folgenden Schritte aus, um das virtuelle StorSimple-Gerät zu er
 
 [AZURE.INCLUDE [Erstellen eines virtuellen Geräts](../../includes/storsimple-create-virtual-device-u2.md)]
 
+Falls das virtuelle Gerät in diesem Schritt nicht erfolgreich erstellt werden kann, besteht möglicherweise keine Internetverbindung. Weitere Informationen zum Behandeln von Internetverbindungsfehlern beim Erstellen eines virtuellen Geräts finden Sie [hier](#troubleshoot-internet-connectivity-errors).
+
 
 ### Schritt 2: Konfigurieren und Registrieren des virtuellen Geräts
 
 Stellen Sie vorab sicher, dass Sie über eine Kopie des Verschlüsselungsschlüssels für die Dienstdaten verfügen. Der Schlüssel für die Dienstdatenverschlüsselung wurde beim Konfigurieren des ersten StorSimple-Geräts erstellt, und Sie wurden aufgefordert, diesen an einem sicheren Ort zu speichern. Wenn Sie über keine Kopie des Schlüssels für die Dienstdatenverschlüsselung verfügen, wenden Sie sich an den Microsoft-Support.
 
-Führen Sie die folgenden Schritte durch, um das virtuelle StorSimple-Gerät zu konfigurieren und zu registrieren: [AZURE.INCLUDE [Konfigurieren und Registrieren eines virtuellen Geräts](../../includes/storsimple-configure-register-virtual-device.md)]
+Führen Sie die folgenden Schritte durch, um das virtuelle StorSimple-Gerät zu konfigurieren und zu registrieren:
+[AZURE.INCLUDE [Konfigurieren und Registrieren eines virtuellen Geräts](../../includes/storsimple-configure-register-virtual-device.md)]
 
 ### Schritt 3: (Optional) Ändern der Konfigurationseinstellungen des Geräts
 
@@ -272,6 +275,19 @@ Wenn Sie das virtuelle Gerät herunterfahren oder löschen, wird es auf der Seit
 [AZURE.INCLUDE [Löschen eines virtuellen Geräts](../../includes/storsimple-delete-virtual-device.md)]
 
    
+## Behandeln von Internetverbindungsfehlern 
+
+Wenn beim Erstellen eines virtuellen Geräts keine Verbindung mit dem Internet besteht, kann der Erstellungsschritt nicht erfolgreich ausgeführt werden. Führen Sie im klassischen Azure-Portal die folgenden Problembehandlungsschritte aus, falls der Fehler auf die Internetverbindung zurückzuführen ist:
+
+1. Erstellen Sie in Azure einen virtuellen Windows Server 2012-Computer. Dieser virtuelle Computer muss das gleiche Speicherkonto, virtuelle Netzwerk und Subnetz verwenden wie ihr virtuelles Gerät. Wenn Sie in Azure bereits über einen Windows Server-Host mit dem gleichen Speicherkonto, virtuellen Netzwerk und Subnetz verfügen, können Sie zum Behandeln von Internetverbindungsproblemen auch diesen Host verwenden.
+2. Melden Sie sich remote bei dem virtuellen Computer an, den Sie im vorherigen Schritt erstellt haben.
+3. Öffnen Sie auf dem virtuellen Computer ein Befehlsfenster. (Drücken Sie WINDOWS-TASTE+R, und geben Sie `cmd` ein.)
+4. Führen Sie an der Eingabeaufforderung den folgenden Befehl aus:
+
+	`nslookup windows.net`
+
+5. Sollte bei `nslookup` ein Fehler auftreten, kann das virtuelle Gerät aufgrund eines Internetverbindungsfehlers nicht beim StorSimple Manager-Dienst registriert werden.
+6. Passen Sie Ihr virtuelles Netzwerk entsprechend an, um sicherzustellen, dass das virtuelle Gerät auf Azure-Websites wie „windows.net“ zugreifen kann.
 
 ## Nächste Schritte
 
@@ -279,4 +295,4 @@ Wenn Sie das virtuelle Gerät herunterfahren oder löschen, wird es auf der Seit
  
 - Erfahren Sie, wie Sie [StorSimple-Volumes aus einem Sicherungssatz wiederherstellen](storsimple-restore-from-backup-set.md).
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0928_2016-->

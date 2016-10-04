@@ -4,7 +4,7 @@
    services="active-directory"
    documentationCenter=""
    authors="dhanyahk"
-   manager="stevenpo"
+   manager="femila"
    editor=""/>
 
 <tags
@@ -65,7 +65,7 @@ Die Berichterstellungspipeline umfasst drei wesentliche Schritte. Jedes Mal, wen
 
 ### Berichterstellungszeiten
 
-Aufgrund der großen Anzahl von Authentifizierungen und Anmeldungen, die von der Azure AD-Plattform verarbeitet werden, sind die aktuellsten verarbeiteten Anmeldungen im Durchschnitt eine Stunde alt. In seltenen Fällen kann es bis zu 8 Stunden dauern, die letzten Anmeldungen zu verarbeiten.
+Aufgrund der großen Anzahl von Authentifizierungen und Anmeldungen, die von der Azure AD-Plattform verarbeitet werden, sind die aktuellsten verarbeiteten Anmeldungen im Durchschnitt eine Stunde alt. In seltenen Fällen kann es bis zu 8 Stunden dauern, die letzten Anmeldungen zu verarbeiten.
 
 Sie finden die aktuellste verarbeitete Anmeldung im Hilfetext am oberen Rand jedes Berichts.
 
@@ -156,4 +156,4 @@ Unter der E-Mail-Adresse [aadreportinghelp@microsoft.com](mailto:aadreportinghel
 
 > [AZURE.TIP] Weitere Dokumentationen zu Azure AD Reporting finden Sie unter [Anzeigen von Zugriffs- und Nutzungsberichten](active-directory-view-access-usage-reports.md).
 
-<!----HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0928_2016-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="08/10/2016"
+	ms.date="09/22/2016"
 	ms.author="curtand"/>
 
 
@@ -77,6 +77,8 @@ Hier werden die Aufgaben beschrieben, die im klassischen Azure-Portal durchgefü
 
 In Azure AD können Sie sehr leicht eine einfache Regel einrichten, um zu bestimmen, welche Benutzer Mitglieder der Gruppe sein sollen. Eine einfache Regel ist eine Regel, bei der nur ein einzelner Vergleich vorgenommen wird. Wenn eine Gruppe beispielsweise einer SaaS-Anwendung zugewiesen ist, können Sie eine Regel zum Hinzufügen von Benutzern mit der Position „Vertriebsmitarbeiter“ einrichten. Diese Regel gewährt dann für alle Benutzer im Verzeichnis, die diese Position aufweisen, Zugriff auf diese SaaS-Anwendung.
 
+Wenn sich Attribute eines Benutzers ändern, bewertet das System alle dynamischen Gruppenregel in einem Verzeichnis, um zu ermitteln, ob die Attributänderung des Benutzers Vorgänge zum Hinzufügen oder Löschen von Gruppen auslöst. Falls ein Benutzer eine Regel für eine Gruppe erfüllt, wird er als Mitglieder zu dieser Gruppe hinzugefügt. Wenn er die Regel einer Gruppe nicht mehr erfüllt, deren Mitglied er ist, wird er aus dieser Gruppe entfernt.
+
 > [AZURE.NOTE] Sie können eine Regel für die dynamische Mitgliedschaft für Sicherheits- oder Office 365-Gruppen einrichten. Geschachtelte Gruppenmitgliedschaften werden für die gruppenbasierte Zuweisung zu Anwendungen derzeit nicht unterstützt.
 >
 > Für dynamische Gruppenmitgliedschaften muss eine Azure AD Premium-Lizenz folgenden Personen zugewiesen werden:
@@ -114,4 +116,4 @@ Diese Artikel enthalten zusätzliche Informationen zu Azure Active Directory.
 
 * [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md)
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0928_2016-->

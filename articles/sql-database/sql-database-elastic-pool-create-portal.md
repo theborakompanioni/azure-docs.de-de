@@ -29,7 +29,7 @@ In diesem Artikel wird beschrieben, wie Sie im [Azure-Portal](https://portal.azu
 
 Sie können einem Server mehrere Pools hinzufügen, aber es ist nicht möglich, Datenbanken von verschiedenen Servern in demselben Pool zusammenzufassen. Zum Erstellen eines Pools benötigen Sie mindestens eine Datenbank auf einem V12-Server. Falls Sie keinen Server dieser Art besitzen, helfen Ihnen die Informationen unter [Erstellen einer ersten Azure SQL-Datenbank](sql-database-get-started.md) weiter. Sie können einen Pool mit nur einer Datenbank erstellen, aber Pools sind erst mit mehreren Datenbanken kosteneffizient. Weitere Informationen finden Sie unter [Überlegungen zum Preis und zur Leistung eines Pools für elastische Datenbanken](sql-database-elastic-pool-guidance.md).
 
-> [AZURE.NOTE] Elastische Pools sind in allen Azure-Regionen allgemein verfügbar, mit Ausnahme von „USA, Norden-Mitte“ und „Indien, Westen“. Dort befinden sie sich derzeit in der Vorschauphase. Die allgemeine Verfügbarkeit von elastischen Pools in diesen Regionen wird so bald wie möglich bereitgestellt. Elastische Pools unterstützen zurzeit keine Datenbanken mit [In-Memory-OLTP oder In-Memory-Analysen](sql-database-in-memory.md).
+> [AZURE.NOTE] Elastische Pools sind in allen Azure-Regionen allgemein verfügbar, mit Ausnahme von „Indien, Westen“. Dort befinden sie sich derzeit in der Vorschauphase. Die allgemeine Verfügbarkeit von elastischen Pools in dieser Region wird so bald wie möglich bereitgestellt.
 
 ## Schritt 1: Erstellen eines neuen Pools
 
@@ -113,4 +113,4 @@ Nach dem Hinzufügen von Datenbanken zum Pool werden Empfehlungen basierend auf 
 - [Verwalten eines elastischen SQL-Datenbankpools mit C#](sql-database-elastic-pool-manage-csharp.md)
 - [Übersicht über Features für elastische Datenbanken](sql-database-elastic-scale-introduction.md)
 
-<!----HONumber=AcomDC_0907_2016--->
+<!---HONumber=AcomDC_0928_2016-->

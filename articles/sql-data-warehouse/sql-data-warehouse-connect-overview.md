@@ -1,6 +1,6 @@
 <properties
    pageTitle="Verbinden mit Azure SQL Data Warehouse | Microsoft Azure"
-   description="Enthält eine Übersicht über das Herstellen einer Verbindung mit Azure SQL Data Warehouse."
+   description="Gewusst wie: Suchen des Servernamens und der Verbindungszeichenfolge für Azure SQL Data Warehouse"
    services="sql-data-warehouse"
    documentationCenter="NA"
    authors="sonyam"
@@ -13,33 +13,57 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="08/27/2016"
+   ms.date="09/26/2016"
    ms.author="sonyama;barbkess"/>
 
 # Verbinden mit Azure SQL Data Warehouse
 
-> [AZURE.SELECTOR]
-- [Übersicht](sql-data-warehouse-connect-overview.md)
-- [Authentifizierung](sql-data-warehouse-authentication.md)
-- [Treiber](sql-data-warehouse-connection-strings.md)
+Dieser Artikel unterstützt Sie beim erstmaligen Herstellen einer Verbindung mit SQL Data Warehouse.
 
-Enthält eine Übersicht über das Verbinden mit Azure SQL Data Warehouse.
+## Suchen des Servernamens
 
-## Ermitteln der Verbindungszeichenfolge über das Portal
-
-Ihre SQL Data Warehouse-Instanz ist einem Azure SQL-Server zugeordnet. Um eine Verbindung herzustellen, benötigen Sie den vollqualifizierten Namen des Servers. Z.B. **meinserver**.database.windows.net.
-
-So ermitteln Sie den vollqualifizierten Servernamen
+Um eine Verbindung mit SQL Data Warehouse herstellen zu können, müssen Sie zunächst wissen, wie Sie den Servernamen finden. Der Servername im folgenden Beispiel lautet etwa „sample.database.windows.net“. So ermitteln Sie den vollqualifizierten Servernamen
 
 1. Öffnen Sie das [Azure-Portal][].
-2. Klicken Sie auf **SQL-Datenbanken**, und klicken Sie auf die Datenbank, mit der Sie eine Verbindung herstellen möchten. In diesem Beispiel wird die AdventureWorksDW-Beispieldatenbank verwendet.
-3. Suchen Sie den vollständigen Servernamen.
+2. Klicken Sie auf **SQL-Datenbanken**.
+3. Klicken Sie auf die Datenbank, mit der Sie eine Verbindung herstellen möchten.
+4. Suchen Sie den vollständigen Servernamen.
 
     ![Vollständiger Servername][1]
 
+## Unterstützte Treiber und Verbindungszeichenfolgen
+
+Azure SQL Data Warehouse unterstützt [ADO.NET][], [ODBC][], [PHP][] und [JDBC][]. Klicken Sie auf einen der genannten Treiber, um zur neuesten Version und Dokumentation zu gelangen. Zur automatischen Erstellung der Verbindungszeichenfolge für den verwendeten Treiber können Sie im Azure-Portal auf **Datenbank-Verbindungszeichenfolgen anzeigen** klicken, wie im vorherigen Beispiel zu sehen. Im Anschluss finden Sie auch einige Beispielverbindungszeichenfolgen für die einzelnen Treiber.
+
+> [AZURE.NOTE] Es empfiehlt sich, das Verbindungstimeout auf 300 Sekunden festzulegen, damit die Verbindung bei kurzen Ausfällen bestehen bleibt.
+
+### Beispielverbindungszeichenfolge für ADO.NET
+
+```C#
+Server=tcp:{your_server}.database.windows.net,1433;Database={your_database};User ID={your_user_name};Password={your_password_here};Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
+```
+
+### Beispielverbindungszeichenfolge für ODBC
+
+```C#
+Driver={SQL Server Native Client 11.0};Server=tcp:{your_server}.database.windows.net,1433;Database={your_database};Uid={your_user_name};Pwd={your_password_here};Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;
+```
+
+### Beispielverbindungszeichenfolge für PHP
+
+```PHP
+Server: {your_server}.database.windows.net,1433 \r\nSQL Database: {your_database}\r\nUser Name: {your_user_name}\r\n\r\nPHP Data Objects(PDO) Sample Code:\r\n\r\ntry {\r\n   $conn = new PDO ( "sqlsrv:server = tcp:{your_server}.database.windows.net,1433; Database = {your_database}", "{your_user_name}", "{your_password_here}");\r\n    $conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );\r\n}\r\ncatch ( PDOException $e ) {\r\n   print( "Error connecting to SQL Server." );\r\n   die(print_r($e));\r\n}\r\n\rSQL Server Extension Sample Code:\r\n\r\n$connectionInfo = array("UID" => "{your_user_name}", "pwd" => "{your_password_here}", "Database" => "{your_database}", "LoginTimeout" => 30, "Encrypt" => 1, "TrustServerCertificate" => 0);\r\n$serverName = "tcp:{your_server}.database.windows.net,1433";\r\n$conn = sqlsrv_connect($serverName, $connectionInfo);
+```
+
+### Beispielverbindungszeichenfolge für JDBC
+
+```Java
+jdbc:sqlserver://yourserver.database.windows.net:1433;database=yourdatabase;user={your_user_name};password={your_password_here};encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;
+```
+
 ## Verbindungseinstellungen
 
-In SQL Data Warehouse sind einige Einstellungen beim Herstellen der Verbindung und Erstellen von Objekten standardisiert. Diese können nicht außer Kraft gesetzt werden.
+Bei der Verbindungs- und Objekterstellung werden von SQL Data Warehouse einige Einstellungen standardisiert. Diese Einstellungen können nicht überschrieben werden:
 
 | Datenbankeinstellung | Wert |
 | :--------------------- | :--------------------------- |
@@ -48,19 +72,19 @@ In SQL Data Warehouse sind einige Einstellungen beim Herstellen der Verbindung u
 | [DATEFORMAT][] | mdy |
 | [DATEFIRST][] | 7 |
 
-## Überwachen von Verbindungen und Abfragen
-
-Nachdem eine Verbindung hergestellt und eine Sitzung eingerichtet wurde, können Sie Abfragen schreiben und an SQL Data Warehouse senden. Informationen zum Überwachen von Sitzungen und Abfragen finden Sie unter [Überwachen Ihres Workloads mit dynamischen Verwaltungssichten][].
-
 ## Nächste Schritte
 
-Informationen zum Abfragen Ihres Data Warehouse mit Visual Studio und anderen Anwendungen finden Sie unter [Abfragen mit Visual Studio][].
+Informationen zum Herstellen einer Verbindung und zum Durchführen von Abfragen mit Visual Studio finden Sie unter [Abfragen von Azure SQL Data Warehouse (Visual Studio)][]. Weitere Informationen zu Authentifizierungsoptionen finden Sie unter [Authentifizierung in Azure SQL Data Warehouse][].
 
 <!--Articles-->
-[Abfragen mit Visual Studio]: ./sql-data-warehouse-query-visual-studio.md
-[Überwachen Ihres Workloads mit dynamischen Verwaltungssichten]: ./sql-data-warehouse-manage-monitor.md
+[Abfragen von Azure SQL Data Warehouse (Visual Studio)]: ./sql-data-warehouse-query-visual-studio.md
+[Authentifizierung in Azure SQL Data Warehouse]: ./sql-data-warehouse-authentication.md
 
 <!--MSDN references-->
+[ADO.NET]: https://msdn.microsoft.com/library/e80y5yhx(v=vs.110).aspx
+[ODBC]: https://msdn.microsoft.com/library/jj730314.aspx
+[PHP]: https://msdn.microsoft.com/library/cc296172.aspx?f=255&MSPPError=-2147217396
+[JDBC]: https://msdn.microsoft.com/library/mt484311(v=sql.110).aspx
 [ANSI\_NULLS]: https://msdn.microsoft.com/library/ms188048.aspx
 [QUOTED\_IDENTIFIERS]: https://msdn.microsoft.com/library/ms174393.aspx
 [DATEFORMAT]: https://msdn.microsoft.com/library/ms189491.aspx
@@ -72,4 +96,4 @@ Informationen zum Abfragen Ihres Data Warehouse mit Visual Studio und anderen An
 <!--Image references-->
 [1]: media/sql-data-warehouse-connect-overview/get-server-name.png
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0928_2016-->

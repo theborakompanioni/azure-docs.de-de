@@ -3,7 +3,7 @@
 	description="Erfahren Sie, wie Sie Unternehmensbranding der Anmelde- und Zugriffsbereichsseite hinzufügen."
 	services="active-directory"
 	documentationCenter=""
-	authors="markusvi"
+	authors="curtand"
 	manager="femila"
 	editor=""/>
 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="07/13/2016"
-	ms.author="MarkVi"/>
+	ms.date="09/22/2016"
+	ms.author="curtand"/>
 
 # Hinzufügen Ihres Unternehmensbranding zur Anmelde- und Zugriffsbereichsseite
 
@@ -29,8 +29,8 @@ In diesem Thema wird beschrieben, wie Sie die Anmeldeseite und die Zugriffsberei
 
 > [AZURE.NOTE]
 >
-- Unternehmensbranding ist ein Feature, das nur verfügbar ist, wenn Sie Ihr Azure Active Directory auf die Premium oder Basic Edition aktualisiert haben. Weitere Informationen finden Sie unter [Azure Active Directory-Editionen](active-directory-editions.md).
-- Die Azure Active Directory Premium und Basic Editions stehen für Kunden in China zur Verfügung, die mit der weltweit verfügbaren Instanz von Azure Active Directory arbeiten. Allerdings werden die Azure Active Directory-Editionen Premium und Basic derzeit durch den in China von 21Vianet betriebenen Microsoft Azure-Dienst nicht unterstützt. Wenn Sie weitere Informationen benötigen, kontaktieren Sie uns im [Azure Active Directory-Forum](https://feedback.azure.com/forums/169401-azure-active-directory/).
+- Unternehmensbranding ist ein Feature, das nur verfügbar ist, wenn Sie Ihre Azure Active Directory-Instanz auf die Premium oder Basic Edition aktualisiert haben oder Office 365-Benutzer sind. Weitere Informationen finden Sie unter [Azure Active Directory-Editionen](active-directory-editions.md).
+- Die Azure Active Directory-Editionen Premium und Basic stehen für Kunden in China zur Verfügung, die mit der weltweit verfügbaren Instanz von Azure Active Directory arbeiten. Allerdings werden die Azure Active Directory-Editionen Premium und Basic derzeit durch den in China von 21Vianet betriebenen Microsoft Azure-Dienst nicht unterstützt. Wenn Sie weitere Informationen benötigen, kontaktieren Sie uns im [Azure Active Directory-Forum](https://feedback.azure.com/forums/169401-azure-active-directory/).
 
 
 
@@ -164,7 +164,7 @@ Es kann bis zu einer Stunde dauern, bis Neuerungen angezeigt werden, die Sie am 
 
     c. Entfernen Sie den Text aus allen Textfeldern.
 
-    d. Klicken Sie auf **Weiter**.
+    d. Klicken Sie auf **Next**.
 
     e. Entfernen Sie den Text aus allen Textfeldern.
 
@@ -219,4 +219,4 @@ Hintergrundfarbe auf der Anmeldeseite | Die Hintergrundfarbe auf der Anmeldeseit
 [7]: ./media/active-directory-add-company-branding/SignInPage_aftercustomization_croppedtop.png
 [8]: ./media/active-directory-add-company-branding/APBranding.png
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0928_2016-->

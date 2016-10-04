@@ -15,7 +15,7 @@
 	ms.topic="hero-article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="08/11/2016"
+	ms.date="09/26/2016"
 	ms.author="jeffstok"
 />
 
@@ -120,4 +120,4 @@ Hier verwenden wir **LEFT OUTER JOIN** für den gleichen Datenstrom (Selbstverkn
 
 In diesem Tutorial erfahren Sie, wie Sie verschiedene Abfragen in der Stream Analytics-Abfragesprache schreiben und die Ergebnisse im Browser anzeigen. Dies ist aber erst der Anfang. Sie haben mit Stream Analytics noch viele weitere Möglichkeiten. Stream Analytics unterstützt verschiedenste Ein- und Ausgaben und kann sogar Funktionen in Azure Machine Learning nutzen. Das macht Stream Analytics zu einem zuverlässigen Tool für die Datenstromanalyse. Über den [Lernpfad](https://azure.microsoft.com/documentation/learning-paths/stream-analytics/) können Sie sich ausführlicher mit Stream Analytics vertraut machen. Weitere Informationen zum Schreiben von Abfragen finden Sie im Artikel [Gängige Abfragemuster](./stream-analytics-stream-analytics-query-patterns.md).
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

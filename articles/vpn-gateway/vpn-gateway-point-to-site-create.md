@@ -14,7 +14,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="08/31/2016"
+   ms.date="09/27/2016"
    ms.author="cherylmc"/>
 
 # Konfigurieren einer Point-to-Site-Verbindung mit einem VNet über das klassische Portal
@@ -25,12 +25,12 @@
 
 Mit einer P2S-Konfiguration (Point-to-Site) können Sie von einem einzelnen Clientcomputer eine sichere Verbindung mit einem virtuellen Netzwerk herstellen. Eine P2S-Verbindung ist nützlich, wenn Sie von einem Remotestandort, z.B. von zu Hause oder in einer Konferenz, eine Verbindung mit Ihrem VNet herstellen möchten. Diese Methode eignet sich auch, wenn Sie nur wenige Clients besitzen, die mit einem virtuellen Netzwerk verbunden werden müssen.
 
-In diesem Artikel erfahren Sie Schritt für Schritt, wie Sie im Rahmen des **klassischen Bereitstellungsmodells** ein VNet mit einer Point-to-Site-Verbindung über das **klassische Portal** erstellen. Diese Konfiguration kann derzeit für das klassische Bereitstellungsmodell nicht vollständig über das Azure-Portal erstellt werden. Sie können einige dieser Schritte im Azure-Portal ausführen, aber PowerShell ist für den Download der VPN-Clientkonfiguration weiterhin erforderlich.
+In diesem Artikel erfahren Sie Schritt für Schritt, wie Sie im Rahmen des **klassischen Bereitstellungsmodells** ein VNet mit einer Point-to-Site-Verbindung über das **klassische Portal** erstellen.
 
-Damit P2S-Verbindungen funktionieren, ist kein VPN-Gerät und keine öffentliche IP-Adresse erforderlich. Eine VPN-Verbindung wird hergestellt, indem Sie die Verbindung vom Clientcomputer aus starten. Weitere Informationen zu P2S-Verbindungen finden Sie unter [Häufig gestellte Fragen zum VPN Gateway](vpn-gateway-vpn-faq.md#point-to-site-connections) und [Planung und Entwurf](vpn-gateway-plan-design.md).
+Damit Punkt-zu-Standort-Verbindungen funktionieren, ist kein VPN-Gerät und keine öffentliche IP-Adresse erforderlich. Eine VPN-Verbindung wird hergestellt, indem Sie die Verbindung vom Clientcomputer aus starten. Weitere Informationen zu P2S-Verbindungen finden Sie unter [Häufig gestellte Fragen zum VPN Gateway](vpn-gateway-vpn-faq.md#point-to-site-connections) und [Planung und Entwurf](vpn-gateway-plan-design.md).
 
 
-**Bereitstellungsmodelle und Tools für Point-to-Standort-Verbindungen**
+### Bereitstellungsmodelle und -methoden für P2S-Verbindungen
 
 [AZURE.INCLUDE [vpn-gateway-table-point-to-site](../../includes/vpn-gateway-table-point-to-site-include.md)]
 
@@ -40,7 +40,7 @@ Damit P2S-Verbindungen funktionieren, ist kein VPN-Gerät und keine öffentliche
 
 ![P2S-Diagramm](./media/vpn-gateway-point-to-site-create/p2sclassic.png "Point-to-Site")
 
-## Informationen zum Erstellen einer P2S-Verbindung
+## Informationen zum Erstellen einer Punkt-zu-Standort-Verbindung
  
 Im Folgenden werden die Schritte zum Erstellen einer sicheren P2S-Verbindung mit einem virtuellen Netzwerk beschrieben.
 
@@ -92,7 +92,7 @@ Der Gatewaytyp muss als dynamisch konfiguriert werden. Gateways mit statischem R
 
 ## <a name="generate"></a>Abschnitt 2: Generieren und Hochladen von Zertifikaten
 
-Zertifikate werden zur Authentifizierung von VPN-Clients für P2S-VPNs verwendet. Sie können ein Stammzertifikat verwenden, das mit einer Unternehmenszertifikatlösung generiert wurde, oder Sie können ein selbstsigniertes Zertifikat verwenden. Sie können bis zu 20 Stammzertifikate in Azure hochladen. Nach dem Hochladen der CER-Datei kann Azure die darin enthaltenen Informationen verwenden, um Clients zu authentifizieren, für die ein Clientzertifikat installiert ist. Das Clientzertifikat muss mit demselben Zertifikat generiert werden, für das die CER-Datei steht.
+Zertifikate werden zur Authentifizierung von VPN-Clients für Punkt-zu-Standort-VPNs verwendet. Sie können ein Stammzertifikat verwenden, das mit einer Unternehmenszertifikatlösung generiert wurde, oder Sie können ein selbstsigniertes Zertifikat verwenden. Sie können bis zu 20 Stammzertifikate in Azure hochladen. Nach dem Hochladen der CER-Datei kann Azure die darin enthaltenen Informationen verwenden, um Clients zu authentifizieren, für die ein Clientzertifikat installiert ist. Das Clientzertifikat muss mit demselben Zertifikat generiert werden, für das die CER-Datei steht.
 
 In diesem Abschnitt führen Sie Folgendes aus:
 
@@ -170,7 +170,7 @@ Zum Herstellen einer Verbindung mit dem virtuellen Netzwerk müssen Sie auch ein
 ### Teil 4: Überprüfen der VPN-Verbindung
 
 1. Um sicherzustellen, dass die VPN-Verbindung aktiv ist, öffnen Sie eine Eingabeaufforderung mit Administratorrechten, und führen Sie *Ipconfig/all* aus.
-2. Zeigen Sie die Ergebnisse an. Beachten Sie, dass die IP-Adresse, die Sie erhalten, eine Adresse aus dem Adressbereich der P2S-Verbindung ist, den Sie beim Erstellen des virtuellen Netzwerks angegeben haben. Das Ergebnis sollte etwa wie folgt aussehen:
+2. Zeigen Sie die Ergebnisse an. Beachten Sie, dass die IP-Adresse, die Sie erhalten, eine Adresse aus dem Adressbereich der Punkt-zu-Standort-Verbindung ist, den Sie beim Erstellen des virtuellen Netzwerks angegeben haben. Das Ergebnis sollte etwa wie folgt aussehen:
 
 Beispiel:
 
@@ -193,4 +193,4 @@ Sie können dem virtuellen Netzwerk virtuelle Computer hinzufügen. Weitere Info
 
 Weitere Informationen über virtuelle Netzwerke erhalten Sie unter [Dokumentation zu virtuellen Netzwerken](https://azure.microsoft.com/documentation/services/virtual-network/).
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

@@ -13,7 +13,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="08/26/2016"
+   ms.date="09/22/2016"
    ms.author="yurid"/>
 
 # Festlegen von Sicherheitsrichtlinien in Azure Security Center
@@ -64,7 +64,7 @@ Sie können Sicherheitsrichtlinien für jedes Abonnement oder jede Ressourcengru
 
 9. Klicken Sie auf dem Blatt **Sicherheitsrichtlinie** auf **Ein**, um die Sicherheitsempfehlungen zu aktivieren, die Sie für dieses Abonnement verwenden möchten. Klicken Sie auf **Präventionsrichtlinie**, um Optionen wie im folgenden Screenshot anzuzeigen:
 
-	![Auswählen der Sicherheitsrichtlinien](./media/security-center-policies/security-center-policies-fig4-ga.png)
+	![Auswählen der Sicherheitsrichtlinien](./media/security-center-policies/security-center-policies-fig4-ga-new.png)
 
 Die folgende Tabelle gibt Aufschluss über die einzelnen Optionen:
 
@@ -77,8 +77,9 @@ Die folgende Tabelle gibt Aufschluss über die einzelnen Optionen:
 | Netzwerksicherheitsgruppen | Empfiehlt die Konfiguration von [Netzwerksicherheitsgruppen](../virtual-network/virtual-networks-nsg.md), um den eingehenden und ausgehenden Datenverkehr für VMs mit öffentlichen Endpunkten zu steuern. Netzwerksicherheitsgruppen, die für ein Subnetz konfiguriert sind, werden für alle Netzwerkschnittstellen der virtuellen Computer übernommen, sofern nichts anderes angegeben ist. Zusätzlich zur Überprüfung, ob eine Netzwerksicherheitsgruppe konfiguriert wurde, bewertet diese Richtlinie Sicherheitsregeln für eingehende Daten, um Regeln zu identifizieren, die eingehenden Datenverkehr zulassen. |
 | Web Application Firewall | Empfiehlt die Bereitstellung einer Web Application Firewall auf virtuellen Computern, wenn eine der folgenden Bedingungen erfüllt ist:</br></br>[Öffentliche IP auf Instanzebene](../virtual-network/virtual-networks-instance-level-public-ip.md) (ILPIP) wird verwendet, und die Sicherheitsregeln für eingehenden Datenverkehr für die zugeordnete Netzwerksicherheitsgruppe sind so konfiguriert, dass der Zugriff auf den Port 80/443 zugelassen wird.</br></br>Es wird eine IP-Adresse mit Lastenausgleich verwendet, und die zugehörigen Regeln für Lastenausgleich und eingehenden NAT-Datenverkehr (Netzwerkadressübersetzung) sind so konfiguriert, dass Zugriff auf den Port 80/443 zugelassen wird. Weitere Informationen finden Sie unter [Unterstützung des Azure-Ressourcen-Managers für Load Balancer](../load-balancer/load-balancer-arm.md). |
 | Firewall der nächsten Generation | Erweitert den Schutz von Netzwerken über die in Azure integrierten Netzwerksicherheitsgruppen hinaus. Security Center erkennt Bereitstellungen, für die eine Firewall der nächsten Generation empfohlen wird, und ermöglicht Ihnen die Bereitstellung eines virtuellen Geräts. |
-| SQL-Überwachung | Empfiehlt, dass die Überwachung des Zugriffs auf Azure-Datenbanken in Bezug auf Compliance, erweiterte Erkennung und Untersuchung aktiviert wird. |
+| SQL-Überwachung und -Bedrohungserkennung | Empfiehlt die Aktivierung der Zugriffsüberwachung für Azure-Datenbanken zur Erfüllung von Complianceanforderungen sowie die Aktivierung der erweiterten Bedrohungserkennung zu Untersuchungszwecken. |
 | Transparent Data Encryption für SQL | Empfiehlt, dass die Verschlüsselung im Ruhezustand für Ihre Azure SQL-Datenbank, die zugehörigen Sicherungen und die Transaktionsprotokolldateien aktiviert wird. So können Ihre Daten auch dann nicht gelesen werden, wenn unberechtigt darauf zugegriffen wird. |
+| Sicherheitsrisikobewertung | Empfiehlt die Installation einer Lösung zur Sicherheitsrisikobewertung auf dem virtuellen Computer. |
 
 Klicken Sie dem Konfigurieren aller Optionen auf dem Blatt **Sicherheitsrichtlinie**, das die Empfehlungen enthält, auf **OK**, und klicken Sie anschließend auf dem Blatt **Sicherheitsrichtlinie**, das die ursprünglichen Einstellungen enthält, auf **Speichern**.
 
@@ -106,4 +107,4 @@ In diesem Dokument haben Sie erfahren, wie Sie Sicherheitsrichtlinien in Azure S
 - [Azure Security Center – Häufig gestellte Fragen](security-center-faq.md) Enthält häufig gestellte Fragen zur Verwendung des Diensts.
 - [Azure Security-Blog](http://blogs.msdn.com/b/azuresecurity/) Hier finden Sie Blogbeiträge zur Sicherheit und Compliance von Azure.
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="07/23/2016"
+   ms.date="09/27/2016"
    ms.author="lodipalm;barbkess;mausher;jrj;sonyama;kevin"/>
 
 
@@ -49,7 +49,7 @@ Im folgenden Diagramm ist die Architektur ausführlicher dargestellt:
 
 **Computeknoten:** Die Computeknoten fungieren quasi als Antriebsaggregate von SQL Data Warehouse. Es handelt sich dabei um SQL-Datenbanken, die Ihre Daten speichern und Ihre Abfrage verarbeiten. Wenn Sie Daten hinzufügen, werden die Zeilen von SQL Data Warehouse an Ihre Computeknoten verteilt. Die Computeknoten führen die parallelen Abfragen für Ihre Daten durch. Nach der Verarbeitung übergeben sie die Ergebnisse zurück an den Steuerknoten. Um die Abfrage zu beenden, aggregiert der Steuerknoten die Ergebnisse und gibt das endgültige Ergebnis zurück.
 
-**Speicher:** Ihre Daten werden in Azure-Blobspeicher gespeichert. Wenn Computeknoten mit Ihren Daten interagieren, werden Schreib- und Lesevorgänge direkt mit dem Blobspeicher durchgeführt. Da Azure-Speicher transparent und unbegrenzt erweitert werden kann, ist dies auch für SQL Data Warehouse möglich. Da Compute- und Speichervorgänge unabhängig voneinander sind, kann in SQL Data Warehouse die Skalierung von Speicher automatisch separat von der Computeskalierung durchgeführt werden (und umgekehrt). Azure-Blobspeicher ist außerdem vollständig fehlertolerant und führt zu einer Optimierung des Sicherungs- und Wiederherstellungsprozesses.
+**Speicher:** Ihre Daten werden in Azure-Blobspeicher gespeichert. Wenn Computeknoten mit Ihren Daten interagieren, werden Schreib- und Lesevorgänge direkt mit dem Blobspeicher durchgeführt. Da Azure-Speicher transparent und umfassend erweitert werden kann, ist dies auch für SQL Data Warehouse möglich. Da Compute- und Speichervorgänge unabhängig voneinander sind, kann in SQL Data Warehouse die Skalierung von Speicher automatisch separat von der Computeskalierung durchgeführt werden (und umgekehrt). Azure-Blobspeicher ist außerdem vollständig fehlertolerant und führt zu einer Optimierung des Sicherungs- und Wiederherstellungsprozesses.
 
 **Datenverschiebungsdienst:** Mit dem Datenverschiebungsdienst (Data Movement Service, DMS) werden Daten zwischen Knoten verschoben. Per DMS erhalten die Computeknoten Zugriff auf Daten, die sie für Verknüpfungen und Aggregationen benötigen. DMS ist kein Azure-Dienst. Es ist ein Windows-Dienst, der auf allen Knoten zusammen mit SQL-Datenbank ausgeführt wird. Da DMS im Hintergrund ausgeführt wird, erfolgt die Interaktion nicht auf direktem Wege. Wenn Sie sich Abfragepläne ansehen, werden Sie merken, dass diese einige DMS-Vorgänge enthalten. Eine Datenverschiebung ist erforderlich, um jede Abfrage parallel ausführen zu können.
 
@@ -128,7 +128,7 @@ In SQL Data Warehouse sind außerdem viele Tools integriert, mit denen SQL Serve
 
 **Herkömmliche SQL Server-Tools**: SQL Data Warehouse ist vollständig in SQL Server Analysis Services, Integration Services und Reporting Services integriert.
 
-**Cloudbasierte Tools**: SQL Data Warehouse kann zusammen mit einer Reihe von neuen Tools in Azure verwendet werden, z.B. Data Factory, Stream Analytics, Machine Learning und Power BI. Eine vollständige Liste finden Sie unter [Integrated Tools Overview][] \(Übersicht über die integrierten Tools).
+**Cloudbasierte Tools**: SQL Data Warehouse kann zusammen mit einer Reihe von neuen Tools in Azure verwendet werden, z.B. Data Factory, Stream Analytics, Machine Learning und Power BI. Eine vollständige Liste finden Sie unter [Integrated Tools Overview][] (Übersicht über die integrierten Tools).
 
 **Drittanbietertools**: Viele Anbieter von Drittanbietertools haben sich die Integration ihrer Tools in SQL Data Warehouse zertifizieren lassen. Eine vollständige Liste finden Sie unter [SQL Data Warehouse-Lösungspartner][].
 
@@ -142,16 +142,17 @@ PolyBase ermöglicht es Ihnen, Ihre Daten aus unterschiedlichen Quellen mithilfe
 
 - PolyBase verhält sich bei der Integration agnostisch. Für alle unterstützten Quellen werden die gleichen Features und Funktionen bereitgestellt. Die von PolyBase gelesenen Daten können in einer Vielzahl von Formaten vorliegen, einschließlich Dateien mit Trennzeichen oder ORC-Dateien.
 
-- PolyBase kann verwendet werden, um auf Blobspeicher zuzugreifen, der auch als Speicher für einen HD Insight-Cluster verwendet wird. Hierdurch erhalten Sie mit relationalen und nicht relationalen Tools Zugriff auf die gleichen Daten.
+- PolyBase kann verwendet werden, um auf Blobspeicher zuzugreifen, der auch als Speicher für einen HDInsight-Cluster verwendet wird. Hierdurch erhalten Sie mit relationalen und nicht relationalen Tools Zugriff auf die gleichen Daten.
 
 ## Nächste Schritte
 
 Nachdem Sie sich mit den Grundlagen von SQL Data Warehouse vertraut gemacht haben, können Sie sich nun darüber informieren, wie Sie schnell [eine SQL Data Warehouse-Instanz erstellen][] und [Beispieldaten laden][]. Falls Sie mit Azure noch nicht vertraut sind und auf neue Terminologie stoßen, ist das [Azure-Glossar][] sehr nützlich. Oder sehen Sie sich die folgenden SQL Data Warehouse-Ressourcen an:
 
+- [Kundenerfolgsgeschichten]
 - [Blogs]
 - [Funktionsanfragen]
 - [Videos]
-- [CAT Team-Blogs]
+- [Customer Advisory Team-Blogs]
 - [Erstellen eines Supporttickets]
 - [MSDN-Forum]
 - [Stack Overflow-Forum]
@@ -162,24 +163,25 @@ Nachdem Sie sich mit den Grundlagen von SQL Data Warehouse vertraut gemacht habe
 [1]: ./media/sql-data-warehouse-overview-what-is/dwarchitecture.png
 
 <!--Article references-->
-[Erstellen eines Supporttickets]: sql-data-warehouse-get-started-create-support-ticket.md
-[Beispieldaten laden]: sql-data-warehouse-load-sample-databases.md
-[eine SQL Data Warehouse-Instanz erstellen]: sql-data-warehouse-get-started-provision.md
-[Dokumentation zur Migration]: sql-data-warehouse-overview-migrate.md
-[SQL Data Warehouse-Lösungspartner]: sql-data-warehouse-partner-business-intelligence.md
-[Integrated tools overview]: sql-data-warehouse-overview-integrate.md
-[Sichern und Wiederherstellen – Übersicht]: sql-data-warehouse-restore-database-overview.md
+[Erstellen eines Supporttickets]: ./sql-data-warehouse-get-started-create-support-ticket.md
+[Beispieldaten laden]: ./sql-data-warehouse-load-sample-databases.md
+[eine SQL Data Warehouse-Instanz erstellen]: ./sql-data-warehouse-get-started-provision.md
+[Dokumentation zur Migration]: ./sql-data-warehouse-overview-migrate.md
+[SQL Data Warehouse-Lösungspartner]: ./sql-data-warehouse-partner-business-intelligence.md
+[Integrated tools overview]: ./sql-data-warehouse-overview-integrate.md
+[Sichern und Wiederherstellen – Übersicht]: ./sql-data-warehouse-restore-database-overview.md
 [Azure-Glossar]: ../azure-glossary-cloud-terminology.md
 
 <!--MSDN references-->
 
 <!--Other Web references-->
+[Kundenerfolgsgeschichten]: https://customers.microsoft.com/search?sq=&ff=story_products_services%26%3EAzure%2FAzure%2FAzure%20SQL%20Data%20Warehouse%26%26story_product_families%26%3EAzure%2FAzure%26%26story_product_categories%26%3EAzure&p=0
 [Blogs]: https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/
-[CAT Team-Blogs]: https://blogs.msdn.microsoft.com/sqlcat/tag/sql-dw/
+[Customer Advisory Team-Blogs]: https://blogs.msdn.microsoft.com/sqlcat/tag/sql-dw/
 [Funktionsanfragen]: https://feedback.azure.com/forums/307516-sql-data-warehouse
 [MSDN-Forum]: https://social.msdn.microsoft.com/Forums/azure/de-DE/home?forum=AzureSQLDataWarehouse
 [Stack Overflow-Forum]: http://stackoverflow.com/questions/tagged/azure-sqldw
 [Twitter]: https://twitter.com/hashtag/SQLDW
 [Videos]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
 
-<!----HONumber=AcomDC_0727_2016--->
+<!---HONumber=AcomDC_0928_2016-->

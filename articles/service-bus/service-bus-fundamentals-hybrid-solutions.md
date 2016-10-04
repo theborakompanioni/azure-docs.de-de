@@ -110,9 +110,9 @@ Das Verbinden von Anwendungen zählte schon immer zur Erstellung von Komplettlö
 
 Nachdem Sie nun mit den Grundlagen von Azure Service Bus vertraut sind, finden Sie unter den folgenden Links weitere Informationen.
 
-- Gewusst wie: Verwenden von [Service Bus-Warteschlangen](service-bus-dotnet-get-started-with-queues.md)
-- Gewusst wie: Verwenden von [Service Bus-Themen](service-bus-dotnet-how-to-use-topics-subscriptions.md)
-- Gewusst wie: Verwenden von [Service Bus Relay](service-bus-dotnet-how-to-use-relay.md)
+- Gewusst wie: Verwenden von [Service Bus-Warteschlangen](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md)
+- Gewusst wie: Verwenden von [Service Bus-Themen](../service-bus-messaging/service-bus-dotnet-how-to-use-topics-subscriptions.md)
+- Gewusst wie: Verwenden von [Service Bus Relay](../service-bus-relay/service-bus-dotnet-how-to-use-relay.md)
 - [Service Bus-Beispiele:](service-bus-samples.md)
 
 [1]: ./media/service-bus-fundamentals-hybrid-solutions/SvcBus_01_architecture.png
@@ -120,4 +120,4 @@ Nachdem Sie nun mit den Grundlagen von Azure Service Bus vertraut sind, finden S
 [3]: ./media/service-bus-fundamentals-hybrid-solutions/SvcBus_03_topicsandsubscriptions.png
 [4]: ./media/service-bus-fundamentals-hybrid-solutions/SvcBus_04_relay.png
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0928_2016-->
