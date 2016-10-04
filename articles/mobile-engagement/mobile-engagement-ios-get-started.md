@@ -61,28 +61,24 @@ Wir erstellen eine einfache App mit Xcode, um die Integration zu veranschauliche
 
 	![][3]
 
-6. Für **Xcode 7** – Fügen Sie `libxml2.tbd` anstelle von `libxml2.dylib` hinzu.
-
-7. Wechseln Sie zurück zum Azure-Portal auf der Seite **Verbindungsinformationen** Ihrer App, und kopieren Sie die Verbindungszeichenfolge.
+6. Wechseln Sie zurück zum Azure-Portal auf der Seite **Verbindungsinformationen** Ihrer App und kopieren Sie die Verbindungszeichenfolge.
 
 	![][4]
 
-8. Fügen Sie in der Datei **AppDelegate.m** die folgende Codezeile hinzu.
+7. Fügen Sie in der Datei **AppDelegate.m** die folgende Codezeile hinzu.
 
 		#import "EngagementAgent.h"
 
-9. Fügen Sie jetzt die Verbindungszeichenfolge in den `didFinishLaunchingWithOptions`-Delegaten ein.
+8. Fügen Sie jetzt die Verbindungszeichenfolge in den `didFinishLaunchingWithOptions`-Delegaten ein.
 
 		- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 		{
-  			[...]
-			//[EngagementAgent setTestLogEnabled:YES];
-   
+  			[...]   
   			[EngagementAgent init:@"Endpoint={YOUR_APP_COLLECTION.DOMAIN};SdkKey={YOUR_SDK_KEY};AppId={YOUR_APPID}"];
   			[...]
 		}
 
-10. `setTestLogEnabled` ist eine optionale Anweisung, die in SDK-Protokollen das Identifizieren von Problemen ermöglicht.
+9. `setTestLogEnabled` ist eine optionale Anweisung, die in SDK-Protokollen das Identifizieren von Problemen ermöglicht.
 
 ##<a id="monitor"></a>Aktivieren der Überwachung in Echtzeit
 
@@ -121,6 +117,7 @@ Mit Mobile Engagement können Sie mit Ihren Benutzern und mit REACH mit Push-Ben
 1. Importieren Sie in der Datei **AppDeletegate.m** das Engagement Reach-Modul.
 
 		#import "AEReachModule.h"
+		#import <UserNotifications/UserNotifications.h>
 
 2. Erstellen Sie in der `application:didFinishLaunchingWithOptions`-Methode ein Reach-Modul, und übergeben Sie es an die vorhandene Engagement-Initialisierungszeile:
 
@@ -135,12 +132,19 @@ Mit Mobile Engagement können Sie mit Ihren Benutzern und mit REACH mit Push-Ben
 
 1. Fügen Sie die folgende Zeile in die `application:didFinishLaunchingWithOptions` Methode ein:
 
-		if ([application respondsToSelector:@selector(registerUserNotificationSettings:)]) {
-			[application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert) categories:nil]];
+		if (NSFoundationVersionNumber >= NSFoundationVersionNumber_iOS_8_0)
+		{
+			if (NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_9_x_Max)
+			{
+				[UNUserNotificationCenter.currentNotificationCenter requestAuthorizationWithOptions:(UNAuthorizationOptionBadge | UNAuthorizationOptionSound | UNAuthorizationOptionAlert) completionHandler:^(BOOL granted, NSError * _Nullable error) {}];
+			}else
+			{
+				[application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert)   categories:nil]];
+			}
 			[application registerForRemoteNotifications];
 		}
-		else {
-
+		else
+		{
 			[application registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
 		}
 
@@ -178,4 +182,4 @@ Mit Mobile Engagement können Sie mit Ihren Benutzern und mit REACH mit Push-Ben
 [3]: ./media/mobile-engagement-ios-get-started/xcode-build-phases.png
 [4]: ./media/mobile-engagement-ios-get-started/app-connection-info-page.png
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

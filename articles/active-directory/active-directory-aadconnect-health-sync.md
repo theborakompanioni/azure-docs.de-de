@@ -5,7 +5,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="billmath"
-	manager="stevenpo"
+	manager="femila"
 	editor="curtand"/>
 
 <tags
@@ -68,4 +68,4 @@ Dieses Feature bietet eine grafische Darstellung des Trends bei der Anzahl von a
 * [Azure AD Connect Health – FAQ](active-directory-aadconnect-health-faq.md)
 * [Azure AD Connect Health: Versionsverlauf](active-directory-aadconnect-health-version-history.md)
 
-<!----HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0928_2016-->

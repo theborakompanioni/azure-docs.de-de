@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="06/29/2016"
+   ms.date="09/26/2016"
    ms.author="chmatsk;tomfitz"/>
 
 # Verwenden von Azure Resource Manager-Vorlagen in Visual Studio Code
@@ -136,4 +136,4 @@ Wenn die Vorlage fertig ist, können Sie die neuen Ressourcen wie unten beschrie
 - Informationen zu den Vorlagenfunktionen finden Sie unter [Vorlagenfunktionen im Azure-Ressourcen-Manager](resource-group-template-functions.md).
 - Weitere Beispiele zur Verwendung von Visual Studio Code finden Sie unter [Build cloud apps with Visual Studio Code](https://github.com/Microsoft/HealthClinic.biz/wiki/Build-cloud-apps-with-Visual-Studio-Code) (Erstellen von Cloud-Apps mit Visual Studio Code) in der [HealthClinic.biz](https://github.com/Microsoft/HealthClinic.biz) 2015 Connect-[Demo](https://blogs.msdn.microsoft.com/visualstudio/2015/12/08/connectdemos-2015-healthclinic-biz/). Weitere Schnellstarts aus der HealthClinic.biz-Demo finden Sie unter [Azure Developer Tools Quickstarts](https://github.com/Microsoft/HealthClinic.biz/wiki/Azure-Developer-Tools-Quickstarts) (Schnellstarts zu Azure-Entwicklungstools).
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0928_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="06/22/2016"
+	ms.date="09/26/2016"
 	ms.author="juliako"/>
 
 
@@ -25,7 +25,7 @@
 - [REST](http://msdn.microsoft.com/library/azure/dn194267.aspx)
 
 
-> [AZURE.NOTE] Um dieses Lernprogramm abzuschließen, benötigen Sie ein Azure-Konto. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion](/pricing/free-trial/?WT.mc_id=A261C142F).
+> [AZURE.NOTE] Sie benötigen ein Azure-Konto, um dieses Lernprogramm auszuführen. Weitere Informationen finden Sie unter [Kostenloses Azure-Testkonto](/pricing/free-trial/?WT.mc_id=A261C142F).
  
 Über das klassische Azure-Portal können Sie schnell ein Azure Media Services-Konto erstellen. Sie können mit Ihrem Konto auf Mediendienste zugreifen, die Funktionen zum Speichern, Verschlüsseln, Codieren, Verwalten und Streamen von Medieninhalten in Azure bereitstellen. Beim Erstellen eines Media Services-Kontos erstellen Sie auch ein zugehöriges Speicherkonto (oder verwenden ein vorhandenes) in der gleichen geografischen Region wie das Media Services-Konto.
 
@@ -65,7 +65,7 @@ Für den Zugriff auf Media Services sind zwei zugeordnete Konten erforderlich:
 
 6. Klicken Sie unten im Formular auf **Schnellerfassung**.
 
-Sie können den Status des Prozesses im Meldungsbereich unten im Fenster überwachen.
+Sie können den Status des Prozesses im Nachrichtenbereich unten im Fenster überwachen.
 
 Der Status ändert sich in "Aktiv", wenn das Konto erfolgreich erstellt wurde. Die Seite **Mediendienste** wird geöffnet, und das neue Konto wird angezeigt.
 
@@ -106,4 +106,4 @@ Außerdem können Sie Code anzeigen, der mithilfe des Azure Media Services-SDK d
 
   [klassischen Azure-Portal]: http://manage.windowsazure.com/
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0928_2016-->

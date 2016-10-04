@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Verschiedene Möglichkeiten zum Erstellen eines virtuellen Linux-Computers | Microsoft Azure"
-	description="Enthält eine Liste mit den verschiedenen Möglichkeiten zum Erstellen eines virtuellen Linux-Computers unter Azure und für jede Methode Links zu Tools und Tutorials."
+	description="Hier finden Sie Informationen zu den verschiedenen Möglichkeiten zum Erstellen eines virtuellen Linux-Computers unter Azure sowie Links zu Tools und Tutorials für die einzelnen Methoden."
 	services="virtual-machines-linux"
 	documentationCenter=""
 	authors="iainfoulds"
@@ -14,98 +14,107 @@
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="vm-linux"
 	ms.workload="infrastructure-services"
-	ms.date="07/06/2016"
+	ms.date="09/27/2016"
 	ms.author="iainfou"/>
 
-# Verschiedene Möglichkeiten zum Erstellen eines virtuellen Linux-Computers mit Resource Manager
+# Verschiedene Möglichkeiten zum Erstellen eines virtuellen Linux-Computers in Azure
 
-Virtuelle Computer können mit Azure und dem Resource Manager-Bereitstellungsmodell auf unterschiedliche Arten erstellt werden, um den Anforderungen unterschiedlicher Benutzer und Szenarien gerecht zu werden. Dieser Artikel fasst die Unterschiede und die Entscheidungen zusammen, die Sie beim Erstellen Ihres virtuellen Linux-Computers treffen können.
+In Azure können Sie einen virtuellen Linux-Computer mit Ihren bevorzugten Tools und Workflows erstellen. Dieser Artikel fasst die Unterschiede und Beispiele für die Erstellung virtueller Linux-Computer zusammen.
+
 
 ## Azure-Befehlszeilenschnittstelle 
 
 Die Azure-Befehlszeilenschnittstelle ist plattformübergreifend über ein npm-Paket, per Distributionspaket oder per Docker-Container verfügbar. Weitere Informationen finden Sie unter [How to install and configure the Azure CLI](../xplat-cli-install.md) (Installieren und Konfigurieren der Azure-Befehlszeilenschnittstelle). In den folgenden Tutorials wird die Verwendung der Azure-Befehlszeilenschnittstelle anhand von Beispielen veranschaulicht. Jeder Artikel enthält ausführliche Informationen zu den CLI-Schnellstartbefehlen:
 
-* [Erstellen eines virtuellen Linux-Computers in Azure mithilfe der Befehlszeilenschnittstelle](virtual-machines-linux-quick-create-cli.md)
+- [Erstellen eines virtuellen Linux-Computers in Azure mithilfe der Befehlszeilenschnittstelle](virtual-machines-linux-quick-create-cli.md)
+	- Das folgende Beispiel erstellt einen virtuellen CoreOS-Computer mit einem öffentlichen Schlüssel namens `azure_id_rsa.pub`:
 
 	```bash
-	azure vm quick-create -M ~/.ssh/azure_id_rsa.pub -Q CoreOS
+	azure vm quick-create -ssh-publickey-file ~/.ssh/azure_id_rsa.pub \
+		--image-urn CoreOS
 	```
 
-* [Erstellen einer geschützten Linux-VM mit einer Azure-Vorlage](virtual-machines-linux-create-ssh-secured-vm-from-template.md)
+- [Erstellen einer geschützten Linux-VM mit einer Azure-Vorlage](virtual-machines-linux-create-ssh-secured-vm-from-template.md)
+	- Das folgende Beispiel erstellt einen virtuellen Computer unter Verwendung einer auf GitHub gespeicherten Vorlage:
 
 	```bash
 	azure group create --name TestRG --location WestUS 
 		--template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-sshkey/azuredeploy.json
 	```
 
-* [Erstellen einer Linux-VM von Grund auf mit der Azure-Befehlszeilenschnittstelle](virtual-machines-linux-create-cli-complete.md)
+- [Erstellen einer vollständigen Linux-Umgebung über die Azure-Befehlszeilenschnittstelle](virtual-machines-linux-create-cli-complete.md)
+	- Beinhaltet das Erstellen eines Lastenausgleichs und mehrerer virtueller Computer in einer Verfügbarkeitsgruppe.
 
-* [Hinzufügen eines Datenträgers zu einem virtuellen Linux-Computer](virtual-machines-linux-add-disk.md)
+- [Hinzufügen eines Datenträgers zu einem virtuellen Linux-Computer](virtual-machines-linux-add-disk.md)
+	- Das folgende Beispiel fügt einem vorhandenen virtuellen Computer namens `TestVM` einen 5-GB-Datenträger hinzu:
 
 	```bash
-	azure vm disk attach-new --resource-group TestRG --vm-name TestVM <size-in-GB>
+	azure vm disk attach-new --resource-group TestRG --vm-name TestVM \
+		--size-in-GB 5
 	```
 
 ## Azure-Portal
 
-Die grafische Benutzeroberfläche des [Azure-Portals](https://portal.azure.com) bietet eine einfache Möglichkeit zum Testen eines virtuellen Computers. Dies gilt insbesondere dann, wenn Sie noch nicht viel Erfahrung mit Azure haben, da hierzu keine Installation auf Ihrem System erforderlich ist. Verwenden Sie das Azure-Portal, um den virtuellen Computer zu erstellen:
+Über das [Azure-Portal](https://portal.azure.com) können Sie schnell einen virtuellen Computer erstellen, da bei dieser Variante nichts auf Ihrem System installiert werden muss. Verwenden Sie das Azure-Portal, um den virtuellen Computer zu erstellen:
 
-* [Erstellen einer Linux-VM mit dem Azure-Portal](virtual-machines-linux-quick-create-portal.md)
-* [Anfügen eines Datenträgers mit dem Azure-Portal](virtual-machines-linux-attach-disk-portal.md)
+- [Erstellen einer Linux-VM mit dem Azure-Portal](virtual-machines-linux-quick-create-portal.md)
+- [Anfügen eines Datenträgers mit dem Azure-Portal](virtual-machines-linux-attach-disk-portal.md)
+
 
 ## Betriebssystem und Image-Optionen
-Beim Erstellen einer VM muss ein für das auszuführende Betriebssystem geeignetes Image gewählt werden. Azure und seine Partner bieten zahlreiche Images an – einige mit bereits vorinstallierten Anwendungen und Tools. Alternativ können Sie auch ein eigenes Image hochladen (siehe unten).
+Beim Erstellen einer VM muss ein für das auszuführende Betriebssystem geeignetes Image gewählt werden. Azure und seine Partner bieten zahlreiche Images an – einige mit bereits vorinstallierten Anwendungen und Tools. Alternativ können Sie auch Ihre eigenen Images hochladen (wie [im folgenden Abschnitt](#use-your-own-image) beschrieben).
 
 ### Azure-Images
-Sie können die `azure vm image`-CLI-Befehle verwenden, um anzuzeigen, was verfügbar ist, und zwar nach Herausgeber, Distributionsversion und Build.
+Mithilfe der CLI-Befehle vom Typ `azure vm image` können Sie verfügbare Elemente nach Herausgeber, Distributionsversion und Build anzeigen.
 
-Liste mit den verfügbaren Herausgebern:
+So listen Sie die verfügbaren Herausgeber auf:
 
 ```bash
 azure vm image list-publishers --location WestUS
 ```
 
-Liste mit den verfügbaren Produkten (Angeboten) für einen Herausgeber:
+So listen Sie die verfügbaren Produkte (Angebote) für einen Herausgeber auf:
 
 ```bash
 azure vm image list-offers --location WestUS --publisher Canonical
 ```
 
-Liste mit den verfügbaren SKUs (Distributionsversionen) eines Angebots:
+So listen Sie die verfügbaren SKUs (Distributionsversionen) eines Angebots auf:
 
 ```bash
 azure vm image list-skus --location WestUS --publisher Canonical --offer UbuntuServer
 ```
 
-Liste mit allen verfügbaren Images für eine bestimmte Version:
+So listen Sie alle verfügbaren Images für eine bestimmte Version auf:
 
 ```bash
 azure vm image list --location WestUS --publisher Canonical --offer UbuntuServer --sku 16.04.0-LTS
 ```
 
-Weitere Beispiele für das Navigieren zu und Verwenden von verfügbaren Images finden Sie unter [Navigieren zu und Auswählen von Images virtueller Linux-Computer in Azure mithilfe der Befehlszeilenschnittstelle oder PowerShell](virtual-machines-linux-cli-ps-findimage.md).
+Weitere Beispiele für das Durchsuchen und Verwenden von verfügbaren Images finden Sie unter [Auswählen von Linux-VM-Images mit der Azure-CLI](virtual-machines-linux-cli-ps-findimage.md).
 
-Die Befehle `azure vm quick-create` und `azure vm create` verfügen auch über Aliase, die Sie zum schnellen Zugreifen auf die gängigeren Distributionen und ihre neuesten Versionen verwenden können. Dies ist einfacher, als bei jeder Erstellung einer VM den Herausgeber, das Angebot, die SKU und die Version angeben zu müssen:
+Die Befehle `azure vm quick-create` und `azure vm create` verfügen über Aliase, die Sie zum schnellen Zugreifen auf die gängigeren Distributionen und ihre neuesten Versionen verwenden können. Das geht häufig schneller als bei jeder Erstellung eines virtuellen Computers den Herausgeber, das Angebot, die SKU und die Version anzugeben:
 
 | Alias | Herausgeber | Angebot | SKU | Version |
 |:----------|:----------|:-------------|:------------|:--------|
-| CentOS | OpenLogic | Centos | 7,2 | neueste |
+| CentOS | OpenLogic | Centos | 7\.2 | neueste |
 | CoreOS | CoreOS | CoreOS | Stable | neueste |
 | Debian | credativ | Debian | 8 | neueste |
 | openSUSE | SUSE | openSUSE | 13\.2 | neueste |
-| RHEL | Redhat | RHEL | 7,2 | neueste |
+| RHEL | Redhat | RHEL | 7\.2 | neueste |
 | SLES | SLES | SLES | 12-SP1 | neueste |
 | UbuntuLTS | Canonical | UbuntuServer | 14\.04.4-LTS | neueste |
 
 ### Verwenden eines eigenen Image
 
-Sollten Sie spezielle Anpassungen benötigen, verwenden Sie ein Image, das auf einem vorhandenen virtuellen Azure-Computer basiert. Hierzu können Sie diesen virtuellen Computer *erfassen* oder ein eigenes, auf einer virtuellen Festplatte (Virtual Hard Disk, VHD) gespeichertes Image hochladen. Weitere Informationen zu unterstützten Distributionen und zur Verwendung eigener Images finden Sie in den folgenden Artikeln:
+Sollten Sie spezielle Anpassungen benötigen, verwenden Sie ein Image, das auf einem vorhandenen virtuellen Azure-Computer basiert. Hierzu können Sie diesen virtuellen Computer *erfassen*. Sie können auch ein lokal erstelltes Image hochladen. Weitere Informationen zu unterstützten Distributionen und zur Verwendung eigener Images finden Sie in den folgenden Artikeln:
 
-* [Von Azure unterstützte Distributionen](virtual-machines-linux-endorsed-distros.md)
+- [Von Azure unterstützte Distributionen](virtual-machines-linux-endorsed-distros.md)
 
-* [Informationen zu nicht unterstützten Distributionen](virtual-machines-linux-create-upload-generic.md)
+- [Informationen zu nicht unterstützten Distributionen](virtual-machines-linux-create-upload-generic.md)
 
-* [Erfassen eines virtuellen Linux-Computers zur Verwendung als Resource Manager-Vorlage](virtual-machines-linux-capture-image.md) Schnellstartbefehle:
+- [Erfassen eines virtuellen Linux-Computers zur Verwendung als Resource Manager-Vorlage](virtual-machines-linux-capture-image.md)
+	- Beispielbefehle zum Erfassen eines vorhandenen virtuellen Computers:
 
 	```bash
 	azure vm deallocate --resource-group TestRG --vm-name TestVM
@@ -115,10 +124,10 @@ Sollten Sie spezielle Anpassungen benötigen, verwenden Sie ein Image, das auf e
 
 ## Nächste Schritte
 
-* Probieren Sie eines der Tutorials aus, um einen virtuellen Linux-Computer über das [Portal](virtual-machines-linux-quick-create-portal.md), mit der [CLI](virtual-machines-linux-quick-create-cli.md) oder mit einer Azure Resource Manager-[Vorlage](virtual-machines-linux-cli-deploy-templates.md) zu erstellen.
+- Erstellen Sie einen virtuellen Linux-Computer über das [Portal](virtual-machines-linux-quick-create-portal.md), mit der [Befehlszeilenschnittstelle](virtual-machines-linux-quick-create-cli.md) oder mithilfe einer [Azure Resource Manager-Vorlage](virtual-machines-linux-cli-deploy-templates.md).
 
-* Nach dem Erstellen eines virtuellen Linux-Computers können Sie problemlos [einen Datenträger hinzufügen](virtual-machines-linux-add-disk.md).
+- Nach dem Erstellen eines virtuellen Linux-Computers können Sie [einen Datenträger hinzufügen](virtual-machines-linux-add-disk.md).
 
-* Schritte zum schnellen Zurücksetzen von Kennwörtern oder SSH-Schlüsseln sowie zum Verwalten von Benutzern finden Sie [hier](virtual-machines-linux-using-vmaccess-extension.md).
+- Schritte zum schnellen Zurücksetzen von Kennwörtern oder SSH-Schlüsseln sowie zum Verwalten von Benutzern finden Sie [hier](virtual-machines-linux-using-vmaccess-extension.md).
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0928_2016-->

@@ -6,6 +6,6 @@ Obwohl durch die Verwendung von Systemrouten der Datenverkehr für Ihre Bereitst
 
 > [AZURE.NOTE] Der Einfachheit halber wird hier angenommen, dass sich alle VNets in demselben Abonnement befinden. Der Ansatz funktioniert aber auch für das abonnementübergreifende Szenario.
 
-Die wichtigste Eigenschaft für das Transitrouting ist der Parameter „Allow Forwarded Traffic“ (Weitergeleiteten Datenverkehr zulassen). Er ermöglicht das Akzeptieren und Senden von Datenverkehr vom und an das virtuelle Netzwerkgerät im verknüpften VNet.
+Die wichtigste Eigenschaft für das Transitrouting ist der Parameter „Allow Forwarded Traffic“ (Weitergeleiteten Datenverkehr zulassen). Er ermöglicht das Akzeptieren und Senden von Datenverkehr vom virtuellen und an das virtuelle Netzwerkgerät im verknüpften VNet.
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

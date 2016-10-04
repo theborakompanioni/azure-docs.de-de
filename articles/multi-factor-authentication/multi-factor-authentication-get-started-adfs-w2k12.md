@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Schützen von Cloud- und lokalen Ressourcen mithilfe von Azure Multi-Factor Authentication-Server mit Windows Server 2012 R2 AD FS | Microsoft Azure"
+	pageTitle="MFA-Server mit AD FS unter Windows Server 2012 R2 | Microsoft Azure"
 	description="In diesem Artikel werden die ersten Schritte mit Azure Multi-Factor Authentication und AD FS in Windows Server 2012 R2 beschrieben."
 	services="multi-factor-authentication"
 	documentationCenter=""
@@ -13,11 +13,11 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="08/04/2016"
+	ms.date="09/22/2016"
 	ms.author="kgremban"/>
 
 
-# Schützen von Cloud- und lokalen Ressourcen mithilfe von Azure Multi-Factor Authentication-Server mit AD FS in Windows Server 2012 R2
+# Schützen von Cloudressourcen und lokalen Ressourcen mithilfe von Azure Multi-Factor Authentication-Server mit AD FS unter Windows Server 2012 R2
 
 Wenn in Ihrer Organisation Active Directory-Verbunddienste (AD FS) verwendet wird und Sie Cloudressourcen oder lokale Ressourcen schützen möchten, können Sie Azure Multi-Factor Authentication-Server bereitstellen und für AD FS konfigurieren. Diese Konfiguration löst die Multi-Factor Authentication für Endpunkte mit hohem Wert aus.
 
@@ -73,16 +73,57 @@ An diesem Punkt ist Multi-Factor Authentication-Server als zusätzlicher Authent
 3. Führen Sie die Installationsdatei „MultiFactorAuthenticationAdfsAdapterSetup64.msi“ aus.
 4. Klicken Sie im Multi-Factor Authentication AD FS-Adapter-Installer auf **Weiter**, um die Installation durchzuführen.
 5. Klicken Sie auf **Schließen**, wenn die Installation abgeschlossen ist.
-6. Bearbeiten Sie die Datei "MultiFactorAuthenticationAdfsAdapter.config" wie folgt:
 
-|Schritt "MultiFactorAuthenticationAdfsAdapter.config"| Unterschritt|
-|:------------- | :------------- |
-|Legen Sie den Knoten **UseWebServiceSdk** auf **true** fest.||
-|Legen Sie den Wert für **WebServiceSdkUrl** auf die URL des Multi-Factor Authentication-Webdienst-SDKs fest.</br></br>Beispiel: **https://contoso.com/&lt;certificatename&gt;/MultiFactorAuthWebServicesSdk/PfWsSdk.asmx**</br></br>„certificatename“ ist der Name Ihres Zertifikats. ||
-|Konfigurieren Sie das Webdienst-SDK.<br><br>*Option 1*: Verwenden von Benutzername und Kennwort|<ol type="a"><li>Legen Sie den Wert für **WebServiceSdkUsername** auf ein Konto fest, das Mitglied der Sicherheitsgruppe „PhoneFactor Admins“ ist. Verwenden Sie das Format &lt;Domäne&gt;&#92;&lt;Benutzername&gt;.<li>Legen Sie den Wert für **WebServiceSdkPassword** auf das entsprechende Kontokennwort fest.</li></ol>
-|Konfigurieren des Webdienst-SDK, *Fortsetzung*<br><br>*Option 2*: Verwenden eines Clientzertifikats|<ol type="a"><li>Rufen Sie für den Server mit dem Webdienst-SDK ein Clientzertifikat von einer Zertifizierungsstelle ab. Informationen zum Abrufen von Clientzertifikaten finden Sie [hier](https://technet.microsoft.com/library/cc770328.aspx).</li><li>Importieren Sie das Clientzertifikat auf dem Server mit dem Webdienst-SDK in den persönlichen Zertifikatspeicher des lokalen Computers. Hinweis: Stellen Sie sicher, dass das öffentliche Zertifikat der Zertifizierungsstelle im Zertifikatspeicher für die vertrauenswürdigen Stammzertifikate enthalten ist.</li><li>Exportieren Sie die öffentlichen und privaten Schlüssel des Clientzertifikats in eine PFX-Datei.</li><li>Exportieren Sie den öffentlichen Schlüssel im Base64-Format in eine CER-Datei.</li><li>Überprüfen Sie im Server-Manager, ob das Feature „Webserver (IIS)\\Webserver\\Sicherheit\\Authentifizierung über IIS-Clientzertifikatzuordnung“ installiert ist. Falls nicht, wählen Sie **Rollen und Features hinzufügen** aus, um das Feature hinzuzufügen.</li><li>Doppelklicken Sie in IIS-Manager auf den **Konfigurations-Editor** der Website, die das virtuelle Verzeichnis des Webdienst-SDK enthält. Wichtig: Dieser Schritt muss unbedingt auf der Websiteebene (nicht auf Ebene des virtuellen Verzeichnisses) ausgeführt werden.</li><li>Navigieren Sie zum Abschnitt **system.webServer/security/authentication/iisClientCertificateMappingAuthentication**.</li><li>Legen Sie **enabled** auf **true** fest.</li><li>Legen Sie **oneToOneCertificateMappingsEnabled** auf **true** fest.</li><li>Klicken Sie neben **oneToOneMappings** auf die Schaltfläche **...** und anschließend auf den Link **Hinzufügen**.</li><li>Öffnen Sie die zuvor exportierte Base64-CER-Datei. Entfernen Sie *-----BEGIN CERTIFICATE-----*, *-----END CERTIFICATE-----* sowie alle Zeilenumbrüche. Kopieren Sie die dadurch entstehende Zeichenfolge.</li><li>Legen Sie das **Zertifikat** auf die im vorherigen Schritt kopierte Zeichenfolge fest.</li><li>Legen Sie **enabled** auf **true** fest.</li><li>Legen Sie **userName** auf ein Konto fest, das Mitglied der Sicherheitsgruppe „PhoneFactor Admins“ ist. Verwenden Sie das Format &lt;Domäne&gt;&#92;&lt;Benutzername&gt;.</li><li>Legen Sie das Kennwort auf das entsprechende Kontokennwort fest, und schließen Sie den Konfigurations-Editor.</li><li>Klicken Sie auf den Link **Übernehmen**.</li><li>Doppelklicken Sie im virtuellen Verzeichnis des Webdienst-SDKs auf **Authentifizierung**.</li><li>Stellen Sie sicher, dass **ASP.NET-Identitätswechsel** und **Standardauthentifizierung** auf **Enabled** und alle anderen Elemente auf **Disabled** festgelegt sind.</li><li>Doppelklicken Sie im virtuellen Verzeichnis des Webdienst-SDKs auf **SSL-Einstellungen**.</li><li>Legen Sie **Clientzertifikate** auf **Akzeptieren** fest, und klicken Sie auf **Übernehmen**.</li><li>Kopieren Sie die zuvor exportierte PFX-Datei auf den Server, auf dem der AD FS-Adapter ausgeführt wird.</li><li>Importieren Sie die PFX-Datei in den persönlichen Zertifikatspeicher des lokalen Computers.</li><li>Klicken Sie mit der rechten Maustaste, und wählen Sie **Private Schlüssel verwalten** aus. Gewähren Sie dem Konto, das Sie zur Anmeldung beim AD FS-Dienst verwendet haben, Lesezugriff.</li><li>Öffnen Sie das Clientzertifikat, und kopieren Sie den Fingerabdruck auf der Registerkarte **Details**.</li><li>Legen Sie in der Datei „MultiFactorAuthenticationAdfsAdapter.config“ **WebServiceSdkCertificateThumbprint** auf die im vorherigen Schritt kopierte Zeichenfolge fest.</li></ol>
-| Bearbeiten Sie das Skript „Register-MultiFactorAuthenticationAdfsAdapter.ps1“, indem Sie *-ConfigurationFilePath &lt;Pfad&gt;* am Ende des Befehls `Register-AdfsAuthenticationProvider` hinzufügen, wobei *&lt;Pfad&gt;* der vollständige Pfad zur Datei „MultiFactorAuthenticationAdfsAdapter.config“ ist.||
+## Bearbeiten der Datei „MultiFactorAuthenticationAdfsAdapter.config“
 
-Führen Sie das Skript „\\Programme\\Multi-Factor Authentication Server\\Register-MultiFactorAuthenticationAdfsAdapter.ps1“ in PowerShell aus, um den Adapter zu registrieren. Der Adapter wird als "WindowsAzureMultiFactorAuthentication" registriert. Sie müssen den AD FS-Dienst neu starten, damit die Registrierung wirksam wird.
+Führen Sie die folgenden Schritte aus, um die Datei „MultiFactorAuthenticationAdfsAdapter.config“ zu bearbeiten:
 
-<!---HONumber=AcomDC_0921_2016-->
+1. Legen Sie den Knoten **UseWebServiceSdk** auf **true** fest.
+2. Legen Sie den Wert für **WebServiceSdkUrl** auf die URL des Multi-Factor Authentication-Webdienst-SDKs fest. Beispiel: **https://contoso.com/&lt;certificatename&gt;/MultiFactorAuthWebServicesSdk/PfWsSdk.asmx** („certificatename“ steht hierbei für den Namen Ihres Zertifikats.)
+3. Bearbeiten Sie das Skript „Register-MultiFactorAuthenticationAdfsAdapter.ps1“, indem Sie *-ConfigurationFilePath &lt;Pfad&gt;* am Ende des Befehls `Register-AdfsAuthenticationProvider` hinzufügen, wobei *&lt;Pfad&gt;* der vollständige Pfad zur Datei „MultiFactorAuthenticationAdfsAdapter.config“ ist.
+
+### Konfigurieren des Webdienst-SDKs mit einem Benutzernamen und einem Kennwort
+
+Das Webdienst-SDK kann auf zwei Arten konfiguriert werden: mit einem Benutzernamen und einem Kennwort oder mit einem Clientzertifikat. Im Anschluss finden Sie die Schritte für die erste Option. Informationen zur zweiten Option finden Sie weiter unten.
+
+1. Legen Sie den Wert für **WebServiceSdkUsername** auf ein Konto fest, das Mitglied der Sicherheitsgruppe „PhoneFactor Admins“ ist. Verwenden Sie das Format „&lt;Domäne&gt;&#92;&lt;Benutzername&gt;“.
+2. Legen Sie den Wert für **WebServiceSdkPassword** auf das entsprechende Kontokennwort fest.
+
+### Konfigurieren des Webdienst-SDKs mit einem Clientzertifikat
+
+Falls Sie keine Kombination aus Benutzername und Kennwort verwenden möchten, gehen Sie wie folgt vor, um das Webdienst-SDK mit einem Clientzertifikat zu konfigurieren.
+
+1. Beziehen Sie für den Server mit dem Webdienst-SDK ein Clientzertifikat von einer Zertifizierungsstelle. Informationen dazu finden Sie [hier](https://technet.microsoft.com/library/cc770328.aspx).
+2. Importieren Sie das Clientzertifikat auf dem Server mit dem Webdienst-SDK in den persönlichen Zertifikatspeicher des lokalen Computers. Hinweis: Vergewissern Sie sich, dass das öffentliche Zertifikat der Zertifizierungsstelle im Zertifikatspeicher für die vertrauenswürdigen Stammzertifikate enthalten ist.
+3. Exportieren Sie den öffentlichen und privaten Schlüssel des Clientzertifikats in eine PFX-Datei.
+4. Exportieren Sie den öffentlichen Schlüssel im Base64-Format in eine CER-Datei.
+5. Vergewissern Sie sich im Server-Manager, dass das Feature „Webserver (IIS)\\Webserver\\Sicherheit\\Authentifizierung über IIS-Clientzertifikatzuordnung“ installiert ist. Falls nicht, wählen Sie **Rollen und Features hinzufügen** aus, um das Feature hinzuzufügen.
+6. Doppelklicken Sie in IIS-Manager für die Website, die das virtuelle Verzeichnis des Webdienst-SDKs enthält, auf **Konfigurations-Editor**. Hinweis: Dieser Schritt muss unbedingt auf der Websiteebene (nicht auf Ebene des virtuellen Verzeichnisses) ausgeführt werden.
+7. Navigieren Sie zum Abschnitt **system.webServer/security/authentication/iisClientCertificateMappingAuthentication**.
+8. Legen Sie **enabled** auf **true** fest.
+9. Legen Sie **oneToOneCertificateMappingsEnabled** auf **true** fest.
+10. Klicken Sie neben **oneToOneMappings** auf die Schaltfläche **...** und anschließend auf den Link **Hinzufügen**.
+11. Öffnen Sie die zuvor exportierte Datei „Base64.cer“. Entfernen Sie *-----BEGIN CERTIFICATE-----*, *-----END CERTIFICATE-----* sowie alle Zeilenumbrüche. Kopieren Sie die resultierende Zeichenfolge.
+12. Legen Sie **certificate** auf die im vorherigen Schritt kopierte Zeichenfolge fest.
+13. Legen Sie **enabled** auf **true** fest.
+14. Legen Sie **userName** auf ein Konto fest, das Mitglied der Sicherheitsgruppe „PhoneFactor Admins“ ist. Verwenden Sie das Format „&lt;Domäne&gt;&#92;&lt;Benutzername&gt;“.
+15. Legen Sie das Kennwort auf das entsprechende Kontokennwort fest, und schließen Sie den Konfigurations-Editor.
+16. Klicken Sie auf den Link **Übernehmen**.
+17. Doppelklicken Sie im virtuellen Verzeichnis des Webdienst-SDKs auf **Authentifizierung**.
+18. Vergewissern Sie sich, dass **ASP.NET-Identitätswechsel** und **Standardauthentifizierung** aktiviert und alle anderen Elemente deaktiviert sind.
+19. Doppelklicken Sie im virtuellen Verzeichnis des Webdienst-SDKs auf **SSL-Einstellungen**.
+20. Legen Sie **Clientzertifikate** auf **Akzeptieren** fest, und klicken Sie auf **Übernehmen**.
+21. Kopieren Sie die zuvor exportierte PFX-Datei auf den Server, auf dem der AD FS-Adapter ausgeführt wird.
+22. Importieren Sie die PFX-Datei in den persönlichen Zertifikatspeicher des lokalen Computers.
+23. Klicken Sie mit der rechten Maustaste, wählen Sie **Private Schlüssel verwalten** aus, und gewähren Sie dem Konto, das Sie für die Anmeldung beim Active Directory-Verbunddienst verwendet haben, Lesezugriff.
+24. Öffnen Sie das Clientzertifikat, und kopieren Sie den Fingerabdruck aus der Registerkarte **Details**.
+25. Legen Sie in der Datei „MultiFactorAuthenticationAdfsAdapter.config“ das Element **WebServiceSdkCertificateThumbprint** auf die im vorherigen Schritt kopierte Zeichenfolge fest.
+
+
+Führen Sie schließlich das Skript „\\Programme\\Multi-Factor Authentication Server\\Register-MultiFactorAuthenticationAdfsAdapter.ps1“ in PowerShell aus, um den Adapter zu registrieren. Der Adapter wird als "WindowsAzureMultiFactorAuthentication" registriert. Sie müssen den AD FS-Dienst neu starten, damit die Registrierung wirksam wird.
+
+## Verwandte Themen
+
+Hilfe bei der Problembehandlung finden Sie unter [Azure Multi-Factor Authentication – Häufig gestellte Fragen](multi-factor-authentication-faq.md).
+
+<!---HONumber=AcomDC_0928_2016-->

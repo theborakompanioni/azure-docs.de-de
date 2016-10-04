@@ -1,4 +1,4 @@
-Beim Erstellen eines Gateways des virtuellen Netzwerks müssen Sie die gewünschte Gateway-SKU angeben. Das Gateway des virtuellen Netzwerks wird bei der Erstellung als virtuelle Hardware angelegt. Wenn Sie eine höhere Gateway-SKU wählen, wird dem Gateway mehr Verarbeitungsleistung zugewiesen, um den Datenverkehr weiterzuleiten und – im Falle eines VPN-Gateways – eine VPN-Verschlüsselung durchzuführen. Gateway-SKUs gelten sowohl für das Resource Manager-Bereitstellungsmodell als auch für das klassische Bereitstellungsmodell.
+Beim Erstellen eines Gateways des virtuellen Netzwerks müssen Sie die gewünschte Gateway-SKU angeben. Wenn Sie eine höhere Gateway-SKU wählen, werden dem Gateway mehr CPUs und eine höhere Bandbreite zugewiesen. Infolgedessen unterstützt das Gateway einen höheren Netzwerkdurchsatz im virtuellen Netzwerk.
 
 Für VPN-Gateways können die folgenden SKUs verwendet werden:
 
@@ -6,4 +6,4 @@ Für VPN-Gateways können die folgenden SKUs verwendet werden:
 - Standard
 - HighPerformance
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

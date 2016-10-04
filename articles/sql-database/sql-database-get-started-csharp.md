@@ -25,7 +25,7 @@
 - [C#](sql-database-get-started-csharp.md)
 - [PowerShell](sql-database-get-started-powershell.md)
 
-Erfahren Sie, wie Sie C# zum Erstellen einer Azure SQL-Datenbank mithilfe der [Azure SQL-Datenbankbibliothek für .NET](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql) erstellen. In diesem Artikel wird beschrieben, wie Sie eine Einzeldatenbank mit SQL und C# erstellen. Informationen zum Erstellen von Pools für elastische Datenbanken finden Sie unter [Erstellen eines Pools für elastische Datenbanken](sql-database-elastic-pool-create-portal.md).
+Erfahren Sie, wie Sie C# zum Erstellen einer Azure SQL-Datenbank mithilfe der [Azure SQL-Datenbankbibliothek für .NET](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql) erstellen. In diesem Artikel wird beschrieben, wie Sie eine Einzeldatenbank mit SQL und C# erstellen. Informationen zum Erstellen von Pools für elastische Datenbanken finden Sie unter [Erstellen eines Pools für elastische Datenbanken](sql-database-elastic-pool-create-csharp.md).
 
 Die Azure SQL-Datenbankbibliothek für .NET bietet eine [Azure-Ressourcen-Manager](../resource-group-overview.md)-basierte API, die die [Ressourcen-Manager-basierte REST-API für die SQL-Datenbank](https://msdn.microsoft.com/library/azure/mt163571.aspx) umfasst.
 
@@ -42,7 +42,7 @@ Damit Sie die in diesem Artikel aufgeführten Schritte ausführen können, benö
 ## Erstellen einer Konsolen-App und Installieren der erforderlichen Bibliotheken
 
 1. Starten Sie Visual Studio.
-2. Klicken Sie auf **Datei** > **Neu** > **Projekt**.
+2. Klicken Sie auf **Datei** > **Neu** > **Projekt**.
 3. Erstellen Sie eine **Konsolenanwendung** mit C#, und nennen Sie sie *SqlDbConsoleApp*.
 
 
@@ -291,4 +291,4 @@ Nachdem Sie SQL-Datenbank ausprobiert und mit C# eine Datenbank erstellt haben, 
 [8]: ./media/sql-database-get-started-csharp/add-application2.png
 [9]: ./media/sql-database-get-started-csharp/clientid.png
 
-<!----HONumber=AcomDC_0914_2016--->
+<!---HONumber=AcomDC_0928_2016-->

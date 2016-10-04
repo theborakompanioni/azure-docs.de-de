@@ -23,11 +23,11 @@
 - [Häufig gestellte Fragen zu Backup für den klassischen Modus](backup-azure-backup-faq.md)
 - [Häufig gestellte Fragen zu Backup für den Resource Manager-Modus](backup-azure-backup-ibiza-faq.md)
 
-Dieser Artikel enthält Informationen zum Recovery Services-Tresor und ergänzt die [häufig gestellten Fragen zu Azure Backup](backup-azure-backup-faq). Der Artikel „Azure Backup – Häufig gestellte Fragen“ enthält alle Fragen und Antworten zum Azure Backup-Dienst.
+Dieser Artikel enthält Informationen zum Recovery Services-Tresor und ergänzt die [häufig gestellten Fragen zu Azure Backup](backup-azure-backup-faq.md). Der Artikel „Azure Backup – Häufig gestellte Fragen“ enthält alle Fragen und Antworten zum Azure Backup-Dienst.
 
 Sie können im Disqus-Abschnitt dieses Artikels oder eines verwandten Artikels Fragen zu Azure Backup stellen. Außerdem können Sie Fragen zum Azure Backup-Dienst im [Diskussionsforum](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup) stellen.
 
-## Recovery Services-Tresore sind Resource Manager-basiert. Werden Backup-Tresore (klassischer Modus weiterhin unterstützt)? <br/>
+## Recovery Services-Tresor basieren auf Resource Manager. Werden Sicherungstresore (klassischer Modus) weiterhin unterstützt? <br/>
 Ja. Backup-Tresore werden weiterhin unterstützt. Erstellen Sie Backup-Tresore im [klassischen Portal](https://manage.windowsazure.com). Erstellen Sie Recovery Services-Tresore im [Azure-Portal](https://portal.azure.com). Wir empfehlen Ihnen jedoch, Recovery Services-Tresore zu erstellen, da alle zukünftigen Verbesserungen nur für Recovery Services-Tresore verfügbar sind.
 
 ## Kann ich einen Backup-Tresor zu einem Recovery Services-Tresor migrieren? <br/>
@@ -43,4 +43,4 @@ Sicherungen von klassischen virtuellen Computern in einem Sicherungstresor werde
 2. Migrieren Sie den virtuellen Computer vom klassischen Modus zum Resource Manager-Modus. Stellen Sie sicher, dass Speicher und Netzwerk, die dem virtuellen Computer entsprechen, auch zum Resource Manager-Modus migriert werden.
 3. Erstellen Sie einen Recovery Services-Tresor, und konfigurieren Sie die Sicherung auf dem migrierten virtuellen Computer mithilfe der Aktion **Sicherung** oben auf dem Tresordashboard. Erfahren Sie mehr darüber, wie Sie [Sicherungen im Recovery Services-Tresor ermöglichen](backup-azure-vms-first-look-arm.md).
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0928_2016-->

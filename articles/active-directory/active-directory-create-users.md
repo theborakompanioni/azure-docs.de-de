@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="06/21/2016"
-	ms.author="curtand;viviali"/>
+	ms.date="09/22/2016"
+	ms.author="curtand"/>
 
 # Hinzufügen von neuen Benutzer oder Benutzern mit Microsoft-Konten zu Azure Active Directory
 
@@ -24,7 +24,7 @@ Fügen Sie Benutzer hinzu, um Ihr Verzeichnis aufzufüllen. In diesem Artikel wi
 
 1. Melden Sie sich beim [klassischen Azure-Portal](https://manage.windowsazure.com) mit einem Konto an, bei dem es sich um einen globalen Administrator für das Verzeichnis handelt.
 2. Wählen Sie **Active Directory** und dann den Namen des Verzeichnisses Ihrer Organisation.
-3. Wählen Sie die Registerkarte **Benutzer** und anschließend in der Befehlsleiste die Option **Benutzer hinzufügen**.
+3. Wählen Sie die Registerkarte **Benutzer** und anschließend auf der Befehlsleiste die Option **Benutzer hinzufügen**.
 4. Wählen Sie auf der Seite **Informationen über diesen Benutzer** unter **Art des Benutzers** eine der folgenden Optionen aus:
 
 	- **Neuer Benutzer in Ihrem Unternehmen**: Dient zum Hinzufügen eines neuen Benutzerkontos zu Ihrem Verzeichnis.
@@ -86,4 +86,4 @@ Anschließend können Sie die Optionen zur Zugriffssteuerung für Gastbenutzer �
 [1]: ./media/active-directory-create-users/RBACDirConfigTab.png
 [2]: ./media/active-directory-create-users/RBACGuestAccessControls.png
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0928_2016-->

@@ -42,7 +42,7 @@ Eine Funktions-App hostet die Ausführung Ihrer Funktionen in Azure. Bevor Sie e
 
 	![Erstellen einer neuen GitHub-Webhookfunktion](./media/functions-create-a-web-hook-or-api-function/functions-create-new-github-webhook.png)
 
-4. Beachten Sie auf der Registerkarte **Entwickeln** die express.js-Beispielfunktion im Fenster **Code**. Diese Funktion empfängt eine GitHub-Anforderung von einem Problemberichtwebhook, protokolliert den Problemtext und sendet eine Antwort als `New GitHub comment: <Your issue comment text>` an den Webhook.
+4. Beachten Sie unter **Entwickeln** die express.js-Beispielfunktion im Fenster **Code**. Diese Funktion empfängt eine GitHub-Anforderung von einem Problemberichtwebhook, protokolliert den Problemtext und sendet eine Antwort als `New GitHub comment: <Your issue comment text>` an den Webhook.
 
 
 	![Erstellen einer neuen GitHub-Webhookfunktion](./media/functions-create-a-web-hook-or-api-function/functions-new-webhook-in-portal.png)
@@ -89,4 +89,4 @@ Weitere Informationen zu Azure Functions finden Sie in diesen Themen.
 
 [AZURE.INCLUDE [Hinweis zu den ersten Schritten](../../includes/functions-get-help.md)]
 
-<!---HONumber=AcomDC_0907_2016--->
+<!---HONumber=AcomDC_0928_2016-->

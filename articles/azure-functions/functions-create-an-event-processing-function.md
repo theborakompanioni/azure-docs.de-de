@@ -1,7 +1,7 @@
 <properties
    pageTitle="Erstellen einer Ereignisverarbeitungsfunktion | Microsoft Azure"
    description="Verwenden Sie Azure Functions, um eine C#-Funktion zu erstellen, die basierend auf einem Ereignistimer ausgeführt wird."
-   services="azure-functions"
+   services="functions"
    documentationCenter="na"
    authors="ggailey777"
    manager="erikre"
@@ -15,7 +15,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="multiple"
    ms.workload="na"
-   ms.date="06/05/2016"
+   ms.date="09/25/2016"
    ms.author="glenga"/>
    
 # Erstellen einer Azure-Ereignisverarbeitungsfunktion
@@ -44,7 +44,7 @@ Eine Funktions-App hostet die Ausführung Ihrer Funktionen in Azure. Bevor Sie e
 
 	![Neue per Timer ausgelöste Funktion erstellen](./media/functions-create-an-event-processing-function/functions-create-storage-queue-output-binding.png)
 
-5. Klicken Sie in der Ausgabe der Azure Storage-Warteschlange neben der **Storage account connection** (Speicherkontoverbindung) auf **Auswählen**, wählen Sie das vorhandene Speicherkonto aus bzw. erstellen Sie ein neues, und klicken Sie dann auf **Speichern**.
+5. Wählen Sie in der Ausgabe der **Azure Storage-Warteschlange** eine vorhandene **Speicherkontoverbindung** aus, oder erstellen Sie eine neue Verbindung, und klicken Sie anschließend auf **Speichern**.
 
 	![Neue per Timer ausgelöste Funktion erstellen](./media/functions-create-an-event-processing-function/functions-create-storage-queue-output-binding-2.png)
 
@@ -75,10 +75,10 @@ Dies ist ein stark vereinfachtes Beispiel für einen Trigger mit Timer und eine 
 
 Weitere Informationen zu Azure Functions finden Sie in diesen Themen.
 
-+ [Entwicklerreferenz zu Azure Functions](functions-reference.md) Referenz zum Programmieren von Funktionen sowie zum Festlegen von Triggern und Bindungen.
-+ [Testen von Azure Functions](functions-test-a-function.md) Beschreibt verschiedene Tools und Techniken zum Testen Ihrer Funktionen.
-+ [Skalieren von Azure Functions](functions-scale.md) Beschreibt die für Azure Functions verfügbaren Servicepläne, einschließlich des dynamischen Serviceplans, und wie Sie den richtigen Plan finden.  
++ [Azure Functions developer reference (Azure Functions-Entwicklerreferenz)](functions-reference.md) Referenz zum Programmieren von Funktionen sowie zum Festlegen von Triggern und Bindungen
++ [Testing Azure Functions (Testen von Azure Functions)](functions-test-a-function.md) Beschreibt verschiedene Tools und Techniken zum Testen Ihrer Funktionen
++ [How to scale Azure Functions (Skalieren von Azure Functions)](functions-scale.md) Beschreibt die für Azure Functions verfügbaren Servicepläne einschließlich des dynamischen Serviceplans, und wie Sie den richtigen Plan finden
 
 [AZURE.INCLUDE [Hinweis zu den ersten Schritten](../../includes/functions-get-help.md)]
 
-<!---HONumber=AcomDC_0622_2016--->
+<!---HONumber=AcomDC_0928_2016-->

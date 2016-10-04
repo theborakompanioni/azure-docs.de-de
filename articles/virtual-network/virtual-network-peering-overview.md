@@ -31,7 +31,7 @@ Anforderungen und zentrale Aspekte des VNet-Peerings:
 - Die beiden mittels Peering verknüpften virtuellen Netzwerke müssen sich in der gleichen Azure-Region befinden.
 - Die mittels Peering verknüpften virtuellen Netzwerke müssen über IP-Adressräume ohne Überschneidungen verfügen.
 - VNet-Peering erfolgt zwischen zwei virtuellen Netzwerken, und es besteht keine abgeleitete transitive Beziehung. Wenn also beispielsweise das virtuelle Netzwerk A mittels Peering mit dem virtuellen Netzwerk B und das virtuelle Netzwerk B mittels Peering mit dem virtuellen Netzwerk C verknüpft ist, ergibt sich daraus keine Verknüpfung zwischen dem virtuellen Netzwerk A und dem virtuellen Netzwerk C.
-- Das Peering kann zwischen virtuellen Netzwerken in zwei verschiedenen Abonnements hergestellt werden, sofern ein privilegierter Benutzer beider Abonnements das Peering autorisiert.
+- Das Peering kann zwischen virtuellen Netzwerken in zwei verschiedenen Abonnements hergestellt werden, sofern ein privilegierter Benutzer beider Abonnements das Peering autorisiert und die Abonnements dem gleichen Active Directory-Mandanten zugewiesen sind.
 - Ein virtuelles Netzwerk, das auf dem Resource Manager-Bereitstellungsmodell basiert, kann mittels Peering mit einem anderen virtuellen Netzwerk verknüpft werden, das ebenfalls auf diesem Modell oder aber auf dem klassischen Bereitstellungsmodell basiert. Virtuelle Netzwerke, die auf dem klassischen Bereitstellungsmodell basieren, können hingegen nicht untereinander mittels Peering verknüpft werden.
 - Für die Kommunikation zwischen virtuellen Computern in mittels Peering verknüpften virtuellen Netzwerken bestehen zwar keine weiteren Bandbreiteneinschränkungen, es gilt jedoch die auf der VM-Größe basierende Bandbreitenobergrenze.
 
@@ -88,4 +88,4 @@ Während der Beurteilungsphase fallen für das VNet-Peering keine Kosten an. Nac
 - Weitere Informationen zu [Netzwerksicherheitsgruppen](virtual-networks-nsg.md)
 - Weitere Informationen zu [benutzerdefinierten Routen und IP-Weiterleitung](virtual-networks-udr-overview.md)
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0928_2016-->

@@ -34,7 +34,7 @@ Glückwunsch! Sie haben nun einen Service Bus Messaging-Namespace erstellt.
 
 Sehen Sie sich das [GitHub-Repository mit Beispielen](https://github.com/Azure-Samples/azure-servicebus-messaging-samples][github-samples) an, die einige erweiterte Features von Azure Service Bus Messaging veranschaulichen.
 
-[create-namespace-using-arm]: ./service-bus-resource-manager-overview.md
+[create-namespace-using-arm]: ../service-bus-messaging/service-bus-resource-manager-overview.md
 [github-samples]: https://github.com/Azure-Samples/azure-servicebus-messaging-samples
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0928_2016-->

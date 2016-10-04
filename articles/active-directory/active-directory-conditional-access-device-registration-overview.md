@@ -14,16 +14,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="06/23/2016"
-	ms.author="femila"/>
+	ms.date="09/27/2016"
+	ms.author="Markvi"/>
 
 # Erste Schritte bei der Azure Active Directory-Geräteregistrierung
 
 Die Azure Active Directory-Geräteregistrierung ist die Grundlage gerätebasierter Szenarien für den bedingten Zugriff. Wenn ein Gerät registriert wird, stellt die Azure Active Directory-Geräteregistrierung eine Identität für das Gerät bereit, die bei der Benutzeranmeldung zum Authentifizieren des Geräts dient. Das authentifizierte Gerät und die Attribute des Geräts können anschließend verwendet werden, um bedingte Zugriffsrichtlinien für Anwendungen zu erzwingen, die in der Cloud und lokal gehostet werden.
 
-In Kombination mit einer Lösung für die Verwaltung mobiler Geräte, wie z.B. Intune, werden die Geräteattribute in Azure Active Directory mit zusätzlichen Informationen über das Gerät aktualisiert. So können Sie Regeln für den bedingten Zugriff erstellen, die erzwingen, dass der Zugriff von Geräten Ihren Standards für Sicherheit und Kompatibilität entspricht.
-
-Die Azure Active Directory-Geräteregistrierung steht in Azure Active Directory zur Verfügung. Dieser Dienst bietet Unterstützung für iOS-, Android- und Windows-Geräte. Für die einzelnen Szenarien, in denen die Geräteregistrierung von Azure Active Directory eingesetzt wird, gelten ggf. spezielle Anforderungen und Einschränkungen hinsichtlich der Plattformunterstützung.
+In Kombination mit einer Lösung für die Verwaltung mobiler Geräte, wie z.B. Microsoft Intune, werden die Geräteattribute in Azure Active Directory mit zusätzlichen Informationen über das Gerät aktualisiert. So können Sie Regeln für den bedingten Zugriff erstellen, die erzwingen, dass der Zugriff von Geräten Ihren Standards für Sicherheit und Kompatibilität entspricht. Weitere Informationen zum Registrieren von Geräten in Microsoft Intune finden Sie unter [Registrieren von Geräten für die Verwaltung in Intune](https://docs.microsoft.com/intune/deploy-use/enroll-devices-in-microsoft-intune).
 
 ## Unterstützte Szenarien für die Azure Active Directory-Geräteregistrierung
 
@@ -31,11 +29,14 @@ Die Azure Active Directory-Geräteregistrierung unterstützt iOS-, Android- und 
 
 - **Bedingter Zugriff auf lokal gehostete Anwendungen:** Sie können registrierte Geräte mit Zugriffsrichtlinien für Anwendungen verwenden, die für die Verwendung von AD FS mit Windows Server 2012 R2 konfiguriert sind. Weitere Informationen zum Einrichten des bedingten Zugriffs für lokale Systeme finden Sie unter [Einrichten des lokalen bedingten Zugriffs mithilfe der Azure Active Directory-Geräteregistrierung](active-directory-conditional-access-on-premises-setup.md).
 
-- **Bedingter Zugriff für Office 365-Anwendungen mit Microsoft Intune:** IT-Administratoren können Geräterichtlinien für den bedingten Zugriff bereitstellen, um Unternehmensressourcen zu schützen, und gleichzeitig Information-Workern auf kompatiblen Geräten den Zugriff auf die Dienste zu gestatten. Weitere Informationen finden Sie unter „Geräterichtlinien für den bedingten Zugriff auf Office 365-Dienste“.
+- **Bedingter Zugriff für Office 365-Anwendungen mit Microsoft Intune:** IT-Administratoren können Geräterichtlinien für den bedingten Zugriff bereitstellen, um Unternehmensressourcen zu schützen, und gleichzeitig Information-Workern auf kompatiblen Geräten den Zugriff auf die Dienste zu gestatten. Weitere Informationen finden Sie unter [Geräterichtlinien für den bedingten Zugriff auf Office 365-Dienste](active-directory-conditional-access-device-policies.md).
 
 ##Einrichten der Azure Active Directory-Geräteregistrierung
 
 Sie müssen die Azure AD-Geräteregistrierung im Azure-Portal aktivieren, damit mobile Geräte den Dienst ermitteln können, indem sie nach bekannten DNS-Einträgen suchen. Sie müssen den DNS-Eintrag für Ihr Unternehmen so konfigurieren, dass Windows 10-, Windows 8.1-, Windows 7-, Android- und iOS-Geräte den Dienst ermitteln und verwenden können. Sie können registrierte Geräte mithilfe des Verwaltungsportals in Azure Active Directory anzeigen und aktivieren/deaktivieren.
+
+>[AZURE.NOTE]
+ Aktuelle Anweisungen zum Einrichten der automatischen Geräteregistrierung finden Sie unter [Einrichten der automatischen Registrierung von in die Domäne eingebundenen Windows-Geräten bei Azure Active Directory](active-directory-conditional-access-automatic-device-registration-setup.md).
 
 ### Aktivieren des Azure Active Directory-Geräteregistrierungsdiensts
 
@@ -80,11 +81,11 @@ Wenn Sie z. B. in Ihrer Organisation zwei UPN-Suffixe namens "@contoso.com" und
 
 ## Weitere Themen
 
-Sie können Ihre Windows 7- und Windows 8.1-Geräte, die einer Domäne angehören, mit der Azure AD-Geräteregistrierung registrieren. Das folgende Thema enthält weitere Informationen zu den Voraussetzungen und den zum Konfigurieren der Geräteregistrierung für Windows 7- und Windows 8.1-Geräte erforderlichen Schritte.
+Sie können Ihre Windows 7- und Windows 8.1-Geräte, die einer Domäne angehören, mit der Azure AD-Geräteregistrierung registrieren. Die folgenden Themen enthalten weitere Informationen zu den Voraussetzungen und den zum Konfigurieren der Geräteregistrierung für Windows 7- und Windows 8.1-Geräte erforderlichen Schritte.
 
 - [Automatische Geräteregistrierung mit Azure Active Directory für in Domänen eingebundene Windows-Geräte](active-directory-conditional-access-automatic-device-registration.md)
 - [Konfigurieren der automatischen Geräteregistrierung für in eine Domäne eingebundene Windows 7-Geräte](active-directory-conditional-access-automatic-device-registration-windows7.md)
 - [Konfigurieren der automatischen Geräteregistrierung für in eine Domäne eingebundene Windows 8.1-Geräte](active-directory-conditional-access-automatic-device-registration-windows-8-1.md)
 - [Automatische Geräteregistrierung bei Azure Active Directory für in Domänen eingebundene Windows 10-Geräte](active-directory-azureadjoin-devices-group-policy.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0928_2016-->
