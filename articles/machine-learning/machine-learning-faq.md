@@ -256,7 +256,7 @@ Nein. Webdienste können auch direkt aus Jupyter Notebooks und RStudio erstellt 
 
 **Wo finde ich Informationen zu Fehlercodes?**
 
-Eine Liste mit Fehlercodes und den dazugehörigen Beschreibungen finden Sie unter [Machine Learning-Modul-Fehlercodes](https://msdn.microsoft.com/library/azure/dn905910.aspx).
+ ** Wo finde ich Informationen zu Fehlercodes? Fehlercodes werden [hier](https://msdn.microsoft.com/library/azure/dn905910.aspx) beschrieben.
 
 ## Skalierbarkeit
 

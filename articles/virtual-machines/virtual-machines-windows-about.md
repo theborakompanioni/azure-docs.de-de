@@ -39,4 +39,8 @@ Testen Sie einen virtuellen Computer probeweise aus: Erstellen Sie hierfür in n
 
 Da die Tutorials darauf ausgerichtet sind, in wenigen Schritten einen virtuellen Computer zu erstellen, zeigen sie nur eine von mehreren Möglichkeiten auf. Die verschiedenen Tools, die für die Erstellung virtueller Computers zur Verfügung stehen, werden hingegen nicht beschrieben. Eine Übersicht über diese Tools und Links zu Anweisungen finden Sie unter [Verschiedene Möglichkeiten zum Erstellen eines virtuellen Windows-Computers](virtual-machines-windows-creation-choices.md).
 
+<!--links-->
+[App Service]: app-service-choose-me.md
+[Cloud-Dienste]: cloud-services-choose-me.md
+[Virtuelle Computer]: #tellmevm
 <!---HONumber=AcomDC_0928_2016-->
