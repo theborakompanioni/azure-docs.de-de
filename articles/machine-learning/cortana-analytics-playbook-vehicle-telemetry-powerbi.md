@@ -83,13 +83,9 @@ Die Lösung enthält eine Anwendung, die ein Echtzeitdashboard in PowerBI erstel
 
 So laden Sie die Anwendung herunter
 
-1.	Klicken Sie in der Diagrammansicht auf den Knoten „Power BI“ und dann im Eigenschaftenbereich auf den Link **Download Real-time Dashboard Application** (Echtzeit-Dashboardanwendung herunterladen).
+1.	Klicken Sie in der Diagrammansicht auf den Knoten „Power BI“ und dann im Eigenschaftenbereich auf den Link **Download Real-time Dashboard Application** (Echtzeit-Dashboardanwendung herunterladen). ![](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard-new1.png)
 
-![](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard-new1.png)
-
-2.	Extrahieren Sie die Anwendung, und speichern Sie sie an einem lokalen Speicherort.
-
- ![](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/4-real-time-dashboard-application.png)
+2.	Extrahieren Sie die Anwendung, und speichern Sie sie an einem lokalen Speicherort. ![](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/4-real-time-dashboard-application.png)
 
 3.	Führen Sie die Anwendung **RealtimeDashboardApp.exe** aus.
 4.	Geben Sie gültige Power BI-Anmeldeinformationen ein, melden Sie sich an, und klicken Sie auf **Annehmen**.
