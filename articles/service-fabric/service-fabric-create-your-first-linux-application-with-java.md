@@ -109,7 +109,7 @@ Das Service Fabric-Plug-In ist im Rahmen der Erweiterbarkeit von Eclipse verfüg
 
 Die Service Fabric-Vorlagen enthalten eine Reihe von Gradle-Aufgaben zum Erstellen und Bereitstellen von Anwendungen, die Sie über Eclipse auslösen können.
 
-1. Wählen Sie **Ausführen > Run Configurations** (Ausführungskonfigurationen) aus.
+1. Wählen Sie **Ausführen > Run Configurations** (Konfigurationen ausführen) aus.
 
 2. Erweitern Sie **Gradle Project** (Gradle-Projekt), und wählen Sie **ServiceFabricDeployer** aus.
 
