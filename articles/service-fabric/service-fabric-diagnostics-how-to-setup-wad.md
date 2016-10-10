@@ -13,13 +13,17 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="06/24/2016"
+   ms.date="09/28/2016"
    ms.author="toddabel"/>
 
 
 # Sammeln von Protokollen mit Azure-Diagnose
 
-Bei Verwendung eines Azure Service Fabric-Clusters empfiehlt es sich, die Protokolle aller Knoten an einem zentralen Ort zu sammeln. Das Sammeln der Protokolle an einem zentralen Ort vereinfacht die Analyse und Behandlung von Problemen, die ggf. in Ihrem Cluster oder in den Anwendungen und Diensten des Clusters auftreten. Eine Möglichkeit zum Hochladen und Sammeln von Protokollen ist die Verwendung der Erweiterung „Azure-Diagnose“, mit der Protokolle an Azure Storage hochgeladen werden. Die Protokolle sind direkt im Speicher nicht sehr nützlich, jedoch kann ein externer Prozess verwendet werden, um die Ereignisse aus dem Speicher zu lesen und in einem Produkt wie z.B. [Elasticsearch](service-fabric-diagnostic-how-to-use-elasticsearch.md) oder einer anderen Protokollanalyselösung zu platzieren.
+> [AZURE.SELECTOR]
+- [Windows](service-fabric-diagnostics-how-to-setup-wad.md)
+- [Linux](service-fabric-diagnostics-how-to-setup-lad.md)
+
+Bei Verwendung eines Azure Service Fabric-Clusters empfiehlt es sich, die Protokolle aller Knoten an einem zentralen Ort zu sammeln. Das Sammeln der Protokolle an einem zentralen Ort vereinfacht die Analyse und Behandlung von Problemen, die ggf. in Ihrem Cluster oder in den Anwendungen und Diensten des Clusters auftreten. Eine Möglichkeit zum Hochladen und Sammeln von Protokollen ist die Verwendung der Erweiterung „Azure-Diagnose“, mit der Protokolle an Azure Storage hochgeladen werden. Die Protokolle sind direkt im Speicher nicht sehr nützlich, jedoch kann ein externer Prozess verwendet werden, um die Ereignisse aus dem Speicher zu lesen und in einem Produkt wie etwa [Log Analytics](../log-analytics/log-analytics-service-fabric.md) bzw. [Elasticsearch](service-fabric-diagnostic-how-to-use-elasticsearch.md) oder einer anderen Protokollanalyselösung zu platzieren.
 
 ## Voraussetzungen
 Diese Tools werden verwendet, um einige Vorgänge in diesem Dokument durchzuführen:
@@ -47,7 +51,7 @@ Um die Diagnoseerweiterung im Rahmen der Clustererstellung für die im Cluster e
 
 ![Azure-Diagnose-Einstellung im Portal für die Clustererstellung](./media/service-fabric-diagnostics-how-to-setup-wad/portal-cluster-creation-diagnostics-setting.png)
 
-Für das Azure-Supportteam sind die Supportprotokolle **erforderlich**, um jegliche Supportanforderungen abzuwickeln, die Sie erstellen. Diese Protokolle werden in Echtzeit erfasst und in einem der Speicherkonten gespeichert, die in der aktuellen Ressourcengruppe erstellt werden. Mit der Diagnoseeinstellung werden Ereignisse auf Anwendungsebene konfiguriert, z.B. [Actor](service-fabric-reliable-actors-diagnostics.md)- und [Reliable Service](service-fabric-reliable-services-diagnostics.md)-Ereignisse sowie einige Service Fabric-Ereignisse auf Systemebene, die im Azure-Speicher gespeichert werden. Produkte wie z.B. [Elasticsearch](service-fabric-diagnostic-how-to-use-elasticsearch.md) oder Ihr eigener Prozess können die Ereignisse aus dem Speicherkonto übernehmen. Es gibt derzeit keine Möglichkeit, die an die Tabelle gesendeten Ereignisse zu filtern oder zu optimieren. Wenn kein Prozess zum Entfernen von Ereignissen aus der Tabelle implementiert ist, wächst die Tabelle weiter an.
+Für das Azure-Supportteam sind die Supportprotokolle **erforderlich**, um jegliche Supportanforderungen abzuwickeln, die Sie erstellen. Diese Protokolle werden in Echtzeit erfasst und in einem der Speicherkonten gespeichert, die in der aktuellen Ressourcengruppe erstellt werden. Mit der Diagnoseeinstellung werden Ereignisse auf Anwendungsebene konfiguriert, z.B. [Actor](service-fabric-reliable-actors-diagnostics.md)- und [Reliable Service](service-fabric-reliable-services-diagnostics.md)-Ereignisse sowie einige Service Fabric-Ereignisse auf Systemebene, die im Azure-Speicher gespeichert werden. Produkte wie etwa [Elasticsearch](service-fabric-diagnostic-how-to-use-elasticsearch.md) oder Ihr eigener Prozess können die Ereignisse aus dem Speicherkonto übernehmen. Es gibt derzeit keine Möglichkeit, die an die Tabelle gesendeten Ereignisse zu filtern oder zu optimieren. Wenn kein Prozess zum Entfernen von Ereignissen aus der Tabelle implementiert ist, wächst die Tabelle weiter an.
 
 Bei der Clustererstellung über das Portal wird dringend empfohlen, erst *nach dem Herunterladen der Vorlage* auf „OK“ zu klicken, um den Cluster zu erstellen. Ausführliche Informationen finden Sie unter [Einrichten eines Service Fabric-Clusters mit einer Azure Resource Manager-Vorlage](service-fabric-cluster-creation-via-arm.md). So erhalten Sie eine verwendbare ARM-Vorlage für den zu erstellenden Cluster. Diese wird für spätere Änderungen benötigt. Nicht alle Änderungen können über das Portal vorgenommen werden. Vorlagen können im Portal zwar mithilfe der folgenden Schritte exportiert werden, diese Vorlagen sind jedoch unter Umständen nicht ohne Weiteres verwendbar, da sie möglicherweise einige NULL-Werte besitzen, für die Werte angegeben werden müssen, oder gar keine der benötigten Informationen enthalten:
 
@@ -194,4 +198,4 @@ Sehen Sie sich die Diagnoseereignisse an, die für [Reliable Actors](service-fab
 * [Erfahren Sie, wie Sie Leistungsindikatoren oder Protokolle mit diagnostischen Erweiterungen erfassen können.](../virtual-machines/virtual-machines-windows-extensions-diagnostics-template.md)
 * [Service Fabric-Lösung in Log Analytics](../log-analytics/log-analytics-service-fabric.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0928_2016-->

@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Filter und dynamische Manifeste" 
+	pageTitle="Filter und dynamische Manifeste | Microsoft Azure" 
 	description="In diesem Thema wird erläutert, wie Sie Filter erstellen, mit denen Ihre Kunden bestimmte Abschnitte eines Streams streamen können. Media Services erstellt dynamische Manifeste, um dieses selektive Streaming zu archivieren." 
 	services="media-services" 
 	documentationCenter="" 
@@ -13,10 +13,10 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="ne" 
 	ms.topic="article" 
-	ms.date="06/22/2016" 
+	ms.date="09/26/2016" 
 	ms.author="cenkdin;juliako"/>
 
-#Filter und dynamische Manifeste
+# Filter und dynamische Manifeste
 
 Ab Version 2.11 können Sie mit Media Services Filter für Ihre Medienobjekte definieren. Diese Filter sind serverseitige Regeln, mit denen Ihre Kunden verschiedene Aktionen ausführen können, z. B. Wiedergabe bestimmter Videoabschnitte (anstelle des gesamten Videos). Sie können zudem nur eine Teilmenge von Audio- und Videowiedergaben (anstelle von allen mit dem Medienobjekt verknüpften Wiedergaben) angeben, die für das Gerät eines Kunden geeignet sind. Diese Filterung der Medienobjekte wird durch **dynamische Manifeste** archiviert, die auf Anfrage des Kunden zum Streamen von Videos basierend auf bestimmten Filtern erstellt werden.
 
@@ -212,7 +212,7 @@ Weitere Informationen finden Sie in [diesem](https://azure.microsoft.com/blog/az
 
 
 
-##Siehe auch
+##Weitere Informationen
 
 [Bereitstellen von Inhalten für Kunden – Übersicht](media-services-deliver-content-overview.md)
 
@@ -236,4 +236,4 @@ Weitere Informationen finden Sie in [diesem](https://azure.microsoft.com/blog/az
 [skiing]: ./media/media-services-dynamic-manifest-overview/media-services-skiing.png
  
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0928_2016-->

@@ -3,7 +3,7 @@
 	description="Erfahren Sie, wie Sie Daten aus Amazon Redshift mithilfe von Azure Data Factory verschieben." 
 	services="data-factory" 
 	documentationCenter="" 
-	authors="spelluru" 
+	authors="linda33wj" 
 	manager="jhubbard" 
 	editor="monicar"/>
 
@@ -14,7 +14,7 @@
 	ms.devlang="na" 
 	ms.topic="article" 
 	ms.date="08/23/2016" 
-	ms.author="spelluru"/>
+	ms.author="jingwang"/>
 
 # Verschieben von Daten mithilfe von Azure Data Factory
 
@@ -282,4 +282,4 @@ Im Artikel [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-fac
 Entsprechende Informationen finden Sie in den folgenden Artikeln:
 - [Kopieraktivität-Tutorial](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) für schrittweise Anleitungen zum Erstellen einer Pipeline mit einer Kopieraktivität.
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0928_2016-->

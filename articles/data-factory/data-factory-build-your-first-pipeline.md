@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article" 
-	ms.date="09/06/2016"
+	ms.date="09/26/2016"
 	ms.author="spelluru"/>
 
 # Tutorial: Erstellen der ersten Pipeline zum Verarbeiten von Daten mithilfe eines Hadoop-Clusters 
@@ -216,4 +216,12 @@ In diesem Abschnitt erfahren Sie, wie Sie die Dateien „input.log“ und „par
 	
 		AzCopy /Source:. /Dest:https://<storageaccountname>.blob.core.windows.net/adfgetstarted/script /DestKey:<storageaccesskey>  /Pattern:partitionweblogs.hql
 
-<!---HONumber=AcomDC_0921_2016-->
+Sie haben die Voraussetzungen erfüllt. Mit einer der folgenden Methoden können Sie eine Data Factory erstellen. Klicken Sie oben auf eine der Registerkarten oder einen der folgenden Links, um das Tutorial auszuführen.
+
+- [Azure-Portal](data-factory-build-your-first-pipeline-using-editor.md)
+- [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
+- [PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
+- [Resource Manager-Vorlage](data-factory-build-your-first-pipeline-using-arm.md)
+- [REST-API](data-factory-build-your-first-pipeline-using-rest-api.md)
+
+<!---HONumber=AcomDC_0928_2016-->

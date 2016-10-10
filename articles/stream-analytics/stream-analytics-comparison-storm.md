@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="big-data"
-	ms.date="07/27/2016"
+	ms.date="09/26/2016"
 	ms.author="jeffstok"/>
 
 # Hilfe beim Auswählen einer Stream Analytics-Plattform: Vergleich von Apache Storm mit Azure Stream Analytics
@@ -588,4 +588,4 @@ Beide Analyseplattformen bieten Vorteile einer PaaS-Lösung, es gibt aber einige
     </tbody>
 </table>
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0928_2016-->

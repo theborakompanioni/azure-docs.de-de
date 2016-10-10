@@ -35,6 +35,8 @@ Zur Entwicklung der vollständigen Arbeitsanwendung müssen Sie folgende Schritt
 
 Beginnen Sie, indem Sie [das Anwendungsgerüst](https://github.com/AzureADQuickStarts/NativeClient-iOS/archive/skeleton.zip) oder [das vollständige Beispiel herunterladen](https://github.com/AzureADQuickStarts/NativeClient-iOS/archive/complete.zip). Außerdem benötigen Sie einen Azure AD-Mandanten, unter dem Sie Benutzer erstellen und Ihre Anwendung registrieren können. Wenn Sie über noch keinen Mandanten verfügen, [erfahren Sie hier, wie Sie einen erhalten](active-directory-howto-tenant.md).
 
+> [AZURE.TIP] Testen Sie die Vorschau unseres neuen [Entwicklerportals](https://identity.microsoft.com/Docs/iOS), mit dem Sie Azure Active Directory innerhalb weniger Minuten betriebsbereit machen. Im Entwicklerportal werden Sie durch den Vorgang zum Registrieren einer App und die Integration von Azure AD in Ihren Code geleitet. Nach dem Durchführen dieser Schritte verfügen Sie über eine einfache Anwendung zur Authentifizierung von Benutzern in Ihrem Mandanten sowie über ein Back-End, das Token akzeptieren und eine Überprüfung durchführen kann.
+
 ## *1. Festlegen des Umleitungs-URI für iOS*
 
 Um Ihre Anwendungen in bestimmten SSO-Szenarios sicher zu starten, müssen Sie einen **Umleitungs-URI** in einem bestimmten Format erstellen. Ein Umleitungs-URI wird verwendet, um sicherzustellen, dass die Tokens an die richtige Anwendung zurückgegeben werden, die sie angefordert hat.
@@ -230,4 +232,4 @@ Sie können sich nun weiteren Szenarien zuwenden. Sie können beispielsweise Fol
 
 [AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources.md)]
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

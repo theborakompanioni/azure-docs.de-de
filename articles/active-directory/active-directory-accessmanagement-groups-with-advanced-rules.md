@@ -22,6 +22,8 @@
 
 Im klassischen Azure-Portal haben Sie die Möglichkeit, erweiterte Regeln zu erstellen, mit denen Sie komplexere attributbasierte, dynamische Mitgliedschaften für Azure Active Directory-Gruppen (Azure AD) aktivieren können.
 
+Wenn sich Attribute eines Benutzers ändern, bewertet das System alle dynamischen Gruppenregeln in einem Verzeichnis, um zu ermitteln, ob die Attributänderung des Benutzers Vorgänge zum Hinzufügen oder Löschen von Gruppen auslöst. Falls ein Benutzer eine Regel für eine Gruppe erfüllt, wird er als Mitglied zu dieser Gruppe hinzugefügt. Wenn er die Regel einer Gruppe nicht mehr erfüllt, deren Mitglied er ist, wird er aus dieser Gruppe entfernt.
+
 ## So erstellen Sie eine erweiterte Regel
 
 1. Wählen Sie im [klassischen Azure-Portal](https://manage.windowsazure.com) die Option **Active Directory** aus, und öffnen Sie dann das Verzeichnis Ihrer Organisation.
@@ -201,13 +203,24 @@ Sie können Mitglieder einer Gruppe jetzt basierend auf dem manager-Attribut ein
 Sie können auch eine Regel erstellen, die Geräteobjekte für die Mitgliedschaft in einer Gruppe auswählt. Die folgenden Geräteattribute können verwendet werden:
 
 | Eigenschaften | Zulässige Werte | Verwendung |
-|----------------------|---------------------------------|------------------------------------------------------|
+|-------------------------|---------------------------------|-------------------------------------------------------------|
 | displayName | Jeder string-Wert | (device.displayName -eq "Rob Iphone”) |
 | deviceOSType | Jeder string-Wert | (device.deviceOSType -eq "IOS") |
 | deviceOSVersion | Jeder string-Wert | (device.OSVersion -eq "9.1") |
 | isDirSynced | true false null | (device.isDirSynced -eq "true") |
 | isManaged | true false null | (device.isManaged -eq "false") |
 | isCompliant | true false null | (device.isCompliant -eq "true") |
+| deviceCategory | Jeder string-Wert | (device.deviceCategory -eq "") |
+| deviceManufacturer | Jeder string-Wert | (device.deviceManufacturer -eq "Microsoft") |
+| deviceModel | Jeder string-Wert | (device.deviceModel -eq "IPhone 7+") |
+| deviceOwnership | Jeder string-Wert | (device.deviceOwnership -eq "") |
+| domainName | Jeder string-Wert | (device.domainName -eq "contoso.com") |
+| enrollmentProfileName | Jeder string-Wert | (device.enrollmentProfileName -eq "") |
+| enrollmentType | Jeder string-Wert | (device.enrollmentType -eq "") |
+| isRooted | true false null | (device.deviceOSType -eq "true") |
+| managementType | Jeder string-Wert | (device.managementType -eq "") |
+| organizationalUnit | Jeder string-Wert | (device.organizationalUnit -eq "") |
+| deviceId | Eine gültige deviceId | (device.deviceId -eq "d4fe7726-5966-431c-b3b8-cddc8fdb717d" |
 
 > [AZURE.NOTE]
 Diese Geräteregeln können nicht mithilfe der Dropdownliste mit einfachen Regeln im klassischen Azure-Portal erstellt werden.
@@ -226,4 +239,4 @@ Diese Artikel enthalten zusätzliche Informationen zu Azure Active Directory.
 
 * [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md)
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0928_2016-->

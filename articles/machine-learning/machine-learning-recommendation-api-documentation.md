@@ -32,7 +32,7 @@ Die Azure Machine Learning-Empfehlungs-APIs können in die folgenden logischen G
 
 - <ins>Einschränkungen:</ins> Einschränkungen der Empfehlungs-API.
 - <ins>Allgemeine Informationen:</ins> Informationen zu Authentifizierung, Dienst-URI und Versionskontrolle.
-- <ins>Einfaches Modell</ins>: Dies sind APIs, mit denen Sie grundlegende Vorgänge für ein Modell ausführen können (z. B. Erstellen, Aktualisieren und Löschen eines Modells).
+- <ins>Einfaches Modell</ins>: Dies sind APIs, mit denen Sie grundlegende Vorgänge für ein Modell ausführen können (z.B. Erstellen, Aktualisieren und Löschen eines Modells).
 - <ins>Komplexes Modell</ins>: Dies sind APIs, mit denen Sie komplexere Einblicke in die Daten des Modells erhalten können.
 - <ins>Modellgeschäftsregeln</ins>: Dies sind APIs, mit denen Sie Geschäftsregeln für die Empfehlungsergebnisse des Modells verwalten können.
 - <ins>Katalog</ins>: Dies sind APIs, mit denen Sie grundlegende Vorgänge bei einem Modellkatalog ausführen können. Kataloge enthalten Metadateninformationen zu den Elementen der Nutzungsdaten.
@@ -104,7 +104,7 @@ Es wird eine Anforderung „Modell erstellen“ erstellt.
 
 HTTP-Statuscode: 200
 
-- `feed/entry/content/properties/id`: Enthält die Modell-ID. **Hinweis**: Bei der Modell-ID muss die Groß-/Kleinschreibung beachtet werden.
+- `feed/entry/content/properties/id` - Enthält die Modell-ID. **Hinweis**: Bei der Modell-ID muss die Groß-/Kleinschreibung beachtet werden.
 
 OData-XML
 
@@ -156,16 +156,16 @@ HTTP-Statuscode: 200
 
 Die Modelldaten finden Sie bei den folgenden Elementen:
 
-- `feed/entry/content/properties/Id`: Dies ist die eindeutige ID des Modells.
-- `feed/entry/content/properties/Name`: Dies ist der Name des Modells.
-- `feed/entry/content/properties/Date`: Dies ist das Erstellungsdatum des Modells.
-- `feed/entry/content/properties/Status`: Dies ist der Status des Modells. Einer der folgenden:
+- `feed/entry/content/properties/Id`: Die eindeutige ID des Modells
+- `feed/entry/content/properties/Name`: Die Name des Modells
+- `feed/entry/content/properties/Date`: Das Erstellungsdatum des Modells
+- `feed/entry/content/properties/Status`: Der Status des Modells Einer der folgenden:
     - Created: Das Modell wird ohne Katalog und Nutzung erstellt.
 	- ReadyForBuild: Das Modell wird mit Katalog und Nutzung erstellt.
 - `feed/entry/content/properties/HasActiveBuild`: Hier wird angegeben, ob das Modell erfolgreich erstellt wurde.
-- `feed/entry/content/properties/BuildId`: Dies ist die ID des aktiven Modellbuilds.
-- `feed/entry/content/properties/Mpr`: Dies ist die mittlere Prozentrangwertung (MPR – weitere Informationen finden Sie unter ModelInsight) des Modells.
-- `feed/entry/content/properties/UserName`: Dies ist der interne Benutzername des Modells.
+- `feed/entry/content/properties/BuildId`: Die ID des aktiven Modellbuilds
+- `feed/entry/content/properties/Mpr`: Die mittlere Prozentrangwertung (MPR – weitere Informationen finden Sie unter ModelInsight) des Modells
+- `feed/entry/content/properties/UserName`: Der interne Benutzername des Modells
 
 OData-XML
 
@@ -217,20 +217,20 @@ Hierdurch werden alle Modelle des aktuellen Benutzers abgerufen.
 
 HTTP-Statuscode: 200
 
-- `feed/entry/content/properties/Id`: Dies ist die eindeutige ID des Modells.
-- `feed/entry/content/properties/Name`: Dies ist der Name des Modells.
-- `feed/entry/content/properties/Date`: Dies ist das Erstellungsdatum des Modells.
-- `feed/entry/content/properties/Status`: Dies ist der Status des Modells. Einer der folgenden:
+- `feed/entry/content/properties/Id`: Die eindeutige ID des Modells
+- `feed/entry/content/properties/Name`: Der Name des Modells
+- `feed/entry/content/properties/Date`: Das Erstellungsdatum des Modells
+- `feed/entry/content/properties/Status`: Der Status des Modells Einer der folgenden:
   - Created: Das Modell wird ohne Katalog und Nutzung erstellt.
   - ReadyForBuild: Das Modell wird mit Katalog und Nutzung erstellt.
 - `feed/entry/content/properties/HasActiveBuild`: Hier wird angegeben, ob das Modell erfolgreich erstellt wurde.
-- `feed/entry/content/properties/BuildId`: Dies ist die ID des aktiven Modellbuilds.
-- `feed/entry/content/properties/Mpr`: Dies ist die MPR des Modells (weitere Informationen finden Sie unter ModelInsight).
-- `feed/entry/content/properties/UserName`: Dies ist der interne Benutzername des Modells.
-- `feed/entry/content/properties/UsageFileNames`: Dies ist eine kommagetrennte Liste von Modellnutzungsdateien.
-- `feed/entry/content/properties/CatalogId`: Dies ist die ID des Modellkatalogs.
-- `feed/entry/content/properties/Description`: Dies ist die Modellbeschreibung.
-- `feed/entry/content/properties/CatalogFileName`: Dies ist der Dateiname des Modellkatalogs.
+- `feed/entry/content/properties/BuildId`: Die ID des aktiven Modellbuilds
+- `feed/entry/content/properties/Mpr`: Die MPR des Modells (weitere Informationen finden Sie unter ModelInsight)
+- `feed/entry/content/properties/UserName`: Der interne Benutzername des Modells
+- `feed/entry/content/properties/UsageFileNames`: Eine kommagetrennte Liste von Modellnutzungsdateien
+- `feed/entry/content/properties/CatalogId`: Die ID des Modellkatalogs
+- `feed/entry/content/properties/Description`: Die Modellbeschreibung
+- `feed/entry/content/properties/CatalogFileName`: Der Dateiname des Modellkatalogs
 
 OData-XML
 
@@ -836,9 +836,9 @@ Diese Regeltypen werden unterstützt:
 
 HTTP-Statuscode: 200
 
-- `feed/entry/content/properties/Id`: Dies ist der eindeutige Bezeichner dieser Regel.
-- `feed/entry/content/properties/Type`: Dies ist der Typ der Regel.
-- `feed/entry/content/properties/Parameter`: Dies ist der Parameter der Regel.
+- `feed/entry/content/properties/Id`: Der eindeutige Bezeichner dieser Regel
+- `feed/entry/content/properties/Type`: Der Typ der Regel
+- `feed/entry/content/properties/Parameter`: Der Parameter der Regel
 
 OData-XML
 
@@ -889,18 +889,7 @@ OData-XML
 |	apiVersion | 1,0 |
 |||
 | Anforderungstext | 
-<ins>Wenn Sie Element-IDs für Geschäftsregeln bereitstellen, stellen Sie sicher, dass Sie die externe ID des Elements verwenden (dies ist die ID, die Sie in der Katalogdatei verwendet haben)</ins><br> 
-<ins>Hinzufügen einer BlockList-Regel:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>BlockList</Type><Value>{"ItemsToExclude":["2406E770-769C-4189-89DE-1C9283F93A96","3906E110-769C-4189-89DE-1C9283F98888"]}</Value></ApiFilter>`<br><br><ins> 
-<ins>Hinzufügen einer FeatureBlockList-Regel:</ins><br> 
-<br> 
-`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>FeatureBlockList</Type><Value>{"Name":"Movie_category","Values":["Adult","Drama"]}</Value></ApiFilter>`<br><br><ins> 
-Hinzufügen einer Upsale-Regel:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>Upsale</Type><Value>{"ItemsToUpsale":["2406E770-769C-4189-89DE-1C9283F93A96"],"NumberOfItemsToUpsale":5}</Value></ApiFilter>`<br><br> 
-<ins>Hinzufügen einer WhiteList-Regel:</ins><br>
-`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>WhiteList</Type><Value>{"ItemsToInclude":["2406E770-769C-4189-89DE-1C9283F93A96","1116E770-769C-4189-89DE-1C9283F88888"]}</Value></ApiFilter>`<br><br><ins> 
-<ins>Hinzufügen einer FeatureWhiteList-Regel:</ins><br> 
-<br> 
-`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>FeatureWhiteList</Type><Value>{"Name":"Movie_rating","Values":["PG13"]}</Value></ApiFilter>`<br><br><ins> 
-Hinzufügen einer PerSeedBlockList-Regel:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>PerSeedBlockList</Type><Value>{"SeedItems":["9949"],"ItemsToExclude":["9862","8158","8244"]}</Value></ApiFilter>`|
+<ins>Wenn Sie Element-IDs für Geschäftsregeln bereitstellen, stellen Sie sicher, dass Sie die externe ID des Elements verwenden (dies ist die ID, die Sie in der Katalogdatei verwendet haben)</ins><br> <ins>Hinzufügen einer BlockList-Regel:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>BlockList</Type><Value>{"ItemsToExclude":["2406E770-769C-4189-89DE-1C9283F93A96","3906E110-769C-4189-89DE-1C9283F98888"]}</Value></ApiFilter>`<br><br><ins> <ins>Hinzufügen einer FeatureBlockList-Regel:</ins><br> <br> `<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>FeatureBlockList</Type><Value>{"Name":"Movie_category","Values":["Adult","Drama"]}</Value></ApiFilter>`<br><br><ins> Hinzufügen einer Upsale-Regel:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>Upsale</Type><Value>{"ItemsToUpsale":["2406E770-769C-4189-89DE-1C9283F93A96"],"NumberOfItemsToUpsale":5}</Value></ApiFilter>`<br><br> <ins>Hinzufügen einer WhiteList-Regel:</ins><br> `<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>WhiteList</Type><Value>{"ItemsToInclude":["2406E770-769C-4189-89DE-1C9283F93A96","1116E770-769C-4189-89DE-1C9283F88888"]}</Value></ApiFilter>`<br><br><ins> <ins>Hinzufügen einer FeatureWhiteList-Regel:</ins><br> <br> `<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>FeatureWhiteList</Type><Value>{"Name":"Movie_rating","Values":["PG13"]}</Value></ApiFilter>`<br><br><ins> Hinzufügen einer PerSeedBlockList-Regel:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>PerSeedBlockList</Type><Value>{"SeedItems":["9949"],"ItemsToExclude":["9862","8158","8244"]}</Value></ApiFilter>`|
 
 
 **Antwort**:
@@ -909,9 +898,9 @@ HTTP-Statuscode: 200
 
 Von der API wird die neu erstellte Regel mit Details zurückgegeben. Die Eigenschaft „Rules“ kann aus den folgenden Pfaden abgerufen werden:
 
-- `feed/entry/content/properties/Id`: Dies ist der eindeutige Bezeichner dieser Regel.
-- `feed/entry/content/properties/Type`: Dies ist der Typ der Regel („BlockList“ oder „Upsale“).
-- `feed/entry/content/properties/Parameter`: Dies ist der Parameter der Regel.
+- `feed/entry/content/properties/Id`: Der eindeutige Bezeichner dieser Regel
+- `feed/entry/content/properties/Type`: Der Typ der Regel („BlockList“ oder „Upsale“)
+- `feed/entry/content/properties/Parameter`: Der Parameter der Regel
 
 OData-XML
 
@@ -1016,8 +1005,8 @@ Hinweis: Die maximale Dateigröße beträgt 200 MB.
 HTTP-Statuscode: 200
 
 Die API gibt einen Bericht des Imports zurück.
-- `feed\entry\content\properties\LineCount`: Dies ist die Anzahl der zulässigen Zeilen.
-- `feed\entry\content\properties\ErrorCount`: Dies ist die Anzahl der Zeilen, die aufgrund eines Fehlers nicht eingefügt wurden.
+- `feed\entry\content\properties\LineCount` - Dies ist die Anzahl der zulässigen Zeilen.
+- `feed\entry\content\properties\ErrorCount` - Dies ist die Anzahl der Zeilen, die aufgrund eines Fehlers nicht eingefügt wurden.
 
 OData-XML
 
@@ -1062,12 +1051,12 @@ HTTP-Statuscode: 200
 
 Die Antwort enthält einen Eintrag pro Katalogelement. Jeder Eintrag enthält die folgenden Daten:
 
-- `feed/entry/content/properties/ExternalId`: Dies ist die externe Katalogelement-ID, die vom Kunden bereitgestellt wird.
-- `feed/entry/content/properties/InternalId`: Dies ist die interne Katalogelement-ID, die von den Azure Machine Learning-Empfehlungen generiert wurde.
-- `feed/entry/content/properties/Name`: Dies ist der Name des Katalogelements.
-- `feed/entry/content/properties/Category`: Dies ist die Kategorie des Katalogelements.
-- `feed/entry/content/properties/Description`: Dies ist die Beschreibung des Katalogelements.
-- `feed/entry/content/properties/Metadata`: Dies sind die Metadaten des Katalogelements.
+- `feed/entry/content/properties/ExternalId`: Die externe Katalogelement-ID, die vom Kunden bereitgestellt wird
+- `feed/entry/content/properties/InternalId`: Die interne Katalogelement-ID, die von den Azure Machine Learning-Empfehlungen generiert wurde
+- `feed/entry/content/properties/Name`: Der Name des Katalogelements
+- `feed/entry/content/properties/Category`: Die Kategorie des Katalogelements
+- `feed/entry/content/properties/Description`: Die Beschreibung des Katalogelements
+- `feed/entry/content/properties/Metadata`: Die Metadaten des Katalogelements
 
 
 OData-XML
@@ -1165,12 +1154,12 @@ HTTP-Statuscode: 200
 
 Die Antwort enthält einen Eintrag pro Katalogelement. Jeder Eintrag enthält die folgenden Daten:
 
-- `feed/entry/content/properties/InternalId`: Dies ist die interne Katalogelement-ID, die von den Azure Machine Learning-Empfehlungen generiert wurde.
-- `feed/entry/content/properties/Name`: Dies ist der Name des Katalogelements.
-- `feed/entry/content/properties/Rating` – (zur künftigen Verwendung)
-- `feed/entry/content/properties/Reasoning` – (zur künftigen Verwendung)
-- `feed/entry/content/properties/Metadata` – (zur künftigen Verwendung)
-- `feed/entry/content/properties/FormattedRating` – (zur künftigen Verwendung)
+- `feed/entry/content/properties/InternalId`: Die interne Katalogelement-ID, die von den Azure Machine Learning-Empfehlungen generiert wurde
+- `feed/entry/content/properties/Name`: Der Name des Katalogelements
+- `feed/entry/content/properties/Rating`: (zur künftigen Verwendung)
+- `feed/entry/content/properties/Reasoning`: (zur künftigen Verwendung)
+- `feed/entry/content/properties/Metadata`: (zur künftigen Verwendung)
+- `feed/entry/content/properties/FormattedRating`: (zur künftigen Verwendung)
 
 OData-XML
 
@@ -1220,9 +1209,9 @@ In diesem Abschnitt wird gezeigt, wie Nutzungsdaten mithilfe einer Datei hochgel
 
 HTTP-Statuscode: 200
 
-- `Feed\entry\content\properties\LineCount`: Dies ist die Anzahl der zulässigen Zeilen.
-- `Feed\entry\content\properties\ErrorCount`: Dies ist die Anzahl der Zeilen, die aufgrund eines Fehlers nicht eingefügt wurden.
-- `Feed\entry\content\properties\FileId`: Dies ist der Dateibezeichner.
+- `Feed\entry\content\properties\LineCount` - Dies ist die Anzahl der zulässigen Zeilen.
+- `Feed\entry\content\properties\ErrorCount` - Dies ist die Anzahl der Zeilen, die aufgrund eines Fehlers nicht eingefügt wurden.
+- `Feed\entry\content\properties\FileId` - Dies ist der Dateibezeichner.
 
 OData-XML
 
@@ -1362,8 +1351,7 @@ In diesem Abschnitt wird gezeigt, wie Ereignisse in Echtzeit an Azure Machine Le
   		</EventData>
 		</Event>
 
-**Antwort**: 
-HTTP-Statuscode: 200
+**Antwort**: HTTP-Statuscode: 200
 
 ###9\.2. Modellnutzungsdateien auflisten
 Hierdurch werden von allen Modellnutzungsdateien Metadaten abgerufen. Die Nutzungsdateien werden Seite für Seite abgerufen. Jede Seite enthält 100 Elemente. Wenn Sie Elemente in einem bestimmten Index abrufen möchten, können Sie den Parameter „$skip odata“ verwenden. Beispiel: Wenn Sie Elemente ab Position 100 abrufen möchten, fügen Sie der Anforderung den Parameter „$skip=100“ hinzu.
@@ -1385,9 +1373,9 @@ HTTP-Statuscode: 200
 
 Die Antwort enthält einen Eintrag pro Nutzungsdatei. Jeder Eintrag enthält die folgenden Daten:
 
-- `feed\entry\content\properties\Id`: Dies ist die ID der Nutzungsdatei.
-- `feed\entry\content\properties\Length`: Dies ist die Größe der Nutzungsdatei in MB.
-- `feed\entry\content\properties\DateModified`: Dies ist das Erstellungsdatum der Nutzungsdatei.
+- `feed\entry\content\properties\Id`: Die ID der Nutzungsdatei
+- `feed\entry\content\properties\Length`: Die Größe der Nutzungsdatei in MB
+- `feed\entry\content\properties\DateModified`: Das Erstellungsdatum der Nutzungsdatei
 - `feed\entry\content\properties\UseInModel`: Hier wird angegeben, ob die Nutzungsdatei im Modell verwendet wird.
 
 OData-XML
@@ -1453,7 +1441,7 @@ HTTP-Statuscode: 200
 Dies ist eine Sammlung von Schlüssel/Wert-Elementen. Jede Sammlung enthält die Ereignissumme für einen bestimmten Ereignistyp nach Stunden gruppiert.
 
 - `feed\entry[i]\content\properties\Key`: Enthält die Zeit (gruppiert nach Stunden) und den Ereignistyp.
-- `feed\entry[i]\content\properties\Value`: Dies ist die Gesamtzahl der Ereignisse.
+- `feed\entry[i]\content\properties\Value`: Die Gesamtzahl der Ereignisse
 
 OData-XML
 
@@ -1649,9 +1637,7 @@ Hierdurch werden alle Modellnutzungsdateien gelöscht.
 HTTP-Statuscode: 200
 
 ##10\. Features
-In diesem Abschnitt wird gezeigt, wie Featureinformationen abgerufen werden, z. B. die importierten Features, ihre Werte und ihr Rang, und wann dieser Rang zugeordnet wurde. Features werden als Teil der Katalogdaten importiert, und wenn ein Rangfolgebuild abgeschlossen ist, wird ihnen ein Rang zugeordnet. 
-Der Rang der Features kann sich je nach Nutzungsdatenmuster und Elementtyp ändern. Bei konsistenter Nutzung und konsistenten Elementen dürfte der Rang jedoch nur geringfügigen Schwankungen unterliegen. 
-Der Rang eines Features ist eine nicht-negative Zahl. Die Zahl 0 bedeutet, dass das Feature noch nicht eingestuft wurde (dies ist der Fall, wenn diese API vor dem Abschluss des ersten Rangfolgebuilds aufgerufen wurde). Das Datum, an dem der Rang zugeordnet wurde, wird als Aktualität der Bewertung bezeichnet.
+In diesem Abschnitt wird gezeigt, wie Featureinformationen abgerufen werden, z. B. die importierten Features, ihre Werte und ihr Rang, und wann dieser Rang zugeordnet wurde. Features werden als Teil der Katalogdaten importiert, und wenn ein Rangfolgebuild abgeschlossen ist, wird ihnen ein Rang zugeordnet. Der Rang der Features kann sich je nach Nutzungsdatenmuster und Elementtyp ändern. Bei konsistenter Nutzung und konsistenten Elementen dürfte der Rang jedoch nur geringfügigen Schwankungen unterliegen. Der Rang eines Features ist eine nicht-negative Zahl. Die Zahl 0 bedeutet, dass das Feature noch nicht eingestuft wurde (dies ist der Fall, wenn diese API vor dem Abschluss des ersten Rangfolgebuilds aufgerufen wurde). Das Datum, an dem der Rang zugeordnet wurde, wird als Aktualität der Bewertung bezeichnet.
 
 ###10\.1. Featureinformationen abrufen (für den letzten Rangfolgebuild)
 Hierdurch werden Featureinformationen einschließlich Rang für den letzten erfolgreichen Rangfolgebuild abgerufen.
@@ -1926,9 +1912,9 @@ Gültige Buildstatus:
 - Create: Buildanforderung wurde erstellt.
 - Queued: Buildanforderung wurde gesendet und in die Warteschlange eingereiht.
 - Building: Builderstellung wird durchgeführt.
-- Success (Erfolg): Der Build wurde erfolgreich abgeschlossen.
-- Error (Fehler): Der Build wurde mit einem Fehler beendet.
-- Cancelled (Abgebrochen): Der Vorgang wurde abgebrochen.
+- Success: Der Build wurde erfolgreich abgeschlossen.
+- Error: Der Build wurde mit einem Fehler beendet.
+- Cancelled: Der Vorgang wurde abgebrochen.
 - Cancelling: Für den Build wurde eine Abbruchanforderung gesendet.
 
 
@@ -1999,13 +1985,13 @@ Bis der Build erstellt ist, können Sie keine Empfehlungen nutzen.
 
 Gültige Buildstatus:
 
-- Create (Erstellen): Das Modell wurde erstellt.
-- Queued (In Warteschlange): Die Modellerstellung wurde ausgelöst und in die Warteschlange eingereiht.
-- Building (Erstellen): Das Modell wird erstellt.
-- Success (Erfolg): Der Build wurde erfolgreich abgeschlossen.
-- Error (Fehler): Der Build wurde mit einem Fehler beendet.
-- Cancelled (Abgebrochen): Der Vorgang wurde abgebrochen.
-- Cancelling (Abbrechen): Der Vorgang wird abgebrochen.
+- Create: Das Modell wurde erstellt.
+- Queued: Die Modellerstellung wurde ausgelöst und in die Warteschlange eingereiht.
+- Building: Das Modell wird erstellt.
+- Success: Der Build wurde erfolgreich abgeschlossen.
+- Error: Der Build wurde mit einem Fehler beendet.
+- Cancelled: Der Vorgang wurde abgebrochen.
+- Cancelling: Der Vorgang wird abgebrochen.
 
 Hinweis: Sie finden die Build-ID unter folgendem Pfad: `Feed\entry\content\properties\Id`
 
@@ -2078,22 +2064,22 @@ Die Antwort enthält einen Eintrag pro Build. Jeder Eintrag enthält die folgend
 - `feed/entry/content/properties/IsDeployed`: Bereitstellungszustand des Builds (aktiver Build)
 - `feed/entry/content/properties/BuildId`: Eindeutiger Bezeichner des Builds
 - `feed/entry/content/properties/BuildType`: Typ des Builds
-- `feed/entry/content/properties/Status`: Status des Builds. Es gibt folgende Status: Error (Fehler), Building (Erstellen), Queued (In Warteschlange), Cancelling (Abbrechen), Cancelled (Abgebrochen), Success (Erfolg)
+- `feed/entry/content/properties/Status`: Status des Builds Es gibt folgende Status: Error (Fehler), Building (Erstellen), Queued (In Warteschlange), Cancelling (Abbrechen), Cancelled (Abgebrochen), Success (Erfolg)
 - `feed/entry/content/properties/StatusMessage`: Detaillierte Statusmeldung (gilt nur für bestimmte Status)
 - `feed/entry/content/properties/Progress`: Fortschritt des Builds (%)
 - `feed/entry/content/properties/StartTime`: Startzeit des Builds
 - `feed/entry/content/properties/EndTime`: Endzeit des Builds
 - `feed/entry/content/properties/ExecutionTime`: Dauer des Builds
-- `feed/entry/content/properties/ProgressStep`: Details zur aktuellen Phase eines Buildfortschritts.
+- `feed/entry/content/properties/ProgressStep`: Details zur aktuellen Phase eines Buildfortschritts
 
 Gültige Buildstatus:
 - Created: Buildanforderungseintrag wurde erstellt.
 - Queued: Buildanforderung wurde ausgelöst und in die Warteschlange eingereiht.
 - Building: Builderstellung wird durchgeführt.
-- Success (Erfolg): Der Build wurde erfolgreich abgeschlossen.
-- Error (Fehler): Der Build wurde mit einem Fehler beendet.
-- Cancelled (Abgebrochen): Der Vorgang wurde abgebrochen.
-- Cancelling (Abbrechen): Der Vorgang wird abgebrochen.
+- Success: Der Build wurde erfolgreich abgeschlossen.
+- Error: Der Build wurde mit einem Fehler beendet.
+- Cancelled: Der Vorgang wurde abgebrochen.
+- Cancelling: Der Vorgang wird abgebrochen.
 
 Gültige Werte für Buildtyp:
 - Rank: Rangfolgebuild.
@@ -2162,22 +2148,22 @@ Die Antwort enthält einen Eintrag pro Build. Jeder Eintrag enthält die folgend
 - `feed/entry/content/properties/IsDeployed`: Bereitstellungszustand des Builds
 - `feed/entry/content/properties/BuildId`: Eindeutiger Bezeichner des Builds
 - `feed/entry/content/properties/BuildType`: Typ des Builds
-- `feed/entry/content/properties/Status`: Status des Builds. Es gibt folgende Status: Error (Fehler), Building (Erstellen), Queued (In Warteschlange), Cancelled (Abgebrochen), Cancelling (Abbrechen), Success (Erfolg)
+- `feed/entry/content/properties/Status`: Status des Builds Es gibt folgende Status: Error (Fehler), Building (Erstellen), Queued (In Warteschlange), Cancelled (Abgebrochen), Cancelling (Abbrechen), Success (Erfolg)
 - `feed/entry/content/properties/StatusMessage`: Detaillierte Statusmeldung (gilt nur für bestimmte Status)
 - `feed/entry/content/properties/Progress`: Fortschritt des Builds (%)
 - `feed/entry/content/properties/StartTime`: Startzeit des Builds
 - `feed/entry/content/properties/EndTime`: Endzeit des Builds
 - `feed/entry/content/properties/ExecutionTime`: Dauer des Builds
-- `feed/entry/content/properties/ProgressStep`: Details zur aktuellen Phase eines Buildfortschritts.
+- `feed/entry/content/properties/ProgressStep`: Details zur aktuellen Phase eines Buildfortschritts
 
 Gültige Buildstatus:
 - Created: Buildanforderungseintrag wurde erstellt.
 - Queued: Buildanforderung wurde ausgelöst und in die Warteschlange eingereiht.
 - Building: Builderstellung wird durchgeführt.
-- Success (Erfolg): Der Build wurde erfolgreich abgeschlossen.
-- Error (Fehler): Der Build wurde mit einem Fehler beendet.
-- Cancelled (Abgebrochen): Der Vorgang wurde abgebrochen.
-- Cancelling (Abbrechen): Der Vorgang wird abgebrochen.
+- Success: Der Build wurde erfolgreich abgeschlossen.
+- Error: Der Build wurde mit einem Fehler beendet.
+- Cancelled: Der Vorgang wurde abgebrochen.
+- Cancelling: Der Vorgang wird abgebrochen.
 
 
 Gültige Werte für Buildtyp:
@@ -2272,8 +2258,8 @@ Hierdurch werden Buildparameter abgerufen.
 HTTP-Statuscode: 200
 
 Von dieser API wird eine Sammlung von Schlüssel/Wert-Elementen zurückgegeben. Jedes Element steht für einen Parameter und dessen Wert:
-- `feed/entry/content/properties/Key`: Name des Buildparameters.
-- `feed/entry/content/properties/Value`: Wert des Buildparameters.
+- `feed/entry/content/properties/Key`: Name des Buildparameters
+- `feed/entry/content/properties/Value`: Wert des Buildparameters
 
 In der folgenden Tabelle werden die Werte dargestellt, die von den Schlüsseln repräsentiert werden.
 
@@ -2484,10 +2470,10 @@ HTTP-Statuscode: 200
 
 
 Die Antwort enthält einen Eintrag pro empfohlenem Element. Jeder Eintrag enthält die folgenden Daten:
-- `Feed\entry\content\properties\Id`: ID des empfohlenen Elements.
-- `Feed\entry\content\properties\Name`: Name des Elements.
-- `Feed\entry\content\properties\Rating`: Bewertung der Empfehlung, höhere Werte bedeuten höheres Zutrauen.
-- `Feed\entry\content\properties\Reasoning`: Empfehlungsargumentation (z.B. Erklärungen für die Empfehlung).
+- `Feed\entry\content\properties\Id` - ID des empfohlenen Elements.
+- `Feed\entry\content\properties\Name` - Name des Elements.
+- `Feed\entry\content\properties\Rating` - Bewertung der Empfehlung, höhere Werte bedeuten höhere Zuverlässigkeit.
+- `Feed\entry\content\properties\Reasoning` - Empfehlungsargumentation (z. B. Erklärungen für die Empfehlung).
 
 Die folgende Beispielantwort enthält 10 empfohlene Elemente.
 
@@ -2665,10 +2651,10 @@ HTTP-Statuscode: 200
 
 
 Die Antwort enthält einen Eintrag pro empfohlenem Element. Jeder Eintrag enthält die folgenden Daten:
-- `Feed\entry\content\properties\Id`: ID des empfohlenen Elements.
-- `Feed\entry\content\properties\Name`: Name des Elements.
-- `Feed\entry\content\properties\Rating`: Bewertung der Empfehlung, höhere Werte bedeuten höheres Zutrauen.
-- `Feed\entry\content\properties\Reasoning`: Empfehlungsargumentation (z.B. Erklärungen für die Empfehlung).
+- `Feed\entry\content\properties\Id` - ID des empfohlenen Elements.
+- `Feed\entry\content\properties\Name` - Name des Elements.
+- `Feed\entry\content\properties\Rating` - Bewertung der Empfehlung, höhere Werte bedeuten höhere Zuverlässigkeit.
+- `Feed\entry\content\properties\Reasoning` - Empfehlungsargumentation (z. B. Erklärungen für die Empfehlung).
 
 Eine Beispielantwort finden Sie unter 12.1.
 
@@ -2695,12 +2681,12 @@ HTTP-Statuscode: 200
 
 
 Die Antwort umfasst einen Eintrag pro empfohlenem Elementsatz (ein Satz Elemente, die üblicherweise zusammen mit dem Seed- bzw. Eingabeelement gekauft werden). Jeder Eintrag enthält die folgenden Daten:
-- `Feed\entry\content\properties\Id1`: ID des empfohlenen Elements.
-- `Feed\entry\content\properties\Name1`: Name des Elements.
-- `Feed\entry\content\properties\Id2`: ID des zweiten empfohlenen Elements (optional).
-- `Feed\entry\content\properties\Name2`: Name des zweiten Elements (optional).
-- `Feed\entry\content\properties\Rating`: Bewertung der Empfehlung, höhere Werte bedeuten höheres Zutrauen.
-- `Feed\entry\content\properties\Reasoning`: Empfehlungsargumentation (z.B. Erklärungen für die Empfehlung).
+- `Feed\entry\content\properties\Id1` - ID des empfohlenen Elements.
+- `Feed\entry\content\properties\Name1` - Name des Elements.
+- `Feed\entry\content\properties\Id2`: ID des zweiten empfohlenen Elements (optional)
+- `Feed\entry\content\properties\Name2`: Name des zweiten Elements (optional)
+- `Feed\entry\content\properties\Rating` - Bewertung der Empfehlung, höhere Werte bedeuten höhere Zuverlässigkeit.
+- `Feed\entry\content\properties\Reasoning` - Empfehlungsargumentation (z. B. Erklärungen für die Empfehlung).
 
 Die folgende Beispielantwort enthält 3 empfohlene Elementsätze.
 
@@ -2787,12 +2773,12 @@ HTTP-Statuscode: 200
 
 
 Die Antwort umfasst einen Eintrag pro empfohlenem Elementsatz (ein Satz Elemente, die üblicherweise zusammen mit dem Seed- bzw. Eingabeelement gekauft werden). Jeder Eintrag enthält die folgenden Daten:
-- `Feed\entry\content\properties\Id1`: ID des empfohlenen Elements.
-- `Feed\entry\content\properties\Name1`: Name des Elements.
-- `Feed\entry\content\properties\Id2`: ID des zweiten empfohlenen Elements (optional).
-- `Feed\entry\content\properties\Name2`: Name des zweiten Elements (optional).
-- `Feed\entry\content\properties\Rating`: Bewertung der Empfehlung, höhere Werte bedeuten höheres Zutrauen.
-- `Feed\entry\content\properties\Reasoning`: Empfehlungsargumentation (z.B. Erklärungen für die Empfehlung).
+- `Feed\entry\content\properties\Id1` - ID des empfohlenen Elements.
+- `Feed\entry\content\properties\Name1` - Name des Elements.
+- `Feed\entry\content\properties\Id2`: ID des zweiten empfohlenen Elements (optional)
+- `Feed\entry\content\properties\Name2`: Name des zweiten Elements (optional)
+- `Feed\entry\content\properties\Rating` - Bewertung der Empfehlung, höhere Werte bedeuten höhere Zuverlässigkeit.
+- `Feed\entry\content\properties\Reasoning` - Empfehlungsargumentation (z. B. Erklärungen für die Empfehlung).
 
 Eine Beispielantwort finden Sie unter 12.3.
 
@@ -2824,10 +2810,10 @@ HTTP-Statuscode: 200
 
 
 Die Antwort enthält einen Eintrag pro empfohlenem Element. Jeder Eintrag enthält die folgenden Daten:
-- `Feed\entry\content\properties\Id`: ID des empfohlenen Elements.
-- `Feed\entry\content\properties\Name`: Name des Elements.
-- `Feed\entry\content\properties\Rating`: Bewertung der Empfehlung, höhere Werte bedeuten höheres Zutrauen.
-- `Feed\entry\content\properties\Reasoning`: Empfehlungsargumentation (z.B. Erklärungen für die Empfehlung).
+- `Feed\entry\content\properties\Id` - ID des empfohlenen Elements.
+- `Feed\entry\content\properties\Name` - Name des Elements.
+- `Feed\entry\content\properties\Rating` - Bewertung der Empfehlung, höhere Werte bedeuten höhere Zuverlässigkeit.
+- `Feed\entry\content\properties\Reasoning` - Empfehlungsargumentation (z. B. Erklärungen für die Empfehlung).
 
 Eine Beispielantwort finden Sie unter 12.1.
 
@@ -2861,10 +2847,10 @@ HTTP-Statuscode: 200
 
 
 Die Antwort enthält einen Eintrag pro empfohlenem Element. Jeder Eintrag enthält die folgenden Daten:
-- `Feed\entry\content\properties\Id`: ID des empfohlenen Elements.
-- `Feed\entry\content\properties\Name`: Name des Elements.
-- `Feed\entry\content\properties\Rating`: Bewertung der Empfehlung, höhere Werte bedeuten höheres Zutrauen.
-- `Feed\entry\content\properties\Reasoning`: Empfehlungsargumentation (z.B. Erklärungen für die Empfehlung).
+- `Feed\entry\content\properties\Id` - ID des empfohlenen Elements.
+- `Feed\entry\content\properties\Name` - Name des Elements.
+- `Feed\entry\content\properties\Rating` - Bewertung der Empfehlung, höhere Werte bedeuten höhere Zuverlässigkeit.
+- `Feed\entry\content\properties\Reasoning` - Empfehlungsargumentation (z. B. Erklärungen für die Empfehlung).
 
 Eine Beispielantwort finden Sie unter 12.1.
 
@@ -2896,10 +2882,10 @@ HTTP-Statuscode: 200
 
 
 Die Antwort enthält einen Eintrag pro empfohlenem Element. Jeder Eintrag enthält die folgenden Daten:
-- `Feed\entry\content\properties\Id`: ID des empfohlenen Elements.
-- `Feed\entry\content\properties\Name`: Name des Elements.
-- `Feed\entry\content\properties\Rating`: Bewertung der Empfehlung, höhere Werte bedeuten höheres Zutrauen.
-- `Feed\entry\content\properties\Reasoning`: Empfehlungsargumentation (z.B. Erklärungen für die Empfehlung).
+- `Feed\entry\content\properties\Id` - ID des empfohlenen Elements.
+- `Feed\entry\content\properties\Name` - Name des Elements.
+- `Feed\entry\content\properties\Rating` - Bewertung der Empfehlung, höhere Werte bedeuten höhere Zuverlässigkeit.
+- `Feed\entry\content\properties\Reasoning` - Empfehlungsargumentation (z. B. Erklärungen für die Empfehlung).
 
 Eine Beispielantwort finden Sie unter 12.1.
 
@@ -2934,16 +2920,15 @@ HTTP-Statuscode: 200
 
 
 Die Antwort enthält einen Eintrag pro empfohlenem Element. Jeder Eintrag enthält die folgenden Daten:
-- `Feed\entry\content\properties\Id`: ID des empfohlenen Elements.
-- `Feed\entry\content\properties\Name`: Name des Elements.
-- `Feed\entry\content\properties\Rating`: Bewertung der Empfehlung, höhere Werte bedeuten höheres Zutrauen.
-- `Feed\entry\content\properties\Reasoning`: Empfehlungsargumentation (z.B. Erklärungen für die Empfehlung).
+- `Feed\entry\content\properties\Id` - ID des empfohlenen Elements.
+- `Feed\entry\content\properties\Name` - Name des Elements.
+- `Feed\entry\content\properties\Rating` - Bewertung der Empfehlung, höhere Werte bedeuten höhere Zuverlässigkeit.
+- `Feed\entry\content\properties\Reasoning` - Empfehlungsargumentation (z. B. Erklärungen für die Empfehlung).
 
 Eine Beispielantwort finden Sie unter 12.1.
 
 ##13\. Nutzungsverlauf eines Benutzers
-Nachdem ein Empfehlungsmodell entwickelt wurde, ermöglicht es das System, den Verlauf eines Benutzers (also die mit einem bestimmten Benutzer verknüpften Elemente) abzurufen, der für den Build verwendet wurde. 
-Mit dieser API kann der Nutzungsverlauf abgerufen werden.
+Nachdem ein Empfehlungsmodell entwickelt wurde, ermöglicht es das System, den Verlauf eines Benutzers (also die mit einem bestimmten Benutzer verknüpften Elemente) abzurufen, der für den Build verwendet wurde. Mit dieser API kann der Nutzungsverlauf abgerufen werden.
 
 Hinweis: Der Nutzungsverlauf ist zurzeit nur für Empfehlungsbuilds verfügbar.
 
@@ -2968,10 +2953,10 @@ Hierdurch wird die Liste der Elemente abgerufen, die im aktiven Build oder im an
 HTTP-Statuscode: 200
 
 Die Antwort enthält einen Eintrag pro empfohlenem Element. Jeder Eintrag enthält die folgenden Daten:
-- `Feed\entry\content\properties\Id`: ID des empfohlenen Elements.
-- `Feed\entry\content\properties\Name`: Name des Elements.
-- `Feed\entry\content\properties\Rating`: Nicht zutreffend.
-- `Feed\entry\content\properties\Reasoning`: Nicht zutreffend.
+- `Feed\entry\content\properties\Id` - ID des empfohlenen Elements.
+- `Feed\entry\content\properties\Name` - Name des Elements.
+- `Feed\entry\content\properties\Rating`: N/V
+- `Feed\entry\content\properties\Reasoning`: N/V
 
 OData-XML
 
@@ -3029,11 +3014,11 @@ HTTP-Statuscode: 200
 OData-XML
 
     The response includes one entry per notification. Each entry has the following data:
-		* feed\entry\content\properties\UserName – Internal user name identification.
-		* feed\entry\content\properties\ModelId – Model ID.
-		* feed\entry\content\properties\Message – Notification message.
-		* feed\entry\content\properties\DateCreated – Date that this notification was created in UTC format.
-		* feed\entry\content\properties\NotificationType – Notification types. Values are BuildFailure, RecommendationFailure, and DataAquisitionFailure.
+		* feed\entry\content\properties\UserName - Internal user name identification.
+		* feed\entry\content\properties\ModelId - Model ID.
+		* feed\entry\content\properties\Message - Notification message.
+		* feed\entry\content\properties\DateCreated - Date that this notification was created in UTC format.
+		* feed\entry\content\properties\NotificationType - Notification types. Values are BuildFailure, RecommendationFailure, and DataAquisitionFailure.
 
 	<feed xmlns:base="https://api.datamarket.azure.com/amla/recommendations/v3/GetNotifications" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns="http://www.w3.org/2005/Atom">
 		<title type="text" />
@@ -3100,10 +3085,7 @@ HTTP-Statuscode: 200
 
 
 ##15\. Rechtliche Hinweise
-Dieses Dokument wird so bereitgestellt, wie es ist. Informationen und Stellungnahmen in diesem Dokument einschließlich URLs und anderer Verweise auf Websites können ohne Ankündigung geändert werden.<br><br> 
-Einige der in diesem Dokument dargestellten Beispiele dienen nur zu Illustrationszwecken und sind frei erfunden. Ähnlichkeiten oder Verbindungen sind rein zufällig und nicht beabsichtigt.<br><br> 
-Dieses Dokument gibt Ihnen keinerlei geistige Eigentums- oder anderweitige Rechte an irgendeinem Microsoft-Produkt. Sie dürfen dieses Dokument zu internen Referenzzwecken kopieren und verwenden.<br><br> 
-© 2015 Microsoft. Alle Rechte vorbehalten.
+Dieses Dokument wird so bereitgestellt, wie es ist. Informationen und Stellungnahmen in diesem Dokument einschließlich URLs und anderer Verweise auf Websites können ohne Ankündigung geändert werden.<br><br> Einige der in diesem Dokument dargestellten Beispiele dienen nur zu Illustrationszwecken und sind frei erfunden. Ähnlichkeiten oder Verbindungen sind rein zufällig und nicht beabsichtigt.<br><br> Dieses Dokument gibt Ihnen keinerlei geistige Eigentums- oder anderweitige Rechte an irgendeinem Microsoft-Produkt. Sie dürfen dieses Dokument zu internen Referenzzwecken kopieren und verwenden.<br><br> © 2015 Microsoft. Alle Rechte vorbehalten.
  
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0928_2016-->

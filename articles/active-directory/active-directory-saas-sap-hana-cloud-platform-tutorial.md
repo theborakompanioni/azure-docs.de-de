@@ -11,12 +11,12 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="07/07/2016" 
+    ms.date="09/26/2016" 
     ms.author="jeedes" />
 
 #Tutorial: Azure Active Directory-Integration mit SAP HANA Cloud Platform
   
-In diesem Tutorial wird die Integration von Azure und SAP HANA Cloud Platform erläutert. Das in diesem Lernprogramm verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
+In diesem Tutorial wird die Integration von Azure und SAP HANA Cloud Platform erläutert. Das in diesem Tutorial verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
 
 -   Ein gültiges Azure-Abonnement
 -   Ein SAP HANA Cloud Platform-Konto
@@ -25,7 +25,7 @@ Nach Abschluss dieses Tutorials können sich die SAP HANA Cloud Platform zugewie
 
 >[AZURE.IMPORTANT]Sie müssen Ihre eigene Anwendung bereitstellen oder eine Anwendung auf Ihrem SAP HANA Cloud Platform-Konto abonnieren, um sich zu Testzwecken einmalig anzumelden. In diesem Tutorial wird eine Anwendung auf dem Konto bereitgestellt.
   
-Das in diesem Lernprogramm beschriebene Szenario besteht aus den folgenden Bausteinen:
+Das in diesem Tutorial beschriebene Szenario besteht aus den folgenden Bausteinen:
 
 1.  Aktivieren der Anwendungsintegration für SAP HANA Cloud Platform
 2.  Konfigurieren der einmaligen Anmeldung
@@ -72,7 +72,7 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
 1.  Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für **SAP HANA Cloud Platform** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-sap-hana-cloud-platform-tutorial/IC778552.png "Einmaliges Anmelden konfigurieren")
+    ![Configure single sign-on](./media/active-directory-saas-sap-hana-cloud-platform-tutorial/IC778552.png "Configure single sign-on")
 
 2.  Wählen Sie auf der Seite **Wie sollen sich Benutzer bei SAP HANA Cloud Platform anmelden?** die Option **Microsoft Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**.
 
@@ -95,7 +95,7 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
     ![App-URL konfigurieren](./media/active-directory-saas-sap-hana-cloud-platform-tutorial/IC790798.png "App-URL konfigurieren")
 
-    1.  Geben Sie im Textfeld **Anmelde-URL** die URL ein, welche die Benutzer zur Anmeldung bei der **SAP HANA Cloud Platform** -Anwendung verwenden. Dies ist die kontospezifische URL einer geschützten Ressource in der SAP HANA Cloud Platform-Anwendung. Die URL basiert auf dem folgenden Muster: *https://\<applicationName><accountName>.<landscape host>.ondemand.com/<path\_to\_protected\_resource>* (z. B.: *https://xleavep1941203872trial.hanatrial.ondemand.com/xleave*)
+    1.  Geben Sie im Textfeld **Anmelde-URL** die URL ein, welche die Benutzer zur Anmeldung bei der** SAP HANA Cloud Platform**-Anwendung verwenden. Dies ist die kontospezifische URL einer geschützten Ressource in der SAP HANA Cloud Platform-Anwendung. Die URL basiert auf dem folgenden Muster: *https://\<applicationName><accountName>.<landscape host>.ondemand.com/<path\_to\_protected\_resource>* (z. B.: *https://xleavep1941203872trial.hanatrial.ondemand.com/xleave*)
 
 		>[AZURE.NOTE]Dies ist die URL in Ihrer SAP HANA Cloud Platform-Anwendung, für deren Authentifizierung der Benutzer erforderlich ist.
 
@@ -140,8 +140,8 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
         |Assertion-Attribut| Prinzipal-Attribut|
 		|-------------------|--------------------|
-        |http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname| firstname|--------------------|--------------------|
-	|http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname| LastName|---|
+        |http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname| firstname|--------------------|--------------------| 
+	|http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname| LastName|---| 
 	|http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress|email|
 
     >[AZURE.NOTE]Die Konfiguration der Attribute hängt davon ab, wie die Anwendung(en) auf HPC entwickelt wurden, d. h. welche Attribute in der SAML-Antwort erwartet wird/werden und unter welchem Namen (Prinzipal-Attribut) sie auf dieses Attribut im Code zugreifen.
@@ -196,4 +196,4 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie d
   
 Wenn Sie die SSO-Einstellungen testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md).
 
-<!-----HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0928_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="08/26/2016"
+   ms.date="09/21/2016"
    ms.author="terrylan"/>
 
 # Azure Security Center – Häufig gestellte Fragen
@@ -121,10 +121,10 @@ Folgendes gilt:
 ### Welche Azure-Ressourcen werden von Azure Security Center überwacht?
 Azure Security Center überwacht die folgenden Azure-Ressourcen:
 
-- Virtuelle Computer (auch Clouddienste)
+- Virtuelle Computer (Virtual Machines, VMs) (auch [Clouddienste](../cloud-services/cloud-services-choose-me.md))
 - Virtuelle Azure-Netzwerke
 - Azure SQL-Dienst
-- Partnerlösungen, die in Ihr Azure-Abonnement integriert sind, z.B. die Firewall einer Webanwendung
+- Partnerlösungen, die in Ihr Azure-Abonnement integriert sind, z.B. die Firewall einer Webanwendung auf virtuellen Computern und in einer [App Service-Umgebung](../app-service/app-service-app-service-environments-readme.md)
 
 ## Virtual Machines
 
@@ -159,4 +159,4 @@ Es kann einige Zeit dauern (in der Regel weniger als eine Stunde), Überprüfung
 
 Der VM-Agent muss auf virtuellen Computern installiert sein, um die Datensammlung zu aktivieren. Der VM-Agent wird standardmäßig für virtuelle Maschinen installiert, die vom Azure Marketplace bereitgestellt werden. Informationen zum Installieren des VM-Agents auf anderen virtuellen Computern finden Sie im Blogbeitrag [VM Agent and Extensions](https://azure.microsoft.com/blog/vm-agent-and-extensions-part-2/) (VM-Agent und Erweiterungen).
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0928_2016-->

@@ -1,4 +1,4 @@
-Die folgenden Limits gelten nur für Netzwerkressourcen, die über das klassische Bereitstellungsmodell pro Abonnement verwaltet werden.
+Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über das klassische Bereitstellungsmodell pro Abonnement verwaltet werden.
 
 Ressource| Standardlimit | Maximales Limit
 --- | --- | --- 
@@ -18,9 +18,9 @@ Private VIP-Adressen (ILB) pro Bereitstellung | 1 | 1
 Endpunkt-Zugriffssteuerungslisten (ACLs) | 50 | 50
 
 
-#### Netzwerklimits – Azure-Ressourcen-Manager
+#### <a name="azure-resource-manager-virtual-networking-limits"></a>Netzwerkgrenzwerte – Azure Resource Manager
 
-Die folgenden Limits gelten nur für Netzwerkressourcen, die über den Azure-Ressourcen-Manager pro Region pro Abonnement verwaltet werden.
+Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über den Azure Resource Manager pro Region pro Abonnement verwaltet werden.
 
 Ressource| Standardlimit | Maximales Limit
 --- | --- | ---
@@ -38,9 +38,9 @@ Benutzerdefinierte Routen pro Routentabelle | 100 | 400
 Lastenausgleichsmodule (intern und Internet) | 100 | Support kontaktieren
 Regeln für Lastenausgleichsmodule pro Lastenausgleichsmodul | 150 | 150
 Öffentliche Front-End-IP pro Lastenausgleichsmodul | 5 | Support kontaktieren
-Private Front-End-IP pro Lastenausgleichsmodul | 1 | Support kontaktieren
+Private Front-End-IP pro Lastenausgleichsmodul | 30 | Support kontaktieren
 Anwendungsgateways | 50 | 50
 
 Wenden Sie sich an den Support, falls Sie Limits gegenüber den Standardwerten erhöhen müssen.
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0928_2016-->

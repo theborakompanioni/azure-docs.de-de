@@ -164,6 +164,34 @@ Als Hostheader in HTTP- und HTTPS-Integritätsprüfungen wird jeweils der DNS-Na
 
 Dieser Wert ist Teil der Endpunktkonfiguration. Der im Hostheader verwendete Wert kann nicht separat von der Zieleigenschaft („target“) angegeben werden.
 
+### Wie lauten die IP-Adressen, von denen die Integritätsüberprüfungen stammen?
+
+Die folgende Liste enthält die möglichen IP-Quelladressen für Traffic Manager-Integritätsprüfungen. Sie können anhand dieser Liste sicherstellen, dass eingehende Verbindungen von diesen IP-Adressen an den Endpunkten zur Überprüfung des Integritätsstatus zugelassen sind.
+
+
+
+- 13\.75.153.124
+- 13\.75.152.253
+- 191\.232.214.62
+- 191\.232.208.52
+- 52\.172.155.168
+- 52\.172.158.37
+- 13\.75.124.254
+- 13\.75.127.63
+- 137\.135.82.249
+- 137\.135.80.149
+- 104\.41.190.203
+- 104\.41.187.209
+- 65\.52.217.19
+- 23\.96.236.252
+- 40\.87.147.10
+- 40\.87.151.34
+- 104\.215.91.84
+- 13\.84.222.37
+- 40\.68.30.66
+- 40\.68.31.178
+- 137\.135.47.215
+- 137\.135.46.163
 
 ## Nächste Schritte
 
@@ -175,4 +203,4 @@ Informieren Sie sich über das [Erstellen eines Traffic Manager-Profils](traffic
 
 [Problembehandlung beim Status „Heruntergestuft“](traffic-manager-troubleshooting-degraded.md) auf einem Traffic Manager-Endpunkt.
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0928_2016-->

@@ -11,19 +11,19 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="07/07/2016" 
+    ms.date="09/26/2016" 
     ms.author="jeedes" />
 
 #Tutorial: Azure AD-Integration mit Sciforma
   
-In diesem Tutorial wird die Integration von Azure und Sciforma erläutert. Das in diesem Lernprogramm verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
+In diesem Tutorial wird die Integration von Azure und Sciforma erläutert. Das in diesem Tutorial verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
 
 -   Ein gültiges Azure-Abonnement
 -   Ein Sciforma-Mandant
   
 Nach Abschluss dieses Lernprogramms können sich die Sciforma zugewiesenen Azure AD-Benutzer mittels einmaliger Anmeldung auf Ihrer Sciforma-Unternehmenswebsite bei der Anwendung anmelden (durch den Dienstanbieter initiierte Anmeldung). Alternativ können sie den Zugriffsbereich nutzen (siehe [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md)).
   
-Das in diesem Lernprogramm beschriebene Szenario besteht aus den folgenden Bausteinen:
+Das in diesem Tutorial beschriebene Szenario besteht aus den folgenden Bausteinen:
 
 1.  Aktivieren der Anwendungsintegration für Sciforma
 2.  Konfigurieren der einmaligen Anmeldung
@@ -70,11 +70,11 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
 1.  Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für **Sciforma** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-sciforma-tutorial/IC777372.png "Einmaliges Anmelden konfigurieren")
+    ![Configure single sign-on](./media/active-directory-saas-sciforma-tutorial/IC777372.png "Configure single sign-on")
 
 2.  Wählen Sie auf der Seite **Wie sollen sich Benutzer bei Sciforma anmelden?** die Option **Microsoft Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-sciforma-tutorial/IC777373.png "Einmaliges Anmelden konfigurieren")
+    ![Configure single sign-on](./media/active-directory-saas-sciforma-tutorial/IC777373.png "Configure single sign-on")
 
 3.  Geben Sie auf der Seite **App-URL konfigurieren** im Textfeld für die **Zendesk-Anmelde-URL** die URL im Format „ *https://\<Mandantenname>.Sciforma.com* “ ein, und klicken Sie dann auf **Weiter**.
 
@@ -82,13 +82,13 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
 4.  Klicken Sie auf der Seite **Einmaliges Anmelden konfigurieren für Sciforma** auf **Metadaten herunterladen**, und speichern Sie die Metadatendatei lokal unter **c:\\SciformaMetaData.xml**.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-sciforma-tutorial/IC777375.png "Einmaliges Anmelden konfigurieren")
+    ![Configure single sign-on](./media/active-directory-saas-sciforma-tutorial/IC777375.png "Configure single sign-on")
 
 5.  Leiten Sie die Metadatendatei an das Supportteam von Sciforma weiter. Das Supportteam muss ein einmaliges Anmelden für Sie konfigurieren.
 
 6.  Wählen Sie die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Abschließen**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu schließen.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-sciforma-tutorial/IC777376.png "Einmaliges Anmelden konfigurieren")
+    ![Configure single sign-on](./media/active-directory-saas-sciforma-tutorial/IC777376.png "Configure single sign-on")
 ##Konfigurieren der Benutzerbereitstellung
   
 Für das Konfigurieren der Benutzerbereitstellung in Sciforma steht kein Aktionselement zur Verfügung. Wenn ein zugewiesener Benutzer versucht, sich über den Zugriffsbereich bei Sciforma anzumelden, überprüft Sciforma, ob der Benutzer vorhanden ist. Ist noch kein Benutzerkonto verfügbar, wird es von Sciforma automatisch erstellt.
@@ -110,4 +110,4 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie d
   
 Wenn Sie die SSO-Einstellungen testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md).
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0928_2016-->

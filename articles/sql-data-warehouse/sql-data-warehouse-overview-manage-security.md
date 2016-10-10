@@ -13,18 +13,16 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="08/30/2016"
+   ms.date="09/24/2016"
    ms.author="rortloff;barbkess;sonyama"/>
 
 # Sichern einer Datenbank in SQL Data Warehouse
 
 > [AZURE.SELECTOR]
 - [Sicherheitsübersicht](sql-data-warehouse-overview-manage-security.md)
-- [Bedrohungserkennung](sql-data-warehouse-security-threat-detection.md)
-- [Übersicht über die Überwachung](sql-data-warehouse-auditing-overview.md)
-- [Überwachung für Vorgängerversionsclients](sql-data-warehouse-auditing-downlevel-clients.md)
-- [Transparent Data Encryption (Portal)](sql-data-warehouse-encryption-tde.md)
-- [Transparent Data Encryption (T-SQL)](sql-data-warehouse-encryption-tde-tsql.md)
+- [Authentifizierung](sql-data-warehouse-authentication.md)
+- [Verschlüsselung (Portal)](sql-data-warehouse-encryption-tde.md)
+- [Verschlüsselung (T-SQL)](sql-data-warehouse-encryption-tde-tsql.md)
 
 Dieser Artikel beschreibt die Grundlagen zum Sichern der Azure SQL Data Warehouse-Datenbank. Insbesondere erhalten Sie in diesem Artikel erste Informationen über Ressourcen zum Einschränken des Zugriffs, zum Schützen von Daten und zum Überwachen von Aktivitäten in einer Datenbank.
 
@@ -83,18 +81,9 @@ Die Verwaltung von Datenbanken und logischen Servern über das klassische Azure-
 
 ## Verschlüsselung
 
-Durch [Transparent Data Encryption][] kann die Azure SQL-Datenbank zum Schutz Ihrer Daten beitragen, indem ruhende oder in Datenbankdateien und Sicherungen gespeicherte Daten verschlüsselt werden. Sie müssen Administrator oder ein Mitglied der Rolle „dbmanager“ in der Masterdatenbank sein, um TDE zu aktivieren. Um Ihre Datenbank zu verschlüsseln, stellen Sie auf Ihrem Server eine Verbindung mit der Masterdatenbank her und führen Folgendes aus:
+Azure SQL Data Warehouse Transparent Data Encryption (TDE) ist ein zusätzlicher Schutz vor der Bedrohung durch schädliche Aktivitäten. Hierzu werden die Schritte für die Echtzeitverschlüsselung und -entschlüsselung der ruhenden Daten ausgeführt. Wenn Sie Ihre Datenbank verschlüsseln, werden zugehörige Sicherungen und Transaktionsprotokolle verschlüsselt, ohne dass Änderungen an Ihren Anwendungen erforderlich sind. TDE verschlüsselt die Speicherung einer gesamten Datenbank, indem ein symmetrischer Schlüssel verwendet wird, der als Datenbankverschlüsselungsschlüssel bezeichnet wird. In SQL-Datenbank wird der Datenbankverschlüsselungsschlüssel mit einem integrierten Serverzertifikat geschützt. Das integrierte Serverzertifikat ist für jeden SQL-Datenbank-Server eindeutig. Microsoft führt für diese Zertifikate nach spätestens 90 Tagen automatisch eine Rotation durch. Der von SQL Data Warehouse verwendete Verschlüsselungsalgorithmus ist AES-256. Eine allgemeine Beschreibung von TDE finden Sie unter [Transparente Datenverschlüsselung (TDE)][].
 
-
-```sql
-ALTER DATABASE [AdventureWorks] SET ENCRYPTION ON;
-```
-
-Sie können Transparent Data Encryption auch über die Datenbankeinstellungen im [Azure-Portal][] aktivieren. Weitere Informationen hierzu finden Sie unter [Erste Schritte mit Transparent Data Encryption (TDE)][].
-
-## Überwachung
-
-Die Überwachung und Nachverfolgung von Datenbankereignissen kann Sie bei der Einhaltung von gesetzlichen Bestimmungen und der Erkennung von verdächtigen Aktivitäten unterstützen. Mit SQL Data Warehouse-Überwachung können Sie Ereignisse in der Datenbank in einem Überwachungsprotokoll in Ihrem Azure-Speicherkonto aufzeichnen. SQL Data Warehouse-Überwachung kann auch in Microsoft Power BI integriert werden, um detaillierte Berichte und Analysen zu ermöglichen. Weitere Informationen finden Sie unter [Erste Schritte mit der SQL-Datenbanküberwachung][].
+Sie können Ihre Datenbank mit dem [Azure-Portal][Encryption with Portal] oder mit [T-SQL][Encryption with TSQL] verschlüsseln.
 
 ## Nächste Schritte
 
@@ -104,8 +93,8 @@ Informationen und Beispiele zum Herstellen einer Verbindung mit SQL Data Warehou
 
 <!--Article references-->
 [Herstellen einer Verbindung mit SQL Data Warehouse]: ./sql-data-warehouse-connect-overview.md
-[Erste Schritte mit der SQL-Datenbanküberwachung]: ./sql-data-warehouse-auditing-overview.md
-[Erste Schritte mit Transparent Data Encryption (TDE)]: ./sql-data-warehouse-encryption-tde.md
+[Encryption with Portal]: ./sql-data-warehouse-encryption-tde.md
+[Encryption with TSQL]: ./sql-data-warehouse-encryption-tde-tsql.md
 [Herstellen einer Verbindung mit SQL Data Warehouse mithilfe der Azure Active Directory-Authentifizierung]: ./sql-data-warehouse-authentication.md
 
 <!--MSDN references-->
@@ -116,10 +105,10 @@ Informationen und Beispiele zum Herstellen einer Verbindung mit SQL Data Warehou
 [Verwalten von Datenbanken und Anmeldungen in der Azure SQL-Datenbank]: https://msdn.microsoft.com/library/ee336235.aspx
 [Berechtigungen]: https://msdn.microsoft.com/library/ms191291.aspx
 [Gespeicherten Prozeduren]: https://msdn.microsoft.com/library/ms190782.aspx
-[Transparent Data Encryption]: https://go.microsoft.com/fwlink/?LinkId=526242
-[Azure-Portal]: https://portal.azure.com/
+[Transparente Datenverschlüsselung (TDE)]: https://msdn.microsoft.com/library/bb934049.aspx
+[Azure portal]: https://portal.azure.com/
 
 <!--Other Web references-->
 [Rollenbasierte Zugriffssteuerung im Azure-Portal]: https://azure.microsoft.com/documentation/articles/role-based-access-control-configure
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0928_2016-->

@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="Einfügen von Werbeeinblendungen auf Clientseite" 
-	description="In diesem Thema wird gezeigt, wie Werbeeinblendungen auf Clientseite eingefügt werden." 
+	pageTitle="Einfügen von Anzeigen auf Clientseite | Microsoft Azure" 
+	description="In diesem Thema wird gezeigt, wie Anzeigen auf Clientseite eingefügt werden." 
 	services="media-services" 
 	documentationCenter="" 
 	authors="juliako" 
@@ -13,13 +13,13 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/22/2016" 
+	ms.date="09/26/2016" 
 	ms.author="juliako"/>
 
 
-#Einfügen von Werbeeinblendungen auf Clientseite
+#Einfügen von Anzeigen auf Clientseite
 
-Dieses Thema enthält Informationen zum Einfügen verschiedener Typen von Werbeeinblendungen auf Clientseite.
+Dieses Thema enthält Informationen zum Einfügen verschiedener Typen von Anzeigen auf Clientseite.
 
 Informationen zu Untertiteln und der Unterstützung von Werbeeinblendungen in Livestreaming-Videos finden Sie unter [Standards für unterstützte Untertitel und für Werbeeinblendungen](media-services-live-streaming-with-onprem-encoders.md#cc_and_ads).
 
@@ -35,7 +35,7 @@ Azure Media Services unterstützt Werbeeinblendungen über die Windows Media-Pla
 
 Werbeeinblendungen können an jeder Stelle auf der Zeitachse des Hauptvideos platziert werden. Sie müssen den Player anweisen, welche Werbeeinblendungen wann wiedergegeben werden. Dies erfolgt mithilfe einer Reihe von Standarddateien im XML-Format: Video Ad Service Template (VAST), Digital Video Multiple Ad Playlist (VMAP), Media Abstract Sequencing Template (MAST) und Digital Video Player Ad Interface Definition (VPAID). VAST-Dateien geben die anzuzeigenden Werbeeinblendungen an. VMAP-Dateien geben an, wann die verschiedenen Werbeeinblendungen wiedergegeben werden, sie enthalten VAST-XML. MAST-Dateien sind eine weitere Möglichkeit zum Anordnen von Werbeeinblendungen, die auch VAST-XML enthalten können. VPAID-Dateien definieren eine Schnittstelle zwischen Video-Player und Werbeeinblendung oder Werbungsserver.
 
-Jedes Player-Framework funktioniert anders und wird jeweils in einem eigenen Thema behandelt. In diesem Thema werden die grundlegenden Mechanismen zum Einfügen von Werbeeinblendungen beschrieben. Videoplayeranwendungen fordern Werbung von einem Adserver an. Der Adserver kann auf verschiedene Arten antworten:
+Jedes Player-Framework funktioniert anders und wird jeweils in einem eigenen Thema behandelt. In diesem Thema werden die grundlegenden Mechanismen zum Einfügen von Anzeigen beschrieben. Videoplayeranwendungen fordern Werbung von einem Anzeigenserver an. Der Adserver kann auf verschiedene Arten antworten:
 
 - Rückgabe einer VAST-Datei
 - Rückgabe einer VMAP-Datei (mit eingebettetem VAST)
@@ -809,8 +809,8 @@ Das folgende Beispiel zeigt, wie eine Mid-Roll-Overlay-Werbeeinblendung geplant 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
  
-##Siehe auch
+##Weitere Informationen
 
 [Entwickeln von Videoplayeranwendungen](media-services-develop-video-players.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0928_2016-->

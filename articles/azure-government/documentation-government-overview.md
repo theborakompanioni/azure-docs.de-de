@@ -90,10 +90,7 @@ Weitere Informationen finden Sie unter [Key Vault for Azure Government](/azure-g
 Bei der Isolierung geht es um die Einrichtung von Grenzen, Segmentierungen und Containern, um den Datenzugriff auf autorisierte Benutzer, Dienste und Anwendungen zu beschränken. So ist etwa die Trennung von Mandanten eine unverzichtbare Sicherheitsmaßnahme für mehrinstanzenfähigen Cloudplattformen wie Microsoft Azure. Eine logische Trennung trägt dazu bei, Konflikte zwischen Mandanten zu verhindern.
 
 ### <a name="Overview"></a>Isolierung der Umgebung
-Bei der Azure Government-Umgebung handelt es sich um eine physische und netzwerkisolierte Instanz, die vom Rest des Microsoft-Netzwerks getrennt ist. Die Isolierung wird durch eine Reihe physischer und logischer Maßnahmen erreicht:
-* Schutz durch physische Barrieren mit biometrischen Geräten und Kameras.
-* Verwendung von spezifischen Anmeldeinformationen und mehrstufiger Authentifizierung durch Microsoft-Mitarbeiter, die logischen Zugriff auf die Produktionsumgebung benötigen.
-* Die gesamte Dienstinfrastruktur für Azure Government befindet sich innerhalb der USA.
+Bei der Azure Government-Umgebung handelt es sich um eine physische Instanz, die vom Rest des Microsoft-Netzwerks getrennt ist. Diese Trennung wird durch eine Reihe physischer und logischer Maßnahmen erreicht, so z.B. durch die Sicherung physischer Barrieren mithilfe von biometrischen Geräten und Kameras. Verwendung von spezifischen Anmeldeinformationen und mehrstufiger Authentifizierung durch Microsoft-Mitarbeiter, die logischen Zugriff auf die Produktionsumgebung benötigen. Die gesamte Dienstinfrastruktur für Azure Government befindet sich innerhalb der USA.
 
 #### <a name="Overview"></a>Kundenspezifische Isolierung
 Azure implementiert Netzwerkzugriffssteuerung und -trennung durch VLAN-Isolierung, ACLs, Lastenausgleichsmodule und IP-Filter.
@@ -104,4 +101,4 @@ Weitere Informationen zur Isolierung in Microsoft Azure finden Sie im [Isolierun
 
 Weitere Informationen und Updates erhalten Sie, indem Sie den <a href="https://blogs.msdn.microsoft.com/azuregov/">Microsoft Azure Government-Blog</a> abonnieren.
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0928_2016-->

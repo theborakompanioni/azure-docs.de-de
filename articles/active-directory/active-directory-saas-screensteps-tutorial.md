@@ -11,19 +11,19 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="07/07/2016" 
+    ms.date="09/26/2016" 
     ms.author="jeedes" />
 
 #Tutorial: Azure Active Directory-Integration mit ScreenSteps
   
-In diesem Tutorial wird die Integration von Azure und ScreenSteps erläutert. Das in diesem Lernprogramm verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
+In diesem Tutorial wird die Integration von Azure und ScreenSteps erläutert. Das in diesem Tutorial verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
 
 -   Ein gültiges Azure-Abonnement
 -   Ein ScreenSteps-Mandant
   
 Nach Abschluss dieses Tutorials können sich die ScreenSteps zugewiesenen Azure AD-Benutzer mittels einmaliger Anmeldung auf Ihrer ScreenSteps-Unternehmenswebsite bei der Anwendung anmelden (durch den Dienstanbieter initiierte Anmeldung). Alternativ können sie den Zugriffsbereich nutzen (siehe [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md)).
   
-Das in diesem Lernprogramm beschriebene Szenario besteht aus den folgenden Bausteinen:
+Das in diesem Tutorial beschriebene Szenario besteht aus den folgenden Bausteinen:
 
 1.  Aktivieren der Anwendungsintegration für ScreenSteps
 2.  Konfigurieren der einmaligen Anmeldung
@@ -70,11 +70,11 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
 1.  Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für **ScreenSteps** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-screensteps-tutorial/IC778519.png "Einmaliges Anmelden konfigurieren")
+    ![Configure single sign-on](./media/active-directory-saas-screensteps-tutorial/IC778519.png "Configure single sign-on")
 
 2.  Wählen Sie auf der Seite **Wie sollen sich Benutzer bei ScreenSteps anmelden?** die Option **Microsoft Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-screensteps-tutorial/IC778520.png "Einmaliges Anmelden konfigurieren")
+    ![Configure single sign-on](./media/active-directory-saas-screensteps-tutorial/IC778520.png "Configure single sign-on")
 
 3.  Geben Sie auf der Seite **App-URL konfigurieren** im Textfeld für die **ScreenSteps-Anmelde-URL** die URL im Format „ *https://\<Mandantenname>.ScreenSteps.com* “ ein, und klicken Sie dann auf **Weiter**.
 
@@ -82,7 +82,7 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
 4.  Klicken Sie zum Herunterladen des Zertifikats auf der Seite **Einmaliges Anmelden konfigurieren für ScreenSteps** auf **Zertifikat herunterladen**, und speichern Sie das Zertifikat auf Ihrem Computer.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-screensteps-tutorial/IC778522.png "Einmaliges Anmelden konfigurieren")
+    ![Configure single sign-on](./media/active-directory-saas-screensteps-tutorial/IC778522.png "Configure single sign-on")
 
 5.  Melden Sie sich in einem anderen Webbrowserfenster bei der ScreenSteps-Unternehmenswebsite als Administrator an.
 
@@ -117,7 +117,7 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
 11. Wählen Sie im klassischen Azure-Portal die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Abschließen**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu schließen.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-screensteps-tutorial/IC778542.png "Einmaliges Anmelden konfigurieren")
+    ![Configure single sign-on](./media/active-directory-saas-screensteps-tutorial/IC778542.png "Configure single sign-on")
 ##Konfigurieren der Benutzerbereitstellung
   
 Damit sich Azure AD-Benutzer bei **ScreenSteps**, anmelden können, müssen sie in **ScreenSteps** bereitgestellt werden. Im Fall von **ScreenSteps** ist die Bereitstellung eine manuelle Aufgabe.
@@ -146,7 +146,7 @@ Damit sich Azure AD-Benutzer bei **ScreenSteps**, anmelden können, müssen sie 
 
 7.  Wählen Sie im Abschnitt Gruppen die Option **Authentifizierungsgruppe (SAML)** aus, und klicken Sie dann auf **Benutzer erstellen**.
 
-    ![Groups (Gruppen)](./media/active-directory-saas-screensteps-tutorial/IC778547.png "Groups (Gruppen)")
+    ![Gruppen](./media/active-directory-saas-screensteps-tutorial/IC778547.png "Gruppen")
 
 >[AZURE.NOTE]Sie können ScreenSteps-Benutzerkonten auch mithilfe anderer Tools zum Erstellen von ScreenSteps-Benutzerkonten oder mithilfe der von FM:Systems bereitgestellten APIs erstellen.
 
@@ -168,4 +168,4 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie d
   
 Wenn Sie die SSO-Einstellungen testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md).
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0928_2016-->

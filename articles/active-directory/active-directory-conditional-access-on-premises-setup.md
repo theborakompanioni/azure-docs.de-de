@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/23/2016"
+	ms.date="09/27/2016"
 	ms.author="femila"/>
 
 
@@ -71,22 +71,22 @@ Wenn Sie den Azure Active Directory-Geräteregistrierungsdienst für Ihren Azure
 
 Führen Sie die Aufgaben in der Prüfliste unten aus, um den Azure Active Directory-Geräteregistrierungsdienst zu aktivieren und zu konfigurieren.
 
-| Aufgabe | Referenz |
+| Task | Referenz |
 |--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------|
 | Aktivieren Sie Geräteregistrierung in Ihrem Azure Active Directory-Mandanten, damit Geräte dem Arbeitsplatz beitreten können. Standardmäßig ist die mehrstufige Authentifizierung nicht für den Dienst aktiviert. Es wird jedoch empfohlen, beim Registrieren eines Geräts die mehrstufige Authentifizierung zu verwenden. Stellen Sie vor dem Aktivieren der mehrstufigen Authentifizierung in ADRS sicher, dass AD FS für einen MFA-Anbieter (Multi-Factor Authentication) konfiguriert ist. | [Aktivieren der Azure Active Directory-Geräteregistrierung](active-directory-conditional-access-device-registration-overview.md) |
 | Geräte ermitteln den Azure Active Directory-Geräteregistrierungsdienst, indem sie nach bekannten DNS-Einträgen suchen. Sie müssen den DNS-Eintrag für Ihr Unternehmen so konfigurieren, dass Geräte den Azure Active Directory-Geräteregistrierungsdienst ermitteln können. | [Konfigurieren der Ermittlung für die Azure Active Directory-Geräteregistrierung](active-directory-conditional-access-device-registration-overview.md) |
 
 ##Teil 2: Bereitstellen und Konfigurieren von Windows Server 2012 R2 Active Directory-Verbunddiensten und Einrichten einer Partnerbeziehung mit Azure AD
 
-| Aufgabe | Referenz |
+| Task | Referenz |
 |--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------|
-| Bereitstellen der Active Directory-Domänendienste mit den Windows Server 2012 R2-Schemaerweiterungen. Es ist nicht erforderlich, ein Upgrade Ihrer Domänencontroller auf Windows Server 2012 R2 auszuführen. Das Upgrade des Schemas ist die einzige Anforderung. | [Ausführen eines Upgrades des Schemas der Active Directory-Domänendienste](#upgrade-your-active-directory-domain-services-schema) |
+| Bereitstellen der Active Directory Domain Services mit den Windows Server 2012 R2-Schemaerweiterungen. Es ist nicht erforderlich, ein Upgrade Ihrer Domänencontroller auf Windows Server 2012 R2 auszuführen. Das Upgrade des Schemas ist die einzige Anforderung. | [Ausführen eines Upgrades des Schemas der Active Directory Domain Services](#upgrade-your-active-directory-domain-services-schema) |
 | Geräte ermitteln den Azure Active Directory-Geräteregistrierungsdienst, indem sie nach bekannten DNS-Einträgen suchen. Sie müssen den DNS-Eintrag für Ihr Unternehmen so konfigurieren, dass Geräte den Azure Active Directory-Geräteregistrierungsdienst ermitteln können. | [Vorbereiten von Unterstützungsgeräten für Active Directory](#prepare-your-active-directory-to-support-devices) |
 
 
 ##Teil 3: Aktivieren des Geräterückschreibens in Azure AD
 
-| Aufgabe | Referenz |
+| Task | Referenz |
 |--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------|
 | Führen Sie Teil 2 von „Aktivieren des Geräterückschreibens in Azure AD Connect“ aus. Kehren Sie nach Abschluss des Vorgangs zu dieser Anleitung zurück. | [Aktivieren des Geräterückschreibens in Azure AD Connect](#upgrade-your-active-directory-domain-services-schema) |
 
@@ -100,7 +100,7 @@ Es wird dringend empfohlen, eine der verschiedenen Optionen für die Multi-Facto
 Die Bereitstellung ist jetzt abgeschlossen. Sie können nun einige Szenarien ausprobieren. Folgen Sie den unten angegebenen Links, um mit dem Dienst zu experimentieren und sich mit den Funktionen vertraut zu machen.
 
 
-| Aufgabe | Referenz |
+| Task | Referenz |
 |------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------|
 | Verknüpfen Sie einige Geräte mit dem Arbeitsbereich, indem Sie die Azure Active Directory-Geräteregistrierung verwenden. Sie können iOS-, Windows- und Android-Geräte verknüpfen. | [Arbeitsbereichverknüpfung für Geräte mithilfe der Azure Active Directory-Geräteregistrierung ](#join-devices-to-your-workplace-using-azure-active-directory-device-registration) |
 | Sie können registrierte Geräte mithilfe des Verwaltungsportals anzeigen und aktivieren/deaktivieren. In dieser Aufgabe zeigen Sie mit dem Administratorportal einige registrierte Geräte an. | [Azure Active Directory-Geräteregistrierung – Übersicht](active-directory-conditional-access-device-registration-overview.md) |
@@ -125,7 +125,7 @@ Diese Anleitung hilft Ihnen bei der Integration Ihres Azure AD-Mandanten in die 
   Konfigurieren Sie die Partnerbeziehung mit AD FS, wie im oben verlinkten Dokument beschrieben. Sie müssen keine Preview-Funktionen konfigurieren.
 
 
-## Ausführen eines Upgrades des Schemas der Active Directory-Domänendienste
+## Ausführen eines Upgrades des Schemas der Active Directory Domain Services
 
 > [AZURE.NOTE]
 Das Upgrade des Active Directory-Schemas kann nicht rückgängig gemacht werden. Es wird empfohlen, dieses Upgrade zuerst in einer Testumgebung auszuführen.
@@ -176,7 +176,7 @@ Die Azure Active Directory-Geräteregistrierung verwendet einen drahtlosen Profi
 
     https://enterpriseregistration.windows.net/enrollmentserver/otaprofile/"yourdomainname"
 
-Hier steht `yourdomainname` für den Domänennamen, den Sie mit Azure Active Directory konfiguriert haben. Wenn Sie z. B. die Domäne "contoso.com" verwenden, lautet die URL folgendermaßen:
+Hier steht `yourdomainname` für den Domänennamen, den Sie mit Azure Active Directory konfiguriert haben. Wenn Sie z.B. die Domäne contoso.com verwenden, lautet die URL folgendermaßen:
 
     https://enterpriseregistration.windows.net/enrollmentserver/otaprofile/contoso.com
 
@@ -252,4 +252,4 @@ Wenn Benutzer auf Ihre Anwendung jetzt über ein Gerät zugreifen, das nicht unt
 
 - [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](active-directory-apps-index.md)
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0928_2016-->

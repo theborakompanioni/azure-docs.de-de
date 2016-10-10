@@ -4,7 +4,7 @@
     services="active-directory"
     documentationCenter=""
     authors="AndKjell"
-    manager="stevenpo"
+    manager="femila"
     editor=""/>
 <tags
     ms.service="active-directory"
@@ -133,7 +133,7 @@ Mit dieser Methode können Sie auch den aktiven Synchronisierungsserver ersetzen
 Sie können mehrere Stagingserver verwenden, wenn Sie mehrere Sicherungen in verschiedenen Datencentern benötigen.
 
 ## Mehrere Azure AD-Verzeichnisse
-Microsoft empfiehlt die Verwendung eines einzelnen Verzeichnisses in Azure AD für eine Organisation. Lesen Sie vor der Verwendung mehrerer Azure AD-Verzeichnisse die folgenden Themen zu gängigen Szenarien, in denen Sie ein einzelnes Verzeichnis verwenden können:
+Microsoft empfiehlt die Verwendung eines einzelnen Verzeichnisses in Azure AD für eine Organisation. Lesen Sie vor der Verwendung mehrerer Azure AD-Verzeichnisse die folgenden Themen zu gängigen Szenarien, in denen Sie ein einzelnes Verzeichnis verwenden können.
 
 Thema |  
 --------- | ---------
@@ -187,4 +187,4 @@ Weitere Informationen zur Konfiguration der [Azure AD Connect-Synchronisierung](
 
 Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md).
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0928_2016-->

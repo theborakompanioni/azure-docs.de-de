@@ -35,8 +35,8 @@ Azure gruppiert Dienste im Verwaltungsportal unter verschiedenen Kategorien und 
 
 Dieser Artikel **geht anders vor**, denn die Dienste werden nach Funktionsverwandtschaft dargestellt, und es werden wichtige Teildienste hervorgehoben, die zu größeren Diensten gehören.
 
-![Azure-Komponenten](./media/fundamentals-introduction-to-azure/AzureComponentsIntroNew780.png)  
-*Abbildung: Azure bietet über das Internet zugängliche Anwendungsdienste, die in Azure-Datencentern ausgeführt werden.*
+![Azure-Komponenten](./media/fundamentals-introduction-to-azure/AzureComponentsIntroNew780.png) 
+*Abbildung: Azure bietet über das Internet zugängliche Anwendungsdienste, die in Azure-Datencentern ausgeführt werden. *
 
 ## Verwaltungsportal
 Azure verfügt über eine Webschnittstelle, das so genannte [Verwaltungsportal](http://manage.windowsazure.com), über das Administratoren auf die meisten Azure-Features zugreifen und die meisten Azure-Features verwalten können. Microsoft gibt das Portal mit der neueren Benutzeroberfläche in der Regel als Beta-Version heraus, bevor eine ältere Version zurückgezogen wird. Die neuere Version heißt [Azure-Vorschauportal](https://portal.azure.com/).
@@ -431,7 +431,7 @@ Unabhängig von der Funktion eines Codes muss eine häufige Interaktion mit ande
 
 Warteschlangen folgen einem einfachen Prinzip: Eine Anwendung stellt eine Nachricht in eine Warteschlange, und diese Nachricht wird von einer anderen Anwendung gelesen. Wenn Ihre Anwendung nur diesen überschaubaren Dienst erfordert, ist Azure Queues womöglich die beste Wahl.
 
-Aufgrund der Art und Weise, wie Azure im Laufe der Zeit gewachsen ist, bieten Azure-Speicherwarteschlangen und Service Bus-Warteschlangen ähnliche Warteschlangendienste. Die Gründe dafür, weshalb Sie eine Option der anderen eventuell vorziehen sollten, werden im technischen Artikel [<LINK>](http://msdn.microsoft.com/library/azure/hh767287.aspx "Azure-Warteschlangen und Service Bus-Warteschlangen – Vergleich und Gegenüberstellung") dargelegt. In vielen Szenarien funktionieren beide.
+Aufgrund der Art und Weise, wie Azure im Laufe der Zeit gewachsen ist, bieten Azure-Speicherwarteschlangen und Service Bus-Warteschlangen ähnliche Warteschlangendienste. Die Gründe, weshalb Sie eine Option der anderen eventuell vorziehen sollten, werden in dem eher technischen Artikel [Azure-Warteschlangen und Service Bus-Warteschlangen – Vergleich und Gegenüberstellung](http://msdn.microsoft.com/library/azure/hh767287.aspx) dargestellt. In vielen Szenarien funktionieren beide.
 
 **Szenarien für Warteschlangen**
 
@@ -607,4 +607,4 @@ Nachdem Sie nun einen Überblick erhalten haben, besteht der nächste Schritt da
 
 [Azure Media Services Poster]: http://azure.microsoft.com/documentation/infographics/media-services/
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

@@ -5,7 +5,7 @@ Konfiguration der Referenzliste:
 - Name des virtuellen Netzwerks = TestVNet
 - Adressraum des virtuellen Netzwerks: 192.168.0.0/16
 - Ressourcengruppe = TestRG
-- Name Subnet1 = FrontEnd 
+- Name Subnet1 = FrontEnd
 - Adressraum Subnet1 = 192.168.0.0/16
 - Name des Gatewaysubnetzes: GatewaySubnet. Sie müssen ein Gatewaysubnetz immer *GatewaySubnet* nennen.
 - Adressraum des Gatewaysubnetzes = 192.168.200.0/26
@@ -19,7 +19,7 @@ Konfiguration der Referenzliste:
 
 ## Hinzufügen eines Gateways
 
-1. Verbinden Sie sich mit Ihrem Azure-Abonnement. 
+1. Stellen Sie eine Verbindung mit Ihrem Azure-Abonnement her.
 
 		Login-AzureRmAccount
 		Get-AzureRmSubscription 
@@ -70,7 +70,9 @@ Verwenden Sie den folgenden Befehl, um zu überprüfen, ob das Gateway erstellt 
 
 ## Ändern der Größe eines Gateways
 
-Es gibt drei [Gateway-SKUs](../articles/vpn-gateway/vpn-gateway-about-vpngateways.md). Sie können jederzeit den folgenden Befehl verwenden, um die Gateway-SKU zu ändern.
+Es gibt eine Reihe von [Gateway-SKUs](../articles/expressroute/expressroute-about-virtual-network-gateways.md). Sie können jederzeit den folgenden Befehl verwenden, um die Gateway-SKU zu ändern.
+
+>[AZURE.IMPORTANT] Dieser Befehl kann nicht für das UltraPerformance-Gateway verwendet werden. Wenn Sie das Gateway in ein UltraPerformance-Gateway ändern möchten, entfernen Sie zunächst das vorhandene ExpressRoute-Gateway, und erstellen Sie anschließend ein neues UltraPerformance-Gateway. Wenn Sie das Gateway von einem UltraPerformance-Gateway herabstufen möchten, entfernen Sie zunächst das UltraPerformance-Gateway, und erstellen Sie anschließend ein neues Gateway.
 
 	$gw = Get-AzureRmVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG
 	Resize-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $gw -GatewaySku HighPerformance
@@ -81,4 +83,4 @@ Verwenden Sie den folgenden Befehl, um ein Gateway zu entfernen.
 
 	Remove-AzureRmVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG  
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0928_2016-->

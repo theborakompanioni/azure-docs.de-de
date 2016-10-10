@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="07/14/2016"
+	ms.date="09/26/2016"
 	ms.author="jroth"/>
 
 # SQL Server-Agent-Erweiterung für virtuelle SQL Server-Computer (Klassisch)
@@ -26,7 +26,6 @@
 Die Erweiterung für SQL Server-IaaS-Agent (SQLIaaSAgent) wird auf virtuellen Azure-Computern zum Automatisieren von Verwaltungsaufgaben ausgeführt. Dieses Thema bietet eine Übersicht über die Dienste, die von der Erweiterung unterstützt werden, sowie Anweisungen zu Installation, Status und Deinstallation.
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] 
-
 
 Die Resource Manager-Version dieses Artikels finden Sie unter [SQL Server-Agent-Erweiterung für virtuelle SQL Server-Computer (Resource Manager)](virtual-machines-windows-sql-server-agent-extension.md).
 
@@ -44,36 +43,42 @@ Die Erweiterung für SQL Server-IaaS-Agent unterstützt die folgenden Verwaltung
 
 Anforderungen für die Verwendung der Erweiterung für SQL Server-IaaS-Agent auf Ihrem virtuellen Computer:
 
-**Betriebssystem:**
+### Betriebssystem:
 
 - Windows Server 2012
 - Windows Server 2012 R2
 
-**SQL Server-Versionen:**
+### SQL Server-Versionen:
 
 - SQL Server 2012
 - SQL Server 2014
 - SQL Server 2016
 
-**Azure PowerShell:**
+### Azure PowerShell:
 
-- [Herunterladen und Konfigurieren der aktuellen Azure PowerShell-Befehle](../powershell-install-configure.md)
+[Herunterladen und Konfigurieren der aktuellen Azure PowerShell-Befehle](../powershell-install-configure.md)
 
-**Gast-Agent des virtuellen Computers:**
+Starten Sie Windows PowerShell, und verknüpfen Sie dann mithilfe des Befehls **Add-AzureAccount** PowerShell mit Ihrem Azure-Abonnement.
 
-- Der Gast-Agent des virtuellen Computers muss auf dem virtuellen Computer ausgeführt werden. Er wird automatisch auf neuen Azure-VMs installiert, daher sollten Sie dies normalerweise nicht manuell ausführen müssen.
+	Add-AzureAccount
+
+Wenn Sie über mehrere Abonnements verfügen, verwenden Sie **Select-AzureSubscription**, um das Abonnement auszuwählen, das die klassische Ziel-VM enthält.
+
+	Select-AzureSubscription -SubscriptionName <subscriptionname>
+
+Zu diesem Zeitpunkt können Sie mit dem Befehl **Get-AzureVM** eine Liste der klassischen virtuellen Computer und der zugeordneten Dienstnamen abrufen.
+
+	Get-AzureVM
 
 ## Installation
 
-Die Erweiterung für SQL Server-IaaS-Agent wird automatisch installiert, wenn Sie eines der Katalogimages für virtuelle SQL Server-Computer bereitstellen.
+Bei klassischen virtuellen Computern müssen Sie PowerShell für die Installation der Erweiterung für SQL Server-IaaS-Agent verwenden und die zugehörigen Dienste konfigurieren. Verwenden Sie zum Installieren der Erweiterung das PowerShell-Cmdlet **Set-AzureVMSqlServerExtension**. Mit dem folgenden Befehl wird die Erweiterung beispielsweise auf einem virtuellen Windows Server-Computer (klassisch) erstellt und „SQLIaaSExtension“ genannt.
 
-Wenn Sie einen virtuellen Windows Server-Computer nur mit dem Betriebssystem erstellen, können Sie die Erweiterung manuell mit dem PowerShell-Cmdlet **Set-AzureVMSqlServerExtension** installieren. Mit dem folgenden Befehl wird die Erweiterung beispielsweise auf einem virtuellen Windows Server-Computer nur mit dem Betriebssystem (klassisch) erstellt und der Computer mit dem Namen „SQLIaaSExtension“ versehen.
-
-	Get-AzureVM -ServiceName <vmservicename> -Name <vmname> | Set-AzureVMSqlServerExtension --ReferenceName "SQLIaasExtension" -Version "1.2" | Update-AzureVM
+	Get-AzureVM -ServiceName <vmservicename> -Name <vmname> | Set-AzureVMSqlServerExtension -ReferenceName "SQLIaasExtension" -Version "1.2" | Update-AzureVM
 
 Bei einer Aktualisierung auf die aktuelle Version der SQL-IaaS-Agent-Erweiterung müssen Sie den virtuellen Computer nach der Aktualisierung neu starten.
 
->[AZURE.NOTE] Wenn Sie die SQL Server-IaaS-Agent-Erweiterung manuell auf einem virtuellen Windows Server-Computer installieren, müssen Sie ihre Funktionen mithilfe von PowerShell-Befehlen verwenden und verwalten. Die Portaloberfläche steht nur für SQL Server-Katalogimages zur Verfügung.
+>[AZURE.NOTE] Auf klassischen virtuellen Computern ist keine Option zum Installieren und Konfigurieren der Erweiterung für SQL-IaaS-Agent über das Portal verfügbar.
 
 ## Status
 
@@ -99,6 +104,6 @@ Sie können auch das PowerShell-Cmdlet **Remove-AzureVMSqlServerExtension** verw
 
 Verwenden Sie einen der von der Erweiterung unterstützten Dienste. Weitere Informationen finden Sie in den im Abschnitt [Unterstützte Dienste](#supported-services) in diesem Artikel aufgeführten Themen.
 
-Ausführlichere Informationen zur Verwendung von SQL Server auf virtuellen Azure-Computern finden Sie unter [Übersicht zu SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-sql-server-iaas-overview.md).
+Ausführlichere Informationen zur Verwendung von SQL Server auf virtuellen Azure-Computern finden Sie unter [Übersicht zu SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-sql-server-iaas-overview.md).
 
-<!----HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0928_2016-->

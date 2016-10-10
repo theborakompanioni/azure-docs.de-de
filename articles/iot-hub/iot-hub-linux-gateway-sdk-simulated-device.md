@@ -13,8 +13,8 @@
      ms.topic="article"
      ms.tgt_pltfrm="na"
      ms.workload="na"
-     ms.date="04/20/2016"
-     ms.author="cstreet"/>
+     ms.date="08/29/2016"
+     ms.author="andbuc"/>
 
 
 # IoT Gateway SDK (Beta) – Senden von D2C-Nachrichten mit einem simulierten Gerät unter Linux
@@ -41,11 +41,12 @@ So führen Sie das Beispiel aus:
 
 Öffnen Sie die Datei **samples/simulated\_device\_cloud\_upload/src/simulated\_device\_cloud\_upload\_lin.json** in Ihrer lokalen Kopie des **azure-iot-gateway-sdk**-Repositorys in einem Texteditor. Diese Datei konfiguriert die Module im Beispielgateway:
 
-- Das **IoTHub**-Modul stellt eine Verbindung mit Ihrem IoT Hub her. Sie müssen das Modul zum Senden von Daten an Ihren IoT Hub konfigurieren. Legen Sie insbesondere den **IoTHubName**-Wert auf den Namen Ihres IoT Hubs fest, und legen Sie den Wert von **IoTHubSuffix** auf **azure-devices.net** fest.
-- Das **Zuordnungsmodul** ordnet die MAC-Adressen Ihrer simulierten Geräte zu den IoT Hub-Geräte-IDs zu. Stellen Sie sicher, dass die **deviceId**-Werte mit den IDs der beiden Geräte übereinstimmen, die Sie Ihrem IoT Hub hinzugefügt haben, und dass die **deviceKey**-Werte die Schlüssel der beiden Geräte enthalten.
-- Bei den Modulen **BLE1** und **BLE2** handelt es sich um die simulierten Geräte. Beachten Sie, dass die MAC-Adressen mit den Werten im **Zuordnungsmodul** übereinstimmen.
-- Das **Protokollierungsmodul** protokolliert die Aktivitäten Ihres Gateways in einer Datei.
-- Bei den unten gezeigten **module path**-Werten wird angenommen, dass Sie das Beispiel aus dem Stammordner Ihrer lokalen Kopie des **azure-iot-gateway-sdk**-Repositorys ausführen.
+- Das **IoTHub**-Modul stellt eine Verbindung mit Ihrem IoT Hub her. Sie müssen das Modul zum Senden von Daten an Ihren IoT Hub konfigurieren. Legen Sie insbesondere den Wert **IoTHubName** auf den Namen Ihres IoT Hubs und den Wert von **IoTHubSuffix** auf **azure-devices.net** fest. Legen Sie den Wert **Transport** auf eine der folgenden Optionen fest: HTTP, AMQP oder MQTT. Beachten Sie, dass derzeit nur bei „HTTP“ eine TCP-Verbindung für alle Gerätenachrichten gemeinsam genutzt wird. Wenn Sie den Wert auf „AMQP“ oder „MQTT“ festlegen, richtet das Gateway für jedes Gerät eine eigene TCP-Verbindung mit dem IoT Hub ein.
+- Das Modul **Mapping** ordnet die MAC-Adressen Ihrer simulierten Geräte den IoT Hub-Geräte-IDs zu. Stellen Sie sicher, dass die **deviceId**-Werte mit den IDs der beiden Geräte übereinstimmen, die Sie Ihrem IoT Hub hinzugefügt haben, und dass die **deviceKey**-Werte die Schlüssel der beiden Geräte enthalten.
+- Bei den Modulen **BLE1** und **BLE2** handelt es sich um die simulierten Geräte. Beachten Sie, dass die MAC-Adressen mit den Werten im Modul **Mapping** übereinstimmen.
+- Das Modul **Logger** protokolliert die Aktivitäten Ihres Gateways in einer Datei.
+- Bei den unten gezeigten **module path**-Werten wird angenommen, dass Sie das Beispiel aus dem Stammordner Ihrer lokalen Kopie des Repositorys **azure-iot-gateway-sdk** ausführen.
+- Das Array **Links** unten in der JSON-Datei verbindet die Module **BLE1** und **BLE2** mit dem Modul **Mapping** und das Modul **Mapping** mit dem Modul **IoTHub**. Zusätzlich wird gewährleistet, dass alle Nachrichten vom Modul **Logger** protokolliert werden.
 
 ```
 {
@@ -53,27 +54,28 @@ So führen Sie das Beispiel aus:
     [ 
         {
             "module name" : "IoTHub",
-            "module path" : "./build/modules/iothubhttp/libiothubhttp_hl.so",
+            "module path" : "./build/modules/iothub/libiothub_hl.so",
             "args" : 
             {
                 "IoTHubName" : "{Your IoT hub name}",
-                "IoTHubSuffix" : "azure-devices.net"
+                "IoTHubSuffix" : "azure-devices.net",
+                "Transport": "HTTP"
             }
         },
         {
             "module name" : "mapping",
-            "module path" : "./build/modules/identitymap/libidentitymap_hl.so",
+            "module path" : "./build/modules/identitymap/libidentity_map_hl.so",
             "args" : 
             [
                 {
                     "macAddress" : "01-01-01-01-01-01",
-                    "deviceId"   : "GW-ble1-demo",
-                    "deviceKey"  : "{Device key}"
+                    "deviceId"   : "{Device ID 1}",
+                    "deviceKey"  : "{Device key 1}"
                 },
                 {
                     "macAddress" : "02-02-02-02-02-02",
-                    "deviceId"   : "GW-ble2-demo",
-                    "deviceKey"  : "{Device key}"
+                    "deviceId"   : "{Device ID 2}",
+                    "deviceKey"  : "{Device key 2}"
                 }
             ]
         },
@@ -101,6 +103,12 @@ So führen Sie das Beispiel aus:
                 "filename":"./deviceCloudUploadGatewaylog.log"
             }
         }
+    ],
+    "links" : [
+        { "source" : "*", "sink" : "Logger" },
+        { "source" : "BLE1", "sink" : "mapping" },
+        { "source" : "BLE2", "sink" : "mapping" },
+        { "source" : "mapping", "sink" : "IoTHub" }
     ]
 }
 
@@ -110,14 +118,14 @@ Speichern Sie alle Änderungen, die Sie an der Konfigurationsdatei vorgenommen h
 
 So führen Sie das Beispiel aus:
 
-1. Navigieren Sie in der Shell zum Stammordner in Ihrer lokalen Kopie des **azure-iot-gateway-sdk**-Repositorys.
+1. Navigieren Sie in der Shell zum Stammordner in Ihrer lokalen Kopie des Repositorys **azure-iot-gateway-sdk**.
 2. Führen Sie den folgenden Befehl aus:
 
     ```
     ./build/samples/simulated_device_cloud_upload/simulated_device_cloud_upload_sample ./samples/simulated_device_cloud_upload/src/simulated_device_cloud_upload_lin.json
     ```
 
-3. Sie können die Tools [Geräte-Explorer oder iothub-explorer][lnk-explorer-tools] verwenden, um die Nachrichten zu überwachen, die IoT Hub aus dem Gateway empfängt.
+3. Sie können die Tools [Geräte-Explorer oder iothub-explorer][lnk-explorer-tools] verwenden, um die Nachrichten zu überwachen, die IoT Hub vom Gateway empfängt.
 
 ## Nächste Schritte
 
@@ -151,4 +159,4 @@ Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 [lnk-portal]: iot-hub-manage-through-portal.md
 [lnk-securing]: iot-hub-security-ground-up.md
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0928_2016-->

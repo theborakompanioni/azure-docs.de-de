@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="billmath"
-	manager="stevenpo"
+	manager="femila"
 	editor="curtand"/>
 
 <tags
@@ -143,4 +143,4 @@ Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Dire
 
 Erfahren Sie mehr über [Entwurfskonzepte für Azure AD Connect](active-directory-aadconnect-design-concepts.md)
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0928_2016-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/19/2016" 
+	ms.date="09/27/2016" 
 	ms.author="mimig"/>
 
 # Tipps zur Leistungssteigerung für DocumentDB
@@ -46,7 +46,7 @@ Hier sind einige Optionen zur Optimierung der Datenbankleistung aufgeführt:
     - TCP
     - HTTPS
 
-    DocumentDB bietet ein einfaches und offenes RESTful-Programmiermodell über HTTPS. Darüber hinaus ist ein effizientes TCP-Protokoll vorhanden, das ebenfalls über ein RESTful-Kommunikationsmodell verfügt und über das .NET-Client-SDK verfügbar ist. Die beste Leistung erzielen Sie mit dem TCP-Protokoll.
+    DocumentDB bietet ein einfaches und offenes RESTful-Programmiermodell über HTTPS. Darüber hinaus ist ein effizientes TCP-Protokoll vorhanden, das ebenfalls über ein RESTful-Kommunikationsmodell verfügt und über das .NET-Client-SDK verfügbar ist. Sowohl Direct TCP als auch HTTPS nutzen SSL für die erste Authentifizierung und Verschlüsselung des Datenverkehrs. Die beste Leistung erzielen Sie mit dem TCP-Protokoll.
 
     Der Verbindungsmodus wird im Zuge der Erstellung der DocumentClient-Instanz mit dem ConnectionPolicy-Parameter konfiguriert. Bei Verwendung des direkten Modus kann das Protokoll auch innerhalb des ConnectionPolicy-Parameters festgelegt werden.
 
@@ -93,7 +93,7 @@ Hier sind einige Optionen zur Optimierung der Datenbankleistung aufgeführt:
 
 4. **Optimieren von parallelen Abfragen für partitionierte Sammlungen**
 
-    DocumentDB .NET SDK-Version 1.9.0 und höher verfügt über Unterstützung von parallelen Abfragen, mit denen Sie eine partitionierte Sammlung parallel abfragen können. Weitere Informationen finden Sie unter „Arbeiten mit den SDKs“ (und in den zugehörigen Codebeispielen). Die SDKs wurden dafür ausgelegt, die Latenz und den Durchsatz von Abfragen zu verbessern. Parallele Abfragen verfügen über zwei Parameter, die Benutzer optimieren können, um sie an ihre Anforderungen anzupassen: (a) MaxDegreeOfParallelism zum Steuern der maximalen Anzahl von Partitionen, die parallel abgefragt werden können, und (b) MaxBufferedItemCount zum Steuern der Anzahl von vorab abgerufenen Ergebnissen.
+     Die DocumentDB .NET SDK-Version 1.9.0 und höher bietet Unterstützung paralleler Abfragen, mit denen Sie eine partitionierte Sammlung parallel abfragen können (weitere Informationen finden Sie unter [Arbeiten mit den SDKs](documentdb-partition-data.md#working-with-the-sdks) und in den zugehörigen [Codebeispielen](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Queries/Program.cs)). Parallele Abfragen sind darauf ausgelegt, Latenz und Durchsatz im Vergleich mit seriellen Abfragen zu verbessern. Parallele Abfragen verfügen über zwei Parameter, die Benutzer optimieren können, um sie an ihre Anforderungen anzupassen: (a) MaxDegreeOfParallelism zum Steuern der maximalen Anzahl von Partitionen, die parallel abgefragt werden können, und (b) MaxBufferedItemCount zum Steuern der Anzahl von vorab abgerufenen Ergebnissen.
     
     (a) ***Optimieren von MaxDegreeOfParallelism:*** Das parallele Abfragen ist möglich, indem mehrere Partitionen parallel abgefragt werden. Die Daten einer individuell partitionierten Sammlung werden in Bezug auf die Abfrage aber seriell abgerufen. Wenn Sie MaxDegreeOfParallelism also auf die Anzahl von Partitionen festlegen, ist die Wahrscheinlichkeit am höchsten, dass die bestmögliche Leistung für die Abfrage erzielt wird (vorausgesetzt, alle anderen Systembedingungen bleiben unverändert). Falls Ihnen die Anzahl von Partitionen nicht bekannt ist, können Sie MaxDegreeOfParallelism auf einen hohen Wert festlegen. Das System wählt für MaxDegreeOfParallelism dann den minimalen Wert aus (Anzahl von Partitionen, Benutzereingabe).
     
@@ -211,4 +211,4 @@ Eine Beispielanwendung zur Evaluierung von DocumentDB für Hochleistungsszenarie
 
 Weitere Informationen zur Gestaltung einer auf Skalierung und hohe Leistung ausgelegten Anwendung finden Sie unter [Partitionieren und Skalieren von Daten in DocumentDB](documentdb-partition-data.md).
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

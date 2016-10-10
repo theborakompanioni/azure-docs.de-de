@@ -39,7 +39,7 @@ In diesem Artikel wird erläutert, wie Sie eine neue Gruppe in der Azure Active 
 
 5. Fügen Sie auf dem Blatt **Gruppe** einen Namen und eine Beschreibung für die Gruppe hinzu.
 
-6. Um der Gruppe Mitglieder hinzuzufügen, wählen Sie im Textfeld **Mitgliedschaftstyp** die Einstellung **Zugewiesen** aus und klicken dann auf **Mitglieder**. Weitere Informationen zum dynamischen Verwalten der Gruppenmitgliedschaften finden Sie unter [Verwalten dynamischer Regeln für Benutzer in einer Gruppe](active-directory-groups-dynamic-users-azure-portal.md) oder unter [Verwalten dynamischer Regeln für Geräte in einer Gruppe](active-directory-groups-dynamic-devices-azure-portal.md).
+6. Um der Gruppe Mitglieder hinzuzufügen, wählen Sie im Textfeld **Mitgliedschaftstyp** die Einstellung **Zugewiesen** aus und klicken dann auf **Mitglieder**. Weitere Informationen zum dynamischen Verwalten der Mitgliedschaft finden Sie unter [Verwenden von Attributen zum Erstellen erweiterter Regeln für Gruppenmitgliedschaften](active-directory-groups-dynamic-membership-azure-portal.md).
 
   ![Auswählen der hinzuzufügenden Mitglieder](./media/active-directory-groups-create-azure-portal/select-members.png)
 
@@ -62,4 +62,4 @@ Diese Artikel enthalten zusätzliche Informationen zu Azure Active Directory.
 * [Verwalten der Mitgliedschaften einer Gruppe](active-directory-groups-membership-azure-portal.md)
 * [Verwalten dynamischer Regeln für Benutzer in einer Gruppe](active-directory-groups-dynamic-membership-azure-portal.md)
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0928_2016-->

@@ -13,11 +13,11 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="big-compute"
-   ms.date="06/08/2016"
+   ms.date="09/22/2016"
    ms.author="danlep"/>
 
-# Big Compute in Azure: Technische Ressourcen für Batch und HPC (High Performance Computing)
-Dies ist eine Anleitung zu den technischen Ressourcen, die Ihnen beim Ausführen Ihrer umfangreichen parallelen, Batch- und HPC-Workloads in Azure helfen. Erweitern Sie Ihre vorhandenen Batch- oder HPC-Workloads auf die Azure-Cloud, oder erstellen Sie mithilfe einer Reihe von Azure-Diensten neue Big Compute-Lösungen in Azure.
+# Big Compute in Azure: technische Ressourcen für Batch und High Performance Computing 
+In diesem Leitfaden werden die technischen Ressourcen vorgestellt, die Sie beim Ausführen Ihrer umfangreichen parallelen Workloads sowie Ihrer Batch- und HPC-Workloads (High Performance Computing) in Azure unterstützen. Erweitern Sie Ihre vorhandenen Batch- oder HPC-Workloads in die Azure-Cloud, oder erstellen Sie mithilfe einer Reihe von Azure-Diensten neue Big Compute-Lösungen.
 
 ## Lösungsoptionen
 
@@ -30,7 +30,7 @@ Erfahren Sie mehr über Big Compute-Optionen in Azure, und wählen Sie den richt
 
 ## Azure Batch
 
-[Batch](https://azure.microsoft.com/services/batch/) ist ein Plattformdienst, mit dem Sie auf einfache Weise Ihre Linux- und Windows-Anwendungen für die Cloud aktivieren und Aufträge ausführen können, ohne einen Cluster und einen Auftragsplaner einrichten und verwalten zu müssen. Verwenden Sie das SDK, um Clientanwendungen in einer Vielzahl von Sprachen mit Azure Batch zu integrieren, Daten in Azure bereitzustellen und Auftragsausführungspipelines zu erstellen.
+[Batch](https://azure.microsoft.com/services/batch/) ist ein Plattformdienst, mit dem Sie auf einfache Weise Ihre Linux- und Windows-Anwendungen für die Cloud aktivieren und Aufträge ausführen können, ohne einen Cluster und einen Auftragsplaner einrichten und verwalten zu müssen. Verwenden Sie das SDK, um Clientanwendungen mithilfe verschiedener Sprachen in Azure Batch zu integrieren, Daten in Azure bereitzustellen und Auftragsausführungspipelines zu erstellen.
 
 * [Dokumentation](https://azure.microsoft.com/documentation/services/batch/)
 
@@ -89,7 +89,7 @@ Verwenden Sie die folgenden Azure-Vorlagen zum Bereitstellen von Linux-HPC-Clust
 
 ## Rechenintensive Instanzen
 
-Azure bietet zum Ausführen Ihrer Linux- und Windows-HPC-Workloads [eine Reihe unterschiedlicher Größen](../virtual-machines/virtual-machines-windows-sizes.md) an, einschließlich rechenintensiver [A8- und A9-Instanzen](../virtual-machines/virtual-machines-windows-a8-a9-a10-a11-specs.md), die mit einem Back-End-RDMA-Netzwerk verbunden werden können.
+Azure bietet zum Ausführen Ihrer Linux- und Windows-HPC-Workloads [verschiedene Größen für virtuelle Computer](../virtual-machines/virtual-machines-windows-sizes.md) an, einschließlich [rechenintensiver](../virtual-machines/virtual-machines-windows-a8-a9-a10-a11-specs.md) Instanzen, die mit einem Back-End-RDMA-Netzwerk verbunden werden können.
 
 
 * [Einrichten eines Linux RDMA-Clusters zum Ausführen von MPI-Anwendungen](../virtual-machines/virtual-machines-linux-classic-rdma-cluster.md)
@@ -101,6 +101,8 @@ Azure bietet zum Ausführen Ihrer Linux- und Windows-HPC-Workloads [eine Reihe u
 ## Beispiele und Demos
 
 * [Codebeispiele für Azure Batch mit C# und Python](https://github.com/Azure/azure-batch-samples)
+
+* [Batch Shipyard](https://azure.github.io/batch-shipyard/)-Toolkit zur einfachen Bereitstellung von mit Docker erstellten Workloads in Batchform
 
 * [Testversion von SUSE Linux Enterprise Server für HPC](https://azure.microsoft.com/marketplace/partners/suse/suselinuxenterpriseserver12optimizedforhighperformancecompute/)
 
@@ -118,7 +120,11 @@ Azure bietet zum Ausführen Ihrer Linux- und Windows-HPC-Workloads [eine Reihe u
 
 * [Cloud Services](https://azure.microsoft.com/documentation/services/cloud-services/)
 
+* [App Service](https://azure.microsoft.com/documentation/services/app-service/)
+
 * [Media Services](https://azure.microsoft.com/documentation/services/media-services/)
+
+* [Funktionen](https://azure.microsoft.com/documentation/services/functions/)
 
 ## Architekturpläne
 
@@ -132,7 +138,7 @@ Azure bietet zum Ausführen Ihrer Linux- und Windows-HPC-Workloads [eine Reihe u
 
 ## Kundenstimmen
 
-* [ANEO](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=4168) 
+* [ANEO](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=4168)
 
 * [d3View](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=22088)
 
@@ -157,4 +163,4 @@ Azure bietet zum Ausführen Ihrer Linux- und Windows-HPC-Workloads [eine Reihe u
 * Die neuesten Ankündigungen finden Sie im [Blog des HPC- und Batch-Teams von Microsoft](http://blogs.technet.com/b/windowshpc/) und im [Azure-Blog](https://azure.microsoft.com/blog/tag/hpc/).
 * Weitere Informationen finden Sie auch unter [Neuigkeiten bei Batch](https://azure.microsoft.com/updates/?service=batch) oder indem Sie den [RSS-Feed](https://azure.microsoft.com/updates/feed/?service=batch) abonnieren.
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0928_2016-->

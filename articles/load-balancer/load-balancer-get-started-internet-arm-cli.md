@@ -17,7 +17,7 @@
    ms.date="08/31/2016"
    ms.author="sewhee" />
 
-# Erste Schritte zum Erstellen eines internen Load Balancers mithilfe der Azure-Befehlszeilenschnittstelle
+# Erstellen eines internen Load Balancers mithilfe der Azure-Befehlszeilenschnittstelle
 
 [AZURE.INCLUDE [load-balancer-get-started-internet-arm-selectors-include.md](../../includes/load-balancer-get-started-internet-arm-selectors-include.md)]
 
@@ -306,4 +306,4 @@ Verwenden Sie den folgenden Befehl zum Entfernen eines Load Balancers:
 
 [Konfigurieren von TCP-Leerlauftimeout-Einstellungen für den Lastenausgleich](load-balancer-tcp-idle-timeout.md)
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0928_2016-->

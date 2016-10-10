@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/21/2016"
+	ms.date="09/27/2016"
 	ms.author="femila"/>
 
 # Roaming von Einstellungen und Daten – Häufig gestellte Fragen
@@ -136,4 +136,4 @@ Falls Ihre Organisation das Roaming unter Windows 10 bereits über das kostenlos
 - [Gruppenrichtlinien- und MDM-Einstellungen für Einstellungssynchronisierung](active-directory-windows-enterprise-state-roaming-group-policy-settings.md)
 - [Windows 10-Roamingeinstellungen – Referenz](active-directory-windows-enterprise-state-roaming-windows-settings-reference.md)
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0928_2016-->

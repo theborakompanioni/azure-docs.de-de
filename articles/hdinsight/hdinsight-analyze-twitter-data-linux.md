@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/12/2016"
+	ms.date="09/27/2016"
 	ms.author="larryfr"/>
 
 # Analysieren von Twitter-Daten mit Hive in HDInsight
@@ -99,7 +99,7 @@ Mit dem folgenden Python-Code werden 10.000 Tweets von Twitter heruntergeladen 
 
 		nano gettweets.py
 
-5. Fügen Sie folgenden Inhalt in die Datei __gettweets.py__ ein: Ersetzen Sie die Platzhalterinformationen für __consumer/_secret__, __consumer/_key_\_, __access/_token__ und __access/_token/_secret__ durch die Informationen aus Ihrer Twitter-Anwendung.
+5. Fügen Sie folgenden Inhalt in die Datei __gettweets.py__ ein: Ersetzen Sie die Platzhalterinformationen für __consumer/secret__, __consumer/key__, __access/token__ und __access/token/secret__ durch die Informationen aus Ihrer Twitter-Anwendung.
 
         #!/usr/bin/python
 
@@ -290,7 +290,7 @@ Dabei werden die Daten an einem Speicherort gespeichert, auf den alle Knoten im 
 
 4. Verwenden Sie den folgenden Befehl, um den in der Datei enthaltenen HiveQL-Auftrag auszuführen:
 
-		beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http' -n admin -i twitter.hql		
+		beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http' -n admin -i twitter.hql
 		
 	Dadurch wird die Hive-Shell geladen, der HiveQL-Auftrag in der Datei __twitter.hql__ ausgeführt und schließlich eine `jdbc:hive2//localhost:10001/>`-Eingabeaufforderung zurückgegeben.
 	
@@ -319,4 +319,4 @@ In diesem Lernprogramm haben Sie erfahren, wie Sie ein unstrukturiertes JSON-Dat
 [twitter-streaming-api]: https://dev.twitter.com/docs/streaming-apis
 [twitter-statuses-filter]: https://dev.twitter.com/docs/api/1.1/post/statuses/filter
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0928_2016-->

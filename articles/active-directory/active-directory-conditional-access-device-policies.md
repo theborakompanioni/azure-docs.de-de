@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/23/2016"
+	ms.date="09/27/2016"
 	ms.author="femila"/>
 # Geräterichtlinien für den bedingten Zugriff auf Office 365-Dienste
 
@@ -44,4 +44,4 @@ F: Wann wird die Richtlinie für den bedingten Zugriff auf Office 365-Dienste a
 
 Zurzeit ist der bedingte Zugriff auf Office 365-Dienste auf Geräteanwendungen beschränkt. Es ist geplant, die Richtlinie für den bedingten Zugriff auf Benutzer auszuweiten, die über Browser auf die Dienste zugreifen.
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0928_2016-->

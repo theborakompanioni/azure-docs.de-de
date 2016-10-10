@@ -3,7 +3,7 @@
 	description="Sehen Sie sich Beispiele für die DocumentDB-Protokollunterstützung für MongoDB an." 
 	keywords="MongoDB-Beispiele"
 	services="documentdb" 
-	authors="stephbaron" 
+	authors="mimig1" 
 	manager="jhubbard" 
 	editor="" 
 	documentationCenter=""/>
@@ -15,7 +15,7 @@
 	ms.devlang="na" 
 	ms.topic="article" 
 	ms.date="08/23/2016" 
-	ms.author="stbaro"/>
+	ms.author="mimig"/>
 
 # Beispiele für die DocumentDB-Protokollunterstützung für MongoDB
 Um diese Beispiele verwenden zu können, müssen Sie folgende Aktionen ausführen:
@@ -175,4 +175,4 @@ Sie können das Tutorial [Erstellen einer Web-App in Azure, die eine Verbindung 
 
  
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0928_2016-->

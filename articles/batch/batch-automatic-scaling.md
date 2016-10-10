@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows"
 	ms.workload="multiple"
-	ms.date="07/21/2016"
+	ms.date="09/27/2016"
 	ms.author="marsma"/>
 
 # Automatisches Skalieren von Computeknoten in einem Azure Batch-Pool
@@ -60,99 +60,32 @@ Die folgenden Tabellen enthalten sowohl Variablen mit Lese-/Schreibzugriff als a
 
 Sie können diese vom Dienst definierten Variablen **abrufen** und **festlegen**, um die Anzahl von Computeknoten in einem Pool zu verwalten:
 
-<table>
-  <tr>
-    <th>Lese-/Schreibzugriff<br/>Vom Dienst definierte Variablen</th>
-    <th>Beschreibung</th>
-  </tr>
-  <tr>
-    <td>$TargetDedicated</td>
-    <td>Die <b>Zielanzahl</b> <b>dedizierter Computeknoten</b> für den Pool. Dies ist die Anzahl von Computeknoten, auf die der Pool skaliert werden soll. Es handelt sich um einen „Zielwert“, da ein Pool die Zielanzahl von Knoten möglicherweise nicht erreicht. Dies kann auftreten, wenn die vorgegebene Anzahl von Knoten erneut durch eine Auswertung der automatischen Skalierung geändert wird, bevor der Pool das ursprüngliche Ziel erreicht hat. Es kann auch vorkommen, wenn ein Batch-Konto-Knoten oder Kern-Kontingent erreicht ist, bevor die vorgegebene Anzahl von Knoten erreicht wird.</td>
-  </tr>
-  <tr>
-    <td>$NodeDeallocationOption</td>
-    <td>Dieser Vorgang wird ausgeführt, wenn Computeknoten aus einem Pool entfernt werden. Mögliche Werte:
-      <br/>
-      <ul>
-        <li><p><b>requeue</b>: Aufgaben sofort beenden und wieder in die Auftragswarteschlange einfügen, damit sie neu geplant werden können.</p></li>
-        <li><p><b>terminate</b>: Aufgaben sofort beenden und aus der Auftragswarteschlange entfernen.</p></li>
-        <li><p><b>taskcompletion</b>: auf derzeit ausgeführte Aufgaben warten und den Knoten dann aus dem Pool entfernen.</p></li>
-        <li><p><b>retaineddata</b>: warten, bis alle lokal vorgehaltenen Aufgabendaten des Pools gelöscht wurden, bevor der Knoten aus dem Pool entfernt wird.</p></li>
-      </ul></td>
-   </tr>
-</table>
+| Vom Dienst definierte Variablen mit Lese-/Schreibzugriff | Beschreibung |
+| --- | --- |
+| $TargetDedicated | Die **Zielanzahl** **dedizierter Computeknoten** für den Pool. Dies ist die Anzahl von Computeknoten, auf die der Pool skaliert werden soll. Es handelt sich um einen „Zielwert“, da ein Pool die Zielanzahl von Knoten möglicherweise nicht erreicht. Dies kann auftreten, wenn die vorgegebene Anzahl von Knoten erneut durch eine Auswertung der automatischen Skalierung geändert wird, bevor der Pool das ursprüngliche Ziel erreicht hat. Es kann auch vorkommen, wenn ein Batch-Konto-Knoten oder Kern-Kontingent erreicht ist, bevor die vorgegebene Anzahl von Knoten erreicht wird. |
+| $NodeDeallocationOption | Dieser Vorgang wird ausgeführt, wenn Computeknoten aus einem Pool entfernt werden. Mögliche Werte:<ul><li>**requeue**: Beendet Tasks sofort und stellt sie wieder in die Warteschlange, damit sie neu geplant werden.<li>**terminate**: Beendet Tasks sofort und entfernt sie aus der Auftragswarteschlange.<li>**taskcompletion**: Wartet auf die Beendigung aktuell ausgeführter Tasks und entfernt dann den Knoten aus dem Pool.<li>**retaineddata**: Wartet, bis alle lokalen, durch Tasks beibehaltenen Daten bereinigt wurden, und entfernt dann den Knoten aus dem Pool.</ul> |
 
-Sie können die Werte dieser vom Dienst definierten Variablen **abrufen**, um Anpassungen auf der Grundlage der Metriken des Batch-Diensts vorzunehmen:
+Sie können die Werte dieser vom Dienst definierten Variablen mit **get** abrufen, um Anpassungen basierend auf den Metriken des Batch-Diensts vorzunehmen:
 
-<table>
-  <tr>
-    <th>Schreibgeschützt<br/>Vom Dienst definiert<br/>Variablen</th>
-    <th>Beschreibung</th>
-  </tr>
-  <tr>
-    <td>$CPUPercent</td>
-    <td>Die durchschnittliche prozentuale CPU-Auslastung</td>
-  </tr>
-  <tr>
-    <td>$WallClockSeconds</td>
-    <td>Die Anzahl der verbrauchten Sekunden</td>
-  </tr>
-  <tr>
-    <td>$MemoryBytes</td>
-    <td>Die durchschnittliche Anzahl genutzter Megabyte</td>
-  <tr>
-    <td>$DiskBytes</td>
-    <td>Die durchschnittliche Anzahl der auf den lokalen Datenträgern genutzten Gigabyte</td>
-  </tr>
-  <tr>
-    <td>$DiskReadBytes</td>
-    <td>Die Anzahl der gelesenen Byte</td>
-  </tr>
-  <tr>
-    <td>$DiskWriteBytes</td>
-    <td>Die Anzahl der geschriebenen Byte</td>
-  </tr>
-  <tr>
-    <td>$DiskReadOps</td>
-    <td>Die Anzahl der ausgeführten Datenträger-Lesevorgänge</td>
-  </tr>
-  <tr>
-    <td>$DiskWriteOps</td>
-    <td>Die Anzahl der ausgeführten Datenträger-Schreibvorgänge</td>
-  </tr>
-  <tr>
-    <td>$NetworkInBytes</td>
-    <td>Die Anzahl der eingehenden Byte</td>
-  </tr>
-  <tr>
-    <td>$NetworkOutBytes</td>
-    <td>Die Anzahl der ausgehenden Byte</td>
-  </tr>
-  <tr>
-    <td>$SampleNodeCount</td>
-    <td>Die Anzahl der Computeknoten</td>
-  </tr>
-  <tr>
-    <td>$ActiveTasks</td>
-    <td>Die Anzahl der Aufgaben, die sich in einem aktiven Zustand befinden</td>
-  </tr>
-  <tr>
-    <td>$RunningTasks</td>
-    <td>Die Anzahl der Aufgaben, die sich in einem Ausführungszustand befinden</td>
-  </tr>
-  <tr>
-    <td>$SucceededTasks</td>
-    <td>Die Anzahl der Aufgaben, die erfolgreich abgeschlossen wurden</td>
-  </tr>
-  <tr>
-    <td>$FailedTasks</td>
-    <td>Die Anzahl der Aufgaben, bei denen Fehler aufgetreten sind</td>
-  </tr>
-  <tr>
-    <td>$CurrentDedicated</td>
-    <td>Die aktuelle Anzahl der zugewiesenen Computeknoten</td>
-  </tr>
-</table>
+| Vom Dienst definierte schreibgeschützte Variablen | Beschreibung |
+| --- | --- |
+| $CPUPercent | Die durchschnittliche prozentuale CPU-Auslastung |
+| $WallClockSeconds | Die Anzahl der verbrauchten Sekunden |
+| $MemoryBytes | Die durchschnittliche Anzahl genutzter Megabyte |
+| $DiskBytes | Die durchschnittliche Anzahl der auf den lokalen Datenträgern genutzten Gigabyte |
+| $DiskReadBytes | Die Anzahl der gelesenen Byte |
+| $DiskWriteBytes | Die Anzahl der geschriebenen Byte |
+| $DiskReadOps | Die Anzahl der ausgeführten Datenträger-Lesevorgänge |
+| $DiskWriteOps | Die Anzahl der ausgeführten Datenträger-Schreibvorgänge |
+| $NetworkInBytes | Die Anzahl der eingehenden Byte |
+| $NetworkOutBytes | Die Anzahl der ausgehenden Byte |
+| $SampleNodeCount | Die Anzahl der Computeknoten |
+| $ActiveTasks | Die Anzahl der Aufgaben, die sich in einem aktiven Zustand befinden |
+| $RunningTasks | Die Anzahl der Aufgaben, die sich in einem Ausführungszustand befinden |
+| $PendingTasks | Die Summe aus $ActiveTasks und $RunningTasks. |
+| $SucceededTasks | Die Anzahl der Aufgaben, die erfolgreich abgeschlossen wurden |
+| $FailedTasks | Die Anzahl der Aufgaben, bei denen Fehler aufgetreten sind |
+| $CurrentDedicated | Die aktuelle Anzahl der zugewiesenen Computeknoten |
 
 > [AZURE.TIP] Die obigen, vom Dienst definierten schreibgeschützten Variablen sind *Objekte*, die verschiedene Methoden für den Zugriff auf die zum jeweiligen Objekt gehörigen Daten bereitstellen. Weitere Informationen finden Sie weiter unten unter [Erfassen von Stichprobendaten](#getsampledata).
 
@@ -188,7 +121,7 @@ Folgende **Typen** werden in Formeln unterstützt.
 
 ## Vorgänge
 
-Für die oben aufgeführten Typen sind folgende **Vorgänge** zulässig:
+Für die oben aufgeführten Typen sind folgende **Vorgänge** zulässig.
 
 | Vorgang | Unterstützte Operatoren | Ergebnistyp |
 | ------------------------------------- | --------------------- | ------------- |
@@ -200,20 +133,13 @@ Für die oben aufgeführten Typen sind folgende **Vorgänge** zulässig:
 | timeinterval *Operator* timeinterval | +, - | timeInterval |
 | timeinterval *Operator* timestamp | + | timestamp |
 | timestamp *Operator* timeinterval | + | timestamp |
-| timestamp *Operator* timestamp | - | timeinterval |
-| *Operator*double | -, ! | double |
-| *Operator*timeinterval | - | timeinterval |
-| double *Operator* double | <, <=, ==, >=, >, != | double |
-| string *Operator* string | <, <=, ==, >=, >, != | double |
-| timestamp *Operator* timestamp | <, <=, ==, >=, >, != | double |
-| timeinterval *Operator* timeinterval | <, <=, ==, >=, >, != | double |
-| double *Operator* double | &&, &#124;&#124; | double |
+| timestamp *Operator* timestamp | - | timeinterval | | *Operator*double | -, ! | double | | *Operator*timeinterval | - | timeinterval | | double *Operator* double | <, <=, ==, >=, >, != | double | | string *Operator* string | <, <=, ==, >=, >, != | double | | timestamp *Operator* timestamp | <, <=, ==, >=, >, != | double | | timeinterval *Operator* timeinterval | <, <=, ==, >=, >, != | double | | double *Operator* double | &&, || | double |
 
-Beim Testen von „double“ mit einem ternären Operator (`double ? statement1 : statement2`) sind Werte ungleich Null **true**, und Null ist **false**.
+Beim Testen von „double“ mit einem ternären Operator (`double ? statement1 : statement2`) sind Werte ungleich Null **true**, und Nullwerte sind **false**.
 
-## Funktionen
+## Functions
 
-Zum Definieren einer Formel für die automatische Skalierung stehen folgende vordefinierte **Funktionen** zur Verfügung:
+Zum Definieren einer Formel für die automatische Skalierung stehen folgende vordefinierte **Funktionen** zur Verfügung.
 
 | Funktion | Rückgabetyp | Beschreibung
 | --------------------------------- | ------------- | --------- |
@@ -237,7 +163,7 @@ Zum Definieren einer Formel für die automatische Skalierung stehen folgende vor
 | time(string dateTime="") | timestamp | Es werden entweder der Zeitstempel der aktuellen Zeit zurückgegeben, wenn keine Parameter übergeben werden, oder andernfalls der Zeitstempel der DateTime-Zeichenfolge, wenn diese übergeben wird. Unterstützte DateTime-Formate sind W3C-DTF und RFC 1123.
 | val(doubleVec v, double i) | double | Der Wert des Elements an Position i im Vektor v mit einem Anfangsindex von 0 wird zurückgegeben.
 
-Einige der in der obigen Tabelle beschriebenen Funktionen akzeptieren eine Liste als Argument. Bei der kommagetrennten Liste handelt es sich um eine beliebige Kombination aus *double* und *doubleVec*. Beispiel:
+Einige der in der obigen Tabelle beschriebenen Funktionen akzeptieren eine Liste als Argument. Bei der durch Trennzeichen getrennten Liste handelt es sich um eine beliebige Kombination aus *double* und *doubleVec*. Beispiel:
 
 `doubleVecList := ( (double | doubleVec)+(, (double | doubleVec) )* )?`
 
@@ -249,44 +175,13 @@ Die Formeln für die automatische Skalierung greifen auf Metrikdaten (Stichprobe
 
 `$CPUPercent.GetSample(TimeInterval_Minute * 5)`
 
-<table>
-  <tr>
-    <th>Methode</th>
-    <th>Beschreibung</th>
-  </tr>
-  <tr>
-    <td>GetSample()</td>
-    <td><p>Die <b>GetSample()</b>-Methode gibt einen Vektor aus Stichprobenwerten zurück.
-	<p>Eine Stichprobe entspricht in 30&#160;Sekunden erfassten Metrikdaten. Dies bedeutet, dass alle 30 Sekunden eine Stichprobe genommen wird. Wie nachstehend erwähnt, gibt es eine Verzögerung zwischen dem Zeitpunkt der Erfassung der Stichprobe und ihrer Verfügbarkeit für eine Formel. Daher stehen möglicherweise nicht alle Stichproben für einen bestimmten Zeitraum für die Bewertung durch eine Formel zur Verfügung.
-        <ul>
-          <li><p><b>doubleVec GetSample(double count)</b>: gibt die Anzahl der Stichproben an, die aus den letzten erfassten Stichproben abgerufen werden soll.</p>
-				  <p>„GetSample(1)“ gibt die letzte verfügbare Stichprobe zurück. Für Metriken wie „$CPUPercent“ sollte diese Methode allerdings nicht verwendet werden, da unmöglich feststellbar ist, <em>wann</em> die Stichprobe erfasst wurde.  Sie kann aktuell oder aber, aufgrund von Systemproblemen, auch wesentlich älter sein. Es ist besser, wie unten dargestellt, ein Intervall zu verwenden.</p></li>
-          <li><p><b>doubleVec GetSample((timestamp | timeinterval) startTime [, double samplePercent])</b> – legt einen Zeitrahmen für das Sammeln von Stichprobendaten fest. Optional können Sie auch den Prozentsatz der Stichproben angeben, die im angeforderten Zeitraum verfügbar sein müssen.</p>
-          <p><em>$CPUPercent.GetSample(TimeInterval\_Minute*10)</em> sollte 20&#160;Stichproben zurückgeben, wenn alle Stichproben der letzten zehn Minuten im Verlauf von „CPUPercent“ vorhanden sind. Wenn jedoch die letzte Minute des Verlaufs nicht verfügbar ist, werden nur 18&#160;Stichproben zurückgegeben. In diesem Fall:<br/>
-		  &#160;&#160;&#160;&#160;<em>$CPUPercent.GetSample(TimeInterval_Minute * 10, 95)</em> würde misslingen, da nur 90&#160;% der Stichproben verfügbar sind.<br/>
-		  &#160;&#160;&#160;&#160;<em>$CPUPercent.GetSample(TimeInterval_Minute * 10, 80)</em> hätte Erfolg.</p></li>
-          <li><p><b>doubleVec GetSample((timestamp | timeinterval) startTime, (timestamp | timeinterval) endTime [, double samplePercent])</b> – legt einen Zeitrahmen für die Datenerfassung mit einer Start- und Endzeit fest.</p></li></ul>
-		  <p>Wie bereits erwähnt, gibt es eine Verzögerung zwischen dem Zeitpunkt der Erfassung der Stichprobe und ihrer Verfügbarkeit für eine Formel. Diese Verzögerung muss bei Verwendung der <em>GetSample</em>-Methode berücksichtigt werden. Weitere Informationen finden Sie im nachstehenden Abschnitt <em>GetSamplePercent</em>.</td>
-  </tr>
-  <tr>
-    <td>GetSamplePeriod()</td>
-    <td>Gibt den Zeitraum zurück, in dem die Stichproben aus einem alten Stichproben-Dataset gesammelt wurden.</td>
-  </tr>
-	<tr>
-		<td>Count()</td>
-		<td>Liefert die Gesamtzahl der Stichprobenwerte im Metrikverlauf zurück.</td>
-	</tr>
-  <tr>
-    <td>HistoryBeginTime()</td>
-    <td>Gibt den Zeitstempel des ältesten verfügbaren Stichprobenwerts für die Metrik zurück.</td>
-  </tr>
-  <tr>
-    <td>GetSamplePercent()</td>
-    <td><p>Gibt den Prozentsatz an Stichprobenwerten zurück, die für ein bestimmtes Intervall verfügbar sind. Beispiel:</p>
-    <p><b>doubleVec GetSamplePercent( (timestamp | timeinterval) startTime [, (timestamp | timeinterval) endTime] )</b>
-	<p>Da die GetSample-Methode fehlschlägt, wenn der Prozentsatz der zurückgegebenen Stichproben kleiner als der angeforderte Prozentwert ist, können Sie vorab mithilfe der GetSamplePercent-Methode eine Prüfung vornehmen. Wenn nicht genügend Beispiele vorhanden sind, können Sie anschließend eine andere Aktion ausführen, , ohne die Auswertung der automatischen Skalierung zu unterbrechen.</p></td>
-  </tr>
-</table>
+| Methode | Beschreibung |
+| --- | --- |
+| GetSample() | Die `GetSample()`-Methode gibt einen Vektor aus Datenstichproben zurück.<br/><br/>Eine Stichprobe enthält Metrikdaten, die innerhalb von 30 Sekunden erfasst wurden. Dies bedeutet, dass alle 30 Sekunden eine Stichprobe genommen wird. Wie nachstehend erwähnt, gibt es eine Verzögerung zwischen dem Zeitpunkt der Erfassung der Stichprobe und ihrer Verfügbarkeit für eine Formel. Daher stehen möglicherweise nicht alle Stichproben für einen bestimmten Zeitraum für die Bewertung durch eine Formel zur Verfügung.<ul><li>`doubleVec GetSample(double count)`<br/>Gibt die Anzahl von Stichproben an, die aus den jüngsten erfassten Stichproben abgerufen werden sollen.<br/><br/>`GetSample(1)` gibt die neueste verfügbare Stichprobe zurück. Für Metriken wie `$CPUPercent` sollte diese Methode allerdings nicht verwendet werden, da unmöglich feststellbar ist, *wann* die Stichprobe erfasst wurde. Sie kann aktuell oder aber, aufgrund von Systemproblemen, auch wesentlich älter sein. In solchen Fällen ist es besser, wie unten gezeigt ein Zeitintervall zu verwenden.<li>`doubleVec GetSample((timestamp or timeinterval) startTime [, double samplePercent])`<br/>Gibt einen Zeitraum für die Erfassung von Stichprobendaten an. Optional gibt diese Methode auch den Prozentsatz der Stichproben an, die im angeforderten Zeitraum verfügbar sein müssen.<br/><br/>`$CPUPercent.GetSample(TimeInterval_Minute * 10)` gibt 20 Stichproben zurück, wenn alle Stichproben der letzten zehn Minuten im CPUPercent-Verlauf vorhanden sind. Wenn jedoch die letzte Minute des Verlaufs nicht verfügbar ist, werden nur 18 Stichproben zurückgegeben. In diesem Fall gilt:<br/><br/>`$CPUPercent.GetSample(TimeInterval_Minute * 10, 95)` erzeugt einen Fehler, da nur 90 Prozent der Stichproben verfügbar sind.<br/><br/>`$CPUPercent.GetSample(TimeInterval_Minute * 10, 80)` wird erfolgreich ausgeführt.<li>`doubleVec GetSample((timestamp or timeinterval) startTime, (timestamp or timeinterval) endTime [, double samplePercent])`<br/>Gibt einen Zeitraum für die Erfassung von Daten an, einschließlich Start- und Endzeit.<br/><br/>Wie bereits erwähnt, gibt es eine Verzögerung zwischen dem Zeitpunkt der Erfassung der Stichprobe und ihrer Verfügbarkeit für eine Formel. Diese Verzögerung muss bei Verwendung der `GetSample`-Methode berücksichtigt werden. Weitere Informationen finden Sie bei `GetSamplePercent` weiter unten.|
+| GetSamplePeriod() | Gibt den Zeitraum zurück, in dem die Stichproben aus einem alten Stichproben-Dataset gesammelt wurden. |
+| Count() | Liefert die Gesamtzahl der Stichprobenwerte im Metrikverlauf zurück. |
+| HistoryBeginTime() | Gibt den Zeitstempel des ältesten verfügbaren Stichprobenwerts für die Metrik zurück. |
+| GetSamplePercent() |Gibt den Prozentsatz an Stichprobenwerten zurück, die für ein bestimmtes Intervall verfügbar sind. Beispiel:<br/><br/>`doubleVec GetSamplePercent( (timestamp or timeinterval) startTime [, (timestamp or timeinterval) endTime] )`<br/><br/>Da die `GetSample`-Methode einen Fehler erzeugt, wenn der Prozentsatz der zurückgegebenen Stichproben kleiner als der angegebene `samplePercent`-Wert ist, können Sie vorab mithilfe der `GetSamplePercent`-Methode eine Prüfung vornehmen. Wenn nicht genügend Beispiele vorhanden sind, können Sie anschließend eine andere Aktion ausführen, , ohne die Auswertung der automatischen Skalierung zu unterbrechen.|
 
 ### Stichproben, Prozentsatz für die Stichprobe und die *GetSample()*-Methode
 
@@ -294,7 +189,7 @@ Das Abrufen von Metrikdaten zu Aufgaben und Ressourcen sowie das anschließende 
 
 **Stichproben**
 
-Der Batch-Dienst nimmt regelmäßig *Stichproben* von Aufgaben- und Ressourcenmetriken und stellt sie Ihren Formeln für die automatische Skalierung zur Verfügung. Diese Stichproben werden alle 30 Sekunden vom Batch-Dienst aufgezeichnet. Allerdings kommt es durch Latenz meist zu einer Verzögerung zwischen dem Zeitpunkt der Erfassung der Stichproben und dem Zeitpunkt, zu dem sie Ihren Formeln für die automatische Skalierung zur Verfügung gestellt (und von diesen gelesen) werden können. Darüber hinaus werden Stichproben gelegentlich aufgrund verschiedener Faktoren wie Netzwerk- oder anderer Infrastrukturprobleme für ein bestimmtes Intervall nicht erfasst. Dies führt zu „fehlenden“ Stichproben.
+Der Batch-Dienst nimmt regelmäßig *Stichproben* von Task- und Ressourcenmetriken und stellt sie Ihren Formeln für die automatische Skalierung zur Verfügung. Diese Stichproben werden alle 30 Sekunden vom Batch-Dienst aufgezeichnet. Allerdings kommt es durch Latenz meist zu einer Verzögerung zwischen dem Zeitpunkt der Erfassung der Stichproben und dem Zeitpunkt, zu dem sie Ihren Formeln für die automatische Skalierung zur Verfügung gestellt (und von diesen gelesen) werden können. Darüber hinaus werden Stichproben gelegentlich aufgrund verschiedener Faktoren wie Netzwerk- oder anderer Infrastrukturprobleme für ein bestimmtes Intervall nicht erfasst. Dies führt zu „fehlenden“ Stichproben.
 
 **Prozentsatz für die Stichprobe**
 
@@ -316,7 +211,7 @@ Wenn die obige Zeile von Batch ausgewertet wird, gibt sie einen Bereich von Stic
 
 Nachdem Sie den Vektor von Stichproben erfasst haben, können Sie Funktionen wie `min()`, `max()` und `avg()` verwenden, um aussagekräftige Werte aus dem erfassten Bereich abzuleiten.
 
-Für mehr Sicherheit können Sie einen *Fehler* bei der Formelauswertung erzwingen, wenn für einen bestimmten Zeitraum weniger als ein bestimmter Prozentsatz von Stichproben verfügbar ist. Mit dem Erzwingen des Fehlschlags einer Formelauswertung weisen Sie Batch an, die weitere Auswertung der Formel zu beenden, sofern der angegebene Prozentsatz von Stichproben nicht zur Verfügung steht. An der Größe des Pools erfolgt dann keinerlei Änderung. Wenn Sie einen erforderlichen Prozentsatz von Stichproben angeben möchten, damit die Auswertung Erfolg hat, geben Sie diesen in `GetSample()` als dritten Parameter an. Hier wird ein Mindestprozentsatz von 75 % angegeben:
+Zur Erhöhung der Sicherheit können Sie einen *Fehler* bei der Formelauswertung erzwingen, wenn für einen bestimmten Zeitraum weniger als ein bestimmter Prozentsatz von Stichproben verfügbar ist. Mit dem Erzwingen des Fehlschlags einer Formelauswertung weisen Sie Batch an, die weitere Auswertung der Formel zu beenden, sofern der angegebene Prozentsatz von Stichproben nicht zur Verfügung steht. An der Größe des Pools erfolgt dann keinerlei Änderung. Wenn Sie einen erforderlichen Prozentsatz von Stichproben angeben möchten, damit die Auswertung Erfolg hat, geben Sie diesen in `GetSample()` als dritten Parameter an. Hier wird ein Mindestprozentsatz von 75 % angegeben:
 
 `runningTasksSample = $RunningTasks.GetSample(60 * TimeInterval_Second, 120 * TimeInterval_Second, 75);`
 
@@ -326,7 +221,7 @@ Aufgrund der zuvor erwähnten Verzögerung bei der Verfügbarkeit von Stichprobe
 
 ## Metriken
 
-Für das Definieren einer Formel können Sie sowohl **Ressourcenmetriken** als auch **Aufgabenmetriken** verwenden. Sie passen die vorgegebene Anzahl dedizierter Knoten im Pool basierend auf den Metrikdaten an, die Sie abrufen und auswerten. Im Abschnitt [Variablen](#variables) finden Sie weitere Informationen zu den einzelnen Metriken.
+Für das Definieren einer Formel können Sie sowohl **Ressourcenmetriken** als auch **Taskmetriken** verwenden. Sie passen die vorgegebene Anzahl dedizierter Knoten im Pool basierend auf den Metrikdaten an, die Sie abrufen und auswerten. Im Abschnitt [Variablen](#variables) finden Sie weitere Informationen zu den einzelnen Metriken.
 
 <table>
   <tr>
@@ -361,6 +256,7 @@ Für das Definieren einer Formel können Sie sowohl **Ressourcenmetriken** als a
     <p><ul>
       <li>$ActiveTasks</li>
       <li>$RunningTasks</li>
+      <li>$PendingTasks</li>
       <li>$SucceededTasks</li>
 			<li>$FailedTasks</li></ul></p>
 		</td>
@@ -375,7 +271,7 @@ Sie können eine Formel für die automatische Skalierung erstellen, indem Sie mi
 2. Die vorgegebene Anzahl von Computeknoten in einem Pool soll reduziert werden, wenn die CPU-Auslastung gering ist.
 3. Die maximale Anzahl von Knoten muss immer auf 400 beschränkt sein.
 
-Für die *Erhöhung* der Anzahl von Knoten bei hoher CPU-Auslastung definieren wir eine Anweisung, die eine benutzerdefinierte Variable ($TotalNodes) mit einem Wert auffüllt, der 110 Prozent der aktuellen Zielanzahl von Knoten darstellt, wenn die minimale durchschnittliche CPU-Auslastung in den vergangenen 10 Minuten über 70 Prozent lag:
+Zur *Erhöhung* der Knotenanzahl bei hoher CPU-Auslastung definieren wir eine Anweisung, die eine benutzerdefinierte Variable ($TotalNodes) mit einem Wert auffüllt, der 110 Prozent der aktuellen Zielanzahl von Knoten darstellt, wenn die minimale durchschnittliche CPU-Auslastung in den vergangenen 10 Minuten über 70 Prozent lag:
 
 `$TotalNodes = (min($CPUPercent.GetSample(TimeInterval_Minute*10)) > 0.7) ? ($CurrentDedicated * 1.1) : $CurrentDedicated;`
 
@@ -395,7 +291,7 @@ $TotalNodes = (avg($CPUPercent.GetSample(TimeInterval_Minute*60)) < 0.2) ? ($Cur
 $TargetDedicated = min(400, $TotalNodes)
 ```
 
-> [AZURE.NOTE] Eine Formel für das automatische Skalieren besteht aus [Batch-REST][rest_api]-API-Variablen, -Typen, -Vorgängen und -Funktionen. Sie können diese auch dann in Formelzeichenfolgen verwenden, wenn Sie mit der [Batch-Bibliothek für .NET][net_api] arbeiten.
+> [AZURE.NOTE] Eine Formel für das automatische Skalieren besteht aus [Batch-REST][rest_api]-API-Variablen, -Typen, -Vorgängen und -Funktionen. Sie können diese auch dann in Formelzeichenfolgen verwenden, wenn Sie mit der [Batch .NET][net_api]-Bibliothek arbeiten.
 
 ## Erstellen eines Pools mit aktiviertem automatischen Skalieren
 
@@ -405,9 +301,9 @@ Zum Aktivieren der automatischen Skalierung beim Erstellen eines Pools verwenden
 - [BatchClient.PoolOperations.CreatePool](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.pooloperations.createpool.aspx): Nachdem diese .NET-Methode zum Erstellen eines Pools aufgerufen wurde, legen Sie die [CloudPool.AutoScaleEnabled](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudpool.autoscaleenabled.aspx)-Eigenschaft und die [CloudPool.AutoScaleFormula](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudpool.autoscaleformula.aspx)-Eigenschaft für den Pool fest, um die automatische Skalierung zu aktivieren.
 - [Hinzufügen eines Pools zu einem Konto](https://msdn.microsoft.com/library/azure/dn820174.aspx): Das enableAutoScale-Element und das autoScaleFormula-Element werden in dieser REST-API-Anforderung verwendet, um beim Erstellen des Pools die automatische Skalierung für den Pool einzurichten.
 
-> [AZURE.IMPORTANT] Wenn Sie mithilfe einer der genannten Methoden einen Pool mit aktivierter automatischer Skalierung erstellen, darf der *targetDedicated*-Parameter für den Pool **nicht** angegeben werden. Beachten Sie auch, dass Sie für eine manuelle Anpassung der Größe eines Pools mit aktivierter automatischer Skalierung (etwa mit [BatchClient.PoolOperations.ResizePool][net_poolops_resizepool]) zunächst die automatische Skalierung **deaktivieren** müssen, um die Größe des Pools ändern zu können.
+> [AZURE.IMPORTANT] Wenn Sie mithilfe einer der genannten Methoden einen Pool mit aktivierter automatischer Skalierung erstellen, darf der *targetDedicated*-Parameter für den Pool **nicht** angegeben werden. Beachten Sie auch, dass Sie zur manuellen Anpassung der Größe eines Pools mit aktivierter automatischer Skalierung (etwa mit [BatchClient.PoolOperations.ResizePool][net_poolops_resizepool]) zunächst die automatische Skalierung **deaktivieren** müssen, um die Größe des Pools ändern zu können.
 
-Der folgende Codeausschnitt zeigt die Erstellung eines Pools mit aktivierter automatischer Skalierung ([CloudPool][net_cloudpool]) mithilfe der [Batch-Bibliothek für .NET][net_api]. Die Formel für die automatische Skalierung des Pools legt die vorgegebene Anzahl von Knoten auf 5 am Montag und auf 1 an allen anderen Wochentagen fest. Darüber hinaus wird das Intervall für die automatische Skalierung auf 30 Minuten festgelegt (siehe [Intervall für die automatische Skalierung](#automatic-scaling-interval) weiter unten). In diesem und anderen C#-Ausschnitten in diesem Artikel ist „myBatchClient“ eine ordnungsgemäß initialisierte Instanz von [BatchClient][net_batchclient].
+Der folgende Codeausschnitt zeigt die Erstellung eines Pools mit aktivierter automatischer Skalierung ([CloudPool][net_cloudpool]) mithilfe der [Batch .NET][net_api]-Bibliothek. Die Formel für die automatische Skalierung des Pools legt die vorgegebene Anzahl von Knoten auf 5 am Montag und auf 1 an allen anderen Wochentagen fest. Darüber hinaus wird das Intervall für die automatische Skalierung auf 30 Minuten festgelegt (siehe [Intervall für die automatische Skalierung](#automatic-scaling-interval) weiter unten). In diesem und anderen C#-Ausschnitten in diesem Artikel ist myBatchClient eine ordnungsgemäß initialisierte Instanz von [BatchClient][net_batchclient].
 
 ```
 CloudPool pool = myBatchClient.PoolOperations.CreatePool("mypool", "3", "small");
@@ -430,14 +326,14 @@ Das kürzeste Intervall ist fünf Minuten, das längste 168 Stunden. Wenn ein In
 
 ## Aktivieren der automatischen Skalierung nach der Erstellung eines Pools
 
-Wenn Sie bereits anhand des *targetDedicated*-Parameters einen Pool mit einer festgelegten Anzahl von Computeknoten eingerichtet haben, können Sie den vorhandenen Pool zu einem späteren Zeitpunkt so aktualisieren, dass die Skalierung automatisch erfolgt. Hierzu gehen Sie auf eine der folgenden Arten vor:
+Wenn Sie bereits mithilfe des *targetDedicated*-Parameters einen Pool mit einer festgelegten Anzahl von Computeknoten eingerichtet haben, können Sie den vorhandenen Pool zu einem späteren Zeitpunkt so aktualisieren, dass die Skalierung automatisch erfolgt. Hierzu gehen Sie auf eine der folgenden Arten vor:
 
 - [BatchClient.PoolOperations.EnableAutoScale][net_enableautoscale]\: Diese .NET-Methode erfordert die ID eines vorhandenen Pools und die auf den Pool anzuwendende Formel für die automatische Skalierung.
 - [Aktivieren der automatischen Skalierung für einen Pool][rest_enableautoscale]\: Diese REST-API-Anforderung erfordert die ID des vorhandenen Pools im URI und die Formel für die automatische Skalierung im Anforderungstext.
 
 > [AZURE.NOTE] Wenn beim Erstellen des Pools für den *targetDedicated*-Parameter ein Wert angegeben wurde, wird dieser beim Auswerten der Formel für das automatische Skalieren ignoriert.
 
-Dieser Codeausschnitt zeigt, wie die automatische Skalierung mithilfe der [Batch-Bibliothek für .NET][net_api] für einen vorhandenen Pool aktiviert wird. Beachten Sie, dass sowohl für das Aktivieren als auch für das Aktualisieren der Formel für einen vorhandenen Pool dasselbe Verfahren verwendet wird. Wenn das automatische Skalieren bereits aktiviert wurde, wird mithilfe des Verfahrens die Formel für den angegebenen Pool *aktualisiert*. Im Codeausschnitt wird davon ausgegangen, dass „mypool“ die ID eines vorhandenen Pools ([CloudPool][net_cloudpool]) ist.
+Dieser Codeausschnitt zeigt, wie die automatische Skalierung mithilfe der [Batch .NET][net_api]-Bibliothek für einen vorhandenen Pool aktiviert wird. Beachten Sie, dass sowohl für das Aktivieren als auch für das Aktualisieren der Formel für einen vorhandenen Pool dasselbe Verfahren verwendet wird. Wenn das automatische Skalieren bereits aktiviert wurde, wird mithilfe des Verfahrens die Formel für den angegebenen Pool *aktualisiert*. Im Codeausschnitt wird davon ausgegangen, dass „mypool“ die ID eines vorhandenen Pools ([CloudPool][net_cloudpool]) ist.
 
 		 // Define the autoscaling formula. In this snippet, the  formula sets the target number of nodes to 5 on
 		 // Mondays, and 1 on every other day of the week
@@ -456,7 +352,7 @@ Es ist stets empfehlenswert, eine Formel auszuwerten, bevor Sie sie in Ihrer Anw
 
 > [AZURE.NOTE] Damit Sie eine Formel für die automatische Skalierung auswerten können, müssen Sie zuerst die automatische Skalierung für den Pool mithilfe einer gültigen Formel aktivieren.
 
-In diesem Codeausschnitt mit der [Batch-Bibliothek für .NET][net_api] werten wir eine Formel aus, bevor diese auf den Pool ([CloudPool][net_cloudpool]) angewendet wird.
+In diesem Codeausschnitt, in dem die [Batch .NET][net_api]-Bibliothek verwendet wird, werten wir eine Formel aus, bevor diese auf den Pool ([CloudPool][net_cloudpool]) angewendet wird.
 
 ```
 // First obtain a reference to the existing pool
@@ -507,7 +403,7 @@ Eine erfolgreiche Auswertung der Formel in diesem Codeausschnitt sollte eine Aus
   - [AutoScaleRun.Error](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.autoscalerun.error.aspx)
   - [AutoScaleRun.Results](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.autoscalerun.results.aspx)
   - [AutoScaleRun.Timestamp](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.autoscalerun.timestamp.aspx)
-- [Abrufen von Informationen zu einem Pool](https://msdn.microsoft.com/library/dn820165.aspx): Diese REST-API-Anforderung gibt Informationen zum Pool zurück, einschließlich des neuesten Durchlaufs der automatischen Skalierung.
+- [Abrufen von Informationen zu einem Pool](https://msdn.microsoft.com/library/dn820165.aspx): Diese REST-API-Anforderung gibt Informationen zum Pool zurück, einschließlich der neuesten Ausführung der automatischen Skalierung.
 
 ## <a name="examples"></a>Beispielformeln
 
@@ -548,7 +444,7 @@ $NodeDeallocationOption = taskcompletion;
 
 ### Beispiel 3: Berücksichtigung paralleler Aufgaben
 
-Auch in diesem Beispiel wird die Poolgröße an die Anzahl der Aufgaben angepasst. Diese Formel berücksichtigt auch den für den Pool festgelegten Wert [MaxTasksPerComputeNode][net_maxtasks]. Dies ist besonders hilfreich, wenn in Ihrem Pool eine [parallele Aufgabenausführung](batch-parallel-node-tasks.md) aktiviert wurde.
+Auch in diesem Beispiel wird die Poolgröße an die Anzahl der Aufgaben angepasst. Diese Formel berücksichtigt auch den für den Pool festgelegten Wert [MaxTasksPerComputeNode][net_maxtasks]. Dies ist besonders hilfreich, wenn in Ihrem Pool die [parallele Taskausführung](batch-parallel-node-tasks.md) aktiviert wurde.
 
 ```
 // Determine whether 70 percent of the samples have been recorded in the past 15 minutes; if not, use last sample
@@ -593,9 +489,9 @@ Die Formel im oben stehenden Codeausschnitt bewirkt Folgendes:
 
 ## Nächste Schritte
 
-* [Maximieren der Azure Batch-Computeressourcenauslastung mit parallelen Knotenaufgaben](batch-parallel-node-tasks.md) enthält Informationen dazu, wie Sie auf den Computeknoten im Pool mehrere Aufgaben gleichzeitig ausführen können. Zusätzlich zur automatischen Skalierung können Sie mit diesem Feature die Auftragsdauer für einige Workloads verringern und so Geld sparen.
+* [Maximieren der Azure Batch-Computeressourcenauslastung mit parallelen Knotenaufgaben](batch-parallel-node-tasks.md) enthält Informationen dazu, wie Sie auf den Computeknoten im Pool mehrere Tasks gleichzeitig ausführen können. Zusätzlich zur automatischen Skalierung können Sie mit diesem Feature die Auftragsdauer für einige Workloads verringern und so Geld sparen.
 
-* Um die Effizienz weiter zu steigern, stellen Sie sicher, dass die Batch-Anwendung den Batch-Dienst in optimaler Weise abfragt. In [Effizientes Abfragen des Azure Batch-Diensts](batch-efficient-list-queries.md) erfahren Sie, wie Sie die Datenmenge beschränken, die übertragen wird, wenn Sie den Status von Tausenden von Computeknoten oder -aufgaben abfragen.
+* Um die Effizienz weiter zu steigern, stellen Sie sicher, dass die Batch-Anwendung den Batch-Dienst in optimaler Weise abfragt. In [Effizientes Abfragen des Azure Batch-Diensts](batch-efficient-list-queries.md) erfahren Sie, wie Sie die Datenmenge beschränken, die übertragen wird, wenn Sie den Status von Tausenden von Computeknoten oder -tasks abfragen.
 
 [net_api]: https://msdn.microsoft.com/library/azure/mt348682.aspx
 [net_batchclient]: http://msdn.microsoft.com/library/azure/microsoft.azure.batch.batchclient.aspx
@@ -611,4 +507,4 @@ Die Formel im oben stehenden Codeausschnitt bewirkt Folgendes:
 [rest_autoscaleinterval]: https://msdn.microsoft.com/de-DE/library/azure/dn820173.aspx
 [rest_enableautoscale]: https://msdn.microsoft.com/library/azure/dn820173.aspx
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0928_2016-->

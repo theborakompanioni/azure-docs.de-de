@@ -1,5 +1,5 @@
 <properties
-	pageTitle="PowerShell-Skript zum Identifizieren einzelner für einen Pool geeignete Datenbanken"
+	pageTitle="PowerShell-Skript zum Identifizieren einzelner für einen Pool geeignete Datenbanken | Microsoft Azure"
 	description="Ein elastischer Datenbankpool stellt eine Sammlung der verfügbaren Ressourcen dar, die von einer Gruppe von elastischen Datenbanken gemeinsam verwendet werden. Dieses Dokument enthält ein PowerShell-Skript, das Ihnen helfen soll, die Eignung eines Pools für elastische Datenbanken für eine Gruppe von Datenbanken einzuschätzen."
 	services="sql-database"
 	documentationCenter=""
@@ -10,7 +10,7 @@
 <tags
 	ms.service="sql-database"
 	ms.devlang="NA"
-	ms.date="06/06/2016"
+	ms.date="09/22/2016"
 	ms.author="sstein"
 	ms.workload="data-management"
 	ms.topic="article"
@@ -28,7 +28,7 @@ Dieses Skript ist besonders für die Evaluierung von Datenbanken auf v11-Servern
 
 Installieren Sie Folgendes, bevor Sie das Skript ausführen:
 
-- Die neuesten [Powershell-Befehlszeilentools](http://go.microsoft.com/?linkid=9811175&clcid=0x409).
+- Aktuelle Azure PowerShell-Version. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
 - Das [SQL Server 2014-Featurepack](https://www.microsoft.com/download/details.aspx?id=42295).
 
 ### Details zum Skript
@@ -266,4 +266,4 @@ Nach Abschluss des Skripts wird die geschätzte Anzahl eDTUs ausgegeben, die fü
 
         
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0928_2016-->

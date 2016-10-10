@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="asmalser-msft"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -19,10 +19,10 @@
 
 # Tutorial: Azure Active Directory-Integration mit Evidence.com
 
-In diesem Tutorial wird erläutert, wie einmaliges Anmelden für Azure Active Directory (AAD) und Evidence.com eingerichtet wird. Das in diesem Lernprogramm verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
+In diesem Tutorial wird erläutert, wie einmaliges Anmelden für Azure Active Directory (AAD) und Evidence.com eingerichtet wird. Das in diesem Tutorial verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
 	
 * Ein gültiges Microsoft Azure-Abonnement
-* Ein Evidence.com-Abonnement mit aktiviertem einmaligem Anmelden (Senden Sie eine E-Mail an earlyaccess@evidence.com, wenn SAML-basiertes einmaliges Anmelden nicht aktiviert ist.)
+* Ein Evidence.com-Abonnement mit aktiviertem einmaligem Anmelden (Senden Sie eine E-Mail an earlyaccess@evidence.com, wenn die SAML-basiertes einmalige Anmeldung nicht aktiviert ist)
 
 Nach Abschluss dieses Tutorials können sich die AAD-Benutzer, denen Sie Evidence.com-Zugriff zugewiesen haben, mit dem AAD-Zugriffsbereich per einmaligem Anmelden an der Anwendung anmelden.
 
@@ -51,7 +51,7 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
 **So konfigurieren Sie einmaliges Anmelden**
 
-1.	Klicken Sie nach dem Hinzufügen von Evidence.com im klassischen Azure-Portal auf **Einmaliges Anmelden konfigurieren**. 
+1.	Klicken Sie nach dem Hinzufügen von Evidence.com im klassischen Azure-Portal auf **Einmaliges Anmelden konfigurieren**.
  
 2.	Wählen Sie auf dem nächsten Bildschirm die Option **Azure AD – einmaliges Anmelden**, und klicken Sie auf **Weiter**.
 
@@ -67,7 +67,7 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
  
 8.	Kopieren Sie die Werte für **Aussteller-URL**, **Einmaliges Anmelden** und **Einmaliges Abmelden**, die im klassischen Azure-Portal angezeigt werden, in die entsprechenden Felder von Evidence.com.
 
-9.	Öffnen Sie das Zertifikat, das Sie in Schritt 4 heruntergeladen haben, mit einem Text-Editor wie „Notepad.exe“, kopieren Sie den Inhalt, und fügen Sie ihn in das Feld **Sicherheitszertifikat** ein.
+9.	Öffnen Sie das Zertifikat, das Sie in Schritt 4 heruntergeladen haben, mit einem Text-Editor wie „Notepad.exe“, kopieren Sie den Inhalt, und fügen Sie ihn in das Feld **Sicherheitszertifikat** ein.
 
 10. Speichern Sie die Konfiguration in Evidence.com.
  
@@ -107,4 +107,4 @@ Damit bereitgestellten AAD-Benutzern Evidence.com im Zugriffsbereich angezeigt w
  
 4.	Klicken Sie in der Fußzeile auf die Schaltfläche **Zuweisen**.
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0928_2016-->

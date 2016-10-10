@@ -1,6 +1,6 @@
 <properties
    pageTitle="Upgrade eines Service Fabric-Clusters | Microsoft Azure"
-   description="Upgraden Sie den Service Fabric-Code und/oder die Konfiguration, die in einem Service Fabric-Cluster ausgeführt wird, einschließlich Upgrade von Zertifikaten, Hinzufügen von Anwendungsports, Betriebssystempatches usw. Was können Sie erwarten, wenn die Upgrades durchgeführt werden?"
+   description="Upgraden Sie den Service Fabric-Code und/oder die Konfiguration für die Ausführung eines Service Fabric-Clusters, und machen Sie sich unter anderem mit dem Festlegen des Clusteraktualisierungsmodus, dem Upgraden von Zertifikaten, dem Hinzufügen von Anwendungsports und dem Anwenden von Betriebssystempatches vertraut. Was können Sie erwarten, wenn die Upgrades durchgeführt werden?"
    services="service-fabric"
    documentationCenter=".net"
    authors="ChackDan"
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="09/13/2016"
+   ms.date="09/22/2016"
    ms.author="chackdan"/>
 
 
@@ -21,13 +21,104 @@
 
 Ein Azure Service Fabric-Cluster ist eine Ressource, die Sie besitzen, die jedoch teilweise von Microsoft verwaltet wird. In diesem Artikel wird beschrieben, was automatisch verwaltet wird und was Sie selbst konfigurieren können.
 
-## Automatisch verwaltete Clusterkonfiguration
+## Steuern der in Ihrem Cluster ausgeführten Fabric-Version
 
-Microsoft verwaltet den Fabric-Code und die Konfiguration, die in einem Cluster ausgeführt werden. Wir führen bei Bedarf automatische, überwachte Upgrades für die durch. Diese Upgrades können sich auf den Code, die Konfiguration oder beides beziehen. Um sicherzustellen, dass Ihre Anwendung während dieser Upgrades nicht oder nur minimal beeinträchtigt wird, führen wir die Upgrades in den folgenden drei Phasen durch.
+Sie können Ihren Cluster so konfigurieren, dass er Fabric-Upgrades entweder automatisch erhält oder wenn Microsoft eine neue Version veröffentlicht. Alternativ können Sie eine unterstützte Fabric-Version auswählen, die in Ihrem Cluster verwendet werden soll.
+
+Hierzu legen Sie die Clusterkonfiguration „upgradeMode“ über das Portal oder mithilfe von Resource Manager fest – entweder zum Zeitpunkt der Clustererstellung oder später für einen aktiven Cluster.
+
+>[AZURE.NOTE] Achten Sie immer darauf, dass in Ihrem Cluster eine unterstützte Fabric-Version ausgeführt wird. Nach der Ankündigung einer neuen Service Fabric-Version beträgt die verbleibende Lebensdauer der vorherigen Version noch mindestens 60 Tage. Neue Versionen werden im [Blog des Service Fabric-Teams](https://blogs.msdn.microsoft.com/azureservicefabric/) angekündigt. Ab dann kann die neue Version ausgewählt werden.
+
+14 Tage vor Ablauf der in Ihrem Cluster verwendeten Version wird ein Integritätsereignis generiert, das den Cluster in einen Warnzustand versetzt. Der Cluster bleibt so lange in dem Warnzustand, bis Sie ein Upgrade auf eine unterstützte Fabric-Version durchführen.
+
+
+### Festlegen des Upgrademodus über das Portal 
+
+Bei der Clustererstellung haben Sie die Wahl zwischen einem automatischen und einem manuellen Modus:
+
+![Create\_Manualmode][Create_Manualmode]
+
+Einen aktiven Cluster können Sie über die Verwaltungsoberfläche in den automatischen oder manuellen Modus versetzen.
+
+#### Upgraden auf eine neue Version in einem Cluster im manuellen Modus über das Portal
+ 
+Für ein Upgrade auf eine neue Version müssen Sie lediglich die verfügbare Version im Dropdownmenü auswählen und auf „Speichern“ klicken. Das Fabric-Upgrade wird automatisch initiiert. Bei dem Upgrade werden die Clusterintegritätsrichtlinien (eine Kombination aus Knotenintegrität und Integrität aller im Cluster ausgeführten Anwendungen) berücksichtigt.
+
+Wenn die Integritätsrichtlinien des Clusters nicht erfüllt sind, wird das Upgrade zurückgesetzt. Weitere Informationen zum Festlegen dieser benutzerdefinierten Integritätsrichtlinien finden Sie weiter unten in diesem Dokument.
+
+Beheben Sie die Probleme, die zu dem Rollback geführt haben, und initiieren Sie das Upgrade erneut, indem Sie die gleichen Schritte ausführen wie zuvor.
+
+![Manage\_Automaticmode][Manage_Automaticmode]
+
+### Festlegen des Upgrademodus mithilfe einer Resource Manager-Vorlage 
+
+Fügen Sie der Microsoft.ServiceFabric/Clusterressourcendefinition die Konfiguration „upgradeMode“ hinzu, legen Sie „clusterCodeVersion“ wie unten gezeigt auf eine der unterstützten Fabric-Versionen fest, und stellen Sie dann die Vorlage bereit. Gültige Werte für „upgradeMode“ sind „Manual“ und „Automatic“.
+ 
+![ARMUpgradeMode][ARMUpgradeMode]
+
+#### Upgraden auf eine neue Version in einem Cluster im manuellen Modus mithilfe einer Resource Manager-Vorlage
+ 
+Wenn sich der Cluster im manuellen Modus befindet und Sie ein Upgrade auf eine neue Version durchführen möchten, legen Sie „clusterCodeVersion“ auf eine unterstützte Version fest, und stellen Sie sie bereit. Das Fabric-Upgrade wird durch die Bereitstellung der Vorlage automatisch initiiert. Bei dem Upgrade werden die Clusterintegritätsrichtlinien (eine Kombination aus Knotenintegrität und Integrität aller im Cluster ausgeführten Anwendungen) berücksichtigt.
+
+Wenn die Integritätsrichtlinien des Clusters nicht erfüllt sind, wird das Upgrade zurückgesetzt. Weitere Informationen zum Festlegen dieser benutzerdefinierten Integritätsrichtlinien finden Sie weiter unten in diesem Dokument.
+
+Beheben Sie die Probleme, die zu dem Rollback geführt haben, und initiieren Sie das Upgrade erneut, indem Sie die gleichen Schritte ausführen wie zuvor.
+
+### Abrufen der Liste mit allen verfügbaren Versionen für alle Umgebungen eines bestimmten Abonnements
+
+Führen Sie den folgenden Befehl aus, um eine Ausgabe wie die folgende zu erhalten.
+
+„supportExpiryUtc“ gibt an, wann eine bestimmte Version abläuft oder abgelaufen ist. Die neueste Version besitzt anstelle eines gültigen Datums den Wert „9999-12-31T23:59:59.9999999“, was bedeutet, dass noch kein Ablaufdatum feststeht.
+
+```REST
+GET https://<endpoint>/subscriptions/{{subscriptionId}}/providers/Microsoft.ServiceFabric/clusterVersions?api-version= 2016-09-01
+
+Output:
+{
+                  "value": [
+                    {
+                      "id": "subscriptions/35349203-a0b3-405e-8a23-9f1450984307/providers/Microsoft.ServiceFabric/environments/Windows/clusterVersions/5.0.1427.9490",
+                      "name": "5.0.1427.9490",
+                      "type": "Microsoft.ServiceFabric/environments/clusterVersions",
+                      "properties": {
+                        "codeVersion": "5.0.1427.9490",
+                        "supportExpiryUtc": "2016-11-26T23:59:59.9999999",
+                        "environment": "Windows"
+                      }
+                    },
+                    {
+                      "id": "subscriptions/35349203-a0b3-405e-8a23-9f1450984307/providers/Microsoft.ServiceFabric/environments/Windows/clusterVersions/4.0.1427.9490",
+                      "name": "5.1.1427.9490",
+                      "type": " Microsoft.ServiceFabric/environments/clusterVersions",
+                      "properties": {
+                        "codeVersion": "5.1.1427.9490",
+                        "supportExpiryUtc": "9999-12-31T23:59:59.9999999",
+                        "environment": "Windows"
+                      }
+                    },
+                    {
+                      "id": "subscriptions/35349203-a0b3-405e-8a23-9f1450984307/providers/Microsoft.ServiceFabric/environments/Windows/clusterVersions/4.4.1427.9490",
+                      "name": "4.4.1427.9490",
+                      "type": " Microsoft.ServiceFabric/environments/clusterVersions",
+                      "properties": {
+                        "codeVersion": "4.4.1427.9490",
+                        "supportExpiryUtc": "9999-12-31T23:59:59.9999999",
+                        "environment": "Linux"
+                      }
+                    }
+                  ]
+                }
+
+
+```
+
+## Fabric-Upgradeverhalten, wenn sich der Cluster im automatischen Upgrademodus befindet
+
+Microsoft verwaltet den Fabric-Code und die Konfiguration, die in einem Cluster ausgeführt werden. Wir führen bei Bedarf automatische, überwachte Upgrades für die durch. Diese Upgrades können sich auf den Code, die Konfiguration oder beides beziehen. Um sicherzustellen, dass Ihre Anwendung während dieser Upgrades nicht oder nur minimal beeinträchtigt wird, führen wir die Upgrades in den folgenden Phasen durch:
 
 ### Phase 1: Ein Upgrade erfolgt unter Befolgung aller Integritätsrichtlinien für den Cluster
 
-In dieser Phase erfolgen die Upgrades nacheinander in den einzelnen Upgradedomänen. Die Anwendungen, die im Cluster ausgeführt wurden, werden ohne Ausfallzeit fortgesetzt. Die Clusterintegritätsrichtlinien (eine Kombination aus der Integrität der Knoten und aller im Cluster ausgeführten Anwendungen) werden während des Upgrades befolgt.
+In dieser Phase erfolgen die Upgrades nacheinander in den einzelnen Upgradedomänen. Die Anwendungen, die im Cluster ausgeführt wurden, werden ohne Ausfallzeit fortgesetzt. Bei dem Upgrade werden die Clusterintegritätsrichtlinien (eine Kombination aus Knotenintegrität und Integrität aller im Cluster ausgeführten Anwendungen) berücksichtigt.
 
 Wenn die Integritätsrichtlinien des Clusters nicht erfüllt sind, wird das Upgrade zurückgesetzt. Anschließend wird eine E-Mail an den Besitzer des Abonnements gesendet. Die E-Mail enthält folgende Informationen:
 
@@ -67,7 +158,7 @@ Wenn die Clusterintegritätsrichtlinien erfüllt sind, wird das Upgrade als erfo
 
 ## Von Ihnen gesteuerte Clusterkonfigurationen
 
-Hier sind die Konfigurationseinstellungen, die Sie bei einem aktiven Cluster ändern können.
+Sie können nicht nur den Clusterupgrademodus festlegen, sondern in einem aktiven Cluster auch folgende Konfigurationen ändern:
 
 ### Zertifikate
 
@@ -92,7 +183,7 @@ Um einen neuen Port auf allen VMs in einem Knotentyp öffnen zu können, führen
 
     Fügen Sie demselben Load Balancer eine neue Regel mithilfe des im vorherigen Schritt erstellten Tests hinzu.
 
-    ![Screenshot, der zeigt, wie einem Load Balancer im Portal eine neue Regel hinzugefügt wird.][AddingLBRules]
+    ![Hinzufügen einer neuen Regel für einen Load Balancer über das Portal.][AddingLBRules]
 
 
 ### Placement-Eigenschaften
@@ -105,6 +196,18 @@ Für die einzelnen Knotentypen können Sie benutzerdefinierte Placement-Eigensch
 
 Für die einzelnen Knotentypen können Sie benutzerdefinierte Kapazitätsmetriken hinzufügen, die Sie in Ihrer Anwendung zum Melden der Auslastung verwenden möchten. Ausführliche Informationen zur Verwendung von Kapazitätsmetriken zum Melden der Auslastung finden Sie in den Dokumenten zum Clusterressourcen-Manager von Service Fabric unter [Beschreiben Ihres Clusters](service-fabric-cluster-resource-manager-cluster-description.md) und [Metriken und Auslastung](service-fabric-cluster-resource-manager-metrics.md).
 
+### Fabric-Upgradeeinstellungen – Integritätsrichtlinien
+
+Sie können benutzerdefinierte Integritätsrichtlinien für Fabric-Upgrades angeben. Wenn Sie Ihren Cluster für automatische Fabric-Upgrades konfiguriert haben, werden diese Richtlinien auf die erste Phase der automatischen Fabric-Upgrades angewendet. Wenn sich der Cluster im manuellen Fabric-Upgrademodus befindet, werden diese Richtlinien immer dann angewendet, wenn Sie eine neue Version auswählen und so das Fabric-Upgrade in Ihrem Cluster initiieren. Wenn Sie die Richtlinien nicht überschreiben, werden die Standardwerte verwendet.
+
+Sie können benutzerdefinierte Integritätsrichtlinien angeben oder die aktuellen Einstellungen auf dem Fabric-Upgradeblatt überprüfen, indem Sie die erweiterten Upgradeeinstellungen auswählen. Wie das geht, zeigt die folgende Abbildung:
+
+![Verwalten benutzerdefinierter Integritätsrichtlinien][HealthPolices]
+
+### Anpassen der Fabric-Einstellungen für Ihren Cluster
+
+Informationen zu den anpassbaren Einstellungen und zur jeweiligen Vorgehensweise finden Sie unter [Customize Service Fabric cluster settings and Fabric Upgrade policy](service-fabric-cluster-fabric-settings.md) (Anpassen der Service Fabric-Clustereinstellungen und der Fabric-Upgraderichtlinie).
+
 ### Betriebssystem-Patches auf den virtuellen Computern, die den Cluster bilden
 
 Diese Funktion ist als automatisierte Funktion für die Zukunft geplant. Derzeit sind Sie jedoch noch selbst für das Patching Ihrer virtuellen Computer verantwortlich. Dies muss jeweils für eine VM erfolgen, sodass immer nur eine außer Betrieb genommen wird.
@@ -114,13 +217,17 @@ Diese Funktion ist als automatisierte Funktion für die Zukunft geplant. Derzeit
 Wenn Sie das verwendete Betriebssystemimage auf den virtuellen Computern des Clusters aktualisieren müssen, muss das jeweils auf den einzelnen virtuellen Computern nacheinander erfolgen. Dabei sind Sie für dieses Upgrade zuständig, dies kann derzeit noch nicht automatisiert werden.
 
 ## Nächste Schritte
-
-- Erfahren Sie, [wie Ihr Cluster skaliert wird](service-fabric-cluster-scale-up-down.md).
+- Informieren Sie sich über die Vorgehensweise zum Anpassen einiger [Fabric-Einstellungen des Service Fabric-Clusters](service-fabric-cluster-fabric-settings.md).
+- Machen Sie sich mit der Vorgehensweise zum [Skalieren Ihres Clusters](service-fabric-cluster-scale-up-down.md) vertraut.
 - Machen Sie sich mit [Anwendungsupgrades](service-fabric-application-upgrade.md) vertraut.
 
 <!--Image references-->
 [CertificateUpgrade]: ./media/service-fabric-cluster-upgrade/CertificateUpgrade2.png
 [AddingProbes]: ./media/service-fabric-cluster-upgrade/addingProbes2.PNG
 [AddingLBRules]: ./media/service-fabric-cluster-upgrade/addingLBRules.png
+[HealthPolices]: ./media/service-fabric-cluster-upgrade/Manage_AutomodeWadvSettings.PNG
+[ARMUpgradeMode]: ./media/service-fabric-cluster-upgrade/ARMUpgradeMode.PNG
+[Create_Manualmode]: ./media/service-fabric-cluster-upgrade/Create_Manualmode.PNG
+[Manage_Automaticmode]: ./media/service-fabric-cluster-upgrade/Manage_Automaticmode.PNG
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

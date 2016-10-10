@@ -1,19 +1,19 @@
 <properties
    pageTitle="SAP NetWeaver auf virtuellen Windows-Computern (VMs) – Bereitstellungshandbuch | Microsoft Azure"
    description="SAP NetWeaver auf virtuellen Windows-Computern (VMs) – Bereitstellungshandbuch"
-   services="virtual-machines-windows,virtual-network,storage"
-   documentationCenter="saponazure"
+   services="virtual-machines-windows"
+   documentationCenter=""
    authors="MSSedusch"
-   manager="juergent"
+   manager="timlt"
    editor=""
    tags="azure-resource-manager"
    keywords=""/>
 <tags
    ms.service="virtual-machines-windows"
    ms.devlang="NA"
-   ms.topic="campaign-page"
+   ms.topic="article"
    ms.tgt_pltfrm="vm-windows"
-   ms.workload="na"
+   ms.workload="infrastructure-services"
    ms.date="08/18/2016"
    ms.author="sedusch"/>
 
@@ -984,4 +984,4 @@ Eine vollständige und aktuelle Liste bekannter Probleme finden Sie im SAP-Hinwe
 
 Falls die Problembehandlung gemäß SAP-Hinweis [1999351] nicht hilfreich war, führen Sie erneut das Konfigurationsskript Set-AzureRmVMAEMExtension aus, wie im Kapitel [Konfigurieren der Azure-Erweiterung zur verbesserten Überwachung für SAP][deployment-guide-4.5] beschrieben. Möglicherweise ist eine Wartezeit von 1 Stunde erforderlich, da Speicheranalyse- und Diagnoseindikatoren nicht sofort nach der Aktivierung erstellt werden. Falls das Problem weiterhin besteht, öffnen Sie eine SAP-Kundendienstmeldung für die Komponente BC-OP-NT-AZR für virtuelle Windows-Computer oder BC-OP-LNX-AZR für virtuelle Linux-Computer.
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0928_2016-->

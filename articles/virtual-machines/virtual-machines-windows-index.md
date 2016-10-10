@@ -31,7 +31,7 @@ Hier finden Sie die gesamte Dokumentation, die Sie zum Erstellen und Verwalten W
 
 [Häufig gestellte Fragen zu virtuellen Azure-Computern, die mit dem klassischen Bereitstellungsmodell erstellt wurden](virtual-machines-windows-classic-faq.md)
 
-[Azure App Service, Azure Cloud Services, Azure Virtual Machines und Azure Service Fabric im Vergleich](../app-service-web/choose-web-site-cloud-service-vm.md)
+[Azure App Service, Azure Virtual Machines, Service Fabric und Azure Cloud Services im Vergleich](../app-service-web/choose-web-site-cloud-service-vm.md)
 
 [Virtuelle Computer und Container in Azure](virtual-machines-windows-containers.md)
 
@@ -62,7 +62,7 @@ Hier finden Sie die gesamte Dokumentation, die Sie zum Erstellen und Verwalten W
 
 [Größen für virtuelle Computer](virtual-machines-windows-sizes.md)
 
-[Informationen zu den rechenintensiven A8-, A9-, A10- und A11-Instanzen](virtual-machines-windows-a8-a9-a10-a11-specs.md)
+[Informationen zu virtuellen Computern der H-Serie und der rechenintensiven A-Serie](virtual-machines-windows-a8-a9-a10-a11-specs.md)
 
 [Geplante Wartung für virtuelle Azure-Computer](virtual-machines-windows-planned-maintenance.md)
 
@@ -192,4 +192,4 @@ Hier finden Sie die gesamte Dokumentation, die Sie zum Erstellen und Verwalten W
 
 [Behandeln von Problemen beim Neustart oder Ändern der Größe eines vorhandenen virtuellen Windows-Computers in Azure (klassisches Bereitstellungsmodell)](virtual-machines-windows-classic-restart-resize-error-troubleshooting.md)
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0928_2016-->

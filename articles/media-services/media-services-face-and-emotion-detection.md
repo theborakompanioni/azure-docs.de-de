@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Gesichts- und Emotionenerkennung mit Azure Media Analytics"
+	pageTitle="Gesichts- und Emotionenerkennung mit Azure Media Analytics | Microsoft Azure"
 	description="Dieses Thema veranschaulicht, wie Azure Media Analytics Gesichter und Emotionen erkennt."
 	services="media-services"
 	documentationCenter=""
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="06/22/2016"   
+	ms.date="09/26/2016"   
 	ms.author="milanga;juliako;"/>
  
 #Gesichts- und Emotionenerkennung mit Azure Media Analytics
@@ -59,8 +59,8 @@ Zeitskala|„Ticks“ pro Sekunde des Videos.
 Offset|Dies ist der Zeitoffset für Zeitstempel. In Version 1.0 von Video-APIs wird dies immer 0 sein. In zukünftigen Szenarien, die wir unterstützen, kann sich dieser Wert ändern.
 Framerate|Frames des Videos pro Sekunde.
 Fragments|Die Metadaten werden in verschiedene, als Fragmente bezeichnete Segmente aufgeteilt. Jedes Fragment enthält Startzeitpunkt, Dauer, Intervallnummer und Ereignis(se).
-Starten|Die Startzeit des ersten Ereignisses in „Ticks“.
-Dauer|Die Länge des Fragments in „Ticks“.
+Start|Die Startzeit des ersten Ereignisses in „Ticks“.
+Duration|Die Länge des Fragments in „Ticks“.
 Intervall|Das Intervall jedes Ereigniseintrags innerhalb des Fragments in „Ticks“.
 Ereignisse|Jedes Ereignis enthält die innerhalb dieser Zeitspanne erkannten und nachverfolgten Gesichter. Es ist ein Array eines Arrays von Ereignissen. Das äußere Array stellt ein Zeitintervall dar. Das innere Array besteht aus 0 oder mehr Ereignissen, die zu diesem Zeitpunkt aufgetreten sind. Eine leere Klammer bedeutet, dass keine Gesichter erkannt wurden.
 ID| Die ID des Gesichts, das nachverfolgt wird. Diese Nummer kann sich unbeabsichtigt ändern, wenn ein Gesicht nicht mehr erkannt wird. Eine bestimmte Person sollte während des gesamten Videos die gleiche ID aufweisen, doch dies kann aufgrund von Einschränkungen im Erkennungsalgorithmus (Verdecken usw.) nicht garantiert werden.
@@ -537,4 +537,4 @@ Das folgende Programm zeigt Ihnen, wie Sie folgendes ausführen:
 
 [Azure Media Analytics-Demos](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0928_2016-->

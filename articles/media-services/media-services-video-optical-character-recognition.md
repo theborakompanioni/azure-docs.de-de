@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="06/27/2016"   
+	ms.date="09/26/2016"   
 	ms.author="juliako"/>
  
 #Verwenden von Azure Media Analytics zum Konvertieren von Textinhalten in Videodateien in digitalen Text 
@@ -22,7 +22,7 @@
 
 Wenn Sie Textinhalt aus Ihren Videodateien extrahieren und einen bearbeit- und durchsuchbaren digitalen Text erstellen müssen, sollten Sie Azure Media Analytics OCR (Optical Character Recognition, Optische Zeichenerkennung) verwenden. Dieser Azure-Medienprozessor erkennt Textinhalte in Ihren Videodateien und generiert Textdateien, die Sie nutzen können. Dank der optischen Zeichenerkennung können Sie die Extraktion aussagekräftiger Metadaten aus dem Videosignal Ihrer Medien automatisieren.
 
-Bei Verwendung in Verbindung mit einer Suchmaschine können Sie Ihre Medien problemlos anhand von Text indizieren und die Erkennbarkeit Ihrer Inhalte verbessern. Dies ist äußerst nützlich bei sehr textlastigem Video, z.B. bei einer Video- oder Bildschirmaufnahme einer Diashow.Der Azure OCR-Medienprozessor ist für digitalen Text optimiert.
+Bei Verwendung in Verbindung mit einer Suchmaschine können Sie Ihre Medien problemlos anhand von Text indizieren und die Erkennbarkeit Ihrer Inhalte verbessern. Dies ist äußerst nützlich bei sehr textlastigem Video, z.B. bei einer Video- oder Bildschirmaufnahme einer Diashow. Der Azure OCR-Medienprozessor ist für digitalen Text optimiert.
 
 Der **Azure Media OCR**-Medienprozessor befindet sich derzeit in der Vorschauphase.
 
@@ -99,7 +99,7 @@ Framerate|Frames pro Sekunde des Videos
 width|Breite des Videos in Pixel
 height|Höhe des Videos in Pixel
 Fragments|Array zeitbasierter Segmente des Videos, in die die Metadaten aufgeteilt werden
-start|Startzeit eines Fragments in Teilstrichen
+Start|Startzeit eines Fragments in Teilstrichen
 duration|Dauer eines Fragments in Teilstrichen
 interval|Intervall jedes Ereignisses innerhalb des gegebenen Fragments
 events|Array mit Bereichen
@@ -107,7 +107,7 @@ region|Objekt, das die erkannten Wörter oder Ausdrücke darstellt
 language|Sprache des Texts innerhalb eines Bereichs
 orientation|Ausrichtung des Texts innerhalb eines Bereichs
 lines|Array von Zeilen des Texts innerhalb eines Bereichs
-text|Der tatsächliche Text
+Text|Der tatsächliche Text
 
 ###Beispiel für die JSON-Ausgabe
 
@@ -170,7 +170,7 @@ Das folgende Ausgabebeispiel enthält die allgemeinen Videoinformationen und meh
 
 Das folgende Programm zeigt Ihnen, wie Sie folgendes ausführen:
 
-1. Sie ein Asset erstellen und eine Mediendatei in das Asset hochladen.
+1. Erstellen eines Assets und Hochladen einer Mediendatei in das Asset.
 1. Erstellt einen Auftrag mit einer OCR-Konfigurations-/Voreinstellungsdatei.
 1. Herunterladen der JSON-Ausgabedateien.
 		 
@@ -350,4 +350,4 @@ Das folgende Programm zeigt Ihnen, wie Sie folgendes ausführen:
 
 [Azure Media Services Analytics – Übersicht](media-services-analytics-overview.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0928_2016-->

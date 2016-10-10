@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="curtand"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -39,4 +39,4 @@ Egal, ob Sie auf eine Benutzeranfrage zum Zurücksetzen des Kennworts nach einer
 - [Verwalten von Kennwörtern in Azure AD](active-directory-manage-passwords.md)
 - [Verwalten von Gruppen in Azure AD](active-directory-manage-groups.md)
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0928_2016-->

@@ -43,7 +43,7 @@ In dieser Projektmappe sind drei IoT-Geräte mit IoT Hub verbunden:
 
 ### Gatewaysoftware
 
-Die Gatewaysoftware wird als Dienst auf dem Edison Board ausgeführt. Zwei simulierte Geräte generieren die Telemetriedaten für die Temperatur. Das Zuordnungsmodul ordnet diese simulierten Geräte den Geräten zu, die unter IoT Hub registriert sind, und das HTTP-Modul übernimmt die Kommunikation mit dem IoT Hub-Endpunkt. Im Artikel [IoT Gateway SDK – Senden von D2C-Nachrichten mit einem simulierten Gerät][lnk-gateway-scenario] wird dieses Szenario ausführlich beschrieben.
+Die Gatewaysoftware wird als Dienst auf dem Edison Board ausgeführt. Zwei simulierte Geräte generieren die Telemetriedaten für die Temperatur. Das Zuordnungsmodul ordnet diese simulierten Geräte den Geräten zu, die unter IoT Hub registriert sind, und das IoT Hub-Modul übernimmt die Kommunikation mit dem IoT Hub-Endpunkt. Im Artikel [IoT Gateway SDK – Senden von D2C-Nachrichten mit einem simulierten Gerät][lnk-gateway-scenario] wird dieses Szenario ausführlich beschrieben.
 
 ### Geräteverwaltungsclient
 
@@ -425,4 +425,4 @@ Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 [lnk-dmui]: iot-hub-device-management-ui-sample.md
 [lnk-portal]: iot-hub-manage-through-portal.md
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0928_2016-->

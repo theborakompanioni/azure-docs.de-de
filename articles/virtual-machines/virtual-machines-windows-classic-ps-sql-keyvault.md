@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Konfigurieren der Azure-Schlüsseltresor-Integration für SQL Server auf virtuellen Azure-Computern (klassisch)"
-	description="Erfahren Sie, wie Sie die Konfiguration der SQL Server-Verschlüsselung zur Verwendung mit dem Azure-Schlüsseltresor automatisieren. In diesem Thema wird beschrieben, wie Sie die Azure-Schlüsseltresor-Integration mit virtuellen SQL Server-Computern zur Erstellung im klassischen Bereitstellungsmodell verwenden."
+	description="Erfahren Sie, wie Sie die Konfiguration der SQL Server-Verschlüsselung zur Verwendung mit dem Azure-Schlüsseltresor automatisieren. In diesem Thema wird beschrieben, wie Sie die Azure Key Vault-Integration mit virtuellen SQL Server-Computern zur Erstellung im klassischen Bereitstellungsmodell verwenden."
 	services="virtual-machines-windows"
 	documentationCenter=""
 	authors="rothja"
@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="07/05/2016"
+	ms.date="09/26/2016"
 	ms.author="jroth"/>
 
 # Konfigurieren der Azure-Schlüsseltresor-Integration für SQL Server auf virtuellen Azure-Computern (klassisch)
@@ -37,7 +37,11 @@ Wenn diese Funktion aktiviert ist, wird der SQL Server-Connector automatisch akt
 ## Konfigurieren der Integration des Azure-Schlüsseltresors
 Verwenden Sie PowerShell zum Konfigurieren der Azure-Schlüsseltresor-Integration. Die folgenden Abschnitte enthalten eine Übersicht über die erforderlichen Parameter sowie ein PowerShell-Beispielskript.
 
-### Eingabeparameter
+### Installieren der Erweiterung für SQL Server-IaaS
+
+[Installieren Sie zunächst die Erweiterung für SQL Server-IaaS.](virtual-machines-windows-classic-sql-server-agent-extension.md)
+
+### Grundlegendes zu den Eingabeparametern
 In der folgenden Tabelle sind die Parameter aufgeführt, die zum Ausführen des PowerShell-Skripts im nächsten Abschnitt erforderlich sind.
 
 |Parameter|Beschreibung|Beispiel|
@@ -70,4 +74,4 @@ Mit dem **New-AzureVMSqlServerKeyVaultCredentialConfig**-Cmdlet wird ein Konfigu
 
 [AZURE.INCLUDE [Nächste Schritte der Azure-Schlüsseltresor-Integration](../../includes/virtual-machines-sql-server-akv-next-steps.md)]
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0928_2016-->

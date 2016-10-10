@@ -1,19 +1,19 @@
 <properties
    pageTitle="SAP NetWeaver auf virtuellen Linux-Computern (VMs) – Planungs- und Implementierungshandbuch | Microsoft Azure"
    description="SAP NetWeaver auf virtuellen Linux-Computern (VMs) – Planungs- und Implementierungshandbuch"
-   services="virtual-machines-linux,virtual-network,storage"
-   documentationCenter="saponazure"
+   services="virtual-machines-linux"
+   documentationCenter=""
    authors="MSSedusch"
-   manager="juergent"
+   manager="timlt"
    editor=""
    tags="azure-resource-manager"
    keywords=""/>
 <tags
    ms.service="virtual-machines-linux"
    ms.devlang="NA"
-   ms.topic="campaign-page"
+   ms.topic="article"
    ms.tgt_pltfrm="vm-linux"
-   ms.workload="na"
+   ms.workload="infrastructure-services"
    ms.date="08/18/2016"
    ms.author="sedusch"/>
 
@@ -305,7 +305,7 @@ Microsoft Azure ermöglicht Unternehmen das Abrufen von Server- und Speicherress
 [AZURE.INCLUDE [windows-warning](../../includes/virtual-machines-linux-sap-warning.md)]
 
 ## Zusammenfassung
-Cloud Computing ist ein häufig verwendeter Begriff, der in der IT-Branche mehr und mehr an Bedeutung gewinnt – in kleinen Unternehmen ebenso wie in großen und multinationalen Konzernen.
+Cloud Computing ist ein häufig verwendeter Begriff, der in der IT-Branche mehr und mehr an Bedeutung gewinnt – in kleinen Unternehmen ebenso wie in großen und multinationalen Konzernen.
 
 Microsoft Azure ist die Plattform für Clouddienste von Microsoft, die ein umfangreiches Spektrum an neuen Möglichkeiten bietet. Nun können Kunden Anwendungen schnell als Dienste in der Cloud bereitstellen bzw. die Bereitstellung aufheben und sind nicht mehr durch technische oder budgetbezogene Aspekte eingeschränkt. Anstatt Zeit und Geld in die Hardwareinfrastruktur zu investieren, können sich Unternehmen auf die Anwendung, Geschäftsprozesse und ihre Vorteile für Kunden und Benutzer konzentrieren.
 
@@ -856,7 +856,7 @@ Eine gängige Bereitstellungsmethode ist das Verschieben einer vorhandenen VM mi
 Für die Vorbereitung Ihres eigenen Azure-VM-Datenträgers gelten folgende Anforderungen:
 
 * Bislang war die VHD mit dem Betriebssystem auf eine Größe von maximal 127 GB beschränkt. Diese Einschränkung gilt seit Ende März 2015 nicht mehr. Die VHD mit dem Betriebssystem kann nun wie jede andere im Azure-Speicher bereitgestellte VHD bis zu 1 TB groß sein kann.  
-[comment]: <> (MShermannd TODO have to check if CLI also converts to static )
+[comment]: <> (MShermannd  TODO have to check if CLI also converts to static )
 * Das VHD-Format muss jedoch statisch sein. Dynamische VHDs oder VHDs im VHDx-Format werden von Azure noch nicht unterstützt. Dynamische VHDs werden beim Hochladen mit PowerShell-Cmdlets bzw. der Befehlszeilenschnittstelle in statische VHDs konvertiert.
 * Auch auf der VM bereitgestellte VHDs, die in Azure weiterhin bereitgestellt werden sollen, müssen ein statisches VHD-Format aufweisen. Die Größeneinschränkung für Betriebssystem-Datenträger gilt auch für Datenträger mit ganz normalen Daten. Die Größe von VHDs ist auf 1 TB beschränkt. Dynamische VHDs werden beim Hochladen mit PowerShell-Cmdlets bzw. der Befehlszeilenschnittstelle in statische VHDs konvertiert.
 * Solange die VM noch nicht vollständig bereitgestellt ist und keine geeigneteren Benutzerkonten zur Verfügung stehen, sollten Sie ein neues lokales Konto mit Administratorrechten hinzufügen, das vom Microsoft-Support verwendet bzw. als Kontext für die Ausführung von Diensten und Anwendungen zugewiesen werden kann, bis der virtuelle Computer bereitgestellt ist und geeignetere Benutzer verwendet werden können.
@@ -882,7 +882,7 @@ VHD-Dateien, die ein generalisiertes Betriebssystem enthalten, werden in Azure-S
 Für die Vorbereitung Ihres eigenen Azure-VM-Image gelten folgende Anforderungen:
 
 * Bislang war die VHD mit dem Betriebssystem auf eine Größe von maximal 127 GB beschränkt. Diese Einschränkung gilt seit Ende März 2015 nicht mehr. Die VHD mit dem Betriebssystem kann nun wie jede andere im Azure-Speicher bereitgestellte VHD bis zu 1 TB groß sein kann. 
-[comment]: <> (MShermannd TODO have to check if CLI also converts to static )
+[comment]: <> (MShermannd  TODO have to check if CLI also converts to static )
 * Das VHD-Format muss jedoch statisch sein. Dynamische VHDs oder VHDs im VHDx-Format werden von Azure noch nicht unterstützt. Dynamische VHDs werden beim Hochladen mit PowerShell-Cmdlets bzw. der Befehlszeilenschnittstelle in statische VHDs konvertiert.
 * Auch auf der VM bereitgestellte VHDs, die in Azure weiterhin bereitgestellt werden sollen, müssen ein statisches VHD-Format aufweisen. Die Größeneinschränkung für Betriebssystem-Datenträger gilt auch für Datenträger mit ganz normalen Daten. Die Größe von VHDs ist auf 1 TB beschränkt. Dynamische VHDs werden beim Hochladen mit PowerShell-Cmdlets bzw. der Befehlszeilenschnittstelle in statische VHDs konvertiert.
 * Da die auf der VM als Benutzer registrierten Domänenbenutzer in einem reinen Cloud-Bereitstellungsszenario (siehe Kapitel [Nur Cloud – Bereitstellungen virtueller Computer in Azure ohne Abhängigkeiten vom lokalen Kundennetzwerk][planning-guide-2.1] in diesem Dokument) nicht vorhanden sind, funktionieren Dienste, die diese Domänenkonten nutzen, möglicherweise nicht mehr, sobald das Image in Azure bereitgestellt ist. Dies gilt insbesondere für Konten, die zum Ausführen von Diensten wie DBMS- oder SAP-Anwendungen verwendet werden. Daher müssen Sie solche Domänenkonten durch lokale VM-Konten ersetzen und die lokalen Domänenkonten auf der VM löschen. Die Beibehaltung der lokalen Domänenbenutzer im VM-Image stellt vermutlich kein Problem dar, wenn die VM im standortübergreifenden Szenario bereitgestellt wird, das in diesem Dokument im Kapitel [Standortübergreifend – Bereitstellung einzelner oder mehrerer virtueller SAP-Computer in Azure mit der Anforderung der vollständigen Integration in das lokale Netzwerk][planning-guide-2.2] beschrieben wird.
@@ -912,7 +912,7 @@ Wenn die VM ausreichend vorbereitet ist, um generisch und letztendlich unabhäng
 
 ___
 
-[comment]: <> (MShermannd TODO have to find better articles / docu about generalizing the VMs for ARM )
+[comment]: <> (MShermannd  TODO have to find better articles / docu about generalizing the VMs for ARM )
 > ![Windows][Logo_Windows] Windows
 >
 > Der letzte Schritt ist die Anmeldung bei einer VM mit einem Administratorkonto. Öffnen Sie als Administrator ein Windows-Befehlsfenster. Wechseln Sie zu „…\\windows\\system32\\sysprep“, und führen Sie „sysprep.exe“ aus. Daraufhin wird ein kleines Fenster geöffnet. Aktivieren Sie hier das Kontrollkästchen „Verallgemeinern“ (das standardmäßig deaktiviert ist), und ändern Sie die Option für das Herunterfahren von der Standardeinstellung „Neu starten“ in „Herunterfahren“ Dieses Verfahren setzt voraus, dass der sysprep-Prozess lokal auf dem Gastbetriebssystem einer VM ausgeführt wird. Wenn Sie diesen Vorgang für eine bereits in Azure ausgeführte VM durchführen möchten, folgen Sie den in [diesem Artikel][virtual-machines-windows-capture-image] beschriebenen Schritten.
@@ -1119,7 +1119,7 @@ Im Idealfall sollten die Verfahren in Verbindung mit VM-Strukturen und den zugeh
 
 ![Verweiskonfiguration der Azure-IaaS-VM für SAP][planning-guide-figure-1300]
 
-[comment]: <> (MShermannd TODO describe Linux structure )
+[comment]: <> (MShermannd  TODO describe Linux structure  )
 
 ___
 
@@ -1301,7 +1301,7 @@ Es wird vorausgesetzt, dass Sie ein VM-Image erstellt haben, wie in einigen Absc
 
 Die Abfolge der Ereignisse zur Implementierung dieses Szenarios sieht wie folgt aus:
 
-[comment]: <> (MShermannd TODO have to provide ARM sample / description using json template + clarification regarding unique VM name within ARM virtual network )
+[comment]: <> (MShermannd  TODO have to provide ARM sample / description using json template + clarification regarding unique VM name within ARM virtual network  )   
 ##### PowerShell
 
 * Erstellen einer neuen Ressourcengruppe für jede Schulungs-/Demoumgebung
@@ -1944,4 +1944,4 @@ Hier die wichtigsten Punkte der hohen Verfügbarkeit für SAP-Systeme in Azure:
 * Das Sichern von SAP-Dialoginstanzen ist nicht sinnvoll, da es bei einfachen Dialoginstanzen in der Regel schneller geht, sie erneut bereitzustellen.
 * Es ist empfehlenswert, den virtuellen Computer, der das globale Verzeichnis des SAP-Systems enthält, einschließlich aller Profile der unterschiedlichen Instanzen zu sichern. Dies sollte beispielsweise mit der Windows-Sicherung oder unter Linux mit "tar" durchgeführt werden. Aufgrund von Unterschieden zwischen Windows Server 2008 (R2) und Windows Server 2012 (R2) ist die Sicherung mit den neueren Windows Server-Versionen einfacher. Es wird daher empfohlen, Windows Server 2012 (R2) als Windows-Gastbetriebssystem ausgeführt.
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0928_2016-->

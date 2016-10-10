@@ -27,7 +27,7 @@ Das folgende Diagramm zeigt die Hauptkomponenten des Beispiels, einschließlich 
 ![][1]
 
 
-> [AZURE.NOTE] Die Module übergeben untereinander Nachrichten nicht direkt. Die Module veröffentlichen Nachrichten in einem internen Nachrichtenbus, der die Nachrichten mithilfe eines Abonnementmechanismus an die anderen Module übermittelt, wie im unten stehenden Diagramm gezeigt. Weitere Informationen finden Sie unter [Erste Schritte mit dem Gateway SDK][lnk-gw-getstarted].
+> [AZURE.NOTE] Die Module übergeben untereinander Nachrichten nicht direkt. Die Module veröffentlichen Nachrichten in einem internen Broker, der die Nachrichten mithilfe eines Abonnementmechanismus an die anderen Module übermittelt, wie im unten stehenden Diagramm gezeigt. Weitere Informationen finden Sie unter [Erste Schritte mit dem Gateway SDK][lnk-gw-getstarted].
 
 ### Protokollerfassungsmodul
 
@@ -69,3 +69,4 @@ Anstatt für jedes simulierte Gerät eine Verbindung mit IoT Hub zu öffnen, öf
 [lnk-sdk]: https://github.com/Azure/azure-iot-gateway-sdk
 [lnk-gw-getstarted]: ../articles/iot-hub/iot-hub-linux-gateway-sdk-get-started.md
 
+<!---HONumber=AcomDC_0928_2016-->

@@ -218,7 +218,9 @@ Hier sind einige Beispiele für Bedrohungen in dieser Kategorie aufgeführt:
 
 **Spoofing:** Ein Angreifer kann die Übermittlung abfangen oder teilweise außer Kraft setzen und den Absender nachahmen („Man in the middle“).
 
-**Manipulation:** Ein Angreifer kann die Datenübermittlung abfangen oder teilweise außer Kraft setzen und falsche Informationen senden. Offenlegung von Daten: Ein Angreifer kann bei einer Übermittlung mithören und unbefugt Informationen erlangen. Denial of Service: Ein Angreifer kann das Übermittlungssignal blockieren und die Bereitstellung von Daten verhindern.
+**Manipulation:** Ein Angreifer kann die Übermittlung abfangen oder teilweise außer Kraft setzen und falsche Informationen senden.
+
+**Offenlegung von Daten:** Ein Angreifer kann bei einer Übermittlung mithören und unbefugt Informationen erlangen. **Denial of Service:** Ein Angreifer kann das Übermittlungssignal blockieren und die Bereitstellung von Daten verhindern.
 
 #### Speicher
 
@@ -252,4 +254,4 @@ Weitere Informationen finden Sie in den folgenden Artikeln:
 - [Microsoft Azure IoT reference architecture available (Microsoft Azure IoT-Referenzarchitektur verfügbar)](https://azure.microsoft.com/updates/microsoft-azure-iot-reference-architecture-available/)
  
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0928_2016-->

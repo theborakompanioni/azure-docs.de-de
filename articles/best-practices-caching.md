@@ -53,7 +53,7 @@ Stellen Sie sich einen Cache als Momentaufnahme der Originaldaten zu einem besti
 
 _Abbildung 1: Verwenden eines arbeitsspeicherinternen Cache in verschiedenen Instanzen einer Anwendung_
 
-### Freigegebenes Caching
+### Shared Caching
 
 Ein gemeinsam genutzter bzw. freigegebener Cache verhindert die Diversität der Daten in den einzelnen Instanzencaches, wie es beim In-Memory-Zwischenspeichern der Fall sein kann. Shared Caching stellt sicher, dass verschiedene Anwendungsinstanzen die gleiche Ansicht der zwischengespeicherten Daten haben. Hierzu wird der Cache in einem separaten Speicherort gesucht. Er wird in der Regel als Teil eines separaten Diensts gehostet, wie in Abbildung 2 dargestellt.
 
@@ -151,8 +151,7 @@ Erwägen Sie, zusätzlich zum freigegebenen Cache, auf den alle Anwendungsinstan
 
 Bei dieser Strategie ist eine sorgfältige Konfiguration erforderlich, um zu verhindern, dass der lokale Cache gegenüber dem freigegebenen Cache zu sehr veraltet. Der lokale Cache fungiert jedoch als Puffer, wenn der freigegebene Cache nicht erreichbar ist. Eine solche Struktur sehen Sie in Abbildung 3.
 
-![Verwenden eines lokalen privaten Caches mit einem freigegebenen Cache](media/best-practices-caching/Caching3.png) 
-_Abbildung 3: Verwenden eines lokalen privaten Cache mit einem gemeinsam genutzten Cache_
+![Verwenden eines lokalen privaten Caches mit einem freigegebenen Cache](media/best-practices-caching/Caching3.png) _Abbildung 3: Verwenden eines lokalen privaten Cache mit einem gemeinsam genutzten Cache_
 
 Zur Unterstützung großer Caches, die relativ langlebige Daten enthalten, bieten einige Cachedienste eine Option für hohe Verfügbarkeit, die für den Fall, dass der Cache nicht verfügbar ist, automatisches Failover implementiert. Diese Strategie schließt in der Regel die Replikation der auf einem primären Cacheserver zwischengespeicherten Daten auf einem sekundären Cacheserver ein, sodass bei einem Ausfall des primären Cacheservers bzw. einem Verlust der Konnektivität sofort zum sekundären Server gewechselt werden kann.
 
@@ -340,7 +339,7 @@ Das hierzu erforderliche Verfahren ist unter Umständen recht komplex, da Sie ev
 
 Jeweiliger Master- und untergeordneter Server eines Paars sollten sich nahe beieinander befinden, um die Latenz zu minimieren. Die einzelnen Paare können aber in separaten Azure-Rechenzentren in verschiedenen Regionen bereitgestellt werden, wenn sich die zwischengespeicherten Daten möglichst nahe der Anwendungen befinden sollen, die sie am wahrscheinlichsten nutzen. Im Blog [Running Redis on a CentOS Linux VM in Azure](http://blogs.msdn.com/b/tconte/archive/2012/06/08/running-redis-on-a-centos-linux-vm-in-windows-azure.aspx) (Ausführen von Redis auf einer CentOS Linux-VM in Azure) auf der Microsoft-Website finden Sie ein Beispiel für die Erstellung und Konfiguration eines Redis-Knotens, der als virtueller Azure-Computer ausgeführt wird.
 
-Beachten Sie, dass Sie, wenn Sie auf diese Weise Ihren eigenen Redis-Cache implementieren, selbst verantwortlich für die Überwachung, Verwaltung und den Schutz des Diensts sind.
+[AZURE.NOTE] Beachten Sie Folgendes: Wenn Sie auf diese Weise Ihren eigenen Redis-Cache implementieren, sind Sie selbst für die Überwachung, die Verwaltung und den Schutz des Diensts verantwortlich.
 
 ## Partitionierung eines Redis-Cache
 
@@ -936,4 +935,4 @@ Eventuell sind auch folgende Muster für Ihr Szenario interessant, wenn Sie in I
 - Seite [Transactions in Redis](https://github.com/StackExchange/StackExchange.Redis/blob/master/Docs/Transactions.md) (Transaktionen in Redis) im Repository zu StackExchange.Redis
 - Seite [Data Partitioning Guidance](http://msdn.microsoft.com/library/dn589795.aspx) (Anleitung zur Datenpartitionierung) auf der Microsoft-Website
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0928_2016-->

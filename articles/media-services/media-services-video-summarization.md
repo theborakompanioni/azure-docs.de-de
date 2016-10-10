@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Verwenden von Azure Media Video Thumbnails zum Erstellen einer Videozusammenfassung"
+	pageTitle="Verwenden von Azure Media Video Thumbnails zum Erstellen einer Videozusammenfassung | Microsoft Azure"
 	description="Die Videozusammenfassung kann Ihnen dabei helfen, Zusammenfassungen von langen Videos durch das automatische Auswählen von interessanten Ausschnitten aus dem Quellvideo zu erstellen. Dies ist hilfreich, wenn Sie einen schnellen Überblick darüber bieten wollen, was man in einem langen Video zu sehen bekommt."
 	services="media-services"
 	documentationCenter=""
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="06/22/2016"   
+	ms.date="09/26/2016"   
 	ms.author="milanga;juliako;"/>
 
 #Verwenden von Azure Media Video Thumbnails zum Erstellen einer Videozusammenfassung
@@ -23,7 +23,7 @@ Mit dem **Azure Media Video Thumbnails**-Medienprozessor können Sie eine Zusamm
 
 Der **Azure Media Video Thumbnails**-Medienprozessor befindet sich derzeit in der Vorschauphase.
 
-Dieses Thema enthält Details zu **Azure Media Video Thumnnails** und zeigt, wie sie mit Media Services SDK für .NET verwendet wird.
+Dieses Thema enthält Details zu **Azure Media Video Thumbnails** und zeigt, wie dieser Prozessor mit Media Services SDK für .NET verwendet wird.
 
 ##Beispiel einer Videozusammenfassung 
 
@@ -37,7 +37,7 @@ Hier sind einige Beispiele für die Fähigkeiten des Azure Media Video Thumbnail
 
 [Ergebnis der Video-Miniaturansicht](http://ampdemo.azureedge.net/azuremediaplayer.html?url=http%3A%2F%2Fnimbuscdn-nimbuspm.streaming.mediaservices.windows.net%2Ff5c91052-4232-41d4-b531-062e07b6a9ae%2FHololens%2520Demo_VideoThumbnails_MotionThumbnail.mp4)
 
-##Taskkonfiguration (Voreinstellung)
+##Aufgabenkonfiguration (Voreinstellung)
 
 Beim Erstellen eines Video-Miniaturansichten-Tasks mit **Azure Media Video Thumbnails** müssen Sie eine Voreinstellungskonfiguration angeben. Das obige Miniaturansicht-Beispiel wurde mit der folgenden JSON-Basiskonfiguration erstellt:
 
@@ -273,4 +273,4 @@ Das folgende Programm zeigt Ihnen, wie Sie folgendes ausführen:
 
 [Azure Media Analytics-Demos](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0928_2016-->

@@ -39,6 +39,11 @@ In diesem Beispiel verwenden wir den Namen des Datensatzes „@“ zum Erstellen
 
 	azure network dns record-set add-record myresourcegroup  contoso.com  "test-ns" NS -d "ns1.contoso.com"
 
+#### Erstellen eines PTR-Eintragssatzes mit einem einzelnen Eintrag  
+In diesem Fall ist „my-arpa-zone.com“ die ARPA-Zone, die Ihren IP-Adressbereich darstellt. Jeder PTR-Eintragssatz in dieser Zone entspricht einer IP-Adresse innerhalb dieses IP-Adressbereichs.
+
+	azure network dns record-set add-record myresourcegroup my-arpa-zone.com "10" PTR -P "myservice.contoso.com"   
+
 #### Erstellen einer SRV-Datensatzgruppe mit einem einzelnen Datensatz
 
 Wenn Sie einen SRV-Datensatz im Zonenstamm erstellen, können Sie im Datensatznamen „\_service“ und „\_protocol“ festlegen. Es ist nicht erforderlich, „@“ im Datensatznamen anzugeben.
@@ -54,4 +59,4 @@ Wenn Sie einen SRV-Datensatz im Zonenstamm erstellen, können Sie im Datensatzna
 
 	azure network dns record-set add-record myresourcegroup contoso.com "test-txt" TXT -x "this is a TXT record"
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0928_2016-->

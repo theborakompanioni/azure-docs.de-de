@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Indizieren von Mediendateien mit Azure Media Indexer 2 Preview"
+	pageTitle="Indizieren von Mediendateien mit der Vorschauversion von Azure Media Indexer 2 | Microsoft Azure"
 	description="Mit dem Azure Media Indexer können Sie die Inhalte Ihrer Mediendateien durchsuchbar machen und eine Volltext-Aufzeichnung für Untertitel und Schlüsselwörter generieren. In diesem Thema wird die Verwendung von Media Indexer 2 Preview erläutert."
 	services="media-services"
 	documentationCenter=""
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="06/22/2016" 
+	ms.date="09/26/2016" 
 	ms.author="adsolank;juliako;"/>
 
 
@@ -36,7 +36,7 @@ In diesem Thema wird dargestellt, wie Sie Indizierungsaufträge mit **Azure Medi
 >Stellen Sie beim Indizieren von Inhalten sicher, dass Mediendateien verwendet werden, die sehr klare Sprache enthalten (ohne Hintergrundmusik, Lärm, Effekte oder Mikrofonrauschen). Die folgenden Beispiele sind geeignete Inhalte: aufgezeichnete Besprechungen, Vorträge oder Präsentationen. Folgende Inhalte sind für die Indizierung ggf. nicht geeignet: Filme, Fernsehsendungen, Material mit gemischten Audio- und Soundeffekten, schlecht aufgezeichnete Inhalte mit Hintergrundgeräuschen (Rauschen).
 
 
-Dieses Thema enthält Details zur **Azure Media Indexer 2 Preview** und zeigt, wie sie mit Media Services SDK für .NET verwendet wird.
+Dieses Thema enthält Details zu **Azure Media Indexer 2 Preview** und zeigt, wie diese Version mit Media Services SDK für .NET verwendet wird.
 
 ##Ein- und Ausgabedateien
 
@@ -54,7 +54,7 @@ Ein Indizierungsauftrag kann Untertiteldateien in den folgenden Formaten generie
 
 Untertiteldateien in diesen Formaten können verwendet werden, um Hörgeschädigten Audio- und Videodateien zugänglich zu machen.
 
-##Taskkonfiguration (Voreinstellung)
+##Aufgabenkonfiguration (Voreinstellung)
 
 Wenn Sie eine Indizierungsaufgabe mit **Azure Media Indexer 2 Preview** erstellen, müssen Sie eine Konfigurationsvoreinstellung angeben.
 
@@ -92,7 +92,7 @@ Azure Media Indexer 2 Preview unterstützt Sprache in Text für die folgenden Sp
 
 Das folgende Programm zeigt Ihnen, wie Sie folgendes ausführen:
 
-1. Sie ein Asset erstellen und eine Mediendatei in das Asset hochladen.
+1. Erstellen eines Assets und Hochladen einer Mediendatei in das Asset.
 1. Sie einen Auftrag mit einer Indizierungsaufgabe anhand einer Konfigurationsdatei erstellen, die die folgende JSON-Voreinstellung enthält.
 			
 		{
@@ -289,4 +289,4 @@ Das folgende Programm zeigt Ihnen, wie Sie folgendes ausführen:
 
 [Azure Media Analytics-Demos](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0928_2016-->

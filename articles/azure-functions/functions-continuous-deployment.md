@@ -1,7 +1,7 @@
 <properties
    pageTitle="Continuous Deployment für Azure Functions | Microsoft Azure"
    description="Verwenden Sie Continuous Deployment-Funktionen von Azure App Service, um Ihre Azure-Funktionen zu veröffentlichen."
-   services="azure-functions"
+   services="functions"
    documentationCenter="na"
    authors="ggailey777"
    manager="erikre"
@@ -15,7 +15,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="multiple"
    ms.workload="na"
-   ms.date="08/15/2016"
+   ms.date="09/25/2016"
    ms.author="glenga"/>
 
 # Continuous Deployment für Azure Functions 
@@ -48,7 +48,9 @@ Gehen Sie wie folgt vor, um Continuous Deployment für eine vorhandene Funktione
 1. Klicken Sie in Ihrer Funktionen-App im [Azure Functions-Portal](https://functions.azure.com/signin) auf **Function app settings** (Einstellungen für Funktionen-App) > **Continuous Integration konfigurieren** > **Setup**.
 
 	![Continuous Deployment einrichten](./media/functions-continuous-deployment/setup-deployment.png)
-
+	
+	![Continuous Deployment einrichten](./media/functions-continuous-deployment/setup-deployment-1.png)
+	
 	Sie können auch zum Blatt „Bereitstellungen“ navigieren, indem Sie im Schnellstartbereich von Functions auf **Start from source control** (Über Quellcodeverwaltung starten) klicken.
 
 2. Klicken Sie auf dem Blatt „Bereitstellungen“ auf **Quelle auswählen**, geben Sie die Informationen für die gewünschte Bereitstellungsquelle ein, und klicken Sie anschließend auf **OK**.
@@ -128,4 +130,4 @@ Damit Sie überhaupt Dateien aus Ihrer Funktionen-App herunterladen können, mü
 
 [GitHub]: https://github.com/
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0928_2016-->

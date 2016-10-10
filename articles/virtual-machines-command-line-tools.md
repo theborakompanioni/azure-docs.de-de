@@ -14,18 +14,18 @@
 	ms.tgt_pltfrm="vm-multiple"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/15/2016"
+	ms.date="09/22/2016"
 	ms.author="danlep"/>
 
 # Befehle der Azure-Befehlszeilenschnittstelle im Modus „Azure-Dienstverwaltung“ (Azure Service Management, ASM)
 
-[AZURE.INCLUDE [learn-about-deployment-models](../includes/learn-about-deployment-models-classic-include.md)] Sie können sich auch [über alle Befehle des Resource Manager-Modells informieren](virtual-machines/azure-cli-arm-commands.md).
+[AZURE.INCLUDE [learn-about-deployment-models](../includes/learn-about-deployment-models-classic-include.md)] Sie können sich auch über alle [Befehle des Resource Manager-Modells informieren](virtual-machines/azure-cli-arm-commands.md) und die Befehlszeilenschnittstelle zum [Migrieren von Ressourcen](virtual-machines/virtual-machines-linux-cli-migration-classic-resource-manager.md) vom klassischen zum Resource Manager-Modell verwenden.
 
 Dieser Artikel enthält die Syntax und Optionen für Befehle der Azure-Befehlszeilenschnittstelle (Azure CLI), die Sie normalerweise zum Erstellen und Verwalten von Azure-Ressourcen im klassischen Bereitstellungsmodell verwenden. Sie können auf diese Befehle zugreifen, indem Sie die Befehlszeilenschnittstelle im Modus „Azure-Dienstverwaltung“ (Azure Service Management, ASM) ausführen. Dies ist keine vollständige Referenz, und Ihre CLI-Version kann unter Umständen einige etwas andere Befehle oder Parameter aufweisen.
 
 Führen Sie zuerst die [Installation der Azure-Befehlszeilenschnittstelle](xplat-cli-install.md) durch, und [stellen Sie die Verbindung mit Ihrem Azure-Abonnement her](xplat-cli-connect.md).
 
-Geben Sie zum Anzeigen der aktuellen Befehlssyntax und Optionen in der Befehlszeile im ASM-Modus `azure help` oder zum Anzeigen der Hilfe für einen bestimmten Befehl `azure help [command]` ein. In der Dokumentation finden Sie auch CLI-Beispiele zum Erstellen und Verwalten bestimmter Azure-Dienste.
+Geben Sie zum Anzeigen der aktuellen Befehlssyntax und Optionen in der Befehlszeile `azure help` oder zum Anzeigen der Hilfe für einen bestimmten Befehl `azure help [command]` ein. In der Dokumentation finden Sie auch CLI-Beispiele zum Erstellen und Verwalten bestimmter Azure-Dienste.
 
 Optionale Parameter sind in eckigen Klammern angegeben (Beispiel: `[parameter]`). Alle anderen Parameter müssen angegeben werden.
 
@@ -40,7 +40,7 @@ Der ASM-Modus wird bei der Erstinstallation der CLI standardmäßig aktiviert. V
 >[AZURE.NOTE] Der Azure Resource Manager-Modus der CLI und der ASM-Modus schließen sich gegenseitig aus. Das heißt, dass Ressourcen, die in einem Modus erstellt wurden, nicht im anderen Modus verwaltet werden können.
 
 ## Verwalten Ihrer Kontoinformationen und Veröffentlichen von Einstellungen
-Eine Möglichkeit, wie für die CLI eine Verbindung mit Ihrem Konto hergestellt werden kann, ist die Verwendung Ihrer Azure-Abonnementinformationen. (Weitere Optionen finden Sie unter [Herstellen einer Verbindung mit einem Azure-Abonnement von der Azure-Befehlszeilenschnittstelle (Azure-CLI)](xplat-cli-connect.md).) Sie finden diese Informationen im klassischen Azure-Portal in einer Einstellungsveröffentlichungsdatei, wie hier beschrieben. Sie können die Einstellungsveröffentlichungsdatei als persistente lokale Konfigurationseinstellung importieren, die von der CLI dann in späteren Vorgängen verwendet wird. Sie müssen Ihre Veröffentlichungseinstellungen nur einmal importieren.
+Eine Möglichkeit, wie die CLI eine Verbindung mit Ihrem Konto herstellen kann, ist die Verwendung Ihrer Azure-Abonnementinformationen. (Weitere Optionen finden Sie unter [Herstellen einer Verbindung mit einem Azure-Abonnement über die Azure-Befehlszeilenschnittstelle](xplat-cli-connect.md).) Sie finden diese Informationen im klassischen Azure-Portal in einer Einstellungsveröffentlichungsdatei, wie hier beschrieben. Sie können die Einstellungsveröffentlichungsdatei als persistente lokale Konfigurationseinstellung importieren, die von der CLI dann in späteren Vorgängen verwendet wird. Sie müssen Ihre Veröffentlichungseinstellungen nur einmal importieren.
 
 **account download [Optionen]**
 
@@ -56,7 +56,7 @@ Dieser Befehl startet einen Browser und lädt Ihre .publishsettings-Datei aus de
 **account import [Optionen] &lt;Datei>**
 
 
-Dieser Befehl importiert eine PUBLISHSETTINGS-Datei oder ein Zertifikat für den zukünftigen Gebrauch durch das Tool.
+Dieser Befehl importiert eine PUBLISHSETTINGS-Datei oder ein Zertifikat für den Gebrauch durch das Tool in zukünftigen Sitzungen.
 
 	~$ azure account import publishsettings.publishsettings
 	info:   Importing publish settings file publishsettings.publishsettings
@@ -67,11 +67,11 @@ Dieser Befehl importiert eine PUBLISHSETTINGS-Datei oder ein Zertifikat für den
 	warn:   Remember to delete it now that it has been imported.
 	info:   Account publish settings imported successfully
 
-> [AZURE.NOTE] .publishsettings-Dateien können Details (Abonnementname und -ID) für mehr als ein Abonnement enthalten. Beim Importieren der PUBLISHSETTINGS-Datei wird das erste Abonnement als Standard-Abonnement verwendet. Führen Sie den folgenden Befehl aus, um ein anderes Abonnement zu verwenden: <code>~$ azure config set subscription &lt;Andere Abonnement-ID&gt;</code>
+> [AZURE.NOTE] .publishsettings-Dateien können Details (Abonnementname und -ID) für mehr als ein Abonnement enthalten. Beim Importieren der .publishsettings-Datei wird das erste Abonnement als Standard-Abonnement verwendet. Führen Sie den folgenden Befehl aus, um ein anderes Abonnement zu verwenden: <code>~$ azure config set subscription &lt;Andere Abonnement-ID&gt;</code>
 
 **account clear [Optionen]**
 
-Mit diesem Befehl werden die zuvor importierten Veröffentlichungseinstellungen gelöscht. Verwenden Sie diesen Befehl, wenn Sie das Tool auf einem Computer nicht mehr benötigen und sicherstellen möchten, dass dieses zukünftig nicht mit Ihrem Benutzerkonto verwendet werden kann.
+Mit diesem Befehl werden die zuvor importierten Veröffentlichungseinstellungen gelöscht. Verwenden Sie diesen Befehl, wenn Sie das Tool auf einem Computer nicht mehr benötigen und sicherstellen möchten, dass es in zukünftigen Sitzungen nicht mit Ihrem Benutzerkonto verwendet werden kann.
 
 	~$ azure account clear
 	Clearing account info.
@@ -112,7 +112,7 @@ Affinitätsgruppe können konfiguriert werden, wenn eine Gruppe von virtuellen C
 
 **account affinity-group create [Optionen] &lt;name&gt;**
 
-Dieser Befehl erstellt eine neue Affinitätsgruppe
+Dieser Befehl erstellt eine Affinitätsgruppe.
 
 	~$ azure account affinity-group create opentec -l "West US"
 	info:    Executing command account affinity-group create
@@ -194,7 +194,7 @@ Das folgende Diagramm zeigt, wie klassische virtuelle Azure-Computer in der Prod
 
 **vm create [Optionen] &lt;DNS-Name> &lt;Image> &lt;Benutzername> [Kennwort]**
 
-Dieser Befehl erstellt einen neuen virtuellen Azure-Computer. Standardmäßig wird jeder virtuelle Computer in einem eigenen Cloud-Dienst erstellt. Sie können jedoch mit der Option -c angeben, dass ein virtueller Computer zu einem existierenden Cloud-Dienst hinzugefügt werden soll.
+Dieser Befehl erstellt einen virtuellen Azure-Computer. Standardmäßig wird jeder virtuelle Computer (Virtual Machine, VM) in einem eigenen Clouddienst erstellt. Sie können jedoch mit der Option -c wie hier dokumentiert angeben, dass ein virtueller Computer einem vorhandenen Clouddienst hinzugefügt werden soll.
 
 Der Befehl „vm create“ erstellt, ebenso wie das klassische Azure-Portal, nur virtuelle Computer in der Produktionsumgebung. Es existiert keine Option zum Erstellen eines virtuellen Computers in der Stagingumgebung eines Cloud-Diensts. Wenn für Ihr Abonnement kein Azure-Speicherkonto vorhanden ist, wird mit diesem Befehl eines erstellt.
 
@@ -202,13 +202,13 @@ Sie können den Parameter --location für die Angabe eines Ortes verwenden und d
 
 Das angegebene Passwort muss 8-123 Zeichen lang sein und die Komplexitätsanforderungen des Betriebssystems erfüllen, das Sie auf dem entsprechenden virtuellen Computer verwenden.
 
-Falls Sie SSH für die Verwaltung virtueller Linux-Computer benötigen (dies ist häufig der Fall), müssen Sie SSH bei der Erstellung des virtuellen Computers über die Option -e aktivieren. SSH kann nach der Erstellung des virtuellen Computers nicht mehr aktiviert werden.
+Falls Sie SSH für die Verwaltung virtueller Linux-Computer planen (dies ist der Normalfall), müssen Sie SSH bei der Erstellung des virtuellen Computers über die Option -e aktivieren. SSH kann nach der Erstellung des virtuellen Computers nicht mehr aktiviert werden.
 
 Virtuelle Windows-Computer können RDP später aktivieren, indem Port 3389 als Endpunkt hinzugefügt wird.
 
 Der Befehl unterstützt die folgenden optionalen Parameter:
 
-**-c, --connect** Erstellt den virtuellen Computer in einer bereits erstellten Bereitstellung in einem Hostingdienst. Bei der Verwendung dieser Option ohne -vmname wird der Name des neuen virtuellen Computers automatisch generiert.<br /> **-n, --vm-name** Geben Sie den Namen des virtuellen Computers an. Dieser Parameter nimmt standardmäßig den Namen des Hostingdiensts entgegen. Ohne Angabe von -vmname wird der Name des neuen virtuellen Computers als &lt;Dienstname>&lt;ID> generiert, wobei &lt;ID> die Anzahl existierender virtueller Computer im Dienst plus 1 ist. Wenn Sie mit diesem Befehl beispielsweise einen neuen virtuellen Computer zum Hostingdienst MyService hinzufügen, der bereits einen virtuellen Computer enthält, erhält der neue virtuelle Computer den Namen MyService2.<br /> **-u, --blob-url** Geben Sie die URL des Blobspeichers an, in dem das Systemlaufwerk des virtuellen Computers erstellt werden soll. <br /> **-z, --vm-size** Geben Sie die Größe des virtuellen Computers an. Gültige Werte sind: "ExtraSmall", "Small", "Medium", "Large", "ExtraLarge", "A5", "A6", "A7", "A8", "A9", "A10", "A11", "Basic\_A0", "Basic\_A1", "Basic\_A2", "Basic\_A3", "Basic\_A4", "Standard\_D1", "Standard\_D2", "Standard\_D3", "Standard\_D4", "Standard\_D11", "Standard\_D12", "Standard\_D13", "Standard\_D14", "Standard\_DS1", "Standard\_DS2", "Standard\_DS3", "Standard\_DS4", "Standard\_DS11", "Standard\_DS12", "Standard\_DS13", "Standard\_DS14", "Standard\_G1", "Standard\_G2", "Standard\_G3", "Standard\_G4", "Standard\_G55". Der Standardwert ist "Small". <br /> **-r** Fügt einem virtuellen Windows-Computer RDP-Konnektivität hinzu <br /> **-e, --ssh** Fügt einem virtuellen Windows-Computer SSH-Konnektivität hinzu <br /> **-t, --ssh-cert** Legt das SSH-Zertifikat fest <br /> **-s** Das Abonnement <br /> **-o, --community** Das angegebene Bild ist ein Community-Image. <br /> **-w** Der Name des virtuellen Netzwerks <br/> **-l, --location** Gibt den Speicherort an (z. B. "Norden-Mitte USA") <br /> **-a, --affinity-group** Gibt die Affinitätsgruppe an<br /> **-w, --virtual-network-name** Gibt das virtuelle Netzwerk an, dem der neue virtuelle Computer hinzugefügt werden soll Virtuelle Netzwerke können im klassischen Azure-Portal eingerichtet und verwaltet werden.<br /> **-b, --subnet-names** Gibt die Subnetznamen an, die dem virtuellen Computer zugewiesen werden sollen.
+**-c, --connect** Erstellt den virtuellen Computer in einer bereits erstellten Bereitstellung in einem Hostingdienst. Bei Verwendung dieser Option ohne -vmname wird der Name des neuen virtuellen Computers automatisch generiert.<br /> **-n, --vm-name** Geben Sie den Namen des virtuellen Computers an. Dieser Parameter nimmt standardmäßig den Namen des Hostingdiensts entgegen. Wenn -vmname nicht angegeben wird, wird der Name für den neuen virtuellen Computer als &lt;Dienstname>&lt;ID> generiert, wobei &lt;ID> für die Anzahl der im Dienst vorhandenen virtuellen Computer plus 1 steht. Wenn Sie mit diesem Befehl beispielsweise einen virtuellen Computer dem Hostingdienst „MyService“ hinzufügen, der bereits einen virtuellen Computer enthält, erhält der neue virtuelle Computer den Namen „MyService2“.<br /> **-u, --blob-url** Geben Sie die URL des Zielblobspeichers an, in dem der Systemdatenträger des virtuellen Computers erstellt werden soll. <br /> **-z, --vm-size** Geben Sie die Größe des virtuellen Computers an. Gültige Werte sind: "ExtraSmall", "Small", "Medium", "Large", "ExtraLarge", "A5", "A6", "A7", "A8", "A9", "A10", "A11", "Basic\_A0", "Basic\_A1", "Basic\_A2", "Basic\_A3", "Basic\_A4", "Standard\_D1", "Standard\_D2", "Standard\_D3", "Standard\_D4", "Standard\_D11", "Standard\_D12", "Standard\_D13", "Standard\_D14", "Standard\_DS1", "Standard\_DS2", "Standard\_DS3", "Standard\_DS4", "Standard\_DS11", "Standard\_DS12", "Standard\_DS13", "Standard\_DS14", "Standard\_G1", "Standard\_G2", "Standard\_G3", "Standard\_G4", "Standard\_G55". Der Standardwert ist "Small". <br />**-r** Fügt einem virtuellen Windows-Computer RDP-Konnektivität hinzu <br />**-e, --ssh** Fügt einem virtuellen Windows-Computer SSH-Konnektivität hinzu <br />**-t, --ssh-cert** Legt das SSH-Zertifikat fest <br />**-s** Das Abonnement <br />**-o, --community** Das angegebene Bild ist ein Community-Image. <br />**-w** Der Name des virtuellen Netzwerks <br/>**-l, --location** Gibt den Speicherort an (z.B. "Norden-Mitte USA") <br />**-a, --affinity-group** Gibt die Affinitätsgruppe an<br />**-w, --virtual-network-name** Gibt das virtuelle Netzwerk an, dem der neue virtuelle Computer hinzugefügt werden soll Virtuelle Netzwerke können im klassischen Azure-Portal eingerichtet und verwaltet werden.<br /> **-b, --subnet-names** Gibt die Subnetznamen an, die dem virtuellen Computer zugewiesen werden sollen.
 
 In diesem Beispiel wird das Image MSFT\_\_Win2K8R2SP1-120514-1520-141205-01-de-DE-30GB von der Plattform bereitgestellt. Weitere Informationen zu Betriebssystem-Images finden Sie in der VM-Imageliste.
 
@@ -219,7 +219,7 @@ In diesem Beispiel wird das Image MSFT\_\_Win2K8R2SP1-120514-1520-141205-01-de-D
 
 **vm create-from &lt;DNS-Name> &lt;Rollendatei>**
 
-Dieser Befehl erstellt einen neuen virtuellen Azure-Computer aus einer JSON-Rollendatei.
+Dieser Befehl erstellt einen virtuellen Azure-Computer aus einer JSON-Rollendatei.
 
 	~$ azure vm create-from my-vm example.json
 	info:   OK
@@ -302,7 +302,7 @@ Dieser Befehl startet einen virtuellen Azure-Computer neu.
 
 **vm shutdown [Optionen] &lt;Name>**
 
-Dieser Befehl fährt einen virtuellen Azure-Computer herunter. Mit der Option -p können Sie angeben, dass die Ressource beim Herunterfahren nicht freigegeben werden soll.
+Dieser Befehl fährt einen virtuellen Azure-Computer herunter. Mit der Option „-p“ können Sie angeben, dass die Computeressource beim Herunterfahren nicht freigegeben werden soll.
 
 ```
 ~$ azure vm shutdown my-vm
@@ -333,7 +333,7 @@ Dieser Befehl exportiert ein Image eines virtuellen Azure-Computers in eine Date
 	info:   vm export command OK
 
 ##  Befehle zum Verwalten der Endpunkte Ihrer virtuellen Azure-Computer
-Das folgende Diagramm zeigt die Architektur einer typischen Bereitstellung mit mehreren Instanzen eines klassischen virtuellen Computers. Beachten Sie, dass in diesem Beispiel der Port 3389 (RDP-Zugriff) auf allen virtuellen Computern geöffnet ist. Außerdem hat jeder virtuelle Computer eine interne IP-Adresse (z.B. 168.55.11.1), die vom Lastenausgleichsmodul für die Zuweisung des Netzwerkverkehrs an die einzelnen virtuellen Computer verwendet wird. Diese interne IP-Adresse kann auch für die Kommunikation zwischen virtuellen Computern verwendet werden.
+Das folgende Diagramm zeigt die Architektur einer typischen Bereitstellung mit mehreren Instanzen eines klassischen virtuellen Computers. In diesem Beispiel ist Port 3389 auf jedem virtuellen Computer (für den RDP-Zugriff) geöffnet. Außerdem besitzt jeder virtuelle Computer eine interne IP-Adresse (z.B. 168.55.11.1), die vom Lastenausgleichsmodul zum Routen des Netzwerkdatenverkehrs an den virtuellen Computer verwendet wird. Diese interne IP-Adresse kann auch für die Kommunikation zwischen virtuellen Computern verwendet werden.
 
 ![azurenetworkdiagram](./media/virtual-machines-command-line-tools/networkdiagram.jpg)
 
@@ -417,7 +417,7 @@ Images von virtuellen Computern sind Abbildungen bereits konfigurierter virtuell
 
 **vm image list [Optionen]**
 
-Dieser Befehl listet Images von virtuellen Computern auf. Insgesamt existieren drei Arten von Images: von Microsoft erstellte Images mit dem Präfix "MSFT", Images von Drittanbietern, normalerweise mit dem Namen des Herstellers als Präfix, und benutzerdefinierte Images. Um ein Image zu erstellen, können Sie entweder einen existierenden virtuellen Computer erfassen oder ein Image aus einer benutzerdefinierten .vhd-Datei erstellen, die Sie in einen Blobspeicher hochgeladen haben. Weitere Informationen zu benutzerdefinierten .vhd-Dateien finden Sie im Abschnitt zur Erstellung von Images für virtuelle Computer. Mit der Option --json erfolgt die Ausgabe der Ergebnisse im reinen JSON-Format.
+Dieser Befehl listet Images von virtuellen Computern auf. Es gibt drei Arten von Images: von Microsoft erstellte Images mit dem Präfix „MSFT“, Images von Drittanbietern mit dem Namen des Herstellers als Präfix und benutzerdefinierte Images. Um ein Image zu erstellen, können Sie entweder einen existierenden virtuellen Computer erfassen oder ein Image aus einer benutzerdefinierten .vhd-Datei erstellen, die Sie in einen Blobspeicher hochgeladen haben. Weitere Informationen zu benutzerdefinierten .vhd-Dateien finden Sie im Abschnitt zur Erstellung von Images für virtuelle Computer. Mit der Option --json erfolgt die Ausgabe der Ergebnisse im reinen JSON-Format.
 
 	~$ azure vm image list
 	data:   Name                                                                   Category   OS
@@ -481,13 +481,13 @@ Manche Systeme haben Grenzen für Dateideskriptoren pro Prozess. Wenn diese Gren
 
 ## Befehle zum Verwalten der Datenträger Ihrer virtuellen Azure-Computer
 
-Datenlaufwerke sind .vhd-Dateien im Blobspeicher, die von virtuellen Computern genutzt werden können. Weitere Informationen zur Bereitstellung von Datenlaufwerken im Blobspeicher finden Sie im bereits gezeigten technischen Azure-Diagramm.
+Datenträger sind VHD-Dateien im Blob-Speicher, die von virtuellen Computern genutzt werden können. Weitere Informationen zur Bereitstellung von Datenlaufwerken im Blobspeicher finden Sie im bereits gezeigten technischen Azure-Diagramm.
 
 Die Befehle zum Anhängen von Datenlaufwerken (azure vm disk attach und azure vm disk attach-new) weisen dem angehängten Datenlaufwerk eine logische Gerätenummer (Logical Unit Number LUN) zu, wie vom SCSI-Protokoll gefordert. Der erste Datenträger eines virtuellen Computers erhält die Nummer LUN 0, der nächste Datenträger die Nummer LUN 1 usw.
 
 Wenn Sie einen Datenträger mit dem Befehl "azure vm disk detach" trennen, können Sie mit dem Parameter &lt;lun&gt; angeben, welcher Datenträger getrennt werden soll.
 
-> [AZURE>NOTE] Die Datenträger sollten stets in umgekehrter Reihenfolge getrennt werden, beginnend mit der höchsten zugewiesenen LUN. Die SCSI-Ebene von Linux unterstützt keine Trennung von niedrigeren LUNs, solange noch eine höhere LUN angehängt ist. Sie sollten z.B. "LUN 0" nicht trennen, solange "LUN 1" noch angehängt ist.
+> [AZURE>NOTE] Die Datenlaufwerke sollten stets in umgekehrter Reihenfolge getrennt werden, beginnend mit der höchsten zugewiesenen LUN. Die SCSI-Ebene von Linux unterstützt keine Trennung von niedrigeren LUNs, solange noch eine höhere LUN angehängt ist. Sie sollten z.B. "LUN 0" nicht trennen, solange "LUN 1" noch angehängt ist.
 
 **vm disk show [Optionen] &lt;Name>**
 
@@ -539,7 +539,7 @@ Dieser Befehl löscht einen Azure-Laufwerk aus einem persönlichen Repository. D
 
 **vm disk create &lt;Name> [Quellpfad]**
 
-Dieser Befehl lädt und registriert einen Azure-Datenträger. Hierfür muss --blob-url, --location, oder --affinity-group angegeben werden. Wenn Sie diesen Befehl mit [Quellpfad] verwenden, wird die angegebene .vhd-Datei hochgeladen und ein neues Image wird erstellt. Sie können das Image anschließend mit dem Befehl vm disk attach an einen virtuellen Computer anhängen.
+Dieser Befehl lädt und registriert einen Azure-Datenträger. Hierfür muss --blob-url, --location, oder --affinity-group angegeben werden. Wenn Sie diesen Befehl mit [Quellpfad] verwenden, wird die angegebene VHD-Datei hochgeladen, und ein neues Image wird erstellt. Sie können das Image anschließend mit dem Befehl vm disk attach an einen virtuellen Computer anhängen.
 
 Manche Systeme haben Grenzen für Dateideskriptoren pro Prozess. Wenn diese Grenze überschritten wird, zeigt das Tool einen entsprechenden Fehler an. Sie können den Befehl erneut ausführen und mit dem Parameter -p &lt;Anzahl> die Anzahl der parallelen Uploads begrenzen. Der Standardwert für parallele Uploads ist 96.
 
@@ -562,7 +562,7 @@ Mit diesem Befehl können Sie ein Laufwerk eines virtuellen Computers hochladen
 
 **vm disk attach &lt;VM-Name> &lt;Datenträgerimage-Name>**
 
-Dieser Befehl hängt ein existierendes Laufwerk aus dem Blob-Speicher an einen existierenden virtuellen Computer in einem Cloud-Dienst an.
+Dieser Befehl hängt ein existierendes Laufwerk aus dem Blobspeicher an einen existierenden virtuellen Computer in einem Cloud-Dienst an.
 
 	~$ azure vm disk attach my-vm my-vm-my-vm-2-201242418259
 	info:   Executing command vm disk attach
@@ -570,7 +570,7 @@ Dieser Befehl hängt ein existierendes Laufwerk aus dem Blob-Speicher an einen e
 
 **vm disk attach-new &lt;VM-Name> &lt;Größe-in-GB> [Blob-URL]**
 
-Dieser Befehl hängt einen Datenträger an einen virtuellen Azure-Computer an. In diesem Beispiel ist 20 die Größe des neuen anzuhängenden Laufwerks in Gigabyte. Sie können optional als letzten Parameter eine Blob-URL anfügen, um den Ziel-Blob explizit anzugeben. Wenn Sie keine Blob-URL angeben, wird ein Blob-Objekt automatisch generiert.
+Dieser Befehl hängt ein Datenlaufwerk an einen virtuellen Azure-Computer an. In diesem Beispiel ist 20 die Größe des neuen anzuhängenden Laufwerks in Gigabyte. Sie können optional als letzten Parameter eine Blob-URL anfügen, um den Ziel-Blob explizit anzugeben. Wenn Sie keine Blob-URL angeben, wird ein Blobobjekt automatisch generiert.
 
 	~$ azure vm disk attach-new nick-test36 20 http://nghinazz.blob.core.azure-preview.com/vhds/vmdisk1.vhd
 	info:   Executing command vm disk attach-new
@@ -590,7 +590,7 @@ Azure-Cloud-Dienste sind Anwendungen und Dienste, die in Web- und Workerrollen g
 
 **service create [Optionen] &lt;Dienstname>**
 
-Dieser Befehl erstellt einen neuen Cloud-Dienst
+Dieser Befehl erstellt einen neuen Clouddienst.
 
 	~$ azure service create newservicemsopentech
 	info:    Executing command service create
@@ -609,7 +609,7 @@ Dieser Befehl erstellt einen neuen Cloud-Dienst
 
 **service show [Optionen] &lt;Dienstname>**
 
-Dieser Befehl zeigt die Details eines Azure-Cloud-Diensts an
+Dieser Befehl zeigt die Details eines Azure-Cloud-Dienstes an
 
 	~$ azure service show newservicemsopentech
 	info:    Executing command service show
@@ -665,7 +665,7 @@ Dieser Befehl listet Azure-Zertifikate auf.
 
 **service cert create &lt;DNS-Präfix> &lt;Datei> [Kennwort]**
 
-Dieser Befehl lädt ein Azure-Zertifikat hoch. Lassen Sie das Kennwort leer für Zertifikate, die nicht mit Kennwort geschützt sind.
+Dieser Befehl lädt ein Azure-Zertifikat hoch. Lassen Sie das Passwort leer für Zertifikate, die nicht mit Passwort geschützt sind.
 
 	~$ azure service cert create nghinazz ~/publishSet.pfx
 	info:   Executing command service cert create
@@ -713,7 +713,7 @@ Dieser Befehl legt Konfigurationsoptionen für Ihre Web-App [Name] fest.
 
 **site deploymentscript [Optionen]**
 
-Dieser Befehl generiert ein benutzerdefiniertes Bereitstellungsskript
+Dieser Befehl generiert ein benutzerdefiniertes Bereitstellungsskript.
 
 	~$ azure site deploymentscript --node
 	info:    Executing command site deploymentscript
@@ -723,7 +723,7 @@ Dieser Befehl generiert ein benutzerdefiniertes Bereitstellungsskript
 
 **site create [Optionen] [Name]**
 
-Dieser Befehl erstellt eine neue Web-App und ein neues lokales Verzeichnis.
+Dieser Befehl erstellt eine Web-App und ein lokales Verzeichnis.
 
 	~$ azure site create mysite
 	info:   Executing command site create
@@ -814,7 +814,7 @@ Dieser Befehl beendet eine Web-App.
 	info:   Site mysite has been stopped
 	info:   site stop command OK
 
-**site restart [Optionen] [Name]
+**site restart [Optionen] [Name]**
 
 Dieser Befehl beendet die angegebene Web-App und startet sie dann wieder.
 
@@ -1436,7 +1436,7 @@ Verwenden Sie den Parameter -q, um die Tabelle ohne Bestätigung zu löschen. Di
 
 **mobile data truncate [Optionen] [Dienstname] [Tabellenname]**
 
-Dieser Befehl löscht alle Zeilen aus der Tabelle.
+Dieser Befehl entfernt alle Datenzeilen aus der Tabelle.
 
 	~$azure mobile data truncate todolist TodoItem
 	info:    Executing command mobile data truncate
@@ -1488,13 +1488,13 @@ Dieser Befehl unterstützt die folgenden zusätzlichen Optionen:
 
 **mobile script upload [Optionen] [Dienstname] [Skriptname]**
 
-Dieser Befehl lädt ein Skript namens `todoitem.insert.js` aus dem Unterverzeichnis `table` hoch.
+Dieser Befehl lädt ein Skript namens `todoitem.insert.js` aus dem Unterordner `table` hoch.
 
 	~$azure mobile script upload todolist table/todoitem.insert.js
 	info:    Executing command mobile script upload
 	info:    mobile script upload command OK
 
-Der Name der Datei muss sich aus Tabellen- und Operationsnamen zusammensetzen, und die Datei muss sich im Unterordner "Table" relativ zum Verzeichnis befinden, in dem der Befehl ausgeführt wird. Mit dem Parameter **-f `<file>`** oder **--file `<file>`** können Sie einen anderen Dateinamen und einen Pfad zu der Datei angeben, die das zu registrierende Skript enthält.
+Der Name der Datei muss sich aus den Namen der Tabelle und des Vorgangs zusammensetzen. Sie muss sich im Tabellenunterordner relativ zu dem Verzeichnis befinden, in dem der Befehl ausgeführt wird. Mit dem Parameter **-f `<file>`** oder **--file `<file>`** können Sie einen anderen Dateinamen und einen Pfad zu der Datei angeben, die das zu registrierende Skript enthält.
 
 
 **mobile script delete [Optionen] [Dienstname] [Skriptname]**
@@ -1524,7 +1524,7 @@ Dieser Befehl listet geplante Aufträge auf.
 
 **mobile job create [Optionen] [Dienstname] [Auftragsname]**
 
-Dieser Befehl erstellt einen neuen, stündlich auszuführenden Auftrag mit dem Namen `getUpdates`.
+Dieser Befehl erstellt einen stündlich auszuführenden Auftrag mit dem Namen `getUpdates`.
 
 	~$azure mobile job create -i 1 -u hour todolist getUpdates
 	info:    Executing command mobile job create
@@ -1567,7 +1567,7 @@ Dieser Befehl unterstützt die folgenden zusätzlichen Optionen:
 
 **mobile job delete [Optionen] [Dienstname] [Auftragsname]**
 
-Dieser Befehl löscht den geplanten Auftrag getUpdates vom Server TodoList.
+Dieser Befehl löscht die geplante Aufgabe getUpdates vom Server TodoList.
 
 	~$azure mobile job delete todolist getUpdates
 	info:    Executing command mobile job delete
@@ -1581,7 +1581,7 @@ Mit den Befehlen in diesem Abschnitt können Sie einen Mobile Service skalieren.
 
 **mobile scale show [Optionen] [Dienstname]**
 
-Dieser Befehl zeigt Skalierungsinformationen an, inklusive dem aktuellen Servermodus und der Anzahl der Instanzen.
+Dieser Befehl zeigt Skalierungsinformationen an, inklusive dem aktuellen Arbeitsmodus und der Anzahl der Instanzen.
 
 	~$azure mobile scale show todolist
 	info:    Executing command mobile scale show
@@ -1604,7 +1604,7 @@ Dieser Befehl unterstützt die folgenden zusätzlichen Optionen:
 + **-c `<mode>`** oder **--computeMode `<mode>`**: Der Arbeitsmodus kann `Free` oder `Reserved` sein.
 + **-i `<count>`** oder **--numberOfInstances `<count>`**: Die Anzahl der Instanzen bei Ausführung im Reserved-Modus.
 
-> [AZURE.NOTE] Wenn Sie den Arbeitsmodus `Reserved` aktivieren, laufen all Ihre Mobile Services in derselben Region im Premiummodus.
+> [AZURE.NOTE] Wenn Sie den Computemodus auf `Reserved` festlegen, werden all Ihre Mobile Services in derselben Region im Premium-Modus ausgeführt.
 
 
 ###Befehle zum Aktivieren von Vorschaufeatures für Ihren Mobile Service
@@ -1655,7 +1655,7 @@ Erstellt eine benutzerdefinierte Mobile Services-API.
 
 Dieser Befehl unterstützt die folgende zusätzliche Option:
 
-**-p** oder **--permissions** &lt;Berechtigung>: Eine durch Komma getrennte Liste mit &lt;Methode>=&lt;Berechtigung>-Paaren.
+**-p** oder **--permissions** &lt;Berechtigungen>: Eine durch Komma getrennte Liste mit &lt;Methode>=&lt;Berechtigung>-Paaren.
 
 **mobile api update [Optionen] [Dienstname] [API-Name]**
 
@@ -1665,7 +1665,7 @@ Dieser Befehl unterstützt die folgende zusätzliche Option:
 
 Dieser Befehl unterstützt die folgenden zusätzlichen Optionen:
 
-+ **-p** oder **--permissions** &lt;Berechtigung>: Eine durch Komma getrennte Liste mit &lt;Methode>=&lt;Berechtigung>-Paaren.
++ **-p** oder **--permissions** &lt;Berechtigungen>: Eine durch Komma getrennte Liste mit &lt;Methode>=&lt;Berechtigung>-Paaren.
 + **-f** oder **--force**: Überschreibt benutzerdefinierte Änderungen an der Metadatendatei für Berechtigungen.
 
 **mobile api delete [Optionen] [Dienstname] [API-Name]**
@@ -1723,7 +1723,7 @@ Dieser Befehl entfernt die angegebene Anwendungseinstellung für Ihren Mobile Se
 
 ## Verwalten der lokalen Tooleinstellungen
 
-Die lokalen Einstellungen enthalten Ihre Abonnenten-ID und den Standardnamen für Ihr Speicherkonto.
+Die lokalen Einstellungen enthalten Ihre Abonnement-ID und den Standardnamen für Ihr Speicherkonto.
 
 **config list [Optionen]**
 
@@ -1754,7 +1754,7 @@ Prüft, ob ein Servicebus-Namespace zulässig und verfügbar ist.
 
 **sb namespace create &lt;Name> &lt;Ort>**
 
-Erstellt einen neuen Servicebus-Namespace.
+Erstellt einen Service Bus-Namespace.
 
 	~$ azure sb namespace create mysbnamespacea-test "West US"
 	info:    Executing command sb namespace create
@@ -2052,7 +2052,7 @@ Mit diesen Befehlen können Sie Ihre SQL-Server verwalten
 
 **sql server create &lt;Administratoranmeldung> &lt;Administratorkennwort> &lt;Ort>**
 
-Erstellt einen neuen Datenbankserver
+Erstellt einen Datenbankserver.
 
 	~$ azure sql server create test T3stte$t "West US"
 	info:    Executing command sql server create
@@ -2101,7 +2101,7 @@ Mit diesen Befehlen können Sie Ihre SQL-Datenbanken verwalten.
 
 **sql db create [Optionen] &lt;Servername> &lt;Datenbankname> &lt;Administratorkennwort>**
 
-Erstellt eine neue Datenbankinstanz
+Erstellt eine Datenbankinstanz.
 
 	~$ azure sql db create fr8aelne00 newdb test
 	info:    Executing command sql db create
@@ -2193,7 +2193,7 @@ Mit diesen Befehlen können Sie die Firewallregeln für Ihren SQL Server verwalt
 
 **sql firewallrule create [Optionen] &lt;Servername> &lt;Regelname> &lt;Start-IP-Adresse> &lt;End-IP-Adresse>**
 
-Erstellt eine neue Firewallregel für einen SQL Server.
+Erstellt eine Firewallregel für eine SQL Server-Instanz.
 
 	~$ azure sql firewallrule create fr8aelne00 allowed 131.107.0.0 131.107.255.255
 	info:    Executing command sql firewallrule create
@@ -2246,7 +2246,7 @@ Mit diesen Befehlen können Sie Ihre virtuellen Netzwerke verwalten
 
 **network vnet create [Optionen] &lt;Ort>**
 
-Erstellt ein neues virtuelles Netzwerk.
+Erstellt ein virtuelles Netzwerk.
 
 	~$ azure network vnet create vnet1 --location "West US" -v
 	info:    Executing command network vnet create
@@ -2310,7 +2310,7 @@ Löscht das angegebene virtuelle Netzwerk.
 
 **network export [Dateipfad]**
 
-Mit diesem Befehl können Sie Ihre Netzwerkkonfiguration lokal exportieren. Die exportierte Netzwerkkonfiguration enthält DNS-Server-Einstellungen, Einstellungen für virtuelle Netzwerke, lokale Netzwerkstandorteinstellungen und andere Einstellungen.
+Mit diesem Befehl können Sie Ihre Netzwerkkonfiguration lokal exportieren. Die exportierte Netzwerkkonfiguration enthält DNS-Servereinstellungen, Einstellungen für virtuelle Netzwerke, lokale Netzwerkstandorteinstellungen und andere Einstellungen.
 
 **network import [Dateipfad]**
 
@@ -2350,4 +2350,4 @@ Löscht einen DNS-Servereintrag aus der Netzwerkkonfiguration.
 	+ Deleting the DNS server entry dns-4 ( 77.88.99.11 )
 	info:    network dnsserver unregister command OK
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0928_2016-->

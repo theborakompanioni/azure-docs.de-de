@@ -11,19 +11,19 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="07/07/2016" 
+    ms.date="09/26/2016" 
     ms.author="jeedes" />
 
 #Tutorial: Azure Active Directory-Integration mit Picturepark
   
-In diesem Tutorial wird die Integration von Azure und Picturepark erläutert. Das in diesem Lernprogramm verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
+In diesem Tutorial wird die Integration von Azure und Picturepark erläutert. Das in diesem Tutorial verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
 
 -   Ein gültiges Azure-Abonnement
 -   Einen Picturepark-Mandanten
   
 Nach Abschluss dieses Tutorials können sich die Picturepark zugewiesenen Azure AD-Benutzer mittels einmaliger Anmeldung auf Ihrer Picturepark-Unternehmenswebsite bei der Anwendung anmelden (durch den Dienstanbieter initiierte Anmeldung). Alternativ können sie den Zugriffsbereich nutzen (siehe [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md)).
   
-Das in diesem Lernprogramm beschriebene Szenario besteht aus den folgenden Bausteinen:
+Das in diesem Tutorial beschriebene Szenario besteht aus den folgenden Bausteinen:
 
 1.  Aktivieren der Anwendungsintegration für Picturepark
 2.  Konfigurieren der einmaligen Anmeldung
@@ -130,11 +130,11 @@ Damit sich Azure AD-Benutzer bei Picturepark anmelden können, müssen sie in Pi
 
 3.  Klicken Sie auf der Registerkarte **Benutzerübersicht** auf **Neu**.
 
-    ![Verwaltung](./media/active-directory-saas-picturepark-tutorial/IC795068.png "Verwaltung")
+    ![Verwaltung](./media/active-directory-saas-picturepark-tutorial/IC795068.png "Benutzerverwaltung")
 
 4.  Führen Sie im Dialogfeld **Benutzer erstellen** die folgenden Schritte aus:
 
-    ![Benutzer erstellen](./media/active-directory-saas-picturepark-tutorial/IC795069.png "Benutzer erstellen")
+    ![Benutzer erstellen](./media/active-directory-saas-picturepark-tutorial/IC795069.png "Create User")
 
     1.  Geben Sie die Informationen für **E-Mail-Adresse**, **Kennwort**, **Kennwort bestätigen**, **Vorname**, **Nachname**, **Unternehmen**, **Land**, **PLZ**, **Ort** eines gültigen Azure Active Directory-Benutzers, den Sie bereitstellen möchten, in die entsprechenden Textfelder ein.
     2.  Wählen Sie eine **Sprache** aus.
@@ -160,4 +160,4 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie d
   
 Wenn Sie die SSO-Einstellungen testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md).
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0928_2016-->

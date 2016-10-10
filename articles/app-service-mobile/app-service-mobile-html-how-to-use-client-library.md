@@ -22,6 +22,12 @@
 
 Dieser Artikel beschreibt gängige Szenarien für die Verwendung des neuesten [JavaScript-SDKs für Azure Mobile Apps]. Wenn Sie mit Azure Mobile Apps noch nicht vertraut sind, führen Sie zunächst den [Schnellstart von Azure Mobile Apps] durch, um ein Back-End und eine Tabelle zu erstellen. In diesem Leitfaden liegt der Schwerpunkt auf der Verwendung des mobilen Back-Ends in HTML/JavaScript-Webanwendungen.
 
+## Unterstützte Plattformen
+
+Wir beschränken die Browserunterstützung auf die aktuellen Versionen der wichtigen Browser: Google Chrome, Microsoft Edge, Microsoft Internet Explorer und Mozilla Firefox. Wir gehen davon aus, dass das SDK mit jedem relativ modernen Browser funktioniert.
+
+Das Paket wird als universelles JavaScript-Modul bereitgestellt und unterstützt daher globale Formate ebenso wie AMD- und CommonJS-Formate.
+
 ##<a name="Setup"></a>Einrichtung und Voraussetzungen
 
 Dieses Lernprogramm setzt voraus, dass Sie ein Back-End mit einer Tabelle erstellt haben. In dieser Anleitung wird davon ausgegangen, dass die Tabelle das gleiche Schema wie die Tabellen in diesen Lernprogrammen aufweist.
@@ -73,7 +79,7 @@ Lokale Ausführung kann problematisch sein, da die App Service-Authentifizierung
 4. Klicken Sie auf **Gehe zu**, um den Ressourcen-Explorer für Ihr Back-End für mobile Apps in einer neuen Registerkarte oder einem neuen Fenster zu öffnen.
 5. Erweitern Sie den Knoten **config** > **authsettings** für Ihre App.
 6. Klicken Sie auf die Schaltfläche **Bearbeiten**, um die Bearbeitung der Ressource zu ermöglichen.
-7. Suchen Sie nach dem Element **allowedExternalRedirectUrls**, das den Wert NULL haben sollte. Ändern Sie es wie folgt:
+7. Suchen Sie nach dem Element **allowedExternalRedirectUrls**, das den Wert NULL haben sollte. Fügen Sie Ihre URLs in einem Array hinzu:
 
          "allowedExternalRedirectUrls": [
              "http://localhost:3000",
@@ -103,4 +109,4 @@ Nach der Aktualisierung des Back-Ends können Sie die neuen Loopback-URLs in Ihr
 [JavaScript-SDKs für Azure Mobile Apps]: https://www.npmjs.com/package/azure-mobile-apps-client
 [Dokumentation „Query-Objekt“]: https://msdn.microsoft.com/de-DE/library/azure/jj613353.aspx
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0928_2016-->

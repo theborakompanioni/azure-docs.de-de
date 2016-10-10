@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Geschäftskontinuität für die Cloud – integrierte Sicherung – SQL-Datenbank | Microsoft Azure"
-   description="Informieren Sie sich über integrierte Sicherungen der SQL-Datenbank, mit denen Sie einen früheren Zustand einer Azure SQL-Datenbank wiederherstellen oder eine Datenbank in eine neue Datenbank in einer geografischen Region kopieren können (bis zu 35 Tage)."
+   pageTitle="Sicherungen für SQL-Datenbank | Microsoft Azure"
+   description="Informieren Sie sich über integrierte Datenbanksicherungen der SQL-Datenbank, mit denen Sie einen früheren Zustand einer Azure SQL-Datenbank wiederherstellen oder eine Datenbank in eine neue Datenbank in einer geografischen Region kopieren können (bis zu 35 Tage)."
    services="sql-database"
    documentationCenter=""
    authors="CarlRabeler"
@@ -13,53 +13,85 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="09/06/2016"
+   ms.date="09/26/2016"
    ms.author="carlrab"/>
 
-# Übersicht: Automatisierte SQL-Datenbanksicherungen
+# Sicherungen für SQL-Datenbank
 
-Der Azure SQL-Datenbankdienst schützt alle Datenbanken mit einer automatisierten Sicherung, die sieben Tage (Basic) bzw. 35 Tage (Standard und Premium) lang aufbewahrt wird. Weitere Informationen über die in den einzelnen Tarifen verfügbaren Features finden Sie unter [Tarife](sql-database-service-tiers.md).
+Mit SQL-Datenbank werden Datenbanksicherungen automatisch als Teil des Dienstangebots erstellt, ohne dass eine spezielle Auswahl erfolgen muss, und es fallen auch keine zusätzlichen Kosten an. Verwenden Sie Datenbanksicherungen, um den Stand einer Datenbank zu einem früheren Zeitpunkt wiederherzustellen. In diesem Artikel werden die Details der Funktion zum Sichern von Datenbanken in SQL-Datenbank beschrieben.
 
-Die Datenbanksicherungen werden automatisch ohne vorherige Registrierung oder zusätzliche Kosten erstellt. Durch diese automatisierten Sicherungen und die Point-in-Time-Wiederherstellung lassen sich Datenbanken kostenlos und ohne Verwaltungsaufwand vor unbeabsichtigter Beschädigung oder Löschung schützen – ganz gleich, wodurch diese verursacht wurde. Mit diesen automatisierten Sicherungen können Sie Point-in-Time-Wiederherstellungen durchführen und eine Datenbank nach versehentlicher Löschung oder Beschädigung von Daten wiederherstellen.
+## Was ist eine Datenbanksicherung?  
 
-## Kosten der automatisierten Sicherung
+Eine Datenbanksicherung ist eine Datei, in der Informationen zum Zustand der Datenbank zu einem bestimmten Zeitpunkt gespeichert werden. SQL-Datenbank erstellt [vollständige](https://msdn.microsoft.com/library/ms186289.aspx), [differenzielle](https://msdn.microsoft.com/library/ms175526.aspx) und [Transaktionsprotokoll](https://msdn.microsoft.com/library/ms191429.aspx)sicherungen. Wenn Sie den Zustand einer Datenbank zu einem bestimmten Zeitpunkt wiederherstellen, ermittelt der Dienst, welche Sicherungen wiederhergestellt werden müssen.
 
-Microsoft Azure SQL-Datenbanken bieten bis zu 200 Prozent Ihres maximal bereitgestellten Sicherungsdatenbankspeichers ohne zusätzliche Kosten. Wenn Sie z. B. über eine Standard-DB-Instanz mit einer bereitgestellten Größe von 250 GB verfügen, werden Ihnen ohne zusätzliche Kosten 500 GB Sicherungsspeicher bereitgestellt. Wenn die maximale Größe Ihres bereitgestellten Sicherungsspeichers überschritten wird, können Sie sich entweder an den Azure-Support wenden, um den Aufbewahrungszeitraum zu verkürzen, oder zusätzlichen Sicherungsspeicher erwerben, für den die standardmäßigen Gebühren für geografisch redundanten Speicher mit Lesezugriff (Read-Access Geographically Redundant Storage, RA-GRS) anfallen.
+Datenbanksicherungen sind ein wesentlicher Bestandteil jeder Strategie für Geschäftskontinuität und Notfallwiederherstellung, da Ihre Daten vor versehentlichen Beschädigungen und Löschungen geschützt werden. Weitere Informationen finden Sie unter [Übersicht über die Geschäftskontinuität](sql-database-business-continuity.md).
 
-## Details zur automatischen Sicherung
+## Georedundanter Speicher
 
-Alle Basic-, Standard- und Premium-Datenbanken werden durch automatische Sicherungen geschützt. Vollständige Datenbanksicherungen werden wöchentlich, differenzielle Datenbanksicherungen stündlich und Transaktionsprotokollsicherungen alle 5 Minuten ausgeführt. Die erste vollständige Sicherung wird unmittelbar nach der Datenbankerstellung geplant. Sie wird üblicherweise innerhalb von 30 Minuten abgeschlossen, kann aber auch länger dauern. Falls die Datenbank bereits groß ist (etwa, weil sie durch Kopieren einer Datenbank oder durch Wiederherstellen einer großen Datenbank erstellt wurde), dauert die erste vollständige Sicherung unter Umständen länger. Nach der ersten vollständigen Sicherung werden alle weiteren Sicherungen automatisch geplant und im Hintergrund verwaltet. Der genaue Zeitpunkt für vollständige und differenzielle Sicherungen wird vom System unter Berücksichtigung allgemeiner Lastaspekte bestimmt.
-
-## Georedundanz
-
-Die Sicherungsdateien werden in einem georedundanten Speicherkonto mit Lesezugriff (RA-GRS) gespeichert, um die Verfügbarkeit für eine Notfallwiederherstellung zu gewährleisten. Dadurch wird sichergestellt, dass die Sicherungsdateien in ein [gekoppeltes Rechenzentrum](../best-practices-availability-paired-regions.md) repliziert werden. Die folgende Abbildung veranschaulicht die Georeplikation von wöchentlichen und täglichen Sicherungen in einem georedundanten Speicherkonto mit Lesezugriff (RA-GRS), um die Verfügbarkeit für eine Notfallwiederherstellung zu gewährleisten.
+Der SQL-Datenbank-Dienst speichert Datenbanksicherungsdateien in einem georedundanten Speicherkonto mit Lesezugriff (RA-GRS). Die RA-GRS-Funktion von Azure Storage repliziert die Sicherungsdateien in einem [gekoppelten Rechenzentrum](../best-practices-availability-paired-regions.md). Mit dieser Georeplikation wird sichergestellt, dass Sie eine Datenbank wiederherstellen können, falls Sie aus Ihrer primären Datenbankregion nicht auf die Datenbanksicherung zugreifen können. Im folgenden Beispiel erstellt SQL-Datenbank Datenbanksicherungen in der Region „USA, Osten“ und speichert sie unter einem RA-GRS-Konto. Anschließend führt Azure Storage die Georeplikation für die Sicherungen in ein gekoppeltes Rechenzentrum in der Region „USA, Westen“ durch.
 
 ![Geowiederherstellung](./media/sql-database-geo-restore/geo-restore-1.png)
 
-## Verwenden automatisierter Sicherungen
+>[AZURE.NOTE] In Azure Storage bezieht sich der Begriff *Replikation* auf das Kopieren von Dateien von einem Speicherort zum anderen. Die *Datenbankreplikation* der SQL bezieht sich auf das Beibehalten von mehreren sekundären Datenbanken, die mit einer primären Datenbank synchronisiert werden.
 
-Während der [Aufbewahrungsdauer](sql-database-service-tiers.md) können Sie [eine Datenbank aus automatischen Sicherungen wiederherstellen](sql-database-recovery-using-backups.md). Diese Wiederherstellung kann erfolgen als:
+Weitere Informationen:
+- Informationen zum georedundanten Speichern finden Sie unter [Azure Storage-Replikation](../storage/storage-redundancy.md).
+- Informationen zum RA-GRS-Speicher finden Sie unter [Georedundanter Speicher mit Lesezugriff](../storage/storage-redundancy.md#read-access-geo-redundant-storage).
 
-- Eine neue Datenbank auf dem gleichen logischen Server, die auf den Zustand zu einem angegebenen Zeitpunkt innerhalb der Aufbewahrungsdauer wiederhergestellt wird.
-- Eine Datenbank auf dem gleichen Server, die auf den Zustand zum Zeitpunkt des Löschens einer gelöschten Datenbank wiederhergestellt wird.
-- Eine neue Datenbank auf einem beliebigen logischen Server in einer beliebigen Region, die auf den Zustand der neuesten täglichen Sicherung im georeplizierten Blobspeicher (RA-GRS) wiederhergestellt wird.
+## Kosten für Datenbanksicherungen
 
-Sie können die [automatisierten SQL-Datenbanksicherungen](sql-database-automated-backups.md) auch verwenden, um auf einem beliebigen logischen Server in einer beliebigen Region eine [Datenbankkopie](sql-database-copy.md) zu erstellen, die transaktional mit der aktuellen SQL-Datenbank konsistent ist. Sie können die Datenbankkopie [in eine BACPAC-Datei exportieren](sql-database-export.md), um eine transaktional konsistente Kopie der Datenbank für die langfristige Archivierung über die für Sie gültige Aufbewahrungsdauer hinaus zu erhalten oder um eine Kopie der Datenbank an eine lokale Instanz oder eine Azure VM-Instanz von SQL Server zu übertragen.
+Mit Microsoft Azure SQL-Datenbank werden bis zu 200 Prozent Ihres maximal bereitgestellten Datenbankspeichers ohne zusätzliche Kosten als Sicherungsspeicher zur Verfügung gestellt. Wenn Sie beispielsweise über eine Standard-Datenbankinstanz mit einer bereitgestellten Größe von 250 GB verfügen, können Sie ohne zusätzliche Kosten 500 GB Sicherungsspeicher nutzen. Falls Ihre Datenbank den bereitgestellten Sicherungsspeicher überschreitet, können Sie die Aufbewahrungsdauer reduzieren lassen, indem Sie sich an den Azure-Support wenden. Eine weitere Option ist die Bezahlung für zusätzlichen Sicherungsspeicher, für den die RA-GRS-Standardrate (Read-Access Geographically Redundant Storage, Geografisch redundanter Speicher mit Lesezugriff) berechnet wird.
 
-## Was geschieht mit meiner Aufbewahrungsdauer für den Wiederherstellungspunkt, wenn ich ein Downgrade oder Upgrade des Tarifs durchführe?
+## Zeitplan für Datenbanksicherung
 
-Nach einem Downgrade auf einen niedrigeren Tarif (verbunden mit einer niedrigeren Leistungsstufe) wird die Aufbewahrungsdauer für den Wiederherstellungspunkt unverzüglich auf die Aufbewahrungsdauer des aktuellen Datenbanktarifs verkürzt. Wenn ein Tarifupgrade durchgeführt wird, beginnt die Verlängerung der Aufbewahrungsdauer erst nach dem Upgrade der Datenbank. Wenn die Datenbank beispielsweise auf Basic herabgestuft wird, wird die Aufbewahrungsdauer sofort von 35 Tagen auf 7 Tage verkürzt, und alle Wiederherstellungspunkte mit einem Alter von mehr als 35 Tagen sind nicht mehr verfügbar. Wenn in der Folge wieder ein Upgrade auf Standard oder Premium erfolgt, beginnt die Aufbewahrungsdauer bei 7 Tagen und erweitert sich nach und nach auf 35 Tage.
+Alle Basic-, Standard- und Premium-Datenbanken werden durch automatische Sicherungen geschützt. Vollständige Datenbanksicherungen werden wöchentlich, differenzielle Datenbanksicherungen stündlich und Transaktionsprotokollsicherungen alle fünf Minuten ausgeführt. Die erste vollständige Sicherung wird unmittelbar nach der Datenbankerstellung geplant. Sie wird normalerweise innerhalb von 30 Minuten abgeschlossen, aber der Vorgang kann auch länger dauern, wenn es sich um eine sehr große Datenbank handelt. Die erste Sicherung kann bei einer wiederhergestellten Datenbank oder einer Datenbankkopie beispielsweise länger dauern. Nach der ersten vollständigen Sicherung werden alle weiteren Sicherungen automatisch geplant und im Hintergrund verwaltet. Die genaue Zeitplanung für vollständige und [differenzielle](https://msdn.microsoft.com/library/ms175526.aspx) Datenbanksicherungen wird je nach der gesamten Systemworkload bestimmt.
 
-## Wie lang ist die Aufbewahrungsdauer für eine gelöschte Datenbank? 
+## Aufbewahrungszeitraum von Datenbanksicherungen
+
+Jede SQL-Datenbanksicherung wird sieben Tage (Basic) bzw. 35 Tage (Standard und Premium) aufbewahrt. Weitere Informationen zu den Funktionen, die für die einzelnen Tarife verfügbar sind, finden Sie unter [SQL-Datenbankoptionen und -leistung: Grundlegendes zum Angebot in den einzelnen Tarifen](sql-database-service-tiers.md).
+
+### Was geschieht mit meiner Aufbewahrungsdauer für den Wiederherstellungspunkt, wenn ich ein Downgrade oder Upgrade des Tarifs durchführe?
+
+Nach einem Downgrade auf einen niedrigeren Tarif (verbunden mit einer niedrigeren Leistungsstufe) wird die Aufbewahrungsdauer für den Wiederherstellungspunkt unverzüglich auf die Aufbewahrungsdauer des aktuellen Datenbanktarifs verkürzt. Wenn ein Tarifupgrade durchgeführt wird, beginnt die Verlängerung der Aufbewahrungsdauer erst nach dem Upgrade der Datenbank. Wenn eine Datenbank beispielsweise auf „Basic“ heruntergestuft wird, ändert sich der Aufbewahrungszeitraum von 35 Tagen in 7 Tage. Alle Wiederherstellungspunkte, die älter als sieben Tage sind, sind somit sofort nicht mehr verfügbar. Wenn Sie eine Datenbank auf „Standard“ oder „Premium“ heraufstufen, beginnt die Aufbewahrungsdauer mit 7 Tagen und erreicht dann 35 Tage.
+
+### Wie lang ist die Aufbewahrungsdauer für eine gelöschte Datenbank? 
+
 Die Aufbewahrungsdauer wird anhand der Dienstebene der Datenbank, während sie vorhanden war, oder der Anzahl der Tage, die sie vorhanden war, berechnet, je nachdem, welcher Wert kleiner ist.
 
-> [AZURE.IMPORTANT] Wenn Sie eine Azure SQL-Datenbankserverinstanz löschen, werden auch alle dazugehörigen Datenbanken gelöscht und können nicht wiederhergestellt werden. Derzeit wird das Wiederherstellen gelöschter Server nicht unterstützt.
+> [AZURE.IMPORTANT] Wenn Sie eine Azure SQL-Datenbankserverinstanz löschen, werden auch alle Datenbanken der Instanz gelöscht und können nicht wiederhergestellt werden. Es ist nicht möglich, einen gelöschten Server wiederherzustellen.
 
-## Nächste Schritte
 
-- Informationen zum Verwenden automatisierter Sicherungen für die Wiederherstellung finden Sie unter [Wiederherstellen einer Datenbank aus vom Dienst initiierten Sicherungen](sql-database-recovery-using-backups.md).
-- Informationen über schnellere Wiederherstellungsoptionen finden Sie unter [Aktive Georeplikation](sql-database-geo-replication-overview.md).
-- Informationen zum Verwenden automatisierter Sicherungen für die Archivierung finden Sie unter [Datenbankkopie](sql-database-copy.md).
+## Häufige Verwendungen für Datenbanksicherungen
+
+Die hauptsächliche Verwendung für Datenbanksicherungen ist die Möglichkeit, für eine Datenbank den Zustand zu einem bestimmten Zeitpunkt während der Aufbewahrungsdauer wiederherzustellen. Mit einer Datenbanksicherung können Sie für eine Datenbank einen bestimmten Zeitpunkt wiederherstellen, für eine gelöschte Datenbank den Zustand zum Löschzeitpunkt wiederherstellen oder eine Datenbank in einer anderen geografischen Region wiederherstellen.
+
+- Informationen zur Datenbankwiederherstellung finden Sie unter [Wiederherstellen einer Azure SQL-Datenbank mit automatisierten Datenbanksicherungen](sql-database-recovery-using-backups.md).
+
+Sie können eine Datenbanksicherung verwenden, um eine Datenbank auf einen logischen SQL-Server in einer beliebigen geografischen Region zu kopieren. Die Kopie ist in Bezug auf die Transaktion mit der aktuellen SQL-Datenbank konsistent.
+
+- Informationen zum Kopieren einer Datenbank finden Sie unter [Datenbankkopie](sql-database-copy.md).
+
+Außerdem können Sie automatisierte Sicherungen über den Aufbewahrungszeitraum hinaus archivieren, indem Sie eine Datenbankkopie erstellen, die Sie in eine [BACPAC-Datei exportieren](sql-database-export.md). Nachdem Sie über die BACPAC-Datei verfügen, können Sie sie in einem langfristigen Speicher archivieren und über den Aufbewahrungszeitraum hinaus beibehalten. Sie können auch die BACPAC-Datei zum Übertragen einer Kopie der Datenbank an SQL Server verwenden, entweder lokal oder auf einem virtuellen Azure-Computer (VM).
+
+- Informationen zur Archivierung einer Datenbanksicherung finden Sie unter [Datenbankkopie](sql-database-copy.md).
+
+
+## Verwandte Themen
+
+### Szenarien
+
 - Eine Übersicht zum Thema Geschäftskontinuität finden Sie unter [Übersicht über die Geschäftskontinuität](sql-database-business-continuity.md).
 
-<!---HONumber=AcomDC_0907_2016-->
+### Features
+
+Sie erhalten Informationen zu folgenden Themen:
+
+- Informationen zur Wiederherstellung einer Datenbanksicherung finden Sie unter [Wiederherstellen einer Azure SQL-Datenbank mit automatisierten Datenbanksicherungen](sql-database-recovery-using-backups.md).
+- Informationen zur Archivierung einer Datenbanksicherung finden Sie unter [Kopieren einer Azure SQL-Datenbank](sql-database-copy.md).
+- Informationen zu schnelleren Wiederherstellungsoptionen finden Sie unter [Übersicht: Aktive Georeplikation in Azure SQL-Datenbank](sql-database-geo-replication-overview.md).
+
+<!-- ### Tasks -->
+
+<!-- ### Tutorials -->
+
+<!---HONumber=AcomDC_0928_2016-->

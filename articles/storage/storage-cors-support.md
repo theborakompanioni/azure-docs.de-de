@@ -3,7 +3,7 @@
 	description="Erfahren Sie, wie die CORS-Unterstützung für die Microsoft Azure Storage-Dienste aktiviert werden."
 	services="storage"
 	documentationCenter=".net"
-	authors="tamram"
+	authors="cbrooks"
 	manager="carmonm"
 	editor="tysonn"/>
 
@@ -14,7 +14,7 @@
 	ms.devlang="dotnet"
 	ms.topic="article"
 	ms.date="09/07/2016"
-	ms.author="tamram"/>
+	ms.author="cbrooks;tamram"/>
 
 # Unterstützung von Cross-Origin Resource Sharing (CORS) für die Azure Storage-Dienste
 
@@ -195,4 +195,4 @@ Nicht erfolgreiche Preflight-Anforderungen werden nicht berechnet.
 
 [W3C-Spezifikation für CORS (Cross-Origin Resource Sharing)](http://www.w3.org/TR/cors/)
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0928_2016-->

@@ -2,7 +2,7 @@
 	pageTitle="Erstellen eines DocumentDB-Kontos mit Protokollunterstützung für MongoDB | Microsoft Azure" 
 	description="Erfahren Sie, wie Sie ein DocumentDB-Konto mit Protokollunterstützung für MongoDB erstellen (jetzt als Vorschau verfügbar)." 
 	services="documentdb" 
-	authors="stephbaron" 
+	authors="mimig1" 
 	manager="jhubbard" 
 	editor="" 
 	documentationCenter=""/>
@@ -14,7 +14,7 @@
 	ms.devlang="na" 
 	ms.topic="article" 
 	ms.date="08/23/2016" 
-	ms.author="stbaro"/>
+	ms.author="mimig"/>
 
 # Erstellen eines DocumentDB-Kontos mit Protokollunterstützung für MongoDB über das Azure-Portal
 
@@ -48,7 +48,7 @@ Führen Sie die folgenden Schritte aus, um ein DocumentDB-Konto mit Protokollunt
 	![Screenshot des Blatts für ein neues DocumentDB-Konto mit Protokollunterstützung für MongoDB](./media/documentdb-create-mongodb-account/create-documentdb-mongodb-account.png)
 
 
-	- Geben Sie im Feld **ID** einen Namen zur Identifizierung des Kontos ein. Wenn die **ID** überprüft wurde, wird im Feld **ID** ein grünes Häkchen angezeigt. Der Wert für **ID** wird zum Hostnamen innerhalb des URI. Die **ID** darf nur Kleinbuchstaben, Ziffern und den Bindestrich "-" enthalten und muss zwischen 3 und 50 Zeichen lang sein. Beachten Sie, dass *documents.azure.com* an den gewählten Namen des Endpunkts angehängt wird, um den Endpunkt des Kontos zu erstellen.
+	- Geben Sie im Feld **ID** einen Namen zur Identifizierung des Kontos ein. Wenn die **ID** überprüft wurde, wird im Feld **ID** ein grünes Häkchen angezeigt. Der Wert von **ID** wird zum Hostnamen im URI. Die **ID** darf nur Kleinbuchstaben, Ziffern und den Bindestrich "-" enthalten und muss zwischen 3 und 50 Zeichen lang sein. Beachten Sie, dass *documents.azure.com* an den gewählten Namen des Endpunkts angehängt wird, um den Endpunkt des Kontos zu erstellen.
 
 	- Wählen Sie unter **Abonnement** das Azure-Abonnement aus, das Sie für das Konto verwenden möchten. Wenn Ihr Konto nur über ein Abonnement verfügt, wird dieses Konto standardmäßig ausgewählt.
 
@@ -78,4 +78,4 @@ Führen Sie die folgenden Schritte aus, um ein DocumentDB-Konto mit Protokollunt
 
  
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0928_2016-->

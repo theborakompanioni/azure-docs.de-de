@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/26/2016"
+	ms.date="09/27/2016"
 	ms.author="cynthn"/>
 
 # Erstellen einer Kopie eines virtuellen Windows-Computers im Azure Resource Manager-Bereitstellungsmodell
@@ -126,4 +126,4 @@ Melden Sie sich beim neuen virtuellen Computer an, wechseln Sie zum virtuellen C
 
 Informationen zum Verwalten des neuen virtuellen Computers mit Azure PowerShell finden Sie unter [Verwalten von virtuellen Computern mit Azure Resource Manager und PowerShell](virtual-machines-windows-ps-manage.md).
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0928_2016-->

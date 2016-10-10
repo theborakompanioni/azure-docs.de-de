@@ -3,7 +3,7 @@
 	description="Erfahren Sie, wie Sie Daten aus der MongoDB-Datenbank mithilfe von Azure Data Factory verschieben." 
 	services="data-factory" 
 	documentationCenter="" 
-	authors="spelluru" 
+	authors="linda33wj" 
 	manager="jhubbard" 
 	editor="monicar"/>
 
@@ -14,7 +14,7 @@
 	ms.devlang="na" 
 	ms.topic="article" 
 	ms.date="08/04/2016" 
-	ms.author="spelluru"/>
+	ms.author="jingwang"/>
 
 # Verschieben von Daten aus MongoDB mithilfe von Azure Data Factory
 
@@ -22,12 +22,12 @@ Dieser Artikel beschreibt, wie Sie die Kopieraktivität in einer Azure Data Fact
 
 Der Data Factory-Dienst unterstützt das Herstellen einer Verbindung mit lokalen MongoDB-Datenquellen mithilfe des Datenverwaltungsgateways. Im Artikel [Datenverwaltungsgateway](data-factory-data-management-gateway.md) erfahren Sie etwas über das Datenverwaltungsgateway, und unter [Verschieben von Daten zwischen lokalen Quellen und der Cloud](data-factory-move-data-between-onprem-and-cloud.md) finden Sie schrittweise Anleitungen für das Einrichten des Gateways für eine Datenpipeline zum Verschieben von Daten.
 
-> [AZURE.NOTE] Sie müssen das Gateway nutzen, um eine Verbindung mit MongoDB herzustellen, auch wenn das Hosting in Azure-IaaS-VMs erfolgt. Wenn Sie versuchen, eine Verbindung mit einer MongoDB-Instanz herzustellen, die in der Cloud gehostet wird, können Sie auch die Gatewayinstanz in der IaaS-VM installieren.
+> [AZURE.NOTE] Sie müssen das Gateway nutzen, um eine Verbindung mit MongoDB herzustellen, auch wenn MongoDB auf Azure IaaS-VMs gehostet wird. Wenn Sie versuchen, eine Verbindung mit einer MongoDB-Instanz herzustellen, die in der Cloud gehostet wird, können Sie auch die Gatewayinstanz in der IaaS-VM installieren.
 
 Data Factory unterstützt derzeit nur das Verschieben von Daten aus MongoDB in andere Datenspeicher und nicht das Verschieben aus anderen Datenspeichern in MongoDB.
 
 ## Voraussetzungen
-Damit der Azure Data Factory-Dienst eine Verbindung mit Ihrer lokalen MongoDB-Datenbank herstellen kann, muss Folgendes installiert werden:
+Damit der Azure Data Factory-Dienst eine Verbindung mit Ihrer lokalen MongoDB-Datenbank herstellen kann, müssen die folgenden Komponenten installiert werden:
 
 - Datenverwaltungsgateway 2.0 oder höher auf dem Computer, der die Datenbank hostet, oder auf einem separaten Computer, um zu vermeiden, dass der Computer mit der Datenbank um Ressourcen konkurriert. Datenverwaltungsgateway ist eine Software, die lokale Datenquellen mit Cloud-Diensten auf sichere, verwaltete Weise verbindet. Im Artikel [Datenverwaltungsgateway](data-factory-data-management-gateway.md) finden Sie Einzelheiten zum Datenverwaltungsgateway.
   
@@ -36,7 +36,7 @@ Damit der Azure Data Factory-Dienst eine Verbindung mit Ihrer lokalen MongoDB-Da
 ## Assistent zum Kopieren von Daten
 Die einfachste Art, eine Pipeline zu erstellen, mit der Daten aus einer MongoDB-Datenbank in einen der unterstützten Senkendatenspeicher kopiert werden, ist die Verwendung des Assistenten zum Kopieren von Daten. Unter [Tutorial: Erstellen einer Pipeline mit dem Assistenten zum Kopieren](data-factory-copy-data-wizard-tutorial.md) finden Sie eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mithilfe des Assistenten zum Kopieren von Daten.
 
-Die folgenden Beispiele zeigen JSON-Beispieldefinitionen, die Sie zum Erstellen einer Pipeline mit dem [Azure-Portal](data-factory-copy-activity-tutorial-using-azure-portal.md), mit [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) oder [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) verwenden können. Darin wird veranschaulicht, wie Sie Daten aus einer MongoDB-Datenbank in Azure Blob Storage kopieren. Daten können jedoch auch mithilfe der Kopieraktivität in Azure Data Factory in eine beliebige der [hier](data-factory-data-movement-activities.md#supported-data-stores) aufgeführten Senken kopiert werden.
+Das folgende Beispiel stellt JSON-Beispieldefinitionen bereit, die Sie zum Erstellen einer Pipeline mit dem [Azure-Portal](data-factory-copy-activity-tutorial-using-azure-portal.md), mit [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) oder mit [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) verwenden können. Darin wird veranschaulicht, wie Sie Daten aus einer MongoDB-Datenbank in Azure Blob Storage kopieren. Daten können jedoch auch mithilfe der Kopieraktivität in Azure Data Factory in eine beliebige der [hier](data-factory-data-movement-activities.md#supported-data-stores) aufgeführten Senken kopiert werden.
 
 ## Beispiel: Kopieren von Daten aus MongoDB in Azure-Blob
 In diesem Beispiel wird gezeigt, wie Sie Daten aus einer lokalen MongoDB-Datenbank in einen Azure Blob Storage kopieren. Daten können jedoch mithilfe der Kopieraktivität in Azure Data Factory **direkt** in die [hier](data-factory-data-movement-activities.md#supported-data-stores) aufgeführten Senken kopiert werden.
@@ -238,7 +238,7 @@ Ausführliche Informationen zum Festlegen von Anmeldeinformationen für eine lok
 
 ## Eigenschaften des Datasettyps
 
-Eine vollständige Liste der Abschnitte und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel [Erstellen von Datasets](data-factory-create-datasets.md). Abschnitte wie "structure", "availability" und "policy" des JSON-Codes eines Datasets sind bei allen Typen von Datasets (Azure SQL, Azure-Blob, Azure-Tabelle usw.) ähnlich.
+Eine vollständige Liste der Abschnitte und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel [Erstellen von Datasets](data-factory-create-datasets.md). Abschnitte wie „structure“, „availability“ und „policy“ des JSON-Codes eines Datasets sind bei allen Dataset-Typen (Azure SQL, Azure-Blob, Azure-Tabelle usw.) ähnlich.
 
 Der Abschnitt **typeProperties** unterscheidet sich bei jedem Typ von Dataset und bietet Informationen zum Speicherort der Daten im Datenspeicher. Der Abschnitt „typeProperties“ für ein Dataset vom Typ **MongoDbCollection** hat die folgenden Eigenschaften:
 
@@ -248,11 +248,11 @@ Der Abschnitt **typeProperties** unterscheidet sich bei jedem Typ von Dataset un
 
 ## Eigenschaften des Kopieraktivitätstyps
 
-Eine vollständige Liste der Abschnitte und Eigenschaften zum Definieren von Aktivitäten finden Sie im Artikel [Erstellen von Pipelines](data-factory-create-pipelines.md). Eigenschaften wie Name, Beschreibung, Eingabe- und Ausgabetabellen, verschiedene Richtlinien usw. sind für alle Arten von Aktivitäten verfügbar.
+Eine vollständige Liste der Abschnitte und Eigenschaften zum Definieren von Aktivitäten finden Sie im Artikel [Erstellen von Pipelines](data-factory-create-pipelines.md). Eigenschaften wie Name, Beschreibung, Eingabe- und Ausgabetabellen und Richtlinie sind für alle Arten von Aktivitäten verfügbar.
 
-Die im Abschnitt **typeProperties** der Aktivität verfügbaren Eigenschaften variieren hingegen bei jedem Aktivitätstyp. Bei der Kopieraktivität variieren sie je nach Typ der Quellen und Senken.
+Eigenschaften im Abschnitt **typeProperties** der Aktivität können dagegen je nach Aktivitätstyp variieren. Für die Kopieraktivität variieren die Eigenschaften je nach Art der Quellen und Senken.
 
-Wenn bei der Kopieraktivität „source“ den Typ **MongoDbSource** hat, sind im Abschnitt „typeProperties“ die folgenden Eigenschaften verfügbar:
+Bei einer Quelle des Typs **MongoDbSource** sind im Abschnitt „typeProperties“ folgende Eigenschaften verfügbar:
 
 | Eigenschaft | Beschreibung | Zulässige Werte | Erforderlich |
 | -------- | ----------- | -------------- | -------- |
@@ -263,12 +263,12 @@ Der Azure Data Factory-Dienst leitet ein Schema aus einer MongoDB-Sammlung mithi
 
 ## Typzuordnung für MongoDB
 
-Wie im Artikel [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) beschrieben, führt die Kopieraktivität automatische Typkonvertierungen von Quelltypen in Senkentypen mithilfe des folgenden aus zwei Schritten bestehenden Ansatzes durch:
+Wie im Artikel [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) beschrieben, führt die Kopieraktivität mithilfe der folgenden beiden Schritte automatische Typkonvertierungen von Quelltypen in Senkentypen durch:
 
 1. Konvertieren von systemeigenen Quelltypen in den .NET-Typ
 2. Konvertieren vom .NET-Typ in systemeigenen Senkentyp
 
-Beim Verschieben von Daten in MongoDB werden die folgenden Zuordnungen zwischen MongoDB-Typ und .NET-Typ verwendet.
+Beim Verschieben von Daten in MongoDB werden die folgenden Zuordnungen zwischen dem MongoDB-Typ und .NET-Typ verwendet.
 
 | MongoDB-Typ | Typ ".NET Framework" |
 | ------------------- | ------------------- | 
@@ -286,7 +286,7 @@ Beim Verschieben von Daten in MongoDB werden die folgenden Zuordnungen zwischen 
 > [AZURE.NOTE]  
 Weitere Informationen zur Unterstützung für Arrays mit virtuellen Tabellen finden Sie im Abschnitt [Unterstützung für komplexe Typen mit virtuellen Tabellen](#support-for-complex-types-using-virtual-tables) unten.
 
-Die folgenden MongoDB-Datentypen werden zurzeit nicht unterstützt: DBPointer, JavaScript, MaxKey/MinKey, Regular Expression, Symbol, Timestamp, Undefined
+Die folgenden MongoDB-Datentypen werden derzeit nicht unterstützt: DBPointer, JavaScript, MaxKey/MinKey, Regular Expression, Symbol, Timestamp, Undefined
 
 ## Unterstützung für komplexe Typen mit virtuellen Tabellen
 Azure Data Factory verwendet einen integrierten ODBC-Treiber, um eine Verbindung mit der MongoDB-Datenbank herzustellen und Daten daraus zu kopieren. Für komplexe Typen wie Arrays oder Objekte mit unterschiedlichen Typen in den Dokumenten renormalisiert der Treiber die Daten in die entsprechenden virtuellen Tabellen. Wenn eine Tabelle solche Spalten enthält, generiert der Treiber die folgenden virtuellen Tabellen:
@@ -304,7 +304,7 @@ Beispielsweise ist „ExampleTable“ unten eine MongoDB-Tabelle, die eine Spalt
 
 \_id | Customer Name | Invoices | Service Level | Ratings
 --- | ------------- | -------- | ------------- | -------
-1111 | ABC | [{invoice\_id:”123”, item:”toaster”, price:”456”, discount:”0.2”}, {invoice\_id:”124”, item:”oven”,price: ”1235”,discount: ”0.2”}] | Silber | [5,6]
+1111 | ABC | [{invoice\_id:”123”, item:”toaster”, price:”456”, discount:”0.2”}, {invoice\_id:”124”, item:”oven”, price: ”1235”, discount: ”0.2”}] | Silber | [5,6]
 2222 | XYZ | [{invoice\_id:”135”, item:”fridge”,price: ”12543”,discount: ”0.0”}] | Gold | [1,2]
 
 Der Treiber erzeugt mehrere virtuelle Tabellen, um diese einzelne Tabelle zu repräsentieren. Die erste virtuelle Tabelle ist die unten dargestellte Basistabelle mit dem Namen „ExampleTable“. Die Basistabelle enthält alle Daten der ursprünglichen Tabelle, aber die Daten aus den Arrays wurden ausgelassen und werden in den virtuellen Tabellen erweitert.
@@ -314,7 +314,7 @@ Der Treiber erzeugt mehrere virtuelle Tabellen, um diese einzelne Tabelle zu rep
 1111 | ABC | Silber
 2222 | XYZ | Gold
 
-Die folgenden Tabellen enthalten die virtuellen Tabellen, die die ursprünglichen Arrays im Beispiel darstellen. Alle Tabellen enthalten Folgendes:
+Die folgenden Tabellen enthalten die virtuellen Tabellen, die die ursprünglichen Arrays im Beispiel darstellen. Diese Tabellen enthalten Folgendes:
 
 - Einen Verweis zurück auf die ursprüngliche Primärschlüsselspalte, die der Zeile des ursprünglichen Arrays entspricht (über die Spalte „\_id“)
 - Einen Hinweis auf die Position der Daten im ursprünglichen Array
@@ -347,4 +347,4 @@ Im Artikel [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-fac
 ## Nächste Schritte
 Im Artikel [Verschieben von Daten zwischen lokalen Quellen und der Cloud](data-factory-move-data-between-onprem-and-cloud.md) finden Sie schrittweise Anleitungen zum Erstellen einer Datenpipeline für das Verschieben von Daten aus einem lokalen Datenspeicher in einen Azure-Datenspeicher.
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0928_2016-->

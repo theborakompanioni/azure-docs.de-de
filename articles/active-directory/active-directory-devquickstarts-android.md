@@ -32,6 +32,8 @@ Für Android-Clients, die auf geschützte Ressourcen zugreifen müssen, ist unte
 
 Zum Starten benötigen Sie einen Azure AD-Mandanten, in dem Sie Benutzer erstellen und eine Anwendung registrieren können. Wenn Sie noch nicht über einen Mandanten verfügen, können Sie hier [erfahren, wie Sie einen erhalten](active-directory-howto-tenant.md).
 
+> [AZURE.TIP] Testen Sie die Vorschau unseres neuen [Entwicklerportals](https://identity.microsoft.com/Docs/Android), mit dem Sie Azure Active Directory innerhalb weniger Minuten betriebsbereit machen. Im Entwicklerportal werden Sie durch den Vorgang zum Registrieren einer App und die Integration von Azure AD in Ihren Code geleitet. Nach dem Durchführen dieser Schritte verfügen Sie über eine einfache Anwendung zur Authentifizierung von Benutzern in Ihrem Mandanten sowie über ein Back-End, das Token akzeptieren und eine Überprüfung durchführen kann.
+
 ## Schritt 1: Herunterladen und Ausführen des „Node.js REST API TODO Sample Server“
 
 Dieses Beispiel ist speziell für die Arbeit mit dem vorhandenen Beispiel zum Erstellen einer Aufgabenlisten-REST-API für Microsoft Azure Active Directory für einen einzelnen Mandanten gedacht. Dies ist eine Voraussetzung für den Schnellstart.
@@ -283,8 +285,8 @@ Sie können **acquireTokenSilent** aufrufen, um das Caching und die Aktualisieru
 
  ```java
  String brokerAccount =  mContext.getBrokerUser();
- ``` 
-Der Brokerbenutzer wird zurückgegeben, wenn das Konto gültig ist.
+ ```
+ Der Brokerbenutzer wird zurückgegeben, wenn das Konto gültig ist.
 
  Ihr App-Manifest sollte über Berechtigungen zum Verwenden von Account Manager-Konten verfügen: http://developer.android.com/reference/android/accounts/AccountManager.html
 
@@ -457,4 +459,4 @@ Informationen zum Aktivieren von App-übergreifendem SSO unter Android mit ADAL 
 
 [AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources.md)]
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

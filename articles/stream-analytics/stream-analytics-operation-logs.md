@@ -14,14 +14,14 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="07/27/2016" 
+	ms.date="09/26/2016" 
 	ms.author="jeffstok"/>
 
 # Debuggen von Stream Analytics-Aufträgen mithilfe von Dienst- und Vorgangsprotokollen
 
 Alle Azure-Dienste stellen Benutzern operative Protokollierungsnachrichten bereit, um Details im Zusammenhang mit Verwaltungsvorgängen zu erfassen. In Azure Stream Analytics können diese Informationen für Debugzwecke wie z. B. das Anzeigen des Auftragsstatus, Auftragsfortschritts und von Fehlermeldungen verwendet werden, um den Fortschritt eines Auftrags im Laufe der Zeit von Beginn an, während der Verarbeitung und bis zur Ausgabe nachzuverfolgen.
 
-## Vorgangsprotokolle finden Sie im Azure-Verwaltungsportal.
+## Suchen von Vorgangsprotokollen im Azure-Verwaltungsportal
 
 Für den Zugriff auf Vorgangsprotokolle gibt es zwei Möglichkeiten:
 
@@ -36,14 +36,14 @@ Auf der Dashboard-Registerkarte eines Stream Analytics-Auftrags wird eine Verkn
 
 ## Verwaltungsdienste
 
-So navigieren Sie manuell zu den Vorgangsprotokollen für Stream Analytics und andere Dienste im klassischen Azure-Portal:
+So navigieren Sie manuell zu den Vorgangsprotokollen für Stream Analytics und andere Dienste im klassischen Azure-Portal:
 
 1.	Klicken Sie im [klassischen Azure-Portal](https://manage.windowsazure.com) auf **Verwaltungsdienste**.
 2.	Wählen Sie **Stream Analytics** als **Typ** und den Namen des Auftrags als **Dienstname** aus.
 
   ![Stream Analytics auswählen](./media/stream-analytics-operation-logs/02-stream-analytics-operation-logs.png)
 
-## Überwachungsprotokolle finden Sie im Azure-Portal. ##
+## Suchen von Überwachungsprotokolle im Azure-Portal ##
 
 Zum Anzeigen der Betriebsprotokolle für den Stream Analytics-Auftrag klicken Sie im Azure-Portal auf **Durchsuchen**, und wählen Sie dann **Überwachungsprotokolle** aus.
 
@@ -96,4 +96,4 @@ Um Hilfe zu erhalten, besuchen Sie unser [Azure Stream Analytics-Forum](https://
 - [Stream Analytics Query Language Reference (in englischer Sprache)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 - [Referenz zur Azure Stream Analytics-Verwaltungs-REST-API](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

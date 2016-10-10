@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="07/11/2016"  
+	ms.date="09/26/2016"  
 	ms.author="anilmur;juliako;"/>
 
 # Zuschneiden von Videos mit Media Encoder Standard
@@ -142,8 +142,8 @@ Folgende Einschränkungen gelten für das Zuschnittfeature. Wenn diese nicht ber
 
 ##Nächster Schritt
  
-In den Azure Media Services-Lernpfaden finden Sie Informationen zu den weiteren von AMS gebotenen Features.
+Unter den Azure Media Services-Lernpfaden finden Sie Informationen zu weiteren AMS-Features.
 
 [AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0928_2016-->

@@ -60,7 +60,7 @@ In dieser Aufgabe registrieren Sie sich für den Empfehlungs-API-Dienst und erst
 
 1. Wählen Sie für **API-Typ** **Empfehlungen**.
 
-1. Bei **Tarif** können Sie einen Plan auswählen. Sie können z. B. den **Kostenlosen** Tarif für 10.000 Transaktionen pro Monat** auswählen. Dies ist ein kostenloser Plan, also eine gute Möglichkeit für einen ersten Test des Systems. Sobald Sie in die Produktion gehen, sollten Sie Ihr Anforderungsvolumen abwägen und den Plantyp entsprechend ändern.
+1. Bei **Tarif** können Sie einen Plan auswählen. Sie können z.B. den **Free-Tarif** für 10.000 Transaktionen pro Monat auswählen. Dies ist ein kostenloser Plan, also eine gute Möglichkeit für einen ersten Test des Systems. Sobald Sie in die Produktion gehen, sollten Sie Ihr Anforderungsvolumen abwägen und den Plantyp entsprechend ändern. (Hinweis: Sie können immer nur ein Abonnement im Free-Tarif verwenden.)
 
 1. Wählen Sie eine **Ressourcengruppe**, oder erstellen Sie eine neue – wenn Sie nicht bereits eine besitzen.
 
@@ -168,4 +168,4 @@ Lesen Sie die Dokumentation [Get recommendations based on items (I2I)](http://go
 ### Wie geht es weiter?
 Danke, dass Sie bis zum Schluss dabei waren! Weitere Informationen finden Sie in der vollständigen [Empfehlungen-API-Referenz](http://go.microsoft.com/fwlink/?LinkId=759348). Wenn Sie Fragen haben, zögern Sie nicht, sich unter mlapi@microsoft.com an uns zu wenden.
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0928_2016-->

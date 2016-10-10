@@ -3,7 +3,7 @@
 	description="Es wird beschrieben, wie Sie Ihre Marketplace-Bestellungen besser verstehen."
 	services=""
 	documentationCenter=""
-	authors="jiangchen79"
+	authors="JiangChen79"
 	manager="felixwu"
 	editor=""
 	tags="billing"
@@ -102,4 +102,4 @@ Führen Sie die folgenden Schritte aus, um die tatsächlichen Gebühren anzuzeig
 
 > [AZURE.NOTE] Wenn Sie weitere Fragen haben, [wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), um das Problem schnell zu lösen.
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0928_2016-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/23/2016"
+	ms.date="09/27/2016"
 	ms.author="femila"/>
 
 # Verwenden von Windows 10-Geräten an Ihrem Arbeitsplatz
@@ -52,13 +52,13 @@ Windows 10 stellt zwei Methoden bereit, mit denen unternehmenseigene Geräte au
 
 ## Verwendung von Azure Active Directory Join
 
-Azure AD Join ist eine neue Self-Service-Benutzeroberfläche für die Arbeitsbereitstellung unter Windows 10. Sie ist für Mitarbeiter gedacht, die auf geschäftliche Ressourcen, z. B. Office 365, vor allem in der Cloud zugreifen. Die ist eine einfache Möglichkeit, Computer, Tablets und Smartphones für das Unternehmen zu konfigurieren. Geräte werden per mobiler Geräteverwaltung verwaltet, indem einheitliche Steuerelemente über alle Windows-Plattformen hinweg verwendet werden.
+Azure AD Join ist eine neue Self-Service-Benutzeroberfläche für die Arbeitsbereitstellung unter Windows 10. Sie ist für Mitarbeiter gedacht, die auf geschäftliche Ressourcen, z.B. Office 365, vor allem in der Cloud zugreifen. Die ist eine einfache Möglichkeit, Computer, Tablets und Smartphones für das Unternehmen zu konfigurieren. Geräte werden per mobiler Geräteverwaltung verwaltet, indem einheitliche Steuerelemente über alle Windows-Plattformen hinweg verwendet werden.
 
 **Verwenden Sie Azure AD Join beispielsweise aus den folgenden Gründen**:
 
 - Sie möchten die Self-Service-Bereitstellung von Geräten für Mitarbeiter ermöglichen, die unterwegs sind.
-- Sie stellen für Benutzer unternehmenseigene mobile Geräte bereit, z. B. Tablets und Smartphones.
-- Sie möchten eine Gruppe von Benutzern nicht in Active Directory, sondern in Azure AD verwalten, z. B. Saisonkräfte, Subunternehmer oder Studenten.
+- Sie stellen für Benutzer unternehmenseigene mobile Geräte bereit, z.B. Tablets und Smartphones.
+- Sie möchten eine Gruppe von Benutzern nicht in Active Directory, sondern in Azure AD verwalten, z.B. Saisonkräfte, Subunternehmer oder Studenten.
 - Sie möchten Beitrittsfunktionen für Mitarbeiter in entfernten Niederlassungen mit eingeschränkter lokaler Infrastruktur bereitstellen.
 - Sie besitzen keine lokale Active Directory-Instanz.
 
@@ -110,8 +110,8 @@ Für alle oben beschriebenen Methoden (Domänenbeitritt, Azure AD Join und Hinzu
 Sie benötigen Folgendes, um Azure AD Join für eine Gruppe von Benutzern bereitzustellen:
 
 - Ein Azure AD-Abonnement
-- Ein Azure AD Premium-Abonnement, z. B. die automatische Registrierung für die mobile Geräteverwaltung, falls Sie weitere Funktionen benötigen
-- Mobile Geräteverwaltung, z. B. ein Microsoft Intune-Abonnement, die mobile Geräteverwaltung für Office 365 oder ein Partneranbieter für die mobile Geräteverwaltung, der in Azure AD integriert werden kann (Weitere Informationen finden Sie am Ende dieses Artikels im Abschnitt mit den [häufig gestellten Fragen](#frequently-asked-questions)).
+- Ein Azure AD Premium-Abonnement, z.B. die automatische Registrierung für die mobile Geräteverwaltung, falls Sie weitere Funktionen benötigen
+- Mobile Geräteverwaltung, z.B. ein Microsoft Intune-Abonnement, die mobile Geräteverwaltung für Office 365 oder ein Partneranbieter für die mobile Geräteverwaltung, der in Azure AD integriert werden kann. (Weitere Informationen finden Sie am Ende dieses Artikels im Abschnitt mit den [häufig gestellten Fragen](#frequently-asked-questions)).
 
 In Hybrid-Umgebungen wird empfohlen, Azure AD Connect bereitzustellen, um das lokale Verzeichnis auf Azure AD zu erweitern.
 
@@ -132,14 +132,14 @@ Weitere Informationen zum Domänenbeitritt unter Windows 10 finden Sie unter <li
 Sie benötigen Folgendes, um BYOD (Bring Your Own Device) für Geschäfts- oder Schulkonten zu ermöglichen:
 
 - Ein Azure AD-Abonnement
-- Ein Azure AD Premium-Abonnement, z. B. die automatische Registrierung für die mobile Geräteverwaltung, falls Sie weitere Funktionen benötigen
+- Ein Azure AD Premium-Abonnement, z.B. die automatische Registrierung für die mobile Geräteverwaltung, falls Sie weitere Funktionen benötigen
 
 ## Anforderungen für die Verwendung von Microsoft Passport
 
 Sie benötigen Folgendes, um Microsoft Passport zu aktivieren:
 
 - Eine Public Key-Infrastruktur (PKI) zur Unterstützung der zertifikatbasierten Authentifizierung mit Microsoft Passport.
-- Ein Intune-Abonnement zur Unterstützung der zertifikatbasierten Authentifizierung per Microsoft Passport für Azure AD Join und Geschäfts- oder Schulkonten.
+- Ein Intune-Abonnement zur Unterstützung der zertifikatbasierten Authentifizierung über Microsoft Passport zur Einbindung in Azure AD und Geschäfts-, Uni- oder Schulkonten.
 - System Center Configuration Manager Version 1509 für Technical Preview (siehe TechNet-Dokumentation und -Blogbeitrag) zur Unterstützung der zertifikatbasierten Authentifizierung per Microsoft Passport für den Domänenbeitritt.
 - Eine Richtlinie zum Aktivieren von Microsoft Passport im Unternehmen.
 
@@ -165,7 +165,7 @@ Die Arbeitsbereichsverknüpfung wurde unter Windows 8.1 zum Aktivieren von BYOD
 
 
 ### Können Benutzer ihr Microsoft-Konto mit ihrem Domänenkonto unter Windows 10 verbinden?
-Nicht unter Windows 10. Unter Windows 8.1 konnten Benutzer von Geräten, für die der Domänenbeitritt durchgeführt wurde, für ihr Microsoft-Konto (z. B. Hotmail, Live, Outlook, XBox usw.) eine Verbindung mit ihrem Domänenkonto herstellen, um bestimmte Funktionen wie das einmalige Anmelden (SSO) für Live-Dienste, die Nutzung des Windows Store und das geräteübergreifende Roaming von Benutzereinstellungen zu ermöglichen. Unter Windows 10 wurde die Funktion für die Verbindungsherstellung mit Microsoft-Konten entfernt. Benutzer können Microsoft-Konten als zusätzliche Konten hinzufügen, um das einmalige Anmelden für Verbraucherdienste wie etwa den Windows Store zu aktivieren. Dies ist unter **Einstellungen** > **Konten** > **Ihr Konto** möglich.
+Nicht unter Windows 10. Unter Windows 8.1 konnten Benutzer von Geräten, für die der Domänenbeitritt durchgeführt wurde, für ihr Microsoft-Konto (z.B. Hotmail, Live, Outlook, XBox usw.) eine Verbindung mit ihrem Domänenkonto herstellen, um bestimmte Funktionen wie das einmalige Anmelden (SSO) für Live-Dienste, die Nutzung des Windows Store und das geräteübergreifende Roaming von Benutzereinstellungen zu ermöglichen. Unter Windows 10 wurde die Funktion für die Verbindungsherstellung mit Microsoft-Konten entfernt. Benutzer können Microsoft-Konten als zusätzliche Konten hinzufügen, um das einmalige Anmelden für Verbraucherdienste wie etwa den Windows Store zu aktivieren. Dies ist unter **Einstellungen** > **Konten** > **Ihr Konto** möglich.
 
 Für Benutzer, die ein Upgrade von Windows 8.1-Geräten mit Domänenbeitritt durchführen und deren Microsoft-Konten verbunden waren, wird das verbundene Microsoft-Konto automatisch der Liste mit den verwendeten zusätzlichen Konten hinzugefügt.
 
@@ -177,4 +177,4 @@ Für Benutzer, die ein Upgrade von Windows 8.1-Geräten mit Domänenbeitritt du
 * [Benutzererfahrungen beim Verknüpfen von in die Domäne eingebundenen Windows 10-Geräten mit Azure AD](active-directory-azureadjoin-devices-group-policy.md)
 * [Einrichten von Azure AD Join](active-directory-azureadjoin-setup.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0928_2016-->

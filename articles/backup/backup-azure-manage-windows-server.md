@@ -280,7 +280,7 @@ A1. Zwischen dem Anzeigen des Sicherungsauftragsstatus im Azure Backup-Agent und
 
 **F2. Wie lange dauert es, bis eine Warnung ausgelöst wird, wenn ein Sicherungsauftrag nicht erfolgreich ist?**
 
-A2. Eine Warnung wird innerhalb von fünf Minuten nach dem Azure Backup-Fehler ausgelöst.
+A2. Innerhalb von 20 Minuten nach dem Azure-Sicherungsfehler wird eine Warnung ausgelöst.
 
 **F3. Kann es vorkommen, dass eine E-Mail nicht gesendet wird, wenn Benachrichtigungen konfiguriert sind?**
 
@@ -300,4 +300,4 @@ A3. Nachfolgend sind Fälle aufgeführt, in denen die Benachrichtigung nicht ges
 - Weitere Informationen zu Azure Backup finden Sie unter [Azure Backup – Übersicht](backup-introduction-to-azure-backup.md).
 - Besuchen Sie das [Azure Backup-Forum](http://go.microsoft.com/fwlink/p/?LinkId=290933).
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

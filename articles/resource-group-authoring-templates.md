@@ -202,7 +202,7 @@ Das nächste Beispiel zeigt eine Variable mit einem komplexen JSON-Typ sowie Var
 
 ## Ressourcen
 
-Im Ressourcenabschnitt definieren Sie die Ressourcen für die Bereitstellung oder Aktualisierung. In diesem Bereich kann Ihre Vorlage komplizierter werden, da Sie die Typen für die Bereitstellung kennen müssen, um die richtigen Werte angeben zu können. Viele hilfreiche Informationen zu Ressourcenanbietern finden Sie unter [Anbieter, Regionen, API-Versionen und Schemas für den Ressourcen-Manager](resource-manager-supported-services.md).
+Im Ressourcenabschnitt definieren Sie die Ressourcen, die bereitgestellt oder aktualisiert werden. In diesem Bereich kann Ihre Vorlage komplizierter werden, da Sie die Typen für die Bereitstellung kennen müssen, um die richtigen Werte angeben zu können. Viele hilfreiche Informationen zu Ressourcenanbietern finden Sie unter [Anbieter, Regionen, API-Versionen und Schemas für den Ressourcen-Manager](resource-manager-supported-services.md).
 
 Sie definieren Ressourcen mit der folgenden Struktur:
 
@@ -367,4 +367,4 @@ Weitere Informationen zum Arbeiten mit Vorlagen finden Sie unter [Freigeben des 
 
 [deployment2cmdlet]: https://msdn.microsoft.com/library/mt740620(v=azure.200).aspx
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0928_2016-->

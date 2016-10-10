@@ -13,13 +13,13 @@
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/07/2016"
+	ms.date="09/26/2016"
 	ms.author="carlasab"/>
 
 
 # Migrieren einer SQL Server-Datenbank zu SQL Server auf einem virtuellen Azure-Computer
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)] Ressourcen-Manager-Modell.
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)] Resource Manager-Modell.
 
 
 Es gibt verschiedene Methoden zur Migration einer lokalen SQL Server-Benutzerdatenbank zu SQL Server in einer Azure-VM. In diesem Artikel werden die verschiedenen Methoden kurz angesprochen, die jeweils beste Methode für verschiedene Szenarios empfohlen und ein [Tutorial](#azure-vm-deployment-wizard-tutorial) vorgestellt, das Sie durch den Assistenten zum **Bereitstellen einer SQL Server-Datenbank auf einem virtuellen Microsoft Azure-Computer** leitet.
@@ -98,7 +98,7 @@ Wenn Sie zu einer vorhandenen Azure-VM migrieren, sind die folgenden Konfigurati
 
 6. Klicken Sie auf Weiter.
 7. Klicken Sie auf der Microsoft Azure-Anmeldeseite auf "Anmelden", um sich an Ihrem Azure-Konto anzumelden.
-8. Wählen Sie das Abonnement aus, das Sie nutzen möchten, und klicken Sie auf "Weiter".
+8. Wählen Sie das Abonnement aus, das Sie nutzen möchten, und klicken Sie auf „Weiter“.
 
 	![Azure-Anmeldung](./media/virtual-machines-windows-migrate-sql/azure-signin.png)
 
@@ -125,7 +125,7 @@ Wenn Sie zu einer vorhandenen Azure-VM migrieren, sind die folgenden Konfigurati
 		- Benutzername
 		- Neues Kennwort
 		- Kennwort bestätigen
-		- Verzeichnis
+		- Ort
 		- Größe
  	- Bestätigen Sie durch Klicken das automatisch generierte Zertifikat für diesen neuen virtuellen Microsoft Azure-Computer, und klicken Sie dann auf "OK".
 
@@ -180,4 +180,4 @@ Ausführlichere Informationen zur Verwendung von SQL Server auf virtuellen Azur
 
 Eine Anleitung zum Erstellen eines virtuellen Azure SQL Server-Computers aus einem erfassten Image finden Sie im CSS SQL Server Engineers-Blog unter [Tips & Tricks on ‘cloning’ Azure SQL virtual machines from captured images](https://blogs.msdn.microsoft.com/psssql/2016/07/06/tips-tricks-on-cloning-azure-sql-virtual-machines-from-captured-images/) (Tipps und Tricks zum „Klonen“ virtueller Azure SQL-Computer aus erfassten Images).
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0928_2016-->

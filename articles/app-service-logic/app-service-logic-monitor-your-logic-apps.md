@@ -33,6 +33,8 @@ Das Blatt bietet einige hilfreiche Abschnitte:
 	- Unter **Triggerverlauf** werden sämtliche Triggeraktivitäten für die Logik-App aufgelistet. Bei einer Triggeraktivität kann es sich um eine übersprungene Überprüfung auf neue Daten handeln (mit der etwa geprüft werden sollte, ob dem FTP-Server eine neue Datei hinzugefügt wurde). Bei erfolgreichen Aktivitäten wurden Daten zum Auslösen einer Logik-App zurückgegeben, und bei einem Fehler liegt ein Konfigurationsfehler vor.
 - Mithilfe der **Diagnose** können Sie Laufzeitdetails und -ereignisse anzeigen und [Azure-Warnungen](#adding-azure-alerts) abonnieren.
 
+>[AZURE.NOTE] Alle Informationen und Ereignisse zur Laufzeit werden im Ruhezustand im Logic Apps-Dienst verschlüsselt. Sie werden nur bei einer Ansichtsanforderung eines Benutzers entschlüsselt. Der Zugriff auf diese Ereignisse kann auch durch die rollenbasierte Zugriffssteuerung in Azure (Role-Based Access Control, RBAC) gesteuert werden.
+
 ### Anzeigen der Ausführungsdetails
 
 Diese Ausführungsliste gibt Aufschluss über **Status**, **Startzeit** und **Dauer** einer bestimmten Ausführung. Wählen Sie eine beliebige Zeile aus, um Details zur jeweiligen Ausführung anzuzeigen.
@@ -47,7 +49,7 @@ Sollten Sie weitere Details wie etwa die **Korrelations-ID** der Ausführung ben
 
 Zusätzlich zu den oben angegebenen Details des Azure-Portals und der REST-API können Sie Ihre Logik-App für die Verwendung der Azure-Diagnose konfigurieren, um ausführlichere Details zu erhalten und Debuggingmaßnahmen zu ergreifen.
 
-1. Klicken Sie auf dem Logik-App-Blatt auf den Diagnosebereich.
+1. Klicken Sie auf dem Blatt der Logik-App auf den Bereich **Diagnose**.
 1. Klicken Sie, um die **Diagnoseeinstellungen** zu konfigurieren.
 1. Konfigurieren Sie einen Event Hub oder ein Speicherkonto für die Datenausgabe.
 
@@ -59,11 +61,11 @@ Nachdem Sie die Diagnose konfiguriert haben, können Sie Azure-Warnungen hinzuf�
 
 ![Azure-Warnungsmetriken](./media/app-service-logic-monitor-your-logic-apps/alerts.png)
 
-**Bedingung**, **Schwellenwert** und **Zeitraum** können nach Bedarf konfiguriert werden. Zum Schluss können Sie noch eine Ziel-E-Mail-Adresse für Benachrichtigungen oder einen Webhook konfigurieren. Der [Anforderungstrigger](../connectors/connectors-native-reqres.md) in einer Logik-App kann ebenfalls für die Ausführung im Falle einer Warnung verwendet werden (um beispielsweise Aktionen wie [In Slack posten](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-slack-with-logic-app), [SMS senden](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app) oder [Nachricht einer Warteschlange hinzufügen](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-queue-with-logic-app) auszuführen).
+Sie können die Einstellungen **Bedingung**, **Schwellenwert** und **Zeitraum** nach Bedarf konfigurieren. Zum Schluss können Sie noch eine Ziel-E-Mail-Adresse für Benachrichtigungen oder einen Webhook konfigurieren. Sie können auch den [Anforderungstrigger](../connectors/connectors-native-reqres.md) in einer Logik-App zur Ausführung im Falle einer Warnung verwenden (um beispielsweise Aktionen wie [In Slack posten](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-slack-with-logic-app), [SMS senden](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app) oder [Nachricht zu einer Warteschlange hinzufügen](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-queue-with-logic-app) auszuführen).
 
 ### Azure-Diagnoseeinstellungen
 
-Jedes dieser Ereignisse enthält Details zur Logik-App und zum Ereignis (beispielsweise den Status). Im Anschluss sehen Sie ein Beispiel für ein *ActionCompleted*-Ereignis:
+Jedes dieser Ereignisse enthält Details zur Logik-App und zum Ereignis (beispielsweise den Status). Hier sehen Sie ein Beispiel für ein *ActionCompleted*-Ereignis:
 
 ```javascript
 {
@@ -103,11 +105,11 @@ Zur Nachverfolgung und Überwachung sind insbesondere zwei Eigenschaften hilfrei
 
 #### Clientnachverfolgungs-ID
 
-Der Wert der Clientnachverfolgungs-ID korreliert Ereignisse innerhalb der gesamten Ausführung einer Logik-App. Dies schließt auch geschachtelte Workflows ein, die im Rahmen einer Logik-App aufgerufen werden. Falls keine ID angegeben ist, wird automatisch eine generiert. Die Clientnachverfolgungs-ID kann aber auch manuell über einen Trigger angegeben werden. Hierzu muss in der Triggeranforderung (Anforderungstrigger, HTTP-Trigger oder Webhook-Trigger) ein `x-ms-client-tracking-id`-Header mit dem ID-Wert übergeben werden.
+Der Wert der Clientnachverfolgungs-ID korreliert Ereignisse innerhalb der gesamten Ausführung einer Logik-App. Dies schließt auch geschachtelte Workflows ein, die im Rahmen einer Logik-App aufgerufen werden. Falls keine ID angegeben ist, wird automatisch eine generiert. Sie können die Clientnachverfolgungs-ID auch manuell über einen Trigger angeben. Hierzu übergeben Sie in der Triggeranforderung (Anforderungstrigger, HTTP-Trigger oder Webhooktrigger) einen `x-ms-client-tracking-id`-Header mit dem ID-Wert.
 
 #### Nachverfolgte Eigenschaften
 
-Nachverfolgte Eigenschaften können Aktionen in der Workflowdefinition hinzugefügt werden, um Eingaben oder Ausgaben in Diagnosedaten nachzuverfolgen. Dies kann hilfreich sein, wenn Sie Daten wie etwa eine Auftrags-ID in Ihrer Telemetrie nachverfolgen möchten. Schließen Sie zum Hinzufügen einer nachverfolgte Eigenschaft in einer Aktion die `trackedProperties`-Eigenschaft ein. Nachverfolgte Eigenschaften können nur die Eingaben und Ausgaben einer einzelnen Aktion nachverfolgen. Mit den `correlation`-Eigenschaften der Ereignisse ist jedoch eine aktionsübergreifende Korrelation innerhalb einer Ausführung möglich.
+Nachverfolgte Eigenschaften können Aktionen in der Workflowdefinition hinzugefügt werden, um Eingaben oder Ausgaben in Diagnosedaten nachzuverfolgen. Dies kann hilfreich sein, wenn Sie Daten wie etwa eine Auftrags-ID in Ihrer Telemetrie nachverfolgen möchten. Schließen Sie zum Hinzufügen einer nachverfolgten Eigenschaft die `trackedProperties`-Eigenschaft in einer Aktion ein. Nachverfolgte Eigenschaften können nur die Ein- und Ausgaben einer einzelnen Aktion nachverfolgen. Mit den `correlation`-Eigenschaften der Ereignisse ist jedoch eine aktionsübergreifende Korrelation innerhalb einer Ausführung möglich.
 
 ```javascript
 {
@@ -131,11 +133,11 @@ Nachverfolgte Eigenschaften können Aktionen in der Workflowdefinition hinzugef�
 
 ### Erweitern Ihrer Lösungen
 
-Sie können diese Telemetrie aus dem Event Hub oder Speicher auch in anderen Diensten wie [Operations Management Suite](https://www.microsoft.com/cloud-platform/operations-management-suite), [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) und [Power BI](https://powerbi.com) zur Echtzeitüberwachung Ihrer Integrationsworkflows verwenden.
+Sie können diese Telemetrie aus dem Event Hub oder dem Speicher auch in anderen Diensten wie [Operations Management Suite](https://www.microsoft.com/cloud-platform/operations-management-suite), [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) und [Power BI](https://powerbi.com) verwenden, um eine Echtzeitüberwachung Ihrer Integrationsworkflows einzurichten.
 
 ## Nächste Schritte
 - [Allgemeine Beispiele und Szenarien für Logik-Apps](app-service-logic-examples-and-scenarios.md)
 - [Erstellen einer Bereitstellungsvorlage für Logik-Apps](app-service-logic-create-deploy-template.md)
 - [Unternehmensintegrationsfeatures](app-service-logic-enterprise-integration-overview.md)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0928_2016-->

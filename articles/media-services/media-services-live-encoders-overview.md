@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="Gewusst wie: Konfigurieren von lokalen Encodern beim Erstellen von Multi-Bitrate-Datenströmen mit Azure Media Services" 
-	description="Dieses Thema zählt lokale Liveencoder auf, mit denen Sie Ihre Liveereignisse aufzeichnen und zur weiteren Verarbeitung einen Single-Bitrate-Livedatenstrom an AMS-Kanäle (für die die Livecodierung aktiviert ist) senden können. Das Thema enthält Links zu Lernprogrammen, in denen die Konfiguration der aufgelisteten Encoder erläutert wird." 
+	pageTitle="Gewusst wie: Konfigurieren von lokalen Encodern beim Erstellen von Datenströmen mit Mehrfachbitraten mithilfe von Azure Media Services | Microsoft Azure" 
+	description="Dieses Thema zählt lokale Liveencoder auf, mit denen Sie Ihre Liveereignisse aufzeichnen und zur weiteren Verarbeitung einen Single-Bitrate-Livedatenstrom an AMS-Kanäle (für die die Livecodierung aktiviert ist) senden können. Das Thema enthält Links zu Tutorials, in denen die Konfiguration der aufgelisteten Encoder erläutert wird." 
 	services="media-services" 
 	documentationCenter="" 
 	authors="juliako" 
@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/22/2016" 
+	ms.date="09/26/2016" 
 	ms.author="juliako"/>
 
 
 
 #Gewusst wie: Konfigurieren von lokalen Encodern beim Erstellen von Multi-Bitrate-Datenströmen mit Azure Media Services
 
-Dieses Thema zählt lokale Liveencoder auf, mit denen Sie Ihre Liveereignisse aufzeichnen und zur weiteren Verarbeitung einen Single-Bitrate-Livedatenstrom an AMS-Kanäle (für die die Livecodierung aktiviert ist) senden können. Das Thema enthält auch Links zu Lernprogrammen, in denen die Konfiguration der aufgelisteten Encoder erläutert wird.
+Dieses Thema zählt lokale Liveencoder auf, mit denen Sie Ihre Liveereignisse aufzeichnen und zur weiteren Verarbeitung einen Single-Bitrate-Livedatenstrom an AMS-Kanäle (für die die Livecodierung aktiviert ist) senden können. Das Thema enthält auch Links zu Tutorials, in denen die Konfiguration der aufgelisteten Encoder erläutert wird.
 
 
 ##Elemental Live
@@ -53,4 +53,4 @@ Weitere Informationen zum Konfigurieren des [Tricaster](http://newtek.com/produc
 
 [Livestreaming mit Azure Media Services zum Erstellen von Multi-Bitrate-Datenströmen](media-services-manage-live-encoder-enabled-channels.md).
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0928_2016-->

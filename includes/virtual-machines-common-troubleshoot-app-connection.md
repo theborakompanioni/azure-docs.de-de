@@ -35,14 +35,16 @@ Die Problembehandlung beim Zugriff auf eine Anwendung, die auf einem virtuellen 
 	- Wird die Anwendung selbst ordnungsgemäß ausgeführt?
 2.	Den virtuellen Azure-Computer.
 	- Wird der virtuelle Computer selbst ordnungsgemäß ausgeführt, und reagiert er auf Anforderungen?
-3.	Azure-Endpunkte für den Clouddienst, der den virtuellen Computer enthält (für virtuelle Computer im klassischen Bereitstellungsmodell), eingehende NAT-Regeln (für virtuelle Computer im Resource Manager-Bereitstellungsmodell) und Netzwerksicherheitsgruppen
+3.	Azure-Netzwerkendpunkte.
+	- Clouddienstendpunkte für virtuelle Computer im klassischen Bereitstellungsmodell
+	- Netzwerksicherheitsgruppen und NAT-Eingangsregeln für virtuelle Computer im Resource Manager-Bereitstellungsmodell
 	- Ist der Datenverkehrsfluss von den Benutzern zu dem virtuellen Computer bzw. der Anwendung über die erwarteten Ports möglich?
 4.	Ihre Internet-Edgegerät.
 	- Verhindern Firewallregeln den ordnungsgemäßen Datenverkehrsfluss?
 
 Bei Clientcomputern, die über eine Site-to-Site-VPN- oder ExpressRoute-Verbindung auf die Anwendung zugreifen, sind die Hauptbereiche, die zu Problemen führen können, die Anwendung und der virtuelle Azure-Computer. Gehen Sie folgendermaßen vor, um die Quelle des Problems und dessen Korrektur zu bestimmen.
 
-## Schritt 1: Können Sie von der virtuellen Ziel-VM aus auf die Anwendung zugreifen?
+## Schritt 1: Zugreifen auf die Anwendung vom virtuellen Zielcomputer
 
 Versuchen Sie, mithilfe des geeigneten Clientprogramms von der VM, auf der es läuft, auf die Anwendung zuzugreifen. Verwenden Sie den lokalen Hostnamen, die lokale IP-Adresse oder die Loopbackadresse (127.0.0.1).
 
@@ -52,14 +54,14 @@ Wenn es sich bei der Anwendung beispielsweise um einen Webserver handelt, öffne
 
 Wenn Sie auf die Anwendung zugreifen können, fahren Sie mit [Schritt 2](#step2) fort.
 
-Wenn kein Zugriff auf die Anwendung möglich ist, überprüfen Sie Folgendes:
+Wenn kein Zugriff auf die Anwendung möglich ist, überprüfen Sie die folgenden Einstellungen:
 
 - Die Anwendung wird auf dem virtuellen Zielcomputer ausgeführt.
 - Die Anwendung überwacht die erwarteten TCP- und UDP-Ports.
 
 Verwenden Sie bei Windows- und Linux-basierten virtuellen Computern den Befehl **netstat -a**, um die aktiven Überwachungsports anzuzeigen. Überprüfen Sie die Ausgabe für die erwarteten Ports, die die Anwendung überwachen soll. Starten Sie die Anwendung neu, oder konfigurieren Sie sie so, dass die erwarteten Ports nach Bedarf verwendet werden, und versuchen Sie erneut, lokal auf die Anwendung zuzugreifen.
 
-## <a id="step2"></a>Schritt 2: Können von einem anderen virtuellen Computer im gleichen virtuellen Netzwerk aus auf die Anwendung zugreifen?
+## <a id="step2"></a>Schritt 2: Zugreifen auf die Anwendung von einem anderen virtuellen Computer im gleichen virtuellen Netzwerk
 
 Versuchen Sie, von einer anderen VM im gleichen virtuellen Netzwerk auf die Anwendung zuzugreifen. Verwenden Sie dazu den VM-Hostnamen oder die von Azure zugewiesene öffentliche, private oder Anbieter-IP-Adresse. Verwenden Sie für mithilfe des klassischen Bereitstellungsmodells erstellte virtuelle Computer nicht die öffentliche IP-Adresse des Clouddiensts.
 
@@ -69,7 +71,7 @@ Wenn es sich bei der Anwendung beispielsweise um einen Webserver handelt, versuc
 
 Wenn Sie auf die Anwendung zugreifen können, fahren Sie mit [Schritt 3](#step3) fort.
 
-Wenn kein Zugriff auf die Anwendung möglich ist, überprüfen Sie Folgendes:
+Wenn kein Zugriff auf die Anwendung möglich ist, überprüfen Sie die folgenden Einstellungen:
 
 - Die Hostfirewall auf der Ziel-VM lässt die eingehende Anforderung und den ausgehenden Antwortdatenverkehr zu.
 - Software zur Angriffserkennung oder Netzwerküberwachung, die auf der Ziel-VM ausgeführt wird, lässt den Datenverkehr zu.
@@ -80,15 +82,15 @@ Wenn kein Zugriff auf die Anwendung möglich ist, überprüfen Sie Folgendes:
 
 Verwenden Sie auf einem Windows-basierten virtuellen Computer die Windows-Firewall mit erweiterter Sicherheit, um zu bestimmen, ob die Firewallregeln den eingehenden und ausgehenden Datenverkehr der Anwendung ausschließen.
 
-## <a id="step3"></a>Schritt 3: Können Sie von einem Computer aus, der sich außerhalb des virtuellen Netzwerks befindet, aber nicht mit demselben Netzwerk wie Ihr Computer verbunden ist, auf die Anwendung zugreifen?
+## <a id="step3"></a>Schritt 3: Zugreifen auf die Anwendung von einem Computer außerhalb des virtuellen Netzwerks
 
-Versuchen Sie, von einem Computer, der sich nicht im gleichen Netzwerk wie die VM befindet, auf der die Anwendung ausgeführt wird, auf die Anwendung zuzugreifen. Der Computer darf sich aber ebenso wenig im Netzwerk Ihres ursprünglichen Clientcomputers befinden.
+Versuchen Sie, von einem Computer, der sich nicht im gleichen Netzwerk wie der virtuelle Computer befindet, auf dem die Anwendung ausgeführt wird, auf die Anwendung zuzugreifen. Verwenden Sie ein anderes Netzwerk als der ursprüngliche Clientcomputer.
 
 ![Anwendung von einem Computer außerhalb des virtuellen Netzwerks starten](./media/virtual-machines-common-troubleshoot-app-connection/tshoot_app_access4.png)
 
 Wenn es sich bei der Anwendung beispielsweise um einen Webserver handelt, versuchen Sie, in einem Browser auf eine Webseite zuzugreifen, der auf einem Computer ausgeführt wird, der sich nicht im virtuellen Netzwerk befindet.
 
-Wenn kein Zugriff auf die Anwendung möglich ist, überprüfen Sie Folgendes:
+Wenn kein Zugriff auf die Anwendung möglich ist, überprüfen Sie die folgenden Einstellungen:
 
 - Bei virtuellen Computern, die mit dem klassischen Bereitstellungsmodell erstellt wurden:
 	- Die Endpunktkonfiguration für den virtuellen Computer muss eingehenden Datenverkehr zulassen, insbesondere das Protokoll (TCP oder UDP) und die öffentlichen und privaten Portnummern.
@@ -118,4 +120,4 @@ Wenn Sie auf die Anwendung zugreifen können, stellen Sie sicher, dass Ihre Inte
 
 [Behandeln von Problemen mit Secure Shell (SSH)-Verbindungen mit einem Linux-basierten virtuellen Azure-Computer](../articles/virtual-machines/virtual-machines-linux-troubleshoot-ssh-connection.md)
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0928_2016-->

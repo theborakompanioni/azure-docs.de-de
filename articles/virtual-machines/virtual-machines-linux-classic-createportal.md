@@ -14,13 +14,13 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/06/2016"
+	ms.date="09/27/2016"
 	ms.author="cynthn"/>
 
 
 # Erstellen eines benutzerdefinierten virtuellen Linux-Computers
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] Informationen zum Erstellen eines virtuellen Linux-Computers mit dem neuen Azure-Portal finden Sie unter [Erstellen eines virtuellen Linux-Computers in Azure mithilfe des Portals](virtual-machines-linux-quick-create-portal.md).
 
 
 
@@ -30,8 +30,4 @@
 
 [AZURE.INCLUDE [virtual-machines-create-linuxvm](../../includes/virtual-machines-create-linuxvm.md)]
 
-## Nächste Schritte
-
-Sie können mit dem klassischen Portal auch [einen benutzerdefinierten virtuellen Computer unter Windows erstellen](virtual-machines-windows-classic-createportal.md).
-
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0928_2016-->

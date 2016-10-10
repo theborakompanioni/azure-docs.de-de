@@ -22,7 +22,7 @@ Logik-Apps verfügen über ein umfassendes Angebot an Tools und Mustern, damit S
 
 ## Wiederholungsrichtlinien
 
-Die einfachste Form der Ausnahme- und Fehlerbehandlung ist eine Wiederholungsrichtlinie. Mit dieser Richtlinie wird definiert, ob für die Aktion ein Wiederholungsversuch durchgeführt werden soll, wenn bei der ersten Anforderung ein Timeout oder ein Fehler aufgetreten ist (Anforderung mit der Antwort 429 oder 5xx). Standardmäßig wird versucht, alle Aktionen drei weitere Male nach einem Intervall von 20 Sekunden zu wiederholen. Wenn für die erste Anforderung die Antwort `500 Internal Server Error` empfangen wurde, wartet das Workflowmodul also 20 Sekunden und startet dann einen Wiederholungsversuch für die Anforderung. Wenn für die Anforderung nach allen Wiederholungsversuchen immer noch eine Ausnahme oder ein Fehler vorliegt, wird der Workflow fortgesetzt, und der Status der Aktion lautet `Failed`.
+Die einfachste Form der Ausnahme- und Fehlerbehandlung ist eine Wiederholungsrichtlinie. Mit dieser Richtlinie wird definiert, ob für die Aktion ein Wiederholungsversuch durchgeführt werden soll, wenn bei der ersten Anforderung ein Timeout oder ein Fehler aufgetreten ist (Anforderung mit der Antwort 429 oder 5xx). Standardmäßig wird versucht, alle Aktionen in Intervallen von jeweils 20 Sekunden vier weitere Male zu wiederholen. Wenn für die erste Anforderung die Antwort `500 Internal Server Error` empfangen wurde, wartet das Workflowmodul also 20 Sekunden und startet dann einen Wiederholungsversuch für die Anforderung. Wenn für die Anforderung nach allen Wiederholungsversuchen immer noch eine Ausnahme oder ein Fehler vorliegt, wird der Workflow fortgesetzt, und der Status der Aktion lautet `Failed`.
 
 Sie können Wiederholungsrichtlinien in den **Eingaben** einer bestimmten Aktion konfigurieren. Eine Wiederholungsrichtlinie kann so konfiguriert werden, dass bis zu vier Wiederholungsversuche im Abstand einer Stunde durchgeführt werden. Ausführliche Informationen zu den Eingabeeigenschaften finden Sie auf der [MSDN-Website][retryPolicyMSDN].
 
@@ -198,7 +198,7 @@ Sie können die obigen Ausdrücke verwenden, um unterschiedliche Muster für die
 Die oben beschriebenen Muster eignen sich gut zum Behandeln von Fehlern und Ausnahmen in einer Ausführung, aber Sie können auch unabhängig von der eigentlichen Ausführung Fehler identifizieren und darauf reagieren. Die [Azure-Diagnose](app-service-logic-monitor-your-logic-apps.md) ist eine einfache Möglichkeit zum Senden aller Workflowereignisse (einschließlich aller Ausführungs- und Aktionsstatus) an ein Azure Storage-Konto oder einen Azure Event Hub. Sie können die Protokolle und Metriken überwachen oder mit einem von Ihnen bevorzugten Überwachungstool veröffentlichen, um jeweils den Ausführungsstatus auszuwerten. Eine potenzielle Option ist das Streamen aller Ereignisse über den Azure Event Hub in [Stream Analytics](https://azure.microsoft.com/services/stream-analytics/). In Stream Analytics können Sie Liveabfragen für Anomalien, Mittelwerte oder Fehler aus den Diagnoseprotokollen schreiben. Für Stream Analytics ist die Ausgabe in andere Datenquellen wie Warteschlangen, Themen, SQL, DocumentDB und Power BI problemlos möglich.
 
 ## Nächste Schritte
-- [Protokollierung und Fehlerbehandlung in Logik-Apps](app-service-logic-scenario-error-and-exception-handling.md) (Beispiel eines Kunden)
+- [Protokollierung und Fehlerbehandlung in Logik-Apps (Beispiel eines Kunden)](app-service-logic-scenario-error-and-exception-handling.md)
 - [Beispiele und häufige Szenarios für Logik-Apps](app-service-logic-examples-and-scenarios.md)
 - [Erstellen einer Bereitstellungsvorlage für Logik-Apps](app-service-logic-create-deploy-template.md)
 - [Erstellen und Bereitstellen von Logik-Apps in Visual Studio](app-service-logic-deploy-from-vs.md)
@@ -207,4 +207,4 @@ Die oben beschriebenen Muster eignen sich gut zum Behandeln von Fehlern und Ausn
 <!-- References -->
 [retryPolicyMSDN]: https://msdn.microsoft.com/library/azure/mt643939.aspx#Anchor_9
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0928_2016-->

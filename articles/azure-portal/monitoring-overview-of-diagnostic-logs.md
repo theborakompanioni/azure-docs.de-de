@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/24/2016"
+	ms.date="09/26/2016"
 	ms.author="johnkem"/>
 
 # Übersicht über Azure-Diagnoseprotokolle
@@ -69,15 +69,23 @@ Mit den folgenden Befehlen können Sie Diagnoseprotokolle über Azure PowerShell
 
 Verwenden Sie den folgenden Befehl, um das Speichern von Diagnoseprotokollen in einem Speicherkonto zu aktivieren:
 
-    Set-AzureRmDiagnosticSetting -ResourceId [your resource Id] -StorageAccountId [your storage account id] -Enabled $true
+    Set-AzureRmDiagnosticSetting -ResourceId [your resource id] -StorageAccountId [your storage account id] -Enabled $true
 
 Die Speicherkonto-ID (StorageAccountId) ist die Ressourcen-ID für das Speicherkonto, an das die Protokolle gesendet werden sollen.
 
 Verwenden Sie den folgenden Befehl, um das Streamen von Diagnoseprotokollen an eine Event Hub-Instanz zu aktivieren:
 
-    Set-AzureRmDiagnosticSetting -ResourceId [your resource Id] -ServiceBusRuleId [your service bus rule id] -Enabled $true
+    Set-AzureRmDiagnosticSetting -ResourceId [your resource id] -ServiceBusRuleId [your service bus rule id] -Enabled $true
 
 Die Service Bus-Regel-ID (ServiceBusRuleId) ist eine Zeichenfolge im folgenden Format: `{service bus resource ID}/authorizationrules/{key name}`.
+
+Verwenden Sie den folgenden Befehl, um das Senden von Diagnoseprotokollen an einen Log Analytics-Arbeitsbereich zu aktivieren:
+
+    Set-AzureRmDiagnosticSetting -ResourceId [your resource id] -WorkspaceId [log analytics workspace id] -Enabled $true
+
+Ihre Log Analytics-Arbeitsbereichs-ID erhalten Sie im Azure-Portal.
+
+Sie können diese Parameter miteinander kombinieren, um mehrere Ausgabeoptionen zu aktivieren.
 
 Mit den folgenden Befehlen können Sie Diagnoseprotokolle über die Azure-Befehlszeilenschnittstelle aktivieren:
 
@@ -93,7 +101,33 @@ Verwenden Sie den folgenden Befehl, um das Streamen von Diagnoseprotokollen an e
 
 Die Service Bus-Regel-ID (ServiceBusRuleId) ist eine Zeichenfolge im folgenden Format: `{service bus resource ID}/authorizationrules/{key name}`.
 
+Verwenden Sie den folgenden Befehl, um das Senden von Diagnoseprotokollen an einen Log Analytics-Arbeitsbereich zu aktivieren:
+
+    azure insights diagnostic set --resourceId <resourceId> --workspaceId <workspaceId> --enabled true
+
+Ihre Log Analytics-Arbeitsbereichs-ID erhalten Sie im Azure-Portal.
+
+Sie können diese Parameter miteinander kombinieren, um mehrere Ausgabeoptionen zu aktivieren.
+
 Informationen zum Ändern der Diagnoseeinstellungen mithilfe der Insights-REST-API finden Sie in [diesem Dokument](https://msdn.microsoft.com/library/azure/dn931931.aspx).
+
+## Verwalten von Diagnoseeinstellungen im Portal
+
+Um sicherzustellen, dass all Ihre Ressourcen korrekt mit den Diagnoseeinstellungen eingerichtet wurden, können Sie im Portal zum Blatt **Überwachen** navigieren und das Blatt **Diagnoseprotokolle** öffnen.
+
+![Das Blatt „Diagnoseprotokolle“ im Portal](./media/monitoring-overview-of-diagnostic-logs/manage-portal-nav.png)
+
+Möglicherweise müssen Sie auf „Weitere Dienste“ klicken, um das Blatt „Überwachung“ zu finden.
+
+Auf diesem Blatt können Sie alle Ressourcen anzeigen und filtern, die Diagnoseprotokolle unterstützen, um festzustellen, ob die Diagnose für sie aktiviert ist und in welchem Speicherkonto, Event Hub und/oder Log Analytics-Arbeitsbereich diese Protokolle eingehen.
+
+![Ergebnisse auf dem Blatt „Diagnoseprotokolle“ im Portal](./media/monitoring-overview-of-diagnostic-logs/manage-portal-blade.png)
+
+Durch Klicken auf eine Ressource werden alle Protokolle angezeigt, die im Speicherkonto gespeichert sind. Außerdem können Sie die Diagnoseeinstellungen ausschalten oder ändern. Klicken Sie auf das Symbol „Herunterladen“, um Protokolle für einen bestimmten Zeitraum herunterzuladen.
+
+![Das Blatt „Diagnoseprotokolle“ für eine Ressource](./media/monitoring-overview-of-diagnostic-logs/manage-portal-logs.png)
+
+> [AZURE.NOTE] Nur wenn Sie die Diagnoseeinstellungen so konfiguriert haben, dass sie in einem Speicherkonto gespeichert werden, werden Diagnoseprotokolle in dieser Ansicht angezeigt und stehen zum Download zur Verfügung.
 
 ## Unterstützte Dienste und Schema für Diagnoseprotokolle
 Das Schema für Diagnoseprotokolle variiert abhängig von der Ressource und der Protokollkategorie. Im Anschluss finden Sie die unterstützten Dienste und das zugehörige Schema:
@@ -133,10 +167,13 @@ Das Schema für Diagnoseprotokolle variiert abhängig von der Ressource und der 
 |Microsoft.Network/applicationGateways|ApplicationGatewayPerformanceLog|Application Gateway-Leistungsprotokoll|
 |Microsoft.Network/applicationGateways|ApplicationGatewayFirewallLog|Application Gateway-Firewallprotokoll|
 |Microsoft.Search/searchServices|OperationLogs|Vorgangsprotokolle|
+|Microsoft.ServerManagement/nodes|RequestLogs|Anforderungsprotokolle|
+|Microsoft.StreamAnalytics/streamingjobs|Ausführung|Ausführung|
+|Microsoft.StreamAnalytics/streamingjobs|Erstellen|Erstellen|
 
 ## Nächste Schritte
 - [Streamen von Diagnoseprotokollen an **Event Hubs**](monitoring-stream-diagnostic-logs-to-event-hubs.md)
 - [Ändern der Diagnoseeinstellungen mithilfe der Insights-REST-API](https://msdn.microsoft.com/library/azure/dn931931.aspx)
 - [Analysieren der Protokolle mit OMS Log Analytics](../log-analytics/log-analytics-azure-storage-json.md)
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0928_2016-->

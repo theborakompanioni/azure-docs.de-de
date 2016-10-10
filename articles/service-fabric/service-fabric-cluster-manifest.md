@@ -117,10 +117,12 @@ Beachten Sie, dass auf einem primären Knoten nur jeweils eine einzige Kopie der
 ### **nodeTypes**
 Im Abschnitt **nodeTypes** werden die Typen der Knoten beschrieben, die in Ihrem Cluster vorhanden sind. Es muss mindestens ein Knotentyp für einen Cluster angegeben sein, wie im folgenden Codeausschnitt gezeigt.
 
-	"nodeTypes": [{
+    "nodeTypes": [{
         "name": "NodeType0",
         "clientConnectionEndpointPort": "19000",
         "clusterConnectionEndpoint": "19001",
+        "leaseDriverEndpointPort": "19002"
+        "serviceConnectionEndpointPort": "19003",
         "httpGatewayEndpointPort": "19080",
         "applicationPorts": {
 			"startPort": "20001",
@@ -133,7 +135,7 @@ Im Abschnitt **nodeTypes** werden die Typen der Knoten beschrieben, die in Ihrem
         "isPrimary": true
     }]
 
-**name** ist der Anzeigename für diesen bestimmten Knotentyp. Um einen Knoten mit diesem Knotentyp zu erstellen, müssen Sie den Anzeigenamen für diesen Knotentyp der Variablen **nodeTypeRef** für diesen Knoten zuweisen, wie oben im Abschnitt [Knoten im Cluster](#clusternodes) beschrieben. Für jeden Knotentyp können Sie verschiedene Endpunkte definieren, die zum Herstellen einer Verbindung mit diesem Cluster verwendet werden. Für diese Verbindungsendpunkte können Sie jede beliebige Portnummer auswählen, sofern dadurch keine Konflikte mit anderen Endpunkten in diesem Cluster entstehen. Ein Cluster mit mehreren Knotentypen verfügt über einen primären Knotentyp, für den **isPrimary** auf *true* festgelegt ist. Für die übrigen Knoten ist **isPrimary** auf *false* festgelegt. Lesen Sie den Artikel [Überlegungen zur Kapazitätsplanung für Service Fabric-Cluster](service-fabric-cluster-capacity.md), um sich ausführlicher über die für Ihre Clusterkapazität angemessenen Werte für **nodeTypes** und **reliabilityLevel** sowie über den Unterschied zwischen primären und nicht primären Knotentypen zu informieren.
+**name** ist der Anzeigename für diesen bestimmten Knotentyp. Um einen Knoten mit diesem Knotentyp zu erstellen, müssen Sie den Anzeigenamen für diesen Knotentyp der Variablen **nodeTypeRef** für diesen Knoten zuweisen, wie oben im Abschnitt [Knoten im Cluster](#clusternodes) beschrieben. Für jeden Knotentyp können Sie verschiedene Endpunkte definieren, die zum Herstellen einer Verbindung mit diesem Cluster verwendet werden. Für diese Verbindungsendpunkte können Sie jede beliebige Portnummer auswählen, sofern dadurch keine Konflikte mit anderen Endpunkten in diesem Cluster entstehen. Wenn Sie einen HTTP-Anwendungsgatewayport erstellen möchten, können Sie wie oben beschrieben neben anderen Ports „reverseProxyEndpointPort: [Portnummer]“ angeben. Ein Cluster mit mehreren Knotentypen verfügt über einen primären Knotentyp, für den **isPrimary** auf *true* festgelegt ist. Für die übrigen Knoten ist **isPrimary** auf *false* festgelegt. Lesen Sie den Artikel [Überlegungen zur Kapazitätsplanung für Service Fabric-Cluster](service-fabric-cluster-capacity.md), um sich ausführlicher über die für Ihre Clusterkapazität angemessenen Werte für **nodeTypes** und **reliabilityLevel** sowie über den Unterschied zwischen primären und nicht primären Knotentypen zu informieren.
 
 
 ### **fabricSettings**
@@ -156,4 +158,4 @@ Es wird empfohlen, ein Nicht-Betriebssystem-Laufwerk als „FabricDataRoot“ un
 
 Nachdem Sie die Datei „ClusterConfig.JSON“ vollständig entsprechend dem Setup für Ihren eigenständigen Cluster konfiguriert haben, können Sie den Cluster bereitstellen. Dazu befolgen Sie die Anweisungen im Artikel [Erstellen eines Azure Service Fabric-Clusters – lokal oder in der Cloud](service-fabric-cluster-creation-for-windows-server.md), und anschließend [visualisieren Sie den Cluster mit Service Fabric Explorer](service-fabric-visualizing-your-cluster.md).
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

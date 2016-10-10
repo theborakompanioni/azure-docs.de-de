@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="Datentransformation: Verarbeiten und Transformieren von Daten | Microsoft Azure" 
-	description="Hier finden Sie Informationen zur Datentransformation in Azure Data Factory. Transformieren und Verarbeiten Sie Daten in einem Azure HDInsight-Cluster oder in Azure Batch." 
+	description="Informationen Sie zum Transformieren von Daten oder Verarbeiten von Daten in Azure Data Factory mit Hadoop, Machine Learning und Azure Data Lake Analytics." 
 	keywords="Datentransformation, Daten verarbeiten, Daten transformieren, Transformationsaktivität"
 	services="data-factory" 
 	documentationCenter="" 
@@ -14,34 +14,72 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/12/2016" 
+	ms.date="09/23/2016" 
 	ms.author="spelluru"/>
 
-# Transformieren und Analysieren von Daten in Azure Data Factory
-Dieser Artikel enthält Informationen zu Datentransformationsaktivitäten in Azure Data Factory und erklärt, wie Azure Data Factory Ihre Rohdaten in Prognosen und Einblicke verwandelt. Sie werden in einer Compute-Umgebung wie Azure HDInsight-Cluster oder einem Azure Batch ausgeführt. Darüber hinaus finden Sie hier Links zu einigen Artikeln, in denen die Verwendung bestimmter Transformationsaktivitäten erläutert wird.
+# Transformieren von Data in Azure Data Factory
+
+## Übersicht 
+Dieser Artikel enthält Informationen zu Datentransformationsaktivitäten in Azure Data Factory, mit denen Sie Ihre Rohdaten in Vorhersagen und Einblicke transformieren und verarbeiten können. Transformationsaktivitäten erfolgen in einer Compute-Umgebung wie Azure HDInsight-Cluster oder einem Azure Batch. Sie finden hier Links zu Artikeln mit detaillierten Informationen zu jeder Transformationsaktivität.
  
-Azure Data Factory unterstützt die folgenden Transformationsaktivitäten, die [Pipelines](data-factory-create-pipelines.md) entweder einzeln oder mit einer anderen Aktivität verkettet hinzugefügt werden können.
+Data Factory unterstützt die folgenden Transformationsaktivitäten, die [Pipelines](data-factory-create-pipelines.md) entweder einzeln oder mit einer anderen Aktivität verkettet hinzugefügt werden können.
+
+> [AZURE.NOTE] Eine exemplarische Vorgehensweise mit einer detaillierten Anleitung finden Sie im Artikel [Erstellen einer Pipeline mit Hive-Transformation](data-factory-build-your-first-pipeline.md).
+
+## HDInsight Hive-Aktivität
+Die HDInsight Hive-Aktivität in einer Data Factory-Pipeline wendet Hive-Abfragen auf Ihren eigenen oder bedarfsgesteuerten Windows-/Linux-basierten HDInsight-Cluster an. Im Artikel [Hive-Aktivität](data-factory-hive-activity.md) finden Sie Details zu dieser Aktivität.
+
+## HDInsight Pig-Aktivität
+Die HDInsight Pig-Aktivität in einer Data Factory-Pipeline wendet Pig-Abfragen auf Ihren eigenen oder bedarfsgesteuerten Windows-/Linux-basierten HDInsight-Cluster an. Im Artikel [Pig-Aktivität](data-factory-pig-activity.md) finden Sie Details zu dieser Aktivität.
+
+## HDInsight MapReduce-Aktivität
+Die HDInsight MapReduce-Aktivität in einer Data Factory-Pipeline wendet MapReduce-Programme auf Ihren eigenen oder bedarfsgesteuerten Windows-/Linux-basierten HDInsight-Cluster an. Im Artikel [MapReduce-Aktivität](data-factory-map-reduce.md) finden Sie Details zu dieser Aktivität.
+
+Sie können die MapReduce-Aktivität verwenden, um Spark-Programme in Ihrem HDInsight Spark-Cluster auszuführen. Weitere Informationen finden Sie unter [Invoke Spark programs from Azure Data Factory](data-factory-spark.md) (Aufrufen von Spark-Programmen aus Azure Data Factory).
+
+## HDInsight-Streamingaktivität
+Die HDInsight-Streamingaktivität in einer Data Factory-Pipeline wendet Hadoop-Streamingprogramme auf Ihren eigenen oder bedarfsgesteuerten Windows-/Linux-basierten HDInsight-Cluster an. Unter [HDInsight-Streamingaktivität](data-factory-hadoop-streaming-activity.md) finden Sie ausführliche Informationen zu dieser Aktivität.
+
+## Machine Learning-Aktivitäten
+Azure Data Factory ermöglicht die einfache Erstellung von Pipelines, die einen veröffentlichten Azure Machine Learning-Webdienst für Predictive Analytics nutzen. Mithilfe der [Batchausführungsaktivität](data-factory-azure-ml-batch-execution-activity.md#invoking-a-web-service-using-batch-execution-activity) in einer Azure Data Factory-Pipeline können Sie einen Machine Learning-Webdienst aufrufen, um Vorhersagen zu den Daten im Batch zu machen.
+
+Im Laufe der Zeit müssen die Vorhersagemodelle in den Machine Learning-Bewertungsexperimenten mit neuen Eingabedatasets neu trainiert werden. Wenn Sie mit dem erneuten Trainieren fertig sind, sollten Sie den Bewertungswebdienst mit dem neu trainierten Machine Learning-Modell aktualisieren. Verwenden Sie die [Ressourcenaktualisierungsaktivität](data-factory-azure-ml-batch-execution-activity.md#updating-models-using-update-resource-activity), um den Webdienst mit dem neu trainierten Modell zu aktualisieren.
+
+Unter [Verwenden von Machine Learning-Aktivitäten](data-factory-azure-ml-batch-execution-activity.md) finden Sie Einzelheiten zu diesen Machine Learning-Aktivitäten.
+
+## Aktivität „Gespeicherte Prozedur“
+Sie können die SQL Server-Aktivität „Gespeicherte Prozedur“ in einer Data Factory-Pipeline zum Aufrufen einer gespeicherten Prozedur in einem der folgenden Dateispeicher nutzen: Azure SQL-Datenbank, Azure SQL Data Warehouse, SQL Server-Datenbank in Ihrem Unternehmen oder Azure-VM. Unter [Aktivität „Gespeicherte Prozedur“](data-factory-stored-proc-activity.md) finden Sie Details.
+
+## U-SQL-Aktivität für Data Lake Analytics
+Die U-SQL-Aktivität für Data Lake Analytics wendet ein U-SQL-Skript auf einen Azure Data Lake Analytics-Cluster an. Unter [U-SQL-Aktivität für Data Lake Analytics](data-factory-usql-activity.md) finden Sie Details.
+
+## Benutzerdefinierte .NET-Aktivität
+Wenn Sie Daten auf eine Weise transformieren/verarbeiten müssen, die von Data Factory nicht unterstützt wird, können Sie eine benutzerdefinierte Aktivität mit Ihrer eigenen Datenverarbeitungslogik erstellen und in der Pipeline verwenden. Sie können die benutzerdefinierte .NET-Aktivität so konfigurieren, dass sie entweder mithilfe eines Azure Batch-Diensts oder eines Azure HDInsight-Clusters ausgeführt wird. Unter [Verwenden benutzerdefinierter Aktivitäten](data-factory-use-custom-activities.md) finden Sie Einzelheiten.
+
+Sie können eine benutzerdefinierte Aktivität erstellen, um R-Skripts in Ihrem HDInsight-Cluster mit installiertem R auszuführen. Informationen hierzu finden Sie unter [RunRScriptUsingADFSample](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample).
+
+## Compute-Umgebungen
+Sie erstellen einen verknüpften Dienst für die Computeumgebung und verwenden dann den verknüpften Dienst, wenn Sie eine Transformationsaktivität definieren. Es gibt zwei Typen von Compute-Umgebungen, die von Data Factory unterstützt werden.
+
+1. **Bei Bedarf**: In diesem Fall wird die Compute-Umgebung vollständig von Data Factory verwaltet. Der Data Factory-Dienst erstellt diese Umgebung automatisch, bevor ein Auftrag zur Verarbeitung von Daten übermittelt wird. Sobald der Auftrag abgeschlossen wurde, wird die Umgebung entfernt. Sie können differenzierte Einstellungen für die bedarfsgesteuerte Computeumgebung zur Auftragsausführung, Clusterverwaltung sowie für Bootstrappingaktionen konfigurieren und steuern.
+2. **Eigene verwenden**: In diesem Fall können Sie Ihre eigene Compute-Umgebung (z. B. HDInsight-Cluster) als verknüpften Dienst in Data Factory registrieren. Die Compute-Umgebung wird von Ihnen verwaltet und von Data Factory zum Ausführen von Aktivitäten verwendet.
+
+Unter dem Artikel [Verknüpfte Computedienste](data-factory-compute-linked-services.md) finden Sie Informationen zu Computediensten, die von Data Factory unterstützt werden.
+
+
+## Zusammenfassung
+Azure Data Factory unterstützt für die Aktivitäten die folgenden Datentransformationsaktivitäten und Compute-Umgebungen. Die Transformationsaktivitäten werden Pipelines entweder einzeln oder mit einer anderen Aktivität verkettet hinzugefügt.
 
 Datentransformationsaktivität | Compute-Umgebung 
 :----------------------- | :--------------------
-[Hive](data-factory-hive-activity.md) | HDInsight [Hadoop]
-[Pig](data-factory-pig-activity.md) | HDInsight [Hadoop]
-[MapReduce](data-factory-map-reduce.md) | HDInsight [Hadoop]
-[Hadoop Streaming](data-factory-hadoop-streaming-activity.md) | HDInsight [Hadoop]
+[Hive](data-factory-hive-activity.md) | HDInsight [Hadoop] 
+[Pig](data-factory-pig-activity.md) | HDInsight [Hadoop] 
+[MapReduce](data-factory-map-reduce.md) | HDInsight [Hadoop] 
+[Hadoop Streaming](data-factory-hadoop-streaming-activity.md) | HDInsight [Hadoop] 
 [Machine Learning-Aktivitäten: Batchausführung und Ressourcenaktualisierung](data-factory-azure-ml-batch-execution-activity.md) | Azure-VM 
 [Gespeicherte Prozedur](data-factory-stored-proc-activity.md) | Azure SQL, Azure SQL Data Warehouse oder SQL Server |
 [Data Lake Analytics U-SQL](data-factory-usql-activity.md) | Azure Data Lake Analytics 
 [DotNet](data-factory-use-custom-activities.md) | HDInsight [Hadoop] oder Azure Batch
    
-> [AZURE.NOTE] 
-Sie können die MapReduce-Aktivität verwenden, um Spark-Programme in Ihrem HDInsight Spark-Cluster auszuführen. Weitere Informationen finden Sie unter [Aufrufen von Spark-Programmen aus Data Factory](data-factory-spark.md). Sie können eine benutzerdefinierte Aktivität erstellen, um R-Skripts in Ihrem HDInsight-Cluster mit installiertem R auszuführen. Informationen hierzu finden Sie unter [RunRScriptUsingADFSample](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample).
- 
 
-Sie erstellen einen verknüpften Dienst für die Computeumgebung und verwenden dann den verknüpften Dienst, wenn Sie eine Transformationsaktivität definieren. Es gibt zwei Typen von Compute-Umgebungen, die von Data Factory unterstützt werden.
-
-1. **Bei Bedarf**: In diesem Fall wird die Compute-Umgebung vollständig von Data Factory verwaltet. Der Data Factory-Dienst erstellt diese Umgebung automatisch, bevor ein Auftrag zur Verarbeitung von Daten übermittelt wird. Sobald der Auftrag abgeschlossen wurde, wird die Umgebung entfernt. Sie können differenzierte Einstellungen für die bedarfsgesteuerte Computeumgebung zur Auftragsausführung, Clusterverwaltung sowie für Bootstrappingaktionen konfigurieren und steuern.
-2. **Eigene verwenden**: In diesem Fall können Sie Ihre eigene Compute-Umgebung (z. B. HDInsight-Cluster) als verknüpften Dienst in Data Factory registrieren. Die Compute-Umgebung wird von Ihnen verwaltet und von Data Factory zum Ausführen von Aktivitäten verwendet. 
-
-Unter dem Artikel [Verknüpfte Computedienste](data-factory-compute-linked-services.md) finden Sie Informationen zu Computediensten, die von Data Factory unterstützt werden.
-
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0928_2016-->

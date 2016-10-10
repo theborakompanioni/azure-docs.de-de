@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="08/03/2016"
+   ms.date="09/22/2016"
    ms.author="mfussell"/>
 
 # Übersicht über Service Fabric
@@ -110,4 +110,4 @@ Mit Service Fabric können Sie Folgendes tun:
 
 [Image1]: media/service-fabric-overview/Service-Fabric-Overview.png
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0928_2016-->

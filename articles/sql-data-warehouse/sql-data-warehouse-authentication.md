@@ -14,15 +14,16 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-management"
-   ms.date="09/04/2016"
+   ms.date="09/24/2016"
    ms.author="rickbyh;barbkess;sonyama"/>
 
 # Authentifizierung in Azure SQL Data Warehouse
 
 > [AZURE.SELECTOR]
-- [Übersicht](sql-data-warehouse-connect-overview.md)
+- [Sicherheitsübersicht](sql-data-warehouse-overview-manage-security.md)
 - [Authentifizierung](sql-data-warehouse-authentication.md)
-- [Treiber](sql-data-warehouse-connection-strings.md)
+- [Verschlüsselung (Portal)](sql-data-warehouse-encryption-tde.md)
+- [Verschlüsselung (T-SQL)](sql-data-warehouse-encryption-tde-tsql.md)
 
 Zum Herstellen einer Verbindung mit SQL Data Warehouse müssen Sie zu Authentifizierungszwecken Sicherheitsanmeldeinformationen übergeben. Beim Herstellen einer Verbindung werden bestimmte Verbindungseinstellungen im Rahmen der Einrichtung Ihrer Abfragesitzung konfiguriert.
 
@@ -90,4 +91,4 @@ Informationen zum Abfragen Ihres Data Warehouse mit Visual Studio und anderen An
 [What is Azure Active Directory]: ../active-directory/active-directory-whatis.md
 [Funktionen und Einschränkungen von Azure AD]: ../sql-database/sql-database-aad-authentication.md#azure-ad-features-and-limitations
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0928_2016-->

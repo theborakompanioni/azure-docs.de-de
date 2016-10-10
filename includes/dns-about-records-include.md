@@ -2,7 +2,9 @@
 
 Jeder DNS-Eintrag hat einen Namen und einen Typ. Datensätze werden anhand der darin enthaltenen Daten nach verschiedenen Typen unterteilt. Der häufigste Typ ist ein A-Eintrag, der einer IPv4-Adresse einen Namen zuordnet. Ein weiterer Typ ist ein MX-Eintrag, der einem Mailserver einen Namen zuordnet.
 
-Azure DNS unterstützt alle allgemeinen DNS-Eintragstypen, z.B. A, AAAA, CNAME, MX, NS, SOA, SRV und TXT. SOA-Ressourceneintragssätze werden mit jeder Zone automatisch erstellt. Sie können nicht separat erstellt werden. Beachten Sie, dass SPF-Einträge mit dem TXT-Eintragstyp erstellt werden sollten. Weitere Informationen finden Sie auf [dieser Seite](http://tools.ietf.org/html/rfc7208#section-3.1).
+Azure DNS unterstützt alle allgemeinen DNS-Eintragstypen, z.B. A, AAAA, CNAME, MX, NS, PTR, SOA, SRV und TXT. Beachten Sie Folgendes:
+- SOA-Eintragssätze werden automatisch mit jeder Zone erstellt; sie können nicht separat erstellt werden.
+- SPF-Einträge sollten mit dem TXT-Eintragstyp erstellt werden. Weitere Informationen finden Sie auf [dieser Seite](http://tools.ietf.org/html/rfc7208#section-3.1).
 
 Einträge in Azure DNS werden mit relativen Namen angegeben. Ein „vollqualifizierter“ Domänenname (FQDN) beinhaltet den Zonennamen, ein „relativer“ Name hingegen nicht. Der relative Eintragsname „www“ in der Zone „contoso.com“ gibt beispielsweise den vollqualifizierten Eintragsnamen „www.contoso.com“ an.
 
@@ -23,10 +25,10 @@ Die Gültigkeitsdauer (TTL oder Time-to-Live) gibt an, wie lange jeder Eintrag v
 
 Azure DNS unterstützt [Platzhalterdatensätze](https://en.wikipedia.org/wiki/Wildcard_DNS_record). Diese werden für alle Abfragen mit einem übereinstimmenden Namen zurückgegeben (es sei denn, es gibt eine genauere Übereinstimmung aus einem Ressourceneintragssatz ohne Platzhalter). Ressourceneintragssätze mit Platzhaltern werden für alle Eintragstypen mit Ausnahme von NS und SOA unterstützt.
 
-Verwenden Sie zum Erstellen eines Ressourceneintragssatzes mit Platzhaltern den Ressourceneintragssatz-Namen „ * “. Oder verwenden Sie einen Namen mit „ * “, z.B. „*.foo“.
+Verwenden Sie zum Erstellen eines Ressourceneintragssatzes mit Platzhaltern den Ressourceneintragssatz-Namen „ * “. Oder verwenden Sie einen Namen mit „ * “, z.B. „ *.foo “.
 
 #### CNAME-Ressourceneintragssätze
 
 CNAME-Ressourceneintragssätze können nicht gleichzeitig neben anderen Ressourceneintragssätzen mit dem gleichen Namen vorhanden sein. Sie können einen CNAME-Ressourceneintragssatz z.B. nicht mit dem relativen Namen „www“ und gleichzeitig einen A-Eintrag mit dem relativen Namen „www“ erstellen. Da die Zonenspitze (Name = „@“) immer die NS- und SOA-Ressourceneintragssätze enthält, die beim Erstellen der Zone erstellt wurden, können Sie keinen CNAME-Ressourceneintragssatz an der Zonenspitze erstellen. Diese Einschränkungen ergeben sich aus den DNS-Standards und sind keine Einschränkungen von Azure DNS.
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0928_2016-->

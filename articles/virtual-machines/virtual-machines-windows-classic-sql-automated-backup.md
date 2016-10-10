@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="07/14/2016"
+	ms.date="09/26/2016"
 	ms.author="jroth" />
 
 # Automatisierte Sicherung für SQL Server auf virtuellen Azure-Computern (klassisch)
@@ -42,19 +42,23 @@ Beachten Sie bei der Verwendung der automatisierten Sicherung die folgenden Vora
 - SQL Server 2014 Standard
 - SQL Server 2014 Enterprise
 
-**Datenbankkonfiguration**:
+>[AZURE.NOTE] SQL Server 2016 wird für die automatisierte Sicherung noch nicht unterstützt.
+
+**Datenbankkonfiguration:**
 
 - Zieldatenbanken müssen das vollständige Wiederherstellungsmodell verwenden.
 
-**Azure PowerShell**:
+**Azure PowerShell:**
 
-- [Installieren Sie die aktuellen Azure PowerShell-Befehle](../powershell-install-configure.md), wenn Sie die automatisierte Sicherung mit PowerShell konfigurieren möchten.
+- [Installieren der neuesten Azure PowerShell-Befehle](../powershell-install-configure.md)
 
->[AZURE.NOTE] Die automatisierte Sicherung basiert auf der Erweiterung für den SQL Server-IaaS-Agent. Aktuelle Katalogimages für virtuelle SQL-Computer fügen diese Erweiterung standardmäßig hinzu. Weitere Informationen finden Sie unter [SQL Server-Agent-Erweiterung für virtuelle SQL Server-Computer (klassisch)](virtual-machines-windows-classic-sql-server-agent-extension.md).
+**Erweiterung für SQL Server-IaaS:**
+
+- [Installieren der Erweiterung für SQL Server-IaaS](virtual-machines-windows-classic-sql-server-agent-extension.md)
 
 ## Einstellungen
 
-In der folgenden Tabelle werden die Optionen beschrieben, die für die automatisierte Sicherung konfiguriert werden können. Die tatsächlichen Konfigurationsschritte variieren abhängig davon, ob Sie das Azure-Portal oder Azure Windows PowerShell-Befehle verwenden.
+In der folgenden Tabelle werden die Optionen beschrieben, die für die automatisierte Sicherung konfiguriert werden können. Bei klassischen virtuellen Computern muss PowerShell zum Konfigurieren dieser Einstellungen verwendet werden.
 
 |Einstellung|Bereich (Standard)|Beschreibung|
 |---|---|---|
@@ -63,23 +67,6 @@ In der folgenden Tabelle werden die Optionen beschrieben, die für die automatis
 |**Speicherkonto**|Azure-Speicher-Konto (das für die angegebene VM erstellte Speicherkonto)|Ein Azure-Speicherkonto, mit dem Dateien der automatisierten Sicherung im Blob-Speicher gespeichert werden. An diesem Speicherort wird ein Container zum Speichern aller Sicherungsdateien erstellt. Die Namenskonvention für die Sicherungsdatei enthält das Datum, die Uhrzeit und den Computernamen.|
 |**Verschlüsselung**|Aktivieren/Deaktivieren (deaktiviert)|Aktiviert oder deaktiviert die Verschlüsselung. Wenn die Verschlüsselung aktiviert ist, befinden sich die Zertifikate zum Wiederherstellen der Sicherung im angegebenen Speicherkonto im gleichen automaticbackup-Container (mit derselben Namenskonvention). Wenn das Kennwort geändert wird, wird ein neues Zertifikat mit diesem Kennwort generiert, das alte Zertifikat bleibt jedoch zum Wiederherstellen vorheriger Sicherungen erhalten.|
 |**Kennwort**|Kennworttext (keiner)|Ein Kennwort für Verschlüsselungsschlüssel. Ein Kennwort ist nur erforderlich, wenn die Verschlüsselung aktiviert ist. Um eine verschlüsselte Sicherung wiederherzustellen, benötigen Sie das richtige Kennwort und das zugehörige Zertifikat, das beim Erstellen der Sicherung verwendet wurde.|
-
-## Konfiguration im Portal
-Mit dem Azure-Portal können Sie die automatisierte Sicherung während der Bereitstellung oder für vorhandene virtuelle Computer konfigurieren.
-
-### Neue virtuelle Computer
-Verwenden Sie das Azure-Portal zum Konfigurieren der automatisierten Sicherung, wenn Sie einen neuen virtuellen Computer mit SQL Server 2014 im klassischen Bereitstellungsmodell erstellen.
-
-Der folgende Azure-Portal-Screenshot zeigt die oben beschriebenen Optionen unter **OPTIONALE KONFIGURATION** | **AUTOMATISIERTE SQL-SICHERUNG**.
-
-![Konfigurieren der automatischen SQL-Sicherung im Azure-Portal](./media/virtual-machines-windows-classic-sql-automated-backup/IC778483.jpg)
-
-### Vorhandene virtuelle Computer
-Wählen Sie für vorhandene virtuelle Computer mit SQL Server 2014 die Einstellungen für die **automatische Sicherung** im Abschnitt **Konfiguration** der Eigenschaften des virtuellen Computers aus. Im Fenster **Automatisierte Sicherung** können Sie die Funktion aktivieren, den Aufbewahrungszeitraum festlegen, das Speicherkonto auswählen und die Verschlüsselung festlegen. Diese Einstellungen zeigt der folgende Screenshot.
-
-![Konfigurieren der automatisierten Sicherung im Azure-Portal](./media/virtual-machines-windows-classic-sql-automated-backup/IC792133.jpg)
-
->[AZURE.NOTE] Wenn Sie die automatisierte Sicherung zum ersten Mal aktivieren, konfiguriert Azure den SQL Server-IaaS-Agent im Hintergrund. Im Azure-Portal wird währenddessen u.U. nicht angezeigt, dass die automatisierte Sicherung konfiguriert wird. Warten Sie einige Minuten, bis der Agent installiert und konfiguriert wurde. Danach werden die neuen Einstellungen im Azure-Portal angezeigt.
 
 ## Konfiguration mit PowerShell
 
@@ -119,4 +106,4 @@ Informationen zu anderen verfügbaren Automatisierungsaufgaben finden Sie unter 
 
 Ausführlichere Informationen zur Ausführung von SQL Server auf virtuellen Azure-Computern finden Sie unter [Übersicht zu SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-sql-server-iaas-overview.md).
 
-<!----HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0928_2016-->

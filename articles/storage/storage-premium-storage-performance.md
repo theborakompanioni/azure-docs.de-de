@@ -4,7 +4,7 @@
     services="storage"
     documentationCenter="na"
     authors="aungoo-msft"
-    manager=""
+    manager="tadb"
 	editor="tysonn" />
 
 <tags
@@ -14,7 +14,7 @@
     ms.devlang="na"
     ms.topic="article"
     ms.date="09/19/2016"
-    ms.author="aungoo-msft"/>
+    ms.author="aungoo;robinsh"/>
 
 # Azure Storage Premium: Entwurf für hohe Leistung
 
@@ -569,4 +569,4 @@ Für SQL Server-Benutzer bietet sich das Lesen von Artikeln zu den bewährten Me
 - [Optimale Verfahren für die Leistung für SQL Server auf virtuellen Computern in Azure](../virtual-machines/virtual-machines-windows-sql-performance.md)
 - [Azure Storage Premium bietet höchste Leistung für SQL Server in Azure-VM](http://blogs.technet.com/b/dataplatforminsider/archive/2015/04/23/azure-premium-storage-provides-highest-performance-for-sql-server-in-azure-vm.aspx)
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

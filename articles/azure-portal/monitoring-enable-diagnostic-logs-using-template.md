@@ -13,11 +13,11 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/17/2016"
+	ms.date="09/26/2016"
 	ms.author="johnkem"/>
 
 # Automatisches Aktivieren von Diagnoseeinstellungen bei der Ressourcenerstellung mithilfe einer Resource Manager-Vorlage
-In diesem Artikel erfahren Sie, wie Sie mithilfe einer [Azure Resource Manager-Vorlage](../resource-group-authoring-templates.md) Diagnoseeinstellungen für eine Ressource konfigurieren, wenn die Ressource erstellt wird. Dadurch können Sie automatisch mit dem Streamen Ihrer Diagnoseprotokolle und Metriken an Event Hubs beginnen oder sie in einem Speicherkonto archivieren, wenn eine Ressource erstellt wird.
+In diesem Artikel erfahren Sie, wie Sie mithilfe einer [Azure Resource Manager-Vorlage](../resource-group-authoring-templates.md) Diagnoseeinstellungen für eine Ressource konfigurieren, wenn die Ressource erstellt wird. Dadurch können Sie automatisch mit dem Streamen Ihrer Diagnoseprotokolle und Metriken an Event Hubs beginnen, sie in einem Speicherkonto archivieren oder sie bei der Erstellung einer Ressource an Log Analytics senden.
 
 Die Methode zum Aktivieren von Diagnoseprotokollen mithilfe einer Resource Manager-Vorlage hängt vom Ressourcentyp ab.
 
@@ -36,9 +36,9 @@ Im Anschluss finden Sie ein Beispiel für die JSON-Vorlagendatei, die für compu
 ## Vorlage für computefremde Ressourcen
 Für computefremde Ressourcen müssen zwei Schritte ausgeführt werden:
 
-1. Fügen Sie dem Parameterblob für den Speicherkontonamen und die Service Bus-Regel-ID Parameter hinzu, um die Archivierung von Diagnoseprotokollen in einem Speicherkonto und/oder das Streamen von Protokollen an Event Hubs zu aktivieren.
+1. Fügen Sie Parameter für den Speicherkontonamen, die Service Bus-Regel-ID und/oder die OMS Log Analytics-Arbeitsbereichs-ID zum Parameterblob hinzu (um die Archivierung von Diagnoseprotokollen in einem Speicherkonto, das Streamen von Protokollen an Event Hubs und/oder das Senden von Protokollen an Log Analytics zu ermöglichen).
 
-    ```
+    ```json
     "storageAccountName": {
       "type": "string",
       "metadata": {
@@ -50,11 +50,17 @@ Für computefremde Ressourcen müssen zwei Schritte ausgeführt werden:
       "metadata": {
         "description": "Service Bus Rule Id for the Service Bus Namespace in which the Event Hub should be created or streamed to."
       }
+    },
+    "workspaceId":{
+      "type": "string",
+      "metadata": {
+        "description": "Log Analytics workspace ID for the Log Analytics workspace to which logs will be sent."
+      }
     }
     ```
 2. Fügen Sie im Ressourcenarray der Ressource, für die Sie Diagnoseprotokolle aktivieren möchten, eine Ressource vom Typ `[resource namespace]/providers/diagnosticSettings` hinzu.
 
-    ```
+    ```json
     "resources": [
       {
         "type": "providers/diagnosticSettings",
@@ -66,6 +72,7 @@ Für computefremde Ressourcen müssen zwei Schritte ausgeführt werden:
         "properties": {
           "storageAccountId": "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName'))]",
           "serviceBusRuleId": "[parameters('serviceBusRuleId')]",
+          "workspaceId": "[parameters('workspaceId')]",
           "logs": [ 
             {
               "category": "/* log category name */",
@@ -85,76 +92,85 @@ Das Eigenschaftenblob für die Diagnoseeinstellung verwendet das in [diesem Arti
 
 Im folgenden vollständigen Beispiel wird eine Netzwerksicherheitsgruppe erstellt und das Streamen an Event Hubs sowie das Speichern in einem Speicherkonto aktiviert:
 
-```
+```json
+
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "nsgName": {
-            "type": "string",
-			"metadata": {
-				"description": "Name of the NSG that will be created."
-			}
-        },
-		"storageAccountName": {
-			"type": "string",
-			"metadata": {
-				"description":"Name of the Storage Account in which Diagnostic Logs should be saved."
-			}
-		},
-		"serviceBusRuleId": {
-			"type": "string",
-			"metadata": {
-				"description":"Service Bus Rule Id for the Service Bus Namespace in which the Event Hub should be created or streamed to."
-			}
-		}
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "nsgName": {
+      "type": "string",
+      "metadata": {
+        "description": "Name of the NSG that will be created."
+      }
     },
-    "variables": {},
-    "resources": [
+    "storageAccountName": {
+      "type": "string",
+      "metadata": {
+        "description": "Name of the Storage Account in which Diagnostic Logs should be saved."
+      }
+    },
+    "serviceBusRuleId": {
+      "type": "string",
+      "metadata": {
+        "description": "Service Bus Rule Id for the Service Bus Namespace in which the Event Hub should be created or streamed to."
+      }
+    },
+    "workspaceId": {
+      "type": "string",
+      "metadata": {
+        "description": "Log Analytics workspace ID for the Log Analytics workspace to which logs will be sent."
+      }
+    }
+  },
+  "variables": {},
+  "resources": [
+    {
+      "type": "Microsoft.Network/networkSecurityGroups",
+      "name": "[parameters('nsgName')]",
+      "apiVersion": "2016-03-30",
+      "location": "westus",
+      "properties": {
+        "securityRules": []
+      },
+      "resources": [
         {
-            "type": "Microsoft.Network/networkSecurityGroups",
-            "name": "[parameters('nsgName')]",
-            "apiVersion": "2016-03-30",
-            "location": "westus",
-            "properties": {
-                "securityRules": []
-            },
-            "resources": [
-				{
-					"type": "providers/diagnosticSettings",
-					"name": "Microsoft.Insights/service",
-					"dependsOn": [
-						"[resourceId('Microsoft.Network/networkSecurityGroups', parameters('nsgName'))]"
-					],
-					"apiVersion": "2015-07-01",
-					"properties": {
-						"storageAccountId": "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName'))]",
-                        "serviceBusRuleId": "[parameters('serviceBusRuleId')]",
-						"logs": [
-							{
-								"category": "NetworkSecurityGroupEvent",
-								"enabled": true,
-								"retentionPolicy": {
-									"days": 0,
-									"enabled": false
-								}
-							},
-                            {
-								"category": "NetworkSecurityGroupRuleCounter",
-								"enabled": true,
-								"retentionPolicy": {
-									"days": 0,
-									"enabled": false
-								}
-							}
-						]
-					}
-				}
-			],
-            "dependsOn": []
+          "type": "providers/diagnosticSettings",
+          "name": "Microsoft.Insights/service",
+          "dependsOn": [
+            "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('nsgName'))]"
+          ],
+          "apiVersion": "2015-07-01",
+          "properties": {
+            "storageAccountId": "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName'))]",
+            "serviceBusRuleId": "[parameters('serviceBusRuleId')]",
+            "workspaceId": "[parameters('workspaceId')]",
+            "logs": [
+              {
+                "category": "NetworkSecurityGroupEvent",
+                "enabled": true,
+                "retentionPolicy": {
+                  "days": 0,
+                  "enabled": false
+                }
+              },
+              {
+                "category": "NetworkSecurityGroupRuleCounter",
+                "enabled": true,
+                "retentionPolicy": {
+                  "days": 0,
+                  "enabled": false
+                }
+              }
+            ]
+          }
         }
-    ]
+      ],
+      "dependsOn": []
+    }
+  ]
 }
+
 ```
 
 ## Vorlage für Computeressourcen
@@ -173,4 +189,4 @@ Der gesamte Prozess wird in [diesem Dokument](../virtual-machines/virtual-machin
 - [Informieren Sie sich ausführlicher über Azure-Diagnoseprotokolle.](./monitoring-overview-of-diagnostic-logs.md)
 - [Streamen Sie Azure-Diagnoseprotokolle an Event Hubs.](./monitoring-stream-diagnostic-logs-to-event-hubs.md)
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0928_2016-->

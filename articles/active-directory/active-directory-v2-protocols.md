@@ -18,7 +18,7 @@
 
 # v2.0-Protokolle – OAuth 2.0 und OpenID Connect
 
-Mit den Protokollen nach Industriestandard OpenID Connect und OAuth 2.0 kann der v2.0-Endpunkt Azure AD als Identity-as-a-Service verwenden. Während der Dienst standardkonform ist, kann es feine Unterschiede zwischen den beiden Implementierungen dieser Protokolle geben. Die hier bereitgestellten Informationen sind nützlich, wenn Sie Code direkt durch Senden und Verarbeiten von HTTP-Anforderungen schreiben oder eine Open Source-Bibliothek eines Drittanbieters verwenden, anstatt eine unserer Open Source-Bibliotheken zu nutzen.
+Der v2.0-Endpunkt kann Azure AD als Identity-as-a-Service-Lösung mit den Industriestandardprotokollen OpenID Connect und OAuth 2.0 verwenden. Auch wenn der Dienst den Standard entspricht, kann es feine Unterschiede zwischen zwei Implementierungen dieser Protokolle geben. Die hier bereitgestellten Informationen sind nützlich, wenn Sie Code direkt durch Senden und Verarbeiten von HTTP-Anforderungen schreiben oder eine Open Source-Bibliothek eines Drittanbieters verwenden, anstatt eine unserer Open Source-Bibliotheken zu nutzen.
 <!-- TODO: Need link to libraries above -->
 
 > [AZURE.NOTE]
@@ -42,7 +42,7 @@ Jede App, die den v2.0-Endpunkt nutzt, muss vor der Interaktion mit OAuth oder O
 - Einen **Umleitungs-URI** oder **Paketbezeichner**, der zum Umleiten von Antworten zurück an die App verwendet werden kann.
 - Einige andere szenariospezifische Werte.
 
-Erfahren Sie nähere Einzelheiten, wie Sie [eine App registrieren](active-directory-v2-app-registration.md).
+Weitere Informationen finden Sie im Artikel zum [Registrieren von Apps](active-directory-v2-app-registration.md).
 
 ## Endpunkte
 Nach dem Registrieren kommuniziert eine App mit Azure AD, indem Anforderungen an den v2.0-Endpunkt gesendet werden:
@@ -75,9 +75,9 @@ Wenn Sie einige Beispielanforderungen sehen möchten, beginnen Sie mit einem der
 - [Erstellen von mobilen und systemeigenen Anwendungen mit OAuth 2.0](active-directory-v2-protocols-oauth-code.md)
 - [Erstellen von Web-Apps mit OpenID Connect](active-directory-v2-protocols-oidc.md)
 - [Erstellen von Apps mit einer einzigen Seite mit dem impliziten OAuth 2.0-Fluss](active-directory-v2-protocols-implicit.md)
-- Erstellen von Daemons oder serverseitigen Prozessen mit dem OAuth 2.0-Fluss für Client-Anmeldeinformationen (in Kürze verfügbar)
+- [Erstellen von Daemons oder serverseitigen Prozessen mit dem OAuth 2.0-Clientanmeldeinformations-Flow](active-directory-v2-protocols-oauth-client-creds.md)
 - Abrufen von Token in einer Web-API mit dem OAuth 2.0-Fluss "Im-Auftrag-von" (in Kürze verfügbar)
 
 <!-- - Get tokens using a username & password with the OAuth 2.0 Resource Owner Password Credentials Flow (coming soon) --> 
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

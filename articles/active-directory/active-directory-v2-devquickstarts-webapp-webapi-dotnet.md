@@ -20,10 +20,13 @@
 
 Mit dem v2.0-Endpunkt können Sie schnell eine Authentifizierung zu Ihren Web-Apps und Web-APIs hinzufügen, die sowohl persönliche Microsoft-Konten als auch Geschäfts-, Schul- oder Unikonten unterstützen. Hier erstellen wir eine MVC-Web-App, über die Benutzer unter Verwendung von OpenID Connect und unterstützt durch die OWIN-Middleware von Microsoft angemeldet werden. Die Web-App ruft OAuth 2.0-Zugriffstoken für eine durch OAuth 2.0 gesicherte Web-API ab, die das Erstellen, Lesen und Löschen von Daten in der Aufgabenliste eines bestimmten Benutzers ermöglicht.
 
-> [AZURE.NOTE]
-	Nicht alle Szenarien und Funktionen von Azure Active Directory werden vom v2.0-Endpunkt unterstützt. Lesen Sie die Informationen zu den [Einschränkungen des v2.0-Endpunkts](active-directory-v2-limitations.md), um herauszufinden, ob Sie den v2.0-Endpunkt verwenden sollten.
+> [AZURE.WARNING]
+	In diesem Tutorial wird aktuell eine veraltete, nicht mehr unterstützte Clientbibliothek verwendet, `Microsoft.Experimental.IdentityModel.Clients.ActiveDirectory` (ADAL, experimentell). Wir arbeiten daran, dieses Tutorial auf die `Microsoft.Identity.Client`-Vorschaubibliothek (MSAL) zu aktualisieren. In der Zwischenzeit wird empfohlen, die Verwendung von ADAL (experimentell) in diesem Tutorial durch MSAL zu ersetzen. Weitere Informationen zu Ihren Optionen bei der Auswahl einer Clientbibliothek finden Sie im Artikel zu den [Beschränkungen](active-directory-v2-limitations.md).
 
 Dieses Tutorial konzentriert sich hauptsächlich auf das Abrufen und Verwenden von Zugriffstoken mithilfe von ADAL in einer Web-App. Eine vollständige Beschreibung finden Sie [hier](active-directory-v2-flows.md#web-apps). Als Vorbedingung möchten Sie vielleicht zuerst erfahren, wie [ein grundlegendes Anmelden in eine Web-App hingefügt wird](active-directory-v2-devquickstarts-dotnet-web.md) oder wie [eine Web-API ausreichend geschützt wird](active-directory-v2-devquickstarts-dotnet-api.md).
+
+> [AZURE.NOTE]
+	Nicht alle Szenarien und Funktionen von Azure Active Directory werden vom v2.0-Endpunkt unterstützt. Lesen Sie die Informationen zu den [Einschränkungen des v2.0-Endpunkts](active-directory-v2-limitations.md), um herauszufinden, ob Sie den v2.0-Endpunkt verwenden sollten.
 
 ## Beispielcode herunterladen
 
@@ -201,4 +204,4 @@ Weitere Ressourcen:
 
 Wir empfehlen Ihnen, den Erhalt von Benachrichtigungen zu Sicherheitsvorfällen einzurichten. Rufen Sie dazu [diese Seite](https://technet.microsoft.com/security/dd252948) auf, und abonnieren Sie Sicherheitsempfehlungen.
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

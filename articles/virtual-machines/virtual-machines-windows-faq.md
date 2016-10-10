@@ -131,7 +131,6 @@ Kennwörter müssen 8 bis 123 Zeichen lang sein und 3 der 4 folgenden Komplexit�
 
 Die folgenden Kennwörter sind nicht zulässig:
 
-Die folgenden Kennwörter sind nicht zulässig
 <table>
 	<tr>
 		<td style="text-align:center">abc@123</td><td style="text-align:center">P@$$w0rd</td><td style="text-align:center">P@ssw0rd</td><td style="text-align:center">P@ssword123</td><td style="text-align:center">Pa$$word</td>
@@ -141,4 +140,4 @@ Die folgenden Kennwörter sind nicht zulässig
 	</tr>
 </table>
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0928_2016-->

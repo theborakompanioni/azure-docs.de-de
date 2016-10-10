@@ -13,23 +13,16 @@
    ms.tgt_pltfrm="na"
    ms.devlang="na"
    ms.topic="article"
-   ms.date="08/29/2016" 
+   ms.date="09/24/2016" 
    ms.author="rortloff;barbkess;sonyama"/>
 
 # Überwachung in Azure SQL Data Warehouse
 
 > [AZURE.SELECTOR]
-- [Sicherheitsübersicht](sql-data-warehouse-overview-manage-security.md)
+- [Überwachung](sql-data-warehouse-auditing-overview.md)
 - [Bedrohungserkennung](sql-data-warehouse-security-threat-detection.md)
-- [Verschlüsselung (Portal)](sql-data-warehouse-encryption-tde.md)
-- [Verschlüsselung (T-SQL)](sql-data-warehouse-encryption-tde-tsql.md)
-- [Übersicht über die Überwachung](sql-data-warehouse-auditing-overview.md)
-- [Überwachung für Vorgängerversionsclients](sql-data-warehouse-auditing-downlevel-clients.md)
 
-
-Bei der Azure SQL Data Warehouse-Überwachung werden Datenbankereignisse erfasst und die überwachten Ereignisse in einem Überwachungsprotokoll in Ihrem Azure Storage-Konto protokolliert.
-
-Die Überwachung kann Ihnen dabei helfen, die gesetzlichen Bestimmungen einzuhalten, die Datenbankaktivität zu verstehen und Einblicke in Abweichungen und Anomalien zu erhalten, die auf geschäftsspezifische Bedenken oder mutmaßliche Sicherheitsverstöße hinweisen können.
+Mit SQL Data Warehouse-Überwachung können Sie Ereignisse in der Datenbank in einem Überwachungsprotokoll in Ihrem Azure Storage-Konto aufzeichnen. Die Überwachung kann Ihnen dabei helfen, die gesetzlichen Bestimmungen einzuhalten, die Datenbankaktivität zu verstehen und Einblicke in Abweichungen und Anomalien zu erhalten, die auf geschäftsspezifische Bedenken oder mutmaßliche Sicherheitsverstöße hinweisen können. SQL Data Warehouse-Überwachung kann auch in Microsoft Power BI integriert werden, um detaillierte Berichterstellung und Analysen zu ermöglichen.
 
 Überwachungstools ermöglichen und erleichtern die Einhaltung von Normen, garantieren diese jedoch nicht. Weitere Informationen über Azure-Programme, die die Einhaltung von Normen unterstützen, finden Sie im <a href="http://azure.microsoft.com/support/trust-center/compliance/" target="_blank">Azure Trust Center</a>.
 
@@ -151,4 +144,4 @@ Wenn Sie im Azure-Ressourcen-Manager-Modus arbeiten, führen Sie `Get-Command *A
 
 <!--Link references-->
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0928_2016-->

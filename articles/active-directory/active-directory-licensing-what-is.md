@@ -5,7 +5,7 @@
 	  keywords="Azure AD-Lizenzierung"
     documentationCenter=""
     authors="curtand"
-    manager="stevenpo"
+    manager="femila"
     editor=""/>
 
 <tags
@@ -140,4 +140,4 @@ Jetzt sind Sie möglicherweise bereit, einige Funktionen von Azure AD Premium zu
 - [Azure Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication.md)
 - [Direkter Erwerb von Azure AD Premium-Lizenzen](http://aka.ms/buyaadp)
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0928_2016-->

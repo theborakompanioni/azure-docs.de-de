@@ -14,7 +14,9 @@ Verwenden Sie den folgenden Befehl, um zu überprüfen, ob das Gateway erstellt 
 
 ## Ändern der Größe eines Gateways
 
-Es gibt drei [Gateway-SKUs](../articles/vpn-gateway/vpn-gateway-about-vpngateways.md). Sie können jederzeit den folgenden Befehl verwenden, um die Gateway-SKU zu ändern.
+Es gibt eine Reihe von [Gateway-SKUs](../articles/expressroute/expressroute-about-virtual-network-gateways.md). Sie können jederzeit den folgenden Befehl verwenden, um die Gateway-SKU zu ändern.
+
+>[AZURE.IMPORTANT] Dieser Befehl kann nicht für das UltraPerformance-Gateway verwendet werden. Wenn Sie das Gateway in ein UltraPerformance-Gateway ändern möchten, entfernen Sie zunächst das vorhandene ExpressRoute-Gateway, und erstellen Sie anschließend ein neues UltraPerformance-Gateway. Wenn Sie das Gateway von einem UltraPerformance-Gateway herabstufen möchten, entfernen Sie zunächst das UltraPerformance-Gateway, und erstellen Sie anschließend ein neues Gateway.
 
 	Resize-AzureVirtualNetworkGateway -GatewayId <Gateway ID> -GatewaySKU HighPerformance
 
@@ -24,4 +26,4 @@ Verwenden Sie den folgenden Befehl, um ein Gateway zu entfernen.
 
 	Remove-AzureVirtualNetworkGateway -GatewayId <Gateway ID>
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0928_2016-->

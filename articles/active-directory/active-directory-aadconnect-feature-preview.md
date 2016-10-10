@@ -1,10 +1,10 @@
 <properties
    pageTitle="Azure AD Connect: Funktionen in der Vorschau | Microsoft Azure"
-   description="In diesem Thema werden Funktionen detaillierter beschrieben, die sich in Azure AD Connect in der Vorschau befinden."
+   description="In diesem Thema werden Funktionen detaillierter beschrieben, die sich in Azure AD Connect in der Preview befinden."
    services="active-directory"
    documentationCenter=""
    authors="andkjell"
-   manager="stevenpo"
+   manager="femila"
    editor=""/>
 
 <tags
@@ -33,7 +33,7 @@ Diese Gruppe wird als Verteilergruppe im lokalen AD DS dargestellt. Auf dem loka
 - Derzeit werden nur Bereitstellungen unterstützt, bei der eine Exchange-Organisation eine einzelne Gesamtstruktur darstellt. Wenn Sie lokal über mehrere Exchange-Organisationen verfügen, benötigen Sie eine lokale GAL-Synchronisierungslösung, damit diese Gruppen in Ihren anderen Gesamtstrukturen angezeigt werden können.
 - Das Feature „Gruppenrückschreiben“ verarbeitet derzeit keine Sicherheitsgruppen oder Verteilergruppen.
 
->[AZURE.NOTE] Für das Gruppenrückschreiben ist ein Azure AD Premium-Abonnement erforderlich.
+>[AZURE.NOTE] Für das Gruppenrückschreiben ist ein Azure AD Premium-Abonnement erforderlich.
 
 ## Rückschreiben von Benutzern
 > [AZURE.IMPORTANT] Die Vorschaufunktion „Rückschreiben von Benutzern“ wurde im Azure AD Connect-Update vom August 2015 entfernt. Wenn Sie diese Funktion aktiviert haben, sollten Sie sie deaktivieren.
@@ -43,4 +43,4 @@ Fahren Sie mit Ihrer [benutzerdefinierten Installation von Azure AD Connect](act
 
 Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md).
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0928_2016-->

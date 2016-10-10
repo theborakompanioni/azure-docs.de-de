@@ -158,7 +158,7 @@ Im Gegensatz zur App-Server-VM wurden an die SAP HANA-Server-VM vier Datenträge
 Für SAP HANA sind spezifische Linux-Kerneleinstellungen erforderlich, die nicht Teil des Standardimage des Azure-Katalogs sind und manuell festgelegt werden müssen. Es gibt einen spezifischen SAP-Hinweis, in dem die Einstellungen beschrieben werden.
 
 
-SAP-Hinweis zu SAP HANA DB: Empfohlene Betriebssystemeinstellungen für SLES 12/SLE für SAP Applications 12: [SAP-Hinweis 2205917](https://launchpad.support.sap.com/#/notes/2205917).
+SAP-Hinweis zu SAP HANA DB: Empfohlene Betriebssystemeinstellungen für SLES 12/SLE für SAP Applications 12: [SAP-Hinweis 2205917](https://launchpad.support.sap.com/#/notes/2205917)
 
 Ein weiteres Thema zum Seitencache für die Ausführung von SAP HANA unter SLES finden Sie [hier](https://www.suse.com/documentation/sles_for_sap/singlehtml/sles_for_sap_guide/sles_for_sap_guide.html#sec.s4s.configure.page-cache) in Kapitel 6.1 „Kernel: Page-Cache Limit“ (Kernel: Seitencachelimit).
 
@@ -484,4 +484,4 @@ Nach der Installation des SAP-App-Servers und der SAP GUI kann die HANA DB-Insta
 
 * Download der HANA SP12 Platform Edition über den SAP Service Marketplace: ![](./media/virtual-machines-linux-sap-hana-get-started/image002.jpg)
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

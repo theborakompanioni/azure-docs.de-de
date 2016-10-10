@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/09/2016"
+	ms.date="09/26/2016"
 	ms.author="markvi"/>
 
 
@@ -30,8 +30,6 @@ Es sind Aktualisierungen vorhanden, wie z.B. die Möglichkeit, ein Geschäfts- o
 Die Registrierung wird u.a. von folgenden früheren Windows-Versionen unterstützt:
 
 - Windows 8.1
-
-- Windows 8.0
 
 - Windows 7
 
@@ -212,9 +210,6 @@ Dafür benötigen Sie eine Ausstellungstransformationsregel, die die Authentifiz
 
 *„<RPObjectName>“* ist der Objektname der vertrauenden Seite für Ihr Azure Active Directory-Vertrauensstellungsobjekt der vertrauenden Seite. Dieses Objekt trägt normalerweise den Namen „Microsoft Office 365 Identity Platform“.
 
-
-
-
  
 
 ## Bereitstellung und Rollout 
@@ -223,15 +218,15 @@ Nachdem die Voraussetzungen erfüllt worden sind, können in Domänen eingebunde
 
 In Domänen eingebundene Computer mit Windows 10 Anniversary Update und Windows Server 2016 werden automatisch beim nächsten Neustart oder bei der nächsten Benutzeranmeldung bei Windows für Azure AD registriert. Neue Computer, die der Domäne hinzugefügt werden, werden beim Neustart nach dem Vorgang zum Einbinden des Computers in die Domäne bei Azure AD registriert.
 
-> [AZURE.NOTE] In Domänen eingebundene Computer mit Windows 10 November 2015 Update werden nur dann automatisch bei Azure AD registriert, wenn das Rollout-Gruppenrichtlinienobjekt festgelegt ist. Weitere Informationen finden Sie im folgenden Abschnitt.
+> [AZURE.NOTE] In die Domäne eingebundene Windows 10-Computer werden nur dann automatisch bei Azure AD registriert, wenn das Rollout-Gruppenrichtlinienobjekt festgelegt ist. Weitere Informationen finden Sie im folgenden Abschnitt.
 
 Um das Rollout der automatischen Registrierung von in die Domäne eingebundenen Computern unter Windows 10/Windows Server 2016 zu steuern, kann ein Gruppenrichtlinienobjekt verwendet werden. Für das Rollout der automatischen Registrierung von in die Domäne eingebundenen Computern unter einem anderen Betriebssystem als Windows 10 ist ein Windows Installer-Paket verfügbar, das auf ausgewählten Computern bereitgestellt werden kann.
 
-> [AZURE.NOTE] Die Gruppenrichtlinie für die Rolloutsteuerung löst auch die Registrierung von in die Domäne eingebundenen Windows 8.1-Computern aus. Sie können die Richtlinie für die Registrierung von in die Domäne eingebundenen Windows 8.1-Computern verwenden oder, wenn Sie über eine Kombination aus Windows 7- oder Windows 8.0- bzw. Windows Server-Versionen verfügen, die Registrierung aller Computer unter einem anderen Betriebssystem als Windows 10/Windows Server 2016 über das Windows Installer-Paket aktivieren.
+> [AZURE.NOTE] Die Gruppenrichtlinie für die Rolloutsteuerung löst auch die Registrierung von in die Domäne eingebundenen Windows 8.1-Computern aus. Sie können die Richtlinie für die Registrierung von in die Domäne eingebundenen Windows 8.1-Computern verwenden oder, wenn Sie über eine Kombination aus Windows 7- oder Windows Server-Versionen verfügen, die Registrierung aller Computer unter einem anderen Betriebssystem als Windows 10/Windows Server 2016 über das Windows Installer-Paket aktivieren.
 
 ### Gruppenrichtlinienobjekt, um das Rollout der automatischen Registrierung zu steuern 
 
-Um das Rollout der automatischen Registrierung von in die Domäne eingebundenen Computern bei Azure AD zu steuern, können Sie die in die Domäne „Gruppenrichtlinienregistrierung“ eingebundenen Computer als Geräte für die zu registrierenden Computer bereitstellen. Beispielsweise können Sie die Richtlinie basierend auf einer Sicherheitsgruppe oder für eine Organisationseinheit (OU) bereitstellen.
+Um das Rollout der automatischen Registrierung von in die Domäne eingebundenen Computern bei Azure AD zu steuern, können Sie die in die Domäne „Gruppenrichtlinienregistrierung“ eingebundenen Computer als Geräte für die zu registrierenden Computer bereitstellen. Beispielsweise können Sie die Richtlinie basierend auf einer Sicherheitsgruppe oder in einer Organisationseinheit (OE) bereitstellen.
 
 Um die Richtlinie festzulegen, führen Sie die folgenden Schritte aus:
 
@@ -257,7 +252,7 @@ Um die Richtlinie festzulegen, führen Sie die folgenden Schritte aus:
 
 ## MSI-Paket für Nicht-Windows 10-Computer  
 
-Für die Registrierung von in die Domäne eingebundenen Computern unter Windows 7, Windows 8.0, Windows 8.1, Windows Server 2008 R2, Windows Server 2012 oder Windows Server 2012 R2 kann ein Windows Installer-Paket (.msi) heruntergeladen werden:
+Für die Registrierung von in die Domäne eingebundenen Computern unter Windows 7, Windows 8.1, Windows Server 2008 R2, Windows Server 2012 oder Windows Server 2012 R2 kann ein Windows Installer-Paket (MSI) heruntergeladen werden:
 
 - [x64](http://download.microsoft.com/download/C/A/7/CA79FAE2-8C18-4A8C-A4C0-5854E449ADB8/Workplace_x64.msi)
 - [x86](http://download.microsoft.com/download/C/A/7/CA79FAE2-8C18-4A8C-A4C0-5854E449ADB8/Workplace_x86.msi)
@@ -272,4 +267,4 @@ Das Installationsprogramm erstellt einen geplanten Task auf dem System, der im K
 
 - [Bedingter Zugriff mit Azure Active Directory](active-directory-conditional-access.md)
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0928_2016-->

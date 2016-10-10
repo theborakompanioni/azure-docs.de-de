@@ -1,7 +1,7 @@
 <properties
    pageTitle="Verwenden von Windows-Clientimages für Entwicklungs-/Testszenarien | Microsoft Azure"
    description="Nutzen von Visual Studio-Abonnementvorteilen zum Bereitstellen von Windows 7/8/10 in Azure für Entwicklungs-/Testszenarien"
-   services="virtual-machines-windowse"
+   services="virtual-machines-windows"
    documentationCenter=""
    authors="iainfoulds"
    manager="timlt"
@@ -57,4 +57,4 @@ Sie können die Angebots-ID auch auf der [Registerkarte „Abonnements“](http:
 ## Nächste Schritte
 Jetzt können Sie Ihre VMs mit [PowerShell](virtual-machines-windows-ps-create.md), [Resource Manager-Vorlagen](virtual-machines-windows-ps-template.md) oder [Visual Studio](../vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) bereitstellen.
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

@@ -112,8 +112,8 @@ Jetzt verfügen Sie über ein Azure-Konto, das Azure-Webportal und die Azure-Bef
 ## Erste Schritte mit Linux unter Microsoft Azure
 Nachdem Sie Ihr Azure-Konto eingerichtet, die Azure-Befehlszeilenschnittstelle installiert und SSH-Schlüssel erstellt haben, sind Sie jetzt bereit, eine Infrastruktur in der Azure-Cloud aufzubauen. Die erste Aufgabe besteht darin, einige virtuelle Computer zu erstellen.
 
-## Erstellen eines virtuellen Computers über die Befehlszeilenschnittstelle
-Die Erstellung eines virtuellen Linux-Computers über die Befehlszeilenschnittstelle ist eine schnelle Möglichkeit, einen virtuellen Computer bereitzustellen, ohne das Terminal zu verlassen, an dem Sie gerade arbeiten. Alle Elemente, die Sie im Webportal festlegen können, stehen auch über ein Flag bzw. eine Option in der Befehlszeile zur Verfügung.
+## Erstellen eines virtuellen Computers mit der Befehlszeilenschnittstelle
+Die Erstellung eines virtuellen Linux-Computers mit der CLI ist eine schnelle Möglichkeit, einen virtuellen Computer bereitzustellen, ohne das Terminal zu verlassen, an dem Sie gerade arbeiten. Alle Elemente, die Sie im Webportal festlegen können, stehen auch über ein Flag bzw. eine Option in der Befehlszeile zur Verfügung.
 
 - [Erstellen eines virtuellen Linux-Computers über die Befehlszeilenschnittstelle](virtual-machines-linux-quick-create-cli.md)
 
@@ -164,4 +164,4 @@ Sie haben nun einen Überblick über die Verwendung von Linux in Azure. Jetzt k�
 
 - [Erstellen einer Linux-VM in Azure mithilfe der CLI](virtual-machines-linux-quick-create-cli.md)
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

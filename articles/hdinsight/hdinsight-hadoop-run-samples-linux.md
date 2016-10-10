@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/12/2016"
+	ms.date="09/27/2016"
 	ms.author="larryfr"/>
 
 
@@ -47,7 +47,7 @@ Linux-basierte HDInsight-Cluster bieten eine Reihe von MapReduce-Beispielen, mit
 - **aggregatewordcount**: Ein aggregatbasiertes MapReduce-Programm, das die Wörter in den Eingabedateien zählt
 - **aggregatewordhist**: Ein aggregatbasiertes MapReduce-Programm, das das Histogramm der Wörter in den Eingabedateien berechnet
 - **bbp**: Ein MapReduce-Programm, das Bailey-Borwein-Plouffe verwendet, um genaue Ziffern von Pi zu berechnen
-- **dbcount**: Ein Beispielauftrag, der die Seitenabrufe aus einer Datenbank zählt
+- **dbcount**: Ein Beispielauftrag, der die in einer Datenbank gespeicherten Seitenabrufe zählt
 - **distbbp**: Ein MapReduce-Programm, das eine BBP-Formel verwendet, um genaue Teile von Pi zu berechnen.
 - **grep**: Ein MapReduce-Programm, das die Übereinstimmungen mit einem Regex in der Eingabe zählt
 - **join**: Ein Auftrag, der Auswirkungen auf eine Verknüpfung von sortierten, gleichmäßig partitionierten Datasets hat
@@ -93,7 +93,7 @@ Linux-basierte HDInsight-Cluster bieten eine Reihe von MapReduce-Beispielen, mit
 
         Usage: wordcount <in> [<in>...] <out>
 
-    Damit wird angegeben, dass Sie mehrere Eingabepfade für Quelldokumente angeben können, und am endgültigen Pfad befindet sich dann die Ausgabe (die Anzahl der Wörter in den Quelldokumenten).
+    Dies bedeutet, dass Sie mehrere Eingabepfade für die Quelldokumente angeben können. Im endgültigen Pfad wird die Ausgabe (Anzahl der Wörter in den Quelldokumenten) gespeichert.
 
 4. Verwenden Sie den folgenden Code, um alle Wörter in den Notizbüchern von Leonardo Da Vinci zu zählen, die als Beispieldaten in Ihrem Cluster bereitgestellt sind:
 
@@ -101,7 +101,7 @@ Linux-basierte HDInsight-Cluster bieten eine Reihe von MapReduce-Beispielen, mit
 
     Geben Sie für diesen Auftrag ein, dass er aus **wasbs:///example/data/gutenberg/davinci.txt** gelesen wird.
 
-    Die Ausgabe für dieses Beispiel wird unter **wasbs:///example/data/davinciwordcount** gespeichert.
+    Die Ausgabe dieses Beispiels wird unter **wasbs:///example/data/davinciwordcount** gespeichert.
 
     > [AZURE.NOTE] Wie in der Hilfe für das wordcount-Beispiel erwähnt, können Sie auch mehrere Eingabedateien angeben. Beispiel: Mit `hadoop jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar wordcount /example/data/gutenberg/davinci.txt /example/data/gutenberg/ulysses.txt /example/data/twowordcount` werden die Wörter in "davinci.txt" und "ulysses.txt" gezählt.
 
@@ -111,7 +111,7 @@ Linux-basierte HDInsight-Cluster bieten eine Reihe von MapReduce-Beispielen, mit
 
     Dadurch werden alle Ausgabedateien, die vom Auftrag erzeugt wurden, verkettet und angezeigt. In diesem einfachen Beispiel gibt es nur eine Datei, wären es jedoch mehr, würde dieser Befehl sie alle durchlaufen.
 
-    Der Befehl erzeugt eine Ausgabe wie die folgende:
+    Die Ausgabe sieht in etwa wie folgt aus:
 
         zum     1
         zur     1
@@ -162,7 +162,7 @@ Die Ergebnisse sollten in etwa wie folgt aussehen:
     1 8 5 7 3 9 2 6 4
     2 6 3 1 4 5 9 7 8
 
-## PI (π)
+## Pi (π)
 
 Das Beispiel verwendet eine statistische (Quasi-Monte-Carlo-) Methode, um den Wert von Pi zu schätzen. Zufällig platzierte Punkte in einem Einheitsquadrat liegen mit einer Wahrscheinlichkeit gleich der Kreisoberfläche Pi/4 innerhalb eines Kreises, der sich im Quadrat befindet. Der Wert für Pi kann aus dem Wert 4R ermittelt werden, wobei R das Verhältnis zwischen der Anzahl der Punkte innerhalb des Kreises zur Gesamtanzahl der Punkte innerhalb des Quadrats ist. Je größer die Anzahl der Punkte, desto genauer die Schätzung.
 
@@ -236,4 +236,4 @@ In diesem Artikel haben Sie gelernt, wie die Beispiele ausgeführt werden, die i
 [hdinsight-use-hive]: hdinsight-use-hive.md
 [hdinsight-use-pig]: hdinsight-use-pig.md
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0928_2016-->

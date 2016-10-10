@@ -13,12 +13,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="08/30/2016"
+   ms.date="09/27/2016"
    ms.author="sonyama;barbkess;jrj"/>
 
 # Parallelitäts- und Workloadverwaltung in SQL Data Warehouse
 
-Mit Microsoft Azure SQL Data Warehouse können Sie die Parallelitätsebenen und Ressourcenzuordnungen steuern, z.B. die Priorisierung von Arbeitsspeicher und CPU, um für eine vorhersagbare und skalierbare Leistung zu sorgen. In diesem Artikel werden die Konzepte der Parallelitäts- und Workloadverwaltung vorgestellt. Es wird beschrieben, wie beide Features implementiert wurden und wie Sie diese in Ihrem Data Warehouse steuern können. Die Workloadverwaltung von SQL Data Warehouse ist auf die Unterstützung von Mehrbenutzerumgebungen ausgelegt. Sie ist nicht für Workloads mit mehreren Mandanten gedacht.
+Mit Microsoft Azure SQL Data Warehouse können Sie die Parallelitätsebenen und Ressourcenzuordnungen steuern, z.B. die Priorisierung von Arbeitsspeicher und CPU, um für eine vorhersagbare und skalierbare Leistung zu sorgen. In diesem Artikel werden die Konzepte der Parallelitäts- und Workloadverwaltung vorgestellt. Es wird beschrieben, wie beide Features implementiert wurden und wie Sie diese in Ihrem Data Warehouse steuern können. Die Workloadverwaltung von SQL Data Warehouse ist für die Unterstützung von Mehrbenutzerumgebungen ausgelegt. Sie ist nicht für Workloads mit mehreren Mandanten ausgelegt.
 
 ## Parallelitätslimits
 
@@ -48,9 +48,9 @@ In der folgenden Tabelle werden die Limits für gleichzeitige Abfragen und Paral
 | DW3000 | 32 | 120 |
 | DW6000 | 32 | 240 |
 
-Wenn einer dieser beiden Schwellenwerte erreicht wird, werden neue Abfragen in die Warteschlange eingereiht. SQL Data Warehouse führt in der Warteschlange befindliche Abfragen nach dem Prinzip „First in, First out“ aus, wenn andere Abfragen abgeschlossen werden und die Anzahl von Abfragen und Slots unter die Limits sinkt.
+Wenn einer dieser Grenzwerte erreicht wird, werden neue Abfragen in die Warteschlange eingereiht und nach dem Prinzip „First In, First Out“ ausgeführt. Wenn eine Abfrage abgeschlossen wird und die Anzahl von Abfragen und Slots unter die Grenzwerte sinkt, werden Abfragen in der Warteschlange freigegeben.
 
-> [AZURE.NOTE]  *SELECT*-Abfragen, die exklusiv in dynamischen Verwaltungssichten (DMVs) oder Katalogsichten ausgeführt werden, werden nicht von den Parallelitätslimits gesteuert. Benutzer können das System unabhängig von der Anzahl der darin ausgeführten Abfragen überwachen.
+> [AZURE.NOTE]  *SELECT*-Abfragen, die exklusiv in dynamischen Verwaltungssichten (DMVs) oder Katalogsichten ausgeführt werden, werden nicht von den Parallelitätslimits gesteuert. Sie können das System unabhängig von der Anzahl der darin ausgeführten Abfragen überwachen.
 
 ## Ressourcenklassen
 
@@ -76,9 +76,9 @@ Ein ausführliches Beispiel finden Sie unter [Beispiel: Ändern der Ressourcenkl
 
 ## Speicherzuweisung
 
-Das Erhöhen der Ressourcenklasse eines Benutzers hat Vor- und Nachteile. Einerseits kann das Erhöhen einer Ressourcenklasse für einen Benutzer bedeuten, dass seine Abfragen auf mehr Arbeitsspeicher zugreifen können und sie damit schneller ausgeführt werden. Andererseits verringert eine höhere Ressourcenklasse aber auch die Anzahl gleichzeitig ausführbarer Abfragen. Dies ist der Kompromiss zwischen dem Zuweisen großer Mengen von Arbeitsspeicher für eine einzelne Abfrage und dem Zulassen der gleichzeitigen Ausführung anderer Abfragen (denen ebenfalls Arbeitsspeicher zugewiesen werden muss). Wenn einem Benutzer eine große Menge Arbeitsspeicher für eine Abfrage zugewiesen wurde, können andere Benutzer nicht auf diesen Arbeitsspeicher zugreifen, um eine Abfrage auszuführen.
+Das Erhöhen der Ressourcenklasse eines Benutzers hat Vor- und Nachteile. Durch das Erhöhen einer Ressourcenklasse für einen Benutzer ist für die Abfragen mehr Arbeitsspeicher zugänglich. Das kann bedeuten, dass Abfragen schneller ausgeführt werden. Durch höhere Ressourcenklassen verringert sich jedoch auch die Anzahl von gleichzeitigen Abfragen, die ausgeführt werden können. Dies ist der Kompromiss zwischen dem Zuweisen großer Mengen von Arbeitsspeicher für eine einzelne Abfrage und dem Zulassen der gleichzeitigen Ausführung anderer Abfragen, denen ebenfalls Arbeitsspeicher zugewiesen werden muss. Wenn einem Benutzer eine große Menge Arbeitsspeicher für eine Abfrage zugewiesen wurde, können andere Benutzer nicht auf diesen Arbeitsspeicher zugreifen, um eine Abfrage auszuführen.
 
-In der folgenden Tabelle ist der Arbeitsspeicher angegeben, der jeder Verteilung nach DWU und Ressourcenklasse zugeordnet wird. In SQL Data Warehouse gibt es 60 Verteilungen. Beispielsweise hat eine Abfrage, die in einem DW2000 in der Ressourcenklasse „xlargerc“ ausgeführt wird, jeweils Zugriff auf 6.400 MB Arbeitsspeicher in jeder der 60 verteilten Datenbanken.
+In der folgenden Tabelle ist der Arbeitsspeicher angegeben, der jeder Verteilung nach DWU und Ressourcenklasse zugeordnet wird.
 
 ### Speicherbelegungen pro Verteilung (MB)
 
@@ -97,7 +97,7 @@ In der folgenden Tabelle ist der Arbeitsspeicher angegeben, der jeder Verteilung
 | DW3000 | 100 | 1\.600 | 3\.200 | 6\.400 |
 | DW6000 | 100 | 3\.200 | 6\.400 | 12\.800 |
 
-Für das obige Beispiel gilt Folgendes: Einer Abfrage, die in einem DW2000 in der Ressourcenklasse „xlargerc“ ausgeführt wird, werden im gesamten SQL Data Warehouse insgesamt 375 GB Arbeitsspeicher zugewiesen (6.400 MB × 60 Verteilungen / 1.024 zur Umrechnung in GB).
+In der obigen Tabelle sehen Sie, dass eine Abfrage, die in einem DW2000 in der Ressourcenklasse „xlargerc“ ausgeführt wird, jeweils Zugriff auf 6.400 MB Arbeitsspeicher in jeder der 60 verteilten Datenbanken hat. In SQL Data Warehouse gibt es 60 Verteilungen. Daher sollten zur Berechnung der gesamten Arbeitsspeicherbelegung für eine Abfrage in einer bestimmten Ressourcenklasse die oben genannten Werte mit 60 multipliziert werden.
 
 ### Systemweite Speicherbelegungen (GB)
 
@@ -116,10 +116,11 @@ Für das obige Beispiel gilt Folgendes: Einer Abfrage, die in einem DW2000 in de
 | DW3000 | 6 | 94 | 188 | 375 |
 | DW6000 | 6 | 188 | 375 | 750 |
 
+In dieser Tabelle mit systemweiten Speicherbelegungen sehen Sie, dass einer Abfrage, die in einem DW2000 in der Ressourcenklasse „xlargerc“ ausgeführt wird, im gesamten SQL Data Warehouse insgesamt 375 GB Arbeitsspeicher zugewiesen werden (6.400 MB × 60 Verteilungen ÷ 1.024 zur Umrechnung in GB).
 
 ## Verbrauch von Parallelitätsslots
 
-SQL Data Warehouse weist Abfragen, die in höheren Ressourcenklassen ausgeführt werden, mehr Arbeitsspeicher zu. Da Arbeitsspeicher eine feststehende Ressource ist, gilt Folgendes: Je mehr Arbeitsspeicher pro Abfrage zugeordnet ist, desto weniger Parallelität kann unterstützt werden. Die folgende Tabelle gibt in einer einzigen Ansicht alle oben stehenden Konzepte wieder – sowohl die Anzahl verfügbarer Parallelitätsslots pro DWU als auch die Slots, die von den einzelnen Ressourcenklassen verbraucht werden.
+SQL Data Warehouse weist Abfragen, die in höheren Ressourcenklassen ausgeführt werden, mehr Arbeitsspeicher zu. Der Arbeitsspeicher ist eine feststehende Ressource. Daher gilt Folgendes: Je mehr Arbeitsspeicher pro Abfrage zugeordnet ist, desto weniger parallele Abfragen können unterstützt werden. Die folgende Tabelle gibt in einer einzigen Ansicht alle oben stehenden Konzepte wieder – sowohl die Anzahl verfügbarer Parallelitätsslots pro DWU als auch die Slots, die von den einzelnen Ressourcenklassen verbraucht werden.
 
 ### Zuordnung und Verbrauch von Parallelitätsslots
 
@@ -149,27 +150,27 @@ In der folgenden Tabelle sind die Wichtigkeitszuordnungen für die einzelnen Wor
 
 ### Zuordnungen von Workloadgruppen zu Parallelitätsslots und Wichtigkeit
 
-| Workloadgruppen | Zuordnung von Parallelitätsslots | Wichtigkeitszuordnung |
-| :-------------- | :----------------------: | :----------------- |
-| SloDWGroupC00 | 1 | Mittel |
-| SloDWGroupC01 | 2 | Mittel |
-| SloDWGroupC02 | 4 | Mittel |
-| SloDWGroupC03 | 8 | Mittel |
-| SloDWGroupC04 | 16 | Hoch |
-| SloDWGroupC05 | 32 | Hoch |
-| SloDWGroupC06 | 64 | Hoch |
-| SloDWGroupC07 | 128 | Hoch |
+| Workloadgruppen | Zuordnung von Parallelitätsslots | MB/Verteilung | Wichtigkeitszuordnung |
+| :-------------- | :----------------------: | :---------------: | :----------------- |
+| SloDWGroupC00 | 1 | 100 | Mittel |
+| SloDWGroupC01 | 2 | 200 | Mittel |
+| SloDWGroupC02 | 4 | 400 | Mittel |
+| SloDWGroupC03 | 8 | 800 | Mittel |
+| SloDWGroupC04 | 16 | 1\.600 | Hoch |
+| SloDWGroupC05 | 32 | 3\.200 | Hoch |
+| SloDWGroupC06 | 64 | 6\.400 | Hoch |
+| SloDWGroupC07 | 128 | 12\.800 | Hoch |
 
 In der Tabelle **Zuordnung und Verbrauch von Parallelitätsslots** sehen Sie, dass ein DW500 jeweils 1, 4, 8 bzw. 16 Parallelitätsslots für smallrc-, mediumrc-, largerc- und xlargerc-Ressourcenklassen verwendet. Schlagen Sie diese Werte in der vorherigen Tabelle nach, um die Wichtigkeit für jede Ressourcenklasse zu ermitteln.
 
 ### DW500-Zuordnung zwischen Ressourcenklassen und Wichtigkeit
 
-| Ressourcenklasse | Workloadgruppe | Verwendete Parallelitätsslots | Priorität |
-| :------------- | :------------- | :--------------------: | :--------- |
-| smallrc | SloDWGroupC00 | 1 | Mittel |
-| mediumrc | SloDWGroupC02 | 4 | Mittel |
-| largerc | SloDWGroupC03 | 8 | Mittel |
-| xlargerc | SloDWGroupC04 | 16 | Hoch |
+| Ressourcenklasse | Workloadgruppe | Verwendete Parallelitätsslots | MB/Verteilung | Priorität |
+| :------------- | :------------- | :--------------------: | :---------------: | :--------- |
+| smallrc | SloDWGroupC00 | 1 | 100 | Mittel |
+| mediumrc | SloDWGroupC02 | 4 | 400 | Mittel |
+| largerc | SloDWGroupC03 | 8 | 800 | Mittel |
+| xlargerc | SloDWGroupC04 | 16 | 1\.600 | Hoch |
 
 
 Sie können die folgende DMV-Abfrage verwenden, um die Unterschiede bei der Arbeitsspeicherressourcen-Zuweisung detailliert aus Sicht des Resource Governors anzuzeigen. Außerdem können Sie die derzeitige und zurückliegende Nutzung der Workloadgruppen bei der Problembehandlung analysieren.
@@ -429,4 +430,4 @@ Weitere Informationen zum Verwalten von Datenbankbenutzern und der Sicherheit fi
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0928_2016-->

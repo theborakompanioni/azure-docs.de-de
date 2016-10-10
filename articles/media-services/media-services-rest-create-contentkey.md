@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Erstellen von ContentKeys mit REST" 
+	pageTitle="Erstellen von ContentKeys mit REST | Microsoft Azure" 
 	description="Erfahren Sie, wie Sie Inhaltsschlüssel erstellen, die den sicheren Zugriff auf Medienobjekte ermöglichen." 
 	services="media-services" 
 	documentationCenter="" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/22/2016"  
+	ms.date="09/26/2016"  
 	ms.author="juliako"/>
 
 
@@ -182,7 +182,7 @@ Beim Erstellen des Inhaltsschlüssels muss neben anderen Werten auch der Typ fes
 Das folgende Beispiel zeigt, wie Sie einen **ContentKey** mit einem **ContentKeyType** erstellen, für den die Speicherverschlüsselung festgelegt ("1") und **ProtectionKeyType** auf "0" festgelegt wurde. Dies zeigt an, dass es sich bei der Schutzschlüssel-ID um den X. 509-Zertifikatfingerabdruck handelt.
 
 
-Anforderung
+Request
 
 	POST https://media.windows.net/api/ContentKeys HTTP/1.1
 	Content-Type: application/json
@@ -262,4 +262,4 @@ Antwort:
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0928_2016-->

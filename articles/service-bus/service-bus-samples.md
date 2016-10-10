@@ -55,7 +55,7 @@ Beachten Sie, dass die Beispiele für Brokermessaging eine Verbindungszeichenfol
 
 Diese Beispiele beschreiben grundlegende Messaging- und Relayfunktionen.
 
-|Name des Beispiels|Beschreibung|Mindestversion des SDK|Verfügbarkeit|
+|Name des Beispiels|Beschreibung|Mindestversion des SDK|Availability|
 |---|---|---|---|
 |[Erste Schritte: Messaging mit Warteschlangen](http://code.msdn.microsoft.com/Getting-Started-Brokered-aa7a0ac3)|Zeigt, wie Microsoft Azure Service Bus zum Senden und Empfangen von Nachrichten aus einer Warteschlange verwendet wird.|1\.8|Microsoft Azure Service Bus; Service Bus für Windows Server|
 |[Erste Schritte: Messaging mit Themen](http://code.msdn.microsoft.com/Getting-Started-Brokered-614d42e5)|Zeigt, wie Microsoft Azure Service Bus zum Senden und Empfangen von Nachrichten aus einer Thema mit mehreren Abonnements verwendet wird.|1\.8|Microsoft Azure Service Bus; Service Bus für Windows Server|
@@ -65,7 +65,7 @@ Diese Beispiele beschreiben grundlegende Messaging- und Relayfunktionen.
 
 Die folgenden Beispiele zeigen verschiedene Features von Service Bus.
 
-|Name des Beispiels|Beschreibung|Mindestversion des SDK|Verfügbarkeit|
+|Name des Beispiels|Beschreibung|Mindestversion des SDK|Availability|
 |---|---|---|---|
 |[HTTP-Tokenanbieter](http://code.msdn.microsoft.com/Service-Bus-HTTP-Token-38f2cfc5)|Zeigt die verschiedenen Arten der Authentifizierung eines HTTP/REST-Clients bei Service Bus.|2\.1|Microsoft Azure Service Bus; Service Bus für Windows Server|
 |[Service Bus-HTTP-Client](http://code.msdn.microsoft.com/Service-Bus-HTTP-client-fe7da74a)|Zeigt, wie Nachrichten über HTTP/REST an Service Bus gesendet und von Service Bus empfangen werden.|2\.3|Microsoft Azure Service Bus; Service Bus für Windows Server|
@@ -79,7 +79,7 @@ Die folgenden Beispiele zeigen verschiedene Features von Service Bus.
 |[Brokermessaging: Warteschlange für unzustellbare Nachrichten](http://code.msdn.microsoft.com/Brokered-Messaging-Dead-22536dd8)|Zeigt die Verwendung von Microsoft Azure Service Bus und der Messagingfunktion "Warteschlange für unzustellbare Nachrichten". Das Beispiel zeigt einen einfachen Absender und Empfänger, die über eine Service Bus-Warteschlange kommunizieren.|1\.8|Microsoft Azure Service Bus; Service Bus für Windows Server|
 |[Brokermessaging: Zurückgestellten Nachrichten](http://code.msdn.microsoft.com/Brokered-Messaging-ccc4f879)|Zeigt, wie das Feature zur Nachrichtenverzögerung von Microsoft Azure Service Bus verwendet wird. Das Beispiel zeigt einen einfachen Absender und Empfänger, die über eine Service Bus-Warteschlange kommunizieren.|1\.8|Microsoft Azure Service Bus; Service Bus für Windows Server|
 |[Brokermessaging: Sitzungsnachrichten](http://code.msdn.microsoft.com/Brokered-Messaging-Session-41c43fb4)|Zeigt, wie Microsoft Azure Service Bus und die Funktion "Nachrichtensitzung" verwendet werden. Das Beispiel zeigt einfache Absender und Empfänger, die über eine Service Bus-Warteschlange kommunizieren.|1\.8|Microsoft Azure Service Bus; Service Bus für Windows Server|
-|[Brokermessaging: Anforderung/Antwort (Thema)](http://code.msdn.microsoft.com/Brokered-Messaging-Request-6759a36e)|Zeigt, wie das Muster "Anforderung/Antwort" mithilfe von Microsoft Azure Service Bus-Themen und -Abonnements implementiert wird. Das Beispiel zeigt einfache Clients und Server, die über ein Service Bus-Thema kommunizieren.|1\.8|Microsoft Azure Service Bus; Service Bus für Windows Server|
+|[Brokermessaging: Anforderung/Antwort (Thema)](http://code.msdn.microsoft.com/Brokered-Messaging-Request-6759a36e)|Zeigt, wie das Muster „Anforderung/Antwort“ mithilfe von Microsoft Azure Service Bus-Themen und -Abonnements implementiert wird. Das Beispiel zeigt einfache Clients und Server, die über ein Service Bus-Thema kommunizieren.|1\.8|Microsoft Azure Service Bus; Service Bus für Windows Server|
 |[Brokermessaging: Anforderung/Antwort (Warteschlange)](http://code.msdn.microsoft.com/Brokered-Messaging-Request-0ce8fcaf)|Zeigt, wie Microsoft Azure Service Bus und die Funktion "Anforderung/Antwort" verwendet werden. Das Beispiel zeigt einfache Clients und Server, die über zwei Service Bus-Warteschlangen kommunizieren.|1\.8|Microsoft Azure Service Bus; Service Bus für Windows Server|
 |[Brokermessaging: Duplikaterkennung](http://code.msdn.microsoft.com/Brokered-Messaging-c0acea25)|Zeigt, wie die Erkennung doppelt vorhandener Nachrichten in Microsoft Azure Service Bus mit Warteschlangen verwendet wird. Es werden zwei Warteschlangen erstellt: eine Warteschlange mit aktivierter Duplikaterkennung und eine Warteschlange ohne Duplikaterkennung.|1\.8|Microsoft Azure Service Bus; Service Bus für Windows Server|
 |[Brokermessaging: Asynchrones Messaging](http://code.msdn.microsoft.com/Brokered-Messaging-Async-211c1e74)|Zeigt, wie Microsoft Azure Service Bus zum asynchronen Senden und Empfangen von Nachrichten aus einer Warteschlange verwendet wird. Die Warteschlange stellt entkoppelte, asynchrone Kommunikation zwischen einem Absender und einer beliebigen Anzahl von Empfängern bereit (in diesem Fall einem einzigen Empfänger).|1\.8|Microsoft Azure Service Bus; Service Bus für Windows Server|
@@ -104,7 +104,7 @@ Beispiele, die das Service Bus Relay demonstrieren.
 
 Beispiele, die verschiedene Features von Service Bus Relay demonstrieren.
 
-|Name des Beispiels|Beschreibung|Mindestversion des SDK|Verfügbarkeit|
+|Name des Beispiels|Beschreibung|Mindestversion des SDK|Availability|
 |---|---|---|---|
 |[Authentifizierung durch Relaymessaging: Simple Web Token (SWT)](http://code.msdn.microsoft.com/Relayed-Messaging-32c74392)|Zeigt die Verwendung von SWT-Anmeldeinformationen (Simple Web Token) für die Authentifizierung bei Service Bus. Dieses Beispiel ähnelt mit Ausnahme einiger Änderungen dem Echobeispiel. Insbesondere fügt dieses Beispiel den ServiceHost- (Dienst) und ChannelFactory-Anwendungen (Client) ein Verhalten hinzu.|1\.8|Microsoft Azure Servicebus|
 |[Relaymessaging: Lastenausgleich](http://code.msdn.microsoft.com/Relayed-Messaging-Load-bd76a9f8)|Zeigt die Verwendung von Microsoft Azure Service Bus zum Routen von Nachrichten an mehrere Empfänger. Das Beispiel zeigt mehrere Instanzen eines einfachen Diensts, der mit einem Client über die Bindung **NetTcpRelayBinding** kommuniziert.|1\.8|Microsoft Azure Servicebus|
@@ -121,7 +121,7 @@ Beispiele, die verschiedene Features von Service Bus Relay demonstrieren.
 
 Die folgenden Beispiele zeigen verschiedene weitere Features des Diensts.
 
-|Name des Beispiels|Beschreibung|Mindestversion des SDK|Verfügbarkeit|
+|Name des Beispiels|Beschreibung|Mindestversion des SDK|Availability|
 |---|---|---|---|
 |[Service Bus-Explorer](http://code.msdn.microsoft.com/Service-Bus-Explorer-f2abca5a)|Mit dem Service Bus-Explorer können Benutzer eine Verbindung mit einem Service Bus-Dienstnamespace herstellen und Messagingentitäten auf einfache Weise verwalten. Das Tool stellt erweiterte Features (z. B. Import-/Exportfunktionen) und Testmöglichkeiten für Messagingentitäten und Relaydienste zur Verfügung.|1\.8|Microsoft Azure Service Bus; Service Bus für Windows Server|
 |[Autorisierung: SBAzTool](http://code.msdn.microsoft.com/Authorization-SBAzTool-6fd76d93)|Dieses Beispiel zeigt das Erstellen und Verwalten von Dienstidentitäten in Microsoft Azure Active Directory Access Control (auch Access Control Service oder ACS) für die Verwendung mit Service Bus.|N/V|Microsoft Azure Servicebus|
@@ -130,8 +130,8 @@ Die folgenden Beispiele zeigen verschiedene weitere Features des Diensts.
 
 Konzeptionelle Übersichten über Service Bus finden Sie in den folgenden Themen.
 
-- [Übersicht über Service Bus-Messaging](service-bus-messaging-overview.md)
+- [Übersicht über Service Bus-Messaging](../service-bus-messaging/service-bus-messaging-overview.md)
 - [Service Bus-Architektur](service-bus-architecture.md)
 - [Service Bus – Grundlagen](service-bus-fundamentals-hybrid-solutions.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0928_2016-->

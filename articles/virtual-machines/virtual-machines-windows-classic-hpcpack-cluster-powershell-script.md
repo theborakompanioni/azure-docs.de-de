@@ -26,7 +26,7 @@ Führen Sie das PowerShell-Skript für die HPC Pack-IaaS-Bereitstellung aus, um 
 
 ## Beispielkonfigurationsdateien
 
-Ersetzen Sie in den folgenden Beispielen die Abonnement-ID oder den Abonnementnamen und den Konto- und Dienstnamen durch Ihre eigenen Werte.
+Ersetzen Sie in den folgenden Beispielen die Abonnement-ID oder den Abonnementnamen sowie den Konto- und Dienstnamen durch Ihre eigenen Werte.
 
 ### Beispiel 1
 
@@ -68,7 +68,7 @@ Die folgende Konfigurationsdatei stellt einen HPC Pack-Cluster bereit, der über
 
 ### Beispiel 2
 
-Mit der folgenden Konfigurationsdatei wird ein HPC Pack-Cluster in einer vorhandenen Domänengesamtstruktur bereitgestellt. Der Cluster verfügt über einen Hauptknoten mit lokalen Datenbanken und zwölf Computeknoten mit angewendeter BGInfo-VM-Erweiterung. Die automatische Installation von Windows-Updates ist für alle virtuellen Computer in der Domänengesamtstruktur deaktiviert. Alle Clouddienste werden direkt am Standort in Ostasien erstellt. Die Computeknoten werden in drei Clouddiensten und drei Speicherkonten erstellt (_MyHPCCN-0001_ bis _MyHPCCN-0005_ in _MyHPCCNService01_ und _mycnstorage01_, _MyHPCCN-0006_ bis _MyHPCCN0010_ in _MyHPCCNService02_ und _mycnstorage02_ sowie _MyHPCCN-0011_ bis _MyHPCCN-0012_ in _MyHPCCNService03_ und _mycnstorage03_). Die Computeknoten werden aus einem vorhandenen privaten Image erstellt, das über einen Computeknoten erfasst wird. Der Dienst zum automatischen Vergrößern und Verkleinern ist mit standardmäßigen Vergrößerungs- und Verkleinerungsintervallen aktiviert.
+Mit der folgenden Konfigurationsdatei wird ein HPC Pack-Cluster in einer vorhandenen Domänengesamtstruktur bereitgestellt. Der Cluster verfügt über einen Hauptknoten mit lokalen Datenbanken und zwölf Computeknoten mit angewendeter BGInfo-VM-Erweiterung. Die automatische Installation von Windows-Updates ist für alle virtuellen Computer in der Domänengesamtstruktur deaktiviert. Alle Clouddienste werden direkt am Standort in Ostasien erstellt. Die Computeknoten werden in drei Clouddiensten und drei Speicherkonten erstellt (_MyHPCCN-0001_ bis _MyHPCCN-0005_ in _MyHPCCNService01_ und _mycnstorage01_; _MyHPCCN-0006_ bis _MyHPCCN0010_ in _MyHPCCNService02_ und _mycnstorage02_; und _MyHPCCN-0011_ bis _MyHPCCN-0012_ in _MyHPCCNService03_ und _mycnstorage03_). Die Computeknoten werden aus einem vorhandenen privaten Image erstellt, das über einen Computeknoten erfasst wird. Der Dienst zum automatischen Vergrößern und Verkleinern ist mit standardmäßigen Vergrößerungs- und Verkleinerungsintervallen aktiviert.
 
 ```
 <?xml version="1.0" encoding="utf-8" ?>
@@ -132,7 +132,7 @@ Mit der folgenden Konfigurationsdatei wird ein HPC Pack-Cluster in einer vorhand
 
 ### Beispiel 3
 
-Mit der folgenden Konfigurationsdatei wird ein HPC Pack-Cluster in einer vorhandenen Domänengesamtstruktur bereitgestellt. Der Cluster enthält einen Hauptknoten, einen Datenbankserver mit einem 500-GB-Datenträger, zwei Brokerknoten, auf denen das Betriebssystem Windows Server 2012 R2 ausgeführt wird, und fünf Computeknoten, auf denen das Betriebssystem Windows Server 2012 R2 ausgeführt wird. Der MyHPCCNService-Clouddienst wird in der Affinitätsgruppe *MyIBAffinityGroup* erstellt, und alle anderen Clouddienste werden in der Affinitätsgruppe *MyAffinityGroup* erstellt. Die HPC-Auftragsplaner-REST-API und das HPC-Webportal sind auf dem Hauptknoten aktiviert.
+Mit der folgenden Konfigurationsdatei wird ein HPC Pack-Cluster in einer vorhandenen Domänengesamtstruktur bereitgestellt. Der Cluster enthält einen Hauptknoten, einen Datenbankserver mit einem 500-GB-Datenträger, zwei Brokerknoten, auf denen das Betriebssystem Windows Server 2012 R2 ausgeführt wird, und fünf Computeknoten, auf denen das Betriebssystem Windows Server 2012 R2 ausgeführt wird. Der MyHPCCNService-Clouddienst wird in der Affinitätsgruppe *MyIBAffinityGroup* erstellt, und alle anderen Clouddienste werden in der Affinitätsgruppe *MyAffinityGroup* erstellt. Die HPC-Auftragsplaner-REST-API und das HPC-Webportal sind auf dem Hauptknoten aktiviert.
 
 ```
 <?xml version="1.0" encoding="utf-8" ?>
@@ -257,13 +257,13 @@ Mit der folgenden Konfigurationsdatei wird ein HPC Pack-Cluster in einer vorhand
 ## Problembehandlung
 
 
-* **Fehler „VNet nicht vorhanden“:** Wenn Sie das HPC Pack-IaaS-Bereitstellungsskript ausführen, um in Azure gleichzeitig mehrere Cluster unter einem Abonnement bereitzustellen, schlagen eine oder mehrere Bereitstellungen unter Umständen mit einem Fehler der Art „VNet *VNet-Name* nicht vorhanden“ fehl. Führen Sie das Skript für die fehlgeschlagene Bereitstellung erneut aus, wenn dieser Fehler auftritt.
+* **Fehler „VNet nicht vorhanden“**: Wenn Sie das Skript ausführen, um in Azure gleichzeitig mehrere Cluster unter einem Abonnement bereitzustellen, schlagen eine oder mehrere Bereitstellungen unter Umständen mit einem Fehler der Art „VNet *VNet-Name* nicht vorhanden“ fehl. Führen Sie das Skript für die fehlgeschlagene Bereitstellung erneut aus, wenn dieser Fehler auftritt.
 
-* **Problem beim Zugreifen auf das Internet über das virtuelle Azure-Netzwerk:** Falls Sie einen HPC Pack-Cluster mit einem neuen Domänencontroller erstellen, indem Sie das Bereitstellungsskript verwenden, oder wenn Sie eine Hauptknoten-VM manuell zu einem Domänencontroller heraufstufen, können Probleme beim Herstellen der Internetverbindung für die virtuellen Computer im virtuellen Azure-Netzwerk auftreten. Dies kann passieren, wenn auf dem Domänencontroller automatisch ein DNS-Weiterleitungsserver konfiguriert wird und dieser Server die Auflösung nicht richtig durchführt.
+* **Problem beim Zugreifen auf das Internet über das virtuelle Azure-Netzwerk**: Wenn Sie einen Cluster mit einem neuen Domänencontroller erstellen, indem Sie das Bereitstellungsskript verwenden, oder wenn Sie einen virtuellen Hauptknotencomputer manuell zu einem Domänencontroller heraufstufen, treten unter Umständen Probleme beim Herstellen der Internetverbindung für die virtuellen Computer auf. Dieses Problem kann auftreten, wenn auf dem Domänencontroller automatisch ein DNS-Weiterleitungsserver konfiguriert wird und dieser die Auflösung nicht richtig durchführt.
 
-    Sie können dieses Problem umgehen, indem Sie sich am Domänencontroller anmelden und entweder die Konfigurationseinstellung für die Weiterleitung entfernen oder einen gültigen DNS-Weiterleitungsserver konfigurieren. Klicken Sie hierzu im Server-Manager auf **Extras** > **DNS**, um den DNS-Manager zu öffnen, und doppelklicken Sie dann auf **Weiterleitungen**.
+    Sie können dieses Problem umgehen, indem Sie sich am Domänencontroller anmelden und entweder die Konfigurationseinstellung für die Weiterleitung entfernen oder einen gültigen DNS-Weiterleitungsserver konfigurieren. Klicken Sie zum Konfigurieren dieser Einstellung im Server-Manager auf **Extras** > **DNS**, um den DNS-Manager zu öffnen, und doppelklicken Sie dann auf **Weiterleitungen**.
 
-* **Problem beim Zugreifen auf das RDMA-Netzwerk über virtuelle Computer der Größe A8 oder A9:** Wenn Sie Windows Server-Computeknoten- oder -Brokerknoten-VMs der Größe A8 oder A9 mit dem Bereitstellungsskript hinzufügen, kann es beim Verbinden dieser virtuellen Computer mit dem RDMA-Anwendungsnetzwerk zu Problemen kommen. Ein möglicher Grund hierfür ist die falsche Installation der HpcVmDrivers-Erweiterung, wenn dem Cluster die virtuellen Computer der Größe A8 oder A9 hinzugefügt werden. Beispielsweise kann es vorkommen, dass die Erweiterung im Installationsstatus verharrt.
+* **Problem beim Zugreifen auf das RDMA-Netzwerk über rechenintensive virtuelle Computer**: Wenn Sie Windows Server-Computeknoten- oder -Brokerknoten-VMs hinzufügen, die eine RDMA-fähige Größe wie A8 oder A9 verwenden, treten beim Verbinden dieser virtuellen Computer mit dem RDMA-Anwendungsnetzwerk unter Umständen Probleme auf. Ein möglicher Grund hierfür ist die falsche Installation der HpcVmDrivers-Erweiterung, wenn die virtuellen Computer dem Cluster hinzugefügt werden. Beispielsweise kann es vorkommen, dass die Erweiterung im Installationsstatus verharrt.
 
     Um dieses Problem zu umgehen, überprüfen Sie auf den virtuellen Computern zunächst den Status der Erweiterung. Wenn die Erweiterung nicht richtig installiert ist, können Sie versuchen, die Knoten aus dem HPC-Cluster zu entfernen und sie dann neu hinzuzufügen. Beispielsweise können Sie Computeknoten-VMs hinzufügen, indem Sie das Skript „Add-HpcIaaSNode.ps1“ auf dem Hauptknoten ausführen.
     
@@ -271,10 +271,10 @@ Mit der folgenden Konfigurationsdatei wird ein HPC Pack-Cluster in einer vorhand
 
 * Führen Sie eine Test-Workload auf dem Cluster aus. Ein Beispiel hierzu finden Sie im [Leitfaden für die ersten Schritte](https://technet.microsoft.com/library/jj884144) von HPC Pack.
 
-* Ein Tutorial, in dem das Skript zum Erstellen eines Clusters und Ausführen einer HPC-Workload verwendet wird, finden Sie unter [Erste Schritte mit einem HPC Pack-Cluster in Azure zum Ausführen von Excel- und SOA-Workloads](virtual-machines-windows-excel-cluster-hpcpack.md).
+* Ein Tutorial für ein Skript zur Cluster-Bereitstellung und zur Ausführung einer HPC-Workload, finden Sie unter [Erste Schritte mit Excel- und SOA-Workloads in einem HPC Pack-Cluster in Azure](virtual-machines-windows-excel-cluster-hpcpack.md).
 
 * Probieren Sie die Tools von HPC Pack zum Starten, Beenden, Hinzufügen und Entfernen von Computeknoten von einem von Ihnen erstellten Cluster aus. Weitere Informationen finden Sie unter [Verwalten von Computeknoten in einem HPC Pack-Cluster in Azure](virtual-machines-windows-classic-hpcpack-cluster-node-manage.md).
 
 * Informationen zum Übermitteln von Aufträgen an den Cluster von einem lokalen Computer finden Sie unter [Übermitteln von HPC-Aufträgen von einem lokalen Computer an einen in Azure bereitgestellten HPC Pack-Cluster](virtual-machines-windows-hpcpack-cluster-submit-jobs.md).
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0928_2016-->

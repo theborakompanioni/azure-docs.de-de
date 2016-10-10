@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/29/2016"
-	ms.author="jahogg"/>
+	ms.date="09/22/2016"
+	ms.author="jahogg;robinsh"/>
 
 # Microsoft Azure-Speicher: Überwachung, Diagnose und Problembehandlung
 
@@ -483,7 +483,7 @@ Microsoft.WindowsAzure.Storage|Information|3|85d077ab-…|Antwort erhalten. Stat
 Microsoft.WindowsAzure.Storage|Warnung|2|85d077ab-…|Während des Vorgangs ausgelöste Ausnahme: Der Remoteserver hat einen Fehler zurückgegeben: (403) Verboten.
 Microsoft.WindowsAzure.Storage|Information|3 |85d077ab-…|Prüfung, ob Vorgang wiederholt werden sollte. Wiederholungsanzahl = 0, HTTP-Statuscode = 403, Ausnahme = Der Remoteserver hat einen Fehler zurückgegeben: (403) Verboten.
 Microsoft.WindowsAzure.Storage|Information|3|85d077ab-…|Der nächste Speicherort wurde auf Primär gesetzt, basierend auf dem Speicherortmodus.
-Microsoft.WindowsAzure.Storage|Fehler|1|85d077ab-…|Wiederholungsrichtlinie hat keinen erneuten Versuch erlaubt. Scheitern mit: Der Remoteserver hat einen Fehler zurückgegeben: (403) Verboten.
+Microsoft.WindowsAzure.Storage|Error|1|85d077ab-…|Wiederholungsrichtlinie hat keinen erneuten Versuch erlaubt. Scheitern mit: Der Remoteserver hat einen Fehler zurückgegeben: (403) Verboten.
 
 In diesem Szenario sollten Sie untersuchen, warum der SAS-Token abläuft, bevor der Client den Token an den Server sendet:
 
@@ -493,7 +493,7 @@ In diesem Szenario sollten Sie untersuchen, warum der SAS-Token abläuft, bevor 
 - 
 - Wenn Sie Ihren Speicherzugriffsschlüssel neu erstellen (klicken Sie auf einer beliebigen Seite in Ihrem Speicherkonto im klassischen Azure-Portal auf **Zugriffsschlüssel verwalten**), kann dies jedes vorhandene SAS-Token unwirksam machen. Dies kann problematisch sein, wenn Sie SAS-Token mit einer langen Ablaufzeit zum Cachen von Clientanwendungen generieren.
 
-Wenn Sie die Speicher-Clientbibliothek verwenden, um SAS-Token zu erstellen, ist es einfach, einen gültigen Token anzulegen. Wenn Sie allerdings die Speicher-REST-API verwenden und das SAS-Token manuell anlegen, sollten Sie sorgfältig das Thema <a href="http://msdn.microsoft.com/library/azure/ee395415.aspx" target="_blank">Zugriffsdelegierung mit einer Shared Access Signature</a> in MSDN lesen.
+Wenn Sie die Speicher-Clientbibliothek verwenden, um SAS-Token zu erstellen, ist es einfach, einen gültigen Token anzulegen. Wenn Sie allerdings die Speicher-REST-API verwenden und die SAS-Token manuell anlegen, sollten Sie sorgfältig das Thema <a href="http://msdn.microsoft.com/library/azure/ee395415.aspx" target="_blank">Zugriffsdelegierung mit einer Shared Access Signature</a> auf MSDN lesen.
 
 ### <a name="the-client-is-receiving-404-messages"></a>Der Client empfängt HTTP 404 (Nicht gefunden)-Meldungen
 Wenn die Clientanwendung eine HTTP 404 (Nicht gefunden)-Meldung vom Server empfängt, bedeutet dies, dass das Objekt, das der Client verwenden will (z. B. eine Entität, Tabelle, Blob, Container oder Warteschlange) nicht im Speicherdienst vorhanden ist. Hierfür gibt es eine Reihe möglicher Gründe, beispielsweise:
@@ -685,7 +685,7 @@ Wenn Sie plötzliche, unerwartete Änderungen in der Kapazitätsauslastung Ihres
 
 ### <a name="you-are-experiencing-unexpected-reboots"></a>Sie stoßen auf unerwartete Neustarts von virtuellen Azure-Computern, die über eine große Anzahl angeschlossener virtueller VHDs verfügen
 
-Wenn ein virtueller Azure-Computer über eine große Anzahl von angeschlossenen VHDs verfügt, die sich im gleichen Speicherkonto befinden, können die Skalierbarkeitsziele für ein einzelnes Speicherkonto überschritten werden. Dies führt zu einem Ausfall des virtuellen Computers. Sie sollten die Minutenmetriken für das Speicherkonto (**TotalRequests**/**TotalIngress**/**TotalEgress**) für Spitzen überprüfen, welche die Skalierbarkeitsziele für ein Speicherkonto überschreiten. Siehe "[Metriken zeigen Anstieg bei PercentThrottlingError an]" für Unterstützung bei der Feststellung, ob Drosselung in Ihrem Speicherkonto stattgefunden hat.
+Wenn ein virtueller Azure-Computer über eine große Anzahl von angeschlossenen VHDs verfügt, die sich im gleichen Speicherkonto befinden, können die Skalierbarkeitsziele für ein einzelnes Speicherkonto überschritten werden. Dies führt zu einem Ausfall des virtuellen Computers. Sie sollten die Minutenmetriken für das Speicherkonto (**TotalRequests**/**TotalIngress**/**TotalEgress**) für Spitzen überprüfen, die die Skalierbarkeitsziele für ein Speicherkonto überschreiten. Siehe "[Metriken zeigen Anstieg bei PercentThrottlingError an]" für Unterstützung bei der Feststellung, ob Drosselung in Ihrem Speicherkonto stattgefunden hat.
 
 In der Regel wird jede einzelne Input- oder Output-Operation auf einer VHD von einem virtuellen Computer in **Get Page**- oder **Put Page**-Operationen des zugrunde liegenden Seiten-Blobs übersetzt. Daher können Sie die geschätzten IOPS für Ihre Umgebung verwenden, um zu bestimmen, über wie viele virtuelle Festplatten Sie in einem einzigen Speicherkonto auf Grundlage des spezifischen Anwendungsverhaltens verfügen können. Wir empfehlen, nicht über mehr als 40 Festplatten in einem einzigen Speicherkonto zu verwenden. Unter <a href="http://msdn.microsoft.com/library/azure/dn249410.aspx" target="_blank">Skalierbarkeits- und Leistungsziele für Azure-Speicher</a> finden Sie nähere Informationen über die aktuellen Skalierbarkeitsziele für Speicherkonten, insbesondere die Gesamtanforderungsrate und die Gesamtbandbreite für den Speicherkontotyp, den Sie verwenden. Wenn Sie die Skalierbarkeitsziele für Ihr Speicherkonto überschreiten, sollten Sie die virtuellen Festplatten in mehreren verschiedenen Speicherkonten platzieren, um die Aktivität in den einzelnen Konten zu reduzieren.
 
@@ -928,4 +928,4 @@ Zum Redaktionszeitpunkt befindet sich Application Insights in der Vorschau. Weit
 [9]: ./media/storage-monitoring-diagnosing-troubleshooting-classic-portal/mma-screenshot-1.png
 [10]: ./media/storage-monitoring-diagnosing-troubleshooting-classic-portal/mma-screenshot-2.png
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0928_2016-->

@@ -41,22 +41,23 @@ Fügen Sie zum Erstellen einer Rollenzuweisung das folgende Schema im Ressourcen
 
 In den folgenden Tabellen sind die Werte beschrieben, die Sie im Schema festlegen müssen.
 
-| Name | Wert |
-| ---- | ---- |
-| type | Enum<br />Erforderlich<br />**Microsoft.Authorization/roleAssignments**<br /><br />Der zu erstellende Ressourcentyp. |
-| apiVersion | Enum<br />Erforderlich<br />**2014-10-01-preview**<br /><br />Die zum Erstellen der Ressource zu verwendende API-Version. |  
-| name | String<br />Erforderlich<br />**Globally Unique Identifier**<br /><br />Ein Bezeichner für die neue Rollenzuweisung. |
-| dependsOn | Array<br />Optional<br />Eine durch Kommas getrennte Liste von Ressourcennamen oder eindeutigen Ressourcenbezeichnern.<br /><br />Die Sammlung von Ressourcen, von denen diese Rollenzuweisung abhängt. Wenn Sie eine Rolle zuweisen, die auf eine Ressource beschränkt ist, und diese Ressource in derselben Vorlage bereitgestellt wird, nehmen Sie den Ressourcennamen in dieses Element auf, um sicherzustellen, dass die Ressource zuerst bereitgestellt wird. | 
-| Eigenschaften | Object<br />Erforderlich<br />[properties-Objekt](#properties)<br /><br />Ein Objekt, das die Rollendefinition, den Prinzipal und den Bereich identifiziert. |  
+| Name | Wert | Beschreibung |
+| ---- | ---- | ---- |
+| Typ | Enum<br />Erforderlich<br />**Microsoft.Authorization/roleAssignments** | Der zu erstellende Ressourcentyp. |
+| apiVersion | Enum<br />Erforderlich<br />**2014-10-01-preview** | Die API-Version zum Erstellen der Ressource. |  
+| Name | Zeichenfolge<br />Erforderlich<br />**Globally Unique Identifier (GUID)** | Ein Bezeichner für die neue Rollenzuweisung |
+| dependsOn | Array<br />Optional<br />Eine durch Komma getrennte Liste von Ressourcennamen oder eindeutigen Ressourcenbezeichnern. | Die Auflistung der Ressourcen, von denen diese Rollenzuweisung abhängt. Wenn Sie eine Rolle zuweisen, die auf eine Ressource beschränkt ist, und diese Ressource in derselben Vorlage bereitgestellt wird, nehmen Sie den Ressourcennamen in dieses Element auf, um sicherzustellen, dass die Ressource zuerst bereitgestellt wird. | 
+| Eigenschaften | Objekt<br />Erforderlich<br />[Properties-Objekt](#properties) | Ein Objekt, das die Rollendefinition, den Prinzipal und den Bereich bezeichnet |  
 
 <a id="properties" />
-### properties-Objekt
 
-| Name | Wert |
-| ------- | ---- |
-| roleDefinitionId | String<br />Erforderlich<br /> **/subscriptions/{Abonnement-ID}/providers/Microsoft.Authorization/roleDefinitions/{Rollendefinitions-ID}**<br /><br />Der in der Rollenzuweisung zu verwendende Bezeichner einer vorhandenen Rollendefinition. |
-| principalId | String<br />Erforderlich<br />**Globally Unique Identifier**<br /><br />Der Bezeichner eines vorhandenen Prinzipals. Dieser Bezeichner wird der ID im Verzeichnis zugeordnet. Er kann auf einen Benutzer, Dienstprinzipal oder eine Sicherheitsgruppe verweisen. |
-| Bereich | String<br />Erforderlich<br />**/subscriptions/{Abonnement-ID}/resourceGroups/{Ressourcengruppenname}** (für Ressourcengruppen) oder<br />**/subscriptions/{Abonnement-ID}/resourceGroups/{Ressourcengruppenname}/providers/{Anbieter-Namespace}/{Ressourcentyp}/{Ressourcenname}** (für Ressourcen)<br /><br />Der Bereich, für den diese Rollenzuweisung gilt. |
+### Properties-Objekt
+
+| Name | Wert1 | Beschreibung |
+| ---- | ---- | ---- |
+| roleDefinitionId | Zeichenfolge <br />Erforderlich <br /><br /> **/subscriptions/{abonnement-id}/providers/Microsoft.Authorization/roleDefinitions/{rollendefinitions-id}** | Der Bezeichner einer vorhandenen Rollendefinition, der für die Rollenzuweisung verwendet werden soll. |
+| principalId | Zeichenfolge<br />Erforderlich <br /><br /> **Globally Unique Identifier (GUID)** | Der Bezeichner eines vorhandenen Prinzipals. Dieser Bezeichner wird der ID im Verzeichnis zugeordnet. Er kann auf einen Benutzer, Dienstprinzipal oder eine Sicherheitsgruppe verweisen. |
+| Bereich | Zeichenfolge<br />Erforderlich <br /><br /> **/subscriptions/{abonnement-id}/resourceGroups/{ressourcengruppenname}** (für Ressourcengruppen)<br /> oder<br />**/subscriptions/{abonnement-id}/resourceGroups/{ressourcengruppenname}/providers/{anbieternamespace}/{ressourcentyp}/{ressourcenname}** (für Ressourcen) | Der Bereich, für den diese Rollenzuweisung gilt |
 
 
 ## Verwenden der Rollenzuweisungsressource
@@ -133,4 +134,4 @@ Die folgenden Vorlagen zeigen, wie die Rollenzuweisungsressource verwendet wird:
 - Informationen zur Vorlagenstruktur finden Sie unter [Erstellen von Azure-Ressourcen-Manager-Vorlagen](resource-group-authoring-templates.md).
 - Weitere Informationen zur rollenbasierten Zugriffssteuerung finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure Active Directory](active-directory/role-based-access-control-configure.md).
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0928_2016-->

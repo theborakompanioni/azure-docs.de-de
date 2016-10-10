@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Übermitteln von Widevine-Lizenzen an Azure Media Services mithilfe von Partnern" 
+	pageTitle="Übermitteln von Widevine-Lizenzen an Azure Media Services mithilfe von Partnern | Microsoft Azure" 
 	description="In diesem Artikel wird beschrieben, wie Sie mithilfe von Azure Media Services (AMS) einen Stream übermitteln, der von AMS mit PlayReady- und Widevine-DRMs dynamisch verschlüsselt wird. Die PlayReady-Lizenz stammt vom Media Services PlayReady-Lizenzserver, und die Widevine-Lizenz wird vom castLabs-Lizenzserver übermittelt." 
 	services="media-services" 
 	documentationCenter="" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/22/2016"  
+	ms.date="09/26/2016"  
 	ms.author="juliako"/>
 
 #Übermitteln von Widevine-Lizenzen an Azure Media Services mithilfe von Partnern
@@ -47,4 +47,4 @@ Sie können Widevine-Lizenzen mithilfe von [Axinom](http://www.axinom.com/press/
 
 [Blog von Mingfei](https://azure.microsoft.com/blog/azure-media-services-adds-google-widevine-packaging-for-delivering-multi-drm-stream/)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0928_2016-->

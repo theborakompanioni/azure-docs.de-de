@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="multiple"
 	ms.devlang="Java"
 	ms.topic="article"
-	ms.date="09/20/2016" 
-	ms.author="robmcm;asirveda"/>
+	ms.date="08/26/2016" 
+	ms.author="robmcm;asirveda;martinsawicki"/>
 
 <!-- Legacy MSDN URL = https://msdn.microsoft.com/library/azure/hh694270.aspx -->
 
@@ -25,6 +25,18 @@
 Dieser Artikel enthält Informationen zu den verschiedenen Versionen und den neuesten Updates des Azure-Toolkits für Eclipse.
 
 > [AZURE.NOTE] Es gibt auch ein Azure-Toolkit für die IntelliJ-IDE. Weitere Informationen finden Sie unter [Azure-Toolkit für IntelliJ].
+
+### 26\. August 2016
+
+Das Release des Azure-Toolkits für Eclipse vom August 2016 umfasst folgende Erweiterungen:
+
+* **Benutzerdefinierte JDK-Distributionen**. Das Azure-Toolkit für Eclipse unterstützt jetzt das Angeben und Bereitstellen einer beliebigen JDK-Version in Ihrem Azure-WebApp-Container:
+  - Zusätzlich zu den von Azure bereitgestellten JDKs können Sie aus einem umfassenden Angebot an Zulu OpenJDK-Versionen auswählen, die von Azul Systems für Azure zur Verfügung gestellt wurden.
+  - Sie können auch eine eigene JDK-Distribution angeben, wenn Sie diese als ZIP-Datei in Ihr Speicherkonto hochladen.
+* **Verbesserungen der Azure Explorer-Ansicht**:
+  - Unterstützung für die Verwaltung virtueller Computer über das neue Resource Manager-Modell von Azure: Sie können auf Resource Manager basierende virtuelle Computer auflisten, erstellen und löschen, ohne die IDE verlassen zu müssen.
+  - Unterstützung für die Blobverwaltung im Speicherkonto über Azure Resource Manager, zur Ergänzung der vorhandenen Funktionalität für die Verwaltung „klassischer“ Speicherkonten.
+* **Microsoft JDBC Driver 6.0 für SQL Server**. Dieses Update enthält den neuesten JDBC-Treiber für Microsoft SQL Server (Version 6.0) – dieser wird jetzt als Bibliothek bereitgestellt, die Sie ganz einfach zu Ihren Java-Projekten hinzufügen können. Die ältere Version wird hierdurch ersetzt.
 
 ### 29\. Juni 2016
 
@@ -373,4 +385,4 @@ Weitere Informationen zum Verwenden von Azure mit Java finden Sie im [Azure Java
 [ic710882]: ./media/azure-toolkit-for-eclipse-whats-new/ic710882.png
 [ic710883]: ./media/azure-toolkit-for-eclipse-whats-new/ic710883.png
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

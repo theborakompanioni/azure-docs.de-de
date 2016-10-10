@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Herstellen einer Verbindung mit einem Media Services-Konto mit der REST-API" 
+	pageTitle="Herstellen einer Verbindung mit einem Media Services-Konto mit der REST-API | Microsoft Azure" 
 	description="In diesem Thema wird veranschaulicht, wie Sie über die REST-API eine Verbindung mit Media Services herstellen." 
 	services="media-services" 
 	documentationCenter="" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="06/22/2016"  
+	ms.date="09/26/2016"  
 	ms.author="juliako"/>
 
 
@@ -177,4 +177,4 @@ Das folgende Beispiel veranschaulicht die HTTP-Anforderung an den Stamm-URI für
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0928_2016-->

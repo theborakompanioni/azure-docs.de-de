@@ -41,7 +41,7 @@ Hier finden Sie die gesamte Dokumentation, die Sie zum Erstellen und Verwalten L
 
 - [Installieren des LAMP-Stapels auf einem virtuellen Linux-Computer in Azure](virtual-machines-linux-create-lamp-stack.md)
 - [Ruby on Rails-Webanwendung auf Azure VM](virtual-machines-linux-classic-ruby-rails-web-app.md)
-- [Gewusst wie: Installieren von Apache Qpid Proton-C für AMQP und Service Bus](../service-bus/service-bus-amqp-apache.md)
+- [Gewusst wie: Installieren von Apache Qpid Proton-C für AMQP und Service Bus](../service-bus-messaging/service-bus-amqp-apache.md)
 
 ### Datenbanken
 - [Optimieren der Leistung von MySQL in Azure](virtual-machines-linux-classic-optimize-mysql.md)
@@ -189,4 +189,4 @@ Dieser Bereich ist recht umfangreich und ändert sich sehr schnell. Sie sollten 
 
 - [Packer-Plug-In für Azure](https://github.com/msopentech/packer-azure)
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0928_2016-->

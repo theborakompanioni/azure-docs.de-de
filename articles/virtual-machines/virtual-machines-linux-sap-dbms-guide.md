@@ -1,19 +1,19 @@
 <properties
    pageTitle="SAP NetWeaver auf virtuellen Linux-Computern – DBMS-Bereitstellungshandbuch | Microsoft Azure"
    description="SAP NetWeaver auf virtuellen Linux-Computern (VMs) – DBMS-Bereitstellungshandbuch"
-   services="virtual-machines-linux,virtual-network,storage"
-   documentationCenter="saponazure"
+   services="virtual-machines-linux"
+   documentationCenter=""
    authors="MSSedusch"
-   manager="juergent"
+   manager="timlt"
    editor=""
    tags="azure-resource-manager"
    keywords=""/>
 <tags
    ms.service="virtual-machines-linux"
    ms.devlang="NA"
-   ms.topic="campaign-page"
+   ms.topic="article"
    ms.tgt_pltfrm="vm-linux"
-   ms.workload="na"
+   ms.workload="infrastructure-services"
    ms.date="08/18/2016"
    ms.author="sedusch"/>
 
@@ -1418,4 +1418,4 @@ Bezüglich aller weiteren allgemeinen Themen wie Azure-Verfügbarkeitsgruppen od
 
 Weitere Informationen erhalten Sie auch im Kapitel [SQL Server für SAP in Azure – Allgemeine Zusammenfassung][dbms-guide-5.8].
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0928_2016-->

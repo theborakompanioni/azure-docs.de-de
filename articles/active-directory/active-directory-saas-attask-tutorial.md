@@ -147,7 +147,7 @@ Das Ziel dieses Abschnitts besteht darin, das einmalige Anmelden von Azure AD im
 
     e. Kopieren Sie im klassischen Azure-Portal die **Kennwortänderungs-URL**, und fügen Sie sie in das Textfeld **Kennwortänderungs-URL** ein.
 
-    e. Klicken Sie auf **Speichern**.
+    f. Klicken Sie auf **Speichern**.
 
 6. Wählen Sie im klassischen Azure-Portal die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Weiter**.
 
@@ -314,4 +314,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel „@Task“ klicken, sollten Sie auto
 [204]: ./media/active-directory-saas-attask-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-attask-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0928_2016-->

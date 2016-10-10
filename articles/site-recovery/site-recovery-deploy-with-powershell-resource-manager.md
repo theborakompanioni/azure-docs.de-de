@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="backup-recovery"
-	ms.date="07/12/2016"
+	ms.date="09/27/2016"
 	ms.author="bsiva"/>
 
 # Replizieren zwischen lokalen virtuellen Hyper-V-Computern und Azure mithilfe von PowerShell und Azure Resource Manager
@@ -41,14 +41,14 @@ Sie müssen kein PowerShell-Experte sein, um diesen Artikel verwenden zu können
 
 Weitere Informationen finden Sie unter [Verwenden von Azure PowerShell mit Azure Resource Manager](../powershell-azure-resource-manager.md).
 
-> [AZURE.NOTE] Microsoft-Partner, die Teil des Cloudlösungsanbieter-Programms (Cloud Solution Provider, CSP) sind, können den Schutz der Server ihrer Kunden im entsprechenden CSP-Abonnement (Mandantenabonnement) ihrer Kunden konfigurieren und verwalten.
+> [AZURE.NOTE] Microsoft-Partner, die Teil des Cloud-Lösungsanbieter-Programms (Cloud Solution Provider, CSP) sind, können den Schutz der Server ihrer Kunden in den entsprechenden CSP-Abonnements (Mandantenabonnements) ihrer Kunden konfigurieren und verwalten.
 
 ## Vorbereitung
 
 Stellen Sie sicher, dass diese Voraussetzungen erfüllt werden:
 
 - Ein [Microsoft Azure](https://azure.microsoft.com/)-Konto. Für den Einstieg steht eine [kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/) zur Verfügung. Darüber hinaus können Sie sich über die [Preisgestaltung für Azure Site Recovery-Manager](https://azure.microsoft.com/pricing/details/site-recovery/) informieren.
-- Azure PowerShell 1.0. Informationen zu dieser Version, und wie Sie diese installieren, finden Sie unter [Azure PowerShell 1.0](https://azure.microsoft.com/).
+- Azure PowerShell 1.0. Informationen zu dieser Version, und wie Sie diese installieren, finden Sie unter [Azure PowerShell 1.0](https://azure.microsoft.com/).
 - Die Module [AzureRM.SiteRecovery](https://www.powershellgallery.com/packages/AzureRM.SiteRecovery/) und [AzureRM.RecoveryServices](https://www.powershellgallery.com/packages/AzureRM.RecoveryServices/). Sie erhalten die neuesten Versionen dieser Module im [PowerShell-Katalog](https://www.powershellgallery.com/).
 
 In diesem Artikel wird das Verwenden von Azure PowerShell mit Azure Resource Manager zum Konfigurieren und Verwalten des Schutzes Ihrer Server veranschaulicht. Das Beispiel in diesem Artikel zeigt, wie Sie einen auf einem Hyper-V-Host ausgeführten virtuellen Computer in Azure schützen. Die folgenden Anforderungen sind für dieses Beispiel spezifisch. Eine umfassendere Aufstellung von Voraussetzungen für die verschiedenen Site Recovery-Szenarien finden Sie in der Dokumentation zum jeweiligen Szenario.
@@ -236,7 +236,7 @@ In diesem Artikel wird das Verwenden von Azure PowerShell mit Azure Resource Man
 
 
 
-## Schritt 8: Ausführen eines Testfailovers
+## Schritt 8: Ausführen eines Testfailovers
 
 1. Führen Sie einen Testfailoverauftrag folgendermaßen aus:
 
@@ -257,4 +257,4 @@ In diesem Artikel wird das Verwenden von Azure PowerShell mit Azure Resource Man
 
 [Erfahren Sie mehr](https://msdn.microsoft.com/library/azure/mt637930.aspx) über Azure Site Recovery mit PowerShell-Cmdlets für Azure Resource Manager.
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0928_2016-->

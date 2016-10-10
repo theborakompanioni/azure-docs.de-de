@@ -555,7 +555,10 @@ Die Installationsprogramme stehen auf dem Prozessserver unter **C:\\Programme (x
 Quellbetriebssystem | Installationsdatei für den Mobilitätsdienst
 --- | ---
 Windows Server (nur 64 Bit) | Microsoft-ASR\_UA\_9.*.0.0_Windows_* release.exe
-CentOS 6.4, 6.5, 6.6 (nur 64 Bit) | Microsoft-ASR\_UA\_9.*.0.0\_RHEL6-64\_*release.tar.gz
+CentOS 6.5, 6.6, 6.7 (nur 64 Bit) | Microsoft-ASR\_UA\_9.*.0.0\_RHEL6-64\_*release.tar.gz
+CentOS 7.0, 7.1, 7.2 (nur 64 Bit) | Microsoft-ASR\_UA\_9.*.0.0\_RHEL7-64\_*release.tar.gz
+Red Had Enterprise Linux 6.7 (nur 64 Bit) | Microsoft-ASR\_UA\_9.*.0.0\_RHEL6-64\_*release.tar.gz
+Red Had Enterprise Linux 7.1, 7.2 (nur 64 Bit) | Microsoft-ASR\_UA\_9.*.0.0\_RHEL7-64\_*release.tar.gz
 SUSE Linux Enterprise Server 11 SP3 (nur 64 Bit) | Microsoft-ASR\_UA\_9.*.0.0\_SLES11-SP3-64\_*release.tar.gz
 Oracle Enterprise Linux 6.4, 6.5 (nur 64 Bit) | Microsoft-ASR\_UA\_9.*.0.0\_OL6-64\_*release.tar.gz
 
@@ -862,4 +865,4 @@ The information in Section B is regarding Third Party Code components that are b
 
 The complete file may be found on the [Microsoft Download Center](http://go.microsoft.com/fwlink/?LinkId=529428). Microsoft reserves all rights not expressly granted herein, whether by implication, estoppel or otherwise.
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

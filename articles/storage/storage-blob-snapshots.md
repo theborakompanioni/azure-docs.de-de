@@ -14,7 +14,7 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="09/07/2016"
-	ms.author="tamram"/>
+	ms.author="jwillis;tamram"/>
 
 # Erstellen einer Momentaufnahme eines Blobs
 
@@ -174,4 +174,4 @@ In Szenario 4 wurde das Basis-Blob vollständig aktualisiert und enthält keine
 
 Weitere Beispiele zur Verwendung von Blobspeicher finden Sie unter [Azure-Codebeispiele](https://azure.microsoft.com/documentation/samples/?service=storage&term=blob). Sie können eine Beispielanwendung herunterladen und ausführen oder den Code auf GitHub durchsuchen.
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0928_2016-->

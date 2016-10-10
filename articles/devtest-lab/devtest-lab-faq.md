@@ -110,7 +110,7 @@ Da Bereiche hierarchisch sind, gelten die Berechtigungen, die einem Benutzer fü
 ### Wie erstelle ich eine bestimmte Rolle, um Benutzern das Ausführen einer einzelnen Aufgabe zu ermöglichen?
 Einen ausführlichen Artikel zum Erstellen von benutzerdefinierten Rollen und Zuweisen von Berechtigungen zu dieser Rolle finden Sie hier. Das folgende Beispielskript erstellt die Rolle „DevTest Labs Advanced User“, die über die Berechtigung zum Starten und Beenden alle VMs im Lab verfügt:
  
-	$policyRoleDef = (Get-AzureRmRoleDefinition "DevTest Labs User") 
+	$policyRoleDef = Get-AzureRmRoleDefinition "DevTest Labs User" 
 	$policyRoleDef.Actions.Remove('Microsoft.DevTestLab/Environments/*') 
 	$policyRoleDef.Id = $null 
 	$policyRoleDef.Name = "DevTest Labs Advance User" 
@@ -119,7 +119,7 @@ Einen ausführlichen Artikel zum Erstellen von benutzerdefinierten Rollen und Zu
 	$policyRoleDef.AssignableScopes.Add("subscriptions/<subscription Id>") 
 	$policyRoleDef.Actions.Add("Microsoft.DevTestLab/labs/virtualMachines/Start/action") 
 	$policyRoleDef.Actions.Add("Microsoft.DevTestLab/labs/virtualMachines/Stop/action") 
-	$policyRoleDef = (New-AzureRmRoleDefinition -Role $policyRoleDef)  
+	$policyRoleDef = New-AzureRmRoleDefinition -Role $policyRoleDef  
  
 ### Lässt sich Azure DevTest Labs in meine CI/CD-Toolkette integrieren? 
 Wenn Sie Visual Studio Team Services (VSTS) verwenden, ist eine [Azure DevTest Labs-Erweiterung für Aufgaben](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks) verfügbar, mit der Sie Ihre Releasepipeline in Azure DevTest Labs automatisieren können. Die Erweiterung kann beispielsweise für folgende Zwecke verwendet werden:
@@ -244,4 +244,4 @@ Im Blogbeitrag [How to troubleshoot failing Artifacts in AzureDevTestLabs](http:
 ### Warum wird mein vorhandenes virtuelles Netzwerk nicht korrekt gespeichert?  
 Möglicherweise enthält der Name des virtuellen Netzwerks Punkte. Wenn dies der Fall ist, können Sie die Punkte entfernen oder durch Bindestriche ersetzen und dann noch einmal versuchen, das virtuelle Netzwerk zu speichern.
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0928_2016-->

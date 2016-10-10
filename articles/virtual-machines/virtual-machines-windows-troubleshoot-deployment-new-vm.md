@@ -3,7 +3,7 @@
    description="Behandeln von Problemen beim Erstellen eines neuen virtuellen Windows-Computers in Azure (Resource Manager-Bereitstellungsmodell)"
    services="virtual-machines-windows, azure-resource-manager"
    documentationCenter=""
-   authors="jiangchen79"
+   authors="JiangChen79"
    manager="felixwu"
    editor=""
    tags="top-support-issue, azure-resource-manager"/>
@@ -45,7 +45,7 @@ Sammeln Sie zur Problembehandlung zunächst die Überwachungsprotokolle, um den 
 
 **Lösung**
 
-Laden Sie zur Behebung dieser Fehler mithilfe von [Add-AzureRMVhd](https://msdn.microsoft.com/library/mt603554.aspx) die ursprüngliche (lokal verfügbare) virtuelle Festplatte mit der gleichen Einstellung (generalisiert/spezialisiert) hoch, die auch für das Betriebssystem verwendet wird. Beim Hochladen als generalisiertes Image muss zuerst „sysprep“ ausgeführt werden.
+Laden Sie zur Behebung dieser Fehler mithilfe von [Add-AzureRmVhd](https://msdn.microsoft.com/library/mt603554.aspx) die ursprüngliche (lokal verfügbare) virtuelle Festplatte mit der gleichen Einstellung (generalisiert/spezialisiert) hoch, die auch für das Betriebssystem verwendet wird. Beim Hochladen als generalisiertes Image muss zuerst „sysprep“ ausgeführt werden.
 
 **Erfassungsfehler:**
 
@@ -82,4 +82,4 @@ Dieser Fehler tritt auf, wenn die Anforderung für einen neuen virtuellen Comput
 ## Nächste Schritte
 Wenn beim Starten eines beendeten virtuellen Windows-Computers oder beim Ändern der Größe eines vorhandenen virtuellen Windows-Computers in Azure Probleme auftreten, finden Sie Informationen unter [Behandeln von Problemen beim Neustart oder Ändern der Größe eines vorhandenen virtuellen Windows-Computers in Azure (Resource Manager-Bereitstellungsmodell)](virtual-machines-windows-restart-resize-error-troubleshooting.md).
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0928_2016-->

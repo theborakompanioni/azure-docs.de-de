@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="02/04/2016"
+   ms.date="02/05/2016"
    ms.author="v-jeana; hascipio"/>
 
 # Grundlegendes zu Verkäufer-Insights-Berichten
@@ -92,7 +92,9 @@ Navigieren Sie zu https://publish.windowsazure.com/, und melden Sie sich mit den
 Wählen Sie die Registerkarte **Herausgeber** aus. ![selectpublisherstab][8]
 
 
-Suchen Sie die Herausgeber-ID in der URL: Verwenden Sie diese ID als Kennwort, um Ihre Verkäufer-Insights-Excel-Datei zu öffnen. Bis auf Weiteres wird diese ID als Kennwort verwendet: Es wird empfohlen, Microsoft Office 2013 zusammen mit Windows als bevorzugten Arbeitsmappenleser zu verwenden. Einige Benutzer haben Probleme bei der Verwendung von Microsoft Office für Mac gemeldet.
+Suchen Sie die Herausgeber-ID in der URL:
+- Verwenden Sie diese ID als Kennwort, um Ihre Verkäufer-Insights-Excel-Datei zu öffnen. Bis auf Weiteres wird diese ID als Kennwort verwendet:
+- Es wird empfohlen, Microsoft Office 2013 zusammen mit Windows als bevorzugten Arbeitsmappenleser zu verwenden. Einige Benutzer haben Probleme bei der Verwendung von Microsoft Office für Mac gemeldet.
 
 ![publisherid][9]
 
@@ -118,4 +120,4 @@ Wenn Sie eine Frage im Zusammenhang mit Ihren Berichten und Insights haben, wend
 [9]: ./media/marketplace-publishing-report-seller-insights/publisherid.png
 [10]: ./media/marketplace-publishing-report-seller-insights/sellerinsightsquestions.png
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0928_2016-->

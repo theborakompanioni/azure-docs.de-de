@@ -69,6 +69,17 @@ Ja. Verwenden Sie die Schaltfläche **Verschieben** auf Ihrem Data Factory-Blatt
 
 ![Data Factory verschieben](media/data-factory-faq/move-data-factory.png)
 
+### Welche Compute-Umgebungen werden von Data Factory unterstützt?
+Die folgende Tabelle enthält eine Liste von Compute-Umgebungen, die von Data Factory unterstützt werden, und die Aktivitäten, die darin ausgeführt werden können.
+
+| Compute-Umgebung | Aktivitäten |
+| ------------------- | -------- | 
+| [Bedarfsgesteuerter HDInsight-Cluster](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) oder [Eigener HDInsight-Cluster](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) | [DotNet](data-factory-use-custom-activities.md), [Hive](data-factory-hive-activity.md), [Pig](data-factory-pig-activity.md), [MapReduce](data-factory-map-reduce.md), [Hadoop Streaming](data-factory-hadoop-streaming-activity.md) | 
+| [Azure Batch](data-factory-compute-linked-services.md#azure-batch-linked-service) | [DotNet](data-factory-use-custom-activities.md) |  
+| [Azure Machine Learning](data-factory-compute-linked-services.md#azure-machine-learning-linked-service) | [Machine Learning-Aktivitäten: Batchausführung und Ressourcenaktualisierung](data-factory-azure-ml-batch-execution-activity.md) |
+| [Azure Data Lake Analytics](data-factory-compute-linked-services.md#azure-data-lake-analytics-linked-service) | [Data Lake Analytics U-SQL](data-factory-usql-activity.md)
+| [Azure SQL](data-factory-compute-linked-services.md#azure-sql-linked-service), [Azure SQL Data Warehouse](data-factory-compute-linked-services.md#azure-sql-data-warehouse-linked-service), [SQL Server](data-factory-compute-linked-services.md#sql-server-linked-service) | [Gespeicherte Prozedur](data-factory-stored-proc-activity.md)
+
 ## Aktivitäten – Häufig gestellte Fragen
 ### Welche verschiedenen Arten von Aktivitäten können in einer Data Factory-Pipeline verwendet werden? 
 
@@ -82,8 +93,13 @@ Die Konfigurationseinstellung **availability** in der Ausgabedatentabelle bestim
 ### Ist es besser, eine Pipeline mit mehreren Aktivitäten oder eine separate Pipeline für jede Aktivität einzurichten? 
 Pipelines dienen zum Bündeln verwandter Aktivitäten. Sie können die Aktivitäten in einer Pipeline halten, wenn die Datasets, die diese verbinden, nicht von anderen Aktivitäten außerhalb der Pipeline genutzt werden. Auf diese Weise müssen Sie Pipelineaktivitäten nicht verknüpfen, damit diese sich aneinander ausrichten. Darüber hinaus kann die Datenintegrität in den Tabellen, die für die Pipeline intern sind, beim Aktualisieren der Pipeline besser beibehalten werden. Bei einer Pipelineaktualisierung werden alle Aktivitäten in der Pipeline beendet, entfernt und neu erstellt. Aus Erstellungssicht kann es auch einfacher sein, den Datenfluss innerhalb der zugehörigen Aktivitäten in einer JSON-Datei für die Pipeline nachzuverfolgen.
 
-### Wo wird der Kopiervorgang ausgeführt? 
+### Welche Datenspeicher werden unterstützt?
+[AZURE.INCLUDE [data-factory-supported-data-stores](../../includes/data-factory-supported-data-stores.md)]
 
+### Welche Dateiformate werden unterstützt? 
+[AZURE.INCLUDE [data-factory-file-format](../../includes/data-factory-file-format.md)]
+
+### Wo wird der Kopiervorgang ausgeführt? 
 Ausführliche Informationen finden Sie im Abschnitt [Global verfügbare Datenverschiebung](data-factory-data-movement-activities.md#global). Kurz gesagt: Wenn ein lokaler Datenspeicher beteiligt ist, wird der Kopiervorgang vom Datenverwaltungsgateway in Ihrer lokalen Umgebung ausgeführt. Wenn Daten zwischen zwei Cloudspeichern bewegt werden, wird der Kopiervorgang in der Region ausgeführt, die dem Standort der Senke in der gleichen geografischen Region am nächsten liegt.
 
 
@@ -192,4 +208,4 @@ Wenn Sie alle Ausführungen wirklich sofort beenden möchten, ist die einzige M�
 [hdinsight-alternate-storage-2]: http://blogs.msdn.com/b/cindygross/archive/2014/05/05/use-additional-storage-accounts-with-hdinsight-hive.aspx
  
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0928_2016-->

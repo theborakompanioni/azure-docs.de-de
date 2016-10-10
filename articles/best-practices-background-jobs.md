@@ -318,7 +318,7 @@ Hintergrundaufgaben müssen ausreichend Leistung bieten, damit sichergestellt is
 - [Azure Role Startup Life Cycle](http://blog.syntaxc4.net/post/2011/04/13/windows-azure-role-startup-life-cycle.aspx) (Lebenszyklus eines Azure-Rollenstarts, Blogbeitrag)
 - [Lebenszyklus von Azure Cloud Services-Rollen](http://channel9.msdn.com/Series/Windows-Azure-Cloud-Services-Tutorials/Windows-Azure-Cloud-Services-Role-Lifecycle) (Video)
 - [Erste Schritte mit dem Azure WebJobs SDK](./app-service-web/websites-dotnet-webjobs-sdk-get-started.md)
-- [Azure-Warteschlangen und Service Bus-Warteschlangen – Vergleich und Gegenüberstellung](./service-bus/service-bus-azure-and-service-bus-queues-compared-contrasted.md)
+- [Azure-Warteschlangen und Service Bus-Warteschlangen – Vergleich und Gegenüberstellung](./service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted.md)
 - [Aktivieren der Diagnose in einem Clouddienst](./cloud-services/cloud-services-dotnet-diagnostics.md)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0928_2016-->

@@ -17,9 +17,13 @@
    ms.author="subramar"/>
 
 
-
-
 # Service Fabric-Anwendungsupgrade mithilfe von PowerShell
+
+> [AZURE.SELECTOR]
+- [PowerShell](service-fabric-application-upgrade-tutorial-powershell.md)
+- [Visual Studio](service-fabric-application-upgrade-tutorial.md)
+
+<br/>
 
 Die am häufigsten angewendete und empfohlene Methode für Upgrades ist das überwachte parallele Upgrade. Azure Service Fabric überwacht die Integrität der aktualisierten Anwendung basierend auf einer Reihe von Integritätsrichtlinien. Wenn für eine Updatedomäne (UD) ein Upgrade erfolgt ist, prüft Service Fabric die Anwendungsintegrität und ob mit der nächsten Updatedomäne fortgefahren wird oder ob basierend auf den Integritätsrichtlinien ein Upgradefehler vorliegt.
 
@@ -135,4 +139,4 @@ Informieren Sie sich in [weiterführenden Themen](service-fabric-application-upg
 
 Informationen zum Beheben gängiger Probleme bei Anwendungsupgrades finden Sie in den Anweisungen unter [Problembehandlung bei Anwendungsupgrades](service-fabric-application-upgrade-troubleshooting.md).
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

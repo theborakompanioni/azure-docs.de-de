@@ -13,13 +13,13 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="06/09/2016"
+	ms.date="09/22/2016"
 	ms.author="mikeray" />
 
 # Konfigurieren von AlwaysOn-Verfügbarkeitsgruppen auf virtuellen Azure-Computern mit PowerShell
 
 > [AZURE.SELECTOR]
-- [Resource Manager: automatisch](virtual-machines-windows-portal-sql-alwayson-availability-groups.md)
+- [Resource Manager: Vorlage](virtual-machines-windows-portal-sql-alwayson-availability-groups.md)
 - [Resource Manager: manuell](virtual-machines-windows-portal-sql-alwayson-availability-groups-manual.md)
 - [Klassisch: Benutzeroberfläche](virtual-machines-windows-classic-portal-sql-alwayson-availability-groups.md)
 - [Klassisch: PowerShell](virtual-machines-windows-classic-ps-sql-alwayson-availability-groups.md)
@@ -60,7 +60,7 @@ Dieses Tutorial soll Ihnen die erforderlichen Schritte für das Einrichten der o
 
 	Der Befehl **Get-AzurePublishgSettingsFile** erstellt automatisch ein Verwaltungszertifikat für Azure, das auf Ihren Computer heruntergeladen wird. Ein Browser wird automatisch geöffnet, und Sie werden aufgefordert, die Anmeldeinformationen Ihres Microsoft-Kontos für Ihr Azure-Abonnement einzugeben. Die heruntergeladene **PUBLISHSETTINGS**-Datei enthält alle Informationen, die Sie zum Verwalten Ihres Azure-Abonnements benötigen. Importieren Sie diese Datei, nachdem Sie sie in einem lokalen Verzeichnis gespeichert haben, mithilfe des Befehls **Import-AzurePublishSettingsFile**.
 
-	>[AZURE.NOTE] Die PUBLISHSETTINGS-Datei enthält Ihre Anmeldeinformationen (unverschlüsselt) für die Verwaltung Ihrer Azure-Abonnements und -Dienste. Die bewährte Sicherheitsmethode für diese Datei besteht im vorübergehenden Speichern außerhalb Ihrer Quellcodeverzeichnisse (beispielsweise im Ordner "Libraries\\Documents"). Löschen Sie sie nach Abschluss des Importvorgangs. Böswillige Benutzer, die Zugriff auf die „PUBLISHSETTINGS“-Datei erlangen, können Ihre Azure-Dienste bearbeiten, erstellen und löschen.
+	>[AZURE.NOTE] Die PUBLISHSETTINGS-Datei enthält Ihre (unverschlüsselten) Anmeldeinformationen für die Verwaltung Ihrer Azure-Abonnements und -Dienste. Die bewährte Sicherheitsmethode für diese Datei besteht im vorübergehenden Speichern außerhalb Ihrer Quellcodeverzeichnisse (beispielsweise im Ordner "Libraries\\Documents"). Löschen Sie sie nach Abschluss des Importvorgangs. Böswillige Benutzer, die Zugriff auf die „PUBLISHSETTINGS“-Datei erlangen, können Ihre Azure-Dienste bearbeiten, erstellen und löschen.
 
 1. Definieren Sie eine Reihe von Variablen, die Sie zum Erstellen Ihrer Cloud-IT-Infrastruktur verwenden.
 
@@ -402,7 +402,7 @@ Der DC-Server ist jetzt erfolgreich bereitgestellt. Als Nächstes konfigurieren 
 
 ## Initialisieren der WSFC-Cluster-VMs
 
-In diesem Abschnitt müssen Sie die drei Server ändern, die Sie für die WSFC-Cluster und die SQL Server-Installation verwenden. Dies gilt insbesondere in folgenden Fällen:
+In diesem Abschnitt müssen Sie die drei Server ändern, die Sie für die WSFC-Cluster und die SQL Server-Installation verwenden. Dies bedeutet Folgendes:
 
 - (Alle Server) Sie müssen das Feature **Failoverclustering** installieren.
 
@@ -535,7 +535,7 @@ Sie sind jetzt bereit, die Verfügbarkeitsgruppe zu konfigurieren. Sie verwenden
 		$svc2.Start();
 		$svc2.WaitForStatus([System.ServiceProcess.ServiceControllerStatus]::Running,$timeout)
 
-1. Laden Sie **CreateAzureFailoverCluster.ps1** von [Create WSFC Cluster for AlwaysOn Availability Groups in Windows Azure VM](http://gallery.technet.microsoft.com/scriptcenter/Create-WSFC-Cluster-for-7c207d3a) (Erstellen eines WSFC-Clusters für AlwaysOn-Verfügbarkeitsgruppen in virtuellen Azure-Computern) in das lokale Arbeitsverzeichnis herunter. Dieses Skript unterstützt Sie beim Erstellen eines funktionsfähigen WSFC-Clusters. Wichtige Informationen zum Zusammenwirken von WSFC mit dem Azure-Netzwerk finden Sie unter [Hochverfügbarkeit und Notfallwiederherstellung für SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-sql-high-availability-dr.md).
+1. Laden Sie **CreateAzureFailoverCluster.ps1** von [Create WSFC Cluster for AlwaysOn Availability Groups in Microsoft Azure VM](http://gallery.technet.microsoft.com/scriptcenter/Create-WSFC-Cluster-for-7c207d3a) (Erstellen eines WSFC-Clusters für AlwaysOn-Verfügbarkeitsgruppen in virtuellen Azure-Computern) in das lokale Arbeitsverzeichnis herunter. Dieses Skript unterstützt Sie beim Erstellen eines funktionsfähigen WSFC-Clusters. Wichtige Informationen zum Zusammenwirken von WSFC mit dem Azure-Netzwerk finden Sie unter [Hochverfügbarkeit und Notfallwiederherstellung für SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-sql-high-availability-dr.md).
 
 1. Wechseln Sie in das Arbeitsverzeichnis, und erstellen Sie mithilfe des heruntergeladenen Skripts den WSFC-Cluster.
 
@@ -630,4 +630,4 @@ Sie haben nun erfolgreich SQL Server AlwaysOn implementiert, indem Sie eine Verf
 
 Weitere Informationen zur Verwendung von SQL Server in Azure finden Sie unter [SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-sql-server-iaas-overview.md).
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0928_2016-->

@@ -14,7 +14,7 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="rest-api" 
     ms.topic="article" 
-    ms.date="06/14/2016" 
+    ms.date="09/23/2016" 
     ms.author="b-hoedid"/>
 
 # Benachrichtigungen über neue oder geänderte DocumentDB-Ressourcen mit Logik-Apps
@@ -283,7 +283,7 @@ Wie bereits erwähnt, können Sie Parameter im Designer oder in der Codeansicht 
 
 Sie erstellen ein JSON-Schema, das aus dem HTTP-POST-Text übergeben wird. Um den Trigger auszulösen, benötigen Sie eine Rückruf-URL. Später in diesem Tutorial erfahren Sie, wie Sie sie generieren.
 
-## Aktionen
+## Actions
 Betrachten wir nun, was die einzelnen Aktionen in unserer Logik-App bewirken.
 
 ### GetUTCDate
@@ -1125,7 +1125,7 @@ GetUtcDate\_HoursBack | Legt die Anzahl der Stunden für das Startdatum der Such
 sendgridUsername | Legt die Anzahl der Stunden für das Startdatum der Suche fest
 sendgridPassword | Der Benutzername für die SendGrid-E-Mail
 EmailTo | Die E-Mail-Adresse, die die E-Mail-Benachrichtigung empfängt
-Betreff | Der Betreff der E-Mail
+Subject (Antragsteller) | Der Betreff der E-Mail
 
 ## Anzeigen der Patientendaten im Azure-Blobdienst
 
@@ -1156,4 +1156,4 @@ Bitte verwenden Sie den Logik-App-Code, den Sie bei [Github](https://github.com/
 
 Weitere Informationen zu DocumentDB finden Sie im [Lernpfad](https://azure.microsoft.com/documentation/learning-paths/documentdb/).
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0928_2016-->

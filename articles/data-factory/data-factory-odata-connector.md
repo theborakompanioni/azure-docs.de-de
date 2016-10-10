@@ -3,7 +3,7 @@
 	description="Erfahren Sie, wie Sie Daten aus OData-Quellen mithilfe von Azure Data Factory verschieben." 
 	services="data-factory" 
 	documentationCenter="" 
-	authors="spelluru" 
+	authors="linda33wj" 
 	manager="jhubbard" 
 	editor="monicar"/>
 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/25/2016" 
-	ms.author="spelluru"/>
+	ms.date="09/26/2016" 
+	ms.author="jingwang"/>
 
 # Verschieben von Daten aus einer OData-Quelle mithilfe von Azure Data Factory
 Dieser Artikel beschreibt, wie Sie die Kopieraktivität in einer Azure Data Factory verwenden können, um Daten aus einer OData-Quelle in einen anderen Datenspeicher zu verschieben. Dieser Artikel baut auf dem Artikel [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) auf, der eine allgemeine Übersicht zur Datenverschiebung mit Kopieraktivität und unterstützten Datenspeicherkombinationen bietet.
@@ -71,7 +71,7 @@ Das Beispiel kopiert stündlich Daten durch Abfragen einer OData-Quelle in ein A
 
 **OData-Eingabedataset:**
 
-Durch Festlegen von "external" auf "true" und Angeben der Richtlinie "externalData" wird dem Data Factory-Dienst angegeben, dass dies eine Tabelle ist, die für die Data Factory extern ist und nicht durch eine Aktivität in der Data Factory erzeugt wird.
+Durch Festlegen von „external“ auf „true“ wird dem Data Factory-Dienst mitgeteilt, dass das Dataset für die Data Factory extern ist und nicht durch eine Aktivität in der Data Factory erzeugt wird.
 	
     {
     	"name": "ODataDataset",
@@ -97,12 +97,12 @@ Durch Festlegen von "external" auf "true" und Angeben der Richtlinie "externalDa
 		}
 	}
 
-Beachten Sie, dass die Angabe von **path** in der Datasetdefinition optional ist.
+Die Angabe von **path** in der Datasetdefinition ist optional.
 
 
 **Azure-Blob-Ausgabedataset**
 
-Daten werden stündlich in ein neues Blob geschrieben (frequency: hour, interval: 1). Der Ordnerpfad des Blobs wird basierend auf der Startzeit des Slices, der verarbeitet wird, dynamisch ausgewertet. Im Ordnerpfad werden Jahr, Monat, Tag und die Stundenteile der Startzeit verwendet.
+Daten werden stündlich in ein neues Blob geschrieben ("frequency": "hour", "interval": 1). Der Ordnerpfad des Blobs wird basierend auf der Startzeit des Slices, der verarbeitet wird, dynamisch ausgewertet. Im Ordnerpfad werden Jahr, Monat, Tag und die Stundenteile der Startzeit verwendet.
 
 	{
 	    "name": "AzureBlobODataDataSet",
@@ -162,7 +162,7 @@ Daten werden stündlich in ein neues Blob geschrieben (frequency: hour, interval
 
 **Pipeline mit Kopieraktivität**
 
-Die Pipeline enthält eine Kopieraktivität, die für das Verwenden der oben genannten Ein- und Ausgabedatasets und für eine stündliche Ausführung konfiguriert ist. In der JSON-Definition der Pipeline ist der Typ **source** auf **RelationalSource** und der Typ **sink** auf **BlobSink** festgelegt. Die SQL-Abfrage für die **query**-Eigenschaft wählt die letzten (neuesten) Daten aus der OData-Quelle aus.
+Die Pipeline enthält eine Kopieraktivität, die für die Verwendung der Ein- und Ausgabedatasets und für eine stündliche Ausführung konfiguriert ist. In der JSON-Definition der Pipeline ist der Typ **source** auf **RelationalSource** und der Typ **sink** auf **BlobSink** festgelegt. Die SQL-Abfrage für die **query**-Eigenschaft wählt die letzten (neuesten) Daten aus der OData-Quelle aus.
 	
 	{
 	    "name": "CopyODataToBlob",
@@ -209,7 +209,7 @@ Die Pipeline enthält eine Kopieraktivität, die für das Verwenden der oben gen
 	}
 
 
-Beachten Sie, dass die Angabe von **query** in der Pipelinedefinition optional ist. Die **URL**, die der Data Factory-Dienst zum Abrufen der Daten verwendet, ergibt sich aus: URL, die im verknüpften Dienst (erforderlich) angegeben wurde + im Dataset (optional) angegebener Pfad + Abfrage in der Pipeline (optional).
+Die Angabe von **query** in der Pipelinedefinition ist optional. Die **URL**, die der Data Factory-Dienst zum Abrufen der Daten verwendet, ergibt sich aus: URL, die im verknüpften Dienst (erforderlich) angegeben wurde + im Dataset (optional) angegebener Pfad + Abfrage in der Pipeline (optional).
 
 ## Eigenschaften des mit OData verknüpften Diensts
 
@@ -219,7 +219,7 @@ Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den 
 | -------- | ----------- | -------- | 
 | Typ | Die type-Eigenschaft muss auf **OData** festgelegt sein. | Ja |
 | url| Die URL des OData-Diensts. | Ja |
-| authenticationType | Typ der Authentifizierung für die Verbindung mit der OData-Quelle. <br/><br/> Für Cloud-OData lauten die möglichen Werte „Anonymous“ und „Basic“ und für lokale OData „Anonymous“, „Basic“ und „Windows“. | Ja | 
+| authenticationType | Typ der Authentifizierung für die Verbindung mit der OData-Quelle. <br/><br/> Mögliche Werte für OData in der Cloud sind „Anonymous“ und „Basic“. Mögliche Werte für lokales OData sind „Anonymous“, „Basic“ und „Windows“. | Ja | 
 | username | Geben Sie den Benutzernamen an, wenn Sie die Standardauthentifizierung (Basic) verwenden. | Ja (nur bei Verwendung der Standardauthentifizierung) | 
 | password | Geben Sie das Kennwort für das Benutzerkonto an, das Sie für den Benutzernamen angegeben haben. | Ja (nur bei Verwendung der Standardauthentifizierung) | 
 | gatewayName | Der Name des Gateways, das der Data Factory-Dienst zum Verbinden mit dem lokalen OData-Dienst verwenden soll. Geben Sie diesen nur an, wenn Sie Daten aus einer lokalen OData-Quelle kopieren. | Nein |
@@ -278,7 +278,7 @@ Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den 
 
 ## Eigenschaften des Datasettyps „OData“
 
-Eine vollständige Liste der Abschnitte und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel [Erstellen von Datasets](data-factory-create-datasets.md). Abschnitte wie „structure“, „availability“ und „policy“ des JSON-Codes eines Datasets sind bei allen Typen von Datasets (Azure SQL, Azure-Blob, Azure-Tabelle usw.) ähnlich.
+Eine vollständige Liste der Abschnitte und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel [Erstellen von Datasets](data-factory-create-datasets.md). Abschnitte wie „structure“, „availability“ und „policy“ des JSON-Codes eines Datasets sind bei allen Dataset-Typen (Azure SQL, Azure-Blob, Azure-Tabelle usw.) ähnlich.
 
 Der Abschnitt **typeProperties** unterscheidet sich bei jedem Typ von Dataset und bietet Informationen zum Speicherort der Daten im Datenspeicher. Der Abschnitt „typeProperties“ für ein Dataset vom Typ **ODataResource** (mit OData-Datasets) hat die folgenden Eigenschaften:
 
@@ -288,11 +288,11 @@ Der Abschnitt **typeProperties** unterscheidet sich bei jedem Typ von Dataset un
 
 ## Eigenschaften des OData-Kopieraktivitätstyps
 
-Eine vollständige Liste der Abschnitte und Eigenschaften zum Definieren von Aktivitäten finden Sie im Artikel [Erstellen von Pipelines](data-factory-create-pipelines.md). Eigenschaften wie Name, Beschreibung, Eingabe- und Ausgabetabellen, verschiedene Richtlinien usw. sind für alle Arten von Aktivitäten verfügbar.
+Eine vollständige Liste der Abschnitte und Eigenschaften zum Definieren von Aktivitäten finden Sie im Artikel [Erstellen von Pipelines](data-factory-create-pipelines.md). Eigenschaften wie Name, Beschreibung, Eingabe- und Ausgabetabellen und Richtlinie sind für alle Arten von Aktivitäten verfügbar.
 
-Im Abschnitt "typeProperties" der Aktivität verfügbare Eigenschaften variieren hingegen bei jedem Aktivitätstyp. Bei der Kopieraktivität variieren sie je nach Typ der Quellen und Senken.
+Eigenschaften im Abschnitt „typeProperties“ der Aktivität können dagegen je nach Aktivitätstyp variieren. Für die Kopieraktivität variieren die Eigenschaften je nach Art der Quellen und Senken.
 
-Wenn bei der Kopieraktivität „source“ den Typ **RelationalSource** hat (mit OData), sind im Abschnitt typeProperties die folgenden Eigenschaften verfügbar:
+Wenn eine Quelle des Typs **RelationalSource** (wozu OData gehört) verwendet wird, sind im Abschnitt „typeProperties“ folgende Eigenschaften verfügbar:
 
 | Eigenschaft | Beschreibung | Beispiel | Erforderlich |
 | -------- | ----------- | -------------- | -------- |
@@ -302,7 +302,7 @@ Wenn bei der Kopieraktivität „source“ den Typ **RelationalSource** hat (mit
 
 ### Typzuordnung für OData
 
-Wie im Artikel [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) beschrieben, führt die Kopieraktivität automatische Typkonvertierungen von Quelltypen in Senkentypen mithilfe des folgenden aus zwei Schritten bestehenden Ansatzes durch:
+Wie im Artikel [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) beschrieben, führt die Kopieraktivität mithilfe der folgenden beiden Schritte automatische Typkonvertierungen von Quelltypen in Senkentypen durch:
 
 1. Konvertieren von systemeigenen Quelltypen in den .NET-Typ
 2. Konvertieren vom .NET-Typ in systemeigenen Senkentyp
@@ -317,4 +317,4 @@ Beim Verschieben von Daten aus OData-Datenspeichern werden die OData-Datentypen 
 ## Leistung und Optimierung  
 Im Artikel [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-factory-copy-activity-performance.md) werden wichtige Faktoren beschrieben, die sich auf die Leistung der Datenverschiebung (Kopieraktivität) in Azure Data Factory auswirken, sowie verschiedene Möglichkeiten zur Leistungsoptimierung.
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0928_2016-->

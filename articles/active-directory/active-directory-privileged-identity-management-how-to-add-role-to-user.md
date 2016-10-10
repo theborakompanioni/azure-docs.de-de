@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="07/01/2016"
+   ms.date="09/22/2016"
    ms.author="kgremban"/>
 
 # Azure AD Privileged Identity Management: Hinzufügen oder Entfernen einer Benutzerrolle
@@ -26,7 +26,7 @@ Die Anwendung Azure AD Privileged Identity Management ermöglicht Administratore
 
 Sie können Benutzern Ihrer Organisation in Azure AD, Office 365 und anderen Microsoft-Diensten und -Anwendungen verschiedene Administratorrollen zuweisen. Weitere Informationen zu den verfügbaren Rollen finden Sie unter [Rollen in Azure AD Privileged Identity Management](active-directory-privileged-identity-management-roles.md).
 
-Um einen Benutzer mithilfe von Privileged Identity Management zu einer Rolle hinzuzufügen oder daraus zu entfernen, öffnen Sie das PIM-Dashboard, und klicken Sie auf die Schaltfläche **Benutzer in Administratorrollen**, oder wählen Sie aus der Rollentabelle eine bestimmte Rolle aus (beispielsweise den globalen Administrator).
+Um einen Benutzer mithilfe von PIM (Privileged Identity Management) einer Rolle hinzuzufügen oder den Benutzer aus einer Rolle zu entfernen, öffnen Sie das PIM-Dashboard. Klicken Sie dann auf die Schaltfläche **Benutzer in Administratorrollen**, oder wählen Sie in der Tabelle mit den Rollen eine bestimmte Rolle aus (z.B. den globalen Administrator).
 
 > [AZURE.NOTE] Wenn PIM im Azure-Portal noch nicht aktiviert ist, finden Sie die erforderlichen Informationen unter [Erste Schritte mit Azure AD Privileged Identity Management](active-directory-privileged-identity-management-getting-started.md).
 
@@ -58,11 +58,11 @@ Führen Sie die folgenden Schritte aus, um einen bestimmten Benutzer aus einer R
 3. Klicken Sie auf **Entfernen**. Sie werden in einer Meldung aufgefordert, den Vorgang zu bestätigen.
 4. Klicken Sie auf **Ja**, um die Rolle vom Benutzer zu entfernen.
 
-Wenn Sie nicht sicher sind, welche Benutzer ihre Rollenzuweisungen noch benötigen, können Sie [eine Sicherheitsüberprüfung für die Rolle starten](active-directory-privileged-identity-management-how-to-start-security-review.md).
+Wenn Sie nicht sicher sind, welche Benutzer ihre Rollenzuweisungen noch benötigen, können Sie [eine Zugriffsüberprüfung für die Rolle starten](active-directory-privileged-identity-management-how-to-start-security-review.md).
 
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## Nächste Schritte
 [AZURE.INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0928_2016-->

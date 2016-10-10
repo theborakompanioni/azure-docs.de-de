@@ -17,7 +17,7 @@
    ms.date="09/14/2016"
    ms.author="annahar" />
 
-# Erste Schritte zum Erstellen eines Load Balancers mit Internetzugriff im Azure-Portal
+# Erstellen eines Load Balancers mit Internetzugriff im Azure-Portal
 
 [AZURE.INCLUDE [load-balancer-get-started-internet-arm-selectors-include.md](../../includes/load-balancer-get-started-internet-arm-selectors-include.md)]
 
@@ -115,4 +115,4 @@ Zum Löschen eines Load Balancers wählen Sie den Load Balancer aus, den Sie ent
 
 [Konfigurieren von TCP-Leerlauftimeout-Einstellungen für den Lastenausgleich](load-balancer-tcp-idle-timeout.md)
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

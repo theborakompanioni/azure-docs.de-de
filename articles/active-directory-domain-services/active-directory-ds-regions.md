@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Vorschau für Azure Active Directory-Domänendienste: Unterstützte Regionen | Microsoft Azure"
-	description="Unterstützte Azure-Regionen für Azure AD-Domänendienste"
+	pageTitle="Vorschau der Azure Active Directory Domain Services: Unterstützte Regionen | Microsoft Azure"
+	description="Unterstützte Azure-Regionen für die Azure AD Domain Services"
 	services="active-directory-ds"
 	documentationCenter=""
 	authors="mahesh-unnikrishnan"
@@ -13,11 +13,11 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/06/2016"
+	ms.date="09/21/2016"
 	ms.author="maheshu"/>
 
-# Azure AD-Domänendienste *(Vorschau)*
+# Azure AD Domain Services – unterstützte Regionen
 
-Informationen dazu, wo Azure AD-Domänendienste verfügbar sind, finden Sie unter [Azure-Dienste nach Region](https://azure.microsoft.com/regions/#services/).
+Informationen dazu, wo Azure AD Domain Services verfügbar sind, finden Sie unter [Azure-Dienste nach Region](https://azure.microsoft.com/regions/#services/).
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0928_2016-->

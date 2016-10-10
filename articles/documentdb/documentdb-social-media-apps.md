@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/29/2016" 
+	ms.date="09/27/2016" 
 	ms.author="mimig"/>
 
 # Soziale Netzwerke mit DocumentDB
@@ -218,6 +218,8 @@ Nun, da ich Ihr Interesse geweckt habe, glauben Sie wahrscheinlich, dass Sie ein
 
 Um diese Machine Learning-Szenarien zu realisieren, können wir [Azure Data Lake](https://azure.microsoft.com/services/data-lake-store/) zum Erfassen der Informationen aus verschiedenen Quellen und [U-SQL](https://azure.microsoft.com/documentation/videos/data-lake-u-sql-query-execution/) verwenden, um die Informationen zu verarbeiten und eine Ausgabe zu generieren, die von Azure Machine Learning verarbeitet werden kann.
 
+Eine andere Option ist die Verwendung von [Microsoft Cognitive Services](https://www.microsoft.com/cognitive-services) zum Analysieren unserer Benutzerinhalte. Wir können sie nicht nur besser verstehen (durch die Analyse ihrer Texte mit der [Textanalyse-API](https://www.microsoft.com/cognitive-services/de-DE/text-analytics-api)), sondern auch unerwünschte oder nicht jugendfreie Inhalte erkennen und mithilfe der [Maschinelles Sehen-API](https://www.microsoft.com/cognitive-services/de-DE/computer-vision-api) entsprechend agieren. Die Cognitive Services bieten zahlreiche Standardlösungen, für deren Nutzung keinerlei Machine Learning-Kenntnisse erforderlich sind.
+
 ## Zusammenfassung
 
 Dieser Artikel soll die alternative, vollständige Erstellung sozialer Netzwerke in Azure beleuchten. Diese bietet kostengünstige Dienste und hervorragende Ergebnisse, da sie die Verwendung einer mehrstufigen Speicherlösung und „Leiter“-Datenverteilung begünstigt.
@@ -232,4 +234,4 @@ Weitere Informationen zur Datenmodellierung finden Sie im Artikel [Modellieren v
 
 Oder erfahren Sie mehr über DocumentDB anhand des [DocumentDB-Lernpfads](https://azure.microsoft.com/documentation/learning-paths/documentdb/).
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0928_2016-->

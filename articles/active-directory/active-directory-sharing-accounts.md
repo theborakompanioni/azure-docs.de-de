@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="msStevenPo"
- 	manager="stevenpo"
+ 	manager="femila"
 	editor=""/>
 
  <tags
@@ -73,4 +73,4 @@ Mithilfe von Azure AD lassen sich gemeinsam genutzte Konten durch Multi-Factor 
 - [Schützen von Apps durch bedingten Zugriff](active-directory-conditional-access.md)
 - [Self-Service-Gruppenverwaltung/SSAA](active-directory-accessmanagement-self-service-group-management.md)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0928_2016-->

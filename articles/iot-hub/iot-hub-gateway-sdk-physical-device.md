@@ -13,8 +13,8 @@
      ms.topic="article"
      ms.tgt_pltfrm="na"
      ms.workload="na"
-     ms.date="05/31/2016"
-     ms.author="cstreet"/>
+     ms.date="08/29/2016"
+     ms.author="andbuc"/>
 
 
 # IoT Gateway SDK (Beta) – Senden von D2C-Nachrichten mit einem realen Gerät unter Linux
@@ -41,9 +41,10 @@ Folgendes geschieht, wenn Sie das Gateway ausführen:
 Das Gateway enthält die folgenden Module:
 
 - Ein *BLE-Modul*, das über eine Schnittstelle mit einem BLE-Gerät verbunden ist, um Temperaturdaten von dem Gerät zu empfangen und Befehle an das Gerät zu senden.
-- Ein *Protokollierungsmodul*, das Nachrichtenbus-Diagnosedaten generiert.
+- Ein *BLE-Cloud-zu-Gerät-Modul*, das die aus der Cloud stammenden JSON-Nachrichten für das *BLE-Modul* in BLE-Anweisungen übersetzt.
+- Ein *Protokollierungsmodul*, das alle Gatewaynachrichten protokolliert.
 - Ein *Identitätszuordnungsmodul*, das zwischen BLE-Gerät-MAC-Adressen und Azure IoT Hub-Geräteidentitäten übersetzt.
-- Ein *IoT Hub-HTTP-Modul*, das die Telemetriedaten in einen IoT Hub hochlädt und Gerätebefehle von einem IoT Hub empfängt.
+- Ein *IoT Hub-Modul*, das die Telemetriedaten in einen IoT Hub hochlädt und Gerätebefehle von einem IoT Hub empfängt.
 - Ein *BLE-Druckermodul*, das die Telemetriedaten von dem BLE-Gerät interpretiert und formatierte Daten an die Konsole ausgibt, um Problembehandlung und Debuggen zu aktivieren.
 
 ### Datenfluss über das Gateway
@@ -55,20 +56,21 @@ Das folgende Blockdiagramm zeigt die Datenflusspipeline beim Hochladen der Telem
 Folgende Schritte legt ein Telemetrieelement auf dem Weg von einem BLE-Gerät zu IoT Hub zurück:
 
 1. Das BLE-Gerät generiert eine Temperaturstichprobe und sendet sie über Bluetooth an das BLE-Modul im Gateway.
-2. Das BLE-Modul empfängt die Stichprobe und gibt sie zusammen mit der MAC-Adresse des Geräts an den Nachrichtenbus aus.
-3. Das Identitätszuordnungsmodul nimmt diese Nachricht vom Nachrichtenbus auf und verwendet eine interne Tabelle, um die MAC-Adresse des Geräts in eine IoT Hub-Geräteidentität (Geräte-ID und Schlüssel des Geräts) zu übersetzen. Anschließend wird eine neue Nachricht im Nachrichtenbus veröffentlicht, die die Temperaturbeispieldaten, die MAC-Adresse des Geräts, die Geräte-ID und den Schlüssel des Geräts enthält.
-4. Das IoT Hub-HTTP-Modul empfängt diese (vom Identitätszuordnungsmodul generierte) neue Nachricht vom Nachrichtenbus und veröffentlicht sie im IoT Hub.
-5. Das Modul für die Protokollierung protokolliert alle Nachrichten vom Nachrichtenbus in einer Datenträgerdatei.
+2. Das BLE-Modul empfängt die Stichprobe und übergibt sie zusammen mit der MAC-Adresse des Geräts an den Broker.
+3. Das Identitätszuordnungsmodul nimmt diese Nachricht an und verwendet eine interne Tabelle, um die MAC-Adresse des Geräts in eine IoT Hub-Geräteidentität (Geräte-ID und Schlüssel des Geräts) zu übersetzen. Anschließend wird eine neue Nachricht veröffentlicht, die die Temperaturbeispieldaten, die MAC-Adresse des Geräts, die Geräte-ID und den Schlüssel des Geräts enthält.
+4. Das IoT Hub-Modul empfängt diese (vom Identitätszuordnungsmodul generierte) neue Nachricht und veröffentlicht sie im IoT Hub.
+5. Das Modul für die Protokollierung protokolliert alle Nachrichten vom Broker in einer Datenträgerdatei.
 
 Das folgende Blockdiagramm zeigt die Datenflusspipeline des Gerätebefehls:
 
 ![](media/iot-hub-gateway-sdk-physical-device/gateway_ble_command_data_flow.png)
 
-1. Das IoT Hub-HTTP-Modul fragt den IoT Hub in regelmäßigen Abständen nach neuen Befehlsnachrichten ab.
-2. Wenn das IoT Hub-HTTP-Modul eine neue Befehlsnachricht empfängt, veröffentlicht es sie im Nachrichtenbus.
-3. Das Identitätszuordnungsmodul nimmt diese Nachricht vom Nachrichtenbus auf und verwendet eine interne Tabelle, um die IoT Hub-Geräte-ID in eine MAC-Adresse zu übersetzen. Dann veröffentlicht es eine neue Nachricht auf dem Nachrichtenbus, die die MAC-Adresse des Zielgeräts in der Eigenschaftenzuordnung der Nachricht enthält.
-4. Das BLE-Modul nimmt diese Nachricht auf und führt die E/A-Anweisung durch Kommunikation mit dem BLE-Gerät aus.
-5. Das Modul für die Protokollierung protokolliert alle Nachrichten vom Nachrichtenbus in einer Datenträgerdatei.
+1. Das IoT Hub-Modul fragt den IoT Hub in regelmäßigen Abständen nach neuen Befehlsnachrichten ab.
+2. Wenn das IoT Hub-Modul eine neue Befehlsnachricht empfängt, veröffentlicht es sie im Broker.
+3. Das Identitätszuordnungsmodul nimmt diese Nachricht an und verwendet eine interne Tabelle, um die IoT Hub-Geräte-ID in eine MAC-Adresse des Geräts zu übersetzen. Dann veröffentlicht es eine neue Nachricht, die die MAC-Adresse des Zielgeräts in der Eigenschaftenzuordnung der Nachricht enthält.
+4. Das BLE-Cloud-zu-Gerät-Modul übernimmt diese Nachricht und übersetzt sie in die ordnungsgemäße BLE-Anweisung für das BLE-Modul. Anschließend wird eine neue Nachricht veröffentlicht.
+5. Das BLE-Modul nimmt diese Nachricht auf und führt die E/A-Anweisung durch Kommunikation mit dem BLE-Gerät aus.
+6. Das Modul für die Protokollierung protokolliert alle Nachrichten vom Broker in einer Datenträgerdatei.
 
 ## Vorbereiten der Hardware
 
@@ -78,7 +80,7 @@ In diesem Tutorial wird vorausgesetzt, dass Sie ein [Texas Instruments SensorTag
 
 Bevor Sie beginnen, sollten Sie sicherstellen, dass Sie Ihr Edison-Gerät mit dem Drahtlosnetzwerk verbinden können. Um Ihr Edison-Gerät einzurichten, müssen Sie es mit einem Hostcomputer verbinden. Intel stellt Erste-Schritte-Handbücher für die folgenden Betriebssysteme bereit:
 
-- [Get Started with the Intel Edison Development Board on Windows 64-bit][lnk-setup-win64]  \(Erste Schritte mit dem Intel Edison Development Board unter Windows 64-Bit).
+- [Get Started with the Intel Edison Development Board on Windows 64-bit][lnk-setup-win64] \(Erste Schritte mit dem Intel Edison Development Board unter Windows 64-Bit).
 - [Get Started with the Intel Edison Development Board on Windows 32-bit][lnk-setup-win32] \(Erste Schritte mit dem Intel Edison Development Board unter Windows 32-Bit).
 - [Get Started with the Intel Edison Development Board on Mac OS X][lnk-setup-osx] \(Erste Schritte mit dem Intel Edison Development Board unter Mac OS X).
 - [Getting Started with the Intel® Edison Board on Linux][lnk-setup-linux] \(Erste Schritte mit dem Intel® Edison Board unter Linux).
@@ -283,17 +285,18 @@ Die Beispielkonfiguration für das BLE-Gerät setzt ein Texas Instruments Sensor
 }
 ```
 
-#### IoT Hub-HTTP-Modul
+#### IoT Hub-Modul
 
 Fügen Sie den Namen Ihres IoT Hubs hinzu. Der Suffixwert lautet in der Regel **azure-devices.net**:
 
 ```json
 {
   "module name": "IoTHub",
-  "module path": "/home/root/azure-iot-gateway-sdk/build/modules/iothubhttp/libiothubhttp_hl.so",
+  "module path": "/home/root/azure-iot-gateway-sdk/build/modules/iothub/libiothub_hl.so",
   "args": {
     "IoTHubName": "<<Azure IoT Hub Name>>",
-    "IoTHubSuffix": "<<Azure IoT Hub Suffix>>"
+    "IoTHubSuffix": "<<Azure IoT Hub Suffix>>",
+    "Transport": "HTTP"
   }
 }
 ```
@@ -324,6 +327,26 @@ Fügen Sie die MAC-Adresse Ihres SensorTag-Geräts sowie die Geräte-ID und den 
     "module path": "/home/root/azure-iot-gateway-sdk/build/samples/ble_gateway_hl/ble_printer/libble_printer.so",
     "args": null
 }
+```
+
+#### Routingkonfiguration
+
+Die folgende Konfiguration stellt Folgendes sicher:
+- Das Modul **Logger** empfängt und protokolliert alle Nachrichten.
+- Das Modul **SensorTag** sendet Nachrichten an die Module **Mapping** und **BLE Printer**.
+- Das Modul **Mapping** sendet Nachrichten an das Modul **IoTHub**, die zu Ihrem IoT Hub gesendet werden sollen.
+- Das Modul **IoTHub** sendet Nachrichten zurück an das Modul **Mapping**.
+- Das Modul **Mapping** sendet Nachrichten zurück an das Modul **SensorTag**.
+
+```json
+"links" : [
+    {"source" : "*", "sink" : "Logger" },
+    {"source" : "SensorTag", "sink" : "mapping" },
+    {"source" : "SensorTag", "sink" : "BLE Printer" },
+    {"source" : "mapping", "sink" : "IoTHub" },
+    {"source" : "IoTHub", "sink" : "mapping" },
+    {"source" : "mapping", "sink" : "SensorTag" }
+  ]
 ```
 
 Führen Sie zum Ausführen des Beispiels die Binärdatei **ble\_gateway\_hl** aus, um den Pfad der JSON-Konfigurationsdatei zu übergeben. Wenn Sie die Datei **gateway\_sample.json** verwendet haben, sieht der auszuführende Befehl folgendermaßen aus:
@@ -428,4 +451,4 @@ Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 [lnk-dmui]: iot-hub-device-management-ui-sample.md
 [lnk-portal]: iot-hub-manage-through-portal.md
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0928_2016-->

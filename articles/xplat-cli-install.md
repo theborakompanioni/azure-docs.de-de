@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="command-line-interface"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/17/2016"
+	ms.date="09/22/2016"
 	ms.author="danlep"/>
     
 # Installieren der Azure-Befehlszeilenschnittstelle
@@ -23,11 +23,11 @@
 - [PowerShell](powershell-install-configure.md)
 - [Azure-Befehlszeilenschnittstelle](xplat-cli-install.md)
 
-Installieren Sie schnell die Azure-Befehlszeilenschnittstelle (Azure-CLI), um eine Reihe von auf der Open-Source-Shell basierenden Befehlen zum Erstellen und Verwalten von Ressourcen in Microsoft Azure zu verwenden. Es gibt mehrere Möglichkeiten, um die neueste Version zu installieren:
+Installieren Sie schnell die Azure-Befehlszeilenschnittstelle (Azure-CLI), um eine Reihe von auf der Open-Source-Shell basierenden Befehlen zum Erstellen und Verwalten von Ressourcen in Microsoft Azure zu verwenden. Zum Installieren dieser plattformübergreifenden Tools auf Ihrem Computer stehen Ihnen mehrere Optionen zur Verfügung:
 
-* Installieren von einem npm-Paket (erfordert Node.js und npm)
-* Verwenden eines der bereitgestellten Installationspakete für verschiedene Betriebssysteme
-* Installieren der Azure-CLI als Container in einem Docker-Host
+* **npm-Paket**: Führen Sie npm (den Paket-Manager für JavaScript) aus, um das neueste Azure-CLI-Paket auf Ihrer Linux-Distribution oder dem Betriebssystem zu installieren. Dafür sind Node.js und npm auf Ihrem Computer erforderlich.
+* **Installer**: Laden Sie ein Installationsprogramm für die einfache Installation unter Mac OS oder Windows herunter.
+* **Docker-Container**: Beginnen Sie mit der Verwendung der neuesten Befehlszeilenschnittstelle in einem sofort betriebsbereiten Docker-Container. Dazu benötigen Sie den Docker-Host auf Ihrem Computer.
     
 Weitere Optionen und Hintergrundinformationen finden Sie im Projektrepository auf [GitHub](https://github.com/azure/azure-xplat-cli).
 
@@ -37,33 +37,35 @@ Sobald die Azure-CLI installiert ist, [verbinden Sie sie mit Ihrem Azure-Abonnem
 
 ## Option 1. Installieren eines npm-Pakets
 
-Um die CLI aus einem npm-Paket zu installieren, müssen auf Ihrem System die aktuellen Versionen von Node.js und npm installiert sein. Führen Sie dann den folgenden Befehl aus, um die Azure-CLI zu installieren. (Bei Linux-Distributionen müssen Sie möglicherweise **sudo** verwenden, um den Befehl __npm__ erfolgreich ausführen zu können.)
+Um die CLI aus einem npm-Paket zu installieren, müssen auf Ihrem System die aktuellen Versionen von Node.js und npm installiert sein. Führen Sie dann den folgenden Befehl aus, um das Azure-CLI-Paket zu installieren, das unter [npmjs.com](https://www.npmjs.com) veröffentlicht wurde. (Bei Linux-Distributionen müssen Sie möglicherweise **sudo** verwenden, um den Befehl __npm__ erfolgreich ausführen zu können.)
 
-	npm install azure-cli -g
+	npm install -g azure-cli
 
-> [AZURE.NOTE]Falls Sie Node.js und npm für Ihr Betriebssystem installieren oder aktualisieren müssen, finden Sie weitere Informationen unter [Nodejs.org](https://nodejs.org/en/download/package-manager/). Wir empfehlen die Installation der aktuellsten LTS-Version von Node.js (4.x). Wenn Sie eine ältere Version verwenden, kommt es möglicherweise zu Fehlern bei der Installation. Weitere Informationen zu npm finden Sie unter [npmjs.com](https://www.npmjs.com/).
+> [AZURE.NOTE]Falls Sie Node.js und npm für Ihre Linux-Distribution oder Ihr Betriebssystem installieren oder aktualisieren müssen, finden Sie weitere Informationen unter [Nodejs.org](https://nodejs.org/en/download/package-manager/). Wir empfehlen die Installation der aktuellsten LTS-Version von Node.js (4.x). Wenn Sie eine ältere Version verwenden, kommt es möglicherweise zu Fehlern bei der Installation.
+
+Falls gewünscht, laden Sie die neuesten Linux-[TAR-Datei][linux-installer] für das npm-Paket lokal herunter. Installieren Sie dann das heruntergeladene npm-Paket wie folgt (in Linux-Distributionen müssen Sie möglicherweise **sudo** verwenden):
+
+    npm install -g <path to downloaded tar file>
 
 ## Option 2. Verwenden eines Installers
 
-Die folgenden CLI-Installationspakete stehen ebenfalls zum Download bereit:
-
+Wenn Sie einen Mac- oder Windows-Computer verwenden, stehen die folgenden CLI-Installer zum Download zur Verfügung:
 
 * [Mac OS X-Installer][mac-installer]
 
-* [Windows Installer][windows-installer]
+* [Windows-MSI][windows-installer]
 
-* [Tar-Datei für Linux][linux-installer] \(erfordert Node.js und npm): Installation durch Ausführen von `sudo npm install -g <path to downloaded tar file>`
+>[AZURE.TIP]Unter Windows können Sie auch den [Webplattform-Installer](https://go.microsoft.com/?linkid=9828653) herunterladen, um die Befehlszeilenschnittstelle zu installieren. Dieser Installer bietet Ihnen die Möglichkeit, nach der Installation der Befehlszeilenschnittstelle zusätzliche Azure SDK- und -Befehlszeilentools zu installieren.
 
 
 ## Option 3. Verwenden eines Docker-Containers
 
-Wenn Sie einen Docker-Host eingerichtet haben, können Sie die Azure-CLI in einem Docker-Container ausführen. Führen Sie folgenden Befehl aus:
+Wenn Sie Ihren Computer als [Docker](https://docs.docker.com/engine/understanding-docker/)-Host eingerichtet haben, können Sie die neueste Azure-CLI in einem Docker-Container ausführen. Führen Sie folgenden Befehl aus:
 
 ```
 docker run -it microsoft/azure-cli
 ```
 
-Weitere Informationen zu Docker finden Sie unter [docker.com](https://docs.docker.com/engine/understanding-docker/).
 
 ## Ausführen von Azure-CLI-Befehlen
 Sobald die Azure-CLI installiert ist, führen Sie den Befehl **azure** in der CLI (Bash, Terminal, Eingabeaufforderung usw.) aus. Um beispielsweise den Hilfebefehl auszuführen, geben Sie Folgendes ein:
@@ -71,7 +73,7 @@ Sobald die Azure-CLI installiert ist, führen Sie den Befehl **azure** in der CL
 ```
 azure help
 ```
-> [AZURE.NOTE]In einigen Linux-Distributionen erhalten Sie unter Umständen eine Fehlermeldung wie `/usr/bin/env: ‘node’: No such file or directory`. Dieser Fehler stammt von jüngsten Installationen von Node.js, die unter „/usr/bin/nodejs“ installiert sind. Erstellen Sie zum Beheben dieses Fehlers eine symbolische Verknüpfung mit „/usr/bin/node“, indem Sie den folgenden Befehl ausführen:
+> [AZURE.NOTE]In einigen Linux-Distributionen erhalten Sie unter Umständen eine Fehlermeldung wie `/usr/bin/env: ‘node’: No such file or directory`. Dieser Fehler stammt von kürzlich durchgeführten Installationen von „Node.js“, die unter „/usr/bin/nodejs“ installiert sind. Erstellen Sie zum Beheben dieses Fehlers eine symbolische Verknüpfung mit „/usr/bin/node“, indem Sie den folgenden Befehl ausführen:
 
 ```
 sudo ln -s /usr/bin/nodejs /usr/bin/node
@@ -85,7 +87,7 @@ azure --version
 
 Jetzt sind Sie soweit. Um Zugriff auf alle CLI-Befehle für die Arbeit mit Ihren eigenen Ressourcen zu erhalten, [stellen Sie über die Azure-CLI eine Verbindung mit Ihrem Azure-Abonnement her](xplat-cli-connect.md).
 
->[AZURE.NOTE] Wenn Sie die Azure-CLI zum ersten Mal verwenden, werden Sie in einer Meldung gefragt, ob Sie Microsoft das Sammeln von Informationen zur Verwendung der CLI erlauben möchten. Die Teilnahme ist freiwillig. Wenn Sie sich für die Teilnahme entscheiden, können Sie diese durch Ausführen von `azure telemetry --disable` jederzeit beenden. Zum Aktivieren der Teilnahme können Sie jederzeit `azure telemetry --enable` ausführen.
+>[AZURE.NOTE] Wenn Sie die Azure-CLI zum ersten Mal verwenden, werden Sie in einer Meldung gefragt, ob Sie Microsoft das Erfassen von Nutzungsinformationen erlauben möchten. Die Teilnahme ist freiwillig. Wenn Sie sich für die Teilnahme entscheiden, können Sie diese durch Ausführen von `azure telemetry --disable` jederzeit beenden. Zum Aktivieren der Teilnahme können Sie jederzeit `azure telemetry --enable` ausführen.
 
 
 ## Aktualisieren der CLI
@@ -130,4 +132,4 @@ echo 'source ~/azure.completion.sh' >> ~/.bash_profile
 [cliasm]: virtual-machines-command-line-tools.md
 [cliarm]: ./virtual-machines/azure-cli-arm-commands.md
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0928_2016-->
