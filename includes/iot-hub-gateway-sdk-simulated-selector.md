@@ -2,7 +2,7 @@
 - [Linux](../articles/iot-hub/iot-hub-linux-gateway-sdk-simulated-device.md)
 - [Windows](../articles/iot-hub/iot-hub-windows-gateway-sdk-simulated-device.md)
 
-Diese exemplarische Vorgehensweise für das [Simulated Device Cloud Upload Sample] (Beispiel für Clouduploads von simulierten Geräten) zeigt, wie Sie das [Microsoft Azure IoT Gateway SDK][lnk-sdk] verwenden, um D2C-Telemetriedaten (Device to Cloud) von simulierten Geräten an IoT Hub zu senden.
+Diese exemplarische Vorgehensweise für das [Simulated Device Cloud Upload Sample] \(Beispiel für Clouduploads von simulierten Geräten) zeigt, wie Sie das [Microsoft Azure IoT Gateway SDK][lnk-sdk] verwenden, um D2C-Telemetriedaten (Device to Cloud) von simulierten Geräten an IoT Hub zu senden.
 
 Diese Anleitung umfasst:
 

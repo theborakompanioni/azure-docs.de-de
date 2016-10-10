@@ -206,7 +206,11 @@ In den folgenden Abschnitten wird erläutert, welche Eigenschaften aus den AMQP-
 
 | Feldname | Verwendung | API-Name |
 |----------------	|-------------------------------	|---------------	|
-| durable | - | - | | priority | - | - | | ttl | Gültigkeitsdauer (Time To Live, TTL) für diese Nachricht | [TimeToLive](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.timetolive.aspx) | | first-acquirer | - | - | | delivery-count | - | [DeliveryCount](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.deliverycount.aspx) |
+| durable | - | - | 
+| priority | - | - | 
+| ttl | Gültigkeitsdauer (Time To Live, TTL) für diese Nachricht | [TimeToLive](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.timetolive.aspx) | 
+| first-acquirer | - | - | 
+| delivery-count | - | [DeliveryCount](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.deliverycount.aspx) |
 
 #### Eigenschaften
 

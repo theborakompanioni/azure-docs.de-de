@@ -52,7 +52,7 @@ Sie können testen, ob sich die Abfrage wie erwartet verhält, indem Sie sie im 
 
     ![Testen der Datenabfrage](./media/stream-analytics-write-queries/4-stream-analytics-write-queries.png)
 
-3.	Navigieren Sie zu einer Testdatei. Es sind mehrere Beispieldateien auf [Github] (https://github.com/Azure/azure-stream-analytics/tree/master/Sample Daten) erhältlich und Sie können auch Beispieldaten aus Ihren eigenen Datenstromeingaben über die Funktion "Beispieldaten" in der Eingaberegisterkarte abrufen.
+3.	Navigieren Sie zu einer Testdatei. Es sind mehrere Beispieldateien auf [Github](https://github.com/Azure/azure-stream-analytics/tree/master/Sample Daten) erhältlich und Sie können auch Beispieldaten aus Ihren eigenen Datenstromeingaben über die Funktion "Beispieldaten" in der Eingaberegisterkarte abrufen.
 
     ![Abfrageeingabe](./media/stream-analytics-write-queries/5-stream-analytics-write-queries.png)
 

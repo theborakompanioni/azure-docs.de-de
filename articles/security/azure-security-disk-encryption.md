@@ -718,7 +718,7 @@ Für CentOS 7.2 wird die Verschlüsselung des Betriebssystemdatenträgers über 
     OsVolumeEncryptionSettings : Microsoft.Azure.Management.Compute.Models.DiskEncryptionSettings
     ProgressMessage            : OS disk successfully encrypted, please reboot the VM
 
-Es ist ratsam, die [Startdiagnose](https://azure.microsoft.com/de-DE/blog/boot-diagnostics-for-virtual-machines-v2/) der VM *vor* dem Neustart zu speichern.
+Es ist ratsam, die [Startdiagnose](https://azure.microsoft.com/blog/boot-diagnostics-for-virtual-machines-v2/) der VM *vor* dem Neustart zu speichern.
 
 #### Überwachen des Fortschritts der Betriebssystemverschlüsselung
 
@@ -753,7 +753,7 @@ Scrollen Sie unter „InstanceView“ nach unten, um den Verschlüsselungsstatus
 
 ![VM-Instanzanzeige](./media/azure-security-disk-encryption/vm-instanceview.png)
 
-2\. Sehen Sie sich die [Startdiagnose](https://azure.microsoft.com/de-DE/blog/boot-diagnostics-for-virtual-machines-v2/) an. Meldungen der ADE-Erweiterung verfügen über das Präfix `[AzureDiskEncryption]`.
+2\. Sehen Sie sich die [Startdiagnose](https://azure.microsoft.com/blog/boot-diagnostics-for-virtual-machines-v2/) an. Meldungen der ADE-Erweiterung verfügen über das Präfix `[AzureDiskEncryption]`.
 
 3\. Melden Sie sich per SSH an der VM an, und rufen Sie das Erweiterungsprotokoll ab.
 
@@ -787,7 +787,7 @@ Es ist nicht ratsam, die Anmeldung an der VM durchzuführen, während der Betrie
 
 ![Ubuntu 16.04-Setup](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig5.png)
 
-6\. Bereiten Sie die VM für das Hochladen in Azure mit [dieser Anleitung](https://azure.microsoft.com/de-DE/documentation/articles/virtual-machines-linux-create-upload-ubuntu/) vor. Führen Sie den letzten Schritt (das Aufheben der VM-Bereitstellung) noch nicht aus.
+6\. Bereiten Sie die VM für das Hochladen in Azure mit [dieser Anleitung](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-create-upload-ubuntu/) vor. Führen Sie den letzten Schritt (das Aufheben der VM-Bereitstellung) noch nicht aus.
 
 ###### Konfigurieren der Verschlüsselung für Azure
 
@@ -862,7 +862,7 @@ Es ist nicht ratsam, die Anmeldung an der VM durchzuführen, während der Betrie
 
 ![openSUSE 13.2-Setup](./media/azure-security-disk-encryption/opensuse-encrypt-fig2.png)
 
-3\. Bereiten Sie die VM für das Hochladen in Azure mit [dieser Anleitung](https://azure.microsoft.com/de-DE/documentation/articles/virtual-machines-linux-suse-create-upload-vhd/#prepare-opensuse-131) vor. Führen Sie den letzten Schritt (das Aufheben der VM-Bereitstellung) noch nicht aus.
+3\. Bereiten Sie die VM für das Hochladen in Azure mit [dieser Anleitung](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-suse-create-upload-vhd/#prepare-opensuse-131) vor. Führen Sie den letzten Schritt (das Aufheben der VM-Bereitstellung) noch nicht aus.
 
 ###### Konfigurieren der Verschlüsselung für Azure
 
@@ -942,7 +942,7 @@ in
 
 ![CentOS 7-Setup](./media/azure-security-disk-encryption/centos-encrypt-fig4.png)
 
-5\. Bereiten Sie die VM für das Hochladen in Azure mit [dieser Anleitung](https://azure.microsoft.com/de-DE/documentation/articles/virtual-machines-linux-create-upload-centos/#centos-70) vor. Führen Sie den letzten Schritt (das Aufheben der VM-Bereitstellung) noch nicht aus.
+5\. Bereiten Sie die VM für das Hochladen in Azure mit [dieser Anleitung](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-create-upload-centos/#centos-70) vor. Führen Sie den letzten Schritt (das Aufheben der VM-Bereitstellung) noch nicht aus.
 
 6\. Nun können Sie die Bereitstellung der VM aufheben und [Ihre VHD in Azure hochladen](#upload-encrypted-vhd-to-an-azure-storage-account).
 

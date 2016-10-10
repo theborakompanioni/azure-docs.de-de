@@ -252,7 +252,7 @@ Sie können die Spalten explizit definieren, die über die WebAPI verfügbar gem
 
     module.exports = table;
 
-Wenn Sie Tabellen statisch definieren, müssen Sie auch die tables.initialize()-Methode aufrufen, um das Datenbankschema beim Starten zu erstellen. Die Methode „tables.initialize()“ gibt eine [Zusage] (Promise) zurück. Hiermit wird sichergestellt, dass der Webdienst erst dann Anforderungen verarbeitet, nachdem die Datenbank initialisiert wurde.
+Wenn Sie Tabellen statisch definieren, müssen Sie auch die tables.initialize()-Methode aufrufen, um das Datenbankschema beim Starten zu erstellen. Die Methode „tables.initialize()“ gibt eine [Zusage] \(Promise) zurück. Hiermit wird sichergestellt, dass der Webdienst erst dann Anforderungen verarbeitet, nachdem die Datenbank initialisiert wurde.
 
 ### <a name="howto-sqlexpress-setup"></a>Vorgehensweise: Verwenden von SQL Express als Entwicklungsdatenspeicher auf Ihrem lokalen Computer
 

@@ -119,7 +119,7 @@ Wenn Ihre SQL Azure-Tabelle weitere Spalten enthält, würden Sie die entspreche
 	    mPriority = priority;
 	}
 
-Informationen zum Erstellen zusätzlicher Tabellen in Ihrem Mobile Apps-Back-End finden Sie unter [Gewusst wie: Definieren eines Tabellencontrollers][15] (.NET-Back-End) oder [Definieren von Tabellen mit einem dynamischen Schema][16] (Node.js-Back-End). Für ein Node.js-Back-End können Sie auch die Einstellung **Einfache Tabellen** im [Azure-Portal] verwenden.
+Informationen zum Erstellen zusätzlicher Tabellen in Ihrem Mobile Apps-Back-End finden Sie unter [Gewusst wie: Definieren eines Tabellencontrollers][15] \(.NET-Back-End) oder [Definieren von Tabellen mit einem dynamischen Schema][16] \(Node.js-Back-End). Für ein Node.js-Back-End können Sie auch die Einstellung **Einfache Tabellen** im [Azure-Portal] verwenden.
 
 ###<a name="create-client"></a>Gewusst wie: Erstellen des Clientkontexts
 
@@ -784,7 +784,7 @@ Dieser Code muss vor der Verwendung von **MobileServiceClient** ausgeführt werd
 
 ### <a name="complex"></a>Speichern von Objekt- oder Array-Eigenschaften in einer Tabelle
 
-Bisher wurden bei den vorliegenden Serialisierungsbeispielen primitive Datentypen wie Ganzzahlen und Zeichenfolgen verwendet. Primitive Datentypen lassen sich problemlos zu JSON serialisieren. Wenn Sie ein komplexes Objekt hinzufügen möchten, das sich nicht automatisch zu JSON serialisieren lässt, müssen Sie die JSON-Serialisierungsmethode bereitstellen. Ein Beispiel für die Bereitstellung einer benutzerdefinierten JSON-Serialisierungsmethode finden Sie im Blogeintrag [Customizing serialization using the gson library in the Mobile Services Android client][2] (Benutzerdefinierte Serialisierung mit der gson-Bibliothek im Android-Client für mobile Dienste).
+Bisher wurden bei den vorliegenden Serialisierungsbeispielen primitive Datentypen wie Ganzzahlen und Zeichenfolgen verwendet. Primitive Datentypen lassen sich problemlos zu JSON serialisieren. Wenn Sie ein komplexes Objekt hinzufügen möchten, das sich nicht automatisch zu JSON serialisieren lässt, müssen Sie die JSON-Serialisierungsmethode bereitstellen. Ein Beispiel für die Bereitstellung einer benutzerdefinierten JSON-Serialisierungsmethode finden Sie im Blogeintrag [Customizing serialization using the gson library in the Mobile Services Android client][2] \(Benutzerdefinierte Serialisierung mit der gson-Bibliothek im Android-Client für mobile Dienste).
 
 <!-- Anchors. -->
 

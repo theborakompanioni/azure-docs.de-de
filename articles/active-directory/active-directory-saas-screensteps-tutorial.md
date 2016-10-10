@@ -76,7 +76,7 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
     ![Configure single sign-on](./media/active-directory-saas-screensteps-tutorial/IC778520.png "Configure single sign-on")
 
-3.  Geben Sie auf der Seite **App-URL konfigurieren** im Textfeld für die **ScreenSteps-Anmelde-URL** die URL im Format „*https://\<Mandantenname>.ScreenSteps.com*“ ein, und klicken Sie dann auf **Weiter**.
+3.  Geben Sie auf der Seite **App-URL konfigurieren** im Textfeld für die **ScreenSteps-Anmelde-URL** die URL im Format „ *https://\<Mandantenname>.ScreenSteps.com* “ ein, und klicken Sie dann auf **Weiter**.
 
     ![App-URL konfigurieren](./media/active-directory-saas-screensteps-tutorial/IC778521.png "App-URL konfigurieren")
 

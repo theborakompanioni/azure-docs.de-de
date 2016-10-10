@@ -100,13 +100,13 @@ Im Azure-Verwaltungsportal werden Berichte auf folgende Weise kategorisiert:
 <p>Die Berichte zu anomalen Aktivitäten markieren verdächtige Anmeldeaktivitäten in Office365, im Azure-Verwaltungsportal, im Azure AD-Zugriffsbereich, in SharePoint Online, in Dynamics CRM Online und in anderen Microsoft-Onlinediensten.</p>
 <p>All diese Berichte, mit Ausnahme des Berichts "Anmeldungen nach mehreren Fehlern", markieren außerdem verdächtige <i>Verbundanmeldungen</i> bei den oben genannten Diensten, unabhängig vom Verbundanbieter. </p>
 <p>Folgende Berichte sind verfügbar:</p><ul>
-<li>[Anmeldungen von unbekannten Quellen] (active-directory-reporting-sign-ins-from-unknown-sources.md).</li>
-<li>[Anmeldungen nach mehreren Fehlern] (active-directory-reporting-sign-ins-after-multiple-failures.md).</li>
+<li>[Anmeldungen von unbekannten Quellen](active-directory-reporting-sign-ins-from-unknown-sources.md).</li>
+<li>[Anmeldungen nach mehreren Fehlern](active-directory-reporting-sign-ins-after-multiple-failures.md).</li>
 <li>[Anmeldungen aus mehreren geografischen Regionen](active-directory-reporting-sign-ins-from-multiple-geographies.md).</li>
-<li>[Anmeldungen von IP-Adressen mit verdächtigen Aktivitäten] (active-directory-reporting-sign-ins-from-ip-addresses-with-suspicious-activity.md).</li>
-<li>[Irreguläre Anmeldeaktivitäten] (active-directory-reporting-irregular-sign-in-activity.md).</li>
-<li>[Anmeldungen von möglicherweise infizierten Geräten] (active-directory-reporting-sign-ins-from-possibly-infected-devices.md).</li>
-<li>[Benutzern mit anomalen Anmeldeaktivitäten] (active-directory-reporting-users-with-anomalous-sign-in-activity.md).</li>
+<li>[Anmeldungen von IP-Adressen mit verdächtigen Aktivitäten](active-directory-reporting-sign-ins-from-ip-addresses-with-suspicious-activity.md).</li>
+<li>[Irreguläre Anmeldeaktivitäten](active-directory-reporting-irregular-sign-in-activity.md).</li>
+<li>[Anmeldungen von möglicherweise infizierten Geräten](active-directory-reporting-sign-ins-from-possibly-infected-devices.md).</li>
+<li>[Benutzern mit anomalen Anmeldeaktivitäten](active-directory-reporting-users-with-anomalous-sign-in-activity.md).</li>
 <li>Benutzer mit kompromittierten Anmeldeinformationen</li>.</ul>
 
 

@@ -674,7 +674,7 @@ Mithilfe von Fabric für iOS können Sie Benutzer über Twitter bei Ihrer App an
 
 1. Konfigurieren Sie Ihr mobiles App-Back-End für die Twitter-Anmeldung, indem Sie die im Tutorial [Konfigurieren Ihrer App Service-Anwendung zur Nutzung der Twitter-Anmeldung](app-service-mobile-how-to-configure-twitter-authentication.md) beschriebenen Schritte ausführen.
 
-2. Fügen Sie Fabric Ihrem Projekt hinzu, indem Sie die Anweisungen unter [Fabric for iOS – Getting Started] (Fabric für iOS – Erste Schritte) ausführen und das TwitterKit einrichten.
+2. Fügen Sie Fabric Ihrem Projekt hinzu, indem Sie die Anweisungen unter [Fabric for iOS – Getting Started] \(Fabric für iOS – Erste Schritte) ausführen und das TwitterKit einrichten.
 
     > [AZURE.NOTE] Standardmäßig erstellt Fabric eine neue Twitter-Anwendung für Sie. Sie können die Erstellung einer Anwendung verhindern, indem Sie den zuvor erstellten Consumerschlüssel und das zuvor erstellte Consumergeheimnis mithilfe der folgenden Codeausschnitte registrieren. Alternativ können Sie auch die Werte für Consumer Key und Consumer Secret, die für App Service bereitgestellt werden, durch die im [Fabric Dashboard] angezeigten Werte ersetzen. Wenn Sie sich für diese Möglichkeit entscheiden, müssen Sie die Rückruf-URL auf einen Platzhalterwert festlegen, z.B. auf `https://<yoursitename>.azurewebsites.net/.auth/login/twitter/callback`.
 

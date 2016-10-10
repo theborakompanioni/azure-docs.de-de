@@ -434,7 +434,8 @@ Microsoft Azure ermöglicht Unternehmen das Abrufen von Compute-, Speicher- und 
 In diesem Dokument werden alle Schritte detailliert beschrieben, die zum Bereitstellen hoch verfügbarer SAP-Systeme in Azure mithilfe unserer neuen Methode mit dem neuen Azure Resource Manager-Bereitstellungsmodell erforderlich sind. Wir gehen in diesem Handbuch die wichtigsten Schritte gemeinsam durch:
 
 
-- Auffinden der entsprechenden SAP-Installationshandbücher und Hinweise, die weiter unten im Abschnitt [Ressourcen][sap-ha-guide-2] aufgelistet werden Das Dokument ergänzt die SAP-Installationsdokumentation und die SAP-Hinweise, die die primäre Ressource für Installationen und Bereitstellungen von SAP-Software auf verschiedenen Plattformen darstellen.
+- Auffinden der entsprechenden SAP-Installationshandbücher und Hinweise, die weiter unten im Abschnitt [Ressourcen][sap-ha-guide-2] aufgelistet werden.  
+  Das Dokument ergänzt die SAP-Installationsdokumentation und die SAP-Hinweise, die die primäre Ressource für Installationen und Bereitstellungen von SAP-Software auf verschiedenen Plattformen darstellen.
 
 - Grundlegendes zum Unterschied zwischen dem aktuellen klassischen Azure-Bereitstellungsmodell und dem neuen Azure Resource Manager-Bereitstellungsmodell
 

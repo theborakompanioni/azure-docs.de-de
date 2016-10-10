@@ -163,7 +163,7 @@ In diesem Abschnitt erstellen wir die Verbindung zwischen den VNets. Für diese 
 		$vnet01gateway = Get-AzureRMLocalNetworkGateway -Name ClassicVNetLocal -ResourceGroupName RG1
 		$vnet02gateway = Get-AzureRmVirtualNetworkGateway -Name RMGateway -ResourceGroupName RG1
 
-	**Erstellen der Verbindung**<br> Beachten Sie, dass `-ConnectionType` „IPsec“ ist, und nicht „Vnet2Vnet“. In diesem Beispiel ist `-Name` der Name, den Sie für die Verbindung verwenden möchten. Der folgende Beispielcode erstellt eine Verbindung mit dem Namen „*rm-to-classic-connection*“.
+	**Erstellen der Verbindung**<br> Beachten Sie, dass `-ConnectionType` „IPsec“ ist, und nicht „Vnet2Vnet“. In diesem Beispiel ist `-Name` der Name, den Sie für die Verbindung verwenden möchten. Der folgende Beispielcode erstellt eine Verbindung mit dem Namen „ *rm-to-classic-connection* “.
 		
 		New-AzureRmVirtualNetworkGatewayConnection -Name rm-to-classic-connection -ResourceGroupName RG1 `
 		-Location "East US" -VirtualNetworkGateway1 `

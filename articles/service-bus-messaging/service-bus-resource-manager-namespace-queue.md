@@ -22,7 +22,7 @@ In diesem Artikel wird beschrieben, wie Sie eine Azure Resource Manager-Vorlage 
 
 Weitere Informationen zum Erstellen von Vorlagen finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen][].
 
-Die vollständige Vorlage finden Sie unter [Service Bus namespace and queue template][] (Service Bus-Namespace- und Warteschlangenvorlage) auf GitHub.
+Die vollständige Vorlage finden Sie unter [Service Bus namespace and queue template][] \(Service Bus-Namespace- und Warteschlangenvorlage) auf GitHub.
 
 >[AZURE.NOTE] Die folgenden Azure Resource Manager-Vorlagen sind zum Download und zur Bereitstellung verfügbar.
 >

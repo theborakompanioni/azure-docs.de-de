@@ -26,7 +26,7 @@ In dieser Anleitung wird die Ausführung gängiger Aufgaben mithilfe der verwalt
 
 ## Referenzdokumentation
 
-Die Referenzdokumentation für das Client-SDK finden Sie hier: [.NET-Client-Referenz für Azure Mobile Apps]. Sie finden auch mehrere Clientbeispiele im [GitHub-Repository „Azure Samples“] (Azure Beispiele).
+Die Referenzdokumentation für das Client-SDK finden Sie hier: [.NET-Client-Referenz für Azure Mobile Apps]. Sie finden auch mehrere Clientbeispiele im [GitHub-Repository „Azure Samples“] \(Azure Beispiele).
 
 ## Unterstützte Plattformen
 

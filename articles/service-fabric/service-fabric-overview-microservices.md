@@ -145,7 +145,7 @@ Das Ziel von Service Fabric ist die Reduzierung der komplexen Anwendungserstellu
 
 * Weitere Informationen finden Sie unter:
     * [Übersicht über Service Fabric-Terminologie](service-fabric-technical-overview.md)
-    * [Microservices: Eine cloudbasierte Anwendungsrevolution](https://azure.microsoft.com/de-DE/blog/microservices-an-application-revolution-powered-by-the-cloud/)
+    * [Microservices: Eine cloudbasierte Anwendungsrevolution](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/)
 
 
 [Image1]: media/service-fabric-overview-microservices/monolithic-vs-micro.png

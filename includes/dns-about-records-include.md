@@ -25,7 +25,7 @@ Die Gültigkeitsdauer (TTL oder Time-to-Live) gibt an, wie lange jeder Eintrag v
 
 Azure DNS unterstützt [Platzhalterdatensätze](https://en.wikipedia.org/wiki/Wildcard_DNS_record). Diese werden für alle Abfragen mit einem übereinstimmenden Namen zurückgegeben (es sei denn, es gibt eine genauere Übereinstimmung aus einem Ressourceneintragssatz ohne Platzhalter). Ressourceneintragssätze mit Platzhaltern werden für alle Eintragstypen mit Ausnahme von NS und SOA unterstützt.
 
-Verwenden Sie zum Erstellen eines Ressourceneintragssatzes mit Platzhaltern den Ressourceneintragssatz-Namen „*“. Oder verwenden Sie einen Namen mit „*“, z.B. „*.foo“.
+Verwenden Sie zum Erstellen eines Ressourceneintragssatzes mit Platzhaltern den Ressourceneintragssatz-Namen „ * “. Oder verwenden Sie einen Namen mit „ * “, z.B. „ *.foo “.
 
 #### CNAME-Ressourceneintragssätze
 

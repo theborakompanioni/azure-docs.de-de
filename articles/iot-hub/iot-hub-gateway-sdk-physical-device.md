@@ -80,10 +80,10 @@ In diesem Tutorial wird vorausgesetzt, dass Sie ein [Texas Instruments SensorTag
 
 Bevor Sie beginnen, sollten Sie sicherstellen, dass Sie Ihr Edison-Gerät mit dem Drahtlosnetzwerk verbinden können. Um Ihr Edison-Gerät einzurichten, müssen Sie es mit einem Hostcomputer verbinden. Intel stellt Erste-Schritte-Handbücher für die folgenden Betriebssysteme bereit:
 
-- [Get Started with the Intel Edison Development Board on Windows 64-bit][lnk-setup-win64] (Erste Schritte mit dem Intel Edison Development Board unter Windows 64-Bit).
-- [Get Started with the Intel Edison Development Board on Windows 32-bit][lnk-setup-win32] (Erste Schritte mit dem Intel Edison Development Board unter Windows 32-Bit).
-- [Get Started with the Intel Edison Development Board on Mac OS X][lnk-setup-osx] (Erste Schritte mit dem Intel Edison Development Board unter Mac OS X).
-- [Getting Started with the Intel® Edison Board on Linux][lnk-setup-linux] (Erste Schritte mit dem Intel® Edison Board unter Linux).
+- [Get Started with the Intel Edison Development Board on Windows 64-bit][lnk-setup-win64] \(Erste Schritte mit dem Intel Edison Development Board unter Windows 64-Bit).
+- [Get Started with the Intel Edison Development Board on Windows 32-bit][lnk-setup-win32] \(Erste Schritte mit dem Intel Edison Development Board unter Windows 32-Bit).
+- [Get Started with the Intel Edison Development Board on Mac OS X][lnk-setup-osx] \(Erste Schritte mit dem Intel Edison Development Board unter Mac OS X).
+- [Getting Started with the Intel® Edison Board on Linux][lnk-setup-linux] \(Erste Schritte mit dem Intel® Edison Board unter Linux).
 
 Um Ihr Edison-Gerät einzurichten und sich damit vertraut zu machen, sollten Sie alle Schritte in diesen „Erste Schritte“-Artikeln mit Ausnahme des letzten Schritts, „Choose IDE“ (IDE auswählen), ausführen, der für das aktuelle Tutorial nicht erforderlich ist. Am Ende des Edison-Installationsvorgangs haben Sie:
 

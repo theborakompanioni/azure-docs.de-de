@@ -119,7 +119,7 @@ So rufen Sie die APIs zum erneuten Trainieren auf
 	3.	Klicken Sie am unteren Rand der Verarbeitungsseite im Abschnitt **Beispielcode** auf **Batch**.
 5.	Kopieren Sie den C#-Beispielcode für die Batchausführung, und fügen Sie ihn in die Datei „Program.cs“ ein. Achten Sie dabei darauf, dass der Namespace intakt bleibt.
 
-Fügen Sie das NuGet-Paket „Microsoft.AspNet.WebApi.Client“ hinzu, wie in den Kommentaren angegeben. Vor dem Hinzufügen des Verweises auf „Microsoft.WindowsAzure.Storage.dll“ müssen Sie unter Umständen zuerst die Clientbibliothek für Microsoft Azure Storage Services installieren. Weitere Informationen finden Sie unter [Windows Azure Storage](https://www.nuget.org/packages/WindowsAzure.Storage).
+Fügen Sie das NuGet-Paket „Microsoft.AspNet.WebApi.Client“ hinzu, wie in den Kommentaren angegeben. Vor dem Hinzufügen des Verweises auf „Microsoft.WindowsAzure.Storage.dll“ müssen Sie unter Umständen zuerst die Clientbibliothek für Microsoft Azure Storage Services installieren. Weitere Informationen finden Sie unter [Microsoft Azure Storage](https://www.nuget.org/packages/WindowsAzure.Storage).
 
 ### Aktualisieren der apiKey-Deklaration
 

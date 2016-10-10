@@ -23,7 +23,7 @@ Die Azure Data Factory-Kopieraktivität bietet eine erstklassige, sichere und zu
 Azure bietet eine Reihe von Datenspeicher- und Data Warehouse-Lösungen der Unternehmensklasse, und mit der Kopieraktivität führen Sie ein hochgradig optimiertes und benutzerfreundliches Datenladen durch, das Sie mühelos konfigurieren und einrichten können. Mit einer einzelnen Kopieraktivität können Sie Folgendes erreichen:
 
 - Laden von Daten in **Azure SQL Data Warehouse** mit **1,2GB/s**
-- Laden von Daten in **Azure-Blobspeicher ** mit **1,0GB/s**
+- Laden von Daten in **Azure-Blobspeicher** mit **1,0GB/s**
 - Laden von Daten in **Azure Data Lake Store** mit **1,0GB/s**
 
 
