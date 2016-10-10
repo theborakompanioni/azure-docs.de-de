@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="asmalser-msft"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -23,10 +23,10 @@ Dieses Tutorial soll Ihnen zeigen, wie Sie Facebook at Work in Azure Active Dire
 
 Die Integration von Facebook at Work in Azure AD bietet die folgenden Vorteile:
 
-- Sie können in Azure AD steuern, wer Zugriff auf Facebook at Work hat. 
+- Sie können in Azure AD steuern, wer Zugriff auf Facebook at Work hat.
 - Sie können automatisch Konten für Benutzer bereitstellen, denen Zugriff auf Facebook at Work erteilt wurde.
 - Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Facebook at Work anzumelden (einmaliges Anmelden).
-- Sie können Ihre Konten an einem zentralen Ort verwalten. 
+- Sie können Ihre Konten an einem zentralen Ort verwalten.
 
 Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
@@ -41,7 +41,7 @@ Um die Azure AD-Integration mit CS Stars konfigurieren zu können, benötigen Si
 Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
 
 - Sie sollten keine Produktionsumgebung verwenden, sofern dies nicht erforderlich ist.
-- Wenn Sie keine Azure AD-Testumgebung haben, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/) eine einmonatige Testversion anfordern. 
+- Wenn Sie keine Azure AD-Testumgebung haben, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/) eine einmonatige Testversion anfordern.
 
 
 ## Hinzufügen von Facebook at Work aus dem Katalog
@@ -49,7 +49,7 @@ Zum Konfigurieren der Integration von Facebook at Work in Azure AD müssen Sie F
 
 **Um Facebook at Work aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
 
-1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**. 
+1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**.
 
 	![Active Directory][1]
 
@@ -113,7 +113,7 @@ Damit bereitgestellten AAD-Benutzern Facebook at Work im Zugriffsbereich angezei
 4.	Klicken Sie in der Fußzeile auf die Schaltfläche **Zuweisen**.
 
 
-## Zusätzliche Ressourcen
+## Weitere Ressourcen
 
 * [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)
@@ -124,4 +124,4 @@ Damit bereitgestellten AAD-Benutzern Facebook at Work im Zugriffsbereich angezei
 [3]: ./media/active-directory-saas-cs-stars-tutorial/tutorial_general_03.png
 [4]: ./media/active-directory-saas-cs-stars-tutorial/tutorial_general_04.png
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0928_2016-->

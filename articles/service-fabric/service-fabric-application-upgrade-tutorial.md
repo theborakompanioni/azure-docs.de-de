@@ -17,8 +17,13 @@
    ms.author="subramar"/>
 
 
-
 # Tutorial für das Upgraden von Service Fabric-Anwendungen mithilfe von Visual Studio
+
+> [AZURE.SELECTOR]
+- [PowerShell](service-fabric-application-upgrade-tutorial-powershell.md)
+- [Visual Studio](service-fabric-application-upgrade-tutorial.md)
+
+<br/>
 
 Azure Service Fabric vereinfacht das Upgraden von Cloudanwendungen, indem sichergestellt wird, dass nur geänderte Dienste aktualisiert werden und die Anwendungsintegrität während des gesamten Upgradeprozesses überwacht wird. Falls ein Fehler auftritt, wird die Anwendung automatisch auf die vorherigen Version zurückgesetzt. Upgrades von Service Fabric-Anwendungen erfolgen *ohne Ausfallzeiten*, da die Anwendung ohne Ausfallzeiten aktualisiert werden kann. In diesem Tutorial wird beschrieben, wie ein paralleles Upgrade über Visual Studio erfolgt.
 
@@ -87,4 +92,4 @@ Informationen zum Beheben gängiger Probleme bei Anwendungsupgrades finden Sie i
 [image3]: media/service-fabric-application-upgrade-tutorial/upgrade5.png
 [image4]: media/service-fabric-application-upgrade-tutorial/upgrade6.png
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

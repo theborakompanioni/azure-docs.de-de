@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Übermitteln von Widevine-Lizenzen an Azure Media Services mithilfe von castLabs" 
+	pageTitle="Übermitteln von Widevine-Lizenzen an Azure Media Services mithilfe von castLabs | Microsoft Azure" 
 	description="In diesem Artikel wird beschrieben, wie Sie mithilfe von Azure Media Services (AMS) einen Stream übermitteln, der von AMS mit PlayReady- und Widevine-DRMs dynamisch verschlüsselt wird. Die PlayReady-Lizenz stammt vom Media Services PlayReady-Lizenzserver, und die Widevine-Lizenz wird vom castLabs-Lizenzserver übermittelt." 
 	services="media-services" 
 	documentationCenter="" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/22/2016"  
+	ms.date="09/26/2016"  
 	ms.author="Mingfeiy;willzhan;Juliako"/>
 
 
@@ -50,7 +50,7 @@ castLabs sowie AMS unterstützen das für die Autorisierung einer Lizenz verwend
 
 In der folgenden Tabelle wird das in AMS verwendete JWT-Token beschrieben.
 
-Aussteller|Ausstellerzeichenfolge aus dem ausgewählten Secure Token Service (STS)
+Issuer (Aussteller)|Ausstellerzeichenfolge aus dem ausgewählten Secure Token Service (STS)
 ---|---
 Zielgruppe|Zielgruppenzeichenfolge aus dem verwendeten STS
 Ansprüche|Eine Sammlung von Ansprüchen
@@ -122,4 +122,4 @@ Ein durch allgemeine Verschlüsselung (PlayReady und/oder Widevine) verschlüsse
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0928_2016-->

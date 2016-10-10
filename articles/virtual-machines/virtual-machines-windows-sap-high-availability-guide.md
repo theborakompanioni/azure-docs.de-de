@@ -1,19 +1,19 @@
 <properties
    pageTitle="SAP NetWeaver auf virtuellen Windows-Computern (VMs) – Handbuch zum Thema „Hohe Verfügbarkeit“ | Microsoft Azure"
    description="SAP NetWeaver auf virtuellen Windows-Computern (VMs) – Handbuch zum Thema „Hohe Verfügbarkeit“"
-   services="virtual-machines-windows,virtual-network,storage"
-   documentationCenter="saponazure"
+   services="virtual-machines-windows"
+   documentationCenter=""
    authors="goraco"
-   manager="juergent"
+   manager="timlt"
    editor=""
    tags="azure-resource-manager"
    keywords=""/>
 <tags
    ms.service="virtual-machines-windows"
    ms.devlang="NA"
-   ms.topic="campaign-page"
+   ms.topic="article"
    ms.tgt_pltfrm="vm-windows"
-   ms.workload="na"
+   ms.workload="infrastructure-services"
    ms.date="08/18/2016"
    ms.author="goraco"/>
 
@@ -434,8 +434,7 @@ Microsoft Azure ermöglicht Unternehmen das Abrufen von Compute-, Speicher- und 
 In diesem Dokument werden alle Schritte detailliert beschrieben, die zum Bereitstellen hoch verfügbarer SAP-Systeme in Azure mithilfe unserer neuen Methode mit dem neuen Azure Resource Manager-Bereitstellungsmodell erforderlich sind. Wir gehen in diesem Handbuch die wichtigsten Schritte gemeinsam durch:
 
 
-- Auffinden der entsprechenden SAP-Installationshandbücher und Hinweise, die weiter unten im Abschnitt [Ressourcen][sap-ha-guide-2] aufgelistet werden.  
-  Das Dokument ergänzt die SAP-Installationsdokumentation und die SAP-Hinweise, die die primäre Ressource für Installationen und Bereitstellungen von SAP-Software auf verschiedenen Plattformen darstellen.
+- Auffinden der entsprechenden SAP-Installationshandbücher und Hinweise, die weiter unten im Abschnitt [Ressourcen][sap-ha-guide-2] aufgelistet werden Das Dokument ergänzt die SAP-Installationsdokumentation und die SAP-Hinweise, die die primäre Ressource für Installationen und Bereitstellungen von SAP-Software auf verschiedenen Plattformen darstellen.
 
 - Grundlegendes zum Unterschied zwischen dem aktuellen klassischen Azure-Bereitstellungsmodell und dem neuen Azure Resource Manager-Bereitstellungsmodell
 
@@ -1426,10 +1425,10 @@ Nach dem Failover wird die Clustergruppe `SAP <SID>` auf Clusterknoten B ausgef�
 
 _**Abbildung 61:** : Failovercluster-Manager: Die SAP-Clustergruppe <SID> wird auf Clusterknoten B ausgeführt_
 
-Der freigegebene Datenträger ist jetzt auf Knoten B bereitgestellt. SIOS DataKeeper repliziert Daten vom Quellvolume S: auf Clusterknoten B (z.B. _**ascsha-clnb [10.0.0.42]**_) auf das Zielvolume S: auf Clusterknoten A (z.B. _**ascsha-clna [10.0.0.41]**_).
+Der freigegebene Datenträger ist jetzt auf Clusterknoten B bereitgestellt. SIOS DataKeeper repliziert Daten vom Quellvolume S: auf Clusterknoten B (z.B. _**ascsha-clnb [10.0.0.42]**_) auf das Zielvolume S: auf Clusterknoten A (z.B. _**ascsha-clna [10.0.0.41]**_).
 
 ![Abbildung 62: SIOS DataKeeper: Replizieren des lokalen Volumes von Clusterknoten B auf Clusterknoten A][sap-ha-guide-figure-5003]
 
 _**Abbildung 62:** SIOS DataKeeper: Replizieren des lokalen Volumes von Clusterknoten B auf Clusterknoten A_
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0928_2016-->

@@ -28,14 +28,15 @@ Unten sind die Schritte zum Installieren und Konfigurieren der Visual Studio-Too
 
 - [Visual Studio 2015](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx)
 - [Aktuelles Azure SDK](https://azure.microsoft.com/downloads/) (2.9.1 oder höher)
+- [Azure PowerShell](https://github.com/Azure/azure-powershell#installation)
 - Internetzugriff bei Verwendung des eingebetteten Designers
 
 ### Installieren der Visual Studio-Tools für Logik-Apps
 
 Gehen Sie nach der Installation der erforderlichen Komponenten wie folgt vor:
 
-1. Öffnen Sie in Visual Studio 2015 das Menü **Extras**, und wählen Sie **Erweiterungen und Updates**.
-1. Wählen Sie die Kategorie **Online** für die Onlinesuche.
+1. Öffnen Sie in Visual Studio 2015 das Menü **Extras**, und wählen Sie **Erweiterungen und Updates** aus.
+1. Wählen Sie die Kategorie **Online** für die Onlinesuche aus.
 1. Suchen Sie nach **Logik-Apps**, um die **Azure Logic Apps-Tools für Visual Studio** anzuzeigen.
 1. Klicken Sie auf die Schaltfläche **Herunterladen**, um die Erweiterung herunterzuladen und zu installieren.
 1. Starten Sie Visual Studio nach der Installation neu.
@@ -62,13 +63,13 @@ Nach der Installation können Sie das Azure-Ressourcengruppenprojekt mit dem Log
 
 Wenn Sie über ein Azure-Ressourcengruppenprojekt mit einer Logik-App verfügen, können Sie den Designer als Hilfe beim Erstellen des Workflows in Visual Studio öffnen. Für den Designer ist eine Internetverbindung erforderlich, um die Connectors für die verfügbaren Eigenschaften und Daten abzufragen (z.B. fragt der Designer bei Verwendung des Dynamics CRM Online-Connectors Ihre CRM-Instanz ab, um die verfügbaren benutzerdefinierten Eigenschaften und Standardeigenschaften aufzulisten).
 
-1. Klicken Sie mit der rechten Maustaste auf die Datei `<template>.json`, und wählen Sie die Option **Open with Logic App Designer** (Mit Logik-App-Designer öffnen) (oder `Ctrl+L`).
+1. Klicken Sie mit der rechten Maustaste auf die Datei `<template>.json`, und wählen Sie die Option **Mit Logik-App-Designer öffnen** (oder drücken Sie `Ctrl+L`).
 1. Wählen Sie das Abonnement, die Ressourcengruppe und den Speicherort für die Bereitstellungsvorlage aus.
-	- Es ist wichtig zu beachten, dass beim Entwerfen einer Logik-App Ressourcen vom Typ **API-Verbindung** erstellt werden, um während des Entwurfsvorgangs Eigenschaften abfragen zu können. Die ausgewählte Ressourcengruppe ist die Ressourcengruppe, die zum Erstellen dieser Verbindungen zur Entwurfszeit verwendet wird. Sie können alle API-Verbindungen anzeigen oder ändern, indem Sie auf das Azure-Portal zugreifen und nach **API-Verbindungen** suchen. ![Abonnementauswahl](./media/app-service-logic-deploy-from-vs/designer_picker.png)
+	- Beachten Sie unbedingt, dass beim Entwerfen einer Logik-App Ressourcen vom Typ **API-Verbindung** erstellt werden, um während des Entwurfsvorgangs Eigenschaften abfragen zu können. Die ausgewählte Ressourcengruppe ist die Ressourcengruppe, die zum Erstellen dieser Verbindungen zur Entwurfszeit verwendet wird. Sie können alle API-Verbindungen anzeigen oder ändern, indem Sie auf das Azure-Portal zugreifen und nach **API-Verbindungen** suchen. ![Abonnementauswahl](./media/app-service-logic-deploy-from-vs/designer_picker.png)
 1. Der Designer sollte basierend auf der Definition in der Datei `<template>.json` gerendert werden.
 1. Sie können die Logik-App jetzt erstellen und entwerfen. Die Änderungen werden in der Bereitstellungsvorlage aktualisiert. ![Designer in Visual Studio](./media/app-service-logic-deploy-from-vs/designer_in_vs.png)
 
-Sie sehen auch, dass Ressourcen vom Typ `Microsoft.Web/connections` der Ressourcendatei für alle Verbindungen hinzugefügt werden, die für die Funktion der Logik-App benötigt werden. Diese Verbindungseigenschaften können während der Bereitstellung festgelegt werden und werden nach der Bereitstellung unter **API-Verbindungen** im Azure-Portal verwaltet.
+Sie sehen auch, dass Ressourcen vom Typ `Microsoft.Web/connections` zur Ressourcendatei für alle Verbindungen hinzugefügt werden, die für die Funktion der Logik-App benötigt werden. Diese Verbindungseigenschaften können während der Bereitstellung festgelegt und nach der Bereitstellung im Azure-Portal unter **API-Verbindungen** verwaltet werden.
 
 ### Wechseln zur JSON-Codeansicht
 
@@ -76,7 +77,7 @@ Sie können unten im Designer die Registerkarte **Codeansicht** wählen, um zur 
 
 ### Speichern der Logik-App
 
-Sie können die Logik-App jederzeit mit der Schaltfläche **Speichern** oder der Tastenkombination `Ctrl+S` speichern. Falls beim Speichern der Logik-App Fehler auftreten, werden diese im Fenster **Ausgaben** von Visual Studio angezeigt.
+Sie können die Logik-App jederzeit mit der Schaltfläche **Speichern** oder der Tastenkombination `Ctrl+S` speichern. Falls beim Speichern der Logik-App Fehler auftreten, werden diese im Visual Studio-Fenster **Ausgaben** angezeigt.
 
 ## Bereitstellen Ihrer Logik-App
 
@@ -105,4 +106,4 @@ In Zukunft können Sie Ihre Logik-App in der Quellcodeverwaltung überarbeiten u
 - [Sie können Geschäftsprozesse mit Logik-Apps automatisieren.](http://channel9.msdn.com/Events/Build/2016/T694)
 - [Erfahren Sie, wie Sie Ihre Systeme in Logik-Apps integrieren.](http://channel9.msdn.com/Events/Build/2016/P462)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0928_2016-->

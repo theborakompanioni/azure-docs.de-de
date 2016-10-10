@@ -20,7 +20,7 @@ ms.service="virtual-machines-windows"
 
 
 
-In diesem Artikel wird erläutert, wie Sie Azure-Burstknoten (Workerrolleninstanzen, die in einem Clouddienst ausgeführt werden) bedarfsgesteuert als Computeressourcen zu einem vorhandenen HPC Pack-Hauptknoten in Azure hinzufügen So können Sie die Computekapazität des HPC-Clusters in Azure bedarfsgesteuert zentral hochskalieren, ohne mehrere vorkonfigurierte VMs für Computeknoten verwalten zu müssen.
+In diesem Artikel wird erläutert, wie Sie Azure-Burstknoten (Workerrolleninstanzen, die in einem Clouddienst ausgeführt werden) als Computeressourcen zu einem vorhandenen HPC Pack-Hauptknoten in Azure hinzufügen Mit einem Burstknoten können Sie die Computekapazität des HPC-Clusters in Azure bedarfsgesteuert zentral hoch- und herunterskalieren, ohne mehrere vorkonfigurierte VMs für Computeknoten verwalten zu müssen.
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
 
@@ -28,7 +28,7 @@ In diesem Artikel wird erläutert, wie Sie Azure-Burstknoten (Workerrolleninstan
 
 Anhand der Schritte in diesem Artikel können Sie Azure-Knoten auf schnelle Weise zu einem cloudbasierten virtuellen Computer für den HPC Pack-Hauptknoten für Tests oder Machbarkeitsstudien hinzufügen. Der Vorgang entspricht im Wesentlichen dem "Burst-auf-Azure"-Vorgang zum Hinzufügen von Cloudcomputekapazität zu einem lokalen HPC Pack-Cluster. Ein entsprechendes Lernprogramm finden Sie unter [Einrichten eines Hybrid-Rechenclusters mit Microsoft HPC Pack](../cloud-services/cloud-services-setup-hybrid-hpcpack-cluster.md). Ausführliche Anweisungen und Überlegungen zu Produktionsbereitstellungen finden Sie unter [Burst to Azure with Microsoft HPC Pack](https://technet.microsoft.com/library/gg481749.aspx) (in englischer Sprache).
 
-Überlegungen zur Verwendung der rechenintensiven A8- oder A9-Instanzengröße für die Burstknoten finden Sie unter [Informationen zu den rechenintensiven A8-, A9-, A10- und A11-Instanzen](virtual-machines-windows-a8-a9-a10-a11-specs.md).
+Überlegungen zur Verwendung einer rechenintensiven Instanzengröße für die Burstknoten finden Sie unter [Informationen zu den rechenintensiven A8-, A9-, A10- und A11-Instanzen](virtual-machines-windows-a8-a9-a10-a11-specs.md).
 
 ## Voraussetzungen
 
@@ -38,11 +38,11 @@ Anhand der Schritte in diesem Artikel können Sie Azure-Knoten auf schnelle Weis
 
 * **Azure-Abonnement**: Zum Hinzufügen von Azure-Knoten können Sie dasselbe Abonnement verwenden, das zum Bereitstellen des virtuellen Computers für den Hauptknoten verwendet wird. Sie können dazu auch andere Abonnements verwenden.
 
-* **Kernkontingent**: Unter Umständen muss das Kontingent für die Kerne erhöht werden. Dies gilt insbesondere, wenn Sie mehrere Azure-Knoten mit Multicore-Größen bereitstellen. Um ein Kontingent zu erhöhen, können Sie kostenlos eine [Anfrage an den Onlinekundensupport richten](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/).
+* **Kernkontingent**: Unter Umständen muss das Kontingent für die Kerne erhöht werden. Dies gilt insbesondere, wenn Sie mehrere Azure-Knoten mit Multicore-Größen bereitstellen. Um ein Kontingent zu erhöhen, können Sie kostenlos [eine Anfrage an den Onlinekundensupport richten](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/).
 
-## Schritt 1: Erstellen eines Clouddiensts und eines Speicherkontos zum Hinzufügen von Azure-Knoten
+## Schritt 1: Erstellen eines Clouddiensts und eines Speicherkontos für die Azure-Knoten
 
-Verwenden Sie das klassische Azure-Portal oder entsprechende Tools, um die folgenden Komponenten zu konfigurieren, die für die Bereitstellung von Azure-Knoten erforderlich sind:
+Verwenden Sie das klassische Azure-Portal oder entsprechende Tools, um die folgenden Ressourcen zu konfigurieren, die für die Bereitstellung von Azure-Knoten erforderlich sind:
 
 * Einen neuen Azure-Clouddienst
 * Ein neues Azure-Speicherkonto
@@ -53,24 +53,24 @@ Verwenden Sie das klassische Azure-Portal oder entsprechende Tools, um die folge
 
 * Konfigurieren Sie einen separaten Clouddienst für jede Azure-Knotenvorlage, die Sie erstellen möchten. Sie können jedoch das gleiche Speicherkonto für mehrere Knotenvorlagen verwenden.
 
-* Im Allgemeinen sollten sich der Clouddienst und das Speicherkonto für die Bereitstellung in der gleichen Azure-Region befinden.
+* Der Clouddienst und das Speicherkonto für die Bereitstellung sollten sich in der gleichen Azure-Region befinden.
 
 
 
 
-## Schritt 2: Konfigurieren eines Azure-Verwaltungszertifikats
+## Schritt 2: Konfigurieren eines Azure-Verwaltungszertifikats
 
-Um Azure-Knoten als Computeressourcen hinzuzufügen, müssen Sie ein Verwaltungszertifikat für den Hauptknoten zuweisen und ein entsprechendes Zertifikat für das für die Bereitstellung verwendete Azure-Abonnement hochladen.
+Um Azure-Knoten als Computeressourcen hinzuzufügen, benötigen Sie ein Verwaltungszertifikat für den Hauptknoten und müssen ein entsprechendes Zertifikat für das für die Bereitstellung verwendete Azure-Abonnement hochladen.
 
-In diesem Szenario können Sie das **Zertifikat "Default HPC Azure Management"** auswählen, das HPC Pack automatisch auf dem Hauptknoten installiert und konfiguriert. Dieses Zertifikat ist nützlich für Testzwecke und Machbarkeitsstudien. Um dieses Zertifikat zu verwenden, laden Sie einfach die Datei "C:\\Programme\\Microsoft HPC Pack 2012\\Bin\\hpccert.cer" vom virtuellen Computer für den Hauptknoten in das Abonnement hoch. Hierzu können Sie das [klassische Azure-Portal](https://manage.windowsazure.com) nutzen. Klicken Sie auf **Einstellungen** > **Verwaltungszertifikate**.
+In diesem Szenario können Sie das **Zertifikat "Default HPC Azure Management"** auswählen, das HPC Pack automatisch auf dem Hauptknoten installiert und konfiguriert. Dieses Zertifikat ist nützlich für Testzwecke und Machbarkeitsstudien. Um dieses Zertifikat zu verwenden, laden Sie die Datei „C:\\Programme\\Microsoft HPC Pack 2012\\Bin\\hpccert.cer“ vom virtuellen Computer für den Hauptknoten in das Abonnement hoch. Klicken Sie zum Hochladen des Zertifikats im [klassischen Azure-Portal](https://manage.windowsazure.com) auf **Einstellungen** > **Verwaltungszertifikate**.
 
 Zusätzliche Optionen zum Konfigurieren des Verwaltungszertifikats finden Sie unter [Options to Configure the Azure Management Certificate for Azure Burst Deployments](http://technet.microsoft.com/library/gg481759.aspx) (in englischer Sprache).
 
-## Schritt 3: Bereitstellen von Azure-Knoten auf dem Cluster
+## Schritt 3: Bereitstellen von Azure-Knoten auf dem Cluster
 
 
 
-Die Schritte zum Hinzufügen und Starten von Azure-Knoten in diesem Szenario entsprechen i. Allg. der Vorgehensweise bei lokalen Hauptknoten. Weitere Informationen finden Sie in den folgenden Abschnitten unter [Steps to Deploy Azure Nodes with Microsoft HPC Pack](https://technet.microsoft.com/library/gg481758.aspx) (in englischer Sprache):
+Die Schritte zum Hinzufügen und Starten von Azure-Knoten in diesem Szenario entsprechen im Allgemeinen der Vorgehensweise bei lokalen Hauptknoten. Weitere Informationen finden Sie in den folgenden Abschnitten unter [Steps to Deploy Azure Nodes with Microsoft HPC Pack](https://technet.microsoft.com/library/gg481758.aspx) (in englischer Sprache):
 
 * Erstellen einer Azure-Knotenvorlage
 
@@ -84,9 +84,9 @@ Wenn bei der Bereitstellung von Azure-Knoten Probleme auftreten, finden Sie weit
 
 ## Nächste Schritte
 
-* Wenn Sie die Azure-Computeressourcen entsprechend der aktuellen Workload der Aufträge und Aufgaben im Cluster automatisch vergrößern oder verkleinern möchten, finden Sie entsprechende Informationen unter [Automatisches Vergrößern oder Verkleinern der HPC Pack-Clusterressourcen in Azure gemäß der Clusterworkload](virtual-machines-windows-classic-hpcpack-cluster-node-autogrowshrink.md).
+* Wenn Sie die Azure-Computeressourcen entsprechend der aktuellen Clusterworkload automatisch vergrößern oder verkleinern möchten, finden Sie entsprechende Informationen unter [Automatisches Vergrößern oder Verkleinern der HPC Pack-Clusterressourcen in Azure gemäß der Clusterworkload](virtual-machines-windows-classic-hpcpack-cluster-node-autogrowshrink.md).
 
 <!--Image references-->
 [burst]: ./media/virtual-machines-windows-classic-hpcpack-cluster-node-burst/burst.png
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0928_2016-->

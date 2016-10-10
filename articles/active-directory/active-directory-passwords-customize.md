@@ -72,7 +72,7 @@ In der folgenden Tabelle werden die Auswirkungen der einzelnen Steuerelemente au
               </td>
               <td>
                 <p>
-                  <strong>"Wenden Sie sich an Ihren Administrator"-E-Mails:</strong>
+                  <strong>„Wenden Sie sich an Ihren Administrator“-E-Mails:</strong>
                 </p>
                 <ul>
                   <li class="unordered">
@@ -202,9 +202,8 @@ In der folgenden Tabelle werden die Auswirkungen der einzelnen Steuerelemente au
                 </p>
                 <ul>
                   <li class="unordered">
-												Ist diese Einstellung auf "Nein" festgelegt, können sich alle Endbenutzer im Verzeichnis für die Kennwortzurücksetzung unter <a href="http://aka.ms/ssprsetup">http://aka.ms/ssprsetup</a> registrieren.<br><br></li>
-                  <li class="unordered">
-												Ist die Einstellung auf "Ja" festgelegt, können nur die Endbenutzer, die im Steuerelement <strong>Gruppe, die eine Kennwortrücksetzung durchführen kann</strong> angegeben sind, sich für die Kennwortzurücksetzung unter <a href="http://aka.ms/ssprsetup">http://aka.ms/ssprsetup</a> registrieren.<br><br></li>
+                    Diese Einstellung hat keine Auswirkung auf den Zugriff des Benutzers auf das Kennwortzurücksetzungsportal. Wenn die Einstellung <strong>Benutzer, für die das Zurücksetzen des Kennworts aktiviert ist</strong> auf <strong>Ja</strong> festgelegt, können sich alle Endbenutzer in Ihrem Verzeichnis für die Kennwortzurücksetzung unter <a href="http://aka.ms/ssprsetup">http://aka.ms/ssprsetup</a> registrieren.
+                  </li>
                 </ul>
                 <p>
                   <strong>Kennwortzurücksetzungsportal:</strong>
@@ -245,7 +244,8 @@ In der folgenden Tabelle werden die Auswirkungen der einzelnen Steuerelemente au
                 </p>
                 <ul>
                   <li class="unordered">
-												Wenn <strong>Zugriff auf die Kennwortrücksetzung beschränken</strong> auf <strong>Ja</strong> festgelegt ist, können nur Endbenutzer in dieser Gruppe sich für die Kennwortzurücksetzung registrieren. <br><br></li>
+                    Diese Einstellung hat keine Auswirkung auf den Zugriff des Benutzers auf das Kennwortzurücksetzungsportal. Wenn die Einstellung <strong>Benutzer, für die das Zurücksetzen des Kennworts aktiviert ist</strong> auf <strong>Ja</strong> festgelegt, können sich alle Endbenutzer in Ihrem Verzeichnis für die Kennwortzurücksetzung unter <a href="http://aka.ms/ssprsetup">http://aka.ms/ssprsetup</a> registrieren.
+                  </li>
                 </ul>
                 <p>
                   <strong>Kennwortzurücksetzungsportal:</strong>
@@ -270,12 +270,6 @@ In der folgenden Tabelle werden die Auswirkungen der einzelnen Steuerelemente au
                 <p>(Nur sichtbar, wenn <strong>Benutzer, für die das Zurücksetzen des Kennworts aktiviert ist</strong> auf <strong>Ja</strong> festgelegt ist).</p>
               </td>
               <td>
-                <p>
-
-                </p>
-                <p>
-
-                </p>
                 <p>
                   <strong>Hinweis:</strong>
                 </p>
@@ -875,4 +869,4 @@ Im Folgenden finden Sie Links zu allen Webseiten mit Informationen zur Kennwortz
 
 [001]: ./media/active-directory-passwords-customize/001.jpg "Image_001.jpg"
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0928_2016-->

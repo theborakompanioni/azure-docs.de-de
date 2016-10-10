@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Smooth Streaming Windows Store-App-Lernprogramm" 
+	pageTitle="Smooth Streaming Windows Store-App-Lernprogramm | Microsoft Azure" 
 	description="Erfahren Sie, wie Sie eine Windows Store-Anwendung mit einem MediaElement-XML-Steuerelement für die Wiedergabe von Smooth Streaming-Medieninhalten erstellen können." 
 	services="media-services" 
 	documentationCenter="" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/22/2016"  
+	ms.date="09/26/2016"  
 	ms.author="juliako"/>
 
 
@@ -67,9 +67,9 @@ Name|Wert
 Vorlagengruppe|Installed/Templates/Visual C#/Windows Store
 Vorlage|Leere App (XAML)
 Name|SSPlayer
-Verzeichnis|C:\\SSTutorials
+Ort|C:\\SSTutorials
 Projektmappenname|SSPlayer
-Projektmappenverzeichnis erstellen|(aktiviert)
+Verzeichnis für Lösung erstellen|(aktiviert)
 
 4.	Klicken Sie auf **OK**.
 
@@ -81,7 +81,7 @@ Projektmappenverzeichnis erstellen|(aktiviert)
 Name|Wert
 ---|---
 Verweisgruppe|Windows/Extensions
-Verweis|Wählen Sie Microsoft Smooth Streaming Client SDK for Windows 8 und Microsoft Visual C++ Runtime Package.
+Referenz|Wählen Sie Microsoft Smooth Streaming Client SDK for Windows 8 und Microsoft Visual C++ Runtime Package.
 	
 3.	Klicken Sie auf **OK**.
 
@@ -986,4 +986,4 @@ Sie haben Lektion 4 abgeschlossen. In dieser Lektion haben Sie die Funktion zur
 [CodeViewPic]: ./media/media-services-build-smooth-streaming-apps/SSClientWin8-2.png
  
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0928_2016-->

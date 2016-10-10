@@ -160,7 +160,7 @@ Anwendungen, die unter Azure erstellt werden, profitieren von Plattformfunktione
 
 ###Service Bus
 
-Um die Risiken durch einen vorübergehenden Ausfall von Azure Service Bus zu minimieren, können Sie eine dauerhafte clientseitige Warteschlange erstellen. Diese Warteschlange verwendet vorübergehend einen alternativen, lokalen Speichermechanismus, um Nachrichten zu speichern, die der Service Bus-Warteschlange nicht hinzugefügt werden können. Die Anwendung kann entscheiden, wie die temporär gespeicherten Nachrichten verarbeitet werden sollen, nachdem der Dienst wiederhergestellt wurde. Weitere Informationen finden Sie unter [Bewährte Methoden für Leistungsoptimierungen mithilfe von Service Bus-Brokermessaging](../service-bus/service-bus-performance-improvements.md) sowie unter [Service Bus (Notfallwiederherstellung)](./resiliency-technical-guidance-recovery-loss-azure-region.md#other-azure-platform-services).
+Um die Risiken durch einen vorübergehenden Ausfall von Azure Service Bus zu minimieren, können Sie eine dauerhafte clientseitige Warteschlange erstellen. Diese Warteschlange verwendet vorübergehend einen alternativen, lokalen Speichermechanismus, um Nachrichten zu speichern, die der Service Bus-Warteschlange nicht hinzugefügt werden können. Die Anwendung kann entscheiden, wie die temporär gespeicherten Nachrichten verarbeitet werden sollen, nachdem der Dienst wiederhergestellt wurde. Weitere Informationen finden Sie unter [Bewährte Methoden für Leistungsoptimierungen mithilfe von Service Bus-Brokermessaging](../service-bus-messaging/service-bus-performance-improvements.md) sowie unter [Service Bus (Notfallwiederherstellung)](./resiliency-technical-guidance-recovery-loss-azure-region.md#other-azure-platform-services).
 
 ###Mobile Services
 
@@ -223,4 +223,4 @@ Die mit Azure HDInsight verknüpften Daten werden standardmäßig in Azure Blob 
 
 Dieser Artikel gehört zu einer Reihe von Artikeln, die als [Technischer Leitfaden zur Resilienz in Azure](./resiliency-technical-guidance.md) dienen. Der nächste Artikel dieser Reihe ist [Wiederherstellung nach einer regionsweiten Dienstunterbrechung](./resiliency-technical-guidance-recovery-loss-azure-region.md).
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0928_2016-->

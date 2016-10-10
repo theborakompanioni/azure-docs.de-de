@@ -18,7 +18,7 @@
 
 # Dank Azure erweiterte SnelStart seine Businessdienste schnell um 1.000 neue Azure SQL-Datenbanken pro Monat
 
-![Logo](./media/sql-database-case-study-snelstart/snelstartlogo.png)
+![SnelStartLogo](./media/sql-database-implementation-snelstart/snelstartlogo.png)
 
 SnelStart entwickelt beliebte Software für das Finanz- und Businessmanagement für kleine und mittelgroße Unternehmen in den Niederlanden. 110 Mitarbeiter (einschließlich 35 IT-Mitarbeitern) kümmern sich um 55.000 Kunden. Durch die Umstellung von Desktopsoftware zu einem auf Azure aufgebauten SaaS-Angebot (Software-as-a-Service) kann SnelStart die integrierten Dienste optimal nutzen. Die Verwaltung wird mit einer vertrauten Umgebung in C# automatisiert, und dank elastischer Datenbankpools lassen sich Leistung und Skalierbarkeit optimieren, ohne Über- oder Unterdimensionierung von Ressourcen für die Kunden. Azure bietet SnelStart die Flexibilität und Agilität, Kundendaten zwischen lokalen Systemen und der Cloud zu verschieben.
 
@@ -80,7 +80,7 @@ Dank Azure kann SnelStart seine Kunden und ihre Buchhaltungsabteilungen in der C
 
 Darüber hinaus ermöglichen die Webdienste von SnelStart Kunden und Buchhaltungsabteilungen den einfachen Zugriff auf Daten in den elastischen Pools von Azure SQL-Datenbank. Dieses SaaS-Modell in Verbindung mit Datenbankelastizität und Azure Resource Manager bietet SnelStart Skalierbarkeitsfunktionen, die jede Azure-Bereitstellung ergänzen. Die Implementierung wird mithilfe von C#-Verwaltungsbibliotheken vollständig automatisiert.
 
-![Abbildung 1](./media/sql-database-case-study-snelstart/figure1.png)
+![SnelStart-Architektur](./media/sql-database-implementation-snelstart/figure1.png)
 
 Abbildung 1. Seit Juni 2016 verwaltet SnelStart mehr als 11.000 Datenbanken und über 50 elastische Datenbankpools
  
@@ -105,4 +105,4 @@ SnelStart schätzt die enge Partnerschaft, die das Unternehmen mit dem Microsoft
 
 - Weitere Informationen zu SnelStart finden Sie unter [SnelStart](http://www.snelstart.nl).
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

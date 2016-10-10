@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="06/22/2016"
+	ms.date="09/26/2016"
 	ms.author="juliako"/>
 
 
@@ -100,7 +100,7 @@ Verb|Beschreibung
 GET|Gibt den aktuellen Wert eines Objekts zurück.
 POST|Erstellt ein Objekt auf Grundlage der bereitgestellten Daten oder sendet einen Befehl.
 PUT|Ersetzt ein Objekt oder erstellt ein benanntes Objekt (falls zutreffend).
-LÖSCHEN|Löscht ein Objekt.
+DELETE|Löscht ein Objekt.
 MERGE|Aktualisiert ein vorhandenes Objekt anhand von Änderungen der benannten Eigenschaft.
 HEAD|Gibt die Metadaten eines Objekts für eine GET-Antwort zurück.
 
@@ -132,4 +132,4 @@ Sie sollten "?api-version=2.x" an das Ende des URIs anhängen, wenn Sie die Meta
 
  
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0928_2016-->

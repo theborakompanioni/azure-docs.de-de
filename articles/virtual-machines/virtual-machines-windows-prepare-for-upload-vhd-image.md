@@ -22,7 +22,11 @@ Um einen virtuellen Windows-Computer aus einem lokalen Speicherort in Azure hoch
 
 ## Vorbereiten des virtuellen Datenträgers
 
->[AZURE.NOTE] Das modernere VHDX-Format wird in Azure noch nicht unterstützt. Die VHD muss eine feste Größe aufweisen, keine dynamische. Folgen Sie bei Bedarf den unten stehenden Anweisungen, um eine VHDX oder einen dynamischen Datenträger zu konvertieren. Die maximal zulässige Größe für die virtuelle Festplatte beträgt 1.023 GB.
+>[AZURE.NOTE] 
+Azure unterstützt nur [virtuelle Computer der 1. Generation](http://blogs.technet.com/b/ausoemteam/archive/2015/04/21/deciding-when-to-use-generation-1-or-generation-2-virtual-machines-with-hyper-v.aspx), die das VHD-Dateiformat aufweisen. Das modernere VHDX-Format wird in Azure noch nicht unterstützt.
+>
+> Die VHD muss eine feste Größe aufweisen, keine dynamische. Folgen Sie bei Bedarf den unten stehenden Anweisungen, um eine VHDX oder einen dynamischen Datenträger zu konvertieren. Die maximal zulässige Größe für die virtuelle Festplatte beträgt 1.023 GB.
+
 
 Stellen Sie sicher, dass die Windows-VHD auf dem lokalen Server ordnungsgemäß funktioniert. Beheben Sie alle Probleme auf dem virtuellen Computer selbst, bevor Sie versuchen, ihn zu konvertieren oder in Azure hochzuladen.
 
@@ -319,4 +323,4 @@ Die folgenden Einstellungen wirken sich nicht auf das Hochladen von VHDs aus. Es
 
 - [Hochladen eines Windows-VM-Images an Azure für Resource Manager-Bereitstellungen](virtual-machines-windows-upload-image.md)
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

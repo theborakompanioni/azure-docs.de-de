@@ -4,7 +4,7 @@
    services="active-directory"
    documentationCenter=""
    authors="dhanyahk"
-   manager="mbaldwin"
+   manager="femila"
    editor=""/>
 
 <tags
@@ -13,20 +13,20 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="09/16/2016"
-   ms.author="dhanyahk"/>
+   ms.date="09/27/2016"
+   ms.author="femila"/>
 
 
 # Anleitung für Azure Active Directory-Berichte
 
+ - [Azure Active Directory-Berichterstellung – Vorschau](active-directory-reporting-azure-portal.md)
  - [Erste Schritte mit der Azure AD Reporting-API](active-directory-reporting-api-getting-started.md)
  - [Azure Active Directory-Überwachungsberichtsereignisse](active-directory-reporting-audit-events.md)
  - [Vermerkdauer für Azure Active Directory-Berichte](active-directory-reporting-retention.md)
- - [Vorschau von Azure Active Directory-Berichten](active-directory-reporting-previews.md)
  - [Suche in Azure Active Directory-Berichten](active-directory-reporting-search.md)
  - [Abgleich von Azure Active Directory-Berichten](active-directory-reporting-backfill.md)
  - [Latenzen bei Azure Active Directory-Berichten](active-directory-reporting-latencies.md)
  - [Azure Active Directory-Berichtsereignis „Unbekannter Akteur“](active-directory-reporting-unknown-actor.md)
  - [Anzeigen Ihrer Zugriffs- und Nutzungsberichte](active-directory-view-access-usage-reports.md)
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

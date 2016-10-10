@@ -36,7 +36,7 @@ Im folgenden Beispiel werden einige der Formateigenschaften für "TextFormat" ge
 	    }
 	},
 
-Um "escapeChar" anstelle von "quoteChar" zu verwenden, ersetzen Sie die Zeile mit "quoteChar" durch Folgendes:
+Um „escapeChar“ anstelle von „quoteChar“ zu verwenden, ersetzen Sie die Zeile mit „quoteChar“ durch folgende escapeChar-Angabe:
 
 	"escapeChar": "$",
 
@@ -46,7 +46,7 @@ Um "escapeChar" anstelle von "quoteChar" zu verwenden, ersetzen Sie die Zeile mi
 
 - Sie kopieren Daten aus einer Quelle, bei der es sich nicht um eine Datei handelt, in eine Textdatei und möchten eine Kopfzeile mit den Schemametadaten (z.B. ein SQL-Schema) hinzufügen. Legen Sie für dieses Szenario **firstRowAsHeader** im Ausgabedataset als „true“ fest.
 - Sie kopieren aus einer Textdatei mit einer Kopfzeile in eine Senke, bei der es sich nicht um eine Datei handelt, und möchten diese Zeile löschen. Legen Sie **firstRowAsHeader** im Eingabedatenset als „true“ fest.
-- Sie kopieren aus einer Textdatei und möchten einige Zeilen am Anfang überspringen, bei denen es sich weder um Daten- noch um Kopfzeilen handelt. Geben Sie **skipLineCount** mit der Anzahl von Zeilen an, die übersprungen werden sollen. Wenn der Rest der Datei eine Kopfzeile enthält, können Sie auch **firstRowAsHeader** angeben. Wenn sowohl **skipLineCount** und **firstRowAsHeader** angegeben sind, werden erst die Zeilen übersprungen und dann die Kopfzeileninformationen aus der Eingabedatei gelesen.
+- Sie kopieren aus einer Textdatei und möchten einige Zeilen am Anfang überspringen, die keine Daten oder Kopfzeileninformationen enthalten. Geben Sie **skipLineCount** mit der Anzahl von Zeilen an, die übersprungen werden sollen. Wenn der Rest der Datei eine Kopfzeile enthält, können Sie auch **firstRowAsHeader** angeben. Wenn sowohl **skipLineCount** und **firstRowAsHeader** angegeben sind, werden erst die Zeilen übersprungen und dann die Kopfzeileninformationen aus der Eingabedatei gelesen.
 
 ### Angeben von "AvroFormat"
 Wenn das Format auf "AvroFormat" festgelegt ist, müssen Sie im Abschnitt "Format" innerhalb des Abschnitts "typeProperties" keine Eigenschaften angeben. Beispiel:
@@ -228,7 +228,7 @@ Das Eingabedataset vom Typ JsonFormat ist wie folgt definiert: (Teildefinition a
 Wenn die Struktur nicht definiert ist, vereinfacht die Kopieraktivität die Struktur standardmäßig und kopiert alles.
 
 #### Unterstützte JSON-Struktur
-Beachten Sie Folgendes:
+Beachten Sie folgende Punkte:
 
 - Jedes Objekt mit einer Sammlung von Name-Wert-Paaren wird einer Zeile mit Daten in einem Tabellenformat zugeordnet. Objekte können geschachtelt werden, und Sie können definieren, wie die Struktur in einem Dataset mit dem Schachtelungstrennzeichen (.) standardmäßig vereinfacht werden soll. Ein Beispiel finden Sie im vorherigen Abschnitt [JsonFormat-Beispiel](#jsonformat-example).
 - Wenn die Struktur im Data Factory-Dataset definiert ist, erkennt die Kopieraktivität das Schema des ersten Objekts und vereinfacht das gesamte Objekt.
@@ -241,14 +241,29 @@ Wenn das Format auf „OrcFormat“ festgelegt ist, müssen Sie im Abschnitt „
 
 	"format":
 	{
-	    "type": "OrcFormat",
+	    "type": "OrcFormat"
 	}
 
 > [AZURE.IMPORTANT] Wenn Sie ORC-Dateien nicht **unverändert** zwischen lokalen und Clouddatenspeichern kopieren, müssen Sie die JRE 8 (Java Runtime Environment) auf Ihrem Gatewaycomputer installieren. Für ein 64-Bit-Gateway ist die 64-Bit-JRE erforderlich, für ein 32-Bit-Gateway die 32-Bit-JRE. Beide Versionen finden Sie [hier](http://go.microsoft.com/fwlink/?LinkId=808605). Wählen Sie die geeignete Version aus.
 
-Beachten Sie Folgendes:
+Beachten Sie folgende Punkte:
 
 -	Komplexe Datentypen werden nicht unterstützt (STRUCT, MAP, LIST, UNION).
 -	Für die ORC-Datei stehen drei [mit der Komprimierung zusammenhängende Optionen](http://hortonworks.com/blog/orcfile-in-hdp-2-better-compression-better-performance/) zur Verfügung: NONE, ZLIB, SNAPPY. Data Factory unterstützt das Lesen von Daten aus ORC-Dateien in jedem der oben genannten komprimierten Formate. Zum Lesen der Daten wird der Komprimierungscodec in den Metadaten verwendet. Beim Schreiben in eine ORC-Datei wählt Data Factory hingegen ZLIB (Standardeinstellung für ORC). Derzeit gibt es keine Option zum Überschreiben dieses Verhaltens.
 
-<!---HONumber=AcomDC_0907_2016-->
+### Angeben von „ParquetFormat“
+Wenn das Format auf „ParquetFormat“ festgelegt ist, müssen Sie im Abschnitt „Format“ innerhalb des Abschnitts „typeProperties“ keine Eigenschaften angeben. Beispiel:
+
+	"format":
+	{
+	    "type": "ParquetFormat"
+	}
+
+> [AZURE.IMPORTANT] Wenn Sie Parquet-Dateien nicht **unverändert** zwischen lokalen und Clouddatenspeichern kopieren, müssen Sie die JRE 8 (Java Runtime Environment) auf Ihrem Gatewaycomputer installieren. Für ein 64-Bit-Gateway ist die 64-Bit-JRE erforderlich, für ein 32-Bit-Gateway die 32-Bit-JRE. Beide Versionen finden Sie [hier](http://go.microsoft.com/fwlink/?LinkId=808605). Wählen Sie die geeignete Version aus.
+
+Beachten Sie folgende Punkte:
+
+-	Komplexe Datentypen werden nicht unterstützt (MAP, LIST).
+-	Für die Parquet-Datei stehen die folgenden mit der Komprimierung zusammenhängenden Optionen zur Verfügung: NONE, SNAPPY, GZIP und LZO. Data Factory unterstützt das Lesen von Daten aus ORC-Dateien in jedem der oben genannten komprimierten Formate. Zum Lesen der Daten wird der Komprimierungscodec in den Metadaten verwendet. Beim Schreiben in eine Parquet-Datei wählt Data Factory hingegen SNAPPY (Standardeinstellung für das Parquet-Format). Derzeit gibt es keine Option zum Überschreiben dieses Verhaltens.
+
+<!---HONumber=AcomDC_0928_2016-->

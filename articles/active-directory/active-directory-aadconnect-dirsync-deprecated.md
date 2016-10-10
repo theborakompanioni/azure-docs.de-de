@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="andkjell"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -29,7 +29,7 @@ Azure AD Connect ist der Nachfolger von DirSync und Azure AD Sync. Diese Lösung
 
 ## Zeitplan für die Einstellung
 
-Datum | Kommentar
+Date | Kommentar
  --- | ---
 13\. April 2016 | Windows Azure Active Directory-Synchronisierungstool („DirSync“) und Microsoft Azure Active Directory-Synchronisierungstool („Azure AD Sync“) als veraltet bekanntgegeben.
 13\. April 2017 | Ende des Supports. Um Supportanfragen zu übermitteln, müssen Kunden zunächst ein Upgrade auf Azure AD Connect durchführen.
@@ -57,8 +57,8 @@ Informationen zu einem direkten Upgrade von DirSync zu Azure AD Connect finden S
 
 **F: Und was ist mit dem Azure AD-Connector für FIM/MIM?** Der Azure AD-Connector für FIM/MIM wurde **nicht** als veraltet bekanntgegeben. Dabei handelt es sich lediglich um ein **Feature Freeze**, d.h., es wird keine neue Funktionalität hinzugefügt, und es werden keine Programmfehlerbehebungen bereitgestellt. Kunden, die den Connector verwenden, sollten eine Migration zu Azure AD Connect planen. Es wird dringend empfohlen, keine neuen Bereitstellungen mit diesem Connector durchzuführen. Dieser Connector wird in der Zukunft als veraltet bekanntgegeben.
 
-## Zusätzliche Ressourcen
+## Weitere Ressourcen
 
 * [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0928_2016-->

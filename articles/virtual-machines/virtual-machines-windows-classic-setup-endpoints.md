@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/13/2016"
+	ms.date="09/27/2016"
 	ms.author="cynthn"/>
 
 # Gewusst wie: Einrichten von Endpunkten auf einem klassischen virtuellen Windows-Computer in Azure
@@ -38,4 +38,4 @@ Beim Erstellen eines virtuellen Windows-Computers im klassischen Azure-Portal we
 
 * Wenn Sie einen virtuellen Computer im Resource Manager-Bereitstellungsmodell erstellt haben, können Sie Azure PowerShell verwenden, um [Netzwerksicherheitsgruppen](../virtual-network/virtual-networks-create-nsg-arm-ps.md) zum Steuern des Datenverkehrs an den virtuellen Computer zu erstellen.
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0928_2016-->

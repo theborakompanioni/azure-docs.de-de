@@ -2,7 +2,7 @@
 	pageTitle="Anforderungseinheiten in DocumentDB | Microsoft Azure" 
 	description="Enthält Informationen zu den Grundlagen von Anforderungseinheiten in DocumentDB sowie zur Angabe und zur Schätzung des Bedarfs an Anforderungseinheiten." 
 	services="documentdb" 
-	authors="stephbaron" 
+	authors="mimig1" 
 	manager="jhubbard" 
 	editor="mimig" 
 	documentationCenter=""/>
@@ -14,7 +14,7 @@
 	ms.devlang="na" 
 	ms.topic="article" 
 	ms.date="06/29/2016" 
-	ms.author="stbaro"/>
+	ms.author="mimig"/>
 
 #Anforderungseinheiten in DocumentDB
 Jetzt verfügbar: [Rechner für Anforderungseinheiten](https://www.documentdb.com/capacityplanner) in DocumentDB. Erfahren Sie mehr unter [Schätzen der Durchsatzanforderungen](documentdb-request-units.md#estimating-throughput-needs).
@@ -220,4 +220,4 @@ Im Artikel [Leistungs- und Skalierungstests mit Azure DocumentDB](documentdb-per
 [4]: ./media/documentdb-request-units/RUEstimatorResults.png
 [5]: ./media/documentdb-request-units/RUCalculator2.png
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0928_2016-->

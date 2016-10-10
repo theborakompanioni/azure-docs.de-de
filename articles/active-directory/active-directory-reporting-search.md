@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="dhanyahk"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -20,9 +20,9 @@
 
 *Diese Dokumentation ist Teil des [Handbuchs für Azure Active Directory Reporting](active-directory-reporting-guide.md).*
 
-Azure Active Directory (Azure AD) bietet Verzeichnisadministratoren die Möglichkeit, in mehreren Berichten nach Benutzersicherheit, Aktivität und Überwachungsereignissen zu suchen.
+Azure Active Directory (Azure AD) bietet Verzeichnisadministratoren die Möglichkeit, in mehreren Berichten nach Benutzersicherheit, Aktivität und Überwachungsereignissen zu suchen.
 
-Den Suchbereich finden Sie, wenn Sie im **klassischen Azure-Portal -> Ihr Azure AD Active Directory -> Berichte** navigieren. Der Bereich befindet sich am Anfang der Liste der Berichte.
+Den Suchbereich finden Sie, wenn Sie im **klassischen Azure-Portal -> Ihr Azure AD Active Directory -> Berichte** navigieren. Der Bereich befindet sich am Anfang der Liste der Berichte.
 
 Um für einen bestimmten Benutzer nach Aktivitäts- oder Überwachungsereignissen zu suchen, wählen Sie einen Datumsbereich in den Feldern „von“ und „bis“, geben Sie UPN oder Anzeigenamen des Benutzers ein, und wählen Sie das Häkchen („OK“).
 
@@ -58,4 +58,4 @@ Nutzung von RMS-Geräten | Nein
  - [Azure Active Directory-Berichte](active-directory-view-access-usage-reports.md)
  - [Azure Active Directory-Überwachungsberichtsereignisse](active-directory-reporting-audit-events.md)
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0928_2016-->

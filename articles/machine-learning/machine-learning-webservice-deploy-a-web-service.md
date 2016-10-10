@@ -13,12 +13,12 @@
    	ms.tgt_pltfrm="na"
    	ms.devlang="na"
    	ms.topic="article"
-   	ms.date="07/06/2016"
+   	ms.date="09/22/2016"
    	ms.author="v-donglo"/>
 
 # Bereitstellen eines neuen Webdiensts
 
-Microsoft Azure Machine Learning bietet nun Webdienste, die auf [Azure Resource Manager](../azure-portal/resource-group-overview.md) basieren, neue Abrechnungsplanoptionen zulassen und in mehreren Regionen bereitgestellt werden können.
+Microsoft Azure Machine Learning bietet nun Webdienste, die auf [Azure Resource Manager](../resource-group-overview.md) basieren, neue Abrechnungsplanoptionen zulassen und in mehreren Regionen bereitgestellt werden können.
 
 Es folgt der allgemeine Workflow zum Bereitstellen eines Webdiensts mit Microsoft Azure Machine Learning Web Services:
 
@@ -87,6 +87,13 @@ Auf der Seite „Consuming“ finden Sie Folgendes:
 
 Weitere Informationen zum Nutzen von Webdiensten finden Sie unter [Nutzen eines Azure Machine Learning-Webdiensts, der von einem Machine Learning-Experiment aus bereitgestellt wurde](machine-learning-consume-web-services.md).
 
+## Nächste Schritte
+
+Weitere Informationen zur Verwendung von Webdiensten finden Sie in folgenden Themen:
+
+[Nutzen eines Azure Machine Learning-Webdiensts, der von einem Machine Learning-Experiment aus bereitgestellt wurde](machine-learning-consume-web-services.md)
+
+[Azure Machine Learning-Webdienste: Bereitstellung und Nutzung](machine-learning-deploy-consume-web-service-guide.md)
 
 <!--Image references-->
 [1]: ./media/machine-learning-webservice-deploy-a-web-service/armdeploymentworkflow.png
@@ -94,4 +101,4 @@ Weitere Informationen zum Nutzen von Webdiensten finden Sie unter [Nutzen eines 
 
 <!--links-->
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0928_2016-->

@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/28/2016"
-	ms.author="jahogg"/>
+	ms.date="09/22/2016"
+	ms.author="jahogg;robinsh"/>
 
 # Microsoft Azure-Speicher: Überwachung, Diagnose und Problembehandlung
 
@@ -488,7 +488,7 @@ Microsoft.WindowsAzure.Storage|Information|3|85d077ab-…|Antwort erhalten. Stat
 Microsoft.WindowsAzure.Storage|Warnung|2|85d077ab-…|Während des Vorgangs ausgelöste Ausnahme: Der Remoteserver hat einen Fehler zurückgegeben: (403) Verboten.
 Microsoft.WindowsAzure.Storage|Information|3 |85d077ab-…|Prüfung, ob Vorgang wiederholt werden sollte. Wiederholungsanzahl = 0, HTTP-Statuscode = 403, Ausnahme = Der Remoteserver hat einen Fehler zurückgegeben: (403) Verboten.
 Microsoft.WindowsAzure.Storage|Information|3|85d077ab-…|Der nächste Speicherort wurde auf Primär gesetzt, basierend auf dem Speicherortmodus.
-Microsoft.WindowsAzure.Storage|Fehler|1|85d077ab-…|Wiederholungsrichtlinie hat keinen erneuten Versuch erlaubt. Scheitern mit: Der Remoteserver hat einen Fehler zurückgegeben: (403) Verboten.
+Microsoft.WindowsAzure.Storage|Error|1|85d077ab-…|Wiederholungsrichtlinie hat keinen erneuten Versuch erlaubt. Scheitern mit: Der Remoteserver hat einen Fehler zurückgegeben: (403) Verboten.
 
 In diesem Szenario sollten Sie untersuchen, warum der SAS-Token abläuft, bevor der Client den Token an den Server sendet:
 
@@ -497,7 +497,7 @@ In diesem Szenario sollten Sie untersuchen, warum der SAS-Token abläuft, bevor 
 - Stimmt der Versionsparameter im SAS-Schlüssel (z. B. **sv=2015-04-05**) mit der von Ihnen verwendeten Version der Speicherclientbibliothek überein? Sie sollten immer die neueste Version der [Speicherclientbibliothek](https://www.nuget.org/packages/WindowsAzure.Storage/) verwenden.
 - Wenn Sie Ihren Speicherzugriffsschlüssel neu erstellen, kann dies jedes vorhandenen SAS-Token unwirksam machen. Dies kann problematisch sein, wenn Sie SAS-Token mit einer langen Ablaufzeit zum Cachen von Clientanwendungen generieren.
 
-Wenn Sie die Speicher-Clientbibliothek verwenden, um SAS-Token zu erstellen, ist es einfach, einen gültigen Token anzulegen. Wenn Sie allerdings die Speicher-REST-API verwenden und das SAS-Token manuell anlegen, sollten Sie sorgfältig das Thema [Zugriffsdelegierung mit einer Shared Access Signature](http://msdn.microsoft.com/library/azure/ee395415.aspx) lesen.
+Wenn Sie die Speicher-Clientbibliothek verwenden, um SAS-Token zu erstellen, ist es einfach, einen gültigen Token anzulegen. Wenn Sie allerdings die Speicher-REST-API verwenden und die SAS-Token manuell anlegen, sollten Sie sorgfältig das Thema [Zugriffsdelegierung mit einer Shared Access Signature](http://msdn.microsoft.com/library/azure/ee395415.aspx) lesen.
 
 ### <a name="the-client-is-receiving-404-messages"></a>Der Client empfängt HTTP 404 (Nicht gefunden)-Meldungen
 Wenn die Clientanwendung eine HTTP 404 (Nicht gefunden)-Meldung vom Server empfängt, bedeutet dies, dass das Objekt, das der Client verwenden will (z. B. eine Entität, Tabelle, Blob, Container oder Warteschlange) nicht im Speicherdienst vorhanden ist. Hierfür gibt es eine Reihe möglicher Gründe, beispielsweise:
@@ -930,4 +930,4 @@ Weitere Informationen finden Sie unter [Was ist Application Insights?](../applic
 [9]: ./media/storage-monitoring-diagnosing-troubleshooting/mma-screenshot-1.png
 [10]: ./media/storage-monitoring-diagnosing-troubleshooting/mma-screenshot-2.png
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0928_2016-->

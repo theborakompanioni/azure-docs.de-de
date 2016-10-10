@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="07/15/2016"
+	ms.date="09/26/2016"
 	ms.author="jroth" />
 
 # Automatisiertes Patchen für SQL Server auf virtuellen Azure-Computern (klassisch)
@@ -22,12 +22,9 @@
 - [Ressourcen-Manager](virtual-machines-windows-sql-automated-patching.md)
 - [Klassisch](virtual-machines-windows-classic-sql-automated-patching.md)
 
-Beim automatisierten Patchen wird ein Wartungsfenster für einen virtuellen Azure-Computer mit SQL Server eingerichtet. Automatische Updates können nur während dieses Wartungsfensters installiert werden. Dadurch wird bei SQL Server sichergestellt, dass Systemupdates und alle erforderlichen Neustarts zum bestmöglichen Zeitpunkt für die Datenbank stattfinden. Das automatisierte Patchen basiert auf der [Erweiterung für den SQL Server-IaaS-Agent](virtual-machines-windows-classic-sql-server-agent-extension.md).
+Beim automatisierten Patchen wird ein Wartungsfenster für einen virtuellen Azure-Computer mit SQL Server eingerichtet. Automatische Updates können nur während dieses Wartungsfensters installiert werden. Dadurch wird bei SQL Server sichergestellt, dass Systemupdates und alle erforderlichen Neustarts zum bestmöglichen Zeitpunkt für die Datenbank stattfinden. Das automatisierte Patchen basiert auf der [Erweiterung für den SQL Server-IaaS-Agent](virtual-machines-windows-classic-sql-server-agent-extension.md).
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] 
-
-
-Die Resource Manager-Version dieses Artikels finden Sie unter [Automatisiertes Patchen für SQL Server auf virtuellen Azure-Computern (Resource Manager)](virtual-machines-windows-sql-automated-patching.md).
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] Die Resource Manager-Version dieses Artikels finden Sie unter [Automatisiertes Patchen für SQL Server auf virtuellen Azure-Computern (Resource Manager)](virtual-machines-windows-sql-automated-patching.md).
 
 ## Voraussetzungen
 
@@ -46,13 +43,15 @@ Beachten Sie bei der Verwendung des automatisierten Patchens die folgenden Vorau
 
 **Azure PowerShell:**
 
-- [Installieren Sie die aktuellen Azure PowerShell-Befehle](../powershell-install-configure.md), wenn Sie das automatisierte Patchen mit PowerShell konfigurieren möchten.
+- [Installieren der neuesten Azure PowerShell-Befehle](../powershell-install-configure.md)
 
->[AZURE.NOTE] Das automatisierte Patchen basiert auf der Erweiterung für den SQL Server-IaaS-Agent. Aktuelle Katalogimages für virtuelle SQL-Computer fügen diese Erweiterung standardmäßig hinzu. Weitere Informationen finden Sie unter [SQL Server IaaS Agent Extension](virtual-machines-windows-classic-sql-server-agent-extension.md) (Erweiterung für den SQL Server-IaaS-Agent).
+**Erweiterung für SQL Server-IaaS:**
+
+- [Installieren der Erweiterung für SQL Server-IaaS](virtual-machines-windows-classic-sql-server-agent-extension.md)
 
 ## Einstellungen
 
-In der folgenden Tabelle werden die Optionen beschrieben, die für das automatisierte Patchen konfiguriert werden können. Die tatsächlichen Konfigurationsschritte variieren abhängig davon, ob Sie das Azure-Portal oder Azure Windows PowerShell-Befehle verwenden.
+In der folgenden Tabelle werden die Optionen beschrieben, die für das automatisierte Patchen konfiguriert werden können. Bei klassischen virtuellen Computern muss PowerShell zum Konfigurieren dieser Einstellungen verwendet werden.
 
 |Einstellung|Mögliche Werte|Beschreibung|
 |---|---|---|
@@ -60,28 +59,9 @@ In der folgenden Tabelle werden die Optionen beschrieben, die für das automatis
 |**Wartungszeitplan**|Täglich, Montag, Dienstag, Mittwoch, Donnerstag, Freitag, Samstag, Sonntag|Der Zeitplan für das Herunterladen und Installieren von Windows-, SQL Server- und Microsoft-Updates für den virtuellen Computer|
 |**Wartung beginnt um**|0-24|Die lokale Startzeit zum Aktualisieren des virtuellen Computers|
 |**Dauer des Wartungsfensters**|30-180|Der Zeitraum in Minuten, in dem das Herunterladen und Installieren von Updates abgeschlossen werden darf|
-|**Patch Category** (Patchkategorie)|Wichtig|Die Kategorie der Updates, die heruntergeladen und installiert werden.|
-
-## Konfiguration im Portal
-Mit dem Azure-Portal können Sie das automatisierte Patchen während der Bereitstellung oder für vorhandene virtuelle Computer konfigurieren.
-
-### Neue virtuelle Computer
-Verwenden Sie das Azure-Portal zum Konfigurieren des automatisierten Patchens, wenn Sie einen neuen virtuellen Computer mit SQL Server im klassischen Bereitstellungsmodell erstellen.
-
-Der folgende Azure-Portal-Screenshot zeigt die oben beschriebenen Optionen unter **OPTIONALE KONFIGURATION** | **AUTOMATISIERTES SQL-PATCHEN**.
-
-![Automatisches Patchen für SQL im Azure-Portal](./media/virtual-machines-windows-classic-sql-automated-patching/IC778484.jpg)
-
-### Vorhandene virtuelle Computer
-Wählen Sie für vorhandene virtuelle Computer mit SQL Server 2012 oder 2014 die Einstellungen für das **automatische Patchen** im Abschnitt **Konfiguration** der Eigenschaften des virtuellen Computers aus. Im Fenster zum **automatisierten Patchen** können Sie das Feature aktivieren, den Wartungszeitplan und den Beginn festlegen und die Dauer des Wartungsfensters auswählen. Diese Einstellungen sind auf dem folgenden Bildschirmfoto zu sehen:
-
-![Konfigurieren des automatischen Patchens im Azure-Portal](./media/virtual-machines-windows-classic-sql-automated-patching/IC792132.jpg)
-
->[AZURE.NOTE] Wenn Sie das automatische Patchen zum ersten Mal aktivieren, konfiguriert Azure den SQL Server-IaaS-Agent im Hintergrund. Im Azure-Portal wird währenddessen u.U. nicht angezeigt, dass das automatisierte Patchen konfiguriert wird. Warten Sie einige Minuten, bis der Agent installiert und konfiguriert wurde. Danach werden die neuen Einstellungen im Azure-Portal angezeigt.
+|**Patch Category (Patchkategorie)**|Wichtig|Die Kategorie der Updates, die heruntergeladen und installiert werden.|
 
 ## Konfiguration mit PowerShell
-
-Sie können das automatisierte Patchen auch mithilfe von PowerShell konfigurieren.
 
 Im folgenden Beispiel wird PowerShell zum Konfigurieren des automatisierten Patchens auf einem vorhandenen virtuellen SQL Server-Computer verwendet. Der Befehl **New-AzureVMSqlServerAutoPatchingConfig** konfiguriert ein neues Wartungsfenster für automatische Updates.
 
@@ -95,7 +75,7 @@ In der folgenden Tabelle wird basierend auf diesem Beispiel die tatsächliche Au
 |---|---|
 |**DayOfWeek**|Patches werden jeden Donnerstag installiert.|
 |**MaintenanceWindowStartingHour**|Updates werden um 11:00 Uhr gestartet.|
-|**MaintenanceWindowsDuration**|Patches müssen innerhalb von 120 Minuten installiert werden. Auf der Grundlage der Startzeit müssen sie um 13:00 Uhr abgeschlossen sein.|
+|**MaintenanceWindowsDuration**|Patches müssen innerhalb von 120 Minuten installiert werden. Auf der Grundlage der Startzeit müssen sie um 13:00 Uhr abgeschlossen sein.|
 |**PatchCategory**|Die einzig mögliche Einstellung für diesen Parameter lautet „Wichtig“.|
 
 Die Installation und Konfiguration des SQL Server-IaaS-Agents kann mehrere Minuten in Anspruch nehmen.
@@ -108,4 +88,4 @@ Informationen zu anderen verfügbaren Automatisierungsaufgaben finden Sie unter 
 
 Ausführlichere Informationen zur Ausführung von SQL Server auf virtuellen Azure-Computern finden Sie unter [Übersicht zu SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-sql-server-iaas-overview.md).
 
-<!----HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0928_2016-->

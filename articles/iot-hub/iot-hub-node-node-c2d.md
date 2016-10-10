@@ -13,7 +13,7 @@
      ms.topic="article"
      ms.tgt_pltfrm="na"
      ms.workload="na"
-     ms.date="07/04/2016"
+     ms.date="09/23/2016"
      ms.author="dobett"/>
 
 # Tutorial: Senden von C2D-Nachrichten mithilfe von IoT Hub und „Node.js“
@@ -41,7 +41,7 @@ Am Ende dieses Tutorials führen Sie zwei Node.js-Konsolenanwendungen aus:
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
-+ Node.js Version 0.12.x oder höher. <br/> Unter [Prepare your development environment][lnk-dev-setup] \(Vorbereiten Ihrer Entwicklungsumgebung) wird beschrieben, wie Sie Node.js für dieses Tutorial unter Windows oder Linux installieren.
++ Node.js Version 0.12.x oder höher. <br/> Unter [Prepare your development environment][lnk-dev-setup] (Vorbereiten Ihrer Entwicklungsumgebung) wird beschrieben, wie Sie Node.js für dieses Tutorial unter Windows oder Linux installieren.
 
 + Ein aktives Azure-Konto. (Falls Sie nicht über ein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion][lnk-free-trial].)
 
@@ -79,9 +79,9 @@ In diesem Abschnitt ändern Sie die simulierte Geräteanwendung, die Sie in [Ers
 
 ## Senden einer C2D-Nachricht
 
-In diesem Abschnitt erstellen Sie eine Node.js-Konsolen-App, die C2D-Nachrichten an die simulierte Geräte-App sendet. Dazu benötigen Sie die Geräte-ID des Geräts, das Sie im Tutorial [Erste Schritte mit IoT Hub] hinzugefügt haben, sowie die Verbindungszeichenfolge für Ihre IoT Hub-Instanz, die Sie im [Azure-Portal] finden können.
+In diesem Abschnitt erstellen Sie eine Node.js-Konsolen-App, die C2D-Nachrichten an die simulierte Geräte-App sendet. Sie benötigen die Geräte-ID des Geräts, das Sie im Tutorial [Erste Schritte mit IoT Hub] hinzugefügt haben. Sie benötigen auch die Verbindungszeichenfolge für den IoT Hub, die Sie im [Azure-Portal] finden.
 
-1. Erstellen Sie einen neuen leeren Ordner mit dem Namen **sendcloudtodevicemessage**. Erstellen Sie im Ordner **sendcloudtodevicemessage** die neue Datei „package.json“, indem Sie an der Eingabeaufforderung den unten angegebenen Befehl verwenden. Übernehmen Sie alle Standardeinstellungen:
+1. Erstellen Sie einen neuen leeren Ordner mit dem Namen **sendcloudtodevicemessage**. Erstellen Sie im Ordner **sendcloudtodevicemessage** die Datei „package.json“, indem Sie an der Eingabeaufforderung den unten angegebenen Befehl eingeben. Übernehmen Sie alle Standardeinstellungen:
 
     ```
     npm init
@@ -104,7 +104,7 @@ In diesem Abschnitt erstellen Sie eine Node.js-Konsolen-App, die C2D-Nachrichten
     var Message = require('azure-iot-common').Message;
     ```
 
-5. Fügen Sie **SendCloudToDeviceMessage.js** den folgenden Code hinzu, und ersetzen Sie den Verbindungszeichenfolgen-Platzhalterwert durch die Verbindungszeichenfolge für den IoT Hub, den Sie im Tutorial [Erste Schritte mit IoT Hub] erstellt haben, und den Platzhalter für das Zielgerät durch die Geräte-ID des Geräts, das Sie im Tutorial [Erste Schritte mit IoT Hub] hinzugefügt haben:
+5. Fügen Sie der Datei **SendCloudToDeviceMessage.js** den folgenden Code hinzu. Ersetzen Sie den Platzhalterwert für die Verbindungszeichenfolge durch die Verbindungszeichenfolge für den IoT Hub, den Sie im Tutorial [Erste Schritte mit IoT Hub] erstellt haben. Ersetzen Sie den Platzhalter für das Zielgerät durch die Geräte-ID des Geräts, das Sie im Tutorial [Erste Schritte mit IoT Hub] hinzugefügt haben:
 
     ```
     var connectionString = '{iot hub connection string}';
@@ -201,4 +201,4 @@ Weitere Informationen zum Entwickeln von Lösungen mit IoT Hub finden Sie im [Io
 [Azure-Portal]: https://portal.azure.com
 [Azure IoT Suite]: https://azure.microsoft.com/documentation/suites/iot-suite/
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0928_2016-->

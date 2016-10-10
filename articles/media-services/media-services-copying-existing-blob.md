@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Kopieren eines vorhandenen Blobs in ein Media Services-Medienobjekt" 
+	pageTitle="Kopieren eines vorhandenen Blobs in ein Media Services-Medienobjekt | Microsoft Azure" 
 	description="In diesem Thema wird erläutert, wie ein vorhandener Blob in ein Media Services-Medienobjekt kopiert wird." 
 	services="media-services" 
 	documentationCenter="" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="ne" 
 	ms.topic="article" 
-	ms.date="06/22/2016" 
+	ms.date="09/26/2016" 
 	ms.author="juliako"/>
 
 #Kopieren eines vorhandenen Blobs in ein Media Services-Medienobjekt
@@ -322,4 +322,4 @@ Mit dem Codebeispiel unten werden die folgenden Aufgaben ausgeführt:
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0928_2016-->

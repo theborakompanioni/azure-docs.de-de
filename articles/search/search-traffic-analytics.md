@@ -14,7 +14,7 @@
 	ms.workload="na" 
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
-	ms.date="07/19/2016" 
+	ms.date="09/23/2016" 
 	ms.author="betorres"
 />
 
@@ -29,22 +29,22 @@ Sie benötigen ein Speicherkonto, das sich in der gleichen Region und dem gleich
 
 > [AZURE.IMPORTANT] Für dieses Speicherkonto fallen Standardgebühren an.
 
-Nach der Aktivierung beginnt innerhalb von fünf bis zehn Minuten der Datenfluss in Ihr Speicherkonto in die folgenden zwei BLOB-Container:
+Sie können die Datenverkehrsanalyse im Portal oder über PowerShell aktivieren. Nach der Aktivierung beginnt innerhalb von fünf bis zehn Minuten der Datenfluss in Ihr Speicherkonto in die folgenden zwei Blob-Container:
 
     insights-logs-operationlogs: search traffic logs
     insights-metrics-pt1m: aggregated metrics
 
 
-### 1\. Verwenden des Portals
+### A: Verwenden des Portals
 Öffnen Sie Ihren Azure Search-Dienst im [Azure-Portal](http://portal.azure.com). Unter „Einstellungen“ finden Sie die Option „Datenverkehrsanalyse durchsuchen“.
 
 ![][1]
 
-Wählen Sie diese Option aus, und ein neues Blatt wird geöffnet. Ändern Sie den Status in **Ein**, wählen Sie das Azure Storage-Konto, in das die Daten kopiert werden, und wählen Sie die Daten aus, die Sie kopieren möchten: Protokolle, Metriken oder beides. Sie sollten Protokolle und Metriken kopieren. Die Aufbewahrungsrichtlinie für Ihre Daten kann auf einen Wert zwischen 1 und 356 festgelegt werden. Wenn Sie keine Aufbewahrungsrichtlinie anwenden und die Daten unbegrenzt speichern möchten, legen Sie für die Aufbewahrungsdauer (in Tagen) „0“ fest.
+Ändern Sie den Status in **Ein**, wählen Sie das zu verwendende Azure Storage-Konto, und wählen Sie die Daten aus, die Sie kopieren möchten: Protokolle, Metriken oder beides. Sie sollten Protokolle und Metriken kopieren. Die Aufbewahrungsrichtlinie für Ihre Daten kann auf einen Wert zwischen 1 und 365 Tagen festgelegt werden. Wenn die Daten nicht unbegrenzt aufbewahrt werden sollen, legen Sie die Aufbewahrung (Tage) auf 0 fest.
 
 ![][2]
 
-### 2\. Verwenden von PowerShell
+### B. Verwenden von PowerShell
 
 Stellen Sie zunächst sicher, dass Sie die aktuellen [Azure PowerShell-Cmdlets](https://github.com/Azure/azure-powershell/releases) installiert haben.
 
@@ -67,32 +67,32 @@ Es gibt einen Blob pro Stunde pro Container.
   
 Beispiel-Pfad: `resourceId=/subscriptions/<subscriptionID>/resourcegroups/<resourceGroupName>/providers/microsoft.search/searchservices/<searchServiceName>/y=2015/m=12/d=25/h=01/m=00/name=PT1H.json`
 
-### Logs
+### Protokolle
 
-Die Protokollblobs enthalten die Datenverkehrprotokolle des Suchdiensts. Jedes Blob hat ein Stammobjekt namens **records**, das ein Array von Protokollobjekten enthält. Jedes Blob enthält Einträge zu allen Vorgängen, die während derselben Stunde erfolgt sind.
+Die Protokollblobs enthalten die Datenverkehrprotokolle des Suchdiensts. Jedes Blob hat ein Stammobjekt namens **records**, das ein Array mit Protokollobjekten enthält. Jedes Blob enthält Einträge zu allen Vorgängen, die während derselben Stunde erfolgt sind.
 
 ####Protokollschema
 
 Name |Typ |Beispiel |Hinweise 
 ------|-----|----|-----
 in |datetime |„2015-12-07T00:00:43.6872559Z“ |Zeitstempel des Vorgangs
-Ressourcen-ID |Zeichenfolge |„/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/> MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE“ |Ihre Ressourcen-ID
-operationName |Zeichenfolge |„Query.Search“ |Der Name des Vorgangs
-operationVersion |Zeichenfolge |„2015-02-28“|Die verwendete API-Version
-category |Zeichenfolge |„OperationLogs“ |Konstante 
-resultType |Zeichenfolge |„Success“ |Mögliche Werte: „Success“ oder „Failure“ 
+resourceId |string |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/> MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE" |Ihre Ressourcen-ID
+operationName |string |„Query.Search“ |Der Name des Vorgangs
+operationVersion |string |„2015-02-28“|Die verwendete API-Version
+category |string |„OperationLogs“ |Konstante 
+resultType |string |„Success“ |Mögliche Werte: „Success“ oder „Failure“ 
 resultSignature |int |200 |HTTP-Ergebniscode 
 durationMS |int |50 |Dauer des Vorgangs in Millisekunden 
-Eigenschaften |Objekt |siehe unten |Objekt, das vorgangsspezifische Daten enthält
+Eigenschaften |objekt |Siehe hierzu die folgende Tabelle. |Objekt, das vorgangsspezifische Daten enthält
 
 ####Eigenschaftsschema
 
 |Name |Typ |Beispiel |Hinweise|
 |------|-----|----|-----|
-|Beschreibung|Zeichenfolge |„GET-/indexes('content')/docs“ |Endpunkt des Vorgangs |
-|Abfragen |Zeichenfolge |„?search=AzureSearch&$count=true&api-version=2015-02-28“ |Die Abfrageparameter |
+|Beschreibung|string |„GET-/indexes('content')/docs“ |Endpunkt des Vorgangs |
+|Abfrage |string |„?search=AzureSearch&$count=true&api-version=2015-02-28“ |Die Abfrageparameter |
 |Dokumente |int |42 |Anzahl von verarbeiteten Dokumenten|
-|IndexName |Zeichenfolge |„testindex“|Name des Indexes, der dem Vorgang zugeordnet ist |
+|IndexName |string |„testindex“|Name des Indexes, der dem Vorgang zugeordnet ist |
 
 ### Metriken
 
@@ -110,19 +110,19 @@ Verfügbare Metriken:
 
 |Name |Typ |Beispiel |Hinweise|
 |------|-----|----|-----|
-|Ressourcen-ID |Zeichenfolge |„/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/>MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE“ |Ihre Ressourcen-ID |
-|metricName |Zeichenfolge |„Latency“ |Der Name der Metrik |
+|resourceId |string |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/>MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE" |Ihre Ressourcen-ID |
+|metricName |string |„Latency“ |Der Name der Metrik |
 |in|datetime |„2015-12-07T00:00:43.6872559Z“ |Der Zeitstempel des Vorgangs |
 |average |int |64|Der Durchschnittswert der unformatierten Beispiele im Metrikzeitintervall |
 |minimum |int |37 |Der Mindestwert der unformatierten Beispiele im Metrikzeitintervall |
 |maximum |int |78 |Der Höchstwert der unformatierten Beispiele im Metrikzeitintervall |
 |total |int |258 |Der Gesamtwert der unformatierten Beispiele im Metrikzeitintervall |
 |count |int |4 |Die Anzahl der unformatierten Beispiele, die zum Generieren der Metrik verwendet werden |
-|timegrain |Zeichenfolge |„PT1M“ |Das Aggregationsintervall der Metrik in ISO 8601|
+|timegrain |string |„PT1M“ |Das Aggregationsintervall der Metrik in ISO 8601|
 
-Alle Metriken werden in Intervallen von einer Minute gemeldet. Dies bedeutet, dass jede der Metriken den Mindest-, Höchst- und Durchschnittswert pro Minute verfügbar macht.
+Alle Metriken werden in Intervallen von einer Minute gemeldet. Jede Metrik macht Mindest-, Höchst- und Durchschnittswerte pro Minute verfügbar.
 
-Bei der Metrik „SearchQueriesPerSecond“ ist der Mindestwert der niedrigste Wert für Suchabfragen pro Sekunde, der während dieser Minute registriert wurde. Dasselbe gilt für den Höchstwert. Der Durchschnittswert ist das Aggregat der gesamten Minute. Betrachten Sie dieses Szenario: Innerhalb einer Minute kann es für 1 Sekunde eine sehr hohe Last geben (dies ist der Höchstwert für „SearchQueriesPerSecond“), gefolgt von 58 Sekunden mit mittlerer Last sowie einer Sekunde mit nur 1 Abfrage, was der Mindestwert ist.
+Bei der Metrik „SearchQueriesPerSecond“ ist der Mindestwert der niedrigste Wert für Suchabfragen pro Sekunde, der während dieser Minute registriert wurde. Dasselbe gilt für den Höchstwert. Der Durchschnittswert ist das Aggregat der gesamten Minute. Beispiel: Innerhalb einer Minute kann es für eine Sekunde eine sehr hohe Last geben (dies ist der Höchstwert für „SearchQueriesPerSecond“), gefolgt von 58 Sekunden mit mittlerer Last sowie einer Sekunde mit nur einer Abfrage, was der Mindestwert ist.
 
 Für „ThrottledSearchQueriesPercentage“ entsprechen der Mindest-, Höchst-, Durchschnitts- und Gesamtwert demselben Wert, nämlich dem Prozentsatz von Suchabfragen, die gedrosselt wurden, basierend auf der Gesamtanzahl von Suchabfragen während einer Minute.
 
@@ -140,7 +140,7 @@ Zunächst sollten Sie Ihre Daten mit [Power BI](https://powerbi.microsoft.com) u
 
 #### Power BI Desktop
 
-[Power BI Desktop](https://powerbi.microsoft.com/de-DE/desktop): Untersuchen Sie Ihre Daten, und erstellen Sie Ihre eigenen Visualisierungen für Ihre Daten. Unten finden Sie eine Abfrage für den Einstieg.
+[Power BI Desktop](https://powerbi.microsoft.com/de-DE/desktop): Untersuchen Sie Ihre Daten, und erstellen Sie Ihre eigenen Visualisierungen für Ihre Daten. Im folgenden Abschnitt finden Sie eine Abfrage für den Einstieg:
 
 1. Öffnen eines neuen Power BI Desktop-Berichts
 2. Wählen Sie „Daten abrufen -> Mehr...“
@@ -152,7 +152,7 @@ Zunächst sollten Sie Ihre Daten mit [Power BI](https://powerbi.microsoft.com) u
 	![][6]
 
 4. Geben Sie Namen und Kontoschlüssel des Speicherkontos ein.
-5. Wählen Sie „insight-logs-operationlogs“ und „insights-metrics-pt1mm“ und klicken Sie dann auf „Bearbeiten“.
+5. Wählen Sie „insight-logs-operationlogs“ und „insights-metrics-pt1m“, und klicken Sie dann auf „Bearbeiten“.
 6. Der Abfrage-Editor wird geöffnet. Stellen Sie sicher, dass „insight-logs-operationlogs“ auf der linken Seite ausgewählt ist. Öffnen Sie jetzt den erweiterten Editor durch Auswahl von „Ansicht -> Erweiterter Editor“.
 
 	![][7]
@@ -228,4 +228,4 @@ Erfahren Sie hier mehr über das Erstellen erstaunlicher Berichte. Weitere Infor
 [6]: ./media/search-traffic-analytics/BlobStorage.png
 [7]: ./media/search-traffic-analytics/QueryEditor.png
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0928_2016-->

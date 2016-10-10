@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows"
 	ms.workload="big-compute"
-	ms.date="06/29/2016"
+	ms.date="09/28/2016"
 	ms.author="marsma" />
 
 # Taskabhängigkeiten in Azure Batch
@@ -24,13 +24,13 @@ Das Feature für Taskabhängigkeiten in Azure Batch eignet sich hervorragend fü
 - Aufträge, deren Datenverarbeitungstasks als gerichteter azyklischer Graph (DAG) ausgedrückt werden können.
 - Alle anderen Aufträge, in denen nachgelagerte Tasks von der Ausgabe vorgelagerter Tasks abhängen.
 
-Mit diesem Feature können Sie Tasks erstellen, die erst nach dem erfolgreichen Abschluss von mindestens einem anderen Task auf Computeknoten ausgeführt werden. Beispielsweise können Sie einen Auftrag erstellen, der jedes Einzelbild eines 3D-Films mit separaten, parallelen Tasks rendert. Der letzte Task – der „Zusammenführungstask“ – fügt die gerenderten Einzelbilder erst als vollständigen Film zusammen, nachdem alle Einzelbilder erfolgreich gerendert worden sind.
+Mit Taskabhängigkeiten in Batch können Sie Tasks erstellen, deren Ausführung auf Computeknoten erst nach dem erfolgreichen Abschluss von mindestens einem anderen Task geplant wird. Beispielsweise können Sie einen Auftrag erstellen, der jedes Einzelbild eines 3D-Films mit separaten, parallelen Tasks rendert. Der letzte Task – der „Zusammenführungstask“ – fügt die gerenderten Einzelbilder erst dann zu einem vollständigen Film zusammen, wenn alle Einzelbilder erfolgreich gerendert wurden.
 
 Sie können Tasks erstellen, die in einer 1:1- oder 1:n-Beziehung von anderen Tasks abhängen. Sie können sogar eine Bereichsabhängigkeit erstellen, bei der ein Task vom erfolgreichen Abschluss einer Gruppe von Tasks innerhalb eines bestimmten Task-ID-Bereichs abhängig ist. Sie können diese drei grundlegenden Szenarien auch kombinieren, um m:n-Beziehungen zu erstellen.
 
 ## Taskabhängigkeiten bei Batch .NET
 
-In diesem Artikel wird beschrieben, wie Sie Taskabhängigkeiten mit der [.NET-Bibliothek für Batch][net_msdn] konfigurieren. Zuerst zeigen wir Ihnen, wie Sie die [Abhängigkeit von Tasks für Aufträge aktivieren](#enable-task-dependencies), und dann wird kurz beschrieben, wie Sie [einen Task mit Abhängigkeiten konfigurieren](#create-dependent-tasks). Zuletzt geht es um die von Batch unterstützten [Abhängigkeitsszenarien](#dependency-scenarios).
+In diesem Artikel wird beschrieben, wie Sie Taskabhängigkeiten mit der [.NET-Bibliothek für Batch][net_msdn] konfigurieren. Zuerst zeigen wir Ihnen, wie Sie die [Taskabhängigkeit in Ihren Aufträgen aktivieren](#enable-task-dependencies), danach erläutern wir, wie Sie [einen Task mit Abhängigkeiten konfigurieren](#create-dependent-tasks). Zuletzt geht es um die von Batch unterstützten [Abhängigkeitsszenarien](#dependency-scenarios).
 
 ## Aktivieren von Taskabhängigkeiten
 
@@ -133,7 +133,7 @@ new CloudTask("4", "cmd.exe /c echo 4")
 
 ## Codebeispiel
 
-Das Beispielprojekt [TaskDependencies][github_taskdependencies] ist eines der [Azure Batch-Codebeispiele][github_samples] auf GitHub. Mit dieser Visual Studio 2015-Projektmappe wird veranschaulicht, wie Sie Abhängigkeiten von Tasks für einen Auftrag aktivieren, Tasks erstellen, die von anderen Tasks abhängen, und diese Tasks in einem Pool mit Computeknoten ausführen.
+Das Beispielprojekt [TaskDependencies][github_taskdependencies] ist eines der [Azure Batch-Codebeispiele][github_samples] auf GitHub. Mit dieser Visual Studio 2015-Projektmappe wird veranschaulicht, wie Sie die Taskabhängigkeit für einen Auftrag aktivieren, Tasks erstellen, die von anderen Tasks abhängen, und diese Tasks in einem Pool aus Computeknoten ausführen.
 
 ## Nächste Schritte
 
@@ -143,7 +143,7 @@ Das Batch-Feature [Anwendungspakete](batch-application-packages.md) bietet eine 
 
 ### Installieren von Anwendungen und Bereitstellen von Daten (Staging)
 
-Der Beitrag [Installing applications and staging data on Batch compute nodes][forum_post] \(Installieren von Anwendungen und Bereitstellen von Daten auf Batch-Computeknoten) im Azure Batch-Forum bietet einen Überblick über die verschiedenen Methoden, mit denen Knoten für die Ausführung von Tasks vorbereitet werden können. Der Beitrag wurde von einem Mitglied des Azure Batch-Teams verfasst und enthält alle relevanten Informationen, um sich mit den verschiedenen Vorgehensweisen vertraut zu machen, mit denen sich Dateien (einschließlich Anwendungen und Taskeingabedaten) auf Computeknoten bereitstellen lassen. Darüber hinaus zeigt der Beitrag wichtige Aspekte auf, die bei den einzelnen Methoden berücksichtigt werden sollten.
+Der Beitrag [Installing applications and staging data on Batch compute nodes][forum_post] (Installieren von Anwendungen und Bereitstellen von Daten auf Batch-Computeknoten) im Azure Batch-Forum bietet einen Überblick über die verschiedenen Methoden, mit denen Knoten für die Ausführung von Tasks vorbereitet werden können. Der Beitrag wurde von einem Mitglied des Azure Batch-Teams verfasst und enthält alle relevanten Informationen, um sich mit den verschiedenen Vorgehensweisen vertraut zu machen, mit denen sich Dateien (einschließlich Anwendungen und Taskeingabedaten) auf Computeknoten bereitstellen lassen.
 
 [forum_post]: https://social.msdn.microsoft.com/Forums/de-DE/87b19671-1bdf-427a-972c-2af7e5ba82d9/installing-applications-and-staging-data-on-batch-compute-nodes?forum=azurebatch
 [github_taskdependencies]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/TaskDependencies
@@ -166,4 +166,4 @@ Der Beitrag [Installing applications and staging data on Batch compute nodes][fo
 [2]: ./media/batch-task-dependency/02_one_to_many.png "Diagramm: 1:n-Abhängigkeit"
 [3]: ./media/batch-task-dependency/03_task_id_range.png "Diagramm: Task-ID-Bereich-Abhängigkeit"
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0928_2016-->

@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="billmath"
-	manager="stevenpo"
+	manager="femila"
 	editor="curtand"/>
 
 <tags
@@ -153,4 +153,4 @@ Führen Sie die folgenden Schritte aus, um einen benutzerdefinierten Anspruch zu
 ![Anspruch ersetzen](./media/active-directory-multiple-domains/sub2.png)
 5.	Klicken Sie auf "OK". Klicken Sie auf „Übernehmen“. Klicken Sie auf "OK". Schließen Sie die AD FS-Verwaltung.
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0928_2016-->

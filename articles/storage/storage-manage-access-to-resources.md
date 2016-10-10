@@ -1,20 +1,20 @@
-<properties 
-	pageTitle="Verwalten des anonymen Lesezugriffs auf Container und Blobs | Microsoft Azure" 
-	description="Erfahren Sie, wie Sie Container und Blobs für den anonymen Zugriff verfügbar machen und darauf programmgesteuert zugreifen." 
-	services="storage" 
-	documentationCenter="" 
-	authors="tamram" 
-	manager="carmonm" 
+<properties
+	pageTitle="Verwalten des anonymen Lesezugriffs auf Container und Blobs | Microsoft Azure"
+	description="Erfahren Sie, wie Sie Container und Blobs für den anonymen Zugriff verfügbar machen und darauf programmgesteuert zugreifen."
+	services="storage"
+	documentationCenter=""
+	authors="tamram"
+	manager="carmonm"
 	editor="tysonn"/>
 
-<tags 
-	ms.service="storage" 
-	ms.workload="storage" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="09/07/2016"
-	ms.author="tamram"/>
+<tags
+	ms.service="storage"
+	ms.workload="storage"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/27/2016"
+	ms.author="michaelhauss;jwillis;tamram"/>
 
 # Verwalten des anonymen Lesezugriffs auf Container und Blobs
 
@@ -47,11 +47,11 @@ Sie können Containerberechtigungen auf folgende Weise festlegen:
 Befolgen Sie zum Festlegen von Containerberechtigungen im [Azure-Portal](https://portal.azure.com) diese Anweisungen:
 
 1. Navigieren Sie zum Dashboard Ihres Speicherkontos.
-2. Wählen Sie den Containernamen in der Liste aus. Beachten Sie, dass Sie rechts neben der Spalte „Name“ klicken müssen, um den Containernamen auszuwählen. Durch Klicken auf den Namen werden die im Container enthaltenen Blobs angezeigt.
-3. Klicken Sie auf der Symbolleiste auf **Bearbeiten**.
-4. Wählen Sie im Dialogfeld **Metadaten bearbeiten** im Feld **Zugriff** die gewünschten Berechtigungsstufe aus (siehe das nachstehende Bildschirmfoto).
+2. Wählen Sie den Containernamen in der Liste aus. Durch Klicken auf den Namen werden die Blobs im ausgewählten Container verfügbar gemacht.
+3. Wählen Sie auf der Symbolleiste die Option **Zugriffsrichtlinie**.
+4. Wählen Sie im Feld **Zugriffstyp** die gewünschte Berechtigungsstufe aus (siehe folgender Screenshot).
 
-	![Dialogfeld „Containermetadaten bearbeiten“](./media/storage-manage-access-to-resources/storage-manage-access-to-resources-1.png)
+	![Dialogfeld „Containermetadaten bearbeiten“](./media/storage-manage-access-to-resources/storage-manage-access-to-resources-0.png)
 
 ### Programmgesteuertes Festlegen von Containerberechtigungen mithilfe von .NET
 
@@ -155,4 +155,4 @@ Die folgende Tabelle zeigt, welche Vorgänge von anonymen Benutzern aufgerufen w
 - [Verwenden von Shared Access Signatures (SAS)](storage-dotnet-shared-access-signature-part-1.md)
 - [Delegieren des Zugriffs mit einer Shared Access Signature](https://msdn.microsoft.com/library/azure/ee395415.aspx)
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0928_2016-->

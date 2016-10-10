@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="asmalser-msft"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -22,8 +22,7 @@
 
 Über Azure Active Directory können Benutzer und Gruppen automatisch für alle Anwendungen oder Identitätsspeicher bereitgestellt werden, denen ein Webdienst mit einer Schnittstelle vorgelagert ist, wie sie in der [SCIM 2.0-Protokollspezifikation](https://tools.ietf.org/html/draft-ietf-scim-api-19) definiert ist. Azure Active Directory kann Anforderungen senden, um Benutzer und Gruppen für diesen Webdienst zu erstellen, zu ändern und zu löschen, und dann können diese Anforderungen in Vorgänge im Zielidentitätsspeicher übersetzt werden.
 
-![][1] 
-*Abbildung: Bereitstellung aus Azure Active Directory in einem Identitätsspeicher per Webdienst*
+![][1] *Abbildung: Bereitstellung aus Azure Active Directory in einem Identitätsspeicher per Webdienst*
 
 Diese Funktion kann zusammen mit der Funktion „[Bring your own app](http://blogs.technet.com/b/ad/archive/2015/06/17/bring-your-own-app-with-azure-ad-self-service-saml-configuration-gt-now-in-preview.aspx)“ in Azure AD verwendet werden, um das einmalige Anmelden und die automatische Benutzerbereitstellung für Anwendungen zu ermöglichen, die einen SCIM-Webdienst bereitstellen oder denen ein solcher vorgelagert ist.
 
@@ -37,7 +36,7 @@ In Azure Active Directory gibt es zwei Anwendungsfälle für SCIM:
 
 Azure Active Directory kann so konfiguriert werden, dass zugewiesene Benutzer und Gruppen automatisch für Anwendungen bereitgestellt werden, die einen [SCIM 2.0-Webdienst (System for Cross-domain Identity Management)](https://tools.ietf.org/html/draft-ietf-scim-api-19) implementieren und OAuth-Bearertoken für die Authentifizierung akzeptieren. Im Rahmen der SCIM 2.0-Spezifikation müssen Anwendungen die folgenden Anforderungen erfüllen:
 
-* Unterstützt das Erstellen von Benutzern und/oder Gruppen gemäß Abschnitt 3.3 des SCIM-Protokolls  
+* Unterstützt das Erstellen von Benutzern und/oder Gruppen gemäß Abschnitt 3.3 des SCIM-Protokolls
 
 * Unterstützt das Ändern von Benutzern und/oder Gruppen mit Patch-Anforderungen gemäß Abschnitt 3.5.2 des SCIM-Protokolls
 
@@ -68,11 +67,11 @@ Anwendungen, die das SCIM-Profil wie oben beschrieben erfüllen, können über d
 4.	Klicken Sie im angezeigten Fenster auf die zweite Schaltfläche **Kontobereitstellung konfigurieren**.
 5.	Geben Sie in das Feld **URL des Bereitstellungsendpunkts** die URL des SCIM-Endpunkts der Anwendung ein.
 6.	Wenn der SCIM-Endpunkt ein OAuth-Bearertoken benötigt, das von einem anderen Aussteller als Azure AD stammt, kopieren Sie das erforderliche OAuth-Bearertoken in das Feld **Authentifizierungstoken (optional)**. Wird dieses Feld leer gelassen, dann fügt Azure AD in jede Anforderung ein von Azure AD ausgestelltes OAuth-Bearertoken ein. Apps, die Azure AD als Identitätsanbieter verwenden, können dieses von Azure AD ausgestellte Token überprüfen.
-7.	Klicken Sie auf **Weiter** und auf die Schaltfläche **Test starten**, damit Azure Active Directory versucht, eine Verbindung mit dem SCIM-Endpunkt herzustellen. Wenn die Versuche fehlschlagen, werden Diagnoseinformationen angezeigt.  
+7.	Klicken Sie auf **Weiter** und auf die Schaltfläche **Test starten**, damit Azure Active Directory versucht, eine Verbindung mit dem SCIM-Endpunkt herzustellen. Wenn die Versuche fehlschlagen, werden Diagnoseinformationen angezeigt.
 8.	Falls die Verbindungsherstellung mit der Anwendung erfolgreich ist, klicken Sie auf den restlichen Bildschirmen auf **Weiter** und dann auf **Abgeschlossen**, um das Dialogfeld zu schließen.
 9.	Klicken Sie im angezeigten Bildschirm auf die dritte Schaltfläche **Konten zuweisen**. Weisen Sie im angezeigten Abschnitt „Benutzer und Gruppen“ die Benutzer und Gruppen zu, die Sie für die Anwendung bereitstellen möchten.
 10.	Klicken Sie nach dem Zuweisen der Benutzer und Gruppen am oberen Rand des Bildschirms auf die Registerkarte **Konfigurieren**.
-11.	Vergewissern Sie sich, dass der Status unter **Kontobereitstellung** auf „Ein“ festgelegt ist. 
+11.	Vergewissern Sie sich, dass der Status unter **Kontobereitstellung** auf „Ein“ festgelegt ist.
 12.	Klicken Sie unter **Extras** auf **Kontobereitstellung neu starten**, um den Bereitstellungsprozess zu starten.
 
 Beachten Sie, dass fünf bis zehn Minuten verstreichen dürfen, bevor der Bereitstellungsprozess damit beginnt, die Anforderungen an den SCIM-Endpunkt zu senden. Eine Zusammenfassung der Verbindungsversuche wird auf der Registerkarte „Dashboard“ der Anwendung bereitgestellt, und Sie können einen Bericht mit den Bereitstellungsaktivitäten und alle Bereitstellungsfehler über die Registerkarte „Berichte“ des Verzeichnisses herunterladen.
@@ -115,9 +114,9 @@ Die einfachste Möglichkeit zum Implementieren eines SCIM-Endpunkts, der Bereits
 
 5.	Erstellen Sie das FileProvisioningAgent-Projekt.
 6.	Starten Sie die Anwendung „Eingabeaufforderung“ in Windows (als Administrator), und verwenden Sie den Befehl **cd**, um zu Ihrem Ordner **\\AzureAD-BYOA-Provisioning-Samples\\ProvisioningAgent\\bin\\Debug** zu wechseln.
-7.	Führen Sie den unten angegebenen Befehl aus, indem Sie <ip-address> durch die IP oder den Domänennamen des Windows-Computers ersetzen.
+7.	Führen Sie den unten angegebenen Befehl aus, und ersetzen Sie dabei <IP-Adresse> durch die IP oder den Domänennamen des Windows-Computers.
 
-    FileAgnt.exe http://<ip-address>:9000 TargetFile.csv
+    FileAgnt.exe http://<IP-Adresse>:9000 TargetFile.csv
 
 8.	Wählen Sie in Windows unter **Windows-Einstellungen > Netzwerk- und Interneteinstellungen** die Option **Windows-Firewall > Erweiterte Einstellungen** aus, und erstellen Sie eine **Eingehende Regel**, mit der der eingehende Zugriff auf Port 9000 zugelassen wird.
 9.	Falls sich der Windows-Computer hinter einem Router befindet, muss der Router konfiguriert werden, um die Netzwerkadressübersetzung zwischen seinem Port 9000, der gegenüber dem Internet offen ist, und Port 9000 auf dem Windows-Computer durchzuführen. Dies ist erforderlich, damit Azure AD auf diesen Endpunkt in der Cloud zugreifen kann.
@@ -132,12 +131,12 @@ Die einfachste Möglichkeit zum Implementieren eines SCIM-Endpunkts, der Bereits
 ![][2]
 
 4.	Klicken Sie im angezeigten Fenster auf die zweite Schaltfläche **Kontobereitstellung konfigurieren**.
-5.	Geben Sie im Dialogfeld die über das Internet zugängliche URL und den Port Ihres SCIM-Endpunkts ein. Dies kann beispielsweise http://testmachine.contoso.com:9000 oder „http://<ip-address>:9000/“ sein, wobei <ip-address> die über das Internet zugängliche IP-Adresse ist.  
-6.	Klicken Sie auf **Weiter** und auf die Schaltfläche **Test starten**, damit Azure Active Directory versucht, eine Verbindung mit dem SCIM-Endpunkt herzustellen. Wenn die Versuche fehlschlagen, werden Diagnoseinformationen angezeigt.  
+5.	Geben Sie im Dialogfeld die über das Internet zugängliche URL und den Port Ihres SCIM-Endpunkts ein. Dies kann beispielsweise http://testmachine.contoso.com:9000 oder „http://<IP-Adresse>:9000/“ sein, wobei <IP-Adresse> für die über das Internet zugängliche IP-Adresse steht.
+6.	Klicken Sie auf **Weiter** und auf die Schaltfläche **Test starten**, damit Azure Active Directory versucht, eine Verbindung mit dem SCIM-Endpunkt herzustellen. Wenn die Versuche fehlschlagen, werden Diagnoseinformationen angezeigt.
 7.	Falls die Verbindungsherstellung mit Ihrem Webdienst erfolgreich ist, klicken Sie auf den restlichen Bildschirmen auf **Weiter** und dann auf **Abgeschlossen**, um das Dialogfeld zu schließen.
 8.	Klicken Sie im angezeigten Bildschirm auf die dritte Schaltfläche **Konten zuweisen**. Weisen Sie im angezeigten Abschnitt „Benutzer und Gruppen“ die Benutzer und Gruppen zu, die Sie für die Anwendung bereitstellen möchten.
 9.	Klicken Sie nach dem Zuweisen der Benutzer und Gruppen am oberen Rand des Bildschirms auf die Registerkarte **Konfigurieren**.
-10.	Vergewissern Sie sich, dass der Status unter **Kontobereitstellung** auf „Ein“ festgelegt ist. 
+10.	Vergewissern Sie sich, dass der Status unter **Kontobereitstellung** auf „Ein“ festgelegt ist.
 11.	Klicken Sie unter **Extras** auf **Kontobereitstellung neu starten**, um den Bereitstellungsprozess zu starten.
 
 Beachten Sie, dass fünf bis zehn Minuten verstreichen dürfen, bevor der Bereitstellungsprozess damit beginnt, die Anforderungen an den SCIM-Endpunkt zu senden. Eine Zusammenfassung der Verbindungsversuche wird auf der Registerkarte „Dashboard“ der Anwendung bereitgestellt, und Sie können einen Bericht mit den Bereitstellungsaktivitäten und alle Bereitstellungsfehler über die Registerkarte „Berichte“ des Verzeichnisses herunterladen.
@@ -349,7 +348,7 @@ Gruppenressourcen werden über den Schemabezeichner http://schemas.microsoft.com
 | mailNickname | externalId |
 | manager | manager |
 | mobile | phoneNumbers[type eq "mobile"].value |
-| objectId | ID |
+| objectId | id |
 | postalCode | addresses[type eq "work"].postalCode |
 | proxy-Addresses | emails[type eq "other"].Value |
 | physical-Delivery-OfficeName | addresses[type eq "other"].Formatted |
@@ -367,7 +366,7 @@ Gruppenressourcen werden über den Schemabezeichner http://schemas.microsoft.com
 | mail | emails[type eq "work"].value |
 | mailNickname | displayName |
 | members | members |
-| objectId | ID |
+| objectId | id |
 | proxyAddresses | emails[type eq "other"].Value |
 
 
@@ -375,8 +374,7 @@ Gruppenressourcen werden über den Schemabezeichner http://schemas.microsoft.com
 
 In der Abbildung unten sind die Nachrichten dargestellt, die von Azure Active Directory an einen SCIM-Dienst gesendet werden, um den Lebenszyklus eines Benutzers in einem anderen Identitätsspeicher zu verwalten. In der Abbildung ist auch zu sehen, wie ein SCIM-Dienst, der mit den Common Language Infrastructure-Bibliotheken von Microsoft zum Erstellen dieser Dienste implementiert wird, diese Anforderungen in Aufrufe der Methoden eines Anbieters übersetzt.
 
-![][4]
-*Abbildung: Sequenz der Durchführung und Aufhebung einer Benutzerbereitstellung*
+![][4]* Abbildung: Sequenz der Durchführung und Aufhebung einer Benutzerbereitstellung*
 
 **1.** Azure Active Directory fragt den Dienst nach einem Benutzer mit einem externalId-Attributwert ab, der mit dem mailNickname-Attributwert eines Benutzers in Azure Active Directory übereinstimmt. Die Abfrage wird als Hypertext Transfer Protocol-Anforderung wie in diesem Beispiel ausgedrückt, wobei „jyoung“ ein Beispiel für ein mailNickname-Element eines Benutzers in Azure Active Directory ist:
 
@@ -437,7 +435,7 @@ Im vorherigen Beispiel für eine Abfrage für einen Benutzer mit einem bestimmte
 * parameters.AlternateFilters.ElementAt(0).AttributePath: "externalId"
 * parameters.AlternateFilters.ElementAt(0).ComparisonOperator: ComparisonOperator.Equals
 * parameters.AlternateFilter.ElementAt(0).ComparisonValue: "jyoung"
-* correlationIdentifier: System.Net.Http.HttpRequestMessage.GetOwinEnvironment["owin.RequestId"] 
+* correlationIdentifier: System.Net.Http.HttpRequestMessage.GetOwinEnvironment["owin.RequestId"]
 
 **2.** Wenn in der Antwort auf eine Abfrage an den Dienst für einen Benutzer mit einem externalId-Attributwert, der mit dem mailNickname-Attributwert eines Benutzers in Azure Active Directory übereinstimmt, keine Benutzer zurückgegeben werden, stellt Azure Active Directory die folgende Anforderung: Der Dienst muss einen Benutzer bereitstellen, der dem Benutzer in Azure Active Directory entspricht. Dies ist ein Beispiel für eine Anforderung dieser Art:
 
@@ -679,12 +677,11 @@ Im vorherigen Beispiel für eine Anforderung zum Aufheben der Bereitstellung ein
 
 In der Abbildung unten sind die Nachrichten dargestellt, die von Azure Active Directory an einen SCIM-Dienst gesendet werden, um den Lebenszyklus einer Gruppe in einem anderen Identitätsspeicher zu verwalten. Diese Nachrichten unterscheiden sich von den Nachrichten für Benutzer auf drei Arten:
 
-* Das Schema einer Gruppenressource wird als http://schemas.microsoft.com/2006/11/ResourceManagement/ADSCIM/Group identifiziert.  
-* Für Anforderungen zum Abrufen von Gruppen wird vorgegeben, dass das members-Attribut aus allen Ressourcen ausgeschlossen wird, die als Antwort auf die Anforderung bereitgestellt werden.  
-* Bei Anforderungen für die Ermittlung, ob ein Referenzattribut einen bestimmten Wert hat, handelt es sich um Anforderungen zum members-Attribut.  
+* Das Schema einer Gruppenressource wird als http://schemas.microsoft.com/2006/11/ResourceManagement/ADSCIM/Group identifiziert.
+* Für Anforderungen zum Abrufen von Gruppen wird vorgegeben, dass das members-Attribut aus allen Ressourcen ausgeschlossen wird, die als Antwort auf die Anforderung bereitgestellt werden.
+* Bei Anforderungen für die Ermittlung, ob ein Referenzattribut einen bestimmten Wert hat, handelt es sich um Anforderungen zum members-Attribut.
 
-![][5]
-*Abbildung: Sequenz der Durchführung und Aufhebung einer Gruppenbereitstellung*
+![][5] * Abbildung: Sequenz der Durchführung und Aufhebung einer Gruppenbereitstellung*
 
 ##Verwandte Artikel
 
@@ -705,4 +702,4 @@ In der Abbildung unten sind die Nachrichten dargestellt, die von Azure Active Di
 [4]: ./media/active-directory-scim-provisioning/scim-figure-4.PNG
 [5]: ./media/active-directory-scim-provisioning/scim-figure-5.PNG
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0928_2016-->

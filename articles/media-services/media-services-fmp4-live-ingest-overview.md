@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Spezifikation der Fragmented MP4-Echtzeiterfassung für Azure Media Services" 
+	pageTitle="Spezifikation der Fragmented MP4-Echtzeiterfassung für Azure Media Services | Microsoft Azure" 
 	description="Diese Spezifikation beschreibt das Protokoll und Format für die Fragmented MP4-basierte Erfassung des Live-Streamings für Microsoft Azure Media Services. Microsoft Azure Media Services bietet einen Live-Streaming-Dienst, mit dem Kunden Liveereignisse und Sendungsinhalte mit Microsoft Azure als Cloud-Plattform in Echtzeit streamen können. In diesem Dokument werden auch optimale Verfahren bei der Erstellung hoch redundanter und stabiler Mechanismen der Echtzeiterfassung beschrieben." 
 	services="media-services" 
 	documentationCenter="" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/22/2016"     
+	ms.date="09/26/2016"     
 	ms.author="cenkdin;juliako"/>
 
 #Spezifikation der Fragmented MP4-Echtzeiterfassung für Azure Media Services
@@ -92,7 +92,7 @@ Audio – 128 KBit/s
 
 Bei dieser Option generiert ein einzelner Encoder alle Audio- und Videospuren und bündelt sie in einem Fragmented MP4-Bitstrom, der dann über eine einzelne HTTP POST-Verbindung gesendet wird. In diesem Beispiel gibt es nur einen Stream für die Livepräsentation:
 
-![Bild2][image2]
+![image2][image2]
 
 ###Option 2: jede Spur in einem separaten Stream
 
@@ -221,4 +221,4 @@ Es folgt eine empfohlene Implementierung für redundante Audiospuren:
 
  
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0928_2016-->

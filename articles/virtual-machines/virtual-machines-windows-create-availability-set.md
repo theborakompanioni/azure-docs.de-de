@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/17/2016"
+	ms.date="09/27/2016"
 	ms.author="cynthn"/>
 
 
@@ -40,7 +40,7 @@ Weitere Information zum Erstellen und Verwenden von Verfügbarkeitsgruppen finde
 	- **Name**: Der Name sollte aus 1-80 Zeichen bestehen – Zahlen, Buchstaben, Punkte, Unterstriche und Bindestriche. Das erste Zeichen muss ein Buchstabe oder eine Zahl sein. Das letzte Zeichen muss ein Buchstabe, eine Zahl oder ein Unterstrich sein.
 	- **Fehlerdomänen**: Fehlerdomänen definieren eine Gruppe virtueller Computer, die eine Stromquelle und einen Netzwerkswitch gemeinsam nutzen. Standardmäßig werden die virtuellen Computer auf bis zu drei Fehlerdomänen aufgeteilt. Sie können 1-3 Fehlerdomänen einrichten.
 	- **Updatedomänen**: Standardmäßig werden fünf Updatedomänen zugewiesen. Sie können 1-20 Updatedomänen einrichten. Updatedomänen definieren Gruppen virtueller Computer und zugrunde liegender physischer Hardwarekomponenten, die gleichzeitig neu gestartet werden können. Ein Beispiel mit Updatedomänen: Wenn innerhalb einer Verfügbarkeitsgruppe mehr als fünf virtuelle Computer konfiguriert sind, wird der sechste virtuelle Computer in derselben Updatedomäne platziert wie der erste, der siebte virtuelle Computer in derselben Updatedomäne wie der zweite usw. Die Neustarts erfolgen zwar nicht sequenziell, aber es werden nicht mehrere Updatedomänen gleichzeitig neu gestartet.
-	- **Abonnement**: Wählen Sie das zu verwendende Abonnement, wenn Sie über mehrere verfügen.
+	- **Abonnement**: Wenn Sie über mehrere Abonnements verfügen, wählen Sie das zu verwendende Abonnement aus.
 	- **Ressourcengruppe**: Wählen Sie eine vorhandene Ressourcengruppe aus, indem Sie auf den Pfeil klicken und eine Ressourcengruppe aus der Dropdownliste auswählen. Sie können auch eine neue Ressourcengruppe erstellen, indem Sie einen Namen eingeben. Der Name darf folgende Zeichen enthalten: Buchstaben, Zahlen, Punkte, Bindestriche, Unterstriche und öffnende oder schließende Klammern. Der Name darf nicht mit einem Punkt enden. Alle virtuellen Computer in der Verfügbarkeitsgruppe müssen in derselben Ressourcengruppe wie die Verfügbarkeitsgruppe erstellt werden.
 	- **Speicherort**: Wählen Sie einen Speicherort aus der Dropdownliste aus.
 
@@ -79,4 +79,4 @@ Weitere Informationen finden Sie unter [New-AzureRmAvailabilitySet](https://msdn
 
 Erweitern Sie den Speicher für Ihren virtuellen Computer, indem Sie einen zusätzlichen [Datenträger](virtual-machines-windows-attach-disk-portal.md) hinzufügen.
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0928_2016-->

@@ -3,7 +3,7 @@
 	description="Erfahren Sie, wie Sie Probleme beheben, wenn Ihre Kredit- oder Debitkarte bei der Registrierung bei Azure abgelehnt wird."
 	services=""
 	documentationCenter=""
-	authors="jiangchen79"
+	authors="JiangChen79"
 	manager="felixwu"
 	editor=""
 	tags="billing,top-support-issue"
@@ -74,4 +74,4 @@ Wenn Sie die Kreditkartendaten aktualisieren bzw. eine Karte wechseln oder entfe
 
 > [AZURE.NOTE] Wenn Sie weitere Fragen haben, [wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), um das Problem schnell zu lösen.
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0928_2016-->

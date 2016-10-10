@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/20/2016"
-	ms.author="micurd"/>
+	ms.date="09/21/2016"
+	ms.author="micurd;tamram"/>
 
 # Azure Storage-Clienttools
 
@@ -33,7 +33,7 @@ Dies ist nur eine Momentaufnahme der verfügbaren Azure Storage-Clienttools. Die
     <th rowspan="2">Tabellen</th>
     <th rowspan="2">Warteschlangen</th>
     <th rowspan="2">Dateien</th>
-    <th rowspan="2">Free</th>
+    <th rowspan="2">Kostenlos</th>
     <th colspan="4">Plattform</th>
   </tr>
   <tr>
@@ -99,7 +99,7 @@ Wir haben die Funktionalität oder Qualität nicht überprüft, die für die fol
     <th rowspan="2">Tabellen</th>
     <th rowspan="2">Warteschlangen</th>
     <th rowspan="2">Dateien</th>
-    <th rowspan="2">Free</th>
+    <th rowspan="2">Kostenlos</th>
     <th colspan="4">Plattform</th>
   </tr>
   <tr>
@@ -250,4 +250,4 @@ Wir haben die Funktionalität oder Qualität nicht überprüft, die für die fol
   </tr>
 </table>
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0928_2016-->

@@ -14,7 +14,7 @@
 	ms.workload="search"
 	ms.topic="article" 
 	ms.tgt_pltfrm="na"
-	ms.date="08/29/2016"
+	ms.date="09/22/2016"
 	ms.author="heidist"/>
 
 #Azure Search: Codebeispiele, Demos, Videos und Tutorials
@@ -25,18 +25,19 @@ Finden Sie mit den folgenden Videos, Demos, Tutorials und Beispiel-Apps einen sc
 
 - Das [**Codebeispiel für die Demo-Website zu Jobs in New York City**](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs) enthält Quellcode für die Azure Search-Demowebsite für Jobdaten von New York City mit Verwendung von ASP.NET MVC.
 
+- Das [**Codebeispiel für die Demowebsite: Tate Art Gallery**](https://github.com/liamca/azure-search-tate-art-gallery/) enthält Quellcode für die Azure Search-Demowebsite für Kunstgaleriedaten und zeigt den Sammlungsdatentyp und geschachtelte Datenstrukturen, Facetten und Filter, Namen von Personen und Miniaturbilder.
+
 - [**Code sample for .NET client library**](https://github.com/Azure-Samples/search-dotnet-getting-started) (Codebeispiel für die .NET-Clientbibliothek) ist eine ASP.NET MVC 5-Anwendung, die die .NET-Clientbibliothek für Suchvorgänge verwendet.
 
 - Das [**Codebeispiel für die REST-API**](https://github.com/Azure-Samples/search-rest-api-getting-started) enthält Beispielcode, mit dem die Verwendung der REST-API veranschaulicht wird.
 
 Alle oben angegebenen Codebeispiele sowie andere Beispiele zur Nutzung von Azure Search in bestimmten Szenarien finden Sie im GitHub-Repository für Azure-Beispiele: [**Azure Samples > Azure Search**](https://github.com/azure-samples?utf8=%E2%9C%93&query=search).
 
-##Demo-Websites
+## Onlinedemowebsites
 
 Bei diesen Websites handelt es sich um voll funktionsfähige Webanwendungen, die Azure Search für ihre Suchoberfläche einsetzen.
 
 Die [**Demo eines Jobportals für New York City (NYC) mit Azure Search**](http://aka.ms/azjobsdemo) ist eine aktive ASP.NET-Website, die Azure Search-Funktionen mithilfe von Daten der NYC Open Data Initiative veranschaulicht. Für diese App wird die [einfache Abfragesyntax](https://msdn.microsoft.com/library/azure/dn798920.aspx) verwendet. Sie können den Code ändern, um die [Lucene-Syntax](https://msdn.microsoft.com/library/azure/mt589323.aspx) auszuprobieren.
-
 
 [**Azure Search-Demo-Website**](https://searchsamples.azurewebsites.net/#/) ist eine Sammlung von Demo-Apps für Azure Search. Testen Sie Apps für die Mediensuche, geografische Suche und Produktbestände mithilfe von Azure Search.
 
@@ -90,4 +91,4 @@ Exemplarische Vorgehensweise|Beschreibung
 [Lernprogramm zu Bewertungsprofilen](search-get-started-scoring-profiles.md)|Testen von Bewertungsprofilen mit einer Konsolenanwendung.
 [Lernprogramm zur Azure Search Management-REST-API](search-get-started-management-api.md)|So verwenden Sie die Management-REST-API, um den Dienst bereitzustellen und Administrator- oder Abfrage-API-Schlüssel zu verwalten.
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0928_2016-->

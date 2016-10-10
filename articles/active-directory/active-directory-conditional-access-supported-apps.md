@@ -14,7 +14,7 @@
 	ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="identity" 
-	ms.date="08/12/2016"
+	ms.date="09/26/2016"
 	ms.author="markvi"/>
 
 
@@ -22,56 +22,41 @@
 
 Regeln für bedingten Zugriff werden übergreifend für verbundene Azure Active Directory-Anwendungen, für vorab integrierte SaaS-Verbundanwendungen, für Anwendungen, die einmaliges Anmelden mit Kennwort verwenden, sowie für Branchenanwendungen und für den Azure AD-Anwendungsproxy unterstützt. Eine detaillierte Liste mit Anwendungen, für die der bedingte Zugriff aktiviert werden kann, finden Sie unter [Dienste mit aktiviertem bedingtem Zugriff](active-directory-conditional-access-technical-reference.md#Services-enabled-with-conditional-access). Der bedingte Zugriff kann sowohl für mobile Anwendungen als auch für Desktopanwendungen mit modernen Authentifizierungsverfahren verwendet werden. In diesem Thema erfahren Sie, was hinsichtlich der mobilen und der desktopbasierten Version dieser Apps unterstützt wird.
 
-Anwendungen mit moderner Authentifizierung können Azure AD-Anmeldeseiten anzeigen. Dadurch können Benutzer inline aufgefordert werden, sich per MFA (Multi-Factor Authentication, mehrstufige Authentifizierung) zu authentifizieren, oder Endbenutzern können Meldungen angezeigt werden, wenn der Zugriff blockiert wird. Es ist wichtig zu wissen, welche Anwendungen unterstützt werden, und die Schritte zu kennen, die möglicherweise zum Sichern weiterer Zugangspunkte erforderlich sind.
+Anwendungen mit moderner Authentifizierung können Azure AD-Anmeldeseiten anzeigen. Dadurch können Benutzer inline aufgefordert werden, sich per MFA (Multi-Factor Authentication, mehrstufige Authentifizierung) zu authentifizieren, oder Endbenutzern können Meldungen angezeigt werden, wenn der Zugriff blockiert wird. Eine moderne Authentifizierung ist ebenfalls für das Gerät erforderlich, um eine Authentifizierung bei Azure AD zu ermöglichen, sodass gerätebasierte Richtlinien für bedingten Zugriff ausgewertet werden können.
+
+Es ist wichtig zu wissen, welche Anwendungen unterstützt werden, und die Schritte zu kennen, die möglicherweise zum Sichern weiterer Zugangspunkte erforderlich sind.
 
 ## Anwendung mit moderner Authentifizierung
-Die folgenden Anwendungen wurden mit MFA und einer auf den Zieldienst festgelegten Standortrichtlinie getestet.
+Die folgenden Anwendungen unterstützen den bedingten Zugriff beim Zugreifen auf Office 365 und andere mit Azure AD verbundene Dienstanwendungen:
 
-| Anwendung | Zieldienst | Plattform |
+| Zieldienst | Plattform | Anwendung |
 |--------------|-----------------|----------------------------------------------------------------|
-| Outlook 2016 | Exchange | Windows 10, Windows Mobile 10, Windows 8.1, Windows 7, Mac |
-| Outlook 2013 (erfordert die Aktivierung der modernen Authentifizierung)| Exchange |Windows 10, Windows Mobile 10, Windows 8.1, Windows 7|
-|Skype for Business (mit moderner Authentifizierung)|Exchange (Zugriff auf Exchange für den Kalender- und Unterhaltungsverlauf)| Windows 10, Windows 8.1, Windows 7 |
-|Outlook Mobile-App|Exchange| iOS und Android |
-|Office 2016; Word, Excel, SharePoint|SharePoint| Windows 10, Windows Mobile 10, Windows 8.1, Windows 7, Mac |
-|Office 2013 (erfordert die Aktivierung der modernen Authentifizierung)|SharePoint|Windows 10, Windows Mobile 10, Windows 8.1, Windows 7|
-|Dynamics CRM-App|Dynamics CRM| Windows 10, Windows 8.1, Windows 7, iOS, Android|
-| Yammer-App|Yammer| Windows Mobile 10, iOS, Android|
-|Azure RemoteApp|Azure Remote-App-Dienst|Windows 10, Windows 8.1, Windows 7, Mac, iOS, Android|
-
-
-
-
-
-Die folgenden Anwendungen unterstützen den gerätebasierten Richtliniensatz für den Zieldienst:
-
-| Anwendung | Zieldienst | Plattform |
-| :--                                     | :--            | :--      |
-| Mail/Kalender/Kontakte | Exchange | Windows 10, Windows Mobile 10 |
-| Office Universal: Word/Excel/PowerPoint | SharePoint | Windows 10, Windows Mobile 10 |
-| Outlook 2016 | Exchange | Windows 10, Windows Mobile 10, Windows 8.1, Windows 7 |
-|Outlook 2013 (erfordert die Aktivierung der modernen Authentifizierung) | Exchange | Windows 8.1, Windows 7 |
-
-
-Die folgenden Anwendungen unterstützen den gerätebasierten Richtliniensatz für den Zieldienst nicht:
-
-| Anwendung | Zieldienst | Plattform |
-| :--                                     | :--            | :--      |
-| OneDrive for Business mit dem Synchronisierungsclient der nächsten Generation (Next Generation Sync Client, NGSC) (auf eigenen Websites und Teamwebsites) | SharePoint | Windows 10, Windows Mobile 10 |
-| App „Meine Apps“ | Beliebig | iOS, Android |
+|Microsoft Office 365 Exchange Online | Windows 10|Mail-/Kalender-/Kontakte-App, Outlook 2016, Outlook 2013 (mit aktivierter moderner Authentifizierung), Skype for Business (mit moderner Authentifizierung)|
+|Microsoft Office 365 Exchange Online| Windows 7, Windows 8.1 |Outlook 2016, Outlook 2013 (mit aktivierter moderner Authentifizierung), Skype for Business (mit moderner Authentifizierung)|
+|Microsoft Office 365 Exchange Online|iOS, Android| Outlook Mobile-App|
+|Microsoft Office 365 Exchange Online|Mac OSX| Outlook 2016 nur für MFA/Standort, geplante Unterstützung von gerätebasierten Richtlinien, geplante Skype for Business-Unterstützung|
+|Office 365 SharePoint Online|Windows 10| Office 2016-Apps, Office Universal-Apps, Office 2013 (mit aktivierter moderner Authentifizierung), geplante Unterstützung für OneDrive for Business-App (NGSC oder Synchronisierungsclient der nächsten Generation), geplante Unterstützung für Office-Gruppen, geplante Unterstützung der SharePoint-App|
+|Office 365 SharePoint Online|Windows 7, Windows 8.1|Office 2016-Apps, Office 2013 (mit aktivierter moderner Authentifizierung), OneDrive for Business-App (Groove-Synchronisierungsclient)|
+|Office 365 SharePoint Online|iOS, Android| Office Mobile-Apps |
+|Office 365 SharePoint Online|Mac OSX| Office 2016-Apps nur für MFA/Standort, geplante Unterstützung für gerätebasierte Richtlinien|
+|Office 365 Yammer|Windows 10, iOS und Android | Office Yammer-App|
+|Dynamics CRM|Windows 10, 7, 8.1, iOS und Android | Dynamics CRM-App|
+|PowerBI-Dienst|Windows 10, 7, 8.1, iOS und Android | Power BI-App|
+|Azure Remote-App-Dienst|Windows 10, 7, 8.1, iOS und Android, Mac OSX |Azure RemoteApp|
+|Alle Meine Apps-App-Dienste|Android und iOS|Alle Meine Apps-App-Dienste |
 
 
 ## Anwendungen ohne moderne Authentifizierung
 
 Zurzeit muss für Apps, die keine moderne Authentifizierungsverfahren verwenden, der Zugriff mithilfe anderer Methoden blockiert werden, da der bedingte Zugriff für diese nicht erzwungen wird. Dieser Aspekt gilt hauptsächlich für den Zugriff auf Exchange und SharePoint, da vorherige App-Versionen unter Verwendung älterer Protokolle erstellt wurden.
 
-## SharePoint
+## Office 365 SharePoint Online
 
 Bei SharePoint können ältere Protokolle mithilfe des Cmdlets Set-SPOTenant deaktiviert werden. Dieses Cmdlet verhindert, dass Office-Clients, die keine modernen Authentifizierungsprotokolle verwenden, auf SharePoint Online-Ressourcen zugreifen.
 
 **Beispielbefehl:** `Set-SPOTenant -LegacyAuthProtocolsEnabled $false`
  
-## Exchange
+## Microsoft Office 365 Exchange Online
 
 In Exchange gibt es zwei Hauptkategorien von Protokollen. Überprüfen und wählen Sie die richtige Richtlinie für Ihre Organisation:
 
@@ -130,4 +115,4 @@ Regel 3
 	c2:[Type == "http://schemas.microsoft.com/2012/01/requestcontext/claims/x-ms-endpoint-absolute-path", Value =~ "(/adfs/ls)|(/adfs/oauth2)"] 
 	=> issue(Type = "http://schemas.microsoft.com/authorization/claims/permit", Value = "true");
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0928_2016-->

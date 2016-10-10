@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/22/2016"
+	ms.date="09/26/2016"
 	ms.author="juliako"/>
 
 
@@ -39,7 +39,7 @@ Sie können das in diesem Artikel beschriebene Beispiel [hier](https://github.co
 
 ##Codebeispiel für .NET
 
-Das Codebeispiel in diesem Thema zeigt, wie ein allgemeiner Inhaltsschlüssel erstellt und Lizenzerwerbs-URLs für PlayReady und Widevine abgerufen werden. Sie müssen die folgenden Angaben von AMS abrufen und Ihren lokalen Server konfigurieren: **Inhaltsschlüssel**, **Schlüssel-ID**, **Lizenzerwerbs-URL**. Nach dem Konfigurieren Ihres lokalen Servers können Sie auf Ihrem eigenen Streamingserver das Streamen aktivieren. Da der verschlüsselte Stream auf den AMS-Lizenzserver zeigt, fordert Ihr Player eine Lizenz von AMS an. Wenn Sie die Tokenauthentifizierung wählen, überprüft der AMS-Lizenzserver das von Ihnen über HTTPS gesendete Token und übermittelt (sofern gültig) die Lizenz zurück an Ihren Player. (Das Codebeispiel in diesem Thema zeigt nur, wie ein allgemeiner Inhaltsschlüssel erstellt und Lizenzerwerbs-URLs für PlayReady und Widevine abgerufen werden. Wenn Sie AES-128 Schlüssel übermitteln möchten, müssen Sie einen Umschlagsinhaltsschlüssel erstellen und eine Schlüsselerwerbs-URL abrufen, was in [diesem](media-services-protect-with-aes128.md) Artikel gezeigt wird).
+Das Codebeispiel in diesem Thema zeigt, wie ein allgemeiner Inhaltsschlüssel erstellt und Lizenzerwerbs-URLs für PlayReady oder Widevine abgerufen werden. Sie müssen die folgenden Angaben von AMS abrufen und Ihren lokalen Server konfigurieren: **Inhaltsschlüssel**, **Schlüssel-ID**, **Lizenzerwerbs-URL**. Nach dem Konfigurieren Ihres lokalen Servers können Sie auf Ihrem eigenen Streamingserver das Streamen aktivieren. Da der verschlüsselte Stream auf den AMS-Lizenzserver zeigt, fordert Ihr Player eine Lizenz von AMS an. Wenn Sie die Tokenauthentifizierung wählen, überprüft der AMS-Lizenzserver das von Ihnen über HTTPS gesendete Token und übermittelt (sofern gültig) die Lizenz zurück an Ihren Player. (Das Codebeispiel in diesem Thema zeigt nur, wie ein allgemeiner Inhaltsschlüssel erstellt und Lizenzerwerbs-URLs für PlayReady und Widevine abgerufen werden. Wenn Sie AES-128 Schlüssel übermitteln möchten, müssen Sie einen Umschlagsinhaltsschlüssel erstellen und eine Schlüsselerwerbs-URL abrufen, was in [diesem](media-services-protect-with-aes128.md) Artikel gezeigt wird).
 	
 	
 	using System;
@@ -351,4 +351,4 @@ Das Codebeispiel in diesem Thema zeigt, wie ein allgemeiner Inhaltsschlüssel er
 
 [Übermitteln von Widevine-Lizenzen an Azure Media Services mithilfe von Partnern](media-services-licenses-partner-integration.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0928_2016-->

@@ -12,7 +12,7 @@
     ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="infrastructure-services"
-    ms.date="08/08/2016"
+    ms.date="09/22/2016"
     ms.author="magoedte" />
 
 # Weiterleiten von Auftragsstatus und Auftragsdatenströmen von Automation an Log Analytics (OMS)
@@ -77,6 +77,41 @@ Um zu bestätigen, dass das Skript Ihr Automation-Konto und Ihren OMS-Arbeitsber
 
     Dieser Befehl gibt Speicherdetails für den angegebenen OMS-Arbeitsbereich zurück. Es soll überprüft werden, ob die Speicherdetails für das Automation-Konto vorhanden sind, die zuvor angegeben wurden, und ob der Wert des **State**-Objekts **OK** lautet.<br> ![Ergebnisse des Cmdlets „Get-AzureRmOperationalInsightsStorageInsights“](media/automation-manage-send-joblogs-log-analytics/automation-posh-getstorageinsights-results.png).
 
+
+## Log Analytics-Datensätze
+
+Automation erstellt zwei Arten von Datensätzen im OMS-Repository.
+
+### Auftragsprotokolle
+
+Eigenschaft | Beschreibung|
+----------|----------|
+Time | Datum und Uhrzeit der Ausführung des Runbookauftrags.|
+resourceId | Gibt den Ressourcentyp in Azure an. Für Automation ist der Wert das dem Runbook zugeordnete Automation-Konto.|
+operationName | Gibt den Typ des in Azure ausgeführten Vorgangs an. Für Automation ist der Wert der Auftrag.|
+resultType | Der Status des Runbookauftrags. Mögliche Werte:<br>- Gestartet<br>- Beendet<br>- Angehalten<br>- Fehler<br>- Erfolgreich|
+resultDescription | Beschreibt den resultierenden Zustand des Runbookauftrags. Mögliche Werte:<br>- Auftrag gestartet<br>- Fehler beim Ausführen des Auftrags<br>- Auftrag abgeschlossen|
+CorrelationId | Die GUID, bei der es sich um die Korrelations-ID des Runbookauftrags handelt.|
+Kategorie | Klassifizierung des Datentyps. Für Automation ist der Wert „JobLogs“.|
+RunbookName | Der Name des Runbooks.|
+JobId | Die GUID, bei der es sich um die ID des Runbookauftrags handelt.|
+Aufrufer | Der Benutzer oder das System, der/das den Vorgang initiiert hat. Mögliche Werte sind entweder eine E-Mail-Adresse oder, bei geplanten Aufträgen, ein System.|
+
+### Auftragsdatenströme
+Eigenschaft | Beschreibung|
+----------|----------|
+Time | Datum und Uhrzeit der Ausführung des Runbookauftrags.|
+resourceId | Gibt den Ressourcentyp in Azure an. Für Automation ist der Wert das dem Runbook zugeordnete Automation-Konto.|
+operationName | Gibt den Typ des in Azure ausgeführten Vorgangs an. Für Automation ist der Wert der Auftrag.|
+resultType | Der Status des Runbookauftrags. Mögliche Werte:<br>- InProgress|
+resultDescription | Enthält den Ausgabestream des Runbooks.|
+CorrelationId | Die GUID, bei der es sich um die Korrelations-ID des Runbookauftrags handelt.|
+Kategorie | Klassifizierung des Datentyps. Für Automation ist der Wert „JobStreams“.|
+RunbookName | Der Name des Runbooks.|
+JobId | Die GUID, bei der es sich um die ID des Runbookauftrags handelt.|
+Aufrufer | Der Benutzer oder das System, der/das den Vorgang initiiert hat. Mögliche Werte sind entweder eine E-Mail-Adresse oder, bei geplanten Aufträgen, ein System.| 
+StreamType | Der Typ des Auftragsstreams. Mögliche Werte:<br>-Status<br>- Ausgabe<br>- Warnung<br>- Fehler<br>- Debuggen<br>- Ausführlich|
+
 ## Anzeigen von Automation-Protokollen in Log Analytics 
 
 Nachdem Sie begonnen haben, Ihre Automation-Auftragsprotokolle an Log Analytics zu senden, möchten wir uns nun ansehen, wie Sie diese Protokolle in OMS verwenden können.
@@ -114,6 +149,7 @@ Abschließend möchten Sie möglicherweise Ihren Auftragsverlauf visualisieren. 
 
 `Category=JobLogs NOT(ResultType="started") | measure Count() by ResultType interval 1day` <br> ![Diagramm zum Auftragsstatusverlauf in OMS](media/automation-manage-send-joblogs-log-analytics/historical-job-status-chart.png)<br>
 
+
 ## Zusammenfassung
 
 Wenn Sie Ihre Automation-Auftragsstatus und Datenstromdaten an Log Analytics senden, können Sie bessere Einblicke in den Status Ihrer Automation-Aufträge erhalten. Richten Sie dazu Warnungen ein, um benachrichtigt zu werden, wenn ein Problem auftritt. Verwenden Sie außerdem benutzerdefinierte Dashboards mit erweiterten Abfragen, um die Runbookergebnisse, den Runbookauftragsstatus und andere zugehörige Schlüsselindikatoren oder Metriken zu visualisieren. So erreichen Sie eine höhere operative Transparenz und können schneller auf Vorfälle reagieren.
@@ -126,4 +162,4 @@ Wenn Sie Ihre Automation-Auftragsstatus und Datenstromdaten an Log Analytics sen
 - Weitere Informationen zum Ausführen von Runbooks, zum Überwachen von Runbookaufträgen sowie andere technische Details finden Sie unter [Verfolgen eines Runbookauftrags](automation-runbook-execution.md).
 - Weitere Informationen zu OMS Log Analytics und Datenerfassungsquellen finden Sie unter [Herstellen einer Verbindung zwischen Azure-Speichern und Log Analytics](../log-analytics/log-analytics-azure-storage.md)
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0928_2016-->

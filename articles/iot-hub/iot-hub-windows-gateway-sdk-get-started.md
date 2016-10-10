@@ -13,8 +13,8 @@
      ms.topic="article"
      ms.tgt_pltfrm="na"
      ms.workload="na"
-     ms.date="04/20/2016"
-     ms.author="cstreet"/>
+     ms.date="08/25/2016"
+     ms.author="andbuc"/>
 
 
 # IoT-Gateway SDK (Beta) – erste Schritte mit Windows
@@ -33,7 +33,7 @@ Bevor Sie beginnen, müssen Sie die [Entwicklungsumgebung einrichten][lnk-setupd
 
 1. Das **build.cmd**-Skript erstellt einen Ordner namens **build** in Ihrer lokalen Kopie des Repositorys. Dieser Ordner enthält die beiden in diesem Beispiel verwendeten Module.
 
-    Das Buildskript platziert **logger\_hl.dll** im Ordner **build\\modules\\logger\\Debug** und **hello\_world\_hl.dl** im Ordner **build\\modules\\hello\_world\\Debug**. Verwenden Sie diese Pfade für den Wert **module path**, wie in der JSON-Einstellungsdatei unten gezeigt.
+    Das Buildskript platziert **logger\_hl.dll** im Ordner **build\\modules\\logger\\Debug** und **hello\_world\_hl.dll** im Ordner **build\\modules\\hello\_world\\Debug**. Verwenden Sie diese Pfade für den Wert **module path**, wie in der JSON-Einstellungsdatei unten gezeigt.
 
 2. Die Datei **hello\_world\_win.json** im Ordner **samples\\hello\_world\\src** ist eine JSON-Beispieleinstellungsdatei für Windows, die Sie zur Ausführung des Beispiels verwenden können. Bei den unten gezeigten beispielhaften JSON-Einstellungen wird angenommen, dass Sie das Gateway SDK-Repository in den Stammordner Ihres Laufwerks **C:** geklont haben. Wenn Sie das Repository in einen anderen Speicherort heruntergeladen haben, müssen Sie die **module path**-Werte in der Datei **samples\\hello\_world\\src\\hello\_world\_win.json** entsprechend anpassen.
 
@@ -58,6 +58,13 @@ Bevor Sie beginnen, müssen Sie die [Entwicklungsumgebung einrichten][lnk-setupd
           "module path" : "C:\\azure-iot-gateway-sdk\\build\\\modules\\hello_world\\Debug\\hello_world_hl.dll",
           "args" : null
         }
+      ],
+      "links" :
+      [
+        {
+          "source": "hello_world",
+          "sink": "logger_hl"
+        }
       ]
     }
     ```
@@ -74,4 +81,4 @@ Bevor Sie beginnen, müssen Sie die [Entwicklungsumgebung einrichten][lnk-setupd
 <!-- Links -->
 [lnk-setupdevbox]: https://github.com/Azure/azure-iot-gateway-sdk/blob/master/doc/devbox_setup.md
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0928_2016-->

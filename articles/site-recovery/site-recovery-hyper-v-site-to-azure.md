@@ -21,8 +21,8 @@
 
 > [AZURE.SELECTOR]
 - [Azure-Portal](site-recovery-hyper-v-site-to-azure.md)
-- [Azure – klassisch](site-recovery-hyper-v-site-to-azure-classic.md)
-- [PowerShell ARM](site-recovery-deploy-with-powershell-resource-manager.md)
+- [PowerShell – Resource Manager](site-recovery-deploy-with-powershell-resource-manager.md)
+- [Klassisches Portal](site-recovery-hyper-v-site-to-azure-classic.md)
 
 
 
@@ -88,7 +88,7 @@ Lokal benötigen Sie Folgendes:
 **Voraussetzung** | **Details**
 --- | ---
 **Hyper-V**| Ein oder mehrere lokale Server, auf denen Windows Server 2012 R2 ausgeführt wird, mit den aktuellsten Updates und der Hyper-V-Rolle.<br/><br/>Der Hyper-V-Server sollte einen oder mehrere virtuelle Computer enthalten.<br/><br/>Hyper-V-Server sollten mit dem Internet verbunden sein, entweder direkt oder über einen Proxy.<br/><br/>Auf Hyper-V-Servern sollten die in [KB2961977](https://support.microsoft.com/de-DE/kb/2961977 "KB2961977") erwähnten Fixes installiert sein.
-**Anbieter und Agent** | Während der Bereitstellung von Azure Site Recovery installieren Sie den Azure Site Recovery-Anbieter. Die Anbieterinstallation installiert den Azure Recovery Services-Agent außerdem auf jedem Hyper-V-Server, der über zu schützende virtuelle Computer verfügt. Alle Hyper-V-Server in einem Site Recovery-Tresor sollten über die gleichen Anbieter- und Agent-Versionen verfügen.<br/><br/>Der Anbieter muss über das Internet eine Verbindung mit Azure Site Recovery herstellen. Datenverkehr kann direkt oder über einen Proxy gesendet werden. Beachten Sie, dass HTTPS-basierte Proxys nicht unterstützt werden. Der Proxyserver sollte den Zugriff auf Folgendes zulassen: <br/><br/> *.hypervrecoverymanager.windowsazure.com <br/><br/> *.accesscontrol.windows.net <br/><br/> *.backup.windowsazure.com <br/><br/> *.blog.core.windows.net <br/><br/> *store.core.windows.net <br/><br/> https://www.msftncsi.com/ncsi.txt<br/><br/>Wenn Sie auf dem Server über Firewallregeln verfügen, die auf IP-Adressen basieren, sollten Sie sicherstellen, dass die Regeln die Kommunikation mit Azure zulassen. Sie müssen die [IP-Adressbereiche des Azure-Rechenzentrums](https://www.microsoft.com/download/confirmation.aspx?id=41653) und das HTTPS-Protokoll (433) zulassen.<br/><br/>Lassen Sie IP-Adressbereiche für die Azure-Region Ihres Abonnements und für die Region „USA, Westen“ zu.
+**Anbieter und Agent** | Während der Bereitstellung von Azure Site Recovery installieren Sie den Azure Site Recovery-Anbieter. Die Anbieterinstallation installiert den Azure Recovery Services-Agent außerdem auf jedem Hyper-V-Server, der über zu schützende virtuelle Computer verfügt. Alle Hyper-V-Server in einem Site Recovery-Tresor sollten über die gleichen Anbieter- und Agent-Versionen verfügen.<br/><br/>Der Anbieter muss über das Internet eine Verbindung mit Azure Site Recovery herstellen. Datenverkehr kann direkt oder über einen Proxy gesendet werden. Beachten Sie, dass HTTPS-basierte Proxys nicht unterstützt werden. Der Proxyserver sollte den Zugriff auf Folgendes zulassen: <br/><br/> *.hypervrecoverymanager.windowsazure.com <br/><br/> *.accesscontrol.windows.net <br/><br/> *.backup.windowsazure.com <br/><br/> *.blog.core.windows.net <br/><br/> *store.core.windows.net <br/><br/> https://www.msftncsi.com/ncsi.txt<br/><br/>Wenn Sie auf dem Server über Firewallregeln verfügen, die auf IP-Adressen basieren, sollten Sie sicherstellen, dass die Regeln die Kommunikation mit Azure zulassen. Sie müssen die [IP-Adressbereiche des Azure-Datencenters](https://www.microsoft.com/download/confirmation.aspx?id=41653) und den HTTPS-Port (443) zulassen.<br/><br/>Lassen Sie IP-Adressbereiche für die Azure-Region Ihres Abonnements und für die Region „USA, Westen“ zu.
 
 ## Voraussetzungen für geschützte Computer
 
@@ -469,4 +469,4 @@ Hier wird beschrieben, wie Sie die Konfigurationseinstellungen, den Status und d
 
 Nachdem die Bereitstellung eingerichtet wurde und ausgeführt wird, können Sie sich über die unterschiedlichen Failoverarten [informieren](site-recovery-failover.md).
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

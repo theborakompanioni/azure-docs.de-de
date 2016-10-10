@@ -32,7 +32,7 @@ Der v2.0-Endpunkt unterstützt nicht alle Szenarien und Funktionen von Azure Act
 
 
 ## Code von GitHub herunterladen
-Der Code für dieses Tutorial wird [auf GitHub](git@github.com:Azure-Samples/active-directory-android-native-oidcandroidlib-v2.git) verwaltet. Um folgen zu können, können Sie [das App-Gerüst als ZIP-Datei herunterladen](git@github.com:Azure-Samples/active-directory-android-native-oidcandroidlib-v2.git/archive/skeleton.zip) oder das Gerüst klonen:
+Der Code für dieses Tutorial wird [auf GitHub](https://github.com/Azure-Samples/active-directory-android-native-oidcandroidlib-v2) verwaltet. Um folgen zu können, können Sie [das App-Gerüst als ZIP-Datei herunterladen](https://github.com/Azure-Samples/active-directory-android-native-oidcandroidlib-v2/archive/skeleton.zip) oder das Gerüst klonen:
 
 ```
 git clone --branch skeleton git@github.com:Azure-Samples/active-directory-android-native-oidcandroidlib-v2.git
@@ -197,4 +197,4 @@ Klicken Sie nach erfolgreicher Authentifizierung auf die Schaltfläche **Request
 
 Wir empfehlen Ihnen, den Erhalt von Benachrichtigungen zu Sicherheitsvorfällen einzurichten. Rufen Sie dazu das [Security TechCenter](https://technet.microsoft.com/security/dd252948) auf, und abonnieren Sie die Sicherheitsempfehlungen.
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

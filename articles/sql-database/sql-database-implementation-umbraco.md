@@ -13,12 +13,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="09/08/2016"
+   ms.date="09/22/2016"
    ms.author="carlrab"/>
 
 # Umbraco verwendet Azure SQL-Datenbank, um Dienste für Tausende von Mandanten in der Cloud schnell bereitzustellen und zu skalieren
 
-![Umbraco-Logo](./media/sql-database-case-study-umbraco/umbracologo.png)
+![Umbraco-Logo](./media/sql-database-implementation-umbraco/umbracologo.png)
 
 Umbraco ist ein beliebtes Open Source-CMS (Content Management System), das jede Workload unterstützt, von kleinen Kampagnen- oder Werbewebsites bis hin zu komplexen Anwendungen für Fortune 500-Unternehmen und globale Medienwebsites.
 
@@ -33,7 +33,7 @@ Um die Kundenbereitstellungen zu vereinfachen, hat Umbraco UaaS (Umbraco-as-a-Se
 UaaS ermöglicht SaaS-Kunden die Verwendung der CMS-Funktionen von Umbraco, die bisher außerhalb ihrer Reichweite lagen. Diesen Kunden wird eine funktionierende CMS-Umgebung bereitgestellt, die eine Produktionsdatenbank umfasst. Kunden können je nach Anforderungen bis zu zwei zusätzliche Datenbanken für Entwicklungs- und Stagingumgebungen hinzufügen. Wenn eine neue Umgebung angefordert wird, weist ein automatisierter Prozess diesem Kunden automatisch eine Datenbank zu. Die neue Datenbank steht innerhalb weniger Sekunden bereit, da sie von Umbraco aus einem elastischen Azure-Pool aus verfügbaren Datenbanken bereits vorab bereitgestellt wurde (siehe Abbildung 1).
 
 
-![Abbildung 1](./media/sql-database-case-study-umbraco/figure1.png)
+![Umbraco-Bereitstellungslebenszyklus](./media/sql-database-implementation-umbraco/figure1.png)
 
 Abbildung 1. Bereitstellungslebenszyklus für Umbraco-as-a-Service (UaaS)
  
@@ -53,9 +53,9 @@ Mit Azure SQL-Datenbank und weiteren Azure-Diensten können Umbraco-Kunden ihre 
 
     Kunden verwenden bis zu drei Umgebungen (Produktion, Staging und/oder Entwicklung), die jeweils über eine eigene Datenbank verfügen. Die Kundendatenbanken befinden sich in elastischen Datenbankpools, sodass Umbraco eine effiziente Skalierung sicherstellen kann, ohne Ressourcen überdimensionieren zu müssen.
 
-    ![Abbildung 2](./media/sql-database-case-study-umbraco/figure2.png)
+    ![Umbraco-Projektübersicht](./media/sql-database-implementation-umbraco/figure2.png)
 
-    ![Abbildung 3](./media/sql-database-case-study-umbraco/figure3.png)
+    ![Umbraco-Projektdetails](./media/sql-database-implementation-umbraco/figure3.png)
 
     Abbildung 2. UaaS-Kundenwebsite mit Projektübersicht und Projektdetails
 
@@ -85,7 +85,7 @@ Morten Christensen, Technical Lead bei Umbraco, erklärt: „UaaS wächst zurzei
 
 Wenn ein Kunde die zweite oder dritte Umgebung nicht mehr benötigt, kann er diese Umgebung(en) einfach entfernen. Damit werden Ressourcen freigegeben, die im Rahmen des elastischen Pools an verfügbaren Datenbanken von Umbraco für andere Kunden genutzt werden können.
 
-![Abbildung 4](./media/sql-database-case-study-umbraco/figure4.png)
+![Umbraco-Bereitstellungsarchitektur](./media/sql-database-implementation-umbraco/figure4.png)
 
 Abbildung 3. UaaS-Bereitstellungsarchitektur in Microsoft Azure
 
@@ -101,7 +101,7 @@ Als die Entwickler bei Umbraco beschlossen, auf ein SaaS-Modell umzusteigen, wus
 
 Ein wichtiges Ziel für die Entwickler bei Umbraco war es, den UaaS-Kunden eine Möglichkeit zu bieten, Umgebungen schnell und ohne Kapazitätseinschränkungen bereitzustellen. Die Bereitstellung eines dedizierten gehosteten Diensts in den Rechenzentren von Umbraco hätte jedoch sehr viel überschüssige Kapazität für Spitzenlasten bei der Verarbeitung erfordert. Dafür wäre eine beträchtliche Menge an Recheninfrastruktur notwendig gewesen, die regelmäßig zu wenig ausgelastet gewesen wäre.
 
-Darüber hinaus wollte das Umbraco-Entwicklungsteam eine Lösung, mit der so viel vorhandener Code wie möglich wiederverwendet werden konnte. Mikkel Hansen, Entwickler bei Umbraco, formuliert es so: „Wir waren zufrieden mit den Microsoft-Entwicklungstools, die wir bereits kannten, wie z.B. Microsoft SQL Server, Microsoft Azure SQL-Datenbank, ASP.NET und die Internetinformationsdienste. Vor der Investition in eine IaaS- oder PaaS-Cloudlösung wollten wir sichergehen, dass eine solche Lösung unsere Microsoft-Tools und -Plattformen unterstützen würde, um keine massiven Änderungen an unserer Codebasis vornehmen zu müssen.“
+Darüber hinaus wollte das Umbraco-Entwicklungsteam eine Lösung, mit der so viel vorhandener Code wie möglich wiederverwendet werden konnte. Mikkel Madsen, Entwickler bei Umbraco, formuliert es so: „Wir waren zufrieden mit den Microsoft-Entwicklungstools, die wir bereits kannten, wie z.B. Microsoft SQL Server, Microsoft Azure SQL-Datenbank, ASP.NET und die Internetinformationsdienste. Vor der Investition in eine IaaS- oder PaaS-Cloudlösung wollten wir sichergehen, dass eine solche Lösung unsere Microsoft-Tools und -Plattformen unterstützen würde, um keine massiven Änderungen an unserer Codebasis vornehmen zu müssen.“
 
 Um alle Kriterien zu erfüllen, suchte Umbraco nach einem Cloudpartner mit folgenden Qualifikationen:
 
@@ -117,7 +117,7 @@ Morten führt weiter aus: „Früher mussten wir die Server für Webdatenbanken 
 
 Morten ist auch mit den Skalierungsfunktionen von Azure höchst zufrieden. „Elastische Datenbankpools eignen sich perfekt für unser SaaS-Angebot, da wir die Kapazität ganz nach Bedarf erweitern oder verkleinern können. Die Bereitstellung ist einfach, und mit unserem Setup können wir die Auslastung maximieren.“ Morten sagt weiter: „Die Einfachheit der elastischen Pools zusammen mit der Sicherheit der auf Dienstebenen basierenden DTUs ermöglicht es uns, neue Ressourcenpools ganz nach Bedarf bereitzustellen. Kürzlich erlebte einer unserer größeren Kunden eine Spitzenauslastung von 100 DTUs in seiner Liveumgebung. Dank Azure konnten unsere elastischen Pools die Datenbanken des Kunden in Echtzeit mit den notwendigen Ressourcen versorgen, ohne dass DTU-Anforderungen in irgendeiner Form vorhergesagt werden mussten. Einfach gesagt: Unsere Kunden erhalten die Reaktionszeiten, die sie erwarten, und wir können unsere Leistungs-SLAs erfüllen.“
 
-Mikkel Hansen fasst zusammen: „Wir haben uns den leistungsstarken Azure-Algorithmus zunutze gemacht, der ein häufiges SaaS-Szenario (Onboarding eines Kunden in Echtzeit und ganz an den Bedarf des Kunden angepasst) mit unserem Anwendungsmuster verknüpft (Vorabbereitstellung von Datenbanken, sowohl für Entwicklungs- als auch für Liveumgebungen). All dies baut auf der zugrunde liegende Technologie auf (Azure Service Bus-Warteschlangen zusammen mit Azure SQL-Datenbank).“
+Mikkel Madsen fasst zusammen: „Wir haben uns den leistungsstarken Azure-Algorithmus zunutze gemacht, der ein häufiges SaaS-Szenario (Onboarding eines Kunden in Echtzeit und ganz an den Bedarf des Kunden angepasst) mit unserem Anwendungsmuster verknüpft (Vorabbereitstellung von Datenbanken, sowohl für Entwicklungs- als auch für Liveumgebungen). All dies baut auf der zugrunde liegende Technologie auf (Azure Service Bus-Warteschlangen zusammen mit Azure SQL-Datenbank).“
 
 ##Dank Azure übertrifft UaaS die Erwartungen der Kunden
 
@@ -139,4 +139,4 @@ Seitdem Umbraco sich für Azure als Cloudpartner entschieden hat, konnte das Unt
 
 - Weitere Informationen zu Umbraco-as-a-Service finden Sie unter [Umbraco](https://umbraco.com/cloud).
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

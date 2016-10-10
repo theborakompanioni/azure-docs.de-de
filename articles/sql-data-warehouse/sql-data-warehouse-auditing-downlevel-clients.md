@@ -13,19 +13,10 @@
    ms.tgt_pltfrm="na"
    ms.devlang="na"
    ms.topic="article"
-   ms.date="08/29/2016" 
+   ms.date="09/24/2016" 
    ms.author="rortloff;barbkess;sonyama"/>
 
 # SQL Data Warehouse – Unterstützung von Vorgängerversionsclients für Überwachung und dynamische Datenmaskierung
-
-> [AZURE.SELECTOR]
-- [Sicherheitsübersicht](sql-data-warehouse-overview-manage-security.md)
-- [Bedrohungserkennung](sql-data-warehouse-security-threat-detection.md)
-- [Verschlüsselung (Portal)](sql-data-warehouse-encryption-tde.md)
-- [Verschlüsselung (T-SQL)](sql-data-warehouse-encryption-tde-tsql.md)
-- [Übersicht über die Überwachung](sql-data-warehouse-auditing-overview.md)
-- [Überwachung für Vorgängerversionsclients](sql-data-warehouse-auditing-downlevel-clients.md)
-
 
 [Überwachung](sql-data-warehouse-auditing-overview.md) kann mit SQL-Clients genutzt werden, die die TDS-Umleitung unterstützen.
 
@@ -46,4 +37,4 @@ Eine unvollständige Liste der "Vorgängerversionsclients":
 
 **Anmerkung:** Die oben genannte Änderung des vollqualifizierten Domänennamens des Servers kann sich auch als nützlich erweisen bei der Anwendung einer Richtlinie für die Überwachung auf SQL Server-Ebene, ohne dass ein Konfigurationsschritt in jeder Datenbank ausgeführt werden muss (temporäre Minderung).
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0928_2016-->

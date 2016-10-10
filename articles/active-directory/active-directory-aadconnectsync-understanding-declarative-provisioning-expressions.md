@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="andkjell"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -65,12 +65,12 @@ Hier sehen Sie ein Beispiel, in dem die Metaverseattributdomäne mit dem NetBIOS
 Folgende Operatoren können verwendet werden:
 
 - **Vergleich**: <, <=, <>, =, >, >=
-- **Mathematik**: +, -, \*, -
+- **Mathematik**: +, -, *, -
 - **Zeichenfolge**: & (concatenate)
 - **Logischer Ausdruck**: && (and), || (or)
 - **Auswertungsreihenfolge**: ( )
 
-Operatoren werden von links nach rechts ausgewertet und haben bei der Auswertung die gleiche Priorität. Dies bedeutet, dass der Multiplikator (\*) nicht vor der Subtraktion (-) ausgewertet wird. „2\*(5+3)“ ist nicht dasselbe wie „2\*5+3“. Die Klammern werden verwendet, um die Reihenfolge der Auswertung zu ändern, wenn die Auswertungsreihenfolge von links nach rechts nicht geeignet ist.
+Operatoren werden von links nach rechts ausgewertet und haben bei der Auswertung die gleiche Priorität. Dies bedeutet, dass der Multiplikator (*) nicht vor der Subtraktion (-) ausgewertet wird. „2*(5+3)“ ist nicht dasselbe wie „2*5+3“. Die Klammern werden verwendet, um die Reihenfolge der Auswertung zu ändern, wenn die Auswertungsreihenfolge von links nach rechts nicht geeignet ist.
 
 ## Mehrwertige Attribute
 Die Funktionen können sowohl für einwertige als auch für mehrwertige Attribute verwendet werden. Bei mehrwertigen Attributen wird die Funktion für jeden Wert ausgeführt, und auf alle Werte wird die gleiche Funktion angewendet.
@@ -92,4 +92,4 @@ Beispiel: `Trim([proxyAddresses])` – Führt eine Trim-Funktion für jeden Wert
 
 - [Azure AD Connect-Synchronisierung: Funktionsreferenz](active-directory-aadconnectsync-functions-reference.md)
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0928_2016-->

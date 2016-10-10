@@ -16,7 +16,7 @@
 	ms.date="08/15/2016"
 	ms.author="brandwe"/>
 
-# An- und Abmeldung bei Webanwendungen mit Azure AD
+# An- und Abmeldung bei NodeJS-Web-Apps mit Azure AD
 
 
 Hier wird Passport für Folgendes verwendet:
@@ -243,7 +243,7 @@ app.post('/auth/openid/return',
   });
   ```
 
-## 4. Verwenden von Passport zur Ausgabe von An- und Abmeldeanforderungen für Azure AD
+## 4\. Verwenden von Passport zur Ausgabe von An- und Abmeldeanforderungen für Azure AD
 
 Ihre App ist nun ordnungsgemäß für die Kommunikation mit dem v2.0-Endpunkt über das OpenID Connect-Authentifizierungsprotokoll konfiguriert. `passport-azure-ad` hat dabei alle Details zur Erstellung von Authentifizierungsnachrichten, zur Überprüfung der Token von Azure AD und zur Verwaltung von Benutzersitzungen übernommen. Sie müssen es Ihren Benutzern nur noch ermöglichen, sich anzumelden und abzumelden, und zusätzliche Informationen zu den angemeldeten Benutzer sammeln.
 
@@ -414,4 +414,4 @@ Sie können nun mit den Themen für fortgeschrittenere Benutzer fortfahren. Wie 
 
 [AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources.md)]
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0928_2016-->

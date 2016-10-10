@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="09/01/2016" 
+	ms.date="09/27/2016" 
 	ms.author="rnagpal"/>
 
 # DocumentDB-APIs und -SDKs 
@@ -32,14 +32,21 @@
 <tr><td>**SDK-Download**</td><td>[NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/)</td></tr>
 <tr><td>**API-Dokumentation**</td><td>[.NET-API-Referenzdokumentation](https://msdn.microsoft.com/library/azure/dn948556.aspx)</td></tr>
 <tr><td>**Beispiele**</td><td>[.NET-Codebeispiele](documentdb-dotnet-samples.md)</td></tr>
-<tr><td>**Erste Schritte**</td><td>[Erste Schritte mit dem DocumentDB .NET SDK](documentdb-get-started.md)</td></tr>
+<tr><td>**Erste Schritte**</td><td>[Erste Schritte mit dem DocumentDB .NET SDK] (documentdb-get-started.md)</td></tr>
 <tr><td>**Web-App-Tutorial**</td><td>[Webanwendungsentwicklung mit DocumentDB](documentdb-dotnet-application.md)</td></tr>
-<tr><td>**Aktuelles unterstütztes Framework**</td><td>[Microsoft .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653)</td></tr>
+<tr><td>**Aktuelles unterstütztes Framework**</td><td>[Microsoft .NET Framework 4.5] (https://www.microsoft.com/download/details.aspx?id=30653)</td></tr>
 </table></br>
 
 ## Versionsinformationen
 
 > [AZURE.IMPORTANT] Beim Abfragen partitionierter Sammlungen erhalten Sie ggf. die Ausnahme „System.NotSupportedException“. Um diesen Fehler zu vermeiden, deaktivieren Sie die auf der Registerkarte „Build“ im Fenster „Eigenschaften“ Ihres Projekts die Option „32-Bit bevorzugen“.
+
+### <a name="1.10.0"/>[1\.10.0](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.10.0)
+
+  - Unterstützung direkter Verbindungen für partitionierte Sammlungen hinzugefügt.
+  - Verbesserte Leistung für die Konsistenzebene „Begrenzte Veraltung (Bounded Staleness)“.
+  - LINQ-Unterstützung für StringEnumConverter, IsoDateTimeConverter und UnixDateTimeConverter beim Übersetzen von Prädikaten hinzugefügt.
+  - Verschiedene Fehlerbehebungen im SDK.
 
 ### <a name="1.9.5"/>[1\.9.5](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.9.5)
 
@@ -140,9 +147,9 @@
   - LINQ-Anbieterunterstützung für „OrderBy()“ oder „OrderByDescending()“
   - Änderung an „IndexingPolicy“ zur Unterstützung von „Order By“
   
-		**NB: Mögliche neue Änderung** 
+		**NB: Possible breaking change** 
   
-    	Wenn Sie über vorhandenen Code verfügen, der Sammlungen mit einer benutzerdefinierten Indizierungsrichtlinie bereitstellt, muss Ihr vorhandener Code so aktualisiert werden, dass er die neue IndexingPolicy-Klasse unterstützt. Wenn Sie keine benutzerdefinierte Indizierungsrichtlinie haben, betrifft Sie diese Änderung nicht.
+    	If you have existing code that provisions collections with a custom indexing policy, then your existing code will need to be updated to support the new IndexingPolicy class. If you have no custom indexing policy, then this change does not affect you.
 
 ### <a name="1.1.0"/>[1\.1.0](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.1.0)
 - Unterstützung für das Partitionieren von Daten mithilfe der neuen Klassen „HashPartitionResolver“ und „RangePartitionResolver“ und von „IPartitionResolver“
@@ -174,31 +181,7 @@ Alle Versionen des Azure DocumentDB-SDK für .NET vor Version **1.0.0** werden a
  
 | Version | Herausgabedatum | Deaktivierungstermine 
 | ---	  | ---	         | ---
-| [1\.9.5](#1.9.5) | 01. September 2016 |--- 
-| [1\.9.4](#1.9.4) | 24. August 2016 |--- 
-| [1\.9.3](#1.9.3) | 15. August 2016 |--- 
-| [1\.9.2](#1.9.2) | 23. Juli 2016 |--- 
-| 1.9.1 | Veraltet |--- 
-| 1.9.0 | Veraltet |--- 
-| [1\.8.0](#1.8.0) | 14. Juni 2016 |--- 
-| [1\.7.1](#1.7.1) | 06. Mai 2016 |--- 
-| [1\.7.0](#1.7.0) | 26. April 2016 |--- 
-| [1\.6.3](#1.6.3) | 08. April 2016 |--- 
-| [1\.6.2](#1.6.2) | 29. März 2016 |--- 
-| [1\.5.3](#1.5.3) | 19. Februar 2016 |--- 
-| [1\.5.2](#1.5.2) | 14. Dezember 2015 |--- 
-| [1\.5.1](#1.5.1) | 23. November 2015 |--- 
-| [1\.5.0](#1.5.0) | 05. Oktober 2015 |--- 
-| [1\.4.1](#1.4.1) | 25. August 2015 |--- 
-| [1\.4.0](#1.4.0) | 13. August 2015 |--- 
-| [1\.3.0](#1.3.0) | 05. August 2015 |--- 
-| [1\.2.0](#1.2.0) | 06. Juli 2015 |--- 
-| [1\.1.0](#1.1.0) | 30. April 2015 |--- 
-| [1\.0.0](#1.0.0) | 08. April 2015 |--- 
-| [0\.9.3-prelease](#0.9.x-preview) | 12. März 2015 | 29. Februar 2016 
-| [0\.9.2-prelease](#0.9.x-preview) | Januar 2015 | 29. Februar 2016 
-| [.9.1-prelease](#0.9.x-preview) | 13. Oktober 2014 | 29. Februar 2016 
-| [0\.9.0-prelease](#0.9.x-preview) | 21. August 2014 | 29. Februar 2016
+| [1\.10.0](#1.10.0) | 27. September 2016 |--- | [1\.9.5](#1.9.5) | 1. September 2016 |--- | [1\.9.4](#1.9.4) | 24. August 2016 |--- | [1\.9.3](#1.9.3) | 15. August 2016 |--- | [1\.9.2](#1.9.2) | 23 Juli 2016 |--- | 1.9.1 | Veraltet |--- | 1.9.0 | Veraltet |--- | [1\.8.0](#1.8.0) | 14. Juni 2016 |--- | [1\.7.1](#1.7.1) | 6. Mai 2016 |--- | [1\.7.0](#1.7.0) | 26. April 2016 |--- | [1\.6.3](#1.6.3) | 8. April 2016 |--- | [1\.6.2](#1.6.2) | 29. März 2016 |--- | [1\.5.3](#1.5.3) | 19. Februar 2016 |--- | [1\.5.2](#1.5.2) | 14. Dezember 2015 |--- | [1\.5.1](#1.5.1) | 23. November 2015 |--- | [1\.5.0](#1.5.0) | 5. Oktober 2015 |--- | [1\.4.1](#1.4.1) | 25. August 2015 |--- | [1\.4.0](#1.4.0) | 13. August 2015 |--- | [1\.3.0](#1.3.0) | 5. August 2015 |--- | [1\.2.0](#1.2.0) | 6. Juli 2015 |--- | [1\.1.0](#1.1.0) | 30. April 2015 |--- | [1\.0.0](#1.0.0) | 8. April 2015 |--- | [0\.9.3-prelease](#0.9.x-preview) | 12. März 2015 | 29. Februar 2016 | [0\.9.2-prelease](#0.9.x-preview) | Januar 2015 | 29. Februar 2016 | [.9.1-prelease](#0.9.x-preview) | 13. Oktober 2014 | 29. Februar 2016 | [0\.9.0-prelease](#0.9.x-preview) | 21. August 2014 | 29. Februar 2016
 
 ## Häufig gestellte Fragen
 [AZURE.INCLUDE [documentdb-sdk-faq](../../includes/documentdb-sdk-faq.md)]
@@ -207,4 +190,4 @@ Alle Versionen des Azure DocumentDB-SDK für .NET vor Version **1.0.0** werden a
 
 Weitere Informationen zu DocumentDB finden Sie auf der Seite zum Dienst [Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/).
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0928_2016-->

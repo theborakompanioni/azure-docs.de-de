@@ -86,6 +86,9 @@ Für jede integrierte PHP-Laufzeit können Sie alle Konfigurationsoptionen ände
 		; Example Settings
 		display_errors=On
 		upload_max_filesize=10M
+		
+		; OPTIONAL: Turn this on to write errors to d:\home\LogFiles\php_errors.log
+		; log_errors=On
 
 3. Stellen Sie Ihre Web-App bereit.
 4. Starten Sie die Web-App neu. (Der Neustart ist erforderlich, da die Frequenz, mit der PHP `.user.ini`-Dateien liest, durch die Einstellung `user_ini.cache_ttl` geregelt wird. Dies ist eine Einstellung auf Systemebene, die standardmäßig 300 Sekunden (5 Minuten) beträgt. Durch einen Neustart der Web-App wird PHP gezwungen, die neuen Einstellungen in der `.user.ini`-Datei zu lesen.)
@@ -175,11 +178,11 @@ Standardmäßig wird „composer.json“ (sofern in Ihrem PHP-Projekt vorhanden)
 
     ![Hinzufügen der Composer-Erweiterung zum Aktivieren der Composer-Automatisierung in Azure](./media/web-sites-php-configure/composer-extension-add.png)
     
-3. Klicken Sie auf **OK**, um die Geschäftsbedingungen zu akzeptieren. Klicken Sie erneut auf **OK**, um die Erweiterung hinzuzufügen.
+3. Klicken Sie auf **OK**, um die rechtlichen Bedingungen zu akzeptieren. Klicken Sie erneut auf **OK**, um die Erweiterung hinzuzufügen.
 
-    Das Blatt **Installierte Erweiterungen** zeigt nun die Composer-Erweiterung an. ![Akzeptieren der Geschäftsbedingungen zum Aktivieren der Composer-Automatisierung in Azure](./media/web-sites-php-configure/composer-extension-view.png)
+    Auf dem Blatt **Installierte Erweiterungen** wird nun die Composer-Erweiterung angezeigt. ![Akzeptieren der Geschäftsbedingungen zum Aktivieren der Composer-Automatisierung in Azure](./media/web-sites-php-configure/composer-extension-view.png)
     
-4. Führen Sie nun wie im vorherigen Abschnitt `git add`, `git commit`, und `git push` aus. Nun sehen Sie, dass Composer in composer.json definierte Abhängigkeiten installiert.
+4. Führen Sie nun wie im vorherigen Abschnitt `git add`, `git commit` und `git push` aus. Nun sehen Sie, dass Composer in composer.json definierte Abhängigkeiten installiert.
 
     ![Git-Bereitstellung mit Composer-Automatisierung in Azure](./media/web-sites-php-configure/composer-extension-success.png)
 
@@ -208,4 +211,4 @@ Weitere Informationen finden Sie im [PHP Developer Center](/develop/php/).
 [GETPHPVERPS]: ./media/web-sites-php-configure/ShowPHPVersion-PS.png
  
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0928_2016-->

@@ -3,7 +3,7 @@
 	description="Richten Sie ein Datengateway ein, um Daten zwischen dem lokalen Speicher und der Cloud zu verschieben. Verwenden Sie das Datenverwaltungsgateway in Azure Data Factory zum Verschieben Ihrer Daten." 
 	services="data-factory" 
 	documentationCenter="" 
-	authors="spelluru" 
+	authors="linda33wj" 
 	manager="jhubbard" 
 	editor="monicar"/>
 
@@ -14,7 +14,7 @@
 	ms.devlang="na" 
 	ms.topic="article" 
 	ms.date="08/30/2016" 
-	ms.author="spelluru"/>
+	ms.author="jingwang"/>
 
 # Gateway zur Datenverwaltung
 Das Datenverwaltungsgateway ist ein Client-Agent, den Sie in Ihrer lokalen Umgebung installieren müssen, um Daten zwischen Ihren Cloudspeichern und lokalen Datenspeichern kopieren zu können. Die lokalen von Data Factory unterstützten Datenspeicher werden im Abschnitt [Unterstützte Datenquellen](data-factory-data-movement-activities.md##supported-data-stores) aufgeführt.
@@ -86,7 +86,7 @@ Das Datenverwaltungsgateway kann auf folgende Weise installiert werden:
 7. Klicken Sie auf der Seite **Bereit zur Installation** auf **Installieren**.
 8. Klicken Sie auf **Fertig stellen**, um die Installation abzuschließen.
 9. Ermitteln Sie den Schlüssel im Azure-Portal. Im nächsten Abschnitt finden Sie schrittweise Anweisungen.
-10. Führen Sie im **Datenverwaltungsgateway-Konfigurations-Manager**, der auf Ihrem Computer ausgeführt wird, auf der Seite **Gateway registrieren** Folgendes aus:
+10. Führen Sie im **Konfigurations-Manager des Datenverwaltungsgateways**, der auf Ihrem Computer ausgeführt wird, auf der Seite **Gateway registrieren** die folgenden Schritte aus:
 	1. Fügen Sie den Schlüssel in das Textfeld ein.
 	2. Optional klicken Sie auf **Gatewayschlüssel anzeigen**, um den Schlüsseltext anzuzeigen.
 	3. Klicken Sie auf **Registrieren**.
@@ -142,7 +142,7 @@ Auf Ebene der Windows-Firewall sind diese ausgehenden Ports normalerweise aktivi
 
 Stellen Sie sicher, dass die Firewallregeln für die Unternehmensfirewall, die Windows-Firewall auf dem Gatewaycomputer und den Datenspeicher selbst richtig aktiviert sind. Indem Sie diese Regeln aktivieren, kann das Gateway sowohl mit der Quelle als auch mit der Senke erfolgreich eine Verbindung herstellen. Aktivieren Sie die Regeln für jeden Datenspeicher, der am Kopiervorgang beteiligt ist.
 
-Um z.B. Daten aus **einem lokalen Datenspeicher in eine Azure SQL-Datenbanksenke oder eine Azure SQL Data Warehouse-Senke** zu kopieren, müssen Sie Folgendes tun:
+Um z.B. Daten aus **einem lokalen Datenspeicher in eine Azure SQL-Datenbanksenke oder eine Azure SQL Data Warehouse-Senke** zu kopieren, führen Sie die folgenden Schritte aus:
 
 - Lassen Sie ausgehende **TCP**-Kommunikation an Port **1433** sowohl für die Windows-Firewall als auch die Unternehmensfirewall zu.
 - Konfigurieren Sie die Firewall der Azure SQL Server-Instanz, um die IP-Adresse des Gatewaycomputers zur Liste der zulässigen IP-Adressen hinzuzufügen.
@@ -182,7 +182,7 @@ Sie können den HTTP-Proxy im Konfigurations-Manager anzeigen und aktualisieren.
 Wenn Sie die Einstellung **Systemproxy verwenden** für den HTTP-Proxy auswählen, verwendet das Gateway die Proxyeinstellungen in „diahost.exe.config“. Wenn in „diahost.exe.config“ kein Proxy angegeben ist, stellt das Gateway die Verbindung zu den Clouddiensten nicht über einen Proxy, sondern direkt her. Das folgende Verfahren enthält Anweisungen für die Aktualisierung der Konfigurationsdatei.
 
 1.	Erstellen Sie im Datei-Explorer eine sichere Kopie von „C:\\Programme\\Microsoft Data Management Gateway\\2.0\\Shared\\diahost.exe.config“, um die Originaldatei zu sichern.
-2.	Starten Sie „Notepad.exe“ als Administrator, und öffnen Sie die Textdatei „C:\\Programme\\Microsoft Data Management Gateway\\2.0\\Shared\\diahost.exe.config“. Sie finden das Standardtag für „system.net“ wie folgt:
+2.	Starten Sie „Notepad.exe“ als Administrator, und öffnen Sie die Textdatei „C:\\Programme\\Microsoft Data Management Gateway\\2.0\\Shared\\diahost.exe.config“. Sie finden das Standardtag für „system.net“, wie im folgenden Code gezeigt:
 
 			<system.net>
 				<defaultProxy useDefaultCredentials="true" />
@@ -208,7 +208,7 @@ Zusätzlich zu den obigen Punkten müssen Sie auch sicherstellen, dass Microsoft
 Wenn Sie ähnliche Fehler wie die unten aufgeführten feststellen, liegt dies meist an einer unsachgemäßen Konfiguration der Firewall oder des Proxyservers, die verhindert, dass das Gateway eine Verbindung mit der Data Factory herstellt, um sich zu authentifizieren. Überprüfen Sie den vorherigen Abschnitt, um sicherzustellen, dass die Firewall und der Proxyserver richtig konfiguriert sind.
 
 1.	Wenn Sie versuchen, das Gateway zu registrieren, wird die folgende Fehlermeldung angezeigt: "Fehler beim Registrieren des Gatewayschlüssels. Prüfen Sie, ob sich das Datenverwaltungsgateway im Status "Verbunden" befindet und der Datenverwaltungsgateway-Hostdienst gestartet wurde, bevor Sie versuchen, den Gatewayschlüssel erneut zu registrieren."
-2.	Wenn Sie den Konfigurations-Manager öffnen, wird der Status als „Getrennt“ oder „Verbindung wird hergestellt“ angezeigt. Wenn Sie die Windows-Ereignisprotokolle anzeigen, sehen Sie unter „Ereignisanzeige“ > „Anwendungs- und Dienstprotokolle“ > „Datenverwaltungsgateway“ Fehlermeldungen wie die folgende: `Unable to connect to the remote server` `A component of Data Management Gateway has become unresponsive and restarts automatically. Component name: Gateway.`
+2.	Wenn Sie den Konfigurations-Manager öffnen, wird der Status als „Getrennt“ oder „Verbindung wird hergestellt“ angezeigt. Wenn Sie Windows-Ereignisprotokolle anzeigen, sehen Sie unter „Ereignisanzeige“ > „Anwendungs- und Dienstprotokolle“ > „Datenverwaltungsgateway“ Fehlermeldungen wie die folgende: `Unable to connect to the remote server` `A component of Data Management Gateway has become unresponsive and restarts automatically. Component name: Gateway.`
 
 ### Öffnen von Port 8050 für die Verschlüsselung der Anmeldeinformationen 
 Die Anwendung **Anmeldeinformationen festlegen** verwendet den eingehenden Port **8050**, um die Anmeldeinformationen an das Gateway weiterzugeben, wenn Sie im Azure-Portal einen lokalen verknüpften Dienst einrichten. Während der Einrichtung des Gateways wird es von der Datenverwaltungsgateway-Installation standardmäßig auf dem Gatewaycomputer geöffnet.
@@ -236,7 +236,7 @@ Sie können das Update sofort installieren oder warten, bis das Gateway zum gepl
 
 ![Update im Datenverwaltungsgateway-Konfigurations-Manager](./media/data-factory-data-management-gateway/gateway-auto-update-config-manager.png)
 
-Die Benachrichtigung in der Taskleiste sieht wie folgt aus:
+Die Benachrichtigung in der Taskleiste sieht wie in der folgenden Abbildung aus:
 
 ![Meldung in der Taskleiste](./media/data-factory-data-management-gateway/gateway-auto-update-tray-message.png)
 
@@ -262,7 +262,7 @@ Nach der Installation des Gateways können Sie den Datenverwaltungsgateway-Konfi
 - Führen Sie die Datei **ConfigManager.exe** im Ordner **C:\\Programme\\Microsoft Data Management Gateway\\2.0\\Shared** aus.
  
 ### Startseite
-Auf der Startseite können Sie die folgenden Schritte ausführen:
+Auf der Startseite können Sie die folgenden Aktionen ausführen:
 
 - Anzeigen des Gatewaystatus (mit Clouddienst verbunden oder Ähnliches)
 - **Registrieren** mithilfe eines Schlüssels aus dem Portal
@@ -271,7 +271,7 @@ Auf der Startseite können Sie die folgenden Schritte ausführen:
 - Anzeigen des Datums, zu dem das Gateway **zuletzt aktualisiert** wurde
 
 ### Seite "Einstellungen"
-Auf der Seite „Einstellungen“ können Sie die folgenden Schritte ausführen:
+Auf der Seite „Einstellungen“ können Sie die folgenden Aktionen ausführen:
 
 - Anzeigen, Ändern und Exportieren des **Zertifikats**, das vom Gateway verwendet wird Dieses Zertifikat dient zum Verschlüsseln von Anmeldeinformationen für Datenquellen.
 - Ändern des **HTTPS-Ports** für den Endpunkt Das Gateway öffnet einen Port für die Festlegung der Datenquellen-Anmeldeinformationen.
@@ -279,7 +279,7 @@ Auf der Seite „Einstellungen“ können Sie die folgenden Schritte ausführen:
 - **SSL-Zertifikat anzeigen** wird für die SSL-Kommunikation zwischen Portal und Gateway zum Festlegen von Anmeldeinformationen für Datenquellen verwendet.
 
 ### Seite „Diagnose“
-Auf der Seite „Diagnose“ können Sie die folgenden Schritte ausführen:
+Auf der Seite „Diagnose“ können Sie die folgenden Aktionen ausführen:
 
 - Aktivieren der ausführlichen **Protokollierung**, Anzeigen von Protokollen in der Ereignisanzeige und Senden von Protokollen an Microsoft, falls ein Fehler aufgetreten ist
 - **Testen der Verbindung** mit einer Datenquelle
@@ -310,15 +310,15 @@ Wenn Sie sich im Zusammenhang mit Gatewayproblemen an den Microsoft Support wend
 1. Wechseln Sie zur Registerkarte **Diagnose** im Gateway-Konfigurations-Manager.
  
 	![Datenverwaltungsgateway – Registerkarte „Diagnose“](media/data-factory-data-management-gateway/data-management-gateway-diagnostics-tab.png)
-2. Klicken Sie auf den Link **Protokolle senden**, um das folgende Dialogfeld anzuzeigen.
+2. Klicken Sie auf den Link **Protokolle senden**, um das folgende Dialogfeld anzuzeigen:
 
 	![Datenverwaltungsgateway – Senden von Protokollen](media/data-factory-data-management-gateway/data-management-gateway-send-logs-dialog.png)
 3. (optional) Klicken Sie auf **Protokolle anzeigen**, um Protokolle in der Ereignisanzeige durchzusehen.
 4. (optional) Klicken Sie auf **Datenschutz**, um die Datenschutzbestimmungen der Onlinedienste von Microsoft anzuzeigen.
-3. Wenn Sie zum Hochladen bereit sind, klicken Sie auf **Protokolle senden**, um Protokolle der letzten sieben Tage zur Problembehandlung an Microsoft zu senden. Daraufhin sollte der Status des Vorgangs „Protokolle senden“ wie in der folgenden Abbildung dargestellt angezeigt werden.
+3. Wenn Sie zum Hochladen bereit sind, klicken Sie auf **Protokolle senden**, um Protokolle der letzten sieben Tage zur Problembehandlung an Microsoft zu senden. Daraufhin sollte der Status des Vorgangs „Protokolle senden“ wie in der folgenden Abbildung angezeigt werden:
 
 	![Datenverwaltungsgateway – Senden des Status von Protokollen](media/data-factory-data-management-gateway/data-management-gateway-send-logs-status.png)
-4. Nach Abschluss des Vorgangs wird ein Dialogfeld wie in der folgenden Abbildung dargestellt angezeigt.
+4. Nach Abschluss des Vorgangs wird ein Dialogfeld wie in der folgenden Abbildung angezeigt:
 	
 	![Datenverwaltungsgateway – Senden des Status von Protokollen](media/data-factory-data-management-gateway/data-management-gateway-send-logs-result.png)
 5. Notieren Sie sich die **Berichts-ID**, und teilen Sie sie dem Microsoft Support mit. Die Berichts-ID wird verwendet, um Ihre Gatewayprotokolle zu suchen, die Sie zur Problembehandlung hochgeladen haben. Die Berichts-ID wird auch in der Ereignisanzeige gespeichert, damit Sie darauf zugreifen können. Sie finden Sie anhand der Ereignis-ID „25“ sowie nach Datum und Uhrzeit.
@@ -397,7 +397,7 @@ Dieser Abschnitt enthält Anweisungen zum Verschieben des Gatewayclients von ein
  
 	![Zertifikat angeben](./media/data-factory-data-management-gateway/SpecifyCertificate.png)
 
-	Ein Zertifikat des alten Gateways können Sie wie folgt exportieren: Starten Sie auf dem alten Computer den Datenverwaltungsgateway-Konfigurations-Manager, wechseln Sie zur Registerkarte **Zertifikat**, klicken Sie auf **Exportieren**, und befolgen Sie die Anweisungen.
+	Ein Zertifikat des alten Gateways können Sie wie folgt exportieren: Starten Sie auf dem alten Computer den Konfigurations-Manager des Datenverwaltungsgateways, wechseln Sie zur Registerkarte **Zertifikat**, klicken Sie auf **Exportieren**, und befolgen Sie die Anweisungen.
 10. Nach erfolgreicher Registrierung des Gateways sollten auf der Startseite des Gateway-Konfigurations-Managers **Registrierung** auf **Registriert** und die Option **Status** auf **Gestartet** festgelegt sein.
 
 ## Verschlüsseln der Anmeldeinformationen 
@@ -496,4 +496,4 @@ Sie können ein Gateway mit dem **Remove-AzureRmDataFactoryGateway**-Cmdlet entf
 ## Nächste Schritte
 - Informationen finden Sie unter [Verschieben von Daten zwischen lokalen Quellen und der Cloud mit dem Datenverwaltungsgateway](data-factory-move-data-between-onprem-and-cloud.md). In der exemplarischen Vorgehensweise erstellen Sie eine Pipeline, die das Gateway verwendet, um Daten aus einer lokalen SQL Server-Datenbank in einen Azure-Blob zu verschieben.
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

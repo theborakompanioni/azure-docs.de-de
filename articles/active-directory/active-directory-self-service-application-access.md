@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="asmalser-msft"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -29,7 +29,7 @@ Der Self-Service-Anwendungszugriff ist eine Funktion von [Azure Active Directory
 
 Derzeit wird diese Funktion für alle bereits integrierten und benutzerdefinierten Anwendungen unterstützt, die die einmalige Verbundanmeldung oder die kennwortbasierte einmalige Anwendung im [Azure Active Directory-Anwendungskatalog](https://azure.microsoft.com/marketplace/active-directory/all/) unterstützen, einschließlich Apps wie Salesforce, Dropbox, Google Apps usw. Dieser Artikel beschreibt, wie Sie:
 
-* den Self-Service-Anwendungszugriff für Endbenutzer konfigurieren, einschließlich der Konfiguration eines optionalen Genehmigungsworkflows. 
+* den Self-Service-Anwendungszugriff für Endbenutzer konfigurieren, einschließlich der Konfiguration eines optionalen Genehmigungsworkflows.
 * die Zugriffsverwaltung für bestimmte Anwendungen auf die am besten geeigneten Personen in Ihrer Organisation delegieren und ihnen ermöglichen, den Azure AD-Zugriffsbereich zum Genehmigen von Zugriffsanforderungen, dem direkten Zuweisen von Zugriff für ausgewählte Benutzer oder (optional) zum Festlegen von Anmeldeinformationen für den Anwendungszugriff verwenden, wenn die kennwortbasierte einmalige Anwendung konfiguriert ist.
 
 
@@ -101,7 +101,7 @@ Die Kachel **Konfigurieren** wird nur angezeigt, wenn die Anwendung vom IT-Admin
 
 * **Benutzer werden automatisch mithilfe eines einzelnen Kontos angemeldet, das ich verwalte** – Dies ist ein Sonderfall, der dafür geeignet ist, allen zugewiesenen Benutzern den Zugriff mithilfe eines einzelnen freigegebenen Kontos zu erteilen. Am häufigsten tritt dies bei Social Media-Anwendungen auf, bei denen eine Organisation ein einzelnes „Unternehmenskonto“ besitzt und mehrere Benutzer darin Aktualisierungen vornehmen. Dies entspricht auch dem Kennwort-SSO-Fall, bei dem die [Administratoren die Anmeldeinformationen verwalten](active-directory-appssoaccess-whatis.md#password-based-single-sign-on). Nachdem diese Option ausgewählt wurde, wird die genehmigende Person jedoch dazu aufgefordert, den Benutzernamen und das Kennwort für das einzelne freigegebene Konto einzugeben. Nach Fertigstellung werden alle zugewiesenen Benutzer mit diesem Konto angemeldet, wenn sie in ihrem Azure AD-Zugriffsbereich oder in Office 365 auf die Anwendung klicken.
 
-##Zusätzliche Ressourcen
+##Weitere Ressourcen
 - [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](active-directory-apps-index.md)
 
 <!--Image references-->
@@ -109,4 +109,4 @@ Die Kachel **Konfigurieren** wird nur angezeigt, wenn die Anwendung vom IT-Admin
 [2]: ./media/active-directory-self-service-application-access/ssaa_ap_manage_app.PNG
 [3]: ./media/active-directory-self-service-application-access/ssaa_ap_manage_app_config.PNG
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0928_2016-->

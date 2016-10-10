@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/12/2016"
+	ms.date="09/27/2016"
 	ms.author="cynthn"/>
 
 # Konfigurieren einer Verfügbarkeitsgruppe für virtuelle Computer im klassischen Bereitstellungsmodell
@@ -27,4 +27,4 @@
 
 Weitere Artikel zu klassischen Bereitstellungen finden Sie unter [Technische Artikel zu virtuellen Windows-Computern im klassischen Bereitstellungsmodell](virtual-machines-windows-index.md).
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0928_2016-->

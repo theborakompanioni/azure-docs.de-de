@@ -4,7 +4,7 @@
    services="active-directory"
    documentationCenter=""
    authors="dhanyahk"
-   manager="stevenpo"
+   manager="femila"
    editor=""/>
 
 <tags
@@ -37,7 +37,7 @@ Kontobereitstellungsfehler | 2 Stunden | 4 Stunden | 8 Stunden
 Anwendungsnutzung | 2 Stunden | 4 Stunden | 8 Stunden
 Status des Kennwortrollovers | 2 Stunden | 4 Stunden | 8 Stunden
 **Überwachungs- und Aktivitätsberichte** | | |
-Überwachungsbericht | 1 Minute | 15 Minuten | 30 Minuten
+Überwachungsbericht | 1 Minute | 15 Minuten | 30 Minuten
 Aktivität "Zurücksetzen des Kennworts" (Azure AD) | 2 Stunden | 4 Stunden | 8 Stunden
 Aktivität "Zurücksetzen des Kennworts" (Identity Manager) | 2 Stunden | 4 Stunden | 8 Stunden
 Aktivität "Registrierung für Zurücksetzen des Kennworts" (Azure AD) | 2 Stunden | 4 Stunden | 8 Stunden
@@ -52,4 +52,4 @@ Nutzung RMS-fähiger Anwendungen | 2 Stunden | 4 Stunden | 8 Stunden
 **Private Berichtsvorschau** | | |
 Alle Benutzeranmeldeaktivitäten | 2 Stunden | 4 Stunden | 8 Stunden
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0928_2016-->

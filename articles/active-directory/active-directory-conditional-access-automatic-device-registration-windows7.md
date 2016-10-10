@@ -13,12 +13,15 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/23/2016"
-	ms.author="femila"/>
+	ms.date="09/21/2016"
+	ms.author="MarkVi"/>
 
 # Konfigurieren der automatischen Geräteregistrierung für in eine Domäne eingebundene Windows 7-Geräte
 
-Als IT-Administrator können Sie Ihre in eine Domäne eingebundenen Windows 7-Geräte für die automatische Registrierung bei Azure AD konfigurieren. Hierzu müssen Sie das Geräteregistrierungs-Softwarepaket für Ihre in eine Domäne eingebundenen Windows 7-Geräte mithilfe eines Softwareverteilungssystems wie System Center Configuration Manager bereitstellen. Stellen Sie sicher, dass Sie die Voraussetzungen in "Automatische Geräteregistrierung mit Azure Active Directory für in Domänen eingebundene Windows-Geräte" gelesen haben und erfüllen.
+Als IT-Administrator können Sie Ihre in eine Domäne eingebundenen Windows 7-Geräte für die automatische Registrierung bei Azure AD konfigurieren. Hierzu müssen Sie das Geräteregistrierungs-Softwarepaket für Ihre in eine Domäne eingebundenen Windows 7-Geräte mithilfe eines Softwareverteilungssystems wie System Center Configuration Manager bereitstellen. Stellen Sie sicher, dass Sie die Voraussetzungen in „Automatische Geräteregistrierung mit Azure Active Directory für in Domänen eingebundene Windows-Geräte“ gelesen haben und erfüllen.
+
+>[AZURE.NOTE]
+ Aktuelle Anweisungen zum Einrichten der automatischen Geräteregistrierung finden Sie unter [Einrichten der automatischen Registrierung von in die Domäne eingebundenen Windows-Geräten bei Azure Active Directory](active-directory-conditional-access-automatic-device-registration-setup.md).
 
 ##Installieren des Geräteregistrierung-Softwarepakets auf in eine Domäne eingebundenen Windows 7-Geräten
 
@@ -60,4 +63,4 @@ Das Windows-Ereignisprotokoll auf dem Windows 7-Computer zeigt Meldungen im Zusa
 - [Konfigurieren der automatischen Geräteregistrierung für in eine Domäne eingebundene Windows 8.1-Geräte](active-directory-conditional-access-automatic-device-registration-windows-8-1.md)
 - [Automatische Geräteregistrierung bei Azure Active Directory für in Domänen eingebundene Windows 10-Geräte](active-directory-azureadjoin-devices-group-policy.md)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0928_2016-->

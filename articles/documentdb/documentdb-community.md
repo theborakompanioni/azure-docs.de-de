@@ -13,7 +13,7 @@
   ms.topic="article"
   ms.tgt_pltfrm="na"
   ms.workload="data-services"
-  ms.date="09/12/2016"
+  ms.date="09/26/2016"
   ms.author="andrl"/>
 
 # Communityportal
@@ -120,8 +120,9 @@ Sie können über aktuelle DocumentDB-Nachrichten und -Features auf dem Laufende
 
 | Veranstaltungsname | Referent | Ort | Datum | Hashtag |
 | -------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- | -------------------- | ------------------------ | ------- |
-| [Ignite 2016](https://myignite.microsoft.com/sessions?q=documentdb) | Andrew Liu und Tara Jana | Atlanta (Georgia, USA) | 26\.-30. September 2016 | [#MSIgnite](https://twitter.com/MS_Ignite) |
-| [Strata + Hadoop World](http://conferences.oreilly.com/strata/hadoop-big-data-ny/?cmp=kn-data-confreg-home-stny16_bing_branded) | TBD | New York, NY | 26\. bis 29. September 2016 | [#StrataConf](https://twitter.com/strataconf) |
+| [Ignite 2016](https://myignite.microsoft.com/sessions?q=documentdb)<br><br>[Keynote-Präsentation von Joseph Sirosh: Enable digital transformation using The Unreasonable Effectiveness of A.C.I.D](https://myignite.microsoft.com/sessions/34953) (Ermöglichen von digitaler Transformation mithilfe der unverschämten Effektivität von ACID [Algorithmen, Cloud, IoT und Daten])<br><br>[Session mit Syam Kumar Nair und Andrew Liu: Azure DocumentDB at massive scale: Customer success and design patterns](https://myignite.microsoft.com/sessions/3066) (Azure DocumentDB in großem Stil: Kundenerfolg und Entwurfsmuster)<br><br>[Session mit Joshua Davis: Manage IoT assets with Node.js and DocumentDB](https://myignite.microsoft.com/sessions/39704) (Verwalten von IoT-Assets mit Node.js und DocumentDB)<br><br>[Session mit Tara Jana und Moshe Gutman: Build smarter and scalable applications using Microsoft Azure Database Services](https://myignite.microsoft.com/sessions/2633) (Entwickeln intelligenter und skalierbarer Anwendungen mit Microsoft Azure Database Services)| Andrew Liu, Syam Kumar Nair und Tara Jana | Atlanta (Georgia, USA) | 26\.-30. September 2016 | [#MSIgnite](https://twitter.com/MS_Ignite) |
+| [Meetup auf der Ignite: DocumentDB: Advanced Features for Large-Scale Apps](http://www.meetup.com/Azure-in-the-ATL/events/234252070/) (Erweiterte Features für umfangreiche Apps) | Andrew Liu, Syam Kumar Nair | Atlanta (Georgia, USA) | 27\. September 2016 | [#MSIgnite](https://twitter.com/MS_Ignite) [@FlatironCity](https://twitter.com/FlatironCity) |
+| [Strata + Hadoop World](http://conferences.oreilly.com/strata/hadoop-big-data-ny/?cmp=kn-data-confreg-home-stny16_bing_branded) | Besuchen Sie unseren Stand! | New York, NY | 26\. bis 29. September 2016 | [#StrataConf](https://twitter.com/strataconf) |
 | [Capital City .NET Users Group](http://www.meetup.com/tally-dot-net/events/233768568/) | Santosh Hari | Tallahassee, Florida | 3\. November 2016 | – |
 
 
@@ -137,7 +138,8 @@ Sie können über aktuelle DocumentDB-Nachrichten und -Features auf dem Laufende
 | [Integration User Group](http://www.integrationusergroup.com/do-logic-apps-support-error-handling/) | Howard S. Edidin | Webcast | 20\. Juni 2016 | [Do Logic Apps support error handling? (Unterstützen Logik-Apps die Fehlerbehandlung?)](http://www.integrationusergroup.com/do-logic-apps-support-error-handling/) |
 | [Meetup: Azure-Benutzergruppe Großbritannien](http://www.meetup.com/UKAzureUserGroup/events/229673468/)| Andrew Liu | London, Großbritannien | 12\. Mai 2016 | –
 |[Meetup: ONETUG – .NET-Benutzergruppe Orlando](http://www.meetup.com/ONETUG/events/230797164/)| Santosh Hari| Orlando, Florida, USA| 12\. Mai 2016| – 
-| [SQLBits XV](https://sqlbits.com/) | Andrew Liu, Aravind Ramachandran | Liverpool, Großbritannien | 4\. bis 7. Mai 2016 | –| [Meetup: NYC .NET Developers Group](http://www.meetup.com/NYC-NET-Developers/events/230396260/) | Leonard Lobel | New York City, NY | 21\. April 2016 | – |
+| [SQLBits XV](https://sqlbits.com/) | Andrew Liu, Aravind Ramachandran | Liverpool, Großbritannien | 4\. bis 7. Mai 2016 | –| 
+| [Meetup: NYC .NET Developers Group](http://www.meetup.com/NYC-NET-Developers/events/230396260/) | Leonard Lobel | New York City, NY | 21\. April 2016 | – |
 | [Integration User Group](http://www.integrationusergroup.com/#) | Howard Edidin | Webinar | 25\. April 2016 | – |
 | [Global Azure Bootcamp: SoCal](http://xprs.imcreator.com/free/vishalishere/gab2016) | Leonard Lobel | Orange, CA | 16\. April 2016 | – |
 | [Global Azure Bootcamp: Redmond](https://www.eventbrite.com/e/2016-global-azure-bootcamp-redmond-wa-tickets-21387752343) | David Makogon | Redmond, WA | 16\. April 2016 | – |
@@ -165,7 +167,7 @@ Sie können über aktuelle DocumentDB-Nachrichten und -Features auf dem Laufende
 | [SQL Samstag #417 – Sri Lanka 2015](http://www.sqlsaturday.com/417/Sessions/Details.aspx?sid=21415) | Mihail Mateev | Colombo, Sri Lanka | 06\. Juni 2015 | – |
 | [Meetup: Seattle Scalability Meetup](http://www.meetup.com/Seattle-Scalability-Meetup/events/204010442/) | Dharma Shukla | Seattle, WA | 27\. Mai 2015 | – |
 | [SQL Samstag #377 – Kiew 2015](http://www.sqlsaturday.com/377/Sessions/Details.aspx?sid=20322) | Mihail Mateev | Kiew, Ukraine | 23\. Mai 2015 | – |
-| [Database Month](http://www.databasemonth.com/database/azure-documentdb) | Dharma Shukla | New York, NY | 19\. Mai 2015 | [Azure DocumentDB: Massively-Scalable,­ Multi-Tenant Document Database Service](https://www.youtube.com/watch?v=iZsqBc3Dkbk) |
+| [Database Month](http://www.databasemonth.com/database/azure-documentdb) | Dharma Shukla | New York, NY | 19\. Mai 2015 | [Azure DocumentDB: Massively-Scalable,­ Multi-Tenant Document Database Service](https://www.youtube.com/watch?v=iZsqBc3Dkbk) (Überaus skalierbarer mehrinstanzenfähiger Dokumentdatenbank-Dienst) |
 | [Meetup: London SQL Server User Group](http://www.meetup.com/London-SQL-Server-User-Group/events/221525058/) | Allan Mitchell | London, Großbritannien | 19\. Mai 2015 | – |
 | [DevIntersection](https://devintersection.com/) | Andrew Liu | Scottsdale, Arizona, USA | 18\. bis 21. Mai 2015 | – |
 | [Meetup: Seattle Web App Developers Group](http://www.meetup.com/Seattle-Web-App-Developers-Group/events/220591071/) | Andrew Liu | Seattle, WA | 14\. Mai 2015 | – |
@@ -269,4 +271,4 @@ Assistent | Bild
 
 Möchten Sie ein DocumentDB-Genie werden? Wenngleich es nicht unbedingt ein bestimmtes Kriterium gibt, das erfüllt sein muss, um ein DocumentDB-Genie zu werden, bewerten wir u. a. den Einfluss der Beiträge des Kandidaten zu Onlineforen wie StackOverflow und MSDN, Wikis, Online-Inhalten, Konferenzen, Benutzergruppen, Podcasts, Websites, Blogs und sozialen Medien sowie Artikeln und Büchern. [Senden uns eine E-Mail](mailto:askdocdb@microsoft.com), um sich selbst oder jemand anderen vorzuschlagen.
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0928_2016-->

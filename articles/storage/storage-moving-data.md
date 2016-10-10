@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/27/2016"
-	ms.author="micurd"/>
+	ms.date="09/21/2016"
+	ms.author="micurd;tamram"/>
 
 # Verschieben von Daten in und aus Azure Storage
 
@@ -46,7 +46,7 @@ AzCopy ist ein Windows-Befehlszeilenprogramm, mit dem sehr effizient Daten in un
 
 Weitere Informationen finden Sie unter [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](storage-use-azcopy.md).
 
-### Microsoft Azure PowerShell
+### Azure PowerShell
 
 Azure PowerShell ist ein Modul, das Cmdlets für die Verwaltung von Diensten in Azure bereitstellt. Bei diesem Modul handelt es sich um eine aufgabenbasierte Befehlszeilenshell und Skriptsprache, die speziell für die Systemverwaltung entwickelt wurde.
 
@@ -82,4 +82,4 @@ Wenn Sie über lokale Workloads und Anwendungen verfügen, benötigen Sie eine L
 
 Weitere Informationen finden Sie unter [Azure Site Recovery](../site-recovery/site-recovery-overview.md).
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0928_2016-->

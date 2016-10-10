@@ -3,7 +3,7 @@
 	description="Erfahren Sie, wie Sie MongoChef mit einem DocumentDB-Konto mit Protokollunterstützung für MongoDB verwenden (jetzt als Vorschau verfügbar)." 
 	keywords="MongoChef"
 	services="documentdb" 
-	authors="stephbaron" 
+	authors="mimig1" 
 	manager="jhubbard" 
 	editor="" 
 	documentationCenter=""/>
@@ -15,7 +15,7 @@
 	ms.devlang="na" 
 	ms.topic="article" 
 	ms.date="08/25/2016" 
-	ms.author="stbaro"/>
+	ms.author="mimig"/>
 
 # Verwenden von MongoChef mit einem DocumentDB-Konto mit Protokollunterstützung für MongoDB
 
@@ -132,4 +132,4 @@ Führen Sie die folgenden Schritte aus, um Datenbanken, Sammlungen und Dokumente
 
  
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0928_2016-->

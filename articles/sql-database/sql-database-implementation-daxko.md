@@ -18,7 +18,7 @@
    
 # Daxko/CSI verwendet Azure, um den Entwicklungszyklus zu beschleunigen und sowohl Kundendienste als auch Leistung zu verbessern
 
-![Logo](./media/sql-database-case-study-daxko/csidaxkologo25.png)
+![Daxko/CSI-Logo](./media/sql-database-implementation-daxko/csidaxkologo25.png)
 
 Daxko/CSI Software stand vor einer großen Herausforderung: Der Kundenstamm an Fitness- und Erholungszentren wuchs dank des Erfolgs der umfassenden Unternehmenssoftwarelösung sehr schnell, aber die IT-Infrastrukturanforderungen für diesen wachsenden Kundenstamm stellten die IT-Mitarbeiter des Unternehmens auf eine harte Probe. Das Unternehmen hatte mit einem immer höheren Betriebsaufwand zu kämpfen, insbesondere für die Verwaltung der wachsenden Datenbanken. Schlimmer noch: Dieser Betriebsaufwand beanspruchte auch Entwicklungsressourcen, die eigentlich für neue Initiativen benötigt wurden, beispielsweise für neue Mobilitätsfunktionen für die Software des Unternehmens.
 
@@ -75,7 +75,7 @@ SpectrumNG arbeitet mit Webrollen. Da die Anwendung mehrinstanzenfähig ist, wir
 Für die Webebene des Diensts nutzt CSI Software die automatische Skalierungsfunktion von Azure, basierend auf Tag und Uhrzeit. Entsprechend der Zeitzone jedes regionalen Rechenzentrums werden verfügbare Ressourcen automatisch erhöht, um die höhere Auslastung während der Geschäftszeiten zu verarbeiten. Die Ressourcen sind so eingerichtet, dass sie während des Wochenendes, wenn die Kundenanforderungen geringer sind, herunterskaliert werden.
 
      
-![Abbildung 1](./media/sql-database-case-study-daxko/figure1.png)
+![Daxko/CSI-Architektur](./media/sql-database-implementation-daxko/figure1.png)
 
 Abbildung 1. Eine Clouddienst-Workerrolle ruft strukturierte Daten aus einer Azure SQL-Datenbank und semistrukturierte Daten aus einem Tabellenspeicher ab. SpectrumNG-Benutzer interagieren mit diesen Daten über eine Clouddienst-Webrolle.
 
@@ -105,4 +105,4 @@ Azure SQL-Datenbank ist nicht nur ein Segen für SpectrumNG-Kunden, die sich üb
 
 - Weitere Informationen zur automatischen Skalierung finden Sie unter [Skalieren von Clouddiensten](../cloud-services/cloud-services-how-to-scale.md).
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

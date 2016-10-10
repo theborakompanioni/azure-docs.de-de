@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/23/2016"
+	ms.date="09/27/2016"
 	ms.author="femila"/>
 
 # Verbinden von in die Domäne eingebundenen Geräten mit Azure AD für Windows 10-Funktionen
@@ -45,7 +45,7 @@ Zum Aktivieren von Microsoft Passport for Work und Windows Hello benötigen Sie 
 
 Alternativ zur PKI-Bereitstellung haben Sie folgende Möglichkeit:
 
-- Verwenden einiger Domänencontroller mit Windows Server 2016 Active Directory-Domänendiensten
+- Verwenden einiger Domänencontroller mit Windows Server 2016 Active Directory Domain Services
 
 Um einen bedingten Zugriff zu ermöglichen, können Sie Gruppenrichtlinieneinstellungen erstellen, die den Zugriff auf in die Domäne eingebundene Geräte ohne weitere Bereitstellungen zulassen. Um die Zugriffssteuerung anhand der Gerätecompliance zu verwalten, benötigen Sie Folgendes:
 
@@ -123,21 +123,12 @@ Windows 10-Computer authentifizieren sich mit der integrierten Windows-Authenti
 
 ### Schritt 2: Konfigurieren der automatischen Geräteregistrierung mithilfe einer Gruppenrichtlinie in Active Directory
 
-Sie können eine Active Directory-Gruppenrichtlinie verwenden, um Ihre in die Domäne eingebundenen Windows 10-Geräte für die automatische Registrierung bei Azure AD zu konfigurieren. Dazu führen Sie die folgenden Schritte aus:
+Sie können eine Active Directory-Gruppenrichtlinie verwenden, um Ihre in die Domäne eingebundenen Windows 10-Geräte für die automatische Registrierung bei Azure AD zu konfigurieren.
 
-1. 	Öffnen Sie den Server-Manager, und navigieren Sie zu **Tools** > **Gruppenrichtlinienverwaltung**.
-2.	Navigieren Sie von der Gruppenrichtlinienverwaltung zu dem Domänenknoten, der der Domäne entspricht, in der Sie Azure AD Join aktivieren möchten.
-3.	Klicken Sie mit der rechten Maustaste auf Ihr neues **Gruppenrichtlinienobjekt**, und wählen Sie dann **Neu** aus. Geben Sie Ihrem Gruppenrichtlinienobjekt einen Namen, z. B. „Automatischer Azure AD-Beitritt“. Klicken Sie auf **OK**.
-4.	Klicken Sie mit der rechten Maustaste auf Ihr neues Gruppenrichtlinienobjekt, und wählen Sie dann **Bearbeiten** aus.
-5.	Navigieren Sie zu **Computerkonfiguration** > **Richtlinien** > **Administrative Vorlagen** > **Windows-Komponenten** > **Arbeitsbereichverknüpfung**.
-6.	Klicken Sie mit der rechten Maustaste auf **Clientcomputer automatisch in Arbeitsbereich einbinden**, und wählen Sie dann **Bearbeiten** aus.
-7.	Aktivieren Sie das Optionsfeld **Aktiviert**, und klicken Sie dann auf **Übernehmen**. Klicken Sie auf **OK**.
-8.	Verknüpfen Sie das Gruppenrichtlinienobjekt jetzt mit einem Speicherort Ihrer Wahl. Um diese Richtlinie für alle in die Domäne eingebundenen Windows 10-Geräte in Ihrer Organisation zu aktivieren, verknüpfen Sie das Gruppenrichtlinienobjekt mit der Domäne. Beispiel:
- - Eine bestimmte Organisationseinheit in Active Directory, in der in die Domäne eingebundene Windows 10-Computer platziert werden
- - Eine bestimmte Sicherheitsgruppe mit in die Domäne eingebundenen Windows 10-Computern, die automatisch bei Azure AD registriert werden
-
->[AZURE.NOTE]
-Die Gruppenrichtlinienvorlage wurde in Windows 10 umbenannt. Wenn Sie das Gruppenrichtlinientool auf einem Windows 10-Computer ausführen, wird die Richtlinie angezeigt als: <br> **In die Domäne eingebundene Computer als Geräte registrieren** <br> Die Richtlinie befindet sich an folgendem Ort:<br> ***Computerkonfiguration/Richtlinien/Administrative Vorlagen/Windows-Komponenten/Geräteregistrierung***
+> [AZURE.NOTE]
+Aktuelle Anweisungen zum Einrichten der automatischen Geräteregistrierung finden Sie unter [Einrichten der automatischen Registrierung von in die Domäne eingebundenen Windows-Geräten bei Azure Active Directory](active-directory-conditional-access-automatic-device-registration-setup.md).
+>
+> Die Gruppenrichtlinienvorlage wurde in Windows 10 umbenannt. Wenn Sie das Gruppenrichtlinientool auf einem Windows 10-Computer ausführen, wird die Richtlinie angezeigt als: <br> **In die Domäne eingebundene Computer als Geräte registrieren** <br> Die Richtlinie befindet sich an folgendem Ort:<br> ***Computerkonfiguration/Richtlinien/Administrative Vorlagen/Windows-Komponenten/Geräteregistrierung***
 
 
 ## Zusätzliche Informationen
@@ -147,4 +138,4 @@ Die Gruppenrichtlinienvorlage wurde in Windows 10 umbenannt. Wenn Sie das Grupp
 * [Benutzererfahrungen beim Verknüpfen von in die Domäne eingebundenen Windows 10-Geräten mit Azure AD](active-directory-azureadjoin-devices-group-policy.md)
 * [Einrichten von Azure AD Join](active-directory-azureadjoin-setup.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0928_2016-->

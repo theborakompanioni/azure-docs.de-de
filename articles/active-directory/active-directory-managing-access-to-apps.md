@@ -1,10 +1,10 @@
 <properties
-  pageTitle="Verwalten des Zugriffs auf Apps mit Azure AD | Microsoft Azure"
+  pageTitle="Verwalten des Zugriffs auf Apps mit Azure AD | Microsoft Azure"
   description="Erläutert, wie Azure Active Directory es Organisationen ermöglicht, die Apps festzulegen, auf die der jeweilige Benutzer Zugriff hat."
   services="active-directory"
   documentationCenter=""
   authors="msStevenPo"
-  manager="stevenpo"
+  manager="femila"
   editor=""/>
 
  <tags
@@ -23,25 +23,25 @@ Die fortwährende Zugriffsverwaltung sowie die Nutzungsauswertung und Berichters
 
 ## In welcher Weise hilft Azure Active Directory?
 
- Azure AD unterstützt die weitreichende Zugriffsverwaltung für konfigurierte Anwendungen, sodass Organisationen mühelos geeignete Zugriffsrichtlinien einrichten können, die von Anwendungsfällen mit automatischer, attributbasierter Zuweisung (ABAC- oder RBAC-Szenarios) über Delegierung bis hin zur Verwaltung durch den Administrator reichen. Mit Azure AD lassen sich ohne Aufwand komplexe Richtlinien einrichten, bei denen für eine gegebene Anwendung mehrere Verwaltungsmodelle kombiniert werden, und einmal definierte Verwaltungsregeln lassen sich sogar auf weitere Anwendungen mit demselben Benutzerkreis ausweiten.
+ Azure AD unterstützt die weitreichende Zugriffsverwaltung für konfigurierte Anwendungen, sodass Organisationen mühelos geeignete Zugriffsrichtlinien einrichten können, die von Anwendungsfällen mit automatischer, attributbasierter Zuweisung (ABAC- oder RBAC-Szenarios) über Delegierung bis hin zur Verwaltung durch den Administrator reichen. Mit Azure AD lassen sich ohne Aufwand komplexe Richtlinien einrichten, bei denen für eine gegebene Anwendung mehrere Verwaltungsmodelle kombiniert werden, und einmal definierte Verwaltungsregeln lassen sich sogar auf weitere Anwendungen mit demselben Benutzerkreis ausweiten.
 
  - [Hinzufügen von neuen oder vorhandenen Anwendungen](active-directory-sso-integrate-saas-apps.md)
 
 
- Die Anwendungszuweisung von Azure AD konzentriert sich auf zwei primäre Zuordnungsmodi:
+ Die Anwendungszuweisung von Azure AD konzentriert sich auf zwei primäre Zuordnungsmodi:
 
 - **Einzelne Zuweisung**: Ein IT-Administrator mit den Verzeichnisberechtigungen eines globalen Administrators kann einzelne Benutzerkonten auswählen und ihnen Zugriff auf die Anwendung gewähren.
-- **Gruppenbasierte Zuweisung (nur kostenpflichtiges Azure AD)**: Ein IT-Administrator mit den Verzeichnisberechtigungen eines globalen Administrators kann der Anwendung eine Gruppe zuweisen. Die Zugriffsmöglichkeit bestimmter Benutzer ergibt sich daraus, ob diese zum Zeitpunkt des Zugriffs auf die Anwendung Mitglied der festgelegten Gruppe sind. Mit anderen Worten: Ein Administrator kann im Grunde folgende Zuweisungsregel erstellen: „Jedes derzeitige Mitglied der zugewiesenen Gruppe hat Zugriff auf die Anwendung“. Mit dieser Zuweisungsoption können Administratoren alle zur Verfügung stehenden Optionen zur Azure AD-Gruppenverwaltung nutzen, einschließlich [attributbasierter dynamischer Gruppen](active-directory-accessmanagement-manage-groups.md), externer Systemgruppen (z.B. lokales Active Directory oder Workday) oder Gruppen mit Administrator- bzw. mit Self-Service-Verwaltung. Eine einzelne Gruppe kann problemlos mehreren Apps zugewiesen werden, sodass sichergestellt wird, dass Anwendungen mit Zuweisungsaffinität dieselben Zuweisungsregeln verwenden, um die Verwaltungskomplexität insgesamt zu verringern. Beachten Sie, dass geschachtelte Gruppenmitgliedschaften für die gruppenbasierte Zuordnung zu Anwendungen derzeit nicht unterstützt werden.
+- **Gruppenbasierte Zuweisung (nur kostenpflichtiges Azure AD)**: Ein IT-Administrator mit den Verzeichnisberechtigungen eines globalen Administrators kann der Anwendung eine Gruppe zuweisen. Die Zugriffsmöglichkeit bestimmter Benutzer ergibt sich daraus, ob diese zum Zeitpunkt des Zugriffs auf die Anwendung Mitglied der festgelegten Gruppe sind. Mit anderen Worten: Ein Administrator kann im Grunde folgende Zuweisungsregel erstellen: „Jedes derzeitige Mitglied der zugewiesenen Gruppe hat Zugriff auf die Anwendung“. Mit dieser Zuweisungsoption können Administratoren alle zur Verfügung stehenden Optionen zur Azure AD-Gruppenverwaltung nutzen, einschließlich [attributbasierter dynamischer Gruppen](active-directory-accessmanagement-manage-groups.md), externer Systemgruppen (z.B. lokales Active Directory oder Workday) oder Gruppen mit Administrator- bzw. mit Self-Service-Verwaltung. Eine einzelne Gruppe kann problemlos mehreren Apps zugewiesen werden, sodass sichergestellt wird, dass Anwendungen mit Zuweisungsaffinität dieselben Zuweisungsregeln verwenden, um die Verwaltungskomplexität insgesamt zu verringern. Beachten Sie, dass geschachtelte Gruppenmitgliedschaften für die gruppenbasierte Zuordnung zu Anwendungen derzeit nicht unterstützt werden.
 
 Durch Einsatz dieser beiden Zuweisungsmodi können Administratoren jeden gewünschten Ansatz zur Zuweisungsverwaltung realisieren.
 
-Bei Azure AD ist die Berichterstellung über Nutzung und Zuweisung vollständig integriert, sodass Administratoren Berichte über den Zuweisungszustand, Zuweisungsfehler und sogar die Nutzung leicht anfertigen können.
+Bei Azure AD ist die Berichterstellung über Nutzung und Zuweisung vollständig integriert, sodass Administratoren Berichte über den Zuweisungszustand, Zuweisungsfehler und sogar die Nutzung leicht anfertigen können.
 
-## Komplexe Anwendungszuweisungen mit Azure AD
+## Komplexe Anwendungszuweisungen mit Azure AD
 
 Betrachten Sie eine Anwendung wie Salesforce. In vielen Organisationen wird Salesforce in erster Linie von der Marketingabteilung und im Vertrieb verwendet. Häufig haben Mitglieder des Marketingteams umfassende Berechtigungen für den Zugriff auf Salesforce, während Mitglieder des Vertriebsteams nur beschränkten Zugriff haben. In vielen Fällen hat ein großer Personenkreis von Information-Workern eingeschränkten Zugriff auf die Anwendung. Ausnahmen von dieser Regel kommen erschwerend hinzu. Häufig ist es Sache der Marketing- oder Vertriebsleitung, Benutzern Zugriff zu gewähren oder ihre Rollen unabhängig von allgemeinen Regeln zu ändern.
 
-Mit Azure AD können Anwendungen wie Salesforce beispielsweise für einmaliges Anmelden (SSO) und automatisierte Bereitstellung vorkonfiguriert werden. Sobald die Anwendung konfiguriert ist, kann der Administrator die einmalige Aktion zum Erstellen und Zuweisen der entsprechenden Gruppen übernehmen. In diesem Beispiel kann ein Administrator die folgenden Zuweisungen vornehmen:
+Mit Azure AD können Anwendungen wie Salesforce beispielsweise für einmaliges Anmelden (SSO) und automatisierte Bereitstellung vorkonfiguriert werden. Sobald die Anwendung konfiguriert ist, kann der Administrator die einmalige Aktion zum Erstellen und Zuweisen der entsprechenden Gruppen übernehmen. In diesem Beispiel kann ein Administrator die folgenden Zuweisungen vornehmen:
 
 - [Dynamische Gruppen](active-directory-accessmanagement-manage-groups.md) lassen sich durch Verwendung von Attributen wie Abteilung oder Rolle derart definieren, dass sie alle Mitglieder der Vertriebs- und Marketingteams abbilden:
 
@@ -51,20 +51,20 @@ Mit Azure AD können Anwendungen wie Salesforce beispielsweise für einmaliges A
 
 - Zum Aktivieren des Ausnahmemechanismus könnte für jede Rolle eine Self-Service-Gruppe erstellt werden. Die Gruppe „Salesforce Marketingausnahme“ kann beispielsweise als Self-Service-Gruppe erstellt werden. Diese Gruppe kann der Salesforce-Marketingrolle zugewiesen und das Leadershipteam der Marketingabteilung als deren Besitzer festgelegt werden. Mitglieder des Leadershipteams der Marketingabteilung könnten somit Benutzer hinzufügen oder entfernen, eine Beitrittsrichtlinie einrichten oder sogar einzelne Beitrittsanfragen genehmigen oder verweigern. Dies wird auch durch ein für Information-Worker angemessenes Verfahren begünstigt, bei dem keine spezielle Schulung für Besitzer oder Mitglieder erforderlich ist.
 
-In diesem Fall würde allen zugewiesenen Benutzern automatisch Salesforce bereitgestellt, und bei einem Wechsel in andere Gruppen würde ihre Rollenzuweisung in Salesforce aktualisiert. Die Benutzer könnten Salesforce über den Microsoft Zugriffsbereich für Anwendungen, Office-Webclients oder sogar durch Aufrufen der Salesforce-Anmeldeseite innerhalb der Organisation ermitteln und darauf zugreifen. Administratoren könnten in diesem Fall den Nutzungs- und Zuweisungszustand mithilfe von Azure AD-Berichten leicht anzeigen.
+In diesem Fall würde allen zugewiesenen Benutzern automatisch Salesforce bereitgestellt, und bei einem Wechsel in andere Gruppen würde ihre Rollenzuweisung in Salesforce aktualisiert. Die Benutzer könnten Salesforce über den Microsoft Zugriffsbereich für Anwendungen, Office-Webclients oder sogar durch Aufrufen der Salesforce-Anmeldeseite innerhalb der Organisation ermitteln und darauf zugreifen. Administratoren könnten in diesem Fall den Nutzungs- und Zuweisungszustand mithilfe von Azure AD-Berichten leicht anzeigen.
 
-Administratoren können den [bedingten Zugriff von Azure AD](active-directory-conditional-access.md) einsetzen, um Zugriffsrichtlinien für bestimmte Rollen festzulegen. In diesen Richtlinien kann enthalten sein, ob der Zugriff von außerhalb der Unternehmensumgebung erlaubt ist, und sogar, ob Multi-Factor Authentication oder bestimmte Geräteanforderungen für verschiedene Anwendungsfälle zur Anwendung kommen.
+Administratoren können den [bedingten Zugriff von Azure AD](active-directory-conditional-access.md) einsetzen, um Zugriffsrichtlinien für bestimmte Rollen festzulegen. In diesen Richtlinien kann enthalten sein, ob der Zugriff von außerhalb der Unternehmensumgebung erlaubt ist, und sogar, ob Multi-Factor Authentication oder bestimmte Geräteanforderungen für verschiedene Anwendungsfälle zur Anwendung kommen.
 
 ## Wie fange ich an?
 
-Falls Sie Azure AD noch nicht nutzen und IT-Administrator sind:
+Falls Sie Azure AD noch nicht nutzen und IT-Administrator sind:
 
  - [Erste Schritte mit einem Azure-Abonnement:](https://azure.microsoft.com/trial/get-started-active-directory/) Registrieren Sie sich noch heute über diesen Link für eine kostenlose 30-Tage-Testversion, und stellen Sie Ihre erste Cloud-Lösung in weniger als 5 Minuten bereit.
 
-Zu den Azure AD-Features zur gemeinsamen Nutzung von Konten gehören folgende Funktionen:
+Zu den Azure AD-Features zur gemeinsamen Nutzung von Konten gehören folgende Funktionen:
 
 - [Gruppenzuweisung](active-directory-accessmanagement-self-service-group-management.md)
-- Hinzufügen von Anwendungen zu Azure AD
+- Hinzufügen von Anwendungen zu Azure AD
 - Erste Schritte mit Zuweisungen
 - Anwendungszuweisung – Häufig gestellte Fragen
 - [Dashboard für Anwendungsnutzung/Berichte](active-directory-passwords-get-insights.md)
@@ -75,4 +75,4 @@ Zu den Azure AD-Features zur gemeinsamen Nutzung von Konten gehören folgende Fu
 - [Schützen von Apps durch bedingten Zugriff](active-directory-conditional-access.md)
 - [Self-Service-Gruppenverwaltung/SSAA](active-directory-accessmanagement-self-service-group-management.md)
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0928_2016-->

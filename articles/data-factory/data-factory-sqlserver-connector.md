@@ -3,7 +3,7 @@
 	description="Informationen zum Verschieben von Daten in und aus einer SQL Server-Datenbank, die lokal oder mithilfe von Azure Data Factory in einer Azure-VM gehostet wird."
 	services="data-factory"
 	documentationCenter=""
-	authors="spelluru"
+	authors="linda33wj"
 	manager="jhubbard"
 	editor="monicar"/>
 
@@ -14,11 +14,25 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="08/31/2016"
-	ms.author="spelluru"/>
+	ms.author="jingwang"/>
 
 # Verschieben von Daten in und aus SQL Server in einer lokalen oder IaaS-Umgebung (Azure-VM) mithilfe von Azure Data Factory
-
 Dieser Artikel beschreibt, wie Sie die Kopieraktivität zum Verschieben von Daten zwischen SQL Server und einem anderen Datenspeicher verwenden können. Dieser Artikel baut auf dem Artikel [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) auf, der eine allgemeine Übersicht über die Datenverschiebung und die als Quellen und Senken unterstützten Datenspeicher bietet.
+
+## Unterstützte Datenquellen und Senken
+Eine Liste der Datenspeicher, die als Quellen und Senken für die Kopieraktivität unterstützt werden, finden Sie in der Tabelle [Unterstützte Datenspeicher](data-factory-data-movement-activities.md#supported-data-stores-and-formats). Sie können Daten aus einem beliebigen unterstützten Quelldatenspeicher in SQL Server oder aus SQL Server in einen beliebigen unterstützten Senkendatenspeicher verschieben.
+
+## Erstellen der Pipeline
+Sie können eine Pipeline mit einer Kopieraktivität erstellen, die Daten mithilfe verschiedener Tools/APIs in und aus einer lokalen SQL Server-Datenbank verschiebt.
+
+- Kopier-Assistent
+- Azure-Portal
+- Visual Studio
+- Azure PowerShell
+- .NET API
+- REST-API
+
+Im [Tutorial zur Kopieraktivität](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) finden Sie detaillierte Anweisungen, wie Sie auf verschiedene Weisen eine Pipeline mit einer Kopieraktivität erstellen können.
 
 ## Herstellen der Verbindung
 
@@ -392,6 +406,7 @@ Die Pipeline enthält eine Kopieraktivität, die für das Verwenden der Ein- und
 	}
 
 ## Eigenschaften des mit SQL Server verknüpften Diensts
+In den Beispielen haben Sie einen verknüpften Dienst des Typs **OnPremisesSqlServer** verwendet, um eine lokale SQL Server-Datenbank mit einer Data Factory zu verknüpfen. Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den mit der lokalen SQL Server-Datenbank verknüpften Dienst spezifisch sind.
 
 Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den mit SQL Server verknüpften Dienst spezifisch sind.
 
@@ -444,16 +459,18 @@ Wenn Benutzername und Kennwort angegeben werden, werden diese Informationen vom 
 Ausführliche Informationen zum Festlegen von Anmeldeinformationen für eine SQL Server-Datenquelle finden Sie unter [Festlegen von Anmeldeinformationen und Sicherheit](data-factory-move-data-between-onprem-and-cloud.md#set-credentials-and-security).
 
 ## Eigenschaften des Dataset-Typs „SQL Server“
+In den Beispielen haben Sie ein Dataset des Typs **SqlServerTable** verwendet, um eine Tabelle in einer SQL Server-Datenbank darzustellen.
 
 Eine vollständige Liste der Abschnitte und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel [Erstellen von Datasets](data-factory-create-datasets.md). Abschnitte wie „structure“, „availability“ und „policy“ der JSON eines Datasets sind bei allen Arten von Datasets (SQL Server, Azure-Blob, Azure-Tabelle usw.) ähnlich.
 
-Der Abschnitt "typeProperties" unterscheidet sich bei jedem Typ von Dataset und bietet Informationen zum Speicherort der Daten im Datenspeicher. Der Abschnitt **typeProperties** für ein Dataset des Typs **SqlServerTable** hat die folgenden Eigenschaften.
+Der Abschnitt "typeProperties" unterscheidet sich bei jedem Typ von Dataset und bietet Informationen zum Speicherort der Daten im Datenspeicher. Der Abschnitt **typeProperties** für ein Dataset des Typs **SqlServerTable** hat die folgenden Eigenschaften:
 
 | Eigenschaft | Beschreibung | Erforderlich |
 | -------- | ----------- | -------- |
 | tableName | Name der Tabelle in der SQL Server-Datenbankinstanz, auf die der verknüpfte Dienst verweist. | Ja |
 
 ## Eigenschaften des SQL Server-Kopieraktivitätstyps
+Wenn Sie Daten aus einer SQL Server-Datenbank verschieben, legen Sie den Quelltyp in der Kopieraktivität auf **SqlSource** fest. Wenn Sie Daten in eine SQL Server-Datenbank verschieben, legen Sie den Senkentyp in der Kopieraktivität auf **SqlSink** fest. Dieser Abschnitt enthält eine Liste der Eigenschaften, die von „SqlSource“ und „SqlSink“ unterstützt werden.
 
 Eine vollständige Liste der Abschnitte und Eigenschaften zum Definieren von Aktivitäten finden Sie im Artikel [Erstellen von Pipelines](data-factory-create-pipelines.md). Eigenschaften wie Name, Beschreibung, Eingabe- und Ausgabetabellen und Richtlinien sind für alle Arten von Aktivitäten verfügbar.
 
@@ -488,8 +505,8 @@ Wenn Sie weder sqlReaderQuery noch sqlReaderStoredProcedureName angeben, werden 
 | -------- | ----------- | -------------- | -------- |
 | writeBatchTimeout | Die Wartezeit für den Abschluss der Batcheinfügung, bis das Timeout wirksam wird. | Zeitraum<br/><br/> Beispiel: 00:30:00 (30 Minuten) | Nein |
 | writeBatchSize | Fügt Daten in die SQL-Tabelle ein, wenn die Puffergröße "writeBatchSize" erreicht. | Integer (Gesamtanzahl von Zeilen) | Nein (Standard = 10000)
-| sqlWriterCleanupScript | Geben Sie die Abfrage für die Kopieraktivität so an, dass bei Ausführung die Daten eines bestimmten Slices bereinigt werden. Im Abschnitt zur Wiederholbarkeit erfahren Sie weitere Einzelheiten. | Eine Abfrageanweisung. | Nein |
-| sliceIdentifierColumnName | Geben Sie einen Spaltennamen an, den die Kopieraktivität mit einem automatisch generierten Slicebezeichner füllen soll, der bei erneuter Ausführung zum Bereinigen der Daten eines bestimmten Slices verwendet wird. Im Abschnitt zur Wiederholbarkeit erfahren Sie weitere Einzelheiten. | Spaltenname einer Spalte mit binärem Datentyp (32). | Nein |
+| sqlWriterCleanupScript | Geben Sie die Abfrage für die Kopieraktivität so an, dass bei Ausführung die Daten eines bestimmten Slices bereinigt werden. Weitere Informationen finden Sie im Abschnitt zur [Wiederholbarkeit](#repeatability-during-copy). | Eine Abfrageanweisung. | Nein |
+| sliceIdentifierColumnName | Geben Sie einen Spaltennamen an, den die Kopieraktivität mit einem automatisch generierten Slicebezeichner füllen soll, der bei erneuter Ausführung zum Bereinigen der Daten eines bestimmten Slices verwendet wird. Weitere Informationen finden Sie im Abschnitt zur [Wiederholbarkeit](#repeatability-during-copy). | Spaltenname einer Spalte mit binärem Datentyp (32). | Nein |
 | sqlWriterStoredProcedureName | Name der gespeicherten Prozedur, die Daten in die Zieltabelle mit dem Upsert-Vorgang einfügt oder aktualisiert. | Name der gespeicherten Prozedur. | Nein |
 | storedProcedureParameters | Parameter für die gespeicherte Prozedur. | Name-Wert-Paare. Die Namen und die Groß-/Kleinschreibung von Parametern müssen denen der Parameter der gespeicherten Prozedur entsprechen. | Nein |
 | sqlWriterTableType | Geben Sie einen Tabellentypnamen an, der in der gespeicherten Prozedur verwendet werden soll. Die Kopieraktivität macht die verschobenen Daten in einer temporären Tabelle mit diesem Tabellentyp verfügbar. Der gespeicherte Prozedurcode kann dann die kopierten Daten mit vorhandenen Daten zusammenführen. | Ein Tabellentypname. | Nein |
@@ -586,6 +603,8 @@ Beachten Sie, dass die Zieltabelle über eine Identitätsspalte verfügt.
 
 Beachten Sie, dass die Quell- und die Zieltabelle unterschiedliche Schemas besitzen (das Ziel verfügt über eine zusätzliche Spalte mit der Identität). In diesem Szenario müssen Sie eine **structure**-Eigenschaft in der Definition des Zieldatasets angeben, die nicht die Identitätsspalte enthält.
 
+Anschließend ordnen Sie Spalten aus dem Quelldataset Spalten im Zieldataset zu. Unter [Beispiele für Spaltenzuordnungen](#column-mapping-samples) finden Sie ein Beispiel.
+
 [AZURE.INCLUDE [data-factory-type-repeatability-for-sql-sources](../../includes/data-factory-type-repeatability-for-sql-sources.md)]
 
 
@@ -650,4 +669,4 @@ Die Zuordnung ist mit der SQL Server-Datentypzuordnung für ADO.NET identisch.
 ## Leistung und Optimierung  
 Im Artikel [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-factory-copy-activity-performance.md) werden wichtige Faktoren beschrieben, die sich auf die Leistung der Datenverschiebung (Kopieraktivität) in Azure Data Factory auswirken, sowie verschiedene Möglichkeiten zur Leistungsoptimierung.
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0928_2016-->

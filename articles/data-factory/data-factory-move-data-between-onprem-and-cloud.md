@@ -4,7 +4,7 @@
     keywords="Datengateway, Datenintegration, Daten verschieben, Gatewayanmeldeinformationen"
 	services="data-factory" 
 	documentationCenter="" 
-	authors="spelluru" 
+	authors="linda33wj" 
 	manager="jhubbard" 
 	editor="monicar"/>
 
@@ -15,7 +15,7 @@
 	ms.devlang="na" 
 	ms.topic="article" 
 	ms.date="09/12/2016" 
-	ms.author="spelluru"/>
+	ms.author="jingwang"/>
 
 # Verschieben von Daten zwischen lokalen Quellen und der Cloud mit dem Datenverwaltungsgateway
 Dieser Artikel enthält eine Übersicht über die Datenintegration zwischen lokalen Datenspeichern und Clouddatenspeichern mit Data Factory. Er baut auf dem Artikel [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) und anderen Artikeln über zentrale Konzepte von Data Factory auf: [Datasets](data-factory-create-datasets.md) und [Pipelines](data-factory-create-pipelines.md).
@@ -94,7 +94,7 @@ In diesem Schritt verwenden Sie das Azure-Portal zum Erstellen einer Azure Data 
 	2. **Gatewayname** wird auf **adftutorialgateway** festgelegt.
 	4. Die Statusleiste im unteren Bereich zeigt **Verbunden mit Clouddienst** sowie ein **grünes Häkchen** an.
 
-	Auf der Registerkarte **Startseite** können Sie auch Folgendes tun: – **Registrieren** eines Gateways mit einem Schlüssel aus dem Azure-Portal mithilfe der Schaltfläche „Registrieren“. – **Beenden** des Datenverwaltungsgateway-Hostdiensts, der auf Ihrem Gatewaycomputer ausgeführt wird. – **Updates planen**, die zu einem bestimmten Zeitpunkt des Tages installiert werden. – Anzeigen, wann das Gateway **zuletzt aktualisiert** wurde.
+	Auf der Registerkarte **Startseite** sind die folgenden Vorgänge möglich: – **Registrieren** eines Gateways mit einem Schlüssel aus dem Azure-Portal mithilfe der Schaltfläche „Registrieren“. – **Beenden** des Datenverwaltungsgateway-Hostdiensts, der auf Ihrem Gatewaycomputer ausgeführt wird. – **Updates planen**, die zu einem bestimmten Zeitpunkt des Tages installiert werden. – Anzeigen, wann das Gateway **zuletzt aktualisiert** wurde.
 
 8. Wechseln Sie zur Registerkarte **Einstellungen**. Das Zertifikat im Abschnitt **Zertifikat** dient zum Verschlüsseln/Entschlüsseln von Anmeldeinformationen für den lokalen Datenspeicher, den Sie im Portal angeben. (optional) Klicken Sie auf **Ändern**, um stattdessen Ihr eigenes Zertifikat zu verwenden. Standardmäßig verwendet das Gateway das Zertifikat, das vom Data Factory-Dienst automatisch generiert wird.
 
@@ -157,7 +157,7 @@ In diesem Schritt erstellen Sie zwei verknüpfte Dienste: **AzureStorageLinkedSe
    
  
 ## Erstellen von Datasets
-In diesem Schritt erstellen Sie die Eingabe- und Ausgabedatasets, die ein- und ausgehende Daten für den Kopiervorgang darstellen (lokale SQL Server-Datenbank = > Azure-Blobspeicher). Vor dem Erstellen von Datasets oder Tabellen (rechteckige Datasets) müssen Sie Folgendes ausführen (detaillierte Schritte in der Liste):
+In diesem Schritt erstellen Sie die Eingabe- und Ausgabedatasets, die ein- und ausgehende Daten für den Kopiervorgang darstellen (lokale SQL Server-Datenbank = > Azure-Blobspeicher). Vor dem Erstellen von Datasets oder Tabellen (rechteckige Datasets) müssen Sie die folgenden Schritte ausführen (detaillierte Schritte in der Liste):
 
 - Erstellen Sie eine Tabelle mit dem Namen **emp** in der SQL Server-Datenbank, die Sie der Data Factory als verknüpften Dienst hinzugefügt haben, und fügen Sie verschiedene Beispieleinträge in die Tabelle ein.
 - Erstellen Sie einen Blob-Container mit dem Namen **adftutorial** im Azure-Blob-Speicherkonto, das Sie der Data Factory als verknüpften Dienst hinzugefügt haben.
@@ -213,7 +213,7 @@ In diesem Schritt erstellen Sie die Eingabe- und Ausgabedatasets, die ein- und a
 		  }
 		}
 
-	Beachten Sie Folgendes:
+	Beachten Sie folgende Punkte:
 	
 	- **type** ist auf **SqlServerTable** festgelegt.
 	- **tableName** ist auf **emp** festgelegt.
@@ -249,7 +249,7 @@ In diesem Schritt erstellen Sie die Eingabe- und Ausgabedatasets, die ein- und a
 		  }
 		}
   
-	Beachten Sie Folgendes:
+	Beachten Sie folgende Punkte:
 	
 	- **type** ist auf **AzureBlob** festgelegt.
 	- **linkedServiceName** ist auf **AzureStorageLinkedService** festgelegt (diesen verknüpften Dienst haben Sie in Schritt 2 erstellt).
@@ -331,7 +331,7 @@ In diesem Schritt erstellen Sie eine **Pipeline** mit einer **Kopieraktivität**
 			  }
 			}
 
-	Beachten Sie Folgendes:
+	Beachten Sie folgende Punkte:
  
 	- Der Abschnitt "activities" enthält nur eine Aktivität, deren **type** auf **Copy** festgelegt ist.
 	- **Input** für die Aktivität ist auf **EmpOnPremSQLTable** und **output** auf **OutputBlobTable** festgelegt.
@@ -358,7 +358,7 @@ In diesem Schritt erstellen Sie eine **Pipeline** mit einer **Kopieraktivität**
 
 	![Link "Diagramm"](./media/data-factory-move-data-between-onprem-and-cloud/OnPremDiagramLink.png)
 
-2. Ein Diagramm ähnlich dem folgenden sollte angezeigt werden:
+2. Ein Diagramm wie in der folgenden Abbildung wird angezeigt:
 
 	![Diagrammansicht](./media/data-factory-move-data-between-onprem-and-cloud/OnPremDiagramView.png)
 
@@ -414,4 +414,4 @@ In diesem Schritt verwenden Sie das Azure-Portal zur Überwachung der Aktivität
 - Im Artikel [Datenverwaltungsgateway](data-factory-data-management-gateway.md) finden Sie alle Informationen zum Datenverwaltungsgateway.
 - Unter [Kopieren von Daten aus Azure-Blob in Azure SQL](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) erfahren Sie, wie Sie die Kopieraktivität verwenden, um Daten aus einem Quelldatenspeicher in einen Senkendatenspeicher zu verschieben.
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0928_2016-->

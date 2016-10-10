@@ -14,7 +14,7 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="07/27/2016" 
+	ms.date="09/26/2016" 
 	ms.author="jeffstok"/>
 
 #Austauschen von Anmeldeinformationen für Ein- und Ausgaben in Stream Analytics-Aufträgen
@@ -58,19 +58,19 @@ Für andere Ein-/Ausgaben fahren Sie mit Teil 2 fort.
 
 ###SQL-Datenbank
 
->[AZURE.NOTE] Hinweis: Sie müssen eine Verbindung mit dem SQL-Datenbankdienst herstellen. Wir werden die Vorgehensweise anhand der Verwaltungsfunktionen des Azure-Verwaltungsportals erläutern, Sie können jedoch auch clientseitige Tools wie z. B. SQL Server Management Studio verwenden.
+>[AZURE.NOTE] Hinweis: Sie müssen eine Verbindung mit dem SQL-Datenbankdienst herstellen. Wir werden die Vorgehensweise anhand der Verwaltungsfunktionen des Azure-Verwaltungsportals erläutern, Sie können jedoch auch clientseitige Tools wie etwa SQL Server Management Studio verwenden.
 
 1.  Wechseln Sie zur SQL-Datenbank-Erweiterung des Azure-Verwaltungsportals: ![Grafik14][graphic14]
 2.  Suchen Sie die für den Auftrag verwendete SQL-Datenbank, und **klicken Sie in derselben Zeile auf den Server**: ![Grafik15][graphic15]
 3.  Klicken Sie auf den Befehl "Verwalten": ![Grafik16][graphic16]
 4.  Geben Sie den Datenbank-Master ein: ![Grafik17][graphic17]
-5.  Geben Sie Ihren Benutzernamen und das Kennwort ein, und klicken Sie auf "Anmelden": ![Grafik18][graphic18]
+5.  Geben Sie Ihren Benutzernamen und das Kennwort ein, und klicken Sie auf „Anmelden“: ![Grafik18][graphic18]
 6.  Klicken Sie auf "Neue Abfrage": ![Grafik19][graphic19]
 7.  Geben Sie die folgende Abfrage ein, und ersetzen Sie „<login\_name>“ mit Ihrem Benutzernamen und „<enterStrongPasswordHere>“ mit dem neuen Kennwort: `CREATE LOGIN <login_name> WITH PASSWORD = '<enterStrongPasswordHere>'`
 8.  Klicken Sie auf "Ausführen": ![Grafik20][graphic20]
 9.  Kehren Sie zu Schritt 2 zurück, und klicken Sie dieses Mal auf die Datenbank: ![Grafik21][graphic21]
 10. Klicken Sie auf den Befehl "Verwalten": ![Grafik22][graphic22]
-11. Geben Sie Ihren Benutzernamen und das Kennwort ein, und klicken Sie auf "Anmelden": ![Grafik23][graphic23]
+11. Geben Sie Ihren Benutzernamen und das Kennwort ein, und klicken Sie auf „Anmelden“: ![Grafik23][graphic23]
 12. Klicken Sie auf "Neue Abfrage": ![Grafik24][graphic24]
 13. Geben Sie die folgende Abfrage ein, und ersetzen Sie „<user\_name>“ mit einem Namen, mit dem diese Anmeldung im Kontext der Datenbank identifiziert werden soll (Sie können z.B. den gleichen Wert wie für „<login\_name>“ eingeben). Ersetzen Sie anschließend „<login\_name>“ mit Ihrem neuen Benutzernamen: `CREATE USER <user_name> FROM LOGIN <login_name>`
 14. Klicken Sie auf "Ausführen": ![Grafik25][graphic25]
@@ -198,4 +198,4 @@ Um Hilfe zu erhalten, besuchen Sie unser [Azure Stream Analytics-Forum](https://
 [graphic43]: ./media/stream-analytics-login-credentials-inputs-outputs/43-stream-analytics-login-credentials-inputs-outputs.png
  
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

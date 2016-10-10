@@ -5,7 +5,7 @@
 	documentationCenter="nodejs"
 	authors="rmcmurray"
 	manager="wpickett"
-	editor=""/>
+	editor="tysonn"/>
 
 <tags
 	ms.service="storage"
@@ -14,14 +14,12 @@
 	ms.devlang="nodejs"
 	ms.topic="article"
 	ms.date="08/11/2016"
-	ms.author="micurd"/>
+	ms.author="gusapost;robmcm"/>
 
 
 # Verwenden des Azure-Tabellenspeichers mit Node.js
 
-[AZURE.INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
-<br/>
-[AZURE.INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-tables.md)]
+[AZURE.INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)] <br/> [AZURE.INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-tables.md)]
 
 ## Übersicht
 
@@ -419,7 +417,7 @@ Im folgenden Beispiel wird zunächst die aktuelle ACL für die Tabelle **hometas
 	  }
 	});
 
-Nachdem die ACL \(festgelegt wurde, können Sie) basierend auf der ID für eine Richtlinie eine SAS erstellen. Im folgenden Beispiel wird eine neue SAS für 'user2' erstellt:
+Nachdem die ACL festgelegt wurde, können Sie basierend auf der ID für eine Richtlinie eine SAS erstellen. Im folgenden Beispiel wird eine neue SAS für 'user2' erstellt:
 
 	tableSAS = tableSvc.generateSharedAccessSignature('hometasks', { Id: 'user2' });
 
@@ -427,9 +425,9 @@ Nachdem die ACL \(festgelegt wurde, können Sie) basierend auf der ID für eine 
 
 Weitere Informationen finden Sie in den folgenden Ressourcen.
 
--   [Azure Storage Team Blog][] \(in englischer Sprache)
--   [Azure Storage SDK for Node.js][]-Repository auf GitHub \(in englischer Sprache)
--   [Node.js Developer Center \(in englischer Sprache)](/develop/nodejs/)
+-   [Azure Storage Team Blog][] (in englischer Sprache)
+-   [Azure Storage SDK for Node.js][]-Repository auf GitHub (in englischer Sprache)
+-   [Node.js Developer Center (in englischer Sprache)](/develop/nodejs/)
 
   [Azure Storage SDK for Node.js]: https://github.com/Azure/azure-storage-node
   [OData.org]: http://www.odata.org/
@@ -443,4 +441,4 @@ Weitere Informationen finden Sie in den folgenden Ressourcen.
   [Node.js-Web-App mit Azure-Tabellenspeicherdienst]: ../storage-nodejs-use-table-storage-web-site.md
   [Create and deploy a Node.js application to an Azure website]: ../web-sites-nodejs-develop-deploy-mac.md
 
-<!---HONumber=AcomDC_0817_2016--->
+<!---HONumber=AcomDC_0928_2016-->

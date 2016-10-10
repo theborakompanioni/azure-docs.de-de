@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/10/2016"
+	ms.date="09/25/2016"
 	ms.author="davidmu"/>
 
 # Erstellen einer Windows-VM-Skalierungsgruppe mithilfe von Azure PowerShell
@@ -25,7 +25,7 @@ Die Ausführung der Schritte im Artikel dauert ungefähr 30 Minuten.
 
 ## Schritt 1: Installieren von Azure PowerShell
 
-Informationen dazu, wie Sie die aktuelle Version von Azure PowerShell installieren, das gewünschte Abonnement auswählen und sich beim Azure-Konto anmelden, finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
+Unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md) finden Sie Informationen dazu, wie Sie die neueste Version von Azure PowerShell installieren, das gewünschte Abonnement auswählen und sich bei Ihrem Azure-Konto anmelden.
 
 ## Schritt 2: Erstellen von Ressourcen
 
@@ -84,9 +84,9 @@ Eine VM-Skalierungsgruppe muss in einer Ressourcengruppe enthalten sein.
 
 ### Speicherkonto
 
-Ein Speicherkonto wird von einem virtuellen Computer verwendet, um den Betriebssystemdatenträger und die Diagnosedaten für die Skalierung zu speichern. Nach Möglichkeit sollte in einer Skalierungsgruppe für jeden virtuellen Computer ein Speicherkonto erstellt werden. Sollte dies nicht möglich sein, planen Sie mit maximal 20 virtuellen Computern pro Speicherkonto. In dem Beispiel in diesem Artikel werden für drei virtuelle Computer in einer Skalierungsgruppe drei Speicherkonten erstellt.
+Ein Speicherkonto wird von einem virtuellen Computer verwendet, um den Betriebssystemdatenträger und die Diagnosedaten für die Skalierung zu speichern. Es hat sich bewährt, jeweils ein Speicherkonto pro 20 virtuellen Computern in einer Skalierungsgruppe zu verwenden. Skalierungsgruppen lassen sich problemlos horizontal hochskalieren. Erstellen Sie daher so viele Speicherkonten, wie Sie für die maximale Anzahl von virtuellen Computern benötigen, die die Skalierungsgruppe voraussichtlich enthalten wird. Das Beispiel in diesem Artikel zeigt die Erstellung von drei Speicherkonten. Die Skalierungsgruppe kann problemlos auf 60 virtuelle Computer erweitert werden.
 
-1. Ersetzen Sie den Wert von **saName** durch den Namen, den Sie für das Speicherkonto verwenden möchten, und erstellen Sie dann die Variable: 
+1. Ersetzen Sie den Wert von **saName** durch den Namen, den Sie für das Speicherkonto verwenden möchten, und erstellen Sie dann die Variable:
 
         $saName = "storage account name"
         
@@ -133,7 +133,7 @@ Ein Speicherkonto wird von einem virtuellen Computer verwendet, um den Betriebss
 
 Für die virtuellen Computer in der Skalierungsgruppe ist ein virtuelles Netzwerk erforderlich.
 
-1. Ersetzen Sie den Wert von **$subName** durch den Namen, den Sie für das Subnetz im virtuellen Netzwerk verwenden möchten, und erstellen Sie dann die Variable: 
+1. Ersetzen Sie den Wert von **$subName** durch den Namen, den Sie für das Subnetz im virtuellen Netzwerk verwenden möchten, und erstellen Sie dann die Variable:
 
         $subName = "subnet name"
         
@@ -155,7 +155,7 @@ Für die virtuellen Computer in der Skalierungsgruppe ist ein virtuelles Netzwer
 
 Bevor eine Netzwerkschnittstelle erstellt werden kann, müssen Sie eine öffentliche IP-Adresse erstellen.
 
-1. Ersetzen Sie den Wert von **$domName** durch die Domänennamenbezeichnung, die Sie mit der öffentlichen IP-Adresse verwenden möchten, und erstellen Sie dann die Variable:  
+1. Ersetzen Sie den Wert von **$domName** durch die Domänennamenbezeichnung, die Sie mit der öffentlichen IP-Adresse verwenden möchten, und erstellen Sie dann die Variable:
 
         $domName = "domain name label"
         
@@ -179,7 +179,7 @@ Bevor eine Netzwerkschnittstelle erstellt werden kann, müssen Sie eine öffentl
 
 Sie verfügen jetzt über die öffentliche IP-Adresse und können die Netzwerkschnittstelle erstellen.
 
-1. Ersetzen Sie den Wert von **$nicName** durch den Namen, den Sie für die Netzwerkschnittstelle verwenden möchten, und erstellen Sie dann die Variable: 
+1. Ersetzen Sie den Wert von **$nicName** durch den Namen, den Sie für die Netzwerkschnittstelle verwenden möchten, und erstellen Sie dann die Variable:
 
         $nicName = "network interface name"
         
@@ -191,7 +191,7 @@ Sie verfügen jetzt über die öffentliche IP-Adresse und können die Netzwerksc
 
 Sie haben alle Ressourcen, die Sie für die Skalierungsgruppenkonfiguration benötigen, also können Sie sie erstellen.
 
-1. Ersetzen Sie den Wert von **$ipName** durch den Namen, den Sie für die IP-Konfiguration verwenden möchten, und erstellen Sie dann die Variable: 
+1. Ersetzen Sie den Wert von **$ipName** durch den Namen, den Sie für die IP-Konfiguration verwenden möchten, und erstellen Sie dann die Variable:
 
         $ipName = "IP configuration name"
         
@@ -205,7 +205,7 @@ Sie haben alle Ressourcen, die Sie für die Skalierungsgruppenkonfiguration ben�
         
 3. Erstellen Sie die Konfiguration für die Skaliserungsgruppe:
 
-        $vmss = New-AzureRmVmssConfig -Location $locName -SkuCapacity 3 -SkuName "Standard_A0" -UpgradePolicyMode "manual"
+        $vmss = New-AzureRmVmssConfig -Location $locName -SkuCapacity 3 -SkuName "Standard_A1" -UpgradePolicyMode "manual"
         
     In diesem Beispiel wird veranschaulicht, wie eine Skalierungsgruppe mit drei virtuellen Computern erstellt wird. Weitere Informationen zur Kapazität von Skalierungsgruppen finden Sie unter [Übersicht über VM-Skalierungsgruppen](virtual-machine-scale-sets-overview.md). In diesem Schritt wird auch die Größe der virtuellen Computer in der Gruppe festgelegt (wird als „SkuName“ bezeichnet). Ermitteln Sie unter [Größen für virtuelle Computer](../virtual-machines/virtual-machines-windows-sizes.md) die passende Größe für Ihre Anforderungen.
     
@@ -228,7 +228,7 @@ Sie haben alle Ressourcen, die Sie für die Skalierungsgruppenkonfiguration ben�
 
 #### Betriebssystemprofil
 
-1. Ersetzen Sie den Wert von **$computerName** durch das Computernamenpräfix, das Sie verwenden möchten, und erstellen Sie dann die Variable: 
+1. Ersetzen Sie den Wert von **$computerName** durch das Computernamenpräfix, das Sie verwenden möchten, und erstellen Sie dann die Variable:
 
         $computerName = "computer name prefix"
         
@@ -246,7 +246,7 @@ Sie haben alle Ressourcen, die Sie für die Skalierungsgruppenkonfiguration ben�
 
 #### Speicherprofil
 
-1. Ersetzen Sie den Wert von **$storageProfile** durch den Namen, den Sie für das Speicherprofil verwenden möchten, und erstellen Sie dann die Variable:  
+1. Ersetzen Sie den Wert von **$storageProfile** durch den Namen, den Sie für das Speicherprofil verwenden möchten, und erstellen Sie dann die Variable:
 
         $storageProfile = "storage profile name"
         
@@ -313,4 +313,4 @@ Untersuchen Sie die eben erstellte VM-Skalierungsgruppe mithilfe der folgenden R
 - Ziehen Sie die automatische Skalierung Ihrer Skalierungsgruppe in Betracht. Lesen Sie dazu die Informationen unter [Automatische Skalierung und Skalierungsgruppen für virtuelle Computer](virtual-machine-scale-sets-autoscale-overview.md).
 - Informieren Sie sich unter [Vertikale automatische Skalierung mit VM-Skalierungsgruppen](virtual-machine-scale-sets-vertical-scale-reprovision.md) ausführlicher über die vertikale Skalierung.
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0928_2016-->

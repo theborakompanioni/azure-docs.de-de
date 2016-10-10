@@ -14,12 +14,12 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/06/2016"
+	ms.date="09/27/2016"
 	ms.author="cynthn"/>
 
-# Erstellen eines benutzerdefinierten virtuellen Computers mit Windows
+# Erstellen eines benutzerdefinierten virtuellen Computers unter Windows mit dem klassischen Bereitstellungsmodell
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] Falls Sie das neue Azure-Portal verwenden möchten, lesen Sie die Informationen unter [Erstellen Ihres ersten virtuellen Windows-Computers im Azure-Portal](virtual-machines-windows-hero-tutorial.md).
 
 [AZURE.INCLUDE [virtual-machines-common-classic-createportal](../../includes/virtual-machines-common-classic-createportal.md)]
 
@@ -30,4 +30,4 @@
 
 Sie können mit dem klassischen Portal auch [einen benutzerdefinierten virtuellen Computer unter Linux erstellen](virtual-machines-linux-classic-createportal.md).
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0928_2016-->

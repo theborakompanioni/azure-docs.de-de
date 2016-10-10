@@ -3,7 +3,7 @@
 	description="In diesem Tutorial erfahren Sie, wie Sie Azure Backup-Tresore und -Server verwalten."
 	services="backup"
 	documentationCenter=""
-	authors="Jim-Parker"
+	authors="markgalioto"
 	manager="jwhit"
 	editor="tysonn"/>
 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/15/2016"
+	ms.date="09/27/2016"
 	ms.author="jimpark;markgal"/>
 
 
@@ -99,7 +99,7 @@ Weitere Informationen finden Sie im Artikel zur [Speicherredundanz](../storage/s
 
 ![Aktionen der Agent-Konsole](./media/backup-azure-manage-windows-server-classic/console-actions.png)
 
->[AZURE.NOTE] Informationen zum **Wiederherstellen von Daten** finden Sie unter [Wiederherstellen von Dateien auf einem Windows Server- oder Windows-Clientcomputer](backup-azure-restore-windows-server.md).
+>[AZURE.NOTE] Informationen zum **Wiederherstellen von Daten** finden Sie unter [Wiederherstellen von Dateien auf einem Windows-Server- oder Windows-Clientcomputer mit dem Resource Manager-Bereitstellungsmodell](backup-azure-restore-windows-server.md).
 
 ### Ändern einer vorhandenen Sicherung
 
@@ -135,7 +135,7 @@ Weitere Informationen finden Sie im Artikel zur [Speicherredundanz](../storage/s
 
 8. Nachdem der Assistent die Erstellung des **Sicherungszeitplans** abgeschlossen hat, klicken Sie auf **Schließen**.
 
-    Nach dem Ändern der Einstellungen können Sie die ordnungsgemäße Auslösung der Sicherungen überprüfen, indem Sie zur Registerkarte **Aufträge** wechseln und sich vergewissern, dass die Änderungen in den Sicherungsaufträgen übernommen wurden.
+    Nach dem Ändern der Einstellungen können Sie die richtige Auslösung der Sicherungen überprüfen, indem Sie zur Registerkarte **Aufträge** wechseln und sich vergewissern, dass die Änderungen in den Sicherungsaufträgen übernommen wurden.
 
 ### Aktivieren der Netzwerkdrosselung  
 Der Azure Backup-Agent verfügt über eine Registerkarte für die Drosselung, mit der Sie steuern können, wie die Netzwerkbandbreite während der Datenübertragung verwendet wird. Diese Steuerungsmöglichkeit kann hilfreich sein, wenn Sie Daten während der Geschäftszeiten sichern möchten, der Sicherungsprozess aber keine Auswirkung auf den weiteren Internetdatenverkehr haben soll. Die Drosselung der Datenübertragung gilt für Sicherungs- und Wiederherstellungsaktivitäten.
@@ -188,13 +188,13 @@ So aktivieren Sie die Drosselung
 
     ![Beispiel für einen Dateityp](./media/backup-azure-manage-windows-server-classic/exclude-mp3.png)
 
-    Um eine weitere Erweiterung hinzuzufügen, klicken Sie auf **Ausschluss hinzufügen**, und geben Sie eine weitere Dateityperweiterung ein (hier wird die JPEG-Erweiterung hinzugefügt).
+    Um eine weitere Erweiterung hinzuzufügen, klicken Sie auf **Ausschluss hinzufügen** und geben eine weitere Dateityperweiterung ein (hier wird die JPEG-Erweiterung hinzugefügt).
 
     ![Weiteres Beispiel für einen Dateityp](./media/backup-azure-manage-windows-server-classic/exclude-jpg.png)
 
 8. Wenn Sie alle Erweiterungen hinzugefügt haben, klicken Sie auf **OK**.
 
-9. Setzen Sie den Assistenten zum Planen von Sicherungen fort, indem Sie auf **Weiter** klicken, bis die Seite **Bestätigung** angezeigt wird. Klicken Sie dann auf **Fertig stellen**.
+9. Setzen Sie den Assistenten zum Planen von Sicherungen fort, indem Sie auf **Weiter** klicken, bis die Seite **Bestätigung** angezeigt wird. Klicken Sie anschließend auf **Fertig stellen**.
 
     ![Ausschlussbestätigung](./media/backup-azure-manage-windows-server-classic/finish-exclusions.png)
 
@@ -203,4 +203,4 @@ So aktivieren Sie die Drosselung
 - Weitere Informationen zu Azure Backup finden Sie unter [Azure Backup – Übersicht](backup-introduction-to-azure-backup.md).
 - Besuchen Sie das [Azure Backup-Forum](http://go.microsoft.com/fwlink/p/?LinkId=290933).
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0928_2016-->

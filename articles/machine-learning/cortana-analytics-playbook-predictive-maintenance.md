@@ -353,4 +353,4 @@ Abbildung 8. Beispiel für eine Lösungsarchitektur für die vorbeugende Wartun
 
 Weitere Informationen zu den einzelnen Komponenten der Architektur finden Sie in der [Azure](https://azure.microsoft.com/)-Dokumentation.
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0928_2016-->

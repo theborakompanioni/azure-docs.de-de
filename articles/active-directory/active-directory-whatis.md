@@ -29,7 +29,7 @@ Für IT-Administratoren bietet Azure AD eine kostengünstige, benutzerfreundlich
 
 Anwendungsentwickler können sich dank Azure AD vollständig auf die Erstellung von Anwendungen konzentrieren, da Azure AD die schnelle und einfache Integration in eine erstklassige Identitätsverwaltungslösung ermöglicht, die von Millionen von Unternehmen auf der ganzen Welt verwendet wird.
 
-Azure AD bietet auch einen vollständigen Satz von Identitätsverwaltungsfunktionen, wie z. B.: mehrstufige Authentifizierung, Geräteregistrierung, Self-Service-Kennwortverwaltung, Self-Service-Gruppenverwaltung, privilegierte Kontenverwaltung, rollenbasierte Zugriffssteuerung, Überwachung der Anwendungsnutzung, umfassende Auditfunktionen sowie Sicherheitsüberwachung und -warnungen. Mit diesen Funktionen können Sie cloudbasierte Anwendungen sichern, IT-Prozesse optimieren, Kosten senken und sicherstellen, dass unternehmensweite Complianceziele erreicht werden.
+Azure AD bietet auch einen vollständigen Satz von Identitätsverwaltungsfunktionen, wie z. B.: mehrstufige Authentifizierung, Geräteregistrierung, Self-Service-Kennwortverwaltung, Self-Service-Gruppenverwaltung, privilegierte Kontenverwaltung, rollenbasierte Zugriffssteuerung, Überwachung der Anwendungsnutzung, umfassende Auditfunktionen sowie Sicherheitsüberwachung und -warnungen. Mit diesen Funktionen können Sie cloudbasierte Anwendungen sichern, IT-Prozesse optimieren, Kosten senken und sicherstellen, dass unternehmensweite Kompatibilitätsziele erreicht werden.
 
 Darüber hinaus lässt sich Azure AD mit nur [vier Klicks](http://blogs.technet.com/b/ad/archive/2014/08/04/connecting-ad-and-azure-ad-only-4-clicks-with-azure-ad-connect.aspx) in eine vorhandene Windows Server Active Directory-Instanz integrieren, sodass Unternehmen ihre Investitionen in vorhandene lokale Identitätsverwaltungslösungen nutzen können, um den Zugriff auf cloudbasierte SaaS-Anwendungen zu verwalten.
 
@@ -55,7 +55,7 @@ Weitere Einzelheiten finden Sie unter [Vereinbarungen zum Servicelevel](https://
 Ihr Unternehmen kann Azure AD verwenden, um in vielerlei Hinsicht die Mitarbeiterproduktivität zu verbessern, IT-Prozesse zu optimieren, die Sicherheit zu erhöhen und die Kosten zu senken:
 
 -	Führen Sie Clouddienste in kürzester Zeit ein, um Mitarbeitern und Partnern den Zugriff über die einmalige Anmeldung zu vereinfachen, und profitieren Sie von den vollständig automatisierten Azure AD-Funktionen für die SaaS-App-Zugriffsverwaltung und die Bereitstellung von Diensten.
--	Bieten Sie Mitarbeitern Zugriff auf erstklassige Cloudanwendungen und -dienste sowie Self-Service-Funktionen – von jedem Ort der Welt und mit allen Geräten, die Ihre Mitarbeiter gerne nutzen.
+-	Bieten Sie Mitarbeitern Zugriff auf erstklassige Cloud-Apps und Self-Service-Funktionen – von jedem Ort der Welt und mit allen Geräten, die Ihre Mitarbeiter gerne nutzen.
 -	Verwalten Sie den Zugriff Ihrer Mitarbeiter und Lieferanten auf Ihre Unternehmenskonten für soziale Medien.
 -	Erhöhen Sie die Sicherheit von Anwendungen mit der mehrstufigen Authentifizierung und dem bedingten Zugriff von Azure AD.
 -	Implementieren Sie eine konsistente Self-Service-Verwaltung des Anwendungszugriffs, sodass Geschäftsinhaber schnell reagieren und gleichzeitig IT-Aufwand und -Kosten senken können.
@@ -70,10 +70,10 @@ Ihr Unternehmen kann Azure AD verwenden, um in vielerlei Hinsicht die Mitarbeit
 ## Wie fange ich an?
 -	Wenn Sie IT-Administrator sind:
  - [Probieren Sie es aus!](https://azure.microsoft.com/trial/get-started-active-directory/) – Registrieren Sie sich noch heute über diesen Link für eine kostenlose 30-Tage-Testversion, und stellen Sie Ihre erste Cloudlösung in weniger als 5 Minuten bereit.
- - Lesen Sie den Artikel "Erste Schritte mit Azure AD" mit Tipps und Tricks zum schnellen Einrichten und Ausführen eines Azure AD-Mandanten.
+ - Lesen Sie den Artikel „Erste Schritte mit Azure AD“ mit Tipps und Tricks zum schnellen Einrichten und Ausführen eines Azure AD-Mandanten.
 -	Wenn Sie Entwickler sind:
  - Sehen Sie sich die [Anleitung für Entwickler](active-directory-developers-guide.md) für Azure Active Directory an.
- - [Starten Sie eine Testversion.](https://azure.microsoft.com/trial/get-started-active-directory/) – Registrieren Sie sich noch heute für eine kostenlose 30-Tage-Testversion, und beginnen Sie damit, Ihre App in Azure AD zu integrieren.
+ - [Starten Sie eine Testversion.](https://azure.microsoft.com/trial/get-started-active-directory/) Registrieren Sie sich noch heute für eine kostenlose 30-Tage-Testversion, und beginnen Sie damit, Ihre Apps in Azure AD zu integrieren.
 
 
 
@@ -104,4 +104,4 @@ Wir haben viele hervorragende Ressourcen online gestellt, in denen Sie alles Wis
 
 - [Wie ermittle ich nicht genehmigte Cloud-Apps, die in meiner Organisation verwendet werden?](active-directory-cloudappdiscovery-whatis.md)
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0928_2016-->

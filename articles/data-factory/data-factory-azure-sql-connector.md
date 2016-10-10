@@ -3,7 +3,7 @@
 	description="Erfahren Sie, wie Daten mithilfe von Azure Data Factory in und aus Azure SQL-Datenbank verschoben werden." 
 	services="data-factory" 
 	documentationCenter="" 
-	authors="spelluru" 
+	authors="linda33wj" 
 	manager="jhubbard" 
 	editor="monicar"/>
 
@@ -14,11 +14,25 @@
 	ms.devlang="na" 
 	ms.topic="article" 
 	ms.date="09/20/2016" 
-	ms.author="spelluru"/>
+	ms.author="jingwang"/>
 
 # Verschieben von Daten in und aus Azure SQL-Datenbank mithilfe von Azure Data Factory
-
 In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in einer Azure Data Factory verwenden können, um Daten aus Azure SQL-Datenbank in einen anderen Datenspeicher zu verschieben (oder umgekehrt). Dieser Artikel baut auf dem Artikel [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) auf, der eine allgemeine Übersicht zur Datenverschiebung mit Kopieraktivität und unterstützten Datenspeicherkombinationen bietet.
+
+## Unterstützte Datenquellen und Senken
+Eine Liste der Datenspeicher, die als Quellen und Senken für die Kopieraktivität unterstützt werden, finden Sie in der Tabelle [Unterstützte Datenspeicher](data-factory-data-movement-activities.md#supported-data-stores-and-formats). Sie können Daten aus einem beliebigen unterstützten Quelldatenspeicher in eine Azure SQL-Datenbank oder aus einer Azure SQL-Datenbank in eine beliebigen unterstützten Senkendatenspeicher verschieben.
+
+## Erstellen der Pipeline
+Sie können eine Pipeline mit einer Kopieraktivität erstellen, die Daten mithilfe verschiedener Tools/APIs in und aus einer Azure SQL-Datenbank verschiebt.
+
+- Kopier-Assistent
+- Azure-Portal
+- Visual Studio
+- Azure PowerShell
+- .NET API
+- REST-API
+
+Im [Tutorial zur Kopieraktivität](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) finden Sie detaillierte Anweisungen, wie Sie eine Pipeline mit einer Kopieraktivität auf verschiedene Weisen erstellen können.
 
 ## Assistent zum Kopieren von Daten
 Die einfachste Möglichkeit zum Erstellen einer Pipeline, die Daten in und aus Azure SQL-Datenbank kopiert, ist die Verwendung des Assistenten zum Kopieren von Daten. Unter [Tutorial: Erstellen einer Pipeline mit dem Assistenten zum Kopieren](data-factory-copy-data-wizard-tutorial.md) finden Sie eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mithilfe des Assistenten zum Kopieren von Daten.
@@ -397,17 +411,17 @@ Eine Liste mit den Eigenschaften, die von SqlSink und BlobSource unterstützt we
 
 
 ## Eigenschaften des mit Azure SQL verknüpften Diensts
-
-Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den mit Azure SQL verknüpften Dienst spezifisch sind.
+In den Beispielen haben Sie einen verknüpften Dienst des Typs **AzureSqlDatabase** verwendet, um eine Azure SQL-Datenbank mit einer Data Factory zu verknüpfen. Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den mit Azure SQL verknüpften Dienst spezifisch sind.
 
 | Eigenschaft | Beschreibung | Erforderlich |
 | -------- | ----------- | -------- |
-| Typ | Die type-Eigenschaft muss auf "AzureSqlDatabase" festgelegt sein. | Ja |
+| Typ | Die „type“-Eigenschaft muss auf **AzureSqlDatabase** festgelegt sein. | Ja |
 | connectionString | Geben Sie Informationen, die zur Verbindung mit der Azure SQL-Datenbankinstanz erforderlich sind, für die Eigenschaft "connectionString" ein. | Ja |
 
 > [AZURE.NOTE] Konfigurieren Sie die [Azure SQL-Datenbankfirewall](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure) und den Datenbankserver, um [Azure-Diensten den Zugriff auf den Server zu ermöglichen](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure). Gehen Sie wie folgt vor, wenn Sie nicht aus Azure stammende Daten nach Azure SQL-Datenbank kopieren, inklusive Daten aus lokalen Datenquellen mit Data Factory-Gateway: Konfigurieren Sie den entsprechenden IP-Adressbereich für den Computer, der Daten an Azure SQL-Datenbank sendet.
 
 ## Eigenschaften des Dataset-Typs „Azure SQL“
+In den Beispielen haben Sie ein Dataset des Typs **AzureSqlTable** verwendet, um eine Tabelle in einer Azure SQL-Datenbank darzustellen.
 
 Eine vollständige Liste der Abschnitte und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel [Erstellen von Datasets](data-factory-create-datasets.md). Abschnitte wie „structure“, „availability“ und „policy“ des JSON-Codes eines Datasets sind bei allen Dataset-Typen (Azure SQL, Azure-Blob, Azure-Tabelle usw.) ähnlich.
 
@@ -418,12 +432,13 @@ Der Abschnitt "typeProperties" unterscheidet sich bei jedem Typ von Dataset und 
 | tableName | Name der Tabelle in der Azure SQL-Datenbankinstanz, auf die der verknüpfte Dienst verweist. | Ja |
 
 ## Eigenschaften des Azure SQL-Kopieraktivitätstyps
-
 Eine vollständige Liste der Abschnitte und Eigenschaften zum Definieren von Aktivitäten finden Sie im Artikel [Erstellen von Pipelines](data-factory-create-pipelines.md). Eigenschaften wie Name, Beschreibung, Eingabe- und Ausgabetabellen und Richtlinie sind für alle Arten von Aktivitäten verfügbar.
 
 > [AZURE.NOTE] Die Kopieraktivität verwendet nur eine Eingabe und erzeugt nur eine Ausgabe.
 
-Eigenschaften im Abschnitt „typeProperties“ der Aktivität können dagegen je nach Aktivitätstyp variieren. Für die Kopieraktivität variieren die Eigenschaften je nach Art der Quellen und Senken.
+Eigenschaften im Abschnitt **typeProperties** der Aktivität können dagegen je nach Aktivitätstyp variieren. Für die Kopieraktivität variieren die Eigenschaften je nach Art der Quellen und Senken.
+
+Wenn Sie Daten aus einer Azure SQL-Datenbank verschieben, legen Sie den Quelltyp in der Kopieraktivität auf **SqlSource** fest. Wenn Sie Daten in eine Azure SQL-Datenbank verschieben, legen Sie den Senkentyp in der Kopieraktivität auf **SqlSink** fest. Dieser Abschnitt enthält eine Liste der Eigenschaften, die von „SqlSource“ und „SqlSink“ unterstützt werden.
 
 ### SqlSource
 
@@ -527,7 +542,6 @@ Beachten Sie, dass die Zieltabelle über eine Identitätsspalte verfügt.
 	{
 	    "name": "SampleSource",
 	    "properties": {
-	        "published": false,
 	        "type": " SqlServerTable",
 	        "linkedServiceName": "TestIdentitySQL",
 	        "typeProperties": {
@@ -551,7 +565,6 @@ Beachten Sie, dass die Zieltabelle über eine Identitätsspalte verfügt.
 	            { "name": "name" },
 	            { "name": "age" }
 	        ],
-	        "published": false,
 	        "type": "AzureSqlTable",
 	        "linkedServiceName": "TestIdentitySQLSource",
 	        "typeProperties": {
@@ -568,6 +581,8 @@ Beachten Sie, dass die Zieltabelle über eine Identitätsspalte verfügt.
 
 
 Beachten Sie, dass die Quell- und die Zieltabelle unterschiedliche Schemas besitzen (das Ziel verfügt über eine zusätzliche Spalte mit der Identität). In diesem Szenario müssen Sie eine **structure**-Eigenschaft in der Definition des Zieldatasets angeben, die nicht die Identitätsspalte enthält.
+
+Anschließend ordnen Sie Spalten aus dem Quelldataset Spalten im Zieldataset zu. Unter [Beispiele für Spaltenzuordnungen](#column-mapping-samples) finden Sie ein Beispiel.
 
 [AZURE.INCLUDE [data-factory-type-repeatability-for-sql-sources](../../includes/data-factory-type-repeatability-for-sql-sources.md)]
 
@@ -630,4 +645,4 @@ Die Zuordnung ist mit der SQL Server-Datentypzuordnung für ADO.NET identisch.
 ## Leistung und Optimierung  
 Im Artikel [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-factory-copy-activity-performance.md) werden wichtige Faktoren beschrieben, die sich auf die Leistung der Datenverschiebung (Kopieraktivität) in Azure Data Factory auswirken, sowie verschiedene Möglichkeiten zur Leistungsoptimierung.
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

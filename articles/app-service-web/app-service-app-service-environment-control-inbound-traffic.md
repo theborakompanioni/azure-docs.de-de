@@ -23,7 +23,7 @@ Eine App Service-Umgebung kann **entweder** in einem virtuellen Netzwerk von Azu
 
 Eine App Service-Umgebung muss immer innerhalb eines Subnetzes erstellt werden, da ein Subnetz eine Netzwerkgrenze bereitstellt, die zum Sperren von eingehendem Datenverkehr hinter Upstreamgeräten und -diensten verwendet werden kann. Auf diese Weise wird HTTP- und HTTPS-Datenverkehr nur von bestimmten Upstream-IP-Adressen akzeptiert.
 
-Der ein- und ausgehende Netzwerkdatenverkehr in einem Subnetz wird anhand einer [Netzwerksicherheitsgruppe][NetworkSecurityGroups] gesteuert. Derzeit werden nur Netzwerksicherheitsgruppen, die im klassischen Bereitstellungsmodell erstellt wurden, in der App Service-Umgebung unterstützt. Zur Steuerung des eingehenden Datenverkehrs müssen Netzwerksicherheitsregeln in einer Netzwerksicherheitsgruppe erstellt werden. Anschließend wird die Netzwerksicherheitsgruppe dem Subnetz mit der App Service-Umgebung zugewiesen.
+Der ein- und ausgehende Netzwerkdatenverkehr in einem Subnetz wird anhand einer [Netzwerksicherheitsgruppe][NetworkSecurityGroups] gesteuert. Zur Steuerung des eingehenden Datenverkehrs müssen Netzwerksicherheitsregeln in einer Netzwerksicherheitsgruppe erstellt werden. Anschließend wird die Netzwerksicherheitsgruppe dem Subnetz mit der App Service-Umgebung zugewiesen.
 
 Sobald eine Netzwerksicherheitsgruppe einem Subnetz zugewiesen wurde, wird der in den Apps in der App Service-Umgebung eingehende Datenverkehr abhängig von den Zulassungs- und Ablehnungsregeln, die in der Netzwerksicherheitsgruppe definiert wurden, entweder zugelassen oder blockiert.
 
@@ -141,4 +141,4 @@ Weitere Informationen zur Azure App Service-Plattform finden Sie unter [Azure Ap
 <!-- IMAGES -->
  
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0928_2016-->

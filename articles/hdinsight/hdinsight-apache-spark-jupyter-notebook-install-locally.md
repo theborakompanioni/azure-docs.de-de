@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/25/2016" 
+	ms.date="09/26/2016" 
 	ms.author="nitinme"/>
 
 
@@ -51,24 +51,7 @@ Sie müssen Python installieren, bevor Sie Jupyter Notebooks installieren könne
 
 ## Installieren der Kernel und Spark Magic
 
-In diesem Abschnitt lernen Sie, die Kernel für Spark Magic, PySpark und Spark zu installieren. Anschließend konfigurieren Sie die Kernel für die Verbindung mit einem Apache Spark-Cluster, der in Azure HDInsight ausgeführt wird.
-
-1. Laden Sie die aktuelle öffentliche Vorschau von Spark Magic von [GitHub](https://github.com/jupyter-incubator/sparkmagic/archive/publicpreview0.5.zip) herunter.
-
-2. Entpacken Sie die heruntergeladene Datei an einem Speicherort auf dem Datenträger. In dieser Anleitung nennen wir diesen Pfad `$SPARKMAGIC_PATH`.
-
-2. Führen Sie den folgenden Befehl aus
-
-		pip install -r $SPARKMAGIC_PATH/requirements.txt  
-
-3. Führen Sie den folgenden Befehl aus, um Spark Magic zu installieren.
-
-		pip install -e $SPARKMAGIC_PATH
-
-4. Installieren der PySpark- und Spark-Kernel Führen Sie die folgenden Befehle aus:
-
-		jupyter-kernelspec install $SPARKMAGIC_PATH/remotespark/kernels/sparkkernel
-		jupyter-kernelspec install $SPARKMAGIC_PATH/remotespark/kernels/pysparkkernel
+Eine Anleitung zum Installieren von Spark Magic, PySpark und Spark-Kernels finden Sie in der [Spark Magic- Dokumentation](https://github.com/jupyter-incubator/sparkmagic#installation) auf GitHub.
 
 ## Konfigurieren von Spark Magic für den Zugriff auf den Spark-Cluster in HDInsight
 
@@ -97,7 +80,7 @@ In diesem Abschnitt lernen Sie, Spark Magic zu konfigurieren, nachdem Sie es ins
 		  },
 		  "kernel_scala_credentials" : {
 		    "username": "{USERNAME}",
-		    " base64_password ": "{BASE64ENCODEDPASSWORD}",
+		    "base64_password": "{BASE64ENCODEDPASSWORD}",
 		    "url": "https://{CLUSTERDNSNAME}.azurehdinsight.net/livy"
 		  }
 		}
@@ -185,4 +168,4 @@ Es kann zahlreiche Gründe geben, warum Sie Jupyter auf dem Computer installiere
 
 * [Track and debug jobs running on an Apache Spark cluster in HDInsight (Nachverfolgen und Debuggen von Aufträgen in einem Apache Spark-Cluster unter HDInsight)](hdinsight-apache-spark-job-debugging.md)
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0928_2016-->

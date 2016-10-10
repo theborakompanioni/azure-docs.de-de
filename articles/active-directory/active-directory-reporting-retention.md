@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="dhanyahk"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -24,28 +24,28 @@ Azure Active Directory (Azure AD)-Berichte werden für die hier angegebene Anzah
 
 Bericht | Beschreibung
 ------------------------------------------------------- | -----------
-Anmeldungen von unbekannten Quellen | 30 Tage
-Anmeldungen nach mehreren Fehlern | 30 Tage
-Anmeldungen aus mehreren geografischen Regionen | 30 Tage
-Anmeldungen von IP-Adressen mit verdächtigen Aktivitäten | 30 Tage
-Anmeldungen von möglicherweise infizierten Geräten | 30 Tage
-Irreguläre Anmeldeaktivitäten | 30 Tage
-Benutzer mit anomalen Anmeldeaktivitäten | 30 Tage
-Benutzer mit kompromittierten Anmeldeinformationen | 30 Tage
-Überwachungsbericht | 180 Tage
-Aktivität "Zurücksetzen des Kennworts" (Azure AD) | 30 Tage
-Aktivität "Zurücksetzen des Kennworts" (Identity Manager) | 30 Tage
-Aktivität "Registrierung für Zurücksetzen des Kennworts" (Azure AD) | 30 Tage
-Aktivität "Registrierung für Zurücksetzen des Kennworts" (Identity Manager) | 30 Tage
-Self-Service-Gruppenaktivität (Azure AD) | 30 Tage
-Self-Service-Gruppenaktivität (Identity Manager) | 30 Tage
-Anwendungsnutzung | 30 Tage
-Kontobereitstellungsaktivität | 30 Tage
-Status des Kennwortrollovers | 30 Tage
-Kontobereitstellungsfehler | 30 Tage
-RMS-Nutzung | 30 Tage
-Aktivste RMS-Benutzer | 30 Tage
-Nutzung von RMS-Geräten | 30 Tage
-Nutzung RMS-fähiger Anwendungen | 30 Tage
+Anmeldungen von unbekannten Quellen | 30 Tage
+Anmeldungen nach mehreren Fehlern | 30 Tage
+Anmeldungen aus mehreren geografischen Regionen | 30 Tage
+Anmeldungen von IP-Adressen mit verdächtigen Aktivitäten | 30 Tage
+Anmeldungen von möglicherweise infizierten Geräten | 30 Tage
+Irreguläre Anmeldeaktivitäten | 30 Tage
+Benutzer mit anomalen Anmeldeaktivitäten | 30 Tage
+Benutzer mit kompromittierten Anmeldeinformationen | 30 Tage
+Überwachungsbericht | 180 Tage
+Aktivität "Zurücksetzen des Kennworts" (Azure AD) | 30 Tage
+Aktivität "Zurücksetzen des Kennworts" (Identity Manager) | 30 Tage
+Aktivität "Registrierung für Zurücksetzen des Kennworts" (Azure AD) | 30 Tage
+Aktivität "Registrierung für Zurücksetzen des Kennworts" (Identity Manager) | 30 Tage
+Self-Service-Gruppenaktivität (Azure AD) | 30 Tage
+Self-Service-Gruppenaktivität (Identity Manager) | 30 Tage
+Anwendungsnutzung | 30 Tage
+Kontobereitstellungsaktivität | 30 Tage
+Status des Kennwortrollovers | 30 Tage
+Kontobereitstellungsfehler | 30 Tage
+RMS-Nutzung | 30 Tage
+Aktivste RMS-Benutzer | 30 Tage
+Nutzung von RMS-Geräten | 30 Tage
+Nutzung RMS-fähiger Anwendungen | 30 Tage
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0928_2016-->

@@ -14,7 +14,7 @@
   ms.topic="article"
   ms.tgt_pltfrm="vm-linux"
   ms.workload="infrastructure-services"
-  ms.date="07/11/2016" 
+  ms.date="09/27/2016" 
   ms.author="ahmetb" />
 
 # Bereitstellen einer privaten Docker-Registrierung in Azure
@@ -88,7 +88,7 @@ CONTAINER ID        IMAGE               COMMAND                CREATED          
 
 > [AZURE.IMPORTANT] Das Konfigurieren der Sicherheit für die Docker-Registrierung wird in diesem Dokument nicht behandelt, und auf Ihre Registrierung können standardmäßig alle Benutzer ohne Authentifizierung zugreifen, wenn Sie den Registrierungsport am Endpunkt des virtuellen Computers oder des Lastenausgleichs durch die Verwendung des Bereitstellungsbefehls oben öffnen.
 >
-> Lesen Sie das Dokument zum [Konfigurieren von Docker-Registrierungen][registry-config] \(in englischer Sprache), um zu erfahren, wie Sie die Registrierungsinstanz und Ihre Images schützen.
+> Lesen Sie das Dokument zum [Konfigurieren von Docker-Registrierungen][registry-config] (in englischer Sprache), um zu erfahren, wie Sie die Registrierungsinstanz und Ihre Images schützen.
 
 ## Nächste Schritte
 
@@ -100,4 +100,4 @@ Sobald Sie Ihre Registrierung eingerichtet haben, ist es an der Zeit, sie verst�
 [registry-config]: http://docs.docker.com/registry/configuration/
  
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0928_2016-->

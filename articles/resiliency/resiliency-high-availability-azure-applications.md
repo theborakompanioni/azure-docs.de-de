@@ -70,7 +70,7 @@ Betrachten wir die asynchrone Kommunikation zwischen lose gekoppelten Diensten z
 
 Eine Variante dieses Verfahrens verwendet Azure Storage (Blobs, Tabellen, Warteschlangen) oder Service Bus-Warteschlangen als Failoverspeicherort für fehlerhafte Datenbankaufrufe. Ein Beispiel: Ein synchroner Aufruf an einen anderen Dienst innerhalb einer Anwendung (z.B. Azure SQL-Datenbank) führt wiederholt zu einem Fehler. Sie können diese Daten möglicherweise in einem permanenten Speicher serialisieren. Zu einem späteren Zeitpunkt, wenn der Dienst oder die Datenbank wieder online ist, kann die Anwendung die Anforderung aus dem Speicher erneut senden. Der Unterschied in diesem Modell besteht darin, dass der temporäre Speicherort kein fester Bestandteil des Anwendungsworkflows ist. Er wird nur in Fehlerszenarien verwendet.
 
-In beiden Szenarien verhindern die asynchrone Kommunikation und der temporäre Speicher, dass ein ausgefallener Back-End-Dienst zu einem Ausfall der gesamten Anwendung führt. Warteschlangen dienen als logisches Zwischenelement. Weitere Informationen zur Auswahl des richtigen Warteschlangendiensts finden Sie unter [Azure-Warteschlangen und Azure Service Bus-Warteschlangen – Vergleich und Gegenüberstellung](../service-bus/service-bus-azure-and-service-bus-queues-compared-contrasted.md).
+In beiden Szenarien verhindern die asynchrone Kommunikation und der temporäre Speicher, dass ein ausgefallener Back-End-Dienst zu einem Ausfall der gesamten Anwendung führt. Warteschlangen dienen als logisches Zwischenelement. Weitere Informationen zur Auswahl des richtigen Warteschlangendiensts finden Sie unter [Azure-Warteschlangen und Azure Service Bus-Warteschlangen – Vergleich und Gegenüberstellung](../service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted.md).
 
 ###Fehlererkennung und Wiederholungslogik
 
@@ -143,4 +143,4 @@ Es ist wichtig zu beachten, dass sich die Skalierbarkeit des Clouddiensts direkt
 
 Dieser Artikel ist Teil einer Reihe von Artikeln mit Fokus auf [Notfallwiederherstellung und hohe Verfügbarkeit für in Microsoft Azure erstellte Anwendungen](./resiliency-disaster-recovery-high-availability-azure-applications.md). Der nächste Artikel dieser Reihe ist [Notfallwiederherstellung für in Microsoft Azure erstellte Anwendungen](./resiliency-disaster-recovery-azure-applications.md).
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0928_2016-->

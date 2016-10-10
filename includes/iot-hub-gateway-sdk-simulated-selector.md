@@ -2,7 +2,7 @@
 - [Linux](../articles/iot-hub/iot-hub-linux-gateway-sdk-simulated-device.md)
 - [Windows](../articles/iot-hub/iot-hub-windows-gateway-sdk-simulated-device.md)
 
-Diese exemplarische Vorgehensweise für das [Simulated Device Cloud Upload Sample] \(Beispiel für Clouduploads von simulierten Geräten) zeigt, wie Sie das [Microsoft Azure IoT Gateway SDK][lnk-sdk] verwenden, um D2C-Telemetriedaten (Device to Cloud) von simulierten Geräten an IoT Hub zu senden.
+Diese exemplarische Vorgehensweise für das [Simulated Device Cloud Upload Sample] (Beispiel für Clouduploads von simulierten Geräten) zeigt, wie Sie das [Microsoft Azure IoT Gateway SDK][lnk-sdk] verwenden, um D2C-Telemetriedaten (Device to Cloud) von simulierten Geräten an IoT Hub zu senden.
 
 Diese Anleitung umfasst:
 
@@ -27,7 +27,7 @@ Das folgende Diagramm zeigt die Hauptkomponenten des Beispiels, einschließlich 
 ![][1]
 
 
-> [AZURE.NOTE] Die Module übergeben untereinander Nachrichten nicht direkt. Die Module veröffentlichen Nachrichten in einem internen Nachrichtenbus, der die Nachrichten mithilfe eines Abonnementmechanismus an die anderen Module übermittelt, wie im unten stehenden Diagramm gezeigt. Weitere Informationen finden Sie unter [Erste Schritte mit dem Gateway SDK][lnk-gw-getstarted].
+> [AZURE.NOTE] Die Module übergeben untereinander Nachrichten nicht direkt. Die Module veröffentlichen Nachrichten in einem internen Broker, der die Nachrichten mithilfe eines Abonnementmechanismus an die anderen Module übermittelt, wie im unten stehenden Diagramm gezeigt. Weitere Informationen finden Sie unter [Erste Schritte mit dem Gateway SDK][lnk-gw-getstarted].
 
 ### Protokollerfassungsmodul
 
@@ -69,3 +69,4 @@ Anstatt für jedes simulierte Gerät eine Verbindung mit IoT Hub zu öffnen, öf
 [lnk-sdk]: https://github.com/Azure/azure-iot-gateway-sdk
 [lnk-gw-getstarted]: ../articles/iot-hub/iot-hub-linux-gateway-sdk-get-started.md
 
+<!---HONumber=AcomDC_0928_2016-->

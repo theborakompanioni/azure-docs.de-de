@@ -64,12 +64,12 @@ Dieses Beispiel umfasst ein Abonnement, das Folgendes enthält:
 	- **GatewaySubnet**. Subnetz für Azure-Hybridverbindungen, das für ExpressRoute und VPN Gateway erforderlich ist, um die Konnektivität zwischen Azure-VNETs und anderen Netzwerken zu gewährleisten.
 - Es gibt drei virtuelle Firewallgeräte im Netzwerk **azurevnet**.
 	- **AZF1**. Externe Firewall, die durch Verwendung einer öffentlichen IP-Adressressource in Azure für das öffentliche Internet verfügbar ist. Dazu benötigen Sie eine Vorlage vom Marketplace oder direkt vom Geräteanbieter, über die ein virtuelles Gerät mit drei Netzwerkkarten bereitgestellt wird.
-	- **AZF2**. Interne Firewall für die Kontrolle des Datenverkehrs zwischen **azsn2** und **azsn3**. Auch hier handelt es sich um ein virtuelles Gerät mit drei Netzwerkkarten.
+	- **AZF2**. Interne Firewall für die Steuerung des Datenverkehrs zwischen **azsn2** und **azsn3**. Auch hier handelt es sich um ein virtuelles Gerät mit drei Netzwerkkarten.
 	- **AZF3**. Verwaltungsfirewall, auf die Administratoren über das lokale Rechenzentrum zugreifen können und die mit einem Verwaltungssubnetz verbunden ist, über das alle Firewallgeräte verwaltet werden. Vorlagen für virtuelle Geräte mit zwei Netzwerkkarten finden Sie im Marketplace, oder Sie können sie direkt vom Geräteanbieter anfordern.
 
 ## Benutzerdefiniertes Routing
 
-Jedes Subnetz in Azure kann mit einer benutzerdefinierten Routingtabelle verknüpft werden, in der definiert wird, wie der im jeweiligen Subnetz initiierte Datenverkehr weitergeleitet wird. Wenn keine benutzerdefinierten Routen definiert sind, werden Standardrouten verwendet, um die Weiterleitung des Datenverkehrs zwischen den Subnetzen zu ermöglichen. Weiterführende Informationen zu benutzerdefinierten Routen finden Sie unter „Was sind benutzerdefinierte Routen und IP-Weiterleitung?“.
+Jedes Subnetz in Azure kann mit einer benutzerdefinierten Routingtabelle verknüpft werden, in der definiert wird, wie der im jeweiligen Subnetz initiierte Datenverkehr weitergeleitet wird. Wenn keine benutzerdefinierten Routen definiert sind, werden Standardrouten verwendet, um die Weiterleitung des Datenverkehrs zwischen den Subnetzen zu ermöglichen. Weiterführende Informationen zu benutzerdefinierten Routen finden Sie unter [Was sind benutzerdefinierte Routen und IP-Weiterleitung?](./virtual-networks-udr-overview.md#ip-forwarding).
 
 Um sicherzustellen, dass die Kommunikation basierend auf der letzten oben angeführten Anforderung über das richtige Firewallgerät erfolgt, müssen Sie in **azurevnet** die folgende Routingtabelle mit benutzerdefinierten Routen erstellen.
 
@@ -178,4 +178,4 @@ Führen Sie zum Bereitstellen dieses Szenarios die oben beschriebenen Schritte a
 4.	Geben Sie den Tunnel zwischen **onpremvnet** und **azurevnet** an.
 5.	Nachdem Sie alle Ressourcen angegeben haben, melden Sie sich bei **onpremvm2** an, und pingen Sie 10.0.3.101 an, um die Konnektivität zwischen **onpremsn2** und **azsn3** zu testen.
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0928_2016-->

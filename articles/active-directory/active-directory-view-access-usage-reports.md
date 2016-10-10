@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="dhanyahk"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -100,13 +100,13 @@ Im Azure-Verwaltungsportal werden Berichte auf folgende Weise kategorisiert:
 <p>Die Berichte zu anomalen Aktivitäten markieren verdächtige Anmeldeaktivitäten in Office365, im Azure-Verwaltungsportal, im Azure AD-Zugriffsbereich, in SharePoint Online, in Dynamics CRM Online und in anderen Microsoft-Onlinediensten.</p>
 <p>All diese Berichte, mit Ausnahme des Berichts "Anmeldungen nach mehreren Fehlern", markieren außerdem verdächtige <i>Verbundanmeldungen</i> bei den oben genannten Diensten, unabhängig vom Verbundanbieter. </p>
 <p>Folgende Berichte sind verfügbar:</p><ul>
-<li>[Anmeldungen von unbekannten Quellen](active-directory-reporting-sign-ins-from-unknown-sources.md).</li>
-<li>[Anmeldungen nach mehreren Fehlern](active-directory-reporting-sign-ins-after-multiple-failures.md).</li>
+<li>[Anmeldungen von unbekannten Quellen] (active-directory-reporting-sign-ins-from-unknown-sources.md).</li>
+<li>[Anmeldungen nach mehreren Fehlern] (active-directory-reporting-sign-ins-after-multiple-failures.md).</li>
 <li>[Anmeldungen aus mehreren geografischen Regionen](active-directory-reporting-sign-ins-from-multiple-geographies.md).</li>
-<li>[Anmeldungen von IP-Adressen mit verdächtigen Aktivitäten](active-directory-reporting-sign-ins-from-ip-addresses-with-suspicious-activity.md).</li>
-<li>[Irreguläre Anmeldeaktivitäten](active-directory-reporting-irregular-sign-in-activity.md).</li>
-<li>[Anmeldungen von möglicherweise infizierten Geräten](active-directory-reporting-sign-ins-from-possibly-infected-devices.md).</li>
-<li>[Benutzern mit anomalen Anmeldeaktivitäten](active-directory-reporting-users-with-anomalous-sign-in-activity.md).</li>
+<li>[Anmeldungen von IP-Adressen mit verdächtigen Aktivitäten] (active-directory-reporting-sign-ins-from-ip-addresses-with-suspicious-activity.md).</li>
+<li>[Irreguläre Anmeldeaktivitäten] (active-directory-reporting-irregular-sign-in-activity.md).</li>
+<li>[Anmeldungen von möglicherweise infizierten Geräten] (active-directory-reporting-sign-ins-from-possibly-infected-devices.md).</li>
+<li>[Benutzern mit anomalen Anmeldeaktivitäten] (active-directory-reporting-users-with-anomalous-sign-in-activity.md).</li>
 <li>Benutzer mit kompromittierten Anmeldeinformationen</li>.</ul>
 
 
@@ -172,7 +172,7 @@ Im Azure-Verwaltungsportal werden Berichte auf folgende Weise kategorisiert:
 
 Dieser Bericht enthält Informationen zu Anmeldungen bei _allen_ Programmen, auf die Ihr Verzeichnis Zugriff hat, einschließlich vorab integrierter Microsoft-Anwendungen.
 
-Zu den bereits integrierten Microsoft-Anwendungen zählen Office 365, Sharepoint, das Azure-Verwaltungsportal und andere.
+Zu den bereits integrierten Microsoft-Anwendungen zählen Office 365, Sharepoint, das Azure-Verwaltungsportal und andere.
 
 ![Zusammenfassung Anwendungsnutzung](./media/active-directory-view-access-usage-reports/applicationUsage.PNG)
 
@@ -232,8 +232,8 @@ Nur bestimmte Arten von Anmeldeereignissen werden im Bericht "Benutzeraktivität
 | Anmeldungen beim [Microsoft Azure-Portal](https://portal.azure.com/) | Ja |
 | Anmeldungen beim [Office 365-Portal](http://portal.office.com/) | Ja |
 | Anmeldungen bei einer systemeigenen Anwendung wie Outlook (siehe nachfolgende Ausnahme) | Ja |
-| Anmeldungen bei einer Verbund-/bereitgestellten App über den Zugriffsbereich wie z. B. Salesforce | Ja |
-| Anmeldungen bei einer kennwortbasierten App über den Zugriffsbereich wie z. B. Twitter | Ja |
+| Anmeldungen bei einer Verbund-/bereitgestellten App über den Zugriffsbereich wie z. B. Salesforce | Ja |
+| Anmeldungen bei einer kennwortbasierten App über den Zugriffsbereich wie z. B. Twitter | Ja |
 | Anmeldungen bei einer benutzerdefinierten Geschäfts-App, die dem Verzeichnis hinzugefügt wurde | Nein (in Kürze verfügbar) |
 | Anmeldungen bei einer Azure AD-Anwendungsproxy-App, die dem Verzeichnis hinzugefügt wurde | Nein (in Kürze verfügbar) |
 
@@ -279,11 +279,11 @@ Wenn Sie Anomalieberichte prüfen, stellen Sie möglicherweise fest, dass Sie ve
 
 ## Automatische E-Mail-Benachrichtigungen
 
-Weitere Informationen zu den Benachrichtigungen für Berichte in Azure AD finden Sie unter [Benachrichtigungen zu Azure Active Directory-Berichten](active-directory-reporting-notifications.md).
+Weitere Informationen zu den Benachrichtigungen für Berichte in Azure AD finden Sie unter [Benachrichtigungen zu Azure Active Directory-Berichten](active-directory-reporting-notifications.md).
 
 ## Nächste Schritte
 
 - [Erste Schritte mit Azure Active Directory Premium](active-directory-get-started-premium.md)
 - [Hinzufügen Ihres Unternehmensbranding zur Anmelde- und Zugriffsbereichsseite](active-directory-add-company-branding.md)
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0928_2016-->

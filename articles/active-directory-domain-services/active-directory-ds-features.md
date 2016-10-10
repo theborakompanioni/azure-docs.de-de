@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Vorschau von Azure Active Directory-Domänendiensten: Features | Microsoft Azure"
-	description="Features von Azure Active Directory-Domänendiensten"
+	pageTitle="Vorschau der Azure Active Directory Domain Services: Features | Microsoft Azure"
+	description="Features der Azure Active Directory Domain Services"
 	services="active-directory-ds"
 	documentationCenter=""
 	authors="mahesh-unnikrishnan"
@@ -13,42 +13,42 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/31/2016"
+	ms.date="09/21/2016"
 	ms.author="maheshu"/>
 
-# Azure AD-Domänendienste *(Vorschau)*
+# Azure AD Domain Services
 
 ## Features
-Die folgenden Features sind in der Vorschauversion der Azure Active Directory-Domänendienste verfügbar.
+Die folgenden Features sind in der Vorschauversion der Azure Active Directory Domain Services verfügbar.
 
-- **Einfache Bereitstellung:** Sie können die Azure AD-Domänendienste für Ihren Azure AD-Mandanten mit nur wenigen Mausklicks aktivieren. Unabhängig davon, ob es sich bei Ihrem Azure AD-Mandanten um einen Cloudmandanten handelt oder ob er mit Ihrem lokalen Verzeichnis synchronisiert wird, kann Ihre verwaltete Domäne schnell bereitgestellt werden.
+- **Einfache Bereitstellung:** Sie können die Azure AD Domain Services für Ihren Azure AD-Mandanten mit nur wenigen Mausklicks aktivieren. Unabhängig davon, ob es sich bei Ihrem Azure AD-Mandanten um einen Cloudmandanten handelt oder ob er mit Ihrem lokalen Verzeichnis synchronisiert wird, kann Ihre verwaltete Domäne schnell bereitgestellt werden.
 
-- **Unterstützung für den Domänenbeitritt:** In einem virtuellen Azure-Netzwerk, in dem Azure Active Directory-Domänendienste verfügbar sind, können Sie Computer ganz einfach in eine Domäne aufnehmen. Das Beitreten zur Domäne auf Windows-Client- und Server-Betriebssystemen funktioniert nahtlos mit Domänen, die von den Azure Active Directory-Domänendiensten bereitgestellt werden. Sie können bei diesen Domänen auch automatisierte Domänenbeitrittstools verwenden.
+- **Unterstützung für den Domänenbeitritt:** In einem virtuellen Azure-Netzwerk, in dem Azure Active Directory Domain Services verfügbar sind, können Sie Computer ganz einfach in eine Domäne aufnehmen. Das Beitreten zur Domäne auf Windows-Client- und Server-Betriebssystemen funktioniert nahtlos mit Domänen, die von den Azure Active Directory Domain Services bereitgestellt werden. Sie können bei diesen Domänen auch automatisierte Domänenbeitrittstools verwenden.
 
 - **Eine Domäneninstanz pro Azure AD-Verzeichnis:** Sie können eine einzige Active Directory-Domäne für jedes Azure AD-Verzeichnis erstellen.
 
-- **Domänen mit benutzerdefinierten Namen erstellen:** Erstellen Sie Domänen mit benutzerdefinierten Namen (z.B. contoso100.com) mithilfe der Azure Active Directory-Domänendienste. Dies schließt sowohl überprüfte als auch nicht überprüfte Domänennamen ein. Optional können Sie eine Domäne mit dem integrierten Domänensuffix erstellen (d. h. *.onmicrosoft.com), die von Ihrem Azure AD-Verzeichnis bereitgestellt wird.
+- **Domänen mit benutzerdefinierten Namen erstellen:** Erstellen Sie Domänen mit benutzerdefinierten Namen (z.B. contoso100.com) mithilfe der Azure Active Directory Domain Services. Sie können entweder überprüfte oder nicht überprüfte Domänennamen verwenden. Optional können Sie eine Domäne mit dem integrierten Domänensuffix erstellen (d.h. *.onmicrosoft.com), die von Ihrem Azure AD-Verzeichnis bereitgestellt wird.
 
-- **In Azure AD integriert:** Sie müssen die Replikation in Azure Active Directory-Domänendienste nicht konfigurieren oder verwalten. Benutzerkonten, Gruppenmitgliedschaften und Benutzeranmeldeinformationen (Kennwörter) aus dem Azure AD-Verzeichnis stehen in Azure Active Directory-Domänendiensten automatisch zur Verfügung. Neue Benutzer, Gruppen oder Änderungen von Attributen auf Ihrem Azure AD-Mandanten oder in Ihrem lokalen Verzeichnis werden mit Azure Active Directory-Domänendiensten automatisch synchronisiert.
+- **In Azure AD integriert:** Sie müssen die Replikation in Azure Active Directory Domain Services nicht konfigurieren oder verwalten. Benutzerkonten, Gruppenmitgliedschaften und Benutzeranmeldeinformationen (Kennwörter) aus dem Azure AD-Verzeichnis stehen in den Azure Active Directory Domain Services automatisch zur Verfügung. Neue Benutzer, Gruppen oder Änderungen von Attributen auf Ihrem Azure AD-Mandanten oder in Ihrem lokalen Verzeichnis werden automatisch mit den Azure Active Directory Domain Services synchronisiert.
 
 - **NTLM- und Kerberos-Authentifizierung:** Durch die Unterstützung für die NTLM- und Kerberos-Authentifizierung können Sie Anwendungen bereitstellen, die auf der integrierten Windows-Authentifizierung beruhen.
 
-- **Verwenden der Anmeldeinformationen/Kennwörter Ihres Unternehmens:** Kennwörter für Benutzer auf Ihrem Azure AD-Mandanten können für die Azure Active Directory-Domänendienste verwendet werden. Benutzer in Ihrer Organisation können daher ihre Unternehmensanmeldeinformationen in der Domäne einsetzen – zum Einbinden von Computern in die Domäne, für die interaktive Anmeldung bzw. die Anmeldung über Remotedesktop, für die Authentifizierung beim DC usw.
+- **Verwenden der Anmeldeinformationen/Kennwörter Ihres Unternehmens:** Kennwörter für Benutzer auf Ihrem Azure AD-Mandanten können für die Azure Active Directory Domain Services verwendet werden. Benutzer in Ihrer Organisation können dank dieses Features ihre Unternehmensanmeldeinformationen in der Domäne einsetzen – zum Einbinden von Computern in die Domäne, für die interaktive Anmeldung bzw. die Anmeldung über Remotedesktop, für die Authentifizierung beim DC usw.
 
-- **LDAP-Bindungs- und LDAP-Leseunterstützung:** Sie können auf LDAP-Bindungen beruhende Anwendungen verwenden, um Benutzer in Domänen zu authentifizieren, die von den Azure Active Directory-Domänendiensten bereitgestellt werden. Darüber hinaus können Anwendungen, die Benutzer-/Computerattribute anhand von LDAP-Lesevorgängen aus dem Verzeichnis abfragen, auch mit Azure Active Directory-Domänendiensten arbeiten.
+- **LDAP-Bindungs- und LDAP-Leseunterstützung:** Sie können auf LDAP-Bindungen beruhende Anwendungen verwenden, um Benutzer in Domänen zu authentifizieren, die von den Azure Active Directory Domain Services bereitgestellt werden. Darüber hinaus können Anwendungen, die Benutzer-/Computerattribute anhand von LDAP-Lesevorgängen aus dem Verzeichnis abfragen, auch mit den Azure Active Directory Domain Services arbeiten.
 
 - **Sicheres LDAP (LDAPS):** Sie können den Zugriff auf das Verzeichnis über sicheres LDAP (LDAPS) aktivieren. Sicherer LDAP-Zugriff ist innerhalb des virtuellen Netzwerks standardmäßig verfügbar. Allerdings können Sie optional auch sicheren LDAP-Zugriff über das Internet aktivieren.
 
-- **Gruppenrichtlinie:** Sie können ein einzelnes integriertes GPO sowohl für die Benutzer- als auch für die Computercontainer nutzen, um Compliance mit den erforderlichen Sicherheitsrichtlinien für Benutzerkonten und in die Domäne eingebundene Computer durchzusetzen.
+- **Gruppenrichtlinie:** Sie können ein einzelnes integriertes GPO sowohl für die Benutzer- als auch für die Computercontainer verwenden, um Compliance mit den erforderlichen Sicherheitsrichtlinien für Benutzerkonten und in die Domäne eingebundene Computer durchzusetzen.
 
-- **DNS verwalten:** Mitglieder der Gruppe der AAD-DC-Administratoren können DNS für Ihre mit Azure AD-Domänendiensten verwaltete Domäne mit vertrauten DNS-Verwaltungstools wie dem MMC-Snap-In für die DNS-Verwaltung verwalten.
+- **DNS verwalten:** Mitglieder der Gruppe der AAD-DC-Administratoren können DNS für Ihre mit den Azure AD Domain Services verwaltete Domäne mit vertrauten DNS-Verwaltungstools wie dem MMC-Snap-In für die DNS-Verwaltung verwalten.
 
-- **Benutzerdefinierte Organisationseinheiten (OUs) erstellen:** Mitglieder der Gruppe der AAD-DC-Administratoren können benutzerdefinierte Organisationseinheiten innerhalb der mit AAD-Domänendiensten verwalteten Domäne erstellen. Diesen Benutzern werden vollständige Administratorrechte für benutzerdefinierte Organisationseinheiten erteilt, sodass sie Dienstkonten, Computer, Gruppen usw. in diesen benutzerdefinierten Organisationseinheiten hinzufügen/entfernen können.
+- **Benutzerdefinierte Organisationseinheiten (OUs) erstellen:** Mitglieder der Gruppe der AAD-DC-Administratoren können benutzerdefinierte Organisationseinheiten innerhalb der mit den AAD Domain Services verwalteten Domäne erstellen. Diesen Benutzern werden vollständige Administratorrechte für benutzerdefinierte Organisationseinheiten erteilt, sodass sie Dienstkonten, Computer, Gruppen usw. in diesen benutzerdefinierten Organisationseinheiten hinzufügen/entfernen können.
 
-- **Verfügbar in mehreren Azure-Regionen:** Informationen zu den Azure-Regionen, in denen Azure AD-Domänendienste verfügbar sind, finden Sie unter [Azure-Dienste nach Region](https://azure.microsoft.com/regions/#services/).
+- **Verfügbar in mehreren Azure-Regionen:** Informationen zu den Azure-Regionen, in denen Azure AD Domain Services verfügbar sind, finden Sie unter [Azure-Dienste nach Region](https://azure.microsoft.com/regions/#services/).
 
-- **Hohe Verfügbarkeit:** Azure AD-Domänendienste bieten eine hohe Verfügbarkeit für Ihre Domäne. Dadurch wird eine höhere Dienstverfügbarkeit und Stabilität bei Fehlern gewährleistet. Die integrierte Integritätsüberwachung bietet eine automatische Wiederherstellung nach Fehlern durch das Einrichten neuer Instanzen zum Ersetzen fehlerhafter Instanzen und zum Bereitstellen eines fortlaufenden Diensts für Ihre Domäne.
+- **Hohe Verfügbarkeit:** Azure AD Domain Services bieten eine hohe Verfügbarkeit für Ihre Domäne. Durch dieses Feature wird eine höhere Dienstverfügbarkeit und Stabilität bei Fehlern gewährleistet. Die integrierte Integritätsüberwachung bietet eine automatische Wiederherstellung nach Fehlern durch das Einrichten neuer Instanzen zum Ersetzen fehlerhafter Instanzen und zum Bereitstellen eines fortlaufenden Diensts für Ihre Domäne.
 
-- **Verwendung vertrauter Verwaltungstools:** Sie können vertraute Windows Server Active Directory-Verwaltungstools wie das Active Directory-Verwaltungscenter oder Active Directory-PowerShell zur Verwaltung von Domänen einsetzen, die von Azure Active Directory-Domänendiensten bereitgestellt werden.
+- **Verwendung vertrauter Verwaltungstools:** Sie können vertraute Windows Server Active Directory-Verwaltungstools wie das Active Directory-Verwaltungscenter oder Active Directory-PowerShell zur Verwaltung von Domänen einsetzen, die von den Azure Active Directory Domain Services bereitgestellt werden.
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0928_2016-->

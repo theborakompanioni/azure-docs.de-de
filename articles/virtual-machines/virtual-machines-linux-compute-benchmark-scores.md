@@ -13,7 +13,7 @@ ms.service="virtual-machines-linux"
  ms.topic="article"
  ms.tgt_pltfrm="vm-linux"
  ms.workload="infrastructure-services"
- ms.date="07/18/2016"
+ ms.date="09/22/2016"
  ms.author="danlep"/>
 
 # Compute-Benchmarkergebnisse für virtuelle Linux-Computer
@@ -84,9 +84,23 @@ Standard\_GS4 | 16 | 1 | Intel Xeon E5-2698B v3 mit 2 GHz | 84 | 194\.111 | 4\.7
 Standard\_GS5 | 32 | 2 | Intel Xeon E5-2698B v3 mit 2 GHz | 84 | 357\.396 | 16\.228
 
 
+## H-Reihe
+
+Größe | vCPUs | NUMA-Knoten | CPU | Ausführungen | Iterationen/s | Standardabweichung
+------- | ------ | ---- | -------| ---- | ---- | -----
+Standard\_H8 | 8 | 1 | Intel Xeon E5-2667 v3 mit 3,2 GHz | 28 | 140\.782 | 2\.512
+Standard\_H16 | 16 | 2 | Intel Xeon E5-2667 v3 mit 3,2 GHz | 35 | 275\.289 | 7\.110 
+Standard\_H18m | 8 | 1 | Intel Xeon E5-2667 v3 mit 3,2 GHz | 28 | 139\.071 | 3\.988 
+Standard\_H16m | 16 | 2 | Intel Xeon E5-2667 v3 mit 3,2 GHz | 28 | 275\.988 | 6\.963 
+Standard\_H16r | 16 | 2 | Intel Xeon E5-2667 v3 mit 3,2 GHz | 28 | 273\.982 | 6\.069 
+Standard\_H16mr | 16 | 2 | Intel Xeon E5-2667 v3 mit 3,2 GHz | 28 | 274\.523 | 5\.698 
+
+
+
 ## Informationen zu CoreMark
 
-Die Linux-Zahlen wurden durch die Ausführung von [CoreMark](http://www.eembc.org/coremark/faq.php) unter Ubuntu berechnet. CoreMark wurde so konfiguriert, dass die Anzahl der Threads auf die Anzahl der virtuellen CPUs und die Parallelität auf PThreads festgelegt waren. Die Zielanzahl von Iterationen wurde basierend auf der erwarteten Leistung angepasst, um eine Laufzeit von mindestens 20 Sekunden (in der Regel viel länger) zu ermöglichen. Das Endergebnis stellt die Anzahl der abgeschlossenen Iterationen geteilt durch die Anzahl der Sekunden für die Testausführung dar. Jeder Test wurde mindestens sieben Mal auf jedem virtuellen Computer ausgeführt. Die Tests wurden im Oktober 2015 auf mehreren virtuellen Computern in jeder öffentlichen Azure-Region ausgeführt, in der der virtuelle Computer zum Zeitpunkt der Ausführung unterstützt wurde.
+Die Linux-Zahlen wurden durch die Ausführung von [CoreMark](http://www.eembc.org/coremark/faq.php) unter Ubuntu berechnet. CoreMark wurde so konfiguriert, dass die Anzahl der Threads auf die Anzahl der virtuellen CPUs und die Parallelität auf PThreads festgelegt waren. Die Zielanzahl von Iterationen wurde basierend auf der erwarteten Leistung angepasst, um eine Laufzeit von mindestens 20 Sekunden (in der Regel viel länger) zu ermöglichen. Das Endergebnis stellt die Anzahl der abgeschlossenen Iterationen geteilt durch die Anzahl der Sekunden für die Testausführung dar. Jeder Test wurde mindestens sieben Mal auf jedem virtuellen Computer ausgeführt. Die Tests (mit Ausnahme der H-Reihe) wurden im Oktober 2015 auf mehreren virtuellen Computern in jeder öffentlichen Azure-Region ausgeführt, in der der virtuelle Computer zum Zeitpunkt der Ausführung unterstützt wurde.
+
 ## Nächste Schritte
 
 
@@ -95,4 +109,4 @@ Die Linux-Zahlen wurden durch die Ausführung von [CoreMark](http://www.eembc.or
 
 * Laden Sie zum Ausführen des CoreMark-Skripts auf virtuellen Linux-Computern das [CoreMark-Skriptpaket](http://download.microsoft.com/download/3/0/5/305A3707-4D3A-4599-9670-AAEB423B4663/AzureCoreMarkScriptPack.zip) herunter.
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0928_2016-->

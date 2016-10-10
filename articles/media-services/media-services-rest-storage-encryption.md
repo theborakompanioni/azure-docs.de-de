@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/22/2016"
+	ms.date="09/26/2016"
 	ms.author="juliako"/>
 
 
@@ -187,7 +187,7 @@ Beim Erstellen des Inhaltsschlüssels muss neben anderen Werten auch der Typ fes
 Das folgende Beispiel zeigt, wie Sie einen **ContentKey** mit einem **ContentKeyType** erstellen, für den die Speicherverschlüsselung festgelegt ("1") und **ProtectionKeyType** auf "0" festgelegt wurde. Dies zeigt an, dass es sich bei der Schutzschlüssel-ID um den X. 509-Zertifikatfingerabdruck handelt.
 
 
-Anforderung
+Request
 
 	POST https://media.windows.net/api/ContentKeys HTTP/1.1
 	Content-Type: application/json
@@ -313,7 +313,7 @@ Die [AssetFile](http://msdn.microsoft.com/library/azure/hh974275.aspx)-Entität 
 
 Die **AssetFile**-Instanz und die eigentliche Mediendatei sind zwei verschiedene Objekte. Die AssetFile-Instanz enthält Metadaten zur Mediendatei, während die Mediendatei die tatsächlichen Medieninhalte enthält.
 
-Nachdem Sie Ihre digitale Mediendatei in einen Blobcontainer hochgeladen haben, verwenden Sie die **MERGE**-HTTP-Anforderung, um die AssetFile anhand von Informationen über Ihre Mediendatei zu aktualisieren (in diesem Thema nicht beschrieben).
+Nachdem Sie Ihre digitale Mediendatei in einen Blobcontainer hochgeladen haben, verwenden Sie die **MERGE**-HTTP-Anforderung, um das AssetFile-Element anhand von Informationen über Ihre Mediendatei zu aktualisieren (in diesem Thema nicht beschrieben).
 
 **HTTP-Anforderung**
 
@@ -375,4 +375,4 @@ Nachdem Sie Ihre digitale Mediendatei in einen Blobcontainer hochgeladen haben, 
 	   "ContentChecksum":null
 	}
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0928_2016-->

@@ -45,11 +45,11 @@ Sie können die Beispieleinstellungen als Referenz verwenden, wenn Sie in den fo
 
 **Einstellungen für das klassische VNet**
 
-VNet-Name = ClassicVNet <br> Standort = USA, Westen <br> Adressräume von Virtual Network = 10.0.0.0/8 <br> Subnetz-1 = 10.0.0.0/11 <br> Gatewaysubnetz = 10.32.0.0/29 <br> Name des lokalen Netzwerks = RMVNetLocal <br>
+VNet Name = ClassicVNet <br> Standort = USA, Westen <br> Adressräume von Virtual Network = 10.0.0.0/24 <br> Subnetz-1 = 10.0.0.0/27 <br> Gatewaysubnetz = 10.0.0.32/29 <br> Name des lokalen Netzwerks = RMVNetLocal <br>
 
 **Einstellungen für das Resource Manager-VNet**
 
-VNet-Name = RMVNet <br> Ressourcengruppe = RG1 <br> IP-Adressräume von Virtual Network = 192.168.1.0/16 <br> Subnetz-1 = 192.168.1.0/24 <br> Gatewaysubnetz = 192.168.0.0/26 <br> Standort = USA, Osten <br> Name des virtuellen Netzwerkgateways = RMGateway <br> Öffentlicher IP-Name des Gateways = gwpip <br> Gatewaytyp = VPN <br> VPN-Typ = Routenbasiert <br> Lokales Netzwerkgateway = ClassicVNetLocal <br>
+VNet-Name = RMVNet <br> Ressourcengruppe = RG1 <br> IP-Adressräume von Virtual Network = 192.168.0.0/16 <br> Subnetz-1 = 192.168.1.0/24 <br> Gatewaysubnetz = 192.168.0.0/26 <br> Standort = USA, Osten <br> Name des virtuellen Netzwerkgateways = RMGateway <br> Öffentlicher IP-Name des Gateways = gwpip <br> Gatewaytyp = VPN <br> VPN-Typ = Routenbasiert <br> Lokales Netzwerkgateway = ClassicVNetLocal <br>
 
 ## <a name="createsmgw"></a>Abschnitt 1: Konfigurieren der Einstellungen für das klassische VNet
 
@@ -156,14 +156,14 @@ In diesem Abschnitt erstellen wir die Verbindung zwischen den VNets. Für diese 
 		Set-AzureVNetGatewayKey -VNetName ClassicVNet `
 		-LocalNetworkSiteName RMVNetLocal -SharedKey abc123
 
-4. Erstellen Sie die VPN-Verbindung, indem Sie die folgenden Befehle ausführen.
+4. Erstellen Sie die VPN-Verbindung, indem Sie die folgenden Befehle ausführen:
 	
 	**Festlegen der Variablen**
 
 		$vnet01gateway = Get-AzureRMLocalNetworkGateway -Name ClassicVNetLocal -ResourceGroupName RG1
 		$vnet02gateway = Get-AzureRmVirtualNetworkGateway -Name RMGateway -ResourceGroupName RG1
 
-	**Erstellen der Verbindung**<br> Beachten Sie, dass `-ConnectionType` „IPsec“ ist, und nicht „Vnet2Vnet“. In diesem Beispiel ist `-Name` der Name, den Sie für die Verbindung verwenden möchten. Der folgende Beispielcode erstellt eine Verbindung mit dem Namen " *rm-to-classic-connection* ".
+	**Erstellen der Verbindung**<br> Beachten Sie, dass `-ConnectionType` „IPsec“ ist, und nicht „Vnet2Vnet“. In diesem Beispiel ist `-Name` der Name, den Sie für die Verbindung verwenden möchten. Der folgende Beispielcode erstellt eine Verbindung mit dem Namen „*rm-to-classic-connection*“.
 		
 		New-AzureRmVirtualNetworkGatewayConnection -Name rm-to-classic-connection -ResourceGroupName RG1 `
 		-Location "East US" -VirtualNetworkGateway1 `
@@ -182,4 +182,4 @@ Zeigen Sie die Details zu den häufig gestellten Fragen an, um zusätzliche Info
 
 [AZURE.INCLUDE [vpn-gateway-vnet-vnet-faq](../../includes/vpn-gateway-vnet-vnet-faq-include.md)]
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0928_2016-->

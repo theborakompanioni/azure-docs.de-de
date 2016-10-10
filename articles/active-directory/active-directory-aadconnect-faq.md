@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="billmath"
-	manager="stevenpo"
+	manager="femila"
 	editor="curtand"/>
 
 <tags
@@ -72,4 +72,4 @@ Sie können Azure AD auch so konfigurieren, dass das Synchronisierungsmodul den 
 
 - Verwenden Sie diesen Link, um Support über das Azure-Portal zu erhalten.
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0928_2016-->

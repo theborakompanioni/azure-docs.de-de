@@ -4,7 +4,7 @@
 	services="storage"
 	documentationCenter="na"
 	authors="aungoo-msft"
-	manager=""
+	manager="tadb"
 	editor="tysonn"/>
 
 <tags
@@ -14,7 +14,7 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="09/20/2016"
-	ms.author="tamram;aungoo"/>
+	ms.author="aungoo;tamram"/>
 
 
 # Sichern von Azure-VM-Datenträgern mit inkrementellen Momentaufnahmen
@@ -128,4 +128,4 @@ Mit den unten beschriebenen Schritten wird der Premium-Datenträger *mypremiumdi
 - [Erstellen einer Momentaufnahme eines Blobs](https://msdn.microsoft.com/library/azure/hh488361.aspx)
 - [Planen der Sicherungsinfrastruktur für virtuelle Computer](../backup/backup-azure-vms-introduction.md)
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

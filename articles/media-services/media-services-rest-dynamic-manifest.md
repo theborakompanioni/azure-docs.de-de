@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Erstellen von Filtern mit der Azure Media Services-REST-API" 
+	pageTitle="Erstellen von Filtern mit der Azure Media Services-REST-API | Microsoft Azure" 
 	description="In diesem Thema wird erläutert, wie Sie Filter erstellen, mit denen Ihre Kunden bestimmte Abschnitte eines Streams streamen können. Media Services erstellt dynamische Manifeste, um dieses selektive Streaming zu erreichen."
 	services="media-services" 
 	documentationCenter="" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="ne" 
 	ms.topic="article" 
-	ms.date="06/22/2016"  
+	ms.date="09/26/2016"  
 	ms.author="juliako;cenkdin"/>
 
 #Erstellen von Filtern mit der Azure Media Services-REST-API
@@ -367,11 +367,11 @@ In den folgenden Beispielen sehen Sie, wie Sie Ihren Streaming-URLs Filter hinzu
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 
-##Siehe auch 
+##Weitere Informationen 
 
 [Übersicht über dynamische Manifeste](media-services-dynamic-manifest-overview.md)
  
 
  
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0928_2016-->

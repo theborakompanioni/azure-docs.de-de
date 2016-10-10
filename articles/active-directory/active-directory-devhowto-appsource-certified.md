@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="07/05/2016"
+   ms.date="09/22/2016"
    ms.author="skwan;bryanla"/>
 
 #Zertifizieren von AppSource für Azure Active Directory (AD) 
@@ -41,4 +41,4 @@ Verwenden Sie den unten angezeigten Disqus-Kommentarabschnitt, um uns Feedback z
 
 <!--Image references-->
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0928_2016-->

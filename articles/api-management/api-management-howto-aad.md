@@ -48,7 +48,7 @@ Geben Sie einen Namen für die Anwendung ein, wählen Sie** Webanwendung und/ode
 
 ![Neue Azure Active Directory-Anwendung][api-management-new-aad-application-1]
 
-Kopieren Sie für den **Anmelde-URL** den Wert für **Umleitungs-URL** aus dem Abschnitt **Azure Active Directory** der Registerkarte **Externe Identitäten** im Herausgeberportal, und entfernen Sie das Suffix **-aad** am Ende der URL. In diesem Beispiel erhält **Anmelde-URL** den Wert `https://aad03.portal.current.int-azure-api.net/signin`.
+Unter **Anmelde-URL** geben Sie die Anmelde-URL Ihres Entwicklerportals ein. In diesem Beispiel erhält **Anmelde-URL** den Wert `https://aad03.portal.current.int-azure-api.net/signin`.
 
 Geben Sie für die **App-ID-URL** entweder die Standarddomäne oder eine benutzerdefinierte Domäne für das Azure Active Directory-Verzeichnis ein, und hängen Sie eine eindeutige Zeichenfolge an die Domäne an. In diesem Beispiel wird die Standarddomäne **https://contoso5api.onmicrosoft.com** mit dem Suffix **/api** angegeben.
 
@@ -227,4 +227,4 @@ Der Benutzer ist jetzt beim Entwicklerportal für Ihre API Management-Dienstinst
 
 [Anmelden beim Entwicklerportal mit einem Azure Active Directory-Konto]: #Log-in-to-the-Developer-portal-using-an-Azure-Active-Directory-account
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0928_2016-->

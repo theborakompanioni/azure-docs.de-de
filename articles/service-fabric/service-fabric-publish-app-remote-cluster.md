@@ -18,6 +18,12 @@
 
 # Veröffentlichen einer Anwendung in einem Remotecluster mit Visual Studio
 
+> [AZURE.SELECTOR]
+- [PowerShell](service-fabric-deploy-remove-applications.md)
+- [Visual Studio](service-fabric-publish-app-remote-cluster.md)
+
+<br/>
+
 Die Azure Service Fabric-Erweiterung für Visual Studio bietet eine einfache, wiederholbare und skriptfähige Möglichkeit zum Veröffentlichen einer Anwendung in einem Service Fabric-Cluster.
 
 ## Für die Veröffentlichung erforderliche Artefakte
@@ -28,7 +34,7 @@ Dies ist ein PowerShell-Skript, das den Pfad zu einem Veröffentlichungsprofil a
 
 ### Veröffentlichungsprofile
 
-Ein Ordner im Service Fabric-Anwendungsprojekt mit dem Namen **PublishProfiles** enthält XML-Dateien, in denen wichtige Informationen zum Veröffentlichen einer Anwendung gespeichert sind, z. B.:
+Ein Ordner im Service Fabric-Anwendungsprojekt mit dem Namen **PublishProfiles** enthält XML-Dateien, in denen wichtige Informationen zum Veröffentlichen einer Anwendung gespeichert sind, beispielsweise:
 
 - Service Fabric-Cluster-Verbindungsparameter
 - Pfad zu einer Anwendungsparameterdatei
@@ -107,4 +113,4 @@ Informationen zur Automatisierung des Veröffentlichungsprozesses in einer Conti
 [3]: ./media/service-fabric-publish-app-remote-cluster/EditVersions.png
 [4]: ./media/service-fabric-publish-app-remote-cluster/publish-to-party-cluster.png
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0928_2016-->

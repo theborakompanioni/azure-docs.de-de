@@ -17,8 +17,14 @@
 	ms.author="spelluru"/>
 
 # Data Factory – Planung und Ausführung
+In diesem Artikel werden die Planungs- und Ausführungsaspekte des Azure Data Factory-Anwendungsmodells erläutert.
 
-In diesem Artikel werden die Planungs- und Ausführungsaspekte des Azure Data Factory-Anwendungsmodells erläutert. Dieser Artikel baut auf den Informationen unter [Pipelines und Aktivitäten in Azure Data Factory: Erstellen/Planen von Pipelines und Kettenaktivitäten](data-factory-create-pipelines.md) und [Datasets in Azure Data Factory](data-factory-create-datasets.md) auf. Es wird vorausgesetzt, dass Sie mit den Grundbegriffen des Data Factory-Anwendungsmodells vertraut sind, z.B. Aktivität, Pipelines, verknüpfte Dienste und Datasets.
+## Voraussetzungen
+In diesem Artikel wird vorausgesetzt, dass Sie mit den Grundbegriffen des Data Factory-Anwendungsmodells vertraut sind, z.B. Aktivität, Pipelines, verknüpfte Dienste und Datasets. Grundlegende Konzepte von Azure Data Factory finden Sie in den folgenden Artikeln:
+
+- [Einführung in Data Factory](data-factory-introduction.md)
+- [Pipelines](data-factory-create-pipelines.md)
+- [Datasets](data-factory-create-datasets.md)
 
 ## Planen einer Aktivität
 
@@ -37,7 +43,7 @@ Für das derzeit ausgeführte Aktivitätsfenster können Sie im JSON-Code der Ak
 
 Die Eigenschaft **scheduler** unterstützt dieselben untergeordneten Eigenschaften wie die Eigenschaft **availability** in einem Dataset. Details finden Sie unter [Dataset: Availability](data-factory-create-datasets.md#Availability). Beispiele sind das Planen eines bestimmten Zeitoffsets oder das Festlegen des Modus zum Ausrichten der Verarbeitung am Anfang oder Ende des Intervalls für das Aktivitätsfenster.
 
-Sie können optional Schedulereigenschaften für eine Aktivität angeben. Wenn Sie eine Eigenschaft angeben, muss sie mit dem Rhythmus übereinstimmen, den Sie in der Definition des Ausgabedatasets angegeben haben. Derzeit steuert das Ausgabedataset den Zeitplan, sodass Sie auch dann ein Ausgabedataset erstellen müssen, wenn die Aktivität keine Ausgabe erzeugt. Wenn die Aktivität keine Eingabe akzeptiert, können Sie das Erstellen des Eingabedatasets überspringen.
+Sie können optional **Scheduler**-Eigenschaften für eine Aktivität angeben. Dieses Eigenschaft ist allerdings **optional**. Wenn Sie eine Eigenschaft angeben, muss sie mit dem Rhythmus übereinstimmen, den Sie in der Definition des Ausgabedatasets angegeben haben. Derzeit steuert das Ausgabedataset den Zeitplan, sodass Sie auch dann ein Ausgabedataset erstellen müssen, wenn die Aktivität keine Ausgabe erzeugt. Wenn die Aktivität keine Eingabe akzeptiert, können Sie das Erstellen des Eingabedatasets überspringen.
 
 ## Datasets und Datenslices von Zeitreihen
 
@@ -62,7 +68,7 @@ Derzeit ist es für Data Factory erforderlich, dass der in der Aktivität angege
 
 Weitere Informationen zu verschiedenen Eigenschaften, die im Abschnitt „availability“ verfügbar sind, finden Sie unter [Datasets in Azure Data Factory](data-factory-create-datasets.md).
 
-## Verschieben von Daten aus Azure SQL-Datenbank in Azure-Blobspeicher mit der Kopieraktivität
+## Verschieben von Daten aus Azure SQL-Datenbank in Azure Blob Storage
 
 Nun wollen wir uns diese Dinge in Aktion ansehen, indem wir eine Pipeline erstellen, die Daten stündlich aus einer Azure SQL-Datenbanktabelle in Azure-Blobspeicher kopiert.
 
@@ -216,26 +222,23 @@ Nach der Bereitstellung der Pipeline wird das Azure-Blob wie folgt aufgefüllt:
 -	Datei „mypath/2015/1/1/10/Data.&lt;Guid&gt;.txt“ ohne Daten.
 
 
-## Erstellen eines Datenslice, Festlegen der aktiven Periode für eine Pipeline und gleichzeitiges Ausführen von Slices
+## Aktiver Zeitraum für Pipeline
 
 Unter [Pipelines und Aktivitäten in Azure Data Factory: Erstellen/Planen von Pipelines und Kettenaktivitäten](data-factory-create-pipelines.md) wurde das Konzept eines aktiven Zeitraums für eine Pipeline vorgestellt, der durch das Festlegen der Eigenschaften **start** und **end** angegeben wird.
 
 Sie können das Startdatum für den aktiven Zeitraum der Pipeline auf ein Datum in der Vergangenheit festlegen. Data Factory führt automatisch eine Berechnung (einen Abgleich) aller Datenslices in der Vergangenheit aus und beginnt mit ihrer Verarbeitung.
 
-Sie können abgeglichene Datenslices so konfigurieren, dass sie parallel ausgeführt werden. Legen Sie hierzu die Eigenschaft **concurrency** im Abschnitt „policy“ des JSON-Codes der Aktivität fest, wie unter [Pipelines und Aktivitäten in Azure Data Factory: Erstellen/Planen von Pipelines und Kettenaktivitäten](data-factory-create-pipelines.md) erläutert.
+## Parallele Verarbeitung von Datenslices
+Sie können abgeglichene Datenslices für eine parallele Ausführung konfigurieren, indem Sie die Eigenschaft **concurrency** im Abschnitt „policy“ des JSON-Codes der Aktivität festlegen. Weitere Informationen zu dieser Eigenschaft finden Sie unter [Erstellen von Pipelines](data-factory-create-pipelines.md).
 
-## Erneutes Ausführen eines fehlgeschlagenen Datenslice und automatisches Nachverfolgen der Datenabhängigkeit
-
+## Wiederholen eines fehlerhaften Datenslices 
 Sie können die Ausführung von Slices umfassend visuell überwachen. Ausführliche Informationen finden Sie unter [Überwachen und Verwalten von Pipelines mithilfe von Blättern im Azure-Portal](data-factory-monitor-manage-pipelines.md) oder [App „Überwachung und Verwaltung“](data-factory-monitor-manage-app.md).
 
 Betrachten Sie das folgende Beispiel mit zwei Aktivitäten. Aktivität1 erstellt ein Zeitreihen-Dataset mit Slices als Ausgabe, die als Eingabe von Aktivität2 verwendet wird, um die endgültige Ausgabe des Zeitreihen-Datasets zu erstellen.
 
 ![Fehlerhafter Slice](./media/data-factory-scheduling-and-execution/failed-slice.png)
 
-<br/>
-
 Das Diagramm zeigt, dass bei den letzten drei Slices ein Fehler beim Erstellen des Slice „9-10 AM“ für Dataset2 aufgetreten ist. Data Factory verfolgt die Abhängigkeit für das Zeitreihen-Dataset automatisch. Aus diesem Grund wird die Aktivitätsausführung für den nachgelagerten Slice für den Zeitraum von 9 bis 10 Uhr nicht gestartet.
-
 
 Mit den Data Factory-Überwachungs- und Verwaltungstools können Sie die Diagnoseprotokolle detailliert nach dem fehlerhaften Slice durchsuchen, um die Ursache des Problems leicht zu finden und zu beseitigen. Nachdem Sie das Problem behoben haben, können Sie die Aktivitätsausführung ganz einfach starten, um den fehlerhaften Slice zu erstellen. Weitere Informationen zur erneuten Ausführung und Grundlegendes zu Statusübergängen für Datenslices finden Sie unter [Überwachen und Verwalten von Pipelines mithilfe von Blättern im Azure-Portal](data-factory-monitor-manage-pipelines.md) oder [App „Überwachung und Verwaltung“](data-factory-monitor-manage-app.md).
 
@@ -262,7 +265,7 @@ Wie bereits erwähnt, können sich die Aktivitäten in derselben Pipeline befind
 ![Verketten von Aktivitäten in derselben Pipeline](./media/data-factory-scheduling-and-execution/chaining-one-pipeline.png)
 
 ### Sequenzielles Kopieren
-Es ist möglich, mehrere Kopiervorgänge nacheinander sequenziell/sortiert auszuführen. Sie können beispielsweise zwei Kopieraktivitäten in einer Pipeline (CopyActivity1 und CopyActivity2) mit den folgenden Eingabe-/Ausgabedatasets verwenden.
+Es ist möglich, mehrere Kopiervorgänge nacheinander sequenziell/sortiert auszuführen. Sie können beispielsweise zwei Kopieraktivitäten in einer Pipeline („CopyActivity1“ und „CopyActivity2“) mit den folgenden Eingabe-/Ausgabedatasets verwenden:
 
 CopyActivity1
 
@@ -581,7 +584,7 @@ Lassen Sie uns ein weiteres Szenario betrachten. Angenommen, Sie verwenden eine 
 
 Der einfache Ansatz, bei dem Data Factory die zu verarbeitenden Eingabeslices automatisch durch Abstimmung mit dem Zeitraum des Ausgabedatenslice bestimmt, funktioniert in diesem Fall nicht mehr.
 
-Sie müssen angeben, dass die Data Factory für jede Aktivitätsausführung den Datenslice der letzten Woche als wöchentliches Eingabedataset verwenden soll. Dies können Sie wie im folgenden Codeausschnitt dargestellt mithilfe von Azure Data Factory-Funktionen erreichen.
+Sie müssen angeben, dass die Data Factory für jede Aktivitätsausführung den Datenslice der letzten Woche als wöchentliches Eingabedataset verwenden soll. Mithilfe von im folgenden Codeausschnitt gezeigten Azure Data Factory-Funktionen können Sie dieses Verhalten implementieren.
 
 **Eingabe1: Azure-Blob**
 
@@ -740,7 +743,7 @@ Zum Generieren des Datasetslice [**start**, **end**] ist eine Funktion erforderl
 
 **f** und **g** sind Zuordnungsfunktionen, die Anfang und Ende des Abhängigkeitszeitraums für jede Aktivitätseingabe berechnen.
 
-Wie Sie in den Beispielen gesehen haben, entspricht der Abhängigkeitszeitraum dem Zeitraum des zu erstellenden Datenslice. In diesen Fällen berechnet Data Factory automatisch die Eingabeslices, die in den Abhängigkeitszeitraum fallen.
+Wie Sie in den Beispielen gesehen haben, entspricht der Abhängigkeitszeitraum dem Zeitraum des zu erstellenden Datenslices. In diesen Fällen berechnet Data Factory automatisch die Eingabeslices, die in den Abhängigkeitszeitraum fallen.
 
 Beispiel: Beim Aggregationsbeispiel, bei dem die Ausgabe täglich erzeugt wird und Eingabedaten stündlich verfügbar sind, beträgt der Zeitraum des Datenslice 24 Stunden. Data Factory sucht die relevanten stündlichen Eingabeslices für diesen Zeitraum und macht den Ausgabeslice vom Eingabeslice abhängig.
 
@@ -835,4 +838,4 @@ Beachten Sie Folgendes:
 - Die Diagrammansicht zeigt einmalig ausgeführte Pipelines nicht an. Dieses Verhalten ist beabsichtigt.
 - Einmalige Pipelines können nicht aktualisiert werden. Sie können eine einmalige Pipeline klonen, umbenennen, deren Eigenschaften aktualisieren und sie bereitstellen, um eine andere Pipeline zu erstellen.
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0928_2016-->

@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="andkjell"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -98,4 +98,4 @@ Nach Aktivierung dieses Features bleiben vorhandene userPrincipalName-Werte unve
 - [Azure AD Connect-Synchronisierung](active-directory-aadconnectsync-whatis.md)
 - [Integrieren Ihrer lokalen Identitäten in Azure Active Directory](active-directory-aadconnect.md)
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0928_2016-->

@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Verwenden von Azure Media Services zum Streamen von durch Apple FairPlay geschützten HLS-Inhalten" 
+	pageTitle="Schützen von HLS-Inhalten mit Apple FairPlay und/oder Microsoft PlayReady | Microsoft Azure" 
 	description="Dieses Thema bietet einen Überblick und veranschaulicht, wie Sie Azure Media Services verwenden, um Ihre HLS-Inhalte (HTTP Live Streaming) dynamisch mit Apple FairPlay verschlüsseln. Es zeigt auch, wie Sie den Lizenzbereitstellungsdienst von Media Services verwenden, um FairPlay-Lizenzen an Clients zu übermitteln." 
 	services="media-services" 
 	documentationCenter="" 
@@ -13,22 +13,29 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/15/2016"
+	ms.date="09/27/2016"
 	ms.author="juliako"/>
 
-#Verwenden von Azure Media Services zum Streamen von durch Apple FairPlay geschützten HLS-Inhalten 
+# Schützen von HLS-Inhalten mit Apple FairPlay und/oder Microsoft PlayReady
 
 Mit Azure Media Services können Sie Ihre HLS-Inhalte (HTTP Live Streaming) unter Verwendung der folgenden Formate dynamisch verschlüsseln:
 
-- **Unverschlüsselter Schlüssel mit AES-128-Umschlag**: Der gesamte Block wird mit dem **AES-128 CBC**-Modus verschlüsselt. Die Entschlüsselung des Streams wird von iOS- und OS X-Playern nativ unterstützt. [hier finden Sie weitere Informationen](media-services-protect-with-aes128.md)
+- **Unverschlüsselter Schlüssel mit AES-128-Umschlag**
 
-- **Apple FairPlay**: Die einzelnen Audio- und Videosamples werden mit dem **AES-128 CBC**-Modus verschlüsselt. **FairPlay Streaming** (FPS) ist in die Gerätebetriebssysteme integriert und wird von iOS und Apple TV nativ unterstützt. Safari unter OS X ermöglicht FPS durch Unterstützung der EME-Schnittstelle (Encrypted Media Extensions).
+	Der gesamte Block wird mit dem **AES-128 CBC**-Modus verschlüsselt. Die Entschlüsselung des Streams wird von iOS- und OS X-Playern nativ unterstützt. [hier finden Sie weitere Informationen](media-services-protect-with-aes128.md)
 
-Die folgende Abbildung veranschaulicht den Workflow für dynamische FairPlay-Verschlüsselung.
+- **Apple FairPlay**
+
+	Die einzelnen Audio- und Videosamples werden mit dem **AES-128 CBC**-Modus verschlüsselt. **FairPlay Streaming** (FPS) ist in die Gerätebetriebssysteme integriert und wird von iOS und Apple TV nativ unterstützt. Safari unter OS X ermöglicht FPS durch Unterstützung der EME-Schnittstelle (Encrypted Media Extensions).
+- **Microsoft PlayReady**
+
+Die folgende Abbildung veranschaulicht den Workflow für dynamische **HLS- und FairPlay-Verschlüsselung und/oder PlayReady-Verschlüsselung**.
 
 ![Schützen mit FairPlay](./media/media-services-content-protection-overview/media-services-content-protection-with-fairplay.png)
 
 Dieses Thema veranschaulicht, wie Sie Azure Media Services verwenden, um Ihre HLS-Inhalte dynamisch mit Apple FairPlay verschlüsseln. Es zeigt auch, wie Sie den Lizenzbereitstellungsdienst von Media Services verwenden, um FairPlay-Lizenzen an Clients zu übermitteln.
+
+>[AZURE.NOTE] Wenn Sie auch Ihre HLS-Inhalte mit PlayReady verschlüsseln möchten, müssen Sie einen gemeinsamen Schlüssel erstellen und ihn mit dem Medienobjekt verknüpfen. Darüber hinaus müssen Sie die Autorisierungsrichtlinie des Inhaltsschlüssels konfigurieren, wie im Thema [Verwenden von dynamischer allgemeiner Verschlüsselung mit PlayReady und/oder Widevine](media-services-protect-with-drm.md) beschrieben.
 
 	
 ## Anforderungen und Überlegungen
@@ -115,6 +122,20 @@ Kunden können Player-Apps mithilfe des iOS SDK entwickeln. Damit FairPlay-Inhal
 
 >[AZURE.NOTE] Azure Media Player unterstützt standardmäßig keine FairPlay-Wiedergabe. Kunden benötigen den Beispiel-Player des Apple-Entwicklerkontos, um FairPlay-Wiedergabe unter MAC OSX zu erhalten.
  
+##Streaming-URLs
+
+Falls Ihr Asset mit mehreren DRM-Lösungen verschlüsselt wurde, empfiehlt es sich, in der Streaming-URL ein Verschlüsselungstag zu verwenden: (format='m3u8-aapl', encryption='xxx').
+
+Es gelten die folgenden Bedingungen:
+
+- Sie können nur einen einzelnen (oder keinen) Verschlüsselungstyp angegeben.
+- Der Verschlüsselungstyp muss nicht in der URL angegeben werden, wenn auf das Asset nur eine einzelne Verschlüsselung angewendet wurde.
+- Beim Verschlüsselungstyp wird die Groß-/Kleinschreibung nicht beachtet.
+- Folgende Verschlüsselungstypen können angegeben werden:
+	- **cenc**: Allgemeine Verschlüsselung (PlayReady oder Widevine)
+	- **cbcs-aapl**: Fairplay
+	- **cbc**: AES-Umschlagverschlüsselung
+
 
 ##.NET-Beispiel
 
@@ -550,4 +571,4 @@ Das folgende Beispiel veranschaulicht die Funktionalität, die im Azure Media Se
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0928_2016-->

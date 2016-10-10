@@ -3,7 +3,7 @@
 	description="IT-Administratoren können Ihre in Domänen eingebundenen Windows-Geräte automatisch und im Hintergrund bei Azure Active Directory (Azure AD) registrieren."
 	services="active-directory"
 	documentationCenter=""
-	authors="femila"
+	authors="Markvi"
 	manager="swadhwa"
 	editor=""/>
 
@@ -13,12 +13,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/23/2016"
+	ms.date="09/27/2016"
 	ms.author="femila"/>
 
 # Automatische Geräteregistrierung bei Azure Active Directory für in Domänen eingebundene Windows-Geräte
 
 Als IT-Administrator können Sie Ihre in Domänen eingebundenen Windows-Geräte automatisch und im Hintergrund bei Azure Active Directory (Azure AD) registrieren. Dies ist hilfreich, wenn Sie gerätebasierte Richtlinien für den bedingten Zugriff auf Office 365-Anwendungen oder Anwendungen, die lokal von AD FS verwaltet werden, konfiguriert haben. Weitere Informationen über die Geräteregistrierungsszenarien finden Sie in der [Übersicht zur Azure Active Directory-Geräteregistrierung](active-directory-conditional-access-device-registration-overview.md).
+
+>HINWEIS: Aktuelle Anweisungen zum Einrichten der automatischen Geräteregistrierung finden Sie unter [Einrichten der automatischen Registrierung von in die Domäne eingebundenen Windows-Geräten bei Azure Active Directory](active-directory-conditional-access-automatic-device-registration-setup.md).
 
 Automatische Geräteregistrierung bei Azure Active Directory steht für Windows 7- und Windows 8.1-Computer zur Verfügung, die einer Active Directory-Domäne beigetreten sind. In der Regel sind dies Computer, die sich im Besitz von Unternehmen befinden und für Information-Worker zur Verfügung gestellt wurden.
 
@@ -72,7 +74,7 @@ In Domänen eingebundene Windows-Gerät müssen über eine Verbindung zu AD FS u
 ## Konfigurieren der Ermittlung für die Azure Active Directory-Geräteregistrierung
 Windows 7 und Windows 8.1-Geräte ermitteln den Geräteregistrierungsserver, indem sie den Benutzerkontonamen mit dem Namen eines bekannten Geräteregistrierungsservers kombinieren. Sie müssen einen DNS CNAME-Eintrag erstellen, der auf den A-Eintrag verweist, der Ihrem Azure Active Directory-Geräteregistrierungsdienst zugeordnet ist. Der CNAME-Eintrag muss das bekannte Präfix **enterpriseregistration** verwenden, gefolgt vom UPN-Suffix, das von den Benutzerkonten in Ihrer Organisation verwendet wird. Wenn Ihre Organisation mehrere UPN-Suffixe verwendet, müssen in DNS mehrere CNAME-Einträge erstellt werden.
 
-Wenn Sie z. B. in Ihrer Organisation zwei UPN-Suffixe namens "@contoso.com" und "@region.contoso.com" verwenden, erstellen Sie die folgenden DNS-Einträge.
+Wenn Sie z. B. in Ihrer Organisation zwei UPN-Suffixe namens @contoso.com und @region.contoso.com verwenden, erstellen Sie die folgenden DNS-Einträge.
 
 | Eintrag | Typ | Adresse |
 |-------------------------------------------|-------|------------------------------------|
@@ -105,4 +107,4 @@ Unternehmen, die sowohl mobile als auch herkömmliche Geräte oder Office 365, A
 - [Konfigurieren der automatischen Geräteregistrierung für in eine Domäne eingebundene Windows 8.1-Geräte](active-directory-conditional-access-automatic-device-registration-windows-8-1.md)
 - [Automatische Geräteregistrierung bei Azure Active Directory für in Domänen eingebundene Windows 10-Geräte](active-directory-azureadjoin-devices-group-policy.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0928_2016-->

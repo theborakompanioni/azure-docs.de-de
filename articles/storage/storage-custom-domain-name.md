@@ -14,7 +14,7 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="09/07/2016"
-	ms.author="tamram"/>
+	ms.author="jwillis;tamram"/>
 
 
 # Konfigurieren eines benutzerdefinierten Domänennamens für Ihren Blob Storage-Endpunkt
@@ -130,4 +130,4 @@ Um die Registrierung einer benutzerdefinierten Domäne aufzuheben, gehen Sie fol
 
 -   [Zuordnen einer benutzerdefinierten Domäne zu einem CDN-Endpunkt (Content Delivery Network, Netzwerk für die Inhaltsübermittlung)](../cdn/cdn-map-content-to-custom-domain.md)
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0928_2016-->

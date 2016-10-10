@@ -55,7 +55,7 @@ myCloudPool.MaxTasksPerComputeNode = 1;
 
 Darüber hinaus werden Tasks mit mehreren Instanzen *nur* auf Knoten in **Pools ausgeführt, die nach dem 14. Dezember 2015 erstellt wurden**.
 
-> [AZURE.TIP] Wenn Sie in Ihrem Batch-Pool [Computeknoten der Größe A8 oder A9](../virtual-machines/virtual-machines-windows-a8-a9-a10-a11-specs.md) verwenden, kann die MPI-Anwendung das hochleistungsfähige RDMA-Netzwerk (Remote Direct Memory Access) mit geringer Latenz von Azure nutzen. Die vollständige Liste der für Batch-Pools verfügbaren Computeknotengrößen finden Sie unter [Größen für Clouddienste](./../cloud-services/cloud-services-sizes-specs.md).
+> [AZURE.TIP] Wenn Sie für die Computeknoten in Ihrem Batch-Pool eine [für RDMA geeignete Größe](../virtual-machines/virtual-machines-windows-a8-a9-a10-a11-specs.md) wie z.B. A9 auswählen, kann die MPI-Anwendung das hochleistungsfähige RDMA-Netzwerk (Remote Direct Memory Access) mit geringer Latenz von Azure nutzen. Die vollständige Liste der für Batch-Pools verfügbaren Computeknotengrößen finden Sie unter [Größen für Clouddienste](./../cloud-services/cloud-services-sizes-specs.md).
 
 ### Verwenden eines StartTask für die Installation der MPI-Anwendung
 
@@ -237,7 +237,7 @@ await subtasks.ForEachAsync(async (subtask) =>
 
 ## Nächste Schritte
 
-- Es empfiehlt sich, eine einfache MS-MPI-Anwendung zu erstellen, die zum Testen von Tasks mit mehreren Instanzen in Batch verwendet wird. Der Blogartikel [How to compile and run a simple MS-MPI program][msmpi_howto] \(Kompilieren und Ausführen eines einfachen MS-MPI-Programms) des Microsoft HPC- und Azure Batch-Teams enthält eine exemplarische Vorgehensweise zum Erstellen einer einfachen MPI-Anwendung mithilfe von MS-MPI.
+- Es empfiehlt sich, eine einfache MS-MPI-Anwendung zu erstellen, die zum Testen von Tasks mit mehreren Instanzen in Batch verwendet wird. Der Blogartikel [How to compile and run a simple MS-MPI program][msmpi_howto] (Kompilieren und Ausführen eines einfachen MS-MPI-Programms) des Microsoft HPC- und Azure Batch-Teams enthält eine exemplarische Vorgehensweise zum Erstellen einer einfachen MPI-Anwendung mithilfe von MS-MPI.
 
 - Aktuelle Informationen zu MS-MPI finden Sie auf der Seite [Microsoft MPI][msmpi_msdn] auf MSDN.
 
@@ -275,4 +275,4 @@ await subtasks.ForEachAsync(async (subtask) =>
 
 [1]: ./media/batch-mpi/batch_mpi_01.png "Mehrere Instanzen – Übersicht"
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0928_2016-->

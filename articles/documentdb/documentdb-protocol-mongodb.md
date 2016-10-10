@@ -3,7 +3,7 @@
 	description="Informieren Sie sich über die DocumentDB-Protokollunterstützung für MongoDB, die jetzt als öffentliche Vorschauversion verfügbar ist." 
 	keywords="MongoDB"
 	services="documentdb" 
-	authors="stephbaron" 
+	authors="mimig1" 
 	manager="jhubbard" 
 	editor="" 
 	documentationCenter=""/>
@@ -15,7 +15,7 @@
 	ms.devlang="na" 
 	ms.topic="article" 
 	ms.date="08/23/2016" 
-	ms.author="stbaro"/>
+	ms.author="mimig"/>
 
 # DocumentDB-Protokollunterstützung für MongoDB
 
@@ -38,4 +38,4 @@ Die DocumentDB-Protokollunterstützung für MongoDB ermöglicht die MongoDB-API-
 
  
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0928_2016-->

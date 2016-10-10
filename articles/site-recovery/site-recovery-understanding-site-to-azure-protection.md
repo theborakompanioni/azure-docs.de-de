@@ -1,84 +1,93 @@
 <properties
-	pageTitle="Grundlegendes zur Hyper-V-Replikation mit Azure Site Recovery | Microsoft Azure" 
-	description="Verwenden Sie diesen Artikel, um die technischen Konzepte zu verstehen, mit denen Sie Azure Site Recovery erfolgreich installieren, konfigurieren und verwalten können." 
-	services="site-recovery" 
-	documentationCenter="" 
-	authors="anbacker" 
-	manager="mkjain" 
+	pageTitle="Hyper-V-Replikation mit Azure Site Recovery | Microsoft Azure"
+	description="Verwenden Sie diesen Artikel, um sich mit den technischen Konzepten vertraut zu machen, die Sie beim Installieren, Konfigurieren und Verwalten von Azure Site Recovery unterstützen."
+	services="site-recovery"
+	documentationCenter=""
+	authors="Rajani-Janaki-Ram"
+	manager="mkjain"
 	editor=""/>
 
-<tags 
-	ms.service="site-recovery" 
+<tags
+	ms.service="site-recovery"
 	ms.devlang="na"
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
-	ms.workload="storage-backup-recovery" 
-	ms.date="09/12/2016" 
-	ms.author="anbacker"/>
- 
+	ms.workload="storage-backup-recovery"
+	ms.date="09/12/2016"
+	ms.author="rajanaki"/>
 
-# Grundlegendes zur Hyper-V-Replikation mit Azure Site Recovery
 
-Dieser Artikel beschreibt die technischen Konzepte, die Ihnen beim erfolgreichen Konfigurieren und Verwalten des Schutzes von Hyper-V- oder VMM-Standorten auf Azure mithilfe von Azure Site Recovery helfen.
+# Hyper-V-Replikation mit Azure Site Recovery
 
-## Grundlegendes zu den Komponenten
+Dieser Artikel beschreibt die technischen Konzepte, die Sie beim Konfigurieren und Verwalten eines Hyper-V-Standorts oder eines System Center Virtual Machine Manager-Standorts (VMM-Standort) mit Azure-Schutz unter Verwendung von Azure Site Recovery unterstützen.
 
-### Bereitstellung des Hyper-V-Standorts oder VMM-Standorts für die Replikation zwischen lokalen Standorten und Azure.
- 
-Als Bestandteil der Einrichtung der Notfallwiederherstellung zwischen lokalen Standorten und Azure muss Azure Site Recovery Provider heruntergeladen und auf dem VMM-Server installiert werden. Zudem muss der Azure Recovery Services-Agent auf jedem Hyper-V-Host installiert werden.
+## Einrichten der Quellumgebung für die Replikation zwischen dem lokalen Standort und Azure
 
-![Bereitstellung des VMM-Standorts für die Replikation zwischen lokalen Standorten und Azure.](media/site-recovery-understanding-site-to-azure-protection/image00.png)
+Laden Sie im Zuge der Einrichtung der Notfallwiederherstellung zwischen dem lokalen Standort und Azure den Azure Site Recovery-Anbieter herunter, und installieren Sie ihn auf dem VMM-Server. Installieren Sie den Azure Recovery Services-Agent auf den einzelnen Hyper-V-Hosts.
 
-Diese Hyper-V-Standortbereitstellung entspricht der Bereitstellung des VMM-Standorts mit der einzigen Ausnahme, dass der Anbieter und die Agents auf dem Hyper-V-Host selbst installiert werden.
+![VMM-Standortbereitstellung für die Replikation zwischen lokalem Standort und Azure](media/site-recovery-understanding-site-to-azure-protection/image00.png)
 
-## Grundlegendes zu den Workflows
+Die Quellumgebung in einer verwalteten Hyper-V-Infrastruktur wird auf ähnliche Weise eingerichtet wie die Quellumgebung in einer verwalteten VMM-Infrastruktur. Der einzige Unterschied: Anbieter und Agent werden auf dem Hyper-V-Host installiert. In der VMM-Umgebung wird der Anbieter auf dem VMM-Server und der Agent auf den Hyper-V-Hosts installiert (bei Verwendung der Replikation in Azure).
+
+## Workflows
 
 ### Schutz aktivieren
-Nachdem Sie einen virtuellen Computer aus dem Portal oder lokalen geschützt haben, wird ein ASR-Auftrag mit dem Namen *Schutz aktivieren* initiiert, und kann unter der Registerkarte "Aufträge" überwacht werden.
+Wenn ein virtueller Computer über das Azure-Portal oder lokal geschützt wird, wird ein Site Recovery-Auftrag namens **Schutz aktivieren** gestartet. Dieser kann auf der Registerkarte **Aufträge** überwacht werden.
 
-![Behandlung von lokalen Hyper-V-Problemen](media/site-recovery-understanding-site-to-azure-protection/image001.PNG)
+![Auftrag „Schutz aktivieren“ in der Auftragsliste](media/site-recovery-understanding-site-to-azure-protection/image001.PNG)
 
-Der Auftrag *Schutz aktivieren* überprüft die erforderlichen Komponenten, bevor [CreateReplicationRelationship](https://msdn.microsoft.com/library/hh850036.aspx) aufgerufen wird, wodurch die Replikation nach Azure mithilfe von Eingaben erstellt wird, die während des Schutzes konfiguriert wurden. Der Auftrag *Schutz aktivieren* startet die erste Replikation von einem lokalen Standort durch Aufrufen von [StartReplication](https://msdn.microsoft.com/library/hh850303.aspx), wodurch der virtuelle Datenträger des virtuellen Computers an Azure gesendet wird.
+Der Auftrag **Schutz aktivieren** überprüft zunächst, ob die Voraussetzungen erfüllt sind, und ruft dann die [CreateReplicationRelationship](https://msdn.microsoft.com/library/hh850036.aspx)-Methode auf. Diese Methode erstellt die Replikation in Azure auf der Grundlage von Eingaben, die während des Schutzes konfiguriert werden.
 
-![Behandlung von lokalen Hyper-V-Problemen](media/site-recovery-understanding-site-to-azure-protection/IMAGE002.PNG)
+Der Auftrag **Schutz aktivieren** startet die erste Replikation lokal durch Aufrufen der [StartReplication](https://msdn.microsoft.com/library/hh850303.aspx)-Methode. Diese Methode sendet die virtuellen Datenträger des virtuellen Computers an Azure.
 
-### Abschließen des Schutzes
-Eine [Hyper-V-VM-Momentaufnahme](https://technet.microsoft.com/library/dd560637.aspx) wird ausgeführt, wenn die erste Replikation ausgelöst wird. Virtueller Festplatten werden nacheinander verarbeitet, bis alle Datenträger in Azure hochgeladen werden. Dieser Vorgang dauert normalerweise eine Weile, je nach Größe des Datenträgers und der Bandbreite. Unter [How to manage on-premises to Azure protection network bandwidth usage](https://support.microsoft.com/kb/3056159) (auf Englisch; Verwalten der geschützten Nutzung der Netzwerkbandbreite „von lokal an Azure“) finden Sie Informationen zum Optimieren der Netzwerknutzung. Nach Abschluss der Erstreplikation konfiguriert der Auftrag *Schutz auf dem virtuellen Computer abschließen* die Netzwerk- und Nach-Replikationseinstellungen. Während der Erstreplikation in Bearbeitung ist, werden alle Änderungen an den Datenträgern überwacht, wie im Abschnitt Deltareplikation weiter unten erwähnt. Zusätzliche Speicherplatz wird für die Momentaufnahmen- und HRL-Dateien verbraucht, während die Erstreplikation im Gange ist. Nach Abschluss der Erstreplikation wird die Hyper-V-VM-Momentaufnahme gelöscht, was zur Zusammenführung der Datenänderungen nach der Erstreplikation auf dem übergeordneten Datenträger führt.
+![Details zum Auftrag „Schutz aktivieren“](media/site-recovery-understanding-site-to-azure-protection/IMAGE002.PNG)
 
-![Behandlung von lokalen Hyper-V-Problemen](media/site-recovery-understanding-site-to-azure-protection/image03.png)
+### Abschließen des Schutzes für den virtuellen Computer
+Wenn die erste Replikation ausgelöst wird, wird eine [Hyper-V-Momentaufnahme für den virtuellen Computer](https://technet.microsoft.com/library/dd560637.aspx) erstellt. Virtuelle Festplatten werden nacheinander verarbeitet, bis alle Datenträger in Azure hochgeladen wurden. Die Dauer dieses Vorgangs ist abhängig von der Größe des Datenträgers und von der Bandbreite. Informationen zum Optimieren der Netzwerknutzung finden Sie unter [How to manage on-premises to Azure protection network bandwidth usage](https://support.microsoft.com/kb/3056159) (Verwalten der Netzwerkbandbreitennutzung für den Schutz lokaler Elemente in Azure).
 
-### Delta-Replikation
-Der Hyper-V-Replikat Replication Tracker, der Teil des Hyper-V-Replikat-Replikationsmoduls ist, verfolgt die Änderungen auf einer virtuellen Festplatte in Form von Hyper-V-Replikationsprotokollen (*.hrl). HRL-Dateien werden im selben Verzeichnis wie die zugeordneten Datenträgern abgelegt. Jeder Datenträger für die Replikation verfügt über eine zugeordnete HRL-Datei. Diese Protokolle werden an das Speicherkonto des Kunden gesendet, nachdem die Erstreplikation abgeschlossen ist. Wenn ein Protokoll an Azure übertragen wird, werden Änderungen der primären Datei in einer anderen Protokolldatei im selben Verzeichnis nachverfolgt.
+Nach Abschluss der ersten Replikation konfiguriert der Auftrag **Schutz auf dem virtuellen Computer abschließen** die Einstellungen für das Netzwerk und für die Zeit nach der Replikation. Während der Durchführung der ersten Replikation gilt:
 
-Die VM-Replikationsintegrität während der Erstreplikation oder der Deltareplikation kann in der Ansicht des virtuellen Computers überwacht werden, und zwar unter [Replikationsintegrität für den virtuellen Computer überwachen](./site-recovery-monitoring-and-troubleshooting.md#monitor-replication-health-for-virtual-machine).
+- Alle Änderungen an den Datenträgern werden nachverfolgt.
+- Die Dateien für die Momentaufnahme und für das Hyper-V-Replikatprotokoll (Hyper-V Replica Log, HRL) beanspruchen zusätzlichen Speicherplatz.
 
-### Erneute Synchronisierung 
-Eine virtuelle Maschine wird für die erneute Synchronisierung markiert, wenn die Deltareplikation fehlschlägt und die vollständige Erstreplikation die Netzwerkbandbreite zu stark beansprucht oder die Zeit zu lange ist, die bis zum Abschluss einer vollständigen anfänglichen Replikation nötig ist. Wenn eine HRL-Datei beispielsweise bis zu 50 % der Gesamtgröße des Datenträgers beansprucht, wird die virtuelle Maschine für die erneute Synchronisierung markiert. Die erneute Synchronisierung minimiert die Menge der Daten, die über das Netzwerk gesendet werden, indem Prüfsummen von den Datenträgern der virtuellen Quell- und Zielmaschine berechnet werden, und sendet nur die Differenz.
+Nach Abschluss der ersten Replikation wird die Hyper-V-Momentaufnahme für den virtuellen Computer gelöscht. Im Zuge dieser Löschung werden Datenänderungen zusammengeführt, die nach der ersten Replikation am übergeordneten Datenträger vorgenommen wurden.
 
-Nach Abschluss der erneuten Synchronisierung sollte die normale Deltareplikation fortgesetzt werden. Eine Erneute Synchronisierung kann bei einem Ausfall (z. B. Netzwerkausfall, VMMS-Absturz usw.) fortgesetzt werden.
+![Auftrag „Abschließen des Schutzes für den virtuellen Computer“ in der Auftragsliste](media/site-recovery-understanding-site-to-azure-protection/image03.png)
 
-Standardmäßig wird die *automatisch geplante erneute Synchronisierung* nicht während der Arbeitszeit konfiguriert. Wenn der virtuelle Computer manuell neu synchronisiert werden muss, wählen Sie den virtuellen Computer aus dem Portal, und klicken Sie auf „ERNEUT SYNCHRONISIEREN“.
+### Deltareplikation
+Die im Replikationsmodul des Hyper-V-Replikats enthaltene Hyper-V-Replikat-Replikationsverfolgung verfolgt die Änderungen an einer virtuellen Festplatte mithilfe von Hyper-V-Replikatprotokollen (HRL-Dateien) nach. HRL-Dateien befinden sich im gleichen Verzeichnis wie die dazugehörigen Datenträger.
 
-![Behandlung von lokalen Hyper-V-Problemen](media/site-recovery-understanding-site-to-azure-protection/image04.png)
+Jedem für die Replikation konfigurierten Datenträger ist eine HRL-Datei zugeordnet. Dieses Protokoll wird nach Abschluss der ersten Replikation an das Speicherkonto des Kunden gesendet. Beim Übermitteln eines Protokolls an Azure werden Änderungen am primären Element in einer anderen Protokolldatei im gleichen Verzeichnis nachverfolgt.
 
-Die erneute Synchronisierung verwendet einen Chunking-Blockalgorithmus, in dem Quell-und Zieldateien in feste Blöcke unterteilt sind. Prüfsummen werden für jedes Segment generiert und dann verglichen, um zu bestimmen, welche Speicherblöcke aus der Quelle auf den Zielcomputer angewendet werden müssen.
+Während der ersten Replikation oder einer Deltareplikation können Sie die Replikationsintegrität des virtuellen Computers wie unter [Überwachen der Replikationsintegrität für virtuelle Computer](./site-recovery-monitoring-and-troubleshooting.md#monitor-replication-health-for-virtual-machine) beschrieben in der Ansicht des virtuellen Computers überwachen.
+
+### Neusynchronisierung
+Ein virtueller Computer wird für eine Neusynchronisierung markiert, wenn die Deltareplikation nicht erfolgreich war und eine vollständige Erstreplikation die Netzwerkbandbreite zu stark beansprucht oder zu zeitaufwendig ist. Wenn also beispielsweise eine HRL-Datei 50 Prozent des gesamten Datenträgers einnimmt, wird der virtuelle Computer für eine Neusynchronisierung markiert. Bei der Neusynchronisierung wird die über das Netzwerk übertragene Datenmenge minimiert, indem Prüfsummen der Datenträger des virtuellen Quell- und Zielcomputers berechnet werden und nur die Differenz gesendet wird.
+
+Nach Abschluss der Neusynchronisierung wird die normale Deltareplikation fortgesetzt. Die Neusynchronisierung kann im Falle eines Netzwerkausfalls oder eines anderen Ausfalls fortgesetzt werden.
+
+Die automatisch geplante Neusynchronisierung wird standardmäßig so konfiguriert, dass sie nicht während der Arbeitszeit stattfindet. Wenn der virtuelle Computer manuell neu synchronisiert werden muss, wählen Sie den virtuellen Computer im Portal aus, und klicken Sie anschließend auf **Resynchronisieren**.
+
+![Manuelle Neusynchronisierung](media/site-recovery-understanding-site-to-azure-protection/image04.png)
+
+Die Neusynchronisierung verwendet einen Blockerstellungsalgorithmus mit festen Blöcken, durch den Quell-und Zieldateien in feste Blöcke unterteilt werden. Für die einzelnen Blöcke werden Prüfsummen generiert und anschließend verglichen, um zu ermitteln, welche Blöcke aus der Quelle auf das Ziel angewendet werden müssen.
 
 ### Wiederholungslogik
-Es gibt eine integrierte Wiederholungslogik, wenn Replikationsfehler auftreten. Dies kann in zwei Kategorien wie folgt klassifiziert werden.
+Für Replikationsfehler steht eine integrierte Wiederholungslogik zur Verfügung. Diese Logik lässt sich in zwei Kategorien unterteilen:
 
-| Kategorie | Szenarios |
+| Kategorie | Szenarien |
 |---------------------------|----------------------------------------------|
-| Nicht behebbarer Fehler | Keine Wiederholung wird versucht. Der Replikationsstatus der virtuellen Maschine wird als "Kritisch" angezeigt, und ein Eingreifen des Administrators ist erforderlich. Zu den Beispielen gehören <ul><li>Eine unterbrochene VHD-Kette</li><li>Virtueller Replikacomputer befindet sich in einem ungültigen Zustand</li><li>Fehler bei der Netzwerkauthentifizierung</li><li>Autorisierungsfehler</li><li>Wenn ein virtueller Computer bei einem eigenständigen Hyper-V-Server nicht gefunden wird</li></ul>|
-| Behebbarer Fehler | Wiederholungen treten jedes Replikationsintervall mit exponentiellem Backoff auf, was das Wiederholungsintervall vom Beginn des ersten Versuchs an erhöht (1, 2, 4, 8, 10 Minuten). Wenn ein Fehler auftritt, versuchen Sie es jede halbe Stunde erneut. Zu den Beispielen gehören <ul><li>Netzwerkfehler</li><li>Wenig Speicherplatz</li><li>Nicht genügend Arbeitsspeicher</li></ul>|
+| Nicht behebbarer Fehler | Es wird kein erneuter Versuch unternommen. Der Replikationsstatus des virtuellen Computers lautet **Kritisch**, und ein Administrator muss eingreifen. Beispiele: <ul><li>Unterbrochene VHD-Kette</li><li>Ungültiger Zustand des virtuellen Replikatcomputers</li><li>Fehler bei der Netzwerkauthentifizierung</li><li>Autorisierungsfehler</li><li>Nicht gefundener virtueller Computer (im Falle eines eigenständigen Hyper-V-Servers)</li></ul>|
+| Behebbarer Fehler | In jedem Replikationsintervall wird ein weiterer erneuter Versuch unternommen. Dabei wird ein exponentielles Backoff verwendet, durch das sich das Wiederholungsintervall ab dem ersten Versuch immer weiter verlängert (1, 2, 4, 8, 10 Minuten). Wenn ein Fehler auftritt, versuchen Sie es jede halbe Stunde erneut. Beispiele: <ul><li>Netzwerkfehler</li><li>Wenig Speicherplatz</li><li>Wenig Arbeitsspeicher</li></ul>|
 
-## Grundlegendes zum Schutz- und Wiederherstellungslebenszyklus für virtuelle Hyper-V-Computer
+## Schutz- und Wiederherstellungslebenszyklus für virtuelle Hyper-V-Computer
 
-![Grundlegendes zum Schutz- und Wiederherstellungslebenszyklus für virtuelle Hyper-V-Computer](media/site-recovery-understanding-site-to-azure-protection/image05.png)
+![Schutz- und Wiederherstellungslebenszyklus für virtuelle Hyper-V-Computer](media/site-recovery-understanding-site-to-azure-protection/image05.png)
 
 ## Andere Referenzen
 
-- [Überwachung und Problembehandlung für den Schutz von VMware, VMM, Hyper-V und physischen Standorten](./site-recovery-monitoring-and-troubleshooting.md)
+- [Überwachung und Problembehandlung für den Schutz von virtuellen Computern und physischen Servern](./site-recovery-monitoring-and-troubleshooting.md)
 - [Microsoft-Support](./site-recovery-monitoring-and-troubleshooting.md#reaching-out-for-microsoft-support)
 - [Häufige Fehler bei der automatischen Systemwiederherstellung und deren Lösungen](./site-recovery-monitoring-and-troubleshooting.md#common-asr-errors-and-their-resolutions)
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

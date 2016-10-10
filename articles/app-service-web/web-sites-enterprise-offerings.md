@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/29/2016" 
+	ms.date="07/29/2016" 
 	ms.author="anwestg"/>
 
 # Azure App Service-Web-Apps-Angebote für Enterprise Whitepaper #
@@ -107,7 +107,7 @@ Schritt 1 der Gesamtlösung für das Verschieben einer Line-of-Business-Anwendun
 
 #### Zu berücksichtigende Punkte ####
 
-Bei der Migration einer Anwendung aus einer lokalen Umgebung sollten Sie bedenken, dass für Web-Apps Beschränkungen bestehen. Einige wichtige Themen, die bei der Migration von Webanwendungen nach Web-Apps beachtet werden sollten, finden Sie unter: ([http://aka.ms/websitesmigrationresources](http://aka.ms/websitesmigrationresources)):
+Bei der Migration einer Anwendung aus einer lokalen Umgebung sollten Sie bedenken, dass für Web-Apps Beschränkungen bestehen. Einige wichtige Themen, die bei der Migration von Webanwendungen zu Web-Apps beachtet werden sollten, finden Sie unter: ([http://aka.ms/websitesmigrationresources](http://aka.ms/websitesmigrationresources)):
 
 -	Portbindungen – Web-Apps unterstützt nur Port 80 für HTTP- und Port 443 für HTTPS-Datenverkehr. Wenn Ihre Anwendung einen anderen Anschluss verwendet, möchte die Anwendung nach erfolgter Migration Port 80 für HTTP und Port 443 für HTTPS-Datenverkehr nutzen. Dies ist häufig ein harmloses Problem, da lokale Bereitstellungen häufig verschiedene Ports verwenden,um die Verwendung von Domänennamen zu umgehen, vor allem in Entwicklungs- und Testumgebungen.
 -	Authentifizierung – Web-Apps unterstützt standardmäßig die anonyme Authentifizierung sowie Formularauthentifizierung, sofern von einer Anwendung angegeben. Web-Apps kann Windows-Authentifizierung bieten, wenn die Anwendung nur mit Azure Active Directory und AD FS integriert ist. Diese Funktion wird [hier](http://aka.ms/azurebizapp) ausführlicher erläutert.
@@ -116,7 +116,7 @@ Bei der Migration einer Anwendung aus einer lokalen Umgebung sollten Sie bedenke
 -	Verwendung von COM-Bibliotheken – Web-Apps erlaubt nicht die Registrierung von COM-Komponenten auf der Plattform. Wenn daher die Anwendung COM-Komponenten verwendet, müssen diese in verwaltetem Code neu geschrieben und mit der Anwendung bereitgestellt werden.
 -	ISAPI-Filter – ISAPI-Filter können auf Web-Apps unterstützt werden. Sie müssen als Teil der Anwendung bereitgestellt und in der web.config-Datei der Webanwendung registriert werden. Weitere Informationen finden Sie unter [http://aka.ms/azurewebsitesxdt](web-sites-transform-extend.md).
 
-Nachdem diese Punkte berücksichtigt wurden, müsste Ihre Webanwendung bereit für die Cloud sein. Und keine Sorge, wenn einige Themen nicht vollständig beachtet werden, bringt das Migrationstool die bestmögliche Migrationsleistung.
+Nachdem diese Punkte berücksichtigt wurden, ist Ihre Webanwendung bereit für die Cloud. Und keine Sorge, wenn einige Themen nicht vollständig beachtet werden, bringt das Migrationstool die bestmögliche Migrationsleistung.
 
 Die nächsten Schritte beim Migrationsvorgang bestehen darin, eine App Service-Web-App und eine Azure SQL-Datenbank zu erstellen. Es sind Web-Apps-Instanzen in verschiedenen Größen und mit einer unterschiedlichen Anzahl von CPU-Kernen und RAM-Mengen verfügbar, die Sie basierend auf Ihrer Webanwendungsanforderung auswählen können. Weitere Informationen und Preisangaben finden Sie unter [http://aka.ms/azurewebsitesskus](/pricing/details/websites/). Ebenso bedient Microsoft Azure SQL-Datenbank alle Anforderungen eines Unternehmens mit verschiedenen Dienstebenen und Leistungsstufen, um Anforderungen zu erfüllen. Weitere Informationen finden Sie unter [http://aka.ms/azuresqldbskus](/pricing/details/sql-database/) Nach der Erstellung wird die Anwendung entweder über FTP oder WebDeploy auf App Service-Web-Apps hochgeladen und dann in die Datenbank übertragen.
 
@@ -159,4 +159,4 @@ Weitere Informationen zu Azure App Service-Web-Apps finden sie unter [http://aka
  
  
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0928_2016-->

@@ -18,12 +18,12 @@
 
 # Erste Schritte mit Linux-Computeknoten in einem HPC Pack-Cluster in Azure
 
-Richten Sie einen Microsoft HPC Pack-Cluster in Azure ein, der einen Hauptknoten unter Windows Server sowie mehrere Computeknoten mit einer Linux-Distribution enthält. Informieren Sie sich über die Optionen zum Verschieben von Daten zwischen den Linux-Knoten und dem Windows-Hauptknoten des Clusters. Finden Sie heraus, wie Sie Linux-HPC-Aufträge an den Cluster senden.
+Richten Sie einen Microsoft HPC Pack-Cluster in Azure ein, der einen Hauptknoten unter Windows Server sowie mehrere Computeknoten unter einer unterstützten Linux-Distribution enthält. Informieren Sie sich über die Optionen zum Verschieben von Daten zwischen den Linux-Knoten und dem Windows-Hauptknoten des Clusters. Finden Sie heraus, wie Sie Linux-HPC-Aufträge an den Cluster senden.
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)].
 
 
-Das folgende Diagramm gibt einen allgemeinen Überblick über den HPC Pack-Cluster, den Sie erstellen und mit dem Sie arbeiten werden.
+Das folgende Diagramm gibt einen allgemeinen Überblick über den HPC Pack-Cluster, den Sie erstellen und verwenden:
 
 ![HPC Pack-Cluster mit Linux-Knoten][scenario]
 
@@ -40,7 +40,7 @@ Einen Überblick über die Optionen für HPC Pack-Clusterbereitstellungen in Azu
 
 ### Voraussetzungen
 
-* **Azure-Abonnement:** Sie können ein Abonnement entweder im Azure Global- oder Azure China-Dienst nutzen. Wenn Sie nicht über ein Konto verfügen, können Sie in nur wenigen Minuten ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/) erstellen.
+* **Azure-Abonnement**: Sie können ein Abonnement entweder im Azure Global- oder im Azure China-Dienst nutzen. Wenn Sie nicht über ein Konto verfügen, können Sie in nur wenigen Minuten ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/) erstellen.
 
 * **Kernkontingent**: Unter Umständen muss das Kontingent für die Kerne erhöht werden. Dies gilt insbesondere, wenn Sie mehrere Clusterknoten mit Multicore-VM-Größen bereitstellen. Um ein Kontingent zu erhöhen, können Sie kostenlos eine Anfrage an den Onlinekundensupport richten.
 
@@ -53,11 +53,11 @@ Einen Überblick über die Optionen für HPC Pack-Clusterbereitstellungen in Azu
 
 
 
-    >[AZURE.TIP]Um das Azure RDMA-Netzwerk mit Computeknoten-VMs der Größen A8 und A9 zu nutzen, geben Sie eines der SUSE Linux Enterprise Server 12 HPC-Images oder CentOS-basierten HPC-Images aus dem Marketplace an. Weitere Informationen hierzu finden Sie unter [Informationen zu den rechenintensiven A8-, A9-, A10- und A11-Instanzen](virtual-machines-linux-a8-a9-a10-a11-specs.md).
+    >[AZURE.TIP]Geben Sie ein SUSE Linux Enterprise Server 12-HPC-Image oder ein CentOS-basiertes HPC-Image aus dem Azure Marketplace an, um das Azure RDMA-Netzwerk mit einer der RDMA-fähigen VM-Größen zu nutzen. Weitere Informationen finden Sie unter [Informationen zu virtuellen Computern der H-Serie und der rechenintensiven A-Serie](virtual-machines-linux-a8-a9-a10-a11-specs.md).
 
 Weitere Voraussetzungen für die Bereitstellung des Clusters über das HPC Pack-IaaS-Bereitstellungsskript:
 
-* **Clientcomputer**: Sie benötigen einen Windows-basierten Clientcomputer für die Ausführung des Skripts zur Clusterbereitstellung.
+* **Clientcomputer**: Für die Ausführung des Skripts zur Clusterbereitstellung benötigen Sie einen Windows-basierten Clientcomputer.
 
 * **Azure PowerShell**: [Installieren und konfigurieren Sie Azure PowerShell](../powershell-install-configure.md) (ab Version 0.8.10) auf Ihrem Clientcomputer.
 
@@ -71,7 +71,7 @@ Weitere Voraussetzungen für die Bereitstellung des Clusters über das HPC Pack-
 
     ![Erstellung über das Portal][portal]
 
-3. Geben Sie auf dem Blatt **Grundeinstellungen** einen Namen für den Cluster ein, der auch für die Hauptknoten-VM verwendet wird. Sie können eine vorhandene Ressourcengruppe wählen oder eine neue Gruppe für die Bereitstellung erstellen.
+3. Geben Sie auf dem Blatt **Grundeinstellungen** einen Clusternamen ein. Dieser wird auch für den virtuellen Hauptknotencomputer verwendet. Sie können eine vorhandene Ressourcengruppe wählen oder eine Gruppe für die Bereitstellung erstellen.
 
 4. Für eine erste Bereitstellung können Sie auf dem Blatt mit den Einstellungen des Hauptknotens im Allgemeinen die Standardeinstellungen übernehmen.
 
@@ -79,7 +79,7 @@ Weitere Voraussetzungen für die Bereitstellung des Clusters über das HPC Pack-
     
 5. Auf dem Blatt mit den Einstellungen für Computeknoten wählen Sie ein Benennungsmuster für die Knoten, die Anzahl und die Größe der Knoten sowie die Linux-Distribution, die bereitgestellt werden soll.
 
-6. Auf dem Blatt **Infrastruktureinstellungen** geben Sie Folgendes ein: den Namen für das virtuelle Netzwerk und die Active Directory-Domäne für den Cluster, die Anmeldeinformationen für den Domänen- und VM-Administrator sowie ein Benennungsmuster für die Speicherkonten, die für den Cluster benötigt werden.
+6. Geben Sie auf dem Blatt **Infrastruktureinstellungen** den Namen für das virtuelle Netzwerk und die Active Directory-Domäne, die Anmeldeinformationen für Domänen- und VM-Administratoren sowie ein Benennungsmuster für die Speicherkonten ein.
 
     >[AZURE.NOTE]HPC Pack verwendet die Active Directory-Domäne zur Authentifizierung von Clusterbenutzern.
 
@@ -88,7 +88,7 @@ Weitere Voraussetzungen für die Bereitstellung des Clusters über das HPC Pack-
 
 ### Bereitstellungsoption 2: Verwenden des IaaS-Bereitstellungsskripts
 
-Das HPC Pack-IaaS-Bereitstellungsskript verwendet als Eingabe eine XML-Konfigurationsdatei mit der Beschreibung der Infrastruktur des HPC-Clusters. Mit der folgenden Beispielkonfigurationsdatei wird ein kleiner Cluster bereitgestellt, der einen HPC Pack-Hauptknoten und zwei CentOS 7.0-Linux-Computeknoten der Größe A7 umfasst. Ändern Sie die Datei entsprechend den Anforderungen Ihrer Umgebung und der gewünschten Clusterkonfiguration, und speichern Sie sie unter einem Namen wie „HPCDemoConfig.xml“. Sie müssen beispielsweise den Namen Ihres Abonnements und einen eindeutigen Speicherkontonamen und Clouddienstnamen angeben, und Sie könnten ein anderes unterstütztes Linux-Image für den Computeknoten auswählen. Weitere Informationen zu den Elementen der Konfigurationsdatei finden Sie in der Datei „Manual.rtf“ im Skriptordner und unter [Create an HPC cluster with the HPC Pack IaaS deployment script (Erstellen eines HPC-Clusters mit dem HPC Pack-IaaS-Bereitstellungsskript)](virtual-machines-windows-classic-hpcpack-cluster-powershell-script.md).
+Das HPC Pack-IaaS-Bereitstellungsskript verwendet als Eingabe eine XML-Konfigurationsdatei mit der Beschreibung der Infrastruktur des HPC-Clusters. Mit der folgenden Beispielkonfigurationsdatei wird ein kleiner Cluster bereitgestellt, der einen HPC Pack-Hauptknoten und zwei CentOS 7.0-Linux-Computeknoten der Größe A7 umfasst. Ändern Sie die Datei entsprechend den Anforderungen Ihrer Umgebung und der gewünschten Clusterkonfiguration, und speichern Sie sie unter einem Namen wie „HPCDemoConfig.xml“. Sie müssen beispielsweise den Namen Ihres Abonnements und einen eindeutigen Speicherkonto- und Clouddienstnamen angeben. Darüber hinaus empfiehlt es sich unter Umständen, für Computeknoten ein anderes unterstütztes Linux-Image auszuwählen. Weitere Informationen zu den Elementen der Konfigurationsdatei finden Sie in der Datei „Manual.rtf“ im Skriptordner und unter [Create an HPC cluster with the HPC Pack IaaS deployment script (Erstellen eines HPC-Clusters mit dem HPC Pack-IaaS-Bereitstellungsskript)](virtual-machines-windows-classic-hpcpack-cluster-powershell-script.md).
 
 ```
 <?xml version="1.0" encoding="utf-8" ?>
@@ -142,19 +142,19 @@ Das HPC Pack-IaaS-Bereitstellungsskript verwendet als Eingabe eine XML-Konfigur
     .\New-HpcIaaSCluster.ps1 –ConfigFile E:\HPCDemoConfig.xml –AdminUserName MyAdminName
     ```
 
-    Das Skript generiert automatisch eine Protokolldatei, da der **-LogFile**-Parameter nicht angegeben ist. Die Protokolle werden nicht in Echtzeit geschrieben, sondern am Schluss des Validierungs- und Bereitstellungsvorgangs erfasst. Wenn der PowerShell-Prozess angehalten wird, während das Skript ausgeführt wird, gehen einige Protokolle verloren.
+    Das Skript generiert automatisch eine Protokolldatei, da der **-LogFile**-Parameter nicht angegeben ist. Die Protokolle werden nicht in Echtzeit geschrieben, sondern am Schluss des Validierungs- und Bereitstellungsvorgangs erfasst. Wenn der PowerShell-Prozess während der Skriptausführung beendet wird, gehen einige Protokolle verloren.
 
-    a. Da im obigen Befehl kein **AdminPassword** angegeben wird, werden Sie zur Eingabe des Kennworts für den Benutzer *MyAdminName* aufgefordert.
+    a. Da im vorigen Befehl kein Administratorkennwort (**AdminPassword**) angegeben wird, werden Sie zur Eingabe des Kennworts für den Benutzer *MyAdminName* aufgefordert.
 
     b. Das Skript beginnt dann mit der Überprüfung der Konfigurationsdatei. Je nach Netzwerkverbindung dauert dies bis zu einigen Minuten.
 
     ![Überprüfen][validate]
 
-    c. Nachdem die Überprüfungen erfolgreich waren, führt das Skript die Ressourcen auf, die für den HPC-Cluster erstellt werden. Geben Sie *Y* ein, um fortzufahren.
+    c. Nach erfolgreicher Überprüfung listet das Skript die zu erstellenden Clusterressourcen auf. Geben Sie *Y* ein, um fortzufahren.
 
     ![Ressourcen][resources]
 
-    d. Das Skript beginnt mit der Bereitstellung des HPC Pack-Clusters und schließt die Konfiguration ohne weitere manuelle Schritte ab. Dies kann einige Minuten dauern.
+    d. Das Skript beginnt mit der Bereitstellung des HPC Pack-Clusters und schließt die Konfiguration ohne weitere manuelle Schritte ab. Die Ausführung des Skripts kann mehrere Minuten dauern.
 
     ![Bereitstellen][deploy]
 
@@ -162,11 +162,11 @@ Das HPC Pack-IaaS-Bereitstellungsskript verwendet als Eingabe eine XML-Konfigur
 
 Nach erfolgreichem Abschluss der Bereitstellung [verbinden Sie sich über Remotedesktop mit dem Hauptknoten](virtual-machines-windows-connect-logon.md). Verwenden Sie dazu die Domänenanmeldeinformationen, die Sie bei der Bereitstellung des Clusters angegeben haben (z. B. *hpc\\clusteradmin*).
 
-Starten Sie auf dem Hauptknoten den HPC-Cluster-Manager, um den Status des HPC Pack-Clusters zu überprüfen. Sie können Linux-Compute-Knoten auf die gleiche Weise wie Windows-Compute-Knoten verwalten und überwachen. Beispielsweise werden unter **Ressourcenverwaltung** die Linux-Knoten aufgeführt (diese Knoten werden mit der **LinuxNode**-Vorlage bereitgestellt).
+Starten Sie auf dem Hauptknoten den HPC-Cluster-Manager, um den Status des HPC Pack-Clusters zu überprüfen. Sie können Linux-Compute-Knoten auf die gleiche Weise wie Windows-Compute-Knoten verwalten und überwachen. Beispielsweise werden unter **Ressourcenverwaltung** die Linux-Knoten aufgeführt. (Diese Knoten werden mit der **LinuxNode**-Vorlage bereitgestellt.)
 
 ![Knoten-Verwaltung][management]
 
-In der Ansicht **Wärmebild** werden die Linux-Knoten ebenfalls angezeigt.
+Die Linux-Knoten werden auch in der Heat Map-Ansicht angezeigt.
 
 ![Heat Map][heatmap]
 
@@ -174,7 +174,7 @@ In der Ansicht **Wärmebild** werden die Linux-Knoten ebenfalls angezeigt.
 
 Sie haben mehrere Optionen zum Verschieben von Daten zwischen Linux-Knoten und dem Windows-Head-Knoten des Clusters. Wir stellen drei allgemeine Methoden vor.
 
-* **Azure File Storage**: Stellt eine verwaltete SMB-Dateifreigabe zum Speichern von Datendateien im Azure-Speicher zur Verfügung. Sowohl Windows-Knoten als auch Linux-Knoten können eine Azure-Dateifreigabe als ein Laufwerk oder Ordner gleichzeitig bereitstellen, auch wenn sie in verschiedenen virtuellen Netzwerken bereitgestellt werden.
+* **Azure File Storage**: Stellt eine verwaltete SMB-Dateifreigabe zum Speichern von Datendateien im Azure-Speicher zur Verfügung. Windows- und Linux-Knoten können gleichzeitig eine Azure-Dateifreigabe als Laufwerk oder Ordner einbinden, auch wenn sie in verschiedenen virtuellen Netzwerken bereitgestellt werden.
 
 * **Hauptknoten-SMB-Freigabe**: Bindet einen standardmäßigen freigegebenen Windows-Ordner des Hauptknotens auf Linux-Knoten ein.
 
@@ -193,11 +193,11 @@ Im folgenden Beispiel erstellen Sie eine Azure-Dateifreigabe für ein Speicherko
 > net use Z: \\allvhdje.file.core.windows.net\rdma /persistent:yes
 ```
 
-In diesem Beispiel ist „allvhdsje“ der Name des Speicherkontos, „storageaccountkey“ ist der Speicherkontoschlüssel, und „rdma“ ist der Name der Azure-Dateifreigabe. Die Azure-Dateifreigabe wird auf Z: auf dem Head-Knoten bereitgestellt.
+In diesem Beispiel ist „allvhdsje“ der Name des Speicherkontos, „storageaccountkey“ ist der Speicherkontoschlüssel, und „rdma“ ist der Name der Azure-Dateifreigabe. Die Azure-Dateifreigabe wird auf dem Hauptknoten auf „Z:“ eingebunden.
 
 Führen Sie zum Bereitstellen der Azure-Dateifreigabe auf Linux-Knoten einen **clusrun**-Befehl für den Hauptknoten aus. **[clusrun](https://technet.microsoft.com/library/cc947685.aspx)** ist ein nützliches Tool für HPC Pack, mit dem administrative Aufgaben auf mehreren Knoten ausgeführt werden können. (Siehe auch [„clusrun“ für Linux-Knoten](#Clusrun-for-Linux-nodes) in diesem Artikel.)
 
-Öffnen Sie ein Windows PowerShell-Fenster und geben Sie die folgenden Befehle ein.
+Öffnen Sie ein Windows PowerShell-Fenster, und geben Sie die folgenden Befehle ein:
 
 ```
 PS > clusrun /nodegroup:LinuxNodes mkdir -p /rdma
@@ -211,7 +211,7 @@ Der erste Befehl erstellt einen Ordner namens „/rdma“ auf allen Knoten in de
 
 ### Head-Knoten-Freigabe
 
-Alternativ können Sie einen freigegebenen Ordner des Hauptknotens auf Linux-Knoten einbinden. Dies ist die einfachste Methode zum Freigeben von Dateien, allerdings müssen der Head-Knoten und alle Linux-Knoten im gleichen virtuellen Netzwerk bereitgestellt werden. Gehen Sie wie folgt vor:
+Alternativ können Sie einen freigegebenen Ordner des Hauptknotens auf Linux-Knoten einbinden. Eine Freigabe ist die einfachste Methode zum Freigeben von Dateien. Der Hauptknoten und alle Linux-Knoten müssen hierzu allerdings im gleichen virtuellen Netzwerk bereitgestellt werden. Gehen Sie wie folgt vor:
 
 1. Erstellen Sie einen Ordner auf dem Head-Knoten, und geben Sie ihn für alle Benutzer mit Lese-/Schreibberechtigungen frei. Geben Sie beispielsweise „D:\\OpenFOAM“ auf dem Hauptknoten als „\\CentOS7RDMA-HN\\OpenFOAM“ frei. Hier ist „CentOS7RDMA-HN“ der Hostname des Hauptknotens.
 
@@ -219,7 +219,7 @@ Alternativ können Sie einen freigegebenen Ordner des Hauptknotens auf Linux-Kno
 
     ![Dateifreigabe][filesharing]
 
-2. Öffnen Sie ein Windows PowerShell-Fenster, und führen Sie die folgenden Befehle aus, um den freigegebenen Ordner bereitzustellen.
+2. Öffnen Sie ein Windows PowerShell-Fenster, und führen Sie die folgenden Befehle aus:
 
 ```
 PS > clusrun /nodegroup:LinuxNodes mkdir -p /openfoam
@@ -234,11 +234,11 @@ Der erste Befehl erstellt einen Ordner namens „/openfoam“ auf allen Knoten i
 
 ### NFS-Server
 
-Der NFS-Dienst ermöglicht Ihnen die Freigabe und das Migrieren von Dateien zwischen Windows Server 2012-Computern über das SMB-Protokoll und zwischen Linux-basierten Computern über das NFS-Protokoll. Der NFS-Server und alle anderen Knoten müssen im gleichen virtuellen Netzwerk bereitgestellt werden. Im Vergleich zu einer SMB-Freigabe bietet diese Konfiguration eine bessere Kompatibilität mit Linux-Knoten (beispielsweise werden Dateilinks unterstützt).
+Der NFS-Dienst ermöglicht Ihnen die Freigabe und das Migrieren von Dateien zwischen Windows Server 2012-Computern über das SMB-Protokoll und zwischen Linux-basierten Computern über das NFS-Protokoll. Der NFS-Server und alle anderen Knoten müssen im gleichen virtuellen Netzwerk bereitgestellt werden. Im Vergleich zu einer SMB-Freigabe bietet diese Konfiguration eine bessere Kompatibilität mit Linux-Knoten. So werden beispielsweise Dateilinks unterstützt.
 
 1. Führen Sie zum Installieren und Einrichten eines NFS-Servers die Schritte unter [Server for Network File System First Share End-to-End](http://blogs.technet.com/b/filecab/archive/2012/10/08/server-for-network-file-system-first-share-end-to-end.aspx) (Umfassende Informationen zur ersten Freigabe des Servers für NFS; in englischer Sprache) aus.
 
-    Erstellen Sie z. B. eine NFS-Freigabe mit dem Namen „Nfs“ mit den folgenden Eigenschaften.
+    Erstellen Sie beispielsweise eine NFS-Freigabe namens „nfs“ mit folgenden Eigenschaften:
 
     ![NFS-Autorisierung][nfsauth]
 
@@ -248,7 +248,7 @@ Der NFS-Dienst ermöglicht Ihnen die Freigabe und das Migrieren von Dateien zwis
 
     ![NFS-Verwaltungseigenschaften][nfsmanage]
 
-2. Öffnen Sie ein Windows PowerShell-Fenster, und führen Sie die folgenden Befehle aus, um die NFS-Freigabe einzubinden.
+2. Öffnen Sie ein Windows PowerShell-Fenster, und führen Sie die folgenden Befehle aus:
 
   ```
   PS > clusrun /nodegroup:LinuxNodes mkdir -p /nfsshare
@@ -268,7 +268,7 @@ Es gibt verschiedene Methoden zum Übermitteln von Aufträgen an den HPC Pack-Cl
 
 Das Senden eines Auftrags an den Cluster in Azure über HPC Pack-GUI-Tools und dem HPC-Webportal ist das gleiche wie für Windows-Compute-Knoten. Informationen finden Sie unter [HPC Pack Job Manager (HPC Pack-Auftrags-Manager)](https://technet.microsoft.com/library/ff919691.aspx) und [How to submit jobs from an on-premises client computer (Übermitteln von Aufträgen von einem lokalen Clientcomputer)](virtual-machines-windows-hpcpack-cluster-submit-jobs.md).
 
-Informationen zum Übermitteln von Aufträgen über die REST-API finden Sie unter [Erstellen und Übermitteln von Aufträgen mithilfe der REST-API in Microsoft HPC Pack](http://social.technet.microsoft.com/wiki/contents/articles/7737.creating-and-submitting-jobs-by-using-the-rest-api-in-microsoft-hpc-pack-windows-hpc-server.aspx). Informationen zum Übermitteln von Aufträgen von einem Linux-Client finden Sie zudem im Python-Beispiel im [HPC Pack-SDK](https://www.microsoft.com/download/details.aspx?id=47756).
+Informationen zum Übermitteln von Aufträgen über die REST-API finden Sie unter [Erstellen und Übermitteln von Aufträgen mithilfe der REST-API in Microsoft HPC Pack](http://social.technet.microsoft.com/wiki/contents/articles/7737.creating-and-submitting-jobs-by-using-the-rest-api-in-microsoft-hpc-pack-windows-hpc-server.aspx). Informationen zum Übermitteln von Aufträgen über einen Linux-Client finden Sie außerdem im Python-Beispiel im [HPC Pack SDK](https://www.microsoft.com/download/details.aspx?id=47756).
 
 ## „clusrun“ für Linux-Knoten
 
@@ -317,4 +317,4 @@ Das HPC Pack-Tool **clusrun** kann zum Ausführen von Befehlen auf Linux-Knoten 
 [nfsperm]: ./media/virtual-machines-linux-classic-hpcpack-cluster/nfsperm.png
 [nfsmanage]: ./media/virtual-machines-linux-classic-hpcpack-cluster/nfsmanage.png
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0928_2016-->

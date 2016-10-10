@@ -3,7 +3,7 @@
 	description="Erfahren Sie, wie Sie Ihren Office 365-Azure AD-Mandanten und seine Benutzer mit Ihrem Azure-Abonnement freigeben – oder umgekehrt."
 	services=""
 	documentationCenter=""
-	authors="jiangchen79"
+	authors="JiangChen79"
 	manager="mbaldwin"
 	editor=""
 	tags="billing,top-support-issue"/>
@@ -151,4 +151,4 @@ Es gibt ein ähnliches Szenario, in dem Sie das Azure-Abonnement und das Office 
 
 > [AZURE.NOTE] Wenn Sie weitere Fragen haben, [wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), um das Problem schnell zu lösen.
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0928_2016-->

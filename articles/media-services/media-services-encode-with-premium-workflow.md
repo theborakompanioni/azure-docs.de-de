@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Erweiterte Codierung mit dem Media Encoder Premium Workflow" 
+	pageTitle="Erweiterte Codierung mit dem Media Encoder Premium Workflow | Microsoft Azure" 
 	description="Erfahren Sie, wie Sie eine Codierung mit dem Media Encoder Premium Workflow durchführen. Die Codebeispiele sind in C# geschrieben und verwenden das Media Services SDK für .NET." 
 	services="media-services" 
 	documentationCenter="" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/22/2016" 
+	ms.date="09/26/2016" 
 	ms.author="juliako"/>
 
 #Erweiterte Codierung mit dem Media Encoder Premium Workflow
@@ -278,4 +278,4 @@ Fragen zu Encoder Premium senden Sie per E-Mail an „mepd at Microsoft.com“.
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0928_2016-->

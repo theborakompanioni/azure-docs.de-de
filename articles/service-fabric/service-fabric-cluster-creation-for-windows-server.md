@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="09/15/2016"
+   ms.date="09/26/2016"
    ms.author="dkshir;chackdan"/>
 
 
@@ -25,15 +25,20 @@ Dieser Artikel führt Sie durch die Schritte zum lokalen Erstellen eines Cluster
 
 >[AZURE.NOTE] Dieses eigenständige Paket für Windows Server und seine Features befinden sich derzeit in der Vorschauphase und werden deshalb nicht für die kommerzielle Nutzung unterstützt. Am Ende des Dokuments finden Sie eine Liste der Features in der Vorschauphase. [Klicken Sie hier](http://go.microsoft.com/fwlink/?LinkID=733084), wenn Sie jetzt eine Kopie der Lizenzbedingungen herunterladen möchten.
 
+
+<a id="getsupport"></a>
+## Support für das eigenständige Service Fabric-Paket
+
+- Befragen Sie im [Azure Service Fabric-Forum](https://social.msdn.microsoft.com/Forums/azure/de-DE/home?forum=AzureServiceFabric?) die Community zum eigenständigen Service Fabric-Paket für Windows Server.
+
+- Erstellen Sie ein Ticket für [Professional Support für Service Fabric](http://support.microsoft.com/oas/default.aspx?prid=16146). Weitere Informationen zu Professional Support von Microsoft finden Sie [hier](https://support.microsoft.com/de-DE/gp/offerprophone?wa=wsignin1.0).
+
 <a id="downloadpackage"></a>
 ## Herunterladen des Eigenständigen Pakets für Service Fabric
 
 
 [Laden Sie das eigenständige Windows Server-Paket für Service Fabric 2012 R2 und höher herunter](http://go.microsoft.com/fwlink/?LinkId=730690). Es hat den Namen *Microsoft.Azure.ServiceFabric.WindowsServer.&lt;Version&gt;.zip*.
 
->[AZURE.NOTE] Bei Verwenden der Browser Internet Explorer oder Microsoft Edge zum Herunterladen dieses Pakets müssen Sie die Website [http://download.microsoft.com](http://download.microsoft.com) den vertrauenswürdigen Websites im Intranet hinzufügen. Dies verhindert, dass das „Zones“-Tag in die Dateien geschrieben wird, wenn die ZIP-Datei heruntergeladen wird.
-
- ![TrustedZone][TrustedZone]
 
 Im Downloadpaket finden Sie die folgenden Dateien:
 
@@ -46,12 +51,15 @@ Im Downloadpaket finden Sie die folgenden Dateien:
 |ClusterConfig.Windows.MultiMachine.json|Beispiel für eine Clusterkonfigurationsdatei, die alle Einstellungen für einen sicheren Cluster mit mehreren virtuellen oder physischen Computern und Windows-Sicherheit enthält, einschließlich der Informationen für jeden Computer, der Teil des geschützten Clusters ist. Der Cluster wird mithilfe von [Windows-Identitäten](https://msdn.microsoft.com/library/ff649396.aspx) geschützt.|
 |ClusterConfig.x509.DevCluster.json|Beispiel für eine Clusterkonfigurationsdatei, die alle Einstellungen für einen geschützten Entwicklungscluster mit einem virtuellen oder physischen Computer und drei Knoten enthält, einschließlich der Informationen für jeden Knoten im Cluster. Der Cluster wird mittels X.509-Zertifikaten geschützt.|
 |ClusterConfig.x509.MultiMachine.json|Beispiel für eine Clusterkonfigurationsdatei, die alle Einstellungen für den geschützten Cluster mit mehreren virtuellen oder physischen Computern enthält, einschließlich der Informationen für jeden Knoten im geschützten Cluster. Der Cluster wird mittels X.509-Zertifikaten geschützt.|
-|EULA.txt|Die Lizenzbedingungen für die Verwendung des eigenständigen Windows Server-Pakets für Microsoft Azure Service Fabric. [Klicken Sie hier](http://go.microsoft.com/fwlink/?LinkID=733084), wenn Sie jetzt eine Kopie der Lizenzbedingungen herunterladen möchten.|
+|EULA\_ENU.txt|Die Lizenzbedingungen für die Verwendung des eigenständigen Windows Server-Pakets für Microsoft Azure Service Fabric. [Klicken Sie hier](http://go.microsoft.com/fwlink/?LinkID=733084), wenn Sie jetzt eine Kopie der Lizenzbedingungen herunterladen möchten.|
 |Readme.txt|Link zu Versionshinweisen und grundlegenden Installationsanweisungen. Dies ist eine Teilmenge der Anweisungen, die Sie auf dieser Seite finden.|
 |CreateServiceFabricCluster.ps1|PowerShell-Skript, das den Cluster mit den Einstellungen in der Datei „ClusterConfig.json“ erstellt.|
 |RemoveServiceFabricCluster.ps1|PowerShell-Skript, das einen Cluster mit den Einstellungen in der Datei „ClusterConfig.json“ entfernt.|
+|ThirdPartyNotice.rtf |Hinweis zu im Paket enthaltener Drittanbietersoftware.|
 |AddNode.ps1|PowerShell-Skript zum Hinzufügen eines Knotens zu einem vorhandenen bereitgestellten Cluster.|
 |RemoveNode.ps1|PowerShell-Skript zum Entfernen eines Knotens aus einem vorhandenen bereitgestellten Cluster.|
+|CleanFabric.ps1|PowerShell-Skript zum Entfernen einer eigenständigen Fabric-Installation vom aktuellen Computer. Vorherige MSI-Installationen müssen jeweils mit dem dazugehörigen Deinstallationsprogramm entfernt werden.|
+|TestConfiguration.ps1|PowerShell-Skript zum Analysieren der Infrastruktur auf der Grundlage von „cluster.JSON“.|
 
 
 ## Planen und Vorbereiten der Clusterbereitstellung
@@ -64,13 +72,16 @@ Da Sie im Begriff sind, auf Ihren Computern einen Service Fabric-Cluster zu erst
 ### Schritt 2: Vorbereiten der Computer, um die Voraussetzungen zu erfüllen
 Voraussetzungen für jeden Computer, den Sie dem Cluster hinzufügen möchten:
 
-- Mindestens 4 GB RAM empfohlen
+- Mindestens 16 GB RAM empfohlen
+- Mindestens 40 GB verfügbarer Speicherplatz empfohlen
+- CPU mit mindestens vier Kernen empfohlen
 - Netzwerkkonnektivität: Stellen Sie sicher, dass die Computer sich in einem bzw. mehreren sicheren Netzwerken befinden.
 - Windows Server 2012 R2 oder Windows Server 2012 ([KB2858668](https://support.microsoft.com/kb/2858668) muss installiert sein).
 - [.NET Framework 4.5.1 oder höher](https://www.microsoft.com/download/details.aspx?id=40773), vollständig installiert.
 - [Windows PowerShell 3.0](https://msdn.microsoft.com/powershell/scripting/setup/installing-windows-powershell).
 - Der Clusteradministrator, der den Cluster bereitstellt und konfiguriert, muss auf jedem Computer [Administratorrechte](https://social.technet.microsoft.com/wiki/contents/articles/13436.windows-server-2012-how-to-add-an-account-to-a-local-administrator-group.aspx) besitzen.
 - Der [„RemoteRegistry“-Dienst](https://technet.microsoft.com/library/cc754820) muss auf allen Computern ausgeführt werden.
+- Service Fabric kann nicht auf einem Domänencontroller installiert werden.
 
 ### Schritt 3: Bestimmen der anfänglichen Clustergröße
 Für jeden Knoten in einem eigenständigen Service Fabric-Cluster wird die Service Fabric-Laufzeit bereitgestellt und ist Mitglied des Clusters. In einer gängigen Produktionsbereitstellung ist ein Knoten pro Betriebssysteminstanz (physisch oder virtuell) vorhanden. Die Clustergröße wird durch Ihre geschäftlichen Anforderungen bestimmt; Sie benötigen jedoch eine minimale Clustergröße von drei Knoten (Computer/VMs). Für Entwicklungszwecke können Sie über mehrere Knoten auf einem bestimmten Computer verfügen. In einer Produktionsumgebung unterstützt Service Fabric nur einen Knoten pro physischen oder virtuellen Computer.
@@ -111,10 +122,38 @@ Der Cluster wird in der Datei *ClusterConfig.json* beschrieben. Ausführliche In
 
 |**Konfigurationseinstellung**|**Beschreibung**|
 |-----------------------|--------------------------|
-|**NodeTypes**|Mit Knotentypen können Sie die Clusterknoten in verschiedene Gruppen unterteilen. Ein Cluster muss über mindestens einen Knotentyp verfügen. Alle Knoten in einer Gruppe haben die folgenden gemeinsamen Merkmale: <br> **Name**: Dies ist der Knotentypname. <br>**Endpoint Ports**: Verschiedene benannte Endpunkte (Ports), die diesem Knotentyp zugeordnet sind. Sie können eine beliebige Portnummer verwenden, solange sie nicht mit anderen Elementen in diesem Manifest in Konflikt steht und nicht bereits von einem anderen Programm auf dem (virtuellen) Computer verwendet wird. <br> **Platzierungseigenschaften**: Eigenschaften für diesen Knotentyp, die Sie später als Platzierungseinschränkungen für Systemdienste oder eigene Dienste verwenden. Diese Eigenschaften sind benutzerdefinierte Schlüssel-Wert-Paare, mit denen für einen bestimmten Knoten zusätzliche Metadaten bereitgestellt werden. Beispiele für Knoteneigenschaften: Vorhandensein einer Festplatte oder Grafikkarte am Knoten, Anzahl von Spindeln des Festplattenlaufwerks, Kerne und andere physische Eigenschaften. <br> **Capacities**: Knotenkapazitäten definieren Name und Menge einer bestimmten Ressource, die ein bestimmter Knoten nutzen kann. Ein Knoten definiert z. B., dass er über Kapazität für eine Metrik mit dem Namen „MemoryInMb“ verfügt und standardmäßig 2.048 MB an verfügbarem Arbeitsspeicher aufweist. Anhand dieser Kapazitäten wird zur Laufzeit sichergestellt, dass Dienste, die bestimmte Mengen von Ressourcen benötigen, auf den Knoten angeordnet werden, die in ausreichender Menge über diese Ressourcen verfügen.<br>**IsPrimary**: Wenn Sie mehr als ein NodeType-Element definiert haben, sollten Sie sicherstellen, dass nur ein Element mit dem Wert *true* als primäres Element festgelegt ist. Auf diesem Element werden die Systemdienste ausgeführt. Alle anderen Knotentypen sollten auf den Wert *false* festgelegt werden.|
+|**NodeTypes**|Mit Knotentypen können Sie die Clusterknoten in verschiedene Gruppen unterteilen. Ein Cluster muss über mindestens einen Knotentyp verfügen. Alle Knoten in einer Gruppe haben die folgenden gemeinsamen Merkmale: <br> **Name**: Der Name des Knotentyps. <br>**Endpoint Ports**: Verschiedene benannte Endpunkte (Ports), die diesem Knotentyp zugeordnet sind. Sie können eine beliebige Portnummer verwenden, solange sie nicht mit anderen Elementen in diesem Manifest in Konflikt steht und nicht bereits von einem anderen Programm auf dem (virtuellen) Computer verwendet wird. <br> **Platzierungseigenschaften**: Eigenschaften für diesen Knotentyp, die Sie später als Platzierungseinschränkungen für Systemdienste oder eigene Dienste verwenden. Diese Eigenschaften sind benutzerdefinierte Schlüssel-Wert-Paare, mit denen für einen bestimmten Knoten zusätzliche Metadaten bereitgestellt werden. Beispiele für Knoteneigenschaften wären etwa die Angabe, ob der Knoten über eine Festplatte oder Grafikkarte verfügt, die Anzahl von Spindeln des Festplattenlaufwerks, die Anzahl von Kernen und andere physische Eigenschaften. <br> **Capacities**: Knotenkapazitäten definieren Name und Menge einer bestimmten Ressource, die ein bestimmter Knoten nutzen kann. Ein Knoten definiert z. B., dass er über Kapazität für eine Metrik mit dem Namen „MemoryInMb“ verfügt und standardmäßig 2.048 MB an verfügbarem Arbeitsspeicher aufweist. Anhand dieser Kapazitäten wird zur Laufzeit sichergestellt, dass Dienste, die bestimmte Mengen von Ressourcen benötigen, auf den Knoten angeordnet werden, die in ausreichender Menge über diese Ressourcen verfügen.<br>**IsPrimary**: Wenn Sie mehr als ein NodeType-Element definiert haben, sollten Sie sicherstellen, dass nur ein Element mit dem Wert *true* als primäres Element festgelegt ist. Auf diesem Element werden die Systemdienste ausgeführt. Alle anderen Knotentypen sollten auf den Wert *false* festgelegt werden.|
 |**Nodes**|Dies sind die Details für jeden Knoten, der Teil des Clusters ist (Knotentyp, Knotenname, IP-Adresse, Fehlerdomäne und Upgradedomäne des Knotens). Die Computer, aus denen Sie den Cluster erstellen möchten, müssen mit ihren IP-Adressen hier aufgeführt werden. <br> Wenn Sie die gleiche IP-Adresse für alle Knoten verwenden, wird ein Cluster mit einem Computer erstellt, den Sie für Tests verwenden können. Cluster mit einem Computer dürfen nicht zur Bereitstellung von Produktionsworkloads verwendet werden.|
 
-### Schritt 2: Ausführen des Clustererstellungsskripts
+### Schritt 2: Ausführen des TestConfiguration-Skripts
+
+Dieses Skript testet Ihre Infrastruktur auf der Grundlage von „cluster.JSON“, um unter anderem zu überprüfen, ob die erforderlichen Berechtigungen vorhanden und die Computer miteinander verbunden sind, damit die Bereitstellung erfolgreich durchgeführt werden kann. Es ist im Grunde ein einfacher Best Practices Analyzer. Das Tool wird nach und nach mit zusätzlichen Überprüfungen erweitert, um es robuster zu machen.
+
+Dieses Skript kann auf jedem Computer ausgeführt werden, der Administratorzugriffsrechte auf alle Computer hat, die als Knoten in der Clusterkonfigurationsdatei aufgeführt sind. Der Computer, auf dem dieses Skript ausgeführt wird, kann, muss jedoch nicht Teil des Clusters sein.
+
+```powershell
+
+PS C:\temp\Microsoft.Azure.ServiceFabric.WindowsServer.5.3.202.9494> .\TestConfiguration.ps1 -ClusterConfigFilePath .\ClusterConfig.Unsecure.DevCluster.json
+Trace folder already exists. Traces will be written to existing trace folder: C:\temp\Microsoft.Azure.ServiceFabric.WindowsServer.5.3.202.9494\DeploymentTraces
+Running Best Practices Analyzer...
+Best Practices Analyzer completed successfully.
+
+
+LocalAdminPrivilege        : True
+IsJsonValid                : True
+IsCabValid                 : True
+RequiredPortsOpen          : True
+RemoteRegistryAvailable    : True
+FirewallAvailable          : True
+RpcCheckPassed             : True
+NoConflictingInstallations : True
+FabricInstallable          : True
+Passed                     : True 
+
+
+```
+
+### Schritt 3: Ausführen des Clustererstellungsskripts
 Sobald Sie die Clusterkonfiguration im JSON-Dokument geändert und alle Knoteninformationen hinzugefügt haben, führen Sie das PowerShell-Skript *CreateServiceFabricCluster.ps1* zur Erstellung des Clusters im Paketordner aus. Übergeben Sie an diesen den Pfad zur JSON-Konfigurationsdatei, und akzeptieren Sie die Lizenzbedingungen.
 
 Dieses Skript kann auf jedem Computer ausgeführt werden, der Administratorzugriffsrechte auf alle Computer hat, die als Knoten in der Clusterkonfigurationsdatei aufgeführt sind. Der Computer, auf dem dieses Skript ausgeführt wird, kann, muss jedoch nicht Teil des Clusters sein.
@@ -122,17 +161,17 @@ Dieses Skript kann auf jedem Computer ausgeführt werden, der Administratorzugri
 ```
 #Create an unsecured local development cluster
 
-.\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.Unsecure.DevCluster.json -AcceptEULA true
+.\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.Unsecure.DevCluster.json -AcceptEULA
 ```
 ```
 #Create an unsecured multi-machine cluster
 
-.\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.Unsecure.MultiMachine.json -AcceptEULA true
+.\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.Unsecure.MultiMachine.json -AcceptEULA
 ```
 
 >[AZURE.NOTE] Die Bereitstellungsprotokolle sind lokal auf dem virtuellen bzw. physischen Computer verfügbar, auf dem Sie den PowerShell-Befehl „CreateServiceFabricCluster“ ausgeführt haben. Sie befinden sich im Unterordner „DeploymentTraces“ des Ordners, in dem Sie den PowerShell-Befehl ausgeführt haben. Um zu ermitteln, ob Service Fabric auf einem Computer richtig bereitgestellt wurde, können Sie die installierten Dateien im Verzeichnis „C:\\ProgramData“ überprüfen. Die Ausführung der Prozesse „FabricHost.exe“ und „Fabric.exe“ können Sie im Task-Manager verfolgen.
 
-### Schritt 3: Verbinden mit dem Cluster
+### Schritt 4: Herstellen einer Verbindung mit dem Cluster
 
 In [diesem Dokument](service-fabric-connect-to-secure-cluster.md) finden Sie Anweisungen zum Herstellen einer Verbindung mit einem sicheren Cluster.
 
@@ -145,7 +184,7 @@ Connect-ServiceFabricCluster -ConnectionEndpoint <*IPAddressofaMachine*>:<Client
 Connect-ServiceFabricCluster -ConnectionEndpoint 192.13.123.2345:19000
 
 ```
-### Schritt 4: Öffnen von Service Fabric Explorer
+### Schritt 5: Aufrufen von Service Fabric Explorer
 
 Jetzt können Sie über Service Fabric Explorer eine Verbindung mit dem Cluster herstellen, und zwar entweder direkt von einem der Computer mit http://localhost:19080/Explorer/index.html oder per Remotezugriff mit „http://<*IPAddressofaMachine*>:19080/Explorer/index.html“.
 
@@ -166,9 +205,43 @@ Dieses Skript kann auf jedem Computer ausgeführt werden, der Administratorzugri
 .\RemoveServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.Unsecure.MultiMachine.json   
 ```
 
+<a id="telemetry"></a>
+## Erfasste Telemetriedaten und Vorgehensweise zum Deaktivieren der Erfassung
+
+Zur Verbesserung des Produkts werden standardmäßig Telemetriedaten zur Service Fabric-Nutzung erfasst. Der im Rahmen der Einrichtung ausgeführte Best Practices Analyzer überprüft die Verbindung mit [https://vortex.data.microsoft.com/collect/v1](https://vortex.data.microsoft.com/collect/v1). Ist die Adresse nicht erreichbar, ist die Einrichtung nicht erfolgreich – es sei denn, Sie widersprechen der Erfassung von Telemetriedaten.
+
+1) Die Telemetriepipeline versucht einmal täglich, folgende Daten an [https://vortex.data.microsoft.com/collect/v1](https://vortex.data.microsoft.com/collect/v1) hochzuladen. Der Upload basiert auf dem Best-Effort-Prinzip und hat keinen Einfluss auf die Funktionen des Clusters. Die Telemetriedaten werden nur von dem Knoten gesendet, der die primäre Komponente des Failover-Managers ausführt. Andere Knoten senden keine Telemetriedaten.
+
+2) Die Telemetriedaten umfassen Folgendes:
+
+1.            Anzahl von Diensten
+1.            Anzahl von Diensttypen
+1.            Anzahl von Anwendungen
+1.            Anzahl von Anwendungsupgrades
+1.            Anzahl von Failovereinheiten
+1.            Anzahl von InBuild-Failovereinheiten
+1.            Anzahl von fehlerhaften Failovereinheiten
+1.            Anzahl von Replikaten
+1.            Anzahl von InBuild-Replikaten
+1.            Anzahl von StandBy-Replikaten
+1.            Anzahl von Offlinereplikaten
+1.            Allgemeine Warteschlangenlänge
+1.            Länge der Abfragewarteschlange
+1.            Länge der Warteschlange für Failovereinheiten
+1.            Länge der Commitwarteschlange
+1.            Anzahl von Knoten
+1.            IsContextComplete: „true“ oder „false“
+1.            Cluster-ID: Eine für jeden Cluster nach dem Zufallsprinzip generierte GUID.
+1.            Service Fabric-Version
+1.             IP-Adresse des (virtuellen) Computers, von dem die Telemetriedaten hochgeladen werden
+
+
+Fügen Sie zum Deaktivieren der Telemetrie dem properties-Element Ihrer Clusterkonfiguration den folgenden Code hinzu: "enableTelemetry": false
+
+<a id="previewfeatures"></a>
 ## Features in der Vorschauphase in diesem Paket
 
-Das gesamte Paket befindet sich derzeit in der Vorschauphase.
+Keine
 
 ## Nächste Schritte
 - [Konfigurationseinstellungen für eigenständige Windows-Cluster](service-fabric-cluster-manifest.md)
@@ -181,4 +254,4 @@ Das gesamte Paket befindet sich derzeit in der Vorschauphase.
 <!--Image references-->
 [TrustedZone]: ./media/service-fabric-cluster-creation-for-windows-server/TrustedZone.png
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

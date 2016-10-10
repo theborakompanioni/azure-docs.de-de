@@ -3,7 +3,7 @@
 	description="Erfahren Sie, wie Sie Daten aus einer lokalen Tabelle mithilfe von Azure Data Factory auf eine Webseite verschieben." 
 	services="data-factory" 
 	documentationCenter="" 
-	authors="spelluru" 
+	authors="linda33wj" 
 	manager="jhubbard" 
 	editor="monicar"/>
 
@@ -13,15 +13,15 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/18/2016" 
-	ms.author="spelluru"/>
+	ms.date="09/26/2016" 
+	ms.author="jingwang"/>
 
 # Verschieben von Daten aus einer Webtabelle mithilfe von Azure Data Factory
 Dieser Artikel beschreibt, wie Sie die Kopieraktivität in einer Azure Data Factory verwenden können, um Daten aus einer Tabelle in einer Webseite in einen anderen Datenspeicher zu verschieben. Dieser Artikel baut auf dem Artikel [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) auf, der eine allgemeine Übersicht zur Datenverschiebung mit Kopieraktivität und unterstützten Datenspeicherkombinationen bietet.
 
 Data Factory unterstützt derzeit nur das Verschieben von Daten aus einer Webtabelle in andere Datenspeicher, aber nicht das Verschieben aus anderen Datenspeichern in eine Webtabelle.
 
-> [AZURE.NOTE] Dieser Web-Connector unterstützt derzeit nur das Extrahieren von Tabelleninhalten einer HTML-Seite.
+> [AZURE.NOTE] Dieser Webconnector unterstützt derzeit nur das Extrahieren von Tabelleninhalten einer HTML-Seite.
 
 ## Beispiel: Kopieren von Daten aus einer Webtabelle in ein Azure-Blob
 
@@ -65,7 +65,7 @@ In diesem Beispiel wird gezeigt, wie Sie Daten aus einer Webtabelle in ein Azure
 	  }
 	}
 
-**WebTable-Eingabedataset** Durch Festlegen von **external** auf **true** und (optionales) Angeben der Richtlinie **externalData** wird dem Data Factory-Dienst mitgeteilt, dass dies für die Data Factory eine externe Tabelle ist, die nicht durch eine Aktivität in der Data Factory erzeugt wird.
+**WebTable-Eingabedataset** Durch Festlegen von **external** auf **true** wird dem Data Factory-Dienst mitgeteilt, dass das Dataset für die Data Factory extern ist und nicht durch eine Aktivität in der Data Factory erzeugt wird.
 
 > [AZURE.NOTE] Im Abschnitt [Abrufen des Indexes einer Tabelle auf einer HTML-Seite](#get-index-of-a-table-in-an-html-page) werden die Schritte zum Abrufen des Indexes einer Tabelle auf einer HTML-Seite beschrieben.
 
@@ -175,7 +175,7 @@ Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den 
 | Url | URL der Webquelle | Ja |
 | authenticationType | Anonym oder Standard. | Ja |
 | userName | Benutzername für die Standardauthentifizierung. | Ja (für die Standardauthentifizierung)
-| Kennwort | Kennwort für die Standardauthentifizierung. | Ja (für die Standardauthentifizierung)
+| password | Kennwort für die Standardauthentifizierung. | Ja (für die Standardauthentifizierung)
 
 ### Verwenden der anonymen Authentifizierung
 
@@ -213,9 +213,9 @@ Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den 
 
 ## WebTable-Dataset-Eigenschaften
 
-Eine vollständige Liste der Abschnitte und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel [Erstellen von Datasets](data-factory-create-datasets.md). Abschnitte wie "structure", "availability" und "policy" des JSON-Codes eines Datasets sind bei allen Typen von Datasets (Azure SQL, Azure-Blob, Azure-Tabelle usw.) ähnlich.
+Eine vollständige Liste der Abschnitte und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel [Erstellen von Datasets](data-factory-create-datasets.md). Abschnitte wie „structure“, „availability“ und „policy“ des JSON-Codes eines Datasets sind bei allen Dataset-Typen (Azure SQL, Azure-Blob, Azure-Tabelle usw.) ähnlich.
 
-Der Abschnitt **typeProperties** unterscheidet sich bei jedem Typ von Dataset und bietet Informationen zum Speicherort der Daten im Datenspeicher. Der typeProperties-Abschnitt für ein Dataset des Typs **WebTable** hat die folgenden Eigenschaften:
+Der Abschnitt **typeProperties** unterscheidet sich bei jedem Typ von Dataset und bietet Informationen zum Speicherort der Daten im Datenspeicher. Der „typeProperties“-Abschnitt für ein Dataset des Typs **WebTable** hat die folgenden Eigenschaften:
 
 Eigenschaft | Beschreibung | Erforderlich
 :-------- | :----------- | :--------
@@ -245,11 +245,11 @@ index | Der Index der Tabelle in der Ressource. Im Abschnitt [Abrufen des Indexe
 
 ## WebSource – Typeigenschaften der Kopieraktivität
 
-Eine vollständige Liste der Abschnitte und Eigenschaften zum Definieren von Aktivitäten finden Sie im Artikel [Erstellen von Pipelines](data-factory-create-pipelines.md). Eigenschaften wie Name, Beschreibung, Eingabe- und Ausgabetabellen, verschiedene Richtlinien usw. sind für alle Arten von Aktivitäten verfügbar.
+Eine vollständige Liste der Abschnitte und Eigenschaften zum Definieren von Aktivitäten finden Sie im Artikel [Erstellen von Pipelines](data-factory-create-pipelines.md). Eigenschaften wie Name, Beschreibung, Eingabe- und Ausgabetabellen und Richtlinie sind für alle Arten von Aktivitäten verfügbar.
 
-Im Abschnitt "typeProperties" der Aktivität verfügbare Eigenschaften variieren hingegen bei jedem Aktivitätstyp. Bei der Kopieraktivität variieren sie je nach Typ der Quellen und Senken.
+Eigenschaften im Abschnitt „typeProperties“ der Aktivität können dagegen je nach Aktivitätstyp variieren. Für die Kopieraktivität variieren die Eigenschaften je nach Art der Quellen und Senken.
 
-Wenn bei der Kopieraktivität eine Quelle vom Typ **WebSource** verwendet wird, werden zu diesem Zeitpunkt keine zusätzlichen Eigenschaften unterstützt.
+Wenn bei der Kopieraktivität die Quelle den Typ **WebSource** hat, werden derzeit keine zusätzlichen Eigenschaften unterstützt.
 
 ## Abrufen des Indexes einer Tabelle auf einer HTML-Seite
 
@@ -262,7 +262,7 @@ Wenn bei der Kopieraktivität eine Quelle vom Typ **WebSource** verwendet wird, 
 	![Aus dem Web (Dialogfeld)](./media/data-factory-web-table-connector/FromWeb-DialogBox.png)
 
 	In diesem Beispiel verwendete URL: https://en.wikipedia.org/wiki/AFI%27s_100_Years...100_Movies
-4.  Falls das Dialogfeld **Auf Webinhalt zugreifen** erscheint, wählen Sie die richtige **URL** und **Authentifizierung** aus, und klicken Sie auf **Verbinden**.
+4.  Falls das Dialogfeld **Auf Webinhalt zugreifen** angezeigt wird, wählen Sie die richtige **URL** und **Authentifizierung** aus, und klicken Sie auf **Verbinden**.
 
 	![Webinhalt aufrufen (Dialogfeld)](./media/data-factory-web-table-connector/AccessWebContentDialog.png)
 5.  Klicken Sie in der Strukturansicht auf ein **Tabellenelement**, um Inhalt aus der Tabelle anzuzeigen, und klicken Sie dann unten auf **Bearbeiten**.
@@ -285,6 +285,6 @@ Rufen Sie den Index bei Verwendung von Excel 2013 mit [Microsoft Power Query fü
 [AZURE.INCLUDE [data-factory-structure-for-rectangular-datasets](../../includes/data-factory-structure-for-rectangualr-datasets.md)]
 
 ## Leistung und Optimierung  
-Der Artikel [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-factory-copy-activity-performance.md) beschreibt wichtige Faktoren, die sich auf die Leistung der Datenverschiebung (Kopieraktivität) in Azure Data Factory auswirken, sowie verschiedene Möglichkeiten zur Leistungsoptimierung.
+Im Artikel [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-factory-copy-activity-performance.md) werden wichtige Faktoren beschrieben, die sich auf die Leistung der Datenverschiebung (Kopieraktivität) in Azure Data Factory auswirken, sowie verschiedene Möglichkeiten zur Leistungsoptimierung.
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0928_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="02/20/2016"
+	ms.date="09/22/2016"
 	ms.author="jahogg;tamram"/>
 
 # Verwalten von Nebenläufigkeit Microsoft Azure Storage
@@ -284,4 +284,4 @@ Weitere Informationen zu Azure Storage finden Sie unter:
 - Storage – Erste Schritte mit [Blobs](storage-dotnet-how-to-use-blobs.md), [Tabellen](storage-dotnet-how-to-use-tables.md), [Warteschlangen](storage-dotnet-how-to-use-queues.md) und [Dateien](storage-dotnet-how-to-use-files.md)
 - Speicherarchitektur – [Azure Storage: A Highly Available Cloud Storage Service with Strong Consistency](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx) (Azure Storage: Ein hochverfügbarer Cloudspeicherdienst mit starker Konsistenz)
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

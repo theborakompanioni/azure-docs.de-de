@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="SSalahAhmed"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -24,4 +24,4 @@ Die Ergebnisse in diesem Bericht geben an, wie oft sich ein Benutzer bei Ihrem V
 
 ![Anmeldungen aus unbekannten Quellen](./media/active-directory-reporting-sign-ins-from-unknown-sources/signInsFromUnknownSources.PNG)
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0928_2016-->

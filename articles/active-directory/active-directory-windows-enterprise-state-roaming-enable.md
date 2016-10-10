@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/07/2016"
+	ms.date="09/27/2016"
 	ms.author="femila"/>
 
 
@@ -51,15 +51,15 @@ Daten, die per Enterprise State Roaming mit Azure synchronisiert werden, werden 
 
 **Explizite Löschung**: Die Daten werden gelöscht, wenn ein Azure-Administrator einen Benutzer oder ein Verzeichnis löscht oder ein Administrator explizit die Löschung dieser Daten anfordert.
 
-- **Löschung eines Benutzers**: Wenn ein Benutzer in Azure AD gelöscht wird, werden die Roamingdaten des Benutzerkontos zum Löschen markiert und innerhalb von 90 bis 180 Tagen gelöscht. 
-- **Löschung eines Verzeichnisses:** Das Löschen eines gesamten Verzeichnisses in Azure AD ist ein unmittelbarer Vorgang. Alle diesem Verzeichnis zugeordneten Einstellungsdaten werden zum Löschen markiert und innerhalb von 90 bis 180 Tagen gelöscht. 
-- **Löschung auf Anforderung:** Wenn der Azure AD-Administrator die Einstellungen oder Daten eines bestimmten Benutzers manuell löschen möchte, kann er beim [Azure-Support](https://azure.microsoft.com/support/) ein Ticket erstellen. 
+- **Löschung eines Benutzers**: Wenn ein Benutzer in Azure AD gelöscht wird, werden die Roamingdaten des Benutzerkontos zum Löschen markiert und innerhalb von 90 bis 180 Tagen gelöscht.
+- **Löschung eines Verzeichnisses:** Das Löschen eines gesamten Verzeichnisses in Azure AD ist ein unmittelbarer Vorgang. Alle diesem Verzeichnis zugeordneten Einstellungsdaten werden zum Löschen markiert und innerhalb von 90 bis 180 Tagen gelöscht.
+- **Löschung auf Anforderung:** Wenn der Azure AD-Administrator die Einstellungen oder Daten eines bestimmten Benutzers manuell löschen möchte, kann er beim [Azure-Support](https://azure.microsoft.com/support/) ein Ticket erstellen.
 
 **Löschung von veralteten Daten:** Daten, auf die ein Jahr lang nicht zugegriffen wurde (Aufbewahrungsdauer), werden als veraltet eingestuft und können aus Azure gelöscht werden. Die Aufbewahrungsdauer kann sich ändern, wird jedoch nicht weniger als 90 Tage betragen. Bei den veralteten Daten kann es sich um eine bestimmte Gruppe von Windows-/Anwendungseinstellungen oder um alle Einstellungen eines Benutzers handeln. Beispiel:
  
-- Wenn keine Geräte auf eine bestimmte Sammlung mit Einstellungen zugreifen (z. B. wird eine Anwendung vom Gerät entfernt, oder eine Einstellungsgruppe wie „Design“ wird für alle Geräte eines Benutzers deaktiviert), gilt diese Sammlung nach Ablauf der Aufbewahrungsdauer als veraltet und kann gelöscht werden. 
-- Falls ein Benutzer die Einstellungssynchronisierung auf allen eigenen Geräten deaktiviert hat, wird nicht auf die Einstellungsdaten zugegriffen. Alle Einstellungsdaten für diesen Benutzer werden als veraltet eingestuft und können nach Ablauf der Aufbewahrungsdauer gelöscht werden. 
-- Wenn der Azure AD-Verzeichnisadministrator Enterprise State Roaming für das gesamte Verzeichnis deaktiviert hat, wird die Synchronisierung der Einstellungen für alle Benutzer im jeweiligen Verzeichnis beendet. Alle Einstellungsdaten aller Benutzer gelten dann als veraltet und können nach Ablauf der Aufbewahrungsdauer gelöscht werden. 
+- Wenn keine Geräte auf eine bestimmte Sammlung mit Einstellungen zugreifen (z. B. wird eine Anwendung vom Gerät entfernt, oder eine Einstellungsgruppe wie „Design“ wird für alle Geräte eines Benutzers deaktiviert), gilt diese Sammlung nach Ablauf der Aufbewahrungsdauer als veraltet und kann gelöscht werden.
+- Falls ein Benutzer die Einstellungssynchronisierung auf allen eigenen Geräten deaktiviert hat, wird nicht auf die Einstellungsdaten zugegriffen. Alle Einstellungsdaten für diesen Benutzer werden als veraltet eingestuft und können nach Ablauf der Aufbewahrungsdauer gelöscht werden.
+- Wenn der Azure AD-Verzeichnisadministrator Enterprise State Roaming für das gesamte Verzeichnis deaktiviert hat, wird die Synchronisierung der Einstellungen für alle Benutzer im jeweiligen Verzeichnis beendet. Alle Einstellungsdaten aller Benutzer gelten dann als veraltet und können nach Ablauf der Aufbewahrungsdauer gelöscht werden.
 
 **Wiederherstellung gelöschter Daten:** Die Richtlinie für die Datenaufbewahrung ist nicht konfigurierbar. Nachdem die Daten endgültig gelöscht wurden, können sie nicht wiederhergestellt werden. Beachten Sie hierbei aber, dass die Einstellungsdaten nur aus Azure gelöscht werden, nicht vom Gerät des Endbenutzers. Falls mit einem Gerät zu einem späteren Zeitpunkt wieder eine Verbindung mit dem Enterprise State Roaming-Dienst hergestellt wird, werden die Einstellungen wieder synchronisiert und in Azure gespeichert.
 
@@ -70,4 +70,4 @@ Daten, die per Enterprise State Roaming mit Azure synchronisiert werden, werden 
 - [Gruppenrichtlinien- und MDM-Einstellungen für Einstellungssynchronisierung](active-directory-windows-enterprise-state-roaming-group-policy-settings.md)
 - [Windows 10-Roamingeinstellungen – Referenz](active-directory-windows-enterprise-state-roaming-windows-settings-reference.md)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0928_2016-->

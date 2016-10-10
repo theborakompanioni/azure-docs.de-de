@@ -5,7 +5,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="anandyadavmsft"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -211,4 +211,4 @@ Damit nur die Stammdomäne im Ausstelleranspruchswert enthalten ist, ändern Sie
 
 Erfahren Sie mehr über [Azure AD Connect-Optionen für die Benutzeranmeldung](active-directory-aadconnect-user-signin.md).
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0928_2016-->

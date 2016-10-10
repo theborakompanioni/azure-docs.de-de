@@ -12,7 +12,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="cache-redis"
 	ms.workload="tbd"
-	ms.date="07/13/2016"
+	ms.date="09/27/2016"
 	ms.author="sdanie" />
 
 # Verwalten von Azure Redis Cache
@@ -31,11 +31,11 @@ Die Azure Redis Cache-Einstellungen für die **Verwaltung** ermöglichen Ihnen d
 -	[Neustart](#reboot)
 -	[Planen von Updates](#schedule-updates)
 
-## Neustart
+## Reboot
 
 Auf dem Blatt **Neustart** können Sie einen oder mehrere Knoten Ihres Caches neu starten. Dies ermöglicht das Testen Ihrer Anwendung auf Stabilität im Fall eines Ausfalls.
 
-![Neustart](./media/cache-administration/redis-cache-reboot.png)
+![Reboot](./media/cache-administration/redis-cache-reboot.png)
 
 Wenn Sie über einen Premium-Cache mit aktiviertem Clustering verfügen, können Sie die Shards des Caches auswählen, die neu gestartet werden sollen.
 
@@ -47,7 +47,7 @@ Die Auswirkungen auf Clientanwendungen hängen von den Knoten ab, die Sie neu st
 
 -	**Master**: Wenn der Masterknoten neu gestartet wird, führt Azure Redis Cache ein Failover auf den Replikatknoten durch, der zum Master hochgestuft wird. Während dieses Failovers gibt es möglicherweise ein kurzes Intervall, in dem keine Verbindungen mit dem Cache aufgebaut werden können.
 -	**Untergeordneter Knoten**: Wenn der Slaveknoten neu gestartet wird, hat dies meist keine Auswirkungen auf Cacheclients.
--	**Master und Slave**: Wenn beide Cacheknoten neu gestartet werden, gehen alle Daten im Cache verloren, und es können erst wieder Verbindungen mit dem Cache hergestellt werden, wenn der primäre Knoten wieder online ist. Wenn Sie [Datenpersistenz](cache-how-to-premium-persistence.md) konfiguriert haben, wird die letzten Sicherung wiederhergestellt, sobald der Cache wieder online ist. Beachten Sie, dass alle Cacheschreibvorgänge verloren gehen, die nach der letzten Sicherung durchgeführt wurden.
+-	**Master und Slave**: Wenn beide Cacheknoten neu gestartet werden, gehen alle Daten im Cache verloren, und es können erst wieder Verbindungen mit dem Cache hergestellt werden, wenn der primäre Knoten wieder online ist. Wenn Sie [Datenpersistenz](cache-how-to-premium-persistence.md) konfiguriert haben, wird die letzte Sicherung wiederhergestellt, sobald der Cache wieder online ist. Beachten Sie, dass alle Cacheschreibvorgänge verloren gehen, die nach der letzten Sicherung durchgeführt wurden.
 -	**Knoten eines Premium-Caches mit aktiviertem Clustering**: Wenn Sie die Knoten eines Premium-Caches mit aktiviertem Clustering neu starten, entspricht das Verhalten dem Neustarten von Knoten eines Caches ohne Cluster.
 
 
@@ -92,12 +92,15 @@ Auf dem Blatt **Updates planen** können Sie ein Wartungsfenster für Ihren Cach
 
 ![Planen von Updates](./media/cache-administration/redis-schedule-updates.png)
 
-Um ein Wartungsfenster anzugeben, überprüfen Sie die gewünschte Dauer in Tagen. Legen Sie die Startzeit des Wartungsfensters für jeden Tag fest, und klicken Sie auf **OK**. Beachten Sie, dass die Zeit im Wartungsfenster als UTC angegeben ist.
+Aktivieren Sie zum Angeben eines Wartungsfensters die Kontrollkästchen der gewünschten Tage, geben Sie jeweils die Startzeit des Wartungsfensters an, und klicken Sie auf **OK**. Beachten Sie, dass die Zeit im Wartungsfenster als UTC angegeben ist.
+
+>[AZURE.NOTE] Das Standardwartungsfenster für Updates beträgt fünf Stunden. Der Wert kann nicht über das Azure-Portal konfiguriert werden. Sie können ihn jedoch in PowerShell mithilfe des `MaintenanceWindow`-Parameters des Cmdlets [New-AzureRmRedisCacheScheduleEntry](https://msdn.microsoft.com/library/azure/mt763833.aspx) konfigurieren. Weitere Informationen finden Sie unter [Kann ich geplante Updates mit Powershell, der CLI oder anderen Verwaltungstools verwalten?](#can-i-managed-scheduled-updates-using-powershell-cli-or-other-management-tools).
 
 ## Häufig gestellte Fragen zum Planen von Updates
 
 -	[Wann erfolgen Updates, wenn nicht das Feature zum Planen von Updates verwendet wird?](#when-do-updates-occur-if-i-dont-use-the-schedule-updates-feature)
 -	[Welche Art von Updates erfolgen während des geplanten Wartungsfensters?](#what-type-of-updates-are-made-during-the-scheduled-maintenance-window)
+-	[Kann ich geplante Updates mit Powershell, der CLI oder anderen Verwaltungstools verwalten?](#can-i-managed-scheduled-updates-using-powershell-cli-or-other-management-tools)
 -	[Welche Tarife bieten die Funktionalität zum Planen von Updates?](#what-pricing-tiers-can-use-the-schedule-updates-functionality)
 
 ### Wann erfolgen Updates, wenn nicht das Feature zum Planen von Updates verwendet wird?
@@ -108,6 +111,15 @@ Wenn Sie kein Wartungsfenster angeben, können Updates jederzeit erfolgen.
 
 Nur Updates des Redis-Servers erfolgen während des geplanten Wartungsfensters. Das Wartungsfenster gilt nicht für Azure-Updates oder Updates des Betriebssystems virtueller Computer.
 
+### Kann ich geplante Updates mit Powershell, der CLI oder anderen Verwaltungstools verwalten?
+
+Ja, Sie können Ihre geplanten Updates mit den folgenden PowerShell-Cmdlets verwalten:
+
+-	[Get-AzureRmRedisCachePatchSchedule](https://msdn.microsoft.com/library/azure/mt763835.aspx)
+-	[New-AzureRmRedisCachePatchSchedule](https://msdn.microsoft.com/library/azure/mt763834.aspx)
+-	[New-AzureRmRedisCacheScheduleEntry](https://msdn.microsoft.com/library/azure/mt763833.aspx)
+-	[Remove-AzureRmRedisCachePatchSchedule](https://msdn.microsoft.com/library/azure/mt763837.aspx)
+
 ### Welche Tarife bieten die Funktionalität zum Planen von Updates?
 
 Das Planen von Updates ist nur im Premium-Tarif verfügbar.
@@ -116,4 +128,4 @@ Das Planen von Updates ist nur im Premium-Tarif verfügbar.
 
 -	Entdecken Sie weitere Features des [Azure Redis Cache-Premium-Tarifs](cache-premium-tier-intro.md).
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0928_2016-->

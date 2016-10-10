@@ -14,21 +14,20 @@
 	ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="identity" 
-	ms.date="09/14/2016"
+	ms.date="09/21/2016"
 	ms.author="markvi"/>
 
 
 # Bedingter Zugriff mit Azure Active Directory   
   
-In jedem Unternehmen ist das Sichern des Zugriffs auf Unternehmensressourcen von größter Bedeutung. Mit der Einführung von Clouddiensten und mobilen Geräten hat sich der Zugriff der Benutzer auf Unternehmensressourcen maßgeblich geändert. Aus diesem Grund ist ein neuer Sicherheitsansatz erforderlich.
+In jedem Unternehmen ist das Sichern des Zugriffs auf Unternehmensressourcen von größter Bedeutung. Mit der Einführung von Clouddiensten und mobilen Geräten hat sich die Art des Zugriffs der Benutzer auf Unternehmensressourcen maßgeblich geändert. Die Verbreitung persönlicher und unternehmenseigener Geräte erfordert einen neuen Ansatz für den Zugriff auf Unternehmensressourcen und die Sicherheit.
   
 ## Gründe für den bedingten Zugriff  
 
-Die Steuerungsfunktionen für den bedingten Zugriff in Azure Active Directory bieten einfache Methoden, mit denen Unternehmen Ressourcen in der Cloud und lokal schützen können. Richtlinien zum bedingten Zugriff können verwendet werden, um für Schutz vor der Gefahr durch gestohlene oder per Phishing entwendete Anmeldeinformationen zu sorgen, indem die mehrstufige Authentifizierung erzwungen wird. Außerdem werden die Unternehmensdaten geschützt, indem ein von Intune verwaltetes Gerät verwendet werden muss, das den Zugriff auf vertrauliche Dienste gewährt.
+Die Steuerungsfunktionen für den bedingten Zugriff in Azure Active Directory bieten einfache Methoden, mit denen Unternehmen Ressourcen in der Cloud und lokal schützen können. Richtlinien für bedingten Zugriff können mit der mehrstufigen Authentifizierung Schutz davor bieten, dass Anmeldeinformationen gestohlen oder ausgespäht werden. Sie können Richtlinien für bedingten Zugriff auch dazu nutzen, Unternehmensdaten zu schützen. Beispielsweise können Sie nur den Geräten Zugriff auf sensible Dienste gewähren, die bei einem System für die mobile Geräteverwaltung wie Microsoft Intune registriert sind.
 
 
-
-## Lizenzanforderungen
+## Voraussetzungen
 
 Der bedingte Zugriff in Azure Active Directory ist eine Funktion von [Azure AD Premium](http://www.microsoft.com/identity). Alle Benutzer, die beim Zugreifen auf eine Anwendung eine Richtlinie für bedingten Zugriff verwenden, müssen über eine Azure AD Premium-Lizenz verfügen. Weitere Informationen zur Nutzung finden Sie im [Unlicensed User report](https://aka.ms/utc5ix) (Bericht zu nicht lizenzierten Benutzern).
 
@@ -42,25 +41,24 @@ Mit der bedingten Zugriffssteuerung überprüft Azure Active Directory beim Auth
 
 ## Bedingungen
   
-- **Gruppenmitgliedschaft**: Sie können die Zugriffsebene für einen Benutzer basierend auf seiner Mitgliedschaft in einer Gruppe steuern.
+- **Gruppenmitgliedschaft**: Steuern Sie die Zugriffsebene für einen Benutzer basierend auf seiner Mitgliedschaft in einer Gruppe.
 
-- **Standort**: Sie können den Standort des Benutzers verwenden, um MFA auszulösen und Steuerelemente zu blockieren, wenn sich ein Benutzer nicht in einem vertrauenswürdigen Netzwerk befindet.
+- **Standort**: Verwenden Sie den Standort des Benutzers, um eine mehrstufige Authentifizierung auszulösen und Steuerelemente zu blockieren, wenn ein Benutzer sich nicht in einem vertrauenswürdigen Netzwerk befindet.
 
-- **Geräteplattform**: Sie können den Typ der Geräteplattform, z.B. iOS, Android, Windows Mobile und Windows, als Bedingung für die Anwendung der Richtlinie verwenden.
+- **Geräteplattform**: Verwenden Sie den Typ der Geräteplattform, z.B. iOS, Android, Windows Mobile und Windows, als Bedingung für die Anwendung der Richtlinie.
 
 - **Gerät aktiviert**: Der Status „Gerät aktiviert/Gerät deaktiviert“ wird während der Auswertung der Geräterichtlinie überprüft. Wenn ein verlorenes oder gestohlenes Gerät im Verzeichnis deaktiviert wird, kann es nicht mehr verwendet werden, um Richtlinienanforderungen zu erfüllen.
 
-- **Anmeldungs- und Benutzerrisiken**: Richtlinien zu Risiken beim bedingten Zugriff stehen mit Azure AD Identity Protection zur Verfügung und bieten erweiterten Schutz basierend auf Risikoereignissen und ungewöhnlichen Anmeldeaktivitäten.
+- **Anmeldungs- und Benutzerrisiko**: Richtlinien zu Risiken beim bedingten Zugriff stehen mit [Azure AD Identity Protection](active-directory-identityprotection.md) zur Verfügung und bieten erweiterten Schutz basierend auf Risikoereignissen und ungewöhnlichen Anmeldeaktivitäten.
 
 
 ## Steuerelemente
    
-- **Multi Factor Authentication (MFA)**: Sie können per MFA eine sichere Authentifizierung erzwingen. MFA kann über Azure MFA oder einen lokalen MFA-Anbieter per AD FS bereitgestellt werden. MFA unterstützt den Schutz Ihrer Ressourcen vor dem Zugriff durch einen nicht autorisierten Benutzer, der Zugriff auf den Benutzernamen und das Kennwort eines gültigen Benutzers erlangt hat.
+- **Multi Factor Authentication (MFA)**: Sie können per MFA eine sichere Authentifizierung erzwingen. MFA kann durch Azure MFA oder einen lokalen MFA-Anbieter über die Active Directory-Verbunddienste (AD FS) bereitgestellt werden. MFA unterstützt den Schutz Ihrer Ressourcen vor dem Zugriff durch einen nicht autorisierten Benutzer, der Zugriff auf die Anmeldeinformationen eines gültigen Benutzers erlangt hat.
 
-- **Blockieren**: Der Zugriff kann bedingungsorientiert angewendet werden, z.B. nach dem Standort des Benutzers. Beispielsweise kann der Zugriff blockiert werden, wenn sich ein Benutzer nicht in einem vertrauenswürdigen Netzwerk befindet.
+- **Blockieren**: Bedingungen wie z.B. der Benutzerstandort können zum Blockieren des Benutzerzugriffs herangezogen werden. Beispielsweise kann der Zugriff blockiert werden, wenn sich ein Benutzer nicht in einem vertrauenswürdigen Netzwerk befindet.
 
-- **Kompatible Geräte**: Auf Geräteebene können Sie Richtlinien festlegen, die erzwingen, dass nur Computern der Zugriff gewährt wird, die der Domäne beigetreten sind oder – im Fall von Mobilgeräten – bei der Verwaltung mobiler Geräte (Mobile Device Management [MDM]) registriert sind und die Kompatibilitätsvoraussetzungen erfüllen. Microsoft Intune überprüft die Kompatibilität von Geräten und sendet einen Bericht an Azure Active Directory, um diese während des Zugriffs auf eine Anwendung zu erzwingen.
- 
+- **Kompatible Geräte**: Auf Geräteebene können Sie Richtlinien festlegen, die erzwingen, dass nur Computern der Zugriff gewährt wird, die der Domäne beigetreten sind oder – im Fall von Mobilgeräten – bei einer Anwendung zur Verwaltung mobiler Geräte (Mobile Device Management [MDM]) registriert sind und die Kompatibilitätsvoraussetzungen erfüllen. Beispielsweise kann Microsoft Intune die Kompatibilität von Geräten überprüfen und einen Bericht an Azure Active Directory senden, um die Gerätekompatibilität für den Anwendungszugriff zu erzwingen. Ausführliche Anleitungen dazu, wie Microsoft Intune zum Schutz von Apps und Daten eingesetzt werden kann, finden Sie unter [Schützen von Apps und Daten mit Microsoft Intune](https://docs.microsoft.com/intune/deploy-use/protect-apps-and-data-with-microsoft-intune). Sie können über Microsoft Intune auch Datenschutz für verlorene oder gestohlene Geräte erzwingen. Weitere Informationen finden Sie unter [Schützen Ihrer Daten mit vollständigem oder selektivem Löschen über Microsoft Intune](https://docs.microsoft.com/intune/deploy-use/use-remote-wipe-to-help-protect-data-using-microsoft-intune).
 
 ## Anwendungen
 
@@ -71,7 +69,7 @@ Mit der bedingten Zugriffssteuerung überprüft Azure Active Directory beim Auth
 
 Sie können den Zugriff auf Anwendungen auch auf Geräte beschränken, die bei Azure AD registriert sind und bestimmte Bedingungen erfüllen. Dies ist hilfreich, um Organisationsressourcen vor dem Zugriff durch gültige Benutzer über folgende Geräte zu schützen:
 
-- Unbekannte oder nicht verwaltete Geräte
+- Unbekannte/nicht verwaltete Geräte
 - Geräte, die die von Ihrer Organisation definierten Sicherheitsrichtlinien nicht erfüllen
 
 Richtlinien können basierend auf den folgenden Anforderungen festgelegt werden:
@@ -111,7 +109,7 @@ In der folgenden Inhaltszuordnung werden Dokumente aufgeführt, in denen Sie wei
 
 - [Benutzerkorrektur beim Zugreifen auf Anwendungen mit gerätebasiertem bedingtem Azure AD-Zugriffsschutz](active-directory-conditional-access-device-remediation.md)
 
-- [Schützen von Daten durch vollständiges oder selektives Zurücksetzen mit Microsoft Intune](https://docs.microsoft.com/intune/deploy-use/use-remote-wipe-to-help-protect-data-using-microsoft-intune)
+- [Schützen von Daten auf verlorenen oder gestohlenen Geräten mit Microsoft Intune](https://docs.microsoft.com/intune/deploy-use/use-remote-wipe-to-help-protect-data-using-microsoft-intune)
 
 
 ### Schützen von Ressource basierend auf dem Anmelderisiko
@@ -123,4 +121,4 @@ In der folgenden Inhaltszuordnung werden Dokumente aufgeführt, in denen Sie wei
 - [Häufig gestellte Fragen zum bedingten Zugriff](active-directory-conditional-faqs.md)
 - [Technische Referenz](active-directory-conditional-access-technical-reference.md)
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0928_2016-->

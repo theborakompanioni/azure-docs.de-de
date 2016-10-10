@@ -4,7 +4,7 @@
 	keywords="Daten kopieren, Datenverschiebung, Datenmigration, Daten übertragen"
 	services="data-factory"
 	documentationCenter=""
-	authors="spelluru"
+	authors="linda33wj"
 	manager="jhubbard"
 	editor="monicar"/>
 
@@ -14,8 +14,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/08/2016"
-	ms.author="spelluru"/>
+	ms.date="09/22/2016"
+	ms.author="jingwang"/>
 
 # Verschieben von Daten mit der Kopieraktivität
 
@@ -54,23 +54,14 @@ Unter [Verschieben von Daten zwischen lokalen Datenspeichern und Clouddatenspeic
 Sie können mithilfe des Datenverwaltungsgateways auch Daten von bzw. in unterstützte Datenspeicher verschieben, die auf virtuellen Azure IaaS-Computern gehostet werden. In diesem Fall können Sie das Datenverwaltungsgateway auf dem gleichen virtuellen Computer installieren, auf dem sich der Datenspeicher selbst befindet, oder auf einem separaten virtuellen Computer, der Zugriff auf den Datenspeicher hat.
 
 ## Unterstützte Datenspeicher und Formate
-Die Kopieraktivität kopiert die Daten aus einem Quelldatenspeicher in einen Senkendatenspeicher. Data Factory unterstützt die folgenden Datenspeicher. Daten aus beliebigen Quellen können in beliebige Senken geschrieben werden. Klicken Sie auf einen Datenspeicher, um zu erfahren, wie Daten in diesen/aus diesem Speicher kopiert werden.
-
-Kategorie | Datenspeicher | Als Quelle unterstützt | Als Senke unterstützt
-:------- | :--------- | :------------------ | :-----------------
-Azure | [Azure-Blobspeicher](data-factory-azure-blob-connector.md) <br/> [Azure Data Lake Store](data-factory-azure-datalake-connector.md) <br/> [Azure SQL-Datenbank](data-factory-azure-sql-connector.md) <br/> [Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md) <br/> [Azure-Tabellenspeicher](data-factory-azure-table-connector.md) <br/> [Azure DocumentDB](data-factory-azure-documentdb-connector.md) <br/> | ✓ <br/> ✓ <br/> ✓ <br/> ✓ <br/> ✓ <br/> ✓ | ✓ <br/> ✓ <br/> ✓ <br/> ✓ <br/> ✓ <br/> ✓
-Datenbanken | [SQL Server](data-factory-sqlserver-connector.md)* <br/> [Oracle](data-factory-onprem-oracle-connector.md)* <br/> [MySQL](data-factory-onprem-mysql-connector.md)* <br/> [DB2](data-factory-onprem-db2-connector.md)* <br/> [Teradata](data-factory-onprem-teradata-connector.md)* <br/> [PostgreSQL](data-factory-onprem-postgresql-connector.md)* <br/> [Sybase](data-factory-onprem-sybase-connector.md)* <br/>[Cassandra](data-factory-onprem-cassandra-connector.md)* <br/>[MongoDB](data-factory-on-premises-mongodb-connector.md)*<br/>[Amazon Redshift](data-factory-amazon-redshift-connector.md) | ✓ <br/> ✓ <br/> ✓ <br/> ✓ <br/> ✓ <br/> ✓<br/> ✓ <br/> ✓ <br/> ✓ <br/> ✓ | ✓ <br/> ✓ <br/> &nbsp; <br/> &nbsp; <br/> &nbsp; <br/> &nbsp;<br/> &nbsp;<br/> &nbsp;<br/> &nbsp; <br/>&nbsp;
-Datei | [Dateisystem](data-factory-onprem-file-system-connector.md)* <br/> [HDFS](data-factory-hdfs-connector.md)* <br/> [Amazon S3](data-factory-amazon-simple-storage-service-connector.md) | ✓ <br/> ✓ <br/> ✓ | ✓ <br/> &nbsp;<br/>&nbsp;
-Andere | [Salesforce](data-factory-salesforce-connector.md)<br/> [Generisches ODBC](data-factory-odbc-connector.md)* <br/> [Generisches OData](data-factory-odata-connector.md) <br/> [Webtabelle (Tabelle aus HTML)](data-factory-web-table-connector.md) <br/> [GE Historian](data-factory-odbc-connector.md#ge-historian-store)* | ✓ <br/> ✓ <br/> ✓ <br/> ✓ <br/> ✓ | &nbsp; <br/> &nbsp; <br/> &nbsp; <br/> &nbsp;<br/> &nbsp;<br/> &nbsp;
-
-> [AZURE.NOTE] Datenspeicher mit * können lokal oder in Azure IaaS verfügbar sein. Für ihre Verwendung müssen Sie das [Datenverwaltungsgateway](data-factory-data-management-gateway.md) auf einem lokalen oder einem Azure IaaS-Computer installieren.
+[AZURE.INCLUDE [data-factory-supported-data-stores](../../includes/data-factory-supported-data-stores.md)]
 
 Wenn Sie Daten in einen/aus einem Datenspeicher verschieben müssen, der von der Kopieraktivität nicht unterstützt wird, verwenden Sie die **benutzerdefinierte Aktivität** in Data Factory mit Ihrer eigenen Logik zum Kopieren/Verschieben von Daten. Informationen zum Erstellen und Verwenden einer benutzerdefinierten Aktivität finden Sie unter [Verwenden von benutzerdefinierten Aktivitäten in einer Azure Data Factory-Pipeline](data-factory-use-custom-activities.md).
 
 ### Unterstützte Dateiformate
 Sie können die Kopieraktivität verwenden, um Dateien unverändert zwischen zwei dateibasierten Datenspeichern zu kopieren, wie z.B. Azure-Blob, Dateisystem und HDFS (Hadoop Distributed File System). Zu diesem Zweck können Sie in den Definitionen sowohl für das Eingabe- als auch für das Ausgabedataset den [Formatierungsabschnitt](data-factory-create-datasets.md) überspringen. Die Daten werden effizient ohne jegliche Serialisierung oder Deserialisierung kopiert.
 
-Die Kopieraktivität liest und schreibt Dateien in den folgenden Formaten: Text, Avro, ORC und JSON. Sie können z.B. folgende Kopieraktivitäten ausführen:
+Die Kopieraktivität liest und schreibt Dateien in den folgenden Formaten: Text, Avro, ORC, Parquet und JSON. Sie können z.B. folgende Kopieraktivitäten ausführen:
 
 -	Kopieren von Daten im Textformat (CSV) aus einem Azure-Blob und Schreiben in Azure SQL-Datenbank.
 -	Kopieren von Dateien im Textformat (CSV) aus dem lokalen Dateisystem und Schreiben in einen Azure-Blob im Avro-Format.
@@ -192,4 +183,4 @@ Die Zuordnung zwischen einem nativen Typ und einem .NET-Typ für den Datenspeich
 - Weitere Informationen über die Kopieraktivität finden Sie unter [Kopieren von Daten aus Azure Blob Storage in Azure SQL-Datenbank](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 - Unter [Verschieben von Daten zwischen lokalen Quellen und der Cloud](data-factory-move-data-between-onprem-and-cloud.md) erfahren Sie, wie Sie Daten aus einem lokalen Datenspeicher in einen Clouddatenspeicher verschieben.
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0928_2016-->

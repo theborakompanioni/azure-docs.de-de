@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="08/19/2016"
+   ms.date="09/21/2016"
    ms.author="cherylmc"/>
 
 # Planung und Entwurf für VPN Gateway
@@ -46,20 +46,13 @@ Die folgende Tabelle kann Ihnen dabei helfen, die beste Verbindungsoption für I
 
 ### <a name="gwrequire"></a>Gatewayanforderungen nach VPN-Typ und SKU
 
+[AZURE.INCLUDE [vpn-gateway-gwsku](../../includes/vpn-gateway-gwsku-include.md)]
 
-Beim Erstellen eines VPN-Gateways müssen Sie die gewünschte Gateway-SKU angeben. Es gibt drei VPN Gateway-SKUs:
-
-- Basic
-- Standard
-- Leistung
+Weitere Informationen zu Gateway-SKUs finden Sie unter [Informationen zu VPN Gateway-Einstellungen](vpn-gateway-about-vpn-gateway-settings.md#gwsku).
 
 [AZURE.INCLUDE [vpn-gateway-table-requirements](../../includes/vpn-gateway-table-requirements-include.md)]
 
-
-
-### <a name="aggthroughput"></a>Gatewaytypen und aggregierte Durchsatzschätzungen
-
-In der folgenden Tabelle sind die Gatewaytypen und der geschätzte zusammengefasste Durchsatz angegeben. Der geschätzte zusammengefasste Durchsatz ist möglicherweise ein entscheidender Faktor für den Entwurf. Für die einzelnen Gateway-SKUs gelten unterschiedliche Preise. Informationen zu den Preisen finden Sie unter [VPN-Gateway – Preise](https://azure.microsoft.com/pricing/details/vpn-gateway/). Diese Tabelle betrifft sowohl das Resource Manager-Bereitstellungsmodell als auch das klassische Bereitstellungsmodell.
+<br> In der folgenden Tabelle sind die Gatewaytypen und der geschätzte zusammengefasste Durchsatz angegeben. Der geschätzte zusammengefasste Durchsatz ist möglicherweise ein entscheidender Faktor für den Entwurf. Für die einzelnen Gateway-SKUs gelten unterschiedliche Preise. Informationen zu den Preisen finden Sie unter [VPN-Gateway – Preise](https://azure.microsoft.com/pricing/details/vpn-gateway/). Diese Tabelle betrifft sowohl das Resource Manager-Bereitstellungsmodell als auch das klassische Bereitstellungsmodell.
 
 [AZURE.INCLUDE [vpn-gateway-table-gwtype-aggtput](../../includes/vpn-gateway-table-gwtype-aggtput-include.md)]
 
@@ -161,4 +154,4 @@ In den Artikeln [Häufig gestellte Fragen zum VPN-Gateway](vpn-gateway-vpn-faq.m
 
 Weitere Informationen zu bestimmten Gatewayeinstellungen finden Sie unter [Informationen zu VPN Gateway-Einstellungen](vpn-gateway-about-vpn-gateway-settings.md).
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0928_2016-->

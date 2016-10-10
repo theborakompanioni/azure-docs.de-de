@@ -19,7 +19,7 @@
 
 # Erstellen einer MySQL-Datenbank und Herstellen einer Verbindung in Azure
 
-In dieser Anleitung erfahren Sie, wie Sie über das [Azure-Portal](https://portal.azure.com) (Anbieter: [ClearDB](http://www.cleardb.com/)) eine MySQL-Datenbank erstellen und über eine in [Azure App Service](./app-service/app-service-value-prop-what-is.md) ausgeführte PHP-Web-App eine Verbindung mit der Datenbank herstellen.
+In diesem Tutorial erfahren Sie, wie Sie über das [Azure-Portal](https://portal.azure.com) (Anbieter: [ClearDB](http://www.cleardb.com/)) eine MySQL-Datenbank erstellen und über eine in [Azure App Service](./app-service/app-service-value-prop-what-is.md) ausgeführte PHP-Web-App eine Verbindung mit der Datenbank herstellen.
 
 > [AZURE.NOTE] Sie können auch eine MySQL-Datenbank auf der Grundlage einer [Marketplace-App-Vorlage](./app-service-web/app-service-web-create-web-app-from-marketplace.md) erstellen.
 
@@ -56,15 +56,16 @@ Gehen Sie wie folgt vor, um eine MySQL-Datenbank über das Azure-Portal zu erste
 
 	Die erfolgreiche Bereitstellung wird durch eine weitere Popupbenachrichtigung signalisiert. Im Portal wird außerdem automatisch das Blatt für Ihre MySQL-Datenbank geöffnet.
 
-## Herstellen einer Verbindung mit Ihrer MySQL-Datenbank über eine PHP-Web-App in Azure
+<a name="connect"></a>
+## Herstellen von Verbindungen mit der MySQL-Datenbank
 
-Klicken Sie zum Anzeigen der Verbindungsinformationen für Ihre neue MySQL-Datenbank auf **Eigenschaften**. Sollte das Blatt **Einstellungen** nicht angezeigt werden, klicken Sie auf **Einstellungen** > **Eigenschaften**.
+Klicken Sie zum Anzeigen der Verbindungsinformationen für Ihre neue MySQL-Datenbank auf dem Blatt Ihrer Web-App einfach auf **Eigenschaften**.
 	
 ![Erstellen einer MySQL-Datenbank in Azure – Blatt „MySQL-Datenbank“](./media/store-php-create-mysql-database/create-db-5-finished-db-blade.png)
 
 Die Verbindungsinformationen können in jeder beliebigen Web-App verwendet werden. Ein Beispiel zur Veranschaulichung der Verwendung von Verbindungsinformationen in einer einfachen PHP-App finden Sie [hier](https://github.com/WindowsAzure/azure-sdk-for-php-samples/tree/master/tasklist-mysql).
 
-### Herstellen einer Verbindung mit einer Laravel-Web-App (aus dem Tutorial zu ersten Schritten mit PHP)
+## Herstellen einer Verbindung mit einer Laravel-Web-App (aus dem Tutorial zu ersten Schritten mit PHP)
 
 Wenn Sie bereits das Tutorial [Erstellen, Konfigurieren und Bereitstellen einer PHP-Web-App in Azure](./app-service-web/app-service-web-php-get-started.md) abgeschlossen haben und über eine in Azure ausgeführte Web-App vom Typ [Laravel](https://www.laravel.com/) verfügen, können Sie Ihrer Laravel-App problemlos Datenbankfunktionen hinzufügen. Gehen Sie dazu einfach wie folgt vor:
 
@@ -139,4 +140,4 @@ Wenn Sie bereits das Tutorial [Erstellen, Konfigurieren und Bereitstellen einer 
 
 Weitere Informationen finden Sie im [PHP Developer Center](/develop/php/).
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0928_2016-->

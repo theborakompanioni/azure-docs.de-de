@@ -32,6 +32,8 @@ Für Android-Clients, die auf geschützte Ressourcen zugreifen müssen, ist unte
 
 Zum Starten benötigen Sie einen Azure AD-Mandanten, in dem Sie Benutzer erstellen und eine Anwendung registrieren können. Wenn Sie noch nicht über einen Mandanten verfügen, können Sie hier [erfahren, wie Sie einen erhalten](active-directory-howto-tenant.md).
 
+> [AZURE.TIP] Testen Sie die Vorschau unseres neuen [Entwicklerportals](https://identity.microsoft.com/Docs/Android), mit dem Sie Azure Active Directory innerhalb weniger Minuten betriebsbereit machen. Im Entwicklerportal werden Sie durch den Vorgang zum Registrieren einer App und die Integration von Azure AD in Ihren Code geleitet. Nach dem Durchführen dieser Schritte verfügen Sie über eine einfache Anwendung zur Authentifizierung von Benutzern in Ihrem Mandanten sowie über ein Back-End, das Token akzeptieren und eine Überprüfung durchführen kann.
+
 ## Schritt 1: Herunterladen und Ausführen des „Node.js REST API TODO Sample Server“
 
 Dieses Beispiel ist speziell für die Arbeit mit dem vorhandenen Beispiel zum Erstellen einer Aufgabenlisten-REST-API für Microsoft Azure Active Directory für einen einzelnen Mandanten gedacht. Dies ist eine Voraussetzung für den Schnellstart.
@@ -100,7 +102,7 @@ Für die Erstellung mit Maven können Sie die Datei „pom.xml“ auf der oberst
   * Richten Sie den Emulator mit SDK 19 ein.
   * Wechseln Sie zu dem Stammordner, in dem Sie das Repository geklont haben.
   * Führen Sie den folgenden Befehl aus: mvn clean install.
-  * Wechseln Sie in das Verzeichnis mit dem Schnellstartbeispiel: cd samples\hello.
+  * Wechseln Sie in das Verzeichnis mit dem Schnellstartbeispiel: cd samples\\hello.
   * Führen Sie den folgenden Befehl aus: mvn android:deploy android:run.
   * Die App wird gestartet.
   * Geben Sie die Anmeldeinformationen des Testbenutzers ein, um sie auszuprobieren.
@@ -136,7 +138,7 @@ repositories {
         dirs 'libs'
     }
     maven {
-        url "YourLocalMavenRepoPath\.m2\repository"
+        url "YourLocalMavenRepoPath\\.m2\\repository"
     }
 }
 dependencies {
@@ -270,8 +272,7 @@ Sie können **acquireTokenSilent** aufrufen, um das Caching und die Aktualisieru
      mContext.acquireTokenSilent(resource, clientid, userId, callback );
     ```
 
-11. **Broker**:
-  Die Brokerkomponente wird über die Unternehmensportal-App von Microsoft Intune bereitgestellt. ADAL verwendet das Brokerkonto, falls unter diesem Authentifikator ein Benutzerkonto erstellt wurde und der Entwickler sich nicht für das Überspringen entschieden hat. Der Entwickler kann den Brokerbenutzer wie folgt überspringen:
+11. **Broker**: Die Brokerkomponente wird über die Unternehmensportal-App von Microsoft Intune bereitgestellt. ADAL verwendet das Brokerkonto, falls unter diesem Authentifikator ein Benutzerkonto erstellt wurde und der Entwickler sich nicht für das Überspringen entschieden hat. Der Entwickler kann den Brokerbenutzer wie folgt überspringen:
 
     ```java
      AuthenticationSettings.Instance.setSkipBroker(true);
@@ -283,14 +284,14 @@ Sie können **acquireTokenSilent** aufrufen, um das Caching und die Aktualisieru
 
  ```java
  String brokerAccount =  mContext.getBrokerUser();
- ``` 
-Der Brokerbenutzer wird zurückgegeben, wenn das Konto gültig ist.
+ ```
+ Der Brokerbenutzer wird zurückgegeben, wenn das Konto gültig ist.
 
  Ihr App-Manifest sollte über Berechtigungen zum Verwenden von Account Manager-Konten verfügen: http://developer.android.com/reference/android/accounts/AccountManager.html
 
- * GET_ACCOUNTS
- * USE_CREDENTIALS
- * MANAGE_ACCOUNTS
+ * GET\_ACCOUNTS
+ * USE\_CREDENTIALS
+ * MANAGE\_ACCOUNTS
 
 
 Mit dieser exemplarischen Vorgehensweise haben Sie alles, was Sie für die erfolgreiche Integration in Azure Active Directory benötigen. Weitere Beispiele hierzu finden Sie im Repository „AzureADSamples/“ bei GitHub.
@@ -457,4 +458,4 @@ Informationen zum Aktivieren von App-übergreifendem SSO unter Android mit ADAL 
 
 [AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources.md)]
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

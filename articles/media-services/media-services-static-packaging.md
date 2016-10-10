@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Ausführen von Aufgaben zur statischen Paketerstellung mithilfe von Azure Media Packager" 
+	pageTitle="Ausführen von Aufgaben zur statischen Paketerstellung mithilfe von Azure Media Packager | Microsoft Azure" 
 	description="In diesem Thema werden verschiedene Aufgaben erläutert, die mit Azure Media Packager ausgeführt werden." 
 	services="media-services" 
 	documentationCenter="" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
- 	ms.date="06/22/2016"    
+ 	ms.date="09/26/2016"    
 	ms.author="juliako"/>
 
 
@@ -246,12 +246,12 @@ Im Beispiel in diesem Abschnitt wird eine Zwischendatei (in diesem Fall eine MP4
 
 Media Services bietet jetzt einen Dienst für die Bereitstellung von Microsoft PlayReady-Lizenzen. Das Beispiel in diesem Artikel zeigt, wie der Media Services PlayReady-Lizenzbereitstellungsdienst konfiguriert wird (siehe die im Code unten definierte "ConfigureLicenseDeliveryService"-Methode). Weitere Informationen zum Media Services PlayReady-Lizenzbereitstellungsdienst finden Sie unter [Verwenden der dynamischen PlayReady-DRM-Verschlüsselung und des Lizenzübermittlungsdiensts](media-services-protect-with-drm.md).
 
->[AZURE.NOTE]Stellen Sie für die Bereitstellung von mit PlayReady verschlüsseltem MPEG DASH sicher, dass Sie CENC-Optionen verwenden, indem Sie die Eigenschaften "useSencBox" und "adjustSubSamples" (im Thema [Voreinstellungen für Aufgaben für Azure Media Encryptor](http://msdn.microsoft.com/library/azure/hh973610.aspx) erläutert) auf "true" festlegen.
+>[AZURE.NOTE]Stellen Sie für die Bereitstellung von mit PlayReady verschlüsseltem MPEG DASH sicher, dass Sie CENC-Optionen verwenden, indem Sie die Eigenschaften „useSencBox“ und „adjustSubSamples“ (im Thema [Voreinstellungen für Aufgaben für Azure Media Encryptor](http://msdn.microsoft.com/library/azure/hh973610.aspx) erläutert) auf „true“ festlegen.
 
 
 Ändern Sie den folgenden Code so, dass er auf den Ordner verweist, in dem sich Ihre MP4-Eingabedatei befindet.
 
-Außerdem muss der Code auf den Speicherort Ihrer Dateien "MediaPackager\_MP4ToSmooth.xml" und "MediaEncryptor\_PlayReadyProtection.xml" verweisen. Die Datei "MediaPackager\_MP4ToSmooth.xml" wird im Thema [Taskvoreinstellung für Azure Media Packager](http://msdn.microsoft.com/library/azure/hh973635.aspx) und die Datei "MediaEncryptor\_PlayReadyProtection.xml" wird im Thema [Voreinstellungen für Aufgaben für Azure Media Encryptor](http://msdn.microsoft.com/library/azure/hh973610.aspx) definiert.
+Außerdem muss der Code auf den Speicherort Ihrer Dateien "MediaPackager\_MP4ToSmooth.xml" und "MediaEncryptor\_PlayReadyProtection.xml" verweisen. Die Datei „MediaPackager\_MP4ToSmooth.xml“ wird im Thema [Taskvoreinstellung für Azure Media Packager](http://msdn.microsoft.com/library/azure/hh973635.aspx) und die Datei „MediaEncryptor\_PlayReadyProtection.xml“ wird im Thema [Voreinstellungen für Aufgaben für Azure Media Encryptor](http://msdn.microsoft.com/library/azure/hh973610.aspx) definiert.
 
 Im Beispiel wird die "UpdatePlayReadyConfigurationXMLFile"-Methode definiert, die Sie für die dynamische Aktualisierung der Datei "MediaEncryptor\_PlayReadyProtection.xml" verwenden können. Wenn der Schlüsselwert verfügbar ist, können Sie die "CommonEncryption.GeneratePlayReadyContentKey"-Methode zum Generieren des Inhaltsschlüssels basierend auf den Werten "keySeedValue" und "KeyId" verwenden.
 
@@ -974,7 +974,7 @@ Im Beispiel in diesem Abschnitt wird eine Zwischendatei (in diesem Fall eine MP4
 
 Media Services bietet jetzt einen Dienst für die Bereitstellung von Microsoft PlayReady-Lizenzen. Das Beispiel in diesem Artikel zeigt, wie der Media Services PlayReady-Lizenzbereitstellungsdienst konfiguriert wird (siehe die im Code unten definierte **ConfigureLicenseDeliveryService**-Methode).
 
-Ändern Sie den folgenden Code so, dass er auf den Ordner verweist, in dem sich Ihre MP4-Eingabedatei befindet. Außerdem muss der Code auf den Speicherort Ihrer Dateien "MediaPackager\_MP4ToSmooth.xml", "MediaPackager\_SmoothToHLS.xml" und "MediaEncryptor\_PlayReadyProtection.xml" verweisen. Die Dateien "MediaPackager\_MP4ToSmooth.xml" und "MediaPackager\_SmoothToHLS.xml" werden im Thema [Taskvoreinstellung für Azure Media Packager](http://msdn.microsoft.com/library/azure/hh973635.aspx) und die Datei "MediaEncryptor\_PlayReadyProtection.xml" wird im Thema [Voreinstellungen für Aufgaben für Azure Media Encryptor](http://msdn.microsoft.com/library/azure/hh973610.aspx) definiert.
+Ändern Sie den folgenden Code so, dass er auf den Ordner verweist, in dem sich Ihre MP4-Eingabedatei befindet. Außerdem muss der Code auf den Speicherort Ihrer Dateien "MediaPackager\_MP4ToSmooth.xml", "MediaPackager\_SmoothToHLS.xml" und "MediaEncryptor\_PlayReadyProtection.xml" verweisen. Die Dateien „MediaPackager\_MP4ToSmooth.xml“ und „MediaPackager\_SmoothToHLS.xml“ werden im Thema [Taskvoreinstellung für Azure Media Packager](http://msdn.microsoft.com/library/azure/hh973635.aspx) und die Datei „MediaEncryptor\_PlayReadyProtection.xml“ wird im Thema [Voreinstellungen für Aufgaben für Azure Media Encryptor](http://msdn.microsoft.com/library/azure/hh973610.aspx) definiert.
 	
 	using System;
 	using System.Collections.Generic;
@@ -1447,4 +1447,4 @@ Media Services bietet jetzt einen Dienst für die Bereitstellung von Microsoft P
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0928_2016-->
