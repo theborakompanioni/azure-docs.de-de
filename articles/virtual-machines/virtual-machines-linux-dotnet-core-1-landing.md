@@ -25,7 +25,7 @@ Diese vierteilige Reihe enthält Details zur Bereitstellung und Konfiguration vo
 
 Das in dieser Reihe verwendete Beispiel ist eine .Net Core-Anwendung, mit der eine Music Store-Einkaufsoberfläche simuliert wird. Diese Anwendung kann auf einem virtuellen Linux- oder Windows-System bereitgestellt werden. Für beide Fälle wurden Beispielbereitstellungen erstellt. Die Anwendung umfasst eine Webanwendung und eine SQL-Datenbank. Stellen Sie vor dem Lesen der Artikel dieser Reihe die Anwendung bereit, indem Sie die Schaltfläche für die Bereitstellung auf dieser Seite verwenden. Nach der vollständigen Bereitstellung sieht die Anwendung bzw. die Azure-Architektur wie im folgenden Diagramm aus.
 
-Die Music Store-Resource Manager-Vorlage finden Sie unter [Music Store Linux Template](https://github.com/neilpeterson/nepeters-azure-templates/tree/master/dotnet-core-music-linux-vm-sql-db) (Music Store-Linux-Vorlage).
+Die Music Store-Resource Manager-Vorlage finden Sie unter [Music Store Linux Template](https://github.com/neilpeterson/nepeters-azure-templates/tree/master/dotnet-core-music-linux-vm-sql-db) \(Music Store-Linux-Vorlage).
 
 ![Music Store-Anwendung](./media/virtual-machines-linux-dotnet-core/music-store.png)
 
@@ -45,7 +45,9 @@ Das Ziel bei der Entwicklung von Azure Resource Manager-Vorlagen ist die Automat
 
 Sie können die Music Store-Anwendung mit dieser Schaltfläche bereitstellen.
 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoft%2Fdotnet-core-sample-templates%2Fmaster%2Fdotnet-core-music-linux%2Fazuredeploy.json" target="_blank"> <img src="http://azuredeploy.net/deploybutton.png"/> </a>
+<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoft%2Fdotnet-core-sample-templates%2Fmaster%2Fdotnet-core-music-linux%2Fazuredeploy.json" target="_blank">
+    <img src="http://azuredeploy.net/deploybutton.png"/>
+</a>
 
 Für die Azure Resource Manager-Vorlage sind die folgenden Parameterwerte erforderlich:
 
