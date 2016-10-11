@@ -52,19 +52,19 @@ IoT-Projekte unterscheiden sich zwar meist stark, aber es gibt für die Verwaltu
 
 1. **Planung**: Bediener müssen in die Lage versetzt werden, ein Schema der Geräteeigenschaften zu erstellen. Damit können sie eine Gruppe von Geräten einfach und präzise abfragen und Massenvorgänge zu Verwaltungszwecken durchführen.
 
-    *Bausteine*: [Tutorial: Get started with device twins (preview)][lnk-twins-getstarted] (Tutorial: Erste Schritte mit Gerätezwillingen (Vorschau)), [Tutorial: Use desired properties to configure devices (preview)][lnk-twin-properties] (Tutorial: Verwenden von gewünschten Eigenschaften zum Konfigurieren von Geräten (Vorschau))
+    *Bausteine*: [Tutorial: Get started with device twins (preview)][lnk-twins-getstarted] \(Tutorial: Erste Schritte mit Gerätezwillingen (Vorschau)), [Tutorial: Use desired properties to configure devices (preview)][lnk-twin-properties] \(Tutorial: Verwenden von gewünschten Eigenschaften zum Konfigurieren von Geräten (Vorschau))
 
 2. **Bereitstellung**: Neue Geräte können gegenüber IoT Hub sicher authentifiziert werden, und Bediener können die Funktionen und den aktuellen Zustand eines Geräts sofort ermitteln.
 
-    *Bausteine*: [Erste Schritte mit Azure IoT Hub für .NET][lnk-hub-getstarted], [Tutorial: Use desired properties to configure devices (preview)][lnk-twin-properties] (Tutorial: Verwenden von gewünschten Eigenschaften zum Konfigurieren von Geräten (Vorschau))
+    *Bausteine*: [Erste Schritte mit Azure IoT Hub für .NET][lnk-hub-getstarted], [Tutorial: Use desired properties to configure devices (preview)][lnk-twin-properties] \(Tutorial: Verwenden von gewünschten Eigenschaften zum Konfigurieren von Geräten (Vorschau))
 
 3. **Konfiguration**: Massenvorgänge zum Ändern der Konfiguration und Firmwareupdates für Geräte können durchgeführt werden, während gleichzeitig sowohl die Integrität als auch die Sicherheit aufrechterhalten wird.
 
-    *Bausteine*: [Tutorial: Use desired properties to configure devices (preview)][lnk-twin-properties] (Tutorial: Verwenden von gewünschten Eigenschaften zum Konfigurieren von Geräten (Vorschau)), [Tutorial: Use direct methods][lnk-c2d-methods] (Tutorial: Verwenden von direkten Methoden), [Tutorial: Schedule and broadcast jobs (preview)][lnk-jobs] (Tutorial: Planen und Übertragen von Aufträgen (Vorschau))
+    *Bausteine*: [Tutorial: Use desired properties to configure devices (preview)][lnk-twin-properties] \(Tutorial: Verwenden von gewünschten Eigenschaften zum Konfigurieren von Geräten (Vorschau)), [Tutorial: Use direct methods][lnk-c2d-methods] \(Tutorial: Verwenden von direkten Methoden), [Tutorial: Schedule and broadcast jobs (preview)][lnk-jobs] \(Tutorial: Planen und Übertragen von Aufträgen (Vorschau))
 
 4. **Überwachung**: Ermöglicht das Überwachen der Integrität der gesamten Geräteflotte und des Status von fortlaufenden Updaterollouts zum Warnen der Bediener vor Problemen, die ggf. Aufmerksamkeit erfordern.
 
-    *Bausteine*: [Tutorial: Use desired properties to configure devices (preview)][lnk-twin-properties] (Tutorial: Verwenden von gewünschten Eigenschaften zum Konfigurieren von Geräten (Vorschau))
+    *Bausteine*: [Tutorial: Use desired properties to configure devices (preview)][lnk-twin-properties] \(Tutorial: Verwenden von gewünschten Eigenschaften zum Konfigurieren von Geräten (Vorschau))
 
 5. **Außerbetriebnahme**: Geräte werden nach einem Ausfall oder Upgradezyklus oder am Ende der Lebensdauer ausgetauscht oder außer Betrieb genommen.
 

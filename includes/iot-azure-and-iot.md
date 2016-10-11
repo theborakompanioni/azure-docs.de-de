@@ -14,7 +14,7 @@ Das folgende Diagramm zeigt die Architektur einer typischen IoT-Lösung. Es enth
 
 ![Architektur einer IoT-Lösung][img-solution-architecture]
 
-> [AZURE.NOTE] Ausführliche Informationen zur IoT-Architektur finden Sie unter [Microsoft Azure IoT Reference Architecture][lnk-refarch] (Microsoft Azure IoT-Referenzarchitektur).
+> [AZURE.NOTE] Ausführliche Informationen zur IoT-Architektur finden Sie unter [Microsoft Azure IoT Reference Architecture][lnk-refarch] \(Microsoft Azure IoT-Referenzarchitektur).
 
 ### Gerätekonnektivität
 

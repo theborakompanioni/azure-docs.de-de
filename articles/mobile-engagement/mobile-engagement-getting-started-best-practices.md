@@ -116,7 +116,7 @@ Erstellen Sie ein KPI-Dashboard mit den folgenden Informationen
 3.	Wo befinden sich diese Daten für meine Anwendung (Bildschirm, Einstellungen, System...)?
 4.	Kann ich eine Einbindungssequenz für diesen KPI wiedergeben?
 
-Beispiele und eine Anleitung finden Sie im Arbeitsblatt **KPI Builder** in [Media Playbook Template][Media Playbook link] (in englischer Sprache).
+Beispiele und eine Anleitung finden Sie im Arbeitsblatt **KPI Builder** in [Media Playbook Template](Media Playbook link) \(in englischer Sprache).
 
 
 
@@ -251,7 +251,7 @@ Azure Mobile Engagement bietet zwei Möglichkeiten, um zu verhindern, dass Ihre 
 
 Wenden Sie ein wenig Zeit auf, Ihre Ziele zusammenzufassen und Kampagnen zu definieren, die mit bestimmten Sequenzen wiedergeben werden. Stellen Sie sicher, dass Sie den 3W-Ansatz auf Benachrichtigungen in Ihren Kampagnen anwenden.
 
-Beispiele und eine Anleitung finden Sie im Arbeitsblatt **Engagement Program** in [Media Playbook Template][Media Playbook link] (in englischer Sprache).
+Beispiele und eine Anleitung finden Sie im Arbeitsblatt **Engagement Program** in [Media Playbook Template](Media Playbook link) \(in englischer Sprache).
 
 
 ## Schritt 3: App-Integration

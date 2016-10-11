@@ -33,7 +33,7 @@ In diesem Lernprogramm werden die folgenden grundlegenden Schritte zur Aktivieru
 * [Senden einer Pushbenachrichtigung an Ihre Chrome-App](#send)
 * [Zusätzliche Funktionen](#next-steps)
 
->[AZURE.NOTE] Pushbenachrichtigungen von Chrome-Apps sind keine generischen browserinternen Benachrichtigungen. Sie sind speziell für das Browser-Erweiterbarkeitsmodell bestimmt (Details unter [Chrome Apps Overview] (Chrome-Apps – Übersicht)). Zusätzlich zum Desktopbrowser können Chrome-Apps über Apache Cordova auch auf Mobilgeräten (Android und iOS) ausgeführt werden. Weitere Informationen finden Sie unter [Chrome-Apps auf Mobile].
+>[AZURE.NOTE] Pushbenachrichtigungen von Chrome-Apps sind keine generischen browserinternen Benachrichtigungen. Sie sind speziell für das Browser-Erweiterbarkeitsmodell bestimmt (Details unter [Chrome Apps Overview] \(Chrome-Apps – Übersicht)). Zusätzlich zum Desktopbrowser können Chrome-Apps über Apache Cordova auch auf Mobilgeräten (Android und iOS) ausgeführt werden. Weitere Informationen finden Sie unter [Chrome-Apps auf Mobile].
 
 GCM und Azure Notification Hubs werden genau wie unter Android konfiguriert, da [Google Cloud Messaging für Chrome] veraltet ist und dieselbe GCM jetzt sowohl Android-Geräte als auch Chrome-Instanzen unterstützt.
 
