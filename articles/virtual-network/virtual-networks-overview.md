@@ -17,7 +17,7 @@
 
 # Virtuelle Netzwerke im Überblick
 
-Ein virtuelles Azure-Netzwerk (VNet) ist eine Darstellung Ihres eigenen Netzwerks in der Cloud. Es ist eine logische Isolierung von der Azure-Cloud für Ihr Abonnement. Sie können die IP-Adressblöcke, DNS-Einstellungen, Sicherheitsrichtlinien und Routentabellen in diesem Netzwerk vollständig steuern. Außerdem können Sie Ihr VNet in Subnetze segmentieren und virtuelle Azure IaaS-Maschinen (VMs) und/oder [Cloud-Dienste (PaaS-Instanzen)](../cloud-services/cloud-services-choose-me.md) starten. Zudem können Sie das virtuelle Netzwerk mit einer der [Konnektivitätsoptionen](../vpn-gateway/vpn-gateway-cross-premises-options.md) in Azure mit Ihrem lokalen Netzwerk verbinden. Im Wesentlichen können Sie Ihr Netzwerk mit vollständiger Kontrolle über IP-Adressblöcke auf Azure ausdehnen und von der Azure-Skalierung auf Unternehmensebene profitieren.
+Ein virtuelles Azure-Netzwerk (VNet) ist eine Darstellung Ihres eigenen Netzwerks in der Cloud. Es ist eine logische Isolierung der Azure-Cloud für Ihr Abonnement. Sie können die IP-Adressblöcke, DNS-Einstellungen, Sicherheitsrichtlinien und Routentabellen in diesem Netzwerk vollständig steuern. Außerdem können Sie Ihr VNet in Subnetze segmentieren und virtuelle Azure IaaS-Maschinen (VMs) und/oder [Cloud-Dienste (PaaS-Instanzen)](../cloud-services/cloud-services-choose-me.md) starten. Zudem können Sie das virtuelle Netzwerk mit einer der [Konnektivitätsoptionen](../vpn-gateway/vpn-gateway-about-vpngateways.md#site-to-site-and-multi-site) in Azure mit Ihrem lokalen Netzwerk verbinden. Im Wesentlichen können Sie Ihr Netzwerk mit vollständiger Kontrolle über IP-Adressblöcke auf Azure ausdehnen und von der Azure-Skalierung auf Unternehmensebene profitieren.
 
 Die unten stehende Abbildung zeigt ein vereinfachtes lokales Netzwerk und ermöglicht ein besseres Verständnis von VNets.
 
@@ -83,7 +83,7 @@ Netzwerksicherheitsgruppen können z. B. verwendet werden, um Sicherheit für da
 Virtuelle Geräte sind von [benutzerdefinierten Routen und IP-Weiterleitung](virtual-networks-udr-overview.md) abhängig.
 
 ## Grenzen
-Die Anzahl der zulässigen virtuellen Netzwerke in einem Abonnement ist beschränkt. Weitere Informationen finden Sie unter [Azure-Netzwerkbeschränkungen](../azure-subscription-service-limits.md#networking-limits).
+Die Anzahl zulässiger virtueller Netzwerke in einem Abonnement ist beschränkt. Weitere Informationen finden Sie unter [Azure-Netzwerkbeschränkungen](../azure-subscription-service-limits.md#networking-limits).
 
 ## Preise
 Für die Verwendung virtueller Netzwerke in Azure fallen keine Zusatzkosten an. Für die im VNET gestarteten Computerinstanzen werden die unter [Virtual Machines – Preise](https://azure.microsoft.com/pricing/details/virtual-machines/) aufgeführten Standardpreise berechnet. Für die im VNET verwendeten [VPN-Gateways](https://azure.microsoft.com/pricing/details/vpn-gateway/) und [öffentlichen IP-Adressen](https://azure.microsoft.com/pricing/details/ip-addresses/) werden ebenfalls die Standardpreise berechnet.
@@ -95,4 +95,4 @@ Für die Verwendung virtueller Netzwerke in Azure fallen keine Zusatzkosten an. 
 - Weitere Informationen zu [Netzwerksicherheitsgruppen](virtual-networks-nsg.md)
 - Weitere Informationen zu [benutzerdefinierten Routen und IP-Weiterleitung](virtual-networks-udr-overview.md)
 
-<!----HONumber=AcomDC_0810_2016--->
+<!---HONumber=AcomDC_1005_2016-->

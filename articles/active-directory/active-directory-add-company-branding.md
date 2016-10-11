@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="09/22/2016"
+	ms.date="09/30/2016"
 	ms.author="curtand"/>
 
 # Hinzufügen Ihres Unternehmensbranding zur Anmelde- und Zugriffsbereichsseite
@@ -86,14 +86,33 @@ Sie können die folgenden Elemente auf der Anmeldeseite anpassen:
 
 ![][5]
 
- Seitenelement | Position auf der Seite
-	------------- | -------------
-Bannerlogo | Rechts oben auf der Seite angezeigt. Ersetzt das Logo der Zielwebsite, an der Sie sich anmelden (z.B. Office 365 oder Azure).
-Große Abbildung / Hintergrundfarbe | Am linken Rand der Seite angezeigt. Ersetzt das Bild der Zielwebsite, an der Sie sich anmelden. Unter Umständen wird bei Verbindungen mit geringer Bandbreite oder auf kleinen Bildschirmen anstelle der großen Abbildung die Hintergrundfarbe angezeigt.
-Text der Anmeldeseite | Wird über der Fußzeile angezeigt, wenn Sie hilfreiche Informationen vermitteln möchten, bevor eine Anmeldung mit einem Geschäfts- oder Schulkonto durchgeführt wird. Ein Beispiel: Sie möchten die Telefonnummer zu Ihrem Helpdesk oder einen rechtlichen Hinweis einfügen.
+
+
+| Seitenelement | Position auf der Seite |
+|:--            | ---                  |
+|Bannerlogo | Rechts oben auf der Seite angezeigt. Ersetzt das Logo der Zielwebsite, an der Sie sich anmelden (z.B. Office 365 oder Azure).|
+|Große Abbildung / Hintergrundfarbe | Am linken Rand der Seite angezeigt. Ersetzt das Bild der Zielwebsite, an der Sie sich anmelden. Unter Umständen wird bei Verbindungen mit geringer Bandbreite oder auf kleinen Bildschirmen anstelle der großen Abbildung die Hintergrundfarbe angezeigt.|
+|Angemeldet bleiben | Wird unter dem Textfeld „Kennwort“ angezeigt. |
+|Text der Anmeldeseite | Wird über der Fußzeile angezeigt, wenn Sie hilfreiche Informationen vermitteln möchten, bevor eine Anmeldung mit einem Geschäfts- oder Schulkonto durchgeführt wird. Ein Beispiel: Sie möchten die Telefonnummer zu Ihrem Helpdesk oder einen rechtlichen Hinweis einfügen.|
+
 
 > [AZURE.NOTE]
 Alle Elemente sind optional. Wenn Sie z.B. ein Bannerlogo angeben, aber keine große Abbildung, werden auf der Anmeldeseite Ihr Logo und die Abbildung für den Zielstandort (d.h. das Office 365-Bild mit dem kalifornischen Highway) angezeigt.
+
+
+Dank des Kontrollkästchens **Angemeldet bleiben** auf der Anmeldeseite kann der Benutzer angemeldet bleiben, wenn er den Browser schließt und wieder öffnet. Die Sitzungsdauer wird dadurch nicht beeinflusst. Das Kontrollkästchen kann auf der Azure Active Directory-Anmeldeseite ausgeblendet werden.
+
+Ob das Kontrollkästchen angezeigt wird, hängt von der Einstellung **"Angemeldet bleiben" ausblenden** ab.
+
+![][9]
+
+
+Legen Sie diese Einstellung zum Ausblenden des Kontrollkästchens auf **Ausgeblendet** fest.
+
+> [AZURE.NOTE] Einige Features von SharePoint Online und Office 2010 setzen voraus, dass dieses Kontrollkästchen von den Benutzern aktiviert werden kann. Wenn Sie das Kontrollkästchen mithilfe dieser Einstellung ausblenden, werden den Benutzern unter Umständen zusätzliche und unerwartete Anmeldeaufforderungen angezeigt.
+
+
+
 
 Sie können auch alle Elemente auf dieser Seite lokalisieren. Sobald Sie einen „Standardsatz“ mit Anpassungselementen konfiguriert haben, können Sie zusätzliche Versionen für verschiedene Gebietsschemas konfigurieren. Sie können auch verschiedene Elemente miteinander kombinieren. Dazu zählen z. B.:
 
@@ -218,5 +237,6 @@ Hintergrundfarbe auf der Anmeldeseite | Die Hintergrundfarbe auf der Anmeldeseit
 [6]: ./media/active-directory-add-company-branding/SignInPage_aftercustomization_croppedleft.png
 [7]: ./media/active-directory-add-company-branding/SignInPage_aftercustomization_croppedtop.png
 [8]: ./media/active-directory-add-company-branding/APBranding.png
+[9]: ./media/active-directory-add-company-branding/hidekmsi.png
 
-<!---HONumber=AcomDC_0928_2016-->
+<!---HONumber=AcomDC_1005_2016-->

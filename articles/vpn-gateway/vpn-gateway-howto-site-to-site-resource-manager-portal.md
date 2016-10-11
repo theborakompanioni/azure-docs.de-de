@@ -14,7 +14,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="08/31/2016"
+   ms.date="10/03/2016"
    ms.author="cherylmc"/>
 
 # Erstellen eines VNet mit einer Standort-zu-Standort-Verbindung über das Azure-Portal
@@ -54,23 +54,22 @@ Vergewissern Sie sich vor Beginn der Konfiguration, dass Sie über Folgendes ver
 
 Sie können die Beispielkonfigurationswerte nutzen, wenn Sie diese Schritte als Übung verwenden:
 
-- VNet-Name: TestVNet1
-- Adressraum: 10.11.0.0/16 und 10.12.0.0/16
-- Subnetze:
+- **VNet-Name:** TestVNet1
+- **Adressraum:** 10.11.0.0/16 und 10.12.0.0/16
+- **Subnetze:**
 	- FrontEnd: 10.11.0.0/24
 	- BackEnd: 10.12.0.0/24
 	- GatewaySubnet: 10.12.255.0/27
-- Ressourcengruppe: TestRG1
-- Standort: USA, Osten
-- DNS-Server: 8.8.8.8
-- Gatewayname: VNet1GW
-- Öffentliche IP-Adresse: VNet1GWIP
-- VPN-Typ: Routenbasiert
-- Verbindungstyp: Site-to-Site (IPsec)
-- Gatewaytyp: VPN
-- Name des Gateways für das lokale Netzwerk: Site2
-- Verbindungsname: VNet1toSite2
-
+- **Ressourcengruppe:** TestRG1
+- **Standort:** USA, Osten
+- **DNS-Server:** 8.8.8.8
+- **Gatewayname:** VNet1GW
+- **Öffentliche IP-Adresse:** VNet1GWIP
+- **VPN-Typ:** Routenbasiert
+- **Verbindungstyp:** Site-to-Site (IPsec)
+- **Gatewaytyp:** VPN
+- **Name des Gateways für das lokale Netzwerk:** Site2
+- **Verbindungsname:** VNet1toSite2
 
 
 ## 1\. Erstellen eines virtuellen Netzwerks 
@@ -89,29 +88,24 @@ Sie können dem VNet nach dem Erstellen weitere Adressräume und Subnetze hinzuf
 
 ## <a name="dns"></a>3. Angeben eines DNS-Servers
 
-Wenn Sie diese Konfiguration zu Übungszwecken erstellen, können Sie beim Angeben des DNS-Servers [diese Werte](#values) verwenden.
-
 ### So geben Sie einen DNS-Server an
 
 [AZURE.INCLUDE [vpn-gateway-add-dns-rm-portal](../../includes/vpn-gateway-add-dns-rm-portal-include.md)]
 
 ## 4\. Erstellen eines Gatewaysubnetzes
 
-Bevor Sie das virtuelle Netzwerk mit einem Gateway verbinden, müssen Sie das Gatewaysubnetz für das virtuelle Netzwerk erstellen, mit dem Sie eine Verbindung herstellen möchten. Das von Ihnen erstellte Gatewaysubnetz muss den Namen *GatewaySubnet* haben, da es sonst nicht richtig funktioniert.
-
-Als Gatewaysubnetz-Präfix ist für einige Konfigurationen ein Subnetz der Größe /28 oder mehr erforderlich, um die Menge von IP-Adressen unterbringen zu können, die im Pool benötigt werden. Dies bedeutet, dass das Gatewaysubnetz-Präfix /28, /27, /26 usw. lauten muss. Es kann ratsam sein, hier ein größeres Subnetz zu erstellen, um für zukünftige Hinzufügungen gerüstet zu sein, die für die Konfiguration ggf. vorgenommen werden.
+Bevor Sie das virtuelle Netzwerk mit einem Gateway verbinden, müssen Sie das Gatewaysubnetz für das virtuelle Netzwerk erstellen, mit dem Sie eine Verbindung herstellen möchten. Erstellen Sie nach Möglichkeit ein Gatewaysubnetz mit einem CIDR-Block vom Typ „/28“ oder „/27“, damit genügend IP-Adressen für zukünftige zusätzliche Konfigurationsanforderungen zur Verfügung stehen.
 
 Wenn Sie diese Konfiguration als Übung erstellen, können Sie beim Erstellen des Gatewaysubnetzes [diese Werte](#values) verwenden.
 
 ### So erstellen Sie ein Gatewaysubnetz
 
-[AZURE.INCLUDE [vpn-gateway-no-nsg](../../includes/vpn-gateway-no-nsg-include.md)]
 
 [AZURE.INCLUDE [vpn-gateway-add-gwsubnet-rm-portal](../../includes/vpn-gateway-add-gwsubnet-rm-portal-include.md)]
 
 ## 5\. Erstellen eines Gateways für das virtuelle Netzwerk
 
-Wenn Sie diese Konfiguration als Übung erstellen, können Sie beim Erstellen des Gateways [diese Werte](#values) verwenden.
+Falls Sie diese Konfiguration zu Übungszwecken erstellen, können Sie die [Beispielkonfigurationswerte](#values) heranziehen.
 
 ### So erstellen Sie ein Gateway für das virtuelle Netzwerk
 
@@ -119,9 +113,9 @@ Wenn Sie diese Konfiguration als Übung erstellen, können Sie beim Erstellen de
 
 ## 6\. Erstellen eines Gateways für das lokale Netzwerk
 
-Mit dem *Gateway des lokalen Netzwerks* ist Ihr lokaler Standort gemeint. Geben Sie für das lokale Netzwerkgateway einen Namen ein, anhand dessen Azure darauf verweisen kann.
+Mit dem Gateway für das lokale Netzwerk ist Ihr lokaler Standort gemeint. Geben Sie für das lokale Netzwerkgateway einen Namen ein, anhand dessen Azure darauf verweisen kann.
 
-Wenn Sie diese Konfiguration als Übung erstellen, können Sie beim Hinzufügen Ihres lokalen Standorts [diese Werte](#values) verwenden.
+Falls Sie diese Konfiguration zu Übungszwecken erstellen, können Sie die [Beispielkonfigurationswerte](#values) heranziehen.
 
 ### So erstellen Sie ein Gateway für das lokale Netzwerk
 
@@ -154,4 +148,4 @@ Sie können Ihre VPN-Verbindung entweder im Portal oder mithilfe von PowerShell 
 
 - Informationen zu BGP finden Sie in der [Übersicht über BGP](vpn-gateway-bgp-overview.md) und unter [Konfigurieren von BGP](vpn-gateway-bgp-resource-manager-ps.md).
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_1005_2016-->

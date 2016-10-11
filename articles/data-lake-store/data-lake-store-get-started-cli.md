@@ -13,10 +13,10 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="09/13/2016"
+   ms.date="09/27/2016"
    ms.author="nitinme"/>
 
-# Erste Schritte mit Azure Data Lake-Speicher unter Verwendung der Azure-Befehlszeile
+# Erste Schritte mit Azure Data Lake-Speicher unter Verwendung der Azure-Befehlszeile
 
 > [AZURE.SELECTOR]
 - [Portal](data-lake-store-get-started-portal.md)
@@ -27,9 +27,9 @@
 - [Azure-Befehlszeilenschnittstelle](data-lake-store-get-started-cli.md)
 - [Node.js](data-lake-store-manage-use-nodejs.md)
 
-Hier erfahren Sie, wie Sie mit der Azure-Befehlszeilenschnittstelle (Azure-CLI) ein Azure Data Lake-Speicherkonto erstellen und grundlegende Vorgänge ausführen (also etwa Ordner erstellen, Datendateien hoch- und herunterladen, Ihr Konto löschen und Ähnliches). Weitere Informationen zum Data Lake-Speicher finden Sie unter [Übersicht über Data Lake-Speicher](data-lake-store-overview.md).
+Hier erfahren Sie, wie Sie mit der Azure-Befehlszeilenschnittstelle (Azure-CLI) ein Azure Data Lake-Speicherkonto erstellen und grundlegende Vorgänge ausführen (also etwa Ordner erstellen, Datendateien hoch- und herunterladen, Ihr Konto löschen und Ähnliches). Weitere Informationen zum Data Lake-Speicher finden Sie unter [Übersicht über Data Lake-Speicher](data-lake-store-overview.md).
 
-Die Azure-CLI ist in Node.js implementiert. Sie kann auf allen Plattformen verwendet werden, die Node.js unterstützen, inklusive Windows, Mac und Linux. Die Azure-Befehlszeilenschnittstelle ist Open Source. Der Quellcode wird auf GitHub unter <a href= "https://github.com/azure/azure-xplat-cli">https://github.com/azure/azure-xplat-cli</a> verwaltet. In diesem Artikel wird lediglich die Verwendung der Azure-CLI mit dem Data Lake-Speicher behandelt. Eine allgemeine Anleitung zur Verwendung der Azure-CLI finden Sie unter [Verwenden der Azure-CLI][azure-command-line-tools].
+Die Azure-CLI ist in Node.js implementiert. Sie kann auf allen Plattformen verwendet werden, die Node.js unterstützen, inklusive Windows, Mac und Linux. Die Azure-Befehlszeilenschnittstelle ist Open Source. Der Quellcode wird auf GitHub unter <a href= "https://github.com/azure/azure-xplat-cli">https://github.com/azure/azure-xplat-cli</a> verwaltet. In diesem Artikel wird lediglich die Verwendung der Azure-CLI mit dem Data Lake-Speicher behandelt. Eine allgemeine Anleitung zur Verwendung der Azure-CLI finden Sie unter [Verwenden der Azure-CLI][azure-command-line-tools].
 
 
 ##Voraussetzungen
@@ -37,36 +37,40 @@ Die Azure-CLI ist in Node.js implementiert. Sie kann auf allen Plattformen verwe
 Bevor Sie mit diesem Artikel beginnen können, benötigen Sie Folgendes:
 
 - **Ein Azure-Abonnement**. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
+
 - **Azure-CLI** – Informationen zur Installation und Konfiguration finden Sie unter [Installieren und Konfigurieren der Azure-CLI](../xplat-cli-install.md). Achten Sie darauf, Ihren Computer nach der Installation der Befehlszeilenschnittstelle neu zu starten.
+
+## Authentifizierung
+
+In diesem Artikel wird ein einfacheres Authentifizierungskonzept mit Data Lake Store verwendet, bei dem Sie sich als Endbenutzer anmelden. Die Zugriffsebene für das Data Lake Store-Konto und das Dateisystem hängt dann von der Zugriffsebene des angemeldeten Benutzers ab. Für die Authentifizierung mit Data Lake Store stehen mit **Endbenutzerauthentifizierung** und **Dienst-zu-Dienst-Authentifizierung** aber auch noch andere Konzepte zur Verfügung. Anweisungen und weitere Informationen zur Authentifizierung finden Sie unter [Authenticate with Data Lake Store using Azure Active Directory](data-lake-store-authenticate-using-active-directory.md) (Authentifizieren bei Data Lake Store mithilfe von Azure Active Directory).
 
 ##Anmelden bei Ihrem Azure-Abonnement
 
-Führen Sie die Schritte aus, die unter [Herstellen einer Verbindung mit einem Azure-Abonnement von der Azure Befehlszeilenschnittstelle (Azure-CLI)](../xplat-cli-connect.md) dokumentiert sind, und stellen Sie über die __login__-Methode eine Verbindung mit Ihrem Abonnement her.
+1. Führen Sie die Schritte aus, die unter [Herstellen einer Verbindung mit einem Azure-Abonnement von der Azure-Befehlszeilenschnittstelle (Azure-CLI)](../xplat-cli-connect.md) dokumentiert sind, und stellen Sie über die `azure login`-Methode eine Verbindung mit Ihrem Abonnement her.
+
+2. Listen Sie mithilfe des `azure account list`-Befehls die mit Ihrem Konto verknüpften Abonnements auf.
+
+		info:    Executing command account list
+		data:    Name              Id                                    Current
+		data:    ----------------  ------------------------------------  -------
+		data:    Azure-sub-1       ####################################  true
+		data:    Azure-sub-2       ####################################  false
+
+	In der obigen Ausgabe ist **Azure-sub-1** aktiviert. Das andere Abonnement ist **Azure-sub-2**.
+
+3. Wählen Sie das Abonnement aus, mit dem Sie arbeiten möchten. Wenn Sie mit dem Abonnement „Azure-sub-2“ arbeiten möchten, verwenden Sie den Befehl `azure account set`.
+
+		azure account set Azure-sub-2
 
 
 ## Erstellen eines Azure Data Lake-Speicherkontos
 
 Öffnen Sie eine Eingabeaufforderung, Shell oder Terminalsitzung, und führen Sie die folgenden Befehle aus:
 
-1. Melden Sie sich bei Ihrem Azure-Abonnement an:
-
-		azure login
-
-	Sie werden aufgefordert, eine Webseite zu öffnen und einen Authentifizierungscode einzugeben. Führen Sie die Schritte zum Anmelden an Ihrem Azure-Abonnement aus, die auf der Seite angegeben sind.
-
 2. Wechseln Sie mit dem folgenden Befehl in den Azure-Ressourcen-Manager-Modus:
 
 		azure config mode arm
 
-
-3. Listen Sie die Azure-Abonnements für Ihr Konto auf.
-
-		azure account list
-
-
-4. Verwenden Sie bei mehreren Azure-Abonnements den folgenden Befehl, um das gewünschte Abonnement für die Befehle der Azure-Befehlszeilenschnittstelle festzulegen:
-
-		azure account set <subscriptionname>
 
 5. Erstellen Sie eine neue Ressourcengruppe. Geben Sie für den folgenden Befehl die Parameterwerte ein, die Sie verwenden möchten.
 
@@ -74,13 +78,13 @@ Führen Sie die Schritte aus, die unter [Herstellen einer Verbindung mit einem A
 
 	Wenn der Name des Standorts Leerzeichen enthält, setzen Sie ihn in doppelte Anführungszeichen. Beispiel: „USA (Ost) 2“.
 
-5. Erstellen Sie das Data Lake-Speicherkonto.
+5. Erstellen Sie das Data Lake-Speicherkonto.
 
 		azure datalake store account create <dataLakeStoreAccountName> <location> <resourceGroup>
 
-## Erstellen von Ordnern im Data Lake-Speicher
+## Erstellen von Ordnern im Data Lake-Speicher
 
-Sie können in Ihrem Azure Data Lake-Speicherkonto Ordner zum Verwalten und Speichern von Daten erstellen. Verwenden Sie den folgenden Befehl, um im Stammverzeichnis des Data Lake-Speichers den Ordner „mynewfolder“ zu erstellen.
+Sie können in Ihrem Azure Data Lake-Speicherkonto Ordner zum Verwalten und Speichern von Daten erstellen. Verwenden Sie den folgenden Befehl, um im Stammverzeichnis des Data Lake-Speichers den Ordner „mynewfolder“ zu erstellen.
 
 	azure datalake store filesystem create <dataLakeStoreAccountName> <path> --folder
 
@@ -88,11 +92,11 @@ Beispiel:
 
 	azure datalake store filesystem create mynewdatalakestore /mynewfolder --folder
 
-## Hochladen von Daten in den Data Lake-Speicher
+## Hochladen von Daten in den Data Lake-Speicher
 
-Sie können Ihre Daten direkt auf die Stammebene eines Data Lake-Speichers oder in einen im Konto erstellten Ordner hochladen. Die folgenden Codeausschnitte veranschaulichen das Hochladen von Beispieldaten in den im vorigen Abschnitt erstellten Ordner (**mynewfolder**).
+Sie können Ihre Daten direkt auf die Stammebene eines Data Lake-Speichers oder in einen im Konto erstellten Ordner hochladen. Die folgenden Codeausschnitte veranschaulichen das Hochladen von Beispieldaten in den im vorigen Abschnitt erstellten Ordner (**mynewfolder**).
 
-Wenn Sie Beispieldaten hochladen möchten, können Sie den Ordner **Ambulance Data** aus dem [Azure Data Lake-Git-Repository](https://github.com/MicrosoftBigData/usql/tree/master/Examples/Samples/Data/AmbulanceData) herunterladen. Laden Sie die Datei herunter, und speichern Sie sie in ein lokales Verzeichnis auf dem Computer, z. B. „C:\\sampledata“.
+Wenn Sie Beispieldaten hochladen möchten, können Sie den Ordner **Ambulance Data** aus dem [Azure Data Lake-Git-Repository](https://github.com/MicrosoftBigData/usql/tree/master/Examples/Samples/Data/AmbulanceData) herunterladen. Laden Sie die Datei herunter, und speichern Sie sie in ein lokales Verzeichnis auf dem Computer, z. B. „C:\\sampledata“.
 
 	azure datalake store filesystem import <dataLakeStoreAccountName> "<source path>" "<destination path>"
 
@@ -166,9 +170,9 @@ Beispiel:
 	azure datalake store permissions show mynewdatalakestore /
 
 
-## Löschen Ihres Data Lake-Speicherkontos
+## Löschen Ihres Data Lake-Speicherkontos
 
-Verwenden Sie zum Löschen eines Data Lake-Speicherkontos den folgenden Befehl.
+Verwenden Sie zum Löschen eines Data Lake-Speicherkontos den folgenden Befehl.
 
 	azure datalake store account delete <dataLakeStoreAccountName>
 
@@ -188,4 +192,4 @@ Geben Sie nach entsprechender Aufforderung **Y** ein, um das Konto zu löschen.
 
 [azure-command-line-tools]: ../xplat-cli-install.md
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_1005_2016-->

@@ -14,41 +14,41 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="07/14/2016"
+	ms.date="09/30/2016"
 	ms.author="arluca"/>
 
 # Verwenden von Azure AD Connect Health mit AD DS
-Die folgende Dokumentation gilt speziell für die Überwachung von Active Directory-Domänendiensten mit Azure AD Connect Health. Dies betrifft die Installation von AD DS unter Windows Server 2008 R2, Windows Server 2012 und Windows Server 2012 R2.
+Die folgende Dokumentation gilt speziell für die Überwachung von Active Directory-Domänendiensten mit Azure AD Connect Health. Folgende AD DS-Versionen werden unterstützt: Windows Server 2008 R2, Windows Server 2012 und Windows Server 2012 R2.
 
-Informationen zum Überwachen von AD FS mit Azure AD Connect Health finden Sie unter [Verwenden von Azure AD Connect Health mit AD FS](active-directory-aadconnect-health-adfs.md). Informationen zum Überwachen von Azure AD Connect (Sync) mit Azure AD Connect Health finden Sie unter [Verwenden von Azure AD Connect Health für die Synchronisierung](active-directory-aadconnect-health-sync.md).
+Weitere Informationen zum Überwachen von AD FS mit Azure AD Connect Health finden Sie unter [Verwenden von Azure AD Connect Health mit AD FS](active-directory-aadconnect-health-adfs.md). Informationen zum Überwachen von Azure AD Connect (Sync) mit Azure AD Connect Health finden Sie unter [Verwenden von Azure AD Connect Health für die Synchronisierung](active-directory-aadconnect-health-sync.md).
 
 ![Azure AD Connect Health für AD DS](./media/active-directory-aadconnect-health/aadconnect-health-adds-entry.png)
 
 ## Warnungen für Azure AD Connect Health für AD DS
-Der Abschnitt „Warnungen“ in Azure AD Connect Health für AD DS enthält eine Liste mit aktiven und gelösten Warnungen für ihre Domänencontroller. Wenn Sie eine aktive oder gelöste Warnung auswählen, wird ein neues Blatt mit weiteren Informationen sowie Lösungsschritten und Links zu hilfreicher Dokumentation geöffnet. Jeder Warnungstyp kann über eine oder mehrere Instanzen verfügen, die jeweils den Domänencontrollern entsprechen, die von einer Warnung betroffen sind. Im unteren Bereich des Blatts mit den Warnungen können Sie einen betroffenen Domänencontroller auswählen. Ein neues Blatt mit zusätzlichen Details zur jeweiligen Warnungsinstanz wird geöffnet.
+Der Abschnitt „Warnungen“ in Azure AD Connect Health für AD DS enthält eine Liste mit aktiven und behobenen Warnungen für ihre Domänencontroller. Wenn Sie eine aktive oder behobene Warnung auswählen, wird ein neues Blatt mit weiteren Informationen sowie mit Lösungsschritten und Links zur entsprechenden Dokumentation geöffnet. Jeder Warnungstyp kann über eine oder mehrere Instanzen verfügen, die jeweils den Domänencontrollern entsprechen, die von einer Warnung betroffen sind. Im unteren Bereich des Blatts mit den Warnungen können Sie auf einen betroffenen Domänencontroller doppelklicken, um ein zusätzliches Blatt mit weiteren Details zur entsprechenden Warnungsinstanz zu öffnen.
 
-Die Aktivierung von E-Mail-Benachrichtigungen für Warnungen ist auf diesem Blatt möglich, und außerdem können Sie den angezeigten Zeitbereich ändern. Indem Sie den Zeitbereich vergrößern, können Sie die vorherigen gelösten Warnungen einblenden.
+Auf diesem Blatt können Sie E-Mail-Benachrichtigungen für Warnungen aktivieren und den angezeigten Zeitraum ändern. Wenn Sie den Zeitraum vergrößern, werden auch bereits behobene Warnungen angezeigt.
 
 ![Azure AD Connect-Synchronisierungsfehler](./media/active-directory-aadconnect-health/aadconnect-health-adds-alerts.png)
 
-## Domänencontroller
-Dieses Dashboard enthält eine topologische Ansicht Ihrer Umgebung mit wichtigen Betriebsmetriken und dem Integritätsstatus Ihrer überwachten Domänencontroller. Anhand der dargestellten Metriken können Sie schnell Domänencontroller identifizieren, die ggf. näher untersucht werden müssen. Standardmäßig wird nur eine Teilmenge der Spalten angezeigt. Sie können aber alle verfügbaren Spalten anzeigen, indem Sie auf den Befehl „Spalten“ klicken. Wenn Sie die Spalten auswählen, die für Sie am interessantesten sind, wird das Dashboard zu einem zentralen Ort, an dem Sie die Integrität Ihrer AD DS-Umgebung leicht überblicken können.
+## Dashboard „Domänencontroller“
+Dieses Dashboard enthält eine topologische Ansicht Ihrer Umgebung mit wichtigen Betriebsmetriken und dem Integritätsstatus Ihrer überwachten Domänencontroller. Anhand der dargestellten Metriken können Sie schnell Domänencontroller identifizieren, die ggf. näher untersucht werden müssen. Standardmäßig wird nur ein Teil der Spalten angezeigt. Sie können jedoch alle verfügbaren Spalten anzeigen, indem Sie auf den Spaltenbefehl doppelklicken. Wählen Sie die für Sie relevanten Spalten aus, und machen Sie das Dashboard so zu einem zentralen Ort, an dem Sie die Integrität Ihrer AD DS-Umgebung komfortabel überwachen können.
 
 ![Domänencontroller](./media/active-directory-aadconnect-health/aadconnect-health-adds-domainsandsites-dashboard.png)
 
-Domänencontroller können nach der jeweiligen Domäne oder dem Standort gruppiert werden. Dies ist für das Verständnis der Umgebungstopologie hilfreich. Wenn Sie auf die Blattüberschrift doppelklicken, wird das Dashboard maximiert, um den gesamten Platz auf dem Bildschirm auszunutzen. Dies ist besonders nützlich, wenn Sie mehrere Spalten anzeigen.
+Domänencontroller können nach der jeweiligen Domäne oder dem Standort gruppiert werden. Dadurch lässt sich die Umgebungstopologie leichter nachvollziehen. Durch einen Doppelklick auf die Blattüberschrift kann das Dashboard maximiert werden, um den gesamten verfügbaren Platz auf dem Bildschirm auszunutzen. Diese größere Ansicht ist hilfreich, wenn mehrere Spalten angezeigt werden.
 
-## Replikationsstatus
-Dieses Dashboard enthält eine Ansicht mit dem Replikationsstatus und der Replikationstopologie Ihrer überwachten Domänencontroller. Der Status des letzten Replikationsversuchs wird zusammen mit hilfreicher Dokumentation zu gefundenen Fehlern angezeigt. Wenn Sie einen Domänencontroller mit einem Fehler auswählen, wird ein neues Blatt mit weiteren Informationen, Lösungsschritten und Links zu Problembehandlungsdokumentation geöffnet.
+## Dashboard „Replikationsstatus“
+Dieses Dashboard enthält eine Ansicht mit dem Replikationsstatus und der Replikationstopologie Ihrer überwachten Domänencontroller. Der Status des letzten Replikationsversuchs wird zusammen mit hilfreicher Dokumentation zu gefundenen Fehlern angezeigt. Durch einen Doppelklick auf einen fehlerhaften Domänencontroller können Sie ein neues Blatt öffnen, das unter anderem Fehlerdetails, empfohlene Lösungsschritte und Links zur Problembehandlungsdokumentation enthält.
 
 ![Replikationsstatus](./media/active-directory-aadconnect-health/aadconnect-health-adds-replication.png)
 
 ## Überwachung
-Diese Funktion liefert grafische Trends zu verschiedenen Leistungsindikatoren, die über die überwachten Domänencontroller fortlaufend erfasst werden. Die Leistung eines Domänencontrollers kann leicht mit der Leistung aller anderen überwachten Domänencontroller in der Gesamtstruktur verglichen werden. Darüber hinaus können Sie verschiedene Leistungsindikatoren nebeneinander anzeigen, was bei der Behandlung von Problemen in Ihrer Umgebung hilfreich ist.
+Dieses Feature bietet grafische Trends für verschiedene Leistungsindikatoren, die kontinuierlich für die überwachten Domänencontroller erfasst werden. Die Leistung eines Domänencontrollers kann leicht mit der Leistung aller anderen überwachten Domänencontroller in der Gesamtstruktur verglichen werden. Darüber hinaus können Sie verschiedene Leistungsindikatoren nebeneinander anzeigen, was bei der Behandlung von Problemen in Ihrer Umgebung hilfreich ist.
 
 ![Überwachung](./media/active-directory-aadconnect-health/aadconnect-health-adds-monitoring.png)
 
-Standardmäßig sind vorab vier Leistungsindikatoren ausgewählt. Sie können aber weitere Leistungsindikatoren hinzufügen, indem Sie auf den Befehl „Filter“ klicken und alle gewünschten Leistungsindikatoren aktivieren oder deaktivieren. Wenn Sie auf den Graphen eines bestimmten Leistungsindikators klicken, wird außerdem ein neues Blatt mit den entsprechenden Datenpunkten für die einzelnen überwachten Domänencontroller geöffnet.
+Standardmäßig sind vorab vier Leistungsindikatoren ausgewählt. Sie können aber weitere Leistungsindikatoren hinzufügen, indem Sie auf den Befehl „Filter“ klicken und alle gewünschten Leistungsindikatoren aktivieren oder deaktivieren. Darüber hinaus können Sie auf ein Leistungsindikatordiagramm doppelklicken, um ein neues Blatt mit Datenpunkten für die einzelnen überwachten Domänencontroller zu öffnen.
 
 ## Verwandte Links
 
@@ -60,4 +60,4 @@ Standardmäßig sind vorab vier Leistungsindikatoren ausgewählt. Sie können ab
 * [Azure AD Connect Health – FAQ](active-directory-aadconnect-health-faq.md)
 * [Azure AD Connect Health: Versionsverlauf](active-directory-aadconnect-health-version-history.md)
 
-<!----HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_1005_2016-->

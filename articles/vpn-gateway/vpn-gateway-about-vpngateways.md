@@ -34,7 +34,7 @@ Ein virtuelles Netzwerk kann pro Gatewaytyp immer nur über ein einzelnes virtue
 
 ## Gateway-SKUs
 
-[AZURE.INCLUDE [vpn-gateway-gwsku-include](../../includes/vpn-gateway-gwsku-include.md)]
+[AZURE.INCLUDE [vpn-gateway-gwsku-include](../../includes/vpn-gateway-gwsku-include.md)] Weitere Informationen zu Gateway-SKUs finden Sie unter [Gateway-SKUs](vpn-gateway-about-vpn-gateway-settings.md#gwsku).
 
 In der folgenden Tabelle sind die Gatewaytypen und der geschätzte zusammengefasste Durchsatz angegeben. Diese Tabelle betrifft sowohl das Resource Manager-Bereitstellungsmodell als auch das klassische Bereitstellungsmodell.
 
@@ -148,4 +148,4 @@ Planen Sie Ihre VPN Gateway-Konfiguration. Entsprechende Informationen finden Si
 
  
 
-<!---HONumber=AcomDC_0928_2016-->
+<!---HONumber=AcomDC_1005_2016-->

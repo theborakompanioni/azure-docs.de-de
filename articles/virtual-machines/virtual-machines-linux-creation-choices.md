@@ -130,4 +130,4 @@ Sollten Sie spezielle Anpassungen benötigen, verwenden Sie ein Image, das auf e
 
 - Schritte zum schnellen Zurücksetzen von Kennwörtern oder SSH-Schlüsseln sowie zum Verwalten von Benutzern finden Sie [hier](virtual-machines-linux-using-vmaccess-extension.md).
 
-<!---HONumber=AcomDC_0928_2016-->
+<!---HONumber=AcomDC_1005_2016-->

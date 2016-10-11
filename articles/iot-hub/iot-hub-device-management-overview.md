@@ -1,9 +1,9 @@
 <properties
  pageTitle="Überblick zur Geräteverwaltung | Microsoft Azure"
- description="Überblick über die Azure IoT Hub-Geräteverwaltung: Gerätezwillinge, Geräteabfragen, Geräteaufträge"
+ description="Überblick über die Azure IoT Hub-Geräteverwaltung"
  services="iot-hub"
  documentationCenter=""
- authors="juanjperez"
+ authors="bzurcher"
  manager="timlt"
  editor=""/>
 
@@ -13,113 +13,107 @@
  ms.topic="get-started-article"
  ms.tgt_pltfrm="na"
  ms.workload="na"
- ms.date="04/29/2016"
- ms.author="juanpere"/>
+ ms.date="09/16/2016"
+ ms.author="bzurcher"/>
+
+
 
 # Überblick über die Azure IoT Hub-Geräteverwaltung (Vorschau)
 
-Die Azure IoT Hub-Geräteverwaltung ermöglicht Ihnen standardbasierte IoT-Geräteverwaltung, sodass Sie Ihre Geräte remote verwalten, konfigurieren und aktualisieren können.
+## Azure IoT Hub-Geräteverwaltung
 
-Die drei wichtigsten Konzepte für die Geräteverwaltung in Azure IoT sind:
+Bei der Azure IoT Hub-Geräteverwaltung werden die Features und das Erweiterbarkeitsmodell für Geräte und Back-Ends bereitgestellt, um die IoT-Geräteverwaltung für die vielen unterschiedlichen Geräte und Protokolle im IoT-Bereich nutzen zu können. Die Geräte reichen bei IoT von einfachen Sensoren und zweckgebundenen Microcontrollern bis zu leistungsfähigeren Gateways, mit denen die Verwendung von anderen Geräten und Protokollen ermöglicht wird. IoT-Lösungen unterscheiden sich auch erheblich in Bezug auf vertikale Domänen und Anwendungen mit einzigartigen Anwendungsfällen für die Bediener in den unterschiedlichen Domänen. Für IoT-Lösungen können Funktionen, Muster und Codebibliotheken der IoT Hub-Geräteverwaltung genutzt werden, um eine Geräteverwaltung für die verschiedenen Geräte und Benutzer zu ermöglichen.
 
-1.  **Gerätezwillinge**: die Darstellung des physischen Geräts in IoT Hub.
+## Einführung
 
-2.  **Geräteabfragen**: Sie können Gerätezwillinge suchen und aggregierte Kenntnisse mehrerer Gerätezwillinge generieren. Beispielsweise können Sie eine Abfrage ausführen, um alle Gerätezwillinge mit Firmwareversion 1.0 zu ermitteln.
+Ein entscheidender Punkt bei der Erstellung einer erfolgreichen IoT-Lösung ist die Festlegung einer Strategie, mit der Bediener die fortlaufende Verwaltung ihrer Geräteflotte bewältigen können. IoT-Bediener benötigen Tools und Anwendungen, die gleichzeitig einfach und zuverlässig sind und ihnen die Konzentration auf die strategischen Aspekte ihrer Arbeit ermöglichen. Mit Azure IoT Hub verfügen Sie über die Bausteine zum Erstellen von IoT-Anwendungen, mit denen die wichtigsten Muster der Geräteverwaltung abgedeckt werden können.
 
-3.  **Geräteaufträge**: eine für ein oder mehrere physische Geräte durchgeführte Aktion, z.B. Firmwareupdate, Neustart und Zurücksetzung auf Werkseinstellungen.
+Geräte verfügen über eine IoT Hub-Verwaltung, wenn für sie eine einfache Anwendung (der Geräteverwaltungs-Agent) ausgeführt wird, um für das Gerät eine sichere Cloudverbindung herzustellen. Mit dem Agent-Code kann ein Bediener auf Anwendungsseite den Gerätestatus per Remotezugriff ermitteln und Verwaltungsvorgänge durchführen, z.B. das Anwenden von Änderungen der Netzwerkkonfiguration oder das Bereitstellen von Firmwareupdates.
 
-## Gerätezwilling
+## Prinzipien der IoT-Geräteverwaltung
 
-Der Gerätezwilling ist die Darstellung eines physischen Geräts in Azure IoT. Das **Microsoft.Azure.Devices.Device**-Objekt wird verwendet, um den Gerätezwilling darzustellen.
+IoT ist mit besonderen Verwaltungsanforderungen verbunden, und mit einer Lösung müssen die folgenden Prinzipien der IoT-Geräteverwaltung erfüllt werden:
 
-![][img-twin]
+![][img-dm_principles]
 
-Der Gerätezwilling besteht aus folgenden Komponenten:
+- **Skalierung und Automation**: Für IoT sind einfache Tools erforderlich, mit denen Routineaufgaben automatisiert werden können und eine relativ kleine Gruppe von Bedienern Millionen von Geräten verwalten kann. Bediener erwarten Tag für Tag, dass Gerätevorgänge per Remotezugriff und als Massenvorgang erledigt werden können und dass sie nur benachrichtigt werden, wenn Probleme direkte Aufmerksamkeit erfordern.
 
-1.  **Gerätefelder**: Gerätefelder sind vordefinierte Eigenschaften, die sowohl für IoT Hub-Messaging als auch für die Geräteverwaltung verwendet werden. Sie unterstützen IoT Hub beim Identifizieren von physischen Geräten und Verbinden mit ihnen. Gerätefelder sind nicht mit dem Gerät synchronisiert und werden ausschließlich im Gerätezwilling gespeichert. Gerätefelder enthalten die Geräte-ID und Authentifizierungsinformationen.
+- **Flexibilität und Kompatibilität**: Das Ökosystem der IoT-Geräte ist äußerst vielfältig. Verwaltungstools müssen an eine Vielzahl von Geräteklassen, -plattformen und -protokolle angepasst werden. Die Bediener müssen alle Geräte unterstützen können – von einfachen eingebetteten Chips für Einzelvorgänge bis zu leistungsfähigen Computern mit vollem Funktionsumfang.
 
-2.  **Geräteeigenschaften**: Geräteeigenschaften sind ein vordefiniertes Wörterbuch von Eigenschaften, die das physische Gerät beschreiben. Das physische Gerät ist der Master jeder Geräteeigenschaft und der autoritative Speicher jedes entsprechenden Werts. Eine konsistente Darstellung dieser Eigenschaften ist im Gerätezwilling und in der Cloud gespeichert. Die Kohärenz und Aktualität unterliegen den Synchronisierungseinstellungen, wie in [Tutorial: Verwenden des Gerätezwillings][lnk-tutorial-twin] beschrieben. Einige Beispiele für Geräteeigenschaften sind Firmwareversion, Akkukapazität und der Namen des Herstellers.
+- **Kontexterkennung**: IoT-Umgebungen sind dynamisch und verändern sich ständig. Die Zuverlässigkeit des Diensts ist von entscheidender Bedeutung. Bei den Vorgängen der Geräteverwaltung müssen SLA-Wartungsfenster, Netzwerk- und Stromversorgungszustände, Bedingungen während der Nutzung und die Geolocation von Geräten berücksichtigt werden, um sicherzustellen, dass sich Ausfallzeiten aufgrund von Wartungsarbeiten nicht negativ auf wichtige Geschäftsvorgänge auswirken oder zu gefährlichen Situationen führen.
 
-3.  **Diensteigenschaften**: Diensteigenschaften sind **&lt;Schlüssel, Wert&gt;**-Paare, die der Entwickler dem Diensteigenschaften-Wörterbuch hinzufügt. Diese Eigenschaften erweitern das Datenmodell für den Gerätezwilling, sodass Sie das Gerät besser charakterisieren können. Diensteigenschaften sind nicht mit dem Gerät synchronisiert und werden ausschließlich im Gerätezwilling in der Cloud gespeichert. Ein Beispiel für eine Diensteigenschaft ist **&lt;NextServiceDate, 11/12/2017&gt;**, die genutzt werden könnte, um Geräte nach ihrem nächsten Wartungsdatum zu suchen.
+- **Verwaltung vieler Rollen**: Die Unterstützung der einzigartigen Workflows und Prozesse von IoT-Vorgängen ist sehr wichtig. Außerdem muss das Bedienpersonal trotz etwaiger Einschränkungen durch interne IT-Abteilungen harmonisch zusammenarbeiten und relevante Informationen zu Gerätevorgängen an Vorgesetzte und andere Personen mit Leitungsfunktion weitergeben.
 
-4.  **Tags**: Tags sind eine Teilmenge der Diensteigenschaften, die beliebige Zeichenfolgen statt Wörterbucheigenschaften sind. Mit Ihnen können Gerätezwillinge mit Anmerkungen versehen oder Geräte in Gruppen organisiert werden. Tags sind nicht mit dem Gerät synchronisiert und werden ausschließlich im Gerätezwilling gespeichert. Wenn Ihr Gerät z.B. einen physischen LKW darstellt, könnten Sie für jeden Typ von Ladung des LKWs ein Tag hinzufügen – **Äpfel**, **Orangen** und **Bananen**.
+## Lebenszyklus von IoT-Geräten 
 
-## Geräteabfragen
+IoT-Projekte unterscheiden sich zwar meist stark, aber es gibt für die Verwaltung von Geräten trotzdem allgemeingültige Muster. In Azure IoT lassen sich diese Muster innerhalb des IoT-Gerätelebenszyklus identifizieren, der aus fünf einzelnen Phasen besteht:
 
-Im vorherigen Abschnitt haben Sie die verschiedenen Komponenten des Gerätezwillings kennen gelernt. Jetzt erfahren Sie, wie Sie Gerätezwillinge in der IoT Hub-Geräteregistrierung basierend auf Geräte- und Diensteigenschaften oder Tags suchen können. Sie würden z.B. eine Abfrage verwenden, um nach Geräten suchen, die aktualisiert werden müssen. Sie können Abfragen nach allen Geräten mit einer bestimmten Firmwareversion durchführen und das Ergebnis an eine bestimmte Aktion senden (in IoT Hub als Geräteauftrag bezeichnet, der im folgenden Abschnitt erläutert wird).
+![][img-device_lifecycle]
 
-Sie können Tags und Eigenschaften zur Abfrage verwenden:
+1. **Planung**: Bediener müssen in die Lage versetzt werden, ein Schema der Geräteeigenschaften zu erstellen. Damit können sie eine Gruppe von Geräten einfach und präzise abfragen und Massenvorgänge zu Verwaltungszwecken durchführen.
 
--   Bei der Abfrage nach Gerätezwillingen mit Tags übergeben Sie ein Zeichenfolgenarray, und die Abfrage gibt den Satz von Geräten zurück, die mit allen diesen Zeichenfolgen gekennzeichnet sind.
+    *Bausteine*: [Tutorial: Get started with device twins (preview)][lnk-twins-getstarted] (Tutorial: Erste Schritte mit Gerätezwillingen (Vorschau)), [Tutorial: Use desired properties to configure devices (preview)][lnk-twin-properties] (Tutorial: Verwenden von gewünschten Eigenschaften zum Konfigurieren von Geräten (Vorschau))
 
--   Bei der Abfrage nach Gerätezwillingen mit Dienst- oder Geräteeigenschaften verwenden Sie einen JSON-Abfrageausdruck. Das folgende Beispiel zeigt, wie Sie eine Abfrage für alle Geräte mit der Geräteeigenschaft mit dem Schlüssel **FirmwareVersion** und **1.0** durchführen könnten. Sie sehen, dass der **type** der Eigenschaft **device** ist, was darauf hinweist, dass die Abfrage basierend auf Geräte-, nicht Diensteigenschaften durchgeführt wird:
+2. **Bereitstellung**: Neue Geräte können gegenüber IoT Hub sicher authentifiziert werden, und Bediener können die Funktionen und den aktuellen Zustand eines Geräts sofort ermitteln.
 
-  ```
-  {                           
-      "filter": {                  
-        "property": {                
-          "name": "FirmwareVersion",   
-          "type": "device"             
-        },                           
-        "value": "1.0",              
-        "comparisonOperator": "eq",  
-        "type": "comparison"         
-      },                           
-      "project": null,             
-      "aggregate": null,           
-      "sort": null                 
-  }
-  ```
+    *Bausteine*: [Erste Schritte mit Azure IoT Hub für .NET][lnk-hub-getstarted], [Tutorial: Use desired properties to configure devices (preview)][lnk-twin-properties] (Tutorial: Verwenden von gewünschten Eigenschaften zum Konfigurieren von Geräten (Vorschau))
 
-## Geräteaufträge
+3. **Konfiguration**: Massenvorgänge zum Ändern der Konfiguration und Firmwareupdates für Geräte können durchgeführt werden, während gleichzeitig sowohl die Integrität als auch die Sicherheit aufrechterhalten wird.
 
-Das nächste Konzept in der Geräteverwaltung sind Geräteaufträge, die die Koordination mehrstufiger Orchestrierungen auf mehreren Geräten ermöglichen.
+    *Bausteine*: [Tutorial: Use desired properties to configure devices (preview)][lnk-twin-properties] (Tutorial: Verwenden von gewünschten Eigenschaften zum Konfigurieren von Geräten (Vorschau)), [Tutorial: Use direct methods][lnk-c2d-methods] (Tutorial: Verwenden von direkten Methoden), [Tutorial: Schedule and broadcast jobs (preview)][lnk-jobs] (Tutorial: Planen und Übertragen von Aufträgen (Vorschau))
 
-Es gibt sechs Typen von Geräteaufträgen, die zurzeit von der Azure IoT Hub-Geräteverwaltung bereitgestellt werden (es werden zusätzliche Aufträge hinzugefügt, sobald Kunden sie benötigen):
+4. **Überwachung**: Ermöglicht das Überwachen der Integrität der gesamten Geräteflotte und des Status von fortlaufenden Updaterollouts zum Warnen der Bediener vor Problemen, die ggf. Aufmerksamkeit erfordern.
 
-- **Firmwareupdate**: Dient zum Aktualisieren der Firmware (bzw. des Betriebssystemimage) auf dem physischen Gerät.
-- **Neustart**: Startet das physische Gerät neu.
-- **Zurücksetzung auf Werkseinstellungen**: Setzt die Firmware (bzw. das Betriebssystemimage) des physischen Geräts auf ein ab Werk bereitgestelltes Sicherungsimage zurück, das auf dem Gerät gespeichert ist.
-- **Konfigurationsaktualisierung**: Konfiguriert den IoT Hub-Client-Agent, der auf dem physischen Gerät ausgeführt wird.
-- **Geräteeigenschaft lesen**: Dient zum Abrufen des aktuellsten Werts einer Geräteeigenschaft auf dem physischen Gerät.
-- **Geräteeigenschaft schreiben**: Ändert eine Geräteeigenschaft auf dem physischen Gerät.
+    *Bausteine*: [Tutorial: Use desired properties to configure devices (preview)][lnk-twin-properties] (Tutorial: Verwenden von gewünschten Eigenschaften zum Konfigurieren von Geräten (Vorschau))
 
-Weitere Informationen zur Verwendung jedes dieser Aufträge finden Sie in der [API-Dokumentation für C# und node.js][lnk-apidocs].
+5. **Außerbetriebnahme**: Geräte werden nach einem Ausfall oder Upgradezyklus oder am Ende der Lebensdauer ausgetauscht oder außer Betrieb genommen.
 
-Ein Auftrag kann für mehrere Geräte ausgeführt werden. Beim Starten eines Auftrags wird ein untergeordneter Auftrag für jedes dieser Geräte erstellt. Ein untergeordneter Auftrag wird auf einem einzelnen Gerät ausgeführt. Jeder untergeordnete Auftrag verfügt über einen Zeiger auf den übergeordneten Auftrag. Der übergeordnete Auftrag ist nur ein Container für die untergeordneten Aufträge. Er implementiert keine Logik zur Unterscheidung zwischen Gerätetypen (z.B. Unterscheidung zwischen Aktualisieren eines Intel Edison-Geräts und Aktualisieren eines Raspberry Pi-Geräts). Das folgende Diagramm veranschaulicht die Beziehung zwischen einem übergeordneten Auftrag, den ihm untergeordneten Aufträgen und den zugehörigen physischen Geräten.
+    *Bausteine*:
+    
+## Muster der IoT Hub-Geräteverwaltung
 
-![][img-jobs]
+IoT Hub ermöglicht die folgenden (anfänglichen) Muster für die Geräteverwaltung. Wie in den [Tutorials][lnk-get-started] veranschaulicht, können Sie diese Muster erweitern und genau an Ihr Szenario anpassen und basierend auf diesen Hauptmustern auch neue Muster für andere Fälle entwerfen.
 
-Sie können den Auftragsverlauf abfragen, um den Status von Aufträgen zu erkennen, die Sie gestartet haben. Einige Beispiele für Abfragen finden Sie in [unserer Abfragebibliothek][lnk-query-samples].
+1. **Neustart**: Die Back-End-Anwendung informiert das Gerät per D2C-Methode darüber, dass ein Neustart initiiert wurde. Das Gerät nutzt die vom Gerätezwilling gemeldeten Eigenschaften zum Aktualisieren des Neustartstatus des Geräts.
 
-## Geräteimplementierung
+    ![][img-reboot_pattern]
 
-Wir haben die dienstseitigen Konzepte behandelt und wenden uns jetzt dem Erstellen eines verwalteten physischen Geräts zu. Mit der Clientbibliothek der Azure IoT Hub-Geräteverwaltung können Sie Ihre IoT-Geräte mit Azure IoT Hub verwalten. Das „Verwalten“ umfasst Aktionen wie das Neustarten, Zurücksetzen auf die Werkseinstellung und Aktualisieren der Firmware. Derzeit stellen wir eine plattformunabhängige C-Bibliothek bereit, aber wir werden in Kürze Unterstützung für weitere Sprachen hinzufügen.
+2. **Zurücksetzung auf Werkseinstellungen**: Die Back-End-Anwendung informiert das Gerät per D2C-Methode darüber, dass eine Zurücksetzung auf die Werkseinstellungen initiiert wurde. Das Gerät nutzt die vom Gerätezwilling gemeldeten Eigenschaften zum Aktualisieren des Zurücksetzungsstatus des Geräts.
 
-Die Clientbibliothek der Geräteverwaltung hat zwei Hauptaufgaben:
+    ![][img-facreset_pattern]
 
-- Synchronisieren von Eigenschaften auf dem physischen Gerät mit dem entsprechenden Gerätezwilling in IoT Hub
-- Choreographieren von Geräteaufträgen, die von IoT Hub an das Gerät gesendet werden
+3. **Konfiguration**: Die Back-End-Anwendung verwendet die vom Gerätezwilling gewünschten Eigenschaften zum Konfigurieren der Software, die auf dem Gerät ausgeführt wird. Das Gerät nutzt die vom Gerätezwilling gemeldeten Eigenschaften zum Aktualisieren des Konfigurationsstatus des Geräts.
 
-Weitere Informationen zu diesen Aufgaben und der Implementierung auf dem physischen Gerät finden Sie unter [Einführung in die Clientbibliothek der Azure IoT Hub-Geräteverwaltung für C][lnk-library-c].
+    ![][img-config_pattern]
+
+4. **Firmwareupdate**: Die Back-End-Anwendung informiert das Gerät per D2C-Methode darüber, dass ein Firmwareupdate initiiert wurde. Das Gerät initiiert einen Prozess mit mehreren Schritten, um das Firmwarepaket herunterzuladen, das Firmwarepaket anzuwenden und schließlich wieder eine Verbindung mit dem IoT Hub-Dienst herzustellen. Während dieses gesamten Prozesses mit mehreren Schritten verwendet das Gerät die vom Gerätezwilling gemeldeten Eigenschaften, um die Fortschrittsanzeige und den Status des Geräts zu aktualisieren.
+
+    ![][img-fwupdate_pattern]
+
+5. **Fortschritt und Status von Meldungen**: Das Anwendungs-Back-End führt Gerätezwillingabfragen für eine Gruppe von Geräten durch, um den Status und Fortschritt von Aktionen zu melden, die auf dem Gerät ausgeführt werden.
+
+    ![][img-report_progress_pattern]
 
 ## Nächste Schritte
 
-Mit den IoT-Geräte-SDKs können Sie Clientanwendungen auf einer Vielzahl von Gerätehardwareplattformen und Betriebssystemen implementieren. Die IoT-Geräte-SDKs enthalten Bibliotheken, die das Senden von Telemetriedaten an einen IoT Hub und das Empfangen von Cloud-zu-Gerät-Befehlen ermöglichen. Wenn Sie die SDKs verwenden, können Sie für die Kommunikation mit IoT Hub unter verschiedenen Netzwerkprotokollen auswählen. Erfahren Sie mehr in den [Informationen zu Geräte-SDKs][lnk-device-sdks].
+Mit den von Azure IoT Hub bereitgestellten Bausteinen können Entwickler IoT-Anwendungen erstellen, mit denen die besonderen Anforderungen von IoT-Bedienern in jeder Phase des Gerätelebenszyklus erfüllt werden.
 
 Weitere Informationen zu den Features der Azure IoT Hub-Geräteverwaltung finden Sie im Tutorial [Erste Schritte mit der Azure IoT Hub-Geräteverwaltung][lnk-get-started].
 
 <!-- Images and links -->
-[img-twin]: media/iot-hub-device-management-overview/image1.png
-[img-jobs]: media/iot-hub-device-management-overview/image2.png
-[img-client]: media/iot-hub-device-management-overview/image3.png
+[img-dm_principles]: media/iot-hub-device-management-overview/image4.png
+[img-device_lifecycle]: media/iot-hub-device-management-overview/image5.png
+[img-config_pattern]: media/iot-hub-device-management-overview/configuration-pattern.png
+[img-facreset_pattern]: media/iot-hub-device-management-overview/facreset-pattern.png
+[img-fwupdate_pattern]: media/iot-hub-device-management-overview/fwupdate-pattern.png
+[img-reboot_pattern]: media/iot-hub-device-management-overview/reboot-pattern.png
+[img-report_progress_pattern]: media/iot-hub-device-management-overview/report-progress-pattern.png
 
-[lnk-lwm2m]: http://technical.openmobilealliance.org/Technical/technical-information/release-program/current-releases/oma-lightweightm2m-v1-0
-[lnk-library-c]: iot-hub-device-management-library.md
 [lnk-get-started]: iot-hub-device-management-get-started.md
-[lnk-tutorial-twin]: iot-hub-device-management-device-twin.md
-[lnk-apidocs]: http://azure.github.io/azure-iot-sdks/
-[lnk-query-samples]: https://github.com/Azure/azure-iot-sdks/blob/dmpreview/doc/get_started/dm_queries/query-samples.md
-[lnk-device-sdks]: https://github.com/Azure/azure-iot-sdks
+[lnk-twins-getstarted]: iot-hub-node-node-twin-getstarted.md
+[lnk-twin-properties]: iot-hub-node-node-twin-how-to-configure.md
+[lnk-hub-getstarted]: iot-hub-csharp-csharp-getstarted.md
+[lnk-c2d-methods]: iot-hub-c2d-methods.md
+[lnk-jobs]: iot-hub-schedule-jobs.md
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_1005_2016-->

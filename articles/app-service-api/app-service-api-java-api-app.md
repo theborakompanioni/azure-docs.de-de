@@ -24,7 +24,7 @@ In diesem Lernprogramm erfahren Sie, wie Sie eine Java-Anwendung erstellen und m
 
 ## Voraussetzungen
 
-1. [Java Developer Kit 8] \(oder höher)
+1. [Java Developer Kit 8] (oder höher)
 1. [Maven] auf dem Entwicklungscomputer
 1. [Git] auf dem Entwicklungscomputer
 1. Ein kostenpflichtiges Abonnement für oder eine [kostenlose Testversion] von [Microsoft Azure]
@@ -338,4 +338,4 @@ Weitere Informationen zum Verwenden von Java in Azure finden Sie im [Java Develo
 [copy-git-repo-url]: ./media/app-service-api-java-api-app/copy-git-repo-url.png
 [postman-calling-azure-contacts]: ./media/app-service-api-java-api-app/postman-calling-azure-contacts.png
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_1005_2016-->

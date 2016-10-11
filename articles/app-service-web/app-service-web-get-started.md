@@ -20,9 +20,7 @@
 	
 # Bereitstellen Ihrer ersten Web-App für Azure in fünf Minuten
 
-In diesem Tutorial erfahren Sie, wie Sie Ihre erste Web-App für [Azure App Service](../app-service/app-service-value-prop-what-is.md) bereitstellen. 
-Mit App Service können Sie Web-Apps, [Mobile App-Back-Ends](/documentation/learning-paths/appservice-mobileapps/) 
-und [API-Apps](../app-service-api/app-service-api-apps-why-best-platform.md) erstellen.
+In diesem Tutorial erfahren Sie, wie Sie Ihre erste Web-App für [Azure App Service](../app-service/app-service-value-prop-what-is.md) bereitstellen. Mit App Service können Sie Web-Apps, [Mobile App-Back-Ends](/documentation/learning-paths/appservice-mobileapps/) und [API-Apps](../app-service-api/app-service-api-apps-why-best-platform.md) erstellen.
 
 In diesem Tutorial führen Sie folgende Schritte aus:
 
@@ -33,11 +31,10 @@ In diesem Tutorial führen Sie folgende Schritte aus:
 
 ## Voraussetzungen
 
-- [Git installieren](http://www.git-scm.com/downloads). Stellen Sie sicher, dass die Installation erfolgreich war, indem Sie `git --version` in einer neuen Windows-Eingabeaufforderung, 
-einem PowerShell-Fenster, einer Linux-Shell oder einem OS X-Terminal ausführen.
-- Microsoft Azure-Konto erstellen. Falls Sie noch kein Konto haben, können Sie sich 
-[für eine kostenlose Testversion registrieren](/pricing/free-trial/?WT.mc_id=A261C142F) oder 
-[Ihre Visual Studio-Abonnentenvorteile aktivieren](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F).
+
+- [Git installieren](http://www.git-scm.com/downloads). Stellen Sie sicher, dass die Installation erfolgreich war, indem Sie `git --version` in einer neuen Windows-Eingabeaufforderung, einem PowerShell-Fenster, einer Linux-Shell oder einem OS X-Terminal ausführen.
+- Microsoft Azure-Konto erstellen. Falls Sie noch kein Konto haben, können Sie sich [für eine kostenlose Testversion registrieren](/pricing/free-trial/?WT.mc_id=A261C142F) oder [Ihre Visual Studio-Abonnentenvorteile aktivieren](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F).
+
 
 >[AZURE.NOTE] Zum [Testen von App Service](http://go.microsoft.com/fwlink/?LinkId=523751) benötigen Sie kein Azure-Konto. Sie können eine Starter-App erstellen und bis zu einer Stunde damit experimentieren – ohne Kreditkarte und ohne jegliche Verpflichtungen.
 
@@ -54,8 +51,7 @@ einem PowerShell-Fenster, einer Linux-Shell oder einem OS X-Terminal ausführen.
 
     - **App-Name**: Geben Sie einen eindeutigen Namen ein.
     - **Ressourcengruppe**: Wählen Sie **Neu erstellen** aus, und geben Sie einen Namen für die Ressourcengruppe ein.
-    - **App Service-Plan/Standort**: Klicken Sie auf diese Option, um sie zu konfigurieren. Klicken Sie anschließend auf **Neu erstellen**, um den Namen, Standort und 
-    Tarif des App Service-Plans festzulegen. Sie können auch den Tarif **Free** verwenden.
+    - **App Service-Plan/Standort**: Klicken Sie auf diese Option, um sie zu konfigurieren. Klicken Sie anschließend auf **Neu erstellen**, um den Namen, Standort und Tarif des App Service-Plans festzulegen. Sie können auch den Tarif **Free** verwenden.
 
     Wenn Sie fertig sind, sollte das Blatt für die App-Erstellung wie folgt aussehen:
 
@@ -99,7 +95,7 @@ Als Nächstes stellen wir mithilfe von Git Code in Azure bereit.
 
     ![Klonen des App-Beispielcodes für Ihre erste Web-App in Azure](./media/app-service-web-get-started/html-git-clone.png)
 
-    Verwenden Sie für *&lt;github_sample_url>* je nach gewünschtem Framework eine der folgenden URLs:
+    Verwenden Sie für *&lt;github\_sample\_url>* je nach gewünschtem Framework eine der folgenden URLs:
 
     - HTML, CSS, JS: [https://github.com/Azure-Samples/app-service-web-html-get-started.git](https://github.com/Azure-Samples/app-service-web-html-get-started.git)
     - ASP.NET: [https://github.com/Azure-Samples/app-service-web-dotnet-get-started.git](https://github.com/Azure-Samples/app-service-web-dotnet-get-started.git)
@@ -147,9 +143,7 @@ Lesen Sie den Artikel zu den bevorzugten Schritten für die Entwicklung und Bere
 
 Sie können auch weiter mit Ihrer ersten Web-App arbeiten. Beispiel:
 
-- Testen Sie [weitere Methoden zum Bereitstellen Ihres Codes in Azure](../app-service-web/web-sites-deploy.md). Wenn Sie eines Ihrer GitHub-Repositorys zur Bereitstellung verwenden möchten, wählen Sie beispielsweise unter 
-**Bereitstellungsoptionen** einfach **GitHub** anstelle von **Lokales Git-Repository** aus.
-- Entwickeln Sie Ihre Azure-App weiter. Authentifizieren Sie Ihre Benutzer. Skalieren Sie die App je nach Bedarf. Richten Sie einige Leistungswarnungen ein. Es sind jeweils nur wenige Klicks erforderlich. Weitere Informationen finden Sie unter 
-[Hinzufügen von Funktionen zu Ihrer ersten Web-App](app-service-web-get-started-2.md).
+- Testen Sie [weitere Methoden zum Bereitstellen Ihres Codes in Azure](../app-service-web/web-sites-deploy.md). Wenn Sie eines Ihrer GitHub-Repositorys zur Bereitstellung verwenden möchten, wählen Sie beispielsweise unter **Bereitstellungsoptionen** einfach **GitHub** anstelle von **Lokales Git-Repository** aus.
+- Entwickeln Sie Ihre Azure-App weiter. Authentifizieren Sie Ihre Benutzer. Skalieren Sie die App je nach Bedarf. Richten Sie einige Leistungswarnungen ein. Es sind jeweils nur wenige Klicks erforderlich. Weitere Informationen finden Sie unter [Hinzufügen von Funktionen zu Ihrer ersten Web-App](app-service-web-get-started-2.md).
 
-<!----HONumber=AcomDC_0920_2016-->
+<!---HONumber=AcomDC_1005_2016-->

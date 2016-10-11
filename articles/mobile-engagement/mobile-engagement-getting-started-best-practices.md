@@ -13,7 +13,7 @@
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="mobile-multiple"
 	ms.workload="mobile" 
-	ms.date="07/07/2016"
+	ms.date="10/04/2016"
 	ms.author="wesmc;ricksal"/>
 
 # Azure Mobile Engagement – Leitfaden mit ersten Schritten und Best Practices
@@ -37,7 +37,7 @@ Medienbezogene Apps weisen tendenziell die längste Nutzungsdauer bei Benutzern 
 
 Das Azure Mobile Engagement-Programm wurde entwickelt, um Ihnen zu helfen, den Lebenszyklus und die Nutzungsdauer Ihrer App zu erweitern, indem eine Methode zum Sammeln und Analysieren ausführlicher Informationen zur Verwendung der App bereitgestellt wird. Es hilft Ihnen dabei, Ihren Benutzerstamm anhand des Verhaltens zu klassifizieren und fokussierte Kampagnen für die Übermittlung von Pushbenachrichtigungen und Nachrichten innerhalb der App an identifizierte Benutzersegmente zu erstellen. Key Performance Indicators (KPIs) messen, wie aktiv die Benutzer mit verschiedenen Aspekten der App umgehen. Azure Mobile Engagement bietet die Methoden, mit denen Sie diese KPIs bestimmen können. Sie können damit die Rendite (ROI) erhöhen, indem Sie die Infrastruktur bereitstellen, die Sie zur Steigerung der Einbindung in die mobile App benötigen.
 
-Um Azure Mobile Engagement optimal nutzen zu können, müssen Sie mit einem gut durchdachten Plan für die Einbindung beginnen. Ihr Plan hilft Ihnen, die genauen Daten zu identifizieren, die Sie benötigen, um Ihren Benutzerstamm zu segmentieren. Dies kann auf dem Verhalten und auf Erfahrungen mit der App basieren. Damit der Plan erfolgreich ist, empfiehlt es sich, die KPIs zu definieren, die die Ziele Ihrer App messen. Mit definierten eindeutigen Leistungsindikatoren können Sie die erforderliche Logik einfach in Ihre App einbetten, um genaue Daten zu sammeln, mit denen Sie die KPIs analysieren und auswerten können. Dieses Thema ist ein Handbuch mit bewährten Methoden zum Definieren von KPIs, die Sie mit dem Einbindungsplan verwenden.
+Um Azure Mobile Engagement optimal nutzen zu können, müssen Sie mit einem gut durchdachten Plan für die Einbindung beginnen. Ihr Plan hilft Ihnen, die genauen Daten zu identifizieren, die Sie benötigen, um Ihren Benutzerstamm zu segmentieren. Dies kann auf dem Verhalten und auf Erfahrungen mit der App basieren. Damit der Plan erfolgreich ist, empfiehlt es sich, die KPIs zu definieren, die die Ziele Ihrer App messen. Mit definierten eindeutigen Leistungsindikatoren können Sie die erforderliche Logik einfach in Ihre App einbetten, um genaue Daten zu sammeln, mit denen Sie die KPIs analysieren und auswerten können. Bei diesem Thema handelt es sich um ein Handbuch mit bewährten Methoden zum Definieren von KPIs, die Sie mit dem Einbindungsplan verwenden.
 
 
 ## Schritt 1: Definieren der KPIs entsprechend dem BET-Modell
@@ -55,7 +55,7 @@ Die Erstellung von Business-KPIs sollte am einfachsten sein. Sie haben diese wah
 - Business-KPIs für Medien
 	- Anzahl von Anzeigen, auf die geklickt wurde
 	- Anzahl der Seitenaufrufe pro Benutzer
-	- Anzahl der aktuellen Abonnements
+	- Anzahl aktueller Abonnements
 - Business-KPIs für Spiele
 	- Anzahl der Einkäufe in der App
 	- Durchschnittlicher Umsatz pro Benutzer (ARPU)
@@ -116,7 +116,7 @@ Erstellen Sie ein KPI-Dashboard mit den folgenden Informationen
 3.	Wo befinden sich diese Daten für meine Anwendung (Bildschirm, Einstellungen, System...)?
 4.	Kann ich eine Einbindungssequenz für diesen KPI wiedergeben?
 
-Beispiele und eine Anleitung finden Sie im Arbeitsblatt **KPI Builder** in [Media Playbook Template][Media Playbook link] \(in englischer Sprache).
+Beispiele und eine Anleitung finden Sie im Arbeitsblatt **KPI Builder** in [Media Playbook Template][Media Playbook link] (in englischer Sprache).
 
 
 
@@ -251,7 +251,7 @@ Azure Mobile Engagement bietet zwei Möglichkeiten, um zu verhindern, dass Ihre 
 
 Wenden Sie ein wenig Zeit auf, Ihre Ziele zusammenzufassen und Kampagnen zu definieren, die mit bestimmten Sequenzen wiedergeben werden. Stellen Sie sicher, dass Sie den 3W-Ansatz auf Benachrichtigungen in Ihren Kampagnen anwenden.
 
-Beispiele und eine Anleitung finden Sie im Arbeitsblatt **Engagement Program** in [Media Playbook Template][Media Playbook link] \(in englischer Sprache).
+Beispiele und eine Anleitung finden Sie im Arbeitsblatt **Engagement Program** in [Media Playbook Template][Media Playbook link] (in englischer Sprache).
 
 
 ## Schritt 3: App-Integration
@@ -356,7 +356,7 @@ Testen Sie alle Typen von Benachrichtigungsverhalten gründlich, die Sie in Ihre
 
 #### Einrichtung
 
-Das Einrichten von Azure Mobile Engagement ist sehr einfach. Die gesamte Dokumentation im Zusammenhang mit der Benutzeroberfläche steht auf der Azure Mobile Engagement-Website unter [Durch die Benutzeroberfläche navigieren](mobile-engagement-user-interface.md) zur Verfügung.
+Das Einrichten von Azure Mobile Engagement ist sehr einfach. Die gesamte Dokumentation im Zusammenhang mit der Benutzeroberfläche steht auf der Azure Mobile Engagement-Website unter [Durch die Benutzeroberfläche navigieren](mobile-engagement-user-interface-home.md) zur Verfügung.
 
 Es wird empfohlen, dass Sie zunächst die richtigen Rollen und Rollenmitgliedschaften für die Benutzer des Projekts einrichten. Dadurch können Sie den entsprechenden Zugriff auf die Plattform für alle Benutzer verwalten. Mögliche Rollen:
 
@@ -407,4 +407,4 @@ Nachdem Sie einige Erfahrungen gesammelt haben, könnten Sie Ihren Einbindungspr
 <!--Link references-->
 [Media Playbook link]: https://github.com/Azure/azure-mobile-engagement-samples/tree/master/Playbooks
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_1005_2016-->

@@ -14,18 +14,18 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="06/07/2016"
+	ms.date="09/27/2016"
 	ms.author="davidmu"/>
 
 # Erstellen einer Windows-VM mit dem Resource Manager und PowerShell
 
 In diesem Artikel ist beschrieben, wie Sie einen virtuellen Azure-Computer, der Windows Server ausführt, sowie die dafür erforderlichen Ressourcen mithilfe von [Resource Manager](../resource-group-overview.md) und PowerShell schnell erstellen.
 
-Alle in diesem Artikel beschriebenen Schritte sind erforderlich, um einen virtuellen Computer zu erstellen, und es dauert ungefähr 30 Minuten, diese Schritte auszuführen.
+Alle in diesem Artikel beschriebenen Schritte sind erforderlich, um einen virtuellen Computer zu erstellen. Die Durchführung dauert etwa 30 Minuten.
 
 ## Schritt 1: Installieren von Azure PowerShell
 
-Unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md) finden Sie Informationen dazu, wie Sie die neueste Version von Azure PowerShell installieren, das gewünschte Abonnement auswählen und sich bei Ihrem Azure-Konto anmelden.
+Unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md) erfahren Sie, wie Sie die neueste Version von Azure PowerShell installieren, Ihr Abonnement auswählen und sich bei Ihrem Konto anmelden.
         
 ## Schritt 2: Erstellen einer Ressourcengruppe
 
@@ -35,7 +35,7 @@ Erstellen Sie zunächst eine Ressourcengruppe.
 
 	    Get-AzureRmLocation | sort Location | Select Location
         
-    Die Ausgabe sollte folgendermaßen aussehen:
+    Die Ausgabe sollte in etwa wie das folgende Beispiel aussehen:
     
         Location
         --------
@@ -122,7 +122,7 @@ Nachdem Sie nun alle Komponenten eingerichtet haben, können Sie den virtuellen 
 
         $cred = Get-Credential -Message "Type the name and password of the local administrator account."
         
-    Das Kennwort muss acht bis 123 Zeichen lang sein und zur Erfüllung der Komplexitätsanforderungen drei der folgenden Elemente enthalten: Kleinbuchstabe, Großbuchstabe, Ziffer und Sonderzeichen. Weitere Informationen finden Sie unter den [Anforderungen für Benutzernamen und Kennwörter](virtual-machines-windows-faq.md#what-are-the-username-requirements-when-creating-a-vm).
+    Das Kennwort muss 12 bis 123 Zeichen lang sein und mindestens einen Kleinbuchstaben, einen Großbuchstaben, eine Zahl und ein Sonderzeichen enthalten.
         
 2. Ersetzen Sie den Wert von **$vmName** durch den Namen des virtuellen Computers. Erstellen Sie die Variable und die Konfiguration des virtuellen Computers.
 
@@ -146,7 +146,7 @@ Nachdem Sie nun alle Komponenten eingerichtet haben, können Sie den virtuellen 
 
         $vm = Add-AzureRmVMNetworkInterface -VM $vm -Id $nic.Id
         
-6. Ersetzen Sie den Wert von **$blobPath** durch den gespeicherten Pfad und Dateinamen, den die virtuelle Festplatte verwendet. Die virtuelle Festplattendatei wird normalerweise in einem Container gespeichert (Beispiel: **vhds/WindowsVMosDisk.vhd**). Erstellen Sie die Variablen.
+6. Ersetzen Sie den Wert von **$blobPath** durch einen gespeicherten Pfad und Dateinamen der virtuellen Festplatte. Die virtuelle Festplattendatei wird normalerweise in einem Container gespeichert (Beispiel: **vhds/WindowsVMosDisk.vhd**). Erstellen Sie die Variablen.
 
         $blobPath = "vhds/WindowsVMosDisk.vhd"
         $osDiskUri = $storageAcc.PrimaryEndpoints.Blob.ToString() + $blobPath
@@ -169,7 +169,7 @@ Nachdem Sie nun alle Komponenten eingerichtet haben, können Sie den virtuellen 
 ## Nächste Schritte
 
 - Falls bei der Bereitstellung Probleme aufgetreten sind, empfiehlt sich unter Umständen die Lektüre des Artikels [Problembehandlung beim Bereitstellen von Ressourcengruppen mit dem Azure-Portal](../resource-manager-troubleshoot-deployments-portal.md).
-- Informationen zum Verwalten des soeben erstellten virtuellen Computers finden Sie unter [Verwalten von virtuellen Computern mit Azure Resource Manager und PowerShell](virtual-machines-windows-ps-manage.md).
+- Informationen zur Verwaltung des erstellten virtuellen Computers finden Sie unter [Verwalten von virtuellen Computern mit Azure Resource Manager und PowerShell](virtual-machines-windows-ps-manage.md).
 - Nutzen Sie die Vorteile der vorlagenbasierten Erstellung virtueller Computer, indem Sie sich die Informationen unter [Erstellen eines virtuellen Windows-Computers mit einer Resource Manager-Vorlage](virtual-machines-windows-ps-template.md) durchlesen.
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_1005_2016-->

@@ -2,7 +2,7 @@
 - [Linux](../articles/iot-hub/iot-hub-linux-gateway-sdk-get-started.md)
 - [Windows](../articles/iot-hub/iot-hub-windows-gateway-sdk-get-started.md)
 
-Dieser Artikel beschreibt eine ausführliche exemplarische Vorgehensweise für den [Hello World-Beispielcode][lnk-helloworld-sample] zur Veranschaulichung der grundlegenden Komponenten der [Azure IoT Gateway SDK][lnk-gateway-sdk]-Architektur. Das Beispiel verwendet das Gateway SDK zum Erstellen eines einfachen Gateways, das alle fünf Sekunden eine „Hello World“-Nachricht in eine Datei protokolliert.
+Dieser Artikel beschreibt eine ausführliche exemplarische Vorgehensweise für den [Hello World-Beispielcode][lnk-helloworld-sample] zur Veranschaulichung der grundlegenden Komponenten der [Azure IoT Gateway SDK][lnk-gateway-sdk]-Architektur. In dem Beispiel wird das IoT Hub Gateway SDK verwendet, um ein einfaches Gateway zu erstellen, das alle fünf Sekunden eine Hello World-Nachricht in einer Datei protokolliert.
 
 Diese Anleitung umfasst:
 
@@ -21,7 +21,7 @@ Bevor Sie den Beispielcode untersuchen oder selbst mithilfe des Gateway SDK ein 
 
 Sie erstellen ein Gateway mit dem Azure IoT Gateway SDK, indem Sie *Module* erstellen und zusammenstellen. Module verwenden *Nachrichten*, um untereinander Daten auszutauschen. Ein Modul empfängt eine Nachricht, führt eine Aktion damit aus, transformiert sie optional in eine neue Nachricht und veröffentlicht sie dann zur Verarbeitung an andere Module, Einige Module erzeugen nur neue Nachrichten und verarbeiten niemals eingehende Nachrichten. Eine Modulkette erstellt eine Datenverarbeitungspipeline, wobei jedes Modul an einem bestimmten Punkt dieser Pipeline eine Transformation der Daten ausführt.
 
-![][1]
+![Eine Modulkette, die mit dem Azure IoT Gateway SDK im Gateway erstellt wurde][1]
  
 Das SDK enthält Folgendes:
 
@@ -31,7 +31,7 @@ Das SDK enthält Folgendes:
 
 Das SDK stellt eine Abstraktionsschicht bereit, mit deren Hilfe Sie Gateways erstellen können, die auf einer Vielzahl von Betriebssystemen und Plattformen ausgeführt werden können.
 
-![][2]
+![Abstraktionsschicht des Azure IoT Hub Gateway SDKs][2]
 
 ### Meldungen
 
@@ -39,7 +39,7 @@ Die Vorstellung, dass Module einander Nachrichten übergeben, ist eine praktisch
 
 Ein Modul verwendet die Funktion **Broker\_Publish**, um eine Nachricht für den Broker zu veröffentlichen. Der Broker übermittelt Nachrichten durch Aufrufen einer Rückruffunktion an ein Modul. Eine Nachricht besteht aus einem Satz aus Schlüssel-Wert-Eigenschaften und Inhalten, der als Arbeitsspeicherblock übergeben wird.
 
-![][3]
+![Die Rolle des Brokers im Azure IoT Gateway SDK][3]
 
 ### Nachrichtenrouting und -filterung
 
@@ -52,7 +52,7 @@ Das Hello World-Beispiel veranschaulicht die Konzepte, die im vorherigen Abschni
 -	Das Modul *hello world* erstellt alle fünf Sekunden eine Nachricht und übergibt sie an das Modul „logger“.
 -	Das Modul *logger* schreibt die empfangene Nachricht in eine Datei.
 
-![][4]
+![Mit dem Azure IoT Gateway SDK erstellte Architektur des Hello World-Beispiels][4]
 
 Wie im vorherigen Abschnitt beschrieben, übergibt das Hello World-Modul Nachrichten nicht direkt an das Protokollierungsmodul. Stattdessen veröffentlicht es alle fünf Sekunden eine Nachricht für den Broker.
 
@@ -60,7 +60,7 @@ Das Modul „logger“ empfängt die Nachricht vom Broker und reagiert darauf, i
 
 Das Modul „logger“ verarbeitet nur Nachrichten des Brokers. Es veröffentlicht niemals neue Nachrichten für den Broker.
 
-![][5]
+![Funktionsweise der Weiterleitung von Nachrichten zwischen Modulen im Azure IoT Gateway SDK durch den Broker][5]
 
 Die Abbildung zeigt die Architektur des Hello World-Beispiels sowie die relativen Pfade zu den Quelldateien, die verschiedene Teile des Beispiels im [Repository][lnk-gateway-sdk] implementieren. Untersuchen Sie den Code selbst, oder verwenden Sie die unten stehenden Codeausschnitte als Leitfaden.
 
@@ -75,4 +75,4 @@ Die Abbildung zeigt die Architektur des Hello World-Beispiels sowie die relative
 [lnk-helloworld-sample]: https://github.com/Azure/azure-iot-gateway-sdk/tree/master/samples/hello_world
 [lnk-gateway-sdk]: https://github.com/Azure/azure-iot-gateway-sdk
 
-<!---HONumber=AcomDC_0928_2016-->
+<!---HONumber=AcomDC_1005_2016-->

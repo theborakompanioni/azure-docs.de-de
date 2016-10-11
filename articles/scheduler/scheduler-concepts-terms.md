@@ -3,8 +3,8 @@
  description="Konzepte, Terminologie und Entitätshierarchie für Azure Scheduler, einschließlich Aufträgen und Auftragssammlungen. Zeigt ein umfangreiches Beispiel für einen geplanten Auftrag."
  services="scheduler"
  documentationCenter=".NET"
- authors="krisragh"
- manager="dwrede"
+ authors="derek1ee"
+ manager="kevinlam1"
  editor=""/>
 <tags
  ms.service="scheduler"
@@ -13,7 +13,7 @@
  ms.devlang="dotnet"
  ms.topic="get-started-article"
  ms.date="08/18/2016"
- ms.author="krisragh"/>
+ ms.author="deli"/>
 
 # Konzepte, Terminologie und Entitätshierarchie für Scheduler
 
@@ -214,4 +214,4 @@ Das Wiederholungsintervall, das durch das Objekt **retryInterval** angegeben wir
 
  [Ausgehende Authentifizierung von Azure Scheduler](scheduler-outbound-authentication.md)
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_1005_2016-->

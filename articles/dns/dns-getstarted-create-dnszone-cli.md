@@ -3,7 +3,7 @@
    description="Erfahren Sie, wie Sie DNS-Zonen für Azure DNS Schritt für Schritt erstellen, um mit dem Hosten der DNS-Domäne mithilfe der Befehlszeilenschnittstelle (CLI) zu beginnen."
    services="dns"
    documentationCenter="na"
-   authors="cherylmc"
+   authors="sdwheeler"
    manager="carmonm"
    editor=""/>
 
@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="08/16/2016"
-   ms.author="cherylmc"/>
+   ms.author="sewhee"/>
 
 # Erstellen einer Azure-DNS-Zone mithilfe der Befehlszeilenschnittstelle
 
@@ -42,25 +42,25 @@ Sie können die Azure-Befehlszeilenschnittstelle für Windows, Linux oder Mac in
 
 Alle Netzwerkanbieterbefehle für die Befehlszeilenschnittstelle können über den folgenden Befehl ermittelt werden:
 
-	Azure network
+	azure network
 
 ### 2\. Wechseln des CLI-Modus
 
 Azure DNS verwendet den Azure-Ressourcen-Manager. Achten Sie darauf, zum CLI-Modus zur Verwendung von ARM-Befehlen zu wechseln.
 
-	Azure config mode arm
+	azure config mode arm
 
 ### 3\. Anmelden bei Ihrem Azure-Konto
 
 Sie werden zur Authentifizierung mit Ihren Anmeldeinformationen aufgefordert. Denken Sie daran, dass Sie nur ORGID-Konten verwenden können.
 
-    Azure login -u "username"
+    azure login -u "username"
 
 ### 4\. Auswählen des Abonnements
 
 Wählen Sie aus, welches Azure-Abonnement Sie verwenden möchten.
 
-    Azure account set "subscription name"
+    azure account set "subscription name"
 
 ### 5\. Erstellen einer Ressourcengruppe
 
@@ -68,21 +68,21 @@ Der Azure-Ressourcen-Manager erfordert, dass alle Ressourcengruppen einen Speich
 
 Dieser Schritt kann übersprungen werden, wenn Sie eine vorhandene Ressourcengruppe verwenden.
 
-    Azure group create -n myresourcegroup --location "West US"
+    azure group create -n myresourcegroup --location "West US"
 
 
 ### 6\. Registrieren
 
-Der Azure DNS-Dienst wird vom Ressourcenanbieter "Microsoft.Network" verwaltet. Ihr Azure-Abonnement muss für die Verwendung dieses Ressourcenanbieters registriert werden, um Azure DNS verwenden zu können. Dieser Schritt muss einmal für jedes Abonnement ausgeführt werden.
+Der Azure DNS-Dienst wird vom Ressourcenanbieter "Microsoft.Network" verwaltet. Ihr Azure-Abonnement muss für die Verwendung dieses Ressourcenanbieters registriert werden, bevor Sie Azure DNS verwenden können. Dieser Schritt muss für jedes Abonnement einmal ausgeführt werden.
 
-	Azure provider register --namespace Microsoft.Network
+	azure provider register --namespace Microsoft.Network
 
 
 ## Schritt 2: Erstellen einer DNS-Zone
 
 Eine DNS-Zone wird mit dem `azure network dns zone create`-Befehl erstellt. Optional können Sie eine DNS-Zone mit Tags erstellen. Tags sind eine Liste von Name-Wert-Paaren, die von Azure Resource Manager zum Beschriften von Ressourcen zu Abrechnungs- oder Gruppierungszwecken verwendet werden. Weitere Informationen zu Tags finden Sie unter [Verwenden von Tags zum Organisieren von Azure-Ressourcen](../resource-group-using-tags.md).
 
-In Azure DNS müssen Zonennamen ohne abschließenden Punkt angegeben werden. Beispiel: „contoso.com“ statt „contoso.com.“.
+In Azure DNS müssen Zonennamen ohne abschließenden Punkt angegeben werden. Beispiel: **contoso.com** statt **contoso.com.**.
 
 
 ### So erstellen Sie eine DNS-Zone
@@ -91,7 +91,7 @@ Im folgenden Beispiel wird in der Ressourcengruppe namens *MyResourceGroup* eine
 
 Verwenden Sie das Beispiel, um eine DNS-Zone zu erstellen, und ersetzen Sie dabei die Werte durch Ihre eigenen.
 
-    Azure network dns zone create myresourcegroup contoso.com
+    azure network dns zone create myresourcegroup contoso.com
 
 ### So erstellen Sie eine DNS-Zone und Tags
 
@@ -99,7 +99,7 @@ Die Azure DNS-CLI unterstützt Tags von DNS-Zonen, die mithilfe des optionalen P
 
 Verwenden Sie das Beispiel, um eine DNS-Zone und Tags zu erstellen, und ersetzen Sie dabei die Werte durch Ihre eigenen.
 
-	Azure network dns zone create myresourcegroup contoso.com -t "project=demo";"env=test"
+	azure network dns zone create myresourcegroup contoso.com -t "project=demo";"env=test"
 
 ## Anzeigen von Datensätzen
 
@@ -185,4 +185,4 @@ Im folgenden Beispiel wird DIG zum Abfragen der Domäne "contoso.com" mithilfe d
 
 Nach dem Erstellen einer DNS-Zone müssen [Ressourceneintragssätze und Einträge](dns-getstarted-create-recordset-cli.md) zum Auflösen von Namen für Ihre Internetdomäne erstellt werden.
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_1005_2016-->

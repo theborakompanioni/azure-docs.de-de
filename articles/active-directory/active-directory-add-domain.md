@@ -13,10 +13,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="07/18/2016"
+	ms.date="09/30/2016"
 	ms.author="curtand;jeffsta"/>
 
 # Hinzufügen eines benutzerdefinierten Domänennamens zu Azure Active Directory
+
+> [AZURE.SELECTOR]
+- [Azure-Portal](active-directory-domains-add-qzure-portal.md)
+- [Klassisches Azure-Portal](active-directory-add-domain.md)
 
 Sie verfügen über mindestens einen Domänennamen, den Ihre Organisation zu geschäftlichen Zwecken verwendet, und Ihre Benutzer melden sich unter Verwendung Ihres geschäftlichen Domänennamens bei Ihrem Unternehmensnetzwerk an. Mit Azure Active Directory (Azure AD) können Sie den Namen Ihrer Unternehmensdomäne nun auch zu Azure AD hinzufügen. Dadurch können Sie in dem Verzeichnis Benutzernamen zuweisen, die Ihren Benutzern vertraut sind (etwa „alice@contoso.com“). Der Prozess ist ganz einfach:
 
@@ -24,15 +28,15 @@ Sie verfügen über mindestens einen Domänennamen, den Ihre Organisation zu ges
 2. Fügen Sie bei der Domänennamen-Registrierungsstelle einen DNS-Eintrag für den Domänennamen hinzu.
 3. Überprüfen Sie den benutzerdefinierten Domänennamen in Azure AD.
 
-> [AZURE.NOTE] Wenn Sie planen, Ihren benutzerdefinierten Domänennamen für die Verwendung mit Active Directory-Verbunddiensten (AD FS) oder einem anderen Sicherheitstokendienst (STS) im Unternehmensnetzwerk zu konfigurieren, hilft Ihnen die Anleitung unter [Hinzufügen und Konfigurieren einer Domäne für den Verbund mit Azure Active Directory](active-directory-add-domain-federated.md) weiter. Dies ist nützlich, wenn Sie Benutzer aus Ihrem Unternehmensverzeichnis mit Azure AD synchronisieren möchten und die [Kennworthashsynchronisierung](active-directory-aadconnectsync-implement-password-synchronization.md) Ihre Anforderungen nicht erfüllt.
+> [AZURE.NOTE] Wenn Sie Ihren benutzerdefinierten Domänennamen für die Verwendung mit Active Directory-Verbunddiensten (AD FS) oder einem anderen Sicherheitstokendienst (STS) im Unternehmensnetzwerk konfigurieren möchten, lesen Sie die Anleitung unter [Hinzufügen und Konfigurieren einer Domäne für den Verbund mit Azure Active Directory](active-directory-add-domain-federated.md). Dies ist hilfreich, wenn Sie Benutzer aus Ihrem Unternehmensverzeichnis mit Azure AD synchronisieren möchten und die [Kennworthashsynchronisierung](active-directory-aadconnectsync-implement-password-synchronization.md) Ihren Anforderungen nicht gerecht wird.
 
 ## Hinzufügen eines benutzerdefinierten Domänennamens zu Ihrem Verzeichnis
 
-1. Melden Sie sich beim [klassischen Azure-Portal](https://manage.windowsazure.com/) mit dem Benutzerkonto eines globalen Administrators Ihres Azure AD-Verzeichnisses an.
+1. Melden Sie sich beim [klassischen Azure-Portal](https://manage.windowsazure.com/) mit einem Benutzerkonto an, das als globaler Administrator Ihres Azure AD-Verzeichnisses fungiert.
 
-2. Öffnen Sie in Active Directory Ihr Verzeichnis, und wählen Sie die Registerkarte **Domänen** aus.
+2. Öffnen Sie in **Active Directory** Ihr Verzeichnis, und wählen Sie die Registerkarte **Domänen** aus.
 
-3. Wählen Sie in der Befehlsleiste die Option **Hinzufügen** aus. Geben Sie den Namen der benutzerdefinierten Domäne ein, wie z.B. „contoso.com“. Achten Sie darauf, dass die Erweiterung „.com“, „.net“ oder eine andere Erweiterung der obersten Ebene vorhanden ist, und lassen Sie das Kontrollkästchen für „Einmaliges Anmelden“ (Verbund) deaktiviert.
+3. Wählen Sie in der Befehlsleiste **Hinzufügen** aus. Geben Sie den Namen der benutzerdefinierten Domäne ein, wie z.B. „contoso.com“. Achten Sie darauf, dass die Erweiterung „.com“, „.net“ oder eine andere Erweiterung der obersten Ebene vorhanden ist, und lassen Sie das Kontrollkästchen für „Einmaliges Anmelden“ (Verbund) deaktiviert.
 
 4. Wählen Sie **Hinzufügen**.
 
@@ -54,7 +58,7 @@ Hilfe zum Hinzufügen des DNS-Eintrags finden Sie unter [Anleitung für das Hinz
 
 Nachdem Sie den DNS-Eintrag hinzugefügt haben, können Sie den Domänennamen mit Azure AD überprüfen.
 
-Falls der Assistent **Domäne hinzufügen** noch geöffnet ist, klicken Sie auf der dritten Seite des Assistenten auf **Überprüfen**. Bei Auswahl von **Überprüfen** sucht Azure AD in der DNS-Zonendatei für die Domäne nach dem DNS-Eintrag. Azure AD kann den Domänennamen erst überprüfen, nachdem die DNS-Einträge weitergegeben wurden. Häufig dauert diese Weitergabe nur wenige Sekunden, aber der Vorgang kann unter Umständen auch eine Stunde oder länger dauern. Versuchen Sie, den Vorgang später erneut durchzuführen, wenn die Überprüfung beim ersten Mal nicht funktioniert.
+Falls der Assistent **Domäne hinzufügen** noch geöffnet ist, klicken Sie auf der dritten Seite des Assistenten auf **Überprüfen**. Wenn Sie **Überprüfen** auswählen, sucht Azure AD in der DNS-Zonendatei für die Domäne nach dem DNS-Eintrag. Azure AD kann den Domänennamen erst überprüfen, nachdem die DNS-Einträge weitergegeben wurden. Häufig dauert diese Weitergabe nur wenige Sekunden, aber der Vorgang kann unter Umständen auch eine Stunde oder länger dauern. Versuchen Sie, den Vorgang später erneut durchzuführen, wenn die Überprüfung beim ersten Mal nicht funktioniert.
 
 Ist der Assistent **Domäne hinzufügen** nicht mehr geöffnet, können Sie die Domäne im [klassischen Azure-Portal](https://manage.windowsazure.com/) überprüfen:
 
@@ -62,9 +66,9 @@ Ist der Assistent **Domäne hinzufügen** nicht mehr geöffnet, können Sie die 
 
 2.  Öffnen Sie Ihr Verzeichnis, und wählen Sie die Registerkarte **Domänen** aus.
 
-3.  Wählen Sie den Domänennamen aus, den Sie überprüfen möchten, und wählen Sie in der Befehlsleiste die Option **Überprüfen**.
+3.  Wählen Sie den Domänennamen aus, den Sie überprüfen möchten, und wählen Sie auf der Befehlsleiste die Option **Überprüfen** aus.
 
-4. Wählen Sie im Dialogfeld die Option **Überprüfen**, um die Überprüfung abzuschließen.
+4. Wählen Sie im Dialogfeld die Option **Überprüfen** aus, um die Überprüfung abzuschließen.
 
 Nun können Sie [Benutzernamen zuweisen, die Ihren benutzerdefinierten Domänennamen enthalten](active-directory-add-domain-add-users.md).
 
@@ -91,4 +95,4 @@ Wenn Sie in Ihrer Organisation mehrere benutzerdefinierte Domänennamen verwende
 -   [Anzeigen des Brandings Ihres Unternehmens bei der Anmeldung der Benutzer](active-directory-add-company-branding.md)
 -   [Verwenden von PowerShell zum Verwalten von Domänennamen in Azure AD](https://msdn.microsoft.com/library/azure/e1ef403f-3347-4409-8f46-d72dafa116e0#BKMK_ManageDomains)
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_1005_2016-->

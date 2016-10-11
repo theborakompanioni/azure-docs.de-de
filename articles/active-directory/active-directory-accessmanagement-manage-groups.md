@@ -1,7 +1,6 @@
 <properties
-
-	pageTitle="Managing groups in Azure Active Directory | Microsoft Azure"
-	description="How to create and manage groups to manage Azure users using Azure Active Directory."
+	pageTitle="Verwalten von Gruppen in Azure Active Directory | Microsoft Azure"
+	description="Hier erfahren Sie, wie Sie Gruppen erstellen und verwalten, um Azure-Benutzer mithilfe von Azure Active Directory zu verwalten."
 	services="active-directory"
 	documentationCenter=""
 	authors="curtand"
@@ -14,11 +13,17 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="09/22/2016"
+	ms.date="09/29/2016"
 	ms.author="curtand"/>
 
 
 # Verwalten von Gruppen in Azure Active Directory
+
+> [AZURE.SELECTOR]
+- [Azure-Portal](active-directory-groups-create-azure-portal.md)
+- [Klassisches Azure-Portal](active-directory-accessmanagement-manage-groups.md)
+- [PowerShell](active-directory-accessmanagement-groups-v2-cmdlets.md)
+
 
 Ein Feature der Benutzerverwaltung von Azure Active Directory (Azure AD) ist die Möglichkeit, Gruppen mit Benutzern zu erstellen. Sie verwenden eine Gruppe zum Durchführen von Verwaltungsaufgaben, z.B. gleichzeitiges Zuweisen von Lizenzen oder Berechtigungen für mehrere Benutzer. Außerdem können Sie Gruppen verwenden, um folgenden Ressourcen Berechtigungen zuzuweisen:
 
@@ -116,4 +121,4 @@ Diese Artikel enthalten zusätzliche Informationen zu Azure Active Directory.
 
 * [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md)
 
-<!---HONumber=AcomDC_0928_2016-->
+<!---HONumber=AcomDC_1005_2016-->

@@ -20,8 +20,8 @@
 # Konfigurieren einer VNet-zu-VNet-Verbindung für Resource Manager mithilfe von PowerShell
 
 > [AZURE.SELECTOR]
-- [Klassisches Azure-Portal](virtual-networks-configure-vnet-to-vnet-connection.md)
-- [PowerShell – Resource Manager](vpn-gateway-vnet-vnet-rm-ps.md)
+- [Resource Manager – PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
+- [Klassisch – Klassisches Portal](virtual-networks-configure-vnet-to-vnet-connection.md)
 
 In diesem Artikel wird Schritt für Schritt erläutert, wie Sie mit VPN Gateway eine Verbindung zwischen VNets im Resource Manager-Bereitstellungsmodell erstellen. Die virtuellen Netzwerke können sich in derselben oder in unterschiedlichen Regionen befinden und aus demselben oder unterschiedlichen Abonnements stammen.
 
@@ -29,24 +29,23 @@ In diesem Artikel wird Schritt für Schritt erläutert, wie Sie mit VPN Gateway 
 ![v2v-Diagramm](./media/vpn-gateway-vnet-vnet-rm-ps/v2vrmps.png)
 
 
-### Bereitstellungsmodelle und Tools für VNet-zu-VNet
+### Bereitstellungsmodelle und -methoden für VNet-zu-VNet
 
 
 [AZURE.INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
-Eine VNET-zu-VNET-Verbindung kann in beiden Bereitstellungsmodellen und mit unterschiedlichen Tools konfiguriert werden. Ausführlichere Informationen finden Sie in der Tabelle weiter unten. Wir aktualisieren diese Tabelle, wenn neue Artikel, neue Bereitstellungsmodelle und weitere Tools für diese Konfiguration verfügbar werden. Wenn ein Artikel verfügbar ist, fügen wir in der Tabelle einen direkten Link dazu ein.
+Eine VNET-zu-VNET-Verbindung kann in beiden Bereitstellungsmodellen und mit unterschiedlichen Tools konfiguriert werden. Die folgende Tabelle wird aktualisiert, wenn neue Artikel und weitere Tools für diese Konfiguration verfügbar werden. Wenn ein Artikel verfügbar ist, fügen wir der Tabelle einen direkten Link hinzu.<br><br>
 
 [AZURE.INCLUDE [vpn-gateway-table-vnet-vnet](../../includes/vpn-gateway-table-vnet-to-vnet-include.md)]
 
-
 #### VNet-Peering
 
-Unter Umständen können Sie das VNet-Peering verwenden, um Ihre Verbindung zu erstellen, solange die Konfiguration Ihres virtuellen Netzwerks bestimmte Anforderungen erfüllt. Beim VNet-Peering wird kein Gateway für das virtuelle Netzwerk verwendet. Das [VNet-Peering](../virtual-network/virtual-network-peering-overview.md) befindet sich derzeit in der Vorschauphase.
+[AZURE.INCLUDE [vpn-gateway-vnetpeeringlink](../../includes/vpn-gateway-vnetpeeringlink-include.md)]
 
 
 ## Über VNet-zu-VNet-Verbindungen
 
-Das Verbinden eines virtuellen Netzwerks mit einem anderen virtuellen Netzwerk (VNet-zu-VNet) ähnelt dem Verbinden eines VNet mit einem lokalen Standort. Beide Verbindungstypen verwenden ein Azure VPN Gateway, um einen sicheren Tunnel mit IPSec/IKE bereitzustellen. Die VNets, die Sie verbinden, können sich in verschiedenen Regionen befinden. Sie können sich auch in verschiedenen Abonnements befinden. Sie können sogar VNet-zu-VNet-Kommunikation mit Konfigurationen für mehrere Standorte kombinieren. Auf diese Weise können Sie Netzwerktopologien einrichten, die wie in der folgenden Abbildung dargestellt standortübergreifende Konnektivität mit Konnektivität zwischen virtuellen Netzwerken kombinieren.
+Das Verbinden eines virtuellen Netzwerks mit einem anderen virtuellen Netzwerk (VNet-zu-VNet) ähnelt dem Verbinden eines VNet mit einem lokalen Standort. Beide Verbindungstypen verwenden ein Azure VPN Gateway, um einen sicheren Tunnel mit IPSec/IKE bereitzustellen. Die VNets, die Sie verbinden, können sich in verschiedenen Regionen befinden. Sie können sich auch in verschiedenen Abonnements befinden. Sie können sogar VNet-zu-VNet-Kommunikation mit Konfigurationen für mehrere Standorte kombinieren. Auf diese Weise können Sie Netzwerktopologien einrichten, die wie in der folgenden Abbildung dargestellt standortübergreifende Konnektivität mit Konnektivität zwischen virtuellen Netzwerken kombinieren:
 
 
 ![Informationen zu Verbindungen](./media/vpn-gateway-vnet-vnet-rm-ps/aboutconnections.png)
@@ -155,7 +154,7 @@ In den Beispielen werden die folgenden Werte verwendet:
 
 2. Verbinden mit Ihrem Abonnement
 
-	Wechseln Sie in den PowerShell-Modus, um die Resource Manager-Cmdlets zu verwenden. Öffnen Sie die PowerShell-Konsole, und stellen Sie eine Verbindung mit Ihrem Konto her. Verwenden Sie das folgenden Beispiel, um eine Verbindung herzustellen:
+	Wechseln Sie in den PowerShell-Modus, um die Resource Manager-Cmdlets zu verwenden. Öffnen Sie die PowerShell-Konsole, und stellen Sie eine Verbindung mit Ihrem Konto her. Verwenden Sie das folgende Beispiel, um eine Verbindung herzustellen:
 
 		Login-AzureRmAccount
 
@@ -453,7 +452,7 @@ Da sich die Gateways in diesem Beispiel in unterschiedlichen Abonnements befinde
 
 3. **[Abonnement 1]** Erstellen der Verbindung von TestVNet1 mit TestVNet5
 
-	In diesem Schritt erstellen Sie die Verbindung von TestVNet1 mit TestVNet5. Der Unterschied hierbei ist, dass „$vnet5gw“ nicht direkt abgerufen werden kann, da es sich in einem anderen Abonnement befindet. Sie müssen ein neues PowerShell-Objekt mit den Werten erstellen, die in den obigen Schritten aus Abonnement 1 übermittelt wurden. Ersetzen Sie Name, ID und gemeinsam verwendeten Schlüssel durch Ihre eigenen Werte. Wichtig ist dabei, dass der gemeinsam verwendete Schlüssel für beide Verbindungen übereinstimmen muss. Das Erstellen einer Verbindung kann etwas dauern.
+	In diesem Schritt erstellen Sie die Verbindung von TestVNet1 mit TestVNet5. Der Unterschied hierbei ist, dass „$vnet5gw“ nicht direkt abgerufen werden kann, da es sich in einem anderen Abonnement befindet. Sie müssen ein neues PowerShell-Objekt mit den Werten erstellen, die in den obigen Schritten aus Abonnement 1 übermittelt wurden. Sehen Sie sich das Beispiel unten an. Ersetzen Sie Name, ID und gemeinsam verwendeten Schlüssel durch Ihre eigenen Werte. Wichtig ist dabei, dass der gemeinsam verwendete Schlüssel für beide Verbindungen übereinstimmen muss. Das Erstellen einer Verbindung kann etwas dauern.
 
 	Stellen Sie sicher, dass Sie eine Verbindung mit Abonnement 1 herstellen.
 	
@@ -484,4 +483,4 @@ Da sich die Gateways in diesem Beispiel in unterschiedlichen Abonnements befinde
 - Sobald die Verbindung hergestellt ist, können Sie Ihren virtuellen Netzwerken virtuelle Computer hinzufügen. Für diese Schritte finden Sie Informationen unter [Erstellen eines virtuellen Computers](../virtual-machines/virtual-machines-windows-hero-tutorial.md).
 - Informationen zu BGP finden Sie in der [Übersicht über BGP](vpn-gateway-bgp-overview.md) und unter [Konfigurieren von BGP](vpn-gateway-bgp-resource-manager-ps.md).
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_1005_2016-->

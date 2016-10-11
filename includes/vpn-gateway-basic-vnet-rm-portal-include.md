@@ -1,31 +1,42 @@
-Führen Sie zum Erstellen eines VNet mit dem Azure-Portal die folgenden Schritte aus. Beachten Sie, dass die Screenshots als Beispiele dienen. Achten Sie darauf, dass Sie die Werte durch Ihre eigenen Werte ersetzen. Weitere Informationen zur Arbeit mit virtuellen Netzwerken finden Sie unter [Virtuelle Netzwerke im Überblick](../articles/virtual-network/virtual-networks-overview.md).
+Führen Sie zum Erstellen eines VNet mit dem Azure-Portal die folgenden Schritte aus. Die Screenshots dienen als Beispiele. Achten Sie darauf, dass Sie die Werte durch Ihre eigenen Werte ersetzen. Weitere Informationen zur Arbeit mit virtuellen Netzwerken finden Sie unter [Virtuelle Netzwerke im Überblick](../articles/virtual-network/virtual-networks-overview.md).
 
-1. Navigieren Sie in einem Browser zum [Azure-Portal](http://portal.azure.com), und melden Sie sich, falls erforderlich, mit Ihrem Azure-Konto an.
+1. Navigieren Sie in einem Browser zum [Azure-Portal](http://portal.azure.com) und melden Sie sich, falls erforderlich, mit Ihrem Azure-Konto an.
 
-2. Klicken Sie auf **Neu** **>** **Netzwerk** **>** **Virtuelles Netzwerk**.
+2. Klicken Sie auf **Neu**. Geben Sie im Feld **Marketplace durchsuchen** die Zeichenfolge „Virtuelles Netzwerk“ ein. Klicken Sie in der zurückgegebenen Liste auf **Virtuelles Netzwerk**, um das Blatt **Virtuelles Netzwerk** zu öffnen.
 
-	![VNetBlade](./media/vpn-gateway-basic-vnet-rm-portal-include/newvnetportal650.png)
+	![Zum Blatt mit den Ressourcen des virtuellen Netzwerks navigieren](./media/vpn-gateway-basic-vnet-rm-portal-include/newvnetportal700.png "Zum Blatt mit den Ressourcen des virtuellen Netzwerks navigieren")
 
 3. Wählen Sie unten auf dem Blatt „Virtuelles Netzwerk“ in der Liste **Bereitstellungsmodell auswählen** die Option **Resource Manager**, und klicken Sie dann auf **Erstellen**.
 
 
-	![„Ressourcen-Manager“ auswählen](./media/vpn-gateway-basic-vnet-rm-portal-include/resourcemanager250.png)
+	![„Ressourcen-Manager“ auswählen](./media/vpn-gateway-basic-vnet-rm-portal-include/resourcemanager250.png "„Ressourcen-Manager“ auswählen")
 
-4. Konfigurieren Sie auf dem Blatt **Virtuelles Netzwerk erstellen** die VNet-Einstellungen. In diesem Blatt fügen Sie Ihren ersten Adressraum und einen Adressbereich des Subnetzes hinzu. Nachdem Sie die Erstellung des VNet abgeschlossen haben, können Sie zurückgehen und weitere Subnetze und Adressräume hinzufügen. Dies ist eine aktuelle Beschränkung des Portals. Sie können immer zurückkehren, um diese Werte zu aktualisieren, indem Sie die VNet-Eigenschaften im Portal oder mit PowerShell bearbeiten. Die Werte, die Sie verwenden, richten sich nach der zu erstellenden Konfiguration. Achten Sie darauf, dass Sie Ihre geplanten Konfigurationswerte verwenden.
+4. Konfigurieren Sie im Blatt **Virtuelles Netzwerk erstellen** die VNet-Einstellungen. Beim Ausfüllen der Felder verwandelt sich das rote Ausrufezeichen in ein grünes Häkchen, sofern die in das Feld eingegebenen Zeichen zulässig sind.
 
-	![Blatt "Erstellen eines virtuellen Netzwerks"](./media/vpn-gateway-basic-vnet-rm-portal-include/createavnet250.png)
+	![Feldprüfung](./media/vpn-gateway-basic-vnet-rm-portal-include/checkmark300.png "Feldprüfung")
 
-5. Überprüfen Sie, ob es sich um das richtige **Abonnement** handelt. Sie können Abonnements in der Dropdownliste ändern.
+5. Das Blatt **Virtuelles Netzwerk erstellen** sieht in etwa wie im folgenden Beispiel aus. Unter Umständen wurden bestimmte Werte bereits automatisch ausgefüllt. Ersetzen Sie sie in diesem Fall durch Ihre eigenen Werte.
 
-6. Klicken Sie auf **Ressourcengruppe**, und wählen Sie entweder eine vorhandene Ressourcengruppe aus, oder erstellen Sie eine neue, indem Sie einen Namen für die neue Ressourcengruppe eingeben. Geben Sie der Ressourcengruppe beim Erstellen einer neuen Gruppe einen Namen, der zu Ihren geplanten Konfigurationswerten passt. Weitere Informationen zu Ressourcengruppen finden Sie unter [Übersicht über den Azure-Ressourcen-Manager](resource-group-overview.md#resource-groups).
+	![Blatt "Erstellen eines virtuellen Netzwerks"](./media/vpn-gateway-basic-vnet-rm-portal-include/createvnet300.png "Blatt "Erstellen eines virtuellen Netzwerks"")
 
-7. Wählen Sie als Nächstes für das VNet die Einstellungen für **Standort** aus. Beachten Sie, dass mit dem Standort angegeben wird, wo sich die in diesem VNet bereitgestellten Ressourcen befinden. Sie können dies später nicht mehr ändern, ohne die Ressourcen neu bereitzustellen.
+6. **Name**: Geben Sie den Namen für Ihr virtuelles Netzwerk ein.
 
-8. Wählen Sie **An Dashboard anheften**, wenn das VNet auf dem Dashboard leicht zugänglich sein soll, und klicken Sie dann auf **Erstellen**.
+7. **Adressraum**: Geben Sie den Adressraum ein. Falls Sie mehrere Adressräume hinzufügen möchten, fügen Sie Ihren ersten Adressraum hinzu. Weitere Adressräume können später (nach Erstellung des VNets) hinzugefügt werden.
+ 
+8. **Subnetzname**: Fügen Sie Name und Adressbereich des Subnetzes hinzu. Weitere Subnetze können später (nach Erstellung des VNets) hinzugefügt werden.
+
+10. **Abonnement**: Vergewissern Sie sich, dass das richtige Abonnement angegeben ist. Das Abonnement kann über die Dropdownliste geändert werden.
+
+11. **Ressourcengruppe**: Wählen Sie entweder eine bereits vorhandene Ressourcengruppe aus, oder geben Sie einen Namen für eine neue Ressourcengruppe ein. Geben Sie der Ressourcengruppe beim Erstellen einer neuen Gruppe einen Namen, der zu Ihren geplanten Konfigurationswerten passt. Weitere Informationen zu Ressourcengruppen finden Sie unter [Übersicht über den Azure-Ressourcen-Manager](resource-group-overview.md#resource-groups).
+
+12. **Standort**: Wählen Sie den Standort für Ihr VNet aus. Der Standort gibt an, wo sich die in diesem VNet bereitgestellten Ressourcen befinden.
+
+13. Wählen Sie **An Dashboard anheften** aus, wenn das VNet komfortabel auf dem Dashboard zur Verfügung stehen soll, und klicken Sie dann auf **Erstellen**.
 	
-	![An Dashboard anheften](./media/vpn-gateway-basic-vnet-rm-portal-include/pintodashboard150.png)
+	![An das Dashboard anheften](./media/vpn-gateway-basic-vnet-rm-portal-include/pintodashboard150.png "An Dashboard anheften")
 
+14. Nach dem Klicken auf **Erstellen** wird auf dem Dashboard eine Kachel angezeigt, die Aufschluss über den VNet-Status gibt. Die Kachel verändert sich, wenn das VNet erstellt wird.
 
-9. Nach dem Klicken auf „Erstellen“ wird auf dem Dashboard eine Kachel angezeigt, mit der der Status des VNet angegeben wird. Die Kachel ändert sich, wenn das VNet erstellt wird.
+	![Kachel "Erstellen eines virtuellen Netzwerks"](./media/vpn-gateway-basic-vnet-rm-portal-include/deploying150.png "Kachel "Erstellen eines virtuellen Netzwerks"")
 
-	![Kachel "Erstellen eines virtuellen Netzwerks"](./media/vpn-gateway-basic-vnet-rm-portal-include/deploying150.png)
+<!---HONumber=AcomDC_1005_2016-->

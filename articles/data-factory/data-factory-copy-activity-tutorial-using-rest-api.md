@@ -19,12 +19,13 @@
 # Tutorial: Erstellen einer Pipeline mit Kopieraktivität mithilfe der REST-API
 > [AZURE.SELECTOR]
 - [Übersicht und Voraussetzungen](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
+- [Kopier-Assistent](data-factory-copy-data-wizard-tutorial.md)
 - [Azure-Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)
 - [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
 - [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
 - [REST-API](data-factory-copy-activity-tutorial-using-rest-api.md)
 - [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
-- [Kopier-Assistent](data-factory-copy-data-wizard-tutorial.md)
+
 
 In diesem Tutorial wird veranschaulicht, wie Sie eine Azure Data Factory mit der REST-API erstellen und überwachen. Die Pipeline in der Data Factory verwendet eine Kopieraktivität zum Kopieren von Daten aus Azure Blob Storage in Azure SQL-Datenbank.
 
@@ -491,4 +492,4 @@ In diesem Tutorial haben Sie mit der REST-API eine Azure Data Factory erstellt, 
 [sql-management-studio]: ../sql-database/sql-database-manage-azure-ssms.md
  
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_1005_2016-->
