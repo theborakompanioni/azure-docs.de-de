@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="09/13/2016"
+   ms.date="09/27/2016"
    ms.author="nitinme"/>
 
 # Erste Schritte mit Azure Data Lake-Speicher mithilfe von REST-APIs
@@ -34,17 +34,8 @@ In diesem Artikel erfahren Sie, wie Sie mit WebHDFS-REST-APIs und Data Lake Spei
 ## Voraussetzungen
 
 - **Ein Azure-Abonnement**. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
-- **Erstellen einer Azure Active Directory-Anwendung**. Zur Authentifizierung mithilfe von Azure Active Directory stehen Ihnen zwei Möglichkeiten zur Verfügung: **interaktiv** und **nicht interaktiv**. Je nach der gewählten Authentifizierung gelten unterschiedliche Voraussetzungen.
-	* **Interaktive Authentifizierung** (die in diesem Artikel verwendet wird) – Sie müssen in Azure Active Directory eine **native Clientanwendung** erstellen. Nach dem Erstellen der Anwendung rufen Sie die folgenden Werte ab, die mit der Anwendung in Zusammenhang stehen.
-		- Abrufen von **Client-ID** und **Umleitungs-URI** für die Anwendung
-		- Festlegen der delegierten Berechtigungen
 
-	* **Nicht interaktive Authentifizierung** – Sie müssen in Azure Active Directory eine **Webanwendung** erstellen. Nach dem Erstellen der Anwendung rufen Sie die folgenden Werte ab, die mit der Anwendung in Zusammenhang stehen.
-		- Abrufen von **Client-ID**,**geheimem Clientschlüssel** und **Umleitungs-URI** für die Anwendung
-		- Festlegen der delegierten Berechtigungen
-		- Weisen Sie die Azure Active Directory-Anwendung einer Rolle zu. Die Rolle kann sich auf der Ebene des Bereichs befinden, auf der Sie die Berechtigung für die Azure Active Directory-Anwendung gewähren möchten. Beispielsweise können Sie die Anwendung auf Abonnementebene oder auf der Ebene einer Ressourcengruppe zuweisen. Eine Anleitung hierzu finden Sie unter [Zuweisen einer Anwendung zur Rolle](../resource-group-create-service-principal-portal.md#assign-application-to-role).
-
-	Anweisungen dazu, wie Sie diese Werte abrufen, Berechtigungen festlegen und Rollen zuweisen, finden Sie unter [Erstellen einer Active Directory-Anwendung und eines Dienstprinzipals mithilfe des Portals](../resource-group-create-service-principal-portal.md).
+- **Erstellen einer Azure Active Directory-Anwendung**. Die Azure AD-Anwendung wird verwendet, um die Data Lake Store-Anwendung bei Azure AD zu authentifizieren. Für die Authentifizierung bei Azure AD stehen zwei unterschiedliche Konzepte zur Verfügung: **Endbenutzerauthentifizierung** und **Dienst-zu-Dienst-Authentifizierung**. Anweisungen und weitere Informationen zur Authentifizierung finden Sie unter [Authenticate with Data Lake Store using Azure Active Directory](data-lake-store-authenticate-using-active-directory.md) (Authentifizieren bei Data Lake Store mithilfe von Azure Active Directory).
 
 - [cURL](http://curl.haxx.se/). Dieser Artikel zeigt mit cURL, wie Sie REST-API-Aufrufe eines Data Lake-Speicherkontos ausführen.
 
@@ -52,7 +43,7 @@ In diesem Artikel erfahren Sie, wie Sie mit WebHDFS-REST-APIs und Data Lake Spei
 
 Zur Authentifizierung mit Azure Active Directory können Sie zwischen zwei Ansätzen wählen.
 
-### Interaktive Authentifizierung (Benutzerauthentifizierung)
+### Endbenutzerauthentifizierung (interaktiv)
 
 In diesem Szenario wird der Benutzer in der Anwendung zum Anmelden aufgefordert. Alle Vorgänge werden im Zusammenhang mit dem Benutzer durchgeführt. Führen Sie für die interaktive Authentifizierung die folgenden Schritte aus.
 
@@ -60,7 +51,7 @@ In diesem Szenario wird der Benutzer in der Anwendung zum Anmelden aufgefordert.
 
 		https://login.microsoftonline.com/<TENANT-ID>/oauth2/authorize?client_id=<CLIENT-ID>&response_type=code&redirect_uri=<REDIRECT-URI>
 
-	>[AZURE.NOTE] \<REDIRECT-URI> muss für die Verwendung in einer URL codiert werden. Verwenden Sie daher `https%3A%2F%2Flocalhost` für https://localhost.
+	>[AZURE.NOTE] \<REDIRECT-URI> muss für die Verwendung in einer URL codiert werden. Verwenden Sie für https://localhost also Folgendes: `https%3A%2F%2Flocalhost`
 
 	In diesem Tutorial können Sie die Platzhalterwerte in der URL oben ersetzen und in der Adressleiste des Webbrowsers einfügen. Sie werden umgeleitet und authentifizieren sich mit Ihrer Azure-Anmeldung. Nachdem Sie sich erfolgreich angemeldet haben, wird die Antwort in der Adressleiste des Browsers angezeigt. Die Antwort wird im folgenden Format angezeigt:
 		
@@ -91,7 +82,7 @@ In diesem Szenario wird der Benutzer in der Anwendung zum Anmelden aufgefordert.
  
 Weitere Informationen zur interaktiven Benutzerauthentifizierung finden Sie unter [Autorisieren des Zugriffs auf Webanwendungen mit OAuth 2.0 und Azure Active Directory](https://msdn.microsoft.com/library/azure/dn645542.aspx).
 
-### Nicht interaktive Authentifizierung
+### Dienst-zu-Dienst-Authentifizierung (nicht interaktiv)
 
 In diesem Szenario stellt die Anwendung eigene Anmeldeinformationen zum Durchführen der Vorgänge bereit. Hierzu müssen Sie eine POST-Anforderung wie unten abgebildet ausgeben.
 
@@ -107,7 +98,7 @@ Die Ausgabe dieser Anforderung enthält ein Autorisierungstoken (gekennzeichnet 
 
 In diesem Artikel wird der **nicht interaktive** Ansatz verwendet. Weitere Informationen zur nicht interaktiven Authentifizierung (Dienst-zu-Dienst-Aufrufe) finden Sie unter [Aufrufe zwischen Diensten mithilfe von Clientanmeldeinformationen](https://msdn.microsoft.com/library/azure/dn645543.aspx).
 
-## Erstellen eines Data Lake-Speicherkontos
+## Erstellen eines Data Lake-Speicherkontos
 
 Dieser Vorgang basiert auf dem [hier](https://msdn.microsoft.com/library/mt694078.aspx) definierten REST-API-Aufruf.
 
@@ -241,7 +232,7 @@ Es sollte eine Ausgabe angezeigt werden, die Folgendem ähnelt:
 	
 	{"boolean":true}
 
-## Löschen einer Datei aus einem Data Lake-Speicherkonto
+## Löschen einer Datei aus einem Data Lake-Speicherkonto
 
 Dieser Vorgang basiert auf dem [hier](http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#Delete_a_FileDirectory) definierten WebHDFS-REST-API-Aufruf.
 
@@ -256,11 +247,11 @@ Folgendes sollte angezeigt werden:
 	
 	{"boolean":true}
 
-## Löschen eines Data Lake-Speicherkontos
+## Löschen eines Data Lake-Speicherkontos
 
 Dieser Vorgang basiert auf dem [hier](https://msdn.microsoft.com/library/mt694075.aspx) definierten REST-API-Aufruf.
 
-Verwenden Sie zum Löschen eines Data Lake-Speicherkontos den folgenden cURL-Befehl. Ersetzen Sie **<yourstorename>** durch Ihren Data Lake Store-Namen.
+Verwenden Sie zum Löschen eines Data Lake-Speicherkontos den folgenden cURL-Befehl. Ersetzen Sie **<yourstorename>** durch Ihren Data Lake Store-Namen.
 
 	curl -i -X DELETE -H "Authorization: Bearer <REDACTED>" https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.DataLakeStore/accounts/<yourstorename>?api-version=2015-10-01-preview
 
@@ -275,4 +266,4 @@ Folgendes sollte angezeigt werden:
 - [Open Source-Big Data-Anwendungen, die mit Azure Data Lake-Speicher funktionieren](data-lake-store-compatible-oss-other-applications.md)
  
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_1005_2016-->

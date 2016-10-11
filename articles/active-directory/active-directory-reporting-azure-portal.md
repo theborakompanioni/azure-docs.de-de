@@ -13,10 +13,14 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="09/25/2016"
+   ms.date="09/30/2016"
    ms.author="markvi"/>
 
 # Azure Active Directory-Berichterstellung – Vorschau
+
+> [AZURE.SELECTOR]
+- [Azure-Portal](active-directory-reporting-azure-portal.md)
+- [Klassisches Azure-Portal](active-directory-reporting-guide.md)
 
 *Diese Dokumentation ist Teil des [Handbuchs für Azure Active Directory Reporting](active-directory-reporting-guide.md).*
 
@@ -216,4 +220,4 @@ Eine andere Methode zum Filtern der Einträge eines Überwachungsprotokolls ist 
 
 Weitere Informationen finden Sie unter [Anleitung für Azure Active Directory-Berichte](active-directory-reporting-guide.md).
 
-<!---HONumber=AcomDC_0928_2016-->
+<!---HONumber=AcomDC_1005_2016-->

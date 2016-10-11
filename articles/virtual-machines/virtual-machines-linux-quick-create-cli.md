@@ -25,13 +25,13 @@ In diesem Artikel wird erläutert, wie Sie mit dem Befehl `azure vm quick-create
 
 - [Azure-CLI](../xplat-cli-install.md), angemeldet mit `azure login`
 
-- Die Azure-CLI _muss im_ Azure Resource Manager-Modus `azure config mode arm` ausgeführt werden.
+- Azure-CLI _muss im_ Azure Resource Manager-Modus `azure config mode arm` ausgeführt werden
 
 Sie können eine Linux-VM auch schnell über das [Azure-Portal](virtual-machines-linux-quick-create-portal.md) bereitstellen.
 
 ## Schnellbefehle
 
-Das folgende Beispiel zeigt, wie Sie eine CoreOS-VM bereitstellen und Ihren SSH-Schlüssel (Secure Shell) anfügen (Ihre Argumente können sich von den hier verwendeten Argumenten unterscheiden).
+Das folgende Beispiel zeigt, wie Sie eine CoreOS-VM bereitstellen und Ihren SSH-Schlüssel (Secure Shell) anfügen (Ihre Argumente können sich von den hier verwendeten Argumenten unterscheiden):
 
 ```bash
 azure vm quick-create -M ~/.ssh/azure_id_rsa.pub -Q CoreOS
@@ -56,15 +56,15 @@ In den folgenden Abschnitten wird der Alias `UbuntuLTS` für die Option **ImageU
 
 ## Ausführliche exemplarische Vorgehensweise
 
-Im vorherigen Beispiel für `quick-create` wurde nur das Flag `-M` aufgerufen, um den hochzuladenden öffentlichen SSH-Schlüssel zu identifizieren, während SSH-Kennwörter deaktiviert wurden. Sie werden daher zur Angabe der folgenden Informationen aufgefordert:
+Im vorherigen Beispiel für `quick-create` wurde nur das Flag `-M` aufgerufen, um den hochzuladenden öffentlichen SSH-Schlüssel zu identifizieren, während SSH-Kennwörter deaktiviert wurden. Sie werden daher zum Angeben der folgenden Argumente aufgefordert:
 
 - Ressourcengruppenname (für Ihre erste Azure-Ressourcengruppe ist in der Regel eine beliebige Zeichenfolge ausreichend)
 - Name des virtuellen Computers
-- Standort („USA, Westen“ oder „Europa, Westen“ sind gute Standardwerte)
+- Standort (`westus` oder `westeurope` sind gute Standardwerte)
 - Linux (um Azure das zu verwendende Betriebssystem mitzuteilen)
 - username
 
-Da im folgenden Beispiel alle Werte angegeben werden, sind keine weiteren Eingabeaufforderungen erforderlich. Sofern Sie über eine Datei `~/.ssh/id_rsa.pub` als öffentliche Schlüsseldatei im ssh-rsa-Format verfügen, sind keine Änderungen erforderlich.
+Da im folgenden Beispiel alle Werte angegeben werden, sind keine weiteren Eingabeaufforderungen erforderlich. Sofern Sie über eine Datei `~/.ssh/id_rsa.pub` als öffentliche Schlüsseldatei im ssh-rsa-Format verfügen, sind keine Änderungen erforderlich:
 
 ```bash
 azure vm quick-create \
@@ -77,7 +77,7 @@ azure vm quick-create \
 -Q UbuntuLTS
 ```
 
-Die Ausgabe sollte dem folgenden Ausgabeblock ähneln.
+Die Ausgabe sollte dem folgenden Ausgabeblock ähneln:
 
 ```bash
 info:    Executing command vm quick-create
@@ -155,13 +155,13 @@ data:      Diagnostics Instance View:
 info:    vm quick-create command OK
 ```
 
-Melden Sie sich mit der in der Ausgabe aufgeführten öffentlichen IP-Adresse bei Ihrer VM an. Sie können auch den vollständig qualifizierten Domänennamen (FQDN) verwenden, der in der Ausgabe angegeben ist.
+Melden Sie sich mit der in der Ausgabe aufgeführten öffentlichen IP-Adresse bei Ihrer VM an. Sie können auch den vollständig qualifizierten Domänennamen (FQDN) verwenden, der in der Ausgabe angegeben ist:
 
 ```bash
 ssh -i ~/.ssh/id_rsa.pub exampleAdminUser@138.91.247.29
 ```
 
-Der Anmeldeprozesses sollte etwa folgendermaßen aussehen:
+Der Anmeldeprozess sollte etwa wie der folgende Ausgabeblock aussehen:
 
 ```bash
 Warning: Permanently added '138.91.247.29' (ECDSA) to the list of known hosts.
@@ -205,4 +205,4 @@ Der Befehl `azure vm quick-create` ermöglicht die schnelle Bereitstellung einer
 
 Sie können auch [den Azure-Treiber `docker-machine` mit verschiedenen Befehlen verwenden, um eine Linux-VM schnell als Docker-Host zu erstellen](virtual-machines-linux-docker-machine.md).
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_1005_2016-->

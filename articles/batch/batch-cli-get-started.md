@@ -13,14 +13,14 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="multiple"
    ms.workload="big-compute"
-   ms.date="09/06/2016"
+   ms.date="09/30/2016"
    ms.author="marsma"/>
 
 # Erste Schritte mit der Azure Batch-Befehlszeilenschnittstelle
 
 Die plattformübergreifende Azure-Befehlszeilenschnittstelle (Azure Command-Line Interface, Azure CLI) ermöglicht die Verwaltung Ihrer Batch-Konten und -Ressourcen wie Pools, Aufträge und Aufgaben in Linux-, Mac- und Windows-Befehlsshells. Mit der Azure-Befehlszeilenschnittstelle können Sie viele der Aufgaben durchführen und skripten, die Sie mit den Batch-APIs, dem Azure-Portal und den Batch PowerShell-Cmdlets durchführen.
 
-Dieser Artikel basiert auf Version 0.10.3 der Azure-Befehlszeilenschnittstelle.
+Diesem Artikel liegt die Version 0.10.5 der Azure-Befehlszeilenschnittstelle zugrunde.
 
 ## Voraussetzungen
 
@@ -215,19 +215,39 @@ Anwendungspaket **hinzufügen**:
 
 Paket **aktivieren**:
 
-    azure batch application package activate "resgroup002" "azbatch002" "MyTaskApplication" "1.10-beta3" zip
+    azure batch application package activate "resgroup001" "batchaccount001" "MyTaskApplication" "1.10-beta3" zip
+
+**Standardversion** für die Anwendung festlegen:
+
+    azure batch application set "resgroup001" "batchaccount001" "MyTaskApplication" --default-version "1.10-beta3"
 
 ### Bereitstellen eines Anwendungspakets
 
 Beim Erstellen eines neuen Pools können Sie Anwendungspakete angeben, die Sie bereitstellen möchten. Wenn Sie ein Paket bei der Poolerstellung angeben, wird es auf den einzelnen Knoten bereitgestellt, sobald diese dem Pool hinzugefügt werden. Pakete werden auch bereitgestellt, wenn ein Knoten neu gestartet oder ein Reimaging für den Knoten durchgeführt wird.
 
-Der folgende Befehl gibt bei der Poolerstellung ein Paket an, und das Paket wird jeweils bereitgestellt, wenn die einzelnen Knoten dem neuen Pool hinzugefügt werden:
+Geben Sie bei der Poolerstellung die `--app-package-ref`-Option an, um ein Anwendungspaket auf den Knoten des Pools bereitzustellen, wenn diese dem Pool hinzugefügt werden. Die `--app-package-ref`-Option akzeptiert eine durch Semikolons getrennte Liste mit Anwendung-IDs, die auf den Computeknoten bereitgestellt werden sollen.
 
-    azure batch pool create --id "pool001" --target-dedicated 1 --vm-size "small" --os-family "4" --app-package-ref "MyTaskApplication"
+    azure batch pool create --pool-id "pool001" --target-dedicated 1 --vm-size "small" --os-family "4" --app-package-ref "MyTaskApplication"
 
-Die bereitzustellende Paketversion kann derzeit nicht mithilfe von Befehlszeilenoptionen angegeben werden. Sie müssen zuerst über das Azure-Portal eine Standardversion für die Anwendung festlegen, um sie einem Pool zuweisen zu können. Eine Anleitung zum Festlegen einer Standardversion finden Sie unter [Anwendungsbereitstellung mit Azure Batch-Anwendungspaketen](batch-application-packages.md). Sie können allerdings eine Standardversion angeben, wenn Sie bei der Poolerstellung anstelle von Befehlszeilenoptionen eine [JSON-Datei](#json-files) verwenden.
+Wenn Sie einen Pool mithilfe von Befehlszeilenoptionen erstellen, können Sie derzeit nicht angeben, *welche* Anwendungspaketversion auf den Computeknoten bereitgestellt werden soll (beispielsweise „1.10-beta3“). Daher müssen Sie mit `azure batch application set [options] --default-version <version-id>` vor der Poolerstellung (siehe vorheriger Abschnitt) zunächst eine Standardversion für die Anwendung angeben. Wenn Sie bei der Poolerstellung anstelle von Befehlszeilenoptionen eine [JSON-Datei](#json-files) verwenden, können Sie hingegen eine Paketversion für den Pool angeben.
+
+Weitere Informationen zu Anwendungspaketen finden Sie unter [Anwendungsbereitstellung mit Azure Batch-Anwendungspaketen](batch-application-packages.md).
 
 >[AZURE.IMPORTANT] Damit Sie Anwendungspakete verwenden können, müssen Sie zunächst ein [Azure Storage-Konto mit Ihrem Batch-Konto verknüpfen](#linked-storage-account-autostorage).
+
+### Aktualisieren der Anwendungspakete eines Pools
+
+Verwenden Sie zum Aktualisieren der zugewiesenen Anwendungen eines vorhandenen Pools den `azure batch pool set`-Befehl mit der `--app-package-ref`-Option:
+
+    azure batch pool set --pool-id "pool001" --app-package-ref "MyTaskApplication2"
+
+Um das neue Anwendungspaket für Computeknoten bereitzustellen, die sich bereits in einem vorhandenen Pool befinden, müssen Sie diese Knoten neu starten oder ein Reimaging für diese Knoten durchführen:
+
+    azure batch node reboot --pool-id "pool001" --node-id "tvm-3105992504_1-20160930t164509z"
+
+>[AZURE.TIP] Eine Liste mit den Knoten in einem Pool sowie deren IDs können Sie mit `azure batch node list` abrufen.
+
+Beachten Sie, dass die Anwendung vor der Bereitstellung bereits mit einer Standardversion konfiguriert worden sein muss (`azure batch application set [options] --default-version <version-id>`).
 
 ## Tipps zur Problembehandlung
 
@@ -254,4 +274,4 @@ Dieser Abschnitt enthält Ressourcen zur Behandlung von Problemen mit der Azure-
 [rest_api]: https://msdn.microsoft.com/library/azure/dn820158.aspx
 [rest_add_pool]: https://msdn.microsoft.com/library/azure/dn820174.aspx
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_1005_2016-->

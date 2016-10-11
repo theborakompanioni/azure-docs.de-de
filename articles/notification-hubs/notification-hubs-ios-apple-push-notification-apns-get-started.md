@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="mobile-ios"
 	ms.devlang="objective-c"
 	ms.topic="hero-article"
-	ms.date="06/29/2016"
+	ms.date="10/03/2016"
 	ms.author="wesmc"/>
 
 # Senden von Pushbenachrichtigungen an iOS mit Azure Notification Hubs
@@ -461,9 +461,9 @@ Zum Testen von Pushbenachrichtigungen unter iOS müssen Sie die App auf einem ph
 
 ##Nächste Schritte
 
-In diesem einfachen Beispiel haben Sie Pushbenachrichtigungen an alle Ihre registrierten iOS-Geräte übertragen. Als nächsten Lernschritt empfehlen wir das Tutorial [Azure Notification Hubs – Benachrichtigen von iOS-Benutzern über .NET-Back-End]. Darin sind die Schritte beschrieben, die für die Erstellung eines Back-Ends zum Senden von Pushbenachrichtigungen mit Tags ausgeführt werden müssen.
+In diesem einfachen Beispiel haben Sie Pushbenachrichtigungen an alle Ihre registrierten iOS-Geräte übertragen. Als nächsten Lernschritt empfehlen wir das Tutorial [Azure Notification Hubs – Benachrichtigen von iOS-Benutzern über .NET-Back-End]. Darin werden die Schritte beschrieben, die zur Erstellung eines Back-Ends zum Senden von Pushbenachrichtigungen mit Tags ausgeführt werden müssen.
 
-Wenn Sie Ihre Benutzer in Interessengruppen einteilen möchten, finden Sie im Tutorial [Verwenden von Notification Hubs zum Übermitteln von Nachrichten] hierzu weitere Informationen.
+Wie Sie Ihre Benutzer in Interessengruppen einteilen, erfahren Sie im Tutorial [Verwenden von Notification Hubs zum Übermitteln von aktuellen Nachrichten].
 
 Allgemeine Informationen zu Notification Hubs finden Sie im [Notification Hubs-Leitfaden].
 
@@ -502,10 +502,10 @@ Allgemeine Informationen zu Notification Hubs finden Sie im [Notification Hubs-L
 [iOS Provisioning Portal]: http://go.microsoft.com/fwlink/p/?LinkId=272456
 
 [Get started with push notifications in Mobile Services]: ../mobile-services-javascript-backend-ios-get-started-push.md
-[Azure Notification Hubs – Benachrichtigen von iOS-Benutzern über .NET-Back-End]: notification-hubs-aspnet-backend-ios-notify-users.md
-[Verwenden von Notification Hubs zum Übermitteln von Nachrichten]: notification-hubs-ios-send-breaking-news.md
+[Azure Notification Hubs – Benachrichtigen von iOS-Benutzern über .NET-Back-End]: notification-hubs-aspnet-backend-ios-apple-apns-notification.md
+[Verwenden von Notification Hubs zum Übermitteln von aktuellen Nachrichten]: notification-hubs-ios-xplat-segmented-apns-push-notification.md
 
 [Local and Push Notification Programming Guide]: http://developer.apple.com/library/mac/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW1
 [Azure-Portal]: https://portal.azure.com
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_1005_2016-->

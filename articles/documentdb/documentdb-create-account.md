@@ -20,7 +20,7 @@
 # Erstellen eines DocumentDB-NoSQL-Kontos im Azure-Portal
 
 > [AZURE.SELECTOR]
-- [Azure-Portal](documntdb-create-account.md)
+- [Azure-Portal](documentdb-create-account.md)
 - [Azure-CLI und Azure Resource Manager](documentdb-automation-resource-manager-cli.md)
 
 Zum Erstellen einer Datenbank mit Microsoft Azure DocumentDB ist Folgendes erforderlich:
@@ -41,7 +41,7 @@ Arbeiten Sie zum ersten Mal mit DocumentDB? In [diesem](https://azure.microsoft.
 
 	![Screenshot des Blatts „Neues Konto“ für DocumentDB](./media/documentdb-create-account/create-nosql-db-databases-json-tutorial-2.png)
 
-	- Geben Sie im Feld **ID** einen Namen zur Identifizierung des DocumentDB-Kontos ein. Nachdem die **ID** überprüft wurde, wird im Feld **ID** ein grünes Häkchen angezeigt. Der Wert von **ID** wird zum Hostnamen im URI. Die **ID** darf nur Kleinbuchstaben, Ziffern und Bindestriche (-) enthalten und muss 3 bis 50 Zeichen lang sein. Beachten Sie, dass *documents.azure.com* an den von Ihnen ausgewählten Endpunktnamen angehängt wird. Der Name mit diesem Zusatz wird zu Ihrem DocumentDB-Kontoendpunkt.
+	- Geben Sie im Feld **ID** einen Namen zur Identifizierung des DocumentDB-Kontos ein. Nachdem die **ID** überprüft wurde, wird im Feld **ID** ein grünes Häkchen angezeigt. Der Wert von **ID** wird zum Hostnamen im URI. Die **ID** darf nur Kleinbuchstaben, Ziffern und Bindestriche (-) enthalten und muss 3 bis 50 Zeichen lang sein. Beachten Sie, dass *documents.azure.com* an den von Ihnen ausgewählten Endpunktnamen angehängt wird. Der Name mit diesem Zusatz wird zu Ihrem DocumentDB-Kontoendpunkt.
 
     - Wählen Sie im Feld **NoSQL-API** das gewünschte Programmiermodell aus:
         - **DocumentDB**: Die DocumentDB-API steht über .NET, Java, Node.js, Python und JavaScript [SDKs](documentdb-sdk-dotnet.md) sowie HTTP [REST](https://msdn.microsoft.com/library/azure/dn781481.aspx) zur Verfügung und bietet programmgesteuerten Zugriff auf alle DocumentDB-Funktionen.
@@ -93,4 +93,4 @@ Weitere Informationen zu DocumentDB finden Sie in folgenden Ressourcen:
 -	[Lernpfad für DocumentDB](https://azure.microsoft.com/documentation/learning-paths/documentdb/)
 -	[Hierarchisches Ressourcenmodell und Konzepte von DocumentDB](documentdb-resources.md)
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_1005_2016-->

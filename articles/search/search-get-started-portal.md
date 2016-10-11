@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="Erste Schritte mit Azure Search | Microsoft Azure | Erste Schritte mit Azure Search | DocumentDB | Cloudsuchdienst" 
-	description="Erstellen Sie anhand dieser exemplarischen Vorgehensweise in Form eines Tutorials Ihre erste Azure Search-Lösung. Erfahren Sie, wie Sie mit DocumentDB-Daten einen Azure Search-Index erstellen. Dies ist eine auf dem Portal basierende Übung ohne Code, bei der der Assistent „Daten importieren“ genutzt wird." 
+	pageTitle="Erste Schritte mit Azure Search | Microsoft Azure | DocumentDB | Cloudsuchdienst" 
+	description="Hier erfahren Sie, wie Sie anhand dieses Tutorials und auf der Grundlage von DocumentDB-Beispieldaten Ihren ersten Azure Search-Index erstellen. Bei dieser portalbasierten Übung ohne Code wird der Assistent „Daten importieren“ verwendet." 
 	services="search" 
 	documentationCenter="" 
 	authors="HeidiSteen" 
@@ -14,7 +14,7 @@
 	ms.workload="search" 
 	ms.topic="hero-article" 
 	ms.tgt_pltfrm="na" 
-	ms.date="08/29/2016" 
+	ms.date="10/03/2016" 
 	ms.author="heidist"/>
 
 # Erste Schritte mit Azure Search im Portal
@@ -23,11 +23,11 @@ In diesem Artikel erhalten Sie eine Einführung in Microsoft Azure Search ohne C
 
 Im Tutorial wird die Verwendung einer [Azure DocumentDB-Beispieldatenbank](#apdx-sampledata) vorausgesetzt, die Sie mithilfe unserer Daten und der Anleitung leicht erstellen können. Sie können diese Schritte aber auch für Ihre vorhandenen Daten in DocumentDB oder einer SQL-Datenbank anpassen.
 
-> [AZURE.NOTE] Für dieses Tutorial zu den ersten Schritten sind ein [Azure-Abonnement](../../includes/free-trial-note.md) und ein [Azure Search-Dienst](search-create-service-portal.md) erforderlich.
+> [AZURE.NOTE] Für dieses Tutorial zu den ersten Schritten sind ein [Azure-Abonnement](/pricing/free-trial/?WT.mc_id=A261C142F) und ein [Azure Search-Dienst](search-create-service-portal.md) erforderlich.
  
 ## Suchen nach dem Dienst
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com) an.
 
 2. Öffnen Sie das Service-Dashboard des Azure-Suchdiensts. Im Anschluss finden Sie einige Möglichkeiten, um zum Dashboard zu gelangen.
 	- Klicken Sie auf der Navigationsleiste auf **Suchdienste**. Auf der Navigationsleiste werden alle Dienste angegeben, die unter Ihrem Abonnement bereitgestellt werden. Wenn ein Suchdienst definiert wurde, wird in der Liste der Eintrag **Suchdienste** angezeigt.
@@ -43,28 +43,28 @@ Suchabfragen durchlaufen einen *Index* mit durchsuchbaren Daten, Metadaten und K
 
 Es gibt mehrere Methoden zum Erstellen eines Index. Wenn Sie über Daten in einem Datenspeicher verfügen, der von Azure Search per Crawler durchlaufen werden kann – beispielsweise Azure SQL-Datenbank, SQL Server auf einem virtuellen Azure-Computer oder DocumentDB –, können Sie einen Index einfach erstellen und auffüllen, indem Sie einen *Indexer* verwenden.
 
-Um diese Aufgabe über das Portal durchführen zu können, gehen wir davon aus, dass Daten aus DocumentDB vorhanden sind und über den Assistenten **Daten importieren** per Indexer durchlaufen werden können.
+Um diese Aufgabe über das Portal durchführen zu können, verwenden wir Daten aus DocumentDB, die über den Assistenten **Daten importieren** mit einem Indexer durchlaufen werden können.
 
 Erstellen Sie vor dem Fortfahren eine [DocumentDB-Beispieldatenbank](#apdx-sampledata) für dieses Tutorial. Kehren Sie anschließend zu diesem Abschnitt zurück, um die unten angegebenen Schritte auszuführen.
 
 <a id="defineDS"></a>
-#### Schritt 1: Definieren der Datenquelle
+#### Schritt 1: Definieren der Datenquelle
 
 1. Klicken Sie auf dem Dashboard des Azure Search-Diensts auf der Befehlsleiste auf **Daten importieren**, um einen Assistenten zu starten, mit dem ein Index erstellt und aufgefüllt wird.
 
-  ![][7]
+    ![][7]
 
 2. Klicken Sie im Assistenten auf **Datenquelle** > **DocumentDB** > **Name**, und geben Sie einen Namen für die Datenquelle ein. Eine Datenquelle ist ein Verbindungsobjekt in Azure Search, das mit anderen Indexern verwendet werden kann. Nachdem die Datenquelle erstellt wurde, wird sie in Ihrem Dienst als „vorhandene Datenquelle“ verfügbar gemacht.
 
-3. Wählen Sie Ihr vorhandenes DocumentDB-Konto sowie die Datenbank und die Sammlung aus. Wenn Sie die von uns bereitgestellten Beispieldaten nutzen, sieht Ihre Datenquellendefinition wie folgt aus:
+3. Wählen Sie Ihr vorhandenes DocumentDB-Konto sowie die Datenbank und die Sammlung aus. Bei Verwendung der von uns bereitgestellten Beispieldaten sieht Ihre Datenquellendefinition wie folgt aus:
 
-  ![][2]
+    ![][2]
 
 Beachten Sie, dass wir diese Abfrage überspringen. Der Grund ist, dass wir die Änderungsnachverfolgung hier nicht in unserem Dataset implementieren. Wenn Ihr Dataset ein Feld enthält, mit dem der Zeitpunkt der Datensatzaktualisierung nachverfolgt wird, können Sie einen Azure Search-Indexer konfigurieren, um die Änderungsnachverfolgung für selektive Updates Ihres Index zu nutzen.
 
 Klicken Sie auf **OK**, um diesen Schritt des Assistenten abzuschließen.
 
-#### Schritt 2: Definieren des Index
+#### Schritt 2: Definieren des Index
 
 Klicken Sie im Assistenten auf **Index**, und sehen Sie sich die Entwurfsoberfläche zum Erstellen eines Azure Search-Index an. Für einen Index sind mindestens ein Name und eine Felderauflistung erforderlich, wobei ein Feld als Dokumentschlüssel gekennzeichnet ist. Da wir ein DocumentDB-Dataset verwenden, werden die Felder vom Assistenten automatisch erkannt, und Felder und Datentypzuweisungen werden vorab in den Index geladen.
 
@@ -72,11 +72,11 @@ Klicken Sie im Assistenten auf **Index**, und sehen Sie sich die Entwurfsoberfl�
 
 Die Felder und Datentypen sind zwar konfiguriert, aber Sie müssen trotzdem Attribute zuweisen. Die Kontrollkästchen oben in der Liste der Felder sind *Indexattribute*, mit denen die Verwendung des Felds gesteuert wird.
 
-- **Abrufbar** bedeutet, dass es in der Liste mit den Suchergebnissen angezeigt wird. Sie können einzelne Felder kennzeichnen, indem Sie dieses Kontrollkästchen deaktivieren, um sie aus den Suchergebnissen auszuschließen, z. B. wenn Felder nur in Filterausdrücken verwendet werden.
+- **Abrufbar** bedeutet, dass es in der Liste mit den Suchergebnissen angezeigt wird. Sie können einzelne Felder kennzeichnen, indem Sie dieses Kontrollkästchen deaktivieren, um sie aus den Suchergebnissen auszuschließen, z. B. wenn Felder nur in Filterausdrücken verwendet werden.
 - Mit **Filterbar**, **Sortierbar** und **Facettenreich** wird angegeben, ob ein Feld in einer Filter-, Sortier- oder Facettennavigationsstruktur verwendet werden kann.
 - **Durchsuchbar** bedeutet, dass ein Feld in die Volltextsuche einbezogen wird. Zeichenfolgen können normalerweise durchsucht werden. Numerische Felder und boolesche Felder werden häufig als „Nicht durchsuchbar“ markiert.
 
-Markieren Sie für die Felder im Index vor dem Verlassen der Seite die Verwendung der folgenden Optionen (Abrufbar, Durchsuchbar usw.). Die meisten Felder sind abrufbar. Die meisten Zeichenfolgenfelder sind durchsuchbar (Sie müssen den Schlüssel nicht durchsuchbar machen). Einige Felder, z. B. „genre“, „orderableOnline“, „rating“ und „tags“, sind auch filterbar, sortierbar und facettenreich.
+Markieren Sie für die Felder im Index vor dem Verlassen der Seite die Verwendung der folgenden Optionen (Abrufbar, Durchsuchbar usw.). Die meisten Felder sind abrufbar. Die meisten Zeichenfolgenfelder sind durchsuchbar (Sie müssen den Schlüssel nicht durchsuchbar machen). Einige Felder, z. B. „genre“, „orderableOnline“, „rating“ und „tags“, sind auch filterbar, sortierbar und facettenreich.
 	
 Feld | Typ | Options |
 ------|------|---------|
@@ -100,7 +100,7 @@ Zu Vergleichszwecken ist der folgende Screenshot eine Darstellung eines Index, d
 
 Klicken Sie auf **OK**, um diesen Schritt des Assistenten abzuschließen.
 
-#### Schritt 3: Definieren des Indexers
+#### Schritt 3: Definieren des Indexers
 
 Klicken Sie im Assistenten **Daten importieren** auf **Indexer** > **Name**, geben Sie einen Namen für den Indexer ein, und verwenden Sie für alle anderen Werte die Standardwerte. Mit diesem Objekt wird ein ausführbarer Prozess definiert. Nach der Erstellung können Sie einen wiederkehrenden Zeitplan einrichten. Verwenden Sie hier aber die Standardoption, um den Indexer einmal sofort auszuführen, wenn Sie auf **OK** klicken.
 
@@ -130,7 +130,7 @@ Der **Suchexplorer** ist ein in das Portal integriertes Abfragetool. Es verfügt
 
 ## Nächste Schritte
 
-Nachdem Sie den Assistenten einmal ausgeführt haben, können Sie einen Schritt zurück machen und einzelne Komponenten anzeigen oder ändern: Index, Indexer oder Datenquelle. Einige Bearbeitungen, z. B. das Ändern des Felddatentyps, sind für den Index nicht zulässig, aber die meisten Eigenschaften und Einstellungen können geändert werden. Klicken Sie zum Anzeigen der einzelnen Komponenten auf dem Dashboard auf die Kachel **Index**, **Indexer** oder **Datenquellen**, um eine Liste mit vorhandenen Objekten anzuzeigen.
+Nachdem Sie den Assistenten einmal ausgeführt haben, können Sie einen Schritt zurück machen und einzelne Komponenten anzeigen oder ändern: Index, Indexer oder Datenquelle. Einige Bearbeitungen, z. B. das Ändern des Felddatentyps, sind für den Index nicht zulässig, aber die meisten Eigenschaften und Einstellungen können geändert werden. Klicken Sie zum Anzeigen der einzelnen Komponenten auf dem Dashboard auf die Kachel **Index**, **Indexer** oder **Datenquellen**, um eine Liste mit vorhandenen Objekten anzuzeigen.
 
 Weitere Informationen zu anderen Features, die in diesem Artikel erwähnt werden, finden Sie unter diesen Links:
 
@@ -141,20 +141,20 @@ Weitere Informationen zu anderen Features, die in diesem Artikel erwähnt werden
 
 Sie können denselben Workflow auch ausprobieren, indem Sie den Assistenten „Daten importieren“ für andere Datenquellen wie Azure SQL-Datenbank oder SQL Server auf virtuellen Azure-Maschinen verwenden.
 
-> [AZURE.NOTE] Neu angekündigt ist die Indexerunterstützung für das Durchsuchen von Azure Blob Storage per Crawler. Dieses Feature befindet sich aber noch in der Vorschauphase und ist noch keine Option im Portal. Sie müssen Code schreiben, um diesen Indexer auszuprobieren. Weitere Informationen finden Sie unter [Indizieren von Dokumenten in Azure Blob Storage mit Azure Search](search-howto-indexing-azure-blob-storage.md). <a id="apdx-sampledata"></a>
+> [AZURE.NOTE] Neu angekündigt ist die Indexerunterstützung für das Durchsuchen von Azure Blob Storage per Crawler. Dieses Feature befindet sich aber noch in der Vorschauphase und ist noch keine Option im Portal. Um diesen Indexer auszuprobieren, müssen Sie Code schreiben. Weitere Informationen finden Sie unter [Indizieren von Dokumenten in Azure Blob Storage mit Azure Search](search-howto-indexing-azure-blob-storage.md). <a id="apdx-sampledata"></a>
 
 
 ## Anhang: Erstellen von Beispieldaten in DocumentDB
 
 In diesem Abschnitt wird eine kleine Datenbank in DocumentDB erstellt, die zum Durchführen der Aufgaben in diesem Tutorial verwendet werden kann.
 
-Im Folgenden erhalten Sie eine allgemeine Anleitung, die aber nicht alle Aspekte vollständig abdeckt. Falls Sie bei der Navigation oder den Aufgaben im DocumentDB-Portal mehr Hilfe benötigen, können Sie die DocumentDB-Dokumentation nutzen. Die meisten benötigten Befehle befinden sich aber in der Befehlsleiste des Diensts oben im Dashboard oder auf dem Blatt der Datenbank.
+Im Folgenden erhalten Sie eine allgemeine Anleitung, die aber nicht alle Aspekte vollständig abdeckt. Sollten Sie bei der Navigation oder bei den Aufgaben im DocumentDB-Portal weitere Hilfe benötigen, verwenden Sie die DocumentDB-Dokumentation. Die meisten benötigten Befehle stehen aber entweder oben im Dashboard auf der Befehlsleiste des Diensts oder auf dem Blatt der Datenbank zur Verfügung.
 
   ![][1]
 
 ### Erstellen von musicstoredb für dieses Tutorial
 
-1. Klicken Sie [hier](https://github.com/HeidiSteen/azure-search-get-started-sample-data), um eine ZIP-Datei mit den JSON-Datendateien für den Music Store herunterzuladen. Wir stellen 246 JSON-Dokumente für dieses Dataset bereit.
+1. Klicken Sie [hier](https://github.com/HeidiSteen/azure-search-get-started-sample-data), um eine ZIP-Datei mit den JSON-Datendateien für den Music Store herunterzuladen. Wir stellen 246 JSON-Dokumente für dieses Dataset bereit.
 2. Fügen Sie DocumentDB Ihrem Abonnement hinzu, und öffnen Sie anschließend das Dashboard des Diensts.
 2. Klicken Sie auf **Datenbank hinzufügen**, um eine neue Datenbank mit der ID `musicstoredb` zu erstellen. Sie wird nach der Erstellung in der Datenbankkachel weiter unten auf der Seite angezeigt.
 2. Klicken Sie auf den Namen der Datenbank, um das Blatt für die Datenbank zu öffnen.
@@ -169,9 +169,9 @@ Im Folgenden erhalten Sie eine allgemeine Anleitung, die aber nicht alle Aspekte
 6. Wiederholen Sie diesen Schritt, um die nächste Gruppe von Dateien hochzuladen, bis Sie die letzte Datei (669.json) hochgeladen haben.
 7. Klicken Sie auf **Abfrage-Explorer**, um zu überprüfen, ob die Daten hochgeladen wurden und die Uploadanforderungen von Dokument-Explorer erfüllt wurden.
 
-Eine einfache Möglichkeit ist hierbei die Verwendung der Standardabfrage. Sie können die Standardabfrage aber auch so ändern, dass die obersten 300 Elemente ausgewählt werden (in diesem Dataset sind weniger als 300 Elemente vorhanden).
+Eine einfache Möglichkeit ist hierbei die Verwendung der Standardabfrage. Sie können die Standardabfrage aber auch so ändern, dass die ersten 300 Elemente ausgewählt werden (in diesem Dataset sind weniger als 300 Elemente vorhanden).
 
-Sie sollten eine JSON-Ausgabe zurückerhalten, die mit der Dokumentnummer 386 beginnt und mit Dokument 669 endet. Nach dem Laden der Daten können Sie [zu den Schritten in dieser exemplarischen Vorgehensweise zurückkehren](#defineDS), um mit dem Assistenten **Daten importieren** einen Index zu erstellen.
+Sie sollten eine JSON-Ausgabe zurückerhalten, die mit der Dokumentnummer 386 beginnt und mit Dokument 669 endet. Nach dem Laden der Daten können Sie [zu den Schritten in dieser exemplarischen Vorgehensweise zurückkehren](#defineDS), um mit dem Assistenten **Daten importieren** einen Index zu erstellen.
 
 
 <!--Image references-->
@@ -183,4 +183,4 @@ Sie sollten eine JSON-Ausgabe zurückerhalten, die mit der Dokumentnummer 386 be
 [6]: ./media/search-get-started-portal/AzureSearch-GetStart-IndexerList.png
 [7]: ./media/search-get-started-portal/search-data-import-wiz-btn.png
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_1005_2016-->

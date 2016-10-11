@@ -20,9 +20,7 @@
 	
 # Bereitstellen Ihrer ersten Java-Web-App für Azure in fünf Minuten
 
-In diesem Tutorial erfahren Sie, wie Sie eine einfache Java-Web-App für [Azure App Service](../app-service/app-service-value-prop-what-is.md) bereitstellen. 
-Mit App Service können Sie Web-Apps, [Mobile App-Back-Ends](/documentation/learning-paths/appservice-mobileapps/) 
-und [API-Apps](../app-service-api/app-service-api-apps-why-best-platform.md) erstellen.
+In diesem Tutorial erfahren Sie, wie Sie eine einfache Java-Web-App für [Azure App Service](../app-service/app-service-value-prop-what-is.md) bereitstellen. Mit App Service können Sie Web-Apps, [Mobile App-Back-Ends](/documentation/learning-paths/appservice-mobileapps/) und [API-Apps](../app-service-api/app-service-api-apps-why-best-platform.md) erstellen.
 
 In diesem Tutorial führen Sie folgende Schritte aus:
 
@@ -33,9 +31,7 @@ In diesem Tutorial führen Sie folgende Schritte aus:
 ## Voraussetzungen
 
 - FTP-/FTPS-Client wie etwa [FileZilla](https://filezilla-project.org/) installieren
-- Microsoft Azure-Konto erstellen. Falls Sie noch kein Konto haben, können Sie sich 
-[für eine kostenlose Testversion registrieren](/pricing/free-trial/?WT.mc_id=A261C142F) oder 
-[Ihre Visual Studio-Abonnentenvorteile aktivieren](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F).
+- Microsoft Azure-Konto erstellen. Falls Sie noch kein Konto haben, können Sie sich [für eine kostenlose Testversion registrieren](/pricing/free-trial/?WT.mc_id=A261C142F) oder [Ihre Visual Studio-Abonnentenvorteile aktivieren](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F).
 
 >[AZURE.NOTE] Zum [Testen von App Service](http://go.microsoft.com/fwlink/?LinkId=523751) benötigen Sie kein Azure-Konto. Sie können eine Starter-App erstellen und bis zu einer Stunde damit experimentieren – ohne Kreditkarte und ohne jegliche Verpflichtungen.
 
@@ -52,8 +48,7 @@ In diesem Tutorial führen Sie folgende Schritte aus:
 
     - **App-Name**: Geben Sie einen eindeutigen Namen ein.
     - **Ressourcengruppe**: Wählen Sie **Neu erstellen** aus, und geben Sie einen Namen für die Ressourcengruppe ein.
-    - **App Service-Plan/Standort**: Klicken Sie auf diese Option, um sie zu konfigurieren. Klicken Sie anschließend auf **Neu erstellen**, um den Namen, Standort und 
-    Tarif des App Service-Plans festzulegen. Sie können auch den Tarif **Free** verwenden.
+    - **App Service-Plan/Standort**: Klicken Sie auf diese Option, um sie zu konfigurieren. Klicken Sie anschließend auf **Neu erstellen**, um den Namen, Standort und Tarif des App Service-Plans festzulegen. Sie können auch den Tarif **Free** verwenden.
 
     Wenn Sie fertig sind, sollte das Blatt für die App-Erstellung wie folgt aussehen:
 
@@ -83,8 +78,7 @@ Wir stellen nun mithilfe von FTPS eine Java-App in Azure bereit.
 
     ![](./media/app-service-web-get-started-languages/set-java-application-settings.png)
 
-    Wenn die Benachrichtigung **Die Web-App-Einstellungen wurden erfolgreich aktualisiert.** angezeigt wird, navigieren Sie zu „http://*&lt;appname>*.azurewebsites.net“, 
-    um das JSP-Standardservlet in Aktion zu sehen.
+    Wenn die Benachrichtigung **Die Web-App-Einstellungen wurden erfolgreich aktualisiert.** angezeigt wird, navigieren Sie zu „http://*&lt;appname>*.azurewebsites.net“, um das JSP-Standardservlet in Aktion zu sehen.
 
 7. Klicken Sie auf dem Blatt der Web-App auf **Anmeldeinformationen für die Bereitstellung** (scrollen Sie dazu nach unten, oder suchen Sie nach der Option).
 
@@ -112,8 +106,7 @@ Wir stellen nun mithilfe von FTPS eine Java-App in Azure bereit.
 
     Klicken Sie auf **OK**, um die Datei in Azure zu überschreiben.
 
-    >[AZURE.NOTE] Gemäß dem Standardverhalten von Tomcat gibt der Dateiname **ROOT.war** unter „/site/wwwroot/webapps“ die Stamm-Web-App 
-    (http://*&lt;appname>*.azurewebsites.net) und der Dateiname ***&lt;anyname>*.war** eine benannte Web-App (http://*&lt;appname>*.azurewebsites.net/*&lt;anyname>*) an.
+    >[AZURE.NOTE] Gemäß dem Standardverhalten von Tomcat gibt der Dateiname **ROOT.war** unter „/site/wwwroot/webapps“ die Stamm-Web-App (http://*&lt;appname>*.azurewebsites.net) und der Dateiname ***&lt;anyname>*.war** eine benannte Web-App (http://*&lt;appname>*.azurewebsites.net/*&lt;anyname>*) an.
 
 Das ist alles! Ihre Java-App wird jetzt live in Azure ausgeführt. Navigieren Sie im Browser zu „http://*&lt;appname>*.azurewebsites.net“, um ihn in Aktion zu sehen.
 
@@ -123,7 +116,7 @@ Wenn Sie eine Aktualisierung vornehmen müssen, laden Sie die neue WAR-Datei ein
 
 ## Nächste Schritte
 
-[Erstellen einer Java-Web-App aus einer Vorlage im Azure Marketplace](app-service-web-java-get-started.md#marketplace) Sie können einen eigenen vollständig anpassbaren Tomcat-Container und die vertraute Manager-Benutzeroberfläche erstellen.
+[Erstellen einer Java-Web-App aus einer Vorlage im Azure Marketplace](web-sites-java-get-started.md#marketplace) Sie können einen eigenen vollständig anpassbaren Tomcat-Container und die vertraute Manager-Benutzeroberfläche erstellen.
 
 Debuggen Sie Ihre Azure-Web-App direkt in [IntelliJ](app-service-web-debug-java-web-app-in-intellij.md) oder [Eclipse](app-service-web-debug-java-web-app-in-eclipse.md).
 
@@ -132,4 +125,4 @@ Sie können auch weiter mit Ihrer ersten Web-App arbeiten. Beispiel:
 - Testen Sie [weitere Methoden zum Bereitstellen Ihres Codes in Azure](../app-service-web/web-sites-deploy.md). Wenn Sie eines Ihrer GitHub-Repositorys zur Bereitstellung verwenden möchten, wählen Sie beispielsweise unter **Bereitstellungsoptionen** einfach **GitHub** anstelle von **Lokales Git-Repository** aus.
 - Entwickeln Sie Ihre Azure-App weiter. Authentifizieren Sie Ihre Benutzer. Skalieren Sie die App je nach Bedarf. Richten Sie einige Leistungswarnungen ein. Es sind jeweils nur wenige Klicks erforderlich. Weitere Informationen finden Sie unter [Hinzufügen von Funktionen zu Ihrer ersten Web-App](app-service-web-get-started-2.md).
 
-<!----HONumber=AcomDC_0920_2016-->
+<!---HONumber=AcomDC_1005_2016-->

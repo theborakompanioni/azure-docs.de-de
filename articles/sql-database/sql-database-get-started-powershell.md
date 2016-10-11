@@ -132,7 +132,7 @@ Mit dem folgenden PowerShell-Skript wird eine SQL-Datenbank mit allen abhängige
 ## Nächste Schritte
 Nachdem Sie eine SQL-Datenbank erstellt und grundlegende Datenbankeinrichtungsaufgaben ausgeführt haben, sind Sie für Folgendes bereit:
 
-- [Verwalten von Azure SQL-Datenbanken mit PowerShell](sql-database-command-line-tools.md)
+- [Verwalten von Azure SQL-Datenbanken mit PowerShell](sql-database-manage-powershell.md)
 - [Herstellen einer Verbindung mit einer Azure SQL-Datenbank mit SQL Server Management Studio und Ausführen einer T-SQL-Beispielabfrage](sql-database-connect-query-ssms.md)
 
 
@@ -140,4 +140,4 @@ Nachdem Sie eine SQL-Datenbank erstellt und grundlegende Datenbankeinrichtungsau
 
 - [Azure SQL-Datenbank](https://azure.microsoft.com/documentation/services/sql-database/)
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_1005_2016-->

@@ -14,14 +14,14 @@
 	ms.tgt_pltfrm="mobile-chrome"
 	ms.devlang="JavaScript"
 	ms.topic="hero-article"
-	ms.date="07/22/2016"
+	ms.date="10/03/2016"
 	ms.author="wesmc"/>
 
 # Senden von Pushbenachrichtigungen an Chrome-Apps mit Azure Notification Hubs
 
 [AZURE.INCLUDE [Notification-Hubs-Auswahl-Erste-Schritte](../../includes/notification-hubs-selector-get-started.md)]
 
-In diesem Thema wird gezeigt, wie Sie Azure Notification Hubs zum Senden von Pushbenachrichtigungen an eine Chrome-App verwenden, die im Kontext des Google Chrome-Browsers angezeigt wird. In diesem Tutorial erstellen Sie eine Chrome-App, die Pushbenachrichtigungen per [Google Cloud Messaging (GCM)](https://developers.google.com/cloud-messaging/) empfängt.
+In diesem Thema erfahren Sie, wie Sie Azure Notification Hubs zum Senden von Pushbenachrichtigungen an eine Chrome-App verwenden, die im Kontext des Google Chrome-Browsers angezeigt wird. In diesem Tutorial erstellen Sie eine Chrome-App, die Pushbenachrichtigungen per [Google Cloud Messaging (GCM)](https://developers.google.com/cloud-messaging/) empfängt.
 
 >[AZURE.NOTE] Sie benötigen ein aktives Azure-Konto, um dieses Lernprogramm abzuschließen. Wenn Sie noch kein Konto haben, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fde-DE%2Fdocumentation%2Farticles%notification-hubs-chrome-get-started%2F).
 
@@ -436,7 +436,7 @@ Weitere Informationen zu Notification Hubs finden Sie unter [Übersicht über No
 
 Informationen zur Ausrichtung auf bestimmte Benutzer finden Sie im Tutorial [Azure Notification Hubs – Benachrichtigen von Benutzern].
 
-Wenn Sie Ihre Benutzer in Interessengruppen einteilen möchten, können Sie das Tutorial [Azure Notification Hubs – Aktuelle Neuigkeiten] durcharbeiten.
+Wie Sie Ihre Benutzer in Interessengruppen einteilen, erfahren Sie im Tutorial [Verwenden von Notification Hubs zum Übermitteln von aktuellen Nachrichten].
 
 <!-- Images. -->
 [1]: ./media/notification-hubs-chrome-get-started/GoogleConsoleCreateProject.PNG
@@ -474,7 +474,7 @@ Wenn Sie Ihre Benutzer in Interessengruppen einteilen möchten, können Sie das 
 [crypto-js-Bibliothek]: http://code.google.com/p/crypto-js/
 [GCM with Chrome Apps]: https://developer.chrome.com/apps/cloudMessaging
 [Google Cloud Messaging für Chrome]: https://developer.chrome.com/apps/cloudMessagingV1
-[Azure Notification Hubs – Benachrichtigen von Benutzern]: notification-hubs-aspnet-backend-windows-dotnet-notify-users.md
-[Azure Notification Hubs – Aktuelle Neuigkeiten]: notification-hubs-windows-store-dotnet-send-breaking-news.md
+[Azure Notification Hubs – Benachrichtigen von Benutzern]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
+[Verwenden von Notification Hubs zum Übermitteln von aktuellen Nachrichten]: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_1005_2016-->

@@ -34,7 +34,7 @@ In der folgenden Tabelle wird gezeigt, welchen IoT-Features die Lösungen zugeor
 
 | Lösung | Datenerfassung | Geräteidentität | Befehl und Steuerung | Regeln und Aktionen | Predictive Analytics |
 |------------------------|-----|-----|-----|-----|-----|
-| [Remoteüberwachung][lnk-getstarted-preconfigured] | Ja | Ja | Ja | Ja | – |
+| [Remoteüberwachung][lnk-getstarted-preconfigured] | Ja | Ja | Ja | Ja | – | 
 | [Vorbeugende Wartung][lnk-predictive-maintenance] | Ja | Ja | Ja | Ja | Ja |
 
 - *Datenerfassung:* Skalierbarer Dateneingang in der Cloud
@@ -93,7 +93,7 @@ Die ASA-Aufträge **DeviceInfo** und **Regeln** senden ihre Ausgabe an Event Hub
 
 ## Geräteidentitätsregistrierung und DocumentDB
 
-Jeder IoT Hub enthält eine [Geräteidentitätsregistrierung][lnk-identity-registry], in der Geräteschlüssel gespeichert sind. IoT Hub verwendet diese Informationen zum Authentifizieren von Geräten – ein Gerät muss registriert sein und einen gültigen Schlüssel haben, bevor es eine Verbindung mit dem Hub herstellen kann.
+Jede IoT Hub-Instanz verfügt über eine [Geräteidentitätsregistrierung][lnk-identity-registry] zum Speichern von Geräteschlüsseln. IoT Hub verwendet diese Informationen zum Authentifizieren von Geräten – ein Gerät muss registriert sein und einen gültigen Schlüssel haben, bevor es eine Verbindung mit dem Hub herstellen kann.
 
 Diese Lösung speichert zusätzliche Informationen zu Geräten, beispielsweise ihren Zustand, die unterstützten Befehle und andere Metadaten. Die Lösung verwendet eine DocumentDB-Datenbank zum Speichern dieser lösungsspezifischen Gerätedaten, und das Lösungsportal ruft Daten aus dieser DocumentDB-Datenbank für die Anzeige und Bearbeitung ab.
 
@@ -125,10 +125,10 @@ Sie wissen nun, worum es sich bei einer vorkonfigurierten Lösung handelt, und k
 [lnk-asa]: https://azure.microsoft.com/documentation/services/stream-analytics/
 [lnk-event-processor]: ../event-hubs/event-hubs-programming-guide.md#event-processor-host
 [lnk-web-job]: ../app-service-web/web-sites-create-web-jobs.md
-[lnk-identity-registry]: ../iot-hub/iot-hub-devguide.md#device-identity-registry
+[lnk-identity-registry]: ../iot-hub/iot-hub-devguide-identity-registry.md
 [lnk-predictive-maintenance]: iot-suite-predictive-overview.md
 [lnk-azureiotsuite]: https://www.azureiotsuite.com/
 [lnk-refarch]: http://download.microsoft.com/download/A/4/D/A4DAD253-BC21-41D3-B9D9-87D2AE6F0719/Microsoft_Azure_IoT_Reference_Architecture.pdf
 [lnk-getstarted-preconfigured]: iot-suite-getstarted-preconfigured-solutions.md
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_1005_2016-->

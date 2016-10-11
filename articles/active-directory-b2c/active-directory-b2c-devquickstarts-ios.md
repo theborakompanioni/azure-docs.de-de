@@ -151,11 +151,11 @@ Wir sehen uns nun die Details an.
 
 Für `authURL`, `loginURL`, `bhh` und `tokenURL` werden Sie bemerken, dass Sie Ihren Mandantennamen einfügen müssen. Dies ist der Mandantenname des B2C-Mandanten, der Ihnen zugewiesen wurde. Ein Beispiel hierfür ist `kidventusb2c.onmicrosoft.com`. Wenn Sie unsere Open Source-Microsoft Azure-Identitätsbibliotheken verwenden, stellen wir diese Daten für Sie über unseren Metadatenendpunkt bereit. Wir haben Ihnen den Aufwand für das Extrahieren dieser Werte abgenommen.
 
-Weitere Informationen zu B2C-Mandantennamen finden Sie hier: [active-directory-b2c-devquickstarts-tenant-name](../../includes/active-directory-b2c-devquickstarts-tenant-name.md).
+[AZURE.INCLUDE [active-directory-b2c-devquickstarts-tenant-name](../../includes/active-directory-b2c-devquickstarts-tenant-name.md)]
 
 Der Wert `keychain` ist der Container, den die NXOAuth2Client-Bibliothek verwendet, um einen Schlüsselbund zum Speichern Ihrer Token zu erstellen. Wenn Sie für eine größere Zahl von Apps das einmalige Anmelden (SSO) einrichten möchten, können Sie denselben Schlüsselbund in jeder Anwendung angeben und die Nutzung dieses Schlüsselbunds in Ihren XCode-Berechtigungen anfordern. Dieser Vorgang ist in der Apple-Dokumentation beschrieben.
 
-`<policy name>` am Ende einer URL ist der Ort, an dem Sie die oben erstellte Richtlinie einfügen. Die App ruft diese Richtlinien in Abhängigkeit des jeweiligen Ablaufs auf.
+Der Wert `<policy name>` am Ende jeder URL gibt an, wo die oben erstellte Richtlinie platziert wird. Die App ruft diese Richtlinien in Abhängigkeit des jeweiligen Ablaufs auf.
 
 `taskAPI` ist der REST-Endpunkt, den wir mit Ihrem B2C-Token aufrufen, um Aufgaben hinzuzufügen oder vorhandene Aufgaben abzufragen. Dies wurde speziell für dieses Beispiel eingerichtet. Sie müssen keine Änderungen vornehmen, damit das Beispiel funktioniert.
 
@@ -165,9 +165,9 @@ Nachdem wir die Datei `settings.plist` erstellt haben, benötigen wir Code, um s
 
 ## Einrichten einer AppData-Klasse zum Lesen der Einstellungen
 
-Wir erstellen eine einfache Datei, mit der die oben erstellte Datei `settngs.plist` analysiert wird. Diese Einstellungen werden dann für jede Klasse bereitgestellt. Da wir nicht jedes Mal eine neue Kopie der Daten erstellen möchten, wenn diese von einer Klasse angefordert werden, verwenden wir ein Singleton-Muster und geben immer nur die gleiche Instanz zurück, die bei einer Anforderung der Einstellungen erstellt wird.
+Wir erstellen eine einfache Datei, mit der die oben erstellte Datei `settngs.plist` analysiert wird und die Einstellungen für jede Klasse bereitgestellt werden. Da wir nicht jedes Mal eine neue Kopie der Daten erstellen möchten, wenn diese von einer Klasse angefordert werden, verwenden wir ein Singleton-Muster und geben immer nur die gleiche Instanz zurück, die bei einer Anforderung der Einstellungen erstellt wird.
 
-* Erstellen Sie die Datei `AppData.h`:
+* Erstellen Sie eine Datei vom Typ `AppData.h`:
 
 ```objc
 #import <Foundation/Foundation.h>
@@ -190,7 +190,7 @@ Wir erstellen eine einfache Datei, mit der die oben erstellte Datei `settngs.pli
 @end
 ```
 
-* Erstellen Sie die Datei `AppData.m`:
+* Erstellen Sie eine Datei vom Typ `AppData.m`:
 
 ```objc
 #import "AppData.h"
@@ -226,13 +226,13 @@ Wir erstellen eine einfache Datei, mit der die oben erstellte Datei `settngs.pli
 @end
 ```
 
-Nun können wir einfach auf unsere Daten zugreifen, indem wir `  AppData *data = [AppData getInstance];` in einer Klasse aufrufen. Dies wird unten veranschaulicht.
+Nun können wir einfach auf unsere Daten zugreifen, indem wir `  AppData *data = [AppData getInstance];` in einer beliebigen Klasse aufrufen, wie weiter unten gezeigt.
 
 
 
 ## Einrichten der NXOAuth2Client-Bibliothek in AppDelegate
 
-Für die Einrichtung der NXOAuthClient-Bibliothek sind einige Werte erforderlich. Nach Abschluss dieses Vorgangs können Sie das Token verwenden, das zum Aufrufen der REST-API abgerufen wird. Da `AppDelegate` immer aufgerufen wird, wenn die Anwendung geladen wird, ergibt es Sinn, unsere Konfigurationswerte in diese Datei einzufügen.
+Für die Einrichtung der NXOAuthClient-Bibliothek sind einige Werte erforderlich. Nach Abschluss dieses Vorgangs können Sie das Token verwenden, das zum Aufrufen der REST-API abgerufen wird. Da `AppDelegate` immer aufgerufen wird, wenn die Anwendung geladen wird, empfiehlt es sich, die Konfigurationswerte in dieser Datei zu platzieren.
 * Öffnen Sie die Datei `AppDelegate.m`.
 
 * Importieren Sie einige Headerdateien zur späteren Verwendung.
@@ -244,14 +244,14 @@ Für die Einrichtung der NXOAuthClient-Bibliothek sind einige Werte erforderlich
 
 * Fügen Sie die `setupOAuth2AccountStore`-Methode im AppDelegate-Element hinzu.
 
-Wir müssen ein AccountStore-Element erstellen und dann die Daten einfügen, die wir gerade aus der Datei `settings.plist` eingelesen haben.
+Wir müssen ein AccountStore-Element erstellen und dann die Daten einfügen, die wir gerade aus der Datei `settings.plist` gelesen haben.
 
 Sie sollten an diesem Punkt einige Aspekte in Bezug auf den B2C-Dienst beachten, um den Code verständlicher zu gestalten:
 
 
-1. Azure AD B2C verwendet die von den Abfrageparametern bereitgestellte *Richtlinie*, um Ihre Anforderung zu verarbeiten. So kann Azure Active Directory als unabhängiger Dienst nur für Ihre Anwendung fungieren. Zur Bereitstellung dieser zusätzlichen Abfrageparameter müssen wir die `kNXOAuth2AccountStoreConfigurationAdditionalAuthenticationParameters:`-Methode mit unseren benutzerdefinierten Richtlinienparametern angeben.
+1. Azure AD B2C verwendet die in den Abfrageparametern bereitgestellte *Richtlinie*, um Ihre Anforderung zu verarbeiten. So kann Azure Active Directory als unabhängiger Dienst nur für Ihre Anwendung fungieren. Zur Bereitstellung dieser zusätzlichen Abfrageparameter müssen wir die `kNXOAuth2AccountStoreConfigurationAdditionalAuthenticationParameters:`-Methode mit unseren benutzerdefinierten Richtlinienparametern angeben.
 
-2. Azure AD B2C nutzt Bereiche (Scopes) auf ähnliche Weise wie andere OAuth2-Server. Da es bei der Verwendung von B2C genauso um die Authentifizierung eines Benutzers wie um den Zugriff auf Ressourcen geht, sind einige Bereiche dringend erforderlich, damit der richtige Fluss sichergestellt ist. Dies ist der Bereich `openid`. Unsere Microsoft Identity SDKs stellen den Bereich `openid` automatisch für Sie bereit, und er ist daher nicht Teil unserer SDK-Konfiguration. Da wir eine Drittanbieterbibliothek verwenden, müssen wir diesen Bereich aber angeben.
+2. Azure AD B2C nutzt Bereiche (Scopes) auf ähnliche Weise wie andere OAuth2-Server. Da es bei der Verwendung von B2C genauso um die Authentifizierung eines Benutzers wie um den Zugriff auf Ressourcen geht, sind einige Bereiche dringend erforderlich, damit der richtige Fluss sichergestellt ist. Dies ist der `openid`-Bereich. Unsere Microsoft Identity SDKs stellen den `openid`-Bereich automatisch für Sie bereit. Er ist daher nicht Teil unserer SDK-Konfiguration. Da wir eine Drittanbieterbibliothek verwenden, müssen wir diesen Bereich aber angeben.
 
 ```objc
 - (void)setupOAuth2AccountStore {
@@ -284,7 +284,7 @@ Sie sollten an diesem Punkt einige Aspekte in Bezug auf den B2C-Dienst beachten,
                                         forAccountType:data.accountIdentifier];
 }
 ```
-Rufen Sie ihn als Nächstes im AppDelegate-Element unter der `didFinishLaunchingWithOptions:`-Methode auf.
+Rufen Sie als Nächstes den Bereich im AppDelegate-Element unter der `didFinishLaunchingWithOptions:`-Methode auf.
 
 ```
 [self setupOAuth2AccountStore];
@@ -309,7 +309,7 @@ Wir nutzen eine Webansicht für die Kontoanmeldung. Auf diese Weise können wir 
 Wir erstellen diese Methoden weiter unten.
 
 > [AZURE.NOTE] 
-    Stellen Sie sicher, dass Sie `loginView` an die tatsächliche Webansicht binden, die sich innerhalb Ihres Storyboards befindet. Andernfalls verfügen Sie nicht über eine Webansicht, die als Popup eingeblendet werden kann, wenn die Authentifizierung durchgeführt werden muss.
+    Vergewissern Sie sich, dass Sie `loginView` an die tatsächliche Webansicht binden, die sich innerhalb Ihres Storyboards befindet. Andernfalls verfügen Sie nicht über eine Webansicht, die als Popup eingeblendet werden kann, wenn die Authentifizierung durchgeführt werden muss.
 
 * Erstellen einer `LoginViewController.m`-Klasse
 
@@ -416,7 +416,7 @@ Wir benötigen Code für die Behandlung der redirectURL, die wir von der Webansi
 
 * Richten Sie die Factorys für die Benachrichtigung ein.
 
-Wir erstellen die gleiche Methode wie oben im `AppDelegate`-Element, aber hier fügen wir einige `NSNotification`-Elemente hinzu, um Informationen zu erhalten, was in unserem Dienst passiert. Wir richten einen Beobachter ein, der uns darüber informiert, wenn sich für das Token Änderungen ergeben. Nach dem Erhalt des Tokens geben wir den Benutzer an das `masterView`-Element zurück.
+Wir erstellen die gleiche Methode wie oben im `AppDelegate`-Element, fügen diesmal aber einige `NSNotification`-Elemente hinzu, um Informationen zu Vorgängen in unserem Dienst zu erhalten. Wir richten einen Beobachter ein, der uns darüber informiert, wenn sich für das Token Änderungen ergeben. Nach dem Abrufen des Tokens kehrt der Benutzer zu `masterView` zurück.
 
 
 
@@ -478,7 +478,7 @@ Wir erstellen eine Methode, die jeweils aufgerufen wird, wenn eine Anforderung z
 }
 ```
 
-* Abschließend rufen wir alle Methoden, die wir oben geschrieben haben, bei jedem Ladevorgang von `LoginViewController` auf. Hierfür fügen wir diese Methoden der `viewDidLoad`-Methode von Apple hinzu.
+* Abschließend rufen wir alle zuvor geschriebenen Methoden bei jedem Ladevorgang von `LoginViewController` auf. Hierzu fügen wir diese Methoden der `viewDidLoad`-Methode von Apple hinzu.
 
 ```objc
   [super viewDidLoad];
@@ -503,7 +503,7 @@ Sie haben nun die Hauptschritte zur Interaktion mit der Anwendung für die Anmel
 
 Bei jedem Laden der App wird eine Konfiguration geladen. Nachdem wir ein Token beschafft haben, müssen wir die Konfiguration nun nutzen.
 
-* Erstellen der Datei `GraphAPICaller.h`
+* Erstellen einer Datei vom Typ `GraphAPICaller.h`
 
 ```objc
 @interface GraphAPICaller : NSObject <NSURLConnectionDataDelegate>
@@ -520,7 +520,7 @@ In diesem Code sehen Sie, dass wir zwei Methoden erstellen: eine zum Abrufen der
 
 Nachdem wir die Schnittstelle nun eingerichtet haben, fügen wir die eigentliche Implementierung hinzu:
 
-* Erstellen der Datei `GraphAPICaller.m file`
+* Erstellen eines Elements vom Typ `GraphAPICaller.m file`
 
 ```objc
 @implementation GraphAPICaller
@@ -646,4 +646,4 @@ Sie können nun mit den B2C-Themen für fortgeschrittenere Benutzer fortfahren. 
 
 [Passen Sie die UX für eine B2C-Anwendung an.]()
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_1005_2016-->
