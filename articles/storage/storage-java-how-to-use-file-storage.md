@@ -18,7 +18,9 @@
 
 # Verwenden des Dateispeichers mit Java
 
-[AZURE.INCLUDE [storage-selector-file-include](../../includes/storage-selector-file-include.md)] <br/> [AZURE.INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-files.md)]
+[AZURE.INCLUDE [storage-selector-file-include](../../includes/storage-selector-file-include.md)]
+<br/>
+[AZURE.INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-files.md)]
 
 ## Übersicht
 
