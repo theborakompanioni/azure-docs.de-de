@@ -24,7 +24,7 @@ Mithilfe von Schemas best채tigen Sie, dass von Ihnen empfangene XML-Dokumente g�
 ## Hinzuf체gen eines Schemas
 Gehen Sie im Azure-Portal so vor:
 
-1. W채hlen Sie **Weitere Dienste**.
+1. W채hlen Sie **Weitere Dienste**.  
 ![](./media/app-service-logic-enterprise-integration-overview/overview-11.png)    
 2. Geben Sie in das Filtersuchfeld **Integration** ein, und w채hlen Sie in der Ergebnisliste **Integrationskonten** aus.     
 ![](./media/app-service-logic-enterprise-integration-overview/overview-21.png)  
@@ -92,4 +92,4 @@ Gehen Sie im Azure-Portal so vor:
 
 - [Weitere Informationen zum Enterprise Integration Pack](./app-service-logic-enterprise-integration-overview.md "Informationen zum Enterprise Integration Pack")
 
-<!---HONumber=AcomDC_0921_2016-->
+<!-----HONumber=AcomDC_0921_2016-->
