@@ -260,8 +260,7 @@ Falls ein Problem mit der RDP-Verbindung auftritt, können Sie es mit einem Neus
 
 Falls der xrdp-Neustart nicht wie oben beschrieben funktioniert, sollten Sie das Vorhandensein einer PID-Datei überprüfen und diese entfernen:
 
-  Überprüfen Sie „/var/run“, und suchen Sie nach „xrdp.pid“.   
-  Entfernen Sie die Datei, und führen Sie den Neustart dann erneut aus.
+  Überprüfen Sie „/var/run“, und suchen Sie nach „xrdp.pid“. Entfernen Sie die Datei, und führen Sie den Neustart dann erneut aus.
 
 
 
