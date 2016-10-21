@@ -86,7 +86,7 @@ Die Ressourcenkontrolle ist eine Funktion des Containers, mit der die Ressourcen
 
 
 ## Repositoryauthentifizierung
-Zum Herunterladen eines Containers müssen Sie unter Umständen die Anmeldeinformationen für das Containerrepository angeben. Die Anmeldeinformationen, die im *Anwendungs*manifest enthalten sind, werden zum Angeben der Anmeldeinformationen oder des SSH-Schlüssels zum Herunterladen des Containerimage aus dem Imagerepository verwendet. Das folgende Beispiel enthält ein Konto mit dem Namen *TestUser* und dem Kennwort als Klartext. Dies ist **nicht** zu empfehlen.
+Zum Herunterladen eines Containers müssen Sie unter Umständen die Anmeldeinformationen für das Containerrepository angeben. Die Anmeldeinformationen, die im *Anwendungs* manifest enthalten sind, werden zum Angeben der Anmeldeinformationen oder des SSH-Schlüssels zum Herunterladen des Containerimage aus dem Imagerepository verwendet. Das folgende Beispiel enthält ein Konto mit dem Namen *TestUser* und dem Kennwort als Klartext. Dies ist **nicht** zu empfehlen.
 
 
     <ServiceManifestImport>
