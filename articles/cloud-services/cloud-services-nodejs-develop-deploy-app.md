@@ -178,7 +178,7 @@ Weitere Informationen finden Sie im [Node.js Developer Center].
 <!-- URL List -->
 
 [Azure Websites, Cloud Services and Virtual Machines comparison]: ../app-service-web/choose-web-site-cloud-service-vm.md
-[Verwenden einer einfachen Web-App]: ../app-service-web/web-sites-nodejs-develop-deploy-mac.md">
+[Verwendung einer einfachen Web-App]: ../app-service-web/web-sites-nodejs-develop-deploy-mac.md">
 [Azure Powershell]: ../powershell-install-configure.md
 [Azure SDK für .NET 2.7]: http://www.microsoft.com/de-DE/download/details.aspx?id=48178
 [Stellen Sie eine PowerShell-Verbindung mit Ihrem Abonnement her.]: ../powershell-install-configure.md#how-to-connect-to-your-subscription
