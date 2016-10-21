@@ -76,7 +76,7 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-simplenexus-tutorial/IC785897.png "Einmaliges Anmelden konfigurieren")
 
-3.  Geben Sie auf der Seite **App-URL konfigurieren** im Textfeld für die **SimpleNexus-Anmelde-URL** die URL im Format „*https://simplenexus.com/CompanyName\_login*" ein, und klicken Sie dann auf **Weiter*.
+3.  Geben Sie auf der Seite **App-URL konfigurieren** im Textfeld für die **SimpleNexus-Anmelde-URL** die URL im Format " *https://simplenexus.com/CompanyName\_login* " ein, und klicken Sie dann auf **Weiter**.
 
     ![App-URL konfigurieren](./media/active-directory-saas-simplenexus-tutorial/IC786904.png "App-URL konfigurieren")
 

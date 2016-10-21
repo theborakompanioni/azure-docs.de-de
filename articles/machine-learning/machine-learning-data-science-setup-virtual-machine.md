@@ -77,7 +77,7 @@ Nach Abschluss der Installation wird der IPython Notebook-Server automatisch im 
 Geben Sie, wenn Sie dazu aufgefordert werden, ein Kennwort für IPython Notebook und das Kennwort für den Administrator des Computers ein. Dadurch kann IPython Notebook auf dem Computer als Dienst ausgeführt werden.
 
 ## <a name="access"></a>Schritt 4: Zugreifen auf IPython Notebooks von einem Webbrowser aus
-Öffnen Sie für den Zugriff auf den IPython Notebook-Server einen Webbrowser, und geben Sie in das Textfeld für die URL *https://&#60;virtualDNS-Name\_virtueller Computer>:&#60;Öffentlicher Port>*ein. Hierbei sollte für *&#60;Öffentlicher Port>* die Portnummer angegeben werden, die Sie beim Hinzufügen des IPython Notebook-Endpunkts angegeben haben.
+Öffnen Sie für den Zugriff auf den IPython Notebook-Server einen Webbrowser, und geben Sie in das Textfeld für die URL *https://&#60;virtualDNS-Name\_virtueller Computer>:&#60;Öffentlicher Port>* ein. Hierbei sollte für *&#60;Öffentlicher Port>* die Portnummer angegeben werden, die Sie beim Hinzufügen des IPython Notebook-Endpunkts angegeben haben.
 
 Den Wert für *&#60;DNS-Name\_virtueller Computer>* finden Sie im klassischen Azure-Portal. Klicken Sie nach der Anmeldung im klassischen Portal auf **VIRTUAL MACHINES**, wählen Sie den erstellten Computer aus, und wählen Sie dann das **DASHBOARD** aus. Der DNS-Name wird wie im folgenden Screenshot angezeigt:
 
